@@ -2213,24 +2213,6 @@ export const RCUIF_DISABLE_CLASS_BASED_ROUTE = 32768;
 
 // Structs
 
-/**
- * Windows.Win32.NetworkManagement.NetManagement.Apis (size: 8)
- */
-export interface Apis {
-  /** System.Guid */
-  ServiceAccountPasswordGUID: Uint8Array | Deno.PointerValue | null;
-}
-
-export const sizeofApis = 8;
-
-export function allocApis(data?: Partial<Apis>): Uint8Array {
-  const buf = new Uint8Array(sizeofApis);
-  const view = new DataView(buf.buffer);
-  // 0x00: pointer
-  if (data?.ServiceAccountPasswordGUID !== undefined) view.setBigUint64(0, data.ServiceAccountPasswordGUID === null ? 0n : BigInt(util.toPointer(data.ServiceAccountPasswordGUID)), true);
-  return buf;
-}
-
 export type PWSTR = Deno.PointerValue | Uint8Array | null;
 
 /**

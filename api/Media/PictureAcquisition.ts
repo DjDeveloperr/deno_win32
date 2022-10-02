@@ -91,56 +91,6 @@ export function allocPROPERTYKEY(data?: Partial<PROPERTYKEY>): Uint8Array {
   return buf;
 }
 
-/**
- * Windows.Win32.Media.PictureAcquisition.Apis (size: 72)
- */
-export interface Apis {
-  /** Windows.Win32.UI.Shell.PropertiesSystem.PROPERTYKEY */
-  PKEY_PhotoAcquire_RelativePathname: Uint8Array | Deno.PointerValue | null;
-  /** Windows.Win32.UI.Shell.PropertiesSystem.PROPERTYKEY */
-  PKEY_PhotoAcquire_FinalFilename: Uint8Array | Deno.PointerValue | null;
-  /** Windows.Win32.UI.Shell.PropertiesSystem.PROPERTYKEY */
-  PKEY_PhotoAcquire_GroupTag: Uint8Array | Deno.PointerValue | null;
-  /** Windows.Win32.UI.Shell.PropertiesSystem.PROPERTYKEY */
-  PKEY_PhotoAcquire_TransferResult: Uint8Array | Deno.PointerValue | null;
-  /** Windows.Win32.UI.Shell.PropertiesSystem.PROPERTYKEY */
-  PKEY_PhotoAcquire_OriginalFilename: Uint8Array | Deno.PointerValue | null;
-  /** Windows.Win32.UI.Shell.PropertiesSystem.PROPERTYKEY */
-  PKEY_PhotoAcquire_CameraSequenceNumber: Uint8Array | Deno.PointerValue | null;
-  /** Windows.Win32.UI.Shell.PropertiesSystem.PROPERTYKEY */
-  PKEY_PhotoAcquire_IntermediateFile: Uint8Array | Deno.PointerValue | null;
-  /** Windows.Win32.UI.Shell.PropertiesSystem.PROPERTYKEY */
-  PKEY_PhotoAcquire_SkipImport: Uint8Array | Deno.PointerValue | null;
-  /** Windows.Win32.UI.Shell.PropertiesSystem.PROPERTYKEY */
-  PKEY_PhotoAcquire_DuplicateDetectionID: Uint8Array | Deno.PointerValue | null;
-}
-
-export const sizeofApis = 72;
-
-export function allocApis(data?: Partial<Apis>): Uint8Array {
-  const buf = new Uint8Array(sizeofApis);
-  const view = new DataView(buf.buffer);
-  // 0x00: pointer
-  if (data?.PKEY_PhotoAcquire_RelativePathname !== undefined) view.setBigUint64(0, data.PKEY_PhotoAcquire_RelativePathname === null ? 0n : BigInt(util.toPointer(data.PKEY_PhotoAcquire_RelativePathname)), true);
-  // 0x08: pointer
-  if (data?.PKEY_PhotoAcquire_FinalFilename !== undefined) view.setBigUint64(8, data.PKEY_PhotoAcquire_FinalFilename === null ? 0n : BigInt(util.toPointer(data.PKEY_PhotoAcquire_FinalFilename)), true);
-  // 0x10: pointer
-  if (data?.PKEY_PhotoAcquire_GroupTag !== undefined) view.setBigUint64(16, data.PKEY_PhotoAcquire_GroupTag === null ? 0n : BigInt(util.toPointer(data.PKEY_PhotoAcquire_GroupTag)), true);
-  // 0x18: pointer
-  if (data?.PKEY_PhotoAcquire_TransferResult !== undefined) view.setBigUint64(24, data.PKEY_PhotoAcquire_TransferResult === null ? 0n : BigInt(util.toPointer(data.PKEY_PhotoAcquire_TransferResult)), true);
-  // 0x20: pointer
-  if (data?.PKEY_PhotoAcquire_OriginalFilename !== undefined) view.setBigUint64(32, data.PKEY_PhotoAcquire_OriginalFilename === null ? 0n : BigInt(util.toPointer(data.PKEY_PhotoAcquire_OriginalFilename)), true);
-  // 0x28: pointer
-  if (data?.PKEY_PhotoAcquire_CameraSequenceNumber !== undefined) view.setBigUint64(40, data.PKEY_PhotoAcquire_CameraSequenceNumber === null ? 0n : BigInt(util.toPointer(data.PKEY_PhotoAcquire_CameraSequenceNumber)), true);
-  // 0x30: pointer
-  if (data?.PKEY_PhotoAcquire_IntermediateFile !== undefined) view.setBigUint64(48, data.PKEY_PhotoAcquire_IntermediateFile === null ? 0n : BigInt(util.toPointer(data.PKEY_PhotoAcquire_IntermediateFile)), true);
-  // 0x38: pointer
-  if (data?.PKEY_PhotoAcquire_SkipImport !== undefined) view.setBigUint64(56, data.PKEY_PhotoAcquire_SkipImport === null ? 0n : BigInt(util.toPointer(data.PKEY_PhotoAcquire_SkipImport)), true);
-  // 0x40: pointer
-  if (data?.PKEY_PhotoAcquire_DuplicateDetectionID !== undefined) view.setBigUint64(64, data.PKEY_PhotoAcquire_DuplicateDetectionID === null ? 0n : BigInt(util.toPointer(data.PKEY_PhotoAcquire_DuplicateDetectionID)), true);
-  return buf;
-}
-
 // Native Libraries
 
 // Symbols

@@ -32,24 +32,6 @@ export const PWM_ACTIVE_LOW = 1;
 // Structs
 
 /**
- * Windows.Win32.Devices.Pwm.Apis (size: 8)
- */
-export interface Apis {
-  /** System.Guid */
-  GUID_DEVINTERFACE_PWM_CONTROLLER: Uint8Array | Deno.PointerValue | null;
-}
-
-export const sizeofApis = 8;
-
-export function allocApis(data?: Partial<Apis>): Uint8Array {
-  const buf = new Uint8Array(sizeofApis);
-  const view = new DataView(buf.buffer);
-  // 0x00: pointer
-  if (data?.GUID_DEVINTERFACE_PWM_CONTROLLER !== undefined) view.setBigUint64(0, data.GUID_DEVINTERFACE_PWM_CONTROLLER === null ? 0n : BigInt(util.toPointer(data.GUID_DEVINTERFACE_PWM_CONTROLLER)), true);
-  return buf;
-}
-
-/**
  * Windows.Win32.Devices.Pwm.PWM_CONTROLLER_INFO (size: 32)
  */
 export interface PWM_CONTROLLER_INFO {

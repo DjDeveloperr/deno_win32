@@ -38,36 +38,6 @@ export function allocPROPERTYKEY(data?: Partial<PROPERTYKEY>): Uint8Array {
 }
 
 /**
- * Windows.Win32.Media.Audio.Endpoints.Apis (size: 32)
- */
-export interface Apis {
-  /** Windows.Win32.UI.Shell.PropertiesSystem.PROPERTYKEY */
-  DEVPKEY_AudioEndpointPlugin_FactoryCLSID: Uint8Array | Deno.PointerValue | null;
-  /** Windows.Win32.UI.Shell.PropertiesSystem.PROPERTYKEY */
-  DEVPKEY_AudioEndpointPlugin_DataFlow: Uint8Array | Deno.PointerValue | null;
-  /** Windows.Win32.UI.Shell.PropertiesSystem.PROPERTYKEY */
-  DEVPKEY_AudioEndpointPlugin_PnPInterface: Uint8Array | Deno.PointerValue | null;
-  /** Windows.Win32.UI.Shell.PropertiesSystem.PROPERTYKEY */
-  DEVPKEY_AudioEndpointPlugin2_FactoryCLSID: Uint8Array | Deno.PointerValue | null;
-}
-
-export const sizeofApis = 32;
-
-export function allocApis(data?: Partial<Apis>): Uint8Array {
-  const buf = new Uint8Array(sizeofApis);
-  const view = new DataView(buf.buffer);
-  // 0x00: pointer
-  if (data?.DEVPKEY_AudioEndpointPlugin_FactoryCLSID !== undefined) view.setBigUint64(0, data.DEVPKEY_AudioEndpointPlugin_FactoryCLSID === null ? 0n : BigInt(util.toPointer(data.DEVPKEY_AudioEndpointPlugin_FactoryCLSID)), true);
-  // 0x08: pointer
-  if (data?.DEVPKEY_AudioEndpointPlugin_DataFlow !== undefined) view.setBigUint64(8, data.DEVPKEY_AudioEndpointPlugin_DataFlow === null ? 0n : BigInt(util.toPointer(data.DEVPKEY_AudioEndpointPlugin_DataFlow)), true);
-  // 0x10: pointer
-  if (data?.DEVPKEY_AudioEndpointPlugin_PnPInterface !== undefined) view.setBigUint64(16, data.DEVPKEY_AudioEndpointPlugin_PnPInterface === null ? 0n : BigInt(util.toPointer(data.DEVPKEY_AudioEndpointPlugin_PnPInterface)), true);
-  // 0x18: pointer
-  if (data?.DEVPKEY_AudioEndpointPlugin2_FactoryCLSID !== undefined) view.setBigUint64(24, data.DEVPKEY_AudioEndpointPlugin2_FactoryCLSID === null ? 0n : BigInt(util.toPointer(data.DEVPKEY_AudioEndpointPlugin2_FactoryCLSID)), true);
-  return buf;
-}
-
-/**
  * Windows.Win32.Media.Audio.WAVEFORMATEX (size: 24)
  */
 export interface WAVEFORMATEX {

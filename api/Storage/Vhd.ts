@@ -210,28 +210,6 @@ export const FORK_VIRTUAL_DISK_FLAG_EXISTING_FILE = 1;
 // Structs
 
 /**
- * Windows.Win32.Storage.Vhd.Apis (size: 16)
- */
-export interface Apis {
-  /** System.Guid */
-  VIRTUAL_STORAGE_TYPE_VENDOR_UNKNOWN: Uint8Array | Deno.PointerValue | null;
-  /** System.Guid */
-  VIRTUAL_STORAGE_TYPE_VENDOR_MICROSOFT: Uint8Array | Deno.PointerValue | null;
-}
-
-export const sizeofApis = 16;
-
-export function allocApis(data?: Partial<Apis>): Uint8Array {
-  const buf = new Uint8Array(sizeofApis);
-  const view = new DataView(buf.buffer);
-  // 0x00: pointer
-  if (data?.VIRTUAL_STORAGE_TYPE_VENDOR_UNKNOWN !== undefined) view.setBigUint64(0, data.VIRTUAL_STORAGE_TYPE_VENDOR_UNKNOWN === null ? 0n : BigInt(util.toPointer(data.VIRTUAL_STORAGE_TYPE_VENDOR_UNKNOWN)), true);
-  // 0x08: pointer
-  if (data?.VIRTUAL_STORAGE_TYPE_VENDOR_MICROSOFT !== undefined) view.setBigUint64(8, data.VIRTUAL_STORAGE_TYPE_VENDOR_MICROSOFT === null ? 0n : BigInt(util.toPointer(data.VIRTUAL_STORAGE_TYPE_VENDOR_MICROSOFT)), true);
-  return buf;
-}
-
-/**
  * Windows.Win32.Storage.Vhd.VIRTUAL_STORAGE_TYPE (size: 16)
  */
 export interface VIRTUAL_STORAGE_TYPE {

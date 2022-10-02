@@ -3040,60 +3040,6 @@ export const D3D_PF_FORCE_DWORD = 2147483647;
 // Structs
 
 /**
- * Windows.Win32.Graphics.Direct3D12.Apis (size: 80)
- */
-export interface Apis {
-  /** System.Guid */
-  D3D12_PROTECTED_RESOURCES_SESSION_HARDWARE_PROTECTED: Uint8Array | Deno.PointerValue | null;
-  /** System.Guid */
-  CLSID_D3D12Debug: Uint8Array | Deno.PointerValue | null;
-  /** System.Guid */
-  CLSID_D3D12Tools: Uint8Array | Deno.PointerValue | null;
-  /** System.Guid */
-  CLSID_D3D12DeviceRemovedExtendedData: Uint8Array | Deno.PointerValue | null;
-  /** System.Guid */
-  CLSID_D3D12SDKConfiguration: Uint8Array | Deno.PointerValue | null;
-  /** System.Guid */
-  WKPDID_D3DAutoDebugObjectNameW: Uint8Array | Deno.PointerValue | null;
-  /** System.Guid */
-  DXGI_DEBUG_D3D12: Uint8Array | Deno.PointerValue | null;
-  /** System.Guid */
-  D3D12ExperimentalShaderModels: Uint8Array | Deno.PointerValue | null;
-  /** System.Guid */
-  D3D12TiledResourceTier4: Uint8Array | Deno.PointerValue | null;
-  /** System.Guid */
-  D3D12MetaCommand: Uint8Array | Deno.PointerValue | null;
-}
-
-export const sizeofApis = 80;
-
-export function allocApis(data?: Partial<Apis>): Uint8Array {
-  const buf = new Uint8Array(sizeofApis);
-  const view = new DataView(buf.buffer);
-  // 0x00: pointer
-  if (data?.D3D12_PROTECTED_RESOURCES_SESSION_HARDWARE_PROTECTED !== undefined) view.setBigUint64(0, data.D3D12_PROTECTED_RESOURCES_SESSION_HARDWARE_PROTECTED === null ? 0n : BigInt(util.toPointer(data.D3D12_PROTECTED_RESOURCES_SESSION_HARDWARE_PROTECTED)), true);
-  // 0x08: pointer
-  if (data?.CLSID_D3D12Debug !== undefined) view.setBigUint64(8, data.CLSID_D3D12Debug === null ? 0n : BigInt(util.toPointer(data.CLSID_D3D12Debug)), true);
-  // 0x10: pointer
-  if (data?.CLSID_D3D12Tools !== undefined) view.setBigUint64(16, data.CLSID_D3D12Tools === null ? 0n : BigInt(util.toPointer(data.CLSID_D3D12Tools)), true);
-  // 0x18: pointer
-  if (data?.CLSID_D3D12DeviceRemovedExtendedData !== undefined) view.setBigUint64(24, data.CLSID_D3D12DeviceRemovedExtendedData === null ? 0n : BigInt(util.toPointer(data.CLSID_D3D12DeviceRemovedExtendedData)), true);
-  // 0x20: pointer
-  if (data?.CLSID_D3D12SDKConfiguration !== undefined) view.setBigUint64(32, data.CLSID_D3D12SDKConfiguration === null ? 0n : BigInt(util.toPointer(data.CLSID_D3D12SDKConfiguration)), true);
-  // 0x28: pointer
-  if (data?.WKPDID_D3DAutoDebugObjectNameW !== undefined) view.setBigUint64(40, data.WKPDID_D3DAutoDebugObjectNameW === null ? 0n : BigInt(util.toPointer(data.WKPDID_D3DAutoDebugObjectNameW)), true);
-  // 0x30: pointer
-  if (data?.DXGI_DEBUG_D3D12 !== undefined) view.setBigUint64(48, data.DXGI_DEBUG_D3D12 === null ? 0n : BigInt(util.toPointer(data.DXGI_DEBUG_D3D12)), true);
-  // 0x38: pointer
-  if (data?.D3D12ExperimentalShaderModels !== undefined) view.setBigUint64(56, data.D3D12ExperimentalShaderModels === null ? 0n : BigInt(util.toPointer(data.D3D12ExperimentalShaderModels)), true);
-  // 0x40: pointer
-  if (data?.D3D12TiledResourceTier4 !== undefined) view.setBigUint64(64, data.D3D12TiledResourceTier4 === null ? 0n : BigInt(util.toPointer(data.D3D12TiledResourceTier4)), true);
-  // 0x48: pointer
-  if (data?.D3D12MetaCommand !== undefined) view.setBigUint64(72, data.D3D12MetaCommand === null ? 0n : BigInt(util.toPointer(data.D3D12MetaCommand)), true);
-  return buf;
-}
-
-/**
  * Windows.Win32.Graphics.Direct3D12.D3D12_COMMAND_QUEUE_DESC (size: 16)
  */
 export interface D3D12_COMMAND_QUEUE_DESC {

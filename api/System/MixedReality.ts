@@ -5,24 +5,6 @@ import * as util from "../../util.ts";
 // Structs
 
 /**
- * Windows.Win32.System.MixedReality.Apis (size: 8)
- */
-export interface Apis {
-  /** System.Guid */
-  PERCEPTIONFIELD_StateStream_TimeStamps: Uint8Array | Deno.PointerValue | null;
-}
-
-export const sizeofApis = 8;
-
-export function allocApis(data?: Partial<Apis>): Uint8Array {
-  const buf = new Uint8Array(sizeofApis);
-  const view = new DataView(buf.buffer);
-  // 0x00: pointer
-  if (data?.PERCEPTIONFIELD_StateStream_TimeStamps !== undefined) view.setBigUint64(0, data.PERCEPTIONFIELD_StateStream_TimeStamps === null ? 0n : BigInt(util.toPointer(data.PERCEPTIONFIELD_StateStream_TimeStamps)), true);
-  return buf;
-}
-
-/**
  * Windows.Win32.System.MixedReality.PERCEPTION_PAYLOAD_FIELD (size: 16)
  */
 export interface PERCEPTION_PAYLOAD_FIELD {

@@ -419,60 +419,6 @@ export function allocPROPERTYKEY(data?: Partial<PROPERTYKEY>): Uint8Array {
   return buf;
 }
 
-/**
- * Windows.Win32.Devices.Fax.Apis (size: 80)
- */
-export interface Apis {
-  /** System.Guid */
-  CLSID_Sti: Uint8Array | Deno.PointerValue | null;
-  /** System.Guid */
-  GUID_DeviceArrivedLaunch: Uint8Array | Deno.PointerValue | null;
-  /** System.Guid */
-  GUID_ScanImage: Uint8Array | Deno.PointerValue | null;
-  /** System.Guid */
-  GUID_ScanPrintImage: Uint8Array | Deno.PointerValue | null;
-  /** System.Guid */
-  GUID_ScanFaxImage: Uint8Array | Deno.PointerValue | null;
-  /** System.Guid */
-  GUID_STIUserDefined1: Uint8Array | Deno.PointerValue | null;
-  /** System.Guid */
-  GUID_STIUserDefined2: Uint8Array | Deno.PointerValue | null;
-  /** System.Guid */
-  GUID_STIUserDefined3: Uint8Array | Deno.PointerValue | null;
-  /** Windows.Win32.UI.Shell.PropertiesSystem.PROPERTYKEY */
-  DEVPKEY_WIA_DeviceType: Uint8Array | Deno.PointerValue | null;
-  /** Windows.Win32.UI.Shell.PropertiesSystem.PROPERTYKEY */
-  DEVPKEY_WIA_USDClassId: Uint8Array | Deno.PointerValue | null;
-}
-
-export const sizeofApis = 80;
-
-export function allocApis(data?: Partial<Apis>): Uint8Array {
-  const buf = new Uint8Array(sizeofApis);
-  const view = new DataView(buf.buffer);
-  // 0x00: pointer
-  if (data?.CLSID_Sti !== undefined) view.setBigUint64(0, data.CLSID_Sti === null ? 0n : BigInt(util.toPointer(data.CLSID_Sti)), true);
-  // 0x08: pointer
-  if (data?.GUID_DeviceArrivedLaunch !== undefined) view.setBigUint64(8, data.GUID_DeviceArrivedLaunch === null ? 0n : BigInt(util.toPointer(data.GUID_DeviceArrivedLaunch)), true);
-  // 0x10: pointer
-  if (data?.GUID_ScanImage !== undefined) view.setBigUint64(16, data.GUID_ScanImage === null ? 0n : BigInt(util.toPointer(data.GUID_ScanImage)), true);
-  // 0x18: pointer
-  if (data?.GUID_ScanPrintImage !== undefined) view.setBigUint64(24, data.GUID_ScanPrintImage === null ? 0n : BigInt(util.toPointer(data.GUID_ScanPrintImage)), true);
-  // 0x20: pointer
-  if (data?.GUID_ScanFaxImage !== undefined) view.setBigUint64(32, data.GUID_ScanFaxImage === null ? 0n : BigInt(util.toPointer(data.GUID_ScanFaxImage)), true);
-  // 0x28: pointer
-  if (data?.GUID_STIUserDefined1 !== undefined) view.setBigUint64(40, data.GUID_STIUserDefined1 === null ? 0n : BigInt(util.toPointer(data.GUID_STIUserDefined1)), true);
-  // 0x30: pointer
-  if (data?.GUID_STIUserDefined2 !== undefined) view.setBigUint64(48, data.GUID_STIUserDefined2 === null ? 0n : BigInt(util.toPointer(data.GUID_STIUserDefined2)), true);
-  // 0x38: pointer
-  if (data?.GUID_STIUserDefined3 !== undefined) view.setBigUint64(56, data.GUID_STIUserDefined3 === null ? 0n : BigInt(util.toPointer(data.GUID_STIUserDefined3)), true);
-  // 0x40: pointer
-  if (data?.DEVPKEY_WIA_DeviceType !== undefined) view.setBigUint64(64, data.DEVPKEY_WIA_DeviceType === null ? 0n : BigInt(util.toPointer(data.DEVPKEY_WIA_DeviceType)), true);
-  // 0x48: pointer
-  if (data?.DEVPKEY_WIA_USDClassId !== undefined) view.setBigUint64(72, data.DEVPKEY_WIA_USDClassId === null ? 0n : BigInt(util.toPointer(data.DEVPKEY_WIA_USDClassId)), true);
-  return buf;
-}
-
 export type PSTR = Deno.PointerValue | Uint8Array | null;
 
 /**

@@ -437,24 +437,6 @@ export const WPC_SETTING_COUNT = 37;
 
 // Structs
 
-/**
- * Windows.Win32.System.ParentalControls.Apis (size: 8)
- */
-export interface Apis {
-  /** System.Guid */
-  WPCPROV: Uint8Array | Deno.PointerValue | null;
-}
-
-export const sizeofApis = 8;
-
-export function allocApis(data?: Partial<Apis>): Uint8Array {
-  const buf = new Uint8Array(sizeofApis);
-  const view = new DataView(buf.buffer);
-  // 0x00: pointer
-  if (data?.WPCPROV !== undefined) view.setBigUint64(0, data.WPCPROV === null ? 0n : BigInt(util.toPointer(data.WPCPROV)), true);
-  return buf;
-}
-
 // Native Libraries
 
 // Symbols

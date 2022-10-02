@@ -138,28 +138,6 @@ export const TASK_COMPATIBILITY_V2_4 = 6;
 // Structs
 
 /**
- * Windows.Win32.System.TaskScheduler.Apis (size: 16)
- */
-export interface Apis {
-  /** System.Guid */
-  CLSID_CTask: Uint8Array | Deno.PointerValue | null;
-  /** System.Guid */
-  CLSID_CTaskScheduler: Uint8Array | Deno.PointerValue | null;
-}
-
-export const sizeofApis = 16;
-
-export function allocApis(data?: Partial<Apis>): Uint8Array {
-  const buf = new Uint8Array(sizeofApis);
-  const view = new DataView(buf.buffer);
-  // 0x00: pointer
-  if (data?.CLSID_CTask !== undefined) view.setBigUint64(0, data.CLSID_CTask === null ? 0n : BigInt(util.toPointer(data.CLSID_CTask)), true);
-  // 0x08: pointer
-  if (data?.CLSID_CTaskScheduler !== undefined) view.setBigUint64(8, data.CLSID_CTaskScheduler === null ? 0n : BigInt(util.toPointer(data.CLSID_CTaskScheduler)), true);
-  return buf;
-}
-
-/**
  * Windows.Win32.System.TaskScheduler.DAILY (size: 8)
  */
 export interface DAILY {

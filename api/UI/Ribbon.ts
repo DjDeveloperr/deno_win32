@@ -92,24 +92,6 @@ export const UI_OWNERSHIP_COPY = 1;
 
 // Structs
 
-/**
- * Windows.Win32.UI.Ribbon.Apis (size: 8)
- */
-export interface Apis {
-  /** System.Guid */
-  LIBID_UIRibbon: Uint8Array | Deno.PointerValue | null;
-}
-
-export const sizeofApis = 8;
-
-export function allocApis(data?: Partial<Apis>): Uint8Array {
-  const buf = new Uint8Array(sizeofApis);
-  const view = new DataView(buf.buffer);
-  // 0x00: pointer
-  if (data?.LIBID_UIRibbon !== undefined) view.setBigUint64(0, data.LIBID_UIRibbon === null ? 0n : BigInt(util.toPointer(data.LIBID_UIRibbon)), true);
-  return buf;
-}
-
 export type PWSTR = Deno.PointerValue | Uint8Array | null;
 
 /**

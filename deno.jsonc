@@ -1,9 +1,21 @@
 {
   "tasks": {
     "gen": "deno run -A --unstable gen.ts",
-    "check": "deno check --unstable gen.ts"
+    "check": "deno check --unstable api/UI/mod.ts"
+  },
+  "fmt": {
+    "files": {
+      "exclude": [
+        "api"
+      ]
+    }
   },
   "lint": {
+    "files": {
+      "exclude": [
+        "api"
+      ]
+    },
     "rules": {
       "exclude": [
         "no-inner-declarations",

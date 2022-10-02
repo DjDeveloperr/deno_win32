@@ -747,60 +747,6 @@ export const IFED_REL_ALL = 24;
 // Structs
 
 /**
- * Windows.Win32.UI.Input.Ime.Apis (size: 80)
- */
-export interface Apis {
-  /** System.Guid */
-  CLSID_VERSION_DEPENDENT_MSIME_JAPANESE: Uint8Array | Deno.PointerValue | null;
-  /** System.Guid */
-  CATID_MSIME_IImePadApplet_VER7: Uint8Array | Deno.PointerValue | null;
-  /** System.Guid */
-  CATID_MSIME_IImePadApplet_VER80: Uint8Array | Deno.PointerValue | null;
-  /** System.Guid */
-  CATID_MSIME_IImePadApplet_VER81: Uint8Array | Deno.PointerValue | null;
-  /** System.Guid */
-  CATID_MSIME_IImePadApplet900: Uint8Array | Deno.PointerValue | null;
-  /** System.Guid */
-  CATID_MSIME_IImePadApplet1000: Uint8Array | Deno.PointerValue | null;
-  /** System.Guid */
-  CATID_MSIME_IImePadApplet1200: Uint8Array | Deno.PointerValue | null;
-  /** System.Guid */
-  CATID_MSIME_IImePadApplet: Uint8Array | Deno.PointerValue | null;
-  /** System.Guid */
-  CLSID_ImePlugInDictDictionaryList_CHS: Uint8Array | Deno.PointerValue | null;
-  /** System.Guid */
-  CLSID_ImePlugInDictDictionaryList_JPN: Uint8Array | Deno.PointerValue | null;
-}
-
-export const sizeofApis = 80;
-
-export function allocApis(data?: Partial<Apis>): Uint8Array {
-  const buf = new Uint8Array(sizeofApis);
-  const view = new DataView(buf.buffer);
-  // 0x00: pointer
-  if (data?.CLSID_VERSION_DEPENDENT_MSIME_JAPANESE !== undefined) view.setBigUint64(0, data.CLSID_VERSION_DEPENDENT_MSIME_JAPANESE === null ? 0n : BigInt(util.toPointer(data.CLSID_VERSION_DEPENDENT_MSIME_JAPANESE)), true);
-  // 0x08: pointer
-  if (data?.CATID_MSIME_IImePadApplet_VER7 !== undefined) view.setBigUint64(8, data.CATID_MSIME_IImePadApplet_VER7 === null ? 0n : BigInt(util.toPointer(data.CATID_MSIME_IImePadApplet_VER7)), true);
-  // 0x10: pointer
-  if (data?.CATID_MSIME_IImePadApplet_VER80 !== undefined) view.setBigUint64(16, data.CATID_MSIME_IImePadApplet_VER80 === null ? 0n : BigInt(util.toPointer(data.CATID_MSIME_IImePadApplet_VER80)), true);
-  // 0x18: pointer
-  if (data?.CATID_MSIME_IImePadApplet_VER81 !== undefined) view.setBigUint64(24, data.CATID_MSIME_IImePadApplet_VER81 === null ? 0n : BigInt(util.toPointer(data.CATID_MSIME_IImePadApplet_VER81)), true);
-  // 0x20: pointer
-  if (data?.CATID_MSIME_IImePadApplet900 !== undefined) view.setBigUint64(32, data.CATID_MSIME_IImePadApplet900 === null ? 0n : BigInt(util.toPointer(data.CATID_MSIME_IImePadApplet900)), true);
-  // 0x28: pointer
-  if (data?.CATID_MSIME_IImePadApplet1000 !== undefined) view.setBigUint64(40, data.CATID_MSIME_IImePadApplet1000 === null ? 0n : BigInt(util.toPointer(data.CATID_MSIME_IImePadApplet1000)), true);
-  // 0x30: pointer
-  if (data?.CATID_MSIME_IImePadApplet1200 !== undefined) view.setBigUint64(48, data.CATID_MSIME_IImePadApplet1200 === null ? 0n : BigInt(util.toPointer(data.CATID_MSIME_IImePadApplet1200)), true);
-  // 0x38: pointer
-  if (data?.CATID_MSIME_IImePadApplet !== undefined) view.setBigUint64(56, data.CATID_MSIME_IImePadApplet === null ? 0n : BigInt(util.toPointer(data.CATID_MSIME_IImePadApplet)), true);
-  // 0x40: pointer
-  if (data?.CLSID_ImePlugInDictDictionaryList_CHS !== undefined) view.setBigUint64(64, data.CLSID_ImePlugInDictDictionaryList_CHS === null ? 0n : BigInt(util.toPointer(data.CLSID_ImePlugInDictDictionaryList_CHS)), true);
-  // 0x48: pointer
-  if (data?.CLSID_ImePlugInDictDictionaryList_JPN !== undefined) view.setBigUint64(72, data.CLSID_ImePlugInDictDictionaryList_JPN === null ? 0n : BigInt(util.toPointer(data.CLSID_ImePlugInDictDictionaryList_JPN)), true);
-  return buf;
-}
-
-/**
  * Windows.Win32.Foundation.POINT (size: 8)
  */
 export interface POINT {

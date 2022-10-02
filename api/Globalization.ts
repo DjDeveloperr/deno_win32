@@ -3132,56 +3132,6 @@ export const ETO_REVERSE_INDEX_MAP = 65536;
 
 // Structs
 
-/**
- * Windows.Win32.Globalization.Apis (size: 72)
- */
-export interface Apis {
-  /** System.Guid */
-  ELS_GUID_LANGUAGE_DETECTION: Uint8Array | Deno.PointerValue | null;
-  /** System.Guid */
-  ELS_GUID_SCRIPT_DETECTION: Uint8Array | Deno.PointerValue | null;
-  /** System.Guid */
-  ELS_GUID_TRANSLITERATION_HANT_TO_HANS: Uint8Array | Deno.PointerValue | null;
-  /** System.Guid */
-  ELS_GUID_TRANSLITERATION_HANS_TO_HANT: Uint8Array | Deno.PointerValue | null;
-  /** System.Guid */
-  ELS_GUID_TRANSLITERATION_MALAYALAM_TO_LATIN: Uint8Array | Deno.PointerValue | null;
-  /** System.Guid */
-  ELS_GUID_TRANSLITERATION_DEVANAGARI_TO_LATIN: Uint8Array | Deno.PointerValue | null;
-  /** System.Guid */
-  ELS_GUID_TRANSLITERATION_CYRILLIC_TO_LATIN: Uint8Array | Deno.PointerValue | null;
-  /** System.Guid */
-  ELS_GUID_TRANSLITERATION_BENGALI_TO_LATIN: Uint8Array | Deno.PointerValue | null;
-  /** System.Guid */
-  ELS_GUID_TRANSLITERATION_HANGUL_DECOMPOSITION: Uint8Array | Deno.PointerValue | null;
-}
-
-export const sizeofApis = 72;
-
-export function allocApis(data?: Partial<Apis>): Uint8Array {
-  const buf = new Uint8Array(sizeofApis);
-  const view = new DataView(buf.buffer);
-  // 0x00: pointer
-  if (data?.ELS_GUID_LANGUAGE_DETECTION !== undefined) view.setBigUint64(0, data.ELS_GUID_LANGUAGE_DETECTION === null ? 0n : BigInt(util.toPointer(data.ELS_GUID_LANGUAGE_DETECTION)), true);
-  // 0x08: pointer
-  if (data?.ELS_GUID_SCRIPT_DETECTION !== undefined) view.setBigUint64(8, data.ELS_GUID_SCRIPT_DETECTION === null ? 0n : BigInt(util.toPointer(data.ELS_GUID_SCRIPT_DETECTION)), true);
-  // 0x10: pointer
-  if (data?.ELS_GUID_TRANSLITERATION_HANT_TO_HANS !== undefined) view.setBigUint64(16, data.ELS_GUID_TRANSLITERATION_HANT_TO_HANS === null ? 0n : BigInt(util.toPointer(data.ELS_GUID_TRANSLITERATION_HANT_TO_HANS)), true);
-  // 0x18: pointer
-  if (data?.ELS_GUID_TRANSLITERATION_HANS_TO_HANT !== undefined) view.setBigUint64(24, data.ELS_GUID_TRANSLITERATION_HANS_TO_HANT === null ? 0n : BigInt(util.toPointer(data.ELS_GUID_TRANSLITERATION_HANS_TO_HANT)), true);
-  // 0x20: pointer
-  if (data?.ELS_GUID_TRANSLITERATION_MALAYALAM_TO_LATIN !== undefined) view.setBigUint64(32, data.ELS_GUID_TRANSLITERATION_MALAYALAM_TO_LATIN === null ? 0n : BigInt(util.toPointer(data.ELS_GUID_TRANSLITERATION_MALAYALAM_TO_LATIN)), true);
-  // 0x28: pointer
-  if (data?.ELS_GUID_TRANSLITERATION_DEVANAGARI_TO_LATIN !== undefined) view.setBigUint64(40, data.ELS_GUID_TRANSLITERATION_DEVANAGARI_TO_LATIN === null ? 0n : BigInt(util.toPointer(data.ELS_GUID_TRANSLITERATION_DEVANAGARI_TO_LATIN)), true);
-  // 0x30: pointer
-  if (data?.ELS_GUID_TRANSLITERATION_CYRILLIC_TO_LATIN !== undefined) view.setBigUint64(48, data.ELS_GUID_TRANSLITERATION_CYRILLIC_TO_LATIN === null ? 0n : BigInt(util.toPointer(data.ELS_GUID_TRANSLITERATION_CYRILLIC_TO_LATIN)), true);
-  // 0x38: pointer
-  if (data?.ELS_GUID_TRANSLITERATION_BENGALI_TO_LATIN !== undefined) view.setBigUint64(56, data.ELS_GUID_TRANSLITERATION_BENGALI_TO_LATIN === null ? 0n : BigInt(util.toPointer(data.ELS_GUID_TRANSLITERATION_BENGALI_TO_LATIN)), true);
-  // 0x40: pointer
-  if (data?.ELS_GUID_TRANSLITERATION_HANGUL_DECOMPOSITION !== undefined) view.setBigUint64(64, data.ELS_GUID_TRANSLITERATION_HANGUL_DECOMPOSITION === null ? 0n : BigInt(util.toPointer(data.ELS_GUID_TRANSLITERATION_HANGUL_DECOMPOSITION)), true);
-  return buf;
-}
-
 export type HIMC = Deno.PointerValue;
 
 export type HIMCC = Deno.PointerValue;
@@ -11637,19 +11587,19 @@ export function IsNLSDefinedString(
 }
 
 export function GetNLSVersionEx(
-  cFunction: number /* u32 */,
+  function__: number /* u32 */,
   lpLocaleName: string | null /* Windows.Win32.Foundation.PWSTR */,
   lpVersionInformation: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32.GetNLSVersionEx(cFunction, util.pwstrToFfi(lpLocaleName), util.toPointer(lpVersionInformation)));
+  return util.boolFromFfi(libKERNEL32.GetNLSVersionEx(function__, util.pwstrToFfi(lpLocaleName), util.toPointer(lpVersionInformation)));
 }
 
 export function IsValidNLSVersion(
-  cFunction: number /* u32 */,
+  function__: number /* u32 */,
   lpLocaleName: string | null /* Windows.Win32.Foundation.PWSTR */,
   lpVersionInformation: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libKERNEL32.IsValidNLSVersion(cFunction, util.pwstrToFfi(lpLocaleName), util.toPointer(lpVersionInformation));
+  return libKERNEL32.IsValidNLSVersion(function__, util.pwstrToFfi(lpLocaleName), util.toPointer(lpVersionInformation));
 }
 
 export function FindNLSStringEx(

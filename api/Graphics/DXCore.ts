@@ -41,32 +41,6 @@ export const HighPerformance = 2;
 // Structs
 
 /**
- * Windows.Win32.Graphics.DXCore.Apis (size: 24)
- */
-export interface Apis {
-  /** System.Guid */
-  DXCORE_ADAPTER_ATTRIBUTE_D3D11_GRAPHICS: Uint8Array | Deno.PointerValue | null;
-  /** System.Guid */
-  DXCORE_ADAPTER_ATTRIBUTE_D3D12_GRAPHICS: Uint8Array | Deno.PointerValue | null;
-  /** System.Guid */
-  DXCORE_ADAPTER_ATTRIBUTE_D3D12_CORE_COMPUTE: Uint8Array | Deno.PointerValue | null;
-}
-
-export const sizeofApis = 24;
-
-export function allocApis(data?: Partial<Apis>): Uint8Array {
-  const buf = new Uint8Array(sizeofApis);
-  const view = new DataView(buf.buffer);
-  // 0x00: pointer
-  if (data?.DXCORE_ADAPTER_ATTRIBUTE_D3D11_GRAPHICS !== undefined) view.setBigUint64(0, data.DXCORE_ADAPTER_ATTRIBUTE_D3D11_GRAPHICS === null ? 0n : BigInt(util.toPointer(data.DXCORE_ADAPTER_ATTRIBUTE_D3D11_GRAPHICS)), true);
-  // 0x08: pointer
-  if (data?.DXCORE_ADAPTER_ATTRIBUTE_D3D12_GRAPHICS !== undefined) view.setBigUint64(8, data.DXCORE_ADAPTER_ATTRIBUTE_D3D12_GRAPHICS === null ? 0n : BigInt(util.toPointer(data.DXCORE_ADAPTER_ATTRIBUTE_D3D12_GRAPHICS)), true);
-  // 0x10: pointer
-  if (data?.DXCORE_ADAPTER_ATTRIBUTE_D3D12_CORE_COMPUTE !== undefined) view.setBigUint64(16, data.DXCORE_ADAPTER_ATTRIBUTE_D3D12_CORE_COMPUTE === null ? 0n : BigInt(util.toPointer(data.DXCORE_ADAPTER_ATTRIBUTE_D3D12_CORE_COMPUTE)), true);
-  return buf;
-}
-
-/**
  * Windows.Win32.Graphics.DXCore.DXCoreHardwareID (size: 16)
  */
 export interface DXCoreHardwareID {

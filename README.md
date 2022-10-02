@@ -33,6 +33,10 @@ Win32 API.
 deno run --allow-ffi --unstable <file>
 ```
 
+Note: It is highly recommended to import only APIs you need. Do not import from
+`mod.ts` as it will import all sub modules which you might not even need. WinAPI
+is huge, so are the bindings.
+
 ## Documentation
 
 Check out the complete API reference

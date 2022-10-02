@@ -219,28 +219,6 @@ export const LoginOptions = 7;
 // Structs
 
 /**
- * Windows.Win32.Storage.IscsiDisc.Apis (size: 16)
- */
-export interface Apis {
-  /** System.Guid */
-  ScsiRawInterfaceGuid: Uint8Array | Deno.PointerValue | null;
-  /** System.Guid */
-  WmiScsiAddressGuid: Uint8Array | Deno.PointerValue | null;
-}
-
-export const sizeofApis = 16;
-
-export function allocApis(data?: Partial<Apis>): Uint8Array {
-  const buf = new Uint8Array(sizeofApis);
-  const view = new DataView(buf.buffer);
-  // 0x00: pointer
-  if (data?.ScsiRawInterfaceGuid !== undefined) view.setBigUint64(0, data.ScsiRawInterfaceGuid === null ? 0n : BigInt(util.toPointer(data.ScsiRawInterfaceGuid)), true);
-  // 0x08: pointer
-  if (data?.WmiScsiAddressGuid !== undefined) view.setBigUint64(8, data.WmiScsiAddressGuid === null ? 0n : BigInt(util.toPointer(data.WmiScsiAddressGuid)), true);
-  return buf;
-}
-
-/**
  * Windows.Win32.Storage.IscsiDisc.SCSI_PASS_THROUGH (size: 48)
  */
 export interface SCSI_PASS_THROUGH {

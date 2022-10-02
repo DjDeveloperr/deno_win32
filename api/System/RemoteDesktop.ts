@@ -622,68 +622,6 @@ export const MB_MISCMASK = 49152;
 // Structs
 
 /**
- * Windows.Win32.System.RemoteDesktop.Apis (size: 96)
- */
-export interface Apis {
-  /** System.Guid */
-  RDCLIENT_BITMAP_RENDER_SERVICE: Uint8Array | Deno.PointerValue | null;
-  /** System.Guid */
-  WTS_QUERY_ALLOWED_INITIAL_APP: Uint8Array | Deno.PointerValue | null;
-  /** System.Guid */
-  WTS_QUERY_LOGON_SCREEN_SIZE: Uint8Array | Deno.PointerValue | null;
-  /** System.Guid */
-  WTS_QUERY_AUDIOENUM_DLL: Uint8Array | Deno.PointerValue | null;
-  /** System.Guid */
-  WTS_QUERY_MF_FORMAT_SUPPORT: Uint8Array | Deno.PointerValue | null;
-  /** System.Guid */
-  WRDS_SERVICE_ID_GRAPHICS_GUID: Uint8Array | Deno.PointerValue | null;
-  /** System.Guid */
-  PROPERTY_DYNAMIC_TIME_ZONE_INFORMATION: Uint8Array | Deno.PointerValue | null;
-  /** System.Guid */
-  PROPERTY_TYPE_GET_FAST_RECONNECT: Uint8Array | Deno.PointerValue | null;
-  /** System.Guid */
-  PROPERTY_TYPE_GET_FAST_RECONNECT_USER_SID: Uint8Array | Deno.PointerValue | null;
-  /** System.Guid */
-  PROPERTY_TYPE_ENABLE_UNIVERSAL_APPS_FOR_CUSTOM_SHELL: Uint8Array | Deno.PointerValue | null;
-  /** System.Guid */
-  CONNECTION_PROPERTY_IDLE_TIME_WARNING: Uint8Array | Deno.PointerValue | null;
-  /** System.Guid */
-  CONNECTION_PROPERTY_CURSOR_BLINK_DISABLED: Uint8Array | Deno.PointerValue | null;
-}
-
-export const sizeofApis = 96;
-
-export function allocApis(data?: Partial<Apis>): Uint8Array {
-  const buf = new Uint8Array(sizeofApis);
-  const view = new DataView(buf.buffer);
-  // 0x00: pointer
-  if (data?.RDCLIENT_BITMAP_RENDER_SERVICE !== undefined) view.setBigUint64(0, data.RDCLIENT_BITMAP_RENDER_SERVICE === null ? 0n : BigInt(util.toPointer(data.RDCLIENT_BITMAP_RENDER_SERVICE)), true);
-  // 0x08: pointer
-  if (data?.WTS_QUERY_ALLOWED_INITIAL_APP !== undefined) view.setBigUint64(8, data.WTS_QUERY_ALLOWED_INITIAL_APP === null ? 0n : BigInt(util.toPointer(data.WTS_QUERY_ALLOWED_INITIAL_APP)), true);
-  // 0x10: pointer
-  if (data?.WTS_QUERY_LOGON_SCREEN_SIZE !== undefined) view.setBigUint64(16, data.WTS_QUERY_LOGON_SCREEN_SIZE === null ? 0n : BigInt(util.toPointer(data.WTS_QUERY_LOGON_SCREEN_SIZE)), true);
-  // 0x18: pointer
-  if (data?.WTS_QUERY_AUDIOENUM_DLL !== undefined) view.setBigUint64(24, data.WTS_QUERY_AUDIOENUM_DLL === null ? 0n : BigInt(util.toPointer(data.WTS_QUERY_AUDIOENUM_DLL)), true);
-  // 0x20: pointer
-  if (data?.WTS_QUERY_MF_FORMAT_SUPPORT !== undefined) view.setBigUint64(32, data.WTS_QUERY_MF_FORMAT_SUPPORT === null ? 0n : BigInt(util.toPointer(data.WTS_QUERY_MF_FORMAT_SUPPORT)), true);
-  // 0x28: pointer
-  if (data?.WRDS_SERVICE_ID_GRAPHICS_GUID !== undefined) view.setBigUint64(40, data.WRDS_SERVICE_ID_GRAPHICS_GUID === null ? 0n : BigInt(util.toPointer(data.WRDS_SERVICE_ID_GRAPHICS_GUID)), true);
-  // 0x30: pointer
-  if (data?.PROPERTY_DYNAMIC_TIME_ZONE_INFORMATION !== undefined) view.setBigUint64(48, data.PROPERTY_DYNAMIC_TIME_ZONE_INFORMATION === null ? 0n : BigInt(util.toPointer(data.PROPERTY_DYNAMIC_TIME_ZONE_INFORMATION)), true);
-  // 0x38: pointer
-  if (data?.PROPERTY_TYPE_GET_FAST_RECONNECT !== undefined) view.setBigUint64(56, data.PROPERTY_TYPE_GET_FAST_RECONNECT === null ? 0n : BigInt(util.toPointer(data.PROPERTY_TYPE_GET_FAST_RECONNECT)), true);
-  // 0x40: pointer
-  if (data?.PROPERTY_TYPE_GET_FAST_RECONNECT_USER_SID !== undefined) view.setBigUint64(64, data.PROPERTY_TYPE_GET_FAST_RECONNECT_USER_SID === null ? 0n : BigInt(util.toPointer(data.PROPERTY_TYPE_GET_FAST_RECONNECT_USER_SID)), true);
-  // 0x48: pointer
-  if (data?.PROPERTY_TYPE_ENABLE_UNIVERSAL_APPS_FOR_CUSTOM_SHELL !== undefined) view.setBigUint64(72, data.PROPERTY_TYPE_ENABLE_UNIVERSAL_APPS_FOR_CUSTOM_SHELL === null ? 0n : BigInt(util.toPointer(data.PROPERTY_TYPE_ENABLE_UNIVERSAL_APPS_FOR_CUSTOM_SHELL)), true);
-  // 0x50: pointer
-  if (data?.CONNECTION_PROPERTY_IDLE_TIME_WARNING !== undefined) view.setBigUint64(80, data.CONNECTION_PROPERTY_IDLE_TIME_WARNING === null ? 0n : BigInt(util.toPointer(data.CONNECTION_PROPERTY_IDLE_TIME_WARNING)), true);
-  // 0x58: pointer
-  if (data?.CONNECTION_PROPERTY_CURSOR_BLINK_DISABLED !== undefined) view.setBigUint64(88, data.CONNECTION_PROPERTY_CURSOR_BLINK_DISABLED === null ? 0n : BigInt(util.toPointer(data.CONNECTION_PROPERTY_CURSOR_BLINK_DISABLED)), true);
-  return buf;
-}
-
-/**
  * Windows.Win32.System.RemoteDesktop.AE_CURRENT_POSITION (size: 40)
  */
 export interface AE_CURRENT_POSITION {

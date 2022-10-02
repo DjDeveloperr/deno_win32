@@ -50,24 +50,6 @@ export const ED_VIDEO = 33554432;
 
 // Structs
 
-/**
- * Windows.Win32.Devices.DeviceAccess.Apis (size: 8)
- */
-export interface Apis {
-  /** System.Guid */
-  CLSID_DeviceIoControl: Uint8Array | Deno.PointerValue | null;
-}
-
-export const sizeofApis = 8;
-
-export function allocApis(data?: Partial<Apis>): Uint8Array {
-  const buf = new Uint8Array(sizeofApis);
-  const view = new DataView(buf.buffer);
-  // 0x00: pointer
-  if (data?.CLSID_DeviceIoControl !== undefined) view.setBigUint64(0, data.CLSID_DeviceIoControl === null ? 0n : BigInt(util.toPointer(data.CLSID_DeviceIoControl)), true);
-  return buf;
-}
-
 export type PWSTR = Deno.PointerValue | Uint8Array | null;
 
 export type HRESULT = number;

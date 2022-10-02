@@ -269,32 +269,6 @@ export const PrintDocumentPackageCompletion_Failed = 3;
 
 // Structs
 
-/**
- * Windows.Win32.Storage.Xps.Printing.Apis (size: 24)
- */
-export interface Apis {
-  /** System.Guid */
-  ID_DOCUMENTPACKAGETARGET_MSXPS: Uint8Array | Deno.PointerValue | null;
-  /** System.Guid */
-  ID_DOCUMENTPACKAGETARGET_OPENXPS: Uint8Array | Deno.PointerValue | null;
-  /** System.Guid */
-  ID_DOCUMENTPACKAGETARGET_OPENXPS_WITH_3D: Uint8Array | Deno.PointerValue | null;
-}
-
-export const sizeofApis = 24;
-
-export function allocApis(data?: Partial<Apis>): Uint8Array {
-  const buf = new Uint8Array(sizeofApis);
-  const view = new DataView(buf.buffer);
-  // 0x00: pointer
-  if (data?.ID_DOCUMENTPACKAGETARGET_MSXPS !== undefined) view.setBigUint64(0, data.ID_DOCUMENTPACKAGETARGET_MSXPS === null ? 0n : BigInt(util.toPointer(data.ID_DOCUMENTPACKAGETARGET_MSXPS)), true);
-  // 0x08: pointer
-  if (data?.ID_DOCUMENTPACKAGETARGET_OPENXPS !== undefined) view.setBigUint64(8, data.ID_DOCUMENTPACKAGETARGET_OPENXPS === null ? 0n : BigInt(util.toPointer(data.ID_DOCUMENTPACKAGETARGET_OPENXPS)), true);
-  // 0x10: pointer
-  if (data?.ID_DOCUMENTPACKAGETARGET_OPENXPS_WITH_3D !== undefined) view.setBigUint64(16, data.ID_DOCUMENTPACKAGETARGET_OPENXPS_WITH_3D === null ? 0n : BigInt(util.toPointer(data.ID_DOCUMENTPACKAGETARGET_OPENXPS_WITH_3D)), true);
-  return buf;
-}
-
 export type HPTPROVIDER = Deno.PointerValue;
 
 /**

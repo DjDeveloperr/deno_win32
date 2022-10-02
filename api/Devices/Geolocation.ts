@@ -146,24 +146,6 @@ export const GNSS_Ni_UserResponseTimeout = 3;
 // Structs
 
 /**
- * Windows.Win32.Devices.Geolocation.Apis (size: 8)
- */
-export interface Apis {
-  /** System.Guid */
-  GUID_DEVINTERFACE_GNSS: Uint8Array | Deno.PointerValue | null;
-}
-
-export const sizeofApis = 8;
-
-export function allocApis(data?: Partial<Apis>): Uint8Array {
-  const buf = new Uint8Array(sizeofApis);
-  const view = new DataView(buf.buffer);
-  // 0x00: pointer
-  if (data?.GUID_DEVINTERFACE_GNSS !== undefined) view.setBigUint64(0, data.GUID_DEVINTERFACE_GNSS === null ? 0n : BigInt(util.toPointer(data.GUID_DEVINTERFACE_GNSS)), true);
-  return buf;
-}
-
-/**
  * Windows.Win32.Devices.Geolocation.GNSS_SUPL_VERSION (size: 8)
  */
 export interface GNSS_SUPL_VERSION {

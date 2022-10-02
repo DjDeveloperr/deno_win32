@@ -35,64 +35,6 @@ export const DXC_OUT_FORCE_DWORD = "-1";
 // Structs
 
 /**
- * Windows.Win32.Graphics.Direct3D.Dxc.Apis (size: 88)
- */
-export interface Apis {
-  /** System.Guid */
-  CLSID_DxcCompiler: Uint8Array | Deno.PointerValue | null;
-  /** System.Guid */
-  CLSID_DxcLinker: Uint8Array | Deno.PointerValue | null;
-  /** System.Guid */
-  CLSID_DxcDiaDataSource: Uint8Array | Deno.PointerValue | null;
-  /** System.Guid */
-  CLSID_DxcCompilerArgs: Uint8Array | Deno.PointerValue | null;
-  /** System.Guid */
-  CLSID_DxcLibrary: Uint8Array | Deno.PointerValue | null;
-  /** System.Guid */
-  CLSID_DxcValidator: Uint8Array | Deno.PointerValue | null;
-  /** System.Guid */
-  CLSID_DxcAssembler: Uint8Array | Deno.PointerValue | null;
-  /** System.Guid */
-  CLSID_DxcContainerReflection: Uint8Array | Deno.PointerValue | null;
-  /** System.Guid */
-  CLSID_DxcOptimizer: Uint8Array | Deno.PointerValue | null;
-  /** System.Guid */
-  CLSID_DxcContainerBuilder: Uint8Array | Deno.PointerValue | null;
-  /** System.Guid */
-  CLSID_DxcPdbUtils: Uint8Array | Deno.PointerValue | null;
-}
-
-export const sizeofApis = 88;
-
-export function allocApis(data?: Partial<Apis>): Uint8Array {
-  const buf = new Uint8Array(sizeofApis);
-  const view = new DataView(buf.buffer);
-  // 0x00: pointer
-  if (data?.CLSID_DxcCompiler !== undefined) view.setBigUint64(0, data.CLSID_DxcCompiler === null ? 0n : BigInt(util.toPointer(data.CLSID_DxcCompiler)), true);
-  // 0x08: pointer
-  if (data?.CLSID_DxcLinker !== undefined) view.setBigUint64(8, data.CLSID_DxcLinker === null ? 0n : BigInt(util.toPointer(data.CLSID_DxcLinker)), true);
-  // 0x10: pointer
-  if (data?.CLSID_DxcDiaDataSource !== undefined) view.setBigUint64(16, data.CLSID_DxcDiaDataSource === null ? 0n : BigInt(util.toPointer(data.CLSID_DxcDiaDataSource)), true);
-  // 0x18: pointer
-  if (data?.CLSID_DxcCompilerArgs !== undefined) view.setBigUint64(24, data.CLSID_DxcCompilerArgs === null ? 0n : BigInt(util.toPointer(data.CLSID_DxcCompilerArgs)), true);
-  // 0x20: pointer
-  if (data?.CLSID_DxcLibrary !== undefined) view.setBigUint64(32, data.CLSID_DxcLibrary === null ? 0n : BigInt(util.toPointer(data.CLSID_DxcLibrary)), true);
-  // 0x28: pointer
-  if (data?.CLSID_DxcValidator !== undefined) view.setBigUint64(40, data.CLSID_DxcValidator === null ? 0n : BigInt(util.toPointer(data.CLSID_DxcValidator)), true);
-  // 0x30: pointer
-  if (data?.CLSID_DxcAssembler !== undefined) view.setBigUint64(48, data.CLSID_DxcAssembler === null ? 0n : BigInt(util.toPointer(data.CLSID_DxcAssembler)), true);
-  // 0x38: pointer
-  if (data?.CLSID_DxcContainerReflection !== undefined) view.setBigUint64(56, data.CLSID_DxcContainerReflection === null ? 0n : BigInt(util.toPointer(data.CLSID_DxcContainerReflection)), true);
-  // 0x40: pointer
-  if (data?.CLSID_DxcOptimizer !== undefined) view.setBigUint64(64, data.CLSID_DxcOptimizer === null ? 0n : BigInt(util.toPointer(data.CLSID_DxcOptimizer)), true);
-  // 0x48: pointer
-  if (data?.CLSID_DxcContainerBuilder !== undefined) view.setBigUint64(72, data.CLSID_DxcContainerBuilder === null ? 0n : BigInt(util.toPointer(data.CLSID_DxcContainerBuilder)), true);
-  // 0x50: pointer
-  if (data?.CLSID_DxcPdbUtils !== undefined) view.setBigUint64(80, data.CLSID_DxcPdbUtils === null ? 0n : BigInt(util.toPointer(data.CLSID_DxcPdbUtils)), true);
-  return buf;
-}
-
-/**
  * Windows.Win32.Graphics.Direct3D.Dxc.DxcShaderHash (size: 16)
  */
 export interface DxcShaderHash {

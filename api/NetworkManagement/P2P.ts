@@ -289,56 +289,6 @@ export const MaximumPeerDistClientInfoByHandlesClass = 1;
 // Structs
 
 /**
- * Windows.Win32.NetworkManagement.P2P.Apis (size: 72)
- */
-export interface Apis {
-  /** System.Guid */
-  NS_PROVIDER_PNRPNAME: Uint8Array | Deno.PointerValue | null;
-  /** System.Guid */
-  NS_PROVIDER_PNRPCLOUD: Uint8Array | Deno.PointerValue | null;
-  /** System.Guid */
-  SVCID_PNRPCLOUD: Uint8Array | Deno.PointerValue | null;
-  /** System.Guid */
-  SVCID_PNRPNAME_V1: Uint8Array | Deno.PointerValue | null;
-  /** System.Guid */
-  SVCID_PNRPNAME_V2: Uint8Array | Deno.PointerValue | null;
-  /** System.Guid */
-  PEER_GROUP_ROLE_ADMIN: Uint8Array | Deno.PointerValue | null;
-  /** System.Guid */
-  PEER_GROUP_ROLE_MEMBER: Uint8Array | Deno.PointerValue | null;
-  /** System.Guid */
-  PEER_GROUP_ROLE_INVITING_MEMBER: Uint8Array | Deno.PointerValue | null;
-  /** System.Guid */
-  PEER_COLLAB_OBJECTID_USER_PICTURE: Uint8Array | Deno.PointerValue | null;
-}
-
-export const sizeofApis = 72;
-
-export function allocApis(data?: Partial<Apis>): Uint8Array {
-  const buf = new Uint8Array(sizeofApis);
-  const view = new DataView(buf.buffer);
-  // 0x00: pointer
-  if (data?.NS_PROVIDER_PNRPNAME !== undefined) view.setBigUint64(0, data.NS_PROVIDER_PNRPNAME === null ? 0n : BigInt(util.toPointer(data.NS_PROVIDER_PNRPNAME)), true);
-  // 0x08: pointer
-  if (data?.NS_PROVIDER_PNRPCLOUD !== undefined) view.setBigUint64(8, data.NS_PROVIDER_PNRPCLOUD === null ? 0n : BigInt(util.toPointer(data.NS_PROVIDER_PNRPCLOUD)), true);
-  // 0x10: pointer
-  if (data?.SVCID_PNRPCLOUD !== undefined) view.setBigUint64(16, data.SVCID_PNRPCLOUD === null ? 0n : BigInt(util.toPointer(data.SVCID_PNRPCLOUD)), true);
-  // 0x18: pointer
-  if (data?.SVCID_PNRPNAME_V1 !== undefined) view.setBigUint64(24, data.SVCID_PNRPNAME_V1 === null ? 0n : BigInt(util.toPointer(data.SVCID_PNRPNAME_V1)), true);
-  // 0x20: pointer
-  if (data?.SVCID_PNRPNAME_V2 !== undefined) view.setBigUint64(32, data.SVCID_PNRPNAME_V2 === null ? 0n : BigInt(util.toPointer(data.SVCID_PNRPNAME_V2)), true);
-  // 0x28: pointer
-  if (data?.PEER_GROUP_ROLE_ADMIN !== undefined) view.setBigUint64(40, data.PEER_GROUP_ROLE_ADMIN === null ? 0n : BigInt(util.toPointer(data.PEER_GROUP_ROLE_ADMIN)), true);
-  // 0x30: pointer
-  if (data?.PEER_GROUP_ROLE_MEMBER !== undefined) view.setBigUint64(48, data.PEER_GROUP_ROLE_MEMBER === null ? 0n : BigInt(util.toPointer(data.PEER_GROUP_ROLE_MEMBER)), true);
-  // 0x38: pointer
-  if (data?.PEER_GROUP_ROLE_INVITING_MEMBER !== undefined) view.setBigUint64(56, data.PEER_GROUP_ROLE_INVITING_MEMBER === null ? 0n : BigInt(util.toPointer(data.PEER_GROUP_ROLE_INVITING_MEMBER)), true);
-  // 0x40: pointer
-  if (data?.PEER_COLLAB_OBJECTID_USER_PICTURE !== undefined) view.setBigUint64(64, data.PEER_COLLAB_OBJECTID_USER_PICTURE === null ? 0n : BigInt(util.toPointer(data.PEER_COLLAB_OBJECTID_USER_PICTURE)), true);
-  return buf;
-}
-
-/**
  * Windows.Win32.NetworkManagement.P2P.PNRP_CLOUD_ID (size: 16)
  */
 export interface PNRP_CLOUD_ID {

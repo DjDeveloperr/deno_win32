@@ -1112,44 +1112,6 @@ export const ACTCTX_COMPATIBILITY_ELEMENT_TYPE_MAXVERSIONTESTED = 3;
 
 // Structs
 
-/**
- * Windows.Win32.System.ApplicationInstallationAndServicing.Apis (size: 48)
- */
-export interface Apis {
-  /** System.Guid */
-  CLSID_EvalCom2: Uint8Array | Deno.PointerValue | null;
-  /** System.Guid */
-  LIBID_MsmMergeTypeLib: Uint8Array | Deno.PointerValue | null;
-  /** System.Guid */
-  CLSID_MsmMerge2: Uint8Array | Deno.PointerValue | null;
-  /** System.Guid */
-  FUSION_REFCOUNT_UNINSTALL_SUBKEY_GUID: Uint8Array | Deno.PointerValue | null;
-  /** System.Guid */
-  FUSION_REFCOUNT_FILEPATH_GUID: Uint8Array | Deno.PointerValue | null;
-  /** System.Guid */
-  FUSION_REFCOUNT_OPAQUE_STRING_GUID: Uint8Array | Deno.PointerValue | null;
-}
-
-export const sizeofApis = 48;
-
-export function allocApis(data?: Partial<Apis>): Uint8Array {
-  const buf = new Uint8Array(sizeofApis);
-  const view = new DataView(buf.buffer);
-  // 0x00: pointer
-  if (data?.CLSID_EvalCom2 !== undefined) view.setBigUint64(0, data.CLSID_EvalCom2 === null ? 0n : BigInt(util.toPointer(data.CLSID_EvalCom2)), true);
-  // 0x08: pointer
-  if (data?.LIBID_MsmMergeTypeLib !== undefined) view.setBigUint64(8, data.LIBID_MsmMergeTypeLib === null ? 0n : BigInt(util.toPointer(data.LIBID_MsmMergeTypeLib)), true);
-  // 0x10: pointer
-  if (data?.CLSID_MsmMerge2 !== undefined) view.setBigUint64(16, data.CLSID_MsmMerge2 === null ? 0n : BigInt(util.toPointer(data.CLSID_MsmMerge2)), true);
-  // 0x18: pointer
-  if (data?.FUSION_REFCOUNT_UNINSTALL_SUBKEY_GUID !== undefined) view.setBigUint64(24, data.FUSION_REFCOUNT_UNINSTALL_SUBKEY_GUID === null ? 0n : BigInt(util.toPointer(data.FUSION_REFCOUNT_UNINSTALL_SUBKEY_GUID)), true);
-  // 0x20: pointer
-  if (data?.FUSION_REFCOUNT_FILEPATH_GUID !== undefined) view.setBigUint64(32, data.FUSION_REFCOUNT_FILEPATH_GUID === null ? 0n : BigInt(util.toPointer(data.FUSION_REFCOUNT_FILEPATH_GUID)), true);
-  // 0x28: pointer
-  if (data?.FUSION_REFCOUNT_OPAQUE_STRING_GUID !== undefined) view.setBigUint64(40, data.FUSION_REFCOUNT_OPAQUE_STRING_GUID === null ? 0n : BigInt(util.toPointer(data.FUSION_REFCOUNT_OPAQUE_STRING_GUID)), true);
-  return buf;
-}
-
 export type MSIHANDLE = number;
 
 /**

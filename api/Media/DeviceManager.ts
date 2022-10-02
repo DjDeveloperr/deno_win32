@@ -403,56 +403,6 @@ export const WMDM_MSG_MEDIA_REMOVAL = 3;
 
 // Structs
 
-/**
- * Windows.Win32.Media.DeviceManager.Apis (size: 72)
- */
-export interface Apis {
-  /** System.Guid */
-  WMDM_DEVICE_PROTOCOL_MTP: Uint8Array | Deno.PointerValue | null;
-  /** System.Guid */
-  WMDM_DEVICE_PROTOCOL_RAPI: Uint8Array | Deno.PointerValue | null;
-  /** System.Guid */
-  WMDM_DEVICE_PROTOCOL_MSC: Uint8Array | Deno.PointerValue | null;
-  /** System.Guid */
-  WMDM_SERVICE_PROVIDER_VENDOR_MICROSOFT: Uint8Array | Deno.PointerValue | null;
-  /** System.Guid */
-  SCP_EVENTID_ACQSECURECLOCK: Uint8Array | Deno.PointerValue | null;
-  /** System.Guid */
-  SCP_EVENTID_NEEDTOINDIV: Uint8Array | Deno.PointerValue | null;
-  /** System.Guid */
-  SCP_EVENTID_DRMINFO: Uint8Array | Deno.PointerValue | null;
-  /** System.Guid */
-  SCP_PARAMID_DRMVERSION: Uint8Array | Deno.PointerValue | null;
-  /** System.Guid */
-  EVENT_WMDM_CONTENT_TRANSFER: Uint8Array | Deno.PointerValue | null;
-}
-
-export const sizeofApis = 72;
-
-export function allocApis(data?: Partial<Apis>): Uint8Array {
-  const buf = new Uint8Array(sizeofApis);
-  const view = new DataView(buf.buffer);
-  // 0x00: pointer
-  if (data?.WMDM_DEVICE_PROTOCOL_MTP !== undefined) view.setBigUint64(0, data.WMDM_DEVICE_PROTOCOL_MTP === null ? 0n : BigInt(util.toPointer(data.WMDM_DEVICE_PROTOCOL_MTP)), true);
-  // 0x08: pointer
-  if (data?.WMDM_DEVICE_PROTOCOL_RAPI !== undefined) view.setBigUint64(8, data.WMDM_DEVICE_PROTOCOL_RAPI === null ? 0n : BigInt(util.toPointer(data.WMDM_DEVICE_PROTOCOL_RAPI)), true);
-  // 0x10: pointer
-  if (data?.WMDM_DEVICE_PROTOCOL_MSC !== undefined) view.setBigUint64(16, data.WMDM_DEVICE_PROTOCOL_MSC === null ? 0n : BigInt(util.toPointer(data.WMDM_DEVICE_PROTOCOL_MSC)), true);
-  // 0x18: pointer
-  if (data?.WMDM_SERVICE_PROVIDER_VENDOR_MICROSOFT !== undefined) view.setBigUint64(24, data.WMDM_SERVICE_PROVIDER_VENDOR_MICROSOFT === null ? 0n : BigInt(util.toPointer(data.WMDM_SERVICE_PROVIDER_VENDOR_MICROSOFT)), true);
-  // 0x20: pointer
-  if (data?.SCP_EVENTID_ACQSECURECLOCK !== undefined) view.setBigUint64(32, data.SCP_EVENTID_ACQSECURECLOCK === null ? 0n : BigInt(util.toPointer(data.SCP_EVENTID_ACQSECURECLOCK)), true);
-  // 0x28: pointer
-  if (data?.SCP_EVENTID_NEEDTOINDIV !== undefined) view.setBigUint64(40, data.SCP_EVENTID_NEEDTOINDIV === null ? 0n : BigInt(util.toPointer(data.SCP_EVENTID_NEEDTOINDIV)), true);
-  // 0x30: pointer
-  if (data?.SCP_EVENTID_DRMINFO !== undefined) view.setBigUint64(48, data.SCP_EVENTID_DRMINFO === null ? 0n : BigInt(util.toPointer(data.SCP_EVENTID_DRMINFO)), true);
-  // 0x38: pointer
-  if (data?.SCP_PARAMID_DRMVERSION !== undefined) view.setBigUint64(56, data.SCP_PARAMID_DRMVERSION === null ? 0n : BigInt(util.toPointer(data.SCP_PARAMID_DRMVERSION)), true);
-  // 0x40: pointer
-  if (data?.EVENT_WMDM_CONTENT_TRANSFER !== undefined) view.setBigUint64(64, data.EVENT_WMDM_CONTENT_TRANSFER === null ? 0n : BigInt(util.toPointer(data.EVENT_WMDM_CONTENT_TRANSFER)), true);
-  return buf;
-}
-
 export type BOOL = number;
 
 /**

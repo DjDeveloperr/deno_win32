@@ -702,24 +702,6 @@ export const WLDP_POLICY_SETTING_AV_PERF_MODE = 1000;
 
 // Structs
 
-/**
- * Windows.Win32.System.WindowsProgramming.Apis (size: 8)
- */
-export interface Apis {
-  /** System.Guid */
-  CATID_DeleteBrowsingHistory: Uint8Array | Deno.PointerValue | null;
-}
-
-export const sizeofApis = 8;
-
-export function allocApis(data?: Partial<Apis>): Uint8Array {
-  const buf = new Uint8Array(sizeofApis);
-  const view = new DataView(buf.buffer);
-  // 0x00: pointer
-  if (data?.CATID_DeleteBrowsingHistory !== undefined) view.setBigUint64(0, data.CATID_DeleteBrowsingHistory === null ? 0n : BigInt(util.toPointer(data.CATID_DeleteBrowsingHistory)), true);
-  return buf;
-}
-
 export type HWINWATCH = Deno.PointerValue;
 
 export type FEATURE_STATE_CHANGE_SUBSCRIPTION = Deno.PointerValue;

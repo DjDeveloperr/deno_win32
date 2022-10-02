@@ -572,24 +572,6 @@ export const usoNonVolatileService = 1;
 
 // Structs
 
-/**
- * Windows.Win32.System.UpdateAgent.Apis (size: 8)
- */
-export interface Apis {
-  /** System.Guid */
-  LIBID_WUApiLib: Uint8Array | Deno.PointerValue | null;
-}
-
-export const sizeofApis = 8;
-
-export function allocApis(data?: Partial<Apis>): Uint8Array {
-  const buf = new Uint8Array(sizeofApis);
-  const view = new DataView(buf.buffer);
-  // 0x00: pointer
-  if (data?.LIBID_WUApiLib !== undefined) view.setBigUint64(0, data.LIBID_WUApiLib === null ? 0n : BigInt(util.toPointer(data.LIBID_WUApiLib)), true);
-  return buf;
-}
-
 // Native Libraries
 
 // Symbols

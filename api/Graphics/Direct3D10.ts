@@ -1641,28 +1641,6 @@ export const D3D10_SHADER_DEBUG_VAR_FORCE_DWORD = 2147483647;
 
 // Structs
 
-/**
- * Windows.Win32.Graphics.Direct3D10.Apis (size: 16)
- */
-export interface Apis {
-  /** System.Guid */
-  DXGI_DEBUG_D3D10: Uint8Array | Deno.PointerValue | null;
-  /** System.Guid */
-  GUID_DeviceType: Uint8Array | Deno.PointerValue | null;
-}
-
-export const sizeofApis = 16;
-
-export function allocApis(data?: Partial<Apis>): Uint8Array {
-  const buf = new Uint8Array(sizeofApis);
-  const view = new DataView(buf.buffer);
-  // 0x00: pointer
-  if (data?.DXGI_DEBUG_D3D10 !== undefined) view.setBigUint64(0, data.DXGI_DEBUG_D3D10 === null ? 0n : BigInt(util.toPointer(data.DXGI_DEBUG_D3D10)), true);
-  // 0x08: pointer
-  if (data?.GUID_DeviceType !== undefined) view.setBigUint64(8, data.GUID_DeviceType === null ? 0n : BigInt(util.toPointer(data.GUID_DeviceType)), true);
-  return buf;
-}
-
 export type PSTR = Deno.PointerValue | Uint8Array | null;
 
 /**

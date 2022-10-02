@@ -170,24 +170,6 @@ export const MAXLENGTH_UICCDATASTORE = 10;
 // Structs
 
 /**
- * Windows.Win32.Devices.Communication.Apis (size: 8)
- */
-export interface Apis {
-  /** System.Guid */
-  SID_3GPP_SUPSVCMODEL: Uint8Array | Deno.PointerValue | null;
-}
-
-export const sizeofApis = 8;
-
-export function allocApis(data?: Partial<Apis>): Uint8Array {
-  const buf = new Uint8Array(sizeofApis);
-  const view = new DataView(buf.buffer);
-  // 0x00: pointer
-  if (data?.SID_3GPP_SUPSVCMODEL !== undefined) view.setBigUint64(0, data.SID_3GPP_SUPSVCMODEL === null ? 0n : BigInt(util.toPointer(data.SID_3GPP_SUPSVCMODEL)), true);
-  return buf;
-}
-
-/**
  * Windows.Win32.Devices.Communication.MODEMDEVCAPS (size: 88)
  */
 export interface MODEMDEVCAPS {

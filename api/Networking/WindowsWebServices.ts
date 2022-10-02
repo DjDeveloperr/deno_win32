@@ -2521,7 +2521,7 @@ export function allocWS_ASYNC_STATE(data?: Partial<WS_ASYNC_STATE>): Uint8Array 
  */
 export interface WS_ASYNC_OPERATION {
   /** Windows.Win32.Networking.WindowsWebServices.WS_ASYNC_FUNCTION */
-  function: Uint8Array | Deno.PointerValue | null;
+  function__: Uint8Array | Deno.PointerValue | null;
 }
 
 export const sizeofWS_ASYNC_OPERATION = 8;
@@ -2530,7 +2530,7 @@ export function allocWS_ASYNC_OPERATION(data?: Partial<WS_ASYNC_OPERATION>): Uin
   const buf = new Uint8Array(sizeofWS_ASYNC_OPERATION);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.function !== undefined) view.setBigUint64(0, data.function === null ? 0n : BigInt(util.toPointer(data.function)), true);
+  if (data?.function__ !== undefined) view.setBigUint64(0, data.function__ === null ? 0n : BigInt(util.toPointer(data.function__)), true);
   return buf;
 }
 

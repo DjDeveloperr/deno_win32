@@ -145,32 +145,6 @@ export const _XmlWriterProperty_Last = 5;
 
 // Structs
 
-/**
- * Windows.Win32.Data.Xml.XmlLite.Apis (size: 24)
- */
-export interface Apis {
-  /** System.Guid */
-  _IID_IXmlReader: Uint8Array | Deno.PointerValue | null;
-  /** System.Guid */
-  _IID_IXmlWriter: Uint8Array | Deno.PointerValue | null;
-  /** System.Guid */
-  _IID_IXmlResolver: Uint8Array | Deno.PointerValue | null;
-}
-
-export const sizeofApis = 24;
-
-export function allocApis(data?: Partial<Apis>): Uint8Array {
-  const buf = new Uint8Array(sizeofApis);
-  const view = new DataView(buf.buffer);
-  // 0x00: pointer
-  if (data?._IID_IXmlReader !== undefined) view.setBigUint64(0, data._IID_IXmlReader === null ? 0n : BigInt(util.toPointer(data._IID_IXmlReader)), true);
-  // 0x08: pointer
-  if (data?._IID_IXmlWriter !== undefined) view.setBigUint64(8, data._IID_IXmlWriter === null ? 0n : BigInt(util.toPointer(data._IID_IXmlWriter)), true);
-  // 0x10: pointer
-  if (data?._IID_IXmlResolver !== undefined) view.setBigUint64(16, data._IID_IXmlResolver === null ? 0n : BigInt(util.toPointer(data._IID_IXmlResolver)), true);
-  return buf;
-}
-
 export type HRESULT = number;
 
 export type BOOL = number;

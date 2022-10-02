@@ -981,56 +981,6 @@ export function allocPROPERTYKEY(data?: Partial<PROPERTYKEY>): Uint8Array {
   return buf;
 }
 
-/**
- * Windows.Win32.Devices.Display.Apis (size: 72)
- */
-export interface Apis {
-  /** System.Guid */
-  GUID_DEVINTERFACE_DISPLAY_ADAPTER: Uint8Array | Deno.PointerValue | null;
-  /** System.Guid */
-  GUID_DEVINTERFACE_MONITOR: Uint8Array | Deno.PointerValue | null;
-  /** System.Guid */
-  GUID_DISPLAY_DEVICE_ARRIVAL: Uint8Array | Deno.PointerValue | null;
-  /** System.Guid */
-  GUID_DEVINTERFACE_VIDEO_OUTPUT_ARRIVAL: Uint8Array | Deno.PointerValue | null;
-  /** Windows.Win32.UI.Shell.PropertiesSystem.PROPERTYKEY */
-  DEVPKEY_IndirectDisplay: Uint8Array | Deno.PointerValue | null;
-  /** Windows.Win32.UI.Shell.PropertiesSystem.PROPERTYKEY */
-  DEVPKEY_Device_TerminalLuid: Uint8Array | Deno.PointerValue | null;
-  /** Windows.Win32.UI.Shell.PropertiesSystem.PROPERTYKEY */
-  DEVPKEY_Device_AdapterLuid: Uint8Array | Deno.PointerValue | null;
-  /** Windows.Win32.UI.Shell.PropertiesSystem.PROPERTYKEY */
-  DEVPKEY_Device_ActivityId: Uint8Array | Deno.PointerValue | null;
-  /** System.Guid */
-  GUID_MONITOR_OVERRIDE_PSEUDO_SPECIALIZED: Uint8Array | Deno.PointerValue | null;
-}
-
-export const sizeofApis = 72;
-
-export function allocApis(data?: Partial<Apis>): Uint8Array {
-  const buf = new Uint8Array(sizeofApis);
-  const view = new DataView(buf.buffer);
-  // 0x00: pointer
-  if (data?.GUID_DEVINTERFACE_DISPLAY_ADAPTER !== undefined) view.setBigUint64(0, data.GUID_DEVINTERFACE_DISPLAY_ADAPTER === null ? 0n : BigInt(util.toPointer(data.GUID_DEVINTERFACE_DISPLAY_ADAPTER)), true);
-  // 0x08: pointer
-  if (data?.GUID_DEVINTERFACE_MONITOR !== undefined) view.setBigUint64(8, data.GUID_DEVINTERFACE_MONITOR === null ? 0n : BigInt(util.toPointer(data.GUID_DEVINTERFACE_MONITOR)), true);
-  // 0x10: pointer
-  if (data?.GUID_DISPLAY_DEVICE_ARRIVAL !== undefined) view.setBigUint64(16, data.GUID_DISPLAY_DEVICE_ARRIVAL === null ? 0n : BigInt(util.toPointer(data.GUID_DISPLAY_DEVICE_ARRIVAL)), true);
-  // 0x18: pointer
-  if (data?.GUID_DEVINTERFACE_VIDEO_OUTPUT_ARRIVAL !== undefined) view.setBigUint64(24, data.GUID_DEVINTERFACE_VIDEO_OUTPUT_ARRIVAL === null ? 0n : BigInt(util.toPointer(data.GUID_DEVINTERFACE_VIDEO_OUTPUT_ARRIVAL)), true);
-  // 0x20: pointer
-  if (data?.DEVPKEY_IndirectDisplay !== undefined) view.setBigUint64(32, data.DEVPKEY_IndirectDisplay === null ? 0n : BigInt(util.toPointer(data.DEVPKEY_IndirectDisplay)), true);
-  // 0x28: pointer
-  if (data?.DEVPKEY_Device_TerminalLuid !== undefined) view.setBigUint64(40, data.DEVPKEY_Device_TerminalLuid === null ? 0n : BigInt(util.toPointer(data.DEVPKEY_Device_TerminalLuid)), true);
-  // 0x30: pointer
-  if (data?.DEVPKEY_Device_AdapterLuid !== undefined) view.setBigUint64(48, data.DEVPKEY_Device_AdapterLuid === null ? 0n : BigInt(util.toPointer(data.DEVPKEY_Device_AdapterLuid)), true);
-  // 0x38: pointer
-  if (data?.DEVPKEY_Device_ActivityId !== undefined) view.setBigUint64(56, data.DEVPKEY_Device_ActivityId === null ? 0n : BigInt(util.toPointer(data.DEVPKEY_Device_ActivityId)), true);
-  // 0x40: pointer
-  if (data?.GUID_MONITOR_OVERRIDE_PSEUDO_SPECIALIZED !== undefined) view.setBigUint64(64, data.GUID_MONITOR_OVERRIDE_PSEUDO_SPECIALIZED === null ? 0n : BigInt(util.toPointer(data.GUID_MONITOR_OVERRIDE_PSEUDO_SPECIALIZED)), true);
-  return buf;
-}
-
 export type HSEMAPHORE = Deno.PointerValue;
 
 export type HSURF = Deno.PointerValue;

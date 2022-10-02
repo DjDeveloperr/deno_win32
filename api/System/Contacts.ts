@@ -22,24 +22,6 @@ export const CACO_EXTERNAL_ONLY = 2;
 // Structs
 
 /**
- * Windows.Win32.System.Contacts.Apis (size: 8)
- */
-export interface Apis {
-  /** System.Guid */
-  CLSID_ContactAggregationManager: Uint8Array | Deno.PointerValue | null;
-}
-
-export const sizeofApis = 8;
-
-export function allocApis(data?: Partial<Apis>): Uint8Array {
-  const buf = new Uint8Array(sizeofApis);
-  const view = new DataView(buf.buffer);
-  // 0x00: pointer
-  if (data?.CLSID_ContactAggregationManager !== undefined) view.setBigUint64(0, data.CLSID_ContactAggregationManager === null ? 0n : BigInt(util.toPointer(data.CLSID_ContactAggregationManager)), true);
-  return buf;
-}
-
-/**
  * Windows.Win32.System.Contacts.CONTACT_AGGREGATION_BLOB (size: 16)
  */
 export interface CONTACT_AGGREGATION_BLOB {

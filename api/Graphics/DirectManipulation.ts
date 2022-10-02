@@ -102,44 +102,6 @@ export const DIRECTMANIPULATION_AUTOSCROLL_CONFIGURATION_REVERSE = 2;
 
 // Structs
 
-/**
- * Windows.Win32.Graphics.DirectManipulation.Apis (size: 48)
- */
-export interface Apis {
-  /** System.Guid */
-  CLSID_VerticalIndicatorContent: Uint8Array | Deno.PointerValue | null;
-  /** System.Guid */
-  CLSID_HorizontalIndicatorContent: Uint8Array | Deno.PointerValue | null;
-  /** System.Guid */
-  CLSID_VirtualViewportContent: Uint8Array | Deno.PointerValue | null;
-  /** System.Guid */
-  CLSID_DragDropConfigurationBehavior: Uint8Array | Deno.PointerValue | null;
-  /** System.Guid */
-  CLSID_AutoScrollBehavior: Uint8Array | Deno.PointerValue | null;
-  /** System.Guid */
-  CLSID_DeferContactService: Uint8Array | Deno.PointerValue | null;
-}
-
-export const sizeofApis = 48;
-
-export function allocApis(data?: Partial<Apis>): Uint8Array {
-  const buf = new Uint8Array(sizeofApis);
-  const view = new DataView(buf.buffer);
-  // 0x00: pointer
-  if (data?.CLSID_VerticalIndicatorContent !== undefined) view.setBigUint64(0, data.CLSID_VerticalIndicatorContent === null ? 0n : BigInt(util.toPointer(data.CLSID_VerticalIndicatorContent)), true);
-  // 0x08: pointer
-  if (data?.CLSID_HorizontalIndicatorContent !== undefined) view.setBigUint64(8, data.CLSID_HorizontalIndicatorContent === null ? 0n : BigInt(util.toPointer(data.CLSID_HorizontalIndicatorContent)), true);
-  // 0x10: pointer
-  if (data?.CLSID_VirtualViewportContent !== undefined) view.setBigUint64(16, data.CLSID_VirtualViewportContent === null ? 0n : BigInt(util.toPointer(data.CLSID_VirtualViewportContent)), true);
-  // 0x18: pointer
-  if (data?.CLSID_DragDropConfigurationBehavior !== undefined) view.setBigUint64(24, data.CLSID_DragDropConfigurationBehavior === null ? 0n : BigInt(util.toPointer(data.CLSID_DragDropConfigurationBehavior)), true);
-  // 0x20: pointer
-  if (data?.CLSID_AutoScrollBehavior !== undefined) view.setBigUint64(32, data.CLSID_AutoScrollBehavior === null ? 0n : BigInt(util.toPointer(data.CLSID_AutoScrollBehavior)), true);
-  // 0x28: pointer
-  if (data?.CLSID_DeferContactService !== undefined) view.setBigUint64(40, data.CLSID_DeferContactService === null ? 0n : BigInt(util.toPointer(data.CLSID_DeferContactService)), true);
-  return buf;
-}
-
 // Native Libraries
 
 // Symbols

@@ -8898,44 +8898,6 @@ export const ADDURL_Max = 2147483647;
 // Structs
 
 /**
- * Windows.Win32.Web.MsHtml.Apis (size: 48)
- */
-export interface Apis {
-  /** System.Guid */
-  SID_SEditCommandTarget: Uint8Array | Deno.PointerValue | null;
-  /** System.Guid */
-  CGID_EditStateCommands: Uint8Array | Deno.PointerValue | null;
-  /** System.Guid */
-  SID_SHTMLEditHost: Uint8Array | Deno.PointerValue | null;
-  /** System.Guid */
-  SID_SHTMLEditServices: Uint8Array | Deno.PointerValue | null;
-  /** System.Guid */
-  CGID_DocHostCommandHandler: Uint8Array | Deno.PointerValue | null;
-  /** System.Guid */
-  CATID_MSOfficeAntiVirus: Uint8Array | Deno.PointerValue | null;
-}
-
-export const sizeofApis = 48;
-
-export function allocApis(data?: Partial<Apis>): Uint8Array {
-  const buf = new Uint8Array(sizeofApis);
-  const view = new DataView(buf.buffer);
-  // 0x00: pointer
-  if (data?.SID_SEditCommandTarget !== undefined) view.setBigUint64(0, data.SID_SEditCommandTarget === null ? 0n : BigInt(util.toPointer(data.SID_SEditCommandTarget)), true);
-  // 0x08: pointer
-  if (data?.CGID_EditStateCommands !== undefined) view.setBigUint64(8, data.CGID_EditStateCommands === null ? 0n : BigInt(util.toPointer(data.CGID_EditStateCommands)), true);
-  // 0x10: pointer
-  if (data?.SID_SHTMLEditHost !== undefined) view.setBigUint64(16, data.SID_SHTMLEditHost === null ? 0n : BigInt(util.toPointer(data.SID_SHTMLEditHost)), true);
-  // 0x18: pointer
-  if (data?.SID_SHTMLEditServices !== undefined) view.setBigUint64(24, data.SID_SHTMLEditServices === null ? 0n : BigInt(util.toPointer(data.SID_SHTMLEditServices)), true);
-  // 0x20: pointer
-  if (data?.CGID_DocHostCommandHandler !== undefined) view.setBigUint64(32, data.CGID_DocHostCommandHandler === null ? 0n : BigInt(util.toPointer(data.CGID_DocHostCommandHandler)), true);
-  // 0x28: pointer
-  if (data?.CATID_MSOfficeAntiVirus !== undefined) view.setBigUint64(40, data.CATID_MSOfficeAntiVirus === null ? 0n : BigInt(util.toPointer(data.CATID_MSOfficeAntiVirus)), true);
-  return buf;
-}
-
-/**
  * Windows.Win32.Foundation.RECT (size: 16)
  */
 export interface RECT {

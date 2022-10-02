@@ -241,24 +241,6 @@ export const CredsspCredEx = 100;
 // Structs
 
 /**
- * Windows.Win32.Security.Credentials.Apis (size: 8)
- */
-export interface Apis {
-  /** System.Guid */
-  GUID_DEVINTERFACE_SMARTCARD_READER: Uint8Array | Deno.PointerValue | null;
-}
-
-export const sizeofApis = 8;
-
-export function allocApis(data?: Partial<Apis>): Uint8Array {
-  const buf = new Uint8Array(sizeofApis);
-  const view = new DataView(buf.buffer);
-  // 0x00: pointer
-  if (data?.GUID_DEVINTERFACE_SMARTCARD_READER !== undefined) view.setBigUint64(0, data.GUID_DEVINTERFACE_SMARTCARD_READER === null ? 0n : BigInt(util.toPointer(data.GUID_DEVINTERFACE_SMARTCARD_READER)), true);
-  return buf;
-}
-
-/**
  * Windows.Win32.Security.Credentials.KeyCredentialManagerInfo (size: 8)
  */
 export interface KeyCredentialManagerInfo {

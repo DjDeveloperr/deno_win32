@@ -1666,32 +1666,6 @@ export function allocPROPERTYKEY(data?: Partial<PROPERTYKEY>): Uint8Array {
 }
 
 /**
- * Windows.Win32.Media.KernelStreaming.Apis (size: 24)
- */
-export interface Apis {
-  /** Windows.Win32.UI.Shell.PropertiesSystem.PROPERTYKEY */
-  DEVPKEY_KsAudio_PacketSize_Constraints: Uint8Array | Deno.PointerValue | null;
-  /** Windows.Win32.UI.Shell.PropertiesSystem.PROPERTYKEY */
-  DEVPKEY_KsAudio_Controller_DeviceInterface_Path: Uint8Array | Deno.PointerValue | null;
-  /** Windows.Win32.UI.Shell.PropertiesSystem.PROPERTYKEY */
-  DEVPKEY_KsAudio_PacketSize_Constraints2: Uint8Array | Deno.PointerValue | null;
-}
-
-export const sizeofApis = 24;
-
-export function allocApis(data?: Partial<Apis>): Uint8Array {
-  const buf = new Uint8Array(sizeofApis);
-  const view = new DataView(buf.buffer);
-  // 0x00: pointer
-  if (data?.DEVPKEY_KsAudio_PacketSize_Constraints !== undefined) view.setBigUint64(0, data.DEVPKEY_KsAudio_PacketSize_Constraints === null ? 0n : BigInt(util.toPointer(data.DEVPKEY_KsAudio_PacketSize_Constraints)), true);
-  // 0x08: pointer
-  if (data?.DEVPKEY_KsAudio_Controller_DeviceInterface_Path !== undefined) view.setBigUint64(8, data.DEVPKEY_KsAudio_Controller_DeviceInterface_Path === null ? 0n : BigInt(util.toPointer(data.DEVPKEY_KsAudio_Controller_DeviceInterface_Path)), true);
-  // 0x10: pointer
-  if (data?.DEVPKEY_KsAudio_PacketSize_Constraints2 !== undefined) view.setBigUint64(16, data.DEVPKEY_KsAudio_PacketSize_Constraints2 === null ? 0n : BigInt(util.toPointer(data.DEVPKEY_KsAudio_PacketSize_Constraints2)), true);
-  return buf;
-}
-
-/**
  * Windows.Win32.Media.KernelStreaming.KSPRIORITY (size: 8)
  */
 export interface KSPRIORITY {

@@ -1383,36 +1383,6 @@ export const ProviderInfoAudit = 1;
 
 // Structs
 
-/**
- * Windows.Win32.Networking.WinSock.Apis (size: 32)
- */
-export interface Apis {
-  /** System.Guid */
-  SOCKET_DEFAULT2_QM_POLICY: Uint8Array | Deno.PointerValue | null;
-  /** System.Guid */
-  REAL_TIME_NOTIFICATION_CAPABILITY: Uint8Array | Deno.PointerValue | null;
-  /** System.Guid */
-  REAL_TIME_NOTIFICATION_CAPABILITY_EX: Uint8Array | Deno.PointerValue | null;
-  /** System.Guid */
-  ASSOCIATE_NAMERES_CONTEXT: Uint8Array | Deno.PointerValue | null;
-}
-
-export const sizeofApis = 32;
-
-export function allocApis(data?: Partial<Apis>): Uint8Array {
-  const buf = new Uint8Array(sizeofApis);
-  const view = new DataView(buf.buffer);
-  // 0x00: pointer
-  if (data?.SOCKET_DEFAULT2_QM_POLICY !== undefined) view.setBigUint64(0, data.SOCKET_DEFAULT2_QM_POLICY === null ? 0n : BigInt(util.toPointer(data.SOCKET_DEFAULT2_QM_POLICY)), true);
-  // 0x08: pointer
-  if (data?.REAL_TIME_NOTIFICATION_CAPABILITY !== undefined) view.setBigUint64(8, data.REAL_TIME_NOTIFICATION_CAPABILITY === null ? 0n : BigInt(util.toPointer(data.REAL_TIME_NOTIFICATION_CAPABILITY)), true);
-  // 0x10: pointer
-  if (data?.REAL_TIME_NOTIFICATION_CAPABILITY_EX !== undefined) view.setBigUint64(16, data.REAL_TIME_NOTIFICATION_CAPABILITY_EX === null ? 0n : BigInt(util.toPointer(data.REAL_TIME_NOTIFICATION_CAPABILITY_EX)), true);
-  // 0x18: pointer
-  if (data?.ASSOCIATE_NAMERES_CONTEXT !== undefined) view.setBigUint64(24, data.ASSOCIATE_NAMERES_CONTEXT === null ? 0n : BigInt(util.toPointer(data.ASSOCIATE_NAMERES_CONTEXT)), true);
-  return buf;
-}
-
 export type HWSAEVENT = Deno.PointerValue;
 
 export type SOCKET = Deno.PointerValue;
@@ -10328,9 +10298,9 @@ export function inet_addr(
 }
 
 export function inet_ntoa(
-  in: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Networking.WinSock.IN_ADDR */,
+  in__: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Networking.WinSock.IN_ADDR */,
 ): string | null /* Windows.Win32.Foundation.PSTR */ {
-  return util.pstrFromFfi(libWS2_32.inet_ntoa(util.toPointer(in)));
+  return util.pstrFromFfi(libWS2_32.inet_ntoa(util.toPointer(in__)));
 }
 
 export function listen(

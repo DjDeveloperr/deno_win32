@@ -1551,10 +1551,10 @@ export function PSGetNamedPropertyFromPropertyStorage(
 export function PSPropertyBag_ReadType(
   propBag: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Com.StructuredStorage.IPropertyBag */,
   propName: string | null /* Windows.Win32.Foundation.PWSTR */,
-  var: Deno.PointerValue | Uint8Array | null /* ptr */,
+  var__: Deno.PointerValue | Uint8Array | null /* ptr */,
   type: number /* u16 */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libPROPSYS.PSPropertyBag_ReadType(util.toPointer(propBag), util.pwstrToFfi(propName), util.toPointer(var), type));
+  return util.pointerFromFfi(libPROPSYS.PSPropertyBag_ReadType(util.toPointer(propBag), util.pwstrToFfi(propName), util.toPointer(var__), type));
 }
 
 export function PSPropertyBag_ReadStr(
@@ -2732,228 +2732,228 @@ export function VariantGetElementCount(
 }
 
 export function VariantToBooleanArray(
-  var: Deno.PointerValue | Uint8Array | null /* ptr */,
+  var__: Deno.PointerValue | Uint8Array | null /* ptr */,
   prgf: Deno.PointerValue | Uint8Array | null /* ptr */,
   crgn: number /* u32 */,
   pcElem: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libPROPSYS.VariantToBooleanArray(util.toPointer(var), util.toPointer(prgf), crgn, util.toPointer(pcElem)));
+  return util.pointerFromFfi(libPROPSYS.VariantToBooleanArray(util.toPointer(var__), util.toPointer(prgf), crgn, util.toPointer(pcElem)));
 }
 
 export function VariantToInt16Array(
-  var: Deno.PointerValue | Uint8Array | null /* ptr */,
+  var__: Deno.PointerValue | Uint8Array | null /* ptr */,
   prgn: Deno.PointerValue | Uint8Array | null /* ptr */,
   crgn: number /* u32 */,
   pcElem: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libPROPSYS.VariantToInt16Array(util.toPointer(var), util.toPointer(prgn), crgn, util.toPointer(pcElem)));
+  return util.pointerFromFfi(libPROPSYS.VariantToInt16Array(util.toPointer(var__), util.toPointer(prgn), crgn, util.toPointer(pcElem)));
 }
 
 export function VariantToUInt16Array(
-  var: Deno.PointerValue | Uint8Array | null /* ptr */,
+  var__: Deno.PointerValue | Uint8Array | null /* ptr */,
   prgn: Deno.PointerValue | Uint8Array | null /* ptr */,
   crgn: number /* u32 */,
   pcElem: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libPROPSYS.VariantToUInt16Array(util.toPointer(var), util.toPointer(prgn), crgn, util.toPointer(pcElem)));
+  return util.pointerFromFfi(libPROPSYS.VariantToUInt16Array(util.toPointer(var__), util.toPointer(prgn), crgn, util.toPointer(pcElem)));
 }
 
 export function VariantToInt32Array(
-  var: Deno.PointerValue | Uint8Array | null /* ptr */,
+  var__: Deno.PointerValue | Uint8Array | null /* ptr */,
   prgn: Deno.PointerValue | Uint8Array | null /* ptr */,
   crgn: number /* u32 */,
   pcElem: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libPROPSYS.VariantToInt32Array(util.toPointer(var), util.toPointer(prgn), crgn, util.toPointer(pcElem)));
+  return util.pointerFromFfi(libPROPSYS.VariantToInt32Array(util.toPointer(var__), util.toPointer(prgn), crgn, util.toPointer(pcElem)));
 }
 
 export function VariantToUInt32Array(
-  var: Deno.PointerValue | Uint8Array | null /* ptr */,
+  var__: Deno.PointerValue | Uint8Array | null /* ptr */,
   prgn: Deno.PointerValue | Uint8Array | null /* ptr */,
   crgn: number /* u32 */,
   pcElem: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libPROPSYS.VariantToUInt32Array(util.toPointer(var), util.toPointer(prgn), crgn, util.toPointer(pcElem)));
+  return util.pointerFromFfi(libPROPSYS.VariantToUInt32Array(util.toPointer(var__), util.toPointer(prgn), crgn, util.toPointer(pcElem)));
 }
 
 export function VariantToInt64Array(
-  var: Deno.PointerValue | Uint8Array | null /* ptr */,
+  var__: Deno.PointerValue | Uint8Array | null /* ptr */,
   prgn: Deno.PointerValue | Uint8Array | null /* ptr */,
   crgn: number /* u32 */,
   pcElem: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libPROPSYS.VariantToInt64Array(util.toPointer(var), util.toPointer(prgn), crgn, util.toPointer(pcElem)));
+  return util.pointerFromFfi(libPROPSYS.VariantToInt64Array(util.toPointer(var__), util.toPointer(prgn), crgn, util.toPointer(pcElem)));
 }
 
 export function VariantToUInt64Array(
-  var: Deno.PointerValue | Uint8Array | null /* ptr */,
+  var__: Deno.PointerValue | Uint8Array | null /* ptr */,
   prgn: Deno.PointerValue | Uint8Array | null /* ptr */,
   crgn: number /* u32 */,
   pcElem: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libPROPSYS.VariantToUInt64Array(util.toPointer(var), util.toPointer(prgn), crgn, util.toPointer(pcElem)));
+  return util.pointerFromFfi(libPROPSYS.VariantToUInt64Array(util.toPointer(var__), util.toPointer(prgn), crgn, util.toPointer(pcElem)));
 }
 
 export function VariantToDoubleArray(
-  var: Deno.PointerValue | Uint8Array | null /* ptr */,
+  var__: Deno.PointerValue | Uint8Array | null /* ptr */,
   prgn: Deno.PointerValue | Uint8Array | null /* ptr */,
   crgn: number /* u32 */,
   pcElem: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libPROPSYS.VariantToDoubleArray(util.toPointer(var), util.toPointer(prgn), crgn, util.toPointer(pcElem)));
+  return util.pointerFromFfi(libPROPSYS.VariantToDoubleArray(util.toPointer(var__), util.toPointer(prgn), crgn, util.toPointer(pcElem)));
 }
 
 export function VariantToStringArray(
-  var: Deno.PointerValue | Uint8Array | null /* ptr */,
+  var__: Deno.PointerValue | Uint8Array | null /* ptr */,
   prgsz: Deno.PointerValue | Uint8Array | null /* ptr */,
   crgsz: number /* u32 */,
   pcElem: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libPROPSYS.VariantToStringArray(util.toPointer(var), util.toPointer(prgsz), crgsz, util.toPointer(pcElem)));
+  return util.pointerFromFfi(libPROPSYS.VariantToStringArray(util.toPointer(var__), util.toPointer(prgsz), crgsz, util.toPointer(pcElem)));
 }
 
 export function VariantToBooleanArrayAlloc(
-  var: Deno.PointerValue | Uint8Array | null /* ptr */,
+  var__: Deno.PointerValue | Uint8Array | null /* ptr */,
   pprgf: Deno.PointerValue | Uint8Array | null /* ptr */,
   pcElem: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libPROPSYS.VariantToBooleanArrayAlloc(util.toPointer(var), util.toPointer(pprgf), util.toPointer(pcElem)));
+  return util.pointerFromFfi(libPROPSYS.VariantToBooleanArrayAlloc(util.toPointer(var__), util.toPointer(pprgf), util.toPointer(pcElem)));
 }
 
 export function VariantToInt16ArrayAlloc(
-  var: Deno.PointerValue | Uint8Array | null /* ptr */,
+  var__: Deno.PointerValue | Uint8Array | null /* ptr */,
   pprgn: Deno.PointerValue | Uint8Array | null /* ptr */,
   pcElem: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libPROPSYS.VariantToInt16ArrayAlloc(util.toPointer(var), util.toPointer(pprgn), util.toPointer(pcElem)));
+  return util.pointerFromFfi(libPROPSYS.VariantToInt16ArrayAlloc(util.toPointer(var__), util.toPointer(pprgn), util.toPointer(pcElem)));
 }
 
 export function VariantToUInt16ArrayAlloc(
-  var: Deno.PointerValue | Uint8Array | null /* ptr */,
+  var__: Deno.PointerValue | Uint8Array | null /* ptr */,
   pprgn: Deno.PointerValue | Uint8Array | null /* ptr */,
   pcElem: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libPROPSYS.VariantToUInt16ArrayAlloc(util.toPointer(var), util.toPointer(pprgn), util.toPointer(pcElem)));
+  return util.pointerFromFfi(libPROPSYS.VariantToUInt16ArrayAlloc(util.toPointer(var__), util.toPointer(pprgn), util.toPointer(pcElem)));
 }
 
 export function VariantToInt32ArrayAlloc(
-  var: Deno.PointerValue | Uint8Array | null /* ptr */,
+  var__: Deno.PointerValue | Uint8Array | null /* ptr */,
   pprgn: Deno.PointerValue | Uint8Array | null /* ptr */,
   pcElem: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libPROPSYS.VariantToInt32ArrayAlloc(util.toPointer(var), util.toPointer(pprgn), util.toPointer(pcElem)));
+  return util.pointerFromFfi(libPROPSYS.VariantToInt32ArrayAlloc(util.toPointer(var__), util.toPointer(pprgn), util.toPointer(pcElem)));
 }
 
 export function VariantToUInt32ArrayAlloc(
-  var: Deno.PointerValue | Uint8Array | null /* ptr */,
+  var__: Deno.PointerValue | Uint8Array | null /* ptr */,
   pprgn: Deno.PointerValue | Uint8Array | null /* ptr */,
   pcElem: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libPROPSYS.VariantToUInt32ArrayAlloc(util.toPointer(var), util.toPointer(pprgn), util.toPointer(pcElem)));
+  return util.pointerFromFfi(libPROPSYS.VariantToUInt32ArrayAlloc(util.toPointer(var__), util.toPointer(pprgn), util.toPointer(pcElem)));
 }
 
 export function VariantToInt64ArrayAlloc(
-  var: Deno.PointerValue | Uint8Array | null /* ptr */,
+  var__: Deno.PointerValue | Uint8Array | null /* ptr */,
   pprgn: Deno.PointerValue | Uint8Array | null /* ptr */,
   pcElem: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libPROPSYS.VariantToInt64ArrayAlloc(util.toPointer(var), util.toPointer(pprgn), util.toPointer(pcElem)));
+  return util.pointerFromFfi(libPROPSYS.VariantToInt64ArrayAlloc(util.toPointer(var__), util.toPointer(pprgn), util.toPointer(pcElem)));
 }
 
 export function VariantToUInt64ArrayAlloc(
-  var: Deno.PointerValue | Uint8Array | null /* ptr */,
+  var__: Deno.PointerValue | Uint8Array | null /* ptr */,
   pprgn: Deno.PointerValue | Uint8Array | null /* ptr */,
   pcElem: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libPROPSYS.VariantToUInt64ArrayAlloc(util.toPointer(var), util.toPointer(pprgn), util.toPointer(pcElem)));
+  return util.pointerFromFfi(libPROPSYS.VariantToUInt64ArrayAlloc(util.toPointer(var__), util.toPointer(pprgn), util.toPointer(pcElem)));
 }
 
 export function VariantToDoubleArrayAlloc(
-  var: Deno.PointerValue | Uint8Array | null /* ptr */,
+  var__: Deno.PointerValue | Uint8Array | null /* ptr */,
   pprgn: Deno.PointerValue | Uint8Array | null /* ptr */,
   pcElem: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libPROPSYS.VariantToDoubleArrayAlloc(util.toPointer(var), util.toPointer(pprgn), util.toPointer(pcElem)));
+  return util.pointerFromFfi(libPROPSYS.VariantToDoubleArrayAlloc(util.toPointer(var__), util.toPointer(pprgn), util.toPointer(pcElem)));
 }
 
 export function VariantToStringArrayAlloc(
-  var: Deno.PointerValue | Uint8Array | null /* ptr */,
+  var__: Deno.PointerValue | Uint8Array | null /* ptr */,
   pprgsz: Deno.PointerValue | Uint8Array | null /* ptr */,
   pcElem: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libPROPSYS.VariantToStringArrayAlloc(util.toPointer(var), util.toPointer(pprgsz), util.toPointer(pcElem)));
+  return util.pointerFromFfi(libPROPSYS.VariantToStringArrayAlloc(util.toPointer(var__), util.toPointer(pprgsz), util.toPointer(pcElem)));
 }
 
 export function VariantGetBooleanElem(
-  var: Deno.PointerValue | Uint8Array | null /* ptr */,
+  var__: Deno.PointerValue | Uint8Array | null /* ptr */,
   iElem: number /* u32 */,
   pfVal: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libPROPSYS.VariantGetBooleanElem(util.toPointer(var), iElem, util.toPointer(pfVal)));
+  return util.pointerFromFfi(libPROPSYS.VariantGetBooleanElem(util.toPointer(var__), iElem, util.toPointer(pfVal)));
 }
 
 export function VariantGetInt16Elem(
-  var: Deno.PointerValue | Uint8Array | null /* ptr */,
+  var__: Deno.PointerValue | Uint8Array | null /* ptr */,
   iElem: number /* u32 */,
   pnVal: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libPROPSYS.VariantGetInt16Elem(util.toPointer(var), iElem, util.toPointer(pnVal)));
+  return util.pointerFromFfi(libPROPSYS.VariantGetInt16Elem(util.toPointer(var__), iElem, util.toPointer(pnVal)));
 }
 
 export function VariantGetUInt16Elem(
-  var: Deno.PointerValue | Uint8Array | null /* ptr */,
+  var__: Deno.PointerValue | Uint8Array | null /* ptr */,
   iElem: number /* u32 */,
   pnVal: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libPROPSYS.VariantGetUInt16Elem(util.toPointer(var), iElem, util.toPointer(pnVal)));
+  return util.pointerFromFfi(libPROPSYS.VariantGetUInt16Elem(util.toPointer(var__), iElem, util.toPointer(pnVal)));
 }
 
 export function VariantGetInt32Elem(
-  var: Deno.PointerValue | Uint8Array | null /* ptr */,
+  var__: Deno.PointerValue | Uint8Array | null /* ptr */,
   iElem: number /* u32 */,
   pnVal: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libPROPSYS.VariantGetInt32Elem(util.toPointer(var), iElem, util.toPointer(pnVal)));
+  return util.pointerFromFfi(libPROPSYS.VariantGetInt32Elem(util.toPointer(var__), iElem, util.toPointer(pnVal)));
 }
 
 export function VariantGetUInt32Elem(
-  var: Deno.PointerValue | Uint8Array | null /* ptr */,
+  var__: Deno.PointerValue | Uint8Array | null /* ptr */,
   iElem: number /* u32 */,
   pnVal: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libPROPSYS.VariantGetUInt32Elem(util.toPointer(var), iElem, util.toPointer(pnVal)));
+  return util.pointerFromFfi(libPROPSYS.VariantGetUInt32Elem(util.toPointer(var__), iElem, util.toPointer(pnVal)));
 }
 
 export function VariantGetInt64Elem(
-  var: Deno.PointerValue | Uint8Array | null /* ptr */,
+  var__: Deno.PointerValue | Uint8Array | null /* ptr */,
   iElem: number /* u32 */,
   pnVal: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libPROPSYS.VariantGetInt64Elem(util.toPointer(var), iElem, util.toPointer(pnVal)));
+  return util.pointerFromFfi(libPROPSYS.VariantGetInt64Elem(util.toPointer(var__), iElem, util.toPointer(pnVal)));
 }
 
 export function VariantGetUInt64Elem(
-  var: Deno.PointerValue | Uint8Array | null /* ptr */,
+  var__: Deno.PointerValue | Uint8Array | null /* ptr */,
   iElem: number /* u32 */,
   pnVal: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libPROPSYS.VariantGetUInt64Elem(util.toPointer(var), iElem, util.toPointer(pnVal)));
+  return util.pointerFromFfi(libPROPSYS.VariantGetUInt64Elem(util.toPointer(var__), iElem, util.toPointer(pnVal)));
 }
 
 export function VariantGetDoubleElem(
-  var: Deno.PointerValue | Uint8Array | null /* ptr */,
+  var__: Deno.PointerValue | Uint8Array | null /* ptr */,
   iElem: number /* u32 */,
   pnVal: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libPROPSYS.VariantGetDoubleElem(util.toPointer(var), iElem, util.toPointer(pnVal)));
+  return util.pointerFromFfi(libPROPSYS.VariantGetDoubleElem(util.toPointer(var__), iElem, util.toPointer(pnVal)));
 }
 
 export function VariantGetStringElem(
-  var: Deno.PointerValue | Uint8Array | null /* ptr */,
+  var__: Deno.PointerValue | Uint8Array | null /* ptr */,
   iElem: number /* u32 */,
   ppszVal: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libPROPSYS.VariantGetStringElem(util.toPointer(var), iElem, util.toPointer(ppszVal)));
+  return util.pointerFromFfi(libPROPSYS.VariantGetStringElem(util.toPointer(var__), iElem, util.toPointer(ppszVal)));
 }
 
 export function ClearVariantArray(

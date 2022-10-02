@@ -240,64 +240,6 @@ export const UNPROTECTED_SACL_SECURITY_INFORMATION = 268435456;
 
 // Structs
 
-/**
- * Windows.Win32.System.Services.Apis (size: 88)
- */
-export interface Apis {
-  /** System.Guid */
-  NETWORK_MANAGER_FIRST_IP_ADDRESS_ARRIVAL_GUID: Uint8Array | Deno.PointerValue | null;
-  /** System.Guid */
-  NETWORK_MANAGER_LAST_IP_ADDRESS_REMOVAL_GUID: Uint8Array | Deno.PointerValue | null;
-  /** System.Guid */
-  DOMAIN_JOIN_GUID: Uint8Array | Deno.PointerValue | null;
-  /** System.Guid */
-  DOMAIN_LEAVE_GUID: Uint8Array | Deno.PointerValue | null;
-  /** System.Guid */
-  FIREWALL_PORT_OPEN_GUID: Uint8Array | Deno.PointerValue | null;
-  /** System.Guid */
-  FIREWALL_PORT_CLOSE_GUID: Uint8Array | Deno.PointerValue | null;
-  /** System.Guid */
-  MACHINE_POLICY_PRESENT_GUID: Uint8Array | Deno.PointerValue | null;
-  /** System.Guid */
-  USER_POLICY_PRESENT_GUID: Uint8Array | Deno.PointerValue | null;
-  /** System.Guid */
-  RPC_INTERFACE_EVENT_GUID: Uint8Array | Deno.PointerValue | null;
-  /** System.Guid */
-  NAMED_PIPE_EVENT_GUID: Uint8Array | Deno.PointerValue | null;
-  /** System.Guid */
-  CUSTOM_SYSTEM_STATE_CHANGE_EVENT_GUID: Uint8Array | Deno.PointerValue | null;
-}
-
-export const sizeofApis = 88;
-
-export function allocApis(data?: Partial<Apis>): Uint8Array {
-  const buf = new Uint8Array(sizeofApis);
-  const view = new DataView(buf.buffer);
-  // 0x00: pointer
-  if (data?.NETWORK_MANAGER_FIRST_IP_ADDRESS_ARRIVAL_GUID !== undefined) view.setBigUint64(0, data.NETWORK_MANAGER_FIRST_IP_ADDRESS_ARRIVAL_GUID === null ? 0n : BigInt(util.toPointer(data.NETWORK_MANAGER_FIRST_IP_ADDRESS_ARRIVAL_GUID)), true);
-  // 0x08: pointer
-  if (data?.NETWORK_MANAGER_LAST_IP_ADDRESS_REMOVAL_GUID !== undefined) view.setBigUint64(8, data.NETWORK_MANAGER_LAST_IP_ADDRESS_REMOVAL_GUID === null ? 0n : BigInt(util.toPointer(data.NETWORK_MANAGER_LAST_IP_ADDRESS_REMOVAL_GUID)), true);
-  // 0x10: pointer
-  if (data?.DOMAIN_JOIN_GUID !== undefined) view.setBigUint64(16, data.DOMAIN_JOIN_GUID === null ? 0n : BigInt(util.toPointer(data.DOMAIN_JOIN_GUID)), true);
-  // 0x18: pointer
-  if (data?.DOMAIN_LEAVE_GUID !== undefined) view.setBigUint64(24, data.DOMAIN_LEAVE_GUID === null ? 0n : BigInt(util.toPointer(data.DOMAIN_LEAVE_GUID)), true);
-  // 0x20: pointer
-  if (data?.FIREWALL_PORT_OPEN_GUID !== undefined) view.setBigUint64(32, data.FIREWALL_PORT_OPEN_GUID === null ? 0n : BigInt(util.toPointer(data.FIREWALL_PORT_OPEN_GUID)), true);
-  // 0x28: pointer
-  if (data?.FIREWALL_PORT_CLOSE_GUID !== undefined) view.setBigUint64(40, data.FIREWALL_PORT_CLOSE_GUID === null ? 0n : BigInt(util.toPointer(data.FIREWALL_PORT_CLOSE_GUID)), true);
-  // 0x30: pointer
-  if (data?.MACHINE_POLICY_PRESENT_GUID !== undefined) view.setBigUint64(48, data.MACHINE_POLICY_PRESENT_GUID === null ? 0n : BigInt(util.toPointer(data.MACHINE_POLICY_PRESENT_GUID)), true);
-  // 0x38: pointer
-  if (data?.USER_POLICY_PRESENT_GUID !== undefined) view.setBigUint64(56, data.USER_POLICY_PRESENT_GUID === null ? 0n : BigInt(util.toPointer(data.USER_POLICY_PRESENT_GUID)), true);
-  // 0x40: pointer
-  if (data?.RPC_INTERFACE_EVENT_GUID !== undefined) view.setBigUint64(64, data.RPC_INTERFACE_EVENT_GUID === null ? 0n : BigInt(util.toPointer(data.RPC_INTERFACE_EVENT_GUID)), true);
-  // 0x48: pointer
-  if (data?.NAMED_PIPE_EVENT_GUID !== undefined) view.setBigUint64(72, data.NAMED_PIPE_EVENT_GUID === null ? 0n : BigInt(util.toPointer(data.NAMED_PIPE_EVENT_GUID)), true);
-  // 0x50: pointer
-  if (data?.CUSTOM_SYSTEM_STATE_CHANGE_EVENT_GUID !== undefined) view.setBigUint64(80, data.CUSTOM_SYSTEM_STATE_CHANGE_EVENT_GUID === null ? 0n : BigInt(util.toPointer(data.CUSTOM_SYSTEM_STATE_CHANGE_EVENT_GUID)), true);
-  return buf;
-}
-
 export type SERVICE_STATUS_HANDLE = Deno.PointerValue;
 
 /**

@@ -8,44 +8,6 @@ export const MILBITMAPEFFECT_SDK_VERSION = 16777216;
 // Structs
 
 /**
- * Windows.Win32.UI.Wpf.Apis (size: 48)
- */
-export interface Apis {
-  /** System.Guid */
-  CLSID_MILBitmapEffectGroup: Uint8Array | Deno.PointerValue | null;
-  /** System.Guid */
-  CLSID_MILBitmapEffectBlur: Uint8Array | Deno.PointerValue | null;
-  /** System.Guid */
-  CLSID_MILBitmapEffectDropShadow: Uint8Array | Deno.PointerValue | null;
-  /** System.Guid */
-  CLSID_MILBitmapEffectOuterGlow: Uint8Array | Deno.PointerValue | null;
-  /** System.Guid */
-  CLSID_MILBitmapEffectBevel: Uint8Array | Deno.PointerValue | null;
-  /** System.Guid */
-  CLSID_MILBitmapEffectEmboss: Uint8Array | Deno.PointerValue | null;
-}
-
-export const sizeofApis = 48;
-
-export function allocApis(data?: Partial<Apis>): Uint8Array {
-  const buf = new Uint8Array(sizeofApis);
-  const view = new DataView(buf.buffer);
-  // 0x00: pointer
-  if (data?.CLSID_MILBitmapEffectGroup !== undefined) view.setBigUint64(0, data.CLSID_MILBitmapEffectGroup === null ? 0n : BigInt(util.toPointer(data.CLSID_MILBitmapEffectGroup)), true);
-  // 0x08: pointer
-  if (data?.CLSID_MILBitmapEffectBlur !== undefined) view.setBigUint64(8, data.CLSID_MILBitmapEffectBlur === null ? 0n : BigInt(util.toPointer(data.CLSID_MILBitmapEffectBlur)), true);
-  // 0x10: pointer
-  if (data?.CLSID_MILBitmapEffectDropShadow !== undefined) view.setBigUint64(16, data.CLSID_MILBitmapEffectDropShadow === null ? 0n : BigInt(util.toPointer(data.CLSID_MILBitmapEffectDropShadow)), true);
-  // 0x18: pointer
-  if (data?.CLSID_MILBitmapEffectOuterGlow !== undefined) view.setBigUint64(24, data.CLSID_MILBitmapEffectOuterGlow === null ? 0n : BigInt(util.toPointer(data.CLSID_MILBitmapEffectOuterGlow)), true);
-  // 0x20: pointer
-  if (data?.CLSID_MILBitmapEffectBevel !== undefined) view.setBigUint64(32, data.CLSID_MILBitmapEffectBevel === null ? 0n : BigInt(util.toPointer(data.CLSID_MILBitmapEffectBevel)), true);
-  // 0x28: pointer
-  if (data?.CLSID_MILBitmapEffectEmboss !== undefined) view.setBigUint64(40, data.CLSID_MILBitmapEffectEmboss === null ? 0n : BigInt(util.toPointer(data.CLSID_MILBitmapEffectEmboss)), true);
-  return buf;
-}
-
-/**
  * Windows.Win32.UI.Wpf.MilRectD (size: 32)
  */
 export interface MilRectD {

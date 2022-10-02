@@ -906,29 +906,29 @@ export function JsCreateArray(
 }
 
 export function JsCallFunction(
-  cFunction: Deno.PointerValue | Uint8Array | null /* ptr */,
+  function__: Deno.PointerValue | Uint8Array | null /* ptr */,
   arguments: Deno.PointerValue | Uint8Array | null /* ptr */,
   argumentCount: number /* u16 */,
   result: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): JsErrorCode /* Windows.Win32.System.Js.JsErrorCode */ {
-  return libchakra.JsCallFunction(util.toPointer(cFunction), util.toPointer(arguments), argumentCount, util.toPointer(result));
+  return libchakra.JsCallFunction(util.toPointer(function__), util.toPointer(arguments), argumentCount, util.toPointer(result));
 }
 
 export function JsConstructObject(
-  cFunction: Deno.PointerValue | Uint8Array | null /* ptr */,
+  function__: Deno.PointerValue | Uint8Array | null /* ptr */,
   arguments: Deno.PointerValue | Uint8Array | null /* ptr */,
   argumentCount: number /* u16 */,
   result: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): JsErrorCode /* Windows.Win32.System.Js.JsErrorCode */ {
-  return libchakra.JsConstructObject(util.toPointer(cFunction), util.toPointer(arguments), argumentCount, util.toPointer(result));
+  return libchakra.JsConstructObject(util.toPointer(function__), util.toPointer(arguments), argumentCount, util.toPointer(result));
 }
 
 export function JsCreateFunction(
   nativeFunction: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Js.JsNativeFunction */,
   callbackState: Deno.PointerValue | Uint8Array | null /* ptr */,
-  cFunction: Deno.PointerValue | Uint8Array | null /* ptr */,
+  function__: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): JsErrorCode /* Windows.Win32.System.Js.JsErrorCode */ {
-  return libchakra.JsCreateFunction(util.toPointer(nativeFunction), util.toPointer(callbackState), util.toPointer(cFunction));
+  return libchakra.JsCreateFunction(util.toPointer(nativeFunction), util.toPointer(callbackState), util.toPointer(function__));
 }
 
 export function JsCreateError(

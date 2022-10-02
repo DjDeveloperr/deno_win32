@@ -149,8 +149,10 @@ function typeToFFI(ty: string): Deno.NativeResultType {
 }
 
 function jsify(name: string) {
-  if (name === "function") {
-    return "cFunction";
+  if (
+    name === "function" || name === "in" || name === "class" || name === "var"
+  ) {
+    return name + "__";
   } else return name.replaceAll("-", "_").replaceAll(".", "_");
 }
 
@@ -249,6 +251,7 @@ for (const api in win32) {
     }
     structCache.add(name);
     const dispName = name.split(".").pop()!;
+    if (dispName === "Apis") continue; // ?
     const fields = Object.entries(structs[name]) as [string, string][];
     if (fields.length === 0) {
       continue;
@@ -305,7 +308,7 @@ for (const api in win32) {
       content += `export interface ${dispName} {\n`;
       for (const [field, ty] of fields) {
         content += `  /** ${ty} */\n`;
-        content += `  ${field}: ${typeToJS(ty)};\n`;
+        content += `  ${jsify(field)}: ${typeToJS(ty)};\n`;
       }
       content += `}\n\n`;
 
@@ -325,7 +328,7 @@ for (const api in win32) {
         if (ty.startsWith("pad")) {
           offset += parseInt(ty.slice(3));
         } else {
-          const field = { name: fields[i][0] };
+          const field = { name: jsify(fields[i][0]) };
           content += `  if (data?.${field.name} !== undefined) `;
           switch (ty) {
             case "u8": {
@@ -505,3 +508,27 @@ for (const api in win32) {
 
   progress.render(++completed);
 }
+
+function handleEntries(
+  path: string,
+  entries: Deno.DirEntry[],
+) {
+  Deno.writeTextFileSync(
+    path + "/mod.ts",
+    entries.map((entry) => {
+      if (entry.isDirectory) {
+        handleEntries(path + "/" + entry.name, [
+          ...Deno.readDirSync(path + "/" + entry.name),
+        ]);
+        return `export * as ${entry.name}Apis from "./${entry.name}/mod.ts";`;
+      } else {
+        return `export * as ${
+          entry.name.split(".ts")[0]
+        } from "./${entry.name}";`;
+      }
+    }).join("\n") + "\n",
+  );
+}
+
+const entries = [...Deno.readDirSync(TARGET_DIR)];
+handleEntries(TARGET_DIR, entries);

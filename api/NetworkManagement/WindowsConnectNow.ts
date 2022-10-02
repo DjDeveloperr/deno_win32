@@ -334,40 +334,6 @@ export function allocPROPERTYKEY(data?: Partial<PROPERTYKEY>): Uint8Array {
 }
 
 /**
- * Windows.Win32.NetworkManagement.WindowsConnectNow.Apis (size: 40)
- */
-export interface Apis {
-  /** System.Guid */
-  SID_WcnProvider: Uint8Array | Deno.PointerValue | null;
-  /** Windows.Win32.UI.Shell.PropertiesSystem.PROPERTYKEY */
-  PKEY_WCN_DeviceType_Category: Uint8Array | Deno.PointerValue | null;
-  /** Windows.Win32.UI.Shell.PropertiesSystem.PROPERTYKEY */
-  PKEY_WCN_DeviceType_SubCategoryOUI: Uint8Array | Deno.PointerValue | null;
-  /** Windows.Win32.UI.Shell.PropertiesSystem.PROPERTYKEY */
-  PKEY_WCN_DeviceType_SubCategory: Uint8Array | Deno.PointerValue | null;
-  /** Windows.Win32.UI.Shell.PropertiesSystem.PROPERTYKEY */
-  PKEY_WCN_SSID: Uint8Array | Deno.PointerValue | null;
-}
-
-export const sizeofApis = 40;
-
-export function allocApis(data?: Partial<Apis>): Uint8Array {
-  const buf = new Uint8Array(sizeofApis);
-  const view = new DataView(buf.buffer);
-  // 0x00: pointer
-  if (data?.SID_WcnProvider !== undefined) view.setBigUint64(0, data.SID_WcnProvider === null ? 0n : BigInt(util.toPointer(data.SID_WcnProvider)), true);
-  // 0x08: pointer
-  if (data?.PKEY_WCN_DeviceType_Category !== undefined) view.setBigUint64(8, data.PKEY_WCN_DeviceType_Category === null ? 0n : BigInt(util.toPointer(data.PKEY_WCN_DeviceType_Category)), true);
-  // 0x10: pointer
-  if (data?.PKEY_WCN_DeviceType_SubCategoryOUI !== undefined) view.setBigUint64(16, data.PKEY_WCN_DeviceType_SubCategoryOUI === null ? 0n : BigInt(util.toPointer(data.PKEY_WCN_DeviceType_SubCategoryOUI)), true);
-  // 0x18: pointer
-  if (data?.PKEY_WCN_DeviceType_SubCategory !== undefined) view.setBigUint64(24, data.PKEY_WCN_DeviceType_SubCategory === null ? 0n : BigInt(util.toPointer(data.PKEY_WCN_DeviceType_SubCategory)), true);
-  // 0x20: pointer
-  if (data?.PKEY_WCN_SSID !== undefined) view.setBigUint64(32, data.PKEY_WCN_SSID === null ? 0n : BigInt(util.toPointer(data.PKEY_WCN_SSID)), true);
-  return buf;
-}
-
-/**
  * Windows.Win32.NetworkManagement.WindowsConnectNow.WCN_VALUE_TYPE_PRIMARY_DEVICE_TYPE (size: 8)
  */
 export interface WCN_VALUE_TYPE_PRIMARY_DEVICE_TYPE {

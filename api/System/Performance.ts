@@ -353,48 +353,6 @@ export const sysmonBatchAddFilesAutoCounters = 3;
 
 // Structs
 
-/**
- * Windows.Win32.System.Performance.Apis (size: 56)
- */
-export interface Apis {
-  /** System.Guid */
-  LIBID_SystemMonitor: Uint8Array | Deno.PointerValue | null;
-  /** System.Guid */
-  DIID_DICounterItem: Uint8Array | Deno.PointerValue | null;
-  /** System.Guid */
-  DIID_DILogFileItem: Uint8Array | Deno.PointerValue | null;
-  /** System.Guid */
-  DIID_DISystemMonitor: Uint8Array | Deno.PointerValue | null;
-  /** System.Guid */
-  DIID_DISystemMonitorInternal: Uint8Array | Deno.PointerValue | null;
-  /** System.Guid */
-  DIID_DISystemMonitorEvents: Uint8Array | Deno.PointerValue | null;
-  /** System.Guid */
-  S_PDH: Uint8Array | Deno.PointerValue | null;
-}
-
-export const sizeofApis = 56;
-
-export function allocApis(data?: Partial<Apis>): Uint8Array {
-  const buf = new Uint8Array(sizeofApis);
-  const view = new DataView(buf.buffer);
-  // 0x00: pointer
-  if (data?.LIBID_SystemMonitor !== undefined) view.setBigUint64(0, data.LIBID_SystemMonitor === null ? 0n : BigInt(util.toPointer(data.LIBID_SystemMonitor)), true);
-  // 0x08: pointer
-  if (data?.DIID_DICounterItem !== undefined) view.setBigUint64(8, data.DIID_DICounterItem === null ? 0n : BigInt(util.toPointer(data.DIID_DICounterItem)), true);
-  // 0x10: pointer
-  if (data?.DIID_DILogFileItem !== undefined) view.setBigUint64(16, data.DIID_DILogFileItem === null ? 0n : BigInt(util.toPointer(data.DIID_DILogFileItem)), true);
-  // 0x18: pointer
-  if (data?.DIID_DISystemMonitor !== undefined) view.setBigUint64(24, data.DIID_DISystemMonitor === null ? 0n : BigInt(util.toPointer(data.DIID_DISystemMonitor)), true);
-  // 0x20: pointer
-  if (data?.DIID_DISystemMonitorInternal !== undefined) view.setBigUint64(32, data.DIID_DISystemMonitorInternal === null ? 0n : BigInt(util.toPointer(data.DIID_DISystemMonitorInternal)), true);
-  // 0x28: pointer
-  if (data?.DIID_DISystemMonitorEvents !== undefined) view.setBigUint64(40, data.DIID_DISystemMonitorEvents === null ? 0n : BigInt(util.toPointer(data.DIID_DISystemMonitorEvents)), true);
-  // 0x30: pointer
-  if (data?.S_PDH !== undefined) view.setBigUint64(48, data.S_PDH === null ? 0n : BigInt(util.toPointer(data.S_PDH)), true);
-  return buf;
-}
-
 export type PerfProviderHandle = Deno.PointerValue;
 
 export type PerfQueryHandle = Deno.PointerValue;

@@ -948,28 +948,6 @@ export const VDS_RT_RAID61 = 27;
 // Structs
 
 /**
- * Windows.Win32.Storage.VirtualDiskService.Apis (size: 16)
- */
-export interface Apis {
-  /** System.Guid */
-  CLSID_VdsLoader: Uint8Array | Deno.PointerValue | null;
-  /** System.Guid */
-  CLSID_VdsService: Uint8Array | Deno.PointerValue | null;
-}
-
-export const sizeofApis = 16;
-
-export function allocApis(data?: Partial<Apis>): Uint8Array {
-  const buf = new Uint8Array(sizeofApis);
-  const view = new DataView(buf.buffer);
-  // 0x00: pointer
-  if (data?.CLSID_VdsLoader !== undefined) view.setBigUint64(0, data.CLSID_VdsLoader === null ? 0n : BigInt(util.toPointer(data.CLSID_VdsLoader)), true);
-  // 0x08: pointer
-  if (data?.CLSID_VdsService !== undefined) view.setBigUint64(8, data.CLSID_VdsService === null ? 0n : BigInt(util.toPointer(data.CLSID_VdsService)), true);
-  return buf;
-}
-
-/**
  * Windows.Win32.Storage.VirtualDiskService.VDS_STORAGE_IDENTIFIER (size: 24)
  */
 export interface VDS_STORAGE_IDENTIFIER {

@@ -32,24 +32,6 @@ export const CONNECT_COMPLETED = 2;
 
 // Structs
 
-/**
- * Windows.Win32.Security.Authentication.Identity.Provider.Apis (size: 8)
- */
-export interface Apis {
-  /** System.Guid */
-  OID_OAssociatedIdentityProviderObject: Uint8Array | Deno.PointerValue | null;
-}
-
-export const sizeofApis = 8;
-
-export function allocApis(data?: Partial<Apis>): Uint8Array {
-  const buf = new Uint8Array(sizeofApis);
-  const view = new DataView(buf.buffer);
-  // 0x00: pointer
-  if (data?.OID_OAssociatedIdentityProviderObject !== undefined) view.setBigUint64(0, data.OID_OAssociatedIdentityProviderObject === null ? 0n : BigInt(util.toPointer(data.OID_OAssociatedIdentityProviderObject)), true);
-  return buf;
-}
-
 // Native Libraries
 
 // Symbols

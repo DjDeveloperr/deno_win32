@@ -4561,7 +4561,7 @@ export interface MI_MethodDecl {
   /** ptr */
   schema: Deno.PointerValue | Uint8Array | null;
   /** Windows.Win32.System.Wmi.MI_MethodDecl_Invoke */
-  function: Uint8Array | Deno.PointerValue | null;
+  function__: Uint8Array | Deno.PointerValue | null;
 }
 
 export const sizeofMI_MethodDecl = 88;
@@ -4596,7 +4596,7 @@ export function allocMI_MethodDecl(data?: Partial<MI_MethodDecl>): Uint8Array {
   // 0x48: pointer
   if (data?.schema !== undefined) view.setBigUint64(72, data.schema === null ? 0n : BigInt(util.toPointer(data.schema)), true);
   // 0x50: pointer
-  if (data?.function !== undefined) view.setBigUint64(80, data.function === null ? 0n : BigInt(util.toPointer(data.function)), true);
+  if (data?.function__ !== undefined) view.setBigUint64(80, data.function__ === null ? 0n : BigInt(util.toPointer(data.function__)), true);
   return buf;
 }
 

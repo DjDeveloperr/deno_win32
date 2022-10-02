@@ -748,36 +748,6 @@ export function allocDXGI_RGBA(data?: Partial<DXGI_RGBA>): Uint8Array {
 }
 
 /**
- * Windows.Win32.Graphics.Dxgi.Apis (size: 32)
- */
-export interface Apis {
-  /** System.Guid */
-  DXGI_DEBUG_ALL: Uint8Array | Deno.PointerValue | null;
-  /** System.Guid */
-  DXGI_DEBUG_DX: Uint8Array | Deno.PointerValue | null;
-  /** System.Guid */
-  DXGI_DEBUG_DXGI: Uint8Array | Deno.PointerValue | null;
-  /** System.Guid */
-  DXGI_DEBUG_APP: Uint8Array | Deno.PointerValue | null;
-}
-
-export const sizeofApis = 32;
-
-export function allocApis(data?: Partial<Apis>): Uint8Array {
-  const buf = new Uint8Array(sizeofApis);
-  const view = new DataView(buf.buffer);
-  // 0x00: pointer
-  if (data?.DXGI_DEBUG_ALL !== undefined) view.setBigUint64(0, data.DXGI_DEBUG_ALL === null ? 0n : BigInt(util.toPointer(data.DXGI_DEBUG_ALL)), true);
-  // 0x08: pointer
-  if (data?.DXGI_DEBUG_DX !== undefined) view.setBigUint64(8, data.DXGI_DEBUG_DX === null ? 0n : BigInt(util.toPointer(data.DXGI_DEBUG_DX)), true);
-  // 0x10: pointer
-  if (data?.DXGI_DEBUG_DXGI !== undefined) view.setBigUint64(16, data.DXGI_DEBUG_DXGI === null ? 0n : BigInt(util.toPointer(data.DXGI_DEBUG_DXGI)), true);
-  // 0x18: pointer
-  if (data?.DXGI_DEBUG_APP !== undefined) view.setBigUint64(24, data.DXGI_DEBUG_APP === null ? 0n : BigInt(util.toPointer(data.DXGI_DEBUG_APP)), true);
-  return buf;
-}
-
-/**
  * Windows.Win32.Graphics.Dxgi.Common.DXGI_RATIONAL (size: 8)
  */
 export interface DXGI_RATIONAL {

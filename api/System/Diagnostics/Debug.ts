@@ -3151,48 +3151,6 @@ export const IpmiOsSelRecordTypeMax = 10;
 // Structs
 
 /**
- * Windows.Win32.System.Diagnostics.Debug.Apis (size: 56)
- */
-export interface Apis {
-  /** System.Guid */
-  CATID_ActiveScript: Uint8Array | Deno.PointerValue | null;
-  /** System.Guid */
-  CATID_ActiveScriptParse: Uint8Array | Deno.PointerValue | null;
-  /** System.Guid */
-  CATID_ActiveScriptEncode: Uint8Array | Deno.PointerValue | null;
-  /** System.Guid */
-  OID_VBSSIP: Uint8Array | Deno.PointerValue | null;
-  /** System.Guid */
-  OID_JSSIP: Uint8Array | Deno.PointerValue | null;
-  /** System.Guid */
-  OID_WSFSIP: Uint8Array | Deno.PointerValue | null;
-  /** System.Guid */
-  CATID_ActiveScriptAuthor: Uint8Array | Deno.PointerValue | null;
-}
-
-export const sizeofApis = 56;
-
-export function allocApis(data?: Partial<Apis>): Uint8Array {
-  const buf = new Uint8Array(sizeofApis);
-  const view = new DataView(buf.buffer);
-  // 0x00: pointer
-  if (data?.CATID_ActiveScript !== undefined) view.setBigUint64(0, data.CATID_ActiveScript === null ? 0n : BigInt(util.toPointer(data.CATID_ActiveScript)), true);
-  // 0x08: pointer
-  if (data?.CATID_ActiveScriptParse !== undefined) view.setBigUint64(8, data.CATID_ActiveScriptParse === null ? 0n : BigInt(util.toPointer(data.CATID_ActiveScriptParse)), true);
-  // 0x10: pointer
-  if (data?.CATID_ActiveScriptEncode !== undefined) view.setBigUint64(16, data.CATID_ActiveScriptEncode === null ? 0n : BigInt(util.toPointer(data.CATID_ActiveScriptEncode)), true);
-  // 0x18: pointer
-  if (data?.OID_VBSSIP !== undefined) view.setBigUint64(24, data.OID_VBSSIP === null ? 0n : BigInt(util.toPointer(data.OID_VBSSIP)), true);
-  // 0x20: pointer
-  if (data?.OID_JSSIP !== undefined) view.setBigUint64(32, data.OID_JSSIP === null ? 0n : BigInt(util.toPointer(data.OID_JSSIP)), true);
-  // 0x28: pointer
-  if (data?.OID_WSFSIP !== undefined) view.setBigUint64(40, data.OID_WSFSIP === null ? 0n : BigInt(util.toPointer(data.OID_WSFSIP)), true);
-  // 0x30: pointer
-  if (data?.CATID_ActiveScriptAuthor !== undefined) view.setBigUint64(48, data.CATID_ActiveScriptAuthor === null ? 0n : BigInt(util.toPointer(data.CATID_ActiveScriptAuthor)), true);
-  return buf;
-}
-
-/**
  * _Anonymous_e__Struct (size: 16)
  */
 export interface _Anonymous_e__Struct {

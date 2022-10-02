@@ -199,64 +199,6 @@ export const GPHintOrganizationalUnit = 4;
 
 // Structs
 
-/**
- * Windows.Win32.System.GroupPolicy.Apis (size: 88)
- */
-export interface Apis {
-  /** System.Guid */
-  CLSID_GPESnapIn: Uint8Array | Deno.PointerValue | null;
-  /** System.Guid */
-  NODEID_Machine: Uint8Array | Deno.PointerValue | null;
-  /** System.Guid */
-  NODEID_MachineSWSettings: Uint8Array | Deno.PointerValue | null;
-  /** System.Guid */
-  NODEID_User: Uint8Array | Deno.PointerValue | null;
-  /** System.Guid */
-  NODEID_UserSWSettings: Uint8Array | Deno.PointerValue | null;
-  /** System.Guid */
-  CLSID_GroupPolicyObject: Uint8Array | Deno.PointerValue | null;
-  /** System.Guid */
-  CLSID_RSOPSnapIn: Uint8Array | Deno.PointerValue | null;
-  /** System.Guid */
-  NODEID_RSOPMachine: Uint8Array | Deno.PointerValue | null;
-  /** System.Guid */
-  NODEID_RSOPMachineSWSettings: Uint8Array | Deno.PointerValue | null;
-  /** System.Guid */
-  NODEID_RSOPUser: Uint8Array | Deno.PointerValue | null;
-  /** System.Guid */
-  NODEID_RSOPUserSWSettings: Uint8Array | Deno.PointerValue | null;
-}
-
-export const sizeofApis = 88;
-
-export function allocApis(data?: Partial<Apis>): Uint8Array {
-  const buf = new Uint8Array(sizeofApis);
-  const view = new DataView(buf.buffer);
-  // 0x00: pointer
-  if (data?.CLSID_GPESnapIn !== undefined) view.setBigUint64(0, data.CLSID_GPESnapIn === null ? 0n : BigInt(util.toPointer(data.CLSID_GPESnapIn)), true);
-  // 0x08: pointer
-  if (data?.NODEID_Machine !== undefined) view.setBigUint64(8, data.NODEID_Machine === null ? 0n : BigInt(util.toPointer(data.NODEID_Machine)), true);
-  // 0x10: pointer
-  if (data?.NODEID_MachineSWSettings !== undefined) view.setBigUint64(16, data.NODEID_MachineSWSettings === null ? 0n : BigInt(util.toPointer(data.NODEID_MachineSWSettings)), true);
-  // 0x18: pointer
-  if (data?.NODEID_User !== undefined) view.setBigUint64(24, data.NODEID_User === null ? 0n : BigInt(util.toPointer(data.NODEID_User)), true);
-  // 0x20: pointer
-  if (data?.NODEID_UserSWSettings !== undefined) view.setBigUint64(32, data.NODEID_UserSWSettings === null ? 0n : BigInt(util.toPointer(data.NODEID_UserSWSettings)), true);
-  // 0x28: pointer
-  if (data?.CLSID_GroupPolicyObject !== undefined) view.setBigUint64(40, data.CLSID_GroupPolicyObject === null ? 0n : BigInt(util.toPointer(data.CLSID_GroupPolicyObject)), true);
-  // 0x30: pointer
-  if (data?.CLSID_RSOPSnapIn !== undefined) view.setBigUint64(48, data.CLSID_RSOPSnapIn === null ? 0n : BigInt(util.toPointer(data.CLSID_RSOPSnapIn)), true);
-  // 0x38: pointer
-  if (data?.NODEID_RSOPMachine !== undefined) view.setBigUint64(56, data.NODEID_RSOPMachine === null ? 0n : BigInt(util.toPointer(data.NODEID_RSOPMachine)), true);
-  // 0x40: pointer
-  if (data?.NODEID_RSOPMachineSWSettings !== undefined) view.setBigUint64(64, data.NODEID_RSOPMachineSWSettings === null ? 0n : BigInt(util.toPointer(data.NODEID_RSOPMachineSWSettings)), true);
-  // 0x48: pointer
-  if (data?.NODEID_RSOPUser !== undefined) view.setBigUint64(72, data.NODEID_RSOPUser === null ? 0n : BigInt(util.toPointer(data.NODEID_RSOPUser)), true);
-  // 0x50: pointer
-  if (data?.NODEID_RSOPUserSWSettings !== undefined) view.setBigUint64(80, data.NODEID_RSOPUserSWSettings === null ? 0n : BigInt(util.toPointer(data.NODEID_RSOPUserSWSettings)), true);
-  return buf;
-}
-
 export type CriticalPolicySectionHandle = Deno.PointerValue;
 
 export type PSTR = Deno.PointerValue | Uint8Array | null;

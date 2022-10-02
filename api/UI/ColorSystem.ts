@@ -186,24 +186,6 @@ export const MicrosoftHardwareColorV2 = 2;
 
 // Structs
 
-/**
- * Windows.Win32.UI.ColorSystem.Apis (size: 8)
- */
-export interface Apis {
-  /** System.Guid */
-  CATID_WcsPlugin: Uint8Array | Deno.PointerValue | null;
-}
-
-export const sizeofApis = 8;
-
-export function allocApis(data?: Partial<Apis>): Uint8Array {
-  const buf = new Uint8Array(sizeofApis);
-  const view = new DataView(buf.buffer);
-  // 0x00: pointer
-  if (data?.CATID_WcsPlugin !== undefined) view.setBigUint64(0, data.CATID_WcsPlugin === null ? 0n : BigInt(util.toPointer(data.CATID_WcsPlugin)), true);
-  return buf;
-}
-
 export type HCOLORSPACE = Deno.PointerValue;
 
 /**

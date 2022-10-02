@@ -277,76 +277,6 @@ export const PRIORITY_HIGH = 2;
 
 // Structs
 
-/**
- * Windows.Win32.Data.HtmlHelp.Apis (size: 112)
- */
-export interface Apis {
-  /** System.Guid */
-  CLSID_IITPropList: Uint8Array | Deno.PointerValue | null;
-  /** System.Guid */
-  CLSID_IITDatabase: Uint8Array | Deno.PointerValue | null;
-  /** System.Guid */
-  CLSID_IITDatabaseLocal: Uint8Array | Deno.PointerValue | null;
-  /** System.Guid */
-  CLSID_IITCmdInt: Uint8Array | Deno.PointerValue | null;
-  /** System.Guid */
-  CLSID_IITSvMgr: Uint8Array | Deno.PointerValue | null;
-  /** System.Guid */
-  CLSID_IITWordWheelUpdate: Uint8Array | Deno.PointerValue | null;
-  /** System.Guid */
-  CLSID_IITGroupUpdate: Uint8Array | Deno.PointerValue | null;
-  /** System.Guid */
-  CLSID_IITIndexBuild: Uint8Array | Deno.PointerValue | null;
-  /** System.Guid */
-  CLSID_IITWWFilterBuild: Uint8Array | Deno.PointerValue | null;
-  /** System.Guid */
-  CLSID_IITWordWheel: Uint8Array | Deno.PointerValue | null;
-  /** System.Guid */
-  CLSID_IITWordWheelLocal: Uint8Array | Deno.PointerValue | null;
-  /** System.Guid */
-  CLSID_IITResultSet: Uint8Array | Deno.PointerValue | null;
-  /** System.Guid */
-  CLSID_ITStdBreaker: Uint8Array | Deno.PointerValue | null;
-  /** System.Guid */
-  CLSID_ITEngStemmer: Uint8Array | Deno.PointerValue | null;
-}
-
-export const sizeofApis = 112;
-
-export function allocApis(data?: Partial<Apis>): Uint8Array {
-  const buf = new Uint8Array(sizeofApis);
-  const view = new DataView(buf.buffer);
-  // 0x00: pointer
-  if (data?.CLSID_IITPropList !== undefined) view.setBigUint64(0, data.CLSID_IITPropList === null ? 0n : BigInt(util.toPointer(data.CLSID_IITPropList)), true);
-  // 0x08: pointer
-  if (data?.CLSID_IITDatabase !== undefined) view.setBigUint64(8, data.CLSID_IITDatabase === null ? 0n : BigInt(util.toPointer(data.CLSID_IITDatabase)), true);
-  // 0x10: pointer
-  if (data?.CLSID_IITDatabaseLocal !== undefined) view.setBigUint64(16, data.CLSID_IITDatabaseLocal === null ? 0n : BigInt(util.toPointer(data.CLSID_IITDatabaseLocal)), true);
-  // 0x18: pointer
-  if (data?.CLSID_IITCmdInt !== undefined) view.setBigUint64(24, data.CLSID_IITCmdInt === null ? 0n : BigInt(util.toPointer(data.CLSID_IITCmdInt)), true);
-  // 0x20: pointer
-  if (data?.CLSID_IITSvMgr !== undefined) view.setBigUint64(32, data.CLSID_IITSvMgr === null ? 0n : BigInt(util.toPointer(data.CLSID_IITSvMgr)), true);
-  // 0x28: pointer
-  if (data?.CLSID_IITWordWheelUpdate !== undefined) view.setBigUint64(40, data.CLSID_IITWordWheelUpdate === null ? 0n : BigInt(util.toPointer(data.CLSID_IITWordWheelUpdate)), true);
-  // 0x30: pointer
-  if (data?.CLSID_IITGroupUpdate !== undefined) view.setBigUint64(48, data.CLSID_IITGroupUpdate === null ? 0n : BigInt(util.toPointer(data.CLSID_IITGroupUpdate)), true);
-  // 0x38: pointer
-  if (data?.CLSID_IITIndexBuild !== undefined) view.setBigUint64(56, data.CLSID_IITIndexBuild === null ? 0n : BigInt(util.toPointer(data.CLSID_IITIndexBuild)), true);
-  // 0x40: pointer
-  if (data?.CLSID_IITWWFilterBuild !== undefined) view.setBigUint64(64, data.CLSID_IITWWFilterBuild === null ? 0n : BigInt(util.toPointer(data.CLSID_IITWWFilterBuild)), true);
-  // 0x48: pointer
-  if (data?.CLSID_IITWordWheel !== undefined) view.setBigUint64(72, data.CLSID_IITWordWheel === null ? 0n : BigInt(util.toPointer(data.CLSID_IITWordWheel)), true);
-  // 0x50: pointer
-  if (data?.CLSID_IITWordWheelLocal !== undefined) view.setBigUint64(80, data.CLSID_IITWordWheelLocal === null ? 0n : BigInt(util.toPointer(data.CLSID_IITWordWheelLocal)), true);
-  // 0x58: pointer
-  if (data?.CLSID_IITResultSet !== undefined) view.setBigUint64(88, data.CLSID_IITResultSet === null ? 0n : BigInt(util.toPointer(data.CLSID_IITResultSet)), true);
-  // 0x60: pointer
-  if (data?.CLSID_ITStdBreaker !== undefined) view.setBigUint64(96, data.CLSID_ITStdBreaker === null ? 0n : BigInt(util.toPointer(data.CLSID_ITStdBreaker)), true);
-  // 0x68: pointer
-  if (data?.CLSID_ITEngStemmer !== undefined) view.setBigUint64(104, data.CLSID_ITEngStemmer === null ? 0n : BigInt(util.toPointer(data.CLSID_ITEngStemmer)), true);
-  return buf;
-}
-
 export type HWND = Deno.PointerValue;
 
 /**
@@ -979,7 +909,7 @@ export interface HH_GLOBAL_PROPERTY {
   /** Windows.Win32.Data.HtmlHelp.HH_GPROPID */
   id: HH_GPROPID;
   /** Windows.Win32.System.Com.VARIANT */
-  var: Uint8Array | Deno.PointerValue | null;
+  var__: Uint8Array | Deno.PointerValue | null;
 }
 
 export const sizeofHH_GLOBAL_PROPERTY = 16;
@@ -991,7 +921,7 @@ export function allocHH_GLOBAL_PROPERTY(data?: Partial<HH_GLOBAL_PROPERTY>): Uin
   if (data?.id !== undefined) view.setInt32(0, Number(data.id), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.var !== undefined) view.setBigUint64(8, data.var === null ? 0n : BigInt(util.toPointer(data.var)), true);
+  if (data?.var__ !== undefined) view.setBigUint64(8, data.var__ === null ? 0n : BigInt(util.toPointer(data.var__)), true);
   return buf;
 }
 

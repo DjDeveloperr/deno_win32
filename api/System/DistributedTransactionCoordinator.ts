@@ -219,28 +219,6 @@ export const DTCLUCOMPARESTATESRESPONSE_PROTOCOL = 2;
 // Structs
 
 /**
- * Windows.Win32.System.DistributedTransactionCoordinator.Apis (size: 16)
- */
-export interface Apis {
-  /** System.Guid */
-  CLSID_MSDtcTransactionManager: Uint8Array | Deno.PointerValue | null;
-  /** System.Guid */
-  CLSID_MSDtcTransaction: Uint8Array | Deno.PointerValue | null;
-}
-
-export const sizeofApis = 16;
-
-export function allocApis(data?: Partial<Apis>): Uint8Array {
-  const buf = new Uint8Array(sizeofApis);
-  const view = new DataView(buf.buffer);
-  // 0x00: pointer
-  if (data?.CLSID_MSDtcTransactionManager !== undefined) view.setBigUint64(0, data.CLSID_MSDtcTransactionManager === null ? 0n : BigInt(util.toPointer(data.CLSID_MSDtcTransactionManager)), true);
-  // 0x08: pointer
-  if (data?.CLSID_MSDtcTransaction !== undefined) view.setBigUint64(8, data.CLSID_MSDtcTransaction === null ? 0n : BigInt(util.toPointer(data.CLSID_MSDtcTransaction)), true);
-  return buf;
-}
-
-/**
  * Windows.Win32.System.DistributedTransactionCoordinator.BOID (size: 8)
  */
 export interface BOID {

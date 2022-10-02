@@ -54,60 +54,6 @@ export const DMO_ENUMF_INCLUDE_KEYED = 1;
 
 // Structs
 
-/**
- * Windows.Win32.Media.DxMediaObjects.Apis (size: 80)
- */
-export interface Apis {
-  /** System.Guid */
-  DMOCATEGORY_AUDIO_DECODER: Uint8Array | Deno.PointerValue | null;
-  /** System.Guid */
-  DMOCATEGORY_AUDIO_ENCODER: Uint8Array | Deno.PointerValue | null;
-  /** System.Guid */
-  DMOCATEGORY_VIDEO_DECODER: Uint8Array | Deno.PointerValue | null;
-  /** System.Guid */
-  DMOCATEGORY_VIDEO_ENCODER: Uint8Array | Deno.PointerValue | null;
-  /** System.Guid */
-  DMOCATEGORY_AUDIO_EFFECT: Uint8Array | Deno.PointerValue | null;
-  /** System.Guid */
-  DMOCATEGORY_VIDEO_EFFECT: Uint8Array | Deno.PointerValue | null;
-  /** System.Guid */
-  DMOCATEGORY_AUDIO_CAPTURE_EFFECT: Uint8Array | Deno.PointerValue | null;
-  /** System.Guid */
-  DMOCATEGORY_ACOUSTIC_ECHO_CANCEL: Uint8Array | Deno.PointerValue | null;
-  /** System.Guid */
-  DMOCATEGORY_AUDIO_NOISE_SUPPRESS: Uint8Array | Deno.PointerValue | null;
-  /** System.Guid */
-  DMOCATEGORY_AGC: Uint8Array | Deno.PointerValue | null;
-}
-
-export const sizeofApis = 80;
-
-export function allocApis(data?: Partial<Apis>): Uint8Array {
-  const buf = new Uint8Array(sizeofApis);
-  const view = new DataView(buf.buffer);
-  // 0x00: pointer
-  if (data?.DMOCATEGORY_AUDIO_DECODER !== undefined) view.setBigUint64(0, data.DMOCATEGORY_AUDIO_DECODER === null ? 0n : BigInt(util.toPointer(data.DMOCATEGORY_AUDIO_DECODER)), true);
-  // 0x08: pointer
-  if (data?.DMOCATEGORY_AUDIO_ENCODER !== undefined) view.setBigUint64(8, data.DMOCATEGORY_AUDIO_ENCODER === null ? 0n : BigInt(util.toPointer(data.DMOCATEGORY_AUDIO_ENCODER)), true);
-  // 0x10: pointer
-  if (data?.DMOCATEGORY_VIDEO_DECODER !== undefined) view.setBigUint64(16, data.DMOCATEGORY_VIDEO_DECODER === null ? 0n : BigInt(util.toPointer(data.DMOCATEGORY_VIDEO_DECODER)), true);
-  // 0x18: pointer
-  if (data?.DMOCATEGORY_VIDEO_ENCODER !== undefined) view.setBigUint64(24, data.DMOCATEGORY_VIDEO_ENCODER === null ? 0n : BigInt(util.toPointer(data.DMOCATEGORY_VIDEO_ENCODER)), true);
-  // 0x20: pointer
-  if (data?.DMOCATEGORY_AUDIO_EFFECT !== undefined) view.setBigUint64(32, data.DMOCATEGORY_AUDIO_EFFECT === null ? 0n : BigInt(util.toPointer(data.DMOCATEGORY_AUDIO_EFFECT)), true);
-  // 0x28: pointer
-  if (data?.DMOCATEGORY_VIDEO_EFFECT !== undefined) view.setBigUint64(40, data.DMOCATEGORY_VIDEO_EFFECT === null ? 0n : BigInt(util.toPointer(data.DMOCATEGORY_VIDEO_EFFECT)), true);
-  // 0x30: pointer
-  if (data?.DMOCATEGORY_AUDIO_CAPTURE_EFFECT !== undefined) view.setBigUint64(48, data.DMOCATEGORY_AUDIO_CAPTURE_EFFECT === null ? 0n : BigInt(util.toPointer(data.DMOCATEGORY_AUDIO_CAPTURE_EFFECT)), true);
-  // 0x38: pointer
-  if (data?.DMOCATEGORY_ACOUSTIC_ECHO_CANCEL !== undefined) view.setBigUint64(56, data.DMOCATEGORY_ACOUSTIC_ECHO_CANCEL === null ? 0n : BigInt(util.toPointer(data.DMOCATEGORY_ACOUSTIC_ECHO_CANCEL)), true);
-  // 0x40: pointer
-  if (data?.DMOCATEGORY_AUDIO_NOISE_SUPPRESS !== undefined) view.setBigUint64(64, data.DMOCATEGORY_AUDIO_NOISE_SUPPRESS === null ? 0n : BigInt(util.toPointer(data.DMOCATEGORY_AUDIO_NOISE_SUPPRESS)), true);
-  // 0x48: pointer
-  if (data?.DMOCATEGORY_AGC !== undefined) view.setBigUint64(72, data.DMOCATEGORY_AGC === null ? 0n : BigInt(util.toPointer(data.DMOCATEGORY_AGC)), true);
-  return buf;
-}
-
 export type BOOL = number;
 
 /**

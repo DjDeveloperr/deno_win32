@@ -705,52 +705,6 @@ export const PowerDeviceMaximum = 5;
 
 // Structs
 
-/**
- * Windows.Win32.System.Hypervisor.Apis (size: 64)
- */
-export interface Apis {
-  /** System.Guid */
-  HV_GUID_ZERO: Uint8Array | Deno.PointerValue | null;
-  /** System.Guid */
-  HV_GUID_BROADCAST: Uint8Array | Deno.PointerValue | null;
-  /** System.Guid */
-  HV_GUID_CHILDREN: Uint8Array | Deno.PointerValue | null;
-  /** System.Guid */
-  HV_GUID_LOOPBACK: Uint8Array | Deno.PointerValue | null;
-  /** System.Guid */
-  HV_GUID_PARENT: Uint8Array | Deno.PointerValue | null;
-  /** System.Guid */
-  HV_GUID_SILOHOST: Uint8Array | Deno.PointerValue | null;
-  /** System.Guid */
-  HV_GUID_VSOCK_TEMPLATE: Uint8Array | Deno.PointerValue | null;
-  /** System.Guid */
-  GUID_DEVINTERFACE_VM_GENCOUNTER: Uint8Array | Deno.PointerValue | null;
-}
-
-export const sizeofApis = 64;
-
-export function allocApis(data?: Partial<Apis>): Uint8Array {
-  const buf = new Uint8Array(sizeofApis);
-  const view = new DataView(buf.buffer);
-  // 0x00: pointer
-  if (data?.HV_GUID_ZERO !== undefined) view.setBigUint64(0, data.HV_GUID_ZERO === null ? 0n : BigInt(util.toPointer(data.HV_GUID_ZERO)), true);
-  // 0x08: pointer
-  if (data?.HV_GUID_BROADCAST !== undefined) view.setBigUint64(8, data.HV_GUID_BROADCAST === null ? 0n : BigInt(util.toPointer(data.HV_GUID_BROADCAST)), true);
-  // 0x10: pointer
-  if (data?.HV_GUID_CHILDREN !== undefined) view.setBigUint64(16, data.HV_GUID_CHILDREN === null ? 0n : BigInt(util.toPointer(data.HV_GUID_CHILDREN)), true);
-  // 0x18: pointer
-  if (data?.HV_GUID_LOOPBACK !== undefined) view.setBigUint64(24, data.HV_GUID_LOOPBACK === null ? 0n : BigInt(util.toPointer(data.HV_GUID_LOOPBACK)), true);
-  // 0x20: pointer
-  if (data?.HV_GUID_PARENT !== undefined) view.setBigUint64(32, data.HV_GUID_PARENT === null ? 0n : BigInt(util.toPointer(data.HV_GUID_PARENT)), true);
-  // 0x28: pointer
-  if (data?.HV_GUID_SILOHOST !== undefined) view.setBigUint64(40, data.HV_GUID_SILOHOST === null ? 0n : BigInt(util.toPointer(data.HV_GUID_SILOHOST)), true);
-  // 0x30: pointer
-  if (data?.HV_GUID_VSOCK_TEMPLATE !== undefined) view.setBigUint64(48, data.HV_GUID_VSOCK_TEMPLATE === null ? 0n : BigInt(util.toPointer(data.HV_GUID_VSOCK_TEMPLATE)), true);
-  // 0x38: pointer
-  if (data?.GUID_DEVINTERFACE_VM_GENCOUNTER !== undefined) view.setBigUint64(56, data.GUID_DEVINTERFACE_VM_GENCOUNTER === null ? 0n : BigInt(util.toPointer(data.GUID_DEVINTERFACE_VM_GENCOUNTER)), true);
-  return buf;
-}
-
 export type WHV_PARTITION_HANDLE = Deno.PointerValue;
 
 /**

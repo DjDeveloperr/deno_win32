@@ -4,28 +4,6 @@ import * as util from "../../../util.ts";
 
 // Structs
 
-/**
- * Windows.Win32.System.WinRT.Media.Apis (size: 16)
- */
-export interface Apis {
-  /** System.Guid */
-  CLSID_AudioFrameNativeFactory: Uint8Array | Deno.PointerValue | null;
-  /** System.Guid */
-  CLSID_VideoFrameNativeFactory: Uint8Array | Deno.PointerValue | null;
-}
-
-export const sizeofApis = 16;
-
-export function allocApis(data?: Partial<Apis>): Uint8Array {
-  const buf = new Uint8Array(sizeofApis);
-  const view = new DataView(buf.buffer);
-  // 0x00: pointer
-  if (data?.CLSID_AudioFrameNativeFactory !== undefined) view.setBigUint64(0, data.CLSID_AudioFrameNativeFactory === null ? 0n : BigInt(util.toPointer(data.CLSID_AudioFrameNativeFactory)), true);
-  // 0x08: pointer
-  if (data?.CLSID_VideoFrameNativeFactory !== undefined) view.setBigUint64(8, data.CLSID_VideoFrameNativeFactory === null ? 0n : BigInt(util.toPointer(data.CLSID_VideoFrameNativeFactory)), true);
-  return buf;
-}
-
 // Native Libraries
 
 // Symbols

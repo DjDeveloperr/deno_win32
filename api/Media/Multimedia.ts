@@ -4646,28 +4646,6 @@ export const MCI_OVLY_WHERE_VIDEO = 1048576;
 
 // Structs
 
-/**
- * Windows.Win32.Media.Multimedia.Apis (size: 16)
- */
-export interface Apis {
-  /** System.Guid */
-  CLSID_AVISimpleUnMarshal: Uint8Array | Deno.PointerValue | null;
-  /** System.Guid */
-  CLSID_AVIFile: Uint8Array | Deno.PointerValue | null;
-}
-
-export const sizeofApis = 16;
-
-export function allocApis(data?: Partial<Apis>): Uint8Array {
-  const buf = new Uint8Array(sizeofApis);
-  const view = new DataView(buf.buffer);
-  // 0x00: pointer
-  if (data?.CLSID_AVISimpleUnMarshal !== undefined) view.setBigUint64(0, data.CLSID_AVISimpleUnMarshal === null ? 0n : BigInt(util.toPointer(data.CLSID_AVISimpleUnMarshal)), true);
-  // 0x08: pointer
-  if (data?.CLSID_AVIFile !== undefined) view.setBigUint64(8, data.CLSID_AVIFile === null ? 0n : BigInt(util.toPointer(data.CLSID_AVIFile)), true);
-  return buf;
-}
-
 export type HMMIO = Deno.PointerValue;
 
 export type HDRVR = Deno.PointerValue;

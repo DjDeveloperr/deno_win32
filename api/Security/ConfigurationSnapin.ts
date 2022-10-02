@@ -40,32 +40,6 @@ export const SceSvcInternalUse = 3;
 // Structs
 
 /**
- * Windows.Win32.Security.ConfigurationSnapin.Apis (size: 24)
- */
-export interface Apis {
-  /** System.Guid */
-  cNodetypeSceTemplateServices: Uint8Array | Deno.PointerValue | null;
-  /** System.Guid */
-  cNodetypeSceAnalysisServices: Uint8Array | Deno.PointerValue | null;
-  /** System.Guid */
-  cNodetypeSceEventLog: Uint8Array | Deno.PointerValue | null;
-}
-
-export const sizeofApis = 24;
-
-export function allocApis(data?: Partial<Apis>): Uint8Array {
-  const buf = new Uint8Array(sizeofApis);
-  const view = new DataView(buf.buffer);
-  // 0x00: pointer
-  if (data?.cNodetypeSceTemplateServices !== undefined) view.setBigUint64(0, data.cNodetypeSceTemplateServices === null ? 0n : BigInt(util.toPointer(data.cNodetypeSceTemplateServices)), true);
-  // 0x08: pointer
-  if (data?.cNodetypeSceAnalysisServices !== undefined) view.setBigUint64(8, data.cNodetypeSceAnalysisServices === null ? 0n : BigInt(util.toPointer(data.cNodetypeSceAnalysisServices)), true);
-  // 0x10: pointer
-  if (data?.cNodetypeSceEventLog !== undefined) view.setBigUint64(16, data.cNodetypeSceEventLog === null ? 0n : BigInt(util.toPointer(data.cNodetypeSceEventLog)), true);
-  return buf;
-}
-
-/**
  * Windows.Win32.Security.ConfigurationSnapin.SCESVC_CONFIGURATION_LINE (size: 24)
  */
 export interface SCESVC_CONFIGURATION_LINE {
