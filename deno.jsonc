@@ -1,0 +1,16 @@
+{
+  "tasks": {
+    "gen": "deno run -A --unstable gen.ts",
+    "check": "deno check --unstable gen.ts"
+  },
+  "lint": {
+    "rules": {
+      "exclude": [
+        "no-inner-declarations",
+        "no-var",
+        "no-unused-vars",
+        "no-explicit-any"
+      ]
+    }
+  }
+}
