@@ -6,7 +6,8 @@
   "fmt": {
     "files": {
       "exclude": [
-        "api"
+        "api",
+        "win32_apis.json"
       ]
     }
   },
