@@ -1,7 +1,6 @@
 import * as Wm from "../api/UI/WindowsAndMessaging.ts";
 import * as Gfx from "../api/Graphics/OpenGL.ts";
 import * as Gdi from "../api/Graphics/Gdi.ts";
-import * as Lib from "../api/System/LibraryLoader.ts";
 
 function display() {
   Gfx.glClear(Gfx.GL_COLOR_BUFFER_BIT);
@@ -17,6 +16,8 @@ function display() {
 }
 
 const ps = Gdi.allocPAINTSTRUCT();
+
+let clicks1 = 0, clicks2 = 0;
 
 const cb = new Deno.UnsafeCallback(
   {
@@ -38,6 +39,27 @@ const cb = new Deno.UnsafeCallback(
         return 0;
       }
 
+      case Wm.WM_COMMAND: {
+        if ((Number(wParam) & 0xffff) === Wm.BN_CLICKED) {
+          if (lParam === button1) {
+            Wm.SendMessageA(
+              staticText1,
+              Wm.WM_SETTEXT,
+              null,
+              new TextEncoder().encode(`Clicks: ${++clicks1}\0`),
+            );
+          } else if (lParam === button2) {
+            Wm.SendMessageA(
+              staticText2,
+              Wm.WM_SETTEXT,
+              null,
+              new TextEncoder().encode(`Clicks: ${++clicks2}\0`),
+            );
+          }
+        }
+        return 0;
+      }
+
       case Wm.WM_CLOSE: {
         Wm.PostQuitMessage(0);
         return 0;
@@ -54,7 +76,27 @@ const cb = new Deno.UnsafeCallback(
   },
 );
 
-let hInstance: Deno.PointerValue = 0;
+const wc = Wm.allocWNDCLASSA({
+  style: Wm.CS_OWNDC,
+  lpfnWndProc: cb.pointer,
+  cbClsExtra: 0,
+  cbWndExtra: 0,
+  hIcon: Wm.LoadIconA(null, "IDI_APPLICATION"),
+  hCursor: Wm.LoadCursorA(null, "IDC_ARROW"),
+  hbrBackground: null,
+  lpszMenuName: null,
+  lpszClassName: "OpenGL",
+});
+
+if (!Wm.RegisterClassA(wc)) {
+  Wm.MessageBoxA(
+    null,
+    "RegisterClass() failed: Cannot register window class.",
+    "Error",
+    0,
+  );
+  Deno.exit(1);
+}
 
 function createOpenGLWindow(
   title: string,
@@ -65,33 +107,6 @@ function createOpenGLWindow(
   type: number,
   flags: number,
 ) {
-  if (!hInstance) {
-    hInstance = Number(Lib.GetModuleHandleA(null));
-
-    const wc = Wm.allocWNDCLASSA({
-      style: Wm.CS_OWNDC,
-      lpfnWndProc: cb.pointer,
-      cbClsExtra: 0,
-      cbWndExtra: 0,
-      hInstance: hInstance,
-      hIcon: Wm.LoadIconA(null, "IDI_APPLICATION"),
-      hCursor: Wm.LoadCursorA(null, "IDC_ARROW"),
-      hbrBackground: null,
-      lpszMenuName: null,
-      lpszClassName: "OpenGL",
-    });
-
-    if (!Wm.RegisterClassA(wc)) {
-      Wm.MessageBoxA(
-        null,
-        "RegisterClass() failed: Cannot register window class.",
-        "Error",
-        0,
-      );
-      return;
-    }
-  }
-
   const hWnd = Wm.CreateWindowExA(
     Wm.WS_EX_OVERLAPPEDWINDOW,
     "OpenGL",
@@ -103,7 +118,7 @@ function createOpenGLWindow(
     height,
     null,
     null,
-    hInstance,
+    null,
     null,
   );
 
@@ -161,14 +176,71 @@ const hWnd = createOpenGLWindow(
   "Deno Win32 OpenGL",
   0,
   0,
-  256,
-  256,
+  800,
+  600,
   Gdi.PFD_TYPE_RGBA,
   0,
 );
 if (!hWnd) {
   Deno.exit(1);
 }
+
+const button1 = Wm.CreateWindowExA(
+  0,
+  "Button",
+  "button1",
+  Wm.WS_CHILD | Wm.WS_VISIBLE,
+  50,
+  50,
+  200,
+  25,
+  hWnd,
+  null,
+  null,
+  null,
+);
+const button2 = Wm.CreateWindowExA(
+  0,
+  "Button",
+  "button2",
+  Wm.WS_CHILD | Wm.WS_VISIBLE,
+  50,
+  100,
+  200,
+  75,
+  hWnd,
+  null,
+  null,
+  null,
+);
+const staticText1 = Wm.CreateWindowExA(
+  0,
+  "Static",
+  "Clicks: 0",
+  Wm.WS_CHILD | Wm.WS_VISIBLE,
+  50,
+  200,
+  200,
+  23,
+  hWnd,
+  null,
+  null,
+  null,
+);
+const staticText2 = Wm.CreateWindowExA(
+  0,
+  "Static",
+  "Clicks: 0",
+  Wm.WS_CHILD | Wm.WS_VISIBLE,
+  50,
+  230,
+  200,
+  23,
+  hWnd,
+  null,
+  null,
+  null,
+);
 
 const hDC = Gdi.GetDC(hWnd);
 const hRC = Gfx.wglCreateContext(hDC);

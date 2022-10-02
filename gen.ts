@@ -32,6 +32,8 @@ const callbackSymbols = [
   "PostQuitMessage",
   "DefWindowProcA",
   "DefWindowProcW",
+  "SendMessageA",
+  "SendMessageW",
 ];
 
 const specialTypes: Record<string, {
@@ -150,7 +152,24 @@ function typeToFFI(ty: string): Deno.NativeResultType {
 
 function jsify(name: string) {
   if (
-    name === "function" || name === "in" || name === "class" || name === "var"
+    name === "function" || name === "in" || name === "class" ||
+    name === "var" || name === "let" || name === "arguments" ||
+    name === "const" || name === "yield" || name === "await" ||
+    name === "async" || name === "enum" || name === "export" ||
+    name === "import" || name === "extends" || name === "implements" ||
+    name === "interface" || name === "package" ||
+    name === "private" || name === "protected" || name === "public" ||
+    name === "static" || name === "super" ||
+    name === "switch" || name === "this" || name === "throw" ||
+    name === "try" || name === "typeof" || name === "void" ||
+    name === "while" || name === "with" || name === "delete" || name === "do" ||
+    name === "if" || name === "new" ||
+    name === "return" || name === "case" || name === "catch" ||
+    name === "debugger" || name === "default" || name === "else" ||
+    name === "finally" || name === "for" || name === "instanceof" ||
+    name === "null" || name === "true" || name === "false" ||
+    name === "NaN" || name === "Infinity" || name === "undefined" ||
+    name === "abstract" || name === "boolean"
   ) {
     return name + "__";
   } else return name.replaceAll("-", "_").replaceAll(".", "_");

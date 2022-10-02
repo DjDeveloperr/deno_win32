@@ -11298,14 +11298,14 @@ export function WsAbandonCall(
 export function WsCall(
   serviceProxy: Deno.PointerValue | Uint8Array | null /* ptr */,
   operation: Deno.PointerValue | Uint8Array | null /* ptr */,
-  arguments: Deno.PointerValue | Uint8Array | null /* ptr */,
+  arguments__: Deno.PointerValue | Uint8Array | null /* ptr */,
   heap: Deno.PointerValue | Uint8Array | null /* ptr */,
   callProperties: Deno.PointerValue | Uint8Array | null /* ptr */,
   callPropertyCount: number /* u32 */,
   asyncContext: Deno.PointerValue | Uint8Array | null /* ptr */,
   error: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libwebservices.WsCall(util.toPointer(serviceProxy), util.toPointer(operation), util.toPointer(arguments), util.toPointer(heap), util.toPointer(callProperties), callPropertyCount, util.toPointer(asyncContext), util.toPointer(error)));
+  return util.pointerFromFfi(libwebservices.WsCall(util.toPointer(serviceProxy), util.toPointer(operation), util.toPointer(arguments__), util.toPointer(heap), util.toPointer(callProperties), callPropertyCount, util.toPointer(asyncContext), util.toPointer(error)));
 }
 
 export function WsDecodeUrl(

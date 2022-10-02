@@ -5533,10 +5533,12 @@ try {
       result: "pointer",
     },
     SendMessageA: {
+      callback: true,
       parameters: ["pointer", "u32", "pointer", "pointer"],
       result: "pointer",
     },
     SendMessageW: {
+      callback: true,
       parameters: ["pointer", "u32", "pointer", "pointer"],
       result: "pointer",
     },

@@ -2195,7 +2195,7 @@ export function allocMI_ConstInstanceA(data?: Partial<MI_ConstInstanceA>): Uint8
  */
 export interface MI_Value {
   /** u8 */
-  boolean: number;
+  boolean__: number;
   /** u8 */
   uint8: number;
   /** i8 */
@@ -2268,7 +2268,7 @@ export function allocMI_Value(data?: Partial<MI_Value>): Uint8Array {
   const buf = new Uint8Array(sizeofMI_Value);
   const view = new DataView(buf.buffer);
   // 0x00: u8
-  if (data?.boolean !== undefined) view.setUint8(0, Number(data.boolean));
+  if (data?.boolean__ !== undefined) view.setUint8(0, Number(data.boolean__));
   // 0x01: u8
   if (data?.uint8 !== undefined) view.setUint8(1, Number(data.uint8));
   // 0x02: i8

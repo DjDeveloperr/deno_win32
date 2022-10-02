@@ -294,7 +294,7 @@ export interface INTERACTION_CONTEXT_OUTPUT {
   /** f32 */
   y: number;
   /** _arguments_e__Union */
-  arguments: Uint8Array | Deno.PointerValue | null;
+  arguments__: Uint8Array | Deno.PointerValue | null;
 }
 
 export const sizeofINTERACTION_CONTEXT_OUTPUT = 32;
@@ -314,7 +314,7 @@ export function allocINTERACTION_CONTEXT_OUTPUT(data?: Partial<INTERACTION_CONTE
   if (data?.y !== undefined) view.setFloat32(16, Number(data.y), true);
   // 0x14: pad4
   // 0x18: pointer
-  if (data?.arguments !== undefined) view.setBigUint64(24, data.arguments === null ? 0n : BigInt(util.toPointer(data.arguments)), true);
+  if (data?.arguments__ !== undefined) view.setBigUint64(24, data.arguments__ === null ? 0n : BigInt(util.toPointer(data.arguments__)), true);
   return buf;
 }
 
@@ -337,7 +337,7 @@ export interface INTERACTION_CONTEXT_OUTPUT2 {
   /** f32 */
   y: number;
   /** _arguments_e__Union */
-  arguments: Uint8Array | Deno.PointerValue | null;
+  arguments__: Uint8Array | Deno.PointerValue | null;
 }
 
 export const sizeofINTERACTION_CONTEXT_OUTPUT2 = 40;
@@ -361,7 +361,7 @@ export function allocINTERACTION_CONTEXT_OUTPUT2(data?: Partial<INTERACTION_CONT
   if (data?.y !== undefined) view.setFloat32(24, Number(data.y), true);
   // 0x1c: pad4
   // 0x20: pointer
-  if (data?.arguments !== undefined) view.setBigUint64(32, data.arguments === null ? 0n : BigInt(util.toPointer(data.arguments)), true);
+  if (data?.arguments__ !== undefined) view.setBigUint64(32, data.arguments__ === null ? 0n : BigInt(util.toPointer(data.arguments__)), true);
   return buf;
 }
 
