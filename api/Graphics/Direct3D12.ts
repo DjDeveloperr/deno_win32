@@ -10136,7 +10136,7 @@ export function allocD3D12_PARAMETER_DESC(data?: Partial<D3D12_PARAMETER_DESC>):
 // Native Libraries
 
 try {
-  var libd3d12 = Deno.dlopen("d3d12", {
+  var libd3d12_dll = Deno.dlopen("d3d12.dll", {
     D3D12SerializeRootSignature: {
       parameters: ["pointer", "i32", "pointer", "pointer"],
       result: "pointer",
@@ -10180,7 +10180,7 @@ export function D3D12SerializeRootSignature(
   ppBlob: Deno.PointerValue | Uint8Array | null /* ptr */,
   ppErrorBlob: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libd3d12.D3D12SerializeRootSignature(util.toPointer(pRootSignature), Version, util.toPointer(ppBlob), util.toPointer(ppErrorBlob)));
+  return util.pointerFromFfi(libd3d12_dll.D3D12SerializeRootSignature(util.toPointer(pRootSignature), Version, util.toPointer(ppBlob), util.toPointer(ppErrorBlob)));
 }
 
 export function D3D12CreateRootSignatureDeserializer(
@@ -10189,7 +10189,7 @@ export function D3D12CreateRootSignatureDeserializer(
   pRootSignatureDeserializerInterface: Deno.PointerValue | Uint8Array | null /* ptr */,
   ppRootSignatureDeserializer: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libd3d12.D3D12CreateRootSignatureDeserializer(util.toPointer(pSrcData), SrcDataSizeInBytes, util.toPointer(pRootSignatureDeserializerInterface), util.toPointer(ppRootSignatureDeserializer)));
+  return util.pointerFromFfi(libd3d12_dll.D3D12CreateRootSignatureDeserializer(util.toPointer(pSrcData), SrcDataSizeInBytes, util.toPointer(pRootSignatureDeserializerInterface), util.toPointer(ppRootSignatureDeserializer)));
 }
 
 export function D3D12SerializeVersionedRootSignature(
@@ -10197,7 +10197,7 @@ export function D3D12SerializeVersionedRootSignature(
   ppBlob: Deno.PointerValue | Uint8Array | null /* ptr */,
   ppErrorBlob: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libd3d12.D3D12SerializeVersionedRootSignature(util.toPointer(pRootSignature), util.toPointer(ppBlob), util.toPointer(ppErrorBlob)));
+  return util.pointerFromFfi(libd3d12_dll.D3D12SerializeVersionedRootSignature(util.toPointer(pRootSignature), util.toPointer(ppBlob), util.toPointer(ppErrorBlob)));
 }
 
 export function D3D12CreateVersionedRootSignatureDeserializer(
@@ -10206,7 +10206,7 @@ export function D3D12CreateVersionedRootSignatureDeserializer(
   pRootSignatureDeserializerInterface: Deno.PointerValue | Uint8Array | null /* ptr */,
   ppRootSignatureDeserializer: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libd3d12.D3D12CreateVersionedRootSignatureDeserializer(util.toPointer(pSrcData), SrcDataSizeInBytes, util.toPointer(pRootSignatureDeserializerInterface), util.toPointer(ppRootSignatureDeserializer)));
+  return util.pointerFromFfi(libd3d12_dll.D3D12CreateVersionedRootSignatureDeserializer(util.toPointer(pSrcData), SrcDataSizeInBytes, util.toPointer(pRootSignatureDeserializerInterface), util.toPointer(ppRootSignatureDeserializer)));
 }
 
 export function D3D12CreateDevice(
@@ -10215,14 +10215,14 @@ export function D3D12CreateDevice(
   riid: Deno.PointerValue | Uint8Array | null /* ptr */,
   ppDevice: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libd3d12.D3D12CreateDevice(util.toPointer(pAdapter), MinimumFeatureLevel, util.toPointer(riid), util.toPointer(ppDevice)));
+  return util.pointerFromFfi(libd3d12_dll.D3D12CreateDevice(util.toPointer(pAdapter), MinimumFeatureLevel, util.toPointer(riid), util.toPointer(ppDevice)));
 }
 
 export function D3D12GetDebugInterface(
   riid: Deno.PointerValue | Uint8Array | null /* ptr */,
   ppvDebug: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libd3d12.D3D12GetDebugInterface(util.toPointer(riid), util.toPointer(ppvDebug)));
+  return util.pointerFromFfi(libd3d12_dll.D3D12GetDebugInterface(util.toPointer(riid), util.toPointer(ppvDebug)));
 }
 
 export function D3D12EnableExperimentalFeatures(
@@ -10231,7 +10231,7 @@ export function D3D12EnableExperimentalFeatures(
   pConfigurationStructs: Deno.PointerValue | Uint8Array | null /* ptr */,
   pConfigurationStructSizes: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libd3d12.D3D12EnableExperimentalFeatures(NumFeatures, util.toPointer(pIIDs), util.toPointer(pConfigurationStructs), util.toPointer(pConfigurationStructSizes)));
+  return util.pointerFromFfi(libd3d12_dll.D3D12EnableExperimentalFeatures(NumFeatures, util.toPointer(pIIDs), util.toPointer(pConfigurationStructs), util.toPointer(pConfigurationStructSizes)));
 }
 
 export function D3D12GetInterface(
@@ -10239,6 +10239,6 @@ export function D3D12GetInterface(
   riid: Deno.PointerValue | Uint8Array | null /* ptr */,
   ppvDebug: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libd3d12.D3D12GetInterface(util.toPointer(rclsid), util.toPointer(riid), util.toPointer(ppvDebug)));
+  return util.pointerFromFfi(libd3d12_dll.D3D12GetInterface(util.toPointer(rclsid), util.toPointer(riid), util.toPointer(ppvDebug)));
 }
 

@@ -33,6 +33,7 @@ export type WMT_TIMECODE_FRAMERATE = number;
 export type WMT_CREDENTIAL_FLAGS = number;
 export type WM_AETYPE = number;
 export type WMT_RIGHTS = number;
+export type BI_COMPRESSION = number;
 export type NETSOURCE_URLCREDPOLICY_SETTINGS = number;
 
 // Constants
@@ -469,6 +470,12 @@ export const WMT_RIGHT_COPY = 128;
 export const WMT_RIGHT_COLLABORATIVE_PLAY = 256;
 export const WMT_RIGHT_SDMI_TRIGGER = 65536;
 export const WMT_RIGHT_SDMI_NOMORECOPIES = 131072;
+export const BI_RGB = 0;
+export const BI_RLE8 = 1;
+export const BI_RLE4 = 2;
+export const BI_BITFIELDS = 3;
+export const BI_JPEG = 4;
+export const BI_PNG = 5;
 export const NETSOURCE_URLCREDPOLICY_SETTING_SILENTLOGONOK = 0;
 export const NETSOURCE_URLCREDPOLICY_SETTING_MUSTPROMPTUSER = 1;
 export const NETSOURCE_URLCREDPOLICY_SETTING_ANONYMOUSONLY = 2;
@@ -1519,8 +1526,8 @@ export interface BITMAPINFOHEADER {
   biPlanes: number;
   /** u16 */
   biBitCount: number;
-  /** u32 */
-  biCompression: number;
+  /** Windows.Win32.Graphics.Gdi.BI_COMPRESSION */
+  biCompression: BI_COMPRESSION;
   /** u32 */
   biSizeImage: number;
   /** i32 */
@@ -1548,8 +1555,8 @@ export function allocBITMAPINFOHEADER(data?: Partial<BITMAPINFOHEADER>): Uint8Ar
   if (data?.biPlanes !== undefined) view.setUint16(12, Number(data.biPlanes), true);
   // 0x0e: u16
   if (data?.biBitCount !== undefined) view.setUint16(14, Number(data.biBitCount), true);
-  // 0x10: u32
-  if (data?.biCompression !== undefined) view.setUint32(16, Number(data.biCompression), true);
+  // 0x10: i32
+  if (data?.biCompression !== undefined) view.setInt32(16, Number(data.biCompression), true);
   // 0x14: u32
   if (data?.biSizeImage !== undefined) view.setUint32(20, Number(data.biSizeImage), true);
   // 0x18: i32
@@ -1995,7 +2002,7 @@ export function allocDRM_COPY_OPL(data?: Partial<DRM_COPY_OPL>): Uint8Array {
 // Native Libraries
 
 try {
-  var libWMVCore = Deno.dlopen("WMVCore", {
+  var libWMVCore_dll = Deno.dlopen("WMVCore.dll", {
     WMIsContentProtected: {
       parameters: ["buffer", "pointer"],
       result: "pointer",
@@ -2049,14 +2056,14 @@ export function WMIsContentProtected(
   pwszFileName: string | null /* Windows.Win32.Foundation.PWSTR */,
   pfIsProtected: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libWMVCore.WMIsContentProtected(util.pwstrToFfi(pwszFileName), util.toPointer(pfIsProtected)));
+  return util.pointerFromFfi(libWMVCore_dll.WMIsContentProtected(util.pwstrToFfi(pwszFileName), util.toPointer(pfIsProtected)));
 }
 
 export function WMCreateWriter(
   pUnkCert: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Com.IUnknown */,
   ppWriter: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libWMVCore.WMCreateWriter(util.toPointer(pUnkCert), util.toPointer(ppWriter)));
+  return util.pointerFromFfi(libWMVCore_dll.WMCreateWriter(util.toPointer(pUnkCert), util.toPointer(ppWriter)));
 }
 
 export function WMCreateReader(
@@ -2064,7 +2071,7 @@ export function WMCreateReader(
   dwRights: number /* u32 */,
   ppReader: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libWMVCore.WMCreateReader(util.toPointer(pUnkCert), dwRights, util.toPointer(ppReader)));
+  return util.pointerFromFfi(libWMVCore_dll.WMCreateReader(util.toPointer(pUnkCert), dwRights, util.toPointer(ppReader)));
 }
 
 export function WMCreateSyncReader(
@@ -2072,49 +2079,49 @@ export function WMCreateSyncReader(
   dwRights: number /* u32 */,
   ppSyncReader: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libWMVCore.WMCreateSyncReader(util.toPointer(pUnkCert), dwRights, util.toPointer(ppSyncReader)));
+  return util.pointerFromFfi(libWMVCore_dll.WMCreateSyncReader(util.toPointer(pUnkCert), dwRights, util.toPointer(ppSyncReader)));
 }
 
 export function WMCreateEditor(
   ppEditor: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libWMVCore.WMCreateEditor(util.toPointer(ppEditor)));
+  return util.pointerFromFfi(libWMVCore_dll.WMCreateEditor(util.toPointer(ppEditor)));
 }
 
 export function WMCreateIndexer(
   ppIndexer: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libWMVCore.WMCreateIndexer(util.toPointer(ppIndexer)));
+  return util.pointerFromFfi(libWMVCore_dll.WMCreateIndexer(util.toPointer(ppIndexer)));
 }
 
 export function WMCreateBackupRestorer(
   pCallback: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Com.IUnknown */,
   ppBackup: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libWMVCore.WMCreateBackupRestorer(util.toPointer(pCallback), util.toPointer(ppBackup)));
+  return util.pointerFromFfi(libWMVCore_dll.WMCreateBackupRestorer(util.toPointer(pCallback), util.toPointer(ppBackup)));
 }
 
 export function WMCreateProfileManager(
   ppProfileManager: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libWMVCore.WMCreateProfileManager(util.toPointer(ppProfileManager)));
+  return util.pointerFromFfi(libWMVCore_dll.WMCreateProfileManager(util.toPointer(ppProfileManager)));
 }
 
 export function WMCreateWriterFileSink(
   ppSink: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libWMVCore.WMCreateWriterFileSink(util.toPointer(ppSink)));
+  return util.pointerFromFfi(libWMVCore_dll.WMCreateWriterFileSink(util.toPointer(ppSink)));
 }
 
 export function WMCreateWriterNetworkSink(
   ppSink: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libWMVCore.WMCreateWriterNetworkSink(util.toPointer(ppSink)));
+  return util.pointerFromFfi(libWMVCore_dll.WMCreateWriterNetworkSink(util.toPointer(ppSink)));
 }
 
 export function WMCreateWriterPushSink(
   ppSink: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libWMVCore.WMCreateWriterPushSink(util.toPointer(ppSink)));
+  return util.pointerFromFfi(libWMVCore_dll.WMCreateWriterPushSink(util.toPointer(ppSink)));
 }
 

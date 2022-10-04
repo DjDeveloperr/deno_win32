@@ -14,6 +14,19 @@ export type NLM_NETWORK_PROPERTY_CHANGE = number;
 export type NLM_CONNECTION_PROPERTY_CHANGE = number;
 
 // Constants
+export const NA_DomainAuthenticationFailed = "NA_DomainAuthenticationFailed";
+export const NA_NetworkClass = "NA_NetworkClass";
+export const NA_NameSetByPolicy = "NA_NameSetByPolicy";
+export const NA_IconSetByPolicy = "NA_IconSetByPolicy";
+export const NA_DescriptionSetByPolicy = "NA_DescriptionSetByPolicy";
+export const NA_CategorySetByPolicy = "NA_CategorySetByPolicy";
+export const NA_NameReadOnly = "NA_NameReadOnly";
+export const NA_IconReadOnly = "NA_IconReadOnly";
+export const NA_DescriptionReadOnly = "NA_DescriptionReadOnly";
+export const NA_CategoryReadOnly = "NA_CategoryReadOnly";
+export const NA_AllowMerge = "NA_AllowMerge";
+export const NA_InternetConnectivityV4 = "NA_InternetConnectivityV4";
+export const NA_InternetConnectivityV6 = "NA_InternetConnectivityV6";
 export const NLM_MAX_ADDRESS_LIST_SIZE = 10;
 export const NLM_UNKNOWN_DATAPLAN_STATUS = 4294967295;
 export const NLM_CONNECTION_COST_UNKNOWN = 0;

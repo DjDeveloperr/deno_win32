@@ -6,14 +6,20 @@ import * as util from "../../util.ts";
 export type URI_CREATE_FLAGS = number;
 export type RPC_C_AUTHN_LEVEL = number;
 export type RPC_C_IMP_LEVEL = number;
+export type ROT_FLAGS = number;
+export type ADVANCED_FEATURE_FLAGS = number;
+export type IMPLTYPEFLAGS = number;
+export type IDLFLAGS = number;
+export type DISPATCH_FLAGS = number;
 export type PROPSPEC_KIND = number;
-export type STGM = number;
 export type STGFMT = number;
+export type STGM = number;
 export type DVASPECT = number;
-export type TYSPEC = number;
 export type STGC = number;
-export type STGMOVE = number;
 export type STATFLAG = number;
+export type VARENUM = number;
+export type TYSPEC = number;
+export type STGMOVE = number;
 export type CALLFRAME_COPY = number;
 export type CALLFRAME_FREE = number;
 export type CALLFRAME_NULL = number;
@@ -25,6 +31,7 @@ export type CLSCTX = number;
 export type MSHLFLAGS = number;
 export type MSHCTX = number;
 export type EXTCONN = number;
+export type LOCKTYPE = number;
 export type STGTY = number;
 export type STREAM_SEEK = number;
 export type EOLE_AUTHENTICATION_CAPABILITIES = number;
@@ -42,7 +49,7 @@ export type THDTYPE = number;
 export type CO_MARSHALING_CONTEXT_ATTRIBUTES = number;
 export type BIND_FLAGS = number;
 export type MKSYS = number;
-export type MKREDUCE = number;
+export type MKRREDUCE = number;
 export type ADVF = number;
 export type TYMED = number;
 export type DATADIR = number;
@@ -57,7 +64,6 @@ export type COMSD = number;
 export type COWAIT_FLAGS = number;
 export type CWMO_FLAGS = number;
 export type STDMSHLFLAGS = number;
-export type LOCKTYPE = number;
 export type EOC_ChangeType = number;
 export type PIDMSI_STATUS_VALUE = number;
 export type IEObjectType = number;
@@ -94,7 +100,9 @@ export type TYPEKIND = number;
 export type CALLCONV = number;
 export type FUNCKIND = number;
 export type INVOKEKIND = number;
+export type FUNCFLAGS = number;
 export type VARKIND = number;
+export type VARFLAGS = number;
 export type DESCKIND = number;
 export type SYSKIND = number;
 export type COMAdminInUse = number;
@@ -170,8 +178,41 @@ export const RPC_C_IMP_LEVEL_ANONYMOUS = 1;
 export const RPC_C_IMP_LEVEL_IDENTIFY = 2;
 export const RPC_C_IMP_LEVEL_IMPERSONATE = 3;
 export const RPC_C_IMP_LEVEL_DELEGATE = 4;
+export const ROTFLAGS_REGISTRATIONKEEPSALIVE = 1;
+export const ROTFLAGS_ALLOWANYCLIENT = 2;
+export const FADF_AUTO = 1;
+export const FADF_STATIC = 2;
+export const FADF_EMBEDDED = 4;
+export const FADF_FIXEDSIZE = 16;
+export const FADF_RECORD = 32;
+export const FADF_HAVEIID = 64;
+export const FADF_HAVEVARTYPE = 128;
+export const FADF_BSTR = 256;
+export const FADF_UNKNOWN = 512;
+export const FADF_DISPATCH = 1024;
+export const FADF_VARIANT = 2048;
+export const FADF_RESERVED = 61448;
+export const IMPLTYPEFLAG_FDEFAULT = 1;
+export const IMPLTYPEFLAG_FSOURCE = 2;
+export const IMPLTYPEFLAG_FRESTRICTED = 4;
+export const IMPLTYPEFLAG_FDEFAULTVTABLE = 8;
+export const IDLFLAG_NONE = 0;
+export const IDLFLAG_FIN = 1;
+export const IDLFLAG_FOUT = 2;
+export const IDLFLAG_FLCID = 4;
+export const IDLFLAG_FRETVAL = 8;
+export const DISPATCH_METHOD = 1;
+export const DISPATCH_PROPERTYGET = 2;
+export const DISPATCH_PROPERTYPUT = 4;
+export const DISPATCH_PROPERTYPUTREF = 8;
 export const PRSPEC_LPWSTR = 0;
 export const PRSPEC_PROPID = 1;
+export const STGFMT_STORAGE = 0;
+export const STGFMT_NATIVE = 1;
+export const STGFMT_FILE = 3;
+export const STGFMT_ANY = 4;
+export const STGFMT_DOCFILE = 5;
+export const STGFMT_DOCUMENT = 0;
 export const STGM_DIRECT = 0;
 export const STGM_TRANSACTED = 65536;
 export const STGM_SIMPLE = 134217728;
@@ -190,12 +231,12 @@ export const STGM_CONVERT = 131072;
 export const STGM_FAILIFTHERE = 0;
 export const STGM_NOSNAPSHOT = 2097152;
 export const STGM_DIRECT_SWMR = 4194304;
-export const STGFMT_STORAGE = 0;
-export const STGFMT_NATIVE = 1;
-export const STGFMT_FILE = 3;
-export const STGFMT_ANY = 4;
-export const STGFMT_DOCFILE = 5;
-export const STGFMT_DOCUMENT = 0;
+export const DVASPECT_CONTENT = 1;
+export const DVASPECT_THUMBNAIL = 2;
+export const DVASPECT_ICON = 4;
+export const DVASPECT_DOCPRINT = 8;
+export const DVASPECT_OPAQUE = 16;
+export const DVASPECT_TRANSPARENT = 32;
 export const MARSHALINTERFACE_MIN = 500;
 export const ASYNC_MODE_COMPATIBILITY = 1;
 export const ASYNC_MODE_DEFAULT = 0;
@@ -602,6 +643,8 @@ export const SOFTDIST_ADSTATE_AVAILABLE = 1;
 export const SOFTDIST_ADSTATE_DOWNLOADED = 2;
 export const SOFTDIST_ADSTATE_INSTALLED = 3;
 export const CONFIRMSAFETYACTION_LOADOBJECT = 1;
+export const TRACKER_STARTSTOP_EVENT = "Global\COM+ Tracker Push Event";
+export const TRACKER_INIT_EVENT = "Global\COM+ Tracker Init Event";
 export const GUID_STRING_SIZE = 40;
 export const DATA_NOT_AVAILABLE = 4294967295;
 export const MTXDM_E_ENLISTRESOURCEFAILED = 2147803392;
@@ -611,10 +654,66 @@ export const CRR_ACTIVATION_LIMIT = 4294967294;
 export const CRR_CALL_LIMIT = 4294967293;
 export const CRR_MEMORY_LIMIT = 4294967292;
 export const CRR_RECYCLED_FROM_UI = 4294967291;
-export const DVASPECT_CONTENT = 1;
-export const DVASPECT_THUMBNAIL = 2;
-export const DVASPECT_ICON = 4;
-export const DVASPECT_DOCPRINT = 8;
+export const STGC_DEFAULT = 0;
+export const STGC_OVERWRITE = 1;
+export const STGC_ONLYIFCURRENT = 2;
+export const STGC_DANGEROUSLYCOMMITMERELYTODISKCACHE = 4;
+export const STGC_CONSOLIDATE = 8;
+export const STATFLAG_DEFAULT = 0;
+export const STATFLAG_NONAME = 1;
+export const STATFLAG_NOOPEN = 2;
+export const VT_EMPTY = 0;
+export const VT_NULL = 1;
+export const VT_I2 = 2;
+export const VT_I4 = 3;
+export const VT_R4 = 4;
+export const VT_R8 = 5;
+export const VT_CY = 6;
+export const VT_DATE = 7;
+export const VT_BSTR = 8;
+export const VT_DISPATCH = 9;
+export const VT_ERROR = 10;
+export const VT_BOOL = 11;
+export const VT_VARIANT = 12;
+export const VT_UNKNOWN = 13;
+export const VT_DECIMAL = 14;
+export const VT_I1 = 16;
+export const VT_UI1 = 17;
+export const VT_UI2 = 18;
+export const VT_UI4 = 19;
+export const VT_I8 = 20;
+export const VT_UI8 = 21;
+export const VT_INT = 22;
+export const VT_UINT = 23;
+export const VT_VOID = 24;
+export const VT_HRESULT = 25;
+export const VT_PTR = 26;
+export const VT_SAFEARRAY = 27;
+export const VT_CARRAY = 28;
+export const VT_USERDEFINED = 29;
+export const VT_LPSTR = 30;
+export const VT_LPWSTR = 31;
+export const VT_RECORD = 36;
+export const VT_INT_PTR = 37;
+export const VT_UINT_PTR = 38;
+export const VT_FILETIME = 64;
+export const VT_BLOB = 65;
+export const VT_STREAM = 66;
+export const VT_STORAGE = 67;
+export const VT_STREAMED_OBJECT = 68;
+export const VT_STORED_OBJECT = 69;
+export const VT_BLOB_OBJECT = 70;
+export const VT_CF = 71;
+export const VT_CLSID = 72;
+export const VT_VERSIONED_STREAM = 73;
+export const VT_BSTR_BLOB = 4095;
+export const VT_VECTOR = 4096;
+export const VT_ARRAY = 8192;
+export const VT_BYREF = 16384;
+export const VT_RESERVED = 32768;
+export const VT_ILLEGAL = 65535;
+export const VT_ILLEGALMASKED = 4095;
+export const VT_TYPEMASK = 4095;
 export const TYSPEC_CLSID = 0;
 export const TYSPEC_FILEEXT = 1;
 export const TYSPEC_MIMETYPE = 2;
@@ -622,17 +721,9 @@ export const TYSPEC_FILENAME = 3;
 export const TYSPEC_PROGID = 4;
 export const TYSPEC_PACKAGENAME = 5;
 export const TYSPEC_OBJECTID = 6;
-export const STGC_DEFAULT = 0;
-export const STGC_OVERWRITE = 1;
-export const STGC_ONLYIFCURRENT = 2;
-export const STGC_DANGEROUSLYCOMMITMERELYTODISKCACHE = 4;
-export const STGC_CONSOLIDATE = 8;
 export const STGMOVE_MOVE = 0;
 export const STGMOVE_COPY = 1;
 export const STGMOVE_SHALLOWCOPY = 2;
-export const STATFLAG_DEFAULT = 0;
-export const STATFLAG_NONAME = 1;
-export const STATFLAG_NOOPEN = 2;
 export const CALLFRAME_COPY_NESTED = 1;
 export const CALLFRAME_COPY_INDEPENDENT = 2;
 export const CALLFRAME_FREE_NONE = 0;
@@ -707,6 +798,9 @@ export const MSHCTX_CONTAINER = 5;
 export const EXTCONN_STRONG = 1;
 export const EXTCONN_WEAK = 2;
 export const EXTCONN_CALLABLE = 4;
+export const LOCK_WRITE = 1;
+export const LOCK_EXCLUSIVE = 2;
+export const LOCK_ONLYONCE = 4;
 export const STGTY_STORAGE = 1;
 export const STGTY_STREAM = 2;
 export const STGTY_LOCKBYTES = 3;
@@ -873,9 +967,6 @@ export const CWMO_DISPATCH_CALLS = 1;
 export const CWMO_DISPATCH_WINDOW_MESSAGES = 2;
 export const SMEXF_SERVER = 1;
 export const SMEXF_HANDLER = 2;
-export const LOCK_WRITE = 1;
-export const LOCK_EXCLUSIVE = 2;
-export const LOCK_ONLYONCE = 4;
 export const EOC_NewObject = 0;
 export const EOC_ModifiedObject = 1;
 export const EOC_DeletedObject = 2;
@@ -1317,10 +1408,36 @@ export const INVOKE_FUNC = 1;
 export const INVOKE_PROPERTYGET = 2;
 export const INVOKE_PROPERTYPUT = 4;
 export const INVOKE_PROPERTYPUTREF = 8;
+export const FUNCFLAG_FRESTRICTED = 1;
+export const FUNCFLAG_FSOURCE = 2;
+export const FUNCFLAG_FBINDABLE = 4;
+export const FUNCFLAG_FREQUESTEDIT = 8;
+export const FUNCFLAG_FDISPLAYBIND = 16;
+export const FUNCFLAG_FDEFAULTBIND = 32;
+export const FUNCFLAG_FHIDDEN = 64;
+export const FUNCFLAG_FUSESGETLASTERROR = 128;
+export const FUNCFLAG_FDEFAULTCOLLELEM = 256;
+export const FUNCFLAG_FUIDEFAULT = 512;
+export const FUNCFLAG_FNONBROWSABLE = 1024;
+export const FUNCFLAG_FREPLACEABLE = 2048;
+export const FUNCFLAG_FIMMEDIATEBIND = 4096;
 export const VAR_PERINSTANCE = 0;
 export const VAR_STATIC = 1;
 export const VAR_CONST = 2;
 export const VAR_DISPATCH = 3;
+export const VARFLAG_FREADONLY = 1;
+export const VARFLAG_FSOURCE = 2;
+export const VARFLAG_FBINDABLE = 4;
+export const VARFLAG_FREQUESTEDIT = 8;
+export const VARFLAG_FDISPLAYBIND = 16;
+export const VARFLAG_FDEFAULTBIND = 32;
+export const VARFLAG_FHIDDEN = 64;
+export const VARFLAG_FRESTRICTED = 128;
+export const VARFLAG_FDEFAULTCOLLELEM = 256;
+export const VARFLAG_FUIDEFAULT = 512;
+export const VARFLAG_FNONBROWSABLE = 1024;
+export const VARFLAG_FREPLACEABLE = 2048;
+export const VARFLAG_FIMMEDIATEBIND = 4096;
 export const DESCKIND_NONE = 0;
 export const DESCKIND_FUNCDESC = 1;
 export const DESCKIND_VARDESC = 2;
@@ -2299,19 +2416,19 @@ export function allocBYTE_SIZEDARR(data?: Partial<BYTE_SIZEDARR>): Uint8Array {
 }
 
 /**
- * Windows.Win32.System.Com.SHORT_SIZEDARR (size: 16)
+ * Windows.Win32.System.Com.WORD_SIZEDARR (size: 16)
  */
-export interface SHORT_SIZEDARR {
+export interface WORD_SIZEDARR {
   /** u32 */
   clSize: number;
   /** ptr */
   pData: Deno.PointerValue | Uint8Array | null;
 }
 
-export const sizeofSHORT_SIZEDARR = 16;
+export const sizeofWORD_SIZEDARR = 16;
 
-export function allocSHORT_SIZEDARR(data?: Partial<SHORT_SIZEDARR>): Uint8Array {
-  const buf = new Uint8Array(sizeofSHORT_SIZEDARR);
+export function allocWORD_SIZEDARR(data?: Partial<WORD_SIZEDARR>): Uint8Array {
+  const buf = new Uint8Array(sizeofWORD_SIZEDARR);
   const view = new DataView(buf.buffer);
   // 0x00: u32
   if (data?.clSize !== undefined) view.setUint32(0, Number(data.clSize), true);
@@ -2322,19 +2439,19 @@ export function allocSHORT_SIZEDARR(data?: Partial<SHORT_SIZEDARR>): Uint8Array 
 }
 
 /**
- * Windows.Win32.System.Com.LONG_SIZEDARR (size: 16)
+ * Windows.Win32.System.Com.DWORD_SIZEDARR (size: 16)
  */
-export interface LONG_SIZEDARR {
+export interface DWORD_SIZEDARR {
   /** u32 */
   clSize: number;
   /** ptr */
   pData: Deno.PointerValue | Uint8Array | null;
 }
 
-export const sizeofLONG_SIZEDARR = 16;
+export const sizeofDWORD_SIZEDARR = 16;
 
-export function allocLONG_SIZEDARR(data?: Partial<LONG_SIZEDARR>): Uint8Array {
-  const buf = new Uint8Array(sizeofLONG_SIZEDARR);
+export function allocDWORD_SIZEDARR(data?: Partial<DWORD_SIZEDARR>): Uint8Array {
+  const buf = new Uint8Array(sizeofDWORD_SIZEDARR);
   const view = new DataView(buf.buffer);
   // 0x00: u32
   if (data?.clSize !== undefined) view.setUint32(0, Number(data.clSize), true);
@@ -2543,10 +2660,10 @@ export interface STATSTG {
   ctime: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.Foundation.FILETIME */
   atime: Uint8Array | Deno.PointerValue | null;
-  /** u32 */
-  grfMode: number;
-  /** u32 */
-  grfLocksSupported: number;
+  /** Windows.Win32.System.Com.STGM */
+  grfMode: STGM;
+  /** Windows.Win32.System.Com.LOCKTYPE */
+  grfLocksSupported: LOCKTYPE;
   /** System.Guid */
   clsid: Uint8Array | Deno.PointerValue | null;
   /** u32 */
@@ -2578,8 +2695,8 @@ export function allocSTATSTG(data?: Partial<STATSTG>): Uint8Array {
   if (data?.atime !== undefined) view.setBigUint64(40, data.atime === null ? 0n : BigInt(util.toPointer(data.atime)), true);
   // 0x30: u32
   if (data?.grfMode !== undefined) view.setUint32(48, Number(data.grfMode), true);
-  // 0x34: u32
-  if (data?.grfLocksSupported !== undefined) view.setUint32(52, Number(data.grfLocksSupported), true);
+  // 0x34: i32
+  if (data?.grfLocksSupported !== undefined) view.setInt32(52, Number(data.grfLocksSupported), true);
   // 0x38: pointer
   if (data?.clsid !== undefined) view.setBigUint64(56, data.clsid === null ? 0n : BigInt(util.toPointer(data.clsid)), true);
   // 0x40: u32
@@ -2808,7 +2925,7 @@ export function allocBIND_OPTS(data?: Partial<BIND_OPTS>): Uint8Array {
  */
 export interface BIND_OPTS2 {
   /** Windows.Win32.System.Com.BIND_OPTS */
-  __AnonymousBase_objidl_L9017_C36: Uint8Array | Deno.PointerValue | null;
+  Base: Uint8Array | Deno.PointerValue | null;
   /** u32 */
   dwTrackFlags: number;
   /** u32 */
@@ -2825,7 +2942,7 @@ export function allocBIND_OPTS2(data?: Partial<BIND_OPTS2>): Uint8Array {
   const buf = new Uint8Array(sizeofBIND_OPTS2);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.__AnonymousBase_objidl_L9017_C36 !== undefined) view.setBigUint64(0, data.__AnonymousBase_objidl_L9017_C36 === null ? 0n : BigInt(util.toPointer(data.__AnonymousBase_objidl_L9017_C36)), true);
+  if (data?.Base !== undefined) view.setBigUint64(0, data.Base === null ? 0n : BigInt(util.toPointer(data.Base)), true);
   // 0x08: u32
   if (data?.dwTrackFlags !== undefined) view.setUint32(8, Number(data.dwTrackFlags), true);
   // 0x0c: u32
@@ -2845,7 +2962,7 @@ export type HWND = Deno.PointerValue;
  */
 export interface BIND_OPTS3 {
   /** Windows.Win32.System.Com.BIND_OPTS2 */
-  __AnonymousBase_objidl_L9041_C36: Uint8Array | Deno.PointerValue | null;
+  Base: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.Foundation.HWND */
   hwnd: Deno.PointerValue | null;
 }
@@ -2856,7 +2973,7 @@ export function allocBIND_OPTS3(data?: Partial<BIND_OPTS3>): Uint8Array {
   const buf = new Uint8Array(sizeofBIND_OPTS3);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.__AnonymousBase_objidl_L9041_C36 !== undefined) view.setBigUint64(0, data.__AnonymousBase_objidl_L9041_C36 === null ? 0n : BigInt(util.toPointer(data.__AnonymousBase_objidl_L9041_C36)), true);
+  if (data?.Base !== undefined) view.setBigUint64(0, data.Base === null ? 0n : BigInt(util.toPointer(data.Base)), true);
   // 0x08: pointer
   if (data?.hwnd !== undefined) view.setBigUint64(8, data.hwnd === null ? 0n : BigInt(util.toPointer(data.hwnd)), true);
   return buf;
@@ -2973,8 +3090,8 @@ export function allocSTATDATA(data?: Partial<STATDATA>): Uint8Array {
  * Windows.Win32.System.Com.RemSTGMEDIUM (size: 32)
  */
 export interface RemSTGMEDIUM {
-  /** u32 */
-  tymed: number;
+  /** Windows.Win32.System.Com.TYMED */
+  tymed: TYMED;
   /** u32 */
   dwHandleType: number;
   /** u32 */
@@ -2992,8 +3109,8 @@ export const sizeofRemSTGMEDIUM = 32;
 export function allocRemSTGMEDIUM(data?: Partial<RemSTGMEDIUM>): Uint8Array {
   const buf = new Uint8Array(sizeofRemSTGMEDIUM);
   const view = new DataView(buf.buffer);
-  // 0x00: u32
-  if (data?.tymed !== undefined) view.setUint32(0, Number(data.tymed), true);
+  // 0x00: i32
+  if (data?.tymed !== undefined) view.setInt32(0, Number(data.tymed), true);
   // 0x04: u32
   if (data?.dwHandleType !== undefined) view.setUint32(4, Number(data.dwHandleType), true);
   // 0x08: u32
@@ -3034,8 +3151,8 @@ export function alloc_Anonymous_e__Union(data?: Partial<_Anonymous_e__Union>): U
  * Windows.Win32.System.Com.STGMEDIUM (size: 24)
  */
 export interface STGMEDIUM {
-  /** u32 */
-  tymed: number;
+  /** Windows.Win32.System.Com.TYMED */
+  tymed: TYMED;
   /** _Anonymous_e__Union */
   Anonymous: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.System.Com.IUnknown */
@@ -3047,8 +3164,8 @@ export const sizeofSTGMEDIUM = 24;
 export function allocSTGMEDIUM(data?: Partial<STGMEDIUM>): Uint8Array {
   const buf = new Uint8Array(sizeofSTGMEDIUM);
   const view = new DataView(buf.buffer);
-  // 0x00: u32
-  if (data?.tymed !== undefined) view.setUint32(0, Number(data.tymed), true);
+  // 0x00: i32
+  if (data?.tymed !== undefined) view.setInt32(0, Number(data.tymed), true);
   // 0x04: pad4
   // 0x08: pointer
   if (data?.Anonymous !== undefined) view.setBigUint64(8, data.Anonymous === null ? 0n : BigInt(util.toPointer(data.Anonymous)), true);
@@ -3938,8 +4055,8 @@ export interface STATPROPSTG {
   lpwstrName: string | null;
   /** u32 */
   propid: number;
-  /** u16 */
-  vt: number;
+  /** Windows.Win32.System.Com.VARENUM */
+  vt: VARENUM;
 }
 
 export const sizeofSTATPROPSTG = 16;
@@ -4787,8 +4904,8 @@ export function allocSAFEARRAYBOUND(data?: Partial<SAFEARRAYBOUND>): Uint8Array 
 export interface SAFEARRAY {
   /** u16 */
   cDims: number;
-  /** u16 */
-  fFeatures: number;
+  /** Windows.Win32.System.Com.ADVANCED_FEATURE_FLAGS */
+  fFeatures: ADVANCED_FEATURE_FLAGS;
   /** u32 */
   cbElements: number;
   /** u32 */
@@ -4844,8 +4961,8 @@ export function allocVARIANT(data?: Partial<VARIANT>): Uint8Array {
 export interface TYPEDESC {
   /** _Anonymous_e__Union */
   Anonymous: Uint8Array | Deno.PointerValue | null;
-  /** u16 */
-  vt: number;
+  /** Windows.Win32.System.Com.VARENUM */
+  vt: VARENUM;
 }
 
 export const sizeofTYPEDESC = 16;
@@ -4867,8 +4984,8 @@ export function allocTYPEDESC(data?: Partial<TYPEDESC>): Uint8Array {
 export interface IDLDESC {
   /** usize */
   dwReserved: Deno.PointerValue;
-  /** u16 */
-  wIDLFlags: number;
+  /** Windows.Win32.System.Com.IDLFLAGS */
+  wIDLFlags: IDLFLAGS;
 }
 
 export const sizeofIDLDESC = 16;
@@ -5104,8 +5221,8 @@ export interface FUNCDESC {
   cScodes: number;
   /** Windows.Win32.System.Com.ELEMDESC */
   elemdescFunc: Uint8Array | Deno.PointerValue | null;
-  /** u16 */
-  wFuncFlags: number;
+  /** Windows.Win32.System.Com.FUNCFLAGS */
+  wFuncFlags: FUNCFLAGS;
 }
 
 export const sizeofFUNCDESC = 64;
@@ -5155,8 +5272,8 @@ export interface VARDESC {
   Anonymous: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.System.Com.ELEMDESC */
   elemdescVar: Uint8Array | Deno.PointerValue | null;
-  /** u16 */
-  wVarFlags: number;
+  /** Windows.Win32.System.Com.VARFLAGS */
+  wVarFlags: VARFLAGS;
   /** Windows.Win32.System.Com.VARKIND */
   varkind: VARKIND;
 }
@@ -5365,8 +5482,8 @@ export function allocOLESTREAM(data?: Partial<OLESTREAM>): Uint8Array {
 export interface PROPBAG2 {
   /** u32 */
   dwType: number;
-  /** u16 */
-  vt: number;
+  /** Windows.Win32.System.Com.VARENUM */
+  vt: VARENUM;
   /** u16 */
   cfType: number;
   /** u32 */
@@ -5521,9 +5638,9 @@ export function allocHANG_INFO(data?: Partial<HANG_INFO>): Uint8Array {
 }
 
 /**
- * Windows.Win32.System.ComponentServices.CAppStatistics (size: 16)
+ * Windows.Win32.System.ComponentServices.APPSTATISTICS (size: 16)
  */
-export interface CAppStatistics {
+export interface APPSTATISTICS {
   /** u32 */
   m_cTotalCalls: number;
   /** u32 */
@@ -5534,10 +5651,10 @@ export interface CAppStatistics {
   m_cCallsPerSecond: number;
 }
 
-export const sizeofCAppStatistics = 16;
+export const sizeofAPPSTATISTICS = 16;
 
-export function allocCAppStatistics(data?: Partial<CAppStatistics>): Uint8Array {
-  const buf = new Uint8Array(sizeofCAppStatistics);
+export function allocAPPSTATISTICS(data?: Partial<APPSTATISTICS>): Uint8Array {
+  const buf = new Uint8Array(sizeofAPPSTATISTICS);
   const view = new DataView(buf.buffer);
   // 0x00: u32
   if (data?.m_cTotalCalls !== undefined) view.setUint32(0, Number(data.m_cTotalCalls), true);
@@ -5551,23 +5668,23 @@ export function allocCAppStatistics(data?: Partial<CAppStatistics>): Uint8Array 
 }
 
 /**
- * Windows.Win32.System.ComponentServices.CAppData (size: 32)
+ * Windows.Win32.System.ComponentServices.APPDATA (size: 32)
  */
-export interface CAppData {
+export interface APPDATA {
   /** u32 */
   m_idApp: number;
   /** array */
   m_szAppGuid: Deno.PointerValue | null;
   /** u32 */
   m_dwAppProcessId: number;
-  /** Windows.Win32.System.ComponentServices.CAppStatistics */
+  /** Windows.Win32.System.ComponentServices.APPSTATISTICS */
   m_AppStatistics: Uint8Array | Deno.PointerValue | null;
 }
 
-export const sizeofCAppData = 32;
+export const sizeofAPPDATA = 32;
 
-export function allocCAppData(data?: Partial<CAppData>): Uint8Array {
-  const buf = new Uint8Array(sizeofCAppData);
+export function allocAPPDATA(data?: Partial<APPDATA>): Uint8Array {
+  const buf = new Uint8Array(sizeofAPPDATA);
   const view = new DataView(buf.buffer);
   // 0x00: u32
   if (data?.m_idApp !== undefined) view.setUint32(0, Number(data.m_idApp), true);
@@ -5583,9 +5700,9 @@ export function allocCAppData(data?: Partial<CAppData>): Uint8Array {
 }
 
 /**
- * Windows.Win32.System.ComponentServices.CCLSIDData (size: 40)
+ * Windows.Win32.System.ComponentServices.CLSIDDATA (size: 40)
  */
-export interface CCLSIDData {
+export interface CLSIDDATA {
   /** System.Guid */
   m_clsid: Uint8Array | Deno.PointerValue | null;
   /** u32 */
@@ -5604,10 +5721,10 @@ export interface CCLSIDData {
   m_cCallsFailed: number;
 }
 
-export const sizeofCCLSIDData = 40;
+export const sizeofCLSIDDATA = 40;
 
-export function allocCCLSIDData(data?: Partial<CCLSIDData>): Uint8Array {
-  const buf = new Uint8Array(sizeofCCLSIDData);
+export function allocCLSIDDATA(data?: Partial<CLSIDDATA>): Uint8Array {
+  const buf = new Uint8Array(sizeofCLSIDDATA);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
   if (data?.m_clsid !== undefined) view.setBigUint64(0, data.m_clsid === null ? 0n : BigInt(util.toPointer(data.m_clsid)), true);
@@ -5630,9 +5747,9 @@ export function allocCCLSIDData(data?: Partial<CCLSIDData>): Uint8Array {
 }
 
 /**
- * Windows.Win32.System.ComponentServices.CCLSIDData2 (size: 72)
+ * Windows.Win32.System.ComponentServices.CLSIDDATA2 (size: 72)
  */
-export interface CCLSIDData2 {
+export interface CLSIDDATA2 {
   /** System.Guid */
   m_clsid: Uint8Array | Deno.PointerValue | null;
   /** System.Guid */
@@ -5661,10 +5778,10 @@ export interface CCLSIDData2 {
   m_cCallsFailed: number;
 }
 
-export const sizeofCCLSIDData2 = 72;
+export const sizeofCLSIDDATA2 = 72;
 
-export function allocCCLSIDData2(data?: Partial<CCLSIDData2>): Uint8Array {
-  const buf = new Uint8Array(sizeofCCLSIDData2);
+export function allocCLSIDDATA2(data?: Partial<CLSIDDATA2>): Uint8Array {
+  const buf = new Uint8Array(sizeofCLSIDDATA2);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
   if (data?.m_clsid !== undefined) view.setBigUint64(0, data.m_clsid === null ? 0n : BigInt(util.toPointer(data.m_clsid)), true);
@@ -6084,10 +6201,12 @@ export function allocCrmLogRecordRead(data?: Partial<CrmLogRecordRead>): Uint8Ar
 
 export type HINSTANCE = Deno.PointerValue;
 
+export type PSECURITY_DESCRIPTOR = Deno.PointerValue | Uint8Array | null;
+
 // Native Libraries
 
 try {
-  var libole32 = Deno.dlopen("ole32", {
+  var libole32_dll = Deno.dlopen("ole32.dll", {
     CoBuildVersion: {
       parameters: [],
       result: "u32",
@@ -6124,7 +6243,7 @@ try {
 } catch(e) { /* ignore */ }
 
 try {
-  var libOLE32 = Deno.dlopen("OLE32", {
+  var libOLE32_dll = Deno.dlopen("OLE32.dll", {
     CoInitialize: {
       parameters: ["pointer"],
       result: "pointer",
@@ -6298,7 +6417,7 @@ try {
       result: "pointer",
     },
     CoRegisterClassObject: {
-      parameters: ["pointer", "pointer", "u32", "u32", "pointer"],
+      parameters: ["pointer", "pointer", "u32", "i32", "pointer"],
       result: "pointer",
     },
     CoRevokeClassObject: {
@@ -6513,7 +6632,7 @@ try {
 } catch(e) { /* ignore */ }
 
 try {
-  var libURLMON = Deno.dlopen("URLMON", {
+  var libURLMON_dll = Deno.dlopen("URLMON.dll", {
     CreateUri: {
       parameters: ["buffer", "u32", "usize", "pointer"],
       result: "pointer",
@@ -6530,7 +6649,7 @@ try {
 } catch(e) { /* ignore */ }
 
 try {
-  var liburlmon = Deno.dlopen("urlmon", {
+  var liburlmon_dll = Deno.dlopen("urlmon.dll", {
     CreateUriFromMultiByteString: {
       parameters: ["buffer", "u32", "u32", "u32", "usize", "pointer"],
       result: "pointer",
@@ -6539,7 +6658,7 @@ try {
 } catch(e) { /* ignore */ }
 
 try {
-  var libOLEAUT32 = Deno.dlopen("OLEAUT32", {
+  var libOLEAUT32_dll = Deno.dlopen("OLEAUT32.dll", {
     SetErrorInfo: {
       parameters: ["u32", "pointer"],
       result: "pointer",
@@ -6554,67 +6673,67 @@ try {
 // Symbols
 
 export function CoBuildVersion(): number /* u32 */ {
-  return libole32.CoBuildVersion();
+  return libole32_dll.CoBuildVersion();
 }
 
 export function CoInitialize(
   pvReserved: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libOLE32.CoInitialize(util.toPointer(pvReserved)));
+  return util.pointerFromFfi(libOLE32_dll.CoInitialize(util.toPointer(pvReserved)));
 }
 
 export function CoRegisterMallocSpy(
   pMallocSpy: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Com.IMallocSpy */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libOLE32.CoRegisterMallocSpy(util.toPointer(pMallocSpy)));
+  return util.pointerFromFfi(libOLE32_dll.CoRegisterMallocSpy(util.toPointer(pMallocSpy)));
 }
 
 export function CoRevokeMallocSpy(): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libOLE32.CoRevokeMallocSpy());
+  return util.pointerFromFfi(libOLE32_dll.CoRevokeMallocSpy());
 }
 
 export function CoRegisterInitializeSpy(
   pSpy: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Com.IInitializeSpy */,
   puliCookie: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libOLE32.CoRegisterInitializeSpy(util.toPointer(pSpy), util.toPointer(puliCookie)));
+  return util.pointerFromFfi(libOLE32_dll.CoRegisterInitializeSpy(util.toPointer(pSpy), util.toPointer(puliCookie)));
 }
 
 export function CoRevokeInitializeSpy(
   uliCookie: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.ULARGE_INTEGER */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libOLE32.CoRevokeInitializeSpy(util.toPointer(uliCookie)));
+  return util.pointerFromFfi(libOLE32_dll.CoRevokeInitializeSpy(util.toPointer(uliCookie)));
 }
 
 export function CoGetSystemSecurityPermissions(
   comSDType: COMSD /* Windows.Win32.System.Com.COMSD */,
   ppSD: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libOLE32.CoGetSystemSecurityPermissions(comSDType, util.toPointer(ppSD)));
+  return util.pointerFromFfi(libOLE32_dll.CoGetSystemSecurityPermissions(comSDType, util.toPointer(ppSD)));
 }
 
 export function CoLoadLibrary(
   lpszLibName: string | null /* Windows.Win32.Foundation.PWSTR */,
   bAutoFree: boolean /* Windows.Win32.Foundation.BOOL */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HINSTANCE */ {
-  return util.pointerFromFfi(libOLE32.CoLoadLibrary(util.pwstrToFfi(lpszLibName), util.boolToFfi(bAutoFree)));
+  return util.pointerFromFfi(libOLE32_dll.CoLoadLibrary(util.pwstrToFfi(lpszLibName), util.boolToFfi(bAutoFree)));
 }
 
 export function CoFreeLibrary(
   hInst: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HINSTANCE */,
 ): void /* void */ {
-  return libOLE32.CoFreeLibrary(util.toPointer(hInst));
+  return libOLE32_dll.CoFreeLibrary(util.toPointer(hInst));
 }
 
 export function CoFreeAllLibraries(): void /* void */ {
-  return libOLE32.CoFreeAllLibraries();
+  return libOLE32_dll.CoFreeAllLibraries();
 }
 
 export function CoAllowSetForegroundWindow(
   pUnk: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Com.IUnknown */,
   lpvReserved: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libOLE32.CoAllowSetForegroundWindow(util.toPointer(pUnk), util.toPointer(lpvReserved)));
+  return util.pointerFromFfi(libOLE32_dll.CoAllowSetForegroundWindow(util.toPointer(pUnk), util.toPointer(lpvReserved)));
 }
 
 export function DcomChannelSetHResult(
@@ -6622,20 +6741,20 @@ export function DcomChannelSetHResult(
   pulReserved: Deno.PointerValue | Uint8Array | null /* ptr */,
   appsHR: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libole32.DcomChannelSetHResult(util.toPointer(pvReserved), util.toPointer(pulReserved), util.toPointer(appsHR)));
+  return util.pointerFromFfi(libole32_dll.DcomChannelSetHResult(util.toPointer(pvReserved), util.toPointer(pulReserved), util.toPointer(appsHR)));
 }
 
 export function CoIsOle1Class(
   rclsid: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libole32.CoIsOle1Class(util.toPointer(rclsid)));
+  return util.boolFromFfi(libole32_dll.CoIsOle1Class(util.toPointer(rclsid)));
 }
 
 export function CLSIDFromProgIDEx(
   lpszProgID: string | null /* Windows.Win32.Foundation.PWSTR */,
   lpclsid: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libOLE32.CLSIDFromProgIDEx(util.pwstrToFfi(lpszProgID), util.toPointer(lpclsid)));
+  return util.pointerFromFfi(libOLE32_dll.CLSIDFromProgIDEx(util.pwstrToFfi(lpszProgID), util.toPointer(lpclsid)));
 }
 
 export function CoFileTimeToDosDateTime(
@@ -6643,7 +6762,7 @@ export function CoFileTimeToDosDateTime(
   lpDosDate: Deno.PointerValue | Uint8Array | null /* ptr */,
   lpDosTime: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libOLE32.CoFileTimeToDosDateTime(util.toPointer(lpFileTime), util.toPointer(lpDosDate), util.toPointer(lpDosTime)));
+  return util.boolFromFfi(libOLE32_dll.CoFileTimeToDosDateTime(util.toPointer(lpFileTime), util.toPointer(lpDosDate), util.toPointer(lpDosTime)));
 }
 
 export function CoDosDateTimeToFileTime(
@@ -6651,33 +6770,33 @@ export function CoDosDateTimeToFileTime(
   nDosTime: number /* u16 */,
   lpFileTime: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libOLE32.CoDosDateTimeToFileTime(nDosDate, nDosTime, util.toPointer(lpFileTime)));
+  return util.boolFromFfi(libOLE32_dll.CoDosDateTimeToFileTime(nDosDate, nDosTime, util.toPointer(lpFileTime)));
 }
 
 export function CoFileTimeNow(
   lpFileTime: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libOLE32.CoFileTimeNow(util.toPointer(lpFileTime)));
+  return util.pointerFromFfi(libOLE32_dll.CoFileTimeNow(util.toPointer(lpFileTime)));
 }
 
 export function CoRegisterChannelHook(
   ExtensionUuid: Deno.PointerValue | Uint8Array | null /* ptr */,
   pChannelHook: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Com.IChannelHook */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libole32.CoRegisterChannelHook(util.toPointer(ExtensionUuid), util.toPointer(pChannelHook)));
+  return util.pointerFromFfi(libole32_dll.CoRegisterChannelHook(util.toPointer(ExtensionUuid), util.toPointer(pChannelHook)));
 }
 
 export function CoTreatAsClass(
   clsidOld: Deno.PointerValue | Uint8Array | null /* ptr */,
   clsidNew: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libOLE32.CoTreatAsClass(util.toPointer(clsidOld), util.toPointer(clsidNew)));
+  return util.pointerFromFfi(libOLE32_dll.CoTreatAsClass(util.toPointer(clsidOld), util.toPointer(clsidNew)));
 }
 
 export function CreateDataAdviseHolder(
   ppDAHolder: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libOLE32.CreateDataAdviseHolder(util.toPointer(ppDAHolder)));
+  return util.pointerFromFfi(libOLE32_dll.CreateDataAdviseHolder(util.toPointer(ppDAHolder)));
 }
 
 export function CreateDataCache(
@@ -6686,7 +6805,7 @@ export function CreateDataCache(
   iid: Deno.PointerValue | Uint8Array | null /* ptr */,
   ppv: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libOLE32.CreateDataCache(util.toPointer(pUnkOuter), util.toPointer(rclsid), util.toPointer(iid), util.toPointer(ppv)));
+  return util.pointerFromFfi(libOLE32_dll.CreateDataCache(util.toPointer(pUnkOuter), util.toPointer(rclsid), util.toPointer(iid), util.toPointer(ppv)));
 }
 
 export function CoInstall(
@@ -6696,7 +6815,7 @@ export function CoInstall(
   pQuery: Deno.PointerValue | Uint8Array | null /* ptr */,
   pszCodeBase: string | null /* Windows.Win32.Foundation.PWSTR */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libole32.CoInstall(util.toPointer(pbc), dwFlags, util.toPointer(pClassSpec), util.toPointer(pQuery), util.pwstrToFfi(pszCodeBase)));
+  return util.pointerFromFfi(libole32_dll.CoInstall(util.toPointer(pbc), dwFlags, util.toPointer(pClassSpec), util.toPointer(pQuery), util.pwstrToFfi(pszCodeBase)));
 }
 
 export function BindMoniker(
@@ -6705,7 +6824,7 @@ export function BindMoniker(
   iidResult: Deno.PointerValue | Uint8Array | null /* ptr */,
   ppvResult: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libOLE32.BindMoniker(util.toPointer(pmk), grfOpt, util.toPointer(iidResult), util.toPointer(ppvResult)));
+  return util.pointerFromFfi(libOLE32_dll.BindMoniker(util.toPointer(pmk), grfOpt, util.toPointer(iidResult), util.toPointer(ppvResult)));
 }
 
 export function CoGetObject(
@@ -6714,7 +6833,7 @@ export function CoGetObject(
   riid: Deno.PointerValue | Uint8Array | null /* ptr */,
   ppv: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libOLE32.CoGetObject(util.pwstrToFfi(pszName), util.toPointer(pBindOptions), util.toPointer(riid), util.toPointer(ppv)));
+  return util.pointerFromFfi(libOLE32_dll.CoGetObject(util.pwstrToFfi(pszName), util.toPointer(pBindOptions), util.toPointer(riid), util.toPointer(ppv)));
 }
 
 export function MkParseDisplayName(
@@ -6723,7 +6842,7 @@ export function MkParseDisplayName(
   pchEaten: Deno.PointerValue | Uint8Array | null /* ptr */,
   ppmk: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libOLE32.MkParseDisplayName(util.toPointer(pbc), util.pwstrToFfi(szUserName), util.toPointer(pchEaten), util.toPointer(ppmk)));
+  return util.pointerFromFfi(libOLE32_dll.MkParseDisplayName(util.toPointer(pbc), util.pwstrToFfi(szUserName), util.toPointer(pchEaten), util.toPointer(ppmk)));
 }
 
 export function MonikerRelativePathTo(
@@ -6732,7 +6851,7 @@ export function MonikerRelativePathTo(
   ppmkRelPath: Deno.PointerValue | Uint8Array | null /* ptr */,
   dwReserved: boolean /* Windows.Win32.Foundation.BOOL */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libole32.MonikerRelativePathTo(util.toPointer(pmkSrc), util.toPointer(pmkDest), util.toPointer(ppmkRelPath), util.boolToFfi(dwReserved)));
+  return util.pointerFromFfi(libole32_dll.MonikerRelativePathTo(util.toPointer(pmkSrc), util.toPointer(pmkDest), util.toPointer(ppmkRelPath), util.boolToFfi(dwReserved)));
 }
 
 export function MonikerCommonPrefixWith(
@@ -6740,14 +6859,14 @@ export function MonikerCommonPrefixWith(
   pmkOther: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Com.IMoniker */,
   ppmkCommon: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libole32.MonikerCommonPrefixWith(util.toPointer(pmkThis), util.toPointer(pmkOther), util.toPointer(ppmkCommon)));
+  return util.pointerFromFfi(libole32_dll.MonikerCommonPrefixWith(util.toPointer(pmkThis), util.toPointer(pmkOther), util.toPointer(ppmkCommon)));
 }
 
 export function CreateBindCtx(
   reserved: number /* u32 */,
   ppbc: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libOLE32.CreateBindCtx(reserved, util.toPointer(ppbc)));
+  return util.pointerFromFfi(libOLE32_dll.CreateBindCtx(reserved, util.toPointer(ppbc)));
 }
 
 export function CreateGenericComposite(
@@ -6755,28 +6874,28 @@ export function CreateGenericComposite(
   pmkRest: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Com.IMoniker */,
   ppmkComposite: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libOLE32.CreateGenericComposite(util.toPointer(pmkFirst), util.toPointer(pmkRest), util.toPointer(ppmkComposite)));
+  return util.pointerFromFfi(libOLE32_dll.CreateGenericComposite(util.toPointer(pmkFirst), util.toPointer(pmkRest), util.toPointer(ppmkComposite)));
 }
 
 export function GetClassFile(
   szFilename: string | null /* Windows.Win32.Foundation.PWSTR */,
   pclsid: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libOLE32.GetClassFile(util.pwstrToFfi(szFilename), util.toPointer(pclsid)));
+  return util.pointerFromFfi(libOLE32_dll.GetClassFile(util.pwstrToFfi(szFilename), util.toPointer(pclsid)));
 }
 
 export function CreateClassMoniker(
   rclsid: Deno.PointerValue | Uint8Array | null /* ptr */,
   ppmk: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libOLE32.CreateClassMoniker(util.toPointer(rclsid), util.toPointer(ppmk)));
+  return util.pointerFromFfi(libOLE32_dll.CreateClassMoniker(util.toPointer(rclsid), util.toPointer(ppmk)));
 }
 
 export function CreateFileMoniker(
   lpszPathName: string | null /* Windows.Win32.Foundation.PWSTR */,
   ppmk: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libOLE32.CreateFileMoniker(util.pwstrToFfi(lpszPathName), util.toPointer(ppmk)));
+  return util.pointerFromFfi(libOLE32_dll.CreateFileMoniker(util.pwstrToFfi(lpszPathName), util.toPointer(ppmk)));
 }
 
 export function CreateItemMoniker(
@@ -6784,34 +6903,34 @@ export function CreateItemMoniker(
   lpszItem: string | null /* Windows.Win32.Foundation.PWSTR */,
   ppmk: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libOLE32.CreateItemMoniker(util.pwstrToFfi(lpszDelim), util.pwstrToFfi(lpszItem), util.toPointer(ppmk)));
+  return util.pointerFromFfi(libOLE32_dll.CreateItemMoniker(util.pwstrToFfi(lpszDelim), util.pwstrToFfi(lpszItem), util.toPointer(ppmk)));
 }
 
 export function CreateAntiMoniker(
   ppmk: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libOLE32.CreateAntiMoniker(util.toPointer(ppmk)));
+  return util.pointerFromFfi(libOLE32_dll.CreateAntiMoniker(util.toPointer(ppmk)));
 }
 
 export function CreatePointerMoniker(
   punk: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Com.IUnknown */,
   ppmk: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libOLE32.CreatePointerMoniker(util.toPointer(punk), util.toPointer(ppmk)));
+  return util.pointerFromFfi(libOLE32_dll.CreatePointerMoniker(util.toPointer(punk), util.toPointer(ppmk)));
 }
 
 export function CreateObjrefMoniker(
   punk: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Com.IUnknown */,
   ppmk: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libOLE32.CreateObjrefMoniker(util.toPointer(punk), util.toPointer(ppmk)));
+  return util.pointerFromFfi(libOLE32_dll.CreateObjrefMoniker(util.toPointer(punk), util.toPointer(ppmk)));
 }
 
 export function GetRunningObjectTable(
   reserved: number /* u32 */,
   pprot: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libOLE32.GetRunningObjectTable(reserved, util.toPointer(pprot)));
+  return util.pointerFromFfi(libOLE32_dll.GetRunningObjectTable(reserved, util.toPointer(pprot)));
 }
 
 export function CreateStdProgressIndicator(
@@ -6820,79 +6939,79 @@ export function CreateStdProgressIndicator(
   pIbscCaller: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Com.IBindStatusCallback */,
   ppIbsc: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libole32.CreateStdProgressIndicator(util.hwndToFfi(hwndParent), util.pwstrToFfi(pszTitle), util.toPointer(pIbscCaller), util.toPointer(ppIbsc)));
+  return util.pointerFromFfi(libole32_dll.CreateStdProgressIndicator(util.hwndToFfi(hwndParent), util.pwstrToFfi(pszTitle), util.toPointer(pIbscCaller), util.toPointer(ppIbsc)));
 }
 
 export function CoGetMalloc(
   dwMemContext: number /* u32 */,
   ppMalloc: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libOLE32.CoGetMalloc(dwMemContext, util.toPointer(ppMalloc)));
+  return util.pointerFromFfi(libOLE32_dll.CoGetMalloc(dwMemContext, util.toPointer(ppMalloc)));
 }
 
 export function CoUninitialize(): void /* void */ {
-  return libOLE32.CoUninitialize();
+  return libOLE32_dll.CoUninitialize();
 }
 
 export function CoGetCurrentProcess(): number /* u32 */ {
-  return libOLE32.CoGetCurrentProcess();
+  return libOLE32_dll.CoGetCurrentProcess();
 }
 
 export function CoInitializeEx(
   pvReserved: Deno.PointerValue | Uint8Array | null /* ptr */,
   dwCoInit: COINIT /* Windows.Win32.System.Com.COINIT */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libOLE32.CoInitializeEx(util.toPointer(pvReserved), dwCoInit));
+  return util.pointerFromFfi(libOLE32_dll.CoInitializeEx(util.toPointer(pvReserved), dwCoInit));
 }
 
 export function CoGetCallerTID(
   lpdwTID: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libOLE32.CoGetCallerTID(util.toPointer(lpdwTID)));
+  return util.pointerFromFfi(libOLE32_dll.CoGetCallerTID(util.toPointer(lpdwTID)));
 }
 
 export function CoGetCurrentLogicalThreadId(
   pguid: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libOLE32.CoGetCurrentLogicalThreadId(util.toPointer(pguid)));
+  return util.pointerFromFfi(libOLE32_dll.CoGetCurrentLogicalThreadId(util.toPointer(pguid)));
 }
 
 export function CoGetContextToken(
   pToken: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libOLE32.CoGetContextToken(util.toPointer(pToken)));
+  return util.pointerFromFfi(libOLE32_dll.CoGetContextToken(util.toPointer(pToken)));
 }
 
 export function CoGetApartmentType(
   pAptType: Deno.PointerValue | Uint8Array | null /* ptr */,
   pAptQualifier: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libOLE32.CoGetApartmentType(util.toPointer(pAptType), util.toPointer(pAptQualifier)));
+  return util.pointerFromFfi(libOLE32_dll.CoGetApartmentType(util.toPointer(pAptType), util.toPointer(pAptQualifier)));
 }
 
 export function CoIncrementMTAUsage(
   pCookie: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libOLE32.CoIncrementMTAUsage(util.toPointer(pCookie)));
+  return util.pointerFromFfi(libOLE32_dll.CoIncrementMTAUsage(util.toPointer(pCookie)));
 }
 
 export function CoDecrementMTAUsage(
   Cookie: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Com.CO_MTA_USAGE_COOKIE */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libOLE32.CoDecrementMTAUsage(util.toPointer(Cookie)));
+  return util.pointerFromFfi(libOLE32_dll.CoDecrementMTAUsage(util.toPointer(Cookie)));
 }
 
 export function CoAllowUnmarshalerCLSID(
   clsid: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libOLE32.CoAllowUnmarshalerCLSID(util.toPointer(clsid)));
+  return util.pointerFromFfi(libOLE32_dll.CoAllowUnmarshalerCLSID(util.toPointer(clsid)));
 }
 
 export function CoGetObjectContext(
   riid: Deno.PointerValue | Uint8Array | null /* ptr */,
   ppv: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libOLE32.CoGetObjectContext(util.toPointer(riid), util.toPointer(ppv)));
+  return util.pointerFromFfi(libOLE32_dll.CoGetObjectContext(util.toPointer(riid), util.toPointer(ppv)));
 }
 
 export function CoGetClassObject(
@@ -6902,66 +7021,66 @@ export function CoGetClassObject(
   riid: Deno.PointerValue | Uint8Array | null /* ptr */,
   ppv: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libOLE32.CoGetClassObject(util.toPointer(rclsid), dwClsContext, util.toPointer(pvReserved), util.toPointer(riid), util.toPointer(ppv)));
+  return util.pointerFromFfi(libOLE32_dll.CoGetClassObject(util.toPointer(rclsid), dwClsContext, util.toPointer(pvReserved), util.toPointer(riid), util.toPointer(ppv)));
 }
 
 export function CoRegisterClassObject(
   rclsid: Deno.PointerValue | Uint8Array | null /* ptr */,
   pUnk: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Com.IUnknown */,
   dwClsContext: CLSCTX /* Windows.Win32.System.Com.CLSCTX */,
-  flags: number /* u32 */,
+  flags: REGCLS /* Windows.Win32.System.Com.REGCLS */,
   lpdwRegister: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libOLE32.CoRegisterClassObject(util.toPointer(rclsid), util.toPointer(pUnk), dwClsContext, flags, util.toPointer(lpdwRegister)));
+  return util.pointerFromFfi(libOLE32_dll.CoRegisterClassObject(util.toPointer(rclsid), util.toPointer(pUnk), dwClsContext, flags, util.toPointer(lpdwRegister)));
 }
 
 export function CoRevokeClassObject(
   dwRegister: number /* u32 */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libOLE32.CoRevokeClassObject(dwRegister));
+  return util.pointerFromFfi(libOLE32_dll.CoRevokeClassObject(dwRegister));
 }
 
 export function CoResumeClassObjects(): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libOLE32.CoResumeClassObjects());
+  return util.pointerFromFfi(libOLE32_dll.CoResumeClassObjects());
 }
 
 export function CoSuspendClassObjects(): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libOLE32.CoSuspendClassObjects());
+  return util.pointerFromFfi(libOLE32_dll.CoSuspendClassObjects());
 }
 
 export function CoAddRefServerProcess(): number /* u32 */ {
-  return libOLE32.CoAddRefServerProcess();
+  return libOLE32_dll.CoAddRefServerProcess();
 }
 
 export function CoReleaseServerProcess(): number /* u32 */ {
-  return libOLE32.CoReleaseServerProcess();
+  return libOLE32_dll.CoReleaseServerProcess();
 }
 
 export function CoGetPSClsid(
   riid: Deno.PointerValue | Uint8Array | null /* ptr */,
   pClsid: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libOLE32.CoGetPSClsid(util.toPointer(riid), util.toPointer(pClsid)));
+  return util.pointerFromFfi(libOLE32_dll.CoGetPSClsid(util.toPointer(riid), util.toPointer(pClsid)));
 }
 
 export function CoRegisterPSClsid(
   riid: Deno.PointerValue | Uint8Array | null /* ptr */,
   rclsid: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libOLE32.CoRegisterPSClsid(util.toPointer(riid), util.toPointer(rclsid)));
+  return util.pointerFromFfi(libOLE32_dll.CoRegisterPSClsid(util.toPointer(riid), util.toPointer(rclsid)));
 }
 
 export function CoRegisterSurrogate(
   pSurrogate: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Com.ISurrogate */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libOLE32.CoRegisterSurrogate(util.toPointer(pSurrogate)));
+  return util.pointerFromFfi(libOLE32_dll.CoRegisterSurrogate(util.toPointer(pSurrogate)));
 }
 
 export function CoDisconnectObject(
   pUnk: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Com.IUnknown */,
   dwReserved: number /* u32 */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libOLE32.CoDisconnectObject(util.toPointer(pUnk), dwReserved));
+  return util.pointerFromFfi(libOLE32_dll.CoDisconnectObject(util.toPointer(pUnk), dwReserved));
 }
 
 export function CoLockObjectExternal(
@@ -6969,41 +7088,41 @@ export function CoLockObjectExternal(
   fLock: boolean /* Windows.Win32.Foundation.BOOL */,
   fLastUnlockReleases: boolean /* Windows.Win32.Foundation.BOOL */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libOLE32.CoLockObjectExternal(util.toPointer(pUnk), util.boolToFfi(fLock), util.boolToFfi(fLastUnlockReleases)));
+  return util.pointerFromFfi(libOLE32_dll.CoLockObjectExternal(util.toPointer(pUnk), util.boolToFfi(fLock), util.boolToFfi(fLastUnlockReleases)));
 }
 
 export function CoIsHandlerConnected(
   pUnk: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Com.IUnknown */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libOLE32.CoIsHandlerConnected(util.toPointer(pUnk)));
+  return util.boolFromFfi(libOLE32_dll.CoIsHandlerConnected(util.toPointer(pUnk)));
 }
 
 export function CoCreateFreeThreadedMarshaler(
   punkOuter: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Com.IUnknown */,
   ppunkMarshal: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libOLE32.CoCreateFreeThreadedMarshaler(util.toPointer(punkOuter), util.toPointer(ppunkMarshal)));
+  return util.pointerFromFfi(libOLE32_dll.CoCreateFreeThreadedMarshaler(util.toPointer(punkOuter), util.toPointer(ppunkMarshal)));
 }
 
 export function CoFreeUnusedLibraries(): void /* void */ {
-  return libOLE32.CoFreeUnusedLibraries();
+  return libOLE32_dll.CoFreeUnusedLibraries();
 }
 
 export function CoFreeUnusedLibrariesEx(
   dwUnloadDelay: number /* u32 */,
   dwReserved: number /* u32 */,
 ): void /* void */ {
-  return libOLE32.CoFreeUnusedLibrariesEx(dwUnloadDelay, dwReserved);
+  return libOLE32_dll.CoFreeUnusedLibrariesEx(dwUnloadDelay, dwReserved);
 }
 
 export function CoDisconnectContext(
   dwTimeout: number /* u32 */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libOLE32.CoDisconnectContext(dwTimeout));
+  return util.pointerFromFfi(libOLE32_dll.CoDisconnectContext(dwTimeout));
 }
 
 export function CoInitializeSecurity(
-  pSecDesc: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pSecDesc: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Security.PSECURITY_DESCRIPTOR */,
   cAuthSvc: number /* i32 */,
   asAuthSvc: Deno.PointerValue | Uint8Array | null /* ptr */,
   pReserved1: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -7013,14 +7132,14 @@ export function CoInitializeSecurity(
   dwCapabilities: EOLE_AUTHENTICATION_CAPABILITIES /* Windows.Win32.System.Com.EOLE_AUTHENTICATION_CAPABILITIES */,
   pReserved3: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libOLE32.CoInitializeSecurity(util.toPointer(pSecDesc), cAuthSvc, util.toPointer(asAuthSvc), util.toPointer(pReserved1), dwAuthnLevel, dwImpLevel, util.toPointer(pAuthList), dwCapabilities, util.toPointer(pReserved3)));
+  return util.pointerFromFfi(libOLE32_dll.CoInitializeSecurity(util.toPointer(pSecDesc), cAuthSvc, util.toPointer(asAuthSvc), util.toPointer(pReserved1), dwAuthnLevel, dwImpLevel, util.toPointer(pAuthList), dwCapabilities, util.toPointer(pReserved3)));
 }
 
 export function CoGetCallContext(
   riid: Deno.PointerValue | Uint8Array | null /* ptr */,
   ppInterface: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libOLE32.CoGetCallContext(util.toPointer(riid), util.toPointer(ppInterface)));
+  return util.pointerFromFfi(libOLE32_dll.CoGetCallContext(util.toPointer(riid), util.toPointer(ppInterface)));
 }
 
 export function CoQueryProxyBlanket(
@@ -7033,7 +7152,7 @@ export function CoQueryProxyBlanket(
   pAuthInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
   pCapabilites: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libOLE32.CoQueryProxyBlanket(util.toPointer(pProxy), util.toPointer(pwAuthnSvc), util.toPointer(pAuthzSvc), util.toPointer(pServerPrincName), util.toPointer(pAuthnLevel), util.toPointer(pImpLevel), util.toPointer(pAuthInfo), util.toPointer(pCapabilites)));
+  return util.pointerFromFfi(libOLE32_dll.CoQueryProxyBlanket(util.toPointer(pProxy), util.toPointer(pwAuthnSvc), util.toPointer(pAuthzSvc), util.toPointer(pServerPrincName), util.toPointer(pAuthnLevel), util.toPointer(pImpLevel), util.toPointer(pAuthInfo), util.toPointer(pCapabilites)));
 }
 
 export function CoSetProxyBlanket(
@@ -7046,14 +7165,14 @@ export function CoSetProxyBlanket(
   pAuthInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
   dwCapabilities: EOLE_AUTHENTICATION_CAPABILITIES /* Windows.Win32.System.Com.EOLE_AUTHENTICATION_CAPABILITIES */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libOLE32.CoSetProxyBlanket(util.toPointer(pProxy), dwAuthnSvc, dwAuthzSvc, util.pwstrToFfi(pServerPrincName), dwAuthnLevel, dwImpLevel, util.toPointer(pAuthInfo), dwCapabilities));
+  return util.pointerFromFfi(libOLE32_dll.CoSetProxyBlanket(util.toPointer(pProxy), dwAuthnSvc, dwAuthzSvc, util.pwstrToFfi(pServerPrincName), dwAuthnLevel, dwImpLevel, util.toPointer(pAuthInfo), dwCapabilities));
 }
 
 export function CoCopyProxy(
   pProxy: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Com.IUnknown */,
   ppCopy: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libOLE32.CoCopyProxy(util.toPointer(pProxy), util.toPointer(ppCopy)));
+  return util.pointerFromFfi(libOLE32_dll.CoCopyProxy(util.toPointer(pProxy), util.toPointer(ppCopy)));
 }
 
 export function CoQueryClientBlanket(
@@ -7065,29 +7184,29 @@ export function CoQueryClientBlanket(
   pPrivs: Deno.PointerValue | Uint8Array | null /* ptr */,
   pCapabilities: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libOLE32.CoQueryClientBlanket(util.toPointer(pAuthnSvc), util.toPointer(pAuthzSvc), util.toPointer(pServerPrincName), util.toPointer(pAuthnLevel), util.toPointer(pImpLevel), util.toPointer(pPrivs), util.toPointer(pCapabilities)));
+  return util.pointerFromFfi(libOLE32_dll.CoQueryClientBlanket(util.toPointer(pAuthnSvc), util.toPointer(pAuthzSvc), util.toPointer(pServerPrincName), util.toPointer(pAuthnLevel), util.toPointer(pImpLevel), util.toPointer(pPrivs), util.toPointer(pCapabilities)));
 }
 
 export function CoImpersonateClient(): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libOLE32.CoImpersonateClient());
+  return util.pointerFromFfi(libOLE32_dll.CoImpersonateClient());
 }
 
 export function CoRevertToSelf(): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libOLE32.CoRevertToSelf());
+  return util.pointerFromFfi(libOLE32_dll.CoRevertToSelf());
 }
 
 export function CoQueryAuthenticationServices(
   pcAuthSvc: Deno.PointerValue | Uint8Array | null /* ptr */,
   asAuthSvc: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libOLE32.CoQueryAuthenticationServices(util.toPointer(pcAuthSvc), util.toPointer(asAuthSvc)));
+  return util.pointerFromFfi(libOLE32_dll.CoQueryAuthenticationServices(util.toPointer(pcAuthSvc), util.toPointer(asAuthSvc)));
 }
 
 export function CoSwitchCallContext(
   pNewObject: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Com.IUnknown */,
   ppOldObject: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libOLE32.CoSwitchCallContext(util.toPointer(pNewObject), util.toPointer(ppOldObject)));
+  return util.pointerFromFfi(libOLE32_dll.CoSwitchCallContext(util.toPointer(pNewObject), util.toPointer(ppOldObject)));
 }
 
 export function CoCreateInstance(
@@ -7097,7 +7216,7 @@ export function CoCreateInstance(
   riid: Deno.PointerValue | Uint8Array | null /* ptr */,
   ppv: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libOLE32.CoCreateInstance(util.toPointer(rclsid), util.toPointer(pUnkOuter), dwClsContext, util.toPointer(riid), util.toPointer(ppv)));
+  return util.pointerFromFfi(libOLE32_dll.CoCreateInstance(util.toPointer(rclsid), util.toPointer(pUnkOuter), dwClsContext, util.toPointer(riid), util.toPointer(ppv)));
 }
 
 export function CoCreateInstanceEx(
@@ -7108,7 +7227,7 @@ export function CoCreateInstanceEx(
   dwCount: number /* u32 */,
   pResults: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libOLE32.CoCreateInstanceEx(util.toPointer(Clsid), util.toPointer(punkOuter), dwClsCtx, util.toPointer(pServerInfo), dwCount, util.toPointer(pResults)));
+  return util.pointerFromFfi(libOLE32_dll.CoCreateInstanceEx(util.toPointer(Clsid), util.toPointer(punkOuter), dwClsCtx, util.toPointer(pServerInfo), dwCount, util.toPointer(pResults)));
 }
 
 export function CoCreateInstanceFromApp(
@@ -7119,13 +7238,13 @@ export function CoCreateInstanceFromApp(
   dwCount: number /* u32 */,
   pResults: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libOLE32.CoCreateInstanceFromApp(util.toPointer(Clsid), util.toPointer(punkOuter), dwClsCtx, util.toPointer(reserved), dwCount, util.toPointer(pResults)));
+  return util.pointerFromFfi(libOLE32_dll.CoCreateInstanceFromApp(util.toPointer(Clsid), util.toPointer(punkOuter), dwClsCtx, util.toPointer(reserved), dwCount, util.toPointer(pResults)));
 }
 
 export function CoRegisterActivationFilter(
   pActivationFilter: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Com.IActivationFilter */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libOLE32.CoRegisterActivationFilter(util.toPointer(pActivationFilter)));
+  return util.pointerFromFfi(libOLE32_dll.CoRegisterActivationFilter(util.toPointer(pActivationFilter)));
 }
 
 export function CoGetCancelObject(
@@ -7133,78 +7252,78 @@ export function CoGetCancelObject(
   iid: Deno.PointerValue | Uint8Array | null /* ptr */,
   ppUnk: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libOLE32.CoGetCancelObject(dwThreadId, util.toPointer(iid), util.toPointer(ppUnk)));
+  return util.pointerFromFfi(libOLE32_dll.CoGetCancelObject(dwThreadId, util.toPointer(iid), util.toPointer(ppUnk)));
 }
 
 export function CoSetCancelObject(
   pUnk: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Com.IUnknown */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libOLE32.CoSetCancelObject(util.toPointer(pUnk)));
+  return util.pointerFromFfi(libOLE32_dll.CoSetCancelObject(util.toPointer(pUnk)));
 }
 
 export function CoCancelCall(
   dwThreadId: number /* u32 */,
   ulTimeout: number /* u32 */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libOLE32.CoCancelCall(dwThreadId, ulTimeout));
+  return util.pointerFromFfi(libOLE32_dll.CoCancelCall(dwThreadId, ulTimeout));
 }
 
 export function CoTestCancel(): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libOLE32.CoTestCancel());
+  return util.pointerFromFfi(libOLE32_dll.CoTestCancel());
 }
 
 export function CoEnableCallCancellation(
   pReserved: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libOLE32.CoEnableCallCancellation(util.toPointer(pReserved)));
+  return util.pointerFromFfi(libOLE32_dll.CoEnableCallCancellation(util.toPointer(pReserved)));
 }
 
 export function CoDisableCallCancellation(
   pReserved: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libOLE32.CoDisableCallCancellation(util.toPointer(pReserved)));
+  return util.pointerFromFfi(libOLE32_dll.CoDisableCallCancellation(util.toPointer(pReserved)));
 }
 
 export function StringFromCLSID(
   rclsid: Deno.PointerValue | Uint8Array | null /* ptr */,
   lplpsz: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libOLE32.StringFromCLSID(util.toPointer(rclsid), util.toPointer(lplpsz)));
+  return util.pointerFromFfi(libOLE32_dll.StringFromCLSID(util.toPointer(rclsid), util.toPointer(lplpsz)));
 }
 
 export function CLSIDFromString(
   lpsz: string | null /* Windows.Win32.Foundation.PWSTR */,
   pclsid: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libOLE32.CLSIDFromString(util.pwstrToFfi(lpsz), util.toPointer(pclsid)));
+  return util.pointerFromFfi(libOLE32_dll.CLSIDFromString(util.pwstrToFfi(lpsz), util.toPointer(pclsid)));
 }
 
 export function StringFromIID(
   rclsid: Deno.PointerValue | Uint8Array | null /* ptr */,
   lplpsz: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libOLE32.StringFromIID(util.toPointer(rclsid), util.toPointer(lplpsz)));
+  return util.pointerFromFfi(libOLE32_dll.StringFromIID(util.toPointer(rclsid), util.toPointer(lplpsz)));
 }
 
 export function IIDFromString(
   lpsz: string | null /* Windows.Win32.Foundation.PWSTR */,
   lpiid: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libOLE32.IIDFromString(util.pwstrToFfi(lpsz), util.toPointer(lpiid)));
+  return util.pointerFromFfi(libOLE32_dll.IIDFromString(util.pwstrToFfi(lpsz), util.toPointer(lpiid)));
 }
 
 export function ProgIDFromCLSID(
   clsid: Deno.PointerValue | Uint8Array | null /* ptr */,
   lplpszProgID: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libOLE32.ProgIDFromCLSID(util.toPointer(clsid), util.toPointer(lplpszProgID)));
+  return util.pointerFromFfi(libOLE32_dll.ProgIDFromCLSID(util.toPointer(clsid), util.toPointer(lplpszProgID)));
 }
 
 export function CLSIDFromProgID(
   lpszProgID: string | null /* Windows.Win32.Foundation.PWSTR */,
   lpclsid: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libOLE32.CLSIDFromProgID(util.pwstrToFfi(lpszProgID), util.toPointer(lpclsid)));
+  return util.pointerFromFfi(libOLE32_dll.CLSIDFromProgID(util.pwstrToFfi(lpszProgID), util.toPointer(lpclsid)));
 }
 
 export function StringFromGUID2(
@@ -7212,13 +7331,13 @@ export function StringFromGUID2(
   lpsz: string | null /* Windows.Win32.Foundation.PWSTR */,
   cchMax: number /* i32 */,
 ): number /* i32 */ {
-  return libOLE32.StringFromGUID2(util.toPointer(rguid), util.pwstrToFfi(lpsz), cchMax);
+  return libOLE32_dll.StringFromGUID2(util.toPointer(rguid), util.pwstrToFfi(lpsz), cchMax);
 }
 
 export function CoCreateGuid(
   pguid: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libOLE32.CoCreateGuid(util.toPointer(pguid)));
+  return util.pointerFromFfi(libOLE32_dll.CoCreateGuid(util.toPointer(pguid)));
 }
 
 export function CoWaitForMultipleHandles(
@@ -7228,7 +7347,7 @@ export function CoWaitForMultipleHandles(
   pHandles: Deno.PointerValue | Uint8Array | null /* ptr */,
   lpdwindex: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libOLE32.CoWaitForMultipleHandles(dwFlags, dwTimeout, cHandles, util.toPointer(pHandles), util.toPointer(lpdwindex)));
+  return util.pointerFromFfi(libOLE32_dll.CoWaitForMultipleHandles(dwFlags, dwTimeout, cHandles, util.toPointer(pHandles), util.toPointer(lpdwindex)));
 }
 
 export function CoWaitForMultipleObjects(
@@ -7238,52 +7357,52 @@ export function CoWaitForMultipleObjects(
   pHandles: Deno.PointerValue | Uint8Array | null /* ptr */,
   lpdwindex: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libOLE32.CoWaitForMultipleObjects(dwFlags, dwTimeout, cHandles, util.toPointer(pHandles), util.toPointer(lpdwindex)));
+  return util.pointerFromFfi(libOLE32_dll.CoWaitForMultipleObjects(dwFlags, dwTimeout, cHandles, util.toPointer(pHandles), util.toPointer(lpdwindex)));
 }
 
 export function CoGetTreatAsClass(
   clsidOld: Deno.PointerValue | Uint8Array | null /* ptr */,
   pClsidNew: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libOLE32.CoGetTreatAsClass(util.toPointer(clsidOld), util.toPointer(pClsidNew)));
+  return util.pointerFromFfi(libOLE32_dll.CoGetTreatAsClass(util.toPointer(clsidOld), util.toPointer(pClsidNew)));
 }
 
 export function CoInvalidateRemoteMachineBindings(
   pszMachineName: string | null /* Windows.Win32.Foundation.PWSTR */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libOLE32.CoInvalidateRemoteMachineBindings(util.pwstrToFfi(pszMachineName)));
+  return util.pointerFromFfi(libOLE32_dll.CoInvalidateRemoteMachineBindings(util.pwstrToFfi(pszMachineName)));
 }
 
 export function CoTaskMemAlloc(
   cb: Deno.PointerValue /* usize */,
 ): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libOLE32.CoTaskMemAlloc(cb));
+  return util.pointerFromFfi(libOLE32_dll.CoTaskMemAlloc(cb));
 }
 
 export function CoTaskMemRealloc(
   pv: Deno.PointerValue | Uint8Array | null /* ptr */,
   cb: Deno.PointerValue /* usize */,
 ): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libOLE32.CoTaskMemRealloc(util.toPointer(pv), cb));
+  return util.pointerFromFfi(libOLE32_dll.CoTaskMemRealloc(util.toPointer(pv), cb));
 }
 
 export function CoTaskMemFree(
   pv: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): void /* void */ {
-  return libOLE32.CoTaskMemFree(util.toPointer(pv));
+  return libOLE32_dll.CoTaskMemFree(util.toPointer(pv));
 }
 
 export function CoRegisterDeviceCatalog(
   deviceInstanceId: string | null /* Windows.Win32.Foundation.PWSTR */,
   cookie: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libOLE32.CoRegisterDeviceCatalog(util.pwstrToFfi(deviceInstanceId), util.toPointer(cookie)));
+  return util.pointerFromFfi(libOLE32_dll.CoRegisterDeviceCatalog(util.pwstrToFfi(deviceInstanceId), util.toPointer(cookie)));
 }
 
 export function CoRevokeDeviceCatalog(
   cookie: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Com.CO_DEVICE_CATALOG_COOKIE */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libOLE32.CoRevokeDeviceCatalog(util.toPointer(cookie)));
+  return util.pointerFromFfi(libOLE32_dll.CoRevokeDeviceCatalog(util.toPointer(cookie)));
 }
 
 export function CreateUri(
@@ -7292,7 +7411,7 @@ export function CreateUri(
   dwReserved: Deno.PointerValue /* usize */,
   ppURI: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libURLMON.CreateUri(util.pwstrToFfi(pwzURI), dwFlags, dwReserved, util.toPointer(ppURI)));
+  return util.pointerFromFfi(libURLMON_dll.CreateUri(util.pwstrToFfi(pwzURI), dwFlags, dwReserved, util.toPointer(ppURI)));
 }
 
 export function CreateUriWithFragment(
@@ -7302,7 +7421,7 @@ export function CreateUriWithFragment(
   dwReserved: Deno.PointerValue /* usize */,
   ppURI: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libURLMON.CreateUriWithFragment(util.pwstrToFfi(pwzURI), util.pwstrToFfi(pwzFragment), dwFlags, dwReserved, util.toPointer(ppURI)));
+  return util.pointerFromFfi(libURLMON_dll.CreateUriWithFragment(util.pwstrToFfi(pwzURI), util.pwstrToFfi(pwzFragment), dwFlags, dwReserved, util.toPointer(ppURI)));
 }
 
 export function CreateUriFromMultiByteString(
@@ -7313,7 +7432,7 @@ export function CreateUriFromMultiByteString(
   dwReserved: Deno.PointerValue /* usize */,
   ppUri: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(liburlmon.CreateUriFromMultiByteString(util.pstrToFfi(pszANSIInputUri), dwEncodingFlags, dwCodePage, dwCreateFlags, dwReserved, util.toPointer(ppUri)));
+  return util.pointerFromFfi(liburlmon_dll.CreateUriFromMultiByteString(util.pstrToFfi(pszANSIInputUri), dwEncodingFlags, dwCodePage, dwCreateFlags, dwReserved, util.toPointer(ppUri)));
 }
 
 export function CreateIUriBuilder(
@@ -7322,20 +7441,20 @@ export function CreateIUriBuilder(
   dwReserved: Deno.PointerValue /* usize */,
   ppIUriBuilder: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libURLMON.CreateIUriBuilder(util.toPointer(pIUri), dwFlags, dwReserved, util.toPointer(ppIUriBuilder)));
+  return util.pointerFromFfi(libURLMON_dll.CreateIUriBuilder(util.toPointer(pIUri), dwFlags, dwReserved, util.toPointer(ppIUriBuilder)));
 }
 
 export function SetErrorInfo(
   dwReserved: number /* u32 */,
   perrinfo: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Com.IErrorInfo */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libOLEAUT32.SetErrorInfo(dwReserved, util.toPointer(perrinfo)));
+  return util.pointerFromFfi(libOLEAUT32_dll.SetErrorInfo(dwReserved, util.toPointer(perrinfo)));
 }
 
 export function GetErrorInfo(
   dwReserved: number /* u32 */,
   pperrinfo: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libOLEAUT32.GetErrorInfo(dwReserved, util.toPointer(pperrinfo)));
+  return util.pointerFromFfi(libOLEAUT32_dll.GetErrorInfo(dwReserved, util.toPointer(pperrinfo)));
 }
 

@@ -251,33 +251,6 @@ export function allocMS_ADDINFO_FLAT(data?: Partial<MS_ADDINFO_FLAT>): Uint8Arra
 }
 
 /**
- * Windows.Win32.Security.Cryptography.Sip.MS_ADDINFO_CATALOGMEMBER (size: 24)
- */
-export interface MS_ADDINFO_CATALOGMEMBER {
-  /** u32 */
-  cbStruct: number;
-  /** ptr */
-  pStore: Deno.PointerValue | Uint8Array | null;
-  /** ptr */
-  pMember: Deno.PointerValue | Uint8Array | null;
-}
-
-export const sizeofMS_ADDINFO_CATALOGMEMBER = 24;
-
-export function allocMS_ADDINFO_CATALOGMEMBER(data?: Partial<MS_ADDINFO_CATALOGMEMBER>): Uint8Array {
-  const buf = new Uint8Array(sizeofMS_ADDINFO_CATALOGMEMBER);
-  const view = new DataView(buf.buffer);
-  // 0x00: u32
-  if (data?.cbStruct !== undefined) view.setUint32(0, Number(data.cbStruct), true);
-  // 0x04: pad4
-  // 0x08: pointer
-  if (data?.pStore !== undefined) view.setBigUint64(8, data.pStore === null ? 0n : BigInt(util.toPointer(data.pStore)), true);
-  // 0x10: pointer
-  if (data?.pMember !== undefined) view.setBigUint64(16, data.pMember === null ? 0n : BigInt(util.toPointer(data.pMember)), true);
-  return buf;
-}
-
-/**
  * Windows.Win32.Security.Cryptography.Sip.MS_ADDINFO_BLOB (size: 32)
  */
 export interface MS_ADDINFO_BLOB {
@@ -565,7 +538,7 @@ export function allocSIP_ADD_NEWPROVIDER(data?: Partial<SIP_ADD_NEWPROVIDER>): U
 // Native Libraries
 
 try {
-  var libWINTRUST = Deno.dlopen("WINTRUST", {
+  var libWINTRUST_dll = Deno.dlopen("WINTRUST.dll", {
     CryptSIPGetSignedDataMsg: {
       parameters: ["pointer", "pointer", "u32", "pointer", "pointer"],
       result: "i32",
@@ -598,7 +571,7 @@ try {
 } catch(e) { /* ignore */ }
 
 try {
-  var libCRYPT32 = Deno.dlopen("CRYPT32", {
+  var libCRYPT32_dll = Deno.dlopen("CRYPT32.dll", {
     CryptSIPLoad: {
       parameters: ["pointer", "u32", "pointer"],
       result: "i32",
@@ -631,7 +604,7 @@ export function CryptSIPGetSignedDataMsg(
   pcbSignedDataMsg: Deno.PointerValue | Uint8Array | null /* ptr */,
   pbSignedDataMsg: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWINTRUST.CryptSIPGetSignedDataMsg(util.toPointer(pSubjectInfo), util.toPointer(pdwEncodingType), dwIndex, util.toPointer(pcbSignedDataMsg), util.toPointer(pbSignedDataMsg)));
+  return util.boolFromFfi(libWINTRUST_dll.CryptSIPGetSignedDataMsg(util.toPointer(pSubjectInfo), util.toPointer(pdwEncodingType), dwIndex, util.toPointer(pcbSignedDataMsg), util.toPointer(pbSignedDataMsg)));
 }
 
 export function CryptSIPPutSignedDataMsg(
@@ -641,7 +614,7 @@ export function CryptSIPPutSignedDataMsg(
   cbSignedDataMsg: number /* u32 */,
   pbSignedDataMsg: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWINTRUST.CryptSIPPutSignedDataMsg(util.toPointer(pSubjectInfo), dwEncodingType, util.toPointer(pdwIndex), cbSignedDataMsg, util.toPointer(pbSignedDataMsg)));
+  return util.boolFromFfi(libWINTRUST_dll.CryptSIPPutSignedDataMsg(util.toPointer(pSubjectInfo), dwEncodingType, util.toPointer(pdwIndex), cbSignedDataMsg, util.toPointer(pbSignedDataMsg)));
 }
 
 export function CryptSIPCreateIndirectData(
@@ -649,21 +622,21 @@ export function CryptSIPCreateIndirectData(
   pcbIndirectData: Deno.PointerValue | Uint8Array | null /* ptr */,
   pIndirectData: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWINTRUST.CryptSIPCreateIndirectData(util.toPointer(pSubjectInfo), util.toPointer(pcbIndirectData), util.toPointer(pIndirectData)));
+  return util.boolFromFfi(libWINTRUST_dll.CryptSIPCreateIndirectData(util.toPointer(pSubjectInfo), util.toPointer(pcbIndirectData), util.toPointer(pIndirectData)));
 }
 
 export function CryptSIPVerifyIndirectData(
   pSubjectInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
   pIndirectData: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWINTRUST.CryptSIPVerifyIndirectData(util.toPointer(pSubjectInfo), util.toPointer(pIndirectData)));
+  return util.boolFromFfi(libWINTRUST_dll.CryptSIPVerifyIndirectData(util.toPointer(pSubjectInfo), util.toPointer(pIndirectData)));
 }
 
 export function CryptSIPRemoveSignedDataMsg(
   pSubjectInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
   dwIndex: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWINTRUST.CryptSIPRemoveSignedDataMsg(util.toPointer(pSubjectInfo), dwIndex));
+  return util.boolFromFfi(libWINTRUST_dll.CryptSIPRemoveSignedDataMsg(util.toPointer(pSubjectInfo), dwIndex));
 }
 
 export function CryptSIPLoad(
@@ -671,7 +644,7 @@ export function CryptSIPLoad(
   dwFlags: number /* u32 */,
   pSipDispatch: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libCRYPT32.CryptSIPLoad(util.toPointer(pgSubject), dwFlags, util.toPointer(pSipDispatch)));
+  return util.boolFromFfi(libCRYPT32_dll.CryptSIPLoad(util.toPointer(pgSubject), dwFlags, util.toPointer(pSipDispatch)));
 }
 
 export function CryptSIPRetrieveSubjectGuid(
@@ -679,7 +652,7 @@ export function CryptSIPRetrieveSubjectGuid(
   hFileIn: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
   pgSubject: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libCRYPT32.CryptSIPRetrieveSubjectGuid(util.pwstrToFfi(FileName), util.toPointer(hFileIn), util.toPointer(pgSubject)));
+  return util.boolFromFfi(libCRYPT32_dll.CryptSIPRetrieveSubjectGuid(util.pwstrToFfi(FileName), util.toPointer(hFileIn), util.toPointer(pgSubject)));
 }
 
 export function CryptSIPRetrieveSubjectGuidForCatalogFile(
@@ -687,26 +660,26 @@ export function CryptSIPRetrieveSubjectGuidForCatalogFile(
   hFileIn: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
   pgSubject: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libCRYPT32.CryptSIPRetrieveSubjectGuidForCatalogFile(util.pwstrToFfi(FileName), util.toPointer(hFileIn), util.toPointer(pgSubject)));
+  return util.boolFromFfi(libCRYPT32_dll.CryptSIPRetrieveSubjectGuidForCatalogFile(util.pwstrToFfi(FileName), util.toPointer(hFileIn), util.toPointer(pgSubject)));
 }
 
 export function CryptSIPAddProvider(
   psNewProv: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libCRYPT32.CryptSIPAddProvider(util.toPointer(psNewProv)));
+  return util.boolFromFfi(libCRYPT32_dll.CryptSIPAddProvider(util.toPointer(psNewProv)));
 }
 
 export function CryptSIPRemoveProvider(
   pgProv: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libCRYPT32.CryptSIPRemoveProvider(util.toPointer(pgProv)));
+  return util.boolFromFfi(libCRYPT32_dll.CryptSIPRemoveProvider(util.toPointer(pgProv)));
 }
 
 export function CryptSIPGetCaps(
   pSubjInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
   pCaps: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWINTRUST.CryptSIPGetCaps(util.toPointer(pSubjInfo), util.toPointer(pCaps)));
+  return util.boolFromFfi(libWINTRUST_dll.CryptSIPGetCaps(util.toPointer(pSubjInfo), util.toPointer(pCaps)));
 }
 
 export function CryptSIPGetSealedDigest(
@@ -716,6 +689,6 @@ export function CryptSIPGetSealedDigest(
   pbDigest: Deno.PointerValue | Uint8Array | null /* ptr */,
   pcbDigest: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWINTRUST.CryptSIPGetSealedDigest(util.toPointer(pSubjectInfo), util.toPointer(pSig), dwSig, util.toPointer(pbDigest), util.toPointer(pcbDigest)));
+  return util.boolFromFfi(libWINTRUST_dll.CryptSIPGetSealedDigest(util.toPointer(pSubjectInfo), util.toPointer(pSig), dwSig, util.toPointer(pbDigest), util.toPointer(pcbDigest)));
 }
 

@@ -6,7 +6,6 @@ import * as util from "../../util.ts";
 export type ALERT_SYSTEM_SEV = number;
 export type APPCOMMAND_ID = number;
 export type ATF_FLAGS = number;
-export type CHOOSECOLOR_FLAGS = number;
 export type CLIPBOARD_FORMATS = number;
 export type GESTURECONFIG_FLAGS = number;
 export type CFE_UNDERLINE = number;
@@ -15,9 +14,15 @@ export type SECTION_FLAGS = number;
 export type TAPE_GET_DRIVE_PARAMETERS_FEATURES_HIGH = number;
 export type DEV_BROADCAST_HDR_DEVICE_TYPE = number;
 export type DEV_BROADCAST_VOLUME_FLAGS = number;
+export type MODIFIERKEYS_FLAGS = number;
+export type STATIC_STYLES = number;
+export type RECO_FLAGS = number;
+export type SFGAO_FLAGS = Deno.PointerValue;
+export type DESKTOP_ACCESS_FLAGS = number;
 export type ACCESS_REASON_TYPE = number;
 export type SE_IMAGE_SIGNATURE_TYPE = number;
 export type SE_LEARNING_MODE_DATA_TYPE = number;
+export type JOB_OBJECT_IO_RATE_CONTROL_FLAGS = number;
 export type SERVERSILO_STATE = number;
 export type MEM_DEDICATED_ATTRIBUTE_TYPE = number;
 export type MEM_SECTION_EXTENDED_PARAMETER_TYPE = number;
@@ -41,9 +46,9 @@ export type IMAGE_POLICY_ENTRY_TYPE = number;
 export type IMAGE_POLICY_ID = number;
 export type RIP_INFO_TYPE = number;
 export type ACTIVATION_CONTEXT_INFO_CLASS = number;
-export type CM_SERVICE_NODE_TYPE = number;
-export type CM_SERVICE_LOAD_TYPE = number;
-export type CM_ERROR_CONTROL_TYPE = number;
+export type SERVICE_NODE_TYPE = number;
+export type SERVICE_LOAD_TYPE = number;
+export type SERVICE_ERROR_TYPE = number;
 export type TAPE_DRIVE_PROBLEM_TYPE = number;
 export type TRANSACTION_STATE = number;
 export type TRANSACTION_INFORMATION_CLASS = number;
@@ -114,15 +119,6 @@ export const APPCOMMAND_DELETE = 53;
 export const APPCOMMAND_DWM_FLIP3D = 54;
 export const ATF_TIMEOUTON = 1;
 export const ATF_ONOFFFEEDBACK = 2;
-export const CC_RGBINIT = 1;
-export const CC_FULLOPEN = 2;
-export const CC_PREVENTFULLOPEN = 4;
-export const CC_SHOWHELP = 8;
-export const CC_ENABLEHOOK = 16;
-export const CC_ENABLETEMPLATE = 32;
-export const CC_ENABLETEMPLATEHANDLE = 64;
-export const CC_SOLIDCOLOR = 128;
-export const CC_ANYCOLOR = 256;
 export const CF_TEXT = 1;
 export const CF_BITMAP = 2;
 export const CF_METAFILEPICT = 3;
@@ -232,6 +228,95 @@ export const DBT_DEVTYP_PORT = 3;
 export const DBT_DEVTYP_VOLUME = 2;
 export const DBTF_MEDIA = 1;
 export const DBTF_NET = 2;
+export const MK_LBUTTON = 1;
+export const MK_RBUTTON = 2;
+export const MK_SHIFT = 4;
+export const MK_CONTROL = 8;
+export const MK_MBUTTON = 16;
+export const MK_XBUTTON1 = 32;
+export const MK_XBUTTON2 = 64;
+export const SS_LEFT = 0;
+export const SS_CENTER = 1;
+export const SS_RIGHT = 2;
+export const SS_ICON = 3;
+export const SS_BLACKRECT = 4;
+export const SS_GRAYRECT = 5;
+export const SS_WHITERECT = 6;
+export const SS_BLACKFRAME = 7;
+export const SS_GRAYFRAME = 8;
+export const SS_WHITEFRAME = 9;
+export const SS_USERITEM = 10;
+export const SS_SIMPLE = 11;
+export const SS_LEFTNOWORDWRAP = 12;
+export const SS_OWNERDRAW = 13;
+export const SS_BITMAP = 14;
+export const SS_ENHMETAFILE = 15;
+export const SS_ETCHEDHORZ = 16;
+export const SS_ETCHEDVERT = 17;
+export const SS_ETCHEDFRAME = 18;
+export const SS_TYPEMASK = 31;
+export const SS_REALSIZECONTROL = 64;
+export const SS_NOPREFIX = 128;
+export const SS_NOTIFY = 256;
+export const SS_CENTERIMAGE = 512;
+export const SS_RIGHTJUST = 1024;
+export const SS_REALSIZEIMAGE = 2048;
+export const SS_SUNKEN = 4096;
+export const SS_EDITCONTROL = 8192;
+export const SS_ENDELLIPSIS = 16384;
+export const SS_PATHELLIPSIS = 32768;
+export const SS_WORDELLIPSIS = 49152;
+export const SS_ELLIPSISMASK = 49152;
+export const RECO_PASTE = 0;
+export const RECO_DROP = 1;
+export const RECO_COPY = 2;
+export const RECO_CUT = 3;
+export const RECO_DRAG = 4;
+export const SFGAO_CANCOPY = 1;
+export const SFGAO_CANMOVE = 2;
+export const SFGAO_CANLINK = 4;
+export const SFGAO_STORAGE = 8;
+export const SFGAO_CANRENAME = 16;
+export const SFGAO_CANDELETE = 32;
+export const SFGAO_HASPROPSHEET = 64;
+export const SFGAO_DROPTARGET = 256;
+export const SFGAO_CAPABILITYMASK = 375;
+export const SFGAO_PLACEHOLDER = 2048;
+export const SFGAO_SYSTEM = 4096;
+export const SFGAO_ENCRYPTED = 8192;
+export const SFGAO_ISSLOW = 16384;
+export const SFGAO_GHOSTED = 32768;
+export const SFGAO_LINK = 65536;
+export const SFGAO_SHARE = 131072;
+export const SFGAO_READONLY = 262144;
+export const SFGAO_HIDDEN = 524288;
+export const SFGAO_DISPLAYATTRMASK = 1032192;
+export const SFGAO_FILESYSANCESTOR = 268435456;
+export const SFGAO_FOLDER = 536870912;
+export const SFGAO_FILESYSTEM = 1073741824;
+export const SFGAO_HASSUBFOLDER = 2147483648;
+export const SFGAO_CONTENTSMASK = 2147483648;
+export const SFGAO_VALIDATE = 16777216;
+export const SFGAO_REMOVABLE = 33554432;
+export const SFGAO_COMPRESSED = 67108864;
+export const SFGAO_BROWSABLE = 134217728;
+export const SFGAO_NONENUMERATED = 1048576;
+export const SFGAO_NEWCONTENT = 2097152;
+export const SFGAO_CANMONIKER = 4194304;
+export const SFGAO_HASSTORAGE = 4194304;
+export const SFGAO_STREAM = 4194304;
+export const SFGAO_STORAGEANCESTOR = 8388608;
+export const SFGAO_STORAGECAPMASK = 1891958792;
+export const SFGAO_PKEYSFGAOMASK = 2164539392;
+export const DESKTOP_READOBJECTS = 1;
+export const DESKTOP_CREATEWINDOW = 2;
+export const DESKTOP_CREATEMENU = 4;
+export const DESKTOP_HOOKCONTROL = 8;
+export const DESKTOP_JOURNALRECORD = 16;
+export const DESKTOP_JOURNALPLAYBACK = 32;
+export const DESKTOP_ENUMERATE = 64;
+export const DESKTOP_WRITEOBJECTS = 128;
+export const DESKTOP_SWITCHDESKTOP = 256;
 export const _MM_HINT_T0 = 1;
 export const _MM_HINT_T1 = 2;
 export const _MM_HINT_T2 = 3;
@@ -791,6 +876,7 @@ export const INITIAL_FPCSR = 639;
 export const RUNTIME_FUNCTION_INDIRECT = 1;
 export const UNW_FLAG_NO_EPILOGUE = 2147483648;
 export const UNWIND_CHAIN_LIMIT = 32;
+export const OUT_OF_PROCESS_FUNCTION_TABLE_CALLBACK_EXPORT_NAME = "OutOfProcessFunctionTableCallback";
 export const CONTEXT_ARM = 2097152;
 export const INITIAL_CPSR = 16;
 export const INITIAL_FPSCR = 0;
@@ -828,9 +914,6 @@ export const EXCEPTION_TARGET_UNWIND = 32;
 export const EXCEPTION_COLLIDED_UNWIND = 64;
 export const EXCEPTION_SOFTWARE_ORIGINATE = 128;
 export const EXCEPTION_MAXIMUM_PARAMETERS = 15;
-export const DELETE = 65536;
-export const WRITE_DAC = 262144;
-export const WRITE_OWNER = 524288;
 export const ACCESS_SYSTEM_SECURITY = 16777216;
 export const MAXIMUM_ALLOWED = 33554432;
 export const GENERIC_READ = 2147483648;
@@ -1110,6 +1193,10 @@ export const ACCESS_PROPERTY_SET_GUID = 1;
 export const ACCESS_PROPERTY_GUID = 2;
 export const ACCESS_MAX_LEVEL = 4;
 export const AUDIT_ALLOW_NO_PRIVILEGE = 1;
+export const ACCESS_DS_SOURCE_A = "DS";
+export const ACCESS_DS_SOURCE_W = "DS";
+export const ACCESS_DS_OBJECT_TYPE_NAME_A = "Directory Service Object";
+export const ACCESS_DS_OBJECT_TYPE_NAME_W = "Directory Service Object";
 export const PRIVILEGE_SET_ALL_NECESSARY = 1;
 export const ACCESS_REASON_TYPE_MASK = 16711680;
 export const ACCESS_REASON_DATA_MASK = 65535;
@@ -1121,6 +1208,48 @@ export const SE_SECURITY_DESCRIPTOR_FLAG_NO_ACCESS_FILTER_ACE = 4;
 export const SE_SECURITY_DESCRIPTOR_VALID_FLAGS = 7;
 export const SE_ACCESS_CHECK_FLAG_NO_LEARNING_MODE_LOGGING = 8;
 export const SE_ACCESS_CHECK_VALID_FLAGS = 8;
+export const SE_CREATE_TOKEN_NAME = "SeCreateTokenPrivilege";
+export const SE_ASSIGNPRIMARYTOKEN_NAME = "SeAssignPrimaryTokenPrivilege";
+export const SE_LOCK_MEMORY_NAME = "SeLockMemoryPrivilege";
+export const SE_INCREASE_QUOTA_NAME = "SeIncreaseQuotaPrivilege";
+export const SE_UNSOLICITED_INPUT_NAME = "SeUnsolicitedInputPrivilege";
+export const SE_MACHINE_ACCOUNT_NAME = "SeMachineAccountPrivilege";
+export const SE_TCB_NAME = "SeTcbPrivilege";
+export const SE_SECURITY_NAME = "SeSecurityPrivilege";
+export const SE_TAKE_OWNERSHIP_NAME = "SeTakeOwnershipPrivilege";
+export const SE_LOAD_DRIVER_NAME = "SeLoadDriverPrivilege";
+export const SE_SYSTEM_PROFILE_NAME = "SeSystemProfilePrivilege";
+export const SE_SYSTEMTIME_NAME = "SeSystemtimePrivilege";
+export const SE_PROF_SINGLE_PROCESS_NAME = "SeProfileSingleProcessPrivilege";
+export const SE_INC_BASE_PRIORITY_NAME = "SeIncreaseBasePriorityPrivilege";
+export const SE_CREATE_PAGEFILE_NAME = "SeCreatePagefilePrivilege";
+export const SE_CREATE_PERMANENT_NAME = "SeCreatePermanentPrivilege";
+export const SE_BACKUP_NAME = "SeBackupPrivilege";
+export const SE_RESTORE_NAME = "SeRestorePrivilege";
+export const SE_SHUTDOWN_NAME = "SeShutdownPrivilege";
+export const SE_DEBUG_NAME = "SeDebugPrivilege";
+export const SE_AUDIT_NAME = "SeAuditPrivilege";
+export const SE_SYSTEM_ENVIRONMENT_NAME = "SeSystemEnvironmentPrivilege";
+export const SE_CHANGE_NOTIFY_NAME = "SeChangeNotifyPrivilege";
+export const SE_REMOTE_SHUTDOWN_NAME = "SeRemoteShutdownPrivilege";
+export const SE_UNDOCK_NAME = "SeUndockPrivilege";
+export const SE_SYNC_AGENT_NAME = "SeSyncAgentPrivilege";
+export const SE_ENABLE_DELEGATION_NAME = "SeEnableDelegationPrivilege";
+export const SE_MANAGE_VOLUME_NAME = "SeManageVolumePrivilege";
+export const SE_IMPERSONATE_NAME = "SeImpersonatePrivilege";
+export const SE_CREATE_GLOBAL_NAME = "SeCreateGlobalPrivilege";
+export const SE_TRUSTED_CREDMAN_ACCESS_NAME = "SeTrustedCredManAccessPrivilege";
+export const SE_RELABEL_NAME = "SeRelabelPrivilege";
+export const SE_INC_WORKING_SET_NAME = "SeIncreaseWorkingSetPrivilege";
+export const SE_TIME_ZONE_NAME = "SeTimeZonePrivilege";
+export const SE_CREATE_SYMBOLIC_LINK_NAME = "SeCreateSymbolicLinkPrivilege";
+export const SE_DELEGATE_SESSION_USER_IMPERSONATE_NAME = "SeDelegateSessionUserImpersonatePrivilege";
+export const SE_ACTIVATE_AS_USER_CAPABILITY = "activateAsUser";
+export const SE_CONSTRAINED_IMPERSONATION_CAPABILITY = "constrainedImpersonation";
+export const SE_SESSION_IMPERSONATION_CAPABILITY = "sessionImpersonation";
+export const SE_MUMA_CAPABILITY = "muma";
+export const SE_DEVELOPMENT_MODE_NETWORK_CAPABILITY = "developmentModeNetwork";
+export const SE_PERMISSIVE_LEARNING_MODE_CAPABILITY = "permissiveLearningMode";
 export const POLICY_AUDIT_SUBCATEGORY_COUNT = 59;
 export const TOKEN_SOURCE_LENGTH = 8;
 export const CLAIM_SECURITY_ATTRIBUTE_TYPE_INVALID = 0;
@@ -1192,15 +1321,9 @@ export const JOB_OBJECT_MSG_MINIMUM = 1;
 export const JOB_OBJECT_MSG_MAXIMUM = 13;
 export const JOB_OBJECT_UILIMIT_ALL = 255;
 export const JOB_OBJECT_UI_VALID_FLAGS = 255;
-export const JOB_OBJECT_CPU_RATE_CONTROL_MIN_MAX_RATE = 16;
-export const JOB_OBJECT_CPU_RATE_CONTROL_VALID_FLAGS = 31;
 export const MEMORY_PARTITION_QUERY_ACCESS = 1;
 export const MEMORY_PARTITION_MODIFY_ACCESS = 2;
-export const EVENT_MODIFY_STATE = 2;
 export const MUTANT_QUERY_STATE = 1;
-export const SEMAPHORE_MODIFY_STATE = 2;
-export const TIMER_QUERY_STATE = 1;
-export const TIMER_MODIFY_STATE = 2;
 export const TIME_ZONE_ID_UNKNOWN = 0;
 export const TIME_ZONE_ID_STANDARD = 1;
 export const TIME_ZONE_ID_DAYLIGHT = 2;
@@ -1358,50 +1481,50 @@ export const IO_REPARSE_TAG_RESERVED_ZERO = 0;
 export const IO_REPARSE_TAG_RESERVED_ONE = 1;
 export const IO_REPARSE_TAG_RESERVED_TWO = 2;
 export const IO_REPARSE_TAG_RESERVED_RANGE = 2;
-export const IO_REPARSE_TAG_MOUNT_POINT = "-1610612733";
-export const IO_REPARSE_TAG_HSM = "-1073741820";
-export const IO_REPARSE_TAG_HSM2 = "-2147483642";
-export const IO_REPARSE_TAG_SIS = "-2147483641";
-export const IO_REPARSE_TAG_WIM = "-2147483640";
-export const IO_REPARSE_TAG_CSV = "-2147483639";
-export const IO_REPARSE_TAG_DFS = "-2147483638";
-export const IO_REPARSE_TAG_SYMLINK = "-1610612724";
-export const IO_REPARSE_TAG_DFSR = "-2147483630";
-export const IO_REPARSE_TAG_DEDUP = "-2147483629";
-export const IO_REPARSE_TAG_NFS = "-2147483628";
-export const IO_REPARSE_TAG_FILE_PLACEHOLDER = "-2147483627";
-export const IO_REPARSE_TAG_WOF = "-2147483625";
-export const IO_REPARSE_TAG_WCI = "-2147483624";
-export const IO_REPARSE_TAG_WCI_1 = "-1879044072";
-export const IO_REPARSE_TAG_GLOBAL_REPARSE = "-1610612711";
-export const IO_REPARSE_TAG_CLOUD = "-1879048166";
-export const IO_REPARSE_TAG_CLOUD_1 = "-1879044070";
-export const IO_REPARSE_TAG_CLOUD_2 = "-1879039974";
-export const IO_REPARSE_TAG_CLOUD_3 = "-1879035878";
-export const IO_REPARSE_TAG_CLOUD_4 = "-1879031782";
-export const IO_REPARSE_TAG_CLOUD_5 = "-1879027686";
-export const IO_REPARSE_TAG_CLOUD_6 = "-1879023590";
-export const IO_REPARSE_TAG_CLOUD_7 = "-1879019494";
-export const IO_REPARSE_TAG_CLOUD_8 = "-1879015398";
-export const IO_REPARSE_TAG_CLOUD_9 = "-1879011302";
-export const IO_REPARSE_TAG_CLOUD_A = "-1879007206";
-export const IO_REPARSE_TAG_CLOUD_B = "-1879003110";
-export const IO_REPARSE_TAG_CLOUD_C = "-1878999014";
-export const IO_REPARSE_TAG_CLOUD_D = "-1878994918";
-export const IO_REPARSE_TAG_CLOUD_E = "-1878990822";
-export const IO_REPARSE_TAG_CLOUD_F = "-1878986726";
+export const IO_REPARSE_TAG_MOUNT_POINT = 2684354563;
+export const IO_REPARSE_TAG_HSM = 3221225476;
+export const IO_REPARSE_TAG_HSM2 = 2147483654;
+export const IO_REPARSE_TAG_SIS = 2147483655;
+export const IO_REPARSE_TAG_WIM = 2147483656;
+export const IO_REPARSE_TAG_CSV = 2147483657;
+export const IO_REPARSE_TAG_DFS = 2147483658;
+export const IO_REPARSE_TAG_SYMLINK = 2684354572;
+export const IO_REPARSE_TAG_DFSR = 2147483666;
+export const IO_REPARSE_TAG_DEDUP = 2147483667;
+export const IO_REPARSE_TAG_NFS = 2147483668;
+export const IO_REPARSE_TAG_FILE_PLACEHOLDER = 2147483669;
+export const IO_REPARSE_TAG_WOF = 2147483671;
+export const IO_REPARSE_TAG_WCI = 2147483672;
+export const IO_REPARSE_TAG_WCI_1 = 2415923224;
+export const IO_REPARSE_TAG_GLOBAL_REPARSE = 2684354585;
+export const IO_REPARSE_TAG_CLOUD = 2415919130;
+export const IO_REPARSE_TAG_CLOUD_1 = 2415923226;
+export const IO_REPARSE_TAG_CLOUD_2 = 2415927322;
+export const IO_REPARSE_TAG_CLOUD_3 = 2415931418;
+export const IO_REPARSE_TAG_CLOUD_4 = 2415935514;
+export const IO_REPARSE_TAG_CLOUD_5 = 2415939610;
+export const IO_REPARSE_TAG_CLOUD_6 = 2415943706;
+export const IO_REPARSE_TAG_CLOUD_7 = 2415947802;
+export const IO_REPARSE_TAG_CLOUD_8 = 2415951898;
+export const IO_REPARSE_TAG_CLOUD_9 = 2415955994;
+export const IO_REPARSE_TAG_CLOUD_A = 2415960090;
+export const IO_REPARSE_TAG_CLOUD_B = 2415964186;
+export const IO_REPARSE_TAG_CLOUD_C = 2415968282;
+export const IO_REPARSE_TAG_CLOUD_D = 2415972378;
+export const IO_REPARSE_TAG_CLOUD_E = 2415976474;
+export const IO_REPARSE_TAG_CLOUD_F = 2415980570;
 export const IO_REPARSE_TAG_CLOUD_MASK = 61440;
-export const IO_REPARSE_TAG_APPEXECLINK = "-2147483621";
-export const IO_REPARSE_TAG_PROJFS = "-1879048164";
-export const IO_REPARSE_TAG_STORAGE_SYNC = "-2147483618";
-export const IO_REPARSE_TAG_WCI_TOMBSTONE = "-1610612705";
-export const IO_REPARSE_TAG_UNHANDLED = "-2147483616";
-export const IO_REPARSE_TAG_ONEDRIVE = "-2147483615";
-export const IO_REPARSE_TAG_PROJFS_TOMBSTONE = "-1610612702";
-export const IO_REPARSE_TAG_AF_UNIX = "-2147483613";
-export const IO_REPARSE_TAG_WCI_LINK = "-1610612697";
-export const IO_REPARSE_TAG_WCI_LINK_1 = "-1610608601";
-export const IO_REPARSE_TAG_DATALESS_CIM = "-1610612696";
+export const IO_REPARSE_TAG_APPEXECLINK = 2147483675;
+export const IO_REPARSE_TAG_PROJFS = 2415919132;
+export const IO_REPARSE_TAG_STORAGE_SYNC = 2147483678;
+export const IO_REPARSE_TAG_WCI_TOMBSTONE = 2684354591;
+export const IO_REPARSE_TAG_UNHANDLED = 2147483680;
+export const IO_REPARSE_TAG_ONEDRIVE = 2147483681;
+export const IO_REPARSE_TAG_PROJFS_TOMBSTONE = 2684354594;
+export const IO_REPARSE_TAG_AF_UNIX = 2147483683;
+export const IO_REPARSE_TAG_WCI_LINK = 2684354599;
+export const IO_REPARSE_TAG_WCI_LINK_1 = 2684358695;
+export const IO_REPARSE_TAG_DATALESS_CIM = 2684354600;
 export const SCRUB_DATA_INPUT_FLAG_RESUME = 1;
 export const SCRUB_DATA_INPUT_FLAG_SKIP_IN_SYNC = 2;
 export const SCRUB_DATA_INPUT_FLAG_SKIP_NON_INTEGRITY_DATA = 4;
@@ -1415,6 +1538,7 @@ export const SCRUB_DATA_OUTPUT_FLAG_PARITY_EXTENT_DATA_RETURNED = 131072;
 export const SCRUB_DATA_OUTPUT_FLAG_RESUME_CONTEXT_LENGTH_SPECIFIED = 262144;
 export const SHUFFLE_FILE_FLAG_SKIP_INITIALIZING_NEW_CLUSTERS = 1;
 export const IO_COMPLETION_MODIFY_STATE = 2;
+export const SMB_CCF_APP_INSTANCE_EA_NAME = "ClusteredApplicationInstance";
 export const NETWORK_APP_INSTANCE_CSV_FLAGS_VALID_ONLY_IF_CSV_COORDINATOR = 1;
 export const POWERBUTTON_ACTION_INDEX_NOTHING = 0;
 export const POWERBUTTON_ACTION_INDEX_SLEEP = 1;
@@ -1957,6 +2081,15 @@ export const IMAGE_REL_BASED_MIPS_JMPADDR16 = 9;
 export const IMAGE_REL_BASED_ARM_MOV32 = 5;
 export const IMAGE_REL_BASED_THUMB_MOV32 = 7;
 export const IMAGE_ARCHIVE_START_SIZE = 8;
+export const IMAGE_ARCHIVE_START = "!<arch>
+";
+export const IMAGE_ARCHIVE_END = "`
+";
+export const IMAGE_ARCHIVE_PAD = "
+";
+export const IMAGE_ARCHIVE_LINKER_MEMBER = "/               ";
+export const IMAGE_ARCHIVE_LONGNAMES_MEMBER = "//              ";
+export const IMAGE_ARCHIVE_HYBRIDMAP_MEMBER = "/<HYBRIDMAP>/   ";
 export const IMAGE_SIZEOF_ARCHIVE_MEMBER_HDR = 60;
 export const IMAGE_ORDINAL_FLAG64 = 9223372036854775808n;
 export const IMAGE_ORDINAL_FLAG32 = 2147483648;
@@ -2151,6 +2284,7 @@ export const FILL_NV_MEMORY_FLAG_FLUSH = 1;
 export const FILL_NV_MEMORY_FLAG_NON_TEMPORAL = 2;
 export const FILL_NV_MEMORY_FLAG_NO_DRAIN = 256;
 export const IMAGE_POLICY_METADATA_VERSION = 1;
+export const IMAGE_POLICY_SECTION_NAME = ".tPolicy";
 export const RTL_VIRTUAL_UNWIND2_VALIDATE_PAC = 1;
 export const RTL_CRITICAL_SECTION_FLAG_NO_DEBUG_INFO = 16777216;
 export const RTL_CRITICAL_SECTION_FLAG_DYNAMIC_SPIN = 33554432;
@@ -2173,7 +2307,11 @@ export const CREATE_BOUNDARY_DESCRIPTOR_ADD_APPCONTAINER_SID = 1;
 export const PERFORMANCE_DATA_VERSION = 1;
 export const READ_THREAD_PROFILING_FLAG_DISPATCHING = 1;
 export const READ_THREAD_PROFILING_FLAG_HARDWARE_COUNTERS = 2;
+export const UNIFIEDBUILDREVISION_KEY = "\Registry\Machine\Software\Microsoft\Windows NT\CurrentVersion";
+export const UNIFIEDBUILDREVISION_VALUE = "UBR";
 export const UNIFIEDBUILDREVISION_MIN = 0;
+export const DEVICEFAMILYDEVICEFORM_KEY = "\Registry\Machine\Software\Microsoft\Windows NT\CurrentVersion\OEM";
+export const DEVICEFAMILYDEVICEFORM_VALUE = "DeviceForm";
 export const DLL_PROCESS_ATTACH = 1;
 export const DLL_THREAD_ATTACH = 2;
 export const DLL_THREAD_DETACH = 3;
@@ -2908,8 +3046,6 @@ export const D3DFVF_TEXTUREFORMAT2 = 0;
 export const D3DFVF_TEXTUREFORMAT1 = 3;
 export const D3DFVF_TEXTUREFORMAT3 = 1;
 export const D3DFVF_TEXTUREFORMAT4 = 2;
-export const ROTFLAGS_REGISTRATIONKEEPSALIVE = 1;
-export const ROTFLAGS_ALLOWANYCLIENT = 2;
 export const ROT_COMPARE_MAX = 2048;
 export const WDT_INPROC_CALL = 1215587415;
 export const WDT_REMOTE_CALL = 1383359575;
@@ -3117,6 +3253,11 @@ export const SeImageSignaturePplMitigated = 7;
 export const SeLearningModeInvalidType = 0;
 export const SeLearningModeSettings = 1;
 export const SeLearningModeMax = 2;
+export const JOB_OBJECT_IO_RATE_CONTROL_ENABLE = 1;
+export const JOB_OBJECT_IO_RATE_CONTROL_STANDALONE_VOLUME = 2;
+export const JOB_OBJECT_IO_RATE_CONTROL_FORCE_UNIT_ACCESS_ALL = 4;
+export const JOB_OBJECT_IO_RATE_CONTROL_FORCE_UNIT_ACCESS_ON_SOFT_CAP = 8;
+export const JOB_OBJECT_IO_RATE_CONTROL_VALID_FLAGS = 15;
 export const SERVERSILO_INITING = 0;
 export const SERVERSILO_STARTED = 1;
 export const SERVERSILO_SHUTTING_DOWN = 2;
@@ -3495,19 +3636,19 @@ export function allocRemHPALETTE(data?: Partial<RemHPALETTE>): Uint8Array {
 }
 
 /**
- * Windows.Win32.System.SystemServices.RemBRUSH (size: 16)
+ * Windows.Win32.System.SystemServices.RemHBRUSH (size: 16)
  */
-export interface RemBRUSH {
+export interface RemHBRUSH {
   /** u32 */
   cbData: number;
   /** array */
   data: Deno.PointerValue | null;
 }
 
-export const sizeofRemBRUSH = 16;
+export const sizeofRemHBRUSH = 16;
 
-export function allocRemBRUSH(data?: Partial<RemBRUSH>): Uint8Array {
-  const buf = new Uint8Array(sizeofRemBRUSH);
+export function allocRemHBRUSH(data?: Partial<RemHBRUSH>): Uint8Array {
+  const buf = new Uint8Array(sizeofRemHBRUSH);
   const view = new DataView(buf.buffer);
   // 0x00: u32
   if (data?.cbData !== undefined) view.setUint32(0, Number(data.cbData), true);
@@ -4622,6 +4763,41 @@ export function alloc_DEV_BROADCAST_USERDEFINED(data?: Partial<_DEV_BROADCAST_US
 }
 
 /**
+ * Windows.Win32.System.SystemServices.REARRANGE_FILE_DATA32 (size: 32)
+ */
+export interface REARRANGE_FILE_DATA32 {
+  /** u64 */
+  SourceStartingOffset: Deno.PointerValue;
+  /** u64 */
+  TargetOffset: Deno.PointerValue;
+  /** u32 */
+  SourceFileHandle: number;
+  /** u32 */
+  Length: number;
+  /** u32 */
+  Flags: number;
+}
+
+export const sizeofREARRANGE_FILE_DATA32 = 32;
+
+export function allocREARRANGE_FILE_DATA32(data?: Partial<REARRANGE_FILE_DATA32>): Uint8Array {
+  const buf = new Uint8Array(sizeofREARRANGE_FILE_DATA32);
+  const view = new DataView(buf.buffer);
+  // 0x00: u64
+  if (data?.SourceStartingOffset !== undefined) view.setBigUint64(0, BigInt(data.SourceStartingOffset), true);
+  // 0x08: u64
+  if (data?.TargetOffset !== undefined) view.setBigUint64(8, BigInt(data.TargetOffset), true);
+  // 0x10: u32
+  if (data?.SourceFileHandle !== undefined) view.setUint32(16, Number(data.SourceFileHandle), true);
+  // 0x14: u32
+  if (data?.Length !== undefined) view.setUint32(20, Number(data.Length), true);
+  // 0x18: u32
+  if (data?.Flags !== undefined) view.setUint32(24, Number(data.Flags), true);
+  // 0x1c: pad4
+  return buf;
+}
+
+/**
  * Windows.Win32.System.SystemServices.XSAVE_CET_U_FORMAT (size: 16)
  */
 export interface XSAVE_CET_U_FORMAT {
@@ -4951,7 +5127,7 @@ export function allocSE_TOKEN_USER(data?: Partial<SE_TOKEN_USER>): Uint8Array {
   return buf;
 }
 
-export type PSID = Deno.PointerValue;
+export type PSID = Deno.PointerValue | Uint8Array | null;
 
 /**
  * Windows.Win32.System.SystemServices.TOKEN_SID_INFORMATION (size: 8)
@@ -5507,6 +5683,52 @@ export function allocPROCESS_MITIGATION_REDIRECTION_TRUST_POLICY(data?: Partial<
 }
 
 /**
+ * Windows.Win32.System.SystemServices.JOBOBJECT_IO_RATE_CONTROL_INFORMATION_NATIVE_V1 (size: 48)
+ */
+export interface JOBOBJECT_IO_RATE_CONTROL_INFORMATION_NATIVE_V1 {
+  /** i64 */
+  MaxIops: Deno.PointerValue;
+  /** i64 */
+  MaxBandwidth: Deno.PointerValue;
+  /** i64 */
+  ReservationIops: Deno.PointerValue;
+  /** Windows.Win32.Foundation.PWSTR */
+  VolumeName: string | null;
+  /** u32 */
+  BaseIoSize: number;
+  /** Windows.Win32.System.JobObjects.JOB_OBJECT_IO_RATE_CONTROL_FLAGS */
+  ControlFlags: JOB_OBJECT_IO_RATE_CONTROL_FLAGS;
+  /** u16 */
+  VolumeNameLength: number;
+}
+
+export const sizeofJOBOBJECT_IO_RATE_CONTROL_INFORMATION_NATIVE_V1 = 48;
+
+export function allocJOBOBJECT_IO_RATE_CONTROL_INFORMATION_NATIVE_V1(data?: Partial<JOBOBJECT_IO_RATE_CONTROL_INFORMATION_NATIVE_V1>): Uint8Array {
+  const buf = new Uint8Array(sizeofJOBOBJECT_IO_RATE_CONTROL_INFORMATION_NATIVE_V1);
+  const view = new DataView(buf.buffer);
+  // 0x00: i64
+  if (data?.MaxIops !== undefined) view.setBigInt64(0, BigInt(data.MaxIops), true);
+  // 0x08: i64
+  if (data?.MaxBandwidth !== undefined) view.setBigInt64(8, BigInt(data.MaxBandwidth), true);
+  // 0x10: i64
+  if (data?.ReservationIops !== undefined) view.setBigInt64(16, BigInt(data.ReservationIops), true);
+  // 0x18: buffer
+  if (data?.VolumeName !== undefined) {
+    (buf as any)._f24 = util.pwstrToFfi(data.VolumeName);
+    view.setBigUint64(24, (buf as any)._f24 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f24)), true);
+  }
+  // 0x20: u32
+  if (data?.BaseIoSize !== undefined) view.setUint32(32, Number(data.BaseIoSize), true);
+  // 0x24: i32
+  if (data?.ControlFlags !== undefined) view.setInt32(36, Number(data.ControlFlags), true);
+  // 0x28: u16
+  if (data?.VolumeNameLength !== undefined) view.setUint16(40, Number(data.VolumeNameLength), true);
+  // 0x2a: pad6
+  return buf;
+}
+
+/**
  * Windows.Win32.System.SystemServices.SILOOBJECT_BASIC_INFORMATION (size: 32)
  */
 export interface SILOOBJECT_BASIC_INFORMATION {
@@ -5577,32 +5799,6 @@ export function allocSERVERSILO_BASIC_INFORMATION(data?: Partial<SERVERSILO_BASI
   if (data?.ApiSetSchema !== undefined) view.setBigUint64(24, data.ApiSetSchema === null ? 0n : BigInt(util.toPointer(data.ApiSetSchema)), true);
   // 0x20: pointer
   if (data?.HostApiSetSchema !== undefined) view.setBigUint64(32, data.HostApiSetSchema === null ? 0n : BigInt(util.toPointer(data.HostApiSetSchema)), true);
-  return buf;
-}
-
-/**
- * Windows.Win32.System.SystemServices.MEM_ADDRESS_REQUIREMENTS (size: 24)
- */
-export interface MEM_ADDRESS_REQUIREMENTS {
-  /** ptr */
-  LowestStartingAddress: Deno.PointerValue | Uint8Array | null;
-  /** ptr */
-  HighestEndingAddress: Deno.PointerValue | Uint8Array | null;
-  /** usize */
-  Alignment: Deno.PointerValue;
-}
-
-export const sizeofMEM_ADDRESS_REQUIREMENTS = 24;
-
-export function allocMEM_ADDRESS_REQUIREMENTS(data?: Partial<MEM_ADDRESS_REQUIREMENTS>): Uint8Array {
-  const buf = new Uint8Array(sizeofMEM_ADDRESS_REQUIREMENTS);
-  const view = new DataView(buf.buffer);
-  // 0x00: pointer
-  if (data?.LowestStartingAddress !== undefined) view.setBigUint64(0, data.LowestStartingAddress === null ? 0n : BigInt(util.toPointer(data.LowestStartingAddress)), true);
-  // 0x08: pointer
-  if (data?.HighestEndingAddress !== undefined) view.setBigUint64(8, data.HighestEndingAddress === null ? 0n : BigInt(util.toPointer(data.HighestEndingAddress)), true);
-  // 0x10: usize
-  if (data?.Alignment !== undefined) view.setBigUint64(16, BigInt(data.Alignment), true);
   return buf;
 }
 
@@ -5934,41 +6130,6 @@ export function allocREARRANGE_FILE_DATA(data?: Partial<REARRANGE_FILE_DATA>): U
   if (data?.Length !== undefined) view.setUint32(24, Number(data.Length), true);
   // 0x1c: u32
   if (data?.Flags !== undefined) view.setUint32(28, Number(data.Flags), true);
-  return buf;
-}
-
-/**
- * Windows.Win32.System.SystemServices.REARRANGE_FILE_DATA32 (size: 32)
- */
-export interface REARRANGE_FILE_DATA32 {
-  /** u64 */
-  SourceStartingOffset: Deno.PointerValue;
-  /** u64 */
-  TargetOffset: Deno.PointerValue;
-  /** u32 */
-  SourceFileHandle: number;
-  /** u32 */
-  Length: number;
-  /** u32 */
-  Flags: number;
-}
-
-export const sizeofREARRANGE_FILE_DATA32 = 32;
-
-export function allocREARRANGE_FILE_DATA32(data?: Partial<REARRANGE_FILE_DATA32>): Uint8Array {
-  const buf = new Uint8Array(sizeofREARRANGE_FILE_DATA32);
-  const view = new DataView(buf.buffer);
-  // 0x00: u64
-  if (data?.SourceStartingOffset !== undefined) view.setBigUint64(0, BigInt(data.SourceStartingOffset), true);
-  // 0x08: u64
-  if (data?.TargetOffset !== undefined) view.setBigUint64(8, BigInt(data.TargetOffset), true);
-  // 0x10: u32
-  if (data?.SourceFileHandle !== undefined) view.setUint32(16, Number(data.SourceFileHandle), true);
-  // 0x14: u32
-  if (data?.Length !== undefined) view.setUint32(20, Number(data.Length), true);
-  // 0x18: u32
-  if (data?.Flags !== undefined) view.setUint32(24, Number(data.Flags), true);
-  // 0x1c: pad4
   return buf;
 }
 
@@ -10672,7 +10833,7 @@ export type BOOL = number;
 // Native Libraries
 
 try {
-  var libUSER32 = Deno.dlopen("USER32", {
+  var libUSER32_dll = Deno.dlopen("USER32.dll", {
     UnregisterDeviceNotification: {
       parameters: ["pointer"],
       result: "i32",
@@ -10685,6 +10846,6 @@ try {
 export function UnregisterDeviceNotification(
   Handle: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSER32.UnregisterDeviceNotification(util.toPointer(Handle)));
+  return util.boolFromFfi(libUSER32_dll.UnregisterDeviceNotification(util.toPointer(Handle)));
 }
 

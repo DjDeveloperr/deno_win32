@@ -494,7 +494,7 @@ export type HRESULT = number;
 // Native Libraries
 
 try {
-  var libKERNEL32 = Deno.dlopen("KERNEL32", {
+  var libKERNEL32_dll = Deno.dlopen("KERNEL32.dll", {
     SetEnvironmentStringsW: {
       parameters: ["buffer"],
       result: "i32",
@@ -591,7 +591,7 @@ try {
 } catch(e) { /* ignore */ }
 
 try {
-  var libUSERENV = Deno.dlopen("USERENV", {
+  var libUSERENV_dll = Deno.dlopen("USERENV.dll", {
     CreateEnvironmentBlock: {
       parameters: ["pointer", "pointer", "i32"],
       result: "i32",
@@ -612,7 +612,7 @@ try {
 } catch(e) { /* ignore */ }
 
 try {
-  var libapi_ms_win_core_enclave_l1_1_1 = Deno.dlopen("api-ms-win-core-enclave-l1-1-1", {
+  var libapi_ms_win_core_enclave_l1_1_1_dll = Deno.dlopen("api-ms-win-core-enclave-l1-1-1.dll", {
     LoadEnclaveImageA: {
       parameters: ["pointer", "buffer"],
       result: "i32",
@@ -629,7 +629,7 @@ try {
 } catch(e) { /* ignore */ }
 
 try {
-  var libvertdll = Deno.dlopen("vertdll", {
+  var libvertdll_dll = Deno.dlopen("vertdll.dll", {
     CallEnclave: {
       parameters: ["isize", "pointer", "i32", "pointer"],
       result: "i32",
@@ -666,35 +666,35 @@ try {
 export function SetEnvironmentStringsW(
   NewEnvironment: string | null /* Windows.Win32.Foundation.PWSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32.SetEnvironmentStringsW(util.pwstrToFfi(NewEnvironment)));
+  return util.boolFromFfi(libKERNEL32_dll.SetEnvironmentStringsW(util.pwstrToFfi(NewEnvironment)));
 }
 
 export function GetCommandLineA(): string | null /* Windows.Win32.Foundation.PSTR */ {
-  return util.pstrFromFfi(libKERNEL32.GetCommandLineA());
+  return util.pstrFromFfi(libKERNEL32_dll.GetCommandLineA());
 }
 
 export function GetCommandLineW(): string | null /* Windows.Win32.Foundation.PWSTR */ {
-  return util.pwstrFromFfi(libKERNEL32.GetCommandLineW());
+  return util.pwstrFromFfi(libKERNEL32_dll.GetCommandLineW());
 }
 
 export function GetEnvironmentStrings(): string | null /* Windows.Win32.Foundation.PSTR */ {
-  return util.pstrFromFfi(libKERNEL32.GetEnvironmentStrings());
+  return util.pstrFromFfi(libKERNEL32_dll.GetEnvironmentStrings());
 }
 
 export function GetEnvironmentStringsW(): string | null /* Windows.Win32.Foundation.PWSTR */ {
-  return util.pwstrFromFfi(libKERNEL32.GetEnvironmentStringsW());
+  return util.pwstrFromFfi(libKERNEL32_dll.GetEnvironmentStringsW());
 }
 
 export function FreeEnvironmentStringsA(
   penv: string | null /* Windows.Win32.Foundation.PSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32.FreeEnvironmentStringsA(util.pstrToFfi(penv)));
+  return util.boolFromFfi(libKERNEL32_dll.FreeEnvironmentStringsA(util.pstrToFfi(penv)));
 }
 
 export function FreeEnvironmentStringsW(
   penv: string | null /* Windows.Win32.Foundation.PWSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32.FreeEnvironmentStringsW(util.pwstrToFfi(penv)));
+  return util.boolFromFfi(libKERNEL32_dll.FreeEnvironmentStringsW(util.pwstrToFfi(penv)));
 }
 
 export function GetEnvironmentVariableA(
@@ -702,7 +702,7 @@ export function GetEnvironmentVariableA(
   lpBuffer: string | null /* Windows.Win32.Foundation.PSTR */,
   nSize: number /* u32 */,
 ): number /* u32 */ {
-  return libKERNEL32.GetEnvironmentVariableA(util.pstrToFfi(lpName), util.pstrToFfi(lpBuffer), nSize);
+  return libKERNEL32_dll.GetEnvironmentVariableA(util.pstrToFfi(lpName), util.pstrToFfi(lpBuffer), nSize);
 }
 
 export function GetEnvironmentVariableW(
@@ -710,21 +710,21 @@ export function GetEnvironmentVariableW(
   lpBuffer: string | null /* Windows.Win32.Foundation.PWSTR */,
   nSize: number /* u32 */,
 ): number /* u32 */ {
-  return libKERNEL32.GetEnvironmentVariableW(util.pwstrToFfi(lpName), util.pwstrToFfi(lpBuffer), nSize);
+  return libKERNEL32_dll.GetEnvironmentVariableW(util.pwstrToFfi(lpName), util.pwstrToFfi(lpBuffer), nSize);
 }
 
 export function SetEnvironmentVariableA(
   lpName: string | null /* Windows.Win32.Foundation.PSTR */,
   lpValue: string | null /* Windows.Win32.Foundation.PSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32.SetEnvironmentVariableA(util.pstrToFfi(lpName), util.pstrToFfi(lpValue)));
+  return util.boolFromFfi(libKERNEL32_dll.SetEnvironmentVariableA(util.pstrToFfi(lpName), util.pstrToFfi(lpValue)));
 }
 
 export function SetEnvironmentVariableW(
   lpName: string | null /* Windows.Win32.Foundation.PWSTR */,
   lpValue: string | null /* Windows.Win32.Foundation.PWSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32.SetEnvironmentVariableW(util.pwstrToFfi(lpName), util.pwstrToFfi(lpValue)));
+  return util.boolFromFfi(libKERNEL32_dll.SetEnvironmentVariableW(util.pwstrToFfi(lpName), util.pwstrToFfi(lpValue)));
 }
 
 export function ExpandEnvironmentStringsA(
@@ -732,7 +732,7 @@ export function ExpandEnvironmentStringsA(
   lpDst: string | null /* Windows.Win32.Foundation.PSTR */,
   nSize: number /* u32 */,
 ): number /* u32 */ {
-  return libKERNEL32.ExpandEnvironmentStringsA(util.pstrToFfi(lpSrc), util.pstrToFfi(lpDst), nSize);
+  return libKERNEL32_dll.ExpandEnvironmentStringsA(util.pstrToFfi(lpSrc), util.pstrToFfi(lpDst), nSize);
 }
 
 export function ExpandEnvironmentStringsW(
@@ -740,45 +740,45 @@ export function ExpandEnvironmentStringsW(
   lpDst: string | null /* Windows.Win32.Foundation.PWSTR */,
   nSize: number /* u32 */,
 ): number /* u32 */ {
-  return libKERNEL32.ExpandEnvironmentStringsW(util.pwstrToFfi(lpSrc), util.pwstrToFfi(lpDst), nSize);
+  return libKERNEL32_dll.ExpandEnvironmentStringsW(util.pwstrToFfi(lpSrc), util.pwstrToFfi(lpDst), nSize);
 }
 
 export function SetCurrentDirectoryA(
   lpPathName: string | null /* Windows.Win32.Foundation.PSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32.SetCurrentDirectoryA(util.pstrToFfi(lpPathName)));
+  return util.boolFromFfi(libKERNEL32_dll.SetCurrentDirectoryA(util.pstrToFfi(lpPathName)));
 }
 
 export function SetCurrentDirectoryW(
   lpPathName: string | null /* Windows.Win32.Foundation.PWSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32.SetCurrentDirectoryW(util.pwstrToFfi(lpPathName)));
+  return util.boolFromFfi(libKERNEL32_dll.SetCurrentDirectoryW(util.pwstrToFfi(lpPathName)));
 }
 
 export function GetCurrentDirectoryA(
   nBufferLength: number /* u32 */,
   lpBuffer: string | null /* Windows.Win32.Foundation.PSTR */,
 ): number /* u32 */ {
-  return libKERNEL32.GetCurrentDirectoryA(nBufferLength, util.pstrToFfi(lpBuffer));
+  return libKERNEL32_dll.GetCurrentDirectoryA(nBufferLength, util.pstrToFfi(lpBuffer));
 }
 
 export function GetCurrentDirectoryW(
   nBufferLength: number /* u32 */,
   lpBuffer: string | null /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
-  return libKERNEL32.GetCurrentDirectoryW(nBufferLength, util.pwstrToFfi(lpBuffer));
+  return libKERNEL32_dll.GetCurrentDirectoryW(nBufferLength, util.pwstrToFfi(lpBuffer));
 }
 
 export function NeedCurrentDirectoryForExePathA(
   ExeName: string | null /* Windows.Win32.Foundation.PSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32.NeedCurrentDirectoryForExePathA(util.pstrToFfi(ExeName)));
+  return util.boolFromFfi(libKERNEL32_dll.NeedCurrentDirectoryForExePathA(util.pstrToFfi(ExeName)));
 }
 
 export function NeedCurrentDirectoryForExePathW(
   ExeName: string | null /* Windows.Win32.Foundation.PWSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32.NeedCurrentDirectoryForExePathW(util.pwstrToFfi(ExeName)));
+  return util.boolFromFfi(libKERNEL32_dll.NeedCurrentDirectoryForExePathW(util.pwstrToFfi(ExeName)));
 }
 
 export function CreateEnvironmentBlock(
@@ -786,13 +786,13 @@ export function CreateEnvironmentBlock(
   hToken: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
   bInherit: boolean /* Windows.Win32.Foundation.BOOL */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSERENV.CreateEnvironmentBlock(util.toPointer(lpEnvironment), util.toPointer(hToken), util.boolToFfi(bInherit)));
+  return util.boolFromFfi(libUSERENV_dll.CreateEnvironmentBlock(util.toPointer(lpEnvironment), util.toPointer(hToken), util.boolToFfi(bInherit)));
 }
 
 export function DestroyEnvironmentBlock(
   lpEnvironment: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSERENV.DestroyEnvironmentBlock(util.toPointer(lpEnvironment)));
+  return util.boolFromFfi(libUSERENV_dll.DestroyEnvironmentBlock(util.toPointer(lpEnvironment)));
 }
 
 export function ExpandEnvironmentStringsForUserA(
@@ -801,7 +801,7 @@ export function ExpandEnvironmentStringsForUserA(
   lpDest: string | null /* Windows.Win32.Foundation.PSTR */,
   dwSize: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSERENV.ExpandEnvironmentStringsForUserA(util.toPointer(hToken), util.pstrToFfi(lpSrc), util.pstrToFfi(lpDest), dwSize));
+  return util.boolFromFfi(libUSERENV_dll.ExpandEnvironmentStringsForUserA(util.toPointer(hToken), util.pstrToFfi(lpSrc), util.pstrToFfi(lpDest), dwSize));
 }
 
 export function ExpandEnvironmentStringsForUserW(
@@ -810,13 +810,13 @@ export function ExpandEnvironmentStringsForUserW(
   lpDest: string | null /* Windows.Win32.Foundation.PWSTR */,
   dwSize: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSERENV.ExpandEnvironmentStringsForUserW(util.toPointer(hToken), util.pwstrToFfi(lpSrc), util.pwstrToFfi(lpDest), dwSize));
+  return util.boolFromFfi(libUSERENV_dll.ExpandEnvironmentStringsForUserW(util.toPointer(hToken), util.pwstrToFfi(lpSrc), util.pwstrToFfi(lpDest), dwSize));
 }
 
 export function IsEnclaveTypeSupported(
   flEnclaveType: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32.IsEnclaveTypeSupported(flEnclaveType));
+  return util.boolFromFfi(libKERNEL32_dll.IsEnclaveTypeSupported(flEnclaveType));
 }
 
 export function CreateEnclave(
@@ -829,7 +829,7 @@ export function CreateEnclave(
   dwInfoLength: number /* u32 */,
   lpEnclaveError: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libKERNEL32.CreateEnclave(util.toPointer(hProcess), util.toPointer(lpAddress), dwSize, dwInitialCommitment, flEnclaveType, util.toPointer(lpEnclaveInformation), dwInfoLength, util.toPointer(lpEnclaveError)));
+  return util.pointerFromFfi(libKERNEL32_dll.CreateEnclave(util.toPointer(hProcess), util.toPointer(lpAddress), dwSize, dwInitialCommitment, flEnclaveType, util.toPointer(lpEnclaveInformation), dwInfoLength, util.toPointer(lpEnclaveError)));
 }
 
 export function LoadEnclaveData(
@@ -843,7 +843,7 @@ export function LoadEnclaveData(
   lpNumberOfBytesWritten: Deno.PointerValue | Uint8Array | null /* ptr */,
   lpEnclaveError: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32.LoadEnclaveData(util.toPointer(hProcess), util.toPointer(lpAddress), util.toPointer(lpBuffer), nSize, flProtect, util.toPointer(lpPageInformation), dwInfoLength, util.toPointer(lpNumberOfBytesWritten), util.toPointer(lpEnclaveError)));
+  return util.boolFromFfi(libKERNEL32_dll.LoadEnclaveData(util.toPointer(hProcess), util.toPointer(lpAddress), util.toPointer(lpBuffer), nSize, flProtect, util.toPointer(lpPageInformation), dwInfoLength, util.toPointer(lpNumberOfBytesWritten), util.toPointer(lpEnclaveError)));
 }
 
 export function InitializeEnclave(
@@ -853,21 +853,21 @@ export function InitializeEnclave(
   dwInfoLength: number /* u32 */,
   lpEnclaveError: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32.InitializeEnclave(util.toPointer(hProcess), util.toPointer(lpAddress), util.toPointer(lpEnclaveInformation), dwInfoLength, util.toPointer(lpEnclaveError)));
+  return util.boolFromFfi(libKERNEL32_dll.InitializeEnclave(util.toPointer(hProcess), util.toPointer(lpAddress), util.toPointer(lpEnclaveInformation), dwInfoLength, util.toPointer(lpEnclaveError)));
 }
 
 export function LoadEnclaveImageA(
   lpEnclaveAddress: Deno.PointerValue | Uint8Array | null /* ptr */,
   lpImageName: string | null /* Windows.Win32.Foundation.PSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libapi_ms_win_core_enclave_l1_1_1.LoadEnclaveImageA(util.toPointer(lpEnclaveAddress), util.pstrToFfi(lpImageName)));
+  return util.boolFromFfi(libapi_ms_win_core_enclave_l1_1_1_dll.LoadEnclaveImageA(util.toPointer(lpEnclaveAddress), util.pstrToFfi(lpImageName)));
 }
 
 export function LoadEnclaveImageW(
   lpEnclaveAddress: Deno.PointerValue | Uint8Array | null /* ptr */,
   lpImageName: string | null /* Windows.Win32.Foundation.PWSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libapi_ms_win_core_enclave_l1_1_1.LoadEnclaveImageW(util.toPointer(lpEnclaveAddress), util.pwstrToFfi(lpImageName)));
+  return util.boolFromFfi(libapi_ms_win_core_enclave_l1_1_1_dll.LoadEnclaveImageW(util.toPointer(lpEnclaveAddress), util.pwstrToFfi(lpImageName)));
 }
 
 export function CallEnclave(
@@ -876,20 +876,20 @@ export function CallEnclave(
   fWaitForThread: boolean /* Windows.Win32.Foundation.BOOL */,
   lpReturnValue: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libvertdll.CallEnclave(lpRoutine, util.toPointer(lpParameter), util.boolToFfi(fWaitForThread), util.toPointer(lpReturnValue)));
+  return util.boolFromFfi(libvertdll_dll.CallEnclave(lpRoutine, util.toPointer(lpParameter), util.boolToFfi(fWaitForThread), util.toPointer(lpReturnValue)));
 }
 
 export function TerminateEnclave(
   lpAddress: Deno.PointerValue | Uint8Array | null /* ptr */,
   fWait: boolean /* Windows.Win32.Foundation.BOOL */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libvertdll.TerminateEnclave(util.toPointer(lpAddress), util.boolToFfi(fWait)));
+  return util.boolFromFfi(libvertdll_dll.TerminateEnclave(util.toPointer(lpAddress), util.boolToFfi(fWait)));
 }
 
 export function DeleteEnclave(
   lpAddress: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libapi_ms_win_core_enclave_l1_1_1.DeleteEnclave(util.toPointer(lpAddress)));
+  return util.boolFromFfi(libapi_ms_win_core_enclave_l1_1_1_dll.DeleteEnclave(util.toPointer(lpAddress)));
 }
 
 export function EnclaveGetAttestationReport(
@@ -898,7 +898,7 @@ export function EnclaveGetAttestationReport(
   BufferSize: number /* u32 */,
   OutputSize: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libvertdll.EnclaveGetAttestationReport(util.toPointer(EnclaveData), util.toPointer(Report), BufferSize, util.toPointer(OutputSize)));
+  return util.pointerFromFfi(libvertdll_dll.EnclaveGetAttestationReport(util.toPointer(EnclaveData), util.toPointer(Report), BufferSize, util.toPointer(OutputSize)));
 }
 
 export function EnclaveVerifyAttestationReport(
@@ -906,7 +906,7 @@ export function EnclaveVerifyAttestationReport(
   Report: Deno.PointerValue | Uint8Array | null /* ptr */,
   ReportSize: number /* u32 */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libvertdll.EnclaveVerifyAttestationReport(EnclaveType, util.toPointer(Report), ReportSize));
+  return util.pointerFromFfi(libvertdll_dll.EnclaveVerifyAttestationReport(EnclaveType, util.toPointer(Report), ReportSize));
 }
 
 export function EnclaveSealData(
@@ -918,7 +918,7 @@ export function EnclaveSealData(
   BufferSize: number /* u32 */,
   ProtectedBlobSize: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libvertdll.EnclaveSealData(util.toPointer(DataToEncrypt), DataToEncryptSize, IdentityPolicy, RuntimePolicy, util.toPointer(ProtectedBlob), BufferSize, util.toPointer(ProtectedBlobSize)));
+  return util.pointerFromFfi(libvertdll_dll.EnclaveSealData(util.toPointer(DataToEncrypt), DataToEncryptSize, IdentityPolicy, RuntimePolicy, util.toPointer(ProtectedBlob), BufferSize, util.toPointer(ProtectedBlobSize)));
 }
 
 export function EnclaveUnsealData(
@@ -930,13 +930,13 @@ export function EnclaveUnsealData(
   SealingIdentity: Deno.PointerValue | Uint8Array | null /* ptr */,
   UnsealingFlags: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libvertdll.EnclaveUnsealData(util.toPointer(ProtectedBlob), ProtectedBlobSize, util.toPointer(DecryptedData), BufferSize, util.toPointer(DecryptedDataSize), util.toPointer(SealingIdentity), util.toPointer(UnsealingFlags)));
+  return util.pointerFromFfi(libvertdll_dll.EnclaveUnsealData(util.toPointer(ProtectedBlob), ProtectedBlobSize, util.toPointer(DecryptedData), BufferSize, util.toPointer(DecryptedDataSize), util.toPointer(SealingIdentity), util.toPointer(UnsealingFlags)));
 }
 
 export function EnclaveGetEnclaveInformation(
   InformationSize: number /* u32 */,
   EnclaveInformation: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libvertdll.EnclaveGetEnclaveInformation(InformationSize, util.toPointer(EnclaveInformation)));
+  return util.pointerFromFfi(libvertdll_dll.EnclaveGetEnclaveInformation(InformationSize, util.toPointer(EnclaveInformation)));
 }
 

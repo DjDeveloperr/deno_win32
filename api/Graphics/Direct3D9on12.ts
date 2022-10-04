@@ -49,7 +49,7 @@ export type HRESULT = number;
 // Native Libraries
 
 try {
-  var libd3d9 = Deno.dlopen("d3d9", {
+  var libd3d9_dll = Deno.dlopen("d3d9.dll", {
     Direct3DCreate9On12Ex: {
       parameters: ["u32", "pointer", "u32", "pointer"],
       result: "pointer",
@@ -69,7 +69,7 @@ export function Direct3DCreate9On12Ex(
   NumOverrideEntries: number /* u32 */,
   ppOutputInterface: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libd3d9.Direct3DCreate9On12Ex(SDKVersion, util.toPointer(pOverrideList), NumOverrideEntries, util.toPointer(ppOutputInterface)));
+  return util.pointerFromFfi(libd3d9_dll.Direct3DCreate9On12Ex(SDKVersion, util.toPointer(pOverrideList), NumOverrideEntries, util.toPointer(ppOutputInterface)));
 }
 
 export function Direct3DCreate9On12(
@@ -77,6 +77,6 @@ export function Direct3DCreate9On12(
   pOverrideList: Deno.PointerValue | Uint8Array | null /* ptr */,
   NumOverrideEntries: number /* u32 */,
 ): Deno.PointerValue | null /* Windows.Win32.Graphics.Direct3D9.IDirect3D9 */ {
-  return util.pointerFromFfi(libd3d9.Direct3DCreate9On12(SDKVersion, util.toPointer(pOverrideList), NumOverrideEntries));
+  return util.pointerFromFfi(libd3d9_dll.Direct3DCreate9On12(SDKVersion, util.toPointer(pOverrideList), NumOverrideEntries));
 }
 

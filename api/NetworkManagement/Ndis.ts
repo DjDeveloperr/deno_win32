@@ -3,6 +3,17 @@
 import * as util from "../../util.ts";
 
 // Enums
+export type NET_IF_OPER_STATUS = number;
+export type NET_IF_ADMIN_STATUS = number;
+export type NET_IF_RCV_ADDRESS_TYPE = number;
+export type NET_IF_CONNECTION_TYPE = number;
+export type TUNNEL_TYPE = number;
+export type NET_IF_ACCESS_TYPE = number;
+export type NET_IF_DIRECTION_TYPE = number;
+export type NET_IF_MEDIA_CONNECT_STATE = number;
+export type NET_IF_MEDIA_DUPLEX_STATE = number;
+export type IF_ADMINISTRATIVE_STATE = number;
+export type IF_OPER_STATUS = number;
 export type NDIS_REQUEST_TYPE = number;
 export type NDIS_INTERRUPT_MODERATION = number;
 export type NDIS_802_11_STATUS_TYPE = number;
@@ -32,24 +43,12 @@ export type NDIS_WAN_QUALITY = number;
 export type NDIS_802_5_RING_STATE = number;
 export type NDIS_MEDIA_STATE = number;
 export type NDIS_SUPPORTED_PAUSE_FUNCTIONS = number;
-export type NET_IF_MEDIA_CONNECT_STATE = number;
-export type NET_IF_MEDIA_DUPLEX_STATE = number;
-export type NET_IF_OPER_STATUS = number;
 export type NDIS_PORT_TYPE = number;
 export type NDIS_PORT_AUTHORIZATION_STATE = number;
 export type NDIS_PORT_CONTROL_STATE = number;
 export type NDIS_NETWORK_CHANGE_TYPE = number;
 export type NDIS_PROCESSOR_VENDOR = number;
-export type NET_IF_DIRECTION_TYPE = number;
 export type NDK_RDMA_TECHNOLOGY = number;
-export type DOT11_AUTH_ALGORITHM = number;
-export type DOT11_CIPHER_ALGORITHM = number;
-export type DOT11_BSS_TYPE = number;
-export type DOT11EXT_IHV_CONNECTION_PHASE = number;
-export type DOT11_MSONEX_RESULT = number;
-export type ONEX_AUTH_STATUS = number;
-export type ONEX_REASON_CODE = number;
-export type DOT11EXT_IHV_INDICATION_TYPE = number;
 
 // Constants
 export const IOCTL_NDIS_RESERVED5 = 1507380;
@@ -945,6 +944,16 @@ export const NDIS_DEVICE_WAKE_UP_ENABLE = 1;
 export const NDIS_DEVICE_WAKE_ON_PATTERN_MATCH_ENABLE = 2;
 export const NDIS_DEVICE_WAKE_ON_MAGIC_PACKET_ENABLE = 4;
 export const WAN_PROTOCOL_KEEPS_STATS = 1;
+export const fNDIS_GUID_TO_OID = 1;
+export const fNDIS_GUID_TO_STATUS = 2;
+export const fNDIS_GUID_ANSI_STRING = 4;
+export const fNDIS_GUID_UNICODE_STRING = 8;
+export const fNDIS_GUID_ARRAY = 16;
+export const fNDIS_GUID_ALLOW_READ = 32;
+export const fNDIS_GUID_ALLOW_WRITE = 64;
+export const fNDIS_GUID_METHOD = 128;
+export const fNDIS_GUID_NDIS_RESERVED = 256;
+export const fNDIS_GUID_SUPPORT_COMMON_HEADER = 512;
 export const NDIS_PACKET_TYPE_DIRECTED = 1;
 export const NDIS_PACKET_TYPE_MULTICAST = 2;
 export const NDIS_PACKET_TYPE_ALL_MULTICAST = 4;
@@ -986,8 +995,6 @@ export const NDIS_MAC_OPTION_RESERVED = 2147483648;
 export const NDIS_MEDIA_CAP_TRANSMIT = 1;
 export const NDIS_MEDIA_CAP_RECEIVE = 2;
 export const NDIS_CO_MAC_OPTION_DYNAMIC_LINK_SPEED = 1;
-export const NDIS_IF_MAX_STRING_SIZE = 256;
-export const NDIS_MAX_PHYS_ADDRESS_LENGTH = 32;
 export const NDIS_LINK_STATE_XMIT_LINK_SPEED_AUTO_NEGOTIATED = 1;
 export const NDIS_LINK_STATE_RCV_LINK_SPEED_AUTO_NEGOTIATED = 2;
 export const NDIS_LINK_STATE_DUPLEX_AUTO_NEGOTIATED = 4;
@@ -1650,6 +1657,7 @@ export const NDIS_HASH_TCP_IPV6_EX = 8192;
 export const NDIS_HASH_UDP_IPV4 = 16384;
 export const NDIS_HASH_UDP_IPV6 = 32768;
 export const NDIS_HASH_UDP_IPV6_EX = 65536;
+export const DD_NDIS_DEVICE_NAME = "\Device\NDIS";
 export const NDIS_MAXIMUM_PORTS = 16777216;
 export const NDIS_OBJECT_REVISION_1 = 1;
 export const NDIS_OFFLOAD_NOT_SUPPORTED = 0;
@@ -1687,11 +1695,78 @@ export const NDK_ADAPTER_FLAG_MULTI_ENGINE_SUPPORTED = 8;
 export const NDK_ADAPTER_FLAG_RDMA_READ_LOCAL_INVALIDATE_SUPPORTED = 16;
 export const NDK_ADAPTER_FLAG_CQ_RESIZE_SUPPORTED = 256;
 export const NDK_ADAPTER_FLAG_LOOPBACK_CONNECTIONS_SUPPORTED = 65536;
-export const DOT11EXT_PSK_MAX_LENGTH = 64;
-export const WDIAG_IHV_WLAN_ID_FLAG_SECURITY_ENABLED = 1;
-export const MS_MAX_PROFILE_NAME_LENGTH = 256;
-export const MS_PROFILE_GROUP_POLICY = 1;
-export const MS_PROFILE_USER = 2;
+export const NET_IF_OPER_STATUS_DOWN_NOT_AUTHENTICATED = 1;
+export const NET_IF_OPER_STATUS_DOWN_NOT_MEDIA_CONNECTED = 2;
+export const NET_IF_OPER_STATUS_DORMANT_PAUSED = 4;
+export const NET_IF_OPER_STATUS_DORMANT_LOW_POWER = 8;
+export const NET_IF_OID_IF_ALIAS = 1;
+export const NET_IF_OID_COMPARTMENT_ID = 2;
+export const NET_IF_OID_NETWORK_GUID = 3;
+export const NET_IF_OID_IF_ENTRY = 4;
+export const NET_SITEID_UNSPECIFIED = 0;
+export const NET_SITEID_MAXUSER = 134217727;
+export const NET_SITEID_MAXSYSTEM = 268435455;
+export const NET_IFLUID_UNSPECIFIED = 0;
+export const NIIF_HARDWARE_INTERFACE = 1;
+export const NIIF_FILTER_INTERFACE = 2;
+export const NIIF_NDIS_RESERVED1 = 4;
+export const NIIF_NDIS_RESERVED2 = 8;
+export const NIIF_NDIS_RESERVED3 = 16;
+export const NIIF_NDIS_WDM_INTERFACE = 32;
+export const NIIF_NDIS_ENDPOINT_INTERFACE = 64;
+export const NIIF_NDIS_ISCSI_INTERFACE = 128;
+export const NIIF_NDIS_RESERVED4 = 256;
+export const IF_MAX_STRING_SIZE = 256;
+export const IF_MAX_PHYS_ADDRESS_LENGTH = 32;
+export const NET_IF_OPER_STATUS_UP = 1;
+export const NET_IF_OPER_STATUS_DOWN = 2;
+export const NET_IF_OPER_STATUS_TESTING = 3;
+export const NET_IF_OPER_STATUS_UNKNOWN = 4;
+export const NET_IF_OPER_STATUS_DORMANT = 5;
+export const NET_IF_OPER_STATUS_NOT_PRESENT = 6;
+export const NET_IF_OPER_STATUS_LOWER_LAYER_DOWN = 7;
+export const NET_IF_ADMIN_STATUS_UP = 1;
+export const NET_IF_ADMIN_STATUS_DOWN = 2;
+export const NET_IF_ADMIN_STATUS_TESTING = 3;
+export const NET_IF_RCV_ADDRESS_TYPE_OTHER = 1;
+export const NET_IF_RCV_ADDRESS_TYPE_VOLATILE = 2;
+export const NET_IF_RCV_ADDRESS_TYPE_NON_VOLATILE = 3;
+export const NET_IF_CONNECTION_DEDICATED = 1;
+export const NET_IF_CONNECTION_PASSIVE = 2;
+export const NET_IF_CONNECTION_DEMAND = 3;
+export const NET_IF_CONNECTION_MAXIMUM = 4;
+export const TUNNEL_TYPE_NONE = 0;
+export const TUNNEL_TYPE_OTHER = 1;
+export const TUNNEL_TYPE_DIRECT = 2;
+export const TUNNEL_TYPE_6TO4 = 11;
+export const TUNNEL_TYPE_ISATAP = 13;
+export const TUNNEL_TYPE_TEREDO = 14;
+export const TUNNEL_TYPE_IPHTTPS = 15;
+export const NET_IF_ACCESS_LOOPBACK = 1;
+export const NET_IF_ACCESS_BROADCAST = 2;
+export const NET_IF_ACCESS_POINT_TO_POINT = 3;
+export const NET_IF_ACCESS_POINT_TO_MULTI_POINT = 4;
+export const NET_IF_ACCESS_MAXIMUM = 5;
+export const NET_IF_DIRECTION_SENDRECEIVE = 0;
+export const NET_IF_DIRECTION_SENDONLY = 1;
+export const NET_IF_DIRECTION_RECEIVEONLY = 2;
+export const NET_IF_DIRECTION_MAXIMUM = 3;
+export const MediaConnectStateUnknown = 0;
+export const MediaConnectStateConnected = 1;
+export const MediaConnectStateDisconnected = 2;
+export const MediaDuplexStateUnknown = 0;
+export const MediaDuplexStateHalf = 1;
+export const MediaDuplexStateFull = 2;
+export const IF_ADMINISTRATIVE_DISABLED = 0;
+export const IF_ADMINISTRATIVE_ENABLED = 1;
+export const IF_ADMINISTRATIVE_DEMANDDIAL = 2;
+export const IfOperStatusUp = 1;
+export const IfOperStatusDown = 2;
+export const IfOperStatusTesting = 3;
+export const IfOperStatusUnknown = 4;
+export const IfOperStatusDormant = 5;
+export const IfOperStatusNotPresent = 6;
+export const IfOperStatusLowerLayerDown = 7;
 export const NdisRequestQueryInformation = 0;
 export const NdisRequestSetInformation = 1;
 export const NdisRequestQueryStatistics = 2;
@@ -1894,19 +1969,6 @@ export const NdisPauseFunctionsSendOnly = 1;
 export const NdisPauseFunctionsReceiveOnly = 2;
 export const NdisPauseFunctionsSendAndReceive = 3;
 export const NdisPauseFunctionsUnknown = 4;
-export const MediaConnectStateUnknown = 0;
-export const MediaConnectStateConnected = 1;
-export const MediaConnectStateDisconnected = 2;
-export const MediaDuplexStateUnknown = 0;
-export const MediaDuplexStateHalf = 1;
-export const MediaDuplexStateFull = 2;
-export const NET_IF_OPER_STATUS_UP = 1;
-export const NET_IF_OPER_STATUS_DOWN = 2;
-export const NET_IF_OPER_STATUS_TESTING = 3;
-export const NET_IF_OPER_STATUS_UNKNOWN = 4;
-export const NET_IF_OPER_STATUS_DORMANT = 5;
-export const NET_IF_OPER_STATUS_NOT_PRESENT = 6;
-export const NET_IF_OPER_STATUS_LOWER_LAYER_DOWN = 7;
 export const NdisPortTypeUndefined = 0;
 export const NdisPortTypeBridge = 1;
 export const NdisPortTypeRasConnection = 2;
@@ -1927,91 +1989,321 @@ export const NdisProcessorVendorUnknown = 0;
 export const NdisProcessorVendorGenuinIntel = 1;
 export const NdisProcessorVendorGenuineIntel = 1;
 export const NdisProcessorVendorAuthenticAMD = 2;
-export const NET_IF_DIRECTION_SENDRECEIVE = 0;
-export const NET_IF_DIRECTION_SENDONLY = 1;
-export const NET_IF_DIRECTION_RECEIVEONLY = 2;
-export const NET_IF_DIRECTION_MAXIMUM = 3;
 export const NdkUndefined = 0;
 export const NdkiWarp = 1;
 export const NdkInfiniBand = 2;
 export const NdkRoCE = 3;
 export const NdkRoCEv2 = 4;
 export const NdkMaxTechnology = 5;
-export const DOT11_AUTH_ALGO_80211_OPEN = 1;
-export const DOT11_AUTH_ALGO_80211_SHARED_KEY = 2;
-export const DOT11_AUTH_ALGO_WPA = 3;
-export const DOT11_AUTH_ALGO_WPA_PSK = 4;
-export const DOT11_AUTH_ALGO_WPA_NONE = 5;
-export const DOT11_AUTH_ALGO_RSNA = 6;
-export const DOT11_AUTH_ALGO_RSNA_PSK = 7;
-export const DOT11_AUTH_ALGO_WPA3 = 8;
-export const DOT11_AUTH_ALGO_WPA3_ENT_192 = 8;
-export const DOT11_AUTH_ALGO_WPA3_SAE = 9;
-export const DOT11_AUTH_ALGO_OWE = 10;
-export const DOT11_AUTH_ALGO_WPA3_ENT = 11;
-export const DOT11_AUTH_ALGO_IHV_START = "-2147483648";
-export const DOT11_AUTH_ALGO_IHV_END = "-1";
-export const DOT11_CIPHER_ALGO_NONE = 0;
-export const DOT11_CIPHER_ALGO_WEP40 = 1;
-export const DOT11_CIPHER_ALGO_TKIP = 2;
-export const DOT11_CIPHER_ALGO_CCMP = 4;
-export const DOT11_CIPHER_ALGO_WEP104 = 5;
-export const DOT11_CIPHER_ALGO_BIP = 6;
-export const DOT11_CIPHER_ALGO_GCMP = 8;
-export const DOT11_CIPHER_ALGO_GCMP_256 = 9;
-export const DOT11_CIPHER_ALGO_CCMP_256 = 10;
-export const DOT11_CIPHER_ALGO_BIP_GMAC_128 = 11;
-export const DOT11_CIPHER_ALGO_BIP_GMAC_256 = 12;
-export const DOT11_CIPHER_ALGO_BIP_CMAC_256 = 13;
-export const DOT11_CIPHER_ALGO_WPA_USE_GROUP = 256;
-export const DOT11_CIPHER_ALGO_RSN_USE_GROUP = 256;
-export const DOT11_CIPHER_ALGO_WEP = 257;
-export const DOT11_CIPHER_ALGO_IHV_START = "-2147483648";
-export const DOT11_CIPHER_ALGO_IHV_END = "-1";
-export const dot11_BSS_type_infrastructure = 1;
-export const dot11_BSS_type_independent = 2;
-export const dot11_BSS_type_any = 3;
-export const connection_phase_any = 0;
-export const connection_phase_initial_connection = 1;
-export const connection_phase_post_l3_connection = 2;
-export const DOT11_MSONEX_SUCCESS = 0;
-export const DOT11_MSONEX_FAILURE = 1;
-export const DOT11_MSONEX_IN_PROGRESS = 2;
-export const OneXAuthNotStarted = 0;
-export const OneXAuthInProgress = 1;
-export const OneXAuthNoAuthenticatorFound = 2;
-export const OneXAuthSuccess = 3;
-export const OneXAuthFailure = 4;
-export const OneXAuthInvalid = 5;
-export const ONEX_REASON_CODE_SUCCESS = 0;
-export const ONEX_REASON_START = 327680;
-export const ONEX_UNABLE_TO_IDENTIFY_USER = 327681;
-export const ONEX_IDENTITY_NOT_FOUND = 327682;
-export const ONEX_UI_DISABLED = 327683;
-export const ONEX_UI_FAILURE = 327684;
-export const ONEX_EAP_FAILURE_RECEIVED = 327685;
-export const ONEX_AUTHENTICATOR_NO_LONGER_PRESENT = 327686;
-export const ONEX_NO_RESPONSE_TO_IDENTITY = 327687;
-export const ONEX_PROFILE_VERSION_NOT_SUPPORTED = 327688;
-export const ONEX_PROFILE_INVALID_LENGTH = 327689;
-export const ONEX_PROFILE_DISALLOWED_EAP_TYPE = 327690;
-export const ONEX_PROFILE_INVALID_EAP_TYPE_OR_FLAG = 327691;
-export const ONEX_PROFILE_INVALID_ONEX_FLAGS = 327692;
-export const ONEX_PROFILE_INVALID_TIMER_VALUE = 327693;
-export const ONEX_PROFILE_INVALID_SUPPLICANT_MODE = 327694;
-export const ONEX_PROFILE_INVALID_AUTH_MODE = 327695;
-export const ONEX_PROFILE_INVALID_EAP_CONNECTION_PROPERTIES = 327696;
-export const ONEX_UI_CANCELLED = 327697;
-export const ONEX_PROFILE_INVALID_EXPLICIT_CREDENTIALS = 327698;
-export const ONEX_PROFILE_EXPIRED_EXPLICIT_CREDENTIALS = 327699;
-export const ONEX_UI_NOT_PERMITTED = 327700;
-export const IndicationTypeNicSpecificNotification = 0;
-export const IndicationTypePmkidCandidateList = 1;
-export const IndicationTypeTkipMicFailure = 2;
-export const IndicationTypePhyStateChange = 3;
-export const IndicationTypeLinkQuality = 4;
 
 // Structs
+
+/**
+ * Windows.Win32.NetworkManagement.Ndis.NET_IF_RCV_ADDRESS_LH (size: 8)
+ */
+export interface NET_IF_RCV_ADDRESS_LH {
+  /** Windows.Win32.NetworkManagement.Ndis.NET_IF_RCV_ADDRESS_TYPE */
+  ifRcvAddressType: NET_IF_RCV_ADDRESS_TYPE;
+  /** u16 */
+  ifRcvAddressLength: number;
+  /** u16 */
+  ifRcvAddressOffset: number;
+}
+
+export const sizeofNET_IF_RCV_ADDRESS_LH = 8;
+
+export function allocNET_IF_RCV_ADDRESS_LH(data?: Partial<NET_IF_RCV_ADDRESS_LH>): Uint8Array {
+  const buf = new Uint8Array(sizeofNET_IF_RCV_ADDRESS_LH);
+  const view = new DataView(buf.buffer);
+  // 0x00: i32
+  if (data?.ifRcvAddressType !== undefined) view.setInt32(0, Number(data.ifRcvAddressType), true);
+  // 0x04: u16
+  if (data?.ifRcvAddressLength !== undefined) view.setUint16(4, Number(data.ifRcvAddressLength), true);
+  // 0x06: u16
+  if (data?.ifRcvAddressOffset !== undefined) view.setUint16(6, Number(data.ifRcvAddressOffset), true);
+  return buf;
+}
+
+/**
+ * Windows.Win32.NetworkManagement.Ndis.NET_IF_ALIAS_LH (size: 8)
+ */
+export interface NET_IF_ALIAS_LH {
+  /** u16 */
+  ifAliasLength: number;
+  /** u16 */
+  ifAliasOffset: number;
+}
+
+export const sizeofNET_IF_ALIAS_LH = 8;
+
+export function allocNET_IF_ALIAS_LH(data?: Partial<NET_IF_ALIAS_LH>): Uint8Array {
+  const buf = new Uint8Array(sizeofNET_IF_ALIAS_LH);
+  const view = new DataView(buf.buffer);
+  // 0x00: u16
+  if (data?.ifAliasLength !== undefined) view.setUint16(0, Number(data.ifAliasLength), true);
+  // 0x02: u16
+  if (data?.ifAliasOffset !== undefined) view.setUint16(2, Number(data.ifAliasOffset), true);
+  // 0x04: pad4
+  return buf;
+}
+
+/**
+ * _Info_e__Struct (size: 8)
+ */
+export interface _Info_e__Struct {
+  /** u64 */
+  _bitfield: Deno.PointerValue;
+}
+
+export const sizeof_Info_e__Struct = 8;
+
+export function alloc_Info_e__Struct(data?: Partial<_Info_e__Struct>): Uint8Array {
+  const buf = new Uint8Array(sizeof_Info_e__Struct);
+  const view = new DataView(buf.buffer);
+  // 0x00: u64
+  if (data?._bitfield !== undefined) view.setBigUint64(0, BigInt(data._bitfield), true);
+  return buf;
+}
+
+/**
+ * Windows.Win32.NetworkManagement.Ndis.NET_LUID_LH (size: 16)
+ */
+export interface NET_LUID_LH {
+  /** u64 */
+  Value: Deno.PointerValue;
+  /** _Info_e__Struct */
+  Info: Uint8Array | Deno.PointerValue | null;
+}
+
+export const sizeofNET_LUID_LH = 16;
+
+export function allocNET_LUID_LH(data?: Partial<NET_LUID_LH>): Uint8Array {
+  const buf = new Uint8Array(sizeofNET_LUID_LH);
+  const view = new DataView(buf.buffer);
+  // 0x00: u64
+  if (data?.Value !== undefined) view.setBigUint64(0, BigInt(data.Value), true);
+  // 0x08: pointer
+  if (data?.Info !== undefined) view.setBigUint64(8, data.Info === null ? 0n : BigInt(util.toPointer(data.Info)), true);
+  return buf;
+}
+
+/**
+ * Windows.Win32.NetworkManagement.Ndis.NET_PHYSICAL_LOCATION_LH (size: 16)
+ */
+export interface NET_PHYSICAL_LOCATION_LH {
+  /** u32 */
+  BusNumber: number;
+  /** u32 */
+  SlotNumber: number;
+  /** u32 */
+  FunctionNumber: number;
+}
+
+export const sizeofNET_PHYSICAL_LOCATION_LH = 16;
+
+export function allocNET_PHYSICAL_LOCATION_LH(data?: Partial<NET_PHYSICAL_LOCATION_LH>): Uint8Array {
+  const buf = new Uint8Array(sizeofNET_PHYSICAL_LOCATION_LH);
+  const view = new DataView(buf.buffer);
+  // 0x00: u32
+  if (data?.BusNumber !== undefined) view.setUint32(0, Number(data.BusNumber), true);
+  // 0x04: u32
+  if (data?.SlotNumber !== undefined) view.setUint32(4, Number(data.SlotNumber), true);
+  // 0x08: u32
+  if (data?.FunctionNumber !== undefined) view.setUint32(8, Number(data.FunctionNumber), true);
+  // 0x0c: pad4
+  return buf;
+}
+
+/**
+ * Windows.Win32.NetworkManagement.Ndis.IF_COUNTED_STRING_LH (size: 16)
+ */
+export interface IF_COUNTED_STRING_LH {
+  /** u16 */
+  Length: number;
+  /** array */
+  String: Deno.PointerValue | null;
+}
+
+export const sizeofIF_COUNTED_STRING_LH = 16;
+
+export function allocIF_COUNTED_STRING_LH(data?: Partial<IF_COUNTED_STRING_LH>): Uint8Array {
+  const buf = new Uint8Array(sizeofIF_COUNTED_STRING_LH);
+  const view = new DataView(buf.buffer);
+  // 0x00: u16
+  if (data?.Length !== undefined) view.setUint16(0, Number(data.Length), true);
+  // 0x02: pad6
+  // 0x08: pointer
+  if (data?.String !== undefined) view.setBigUint64(8, data.String === null ? 0n : BigInt(util.toPointer(data.String)), true);
+  return buf;
+}
+
+/**
+ * Windows.Win32.NetworkManagement.Ndis.IF_PHYSICAL_ADDRESS_LH (size: 16)
+ */
+export interface IF_PHYSICAL_ADDRESS_LH {
+  /** u16 */
+  Length: number;
+  /** array */
+  Address: Deno.PointerValue | null;
+}
+
+export const sizeofIF_PHYSICAL_ADDRESS_LH = 16;
+
+export function allocIF_PHYSICAL_ADDRESS_LH(data?: Partial<IF_PHYSICAL_ADDRESS_LH>): Uint8Array {
+  const buf = new Uint8Array(sizeofIF_PHYSICAL_ADDRESS_LH);
+  const view = new DataView(buf.buffer);
+  // 0x00: u16
+  if (data?.Length !== undefined) view.setUint16(0, Number(data.Length), true);
+  // 0x02: pad6
+  // 0x08: pointer
+  if (data?.Address !== undefined) view.setBigUint64(8, data.Address === null ? 0n : BigInt(util.toPointer(data.Address)), true);
+  return buf;
+}
+
+export type BOOLEAN = number;
+
+/**
+ * Windows.Win32.NetworkManagement.Ndis.NDIS_INTERFACE_INFORMATION (size: 232)
+ */
+export interface NDIS_INTERFACE_INFORMATION {
+  /** Windows.Win32.NetworkManagement.Ndis.NET_IF_OPER_STATUS */
+  ifOperStatus: NET_IF_OPER_STATUS;
+  /** u32 */
+  ifOperStatusFlags: number;
+  /** Windows.Win32.NetworkManagement.Ndis.NET_IF_MEDIA_CONNECT_STATE */
+  MediaConnectState: NET_IF_MEDIA_CONNECT_STATE;
+  /** Windows.Win32.NetworkManagement.Ndis.NET_IF_MEDIA_DUPLEX_STATE */
+  MediaDuplexState: NET_IF_MEDIA_DUPLEX_STATE;
+  /** u32 */
+  ifMtu: number;
+  /** Windows.Win32.Foundation.BOOLEAN */
+  ifPromiscuousMode: Uint8Array | Deno.PointerValue | null;
+  /** Windows.Win32.Foundation.BOOLEAN */
+  ifDeviceWakeUpEnable: Uint8Array | Deno.PointerValue | null;
+  /** u64 */
+  XmitLinkSpeed: Deno.PointerValue;
+  /** u64 */
+  RcvLinkSpeed: Deno.PointerValue;
+  /** u64 */
+  ifLastChange: Deno.PointerValue;
+  /** u64 */
+  ifCounterDiscontinuityTime: Deno.PointerValue;
+  /** u64 */
+  ifInUnknownProtos: Deno.PointerValue;
+  /** u64 */
+  ifInDiscards: Deno.PointerValue;
+  /** u64 */
+  ifInErrors: Deno.PointerValue;
+  /** u64 */
+  ifHCInOctets: Deno.PointerValue;
+  /** u64 */
+  ifHCInUcastPkts: Deno.PointerValue;
+  /** u64 */
+  ifHCInMulticastPkts: Deno.PointerValue;
+  /** u64 */
+  ifHCInBroadcastPkts: Deno.PointerValue;
+  /** u64 */
+  ifHCOutOctets: Deno.PointerValue;
+  /** u64 */
+  ifHCOutUcastPkts: Deno.PointerValue;
+  /** u64 */
+  ifHCOutMulticastPkts: Deno.PointerValue;
+  /** u64 */
+  ifHCOutBroadcastPkts: Deno.PointerValue;
+  /** u64 */
+  ifOutErrors: Deno.PointerValue;
+  /** u64 */
+  ifOutDiscards: Deno.PointerValue;
+  /** u64 */
+  ifHCInUcastOctets: Deno.PointerValue;
+  /** u64 */
+  ifHCInMulticastOctets: Deno.PointerValue;
+  /** u64 */
+  ifHCInBroadcastOctets: Deno.PointerValue;
+  /** u64 */
+  ifHCOutUcastOctets: Deno.PointerValue;
+  /** u64 */
+  ifHCOutMulticastOctets: Deno.PointerValue;
+  /** u64 */
+  ifHCOutBroadcastOctets: Deno.PointerValue;
+  /** u32 */
+  CompartmentId: number;
+  /** u32 */
+  SupportedStatistics: number;
+}
+
+export const sizeofNDIS_INTERFACE_INFORMATION = 232;
+
+export function allocNDIS_INTERFACE_INFORMATION(data?: Partial<NDIS_INTERFACE_INFORMATION>): Uint8Array {
+  const buf = new Uint8Array(sizeofNDIS_INTERFACE_INFORMATION);
+  const view = new DataView(buf.buffer);
+  // 0x00: i32
+  if (data?.ifOperStatus !== undefined) view.setInt32(0, Number(data.ifOperStatus), true);
+  // 0x04: u32
+  if (data?.ifOperStatusFlags !== undefined) view.setUint32(4, Number(data.ifOperStatusFlags), true);
+  // 0x08: i32
+  if (data?.MediaConnectState !== undefined) view.setInt32(8, Number(data.MediaConnectState), true);
+  // 0x0c: i32
+  if (data?.MediaDuplexState !== undefined) view.setInt32(12, Number(data.MediaDuplexState), true);
+  // 0x10: u32
+  if (data?.ifMtu !== undefined) view.setUint32(16, Number(data.ifMtu), true);
+  // 0x14: pad4
+  // 0x18: pointer
+  if (data?.ifPromiscuousMode !== undefined) view.setBigUint64(24, data.ifPromiscuousMode === null ? 0n : BigInt(util.toPointer(data.ifPromiscuousMode)), true);
+  // 0x20: pointer
+  if (data?.ifDeviceWakeUpEnable !== undefined) view.setBigUint64(32, data.ifDeviceWakeUpEnable === null ? 0n : BigInt(util.toPointer(data.ifDeviceWakeUpEnable)), true);
+  // 0x28: u64
+  if (data?.XmitLinkSpeed !== undefined) view.setBigUint64(40, BigInt(data.XmitLinkSpeed), true);
+  // 0x30: u64
+  if (data?.RcvLinkSpeed !== undefined) view.setBigUint64(48, BigInt(data.RcvLinkSpeed), true);
+  // 0x38: u64
+  if (data?.ifLastChange !== undefined) view.setBigUint64(56, BigInt(data.ifLastChange), true);
+  // 0x40: u64
+  if (data?.ifCounterDiscontinuityTime !== undefined) view.setBigUint64(64, BigInt(data.ifCounterDiscontinuityTime), true);
+  // 0x48: u64
+  if (data?.ifInUnknownProtos !== undefined) view.setBigUint64(72, BigInt(data.ifInUnknownProtos), true);
+  // 0x50: u64
+  if (data?.ifInDiscards !== undefined) view.setBigUint64(80, BigInt(data.ifInDiscards), true);
+  // 0x58: u64
+  if (data?.ifInErrors !== undefined) view.setBigUint64(88, BigInt(data.ifInErrors), true);
+  // 0x60: u64
+  if (data?.ifHCInOctets !== undefined) view.setBigUint64(96, BigInt(data.ifHCInOctets), true);
+  // 0x68: u64
+  if (data?.ifHCInUcastPkts !== undefined) view.setBigUint64(104, BigInt(data.ifHCInUcastPkts), true);
+  // 0x70: u64
+  if (data?.ifHCInMulticastPkts !== undefined) view.setBigUint64(112, BigInt(data.ifHCInMulticastPkts), true);
+  // 0x78: u64
+  if (data?.ifHCInBroadcastPkts !== undefined) view.setBigUint64(120, BigInt(data.ifHCInBroadcastPkts), true);
+  // 0x80: u64
+  if (data?.ifHCOutOctets !== undefined) view.setBigUint64(128, BigInt(data.ifHCOutOctets), true);
+  // 0x88: u64
+  if (data?.ifHCOutUcastPkts !== undefined) view.setBigUint64(136, BigInt(data.ifHCOutUcastPkts), true);
+  // 0x90: u64
+  if (data?.ifHCOutMulticastPkts !== undefined) view.setBigUint64(144, BigInt(data.ifHCOutMulticastPkts), true);
+  // 0x98: u64
+  if (data?.ifHCOutBroadcastPkts !== undefined) view.setBigUint64(152, BigInt(data.ifHCOutBroadcastPkts), true);
+  // 0xa0: u64
+  if (data?.ifOutErrors !== undefined) view.setBigUint64(160, BigInt(data.ifOutErrors), true);
+  // 0xa8: u64
+  if (data?.ifOutDiscards !== undefined) view.setBigUint64(168, BigInt(data.ifOutDiscards), true);
+  // 0xb0: u64
+  if (data?.ifHCInUcastOctets !== undefined) view.setBigUint64(176, BigInt(data.ifHCInUcastOctets), true);
+  // 0xb8: u64
+  if (data?.ifHCInMulticastOctets !== undefined) view.setBigUint64(184, BigInt(data.ifHCInMulticastOctets), true);
+  // 0xc0: u64
+  if (data?.ifHCInBroadcastOctets !== undefined) view.setBigUint64(192, BigInt(data.ifHCInBroadcastOctets), true);
+  // 0xc8: u64
+  if (data?.ifHCOutUcastOctets !== undefined) view.setBigUint64(200, BigInt(data.ifHCOutUcastOctets), true);
+  // 0xd0: u64
+  if (data?.ifHCOutMulticastOctets !== undefined) view.setBigUint64(208, BigInt(data.ifHCOutMulticastOctets), true);
+  // 0xd8: u64
+  if (data?.ifHCOutBroadcastOctets !== undefined) view.setBigUint64(216, BigInt(data.ifHCOutBroadcastOctets), true);
+  // 0xe0: u32
+  if (data?.CompartmentId !== undefined) view.setUint32(224, Number(data.CompartmentId), true);
+  // 0xe4: u32
+  if (data?.SupportedStatistics !== undefined) view.setUint32(228, Number(data.SupportedStatistics), true);
+  return buf;
+}
 
 /**
  * Windows.Win32.NetworkManagement.Ndis.NDIS_STATISTICS_VALUE (size: 16)
@@ -4188,9 +4480,9 @@ export function allocNDIS_IRDA_PACKET_INFO(data?: Partial<NDIS_IRDA_PACKET_INFO>
 export interface NDIS_LINK_STATE {
   /** Windows.Win32.NetworkManagement.Ndis.NDIS_OBJECT_HEADER */
   Header: Uint8Array | Deno.PointerValue | null;
-  /** Windows.Win32.NetworkManagement.IpHelper.NET_IF_MEDIA_CONNECT_STATE */
+  /** Windows.Win32.NetworkManagement.Ndis.NET_IF_MEDIA_CONNECT_STATE */
   MediaConnectState: NET_IF_MEDIA_CONNECT_STATE;
-  /** Windows.Win32.NetworkManagement.IpHelper.NET_IF_MEDIA_DUPLEX_STATE */
+  /** Windows.Win32.NetworkManagement.Ndis.NET_IF_MEDIA_DUPLEX_STATE */
   MediaDuplexState: NET_IF_MEDIA_DUPLEX_STATE;
   /** u64 */
   XmitLinkSpeed: Deno.PointerValue;
@@ -4230,7 +4522,7 @@ export function allocNDIS_LINK_STATE(data?: Partial<NDIS_LINK_STATE>): Uint8Arra
 export interface NDIS_LINK_PARAMETERS {
   /** Windows.Win32.NetworkManagement.Ndis.NDIS_OBJECT_HEADER */
   Header: Uint8Array | Deno.PointerValue | null;
-  /** Windows.Win32.NetworkManagement.IpHelper.NET_IF_MEDIA_DUPLEX_STATE */
+  /** Windows.Win32.NetworkManagement.Ndis.NET_IF_MEDIA_DUPLEX_STATE */
   MediaDuplexState: NET_IF_MEDIA_DUPLEX_STATE;
   /** u64 */
   XmitLinkSpeed: Deno.PointerValue;
@@ -4269,7 +4561,7 @@ export function allocNDIS_LINK_PARAMETERS(data?: Partial<NDIS_LINK_PARAMETERS>):
 export interface NDIS_OPER_STATE {
   /** Windows.Win32.NetworkManagement.Ndis.NDIS_OBJECT_HEADER */
   Header: Uint8Array | Deno.PointerValue | null;
-  /** Windows.Win32.NetworkManagement.IpHelper.NET_IF_OPER_STATUS */
+  /** Windows.Win32.NetworkManagement.Ndis.NET_IF_OPER_STATUS */
   OperationalStatus: NET_IF_OPER_STATUS;
   /** u32 */
   OperationalStatusFlags: number;
@@ -4295,7 +4587,7 @@ export function allocNDIS_OPER_STATE(data?: Partial<NDIS_OPER_STATE>): Uint8Arra
 export interface NDIS_IP_OPER_STATUS {
   /** u32 */
   AddressFamily: number;
-  /** Windows.Win32.NetworkManagement.IpHelper.NET_IF_OPER_STATUS */
+  /** Windows.Win32.NetworkManagement.Ndis.NET_IF_OPER_STATUS */
   OperationalStatus: NET_IF_OPER_STATUS;
   /** u32 */
   OperationalStatusFlags: number;
@@ -5047,46 +5339,6 @@ export function allocNDIS_PORT_AUTHENTICATION_PARAMETERS(data?: Partial<NDIS_POR
 }
 
 /**
- * _Info_e__Struct (size: 8)
- */
-export interface _Info_e__Struct {
-  /** u64 */
-  _bitfield: Deno.PointerValue;
-}
-
-export const sizeof_Info_e__Struct = 8;
-
-export function alloc_Info_e__Struct(data?: Partial<_Info_e__Struct>): Uint8Array {
-  const buf = new Uint8Array(sizeof_Info_e__Struct);
-  const view = new DataView(buf.buffer);
-  // 0x00: u64
-  if (data?._bitfield !== undefined) view.setBigUint64(0, BigInt(data._bitfield), true);
-  return buf;
-}
-
-/**
- * Windows.Win32.NetworkManagement.IpHelper.NET_LUID_LH (size: 16)
- */
-export interface NET_LUID_LH {
-  /** u64 */
-  Value: Deno.PointerValue;
-  /** _Info_e__Struct */
-  Info: Uint8Array | Deno.PointerValue | null;
-}
-
-export const sizeofNET_LUID_LH = 16;
-
-export function allocNET_LUID_LH(data?: Partial<NET_LUID_LH>): Uint8Array {
-  const buf = new Uint8Array(sizeofNET_LUID_LH);
-  const view = new DataView(buf.buffer);
-  // 0x00: u64
-  if (data?.Value !== undefined) view.setBigUint64(0, BigInt(data.Value), true);
-  // 0x08: pointer
-  if (data?.Info !== undefined) view.setBigUint64(8, data.Info === null ? 0n : BigInt(util.toPointer(data.Info)), true);
-  return buf;
-}
-
-/**
  * Windows.Win32.NetworkManagement.Ndis.NDIS_WMI_METHOD_HEADER (size: 48)
  */
 export interface NDIS_WMI_METHOD_HEADER {
@@ -5094,7 +5346,7 @@ export interface NDIS_WMI_METHOD_HEADER {
   Header: Uint8Array | Deno.PointerValue | null;
   /** u32 */
   PortNumber: number;
-  /** Windows.Win32.NetworkManagement.IpHelper.NET_LUID_LH */
+  /** Windows.Win32.NetworkManagement.Ndis.NET_LUID_LH */
   NetLuid: Uint8Array | Deno.PointerValue | null;
   /** u64 */
   RequestId: Deno.PointerValue;
@@ -5134,7 +5386,7 @@ export interface NDIS_WMI_SET_HEADER {
   Header: Uint8Array | Deno.PointerValue | null;
   /** u32 */
   PortNumber: number;
-  /** Windows.Win32.NetworkManagement.IpHelper.NET_LUID_LH */
+  /** Windows.Win32.NetworkManagement.Ndis.NET_LUID_LH */
   NetLuid: Uint8Array | Deno.PointerValue | null;
   /** u64 */
   RequestId: Deno.PointerValue;
@@ -5174,7 +5426,7 @@ export interface NDIS_WMI_EVENT_HEADER {
   Header: Uint8Array | Deno.PointerValue | null;
   /** u32 */
   IfIndex: number;
-  /** Windows.Win32.NetworkManagement.IpHelper.NET_LUID_LH */
+  /** Windows.Win32.NetworkManagement.Ndis.NET_LUID_LH */
   NetLuid: Uint8Array | Deno.PointerValue | null;
   /** u64 */
   RequestId: Deno.PointerValue;
@@ -5222,7 +5474,7 @@ export interface NDIS_WMI_ENUM_ADAPTER {
   Header: Uint8Array | Deno.PointerValue | null;
   /** u32 */
   IfIndex: number;
-  /** Windows.Win32.NetworkManagement.IpHelper.NET_LUID_LH */
+  /** Windows.Win32.NetworkManagement.Ndis.NET_LUID_LH */
   NetLuid: Uint8Array | Deno.PointerValue | null;
   /** u16 */
   DeviceNameLength: number;
@@ -5400,13 +5652,13 @@ export function allocNDIS_RECEIVE_HASH_PARAMETERS(data?: Partial<NDIS_RECEIVE_HA
 export interface NDIS_PORT_STATE {
   /** Windows.Win32.NetworkManagement.Ndis.NDIS_OBJECT_HEADER */
   Header: Uint8Array | Deno.PointerValue | null;
-  /** Windows.Win32.NetworkManagement.IpHelper.NET_IF_MEDIA_CONNECT_STATE */
+  /** Windows.Win32.NetworkManagement.Ndis.NET_IF_MEDIA_CONNECT_STATE */
   MediaConnectState: NET_IF_MEDIA_CONNECT_STATE;
   /** u64 */
   XmitLinkSpeed: Deno.PointerValue;
   /** u64 */
   RcvLinkSpeed: Deno.PointerValue;
-  /** Windows.Win32.NetworkManagement.IpHelper.NET_IF_DIRECTION_TYPE */
+  /** Windows.Win32.NetworkManagement.Ndis.NET_IF_DIRECTION_TYPE */
   Direction: NET_IF_DIRECTION_TYPE;
   /** Windows.Win32.NetworkManagement.Ndis.NDIS_PORT_CONTROL_STATE */
   SendControlState: NDIS_PORT_CONTROL_STATE;
@@ -5461,13 +5713,13 @@ export interface NDIS_PORT_CHARACTERISTICS {
   Flags: number;
   /** Windows.Win32.NetworkManagement.Ndis.NDIS_PORT_TYPE */
   Type: NDIS_PORT_TYPE;
-  /** Windows.Win32.NetworkManagement.IpHelper.NET_IF_MEDIA_CONNECT_STATE */
+  /** Windows.Win32.NetworkManagement.Ndis.NET_IF_MEDIA_CONNECT_STATE */
   MediaConnectState: NET_IF_MEDIA_CONNECT_STATE;
   /** u64 */
   XmitLinkSpeed: Deno.PointerValue;
   /** u64 */
   RcvLinkSpeed: Deno.PointerValue;
-  /** Windows.Win32.NetworkManagement.IpHelper.NET_IF_DIRECTION_TYPE */
+  /** Windows.Win32.NetworkManagement.Ndis.NET_IF_DIRECTION_TYPE */
   Direction: NET_IF_DIRECTION_TYPE;
   /** Windows.Win32.NetworkManagement.Ndis.NDIS_PORT_CONTROL_STATE */
   SendControlState: NDIS_PORT_CONTROL_STATE;
@@ -5580,8 +5832,6 @@ export function allocNDIS_PORT_ARRAY(data?: Partial<NDIS_PORT_ARRAY>): Uint8Arra
   if (data?.Ports !== undefined) view.setBigUint64(24, data.Ports === null ? 0n : BigInt(util.toPointer(data.Ports)), true);
   return buf;
 }
-
-export type BOOLEAN = number;
 
 /**
  * Windows.Win32.NetworkManagement.Ndis.NDIS_TIMESTAMP_CAPABILITY_FLAGS (size: 112)
@@ -5849,846 +6099,6 @@ export function allocNDK_ADAPTER_INFO(data?: Partial<NDK_ADAPTER_INFO>): Uint8Ar
   // 0x60: i32
   if (data?.RdmaTechnology !== undefined) view.setInt32(96, Number(data.RdmaTechnology), true);
   // 0x64: pad4
-  return buf;
-}
-
-/**
- * Windows.Win32.NetworkManagement.WiFi.DOT11_CURRENT_OPERATION_MODE (size: 8)
- */
-export interface DOT11_CURRENT_OPERATION_MODE {
-  /** u32 */
-  uReserved: number;
-  /** u32 */
-  uCurrentOpMode: number;
-}
-
-export const sizeofDOT11_CURRENT_OPERATION_MODE = 8;
-
-export function allocDOT11_CURRENT_OPERATION_MODE(data?: Partial<DOT11_CURRENT_OPERATION_MODE>): Uint8Array {
-  const buf = new Uint8Array(sizeofDOT11_CURRENT_OPERATION_MODE);
-  const view = new DataView(buf.buffer);
-  // 0x00: u32
-  if (data?.uReserved !== undefined) view.setUint32(0, Number(data.uReserved), true);
-  // 0x04: u32
-  if (data?.uCurrentOpMode !== undefined) view.setUint32(4, Number(data.uCurrentOpMode), true);
-  return buf;
-}
-
-/**
- * Windows.Win32.NetworkManagement.Ndis.DOT11_ADAPTER (size: 24)
- */
-export interface DOT11_ADAPTER {
-  /** System.Guid */
-  gAdapterId: Uint8Array | Deno.PointerValue | null;
-  /** Windows.Win32.Foundation.PWSTR */
-  pszDescription: string | null;
-  /** Windows.Win32.NetworkManagement.WiFi.DOT11_CURRENT_OPERATION_MODE */
-  Dot11CurrentOpMode: Uint8Array | Deno.PointerValue | null;
-}
-
-export const sizeofDOT11_ADAPTER = 24;
-
-export function allocDOT11_ADAPTER(data?: Partial<DOT11_ADAPTER>): Uint8Array {
-  const buf = new Uint8Array(sizeofDOT11_ADAPTER);
-  const view = new DataView(buf.buffer);
-  // 0x00: pointer
-  if (data?.gAdapterId !== undefined) view.setBigUint64(0, data.gAdapterId === null ? 0n : BigInt(util.toPointer(data.gAdapterId)), true);
-  // 0x08: buffer
-  if (data?.pszDescription !== undefined) {
-    (buf as any)._f8 = util.pwstrToFfi(data.pszDescription);
-    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f8)), true);
-  }
-  // 0x10: pointer
-  if (data?.Dot11CurrentOpMode !== undefined) view.setBigUint64(16, data.Dot11CurrentOpMode === null ? 0n : BigInt(util.toPointer(data.Dot11CurrentOpMode)), true);
-  return buf;
-}
-
-/**
- * Windows.Win32.NetworkManagement.Ndis.DOT11_BSS_LIST (size: 16)
- */
-export interface DOT11_BSS_LIST {
-  /** u32 */
-  uNumOfBytes: number;
-  /** ptr */
-  pucBuffer: Deno.PointerValue | Uint8Array | null;
-}
-
-export const sizeofDOT11_BSS_LIST = 16;
-
-export function allocDOT11_BSS_LIST(data?: Partial<DOT11_BSS_LIST>): Uint8Array {
-  const buf = new Uint8Array(sizeofDOT11_BSS_LIST);
-  const view = new DataView(buf.buffer);
-  // 0x00: u32
-  if (data?.uNumOfBytes !== undefined) view.setUint32(0, Number(data.uNumOfBytes), true);
-  // 0x04: pad4
-  // 0x08: pointer
-  if (data?.pucBuffer !== undefined) view.setBigUint64(8, data.pucBuffer === null ? 0n : BigInt(util.toPointer(data.pucBuffer)), true);
-  return buf;
-}
-
-export type BOOL = number;
-
-/**
- * Windows.Win32.NetworkManagement.Ndis.DOT11_PORT_STATE (size: 24)
- */
-export interface DOT11_PORT_STATE {
-  /** array */
-  PeerMacAddress: Deno.PointerValue | null;
-  /** u32 */
-  uSessionId: number;
-  /** Windows.Win32.Foundation.BOOL */
-  bPortControlled: boolean;
-  /** Windows.Win32.Foundation.BOOL */
-  bPortAuthorized: boolean;
-}
-
-export const sizeofDOT11_PORT_STATE = 24;
-
-export function allocDOT11_PORT_STATE(data?: Partial<DOT11_PORT_STATE>): Uint8Array {
-  const buf = new Uint8Array(sizeofDOT11_PORT_STATE);
-  const view = new DataView(buf.buffer);
-  // 0x00: pointer
-  if (data?.PeerMacAddress !== undefined) view.setBigUint64(0, data.PeerMacAddress === null ? 0n : BigInt(util.toPointer(data.PeerMacAddress)), true);
-  // 0x08: u32
-  if (data?.uSessionId !== undefined) view.setUint32(8, Number(data.uSessionId), true);
-  // 0x0c: i32
-  if (data?.bPortControlled !== undefined) view.setInt32(12, Number(data.bPortControlled), true);
-  // 0x10: i32
-  if (data?.bPortAuthorized !== undefined) view.setInt32(16, Number(data.bPortAuthorized), true);
-  // 0x14: pad4
-  return buf;
-}
-
-/**
- * Windows.Win32.NetworkManagement.Ndis.DOT11_SECURITY_PACKET_HEADER (size: 24)
- */
-export interface DOT11_SECURITY_PACKET_HEADER {
-  /** array */
-  PeerMac: Deno.PointerValue | null;
-  /** u16 */
-  usEtherType: number;
-  /** array */
-  Data: Deno.PointerValue | null;
-}
-
-export const sizeofDOT11_SECURITY_PACKET_HEADER = 24;
-
-export function allocDOT11_SECURITY_PACKET_HEADER(data?: Partial<DOT11_SECURITY_PACKET_HEADER>): Uint8Array {
-  const buf = new Uint8Array(sizeofDOT11_SECURITY_PACKET_HEADER);
-  const view = new DataView(buf.buffer);
-  // 0x00: pointer
-  if (data?.PeerMac !== undefined) view.setBigUint64(0, data.PeerMac === null ? 0n : BigInt(util.toPointer(data.PeerMac)), true);
-  // 0x08: u16
-  if (data?.usEtherType !== undefined) view.setUint16(8, Number(data.usEtherType), true);
-  // 0x0a: pad6
-  // 0x10: pointer
-  if (data?.Data !== undefined) view.setBigUint64(16, data.Data === null ? 0n : BigInt(util.toPointer(data.Data)), true);
-  return buf;
-}
-
-/**
- * Windows.Win32.Security.ExtensibleAuthenticationProtocol.EAP_TYPE (size: 16)
- */
-export interface EAP_TYPE {
-  /** u8 */
-  type: number;
-  /** u32 */
-  dwVendorId: number;
-  /** u32 */
-  dwVendorType: number;
-}
-
-export const sizeofEAP_TYPE = 16;
-
-export function allocEAP_TYPE(data?: Partial<EAP_TYPE>): Uint8Array {
-  const buf = new Uint8Array(sizeofEAP_TYPE);
-  const view = new DataView(buf.buffer);
-  // 0x00: u8
-  if (data?.type !== undefined) view.setUint8(0, Number(data.type));
-  // 0x01: u32
-  if (data?.dwVendorId !== undefined) view.setUint32(1, Number(data.dwVendorId), true);
-  // 0x05: u32
-  if (data?.dwVendorType !== undefined) view.setUint32(5, Number(data.dwVendorType), true);
-  // 0x09: pad7
-  return buf;
-}
-
-/**
- * Windows.Win32.Security.ExtensibleAuthenticationProtocol.EAP_METHOD_TYPE (size: 16)
- */
-export interface EAP_METHOD_TYPE {
-  /** Windows.Win32.Security.ExtensibleAuthenticationProtocol.EAP_TYPE */
-  eapType: Uint8Array | Deno.PointerValue | null;
-  /** u32 */
-  dwAuthorId: number;
-}
-
-export const sizeofEAP_METHOD_TYPE = 16;
-
-export function allocEAP_METHOD_TYPE(data?: Partial<EAP_METHOD_TYPE>): Uint8Array {
-  const buf = new Uint8Array(sizeofEAP_METHOD_TYPE);
-  const view = new DataView(buf.buffer);
-  // 0x00: pointer
-  if (data?.eapType !== undefined) view.setBigUint64(0, data.eapType === null ? 0n : BigInt(util.toPointer(data.eapType)), true);
-  // 0x08: u32
-  if (data?.dwAuthorId !== undefined) view.setUint32(8, Number(data.dwAuthorId), true);
-  // 0x0c: pad4
-  return buf;
-}
-
-/**
- * Windows.Win32.NetworkManagement.Ndis.DOT11_MSSECURITY_SETTINGS (size: 40)
- */
-export interface DOT11_MSSECURITY_SETTINGS {
-  /** Windows.Win32.NetworkManagement.WiFi.DOT11_AUTH_ALGORITHM */
-  dot11AuthAlgorithm: DOT11_AUTH_ALGORITHM;
-  /** Windows.Win32.NetworkManagement.WiFi.DOT11_CIPHER_ALGORITHM */
-  dot11CipherAlgorithm: DOT11_CIPHER_ALGORITHM;
-  /** Windows.Win32.Foundation.BOOL */
-  fOneXEnabled: boolean;
-  /** Windows.Win32.Security.ExtensibleAuthenticationProtocol.EAP_METHOD_TYPE */
-  eapMethodType: Uint8Array | Deno.PointerValue | null;
-  /** u32 */
-  dwEapConnectionDataLen: number;
-  /** ptr */
-  pEapConnectionData: Deno.PointerValue | Uint8Array | null;
-}
-
-export const sizeofDOT11_MSSECURITY_SETTINGS = 40;
-
-export function allocDOT11_MSSECURITY_SETTINGS(data?: Partial<DOT11_MSSECURITY_SETTINGS>): Uint8Array {
-  const buf = new Uint8Array(sizeofDOT11_MSSECURITY_SETTINGS);
-  const view = new DataView(buf.buffer);
-  // 0x00: i32
-  if (data?.dot11AuthAlgorithm !== undefined) view.setInt32(0, Number(data.dot11AuthAlgorithm), true);
-  // 0x04: i32
-  if (data?.dot11CipherAlgorithm !== undefined) view.setInt32(4, Number(data.dot11CipherAlgorithm), true);
-  // 0x08: i32
-  if (data?.fOneXEnabled !== undefined) view.setInt32(8, Number(data.fOneXEnabled), true);
-  // 0x0c: pad4
-  // 0x10: pointer
-  if (data?.eapMethodType !== undefined) view.setBigUint64(16, data.eapMethodType === null ? 0n : BigInt(util.toPointer(data.eapMethodType)), true);
-  // 0x18: u32
-  if (data?.dwEapConnectionDataLen !== undefined) view.setUint32(24, Number(data.dwEapConnectionDataLen), true);
-  // 0x1c: pad4
-  // 0x20: pointer
-  if (data?.pEapConnectionData !== undefined) view.setBigUint64(32, data.pEapConnectionData === null ? 0n : BigInt(util.toPointer(data.pEapConnectionData)), true);
-  return buf;
-}
-
-/**
- * Windows.Win32.NetworkManagement.Ndis.DOT11EXT_IHV_SSID_LIST (size: 16)
- */
-export interface DOT11EXT_IHV_SSID_LIST {
-  /** u32 */
-  ulCount: number;
-  /** array */
-  SSIDs: Deno.PointerValue | null;
-}
-
-export const sizeofDOT11EXT_IHV_SSID_LIST = 16;
-
-export function allocDOT11EXT_IHV_SSID_LIST(data?: Partial<DOT11EXT_IHV_SSID_LIST>): Uint8Array {
-  const buf = new Uint8Array(sizeofDOT11EXT_IHV_SSID_LIST);
-  const view = new DataView(buf.buffer);
-  // 0x00: u32
-  if (data?.ulCount !== undefined) view.setUint32(0, Number(data.ulCount), true);
-  // 0x04: pad4
-  // 0x08: pointer
-  if (data?.SSIDs !== undefined) view.setBigUint64(8, data.SSIDs === null ? 0n : BigInt(util.toPointer(data.SSIDs)), true);
-  return buf;
-}
-
-/**
- * Windows.Win32.NetworkManagement.Ndis.DOT11EXT_IHV_PROFILE_PARAMS (size: 24)
- */
-export interface DOT11EXT_IHV_PROFILE_PARAMS {
-  /** ptr */
-  pSsidList: Deno.PointerValue | Uint8Array | null;
-  /** Windows.Win32.NetworkManagement.WiFi.DOT11_BSS_TYPE */
-  BssType: DOT11_BSS_TYPE;
-  /** ptr */
-  pMSSecuritySettings: Deno.PointerValue | Uint8Array | null;
-}
-
-export const sizeofDOT11EXT_IHV_PROFILE_PARAMS = 24;
-
-export function allocDOT11EXT_IHV_PROFILE_PARAMS(data?: Partial<DOT11EXT_IHV_PROFILE_PARAMS>): Uint8Array {
-  const buf = new Uint8Array(sizeofDOT11EXT_IHV_PROFILE_PARAMS);
-  const view = new DataView(buf.buffer);
-  // 0x00: pointer
-  if (data?.pSsidList !== undefined) view.setBigUint64(0, data.pSsidList === null ? 0n : BigInt(util.toPointer(data.pSsidList)), true);
-  // 0x08: i32
-  if (data?.BssType !== undefined) view.setInt32(8, Number(data.BssType), true);
-  // 0x0c: pad4
-  // 0x10: pointer
-  if (data?.pMSSecuritySettings !== undefined) view.setBigUint64(16, data.pMSSecuritySettings === null ? 0n : BigInt(util.toPointer(data.pMSSecuritySettings)), true);
-  return buf;
-}
-
-/**
- * Windows.Win32.NetworkManagement.Ndis.DOT11EXT_IHV_PARAMS (size: 32)
- */
-export interface DOT11EXT_IHV_PARAMS {
-  /** Windows.Win32.NetworkManagement.Ndis.DOT11EXT_IHV_PROFILE_PARAMS */
-  dot11ExtIhvProfileParams: Uint8Array | Deno.PointerValue | null;
-  /** array */
-  wstrProfileName: Deno.PointerValue | null;
-  /** u32 */
-  dwProfileTypeFlags: number;
-  /** System.Guid */
-  interfaceGuid: Uint8Array | Deno.PointerValue | null;
-}
-
-export const sizeofDOT11EXT_IHV_PARAMS = 32;
-
-export function allocDOT11EXT_IHV_PARAMS(data?: Partial<DOT11EXT_IHV_PARAMS>): Uint8Array {
-  const buf = new Uint8Array(sizeofDOT11EXT_IHV_PARAMS);
-  const view = new DataView(buf.buffer);
-  // 0x00: pointer
-  if (data?.dot11ExtIhvProfileParams !== undefined) view.setBigUint64(0, data.dot11ExtIhvProfileParams === null ? 0n : BigInt(util.toPointer(data.dot11ExtIhvProfileParams)), true);
-  // 0x08: pointer
-  if (data?.wstrProfileName !== undefined) view.setBigUint64(8, data.wstrProfileName === null ? 0n : BigInt(util.toPointer(data.wstrProfileName)), true);
-  // 0x10: u32
-  if (data?.dwProfileTypeFlags !== undefined) view.setUint32(16, Number(data.dwProfileTypeFlags), true);
-  // 0x14: pad4
-  // 0x18: pointer
-  if (data?.interfaceGuid !== undefined) view.setBigUint64(24, data.interfaceGuid === null ? 0n : BigInt(util.toPointer(data.interfaceGuid)), true);
-  return buf;
-}
-
-/**
- * Windows.Win32.NetworkManagement.Ndis.DOT11_IHV_VERSION_INFO (size: 8)
- */
-export interface DOT11_IHV_VERSION_INFO {
-  /** u32 */
-  dwVerMin: number;
-  /** u32 */
-  dwVerMax: number;
-}
-
-export const sizeofDOT11_IHV_VERSION_INFO = 8;
-
-export function allocDOT11_IHV_VERSION_INFO(data?: Partial<DOT11_IHV_VERSION_INFO>): Uint8Array {
-  const buf = new Uint8Array(sizeofDOT11_IHV_VERSION_INFO);
-  const view = new DataView(buf.buffer);
-  // 0x00: u32
-  if (data?.dwVerMin !== undefined) view.setUint32(0, Number(data.dwVerMin), true);
-  // 0x04: u32
-  if (data?.dwVerMax !== undefined) view.setUint32(4, Number(data.dwVerMax), true);
-  return buf;
-}
-
-/**
- * Windows.Win32.NetworkManagement.Ndis.DOT11EXT_IHV_UI_REQUEST (size: 40)
- */
-export interface DOT11EXT_IHV_UI_REQUEST {
-  /** u32 */
-  dwSessionId: number;
-  /** System.Guid */
-  guidUIRequest: Uint8Array | Deno.PointerValue | null;
-  /** System.Guid */
-  UIPageClsid: Uint8Array | Deno.PointerValue | null;
-  /** u32 */
-  dwByteCount: number;
-  /** ptr */
-  pvUIRequest: Deno.PointerValue | Uint8Array | null;
-}
-
-export const sizeofDOT11EXT_IHV_UI_REQUEST = 40;
-
-export function allocDOT11EXT_IHV_UI_REQUEST(data?: Partial<DOT11EXT_IHV_UI_REQUEST>): Uint8Array {
-  const buf = new Uint8Array(sizeofDOT11EXT_IHV_UI_REQUEST);
-  const view = new DataView(buf.buffer);
-  // 0x00: u32
-  if (data?.dwSessionId !== undefined) view.setUint32(0, Number(data.dwSessionId), true);
-  // 0x04: pad4
-  // 0x08: pointer
-  if (data?.guidUIRequest !== undefined) view.setBigUint64(8, data.guidUIRequest === null ? 0n : BigInt(util.toPointer(data.guidUIRequest)), true);
-  // 0x10: pointer
-  if (data?.UIPageClsid !== undefined) view.setBigUint64(16, data.UIPageClsid === null ? 0n : BigInt(util.toPointer(data.UIPageClsid)), true);
-  // 0x18: u32
-  if (data?.dwByteCount !== undefined) view.setUint32(24, Number(data.dwByteCount), true);
-  // 0x1c: pad4
-  // 0x20: pointer
-  if (data?.pvUIRequest !== undefined) view.setBigUint64(32, data.pvUIRequest === null ? 0n : BigInt(util.toPointer(data.pvUIRequest)), true);
-  return buf;
-}
-
-/**
- * Windows.Win32.NetworkManagement.Ndis.DOT11_EAP_RESULT (size: 16)
- */
-export interface DOT11_EAP_RESULT {
-  /** u32 */
-  dwFailureReasonCode: number;
-  /** ptr */
-  pAttribArray: Deno.PointerValue | Uint8Array | null;
-}
-
-export const sizeofDOT11_EAP_RESULT = 16;
-
-export function allocDOT11_EAP_RESULT(data?: Partial<DOT11_EAP_RESULT>): Uint8Array {
-  const buf = new Uint8Array(sizeofDOT11_EAP_RESULT);
-  const view = new DataView(buf.buffer);
-  // 0x00: u32
-  if (data?.dwFailureReasonCode !== undefined) view.setUint32(0, Number(data.dwFailureReasonCode), true);
-  // 0x04: pad4
-  // 0x08: pointer
-  if (data?.pAttribArray !== undefined) view.setBigUint64(8, data.pAttribArray === null ? 0n : BigInt(util.toPointer(data.pAttribArray)), true);
-  return buf;
-}
-
-/**
- * Windows.Win32.NetworkManagement.Ndis.DOT11_MSONEX_RESULT_PARAMS (size: 48)
- */
-export interface DOT11_MSONEX_RESULT_PARAMS {
-  /** Windows.Win32.NetworkManagement.WiFi.ONEX_AUTH_STATUS */
-  Dot11OnexAuthStatus: ONEX_AUTH_STATUS;
-  /** Windows.Win32.NetworkManagement.WiFi.ONEX_REASON_CODE */
-  Dot11OneXReasonCode: ONEX_REASON_CODE;
-  /** ptr */
-  pbMPPESendKey: Deno.PointerValue | Uint8Array | null;
-  /** u32 */
-  dwMPPESendKeyLen: number;
-  /** ptr */
-  pbMPPERecvKey: Deno.PointerValue | Uint8Array | null;
-  /** u32 */
-  dwMPPERecvKeyLen: number;
-  /** ptr */
-  pDot11EapResult: Deno.PointerValue | Uint8Array | null;
-}
-
-export const sizeofDOT11_MSONEX_RESULT_PARAMS = 48;
-
-export function allocDOT11_MSONEX_RESULT_PARAMS(data?: Partial<DOT11_MSONEX_RESULT_PARAMS>): Uint8Array {
-  const buf = new Uint8Array(sizeofDOT11_MSONEX_RESULT_PARAMS);
-  const view = new DataView(buf.buffer);
-  // 0x00: i32
-  if (data?.Dot11OnexAuthStatus !== undefined) view.setInt32(0, Number(data.Dot11OnexAuthStatus), true);
-  // 0x04: i32
-  if (data?.Dot11OneXReasonCode !== undefined) view.setInt32(4, Number(data.Dot11OneXReasonCode), true);
-  // 0x08: pointer
-  if (data?.pbMPPESendKey !== undefined) view.setBigUint64(8, data.pbMPPESendKey === null ? 0n : BigInt(util.toPointer(data.pbMPPESendKey)), true);
-  // 0x10: u32
-  if (data?.dwMPPESendKeyLen !== undefined) view.setUint32(16, Number(data.dwMPPESendKeyLen), true);
-  // 0x14: pad4
-  // 0x18: pointer
-  if (data?.pbMPPERecvKey !== undefined) view.setBigUint64(24, data.pbMPPERecvKey === null ? 0n : BigInt(util.toPointer(data.pbMPPERecvKey)), true);
-  // 0x20: u32
-  if (data?.dwMPPERecvKeyLen !== undefined) view.setUint32(32, Number(data.dwMPPERecvKeyLen), true);
-  // 0x24: pad4
-  // 0x28: pointer
-  if (data?.pDot11EapResult !== undefined) view.setBigUint64(40, data.pDot11EapResult === null ? 0n : BigInt(util.toPointer(data.pDot11EapResult)), true);
-  return buf;
-}
-
-/**
- * Windows.Win32.NetworkManagement.Ndis.DOT11EXT_IHV_CONNECTIVITY_PROFILE (size: 8)
- */
-export interface DOT11EXT_IHV_CONNECTIVITY_PROFILE {
-  /** Windows.Win32.Foundation.PWSTR */
-  pszXmlFragmentIhvConnectivity: string | null;
-}
-
-export const sizeofDOT11EXT_IHV_CONNECTIVITY_PROFILE = 8;
-
-export function allocDOT11EXT_IHV_CONNECTIVITY_PROFILE(data?: Partial<DOT11EXT_IHV_CONNECTIVITY_PROFILE>): Uint8Array {
-  const buf = new Uint8Array(sizeofDOT11EXT_IHV_CONNECTIVITY_PROFILE);
-  const view = new DataView(buf.buffer);
-  // 0x00: buffer
-  if (data?.pszXmlFragmentIhvConnectivity !== undefined) {
-    (buf as any)._f0 = util.pwstrToFfi(data.pszXmlFragmentIhvConnectivity);
-    view.setBigUint64(0, (buf as any)._f0 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f0)), true);
-  }
-  return buf;
-}
-
-/**
- * Windows.Win32.NetworkManagement.Ndis.DOT11EXT_IHV_SECURITY_PROFILE (size: 16)
- */
-export interface DOT11EXT_IHV_SECURITY_PROFILE {
-  /** Windows.Win32.Foundation.PWSTR */
-  pszXmlFragmentIhvSecurity: string | null;
-  /** Windows.Win32.Foundation.BOOL */
-  bUseMSOnex: boolean;
-}
-
-export const sizeofDOT11EXT_IHV_SECURITY_PROFILE = 16;
-
-export function allocDOT11EXT_IHV_SECURITY_PROFILE(data?: Partial<DOT11EXT_IHV_SECURITY_PROFILE>): Uint8Array {
-  const buf = new Uint8Array(sizeofDOT11EXT_IHV_SECURITY_PROFILE);
-  const view = new DataView(buf.buffer);
-  // 0x00: buffer
-  if (data?.pszXmlFragmentIhvSecurity !== undefined) {
-    (buf as any)._f0 = util.pwstrToFfi(data.pszXmlFragmentIhvSecurity);
-    view.setBigUint64(0, (buf as any)._f0 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f0)), true);
-  }
-  // 0x08: i32
-  if (data?.bUseMSOnex !== undefined) view.setInt32(8, Number(data.bUseMSOnex), true);
-  // 0x0c: pad4
-  return buf;
-}
-
-/**
- * Windows.Win32.NetworkManagement.Ndis.DOT11EXT_IHV_DISCOVERY_PROFILE (size: 16)
- */
-export interface DOT11EXT_IHV_DISCOVERY_PROFILE {
-  /** Windows.Win32.NetworkManagement.Ndis.DOT11EXT_IHV_CONNECTIVITY_PROFILE */
-  IhvConnectivityProfile: Uint8Array | Deno.PointerValue | null;
-  /** Windows.Win32.NetworkManagement.Ndis.DOT11EXT_IHV_SECURITY_PROFILE */
-  IhvSecurityProfile: Uint8Array | Deno.PointerValue | null;
-}
-
-export const sizeofDOT11EXT_IHV_DISCOVERY_PROFILE = 16;
-
-export function allocDOT11EXT_IHV_DISCOVERY_PROFILE(data?: Partial<DOT11EXT_IHV_DISCOVERY_PROFILE>): Uint8Array {
-  const buf = new Uint8Array(sizeofDOT11EXT_IHV_DISCOVERY_PROFILE);
-  const view = new DataView(buf.buffer);
-  // 0x00: pointer
-  if (data?.IhvConnectivityProfile !== undefined) view.setBigUint64(0, data.IhvConnectivityProfile === null ? 0n : BigInt(util.toPointer(data.IhvConnectivityProfile)), true);
-  // 0x08: pointer
-  if (data?.IhvSecurityProfile !== undefined) view.setBigUint64(8, data.IhvSecurityProfile === null ? 0n : BigInt(util.toPointer(data.IhvSecurityProfile)), true);
-  return buf;
-}
-
-/**
- * Windows.Win32.NetworkManagement.Ndis.DOT11EXT_IHV_DISCOVERY_PROFILE_LIST (size: 16)
- */
-export interface DOT11EXT_IHV_DISCOVERY_PROFILE_LIST {
-  /** u32 */
-  dwCount: number;
-  /** ptr */
-  pIhvDiscoveryProfiles: Deno.PointerValue | Uint8Array | null;
-}
-
-export const sizeofDOT11EXT_IHV_DISCOVERY_PROFILE_LIST = 16;
-
-export function allocDOT11EXT_IHV_DISCOVERY_PROFILE_LIST(data?: Partial<DOT11EXT_IHV_DISCOVERY_PROFILE_LIST>): Uint8Array {
-  const buf = new Uint8Array(sizeofDOT11EXT_IHV_DISCOVERY_PROFILE_LIST);
-  const view = new DataView(buf.buffer);
-  // 0x00: u32
-  if (data?.dwCount !== undefined) view.setUint32(0, Number(data.dwCount), true);
-  // 0x04: pad4
-  // 0x08: pointer
-  if (data?.pIhvDiscoveryProfiles !== undefined) view.setBigUint64(8, data.pIhvDiscoveryProfiles === null ? 0n : BigInt(util.toPointer(data.pIhvDiscoveryProfiles)), true);
-  return buf;
-}
-
-/**
- * Windows.Win32.NetworkManagement.WiFi.DOT11_SSID (size: 16)
- */
-export interface DOT11_SSID {
-  /** u32 */
-  uSSIDLength: number;
-  /** array */
-  ucSSID: Deno.PointerValue | null;
-}
-
-export const sizeofDOT11_SSID = 16;
-
-export function allocDOT11_SSID(data?: Partial<DOT11_SSID>): Uint8Array {
-  const buf = new Uint8Array(sizeofDOT11_SSID);
-  const view = new DataView(buf.buffer);
-  // 0x00: u32
-  if (data?.uSSIDLength !== undefined) view.setUint32(0, Number(data.uSSIDLength), true);
-  // 0x04: pad4
-  // 0x08: pointer
-  if (data?.ucSSID !== undefined) view.setBigUint64(8, data.ucSSID === null ? 0n : BigInt(util.toPointer(data.ucSSID)), true);
-  return buf;
-}
-
-/**
- * Windows.Win32.NetworkManagement.Ndis.DOT11EXT_VIRTUAL_STATION_AP_PROPERTY (size: 32)
- */
-export interface DOT11EXT_VIRTUAL_STATION_AP_PROPERTY {
-  /** Windows.Win32.NetworkManagement.WiFi.DOT11_SSID */
-  dot11SSID: Uint8Array | Deno.PointerValue | null;
-  /** Windows.Win32.NetworkManagement.WiFi.DOT11_AUTH_ALGORITHM */
-  dot11AuthAlgo: DOT11_AUTH_ALGORITHM;
-  /** Windows.Win32.NetworkManagement.WiFi.DOT11_CIPHER_ALGORITHM */
-  dot11CipherAlgo: DOT11_CIPHER_ALGORITHM;
-  /** Windows.Win32.Foundation.BOOL */
-  bIsPassPhrase: boolean;
-  /** u32 */
-  dwKeyLength: number;
-  /** array */
-  ucKeyData: Deno.PointerValue | null;
-}
-
-export const sizeofDOT11EXT_VIRTUAL_STATION_AP_PROPERTY = 32;
-
-export function allocDOT11EXT_VIRTUAL_STATION_AP_PROPERTY(data?: Partial<DOT11EXT_VIRTUAL_STATION_AP_PROPERTY>): Uint8Array {
-  const buf = new Uint8Array(sizeofDOT11EXT_VIRTUAL_STATION_AP_PROPERTY);
-  const view = new DataView(buf.buffer);
-  // 0x00: pointer
-  if (data?.dot11SSID !== undefined) view.setBigUint64(0, data.dot11SSID === null ? 0n : BigInt(util.toPointer(data.dot11SSID)), true);
-  // 0x08: i32
-  if (data?.dot11AuthAlgo !== undefined) view.setInt32(8, Number(data.dot11AuthAlgo), true);
-  // 0x0c: i32
-  if (data?.dot11CipherAlgo !== undefined) view.setInt32(12, Number(data.dot11CipherAlgo), true);
-  // 0x10: i32
-  if (data?.bIsPassPhrase !== undefined) view.setInt32(16, Number(data.bIsPassPhrase), true);
-  // 0x14: u32
-  if (data?.dwKeyLength !== undefined) view.setUint32(20, Number(data.dwKeyLength), true);
-  // 0x18: pointer
-  if (data?.ucKeyData !== undefined) view.setBigUint64(24, data.ucKeyData === null ? 0n : BigInt(util.toPointer(data.ucKeyData)), true);
-  return buf;
-}
-
-/**
- * Windows.Win32.NetworkManagement.Ndis.WDIAG_IHV_WLAN_ID (size: 32)
- */
-export interface WDIAG_IHV_WLAN_ID {
-  /** array */
-  strProfileName: Deno.PointerValue | null;
-  /** Windows.Win32.NetworkManagement.WiFi.DOT11_SSID */
-  Ssid: Uint8Array | Deno.PointerValue | null;
-  /** Windows.Win32.NetworkManagement.WiFi.DOT11_BSS_TYPE */
-  BssType: DOT11_BSS_TYPE;
-  /** u32 */
-  dwFlags: number;
-  /** u32 */
-  dwReasonCode: number;
-}
-
-export const sizeofWDIAG_IHV_WLAN_ID = 32;
-
-export function allocWDIAG_IHV_WLAN_ID(data?: Partial<WDIAG_IHV_WLAN_ID>): Uint8Array {
-  const buf = new Uint8Array(sizeofWDIAG_IHV_WLAN_ID);
-  const view = new DataView(buf.buffer);
-  // 0x00: pointer
-  if (data?.strProfileName !== undefined) view.setBigUint64(0, data.strProfileName === null ? 0n : BigInt(util.toPointer(data.strProfileName)), true);
-  // 0x08: pointer
-  if (data?.Ssid !== undefined) view.setBigUint64(8, data.Ssid === null ? 0n : BigInt(util.toPointer(data.Ssid)), true);
-  // 0x10: i32
-  if (data?.BssType !== undefined) view.setInt32(16, Number(data.BssType), true);
-  // 0x14: u32
-  if (data?.dwFlags !== undefined) view.setUint32(20, Number(data.dwFlags), true);
-  // 0x18: u32
-  if (data?.dwReasonCode !== undefined) view.setUint32(24, Number(data.dwReasonCode), true);
-  // 0x1c: pad4
-  return buf;
-}
-
-/**
- * Windows.Win32.NetworkManagement.Ndis.DOT11EXT_APIS (size: 176)
- */
-export interface DOT11EXT_APIS {
-  /** Windows.Win32.NetworkManagement.Ndis.DOT11EXT_ALLOCATE_BUFFER */
-  Dot11ExtAllocateBuffer: Uint8Array | Deno.PointerValue | null;
-  /** Windows.Win32.NetworkManagement.Ndis.DOT11EXT_FREE_BUFFER */
-  Dot11ExtFreeBuffer: Uint8Array | Deno.PointerValue | null;
-  /** Windows.Win32.NetworkManagement.Ndis.DOT11EXT_SET_PROFILE_CUSTOM_USER_DATA */
-  Dot11ExtSetProfileCustomUserData: Uint8Array | Deno.PointerValue | null;
-  /** Windows.Win32.NetworkManagement.Ndis.DOT11EXT_GET_PROFILE_CUSTOM_USER_DATA */
-  Dot11ExtGetProfileCustomUserData: Uint8Array | Deno.PointerValue | null;
-  /** Windows.Win32.NetworkManagement.Ndis.DOT11EXT_SET_CURRENT_PROFILE */
-  Dot11ExtSetCurrentProfile: Uint8Array | Deno.PointerValue | null;
-  /** Windows.Win32.NetworkManagement.Ndis.DOT11EXT_SEND_UI_REQUEST */
-  Dot11ExtSendUIRequest: Uint8Array | Deno.PointerValue | null;
-  /** Windows.Win32.NetworkManagement.Ndis.DOT11EXT_PRE_ASSOCIATE_COMPLETION */
-  Dot11ExtPreAssociateCompletion: Uint8Array | Deno.PointerValue | null;
-  /** Windows.Win32.NetworkManagement.Ndis.DOT11EXT_POST_ASSOCIATE_COMPLETION */
-  Dot11ExtPostAssociateCompletion: Uint8Array | Deno.PointerValue | null;
-  /** Windows.Win32.NetworkManagement.Ndis.DOT11EXT_SEND_NOTIFICATION */
-  Dot11ExtSendNotification: Uint8Array | Deno.PointerValue | null;
-  /** Windows.Win32.NetworkManagement.Ndis.DOT11EXT_SEND_PACKET */
-  Dot11ExtSendPacket: Uint8Array | Deno.PointerValue | null;
-  /** Windows.Win32.NetworkManagement.Ndis.DOT11EXT_SET_ETHERTYPE_HANDLING */
-  Dot11ExtSetEtherTypeHandling: Uint8Array | Deno.PointerValue | null;
-  /** Windows.Win32.NetworkManagement.Ndis.DOT11EXT_SET_AUTH_ALGORITHM */
-  Dot11ExtSetAuthAlgorithm: Uint8Array | Deno.PointerValue | null;
-  /** Windows.Win32.NetworkManagement.Ndis.DOT11EXT_SET_UNICAST_CIPHER_ALGORITHM */
-  Dot11ExtSetUnicastCipherAlgorithm: Uint8Array | Deno.PointerValue | null;
-  /** Windows.Win32.NetworkManagement.Ndis.DOT11EXT_SET_MULTICAST_CIPHER_ALGORITHM */
-  Dot11ExtSetMulticastCipherAlgorithm: Uint8Array | Deno.PointerValue | null;
-  /** Windows.Win32.NetworkManagement.Ndis.DOT11EXT_SET_DEFAULT_KEY */
-  Dot11ExtSetDefaultKey: Uint8Array | Deno.PointerValue | null;
-  /** Windows.Win32.NetworkManagement.Ndis.DOT11EXT_SET_KEY_MAPPING_KEY */
-  Dot11ExtSetKeyMappingKey: Uint8Array | Deno.PointerValue | null;
-  /** Windows.Win32.NetworkManagement.Ndis.DOT11EXT_SET_DEFAULT_KEY_ID */
-  Dot11ExtSetDefaultKeyId: Uint8Array | Deno.PointerValue | null;
-  /** Windows.Win32.NetworkManagement.Ndis.DOT11EXT_NIC_SPECIFIC_EXTENSION */
-  Dot11ExtNicSpecificExtension: Uint8Array | Deno.PointerValue | null;
-  /** Windows.Win32.NetworkManagement.Ndis.DOT11EXT_SET_EXCLUDE_UNENCRYPTED */
-  Dot11ExtSetExcludeUnencrypted: Uint8Array | Deno.PointerValue | null;
-  /** Windows.Win32.NetworkManagement.Ndis.DOT11EXT_ONEX_START */
-  Dot11ExtStartOneX: Uint8Array | Deno.PointerValue | null;
-  /** Windows.Win32.NetworkManagement.Ndis.DOT11EXT_ONEX_STOP */
-  Dot11ExtStopOneX: Uint8Array | Deno.PointerValue | null;
-  /** Windows.Win32.NetworkManagement.Ndis.DOT11EXT_PROCESS_ONEX_PACKET */
-  Dot11ExtProcessSecurityPacket: Uint8Array | Deno.PointerValue | null;
-}
-
-export const sizeofDOT11EXT_APIS = 176;
-
-export function allocDOT11EXT_APIS(data?: Partial<DOT11EXT_APIS>): Uint8Array {
-  const buf = new Uint8Array(sizeofDOT11EXT_APIS);
-  const view = new DataView(buf.buffer);
-  // 0x00: pointer
-  if (data?.Dot11ExtAllocateBuffer !== undefined) view.setBigUint64(0, data.Dot11ExtAllocateBuffer === null ? 0n : BigInt(util.toPointer(data.Dot11ExtAllocateBuffer)), true);
-  // 0x08: pointer
-  if (data?.Dot11ExtFreeBuffer !== undefined) view.setBigUint64(8, data.Dot11ExtFreeBuffer === null ? 0n : BigInt(util.toPointer(data.Dot11ExtFreeBuffer)), true);
-  // 0x10: pointer
-  if (data?.Dot11ExtSetProfileCustomUserData !== undefined) view.setBigUint64(16, data.Dot11ExtSetProfileCustomUserData === null ? 0n : BigInt(util.toPointer(data.Dot11ExtSetProfileCustomUserData)), true);
-  // 0x18: pointer
-  if (data?.Dot11ExtGetProfileCustomUserData !== undefined) view.setBigUint64(24, data.Dot11ExtGetProfileCustomUserData === null ? 0n : BigInt(util.toPointer(data.Dot11ExtGetProfileCustomUserData)), true);
-  // 0x20: pointer
-  if (data?.Dot11ExtSetCurrentProfile !== undefined) view.setBigUint64(32, data.Dot11ExtSetCurrentProfile === null ? 0n : BigInt(util.toPointer(data.Dot11ExtSetCurrentProfile)), true);
-  // 0x28: pointer
-  if (data?.Dot11ExtSendUIRequest !== undefined) view.setBigUint64(40, data.Dot11ExtSendUIRequest === null ? 0n : BigInt(util.toPointer(data.Dot11ExtSendUIRequest)), true);
-  // 0x30: pointer
-  if (data?.Dot11ExtPreAssociateCompletion !== undefined) view.setBigUint64(48, data.Dot11ExtPreAssociateCompletion === null ? 0n : BigInt(util.toPointer(data.Dot11ExtPreAssociateCompletion)), true);
-  // 0x38: pointer
-  if (data?.Dot11ExtPostAssociateCompletion !== undefined) view.setBigUint64(56, data.Dot11ExtPostAssociateCompletion === null ? 0n : BigInt(util.toPointer(data.Dot11ExtPostAssociateCompletion)), true);
-  // 0x40: pointer
-  if (data?.Dot11ExtSendNotification !== undefined) view.setBigUint64(64, data.Dot11ExtSendNotification === null ? 0n : BigInt(util.toPointer(data.Dot11ExtSendNotification)), true);
-  // 0x48: pointer
-  if (data?.Dot11ExtSendPacket !== undefined) view.setBigUint64(72, data.Dot11ExtSendPacket === null ? 0n : BigInt(util.toPointer(data.Dot11ExtSendPacket)), true);
-  // 0x50: pointer
-  if (data?.Dot11ExtSetEtherTypeHandling !== undefined) view.setBigUint64(80, data.Dot11ExtSetEtherTypeHandling === null ? 0n : BigInt(util.toPointer(data.Dot11ExtSetEtherTypeHandling)), true);
-  // 0x58: pointer
-  if (data?.Dot11ExtSetAuthAlgorithm !== undefined) view.setBigUint64(88, data.Dot11ExtSetAuthAlgorithm === null ? 0n : BigInt(util.toPointer(data.Dot11ExtSetAuthAlgorithm)), true);
-  // 0x60: pointer
-  if (data?.Dot11ExtSetUnicastCipherAlgorithm !== undefined) view.setBigUint64(96, data.Dot11ExtSetUnicastCipherAlgorithm === null ? 0n : BigInt(util.toPointer(data.Dot11ExtSetUnicastCipherAlgorithm)), true);
-  // 0x68: pointer
-  if (data?.Dot11ExtSetMulticastCipherAlgorithm !== undefined) view.setBigUint64(104, data.Dot11ExtSetMulticastCipherAlgorithm === null ? 0n : BigInt(util.toPointer(data.Dot11ExtSetMulticastCipherAlgorithm)), true);
-  // 0x70: pointer
-  if (data?.Dot11ExtSetDefaultKey !== undefined) view.setBigUint64(112, data.Dot11ExtSetDefaultKey === null ? 0n : BigInt(util.toPointer(data.Dot11ExtSetDefaultKey)), true);
-  // 0x78: pointer
-  if (data?.Dot11ExtSetKeyMappingKey !== undefined) view.setBigUint64(120, data.Dot11ExtSetKeyMappingKey === null ? 0n : BigInt(util.toPointer(data.Dot11ExtSetKeyMappingKey)), true);
-  // 0x80: pointer
-  if (data?.Dot11ExtSetDefaultKeyId !== undefined) view.setBigUint64(128, data.Dot11ExtSetDefaultKeyId === null ? 0n : BigInt(util.toPointer(data.Dot11ExtSetDefaultKeyId)), true);
-  // 0x88: pointer
-  if (data?.Dot11ExtNicSpecificExtension !== undefined) view.setBigUint64(136, data.Dot11ExtNicSpecificExtension === null ? 0n : BigInt(util.toPointer(data.Dot11ExtNicSpecificExtension)), true);
-  // 0x90: pointer
-  if (data?.Dot11ExtSetExcludeUnencrypted !== undefined) view.setBigUint64(144, data.Dot11ExtSetExcludeUnencrypted === null ? 0n : BigInt(util.toPointer(data.Dot11ExtSetExcludeUnencrypted)), true);
-  // 0x98: pointer
-  if (data?.Dot11ExtStartOneX !== undefined) view.setBigUint64(152, data.Dot11ExtStartOneX === null ? 0n : BigInt(util.toPointer(data.Dot11ExtStartOneX)), true);
-  // 0xa0: pointer
-  if (data?.Dot11ExtStopOneX !== undefined) view.setBigUint64(160, data.Dot11ExtStopOneX === null ? 0n : BigInt(util.toPointer(data.Dot11ExtStopOneX)), true);
-  // 0xa8: pointer
-  if (data?.Dot11ExtProcessSecurityPacket !== undefined) view.setBigUint64(168, data.Dot11ExtProcessSecurityPacket === null ? 0n : BigInt(util.toPointer(data.Dot11ExtProcessSecurityPacket)), true);
-  return buf;
-}
-
-/**
- * Windows.Win32.NetworkManagement.Ndis.DOT11EXT_IHV_HANDLERS (size: 152)
- */
-export interface DOT11EXT_IHV_HANDLERS {
-  /** Windows.Win32.NetworkManagement.Ndis.DOT11EXTIHV_DEINIT_SERVICE */
-  Dot11ExtIhvDeinitService: Uint8Array | Deno.PointerValue | null;
-  /** Windows.Win32.NetworkManagement.Ndis.DOT11EXTIHV_INIT_ADAPTER */
-  Dot11ExtIhvInitAdapter: Uint8Array | Deno.PointerValue | null;
-  /** Windows.Win32.NetworkManagement.Ndis.DOT11EXTIHV_DEINIT_ADAPTER */
-  Dot11ExtIhvDeinitAdapter: Uint8Array | Deno.PointerValue | null;
-  /** Windows.Win32.NetworkManagement.Ndis.DOT11EXTIHV_PERFORM_PRE_ASSOCIATE */
-  Dot11ExtIhvPerformPreAssociate: Uint8Array | Deno.PointerValue | null;
-  /** Windows.Win32.NetworkManagement.Ndis.DOT11EXTIHV_ADAPTER_RESET */
-  Dot11ExtIhvAdapterReset: Uint8Array | Deno.PointerValue | null;
-  /** Windows.Win32.NetworkManagement.Ndis.DOT11EXTIHV_PERFORM_POST_ASSOCIATE */
-  Dot11ExtIhvPerformPostAssociate: Uint8Array | Deno.PointerValue | null;
-  /** Windows.Win32.NetworkManagement.Ndis.DOT11EXTIHV_STOP_POST_ASSOCIATE */
-  Dot11ExtIhvStopPostAssociate: Uint8Array | Deno.PointerValue | null;
-  /** Windows.Win32.NetworkManagement.Ndis.DOT11EXTIHV_VALIDATE_PROFILE */
-  Dot11ExtIhvValidateProfile: Uint8Array | Deno.PointerValue | null;
-  /** Windows.Win32.NetworkManagement.Ndis.DOT11EXTIHV_PERFORM_CAPABILITY_MATCH */
-  Dot11ExtIhvPerformCapabilityMatch: Uint8Array | Deno.PointerValue | null;
-  /** Windows.Win32.NetworkManagement.Ndis.DOT11EXTIHV_CREATE_DISCOVERY_PROFILES */
-  Dot11ExtIhvCreateDiscoveryProfiles: Uint8Array | Deno.PointerValue | null;
-  /** Windows.Win32.NetworkManagement.Ndis.DOT11EXTIHV_PROCESS_SESSION_CHANGE */
-  Dot11ExtIhvProcessSessionChange: Uint8Array | Deno.PointerValue | null;
-  /** Windows.Win32.NetworkManagement.Ndis.DOT11EXTIHV_RECEIVE_INDICATION */
-  Dot11ExtIhvReceiveIndication: Uint8Array | Deno.PointerValue | null;
-  /** Windows.Win32.NetworkManagement.Ndis.DOT11EXTIHV_RECEIVE_PACKET */
-  Dot11ExtIhvReceivePacket: Uint8Array | Deno.PointerValue | null;
-  /** Windows.Win32.NetworkManagement.Ndis.DOT11EXTIHV_SEND_PACKET_COMPLETION */
-  Dot11ExtIhvSendPacketCompletion: Uint8Array | Deno.PointerValue | null;
-  /** Windows.Win32.NetworkManagement.Ndis.DOT11EXTIHV_IS_UI_REQUEST_PENDING */
-  Dot11ExtIhvIsUIRequestPending: Uint8Array | Deno.PointerValue | null;
-  /** Windows.Win32.NetworkManagement.Ndis.DOT11EXTIHV_PROCESS_UI_RESPONSE */
-  Dot11ExtIhvProcessUIResponse: Uint8Array | Deno.PointerValue | null;
-  /** Windows.Win32.NetworkManagement.Ndis.DOT11EXTIHV_QUERY_UI_REQUEST */
-  Dot11ExtIhvQueryUIRequest: Uint8Array | Deno.PointerValue | null;
-  /** Windows.Win32.NetworkManagement.Ndis.DOT11EXTIHV_ONEX_INDICATE_RESULT */
-  Dot11ExtIhvOnexIndicateResult: Uint8Array | Deno.PointerValue | null;
-  /** Windows.Win32.NetworkManagement.Ndis.DOT11EXTIHV_CONTROL */
-  Dot11ExtIhvControl: Uint8Array | Deno.PointerValue | null;
-}
-
-export const sizeofDOT11EXT_IHV_HANDLERS = 152;
-
-export function allocDOT11EXT_IHV_HANDLERS(data?: Partial<DOT11EXT_IHV_HANDLERS>): Uint8Array {
-  const buf = new Uint8Array(sizeofDOT11EXT_IHV_HANDLERS);
-  const view = new DataView(buf.buffer);
-  // 0x00: pointer
-  if (data?.Dot11ExtIhvDeinitService !== undefined) view.setBigUint64(0, data.Dot11ExtIhvDeinitService === null ? 0n : BigInt(util.toPointer(data.Dot11ExtIhvDeinitService)), true);
-  // 0x08: pointer
-  if (data?.Dot11ExtIhvInitAdapter !== undefined) view.setBigUint64(8, data.Dot11ExtIhvInitAdapter === null ? 0n : BigInt(util.toPointer(data.Dot11ExtIhvInitAdapter)), true);
-  // 0x10: pointer
-  if (data?.Dot11ExtIhvDeinitAdapter !== undefined) view.setBigUint64(16, data.Dot11ExtIhvDeinitAdapter === null ? 0n : BigInt(util.toPointer(data.Dot11ExtIhvDeinitAdapter)), true);
-  // 0x18: pointer
-  if (data?.Dot11ExtIhvPerformPreAssociate !== undefined) view.setBigUint64(24, data.Dot11ExtIhvPerformPreAssociate === null ? 0n : BigInt(util.toPointer(data.Dot11ExtIhvPerformPreAssociate)), true);
-  // 0x20: pointer
-  if (data?.Dot11ExtIhvAdapterReset !== undefined) view.setBigUint64(32, data.Dot11ExtIhvAdapterReset === null ? 0n : BigInt(util.toPointer(data.Dot11ExtIhvAdapterReset)), true);
-  // 0x28: pointer
-  if (data?.Dot11ExtIhvPerformPostAssociate !== undefined) view.setBigUint64(40, data.Dot11ExtIhvPerformPostAssociate === null ? 0n : BigInt(util.toPointer(data.Dot11ExtIhvPerformPostAssociate)), true);
-  // 0x30: pointer
-  if (data?.Dot11ExtIhvStopPostAssociate !== undefined) view.setBigUint64(48, data.Dot11ExtIhvStopPostAssociate === null ? 0n : BigInt(util.toPointer(data.Dot11ExtIhvStopPostAssociate)), true);
-  // 0x38: pointer
-  if (data?.Dot11ExtIhvValidateProfile !== undefined) view.setBigUint64(56, data.Dot11ExtIhvValidateProfile === null ? 0n : BigInt(util.toPointer(data.Dot11ExtIhvValidateProfile)), true);
-  // 0x40: pointer
-  if (data?.Dot11ExtIhvPerformCapabilityMatch !== undefined) view.setBigUint64(64, data.Dot11ExtIhvPerformCapabilityMatch === null ? 0n : BigInt(util.toPointer(data.Dot11ExtIhvPerformCapabilityMatch)), true);
-  // 0x48: pointer
-  if (data?.Dot11ExtIhvCreateDiscoveryProfiles !== undefined) view.setBigUint64(72, data.Dot11ExtIhvCreateDiscoveryProfiles === null ? 0n : BigInt(util.toPointer(data.Dot11ExtIhvCreateDiscoveryProfiles)), true);
-  // 0x50: pointer
-  if (data?.Dot11ExtIhvProcessSessionChange !== undefined) view.setBigUint64(80, data.Dot11ExtIhvProcessSessionChange === null ? 0n : BigInt(util.toPointer(data.Dot11ExtIhvProcessSessionChange)), true);
-  // 0x58: pointer
-  if (data?.Dot11ExtIhvReceiveIndication !== undefined) view.setBigUint64(88, data.Dot11ExtIhvReceiveIndication === null ? 0n : BigInt(util.toPointer(data.Dot11ExtIhvReceiveIndication)), true);
-  // 0x60: pointer
-  if (data?.Dot11ExtIhvReceivePacket !== undefined) view.setBigUint64(96, data.Dot11ExtIhvReceivePacket === null ? 0n : BigInt(util.toPointer(data.Dot11ExtIhvReceivePacket)), true);
-  // 0x68: pointer
-  if (data?.Dot11ExtIhvSendPacketCompletion !== undefined) view.setBigUint64(104, data.Dot11ExtIhvSendPacketCompletion === null ? 0n : BigInt(util.toPointer(data.Dot11ExtIhvSendPacketCompletion)), true);
-  // 0x70: pointer
-  if (data?.Dot11ExtIhvIsUIRequestPending !== undefined) view.setBigUint64(112, data.Dot11ExtIhvIsUIRequestPending === null ? 0n : BigInt(util.toPointer(data.Dot11ExtIhvIsUIRequestPending)), true);
-  // 0x78: pointer
-  if (data?.Dot11ExtIhvProcessUIResponse !== undefined) view.setBigUint64(120, data.Dot11ExtIhvProcessUIResponse === null ? 0n : BigInt(util.toPointer(data.Dot11ExtIhvProcessUIResponse)), true);
-  // 0x80: pointer
-  if (data?.Dot11ExtIhvQueryUIRequest !== undefined) view.setBigUint64(128, data.Dot11ExtIhvQueryUIRequest === null ? 0n : BigInt(util.toPointer(data.Dot11ExtIhvQueryUIRequest)), true);
-  // 0x88: pointer
-  if (data?.Dot11ExtIhvOnexIndicateResult !== undefined) view.setBigUint64(136, data.Dot11ExtIhvOnexIndicateResult === null ? 0n : BigInt(util.toPointer(data.Dot11ExtIhvOnexIndicateResult)), true);
-  // 0x90: pointer
-  if (data?.Dot11ExtIhvControl !== undefined) view.setBigUint64(144, data.Dot11ExtIhvControl === null ? 0n : BigInt(util.toPointer(data.Dot11ExtIhvControl)), true);
-  return buf;
-}
-
-/**
- * Windows.Win32.NetworkManagement.Ndis.DOT11EXT_VIRTUAL_STATION_APIS (size: 32)
- */
-export interface DOT11EXT_VIRTUAL_STATION_APIS {
-  /** Windows.Win32.NetworkManagement.Ndis.DOT11EXT_REQUEST_VIRTUAL_STATION */
-  Dot11ExtRequestVirtualStation: Uint8Array | Deno.PointerValue | null;
-  /** Windows.Win32.NetworkManagement.Ndis.DOT11EXT_RELEASE_VIRTUAL_STATION */
-  Dot11ExtReleaseVirtualStation: Uint8Array | Deno.PointerValue | null;
-  /** Windows.Win32.NetworkManagement.Ndis.DOT11EXT_QUERY_VIRTUAL_STATION_PROPERTIES */
-  Dot11ExtQueryVirtualStationProperties: Uint8Array | Deno.PointerValue | null;
-  /** Windows.Win32.NetworkManagement.Ndis.DOT11EXT_SET_VIRTUAL_STATION_AP_PROPERTIES */
-  Dot11ExtSetVirtualStationAPProperties: Uint8Array | Deno.PointerValue | null;
-}
-
-export const sizeofDOT11EXT_VIRTUAL_STATION_APIS = 32;
-
-export function allocDOT11EXT_VIRTUAL_STATION_APIS(data?: Partial<DOT11EXT_VIRTUAL_STATION_APIS>): Uint8Array {
-  const buf = new Uint8Array(sizeofDOT11EXT_VIRTUAL_STATION_APIS);
-  const view = new DataView(buf.buffer);
-  // 0x00: pointer
-  if (data?.Dot11ExtRequestVirtualStation !== undefined) view.setBigUint64(0, data.Dot11ExtRequestVirtualStation === null ? 0n : BigInt(util.toPointer(data.Dot11ExtRequestVirtualStation)), true);
-  // 0x08: pointer
-  if (data?.Dot11ExtReleaseVirtualStation !== undefined) view.setBigUint64(8, data.Dot11ExtReleaseVirtualStation === null ? 0n : BigInt(util.toPointer(data.Dot11ExtReleaseVirtualStation)), true);
-  // 0x10: pointer
-  if (data?.Dot11ExtQueryVirtualStationProperties !== undefined) view.setBigUint64(16, data.Dot11ExtQueryVirtualStationProperties === null ? 0n : BigInt(util.toPointer(data.Dot11ExtQueryVirtualStationProperties)), true);
-  // 0x18: pointer
-  if (data?.Dot11ExtSetVirtualStationAPProperties !== undefined) view.setBigUint64(24, data.Dot11ExtSetVirtualStationAPProperties === null ? 0n : BigInt(util.toPointer(data.Dot11ExtSetVirtualStationAPProperties)), true);
   return buf;
 }
 

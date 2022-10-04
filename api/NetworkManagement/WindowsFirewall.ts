@@ -29,9 +29,9 @@ export type NETISO_FLAG = number;
 export type INET_FIREWALL_AC_CREATION_TYPE = number;
 export type INET_FIREWALL_AC_CHANGE_TYPE = number;
 export type NETISO_ERROR_TYPE = number;
-export type _tag_FW_DYNAMIC_KEYWORD_ORIGIN_TYPE = number;
-export type _tag_FW_DYNAMIC_KEYWORD_ADDRESS_FLAGS = number;
-export type _tag_FW_DYNAMIC_KEYWORD_ADDRESS_ENUM_FLAGS = number;
+export type FW_DYNAMIC_KEYWORD_ORIGIN_TYPE = number;
+export type FW_DYNAMIC_KEYWORD_ADDRESS_FLAGS = number;
+export type FW_DYNAMIC_KEYWORD_ADDRESS_ENUM_FLAGS = number;
 
 // Constants
 export const NETCON_MAX_NAME_LEN = 256;
@@ -431,9 +431,9 @@ export function allocINET_FIREWALL_APP_CONTAINER(data?: Partial<INET_FIREWALL_AP
 }
 
 /**
- * Windows.Win32.NetworkManagement.WindowsFirewall._tag_FW_DYNAMIC_KEYWORD_ADDRESS0 (size: 32)
+ * Windows.Win32.NetworkManagement.WindowsFirewall.FW_DYNAMIC_KEYWORD_ADDRESS0 (size: 32)
  */
-export interface _tag_FW_DYNAMIC_KEYWORD_ADDRESS0 {
+export interface FW_DYNAMIC_KEYWORD_ADDRESS0 {
   /** System.Guid */
   id: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.Foundation.PWSTR */
@@ -444,10 +444,10 @@ export interface _tag_FW_DYNAMIC_KEYWORD_ADDRESS0 {
   addresses: string | null;
 }
 
-export const sizeof_tag_FW_DYNAMIC_KEYWORD_ADDRESS0 = 32;
+export const sizeofFW_DYNAMIC_KEYWORD_ADDRESS0 = 32;
 
-export function alloc_tag_FW_DYNAMIC_KEYWORD_ADDRESS0(data?: Partial<_tag_FW_DYNAMIC_KEYWORD_ADDRESS0>): Uint8Array {
-  const buf = new Uint8Array(sizeof_tag_FW_DYNAMIC_KEYWORD_ADDRESS0);
+export function allocFW_DYNAMIC_KEYWORD_ADDRESS0(data?: Partial<FW_DYNAMIC_KEYWORD_ADDRESS0>): Uint8Array {
+  const buf = new Uint8Array(sizeofFW_DYNAMIC_KEYWORD_ADDRESS0);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
   if (data?.id !== undefined) view.setBigUint64(0, data.id === null ? 0n : BigInt(util.toPointer(data.id)), true);
@@ -468,23 +468,23 @@ export function alloc_tag_FW_DYNAMIC_KEYWORD_ADDRESS0(data?: Partial<_tag_FW_DYN
 }
 
 /**
- * Windows.Win32.NetworkManagement.WindowsFirewall._tag_FW_DYNAMIC_KEYWORD_ADDRESS_DATA0 (size: 24)
+ * Windows.Win32.NetworkManagement.WindowsFirewall.FW_DYNAMIC_KEYWORD_ADDRESS_DATA0 (size: 24)
  */
-export interface _tag_FW_DYNAMIC_KEYWORD_ADDRESS_DATA0 {
-  /** Windows.Win32.NetworkManagement.WindowsFirewall._tag_FW_DYNAMIC_KEYWORD_ADDRESS0 */
+export interface FW_DYNAMIC_KEYWORD_ADDRESS_DATA0 {
+  /** Windows.Win32.NetworkManagement.WindowsFirewall.FW_DYNAMIC_KEYWORD_ADDRESS0 */
   dynamicKeywordAddress: Uint8Array | Deno.PointerValue | null;
   /** ptr */
   next: Deno.PointerValue | Uint8Array | null;
   /** u16 */
   schemaVersion: number;
-  /** Windows.Win32.NetworkManagement.WindowsFirewall._tag_FW_DYNAMIC_KEYWORD_ORIGIN_TYPE */
-  originType: _tag_FW_DYNAMIC_KEYWORD_ORIGIN_TYPE;
+  /** Windows.Win32.NetworkManagement.WindowsFirewall.FW_DYNAMIC_KEYWORD_ORIGIN_TYPE */
+  originType: FW_DYNAMIC_KEYWORD_ORIGIN_TYPE;
 }
 
-export const sizeof_tag_FW_DYNAMIC_KEYWORD_ADDRESS_DATA0 = 24;
+export const sizeofFW_DYNAMIC_KEYWORD_ADDRESS_DATA0 = 24;
 
-export function alloc_tag_FW_DYNAMIC_KEYWORD_ADDRESS_DATA0(data?: Partial<_tag_FW_DYNAMIC_KEYWORD_ADDRESS_DATA0>): Uint8Array {
-  const buf = new Uint8Array(sizeof_tag_FW_DYNAMIC_KEYWORD_ADDRESS_DATA0);
+export function allocFW_DYNAMIC_KEYWORD_ADDRESS_DATA0(data?: Partial<FW_DYNAMIC_KEYWORD_ADDRESS_DATA0>): Uint8Array {
+  const buf = new Uint8Array(sizeofFW_DYNAMIC_KEYWORD_ADDRESS_DATA0);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
   if (data?.dynamicKeywordAddress !== undefined) view.setBigUint64(0, data.dynamicKeywordAddress === null ? 0n : BigInt(util.toPointer(data.dynamicKeywordAddress)), true);
@@ -498,7 +498,7 @@ export function alloc_tag_FW_DYNAMIC_KEYWORD_ADDRESS_DATA0(data?: Partial<_tag_F
   return buf;
 }
 
-export type PSID = Deno.PointerValue;
+export type PSID = Deno.PointerValue | Uint8Array | null;
 
 export type BOOL = number;
 
@@ -509,7 +509,7 @@ export type HANDLE = Deno.PointerValue;
 // Native Libraries
 
 try {
-  var libapi_ms_win_net_isolation_l1_1_0 = Deno.dlopen("api-ms-win-net-isolation-l1-1-0", {
+  var libapi_ms_win_net_isolation_l1_1_0_dll = Deno.dlopen("api-ms-win-net-isolation-l1-1-0.dll", {
     NetworkIsolationSetupAppContainerBinaries: {
       parameters: ["pointer", "buffer", "buffer", "buffer", "i32", "pointer", "u32"],
       result: "pointer",
@@ -556,7 +556,7 @@ export function NetworkIsolationSetupAppContainerBinaries(
   binaries: Deno.PointerValue | Uint8Array | null /* ptr */,
   binariesCount: number /* u32 */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libapi_ms_win_net_isolation_l1_1_0.NetworkIsolationSetupAppContainerBinaries(util.toPointer(applicationContainerSid), util.pwstrToFfi(packageFullName), util.pwstrToFfi(packageFolder), util.pwstrToFfi(displayName), util.boolToFfi(bBinariesFullyComputed), util.toPointer(binaries), binariesCount));
+  return util.pointerFromFfi(libapi_ms_win_net_isolation_l1_1_0_dll.NetworkIsolationSetupAppContainerBinaries(util.toPointer(applicationContainerSid), util.pwstrToFfi(packageFullName), util.pwstrToFfi(packageFolder), util.pwstrToFfi(displayName), util.boolToFfi(bBinariesFullyComputed), util.toPointer(binaries), binariesCount));
 }
 
 export function NetworkIsolationRegisterForAppContainerChanges(
@@ -565,19 +565,19 @@ export function NetworkIsolationRegisterForAppContainerChanges(
   context: Deno.PointerValue | Uint8Array | null /* ptr */,
   registrationObject: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libapi_ms_win_net_isolation_l1_1_0.NetworkIsolationRegisterForAppContainerChanges(flags, util.toPointer(callback), util.toPointer(context), util.toPointer(registrationObject));
+  return libapi_ms_win_net_isolation_l1_1_0_dll.NetworkIsolationRegisterForAppContainerChanges(flags, util.toPointer(callback), util.toPointer(context), util.toPointer(registrationObject));
 }
 
 export function NetworkIsolationUnregisterForAppContainerChanges(
   registrationObject: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
 ): number /* u32 */ {
-  return libapi_ms_win_net_isolation_l1_1_0.NetworkIsolationUnregisterForAppContainerChanges(util.toPointer(registrationObject));
+  return libapi_ms_win_net_isolation_l1_1_0_dll.NetworkIsolationUnregisterForAppContainerChanges(util.toPointer(registrationObject));
 }
 
 export function NetworkIsolationFreeAppContainers(
   pPublicAppCs: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libapi_ms_win_net_isolation_l1_1_0.NetworkIsolationFreeAppContainers(util.toPointer(pPublicAppCs));
+  return libapi_ms_win_net_isolation_l1_1_0_dll.NetworkIsolationFreeAppContainers(util.toPointer(pPublicAppCs));
 }
 
 export function NetworkIsolationEnumAppContainers(
@@ -585,27 +585,27 @@ export function NetworkIsolationEnumAppContainers(
   pdwNumPublicAppCs: Deno.PointerValue | Uint8Array | null /* ptr */,
   ppPublicAppCs: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libapi_ms_win_net_isolation_l1_1_0.NetworkIsolationEnumAppContainers(Flags, util.toPointer(pdwNumPublicAppCs), util.toPointer(ppPublicAppCs));
+  return libapi_ms_win_net_isolation_l1_1_0_dll.NetworkIsolationEnumAppContainers(Flags, util.toPointer(pdwNumPublicAppCs), util.toPointer(ppPublicAppCs));
 }
 
 export function NetworkIsolationGetAppContainerConfig(
   pdwNumPublicAppCs: Deno.PointerValue | Uint8Array | null /* ptr */,
   appContainerSids: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libapi_ms_win_net_isolation_l1_1_0.NetworkIsolationGetAppContainerConfig(util.toPointer(pdwNumPublicAppCs), util.toPointer(appContainerSids));
+  return libapi_ms_win_net_isolation_l1_1_0_dll.NetworkIsolationGetAppContainerConfig(util.toPointer(pdwNumPublicAppCs), util.toPointer(appContainerSids));
 }
 
 export function NetworkIsolationSetAppContainerConfig(
   dwNumPublicAppCs: number /* u32 */,
   appContainerSids: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libapi_ms_win_net_isolation_l1_1_0.NetworkIsolationSetAppContainerConfig(dwNumPublicAppCs, util.toPointer(appContainerSids));
+  return libapi_ms_win_net_isolation_l1_1_0_dll.NetworkIsolationSetAppContainerConfig(dwNumPublicAppCs, util.toPointer(appContainerSids));
 }
 
 export function NetworkIsolationDiagnoseConnectFailureAndGetInfo(
   wszServerName: string | null /* Windows.Win32.Foundation.PWSTR */,
   netIsoError: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libapi_ms_win_net_isolation_l1_1_0.NetworkIsolationDiagnoseConnectFailureAndGetInfo(util.pwstrToFfi(wszServerName), util.toPointer(netIsoError));
+  return libapi_ms_win_net_isolation_l1_1_0_dll.NetworkIsolationDiagnoseConnectFailureAndGetInfo(util.pwstrToFfi(wszServerName), util.toPointer(netIsoError));
 }
 

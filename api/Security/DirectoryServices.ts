@@ -24,7 +24,7 @@ export type HWND = Deno.PointerValue;
 // Native Libraries
 
 try {
-  var libDSSEC = Deno.dlopen("DSSEC", {
+  var libDSSEC_dll = Deno.dlopen("DSSEC.dll", {
     DSCreateISecurityInfoObject: {
       parameters: ["buffer", "buffer", "u32", "pointer", "pointer", "pointer", "pointer"],
       result: "pointer",
@@ -55,7 +55,7 @@ export function DSCreateISecurityInfoObject(
   pfnWriteSD: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Security.DirectoryServices.PFNWRITEOBJECTSECURITY */,
   lpContext: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.LPARAM */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libDSSEC.DSCreateISecurityInfoObject(util.pwstrToFfi(pwszObjectPath), util.pwstrToFfi(pwszObjectClass), dwFlags, util.toPointer(ppSI), util.toPointer(pfnReadSD), util.toPointer(pfnWriteSD), util.toPointer(lpContext)));
+  return util.pointerFromFfi(libDSSEC_dll.DSCreateISecurityInfoObject(util.pwstrToFfi(pwszObjectPath), util.pwstrToFfi(pwszObjectClass), dwFlags, util.toPointer(ppSI), util.toPointer(pfnReadSD), util.toPointer(pfnWriteSD), util.toPointer(lpContext)));
 }
 
 export function DSCreateISecurityInfoObjectEx(
@@ -70,7 +70,7 @@ export function DSCreateISecurityInfoObjectEx(
   pfnWriteSD: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Security.DirectoryServices.PFNWRITEOBJECTSECURITY */,
   lpContext: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.LPARAM */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libDSSEC.DSCreateISecurityInfoObjectEx(util.pwstrToFfi(pwszObjectPath), util.pwstrToFfi(pwszObjectClass), util.pwstrToFfi(pwszServer), util.pwstrToFfi(pwszUserName), util.pwstrToFfi(pwszPassword), dwFlags, util.toPointer(ppSI), util.toPointer(pfnReadSD), util.toPointer(pfnWriteSD), util.toPointer(lpContext)));
+  return util.pointerFromFfi(libDSSEC_dll.DSCreateISecurityInfoObjectEx(util.pwstrToFfi(pwszObjectPath), util.pwstrToFfi(pwszObjectClass), util.pwstrToFfi(pwszServer), util.pwstrToFfi(pwszUserName), util.pwstrToFfi(pwszPassword), dwFlags, util.toPointer(ppSI), util.toPointer(pfnReadSD), util.toPointer(pfnWriteSD), util.toPointer(lpContext)));
 }
 
 export function DSCreateSecurityPage(
@@ -82,7 +82,7 @@ export function DSCreateSecurityPage(
   pfnWriteSD: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Security.DirectoryServices.PFNWRITEOBJECTSECURITY */,
   lpContext: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.LPARAM */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libDSSEC.DSCreateSecurityPage(util.pwstrToFfi(pwszObjectPath), util.pwstrToFfi(pwszObjectClass), dwFlags, util.toPointer(phPage), util.toPointer(pfnReadSD), util.toPointer(pfnWriteSD), util.toPointer(lpContext)));
+  return util.pointerFromFfi(libDSSEC_dll.DSCreateSecurityPage(util.pwstrToFfi(pwszObjectPath), util.pwstrToFfi(pwszObjectClass), dwFlags, util.toPointer(phPage), util.toPointer(pfnReadSD), util.toPointer(pfnWriteSD), util.toPointer(lpContext)));
 }
 
 export function DSEditSecurity(
@@ -95,6 +95,6 @@ export function DSEditSecurity(
   pfnWriteSD: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Security.DirectoryServices.PFNWRITEOBJECTSECURITY */,
   lpContext: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.LPARAM */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libDSSEC.DSEditSecurity(util.hwndToFfi(hwndOwner), util.pwstrToFfi(pwszObjectPath), util.pwstrToFfi(pwszObjectClass), dwFlags, util.pwstrToFfi(pwszCaption), util.toPointer(pfnReadSD), util.toPointer(pfnWriteSD), util.toPointer(lpContext)));
+  return util.pointerFromFfi(libDSSEC_dll.DSEditSecurity(util.hwndToFfi(hwndOwner), util.pwstrToFfi(pwszObjectPath), util.pwstrToFfi(pwszObjectClass), dwFlags, util.pwstrToFfi(pwszCaption), util.toPointer(pfnReadSD), util.toPointer(pfnWriteSD), util.toPointer(lpContext)));
 }
 

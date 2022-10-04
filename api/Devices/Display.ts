@@ -19,6 +19,24 @@ export type MC_GAIN_TYPE = number;
 export type MC_POSITION_TYPE = number;
 export type MC_SIZE_TYPE = number;
 export type MC_COLOR_TEMPERATURE = number;
+export type DEVMODE_FIELD_FLAGS = number;
+export type DEVMODE_COLOR = number;
+export type DEVMODE_TRUETYPE_OPTION = number;
+export type DEVMODE_COLLATE = number;
+export type PAN_FAMILY_TYPE = number;
+export type PAN_SERIF_STYLE = number;
+export type PAN_WEIGHT = number;
+export type PAN_PROPORTION = number;
+export type PAN_CONTRAST = number;
+export type PAN_STROKE_VARIATION = number;
+export type PAN_ARM_STYLE = number;
+export type PAN_LETT_FORM = number;
+export type PAN_MIDLINE = number;
+export type PAN_XHEIGHT = number;
+export type FONT_CHARSET = number;
+export type FONT_OUTPUT_PRECISION = number;
+export type FONT_CLIP_PRECISION = number;
+export type FONT_QUALITY = number;
 export type ENG_SYSTEM_ATTRIBUTE = number;
 export type ENG_DEVICE_ATTRIBUTE = number;
 export type VIDEO_WIN32K_CALLBACKS_PARAMS_TYPE = number;
@@ -39,6 +57,8 @@ export type ORIENTATION_PREFERENCE = number;
 
 // Constants
 export const INDIRECT_DISPLAY_INFO_FLAGS_CREATED_IDDCX_ADAPTER = 1;
+export const VIDEO_DEVICE_NAME = "DISPLAY%d";
+export const WVIDEO_DEVICE_NAME = "DISPLAY%d";
 export const IOCTL_VIDEO_DISABLE_VDM = 2293764;
 export const IOCTL_VIDEO_REGISTER_VDM = 2293768;
 export const IOCTL_VIDEO_SET_OUTPUT_DEVICE_POWER_STATE = 2293772;
@@ -153,6 +173,7 @@ export const BITMAP_BITS_WORD_ALIGN = 16;
 export const BITMAP_ARRAY_BYTE = 3;
 export const BITMAP_PLANES = 1;
 export const BITMAP_BITS_PIXEL = 1;
+export const DD_FULLSCREEN_VIDEO_DEVICE_NAME = "\Device\FSVideo";
 export const VIDEO_REASON_NONE = 0;
 export const VIDEO_REASON_POLICY1 = 1;
 export const VIDEO_REASON_POLICY2 = 2;
@@ -870,6 +891,217 @@ export const MC_COLOR_TEMPERATURE_8200K = 5;
 export const MC_COLOR_TEMPERATURE_9300K = 6;
 export const MC_COLOR_TEMPERATURE_10000K = 7;
 export const MC_COLOR_TEMPERATURE_11500K = 8;
+export const DM_SPECVERSION = 1025;
+export const DM_ORIENTATION = 1;
+export const DM_PAPERSIZE = 2;
+export const DM_PAPERLENGTH = 4;
+export const DM_PAPERWIDTH = 8;
+export const DM_SCALE = 16;
+export const DM_POSITION = 32;
+export const DM_NUP = 64;
+export const DM_DISPLAYORIENTATION = 128;
+export const DM_COPIES = 256;
+export const DM_DEFAULTSOURCE = 512;
+export const DM_PRINTQUALITY = 1024;
+export const DM_COLOR = 2048;
+export const DM_DUPLEX = 4096;
+export const DM_YRESOLUTION = 8192;
+export const DM_TTOPTION = 16384;
+export const DM_COLLATE = 32768;
+export const DM_FORMNAME = 65536;
+export const DM_LOGPIXELS = 131072;
+export const DM_BITSPERPEL = 262144;
+export const DM_PELSWIDTH = 524288;
+export const DM_PELSHEIGHT = 1048576;
+export const DM_DISPLAYFLAGS = 2097152;
+export const DM_DISPLAYFREQUENCY = 4194304;
+export const DM_ICMMETHOD = 8388608;
+export const DM_ICMINTENT = 16777216;
+export const DM_MEDIATYPE = 33554432;
+export const DM_DITHERTYPE = 67108864;
+export const DM_PANNINGWIDTH = 134217728;
+export const DM_PANNINGHEIGHT = 268435456;
+export const DM_DISPLAYFIXEDOUTPUT = 536870912;
+export const DM_INTERLACED = 2;
+export const DM_UPDATE = 1;
+export const DM_COPY = 2;
+export const DM_PROMPT = 4;
+export const DM_MODIFY = 8;
+export const DM_IN_BUFFER = 8;
+export const DM_IN_PROMPT = 4;
+export const DM_OUT_BUFFER = 2;
+export const DM_OUT_DEFAULT = 1;
+export const DMCOLOR_MONOCHROME = 1;
+export const DMCOLOR_COLOR = 2;
+export const DMTT_BITMAP = 1;
+export const DMTT_DOWNLOAD = 2;
+export const DMTT_SUBDEV = 3;
+export const DMTT_DOWNLOAD_OUTLINE = 4;
+export const DMCOLLATE_FALSE = 0;
+export const DMCOLLATE_TRUE = 1;
+export const PAN_FAMILY_ANY = 0;
+export const PAN_FAMILY_NO_FIT = 1;
+export const PAN_FAMILY_TEXT_DISPLAY = 2;
+export const PAN_FAMILY_SCRIPT = 3;
+export const PAN_FAMILY_DECORATIVE = 4;
+export const PAN_FAMILY_PICTORIAL = 5;
+export const PAN_SERIF_ANY = 0;
+export const PAN_SERIF_NO_FIT = 1;
+export const PAN_SERIF_COVE = 2;
+export const PAN_SERIF_OBTUSE_COVE = 3;
+export const PAN_SERIF_SQUARE_COVE = 4;
+export const PAN_SERIF_OBTUSE_SQUARE_COVE = 5;
+export const PAN_SERIF_SQUARE = 6;
+export const PAN_SERIF_THIN = 7;
+export const PAN_SERIF_BONE = 8;
+export const PAN_SERIF_EXAGGERATED = 9;
+export const PAN_SERIF_TRIANGLE = 10;
+export const PAN_SERIF_NORMAL_SANS = 11;
+export const PAN_SERIF_OBTUSE_SANS = 12;
+export const PAN_SERIF_PERP_SANS = 13;
+export const PAN_SERIF_FLARED = 14;
+export const PAN_SERIF_ROUNDED = 15;
+export const PAN_WEIGHT_ANY = 0;
+export const PAN_WEIGHT_NO_FIT = 1;
+export const PAN_WEIGHT_INDEX = 2;
+export const PAN_WEIGHT_VERY_LIGHT = 2;
+export const PAN_WEIGHT_LIGHT = 3;
+export const PAN_WEIGHT_THIN = 4;
+export const PAN_WEIGHT_BOOK = 5;
+export const PAN_WEIGHT_MEDIUM = 6;
+export const PAN_WEIGHT_DEMI = 7;
+export const PAN_WEIGHT_BOLD = 8;
+export const PAN_WEIGHT_HEAVY = 9;
+export const PAN_WEIGHT_BLACK = 10;
+export const PAN_WEIGHT_NORD = 11;
+export const PAN_PROP_ANY = 0;
+export const PAN_PROP_NO_FIT = 1;
+export const PAN_PROP_OLD_STYLE = 2;
+export const PAN_PROP_MODERN = 3;
+export const PAN_PROP_EVEN_WIDTH = 4;
+export const PAN_PROP_EXPANDED = 5;
+export const PAN_PROP_CONDENSED = 6;
+export const PAN_PROP_VERY_EXPANDED = 7;
+export const PAN_PROP_VERY_CONDENSED = 8;
+export const PAN_PROP_MONOSPACED = 9;
+export const PAN_CONTRAST_ANY = 0;
+export const PAN_CONTRAST_NO_FIT = 1;
+export const PAN_CONTRAST_INDEX = 4;
+export const PAN_CONTRAST_NONE = 2;
+export const PAN_CONTRAST_VERY_LOW = 3;
+export const PAN_CONTRAST_LOW = 4;
+export const PAN_CONTRAST_MEDIUM_LOW = 5;
+export const PAN_CONTRAST_MEDIUM = 6;
+export const PAN_CONTRAST_MEDIUM_HIGH = 7;
+export const PAN_CONTRAST_HIGH = 8;
+export const PAN_CONTRAST_VERY_HIGH = 9;
+export const PAN_STROKE_ANY = 0;
+export const PAN_STROKE_NO_FIT = 1;
+export const PAN_STROKE_GRADUAL_DIAG = 2;
+export const PAN_STROKE_GRADUAL_TRAN = 3;
+export const PAN_STROKE_GRADUAL_VERT = 4;
+export const PAN_STROKE_GRADUAL_HORZ = 5;
+export const PAN_STROKE_RAPID_VERT = 6;
+export const PAN_STROKE_RAPID_HORZ = 7;
+export const PAN_STROKE_INSTANT_VERT = 8;
+export const PAN_ARM_ANY = 0;
+export const PAN_ARM_NO_FIT = 1;
+export const PAN_STRAIGHT_ARMS_HORZ = 2;
+export const PAN_STRAIGHT_ARMS_WEDGE = 3;
+export const PAN_STRAIGHT_ARMS_VERT = 4;
+export const PAN_STRAIGHT_ARMS_SINGLE_SERIF = 5;
+export const PAN_STRAIGHT_ARMS_DOUBLE_SERIF = 6;
+export const PAN_BENT_ARMS_HORZ = 7;
+export const PAN_BENT_ARMS_WEDGE = 8;
+export const PAN_BENT_ARMS_VERT = 9;
+export const PAN_BENT_ARMS_SINGLE_SERIF = 10;
+export const PAN_BENT_ARMS_DOUBLE_SERIF = 11;
+export const PAN_LETT_FORM_ANY = 0;
+export const PAN_LETT_FORM_NO_FIT = 1;
+export const PAN_LETT_NORMAL_CONTACT = 2;
+export const PAN_LETT_NORMAL_WEIGHTED = 3;
+export const PAN_LETT_NORMAL_BOXED = 4;
+export const PAN_LETT_NORMAL_FLATTENED = 5;
+export const PAN_LETT_NORMAL_ROUNDED = 6;
+export const PAN_LETT_NORMAL_OFF_CENTER = 7;
+export const PAN_LETT_NORMAL_SQUARE = 8;
+export const PAN_LETT_OBLIQUE_CONTACT = 9;
+export const PAN_LETT_OBLIQUE_WEIGHTED = 10;
+export const PAN_LETT_OBLIQUE_BOXED = 11;
+export const PAN_LETT_OBLIQUE_FLATTENED = 12;
+export const PAN_LETT_OBLIQUE_ROUNDED = 13;
+export const PAN_LETT_OBLIQUE_OFF_CENTER = 14;
+export const PAN_LETT_OBLIQUE_SQUARE = 15;
+export const PAN_MIDLINE_ANY = 0;
+export const PAN_MIDLINE_NO_FIT = 1;
+export const PAN_MIDLINE_INDEX = 8;
+export const PAN_MIDLINE_STANDARD_TRIMMED = 2;
+export const PAN_MIDLINE_STANDARD_POINTED = 3;
+export const PAN_MIDLINE_STANDARD_SERIFED = 4;
+export const PAN_MIDLINE_HIGH_TRIMMED = 5;
+export const PAN_MIDLINE_HIGH_POINTED = 6;
+export const PAN_MIDLINE_HIGH_SERIFED = 7;
+export const PAN_MIDLINE_CONSTANT_TRIMMED = 8;
+export const PAN_MIDLINE_CONSTANT_POINTED = 9;
+export const PAN_MIDLINE_CONSTANT_SERIFED = 10;
+export const PAN_MIDLINE_LOW_TRIMMED = 11;
+export const PAN_MIDLINE_LOW_POINTED = 12;
+export const PAN_MIDLINE_LOW_SERIFED = 13;
+export const PAN_XHEIGHT_ANY = 0;
+export const PAN_XHEIGHT_NO_FIT = 1;
+export const PAN_XHEIGHT_INDEX = 9;
+export const PAN_XHEIGHT_CONSTANT_SMALL = 2;
+export const PAN_XHEIGHT_CONSTANT_STD = 3;
+export const PAN_XHEIGHT_CONSTANT_LARGE = 4;
+export const PAN_XHEIGHT_DUCKING_SMALL = 5;
+export const PAN_XHEIGHT_DUCKING_STD = 6;
+export const PAN_XHEIGHT_DUCKING_LARGE = 7;
+export const ANSI_CHARSET = 0;
+export const DEFAULT_CHARSET = 1;
+export const SYMBOL_CHARSET = 2;
+export const SHIFTJIS_CHARSET = 128;
+export const HANGEUL_CHARSET = 129;
+export const HANGUL_CHARSET = 129;
+export const GB2312_CHARSET = 134;
+export const CHINESEBIG5_CHARSET = 136;
+export const OEM_CHARSET = 255;
+export const JOHAB_CHARSET = 130;
+export const HEBREW_CHARSET = 177;
+export const ARABIC_CHARSET = 178;
+export const GREEK_CHARSET = 161;
+export const TURKISH_CHARSET = 162;
+export const VIETNAMESE_CHARSET = 163;
+export const THAI_CHARSET = 222;
+export const EASTEUROPE_CHARSET = 238;
+export const RUSSIAN_CHARSET = 204;
+export const MAC_CHARSET = 77;
+export const BALTIC_CHARSET = 186;
+export const OUT_DEFAULT_PRECIS = 0;
+export const OUT_STRING_PRECIS = 1;
+export const OUT_CHARACTER_PRECIS = 2;
+export const OUT_STROKE_PRECIS = 3;
+export const OUT_TT_PRECIS = 4;
+export const OUT_DEVICE_PRECIS = 5;
+export const OUT_RASTER_PRECIS = 6;
+export const OUT_TT_ONLY_PRECIS = 7;
+export const OUT_OUTLINE_PRECIS = 8;
+export const OUT_SCREEN_OUTLINE_PRECIS = 9;
+export const OUT_PS_ONLY_PRECIS = 10;
+export const CLIP_DEFAULT_PRECIS = 0;
+export const CLIP_CHARACTER_PRECIS = 1;
+export const CLIP_STROKE_PRECIS = 2;
+export const CLIP_MASK = 15;
+export const CLIP_LH_ANGLES = 16;
+export const CLIP_TT_ALWAYS = 32;
+export const CLIP_DFA_DISABLE = 64;
+export const CLIP_EMBEDDED = 128;
+export const CLIP_DFA_OVERRIDE = 64;
+export const DEFAULT_QUALITY = 0;
+export const DRAFT_QUALITY = 1;
+export const PROOF_QUALITY = 2;
+export const NONANTIALIASED_QUALITY = 3;
+export const ANTIALIASED_QUALITY = 4;
+export const CLEARTYPE_QUALITY = 5;
 export const EngProcessorFeature = 1;
 export const EngNumberOfProcessors = 2;
 export const EngOptimumAvailableUserMemory = 3;
@@ -959,19 +1191,19 @@ export const ORIENTATION_PREFERENCE_PORTRAIT_FLIPPED = 8;
 // Structs
 
 /**
- * Windows.Win32.UI.Shell.PropertiesSystem.PROPERTYKEY (size: 16)
+ * Windows.Win32.Devices.Properties.DEVPROPKEY (size: 16)
  */
-export interface PROPERTYKEY {
+export interface DEVPROPKEY {
   /** System.Guid */
   fmtid: Uint8Array | Deno.PointerValue | null;
   /** u32 */
   pid: number;
 }
 
-export const sizeofPROPERTYKEY = 16;
+export const sizeofDEVPROPKEY = 16;
 
-export function allocPROPERTYKEY(data?: Partial<PROPERTYKEY>): Uint8Array {
-  const buf = new Uint8Array(sizeofPROPERTYKEY);
+export function allocDEVPROPKEY(data?: Partial<DEVPROPKEY>): Uint8Array {
+  const buf = new Uint8Array(sizeofDEVPROPKEY);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
   if (data?.fmtid !== undefined) view.setBigUint64(0, data.fmtid === null ? 0n : BigInt(util.toPointer(data.fmtid)), true);
@@ -2009,20 +2241,20 @@ export interface DEVMODEW {
   dmSize: number;
   /** u16 */
   dmDriverExtra: number;
-  /** u32 */
-  dmFields: number;
+  /** Windows.Win32.Graphics.Gdi.DEVMODE_FIELD_FLAGS */
+  dmFields: DEVMODE_FIELD_FLAGS;
   /** _Anonymous1_e__Union */
   Anonymous1: Uint8Array | Deno.PointerValue | null;
-  /** i16 */
-  dmColor: number;
+  /** Windows.Win32.Graphics.Gdi.DEVMODE_COLOR */
+  dmColor: DEVMODE_COLOR;
   /** i16 */
   dmDuplex: number;
   /** i16 */
   dmYResolution: number;
-  /** i16 */
-  dmTTOption: number;
-  /** i16 */
-  dmCollate: number;
+  /** Windows.Win32.Graphics.Gdi.DEVMODE_TRUETYPE_OPTION */
+  dmTTOption: DEVMODE_TRUETYPE_OPTION;
+  /** Windows.Win32.Graphics.Gdi.DEVMODE_COLLATE */
+  dmCollate: DEVMODE_COLLATE;
   /** array */
   dmFormName: Deno.PointerValue | null;
   /** u16 */
@@ -2075,17 +2307,16 @@ export function allocDEVMODEW(data?: Partial<DEVMODEW>): Uint8Array {
   // 0x14: pad4
   // 0x18: pointer
   if (data?.Anonymous1 !== undefined) view.setBigUint64(24, data.Anonymous1 === null ? 0n : BigInt(util.toPointer(data.Anonymous1)), true);
-  // 0x20: i16
-  if (data?.dmColor !== undefined) view.setInt16(32, Number(data.dmColor), true);
-  // 0x22: i16
-  if (data?.dmDuplex !== undefined) view.setInt16(34, Number(data.dmDuplex), true);
+  // 0x20: u32
+  if (data?.dmColor !== undefined) view.setUint32(32, Number(data.dmColor), true);
   // 0x24: i16
-  if (data?.dmYResolution !== undefined) view.setInt16(36, Number(data.dmYResolution), true);
+  if (data?.dmDuplex !== undefined) view.setInt16(36, Number(data.dmDuplex), true);
   // 0x26: i16
-  if (data?.dmTTOption !== undefined) view.setInt16(38, Number(data.dmTTOption), true);
-  // 0x28: i16
-  if (data?.dmCollate !== undefined) view.setInt16(40, Number(data.dmCollate), true);
-  // 0x2a: pad6
+  if (data?.dmYResolution !== undefined) view.setInt16(38, Number(data.dmYResolution), true);
+  // 0x28: u32
+  if (data?.dmTTOption !== undefined) view.setUint32(40, Number(data.dmTTOption), true);
+  // 0x2c: u32
+  if (data?.dmCollate !== undefined) view.setUint32(44, Number(data.dmCollate), true);
   // 0x30: pointer
   if (data?.dmFormName !== undefined) view.setBigUint64(48, data.dmFormName === null ? 0n : BigInt(util.toPointer(data.dmFormName)), true);
   // 0x38: u16
@@ -2318,6 +2549,467 @@ export function allocFLOAT_LONG(data?: Partial<FLOAT_LONG>): Uint8Array {
 }
 
 /**
+ * Windows.Win32.Devices.Display.FD_XFORM (size: 16)
+ */
+export interface FD_XFORM {
+  /** f32 */
+  eXX: number;
+  /** f32 */
+  eXY: number;
+  /** f32 */
+  eYX: number;
+  /** f32 */
+  eYY: number;
+}
+
+export const sizeofFD_XFORM = 16;
+
+export function allocFD_XFORM(data?: Partial<FD_XFORM>): Uint8Array {
+  const buf = new Uint8Array(sizeofFD_XFORM);
+  const view = new DataView(buf.buffer);
+  // 0x00: f32
+  if (data?.eXX !== undefined) view.setFloat32(0, Number(data.eXX), true);
+  // 0x04: f32
+  if (data?.eXY !== undefined) view.setFloat32(4, Number(data.eXY), true);
+  // 0x08: f32
+  if (data?.eYX !== undefined) view.setFloat32(8, Number(data.eYX), true);
+  // 0x0c: f32
+  if (data?.eYY !== undefined) view.setFloat32(12, Number(data.eYY), true);
+  return buf;
+}
+
+/**
+ * Windows.Win32.Graphics.Gdi.PANOSE (size: 40)
+ */
+export interface PANOSE {
+  /** Windows.Win32.Graphics.Gdi.PAN_FAMILY_TYPE */
+  bFamilyType: PAN_FAMILY_TYPE;
+  /** Windows.Win32.Graphics.Gdi.PAN_SERIF_STYLE */
+  bSerifStyle: PAN_SERIF_STYLE;
+  /** Windows.Win32.Graphics.Gdi.PAN_WEIGHT */
+  bWeight: PAN_WEIGHT;
+  /** Windows.Win32.Graphics.Gdi.PAN_PROPORTION */
+  bProportion: PAN_PROPORTION;
+  /** Windows.Win32.Graphics.Gdi.PAN_CONTRAST */
+  bContrast: PAN_CONTRAST;
+  /** Windows.Win32.Graphics.Gdi.PAN_STROKE_VARIATION */
+  bStrokeVariation: PAN_STROKE_VARIATION;
+  /** Windows.Win32.Graphics.Gdi.PAN_ARM_STYLE */
+  bArmStyle: PAN_ARM_STYLE;
+  /** Windows.Win32.Graphics.Gdi.PAN_LETT_FORM */
+  bLetterform: PAN_LETT_FORM;
+  /** Windows.Win32.Graphics.Gdi.PAN_MIDLINE */
+  bMidline: PAN_MIDLINE;
+  /** Windows.Win32.Graphics.Gdi.PAN_XHEIGHT */
+  bXHeight: PAN_XHEIGHT;
+}
+
+export const sizeofPANOSE = 40;
+
+export function allocPANOSE(data?: Partial<PANOSE>): Uint8Array {
+  const buf = new Uint8Array(sizeofPANOSE);
+  const view = new DataView(buf.buffer);
+  // 0x00: u32
+  if (data?.bFamilyType !== undefined) view.setUint32(0, Number(data.bFamilyType), true);
+  // 0x04: u32
+  if (data?.bSerifStyle !== undefined) view.setUint32(4, Number(data.bSerifStyle), true);
+  // 0x08: u32
+  if (data?.bWeight !== undefined) view.setUint32(8, Number(data.bWeight), true);
+  // 0x0c: u32
+  if (data?.bProportion !== undefined) view.setUint32(12, Number(data.bProportion), true);
+  // 0x10: u32
+  if (data?.bContrast !== undefined) view.setUint32(16, Number(data.bContrast), true);
+  // 0x14: u32
+  if (data?.bStrokeVariation !== undefined) view.setUint32(20, Number(data.bStrokeVariation), true);
+  // 0x18: u32
+  if (data?.bArmStyle !== undefined) view.setUint32(24, Number(data.bArmStyle), true);
+  // 0x1c: u32
+  if (data?.bLetterform !== undefined) view.setUint32(28, Number(data.bLetterform), true);
+  // 0x20: u32
+  if (data?.bMidline !== undefined) view.setUint32(32, Number(data.bMidline), true);
+  // 0x24: u32
+  if (data?.bXHeight !== undefined) view.setUint32(36, Number(data.bXHeight), true);
+  return buf;
+}
+
+/**
+ * Windows.Win32.Devices.Display.IFIMETRICS (size: 208)
+ */
+export interface IFIMETRICS {
+  /** u32 */
+  cjThis: number;
+  /** u32 */
+  cjIfiExtra: number;
+  /** i32 */
+  dpwszFamilyName: number;
+  /** i32 */
+  dpwszStyleName: number;
+  /** i32 */
+  dpwszFaceName: number;
+  /** i32 */
+  dpwszUniqueName: number;
+  /** i32 */
+  dpFontSim: number;
+  /** i32 */
+  lEmbedId: number;
+  /** i32 */
+  lItalicAngle: number;
+  /** i32 */
+  lCharBias: number;
+  /** i32 */
+  dpCharSets: number;
+  /** u8 */
+  jWinCharSet: number;
+  /** u8 */
+  jWinPitchAndFamily: number;
+  /** u16 */
+  usWinWeight: number;
+  /** u32 */
+  flInfo: number;
+  /** u16 */
+  fsSelection: number;
+  /** u16 */
+  fsType: number;
+  /** i16 */
+  fwdUnitsPerEm: number;
+  /** i16 */
+  fwdLowestPPEm: number;
+  /** i16 */
+  fwdWinAscender: number;
+  /** i16 */
+  fwdWinDescender: number;
+  /** i16 */
+  fwdMacAscender: number;
+  /** i16 */
+  fwdMacDescender: number;
+  /** i16 */
+  fwdMacLineGap: number;
+  /** i16 */
+  fwdTypoAscender: number;
+  /** i16 */
+  fwdTypoDescender: number;
+  /** i16 */
+  fwdTypoLineGap: number;
+  /** i16 */
+  fwdAveCharWidth: number;
+  /** i16 */
+  fwdMaxCharInc: number;
+  /** i16 */
+  fwdCapHeight: number;
+  /** i16 */
+  fwdXHeight: number;
+  /** i16 */
+  fwdSubscriptXSize: number;
+  /** i16 */
+  fwdSubscriptYSize: number;
+  /** i16 */
+  fwdSubscriptXOffset: number;
+  /** i16 */
+  fwdSubscriptYOffset: number;
+  /** i16 */
+  fwdSuperscriptXSize: number;
+  /** i16 */
+  fwdSuperscriptYSize: number;
+  /** i16 */
+  fwdSuperscriptXOffset: number;
+  /** i16 */
+  fwdSuperscriptYOffset: number;
+  /** i16 */
+  fwdUnderscoreSize: number;
+  /** i16 */
+  fwdUnderscorePosition: number;
+  /** i16 */
+  fwdStrikeoutSize: number;
+  /** i16 */
+  fwdStrikeoutPosition: number;
+  /** u8 */
+  chFirstChar: number;
+  /** u8 */
+  chLastChar: number;
+  /** u8 */
+  chDefaultChar: number;
+  /** u8 */
+  chBreakChar: number;
+  /** char */
+  wcFirstChar: Uint8Array | Deno.PointerValue | null;
+  /** char */
+  wcLastChar: Uint8Array | Deno.PointerValue | null;
+  /** char */
+  wcDefaultChar: Uint8Array | Deno.PointerValue | null;
+  /** char */
+  wcBreakChar: Uint8Array | Deno.PointerValue | null;
+  /** Windows.Win32.Foundation.POINTL */
+  ptlBaseline: Uint8Array | Deno.PointerValue | null;
+  /** Windows.Win32.Foundation.POINTL */
+  ptlAspect: Uint8Array | Deno.PointerValue | null;
+  /** Windows.Win32.Foundation.POINTL */
+  ptlCaret: Uint8Array | Deno.PointerValue | null;
+  /** Windows.Win32.Foundation.RECTL */
+  rclFontBox: Uint8Array | Deno.PointerValue | null;
+  /** array */
+  achVendId: Deno.PointerValue | null;
+  /** u32 */
+  cKerningPairs: number;
+  /** u32 */
+  ulPanoseCulture: number;
+  /** Windows.Win32.Graphics.Gdi.PANOSE */
+  panose: Uint8Array | Deno.PointerValue | null;
+  /** ptr */
+  Align: Deno.PointerValue | Uint8Array | null;
+}
+
+export const sizeofIFIMETRICS = 208;
+
+export function allocIFIMETRICS(data?: Partial<IFIMETRICS>): Uint8Array {
+  const buf = new Uint8Array(sizeofIFIMETRICS);
+  const view = new DataView(buf.buffer);
+  // 0x00: u32
+  if (data?.cjThis !== undefined) view.setUint32(0, Number(data.cjThis), true);
+  // 0x04: u32
+  if (data?.cjIfiExtra !== undefined) view.setUint32(4, Number(data.cjIfiExtra), true);
+  // 0x08: i32
+  if (data?.dpwszFamilyName !== undefined) view.setInt32(8, Number(data.dpwszFamilyName), true);
+  // 0x0c: i32
+  if (data?.dpwszStyleName !== undefined) view.setInt32(12, Number(data.dpwszStyleName), true);
+  // 0x10: i32
+  if (data?.dpwszFaceName !== undefined) view.setInt32(16, Number(data.dpwszFaceName), true);
+  // 0x14: i32
+  if (data?.dpwszUniqueName !== undefined) view.setInt32(20, Number(data.dpwszUniqueName), true);
+  // 0x18: i32
+  if (data?.dpFontSim !== undefined) view.setInt32(24, Number(data.dpFontSim), true);
+  // 0x1c: i32
+  if (data?.lEmbedId !== undefined) view.setInt32(28, Number(data.lEmbedId), true);
+  // 0x20: i32
+  if (data?.lItalicAngle !== undefined) view.setInt32(32, Number(data.lItalicAngle), true);
+  // 0x24: i32
+  if (data?.lCharBias !== undefined) view.setInt32(36, Number(data.lCharBias), true);
+  // 0x28: i32
+  if (data?.dpCharSets !== undefined) view.setInt32(40, Number(data.dpCharSets), true);
+  // 0x2c: u8
+  if (data?.jWinCharSet !== undefined) view.setUint8(44, Number(data.jWinCharSet));
+  // 0x2d: u8
+  if (data?.jWinPitchAndFamily !== undefined) view.setUint8(45, Number(data.jWinPitchAndFamily));
+  // 0x2e: u16
+  if (data?.usWinWeight !== undefined) view.setUint16(46, Number(data.usWinWeight), true);
+  // 0x30: u32
+  if (data?.flInfo !== undefined) view.setUint32(48, Number(data.flInfo), true);
+  // 0x34: u16
+  if (data?.fsSelection !== undefined) view.setUint16(52, Number(data.fsSelection), true);
+  // 0x36: u16
+  if (data?.fsType !== undefined) view.setUint16(54, Number(data.fsType), true);
+  // 0x38: i16
+  if (data?.fwdUnitsPerEm !== undefined) view.setInt16(56, Number(data.fwdUnitsPerEm), true);
+  // 0x3a: i16
+  if (data?.fwdLowestPPEm !== undefined) view.setInt16(58, Number(data.fwdLowestPPEm), true);
+  // 0x3c: i16
+  if (data?.fwdWinAscender !== undefined) view.setInt16(60, Number(data.fwdWinAscender), true);
+  // 0x3e: i16
+  if (data?.fwdWinDescender !== undefined) view.setInt16(62, Number(data.fwdWinDescender), true);
+  // 0x40: i16
+  if (data?.fwdMacAscender !== undefined) view.setInt16(64, Number(data.fwdMacAscender), true);
+  // 0x42: i16
+  if (data?.fwdMacDescender !== undefined) view.setInt16(66, Number(data.fwdMacDescender), true);
+  // 0x44: i16
+  if (data?.fwdMacLineGap !== undefined) view.setInt16(68, Number(data.fwdMacLineGap), true);
+  // 0x46: i16
+  if (data?.fwdTypoAscender !== undefined) view.setInt16(70, Number(data.fwdTypoAscender), true);
+  // 0x48: i16
+  if (data?.fwdTypoDescender !== undefined) view.setInt16(72, Number(data.fwdTypoDescender), true);
+  // 0x4a: i16
+  if (data?.fwdTypoLineGap !== undefined) view.setInt16(74, Number(data.fwdTypoLineGap), true);
+  // 0x4c: i16
+  if (data?.fwdAveCharWidth !== undefined) view.setInt16(76, Number(data.fwdAveCharWidth), true);
+  // 0x4e: i16
+  if (data?.fwdMaxCharInc !== undefined) view.setInt16(78, Number(data.fwdMaxCharInc), true);
+  // 0x50: i16
+  if (data?.fwdCapHeight !== undefined) view.setInt16(80, Number(data.fwdCapHeight), true);
+  // 0x52: i16
+  if (data?.fwdXHeight !== undefined) view.setInt16(82, Number(data.fwdXHeight), true);
+  // 0x54: i16
+  if (data?.fwdSubscriptXSize !== undefined) view.setInt16(84, Number(data.fwdSubscriptXSize), true);
+  // 0x56: i16
+  if (data?.fwdSubscriptYSize !== undefined) view.setInt16(86, Number(data.fwdSubscriptYSize), true);
+  // 0x58: i16
+  if (data?.fwdSubscriptXOffset !== undefined) view.setInt16(88, Number(data.fwdSubscriptXOffset), true);
+  // 0x5a: i16
+  if (data?.fwdSubscriptYOffset !== undefined) view.setInt16(90, Number(data.fwdSubscriptYOffset), true);
+  // 0x5c: i16
+  if (data?.fwdSuperscriptXSize !== undefined) view.setInt16(92, Number(data.fwdSuperscriptXSize), true);
+  // 0x5e: i16
+  if (data?.fwdSuperscriptYSize !== undefined) view.setInt16(94, Number(data.fwdSuperscriptYSize), true);
+  // 0x60: i16
+  if (data?.fwdSuperscriptXOffset !== undefined) view.setInt16(96, Number(data.fwdSuperscriptXOffset), true);
+  // 0x62: i16
+  if (data?.fwdSuperscriptYOffset !== undefined) view.setInt16(98, Number(data.fwdSuperscriptYOffset), true);
+  // 0x64: i16
+  if (data?.fwdUnderscoreSize !== undefined) view.setInt16(100, Number(data.fwdUnderscoreSize), true);
+  // 0x66: i16
+  if (data?.fwdUnderscorePosition !== undefined) view.setInt16(102, Number(data.fwdUnderscorePosition), true);
+  // 0x68: i16
+  if (data?.fwdStrikeoutSize !== undefined) view.setInt16(104, Number(data.fwdStrikeoutSize), true);
+  // 0x6a: i16
+  if (data?.fwdStrikeoutPosition !== undefined) view.setInt16(106, Number(data.fwdStrikeoutPosition), true);
+  // 0x6c: u8
+  if (data?.chFirstChar !== undefined) view.setUint8(108, Number(data.chFirstChar));
+  // 0x6d: u8
+  if (data?.chLastChar !== undefined) view.setUint8(109, Number(data.chLastChar));
+  // 0x6e: u8
+  if (data?.chDefaultChar !== undefined) view.setUint8(110, Number(data.chDefaultChar));
+  // 0x6f: u8
+  if (data?.chBreakChar !== undefined) view.setUint8(111, Number(data.chBreakChar));
+  // 0x70: pointer
+  if (data?.wcFirstChar !== undefined) view.setBigUint64(112, data.wcFirstChar === null ? 0n : BigInt(util.toPointer(data.wcFirstChar)), true);
+  // 0x78: pointer
+  if (data?.wcLastChar !== undefined) view.setBigUint64(120, data.wcLastChar === null ? 0n : BigInt(util.toPointer(data.wcLastChar)), true);
+  // 0x80: pointer
+  if (data?.wcDefaultChar !== undefined) view.setBigUint64(128, data.wcDefaultChar === null ? 0n : BigInt(util.toPointer(data.wcDefaultChar)), true);
+  // 0x88: pointer
+  if (data?.wcBreakChar !== undefined) view.setBigUint64(136, data.wcBreakChar === null ? 0n : BigInt(util.toPointer(data.wcBreakChar)), true);
+  // 0x90: pointer
+  if (data?.ptlBaseline !== undefined) view.setBigUint64(144, data.ptlBaseline === null ? 0n : BigInt(util.toPointer(data.ptlBaseline)), true);
+  // 0x98: pointer
+  if (data?.ptlAspect !== undefined) view.setBigUint64(152, data.ptlAspect === null ? 0n : BigInt(util.toPointer(data.ptlAspect)), true);
+  // 0xa0: pointer
+  if (data?.ptlCaret !== undefined) view.setBigUint64(160, data.ptlCaret === null ? 0n : BigInt(util.toPointer(data.ptlCaret)), true);
+  // 0xa8: pointer
+  if (data?.rclFontBox !== undefined) view.setBigUint64(168, data.rclFontBox === null ? 0n : BigInt(util.toPointer(data.rclFontBox)), true);
+  // 0xb0: pointer
+  if (data?.achVendId !== undefined) view.setBigUint64(176, data.achVendId === null ? 0n : BigInt(util.toPointer(data.achVendId)), true);
+  // 0xb8: u32
+  if (data?.cKerningPairs !== undefined) view.setUint32(184, Number(data.cKerningPairs), true);
+  // 0xbc: u32
+  if (data?.ulPanoseCulture !== undefined) view.setUint32(188, Number(data.ulPanoseCulture), true);
+  // 0xc0: pointer
+  if (data?.panose !== undefined) view.setBigUint64(192, data.panose === null ? 0n : BigInt(util.toPointer(data.panose)), true);
+  // 0xc8: pointer
+  if (data?.Align !== undefined) view.setBigUint64(200, data.Align === null ? 0n : BigInt(util.toPointer(data.Align)), true);
+  return buf;
+}
+
+/**
+ * Windows.Win32.Devices.Display.LINEATTRS (size: 48)
+ */
+export interface LINEATTRS {
+  /** u32 */
+  fl: number;
+  /** u32 */
+  iJoin: number;
+  /** u32 */
+  iEndCap: number;
+  /** Windows.Win32.Devices.Display.FLOAT_LONG */
+  elWidth: Uint8Array | Deno.PointerValue | null;
+  /** f32 */
+  eMiterLimit: number;
+  /** u32 */
+  cstyle: number;
+  /** ptr */
+  pstyle: Deno.PointerValue | Uint8Array | null;
+  /** Windows.Win32.Devices.Display.FLOAT_LONG */
+  elStyleState: Uint8Array | Deno.PointerValue | null;
+}
+
+export const sizeofLINEATTRS = 48;
+
+export function allocLINEATTRS(data?: Partial<LINEATTRS>): Uint8Array {
+  const buf = new Uint8Array(sizeofLINEATTRS);
+  const view = new DataView(buf.buffer);
+  // 0x00: u32
+  if (data?.fl !== undefined) view.setUint32(0, Number(data.fl), true);
+  // 0x04: u32
+  if (data?.iJoin !== undefined) view.setUint32(4, Number(data.iJoin), true);
+  // 0x08: u32
+  if (data?.iEndCap !== undefined) view.setUint32(8, Number(data.iEndCap), true);
+  // 0x0c: pad4
+  // 0x10: pointer
+  if (data?.elWidth !== undefined) view.setBigUint64(16, data.elWidth === null ? 0n : BigInt(util.toPointer(data.elWidth)), true);
+  // 0x18: f32
+  if (data?.eMiterLimit !== undefined) view.setFloat32(24, Number(data.eMiterLimit), true);
+  // 0x1c: u32
+  if (data?.cstyle !== undefined) view.setUint32(28, Number(data.cstyle), true);
+  // 0x20: pointer
+  if (data?.pstyle !== undefined) view.setBigUint64(32, data.pstyle === null ? 0n : BigInt(util.toPointer(data.pstyle)), true);
+  // 0x28: pointer
+  if (data?.elStyleState !== undefined) view.setBigUint64(40, data.elStyleState === null ? 0n : BigInt(util.toPointer(data.elStyleState)), true);
+  return buf;
+}
+
+/**
+ * Windows.Win32.Devices.Display.XFORML (size: 24)
+ */
+export interface XFORML {
+  /** f32 */
+  eM11: number;
+  /** f32 */
+  eM12: number;
+  /** f32 */
+  eM21: number;
+  /** f32 */
+  eM22: number;
+  /** f32 */
+  eDx: number;
+  /** f32 */
+  eDy: number;
+}
+
+export const sizeofXFORML = 24;
+
+export function allocXFORML(data?: Partial<XFORML>): Uint8Array {
+  const buf = new Uint8Array(sizeofXFORML);
+  const view = new DataView(buf.buffer);
+  // 0x00: f32
+  if (data?.eM11 !== undefined) view.setFloat32(0, Number(data.eM11), true);
+  // 0x04: f32
+  if (data?.eM12 !== undefined) view.setFloat32(4, Number(data.eM12), true);
+  // 0x08: f32
+  if (data?.eM21 !== undefined) view.setFloat32(8, Number(data.eM21), true);
+  // 0x0c: f32
+  if (data?.eM22 !== undefined) view.setFloat32(12, Number(data.eM22), true);
+  // 0x10: f32
+  if (data?.eDx !== undefined) view.setFloat32(16, Number(data.eDx), true);
+  // 0x14: f32
+  if (data?.eDy !== undefined) view.setFloat32(20, Number(data.eDy), true);
+  return buf;
+}
+
+/**
+ * Windows.Win32.Devices.Display.FLOATOBJ_XFORM (size: 24)
+ */
+export interface FLOATOBJ_XFORM {
+  /** f32 */
+  eM11: number;
+  /** f32 */
+  eM12: number;
+  /** f32 */
+  eM21: number;
+  /** f32 */
+  eM22: number;
+  /** f32 */
+  eDx: number;
+  /** f32 */
+  eDy: number;
+}
+
+export const sizeofFLOATOBJ_XFORM = 24;
+
+export function allocFLOATOBJ_XFORM(data?: Partial<FLOATOBJ_XFORM>): Uint8Array {
+  const buf = new Uint8Array(sizeofFLOATOBJ_XFORM);
+  const view = new DataView(buf.buffer);
+  // 0x00: f32
+  if (data?.eM11 !== undefined) view.setFloat32(0, Number(data.eM11), true);
+  // 0x04: f32
+  if (data?.eM12 !== undefined) view.setFloat32(4, Number(data.eM12), true);
+  // 0x08: f32
+  if (data?.eM21 !== undefined) view.setFloat32(8, Number(data.eM21), true);
+  // 0x0c: f32
+  if (data?.eM22 !== undefined) view.setFloat32(12, Number(data.eM22), true);
+  // 0x10: f32
+  if (data?.eDx !== undefined) view.setFloat32(16, Number(data.eDx), true);
+  // 0x14: f32
+  if (data?.eDy !== undefined) view.setFloat32(20, Number(data.eDy), true);
+  return buf;
+}
+
+/**
  * Windows.Win32.Devices.Display.POINTFIX (size: 8)
  */
 export interface POINTFIX {
@@ -2366,36 +3058,6 @@ export function allocRECTFX(data?: Partial<RECTFX>): Uint8Array {
   if (data?.xRight !== undefined) view.setInt32(8, Number(data.xRight), true);
   // 0x0c: i32
   if (data?.yBottom !== undefined) view.setInt32(12, Number(data.yBottom), true);
-  return buf;
-}
-
-/**
- * Windows.Win32.Devices.Display.FD_XFORM (size: 16)
- */
-export interface FD_XFORM {
-  /** f32 */
-  eXX: number;
-  /** f32 */
-  eXY: number;
-  /** f32 */
-  eYX: number;
-  /** f32 */
-  eYY: number;
-}
-
-export const sizeofFD_XFORM = 16;
-
-export function allocFD_XFORM(data?: Partial<FD_XFORM>): Uint8Array {
-  const buf = new Uint8Array(sizeofFD_XFORM);
-  const view = new DataView(buf.buffer);
-  // 0x00: f32
-  if (data?.eXX !== undefined) view.setFloat32(0, Number(data.eXX), true);
-  // 0x04: f32
-  if (data?.eXY !== undefined) view.setFloat32(4, Number(data.eXY), true);
-  // 0x08: f32
-  if (data?.eYX !== undefined) view.setFloat32(8, Number(data.eYX), true);
-  // 0x0c: f32
-  if (data?.eYY !== undefined) view.setFloat32(12, Number(data.eYY), true);
   return buf;
 }
 
@@ -2843,315 +3505,6 @@ export function allocFONTSIM(data?: Partial<FONTSIM>): Uint8Array {
 }
 
 /**
- * Windows.Win32.Graphics.Gdi.PANOSE (size: 16)
- */
-export interface PANOSE {
-  /** u8 */
-  bFamilyType: number;
-  /** u8 */
-  bSerifStyle: number;
-  /** u8 */
-  bWeight: number;
-  /** u8 */
-  bProportion: number;
-  /** u8 */
-  bContrast: number;
-  /** u8 */
-  bStrokeVariation: number;
-  /** u8 */
-  bArmStyle: number;
-  /** u8 */
-  bLetterform: number;
-  /** u8 */
-  bMidline: number;
-  /** u8 */
-  bXHeight: number;
-}
-
-export const sizeofPANOSE = 16;
-
-export function allocPANOSE(data?: Partial<PANOSE>): Uint8Array {
-  const buf = new Uint8Array(sizeofPANOSE);
-  const view = new DataView(buf.buffer);
-  // 0x00: u8
-  if (data?.bFamilyType !== undefined) view.setUint8(0, Number(data.bFamilyType));
-  // 0x01: u8
-  if (data?.bSerifStyle !== undefined) view.setUint8(1, Number(data.bSerifStyle));
-  // 0x02: u8
-  if (data?.bWeight !== undefined) view.setUint8(2, Number(data.bWeight));
-  // 0x03: u8
-  if (data?.bProportion !== undefined) view.setUint8(3, Number(data.bProportion));
-  // 0x04: u8
-  if (data?.bContrast !== undefined) view.setUint8(4, Number(data.bContrast));
-  // 0x05: u8
-  if (data?.bStrokeVariation !== undefined) view.setUint8(5, Number(data.bStrokeVariation));
-  // 0x06: u8
-  if (data?.bArmStyle !== undefined) view.setUint8(6, Number(data.bArmStyle));
-  // 0x07: u8
-  if (data?.bLetterform !== undefined) view.setUint8(7, Number(data.bLetterform));
-  // 0x08: u8
-  if (data?.bMidline !== undefined) view.setUint8(8, Number(data.bMidline));
-  // 0x09: u8
-  if (data?.bXHeight !== undefined) view.setUint8(9, Number(data.bXHeight));
-  // 0x0a: pad6
-  return buf;
-}
-
-/**
- * Windows.Win32.Devices.Display.IFIMETRICS (size: 208)
- */
-export interface IFIMETRICS {
-  /** u32 */
-  cjThis: number;
-  /** u32 */
-  cjIfiExtra: number;
-  /** i32 */
-  dpwszFamilyName: number;
-  /** i32 */
-  dpwszStyleName: number;
-  /** i32 */
-  dpwszFaceName: number;
-  /** i32 */
-  dpwszUniqueName: number;
-  /** i32 */
-  dpFontSim: number;
-  /** i32 */
-  lEmbedId: number;
-  /** i32 */
-  lItalicAngle: number;
-  /** i32 */
-  lCharBias: number;
-  /** i32 */
-  dpCharSets: number;
-  /** u8 */
-  jWinCharSet: number;
-  /** u8 */
-  jWinPitchAndFamily: number;
-  /** u16 */
-  usWinWeight: number;
-  /** u32 */
-  flInfo: number;
-  /** u16 */
-  fsSelection: number;
-  /** u16 */
-  fsType: number;
-  /** i16 */
-  fwdUnitsPerEm: number;
-  /** i16 */
-  fwdLowestPPEm: number;
-  /** i16 */
-  fwdWinAscender: number;
-  /** i16 */
-  fwdWinDescender: number;
-  /** i16 */
-  fwdMacAscender: number;
-  /** i16 */
-  fwdMacDescender: number;
-  /** i16 */
-  fwdMacLineGap: number;
-  /** i16 */
-  fwdTypoAscender: number;
-  /** i16 */
-  fwdTypoDescender: number;
-  /** i16 */
-  fwdTypoLineGap: number;
-  /** i16 */
-  fwdAveCharWidth: number;
-  /** i16 */
-  fwdMaxCharInc: number;
-  /** i16 */
-  fwdCapHeight: number;
-  /** i16 */
-  fwdXHeight: number;
-  /** i16 */
-  fwdSubscriptXSize: number;
-  /** i16 */
-  fwdSubscriptYSize: number;
-  /** i16 */
-  fwdSubscriptXOffset: number;
-  /** i16 */
-  fwdSubscriptYOffset: number;
-  /** i16 */
-  fwdSuperscriptXSize: number;
-  /** i16 */
-  fwdSuperscriptYSize: number;
-  /** i16 */
-  fwdSuperscriptXOffset: number;
-  /** i16 */
-  fwdSuperscriptYOffset: number;
-  /** i16 */
-  fwdUnderscoreSize: number;
-  /** i16 */
-  fwdUnderscorePosition: number;
-  /** i16 */
-  fwdStrikeoutSize: number;
-  /** i16 */
-  fwdStrikeoutPosition: number;
-  /** u8 */
-  chFirstChar: number;
-  /** u8 */
-  chLastChar: number;
-  /** u8 */
-  chDefaultChar: number;
-  /** u8 */
-  chBreakChar: number;
-  /** char */
-  wcFirstChar: Uint8Array | Deno.PointerValue | null;
-  /** char */
-  wcLastChar: Uint8Array | Deno.PointerValue | null;
-  /** char */
-  wcDefaultChar: Uint8Array | Deno.PointerValue | null;
-  /** char */
-  wcBreakChar: Uint8Array | Deno.PointerValue | null;
-  /** Windows.Win32.Foundation.POINTL */
-  ptlBaseline: Uint8Array | Deno.PointerValue | null;
-  /** Windows.Win32.Foundation.POINTL */
-  ptlAspect: Uint8Array | Deno.PointerValue | null;
-  /** Windows.Win32.Foundation.POINTL */
-  ptlCaret: Uint8Array | Deno.PointerValue | null;
-  /** Windows.Win32.Foundation.RECTL */
-  rclFontBox: Uint8Array | Deno.PointerValue | null;
-  /** array */
-  achVendId: Deno.PointerValue | null;
-  /** u32 */
-  cKerningPairs: number;
-  /** u32 */
-  ulPanoseCulture: number;
-  /** Windows.Win32.Graphics.Gdi.PANOSE */
-  panose: Uint8Array | Deno.PointerValue | null;
-  /** ptr */
-  Align: Deno.PointerValue | Uint8Array | null;
-}
-
-export const sizeofIFIMETRICS = 208;
-
-export function allocIFIMETRICS(data?: Partial<IFIMETRICS>): Uint8Array {
-  const buf = new Uint8Array(sizeofIFIMETRICS);
-  const view = new DataView(buf.buffer);
-  // 0x00: u32
-  if (data?.cjThis !== undefined) view.setUint32(0, Number(data.cjThis), true);
-  // 0x04: u32
-  if (data?.cjIfiExtra !== undefined) view.setUint32(4, Number(data.cjIfiExtra), true);
-  // 0x08: i32
-  if (data?.dpwszFamilyName !== undefined) view.setInt32(8, Number(data.dpwszFamilyName), true);
-  // 0x0c: i32
-  if (data?.dpwszStyleName !== undefined) view.setInt32(12, Number(data.dpwszStyleName), true);
-  // 0x10: i32
-  if (data?.dpwszFaceName !== undefined) view.setInt32(16, Number(data.dpwszFaceName), true);
-  // 0x14: i32
-  if (data?.dpwszUniqueName !== undefined) view.setInt32(20, Number(data.dpwszUniqueName), true);
-  // 0x18: i32
-  if (data?.dpFontSim !== undefined) view.setInt32(24, Number(data.dpFontSim), true);
-  // 0x1c: i32
-  if (data?.lEmbedId !== undefined) view.setInt32(28, Number(data.lEmbedId), true);
-  // 0x20: i32
-  if (data?.lItalicAngle !== undefined) view.setInt32(32, Number(data.lItalicAngle), true);
-  // 0x24: i32
-  if (data?.lCharBias !== undefined) view.setInt32(36, Number(data.lCharBias), true);
-  // 0x28: i32
-  if (data?.dpCharSets !== undefined) view.setInt32(40, Number(data.dpCharSets), true);
-  // 0x2c: u8
-  if (data?.jWinCharSet !== undefined) view.setUint8(44, Number(data.jWinCharSet));
-  // 0x2d: u8
-  if (data?.jWinPitchAndFamily !== undefined) view.setUint8(45, Number(data.jWinPitchAndFamily));
-  // 0x2e: u16
-  if (data?.usWinWeight !== undefined) view.setUint16(46, Number(data.usWinWeight), true);
-  // 0x30: u32
-  if (data?.flInfo !== undefined) view.setUint32(48, Number(data.flInfo), true);
-  // 0x34: u16
-  if (data?.fsSelection !== undefined) view.setUint16(52, Number(data.fsSelection), true);
-  // 0x36: u16
-  if (data?.fsType !== undefined) view.setUint16(54, Number(data.fsType), true);
-  // 0x38: i16
-  if (data?.fwdUnitsPerEm !== undefined) view.setInt16(56, Number(data.fwdUnitsPerEm), true);
-  // 0x3a: i16
-  if (data?.fwdLowestPPEm !== undefined) view.setInt16(58, Number(data.fwdLowestPPEm), true);
-  // 0x3c: i16
-  if (data?.fwdWinAscender !== undefined) view.setInt16(60, Number(data.fwdWinAscender), true);
-  // 0x3e: i16
-  if (data?.fwdWinDescender !== undefined) view.setInt16(62, Number(data.fwdWinDescender), true);
-  // 0x40: i16
-  if (data?.fwdMacAscender !== undefined) view.setInt16(64, Number(data.fwdMacAscender), true);
-  // 0x42: i16
-  if (data?.fwdMacDescender !== undefined) view.setInt16(66, Number(data.fwdMacDescender), true);
-  // 0x44: i16
-  if (data?.fwdMacLineGap !== undefined) view.setInt16(68, Number(data.fwdMacLineGap), true);
-  // 0x46: i16
-  if (data?.fwdTypoAscender !== undefined) view.setInt16(70, Number(data.fwdTypoAscender), true);
-  // 0x48: i16
-  if (data?.fwdTypoDescender !== undefined) view.setInt16(72, Number(data.fwdTypoDescender), true);
-  // 0x4a: i16
-  if (data?.fwdTypoLineGap !== undefined) view.setInt16(74, Number(data.fwdTypoLineGap), true);
-  // 0x4c: i16
-  if (data?.fwdAveCharWidth !== undefined) view.setInt16(76, Number(data.fwdAveCharWidth), true);
-  // 0x4e: i16
-  if (data?.fwdMaxCharInc !== undefined) view.setInt16(78, Number(data.fwdMaxCharInc), true);
-  // 0x50: i16
-  if (data?.fwdCapHeight !== undefined) view.setInt16(80, Number(data.fwdCapHeight), true);
-  // 0x52: i16
-  if (data?.fwdXHeight !== undefined) view.setInt16(82, Number(data.fwdXHeight), true);
-  // 0x54: i16
-  if (data?.fwdSubscriptXSize !== undefined) view.setInt16(84, Number(data.fwdSubscriptXSize), true);
-  // 0x56: i16
-  if (data?.fwdSubscriptYSize !== undefined) view.setInt16(86, Number(data.fwdSubscriptYSize), true);
-  // 0x58: i16
-  if (data?.fwdSubscriptXOffset !== undefined) view.setInt16(88, Number(data.fwdSubscriptXOffset), true);
-  // 0x5a: i16
-  if (data?.fwdSubscriptYOffset !== undefined) view.setInt16(90, Number(data.fwdSubscriptYOffset), true);
-  // 0x5c: i16
-  if (data?.fwdSuperscriptXSize !== undefined) view.setInt16(92, Number(data.fwdSuperscriptXSize), true);
-  // 0x5e: i16
-  if (data?.fwdSuperscriptYSize !== undefined) view.setInt16(94, Number(data.fwdSuperscriptYSize), true);
-  // 0x60: i16
-  if (data?.fwdSuperscriptXOffset !== undefined) view.setInt16(96, Number(data.fwdSuperscriptXOffset), true);
-  // 0x62: i16
-  if (data?.fwdSuperscriptYOffset !== undefined) view.setInt16(98, Number(data.fwdSuperscriptYOffset), true);
-  // 0x64: i16
-  if (data?.fwdUnderscoreSize !== undefined) view.setInt16(100, Number(data.fwdUnderscoreSize), true);
-  // 0x66: i16
-  if (data?.fwdUnderscorePosition !== undefined) view.setInt16(102, Number(data.fwdUnderscorePosition), true);
-  // 0x68: i16
-  if (data?.fwdStrikeoutSize !== undefined) view.setInt16(104, Number(data.fwdStrikeoutSize), true);
-  // 0x6a: i16
-  if (data?.fwdStrikeoutPosition !== undefined) view.setInt16(106, Number(data.fwdStrikeoutPosition), true);
-  // 0x6c: u8
-  if (data?.chFirstChar !== undefined) view.setUint8(108, Number(data.chFirstChar));
-  // 0x6d: u8
-  if (data?.chLastChar !== undefined) view.setUint8(109, Number(data.chLastChar));
-  // 0x6e: u8
-  if (data?.chDefaultChar !== undefined) view.setUint8(110, Number(data.chDefaultChar));
-  // 0x6f: u8
-  if (data?.chBreakChar !== undefined) view.setUint8(111, Number(data.chBreakChar));
-  // 0x70: pointer
-  if (data?.wcFirstChar !== undefined) view.setBigUint64(112, data.wcFirstChar === null ? 0n : BigInt(util.toPointer(data.wcFirstChar)), true);
-  // 0x78: pointer
-  if (data?.wcLastChar !== undefined) view.setBigUint64(120, data.wcLastChar === null ? 0n : BigInt(util.toPointer(data.wcLastChar)), true);
-  // 0x80: pointer
-  if (data?.wcDefaultChar !== undefined) view.setBigUint64(128, data.wcDefaultChar === null ? 0n : BigInt(util.toPointer(data.wcDefaultChar)), true);
-  // 0x88: pointer
-  if (data?.wcBreakChar !== undefined) view.setBigUint64(136, data.wcBreakChar === null ? 0n : BigInt(util.toPointer(data.wcBreakChar)), true);
-  // 0x90: pointer
-  if (data?.ptlBaseline !== undefined) view.setBigUint64(144, data.ptlBaseline === null ? 0n : BigInt(util.toPointer(data.ptlBaseline)), true);
-  // 0x98: pointer
-  if (data?.ptlAspect !== undefined) view.setBigUint64(152, data.ptlAspect === null ? 0n : BigInt(util.toPointer(data.ptlAspect)), true);
-  // 0xa0: pointer
-  if (data?.ptlCaret !== undefined) view.setBigUint64(160, data.ptlCaret === null ? 0n : BigInt(util.toPointer(data.ptlCaret)), true);
-  // 0xa8: pointer
-  if (data?.rclFontBox !== undefined) view.setBigUint64(168, data.rclFontBox === null ? 0n : BigInt(util.toPointer(data.rclFontBox)), true);
-  // 0xb0: pointer
-  if (data?.achVendId !== undefined) view.setBigUint64(176, data.achVendId === null ? 0n : BigInt(util.toPointer(data.achVendId)), true);
-  // 0xb8: u32
-  if (data?.cKerningPairs !== undefined) view.setUint32(184, Number(data.cKerningPairs), true);
-  // 0xbc: u32
-  if (data?.ulPanoseCulture !== undefined) view.setUint32(188, Number(data.ulPanoseCulture), true);
-  // 0xc0: pointer
-  if (data?.panose !== undefined) view.setBigUint64(192, data.panose === null ? 0n : BigInt(util.toPointer(data.panose)), true);
-  // 0xc8: pointer
-  if (data?.Align !== undefined) view.setBigUint64(200, data.Align === null ? 0n : BigInt(util.toPointer(data.Align)), true);
-  return buf;
-}
-
-/**
  * Windows.Win32.Devices.Display.IFIEXTRA (size: 32)
  */
 export interface IFIEXTRA {
@@ -3259,14 +3612,14 @@ export interface LOGFONTW {
   lfUnderline: number;
   /** u8 */
   lfStrikeOut: number;
-  /** u8 */
-  lfCharSet: number;
-  /** u8 */
-  lfOutPrecision: number;
-  /** u8 */
-  lfClipPrecision: number;
-  /** u8 */
-  lfQuality: number;
+  /** Windows.Win32.Graphics.Gdi.FONT_CHARSET */
+  lfCharSet: FONT_CHARSET;
+  /** Windows.Win32.Graphics.Gdi.FONT_OUTPUT_PRECISION */
+  lfOutPrecision: FONT_OUTPUT_PRECISION;
+  /** Windows.Win32.Graphics.Gdi.FONT_CLIP_PRECISION */
+  lfClipPrecision: FONT_CLIP_PRECISION;
+  /** Windows.Win32.Graphics.Gdi.FONT_QUALITY */
+  lfQuality: FONT_QUALITY;
   /** u8 */
   lfPitchAndFamily: number;
   /** array */
@@ -3366,91 +3719,6 @@ export function allocDEVINFO(data?: Partial<DEVINFO>): Uint8Array {
   // 0x38: u32
   if (data?.flGraphicsCaps2 !== undefined) view.setUint32(56, Number(data.flGraphicsCaps2), true);
   // 0x3c: pad4
-  return buf;
-}
-
-/**
- * Windows.Win32.Devices.Display.LINEATTRS (size: 48)
- */
-export interface LINEATTRS {
-  /** u32 */
-  fl: number;
-  /** u32 */
-  iJoin: number;
-  /** u32 */
-  iEndCap: number;
-  /** Windows.Win32.Devices.Display.FLOAT_LONG */
-  elWidth: Uint8Array | Deno.PointerValue | null;
-  /** f32 */
-  eMiterLimit: number;
-  /** u32 */
-  cstyle: number;
-  /** ptr */
-  pstyle: Deno.PointerValue | Uint8Array | null;
-  /** Windows.Win32.Devices.Display.FLOAT_LONG */
-  elStyleState: Uint8Array | Deno.PointerValue | null;
-}
-
-export const sizeofLINEATTRS = 48;
-
-export function allocLINEATTRS(data?: Partial<LINEATTRS>): Uint8Array {
-  const buf = new Uint8Array(sizeofLINEATTRS);
-  const view = new DataView(buf.buffer);
-  // 0x00: u32
-  if (data?.fl !== undefined) view.setUint32(0, Number(data.fl), true);
-  // 0x04: u32
-  if (data?.iJoin !== undefined) view.setUint32(4, Number(data.iJoin), true);
-  // 0x08: u32
-  if (data?.iEndCap !== undefined) view.setUint32(8, Number(data.iEndCap), true);
-  // 0x0c: pad4
-  // 0x10: pointer
-  if (data?.elWidth !== undefined) view.setBigUint64(16, data.elWidth === null ? 0n : BigInt(util.toPointer(data.elWidth)), true);
-  // 0x18: f32
-  if (data?.eMiterLimit !== undefined) view.setFloat32(24, Number(data.eMiterLimit), true);
-  // 0x1c: u32
-  if (data?.cstyle !== undefined) view.setUint32(28, Number(data.cstyle), true);
-  // 0x20: pointer
-  if (data?.pstyle !== undefined) view.setBigUint64(32, data.pstyle === null ? 0n : BigInt(util.toPointer(data.pstyle)), true);
-  // 0x28: pointer
-  if (data?.elStyleState !== undefined) view.setBigUint64(40, data.elStyleState === null ? 0n : BigInt(util.toPointer(data.elStyleState)), true);
-  return buf;
-}
-
-/**
- * Windows.Win32.Devices.Display.XFORML (size: 24)
- */
-export interface XFORML {
-  /** f32 */
-  eM11: number;
-  /** f32 */
-  eM12: number;
-  /** f32 */
-  eM21: number;
-  /** f32 */
-  eM22: number;
-  /** f32 */
-  eDx: number;
-  /** f32 */
-  eDy: number;
-}
-
-export const sizeofXFORML = 24;
-
-export function allocXFORML(data?: Partial<XFORML>): Uint8Array {
-  const buf = new Uint8Array(sizeofXFORML);
-  const view = new DataView(buf.buffer);
-  // 0x00: f32
-  if (data?.eM11 !== undefined) view.setFloat32(0, Number(data.eM11), true);
-  // 0x04: f32
-  if (data?.eM12 !== undefined) view.setFloat32(4, Number(data.eM12), true);
-  // 0x08: f32
-  if (data?.eM21 !== undefined) view.setFloat32(8, Number(data.eM21), true);
-  // 0x0c: f32
-  if (data?.eM22 !== undefined) view.setFloat32(12, Number(data.eM22), true);
-  // 0x10: f32
-  if (data?.eDx !== undefined) view.setFloat32(16, Number(data.eDx), true);
-  // 0x14: f32
-  if (data?.eDy !== undefined) view.setFloat32(20, Number(data.eDy), true);
   return buf;
 }
 
@@ -4703,40 +4971,24 @@ export function allocENGSAFESEMAPHORE(data?: Partial<ENGSAFESEMAPHORE>): Uint8Ar
 }
 
 /**
- * Windows.Win32.Devices.Display.FLOATOBJ_XFORM (size: 24)
+ * Windows.Win32.Devices.Display.FLOATOBJ (size: 8)
  */
-export interface FLOATOBJ_XFORM {
-  /** f32 */
-  eM11: number;
-  /** f32 */
-  eM12: number;
-  /** f32 */
-  eM21: number;
-  /** f32 */
-  eM22: number;
-  /** f32 */
-  eDx: number;
-  /** f32 */
-  eDy: number;
+export interface FLOATOBJ {
+  /** u32 */
+  ul1: number;
+  /** u32 */
+  ul2: number;
 }
 
-export const sizeofFLOATOBJ_XFORM = 24;
+export const sizeofFLOATOBJ = 8;
 
-export function allocFLOATOBJ_XFORM(data?: Partial<FLOATOBJ_XFORM>): Uint8Array {
-  const buf = new Uint8Array(sizeofFLOATOBJ_XFORM);
+export function allocFLOATOBJ(data?: Partial<FLOATOBJ>): Uint8Array {
+  const buf = new Uint8Array(sizeofFLOATOBJ);
   const view = new DataView(buf.buffer);
-  // 0x00: f32
-  if (data?.eM11 !== undefined) view.setFloat32(0, Number(data.eM11), true);
-  // 0x04: f32
-  if (data?.eM12 !== undefined) view.setFloat32(4, Number(data.eM12), true);
-  // 0x08: f32
-  if (data?.eM21 !== undefined) view.setFloat32(8, Number(data.eM21), true);
-  // 0x0c: f32
-  if (data?.eM22 !== undefined) view.setFloat32(12, Number(data.eM22), true);
-  // 0x10: f32
-  if (data?.eDx !== undefined) view.setFloat32(16, Number(data.eDx), true);
-  // 0x14: f32
-  if (data?.eDy !== undefined) view.setFloat32(20, Number(data.eDy), true);
+  // 0x00: u32
+  if (data?.ul1 !== undefined) view.setUint32(0, Number(data.ul1), true);
+  // 0x04: u32
+  if (data?.ul2 !== undefined) view.setUint32(4, Number(data.ul2), true);
   return buf;
 }
 
@@ -7494,28 +7746,6 @@ export function allocMIPI_DSI_RESET(data?: Partial<MIPI_DSI_RESET>): Uint8Array 
   return buf;
 }
 
-/**
- * Windows.Win32.Devices.Display.FLOATOBJ (size: 8)
- */
-export interface FLOATOBJ {
-  /** u32 */
-  ul1: number;
-  /** u32 */
-  ul2: number;
-}
-
-export const sizeofFLOATOBJ = 8;
-
-export function allocFLOATOBJ(data?: Partial<FLOATOBJ>): Uint8Array {
-  const buf = new Uint8Array(sizeofFLOATOBJ);
-  const view = new DataView(buf.buffer);
-  // 0x00: u32
-  if (data?.ul1 !== undefined) view.setUint32(0, Number(data.ul1), true);
-  // 0x04: u32
-  if (data?.ul2 !== undefined) view.setUint32(4, Number(data.ul2), true);
-  return buf;
-}
-
 export type HMONITOR = Deno.PointerValue;
 
 export type HRESULT = number;
@@ -7527,7 +7757,7 @@ export type HBITMAP = Deno.PointerValue;
 // Native Libraries
 
 try {
-  var libdxva2 = Deno.dlopen("dxva2", {
+  var libdxva2_dll = Deno.dlopen("dxva2.dll", {
     GetNumberOfPhysicalMonitorsFromHMONITOR: {
       parameters: ["pointer", "pointer"],
       result: "i32",
@@ -7660,7 +7890,7 @@ try {
 } catch(e) { /* ignore */ }
 
 try {
-  var libGDI32 = Deno.dlopen("GDI32", {
+  var libGDI32_dll = Deno.dlopen("GDI32.dll", {
     BRUSHOBJ_pvAllocRbrush: {
       parameters: ["pointer", "u32"],
       result: "pointer",
@@ -7981,7 +8211,7 @@ try {
 } catch(e) { /* ignore */ }
 
 try {
-  var libUSER32 = Deno.dlopen("USER32", {
+  var libUSER32_dll = Deno.dlopen("USER32.dll", {
     GetDisplayConfigBufferSizes: {
       parameters: ["u32", "pointer", "pointer"],
       result: "i32",
@@ -8023,14 +8253,14 @@ export function GetNumberOfPhysicalMonitorsFromHMONITOR(
   hMonitor: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Graphics.Gdi.HMONITOR */,
   pdwNumberOfPhysicalMonitors: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
-  return libdxva2.GetNumberOfPhysicalMonitorsFromHMONITOR(util.toPointer(hMonitor), util.toPointer(pdwNumberOfPhysicalMonitors));
+  return libdxva2_dll.GetNumberOfPhysicalMonitorsFromHMONITOR(util.toPointer(hMonitor), util.toPointer(pdwNumberOfPhysicalMonitors));
 }
 
 export function GetNumberOfPhysicalMonitorsFromIDirect3DDevice9(
   pDirect3DDevice9: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Graphics.Direct3D9.IDirect3DDevice9 */,
   pdwNumberOfPhysicalMonitors: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libdxva2.GetNumberOfPhysicalMonitorsFromIDirect3DDevice9(util.toPointer(pDirect3DDevice9), util.toPointer(pdwNumberOfPhysicalMonitors)));
+  return util.pointerFromFfi(libdxva2_dll.GetNumberOfPhysicalMonitorsFromIDirect3DDevice9(util.toPointer(pDirect3DDevice9), util.toPointer(pdwNumberOfPhysicalMonitors)));
 }
 
 export function GetPhysicalMonitorsFromHMONITOR(
@@ -8038,7 +8268,7 @@ export function GetPhysicalMonitorsFromHMONITOR(
   dwPhysicalMonitorArraySize: number /* u32 */,
   pPhysicalMonitorArray: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
-  return libdxva2.GetPhysicalMonitorsFromHMONITOR(util.toPointer(hMonitor), dwPhysicalMonitorArraySize, util.toPointer(pPhysicalMonitorArray));
+  return libdxva2_dll.GetPhysicalMonitorsFromHMONITOR(util.toPointer(hMonitor), dwPhysicalMonitorArraySize, util.toPointer(pPhysicalMonitorArray));
 }
 
 export function GetPhysicalMonitorsFromIDirect3DDevice9(
@@ -8046,20 +8276,20 @@ export function GetPhysicalMonitorsFromIDirect3DDevice9(
   dwPhysicalMonitorArraySize: number /* u32 */,
   pPhysicalMonitorArray: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libdxva2.GetPhysicalMonitorsFromIDirect3DDevice9(util.toPointer(pDirect3DDevice9), dwPhysicalMonitorArraySize, util.toPointer(pPhysicalMonitorArray)));
+  return util.pointerFromFfi(libdxva2_dll.GetPhysicalMonitorsFromIDirect3DDevice9(util.toPointer(pDirect3DDevice9), dwPhysicalMonitorArraySize, util.toPointer(pPhysicalMonitorArray)));
 }
 
 export function DestroyPhysicalMonitor(
   hMonitor: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
 ): number /* i32 */ {
-  return libdxva2.DestroyPhysicalMonitor(util.toPointer(hMonitor));
+  return libdxva2_dll.DestroyPhysicalMonitor(util.toPointer(hMonitor));
 }
 
 export function DestroyPhysicalMonitors(
   dwPhysicalMonitorArraySize: number /* u32 */,
   pPhysicalMonitorArray: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
-  return libdxva2.DestroyPhysicalMonitors(dwPhysicalMonitorArraySize, util.toPointer(pPhysicalMonitorArray));
+  return libdxva2_dll.DestroyPhysicalMonitors(dwPhysicalMonitorArraySize, util.toPointer(pPhysicalMonitorArray));
 }
 
 export function GetVCPFeatureAndVCPFeatureReply(
@@ -8069,7 +8299,7 @@ export function GetVCPFeatureAndVCPFeatureReply(
   pdwCurrentValue: Deno.PointerValue | Uint8Array | null /* ptr */,
   pdwMaximumValue: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
-  return libdxva2.GetVCPFeatureAndVCPFeatureReply(util.toPointer(hMonitor), bVCPCode, util.toPointer(pvct), util.toPointer(pdwCurrentValue), util.toPointer(pdwMaximumValue));
+  return libdxva2_dll.GetVCPFeatureAndVCPFeatureReply(util.toPointer(hMonitor), bVCPCode, util.toPointer(pvct), util.toPointer(pdwCurrentValue), util.toPointer(pdwMaximumValue));
 }
 
 export function SetVCPFeature(
@@ -8077,20 +8307,20 @@ export function SetVCPFeature(
   bVCPCode: number /* u8 */,
   dwNewValue: number /* u32 */,
 ): number /* i32 */ {
-  return libdxva2.SetVCPFeature(util.toPointer(hMonitor), bVCPCode, dwNewValue);
+  return libdxva2_dll.SetVCPFeature(util.toPointer(hMonitor), bVCPCode, dwNewValue);
 }
 
 export function SaveCurrentSettings(
   hMonitor: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
 ): number /* i32 */ {
-  return libdxva2.SaveCurrentSettings(util.toPointer(hMonitor));
+  return libdxva2_dll.SaveCurrentSettings(util.toPointer(hMonitor));
 }
 
 export function GetCapabilitiesStringLength(
   hMonitor: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
   pdwCapabilitiesStringLengthInCharacters: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
-  return libdxva2.GetCapabilitiesStringLength(util.toPointer(hMonitor), util.toPointer(pdwCapabilitiesStringLengthInCharacters));
+  return libdxva2_dll.GetCapabilitiesStringLength(util.toPointer(hMonitor), util.toPointer(pdwCapabilitiesStringLengthInCharacters));
 }
 
 export function CapabilitiesRequestAndCapabilitiesReply(
@@ -8098,14 +8328,14 @@ export function CapabilitiesRequestAndCapabilitiesReply(
   pszASCIICapabilitiesString: string | null /* Windows.Win32.Foundation.PSTR */,
   dwCapabilitiesStringLengthInCharacters: number /* u32 */,
 ): number /* i32 */ {
-  return libdxva2.CapabilitiesRequestAndCapabilitiesReply(util.toPointer(hMonitor), util.pstrToFfi(pszASCIICapabilitiesString), dwCapabilitiesStringLengthInCharacters);
+  return libdxva2_dll.CapabilitiesRequestAndCapabilitiesReply(util.toPointer(hMonitor), util.pstrToFfi(pszASCIICapabilitiesString), dwCapabilitiesStringLengthInCharacters);
 }
 
 export function GetTimingReport(
   hMonitor: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
   pmtrMonitorTimingReport: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
-  return libdxva2.GetTimingReport(util.toPointer(hMonitor), util.toPointer(pmtrMonitorTimingReport));
+  return libdxva2_dll.GetTimingReport(util.toPointer(hMonitor), util.toPointer(pmtrMonitorTimingReport));
 }
 
 export function GetMonitorCapabilities(
@@ -8113,20 +8343,20 @@ export function GetMonitorCapabilities(
   pdwMonitorCapabilities: Deno.PointerValue | Uint8Array | null /* ptr */,
   pdwSupportedColorTemperatures: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
-  return libdxva2.GetMonitorCapabilities(util.toPointer(hMonitor), util.toPointer(pdwMonitorCapabilities), util.toPointer(pdwSupportedColorTemperatures));
+  return libdxva2_dll.GetMonitorCapabilities(util.toPointer(hMonitor), util.toPointer(pdwMonitorCapabilities), util.toPointer(pdwSupportedColorTemperatures));
 }
 
 export function SaveCurrentMonitorSettings(
   hMonitor: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
 ): number /* i32 */ {
-  return libdxva2.SaveCurrentMonitorSettings(util.toPointer(hMonitor));
+  return libdxva2_dll.SaveCurrentMonitorSettings(util.toPointer(hMonitor));
 }
 
 export function GetMonitorTechnologyType(
   hMonitor: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
   pdtyDisplayTechnologyType: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
-  return libdxva2.GetMonitorTechnologyType(util.toPointer(hMonitor), util.toPointer(pdtyDisplayTechnologyType));
+  return libdxva2_dll.GetMonitorTechnologyType(util.toPointer(hMonitor), util.toPointer(pdtyDisplayTechnologyType));
 }
 
 export function GetMonitorBrightness(
@@ -8135,7 +8365,7 @@ export function GetMonitorBrightness(
   pdwCurrentBrightness: Deno.PointerValue | Uint8Array | null /* ptr */,
   pdwMaximumBrightness: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
-  return libdxva2.GetMonitorBrightness(util.toPointer(hMonitor), util.toPointer(pdwMinimumBrightness), util.toPointer(pdwCurrentBrightness), util.toPointer(pdwMaximumBrightness));
+  return libdxva2_dll.GetMonitorBrightness(util.toPointer(hMonitor), util.toPointer(pdwMinimumBrightness), util.toPointer(pdwCurrentBrightness), util.toPointer(pdwMaximumBrightness));
 }
 
 export function GetMonitorContrast(
@@ -8144,14 +8374,14 @@ export function GetMonitorContrast(
   pdwCurrentContrast: Deno.PointerValue | Uint8Array | null /* ptr */,
   pdwMaximumContrast: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
-  return libdxva2.GetMonitorContrast(util.toPointer(hMonitor), util.toPointer(pdwMinimumContrast), util.toPointer(pdwCurrentContrast), util.toPointer(pdwMaximumContrast));
+  return libdxva2_dll.GetMonitorContrast(util.toPointer(hMonitor), util.toPointer(pdwMinimumContrast), util.toPointer(pdwCurrentContrast), util.toPointer(pdwMaximumContrast));
 }
 
 export function GetMonitorColorTemperature(
   hMonitor: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
   pctCurrentColorTemperature: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
-  return libdxva2.GetMonitorColorTemperature(util.toPointer(hMonitor), util.toPointer(pctCurrentColorTemperature));
+  return libdxva2_dll.GetMonitorColorTemperature(util.toPointer(hMonitor), util.toPointer(pctCurrentColorTemperature));
 }
 
 export function GetMonitorRedGreenOrBlueDrive(
@@ -8161,7 +8391,7 @@ export function GetMonitorRedGreenOrBlueDrive(
   pdwCurrentDrive: Deno.PointerValue | Uint8Array | null /* ptr */,
   pdwMaximumDrive: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
-  return libdxva2.GetMonitorRedGreenOrBlueDrive(util.toPointer(hMonitor), dtDriveType, util.toPointer(pdwMinimumDrive), util.toPointer(pdwCurrentDrive), util.toPointer(pdwMaximumDrive));
+  return libdxva2_dll.GetMonitorRedGreenOrBlueDrive(util.toPointer(hMonitor), dtDriveType, util.toPointer(pdwMinimumDrive), util.toPointer(pdwCurrentDrive), util.toPointer(pdwMaximumDrive));
 }
 
 export function GetMonitorRedGreenOrBlueGain(
@@ -8171,28 +8401,28 @@ export function GetMonitorRedGreenOrBlueGain(
   pdwCurrentGain: Deno.PointerValue | Uint8Array | null /* ptr */,
   pdwMaximumGain: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
-  return libdxva2.GetMonitorRedGreenOrBlueGain(util.toPointer(hMonitor), gtGainType, util.toPointer(pdwMinimumGain), util.toPointer(pdwCurrentGain), util.toPointer(pdwMaximumGain));
+  return libdxva2_dll.GetMonitorRedGreenOrBlueGain(util.toPointer(hMonitor), gtGainType, util.toPointer(pdwMinimumGain), util.toPointer(pdwCurrentGain), util.toPointer(pdwMaximumGain));
 }
 
 export function SetMonitorBrightness(
   hMonitor: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
   dwNewBrightness: number /* u32 */,
 ): number /* i32 */ {
-  return libdxva2.SetMonitorBrightness(util.toPointer(hMonitor), dwNewBrightness);
+  return libdxva2_dll.SetMonitorBrightness(util.toPointer(hMonitor), dwNewBrightness);
 }
 
 export function SetMonitorContrast(
   hMonitor: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
   dwNewContrast: number /* u32 */,
 ): number /* i32 */ {
-  return libdxva2.SetMonitorContrast(util.toPointer(hMonitor), dwNewContrast);
+  return libdxva2_dll.SetMonitorContrast(util.toPointer(hMonitor), dwNewContrast);
 }
 
 export function SetMonitorColorTemperature(
   hMonitor: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
   ctCurrentColorTemperature: MC_COLOR_TEMPERATURE /* Windows.Win32.Devices.Display.MC_COLOR_TEMPERATURE */,
 ): number /* i32 */ {
-  return libdxva2.SetMonitorColorTemperature(util.toPointer(hMonitor), ctCurrentColorTemperature);
+  return libdxva2_dll.SetMonitorColorTemperature(util.toPointer(hMonitor), ctCurrentColorTemperature);
 }
 
 export function SetMonitorRedGreenOrBlueDrive(
@@ -8200,7 +8430,7 @@ export function SetMonitorRedGreenOrBlueDrive(
   dtDriveType: MC_DRIVE_TYPE /* Windows.Win32.Devices.Display.MC_DRIVE_TYPE */,
   dwNewDrive: number /* u32 */,
 ): number /* i32 */ {
-  return libdxva2.SetMonitorRedGreenOrBlueDrive(util.toPointer(hMonitor), dtDriveType, dwNewDrive);
+  return libdxva2_dll.SetMonitorRedGreenOrBlueDrive(util.toPointer(hMonitor), dtDriveType, dwNewDrive);
 }
 
 export function SetMonitorRedGreenOrBlueGain(
@@ -8208,13 +8438,13 @@ export function SetMonitorRedGreenOrBlueGain(
   gtGainType: MC_GAIN_TYPE /* Windows.Win32.Devices.Display.MC_GAIN_TYPE */,
   dwNewGain: number /* u32 */,
 ): number /* i32 */ {
-  return libdxva2.SetMonitorRedGreenOrBlueGain(util.toPointer(hMonitor), gtGainType, dwNewGain);
+  return libdxva2_dll.SetMonitorRedGreenOrBlueGain(util.toPointer(hMonitor), gtGainType, dwNewGain);
 }
 
 export function DegaussMonitor(
   hMonitor: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
 ): number /* i32 */ {
-  return libdxva2.DegaussMonitor(util.toPointer(hMonitor));
+  return libdxva2_dll.DegaussMonitor(util.toPointer(hMonitor));
 }
 
 export function GetMonitorDisplayAreaSize(
@@ -8224,7 +8454,7 @@ export function GetMonitorDisplayAreaSize(
   pdwCurrentWidthOrHeight: Deno.PointerValue | Uint8Array | null /* ptr */,
   pdwMaximumWidthOrHeight: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
-  return libdxva2.GetMonitorDisplayAreaSize(util.toPointer(hMonitor), stSizeType, util.toPointer(pdwMinimumWidthOrHeight), util.toPointer(pdwCurrentWidthOrHeight), util.toPointer(pdwMaximumWidthOrHeight));
+  return libdxva2_dll.GetMonitorDisplayAreaSize(util.toPointer(hMonitor), stSizeType, util.toPointer(pdwMinimumWidthOrHeight), util.toPointer(pdwCurrentWidthOrHeight), util.toPointer(pdwMaximumWidthOrHeight));
 }
 
 export function GetMonitorDisplayAreaPosition(
@@ -8234,7 +8464,7 @@ export function GetMonitorDisplayAreaPosition(
   pdwCurrentPosition: Deno.PointerValue | Uint8Array | null /* ptr */,
   pdwMaximumPosition: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
-  return libdxva2.GetMonitorDisplayAreaPosition(util.toPointer(hMonitor), ptPositionType, util.toPointer(pdwMinimumPosition), util.toPointer(pdwCurrentPosition), util.toPointer(pdwMaximumPosition));
+  return libdxva2_dll.GetMonitorDisplayAreaPosition(util.toPointer(hMonitor), ptPositionType, util.toPointer(pdwMinimumPosition), util.toPointer(pdwCurrentPosition), util.toPointer(pdwMaximumPosition));
 }
 
 export function SetMonitorDisplayAreaSize(
@@ -8242,7 +8472,7 @@ export function SetMonitorDisplayAreaSize(
   stSizeType: MC_SIZE_TYPE /* Windows.Win32.Devices.Display.MC_SIZE_TYPE */,
   dwNewDisplayAreaWidthOrHeight: number /* u32 */,
 ): number /* i32 */ {
-  return libdxva2.SetMonitorDisplayAreaSize(util.toPointer(hMonitor), stSizeType, dwNewDisplayAreaWidthOrHeight);
+  return libdxva2_dll.SetMonitorDisplayAreaSize(util.toPointer(hMonitor), stSizeType, dwNewDisplayAreaWidthOrHeight);
 }
 
 export function SetMonitorDisplayAreaPosition(
@@ -8250,44 +8480,44 @@ export function SetMonitorDisplayAreaPosition(
   ptPositionType: MC_POSITION_TYPE /* Windows.Win32.Devices.Display.MC_POSITION_TYPE */,
   dwNewPosition: number /* u32 */,
 ): number /* i32 */ {
-  return libdxva2.SetMonitorDisplayAreaPosition(util.toPointer(hMonitor), ptPositionType, dwNewPosition);
+  return libdxva2_dll.SetMonitorDisplayAreaPosition(util.toPointer(hMonitor), ptPositionType, dwNewPosition);
 }
 
 export function RestoreMonitorFactoryColorDefaults(
   hMonitor: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
 ): number /* i32 */ {
-  return libdxva2.RestoreMonitorFactoryColorDefaults(util.toPointer(hMonitor));
+  return libdxva2_dll.RestoreMonitorFactoryColorDefaults(util.toPointer(hMonitor));
 }
 
 export function RestoreMonitorFactoryDefaults(
   hMonitor: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
 ): number /* i32 */ {
-  return libdxva2.RestoreMonitorFactoryDefaults(util.toPointer(hMonitor));
+  return libdxva2_dll.RestoreMonitorFactoryDefaults(util.toPointer(hMonitor));
 }
 
 export function BRUSHOBJ_pvAllocRbrush(
   pbo: Deno.PointerValue | Uint8Array | null /* ptr */,
   cj: number /* u32 */,
 ): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libGDI32.BRUSHOBJ_pvAllocRbrush(util.toPointer(pbo), cj));
+  return util.pointerFromFfi(libGDI32_dll.BRUSHOBJ_pvAllocRbrush(util.toPointer(pbo), cj));
 }
 
 export function BRUSHOBJ_pvGetRbrush(
   pbo: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libGDI32.BRUSHOBJ_pvGetRbrush(util.toPointer(pbo)));
+  return util.pointerFromFfi(libGDI32_dll.BRUSHOBJ_pvGetRbrush(util.toPointer(pbo)));
 }
 
 export function BRUSHOBJ_ulGetBrushColor(
   pbo: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libGDI32.BRUSHOBJ_ulGetBrushColor(util.toPointer(pbo));
+  return libGDI32_dll.BRUSHOBJ_ulGetBrushColor(util.toPointer(pbo));
 }
 
 export function BRUSHOBJ_hGetColorTransform(
   pbo: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */ {
-  return util.pointerFromFfi(libGDI32.BRUSHOBJ_hGetColorTransform(util.toPointer(pbo)));
+  return util.pointerFromFfi(libGDI32_dll.BRUSHOBJ_hGetColorTransform(util.toPointer(pbo)));
 }
 
 export function CLIPOBJ_cEnumStart(
@@ -8297,7 +8527,7 @@ export function CLIPOBJ_cEnumStart(
   iDirection: number /* u32 */,
   cLimit: number /* u32 */,
 ): number /* u32 */ {
-  return libGDI32.CLIPOBJ_cEnumStart(util.toPointer(pco), util.boolToFfi(bAll), iType, iDirection, cLimit);
+  return libGDI32_dll.CLIPOBJ_cEnumStart(util.toPointer(pco), util.boolToFfi(bAll), iType, iDirection, cLimit);
 }
 
 export function CLIPOBJ_bEnum(
@@ -8305,20 +8535,20 @@ export function CLIPOBJ_bEnum(
   cj: number /* u32 */,
   pul: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libGDI32.CLIPOBJ_bEnum(util.toPointer(pco), cj, util.toPointer(pul)));
+  return util.boolFromFfi(libGDI32_dll.CLIPOBJ_bEnum(util.toPointer(pco), cj, util.toPointer(pul)));
 }
 
 export function CLIPOBJ_ppoGetPath(
   pco: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libGDI32.CLIPOBJ_ppoGetPath(util.toPointer(pco)));
+  return util.pointerFromFfi(libGDI32_dll.CLIPOBJ_ppoGetPath(util.toPointer(pco)));
 }
 
 export function FONTOBJ_cGetAllGlyphHandles(
   pfo: Deno.PointerValue | Uint8Array | null /* ptr */,
   phg: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libGDI32.FONTOBJ_cGetAllGlyphHandles(util.toPointer(pfo), util.toPointer(phg));
+  return libGDI32_dll.FONTOBJ_cGetAllGlyphHandles(util.toPointer(pfo), util.toPointer(phg));
 }
 
 export function FONTOBJ_vGetInfo(
@@ -8326,7 +8556,7 @@ export function FONTOBJ_vGetInfo(
   cjSize: number /* u32 */,
   pfi: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): void /* void */ {
-  return libGDI32.FONTOBJ_vGetInfo(util.toPointer(pfo), cjSize, util.toPointer(pfi));
+  return libGDI32_dll.FONTOBJ_vGetInfo(util.toPointer(pfo), cjSize, util.toPointer(pfi));
 }
 
 export function FONTOBJ_cGetGlyphs(
@@ -8336,52 +8566,52 @@ export function FONTOBJ_cGetGlyphs(
   phg: Deno.PointerValue | Uint8Array | null /* ptr */,
   ppvGlyph: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libGDI32.FONTOBJ_cGetGlyphs(util.toPointer(pfo), iMode, cGlyph, util.toPointer(phg), util.toPointer(ppvGlyph));
+  return libGDI32_dll.FONTOBJ_cGetGlyphs(util.toPointer(pfo), iMode, cGlyph, util.toPointer(phg), util.toPointer(ppvGlyph));
 }
 
 export function FONTOBJ_pxoGetXform(
   pfo: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libGDI32.FONTOBJ_pxoGetXform(util.toPointer(pfo)));
+  return util.pointerFromFfi(libGDI32_dll.FONTOBJ_pxoGetXform(util.toPointer(pfo)));
 }
 
 export function FONTOBJ_pifi(
   pfo: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libGDI32.FONTOBJ_pifi(util.toPointer(pfo)));
+  return util.pointerFromFfi(libGDI32_dll.FONTOBJ_pifi(util.toPointer(pfo)));
 }
 
 export function FONTOBJ_pfdg(
   pfo: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libGDI32.FONTOBJ_pfdg(util.toPointer(pfo)));
+  return util.pointerFromFfi(libGDI32_dll.FONTOBJ_pfdg(util.toPointer(pfo)));
 }
 
 export function FONTOBJ_pvTrueTypeFontFile(
   pfo: Deno.PointerValue | Uint8Array | null /* ptr */,
   pcjFile: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libGDI32.FONTOBJ_pvTrueTypeFontFile(util.toPointer(pfo), util.toPointer(pcjFile)));
+  return util.pointerFromFfi(libGDI32_dll.FONTOBJ_pvTrueTypeFontFile(util.toPointer(pfo), util.toPointer(pcjFile)));
 }
 
 export function FONTOBJ_pQueryGlyphAttrs(
   pfo: Deno.PointerValue | Uint8Array | null /* ptr */,
   iMode: number /* u32 */,
 ): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libGDI32.FONTOBJ_pQueryGlyphAttrs(util.toPointer(pfo), iMode));
+  return util.pointerFromFfi(libGDI32_dll.FONTOBJ_pQueryGlyphAttrs(util.toPointer(pfo), iMode));
 }
 
 export function PATHOBJ_vEnumStart(
   ppo: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): void /* void */ {
-  return libGDI32.PATHOBJ_vEnumStart(util.toPointer(ppo));
+  return libGDI32_dll.PATHOBJ_vEnumStart(util.toPointer(ppo));
 }
 
 export function PATHOBJ_bEnum(
   ppo: Deno.PointerValue | Uint8Array | null /* ptr */,
   ppd: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libGDI32.PATHOBJ_bEnum(util.toPointer(ppo), util.toPointer(ppd)));
+  return util.boolFromFfi(libGDI32_dll.PATHOBJ_bEnum(util.toPointer(ppo), util.toPointer(ppd)));
 }
 
 export function PATHOBJ_vEnumStartClipLines(
@@ -8390,7 +8620,7 @@ export function PATHOBJ_vEnumStartClipLines(
   pso: Deno.PointerValue | Uint8Array | null /* ptr */,
   pla: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): void /* void */ {
-  return libGDI32.PATHOBJ_vEnumStartClipLines(util.toPointer(ppo), util.toPointer(pco), util.toPointer(pso), util.toPointer(pla));
+  return libGDI32_dll.PATHOBJ_vEnumStartClipLines(util.toPointer(ppo), util.toPointer(pco), util.toPointer(pso), util.toPointer(pla));
 }
 
 export function PATHOBJ_bEnumClipLines(
@@ -8398,20 +8628,20 @@ export function PATHOBJ_bEnumClipLines(
   cb: number /* u32 */,
   pcl: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libGDI32.PATHOBJ_bEnumClipLines(util.toPointer(ppo), cb, util.toPointer(pcl)));
+  return util.boolFromFfi(libGDI32_dll.PATHOBJ_bEnumClipLines(util.toPointer(ppo), cb, util.toPointer(pcl)));
 }
 
 export function PATHOBJ_vGetBounds(
   ppo: Deno.PointerValue | Uint8Array | null /* ptr */,
   prectfx: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): void /* void */ {
-  return libGDI32.PATHOBJ_vGetBounds(util.toPointer(ppo), util.toPointer(prectfx));
+  return libGDI32_dll.PATHOBJ_vGetBounds(util.toPointer(ppo), util.toPointer(prectfx));
 }
 
 export function STROBJ_vEnumStart(
   pstro: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): void /* void */ {
-  return libGDI32.STROBJ_vEnumStart(util.toPointer(pstro));
+  return libGDI32_dll.STROBJ_vEnumStart(util.toPointer(pstro));
 }
 
 export function STROBJ_bEnum(
@@ -8419,7 +8649,7 @@ export function STROBJ_bEnum(
   pc: Deno.PointerValue | Uint8Array | null /* ptr */,
   ppgpos: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libGDI32.STROBJ_bEnum(util.toPointer(pstro), util.toPointer(pc), util.toPointer(ppgpos)));
+  return util.boolFromFfi(libGDI32_dll.STROBJ_bEnum(util.toPointer(pstro), util.toPointer(pc), util.toPointer(ppgpos)));
 }
 
 export function STROBJ_bEnumPositionsOnly(
@@ -8427,13 +8657,13 @@ export function STROBJ_bEnumPositionsOnly(
   pc: Deno.PointerValue | Uint8Array | null /* ptr */,
   ppgpos: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libGDI32.STROBJ_bEnumPositionsOnly(util.toPointer(pstro), util.toPointer(pc), util.toPointer(ppgpos)));
+  return util.boolFromFfi(libGDI32_dll.STROBJ_bEnumPositionsOnly(util.toPointer(pstro), util.toPointer(pc), util.toPointer(ppgpos)));
 }
 
 export function STROBJ_dwGetCodePage(
   pstro: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libGDI32.STROBJ_dwGetCodePage(util.toPointer(pstro));
+  return libGDI32_dll.STROBJ_dwGetCodePage(util.toPointer(pstro));
 }
 
 export function STROBJ_bGetAdvanceWidths(
@@ -8442,14 +8672,14 @@ export function STROBJ_bGetAdvanceWidths(
   c: number /* u32 */,
   pptqD: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libGDI32.STROBJ_bGetAdvanceWidths(util.toPointer(pso), iFirst, c, util.toPointer(pptqD)));
+  return util.boolFromFfi(libGDI32_dll.STROBJ_bGetAdvanceWidths(util.toPointer(pso), iFirst, c, util.toPointer(pptqD)));
 }
 
 export function XFORMOBJ_iGetXform(
   pxo: Deno.PointerValue | Uint8Array | null /* ptr */,
   pxform: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libGDI32.XFORMOBJ_iGetXform(util.toPointer(pxo), util.toPointer(pxform));
+  return libGDI32_dll.XFORMOBJ_iGetXform(util.toPointer(pxo), util.toPointer(pxform));
 }
 
 export function XFORMOBJ_bApplyXform(
@@ -8459,20 +8689,20 @@ export function XFORMOBJ_bApplyXform(
   pvIn: Deno.PointerValue | Uint8Array | null /* ptr */,
   pvOut: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libGDI32.XFORMOBJ_bApplyXform(util.toPointer(pxo), iMode, cPoints, util.toPointer(pvIn), util.toPointer(pvOut)));
+  return util.boolFromFfi(libGDI32_dll.XFORMOBJ_bApplyXform(util.toPointer(pxo), iMode, cPoints, util.toPointer(pvIn), util.toPointer(pvOut)));
 }
 
 export function XLATEOBJ_iXlate(
   pxlo: Deno.PointerValue | Uint8Array | null /* ptr */,
   iColor: number /* u32 */,
 ): number /* u32 */ {
-  return libGDI32.XLATEOBJ_iXlate(util.toPointer(pxlo), iColor);
+  return libGDI32_dll.XLATEOBJ_iXlate(util.toPointer(pxlo), iColor);
 }
 
 export function XLATEOBJ_piVector(
   pxlo: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libGDI32.XLATEOBJ_piVector(util.toPointer(pxlo)));
+  return util.pointerFromFfi(libGDI32_dll.XLATEOBJ_piVector(util.toPointer(pxlo)));
 }
 
 export function XLATEOBJ_cGetPalette(
@@ -8481,13 +8711,13 @@ export function XLATEOBJ_cGetPalette(
   cPal: number /* u32 */,
   pPal: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libGDI32.XLATEOBJ_cGetPalette(util.toPointer(pxlo), iPal, cPal, util.toPointer(pPal));
+  return libGDI32_dll.XLATEOBJ_cGetPalette(util.toPointer(pxlo), iPal, cPal, util.toPointer(pPal));
 }
 
 export function XLATEOBJ_hGetColorTransform(
   pxlo: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */ {
-  return util.pointerFromFfi(libGDI32.XLATEOBJ_hGetColorTransform(util.toPointer(pxlo)));
+  return util.pointerFromFfi(libGDI32_dll.XLATEOBJ_hGetColorTransform(util.toPointer(pxlo)));
 }
 
 export function EngCreateBitmap(
@@ -8497,7 +8727,7 @@ export function EngCreateBitmap(
   fl: number /* u32 */,
   pvBits: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Graphics.Gdi.HBITMAP */ {
-  return util.pointerFromFfi(libGDI32.EngCreateBitmap(util.toPointer(sizl), lWidth, iFormat, fl, util.toPointer(pvBits)));
+  return util.pointerFromFfi(libGDI32_dll.EngCreateBitmap(util.toPointer(sizl), lWidth, iFormat, fl, util.toPointer(pvBits)));
 }
 
 export function EngCreateDeviceSurface(
@@ -8505,7 +8735,7 @@ export function EngCreateDeviceSurface(
   sizl: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.SIZE */,
   iFormatCompat: number /* u32 */,
 ): Deno.PointerValue | null /* Windows.Win32.Devices.Display.HSURF */ {
-  return util.pointerFromFfi(libGDI32.EngCreateDeviceSurface(util.toPointer(dhsurf), util.toPointer(sizl), iFormatCompat));
+  return util.pointerFromFfi(libGDI32_dll.EngCreateDeviceSurface(util.toPointer(dhsurf), util.toPointer(sizl), iFormatCompat));
 }
 
 export function EngCreateDeviceBitmap(
@@ -8513,25 +8743,25 @@ export function EngCreateDeviceBitmap(
   sizl: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.SIZE */,
   iFormatCompat: number /* u32 */,
 ): Deno.PointerValue | null /* Windows.Win32.Graphics.Gdi.HBITMAP */ {
-  return util.pointerFromFfi(libGDI32.EngCreateDeviceBitmap(util.toPointer(dhsurf), util.toPointer(sizl), iFormatCompat));
+  return util.pointerFromFfi(libGDI32_dll.EngCreateDeviceBitmap(util.toPointer(dhsurf), util.toPointer(sizl), iFormatCompat));
 }
 
 export function EngDeleteSurface(
   hsurf: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.Display.HSURF */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libGDI32.EngDeleteSurface(util.toPointer(hsurf)));
+  return util.boolFromFfi(libGDI32_dll.EngDeleteSurface(util.toPointer(hsurf)));
 }
 
 export function EngLockSurface(
   hsurf: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.Display.HSURF */,
 ): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libGDI32.EngLockSurface(util.toPointer(hsurf)));
+  return util.pointerFromFfi(libGDI32_dll.EngLockSurface(util.toPointer(hsurf)));
 }
 
 export function EngUnlockSurface(
   pso: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): void /* void */ {
-  return libGDI32.EngUnlockSurface(util.toPointer(pso));
+  return libGDI32_dll.EngUnlockSurface(util.toPointer(pso));
 }
 
 export function EngEraseSurface(
@@ -8539,7 +8769,7 @@ export function EngEraseSurface(
   prcl: Deno.PointerValue | Uint8Array | null /* ptr */,
   iColor: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libGDI32.EngEraseSurface(util.toPointer(pso), util.toPointer(prcl), iColor));
+  return util.boolFromFfi(libGDI32_dll.EngEraseSurface(util.toPointer(pso), util.toPointer(prcl), iColor));
 }
 
 export function EngAssociateSurface(
@@ -8547,25 +8777,25 @@ export function EngAssociateSurface(
   hdev: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.Display.HDEV */,
   flHooks: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libGDI32.EngAssociateSurface(util.toPointer(hsurf), util.toPointer(hdev), flHooks));
+  return util.boolFromFfi(libGDI32_dll.EngAssociateSurface(util.toPointer(hsurf), util.toPointer(hdev), flHooks));
 }
 
 export function EngMarkBandingSurface(
   hsurf: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.Display.HSURF */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libGDI32.EngMarkBandingSurface(util.toPointer(hsurf)));
+  return util.boolFromFfi(libGDI32_dll.EngMarkBandingSurface(util.toPointer(hsurf)));
 }
 
 export function EngCheckAbort(
   pso: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libGDI32.EngCheckAbort(util.toPointer(pso)));
+  return util.boolFromFfi(libGDI32_dll.EngCheckAbort(util.toPointer(pso)));
 }
 
 export function EngDeletePath(
   ppo: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): void /* void */ {
-  return libGDI32.EngDeletePath(util.toPointer(ppo));
+  return libGDI32_dll.EngDeletePath(util.toPointer(ppo));
 }
 
 export function EngCreatePalette(
@@ -8576,23 +8806,23 @@ export function EngCreatePalette(
   flGreen: number /* u32 */,
   flBlue: number /* u32 */,
 ): Deno.PointerValue | null /* Windows.Win32.Graphics.Gdi.HPALETTE */ {
-  return util.pointerFromFfi(libGDI32.EngCreatePalette(iMode, cColors, util.toPointer(pulColors), flRed, flGreen, flBlue));
+  return util.pointerFromFfi(libGDI32_dll.EngCreatePalette(iMode, cColors, util.toPointer(pulColors), flRed, flGreen, flBlue));
 }
 
 export function EngDeletePalette(
   hpal: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Graphics.Gdi.HPALETTE */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libGDI32.EngDeletePalette(util.toPointer(hpal)));
+  return util.boolFromFfi(libGDI32_dll.EngDeletePalette(util.toPointer(hpal)));
 }
 
 export function EngCreateClip(): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libGDI32.EngCreateClip());
+  return util.pointerFromFfi(libGDI32_dll.EngCreateClip());
 }
 
 export function EngDeleteClip(
   pco: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): void /* void */ {
-  return libGDI32.EngDeleteClip(util.toPointer(pco));
+  return libGDI32_dll.EngDeleteClip(util.toPointer(pco));
 }
 
 export function EngBitBlt(
@@ -8608,7 +8838,7 @@ export function EngBitBlt(
   pptlBrush: Deno.PointerValue | Uint8Array | null /* ptr */,
   rop4: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libGDI32.EngBitBlt(util.toPointer(psoTrg), util.toPointer(psoSrc), util.toPointer(psoMask), util.toPointer(pco), util.toPointer(pxlo), util.toPointer(prclTrg), util.toPointer(pptlSrc), util.toPointer(pptlMask), util.toPointer(pbo), util.toPointer(pptlBrush), rop4));
+  return util.boolFromFfi(libGDI32_dll.EngBitBlt(util.toPointer(psoTrg), util.toPointer(psoSrc), util.toPointer(psoMask), util.toPointer(pco), util.toPointer(pxlo), util.toPointer(prclTrg), util.toPointer(pptlSrc), util.toPointer(pptlMask), util.toPointer(pbo), util.toPointer(pptlBrush), rop4));
 }
 
 export function EngLineTo(
@@ -8622,7 +8852,7 @@ export function EngLineTo(
   prclBounds: Deno.PointerValue | Uint8Array | null /* ptr */,
   mix: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libGDI32.EngLineTo(util.toPointer(pso), util.toPointer(pco), util.toPointer(pbo), x1, y1, x2, y2, util.toPointer(prclBounds), mix));
+  return util.boolFromFfi(libGDI32_dll.EngLineTo(util.toPointer(pso), util.toPointer(pco), util.toPointer(pbo), x1, y1, x2, y2, util.toPointer(prclBounds), mix));
 }
 
 export function EngStretchBlt(
@@ -8638,7 +8868,7 @@ export function EngStretchBlt(
   pptlMask: Deno.PointerValue | Uint8Array | null /* ptr */,
   iMode: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libGDI32.EngStretchBlt(util.toPointer(psoDest), util.toPointer(psoSrc), util.toPointer(psoMask), util.toPointer(pco), util.toPointer(pxlo), util.toPointer(pca), util.toPointer(pptlHTOrg), util.toPointer(prclDest), util.toPointer(prclSrc), util.toPointer(pptlMask), iMode));
+  return util.boolFromFfi(libGDI32_dll.EngStretchBlt(util.toPointer(psoDest), util.toPointer(psoSrc), util.toPointer(psoMask), util.toPointer(pco), util.toPointer(pxlo), util.toPointer(pca), util.toPointer(pptlHTOrg), util.toPointer(prclDest), util.toPointer(prclSrc), util.toPointer(pptlMask), iMode));
 }
 
 export function EngStretchBltROP(
@@ -8656,7 +8886,7 @@ export function EngStretchBltROP(
   pbo: Deno.PointerValue | Uint8Array | null /* ptr */,
   rop4: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libGDI32.EngStretchBltROP(util.toPointer(psoDest), util.toPointer(psoSrc), util.toPointer(psoMask), util.toPointer(pco), util.toPointer(pxlo), util.toPointer(pca), util.toPointer(pptlHTOrg), util.toPointer(prclDest), util.toPointer(prclSrc), util.toPointer(pptlMask), iMode, util.toPointer(pbo), rop4));
+  return util.boolFromFfi(libGDI32_dll.EngStretchBltROP(util.toPointer(psoDest), util.toPointer(psoSrc), util.toPointer(psoMask), util.toPointer(pco), util.toPointer(pxlo), util.toPointer(pca), util.toPointer(pptlHTOrg), util.toPointer(prclDest), util.toPointer(prclSrc), util.toPointer(pptlMask), iMode, util.toPointer(pbo), rop4));
 }
 
 export function EngAlphaBlend(
@@ -8668,7 +8898,7 @@ export function EngAlphaBlend(
   prclSrc: Deno.PointerValue | Uint8Array | null /* ptr */,
   pBlendObj: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libGDI32.EngAlphaBlend(util.toPointer(psoDest), util.toPointer(psoSrc), util.toPointer(pco), util.toPointer(pxlo), util.toPointer(prclDest), util.toPointer(prclSrc), util.toPointer(pBlendObj)));
+  return util.boolFromFfi(libGDI32_dll.EngAlphaBlend(util.toPointer(psoDest), util.toPointer(psoSrc), util.toPointer(pco), util.toPointer(pxlo), util.toPointer(prclDest), util.toPointer(prclSrc), util.toPointer(pBlendObj)));
 }
 
 export function EngGradientFill(
@@ -8683,7 +8913,7 @@ export function EngGradientFill(
   pptlDitherOrg: Deno.PointerValue | Uint8Array | null /* ptr */,
   ulMode: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libGDI32.EngGradientFill(util.toPointer(psoDest), util.toPointer(pco), util.toPointer(pxlo), util.toPointer(pVertex), nVertex, util.toPointer(pMesh), nMesh, util.toPointer(prclExtents), util.toPointer(pptlDitherOrg), ulMode));
+  return util.boolFromFfi(libGDI32_dll.EngGradientFill(util.toPointer(psoDest), util.toPointer(pco), util.toPointer(pxlo), util.toPointer(pVertex), nVertex, util.toPointer(pMesh), nMesh, util.toPointer(prclExtents), util.toPointer(pptlDitherOrg), ulMode));
 }
 
 export function EngTransparentBlt(
@@ -8696,7 +8926,7 @@ export function EngTransparentBlt(
   TransColor: number /* u32 */,
   bCalledFromBitBlt: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libGDI32.EngTransparentBlt(util.toPointer(psoDst), util.toPointer(psoSrc), util.toPointer(pco), util.toPointer(pxlo), util.toPointer(prclDst), util.toPointer(prclSrc), TransColor, bCalledFromBitBlt));
+  return util.boolFromFfi(libGDI32_dll.EngTransparentBlt(util.toPointer(psoDst), util.toPointer(psoSrc), util.toPointer(pco), util.toPointer(pxlo), util.toPointer(prclDst), util.toPointer(prclSrc), TransColor, bCalledFromBitBlt));
 }
 
 export function EngTextOut(
@@ -8711,7 +8941,7 @@ export function EngTextOut(
   pptlOrg: Deno.PointerValue | Uint8Array | null /* ptr */,
   mix: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libGDI32.EngTextOut(util.toPointer(pso), util.toPointer(pstro), util.toPointer(pfo), util.toPointer(pco), util.toPointer(prclExtra), util.toPointer(prclOpaque), util.toPointer(pboFore), util.toPointer(pboOpaque), util.toPointer(pptlOrg), mix));
+  return util.boolFromFfi(libGDI32_dll.EngTextOut(util.toPointer(pso), util.toPointer(pstro), util.toPointer(pfo), util.toPointer(pco), util.toPointer(prclExtra), util.toPointer(prclOpaque), util.toPointer(pboFore), util.toPointer(pboOpaque), util.toPointer(pptlOrg), mix));
 }
 
 export function EngStrokePath(
@@ -8724,7 +8954,7 @@ export function EngStrokePath(
   plineattrs: Deno.PointerValue | Uint8Array | null /* ptr */,
   mix: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libGDI32.EngStrokePath(util.toPointer(pso), util.toPointer(ppo), util.toPointer(pco), util.toPointer(pxo), util.toPointer(pbo), util.toPointer(pptlBrushOrg), util.toPointer(plineattrs), mix));
+  return util.boolFromFfi(libGDI32_dll.EngStrokePath(util.toPointer(pso), util.toPointer(ppo), util.toPointer(pco), util.toPointer(pxo), util.toPointer(pbo), util.toPointer(pptlBrushOrg), util.toPointer(plineattrs), mix));
 }
 
 export function EngFillPath(
@@ -8736,7 +8966,7 @@ export function EngFillPath(
   mix: number /* u32 */,
   flOptions: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libGDI32.EngFillPath(util.toPointer(pso), util.toPointer(ppo), util.toPointer(pco), util.toPointer(pbo), util.toPointer(pptlBrushOrg), mix, flOptions));
+  return util.boolFromFfi(libGDI32_dll.EngFillPath(util.toPointer(pso), util.toPointer(ppo), util.toPointer(pco), util.toPointer(pbo), util.toPointer(pptlBrushOrg), mix, flOptions));
 }
 
 export function EngStrokeAndFillPath(
@@ -8751,7 +8981,7 @@ export function EngStrokeAndFillPath(
   mixFill: number /* u32 */,
   flOptions: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libGDI32.EngStrokeAndFillPath(util.toPointer(pso), util.toPointer(ppo), util.toPointer(pco), util.toPointer(pxo), util.toPointer(pboStroke), util.toPointer(plineattrs), util.toPointer(pboFill), util.toPointer(pptlBrushOrg), mixFill, flOptions));
+  return util.boolFromFfi(libGDI32_dll.EngStrokeAndFillPath(util.toPointer(pso), util.toPointer(ppo), util.toPointer(pco), util.toPointer(pxo), util.toPointer(pboStroke), util.toPointer(plineattrs), util.toPointer(pboFill), util.toPointer(pptlBrushOrg), mixFill, flOptions));
 }
 
 export function EngPaint(
@@ -8761,7 +8991,7 @@ export function EngPaint(
   pptlBrushOrg: Deno.PointerValue | Uint8Array | null /* ptr */,
   mix: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libGDI32.EngPaint(util.toPointer(pso), util.toPointer(pco), util.toPointer(pbo), util.toPointer(pptlBrushOrg), mix));
+  return util.boolFromFfi(libGDI32_dll.EngPaint(util.toPointer(pso), util.toPointer(pco), util.toPointer(pbo), util.toPointer(pptlBrushOrg), mix));
 }
 
 export function EngCopyBits(
@@ -8772,7 +9002,7 @@ export function EngCopyBits(
   prclDest: Deno.PointerValue | Uint8Array | null /* ptr */,
   pptlSrc: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libGDI32.EngCopyBits(util.toPointer(psoDest), util.toPointer(psoSrc), util.toPointer(pco), util.toPointer(pxlo), util.toPointer(prclDest), util.toPointer(pptlSrc)));
+  return util.boolFromFfi(libGDI32_dll.EngCopyBits(util.toPointer(psoDest), util.toPointer(psoSrc), util.toPointer(pco), util.toPointer(pxlo), util.toPointer(prclDest), util.toPointer(pptlSrc)));
 }
 
 export function EngPlgBlt(
@@ -8788,7 +9018,7 @@ export function EngPlgBlt(
   pptl: Deno.PointerValue | Uint8Array | null /* ptr */,
   iMode: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libGDI32.EngPlgBlt(util.toPointer(psoTrg), util.toPointer(psoSrc), util.toPointer(psoMsk), util.toPointer(pco), util.toPointer(pxlo), util.toPointer(pca), util.toPointer(pptlBrushOrg), util.toPointer(pptfx), util.toPointer(prcl), util.toPointer(pptl), iMode));
+  return util.boolFromFfi(libGDI32_dll.EngPlgBlt(util.toPointer(psoTrg), util.toPointer(psoSrc), util.toPointer(psoMsk), util.toPointer(pco), util.toPointer(pxlo), util.toPointer(pca), util.toPointer(pptlBrushOrg), util.toPointer(pptfx), util.toPointer(prcl), util.toPointer(pptl), iMode));
 }
 
 export function HT_Get8BPPFormatPalette(
@@ -8797,7 +9027,7 @@ export function HT_Get8BPPFormatPalette(
   GreenGamma: number /* u16 */,
   BlueGamma: number /* u16 */,
 ): number /* i32 */ {
-  return libGDI32.HT_Get8BPPFormatPalette(util.toPointer(pPaletteEntry), RedGamma, GreenGamma, BlueGamma);
+  return libGDI32_dll.HT_Get8BPPFormatPalette(util.toPointer(pPaletteEntry), RedGamma, GreenGamma, BlueGamma);
 }
 
 export function HT_Get8BPPMaskPalette(
@@ -8808,25 +9038,25 @@ export function HT_Get8BPPMaskPalette(
   GreenGamma: number /* u16 */,
   BlueGamma: number /* u16 */,
 ): number /* i32 */ {
-  return libGDI32.HT_Get8BPPMaskPalette(util.toPointer(pPaletteEntry), util.boolToFfi(Use8BPPMaskPal), CMYMask, RedGamma, GreenGamma, BlueGamma);
+  return libGDI32_dll.HT_Get8BPPMaskPalette(util.toPointer(pPaletteEntry), util.boolToFfi(Use8BPPMaskPal), CMYMask, RedGamma, GreenGamma, BlueGamma);
 }
 
 export function EngGetPrinterDataFileName(
   hdev: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.Display.HDEV */,
 ): string | null /* Windows.Win32.Foundation.PWSTR */ {
-  return util.pwstrFromFfi(libGDI32.EngGetPrinterDataFileName(util.toPointer(hdev)));
+  return util.pwstrFromFfi(libGDI32_dll.EngGetPrinterDataFileName(util.toPointer(hdev)));
 }
 
 export function EngGetDriverName(
   hdev: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.Display.HDEV */,
 ): string | null /* Windows.Win32.Foundation.PWSTR */ {
-  return util.pwstrFromFfi(libGDI32.EngGetDriverName(util.toPointer(hdev)));
+  return util.pwstrFromFfi(libGDI32_dll.EngGetDriverName(util.toPointer(hdev)));
 }
 
 export function EngLoadModule(
   pwsz: string | null /* Windows.Win32.Foundation.PWSTR */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */ {
-  return util.pointerFromFfi(libGDI32.EngLoadModule(util.pwstrToFfi(pwsz)));
+  return util.pointerFromFfi(libGDI32_dll.EngLoadModule(util.pwstrToFfi(pwsz)));
 }
 
 export function EngFindResource(
@@ -8835,35 +9065,35 @@ export function EngFindResource(
   iType: number /* i32 */,
   pulSize: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libGDI32.EngFindResource(util.toPointer(h), iName, iType, util.toPointer(pulSize)));
+  return util.pointerFromFfi(libGDI32_dll.EngFindResource(util.toPointer(h), iName, iType, util.toPointer(pulSize)));
 }
 
 export function EngFreeModule(
   h: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
 ): void /* void */ {
-  return libGDI32.EngFreeModule(util.toPointer(h));
+  return libGDI32_dll.EngFreeModule(util.toPointer(h));
 }
 
 export function EngCreateSemaphore(): Deno.PointerValue | null /* Windows.Win32.Devices.Display.HSEMAPHORE */ {
-  return util.pointerFromFfi(libGDI32.EngCreateSemaphore());
+  return util.pointerFromFfi(libGDI32_dll.EngCreateSemaphore());
 }
 
 export function EngAcquireSemaphore(
   hsem: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.Display.HSEMAPHORE */,
 ): void /* void */ {
-  return libGDI32.EngAcquireSemaphore(util.toPointer(hsem));
+  return libGDI32_dll.EngAcquireSemaphore(util.toPointer(hsem));
 }
 
 export function EngReleaseSemaphore(
   hsem: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.Display.HSEMAPHORE */,
 ): void /* void */ {
-  return libGDI32.EngReleaseSemaphore(util.toPointer(hsem));
+  return libGDI32_dll.EngReleaseSemaphore(util.toPointer(hsem));
 }
 
 export function EngDeleteSemaphore(
   hsem: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.Display.HSEMAPHORE */,
 ): void /* void */ {
-  return libGDI32.EngDeleteSemaphore(util.toPointer(hsem));
+  return libGDI32_dll.EngDeleteSemaphore(util.toPointer(hsem));
 }
 
 export function EngMultiByteToUnicodeN(
@@ -8873,7 +9103,7 @@ export function EngMultiByteToUnicodeN(
   MultiByteString: string | null /* Windows.Win32.Foundation.PSTR */,
   BytesInMultiByteString: number /* u32 */,
 ): void /* void */ {
-  return libGDI32.EngMultiByteToUnicodeN(util.pwstrToFfi(UnicodeString), MaxBytesInUnicodeString, util.toPointer(BytesInUnicodeString), util.pstrToFfi(MultiByteString), BytesInMultiByteString);
+  return libGDI32_dll.EngMultiByteToUnicodeN(util.pwstrToFfi(UnicodeString), MaxBytesInUnicodeString, util.toPointer(BytesInUnicodeString), util.pstrToFfi(MultiByteString), BytesInMultiByteString);
 }
 
 export function EngUnicodeToMultiByteN(
@@ -8883,13 +9113,13 @@ export function EngUnicodeToMultiByteN(
   UnicodeString: string | null /* Windows.Win32.Foundation.PWSTR */,
   BytesInUnicodeString: number /* u32 */,
 ): void /* void */ {
-  return libGDI32.EngUnicodeToMultiByteN(util.pstrToFfi(MultiByteString), MaxBytesInMultiByteString, util.toPointer(BytesInMultiByteString), util.pwstrToFfi(UnicodeString), BytesInUnicodeString);
+  return libGDI32_dll.EngUnicodeToMultiByteN(util.pstrToFfi(MultiByteString), MaxBytesInMultiByteString, util.toPointer(BytesInMultiByteString), util.pwstrToFfi(UnicodeString), BytesInUnicodeString);
 }
 
 export function EngQueryLocalTime(
   param0: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): void /* void */ {
-  return libGDI32.EngQueryLocalTime(util.toPointer(param0));
+  return libGDI32_dll.EngQueryLocalTime(util.toPointer(param0));
 }
 
 export function EngComputeGlyphSet(
@@ -8897,7 +9127,7 @@ export function EngComputeGlyphSet(
   nFirstChar: number /* i32 */,
   cChars: number /* i32 */,
 ): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libGDI32.EngComputeGlyphSet(nCodePage, nFirstChar, cChars));
+  return util.pointerFromFfi(libGDI32_dll.EngComputeGlyphSet(nCodePage, nFirstChar, cChars));
 }
 
 export function EngMultiByteToWideChar(
@@ -8907,7 +9137,7 @@ export function EngMultiByteToWideChar(
   MultiByteString: string | null /* Windows.Win32.Foundation.PSTR */,
   BytesInMultiByteString: number /* i32 */,
 ): number /* i32 */ {
-  return libGDI32.EngMultiByteToWideChar(CodePage, util.pwstrToFfi(WideCharString), BytesInWideCharString, util.pstrToFfi(MultiByteString), BytesInMultiByteString);
+  return libGDI32_dll.EngMultiByteToWideChar(CodePage, util.pwstrToFfi(WideCharString), BytesInWideCharString, util.pstrToFfi(MultiByteString), BytesInMultiByteString);
 }
 
 export function EngWideCharToMultiByte(
@@ -8917,21 +9147,21 @@ export function EngWideCharToMultiByte(
   MultiByteString: string | null /* Windows.Win32.Foundation.PSTR */,
   BytesInMultiByteString: number /* i32 */,
 ): number /* i32 */ {
-  return libGDI32.EngWideCharToMultiByte(CodePage, util.pwstrToFfi(WideCharString), BytesInWideCharString, util.pstrToFfi(MultiByteString), BytesInMultiByteString);
+  return libGDI32_dll.EngWideCharToMultiByte(CodePage, util.pwstrToFfi(WideCharString), BytesInWideCharString, util.pstrToFfi(MultiByteString), BytesInMultiByteString);
 }
 
 export function EngGetCurrentCodePage(
   OemCodePage: Deno.PointerValue | Uint8Array | null /* ptr */,
   AnsiCodePage: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): void /* void */ {
-  return libGDI32.EngGetCurrentCodePage(util.toPointer(OemCodePage), util.toPointer(AnsiCodePage));
+  return libGDI32_dll.EngGetCurrentCodePage(util.toPointer(OemCodePage), util.toPointer(AnsiCodePage));
 }
 
 export function EngQueryEMFInfo(
   hdev: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.Display.HDEV */,
   pEMFInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libGDI32.EngQueryEMFInfo(util.toPointer(hdev), util.toPointer(pEMFInfo)));
+  return util.boolFromFfi(libGDI32_dll.EngQueryEMFInfo(util.toPointer(hdev), util.toPointer(pEMFInfo)));
 }
 
 export function GetDisplayConfigBufferSizes(
@@ -8939,7 +9169,7 @@ export function GetDisplayConfigBufferSizes(
   numPathArrayElements: Deno.PointerValue | Uint8Array | null /* ptr */,
   numModeInfoArrayElements: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
-  return libUSER32.GetDisplayConfigBufferSizes(flags, util.toPointer(numPathArrayElements), util.toPointer(numModeInfoArrayElements));
+  return libUSER32_dll.GetDisplayConfigBufferSizes(flags, util.toPointer(numPathArrayElements), util.toPointer(numModeInfoArrayElements));
 }
 
 export function SetDisplayConfig(
@@ -8949,7 +9179,7 @@ export function SetDisplayConfig(
   modeInfoArray: Deno.PointerValue | Uint8Array | null /* ptr */,
   flags: number /* u32 */,
 ): number /* i32 */ {
-  return libUSER32.SetDisplayConfig(numPathArrayElements, util.toPointer(pathArray), numModeInfoArrayElements, util.toPointer(modeInfoArray), flags);
+  return libUSER32_dll.SetDisplayConfig(numPathArrayElements, util.toPointer(pathArray), numModeInfoArrayElements, util.toPointer(modeInfoArray), flags);
 }
 
 export function QueryDisplayConfig(
@@ -8960,36 +9190,36 @@ export function QueryDisplayConfig(
   modeInfoArray: Deno.PointerValue | Uint8Array | null /* ptr */,
   currentTopologyId: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
-  return libUSER32.QueryDisplayConfig(flags, util.toPointer(numPathArrayElements), util.toPointer(pathArray), util.toPointer(numModeInfoArrayElements), util.toPointer(modeInfoArray), util.toPointer(currentTopologyId));
+  return libUSER32_dll.QueryDisplayConfig(flags, util.toPointer(numPathArrayElements), util.toPointer(pathArray), util.toPointer(numModeInfoArrayElements), util.toPointer(modeInfoArray), util.toPointer(currentTopologyId));
 }
 
 export function DisplayConfigGetDeviceInfo(
   requestPacket: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
-  return libUSER32.DisplayConfigGetDeviceInfo(util.toPointer(requestPacket));
+  return libUSER32_dll.DisplayConfigGetDeviceInfo(util.toPointer(requestPacket));
 }
 
 export function DisplayConfigSetDeviceInfo(
   setPacket: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
-  return libUSER32.DisplayConfigSetDeviceInfo(util.toPointer(setPacket));
+  return libUSER32_dll.DisplayConfigSetDeviceInfo(util.toPointer(setPacket));
 }
 
 export function GetAutoRotationState(
   pState: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSER32.GetAutoRotationState(util.toPointer(pState)));
+  return util.boolFromFfi(libUSER32_dll.GetAutoRotationState(util.toPointer(pState)));
 }
 
 export function GetDisplayAutoRotationPreferences(
   pOrientation: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSER32.GetDisplayAutoRotationPreferences(util.toPointer(pOrientation)));
+  return util.boolFromFfi(libUSER32_dll.GetDisplayAutoRotationPreferences(util.toPointer(pOrientation)));
 }
 
 export function SetDisplayAutoRotationPreferences(
   orientation: ORIENTATION_PREFERENCE /* Windows.Win32.Devices.Display.ORIENTATION_PREFERENCE */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSER32.SetDisplayAutoRotationPreferences(orientation));
+  return util.boolFromFfi(libUSER32_dll.SetDisplayAutoRotationPreferences(orientation));
 }
 

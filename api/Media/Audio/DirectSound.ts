@@ -1274,7 +1274,7 @@ export type HWND = Deno.PointerValue;
 // Native Libraries
 
 try {
-  var libDSOUND = Deno.dlopen("DSOUND", {
+  var libDSOUND_dll = Deno.dlopen("DSOUND.dll", {
     DirectSoundCreate: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "pointer",
@@ -1325,21 +1325,21 @@ export function DirectSoundCreate(
   ppDS: Deno.PointerValue | Uint8Array | null /* ptr */,
   pUnkOuter: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Com.IUnknown */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libDSOUND.DirectSoundCreate(util.toPointer(pcGuidDevice), util.toPointer(ppDS), util.toPointer(pUnkOuter)));
+  return util.pointerFromFfi(libDSOUND_dll.DirectSoundCreate(util.toPointer(pcGuidDevice), util.toPointer(ppDS), util.toPointer(pUnkOuter)));
 }
 
 export function DirectSoundEnumerateA(
   pDSEnumCallback: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Media.Audio.DirectSound.LPDSENUMCALLBACKA */,
   pContext: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libDSOUND.DirectSoundEnumerateA(util.toPointer(pDSEnumCallback), util.toPointer(pContext)));
+  return util.pointerFromFfi(libDSOUND_dll.DirectSoundEnumerateA(util.toPointer(pDSEnumCallback), util.toPointer(pContext)));
 }
 
 export function DirectSoundEnumerateW(
   pDSEnumCallback: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Media.Audio.DirectSound.LPDSENUMCALLBACKW */,
   pContext: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libDSOUND.DirectSoundEnumerateW(util.toPointer(pDSEnumCallback), util.toPointer(pContext)));
+  return util.pointerFromFfi(libDSOUND_dll.DirectSoundEnumerateW(util.toPointer(pDSEnumCallback), util.toPointer(pContext)));
 }
 
 export function DirectSoundCaptureCreate(
@@ -1347,21 +1347,21 @@ export function DirectSoundCaptureCreate(
   ppDSC: Deno.PointerValue | Uint8Array | null /* ptr */,
   pUnkOuter: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Com.IUnknown */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libDSOUND.DirectSoundCaptureCreate(util.toPointer(pcGuidDevice), util.toPointer(ppDSC), util.toPointer(pUnkOuter)));
+  return util.pointerFromFfi(libDSOUND_dll.DirectSoundCaptureCreate(util.toPointer(pcGuidDevice), util.toPointer(ppDSC), util.toPointer(pUnkOuter)));
 }
 
 export function DirectSoundCaptureEnumerateA(
   pDSEnumCallback: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Media.Audio.DirectSound.LPDSENUMCALLBACKA */,
   pContext: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libDSOUND.DirectSoundCaptureEnumerateA(util.toPointer(pDSEnumCallback), util.toPointer(pContext)));
+  return util.pointerFromFfi(libDSOUND_dll.DirectSoundCaptureEnumerateA(util.toPointer(pDSEnumCallback), util.toPointer(pContext)));
 }
 
 export function DirectSoundCaptureEnumerateW(
   pDSEnumCallback: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Media.Audio.DirectSound.LPDSENUMCALLBACKW */,
   pContext: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libDSOUND.DirectSoundCaptureEnumerateW(util.toPointer(pDSEnumCallback), util.toPointer(pContext)));
+  return util.pointerFromFfi(libDSOUND_dll.DirectSoundCaptureEnumerateW(util.toPointer(pDSEnumCallback), util.toPointer(pContext)));
 }
 
 export function DirectSoundCreate8(
@@ -1369,7 +1369,7 @@ export function DirectSoundCreate8(
   ppDS8: Deno.PointerValue | Uint8Array | null /* ptr */,
   pUnkOuter: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Com.IUnknown */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libDSOUND.DirectSoundCreate8(util.toPointer(pcGuidDevice), util.toPointer(ppDS8), util.toPointer(pUnkOuter)));
+  return util.pointerFromFfi(libDSOUND_dll.DirectSoundCreate8(util.toPointer(pcGuidDevice), util.toPointer(ppDS8), util.toPointer(pUnkOuter)));
 }
 
 export function DirectSoundCaptureCreate8(
@@ -1377,7 +1377,7 @@ export function DirectSoundCaptureCreate8(
   ppDSC8: Deno.PointerValue | Uint8Array | null /* ptr */,
   pUnkOuter: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Com.IUnknown */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libDSOUND.DirectSoundCaptureCreate8(util.toPointer(pcGuidDevice), util.toPointer(ppDSC8), util.toPointer(pUnkOuter)));
+  return util.pointerFromFfi(libDSOUND_dll.DirectSoundCaptureCreate8(util.toPointer(pcGuidDevice), util.toPointer(ppDSC8), util.toPointer(pUnkOuter)));
 }
 
 export function DirectSoundFullDuplexCreate(
@@ -1392,13 +1392,13 @@ export function DirectSoundFullDuplexCreate(
   ppDSBuffer8: Deno.PointerValue | Uint8Array | null /* ptr */,
   pUnkOuter: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Com.IUnknown */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libDSOUND.DirectSoundFullDuplexCreate(util.toPointer(pcGuidCaptureDevice), util.toPointer(pcGuidRenderDevice), util.toPointer(pcDSCBufferDesc), util.toPointer(pcDSBufferDesc), util.hwndToFfi(hWnd), dwLevel, util.toPointer(ppDSFD), util.toPointer(ppDSCBuffer8), util.toPointer(ppDSBuffer8), util.toPointer(pUnkOuter)));
+  return util.pointerFromFfi(libDSOUND_dll.DirectSoundFullDuplexCreate(util.toPointer(pcGuidCaptureDevice), util.toPointer(pcGuidRenderDevice), util.toPointer(pcDSCBufferDesc), util.toPointer(pcDSBufferDesc), util.hwndToFfi(hWnd), dwLevel, util.toPointer(ppDSFD), util.toPointer(ppDSCBuffer8), util.toPointer(ppDSBuffer8), util.toPointer(pUnkOuter)));
 }
 
 export function GetDeviceID(
   pGuidSrc: Deno.PointerValue | Uint8Array | null /* ptr */,
   pGuidDest: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libDSOUND.GetDeviceID(util.toPointer(pGuidSrc), util.toPointer(pGuidDest)));
+  return util.pointerFromFfi(libDSOUND_dll.GetDeviceID(util.toPointer(pGuidSrc), util.toPointer(pGuidDest)));
 }
 

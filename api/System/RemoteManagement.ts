@@ -20,6 +20,14 @@ export const WSMAN_FLAG_REQUESTED_API_VERSION_1_1 = 1;
 export const WSMAN_OPERATION_INFOV1 = 0;
 export const WSMAN_OPERATION_INFOV2 = 2864434397;
 export const WSMAN_DEFAULT_TIMEOUT_MS = 60000;
+export const WSMAN_STREAM_ID_STDIN = "stdin";
+export const WSMAN_STREAM_ID_STDOUT = "stdout";
+export const WSMAN_STREAM_ID_STDERR = "stderr";
+export const WSMAN_SHELL_NS = "http://schemas.microsoft.com/wbem/wsman/1/windows/shell";
+export const WSMAN_CMDSHELL_OPTION_CODEPAGE = "WINRS_CODEPAGE";
+export const WSMAN_SHELL_OPTION_NOPROFILE = "WINRS_NOPROFILE";
+export const WSMAN_CMDSHELL_OPTION_CONSOLEMODE_STDIN = "WINRS_CONSOLEMODE_STDIN";
+export const WSMAN_CMDSHELL_OPTION_SKIP_CMD_SHELL = "WINRS_SKIP_CMD_SHELL";
 export const WSMAN_FLAG_RECEIVE_RESULT_NO_MORE_DATA = 1;
 export const WSMAN_FLAG_RECEIVE_FLUSH = 2;
 export const WSMAN_FLAG_RECEIVE_RESULT_DATA_BOUNDARY = 4;
@@ -1289,7 +1297,7 @@ export function allocWSMAN_SHELL_STARTUP_INFO_V10(data?: Partial<WSMAN_SHELL_STA
  */
 export interface WSMAN_SHELL_STARTUP_INFO_V11 {
   /** Windows.Win32.System.RemoteManagement.WSMAN_SHELL_STARTUP_INFO_V10 */
-  __AnonymousBase_wsman_L665_C48: Uint8Array | Deno.PointerValue | null;
+  Base: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.Foundation.PWSTR */
   name: string | null;
 }
@@ -1300,7 +1308,7 @@ export function allocWSMAN_SHELL_STARTUP_INFO_V11(data?: Partial<WSMAN_SHELL_STA
   const buf = new Uint8Array(sizeofWSMAN_SHELL_STARTUP_INFO_V11);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.__AnonymousBase_wsman_L665_C48 !== undefined) view.setBigUint64(0, data.__AnonymousBase_wsman_L665_C48 === null ? 0n : BigInt(util.toPointer(data.__AnonymousBase_wsman_L665_C48)), true);
+  if (data?.Base !== undefined) view.setBigUint64(0, data.Base === null ? 0n : BigInt(util.toPointer(data.Base)), true);
   // 0x08: buffer
   if (data?.name !== undefined) {
     (buf as any)._f8 = util.pwstrToFfi(data.name);
@@ -1644,7 +1652,7 @@ export function allocWSMAN_AUTHZ_QUOTA(data?: Partial<WSMAN_AUTHZ_QUOTA>): Uint8
 // Native Libraries
 
 try {
-  var libWsmSvc = Deno.dlopen("WsmSvc", {
+  var libWsmSvc_dll = Deno.dlopen("WsmSvc.dll", {
     WSManInitialize: {
       parameters: ["u32", "pointer"],
       result: "u32",
@@ -1786,14 +1794,14 @@ export function WSManInitialize(
   flags: number /* u32 */,
   apiHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libWsmSvc.WSManInitialize(flags, util.toPointer(apiHandle));
+  return libWsmSvc_dll.WSManInitialize(flags, util.toPointer(apiHandle));
 }
 
 export function WSManDeinitialize(
   apiHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
   flags: number /* u32 */,
 ): number /* u32 */ {
-  return libWsmSvc.WSManDeinitialize(util.toPointer(apiHandle), flags);
+  return libWsmSvc_dll.WSManDeinitialize(util.toPointer(apiHandle), flags);
 }
 
 export function WSManGetErrorMessage(
@@ -1805,7 +1813,7 @@ export function WSManGetErrorMessage(
   message: string | null /* Windows.Win32.Foundation.PWSTR */,
   messageLengthUsed: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libWsmSvc.WSManGetErrorMessage(util.toPointer(apiHandle), flags, util.pwstrToFfi(languageCode), errorCode, messageLength, util.pwstrToFfi(message), util.toPointer(messageLengthUsed));
+  return libWsmSvc_dll.WSManGetErrorMessage(util.toPointer(apiHandle), flags, util.pwstrToFfi(languageCode), errorCode, messageLength, util.pwstrToFfi(message), util.toPointer(messageLengthUsed));
 }
 
 export function WSManCreateSession(
@@ -1816,14 +1824,14 @@ export function WSManCreateSession(
   proxyInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
   session: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libWsmSvc.WSManCreateSession(util.toPointer(apiHandle), util.pwstrToFfi(connection), flags, util.toPointer(serverAuthenticationCredentials), util.toPointer(proxyInfo), util.toPointer(session));
+  return libWsmSvc_dll.WSManCreateSession(util.toPointer(apiHandle), util.pwstrToFfi(connection), flags, util.toPointer(serverAuthenticationCredentials), util.toPointer(proxyInfo), util.toPointer(session));
 }
 
 export function WSManCloseSession(
   session: Deno.PointerValue | Uint8Array | null /* ptr */,
   flags: number /* u32 */,
 ): number /* u32 */ {
-  return libWsmSvc.WSManCloseSession(util.toPointer(session), flags);
+  return libWsmSvc_dll.WSManCloseSession(util.toPointer(session), flags);
 }
 
 export function WSManSetSessionOption(
@@ -1831,7 +1839,7 @@ export function WSManSetSessionOption(
   option: WSManSessionOption /* Windows.Win32.System.RemoteManagement.WSManSessionOption */,
   data: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libWsmSvc.WSManSetSessionOption(util.toPointer(session), option, util.toPointer(data));
+  return libWsmSvc_dll.WSManSetSessionOption(util.toPointer(session), option, util.toPointer(data));
 }
 
 export function WSManGetSessionOptionAsDword(
@@ -1839,7 +1847,7 @@ export function WSManGetSessionOptionAsDword(
   option: WSManSessionOption /* Windows.Win32.System.RemoteManagement.WSManSessionOption */,
   value: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libWsmSvc.WSManGetSessionOptionAsDword(util.toPointer(session), option, util.toPointer(value));
+  return libWsmSvc_dll.WSManGetSessionOptionAsDword(util.toPointer(session), option, util.toPointer(value));
 }
 
 export function WSManGetSessionOptionAsString(
@@ -1849,14 +1857,14 @@ export function WSManGetSessionOptionAsString(
   string: string | null /* Windows.Win32.Foundation.PWSTR */,
   stringLengthUsed: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libWsmSvc.WSManGetSessionOptionAsString(util.toPointer(session), option, stringLength, util.pwstrToFfi(string), util.toPointer(stringLengthUsed));
+  return libWsmSvc_dll.WSManGetSessionOptionAsString(util.toPointer(session), option, stringLength, util.pwstrToFfi(string), util.toPointer(stringLengthUsed));
 }
 
 export function WSManCloseOperation(
   operationHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
   flags: number /* u32 */,
 ): number /* u32 */ {
-  return libWsmSvc.WSManCloseOperation(util.toPointer(operationHandle), flags);
+  return libWsmSvc_dll.WSManCloseOperation(util.toPointer(operationHandle), flags);
 }
 
 export function WSManCreateShell(
@@ -1869,7 +1877,7 @@ export function WSManCreateShell(
   async__: Deno.PointerValue | Uint8Array | null /* ptr */,
   shell: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): void /* void */ {
-  return libWsmSvc.WSManCreateShell(util.toPointer(session), flags, util.pwstrToFfi(resourceUri), util.toPointer(startupInfo), util.toPointer(options), util.toPointer(createXml), util.toPointer(async__), util.toPointer(shell));
+  return libWsmSvc_dll.WSManCreateShell(util.toPointer(session), flags, util.pwstrToFfi(resourceUri), util.toPointer(startupInfo), util.toPointer(options), util.toPointer(createXml), util.toPointer(async__), util.toPointer(shell));
 }
 
 export function WSManRunShellCommand(
@@ -1881,7 +1889,7 @@ export function WSManRunShellCommand(
   async__: Deno.PointerValue | Uint8Array | null /* ptr */,
   command: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): void /* void */ {
-  return libWsmSvc.WSManRunShellCommand(util.toPointer(shell), flags, util.pwstrToFfi(commandLine), util.toPointer(args), util.toPointer(options), util.toPointer(async__), util.toPointer(command));
+  return libWsmSvc_dll.WSManRunShellCommand(util.toPointer(shell), flags, util.pwstrToFfi(commandLine), util.toPointer(args), util.toPointer(options), util.toPointer(async__), util.toPointer(command));
 }
 
 export function WSManSignalShell(
@@ -1892,7 +1900,7 @@ export function WSManSignalShell(
   async__: Deno.PointerValue | Uint8Array | null /* ptr */,
   signalOperation: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): void /* void */ {
-  return libWsmSvc.WSManSignalShell(util.toPointer(shell), util.toPointer(command), flags, util.pwstrToFfi(code), util.toPointer(async__), util.toPointer(signalOperation));
+  return libWsmSvc_dll.WSManSignalShell(util.toPointer(shell), util.toPointer(command), flags, util.pwstrToFfi(code), util.toPointer(async__), util.toPointer(signalOperation));
 }
 
 export function WSManReceiveShellOutput(
@@ -1903,7 +1911,7 @@ export function WSManReceiveShellOutput(
   async__: Deno.PointerValue | Uint8Array | null /* ptr */,
   receiveOperation: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): void /* void */ {
-  return libWsmSvc.WSManReceiveShellOutput(util.toPointer(shell), util.toPointer(command), flags, util.toPointer(desiredStreamSet), util.toPointer(async__), util.toPointer(receiveOperation));
+  return libWsmSvc_dll.WSManReceiveShellOutput(util.toPointer(shell), util.toPointer(command), flags, util.toPointer(desiredStreamSet), util.toPointer(async__), util.toPointer(receiveOperation));
 }
 
 export function WSManSendShellInput(
@@ -1916,7 +1924,7 @@ export function WSManSendShellInput(
   async__: Deno.PointerValue | Uint8Array | null /* ptr */,
   sendOperation: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): void /* void */ {
-  return libWsmSvc.WSManSendShellInput(util.toPointer(shell), util.toPointer(command), flags, util.pwstrToFfi(streamId), util.toPointer(streamData), util.boolToFfi(endOfStream), util.toPointer(async__), util.toPointer(sendOperation));
+  return libWsmSvc_dll.WSManSendShellInput(util.toPointer(shell), util.toPointer(command), flags, util.pwstrToFfi(streamId), util.toPointer(streamData), util.boolToFfi(endOfStream), util.toPointer(async__), util.toPointer(sendOperation));
 }
 
 export function WSManCloseCommand(
@@ -1924,7 +1932,7 @@ export function WSManCloseCommand(
   flags: number /* u32 */,
   async__: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): void /* void */ {
-  return libWsmSvc.WSManCloseCommand(util.toPointer(commandHandle), flags, util.toPointer(async__));
+  return libWsmSvc_dll.WSManCloseCommand(util.toPointer(commandHandle), flags, util.toPointer(async__));
 }
 
 export function WSManCloseShell(
@@ -1932,7 +1940,7 @@ export function WSManCloseShell(
   flags: number /* u32 */,
   async__: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): void /* void */ {
-  return libWsmSvc.WSManCloseShell(util.toPointer(shellHandle), flags, util.toPointer(async__));
+  return libWsmSvc_dll.WSManCloseShell(util.toPointer(shellHandle), flags, util.toPointer(async__));
 }
 
 export function WSManCreateShellEx(
@@ -1946,7 +1954,7 @@ export function WSManCreateShellEx(
   async__: Deno.PointerValue | Uint8Array | null /* ptr */,
   shell: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): void /* void */ {
-  return libWsmSvc.WSManCreateShellEx(util.toPointer(session), flags, util.pwstrToFfi(resourceUri), util.pwstrToFfi(shellId), util.toPointer(startupInfo), util.toPointer(options), util.toPointer(createXml), util.toPointer(async__), util.toPointer(shell));
+  return libWsmSvc_dll.WSManCreateShellEx(util.toPointer(session), flags, util.pwstrToFfi(resourceUri), util.pwstrToFfi(shellId), util.toPointer(startupInfo), util.toPointer(options), util.toPointer(createXml), util.toPointer(async__), util.toPointer(shell));
 }
 
 export function WSManRunShellCommandEx(
@@ -1959,7 +1967,7 @@ export function WSManRunShellCommandEx(
   async__: Deno.PointerValue | Uint8Array | null /* ptr */,
   command: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): void /* void */ {
-  return libWsmSvc.WSManRunShellCommandEx(util.toPointer(shell), flags, util.pwstrToFfi(commandId), util.pwstrToFfi(commandLine), util.toPointer(args), util.toPointer(options), util.toPointer(async__), util.toPointer(command));
+  return libWsmSvc_dll.WSManRunShellCommandEx(util.toPointer(shell), flags, util.pwstrToFfi(commandId), util.pwstrToFfi(commandLine), util.toPointer(args), util.toPointer(options), util.toPointer(async__), util.toPointer(command));
 }
 
 export function WSManDisconnectShell(
@@ -1968,7 +1976,7 @@ export function WSManDisconnectShell(
   disconnectInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
   async__: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): void /* void */ {
-  return libWsmSvc.WSManDisconnectShell(util.toPointer(shell), flags, util.toPointer(disconnectInfo), util.toPointer(async__));
+  return libWsmSvc_dll.WSManDisconnectShell(util.toPointer(shell), flags, util.toPointer(disconnectInfo), util.toPointer(async__));
 }
 
 export function WSManReconnectShell(
@@ -1976,7 +1984,7 @@ export function WSManReconnectShell(
   flags: number /* u32 */,
   async__: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): void /* void */ {
-  return libWsmSvc.WSManReconnectShell(util.toPointer(shell), flags, util.toPointer(async__));
+  return libWsmSvc_dll.WSManReconnectShell(util.toPointer(shell), flags, util.toPointer(async__));
 }
 
 export function WSManReconnectShellCommand(
@@ -1984,7 +1992,7 @@ export function WSManReconnectShellCommand(
   flags: number /* u32 */,
   async__: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): void /* void */ {
-  return libWsmSvc.WSManReconnectShellCommand(util.toPointer(commandHandle), flags, util.toPointer(async__));
+  return libWsmSvc_dll.WSManReconnectShellCommand(util.toPointer(commandHandle), flags, util.toPointer(async__));
 }
 
 export function WSManConnectShell(
@@ -1997,7 +2005,7 @@ export function WSManConnectShell(
   async__: Deno.PointerValue | Uint8Array | null /* ptr */,
   shell: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): void /* void */ {
-  return libWsmSvc.WSManConnectShell(util.toPointer(session), flags, util.pwstrToFfi(resourceUri), util.pwstrToFfi(shellID), util.toPointer(options), util.toPointer(connectXml), util.toPointer(async__), util.toPointer(shell));
+  return libWsmSvc_dll.WSManConnectShell(util.toPointer(session), flags, util.pwstrToFfi(resourceUri), util.pwstrToFfi(shellID), util.toPointer(options), util.toPointer(connectXml), util.toPointer(async__), util.toPointer(shell));
 }
 
 export function WSManConnectShellCommand(
@@ -2009,7 +2017,7 @@ export function WSManConnectShellCommand(
   async__: Deno.PointerValue | Uint8Array | null /* ptr */,
   command: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): void /* void */ {
-  return libWsmSvc.WSManConnectShellCommand(util.toPointer(shell), flags, util.pwstrToFfi(commandID), util.toPointer(options), util.toPointer(connectXml), util.toPointer(async__), util.toPointer(command));
+  return libWsmSvc_dll.WSManConnectShellCommand(util.toPointer(shell), flags, util.pwstrToFfi(commandID), util.toPointer(options), util.toPointer(connectXml), util.toPointer(async__), util.toPointer(command));
 }
 
 export function WSManPluginReportContext(
@@ -2017,7 +2025,7 @@ export function WSManPluginReportContext(
   flags: number /* u32 */,
   context: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libWsmSvc.WSManPluginReportContext(util.toPointer(requestDetails), flags, util.toPointer(context));
+  return libWsmSvc_dll.WSManPluginReportContext(util.toPointer(requestDetails), flags, util.toPointer(context));
 }
 
 export function WSManPluginReceiveResult(
@@ -2028,7 +2036,7 @@ export function WSManPluginReceiveResult(
   commandState: string | null /* Windows.Win32.Foundation.PWSTR */,
   exitCode: number /* u32 */,
 ): number /* u32 */ {
-  return libWsmSvc.WSManPluginReceiveResult(util.toPointer(requestDetails), flags, util.pwstrToFfi(stream), util.toPointer(streamResult), util.pwstrToFfi(commandState), exitCode);
+  return libWsmSvc_dll.WSManPluginReceiveResult(util.toPointer(requestDetails), flags, util.pwstrToFfi(stream), util.toPointer(streamResult), util.pwstrToFfi(commandState), exitCode);
 }
 
 export function WSManPluginOperationComplete(
@@ -2037,7 +2045,7 @@ export function WSManPluginOperationComplete(
   errorCode: number /* u32 */,
   extendedInformation: string | null /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
-  return libWsmSvc.WSManPluginOperationComplete(util.toPointer(requestDetails), flags, errorCode, util.pwstrToFfi(extendedInformation));
+  return libWsmSvc_dll.WSManPluginOperationComplete(util.toPointer(requestDetails), flags, errorCode, util.pwstrToFfi(extendedInformation));
 }
 
 export function WSManPluginGetOperationParameters(
@@ -2045,7 +2053,7 @@ export function WSManPluginGetOperationParameters(
   flags: number /* u32 */,
   data: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libWsmSvc.WSManPluginGetOperationParameters(util.toPointer(requestDetails), flags, util.toPointer(data));
+  return libWsmSvc_dll.WSManPluginGetOperationParameters(util.toPointer(requestDetails), flags, util.toPointer(data));
 }
 
 export function WSManPluginGetConfiguration(
@@ -2053,20 +2061,20 @@ export function WSManPluginGetConfiguration(
   flags: number /* u32 */,
   data: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libWsmSvc.WSManPluginGetConfiguration(util.toPointer(pluginContext), flags, util.toPointer(data));
+  return libWsmSvc_dll.WSManPluginGetConfiguration(util.toPointer(pluginContext), flags, util.toPointer(data));
 }
 
 export function WSManPluginReportCompletion(
   pluginContext: Deno.PointerValue | Uint8Array | null /* ptr */,
   flags: number /* u32 */,
 ): number /* u32 */ {
-  return libWsmSvc.WSManPluginReportCompletion(util.toPointer(pluginContext), flags);
+  return libWsmSvc_dll.WSManPluginReportCompletion(util.toPointer(pluginContext), flags);
 }
 
 export function WSManPluginFreeRequestDetails(
   requestDetails: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libWsmSvc.WSManPluginFreeRequestDetails(util.toPointer(requestDetails));
+  return libWsmSvc_dll.WSManPluginFreeRequestDetails(util.toPointer(requestDetails));
 }
 
 export function WSManPluginAuthzUserComplete(
@@ -2078,7 +2086,7 @@ export function WSManPluginAuthzUserComplete(
   errorCode: number /* u32 */,
   extendedErrorInformation: string | null /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
-  return libWsmSvc.WSManPluginAuthzUserComplete(util.toPointer(senderDetails), flags, util.toPointer(userAuthorizationContext), util.toPointer(impersonationToken), util.boolToFfi(userIsAdministrator), errorCode, util.pwstrToFfi(extendedErrorInformation));
+  return libWsmSvc_dll.WSManPluginAuthzUserComplete(util.toPointer(senderDetails), flags, util.toPointer(userAuthorizationContext), util.toPointer(impersonationToken), util.boolToFfi(userIsAdministrator), errorCode, util.pwstrToFfi(extendedErrorInformation));
 }
 
 export function WSManPluginAuthzOperationComplete(
@@ -2088,7 +2096,7 @@ export function WSManPluginAuthzOperationComplete(
   errorCode: number /* u32 */,
   extendedErrorInformation: string | null /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
-  return libWsmSvc.WSManPluginAuthzOperationComplete(util.toPointer(senderDetails), flags, util.toPointer(userAuthorizationContext), errorCode, util.pwstrToFfi(extendedErrorInformation));
+  return libWsmSvc_dll.WSManPluginAuthzOperationComplete(util.toPointer(senderDetails), flags, util.toPointer(userAuthorizationContext), errorCode, util.pwstrToFfi(extendedErrorInformation));
 }
 
 export function WSManPluginAuthzQueryQuotaComplete(
@@ -2098,6 +2106,6 @@ export function WSManPluginAuthzQueryQuotaComplete(
   errorCode: number /* u32 */,
   extendedErrorInformation: string | null /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
-  return libWsmSvc.WSManPluginAuthzQueryQuotaComplete(util.toPointer(senderDetails), flags, util.toPointer(quota), errorCode, util.pwstrToFfi(extendedErrorInformation));
+  return libWsmSvc_dll.WSManPluginAuthzQueryQuotaComplete(util.toPointer(senderDetails), flags, util.toPointer(quota), errorCode, util.pwstrToFfi(extendedErrorInformation));
 }
 

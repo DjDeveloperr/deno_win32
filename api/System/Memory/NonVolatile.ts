@@ -29,7 +29,7 @@ export function allocNV_MEMORY_RANGE(data?: Partial<NV_MEMORY_RANGE>): Uint8Arra
 // Native Libraries
 
 try {
-  var libntdll = Deno.dlopen("ntdll", {
+  var libntdll_dll = Deno.dlopen("ntdll.dll", {
     RtlGetNonVolatileToken: {
       parameters: ["pointer", "usize", "pointer"],
       result: "u32",
@@ -68,13 +68,13 @@ export function RtlGetNonVolatileToken(
   Size: Deno.PointerValue /* usize */,
   NvToken: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libntdll.RtlGetNonVolatileToken(util.toPointer(NvBuffer), Size, util.toPointer(NvToken));
+  return libntdll_dll.RtlGetNonVolatileToken(util.toPointer(NvBuffer), Size, util.toPointer(NvToken));
 }
 
 export function RtlFreeNonVolatileToken(
   NvToken: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libntdll.RtlFreeNonVolatileToken(util.toPointer(NvToken));
+  return libntdll_dll.RtlFreeNonVolatileToken(util.toPointer(NvToken));
 }
 
 export function RtlFlushNonVolatileMemory(
@@ -83,13 +83,13 @@ export function RtlFlushNonVolatileMemory(
   Size: Deno.PointerValue /* usize */,
   Flags: number /* u32 */,
 ): number /* u32 */ {
-  return libntdll.RtlFlushNonVolatileMemory(util.toPointer(NvToken), util.toPointer(NvBuffer), Size, Flags);
+  return libntdll_dll.RtlFlushNonVolatileMemory(util.toPointer(NvToken), util.toPointer(NvBuffer), Size, Flags);
 }
 
 export function RtlDrainNonVolatileFlush(
   NvToken: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libntdll.RtlDrainNonVolatileFlush(util.toPointer(NvToken));
+  return libntdll_dll.RtlDrainNonVolatileFlush(util.toPointer(NvToken));
 }
 
 export function RtlWriteNonVolatileMemory(
@@ -99,7 +99,7 @@ export function RtlWriteNonVolatileMemory(
   Size: Deno.PointerValue /* usize */,
   Flags: number /* u32 */,
 ): number /* u32 */ {
-  return libntdll.RtlWriteNonVolatileMemory(util.toPointer(NvToken), util.toPointer(NvDestination), util.toPointer(Source), Size, Flags);
+  return libntdll_dll.RtlWriteNonVolatileMemory(util.toPointer(NvToken), util.toPointer(NvDestination), util.toPointer(Source), Size, Flags);
 }
 
 export function RtlFillNonVolatileMemory(
@@ -109,7 +109,7 @@ export function RtlFillNonVolatileMemory(
   Value: number /* u8 */,
   Flags: number /* u32 */,
 ): number /* u32 */ {
-  return libntdll.RtlFillNonVolatileMemory(util.toPointer(NvToken), util.toPointer(NvDestination), Size, Value, Flags);
+  return libntdll_dll.RtlFillNonVolatileMemory(util.toPointer(NvToken), util.toPointer(NvDestination), Size, Value, Flags);
 }
 
 export function RtlFlushNonVolatileMemoryRanges(
@@ -118,6 +118,6 @@ export function RtlFlushNonVolatileMemoryRanges(
   NumRanges: Deno.PointerValue /* usize */,
   Flags: number /* u32 */,
 ): number /* u32 */ {
-  return libntdll.RtlFlushNonVolatileMemoryRanges(util.toPointer(NvToken), util.toPointer(NvRanges), NumRanges, Flags);
+  return libntdll_dll.RtlFlushNonVolatileMemoryRanges(util.toPointer(NvToken), util.toPointer(NvRanges), NumRanges, Flags);
 }
 

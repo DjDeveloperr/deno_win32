@@ -141,6 +141,7 @@ export const CERT_FILTER_VALID_SIGNATURE = 4;
 export const CERT_FILTER_LEAF_CERTS_ONLY = 8;
 export const CERT_FILTER_ISSUER_CERTS_ONLY = 16;
 export const CERT_FILTER_KEY_EXISTS = 32;
+export const szCERT_CERTIFICATE_ACTION_VERIFY = "{7801ebd0-cf4b-11d0-851f-0060979387ea}";
 export const CERT_VALIDITY_BEFORE_START = 1;
 export const CERT_VALIDITY_AFTER_END = 2;
 export const CERT_VALIDITY_SIGNATURE_FAILS = 4;
@@ -649,9 +650,9 @@ export function allocCERT_VIEWPROPERTIES_STRUCT_W(data?: Partial<CERT_VIEWPROPER
 }
 
 /**
- * Windows.Win32.Security.Cryptography.UI.CMOID (size: 32)
+ * Windows.Win32.Security.Cryptography.UI.CERT_FILTER_EXTENSION_MATCH (size: 32)
  */
-export interface CMOID {
+export interface CERT_FILTER_EXTENSION_MATCH {
   /** Windows.Win32.Foundation.PSTR */
   szExtensionOID: string | null;
   /** u32 */
@@ -662,10 +663,10 @@ export interface CMOID {
   cbTestData: number;
 }
 
-export const sizeofCMOID = 32;
+export const sizeofCERT_FILTER_EXTENSION_MATCH = 32;
 
-export function allocCMOID(data?: Partial<CMOID>): Uint8Array {
-  const buf = new Uint8Array(sizeofCMOID);
+export function allocCERT_FILTER_EXTENSION_MATCH(data?: Partial<CERT_FILTER_EXTENSION_MATCH>): Uint8Array {
+  const buf = new Uint8Array(sizeofCERT_FILTER_EXTENSION_MATCH);
   const view = new DataView(buf.buffer);
   // 0x00: buffer
   if (data?.szExtensionOID !== undefined) {
@@ -684,9 +685,9 @@ export function allocCMOID(data?: Partial<CMOID>): Uint8Array {
 }
 
 /**
- * Windows.Win32.Security.Cryptography.UI.CMFLTR (size: 24)
+ * Windows.Win32.Security.Cryptography.UI.CERT_FILTER_DATA (size: 24)
  */
-export interface CMFLTR {
+export interface CERT_FILTER_DATA {
   /** u32 */
   dwSize: number;
   /** u32 */
@@ -697,10 +698,10 @@ export interface CMFLTR {
   dwCheckingFlags: number;
 }
 
-export const sizeofCMFLTR = 24;
+export const sizeofCERT_FILTER_DATA = 24;
 
-export function allocCMFLTR(data?: Partial<CMFLTR>): Uint8Array {
-  const buf = new Uint8Array(sizeofCMFLTR);
+export function allocCERT_FILTER_DATA(data?: Partial<CERT_FILTER_DATA>): Uint8Array {
+  const buf = new Uint8Array(sizeofCERT_FILTER_DATA);
   const view = new DataView(buf.buffer);
   // 0x00: u32
   if (data?.dwSize !== undefined) view.setUint32(0, Number(data.dwSize), true);
@@ -837,12 +838,14 @@ export function allocCTL_MODIFY_REQUEST(data?: Partial<CTL_MODIFY_REQUEST>): Uin
   return buf;
 }
 
+export type HCERTSTORE = Deno.PointerValue | Uint8Array | null;
+
 /**
  * Windows.Win32.Security.Cryptography.UI.CERT_SELECTUI_INPUT (size: 24)
  */
 export interface CERT_SELECTUI_INPUT {
-  /** ptr */
-  hStore: Deno.PointerValue | Uint8Array | null;
+  /** Windows.Win32.Security.Cryptography.HCERTSTORE */
+  hStore: Uint8Array | Deno.PointerValue | null;
   /** ptr */
   prgpChain: Deno.PointerValue | Uint8Array | null;
   /** u32 */
@@ -1112,8 +1115,8 @@ export interface CRYPTUI_WIZ_DIGITAL_SIGN_EXTENDED_INFO {
   pszHashAlg: string | null;
   /** Windows.Win32.Foundation.PWSTR */
   pwszSigningCertDisplayString: string | null;
-  /** ptr */
-  hAdditionalCertStore: Deno.PointerValue | Uint8Array | null;
+  /** Windows.Win32.Security.Cryptography.HCERTSTORE */
+  hAdditionalCertStore: Uint8Array | Deno.PointerValue | null;
   /** ptr */
   psAuthenticated: Deno.PointerValue | Uint8Array | null;
   /** ptr */
@@ -1649,7 +1652,7 @@ export type HRESULT = number;
 // Native Libraries
 
 try {
-  var libCRYPTUI = Deno.dlopen("CRYPTUI", {
+  var libCRYPTUI_dll = Deno.dlopen("CRYPTUI.dll", {
     CryptUIDlgViewContext: {
       parameters: ["u32", "pointer", "pointer", "buffer", "u32", "pointer"],
       result: "i32",
@@ -1703,11 +1706,11 @@ export function CryptUIDlgViewContext(
   dwFlags: number /* u32 */,
   pvReserved: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libCRYPTUI.CryptUIDlgViewContext(dwContextType, util.toPointer(pvContext), util.hwndToFfi(hwnd), util.pwstrToFfi(pwszTitle), dwFlags, util.toPointer(pvReserved)));
+  return util.boolFromFfi(libCRYPTUI_dll.CryptUIDlgViewContext(dwContextType, util.toPointer(pvContext), util.hwndToFfi(hwnd), util.pwstrToFfi(pwszTitle), dwFlags, util.toPointer(pvReserved)));
 }
 
 export function CryptUIDlgSelectCertificateFromStore(
-  hCertStore: Deno.PointerValue | Uint8Array | null /* ptr */,
+  hCertStore: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Security.Cryptography.HCERTSTORE */,
   hwnd: Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */,
   pwszTitle: string | null /* Windows.Win32.Foundation.PWSTR */,
   pwszDisplayString: string | null /* Windows.Win32.Foundation.PWSTR */,
@@ -1715,7 +1718,7 @@ export function CryptUIDlgSelectCertificateFromStore(
   dwFlags: number /* u32 */,
   pvReserved: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libCRYPTUI.CryptUIDlgSelectCertificateFromStore(util.toPointer(hCertStore), util.hwndToFfi(hwnd), util.pwstrToFfi(pwszTitle), util.pwstrToFfi(pwszDisplayString), dwDontUseColumn, dwFlags, util.toPointer(pvReserved)));
+  return util.pointerFromFfi(libCRYPTUI_dll.CryptUIDlgSelectCertificateFromStore(util.toPointer(hCertStore), util.hwndToFfi(hwnd), util.pwstrToFfi(pwszTitle), util.pwstrToFfi(pwszDisplayString), dwDontUseColumn, dwFlags, util.toPointer(pvReserved)));
 }
 
 export function CertSelectionGetSerializedBlob(
@@ -1723,13 +1726,13 @@ export function CertSelectionGetSerializedBlob(
   ppOutBuffer: Deno.PointerValue | Uint8Array | null /* ptr */,
   pulOutBufferSize: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libCRYPTUI.CertSelectionGetSerializedBlob(util.toPointer(pcsi), util.toPointer(ppOutBuffer), util.toPointer(pulOutBufferSize)));
+  return util.pointerFromFfi(libCRYPTUI_dll.CertSelectionGetSerializedBlob(util.toPointer(pcsi), util.toPointer(ppOutBuffer), util.toPointer(pulOutBufferSize)));
 }
 
 export function CryptUIDlgCertMgr(
   pCryptUICertMgr: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libCRYPTUI.CryptUIDlgCertMgr(util.toPointer(pCryptUICertMgr)));
+  return util.boolFromFfi(libCRYPTUI_dll.CryptUIDlgCertMgr(util.toPointer(pCryptUICertMgr)));
 }
 
 export function CryptUIWizDigitalSign(
@@ -1739,27 +1742,27 @@ export function CryptUIWizDigitalSign(
   pDigitalSignInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
   ppSignContext: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libCRYPTUI.CryptUIWizDigitalSign(dwFlags, util.hwndToFfi(hwndParent), util.pwstrToFfi(pwszWizardTitle), util.toPointer(pDigitalSignInfo), util.toPointer(ppSignContext)));
+  return util.boolFromFfi(libCRYPTUI_dll.CryptUIWizDigitalSign(dwFlags, util.hwndToFfi(hwndParent), util.pwstrToFfi(pwszWizardTitle), util.toPointer(pDigitalSignInfo), util.toPointer(ppSignContext)));
 }
 
 export function CryptUIWizFreeDigitalSignContext(
   pSignContext: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libCRYPTUI.CryptUIWizFreeDigitalSignContext(util.toPointer(pSignContext)));
+  return util.boolFromFfi(libCRYPTUI_dll.CryptUIWizFreeDigitalSignContext(util.toPointer(pSignContext)));
 }
 
 export function CryptUIDlgViewCertificateW(
   pCertViewInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
   pfPropertiesChanged: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libCRYPTUI.CryptUIDlgViewCertificateW(util.toPointer(pCertViewInfo), util.toPointer(pfPropertiesChanged)));
+  return util.boolFromFfi(libCRYPTUI_dll.CryptUIDlgViewCertificateW(util.toPointer(pCertViewInfo), util.toPointer(pfPropertiesChanged)));
 }
 
 export function CryptUIDlgViewCertificateA(
   pCertViewInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
   pfPropertiesChanged: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libCRYPTUI.CryptUIDlgViewCertificateA(util.toPointer(pCertViewInfo), util.toPointer(pfPropertiesChanged)));
+  return util.boolFromFfi(libCRYPTUI_dll.CryptUIDlgViewCertificateA(util.toPointer(pCertViewInfo), util.toPointer(pfPropertiesChanged)));
 }
 
 export function CryptUIWizExport(
@@ -1769,7 +1772,7 @@ export function CryptUIWizExport(
   pExportInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
   pvoid: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libCRYPTUI.CryptUIWizExport(dwFlags, util.hwndToFfi(hwndParent), util.pwstrToFfi(pwszWizardTitle), util.toPointer(pExportInfo), util.toPointer(pvoid)));
+  return util.boolFromFfi(libCRYPTUI_dll.CryptUIWizExport(dwFlags, util.hwndToFfi(hwndParent), util.pwstrToFfi(pwszWizardTitle), util.toPointer(pExportInfo), util.toPointer(pvoid)));
 }
 
 export function CryptUIWizImport(
@@ -1777,8 +1780,8 @@ export function CryptUIWizImport(
   hwndParent: Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */,
   pwszWizardTitle: string | null /* Windows.Win32.Foundation.PWSTR */,
   pImportSrc: Deno.PointerValue | Uint8Array | null /* ptr */,
-  hDestCertStore: Deno.PointerValue | Uint8Array | null /* ptr */,
+  hDestCertStore: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Security.Cryptography.HCERTSTORE */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libCRYPTUI.CryptUIWizImport(dwFlags, util.hwndToFfi(hwndParent), util.pwstrToFfi(pwszWizardTitle), util.toPointer(pImportSrc), util.toPointer(hDestCertStore)));
+  return util.boolFromFfi(libCRYPTUI_dll.CryptUIWizImport(dwFlags, util.hwndToFfi(hwndParent), util.pwstrToFfi(pwszWizardTitle), util.toPointer(pImportSrc), util.toPointer(hDestCertStore)));
 }
 

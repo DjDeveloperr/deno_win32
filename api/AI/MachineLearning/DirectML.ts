@@ -5888,7 +5888,7 @@ export type HRESULT = number;
 // Native Libraries
 
 try {
-  var libDirectML = Deno.dlopen("DirectML", {
+  var libDirectML_dll = Deno.dlopen("DirectML.dll", {
     DMLCreateDevice: {
       parameters: ["pointer", "u32", "pointer", "pointer"],
       result: "pointer",
@@ -5908,7 +5908,7 @@ export function DMLCreateDevice(
   riid: Deno.PointerValue | Uint8Array | null /* ptr */,
   ppv: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libDirectML.DMLCreateDevice(util.toPointer(d3d12Device), flags, util.toPointer(riid), util.toPointer(ppv)));
+  return util.pointerFromFfi(libDirectML_dll.DMLCreateDevice(util.toPointer(d3d12Device), flags, util.toPointer(riid), util.toPointer(ppv)));
 }
 
 export function DMLCreateDevice1(
@@ -5918,6 +5918,6 @@ export function DMLCreateDevice1(
   riid: Deno.PointerValue | Uint8Array | null /* ptr */,
   ppv: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libDirectML.DMLCreateDevice1(util.toPointer(d3d12Device), flags, minimumFeatureLevel, util.toPointer(riid), util.toPointer(ppv)));
+  return util.pointerFromFfi(libDirectML_dll.DMLCreateDevice1(util.toPointer(d3d12Device), flags, minimumFeatureLevel, util.toPointer(riid), util.toPointer(ppv)));
 }
 

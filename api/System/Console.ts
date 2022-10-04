@@ -5,6 +5,7 @@ import * as util from "../../util.ts";
 // Enums
 export type CONSOLE_MODE = number;
 export type STD_HANDLE = number;
+export type CONSOLE_CHARACTER_ATTRIBUTES = number;
 
 // Constants
 export const ENABLE_PROCESSED_INPUT = 1;
@@ -25,14 +26,6 @@ export const ENABLE_LVB_GRID_WORLDWIDE = 16;
 export const STD_INPUT_HANDLE = 4294967286;
 export const STD_OUTPUT_HANDLE = 4294967285;
 export const STD_ERROR_HANDLE = 4294967284;
-export const CONSOLE_TEXTMODE_BUFFER = 1;
-export const ATTACH_PARENT_PROCESS = 4294967295;
-export const CTRL_C_EVENT = 0;
-export const CTRL_BREAK_EVENT = 1;
-export const CTRL_CLOSE_EVENT = 2;
-export const CTRL_LOGOFF_EVENT = 5;
-export const CTRL_SHUTDOWN_EVENT = 6;
-export const PSEUDOCONSOLE_INHERIT_CURSOR = 1;
 export const FOREGROUND_BLUE = 1;
 export const FOREGROUND_GREEN = 2;
 export const FOREGROUND_RED = 4;
@@ -49,6 +42,14 @@ export const COMMON_LVB_GRID_RVERTICAL = 4096;
 export const COMMON_LVB_REVERSE_VIDEO = 16384;
 export const COMMON_LVB_UNDERSCORE = 32768;
 export const COMMON_LVB_SBCSDBCS = 768;
+export const CONSOLE_TEXTMODE_BUFFER = 1;
+export const ATTACH_PARENT_PROCESS = 4294967295;
+export const CTRL_C_EVENT = 0;
+export const CTRL_BREAK_EVENT = 1;
+export const CTRL_CLOSE_EVENT = 2;
+export const CTRL_LOGOFF_EVENT = 5;
+export const CTRL_SHUTDOWN_EVENT = 6;
+export const PSEUDOCONSOLE_INHERIT_CURSOR = 1;
 export const CONSOLE_NO_SELECTION = 0;
 export const CONSOLE_SELECTION_IN_PROGRESS = 1;
 export const CONSOLE_SELECTION_NOT_EMPTY = 2;
@@ -486,8 +487,8 @@ export interface CONSOLE_SCREEN_BUFFER_INFO {
   dwSize: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.System.Console.COORD */
   dwCursorPosition: Uint8Array | Deno.PointerValue | null;
-  /** u16 */
-  wAttributes: number;
+  /** Windows.Win32.System.Console.CONSOLE_CHARACTER_ATTRIBUTES */
+  wAttributes: CONSOLE_CHARACTER_ATTRIBUTES;
   /** Windows.Win32.System.Console.SMALL_RECT */
   srWindow: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.System.Console.COORD */
@@ -523,8 +524,8 @@ export interface CONSOLE_SCREEN_BUFFER_INFOEX {
   dwSize: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.System.Console.COORD */
   dwCursorPosition: Uint8Array | Deno.PointerValue | null;
-  /** u16 */
-  wAttributes: number;
+  /** Windows.Win32.System.Console.CONSOLE_CHARACTER_ATTRIBUTES */
+  wAttributes: CONSOLE_CHARACTER_ATTRIBUTES;
   /** Windows.Win32.System.Console.SMALL_RECT */
   srWindow: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.System.Console.COORD */
@@ -674,7 +675,7 @@ export type HWND = Deno.PointerValue;
 // Native Libraries
 
 try {
-  var libKERNEL32 = Deno.dlopen("KERNEL32", {
+  var libKERNEL32_dll = Deno.dlopen("KERNEL32.dll", {
     AllocConsole: {
       parameters: [],
       result: "i32",
@@ -1057,46 +1058,46 @@ try {
 // Symbols
 
 export function AllocConsole(): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32.AllocConsole());
+  return util.boolFromFfi(libKERNEL32_dll.AllocConsole());
 }
 
 export function FreeConsole(): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32.FreeConsole());
+  return util.boolFromFfi(libKERNEL32_dll.FreeConsole());
 }
 
 export function AttachConsole(
   dwProcessId: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32.AttachConsole(dwProcessId));
+  return util.boolFromFfi(libKERNEL32_dll.AttachConsole(dwProcessId));
 }
 
 export function GetConsoleCP(): number /* u32 */ {
-  return libKERNEL32.GetConsoleCP();
+  return libKERNEL32_dll.GetConsoleCP();
 }
 
 export function GetConsoleOutputCP(): number /* u32 */ {
-  return libKERNEL32.GetConsoleOutputCP();
+  return libKERNEL32_dll.GetConsoleOutputCP();
 }
 
 export function GetConsoleMode(
   hConsoleHandle: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
   lpMode: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32.GetConsoleMode(util.toPointer(hConsoleHandle), util.toPointer(lpMode)));
+  return util.boolFromFfi(libKERNEL32_dll.GetConsoleMode(util.toPointer(hConsoleHandle), util.toPointer(lpMode)));
 }
 
 export function SetConsoleMode(
   hConsoleHandle: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
   dwMode: CONSOLE_MODE /* Windows.Win32.System.Console.CONSOLE_MODE */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32.SetConsoleMode(util.toPointer(hConsoleHandle), dwMode));
+  return util.boolFromFfi(libKERNEL32_dll.SetConsoleMode(util.toPointer(hConsoleHandle), dwMode));
 }
 
 export function GetNumberOfConsoleInputEvents(
   hConsoleInput: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
   lpNumberOfEvents: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32.GetNumberOfConsoleInputEvents(util.toPointer(hConsoleInput), util.toPointer(lpNumberOfEvents)));
+  return util.boolFromFfi(libKERNEL32_dll.GetNumberOfConsoleInputEvents(util.toPointer(hConsoleInput), util.toPointer(lpNumberOfEvents)));
 }
 
 export function ReadConsoleInputA(
@@ -1105,7 +1106,7 @@ export function ReadConsoleInputA(
   nLength: number /* u32 */,
   lpNumberOfEventsRead: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32.ReadConsoleInputA(util.toPointer(hConsoleInput), util.toPointer(lpBuffer), nLength, util.toPointer(lpNumberOfEventsRead)));
+  return util.boolFromFfi(libKERNEL32_dll.ReadConsoleInputA(util.toPointer(hConsoleInput), util.toPointer(lpBuffer), nLength, util.toPointer(lpNumberOfEventsRead)));
 }
 
 export function ReadConsoleInputW(
@@ -1114,7 +1115,7 @@ export function ReadConsoleInputW(
   nLength: number /* u32 */,
   lpNumberOfEventsRead: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32.ReadConsoleInputW(util.toPointer(hConsoleInput), util.toPointer(lpBuffer), nLength, util.toPointer(lpNumberOfEventsRead)));
+  return util.boolFromFfi(libKERNEL32_dll.ReadConsoleInputW(util.toPointer(hConsoleInput), util.toPointer(lpBuffer), nLength, util.toPointer(lpNumberOfEventsRead)));
 }
 
 export function PeekConsoleInputA(
@@ -1123,7 +1124,7 @@ export function PeekConsoleInputA(
   nLength: number /* u32 */,
   lpNumberOfEventsRead: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32.PeekConsoleInputA(util.toPointer(hConsoleInput), util.toPointer(lpBuffer), nLength, util.toPointer(lpNumberOfEventsRead)));
+  return util.boolFromFfi(libKERNEL32_dll.PeekConsoleInputA(util.toPointer(hConsoleInput), util.toPointer(lpBuffer), nLength, util.toPointer(lpNumberOfEventsRead)));
 }
 
 export function PeekConsoleInputW(
@@ -1132,7 +1133,7 @@ export function PeekConsoleInputW(
   nLength: number /* u32 */,
   lpNumberOfEventsRead: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32.PeekConsoleInputW(util.toPointer(hConsoleInput), util.toPointer(lpBuffer), nLength, util.toPointer(lpNumberOfEventsRead)));
+  return util.boolFromFfi(libKERNEL32_dll.PeekConsoleInputW(util.toPointer(hConsoleInput), util.toPointer(lpBuffer), nLength, util.toPointer(lpNumberOfEventsRead)));
 }
 
 export function ReadConsoleA(
@@ -1142,7 +1143,7 @@ export function ReadConsoleA(
   lpNumberOfCharsRead: Deno.PointerValue | Uint8Array | null /* ptr */,
   pInputControl: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32.ReadConsoleA(util.toPointer(hConsoleInput), util.toPointer(lpBuffer), nNumberOfCharsToRead, util.toPointer(lpNumberOfCharsRead), util.toPointer(pInputControl)));
+  return util.boolFromFfi(libKERNEL32_dll.ReadConsoleA(util.toPointer(hConsoleInput), util.toPointer(lpBuffer), nNumberOfCharsToRead, util.toPointer(lpNumberOfCharsRead), util.toPointer(pInputControl)));
 }
 
 export function ReadConsoleW(
@@ -1152,7 +1153,7 @@ export function ReadConsoleW(
   lpNumberOfCharsRead: Deno.PointerValue | Uint8Array | null /* ptr */,
   pInputControl: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32.ReadConsoleW(util.toPointer(hConsoleInput), util.toPointer(lpBuffer), nNumberOfCharsToRead, util.toPointer(lpNumberOfCharsRead), util.toPointer(pInputControl)));
+  return util.boolFromFfi(libKERNEL32_dll.ReadConsoleW(util.toPointer(hConsoleInput), util.toPointer(lpBuffer), nNumberOfCharsToRead, util.toPointer(lpNumberOfCharsRead), util.toPointer(pInputControl)));
 }
 
 export function WriteConsoleA(
@@ -1162,7 +1163,7 @@ export function WriteConsoleA(
   lpNumberOfCharsWritten: Deno.PointerValue | Uint8Array | null /* ptr */,
   lpReserved: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32.WriteConsoleA(util.toPointer(hConsoleOutput), util.toPointer(lpBuffer), nNumberOfCharsToWrite, util.toPointer(lpNumberOfCharsWritten), util.toPointer(lpReserved)));
+  return util.boolFromFfi(libKERNEL32_dll.WriteConsoleA(util.toPointer(hConsoleOutput), util.toPointer(lpBuffer), nNumberOfCharsToWrite, util.toPointer(lpNumberOfCharsWritten), util.toPointer(lpReserved)));
 }
 
 export function WriteConsoleW(
@@ -1172,14 +1173,14 @@ export function WriteConsoleW(
   lpNumberOfCharsWritten: Deno.PointerValue | Uint8Array | null /* ptr */,
   lpReserved: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32.WriteConsoleW(util.toPointer(hConsoleOutput), util.toPointer(lpBuffer), nNumberOfCharsToWrite, util.toPointer(lpNumberOfCharsWritten), util.toPointer(lpReserved)));
+  return util.boolFromFfi(libKERNEL32_dll.WriteConsoleW(util.toPointer(hConsoleOutput), util.toPointer(lpBuffer), nNumberOfCharsToWrite, util.toPointer(lpNumberOfCharsWritten), util.toPointer(lpReserved)));
 }
 
 export function SetConsoleCtrlHandler(
   HandlerRoutine: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Console.PHANDLER_ROUTINE */,
   Add: boolean /* Windows.Win32.Foundation.BOOL */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32.SetConsoleCtrlHandler(util.toPointer(HandlerRoutine), util.boolToFfi(Add)));
+  return util.boolFromFfi(libKERNEL32_dll.SetConsoleCtrlHandler(util.toPointer(HandlerRoutine), util.boolToFfi(Add)));
 }
 
 export function CreatePseudoConsole(
@@ -1189,20 +1190,20 @@ export function CreatePseudoConsole(
   dwFlags: number /* u32 */,
   phPC: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libKERNEL32.CreatePseudoConsole(util.toPointer(size), util.toPointer(hInput), util.toPointer(hOutput), dwFlags, util.toPointer(phPC)));
+  return util.pointerFromFfi(libKERNEL32_dll.CreatePseudoConsole(util.toPointer(size), util.toPointer(hInput), util.toPointer(hOutput), dwFlags, util.toPointer(phPC)));
 }
 
 export function ResizePseudoConsole(
   hPC: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Console.HPCON */,
   size: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Console.COORD */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libKERNEL32.ResizePseudoConsole(util.toPointer(hPC), util.toPointer(size)));
+  return util.pointerFromFfi(libKERNEL32_dll.ResizePseudoConsole(util.toPointer(hPC), util.toPointer(size)));
 }
 
 export function ClosePseudoConsole(
   hPC: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Console.HPCON */,
 ): void /* void */ {
-  return libKERNEL32.ClosePseudoConsole(util.toPointer(hPC));
+  return libKERNEL32_dll.ClosePseudoConsole(util.toPointer(hPC));
 }
 
 export function FillConsoleOutputCharacterA(
@@ -1212,7 +1213,7 @@ export function FillConsoleOutputCharacterA(
   dwWriteCoord: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Console.COORD */,
   lpNumberOfCharsWritten: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32.FillConsoleOutputCharacterA(util.toPointer(hConsoleOutput), util.toPointer(cCharacter), nLength, util.toPointer(dwWriteCoord), util.toPointer(lpNumberOfCharsWritten)));
+  return util.boolFromFfi(libKERNEL32_dll.FillConsoleOutputCharacterA(util.toPointer(hConsoleOutput), util.toPointer(cCharacter), nLength, util.toPointer(dwWriteCoord), util.toPointer(lpNumberOfCharsWritten)));
 }
 
 export function FillConsoleOutputCharacterW(
@@ -1222,7 +1223,7 @@ export function FillConsoleOutputCharacterW(
   dwWriteCoord: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Console.COORD */,
   lpNumberOfCharsWritten: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32.FillConsoleOutputCharacterW(util.toPointer(hConsoleOutput), util.toPointer(cCharacter), nLength, util.toPointer(dwWriteCoord), util.toPointer(lpNumberOfCharsWritten)));
+  return util.boolFromFfi(libKERNEL32_dll.FillConsoleOutputCharacterW(util.toPointer(hConsoleOutput), util.toPointer(cCharacter), nLength, util.toPointer(dwWriteCoord), util.toPointer(lpNumberOfCharsWritten)));
 }
 
 export function FillConsoleOutputAttribute(
@@ -1232,14 +1233,14 @@ export function FillConsoleOutputAttribute(
   dwWriteCoord: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Console.COORD */,
   lpNumberOfAttrsWritten: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32.FillConsoleOutputAttribute(util.toPointer(hConsoleOutput), wAttribute, nLength, util.toPointer(dwWriteCoord), util.toPointer(lpNumberOfAttrsWritten)));
+  return util.boolFromFfi(libKERNEL32_dll.FillConsoleOutputAttribute(util.toPointer(hConsoleOutput), wAttribute, nLength, util.toPointer(dwWriteCoord), util.toPointer(lpNumberOfAttrsWritten)));
 }
 
 export function GenerateConsoleCtrlEvent(
   dwCtrlEvent: number /* u32 */,
   dwProcessGroupId: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32.GenerateConsoleCtrlEvent(dwCtrlEvent, dwProcessGroupId));
+  return util.boolFromFfi(libKERNEL32_dll.GenerateConsoleCtrlEvent(dwCtrlEvent, dwProcessGroupId));
 }
 
 export function CreateConsoleScreenBuffer(
@@ -1249,93 +1250,93 @@ export function CreateConsoleScreenBuffer(
   dwFlags: number /* u32 */,
   lpScreenBufferData: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */ {
-  return util.pointerFromFfi(libKERNEL32.CreateConsoleScreenBuffer(dwDesiredAccess, dwShareMode, util.toPointer(lpSecurityAttributes), dwFlags, util.toPointer(lpScreenBufferData)));
+  return util.pointerFromFfi(libKERNEL32_dll.CreateConsoleScreenBuffer(dwDesiredAccess, dwShareMode, util.toPointer(lpSecurityAttributes), dwFlags, util.toPointer(lpScreenBufferData)));
 }
 
 export function SetConsoleActiveScreenBuffer(
   hConsoleOutput: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32.SetConsoleActiveScreenBuffer(util.toPointer(hConsoleOutput)));
+  return util.boolFromFfi(libKERNEL32_dll.SetConsoleActiveScreenBuffer(util.toPointer(hConsoleOutput)));
 }
 
 export function FlushConsoleInputBuffer(
   hConsoleInput: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32.FlushConsoleInputBuffer(util.toPointer(hConsoleInput)));
+  return util.boolFromFfi(libKERNEL32_dll.FlushConsoleInputBuffer(util.toPointer(hConsoleInput)));
 }
 
 export function SetConsoleCP(
   wCodePageID: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32.SetConsoleCP(wCodePageID));
+  return util.boolFromFfi(libKERNEL32_dll.SetConsoleCP(wCodePageID));
 }
 
 export function SetConsoleOutputCP(
   wCodePageID: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32.SetConsoleOutputCP(wCodePageID));
+  return util.boolFromFfi(libKERNEL32_dll.SetConsoleOutputCP(wCodePageID));
 }
 
 export function GetConsoleCursorInfo(
   hConsoleOutput: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
   lpConsoleCursorInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32.GetConsoleCursorInfo(util.toPointer(hConsoleOutput), util.toPointer(lpConsoleCursorInfo)));
+  return util.boolFromFfi(libKERNEL32_dll.GetConsoleCursorInfo(util.toPointer(hConsoleOutput), util.toPointer(lpConsoleCursorInfo)));
 }
 
 export function SetConsoleCursorInfo(
   hConsoleOutput: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
   lpConsoleCursorInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32.SetConsoleCursorInfo(util.toPointer(hConsoleOutput), util.toPointer(lpConsoleCursorInfo)));
+  return util.boolFromFfi(libKERNEL32_dll.SetConsoleCursorInfo(util.toPointer(hConsoleOutput), util.toPointer(lpConsoleCursorInfo)));
 }
 
 export function GetConsoleScreenBufferInfo(
   hConsoleOutput: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
   lpConsoleScreenBufferInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32.GetConsoleScreenBufferInfo(util.toPointer(hConsoleOutput), util.toPointer(lpConsoleScreenBufferInfo)));
+  return util.boolFromFfi(libKERNEL32_dll.GetConsoleScreenBufferInfo(util.toPointer(hConsoleOutput), util.toPointer(lpConsoleScreenBufferInfo)));
 }
 
 export function GetConsoleScreenBufferInfoEx(
   hConsoleOutput: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
   lpConsoleScreenBufferInfoEx: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32.GetConsoleScreenBufferInfoEx(util.toPointer(hConsoleOutput), util.toPointer(lpConsoleScreenBufferInfoEx)));
+  return util.boolFromFfi(libKERNEL32_dll.GetConsoleScreenBufferInfoEx(util.toPointer(hConsoleOutput), util.toPointer(lpConsoleScreenBufferInfoEx)));
 }
 
 export function SetConsoleScreenBufferInfoEx(
   hConsoleOutput: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
   lpConsoleScreenBufferInfoEx: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32.SetConsoleScreenBufferInfoEx(util.toPointer(hConsoleOutput), util.toPointer(lpConsoleScreenBufferInfoEx)));
+  return util.boolFromFfi(libKERNEL32_dll.SetConsoleScreenBufferInfoEx(util.toPointer(hConsoleOutput), util.toPointer(lpConsoleScreenBufferInfoEx)));
 }
 
 export function SetConsoleScreenBufferSize(
   hConsoleOutput: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
   dwSize: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Console.COORD */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32.SetConsoleScreenBufferSize(util.toPointer(hConsoleOutput), util.toPointer(dwSize)));
+  return util.boolFromFfi(libKERNEL32_dll.SetConsoleScreenBufferSize(util.toPointer(hConsoleOutput), util.toPointer(dwSize)));
 }
 
 export function SetConsoleCursorPosition(
   hConsoleOutput: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
   dwCursorPosition: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Console.COORD */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32.SetConsoleCursorPosition(util.toPointer(hConsoleOutput), util.toPointer(dwCursorPosition)));
+  return util.boolFromFfi(libKERNEL32_dll.SetConsoleCursorPosition(util.toPointer(hConsoleOutput), util.toPointer(dwCursorPosition)));
 }
 
 export function GetLargestConsoleWindowSize(
   hConsoleOutput: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
 ): Deno.PointerValue | null /* Windows.Win32.System.Console.COORD */ {
-  return util.pointerFromFfi(libKERNEL32.GetLargestConsoleWindowSize(util.toPointer(hConsoleOutput)));
+  return util.pointerFromFfi(libKERNEL32_dll.GetLargestConsoleWindowSize(util.toPointer(hConsoleOutput)));
 }
 
 export function SetConsoleTextAttribute(
   hConsoleOutput: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  wAttributes: number /* u16 */,
+  wAttributes: CONSOLE_CHARACTER_ATTRIBUTES /* Windows.Win32.System.Console.CONSOLE_CHARACTER_ATTRIBUTES */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32.SetConsoleTextAttribute(util.toPointer(hConsoleOutput), wAttributes));
+  return util.boolFromFfi(libKERNEL32_dll.SetConsoleTextAttribute(util.toPointer(hConsoleOutput), wAttributes));
 }
 
 export function SetConsoleWindowInfo(
@@ -1343,7 +1344,7 @@ export function SetConsoleWindowInfo(
   bAbsolute: boolean /* Windows.Win32.Foundation.BOOL */,
   lpConsoleWindow: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32.SetConsoleWindowInfo(util.toPointer(hConsoleOutput), util.boolToFfi(bAbsolute), util.toPointer(lpConsoleWindow)));
+  return util.boolFromFfi(libKERNEL32_dll.SetConsoleWindowInfo(util.toPointer(hConsoleOutput), util.boolToFfi(bAbsolute), util.toPointer(lpConsoleWindow)));
 }
 
 export function WriteConsoleOutputCharacterA(
@@ -1353,7 +1354,7 @@ export function WriteConsoleOutputCharacterA(
   dwWriteCoord: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Console.COORD */,
   lpNumberOfCharsWritten: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32.WriteConsoleOutputCharacterA(util.toPointer(hConsoleOutput), util.pstrToFfi(lpCharacter), nLength, util.toPointer(dwWriteCoord), util.toPointer(lpNumberOfCharsWritten)));
+  return util.boolFromFfi(libKERNEL32_dll.WriteConsoleOutputCharacterA(util.toPointer(hConsoleOutput), util.pstrToFfi(lpCharacter), nLength, util.toPointer(dwWriteCoord), util.toPointer(lpNumberOfCharsWritten)));
 }
 
 export function WriteConsoleOutputCharacterW(
@@ -1363,7 +1364,7 @@ export function WriteConsoleOutputCharacterW(
   dwWriteCoord: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Console.COORD */,
   lpNumberOfCharsWritten: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32.WriteConsoleOutputCharacterW(util.toPointer(hConsoleOutput), util.pwstrToFfi(lpCharacter), nLength, util.toPointer(dwWriteCoord), util.toPointer(lpNumberOfCharsWritten)));
+  return util.boolFromFfi(libKERNEL32_dll.WriteConsoleOutputCharacterW(util.toPointer(hConsoleOutput), util.pwstrToFfi(lpCharacter), nLength, util.toPointer(dwWriteCoord), util.toPointer(lpNumberOfCharsWritten)));
 }
 
 export function WriteConsoleOutputAttribute(
@@ -1373,7 +1374,7 @@ export function WriteConsoleOutputAttribute(
   dwWriteCoord: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Console.COORD */,
   lpNumberOfAttrsWritten: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32.WriteConsoleOutputAttribute(util.toPointer(hConsoleOutput), util.toPointer(lpAttribute), nLength, util.toPointer(dwWriteCoord), util.toPointer(lpNumberOfAttrsWritten)));
+  return util.boolFromFfi(libKERNEL32_dll.WriteConsoleOutputAttribute(util.toPointer(hConsoleOutput), util.toPointer(lpAttribute), nLength, util.toPointer(dwWriteCoord), util.toPointer(lpNumberOfAttrsWritten)));
 }
 
 export function ReadConsoleOutputCharacterA(
@@ -1383,7 +1384,7 @@ export function ReadConsoleOutputCharacterA(
   dwReadCoord: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Console.COORD */,
   lpNumberOfCharsRead: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32.ReadConsoleOutputCharacterA(util.toPointer(hConsoleOutput), util.pstrToFfi(lpCharacter), nLength, util.toPointer(dwReadCoord), util.toPointer(lpNumberOfCharsRead)));
+  return util.boolFromFfi(libKERNEL32_dll.ReadConsoleOutputCharacterA(util.toPointer(hConsoleOutput), util.pstrToFfi(lpCharacter), nLength, util.toPointer(dwReadCoord), util.toPointer(lpNumberOfCharsRead)));
 }
 
 export function ReadConsoleOutputCharacterW(
@@ -1393,7 +1394,7 @@ export function ReadConsoleOutputCharacterW(
   dwReadCoord: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Console.COORD */,
   lpNumberOfCharsRead: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32.ReadConsoleOutputCharacterW(util.toPointer(hConsoleOutput), util.pwstrToFfi(lpCharacter), nLength, util.toPointer(dwReadCoord), util.toPointer(lpNumberOfCharsRead)));
+  return util.boolFromFfi(libKERNEL32_dll.ReadConsoleOutputCharacterW(util.toPointer(hConsoleOutput), util.pwstrToFfi(lpCharacter), nLength, util.toPointer(dwReadCoord), util.toPointer(lpNumberOfCharsRead)));
 }
 
 export function ReadConsoleOutputAttribute(
@@ -1403,7 +1404,7 @@ export function ReadConsoleOutputAttribute(
   dwReadCoord: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Console.COORD */,
   lpNumberOfAttrsRead: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32.ReadConsoleOutputAttribute(util.toPointer(hConsoleOutput), util.toPointer(lpAttribute), nLength, util.toPointer(dwReadCoord), util.toPointer(lpNumberOfAttrsRead)));
+  return util.boolFromFfi(libKERNEL32_dll.ReadConsoleOutputAttribute(util.toPointer(hConsoleOutput), util.toPointer(lpAttribute), nLength, util.toPointer(dwReadCoord), util.toPointer(lpNumberOfAttrsRead)));
 }
 
 export function WriteConsoleInputA(
@@ -1412,7 +1413,7 @@ export function WriteConsoleInputA(
   nLength: number /* u32 */,
   lpNumberOfEventsWritten: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32.WriteConsoleInputA(util.toPointer(hConsoleInput), util.toPointer(lpBuffer), nLength, util.toPointer(lpNumberOfEventsWritten)));
+  return util.boolFromFfi(libKERNEL32_dll.WriteConsoleInputA(util.toPointer(hConsoleInput), util.toPointer(lpBuffer), nLength, util.toPointer(lpNumberOfEventsWritten)));
 }
 
 export function WriteConsoleInputW(
@@ -1421,7 +1422,7 @@ export function WriteConsoleInputW(
   nLength: number /* u32 */,
   lpNumberOfEventsWritten: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32.WriteConsoleInputW(util.toPointer(hConsoleInput), util.toPointer(lpBuffer), nLength, util.toPointer(lpNumberOfEventsWritten)));
+  return util.boolFromFfi(libKERNEL32_dll.WriteConsoleInputW(util.toPointer(hConsoleInput), util.toPointer(lpBuffer), nLength, util.toPointer(lpNumberOfEventsWritten)));
 }
 
 export function ScrollConsoleScreenBufferA(
@@ -1431,7 +1432,7 @@ export function ScrollConsoleScreenBufferA(
   dwDestinationOrigin: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Console.COORD */,
   lpFill: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32.ScrollConsoleScreenBufferA(util.toPointer(hConsoleOutput), util.toPointer(lpScrollRectangle), util.toPointer(lpClipRectangle), util.toPointer(dwDestinationOrigin), util.toPointer(lpFill)));
+  return util.boolFromFfi(libKERNEL32_dll.ScrollConsoleScreenBufferA(util.toPointer(hConsoleOutput), util.toPointer(lpScrollRectangle), util.toPointer(lpClipRectangle), util.toPointer(dwDestinationOrigin), util.toPointer(lpFill)));
 }
 
 export function ScrollConsoleScreenBufferW(
@@ -1441,7 +1442,7 @@ export function ScrollConsoleScreenBufferW(
   dwDestinationOrigin: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Console.COORD */,
   lpFill: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32.ScrollConsoleScreenBufferW(util.toPointer(hConsoleOutput), util.toPointer(lpScrollRectangle), util.toPointer(lpClipRectangle), util.toPointer(dwDestinationOrigin), util.toPointer(lpFill)));
+  return util.boolFromFfi(libKERNEL32_dll.ScrollConsoleScreenBufferW(util.toPointer(hConsoleOutput), util.toPointer(lpScrollRectangle), util.toPointer(lpClipRectangle), util.toPointer(dwDestinationOrigin), util.toPointer(lpFill)));
 }
 
 export function WriteConsoleOutputA(
@@ -1451,7 +1452,7 @@ export function WriteConsoleOutputA(
   dwBufferCoord: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Console.COORD */,
   lpWriteRegion: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32.WriteConsoleOutputA(util.toPointer(hConsoleOutput), util.toPointer(lpBuffer), util.toPointer(dwBufferSize), util.toPointer(dwBufferCoord), util.toPointer(lpWriteRegion)));
+  return util.boolFromFfi(libKERNEL32_dll.WriteConsoleOutputA(util.toPointer(hConsoleOutput), util.toPointer(lpBuffer), util.toPointer(dwBufferSize), util.toPointer(dwBufferCoord), util.toPointer(lpWriteRegion)));
 }
 
 export function WriteConsoleOutputW(
@@ -1461,7 +1462,7 @@ export function WriteConsoleOutputW(
   dwBufferCoord: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Console.COORD */,
   lpWriteRegion: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32.WriteConsoleOutputW(util.toPointer(hConsoleOutput), util.toPointer(lpBuffer), util.toPointer(dwBufferSize), util.toPointer(dwBufferCoord), util.toPointer(lpWriteRegion)));
+  return util.boolFromFfi(libKERNEL32_dll.WriteConsoleOutputW(util.toPointer(hConsoleOutput), util.toPointer(lpBuffer), util.toPointer(dwBufferSize), util.toPointer(dwBufferCoord), util.toPointer(lpWriteRegion)));
 }
 
 export function ReadConsoleOutputA(
@@ -1471,7 +1472,7 @@ export function ReadConsoleOutputA(
   dwBufferCoord: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Console.COORD */,
   lpReadRegion: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32.ReadConsoleOutputA(util.toPointer(hConsoleOutput), util.toPointer(lpBuffer), util.toPointer(dwBufferSize), util.toPointer(dwBufferCoord), util.toPointer(lpReadRegion)));
+  return util.boolFromFfi(libKERNEL32_dll.ReadConsoleOutputA(util.toPointer(hConsoleOutput), util.toPointer(lpBuffer), util.toPointer(dwBufferSize), util.toPointer(dwBufferCoord), util.toPointer(lpReadRegion)));
 }
 
 export function ReadConsoleOutputW(
@@ -1481,60 +1482,60 @@ export function ReadConsoleOutputW(
   dwBufferCoord: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Console.COORD */,
   lpReadRegion: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32.ReadConsoleOutputW(util.toPointer(hConsoleOutput), util.toPointer(lpBuffer), util.toPointer(dwBufferSize), util.toPointer(dwBufferCoord), util.toPointer(lpReadRegion)));
+  return util.boolFromFfi(libKERNEL32_dll.ReadConsoleOutputW(util.toPointer(hConsoleOutput), util.toPointer(lpBuffer), util.toPointer(dwBufferSize), util.toPointer(dwBufferCoord), util.toPointer(lpReadRegion)));
 }
 
 export function GetConsoleTitleA(
   lpConsoleTitle: string | null /* Windows.Win32.Foundation.PSTR */,
   nSize: number /* u32 */,
 ): number /* u32 */ {
-  return libKERNEL32.GetConsoleTitleA(util.pstrToFfi(lpConsoleTitle), nSize);
+  return libKERNEL32_dll.GetConsoleTitleA(util.pstrToFfi(lpConsoleTitle), nSize);
 }
 
 export function GetConsoleTitleW(
   lpConsoleTitle: string | null /* Windows.Win32.Foundation.PWSTR */,
   nSize: number /* u32 */,
 ): number /* u32 */ {
-  return libKERNEL32.GetConsoleTitleW(util.pwstrToFfi(lpConsoleTitle), nSize);
+  return libKERNEL32_dll.GetConsoleTitleW(util.pwstrToFfi(lpConsoleTitle), nSize);
 }
 
 export function GetConsoleOriginalTitleA(
   lpConsoleTitle: string | null /* Windows.Win32.Foundation.PSTR */,
   nSize: number /* u32 */,
 ): number /* u32 */ {
-  return libKERNEL32.GetConsoleOriginalTitleA(util.pstrToFfi(lpConsoleTitle), nSize);
+  return libKERNEL32_dll.GetConsoleOriginalTitleA(util.pstrToFfi(lpConsoleTitle), nSize);
 }
 
 export function GetConsoleOriginalTitleW(
   lpConsoleTitle: string | null /* Windows.Win32.Foundation.PWSTR */,
   nSize: number /* u32 */,
 ): number /* u32 */ {
-  return libKERNEL32.GetConsoleOriginalTitleW(util.pwstrToFfi(lpConsoleTitle), nSize);
+  return libKERNEL32_dll.GetConsoleOriginalTitleW(util.pwstrToFfi(lpConsoleTitle), nSize);
 }
 
 export function SetConsoleTitleA(
   lpConsoleTitle: string | null /* Windows.Win32.Foundation.PSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32.SetConsoleTitleA(util.pstrToFfi(lpConsoleTitle)));
+  return util.boolFromFfi(libKERNEL32_dll.SetConsoleTitleA(util.pstrToFfi(lpConsoleTitle)));
 }
 
 export function SetConsoleTitleW(
   lpConsoleTitle: string | null /* Windows.Win32.Foundation.PWSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32.SetConsoleTitleW(util.pwstrToFfi(lpConsoleTitle)));
+  return util.boolFromFfi(libKERNEL32_dll.SetConsoleTitleW(util.pwstrToFfi(lpConsoleTitle)));
 }
 
 export function GetNumberOfConsoleMouseButtons(
   lpNumberOfMouseButtons: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32.GetNumberOfConsoleMouseButtons(util.toPointer(lpNumberOfMouseButtons)));
+  return util.boolFromFfi(libKERNEL32_dll.GetNumberOfConsoleMouseButtons(util.toPointer(lpNumberOfMouseButtons)));
 }
 
 export function GetConsoleFontSize(
   hConsoleOutput: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
   nFont: number /* u32 */,
 ): Deno.PointerValue | null /* Windows.Win32.System.Console.COORD */ {
-  return util.pointerFromFfi(libKERNEL32.GetConsoleFontSize(util.toPointer(hConsoleOutput), nFont));
+  return util.pointerFromFfi(libKERNEL32_dll.GetConsoleFontSize(util.toPointer(hConsoleOutput), nFont));
 }
 
 export function GetCurrentConsoleFont(
@@ -1542,7 +1543,7 @@ export function GetCurrentConsoleFont(
   bMaximumWindow: boolean /* Windows.Win32.Foundation.BOOL */,
   lpConsoleCurrentFont: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32.GetCurrentConsoleFont(util.toPointer(hConsoleOutput), util.boolToFfi(bMaximumWindow), util.toPointer(lpConsoleCurrentFont)));
+  return util.boolFromFfi(libKERNEL32_dll.GetCurrentConsoleFont(util.toPointer(hConsoleOutput), util.boolToFfi(bMaximumWindow), util.toPointer(lpConsoleCurrentFont)));
 }
 
 export function GetCurrentConsoleFontEx(
@@ -1550,7 +1551,7 @@ export function GetCurrentConsoleFontEx(
   bMaximumWindow: boolean /* Windows.Win32.Foundation.BOOL */,
   lpConsoleCurrentFontEx: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32.GetCurrentConsoleFontEx(util.toPointer(hConsoleOutput), util.boolToFfi(bMaximumWindow), util.toPointer(lpConsoleCurrentFontEx)));
+  return util.boolFromFfi(libKERNEL32_dll.GetCurrentConsoleFontEx(util.toPointer(hConsoleOutput), util.boolToFfi(bMaximumWindow), util.toPointer(lpConsoleCurrentFontEx)));
 }
 
 export function SetCurrentConsoleFontEx(
@@ -1558,31 +1559,31 @@ export function SetCurrentConsoleFontEx(
   bMaximumWindow: boolean /* Windows.Win32.Foundation.BOOL */,
   lpConsoleCurrentFontEx: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32.SetCurrentConsoleFontEx(util.toPointer(hConsoleOutput), util.boolToFfi(bMaximumWindow), util.toPointer(lpConsoleCurrentFontEx)));
+  return util.boolFromFfi(libKERNEL32_dll.SetCurrentConsoleFontEx(util.toPointer(hConsoleOutput), util.boolToFfi(bMaximumWindow), util.toPointer(lpConsoleCurrentFontEx)));
 }
 
 export function GetConsoleSelectionInfo(
   lpConsoleSelectionInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32.GetConsoleSelectionInfo(util.toPointer(lpConsoleSelectionInfo)));
+  return util.boolFromFfi(libKERNEL32_dll.GetConsoleSelectionInfo(util.toPointer(lpConsoleSelectionInfo)));
 }
 
 export function GetConsoleHistoryInfo(
   lpConsoleHistoryInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32.GetConsoleHistoryInfo(util.toPointer(lpConsoleHistoryInfo)));
+  return util.boolFromFfi(libKERNEL32_dll.GetConsoleHistoryInfo(util.toPointer(lpConsoleHistoryInfo)));
 }
 
 export function SetConsoleHistoryInfo(
   lpConsoleHistoryInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32.SetConsoleHistoryInfo(util.toPointer(lpConsoleHistoryInfo)));
+  return util.boolFromFfi(libKERNEL32_dll.SetConsoleHistoryInfo(util.toPointer(lpConsoleHistoryInfo)));
 }
 
 export function GetConsoleDisplayMode(
   lpModeFlags: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32.GetConsoleDisplayMode(util.toPointer(lpModeFlags)));
+  return util.boolFromFfi(libKERNEL32_dll.GetConsoleDisplayMode(util.toPointer(lpModeFlags)));
 }
 
 export function SetConsoleDisplayMode(
@@ -1590,11 +1591,11 @@ export function SetConsoleDisplayMode(
   dwFlags: number /* u32 */,
   lpNewScreenBufferDimensions: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32.SetConsoleDisplayMode(util.toPointer(hConsoleOutput), dwFlags, util.toPointer(lpNewScreenBufferDimensions)));
+  return util.boolFromFfi(libKERNEL32_dll.SetConsoleDisplayMode(util.toPointer(hConsoleOutput), dwFlags, util.toPointer(lpNewScreenBufferDimensions)));
 }
 
 export function GetConsoleWindow(): Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */ {
-  return util.hwndFromFfi(libKERNEL32.GetConsoleWindow());
+  return util.hwndFromFfi(libKERNEL32_dll.GetConsoleWindow());
 }
 
 export function AddConsoleAliasA(
@@ -1602,7 +1603,7 @@ export function AddConsoleAliasA(
   Target: string | null /* Windows.Win32.Foundation.PSTR */,
   ExeName: string | null /* Windows.Win32.Foundation.PSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32.AddConsoleAliasA(util.pstrToFfi(Source), util.pstrToFfi(Target), util.pstrToFfi(ExeName)));
+  return util.boolFromFfi(libKERNEL32_dll.AddConsoleAliasA(util.pstrToFfi(Source), util.pstrToFfi(Target), util.pstrToFfi(ExeName)));
 }
 
 export function AddConsoleAliasW(
@@ -1610,7 +1611,7 @@ export function AddConsoleAliasW(
   Target: string | null /* Windows.Win32.Foundation.PWSTR */,
   ExeName: string | null /* Windows.Win32.Foundation.PWSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32.AddConsoleAliasW(util.pwstrToFfi(Source), util.pwstrToFfi(Target), util.pwstrToFfi(ExeName)));
+  return util.boolFromFfi(libKERNEL32_dll.AddConsoleAliasW(util.pwstrToFfi(Source), util.pwstrToFfi(Target), util.pwstrToFfi(ExeName)));
 }
 
 export function GetConsoleAliasA(
@@ -1619,7 +1620,7 @@ export function GetConsoleAliasA(
   TargetBufferLength: number /* u32 */,
   ExeName: string | null /* Windows.Win32.Foundation.PSTR */,
 ): number /* u32 */ {
-  return libKERNEL32.GetConsoleAliasA(util.pstrToFfi(Source), util.pstrToFfi(TargetBuffer), TargetBufferLength, util.pstrToFfi(ExeName));
+  return libKERNEL32_dll.GetConsoleAliasA(util.pstrToFfi(Source), util.pstrToFfi(TargetBuffer), TargetBufferLength, util.pstrToFfi(ExeName));
 }
 
 export function GetConsoleAliasW(
@@ -1628,27 +1629,27 @@ export function GetConsoleAliasW(
   TargetBufferLength: number /* u32 */,
   ExeName: string | null /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
-  return libKERNEL32.GetConsoleAliasW(util.pwstrToFfi(Source), util.pwstrToFfi(TargetBuffer), TargetBufferLength, util.pwstrToFfi(ExeName));
+  return libKERNEL32_dll.GetConsoleAliasW(util.pwstrToFfi(Source), util.pwstrToFfi(TargetBuffer), TargetBufferLength, util.pwstrToFfi(ExeName));
 }
 
 export function GetConsoleAliasesLengthA(
   ExeName: string | null /* Windows.Win32.Foundation.PSTR */,
 ): number /* u32 */ {
-  return libKERNEL32.GetConsoleAliasesLengthA(util.pstrToFfi(ExeName));
+  return libKERNEL32_dll.GetConsoleAliasesLengthA(util.pstrToFfi(ExeName));
 }
 
 export function GetConsoleAliasesLengthW(
   ExeName: string | null /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
-  return libKERNEL32.GetConsoleAliasesLengthW(util.pwstrToFfi(ExeName));
+  return libKERNEL32_dll.GetConsoleAliasesLengthW(util.pwstrToFfi(ExeName));
 }
 
 export function GetConsoleAliasExesLengthA(): number /* u32 */ {
-  return libKERNEL32.GetConsoleAliasExesLengthA();
+  return libKERNEL32_dll.GetConsoleAliasExesLengthA();
 }
 
 export function GetConsoleAliasExesLengthW(): number /* u32 */ {
-  return libKERNEL32.GetConsoleAliasExesLengthW();
+  return libKERNEL32_dll.GetConsoleAliasExesLengthW();
 }
 
 export function GetConsoleAliasesA(
@@ -1656,7 +1657,7 @@ export function GetConsoleAliasesA(
   AliasBufferLength: number /* u32 */,
   ExeName: string | null /* Windows.Win32.Foundation.PSTR */,
 ): number /* u32 */ {
-  return libKERNEL32.GetConsoleAliasesA(util.pstrToFfi(AliasBuffer), AliasBufferLength, util.pstrToFfi(ExeName));
+  return libKERNEL32_dll.GetConsoleAliasesA(util.pstrToFfi(AliasBuffer), AliasBufferLength, util.pstrToFfi(ExeName));
 }
 
 export function GetConsoleAliasesW(
@@ -1664,59 +1665,59 @@ export function GetConsoleAliasesW(
   AliasBufferLength: number /* u32 */,
   ExeName: string | null /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
-  return libKERNEL32.GetConsoleAliasesW(util.pwstrToFfi(AliasBuffer), AliasBufferLength, util.pwstrToFfi(ExeName));
+  return libKERNEL32_dll.GetConsoleAliasesW(util.pwstrToFfi(AliasBuffer), AliasBufferLength, util.pwstrToFfi(ExeName));
 }
 
 export function GetConsoleAliasExesA(
   ExeNameBuffer: string | null /* Windows.Win32.Foundation.PSTR */,
   ExeNameBufferLength: number /* u32 */,
 ): number /* u32 */ {
-  return libKERNEL32.GetConsoleAliasExesA(util.pstrToFfi(ExeNameBuffer), ExeNameBufferLength);
+  return libKERNEL32_dll.GetConsoleAliasExesA(util.pstrToFfi(ExeNameBuffer), ExeNameBufferLength);
 }
 
 export function GetConsoleAliasExesW(
   ExeNameBuffer: string | null /* Windows.Win32.Foundation.PWSTR */,
   ExeNameBufferLength: number /* u32 */,
 ): number /* u32 */ {
-  return libKERNEL32.GetConsoleAliasExesW(util.pwstrToFfi(ExeNameBuffer), ExeNameBufferLength);
+  return libKERNEL32_dll.GetConsoleAliasExesW(util.pwstrToFfi(ExeNameBuffer), ExeNameBufferLength);
 }
 
 export function ExpungeConsoleCommandHistoryA(
   ExeName: string | null /* Windows.Win32.Foundation.PSTR */,
 ): void /* void */ {
-  return libKERNEL32.ExpungeConsoleCommandHistoryA(util.pstrToFfi(ExeName));
+  return libKERNEL32_dll.ExpungeConsoleCommandHistoryA(util.pstrToFfi(ExeName));
 }
 
 export function ExpungeConsoleCommandHistoryW(
   ExeName: string | null /* Windows.Win32.Foundation.PWSTR */,
 ): void /* void */ {
-  return libKERNEL32.ExpungeConsoleCommandHistoryW(util.pwstrToFfi(ExeName));
+  return libKERNEL32_dll.ExpungeConsoleCommandHistoryW(util.pwstrToFfi(ExeName));
 }
 
 export function SetConsoleNumberOfCommandsA(
   Number: number /* u32 */,
   ExeName: string | null /* Windows.Win32.Foundation.PSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32.SetConsoleNumberOfCommandsA(Number, util.pstrToFfi(ExeName)));
+  return util.boolFromFfi(libKERNEL32_dll.SetConsoleNumberOfCommandsA(Number, util.pstrToFfi(ExeName)));
 }
 
 export function SetConsoleNumberOfCommandsW(
   Number: number /* u32 */,
   ExeName: string | null /* Windows.Win32.Foundation.PWSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32.SetConsoleNumberOfCommandsW(Number, util.pwstrToFfi(ExeName)));
+  return util.boolFromFfi(libKERNEL32_dll.SetConsoleNumberOfCommandsW(Number, util.pwstrToFfi(ExeName)));
 }
 
 export function GetConsoleCommandHistoryLengthA(
   ExeName: string | null /* Windows.Win32.Foundation.PSTR */,
 ): number /* u32 */ {
-  return libKERNEL32.GetConsoleCommandHistoryLengthA(util.pstrToFfi(ExeName));
+  return libKERNEL32_dll.GetConsoleCommandHistoryLengthA(util.pstrToFfi(ExeName));
 }
 
 export function GetConsoleCommandHistoryLengthW(
   ExeName: string | null /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
-  return libKERNEL32.GetConsoleCommandHistoryLengthW(util.pwstrToFfi(ExeName));
+  return libKERNEL32_dll.GetConsoleCommandHistoryLengthW(util.pwstrToFfi(ExeName));
 }
 
 export function GetConsoleCommandHistoryA(
@@ -1724,7 +1725,7 @@ export function GetConsoleCommandHistoryA(
   CommandBufferLength: number /* u32 */,
   ExeName: string | null /* Windows.Win32.Foundation.PSTR */,
 ): number /* u32 */ {
-  return libKERNEL32.GetConsoleCommandHistoryA(util.pstrToFfi(Commands), CommandBufferLength, util.pstrToFfi(ExeName));
+  return libKERNEL32_dll.GetConsoleCommandHistoryA(util.pstrToFfi(Commands), CommandBufferLength, util.pstrToFfi(ExeName));
 }
 
 export function GetConsoleCommandHistoryW(
@@ -1732,27 +1733,27 @@ export function GetConsoleCommandHistoryW(
   CommandBufferLength: number /* u32 */,
   ExeName: string | null /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
-  return libKERNEL32.GetConsoleCommandHistoryW(util.pwstrToFfi(Commands), CommandBufferLength, util.pwstrToFfi(ExeName));
+  return libKERNEL32_dll.GetConsoleCommandHistoryW(util.pwstrToFfi(Commands), CommandBufferLength, util.pwstrToFfi(ExeName));
 }
 
 export function GetConsoleProcessList(
   lpdwProcessList: Deno.PointerValue | Uint8Array | null /* ptr */,
   dwProcessCount: number /* u32 */,
 ): number /* u32 */ {
-  return libKERNEL32.GetConsoleProcessList(util.toPointer(lpdwProcessList), dwProcessCount);
+  return libKERNEL32_dll.GetConsoleProcessList(util.toPointer(lpdwProcessList), dwProcessCount);
 }
 
 export function GetStdHandle(
   nStdHandle: STD_HANDLE /* Windows.Win32.System.Console.STD_HANDLE */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */ {
-  return util.pointerFromFfi(libKERNEL32.GetStdHandle(nStdHandle));
+  return util.pointerFromFfi(libKERNEL32_dll.GetStdHandle(nStdHandle));
 }
 
 export function SetStdHandle(
   nStdHandle: STD_HANDLE /* Windows.Win32.System.Console.STD_HANDLE */,
   hHandle: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32.SetStdHandle(nStdHandle, util.toPointer(hHandle)));
+  return util.boolFromFfi(libKERNEL32_dll.SetStdHandle(nStdHandle, util.toPointer(hHandle)));
 }
 
 export function SetStdHandleEx(
@@ -1760,6 +1761,6 @@ export function SetStdHandleEx(
   hHandle: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
   phPrevValue: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32.SetStdHandleEx(nStdHandle, util.toPointer(hHandle), util.toPointer(phPrevValue)));
+  return util.boolFromFfi(libKERNEL32_dll.SetStdHandleEx(nStdHandle, util.toPointer(hHandle), util.toPointer(phPrevValue)));
 }
 

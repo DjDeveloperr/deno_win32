@@ -220,6 +220,8 @@ export const DISPID_DFILESYSTEMIMAGEEVENTS_UPDATE = 256;
 export const DISPID_DFILESYSTEMIMAGEIMPORTEVENTS_UPDATEIMPORT = 257;
 export const IMAPI2FS_MajorVersion = 1;
 export const IMAPI2FS_MinorVersion = 0;
+export const IMAPI2FS_FullVersion_STR = "1.0";
+export const IMAPI2FS_FullVersion_WSTR = "1.0";
 export const MP_MSGCLASS_SYSTEM = 1;
 export const MP_MSGCLASS_REPLICATION = 2;
 export const MP_MSGCLASS_DELIVERY_REPORT = 3;
@@ -261,6 +263,7 @@ export const MPV_WRITE_CONTENT = 2;
 export const NMP_PROCESS_POST = 1;
 export const NMP_PROCESS_CONTROL = 2;
 export const NMP_PROCESS_MODERATOR = 4;
+export const SZ_PROGID_SMTPCAT = "Smtp.Cat";
 export const IMAPI_S_PROPERTIESIGNORED = 288827428145725952n;
 export const IMAPI_S_BUFFER_TO_SMALL = 288796641820148225n;
 export const IMAPI_E_NOTOPENED = 288806539572281867n;
@@ -685,7 +688,7 @@ export type HRESULT = number;
 // Native Libraries
 
 try {
-  var libMAPI32 = Deno.dlopen("MAPI32", {
+  var libMAPI32_dll = Deno.dlopen("MAPI32.dll", {
     OpenIMsgSession: {
       parameters: ["pointer", "u32", "pointer"],
       result: "i32",
@@ -720,13 +723,13 @@ export function OpenIMsgSession(
   ulFlags: number /* u32 */,
   lppMsgSess: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
-  return libMAPI32.OpenIMsgSession(util.toPointer(lpMalloc), ulFlags, util.toPointer(lppMsgSess));
+  return libMAPI32_dll.OpenIMsgSession(util.toPointer(lpMalloc), ulFlags, util.toPointer(lppMsgSess));
 }
 
 export function CloseIMsgSession(
   lpMsgSess: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): void /* void */ {
-  return libMAPI32.CloseIMsgSession(util.toPointer(lpMsgSess));
+  return libMAPI32_dll.CloseIMsgSession(util.toPointer(lpMsgSess));
 }
 
 export function OpenIMsgOnIStg(
@@ -742,7 +745,7 @@ export function OpenIMsgOnIStg(
   ulFlags: number /* u32 */,
   lppMsg: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
-  return libMAPI32.OpenIMsgOnIStg(util.toPointer(lpMsgSess), util.toPointer(lpAllocateBuffer), util.toPointer(lpAllocateMore), util.toPointer(lpFreeBuffer), util.toPointer(lpMalloc), util.toPointer(lpMapiSup), util.toPointer(lpStg), util.toPointer(lpfMsgCallRelease), ulCallerData, ulFlags, util.toPointer(lppMsg));
+  return libMAPI32_dll.OpenIMsgOnIStg(util.toPointer(lpMsgSess), util.toPointer(lpAllocateBuffer), util.toPointer(lpAllocateMore), util.toPointer(lpFreeBuffer), util.toPointer(lpMalloc), util.toPointer(lpMapiSup), util.toPointer(lpStg), util.toPointer(lpfMsgCallRelease), ulCallerData, ulFlags, util.toPointer(lppMsg));
 }
 
 export function GetAttribIMsgOnIStg(
@@ -750,7 +753,7 @@ export function GetAttribIMsgOnIStg(
   lpPropTagArray: Deno.PointerValue | Uint8Array | null /* ptr */,
   lppPropAttrArray: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libMAPI32.GetAttribIMsgOnIStg(util.toPointer(lpObject), util.toPointer(lpPropTagArray), util.toPointer(lppPropAttrArray)));
+  return util.pointerFromFfi(libMAPI32_dll.GetAttribIMsgOnIStg(util.toPointer(lpObject), util.toPointer(lpPropTagArray), util.toPointer(lppPropAttrArray)));
 }
 
 export function SetAttribIMsgOnIStg(
@@ -759,12 +762,12 @@ export function SetAttribIMsgOnIStg(
   lpPropAttrs: Deno.PointerValue | Uint8Array | null /* ptr */,
   lppPropProblems: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libMAPI32.SetAttribIMsgOnIStg(util.toPointer(lpObject), util.toPointer(lpPropTags), util.toPointer(lpPropAttrs), util.toPointer(lppPropProblems)));
+  return util.pointerFromFfi(libMAPI32_dll.SetAttribIMsgOnIStg(util.toPointer(lpObject), util.toPointer(lpPropTags), util.toPointer(lpPropAttrs), util.toPointer(lppPropProblems)));
 }
 
 export function MapStorageSCode(
   StgSCode: number /* i32 */,
 ): number /* i32 */ {
-  return libMAPI32.MapStorageSCode(StgSCode);
+  return libMAPI32_dll.MapStorageSCode(StgSCode);
 }
 

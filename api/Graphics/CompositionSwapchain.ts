@@ -178,7 +178,7 @@ export type HRESULT = number;
 // Native Libraries
 
 try {
-  var libdcomp = Deno.dlopen("dcomp", {
+  var libdcomp_dll = Deno.dlopen("dcomp.dll", {
     CreatePresentationFactory: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "pointer",
@@ -193,6 +193,6 @@ export function CreatePresentationFactory(
   riid: Deno.PointerValue | Uint8Array | null /* ptr */,
   presentationFactory: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libdcomp.CreatePresentationFactory(util.toPointer(d3dDevice), util.toPointer(riid), util.toPointer(presentationFactory)));
+  return util.pointerFromFfi(libdcomp_dll.CreatePresentationFactory(util.toPointer(d3dDevice), util.toPointer(riid), util.toPointer(presentationFactory)));
 }
 

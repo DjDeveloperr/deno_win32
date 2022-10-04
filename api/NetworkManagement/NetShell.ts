@@ -32,11 +32,15 @@ export const ERROR_HELPER_ALREADY_REGISTERED = 15018;
 export const ERROR_CONTEXT_ALREADY_REGISTERED = 15019;
 export const ERROR_PARSING_FAILURE = 15020;
 export const NETSH_ERROR_END = 15019;
+export const NS_GET_EVENT_IDS_FN_NAME = "GetEventIds";
 export const MAX_NAME_LEN = 48;
 export const NETSH_VERSION_50 = 20480;
+export const NETSH_ARG_DELIMITER = "=";
+export const NETSH_CMD_DELIMITER = " ";
 export const NETSH_MAX_TOKEN_LENGTH = 64;
 export const NETSH_MAX_CMD_TOKEN_LENGTH = 128;
 export const DEFAULT_CONTEXT_PRIORITY = 100;
+export const GET_RESOURCE_STRING_FN_NAME = "GetResourceString";
 export const CMD_FLAG_PRIVATE = 1;
 export const CMD_FLAG_INTERACTIVE = 2;
 export const CMD_FLAG_LOCAL = 8;
@@ -358,7 +362,7 @@ export type HANDLE = Deno.PointerValue;
 // Native Libraries
 
 try {
-  var libNETSH = Deno.dlopen("NETSH", {
+  var libNETSH_dll = Deno.dlopen("NETSH.dll", {
     MatchEnumTag: {
       parameters: ["pointer", "buffer", "u32", "pointer", "pointer"],
       result: "u32",
@@ -403,14 +407,14 @@ export function MatchEnumTag(
   pEnumTable: Deno.PointerValue | Uint8Array | null /* ptr */,
   pdwValue: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libNETSH.MatchEnumTag(util.toPointer(hModule), util.pwstrToFfi(pwcArg), dwNumArg, util.toPointer(pEnumTable), util.toPointer(pdwValue));
+  return libNETSH_dll.MatchEnumTag(util.toPointer(hModule), util.pwstrToFfi(pwcArg), dwNumArg, util.toPointer(pEnumTable), util.toPointer(pdwValue));
 }
 
 export function MatchToken(
   pwszUserToken: string | null /* Windows.Win32.Foundation.PWSTR */,
   pwszCmdToken: string | null /* Windows.Win32.Foundation.PWSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libNETSH.MatchToken(util.pwstrToFfi(pwszUserToken), util.pwstrToFfi(pwszCmdToken)));
+  return util.boolFromFfi(libNETSH_dll.MatchToken(util.pwstrToFfi(pwszUserToken), util.pwstrToFfi(pwszCmdToken)));
 }
 
 export function PreprocessCommand(
@@ -424,39 +428,39 @@ export function PreprocessCommand(
   dwMaxArgs: number /* u32 */,
   pdwTagType: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libNETSH.PreprocessCommand(util.toPointer(hModule), util.toPointer(ppwcArguments), dwCurrentIndex, dwArgCount, util.toPointer(pttTags), dwTagCount, dwMinArgs, dwMaxArgs, util.toPointer(pdwTagType));
+  return libNETSH_dll.PreprocessCommand(util.toPointer(hModule), util.toPointer(ppwcArguments), dwCurrentIndex, dwArgCount, util.toPointer(pttTags), dwTagCount, dwMinArgs, dwMaxArgs, util.toPointer(pdwTagType));
 }
 
 export function PrintError(
   hModule: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
   dwErrId: number /* u32 */,
 ): number /* u32 */ {
-  return libNETSH.PrintError(util.toPointer(hModule), dwErrId);
+  return libNETSH_dll.PrintError(util.toPointer(hModule), dwErrId);
 }
 
 export function PrintMessageFromModule(
   hModule: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
   dwMsgId: number /* u32 */,
 ): number /* u32 */ {
-  return libNETSH.PrintMessageFromModule(util.toPointer(hModule), dwMsgId);
+  return libNETSH_dll.PrintMessageFromModule(util.toPointer(hModule), dwMsgId);
 }
 
 export function PrintMessage(
   pwszFormat: string | null /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
-  return libNETSH.PrintMessage(util.pwstrToFfi(pwszFormat));
+  return libNETSH_dll.PrintMessage(util.pwstrToFfi(pwszFormat));
 }
 
 export function RegisterContext(
   pChildContext: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libNETSH.RegisterContext(util.toPointer(pChildContext));
+  return libNETSH_dll.RegisterContext(util.toPointer(pChildContext));
 }
 
 export function RegisterHelper(
   pguidParentContext: Deno.PointerValue | Uint8Array | null /* ptr */,
   pfnRegisterSubContext: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libNETSH.RegisterHelper(util.toPointer(pguidParentContext), util.toPointer(pfnRegisterSubContext));
+  return libNETSH_dll.RegisterHelper(util.toPointer(pguidParentContext), util.toPointer(pfnRegisterSubContext));
 }
 

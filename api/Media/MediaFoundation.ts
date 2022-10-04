@@ -4,7 +4,9 @@ import * as util from "../../util.ts";
 
 // Enums
 export type MEDIA_EVENT_GENERATOR_GET_EVENT_FLAGS = number;
+export type MPEG2VIDEOINFO_FLAGS = number;
 export type MF_Plugin_Type = number;
+export type BI_COMPRESSION = number;
 export type D3D12_VIDEO_FIELD_TYPE = number;
 export type D3D12_VIDEO_FRAME_STEREO_FORMAT = number;
 export type DXGI_FORMAT = number;
@@ -202,7 +204,7 @@ export type OPM_TYPE = number;
 export type OPM_VIDEO_OUTPUT_SEMANTICS = number;
 export type OPM_HDCP_FLAGS = number;
 export type OPM_STATUS = number;
-export type PM_CONNECTOR_TYPE = number;
+export type OPM_CONNECTOR_TYPE = number;
 export type OPM_DVI_CHARACTERISTIC = number;
 export type OPM_OUTPUT_HARDWARE_PROTECTION = number;
 export type OPM_BUS_TYPE = number;
@@ -324,7 +326,7 @@ export type MF_MT_D3D_RESOURCE_VERSION_ENUM = number;
 export type MFASYNC_WORKQUEUE_TYPE = number;
 export type MF_TOPOSTATUS = number;
 export type MFSampleEncryptionProtectionScheme = number;
-export type _MFT_ENUM_FLAG = number;
+export type MFT_ENUM_FLAG = number;
 export type MFFrameSourceTypes = number;
 export type MFVideo3DFormat = number;
 export type MFVideo3DSampleFormat = number;
@@ -395,15 +397,25 @@ export type MF_SHARING_ENGINE_EVENT = number;
 export type MF_MEDIA_SHARING_ENGINE_EVENT = number;
 export type PLAYTO_SOURCE_CREATEFLAGS = number;
 export type MFVideoAlphaBitmapFlags = number;
-export type __MIDL___MIDL_itf_mfvirtualcamera_0000_0000_0001 = number;
-export type __MIDL___MIDL_itf_mfvirtualcamera_0000_0000_0002 = number;
-export type __MIDL___MIDL_itf_mfvirtualcamera_0000_0000_0003 = number;
+export type MFVirtualCameraType = number;
+export type MFVirtualCameraLifetime = number;
+export type MFVirtualCameraAccess = number;
 export type OPM_HDCP_TYPE = number;
 export type OPM_HDCP_STATUS = number;
 
 // Constants
 export const MF_EVENT_FLAG_NONE = 0;
 export const MF_EVENT_FLAG_NO_WAIT = 1;
+export const AMMPEG2_DoPanScan = 1;
+export const AMMPEG2_DVDLine21Field1 = 2;
+export const AMMPEG2_DVDLine21Field2 = 4;
+export const AMMPEG2_SourceIsLetterboxed = 8;
+export const AMMPEG2_FilmCameraMode = 16;
+export const AMMPEG2_LetterboxAnalogOut = 32;
+export const AMMPEG2_DSS_UserData = 64;
+export const AMMPEG2_DVB_UserData = 128;
+export const AMMPEG2_27MhzTimebase = 256;
+export const AMMPEG2_WidescreenAnalogOut = 512;
 export const MF_Plugin_Type_MFT = 0;
 export const MF_Plugin_Type_MediaSource = 1;
 export const MF_Plugin_Type_MFT_MatchOutputType = 2;
@@ -934,6 +946,12 @@ export const COPP_ProtectionType_ACP = 2;
 export const COPP_ProtectionType_CGMSA = 4;
 export const COPP_ProtectionType_Mask = "-2147483641";
 export const COPP_ProtectionType_Reserved = 2147483640;
+export const BI_RGB = 0;
+export const BI_RLE8 = 1;
+export const BI_RLE4 = 2;
+export const BI_BITFIELDS = 3;
+export const BI_JPEG = 4;
+export const BI_PNG = 5;
 export const D3D12_VIDEO_FIELD_TYPE_NONE = 0;
 export const D3D12_VIDEO_FIELD_TYPE_INTERLACED_TOP_FIELD_FIRST = 1;
 export const D3D12_VIDEO_FIELD_TYPE_INTERLACED_BOTTOM_FIELD_FIRST = 2;
@@ -3290,25 +3308,79 @@ export const OPM_HDCP_STATUS_OFF = 1;
 // Structs
 
 /**
- * Windows.Win32.UI.Shell.PropertiesSystem.PROPERTYKEY (size: 16)
+ * Windows.Win32.Devices.Properties.DEVPROPKEY (size: 16)
  */
-export interface PROPERTYKEY {
+export interface DEVPROPKEY {
   /** System.Guid */
   fmtid: Uint8Array | Deno.PointerValue | null;
   /** u32 */
   pid: number;
 }
 
-export const sizeofPROPERTYKEY = 16;
+export const sizeofDEVPROPKEY = 16;
 
-export function allocPROPERTYKEY(data?: Partial<PROPERTYKEY>): Uint8Array {
-  const buf = new Uint8Array(sizeofPROPERTYKEY);
+export function allocDEVPROPKEY(data?: Partial<DEVPROPKEY>): Uint8Array {
+  const buf = new Uint8Array(sizeofDEVPROPKEY);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
   if (data?.fmtid !== undefined) view.setBigUint64(0, data.fmtid === null ? 0n : BigInt(util.toPointer(data.fmtid)), true);
   // 0x08: u32
   if (data?.pid !== undefined) view.setUint32(8, Number(data.pid), true);
   // 0x0c: pad4
+  return buf;
+}
+
+export type BOOL = number;
+
+/**
+ * Windows.Win32.Media.MediaFoundation.AM_MEDIA_TYPE (size: 64)
+ */
+export interface AM_MEDIA_TYPE {
+  /** System.Guid */
+  majortype: Uint8Array | Deno.PointerValue | null;
+  /** System.Guid */
+  subtype: Uint8Array | Deno.PointerValue | null;
+  /** Windows.Win32.Foundation.BOOL */
+  bFixedSizeSamples: boolean;
+  /** Windows.Win32.Foundation.BOOL */
+  bTemporalCompression: boolean;
+  /** u32 */
+  lSampleSize: number;
+  /** System.Guid */
+  formattype: Uint8Array | Deno.PointerValue | null;
+  /** Windows.Win32.System.Com.IUnknown */
+  pUnk: Uint8Array | Deno.PointerValue | null;
+  /** u32 */
+  cbFormat: number;
+  /** ptr */
+  pbFormat: Deno.PointerValue | Uint8Array | null;
+}
+
+export const sizeofAM_MEDIA_TYPE = 64;
+
+export function allocAM_MEDIA_TYPE(data?: Partial<AM_MEDIA_TYPE>): Uint8Array {
+  const buf = new Uint8Array(sizeofAM_MEDIA_TYPE);
+  const view = new DataView(buf.buffer);
+  // 0x00: pointer
+  if (data?.majortype !== undefined) view.setBigUint64(0, data.majortype === null ? 0n : BigInt(util.toPointer(data.majortype)), true);
+  // 0x08: pointer
+  if (data?.subtype !== undefined) view.setBigUint64(8, data.subtype === null ? 0n : BigInt(util.toPointer(data.subtype)), true);
+  // 0x10: i32
+  if (data?.bFixedSizeSamples !== undefined) view.setInt32(16, Number(data.bFixedSizeSamples), true);
+  // 0x14: i32
+  if (data?.bTemporalCompression !== undefined) view.setInt32(20, Number(data.bTemporalCompression), true);
+  // 0x18: u32
+  if (data?.lSampleSize !== undefined) view.setUint32(24, Number(data.lSampleSize), true);
+  // 0x1c: pad4
+  // 0x20: pointer
+  if (data?.formattype !== undefined) view.setBigUint64(32, data.formattype === null ? 0n : BigInt(util.toPointer(data.formattype)), true);
+  // 0x28: pointer
+  if (data?.pUnk !== undefined) view.setBigUint64(40, data.pUnk === null ? 0n : BigInt(util.toPointer(data.pUnk)), true);
+  // 0x30: u32
+  if (data?.cbFormat !== undefined) view.setUint32(48, Number(data.cbFormat), true);
+  // 0x34: pad4
+  // 0x38: pointer
+  if (data?.pbFormat !== undefined) view.setBigUint64(56, data.pbFormat === null ? 0n : BigInt(util.toPointer(data.pbFormat)), true);
   return buf;
 }
 
@@ -3340,29 +3412,308 @@ export function allocCodecAPIEventData(data?: Partial<CodecAPIEventData>): Uint8
 }
 
 /**
- * Windows.Win32.Media.MediaFoundation.D3DOVERLAYCAPS (size: 16)
+ * Windows.Win32.Foundation.RECT (size: 16)
  */
-export interface D3DOVERLAYCAPS {
-  /** u32 */
-  Caps: number;
-  /** u32 */
-  MaxOverlayDisplayWidth: number;
-  /** u32 */
-  MaxOverlayDisplayHeight: number;
+export interface RECT {
+  /** i32 */
+  left: number;
+  /** i32 */
+  top: number;
+  /** i32 */
+  right: number;
+  /** i32 */
+  bottom: number;
 }
 
-export const sizeofD3DOVERLAYCAPS = 16;
+export const sizeofRECT = 16;
 
-export function allocD3DOVERLAYCAPS(data?: Partial<D3DOVERLAYCAPS>): Uint8Array {
-  const buf = new Uint8Array(sizeofD3DOVERLAYCAPS);
+export function allocRECT(data?: Partial<RECT>): Uint8Array {
+  const buf = new Uint8Array(sizeofRECT);
+  const view = new DataView(buf.buffer);
+  // 0x00: i32
+  if (data?.left !== undefined) view.setInt32(0, Number(data.left), true);
+  // 0x04: i32
+  if (data?.top !== undefined) view.setInt32(4, Number(data.top), true);
+  // 0x08: i32
+  if (data?.right !== undefined) view.setInt32(8, Number(data.right), true);
+  // 0x0c: i32
+  if (data?.bottom !== undefined) view.setInt32(12, Number(data.bottom), true);
+  return buf;
+}
+
+/**
+ * Windows.Win32.Graphics.Gdi.BITMAPINFOHEADER (size: 40)
+ */
+export interface BITMAPINFOHEADER {
+  /** u32 */
+  biSize: number;
+  /** i32 */
+  biWidth: number;
+  /** i32 */
+  biHeight: number;
+  /** u16 */
+  biPlanes: number;
+  /** u16 */
+  biBitCount: number;
+  /** Windows.Win32.Graphics.Gdi.BI_COMPRESSION */
+  biCompression: BI_COMPRESSION;
+  /** u32 */
+  biSizeImage: number;
+  /** i32 */
+  biXPelsPerMeter: number;
+  /** i32 */
+  biYPelsPerMeter: number;
+  /** u32 */
+  biClrUsed: number;
+  /** u32 */
+  biClrImportant: number;
+}
+
+export const sizeofBITMAPINFOHEADER = 40;
+
+export function allocBITMAPINFOHEADER(data?: Partial<BITMAPINFOHEADER>): Uint8Array {
+  const buf = new Uint8Array(sizeofBITMAPINFOHEADER);
   const view = new DataView(buf.buffer);
   // 0x00: u32
-  if (data?.Caps !== undefined) view.setUint32(0, Number(data.Caps), true);
-  // 0x04: u32
-  if (data?.MaxOverlayDisplayWidth !== undefined) view.setUint32(4, Number(data.MaxOverlayDisplayWidth), true);
+  if (data?.biSize !== undefined) view.setUint32(0, Number(data.biSize), true);
+  // 0x04: i32
+  if (data?.biWidth !== undefined) view.setInt32(4, Number(data.biWidth), true);
+  // 0x08: i32
+  if (data?.biHeight !== undefined) view.setInt32(8, Number(data.biHeight), true);
+  // 0x0c: u16
+  if (data?.biPlanes !== undefined) view.setUint16(12, Number(data.biPlanes), true);
+  // 0x0e: u16
+  if (data?.biBitCount !== undefined) view.setUint16(14, Number(data.biBitCount), true);
+  // 0x10: i32
+  if (data?.biCompression !== undefined) view.setInt32(16, Number(data.biCompression), true);
+  // 0x14: u32
+  if (data?.biSizeImage !== undefined) view.setUint32(20, Number(data.biSizeImage), true);
+  // 0x18: i32
+  if (data?.biXPelsPerMeter !== undefined) view.setInt32(24, Number(data.biXPelsPerMeter), true);
+  // 0x1c: i32
+  if (data?.biYPelsPerMeter !== undefined) view.setInt32(28, Number(data.biYPelsPerMeter), true);
+  // 0x20: u32
+  if (data?.biClrUsed !== undefined) view.setUint32(32, Number(data.biClrUsed), true);
+  // 0x24: u32
+  if (data?.biClrImportant !== undefined) view.setUint32(36, Number(data.biClrImportant), true);
+  return buf;
+}
+
+/**
+ * Windows.Win32.Media.MediaFoundation.VIDEOINFOHEADER (size: 40)
+ */
+export interface VIDEOINFOHEADER {
+  /** Windows.Win32.Foundation.RECT */
+  rcSource: Uint8Array | Deno.PointerValue | null;
+  /** Windows.Win32.Foundation.RECT */
+  rcTarget: Uint8Array | Deno.PointerValue | null;
+  /** u32 */
+  dwBitRate: number;
+  /** u32 */
+  dwBitErrorRate: number;
+  /** i64 */
+  AvgTimePerFrame: Deno.PointerValue;
+  /** Windows.Win32.Graphics.Gdi.BITMAPINFOHEADER */
+  bmiHeader: Uint8Array | Deno.PointerValue | null;
+}
+
+export const sizeofVIDEOINFOHEADER = 40;
+
+export function allocVIDEOINFOHEADER(data?: Partial<VIDEOINFOHEADER>): Uint8Array {
+  const buf = new Uint8Array(sizeofVIDEOINFOHEADER);
+  const view = new DataView(buf.buffer);
+  // 0x00: pointer
+  if (data?.rcSource !== undefined) view.setBigUint64(0, data.rcSource === null ? 0n : BigInt(util.toPointer(data.rcSource)), true);
+  // 0x08: pointer
+  if (data?.rcTarget !== undefined) view.setBigUint64(8, data.rcTarget === null ? 0n : BigInt(util.toPointer(data.rcTarget)), true);
+  // 0x10: u32
+  if (data?.dwBitRate !== undefined) view.setUint32(16, Number(data.dwBitRate), true);
+  // 0x14: u32
+  if (data?.dwBitErrorRate !== undefined) view.setUint32(20, Number(data.dwBitErrorRate), true);
+  // 0x18: i64
+  if (data?.AvgTimePerFrame !== undefined) view.setBigInt64(24, BigInt(data.AvgTimePerFrame), true);
+  // 0x20: pointer
+  if (data?.bmiHeader !== undefined) view.setBigUint64(32, data.bmiHeader === null ? 0n : BigInt(util.toPointer(data.bmiHeader)), true);
+  return buf;
+}
+
+/**
+ * Windows.Win32.Media.MediaFoundation.MPEG1VIDEOINFO (size: 24)
+ */
+export interface MPEG1VIDEOINFO {
+  /** Windows.Win32.Media.MediaFoundation.VIDEOINFOHEADER */
+  hdr: Uint8Array | Deno.PointerValue | null;
+  /** u32 */
+  dwStartTimeCode: number;
+  /** u32 */
+  cbSequenceHeader: number;
+  /** array */
+  bSequenceHeader: Deno.PointerValue | null;
+}
+
+export const sizeofMPEG1VIDEOINFO = 24;
+
+export function allocMPEG1VIDEOINFO(data?: Partial<MPEG1VIDEOINFO>): Uint8Array {
+  const buf = new Uint8Array(sizeofMPEG1VIDEOINFO);
+  const view = new DataView(buf.buffer);
+  // 0x00: pointer
+  if (data?.hdr !== undefined) view.setBigUint64(0, data.hdr === null ? 0n : BigInt(util.toPointer(data.hdr)), true);
   // 0x08: u32
-  if (data?.MaxOverlayDisplayHeight !== undefined) view.setUint32(8, Number(data.MaxOverlayDisplayHeight), true);
-  // 0x0c: pad4
+  if (data?.dwStartTimeCode !== undefined) view.setUint32(8, Number(data.dwStartTimeCode), true);
+  // 0x0c: u32
+  if (data?.cbSequenceHeader !== undefined) view.setUint32(12, Number(data.cbSequenceHeader), true);
+  // 0x10: pointer
+  if (data?.bSequenceHeader !== undefined) view.setBigUint64(16, data.bSequenceHeader === null ? 0n : BigInt(util.toPointer(data.bSequenceHeader)), true);
+  return buf;
+}
+
+/**
+ * _Anonymous_e__Struct (size: 16)
+ */
+export interface _Anonymous_e__Struct {
+  /** u64 */
+  Alignment: Deno.PointerValue;
+  /** u64 */
+  Region: Deno.PointerValue;
+}
+
+export const sizeof_Anonymous_e__Struct = 16;
+
+export function alloc_Anonymous_e__Struct(data?: Partial<_Anonymous_e__Struct>): Uint8Array {
+  const buf = new Uint8Array(sizeof_Anonymous_e__Struct);
+  const view = new DataView(buf.buffer);
+  // 0x00: u64
+  if (data?.Alignment !== undefined) view.setBigUint64(0, BigInt(data.Alignment), true);
+  // 0x08: u64
+  if (data?.Region !== undefined) view.setBigUint64(8, BigInt(data.Region), true);
+  return buf;
+}
+
+/**
+ * _Anonymous_e__Union (size: 16)
+ */
+export interface _Anonymous_e__Union {
+  /** _Anonymous_e__Struct */
+  Anonymous: Uint8Array | Deno.PointerValue | null;
+  /** array */
+  X: Deno.PointerValue | null;
+}
+
+export const sizeof_Anonymous_e__Union = 16;
+
+export function alloc_Anonymous_e__Union(data?: Partial<_Anonymous_e__Union>): Uint8Array {
+  const buf = new Uint8Array(sizeof_Anonymous_e__Union);
+  const view = new DataView(buf.buffer);
+  // 0x00: pointer
+  if (data?.Anonymous !== undefined) view.setBigUint64(0, data.Anonymous === null ? 0n : BigInt(util.toPointer(data.Anonymous)), true);
+  // 0x08: pointer
+  if (data?.X !== undefined) view.setBigUint64(8, data.X === null ? 0n : BigInt(util.toPointer(data.X)), true);
+  return buf;
+}
+
+/**
+ * Windows.Win32.Media.MediaFoundation.VIDEOINFOHEADER2 (size: 72)
+ */
+export interface VIDEOINFOHEADER2 {
+  /** Windows.Win32.Foundation.RECT */
+  rcSource: Uint8Array | Deno.PointerValue | null;
+  /** Windows.Win32.Foundation.RECT */
+  rcTarget: Uint8Array | Deno.PointerValue | null;
+  /** u32 */
+  dwBitRate: number;
+  /** u32 */
+  dwBitErrorRate: number;
+  /** i64 */
+  AvgTimePerFrame: Deno.PointerValue;
+  /** u32 */
+  dwInterlaceFlags: number;
+  /** u32 */
+  dwCopyProtectFlags: number;
+  /** u32 */
+  dwPictAspectRatioX: number;
+  /** u32 */
+  dwPictAspectRatioY: number;
+  /** _Anonymous_e__Union */
+  Anonymous: Uint8Array | Deno.PointerValue | null;
+  /** u32 */
+  dwReserved2: number;
+  /** Windows.Win32.Graphics.Gdi.BITMAPINFOHEADER */
+  bmiHeader: Uint8Array | Deno.PointerValue | null;
+}
+
+export const sizeofVIDEOINFOHEADER2 = 72;
+
+export function allocVIDEOINFOHEADER2(data?: Partial<VIDEOINFOHEADER2>): Uint8Array {
+  const buf = new Uint8Array(sizeofVIDEOINFOHEADER2);
+  const view = new DataView(buf.buffer);
+  // 0x00: pointer
+  if (data?.rcSource !== undefined) view.setBigUint64(0, data.rcSource === null ? 0n : BigInt(util.toPointer(data.rcSource)), true);
+  // 0x08: pointer
+  if (data?.rcTarget !== undefined) view.setBigUint64(8, data.rcTarget === null ? 0n : BigInt(util.toPointer(data.rcTarget)), true);
+  // 0x10: u32
+  if (data?.dwBitRate !== undefined) view.setUint32(16, Number(data.dwBitRate), true);
+  // 0x14: u32
+  if (data?.dwBitErrorRate !== undefined) view.setUint32(20, Number(data.dwBitErrorRate), true);
+  // 0x18: i64
+  if (data?.AvgTimePerFrame !== undefined) view.setBigInt64(24, BigInt(data.AvgTimePerFrame), true);
+  // 0x20: u32
+  if (data?.dwInterlaceFlags !== undefined) view.setUint32(32, Number(data.dwInterlaceFlags), true);
+  // 0x24: u32
+  if (data?.dwCopyProtectFlags !== undefined) view.setUint32(36, Number(data.dwCopyProtectFlags), true);
+  // 0x28: u32
+  if (data?.dwPictAspectRatioX !== undefined) view.setUint32(40, Number(data.dwPictAspectRatioX), true);
+  // 0x2c: u32
+  if (data?.dwPictAspectRatioY !== undefined) view.setUint32(44, Number(data.dwPictAspectRatioY), true);
+  // 0x30: pointer
+  if (data?.Anonymous !== undefined) view.setBigUint64(48, data.Anonymous === null ? 0n : BigInt(util.toPointer(data.Anonymous)), true);
+  // 0x38: u32
+  if (data?.dwReserved2 !== undefined) view.setUint32(56, Number(data.dwReserved2), true);
+  // 0x3c: pad4
+  // 0x40: pointer
+  if (data?.bmiHeader !== undefined) view.setBigUint64(64, data.bmiHeader === null ? 0n : BigInt(util.toPointer(data.bmiHeader)), true);
+  return buf;
+}
+
+/**
+ * Windows.Win32.Media.MediaFoundation.MPEG2VIDEOINFO (size: 40)
+ */
+export interface MPEG2VIDEOINFO {
+  /** Windows.Win32.Media.MediaFoundation.VIDEOINFOHEADER2 */
+  hdr: Uint8Array | Deno.PointerValue | null;
+  /** u32 */
+  dwStartTimeCode: number;
+  /** u32 */
+  cbSequenceHeader: number;
+  /** u32 */
+  dwProfile: number;
+  /** u32 */
+  dwLevel: number;
+  /** Windows.Win32.Media.MediaFoundation.MPEG2VIDEOINFO_FLAGS */
+  dwFlags: MPEG2VIDEOINFO_FLAGS;
+  /** array */
+  dwSequenceHeader: Deno.PointerValue | null;
+}
+
+export const sizeofMPEG2VIDEOINFO = 40;
+
+export function allocMPEG2VIDEOINFO(data?: Partial<MPEG2VIDEOINFO>): Uint8Array {
+  const buf = new Uint8Array(sizeofMPEG2VIDEOINFO);
+  const view = new DataView(buf.buffer);
+  // 0x00: pointer
+  if (data?.hdr !== undefined) view.setBigUint64(0, data.hdr === null ? 0n : BigInt(util.toPointer(data.hdr)), true);
+  // 0x08: u32
+  if (data?.dwStartTimeCode !== undefined) view.setUint32(8, Number(data.dwStartTimeCode), true);
+  // 0x0c: u32
+  if (data?.cbSequenceHeader !== undefined) view.setUint32(12, Number(data.cbSequenceHeader), true);
+  // 0x10: u32
+  if (data?.dwProfile !== undefined) view.setUint32(16, Number(data.dwProfile), true);
+  // 0x14: u32
+  if (data?.dwLevel !== undefined) view.setUint32(20, Number(data.dwLevel), true);
+  // 0x18: u32
+  if (data?.dwFlags !== undefined) view.setUint32(24, Number(data.dwFlags), true);
+  // 0x1c: pad4
+  // 0x20: pointer
+  if (data?.dwSequenceHeader !== undefined) view.setBigUint64(32, data.dwSequenceHeader === null ? 0n : BigInt(util.toPointer(data.dwSequenceHeader)), true);
   return buf;
 }
 
@@ -3398,6 +3749,216 @@ export function allocD3DCONTENTPROTECTIONCAPS(data?: Partial<D3DCONTENTPROTECTIO
   if (data?.BlockAlignmentSize !== undefined) view.setUint32(20, Number(data.BlockAlignmentSize), true);
   // 0x18: u64
   if (data?.ProtectedMemorySize !== undefined) view.setBigUint64(24, BigInt(data.ProtectedMemorySize), true);
+  return buf;
+}
+
+/**
+ * Windows.Win32.Media.MediaFoundation.DXVA_VideoSample2 (size: 64)
+ */
+export interface DXVA_VideoSample2 {
+  /** u32 */
+  Size: number;
+  /** u32 */
+  Reserved: number;
+  /** i64 */
+  rtStart: Deno.PointerValue;
+  /** i64 */
+  rtEnd: Deno.PointerValue;
+  /** u32 */
+  SampleFormat: number;
+  /** u32 */
+  SampleFlags: number;
+  /** ptr */
+  lpDDSSrcSurface: Deno.PointerValue | Uint8Array | null;
+  /** Windows.Win32.Foundation.RECT */
+  rcSrc: Uint8Array | Deno.PointerValue | null;
+  /** Windows.Win32.Foundation.RECT */
+  rcDst: Uint8Array | Deno.PointerValue | null;
+  /** array */
+  Palette: Deno.PointerValue | null;
+}
+
+export const sizeofDXVA_VideoSample2 = 64;
+
+export function allocDXVA_VideoSample2(data?: Partial<DXVA_VideoSample2>): Uint8Array {
+  const buf = new Uint8Array(sizeofDXVA_VideoSample2);
+  const view = new DataView(buf.buffer);
+  // 0x00: u32
+  if (data?.Size !== undefined) view.setUint32(0, Number(data.Size), true);
+  // 0x04: u32
+  if (data?.Reserved !== undefined) view.setUint32(4, Number(data.Reserved), true);
+  // 0x08: i64
+  if (data?.rtStart !== undefined) view.setBigInt64(8, BigInt(data.rtStart), true);
+  // 0x10: i64
+  if (data?.rtEnd !== undefined) view.setBigInt64(16, BigInt(data.rtEnd), true);
+  // 0x18: u32
+  if (data?.SampleFormat !== undefined) view.setUint32(24, Number(data.SampleFormat), true);
+  // 0x1c: u32
+  if (data?.SampleFlags !== undefined) view.setUint32(28, Number(data.SampleFlags), true);
+  // 0x20: pointer
+  if (data?.lpDDSSrcSurface !== undefined) view.setBigUint64(32, data.lpDDSSrcSurface === null ? 0n : BigInt(util.toPointer(data.lpDDSSrcSurface)), true);
+  // 0x28: pointer
+  if (data?.rcSrc !== undefined) view.setBigUint64(40, data.rcSrc === null ? 0n : BigInt(util.toPointer(data.rcSrc)), true);
+  // 0x30: pointer
+  if (data?.rcDst !== undefined) view.setBigUint64(48, data.rcDst === null ? 0n : BigInt(util.toPointer(data.rcDst)), true);
+  // 0x38: pointer
+  if (data?.Palette !== undefined) view.setBigUint64(56, data.Palette === null ? 0n : BigInt(util.toPointer(data.Palette)), true);
+  return buf;
+}
+
+/**
+ * Windows.Win32.Media.MediaFoundation.DXVA_VideoSample32 (size: 56)
+ */
+export interface DXVA_VideoSample32 {
+  /** i64 */
+  rtStart: Deno.PointerValue;
+  /** i64 */
+  rtEnd: Deno.PointerValue;
+  /** u32 */
+  SampleFormat: number;
+  /** u32 */
+  SampleFlags: number;
+  /** u32 */
+  lpDDSSrcSurface: number;
+  /** Windows.Win32.Foundation.RECT */
+  rcSrc: Uint8Array | Deno.PointerValue | null;
+  /** Windows.Win32.Foundation.RECT */
+  rcDst: Uint8Array | Deno.PointerValue | null;
+  /** array */
+  Palette: Deno.PointerValue | null;
+}
+
+export const sizeofDXVA_VideoSample32 = 56;
+
+export function allocDXVA_VideoSample32(data?: Partial<DXVA_VideoSample32>): Uint8Array {
+  const buf = new Uint8Array(sizeofDXVA_VideoSample32);
+  const view = new DataView(buf.buffer);
+  // 0x00: i64
+  if (data?.rtStart !== undefined) view.setBigInt64(0, BigInt(data.rtStart), true);
+  // 0x08: i64
+  if (data?.rtEnd !== undefined) view.setBigInt64(8, BigInt(data.rtEnd), true);
+  // 0x10: u32
+  if (data?.SampleFormat !== undefined) view.setUint32(16, Number(data.SampleFormat), true);
+  // 0x14: u32
+  if (data?.SampleFlags !== undefined) view.setUint32(20, Number(data.SampleFlags), true);
+  // 0x18: u32
+  if (data?.lpDDSSrcSurface !== undefined) view.setUint32(24, Number(data.lpDDSSrcSurface), true);
+  // 0x1c: pad4
+  // 0x20: pointer
+  if (data?.rcSrc !== undefined) view.setBigUint64(32, data.rcSrc === null ? 0n : BigInt(util.toPointer(data.rcSrc)), true);
+  // 0x28: pointer
+  if (data?.rcDst !== undefined) view.setBigUint64(40, data.rcDst === null ? 0n : BigInt(util.toPointer(data.rcDst)), true);
+  // 0x30: pointer
+  if (data?.Palette !== undefined) view.setBigUint64(48, data.Palette === null ? 0n : BigInt(util.toPointer(data.Palette)), true);
+  return buf;
+}
+
+/**
+ * Windows.Win32.Media.MediaFoundation.DXVA_AYUVsample2 (size: 8)
+ */
+export interface DXVA_AYUVsample2 {
+  /** u8 */
+  bCrValue: number;
+  /** u8 */
+  bCbValue: number;
+  /** u8 */
+  bY_Value: number;
+  /** u8 */
+  bSampleAlpha8: number;
+}
+
+export const sizeofDXVA_AYUVsample2 = 8;
+
+export function allocDXVA_AYUVsample2(data?: Partial<DXVA_AYUVsample2>): Uint8Array {
+  const buf = new Uint8Array(sizeofDXVA_AYUVsample2);
+  const view = new DataView(buf.buffer);
+  // 0x00: u8
+  if (data?.bCrValue !== undefined) view.setUint8(0, Number(data.bCrValue));
+  // 0x01: u8
+  if (data?.bCbValue !== undefined) view.setUint8(1, Number(data.bCbValue));
+  // 0x02: u8
+  if (data?.bY_Value !== undefined) view.setUint8(2, Number(data.bY_Value));
+  // 0x03: u8
+  if (data?.bSampleAlpha8 !== undefined) view.setUint8(3, Number(data.bSampleAlpha8));
+  // 0x04: pad4
+  return buf;
+}
+
+/**
+ * Windows.Win32.Media.MediaFoundation.DXVA_DeinterlaceBltEx32 (size: 56)
+ */
+export interface DXVA_DeinterlaceBltEx32 {
+  /** u32 */
+  Size: number;
+  /** Windows.Win32.Media.MediaFoundation.DXVA_AYUVsample2 */
+  BackgroundColor: Uint8Array | Deno.PointerValue | null;
+  /** Windows.Win32.Foundation.RECT */
+  rcTarget: Uint8Array | Deno.PointerValue | null;
+  /** i64 */
+  rtTarget: Deno.PointerValue;
+  /** u32 */
+  NumSourceSurfaces: number;
+  /** f32 */
+  Alpha: number;
+  /** array */
+  Source: Deno.PointerValue | null;
+  /** u32 */
+  DestinationFormat: number;
+  /** u32 */
+  DestinationFlags: number;
+}
+
+export const sizeofDXVA_DeinterlaceBltEx32 = 56;
+
+export function allocDXVA_DeinterlaceBltEx32(data?: Partial<DXVA_DeinterlaceBltEx32>): Uint8Array {
+  const buf = new Uint8Array(sizeofDXVA_DeinterlaceBltEx32);
+  const view = new DataView(buf.buffer);
+  // 0x00: u32
+  if (data?.Size !== undefined) view.setUint32(0, Number(data.Size), true);
+  // 0x04: pad4
+  // 0x08: pointer
+  if (data?.BackgroundColor !== undefined) view.setBigUint64(8, data.BackgroundColor === null ? 0n : BigInt(util.toPointer(data.BackgroundColor)), true);
+  // 0x10: pointer
+  if (data?.rcTarget !== undefined) view.setBigUint64(16, data.rcTarget === null ? 0n : BigInt(util.toPointer(data.rcTarget)), true);
+  // 0x18: i64
+  if (data?.rtTarget !== undefined) view.setBigInt64(24, BigInt(data.rtTarget), true);
+  // 0x20: u32
+  if (data?.NumSourceSurfaces !== undefined) view.setUint32(32, Number(data.NumSourceSurfaces), true);
+  // 0x24: f32
+  if (data?.Alpha !== undefined) view.setFloat32(36, Number(data.Alpha), true);
+  // 0x28: pointer
+  if (data?.Source !== undefined) view.setBigUint64(40, data.Source === null ? 0n : BigInt(util.toPointer(data.Source)), true);
+  // 0x30: u32
+  if (data?.DestinationFormat !== undefined) view.setUint32(48, Number(data.DestinationFormat), true);
+  // 0x34: u32
+  if (data?.DestinationFlags !== undefined) view.setUint32(52, Number(data.DestinationFlags), true);
+  return buf;
+}
+
+/**
+ * Windows.Win32.Media.MediaFoundation.D3DOVERLAYCAPS (size: 16)
+ */
+export interface D3DOVERLAYCAPS {
+  /** u32 */
+  Caps: number;
+  /** u32 */
+  MaxOverlayDisplayWidth: number;
+  /** u32 */
+  MaxOverlayDisplayHeight: number;
+}
+
+export const sizeofD3DOVERLAYCAPS = 16;
+
+export function allocD3DOVERLAYCAPS(data?: Partial<D3DOVERLAYCAPS>): Uint8Array {
+  const buf = new Uint8Array(sizeofD3DOVERLAYCAPS);
+  const view = new DataView(buf.buffer);
+  // 0x00: u32
+  if (data?.Caps !== undefined) view.setUint32(0, Number(data.Caps), true);
+  // 0x04: u32
+  if (data?.MaxOverlayDisplayWidth !== undefined) view.setUint32(4, Number(data.MaxOverlayDisplayWidth), true);
+  // 0x08: u32
+  if (data?.MaxOverlayDisplayHeight !== undefined) view.setUint32(8, Number(data.MaxOverlayDisplayHeight), true);
+  // 0x0c: pad4
   return buf;
 }
 
@@ -3597,8 +4158,6 @@ export function allocD3D12_VIDEO_SIZE_RANGE(data?: Partial<D3D12_VIDEO_SIZE_RANG
   if (data?.MinHeight !== undefined) view.setUint32(12, Number(data.MinHeight), true);
   return buf;
 }
-
-export type BOOL = number;
 
 /**
  * Windows.Win32.Media.MediaFoundation.D3D12_VIDEO_PROCESS_ALPHA_BLENDING (size: 8)
@@ -4570,36 +5129,6 @@ export function allocD3D12_VIDEO_PROCESS_REFERENCE_SET(data?: Partial<D3D12_VIDE
   if (data?.ppFutureFrames !== undefined) view.setBigUint64(32, data.ppFutureFrames === null ? 0n : BigInt(util.toPointer(data.ppFutureFrames)), true);
   // 0x28: pointer
   if (data?.pFutureSubresources !== undefined) view.setBigUint64(40, data.pFutureSubresources === null ? 0n : BigInt(util.toPointer(data.pFutureSubresources)), true);
-  return buf;
-}
-
-/**
- * Windows.Win32.Foundation.RECT (size: 16)
- */
-export interface RECT {
-  /** i32 */
-  left: number;
-  /** i32 */
-  top: number;
-  /** i32 */
-  right: number;
-  /** i32 */
-  bottom: number;
-}
-
-export const sizeofRECT = 16;
-
-export function allocRECT(data?: Partial<RECT>): Uint8Array {
-  const buf = new Uint8Array(sizeofRECT);
-  const view = new DataView(buf.buffer);
-  // 0x00: i32
-  if (data?.left !== undefined) view.setInt32(0, Number(data.left), true);
-  // 0x04: i32
-  if (data?.top !== undefined) view.setInt32(4, Number(data.top), true);
-  // 0x08: i32
-  if (data?.right !== undefined) view.setInt32(8, Number(data.right), true);
-  // 0x0c: i32
-  if (data?.bottom !== undefined) view.setInt32(12, Number(data.bottom), true);
   return buf;
 }
 
@@ -5801,50 +6330,6 @@ export function allocD3D12_VIDEO_ENCODER_RATE_CONTROL_QVBR(data?: Partial<D3D12_
   // 0x28: u32
   if (data?.ConstantQualityTarget !== undefined) view.setUint32(40, Number(data.ConstantQualityTarget), true);
   // 0x2c: pad4
-  return buf;
-}
-
-/**
- * _Anonymous_e__Struct (size: 16)
- */
-export interface _Anonymous_e__Struct {
-  /** u64 */
-  Alignment: Deno.PointerValue;
-  /** u64 */
-  Region: Deno.PointerValue;
-}
-
-export const sizeof_Anonymous_e__Struct = 16;
-
-export function alloc_Anonymous_e__Struct(data?: Partial<_Anonymous_e__Struct>): Uint8Array {
-  const buf = new Uint8Array(sizeof_Anonymous_e__Struct);
-  const view = new DataView(buf.buffer);
-  // 0x00: u64
-  if (data?.Alignment !== undefined) view.setBigUint64(0, BigInt(data.Alignment), true);
-  // 0x08: u64
-  if (data?.Region !== undefined) view.setBigUint64(8, BigInt(data.Region), true);
-  return buf;
-}
-
-/**
- * _Anonymous_e__Union (size: 16)
- */
-export interface _Anonymous_e__Union {
-  /** _Anonymous_e__Struct */
-  Anonymous: Uint8Array | Deno.PointerValue | null;
-  /** array */
-  X: Deno.PointerValue | null;
-}
-
-export const sizeof_Anonymous_e__Union = 16;
-
-export function alloc_Anonymous_e__Union(data?: Partial<_Anonymous_e__Union>): Uint8Array {
-  const buf = new Uint8Array(sizeof_Anonymous_e__Union);
-  const view = new DataView(buf.buffer);
-  // 0x00: pointer
-  if (data?.Anonymous !== undefined) view.setBigUint64(0, data.Anonymous === null ? 0n : BigInt(util.toPointer(data.Anonymous)), true);
-  // 0x08: pointer
-  if (data?.X !== undefined) view.setBigUint64(8, data.X === null ? 0n : BigInt(util.toPointer(data.X)), true);
   return buf;
 }
 
@@ -7956,37 +8441,6 @@ export function allocTOC_ENTRY_DESCRIPTOR(data?: Partial<TOC_ENTRY_DESCRIPTOR>):
 }
 
 /**
- * Windows.Win32.Media.MediaFoundation.DXVA_AYUVsample2 (size: 8)
- */
-export interface DXVA_AYUVsample2 {
-  /** u8 */
-  bCrValue: number;
-  /** u8 */
-  bCbValue: number;
-  /** u8 */
-  bY_Value: number;
-  /** u8 */
-  bSampleAlpha8: number;
-}
-
-export const sizeofDXVA_AYUVsample2 = 8;
-
-export function allocDXVA_AYUVsample2(data?: Partial<DXVA_AYUVsample2>): Uint8Array {
-  const buf = new Uint8Array(sizeofDXVA_AYUVsample2);
-  const view = new DataView(buf.buffer);
-  // 0x00: u8
-  if (data?.bCrValue !== undefined) view.setUint8(0, Number(data.bCrValue));
-  // 0x01: u8
-  if (data?.bCbValue !== undefined) view.setUint8(1, Number(data.bCbValue));
-  // 0x02: u8
-  if (data?.bY_Value !== undefined) view.setUint8(2, Number(data.bY_Value));
-  // 0x03: u8
-  if (data?.bSampleAlpha8 !== undefined) view.setUint8(3, Number(data.bSampleAlpha8));
-  // 0x04: pad4
-  return buf;
-}
-
-/**
  * Windows.Win32.Media.MediaFoundation.DXVA_BufferDescription (size: 40)
  */
 export interface DXVA_BufferDescription {
@@ -8495,60 +8949,6 @@ export function allocDXVA_VideoSample(data?: Partial<DXVA_VideoSample>): Uint8Ar
 }
 
 /**
- * Windows.Win32.Media.MediaFoundation.DXVA_VideoSample2 (size: 64)
- */
-export interface DXVA_VideoSample2 {
-  /** u32 */
-  Size: number;
-  /** u32 */
-  Reserved: number;
-  /** i64 */
-  rtStart: Deno.PointerValue;
-  /** i64 */
-  rtEnd: Deno.PointerValue;
-  /** u32 */
-  SampleFormat: number;
-  /** u32 */
-  SampleFlags: number;
-  /** ptr */
-  lpDDSSrcSurface: Deno.PointerValue | Uint8Array | null;
-  /** Windows.Win32.Foundation.RECT */
-  rcSrc: Uint8Array | Deno.PointerValue | null;
-  /** Windows.Win32.Foundation.RECT */
-  rcDst: Uint8Array | Deno.PointerValue | null;
-  /** array */
-  Palette: Deno.PointerValue | null;
-}
-
-export const sizeofDXVA_VideoSample2 = 64;
-
-export function allocDXVA_VideoSample2(data?: Partial<DXVA_VideoSample2>): Uint8Array {
-  const buf = new Uint8Array(sizeofDXVA_VideoSample2);
-  const view = new DataView(buf.buffer);
-  // 0x00: u32
-  if (data?.Size !== undefined) view.setUint32(0, Number(data.Size), true);
-  // 0x04: u32
-  if (data?.Reserved !== undefined) view.setUint32(4, Number(data.Reserved), true);
-  // 0x08: i64
-  if (data?.rtStart !== undefined) view.setBigInt64(8, BigInt(data.rtStart), true);
-  // 0x10: i64
-  if (data?.rtEnd !== undefined) view.setBigInt64(16, BigInt(data.rtEnd), true);
-  // 0x18: u32
-  if (data?.SampleFormat !== undefined) view.setUint32(24, Number(data.SampleFormat), true);
-  // 0x1c: u32
-  if (data?.SampleFlags !== undefined) view.setUint32(28, Number(data.SampleFlags), true);
-  // 0x20: pointer
-  if (data?.lpDDSSrcSurface !== undefined) view.setBigUint64(32, data.lpDDSSrcSurface === null ? 0n : BigInt(util.toPointer(data.lpDDSSrcSurface)), true);
-  // 0x28: pointer
-  if (data?.rcSrc !== undefined) view.setBigUint64(40, data.rcSrc === null ? 0n : BigInt(util.toPointer(data.rcSrc)), true);
-  // 0x30: pointer
-  if (data?.rcDst !== undefined) view.setBigUint64(48, data.rcDst === null ? 0n : BigInt(util.toPointer(data.rcDst)), true);
-  // 0x38: pointer
-  if (data?.Palette !== undefined) view.setBigUint64(56, data.Palette === null ? 0n : BigInt(util.toPointer(data.Palette)), true);
-  return buf;
-}
-
-/**
  * Windows.Win32.Media.MediaFoundation.DXVA_DeinterlaceCaps (size: 32)
  */
 export interface DXVA_DeinterlaceCaps {
@@ -8591,104 +8991,6 @@ export function allocDXVA_DeinterlaceCaps(data?: Partial<DXVA_DeinterlaceCaps>):
   if (data?.VideoProcessingCaps !== undefined) view.setInt32(24, Number(data.VideoProcessingCaps), true);
   // 0x1c: i32
   if (data?.DeinterlaceTechnology !== undefined) view.setInt32(28, Number(data.DeinterlaceTechnology), true);
-  return buf;
-}
-
-/**
- * Windows.Win32.Media.MediaFoundation.DXVA_VideoSample32 (size: 56)
- */
-export interface DXVA_VideoSample32 {
-  /** i64 */
-  rtStart: Deno.PointerValue;
-  /** i64 */
-  rtEnd: Deno.PointerValue;
-  /** u32 */
-  SampleFormat: number;
-  /** u32 */
-  SampleFlags: number;
-  /** u32 */
-  lpDDSSrcSurface: number;
-  /** Windows.Win32.Foundation.RECT */
-  rcSrc: Uint8Array | Deno.PointerValue | null;
-  /** Windows.Win32.Foundation.RECT */
-  rcDst: Uint8Array | Deno.PointerValue | null;
-  /** array */
-  Palette: Deno.PointerValue | null;
-}
-
-export const sizeofDXVA_VideoSample32 = 56;
-
-export function allocDXVA_VideoSample32(data?: Partial<DXVA_VideoSample32>): Uint8Array {
-  const buf = new Uint8Array(sizeofDXVA_VideoSample32);
-  const view = new DataView(buf.buffer);
-  // 0x00: i64
-  if (data?.rtStart !== undefined) view.setBigInt64(0, BigInt(data.rtStart), true);
-  // 0x08: i64
-  if (data?.rtEnd !== undefined) view.setBigInt64(8, BigInt(data.rtEnd), true);
-  // 0x10: u32
-  if (data?.SampleFormat !== undefined) view.setUint32(16, Number(data.SampleFormat), true);
-  // 0x14: u32
-  if (data?.SampleFlags !== undefined) view.setUint32(20, Number(data.SampleFlags), true);
-  // 0x18: u32
-  if (data?.lpDDSSrcSurface !== undefined) view.setUint32(24, Number(data.lpDDSSrcSurface), true);
-  // 0x1c: pad4
-  // 0x20: pointer
-  if (data?.rcSrc !== undefined) view.setBigUint64(32, data.rcSrc === null ? 0n : BigInt(util.toPointer(data.rcSrc)), true);
-  // 0x28: pointer
-  if (data?.rcDst !== undefined) view.setBigUint64(40, data.rcDst === null ? 0n : BigInt(util.toPointer(data.rcDst)), true);
-  // 0x30: pointer
-  if (data?.Palette !== undefined) view.setBigUint64(48, data.Palette === null ? 0n : BigInt(util.toPointer(data.Palette)), true);
-  return buf;
-}
-
-/**
- * Windows.Win32.Media.MediaFoundation.DXVA_DeinterlaceBltEx32 (size: 56)
- */
-export interface DXVA_DeinterlaceBltEx32 {
-  /** u32 */
-  Size: number;
-  /** Windows.Win32.Media.MediaFoundation.DXVA_AYUVsample2 */
-  BackgroundColor: Uint8Array | Deno.PointerValue | null;
-  /** Windows.Win32.Foundation.RECT */
-  rcTarget: Uint8Array | Deno.PointerValue | null;
-  /** i64 */
-  rtTarget: Deno.PointerValue;
-  /** u32 */
-  NumSourceSurfaces: number;
-  /** f32 */
-  Alpha: number;
-  /** array */
-  Source: Deno.PointerValue | null;
-  /** u32 */
-  DestinationFormat: number;
-  /** u32 */
-  DestinationFlags: number;
-}
-
-export const sizeofDXVA_DeinterlaceBltEx32 = 56;
-
-export function allocDXVA_DeinterlaceBltEx32(data?: Partial<DXVA_DeinterlaceBltEx32>): Uint8Array {
-  const buf = new Uint8Array(sizeofDXVA_DeinterlaceBltEx32);
-  const view = new DataView(buf.buffer);
-  // 0x00: u32
-  if (data?.Size !== undefined) view.setUint32(0, Number(data.Size), true);
-  // 0x04: pad4
-  // 0x08: pointer
-  if (data?.BackgroundColor !== undefined) view.setBigUint64(8, data.BackgroundColor === null ? 0n : BigInt(util.toPointer(data.BackgroundColor)), true);
-  // 0x10: pointer
-  if (data?.rcTarget !== undefined) view.setBigUint64(16, data.rcTarget === null ? 0n : BigInt(util.toPointer(data.rcTarget)), true);
-  // 0x18: i64
-  if (data?.rtTarget !== undefined) view.setBigInt64(24, BigInt(data.rtTarget), true);
-  // 0x20: u32
-  if (data?.NumSourceSurfaces !== undefined) view.setUint32(32, Number(data.NumSourceSurfaces), true);
-  // 0x24: f32
-  if (data?.Alpha !== undefined) view.setFloat32(36, Number(data.Alpha), true);
-  // 0x28: pointer
-  if (data?.Source !== undefined) view.setBigUint64(40, data.Source === null ? 0n : BigInt(util.toPointer(data.Source)), true);
-  // 0x30: u32
-  if (data?.DestinationFormat !== undefined) view.setUint32(48, Number(data.DestinationFormat), true);
-  // 0x34: u32
-  if (data?.DestinationFlags !== undefined) view.setUint32(52, Number(data.DestinationFlags), true);
   return buf;
 }
 
@@ -13957,14 +14259,16 @@ export function allocDEVICE_INFO(data?: Partial<DEVICE_INFO>): Uint8Array {
   return buf;
 }
 
+export type COLORREF = number;
+
 /**
- * Windows.Win32.Media.MediaFoundation.MFVideoAlphaBitmapParams (size: 32)
+ * Windows.Win32.Media.MediaFoundation.MFVideoAlphaBitmapParams (size: 40)
  */
 export interface MFVideoAlphaBitmapParams {
   /** u32 */
   dwFlags: number;
-  /** u32 */
-  clrSrcKey: number;
+  /** Windows.Win32.Foundation.COLORREF */
+  clrSrcKey: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.Foundation.RECT */
   rcSrc: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.Media.MediaFoundation.MFVideoNormalizedRect */
@@ -13975,23 +14279,24 @@ export interface MFVideoAlphaBitmapParams {
   dwFilterMode: number;
 }
 
-export const sizeofMFVideoAlphaBitmapParams = 32;
+export const sizeofMFVideoAlphaBitmapParams = 40;
 
 export function allocMFVideoAlphaBitmapParams(data?: Partial<MFVideoAlphaBitmapParams>): Uint8Array {
   const buf = new Uint8Array(sizeofMFVideoAlphaBitmapParams);
   const view = new DataView(buf.buffer);
   // 0x00: u32
   if (data?.dwFlags !== undefined) view.setUint32(0, Number(data.dwFlags), true);
-  // 0x04: u32
-  if (data?.clrSrcKey !== undefined) view.setUint32(4, Number(data.clrSrcKey), true);
+  // 0x04: pad4
   // 0x08: pointer
-  if (data?.rcSrc !== undefined) view.setBigUint64(8, data.rcSrc === null ? 0n : BigInt(util.toPointer(data.rcSrc)), true);
+  if (data?.clrSrcKey !== undefined) view.setBigUint64(8, data.clrSrcKey === null ? 0n : BigInt(util.toPointer(data.clrSrcKey)), true);
   // 0x10: pointer
-  if (data?.nrcDest !== undefined) view.setBigUint64(16, data.nrcDest === null ? 0n : BigInt(util.toPointer(data.nrcDest)), true);
-  // 0x18: f32
-  if (data?.fAlpha !== undefined) view.setFloat32(24, Number(data.fAlpha), true);
-  // 0x1c: u32
-  if (data?.dwFilterMode !== undefined) view.setUint32(28, Number(data.dwFilterMode), true);
+  if (data?.rcSrc !== undefined) view.setBigUint64(16, data.rcSrc === null ? 0n : BigInt(util.toPointer(data.rcSrc)), true);
+  // 0x18: pointer
+  if (data?.nrcDest !== undefined) view.setBigUint64(24, data.nrcDest === null ? 0n : BigInt(util.toPointer(data.nrcDest)), true);
+  // 0x20: f32
+  if (data?.fAlpha !== undefined) view.setFloat32(32, Number(data.fAlpha), true);
+  // 0x24: u32
+  if (data?.dwFilterMode !== undefined) view.setUint32(36, Number(data.dwFilterMode), true);
   return buf;
 }
 
@@ -14057,7 +14362,7 @@ export type PSTR = Deno.PointerValue | Uint8Array | null;
 // Native Libraries
 
 try {
-  var libdxva2 = Deno.dlopen("dxva2", {
+  var libdxva2_dll = Deno.dlopen("dxva2.dll", {
     DXVAHD_CreateDevice: {
       parameters: ["pointer", "pointer", "i32", "pointer", "pointer"],
       result: "pointer",
@@ -14086,7 +14391,7 @@ try {
 } catch(e) { /* ignore */ }
 
 try {
-  var libMFPlat = Deno.dlopen("MFPlat", {
+  var libMFPlat_dll = Deno.dlopen("MFPlat.dll", {
     MFSerializeAttributesToStream: {
       parameters: ["pointer", "u32", "pointer"],
       result: "pointer",
@@ -14671,7 +14976,7 @@ try {
 } catch(e) { /* ignore */ }
 
 try {
-  var libMF = Deno.dlopen("MF", {
+  var libMF_dll = Deno.dlopen("MF.dll", {
     MFCreateMediaSession: {
       parameters: ["pointer", "pointer"],
       result: "pointer",
@@ -14924,7 +15229,7 @@ try {
 } catch(e) { /* ignore */ }
 
 try {
-  var libmfsrcsnk = Deno.dlopen("mfsrcsnk", {
+  var libmfsrcsnk_dll = Deno.dlopen("mfsrcsnk.dll", {
     MFCreateAVIMediaSink: {
       parameters: ["pointer", "pointer", "pointer", "pointer"],
       result: "pointer",
@@ -14937,7 +15242,7 @@ try {
 } catch(e) { /* ignore */ }
 
 try {
-  var libMFSENSORGROUP = Deno.dlopen("MFSENSORGROUP", {
+  var libMFSENSORGROUP_dll = Deno.dlopen("MFSENSORGROUP.dll", {
     MFCreateSensorGroup: {
       parameters: ["buffer", "pointer"],
       result: "pointer",
@@ -14978,7 +15283,7 @@ try {
 } catch(e) { /* ignore */ }
 
 try {
-  var libMFCORE = Deno.dlopen("MFCORE", {
+  var libMFCORE_dll = Deno.dlopen("MFCORE.dll", {
     MFCreateExtendedCameraIntrinsics: {
       parameters: ["pointer"],
       result: "pointer",
@@ -14991,7 +15296,7 @@ try {
 } catch(e) { /* ignore */ }
 
 try {
-  var libEVR = Deno.dlopen("EVR", {
+  var libEVR_dll = Deno.dlopen("EVR.dll", {
     MFIsFormatYUV: {
       parameters: ["u32"],
       result: "i32",
@@ -15024,7 +15329,7 @@ try {
 } catch(e) { /* ignore */ }
 
 try {
-  var libMFReadWrite = Deno.dlopen("MFReadWrite", {
+  var libMFReadWrite_dll = Deno.dlopen("MFReadWrite.dll", {
     MFCreateSourceReaderFromURL: {
       parameters: ["buffer", "pointer", "pointer"],
       result: "pointer",
@@ -15049,7 +15354,7 @@ try {
 } catch(e) { /* ignore */ }
 
 try {
-  var libMFPlay = Deno.dlopen("MFPlay", {
+  var libMFPlay_dll = Deno.dlopen("MFPlay.dll", {
     MFPCreateMediaPlayer: {
       parameters: ["buffer", "i32", "i32", "pointer", "pointer", "pointer"],
       result: "pointer",
@@ -15058,7 +15363,7 @@ try {
 } catch(e) { /* ignore */ }
 
 try {
-  var libOPMXbox = Deno.dlopen("OPMXbox", {
+  var libOPMXbox_dll = Deno.dlopen("OPMXbox.dll", {
     OPMXboxEnableHDCP: {
       parameters: ["i32"],
       result: "pointer",
@@ -15083,14 +15388,14 @@ export function DXVAHD_CreateDevice(
   pPlugin: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Media.MediaFoundation.PDXVAHDSW_Plugin */,
   ppDevice: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libdxva2.DXVAHD_CreateDevice(util.toPointer(pD3DDevice), util.toPointer(pContentDesc), Usage, util.toPointer(pPlugin), util.toPointer(ppDevice)));
+  return util.pointerFromFfi(libdxva2_dll.DXVAHD_CreateDevice(util.toPointer(pD3DDevice), util.toPointer(pContentDesc), Usage, util.toPointer(pPlugin), util.toPointer(ppDevice)));
 }
 
 export function DXVA2CreateDirect3DDeviceManager9(
   pResetToken: Deno.PointerValue | Uint8Array | null /* ptr */,
   ppDeviceManager: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libdxva2.DXVA2CreateDirect3DDeviceManager9(util.toPointer(pResetToken), util.toPointer(ppDeviceManager)));
+  return util.pointerFromFfi(libdxva2_dll.DXVA2CreateDirect3DDeviceManager9(util.toPointer(pResetToken), util.toPointer(ppDeviceManager)));
 }
 
 export function DXVA2CreateVideoService(
@@ -15098,7 +15403,7 @@ export function DXVA2CreateVideoService(
   riid: Deno.PointerValue | Uint8Array | null /* ptr */,
   ppService: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libdxva2.DXVA2CreateVideoService(util.toPointer(pDD), util.toPointer(riid), util.toPointer(ppService)));
+  return util.pointerFromFfi(libdxva2_dll.DXVA2CreateVideoService(util.toPointer(pDD), util.toPointer(riid), util.toPointer(ppService)));
 }
 
 export function OPMGetVideoOutputsFromHMONITOR(
@@ -15107,7 +15412,7 @@ export function OPMGetVideoOutputsFromHMONITOR(
   pulNumVideoOutputs: Deno.PointerValue | Uint8Array | null /* ptr */,
   pppOPMVideoOutputArray: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libdxva2.OPMGetVideoOutputsFromHMONITOR(util.toPointer(hMonitor), vos, util.toPointer(pulNumVideoOutputs), util.toPointer(pppOPMVideoOutputArray)));
+  return util.pointerFromFfi(libdxva2_dll.OPMGetVideoOutputsFromHMONITOR(util.toPointer(hMonitor), vos, util.toPointer(pulNumVideoOutputs), util.toPointer(pppOPMVideoOutputArray)));
 }
 
 export function OPMGetVideoOutputForTarget(
@@ -15116,7 +15421,7 @@ export function OPMGetVideoOutputForTarget(
   vos: OPM_VIDEO_OUTPUT_SEMANTICS /* Windows.Win32.Media.MediaFoundation.OPM_VIDEO_OUTPUT_SEMANTICS */,
   ppOPMVideoOutput: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libdxva2.OPMGetVideoOutputForTarget(util.toPointer(pAdapterLuid), VidPnTarget, vos, util.toPointer(ppOPMVideoOutput)));
+  return util.pointerFromFfi(libdxva2_dll.OPMGetVideoOutputForTarget(util.toPointer(pAdapterLuid), VidPnTarget, vos, util.toPointer(ppOPMVideoOutput)));
 }
 
 export function OPMGetVideoOutputsFromIDirect3DDevice9Object(
@@ -15125,7 +15430,7 @@ export function OPMGetVideoOutputsFromIDirect3DDevice9Object(
   pulNumVideoOutputs: Deno.PointerValue | Uint8Array | null /* ptr */,
   pppOPMVideoOutputArray: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libdxva2.OPMGetVideoOutputsFromIDirect3DDevice9Object(util.toPointer(pDirect3DDevice9), vos, util.toPointer(pulNumVideoOutputs), util.toPointer(pppOPMVideoOutputArray)));
+  return util.pointerFromFfi(libdxva2_dll.OPMGetVideoOutputsFromIDirect3DDevice9Object(util.toPointer(pDirect3DDevice9), vos, util.toPointer(pulNumVideoOutputs), util.toPointer(pppOPMVideoOutputArray)));
 }
 
 export function MFSerializeAttributesToStream(
@@ -15133,7 +15438,7 @@ export function MFSerializeAttributesToStream(
   dwOptions: number /* u32 */,
   pStm: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Com.IStream */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libMFPlat.MFSerializeAttributesToStream(util.toPointer(pAttr), dwOptions, util.toPointer(pStm)));
+  return util.pointerFromFfi(libMFPlat_dll.MFSerializeAttributesToStream(util.toPointer(pAttr), dwOptions, util.toPointer(pStm)));
 }
 
 export function MFDeserializeAttributesFromStream(
@@ -15141,20 +15446,20 @@ export function MFDeserializeAttributesFromStream(
   dwOptions: number /* u32 */,
   pStm: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Com.IStream */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libMFPlat.MFDeserializeAttributesFromStream(util.toPointer(pAttr), dwOptions, util.toPointer(pStm)));
+  return util.pointerFromFfi(libMFPlat_dll.MFDeserializeAttributesFromStream(util.toPointer(pAttr), dwOptions, util.toPointer(pStm)));
 }
 
 export function MFCreateTransformActivate(
   ppActivate: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libMFPlat.MFCreateTransformActivate(util.toPointer(ppActivate)));
+  return util.pointerFromFfi(libMFPlat_dll.MFCreateTransformActivate(util.toPointer(ppActivate)));
 }
 
 export function MFCreateMediaSession(
   pConfiguration: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Media.MediaFoundation.IMFAttributes */,
   ppMediaSession: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libMF.MFCreateMediaSession(util.toPointer(pConfiguration), util.toPointer(ppMediaSession)));
+  return util.pointerFromFfi(libMF_dll.MFCreateMediaSession(util.toPointer(pConfiguration), util.toPointer(ppMediaSession)));
 }
 
 export function MFCreatePMPMediaSession(
@@ -15163,44 +15468,44 @@ export function MFCreatePMPMediaSession(
   ppMediaSession: Deno.PointerValue | Uint8Array | null /* ptr */,
   ppEnablerActivate: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libMF.MFCreatePMPMediaSession(dwCreationFlags, util.toPointer(pConfiguration), util.toPointer(ppMediaSession), util.toPointer(ppEnablerActivate)));
+  return util.pointerFromFfi(libMF_dll.MFCreatePMPMediaSession(dwCreationFlags, util.toPointer(pConfiguration), util.toPointer(ppMediaSession), util.toPointer(ppEnablerActivate)));
 }
 
 export function MFCreateSourceResolver(
   ppISourceResolver: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libMFPlat.MFCreateSourceResolver(util.toPointer(ppISourceResolver)));
+  return util.pointerFromFfi(libMFPlat_dll.MFCreateSourceResolver(util.toPointer(ppISourceResolver)));
 }
 
 export function CreatePropertyStore(
   ppStore: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libMFPlat.CreatePropertyStore(util.toPointer(ppStore)));
+  return util.pointerFromFfi(libMFPlat_dll.CreatePropertyStore(util.toPointer(ppStore)));
 }
 
 export function MFGetSupportedSchemes(
   pPropVarSchemeArray: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libMFPlat.MFGetSupportedSchemes(util.toPointer(pPropVarSchemeArray)));
+  return util.pointerFromFfi(libMFPlat_dll.MFGetSupportedSchemes(util.toPointer(pPropVarSchemeArray)));
 }
 
 export function MFGetSupportedMimeTypes(
   pPropVarMimeTypeArray: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libMFPlat.MFGetSupportedMimeTypes(util.toPointer(pPropVarMimeTypeArray)));
+  return util.pointerFromFfi(libMFPlat_dll.MFGetSupportedMimeTypes(util.toPointer(pPropVarMimeTypeArray)));
 }
 
 export function MFCreateTopology(
   ppTopo: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libMF.MFCreateTopology(util.toPointer(ppTopo)));
+  return util.pointerFromFfi(libMF_dll.MFCreateTopology(util.toPointer(ppTopo)));
 }
 
 export function MFCreateTopologyNode(
   NodeType: MF_TOPOLOGY_TYPE /* Windows.Win32.Media.MediaFoundation.MF_TOPOLOGY_TYPE */,
   ppNode: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libMF.MFCreateTopologyNode(NodeType, util.toPointer(ppNode)));
+  return util.pointerFromFfi(libMF_dll.MFCreateTopologyNode(NodeType, util.toPointer(ppNode)));
 }
 
 export function MFGetTopoNodeCurrentType(
@@ -15209,7 +15514,7 @@ export function MFGetTopoNodeCurrentType(
   fOutput: boolean /* Windows.Win32.Foundation.BOOL */,
   ppType: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libMF.MFGetTopoNodeCurrentType(util.toPointer(pNode), dwStreamIndex, util.boolToFfi(fOutput), util.toPointer(ppType)));
+  return util.pointerFromFfi(libMF_dll.MFGetTopoNodeCurrentType(util.toPointer(pNode), dwStreamIndex, util.boolToFfi(fOutput), util.toPointer(ppType)));
 }
 
 export function MFGetService(
@@ -15218,23 +15523,23 @@ export function MFGetService(
   riid: Deno.PointerValue | Uint8Array | null /* ptr */,
   ppvObject: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libMF.MFGetService(util.toPointer(punkObject), util.toPointer(guidService), util.toPointer(riid), util.toPointer(ppvObject)));
+  return util.pointerFromFfi(libMF_dll.MFGetService(util.toPointer(punkObject), util.toPointer(guidService), util.toPointer(riid), util.toPointer(ppvObject)));
 }
 
 export function MFGetSystemTime(): Deno.PointerValue /* i64 */ {
-  return libMFPlat.MFGetSystemTime();
+  return libMFPlat_dll.MFGetSystemTime();
 }
 
 export function MFCreatePresentationClock(
   ppPresentationClock: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libMF.MFCreatePresentationClock(util.toPointer(ppPresentationClock)));
+  return util.pointerFromFfi(libMF_dll.MFCreatePresentationClock(util.toPointer(ppPresentationClock)));
 }
 
 export function MFCreateSystemTimeSource(
   ppSystemTimeSource: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libMFPlat.MFCreateSystemTimeSource(util.toPointer(ppSystemTimeSource)));
+  return util.pointerFromFfi(libMFPlat_dll.MFCreateSystemTimeSource(util.toPointer(ppSystemTimeSource)));
 }
 
 export function MFCreatePresentationDescriptor(
@@ -15242,13 +15547,13 @@ export function MFCreatePresentationDescriptor(
   apStreamDescriptors: Deno.PointerValue | Uint8Array | null /* ptr */,
   ppPresentationDescriptor: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libMFPlat.MFCreatePresentationDescriptor(cStreamDescriptors, util.toPointer(apStreamDescriptors), util.toPointer(ppPresentationDescriptor)));
+  return util.pointerFromFfi(libMFPlat_dll.MFCreatePresentationDescriptor(cStreamDescriptors, util.toPointer(apStreamDescriptors), util.toPointer(ppPresentationDescriptor)));
 }
 
 export function MFRequireProtectedEnvironment(
   pPresentationDescriptor: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Media.MediaFoundation.IMFPresentationDescriptor */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libMF.MFRequireProtectedEnvironment(util.toPointer(pPresentationDescriptor)));
+  return util.pointerFromFfi(libMF_dll.MFRequireProtectedEnvironment(util.toPointer(pPresentationDescriptor)));
 }
 
 export function MFSerializePresentationDescriptor(
@@ -15256,7 +15561,7 @@ export function MFSerializePresentationDescriptor(
   pcbData: Deno.PointerValue | Uint8Array | null /* ptr */,
   ppbData: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libMFPlat.MFSerializePresentationDescriptor(util.toPointer(pPD), util.toPointer(pcbData), util.toPointer(ppbData)));
+  return util.pointerFromFfi(libMFPlat_dll.MFSerializePresentationDescriptor(util.toPointer(pPD), util.toPointer(pcbData), util.toPointer(ppbData)));
 }
 
 export function MFDeserializePresentationDescriptor(
@@ -15264,7 +15569,7 @@ export function MFDeserializePresentationDescriptor(
   pbData: Deno.PointerValue | Uint8Array | null /* ptr */,
   ppPD: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libMFPlat.MFDeserializePresentationDescriptor(cbData, util.toPointer(pbData), util.toPointer(ppPD)));
+  return util.pointerFromFfi(libMFPlat_dll.MFDeserializePresentationDescriptor(cbData, util.toPointer(pbData), util.toPointer(ppPD)));
 }
 
 export function MFCreateStreamDescriptor(
@@ -15273,39 +15578,39 @@ export function MFCreateStreamDescriptor(
   apMediaTypes: Deno.PointerValue | Uint8Array | null /* ptr */,
   ppDescriptor: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libMFPlat.MFCreateStreamDescriptor(dwStreamIdentifier, cMediaTypes, util.toPointer(apMediaTypes), util.toPointer(ppDescriptor)));
+  return util.pointerFromFfi(libMFPlat_dll.MFCreateStreamDescriptor(dwStreamIdentifier, cMediaTypes, util.toPointer(apMediaTypes), util.toPointer(ppDescriptor)));
 }
 
 export function MFCreateSimpleTypeHandler(
   ppHandler: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libMF.MFCreateSimpleTypeHandler(util.toPointer(ppHandler)));
+  return util.pointerFromFfi(libMF_dll.MFCreateSimpleTypeHandler(util.toPointer(ppHandler)));
 }
 
 export function MFShutdownObject(
   pUnk: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Com.IUnknown */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libMF.MFShutdownObject(util.toPointer(pUnk)));
+  return util.pointerFromFfi(libMF_dll.MFShutdownObject(util.toPointer(pUnk)));
 }
 
 export function MFCreateAudioRenderer(
   pAudioAttributes: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Media.MediaFoundation.IMFAttributes */,
   ppSink: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libMF.MFCreateAudioRenderer(util.toPointer(pAudioAttributes), util.toPointer(ppSink)));
+  return util.pointerFromFfi(libMF_dll.MFCreateAudioRenderer(util.toPointer(pAudioAttributes), util.toPointer(ppSink)));
 }
 
 export function MFCreateAudioRendererActivate(
   ppActivate: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libMF.MFCreateAudioRendererActivate(util.toPointer(ppActivate)));
+  return util.pointerFromFfi(libMF_dll.MFCreateAudioRendererActivate(util.toPointer(ppActivate)));
 }
 
 export function MFCreateVideoRendererActivate(
   hwndVideo: Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */,
   ppActivate: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libMF.MFCreateVideoRendererActivate(util.hwndToFfi(hwndVideo), util.toPointer(ppActivate)));
+  return util.pointerFromFfi(libMF_dll.MFCreateVideoRendererActivate(util.hwndToFfi(hwndVideo), util.toPointer(ppActivate)));
 }
 
 export function MFCreateMPEG4MediaSink(
@@ -15314,7 +15619,7 @@ export function MFCreateMPEG4MediaSink(
   pAudioMediaType: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Media.MediaFoundation.IMFMediaType */,
   ppIMediaSink: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libMF.MFCreateMPEG4MediaSink(util.toPointer(pIByteStream), util.toPointer(pVideoMediaType), util.toPointer(pAudioMediaType), util.toPointer(ppIMediaSink)));
+  return util.pointerFromFfi(libMF_dll.MFCreateMPEG4MediaSink(util.toPointer(pIByteStream), util.toPointer(pVideoMediaType), util.toPointer(pAudioMediaType), util.toPointer(ppIMediaSink)));
 }
 
 export function MFCreate3GPMediaSink(
@@ -15323,14 +15628,14 @@ export function MFCreate3GPMediaSink(
   pAudioMediaType: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Media.MediaFoundation.IMFMediaType */,
   ppIMediaSink: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libMF.MFCreate3GPMediaSink(util.toPointer(pIByteStream), util.toPointer(pVideoMediaType), util.toPointer(pAudioMediaType), util.toPointer(ppIMediaSink)));
+  return util.pointerFromFfi(libMF_dll.MFCreate3GPMediaSink(util.toPointer(pIByteStream), util.toPointer(pVideoMediaType), util.toPointer(pAudioMediaType), util.toPointer(ppIMediaSink)));
 }
 
 export function MFCreateMP3MediaSink(
   pTargetByteStream: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Media.MediaFoundation.IMFByteStream */,
   ppMediaSink: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libMF.MFCreateMP3MediaSink(util.toPointer(pTargetByteStream), util.toPointer(ppMediaSink)));
+  return util.pointerFromFfi(libMF_dll.MFCreateMP3MediaSink(util.toPointer(pTargetByteStream), util.toPointer(ppMediaSink)));
 }
 
 export function MFCreateAC3MediaSink(
@@ -15338,7 +15643,7 @@ export function MFCreateAC3MediaSink(
   pAudioMediaType: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Media.MediaFoundation.IMFMediaType */,
   ppMediaSink: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libMF.MFCreateAC3MediaSink(util.toPointer(pTargetByteStream), util.toPointer(pAudioMediaType), util.toPointer(ppMediaSink)));
+  return util.pointerFromFfi(libMF_dll.MFCreateAC3MediaSink(util.toPointer(pTargetByteStream), util.toPointer(pAudioMediaType), util.toPointer(ppMediaSink)));
 }
 
 export function MFCreateADTSMediaSink(
@@ -15346,7 +15651,7 @@ export function MFCreateADTSMediaSink(
   pAudioMediaType: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Media.MediaFoundation.IMFMediaType */,
   ppMediaSink: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libMF.MFCreateADTSMediaSink(util.toPointer(pTargetByteStream), util.toPointer(pAudioMediaType), util.toPointer(ppMediaSink)));
+  return util.pointerFromFfi(libMF_dll.MFCreateADTSMediaSink(util.toPointer(pTargetByteStream), util.toPointer(pAudioMediaType), util.toPointer(ppMediaSink)));
 }
 
 export function MFCreateMuxSink(
@@ -15355,7 +15660,7 @@ export function MFCreateMuxSink(
   pOutputByteStream: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Media.MediaFoundation.IMFByteStream */,
   ppMuxSink: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libMF.MFCreateMuxSink(util.toPointer(guidOutputSubType), util.toPointer(pOutputAttributes), util.toPointer(pOutputByteStream), util.toPointer(ppMuxSink)));
+  return util.pointerFromFfi(libMF_dll.MFCreateMuxSink(util.toPointer(guidOutputSubType), util.toPointer(pOutputAttributes), util.toPointer(pOutputByteStream), util.toPointer(ppMuxSink)));
 }
 
 export function MFCreateFMPEG4MediaSink(
@@ -15364,7 +15669,7 @@ export function MFCreateFMPEG4MediaSink(
   pAudioMediaType: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Media.MediaFoundation.IMFMediaType */,
   ppIMediaSink: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libMF.MFCreateFMPEG4MediaSink(util.toPointer(pIByteStream), util.toPointer(pVideoMediaType), util.toPointer(pAudioMediaType), util.toPointer(ppIMediaSink)));
+  return util.pointerFromFfi(libMF_dll.MFCreateFMPEG4MediaSink(util.toPointer(pIByteStream), util.toPointer(pVideoMediaType), util.toPointer(pAudioMediaType), util.toPointer(ppIMediaSink)));
 }
 
 export function MFCreateAVIMediaSink(
@@ -15373,7 +15678,7 @@ export function MFCreateAVIMediaSink(
   pAudioMediaType: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Media.MediaFoundation.IMFMediaType */,
   ppIMediaSink: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libmfsrcsnk.MFCreateAVIMediaSink(util.toPointer(pIByteStream), util.toPointer(pVideoMediaType), util.toPointer(pAudioMediaType), util.toPointer(ppIMediaSink)));
+  return util.pointerFromFfi(libmfsrcsnk_dll.MFCreateAVIMediaSink(util.toPointer(pIByteStream), util.toPointer(pVideoMediaType), util.toPointer(pAudioMediaType), util.toPointer(ppIMediaSink)));
 }
 
 export function MFCreateWAVEMediaSink(
@@ -15381,13 +15686,13 @@ export function MFCreateWAVEMediaSink(
   pAudioMediaType: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Media.MediaFoundation.IMFMediaType */,
   ppMediaSink: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libmfsrcsnk.MFCreateWAVEMediaSink(util.toPointer(pTargetByteStream), util.toPointer(pAudioMediaType), util.toPointer(ppMediaSink)));
+  return util.pointerFromFfi(libmfsrcsnk_dll.MFCreateWAVEMediaSink(util.toPointer(pTargetByteStream), util.toPointer(pAudioMediaType), util.toPointer(ppMediaSink)));
 }
 
 export function MFCreateTopoLoader(
   ppObj: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libMF.MFCreateTopoLoader(util.toPointer(ppObj)));
+  return util.pointerFromFfi(libMF_dll.MFCreateTopoLoader(util.toPointer(ppObj)));
 }
 
 export function MFCreateSampleGrabberSinkActivate(
@@ -15395,20 +15700,20 @@ export function MFCreateSampleGrabberSinkActivate(
   pIMFSampleGrabberSinkCallback: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Media.MediaFoundation.IMFSampleGrabberSinkCallback */,
   ppIActivate: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libMF.MFCreateSampleGrabberSinkActivate(util.toPointer(pIMFMediaType), util.toPointer(pIMFSampleGrabberSinkCallback), util.toPointer(ppIActivate)));
+  return util.pointerFromFfi(libMF_dll.MFCreateSampleGrabberSinkActivate(util.toPointer(pIMFMediaType), util.toPointer(pIMFSampleGrabberSinkCallback), util.toPointer(ppIActivate)));
 }
 
 export function MFCreateStandardQualityManager(
   ppQualityManager: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libMF.MFCreateStandardQualityManager(util.toPointer(ppQualityManager)));
+  return util.pointerFromFfi(libMF_dll.MFCreateStandardQualityManager(util.toPointer(ppQualityManager)));
 }
 
 export function MFCreateSequencerSource(
   pReserved: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Com.IUnknown */,
   ppSequencerSource: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libMF.MFCreateSequencerSource(util.toPointer(pReserved), util.toPointer(ppSequencerSource)));
+  return util.pointerFromFfi(libMF_dll.MFCreateSequencerSource(util.toPointer(pReserved), util.toPointer(ppSequencerSource)));
 }
 
 export function MFCreateSequencerSegmentOffset(
@@ -15416,20 +15721,20 @@ export function MFCreateSequencerSegmentOffset(
   hnsOffset: Deno.PointerValue /* i64 */,
   pvarSegmentOffset: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libMF.MFCreateSequencerSegmentOffset(dwId, hnsOffset, util.toPointer(pvarSegmentOffset)));
+  return util.pointerFromFfi(libMF_dll.MFCreateSequencerSegmentOffset(dwId, hnsOffset, util.toPointer(pvarSegmentOffset)));
 }
 
 export function MFCreateAggregateSource(
   pSourceCollection: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Media.MediaFoundation.IMFCollection */,
   ppAggSource: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libMF.MFCreateAggregateSource(util.toPointer(pSourceCollection), util.toPointer(ppAggSource)));
+  return util.pointerFromFfi(libMF_dll.MFCreateAggregateSource(util.toPointer(pSourceCollection), util.toPointer(ppAggSource)));
 }
 
 export function MFCreateCredentialCache(
   ppCache: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libMF.MFCreateCredentialCache(util.toPointer(ppCache)));
+  return util.pointerFromFfi(libMF_dll.MFCreateCredentialCache(util.toPointer(ppCache)));
 }
 
 export function MFCreateProxyLocator(
@@ -15437,45 +15742,45 @@ export function MFCreateProxyLocator(
   pProxyConfig: Uint8Array | Deno.PointerValue | null /* Windows.Win32.UI.Shell.PropertiesSystem.IPropertyStore */,
   ppProxyLocator: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libMF.MFCreateProxyLocator(util.pwstrToFfi(pszProtocol), util.toPointer(pProxyConfig), util.toPointer(ppProxyLocator)));
+  return util.pointerFromFfi(libMF_dll.MFCreateProxyLocator(util.pwstrToFfi(pszProtocol), util.toPointer(pProxyConfig), util.toPointer(ppProxyLocator)));
 }
 
 export function MFCreateNetSchemePlugin(
   riid: Deno.PointerValue | Uint8Array | null /* ptr */,
   ppvHandler: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libMF.MFCreateNetSchemePlugin(util.toPointer(riid), util.toPointer(ppvHandler)));
+  return util.pointerFromFfi(libMF_dll.MFCreateNetSchemePlugin(util.toPointer(riid), util.toPointer(ppvHandler)));
 }
 
 export function MFCreatePMPServer(
   dwCreationFlags: number /* u32 */,
   ppPMPServer: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libMF.MFCreatePMPServer(dwCreationFlags, util.toPointer(ppPMPServer)));
+  return util.pointerFromFfi(libMF_dll.MFCreatePMPServer(dwCreationFlags, util.toPointer(ppPMPServer)));
 }
 
 export function MFCreateRemoteDesktopPlugin(
   ppPlugin: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libMF.MFCreateRemoteDesktopPlugin(util.toPointer(ppPlugin)));
+  return util.pointerFromFfi(libMF_dll.MFCreateRemoteDesktopPlugin(util.toPointer(ppPlugin)));
 }
 
 export function CreateNamedPropertyStore(
   ppStore: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libMF.CreateNamedPropertyStore(util.toPointer(ppStore)));
+  return util.pointerFromFfi(libMF_dll.CreateNamedPropertyStore(util.toPointer(ppStore)));
 }
 
 export function MFCreateSampleCopierMFT(
   ppCopierMFT: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libMF.MFCreateSampleCopierMFT(util.toPointer(ppCopierMFT)));
+  return util.pointerFromFfi(libMF_dll.MFCreateSampleCopierMFT(util.toPointer(ppCopierMFT)));
 }
 
 export function MFCreateTranscodeProfile(
   ppTranscodeProfile: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libMF.MFCreateTranscodeProfile(util.toPointer(ppTranscodeProfile)));
+  return util.pointerFromFfi(libMF_dll.MFCreateTranscodeProfile(util.toPointer(ppTranscodeProfile)));
 }
 
 export function MFCreateTranscodeTopology(
@@ -15484,7 +15789,7 @@ export function MFCreateTranscodeTopology(
   pProfile: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Media.MediaFoundation.IMFTranscodeProfile */,
   ppTranscodeTopo: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libMF.MFCreateTranscodeTopology(util.toPointer(pSrc), util.pwstrToFfi(pwszOutputFilePath), util.toPointer(pProfile), util.toPointer(ppTranscodeTopo)));
+  return util.pointerFromFfi(libMF_dll.MFCreateTranscodeTopology(util.toPointer(pSrc), util.pwstrToFfi(pwszOutputFilePath), util.toPointer(pProfile), util.toPointer(ppTranscodeTopo)));
 }
 
 export function MFCreateTranscodeTopologyFromByteStream(
@@ -15493,7 +15798,7 @@ export function MFCreateTranscodeTopologyFromByteStream(
   pProfile: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Media.MediaFoundation.IMFTranscodeProfile */,
   ppTranscodeTopo: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libMF.MFCreateTranscodeTopologyFromByteStream(util.toPointer(pSrc), util.toPointer(pOutputStream), util.toPointer(pProfile), util.toPointer(ppTranscodeTopo)));
+  return util.pointerFromFfi(libMF_dll.MFCreateTranscodeTopologyFromByteStream(util.toPointer(pSrc), util.toPointer(pOutputStream), util.toPointer(pProfile), util.toPointer(ppTranscodeTopo)));
 }
 
 export function MFTranscodeGetAudioOutputAvailableTypes(
@@ -15502,40 +15807,40 @@ export function MFTranscodeGetAudioOutputAvailableTypes(
   pCodecConfig: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Media.MediaFoundation.IMFAttributes */,
   ppAvailableTypes: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libMF.MFTranscodeGetAudioOutputAvailableTypes(util.toPointer(guidSubType), dwMFTFlags, util.toPointer(pCodecConfig), util.toPointer(ppAvailableTypes)));
+  return util.pointerFromFfi(libMF_dll.MFTranscodeGetAudioOutputAvailableTypes(util.toPointer(guidSubType), dwMFTFlags, util.toPointer(pCodecConfig), util.toPointer(ppAvailableTypes)));
 }
 
 export function MFCreateTranscodeSinkActivate(
   ppActivate: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libMF.MFCreateTranscodeSinkActivate(util.toPointer(ppActivate)));
+  return util.pointerFromFfi(libMF_dll.MFCreateTranscodeSinkActivate(util.toPointer(ppActivate)));
 }
 
 export function MFCreateTrackedSample(
   ppMFSample: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libMFPlat.MFCreateTrackedSample(util.toPointer(ppMFSample)));
+  return util.pointerFromFfi(libMFPlat_dll.MFCreateTrackedSample(util.toPointer(ppMFSample)));
 }
 
 export function MFCreateMFByteStreamOnStream(
   pStream: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Com.IStream */,
   ppByteStream: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libMFPlat.MFCreateMFByteStreamOnStream(util.toPointer(pStream), util.toPointer(ppByteStream)));
+  return util.pointerFromFfi(libMFPlat_dll.MFCreateMFByteStreamOnStream(util.toPointer(pStream), util.toPointer(ppByteStream)));
 }
 
 export function MFCreateStreamOnMFByteStream(
   pByteStream: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Media.MediaFoundation.IMFByteStream */,
   ppStream: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libMFPlat.MFCreateStreamOnMFByteStream(util.toPointer(pByteStream), util.toPointer(ppStream)));
+  return util.pointerFromFfi(libMFPlat_dll.MFCreateStreamOnMFByteStream(util.toPointer(pByteStream), util.toPointer(ppStream)));
 }
 
 export function MFCreateMFByteStreamOnStreamEx(
   punkStream: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Com.IUnknown */,
   ppByteStream: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libMFPlat.MFCreateMFByteStreamOnStreamEx(util.toPointer(punkStream), util.toPointer(ppByteStream)));
+  return util.pointerFromFfi(libMFPlat_dll.MFCreateMFByteStreamOnStreamEx(util.toPointer(punkStream), util.toPointer(ppByteStream)));
 }
 
 export function MFCreateStreamOnMFByteStreamEx(
@@ -15543,14 +15848,14 @@ export function MFCreateStreamOnMFByteStreamEx(
   riid: Deno.PointerValue | Uint8Array | null /* ptr */,
   ppv: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libMFPlat.MFCreateStreamOnMFByteStreamEx(util.toPointer(pByteStream), util.toPointer(riid), util.toPointer(ppv)));
+  return util.pointerFromFfi(libMFPlat_dll.MFCreateStreamOnMFByteStreamEx(util.toPointer(pByteStream), util.toPointer(riid), util.toPointer(ppv)));
 }
 
 export function MFCreateMediaTypeFromProperties(
   punkStream: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Com.IUnknown */,
   ppMediaType: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libMFPlat.MFCreateMediaTypeFromProperties(util.toPointer(punkStream), util.toPointer(ppMediaType)));
+  return util.pointerFromFfi(libMFPlat_dll.MFCreateMediaTypeFromProperties(util.toPointer(punkStream), util.toPointer(ppMediaType)));
 }
 
 export function MFCreatePropertiesFromMediaType(
@@ -15558,7 +15863,7 @@ export function MFCreatePropertiesFromMediaType(
   riid: Deno.PointerValue | Uint8Array | null /* ptr */,
   ppv: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libMFPlat.MFCreatePropertiesFromMediaType(util.toPointer(pMediaType), util.toPointer(riid), util.toPointer(ppv)));
+  return util.pointerFromFfi(libMFPlat_dll.MFCreatePropertiesFromMediaType(util.toPointer(pMediaType), util.toPointer(riid), util.toPointer(ppv)));
 }
 
 export function MFEnumDeviceSources(
@@ -15566,40 +15871,40 @@ export function MFEnumDeviceSources(
   pppSourceActivate: Deno.PointerValue | Uint8Array | null /* ptr */,
   pcSourceActivate: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libMF.MFEnumDeviceSources(util.toPointer(pAttributes), util.toPointer(pppSourceActivate), util.toPointer(pcSourceActivate)));
+  return util.pointerFromFfi(libMF_dll.MFEnumDeviceSources(util.toPointer(pAttributes), util.toPointer(pppSourceActivate), util.toPointer(pcSourceActivate)));
 }
 
 export function MFCreateDeviceSource(
   pAttributes: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Media.MediaFoundation.IMFAttributes */,
   ppSource: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libMF.MFCreateDeviceSource(util.toPointer(pAttributes), util.toPointer(ppSource)));
+  return util.pointerFromFfi(libMF_dll.MFCreateDeviceSource(util.toPointer(pAttributes), util.toPointer(ppSource)));
 }
 
 export function MFCreateDeviceSourceActivate(
   pAttributes: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Media.MediaFoundation.IMFAttributes */,
   ppActivate: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libMF.MFCreateDeviceSourceActivate(util.toPointer(pAttributes), util.toPointer(ppActivate)));
+  return util.pointerFromFfi(libMF_dll.MFCreateDeviceSourceActivate(util.toPointer(pAttributes), util.toPointer(ppActivate)));
 }
 
 export function MFCreateProtectedEnvironmentAccess(
   ppAccess: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libMF.MFCreateProtectedEnvironmentAccess(util.toPointer(ppAccess)));
+  return util.pointerFromFfi(libMF_dll.MFCreateProtectedEnvironmentAccess(util.toPointer(ppAccess)));
 }
 
 export function MFLoadSignedLibrary(
   pszName: string | null /* Windows.Win32.Foundation.PWSTR */,
   ppLib: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libMF.MFLoadSignedLibrary(util.pwstrToFfi(pszName), util.toPointer(ppLib)));
+  return util.pointerFromFfi(libMF_dll.MFLoadSignedLibrary(util.pwstrToFfi(pszName), util.toPointer(ppLib)));
 }
 
 export function MFGetSystemId(
   ppId: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libMF.MFGetSystemId(util.toPointer(ppId)));
+  return util.pointerFromFfi(libMF_dll.MFGetSystemId(util.toPointer(ppId)));
 }
 
 export function MFGetLocalId(
@@ -15607,21 +15912,21 @@ export function MFGetLocalId(
   size: number /* u32 */,
   id: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libMF.MFGetLocalId(util.toPointer(verifier), size, util.toPointer(id)));
+  return util.pointerFromFfi(libMF_dll.MFGetLocalId(util.toPointer(verifier), size, util.toPointer(id)));
 }
 
 export function MFCreateContentProtectionDevice(
   ProtectionSystemId: Deno.PointerValue | Uint8Array | null /* ptr */,
   ContentProtectionDevice: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libMFPlat.MFCreateContentProtectionDevice(util.toPointer(ProtectionSystemId), util.toPointer(ContentProtectionDevice)));
+  return util.pointerFromFfi(libMFPlat_dll.MFCreateContentProtectionDevice(util.toPointer(ProtectionSystemId), util.toPointer(ContentProtectionDevice)));
 }
 
 export function MFIsContentProtectionDeviceSupported(
   ProtectionSystemId: Deno.PointerValue | Uint8Array | null /* ptr */,
   isSupported: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libMFPlat.MFIsContentProtectionDeviceSupported(util.toPointer(ProtectionSystemId), util.toPointer(isSupported)));
+  return util.pointerFromFfi(libMFPlat_dll.MFIsContentProtectionDeviceSupported(util.toPointer(ProtectionSystemId), util.toPointer(isSupported)));
 }
 
 export function MFCreateContentDecryptorContext(
@@ -15630,14 +15935,14 @@ export function MFCreateContentDecryptorContext(
   pContentProtectionDevice: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Media.MediaFoundation.IMFContentProtectionDevice */,
   ppContentDecryptorContext: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libMFPlat.MFCreateContentDecryptorContext(util.toPointer(guidMediaProtectionSystemId), util.toPointer(pD3DManager), util.toPointer(pContentProtectionDevice), util.toPointer(ppContentDecryptorContext)));
+  return util.pointerFromFfi(libMFPlat_dll.MFCreateContentDecryptorContext(util.toPointer(guidMediaProtectionSystemId), util.toPointer(pD3DManager), util.toPointer(pContentProtectionDevice), util.toPointer(ppContentDecryptorContext)));
 }
 
 export function MFCreateSensorGroup(
   SensorGroupSymbolicLink: string | null /* Windows.Win32.Foundation.PWSTR */,
   ppSensorGroup: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libMFSENSORGROUP.MFCreateSensorGroup(util.pwstrToFfi(SensorGroupSymbolicLink), util.toPointer(ppSensorGroup)));
+  return util.pointerFromFfi(libMFSENSORGROUP_dll.MFCreateSensorGroup(util.pwstrToFfi(SensorGroupSymbolicLink), util.toPointer(ppSensorGroup)));
 }
 
 export function MFCreateSensorStream(
@@ -15646,7 +15951,7 @@ export function MFCreateSensorStream(
   pMediaTypeCollection: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Media.MediaFoundation.IMFCollection */,
   ppStream: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libMFSENSORGROUP.MFCreateSensorStream(StreamId, util.toPointer(pAttributes), util.toPointer(pMediaTypeCollection), util.toPointer(ppStream)));
+  return util.pointerFromFfi(libMFSENSORGROUP_dll.MFCreateSensorStream(StreamId, util.toPointer(pAttributes), util.toPointer(pMediaTypeCollection), util.toPointer(ppStream)));
 }
 
 export function MFCreateSensorProfile(
@@ -15655,33 +15960,33 @@ export function MFCreateSensorProfile(
   Constraints: string | null /* Windows.Win32.Foundation.PWSTR */,
   ppProfile: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libMFSENSORGROUP.MFCreateSensorProfile(util.toPointer(ProfileType), ProfileIndex, util.pwstrToFfi(Constraints), util.toPointer(ppProfile)));
+  return util.pointerFromFfi(libMFSENSORGROUP_dll.MFCreateSensorProfile(util.toPointer(ProfileType), ProfileIndex, util.pwstrToFfi(Constraints), util.toPointer(ppProfile)));
 }
 
 export function MFCreateSensorProfileCollection(
   ppSensorProfile: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libMFSENSORGROUP.MFCreateSensorProfileCollection(util.toPointer(ppSensorProfile)));
+  return util.pointerFromFfi(libMFSENSORGROUP_dll.MFCreateSensorProfileCollection(util.toPointer(ppSensorProfile)));
 }
 
 export function MFCreateSensorActivityMonitor(
   pCallback: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Media.MediaFoundation.IMFSensorActivitiesReportCallback */,
   ppActivityMonitor: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libMFSENSORGROUP.MFCreateSensorActivityMonitor(util.toPointer(pCallback), util.toPointer(ppActivityMonitor)));
+  return util.pointerFromFfi(libMFSENSORGROUP_dll.MFCreateSensorActivityMonitor(util.toPointer(pCallback), util.toPointer(ppActivityMonitor)));
 }
 
 export function MFCreateExtendedCameraIntrinsics(
   ppExtendedCameraIntrinsics: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libMFCORE.MFCreateExtendedCameraIntrinsics(util.toPointer(ppExtendedCameraIntrinsics)));
+  return util.pointerFromFfi(libMFCORE_dll.MFCreateExtendedCameraIntrinsics(util.toPointer(ppExtendedCameraIntrinsics)));
 }
 
 export function MFCreateExtendedCameraIntrinsicModel(
   distortionModelType: MFCameraIntrinsic_DistortionModelType /* Windows.Win32.Media.MediaFoundation.MFCameraIntrinsic_DistortionModelType */,
   ppExtendedCameraIntrinsicModel: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libMFCORE.MFCreateExtendedCameraIntrinsicModel(distortionModelType, util.toPointer(ppExtendedCameraIntrinsicModel)));
+  return util.pointerFromFfi(libMFCORE_dll.MFCreateExtendedCameraIntrinsicModel(distortionModelType, util.toPointer(ppExtendedCameraIntrinsicModel)));
 }
 
 export function MFCreateRelativePanelWatcher(
@@ -15689,7 +15994,7 @@ export function MFCreateRelativePanelWatcher(
   displayMonitorDeviceId: string | null /* Windows.Win32.Foundation.PWSTR */,
   ppRelativePanelWatcher: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libMFSENSORGROUP.MFCreateRelativePanelWatcher(util.pwstrToFfi(videoDeviceId), util.pwstrToFfi(displayMonitorDeviceId), util.toPointer(ppRelativePanelWatcher)));
+  return util.pointerFromFfi(libMFSENSORGROUP_dll.MFCreateRelativePanelWatcher(util.pwstrToFfi(videoDeviceId), util.pwstrToFfi(displayMonitorDeviceId), util.toPointer(ppRelativePanelWatcher)));
 }
 
 export function MFCreateCameraOcclusionStateMonitor(
@@ -15697,19 +16002,19 @@ export function MFCreateCameraOcclusionStateMonitor(
   callback: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Media.MediaFoundation.IMFCameraOcclusionStateReportCallback */,
   occlusionStateMonitor: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libMFSENSORGROUP.MFCreateCameraOcclusionStateMonitor(util.pwstrToFfi(symbolicLink), util.toPointer(callback), util.toPointer(occlusionStateMonitor)));
+  return util.pointerFromFfi(libMFSENSORGROUP_dll.MFCreateCameraOcclusionStateMonitor(util.pwstrToFfi(symbolicLink), util.toPointer(callback), util.toPointer(occlusionStateMonitor)));
 }
 
 export function MFCreateASFContentInfo(
   ppIContentInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libMF.MFCreateASFContentInfo(util.toPointer(ppIContentInfo)));
+  return util.pointerFromFfi(libMF_dll.MFCreateASFContentInfo(util.toPointer(ppIContentInfo)));
 }
 
 export function MFCreateASFIndexer(
   ppIIndexer: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libMF.MFCreateASFIndexer(util.toPointer(ppIIndexer)));
+  return util.pointerFromFfi(libMF_dll.MFCreateASFIndexer(util.toPointer(ppIIndexer)));
 }
 
 export function MFCreateASFIndexerByteStream(
@@ -15717,53 +16022,53 @@ export function MFCreateASFIndexerByteStream(
   cbIndexStartOffset: Deno.PointerValue /* u64 */,
   pIIndexByteStream: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libMF.MFCreateASFIndexerByteStream(util.toPointer(pIContentByteStream), cbIndexStartOffset, util.toPointer(pIIndexByteStream)));
+  return util.pointerFromFfi(libMF_dll.MFCreateASFIndexerByteStream(util.toPointer(pIContentByteStream), cbIndexStartOffset, util.toPointer(pIIndexByteStream)));
 }
 
 export function MFCreateASFSplitter(
   ppISplitter: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libMF.MFCreateASFSplitter(util.toPointer(ppISplitter)));
+  return util.pointerFromFfi(libMF_dll.MFCreateASFSplitter(util.toPointer(ppISplitter)));
 }
 
 export function MFCreateASFProfile(
   ppIProfile: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libMF.MFCreateASFProfile(util.toPointer(ppIProfile)));
+  return util.pointerFromFfi(libMF_dll.MFCreateASFProfile(util.toPointer(ppIProfile)));
 }
 
 export function MFCreateASFProfileFromPresentationDescriptor(
   pIPD: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Media.MediaFoundation.IMFPresentationDescriptor */,
   ppIProfile: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libMF.MFCreateASFProfileFromPresentationDescriptor(util.toPointer(pIPD), util.toPointer(ppIProfile)));
+  return util.pointerFromFfi(libMF_dll.MFCreateASFProfileFromPresentationDescriptor(util.toPointer(pIPD), util.toPointer(ppIProfile)));
 }
 
 export function MFCreatePresentationDescriptorFromASFProfile(
   pIProfile: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Media.MediaFoundation.IMFASFProfile */,
   ppIPD: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libMF.MFCreatePresentationDescriptorFromASFProfile(util.toPointer(pIProfile), util.toPointer(ppIPD)));
+  return util.pointerFromFfi(libMF_dll.MFCreatePresentationDescriptorFromASFProfile(util.toPointer(pIProfile), util.toPointer(ppIPD)));
 }
 
 export function MFCreateASFMultiplexer(
   ppIMultiplexer: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libMF.MFCreateASFMultiplexer(util.toPointer(ppIMultiplexer)));
+  return util.pointerFromFfi(libMF_dll.MFCreateASFMultiplexer(util.toPointer(ppIMultiplexer)));
 }
 
 export function MFCreateASFStreamSelector(
   pIASFProfile: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Media.MediaFoundation.IMFASFProfile */,
   ppSelector: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libMF.MFCreateASFStreamSelector(util.toPointer(pIASFProfile), util.toPointer(ppSelector)));
+  return util.pointerFromFfi(libMF_dll.MFCreateASFStreamSelector(util.toPointer(pIASFProfile), util.toPointer(ppSelector)));
 }
 
 export function MFCreateASFMediaSink(
   pIByteStream: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Media.MediaFoundation.IMFByteStream */,
   ppIMediaSink: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libMF.MFCreateASFMediaSink(util.toPointer(pIByteStream), util.toPointer(ppIMediaSink)));
+  return util.pointerFromFfi(libMF_dll.MFCreateASFMediaSink(util.toPointer(pIByteStream), util.toPointer(ppIMediaSink)));
 }
 
 export function MFCreateASFMediaSinkActivate(
@@ -15771,7 +16076,7 @@ export function MFCreateASFMediaSinkActivate(
   pContentInfo: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Media.MediaFoundation.IMFASFContentInfo */,
   ppIActivate: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libMF.MFCreateASFMediaSinkActivate(util.pwstrToFfi(pwszFileName), util.toPointer(pContentInfo), util.toPointer(ppIActivate)));
+  return util.pointerFromFfi(libMF_dll.MFCreateASFMediaSinkActivate(util.pwstrToFfi(pwszFileName), util.toPointer(pContentInfo), util.toPointer(ppIActivate)));
 }
 
 export function MFCreateWMVEncoderActivate(
@@ -15779,7 +16084,7 @@ export function MFCreateWMVEncoderActivate(
   pEncodingConfigurationProperties: Uint8Array | Deno.PointerValue | null /* Windows.Win32.UI.Shell.PropertiesSystem.IPropertyStore */,
   ppActivate: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libMF.MFCreateWMVEncoderActivate(util.toPointer(pMediaType), util.toPointer(pEncodingConfigurationProperties), util.toPointer(ppActivate)));
+  return util.pointerFromFfi(libMF_dll.MFCreateWMVEncoderActivate(util.toPointer(pMediaType), util.toPointer(pEncodingConfigurationProperties), util.toPointer(ppActivate)));
 }
 
 export function MFCreateWMAEncoderActivate(
@@ -15787,14 +16092,14 @@ export function MFCreateWMAEncoderActivate(
   pEncodingConfigurationProperties: Uint8Array | Deno.PointerValue | null /* Windows.Win32.UI.Shell.PropertiesSystem.IPropertyStore */,
   ppActivate: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libMF.MFCreateWMAEncoderActivate(util.toPointer(pMediaType), util.toPointer(pEncodingConfigurationProperties), util.toPointer(ppActivate)));
+  return util.pointerFromFfi(libMF_dll.MFCreateWMAEncoderActivate(util.toPointer(pMediaType), util.toPointer(pEncodingConfigurationProperties), util.toPointer(ppActivate)));
 }
 
 export function MFCreateASFStreamingMediaSink(
   pIByteStream: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Media.MediaFoundation.IMFByteStream */,
   ppIMediaSink: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libMF.MFCreateASFStreamingMediaSink(util.toPointer(pIByteStream), util.toPointer(ppIMediaSink)));
+  return util.pointerFromFfi(libMF_dll.MFCreateASFStreamingMediaSink(util.toPointer(pIByteStream), util.toPointer(ppIMediaSink)));
 }
 
 export function MFCreateASFStreamingMediaSinkActivate(
@@ -15802,7 +16107,7 @@ export function MFCreateASFStreamingMediaSinkActivate(
   pContentInfo: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Media.MediaFoundation.IMFASFContentInfo */,
   ppIActivate: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libMF.MFCreateASFStreamingMediaSinkActivate(util.toPointer(pByteStreamActivate), util.toPointer(pContentInfo), util.toPointer(ppIActivate)));
+  return util.pointerFromFfi(libMF_dll.MFCreateASFStreamingMediaSinkActivate(util.toPointer(pByteStreamActivate), util.toPointer(pContentInfo), util.toPointer(ppIActivate)));
 }
 
 export function MFCreateD3D12SynchronizationObject(
@@ -15810,26 +16115,26 @@ export function MFCreateD3D12SynchronizationObject(
   riid: Deno.PointerValue | Uint8Array | null /* ptr */,
   ppvSyncObject: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libMFPlat.MFCreateD3D12SynchronizationObject(util.toPointer(pDevice), util.toPointer(riid), util.toPointer(ppvSyncObject)));
+  return util.pointerFromFfi(libMFPlat_dll.MFCreateD3D12SynchronizationObject(util.toPointer(pDevice), util.toPointer(riid), util.toPointer(ppvSyncObject)));
 }
 
 export function MFStartup(
   Version: number /* u32 */,
   dwFlags: number /* u32 */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libMFPlat.MFStartup(Version, dwFlags));
+  return util.pointerFromFfi(libMFPlat_dll.MFStartup(Version, dwFlags));
 }
 
 export function MFShutdown(): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libMFPlat.MFShutdown());
+  return util.pointerFromFfi(libMFPlat_dll.MFShutdown());
 }
 
 export function MFLockPlatform(): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libMFPlat.MFLockPlatform());
+  return util.pointerFromFfi(libMFPlat_dll.MFLockPlatform());
 }
 
 export function MFUnlockPlatform(): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libMFPlat.MFUnlockPlatform());
+  return util.pointerFromFfi(libMFPlat_dll.MFUnlockPlatform());
 }
 
 export function MFPutWorkItem(
@@ -15837,7 +16142,7 @@ export function MFPutWorkItem(
   pCallback: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Media.MediaFoundation.IMFAsyncCallback */,
   pState: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Com.IUnknown */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libMFPlat.MFPutWorkItem(dwQueue, util.toPointer(pCallback), util.toPointer(pState)));
+  return util.pointerFromFfi(libMFPlat_dll.MFPutWorkItem(dwQueue, util.toPointer(pCallback), util.toPointer(pState)));
 }
 
 export function MFPutWorkItem2(
@@ -15846,14 +16151,14 @@ export function MFPutWorkItem2(
   pCallback: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Media.MediaFoundation.IMFAsyncCallback */,
   pState: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Com.IUnknown */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libMFPlat.MFPutWorkItem2(dwQueue, Priority, util.toPointer(pCallback), util.toPointer(pState)));
+  return util.pointerFromFfi(libMFPlat_dll.MFPutWorkItem2(dwQueue, Priority, util.toPointer(pCallback), util.toPointer(pState)));
 }
 
 export function MFPutWorkItemEx(
   dwQueue: number /* u32 */,
   pResult: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Media.MediaFoundation.IMFAsyncResult */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libMFPlat.MFPutWorkItemEx(dwQueue, util.toPointer(pResult)));
+  return util.pointerFromFfi(libMFPlat_dll.MFPutWorkItemEx(dwQueue, util.toPointer(pResult)));
 }
 
 export function MFPutWorkItemEx2(
@@ -15861,7 +16166,7 @@ export function MFPutWorkItemEx2(
   Priority: number /* i32 */,
   pResult: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Media.MediaFoundation.IMFAsyncResult */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libMFPlat.MFPutWorkItemEx2(dwQueue, Priority, util.toPointer(pResult)));
+  return util.pointerFromFfi(libMFPlat_dll.MFPutWorkItemEx2(dwQueue, Priority, util.toPointer(pResult)));
 }
 
 export function MFPutWaitingWorkItem(
@@ -15870,14 +16175,14 @@ export function MFPutWaitingWorkItem(
   pResult: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Media.MediaFoundation.IMFAsyncResult */,
   pKey: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libMFPlat.MFPutWaitingWorkItem(util.toPointer(hEvent), Priority, util.toPointer(pResult), util.toPointer(pKey)));
+  return util.pointerFromFfi(libMFPlat_dll.MFPutWaitingWorkItem(util.toPointer(hEvent), Priority, util.toPointer(pResult), util.toPointer(pKey)));
 }
 
 export function MFAllocateSerialWorkQueue(
   dwWorkQueue: number /* u32 */,
   pdwWorkQueue: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libMFPlat.MFAllocateSerialWorkQueue(dwWorkQueue, util.toPointer(pdwWorkQueue)));
+  return util.pointerFromFfi(libMFPlat_dll.MFAllocateSerialWorkQueue(dwWorkQueue, util.toPointer(pdwWorkQueue)));
 }
 
 export function MFScheduleWorkItemEx(
@@ -15885,7 +16190,7 @@ export function MFScheduleWorkItemEx(
   Timeout: Deno.PointerValue /* i64 */,
   pKey: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libMFPlat.MFScheduleWorkItemEx(util.toPointer(pResult), Timeout, util.toPointer(pKey)));
+  return util.pointerFromFfi(libMFPlat_dll.MFScheduleWorkItemEx(util.toPointer(pResult), Timeout, util.toPointer(pKey)));
 }
 
 export function MFScheduleWorkItem(
@@ -15894,19 +16199,19 @@ export function MFScheduleWorkItem(
   Timeout: Deno.PointerValue /* i64 */,
   pKey: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libMFPlat.MFScheduleWorkItem(util.toPointer(pCallback), util.toPointer(pState), Timeout, util.toPointer(pKey)));
+  return util.pointerFromFfi(libMFPlat_dll.MFScheduleWorkItem(util.toPointer(pCallback), util.toPointer(pState), Timeout, util.toPointer(pKey)));
 }
 
 export function MFCancelWorkItem(
   Key: Deno.PointerValue /* u64 */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libMFPlat.MFCancelWorkItem(Key));
+  return util.pointerFromFfi(libMFPlat_dll.MFCancelWorkItem(Key));
 }
 
 export function MFGetTimerPeriodicity(
   Periodicity: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libMFPlat.MFGetTimerPeriodicity(util.toPointer(Periodicity)));
+  return util.pointerFromFfi(libMFPlat_dll.MFGetTimerPeriodicity(util.toPointer(Periodicity)));
 }
 
 export function MFAddPeriodicCallback(
@@ -15914,38 +16219,38 @@ export function MFAddPeriodicCallback(
   pContext: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Com.IUnknown */,
   pdwKey: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libMFPlat.MFAddPeriodicCallback(util.toPointer(Callback), util.toPointer(pContext), util.toPointer(pdwKey)));
+  return util.pointerFromFfi(libMFPlat_dll.MFAddPeriodicCallback(util.toPointer(Callback), util.toPointer(pContext), util.toPointer(pdwKey)));
 }
 
 export function MFRemovePeriodicCallback(
   dwKey: number /* u32 */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libMFPlat.MFRemovePeriodicCallback(dwKey));
+  return util.pointerFromFfi(libMFPlat_dll.MFRemovePeriodicCallback(dwKey));
 }
 
 export function MFAllocateWorkQueueEx(
   WorkQueueType: MFASYNC_WORKQUEUE_TYPE /* Windows.Win32.Media.MediaFoundation.MFASYNC_WORKQUEUE_TYPE */,
   pdwWorkQueue: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libMFPlat.MFAllocateWorkQueueEx(WorkQueueType, util.toPointer(pdwWorkQueue)));
+  return util.pointerFromFfi(libMFPlat_dll.MFAllocateWorkQueueEx(WorkQueueType, util.toPointer(pdwWorkQueue)));
 }
 
 export function MFAllocateWorkQueue(
   pdwWorkQueue: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libMFPlat.MFAllocateWorkQueue(util.toPointer(pdwWorkQueue)));
+  return util.pointerFromFfi(libMFPlat_dll.MFAllocateWorkQueue(util.toPointer(pdwWorkQueue)));
 }
 
 export function MFLockWorkQueue(
   dwWorkQueue: number /* u32 */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libMFPlat.MFLockWorkQueue(dwWorkQueue));
+  return util.pointerFromFfi(libMFPlat_dll.MFLockWorkQueue(dwWorkQueue));
 }
 
 export function MFUnlockWorkQueue(
   dwWorkQueue: number /* u32 */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libMFPlat.MFUnlockWorkQueue(dwWorkQueue));
+  return util.pointerFromFfi(libMFPlat_dll.MFUnlockWorkQueue(dwWorkQueue));
 }
 
 export function MFBeginRegisterWorkQueueWithMMCSS(
@@ -15955,7 +16260,7 @@ export function MFBeginRegisterWorkQueueWithMMCSS(
   pDoneCallback: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Media.MediaFoundation.IMFAsyncCallback */,
   pDoneState: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Com.IUnknown */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libMFPlat.MFBeginRegisterWorkQueueWithMMCSS(dwWorkQueueId, util.pwstrToFfi(wszClass), dwTaskId, util.toPointer(pDoneCallback), util.toPointer(pDoneState)));
+  return util.pointerFromFfi(libMFPlat_dll.MFBeginRegisterWorkQueueWithMMCSS(dwWorkQueueId, util.pwstrToFfi(wszClass), dwTaskId, util.toPointer(pDoneCallback), util.toPointer(pDoneState)));
 }
 
 export function MFBeginRegisterWorkQueueWithMMCSSEx(
@@ -15966,14 +16271,14 @@ export function MFBeginRegisterWorkQueueWithMMCSSEx(
   pDoneCallback: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Media.MediaFoundation.IMFAsyncCallback */,
   pDoneState: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Com.IUnknown */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libMFPlat.MFBeginRegisterWorkQueueWithMMCSSEx(dwWorkQueueId, util.pwstrToFfi(wszClass), dwTaskId, lPriority, util.toPointer(pDoneCallback), util.toPointer(pDoneState)));
+  return util.pointerFromFfi(libMFPlat_dll.MFBeginRegisterWorkQueueWithMMCSSEx(dwWorkQueueId, util.pwstrToFfi(wszClass), dwTaskId, lPriority, util.toPointer(pDoneCallback), util.toPointer(pDoneState)));
 }
 
 export function MFEndRegisterWorkQueueWithMMCSS(
   pResult: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Media.MediaFoundation.IMFAsyncResult */,
   pdwTaskId: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libMFPlat.MFEndRegisterWorkQueueWithMMCSS(util.toPointer(pResult), util.toPointer(pdwTaskId)));
+  return util.pointerFromFfi(libMFPlat_dll.MFEndRegisterWorkQueueWithMMCSS(util.toPointer(pResult), util.toPointer(pdwTaskId)));
 }
 
 export function MFBeginUnregisterWorkQueueWithMMCSS(
@@ -15981,13 +16286,13 @@ export function MFBeginUnregisterWorkQueueWithMMCSS(
   pDoneCallback: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Media.MediaFoundation.IMFAsyncCallback */,
   pDoneState: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Com.IUnknown */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libMFPlat.MFBeginUnregisterWorkQueueWithMMCSS(dwWorkQueueId, util.toPointer(pDoneCallback), util.toPointer(pDoneState)));
+  return util.pointerFromFfi(libMFPlat_dll.MFBeginUnregisterWorkQueueWithMMCSS(dwWorkQueueId, util.toPointer(pDoneCallback), util.toPointer(pDoneState)));
 }
 
 export function MFEndUnregisterWorkQueueWithMMCSS(
   pResult: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Media.MediaFoundation.IMFAsyncResult */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libMFPlat.MFEndUnregisterWorkQueueWithMMCSS(util.toPointer(pResult)));
+  return util.pointerFromFfi(libMFPlat_dll.MFEndUnregisterWorkQueueWithMMCSS(util.toPointer(pResult)));
 }
 
 export function MFGetWorkQueueMMCSSClass(
@@ -15995,14 +16300,14 @@ export function MFGetWorkQueueMMCSSClass(
   pwszClass: string | null /* Windows.Win32.Foundation.PWSTR */,
   pcchClass: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libMFPlat.MFGetWorkQueueMMCSSClass(dwWorkQueueId, util.pwstrToFfi(pwszClass), util.toPointer(pcchClass)));
+  return util.pointerFromFfi(libMFPlat_dll.MFGetWorkQueueMMCSSClass(dwWorkQueueId, util.pwstrToFfi(pwszClass), util.toPointer(pcchClass)));
 }
 
 export function MFGetWorkQueueMMCSSTaskId(
   dwWorkQueueId: number /* u32 */,
   pdwTaskId: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libMFPlat.MFGetWorkQueueMMCSSTaskId(dwWorkQueueId, util.toPointer(pdwTaskId)));
+  return util.pointerFromFfi(libMFPlat_dll.MFGetWorkQueueMMCSSTaskId(dwWorkQueueId, util.toPointer(pdwTaskId)));
 }
 
 export function MFRegisterPlatformWithMMCSS(
@@ -16010,11 +16315,11 @@ export function MFRegisterPlatformWithMMCSS(
   pdwTaskId: Deno.PointerValue | Uint8Array | null /* ptr */,
   lPriority: number /* i32 */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libMFPlat.MFRegisterPlatformWithMMCSS(util.pwstrToFfi(wszClass), util.toPointer(pdwTaskId), lPriority));
+  return util.pointerFromFfi(libMFPlat_dll.MFRegisterPlatformWithMMCSS(util.pwstrToFfi(wszClass), util.toPointer(pdwTaskId), lPriority));
 }
 
 export function MFUnregisterPlatformFromMMCSS(): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libMFPlat.MFUnregisterPlatformFromMMCSS());
+  return util.pointerFromFfi(libMFPlat_dll.MFUnregisterPlatformFromMMCSS());
 }
 
 export function MFLockSharedWorkQueue(
@@ -16023,14 +16328,14 @@ export function MFLockSharedWorkQueue(
   pdwTaskId: Deno.PointerValue | Uint8Array | null /* ptr */,
   pID: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libMFPlat.MFLockSharedWorkQueue(util.pwstrToFfi(wszClass), BasePriority, util.toPointer(pdwTaskId), util.toPointer(pID)));
+  return util.pointerFromFfi(libMFPlat_dll.MFLockSharedWorkQueue(util.pwstrToFfi(wszClass), BasePriority, util.toPointer(pdwTaskId), util.toPointer(pID)));
 }
 
 export function MFGetWorkQueueMMCSSPriority(
   dwWorkQueueId: number /* u32 */,
   lPriority: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libMFPlat.MFGetWorkQueueMMCSSPriority(dwWorkQueueId, util.toPointer(lPriority)));
+  return util.pointerFromFfi(libMFPlat_dll.MFGetWorkQueueMMCSSPriority(dwWorkQueueId, util.toPointer(lPriority)));
 }
 
 export function MFCreateAsyncResult(
@@ -16039,13 +16344,13 @@ export function MFCreateAsyncResult(
   punkState: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Com.IUnknown */,
   ppAsyncResult: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libMFPlat.MFCreateAsyncResult(util.toPointer(punkObject), util.toPointer(pCallback), util.toPointer(punkState), util.toPointer(ppAsyncResult)));
+  return util.pointerFromFfi(libMFPlat_dll.MFCreateAsyncResult(util.toPointer(punkObject), util.toPointer(pCallback), util.toPointer(punkState), util.toPointer(ppAsyncResult)));
 }
 
 export function MFInvokeCallback(
   pAsyncResult: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Media.MediaFoundation.IMFAsyncResult */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libMFPlat.MFInvokeCallback(util.toPointer(pAsyncResult)));
+  return util.pointerFromFfi(libMFPlat_dll.MFInvokeCallback(util.toPointer(pAsyncResult)));
 }
 
 export function MFCreateFile(
@@ -16055,7 +16360,7 @@ export function MFCreateFile(
   pwszFileURL: string | null /* Windows.Win32.Foundation.PWSTR */,
   ppIByteStream: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libMFPlat.MFCreateFile(AccessMode, OpenMode, fFlags, util.pwstrToFfi(pwszFileURL), util.toPointer(ppIByteStream)));
+  return util.pointerFromFfi(libMFPlat_dll.MFCreateFile(AccessMode, OpenMode, fFlags, util.pwstrToFfi(pwszFileURL), util.toPointer(ppIByteStream)));
 }
 
 export function MFCreateTempFile(
@@ -16064,7 +16369,7 @@ export function MFCreateTempFile(
   fFlags: MF_FILE_FLAGS /* Windows.Win32.Media.MediaFoundation.MF_FILE_FLAGS */,
   ppIByteStream: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libMFPlat.MFCreateTempFile(AccessMode, OpenMode, fFlags, util.toPointer(ppIByteStream)));
+  return util.pointerFromFfi(libMFPlat_dll.MFCreateTempFile(AccessMode, OpenMode, fFlags, util.toPointer(ppIByteStream)));
 }
 
 export function MFBeginCreateFile(
@@ -16076,27 +16381,27 @@ export function MFBeginCreateFile(
   pState: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Com.IUnknown */,
   ppCancelCookie: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libMFPlat.MFBeginCreateFile(AccessMode, OpenMode, fFlags, util.pwstrToFfi(pwszFilePath), util.toPointer(pCallback), util.toPointer(pState), util.toPointer(ppCancelCookie)));
+  return util.pointerFromFfi(libMFPlat_dll.MFBeginCreateFile(AccessMode, OpenMode, fFlags, util.pwstrToFfi(pwszFilePath), util.toPointer(pCallback), util.toPointer(pState), util.toPointer(ppCancelCookie)));
 }
 
 export function MFEndCreateFile(
   pResult: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Media.MediaFoundation.IMFAsyncResult */,
   ppFile: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libMFPlat.MFEndCreateFile(util.toPointer(pResult), util.toPointer(ppFile)));
+  return util.pointerFromFfi(libMFPlat_dll.MFEndCreateFile(util.toPointer(pResult), util.toPointer(ppFile)));
 }
 
 export function MFCancelCreateFile(
   pCancelCookie: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Com.IUnknown */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libMFPlat.MFCancelCreateFile(util.toPointer(pCancelCookie)));
+  return util.pointerFromFfi(libMFPlat_dll.MFCancelCreateFile(util.toPointer(pCancelCookie)));
 }
 
 export function MFCreateMemoryBuffer(
   cbMaxLength: number /* u32 */,
   ppBuffer: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libMFPlat.MFCreateMemoryBuffer(cbMaxLength, util.toPointer(ppBuffer)));
+  return util.pointerFromFfi(libMFPlat_dll.MFCreateMemoryBuffer(cbMaxLength, util.toPointer(ppBuffer)));
 }
 
 export function MFCreateMediaBufferWrapper(
@@ -16105,7 +16410,7 @@ export function MFCreateMediaBufferWrapper(
   dwLength: number /* u32 */,
   ppBuffer: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libMFPlat.MFCreateMediaBufferWrapper(util.toPointer(pBuffer), cbOffset, dwLength, util.toPointer(ppBuffer)));
+  return util.pointerFromFfi(libMFPlat_dll.MFCreateMediaBufferWrapper(util.toPointer(pBuffer), cbOffset, dwLength, util.toPointer(ppBuffer)));
 }
 
 export function MFCreateLegacyMediaBufferOnMFMediaBuffer(
@@ -16114,30 +16419,30 @@ export function MFCreateLegacyMediaBufferOnMFMediaBuffer(
   cbOffset: number /* u32 */,
   ppMediaBuffer: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libMFPlat.MFCreateLegacyMediaBufferOnMFMediaBuffer(util.toPointer(pSample), util.toPointer(pMFMediaBuffer), cbOffset, util.toPointer(ppMediaBuffer)));
+  return util.pointerFromFfi(libMFPlat_dll.MFCreateLegacyMediaBufferOnMFMediaBuffer(util.toPointer(pSample), util.toPointer(pMFMediaBuffer), cbOffset, util.toPointer(ppMediaBuffer)));
 }
 
 export function MFMapDX9FormatToDXGIFormat(
   dx9: number /* u32 */,
 ): DXGI_FORMAT /* Windows.Win32.Graphics.Dxgi.Common.DXGI_FORMAT */ {
-  return libMFPlat.MFMapDX9FormatToDXGIFormat(dx9);
+  return libMFPlat_dll.MFMapDX9FormatToDXGIFormat(dx9);
 }
 
 export function MFMapDXGIFormatToDX9Format(
   dx11: DXGI_FORMAT /* Windows.Win32.Graphics.Dxgi.Common.DXGI_FORMAT */,
 ): number /* u32 */ {
-  return libMFPlat.MFMapDXGIFormatToDX9Format(dx11);
+  return libMFPlat_dll.MFMapDXGIFormatToDX9Format(dx11);
 }
 
 export function MFLockDXGIDeviceManager(
   pResetToken: Deno.PointerValue | Uint8Array | null /* ptr */,
   ppManager: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libMFPlat.MFLockDXGIDeviceManager(util.toPointer(pResetToken), util.toPointer(ppManager)));
+  return util.pointerFromFfi(libMFPlat_dll.MFLockDXGIDeviceManager(util.toPointer(pResetToken), util.toPointer(ppManager)));
 }
 
 export function MFUnlockDXGIDeviceManager(): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libMFPlat.MFUnlockDXGIDeviceManager());
+  return util.pointerFromFfi(libMFPlat_dll.MFUnlockDXGIDeviceManager());
 }
 
 export function MFCreateDXSurfaceBuffer(
@@ -16146,7 +16451,7 @@ export function MFCreateDXSurfaceBuffer(
   fBottomUpWhenLinear: boolean /* Windows.Win32.Foundation.BOOL */,
   ppBuffer: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libMFPlat.MFCreateDXSurfaceBuffer(util.toPointer(riid), util.toPointer(punkSurface), util.boolToFfi(fBottomUpWhenLinear), util.toPointer(ppBuffer)));
+  return util.pointerFromFfi(libMFPlat_dll.MFCreateDXSurfaceBuffer(util.toPointer(riid), util.toPointer(punkSurface), util.boolToFfi(fBottomUpWhenLinear), util.toPointer(ppBuffer)));
 }
 
 export function MFCreateWICBitmapBuffer(
@@ -16154,7 +16459,7 @@ export function MFCreateWICBitmapBuffer(
   punkSurface: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Com.IUnknown */,
   ppBuffer: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libMFPlat.MFCreateWICBitmapBuffer(util.toPointer(riid), util.toPointer(punkSurface), util.toPointer(ppBuffer)));
+  return util.pointerFromFfi(libMFPlat_dll.MFCreateWICBitmapBuffer(util.toPointer(riid), util.toPointer(punkSurface), util.toPointer(ppBuffer)));
 }
 
 export function MFCreateDXGISurfaceBuffer(
@@ -16164,21 +16469,21 @@ export function MFCreateDXGISurfaceBuffer(
   fBottomUpWhenLinear: boolean /* Windows.Win32.Foundation.BOOL */,
   ppBuffer: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libMFPlat.MFCreateDXGISurfaceBuffer(util.toPointer(riid), util.toPointer(punkSurface), uSubresourceIndex, util.boolToFfi(fBottomUpWhenLinear), util.toPointer(ppBuffer)));
+  return util.pointerFromFfi(libMFPlat_dll.MFCreateDXGISurfaceBuffer(util.toPointer(riid), util.toPointer(punkSurface), uSubresourceIndex, util.boolToFfi(fBottomUpWhenLinear), util.toPointer(ppBuffer)));
 }
 
 export function MFCreateVideoSampleAllocatorEx(
   riid: Deno.PointerValue | Uint8Array | null /* ptr */,
   ppSampleAllocator: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libMFPlat.MFCreateVideoSampleAllocatorEx(util.toPointer(riid), util.toPointer(ppSampleAllocator)));
+  return util.pointerFromFfi(libMFPlat_dll.MFCreateVideoSampleAllocatorEx(util.toPointer(riid), util.toPointer(ppSampleAllocator)));
 }
 
 export function MFCreateDXGIDeviceManager(
   resetToken: Deno.PointerValue | Uint8Array | null /* ptr */,
   ppDeviceManager: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libMFPlat.MFCreateDXGIDeviceManager(util.toPointer(resetToken), util.toPointer(ppDeviceManager)));
+  return util.pointerFromFfi(libMFPlat_dll.MFCreateDXGIDeviceManager(util.toPointer(resetToken), util.toPointer(ppDeviceManager)));
 }
 
 export function MFCreateAlignedMemoryBuffer(
@@ -16186,7 +16491,7 @@ export function MFCreateAlignedMemoryBuffer(
   cbAligment: number /* u32 */,
   ppBuffer: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libMFPlat.MFCreateAlignedMemoryBuffer(cbMaxLength, cbAligment, util.toPointer(ppBuffer)));
+  return util.pointerFromFfi(libMFPlat_dll.MFCreateAlignedMemoryBuffer(cbMaxLength, cbAligment, util.toPointer(ppBuffer)));
 }
 
 export function MFCreateMediaEvent(
@@ -16196,26 +16501,26 @@ export function MFCreateMediaEvent(
   pvValue: Deno.PointerValue | Uint8Array | null /* ptr */,
   ppEvent: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libMFPlat.MFCreateMediaEvent(met, util.toPointer(guidExtendedType), util.toPointer(hrStatus), util.toPointer(pvValue), util.toPointer(ppEvent)));
+  return util.pointerFromFfi(libMFPlat_dll.MFCreateMediaEvent(met, util.toPointer(guidExtendedType), util.toPointer(hrStatus), util.toPointer(pvValue), util.toPointer(ppEvent)));
 }
 
 export function MFCreateEventQueue(
   ppMediaEventQueue: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libMFPlat.MFCreateEventQueue(util.toPointer(ppMediaEventQueue)));
+  return util.pointerFromFfi(libMFPlat_dll.MFCreateEventQueue(util.toPointer(ppMediaEventQueue)));
 }
 
 export function MFCreateSample(
   ppIMFSample: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libMFPlat.MFCreateSample(util.toPointer(ppIMFSample)));
+  return util.pointerFromFfi(libMFPlat_dll.MFCreateSample(util.toPointer(ppIMFSample)));
 }
 
 export function MFCreateAttributes(
   ppMFAttributes: Deno.PointerValue | Uint8Array | null /* ptr */,
   cInitialSize: number /* u32 */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libMFPlat.MFCreateAttributes(util.toPointer(ppMFAttributes), cInitialSize));
+  return util.pointerFromFfi(libMFPlat_dll.MFCreateAttributes(util.toPointer(ppMFAttributes), cInitialSize));
 }
 
 export function MFInitAttributesFromBlob(
@@ -16223,14 +16528,14 @@ export function MFInitAttributesFromBlob(
   pBuf: Deno.PointerValue | Uint8Array | null /* ptr */,
   cbBufSize: number /* u32 */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libMFPlat.MFInitAttributesFromBlob(util.toPointer(pAttributes), util.toPointer(pBuf), cbBufSize));
+  return util.pointerFromFfi(libMFPlat_dll.MFInitAttributesFromBlob(util.toPointer(pAttributes), util.toPointer(pBuf), cbBufSize));
 }
 
 export function MFGetAttributesAsBlobSize(
   pAttributes: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Media.MediaFoundation.IMFAttributes */,
   pcbBufSize: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libMFPlat.MFGetAttributesAsBlobSize(util.toPointer(pAttributes), util.toPointer(pcbBufSize)));
+  return util.pointerFromFfi(libMFPlat_dll.MFGetAttributesAsBlobSize(util.toPointer(pAttributes), util.toPointer(pcbBufSize)));
 }
 
 export function MFGetAttributesAsBlob(
@@ -16238,7 +16543,7 @@ export function MFGetAttributesAsBlob(
   pBuf: Deno.PointerValue | Uint8Array | null /* ptr */,
   cbBufSize: number /* u32 */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libMFPlat.MFGetAttributesAsBlob(util.toPointer(pAttributes), util.toPointer(pBuf), cbBufSize));
+  return util.pointerFromFfi(libMFPlat_dll.MFGetAttributesAsBlob(util.toPointer(pAttributes), util.toPointer(pBuf), cbBufSize));
 }
 
 export function MFTRegister(
@@ -16252,13 +16557,13 @@ export function MFTRegister(
   pOutputTypes: Deno.PointerValue | Uint8Array | null /* ptr */,
   pAttributes: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Media.MediaFoundation.IMFAttributes */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libMFPlat.MFTRegister(util.toPointer(clsidMFT), util.toPointer(guidCategory), util.pwstrToFfi(pszName), Flags, cInputTypes, util.toPointer(pInputTypes), cOutputTypes, util.toPointer(pOutputTypes), util.toPointer(pAttributes)));
+  return util.pointerFromFfi(libMFPlat_dll.MFTRegister(util.toPointer(clsidMFT), util.toPointer(guidCategory), util.pwstrToFfi(pszName), Flags, cInputTypes, util.toPointer(pInputTypes), cOutputTypes, util.toPointer(pOutputTypes), util.toPointer(pAttributes)));
 }
 
 export function MFTUnregister(
   clsidMFT: Uint8Array | Deno.PointerValue | null /* System.Guid */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libMFPlat.MFTUnregister(util.toPointer(clsidMFT)));
+  return util.pointerFromFfi(libMFPlat_dll.MFTUnregister(util.toPointer(clsidMFT)));
 }
 
 export function MFTRegisterLocal(
@@ -16271,13 +16576,13 @@ export function MFTRegisterLocal(
   cOutputTypes: number /* u32 */,
   pOutputTypes: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libMFPlat.MFTRegisterLocal(util.toPointer(pClassFactory), util.toPointer(guidCategory), util.pwstrToFfi(pszName), Flags, cInputTypes, util.toPointer(pInputTypes), cOutputTypes, util.toPointer(pOutputTypes)));
+  return util.pointerFromFfi(libMFPlat_dll.MFTRegisterLocal(util.toPointer(pClassFactory), util.toPointer(guidCategory), util.pwstrToFfi(pszName), Flags, cInputTypes, util.toPointer(pInputTypes), cOutputTypes, util.toPointer(pOutputTypes)));
 }
 
 export function MFTUnregisterLocal(
   pClassFactory: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Com.IClassFactory */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libMFPlat.MFTUnregisterLocal(util.toPointer(pClassFactory)));
+  return util.pointerFromFfi(libMFPlat_dll.MFTUnregisterLocal(util.toPointer(pClassFactory)));
 }
 
 export function MFTRegisterLocalByCLSID(
@@ -16290,13 +16595,13 @@ export function MFTRegisterLocalByCLSID(
   cOutputTypes: number /* u32 */,
   pOutputTypes: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libMFPlat.MFTRegisterLocalByCLSID(util.toPointer(clisdMFT), util.toPointer(guidCategory), util.pwstrToFfi(pszName), Flags, cInputTypes, util.toPointer(pInputTypes), cOutputTypes, util.toPointer(pOutputTypes)));
+  return util.pointerFromFfi(libMFPlat_dll.MFTRegisterLocalByCLSID(util.toPointer(clisdMFT), util.toPointer(guidCategory), util.pwstrToFfi(pszName), Flags, cInputTypes, util.toPointer(pInputTypes), cOutputTypes, util.toPointer(pOutputTypes)));
 }
 
 export function MFTUnregisterLocalByCLSID(
   clsidMFT: Uint8Array | Deno.PointerValue | null /* System.Guid */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libMFPlat.MFTUnregisterLocalByCLSID(util.toPointer(clsidMFT)));
+  return util.pointerFromFfi(libMFPlat_dll.MFTUnregisterLocalByCLSID(util.toPointer(clsidMFT)));
 }
 
 export function MFTEnum(
@@ -16308,30 +16613,30 @@ export function MFTEnum(
   ppclsidMFT: Deno.PointerValue | Uint8Array | null /* ptr */,
   pcMFTs: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libMFPlat.MFTEnum(util.toPointer(guidCategory), Flags, util.toPointer(pInputType), util.toPointer(pOutputType), util.toPointer(pAttributes), util.toPointer(ppclsidMFT), util.toPointer(pcMFTs)));
+  return util.pointerFromFfi(libMFPlat_dll.MFTEnum(util.toPointer(guidCategory), Flags, util.toPointer(pInputType), util.toPointer(pOutputType), util.toPointer(pAttributes), util.toPointer(ppclsidMFT), util.toPointer(pcMFTs)));
 }
 
 export function MFTEnumEx(
   guidCategory: Uint8Array | Deno.PointerValue | null /* System.Guid */,
-  Flags: number /* u32 */,
+  Flags: MFT_ENUM_FLAG /* Windows.Win32.Media.MediaFoundation.MFT_ENUM_FLAG */,
   pInputType: Deno.PointerValue | Uint8Array | null /* ptr */,
   pOutputType: Deno.PointerValue | Uint8Array | null /* ptr */,
   pppMFTActivate: Deno.PointerValue | Uint8Array | null /* ptr */,
   pnumMFTActivate: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libMFPlat.MFTEnumEx(util.toPointer(guidCategory), Flags, util.toPointer(pInputType), util.toPointer(pOutputType), util.toPointer(pppMFTActivate), util.toPointer(pnumMFTActivate)));
+  return util.pointerFromFfi(libMFPlat_dll.MFTEnumEx(util.toPointer(guidCategory), Flags, util.toPointer(pInputType), util.toPointer(pOutputType), util.toPointer(pppMFTActivate), util.toPointer(pnumMFTActivate)));
 }
 
 export function MFTEnum2(
   guidCategory: Uint8Array | Deno.PointerValue | null /* System.Guid */,
-  Flags: number /* u32 */,
+  Flags: MFT_ENUM_FLAG /* Windows.Win32.Media.MediaFoundation.MFT_ENUM_FLAG */,
   pInputType: Deno.PointerValue | Uint8Array | null /* ptr */,
   pOutputType: Deno.PointerValue | Uint8Array | null /* ptr */,
   pAttributes: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Media.MediaFoundation.IMFAttributes */,
   pppMFTActivate: Deno.PointerValue | Uint8Array | null /* ptr */,
   pnumMFTActivate: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libMFPlat.MFTEnum2(util.toPointer(guidCategory), Flags, util.toPointer(pInputType), util.toPointer(pOutputType), util.toPointer(pAttributes), util.toPointer(pppMFTActivate), util.toPointer(pnumMFTActivate)));
+  return util.pointerFromFfi(libMFPlat_dll.MFTEnum2(util.toPointer(guidCategory), Flags, util.toPointer(pInputType), util.toPointer(pOutputType), util.toPointer(pAttributes), util.toPointer(pppMFTActivate), util.toPointer(pnumMFTActivate)));
 }
 
 export function MFTGetInfo(
@@ -16343,13 +16648,13 @@ export function MFTGetInfo(
   pcOutputTypes: Deno.PointerValue | Uint8Array | null /* ptr */,
   ppAttributes: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libMFPlat.MFTGetInfo(util.toPointer(clsidMFT), util.toPointer(pszName), util.toPointer(ppInputTypes), util.toPointer(pcInputTypes), util.toPointer(ppOutputTypes), util.toPointer(pcOutputTypes), util.toPointer(ppAttributes)));
+  return util.pointerFromFfi(libMFPlat_dll.MFTGetInfo(util.toPointer(clsidMFT), util.toPointer(pszName), util.toPointer(ppInputTypes), util.toPointer(pcInputTypes), util.toPointer(ppOutputTypes), util.toPointer(pcOutputTypes), util.toPointer(ppAttributes)));
 }
 
 export function MFGetPluginControl(
   ppPluginControl: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libMFPlat.MFGetPluginControl(util.toPointer(ppPluginControl)));
+  return util.pointerFromFfi(libMFPlat_dll.MFGetPluginControl(util.toPointer(ppPluginControl)));
 }
 
 export function MFGetMFTMerit(
@@ -16358,14 +16663,14 @@ export function MFGetMFTMerit(
   verifier: Deno.PointerValue | Uint8Array | null /* ptr */,
   merit: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libMFPlat.MFGetMFTMerit(util.toPointer(pMFT), cbVerifier, util.toPointer(verifier), util.toPointer(merit)));
+  return util.pointerFromFfi(libMFPlat_dll.MFGetMFTMerit(util.toPointer(pMFT), cbVerifier, util.toPointer(verifier), util.toPointer(merit)));
 }
 
 export function MFRegisterLocalSchemeHandler(
   szScheme: string | null /* Windows.Win32.Foundation.PWSTR */,
   pActivate: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Media.MediaFoundation.IMFActivate */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libMFPlat.MFRegisterLocalSchemeHandler(util.pwstrToFfi(szScheme), util.toPointer(pActivate)));
+  return util.pointerFromFfi(libMFPlat_dll.MFRegisterLocalSchemeHandler(util.pwstrToFfi(szScheme), util.toPointer(pActivate)));
 }
 
 export function MFRegisterLocalByteStreamHandler(
@@ -16373,14 +16678,14 @@ export function MFRegisterLocalByteStreamHandler(
   szMimeType: string | null /* Windows.Win32.Foundation.PWSTR */,
   pActivate: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Media.MediaFoundation.IMFActivate */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libMFPlat.MFRegisterLocalByteStreamHandler(util.pwstrToFfi(szFileExtension), util.pwstrToFfi(szMimeType), util.toPointer(pActivate)));
+  return util.pointerFromFfi(libMFPlat_dll.MFRegisterLocalByteStreamHandler(util.pwstrToFfi(szFileExtension), util.pwstrToFfi(szMimeType), util.toPointer(pActivate)));
 }
 
 export function MFCreateMFByteStreamWrapper(
   pStream: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Media.MediaFoundation.IMFByteStream */,
   ppStreamWrapper: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libMFPlat.MFCreateMFByteStreamWrapper(util.toPointer(pStream), util.toPointer(ppStreamWrapper)));
+  return util.pointerFromFfi(libMFPlat_dll.MFCreateMFByteStreamWrapper(util.toPointer(pStream), util.toPointer(ppStreamWrapper)));
 }
 
 export function MFCreateMediaExtensionActivate(
@@ -16389,28 +16694,28 @@ export function MFCreateMediaExtensionActivate(
   riid: Deno.PointerValue | Uint8Array | null /* ptr */,
   ppvObject: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libMFPlat.MFCreateMediaExtensionActivate(util.pwstrToFfi(szActivatableClassId), util.toPointer(pConfiguration), util.toPointer(riid), util.toPointer(ppvObject)));
+  return util.pointerFromFfi(libMFPlat_dll.MFCreateMediaExtensionActivate(util.pwstrToFfi(szActivatableClassId), util.toPointer(pConfiguration), util.toPointer(riid), util.toPointer(ppvObject)));
 }
 
 export function MFCreateMuxStreamAttributes(
   pAttributesToMux: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Media.MediaFoundation.IMFCollection */,
   ppMuxAttribs: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libMFPlat.MFCreateMuxStreamAttributes(util.toPointer(pAttributesToMux), util.toPointer(ppMuxAttribs)));
+  return util.pointerFromFfi(libMFPlat_dll.MFCreateMuxStreamAttributes(util.toPointer(pAttributesToMux), util.toPointer(ppMuxAttribs)));
 }
 
 export function MFCreateMuxStreamMediaType(
   pMediaTypesToMux: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Media.MediaFoundation.IMFCollection */,
   ppMuxMediaType: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libMFPlat.MFCreateMuxStreamMediaType(util.toPointer(pMediaTypesToMux), util.toPointer(ppMuxMediaType)));
+  return util.pointerFromFfi(libMFPlat_dll.MFCreateMuxStreamMediaType(util.toPointer(pMediaTypesToMux), util.toPointer(ppMuxMediaType)));
 }
 
 export function MFCreateMuxStreamSample(
   pSamplesToMux: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Media.MediaFoundation.IMFCollection */,
   ppMuxSample: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libMFPlat.MFCreateMuxStreamSample(util.toPointer(pSamplesToMux), util.toPointer(ppMuxSample)));
+  return util.pointerFromFfi(libMFPlat_dll.MFCreateMuxStreamSample(util.toPointer(pSamplesToMux), util.toPointer(ppMuxSample)));
 }
 
 export function MFValidateMediaTypeSize(
@@ -16418,13 +16723,13 @@ export function MFValidateMediaTypeSize(
   pBlock: Deno.PointerValue | Uint8Array | null /* ptr */,
   cbSize: number /* u32 */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libMFPlat.MFValidateMediaTypeSize(util.toPointer(FormatType), util.toPointer(pBlock), cbSize));
+  return util.pointerFromFfi(libMFPlat_dll.MFValidateMediaTypeSize(util.toPointer(FormatType), util.toPointer(pBlock), cbSize));
 }
 
 export function MFCreateMediaType(
   ppMFType: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libMFPlat.MFCreateMediaType(util.toPointer(ppMFType)));
+  return util.pointerFromFfi(libMFPlat_dll.MFCreateMediaType(util.toPointer(ppMFType)));
 }
 
 export function MFCreateMFVideoFormatFromMFMediaType(
@@ -16432,7 +16737,7 @@ export function MFCreateMFVideoFormatFromMFMediaType(
   ppMFVF: Deno.PointerValue | Uint8Array | null /* ptr */,
   pcbSize: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libMFPlat.MFCreateMFVideoFormatFromMFMediaType(util.toPointer(pMFType), util.toPointer(ppMFVF), util.toPointer(pcbSize)));
+  return util.pointerFromFfi(libMFPlat_dll.MFCreateMFVideoFormatFromMFMediaType(util.toPointer(pMFType), util.toPointer(ppMFVF), util.toPointer(pcbSize)));
 }
 
 export function MFCreateWaveFormatExFromMFMediaType(
@@ -16441,7 +16746,7 @@ export function MFCreateWaveFormatExFromMFMediaType(
   pcbSize: Deno.PointerValue | Uint8Array | null /* ptr */,
   Flags: number /* u32 */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libMFPlat.MFCreateWaveFormatExFromMFMediaType(util.toPointer(pMFType), util.toPointer(ppWF), util.toPointer(pcbSize), Flags));
+  return util.pointerFromFfi(libMFPlat_dll.MFCreateWaveFormatExFromMFMediaType(util.toPointer(pMFType), util.toPointer(ppWF), util.toPointer(pcbSize), Flags));
 }
 
 export function MFInitMediaTypeFromVideoInfoHeader(
@@ -16450,7 +16755,7 @@ export function MFInitMediaTypeFromVideoInfoHeader(
   cbBufSize: number /* u32 */,
   pSubtype: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libMFPlat.MFInitMediaTypeFromVideoInfoHeader(util.toPointer(pMFType), util.toPointer(pVIH), cbBufSize, util.toPointer(pSubtype)));
+  return util.pointerFromFfi(libMFPlat_dll.MFInitMediaTypeFromVideoInfoHeader(util.toPointer(pMFType), util.toPointer(pVIH), cbBufSize, util.toPointer(pSubtype)));
 }
 
 export function MFInitMediaTypeFromVideoInfoHeader2(
@@ -16459,7 +16764,7 @@ export function MFInitMediaTypeFromVideoInfoHeader2(
   cbBufSize: number /* u32 */,
   pSubtype: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libMFPlat.MFInitMediaTypeFromVideoInfoHeader2(util.toPointer(pMFType), util.toPointer(pVIH2), cbBufSize, util.toPointer(pSubtype)));
+  return util.pointerFromFfi(libMFPlat_dll.MFInitMediaTypeFromVideoInfoHeader2(util.toPointer(pMFType), util.toPointer(pVIH2), cbBufSize, util.toPointer(pSubtype)));
 }
 
 export function MFInitMediaTypeFromMPEG1VideoInfo(
@@ -16468,7 +16773,7 @@ export function MFInitMediaTypeFromMPEG1VideoInfo(
   cbBufSize: number /* u32 */,
   pSubtype: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libMFPlat.MFInitMediaTypeFromMPEG1VideoInfo(util.toPointer(pMFType), util.toPointer(pMP1VI), cbBufSize, util.toPointer(pSubtype)));
+  return util.pointerFromFfi(libMFPlat_dll.MFInitMediaTypeFromMPEG1VideoInfo(util.toPointer(pMFType), util.toPointer(pMP1VI), cbBufSize, util.toPointer(pSubtype)));
 }
 
 export function MFInitMediaTypeFromMPEG2VideoInfo(
@@ -16477,7 +16782,7 @@ export function MFInitMediaTypeFromMPEG2VideoInfo(
   cbBufSize: number /* u32 */,
   pSubtype: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libMFPlat.MFInitMediaTypeFromMPEG2VideoInfo(util.toPointer(pMFType), util.toPointer(pMP2VI), cbBufSize, util.toPointer(pSubtype)));
+  return util.pointerFromFfi(libMFPlat_dll.MFInitMediaTypeFromMPEG2VideoInfo(util.toPointer(pMFType), util.toPointer(pMP2VI), cbBufSize, util.toPointer(pSubtype)));
 }
 
 export function MFCalculateBitmapImageSize(
@@ -16486,7 +16791,7 @@ export function MFCalculateBitmapImageSize(
   pcbImageSize: Deno.PointerValue | Uint8Array | null /* ptr */,
   pbKnown: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libMFPlat.MFCalculateBitmapImageSize(util.toPointer(pBMIH), cbBufSize, util.toPointer(pcbImageSize), util.toPointer(pbKnown)));
+  return util.pointerFromFfi(libMFPlat_dll.MFCalculateBitmapImageSize(util.toPointer(pBMIH), cbBufSize, util.toPointer(pcbImageSize), util.toPointer(pbKnown)));
 }
 
 export function MFCalculateImageSize(
@@ -16495,7 +16800,7 @@ export function MFCalculateImageSize(
   unHeight: number /* u32 */,
   pcbImageSize: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libMFPlat.MFCalculateImageSize(util.toPointer(guidSubtype), unWidth, unHeight, util.toPointer(pcbImageSize)));
+  return util.pointerFromFfi(libMFPlat_dll.MFCalculateImageSize(util.toPointer(guidSubtype), unWidth, unHeight, util.toPointer(pcbImageSize)));
 }
 
 export function MFFrameRateToAverageTimePerFrame(
@@ -16503,7 +16808,7 @@ export function MFFrameRateToAverageTimePerFrame(
   unDenominator: number /* u32 */,
   punAverageTimePerFrame: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libMFPlat.MFFrameRateToAverageTimePerFrame(unNumerator, unDenominator, util.toPointer(punAverageTimePerFrame)));
+  return util.pointerFromFfi(libMFPlat_dll.MFFrameRateToAverageTimePerFrame(unNumerator, unDenominator, util.toPointer(punAverageTimePerFrame)));
 }
 
 export function MFAverageTimePerFrameToFrameRate(
@@ -16511,7 +16816,7 @@ export function MFAverageTimePerFrameToFrameRate(
   punNumerator: Deno.PointerValue | Uint8Array | null /* ptr */,
   punDenominator: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libMFPlat.MFAverageTimePerFrameToFrameRate(unAverageTimePerFrame, util.toPointer(punNumerator), util.toPointer(punDenominator)));
+  return util.pointerFromFfi(libMFPlat_dll.MFAverageTimePerFrameToFrameRate(unAverageTimePerFrame, util.toPointer(punNumerator), util.toPointer(punDenominator)));
 }
 
 export function MFInitMediaTypeFromMFVideoFormat(
@@ -16519,7 +16824,7 @@ export function MFInitMediaTypeFromMFVideoFormat(
   pMFVF: Deno.PointerValue | Uint8Array | null /* ptr */,
   cbBufSize: number /* u32 */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libMFPlat.MFInitMediaTypeFromMFVideoFormat(util.toPointer(pMFType), util.toPointer(pMFVF), cbBufSize));
+  return util.pointerFromFfi(libMFPlat_dll.MFInitMediaTypeFromMFVideoFormat(util.toPointer(pMFType), util.toPointer(pMFVF), cbBufSize));
 }
 
 export function MFInitMediaTypeFromWaveFormatEx(
@@ -16527,14 +16832,14 @@ export function MFInitMediaTypeFromWaveFormatEx(
   pWaveFormat: Deno.PointerValue | Uint8Array | null /* ptr */,
   cbBufSize: number /* u32 */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libMFPlat.MFInitMediaTypeFromWaveFormatEx(util.toPointer(pMFType), util.toPointer(pWaveFormat), cbBufSize));
+  return util.pointerFromFfi(libMFPlat_dll.MFInitMediaTypeFromWaveFormatEx(util.toPointer(pMFType), util.toPointer(pWaveFormat), cbBufSize));
 }
 
 export function MFInitMediaTypeFromAMMediaType(
   pMFType: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Media.MediaFoundation.IMFMediaType */,
   pAMType: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libMFPlat.MFInitMediaTypeFromAMMediaType(util.toPointer(pMFType), util.toPointer(pAMType)));
+  return util.pointerFromFfi(libMFPlat_dll.MFInitMediaTypeFromAMMediaType(util.toPointer(pMFType), util.toPointer(pAMType)));
 }
 
 export function MFInitAMMediaTypeFromMFMediaType(
@@ -16542,7 +16847,7 @@ export function MFInitAMMediaTypeFromMFMediaType(
   guidFormatBlockType: Uint8Array | Deno.PointerValue | null /* System.Guid */,
   pAMType: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libMFPlat.MFInitAMMediaTypeFromMFMediaType(util.toPointer(pMFType), util.toPointer(guidFormatBlockType), util.toPointer(pAMType)));
+  return util.pointerFromFfi(libMFPlat_dll.MFInitAMMediaTypeFromMFMediaType(util.toPointer(pMFType), util.toPointer(guidFormatBlockType), util.toPointer(pAMType)));
 }
 
 export function MFCreateAMMediaTypeFromMFMediaType(
@@ -16550,14 +16855,14 @@ export function MFCreateAMMediaTypeFromMFMediaType(
   guidFormatBlockType: Uint8Array | Deno.PointerValue | null /* System.Guid */,
   ppAMType: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libMFPlat.MFCreateAMMediaTypeFromMFMediaType(util.toPointer(pMFType), util.toPointer(guidFormatBlockType), util.toPointer(ppAMType)));
+  return util.pointerFromFfi(libMFPlat_dll.MFCreateAMMediaTypeFromMFMediaType(util.toPointer(pMFType), util.toPointer(guidFormatBlockType), util.toPointer(ppAMType)));
 }
 
 export function MFCompareFullToPartialMediaType(
   pMFTypeFull: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Media.MediaFoundation.IMFMediaType */,
   pMFTypePartial: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Media.MediaFoundation.IMFMediaType */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libMFPlat.MFCompareFullToPartialMediaType(util.toPointer(pMFTypeFull), util.toPointer(pMFTypePartial)));
+  return util.boolFromFfi(libMFPlat_dll.MFCompareFullToPartialMediaType(util.toPointer(pMFTypeFull), util.toPointer(pMFTypePartial)));
 }
 
 export function MFWrapMediaType(
@@ -16566,34 +16871,34 @@ export function MFWrapMediaType(
   SubType: Deno.PointerValue | Uint8Array | null /* ptr */,
   ppWrap: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libMFPlat.MFWrapMediaType(util.toPointer(pOrig), util.toPointer(MajorType), util.toPointer(SubType), util.toPointer(ppWrap)));
+  return util.pointerFromFfi(libMFPlat_dll.MFWrapMediaType(util.toPointer(pOrig), util.toPointer(MajorType), util.toPointer(SubType), util.toPointer(ppWrap)));
 }
 
 export function MFUnwrapMediaType(
   pWrap: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Media.MediaFoundation.IMFMediaType */,
   ppOrig: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libMFPlat.MFUnwrapMediaType(util.toPointer(pWrap), util.toPointer(ppOrig)));
+  return util.pointerFromFfi(libMFPlat_dll.MFUnwrapMediaType(util.toPointer(pWrap), util.toPointer(ppOrig)));
 }
 
 export function MFCreateVideoMediaType(
   pVideoFormat: Deno.PointerValue | Uint8Array | null /* ptr */,
   ppIVideoMediaType: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libMFPlat.MFCreateVideoMediaType(util.toPointer(pVideoFormat), util.toPointer(ppIVideoMediaType)));
+  return util.pointerFromFfi(libMFPlat_dll.MFCreateVideoMediaType(util.toPointer(pVideoFormat), util.toPointer(ppIVideoMediaType)));
 }
 
 export function MFCreateVideoMediaTypeFromSubtype(
   pAMSubtype: Deno.PointerValue | Uint8Array | null /* ptr */,
   ppIVideoMediaType: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libMFPlat.MFCreateVideoMediaTypeFromSubtype(util.toPointer(pAMSubtype), util.toPointer(ppIVideoMediaType)));
+  return util.pointerFromFfi(libMFPlat_dll.MFCreateVideoMediaTypeFromSubtype(util.toPointer(pAMSubtype), util.toPointer(ppIVideoMediaType)));
 }
 
 export function MFIsFormatYUV(
   Format: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libEVR.MFIsFormatYUV(Format));
+  return util.boolFromFfi(libEVR_dll.MFIsFormatYUV(Format));
 }
 
 export function MFCreateVideoMediaTypeFromBitMapInfoHeader(
@@ -16607,7 +16912,7 @@ export function MFCreateVideoMediaTypeFromBitMapInfoHeader(
   dwMaxBitRate: number /* u32 */,
   ppIVideoMediaType: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libMFPlat.MFCreateVideoMediaTypeFromBitMapInfoHeader(util.toPointer(pbmihBitMapInfoHeader), dwPixelAspectRatioX, dwPixelAspectRatioY, InterlaceMode, VideoFlags, qwFramesPerSecondNumerator, qwFramesPerSecondDenominator, dwMaxBitRate, util.toPointer(ppIVideoMediaType)));
+  return util.pointerFromFfi(libMFPlat_dll.MFCreateVideoMediaTypeFromBitMapInfoHeader(util.toPointer(pbmihBitMapInfoHeader), dwPixelAspectRatioX, dwPixelAspectRatioY, InterlaceMode, VideoFlags, qwFramesPerSecondNumerator, qwFramesPerSecondDenominator, dwMaxBitRate, util.toPointer(ppIVideoMediaType)));
 }
 
 export function MFGetStrideForBitmapInfoHeader(
@@ -16615,7 +16920,7 @@ export function MFGetStrideForBitmapInfoHeader(
   dwWidth: number /* u32 */,
   pStride: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libMFPlat.MFGetStrideForBitmapInfoHeader(format, dwWidth, util.toPointer(pStride)));
+  return util.pointerFromFfi(libMFPlat_dll.MFGetStrideForBitmapInfoHeader(format, dwWidth, util.toPointer(pStride)));
 }
 
 export function MFGetPlaneSize(
@@ -16624,7 +16929,7 @@ export function MFGetPlaneSize(
   dwHeight: number /* u32 */,
   pdwPlaneSize: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libEVR.MFGetPlaneSize(format, dwWidth, dwHeight, util.toPointer(pdwPlaneSize)));
+  return util.pointerFromFfi(libEVR_dll.MFGetPlaneSize(format, dwWidth, dwHeight, util.toPointer(pdwPlaneSize)));
 }
 
 export function MFCreateVideoMediaTypeFromBitMapInfoHeaderEx(
@@ -16639,7 +16944,7 @@ export function MFCreateVideoMediaTypeFromBitMapInfoHeaderEx(
   dwMaxBitRate: number /* u32 */,
   ppIVideoMediaType: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libMFPlat.MFCreateVideoMediaTypeFromBitMapInfoHeaderEx(util.toPointer(pbmihBitMapInfoHeader), cbBitMapInfoHeader, dwPixelAspectRatioX, dwPixelAspectRatioY, InterlaceMode, VideoFlags, dwFramesPerSecondNumerator, dwFramesPerSecondDenominator, dwMaxBitRate, util.toPointer(ppIVideoMediaType)));
+  return util.pointerFromFfi(libMFPlat_dll.MFCreateVideoMediaTypeFromBitMapInfoHeaderEx(util.toPointer(pbmihBitMapInfoHeader), cbBitMapInfoHeader, dwPixelAspectRatioX, dwPixelAspectRatioY, InterlaceMode, VideoFlags, dwFramesPerSecondNumerator, dwFramesPerSecondDenominator, dwMaxBitRate, util.toPointer(ppIVideoMediaType)));
 }
 
 export function MFCreateMediaTypeFromRepresentation(
@@ -16647,27 +16952,27 @@ export function MFCreateMediaTypeFromRepresentation(
   pvRepresentation: Deno.PointerValue | Uint8Array | null /* ptr */,
   ppIMediaType: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libMFPlat.MFCreateMediaTypeFromRepresentation(util.toPointer(guidRepresentation), util.toPointer(pvRepresentation), util.toPointer(ppIMediaType)));
+  return util.pointerFromFfi(libMFPlat_dll.MFCreateMediaTypeFromRepresentation(util.toPointer(guidRepresentation), util.toPointer(pvRepresentation), util.toPointer(ppIMediaType)));
 }
 
 export function MFCreateAudioMediaType(
   pAudioFormat: Deno.PointerValue | Uint8Array | null /* ptr */,
   ppIAudioMediaType: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libMFPlat.MFCreateAudioMediaType(util.toPointer(pAudioFormat), util.toPointer(ppIAudioMediaType)));
+  return util.pointerFromFfi(libMFPlat_dll.MFCreateAudioMediaType(util.toPointer(pAudioFormat), util.toPointer(ppIAudioMediaType)));
 }
 
 export function MFGetUncompressedVideoFormat(
   pVideoFormat: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libMFPlat.MFGetUncompressedVideoFormat(util.toPointer(pVideoFormat));
+  return libMFPlat_dll.MFGetUncompressedVideoFormat(util.toPointer(pVideoFormat));
 }
 
 export function MFInitVideoFormat(
   pVideoFormat: Deno.PointerValue | Uint8Array | null /* ptr */,
   type: MFStandardVideoFormat /* Windows.Win32.Media.MediaFoundation.MFStandardVideoFormat */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libMFPlat.MFInitVideoFormat(util.toPointer(pVideoFormat), type));
+  return util.pointerFromFfi(libMFPlat_dll.MFInitVideoFormat(util.toPointer(pVideoFormat), type));
 }
 
 export function MFInitVideoFormat_RGB(
@@ -16676,21 +16981,21 @@ export function MFInitVideoFormat_RGB(
   dwHeight: number /* u32 */,
   D3Dfmt: number /* u32 */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libMFPlat.MFInitVideoFormat_RGB(util.toPointer(pVideoFormat), dwWidth, dwHeight, D3Dfmt));
+  return util.pointerFromFfi(libMFPlat_dll.MFInitVideoFormat_RGB(util.toPointer(pVideoFormat), dwWidth, dwHeight, D3Dfmt));
 }
 
 export function MFConvertColorInfoToDXVA(
   pdwToDXVA: Deno.PointerValue | Uint8Array | null /* ptr */,
   pFromFormat: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libMFPlat.MFConvertColorInfoToDXVA(util.toPointer(pdwToDXVA), util.toPointer(pFromFormat)));
+  return util.pointerFromFfi(libMFPlat_dll.MFConvertColorInfoToDXVA(util.toPointer(pdwToDXVA), util.toPointer(pFromFormat)));
 }
 
 export function MFConvertColorInfoFromDXVA(
   pToFormat: Deno.PointerValue | Uint8Array | null /* ptr */,
   dwFromDXVA: number /* u32 */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libMFPlat.MFConvertColorInfoFromDXVA(util.toPointer(pToFormat), dwFromDXVA));
+  return util.pointerFromFfi(libMFPlat_dll.MFConvertColorInfoFromDXVA(util.toPointer(pToFormat), dwFromDXVA));
 }
 
 export function MFCopyImage(
@@ -16701,7 +17006,7 @@ export function MFCopyImage(
   dwWidthInBytes: number /* u32 */,
   dwLines: number /* u32 */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libMFPlat.MFCopyImage(util.toPointer(pDest), lDestStride, util.toPointer(pSrc), lSrcStride, dwWidthInBytes, dwLines));
+  return util.pointerFromFfi(libMFPlat_dll.MFCopyImage(util.toPointer(pDest), lDestStride, util.toPointer(pSrc), lSrcStride, dwWidthInBytes, dwLines));
 }
 
 export function MFConvertFromFP16Array(
@@ -16709,7 +17014,7 @@ export function MFConvertFromFP16Array(
   pSrc: Deno.PointerValue | Uint8Array | null /* ptr */,
   dwCount: number /* u32 */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libMFPlat.MFConvertFromFP16Array(util.toPointer(pDest), util.toPointer(pSrc), dwCount));
+  return util.pointerFromFfi(libMFPlat_dll.MFConvertFromFP16Array(util.toPointer(pDest), util.toPointer(pSrc), dwCount));
 }
 
 export function MFConvertToFP16Array(
@@ -16717,7 +17022,7 @@ export function MFConvertToFP16Array(
   pSrc: Deno.PointerValue | Uint8Array | null /* ptr */,
   dwCount: number /* u32 */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libMFPlat.MFConvertToFP16Array(util.toPointer(pDest), util.toPointer(pSrc), dwCount));
+  return util.pointerFromFfi(libMFPlat_dll.MFConvertToFP16Array(util.toPointer(pDest), util.toPointer(pSrc), dwCount));
 }
 
 export function MFCreate2DMediaBuffer(
@@ -16727,7 +17032,7 @@ export function MFCreate2DMediaBuffer(
   fBottomUp: boolean /* Windows.Win32.Foundation.BOOL */,
   ppBuffer: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libMFPlat.MFCreate2DMediaBuffer(dwWidth, dwHeight, dwFourCC, util.boolToFfi(fBottomUp), util.toPointer(ppBuffer)));
+  return util.pointerFromFfi(libMFPlat_dll.MFCreate2DMediaBuffer(dwWidth, dwHeight, dwFourCC, util.boolToFfi(fBottomUp), util.toPointer(ppBuffer)));
 }
 
 export function MFCreateMediaBufferFromMediaType(
@@ -16737,13 +17042,13 @@ export function MFCreateMediaBufferFromMediaType(
   dwMinAlignment: number /* u32 */,
   ppBuffer: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libMFPlat.MFCreateMediaBufferFromMediaType(util.toPointer(pMediaType), llDuration, dwMinLength, dwMinAlignment, util.toPointer(ppBuffer)));
+  return util.pointerFromFfi(libMFPlat_dll.MFCreateMediaBufferFromMediaType(util.toPointer(pMediaType), llDuration, dwMinLength, dwMinAlignment, util.toPointer(ppBuffer)));
 }
 
 export function MFCreateCollection(
   ppIMFCollection: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libMFPlat.MFCreateCollection(util.toPointer(ppIMFCollection)));
+  return util.pointerFromFfi(libMFPlat_dll.MFCreateCollection(util.toPointer(ppIMFCollection)));
 }
 
 export function MFHeapAlloc(
@@ -16753,13 +17058,13 @@ export function MFHeapAlloc(
   line: number /* i32 */,
   eat: EAllocationType /* Windows.Win32.Media.MediaFoundation.EAllocationType */,
 ): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libMFPlat.MFHeapAlloc(nSize, dwFlags, util.pstrToFfi(pszFile), line, eat));
+  return util.pointerFromFfi(libMFPlat_dll.MFHeapAlloc(nSize, dwFlags, util.pstrToFfi(pszFile), line, eat));
 }
 
 export function MFHeapFree(
   pv: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): void /* void */ {
-  return libMFPlat.MFHeapFree(util.toPointer(pv));
+  return libMFPlat_dll.MFHeapFree(util.toPointer(pv));
 }
 
 export function MFllMulDiv(
@@ -16768,14 +17073,14 @@ export function MFllMulDiv(
   c: Deno.PointerValue /* i64 */,
   d: Deno.PointerValue /* i64 */,
 ): Deno.PointerValue /* i64 */ {
-  return libMFPlat.MFllMulDiv(a, b, c, d);
+  return libMFPlat_dll.MFllMulDiv(a, b, c, d);
 }
 
 export function MFGetContentProtectionSystemCLSID(
   guidProtectionSystemID: Deno.PointerValue | Uint8Array | null /* ptr */,
   pclsid: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libMFPlat.MFGetContentProtectionSystemCLSID(util.toPointer(guidProtectionSystemID), util.toPointer(pclsid)));
+  return util.pointerFromFfi(libMFPlat_dll.MFGetContentProtectionSystemCLSID(util.toPointer(guidProtectionSystemID), util.toPointer(pclsid)));
 }
 
 export function MFCombineSamples(
@@ -16784,7 +17089,7 @@ export function MFCombineSamples(
   dwMaxMergedDurationInMS: number /* u32 */,
   pMerged: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libMFPlat.MFCombineSamples(util.toPointer(pSample), util.toPointer(pSampleToAdd), dwMaxMergedDurationInMS, util.toPointer(pMerged)));
+  return util.pointerFromFfi(libMFPlat_dll.MFCombineSamples(util.toPointer(pSample), util.toPointer(pSampleToAdd), dwMaxMergedDurationInMS, util.toPointer(pMerged)));
 }
 
 export function MFSplitSample(
@@ -16793,7 +17098,7 @@ export function MFSplitSample(
   dwOutputSampleMaxCount: number /* u32 */,
   pdwOutputSampleCount: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libMFPlat.MFSplitSample(util.toPointer(pSample), util.toPointer(pOutputSamples), dwOutputSampleMaxCount, util.toPointer(pdwOutputSampleCount)));
+  return util.pointerFromFfi(libMFPlat_dll.MFSplitSample(util.toPointer(pSample), util.toPointer(pOutputSamples), dwOutputSampleMaxCount, util.toPointer(pdwOutputSampleCount)));
 }
 
 export function MFCreateSourceReaderFromURL(
@@ -16801,7 +17106,7 @@ export function MFCreateSourceReaderFromURL(
   pAttributes: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Media.MediaFoundation.IMFAttributes */,
   ppSourceReader: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libMFReadWrite.MFCreateSourceReaderFromURL(util.pwstrToFfi(pwszURL), util.toPointer(pAttributes), util.toPointer(ppSourceReader)));
+  return util.pointerFromFfi(libMFReadWrite_dll.MFCreateSourceReaderFromURL(util.pwstrToFfi(pwszURL), util.toPointer(pAttributes), util.toPointer(ppSourceReader)));
 }
 
 export function MFCreateSourceReaderFromByteStream(
@@ -16809,7 +17114,7 @@ export function MFCreateSourceReaderFromByteStream(
   pAttributes: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Media.MediaFoundation.IMFAttributes */,
   ppSourceReader: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libMFReadWrite.MFCreateSourceReaderFromByteStream(util.toPointer(pByteStream), util.toPointer(pAttributes), util.toPointer(ppSourceReader)));
+  return util.pointerFromFfi(libMFReadWrite_dll.MFCreateSourceReaderFromByteStream(util.toPointer(pByteStream), util.toPointer(pAttributes), util.toPointer(ppSourceReader)));
 }
 
 export function MFCreateSourceReaderFromMediaSource(
@@ -16817,7 +17122,7 @@ export function MFCreateSourceReaderFromMediaSource(
   pAttributes: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Media.MediaFoundation.IMFAttributes */,
   ppSourceReader: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libMFReadWrite.MFCreateSourceReaderFromMediaSource(util.toPointer(pMediaSource), util.toPointer(pAttributes), util.toPointer(ppSourceReader)));
+  return util.pointerFromFfi(libMFReadWrite_dll.MFCreateSourceReaderFromMediaSource(util.toPointer(pMediaSource), util.toPointer(pAttributes), util.toPointer(ppSourceReader)));
 }
 
 export function MFCreateSinkWriterFromURL(
@@ -16826,7 +17131,7 @@ export function MFCreateSinkWriterFromURL(
   pAttributes: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Media.MediaFoundation.IMFAttributes */,
   ppSinkWriter: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libMFReadWrite.MFCreateSinkWriterFromURL(util.pwstrToFfi(pwszOutputURL), util.toPointer(pByteStream), util.toPointer(pAttributes), util.toPointer(ppSinkWriter)));
+  return util.pointerFromFfi(libMFReadWrite_dll.MFCreateSinkWriterFromURL(util.pwstrToFfi(pwszOutputURL), util.toPointer(pByteStream), util.toPointer(pAttributes), util.toPointer(ppSinkWriter)));
 }
 
 export function MFCreateSinkWriterFromMediaSink(
@@ -16834,7 +17139,7 @@ export function MFCreateSinkWriterFromMediaSink(
   pAttributes: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Media.MediaFoundation.IMFAttributes */,
   ppSinkWriter: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libMFReadWrite.MFCreateSinkWriterFromMediaSink(util.toPointer(pMediaSink), util.toPointer(pAttributes), util.toPointer(ppSinkWriter)));
+  return util.pointerFromFfi(libMFReadWrite_dll.MFCreateSinkWriterFromMediaSink(util.toPointer(pMediaSink), util.toPointer(pAttributes), util.toPointer(ppSinkWriter)));
 }
 
 export function MFCreateVideoPresenter(
@@ -16843,7 +17148,7 @@ export function MFCreateVideoPresenter(
   riid: Deno.PointerValue | Uint8Array | null /* ptr */,
   ppVideoPresenter: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libEVR.MFCreateVideoPresenter(util.toPointer(pOwner), util.toPointer(riidDevice), util.toPointer(riid), util.toPointer(ppVideoPresenter)));
+  return util.pointerFromFfi(libEVR_dll.MFCreateVideoPresenter(util.toPointer(pOwner), util.toPointer(riidDevice), util.toPointer(riid), util.toPointer(ppVideoPresenter)));
 }
 
 export function MFCreateVideoMixer(
@@ -16852,7 +17157,7 @@ export function MFCreateVideoMixer(
   riid: Deno.PointerValue | Uint8Array | null /* ptr */,
   ppv: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libEVR.MFCreateVideoMixer(util.toPointer(pOwner), util.toPointer(riidDevice), util.toPointer(riid), util.toPointer(ppv)));
+  return util.pointerFromFfi(libEVR_dll.MFCreateVideoMixer(util.toPointer(pOwner), util.toPointer(riidDevice), util.toPointer(riid), util.toPointer(ppv)));
 }
 
 export function MFCreateVideoMixerAndPresenter(
@@ -16863,28 +17168,28 @@ export function MFCreateVideoMixerAndPresenter(
   riidPresenter: Deno.PointerValue | Uint8Array | null /* ptr */,
   ppvVideoPresenter: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libEVR.MFCreateVideoMixerAndPresenter(util.toPointer(pMixerOwner), util.toPointer(pPresenterOwner), util.toPointer(riidMixer), util.toPointer(ppvVideoMixer), util.toPointer(riidPresenter), util.toPointer(ppvVideoPresenter)));
+  return util.pointerFromFfi(libEVR_dll.MFCreateVideoMixerAndPresenter(util.toPointer(pMixerOwner), util.toPointer(pPresenterOwner), util.toPointer(riidMixer), util.toPointer(ppvVideoMixer), util.toPointer(riidPresenter), util.toPointer(ppvVideoPresenter)));
 }
 
 export function MFCreateVideoRenderer(
   riidRenderer: Deno.PointerValue | Uint8Array | null /* ptr */,
   ppVideoRenderer: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libMF.MFCreateVideoRenderer(util.toPointer(riidRenderer), util.toPointer(ppVideoRenderer)));
+  return util.pointerFromFfi(libMF_dll.MFCreateVideoRenderer(util.toPointer(riidRenderer), util.toPointer(ppVideoRenderer)));
 }
 
 export function MFCreateVideoSampleFromSurface(
   pUnkSurface: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Com.IUnknown */,
   ppSample: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libEVR.MFCreateVideoSampleFromSurface(util.toPointer(pUnkSurface), util.toPointer(ppSample)));
+  return util.pointerFromFfi(libEVR_dll.MFCreateVideoSampleFromSurface(util.toPointer(pUnkSurface), util.toPointer(ppSample)));
 }
 
 export function MFCreateVideoSampleAllocator(
   riid: Deno.PointerValue | Uint8Array | null /* ptr */,
   ppSampleAllocator: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libEVR.MFCreateVideoSampleAllocator(util.toPointer(riid), util.toPointer(ppSampleAllocator)));
+  return util.pointerFromFfi(libEVR_dll.MFCreateVideoSampleAllocator(util.toPointer(riid), util.toPointer(ppSampleAllocator)));
 }
 
 export function MFPCreateMediaPlayer(
@@ -16895,7 +17200,7 @@ export function MFPCreateMediaPlayer(
   hWnd: Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */,
   ppMediaPlayer: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libMFPlay.MFPCreateMediaPlayer(util.pwstrToFfi(pwszURL), util.boolToFfi(fStartPlayback), creationOptions, util.toPointer(pCallback), util.hwndToFfi(hWnd), util.toPointer(ppMediaPlayer)));
+  return util.pointerFromFfi(libMFPlay_dll.MFPCreateMediaPlayer(util.pwstrToFfi(pwszURL), util.boolToFfi(fStartPlayback), creationOptions, util.toPointer(pCallback), util.hwndToFfi(hWnd), util.toPointer(ppMediaPlayer)));
 }
 
 export function MFCreateEncryptedMediaExtensionsStoreActivate(
@@ -16904,45 +17209,45 @@ export function MFCreateEncryptedMediaExtensionsStoreActivate(
   classId: string | null /* Windows.Win32.Foundation.PWSTR */,
   activate: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libMF.MFCreateEncryptedMediaExtensionsStoreActivate(util.toPointer(pmpHost), util.toPointer(objectStream), util.pwstrToFfi(classId), util.toPointer(activate)));
+  return util.pointerFromFfi(libMF_dll.MFCreateEncryptedMediaExtensionsStoreActivate(util.toPointer(pmpHost), util.toPointer(objectStream), util.pwstrToFfi(classId), util.toPointer(activate)));
 }
 
 export function MFCreateVirtualCamera(
-  type: __MIDL___MIDL_itf_mfvirtualcamera_0000_0000_0001 /* Windows.Win32.Media.MediaFoundation.__MIDL___MIDL_itf_mfvirtualcamera_0000_0000_0001 */,
-  lifetime: __MIDL___MIDL_itf_mfvirtualcamera_0000_0000_0002 /* Windows.Win32.Media.MediaFoundation.__MIDL___MIDL_itf_mfvirtualcamera_0000_0000_0002 */,
-  access: __MIDL___MIDL_itf_mfvirtualcamera_0000_0000_0003 /* Windows.Win32.Media.MediaFoundation.__MIDL___MIDL_itf_mfvirtualcamera_0000_0000_0003 */,
+  type: MFVirtualCameraType /* Windows.Win32.Media.MediaFoundation.MFVirtualCameraType */,
+  lifetime: MFVirtualCameraLifetime /* Windows.Win32.Media.MediaFoundation.MFVirtualCameraLifetime */,
+  access: MFVirtualCameraAccess /* Windows.Win32.Media.MediaFoundation.MFVirtualCameraAccess */,
   friendlyName: string | null /* Windows.Win32.Foundation.PWSTR */,
   sourceId: string | null /* Windows.Win32.Foundation.PWSTR */,
   categories: Deno.PointerValue | Uint8Array | null /* ptr */,
   categoryCount: number /* u32 */,
   virtualCamera: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libMFSENSORGROUP.MFCreateVirtualCamera(type, lifetime, access, util.pwstrToFfi(friendlyName), util.pwstrToFfi(sourceId), util.toPointer(categories), categoryCount, util.toPointer(virtualCamera)));
+  return util.pointerFromFfi(libMFSENSORGROUP_dll.MFCreateVirtualCamera(type, lifetime, access, util.pwstrToFfi(friendlyName), util.pwstrToFfi(sourceId), util.toPointer(categories), categoryCount, util.toPointer(virtualCamera)));
 }
 
 export function MFIsVirtualCameraTypeSupported(
-  type: __MIDL___MIDL_itf_mfvirtualcamera_0000_0000_0001 /* Windows.Win32.Media.MediaFoundation.__MIDL___MIDL_itf_mfvirtualcamera_0000_0000_0001 */,
+  type: MFVirtualCameraType /* Windows.Win32.Media.MediaFoundation.MFVirtualCameraType */,
   supported: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libMFSENSORGROUP.MFIsVirtualCameraTypeSupported(type, util.toPointer(supported)));
+  return util.pointerFromFfi(libMFSENSORGROUP_dll.MFIsVirtualCameraTypeSupported(type, util.toPointer(supported)));
 }
 
 export function OPMXboxEnableHDCP(
   HDCPType: OPM_HDCP_TYPE /* Windows.Win32.Media.MediaFoundation.OPM_HDCP_TYPE */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libOPMXbox.OPMXboxEnableHDCP(HDCPType));
+  return util.pointerFromFfi(libOPMXbox_dll.OPMXboxEnableHDCP(HDCPType));
 }
 
 export function OPMXboxGetHDCPStatus(
   pHDCPStatus: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libOPMXbox.OPMXboxGetHDCPStatus(util.toPointer(pHDCPStatus)));
+  return util.pointerFromFfi(libOPMXbox_dll.OPMXboxGetHDCPStatus(util.toPointer(pHDCPStatus)));
 }
 
 export function OPMXboxGetHDCPStatusAndType(
   pHDCPStatus: Deno.PointerValue | Uint8Array | null /* ptr */,
   pHDCPType: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libOPMXbox.OPMXboxGetHDCPStatusAndType(util.toPointer(pHDCPStatus), util.toPointer(pHDCPType)));
+  return util.pointerFromFfi(libOPMXbox_dll.OPMXboxGetHDCPStatusAndType(util.toPointer(pHDCPStatus), util.toPointer(pHDCPType)));
 }
 

@@ -307,6 +307,21 @@ export const D3D10_SDK_LAYERS_VERSION = 11;
 export const D3D10_DEBUG_FEATURE_FLUSH_PER_RENDER_OP = 1;
 export const D3D10_DEBUG_FEATURE_FINISH_PER_RENDER_OP = 2;
 export const D3D10_DEBUG_FEATURE_PRESENT_PER_RENDER_OP = 4;
+export const D3D10_REGKEY_PATH = "Software\Microsoft\Direct3D";
+export const D3D10_MUTE_DEBUG_OUTPUT = "MuteDebugOutput";
+export const D3D10_ENABLE_BREAK_ON_MESSAGE = "EnableBreakOnMessage";
+export const D3D10_INFOQUEUE_STORAGE_FILTER_OVERRIDE = "InfoQueueStorageFilterOverride";
+export const D3D10_MUTE_CATEGORY = "Mute_CATEGORY_%s";
+export const D3D10_MUTE_SEVERITY = "Mute_SEVERITY_%s";
+export const D3D10_MUTE_ID_STRING = "Mute_ID_%s";
+export const D3D10_MUTE_ID_DECIMAL = "Mute_ID_%d";
+export const D3D10_UNMUTE_SEVERITY_INFO = "Unmute_SEVERITY_INFO";
+export const D3D10_BREAKON_CATEGORY = "BreakOn_CATEGORY_%s";
+export const D3D10_BREAKON_SEVERITY = "BreakOn_SEVERITY_%s";
+export const D3D10_BREAKON_ID_STRING = "BreakOn_ID_%s";
+export const D3D10_BREAKON_ID_DECIMAL = "BreakOn_ID_%d";
+export const D3D10_APPSIZE_STRING = "Size";
+export const D3D10_APPNAME_STRING = "Name";
 export const D3D10_INFO_QUEUE_DEFAULT_MESSAGE_COUNT_LIMIT = 1024;
 export const D3D10_SHADER_DEBUG = 1;
 export const D3D10_SHADER_SKIP_VALIDATION = 2;
@@ -4670,7 +4685,7 @@ export type HRESULT = number;
 // Native Libraries
 
 try {
-  var libd3d10 = Deno.dlopen("d3d10", {
+  var libd3d10_dll = Deno.dlopen("d3d10.dll", {
     D3D10CreateDevice: {
       parameters: ["pointer", "i32", "pointer", "u32", "u32", "pointer"],
       result: "pointer",
@@ -4783,7 +4798,7 @@ try {
 } catch(e) { /* ignore */ }
 
 try {
-  var libd3d10_1 = Deno.dlopen("d3d10_1", {
+  var libd3d10_1_dll = Deno.dlopen("d3d10_1.dll", {
     D3D10CreateDevice1: {
       parameters: ["pointer", "i32", "pointer", "u32", "i32", "u32", "pointer"],
       result: "pointer",
@@ -4805,7 +4820,7 @@ export function D3D10CreateDevice(
   SDKVersion: number /* u32 */,
   ppDevice: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libd3d10.D3D10CreateDevice(util.toPointer(pAdapter), DriverType, util.toPointer(Software), Flags, SDKVersion, util.toPointer(ppDevice)));
+  return util.pointerFromFfi(libd3d10_dll.D3D10CreateDevice(util.toPointer(pAdapter), DriverType, util.toPointer(Software), Flags, SDKVersion, util.toPointer(ppDevice)));
 }
 
 export function D3D10CreateDeviceAndSwapChain(
@@ -4818,14 +4833,14 @@ export function D3D10CreateDeviceAndSwapChain(
   ppSwapChain: Deno.PointerValue | Uint8Array | null /* ptr */,
   ppDevice: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libd3d10.D3D10CreateDeviceAndSwapChain(util.toPointer(pAdapter), DriverType, util.toPointer(Software), Flags, SDKVersion, util.toPointer(pSwapChainDesc), util.toPointer(ppSwapChain), util.toPointer(ppDevice)));
+  return util.pointerFromFfi(libd3d10_dll.D3D10CreateDeviceAndSwapChain(util.toPointer(pAdapter), DriverType, util.toPointer(Software), Flags, SDKVersion, util.toPointer(pSwapChainDesc), util.toPointer(ppSwapChain), util.toPointer(ppDevice)));
 }
 
 export function D3D10CreateBlob(
   NumBytes: Deno.PointerValue /* usize */,
   ppBuffer: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libd3d10.D3D10CreateBlob(NumBytes, util.toPointer(ppBuffer)));
+  return util.pointerFromFfi(libd3d10_dll.D3D10CreateBlob(NumBytes, util.toPointer(ppBuffer)));
 }
 
 export function D3D10CompileShader(
@@ -4840,7 +4855,7 @@ export function D3D10CompileShader(
   ppShader: Deno.PointerValue | Uint8Array | null /* ptr */,
   ppErrorMsgs: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libd3d10.D3D10CompileShader(util.pstrToFfi(pSrcData), SrcDataSize, util.pstrToFfi(pFileName), util.toPointer(pDefines), util.toPointer(pInclude), util.pstrToFfi(pFunctionName), util.pstrToFfi(pProfile), Flags, util.toPointer(ppShader), util.toPointer(ppErrorMsgs)));
+  return util.pointerFromFfi(libd3d10_dll.D3D10CompileShader(util.pstrToFfi(pSrcData), SrcDataSize, util.pstrToFfi(pFileName), util.toPointer(pDefines), util.toPointer(pInclude), util.pstrToFfi(pFunctionName), util.pstrToFfi(pProfile), Flags, util.toPointer(ppShader), util.toPointer(ppErrorMsgs)));
 }
 
 export function D3D10DisassembleShader(
@@ -4850,25 +4865,25 @@ export function D3D10DisassembleShader(
   pComments: string | null /* Windows.Win32.Foundation.PSTR */,
   ppDisassembly: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libd3d10.D3D10DisassembleShader(util.toPointer(pShader), BytecodeLength, util.boolToFfi(EnableColorCode), util.pstrToFfi(pComments), util.toPointer(ppDisassembly)));
+  return util.pointerFromFfi(libd3d10_dll.D3D10DisassembleShader(util.toPointer(pShader), BytecodeLength, util.boolToFfi(EnableColorCode), util.pstrToFfi(pComments), util.toPointer(ppDisassembly)));
 }
 
 export function D3D10GetPixelShaderProfile(
   pDevice: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Graphics.Direct3D10.ID3D10Device */,
 ): string | null /* Windows.Win32.Foundation.PSTR */ {
-  return util.pstrFromFfi(libd3d10.D3D10GetPixelShaderProfile(util.toPointer(pDevice)));
+  return util.pstrFromFfi(libd3d10_dll.D3D10GetPixelShaderProfile(util.toPointer(pDevice)));
 }
 
 export function D3D10GetVertexShaderProfile(
   pDevice: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Graphics.Direct3D10.ID3D10Device */,
 ): string | null /* Windows.Win32.Foundation.PSTR */ {
-  return util.pstrFromFfi(libd3d10.D3D10GetVertexShaderProfile(util.toPointer(pDevice)));
+  return util.pstrFromFfi(libd3d10_dll.D3D10GetVertexShaderProfile(util.toPointer(pDevice)));
 }
 
 export function D3D10GetGeometryShaderProfile(
   pDevice: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Graphics.Direct3D10.ID3D10Device */,
 ): string | null /* Windows.Win32.Foundation.PSTR */ {
-  return util.pstrFromFfi(libd3d10.D3D10GetGeometryShaderProfile(util.toPointer(pDevice)));
+  return util.pstrFromFfi(libd3d10_dll.D3D10GetGeometryShaderProfile(util.toPointer(pDevice)));
 }
 
 export function D3D10ReflectShader(
@@ -4876,7 +4891,7 @@ export function D3D10ReflectShader(
   BytecodeLength: Deno.PointerValue /* usize */,
   ppReflector: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libd3d10.D3D10ReflectShader(util.toPointer(pShaderBytecode), BytecodeLength, util.toPointer(ppReflector)));
+  return util.pointerFromFfi(libd3d10_dll.D3D10ReflectShader(util.toPointer(pShaderBytecode), BytecodeLength, util.toPointer(ppReflector)));
 }
 
 export function D3D10PreprocessShader(
@@ -4888,7 +4903,7 @@ export function D3D10PreprocessShader(
   ppShaderText: Deno.PointerValue | Uint8Array | null /* ptr */,
   ppErrorMsgs: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libd3d10.D3D10PreprocessShader(util.pstrToFfi(pSrcData), SrcDataSize, util.pstrToFfi(pFileName), util.toPointer(pDefines), util.toPointer(pInclude), util.toPointer(ppShaderText), util.toPointer(ppErrorMsgs)));
+  return util.pointerFromFfi(libd3d10_dll.D3D10PreprocessShader(util.pstrToFfi(pSrcData), SrcDataSize, util.pstrToFfi(pFileName), util.toPointer(pDefines), util.toPointer(pInclude), util.toPointer(ppShaderText), util.toPointer(ppErrorMsgs)));
 }
 
 export function D3D10GetInputSignatureBlob(
@@ -4896,7 +4911,7 @@ export function D3D10GetInputSignatureBlob(
   BytecodeLength: Deno.PointerValue /* usize */,
   ppSignatureBlob: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libd3d10.D3D10GetInputSignatureBlob(util.toPointer(pShaderBytecode), BytecodeLength, util.toPointer(ppSignatureBlob)));
+  return util.pointerFromFfi(libd3d10_dll.D3D10GetInputSignatureBlob(util.toPointer(pShaderBytecode), BytecodeLength, util.toPointer(ppSignatureBlob)));
 }
 
 export function D3D10GetOutputSignatureBlob(
@@ -4904,7 +4919,7 @@ export function D3D10GetOutputSignatureBlob(
   BytecodeLength: Deno.PointerValue /* usize */,
   ppSignatureBlob: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libd3d10.D3D10GetOutputSignatureBlob(util.toPointer(pShaderBytecode), BytecodeLength, util.toPointer(ppSignatureBlob)));
+  return util.pointerFromFfi(libd3d10_dll.D3D10GetOutputSignatureBlob(util.toPointer(pShaderBytecode), BytecodeLength, util.toPointer(ppSignatureBlob)));
 }
 
 export function D3D10GetInputAndOutputSignatureBlob(
@@ -4912,7 +4927,7 @@ export function D3D10GetInputAndOutputSignatureBlob(
   BytecodeLength: Deno.PointerValue /* usize */,
   ppSignatureBlob: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libd3d10.D3D10GetInputAndOutputSignatureBlob(util.toPointer(pShaderBytecode), BytecodeLength, util.toPointer(ppSignatureBlob)));
+  return util.pointerFromFfi(libd3d10_dll.D3D10GetInputAndOutputSignatureBlob(util.toPointer(pShaderBytecode), BytecodeLength, util.toPointer(ppSignatureBlob)));
 }
 
 export function D3D10GetShaderDebugInfo(
@@ -4920,7 +4935,7 @@ export function D3D10GetShaderDebugInfo(
   BytecodeLength: Deno.PointerValue /* usize */,
   ppDebugInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libd3d10.D3D10GetShaderDebugInfo(util.toPointer(pShaderBytecode), BytecodeLength, util.toPointer(ppDebugInfo)));
+  return util.pointerFromFfi(libd3d10_dll.D3D10GetShaderDebugInfo(util.toPointer(pShaderBytecode), BytecodeLength, util.toPointer(ppDebugInfo)));
 }
 
 export function D3D10StateBlockMaskUnion(
@@ -4928,7 +4943,7 @@ export function D3D10StateBlockMaskUnion(
   pB: Deno.PointerValue | Uint8Array | null /* ptr */,
   pResult: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libd3d10.D3D10StateBlockMaskUnion(util.toPointer(pA), util.toPointer(pB), util.toPointer(pResult)));
+  return util.pointerFromFfi(libd3d10_dll.D3D10StateBlockMaskUnion(util.toPointer(pA), util.toPointer(pB), util.toPointer(pResult)));
 }
 
 export function D3D10StateBlockMaskIntersect(
@@ -4936,7 +4951,7 @@ export function D3D10StateBlockMaskIntersect(
   pB: Deno.PointerValue | Uint8Array | null /* ptr */,
   pResult: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libd3d10.D3D10StateBlockMaskIntersect(util.toPointer(pA), util.toPointer(pB), util.toPointer(pResult)));
+  return util.pointerFromFfi(libd3d10_dll.D3D10StateBlockMaskIntersect(util.toPointer(pA), util.toPointer(pB), util.toPointer(pResult)));
 }
 
 export function D3D10StateBlockMaskDifference(
@@ -4944,7 +4959,7 @@ export function D3D10StateBlockMaskDifference(
   pB: Deno.PointerValue | Uint8Array | null /* ptr */,
   pResult: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libd3d10.D3D10StateBlockMaskDifference(util.toPointer(pA), util.toPointer(pB), util.toPointer(pResult)));
+  return util.pointerFromFfi(libd3d10_dll.D3D10StateBlockMaskDifference(util.toPointer(pA), util.toPointer(pB), util.toPointer(pResult)));
 }
 
 export function D3D10StateBlockMaskEnableCapture(
@@ -4953,7 +4968,7 @@ export function D3D10StateBlockMaskEnableCapture(
   RangeStart: number /* u32 */,
   RangeLength: number /* u32 */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libd3d10.D3D10StateBlockMaskEnableCapture(util.toPointer(pMask), StateType, RangeStart, RangeLength));
+  return util.pointerFromFfi(libd3d10_dll.D3D10StateBlockMaskEnableCapture(util.toPointer(pMask), StateType, RangeStart, RangeLength));
 }
 
 export function D3D10StateBlockMaskDisableCapture(
@@ -4962,19 +4977,19 @@ export function D3D10StateBlockMaskDisableCapture(
   RangeStart: number /* u32 */,
   RangeLength: number /* u32 */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libd3d10.D3D10StateBlockMaskDisableCapture(util.toPointer(pMask), StateType, RangeStart, RangeLength));
+  return util.pointerFromFfi(libd3d10_dll.D3D10StateBlockMaskDisableCapture(util.toPointer(pMask), StateType, RangeStart, RangeLength));
 }
 
 export function D3D10StateBlockMaskEnableAll(
   pMask: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libd3d10.D3D10StateBlockMaskEnableAll(util.toPointer(pMask)));
+  return util.pointerFromFfi(libd3d10_dll.D3D10StateBlockMaskEnableAll(util.toPointer(pMask)));
 }
 
 export function D3D10StateBlockMaskDisableAll(
   pMask: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libd3d10.D3D10StateBlockMaskDisableAll(util.toPointer(pMask)));
+  return util.pointerFromFfi(libd3d10_dll.D3D10StateBlockMaskDisableAll(util.toPointer(pMask)));
 }
 
 export function D3D10StateBlockMaskGetSetting(
@@ -4982,7 +4997,7 @@ export function D3D10StateBlockMaskGetSetting(
   StateType: D3D10_DEVICE_STATE_TYPES /* Windows.Win32.Graphics.Direct3D10.D3D10_DEVICE_STATE_TYPES */,
   Entry: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libd3d10.D3D10StateBlockMaskGetSetting(util.toPointer(pMask), StateType, Entry));
+  return util.boolFromFfi(libd3d10_dll.D3D10StateBlockMaskGetSetting(util.toPointer(pMask), StateType, Entry));
 }
 
 export function D3D10CreateStateBlock(
@@ -4990,7 +5005,7 @@ export function D3D10CreateStateBlock(
   pStateBlockMask: Deno.PointerValue | Uint8Array | null /* ptr */,
   ppStateBlock: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libd3d10.D3D10CreateStateBlock(util.toPointer(pDevice), util.toPointer(pStateBlockMask), util.toPointer(ppStateBlock)));
+  return util.pointerFromFfi(libd3d10_dll.D3D10CreateStateBlock(util.toPointer(pDevice), util.toPointer(pStateBlockMask), util.toPointer(ppStateBlock)));
 }
 
 export function D3D10CompileEffectFromMemory(
@@ -5004,7 +5019,7 @@ export function D3D10CompileEffectFromMemory(
   ppCompiledEffect: Deno.PointerValue | Uint8Array | null /* ptr */,
   ppErrors: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libd3d10.D3D10CompileEffectFromMemory(util.toPointer(pData), DataLength, util.pstrToFfi(pSrcFileName), util.toPointer(pDefines), util.toPointer(pInclude), HLSLFlags, FXFlags, util.toPointer(ppCompiledEffect), util.toPointer(ppErrors)));
+  return util.pointerFromFfi(libd3d10_dll.D3D10CompileEffectFromMemory(util.toPointer(pData), DataLength, util.pstrToFfi(pSrcFileName), util.toPointer(pDefines), util.toPointer(pInclude), HLSLFlags, FXFlags, util.toPointer(ppCompiledEffect), util.toPointer(ppErrors)));
 }
 
 export function D3D10CreateEffectFromMemory(
@@ -5015,7 +5030,7 @@ export function D3D10CreateEffectFromMemory(
   pEffectPool: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Graphics.Direct3D10.ID3D10EffectPool */,
   ppEffect: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libd3d10.D3D10CreateEffectFromMemory(util.toPointer(pData), DataLength, FXFlags, util.toPointer(pDevice), util.toPointer(pEffectPool), util.toPointer(ppEffect)));
+  return util.pointerFromFfi(libd3d10_dll.D3D10CreateEffectFromMemory(util.toPointer(pData), DataLength, FXFlags, util.toPointer(pDevice), util.toPointer(pEffectPool), util.toPointer(ppEffect)));
 }
 
 export function D3D10CreateEffectPoolFromMemory(
@@ -5025,7 +5040,7 @@ export function D3D10CreateEffectPoolFromMemory(
   pDevice: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Graphics.Direct3D10.ID3D10Device */,
   ppEffectPool: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libd3d10.D3D10CreateEffectPoolFromMemory(util.toPointer(pData), DataLength, FXFlags, util.toPointer(pDevice), util.toPointer(ppEffectPool)));
+  return util.pointerFromFfi(libd3d10_dll.D3D10CreateEffectPoolFromMemory(util.toPointer(pData), DataLength, FXFlags, util.toPointer(pDevice), util.toPointer(ppEffectPool)));
 }
 
 export function D3D10DisassembleEffect(
@@ -5033,7 +5048,7 @@ export function D3D10DisassembleEffect(
   EnableColorCode: boolean /* Windows.Win32.Foundation.BOOL */,
   ppDisassembly: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libd3d10.D3D10DisassembleEffect(util.toPointer(pEffect), util.boolToFfi(EnableColorCode), util.toPointer(ppDisassembly)));
+  return util.pointerFromFfi(libd3d10_dll.D3D10DisassembleEffect(util.toPointer(pEffect), util.boolToFfi(EnableColorCode), util.toPointer(ppDisassembly)));
 }
 
 export function D3D10CreateDevice1(
@@ -5045,7 +5060,7 @@ export function D3D10CreateDevice1(
   SDKVersion: number /* u32 */,
   ppDevice: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libd3d10_1.D3D10CreateDevice1(util.toPointer(pAdapter), DriverType, util.toPointer(Software), Flags, HardwareLevel, SDKVersion, util.toPointer(ppDevice)));
+  return util.pointerFromFfi(libd3d10_1_dll.D3D10CreateDevice1(util.toPointer(pAdapter), DriverType, util.toPointer(Software), Flags, HardwareLevel, SDKVersion, util.toPointer(ppDevice)));
 }
 
 export function D3D10CreateDeviceAndSwapChain1(
@@ -5059,6 +5074,6 @@ export function D3D10CreateDeviceAndSwapChain1(
   ppSwapChain: Deno.PointerValue | Uint8Array | null /* ptr */,
   ppDevice: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libd3d10_1.D3D10CreateDeviceAndSwapChain1(util.toPointer(pAdapter), DriverType, util.toPointer(Software), Flags, HardwareLevel, SDKVersion, util.toPointer(pSwapChainDesc), util.toPointer(ppSwapChain), util.toPointer(ppDevice)));
+  return util.pointerFromFfi(libd3d10_1_dll.D3D10CreateDeviceAndSwapChain1(util.toPointer(pAdapter), DriverType, util.toPointer(Software), Flags, HardwareLevel, SDKVersion, util.toPointer(pSwapChainDesc), util.toPointer(ppSwapChain), util.toPointer(ppDevice)));
 }
 

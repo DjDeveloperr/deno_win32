@@ -854,17 +854,113 @@ export const CM_CDMASK_VALID = 15;
 export const CM_CDFLAGS_DRIVER = 1;
 export const CM_CDFLAGS_ROOT_OWNED = 2;
 export const CM_CDFLAGS_RESERVED = 4;
+export const mMD_MemoryType = 1;
+export const fMD_MemoryType = 1;
+export const fMD_ROM = 0;
+export const fMD_RAM = 1;
+export const mMD_32_24 = 2;
+export const fMD_32_24 = 2;
+export const fMD_24 = 0;
+export const fMD_32 = 2;
+export const mMD_Prefetchable = 4;
+export const fMD_Prefetchable = 4;
+export const fMD_Pref = 4;
+export const fMD_PrefetchDisallowed = 0;
+export const fMD_PrefetchAllowed = 4;
+export const mMD_Readable = 8;
+export const fMD_Readable = 8;
+export const fMD_ReadAllowed = 0;
+export const fMD_ReadDisallowed = 8;
+export const mMD_CombinedWrite = 16;
+export const fMD_CombinedWrite = 16;
+export const fMD_CombinedWriteDisallowed = 0;
+export const fMD_CombinedWriteAllowed = 16;
+export const mMD_Cacheable = 32;
+export const fMD_NonCacheable = 0;
+export const fMD_Cacheable = 32;
+export const fMD_WINDOW_DECODE = 64;
+export const fMD_MEMORY_BAR = 128;
+export const fIOD_PortType = 1;
+export const fIOD_Memory = 0;
+export const fIOD_IO = 1;
+export const fIOD_DECODE = 252;
+export const fIOD_10_BIT_DECODE = 4;
+export const fIOD_12_BIT_DECODE = 8;
+export const fIOD_16_BIT_DECODE = 16;
+export const fIOD_POSITIVE_DECODE = 32;
+export const fIOD_PASSIVE_DECODE = 64;
+export const fIOD_WINDOW_DECODE = 128;
+export const fIOD_PORT_BAR = 256;
 export const IO_ALIAS_10_BIT_DECODE = 4;
 export const IO_ALIAS_12_BIT_DECODE = 16;
 export const IO_ALIAS_16_BIT_DECODE = 0;
 export const IO_ALIAS_POSITIVE_DECODE = 255;
 export const IOA_Local = 255;
+export const mDD_Width = 3;
+export const fDD_BYTE = 0;
+export const fDD_WORD = 1;
+export const fDD_DWORD = 2;
+export const fDD_BYTE_AND_WORD = 3;
+export const mDD_BusMaster = 4;
+export const fDD_NoBusMaster = 0;
+export const fDD_BusMaster = 4;
+export const mDD_Type = 24;
+export const fDD_TypeStandard = 0;
+export const fDD_TypeA = 8;
+export const fDD_TypeB = 16;
+export const fDD_TypeF = 24;
+export const mIRQD_Share = 1;
+export const fIRQD_Exclusive = 0;
+export const fIRQD_Share = 1;
+export const fIRQD_Share_Bit = 0;
+export const fIRQD_Level_Bit = 1;
+export const mIRQD_Edge_Level = 2;
+export const fIRQD_Level = 0;
+export const fIRQD_Edge = 2;
 export const CM_RESDES_WIDTH_DEFAULT = 0;
 export const CM_RESDES_WIDTH_32 = 1;
 export const CM_RESDES_WIDTH_64 = 2;
 export const CM_RESDES_WIDTH_BITS = 3;
+export const mPCD_IO_8_16 = 1;
+export const fPCD_IO_8 = 0;
+export const fPCD_IO_16 = 1;
+export const mPCD_MEM_8_16 = 2;
+export const fPCD_MEM_8 = 0;
+export const fPCD_MEM_16 = 2;
+export const mPCD_MEM_A_C = 12;
+export const fPCD_MEM1_A = 4;
+export const fPCD_MEM2_A = 8;
+export const fPCD_IO_ZW_8 = 16;
+export const fPCD_IO_SRC_16 = 32;
+export const fPCD_IO_WS_16 = 64;
+export const mPCD_MEM_WS = 768;
+export const fPCD_MEM_WS_ONE = 256;
+export const fPCD_MEM_WS_TWO = 512;
+export const fPCD_MEM_WS_THREE = 768;
+export const fPCD_MEM_A = 4;
+export const fPCD_ATTRIBUTES_PER_WINDOW = 32768;
+export const fPCD_IO1_16 = 65536;
+export const fPCD_IO1_ZW_8 = 131072;
+export const fPCD_IO1_SRC_16 = 262144;
+export const fPCD_IO1_WS_16 = 524288;
+export const fPCD_IO2_16 = 1048576;
+export const fPCD_IO2_ZW_8 = 2097152;
+export const fPCD_IO2_SRC_16 = 4194304;
+export const fPCD_IO2_WS_16 = 8388608;
+export const mPCD_MEM1_WS = 50331648;
+export const fPCD_MEM1_WS_ONE = 16777216;
+export const fPCD_MEM1_WS_TWO = 33554432;
+export const fPCD_MEM1_WS_THREE = 50331648;
+export const fPCD_MEM1_16 = 67108864;
+export const mPCD_MEM2_WS = 805306368;
+export const fPCD_MEM2_WS_ONE = 268435456;
+export const fPCD_MEM2_WS_TWO = 536870912;
+export const fPCD_MEM2_WS_THREE = 805306368;
+export const fPCD_MEM2_16 = 1073741824;
 export const PCD_MAX_MEMORY = 2;
 export const PCD_MAX_IO = 2;
+export const mPMF_AUDIO_ENABLE = 8;
+export const fPMF_AUDIO_ENABLE = 8;
 export const CM_HWPI_NOT_DOCKABLE = 0;
 export const CM_HWPI_UNDOCKED = 1;
 export const CM_HWPI_DOCKED = 2;
@@ -1113,9 +1209,243 @@ export const DIURFLAG_RESERVED = 2;
 export const ROLLBACK_FLAG_NO_UI = 1;
 export const ROLLBACK_BITS = 1;
 export const MAX_KEY_LEN = 100;
+export const SZ_KEY_OPTIONDESC = "OptionDesc";
+export const SZ_KEY_LDIDOEM = "LdidOEM";
+export const SZ_KEY_SRCDISKFILES = "SourceDisksFiles";
+export const SZ_KEY_SRCDISKNAMES = "SourceDisksNames";
+export const SZ_KEY_STRINGS = "Strings";
+export const SZ_KEY_DESTDIRS = "DestinationDirs";
+export const SZ_KEY_LAYOUT_FILE = "LayoutFile";
+export const SZ_KEY_DEFDESTDIR = "DefaultDestDir";
+export const SZ_KEY_LFN_SECTION = "VarLDID.LFN";
+export const SZ_KEY_SFN_SECTION = "VarLDID.SFN";
+export const SZ_KEY_UPDATEINIS = "UpdateInis";
+export const SZ_KEY_UPDATEINIFIELDS = "UpdateIniFields";
+export const SZ_KEY_INI2REG = "Ini2Reg";
+export const SZ_KEY_COPYFILES = "CopyFiles";
+export const SZ_KEY_RENFILES = "RenFiles";
+export const SZ_KEY_DELFILES = "DelFiles";
+export const SZ_KEY_ADDREG = "AddReg";
+export const SZ_KEY_ADDREGNOCLOBBER = "AddRegNoClobber";
+export const SZ_KEY_DELREG = "DelReg";
+export const SZ_KEY_BITREG = "BitReg";
+export const SZ_KEY_COPYINF = "CopyINF";
+export const SZ_KEY_LOGCONFIG = "LogConfig";
+export const SZ_KEY_ADDSERVICE = "AddService";
+export const SZ_KEY_DELSERVICE = "DelService";
+export const SZ_KEY_ADDTRIGGER = "AddTrigger";
+export const SZ_KEY_ADDINTERFACE = "AddInterface";
+export const SZ_KEY_ADDIME = "AddIme";
+export const SZ_KEY_DELIME = "DelIme";
+export const SZ_KEY_REGSVR = "RegisterDlls";
+export const SZ_KEY_UNREGSVR = "UnregisterDlls";
+export const SZ_KEY_PROFILEITEMS = "ProfileItems";
+export const SZ_KEY_MODULES = "Modules";
+export const SZ_KEY_DEFAULTOPTION = "DefaultOption";
+export const SZ_KEY_LISTOPTIONS = "ListOptions";
+export const SZ_KEY_CLEANONLY = "CleanOnly";
+export const SZ_KEY_UPGRADEONLY = "UpgradeOnly";
+export const SZ_KEY_EXCLUDEID = "ExcludeId";
+export const SZ_KEY_ADDPOWERSETTING = "AddPowerSetting";
+export const SZ_KEY_ADDPROP = "AddProperty";
+export const SZ_KEY_DELPROP = "DelProperty";
+export const SZ_KEY_FEATURESCORE = "FeatureScore";
+export const SZ_KEY_ADDEVENTPROVIDER = "AddEventProvider";
+export const SZ_KEY_ADDCHANNEL = "AddChannel";
+export const SZ_KEY_IMPORTCHANNEL = "ImportChannel";
+export const SZ_KEY_ADDAUTOLOGGER = "AddAutoLogger";
+export const SZ_KEY_UPDATEAUTOLOGGER = "UpdateAutoLogger";
+export const SZ_KEY_ADDAUTOLOGGERPROVIDER = "AddAutoLoggerProvider";
+export const SZ_KEY_ADDFILTER = "AddFilter";
+export const SZ_KEY_FILTERLEVEL = "FilterLevel";
+export const SZ_KEY_FILTERPOSITION = "FilterPosition";
+export const SZ_KEY_PHASE1 = "Phase1";
+export const SZ_KEY_HARDWARE = "Hardware";
+export const INFSTR_KEY_CONFIGPRIORITY = "ConfigPriority";
 export const MAX_PRIORITYSTR_LEN = 16;
+export const INFSTR_CFGPRI_HARDWIRED = "HARDWIRED";
+export const INFSTR_CFGPRI_DESIRED = "DESIRED";
+export const INFSTR_CFGPRI_NORMAL = "NORMAL";
+export const INFSTR_CFGPRI_SUBOPTIMAL = "SUBOPTIMAL";
+export const INFSTR_CFGPRI_DISABLED = "DISABLED";
+export const INFSTR_CFGPRI_RESTART = "RESTART";
+export const INFSTR_CFGPRI_REBOOT = "REBOOT";
+export const INFSTR_CFGPRI_POWEROFF = "POWEROFF";
+export const INFSTR_CFGPRI_HARDRECONFIG = "HARDRECONFIG";
+export const INFSTR_CFGPRI_FORCECONFIG = "FORCECONFIG";
+export const INFSTR_CFGTYPE_BASIC = "BASIC";
+export const INFSTR_CFGTYPE_FORCED = "FORCED";
+export const INFSTR_CFGTYPE_OVERRIDE = "OVERRIDE";
+export const INFSTR_KEY_MEMCONFIG = "MemConfig";
+export const INFSTR_KEY_MEMLARGECONFIG = "MemLargeConfig";
+export const INFSTR_KEY_IOCONFIG = "IOConfig";
+export const INFSTR_KEY_IRQCONFIG = "IRQConfig";
+export const INFSTR_KEY_DMACONFIG = "DMAConfig";
+export const INFSTR_KEY_PCCARDCONFIG = "PcCardConfig";
+export const INFSTR_KEY_MFCARDCONFIG = "MfCardConfig";
+export const INFSTR_SECT_CLASS_INSTALL = "ClassInstall";
+export const INFSTR_SECT_CLASS_INSTALL_32 = "ClassInstall32";
+export const INFSTR_SECT_DEFAULT_INSTALL = "DefaultInstall";
+export const INFSTR_SECT_DEFAULT_UNINSTALL = "DefaultUninstall";
+export const INFSTR_SECT_INTERFACE_INSTALL_32 = "InterfaceInstall32";
+export const INFSTR_SECT_VERSION = "Version";
+export const INFSTR_KEY_PROVIDER = "Provider";
+export const INFSTR_KEY_SIGNATURE = "Signature";
+export const INFSTR_KEY_DRIVERSET = "DriverSet";
 export const MAX_INF_FLAG = 20;
+export const INFSTR_KEY_HARDWARE_CLASS = "Class";
+export const INFSTR_KEY_HARDWARE_CLASSGUID = "ClassGUID";
+export const INFSTR_KEY_NOSETUPINF = "NoSetupInf";
+export const INFSTR_KEY_FROMINET = "FromINet";
+export const INFSTR_KEY_CATALOGFILE = "CatalogFile";
+export const INFSTR_KEY_PNPLOCKDOWN = "PnpLockDown";
+export const INFSTR_KEY_EXTENSIONID = "ExtensionId";
+export const INFSTR_SECT_MFG = "Manufacturer";
+export const INFSTR_SECT_TARGETCOMPUTERS = "TargetComputers";
+export const INFSTR_SECT_EXTENSIONCONTRACTS = "ExtensionContracts";
+export const INFSTR_KEY_CLASS = "Class";
+export const INFSTR_KEY_CLASSGUID = "ClassGUID";
+export const INFSTR_RESTART = "Restart";
+export const INFSTR_REBOOT = "Reboot";
+export const INFSTR_KEY_DISPLAYNAME = "DisplayName";
+export const INFSTR_KEY_SERVICETYPE = "ServiceType";
+export const INFSTR_KEY_STARTTYPE = "StartType";
+export const INFSTR_KEY_ERRORCONTROL = "ErrorControl";
+export const INFSTR_KEY_SERVICEBINARY = "ServiceBinary";
+export const INFSTR_KEY_LOADORDERGROUP = "LoadOrderGroup";
+export const INFSTR_KEY_DEPENDENCIES = "Dependencies";
+export const INFSTR_KEY_REQUIREDPRIVILEGES = "RequiredPrivileges";
+export const INFSTR_KEY_STARTNAME = "StartName";
+export const INFSTR_KEY_SECURITY = "Security";
+export const INFSTR_KEY_DESCRIPTION = "Description";
+export const INFSTR_KEY_SERVICESIDTYPE = "ServiceSidType";
+export const INFSTR_KEY_DELAYEDAUTOSTART = "DelayedAutoStart";
+export const INFSTR_KEY_TRIGGER_TYPE = "TriggerType";
+export const INFSTR_KEY_ACTION = "Action";
+export const INFSTR_KEY_SUB_TYPE = "SubType";
+export const INFSTR_KEY_DATA_ITEM = "DataItem";
+export const INFSTR_KEY_PROVIDER_NAME = "ProviderName";
+export const INFSTR_KEY_RESOURCE_FILE = "ResourceFile";
+export const INFSTR_KEY_MESSAGE_FILE = "MessageFile";
+export const INFSTR_KEY_PARAMETER_FILE = "ParameterFile";
+export const INFSTR_KEY_CHANNEL_ACCESS = "Access";
+export const INFSTR_KEY_CHANNEL_ISOLATION = "Isolation";
+export const INFSTR_KEY_CHANNEL_ENABLED = "Enabled";
+export const INFSTR_KEY_CHANNEL_VALUE = "Value";
+export const INFSTR_KEY_LOGGING_MAXSIZE = "LoggingMaxSize";
+export const INFSTR_KEY_LOGGING_RETENTION = "LoggingRetention";
+export const INFSTR_KEY_LOGGING_AUTOBACKUP = "LoggingAutoBackup";
+export const INFSTR_KEY_START = "Start";
+export const INFSTR_KEY_BUFFER_SIZE = "BufferSize";
+export const INFSTR_KEY_CLOCK_TYPE = "ClockType";
+export const INFSTR_KEY_DISABLE_REALTIME_PERSISTENCE = "DisableRealtimePersistence";
+export const INFSTR_KEY_FILE_NAME = "FileName";
+export const INFSTR_KEY_FILE_MAX = "FileMax";
+export const INFSTR_KEY_FLUSH_TIMER = "FlushTimer";
+export const INFSTR_KEY_LOG_FILE_MODE = "LogFileMode";
+export const INFSTR_KEY_MAX_FILE_SIZE = "MaxFileSize";
+export const INFSTR_KEY_MAXIMUM_BUFFERS = "MaximumBuffers";
+export const INFSTR_KEY_MINIMUM_BUFFERS = "MinimumBuffers";
+export const INFSTR_KEY_ENABLED = "Enabled";
+export const INFSTR_KEY_ENABLE_FLAGS = "EnableFlags";
+export const INFSTR_KEY_ENABLE_LEVEL = "EnableLevel";
+export const INFSTR_KEY_ENABLE_PROPERTY = "EnableProperty";
+export const INFSTR_KEY_MATCH_ANY_KEYWORD = "MatchAnyKeyword";
+export const INFSTR_KEY_MATCH_ALL_KEYWORD = "MatchAllKeyword";
+export const INFSTR_SECT_DETMODULES = "Det.Modules";
+export const INFSTR_SECT_DETCLASSINFO = "Det.ClassInfo";
+export const INFSTR_SECT_MANUALDEV = "Det.ManualDev";
+export const INFSTR_SECT_AVOIDCFGSYSDEV = "Det.AvoidCfgSysDev";
+export const INFSTR_SECT_REGCFGSYSDEV = "Det.RegCfgSysDev";
+export const INFSTR_SECT_DEVINFS = "Det.DevINFs";
+export const INFSTR_SECT_AVOIDINIDEV = "Det.AvoidIniDev";
+export const INFSTR_SECT_AVOIDENVDEV = "Det.AvoidEnvDev";
+export const INFSTR_SECT_REGINIDEV = "Det.RegIniDev";
+export const INFSTR_SECT_REGENVDEV = "Det.RegEnvDev";
+export const INFSTR_SECT_HPOMNIBOOK = "Det.HPOmnibook";
+export const INFSTR_SECT_FORCEHWVERIFY = "Det.ForceHWVerify";
+export const INFSTR_SECT_DETOPTIONS = "Det.Options";
+export const INFSTR_SECT_BADPNPBIOS = "BadPnpBios";
+export const INFSTR_SECT_GOODACPIBIOS = "GoodACPIBios";
+export const INFSTR_SECT_BADACPIBIOS = "BadACPIBios";
+export const INFSTR_SECT_BADROUTINGTABLEBIOS = "BadPCIIRQRoutingTableBios";
+export const INFSTR_SECT_BADPMCALLBIOS = "BadProtectedModeCallBios";
+export const INFSTR_SECT_BADRMCALLBIOS = "BadRealModeCallBios";
+export const INFSTR_SECT_MACHINEIDBIOS = "MachineIDBios";
+export const INFSTR_SECT_BADDISKBIOS = "BadDiskBios";
+export const INFSTR_SECT_BADDSBIOS = "BadDSBios";
+export const INFSTR_KEY_DETPARAMS = "Params";
+export const INFSTR_KEY_SKIPLIST = "SkipList";
+export const INFSTR_KEY_DETECTLIST = "DetectList";
+export const INFSTR_KEY_EXCLUDERES = "ExcludeRes";
+export const INFSTR_SUBKEY_LOGCONFIG = "LogConfig";
+export const INFSTR_SUBKEY_DET = "Det";
+export const INFSTR_SUBKEY_FACTDEF = "FactDef";
+export const INFSTR_SUBKEY_POSSIBLEDUPS = "PosDup";
+export const INFSTR_SUBKEY_NORESOURCEDUPS = "NoResDup";
+export const INFSTR_SUBKEY_HW = "Hw";
+export const INFSTR_SUBKEY_CTL = "CTL";
+export const INFSTR_SUBKEY_SERVICES = "Services";
+export const INFSTR_SUBKEY_SOFTWARE = "Software";
+export const INFSTR_SUBKEY_INTERFACES = "Interfaces";
+export const INFSTR_SUBKEY_COINSTALLERS = "CoInstallers";
+export const INFSTR_SUBKEY_LOGCONFIGOVERRIDE = "LogConfigOverride";
+export const INFSTR_SUBKEY_WMI = "WMI";
+export const INFSTR_SUBKEY_EVENTS = "Events";
+export const INFSTR_SUBKEY_FILTERS = "Filters";
+export const INFSTR_CONTROLFLAGS_SECTION = "ControlFlags";
+export const INFSTR_KEY_COPYFILESONLY = "CopyFilesOnly";
+export const INFSTR_KEY_EXCLUDEFROMSELECT = "ExcludeFromSelect";
+export const INFSTR_KEY_ALWAYSEXCLUDEFROMSELECT = "AlwaysExcludeFromSelect";
+export const INFSTR_KEY_INTERACTIVEINSTALL = "InteractiveInstall";
+export const INFSTR_KEY_REQUESTADDITIONALSOFTWARE = "RequestAdditionalSoftware";
+export const INFSTR_PLATFORM_WIN = "Win";
+export const INFSTR_PLATFORM_NT = "NT";
+export const INFSTR_PLATFORM_NTX86 = "NTx86";
+export const INFSTR_PLATFORM_NTMIPS = "NTMIPS";
+export const INFSTR_PLATFORM_NTALPHA = "NTAlpha";
+export const INFSTR_PLATFORM_NTPPC = "NTPPC";
+export const INFSTR_PLATFORM_NTIA64 = "NTIA64";
+export const INFSTR_PLATFORM_NTAXP64 = "NTAXP64";
+export const INFSTR_PLATFORM_NTAMD64 = "NTAMD64";
+export const INFSTR_PLATFORM_NTARM = "NTARM";
+export const INFSTR_PLATFORM_NTARM64 = "NTARM64";
 export const MAX_INFSTR_STRKEY_LEN = 32;
+export const INFSTR_STRKEY_DRVDESC = "DriverDesc";
+export const INFSTR_DRIVERSELECT_SECTION = "DriverSelect";
+export const INFSTR_DRIVERSELECT_FUNCTIONS = "DriverSelectFunctions";
+export const INFSTR_DRIVERVERSION_SECTION = "DriverVer";
+export const INFSTR_SOFTWAREVERSION_SECTION = "SoftwareVersion";
+export const INFSTR_SECT_CFGSYS = "ConfigSysDrivers";
+export const INFSTR_SECT_AUTOEXECBAT = "AutoexecBatDrivers";
+export const INFSTR_SECT_SYSINI = "SystemIniDrivers";
+export const INFSTR_SECT_SYSINIDRV = "SystemIniDriversLine";
+export const INFSTR_SECT_WININIRUN = "WinIniRunLine";
+export const INFSTR_KEY_PATH = "Path";
+export const INFSTR_KEY_NAME = "Name";
+export const INFSTR_KEY_IO = "IO";
+export const INFSTR_KEY_MEM = "Mem";
+export const INFSTR_KEY_IRQ = "IRQ";
+export const INFSTR_KEY_DMA = "DMA";
+export const INFSTR_BUS_ISA = "BUS_ISA";
+export const INFSTR_BUS_EISA = "BUS_EISA";
+export const INFSTR_BUS_MCA = "BUS_MCA";
+export const INFSTR_BUS_ALL = "BUS_ALL";
+export const INFSTR_RISK_NONE = "RISK_NONE";
+export const INFSTR_RISK_VERYLOW = "RISK_VERYLOW";
+export const INFSTR_RISK_BIOSROMRD = "RISK_BIOSROMRD";
+export const INFSTR_RISK_QUERYDRV = "RISK_QUERYDRV";
+export const INFSTR_RISK_SWINT = "RISK_SWINT";
+export const INFSTR_RISK_LOW = "RISK_LOW";
+export const INFSTR_RISK_DELICATE = "RISK_DELICATE";
+export const INFSTR_RISK_MEMRD = "RISK_MEMRD";
+export const INFSTR_RISK_IORD = "RISK_IORD";
+export const INFSTR_RISK_MEMWR = "RISK_MEMWR";
+export const INFSTR_RISK_IOWR = "RISK_IOWR";
+export const INFSTR_RISK_UNRELIABLE = "RISK_UNRELIABLE";
+export const INFSTR_RISK_VERYHIGH = "RISK_VERYHIGH";
+export const INFSTR_CLASS_SAFEEXCL = "SAFE_EXCL";
+export const INFSTR_SECT_DISPLAY_CLEANUP = "DisplayCleanup";
 export const VER_PLATFORM_WIN32s = 0;
 export const VER_PLATFORM_WIN32_WINDOWS = 1;
 export const VER_PLATFORM_WIN32_NT = 2;
@@ -1164,6 +1494,8 @@ export const PRIORITY_HIGH = 2;
 // Structs
 
 export type HCMNOTIFICATION = Deno.PointerValue;
+
+export type HDEVINFO = Deno.PointerValue;
 
 /**
  * Windows.Win32.Devices.DeviceAndDriverInstallation.INFCONTEXT (size: 24)
@@ -2608,44 +2940,6 @@ export function allocSP_UNREMOVEDEVICE_PARAMS(data?: Partial<SP_UNREMOVEDEVICE_P
 }
 
 /**
- * Windows.Win32.Devices.DeviceAndDriverInstallation.SP_SELECTDEVICE_PARAMS_A (size: 48)
- */
-export interface SP_SELECTDEVICE_PARAMS_A {
-  /** Windows.Win32.Devices.DeviceAndDriverInstallation.SP_CLASSINSTALL_HEADER */
-  ClassInstallHeader: Uint8Array | Deno.PointerValue | null;
-  /** array */
-  Title: Deno.PointerValue | null;
-  /** array */
-  Instructions: Deno.PointerValue | null;
-  /** array */
-  ListLabel: Deno.PointerValue | null;
-  /** array */
-  SubTitle: Deno.PointerValue | null;
-  /** array */
-  Reserved: Deno.PointerValue | null;
-}
-
-export const sizeofSP_SELECTDEVICE_PARAMS_A = 48;
-
-export function allocSP_SELECTDEVICE_PARAMS_A(data?: Partial<SP_SELECTDEVICE_PARAMS_A>): Uint8Array {
-  const buf = new Uint8Array(sizeofSP_SELECTDEVICE_PARAMS_A);
-  const view = new DataView(buf.buffer);
-  // 0x00: pointer
-  if (data?.ClassInstallHeader !== undefined) view.setBigUint64(0, data.ClassInstallHeader === null ? 0n : BigInt(util.toPointer(data.ClassInstallHeader)), true);
-  // 0x08: pointer
-  if (data?.Title !== undefined) view.setBigUint64(8, data.Title === null ? 0n : BigInt(util.toPointer(data.Title)), true);
-  // 0x10: pointer
-  if (data?.Instructions !== undefined) view.setBigUint64(16, data.Instructions === null ? 0n : BigInt(util.toPointer(data.Instructions)), true);
-  // 0x18: pointer
-  if (data?.ListLabel !== undefined) view.setBigUint64(24, data.ListLabel === null ? 0n : BigInt(util.toPointer(data.ListLabel)), true);
-  // 0x20: pointer
-  if (data?.SubTitle !== undefined) view.setBigUint64(32, data.SubTitle === null ? 0n : BigInt(util.toPointer(data.SubTitle)), true);
-  // 0x28: pointer
-  if (data?.Reserved !== undefined) view.setBigUint64(40, data.Reserved === null ? 0n : BigInt(util.toPointer(data.Reserved)), true);
-  return buf;
-}
-
-/**
  * Windows.Win32.Devices.DeviceAndDriverInstallation.SP_SELECTDEVICE_PARAMS_W (size: 40)
  */
 export interface SP_SELECTDEVICE_PARAMS_W {
@@ -2792,32 +3086,6 @@ export function allocSP_NEWDEVICEWIZARD_DATA(data?: Partial<SP_NEWDEVICEWIZARD_D
 }
 
 /**
- * Windows.Win32.Devices.DeviceAndDriverInstallation.SP_TROUBLESHOOTER_PARAMS_A (size: 24)
- */
-export interface SP_TROUBLESHOOTER_PARAMS_A {
-  /** Windows.Win32.Devices.DeviceAndDriverInstallation.SP_CLASSINSTALL_HEADER */
-  ClassInstallHeader: Uint8Array | Deno.PointerValue | null;
-  /** array */
-  ChmFile: Deno.PointerValue | null;
-  /** array */
-  HtmlTroubleShooter: Deno.PointerValue | null;
-}
-
-export const sizeofSP_TROUBLESHOOTER_PARAMS_A = 24;
-
-export function allocSP_TROUBLESHOOTER_PARAMS_A(data?: Partial<SP_TROUBLESHOOTER_PARAMS_A>): Uint8Array {
-  const buf = new Uint8Array(sizeofSP_TROUBLESHOOTER_PARAMS_A);
-  const view = new DataView(buf.buffer);
-  // 0x00: pointer
-  if (data?.ClassInstallHeader !== undefined) view.setBigUint64(0, data.ClassInstallHeader === null ? 0n : BigInt(util.toPointer(data.ClassInstallHeader)), true);
-  // 0x08: pointer
-  if (data?.ChmFile !== undefined) view.setBigUint64(8, data.ChmFile === null ? 0n : BigInt(util.toPointer(data.ChmFile)), true);
-  // 0x10: pointer
-  if (data?.HtmlTroubleShooter !== undefined) view.setBigUint64(16, data.HtmlTroubleShooter === null ? 0n : BigInt(util.toPointer(data.HtmlTroubleShooter)), true);
-  return buf;
-}
-
-/**
  * Windows.Win32.Devices.DeviceAndDriverInstallation.SP_TROUBLESHOOTER_PARAMS_W (size: 24)
  */
 export interface SP_TROUBLESHOOTER_PARAMS_W {
@@ -2840,28 +3108,6 @@ export function allocSP_TROUBLESHOOTER_PARAMS_W(data?: Partial<SP_TROUBLESHOOTER
   if (data?.ChmFile !== undefined) view.setBigUint64(8, data.ChmFile === null ? 0n : BigInt(util.toPointer(data.ChmFile)), true);
   // 0x10: pointer
   if (data?.HtmlTroubleShooter !== undefined) view.setBigUint64(16, data.HtmlTroubleShooter === null ? 0n : BigInt(util.toPointer(data.HtmlTroubleShooter)), true);
-  return buf;
-}
-
-/**
- * Windows.Win32.Devices.DeviceAndDriverInstallation.SP_POWERMESSAGEWAKE_PARAMS_A (size: 16)
- */
-export interface SP_POWERMESSAGEWAKE_PARAMS_A {
-  /** Windows.Win32.Devices.DeviceAndDriverInstallation.SP_CLASSINSTALL_HEADER */
-  ClassInstallHeader: Uint8Array | Deno.PointerValue | null;
-  /** array */
-  PowerMessageWake: Deno.PointerValue | null;
-}
-
-export const sizeofSP_POWERMESSAGEWAKE_PARAMS_A = 16;
-
-export function allocSP_POWERMESSAGEWAKE_PARAMS_A(data?: Partial<SP_POWERMESSAGEWAKE_PARAMS_A>): Uint8Array {
-  const buf = new Uint8Array(sizeofSP_POWERMESSAGEWAKE_PARAMS_A);
-  const view = new DataView(buf.buffer);
-  // 0x00: pointer
-  if (data?.ClassInstallHeader !== undefined) view.setBigUint64(0, data.ClassInstallHeader === null ? 0n : BigInt(util.toPointer(data.ClassInstallHeader)), true);
-  // 0x08: pointer
-  if (data?.PowerMessageWake !== undefined) view.setBigUint64(8, data.PowerMessageWake === null ? 0n : BigInt(util.toPointer(data.PowerMessageWake)), true);
   return buf;
 }
 
@@ -3280,8 +3526,8 @@ export interface SP_PROPSHEETPAGE_REQUEST {
   cbSize: number;
   /** u32 */
   PageRequested: number;
-  /** ptr */
-  DeviceInfoSet: Deno.PointerValue | Uint8Array | null;
+  /** Windows.Win32.Devices.DeviceAndDriverInstallation.HDEVINFO */
+  DeviceInfoSet: Uint8Array | Deno.PointerValue | null;
   /** ptr */
   DeviceInfoData: Deno.PointerValue | Uint8Array | null;
 }
@@ -3557,6 +3803,92 @@ export function allocSP_INF_SIGNER_INFO_V2_W(data?: Partial<SP_INF_SIGNER_INFO_V
 }
 
 /**
+ * Windows.Win32.Devices.DeviceAndDriverInstallation.SP_SELECTDEVICE_PARAMS_A (size: 48)
+ */
+export interface SP_SELECTDEVICE_PARAMS_A {
+  /** Windows.Win32.Devices.DeviceAndDriverInstallation.SP_CLASSINSTALL_HEADER */
+  ClassInstallHeader: Uint8Array | Deno.PointerValue | null;
+  /** array */
+  Title: Deno.PointerValue | null;
+  /** array */
+  Instructions: Deno.PointerValue | null;
+  /** array */
+  ListLabel: Deno.PointerValue | null;
+  /** array */
+  SubTitle: Deno.PointerValue | null;
+  /** array */
+  Reserved: Deno.PointerValue | null;
+}
+
+export const sizeofSP_SELECTDEVICE_PARAMS_A = 48;
+
+export function allocSP_SELECTDEVICE_PARAMS_A(data?: Partial<SP_SELECTDEVICE_PARAMS_A>): Uint8Array {
+  const buf = new Uint8Array(sizeofSP_SELECTDEVICE_PARAMS_A);
+  const view = new DataView(buf.buffer);
+  // 0x00: pointer
+  if (data?.ClassInstallHeader !== undefined) view.setBigUint64(0, data.ClassInstallHeader === null ? 0n : BigInt(util.toPointer(data.ClassInstallHeader)), true);
+  // 0x08: pointer
+  if (data?.Title !== undefined) view.setBigUint64(8, data.Title === null ? 0n : BigInt(util.toPointer(data.Title)), true);
+  // 0x10: pointer
+  if (data?.Instructions !== undefined) view.setBigUint64(16, data.Instructions === null ? 0n : BigInt(util.toPointer(data.Instructions)), true);
+  // 0x18: pointer
+  if (data?.ListLabel !== undefined) view.setBigUint64(24, data.ListLabel === null ? 0n : BigInt(util.toPointer(data.ListLabel)), true);
+  // 0x20: pointer
+  if (data?.SubTitle !== undefined) view.setBigUint64(32, data.SubTitle === null ? 0n : BigInt(util.toPointer(data.SubTitle)), true);
+  // 0x28: pointer
+  if (data?.Reserved !== undefined) view.setBigUint64(40, data.Reserved === null ? 0n : BigInt(util.toPointer(data.Reserved)), true);
+  return buf;
+}
+
+/**
+ * Windows.Win32.Devices.DeviceAndDriverInstallation.SP_TROUBLESHOOTER_PARAMS_A (size: 24)
+ */
+export interface SP_TROUBLESHOOTER_PARAMS_A {
+  /** Windows.Win32.Devices.DeviceAndDriverInstallation.SP_CLASSINSTALL_HEADER */
+  ClassInstallHeader: Uint8Array | Deno.PointerValue | null;
+  /** array */
+  ChmFile: Deno.PointerValue | null;
+  /** array */
+  HtmlTroubleShooter: Deno.PointerValue | null;
+}
+
+export const sizeofSP_TROUBLESHOOTER_PARAMS_A = 24;
+
+export function allocSP_TROUBLESHOOTER_PARAMS_A(data?: Partial<SP_TROUBLESHOOTER_PARAMS_A>): Uint8Array {
+  const buf = new Uint8Array(sizeofSP_TROUBLESHOOTER_PARAMS_A);
+  const view = new DataView(buf.buffer);
+  // 0x00: pointer
+  if (data?.ClassInstallHeader !== undefined) view.setBigUint64(0, data.ClassInstallHeader === null ? 0n : BigInt(util.toPointer(data.ClassInstallHeader)), true);
+  // 0x08: pointer
+  if (data?.ChmFile !== undefined) view.setBigUint64(8, data.ChmFile === null ? 0n : BigInt(util.toPointer(data.ChmFile)), true);
+  // 0x10: pointer
+  if (data?.HtmlTroubleShooter !== undefined) view.setBigUint64(16, data.HtmlTroubleShooter === null ? 0n : BigInt(util.toPointer(data.HtmlTroubleShooter)), true);
+  return buf;
+}
+
+/**
+ * Windows.Win32.Devices.DeviceAndDriverInstallation.SP_POWERMESSAGEWAKE_PARAMS_A (size: 16)
+ */
+export interface SP_POWERMESSAGEWAKE_PARAMS_A {
+  /** Windows.Win32.Devices.DeviceAndDriverInstallation.SP_CLASSINSTALL_HEADER */
+  ClassInstallHeader: Uint8Array | Deno.PointerValue | null;
+  /** array */
+  PowerMessageWake: Deno.PointerValue | null;
+}
+
+export const sizeofSP_POWERMESSAGEWAKE_PARAMS_A = 16;
+
+export function allocSP_POWERMESSAGEWAKE_PARAMS_A(data?: Partial<SP_POWERMESSAGEWAKE_PARAMS_A>): Uint8Array {
+  const buf = new Uint8Array(sizeofSP_POWERMESSAGEWAKE_PARAMS_A);
+  const view = new DataView(buf.buffer);
+  // 0x00: pointer
+  if (data?.ClassInstallHeader !== undefined) view.setBigUint64(0, data.ClassInstallHeader === null ? 0n : BigInt(util.toPointer(data.ClassInstallHeader)), true);
+  // 0x08: pointer
+  if (data?.PowerMessageWake !== undefined) view.setBigUint64(8, data.PowerMessageWake === null ? 0n : BigInt(util.toPointer(data.PowerMessageWake)), true);
+  return buf;
+}
+
+/**
  * Windows.Win32.Devices.DeviceAndDriverInstallation.CONFLICT_DETAILS_A (size: 40)
  */
 export interface CONFLICT_DETAILS_A {
@@ -3736,9 +4068,9 @@ export function allocMEM_RESOURCE(data?: Partial<MEM_RESOURCE>): Uint8Array {
 }
 
 /**
- * Windows.Win32.Devices.DeviceAndDriverInstallation.Mem_Large_Range_s (size: 40)
+ * Windows.Win32.Devices.DeviceAndDriverInstallation.MEM_LARGE_RANGE (size: 40)
  */
-export interface Mem_Large_Range_s {
+export interface MEM_LARGE_RANGE {
   /** u64 */
   MLR_Align: Deno.PointerValue;
   /** u64 */
@@ -3753,10 +4085,10 @@ export interface Mem_Large_Range_s {
   MLR_Reserved: number;
 }
 
-export const sizeofMem_Large_Range_s = 40;
+export const sizeofMEM_LARGE_RANGE = 40;
 
-export function allocMem_Large_Range_s(data?: Partial<Mem_Large_Range_s>): Uint8Array {
-  const buf = new Uint8Array(sizeofMem_Large_Range_s);
+export function allocMEM_LARGE_RANGE(data?: Partial<MEM_LARGE_RANGE>): Uint8Array {
+  const buf = new Uint8Array(sizeofMEM_LARGE_RANGE);
   const view = new DataView(buf.buffer);
   // 0x00: u64
   if (data?.MLR_Align !== undefined) view.setBigUint64(0, BigInt(data.MLR_Align), true);
@@ -3774,9 +4106,9 @@ export function allocMem_Large_Range_s(data?: Partial<Mem_Large_Range_s>): Uint8
 }
 
 /**
- * Windows.Win32.Devices.DeviceAndDriverInstallation.Mem_Large_Des_s (size: 32)
+ * Windows.Win32.Devices.DeviceAndDriverInstallation.MEM_LARGE_DES (size: 32)
  */
-export interface Mem_Large_Des_s {
+export interface MEM_LARGE_DES {
   /** u32 */
   MLD_Count: number;
   /** u32 */
@@ -3791,10 +4123,10 @@ export interface Mem_Large_Des_s {
   MLD_Reserved: number;
 }
 
-export const sizeofMem_Large_Des_s = 32;
+export const sizeofMEM_LARGE_DES = 32;
 
-export function allocMem_Large_Des_s(data?: Partial<Mem_Large_Des_s>): Uint8Array {
-  const buf = new Uint8Array(sizeofMem_Large_Des_s);
+export function allocMEM_LARGE_DES(data?: Partial<MEM_LARGE_DES>): Uint8Array {
+  const buf = new Uint8Array(sizeofMEM_LARGE_DES);
   const view = new DataView(buf.buffer);
   // 0x00: u32
   if (data?.MLD_Count !== undefined) view.setUint32(0, Number(data.MLD_Count), true);
@@ -3812,19 +4144,19 @@ export function allocMem_Large_Des_s(data?: Partial<Mem_Large_Des_s>): Uint8Arra
 }
 
 /**
- * Windows.Win32.Devices.DeviceAndDriverInstallation.Mem_Large_Resource_s (size: 16)
+ * Windows.Win32.Devices.DeviceAndDriverInstallation.MEM_LARGE_RESOURCE (size: 16)
  */
-export interface Mem_Large_Resource_s {
-  /** Windows.Win32.Devices.DeviceAndDriverInstallation.Mem_Large_Des_s */
+export interface MEM_LARGE_RESOURCE {
+  /** Windows.Win32.Devices.DeviceAndDriverInstallation.MEM_LARGE_DES */
   MEM_LARGE_Header: Uint8Array | Deno.PointerValue | null;
   /** array */
   MEM_LARGE_Data: Deno.PointerValue | null;
 }
 
-export const sizeofMem_Large_Resource_s = 16;
+export const sizeofMEM_LARGE_RESOURCE = 16;
 
-export function allocMem_Large_Resource_s(data?: Partial<Mem_Large_Resource_s>): Uint8Array {
-  const buf = new Uint8Array(sizeofMem_Large_Resource_s);
+export function allocMEM_LARGE_RESOURCE(data?: Partial<MEM_LARGE_RESOURCE>): Uint8Array {
+  const buf = new Uint8Array(sizeofMEM_LARGE_RESOURCE);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
   if (data?.MEM_LARGE_Header !== undefined) view.setBigUint64(0, data.MEM_LARGE_Header === null ? 0n : BigInt(util.toPointer(data.MEM_LARGE_Header)), true);
@@ -4150,9 +4482,9 @@ export function allocIRQ_RESOURCE_64(data?: Partial<IRQ_RESOURCE_64>): Uint8Arra
 }
 
 /**
- * Windows.Win32.Devices.DeviceAndDriverInstallation.DevPrivate_Range_s (size: 16)
+ * Windows.Win32.Devices.DeviceAndDriverInstallation.DEVPRIVATE_RANGE (size: 16)
  */
-export interface DevPrivate_Range_s {
+export interface DEVPRIVATE_RANGE {
   /** u32 */
   PR_Data1: number;
   /** u32 */
@@ -4161,10 +4493,10 @@ export interface DevPrivate_Range_s {
   PR_Data3: number;
 }
 
-export const sizeofDevPrivate_Range_s = 16;
+export const sizeofDEVPRIVATE_RANGE = 16;
 
-export function allocDevPrivate_Range_s(data?: Partial<DevPrivate_Range_s>): Uint8Array {
-  const buf = new Uint8Array(sizeofDevPrivate_Range_s);
+export function allocDEVPRIVATE_RANGE(data?: Partial<DEVPRIVATE_RANGE>): Uint8Array {
+  const buf = new Uint8Array(sizeofDEVPRIVATE_RANGE);
   const view = new DataView(buf.buffer);
   // 0x00: u32
   if (data?.PR_Data1 !== undefined) view.setUint32(0, Number(data.PR_Data1), true);
@@ -4177,9 +4509,9 @@ export function allocDevPrivate_Range_s(data?: Partial<DevPrivate_Range_s>): Uin
 }
 
 /**
- * Windows.Win32.Devices.DeviceAndDriverInstallation.DevPrivate_Des_s (size: 24)
+ * Windows.Win32.Devices.DeviceAndDriverInstallation.DEVPRIVATE_DES (size: 24)
  */
-export interface DevPrivate_Des_s {
+export interface DEVPRIVATE_DES {
   /** u32 */
   PD_Count: number;
   /** u32 */
@@ -4194,10 +4526,10 @@ export interface DevPrivate_Des_s {
   PD_Flags: number;
 }
 
-export const sizeofDevPrivate_Des_s = 24;
+export const sizeofDEVPRIVATE_DES = 24;
 
-export function allocDevPrivate_Des_s(data?: Partial<DevPrivate_Des_s>): Uint8Array {
-  const buf = new Uint8Array(sizeofDevPrivate_Des_s);
+export function allocDEVPRIVATE_DES(data?: Partial<DEVPRIVATE_DES>): Uint8Array {
+  const buf = new Uint8Array(sizeofDEVPRIVATE_DES);
   const view = new DataView(buf.buffer);
   // 0x00: u32
   if (data?.PD_Count !== undefined) view.setUint32(0, Number(data.PD_Count), true);
@@ -4215,19 +4547,19 @@ export function allocDevPrivate_Des_s(data?: Partial<DevPrivate_Des_s>): Uint8Ar
 }
 
 /**
- * Windows.Win32.Devices.DeviceAndDriverInstallation.DevPrivate_Resource_s (size: 16)
+ * Windows.Win32.Devices.DeviceAndDriverInstallation.DEVPRIVATE_RESOURCE (size: 16)
  */
-export interface DevPrivate_Resource_s {
-  /** Windows.Win32.Devices.DeviceAndDriverInstallation.DevPrivate_Des_s */
+export interface DEVPRIVATE_RESOURCE {
+  /** Windows.Win32.Devices.DeviceAndDriverInstallation.DEVPRIVATE_DES */
   PRV_Header: Uint8Array | Deno.PointerValue | null;
   /** array */
   PRV_Data: Deno.PointerValue | null;
 }
 
-export const sizeofDevPrivate_Resource_s = 16;
+export const sizeofDEVPRIVATE_RESOURCE = 16;
 
-export function allocDevPrivate_Resource_s(data?: Partial<DevPrivate_Resource_s>): Uint8Array {
-  const buf = new Uint8Array(sizeofDevPrivate_Resource_s);
+export function allocDEVPRIVATE_RESOURCE(data?: Partial<DEVPRIVATE_RESOURCE>): Uint8Array {
+  const buf = new Uint8Array(sizeofDEVPRIVATE_RESOURCE);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
   if (data?.PRV_Header !== undefined) view.setBigUint64(0, data.PRV_Header === null ? 0n : BigInt(util.toPointer(data.PRV_Header)), true);
@@ -4567,9 +4899,9 @@ export function allocLARGE_INTEGER(data?: Partial<LARGE_INTEGER>): Uint8Array {
 }
 
 /**
- * Windows.Win32.Devices.DeviceAndDriverInstallation.Connection_Des_s (size: 24)
+ * Windows.Win32.Devices.DeviceAndDriverInstallation.CONNECTION_DES (size: 24)
  */
-export interface Connection_Des_s {
+export interface CONNECTION_DES {
   /** u32 */
   COND_Type: number;
   /** u32 */
@@ -4586,10 +4918,10 @@ export interface Connection_Des_s {
   COND_Id: Uint8Array | Deno.PointerValue | null;
 }
 
-export const sizeofConnection_Des_s = 24;
+export const sizeofCONNECTION_DES = 24;
 
-export function allocConnection_Des_s(data?: Partial<Connection_Des_s>): Uint8Array {
-  const buf = new Uint8Array(sizeofConnection_Des_s);
+export function allocCONNECTION_DES(data?: Partial<CONNECTION_DES>): Uint8Array {
+  const buf = new Uint8Array(sizeofCONNECTION_DES);
   const view = new DataView(buf.buffer);
   // 0x00: u32
   if (data?.COND_Type !== undefined) view.setUint32(0, Number(data.COND_Type), true);
@@ -4610,17 +4942,17 @@ export function allocConnection_Des_s(data?: Partial<Connection_Des_s>): Uint8Ar
 }
 
 /**
- * Windows.Win32.Devices.DeviceAndDriverInstallation.Connection_Resource_s (size: 8)
+ * Windows.Win32.Devices.DeviceAndDriverInstallation.CONNECTION_RESOURCE (size: 8)
  */
-export interface Connection_Resource_s {
-  /** Windows.Win32.Devices.DeviceAndDriverInstallation.Connection_Des_s */
+export interface CONNECTION_RESOURCE {
+  /** Windows.Win32.Devices.DeviceAndDriverInstallation.CONNECTION_DES */
   Connection_Header: Uint8Array | Deno.PointerValue | null;
 }
 
-export const sizeofConnection_Resource_s = 8;
+export const sizeofCONNECTION_RESOURCE = 8;
 
-export function allocConnection_Resource_s(data?: Partial<Connection_Resource_s>): Uint8Array {
-  const buf = new Uint8Array(sizeofConnection_Resource_s);
+export function allocCONNECTION_RESOURCE(data?: Partial<CONNECTION_RESOURCE>): Uint8Array {
+  const buf = new Uint8Array(sizeofCONNECTION_RESOURCE);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
   if (data?.Connection_Header !== undefined) view.setBigUint64(0, data.Connection_Header === null ? 0n : BigInt(util.toPointer(data.Connection_Header)), true);
@@ -4656,9 +4988,9 @@ export function allocHWProfileInfo_sA(data?: Partial<HWProfileInfo_sA>): Uint8Ar
 }
 
 /**
- * Windows.Win32.Devices.DeviceAndDriverInstallation.HWProfileInfo_sW (size: 24)
+ * Windows.Win32.Devices.DeviceAndDriverInstallation.HWPROFILEINFO_W (size: 24)
  */
-export interface HWProfileInfo_sW {
+export interface HWPROFILEINFO_W {
   /** u32 */
   HWPI_ulHWProfile: number;
   /** array */
@@ -4667,10 +4999,10 @@ export interface HWProfileInfo_sW {
   HWPI_dwFlags: number;
 }
 
-export const sizeofHWProfileInfo_sW = 24;
+export const sizeofHWPROFILEINFO_W = 24;
 
-export function allocHWProfileInfo_sW(data?: Partial<HWProfileInfo_sW>): Uint8Array {
-  const buf = new Uint8Array(sizeofHWProfileInfo_sW);
+export function allocHWPROFILEINFO_W(data?: Partial<HWPROFILEINFO_W>): Uint8Array {
+  const buf = new Uint8Array(sizeofHWPROFILEINFO_W);
   const view = new DataView(buf.buffer);
   // 0x00: u32
   if (data?.HWPI_ulHWProfile !== undefined) view.setUint32(0, Number(data.HWPI_ulHWProfile), true);
@@ -5127,7 +5459,7 @@ export type HPROPSHEETPAGE = Deno.PointerValue;
 // Native Libraries
 
 try {
-  var libSETUPAPI = Deno.dlopen("SETUPAPI", {
+  var libSETUPAPI_dll = Deno.dlopen("SETUPAPI.dll", {
     SetupGetInfInformationA: {
       parameters: ["pointer", "u32", "pointer", "u32", "pointer"],
       result: "i32",
@@ -6468,7 +6800,7 @@ try {
 } catch(e) { /* ignore */ }
 
 try {
-  var libCFGMGR32 = Deno.dlopen("CFGMGR32", {
+  var libCFGMGR32_dll = Deno.dlopen("CFGMGR32.dll", {
     CM_Add_Empty_Log_Conf: {
       parameters: ["pointer", "u32", "i32", "u32"],
       result: "u32",
@@ -6514,19 +6846,19 @@ try {
       result: "u32",
     },
     CM_Create_DevNodeA: {
-      parameters: ["pointer", "pointer", "u32", "u32"],
+      parameters: ["pointer", "buffer", "u32", "u32"],
       result: "u32",
     },
     CM_Create_DevNodeW: {
-      parameters: ["pointer", "pointer", "u32", "u32"],
+      parameters: ["pointer", "buffer", "u32", "u32"],
       result: "u32",
     },
     CM_Create_DevNode_ExA: {
-      parameters: ["pointer", "pointer", "u32", "u32", "isize"],
+      parameters: ["pointer", "buffer", "u32", "u32", "isize"],
       result: "u32",
     },
     CM_Create_DevNode_ExW: {
-      parameters: ["pointer", "pointer", "u32", "u32", "isize"],
+      parameters: ["pointer", "buffer", "u32", "u32", "isize"],
       result: "u32",
     },
     CM_Create_Range_List: {
@@ -6838,19 +7170,19 @@ try {
       result: "u32",
     },
     CM_Get_HW_Prof_FlagsA: {
-      parameters: ["pointer", "u32", "pointer", "u32"],
+      parameters: ["buffer", "u32", "pointer", "u32"],
       result: "u32",
     },
     CM_Get_HW_Prof_FlagsW: {
-      parameters: ["pointer", "u32", "pointer", "u32"],
+      parameters: ["buffer", "u32", "pointer", "u32"],
       result: "u32",
     },
     CM_Get_HW_Prof_Flags_ExA: {
-      parameters: ["pointer", "u32", "pointer", "u32", "isize"],
+      parameters: ["buffer", "u32", "pointer", "u32", "isize"],
       result: "u32",
     },
     CM_Get_HW_Prof_Flags_ExW: {
-      parameters: ["pointer", "u32", "pointer", "u32", "isize"],
+      parameters: ["buffer", "u32", "pointer", "u32", "isize"],
       result: "u32",
     },
     CM_Get_Device_Interface_AliasA: {
@@ -6870,35 +7202,35 @@ try {
       result: "u32",
     },
     CM_Get_Device_Interface_ListA: {
-      parameters: ["pointer", "pointer", "buffer", "u32", "u32"],
+      parameters: ["pointer", "buffer", "buffer", "u32", "u32"],
       result: "u32",
     },
     CM_Get_Device_Interface_ListW: {
-      parameters: ["pointer", "pointer", "buffer", "u32", "u32"],
+      parameters: ["pointer", "buffer", "buffer", "u32", "u32"],
       result: "u32",
     },
     CM_Get_Device_Interface_List_ExA: {
-      parameters: ["pointer", "pointer", "buffer", "u32", "u32", "isize"],
+      parameters: ["pointer", "buffer", "buffer", "u32", "u32", "isize"],
       result: "u32",
     },
     CM_Get_Device_Interface_List_ExW: {
-      parameters: ["pointer", "pointer", "buffer", "u32", "u32", "isize"],
+      parameters: ["pointer", "buffer", "buffer", "u32", "u32", "isize"],
       result: "u32",
     },
     CM_Get_Device_Interface_List_SizeA: {
-      parameters: ["pointer", "pointer", "pointer", "u32"],
+      parameters: ["pointer", "pointer", "buffer", "u32"],
       result: "u32",
     },
     CM_Get_Device_Interface_List_SizeW: {
-      parameters: ["pointer", "pointer", "pointer", "u32"],
+      parameters: ["pointer", "pointer", "buffer", "u32"],
       result: "u32",
     },
     CM_Get_Device_Interface_List_Size_ExA: {
-      parameters: ["pointer", "pointer", "pointer", "u32", "isize"],
+      parameters: ["pointer", "pointer", "buffer", "u32", "isize"],
       result: "u32",
     },
     CM_Get_Device_Interface_List_Size_ExW: {
-      parameters: ["pointer", "pointer", "pointer", "u32", "isize"],
+      parameters: ["pointer", "pointer", "buffer", "u32", "isize"],
       result: "u32",
     },
     CM_Get_Device_Interface_PropertyW: {
@@ -6990,19 +7322,19 @@ try {
       result: "u32",
     },
     CM_Locate_DevNodeA: {
-      parameters: ["pointer", "pointer", "u32"],
+      parameters: ["pointer", "buffer", "u32"],
       result: "u32",
     },
     CM_Locate_DevNodeW: {
-      parameters: ["pointer", "pointer", "u32"],
+      parameters: ["pointer", "buffer", "u32"],
       result: "u32",
     },
     CM_Locate_DevNode_ExA: {
-      parameters: ["pointer", "pointer", "u32", "isize"],
+      parameters: ["pointer", "buffer", "u32", "isize"],
       result: "u32",
     },
     CM_Locate_DevNode_ExW: {
-      parameters: ["pointer", "pointer", "u32", "isize"],
+      parameters: ["pointer", "buffer", "u32", "isize"],
       result: "u32",
     },
     CM_Merge_Range_List: {
@@ -7262,19 +7594,19 @@ try {
       result: "u32",
     },
     CM_Set_HW_Prof_FlagsA: {
-      parameters: ["pointer", "u32", "u32", "u32"],
+      parameters: ["buffer", "u32", "u32", "u32"],
       result: "u32",
     },
     CM_Set_HW_Prof_FlagsW: {
-      parameters: ["pointer", "u32", "u32", "u32"],
+      parameters: ["buffer", "u32", "u32", "u32"],
       result: "u32",
     },
     CM_Set_HW_Prof_Flags_ExA: {
-      parameters: ["pointer", "u32", "u32", "u32", "isize"],
+      parameters: ["buffer", "u32", "u32", "u32", "isize"],
       result: "u32",
     },
     CM_Set_HW_Prof_Flags_ExW: {
-      parameters: ["pointer", "u32", "u32", "u32", "isize"],
+      parameters: ["buffer", "u32", "u32", "u32", "isize"],
       result: "u32",
     },
     CM_Setup_DevNode: {
@@ -7393,7 +7725,7 @@ try {
 } catch(e) { /* ignore */ }
 
 try {
-  var libnewdev = Deno.dlopen("newdev", {
+  var libnewdev_dll = Deno.dlopen("newdev.dll", {
     UpdateDriverForPlugAndPlayDevicesA: {
       parameters: ["pointer", "buffer", "buffer", "u32", "pointer"],
       result: "i32",
@@ -7450,7 +7782,7 @@ export function SetupGetInfInformationA(
   ReturnBufferSize: number /* u32 */,
   RequiredSize: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSETUPAPI.SetupGetInfInformationA(util.toPointer(InfSpec), SearchControl, util.toPointer(ReturnBuffer), ReturnBufferSize, util.toPointer(RequiredSize)));
+  return util.boolFromFfi(libSETUPAPI_dll.SetupGetInfInformationA(util.toPointer(InfSpec), SearchControl, util.toPointer(ReturnBuffer), ReturnBufferSize, util.toPointer(RequiredSize)));
 }
 
 export function SetupGetInfInformationW(
@@ -7460,7 +7792,7 @@ export function SetupGetInfInformationW(
   ReturnBufferSize: number /* u32 */,
   RequiredSize: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSETUPAPI.SetupGetInfInformationW(util.toPointer(InfSpec), SearchControl, util.toPointer(ReturnBuffer), ReturnBufferSize, util.toPointer(RequiredSize)));
+  return util.boolFromFfi(libSETUPAPI_dll.SetupGetInfInformationW(util.toPointer(InfSpec), SearchControl, util.toPointer(ReturnBuffer), ReturnBufferSize, util.toPointer(RequiredSize)));
 }
 
 export function SetupQueryInfFileInformationA(
@@ -7470,7 +7802,7 @@ export function SetupQueryInfFileInformationA(
   ReturnBufferSize: number /* u32 */,
   RequiredSize: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSETUPAPI.SetupQueryInfFileInformationA(util.toPointer(InfInformation), InfIndex, util.pstrToFfi(ReturnBuffer), ReturnBufferSize, util.toPointer(RequiredSize)));
+  return util.boolFromFfi(libSETUPAPI_dll.SetupQueryInfFileInformationA(util.toPointer(InfInformation), InfIndex, util.pstrToFfi(ReturnBuffer), ReturnBufferSize, util.toPointer(RequiredSize)));
 }
 
 export function SetupQueryInfFileInformationW(
@@ -7480,7 +7812,7 @@ export function SetupQueryInfFileInformationW(
   ReturnBufferSize: number /* u32 */,
   RequiredSize: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSETUPAPI.SetupQueryInfFileInformationW(util.toPointer(InfInformation), InfIndex, util.pwstrToFfi(ReturnBuffer), ReturnBufferSize, util.toPointer(RequiredSize)));
+  return util.boolFromFfi(libSETUPAPI_dll.SetupQueryInfFileInformationW(util.toPointer(InfInformation), InfIndex, util.pwstrToFfi(ReturnBuffer), ReturnBufferSize, util.toPointer(RequiredSize)));
 }
 
 export function SetupQueryInfOriginalFileInformationA(
@@ -7489,7 +7821,7 @@ export function SetupQueryInfOriginalFileInformationA(
   AlternatePlatformInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
   OriginalFileInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSETUPAPI.SetupQueryInfOriginalFileInformationA(util.toPointer(InfInformation), InfIndex, util.toPointer(AlternatePlatformInfo), util.toPointer(OriginalFileInfo)));
+  return util.boolFromFfi(libSETUPAPI_dll.SetupQueryInfOriginalFileInformationA(util.toPointer(InfInformation), InfIndex, util.toPointer(AlternatePlatformInfo), util.toPointer(OriginalFileInfo)));
 }
 
 export function SetupQueryInfOriginalFileInformationW(
@@ -7498,7 +7830,7 @@ export function SetupQueryInfOriginalFileInformationW(
   AlternatePlatformInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
   OriginalFileInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSETUPAPI.SetupQueryInfOriginalFileInformationW(util.toPointer(InfInformation), InfIndex, util.toPointer(AlternatePlatformInfo), util.toPointer(OriginalFileInfo)));
+  return util.boolFromFfi(libSETUPAPI_dll.SetupQueryInfOriginalFileInformationW(util.toPointer(InfInformation), InfIndex, util.toPointer(AlternatePlatformInfo), util.toPointer(OriginalFileInfo)));
 }
 
 export function SetupQueryInfVersionInformationA(
@@ -7509,7 +7841,7 @@ export function SetupQueryInfVersionInformationA(
   ReturnBufferSize: number /* u32 */,
   RequiredSize: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSETUPAPI.SetupQueryInfVersionInformationA(util.toPointer(InfInformation), InfIndex, util.pstrToFfi(Key), util.pstrToFfi(ReturnBuffer), ReturnBufferSize, util.toPointer(RequiredSize)));
+  return util.boolFromFfi(libSETUPAPI_dll.SetupQueryInfVersionInformationA(util.toPointer(InfInformation), InfIndex, util.pstrToFfi(Key), util.pstrToFfi(ReturnBuffer), ReturnBufferSize, util.toPointer(RequiredSize)));
 }
 
 export function SetupQueryInfVersionInformationW(
@@ -7520,7 +7852,7 @@ export function SetupQueryInfVersionInformationW(
   ReturnBufferSize: number /* u32 */,
   RequiredSize: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSETUPAPI.SetupQueryInfVersionInformationW(util.toPointer(InfInformation), InfIndex, util.pwstrToFfi(Key), util.pwstrToFfi(ReturnBuffer), ReturnBufferSize, util.toPointer(RequiredSize)));
+  return util.boolFromFfi(libSETUPAPI_dll.SetupQueryInfVersionInformationW(util.toPointer(InfInformation), InfIndex, util.pwstrToFfi(Key), util.pwstrToFfi(ReturnBuffer), ReturnBufferSize, util.toPointer(RequiredSize)));
 }
 
 export function SetupGetInfDriverStoreLocationA(
@@ -7531,7 +7863,7 @@ export function SetupGetInfDriverStoreLocationA(
   ReturnBufferSize: number /* u32 */,
   RequiredSize: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSETUPAPI.SetupGetInfDriverStoreLocationA(util.pstrToFfi(FileName), util.toPointer(AlternatePlatformInfo), util.pstrToFfi(LocaleName), util.pstrToFfi(ReturnBuffer), ReturnBufferSize, util.toPointer(RequiredSize)));
+  return util.boolFromFfi(libSETUPAPI_dll.SetupGetInfDriverStoreLocationA(util.pstrToFfi(FileName), util.toPointer(AlternatePlatformInfo), util.pstrToFfi(LocaleName), util.pstrToFfi(ReturnBuffer), ReturnBufferSize, util.toPointer(RequiredSize)));
 }
 
 export function SetupGetInfDriverStoreLocationW(
@@ -7542,7 +7874,7 @@ export function SetupGetInfDriverStoreLocationW(
   ReturnBufferSize: number /* u32 */,
   RequiredSize: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSETUPAPI.SetupGetInfDriverStoreLocationW(util.pwstrToFfi(FileName), util.toPointer(AlternatePlatformInfo), util.pwstrToFfi(LocaleName), util.pwstrToFfi(ReturnBuffer), ReturnBufferSize, util.toPointer(RequiredSize)));
+  return util.boolFromFfi(libSETUPAPI_dll.SetupGetInfDriverStoreLocationW(util.pwstrToFfi(FileName), util.toPointer(AlternatePlatformInfo), util.pwstrToFfi(LocaleName), util.pwstrToFfi(ReturnBuffer), ReturnBufferSize, util.toPointer(RequiredSize)));
 }
 
 export function SetupGetInfPublishedNameA(
@@ -7551,7 +7883,7 @@ export function SetupGetInfPublishedNameA(
   ReturnBufferSize: number /* u32 */,
   RequiredSize: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSETUPAPI.SetupGetInfPublishedNameA(util.pstrToFfi(DriverStoreLocation), util.pstrToFfi(ReturnBuffer), ReturnBufferSize, util.toPointer(RequiredSize)));
+  return util.boolFromFfi(libSETUPAPI_dll.SetupGetInfPublishedNameA(util.pstrToFfi(DriverStoreLocation), util.pstrToFfi(ReturnBuffer), ReturnBufferSize, util.toPointer(RequiredSize)));
 }
 
 export function SetupGetInfPublishedNameW(
@@ -7560,7 +7892,7 @@ export function SetupGetInfPublishedNameW(
   ReturnBufferSize: number /* u32 */,
   RequiredSize: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSETUPAPI.SetupGetInfPublishedNameW(util.pwstrToFfi(DriverStoreLocation), util.pwstrToFfi(ReturnBuffer), ReturnBufferSize, util.toPointer(RequiredSize)));
+  return util.boolFromFfi(libSETUPAPI_dll.SetupGetInfPublishedNameW(util.pwstrToFfi(DriverStoreLocation), util.pwstrToFfi(ReturnBuffer), ReturnBufferSize, util.toPointer(RequiredSize)));
 }
 
 export function SetupGetInfFileListA(
@@ -7570,7 +7902,7 @@ export function SetupGetInfFileListA(
   ReturnBufferSize: number /* u32 */,
   RequiredSize: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSETUPAPI.SetupGetInfFileListA(util.pstrToFfi(DirectoryPath), InfStyle, util.pstrToFfi(ReturnBuffer), ReturnBufferSize, util.toPointer(RequiredSize)));
+  return util.boolFromFfi(libSETUPAPI_dll.SetupGetInfFileListA(util.pstrToFfi(DirectoryPath), InfStyle, util.pstrToFfi(ReturnBuffer), ReturnBufferSize, util.toPointer(RequiredSize)));
 }
 
 export function SetupGetInfFileListW(
@@ -7580,7 +7912,7 @@ export function SetupGetInfFileListW(
   ReturnBufferSize: number /* u32 */,
   RequiredSize: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSETUPAPI.SetupGetInfFileListW(util.pwstrToFfi(DirectoryPath), InfStyle, util.pwstrToFfi(ReturnBuffer), ReturnBufferSize, util.toPointer(RequiredSize)));
+  return util.boolFromFfi(libSETUPAPI_dll.SetupGetInfFileListW(util.pwstrToFfi(DirectoryPath), InfStyle, util.pwstrToFfi(ReturnBuffer), ReturnBufferSize, util.toPointer(RequiredSize)));
 }
 
 export function SetupOpenInfFileW(
@@ -7589,7 +7921,7 @@ export function SetupOpenInfFileW(
   InfStyle: number /* u32 */,
   ErrorLine: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libSETUPAPI.SetupOpenInfFileW(util.pwstrToFfi(FileName), util.pwstrToFfi(InfClass), InfStyle, util.toPointer(ErrorLine)));
+  return util.pointerFromFfi(libSETUPAPI_dll.SetupOpenInfFileW(util.pwstrToFfi(FileName), util.pwstrToFfi(InfClass), InfStyle, util.toPointer(ErrorLine)));
 }
 
 export function SetupOpenInfFileA(
@@ -7598,11 +7930,11 @@ export function SetupOpenInfFileA(
   InfStyle: number /* u32 */,
   ErrorLine: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libSETUPAPI.SetupOpenInfFileA(util.pstrToFfi(FileName), util.pstrToFfi(InfClass), InfStyle, util.toPointer(ErrorLine)));
+  return util.pointerFromFfi(libSETUPAPI_dll.SetupOpenInfFileA(util.pstrToFfi(FileName), util.pstrToFfi(InfClass), InfStyle, util.toPointer(ErrorLine)));
 }
 
 export function SetupOpenMasterInf(): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libSETUPAPI.SetupOpenMasterInf());
+  return util.pointerFromFfi(libSETUPAPI_dll.SetupOpenMasterInf());
 }
 
 export function SetupOpenAppendInfFileW(
@@ -7610,7 +7942,7 @@ export function SetupOpenAppendInfFileW(
   InfHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
   ErrorLine: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSETUPAPI.SetupOpenAppendInfFileW(util.pwstrToFfi(FileName), util.toPointer(InfHandle), util.toPointer(ErrorLine)));
+  return util.boolFromFfi(libSETUPAPI_dll.SetupOpenAppendInfFileW(util.pwstrToFfi(FileName), util.toPointer(InfHandle), util.toPointer(ErrorLine)));
 }
 
 export function SetupOpenAppendInfFileA(
@@ -7618,13 +7950,13 @@ export function SetupOpenAppendInfFileA(
   InfHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
   ErrorLine: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSETUPAPI.SetupOpenAppendInfFileA(util.pstrToFfi(FileName), util.toPointer(InfHandle), util.toPointer(ErrorLine)));
+  return util.boolFromFfi(libSETUPAPI_dll.SetupOpenAppendInfFileA(util.pstrToFfi(FileName), util.toPointer(InfHandle), util.toPointer(ErrorLine)));
 }
 
 export function SetupCloseInfFile(
   InfHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): void /* void */ {
-  return libSETUPAPI.SetupCloseInfFile(util.toPointer(InfHandle));
+  return libSETUPAPI_dll.SetupCloseInfFile(util.toPointer(InfHandle));
 }
 
 export function SetupFindFirstLineA(
@@ -7633,7 +7965,7 @@ export function SetupFindFirstLineA(
   Key: string | null /* Windows.Win32.Foundation.PSTR */,
   Context: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSETUPAPI.SetupFindFirstLineA(util.toPointer(InfHandle), util.pstrToFfi(Section), util.pstrToFfi(Key), util.toPointer(Context)));
+  return util.boolFromFfi(libSETUPAPI_dll.SetupFindFirstLineA(util.toPointer(InfHandle), util.pstrToFfi(Section), util.pstrToFfi(Key), util.toPointer(Context)));
 }
 
 export function SetupFindFirstLineW(
@@ -7642,14 +7974,14 @@ export function SetupFindFirstLineW(
   Key: string | null /* Windows.Win32.Foundation.PWSTR */,
   Context: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSETUPAPI.SetupFindFirstLineW(util.toPointer(InfHandle), util.pwstrToFfi(Section), util.pwstrToFfi(Key), util.toPointer(Context)));
+  return util.boolFromFfi(libSETUPAPI_dll.SetupFindFirstLineW(util.toPointer(InfHandle), util.pwstrToFfi(Section), util.pwstrToFfi(Key), util.toPointer(Context)));
 }
 
 export function SetupFindNextLine(
   ContextIn: Deno.PointerValue | Uint8Array | null /* ptr */,
   ContextOut: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSETUPAPI.SetupFindNextLine(util.toPointer(ContextIn), util.toPointer(ContextOut)));
+  return util.boolFromFfi(libSETUPAPI_dll.SetupFindNextLine(util.toPointer(ContextIn), util.toPointer(ContextOut)));
 }
 
 export function SetupFindNextMatchLineA(
@@ -7657,7 +7989,7 @@ export function SetupFindNextMatchLineA(
   Key: string | null /* Windows.Win32.Foundation.PSTR */,
   ContextOut: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSETUPAPI.SetupFindNextMatchLineA(util.toPointer(ContextIn), util.pstrToFfi(Key), util.toPointer(ContextOut)));
+  return util.boolFromFfi(libSETUPAPI_dll.SetupFindNextMatchLineA(util.toPointer(ContextIn), util.pstrToFfi(Key), util.toPointer(ContextOut)));
 }
 
 export function SetupFindNextMatchLineW(
@@ -7665,7 +7997,7 @@ export function SetupFindNextMatchLineW(
   Key: string | null /* Windows.Win32.Foundation.PWSTR */,
   ContextOut: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSETUPAPI.SetupFindNextMatchLineW(util.toPointer(ContextIn), util.pwstrToFfi(Key), util.toPointer(ContextOut)));
+  return util.boolFromFfi(libSETUPAPI_dll.SetupFindNextMatchLineW(util.toPointer(ContextIn), util.pwstrToFfi(Key), util.toPointer(ContextOut)));
 }
 
 export function SetupGetLineByIndexA(
@@ -7674,7 +8006,7 @@ export function SetupGetLineByIndexA(
   Index: number /* u32 */,
   Context: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSETUPAPI.SetupGetLineByIndexA(util.toPointer(InfHandle), util.pstrToFfi(Section), Index, util.toPointer(Context)));
+  return util.boolFromFfi(libSETUPAPI_dll.SetupGetLineByIndexA(util.toPointer(InfHandle), util.pstrToFfi(Section), Index, util.toPointer(Context)));
 }
 
 export function SetupGetLineByIndexW(
@@ -7683,21 +8015,21 @@ export function SetupGetLineByIndexW(
   Index: number /* u32 */,
   Context: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSETUPAPI.SetupGetLineByIndexW(util.toPointer(InfHandle), util.pwstrToFfi(Section), Index, util.toPointer(Context)));
+  return util.boolFromFfi(libSETUPAPI_dll.SetupGetLineByIndexW(util.toPointer(InfHandle), util.pwstrToFfi(Section), Index, util.toPointer(Context)));
 }
 
 export function SetupGetLineCountA(
   InfHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
   Section: string | null /* Windows.Win32.Foundation.PSTR */,
 ): number /* i32 */ {
-  return libSETUPAPI.SetupGetLineCountA(util.toPointer(InfHandle), util.pstrToFfi(Section));
+  return libSETUPAPI_dll.SetupGetLineCountA(util.toPointer(InfHandle), util.pstrToFfi(Section));
 }
 
 export function SetupGetLineCountW(
   InfHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
   Section: string | null /* Windows.Win32.Foundation.PWSTR */,
 ): number /* i32 */ {
-  return libSETUPAPI.SetupGetLineCountW(util.toPointer(InfHandle), util.pwstrToFfi(Section));
+  return libSETUPAPI_dll.SetupGetLineCountW(util.toPointer(InfHandle), util.pwstrToFfi(Section));
 }
 
 export function SetupGetLineTextA(
@@ -7709,7 +8041,7 @@ export function SetupGetLineTextA(
   ReturnBufferSize: number /* u32 */,
   RequiredSize: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSETUPAPI.SetupGetLineTextA(util.toPointer(Context), util.toPointer(InfHandle), util.pstrToFfi(Section), util.pstrToFfi(Key), util.pstrToFfi(ReturnBuffer), ReturnBufferSize, util.toPointer(RequiredSize)));
+  return util.boolFromFfi(libSETUPAPI_dll.SetupGetLineTextA(util.toPointer(Context), util.toPointer(InfHandle), util.pstrToFfi(Section), util.pstrToFfi(Key), util.pstrToFfi(ReturnBuffer), ReturnBufferSize, util.toPointer(RequiredSize)));
 }
 
 export function SetupGetLineTextW(
@@ -7721,13 +8053,13 @@ export function SetupGetLineTextW(
   ReturnBufferSize: number /* u32 */,
   RequiredSize: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSETUPAPI.SetupGetLineTextW(util.toPointer(Context), util.toPointer(InfHandle), util.pwstrToFfi(Section), util.pwstrToFfi(Key), util.pwstrToFfi(ReturnBuffer), ReturnBufferSize, util.toPointer(RequiredSize)));
+  return util.boolFromFfi(libSETUPAPI_dll.SetupGetLineTextW(util.toPointer(Context), util.toPointer(InfHandle), util.pwstrToFfi(Section), util.pwstrToFfi(Key), util.pwstrToFfi(ReturnBuffer), ReturnBufferSize, util.toPointer(RequiredSize)));
 }
 
 export function SetupGetFieldCount(
   Context: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libSETUPAPI.SetupGetFieldCount(util.toPointer(Context));
+  return libSETUPAPI_dll.SetupGetFieldCount(util.toPointer(Context));
 }
 
 export function SetupGetStringFieldA(
@@ -7737,7 +8069,7 @@ export function SetupGetStringFieldA(
   ReturnBufferSize: number /* u32 */,
   RequiredSize: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSETUPAPI.SetupGetStringFieldA(util.toPointer(Context), FieldIndex, util.pstrToFfi(ReturnBuffer), ReturnBufferSize, util.toPointer(RequiredSize)));
+  return util.boolFromFfi(libSETUPAPI_dll.SetupGetStringFieldA(util.toPointer(Context), FieldIndex, util.pstrToFfi(ReturnBuffer), ReturnBufferSize, util.toPointer(RequiredSize)));
 }
 
 export function SetupGetStringFieldW(
@@ -7747,7 +8079,7 @@ export function SetupGetStringFieldW(
   ReturnBufferSize: number /* u32 */,
   RequiredSize: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSETUPAPI.SetupGetStringFieldW(util.toPointer(Context), FieldIndex, util.pwstrToFfi(ReturnBuffer), ReturnBufferSize, util.toPointer(RequiredSize)));
+  return util.boolFromFfi(libSETUPAPI_dll.SetupGetStringFieldW(util.toPointer(Context), FieldIndex, util.pwstrToFfi(ReturnBuffer), ReturnBufferSize, util.toPointer(RequiredSize)));
 }
 
 export function SetupGetIntField(
@@ -7755,7 +8087,7 @@ export function SetupGetIntField(
   FieldIndex: number /* u32 */,
   IntegerValue: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSETUPAPI.SetupGetIntField(util.toPointer(Context), FieldIndex, util.toPointer(IntegerValue)));
+  return util.boolFromFfi(libSETUPAPI_dll.SetupGetIntField(util.toPointer(Context), FieldIndex, util.toPointer(IntegerValue)));
 }
 
 export function SetupGetMultiSzFieldA(
@@ -7765,7 +8097,7 @@ export function SetupGetMultiSzFieldA(
   ReturnBufferSize: number /* u32 */,
   RequiredSize: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSETUPAPI.SetupGetMultiSzFieldA(util.toPointer(Context), FieldIndex, util.pstrToFfi(ReturnBuffer), ReturnBufferSize, util.toPointer(RequiredSize)));
+  return util.boolFromFfi(libSETUPAPI_dll.SetupGetMultiSzFieldA(util.toPointer(Context), FieldIndex, util.pstrToFfi(ReturnBuffer), ReturnBufferSize, util.toPointer(RequiredSize)));
 }
 
 export function SetupGetMultiSzFieldW(
@@ -7775,7 +8107,7 @@ export function SetupGetMultiSzFieldW(
   ReturnBufferSize: number /* u32 */,
   RequiredSize: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSETUPAPI.SetupGetMultiSzFieldW(util.toPointer(Context), FieldIndex, util.pwstrToFfi(ReturnBuffer), ReturnBufferSize, util.toPointer(RequiredSize)));
+  return util.boolFromFfi(libSETUPAPI_dll.SetupGetMultiSzFieldW(util.toPointer(Context), FieldIndex, util.pwstrToFfi(ReturnBuffer), ReturnBufferSize, util.toPointer(RequiredSize)));
 }
 
 export function SetupGetBinaryField(
@@ -7785,7 +8117,7 @@ export function SetupGetBinaryField(
   ReturnBufferSize: number /* u32 */,
   RequiredSize: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSETUPAPI.SetupGetBinaryField(util.toPointer(Context), FieldIndex, util.toPointer(ReturnBuffer), ReturnBufferSize, util.toPointer(RequiredSize)));
+  return util.boolFromFfi(libSETUPAPI_dll.SetupGetBinaryField(util.toPointer(Context), FieldIndex, util.toPointer(ReturnBuffer), ReturnBufferSize, util.toPointer(RequiredSize)));
 }
 
 export function SetupGetFileCompressionInfoA(
@@ -7795,7 +8127,7 @@ export function SetupGetFileCompressionInfoA(
   TargetFileSize: Deno.PointerValue | Uint8Array | null /* ptr */,
   CompressionType: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libSETUPAPI.SetupGetFileCompressionInfoA(util.pstrToFfi(SourceFileName), util.toPointer(ActualSourceFileName), util.toPointer(SourceFileSize), util.toPointer(TargetFileSize), util.toPointer(CompressionType));
+  return libSETUPAPI_dll.SetupGetFileCompressionInfoA(util.pstrToFfi(SourceFileName), util.toPointer(ActualSourceFileName), util.toPointer(SourceFileSize), util.toPointer(TargetFileSize), util.toPointer(CompressionType));
 }
 
 export function SetupGetFileCompressionInfoW(
@@ -7805,7 +8137,7 @@ export function SetupGetFileCompressionInfoW(
   TargetFileSize: Deno.PointerValue | Uint8Array | null /* ptr */,
   CompressionType: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libSETUPAPI.SetupGetFileCompressionInfoW(util.pwstrToFfi(SourceFileName), util.toPointer(ActualSourceFileName), util.toPointer(SourceFileSize), util.toPointer(TargetFileSize), util.toPointer(CompressionType));
+  return libSETUPAPI_dll.SetupGetFileCompressionInfoW(util.pwstrToFfi(SourceFileName), util.toPointer(ActualSourceFileName), util.toPointer(SourceFileSize), util.toPointer(TargetFileSize), util.toPointer(CompressionType));
 }
 
 export function SetupGetFileCompressionInfoExA(
@@ -7817,7 +8149,7 @@ export function SetupGetFileCompressionInfoExA(
   TargetFileSize: Deno.PointerValue | Uint8Array | null /* ptr */,
   CompressionType: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSETUPAPI.SetupGetFileCompressionInfoExA(util.pstrToFfi(SourceFileName), util.pstrToFfi(ActualSourceFileNameBuffer), ActualSourceFileNameBufferLen, util.toPointer(RequiredBufferLen), util.toPointer(SourceFileSize), util.toPointer(TargetFileSize), util.toPointer(CompressionType)));
+  return util.boolFromFfi(libSETUPAPI_dll.SetupGetFileCompressionInfoExA(util.pstrToFfi(SourceFileName), util.pstrToFfi(ActualSourceFileNameBuffer), ActualSourceFileNameBufferLen, util.toPointer(RequiredBufferLen), util.toPointer(SourceFileSize), util.toPointer(TargetFileSize), util.toPointer(CompressionType)));
 }
 
 export function SetupGetFileCompressionInfoExW(
@@ -7829,7 +8161,7 @@ export function SetupGetFileCompressionInfoExW(
   TargetFileSize: Deno.PointerValue | Uint8Array | null /* ptr */,
   CompressionType: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSETUPAPI.SetupGetFileCompressionInfoExW(util.pwstrToFfi(SourceFileName), util.pwstrToFfi(ActualSourceFileNameBuffer), ActualSourceFileNameBufferLen, util.toPointer(RequiredBufferLen), util.toPointer(SourceFileSize), util.toPointer(TargetFileSize), util.toPointer(CompressionType)));
+  return util.boolFromFfi(libSETUPAPI_dll.SetupGetFileCompressionInfoExW(util.pwstrToFfi(SourceFileName), util.pwstrToFfi(ActualSourceFileNameBuffer), ActualSourceFileNameBufferLen, util.toPointer(RequiredBufferLen), util.toPointer(SourceFileSize), util.toPointer(TargetFileSize), util.toPointer(CompressionType)));
 }
 
 export function SetupDecompressOrCopyFileA(
@@ -7837,7 +8169,7 @@ export function SetupDecompressOrCopyFileA(
   TargetFileName: string | null /* Windows.Win32.Foundation.PSTR */,
   CompressionType: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libSETUPAPI.SetupDecompressOrCopyFileA(util.pstrToFfi(SourceFileName), util.pstrToFfi(TargetFileName), util.toPointer(CompressionType));
+  return libSETUPAPI_dll.SetupDecompressOrCopyFileA(util.pstrToFfi(SourceFileName), util.pstrToFfi(TargetFileName), util.toPointer(CompressionType));
 }
 
 export function SetupDecompressOrCopyFileW(
@@ -7845,7 +8177,7 @@ export function SetupDecompressOrCopyFileW(
   TargetFileName: string | null /* Windows.Win32.Foundation.PWSTR */,
   CompressionType: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libSETUPAPI.SetupDecompressOrCopyFileW(util.pwstrToFfi(SourceFileName), util.pwstrToFfi(TargetFileName), util.toPointer(CompressionType));
+  return libSETUPAPI_dll.SetupDecompressOrCopyFileW(util.pwstrToFfi(SourceFileName), util.pwstrToFfi(TargetFileName), util.toPointer(CompressionType));
 }
 
 export function SetupGetSourceFileLocationA(
@@ -7857,7 +8189,7 @@ export function SetupGetSourceFileLocationA(
   ReturnBufferSize: number /* u32 */,
   RequiredSize: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSETUPAPI.SetupGetSourceFileLocationA(util.toPointer(InfHandle), util.toPointer(InfContext), util.pstrToFfi(FileName), util.toPointer(SourceId), util.pstrToFfi(ReturnBuffer), ReturnBufferSize, util.toPointer(RequiredSize)));
+  return util.boolFromFfi(libSETUPAPI_dll.SetupGetSourceFileLocationA(util.toPointer(InfHandle), util.toPointer(InfContext), util.pstrToFfi(FileName), util.toPointer(SourceId), util.pstrToFfi(ReturnBuffer), ReturnBufferSize, util.toPointer(RequiredSize)));
 }
 
 export function SetupGetSourceFileLocationW(
@@ -7869,7 +8201,7 @@ export function SetupGetSourceFileLocationW(
   ReturnBufferSize: number /* u32 */,
   RequiredSize: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSETUPAPI.SetupGetSourceFileLocationW(util.toPointer(InfHandle), util.toPointer(InfContext), util.pwstrToFfi(FileName), util.toPointer(SourceId), util.pwstrToFfi(ReturnBuffer), ReturnBufferSize, util.toPointer(RequiredSize)));
+  return util.boolFromFfi(libSETUPAPI_dll.SetupGetSourceFileLocationW(util.toPointer(InfHandle), util.toPointer(InfContext), util.pwstrToFfi(FileName), util.toPointer(SourceId), util.pwstrToFfi(ReturnBuffer), ReturnBufferSize, util.toPointer(RequiredSize)));
 }
 
 export function SetupGetSourceFileSizeA(
@@ -7880,7 +8212,7 @@ export function SetupGetSourceFileSizeA(
   FileSize: Deno.PointerValue | Uint8Array | null /* ptr */,
   RoundingFactor: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSETUPAPI.SetupGetSourceFileSizeA(util.toPointer(InfHandle), util.toPointer(InfContext), util.pstrToFfi(FileName), util.pstrToFfi(Section), util.toPointer(FileSize), RoundingFactor));
+  return util.boolFromFfi(libSETUPAPI_dll.SetupGetSourceFileSizeA(util.toPointer(InfHandle), util.toPointer(InfContext), util.pstrToFfi(FileName), util.pstrToFfi(Section), util.toPointer(FileSize), RoundingFactor));
 }
 
 export function SetupGetSourceFileSizeW(
@@ -7891,7 +8223,7 @@ export function SetupGetSourceFileSizeW(
   FileSize: Deno.PointerValue | Uint8Array | null /* ptr */,
   RoundingFactor: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSETUPAPI.SetupGetSourceFileSizeW(util.toPointer(InfHandle), util.toPointer(InfContext), util.pwstrToFfi(FileName), util.pwstrToFfi(Section), util.toPointer(FileSize), RoundingFactor));
+  return util.boolFromFfi(libSETUPAPI_dll.SetupGetSourceFileSizeW(util.toPointer(InfHandle), util.toPointer(InfContext), util.pwstrToFfi(FileName), util.pwstrToFfi(Section), util.toPointer(FileSize), RoundingFactor));
 }
 
 export function SetupGetTargetPathA(
@@ -7902,7 +8234,7 @@ export function SetupGetTargetPathA(
   ReturnBufferSize: number /* u32 */,
   RequiredSize: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSETUPAPI.SetupGetTargetPathA(util.toPointer(InfHandle), util.toPointer(InfContext), util.pstrToFfi(Section), util.pstrToFfi(ReturnBuffer), ReturnBufferSize, util.toPointer(RequiredSize)));
+  return util.boolFromFfi(libSETUPAPI_dll.SetupGetTargetPathA(util.toPointer(InfHandle), util.toPointer(InfContext), util.pstrToFfi(Section), util.pstrToFfi(ReturnBuffer), ReturnBufferSize, util.toPointer(RequiredSize)));
 }
 
 export function SetupGetTargetPathW(
@@ -7913,7 +8245,7 @@ export function SetupGetTargetPathW(
   ReturnBufferSize: number /* u32 */,
   RequiredSize: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSETUPAPI.SetupGetTargetPathW(util.toPointer(InfHandle), util.toPointer(InfContext), util.pwstrToFfi(Section), util.pwstrToFfi(ReturnBuffer), ReturnBufferSize, util.toPointer(RequiredSize)));
+  return util.boolFromFfi(libSETUPAPI_dll.SetupGetTargetPathW(util.toPointer(InfHandle), util.toPointer(InfContext), util.pwstrToFfi(Section), util.pwstrToFfi(ReturnBuffer), ReturnBufferSize, util.toPointer(RequiredSize)));
 }
 
 export function SetupSetSourceListA(
@@ -7921,7 +8253,7 @@ export function SetupSetSourceListA(
   SourceList: Deno.PointerValue | Uint8Array | null /* ptr */,
   SourceCount: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSETUPAPI.SetupSetSourceListA(Flags, util.toPointer(SourceList), SourceCount));
+  return util.boolFromFfi(libSETUPAPI_dll.SetupSetSourceListA(Flags, util.toPointer(SourceList), SourceCount));
 }
 
 export function SetupSetSourceListW(
@@ -7929,39 +8261,39 @@ export function SetupSetSourceListW(
   SourceList: Deno.PointerValue | Uint8Array | null /* ptr */,
   SourceCount: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSETUPAPI.SetupSetSourceListW(Flags, util.toPointer(SourceList), SourceCount));
+  return util.boolFromFfi(libSETUPAPI_dll.SetupSetSourceListW(Flags, util.toPointer(SourceList), SourceCount));
 }
 
 export function SetupCancelTemporarySourceList(): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSETUPAPI.SetupCancelTemporarySourceList());
+  return util.boolFromFfi(libSETUPAPI_dll.SetupCancelTemporarySourceList());
 }
 
 export function SetupAddToSourceListA(
   Flags: number /* u32 */,
   Source: string | null /* Windows.Win32.Foundation.PSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSETUPAPI.SetupAddToSourceListA(Flags, util.pstrToFfi(Source)));
+  return util.boolFromFfi(libSETUPAPI_dll.SetupAddToSourceListA(Flags, util.pstrToFfi(Source)));
 }
 
 export function SetupAddToSourceListW(
   Flags: number /* u32 */,
   Source: string | null /* Windows.Win32.Foundation.PWSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSETUPAPI.SetupAddToSourceListW(Flags, util.pwstrToFfi(Source)));
+  return util.boolFromFfi(libSETUPAPI_dll.SetupAddToSourceListW(Flags, util.pwstrToFfi(Source)));
 }
 
 export function SetupRemoveFromSourceListA(
   Flags: number /* u32 */,
   Source: string | null /* Windows.Win32.Foundation.PSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSETUPAPI.SetupRemoveFromSourceListA(Flags, util.pstrToFfi(Source)));
+  return util.boolFromFfi(libSETUPAPI_dll.SetupRemoveFromSourceListA(Flags, util.pstrToFfi(Source)));
 }
 
 export function SetupRemoveFromSourceListW(
   Flags: number /* u32 */,
   Source: string | null /* Windows.Win32.Foundation.PWSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSETUPAPI.SetupRemoveFromSourceListW(Flags, util.pwstrToFfi(Source)));
+  return util.boolFromFfi(libSETUPAPI_dll.SetupRemoveFromSourceListW(Flags, util.pwstrToFfi(Source)));
 }
 
 export function SetupQuerySourceListA(
@@ -7969,7 +8301,7 @@ export function SetupQuerySourceListA(
   List: Deno.PointerValue | Uint8Array | null /* ptr */,
   Count: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSETUPAPI.SetupQuerySourceListA(Flags, util.toPointer(List), util.toPointer(Count)));
+  return util.boolFromFfi(libSETUPAPI_dll.SetupQuerySourceListA(Flags, util.toPointer(List), util.toPointer(Count)));
 }
 
 export function SetupQuerySourceListW(
@@ -7977,21 +8309,21 @@ export function SetupQuerySourceListW(
   List: Deno.PointerValue | Uint8Array | null /* ptr */,
   Count: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSETUPAPI.SetupQuerySourceListW(Flags, util.toPointer(List), util.toPointer(Count)));
+  return util.boolFromFfi(libSETUPAPI_dll.SetupQuerySourceListW(Flags, util.toPointer(List), util.toPointer(Count)));
 }
 
 export function SetupFreeSourceListA(
   List: Deno.PointerValue | Uint8Array | null /* ptr */,
   Count: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSETUPAPI.SetupFreeSourceListA(util.toPointer(List), Count));
+  return util.boolFromFfi(libSETUPAPI_dll.SetupFreeSourceListA(util.toPointer(List), Count));
 }
 
 export function SetupFreeSourceListW(
   List: Deno.PointerValue | Uint8Array | null /* ptr */,
   Count: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSETUPAPI.SetupFreeSourceListW(util.toPointer(List), Count));
+  return util.boolFromFfi(libSETUPAPI_dll.SetupFreeSourceListW(util.toPointer(List), Count));
 }
 
 export function SetupPromptForDiskA(
@@ -8006,7 +8338,7 @@ export function SetupPromptForDiskA(
   PathBufferSize: number /* u32 */,
   PathRequiredSize: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libSETUPAPI.SetupPromptForDiskA(util.hwndToFfi(hwndParent), util.pstrToFfi(DialogTitle), util.pstrToFfi(DiskName), util.pstrToFfi(PathToSource), util.pstrToFfi(FileSought), util.pstrToFfi(TagFile), DiskPromptStyle, util.pstrToFfi(PathBuffer), PathBufferSize, util.toPointer(PathRequiredSize));
+  return libSETUPAPI_dll.SetupPromptForDiskA(util.hwndToFfi(hwndParent), util.pstrToFfi(DialogTitle), util.pstrToFfi(DiskName), util.pstrToFfi(PathToSource), util.pstrToFfi(FileSought), util.pstrToFfi(TagFile), DiskPromptStyle, util.pstrToFfi(PathBuffer), PathBufferSize, util.toPointer(PathRequiredSize));
 }
 
 export function SetupPromptForDiskW(
@@ -8021,7 +8353,7 @@ export function SetupPromptForDiskW(
   PathBufferSize: number /* u32 */,
   PathRequiredSize: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libSETUPAPI.SetupPromptForDiskW(util.hwndToFfi(hwndParent), util.pwstrToFfi(DialogTitle), util.pwstrToFfi(DiskName), util.pwstrToFfi(PathToSource), util.pwstrToFfi(FileSought), util.pwstrToFfi(TagFile), DiskPromptStyle, util.pwstrToFfi(PathBuffer), PathBufferSize, util.toPointer(PathRequiredSize));
+  return libSETUPAPI_dll.SetupPromptForDiskW(util.hwndToFfi(hwndParent), util.pwstrToFfi(DialogTitle), util.pwstrToFfi(DiskName), util.pwstrToFfi(PathToSource), util.pwstrToFfi(FileSought), util.pwstrToFfi(TagFile), DiskPromptStyle, util.pwstrToFfi(PathBuffer), PathBufferSize, util.toPointer(PathRequiredSize));
 }
 
 export function SetupCopyErrorA(
@@ -8037,7 +8369,7 @@ export function SetupCopyErrorA(
   PathBufferSize: number /* u32 */,
   PathRequiredSize: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libSETUPAPI.SetupCopyErrorA(util.hwndToFfi(hwndParent), util.pstrToFfi(DialogTitle), util.pstrToFfi(DiskName), util.pstrToFfi(PathToSource), util.pstrToFfi(SourceFile), util.pstrToFfi(TargetPathFile), Win32ErrorCode, Style, util.pstrToFfi(PathBuffer), PathBufferSize, util.toPointer(PathRequiredSize));
+  return libSETUPAPI_dll.SetupCopyErrorA(util.hwndToFfi(hwndParent), util.pstrToFfi(DialogTitle), util.pstrToFfi(DiskName), util.pstrToFfi(PathToSource), util.pstrToFfi(SourceFile), util.pstrToFfi(TargetPathFile), Win32ErrorCode, Style, util.pstrToFfi(PathBuffer), PathBufferSize, util.toPointer(PathRequiredSize));
 }
 
 export function SetupCopyErrorW(
@@ -8053,7 +8385,7 @@ export function SetupCopyErrorW(
   PathBufferSize: number /* u32 */,
   PathRequiredSize: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libSETUPAPI.SetupCopyErrorW(util.hwndToFfi(hwndParent), util.pwstrToFfi(DialogTitle), util.pwstrToFfi(DiskName), util.pwstrToFfi(PathToSource), util.pwstrToFfi(SourceFile), util.pwstrToFfi(TargetPathFile), Win32ErrorCode, Style, util.pwstrToFfi(PathBuffer), PathBufferSize, util.toPointer(PathRequiredSize));
+  return libSETUPAPI_dll.SetupCopyErrorW(util.hwndToFfi(hwndParent), util.pwstrToFfi(DialogTitle), util.pwstrToFfi(DiskName), util.pwstrToFfi(PathToSource), util.pwstrToFfi(SourceFile), util.pwstrToFfi(TargetPathFile), Win32ErrorCode, Style, util.pwstrToFfi(PathBuffer), PathBufferSize, util.toPointer(PathRequiredSize));
 }
 
 export function SetupRenameErrorA(
@@ -8064,7 +8396,7 @@ export function SetupRenameErrorA(
   Win32ErrorCode: number /* u32 */,
   Style: number /* u32 */,
 ): number /* u32 */ {
-  return libSETUPAPI.SetupRenameErrorA(util.hwndToFfi(hwndParent), util.pstrToFfi(DialogTitle), util.pstrToFfi(SourceFile), util.pstrToFfi(TargetFile), Win32ErrorCode, Style);
+  return libSETUPAPI_dll.SetupRenameErrorA(util.hwndToFfi(hwndParent), util.pstrToFfi(DialogTitle), util.pstrToFfi(SourceFile), util.pstrToFfi(TargetFile), Win32ErrorCode, Style);
 }
 
 export function SetupRenameErrorW(
@@ -8075,7 +8407,7 @@ export function SetupRenameErrorW(
   Win32ErrorCode: number /* u32 */,
   Style: number /* u32 */,
 ): number /* u32 */ {
-  return libSETUPAPI.SetupRenameErrorW(util.hwndToFfi(hwndParent), util.pwstrToFfi(DialogTitle), util.pwstrToFfi(SourceFile), util.pwstrToFfi(TargetFile), Win32ErrorCode, Style);
+  return libSETUPAPI_dll.SetupRenameErrorW(util.hwndToFfi(hwndParent), util.pwstrToFfi(DialogTitle), util.pwstrToFfi(SourceFile), util.pwstrToFfi(TargetFile), Win32ErrorCode, Style);
 }
 
 export function SetupDeleteErrorA(
@@ -8085,7 +8417,7 @@ export function SetupDeleteErrorA(
   Win32ErrorCode: number /* u32 */,
   Style: number /* u32 */,
 ): number /* u32 */ {
-  return libSETUPAPI.SetupDeleteErrorA(util.hwndToFfi(hwndParent), util.pstrToFfi(DialogTitle), util.pstrToFfi(File), Win32ErrorCode, Style);
+  return libSETUPAPI_dll.SetupDeleteErrorA(util.hwndToFfi(hwndParent), util.pstrToFfi(DialogTitle), util.pstrToFfi(File), Win32ErrorCode, Style);
 }
 
 export function SetupDeleteErrorW(
@@ -8095,7 +8427,7 @@ export function SetupDeleteErrorW(
   Win32ErrorCode: number /* u32 */,
   Style: number /* u32 */,
 ): number /* u32 */ {
-  return libSETUPAPI.SetupDeleteErrorW(util.hwndToFfi(hwndParent), util.pwstrToFfi(DialogTitle), util.pwstrToFfi(File), Win32ErrorCode, Style);
+  return libSETUPAPI_dll.SetupDeleteErrorW(util.hwndToFfi(hwndParent), util.pwstrToFfi(DialogTitle), util.pwstrToFfi(File), Win32ErrorCode, Style);
 }
 
 export function SetupBackupErrorA(
@@ -8106,7 +8438,7 @@ export function SetupBackupErrorA(
   Win32ErrorCode: number /* u32 */,
   Style: number /* u32 */,
 ): number /* u32 */ {
-  return libSETUPAPI.SetupBackupErrorA(util.hwndToFfi(hwndParent), util.pstrToFfi(DialogTitle), util.pstrToFfi(SourceFile), util.pstrToFfi(TargetFile), Win32ErrorCode, Style);
+  return libSETUPAPI_dll.SetupBackupErrorA(util.hwndToFfi(hwndParent), util.pstrToFfi(DialogTitle), util.pstrToFfi(SourceFile), util.pstrToFfi(TargetFile), Win32ErrorCode, Style);
 }
 
 export function SetupBackupErrorW(
@@ -8117,7 +8449,7 @@ export function SetupBackupErrorW(
   Win32ErrorCode: number /* u32 */,
   Style: number /* u32 */,
 ): number /* u32 */ {
-  return libSETUPAPI.SetupBackupErrorW(util.hwndToFfi(hwndParent), util.pwstrToFfi(DialogTitle), util.pwstrToFfi(SourceFile), util.pwstrToFfi(TargetFile), Win32ErrorCode, Style);
+  return libSETUPAPI_dll.SetupBackupErrorW(util.hwndToFfi(hwndParent), util.pwstrToFfi(DialogTitle), util.pwstrToFfi(SourceFile), util.pwstrToFfi(TargetFile), Win32ErrorCode, Style);
 }
 
 export function SetupSetDirectoryIdA(
@@ -8125,7 +8457,7 @@ export function SetupSetDirectoryIdA(
   Id: number /* u32 */,
   Directory: string | null /* Windows.Win32.Foundation.PSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSETUPAPI.SetupSetDirectoryIdA(util.toPointer(InfHandle), Id, util.pstrToFfi(Directory)));
+  return util.boolFromFfi(libSETUPAPI_dll.SetupSetDirectoryIdA(util.toPointer(InfHandle), Id, util.pstrToFfi(Directory)));
 }
 
 export function SetupSetDirectoryIdW(
@@ -8133,7 +8465,7 @@ export function SetupSetDirectoryIdW(
   Id: number /* u32 */,
   Directory: string | null /* Windows.Win32.Foundation.PWSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSETUPAPI.SetupSetDirectoryIdW(util.toPointer(InfHandle), Id, util.pwstrToFfi(Directory)));
+  return util.boolFromFfi(libSETUPAPI_dll.SetupSetDirectoryIdW(util.toPointer(InfHandle), Id, util.pwstrToFfi(Directory)));
 }
 
 export function SetupSetDirectoryIdExA(
@@ -8144,7 +8476,7 @@ export function SetupSetDirectoryIdExA(
   Reserved1: number /* u32 */,
   Reserved2: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSETUPAPI.SetupSetDirectoryIdExA(util.toPointer(InfHandle), Id, util.pstrToFfi(Directory), Flags, Reserved1, util.toPointer(Reserved2)));
+  return util.boolFromFfi(libSETUPAPI_dll.SetupSetDirectoryIdExA(util.toPointer(InfHandle), Id, util.pstrToFfi(Directory), Flags, Reserved1, util.toPointer(Reserved2)));
 }
 
 export function SetupSetDirectoryIdExW(
@@ -8155,7 +8487,7 @@ export function SetupSetDirectoryIdExW(
   Reserved1: number /* u32 */,
   Reserved2: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSETUPAPI.SetupSetDirectoryIdExW(util.toPointer(InfHandle), Id, util.pwstrToFfi(Directory), Flags, Reserved1, util.toPointer(Reserved2)));
+  return util.boolFromFfi(libSETUPAPI_dll.SetupSetDirectoryIdExW(util.toPointer(InfHandle), Id, util.pwstrToFfi(Directory), Flags, Reserved1, util.toPointer(Reserved2)));
 }
 
 export function SetupGetSourceInfoA(
@@ -8166,7 +8498,7 @@ export function SetupGetSourceInfoA(
   ReturnBufferSize: number /* u32 */,
   RequiredSize: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSETUPAPI.SetupGetSourceInfoA(util.toPointer(InfHandle), SourceId, InfoDesired, util.pstrToFfi(ReturnBuffer), ReturnBufferSize, util.toPointer(RequiredSize)));
+  return util.boolFromFfi(libSETUPAPI_dll.SetupGetSourceInfoA(util.toPointer(InfHandle), SourceId, InfoDesired, util.pstrToFfi(ReturnBuffer), ReturnBufferSize, util.toPointer(RequiredSize)));
 }
 
 export function SetupGetSourceInfoW(
@@ -8177,7 +8509,7 @@ export function SetupGetSourceInfoW(
   ReturnBufferSize: number /* u32 */,
   RequiredSize: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSETUPAPI.SetupGetSourceInfoW(util.toPointer(InfHandle), SourceId, InfoDesired, util.pwstrToFfi(ReturnBuffer), ReturnBufferSize, util.toPointer(RequiredSize)));
+  return util.boolFromFfi(libSETUPAPI_dll.SetupGetSourceInfoW(util.toPointer(InfHandle), SourceId, InfoDesired, util.pwstrToFfi(ReturnBuffer), ReturnBufferSize, util.toPointer(RequiredSize)));
 }
 
 export function SetupInstallFileA(
@@ -8190,7 +8522,7 @@ export function SetupInstallFileA(
   CopyMsgHandler: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.DeviceAndDriverInstallation.PSP_FILE_CALLBACK_A */,
   Context: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSETUPAPI.SetupInstallFileA(util.toPointer(InfHandle), util.toPointer(InfContext), util.pstrToFfi(SourceFile), util.pstrToFfi(SourcePathRoot), util.pstrToFfi(DestinationName), CopyStyle, util.toPointer(CopyMsgHandler), util.toPointer(Context)));
+  return util.boolFromFfi(libSETUPAPI_dll.SetupInstallFileA(util.toPointer(InfHandle), util.toPointer(InfContext), util.pstrToFfi(SourceFile), util.pstrToFfi(SourcePathRoot), util.pstrToFfi(DestinationName), CopyStyle, util.toPointer(CopyMsgHandler), util.toPointer(Context)));
 }
 
 export function SetupInstallFileW(
@@ -8203,7 +8535,7 @@ export function SetupInstallFileW(
   CopyMsgHandler: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.DeviceAndDriverInstallation.PSP_FILE_CALLBACK_W */,
   Context: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSETUPAPI.SetupInstallFileW(util.toPointer(InfHandle), util.toPointer(InfContext), util.pwstrToFfi(SourceFile), util.pwstrToFfi(SourcePathRoot), util.pwstrToFfi(DestinationName), CopyStyle, util.toPointer(CopyMsgHandler), util.toPointer(Context)));
+  return util.boolFromFfi(libSETUPAPI_dll.SetupInstallFileW(util.toPointer(InfHandle), util.toPointer(InfContext), util.pwstrToFfi(SourceFile), util.pwstrToFfi(SourcePathRoot), util.pwstrToFfi(DestinationName), CopyStyle, util.toPointer(CopyMsgHandler), util.toPointer(Context)));
 }
 
 export function SetupInstallFileExA(
@@ -8217,7 +8549,7 @@ export function SetupInstallFileExA(
   Context: Deno.PointerValue | Uint8Array | null /* ptr */,
   FileWasInUse: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSETUPAPI.SetupInstallFileExA(util.toPointer(InfHandle), util.toPointer(InfContext), util.pstrToFfi(SourceFile), util.pstrToFfi(SourcePathRoot), util.pstrToFfi(DestinationName), CopyStyle, util.toPointer(CopyMsgHandler), util.toPointer(Context), util.toPointer(FileWasInUse)));
+  return util.boolFromFfi(libSETUPAPI_dll.SetupInstallFileExA(util.toPointer(InfHandle), util.toPointer(InfContext), util.pstrToFfi(SourceFile), util.pstrToFfi(SourcePathRoot), util.pstrToFfi(DestinationName), CopyStyle, util.toPointer(CopyMsgHandler), util.toPointer(Context), util.toPointer(FileWasInUse)));
 }
 
 export function SetupInstallFileExW(
@@ -8231,17 +8563,17 @@ export function SetupInstallFileExW(
   Context: Deno.PointerValue | Uint8Array | null /* ptr */,
   FileWasInUse: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSETUPAPI.SetupInstallFileExW(util.toPointer(InfHandle), util.toPointer(InfContext), util.pwstrToFfi(SourceFile), util.pwstrToFfi(SourcePathRoot), util.pwstrToFfi(DestinationName), CopyStyle, util.toPointer(CopyMsgHandler), util.toPointer(Context), util.toPointer(FileWasInUse)));
+  return util.boolFromFfi(libSETUPAPI_dll.SetupInstallFileExW(util.toPointer(InfHandle), util.toPointer(InfContext), util.pwstrToFfi(SourceFile), util.pwstrToFfi(SourcePathRoot), util.pwstrToFfi(DestinationName), CopyStyle, util.toPointer(CopyMsgHandler), util.toPointer(Context), util.toPointer(FileWasInUse)));
 }
 
 export function SetupOpenFileQueue(): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libSETUPAPI.SetupOpenFileQueue());
+  return util.pointerFromFfi(libSETUPAPI_dll.SetupOpenFileQueue());
 }
 
 export function SetupCloseFileQueue(
   QueueHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSETUPAPI.SetupCloseFileQueue(util.toPointer(QueueHandle)));
+  return util.boolFromFfi(libSETUPAPI_dll.SetupCloseFileQueue(util.toPointer(QueueHandle)));
 }
 
 export function SetupSetFileQueueAlternatePlatformA(
@@ -8249,7 +8581,7 @@ export function SetupSetFileQueueAlternatePlatformA(
   AlternatePlatformInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
   AlternateDefaultCatalogFile: string | null /* Windows.Win32.Foundation.PSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSETUPAPI.SetupSetFileQueueAlternatePlatformA(util.toPointer(QueueHandle), util.toPointer(AlternatePlatformInfo), util.pstrToFfi(AlternateDefaultCatalogFile)));
+  return util.boolFromFfi(libSETUPAPI_dll.SetupSetFileQueueAlternatePlatformA(util.toPointer(QueueHandle), util.toPointer(AlternatePlatformInfo), util.pstrToFfi(AlternateDefaultCatalogFile)));
 }
 
 export function SetupSetFileQueueAlternatePlatformW(
@@ -8257,19 +8589,19 @@ export function SetupSetFileQueueAlternatePlatformW(
   AlternatePlatformInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
   AlternateDefaultCatalogFile: string | null /* Windows.Win32.Foundation.PWSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSETUPAPI.SetupSetFileQueueAlternatePlatformW(util.toPointer(QueueHandle), util.toPointer(AlternatePlatformInfo), util.pwstrToFfi(AlternateDefaultCatalogFile)));
+  return util.boolFromFfi(libSETUPAPI_dll.SetupSetFileQueueAlternatePlatformW(util.toPointer(QueueHandle), util.toPointer(AlternatePlatformInfo), util.pwstrToFfi(AlternateDefaultCatalogFile)));
 }
 
 export function SetupSetPlatformPathOverrideA(
   Override: string | null /* Windows.Win32.Foundation.PSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSETUPAPI.SetupSetPlatformPathOverrideA(util.pstrToFfi(Override)));
+  return util.boolFromFfi(libSETUPAPI_dll.SetupSetPlatformPathOverrideA(util.pstrToFfi(Override)));
 }
 
 export function SetupSetPlatformPathOverrideW(
   Override: string | null /* Windows.Win32.Foundation.PWSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSETUPAPI.SetupSetPlatformPathOverrideW(util.pwstrToFfi(Override)));
+  return util.boolFromFfi(libSETUPAPI_dll.SetupSetPlatformPathOverrideW(util.pwstrToFfi(Override)));
 }
 
 export function SetupQueueCopyA(
@@ -8283,7 +8615,7 @@ export function SetupQueueCopyA(
   TargetFilename: string | null /* Windows.Win32.Foundation.PSTR */,
   CopyStyle: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSETUPAPI.SetupQueueCopyA(util.toPointer(QueueHandle), util.pstrToFfi(SourceRootPath), util.pstrToFfi(SourcePath), util.pstrToFfi(SourceFilename), util.pstrToFfi(SourceDescription), util.pstrToFfi(SourceTagfile), util.pstrToFfi(TargetDirectory), util.pstrToFfi(TargetFilename), CopyStyle));
+  return util.boolFromFfi(libSETUPAPI_dll.SetupQueueCopyA(util.toPointer(QueueHandle), util.pstrToFfi(SourceRootPath), util.pstrToFfi(SourcePath), util.pstrToFfi(SourceFilename), util.pstrToFfi(SourceDescription), util.pstrToFfi(SourceTagfile), util.pstrToFfi(TargetDirectory), util.pstrToFfi(TargetFilename), CopyStyle));
 }
 
 export function SetupQueueCopyW(
@@ -8297,19 +8629,19 @@ export function SetupQueueCopyW(
   TargetFilename: string | null /* Windows.Win32.Foundation.PWSTR */,
   CopyStyle: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSETUPAPI.SetupQueueCopyW(util.toPointer(QueueHandle), util.pwstrToFfi(SourceRootPath), util.pwstrToFfi(SourcePath), util.pwstrToFfi(SourceFilename), util.pwstrToFfi(SourceDescription), util.pwstrToFfi(SourceTagfile), util.pwstrToFfi(TargetDirectory), util.pwstrToFfi(TargetFilename), CopyStyle));
+  return util.boolFromFfi(libSETUPAPI_dll.SetupQueueCopyW(util.toPointer(QueueHandle), util.pwstrToFfi(SourceRootPath), util.pwstrToFfi(SourcePath), util.pwstrToFfi(SourceFilename), util.pwstrToFfi(SourceDescription), util.pwstrToFfi(SourceTagfile), util.pwstrToFfi(TargetDirectory), util.pwstrToFfi(TargetFilename), CopyStyle));
 }
 
 export function SetupQueueCopyIndirectA(
   CopyParams: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSETUPAPI.SetupQueueCopyIndirectA(util.toPointer(CopyParams)));
+  return util.boolFromFfi(libSETUPAPI_dll.SetupQueueCopyIndirectA(util.toPointer(CopyParams)));
 }
 
 export function SetupQueueCopyIndirectW(
   CopyParams: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSETUPAPI.SetupQueueCopyIndirectW(util.toPointer(CopyParams)));
+  return util.boolFromFfi(libSETUPAPI_dll.SetupQueueCopyIndirectW(util.toPointer(CopyParams)));
 }
 
 export function SetupQueueDefaultCopyA(
@@ -8320,7 +8652,7 @@ export function SetupQueueDefaultCopyA(
   TargetFilename: string | null /* Windows.Win32.Foundation.PSTR */,
   CopyStyle: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSETUPAPI.SetupQueueDefaultCopyA(util.toPointer(QueueHandle), util.toPointer(InfHandle), util.pstrToFfi(SourceRootPath), util.pstrToFfi(SourceFilename), util.pstrToFfi(TargetFilename), CopyStyle));
+  return util.boolFromFfi(libSETUPAPI_dll.SetupQueueDefaultCopyA(util.toPointer(QueueHandle), util.toPointer(InfHandle), util.pstrToFfi(SourceRootPath), util.pstrToFfi(SourceFilename), util.pstrToFfi(TargetFilename), CopyStyle));
 }
 
 export function SetupQueueDefaultCopyW(
@@ -8331,7 +8663,7 @@ export function SetupQueueDefaultCopyW(
   TargetFilename: string | null /* Windows.Win32.Foundation.PWSTR */,
   CopyStyle: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSETUPAPI.SetupQueueDefaultCopyW(util.toPointer(QueueHandle), util.toPointer(InfHandle), util.pwstrToFfi(SourceRootPath), util.pwstrToFfi(SourceFilename), util.pwstrToFfi(TargetFilename), CopyStyle));
+  return util.boolFromFfi(libSETUPAPI_dll.SetupQueueDefaultCopyW(util.toPointer(QueueHandle), util.toPointer(InfHandle), util.pwstrToFfi(SourceRootPath), util.pwstrToFfi(SourceFilename), util.pwstrToFfi(TargetFilename), CopyStyle));
 }
 
 export function SetupQueueCopySectionA(
@@ -8342,7 +8674,7 @@ export function SetupQueueCopySectionA(
   Section: string | null /* Windows.Win32.Foundation.PSTR */,
   CopyStyle: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSETUPAPI.SetupQueueCopySectionA(util.toPointer(QueueHandle), util.pstrToFfi(SourceRootPath), util.toPointer(InfHandle), util.toPointer(ListInfHandle), util.pstrToFfi(Section), CopyStyle));
+  return util.boolFromFfi(libSETUPAPI_dll.SetupQueueCopySectionA(util.toPointer(QueueHandle), util.pstrToFfi(SourceRootPath), util.toPointer(InfHandle), util.toPointer(ListInfHandle), util.pstrToFfi(Section), CopyStyle));
 }
 
 export function SetupQueueCopySectionW(
@@ -8353,7 +8685,7 @@ export function SetupQueueCopySectionW(
   Section: string | null /* Windows.Win32.Foundation.PWSTR */,
   CopyStyle: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSETUPAPI.SetupQueueCopySectionW(util.toPointer(QueueHandle), util.pwstrToFfi(SourceRootPath), util.toPointer(InfHandle), util.toPointer(ListInfHandle), util.pwstrToFfi(Section), CopyStyle));
+  return util.boolFromFfi(libSETUPAPI_dll.SetupQueueCopySectionW(util.toPointer(QueueHandle), util.pwstrToFfi(SourceRootPath), util.toPointer(InfHandle), util.toPointer(ListInfHandle), util.pwstrToFfi(Section), CopyStyle));
 }
 
 export function SetupQueueDeleteA(
@@ -8361,7 +8693,7 @@ export function SetupQueueDeleteA(
   PathPart1: string | null /* Windows.Win32.Foundation.PSTR */,
   PathPart2: string | null /* Windows.Win32.Foundation.PSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSETUPAPI.SetupQueueDeleteA(util.toPointer(QueueHandle), util.pstrToFfi(PathPart1), util.pstrToFfi(PathPart2)));
+  return util.boolFromFfi(libSETUPAPI_dll.SetupQueueDeleteA(util.toPointer(QueueHandle), util.pstrToFfi(PathPart1), util.pstrToFfi(PathPart2)));
 }
 
 export function SetupQueueDeleteW(
@@ -8369,7 +8701,7 @@ export function SetupQueueDeleteW(
   PathPart1: string | null /* Windows.Win32.Foundation.PWSTR */,
   PathPart2: string | null /* Windows.Win32.Foundation.PWSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSETUPAPI.SetupQueueDeleteW(util.toPointer(QueueHandle), util.pwstrToFfi(PathPart1), util.pwstrToFfi(PathPart2)));
+  return util.boolFromFfi(libSETUPAPI_dll.SetupQueueDeleteW(util.toPointer(QueueHandle), util.pwstrToFfi(PathPart1), util.pwstrToFfi(PathPart2)));
 }
 
 export function SetupQueueDeleteSectionA(
@@ -8378,7 +8710,7 @@ export function SetupQueueDeleteSectionA(
   ListInfHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
   Section: string | null /* Windows.Win32.Foundation.PSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSETUPAPI.SetupQueueDeleteSectionA(util.toPointer(QueueHandle), util.toPointer(InfHandle), util.toPointer(ListInfHandle), util.pstrToFfi(Section)));
+  return util.boolFromFfi(libSETUPAPI_dll.SetupQueueDeleteSectionA(util.toPointer(QueueHandle), util.toPointer(InfHandle), util.toPointer(ListInfHandle), util.pstrToFfi(Section)));
 }
 
 export function SetupQueueDeleteSectionW(
@@ -8387,7 +8719,7 @@ export function SetupQueueDeleteSectionW(
   ListInfHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
   Section: string | null /* Windows.Win32.Foundation.PWSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSETUPAPI.SetupQueueDeleteSectionW(util.toPointer(QueueHandle), util.toPointer(InfHandle), util.toPointer(ListInfHandle), util.pwstrToFfi(Section)));
+  return util.boolFromFfi(libSETUPAPI_dll.SetupQueueDeleteSectionW(util.toPointer(QueueHandle), util.toPointer(InfHandle), util.toPointer(ListInfHandle), util.pwstrToFfi(Section)));
 }
 
 export function SetupQueueRenameA(
@@ -8397,7 +8729,7 @@ export function SetupQueueRenameA(
   TargetPath: string | null /* Windows.Win32.Foundation.PSTR */,
   TargetFilename: string | null /* Windows.Win32.Foundation.PSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSETUPAPI.SetupQueueRenameA(util.toPointer(QueueHandle), util.pstrToFfi(SourcePath), util.pstrToFfi(SourceFilename), util.pstrToFfi(TargetPath), util.pstrToFfi(TargetFilename)));
+  return util.boolFromFfi(libSETUPAPI_dll.SetupQueueRenameA(util.toPointer(QueueHandle), util.pstrToFfi(SourcePath), util.pstrToFfi(SourceFilename), util.pstrToFfi(TargetPath), util.pstrToFfi(TargetFilename)));
 }
 
 export function SetupQueueRenameW(
@@ -8407,7 +8739,7 @@ export function SetupQueueRenameW(
   TargetPath: string | null /* Windows.Win32.Foundation.PWSTR */,
   TargetFilename: string | null /* Windows.Win32.Foundation.PWSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSETUPAPI.SetupQueueRenameW(util.toPointer(QueueHandle), util.pwstrToFfi(SourcePath), util.pwstrToFfi(SourceFilename), util.pwstrToFfi(TargetPath), util.pwstrToFfi(TargetFilename)));
+  return util.boolFromFfi(libSETUPAPI_dll.SetupQueueRenameW(util.toPointer(QueueHandle), util.pwstrToFfi(SourcePath), util.pwstrToFfi(SourceFilename), util.pwstrToFfi(TargetPath), util.pwstrToFfi(TargetFilename)));
 }
 
 export function SetupQueueRenameSectionA(
@@ -8416,7 +8748,7 @@ export function SetupQueueRenameSectionA(
   ListInfHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
   Section: string | null /* Windows.Win32.Foundation.PSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSETUPAPI.SetupQueueRenameSectionA(util.toPointer(QueueHandle), util.toPointer(InfHandle), util.toPointer(ListInfHandle), util.pstrToFfi(Section)));
+  return util.boolFromFfi(libSETUPAPI_dll.SetupQueueRenameSectionA(util.toPointer(QueueHandle), util.toPointer(InfHandle), util.toPointer(ListInfHandle), util.pstrToFfi(Section)));
 }
 
 export function SetupQueueRenameSectionW(
@@ -8425,7 +8757,7 @@ export function SetupQueueRenameSectionW(
   ListInfHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
   Section: string | null /* Windows.Win32.Foundation.PWSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSETUPAPI.SetupQueueRenameSectionW(util.toPointer(QueueHandle), util.toPointer(InfHandle), util.toPointer(ListInfHandle), util.pwstrToFfi(Section)));
+  return util.boolFromFfi(libSETUPAPI_dll.SetupQueueRenameSectionW(util.toPointer(QueueHandle), util.toPointer(InfHandle), util.toPointer(ListInfHandle), util.pwstrToFfi(Section)));
 }
 
 export function SetupCommitFileQueueA(
@@ -8434,7 +8766,7 @@ export function SetupCommitFileQueueA(
   MsgHandler: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.DeviceAndDriverInstallation.PSP_FILE_CALLBACK_A */,
   Context: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSETUPAPI.SetupCommitFileQueueA(util.hwndToFfi(Owner), util.toPointer(QueueHandle), util.toPointer(MsgHandler), util.toPointer(Context)));
+  return util.boolFromFfi(libSETUPAPI_dll.SetupCommitFileQueueA(util.hwndToFfi(Owner), util.toPointer(QueueHandle), util.toPointer(MsgHandler), util.toPointer(Context)));
 }
 
 export function SetupCommitFileQueueW(
@@ -8443,7 +8775,7 @@ export function SetupCommitFileQueueW(
   MsgHandler: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.DeviceAndDriverInstallation.PSP_FILE_CALLBACK_W */,
   Context: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSETUPAPI.SetupCommitFileQueueW(util.hwndToFfi(Owner), util.toPointer(QueueHandle), util.toPointer(MsgHandler), util.toPointer(Context)));
+  return util.boolFromFfi(libSETUPAPI_dll.SetupCommitFileQueueW(util.hwndToFfi(Owner), util.toPointer(QueueHandle), util.toPointer(MsgHandler), util.toPointer(Context)));
 }
 
 export function SetupScanFileQueueA(
@@ -8454,7 +8786,7 @@ export function SetupScanFileQueueA(
   CallbackContext: Deno.PointerValue | Uint8Array | null /* ptr */,
   Result: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSETUPAPI.SetupScanFileQueueA(util.toPointer(FileQueue), Flags, util.hwndToFfi(Window), util.toPointer(CallbackRoutine), util.toPointer(CallbackContext), util.toPointer(Result)));
+  return util.boolFromFfi(libSETUPAPI_dll.SetupScanFileQueueA(util.toPointer(FileQueue), Flags, util.hwndToFfi(Window), util.toPointer(CallbackRoutine), util.toPointer(CallbackContext), util.toPointer(Result)));
 }
 
 export function SetupScanFileQueueW(
@@ -8465,7 +8797,7 @@ export function SetupScanFileQueueW(
   CallbackContext: Deno.PointerValue | Uint8Array | null /* ptr */,
   Result: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSETUPAPI.SetupScanFileQueueW(util.toPointer(FileQueue), Flags, util.hwndToFfi(Window), util.toPointer(CallbackRoutine), util.toPointer(CallbackContext), util.toPointer(Result)));
+  return util.boolFromFfi(libSETUPAPI_dll.SetupScanFileQueueW(util.toPointer(FileQueue), Flags, util.hwndToFfi(Window), util.toPointer(CallbackRoutine), util.toPointer(CallbackContext), util.toPointer(Result)));
 }
 
 export function SetupGetFileQueueCount(
@@ -8473,14 +8805,14 @@ export function SetupGetFileQueueCount(
   SubQueueFileOp: number /* u32 */,
   NumOperations: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSETUPAPI.SetupGetFileQueueCount(util.toPointer(FileQueue), SubQueueFileOp, util.toPointer(NumOperations)));
+  return util.boolFromFfi(libSETUPAPI_dll.SetupGetFileQueueCount(util.toPointer(FileQueue), SubQueueFileOp, util.toPointer(NumOperations)));
 }
 
 export function SetupGetFileQueueFlags(
   FileQueue: Deno.PointerValue | Uint8Array | null /* ptr */,
   Flags: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSETUPAPI.SetupGetFileQueueFlags(util.toPointer(FileQueue), util.toPointer(Flags)));
+  return util.boolFromFfi(libSETUPAPI_dll.SetupGetFileQueueFlags(util.toPointer(FileQueue), util.toPointer(Flags)));
 }
 
 export function SetupSetFileQueueFlags(
@@ -8488,7 +8820,7 @@ export function SetupSetFileQueueFlags(
   FlagMask: number /* u32 */,
   Flags: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSETUPAPI.SetupSetFileQueueFlags(util.toPointer(FileQueue), FlagMask, Flags));
+  return util.boolFromFfi(libSETUPAPI_dll.SetupSetFileQueueFlags(util.toPointer(FileQueue), FlagMask, Flags));
 }
 
 export function SetupCopyOEMInfA(
@@ -8501,7 +8833,7 @@ export function SetupCopyOEMInfA(
   RequiredSize: Deno.PointerValue | Uint8Array | null /* ptr */,
   DestinationInfFileNameComponent: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSETUPAPI.SetupCopyOEMInfA(util.pstrToFfi(SourceInfFileName), util.pstrToFfi(OEMSourceMediaLocation), OEMSourceMediaType, CopyStyle, util.pstrToFfi(DestinationInfFileName), DestinationInfFileNameSize, util.toPointer(RequiredSize), util.toPointer(DestinationInfFileNameComponent)));
+  return util.boolFromFfi(libSETUPAPI_dll.SetupCopyOEMInfA(util.pstrToFfi(SourceInfFileName), util.pstrToFfi(OEMSourceMediaLocation), OEMSourceMediaType, CopyStyle, util.pstrToFfi(DestinationInfFileName), DestinationInfFileNameSize, util.toPointer(RequiredSize), util.toPointer(DestinationInfFileNameComponent)));
 }
 
 export function SetupCopyOEMInfW(
@@ -8514,7 +8846,7 @@ export function SetupCopyOEMInfW(
   RequiredSize: Deno.PointerValue | Uint8Array | null /* ptr */,
   DestinationInfFileNameComponent: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSETUPAPI.SetupCopyOEMInfW(util.pwstrToFfi(SourceInfFileName), util.pwstrToFfi(OEMSourceMediaLocation), OEMSourceMediaType, CopyStyle, util.pwstrToFfi(DestinationInfFileName), DestinationInfFileNameSize, util.toPointer(RequiredSize), util.toPointer(DestinationInfFileNameComponent)));
+  return util.boolFromFfi(libSETUPAPI_dll.SetupCopyOEMInfW(util.pwstrToFfi(SourceInfFileName), util.pwstrToFfi(OEMSourceMediaLocation), OEMSourceMediaType, CopyStyle, util.pwstrToFfi(DestinationInfFileName), DestinationInfFileNameSize, util.toPointer(RequiredSize), util.toPointer(DestinationInfFileNameComponent)));
 }
 
 export function SetupUninstallOEMInfA(
@@ -8522,7 +8854,7 @@ export function SetupUninstallOEMInfA(
   Flags: number /* u32 */,
   Reserved: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSETUPAPI.SetupUninstallOEMInfA(util.pstrToFfi(InfFileName), Flags, util.toPointer(Reserved)));
+  return util.boolFromFfi(libSETUPAPI_dll.SetupUninstallOEMInfA(util.pstrToFfi(InfFileName), Flags, util.toPointer(Reserved)));
 }
 
 export function SetupUninstallOEMInfW(
@@ -8530,7 +8862,7 @@ export function SetupUninstallOEMInfW(
   Flags: number /* u32 */,
   Reserved: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSETUPAPI.SetupUninstallOEMInfW(util.pwstrToFfi(InfFileName), Flags, util.toPointer(Reserved)));
+  return util.boolFromFfi(libSETUPAPI_dll.SetupUninstallOEMInfW(util.pwstrToFfi(InfFileName), Flags, util.toPointer(Reserved)));
 }
 
 export function SetupUninstallNewlyCopiedInfs(
@@ -8538,7 +8870,7 @@ export function SetupUninstallNewlyCopiedInfs(
   Flags: number /* u32 */,
   Reserved: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSETUPAPI.SetupUninstallNewlyCopiedInfs(util.toPointer(FileQueue), Flags, util.toPointer(Reserved)));
+  return util.boolFromFfi(libSETUPAPI_dll.SetupUninstallNewlyCopiedInfs(util.toPointer(FileQueue), Flags, util.toPointer(Reserved)));
 }
 
 export function SetupCreateDiskSpaceListA(
@@ -8546,7 +8878,7 @@ export function SetupCreateDiskSpaceListA(
   Reserved2: number /* u32 */,
   Flags: number /* u32 */,
 ): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libSETUPAPI.SetupCreateDiskSpaceListA(util.toPointer(Reserved1), Reserved2, Flags));
+  return util.pointerFromFfi(libSETUPAPI_dll.SetupCreateDiskSpaceListA(util.toPointer(Reserved1), Reserved2, Flags));
 }
 
 export function SetupCreateDiskSpaceListW(
@@ -8554,7 +8886,7 @@ export function SetupCreateDiskSpaceListW(
   Reserved2: number /* u32 */,
   Flags: number /* u32 */,
 ): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libSETUPAPI.SetupCreateDiskSpaceListW(util.toPointer(Reserved1), Reserved2, Flags));
+  return util.pointerFromFfi(libSETUPAPI_dll.SetupCreateDiskSpaceListW(util.toPointer(Reserved1), Reserved2, Flags));
 }
 
 export function SetupDuplicateDiskSpaceListA(
@@ -8563,7 +8895,7 @@ export function SetupDuplicateDiskSpaceListA(
   Reserved2: number /* u32 */,
   Flags: number /* u32 */,
 ): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libSETUPAPI.SetupDuplicateDiskSpaceListA(util.toPointer(DiskSpace), util.toPointer(Reserved1), Reserved2, Flags));
+  return util.pointerFromFfi(libSETUPAPI_dll.SetupDuplicateDiskSpaceListA(util.toPointer(DiskSpace), util.toPointer(Reserved1), Reserved2, Flags));
 }
 
 export function SetupDuplicateDiskSpaceListW(
@@ -8572,13 +8904,13 @@ export function SetupDuplicateDiskSpaceListW(
   Reserved2: number /* u32 */,
   Flags: number /* u32 */,
 ): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libSETUPAPI.SetupDuplicateDiskSpaceListW(util.toPointer(DiskSpace), util.toPointer(Reserved1), Reserved2, Flags));
+  return util.pointerFromFfi(libSETUPAPI_dll.SetupDuplicateDiskSpaceListW(util.toPointer(DiskSpace), util.toPointer(Reserved1), Reserved2, Flags));
 }
 
 export function SetupDestroyDiskSpaceList(
   DiskSpace: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSETUPAPI.SetupDestroyDiskSpaceList(util.toPointer(DiskSpace)));
+  return util.boolFromFfi(libSETUPAPI_dll.SetupDestroyDiskSpaceList(util.toPointer(DiskSpace)));
 }
 
 export function SetupQueryDrivesInDiskSpaceListA(
@@ -8587,7 +8919,7 @@ export function SetupQueryDrivesInDiskSpaceListA(
   ReturnBufferSize: number /* u32 */,
   RequiredSize: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSETUPAPI.SetupQueryDrivesInDiskSpaceListA(util.toPointer(DiskSpace), util.pstrToFfi(ReturnBuffer), ReturnBufferSize, util.toPointer(RequiredSize)));
+  return util.boolFromFfi(libSETUPAPI_dll.SetupQueryDrivesInDiskSpaceListA(util.toPointer(DiskSpace), util.pstrToFfi(ReturnBuffer), ReturnBufferSize, util.toPointer(RequiredSize)));
 }
 
 export function SetupQueryDrivesInDiskSpaceListW(
@@ -8596,7 +8928,7 @@ export function SetupQueryDrivesInDiskSpaceListW(
   ReturnBufferSize: number /* u32 */,
   RequiredSize: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSETUPAPI.SetupQueryDrivesInDiskSpaceListW(util.toPointer(DiskSpace), util.pwstrToFfi(ReturnBuffer), ReturnBufferSize, util.toPointer(RequiredSize)));
+  return util.boolFromFfi(libSETUPAPI_dll.SetupQueryDrivesInDiskSpaceListW(util.toPointer(DiskSpace), util.pwstrToFfi(ReturnBuffer), ReturnBufferSize, util.toPointer(RequiredSize)));
 }
 
 export function SetupQuerySpaceRequiredOnDriveA(
@@ -8606,7 +8938,7 @@ export function SetupQuerySpaceRequiredOnDriveA(
   Reserved1: Deno.PointerValue | Uint8Array | null /* ptr */,
   Reserved2: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSETUPAPI.SetupQuerySpaceRequiredOnDriveA(util.toPointer(DiskSpace), util.pstrToFfi(DriveSpec), util.toPointer(SpaceRequired), util.toPointer(Reserved1), Reserved2));
+  return util.boolFromFfi(libSETUPAPI_dll.SetupQuerySpaceRequiredOnDriveA(util.toPointer(DiskSpace), util.pstrToFfi(DriveSpec), util.toPointer(SpaceRequired), util.toPointer(Reserved1), Reserved2));
 }
 
 export function SetupQuerySpaceRequiredOnDriveW(
@@ -8616,7 +8948,7 @@ export function SetupQuerySpaceRequiredOnDriveW(
   Reserved1: Deno.PointerValue | Uint8Array | null /* ptr */,
   Reserved2: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSETUPAPI.SetupQuerySpaceRequiredOnDriveW(util.toPointer(DiskSpace), util.pwstrToFfi(DriveSpec), util.toPointer(SpaceRequired), util.toPointer(Reserved1), Reserved2));
+  return util.boolFromFfi(libSETUPAPI_dll.SetupQuerySpaceRequiredOnDriveW(util.toPointer(DiskSpace), util.pwstrToFfi(DriveSpec), util.toPointer(SpaceRequired), util.toPointer(Reserved1), Reserved2));
 }
 
 export function SetupAdjustDiskSpaceListA(
@@ -8626,7 +8958,7 @@ export function SetupAdjustDiskSpaceListA(
   Reserved1: Deno.PointerValue | Uint8Array | null /* ptr */,
   Reserved2: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSETUPAPI.SetupAdjustDiskSpaceListA(util.toPointer(DiskSpace), util.pstrToFfi(DriveRoot), Amount, util.toPointer(Reserved1), Reserved2));
+  return util.boolFromFfi(libSETUPAPI_dll.SetupAdjustDiskSpaceListA(util.toPointer(DiskSpace), util.pstrToFfi(DriveRoot), Amount, util.toPointer(Reserved1), Reserved2));
 }
 
 export function SetupAdjustDiskSpaceListW(
@@ -8636,7 +8968,7 @@ export function SetupAdjustDiskSpaceListW(
   Reserved1: Deno.PointerValue | Uint8Array | null /* ptr */,
   Reserved2: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSETUPAPI.SetupAdjustDiskSpaceListW(util.toPointer(DiskSpace), util.pwstrToFfi(DriveRoot), Amount, util.toPointer(Reserved1), Reserved2));
+  return util.boolFromFfi(libSETUPAPI_dll.SetupAdjustDiskSpaceListW(util.toPointer(DiskSpace), util.pwstrToFfi(DriveRoot), Amount, util.toPointer(Reserved1), Reserved2));
 }
 
 export function SetupAddToDiskSpaceListA(
@@ -8647,7 +8979,7 @@ export function SetupAddToDiskSpaceListA(
   Reserved1: Deno.PointerValue | Uint8Array | null /* ptr */,
   Reserved2: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSETUPAPI.SetupAddToDiskSpaceListA(util.toPointer(DiskSpace), util.pstrToFfi(TargetFilespec), FileSize, Operation, util.toPointer(Reserved1), Reserved2));
+  return util.boolFromFfi(libSETUPAPI_dll.SetupAddToDiskSpaceListA(util.toPointer(DiskSpace), util.pstrToFfi(TargetFilespec), FileSize, Operation, util.toPointer(Reserved1), Reserved2));
 }
 
 export function SetupAddToDiskSpaceListW(
@@ -8658,7 +8990,7 @@ export function SetupAddToDiskSpaceListW(
   Reserved1: Deno.PointerValue | Uint8Array | null /* ptr */,
   Reserved2: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSETUPAPI.SetupAddToDiskSpaceListW(util.toPointer(DiskSpace), util.pwstrToFfi(TargetFilespec), FileSize, Operation, util.toPointer(Reserved1), Reserved2));
+  return util.boolFromFfi(libSETUPAPI_dll.SetupAddToDiskSpaceListW(util.toPointer(DiskSpace), util.pwstrToFfi(TargetFilespec), FileSize, Operation, util.toPointer(Reserved1), Reserved2));
 }
 
 export function SetupAddSectionToDiskSpaceListA(
@@ -8670,7 +9002,7 @@ export function SetupAddSectionToDiskSpaceListA(
   Reserved1: Deno.PointerValue | Uint8Array | null /* ptr */,
   Reserved2: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSETUPAPI.SetupAddSectionToDiskSpaceListA(util.toPointer(DiskSpace), util.toPointer(InfHandle), util.toPointer(ListInfHandle), util.pstrToFfi(SectionName), Operation, util.toPointer(Reserved1), Reserved2));
+  return util.boolFromFfi(libSETUPAPI_dll.SetupAddSectionToDiskSpaceListA(util.toPointer(DiskSpace), util.toPointer(InfHandle), util.toPointer(ListInfHandle), util.pstrToFfi(SectionName), Operation, util.toPointer(Reserved1), Reserved2));
 }
 
 export function SetupAddSectionToDiskSpaceListW(
@@ -8682,7 +9014,7 @@ export function SetupAddSectionToDiskSpaceListW(
   Reserved1: Deno.PointerValue | Uint8Array | null /* ptr */,
   Reserved2: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSETUPAPI.SetupAddSectionToDiskSpaceListW(util.toPointer(DiskSpace), util.toPointer(InfHandle), util.toPointer(ListInfHandle), util.pwstrToFfi(SectionName), Operation, util.toPointer(Reserved1), Reserved2));
+  return util.boolFromFfi(libSETUPAPI_dll.SetupAddSectionToDiskSpaceListW(util.toPointer(DiskSpace), util.toPointer(InfHandle), util.toPointer(ListInfHandle), util.pwstrToFfi(SectionName), Operation, util.toPointer(Reserved1), Reserved2));
 }
 
 export function SetupAddInstallSectionToDiskSpaceListA(
@@ -8693,7 +9025,7 @@ export function SetupAddInstallSectionToDiskSpaceListA(
   Reserved1: Deno.PointerValue | Uint8Array | null /* ptr */,
   Reserved2: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSETUPAPI.SetupAddInstallSectionToDiskSpaceListA(util.toPointer(DiskSpace), util.toPointer(InfHandle), util.toPointer(LayoutInfHandle), util.pstrToFfi(SectionName), util.toPointer(Reserved1), Reserved2));
+  return util.boolFromFfi(libSETUPAPI_dll.SetupAddInstallSectionToDiskSpaceListA(util.toPointer(DiskSpace), util.toPointer(InfHandle), util.toPointer(LayoutInfHandle), util.pstrToFfi(SectionName), util.toPointer(Reserved1), Reserved2));
 }
 
 export function SetupAddInstallSectionToDiskSpaceListW(
@@ -8704,7 +9036,7 @@ export function SetupAddInstallSectionToDiskSpaceListW(
   Reserved1: Deno.PointerValue | Uint8Array | null /* ptr */,
   Reserved2: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSETUPAPI.SetupAddInstallSectionToDiskSpaceListW(util.toPointer(DiskSpace), util.toPointer(InfHandle), util.toPointer(LayoutInfHandle), util.pwstrToFfi(SectionName), util.toPointer(Reserved1), Reserved2));
+  return util.boolFromFfi(libSETUPAPI_dll.SetupAddInstallSectionToDiskSpaceListW(util.toPointer(DiskSpace), util.toPointer(InfHandle), util.toPointer(LayoutInfHandle), util.pwstrToFfi(SectionName), util.toPointer(Reserved1), Reserved2));
 }
 
 export function SetupRemoveFromDiskSpaceListA(
@@ -8714,7 +9046,7 @@ export function SetupRemoveFromDiskSpaceListA(
   Reserved1: Deno.PointerValue | Uint8Array | null /* ptr */,
   Reserved2: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSETUPAPI.SetupRemoveFromDiskSpaceListA(util.toPointer(DiskSpace), util.pstrToFfi(TargetFilespec), Operation, util.toPointer(Reserved1), Reserved2));
+  return util.boolFromFfi(libSETUPAPI_dll.SetupRemoveFromDiskSpaceListA(util.toPointer(DiskSpace), util.pstrToFfi(TargetFilespec), Operation, util.toPointer(Reserved1), Reserved2));
 }
 
 export function SetupRemoveFromDiskSpaceListW(
@@ -8724,7 +9056,7 @@ export function SetupRemoveFromDiskSpaceListW(
   Reserved1: Deno.PointerValue | Uint8Array | null /* ptr */,
   Reserved2: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSETUPAPI.SetupRemoveFromDiskSpaceListW(util.toPointer(DiskSpace), util.pwstrToFfi(TargetFilespec), Operation, util.toPointer(Reserved1), Reserved2));
+  return util.boolFromFfi(libSETUPAPI_dll.SetupRemoveFromDiskSpaceListW(util.toPointer(DiskSpace), util.pwstrToFfi(TargetFilespec), Operation, util.toPointer(Reserved1), Reserved2));
 }
 
 export function SetupRemoveSectionFromDiskSpaceListA(
@@ -8736,7 +9068,7 @@ export function SetupRemoveSectionFromDiskSpaceListA(
   Reserved1: Deno.PointerValue | Uint8Array | null /* ptr */,
   Reserved2: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSETUPAPI.SetupRemoveSectionFromDiskSpaceListA(util.toPointer(DiskSpace), util.toPointer(InfHandle), util.toPointer(ListInfHandle), util.pstrToFfi(SectionName), Operation, util.toPointer(Reserved1), Reserved2));
+  return util.boolFromFfi(libSETUPAPI_dll.SetupRemoveSectionFromDiskSpaceListA(util.toPointer(DiskSpace), util.toPointer(InfHandle), util.toPointer(ListInfHandle), util.pstrToFfi(SectionName), Operation, util.toPointer(Reserved1), Reserved2));
 }
 
 export function SetupRemoveSectionFromDiskSpaceListW(
@@ -8748,7 +9080,7 @@ export function SetupRemoveSectionFromDiskSpaceListW(
   Reserved1: Deno.PointerValue | Uint8Array | null /* ptr */,
   Reserved2: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSETUPAPI.SetupRemoveSectionFromDiskSpaceListW(util.toPointer(DiskSpace), util.toPointer(InfHandle), util.toPointer(ListInfHandle), util.pwstrToFfi(SectionName), Operation, util.toPointer(Reserved1), Reserved2));
+  return util.boolFromFfi(libSETUPAPI_dll.SetupRemoveSectionFromDiskSpaceListW(util.toPointer(DiskSpace), util.toPointer(InfHandle), util.toPointer(ListInfHandle), util.pwstrToFfi(SectionName), Operation, util.toPointer(Reserved1), Reserved2));
 }
 
 export function SetupRemoveInstallSectionFromDiskSpaceListA(
@@ -8759,7 +9091,7 @@ export function SetupRemoveInstallSectionFromDiskSpaceListA(
   Reserved1: Deno.PointerValue | Uint8Array | null /* ptr */,
   Reserved2: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSETUPAPI.SetupRemoveInstallSectionFromDiskSpaceListA(util.toPointer(DiskSpace), util.toPointer(InfHandle), util.toPointer(LayoutInfHandle), util.pstrToFfi(SectionName), util.toPointer(Reserved1), Reserved2));
+  return util.boolFromFfi(libSETUPAPI_dll.SetupRemoveInstallSectionFromDiskSpaceListA(util.toPointer(DiskSpace), util.toPointer(InfHandle), util.toPointer(LayoutInfHandle), util.pstrToFfi(SectionName), util.toPointer(Reserved1), Reserved2));
 }
 
 export function SetupRemoveInstallSectionFromDiskSpaceListW(
@@ -8770,7 +9102,7 @@ export function SetupRemoveInstallSectionFromDiskSpaceListW(
   Reserved1: Deno.PointerValue | Uint8Array | null /* ptr */,
   Reserved2: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSETUPAPI.SetupRemoveInstallSectionFromDiskSpaceListW(util.toPointer(DiskSpace), util.toPointer(InfHandle), util.toPointer(LayoutInfHandle), util.pwstrToFfi(SectionName), util.toPointer(Reserved1), Reserved2));
+  return util.boolFromFfi(libSETUPAPI_dll.SetupRemoveInstallSectionFromDiskSpaceListW(util.toPointer(DiskSpace), util.toPointer(InfHandle), util.toPointer(LayoutInfHandle), util.pwstrToFfi(SectionName), util.toPointer(Reserved1), Reserved2));
 }
 
 export function SetupIterateCabinetA(
@@ -8779,7 +9111,7 @@ export function SetupIterateCabinetA(
   MsgHandler: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.DeviceAndDriverInstallation.PSP_FILE_CALLBACK_A */,
   Context: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSETUPAPI.SetupIterateCabinetA(util.pstrToFfi(CabinetFile), Reserved, util.toPointer(MsgHandler), util.toPointer(Context)));
+  return util.boolFromFfi(libSETUPAPI_dll.SetupIterateCabinetA(util.pstrToFfi(CabinetFile), Reserved, util.toPointer(MsgHandler), util.toPointer(Context)));
 }
 
 export function SetupIterateCabinetW(
@@ -8788,7 +9120,7 @@ export function SetupIterateCabinetW(
   MsgHandler: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.DeviceAndDriverInstallation.PSP_FILE_CALLBACK_W */,
   Context: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSETUPAPI.SetupIterateCabinetW(util.pwstrToFfi(CabinetFile), Reserved, util.toPointer(MsgHandler), util.toPointer(Context)));
+  return util.boolFromFfi(libSETUPAPI_dll.SetupIterateCabinetW(util.pwstrToFfi(CabinetFile), Reserved, util.toPointer(MsgHandler), util.toPointer(Context)));
 }
 
 export function SetupPromptReboot(
@@ -8796,13 +9128,13 @@ export function SetupPromptReboot(
   Owner: Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */,
   ScanOnly: boolean /* Windows.Win32.Foundation.BOOL */,
 ): number /* i32 */ {
-  return libSETUPAPI.SetupPromptReboot(util.toPointer(FileQueue), util.hwndToFfi(Owner), util.boolToFfi(ScanOnly));
+  return libSETUPAPI_dll.SetupPromptReboot(util.toPointer(FileQueue), util.hwndToFfi(Owner), util.boolToFfi(ScanOnly));
 }
 
 export function SetupInitDefaultQueueCallback(
   OwnerWindow: Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */,
 ): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libSETUPAPI.SetupInitDefaultQueueCallback(util.hwndToFfi(OwnerWindow)));
+  return util.pointerFromFfi(libSETUPAPI_dll.SetupInitDefaultQueueCallback(util.hwndToFfi(OwnerWindow)));
 }
 
 export function SetupInitDefaultQueueCallbackEx(
@@ -8812,13 +9144,13 @@ export function SetupInitDefaultQueueCallbackEx(
   Reserved1: number /* u32 */,
   Reserved2: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libSETUPAPI.SetupInitDefaultQueueCallbackEx(util.hwndToFfi(OwnerWindow), util.hwndToFfi(AlternateProgressWindow), ProgressMessage, Reserved1, util.toPointer(Reserved2)));
+  return util.pointerFromFfi(libSETUPAPI_dll.SetupInitDefaultQueueCallbackEx(util.hwndToFfi(OwnerWindow), util.hwndToFfi(AlternateProgressWindow), ProgressMessage, Reserved1, util.toPointer(Reserved2)));
 }
 
 export function SetupTermDefaultQueueCallback(
   Context: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): void /* void */ {
-  return libSETUPAPI.SetupTermDefaultQueueCallback(util.toPointer(Context));
+  return libSETUPAPI_dll.SetupTermDefaultQueueCallback(util.toPointer(Context));
 }
 
 export function SetupDefaultQueueCallbackA(
@@ -8827,7 +9159,7 @@ export function SetupDefaultQueueCallbackA(
   Param1: Deno.PointerValue /* usize */,
   Param2: Deno.PointerValue /* usize */,
 ): number /* u32 */ {
-  return libSETUPAPI.SetupDefaultQueueCallbackA(util.toPointer(Context), Notification, Param1, Param2);
+  return libSETUPAPI_dll.SetupDefaultQueueCallbackA(util.toPointer(Context), Notification, Param1, Param2);
 }
 
 export function SetupDefaultQueueCallbackW(
@@ -8836,7 +9168,7 @@ export function SetupDefaultQueueCallbackW(
   Param1: Deno.PointerValue /* usize */,
   Param2: Deno.PointerValue /* usize */,
 ): number /* u32 */ {
-  return libSETUPAPI.SetupDefaultQueueCallbackW(util.toPointer(Context), Notification, Param1, Param2);
+  return libSETUPAPI_dll.SetupDefaultQueueCallbackW(util.toPointer(Context), Notification, Param1, Param2);
 }
 
 export function SetupInstallFromInfSectionA(
@@ -8849,10 +9181,10 @@ export function SetupInstallFromInfSectionA(
   CopyFlags: number /* u32 */,
   MsgHandler: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.DeviceAndDriverInstallation.PSP_FILE_CALLBACK_A */,
   Context: Deno.PointerValue | Uint8Array | null /* ptr */,
-  DeviceInfoSet: Deno.PointerValue | Uint8Array | null /* ptr */,
+  DeviceInfoSet: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.DeviceAndDriverInstallation.HDEVINFO */,
   DeviceInfoData: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSETUPAPI.SetupInstallFromInfSectionA(util.hwndToFfi(Owner), util.toPointer(InfHandle), util.pstrToFfi(SectionName), Flags, util.toPointer(RelativeKeyRoot), util.pstrToFfi(SourceRootPath), CopyFlags, util.toPointer(MsgHandler), util.toPointer(Context), util.toPointer(DeviceInfoSet), util.toPointer(DeviceInfoData)));
+  return util.boolFromFfi(libSETUPAPI_dll.SetupInstallFromInfSectionA(util.hwndToFfi(Owner), util.toPointer(InfHandle), util.pstrToFfi(SectionName), Flags, util.toPointer(RelativeKeyRoot), util.pstrToFfi(SourceRootPath), CopyFlags, util.toPointer(MsgHandler), util.toPointer(Context), util.toPointer(DeviceInfoSet), util.toPointer(DeviceInfoData)));
 }
 
 export function SetupInstallFromInfSectionW(
@@ -8865,10 +9197,10 @@ export function SetupInstallFromInfSectionW(
   CopyFlags: number /* u32 */,
   MsgHandler: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.DeviceAndDriverInstallation.PSP_FILE_CALLBACK_W */,
   Context: Deno.PointerValue | Uint8Array | null /* ptr */,
-  DeviceInfoSet: Deno.PointerValue | Uint8Array | null /* ptr */,
+  DeviceInfoSet: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.DeviceAndDriverInstallation.HDEVINFO */,
   DeviceInfoData: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSETUPAPI.SetupInstallFromInfSectionW(util.hwndToFfi(Owner), util.toPointer(InfHandle), util.pwstrToFfi(SectionName), Flags, util.toPointer(RelativeKeyRoot), util.pwstrToFfi(SourceRootPath), CopyFlags, util.toPointer(MsgHandler), util.toPointer(Context), util.toPointer(DeviceInfoSet), util.toPointer(DeviceInfoData)));
+  return util.boolFromFfi(libSETUPAPI_dll.SetupInstallFromInfSectionW(util.hwndToFfi(Owner), util.toPointer(InfHandle), util.pwstrToFfi(SectionName), Flags, util.toPointer(RelativeKeyRoot), util.pwstrToFfi(SourceRootPath), CopyFlags, util.toPointer(MsgHandler), util.toPointer(Context), util.toPointer(DeviceInfoSet), util.toPointer(DeviceInfoData)));
 }
 
 export function SetupInstallFilesFromInfSectionA(
@@ -8879,7 +9211,7 @@ export function SetupInstallFilesFromInfSectionA(
   SourceRootPath: string | null /* Windows.Win32.Foundation.PSTR */,
   CopyFlags: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSETUPAPI.SetupInstallFilesFromInfSectionA(util.toPointer(InfHandle), util.toPointer(LayoutInfHandle), util.toPointer(FileQueue), util.pstrToFfi(SectionName), util.pstrToFfi(SourceRootPath), CopyFlags));
+  return util.boolFromFfi(libSETUPAPI_dll.SetupInstallFilesFromInfSectionA(util.toPointer(InfHandle), util.toPointer(LayoutInfHandle), util.toPointer(FileQueue), util.pstrToFfi(SectionName), util.pstrToFfi(SourceRootPath), CopyFlags));
 }
 
 export function SetupInstallFilesFromInfSectionW(
@@ -8890,7 +9222,7 @@ export function SetupInstallFilesFromInfSectionW(
   SourceRootPath: string | null /* Windows.Win32.Foundation.PWSTR */,
   CopyFlags: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSETUPAPI.SetupInstallFilesFromInfSectionW(util.toPointer(InfHandle), util.toPointer(LayoutInfHandle), util.toPointer(FileQueue), util.pwstrToFfi(SectionName), util.pwstrToFfi(SourceRootPath), CopyFlags));
+  return util.boolFromFfi(libSETUPAPI_dll.SetupInstallFilesFromInfSectionW(util.toPointer(InfHandle), util.toPointer(LayoutInfHandle), util.toPointer(FileQueue), util.pwstrToFfi(SectionName), util.pwstrToFfi(SourceRootPath), CopyFlags));
 }
 
 export function SetupInstallServicesFromInfSectionA(
@@ -8898,7 +9230,7 @@ export function SetupInstallServicesFromInfSectionA(
   SectionName: string | null /* Windows.Win32.Foundation.PSTR */,
   Flags: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSETUPAPI.SetupInstallServicesFromInfSectionA(util.toPointer(InfHandle), util.pstrToFfi(SectionName), Flags));
+  return util.boolFromFfi(libSETUPAPI_dll.SetupInstallServicesFromInfSectionA(util.toPointer(InfHandle), util.pstrToFfi(SectionName), Flags));
 }
 
 export function SetupInstallServicesFromInfSectionW(
@@ -8906,31 +9238,31 @@ export function SetupInstallServicesFromInfSectionW(
   SectionName: string | null /* Windows.Win32.Foundation.PWSTR */,
   Flags: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSETUPAPI.SetupInstallServicesFromInfSectionW(util.toPointer(InfHandle), util.pwstrToFfi(SectionName), Flags));
+  return util.boolFromFfi(libSETUPAPI_dll.SetupInstallServicesFromInfSectionW(util.toPointer(InfHandle), util.pwstrToFfi(SectionName), Flags));
 }
 
 export function SetupInstallServicesFromInfSectionExA(
   InfHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
   SectionName: string | null /* Windows.Win32.Foundation.PSTR */,
   Flags: number /* u32 */,
-  DeviceInfoSet: Deno.PointerValue | Uint8Array | null /* ptr */,
+  DeviceInfoSet: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.DeviceAndDriverInstallation.HDEVINFO */,
   DeviceInfoData: Deno.PointerValue | Uint8Array | null /* ptr */,
   Reserved1: Deno.PointerValue | Uint8Array | null /* ptr */,
   Reserved2: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSETUPAPI.SetupInstallServicesFromInfSectionExA(util.toPointer(InfHandle), util.pstrToFfi(SectionName), Flags, util.toPointer(DeviceInfoSet), util.toPointer(DeviceInfoData), util.toPointer(Reserved1), util.toPointer(Reserved2)));
+  return util.boolFromFfi(libSETUPAPI_dll.SetupInstallServicesFromInfSectionExA(util.toPointer(InfHandle), util.pstrToFfi(SectionName), Flags, util.toPointer(DeviceInfoSet), util.toPointer(DeviceInfoData), util.toPointer(Reserved1), util.toPointer(Reserved2)));
 }
 
 export function SetupInstallServicesFromInfSectionExW(
   InfHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
   SectionName: string | null /* Windows.Win32.Foundation.PWSTR */,
   Flags: number /* u32 */,
-  DeviceInfoSet: Deno.PointerValue | Uint8Array | null /* ptr */,
+  DeviceInfoSet: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.DeviceAndDriverInstallation.HDEVINFO */,
   DeviceInfoData: Deno.PointerValue | Uint8Array | null /* ptr */,
   Reserved1: Deno.PointerValue | Uint8Array | null /* ptr */,
   Reserved2: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSETUPAPI.SetupInstallServicesFromInfSectionExW(util.toPointer(InfHandle), util.pwstrToFfi(SectionName), Flags, util.toPointer(DeviceInfoSet), util.toPointer(DeviceInfoData), util.toPointer(Reserved1), util.toPointer(Reserved2)));
+  return util.boolFromFfi(libSETUPAPI_dll.SetupInstallServicesFromInfSectionExW(util.toPointer(InfHandle), util.pwstrToFfi(SectionName), Flags, util.toPointer(DeviceInfoSet), util.toPointer(DeviceInfoData), util.toPointer(Reserved1), util.toPointer(Reserved2)));
 }
 
 export function InstallHinfSectionA(
@@ -8939,7 +9271,7 @@ export function InstallHinfSectionA(
   CommandLine: string | null /* Windows.Win32.Foundation.PSTR */,
   ShowCommand: number /* i32 */,
 ): void /* void */ {
-  return libSETUPAPI.InstallHinfSectionA(util.hwndToFfi(Window), util.toPointer(ModuleHandle), util.pstrToFfi(CommandLine), ShowCommand);
+  return libSETUPAPI_dll.InstallHinfSectionA(util.hwndToFfi(Window), util.toPointer(ModuleHandle), util.pstrToFfi(CommandLine), ShowCommand);
 }
 
 export function InstallHinfSectionW(
@@ -8948,27 +9280,27 @@ export function InstallHinfSectionW(
   CommandLine: string | null /* Windows.Win32.Foundation.PWSTR */,
   ShowCommand: number /* i32 */,
 ): void /* void */ {
-  return libSETUPAPI.InstallHinfSectionW(util.hwndToFfi(Window), util.toPointer(ModuleHandle), util.pwstrToFfi(CommandLine), ShowCommand);
+  return libSETUPAPI_dll.InstallHinfSectionW(util.hwndToFfi(Window), util.toPointer(ModuleHandle), util.pwstrToFfi(CommandLine), ShowCommand);
 }
 
 export function SetupInitializeFileLogA(
   LogFileName: string | null /* Windows.Win32.Foundation.PSTR */,
   Flags: number /* u32 */,
 ): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libSETUPAPI.SetupInitializeFileLogA(util.pstrToFfi(LogFileName), Flags));
+  return util.pointerFromFfi(libSETUPAPI_dll.SetupInitializeFileLogA(util.pstrToFfi(LogFileName), Flags));
 }
 
 export function SetupInitializeFileLogW(
   LogFileName: string | null /* Windows.Win32.Foundation.PWSTR */,
   Flags: number /* u32 */,
 ): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libSETUPAPI.SetupInitializeFileLogW(util.pwstrToFfi(LogFileName), Flags));
+  return util.pointerFromFfi(libSETUPAPI_dll.SetupInitializeFileLogW(util.pwstrToFfi(LogFileName), Flags));
 }
 
 export function SetupTerminateFileLog(
   FileLogHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSETUPAPI.SetupTerminateFileLog(util.toPointer(FileLogHandle)));
+  return util.boolFromFfi(libSETUPAPI_dll.SetupTerminateFileLog(util.toPointer(FileLogHandle)));
 }
 
 export function SetupLogFileA(
@@ -8982,7 +9314,7 @@ export function SetupLogFileA(
   OtherInfo: string | null /* Windows.Win32.Foundation.PSTR */,
   Flags: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSETUPAPI.SetupLogFileA(util.toPointer(FileLogHandle), util.pstrToFfi(LogSectionName), util.pstrToFfi(SourceFilename), util.pstrToFfi(TargetFilename), Checksum, util.pstrToFfi(DiskTagfile), util.pstrToFfi(DiskDescription), util.pstrToFfi(OtherInfo), Flags));
+  return util.boolFromFfi(libSETUPAPI_dll.SetupLogFileA(util.toPointer(FileLogHandle), util.pstrToFfi(LogSectionName), util.pstrToFfi(SourceFilename), util.pstrToFfi(TargetFilename), Checksum, util.pstrToFfi(DiskTagfile), util.pstrToFfi(DiskDescription), util.pstrToFfi(OtherInfo), Flags));
 }
 
 export function SetupLogFileW(
@@ -8996,7 +9328,7 @@ export function SetupLogFileW(
   OtherInfo: string | null /* Windows.Win32.Foundation.PWSTR */,
   Flags: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSETUPAPI.SetupLogFileW(util.toPointer(FileLogHandle), util.pwstrToFfi(LogSectionName), util.pwstrToFfi(SourceFilename), util.pwstrToFfi(TargetFilename), Checksum, util.pwstrToFfi(DiskTagfile), util.pwstrToFfi(DiskDescription), util.pwstrToFfi(OtherInfo), Flags));
+  return util.boolFromFfi(libSETUPAPI_dll.SetupLogFileW(util.toPointer(FileLogHandle), util.pwstrToFfi(LogSectionName), util.pwstrToFfi(SourceFilename), util.pwstrToFfi(TargetFilename), Checksum, util.pwstrToFfi(DiskTagfile), util.pwstrToFfi(DiskDescription), util.pwstrToFfi(OtherInfo), Flags));
 }
 
 export function SetupRemoveFileLogEntryA(
@@ -9004,7 +9336,7 @@ export function SetupRemoveFileLogEntryA(
   LogSectionName: string | null /* Windows.Win32.Foundation.PSTR */,
   TargetFilename: string | null /* Windows.Win32.Foundation.PSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSETUPAPI.SetupRemoveFileLogEntryA(util.toPointer(FileLogHandle), util.pstrToFfi(LogSectionName), util.pstrToFfi(TargetFilename)));
+  return util.boolFromFfi(libSETUPAPI_dll.SetupRemoveFileLogEntryA(util.toPointer(FileLogHandle), util.pstrToFfi(LogSectionName), util.pstrToFfi(TargetFilename)));
 }
 
 export function SetupRemoveFileLogEntryW(
@@ -9012,7 +9344,7 @@ export function SetupRemoveFileLogEntryW(
   LogSectionName: string | null /* Windows.Win32.Foundation.PWSTR */,
   TargetFilename: string | null /* Windows.Win32.Foundation.PWSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSETUPAPI.SetupRemoveFileLogEntryW(util.toPointer(FileLogHandle), util.pwstrToFfi(LogSectionName), util.pwstrToFfi(TargetFilename)));
+  return util.boolFromFfi(libSETUPAPI_dll.SetupRemoveFileLogEntryW(util.toPointer(FileLogHandle), util.pwstrToFfi(LogSectionName), util.pwstrToFfi(TargetFilename)));
 }
 
 export function SetupQueryFileLogA(
@@ -9024,7 +9356,7 @@ export function SetupQueryFileLogA(
   ReturnBufferSize: number /* u32 */,
   RequiredSize: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSETUPAPI.SetupQueryFileLogA(util.toPointer(FileLogHandle), util.pstrToFfi(LogSectionName), util.pstrToFfi(TargetFilename), DesiredInfo, util.pstrToFfi(DataOut), ReturnBufferSize, util.toPointer(RequiredSize)));
+  return util.boolFromFfi(libSETUPAPI_dll.SetupQueryFileLogA(util.toPointer(FileLogHandle), util.pstrToFfi(LogSectionName), util.pstrToFfi(TargetFilename), DesiredInfo, util.pstrToFfi(DataOut), ReturnBufferSize, util.toPointer(RequiredSize)));
 }
 
 export function SetupQueryFileLogW(
@@ -9036,41 +9368,41 @@ export function SetupQueryFileLogW(
   ReturnBufferSize: number /* u32 */,
   RequiredSize: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSETUPAPI.SetupQueryFileLogW(util.toPointer(FileLogHandle), util.pwstrToFfi(LogSectionName), util.pwstrToFfi(TargetFilename), DesiredInfo, util.pwstrToFfi(DataOut), ReturnBufferSize, util.toPointer(RequiredSize)));
+  return util.boolFromFfi(libSETUPAPI_dll.SetupQueryFileLogW(util.toPointer(FileLogHandle), util.pwstrToFfi(LogSectionName), util.pwstrToFfi(TargetFilename), DesiredInfo, util.pwstrToFfi(DataOut), ReturnBufferSize, util.toPointer(RequiredSize)));
 }
 
 export function SetupOpenLog(
   Erase: boolean /* Windows.Win32.Foundation.BOOL */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSETUPAPI.SetupOpenLog(util.boolToFfi(Erase)));
+  return util.boolFromFfi(libSETUPAPI_dll.SetupOpenLog(util.boolToFfi(Erase)));
 }
 
 export function SetupLogErrorA(
   MessageString: string | null /* Windows.Win32.Foundation.PSTR */,
   Severity: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSETUPAPI.SetupLogErrorA(util.pstrToFfi(MessageString), Severity));
+  return util.boolFromFfi(libSETUPAPI_dll.SetupLogErrorA(util.pstrToFfi(MessageString), Severity));
 }
 
 export function SetupLogErrorW(
   MessageString: string | null /* Windows.Win32.Foundation.PWSTR */,
   Severity: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSETUPAPI.SetupLogErrorW(util.pwstrToFfi(MessageString), Severity));
+  return util.boolFromFfi(libSETUPAPI_dll.SetupLogErrorW(util.pwstrToFfi(MessageString), Severity));
 }
 
 export function SetupCloseLog(): void /* void */ {
-  return libSETUPAPI.SetupCloseLog();
+  return libSETUPAPI_dll.SetupCloseLog();
 }
 
 export function SetupGetThreadLogToken(): Deno.PointerValue /* u64 */ {
-  return libSETUPAPI.SetupGetThreadLogToken();
+  return libSETUPAPI_dll.SetupGetThreadLogToken();
 }
 
 export function SetupSetThreadLogToken(
   LogToken: Deno.PointerValue /* u64 */,
 ): void /* void */ {
-  return libSETUPAPI.SetupSetThreadLogToken(LogToken);
+  return libSETUPAPI_dll.SetupSetThreadLogToken(LogToken);
 }
 
 export function SetupWriteTextLog(
@@ -9079,7 +9411,7 @@ export function SetupWriteTextLog(
   Flags: number /* u32 */,
   MessageStr: string | null /* Windows.Win32.Foundation.PSTR */,
 ): void /* void */ {
-  return libSETUPAPI.SetupWriteTextLog(LogToken, Category, Flags, util.pstrToFfi(MessageStr));
+  return libSETUPAPI_dll.SetupWriteTextLog(LogToken, Category, Flags, util.pstrToFfi(MessageStr));
 }
 
 export function SetupWriteTextLogError(
@@ -9089,7 +9421,7 @@ export function SetupWriteTextLogError(
   Error: number /* u32 */,
   MessageStr: string | null /* Windows.Win32.Foundation.PSTR */,
 ): void /* void */ {
-  return libSETUPAPI.SetupWriteTextLogError(LogToken, Category, LogFlags, Error, util.pstrToFfi(MessageStr));
+  return libSETUPAPI_dll.SetupWriteTextLogError(LogToken, Category, LogFlags, Error, util.pstrToFfi(MessageStr));
 }
 
 export function SetupWriteTextLogInfLine(
@@ -9098,21 +9430,21 @@ export function SetupWriteTextLogInfLine(
   InfHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
   Context: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): void /* void */ {
-  return libSETUPAPI.SetupWriteTextLogInfLine(LogToken, Flags, util.toPointer(InfHandle), util.toPointer(Context));
+  return libSETUPAPI_dll.SetupWriteTextLogInfLine(LogToken, Flags, util.toPointer(InfHandle), util.toPointer(Context));
 }
 
 export function SetupGetBackupInformationA(
   QueueHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
   BackupParams: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSETUPAPI.SetupGetBackupInformationA(util.toPointer(QueueHandle), util.toPointer(BackupParams)));
+  return util.boolFromFfi(libSETUPAPI_dll.SetupGetBackupInformationA(util.toPointer(QueueHandle), util.toPointer(BackupParams)));
 }
 
 export function SetupGetBackupInformationW(
   QueueHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
   BackupParams: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSETUPAPI.SetupGetBackupInformationW(util.toPointer(QueueHandle), util.toPointer(BackupParams)));
+  return util.boolFromFfi(libSETUPAPI_dll.SetupGetBackupInformationW(util.toPointer(QueueHandle), util.toPointer(BackupParams)));
 }
 
 export function SetupPrepareQueueForRestoreA(
@@ -9120,7 +9452,7 @@ export function SetupPrepareQueueForRestoreA(
   BackupPath: string | null /* Windows.Win32.Foundation.PSTR */,
   RestoreFlags: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSETUPAPI.SetupPrepareQueueForRestoreA(util.toPointer(QueueHandle), util.pstrToFfi(BackupPath), RestoreFlags));
+  return util.boolFromFfi(libSETUPAPI_dll.SetupPrepareQueueForRestoreA(util.toPointer(QueueHandle), util.pstrToFfi(BackupPath), RestoreFlags));
 }
 
 export function SetupPrepareQueueForRestoreW(
@@ -9128,24 +9460,24 @@ export function SetupPrepareQueueForRestoreW(
   BackupPath: string | null /* Windows.Win32.Foundation.PWSTR */,
   RestoreFlags: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSETUPAPI.SetupPrepareQueueForRestoreW(util.toPointer(QueueHandle), util.pwstrToFfi(BackupPath), RestoreFlags));
+  return util.boolFromFfi(libSETUPAPI_dll.SetupPrepareQueueForRestoreW(util.toPointer(QueueHandle), util.pwstrToFfi(BackupPath), RestoreFlags));
 }
 
 export function SetupSetNonInteractiveMode(
   NonInteractiveFlag: boolean /* Windows.Win32.Foundation.BOOL */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSETUPAPI.SetupSetNonInteractiveMode(util.boolToFfi(NonInteractiveFlag)));
+  return util.boolFromFfi(libSETUPAPI_dll.SetupSetNonInteractiveMode(util.boolToFfi(NonInteractiveFlag)));
 }
 
 export function SetupGetNonInteractiveMode(): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSETUPAPI.SetupGetNonInteractiveMode());
+  return util.boolFromFfi(libSETUPAPI_dll.SetupGetNonInteractiveMode());
 }
 
 export function SetupDiCreateDeviceInfoList(
   ClassGuid: Deno.PointerValue | Uint8Array | null /* ptr */,
   hwndParent: Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */,
-): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libSETUPAPI.SetupDiCreateDeviceInfoList(util.toPointer(ClassGuid), util.hwndToFfi(hwndParent)));
+): Deno.PointerValue | null /* Windows.Win32.Devices.DeviceAndDriverInstallation.HDEVINFO */ {
+  return util.pointerFromFfi(libSETUPAPI_dll.SetupDiCreateDeviceInfoList(util.toPointer(ClassGuid), util.hwndToFfi(hwndParent)));
 }
 
 export function SetupDiCreateDeviceInfoListExA(
@@ -9153,8 +9485,8 @@ export function SetupDiCreateDeviceInfoListExA(
   hwndParent: Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */,
   MachineName: string | null /* Windows.Win32.Foundation.PSTR */,
   Reserved: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libSETUPAPI.SetupDiCreateDeviceInfoListExA(util.toPointer(ClassGuid), util.hwndToFfi(hwndParent), util.pstrToFfi(MachineName), util.toPointer(Reserved)));
+): Deno.PointerValue | null /* Windows.Win32.Devices.DeviceAndDriverInstallation.HDEVINFO */ {
+  return util.pointerFromFfi(libSETUPAPI_dll.SetupDiCreateDeviceInfoListExA(util.toPointer(ClassGuid), util.hwndToFfi(hwndParent), util.pstrToFfi(MachineName), util.toPointer(Reserved)));
 }
 
 export function SetupDiCreateDeviceInfoListExW(
@@ -9162,33 +9494,33 @@ export function SetupDiCreateDeviceInfoListExW(
   hwndParent: Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */,
   MachineName: string | null /* Windows.Win32.Foundation.PWSTR */,
   Reserved: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libSETUPAPI.SetupDiCreateDeviceInfoListExW(util.toPointer(ClassGuid), util.hwndToFfi(hwndParent), util.pwstrToFfi(MachineName), util.toPointer(Reserved)));
+): Deno.PointerValue | null /* Windows.Win32.Devices.DeviceAndDriverInstallation.HDEVINFO */ {
+  return util.pointerFromFfi(libSETUPAPI_dll.SetupDiCreateDeviceInfoListExW(util.toPointer(ClassGuid), util.hwndToFfi(hwndParent), util.pwstrToFfi(MachineName), util.toPointer(Reserved)));
 }
 
 export function SetupDiGetDeviceInfoListClass(
-  DeviceInfoSet: Deno.PointerValue | Uint8Array | null /* ptr */,
+  DeviceInfoSet: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.DeviceAndDriverInstallation.HDEVINFO */,
   ClassGuid: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSETUPAPI.SetupDiGetDeviceInfoListClass(util.toPointer(DeviceInfoSet), util.toPointer(ClassGuid)));
+  return util.boolFromFfi(libSETUPAPI_dll.SetupDiGetDeviceInfoListClass(util.toPointer(DeviceInfoSet), util.toPointer(ClassGuid)));
 }
 
 export function SetupDiGetDeviceInfoListDetailA(
-  DeviceInfoSet: Deno.PointerValue | Uint8Array | null /* ptr */,
+  DeviceInfoSet: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.DeviceAndDriverInstallation.HDEVINFO */,
   DeviceInfoSetDetailData: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSETUPAPI.SetupDiGetDeviceInfoListDetailA(util.toPointer(DeviceInfoSet), util.toPointer(DeviceInfoSetDetailData)));
+  return util.boolFromFfi(libSETUPAPI_dll.SetupDiGetDeviceInfoListDetailA(util.toPointer(DeviceInfoSet), util.toPointer(DeviceInfoSetDetailData)));
 }
 
 export function SetupDiGetDeviceInfoListDetailW(
-  DeviceInfoSet: Deno.PointerValue | Uint8Array | null /* ptr */,
+  DeviceInfoSet: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.DeviceAndDriverInstallation.HDEVINFO */,
   DeviceInfoSetDetailData: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSETUPAPI.SetupDiGetDeviceInfoListDetailW(util.toPointer(DeviceInfoSet), util.toPointer(DeviceInfoSetDetailData)));
+  return util.boolFromFfi(libSETUPAPI_dll.SetupDiGetDeviceInfoListDetailW(util.toPointer(DeviceInfoSet), util.toPointer(DeviceInfoSetDetailData)));
 }
 
 export function SetupDiCreateDeviceInfoA(
-  DeviceInfoSet: Deno.PointerValue | Uint8Array | null /* ptr */,
+  DeviceInfoSet: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.DeviceAndDriverInstallation.HDEVINFO */,
   DeviceName: string | null /* Windows.Win32.Foundation.PSTR */,
   ClassGuid: Deno.PointerValue | Uint8Array | null /* ptr */,
   DeviceDescription: string | null /* Windows.Win32.Foundation.PSTR */,
@@ -9196,11 +9528,11 @@ export function SetupDiCreateDeviceInfoA(
   CreationFlags: number /* u32 */,
   DeviceInfoData: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSETUPAPI.SetupDiCreateDeviceInfoA(util.toPointer(DeviceInfoSet), util.pstrToFfi(DeviceName), util.toPointer(ClassGuid), util.pstrToFfi(DeviceDescription), util.hwndToFfi(hwndParent), CreationFlags, util.toPointer(DeviceInfoData)));
+  return util.boolFromFfi(libSETUPAPI_dll.SetupDiCreateDeviceInfoA(util.toPointer(DeviceInfoSet), util.pstrToFfi(DeviceName), util.toPointer(ClassGuid), util.pstrToFfi(DeviceDescription), util.hwndToFfi(hwndParent), CreationFlags, util.toPointer(DeviceInfoData)));
 }
 
 export function SetupDiCreateDeviceInfoW(
-  DeviceInfoSet: Deno.PointerValue | Uint8Array | null /* ptr */,
+  DeviceInfoSet: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.DeviceAndDriverInstallation.HDEVINFO */,
   DeviceName: string | null /* Windows.Win32.Foundation.PWSTR */,
   ClassGuid: Deno.PointerValue | Uint8Array | null /* ptr */,
   DeviceDescription: string | null /* Windows.Win32.Foundation.PWSTR */,
@@ -9208,286 +9540,286 @@ export function SetupDiCreateDeviceInfoW(
   CreationFlags: number /* u32 */,
   DeviceInfoData: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSETUPAPI.SetupDiCreateDeviceInfoW(util.toPointer(DeviceInfoSet), util.pwstrToFfi(DeviceName), util.toPointer(ClassGuid), util.pwstrToFfi(DeviceDescription), util.hwndToFfi(hwndParent), CreationFlags, util.toPointer(DeviceInfoData)));
+  return util.boolFromFfi(libSETUPAPI_dll.SetupDiCreateDeviceInfoW(util.toPointer(DeviceInfoSet), util.pwstrToFfi(DeviceName), util.toPointer(ClassGuid), util.pwstrToFfi(DeviceDescription), util.hwndToFfi(hwndParent), CreationFlags, util.toPointer(DeviceInfoData)));
 }
 
 export function SetupDiOpenDeviceInfoA(
-  DeviceInfoSet: Deno.PointerValue | Uint8Array | null /* ptr */,
+  DeviceInfoSet: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.DeviceAndDriverInstallation.HDEVINFO */,
   DeviceInstanceId: string | null /* Windows.Win32.Foundation.PSTR */,
   hwndParent: Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */,
   OpenFlags: number /* u32 */,
   DeviceInfoData: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSETUPAPI.SetupDiOpenDeviceInfoA(util.toPointer(DeviceInfoSet), util.pstrToFfi(DeviceInstanceId), util.hwndToFfi(hwndParent), OpenFlags, util.toPointer(DeviceInfoData)));
+  return util.boolFromFfi(libSETUPAPI_dll.SetupDiOpenDeviceInfoA(util.toPointer(DeviceInfoSet), util.pstrToFfi(DeviceInstanceId), util.hwndToFfi(hwndParent), OpenFlags, util.toPointer(DeviceInfoData)));
 }
 
 export function SetupDiOpenDeviceInfoW(
-  DeviceInfoSet: Deno.PointerValue | Uint8Array | null /* ptr */,
+  DeviceInfoSet: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.DeviceAndDriverInstallation.HDEVINFO */,
   DeviceInstanceId: string | null /* Windows.Win32.Foundation.PWSTR */,
   hwndParent: Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */,
   OpenFlags: number /* u32 */,
   DeviceInfoData: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSETUPAPI.SetupDiOpenDeviceInfoW(util.toPointer(DeviceInfoSet), util.pwstrToFfi(DeviceInstanceId), util.hwndToFfi(hwndParent), OpenFlags, util.toPointer(DeviceInfoData)));
+  return util.boolFromFfi(libSETUPAPI_dll.SetupDiOpenDeviceInfoW(util.toPointer(DeviceInfoSet), util.pwstrToFfi(DeviceInstanceId), util.hwndToFfi(hwndParent), OpenFlags, util.toPointer(DeviceInfoData)));
 }
 
 export function SetupDiGetDeviceInstanceIdA(
-  DeviceInfoSet: Deno.PointerValue | Uint8Array | null /* ptr */,
+  DeviceInfoSet: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.DeviceAndDriverInstallation.HDEVINFO */,
   DeviceInfoData: Deno.PointerValue | Uint8Array | null /* ptr */,
   DeviceInstanceId: string | null /* Windows.Win32.Foundation.PSTR */,
   DeviceInstanceIdSize: number /* u32 */,
   RequiredSize: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSETUPAPI.SetupDiGetDeviceInstanceIdA(util.toPointer(DeviceInfoSet), util.toPointer(DeviceInfoData), util.pstrToFfi(DeviceInstanceId), DeviceInstanceIdSize, util.toPointer(RequiredSize)));
+  return util.boolFromFfi(libSETUPAPI_dll.SetupDiGetDeviceInstanceIdA(util.toPointer(DeviceInfoSet), util.toPointer(DeviceInfoData), util.pstrToFfi(DeviceInstanceId), DeviceInstanceIdSize, util.toPointer(RequiredSize)));
 }
 
 export function SetupDiGetDeviceInstanceIdW(
-  DeviceInfoSet: Deno.PointerValue | Uint8Array | null /* ptr */,
+  DeviceInfoSet: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.DeviceAndDriverInstallation.HDEVINFO */,
   DeviceInfoData: Deno.PointerValue | Uint8Array | null /* ptr */,
   DeviceInstanceId: string | null /* Windows.Win32.Foundation.PWSTR */,
   DeviceInstanceIdSize: number /* u32 */,
   RequiredSize: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSETUPAPI.SetupDiGetDeviceInstanceIdW(util.toPointer(DeviceInfoSet), util.toPointer(DeviceInfoData), util.pwstrToFfi(DeviceInstanceId), DeviceInstanceIdSize, util.toPointer(RequiredSize)));
+  return util.boolFromFfi(libSETUPAPI_dll.SetupDiGetDeviceInstanceIdW(util.toPointer(DeviceInfoSet), util.toPointer(DeviceInfoData), util.pwstrToFfi(DeviceInstanceId), DeviceInstanceIdSize, util.toPointer(RequiredSize)));
 }
 
 export function SetupDiDeleteDeviceInfo(
-  DeviceInfoSet: Deno.PointerValue | Uint8Array | null /* ptr */,
+  DeviceInfoSet: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.DeviceAndDriverInstallation.HDEVINFO */,
   DeviceInfoData: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSETUPAPI.SetupDiDeleteDeviceInfo(util.toPointer(DeviceInfoSet), util.toPointer(DeviceInfoData)));
+  return util.boolFromFfi(libSETUPAPI_dll.SetupDiDeleteDeviceInfo(util.toPointer(DeviceInfoSet), util.toPointer(DeviceInfoData)));
 }
 
 export function SetupDiEnumDeviceInfo(
-  DeviceInfoSet: Deno.PointerValue | Uint8Array | null /* ptr */,
+  DeviceInfoSet: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.DeviceAndDriverInstallation.HDEVINFO */,
   MemberIndex: number /* u32 */,
   DeviceInfoData: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSETUPAPI.SetupDiEnumDeviceInfo(util.toPointer(DeviceInfoSet), MemberIndex, util.toPointer(DeviceInfoData)));
+  return util.boolFromFfi(libSETUPAPI_dll.SetupDiEnumDeviceInfo(util.toPointer(DeviceInfoSet), MemberIndex, util.toPointer(DeviceInfoData)));
 }
 
 export function SetupDiDestroyDeviceInfoList(
-  DeviceInfoSet: Deno.PointerValue | Uint8Array | null /* ptr */,
+  DeviceInfoSet: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.DeviceAndDriverInstallation.HDEVINFO */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSETUPAPI.SetupDiDestroyDeviceInfoList(util.toPointer(DeviceInfoSet)));
+  return util.boolFromFfi(libSETUPAPI_dll.SetupDiDestroyDeviceInfoList(util.toPointer(DeviceInfoSet)));
 }
 
 export function SetupDiEnumDeviceInterfaces(
-  DeviceInfoSet: Deno.PointerValue | Uint8Array | null /* ptr */,
+  DeviceInfoSet: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.DeviceAndDriverInstallation.HDEVINFO */,
   DeviceInfoData: Deno.PointerValue | Uint8Array | null /* ptr */,
   InterfaceClassGuid: Deno.PointerValue | Uint8Array | null /* ptr */,
   MemberIndex: number /* u32 */,
   DeviceInterfaceData: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSETUPAPI.SetupDiEnumDeviceInterfaces(util.toPointer(DeviceInfoSet), util.toPointer(DeviceInfoData), util.toPointer(InterfaceClassGuid), MemberIndex, util.toPointer(DeviceInterfaceData)));
+  return util.boolFromFfi(libSETUPAPI_dll.SetupDiEnumDeviceInterfaces(util.toPointer(DeviceInfoSet), util.toPointer(DeviceInfoData), util.toPointer(InterfaceClassGuid), MemberIndex, util.toPointer(DeviceInterfaceData)));
 }
 
 export function SetupDiCreateDeviceInterfaceA(
-  DeviceInfoSet: Deno.PointerValue | Uint8Array | null /* ptr */,
+  DeviceInfoSet: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.DeviceAndDriverInstallation.HDEVINFO */,
   DeviceInfoData: Deno.PointerValue | Uint8Array | null /* ptr */,
   InterfaceClassGuid: Deno.PointerValue | Uint8Array | null /* ptr */,
   ReferenceString: string | null /* Windows.Win32.Foundation.PSTR */,
   CreationFlags: number /* u32 */,
   DeviceInterfaceData: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSETUPAPI.SetupDiCreateDeviceInterfaceA(util.toPointer(DeviceInfoSet), util.toPointer(DeviceInfoData), util.toPointer(InterfaceClassGuid), util.pstrToFfi(ReferenceString), CreationFlags, util.toPointer(DeviceInterfaceData)));
+  return util.boolFromFfi(libSETUPAPI_dll.SetupDiCreateDeviceInterfaceA(util.toPointer(DeviceInfoSet), util.toPointer(DeviceInfoData), util.toPointer(InterfaceClassGuid), util.pstrToFfi(ReferenceString), CreationFlags, util.toPointer(DeviceInterfaceData)));
 }
 
 export function SetupDiCreateDeviceInterfaceW(
-  DeviceInfoSet: Deno.PointerValue | Uint8Array | null /* ptr */,
+  DeviceInfoSet: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.DeviceAndDriverInstallation.HDEVINFO */,
   DeviceInfoData: Deno.PointerValue | Uint8Array | null /* ptr */,
   InterfaceClassGuid: Deno.PointerValue | Uint8Array | null /* ptr */,
   ReferenceString: string | null /* Windows.Win32.Foundation.PWSTR */,
   CreationFlags: number /* u32 */,
   DeviceInterfaceData: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSETUPAPI.SetupDiCreateDeviceInterfaceW(util.toPointer(DeviceInfoSet), util.toPointer(DeviceInfoData), util.toPointer(InterfaceClassGuid), util.pwstrToFfi(ReferenceString), CreationFlags, util.toPointer(DeviceInterfaceData)));
+  return util.boolFromFfi(libSETUPAPI_dll.SetupDiCreateDeviceInterfaceW(util.toPointer(DeviceInfoSet), util.toPointer(DeviceInfoData), util.toPointer(InterfaceClassGuid), util.pwstrToFfi(ReferenceString), CreationFlags, util.toPointer(DeviceInterfaceData)));
 }
 
 export function SetupDiOpenDeviceInterfaceA(
-  DeviceInfoSet: Deno.PointerValue | Uint8Array | null /* ptr */,
+  DeviceInfoSet: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.DeviceAndDriverInstallation.HDEVINFO */,
   DevicePath: string | null /* Windows.Win32.Foundation.PSTR */,
   OpenFlags: number /* u32 */,
   DeviceInterfaceData: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSETUPAPI.SetupDiOpenDeviceInterfaceA(util.toPointer(DeviceInfoSet), util.pstrToFfi(DevicePath), OpenFlags, util.toPointer(DeviceInterfaceData)));
+  return util.boolFromFfi(libSETUPAPI_dll.SetupDiOpenDeviceInterfaceA(util.toPointer(DeviceInfoSet), util.pstrToFfi(DevicePath), OpenFlags, util.toPointer(DeviceInterfaceData)));
 }
 
 export function SetupDiOpenDeviceInterfaceW(
-  DeviceInfoSet: Deno.PointerValue | Uint8Array | null /* ptr */,
+  DeviceInfoSet: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.DeviceAndDriverInstallation.HDEVINFO */,
   DevicePath: string | null /* Windows.Win32.Foundation.PWSTR */,
   OpenFlags: number /* u32 */,
   DeviceInterfaceData: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSETUPAPI.SetupDiOpenDeviceInterfaceW(util.toPointer(DeviceInfoSet), util.pwstrToFfi(DevicePath), OpenFlags, util.toPointer(DeviceInterfaceData)));
+  return util.boolFromFfi(libSETUPAPI_dll.SetupDiOpenDeviceInterfaceW(util.toPointer(DeviceInfoSet), util.pwstrToFfi(DevicePath), OpenFlags, util.toPointer(DeviceInterfaceData)));
 }
 
 export function SetupDiGetDeviceInterfaceAlias(
-  DeviceInfoSet: Deno.PointerValue | Uint8Array | null /* ptr */,
+  DeviceInfoSet: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.DeviceAndDriverInstallation.HDEVINFO */,
   DeviceInterfaceData: Deno.PointerValue | Uint8Array | null /* ptr */,
   AliasInterfaceClassGuid: Deno.PointerValue | Uint8Array | null /* ptr */,
   AliasDeviceInterfaceData: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSETUPAPI.SetupDiGetDeviceInterfaceAlias(util.toPointer(DeviceInfoSet), util.toPointer(DeviceInterfaceData), util.toPointer(AliasInterfaceClassGuid), util.toPointer(AliasDeviceInterfaceData)));
+  return util.boolFromFfi(libSETUPAPI_dll.SetupDiGetDeviceInterfaceAlias(util.toPointer(DeviceInfoSet), util.toPointer(DeviceInterfaceData), util.toPointer(AliasInterfaceClassGuid), util.toPointer(AliasDeviceInterfaceData)));
 }
 
 export function SetupDiDeleteDeviceInterfaceData(
-  DeviceInfoSet: Deno.PointerValue | Uint8Array | null /* ptr */,
+  DeviceInfoSet: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.DeviceAndDriverInstallation.HDEVINFO */,
   DeviceInterfaceData: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSETUPAPI.SetupDiDeleteDeviceInterfaceData(util.toPointer(DeviceInfoSet), util.toPointer(DeviceInterfaceData)));
+  return util.boolFromFfi(libSETUPAPI_dll.SetupDiDeleteDeviceInterfaceData(util.toPointer(DeviceInfoSet), util.toPointer(DeviceInterfaceData)));
 }
 
 export function SetupDiRemoveDeviceInterface(
-  DeviceInfoSet: Deno.PointerValue | Uint8Array | null /* ptr */,
+  DeviceInfoSet: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.DeviceAndDriverInstallation.HDEVINFO */,
   DeviceInterfaceData: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSETUPAPI.SetupDiRemoveDeviceInterface(util.toPointer(DeviceInfoSet), util.toPointer(DeviceInterfaceData)));
+  return util.boolFromFfi(libSETUPAPI_dll.SetupDiRemoveDeviceInterface(util.toPointer(DeviceInfoSet), util.toPointer(DeviceInterfaceData)));
 }
 
 export function SetupDiGetDeviceInterfaceDetailA(
-  DeviceInfoSet: Deno.PointerValue | Uint8Array | null /* ptr */,
+  DeviceInfoSet: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.DeviceAndDriverInstallation.HDEVINFO */,
   DeviceInterfaceData: Deno.PointerValue | Uint8Array | null /* ptr */,
   DeviceInterfaceDetailData: Deno.PointerValue | Uint8Array | null /* ptr */,
   DeviceInterfaceDetailDataSize: number /* u32 */,
   RequiredSize: Deno.PointerValue | Uint8Array | null /* ptr */,
   DeviceInfoData: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSETUPAPI.SetupDiGetDeviceInterfaceDetailA(util.toPointer(DeviceInfoSet), util.toPointer(DeviceInterfaceData), util.toPointer(DeviceInterfaceDetailData), DeviceInterfaceDetailDataSize, util.toPointer(RequiredSize), util.toPointer(DeviceInfoData)));
+  return util.boolFromFfi(libSETUPAPI_dll.SetupDiGetDeviceInterfaceDetailA(util.toPointer(DeviceInfoSet), util.toPointer(DeviceInterfaceData), util.toPointer(DeviceInterfaceDetailData), DeviceInterfaceDetailDataSize, util.toPointer(RequiredSize), util.toPointer(DeviceInfoData)));
 }
 
 export function SetupDiGetDeviceInterfaceDetailW(
-  DeviceInfoSet: Deno.PointerValue | Uint8Array | null /* ptr */,
+  DeviceInfoSet: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.DeviceAndDriverInstallation.HDEVINFO */,
   DeviceInterfaceData: Deno.PointerValue | Uint8Array | null /* ptr */,
   DeviceInterfaceDetailData: Deno.PointerValue | Uint8Array | null /* ptr */,
   DeviceInterfaceDetailDataSize: number /* u32 */,
   RequiredSize: Deno.PointerValue | Uint8Array | null /* ptr */,
   DeviceInfoData: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSETUPAPI.SetupDiGetDeviceInterfaceDetailW(util.toPointer(DeviceInfoSet), util.toPointer(DeviceInterfaceData), util.toPointer(DeviceInterfaceDetailData), DeviceInterfaceDetailDataSize, util.toPointer(RequiredSize), util.toPointer(DeviceInfoData)));
+  return util.boolFromFfi(libSETUPAPI_dll.SetupDiGetDeviceInterfaceDetailW(util.toPointer(DeviceInfoSet), util.toPointer(DeviceInterfaceData), util.toPointer(DeviceInterfaceDetailData), DeviceInterfaceDetailDataSize, util.toPointer(RequiredSize), util.toPointer(DeviceInfoData)));
 }
 
 export function SetupDiInstallDeviceInterfaces(
-  DeviceInfoSet: Deno.PointerValue | Uint8Array | null /* ptr */,
+  DeviceInfoSet: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.DeviceAndDriverInstallation.HDEVINFO */,
   DeviceInfoData: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSETUPAPI.SetupDiInstallDeviceInterfaces(util.toPointer(DeviceInfoSet), util.toPointer(DeviceInfoData)));
+  return util.boolFromFfi(libSETUPAPI_dll.SetupDiInstallDeviceInterfaces(util.toPointer(DeviceInfoSet), util.toPointer(DeviceInfoData)));
 }
 
 export function SetupDiSetDeviceInterfaceDefault(
-  DeviceInfoSet: Deno.PointerValue | Uint8Array | null /* ptr */,
+  DeviceInfoSet: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.DeviceAndDriverInstallation.HDEVINFO */,
   DeviceInterfaceData: Deno.PointerValue | Uint8Array | null /* ptr */,
   Flags: number /* u32 */,
   Reserved: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSETUPAPI.SetupDiSetDeviceInterfaceDefault(util.toPointer(DeviceInfoSet), util.toPointer(DeviceInterfaceData), Flags, util.toPointer(Reserved)));
+  return util.boolFromFfi(libSETUPAPI_dll.SetupDiSetDeviceInterfaceDefault(util.toPointer(DeviceInfoSet), util.toPointer(DeviceInterfaceData), Flags, util.toPointer(Reserved)));
 }
 
 export function SetupDiRegisterDeviceInfo(
-  DeviceInfoSet: Deno.PointerValue | Uint8Array | null /* ptr */,
+  DeviceInfoSet: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.DeviceAndDriverInstallation.HDEVINFO */,
   DeviceInfoData: Deno.PointerValue | Uint8Array | null /* ptr */,
   Flags: number /* u32 */,
   CompareProc: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.DeviceAndDriverInstallation.PSP_DETSIG_CMPPROC */,
   CompareContext: Deno.PointerValue | Uint8Array | null /* ptr */,
   DupDeviceInfoData: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSETUPAPI.SetupDiRegisterDeviceInfo(util.toPointer(DeviceInfoSet), util.toPointer(DeviceInfoData), Flags, util.toPointer(CompareProc), util.toPointer(CompareContext), util.toPointer(DupDeviceInfoData)));
+  return util.boolFromFfi(libSETUPAPI_dll.SetupDiRegisterDeviceInfo(util.toPointer(DeviceInfoSet), util.toPointer(DeviceInfoData), Flags, util.toPointer(CompareProc), util.toPointer(CompareContext), util.toPointer(DupDeviceInfoData)));
 }
 
 export function SetupDiBuildDriverInfoList(
-  DeviceInfoSet: Deno.PointerValue | Uint8Array | null /* ptr */,
+  DeviceInfoSet: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.DeviceAndDriverInstallation.HDEVINFO */,
   DeviceInfoData: Deno.PointerValue | Uint8Array | null /* ptr */,
   DriverType: SETUP_DI_BUILD_DRIVER_DRIVER_TYPE /* Windows.Win32.Devices.DeviceAndDriverInstallation.SETUP_DI_BUILD_DRIVER_DRIVER_TYPE */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSETUPAPI.SetupDiBuildDriverInfoList(util.toPointer(DeviceInfoSet), util.toPointer(DeviceInfoData), DriverType));
+  return util.boolFromFfi(libSETUPAPI_dll.SetupDiBuildDriverInfoList(util.toPointer(DeviceInfoSet), util.toPointer(DeviceInfoData), DriverType));
 }
 
 export function SetupDiCancelDriverInfoSearch(
-  DeviceInfoSet: Deno.PointerValue | Uint8Array | null /* ptr */,
+  DeviceInfoSet: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.DeviceAndDriverInstallation.HDEVINFO */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSETUPAPI.SetupDiCancelDriverInfoSearch(util.toPointer(DeviceInfoSet)));
+  return util.boolFromFfi(libSETUPAPI_dll.SetupDiCancelDriverInfoSearch(util.toPointer(DeviceInfoSet)));
 }
 
 export function SetupDiEnumDriverInfoA(
-  DeviceInfoSet: Deno.PointerValue | Uint8Array | null /* ptr */,
+  DeviceInfoSet: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.DeviceAndDriverInstallation.HDEVINFO */,
   DeviceInfoData: Deno.PointerValue | Uint8Array | null /* ptr */,
   DriverType: number /* u32 */,
   MemberIndex: number /* u32 */,
   DriverInfoData: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSETUPAPI.SetupDiEnumDriverInfoA(util.toPointer(DeviceInfoSet), util.toPointer(DeviceInfoData), DriverType, MemberIndex, util.toPointer(DriverInfoData)));
+  return util.boolFromFfi(libSETUPAPI_dll.SetupDiEnumDriverInfoA(util.toPointer(DeviceInfoSet), util.toPointer(DeviceInfoData), DriverType, MemberIndex, util.toPointer(DriverInfoData)));
 }
 
 export function SetupDiEnumDriverInfoW(
-  DeviceInfoSet: Deno.PointerValue | Uint8Array | null /* ptr */,
+  DeviceInfoSet: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.DeviceAndDriverInstallation.HDEVINFO */,
   DeviceInfoData: Deno.PointerValue | Uint8Array | null /* ptr */,
   DriverType: number /* u32 */,
   MemberIndex: number /* u32 */,
   DriverInfoData: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSETUPAPI.SetupDiEnumDriverInfoW(util.toPointer(DeviceInfoSet), util.toPointer(DeviceInfoData), DriverType, MemberIndex, util.toPointer(DriverInfoData)));
+  return util.boolFromFfi(libSETUPAPI_dll.SetupDiEnumDriverInfoW(util.toPointer(DeviceInfoSet), util.toPointer(DeviceInfoData), DriverType, MemberIndex, util.toPointer(DriverInfoData)));
 }
 
 export function SetupDiGetSelectedDriverA(
-  DeviceInfoSet: Deno.PointerValue | Uint8Array | null /* ptr */,
+  DeviceInfoSet: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.DeviceAndDriverInstallation.HDEVINFO */,
   DeviceInfoData: Deno.PointerValue | Uint8Array | null /* ptr */,
   DriverInfoData: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSETUPAPI.SetupDiGetSelectedDriverA(util.toPointer(DeviceInfoSet), util.toPointer(DeviceInfoData), util.toPointer(DriverInfoData)));
+  return util.boolFromFfi(libSETUPAPI_dll.SetupDiGetSelectedDriverA(util.toPointer(DeviceInfoSet), util.toPointer(DeviceInfoData), util.toPointer(DriverInfoData)));
 }
 
 export function SetupDiGetSelectedDriverW(
-  DeviceInfoSet: Deno.PointerValue | Uint8Array | null /* ptr */,
+  DeviceInfoSet: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.DeviceAndDriverInstallation.HDEVINFO */,
   DeviceInfoData: Deno.PointerValue | Uint8Array | null /* ptr */,
   DriverInfoData: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSETUPAPI.SetupDiGetSelectedDriverW(util.toPointer(DeviceInfoSet), util.toPointer(DeviceInfoData), util.toPointer(DriverInfoData)));
+  return util.boolFromFfi(libSETUPAPI_dll.SetupDiGetSelectedDriverW(util.toPointer(DeviceInfoSet), util.toPointer(DeviceInfoData), util.toPointer(DriverInfoData)));
 }
 
 export function SetupDiSetSelectedDriverA(
-  DeviceInfoSet: Deno.PointerValue | Uint8Array | null /* ptr */,
+  DeviceInfoSet: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.DeviceAndDriverInstallation.HDEVINFO */,
   DeviceInfoData: Deno.PointerValue | Uint8Array | null /* ptr */,
   DriverInfoData: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSETUPAPI.SetupDiSetSelectedDriverA(util.toPointer(DeviceInfoSet), util.toPointer(DeviceInfoData), util.toPointer(DriverInfoData)));
+  return util.boolFromFfi(libSETUPAPI_dll.SetupDiSetSelectedDriverA(util.toPointer(DeviceInfoSet), util.toPointer(DeviceInfoData), util.toPointer(DriverInfoData)));
 }
 
 export function SetupDiSetSelectedDriverW(
-  DeviceInfoSet: Deno.PointerValue | Uint8Array | null /* ptr */,
+  DeviceInfoSet: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.DeviceAndDriverInstallation.HDEVINFO */,
   DeviceInfoData: Deno.PointerValue | Uint8Array | null /* ptr */,
   DriverInfoData: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSETUPAPI.SetupDiSetSelectedDriverW(util.toPointer(DeviceInfoSet), util.toPointer(DeviceInfoData), util.toPointer(DriverInfoData)));
+  return util.boolFromFfi(libSETUPAPI_dll.SetupDiSetSelectedDriverW(util.toPointer(DeviceInfoSet), util.toPointer(DeviceInfoData), util.toPointer(DriverInfoData)));
 }
 
 export function SetupDiGetDriverInfoDetailA(
-  DeviceInfoSet: Deno.PointerValue | Uint8Array | null /* ptr */,
+  DeviceInfoSet: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.DeviceAndDriverInstallation.HDEVINFO */,
   DeviceInfoData: Deno.PointerValue | Uint8Array | null /* ptr */,
   DriverInfoData: Deno.PointerValue | Uint8Array | null /* ptr */,
   DriverInfoDetailData: Deno.PointerValue | Uint8Array | null /* ptr */,
   DriverInfoDetailDataSize: number /* u32 */,
   RequiredSize: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSETUPAPI.SetupDiGetDriverInfoDetailA(util.toPointer(DeviceInfoSet), util.toPointer(DeviceInfoData), util.toPointer(DriverInfoData), util.toPointer(DriverInfoDetailData), DriverInfoDetailDataSize, util.toPointer(RequiredSize)));
+  return util.boolFromFfi(libSETUPAPI_dll.SetupDiGetDriverInfoDetailA(util.toPointer(DeviceInfoSet), util.toPointer(DeviceInfoData), util.toPointer(DriverInfoData), util.toPointer(DriverInfoDetailData), DriverInfoDetailDataSize, util.toPointer(RequiredSize)));
 }
 
 export function SetupDiGetDriverInfoDetailW(
-  DeviceInfoSet: Deno.PointerValue | Uint8Array | null /* ptr */,
+  DeviceInfoSet: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.DeviceAndDriverInstallation.HDEVINFO */,
   DeviceInfoData: Deno.PointerValue | Uint8Array | null /* ptr */,
   DriverInfoData: Deno.PointerValue | Uint8Array | null /* ptr */,
   DriverInfoDetailData: Deno.PointerValue | Uint8Array | null /* ptr */,
   DriverInfoDetailDataSize: number /* u32 */,
   RequiredSize: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSETUPAPI.SetupDiGetDriverInfoDetailW(util.toPointer(DeviceInfoSet), util.toPointer(DeviceInfoData), util.toPointer(DriverInfoData), util.toPointer(DriverInfoDetailData), DriverInfoDetailDataSize, util.toPointer(RequiredSize)));
+  return util.boolFromFfi(libSETUPAPI_dll.SetupDiGetDriverInfoDetailW(util.toPointer(DeviceInfoSet), util.toPointer(DeviceInfoData), util.toPointer(DriverInfoData), util.toPointer(DriverInfoDetailData), DriverInfoDetailDataSize, util.toPointer(RequiredSize)));
 }
 
 export function SetupDiDestroyDriverInfoList(
-  DeviceInfoSet: Deno.PointerValue | Uint8Array | null /* ptr */,
+  DeviceInfoSet: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.DeviceAndDriverInstallation.HDEVINFO */,
   DeviceInfoData: Deno.PointerValue | Uint8Array | null /* ptr */,
   DriverType: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSETUPAPI.SetupDiDestroyDriverInfoList(util.toPointer(DeviceInfoSet), util.toPointer(DeviceInfoData), DriverType));
+  return util.boolFromFfi(libSETUPAPI_dll.SetupDiDestroyDriverInfoList(util.toPointer(DeviceInfoSet), util.toPointer(DeviceInfoData), DriverType));
 }
 
 export function SetupDiGetClassDevsA(
@@ -9495,8 +9827,8 @@ export function SetupDiGetClassDevsA(
   Enumerator: string | null /* Windows.Win32.Foundation.PSTR */,
   hwndParent: Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */,
   Flags: number /* u32 */,
-): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libSETUPAPI.SetupDiGetClassDevsA(util.toPointer(ClassGuid), util.pstrToFfi(Enumerator), util.hwndToFfi(hwndParent), Flags));
+): Deno.PointerValue | null /* Windows.Win32.Devices.DeviceAndDriverInstallation.HDEVINFO */ {
+  return util.pointerFromFfi(libSETUPAPI_dll.SetupDiGetClassDevsA(util.toPointer(ClassGuid), util.pstrToFfi(Enumerator), util.hwndToFfi(hwndParent), Flags));
 }
 
 export function SetupDiGetClassDevsW(
@@ -9504,8 +9836,8 @@ export function SetupDiGetClassDevsW(
   Enumerator: string | null /* Windows.Win32.Foundation.PWSTR */,
   hwndParent: Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */,
   Flags: number /* u32 */,
-): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libSETUPAPI.SetupDiGetClassDevsW(util.toPointer(ClassGuid), util.pwstrToFfi(Enumerator), util.hwndToFfi(hwndParent), Flags));
+): Deno.PointerValue | null /* Windows.Win32.Devices.DeviceAndDriverInstallation.HDEVINFO */ {
+  return util.pointerFromFfi(libSETUPAPI_dll.SetupDiGetClassDevsW(util.toPointer(ClassGuid), util.pwstrToFfi(Enumerator), util.hwndToFfi(hwndParent), Flags));
 }
 
 export function SetupDiGetClassDevsExA(
@@ -9513,11 +9845,11 @@ export function SetupDiGetClassDevsExA(
   Enumerator: string | null /* Windows.Win32.Foundation.PSTR */,
   hwndParent: Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */,
   Flags: number /* u32 */,
-  DeviceInfoSet: Deno.PointerValue | Uint8Array | null /* ptr */,
+  DeviceInfoSet: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.DeviceAndDriverInstallation.HDEVINFO */,
   MachineName: string | null /* Windows.Win32.Foundation.PSTR */,
   Reserved: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libSETUPAPI.SetupDiGetClassDevsExA(util.toPointer(ClassGuid), util.pstrToFfi(Enumerator), util.hwndToFfi(hwndParent), Flags, util.toPointer(DeviceInfoSet), util.pstrToFfi(MachineName), util.toPointer(Reserved)));
+): Deno.PointerValue | null /* Windows.Win32.Devices.DeviceAndDriverInstallation.HDEVINFO */ {
+  return util.pointerFromFfi(libSETUPAPI_dll.SetupDiGetClassDevsExA(util.toPointer(ClassGuid), util.pstrToFfi(Enumerator), util.hwndToFfi(hwndParent), Flags, util.toPointer(DeviceInfoSet), util.pstrToFfi(MachineName), util.toPointer(Reserved)));
 }
 
 export function SetupDiGetClassDevsExW(
@@ -9525,11 +9857,11 @@ export function SetupDiGetClassDevsExW(
   Enumerator: string | null /* Windows.Win32.Foundation.PWSTR */,
   hwndParent: Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */,
   Flags: number /* u32 */,
-  DeviceInfoSet: Deno.PointerValue | Uint8Array | null /* ptr */,
+  DeviceInfoSet: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.DeviceAndDriverInstallation.HDEVINFO */,
   MachineName: string | null /* Windows.Win32.Foundation.PWSTR */,
   Reserved: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libSETUPAPI.SetupDiGetClassDevsExW(util.toPointer(ClassGuid), util.pwstrToFfi(Enumerator), util.hwndToFfi(hwndParent), Flags, util.toPointer(DeviceInfoSet), util.pwstrToFfi(MachineName), util.toPointer(Reserved)));
+): Deno.PointerValue | null /* Windows.Win32.Devices.DeviceAndDriverInstallation.HDEVINFO */ {
+  return util.pointerFromFfi(libSETUPAPI_dll.SetupDiGetClassDevsExW(util.toPointer(ClassGuid), util.pwstrToFfi(Enumerator), util.hwndToFfi(hwndParent), Flags, util.toPointer(DeviceInfoSet), util.pwstrToFfi(MachineName), util.toPointer(Reserved)));
 }
 
 export function SetupDiGetINFClassA(
@@ -9539,7 +9871,7 @@ export function SetupDiGetINFClassA(
   ClassNameSize: number /* u32 */,
   RequiredSize: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSETUPAPI.SetupDiGetINFClassA(util.pstrToFfi(InfName), util.toPointer(ClassGuid), util.pstrToFfi(ClassName), ClassNameSize, util.toPointer(RequiredSize)));
+  return util.boolFromFfi(libSETUPAPI_dll.SetupDiGetINFClassA(util.pstrToFfi(InfName), util.toPointer(ClassGuid), util.pstrToFfi(ClassName), ClassNameSize, util.toPointer(RequiredSize)));
 }
 
 export function SetupDiGetINFClassW(
@@ -9549,7 +9881,7 @@ export function SetupDiGetINFClassW(
   ClassNameSize: number /* u32 */,
   RequiredSize: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSETUPAPI.SetupDiGetINFClassW(util.pwstrToFfi(InfName), util.toPointer(ClassGuid), util.pwstrToFfi(ClassName), ClassNameSize, util.toPointer(RequiredSize)));
+  return util.boolFromFfi(libSETUPAPI_dll.SetupDiGetINFClassW(util.pwstrToFfi(InfName), util.toPointer(ClassGuid), util.pwstrToFfi(ClassName), ClassNameSize, util.toPointer(RequiredSize)));
 }
 
 export function SetupDiBuildClassInfoList(
@@ -9558,7 +9890,7 @@ export function SetupDiBuildClassInfoList(
   ClassGuidListSize: number /* u32 */,
   RequiredSize: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSETUPAPI.SetupDiBuildClassInfoList(Flags, util.toPointer(ClassGuidList), ClassGuidListSize, util.toPointer(RequiredSize)));
+  return util.boolFromFfi(libSETUPAPI_dll.SetupDiBuildClassInfoList(Flags, util.toPointer(ClassGuidList), ClassGuidListSize, util.toPointer(RequiredSize)));
 }
 
 export function SetupDiBuildClassInfoListExA(
@@ -9569,7 +9901,7 @@ export function SetupDiBuildClassInfoListExA(
   MachineName: string | null /* Windows.Win32.Foundation.PSTR */,
   Reserved: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSETUPAPI.SetupDiBuildClassInfoListExA(Flags, util.toPointer(ClassGuidList), ClassGuidListSize, util.toPointer(RequiredSize), util.pstrToFfi(MachineName), util.toPointer(Reserved)));
+  return util.boolFromFfi(libSETUPAPI_dll.SetupDiBuildClassInfoListExA(Flags, util.toPointer(ClassGuidList), ClassGuidListSize, util.toPointer(RequiredSize), util.pstrToFfi(MachineName), util.toPointer(Reserved)));
 }
 
 export function SetupDiBuildClassInfoListExW(
@@ -9580,7 +9912,7 @@ export function SetupDiBuildClassInfoListExW(
   MachineName: string | null /* Windows.Win32.Foundation.PWSTR */,
   Reserved: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSETUPAPI.SetupDiBuildClassInfoListExW(Flags, util.toPointer(ClassGuidList), ClassGuidListSize, util.toPointer(RequiredSize), util.pwstrToFfi(MachineName), util.toPointer(Reserved)));
+  return util.boolFromFfi(libSETUPAPI_dll.SetupDiBuildClassInfoListExW(Flags, util.toPointer(ClassGuidList), ClassGuidListSize, util.toPointer(RequiredSize), util.pwstrToFfi(MachineName), util.toPointer(Reserved)));
 }
 
 export function SetupDiGetClassDescriptionA(
@@ -9589,7 +9921,7 @@ export function SetupDiGetClassDescriptionA(
   ClassDescriptionSize: number /* u32 */,
   RequiredSize: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSETUPAPI.SetupDiGetClassDescriptionA(util.toPointer(ClassGuid), util.pstrToFfi(ClassDescription), ClassDescriptionSize, util.toPointer(RequiredSize)));
+  return util.boolFromFfi(libSETUPAPI_dll.SetupDiGetClassDescriptionA(util.toPointer(ClassGuid), util.pstrToFfi(ClassDescription), ClassDescriptionSize, util.toPointer(RequiredSize)));
 }
 
 export function SetupDiGetClassDescriptionW(
@@ -9598,7 +9930,7 @@ export function SetupDiGetClassDescriptionW(
   ClassDescriptionSize: number /* u32 */,
   RequiredSize: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSETUPAPI.SetupDiGetClassDescriptionW(util.toPointer(ClassGuid), util.pwstrToFfi(ClassDescription), ClassDescriptionSize, util.toPointer(RequiredSize)));
+  return util.boolFromFfi(libSETUPAPI_dll.SetupDiGetClassDescriptionW(util.toPointer(ClassGuid), util.pwstrToFfi(ClassDescription), ClassDescriptionSize, util.toPointer(RequiredSize)));
 }
 
 export function SetupDiGetClassDescriptionExA(
@@ -9609,7 +9941,7 @@ export function SetupDiGetClassDescriptionExA(
   MachineName: string | null /* Windows.Win32.Foundation.PSTR */,
   Reserved: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSETUPAPI.SetupDiGetClassDescriptionExA(util.toPointer(ClassGuid), util.pstrToFfi(ClassDescription), ClassDescriptionSize, util.toPointer(RequiredSize), util.pstrToFfi(MachineName), util.toPointer(Reserved)));
+  return util.boolFromFfi(libSETUPAPI_dll.SetupDiGetClassDescriptionExA(util.toPointer(ClassGuid), util.pstrToFfi(ClassDescription), ClassDescriptionSize, util.toPointer(RequiredSize), util.pstrToFfi(MachineName), util.toPointer(Reserved)));
 }
 
 export function SetupDiGetClassDescriptionExW(
@@ -9620,78 +9952,78 @@ export function SetupDiGetClassDescriptionExW(
   MachineName: string | null /* Windows.Win32.Foundation.PWSTR */,
   Reserved: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSETUPAPI.SetupDiGetClassDescriptionExW(util.toPointer(ClassGuid), util.pwstrToFfi(ClassDescription), ClassDescriptionSize, util.toPointer(RequiredSize), util.pwstrToFfi(MachineName), util.toPointer(Reserved)));
+  return util.boolFromFfi(libSETUPAPI_dll.SetupDiGetClassDescriptionExW(util.toPointer(ClassGuid), util.pwstrToFfi(ClassDescription), ClassDescriptionSize, util.toPointer(RequiredSize), util.pwstrToFfi(MachineName), util.toPointer(Reserved)));
 }
 
 export function SetupDiCallClassInstaller(
   InstallFunction: number /* u32 */,
-  DeviceInfoSet: Deno.PointerValue | Uint8Array | null /* ptr */,
+  DeviceInfoSet: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.DeviceAndDriverInstallation.HDEVINFO */,
   DeviceInfoData: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSETUPAPI.SetupDiCallClassInstaller(InstallFunction, util.toPointer(DeviceInfoSet), util.toPointer(DeviceInfoData)));
+  return util.boolFromFfi(libSETUPAPI_dll.SetupDiCallClassInstaller(InstallFunction, util.toPointer(DeviceInfoSet), util.toPointer(DeviceInfoData)));
 }
 
 export function SetupDiSelectDevice(
-  DeviceInfoSet: Deno.PointerValue | Uint8Array | null /* ptr */,
+  DeviceInfoSet: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.DeviceAndDriverInstallation.HDEVINFO */,
   DeviceInfoData: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSETUPAPI.SetupDiSelectDevice(util.toPointer(DeviceInfoSet), util.toPointer(DeviceInfoData)));
+  return util.boolFromFfi(libSETUPAPI_dll.SetupDiSelectDevice(util.toPointer(DeviceInfoSet), util.toPointer(DeviceInfoData)));
 }
 
 export function SetupDiSelectBestCompatDrv(
-  DeviceInfoSet: Deno.PointerValue | Uint8Array | null /* ptr */,
+  DeviceInfoSet: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.DeviceAndDriverInstallation.HDEVINFO */,
   DeviceInfoData: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSETUPAPI.SetupDiSelectBestCompatDrv(util.toPointer(DeviceInfoSet), util.toPointer(DeviceInfoData)));
+  return util.boolFromFfi(libSETUPAPI_dll.SetupDiSelectBestCompatDrv(util.toPointer(DeviceInfoSet), util.toPointer(DeviceInfoData)));
 }
 
 export function SetupDiInstallDevice(
-  DeviceInfoSet: Deno.PointerValue | Uint8Array | null /* ptr */,
+  DeviceInfoSet: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.DeviceAndDriverInstallation.HDEVINFO */,
   DeviceInfoData: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSETUPAPI.SetupDiInstallDevice(util.toPointer(DeviceInfoSet), util.toPointer(DeviceInfoData)));
+  return util.boolFromFfi(libSETUPAPI_dll.SetupDiInstallDevice(util.toPointer(DeviceInfoSet), util.toPointer(DeviceInfoData)));
 }
 
 export function SetupDiInstallDriverFiles(
-  DeviceInfoSet: Deno.PointerValue | Uint8Array | null /* ptr */,
+  DeviceInfoSet: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.DeviceAndDriverInstallation.HDEVINFO */,
   DeviceInfoData: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSETUPAPI.SetupDiInstallDriverFiles(util.toPointer(DeviceInfoSet), util.toPointer(DeviceInfoData)));
+  return util.boolFromFfi(libSETUPAPI_dll.SetupDiInstallDriverFiles(util.toPointer(DeviceInfoSet), util.toPointer(DeviceInfoData)));
 }
 
 export function SetupDiRegisterCoDeviceInstallers(
-  DeviceInfoSet: Deno.PointerValue | Uint8Array | null /* ptr */,
+  DeviceInfoSet: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.DeviceAndDriverInstallation.HDEVINFO */,
   DeviceInfoData: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSETUPAPI.SetupDiRegisterCoDeviceInstallers(util.toPointer(DeviceInfoSet), util.toPointer(DeviceInfoData)));
+  return util.boolFromFfi(libSETUPAPI_dll.SetupDiRegisterCoDeviceInstallers(util.toPointer(DeviceInfoSet), util.toPointer(DeviceInfoData)));
 }
 
 export function SetupDiRemoveDevice(
-  DeviceInfoSet: Deno.PointerValue | Uint8Array | null /* ptr */,
+  DeviceInfoSet: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.DeviceAndDriverInstallation.HDEVINFO */,
   DeviceInfoData: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSETUPAPI.SetupDiRemoveDevice(util.toPointer(DeviceInfoSet), util.toPointer(DeviceInfoData)));
+  return util.boolFromFfi(libSETUPAPI_dll.SetupDiRemoveDevice(util.toPointer(DeviceInfoSet), util.toPointer(DeviceInfoData)));
 }
 
 export function SetupDiUnremoveDevice(
-  DeviceInfoSet: Deno.PointerValue | Uint8Array | null /* ptr */,
+  DeviceInfoSet: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.DeviceAndDriverInstallation.HDEVINFO */,
   DeviceInfoData: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSETUPAPI.SetupDiUnremoveDevice(util.toPointer(DeviceInfoSet), util.toPointer(DeviceInfoData)));
+  return util.boolFromFfi(libSETUPAPI_dll.SetupDiUnremoveDevice(util.toPointer(DeviceInfoSet), util.toPointer(DeviceInfoData)));
 }
 
 export function SetupDiRestartDevices(
-  DeviceInfoSet: Deno.PointerValue | Uint8Array | null /* ptr */,
+  DeviceInfoSet: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.DeviceAndDriverInstallation.HDEVINFO */,
   DeviceInfoData: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSETUPAPI.SetupDiRestartDevices(util.toPointer(DeviceInfoSet), util.toPointer(DeviceInfoData)));
+  return util.boolFromFfi(libSETUPAPI_dll.SetupDiRestartDevices(util.toPointer(DeviceInfoSet), util.toPointer(DeviceInfoData)));
 }
 
 export function SetupDiChangeState(
-  DeviceInfoSet: Deno.PointerValue | Uint8Array | null /* ptr */,
+  DeviceInfoSet: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.DeviceAndDriverInstallation.HDEVINFO */,
   DeviceInfoData: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSETUPAPI.SetupDiChangeState(util.toPointer(DeviceInfoSet), util.toPointer(DeviceInfoData)));
+  return util.boolFromFfi(libSETUPAPI_dll.SetupDiChangeState(util.toPointer(DeviceInfoSet), util.toPointer(DeviceInfoData)));
 }
 
 export function SetupDiInstallClassA(
@@ -9700,7 +10032,7 @@ export function SetupDiInstallClassA(
   Flags: number /* u32 */,
   FileQueue: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSETUPAPI.SetupDiInstallClassA(util.hwndToFfi(hwndParent), util.pstrToFfi(InfFileName), Flags, util.toPointer(FileQueue)));
+  return util.boolFromFfi(libSETUPAPI_dll.SetupDiInstallClassA(util.hwndToFfi(hwndParent), util.pstrToFfi(InfFileName), Flags, util.toPointer(FileQueue)));
 }
 
 export function SetupDiInstallClassW(
@@ -9709,7 +10041,7 @@ export function SetupDiInstallClassW(
   Flags: number /* u32 */,
   FileQueue: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSETUPAPI.SetupDiInstallClassW(util.hwndToFfi(hwndParent), util.pwstrToFfi(InfFileName), Flags, util.toPointer(FileQueue)));
+  return util.boolFromFfi(libSETUPAPI_dll.SetupDiInstallClassW(util.hwndToFfi(hwndParent), util.pwstrToFfi(InfFileName), Flags, util.toPointer(FileQueue)));
 }
 
 export function SetupDiInstallClassExA(
@@ -9721,7 +10053,7 @@ export function SetupDiInstallClassExA(
   Reserved1: Deno.PointerValue | Uint8Array | null /* ptr */,
   Reserved2: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSETUPAPI.SetupDiInstallClassExA(util.hwndToFfi(hwndParent), util.pstrToFfi(InfFileName), Flags, util.toPointer(FileQueue), util.toPointer(InterfaceClassGuid), util.toPointer(Reserved1), util.toPointer(Reserved2)));
+  return util.boolFromFfi(libSETUPAPI_dll.SetupDiInstallClassExA(util.hwndToFfi(hwndParent), util.pstrToFfi(InfFileName), Flags, util.toPointer(FileQueue), util.toPointer(InterfaceClassGuid), util.toPointer(Reserved1), util.toPointer(Reserved2)));
 }
 
 export function SetupDiInstallClassExW(
@@ -9733,14 +10065,14 @@ export function SetupDiInstallClassExW(
   Reserved1: Deno.PointerValue | Uint8Array | null /* ptr */,
   Reserved2: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSETUPAPI.SetupDiInstallClassExW(util.hwndToFfi(hwndParent), util.pwstrToFfi(InfFileName), Flags, util.toPointer(FileQueue), util.toPointer(InterfaceClassGuid), util.toPointer(Reserved1), util.toPointer(Reserved2)));
+  return util.boolFromFfi(libSETUPAPI_dll.SetupDiInstallClassExW(util.hwndToFfi(hwndParent), util.pwstrToFfi(InfFileName), Flags, util.toPointer(FileQueue), util.toPointer(InterfaceClassGuid), util.toPointer(Reserved1), util.toPointer(Reserved2)));
 }
 
 export function SetupDiOpenClassRegKey(
   ClassGuid: Deno.PointerValue | Uint8Array | null /* ptr */,
   samDesired: number /* u32 */,
 ): Deno.PointerValue | null /* Windows.Win32.System.Registry.HKEY */ {
-  return util.pointerFromFfi(libSETUPAPI.SetupDiOpenClassRegKey(util.toPointer(ClassGuid), samDesired));
+  return util.pointerFromFfi(libSETUPAPI_dll.SetupDiOpenClassRegKey(util.toPointer(ClassGuid), samDesired));
 }
 
 export function SetupDiOpenClassRegKeyExA(
@@ -9750,7 +10082,7 @@ export function SetupDiOpenClassRegKeyExA(
   MachineName: string | null /* Windows.Win32.Foundation.PSTR */,
   Reserved: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.System.Registry.HKEY */ {
-  return util.pointerFromFfi(libSETUPAPI.SetupDiOpenClassRegKeyExA(util.toPointer(ClassGuid), samDesired, Flags, util.pstrToFfi(MachineName), util.toPointer(Reserved)));
+  return util.pointerFromFfi(libSETUPAPI_dll.SetupDiOpenClassRegKeyExA(util.toPointer(ClassGuid), samDesired, Flags, util.pstrToFfi(MachineName), util.toPointer(Reserved)));
 }
 
 export function SetupDiOpenClassRegKeyExW(
@@ -9760,50 +10092,50 @@ export function SetupDiOpenClassRegKeyExW(
   MachineName: string | null /* Windows.Win32.Foundation.PWSTR */,
   Reserved: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.System.Registry.HKEY */ {
-  return util.pointerFromFfi(libSETUPAPI.SetupDiOpenClassRegKeyExW(util.toPointer(ClassGuid), samDesired, Flags, util.pwstrToFfi(MachineName), util.toPointer(Reserved)));
+  return util.pointerFromFfi(libSETUPAPI_dll.SetupDiOpenClassRegKeyExW(util.toPointer(ClassGuid), samDesired, Flags, util.pwstrToFfi(MachineName), util.toPointer(Reserved)));
 }
 
 export function SetupDiCreateDeviceInterfaceRegKeyA(
-  DeviceInfoSet: Deno.PointerValue | Uint8Array | null /* ptr */,
+  DeviceInfoSet: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.DeviceAndDriverInstallation.HDEVINFO */,
   DeviceInterfaceData: Deno.PointerValue | Uint8Array | null /* ptr */,
   Reserved: number /* u32 */,
   samDesired: number /* u32 */,
   InfHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
   InfSectionName: string | null /* Windows.Win32.Foundation.PSTR */,
 ): Deno.PointerValue | null /* Windows.Win32.System.Registry.HKEY */ {
-  return util.pointerFromFfi(libSETUPAPI.SetupDiCreateDeviceInterfaceRegKeyA(util.toPointer(DeviceInfoSet), util.toPointer(DeviceInterfaceData), Reserved, samDesired, util.toPointer(InfHandle), util.pstrToFfi(InfSectionName)));
+  return util.pointerFromFfi(libSETUPAPI_dll.SetupDiCreateDeviceInterfaceRegKeyA(util.toPointer(DeviceInfoSet), util.toPointer(DeviceInterfaceData), Reserved, samDesired, util.toPointer(InfHandle), util.pstrToFfi(InfSectionName)));
 }
 
 export function SetupDiCreateDeviceInterfaceRegKeyW(
-  DeviceInfoSet: Deno.PointerValue | Uint8Array | null /* ptr */,
+  DeviceInfoSet: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.DeviceAndDriverInstallation.HDEVINFO */,
   DeviceInterfaceData: Deno.PointerValue | Uint8Array | null /* ptr */,
   Reserved: number /* u32 */,
   samDesired: number /* u32 */,
   InfHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
   InfSectionName: string | null /* Windows.Win32.Foundation.PWSTR */,
 ): Deno.PointerValue | null /* Windows.Win32.System.Registry.HKEY */ {
-  return util.pointerFromFfi(libSETUPAPI.SetupDiCreateDeviceInterfaceRegKeyW(util.toPointer(DeviceInfoSet), util.toPointer(DeviceInterfaceData), Reserved, samDesired, util.toPointer(InfHandle), util.pwstrToFfi(InfSectionName)));
+  return util.pointerFromFfi(libSETUPAPI_dll.SetupDiCreateDeviceInterfaceRegKeyW(util.toPointer(DeviceInfoSet), util.toPointer(DeviceInterfaceData), Reserved, samDesired, util.toPointer(InfHandle), util.pwstrToFfi(InfSectionName)));
 }
 
 export function SetupDiOpenDeviceInterfaceRegKey(
-  DeviceInfoSet: Deno.PointerValue | Uint8Array | null /* ptr */,
+  DeviceInfoSet: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.DeviceAndDriverInstallation.HDEVINFO */,
   DeviceInterfaceData: Deno.PointerValue | Uint8Array | null /* ptr */,
   Reserved: number /* u32 */,
   samDesired: number /* u32 */,
 ): Deno.PointerValue | null /* Windows.Win32.System.Registry.HKEY */ {
-  return util.pointerFromFfi(libSETUPAPI.SetupDiOpenDeviceInterfaceRegKey(util.toPointer(DeviceInfoSet), util.toPointer(DeviceInterfaceData), Reserved, samDesired));
+  return util.pointerFromFfi(libSETUPAPI_dll.SetupDiOpenDeviceInterfaceRegKey(util.toPointer(DeviceInfoSet), util.toPointer(DeviceInterfaceData), Reserved, samDesired));
 }
 
 export function SetupDiDeleteDeviceInterfaceRegKey(
-  DeviceInfoSet: Deno.PointerValue | Uint8Array | null /* ptr */,
+  DeviceInfoSet: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.DeviceAndDriverInstallation.HDEVINFO */,
   DeviceInterfaceData: Deno.PointerValue | Uint8Array | null /* ptr */,
   Reserved: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSETUPAPI.SetupDiDeleteDeviceInterfaceRegKey(util.toPointer(DeviceInfoSet), util.toPointer(DeviceInterfaceData), Reserved));
+  return util.boolFromFfi(libSETUPAPI_dll.SetupDiDeleteDeviceInterfaceRegKey(util.toPointer(DeviceInfoSet), util.toPointer(DeviceInterfaceData), Reserved));
 }
 
 export function SetupDiCreateDevRegKeyA(
-  DeviceInfoSet: Deno.PointerValue | Uint8Array | null /* ptr */,
+  DeviceInfoSet: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.DeviceAndDriverInstallation.HDEVINFO */,
   DeviceInfoData: Deno.PointerValue | Uint8Array | null /* ptr */,
   Scope: number /* u32 */,
   HwProfile: number /* u32 */,
@@ -9811,11 +10143,11 @@ export function SetupDiCreateDevRegKeyA(
   InfHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
   InfSectionName: string | null /* Windows.Win32.Foundation.PSTR */,
 ): Deno.PointerValue | null /* Windows.Win32.System.Registry.HKEY */ {
-  return util.pointerFromFfi(libSETUPAPI.SetupDiCreateDevRegKeyA(util.toPointer(DeviceInfoSet), util.toPointer(DeviceInfoData), Scope, HwProfile, KeyType, util.toPointer(InfHandle), util.pstrToFfi(InfSectionName)));
+  return util.pointerFromFfi(libSETUPAPI_dll.SetupDiCreateDevRegKeyA(util.toPointer(DeviceInfoSet), util.toPointer(DeviceInfoData), Scope, HwProfile, KeyType, util.toPointer(InfHandle), util.pstrToFfi(InfSectionName)));
 }
 
 export function SetupDiCreateDevRegKeyW(
-  DeviceInfoSet: Deno.PointerValue | Uint8Array | null /* ptr */,
+  DeviceInfoSet: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.DeviceAndDriverInstallation.HDEVINFO */,
   DeviceInfoData: Deno.PointerValue | Uint8Array | null /* ptr */,
   Scope: number /* u32 */,
   HwProfile: number /* u32 */,
@@ -9823,28 +10155,28 @@ export function SetupDiCreateDevRegKeyW(
   InfHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
   InfSectionName: string | null /* Windows.Win32.Foundation.PWSTR */,
 ): Deno.PointerValue | null /* Windows.Win32.System.Registry.HKEY */ {
-  return util.pointerFromFfi(libSETUPAPI.SetupDiCreateDevRegKeyW(util.toPointer(DeviceInfoSet), util.toPointer(DeviceInfoData), Scope, HwProfile, KeyType, util.toPointer(InfHandle), util.pwstrToFfi(InfSectionName)));
+  return util.pointerFromFfi(libSETUPAPI_dll.SetupDiCreateDevRegKeyW(util.toPointer(DeviceInfoSet), util.toPointer(DeviceInfoData), Scope, HwProfile, KeyType, util.toPointer(InfHandle), util.pwstrToFfi(InfSectionName)));
 }
 
 export function SetupDiOpenDevRegKey(
-  DeviceInfoSet: Deno.PointerValue | Uint8Array | null /* ptr */,
+  DeviceInfoSet: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.DeviceAndDriverInstallation.HDEVINFO */,
   DeviceInfoData: Deno.PointerValue | Uint8Array | null /* ptr */,
   Scope: number /* u32 */,
   HwProfile: number /* u32 */,
   KeyType: number /* u32 */,
   samDesired: number /* u32 */,
 ): Deno.PointerValue | null /* Windows.Win32.System.Registry.HKEY */ {
-  return util.pointerFromFfi(libSETUPAPI.SetupDiOpenDevRegKey(util.toPointer(DeviceInfoSet), util.toPointer(DeviceInfoData), Scope, HwProfile, KeyType, samDesired));
+  return util.pointerFromFfi(libSETUPAPI_dll.SetupDiOpenDevRegKey(util.toPointer(DeviceInfoSet), util.toPointer(DeviceInfoData), Scope, HwProfile, KeyType, samDesired));
 }
 
 export function SetupDiDeleteDevRegKey(
-  DeviceInfoSet: Deno.PointerValue | Uint8Array | null /* ptr */,
+  DeviceInfoSet: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.DeviceAndDriverInstallation.HDEVINFO */,
   DeviceInfoData: Deno.PointerValue | Uint8Array | null /* ptr */,
   Scope: number /* u32 */,
   HwProfile: number /* u32 */,
   KeyType: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSETUPAPI.SetupDiDeleteDevRegKey(util.toPointer(DeviceInfoSet), util.toPointer(DeviceInfoData), Scope, HwProfile, KeyType));
+  return util.boolFromFfi(libSETUPAPI_dll.SetupDiDeleteDevRegKey(util.toPointer(DeviceInfoSet), util.toPointer(DeviceInfoData), Scope, HwProfile, KeyType));
 }
 
 export function SetupDiGetHwProfileList(
@@ -9853,7 +10185,7 @@ export function SetupDiGetHwProfileList(
   RequiredSize: Deno.PointerValue | Uint8Array | null /* ptr */,
   CurrentlyActiveIndex: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSETUPAPI.SetupDiGetHwProfileList(util.toPointer(HwProfileList), HwProfileListSize, util.toPointer(RequiredSize), util.toPointer(CurrentlyActiveIndex)));
+  return util.boolFromFfi(libSETUPAPI_dll.SetupDiGetHwProfileList(util.toPointer(HwProfileList), HwProfileListSize, util.toPointer(RequiredSize), util.toPointer(CurrentlyActiveIndex)));
 }
 
 export function SetupDiGetHwProfileListExA(
@@ -9864,7 +10196,7 @@ export function SetupDiGetHwProfileListExA(
   MachineName: string | null /* Windows.Win32.Foundation.PSTR */,
   Reserved: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSETUPAPI.SetupDiGetHwProfileListExA(util.toPointer(HwProfileList), HwProfileListSize, util.toPointer(RequiredSize), util.toPointer(CurrentlyActiveIndex), util.pstrToFfi(MachineName), util.toPointer(Reserved)));
+  return util.boolFromFfi(libSETUPAPI_dll.SetupDiGetHwProfileListExA(util.toPointer(HwProfileList), HwProfileListSize, util.toPointer(RequiredSize), util.toPointer(CurrentlyActiveIndex), util.pstrToFfi(MachineName), util.toPointer(Reserved)));
 }
 
 export function SetupDiGetHwProfileListExW(
@@ -9875,22 +10207,22 @@ export function SetupDiGetHwProfileListExW(
   MachineName: string | null /* Windows.Win32.Foundation.PWSTR */,
   Reserved: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSETUPAPI.SetupDiGetHwProfileListExW(util.toPointer(HwProfileList), HwProfileListSize, util.toPointer(RequiredSize), util.toPointer(CurrentlyActiveIndex), util.pwstrToFfi(MachineName), util.toPointer(Reserved)));
+  return util.boolFromFfi(libSETUPAPI_dll.SetupDiGetHwProfileListExW(util.toPointer(HwProfileList), HwProfileListSize, util.toPointer(RequiredSize), util.toPointer(CurrentlyActiveIndex), util.pwstrToFfi(MachineName), util.toPointer(Reserved)));
 }
 
 export function SetupDiGetDevicePropertyKeys(
-  DeviceInfoSet: Deno.PointerValue | Uint8Array | null /* ptr */,
+  DeviceInfoSet: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.DeviceAndDriverInstallation.HDEVINFO */,
   DeviceInfoData: Deno.PointerValue | Uint8Array | null /* ptr */,
   PropertyKeyArray: Deno.PointerValue | Uint8Array | null /* ptr */,
   PropertyKeyCount: number /* u32 */,
   RequiredPropertyKeyCount: Deno.PointerValue | Uint8Array | null /* ptr */,
   Flags: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSETUPAPI.SetupDiGetDevicePropertyKeys(util.toPointer(DeviceInfoSet), util.toPointer(DeviceInfoData), util.toPointer(PropertyKeyArray), PropertyKeyCount, util.toPointer(RequiredPropertyKeyCount), Flags));
+  return util.boolFromFfi(libSETUPAPI_dll.SetupDiGetDevicePropertyKeys(util.toPointer(DeviceInfoSet), util.toPointer(DeviceInfoData), util.toPointer(PropertyKeyArray), PropertyKeyCount, util.toPointer(RequiredPropertyKeyCount), Flags));
 }
 
 export function SetupDiGetDevicePropertyW(
-  DeviceInfoSet: Deno.PointerValue | Uint8Array | null /* ptr */,
+  DeviceInfoSet: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.DeviceAndDriverInstallation.HDEVINFO */,
   DeviceInfoData: Deno.PointerValue | Uint8Array | null /* ptr */,
   PropertyKey: Deno.PointerValue | Uint8Array | null /* ptr */,
   PropertyType: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -9899,11 +10231,11 @@ export function SetupDiGetDevicePropertyW(
   RequiredSize: Deno.PointerValue | Uint8Array | null /* ptr */,
   Flags: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSETUPAPI.SetupDiGetDevicePropertyW(util.toPointer(DeviceInfoSet), util.toPointer(DeviceInfoData), util.toPointer(PropertyKey), util.toPointer(PropertyType), util.toPointer(PropertyBuffer), PropertyBufferSize, util.toPointer(RequiredSize), Flags));
+  return util.boolFromFfi(libSETUPAPI_dll.SetupDiGetDevicePropertyW(util.toPointer(DeviceInfoSet), util.toPointer(DeviceInfoData), util.toPointer(PropertyKey), util.toPointer(PropertyType), util.toPointer(PropertyBuffer), PropertyBufferSize, util.toPointer(RequiredSize), Flags));
 }
 
 export function SetupDiSetDevicePropertyW(
-  DeviceInfoSet: Deno.PointerValue | Uint8Array | null /* ptr */,
+  DeviceInfoSet: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.DeviceAndDriverInstallation.HDEVINFO */,
   DeviceInfoData: Deno.PointerValue | Uint8Array | null /* ptr */,
   PropertyKey: Deno.PointerValue | Uint8Array | null /* ptr */,
   PropertyType: number /* u32 */,
@@ -9911,22 +10243,22 @@ export function SetupDiSetDevicePropertyW(
   PropertyBufferSize: number /* u32 */,
   Flags: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSETUPAPI.SetupDiSetDevicePropertyW(util.toPointer(DeviceInfoSet), util.toPointer(DeviceInfoData), util.toPointer(PropertyKey), PropertyType, util.toPointer(PropertyBuffer), PropertyBufferSize, Flags));
+  return util.boolFromFfi(libSETUPAPI_dll.SetupDiSetDevicePropertyW(util.toPointer(DeviceInfoSet), util.toPointer(DeviceInfoData), util.toPointer(PropertyKey), PropertyType, util.toPointer(PropertyBuffer), PropertyBufferSize, Flags));
 }
 
 export function SetupDiGetDeviceInterfacePropertyKeys(
-  DeviceInfoSet: Deno.PointerValue | Uint8Array | null /* ptr */,
+  DeviceInfoSet: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.DeviceAndDriverInstallation.HDEVINFO */,
   DeviceInterfaceData: Deno.PointerValue | Uint8Array | null /* ptr */,
   PropertyKeyArray: Deno.PointerValue | Uint8Array | null /* ptr */,
   PropertyKeyCount: number /* u32 */,
   RequiredPropertyKeyCount: Deno.PointerValue | Uint8Array | null /* ptr */,
   Flags: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSETUPAPI.SetupDiGetDeviceInterfacePropertyKeys(util.toPointer(DeviceInfoSet), util.toPointer(DeviceInterfaceData), util.toPointer(PropertyKeyArray), PropertyKeyCount, util.toPointer(RequiredPropertyKeyCount), Flags));
+  return util.boolFromFfi(libSETUPAPI_dll.SetupDiGetDeviceInterfacePropertyKeys(util.toPointer(DeviceInfoSet), util.toPointer(DeviceInterfaceData), util.toPointer(PropertyKeyArray), PropertyKeyCount, util.toPointer(RequiredPropertyKeyCount), Flags));
 }
 
 export function SetupDiGetDeviceInterfacePropertyW(
-  DeviceInfoSet: Deno.PointerValue | Uint8Array | null /* ptr */,
+  DeviceInfoSet: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.DeviceAndDriverInstallation.HDEVINFO */,
   DeviceInterfaceData: Deno.PointerValue | Uint8Array | null /* ptr */,
   PropertyKey: Deno.PointerValue | Uint8Array | null /* ptr */,
   PropertyType: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -9935,11 +10267,11 @@ export function SetupDiGetDeviceInterfacePropertyW(
   RequiredSize: Deno.PointerValue | Uint8Array | null /* ptr */,
   Flags: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSETUPAPI.SetupDiGetDeviceInterfacePropertyW(util.toPointer(DeviceInfoSet), util.toPointer(DeviceInterfaceData), util.toPointer(PropertyKey), util.toPointer(PropertyType), util.toPointer(PropertyBuffer), PropertyBufferSize, util.toPointer(RequiredSize), Flags));
+  return util.boolFromFfi(libSETUPAPI_dll.SetupDiGetDeviceInterfacePropertyW(util.toPointer(DeviceInfoSet), util.toPointer(DeviceInterfaceData), util.toPointer(PropertyKey), util.toPointer(PropertyType), util.toPointer(PropertyBuffer), PropertyBufferSize, util.toPointer(RequiredSize), Flags));
 }
 
 export function SetupDiSetDeviceInterfacePropertyW(
-  DeviceInfoSet: Deno.PointerValue | Uint8Array | null /* ptr */,
+  DeviceInfoSet: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.DeviceAndDriverInstallation.HDEVINFO */,
   DeviceInterfaceData: Deno.PointerValue | Uint8Array | null /* ptr */,
   PropertyKey: Deno.PointerValue | Uint8Array | null /* ptr */,
   PropertyType: number /* u32 */,
@@ -9947,7 +10279,7 @@ export function SetupDiSetDeviceInterfacePropertyW(
   PropertyBufferSize: number /* u32 */,
   Flags: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSETUPAPI.SetupDiSetDeviceInterfacePropertyW(util.toPointer(DeviceInfoSet), util.toPointer(DeviceInterfaceData), util.toPointer(PropertyKey), PropertyType, util.toPointer(PropertyBuffer), PropertyBufferSize, Flags));
+  return util.boolFromFfi(libSETUPAPI_dll.SetupDiSetDeviceInterfacePropertyW(util.toPointer(DeviceInfoSet), util.toPointer(DeviceInterfaceData), util.toPointer(PropertyKey), PropertyType, util.toPointer(PropertyBuffer), PropertyBufferSize, Flags));
 }
 
 export function SetupDiGetClassPropertyKeys(
@@ -9957,7 +10289,7 @@ export function SetupDiGetClassPropertyKeys(
   RequiredPropertyKeyCount: Deno.PointerValue | Uint8Array | null /* ptr */,
   Flags: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSETUPAPI.SetupDiGetClassPropertyKeys(util.toPointer(ClassGuid), util.toPointer(PropertyKeyArray), PropertyKeyCount, util.toPointer(RequiredPropertyKeyCount), Flags));
+  return util.boolFromFfi(libSETUPAPI_dll.SetupDiGetClassPropertyKeys(util.toPointer(ClassGuid), util.toPointer(PropertyKeyArray), PropertyKeyCount, util.toPointer(RequiredPropertyKeyCount), Flags));
 }
 
 export function SetupDiGetClassPropertyKeysExW(
@@ -9969,7 +10301,7 @@ export function SetupDiGetClassPropertyKeysExW(
   MachineName: string | null /* Windows.Win32.Foundation.PWSTR */,
   Reserved: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSETUPAPI.SetupDiGetClassPropertyKeysExW(util.toPointer(ClassGuid), util.toPointer(PropertyKeyArray), PropertyKeyCount, util.toPointer(RequiredPropertyKeyCount), Flags, util.pwstrToFfi(MachineName), util.toPointer(Reserved)));
+  return util.boolFromFfi(libSETUPAPI_dll.SetupDiGetClassPropertyKeysExW(util.toPointer(ClassGuid), util.toPointer(PropertyKeyArray), PropertyKeyCount, util.toPointer(RequiredPropertyKeyCount), Flags, util.pwstrToFfi(MachineName), util.toPointer(Reserved)));
 }
 
 export function SetupDiGetClassPropertyW(
@@ -9981,7 +10313,7 @@ export function SetupDiGetClassPropertyW(
   RequiredSize: Deno.PointerValue | Uint8Array | null /* ptr */,
   Flags: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSETUPAPI.SetupDiGetClassPropertyW(util.toPointer(ClassGuid), util.toPointer(PropertyKey), util.toPointer(PropertyType), util.toPointer(PropertyBuffer), PropertyBufferSize, util.toPointer(RequiredSize), Flags));
+  return util.boolFromFfi(libSETUPAPI_dll.SetupDiGetClassPropertyW(util.toPointer(ClassGuid), util.toPointer(PropertyKey), util.toPointer(PropertyType), util.toPointer(PropertyBuffer), PropertyBufferSize, util.toPointer(RequiredSize), Flags));
 }
 
 export function SetupDiGetClassPropertyExW(
@@ -9995,7 +10327,7 @@ export function SetupDiGetClassPropertyExW(
   MachineName: string | null /* Windows.Win32.Foundation.PWSTR */,
   Reserved: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSETUPAPI.SetupDiGetClassPropertyExW(util.toPointer(ClassGuid), util.toPointer(PropertyKey), util.toPointer(PropertyType), util.toPointer(PropertyBuffer), PropertyBufferSize, util.toPointer(RequiredSize), Flags, util.pwstrToFfi(MachineName), util.toPointer(Reserved)));
+  return util.boolFromFfi(libSETUPAPI_dll.SetupDiGetClassPropertyExW(util.toPointer(ClassGuid), util.toPointer(PropertyKey), util.toPointer(PropertyType), util.toPointer(PropertyBuffer), PropertyBufferSize, util.toPointer(RequiredSize), Flags, util.pwstrToFfi(MachineName), util.toPointer(Reserved)));
 }
 
 export function SetupDiSetClassPropertyW(
@@ -10006,7 +10338,7 @@ export function SetupDiSetClassPropertyW(
   PropertyBufferSize: number /* u32 */,
   Flags: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSETUPAPI.SetupDiSetClassPropertyW(util.toPointer(ClassGuid), util.toPointer(PropertyKey), PropertyType, util.toPointer(PropertyBuffer), PropertyBufferSize, Flags));
+  return util.boolFromFfi(libSETUPAPI_dll.SetupDiSetClassPropertyW(util.toPointer(ClassGuid), util.toPointer(PropertyKey), PropertyType, util.toPointer(PropertyBuffer), PropertyBufferSize, Flags));
 }
 
 export function SetupDiSetClassPropertyExW(
@@ -10019,11 +10351,11 @@ export function SetupDiSetClassPropertyExW(
   MachineName: string | null /* Windows.Win32.Foundation.PWSTR */,
   Reserved: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSETUPAPI.SetupDiSetClassPropertyExW(util.toPointer(ClassGuid), util.toPointer(PropertyKey), PropertyType, util.toPointer(PropertyBuffer), PropertyBufferSize, Flags, util.pwstrToFfi(MachineName), util.toPointer(Reserved)));
+  return util.boolFromFfi(libSETUPAPI_dll.SetupDiSetClassPropertyExW(util.toPointer(ClassGuid), util.toPointer(PropertyKey), PropertyType, util.toPointer(PropertyBuffer), PropertyBufferSize, Flags, util.pwstrToFfi(MachineName), util.toPointer(Reserved)));
 }
 
 export function SetupDiGetDeviceRegistryPropertyA(
-  DeviceInfoSet: Deno.PointerValue | Uint8Array | null /* ptr */,
+  DeviceInfoSet: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.DeviceAndDriverInstallation.HDEVINFO */,
   DeviceInfoData: Deno.PointerValue | Uint8Array | null /* ptr */,
   Property: number /* u32 */,
   PropertyRegDataType: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -10031,11 +10363,11 @@ export function SetupDiGetDeviceRegistryPropertyA(
   PropertyBufferSize: number /* u32 */,
   RequiredSize: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSETUPAPI.SetupDiGetDeviceRegistryPropertyA(util.toPointer(DeviceInfoSet), util.toPointer(DeviceInfoData), Property, util.toPointer(PropertyRegDataType), util.toPointer(PropertyBuffer), PropertyBufferSize, util.toPointer(RequiredSize)));
+  return util.boolFromFfi(libSETUPAPI_dll.SetupDiGetDeviceRegistryPropertyA(util.toPointer(DeviceInfoSet), util.toPointer(DeviceInfoData), Property, util.toPointer(PropertyRegDataType), util.toPointer(PropertyBuffer), PropertyBufferSize, util.toPointer(RequiredSize)));
 }
 
 export function SetupDiGetDeviceRegistryPropertyW(
-  DeviceInfoSet: Deno.PointerValue | Uint8Array | null /* ptr */,
+  DeviceInfoSet: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.DeviceAndDriverInstallation.HDEVINFO */,
   DeviceInfoData: Deno.PointerValue | Uint8Array | null /* ptr */,
   Property: number /* u32 */,
   PropertyRegDataType: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -10043,7 +10375,7 @@ export function SetupDiGetDeviceRegistryPropertyW(
   PropertyBufferSize: number /* u32 */,
   RequiredSize: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSETUPAPI.SetupDiGetDeviceRegistryPropertyW(util.toPointer(DeviceInfoSet), util.toPointer(DeviceInfoData), Property, util.toPointer(PropertyRegDataType), util.toPointer(PropertyBuffer), PropertyBufferSize, util.toPointer(RequiredSize)));
+  return util.boolFromFfi(libSETUPAPI_dll.SetupDiGetDeviceRegistryPropertyW(util.toPointer(DeviceInfoSet), util.toPointer(DeviceInfoData), Property, util.toPointer(PropertyRegDataType), util.toPointer(PropertyBuffer), PropertyBufferSize, util.toPointer(RequiredSize)));
 }
 
 export function SetupDiGetClassRegistryPropertyA(
@@ -10056,7 +10388,7 @@ export function SetupDiGetClassRegistryPropertyA(
   MachineName: string | null /* Windows.Win32.Foundation.PSTR */,
   Reserved: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSETUPAPI.SetupDiGetClassRegistryPropertyA(util.toPointer(ClassGuid), Property, util.toPointer(PropertyRegDataType), util.toPointer(PropertyBuffer), PropertyBufferSize, util.toPointer(RequiredSize), util.pstrToFfi(MachineName), util.toPointer(Reserved)));
+  return util.boolFromFfi(libSETUPAPI_dll.SetupDiGetClassRegistryPropertyA(util.toPointer(ClassGuid), Property, util.toPointer(PropertyRegDataType), util.toPointer(PropertyBuffer), PropertyBufferSize, util.toPointer(RequiredSize), util.pstrToFfi(MachineName), util.toPointer(Reserved)));
 }
 
 export function SetupDiGetClassRegistryPropertyW(
@@ -10069,27 +10401,27 @@ export function SetupDiGetClassRegistryPropertyW(
   MachineName: string | null /* Windows.Win32.Foundation.PWSTR */,
   Reserved: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSETUPAPI.SetupDiGetClassRegistryPropertyW(util.toPointer(ClassGuid), Property, util.toPointer(PropertyRegDataType), util.toPointer(PropertyBuffer), PropertyBufferSize, util.toPointer(RequiredSize), util.pwstrToFfi(MachineName), util.toPointer(Reserved)));
+  return util.boolFromFfi(libSETUPAPI_dll.SetupDiGetClassRegistryPropertyW(util.toPointer(ClassGuid), Property, util.toPointer(PropertyRegDataType), util.toPointer(PropertyBuffer), PropertyBufferSize, util.toPointer(RequiredSize), util.pwstrToFfi(MachineName), util.toPointer(Reserved)));
 }
 
 export function SetupDiSetDeviceRegistryPropertyA(
-  DeviceInfoSet: Deno.PointerValue | Uint8Array | null /* ptr */,
+  DeviceInfoSet: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.DeviceAndDriverInstallation.HDEVINFO */,
   DeviceInfoData: Deno.PointerValue | Uint8Array | null /* ptr */,
   Property: number /* u32 */,
   PropertyBuffer: Deno.PointerValue | Uint8Array | null /* ptr */,
   PropertyBufferSize: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSETUPAPI.SetupDiSetDeviceRegistryPropertyA(util.toPointer(DeviceInfoSet), util.toPointer(DeviceInfoData), Property, util.toPointer(PropertyBuffer), PropertyBufferSize));
+  return util.boolFromFfi(libSETUPAPI_dll.SetupDiSetDeviceRegistryPropertyA(util.toPointer(DeviceInfoSet), util.toPointer(DeviceInfoData), Property, util.toPointer(PropertyBuffer), PropertyBufferSize));
 }
 
 export function SetupDiSetDeviceRegistryPropertyW(
-  DeviceInfoSet: Deno.PointerValue | Uint8Array | null /* ptr */,
+  DeviceInfoSet: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.DeviceAndDriverInstallation.HDEVINFO */,
   DeviceInfoData: Deno.PointerValue | Uint8Array | null /* ptr */,
   Property: number /* u32 */,
   PropertyBuffer: Deno.PointerValue | Uint8Array | null /* ptr */,
   PropertyBufferSize: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSETUPAPI.SetupDiSetDeviceRegistryPropertyW(util.toPointer(DeviceInfoSet), util.toPointer(DeviceInfoData), Property, util.toPointer(PropertyBuffer), PropertyBufferSize));
+  return util.boolFromFfi(libSETUPAPI_dll.SetupDiSetDeviceRegistryPropertyW(util.toPointer(DeviceInfoSet), util.toPointer(DeviceInfoData), Property, util.toPointer(PropertyBuffer), PropertyBufferSize));
 }
 
 export function SetupDiSetClassRegistryPropertyA(
@@ -10100,7 +10432,7 @@ export function SetupDiSetClassRegistryPropertyA(
   MachineName: string | null /* Windows.Win32.Foundation.PSTR */,
   Reserved: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSETUPAPI.SetupDiSetClassRegistryPropertyA(util.toPointer(ClassGuid), Property, util.toPointer(PropertyBuffer), PropertyBufferSize, util.pstrToFfi(MachineName), util.toPointer(Reserved)));
+  return util.boolFromFfi(libSETUPAPI_dll.SetupDiSetClassRegistryPropertyA(util.toPointer(ClassGuid), Property, util.toPointer(PropertyBuffer), PropertyBufferSize, util.pstrToFfi(MachineName), util.toPointer(Reserved)));
 }
 
 export function SetupDiSetClassRegistryPropertyW(
@@ -10111,113 +10443,113 @@ export function SetupDiSetClassRegistryPropertyW(
   MachineName: string | null /* Windows.Win32.Foundation.PWSTR */,
   Reserved: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSETUPAPI.SetupDiSetClassRegistryPropertyW(util.toPointer(ClassGuid), Property, util.toPointer(PropertyBuffer), PropertyBufferSize, util.pwstrToFfi(MachineName), util.toPointer(Reserved)));
+  return util.boolFromFfi(libSETUPAPI_dll.SetupDiSetClassRegistryPropertyW(util.toPointer(ClassGuid), Property, util.toPointer(PropertyBuffer), PropertyBufferSize, util.pwstrToFfi(MachineName), util.toPointer(Reserved)));
 }
 
 export function SetupDiGetDeviceInstallParamsA(
-  DeviceInfoSet: Deno.PointerValue | Uint8Array | null /* ptr */,
+  DeviceInfoSet: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.DeviceAndDriverInstallation.HDEVINFO */,
   DeviceInfoData: Deno.PointerValue | Uint8Array | null /* ptr */,
   DeviceInstallParams: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSETUPAPI.SetupDiGetDeviceInstallParamsA(util.toPointer(DeviceInfoSet), util.toPointer(DeviceInfoData), util.toPointer(DeviceInstallParams)));
+  return util.boolFromFfi(libSETUPAPI_dll.SetupDiGetDeviceInstallParamsA(util.toPointer(DeviceInfoSet), util.toPointer(DeviceInfoData), util.toPointer(DeviceInstallParams)));
 }
 
 export function SetupDiGetDeviceInstallParamsW(
-  DeviceInfoSet: Deno.PointerValue | Uint8Array | null /* ptr */,
+  DeviceInfoSet: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.DeviceAndDriverInstallation.HDEVINFO */,
   DeviceInfoData: Deno.PointerValue | Uint8Array | null /* ptr */,
   DeviceInstallParams: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSETUPAPI.SetupDiGetDeviceInstallParamsW(util.toPointer(DeviceInfoSet), util.toPointer(DeviceInfoData), util.toPointer(DeviceInstallParams)));
+  return util.boolFromFfi(libSETUPAPI_dll.SetupDiGetDeviceInstallParamsW(util.toPointer(DeviceInfoSet), util.toPointer(DeviceInfoData), util.toPointer(DeviceInstallParams)));
 }
 
 export function SetupDiGetClassInstallParamsA(
-  DeviceInfoSet: Deno.PointerValue | Uint8Array | null /* ptr */,
+  DeviceInfoSet: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.DeviceAndDriverInstallation.HDEVINFO */,
   DeviceInfoData: Deno.PointerValue | Uint8Array | null /* ptr */,
   ClassInstallParams: Deno.PointerValue | Uint8Array | null /* ptr */,
   ClassInstallParamsSize: number /* u32 */,
   RequiredSize: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSETUPAPI.SetupDiGetClassInstallParamsA(util.toPointer(DeviceInfoSet), util.toPointer(DeviceInfoData), util.toPointer(ClassInstallParams), ClassInstallParamsSize, util.toPointer(RequiredSize)));
+  return util.boolFromFfi(libSETUPAPI_dll.SetupDiGetClassInstallParamsA(util.toPointer(DeviceInfoSet), util.toPointer(DeviceInfoData), util.toPointer(ClassInstallParams), ClassInstallParamsSize, util.toPointer(RequiredSize)));
 }
 
 export function SetupDiGetClassInstallParamsW(
-  DeviceInfoSet: Deno.PointerValue | Uint8Array | null /* ptr */,
+  DeviceInfoSet: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.DeviceAndDriverInstallation.HDEVINFO */,
   DeviceInfoData: Deno.PointerValue | Uint8Array | null /* ptr */,
   ClassInstallParams: Deno.PointerValue | Uint8Array | null /* ptr */,
   ClassInstallParamsSize: number /* u32 */,
   RequiredSize: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSETUPAPI.SetupDiGetClassInstallParamsW(util.toPointer(DeviceInfoSet), util.toPointer(DeviceInfoData), util.toPointer(ClassInstallParams), ClassInstallParamsSize, util.toPointer(RequiredSize)));
+  return util.boolFromFfi(libSETUPAPI_dll.SetupDiGetClassInstallParamsW(util.toPointer(DeviceInfoSet), util.toPointer(DeviceInfoData), util.toPointer(ClassInstallParams), ClassInstallParamsSize, util.toPointer(RequiredSize)));
 }
 
 export function SetupDiSetDeviceInstallParamsA(
-  DeviceInfoSet: Deno.PointerValue | Uint8Array | null /* ptr */,
+  DeviceInfoSet: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.DeviceAndDriverInstallation.HDEVINFO */,
   DeviceInfoData: Deno.PointerValue | Uint8Array | null /* ptr */,
   DeviceInstallParams: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSETUPAPI.SetupDiSetDeviceInstallParamsA(util.toPointer(DeviceInfoSet), util.toPointer(DeviceInfoData), util.toPointer(DeviceInstallParams)));
+  return util.boolFromFfi(libSETUPAPI_dll.SetupDiSetDeviceInstallParamsA(util.toPointer(DeviceInfoSet), util.toPointer(DeviceInfoData), util.toPointer(DeviceInstallParams)));
 }
 
 export function SetupDiSetDeviceInstallParamsW(
-  DeviceInfoSet: Deno.PointerValue | Uint8Array | null /* ptr */,
+  DeviceInfoSet: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.DeviceAndDriverInstallation.HDEVINFO */,
   DeviceInfoData: Deno.PointerValue | Uint8Array | null /* ptr */,
   DeviceInstallParams: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSETUPAPI.SetupDiSetDeviceInstallParamsW(util.toPointer(DeviceInfoSet), util.toPointer(DeviceInfoData), util.toPointer(DeviceInstallParams)));
+  return util.boolFromFfi(libSETUPAPI_dll.SetupDiSetDeviceInstallParamsW(util.toPointer(DeviceInfoSet), util.toPointer(DeviceInfoData), util.toPointer(DeviceInstallParams)));
 }
 
 export function SetupDiSetClassInstallParamsA(
-  DeviceInfoSet: Deno.PointerValue | Uint8Array | null /* ptr */,
+  DeviceInfoSet: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.DeviceAndDriverInstallation.HDEVINFO */,
   DeviceInfoData: Deno.PointerValue | Uint8Array | null /* ptr */,
   ClassInstallParams: Deno.PointerValue | Uint8Array | null /* ptr */,
   ClassInstallParamsSize: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSETUPAPI.SetupDiSetClassInstallParamsA(util.toPointer(DeviceInfoSet), util.toPointer(DeviceInfoData), util.toPointer(ClassInstallParams), ClassInstallParamsSize));
+  return util.boolFromFfi(libSETUPAPI_dll.SetupDiSetClassInstallParamsA(util.toPointer(DeviceInfoSet), util.toPointer(DeviceInfoData), util.toPointer(ClassInstallParams), ClassInstallParamsSize));
 }
 
 export function SetupDiSetClassInstallParamsW(
-  DeviceInfoSet: Deno.PointerValue | Uint8Array | null /* ptr */,
+  DeviceInfoSet: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.DeviceAndDriverInstallation.HDEVINFO */,
   DeviceInfoData: Deno.PointerValue | Uint8Array | null /* ptr */,
   ClassInstallParams: Deno.PointerValue | Uint8Array | null /* ptr */,
   ClassInstallParamsSize: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSETUPAPI.SetupDiSetClassInstallParamsW(util.toPointer(DeviceInfoSet), util.toPointer(DeviceInfoData), util.toPointer(ClassInstallParams), ClassInstallParamsSize));
+  return util.boolFromFfi(libSETUPAPI_dll.SetupDiSetClassInstallParamsW(util.toPointer(DeviceInfoSet), util.toPointer(DeviceInfoData), util.toPointer(ClassInstallParams), ClassInstallParamsSize));
 }
 
 export function SetupDiGetDriverInstallParamsA(
-  DeviceInfoSet: Deno.PointerValue | Uint8Array | null /* ptr */,
+  DeviceInfoSet: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.DeviceAndDriverInstallation.HDEVINFO */,
   DeviceInfoData: Deno.PointerValue | Uint8Array | null /* ptr */,
   DriverInfoData: Deno.PointerValue | Uint8Array | null /* ptr */,
   DriverInstallParams: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSETUPAPI.SetupDiGetDriverInstallParamsA(util.toPointer(DeviceInfoSet), util.toPointer(DeviceInfoData), util.toPointer(DriverInfoData), util.toPointer(DriverInstallParams)));
+  return util.boolFromFfi(libSETUPAPI_dll.SetupDiGetDriverInstallParamsA(util.toPointer(DeviceInfoSet), util.toPointer(DeviceInfoData), util.toPointer(DriverInfoData), util.toPointer(DriverInstallParams)));
 }
 
 export function SetupDiGetDriverInstallParamsW(
-  DeviceInfoSet: Deno.PointerValue | Uint8Array | null /* ptr */,
+  DeviceInfoSet: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.DeviceAndDriverInstallation.HDEVINFO */,
   DeviceInfoData: Deno.PointerValue | Uint8Array | null /* ptr */,
   DriverInfoData: Deno.PointerValue | Uint8Array | null /* ptr */,
   DriverInstallParams: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSETUPAPI.SetupDiGetDriverInstallParamsW(util.toPointer(DeviceInfoSet), util.toPointer(DeviceInfoData), util.toPointer(DriverInfoData), util.toPointer(DriverInstallParams)));
+  return util.boolFromFfi(libSETUPAPI_dll.SetupDiGetDriverInstallParamsW(util.toPointer(DeviceInfoSet), util.toPointer(DeviceInfoData), util.toPointer(DriverInfoData), util.toPointer(DriverInstallParams)));
 }
 
 export function SetupDiSetDriverInstallParamsA(
-  DeviceInfoSet: Deno.PointerValue | Uint8Array | null /* ptr */,
+  DeviceInfoSet: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.DeviceAndDriverInstallation.HDEVINFO */,
   DeviceInfoData: Deno.PointerValue | Uint8Array | null /* ptr */,
   DriverInfoData: Deno.PointerValue | Uint8Array | null /* ptr */,
   DriverInstallParams: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSETUPAPI.SetupDiSetDriverInstallParamsA(util.toPointer(DeviceInfoSet), util.toPointer(DeviceInfoData), util.toPointer(DriverInfoData), util.toPointer(DriverInstallParams)));
+  return util.boolFromFfi(libSETUPAPI_dll.SetupDiSetDriverInstallParamsA(util.toPointer(DeviceInfoSet), util.toPointer(DeviceInfoData), util.toPointer(DriverInfoData), util.toPointer(DriverInstallParams)));
 }
 
 export function SetupDiSetDriverInstallParamsW(
-  DeviceInfoSet: Deno.PointerValue | Uint8Array | null /* ptr */,
+  DeviceInfoSet: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.DeviceAndDriverInstallation.HDEVINFO */,
   DeviceInfoData: Deno.PointerValue | Uint8Array | null /* ptr */,
   DriverInfoData: Deno.PointerValue | Uint8Array | null /* ptr */,
   DriverInstallParams: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSETUPAPI.SetupDiSetDriverInstallParamsW(util.toPointer(DeviceInfoSet), util.toPointer(DeviceInfoData), util.toPointer(DriverInfoData), util.toPointer(DriverInstallParams)));
+  return util.boolFromFfi(libSETUPAPI_dll.SetupDiSetDriverInstallParamsW(util.toPointer(DeviceInfoSet), util.toPointer(DeviceInfoData), util.toPointer(DriverInfoData), util.toPointer(DriverInstallParams)));
 }
 
 export function SetupDiLoadClassIcon(
@@ -10225,18 +10557,18 @@ export function SetupDiLoadClassIcon(
   LargeIcon: Deno.PointerValue | Uint8Array | null /* ptr */,
   MiniIconIndex: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSETUPAPI.SetupDiLoadClassIcon(util.toPointer(ClassGuid), util.toPointer(LargeIcon), util.toPointer(MiniIconIndex)));
+  return util.boolFromFfi(libSETUPAPI_dll.SetupDiLoadClassIcon(util.toPointer(ClassGuid), util.toPointer(LargeIcon), util.toPointer(MiniIconIndex)));
 }
 
 export function SetupDiLoadDeviceIcon(
-  DeviceInfoSet: Deno.PointerValue | Uint8Array | null /* ptr */,
+  DeviceInfoSet: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.DeviceAndDriverInstallation.HDEVINFO */,
   DeviceInfoData: Deno.PointerValue | Uint8Array | null /* ptr */,
   cxIcon: number /* u32 */,
   cyIcon: number /* u32 */,
   Flags: number /* u32 */,
   hIcon: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSETUPAPI.SetupDiLoadDeviceIcon(util.toPointer(DeviceInfoSet), util.toPointer(DeviceInfoData), cxIcon, cyIcon, Flags, util.toPointer(hIcon)));
+  return util.boolFromFfi(libSETUPAPI_dll.SetupDiLoadDeviceIcon(util.toPointer(DeviceInfoSet), util.toPointer(DeviceInfoData), cxIcon, cyIcon, Flags, util.toPointer(hIcon)));
 }
 
 export function SetupDiDrawMiniIcon(
@@ -10245,20 +10577,20 @@ export function SetupDiDrawMiniIcon(
   MiniIconIndex: number /* i32 */,
   Flags: number /* u32 */,
 ): number /* i32 */ {
-  return libSETUPAPI.SetupDiDrawMiniIcon(util.toPointer(hdc), util.toPointer(rc), MiniIconIndex, Flags);
+  return libSETUPAPI_dll.SetupDiDrawMiniIcon(util.toPointer(hdc), util.toPointer(rc), MiniIconIndex, Flags);
 }
 
 export function SetupDiGetClassBitmapIndex(
   ClassGuid: Deno.PointerValue | Uint8Array | null /* ptr */,
   MiniIconIndex: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSETUPAPI.SetupDiGetClassBitmapIndex(util.toPointer(ClassGuid), util.toPointer(MiniIconIndex)));
+  return util.boolFromFfi(libSETUPAPI_dll.SetupDiGetClassBitmapIndex(util.toPointer(ClassGuid), util.toPointer(MiniIconIndex)));
 }
 
 export function SetupDiGetClassImageList(
   ClassImageListData: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSETUPAPI.SetupDiGetClassImageList(util.toPointer(ClassImageListData)));
+  return util.boolFromFfi(libSETUPAPI_dll.SetupDiGetClassImageList(util.toPointer(ClassImageListData)));
 }
 
 export function SetupDiGetClassImageListExA(
@@ -10266,7 +10598,7 @@ export function SetupDiGetClassImageListExA(
   MachineName: string | null /* Windows.Win32.Foundation.PSTR */,
   Reserved: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSETUPAPI.SetupDiGetClassImageListExA(util.toPointer(ClassImageListData), util.pstrToFfi(MachineName), util.toPointer(Reserved)));
+  return util.boolFromFfi(libSETUPAPI_dll.SetupDiGetClassImageListExA(util.toPointer(ClassImageListData), util.pstrToFfi(MachineName), util.toPointer(Reserved)));
 }
 
 export function SetupDiGetClassImageListExW(
@@ -10274,7 +10606,7 @@ export function SetupDiGetClassImageListExW(
   MachineName: string | null /* Windows.Win32.Foundation.PWSTR */,
   Reserved: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSETUPAPI.SetupDiGetClassImageListExW(util.toPointer(ClassImageListData), util.pwstrToFfi(MachineName), util.toPointer(Reserved)));
+  return util.boolFromFfi(libSETUPAPI_dll.SetupDiGetClassImageListExW(util.toPointer(ClassImageListData), util.pwstrToFfi(MachineName), util.toPointer(Reserved)));
 }
 
 export function SetupDiGetClassImageIndex(
@@ -10282,50 +10614,50 @@ export function SetupDiGetClassImageIndex(
   ClassGuid: Deno.PointerValue | Uint8Array | null /* ptr */,
   ImageIndex: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSETUPAPI.SetupDiGetClassImageIndex(util.toPointer(ClassImageListData), util.toPointer(ClassGuid), util.toPointer(ImageIndex)));
+  return util.boolFromFfi(libSETUPAPI_dll.SetupDiGetClassImageIndex(util.toPointer(ClassImageListData), util.toPointer(ClassGuid), util.toPointer(ImageIndex)));
 }
 
 export function SetupDiDestroyClassImageList(
   ClassImageListData: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSETUPAPI.SetupDiDestroyClassImageList(util.toPointer(ClassImageListData)));
+  return util.boolFromFfi(libSETUPAPI_dll.SetupDiDestroyClassImageList(util.toPointer(ClassImageListData)));
 }
 
 export function SetupDiGetClassDevPropertySheetsA(
-  DeviceInfoSet: Deno.PointerValue | Uint8Array | null /* ptr */,
+  DeviceInfoSet: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.DeviceAndDriverInstallation.HDEVINFO */,
   DeviceInfoData: Deno.PointerValue | Uint8Array | null /* ptr */,
   PropertySheetHeader: Deno.PointerValue | Uint8Array | null /* ptr */,
   PropertySheetHeaderPageListSize: number /* u32 */,
   RequiredSize: Deno.PointerValue | Uint8Array | null /* ptr */,
   PropertySheetType: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSETUPAPI.SetupDiGetClassDevPropertySheetsA(util.toPointer(DeviceInfoSet), util.toPointer(DeviceInfoData), util.toPointer(PropertySheetHeader), PropertySheetHeaderPageListSize, util.toPointer(RequiredSize), PropertySheetType));
+  return util.boolFromFfi(libSETUPAPI_dll.SetupDiGetClassDevPropertySheetsA(util.toPointer(DeviceInfoSet), util.toPointer(DeviceInfoData), util.toPointer(PropertySheetHeader), PropertySheetHeaderPageListSize, util.toPointer(RequiredSize), PropertySheetType));
 }
 
 export function SetupDiGetClassDevPropertySheetsW(
-  DeviceInfoSet: Deno.PointerValue | Uint8Array | null /* ptr */,
+  DeviceInfoSet: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.DeviceAndDriverInstallation.HDEVINFO */,
   DeviceInfoData: Deno.PointerValue | Uint8Array | null /* ptr */,
   PropertySheetHeader: Deno.PointerValue | Uint8Array | null /* ptr */,
   PropertySheetHeaderPageListSize: number /* u32 */,
   RequiredSize: Deno.PointerValue | Uint8Array | null /* ptr */,
   PropertySheetType: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSETUPAPI.SetupDiGetClassDevPropertySheetsW(util.toPointer(DeviceInfoSet), util.toPointer(DeviceInfoData), util.toPointer(PropertySheetHeader), PropertySheetHeaderPageListSize, util.toPointer(RequiredSize), PropertySheetType));
+  return util.boolFromFfi(libSETUPAPI_dll.SetupDiGetClassDevPropertySheetsW(util.toPointer(DeviceInfoSet), util.toPointer(DeviceInfoData), util.toPointer(PropertySheetHeader), PropertySheetHeaderPageListSize, util.toPointer(RequiredSize), PropertySheetType));
 }
 
 export function SetupDiAskForOEMDisk(
-  DeviceInfoSet: Deno.PointerValue | Uint8Array | null /* ptr */,
+  DeviceInfoSet: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.DeviceAndDriverInstallation.HDEVINFO */,
   DeviceInfoData: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSETUPAPI.SetupDiAskForOEMDisk(util.toPointer(DeviceInfoSet), util.toPointer(DeviceInfoData)));
+  return util.boolFromFfi(libSETUPAPI_dll.SetupDiAskForOEMDisk(util.toPointer(DeviceInfoSet), util.toPointer(DeviceInfoData)));
 }
 
 export function SetupDiSelectOEMDrv(
   hwndParent: Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */,
-  DeviceInfoSet: Deno.PointerValue | Uint8Array | null /* ptr */,
+  DeviceInfoSet: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.DeviceAndDriverInstallation.HDEVINFO */,
   DeviceInfoData: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSETUPAPI.SetupDiSelectOEMDrv(util.hwndToFfi(hwndParent), util.toPointer(DeviceInfoSet), util.toPointer(DeviceInfoData)));
+  return util.boolFromFfi(libSETUPAPI_dll.SetupDiSelectOEMDrv(util.hwndToFfi(hwndParent), util.toPointer(DeviceInfoSet), util.toPointer(DeviceInfoData)));
 }
 
 export function SetupDiClassNameFromGuidA(
@@ -10334,7 +10666,7 @@ export function SetupDiClassNameFromGuidA(
   ClassNameSize: number /* u32 */,
   RequiredSize: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSETUPAPI.SetupDiClassNameFromGuidA(util.toPointer(ClassGuid), util.pstrToFfi(ClassName), ClassNameSize, util.toPointer(RequiredSize)));
+  return util.boolFromFfi(libSETUPAPI_dll.SetupDiClassNameFromGuidA(util.toPointer(ClassGuid), util.pstrToFfi(ClassName), ClassNameSize, util.toPointer(RequiredSize)));
 }
 
 export function SetupDiClassNameFromGuidW(
@@ -10343,7 +10675,7 @@ export function SetupDiClassNameFromGuidW(
   ClassNameSize: number /* u32 */,
   RequiredSize: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSETUPAPI.SetupDiClassNameFromGuidW(util.toPointer(ClassGuid), util.pwstrToFfi(ClassName), ClassNameSize, util.toPointer(RequiredSize)));
+  return util.boolFromFfi(libSETUPAPI_dll.SetupDiClassNameFromGuidW(util.toPointer(ClassGuid), util.pwstrToFfi(ClassName), ClassNameSize, util.toPointer(RequiredSize)));
 }
 
 export function SetupDiClassNameFromGuidExA(
@@ -10354,7 +10686,7 @@ export function SetupDiClassNameFromGuidExA(
   MachineName: string | null /* Windows.Win32.Foundation.PSTR */,
   Reserved: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSETUPAPI.SetupDiClassNameFromGuidExA(util.toPointer(ClassGuid), util.pstrToFfi(ClassName), ClassNameSize, util.toPointer(RequiredSize), util.pstrToFfi(MachineName), util.toPointer(Reserved)));
+  return util.boolFromFfi(libSETUPAPI_dll.SetupDiClassNameFromGuidExA(util.toPointer(ClassGuid), util.pstrToFfi(ClassName), ClassNameSize, util.toPointer(RequiredSize), util.pstrToFfi(MachineName), util.toPointer(Reserved)));
 }
 
 export function SetupDiClassNameFromGuidExW(
@@ -10365,7 +10697,7 @@ export function SetupDiClassNameFromGuidExW(
   MachineName: string | null /* Windows.Win32.Foundation.PWSTR */,
   Reserved: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSETUPAPI.SetupDiClassNameFromGuidExW(util.toPointer(ClassGuid), util.pwstrToFfi(ClassName), ClassNameSize, util.toPointer(RequiredSize), util.pwstrToFfi(MachineName), util.toPointer(Reserved)));
+  return util.boolFromFfi(libSETUPAPI_dll.SetupDiClassNameFromGuidExW(util.toPointer(ClassGuid), util.pwstrToFfi(ClassName), ClassNameSize, util.toPointer(RequiredSize), util.pwstrToFfi(MachineName), util.toPointer(Reserved)));
 }
 
 export function SetupDiClassGuidsFromNameA(
@@ -10374,7 +10706,7 @@ export function SetupDiClassGuidsFromNameA(
   ClassGuidListSize: number /* u32 */,
   RequiredSize: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSETUPAPI.SetupDiClassGuidsFromNameA(util.pstrToFfi(ClassName), util.toPointer(ClassGuidList), ClassGuidListSize, util.toPointer(RequiredSize)));
+  return util.boolFromFfi(libSETUPAPI_dll.SetupDiClassGuidsFromNameA(util.pstrToFfi(ClassName), util.toPointer(ClassGuidList), ClassGuidListSize, util.toPointer(RequiredSize)));
 }
 
 export function SetupDiClassGuidsFromNameW(
@@ -10383,7 +10715,7 @@ export function SetupDiClassGuidsFromNameW(
   ClassGuidListSize: number /* u32 */,
   RequiredSize: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSETUPAPI.SetupDiClassGuidsFromNameW(util.pwstrToFfi(ClassName), util.toPointer(ClassGuidList), ClassGuidListSize, util.toPointer(RequiredSize)));
+  return util.boolFromFfi(libSETUPAPI_dll.SetupDiClassGuidsFromNameW(util.pwstrToFfi(ClassName), util.toPointer(ClassGuidList), ClassGuidListSize, util.toPointer(RequiredSize)));
 }
 
 export function SetupDiClassGuidsFromNameExA(
@@ -10394,7 +10726,7 @@ export function SetupDiClassGuidsFromNameExA(
   MachineName: string | null /* Windows.Win32.Foundation.PSTR */,
   Reserved: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSETUPAPI.SetupDiClassGuidsFromNameExA(util.pstrToFfi(ClassName), util.toPointer(ClassGuidList), ClassGuidListSize, util.toPointer(RequiredSize), util.pstrToFfi(MachineName), util.toPointer(Reserved)));
+  return util.boolFromFfi(libSETUPAPI_dll.SetupDiClassGuidsFromNameExA(util.pstrToFfi(ClassName), util.toPointer(ClassGuidList), ClassGuidListSize, util.toPointer(RequiredSize), util.pstrToFfi(MachineName), util.toPointer(Reserved)));
 }
 
 export function SetupDiClassGuidsFromNameExW(
@@ -10405,7 +10737,7 @@ export function SetupDiClassGuidsFromNameExW(
   MachineName: string | null /* Windows.Win32.Foundation.PWSTR */,
   Reserved: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSETUPAPI.SetupDiClassGuidsFromNameExW(util.pwstrToFfi(ClassName), util.toPointer(ClassGuidList), ClassGuidListSize, util.toPointer(RequiredSize), util.pwstrToFfi(MachineName), util.toPointer(Reserved)));
+  return util.boolFromFfi(libSETUPAPI_dll.SetupDiClassGuidsFromNameExW(util.pwstrToFfi(ClassName), util.toPointer(ClassGuidList), ClassGuidListSize, util.toPointer(RequiredSize), util.pwstrToFfi(MachineName), util.toPointer(Reserved)));
 }
 
 export function SetupDiGetHwProfileFriendlyNameA(
@@ -10414,7 +10746,7 @@ export function SetupDiGetHwProfileFriendlyNameA(
   FriendlyNameSize: number /* u32 */,
   RequiredSize: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSETUPAPI.SetupDiGetHwProfileFriendlyNameA(HwProfile, util.pstrToFfi(FriendlyName), FriendlyNameSize, util.toPointer(RequiredSize)));
+  return util.boolFromFfi(libSETUPAPI_dll.SetupDiGetHwProfileFriendlyNameA(HwProfile, util.pstrToFfi(FriendlyName), FriendlyNameSize, util.toPointer(RequiredSize)));
 }
 
 export function SetupDiGetHwProfileFriendlyNameW(
@@ -10423,7 +10755,7 @@ export function SetupDiGetHwProfileFriendlyNameW(
   FriendlyNameSize: number /* u32 */,
   RequiredSize: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSETUPAPI.SetupDiGetHwProfileFriendlyNameW(HwProfile, util.pwstrToFfi(FriendlyName), FriendlyNameSize, util.toPointer(RequiredSize)));
+  return util.boolFromFfi(libSETUPAPI_dll.SetupDiGetHwProfileFriendlyNameW(HwProfile, util.pwstrToFfi(FriendlyName), FriendlyNameSize, util.toPointer(RequiredSize)));
 }
 
 export function SetupDiGetHwProfileFriendlyNameExA(
@@ -10434,7 +10766,7 @@ export function SetupDiGetHwProfileFriendlyNameExA(
   MachineName: string | null /* Windows.Win32.Foundation.PSTR */,
   Reserved: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSETUPAPI.SetupDiGetHwProfileFriendlyNameExA(HwProfile, util.pstrToFfi(FriendlyName), FriendlyNameSize, util.toPointer(RequiredSize), util.pstrToFfi(MachineName), util.toPointer(Reserved)));
+  return util.boolFromFfi(libSETUPAPI_dll.SetupDiGetHwProfileFriendlyNameExA(HwProfile, util.pstrToFfi(FriendlyName), FriendlyNameSize, util.toPointer(RequiredSize), util.pstrToFfi(MachineName), util.toPointer(Reserved)));
 }
 
 export function SetupDiGetHwProfileFriendlyNameExW(
@@ -10445,31 +10777,31 @@ export function SetupDiGetHwProfileFriendlyNameExW(
   MachineName: string | null /* Windows.Win32.Foundation.PWSTR */,
   Reserved: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSETUPAPI.SetupDiGetHwProfileFriendlyNameExW(HwProfile, util.pwstrToFfi(FriendlyName), FriendlyNameSize, util.toPointer(RequiredSize), util.pwstrToFfi(MachineName), util.toPointer(Reserved)));
+  return util.boolFromFfi(libSETUPAPI_dll.SetupDiGetHwProfileFriendlyNameExW(HwProfile, util.pwstrToFfi(FriendlyName), FriendlyNameSize, util.toPointer(RequiredSize), util.pwstrToFfi(MachineName), util.toPointer(Reserved)));
 }
 
 export function SetupDiGetWizardPage(
-  DeviceInfoSet: Deno.PointerValue | Uint8Array | null /* ptr */,
+  DeviceInfoSet: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.DeviceAndDriverInstallation.HDEVINFO */,
   DeviceInfoData: Deno.PointerValue | Uint8Array | null /* ptr */,
   InstallWizardData: Deno.PointerValue | Uint8Array | null /* ptr */,
   PageType: number /* u32 */,
   Flags: number /* u32 */,
 ): Deno.PointerValue | null /* Windows.Win32.UI.Controls.HPROPSHEETPAGE */ {
-  return util.pointerFromFfi(libSETUPAPI.SetupDiGetWizardPage(util.toPointer(DeviceInfoSet), util.toPointer(DeviceInfoData), util.toPointer(InstallWizardData), PageType, Flags));
+  return util.pointerFromFfi(libSETUPAPI_dll.SetupDiGetWizardPage(util.toPointer(DeviceInfoSet), util.toPointer(DeviceInfoData), util.toPointer(InstallWizardData), PageType, Flags));
 }
 
 export function SetupDiGetSelectedDevice(
-  DeviceInfoSet: Deno.PointerValue | Uint8Array | null /* ptr */,
+  DeviceInfoSet: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.DeviceAndDriverInstallation.HDEVINFO */,
   DeviceInfoData: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSETUPAPI.SetupDiGetSelectedDevice(util.toPointer(DeviceInfoSet), util.toPointer(DeviceInfoData)));
+  return util.boolFromFfi(libSETUPAPI_dll.SetupDiGetSelectedDevice(util.toPointer(DeviceInfoSet), util.toPointer(DeviceInfoData)));
 }
 
 export function SetupDiSetSelectedDevice(
-  DeviceInfoSet: Deno.PointerValue | Uint8Array | null /* ptr */,
+  DeviceInfoSet: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.DeviceAndDriverInstallation.HDEVINFO */,
   DeviceInfoData: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSETUPAPI.SetupDiSetSelectedDevice(util.toPointer(DeviceInfoSet), util.toPointer(DeviceInfoData)));
+  return util.boolFromFfi(libSETUPAPI_dll.SetupDiSetSelectedDevice(util.toPointer(DeviceInfoSet), util.toPointer(DeviceInfoData)));
 }
 
 export function SetupDiGetActualModelsSectionA(
@@ -10480,7 +10812,7 @@ export function SetupDiGetActualModelsSectionA(
   RequiredSize: Deno.PointerValue | Uint8Array | null /* ptr */,
   Reserved: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSETUPAPI.SetupDiGetActualModelsSectionA(util.toPointer(Context), util.toPointer(AlternatePlatformInfo), util.pstrToFfi(InfSectionWithExt), InfSectionWithExtSize, util.toPointer(RequiredSize), util.toPointer(Reserved)));
+  return util.boolFromFfi(libSETUPAPI_dll.SetupDiGetActualModelsSectionA(util.toPointer(Context), util.toPointer(AlternatePlatformInfo), util.pstrToFfi(InfSectionWithExt), InfSectionWithExtSize, util.toPointer(RequiredSize), util.toPointer(Reserved)));
 }
 
 export function SetupDiGetActualModelsSectionW(
@@ -10491,7 +10823,7 @@ export function SetupDiGetActualModelsSectionW(
   RequiredSize: Deno.PointerValue | Uint8Array | null /* ptr */,
   Reserved: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSETUPAPI.SetupDiGetActualModelsSectionW(util.toPointer(Context), util.toPointer(AlternatePlatformInfo), util.pwstrToFfi(InfSectionWithExt), InfSectionWithExtSize, util.toPointer(RequiredSize), util.toPointer(Reserved)));
+  return util.boolFromFfi(libSETUPAPI_dll.SetupDiGetActualModelsSectionW(util.toPointer(Context), util.toPointer(AlternatePlatformInfo), util.pwstrToFfi(InfSectionWithExt), InfSectionWithExtSize, util.toPointer(RequiredSize), util.toPointer(Reserved)));
 }
 
 export function SetupDiGetActualSectionToInstallA(
@@ -10502,7 +10834,7 @@ export function SetupDiGetActualSectionToInstallA(
   RequiredSize: Deno.PointerValue | Uint8Array | null /* ptr */,
   Extension: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSETUPAPI.SetupDiGetActualSectionToInstallA(util.toPointer(InfHandle), util.pstrToFfi(InfSectionName), util.pstrToFfi(InfSectionWithExt), InfSectionWithExtSize, util.toPointer(RequiredSize), util.toPointer(Extension)));
+  return util.boolFromFfi(libSETUPAPI_dll.SetupDiGetActualSectionToInstallA(util.toPointer(InfHandle), util.pstrToFfi(InfSectionName), util.pstrToFfi(InfSectionWithExt), InfSectionWithExtSize, util.toPointer(RequiredSize), util.toPointer(Extension)));
 }
 
 export function SetupDiGetActualSectionToInstallW(
@@ -10513,7 +10845,7 @@ export function SetupDiGetActualSectionToInstallW(
   RequiredSize: Deno.PointerValue | Uint8Array | null /* ptr */,
   Extension: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSETUPAPI.SetupDiGetActualSectionToInstallW(util.toPointer(InfHandle), util.pwstrToFfi(InfSectionName), util.pwstrToFfi(InfSectionWithExt), InfSectionWithExtSize, util.toPointer(RequiredSize), util.toPointer(Extension)));
+  return util.boolFromFfi(libSETUPAPI_dll.SetupDiGetActualSectionToInstallW(util.toPointer(InfHandle), util.pwstrToFfi(InfSectionName), util.pwstrToFfi(InfSectionWithExt), InfSectionWithExtSize, util.toPointer(RequiredSize), util.toPointer(Extension)));
 }
 
 export function SetupDiGetActualSectionToInstallExA(
@@ -10526,7 +10858,7 @@ export function SetupDiGetActualSectionToInstallExA(
   Extension: Deno.PointerValue | Uint8Array | null /* ptr */,
   Reserved: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSETUPAPI.SetupDiGetActualSectionToInstallExA(util.toPointer(InfHandle), util.pstrToFfi(InfSectionName), util.toPointer(AlternatePlatformInfo), util.pstrToFfi(InfSectionWithExt), InfSectionWithExtSize, util.toPointer(RequiredSize), util.toPointer(Extension), util.toPointer(Reserved)));
+  return util.boolFromFfi(libSETUPAPI_dll.SetupDiGetActualSectionToInstallExA(util.toPointer(InfHandle), util.pstrToFfi(InfSectionName), util.toPointer(AlternatePlatformInfo), util.pstrToFfi(InfSectionWithExt), InfSectionWithExtSize, util.toPointer(RequiredSize), util.toPointer(Extension), util.toPointer(Reserved)));
 }
 
 export function SetupDiGetActualSectionToInstallExW(
@@ -10539,7 +10871,7 @@ export function SetupDiGetActualSectionToInstallExW(
   Extension: Deno.PointerValue | Uint8Array | null /* ptr */,
   Reserved: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSETUPAPI.SetupDiGetActualSectionToInstallExW(util.toPointer(InfHandle), util.pwstrToFfi(InfSectionName), util.toPointer(AlternatePlatformInfo), util.pwstrToFfi(InfSectionWithExt), InfSectionWithExtSize, util.toPointer(RequiredSize), util.toPointer(Extension), util.toPointer(Reserved)));
+  return util.boolFromFfi(libSETUPAPI_dll.SetupDiGetActualSectionToInstallExW(util.toPointer(InfHandle), util.pwstrToFfi(InfSectionName), util.toPointer(AlternatePlatformInfo), util.pwstrToFfi(InfSectionWithExt), InfSectionWithExtSize, util.toPointer(RequiredSize), util.toPointer(Extension), util.toPointer(Reserved)));
 }
 
 export function SetupEnumInfSectionsA(
@@ -10549,7 +10881,7 @@ export function SetupEnumInfSectionsA(
   Size: number /* u32 */,
   SizeNeeded: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSETUPAPI.SetupEnumInfSectionsA(util.toPointer(InfHandle), Index, util.pstrToFfi(Buffer), Size, util.toPointer(SizeNeeded)));
+  return util.boolFromFfi(libSETUPAPI_dll.SetupEnumInfSectionsA(util.toPointer(InfHandle), Index, util.pstrToFfi(Buffer), Size, util.toPointer(SizeNeeded)));
 }
 
 export function SetupEnumInfSectionsW(
@@ -10559,7 +10891,7 @@ export function SetupEnumInfSectionsW(
   Size: number /* u32 */,
   SizeNeeded: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSETUPAPI.SetupEnumInfSectionsW(util.toPointer(InfHandle), Index, util.pwstrToFfi(Buffer), Size, util.toPointer(SizeNeeded)));
+  return util.boolFromFfi(libSETUPAPI_dll.SetupEnumInfSectionsW(util.toPointer(InfHandle), Index, util.pwstrToFfi(Buffer), Size, util.toPointer(SizeNeeded)));
 }
 
 export function SetupVerifyInfFileA(
@@ -10567,7 +10899,7 @@ export function SetupVerifyInfFileA(
   AltPlatformInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
   InfSignerInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSETUPAPI.SetupVerifyInfFileA(util.pstrToFfi(InfName), util.toPointer(AltPlatformInfo), util.toPointer(InfSignerInfo)));
+  return util.boolFromFfi(libSETUPAPI_dll.SetupVerifyInfFileA(util.pstrToFfi(InfName), util.toPointer(AltPlatformInfo), util.toPointer(InfSignerInfo)));
 }
 
 export function SetupVerifyInfFileW(
@@ -10575,11 +10907,11 @@ export function SetupVerifyInfFileW(
   AltPlatformInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
   InfSignerInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSETUPAPI.SetupVerifyInfFileW(util.pwstrToFfi(InfName), util.toPointer(AltPlatformInfo), util.toPointer(InfSignerInfo)));
+  return util.boolFromFfi(libSETUPAPI_dll.SetupVerifyInfFileW(util.pwstrToFfi(InfName), util.toPointer(AltPlatformInfo), util.toPointer(InfSignerInfo)));
 }
 
 export function SetupDiGetCustomDevicePropertyA(
-  DeviceInfoSet: Deno.PointerValue | Uint8Array | null /* ptr */,
+  DeviceInfoSet: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.DeviceAndDriverInstallation.HDEVINFO */,
   DeviceInfoData: Deno.PointerValue | Uint8Array | null /* ptr */,
   CustomPropertyName: string | null /* Windows.Win32.Foundation.PSTR */,
   Flags: number /* u32 */,
@@ -10588,11 +10920,11 @@ export function SetupDiGetCustomDevicePropertyA(
   PropertyBufferSize: number /* u32 */,
   RequiredSize: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSETUPAPI.SetupDiGetCustomDevicePropertyA(util.toPointer(DeviceInfoSet), util.toPointer(DeviceInfoData), util.pstrToFfi(CustomPropertyName), Flags, util.toPointer(PropertyRegDataType), util.toPointer(PropertyBuffer), PropertyBufferSize, util.toPointer(RequiredSize)));
+  return util.boolFromFfi(libSETUPAPI_dll.SetupDiGetCustomDevicePropertyA(util.toPointer(DeviceInfoSet), util.toPointer(DeviceInfoData), util.pstrToFfi(CustomPropertyName), Flags, util.toPointer(PropertyRegDataType), util.toPointer(PropertyBuffer), PropertyBufferSize, util.toPointer(RequiredSize)));
 }
 
 export function SetupDiGetCustomDevicePropertyW(
-  DeviceInfoSet: Deno.PointerValue | Uint8Array | null /* ptr */,
+  DeviceInfoSet: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.DeviceAndDriverInstallation.HDEVINFO */,
   DeviceInfoData: Deno.PointerValue | Uint8Array | null /* ptr */,
   CustomPropertyName: string | null /* Windows.Win32.Foundation.PWSTR */,
   Flags: number /* u32 */,
@@ -10601,7 +10933,7 @@ export function SetupDiGetCustomDevicePropertyW(
   PropertyBufferSize: number /* u32 */,
   RequiredSize: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSETUPAPI.SetupDiGetCustomDevicePropertyW(util.toPointer(DeviceInfoSet), util.toPointer(DeviceInfoData), util.pwstrToFfi(CustomPropertyName), Flags, util.toPointer(PropertyRegDataType), util.toPointer(PropertyBuffer), PropertyBufferSize, util.toPointer(RequiredSize)));
+  return util.boolFromFfi(libSETUPAPI_dll.SetupDiGetCustomDevicePropertyW(util.toPointer(DeviceInfoSet), util.toPointer(DeviceInfoData), util.pwstrToFfi(CustomPropertyName), Flags, util.toPointer(PropertyRegDataType), util.toPointer(PropertyBuffer), PropertyBufferSize, util.toPointer(RequiredSize)));
 }
 
 export function SetupConfigureWmiFromInfSectionA(
@@ -10609,7 +10941,7 @@ export function SetupConfigureWmiFromInfSectionA(
   SectionName: string | null /* Windows.Win32.Foundation.PSTR */,
   Flags: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSETUPAPI.SetupConfigureWmiFromInfSectionA(util.toPointer(InfHandle), util.pstrToFfi(SectionName), Flags));
+  return util.boolFromFfi(libSETUPAPI_dll.SetupConfigureWmiFromInfSectionA(util.toPointer(InfHandle), util.pstrToFfi(SectionName), Flags));
 }
 
 export function SetupConfigureWmiFromInfSectionW(
@@ -10617,7 +10949,7 @@ export function SetupConfigureWmiFromInfSectionW(
   SectionName: string | null /* Windows.Win32.Foundation.PWSTR */,
   Flags: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSETUPAPI.SetupConfigureWmiFromInfSectionW(util.toPointer(InfHandle), util.pwstrToFfi(SectionName), Flags));
+  return util.boolFromFfi(libSETUPAPI_dll.SetupConfigureWmiFromInfSectionW(util.toPointer(InfHandle), util.pwstrToFfi(SectionName), Flags));
 }
 
 export function CM_Add_Empty_Log_Conf(
@@ -10626,7 +10958,7 @@ export function CM_Add_Empty_Log_Conf(
   Priority: PRIORITY /* Windows.Win32.Data.HtmlHelp.PRIORITY */,
   ulFlags: number /* u32 */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
-  return libCFGMGR32.CM_Add_Empty_Log_Conf(util.toPointer(plcLogConf), dnDevInst, Priority, ulFlags);
+  return libCFGMGR32_dll.CM_Add_Empty_Log_Conf(util.toPointer(plcLogConf), dnDevInst, Priority, ulFlags);
 }
 
 export function CM_Add_Empty_Log_Conf_Ex(
@@ -10636,7 +10968,7 @@ export function CM_Add_Empty_Log_Conf_Ex(
   ulFlags: number /* u32 */,
   hMachine: Deno.PointerValue /* isize */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
-  return libCFGMGR32.CM_Add_Empty_Log_Conf_Ex(util.toPointer(plcLogConf), dnDevInst, Priority, ulFlags, hMachine);
+  return libCFGMGR32_dll.CM_Add_Empty_Log_Conf_Ex(util.toPointer(plcLogConf), dnDevInst, Priority, ulFlags, hMachine);
 }
 
 export function CM_Add_IDA(
@@ -10644,7 +10976,7 @@ export function CM_Add_IDA(
   pszID: string | null /* Windows.Win32.Foundation.PSTR */,
   ulFlags: number /* u32 */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
-  return libCFGMGR32.CM_Add_IDA(dnDevInst, util.pstrToFfi(pszID), ulFlags);
+  return libCFGMGR32_dll.CM_Add_IDA(dnDevInst, util.pstrToFfi(pszID), ulFlags);
 }
 
 export function CM_Add_IDW(
@@ -10652,7 +10984,7 @@ export function CM_Add_IDW(
   pszID: string | null /* Windows.Win32.Foundation.PWSTR */,
   ulFlags: number /* u32 */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
-  return libCFGMGR32.CM_Add_IDW(dnDevInst, util.pwstrToFfi(pszID), ulFlags);
+  return libCFGMGR32_dll.CM_Add_IDW(dnDevInst, util.pwstrToFfi(pszID), ulFlags);
 }
 
 export function CM_Add_ID_ExA(
@@ -10661,7 +10993,7 @@ export function CM_Add_ID_ExA(
   ulFlags: number /* u32 */,
   hMachine: Deno.PointerValue /* isize */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
-  return libCFGMGR32.CM_Add_ID_ExA(dnDevInst, util.pstrToFfi(pszID), ulFlags, hMachine);
+  return libCFGMGR32_dll.CM_Add_ID_ExA(dnDevInst, util.pstrToFfi(pszID), ulFlags, hMachine);
 }
 
 export function CM_Add_ID_ExW(
@@ -10670,7 +11002,7 @@ export function CM_Add_ID_ExW(
   ulFlags: number /* u32 */,
   hMachine: Deno.PointerValue /* isize */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
-  return libCFGMGR32.CM_Add_ID_ExW(dnDevInst, util.pwstrToFfi(pszID), ulFlags, hMachine);
+  return libCFGMGR32_dll.CM_Add_ID_ExW(dnDevInst, util.pwstrToFfi(pszID), ulFlags, hMachine);
 }
 
 export function CM_Add_Range(
@@ -10679,7 +11011,7 @@ export function CM_Add_Range(
   rlh: Deno.PointerValue /* usize */,
   ulFlags: number /* u32 */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
-  return libCFGMGR32.CM_Add_Range(ullStartValue, ullEndValue, rlh, ulFlags);
+  return libCFGMGR32_dll.CM_Add_Range(ullStartValue, ullEndValue, rlh, ulFlags);
 }
 
 export function CM_Add_Res_Des(
@@ -10690,7 +11022,7 @@ export function CM_Add_Res_Des(
   ResourceLen: number /* u32 */,
   ulFlags: number /* u32 */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
-  return libCFGMGR32.CM_Add_Res_Des(util.toPointer(prdResDes), lcLogConf, ResourceID, util.toPointer(ResourceData), ResourceLen, ulFlags);
+  return libCFGMGR32_dll.CM_Add_Res_Des(util.toPointer(prdResDes), lcLogConf, ResourceID, util.toPointer(ResourceData), ResourceLen, ulFlags);
 }
 
 export function CM_Add_Res_Des_Ex(
@@ -10702,73 +11034,73 @@ export function CM_Add_Res_Des_Ex(
   ulFlags: number /* u32 */,
   hMachine: Deno.PointerValue /* isize */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
-  return libCFGMGR32.CM_Add_Res_Des_Ex(util.toPointer(prdResDes), lcLogConf, ResourceID, util.toPointer(ResourceData), ResourceLen, ulFlags, hMachine);
+  return libCFGMGR32_dll.CM_Add_Res_Des_Ex(util.toPointer(prdResDes), lcLogConf, ResourceID, util.toPointer(ResourceData), ResourceLen, ulFlags, hMachine);
 }
 
 export function CM_Connect_MachineA(
   UNCServerName: string | null /* Windows.Win32.Foundation.PSTR */,
   phMachine: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
-  return libCFGMGR32.CM_Connect_MachineA(util.pstrToFfi(UNCServerName), util.toPointer(phMachine));
+  return libCFGMGR32_dll.CM_Connect_MachineA(util.pstrToFfi(UNCServerName), util.toPointer(phMachine));
 }
 
 export function CM_Connect_MachineW(
   UNCServerName: string | null /* Windows.Win32.Foundation.PWSTR */,
   phMachine: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
-  return libCFGMGR32.CM_Connect_MachineW(util.pwstrToFfi(UNCServerName), util.toPointer(phMachine));
+  return libCFGMGR32_dll.CM_Connect_MachineW(util.pwstrToFfi(UNCServerName), util.toPointer(phMachine));
 }
 
 export function CM_Create_DevNodeA(
   pdnDevInst: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pDeviceID: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pDeviceID: string | null /* Windows.Win32.Foundation.PSTR */,
   dnParent: number /* u32 */,
   ulFlags: number /* u32 */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
-  return libCFGMGR32.CM_Create_DevNodeA(util.toPointer(pdnDevInst), util.toPointer(pDeviceID), dnParent, ulFlags);
+  return libCFGMGR32_dll.CM_Create_DevNodeA(util.toPointer(pdnDevInst), util.pstrToFfi(pDeviceID), dnParent, ulFlags);
 }
 
 export function CM_Create_DevNodeW(
   pdnDevInst: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pDeviceID: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pDeviceID: string | null /* Windows.Win32.Foundation.PWSTR */,
   dnParent: number /* u32 */,
   ulFlags: number /* u32 */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
-  return libCFGMGR32.CM_Create_DevNodeW(util.toPointer(pdnDevInst), util.toPointer(pDeviceID), dnParent, ulFlags);
+  return libCFGMGR32_dll.CM_Create_DevNodeW(util.toPointer(pdnDevInst), util.pwstrToFfi(pDeviceID), dnParent, ulFlags);
 }
 
 export function CM_Create_DevNode_ExA(
   pdnDevInst: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pDeviceID: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pDeviceID: string | null /* Windows.Win32.Foundation.PSTR */,
   dnParent: number /* u32 */,
   ulFlags: number /* u32 */,
   hMachine: Deno.PointerValue /* isize */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
-  return libCFGMGR32.CM_Create_DevNode_ExA(util.toPointer(pdnDevInst), util.toPointer(pDeviceID), dnParent, ulFlags, hMachine);
+  return libCFGMGR32_dll.CM_Create_DevNode_ExA(util.toPointer(pdnDevInst), util.pstrToFfi(pDeviceID), dnParent, ulFlags, hMachine);
 }
 
 export function CM_Create_DevNode_ExW(
   pdnDevInst: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pDeviceID: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pDeviceID: string | null /* Windows.Win32.Foundation.PWSTR */,
   dnParent: number /* u32 */,
   ulFlags: number /* u32 */,
   hMachine: Deno.PointerValue /* isize */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
-  return libCFGMGR32.CM_Create_DevNode_ExW(util.toPointer(pdnDevInst), util.toPointer(pDeviceID), dnParent, ulFlags, hMachine);
+  return libCFGMGR32_dll.CM_Create_DevNode_ExW(util.toPointer(pdnDevInst), util.pwstrToFfi(pDeviceID), dnParent, ulFlags, hMachine);
 }
 
 export function CM_Create_Range_List(
   prlh: Deno.PointerValue | Uint8Array | null /* ptr */,
   ulFlags: number /* u32 */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
-  return libCFGMGR32.CM_Create_Range_List(util.toPointer(prlh), ulFlags);
+  return libCFGMGR32_dll.CM_Create_Range_List(util.toPointer(prlh), ulFlags);
 }
 
 export function CM_Delete_Class_Key(
   ClassGuid: Deno.PointerValue | Uint8Array | null /* ptr */,
   ulFlags: number /* u32 */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
-  return libCFGMGR32.CM_Delete_Class_Key(util.toPointer(ClassGuid), ulFlags);
+  return libCFGMGR32_dll.CM_Delete_Class_Key(util.toPointer(ClassGuid), ulFlags);
 }
 
 export function CM_Delete_Class_Key_Ex(
@@ -10776,7 +11108,7 @@ export function CM_Delete_Class_Key_Ex(
   ulFlags: number /* u32 */,
   hMachine: Deno.PointerValue /* isize */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
-  return libCFGMGR32.CM_Delete_Class_Key_Ex(util.toPointer(ClassGuid), ulFlags, hMachine);
+  return libCFGMGR32_dll.CM_Delete_Class_Key_Ex(util.toPointer(ClassGuid), ulFlags, hMachine);
 }
 
 export function CM_Delete_DevNode_Key(
@@ -10784,7 +11116,7 @@ export function CM_Delete_DevNode_Key(
   ulHardwareProfile: number /* u32 */,
   ulFlags: number /* u32 */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
-  return libCFGMGR32.CM_Delete_DevNode_Key(dnDevNode, ulHardwareProfile, ulFlags);
+  return libCFGMGR32_dll.CM_Delete_DevNode_Key(dnDevNode, ulHardwareProfile, ulFlags);
 }
 
 export function CM_Delete_DevNode_Key_Ex(
@@ -10793,7 +11125,7 @@ export function CM_Delete_DevNode_Key_Ex(
   ulFlags: number /* u32 */,
   hMachine: Deno.PointerValue /* isize */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
-  return libCFGMGR32.CM_Delete_DevNode_Key_Ex(dnDevNode, ulHardwareProfile, ulFlags, hMachine);
+  return libCFGMGR32_dll.CM_Delete_DevNode_Key_Ex(dnDevNode, ulHardwareProfile, ulFlags, hMachine);
 }
 
 export function CM_Delete_Range(
@@ -10802,7 +11134,7 @@ export function CM_Delete_Range(
   rlh: Deno.PointerValue /* usize */,
   ulFlags: number /* u32 */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
-  return libCFGMGR32.CM_Delete_Range(ullStartValue, ullEndValue, rlh, ulFlags);
+  return libCFGMGR32_dll.CM_Delete_Range(ullStartValue, ullEndValue, rlh, ulFlags);
 }
 
 export function CM_Detect_Resource_Conflict(
@@ -10813,7 +11145,7 @@ export function CM_Detect_Resource_Conflict(
   pbConflictDetected: Deno.PointerValue | Uint8Array | null /* ptr */,
   ulFlags: number /* u32 */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
-  return libCFGMGR32.CM_Detect_Resource_Conflict(dnDevInst, ResourceID, util.toPointer(ResourceData), ResourceLen, util.toPointer(pbConflictDetected), ulFlags);
+  return libCFGMGR32_dll.CM_Detect_Resource_Conflict(dnDevInst, ResourceID, util.toPointer(ResourceData), ResourceLen, util.toPointer(pbConflictDetected), ulFlags);
 }
 
 export function CM_Detect_Resource_Conflict_Ex(
@@ -10825,14 +11157,14 @@ export function CM_Detect_Resource_Conflict_Ex(
   ulFlags: number /* u32 */,
   hMachine: Deno.PointerValue /* isize */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
-  return libCFGMGR32.CM_Detect_Resource_Conflict_Ex(dnDevInst, ResourceID, util.toPointer(ResourceData), ResourceLen, util.toPointer(pbConflictDetected), ulFlags, hMachine);
+  return libCFGMGR32_dll.CM_Detect_Resource_Conflict_Ex(dnDevInst, ResourceID, util.toPointer(ResourceData), ResourceLen, util.toPointer(pbConflictDetected), ulFlags, hMachine);
 }
 
 export function CM_Disable_DevNode(
   dnDevInst: number /* u32 */,
   ulFlags: number /* u32 */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
-  return libCFGMGR32.CM_Disable_DevNode(dnDevInst, ulFlags);
+  return libCFGMGR32_dll.CM_Disable_DevNode(dnDevInst, ulFlags);
 }
 
 export function CM_Disable_DevNode_Ex(
@@ -10840,13 +11172,13 @@ export function CM_Disable_DevNode_Ex(
   ulFlags: number /* u32 */,
   hMachine: Deno.PointerValue /* isize */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
-  return libCFGMGR32.CM_Disable_DevNode_Ex(dnDevInst, ulFlags, hMachine);
+  return libCFGMGR32_dll.CM_Disable_DevNode_Ex(dnDevInst, ulFlags, hMachine);
 }
 
 export function CM_Disconnect_Machine(
   hMachine: Deno.PointerValue /* isize */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
-  return libCFGMGR32.CM_Disconnect_Machine(hMachine);
+  return libCFGMGR32_dll.CM_Disconnect_Machine(hMachine);
 }
 
 export function CM_Dup_Range_List(
@@ -10854,14 +11186,14 @@ export function CM_Dup_Range_List(
   rlhNew: Deno.PointerValue /* usize */,
   ulFlags: number /* u32 */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
-  return libCFGMGR32.CM_Dup_Range_List(rlhOld, rlhNew, ulFlags);
+  return libCFGMGR32_dll.CM_Dup_Range_List(rlhOld, rlhNew, ulFlags);
 }
 
 export function CM_Enable_DevNode(
   dnDevInst: number /* u32 */,
   ulFlags: number /* u32 */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
-  return libCFGMGR32.CM_Enable_DevNode(dnDevInst, ulFlags);
+  return libCFGMGR32_dll.CM_Enable_DevNode(dnDevInst, ulFlags);
 }
 
 export function CM_Enable_DevNode_Ex(
@@ -10869,7 +11201,7 @@ export function CM_Enable_DevNode_Ex(
   ulFlags: number /* u32 */,
   hMachine: Deno.PointerValue /* isize */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
-  return libCFGMGR32.CM_Enable_DevNode_Ex(dnDevInst, ulFlags, hMachine);
+  return libCFGMGR32_dll.CM_Enable_DevNode_Ex(dnDevInst, ulFlags, hMachine);
 }
 
 export function CM_Enumerate_Classes(
@@ -10877,7 +11209,7 @@ export function CM_Enumerate_Classes(
   ClassGuid: Deno.PointerValue | Uint8Array | null /* ptr */,
   ulFlags: number /* u32 */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
-  return libCFGMGR32.CM_Enumerate_Classes(ulClassIndex, util.toPointer(ClassGuid), ulFlags);
+  return libCFGMGR32_dll.CM_Enumerate_Classes(ulClassIndex, util.toPointer(ClassGuid), ulFlags);
 }
 
 export function CM_Enumerate_Classes_Ex(
@@ -10886,7 +11218,7 @@ export function CM_Enumerate_Classes_Ex(
   ulFlags: number /* u32 */,
   hMachine: Deno.PointerValue /* isize */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
-  return libCFGMGR32.CM_Enumerate_Classes_Ex(ulClassIndex, util.toPointer(ClassGuid), ulFlags, hMachine);
+  return libCFGMGR32_dll.CM_Enumerate_Classes_Ex(ulClassIndex, util.toPointer(ClassGuid), ulFlags, hMachine);
 }
 
 export function CM_Enumerate_EnumeratorsA(
@@ -10895,7 +11227,7 @@ export function CM_Enumerate_EnumeratorsA(
   pulLength: Deno.PointerValue | Uint8Array | null /* ptr */,
   ulFlags: number /* u32 */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
-  return libCFGMGR32.CM_Enumerate_EnumeratorsA(ulEnumIndex, util.pstrToFfi(Buffer), util.toPointer(pulLength), ulFlags);
+  return libCFGMGR32_dll.CM_Enumerate_EnumeratorsA(ulEnumIndex, util.pstrToFfi(Buffer), util.toPointer(pulLength), ulFlags);
 }
 
 export function CM_Enumerate_EnumeratorsW(
@@ -10904,7 +11236,7 @@ export function CM_Enumerate_EnumeratorsW(
   pulLength: Deno.PointerValue | Uint8Array | null /* ptr */,
   ulFlags: number /* u32 */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
-  return libCFGMGR32.CM_Enumerate_EnumeratorsW(ulEnumIndex, util.pwstrToFfi(Buffer), util.toPointer(pulLength), ulFlags);
+  return libCFGMGR32_dll.CM_Enumerate_EnumeratorsW(ulEnumIndex, util.pwstrToFfi(Buffer), util.toPointer(pulLength), ulFlags);
 }
 
 export function CM_Enumerate_Enumerators_ExA(
@@ -10914,7 +11246,7 @@ export function CM_Enumerate_Enumerators_ExA(
   ulFlags: number /* u32 */,
   hMachine: Deno.PointerValue /* isize */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
-  return libCFGMGR32.CM_Enumerate_Enumerators_ExA(ulEnumIndex, util.pstrToFfi(Buffer), util.toPointer(pulLength), ulFlags, hMachine);
+  return libCFGMGR32_dll.CM_Enumerate_Enumerators_ExA(ulEnumIndex, util.pstrToFfi(Buffer), util.toPointer(pulLength), ulFlags, hMachine);
 }
 
 export function CM_Enumerate_Enumerators_ExW(
@@ -10924,7 +11256,7 @@ export function CM_Enumerate_Enumerators_ExW(
   ulFlags: number /* u32 */,
   hMachine: Deno.PointerValue /* isize */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
-  return libCFGMGR32.CM_Enumerate_Enumerators_ExW(ulEnumIndex, util.pwstrToFfi(Buffer), util.toPointer(pulLength), ulFlags, hMachine);
+  return libCFGMGR32_dll.CM_Enumerate_Enumerators_ExW(ulEnumIndex, util.pwstrToFfi(Buffer), util.toPointer(pulLength), ulFlags, hMachine);
 }
 
 export function CM_Find_Range(
@@ -10936,7 +11268,7 @@ export function CM_Find_Range(
   rlh: Deno.PointerValue /* usize */,
   ulFlags: number /* u32 */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
-  return libCFGMGR32.CM_Find_Range(util.toPointer(pullStart), ullStart, ulLength, ullAlignment, ullEnd, rlh, ulFlags);
+  return libCFGMGR32_dll.CM_Find_Range(util.toPointer(pullStart), ullStart, ulLength, ullAlignment, ullEnd, rlh, ulFlags);
 }
 
 export function CM_First_Range(
@@ -10946,14 +11278,14 @@ export function CM_First_Range(
   preElement: Deno.PointerValue | Uint8Array | null /* ptr */,
   ulFlags: number /* u32 */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
-  return libCFGMGR32.CM_First_Range(rlh, util.toPointer(pullStart), util.toPointer(pullEnd), util.toPointer(preElement), ulFlags);
+  return libCFGMGR32_dll.CM_First_Range(rlh, util.toPointer(pullStart), util.toPointer(pullEnd), util.toPointer(preElement), ulFlags);
 }
 
 export function CM_Free_Log_Conf(
   lcLogConfToBeFreed: Deno.PointerValue /* usize */,
   ulFlags: number /* u32 */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
-  return libCFGMGR32.CM_Free_Log_Conf(lcLogConfToBeFreed, ulFlags);
+  return libCFGMGR32_dll.CM_Free_Log_Conf(lcLogConfToBeFreed, ulFlags);
 }
 
 export function CM_Free_Log_Conf_Ex(
@@ -10961,20 +11293,20 @@ export function CM_Free_Log_Conf_Ex(
   ulFlags: number /* u32 */,
   hMachine: Deno.PointerValue /* isize */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
-  return libCFGMGR32.CM_Free_Log_Conf_Ex(lcLogConfToBeFreed, ulFlags, hMachine);
+  return libCFGMGR32_dll.CM_Free_Log_Conf_Ex(lcLogConfToBeFreed, ulFlags, hMachine);
 }
 
 export function CM_Free_Log_Conf_Handle(
   lcLogConf: Deno.PointerValue /* usize */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
-  return libCFGMGR32.CM_Free_Log_Conf_Handle(lcLogConf);
+  return libCFGMGR32_dll.CM_Free_Log_Conf_Handle(lcLogConf);
 }
 
 export function CM_Free_Range_List(
   rlh: Deno.PointerValue /* usize */,
   ulFlags: number /* u32 */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
-  return libCFGMGR32.CM_Free_Range_List(rlh, ulFlags);
+  return libCFGMGR32_dll.CM_Free_Range_List(rlh, ulFlags);
 }
 
 export function CM_Free_Res_Des(
@@ -10982,7 +11314,7 @@ export function CM_Free_Res_Des(
   rdResDes: Deno.PointerValue /* usize */,
   ulFlags: number /* u32 */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
-  return libCFGMGR32.CM_Free_Res_Des(util.toPointer(prdResDes), rdResDes, ulFlags);
+  return libCFGMGR32_dll.CM_Free_Res_Des(util.toPointer(prdResDes), rdResDes, ulFlags);
 }
 
 export function CM_Free_Res_Des_Ex(
@@ -10991,13 +11323,13 @@ export function CM_Free_Res_Des_Ex(
   ulFlags: number /* u32 */,
   hMachine: Deno.PointerValue /* isize */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
-  return libCFGMGR32.CM_Free_Res_Des_Ex(util.toPointer(prdResDes), rdResDes, ulFlags, hMachine);
+  return libCFGMGR32_dll.CM_Free_Res_Des_Ex(util.toPointer(prdResDes), rdResDes, ulFlags, hMachine);
 }
 
 export function CM_Free_Res_Des_Handle(
   rdResDes: Deno.PointerValue /* usize */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
-  return libCFGMGR32.CM_Free_Res_Des_Handle(rdResDes);
+  return libCFGMGR32_dll.CM_Free_Res_Des_Handle(rdResDes);
 }
 
 export function CM_Get_Child(
@@ -11005,7 +11337,7 @@ export function CM_Get_Child(
   dnDevInst: number /* u32 */,
   ulFlags: number /* u32 */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
-  return libCFGMGR32.CM_Get_Child(util.toPointer(pdnDevInst), dnDevInst, ulFlags);
+  return libCFGMGR32_dll.CM_Get_Child(util.toPointer(pdnDevInst), dnDevInst, ulFlags);
 }
 
 export function CM_Get_Child_Ex(
@@ -11014,7 +11346,7 @@ export function CM_Get_Child_Ex(
   ulFlags: number /* u32 */,
   hMachine: Deno.PointerValue /* isize */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
-  return libCFGMGR32.CM_Get_Child_Ex(util.toPointer(pdnDevInst), dnDevInst, ulFlags, hMachine);
+  return libCFGMGR32_dll.CM_Get_Child_Ex(util.toPointer(pdnDevInst), dnDevInst, ulFlags, hMachine);
 }
 
 export function CM_Get_Class_NameA(
@@ -11023,7 +11355,7 @@ export function CM_Get_Class_NameA(
   pulLength: Deno.PointerValue | Uint8Array | null /* ptr */,
   ulFlags: number /* u32 */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
-  return libCFGMGR32.CM_Get_Class_NameA(util.toPointer(ClassGuid), util.pstrToFfi(Buffer), util.toPointer(pulLength), ulFlags);
+  return libCFGMGR32_dll.CM_Get_Class_NameA(util.toPointer(ClassGuid), util.pstrToFfi(Buffer), util.toPointer(pulLength), ulFlags);
 }
 
 export function CM_Get_Class_NameW(
@@ -11032,7 +11364,7 @@ export function CM_Get_Class_NameW(
   pulLength: Deno.PointerValue | Uint8Array | null /* ptr */,
   ulFlags: number /* u32 */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
-  return libCFGMGR32.CM_Get_Class_NameW(util.toPointer(ClassGuid), util.pwstrToFfi(Buffer), util.toPointer(pulLength), ulFlags);
+  return libCFGMGR32_dll.CM_Get_Class_NameW(util.toPointer(ClassGuid), util.pwstrToFfi(Buffer), util.toPointer(pulLength), ulFlags);
 }
 
 export function CM_Get_Class_Name_ExA(
@@ -11042,7 +11374,7 @@ export function CM_Get_Class_Name_ExA(
   ulFlags: number /* u32 */,
   hMachine: Deno.PointerValue /* isize */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
-  return libCFGMGR32.CM_Get_Class_Name_ExA(util.toPointer(ClassGuid), util.pstrToFfi(Buffer), util.toPointer(pulLength), ulFlags, hMachine);
+  return libCFGMGR32_dll.CM_Get_Class_Name_ExA(util.toPointer(ClassGuid), util.pstrToFfi(Buffer), util.toPointer(pulLength), ulFlags, hMachine);
 }
 
 export function CM_Get_Class_Name_ExW(
@@ -11052,7 +11384,7 @@ export function CM_Get_Class_Name_ExW(
   ulFlags: number /* u32 */,
   hMachine: Deno.PointerValue /* isize */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
-  return libCFGMGR32.CM_Get_Class_Name_ExW(util.toPointer(ClassGuid), util.pwstrToFfi(Buffer), util.toPointer(pulLength), ulFlags, hMachine);
+  return libCFGMGR32_dll.CM_Get_Class_Name_ExW(util.toPointer(ClassGuid), util.pwstrToFfi(Buffer), util.toPointer(pulLength), ulFlags, hMachine);
 }
 
 export function CM_Get_Class_Key_NameA(
@@ -11061,7 +11393,7 @@ export function CM_Get_Class_Key_NameA(
   pulLength: Deno.PointerValue | Uint8Array | null /* ptr */,
   ulFlags: number /* u32 */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
-  return libCFGMGR32.CM_Get_Class_Key_NameA(util.toPointer(ClassGuid), util.pstrToFfi(pszKeyName), util.toPointer(pulLength), ulFlags);
+  return libCFGMGR32_dll.CM_Get_Class_Key_NameA(util.toPointer(ClassGuid), util.pstrToFfi(pszKeyName), util.toPointer(pulLength), ulFlags);
 }
 
 export function CM_Get_Class_Key_NameW(
@@ -11070,7 +11402,7 @@ export function CM_Get_Class_Key_NameW(
   pulLength: Deno.PointerValue | Uint8Array | null /* ptr */,
   ulFlags: number /* u32 */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
-  return libCFGMGR32.CM_Get_Class_Key_NameW(util.toPointer(ClassGuid), util.pwstrToFfi(pszKeyName), util.toPointer(pulLength), ulFlags);
+  return libCFGMGR32_dll.CM_Get_Class_Key_NameW(util.toPointer(ClassGuid), util.pwstrToFfi(pszKeyName), util.toPointer(pulLength), ulFlags);
 }
 
 export function CM_Get_Class_Key_Name_ExA(
@@ -11080,7 +11412,7 @@ export function CM_Get_Class_Key_Name_ExA(
   ulFlags: number /* u32 */,
   hMachine: Deno.PointerValue /* isize */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
-  return libCFGMGR32.CM_Get_Class_Key_Name_ExA(util.toPointer(ClassGuid), util.pstrToFfi(pszKeyName), util.toPointer(pulLength), ulFlags, hMachine);
+  return libCFGMGR32_dll.CM_Get_Class_Key_Name_ExA(util.toPointer(ClassGuid), util.pstrToFfi(pszKeyName), util.toPointer(pulLength), ulFlags, hMachine);
 }
 
 export function CM_Get_Class_Key_Name_ExW(
@@ -11090,7 +11422,7 @@ export function CM_Get_Class_Key_Name_ExW(
   ulFlags: number /* u32 */,
   hMachine: Deno.PointerValue /* isize */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
-  return libCFGMGR32.CM_Get_Class_Key_Name_ExW(util.toPointer(ClassGuid), util.pwstrToFfi(pszKeyName), util.toPointer(pulLength), ulFlags, hMachine);
+  return libCFGMGR32_dll.CM_Get_Class_Key_Name_ExW(util.toPointer(ClassGuid), util.pwstrToFfi(pszKeyName), util.toPointer(pulLength), ulFlags, hMachine);
 }
 
 export function CM_Get_Depth(
@@ -11098,7 +11430,7 @@ export function CM_Get_Depth(
   dnDevInst: number /* u32 */,
   ulFlags: number /* u32 */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
-  return libCFGMGR32.CM_Get_Depth(util.toPointer(pulDepth), dnDevInst, ulFlags);
+  return libCFGMGR32_dll.CM_Get_Depth(util.toPointer(pulDepth), dnDevInst, ulFlags);
 }
 
 export function CM_Get_Depth_Ex(
@@ -11107,7 +11439,7 @@ export function CM_Get_Depth_Ex(
   ulFlags: number /* u32 */,
   hMachine: Deno.PointerValue /* isize */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
-  return libCFGMGR32.CM_Get_Depth_Ex(util.toPointer(pulDepth), dnDevInst, ulFlags, hMachine);
+  return libCFGMGR32_dll.CM_Get_Depth_Ex(util.toPointer(pulDepth), dnDevInst, ulFlags, hMachine);
 }
 
 export function CM_Get_Device_IDA(
@@ -11116,7 +11448,7 @@ export function CM_Get_Device_IDA(
   BufferLen: number /* u32 */,
   ulFlags: number /* u32 */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
-  return libCFGMGR32.CM_Get_Device_IDA(dnDevInst, util.pstrToFfi(Buffer), BufferLen, ulFlags);
+  return libCFGMGR32_dll.CM_Get_Device_IDA(dnDevInst, util.pstrToFfi(Buffer), BufferLen, ulFlags);
 }
 
 export function CM_Get_Device_IDW(
@@ -11125,7 +11457,7 @@ export function CM_Get_Device_IDW(
   BufferLen: number /* u32 */,
   ulFlags: number /* u32 */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
-  return libCFGMGR32.CM_Get_Device_IDW(dnDevInst, util.pwstrToFfi(Buffer), BufferLen, ulFlags);
+  return libCFGMGR32_dll.CM_Get_Device_IDW(dnDevInst, util.pwstrToFfi(Buffer), BufferLen, ulFlags);
 }
 
 export function CM_Get_Device_ID_ExA(
@@ -11135,7 +11467,7 @@ export function CM_Get_Device_ID_ExA(
   ulFlags: number /* u32 */,
   hMachine: Deno.PointerValue /* isize */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
-  return libCFGMGR32.CM_Get_Device_ID_ExA(dnDevInst, util.pstrToFfi(Buffer), BufferLen, ulFlags, hMachine);
+  return libCFGMGR32_dll.CM_Get_Device_ID_ExA(dnDevInst, util.pstrToFfi(Buffer), BufferLen, ulFlags, hMachine);
 }
 
 export function CM_Get_Device_ID_ExW(
@@ -11145,7 +11477,7 @@ export function CM_Get_Device_ID_ExW(
   ulFlags: number /* u32 */,
   hMachine: Deno.PointerValue /* isize */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
-  return libCFGMGR32.CM_Get_Device_ID_ExW(dnDevInst, util.pwstrToFfi(Buffer), BufferLen, ulFlags, hMachine);
+  return libCFGMGR32_dll.CM_Get_Device_ID_ExW(dnDevInst, util.pwstrToFfi(Buffer), BufferLen, ulFlags, hMachine);
 }
 
 export function CM_Get_Device_ID_ListA(
@@ -11154,7 +11486,7 @@ export function CM_Get_Device_ID_ListA(
   BufferLen: number /* u32 */,
   ulFlags: number /* u32 */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
-  return libCFGMGR32.CM_Get_Device_ID_ListA(util.pstrToFfi(pszFilter), util.pstrToFfi(Buffer), BufferLen, ulFlags);
+  return libCFGMGR32_dll.CM_Get_Device_ID_ListA(util.pstrToFfi(pszFilter), util.pstrToFfi(Buffer), BufferLen, ulFlags);
 }
 
 export function CM_Get_Device_ID_ListW(
@@ -11163,7 +11495,7 @@ export function CM_Get_Device_ID_ListW(
   BufferLen: number /* u32 */,
   ulFlags: number /* u32 */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
-  return libCFGMGR32.CM_Get_Device_ID_ListW(util.pwstrToFfi(pszFilter), util.pwstrToFfi(Buffer), BufferLen, ulFlags);
+  return libCFGMGR32_dll.CM_Get_Device_ID_ListW(util.pwstrToFfi(pszFilter), util.pwstrToFfi(Buffer), BufferLen, ulFlags);
 }
 
 export function CM_Get_Device_ID_List_ExA(
@@ -11173,7 +11505,7 @@ export function CM_Get_Device_ID_List_ExA(
   ulFlags: number /* u32 */,
   hMachine: Deno.PointerValue /* isize */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
-  return libCFGMGR32.CM_Get_Device_ID_List_ExA(util.pstrToFfi(pszFilter), util.pstrToFfi(Buffer), BufferLen, ulFlags, hMachine);
+  return libCFGMGR32_dll.CM_Get_Device_ID_List_ExA(util.pstrToFfi(pszFilter), util.pstrToFfi(Buffer), BufferLen, ulFlags, hMachine);
 }
 
 export function CM_Get_Device_ID_List_ExW(
@@ -11183,7 +11515,7 @@ export function CM_Get_Device_ID_List_ExW(
   ulFlags: number /* u32 */,
   hMachine: Deno.PointerValue /* isize */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
-  return libCFGMGR32.CM_Get_Device_ID_List_ExW(util.pwstrToFfi(pszFilter), util.pwstrToFfi(Buffer), BufferLen, ulFlags, hMachine);
+  return libCFGMGR32_dll.CM_Get_Device_ID_List_ExW(util.pwstrToFfi(pszFilter), util.pwstrToFfi(Buffer), BufferLen, ulFlags, hMachine);
 }
 
 export function CM_Get_Device_ID_List_SizeA(
@@ -11191,7 +11523,7 @@ export function CM_Get_Device_ID_List_SizeA(
   pszFilter: string | null /* Windows.Win32.Foundation.PSTR */,
   ulFlags: number /* u32 */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
-  return libCFGMGR32.CM_Get_Device_ID_List_SizeA(util.toPointer(pulLen), util.pstrToFfi(pszFilter), ulFlags);
+  return libCFGMGR32_dll.CM_Get_Device_ID_List_SizeA(util.toPointer(pulLen), util.pstrToFfi(pszFilter), ulFlags);
 }
 
 export function CM_Get_Device_ID_List_SizeW(
@@ -11199,7 +11531,7 @@ export function CM_Get_Device_ID_List_SizeW(
   pszFilter: string | null /* Windows.Win32.Foundation.PWSTR */,
   ulFlags: number /* u32 */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
-  return libCFGMGR32.CM_Get_Device_ID_List_SizeW(util.toPointer(pulLen), util.pwstrToFfi(pszFilter), ulFlags);
+  return libCFGMGR32_dll.CM_Get_Device_ID_List_SizeW(util.toPointer(pulLen), util.pwstrToFfi(pszFilter), ulFlags);
 }
 
 export function CM_Get_Device_ID_List_Size_ExA(
@@ -11208,7 +11540,7 @@ export function CM_Get_Device_ID_List_Size_ExA(
   ulFlags: number /* u32 */,
   hMachine: Deno.PointerValue /* isize */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
-  return libCFGMGR32.CM_Get_Device_ID_List_Size_ExA(util.toPointer(pulLen), util.pstrToFfi(pszFilter), ulFlags, hMachine);
+  return libCFGMGR32_dll.CM_Get_Device_ID_List_Size_ExA(util.toPointer(pulLen), util.pstrToFfi(pszFilter), ulFlags, hMachine);
 }
 
 export function CM_Get_Device_ID_List_Size_ExW(
@@ -11217,7 +11549,7 @@ export function CM_Get_Device_ID_List_Size_ExW(
   ulFlags: number /* u32 */,
   hMachine: Deno.PointerValue /* isize */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
-  return libCFGMGR32.CM_Get_Device_ID_List_Size_ExW(util.toPointer(pulLen), util.pwstrToFfi(pszFilter), ulFlags, hMachine);
+  return libCFGMGR32_dll.CM_Get_Device_ID_List_Size_ExW(util.toPointer(pulLen), util.pwstrToFfi(pszFilter), ulFlags, hMachine);
 }
 
 export function CM_Get_Device_ID_Size(
@@ -11225,7 +11557,7 @@ export function CM_Get_Device_ID_Size(
   dnDevInst: number /* u32 */,
   ulFlags: number /* u32 */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
-  return libCFGMGR32.CM_Get_Device_ID_Size(util.toPointer(pulLen), dnDevInst, ulFlags);
+  return libCFGMGR32_dll.CM_Get_Device_ID_Size(util.toPointer(pulLen), dnDevInst, ulFlags);
 }
 
 export function CM_Get_Device_ID_Size_Ex(
@@ -11234,7 +11566,7 @@ export function CM_Get_Device_ID_Size_Ex(
   ulFlags: number /* u32 */,
   hMachine: Deno.PointerValue /* isize */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
-  return libCFGMGR32.CM_Get_Device_ID_Size_Ex(util.toPointer(pulLen), dnDevInst, ulFlags, hMachine);
+  return libCFGMGR32_dll.CM_Get_Device_ID_Size_Ex(util.toPointer(pulLen), dnDevInst, ulFlags, hMachine);
 }
 
 export function CM_Get_DevNode_PropertyW(
@@ -11245,7 +11577,7 @@ export function CM_Get_DevNode_PropertyW(
   PropertyBufferSize: Deno.PointerValue | Uint8Array | null /* ptr */,
   ulFlags: number /* u32 */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
-  return libCFGMGR32.CM_Get_DevNode_PropertyW(dnDevInst, util.toPointer(PropertyKey), util.toPointer(PropertyType), util.toPointer(PropertyBuffer), util.toPointer(PropertyBufferSize), ulFlags);
+  return libCFGMGR32_dll.CM_Get_DevNode_PropertyW(dnDevInst, util.toPointer(PropertyKey), util.toPointer(PropertyType), util.toPointer(PropertyBuffer), util.toPointer(PropertyBufferSize), ulFlags);
 }
 
 export function CM_Get_DevNode_Property_ExW(
@@ -11257,7 +11589,7 @@ export function CM_Get_DevNode_Property_ExW(
   ulFlags: number /* u32 */,
   hMachine: Deno.PointerValue /* isize */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
-  return libCFGMGR32.CM_Get_DevNode_Property_ExW(dnDevInst, util.toPointer(PropertyKey), util.toPointer(PropertyType), util.toPointer(PropertyBuffer), util.toPointer(PropertyBufferSize), ulFlags, hMachine);
+  return libCFGMGR32_dll.CM_Get_DevNode_Property_ExW(dnDevInst, util.toPointer(PropertyKey), util.toPointer(PropertyType), util.toPointer(PropertyBuffer), util.toPointer(PropertyBufferSize), ulFlags, hMachine);
 }
 
 export function CM_Get_DevNode_Property_Keys(
@@ -11266,7 +11598,7 @@ export function CM_Get_DevNode_Property_Keys(
   PropertyKeyCount: Deno.PointerValue | Uint8Array | null /* ptr */,
   ulFlags: number /* u32 */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
-  return libCFGMGR32.CM_Get_DevNode_Property_Keys(dnDevInst, util.toPointer(PropertyKeyArray), util.toPointer(PropertyKeyCount), ulFlags);
+  return libCFGMGR32_dll.CM_Get_DevNode_Property_Keys(dnDevInst, util.toPointer(PropertyKeyArray), util.toPointer(PropertyKeyCount), ulFlags);
 }
 
 export function CM_Get_DevNode_Property_Keys_Ex(
@@ -11276,7 +11608,7 @@ export function CM_Get_DevNode_Property_Keys_Ex(
   ulFlags: number /* u32 */,
   hMachine: Deno.PointerValue /* isize */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
-  return libCFGMGR32.CM_Get_DevNode_Property_Keys_Ex(dnDevInst, util.toPointer(PropertyKeyArray), util.toPointer(PropertyKeyCount), ulFlags, hMachine);
+  return libCFGMGR32_dll.CM_Get_DevNode_Property_Keys_Ex(dnDevInst, util.toPointer(PropertyKeyArray), util.toPointer(PropertyKeyCount), ulFlags, hMachine);
 }
 
 export function CM_Get_DevNode_Registry_PropertyA(
@@ -11287,7 +11619,7 @@ export function CM_Get_DevNode_Registry_PropertyA(
   pulLength: Deno.PointerValue | Uint8Array | null /* ptr */,
   ulFlags: number /* u32 */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
-  return libCFGMGR32.CM_Get_DevNode_Registry_PropertyA(dnDevInst, ulProperty, util.toPointer(pulRegDataType), util.toPointer(Buffer), util.toPointer(pulLength), ulFlags);
+  return libCFGMGR32_dll.CM_Get_DevNode_Registry_PropertyA(dnDevInst, ulProperty, util.toPointer(pulRegDataType), util.toPointer(Buffer), util.toPointer(pulLength), ulFlags);
 }
 
 export function CM_Get_DevNode_Registry_PropertyW(
@@ -11298,7 +11630,7 @@ export function CM_Get_DevNode_Registry_PropertyW(
   pulLength: Deno.PointerValue | Uint8Array | null /* ptr */,
   ulFlags: number /* u32 */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
-  return libCFGMGR32.CM_Get_DevNode_Registry_PropertyW(dnDevInst, ulProperty, util.toPointer(pulRegDataType), util.toPointer(Buffer), util.toPointer(pulLength), ulFlags);
+  return libCFGMGR32_dll.CM_Get_DevNode_Registry_PropertyW(dnDevInst, ulProperty, util.toPointer(pulRegDataType), util.toPointer(Buffer), util.toPointer(pulLength), ulFlags);
 }
 
 export function CM_Get_DevNode_Registry_Property_ExA(
@@ -11310,7 +11642,7 @@ export function CM_Get_DevNode_Registry_Property_ExA(
   ulFlags: number /* u32 */,
   hMachine: Deno.PointerValue /* isize */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
-  return libCFGMGR32.CM_Get_DevNode_Registry_Property_ExA(dnDevInst, ulProperty, util.toPointer(pulRegDataType), util.toPointer(Buffer), util.toPointer(pulLength), ulFlags, hMachine);
+  return libCFGMGR32_dll.CM_Get_DevNode_Registry_Property_ExA(dnDevInst, ulProperty, util.toPointer(pulRegDataType), util.toPointer(Buffer), util.toPointer(pulLength), ulFlags, hMachine);
 }
 
 export function CM_Get_DevNode_Registry_Property_ExW(
@@ -11322,7 +11654,7 @@ export function CM_Get_DevNode_Registry_Property_ExW(
   ulFlags: number /* u32 */,
   hMachine: Deno.PointerValue /* isize */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
-  return libCFGMGR32.CM_Get_DevNode_Registry_Property_ExW(dnDevInst, ulProperty, util.toPointer(pulRegDataType), util.toPointer(Buffer), util.toPointer(pulLength), ulFlags, hMachine);
+  return libCFGMGR32_dll.CM_Get_DevNode_Registry_Property_ExW(dnDevInst, ulProperty, util.toPointer(pulRegDataType), util.toPointer(Buffer), util.toPointer(pulLength), ulFlags, hMachine);
 }
 
 export function CM_Get_DevNode_Custom_PropertyA(
@@ -11333,7 +11665,7 @@ export function CM_Get_DevNode_Custom_PropertyA(
   pulLength: Deno.PointerValue | Uint8Array | null /* ptr */,
   ulFlags: number /* u32 */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
-  return libCFGMGR32.CM_Get_DevNode_Custom_PropertyA(dnDevInst, util.pstrToFfi(pszCustomPropertyName), util.toPointer(pulRegDataType), util.toPointer(Buffer), util.toPointer(pulLength), ulFlags);
+  return libCFGMGR32_dll.CM_Get_DevNode_Custom_PropertyA(dnDevInst, util.pstrToFfi(pszCustomPropertyName), util.toPointer(pulRegDataType), util.toPointer(Buffer), util.toPointer(pulLength), ulFlags);
 }
 
 export function CM_Get_DevNode_Custom_PropertyW(
@@ -11344,7 +11676,7 @@ export function CM_Get_DevNode_Custom_PropertyW(
   pulLength: Deno.PointerValue | Uint8Array | null /* ptr */,
   ulFlags: number /* u32 */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
-  return libCFGMGR32.CM_Get_DevNode_Custom_PropertyW(dnDevInst, util.pwstrToFfi(pszCustomPropertyName), util.toPointer(pulRegDataType), util.toPointer(Buffer), util.toPointer(pulLength), ulFlags);
+  return libCFGMGR32_dll.CM_Get_DevNode_Custom_PropertyW(dnDevInst, util.pwstrToFfi(pszCustomPropertyName), util.toPointer(pulRegDataType), util.toPointer(Buffer), util.toPointer(pulLength), ulFlags);
 }
 
 export function CM_Get_DevNode_Custom_Property_ExA(
@@ -11356,7 +11688,7 @@ export function CM_Get_DevNode_Custom_Property_ExA(
   ulFlags: number /* u32 */,
   hMachine: Deno.PointerValue /* isize */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
-  return libCFGMGR32.CM_Get_DevNode_Custom_Property_ExA(dnDevInst, util.pstrToFfi(pszCustomPropertyName), util.toPointer(pulRegDataType), util.toPointer(Buffer), util.toPointer(pulLength), ulFlags, hMachine);
+  return libCFGMGR32_dll.CM_Get_DevNode_Custom_Property_ExA(dnDevInst, util.pstrToFfi(pszCustomPropertyName), util.toPointer(pulRegDataType), util.toPointer(Buffer), util.toPointer(pulLength), ulFlags, hMachine);
 }
 
 export function CM_Get_DevNode_Custom_Property_ExW(
@@ -11368,7 +11700,7 @@ export function CM_Get_DevNode_Custom_Property_ExW(
   ulFlags: number /* u32 */,
   hMachine: Deno.PointerValue /* isize */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
-  return libCFGMGR32.CM_Get_DevNode_Custom_Property_ExW(dnDevInst, util.pwstrToFfi(pszCustomPropertyName), util.toPointer(pulRegDataType), util.toPointer(Buffer), util.toPointer(pulLength), ulFlags, hMachine);
+  return libCFGMGR32_dll.CM_Get_DevNode_Custom_Property_ExW(dnDevInst, util.pwstrToFfi(pszCustomPropertyName), util.toPointer(pulRegDataType), util.toPointer(Buffer), util.toPointer(pulLength), ulFlags, hMachine);
 }
 
 export function CM_Get_DevNode_Status(
@@ -11377,7 +11709,7 @@ export function CM_Get_DevNode_Status(
   dnDevInst: number /* u32 */,
   ulFlags: number /* u32 */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
-  return libCFGMGR32.CM_Get_DevNode_Status(util.toPointer(pulStatus), util.toPointer(pulProblemNumber), dnDevInst, ulFlags);
+  return libCFGMGR32_dll.CM_Get_DevNode_Status(util.toPointer(pulStatus), util.toPointer(pulProblemNumber), dnDevInst, ulFlags);
 }
 
 export function CM_Get_DevNode_Status_Ex(
@@ -11387,7 +11719,7 @@ export function CM_Get_DevNode_Status_Ex(
   ulFlags: number /* u32 */,
   hMachine: Deno.PointerValue /* isize */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
-  return libCFGMGR32.CM_Get_DevNode_Status_Ex(util.toPointer(pulStatus), util.toPointer(pulProblemNumber), dnDevInst, ulFlags, hMachine);
+  return libCFGMGR32_dll.CM_Get_DevNode_Status_Ex(util.toPointer(pulStatus), util.toPointer(pulProblemNumber), dnDevInst, ulFlags, hMachine);
 }
 
 export function CM_Get_First_Log_Conf(
@@ -11395,7 +11727,7 @@ export function CM_Get_First_Log_Conf(
   dnDevInst: number /* u32 */,
   ulFlags: number /* u32 */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
-  return libCFGMGR32.CM_Get_First_Log_Conf(util.toPointer(plcLogConf), dnDevInst, ulFlags);
+  return libCFGMGR32_dll.CM_Get_First_Log_Conf(util.toPointer(plcLogConf), dnDevInst, ulFlags);
 }
 
 export function CM_Get_First_Log_Conf_Ex(
@@ -11404,14 +11736,14 @@ export function CM_Get_First_Log_Conf_Ex(
   ulFlags: number /* u32 */,
   hMachine: Deno.PointerValue /* isize */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
-  return libCFGMGR32.CM_Get_First_Log_Conf_Ex(util.toPointer(plcLogConf), dnDevInst, ulFlags, hMachine);
+  return libCFGMGR32_dll.CM_Get_First_Log_Conf_Ex(util.toPointer(plcLogConf), dnDevInst, ulFlags, hMachine);
 }
 
 export function CM_Get_Global_State(
   pulState: Deno.PointerValue | Uint8Array | null /* ptr */,
   ulFlags: number /* u32 */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
-  return libCFGMGR32.CM_Get_Global_State(util.toPointer(pulState), ulFlags);
+  return libCFGMGR32_dll.CM_Get_Global_State(util.toPointer(pulState), ulFlags);
 }
 
 export function CM_Get_Global_State_Ex(
@@ -11419,7 +11751,7 @@ export function CM_Get_Global_State_Ex(
   ulFlags: number /* u32 */,
   hMachine: Deno.PointerValue /* isize */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
-  return libCFGMGR32.CM_Get_Global_State_Ex(util.toPointer(pulState), ulFlags, hMachine);
+  return libCFGMGR32_dll.CM_Get_Global_State_Ex(util.toPointer(pulState), ulFlags, hMachine);
 }
 
 export function CM_Get_Hardware_Profile_InfoA(
@@ -11427,7 +11759,7 @@ export function CM_Get_Hardware_Profile_InfoA(
   pHWProfileInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
   ulFlags: number /* u32 */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
-  return libCFGMGR32.CM_Get_Hardware_Profile_InfoA(ulIndex, util.toPointer(pHWProfileInfo), ulFlags);
+  return libCFGMGR32_dll.CM_Get_Hardware_Profile_InfoA(ulIndex, util.toPointer(pHWProfileInfo), ulFlags);
 }
 
 export function CM_Get_Hardware_Profile_Info_ExA(
@@ -11436,7 +11768,7 @@ export function CM_Get_Hardware_Profile_Info_ExA(
   ulFlags: number /* u32 */,
   hMachine: Deno.PointerValue /* isize */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
-  return libCFGMGR32.CM_Get_Hardware_Profile_Info_ExA(ulIndex, util.toPointer(pHWProfileInfo), ulFlags, hMachine);
+  return libCFGMGR32_dll.CM_Get_Hardware_Profile_Info_ExA(ulIndex, util.toPointer(pHWProfileInfo), ulFlags, hMachine);
 }
 
 export function CM_Get_Hardware_Profile_InfoW(
@@ -11444,7 +11776,7 @@ export function CM_Get_Hardware_Profile_InfoW(
   pHWProfileInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
   ulFlags: number /* u32 */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
-  return libCFGMGR32.CM_Get_Hardware_Profile_InfoW(ulIndex, util.toPointer(pHWProfileInfo), ulFlags);
+  return libCFGMGR32_dll.CM_Get_Hardware_Profile_InfoW(ulIndex, util.toPointer(pHWProfileInfo), ulFlags);
 }
 
 export function CM_Get_Hardware_Profile_Info_ExW(
@@ -11453,45 +11785,45 @@ export function CM_Get_Hardware_Profile_Info_ExW(
   ulFlags: number /* u32 */,
   hMachine: Deno.PointerValue /* isize */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
-  return libCFGMGR32.CM_Get_Hardware_Profile_Info_ExW(ulIndex, util.toPointer(pHWProfileInfo), ulFlags, hMachine);
+  return libCFGMGR32_dll.CM_Get_Hardware_Profile_Info_ExW(ulIndex, util.toPointer(pHWProfileInfo), ulFlags, hMachine);
 }
 
 export function CM_Get_HW_Prof_FlagsA(
-  pDeviceID: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pDeviceID: string | null /* Windows.Win32.Foundation.PSTR */,
   ulHardwareProfile: number /* u32 */,
   pulValue: Deno.PointerValue | Uint8Array | null /* ptr */,
   ulFlags: number /* u32 */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
-  return libCFGMGR32.CM_Get_HW_Prof_FlagsA(util.toPointer(pDeviceID), ulHardwareProfile, util.toPointer(pulValue), ulFlags);
+  return libCFGMGR32_dll.CM_Get_HW_Prof_FlagsA(util.pstrToFfi(pDeviceID), ulHardwareProfile, util.toPointer(pulValue), ulFlags);
 }
 
 export function CM_Get_HW_Prof_FlagsW(
-  pDeviceID: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pDeviceID: string | null /* Windows.Win32.Foundation.PWSTR */,
   ulHardwareProfile: number /* u32 */,
   pulValue: Deno.PointerValue | Uint8Array | null /* ptr */,
   ulFlags: number /* u32 */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
-  return libCFGMGR32.CM_Get_HW_Prof_FlagsW(util.toPointer(pDeviceID), ulHardwareProfile, util.toPointer(pulValue), ulFlags);
+  return libCFGMGR32_dll.CM_Get_HW_Prof_FlagsW(util.pwstrToFfi(pDeviceID), ulHardwareProfile, util.toPointer(pulValue), ulFlags);
 }
 
 export function CM_Get_HW_Prof_Flags_ExA(
-  pDeviceID: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pDeviceID: string | null /* Windows.Win32.Foundation.PSTR */,
   ulHardwareProfile: number /* u32 */,
   pulValue: Deno.PointerValue | Uint8Array | null /* ptr */,
   ulFlags: number /* u32 */,
   hMachine: Deno.PointerValue /* isize */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
-  return libCFGMGR32.CM_Get_HW_Prof_Flags_ExA(util.toPointer(pDeviceID), ulHardwareProfile, util.toPointer(pulValue), ulFlags, hMachine);
+  return libCFGMGR32_dll.CM_Get_HW_Prof_Flags_ExA(util.pstrToFfi(pDeviceID), ulHardwareProfile, util.toPointer(pulValue), ulFlags, hMachine);
 }
 
 export function CM_Get_HW_Prof_Flags_ExW(
-  pDeviceID: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pDeviceID: string | null /* Windows.Win32.Foundation.PWSTR */,
   ulHardwareProfile: number /* u32 */,
   pulValue: Deno.PointerValue | Uint8Array | null /* ptr */,
   ulFlags: number /* u32 */,
   hMachine: Deno.PointerValue /* isize */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
-  return libCFGMGR32.CM_Get_HW_Prof_Flags_ExW(util.toPointer(pDeviceID), ulHardwareProfile, util.toPointer(pulValue), ulFlags, hMachine);
+  return libCFGMGR32_dll.CM_Get_HW_Prof_Flags_ExW(util.pwstrToFfi(pDeviceID), ulHardwareProfile, util.toPointer(pulValue), ulFlags, hMachine);
 }
 
 export function CM_Get_Device_Interface_AliasA(
@@ -11501,7 +11833,7 @@ export function CM_Get_Device_Interface_AliasA(
   pulLength: Deno.PointerValue | Uint8Array | null /* ptr */,
   ulFlags: number /* u32 */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
-  return libCFGMGR32.CM_Get_Device_Interface_AliasA(util.pstrToFfi(pszDeviceInterface), util.toPointer(AliasInterfaceGuid), util.pstrToFfi(pszAliasDeviceInterface), util.toPointer(pulLength), ulFlags);
+  return libCFGMGR32_dll.CM_Get_Device_Interface_AliasA(util.pstrToFfi(pszDeviceInterface), util.toPointer(AliasInterfaceGuid), util.pstrToFfi(pszAliasDeviceInterface), util.toPointer(pulLength), ulFlags);
 }
 
 export function CM_Get_Device_Interface_AliasW(
@@ -11511,7 +11843,7 @@ export function CM_Get_Device_Interface_AliasW(
   pulLength: Deno.PointerValue | Uint8Array | null /* ptr */,
   ulFlags: number /* u32 */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
-  return libCFGMGR32.CM_Get_Device_Interface_AliasW(util.pwstrToFfi(pszDeviceInterface), util.toPointer(AliasInterfaceGuid), util.pwstrToFfi(pszAliasDeviceInterface), util.toPointer(pulLength), ulFlags);
+  return libCFGMGR32_dll.CM_Get_Device_Interface_AliasW(util.pwstrToFfi(pszDeviceInterface), util.toPointer(AliasInterfaceGuid), util.pwstrToFfi(pszAliasDeviceInterface), util.toPointer(pulLength), ulFlags);
 }
 
 export function CM_Get_Device_Interface_Alias_ExA(
@@ -11522,7 +11854,7 @@ export function CM_Get_Device_Interface_Alias_ExA(
   ulFlags: number /* u32 */,
   hMachine: Deno.PointerValue /* isize */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
-  return libCFGMGR32.CM_Get_Device_Interface_Alias_ExA(util.pstrToFfi(pszDeviceInterface), util.toPointer(AliasInterfaceGuid), util.pstrToFfi(pszAliasDeviceInterface), util.toPointer(pulLength), ulFlags, hMachine);
+  return libCFGMGR32_dll.CM_Get_Device_Interface_Alias_ExA(util.pstrToFfi(pszDeviceInterface), util.toPointer(AliasInterfaceGuid), util.pstrToFfi(pszAliasDeviceInterface), util.toPointer(pulLength), ulFlags, hMachine);
 }
 
 export function CM_Get_Device_Interface_Alias_ExW(
@@ -11533,87 +11865,87 @@ export function CM_Get_Device_Interface_Alias_ExW(
   ulFlags: number /* u32 */,
   hMachine: Deno.PointerValue /* isize */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
-  return libCFGMGR32.CM_Get_Device_Interface_Alias_ExW(util.pwstrToFfi(pszDeviceInterface), util.toPointer(AliasInterfaceGuid), util.pwstrToFfi(pszAliasDeviceInterface), util.toPointer(pulLength), ulFlags, hMachine);
+  return libCFGMGR32_dll.CM_Get_Device_Interface_Alias_ExW(util.pwstrToFfi(pszDeviceInterface), util.toPointer(AliasInterfaceGuid), util.pwstrToFfi(pszAliasDeviceInterface), util.toPointer(pulLength), ulFlags, hMachine);
 }
 
 export function CM_Get_Device_Interface_ListA(
   InterfaceClassGuid: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pDeviceID: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pDeviceID: string | null /* Windows.Win32.Foundation.PSTR */,
   Buffer: string | null /* Windows.Win32.Foundation.PSTR */,
   BufferLen: number /* u32 */,
   ulFlags: number /* u32 */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
-  return libCFGMGR32.CM_Get_Device_Interface_ListA(util.toPointer(InterfaceClassGuid), util.toPointer(pDeviceID), util.pstrToFfi(Buffer), BufferLen, ulFlags);
+  return libCFGMGR32_dll.CM_Get_Device_Interface_ListA(util.toPointer(InterfaceClassGuid), util.pstrToFfi(pDeviceID), util.pstrToFfi(Buffer), BufferLen, ulFlags);
 }
 
 export function CM_Get_Device_Interface_ListW(
   InterfaceClassGuid: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pDeviceID: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pDeviceID: string | null /* Windows.Win32.Foundation.PWSTR */,
   Buffer: string | null /* Windows.Win32.Foundation.PWSTR */,
   BufferLen: number /* u32 */,
   ulFlags: number /* u32 */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
-  return libCFGMGR32.CM_Get_Device_Interface_ListW(util.toPointer(InterfaceClassGuid), util.toPointer(pDeviceID), util.pwstrToFfi(Buffer), BufferLen, ulFlags);
+  return libCFGMGR32_dll.CM_Get_Device_Interface_ListW(util.toPointer(InterfaceClassGuid), util.pwstrToFfi(pDeviceID), util.pwstrToFfi(Buffer), BufferLen, ulFlags);
 }
 
 export function CM_Get_Device_Interface_List_ExA(
   InterfaceClassGuid: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pDeviceID: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pDeviceID: string | null /* Windows.Win32.Foundation.PSTR */,
   Buffer: string | null /* Windows.Win32.Foundation.PSTR */,
   BufferLen: number /* u32 */,
   ulFlags: number /* u32 */,
   hMachine: Deno.PointerValue /* isize */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
-  return libCFGMGR32.CM_Get_Device_Interface_List_ExA(util.toPointer(InterfaceClassGuid), util.toPointer(pDeviceID), util.pstrToFfi(Buffer), BufferLen, ulFlags, hMachine);
+  return libCFGMGR32_dll.CM_Get_Device_Interface_List_ExA(util.toPointer(InterfaceClassGuid), util.pstrToFfi(pDeviceID), util.pstrToFfi(Buffer), BufferLen, ulFlags, hMachine);
 }
 
 export function CM_Get_Device_Interface_List_ExW(
   InterfaceClassGuid: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pDeviceID: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pDeviceID: string | null /* Windows.Win32.Foundation.PWSTR */,
   Buffer: string | null /* Windows.Win32.Foundation.PWSTR */,
   BufferLen: number /* u32 */,
   ulFlags: number /* u32 */,
   hMachine: Deno.PointerValue /* isize */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
-  return libCFGMGR32.CM_Get_Device_Interface_List_ExW(util.toPointer(InterfaceClassGuid), util.toPointer(pDeviceID), util.pwstrToFfi(Buffer), BufferLen, ulFlags, hMachine);
+  return libCFGMGR32_dll.CM_Get_Device_Interface_List_ExW(util.toPointer(InterfaceClassGuid), util.pwstrToFfi(pDeviceID), util.pwstrToFfi(Buffer), BufferLen, ulFlags, hMachine);
 }
 
 export function CM_Get_Device_Interface_List_SizeA(
   pulLen: Deno.PointerValue | Uint8Array | null /* ptr */,
   InterfaceClassGuid: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pDeviceID: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pDeviceID: string | null /* Windows.Win32.Foundation.PSTR */,
   ulFlags: number /* u32 */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
-  return libCFGMGR32.CM_Get_Device_Interface_List_SizeA(util.toPointer(pulLen), util.toPointer(InterfaceClassGuid), util.toPointer(pDeviceID), ulFlags);
+  return libCFGMGR32_dll.CM_Get_Device_Interface_List_SizeA(util.toPointer(pulLen), util.toPointer(InterfaceClassGuid), util.pstrToFfi(pDeviceID), ulFlags);
 }
 
 export function CM_Get_Device_Interface_List_SizeW(
   pulLen: Deno.PointerValue | Uint8Array | null /* ptr */,
   InterfaceClassGuid: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pDeviceID: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pDeviceID: string | null /* Windows.Win32.Foundation.PWSTR */,
   ulFlags: number /* u32 */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
-  return libCFGMGR32.CM_Get_Device_Interface_List_SizeW(util.toPointer(pulLen), util.toPointer(InterfaceClassGuid), util.toPointer(pDeviceID), ulFlags);
+  return libCFGMGR32_dll.CM_Get_Device_Interface_List_SizeW(util.toPointer(pulLen), util.toPointer(InterfaceClassGuid), util.pwstrToFfi(pDeviceID), ulFlags);
 }
 
 export function CM_Get_Device_Interface_List_Size_ExA(
   pulLen: Deno.PointerValue | Uint8Array | null /* ptr */,
   InterfaceClassGuid: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pDeviceID: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pDeviceID: string | null /* Windows.Win32.Foundation.PSTR */,
   ulFlags: number /* u32 */,
   hMachine: Deno.PointerValue /* isize */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
-  return libCFGMGR32.CM_Get_Device_Interface_List_Size_ExA(util.toPointer(pulLen), util.toPointer(InterfaceClassGuid), util.toPointer(pDeviceID), ulFlags, hMachine);
+  return libCFGMGR32_dll.CM_Get_Device_Interface_List_Size_ExA(util.toPointer(pulLen), util.toPointer(InterfaceClassGuid), util.pstrToFfi(pDeviceID), ulFlags, hMachine);
 }
 
 export function CM_Get_Device_Interface_List_Size_ExW(
   pulLen: Deno.PointerValue | Uint8Array | null /* ptr */,
   InterfaceClassGuid: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pDeviceID: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pDeviceID: string | null /* Windows.Win32.Foundation.PWSTR */,
   ulFlags: number /* u32 */,
   hMachine: Deno.PointerValue /* isize */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
-  return libCFGMGR32.CM_Get_Device_Interface_List_Size_ExW(util.toPointer(pulLen), util.toPointer(InterfaceClassGuid), util.toPointer(pDeviceID), ulFlags, hMachine);
+  return libCFGMGR32_dll.CM_Get_Device_Interface_List_Size_ExW(util.toPointer(pulLen), util.toPointer(InterfaceClassGuid), util.pwstrToFfi(pDeviceID), ulFlags, hMachine);
 }
 
 export function CM_Get_Device_Interface_PropertyW(
@@ -11624,7 +11956,7 @@ export function CM_Get_Device_Interface_PropertyW(
   PropertyBufferSize: Deno.PointerValue | Uint8Array | null /* ptr */,
   ulFlags: number /* u32 */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
-  return libCFGMGR32.CM_Get_Device_Interface_PropertyW(util.pwstrToFfi(pszDeviceInterface), util.toPointer(PropertyKey), util.toPointer(PropertyType), util.toPointer(PropertyBuffer), util.toPointer(PropertyBufferSize), ulFlags);
+  return libCFGMGR32_dll.CM_Get_Device_Interface_PropertyW(util.pwstrToFfi(pszDeviceInterface), util.toPointer(PropertyKey), util.toPointer(PropertyType), util.toPointer(PropertyBuffer), util.toPointer(PropertyBufferSize), ulFlags);
 }
 
 export function CM_Get_Device_Interface_Property_ExW(
@@ -11636,7 +11968,7 @@ export function CM_Get_Device_Interface_Property_ExW(
   ulFlags: number /* u32 */,
   hMachine: Deno.PointerValue /* isize */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
-  return libCFGMGR32.CM_Get_Device_Interface_Property_ExW(util.pwstrToFfi(pszDeviceInterface), util.toPointer(PropertyKey), util.toPointer(PropertyType), util.toPointer(PropertyBuffer), util.toPointer(PropertyBufferSize), ulFlags, hMachine);
+  return libCFGMGR32_dll.CM_Get_Device_Interface_Property_ExW(util.pwstrToFfi(pszDeviceInterface), util.toPointer(PropertyKey), util.toPointer(PropertyType), util.toPointer(PropertyBuffer), util.toPointer(PropertyBufferSize), ulFlags, hMachine);
 }
 
 export function CM_Get_Device_Interface_Property_KeysW(
@@ -11645,7 +11977,7 @@ export function CM_Get_Device_Interface_Property_KeysW(
   PropertyKeyCount: Deno.PointerValue | Uint8Array | null /* ptr */,
   ulFlags: number /* u32 */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
-  return libCFGMGR32.CM_Get_Device_Interface_Property_KeysW(util.pwstrToFfi(pszDeviceInterface), util.toPointer(PropertyKeyArray), util.toPointer(PropertyKeyCount), ulFlags);
+  return libCFGMGR32_dll.CM_Get_Device_Interface_Property_KeysW(util.pwstrToFfi(pszDeviceInterface), util.toPointer(PropertyKeyArray), util.toPointer(PropertyKeyCount), ulFlags);
 }
 
 export function CM_Get_Device_Interface_Property_Keys_ExW(
@@ -11655,7 +11987,7 @@ export function CM_Get_Device_Interface_Property_Keys_ExW(
   ulFlags: number /* u32 */,
   hMachine: Deno.PointerValue /* isize */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
-  return libCFGMGR32.CM_Get_Device_Interface_Property_Keys_ExW(util.pwstrToFfi(pszDeviceInterface), util.toPointer(PropertyKeyArray), util.toPointer(PropertyKeyCount), ulFlags, hMachine);
+  return libCFGMGR32_dll.CM_Get_Device_Interface_Property_Keys_ExW(util.pwstrToFfi(pszDeviceInterface), util.toPointer(PropertyKeyArray), util.toPointer(PropertyKeyCount), ulFlags, hMachine);
 }
 
 export function CM_Get_Log_Conf_Priority(
@@ -11663,7 +11995,7 @@ export function CM_Get_Log_Conf_Priority(
   pPriority: Deno.PointerValue | Uint8Array | null /* ptr */,
   ulFlags: number /* u32 */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
-  return libCFGMGR32.CM_Get_Log_Conf_Priority(lcLogConf, util.toPointer(pPriority), ulFlags);
+  return libCFGMGR32_dll.CM_Get_Log_Conf_Priority(lcLogConf, util.toPointer(pPriority), ulFlags);
 }
 
 export function CM_Get_Log_Conf_Priority_Ex(
@@ -11672,7 +12004,7 @@ export function CM_Get_Log_Conf_Priority_Ex(
   ulFlags: number /* u32 */,
   hMachine: Deno.PointerValue /* isize */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
-  return libCFGMGR32.CM_Get_Log_Conf_Priority_Ex(lcLogConf, util.toPointer(pPriority), ulFlags, hMachine);
+  return libCFGMGR32_dll.CM_Get_Log_Conf_Priority_Ex(lcLogConf, util.toPointer(pPriority), ulFlags, hMachine);
 }
 
 export function CM_Get_Next_Log_Conf(
@@ -11680,7 +12012,7 @@ export function CM_Get_Next_Log_Conf(
   lcLogConf: Deno.PointerValue /* usize */,
   ulFlags: number /* u32 */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
-  return libCFGMGR32.CM_Get_Next_Log_Conf(util.toPointer(plcLogConf), lcLogConf, ulFlags);
+  return libCFGMGR32_dll.CM_Get_Next_Log_Conf(util.toPointer(plcLogConf), lcLogConf, ulFlags);
 }
 
 export function CM_Get_Next_Log_Conf_Ex(
@@ -11689,7 +12021,7 @@ export function CM_Get_Next_Log_Conf_Ex(
   ulFlags: number /* u32 */,
   hMachine: Deno.PointerValue /* isize */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
-  return libCFGMGR32.CM_Get_Next_Log_Conf_Ex(util.toPointer(plcLogConf), lcLogConf, ulFlags, hMachine);
+  return libCFGMGR32_dll.CM_Get_Next_Log_Conf_Ex(util.toPointer(plcLogConf), lcLogConf, ulFlags, hMachine);
 }
 
 export function CM_Get_Parent(
@@ -11697,7 +12029,7 @@ export function CM_Get_Parent(
   dnDevInst: number /* u32 */,
   ulFlags: number /* u32 */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
-  return libCFGMGR32.CM_Get_Parent(util.toPointer(pdnDevInst), dnDevInst, ulFlags);
+  return libCFGMGR32_dll.CM_Get_Parent(util.toPointer(pdnDevInst), dnDevInst, ulFlags);
 }
 
 export function CM_Get_Parent_Ex(
@@ -11706,7 +12038,7 @@ export function CM_Get_Parent_Ex(
   ulFlags: number /* u32 */,
   hMachine: Deno.PointerValue /* isize */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
-  return libCFGMGR32.CM_Get_Parent_Ex(util.toPointer(pdnDevInst), dnDevInst, ulFlags, hMachine);
+  return libCFGMGR32_dll.CM_Get_Parent_Ex(util.toPointer(pdnDevInst), dnDevInst, ulFlags, hMachine);
 }
 
 export function CM_Get_Res_Des_Data(
@@ -11715,7 +12047,7 @@ export function CM_Get_Res_Des_Data(
   BufferLen: number /* u32 */,
   ulFlags: number /* u32 */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
-  return libCFGMGR32.CM_Get_Res_Des_Data(rdResDes, util.toPointer(Buffer), BufferLen, ulFlags);
+  return libCFGMGR32_dll.CM_Get_Res_Des_Data(rdResDes, util.toPointer(Buffer), BufferLen, ulFlags);
 }
 
 export function CM_Get_Res_Des_Data_Ex(
@@ -11725,7 +12057,7 @@ export function CM_Get_Res_Des_Data_Ex(
   ulFlags: number /* u32 */,
   hMachine: Deno.PointerValue /* isize */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
-  return libCFGMGR32.CM_Get_Res_Des_Data_Ex(rdResDes, util.toPointer(Buffer), BufferLen, ulFlags, hMachine);
+  return libCFGMGR32_dll.CM_Get_Res_Des_Data_Ex(rdResDes, util.toPointer(Buffer), BufferLen, ulFlags, hMachine);
 }
 
 export function CM_Get_Res_Des_Data_Size(
@@ -11733,7 +12065,7 @@ export function CM_Get_Res_Des_Data_Size(
   rdResDes: Deno.PointerValue /* usize */,
   ulFlags: number /* u32 */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
-  return libCFGMGR32.CM_Get_Res_Des_Data_Size(util.toPointer(pulSize), rdResDes, ulFlags);
+  return libCFGMGR32_dll.CM_Get_Res_Des_Data_Size(util.toPointer(pulSize), rdResDes, ulFlags);
 }
 
 export function CM_Get_Res_Des_Data_Size_Ex(
@@ -11742,7 +12074,7 @@ export function CM_Get_Res_Des_Data_Size_Ex(
   ulFlags: number /* u32 */,
   hMachine: Deno.PointerValue /* isize */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
-  return libCFGMGR32.CM_Get_Res_Des_Data_Size_Ex(util.toPointer(pulSize), rdResDes, ulFlags, hMachine);
+  return libCFGMGR32_dll.CM_Get_Res_Des_Data_Size_Ex(util.toPointer(pulSize), rdResDes, ulFlags, hMachine);
 }
 
 export function CM_Get_Sibling(
@@ -11750,7 +12082,7 @@ export function CM_Get_Sibling(
   dnDevInst: number /* u32 */,
   ulFlags: number /* u32 */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
-  return libCFGMGR32.CM_Get_Sibling(util.toPointer(pdnDevInst), dnDevInst, ulFlags);
+  return libCFGMGR32_dll.CM_Get_Sibling(util.toPointer(pdnDevInst), dnDevInst, ulFlags);
 }
 
 export function CM_Get_Sibling_Ex(
@@ -11759,30 +12091,30 @@ export function CM_Get_Sibling_Ex(
   ulFlags: number /* u32 */,
   hMachine: Deno.PointerValue /* isize */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
-  return libCFGMGR32.CM_Get_Sibling_Ex(util.toPointer(pdnDevInst), dnDevInst, ulFlags, hMachine);
+  return libCFGMGR32_dll.CM_Get_Sibling_Ex(util.toPointer(pdnDevInst), dnDevInst, ulFlags, hMachine);
 }
 
 export function CM_Get_Version(): number /* u16 */ {
-  return libCFGMGR32.CM_Get_Version();
+  return libCFGMGR32_dll.CM_Get_Version();
 }
 
 export function CM_Get_Version_Ex(
   hMachine: Deno.PointerValue /* isize */,
 ): number /* u16 */ {
-  return libCFGMGR32.CM_Get_Version_Ex(hMachine);
+  return libCFGMGR32_dll.CM_Get_Version_Ex(hMachine);
 }
 
 export function CM_Is_Version_Available(
   wVersion: number /* u16 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libCFGMGR32.CM_Is_Version_Available(wVersion));
+  return util.boolFromFfi(libCFGMGR32_dll.CM_Is_Version_Available(wVersion));
 }
 
 export function CM_Is_Version_Available_Ex(
   wVersion: number /* u16 */,
   hMachine: Deno.PointerValue /* isize */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libCFGMGR32.CM_Is_Version_Available_Ex(wVersion, hMachine));
+  return util.boolFromFfi(libCFGMGR32_dll.CM_Is_Version_Available_Ex(wVersion, hMachine));
 }
 
 export function CM_Intersect_Range_List(
@@ -11791,7 +12123,7 @@ export function CM_Intersect_Range_List(
   rlhNew: Deno.PointerValue /* usize */,
   ulFlags: number /* u32 */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
-  return libCFGMGR32.CM_Intersect_Range_List(rlhOld1, rlhOld2, rlhNew, ulFlags);
+  return libCFGMGR32_dll.CM_Intersect_Range_List(rlhOld1, rlhOld2, rlhNew, ulFlags);
 }
 
 export function CM_Invert_Range_List(
@@ -11800,41 +12132,41 @@ export function CM_Invert_Range_List(
   ullMaxValue: Deno.PointerValue /* u64 */,
   ulFlags: number /* u32 */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
-  return libCFGMGR32.CM_Invert_Range_List(rlhOld, rlhNew, ullMaxValue, ulFlags);
+  return libCFGMGR32_dll.CM_Invert_Range_List(rlhOld, rlhNew, ullMaxValue, ulFlags);
 }
 
 export function CM_Locate_DevNodeA(
   pdnDevInst: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pDeviceID: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pDeviceID: string | null /* Windows.Win32.Foundation.PSTR */,
   ulFlags: number /* u32 */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
-  return libCFGMGR32.CM_Locate_DevNodeA(util.toPointer(pdnDevInst), util.toPointer(pDeviceID), ulFlags);
+  return libCFGMGR32_dll.CM_Locate_DevNodeA(util.toPointer(pdnDevInst), util.pstrToFfi(pDeviceID), ulFlags);
 }
 
 export function CM_Locate_DevNodeW(
   pdnDevInst: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pDeviceID: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pDeviceID: string | null /* Windows.Win32.Foundation.PWSTR */,
   ulFlags: number /* u32 */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
-  return libCFGMGR32.CM_Locate_DevNodeW(util.toPointer(pdnDevInst), util.toPointer(pDeviceID), ulFlags);
+  return libCFGMGR32_dll.CM_Locate_DevNodeW(util.toPointer(pdnDevInst), util.pwstrToFfi(pDeviceID), ulFlags);
 }
 
 export function CM_Locate_DevNode_ExA(
   pdnDevInst: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pDeviceID: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pDeviceID: string | null /* Windows.Win32.Foundation.PSTR */,
   ulFlags: number /* u32 */,
   hMachine: Deno.PointerValue /* isize */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
-  return libCFGMGR32.CM_Locate_DevNode_ExA(util.toPointer(pdnDevInst), util.toPointer(pDeviceID), ulFlags, hMachine);
+  return libCFGMGR32_dll.CM_Locate_DevNode_ExA(util.toPointer(pdnDevInst), util.pstrToFfi(pDeviceID), ulFlags, hMachine);
 }
 
 export function CM_Locate_DevNode_ExW(
   pdnDevInst: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pDeviceID: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pDeviceID: string | null /* Windows.Win32.Foundation.PWSTR */,
   ulFlags: number /* u32 */,
   hMachine: Deno.PointerValue /* isize */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
-  return libCFGMGR32.CM_Locate_DevNode_ExW(util.toPointer(pdnDevInst), util.toPointer(pDeviceID), ulFlags, hMachine);
+  return libCFGMGR32_dll.CM_Locate_DevNode_ExW(util.toPointer(pdnDevInst), util.pwstrToFfi(pDeviceID), ulFlags, hMachine);
 }
 
 export function CM_Merge_Range_List(
@@ -11843,7 +12175,7 @@ export function CM_Merge_Range_List(
   rlhNew: Deno.PointerValue /* usize */,
   ulFlags: number /* u32 */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
-  return libCFGMGR32.CM_Merge_Range_List(rlhOld1, rlhOld2, rlhNew, ulFlags);
+  return libCFGMGR32_dll.CM_Merge_Range_List(rlhOld1, rlhOld2, rlhNew, ulFlags);
 }
 
 export function CM_Modify_Res_Des(
@@ -11854,7 +12186,7 @@ export function CM_Modify_Res_Des(
   ResourceLen: number /* u32 */,
   ulFlags: number /* u32 */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
-  return libCFGMGR32.CM_Modify_Res_Des(util.toPointer(prdResDes), rdResDes, ResourceID, util.toPointer(ResourceData), ResourceLen, ulFlags);
+  return libCFGMGR32_dll.CM_Modify_Res_Des(util.toPointer(prdResDes), rdResDes, ResourceID, util.toPointer(ResourceData), ResourceLen, ulFlags);
 }
 
 export function CM_Modify_Res_Des_Ex(
@@ -11866,7 +12198,7 @@ export function CM_Modify_Res_Des_Ex(
   ulFlags: number /* u32 */,
   hMachine: Deno.PointerValue /* isize */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
-  return libCFGMGR32.CM_Modify_Res_Des_Ex(util.toPointer(prdResDes), rdResDes, ResourceID, util.toPointer(ResourceData), ResourceLen, ulFlags, hMachine);
+  return libCFGMGR32_dll.CM_Modify_Res_Des_Ex(util.toPointer(prdResDes), rdResDes, ResourceID, util.toPointer(ResourceData), ResourceLen, ulFlags, hMachine);
 }
 
 export function CM_Move_DevNode(
@@ -11874,7 +12206,7 @@ export function CM_Move_DevNode(
   dnToDevInst: number /* u32 */,
   ulFlags: number /* u32 */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
-  return libCFGMGR32.CM_Move_DevNode(dnFromDevInst, dnToDevInst, ulFlags);
+  return libCFGMGR32_dll.CM_Move_DevNode(dnFromDevInst, dnToDevInst, ulFlags);
 }
 
 export function CM_Move_DevNode_Ex(
@@ -11883,7 +12215,7 @@ export function CM_Move_DevNode_Ex(
   ulFlags: number /* u32 */,
   hMachine: Deno.PointerValue /* isize */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
-  return libCFGMGR32.CM_Move_DevNode_Ex(dnFromDevInst, dnToDevInst, ulFlags, hMachine);
+  return libCFGMGR32_dll.CM_Move_DevNode_Ex(dnFromDevInst, dnToDevInst, ulFlags, hMachine);
 }
 
 export function CM_Next_Range(
@@ -11892,7 +12224,7 @@ export function CM_Next_Range(
   pullEnd: Deno.PointerValue | Uint8Array | null /* ptr */,
   ulFlags: number /* u32 */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
-  return libCFGMGR32.CM_Next_Range(util.toPointer(preElement), util.toPointer(pullStart), util.toPointer(pullEnd), ulFlags);
+  return libCFGMGR32_dll.CM_Next_Range(util.toPointer(preElement), util.toPointer(pullStart), util.toPointer(pullEnd), ulFlags);
 }
 
 export function CM_Get_Next_Res_Des(
@@ -11902,7 +12234,7 @@ export function CM_Get_Next_Res_Des(
   pResourceID: Deno.PointerValue | Uint8Array | null /* ptr */,
   ulFlags: number /* u32 */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
-  return libCFGMGR32.CM_Get_Next_Res_Des(util.toPointer(prdResDes), rdResDes, ForResource, util.toPointer(pResourceID), ulFlags);
+  return libCFGMGR32_dll.CM_Get_Next_Res_Des(util.toPointer(prdResDes), rdResDes, ForResource, util.toPointer(pResourceID), ulFlags);
 }
 
 export function CM_Get_Next_Res_Des_Ex(
@@ -11913,7 +12245,7 @@ export function CM_Get_Next_Res_Des_Ex(
   ulFlags: number /* u32 */,
   hMachine: Deno.PointerValue /* isize */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
-  return libCFGMGR32.CM_Get_Next_Res_Des_Ex(util.toPointer(prdResDes), rdResDes, ForResource, util.toPointer(pResourceID), ulFlags, hMachine);
+  return libCFGMGR32_dll.CM_Get_Next_Res_Des_Ex(util.toPointer(prdResDes), rdResDes, ForResource, util.toPointer(pResourceID), ulFlags, hMachine);
 }
 
 export function CM_Open_Class_KeyA(
@@ -11924,7 +12256,7 @@ export function CM_Open_Class_KeyA(
   phkClass: Deno.PointerValue | Uint8Array | null /* ptr */,
   ulFlags: number /* u32 */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
-  return libCFGMGR32.CM_Open_Class_KeyA(util.toPointer(ClassGuid), util.pstrToFfi(pszClassName), samDesired, Disposition, util.toPointer(phkClass), ulFlags);
+  return libCFGMGR32_dll.CM_Open_Class_KeyA(util.toPointer(ClassGuid), util.pstrToFfi(pszClassName), samDesired, Disposition, util.toPointer(phkClass), ulFlags);
 }
 
 export function CM_Open_Class_KeyW(
@@ -11935,7 +12267,7 @@ export function CM_Open_Class_KeyW(
   phkClass: Deno.PointerValue | Uint8Array | null /* ptr */,
   ulFlags: number /* u32 */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
-  return libCFGMGR32.CM_Open_Class_KeyW(util.toPointer(ClassGuid), util.pwstrToFfi(pszClassName), samDesired, Disposition, util.toPointer(phkClass), ulFlags);
+  return libCFGMGR32_dll.CM_Open_Class_KeyW(util.toPointer(ClassGuid), util.pwstrToFfi(pszClassName), samDesired, Disposition, util.toPointer(phkClass), ulFlags);
 }
 
 export function CM_Open_Class_Key_ExA(
@@ -11947,7 +12279,7 @@ export function CM_Open_Class_Key_ExA(
   ulFlags: number /* u32 */,
   hMachine: Deno.PointerValue /* isize */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
-  return libCFGMGR32.CM_Open_Class_Key_ExA(util.toPointer(ClassGuid), util.pstrToFfi(pszClassName), samDesired, Disposition, util.toPointer(phkClass), ulFlags, hMachine);
+  return libCFGMGR32_dll.CM_Open_Class_Key_ExA(util.toPointer(ClassGuid), util.pstrToFfi(pszClassName), samDesired, Disposition, util.toPointer(phkClass), ulFlags, hMachine);
 }
 
 export function CM_Open_Class_Key_ExW(
@@ -11959,7 +12291,7 @@ export function CM_Open_Class_Key_ExW(
   ulFlags: number /* u32 */,
   hMachine: Deno.PointerValue /* isize */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
-  return libCFGMGR32.CM_Open_Class_Key_ExW(util.toPointer(ClassGuid), util.pwstrToFfi(pszClassName), samDesired, Disposition, util.toPointer(phkClass), ulFlags, hMachine);
+  return libCFGMGR32_dll.CM_Open_Class_Key_ExW(util.toPointer(ClassGuid), util.pwstrToFfi(pszClassName), samDesired, Disposition, util.toPointer(phkClass), ulFlags, hMachine);
 }
 
 export function CM_Open_DevNode_Key(
@@ -11970,7 +12302,7 @@ export function CM_Open_DevNode_Key(
   phkDevice: Deno.PointerValue | Uint8Array | null /* ptr */,
   ulFlags: number /* u32 */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
-  return libCFGMGR32.CM_Open_DevNode_Key(dnDevNode, samDesired, ulHardwareProfile, Disposition, util.toPointer(phkDevice), ulFlags);
+  return libCFGMGR32_dll.CM_Open_DevNode_Key(dnDevNode, samDesired, ulHardwareProfile, Disposition, util.toPointer(phkDevice), ulFlags);
 }
 
 export function CM_Open_DevNode_Key_Ex(
@@ -11982,7 +12314,7 @@ export function CM_Open_DevNode_Key_Ex(
   ulFlags: number /* u32 */,
   hMachine: Deno.PointerValue /* isize */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
-  return libCFGMGR32.CM_Open_DevNode_Key_Ex(dnDevNode, samDesired, ulHardwareProfile, Disposition, util.toPointer(phkDevice), ulFlags, hMachine);
+  return libCFGMGR32_dll.CM_Open_DevNode_Key_Ex(dnDevNode, samDesired, ulHardwareProfile, Disposition, util.toPointer(phkDevice), ulFlags, hMachine);
 }
 
 export function CM_Open_Device_Interface_KeyA(
@@ -11992,7 +12324,7 @@ export function CM_Open_Device_Interface_KeyA(
   phkDeviceInterface: Deno.PointerValue | Uint8Array | null /* ptr */,
   ulFlags: number /* u32 */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
-  return libCFGMGR32.CM_Open_Device_Interface_KeyA(util.pstrToFfi(pszDeviceInterface), samDesired, Disposition, util.toPointer(phkDeviceInterface), ulFlags);
+  return libCFGMGR32_dll.CM_Open_Device_Interface_KeyA(util.pstrToFfi(pszDeviceInterface), samDesired, Disposition, util.toPointer(phkDeviceInterface), ulFlags);
 }
 
 export function CM_Open_Device_Interface_KeyW(
@@ -12002,7 +12334,7 @@ export function CM_Open_Device_Interface_KeyW(
   phkDeviceInterface: Deno.PointerValue | Uint8Array | null /* ptr */,
   ulFlags: number /* u32 */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
-  return libCFGMGR32.CM_Open_Device_Interface_KeyW(util.pwstrToFfi(pszDeviceInterface), samDesired, Disposition, util.toPointer(phkDeviceInterface), ulFlags);
+  return libCFGMGR32_dll.CM_Open_Device_Interface_KeyW(util.pwstrToFfi(pszDeviceInterface), samDesired, Disposition, util.toPointer(phkDeviceInterface), ulFlags);
 }
 
 export function CM_Open_Device_Interface_Key_ExA(
@@ -12013,7 +12345,7 @@ export function CM_Open_Device_Interface_Key_ExA(
   ulFlags: number /* u32 */,
   hMachine: Deno.PointerValue /* isize */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
-  return libCFGMGR32.CM_Open_Device_Interface_Key_ExA(util.pstrToFfi(pszDeviceInterface), samDesired, Disposition, util.toPointer(phkDeviceInterface), ulFlags, hMachine);
+  return libCFGMGR32_dll.CM_Open_Device_Interface_Key_ExA(util.pstrToFfi(pszDeviceInterface), samDesired, Disposition, util.toPointer(phkDeviceInterface), ulFlags, hMachine);
 }
 
 export function CM_Open_Device_Interface_Key_ExW(
@@ -12024,21 +12356,21 @@ export function CM_Open_Device_Interface_Key_ExW(
   ulFlags: number /* u32 */,
   hMachine: Deno.PointerValue /* isize */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
-  return libCFGMGR32.CM_Open_Device_Interface_Key_ExW(util.pwstrToFfi(pszDeviceInterface), samDesired, Disposition, util.toPointer(phkDeviceInterface), ulFlags, hMachine);
+  return libCFGMGR32_dll.CM_Open_Device_Interface_Key_ExW(util.pwstrToFfi(pszDeviceInterface), samDesired, Disposition, util.toPointer(phkDeviceInterface), ulFlags, hMachine);
 }
 
 export function CM_Delete_Device_Interface_KeyA(
   pszDeviceInterface: string | null /* Windows.Win32.Foundation.PSTR */,
   ulFlags: number /* u32 */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
-  return libCFGMGR32.CM_Delete_Device_Interface_KeyA(util.pstrToFfi(pszDeviceInterface), ulFlags);
+  return libCFGMGR32_dll.CM_Delete_Device_Interface_KeyA(util.pstrToFfi(pszDeviceInterface), ulFlags);
 }
 
 export function CM_Delete_Device_Interface_KeyW(
   pszDeviceInterface: string | null /* Windows.Win32.Foundation.PWSTR */,
   ulFlags: number /* u32 */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
-  return libCFGMGR32.CM_Delete_Device_Interface_KeyW(util.pwstrToFfi(pszDeviceInterface), ulFlags);
+  return libCFGMGR32_dll.CM_Delete_Device_Interface_KeyW(util.pwstrToFfi(pszDeviceInterface), ulFlags);
 }
 
 export function CM_Delete_Device_Interface_Key_ExA(
@@ -12046,7 +12378,7 @@ export function CM_Delete_Device_Interface_Key_ExA(
   ulFlags: number /* u32 */,
   hMachine: Deno.PointerValue /* isize */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
-  return libCFGMGR32.CM_Delete_Device_Interface_Key_ExA(util.pstrToFfi(pszDeviceInterface), ulFlags, hMachine);
+  return libCFGMGR32_dll.CM_Delete_Device_Interface_Key_ExA(util.pstrToFfi(pszDeviceInterface), ulFlags, hMachine);
 }
 
 export function CM_Delete_Device_Interface_Key_ExW(
@@ -12054,7 +12386,7 @@ export function CM_Delete_Device_Interface_Key_ExW(
   ulFlags: number /* u32 */,
   hMachine: Deno.PointerValue /* isize */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
-  return libCFGMGR32.CM_Delete_Device_Interface_Key_ExW(util.pwstrToFfi(pszDeviceInterface), ulFlags, hMachine);
+  return libCFGMGR32_dll.CM_Delete_Device_Interface_Key_ExW(util.pwstrToFfi(pszDeviceInterface), ulFlags, hMachine);
 }
 
 export function CM_Query_Arbitrator_Free_Data(
@@ -12064,7 +12396,7 @@ export function CM_Query_Arbitrator_Free_Data(
   ResourceID: number /* u32 */,
   ulFlags: number /* u32 */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
-  return libCFGMGR32.CM_Query_Arbitrator_Free_Data(util.toPointer(pData), DataLen, dnDevInst, ResourceID, ulFlags);
+  return libCFGMGR32_dll.CM_Query_Arbitrator_Free_Data(util.toPointer(pData), DataLen, dnDevInst, ResourceID, ulFlags);
 }
 
 export function CM_Query_Arbitrator_Free_Data_Ex(
@@ -12075,7 +12407,7 @@ export function CM_Query_Arbitrator_Free_Data_Ex(
   ulFlags: number /* u32 */,
   hMachine: Deno.PointerValue /* isize */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
-  return libCFGMGR32.CM_Query_Arbitrator_Free_Data_Ex(util.toPointer(pData), DataLen, dnDevInst, ResourceID, ulFlags, hMachine);
+  return libCFGMGR32_dll.CM_Query_Arbitrator_Free_Data_Ex(util.toPointer(pData), DataLen, dnDevInst, ResourceID, ulFlags, hMachine);
 }
 
 export function CM_Query_Arbitrator_Free_Size(
@@ -12084,7 +12416,7 @@ export function CM_Query_Arbitrator_Free_Size(
   ResourceID: number /* u32 */,
   ulFlags: number /* u32 */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
-  return libCFGMGR32.CM_Query_Arbitrator_Free_Size(util.toPointer(pulSize), dnDevInst, ResourceID, ulFlags);
+  return libCFGMGR32_dll.CM_Query_Arbitrator_Free_Size(util.toPointer(pulSize), dnDevInst, ResourceID, ulFlags);
 }
 
 export function CM_Query_Arbitrator_Free_Size_Ex(
@@ -12094,14 +12426,14 @@ export function CM_Query_Arbitrator_Free_Size_Ex(
   ulFlags: number /* u32 */,
   hMachine: Deno.PointerValue /* isize */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
-  return libCFGMGR32.CM_Query_Arbitrator_Free_Size_Ex(util.toPointer(pulSize), dnDevInst, ResourceID, ulFlags, hMachine);
+  return libCFGMGR32_dll.CM_Query_Arbitrator_Free_Size_Ex(util.toPointer(pulSize), dnDevInst, ResourceID, ulFlags, hMachine);
 }
 
 export function CM_Query_Remove_SubTree(
   dnAncestor: number /* u32 */,
   ulFlags: number /* u32 */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
-  return libCFGMGR32.CM_Query_Remove_SubTree(dnAncestor, ulFlags);
+  return libCFGMGR32_dll.CM_Query_Remove_SubTree(dnAncestor, ulFlags);
 }
 
 export function CM_Query_Remove_SubTree_Ex(
@@ -12109,7 +12441,7 @@ export function CM_Query_Remove_SubTree_Ex(
   ulFlags: number /* u32 */,
   hMachine: Deno.PointerValue /* isize */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
-  return libCFGMGR32.CM_Query_Remove_SubTree_Ex(dnAncestor, ulFlags, hMachine);
+  return libCFGMGR32_dll.CM_Query_Remove_SubTree_Ex(dnAncestor, ulFlags, hMachine);
 }
 
 export function CM_Query_And_Remove_SubTreeA(
@@ -12119,7 +12451,7 @@ export function CM_Query_And_Remove_SubTreeA(
   ulNameLength: number /* u32 */,
   ulFlags: number /* u32 */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
-  return libCFGMGR32.CM_Query_And_Remove_SubTreeA(dnAncestor, util.toPointer(pVetoType), util.pstrToFfi(pszVetoName), ulNameLength, ulFlags);
+  return libCFGMGR32_dll.CM_Query_And_Remove_SubTreeA(dnAncestor, util.toPointer(pVetoType), util.pstrToFfi(pszVetoName), ulNameLength, ulFlags);
 }
 
 export function CM_Query_And_Remove_SubTreeW(
@@ -12129,7 +12461,7 @@ export function CM_Query_And_Remove_SubTreeW(
   ulNameLength: number /* u32 */,
   ulFlags: number /* u32 */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
-  return libCFGMGR32.CM_Query_And_Remove_SubTreeW(dnAncestor, util.toPointer(pVetoType), util.pwstrToFfi(pszVetoName), ulNameLength, ulFlags);
+  return libCFGMGR32_dll.CM_Query_And_Remove_SubTreeW(dnAncestor, util.toPointer(pVetoType), util.pwstrToFfi(pszVetoName), ulNameLength, ulFlags);
 }
 
 export function CM_Query_And_Remove_SubTree_ExA(
@@ -12140,7 +12472,7 @@ export function CM_Query_And_Remove_SubTree_ExA(
   ulFlags: number /* u32 */,
   hMachine: Deno.PointerValue /* isize */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
-  return libCFGMGR32.CM_Query_And_Remove_SubTree_ExA(dnAncestor, util.toPointer(pVetoType), util.pstrToFfi(pszVetoName), ulNameLength, ulFlags, hMachine);
+  return libCFGMGR32_dll.CM_Query_And_Remove_SubTree_ExA(dnAncestor, util.toPointer(pVetoType), util.pstrToFfi(pszVetoName), ulNameLength, ulFlags, hMachine);
 }
 
 export function CM_Query_And_Remove_SubTree_ExW(
@@ -12151,7 +12483,7 @@ export function CM_Query_And_Remove_SubTree_ExW(
   ulFlags: number /* u32 */,
   hMachine: Deno.PointerValue /* isize */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
-  return libCFGMGR32.CM_Query_And_Remove_SubTree_ExW(dnAncestor, util.toPointer(pVetoType), util.pwstrToFfi(pszVetoName), ulNameLength, ulFlags, hMachine);
+  return libCFGMGR32_dll.CM_Query_And_Remove_SubTree_ExW(dnAncestor, util.toPointer(pVetoType), util.pwstrToFfi(pszVetoName), ulNameLength, ulFlags, hMachine);
 }
 
 export function CM_Request_Device_EjectA(
@@ -12161,7 +12493,7 @@ export function CM_Request_Device_EjectA(
   ulNameLength: number /* u32 */,
   ulFlags: number /* u32 */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
-  return libCFGMGR32.CM_Request_Device_EjectA(dnDevInst, util.toPointer(pVetoType), util.pstrToFfi(pszVetoName), ulNameLength, ulFlags);
+  return libCFGMGR32_dll.CM_Request_Device_EjectA(dnDevInst, util.toPointer(pVetoType), util.pstrToFfi(pszVetoName), ulNameLength, ulFlags);
 }
 
 export function CM_Request_Device_Eject_ExA(
@@ -12172,7 +12504,7 @@ export function CM_Request_Device_Eject_ExA(
   ulFlags: number /* u32 */,
   hMachine: Deno.PointerValue /* isize */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
-  return libCFGMGR32.CM_Request_Device_Eject_ExA(dnDevInst, util.toPointer(pVetoType), util.pstrToFfi(pszVetoName), ulNameLength, ulFlags, hMachine);
+  return libCFGMGR32_dll.CM_Request_Device_Eject_ExA(dnDevInst, util.toPointer(pVetoType), util.pstrToFfi(pszVetoName), ulNameLength, ulFlags, hMachine);
 }
 
 export function CM_Request_Device_EjectW(
@@ -12182,7 +12514,7 @@ export function CM_Request_Device_EjectW(
   ulNameLength: number /* u32 */,
   ulFlags: number /* u32 */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
-  return libCFGMGR32.CM_Request_Device_EjectW(dnDevInst, util.toPointer(pVetoType), util.pwstrToFfi(pszVetoName), ulNameLength, ulFlags);
+  return libCFGMGR32_dll.CM_Request_Device_EjectW(dnDevInst, util.toPointer(pVetoType), util.pwstrToFfi(pszVetoName), ulNameLength, ulFlags);
 }
 
 export function CM_Request_Device_Eject_ExW(
@@ -12193,14 +12525,14 @@ export function CM_Request_Device_Eject_ExW(
   ulFlags: number /* u32 */,
   hMachine: Deno.PointerValue /* isize */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
-  return libCFGMGR32.CM_Request_Device_Eject_ExW(dnDevInst, util.toPointer(pVetoType), util.pwstrToFfi(pszVetoName), ulNameLength, ulFlags, hMachine);
+  return libCFGMGR32_dll.CM_Request_Device_Eject_ExW(dnDevInst, util.toPointer(pVetoType), util.pwstrToFfi(pszVetoName), ulNameLength, ulFlags, hMachine);
 }
 
 export function CM_Reenumerate_DevNode(
   dnDevInst: number /* u32 */,
   ulFlags: number /* u32 */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
-  return libCFGMGR32.CM_Reenumerate_DevNode(dnDevInst, ulFlags);
+  return libCFGMGR32_dll.CM_Reenumerate_DevNode(dnDevInst, ulFlags);
 }
 
 export function CM_Reenumerate_DevNode_Ex(
@@ -12208,7 +12540,7 @@ export function CM_Reenumerate_DevNode_Ex(
   ulFlags: number /* u32 */,
   hMachine: Deno.PointerValue /* isize */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
-  return libCFGMGR32.CM_Reenumerate_DevNode_Ex(dnDevInst, ulFlags, hMachine);
+  return libCFGMGR32_dll.CM_Reenumerate_DevNode_Ex(dnDevInst, ulFlags, hMachine);
 }
 
 export function CM_Register_Device_InterfaceA(
@@ -12219,7 +12551,7 @@ export function CM_Register_Device_InterfaceA(
   pulLength: Deno.PointerValue | Uint8Array | null /* ptr */,
   ulFlags: number /* u32 */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
-  return libCFGMGR32.CM_Register_Device_InterfaceA(dnDevInst, util.toPointer(InterfaceClassGuid), util.pstrToFfi(pszReference), util.pstrToFfi(pszDeviceInterface), util.toPointer(pulLength), ulFlags);
+  return libCFGMGR32_dll.CM_Register_Device_InterfaceA(dnDevInst, util.toPointer(InterfaceClassGuid), util.pstrToFfi(pszReference), util.pstrToFfi(pszDeviceInterface), util.toPointer(pulLength), ulFlags);
 }
 
 export function CM_Register_Device_InterfaceW(
@@ -12230,7 +12562,7 @@ export function CM_Register_Device_InterfaceW(
   pulLength: Deno.PointerValue | Uint8Array | null /* ptr */,
   ulFlags: number /* u32 */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
-  return libCFGMGR32.CM_Register_Device_InterfaceW(dnDevInst, util.toPointer(InterfaceClassGuid), util.pwstrToFfi(pszReference), util.pwstrToFfi(pszDeviceInterface), util.toPointer(pulLength), ulFlags);
+  return libCFGMGR32_dll.CM_Register_Device_InterfaceW(dnDevInst, util.toPointer(InterfaceClassGuid), util.pwstrToFfi(pszReference), util.pwstrToFfi(pszDeviceInterface), util.toPointer(pulLength), ulFlags);
 }
 
 export function CM_Register_Device_Interface_ExA(
@@ -12242,7 +12574,7 @@ export function CM_Register_Device_Interface_ExA(
   ulFlags: number /* u32 */,
   hMachine: Deno.PointerValue /* isize */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
-  return libCFGMGR32.CM_Register_Device_Interface_ExA(dnDevInst, util.toPointer(InterfaceClassGuid), util.pstrToFfi(pszReference), util.pstrToFfi(pszDeviceInterface), util.toPointer(pulLength), ulFlags, hMachine);
+  return libCFGMGR32_dll.CM_Register_Device_Interface_ExA(dnDevInst, util.toPointer(InterfaceClassGuid), util.pstrToFfi(pszReference), util.pstrToFfi(pszDeviceInterface), util.toPointer(pulLength), ulFlags, hMachine);
 }
 
 export function CM_Register_Device_Interface_ExW(
@@ -12254,7 +12586,7 @@ export function CM_Register_Device_Interface_ExW(
   ulFlags: number /* u32 */,
   hMachine: Deno.PointerValue /* isize */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
-  return libCFGMGR32.CM_Register_Device_Interface_ExW(dnDevInst, util.toPointer(InterfaceClassGuid), util.pwstrToFfi(pszReference), util.pwstrToFfi(pszDeviceInterface), util.toPointer(pulLength), ulFlags, hMachine);
+  return libCFGMGR32_dll.CM_Register_Device_Interface_ExW(dnDevInst, util.toPointer(InterfaceClassGuid), util.pwstrToFfi(pszReference), util.pwstrToFfi(pszDeviceInterface), util.toPointer(pulLength), ulFlags, hMachine);
 }
 
 export function CM_Set_DevNode_Problem_Ex(
@@ -12263,7 +12595,7 @@ export function CM_Set_DevNode_Problem_Ex(
   ulFlags: number /* u32 */,
   hMachine: Deno.PointerValue /* isize */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
-  return libCFGMGR32.CM_Set_DevNode_Problem_Ex(dnDevInst, ulProblem, ulFlags, hMachine);
+  return libCFGMGR32_dll.CM_Set_DevNode_Problem_Ex(dnDevInst, ulProblem, ulFlags, hMachine);
 }
 
 export function CM_Set_DevNode_Problem(
@@ -12271,21 +12603,21 @@ export function CM_Set_DevNode_Problem(
   ulProblem: number /* u32 */,
   ulFlags: number /* u32 */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
-  return libCFGMGR32.CM_Set_DevNode_Problem(dnDevInst, ulProblem, ulFlags);
+  return libCFGMGR32_dll.CM_Set_DevNode_Problem(dnDevInst, ulProblem, ulFlags);
 }
 
 export function CM_Unregister_Device_InterfaceA(
   pszDeviceInterface: string | null /* Windows.Win32.Foundation.PSTR */,
   ulFlags: number /* u32 */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
-  return libCFGMGR32.CM_Unregister_Device_InterfaceA(util.pstrToFfi(pszDeviceInterface), ulFlags);
+  return libCFGMGR32_dll.CM_Unregister_Device_InterfaceA(util.pstrToFfi(pszDeviceInterface), ulFlags);
 }
 
 export function CM_Unregister_Device_InterfaceW(
   pszDeviceInterface: string | null /* Windows.Win32.Foundation.PWSTR */,
   ulFlags: number /* u32 */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
-  return libCFGMGR32.CM_Unregister_Device_InterfaceW(util.pwstrToFfi(pszDeviceInterface), ulFlags);
+  return libCFGMGR32_dll.CM_Unregister_Device_InterfaceW(util.pwstrToFfi(pszDeviceInterface), ulFlags);
 }
 
 export function CM_Unregister_Device_Interface_ExA(
@@ -12293,7 +12625,7 @@ export function CM_Unregister_Device_Interface_ExA(
   ulFlags: number /* u32 */,
   hMachine: Deno.PointerValue /* isize */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
-  return libCFGMGR32.CM_Unregister_Device_Interface_ExA(util.pstrToFfi(pszDeviceInterface), ulFlags, hMachine);
+  return libCFGMGR32_dll.CM_Unregister_Device_Interface_ExA(util.pstrToFfi(pszDeviceInterface), ulFlags, hMachine);
 }
 
 export function CM_Unregister_Device_Interface_ExW(
@@ -12301,14 +12633,14 @@ export function CM_Unregister_Device_Interface_ExW(
   ulFlags: number /* u32 */,
   hMachine: Deno.PointerValue /* isize */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
-  return libCFGMGR32.CM_Unregister_Device_Interface_ExW(util.pwstrToFfi(pszDeviceInterface), ulFlags, hMachine);
+  return libCFGMGR32_dll.CM_Unregister_Device_Interface_ExW(util.pwstrToFfi(pszDeviceInterface), ulFlags, hMachine);
 }
 
 export function CM_Register_Device_Driver(
   dnDevInst: number /* u32 */,
   ulFlags: number /* u32 */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
-  return libCFGMGR32.CM_Register_Device_Driver(dnDevInst, ulFlags);
+  return libCFGMGR32_dll.CM_Register_Device_Driver(dnDevInst, ulFlags);
 }
 
 export function CM_Register_Device_Driver_Ex(
@@ -12316,14 +12648,14 @@ export function CM_Register_Device_Driver_Ex(
   ulFlags: number /* u32 */,
   hMachine: Deno.PointerValue /* isize */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
-  return libCFGMGR32.CM_Register_Device_Driver_Ex(dnDevInst, ulFlags, hMachine);
+  return libCFGMGR32_dll.CM_Register_Device_Driver_Ex(dnDevInst, ulFlags, hMachine);
 }
 
 export function CM_Remove_SubTree(
   dnAncestor: number /* u32 */,
   ulFlags: number /* u32 */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
-  return libCFGMGR32.CM_Remove_SubTree(dnAncestor, ulFlags);
+  return libCFGMGR32_dll.CM_Remove_SubTree(dnAncestor, ulFlags);
 }
 
 export function CM_Remove_SubTree_Ex(
@@ -12331,7 +12663,7 @@ export function CM_Remove_SubTree_Ex(
   ulFlags: number /* u32 */,
   hMachine: Deno.PointerValue /* isize */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
-  return libCFGMGR32.CM_Remove_SubTree_Ex(dnAncestor, ulFlags, hMachine);
+  return libCFGMGR32_dll.CM_Remove_SubTree_Ex(dnAncestor, ulFlags, hMachine);
 }
 
 export function CM_Set_DevNode_PropertyW(
@@ -12342,7 +12674,7 @@ export function CM_Set_DevNode_PropertyW(
   PropertyBufferSize: number /* u32 */,
   ulFlags: number /* u32 */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
-  return libCFGMGR32.CM_Set_DevNode_PropertyW(dnDevInst, util.toPointer(PropertyKey), PropertyType, util.toPointer(PropertyBuffer), PropertyBufferSize, ulFlags);
+  return libCFGMGR32_dll.CM_Set_DevNode_PropertyW(dnDevInst, util.toPointer(PropertyKey), PropertyType, util.toPointer(PropertyBuffer), PropertyBufferSize, ulFlags);
 }
 
 export function CM_Set_DevNode_Property_ExW(
@@ -12354,7 +12686,7 @@ export function CM_Set_DevNode_Property_ExW(
   ulFlags: number /* u32 */,
   hMachine: Deno.PointerValue /* isize */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
-  return libCFGMGR32.CM_Set_DevNode_Property_ExW(dnDevInst, util.toPointer(PropertyKey), PropertyType, util.toPointer(PropertyBuffer), PropertyBufferSize, ulFlags, hMachine);
+  return libCFGMGR32_dll.CM_Set_DevNode_Property_ExW(dnDevInst, util.toPointer(PropertyKey), PropertyType, util.toPointer(PropertyBuffer), PropertyBufferSize, ulFlags, hMachine);
 }
 
 export function CM_Set_DevNode_Registry_PropertyA(
@@ -12364,7 +12696,7 @@ export function CM_Set_DevNode_Registry_PropertyA(
   ulLength: number /* u32 */,
   ulFlags: number /* u32 */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
-  return libCFGMGR32.CM_Set_DevNode_Registry_PropertyA(dnDevInst, ulProperty, util.toPointer(Buffer), ulLength, ulFlags);
+  return libCFGMGR32_dll.CM_Set_DevNode_Registry_PropertyA(dnDevInst, ulProperty, util.toPointer(Buffer), ulLength, ulFlags);
 }
 
 export function CM_Set_DevNode_Registry_PropertyW(
@@ -12374,7 +12706,7 @@ export function CM_Set_DevNode_Registry_PropertyW(
   ulLength: number /* u32 */,
   ulFlags: number /* u32 */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
-  return libCFGMGR32.CM_Set_DevNode_Registry_PropertyW(dnDevInst, ulProperty, util.toPointer(Buffer), ulLength, ulFlags);
+  return libCFGMGR32_dll.CM_Set_DevNode_Registry_PropertyW(dnDevInst, ulProperty, util.toPointer(Buffer), ulLength, ulFlags);
 }
 
 export function CM_Set_DevNode_Registry_Property_ExA(
@@ -12385,7 +12717,7 @@ export function CM_Set_DevNode_Registry_Property_ExA(
   ulFlags: number /* u32 */,
   hMachine: Deno.PointerValue /* isize */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
-  return libCFGMGR32.CM_Set_DevNode_Registry_Property_ExA(dnDevInst, ulProperty, util.toPointer(Buffer), ulLength, ulFlags, hMachine);
+  return libCFGMGR32_dll.CM_Set_DevNode_Registry_Property_ExA(dnDevInst, ulProperty, util.toPointer(Buffer), ulLength, ulFlags, hMachine);
 }
 
 export function CM_Set_DevNode_Registry_Property_ExW(
@@ -12396,7 +12728,7 @@ export function CM_Set_DevNode_Registry_Property_ExW(
   ulFlags: number /* u32 */,
   hMachine: Deno.PointerValue /* isize */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
-  return libCFGMGR32.CM_Set_DevNode_Registry_Property_ExW(dnDevInst, ulProperty, util.toPointer(Buffer), ulLength, ulFlags, hMachine);
+  return libCFGMGR32_dll.CM_Set_DevNode_Registry_Property_ExW(dnDevInst, ulProperty, util.toPointer(Buffer), ulLength, ulFlags, hMachine);
 }
 
 export function CM_Set_Device_Interface_PropertyW(
@@ -12407,7 +12739,7 @@ export function CM_Set_Device_Interface_PropertyW(
   PropertyBufferSize: number /* u32 */,
   ulFlags: number /* u32 */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
-  return libCFGMGR32.CM_Set_Device_Interface_PropertyW(util.pwstrToFfi(pszDeviceInterface), util.toPointer(PropertyKey), PropertyType, util.toPointer(PropertyBuffer), PropertyBufferSize, ulFlags);
+  return libCFGMGR32_dll.CM_Set_Device_Interface_PropertyW(util.pwstrToFfi(pszDeviceInterface), util.toPointer(PropertyKey), PropertyType, util.toPointer(PropertyBuffer), PropertyBufferSize, ulFlags);
 }
 
 export function CM_Set_Device_Interface_Property_ExW(
@@ -12419,75 +12751,75 @@ export function CM_Set_Device_Interface_Property_ExW(
   ulFlags: number /* u32 */,
   hMachine: Deno.PointerValue /* isize */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
-  return libCFGMGR32.CM_Set_Device_Interface_Property_ExW(util.pwstrToFfi(pszDeviceInterface), util.toPointer(PropertyKey), PropertyType, util.toPointer(PropertyBuffer), PropertyBufferSize, ulFlags, hMachine);
+  return libCFGMGR32_dll.CM_Set_Device_Interface_Property_ExW(util.pwstrToFfi(pszDeviceInterface), util.toPointer(PropertyKey), PropertyType, util.toPointer(PropertyBuffer), PropertyBufferSize, ulFlags, hMachine);
 }
 
 export function CM_Is_Dock_Station_Present(
   pbPresent: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
-  return libCFGMGR32.CM_Is_Dock_Station_Present(util.toPointer(pbPresent));
+  return libCFGMGR32_dll.CM_Is_Dock_Station_Present(util.toPointer(pbPresent));
 }
 
 export function CM_Is_Dock_Station_Present_Ex(
   pbPresent: Deno.PointerValue | Uint8Array | null /* ptr */,
   hMachine: Deno.PointerValue /* isize */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
-  return libCFGMGR32.CM_Is_Dock_Station_Present_Ex(util.toPointer(pbPresent), hMachine);
+  return libCFGMGR32_dll.CM_Is_Dock_Station_Present_Ex(util.toPointer(pbPresent), hMachine);
 }
 
 export function CM_Request_Eject_PC(): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
-  return libCFGMGR32.CM_Request_Eject_PC();
+  return libCFGMGR32_dll.CM_Request_Eject_PC();
 }
 
 export function CM_Request_Eject_PC_Ex(
   hMachine: Deno.PointerValue /* isize */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
-  return libCFGMGR32.CM_Request_Eject_PC_Ex(hMachine);
+  return libCFGMGR32_dll.CM_Request_Eject_PC_Ex(hMachine);
 }
 
 export function CM_Set_HW_Prof_FlagsA(
-  pDeviceID: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pDeviceID: string | null /* Windows.Win32.Foundation.PSTR */,
   ulConfig: number /* u32 */,
   ulValue: number /* u32 */,
   ulFlags: number /* u32 */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
-  return libCFGMGR32.CM_Set_HW_Prof_FlagsA(util.toPointer(pDeviceID), ulConfig, ulValue, ulFlags);
+  return libCFGMGR32_dll.CM_Set_HW_Prof_FlagsA(util.pstrToFfi(pDeviceID), ulConfig, ulValue, ulFlags);
 }
 
 export function CM_Set_HW_Prof_FlagsW(
-  pDeviceID: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pDeviceID: string | null /* Windows.Win32.Foundation.PWSTR */,
   ulConfig: number /* u32 */,
   ulValue: number /* u32 */,
   ulFlags: number /* u32 */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
-  return libCFGMGR32.CM_Set_HW_Prof_FlagsW(util.toPointer(pDeviceID), ulConfig, ulValue, ulFlags);
+  return libCFGMGR32_dll.CM_Set_HW_Prof_FlagsW(util.pwstrToFfi(pDeviceID), ulConfig, ulValue, ulFlags);
 }
 
 export function CM_Set_HW_Prof_Flags_ExA(
-  pDeviceID: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pDeviceID: string | null /* Windows.Win32.Foundation.PSTR */,
   ulConfig: number /* u32 */,
   ulValue: number /* u32 */,
   ulFlags: number /* u32 */,
   hMachine: Deno.PointerValue /* isize */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
-  return libCFGMGR32.CM_Set_HW_Prof_Flags_ExA(util.toPointer(pDeviceID), ulConfig, ulValue, ulFlags, hMachine);
+  return libCFGMGR32_dll.CM_Set_HW_Prof_Flags_ExA(util.pstrToFfi(pDeviceID), ulConfig, ulValue, ulFlags, hMachine);
 }
 
 export function CM_Set_HW_Prof_Flags_ExW(
-  pDeviceID: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pDeviceID: string | null /* Windows.Win32.Foundation.PWSTR */,
   ulConfig: number /* u32 */,
   ulValue: number /* u32 */,
   ulFlags: number /* u32 */,
   hMachine: Deno.PointerValue /* isize */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
-  return libCFGMGR32.CM_Set_HW_Prof_Flags_ExW(util.toPointer(pDeviceID), ulConfig, ulValue, ulFlags, hMachine);
+  return libCFGMGR32_dll.CM_Set_HW_Prof_Flags_ExW(util.pwstrToFfi(pDeviceID), ulConfig, ulValue, ulFlags, hMachine);
 }
 
 export function CM_Setup_DevNode(
   dnDevInst: number /* u32 */,
   ulFlags: number /* u32 */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
-  return libCFGMGR32.CM_Setup_DevNode(dnDevInst, ulFlags);
+  return libCFGMGR32_dll.CM_Setup_DevNode(dnDevInst, ulFlags);
 }
 
 export function CM_Setup_DevNode_Ex(
@@ -12495,7 +12827,7 @@ export function CM_Setup_DevNode_Ex(
   ulFlags: number /* u32 */,
   hMachine: Deno.PointerValue /* isize */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
-  return libCFGMGR32.CM_Setup_DevNode_Ex(dnDevInst, ulFlags, hMachine);
+  return libCFGMGR32_dll.CM_Setup_DevNode_Ex(dnDevInst, ulFlags, hMachine);
 }
 
 export function CM_Test_Range_Available(
@@ -12504,14 +12836,14 @@ export function CM_Test_Range_Available(
   rlh: Deno.PointerValue /* usize */,
   ulFlags: number /* u32 */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
-  return libCFGMGR32.CM_Test_Range_Available(ullStartValue, ullEndValue, rlh, ulFlags);
+  return libCFGMGR32_dll.CM_Test_Range_Available(ullStartValue, ullEndValue, rlh, ulFlags);
 }
 
 export function CM_Uninstall_DevNode(
   dnDevInst: number /* u32 */,
   ulFlags: number /* u32 */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
-  return libCFGMGR32.CM_Uninstall_DevNode(dnDevInst, ulFlags);
+  return libCFGMGR32_dll.CM_Uninstall_DevNode(dnDevInst, ulFlags);
 }
 
 export function CM_Uninstall_DevNode_Ex(
@@ -12519,27 +12851,27 @@ export function CM_Uninstall_DevNode_Ex(
   ulFlags: number /* u32 */,
   hMachine: Deno.PointerValue /* isize */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
-  return libCFGMGR32.CM_Uninstall_DevNode_Ex(dnDevInst, ulFlags, hMachine);
+  return libCFGMGR32_dll.CM_Uninstall_DevNode_Ex(dnDevInst, ulFlags, hMachine);
 }
 
 export function CM_Run_Detection(
   ulFlags: number /* u32 */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
-  return libCFGMGR32.CM_Run_Detection(ulFlags);
+  return libCFGMGR32_dll.CM_Run_Detection(ulFlags);
 }
 
 export function CM_Run_Detection_Ex(
   ulFlags: number /* u32 */,
   hMachine: Deno.PointerValue /* isize */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
-  return libCFGMGR32.CM_Run_Detection_Ex(ulFlags, hMachine);
+  return libCFGMGR32_dll.CM_Run_Detection_Ex(ulFlags, hMachine);
 }
 
 export function CM_Set_HW_Prof(
   ulHardwareProfile: number /* u32 */,
   ulFlags: number /* u32 */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
-  return libCFGMGR32.CM_Set_HW_Prof(ulHardwareProfile, ulFlags);
+  return libCFGMGR32_dll.CM_Set_HW_Prof(ulHardwareProfile, ulFlags);
 }
 
 export function CM_Set_HW_Prof_Ex(
@@ -12547,7 +12879,7 @@ export function CM_Set_HW_Prof_Ex(
   ulFlags: number /* u32 */,
   hMachine: Deno.PointerValue /* isize */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
-  return libCFGMGR32.CM_Set_HW_Prof_Ex(ulHardwareProfile, ulFlags, hMachine);
+  return libCFGMGR32_dll.CM_Set_HW_Prof_Ex(ulHardwareProfile, ulFlags, hMachine);
 }
 
 export function CM_Query_Resource_Conflict_List(
@@ -12559,20 +12891,20 @@ export function CM_Query_Resource_Conflict_List(
   ulFlags: number /* u32 */,
   hMachine: Deno.PointerValue /* isize */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
-  return libCFGMGR32.CM_Query_Resource_Conflict_List(util.toPointer(pclConflictList), dnDevInst, ResourceID, util.toPointer(ResourceData), ResourceLen, ulFlags, hMachine);
+  return libCFGMGR32_dll.CM_Query_Resource_Conflict_List(util.toPointer(pclConflictList), dnDevInst, ResourceID, util.toPointer(ResourceData), ResourceLen, ulFlags, hMachine);
 }
 
 export function CM_Free_Resource_Conflict_Handle(
   clConflictList: Deno.PointerValue /* usize */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
-  return libCFGMGR32.CM_Free_Resource_Conflict_Handle(clConflictList);
+  return libCFGMGR32_dll.CM_Free_Resource_Conflict_Handle(clConflictList);
 }
 
 export function CM_Get_Resource_Conflict_Count(
   clConflictList: Deno.PointerValue /* usize */,
   pulCount: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
-  return libCFGMGR32.CM_Get_Resource_Conflict_Count(clConflictList, util.toPointer(pulCount));
+  return libCFGMGR32_dll.CM_Get_Resource_Conflict_Count(clConflictList, util.toPointer(pulCount));
 }
 
 export function CM_Get_Resource_Conflict_DetailsA(
@@ -12580,7 +12912,7 @@ export function CM_Get_Resource_Conflict_DetailsA(
   ulIndex: number /* u32 */,
   pConflictDetails: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
-  return libCFGMGR32.CM_Get_Resource_Conflict_DetailsA(clConflictList, ulIndex, util.toPointer(pConflictDetails));
+  return libCFGMGR32_dll.CM_Get_Resource_Conflict_DetailsA(clConflictList, ulIndex, util.toPointer(pConflictDetails));
 }
 
 export function CM_Get_Resource_Conflict_DetailsW(
@@ -12588,7 +12920,7 @@ export function CM_Get_Resource_Conflict_DetailsW(
   ulIndex: number /* u32 */,
   pConflictDetails: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
-  return libCFGMGR32.CM_Get_Resource_Conflict_DetailsW(clConflictList, ulIndex, util.toPointer(pConflictDetails));
+  return libCFGMGR32_dll.CM_Get_Resource_Conflict_DetailsW(clConflictList, ulIndex, util.toPointer(pConflictDetails));
 }
 
 export function CM_Get_Class_PropertyW(
@@ -12599,7 +12931,7 @@ export function CM_Get_Class_PropertyW(
   PropertyBufferSize: Deno.PointerValue | Uint8Array | null /* ptr */,
   ulFlags: number /* u32 */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
-  return libCFGMGR32.CM_Get_Class_PropertyW(util.toPointer(ClassGUID), util.toPointer(PropertyKey), util.toPointer(PropertyType), util.toPointer(PropertyBuffer), util.toPointer(PropertyBufferSize), ulFlags);
+  return libCFGMGR32_dll.CM_Get_Class_PropertyW(util.toPointer(ClassGUID), util.toPointer(PropertyKey), util.toPointer(PropertyType), util.toPointer(PropertyBuffer), util.toPointer(PropertyBufferSize), ulFlags);
 }
 
 export function CM_Get_Class_Property_ExW(
@@ -12611,7 +12943,7 @@ export function CM_Get_Class_Property_ExW(
   ulFlags: number /* u32 */,
   hMachine: Deno.PointerValue /* isize */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
-  return libCFGMGR32.CM_Get_Class_Property_ExW(util.toPointer(ClassGUID), util.toPointer(PropertyKey), util.toPointer(PropertyType), util.toPointer(PropertyBuffer), util.toPointer(PropertyBufferSize), ulFlags, hMachine);
+  return libCFGMGR32_dll.CM_Get_Class_Property_ExW(util.toPointer(ClassGUID), util.toPointer(PropertyKey), util.toPointer(PropertyType), util.toPointer(PropertyBuffer), util.toPointer(PropertyBufferSize), ulFlags, hMachine);
 }
 
 export function CM_Get_Class_Property_Keys(
@@ -12620,7 +12952,7 @@ export function CM_Get_Class_Property_Keys(
   PropertyKeyCount: Deno.PointerValue | Uint8Array | null /* ptr */,
   ulFlags: number /* u32 */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
-  return libCFGMGR32.CM_Get_Class_Property_Keys(util.toPointer(ClassGUID), util.toPointer(PropertyKeyArray), util.toPointer(PropertyKeyCount), ulFlags);
+  return libCFGMGR32_dll.CM_Get_Class_Property_Keys(util.toPointer(ClassGUID), util.toPointer(PropertyKeyArray), util.toPointer(PropertyKeyCount), ulFlags);
 }
 
 export function CM_Get_Class_Property_Keys_Ex(
@@ -12630,7 +12962,7 @@ export function CM_Get_Class_Property_Keys_Ex(
   ulFlags: number /* u32 */,
   hMachine: Deno.PointerValue /* isize */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
-  return libCFGMGR32.CM_Get_Class_Property_Keys_Ex(util.toPointer(ClassGUID), util.toPointer(PropertyKeyArray), util.toPointer(PropertyKeyCount), ulFlags, hMachine);
+  return libCFGMGR32_dll.CM_Get_Class_Property_Keys_Ex(util.toPointer(ClassGUID), util.toPointer(PropertyKeyArray), util.toPointer(PropertyKeyCount), ulFlags, hMachine);
 }
 
 export function CM_Set_Class_PropertyW(
@@ -12641,7 +12973,7 @@ export function CM_Set_Class_PropertyW(
   PropertyBufferSize: number /* u32 */,
   ulFlags: number /* u32 */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
-  return libCFGMGR32.CM_Set_Class_PropertyW(util.toPointer(ClassGUID), util.toPointer(PropertyKey), PropertyType, util.toPointer(PropertyBuffer), PropertyBufferSize, ulFlags);
+  return libCFGMGR32_dll.CM_Set_Class_PropertyW(util.toPointer(ClassGUID), util.toPointer(PropertyKey), PropertyType, util.toPointer(PropertyBuffer), PropertyBufferSize, ulFlags);
 }
 
 export function CM_Set_Class_Property_ExW(
@@ -12653,7 +12985,7 @@ export function CM_Set_Class_Property_ExW(
   ulFlags: number /* u32 */,
   hMachine: Deno.PointerValue /* isize */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
-  return libCFGMGR32.CM_Set_Class_Property_ExW(util.toPointer(ClassGUID), util.toPointer(PropertyKey), PropertyType, util.toPointer(PropertyBuffer), PropertyBufferSize, ulFlags, hMachine);
+  return libCFGMGR32_dll.CM_Set_Class_Property_ExW(util.toPointer(ClassGUID), util.toPointer(PropertyKey), PropertyType, util.toPointer(PropertyBuffer), PropertyBufferSize, ulFlags, hMachine);
 }
 
 export function CM_Get_Class_Registry_PropertyA(
@@ -12665,7 +12997,7 @@ export function CM_Get_Class_Registry_PropertyA(
   ulFlags: number /* u32 */,
   hMachine: Deno.PointerValue /* isize */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
-  return libCFGMGR32.CM_Get_Class_Registry_PropertyA(util.toPointer(ClassGuid), ulProperty, util.toPointer(pulRegDataType), util.toPointer(Buffer), util.toPointer(pulLength), ulFlags, hMachine);
+  return libCFGMGR32_dll.CM_Get_Class_Registry_PropertyA(util.toPointer(ClassGuid), ulProperty, util.toPointer(pulRegDataType), util.toPointer(Buffer), util.toPointer(pulLength), ulFlags, hMachine);
 }
 
 export function CM_Get_Class_Registry_PropertyW(
@@ -12677,7 +13009,7 @@ export function CM_Get_Class_Registry_PropertyW(
   ulFlags: number /* u32 */,
   hMachine: Deno.PointerValue /* isize */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
-  return libCFGMGR32.CM_Get_Class_Registry_PropertyW(util.toPointer(ClassGuid), ulProperty, util.toPointer(pulRegDataType), util.toPointer(Buffer), util.toPointer(pulLength), ulFlags, hMachine);
+  return libCFGMGR32_dll.CM_Get_Class_Registry_PropertyW(util.toPointer(ClassGuid), ulProperty, util.toPointer(pulRegDataType), util.toPointer(Buffer), util.toPointer(pulLength), ulFlags, hMachine);
 }
 
 export function CM_Set_Class_Registry_PropertyA(
@@ -12688,7 +13020,7 @@ export function CM_Set_Class_Registry_PropertyA(
   ulFlags: number /* u32 */,
   hMachine: Deno.PointerValue /* isize */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
-  return libCFGMGR32.CM_Set_Class_Registry_PropertyA(util.toPointer(ClassGuid), ulProperty, util.toPointer(Buffer), ulLength, ulFlags, hMachine);
+  return libCFGMGR32_dll.CM_Set_Class_Registry_PropertyA(util.toPointer(ClassGuid), ulProperty, util.toPointer(Buffer), ulLength, ulFlags, hMachine);
 }
 
 export function CM_Set_Class_Registry_PropertyW(
@@ -12699,13 +13031,13 @@ export function CM_Set_Class_Registry_PropertyW(
   ulFlags: number /* u32 */,
   hMachine: Deno.PointerValue /* isize */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
-  return libCFGMGR32.CM_Set_Class_Registry_PropertyW(util.toPointer(ClassGuid), ulProperty, util.toPointer(Buffer), ulLength, ulFlags, hMachine);
+  return libCFGMGR32_dll.CM_Set_Class_Registry_PropertyW(util.toPointer(ClassGuid), ulProperty, util.toPointer(Buffer), ulLength, ulFlags, hMachine);
 }
 
 export function CMP_WaitNoPendingInstallEvents(
   dwTimeout: number /* u32 */,
 ): number /* u32 */ {
-  return libCFGMGR32.CMP_WaitNoPendingInstallEvents(dwTimeout);
+  return libCFGMGR32_dll.CMP_WaitNoPendingInstallEvents(dwTimeout);
 }
 
 export function CM_Register_Notification(
@@ -12714,20 +13046,20 @@ export function CM_Register_Notification(
   pCallback: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.DeviceAndDriverInstallation.PCM_NOTIFY_CALLBACK */,
   pNotifyContext: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
-  return libCFGMGR32.CM_Register_Notification(util.toPointer(pFilter), util.toPointer(pContext), util.toPointer(pCallback), util.toPointer(pNotifyContext));
+  return libCFGMGR32_dll.CM_Register_Notification(util.toPointer(pFilter), util.toPointer(pContext), util.toPointer(pCallback), util.toPointer(pNotifyContext));
 }
 
 export function CM_Unregister_Notification(
   NotifyContext: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.DeviceAndDriverInstallation.HCMNOTIFICATION */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
-  return libCFGMGR32.CM_Unregister_Notification(util.toPointer(NotifyContext));
+  return libCFGMGR32_dll.CM_Unregister_Notification(util.toPointer(NotifyContext));
 }
 
 export function CM_MapCrToWin32Err(
   CmReturnCode: CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */,
   DefaultErr: number /* u32 */,
 ): number /* u32 */ {
-  return libCFGMGR32.CM_MapCrToWin32Err(CmReturnCode, DefaultErr);
+  return libCFGMGR32_dll.CM_MapCrToWin32Err(CmReturnCode, DefaultErr);
 }
 
 export function UpdateDriverForPlugAndPlayDevicesA(
@@ -12737,7 +13069,7 @@ export function UpdateDriverForPlugAndPlayDevicesA(
   InstallFlags: number /* u32 */,
   bRebootRequired: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libnewdev.UpdateDriverForPlugAndPlayDevicesA(util.hwndToFfi(hwndParent), util.pstrToFfi(HardwareId), util.pstrToFfi(FullInfPath), InstallFlags, util.toPointer(bRebootRequired)));
+  return util.boolFromFfi(libnewdev_dll.UpdateDriverForPlugAndPlayDevicesA(util.hwndToFfi(hwndParent), util.pstrToFfi(HardwareId), util.pstrToFfi(FullInfPath), InstallFlags, util.toPointer(bRebootRequired)));
 }
 
 export function UpdateDriverForPlugAndPlayDevicesW(
@@ -12747,18 +13079,18 @@ export function UpdateDriverForPlugAndPlayDevicesW(
   InstallFlags: number /* u32 */,
   bRebootRequired: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libnewdev.UpdateDriverForPlugAndPlayDevicesW(util.hwndToFfi(hwndParent), util.pwstrToFfi(HardwareId), util.pwstrToFfi(FullInfPath), InstallFlags, util.toPointer(bRebootRequired)));
+  return util.boolFromFfi(libnewdev_dll.UpdateDriverForPlugAndPlayDevicesW(util.hwndToFfi(hwndParent), util.pwstrToFfi(HardwareId), util.pwstrToFfi(FullInfPath), InstallFlags, util.toPointer(bRebootRequired)));
 }
 
 export function DiInstallDevice(
   hwndParent: Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */,
-  DeviceInfoSet: Deno.PointerValue | Uint8Array | null /* ptr */,
+  DeviceInfoSet: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.DeviceAndDriverInstallation.HDEVINFO */,
   DeviceInfoData: Deno.PointerValue | Uint8Array | null /* ptr */,
   DriverInfoData: Deno.PointerValue | Uint8Array | null /* ptr */,
   Flags: number /* u32 */,
   NeedReboot: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libnewdev.DiInstallDevice(util.hwndToFfi(hwndParent), util.toPointer(DeviceInfoSet), util.toPointer(DeviceInfoData), util.toPointer(DriverInfoData), Flags, util.toPointer(NeedReboot)));
+  return util.boolFromFfi(libnewdev_dll.DiInstallDevice(util.hwndToFfi(hwndParent), util.toPointer(DeviceInfoSet), util.toPointer(DeviceInfoData), util.toPointer(DriverInfoData), Flags, util.toPointer(NeedReboot)));
 }
 
 export function DiInstallDriverW(
@@ -12767,7 +13099,7 @@ export function DiInstallDriverW(
   Flags: number /* u32 */,
   NeedReboot: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libnewdev.DiInstallDriverW(util.hwndToFfi(hwndParent), util.pwstrToFfi(InfPath), Flags, util.toPointer(NeedReboot)));
+  return util.boolFromFfi(libnewdev_dll.DiInstallDriverW(util.hwndToFfi(hwndParent), util.pwstrToFfi(InfPath), Flags, util.toPointer(NeedReboot)));
 }
 
 export function DiInstallDriverA(
@@ -12776,17 +13108,17 @@ export function DiInstallDriverA(
   Flags: number /* u32 */,
   NeedReboot: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libnewdev.DiInstallDriverA(util.hwndToFfi(hwndParent), util.pstrToFfi(InfPath), Flags, util.toPointer(NeedReboot)));
+  return util.boolFromFfi(libnewdev_dll.DiInstallDriverA(util.hwndToFfi(hwndParent), util.pstrToFfi(InfPath), Flags, util.toPointer(NeedReboot)));
 }
 
 export function DiUninstallDevice(
   hwndParent: Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */,
-  DeviceInfoSet: Deno.PointerValue | Uint8Array | null /* ptr */,
+  DeviceInfoSet: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.DeviceAndDriverInstallation.HDEVINFO */,
   DeviceInfoData: Deno.PointerValue | Uint8Array | null /* ptr */,
   Flags: number /* u32 */,
   NeedReboot: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libnewdev.DiUninstallDevice(util.hwndToFfi(hwndParent), util.toPointer(DeviceInfoSet), util.toPointer(DeviceInfoData), Flags, util.toPointer(NeedReboot)));
+  return util.boolFromFfi(libnewdev_dll.DiUninstallDevice(util.hwndToFfi(hwndParent), util.toPointer(DeviceInfoSet), util.toPointer(DeviceInfoData), Flags, util.toPointer(NeedReboot)));
 }
 
 export function DiUninstallDriverW(
@@ -12795,7 +13127,7 @@ export function DiUninstallDriverW(
   Flags: number /* u32 */,
   NeedReboot: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libnewdev.DiUninstallDriverW(util.hwndToFfi(hwndParent), util.pwstrToFfi(InfPath), Flags, util.toPointer(NeedReboot)));
+  return util.boolFromFfi(libnewdev_dll.DiUninstallDriverW(util.hwndToFfi(hwndParent), util.pwstrToFfi(InfPath), Flags, util.toPointer(NeedReboot)));
 }
 
 export function DiUninstallDriverA(
@@ -12804,27 +13136,27 @@ export function DiUninstallDriverA(
   Flags: number /* u32 */,
   NeedReboot: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libnewdev.DiUninstallDriverA(util.hwndToFfi(hwndParent), util.pstrToFfi(InfPath), Flags, util.toPointer(NeedReboot)));
+  return util.boolFromFfi(libnewdev_dll.DiUninstallDriverA(util.hwndToFfi(hwndParent), util.pstrToFfi(InfPath), Flags, util.toPointer(NeedReboot)));
 }
 
 export function DiShowUpdateDevice(
   hwndParent: Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */,
-  DeviceInfoSet: Deno.PointerValue | Uint8Array | null /* ptr */,
+  DeviceInfoSet: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.DeviceAndDriverInstallation.HDEVINFO */,
   DeviceInfoData: Deno.PointerValue | Uint8Array | null /* ptr */,
   Flags: number /* u32 */,
   NeedReboot: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libnewdev.DiShowUpdateDevice(util.hwndToFfi(hwndParent), util.toPointer(DeviceInfoSet), util.toPointer(DeviceInfoData), Flags, util.toPointer(NeedReboot)));
+  return util.boolFromFfi(libnewdev_dll.DiShowUpdateDevice(util.hwndToFfi(hwndParent), util.toPointer(DeviceInfoSet), util.toPointer(DeviceInfoData), Flags, util.toPointer(NeedReboot)));
 }
 
 export function DiRollbackDriver(
-  DeviceInfoSet: Deno.PointerValue | Uint8Array | null /* ptr */,
+  DeviceInfoSet: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.DeviceAndDriverInstallation.HDEVINFO */,
   DeviceInfoData: Deno.PointerValue | Uint8Array | null /* ptr */,
   hwndParent: Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */,
   Flags: number /* u32 */,
   NeedReboot: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libnewdev.DiRollbackDriver(util.toPointer(DeviceInfoSet), util.toPointer(DeviceInfoData), util.hwndToFfi(hwndParent), Flags, util.toPointer(NeedReboot)));
+  return util.boolFromFfi(libnewdev_dll.DiRollbackDriver(util.toPointer(DeviceInfoSet), util.toPointer(DeviceInfoData), util.hwndToFfi(hwndParent), Flags, util.toPointer(NeedReboot)));
 }
 
 export function DiShowUpdateDriver(
@@ -12833,6 +13165,6 @@ export function DiShowUpdateDriver(
   Flags: number /* u32 */,
   NeedReboot: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libnewdev.DiShowUpdateDriver(util.hwndToFfi(hwndParent), util.pwstrToFfi(FilePath), Flags, util.toPointer(NeedReboot)));
+  return util.boolFromFfi(libnewdev_dll.DiShowUpdateDriver(util.hwndToFfi(hwndParent), util.pwstrToFfi(FilePath), Flags, util.toPointer(NeedReboot)));
 }
 

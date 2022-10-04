@@ -9,7 +9,7 @@ export type BOOL = number;
 // Native Libraries
 
 try {
-  var libKERNEL32 = Deno.dlopen("KERNEL32", {
+  var libKERNEL32_dll = Deno.dlopen("KERNEL32.dll", {
     CeipIsOptedIn: {
       parameters: [],
       result: "i32",
@@ -20,6 +20,6 @@ try {
 // Symbols
 
 export function CeipIsOptedIn(): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32.CeipIsOptedIn());
+  return util.boolFromFfi(libKERNEL32_dll.CeipIsOptedIn());
 }
 

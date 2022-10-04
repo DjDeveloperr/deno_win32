@@ -775,6 +775,23 @@ export const D3D11_DEBUG_FEATURE_ALWAYS_DISCARD_OFFERED_RESOURCE = 8;
 export const D3D11_DEBUG_FEATURE_NEVER_DISCARD_OFFERED_RESOURCE = 16;
 export const D3D11_DEBUG_FEATURE_AVOID_BEHAVIOR_CHANGING_DEBUG_AIDS = 64;
 export const D3D11_DEBUG_FEATURE_DISABLE_TILED_RESOURCE_MAPPING_TRACKING_AND_VALIDATION = 128;
+export const D3D11_REGKEY_PATH = "Software\Microsoft\Direct3D";
+export const D3D11_MUTE_DEBUG_OUTPUT = "MuteDebugOutput";
+export const D3D11_ENABLE_BREAK_ON_MESSAGE = "EnableBreakOnMessage";
+export const D3D11_INFOQUEUE_STORAGE_FILTER_OVERRIDE = "InfoQueueStorageFilterOverride";
+export const D3D11_MUTE_CATEGORY = "Mute_CATEGORY_%s";
+export const D3D11_MUTE_SEVERITY = "Mute_SEVERITY_%s";
+export const D3D11_MUTE_ID_STRING = "Mute_ID_%s";
+export const D3D11_MUTE_ID_DECIMAL = "Mute_ID_%d";
+export const D3D11_UNMUTE_SEVERITY_INFO = "Unmute_SEVERITY_INFO";
+export const D3D11_BREAKON_CATEGORY = "BreakOn_CATEGORY_%s";
+export const D3D11_BREAKON_SEVERITY = "BreakOn_SEVERITY_%s";
+export const D3D11_BREAKON_ID_STRING = "BreakOn_ID_%s";
+export const D3D11_BREAKON_ID_DECIMAL = "BreakOn_ID_%d";
+export const D3D11_APPSIZE_STRING = "Size";
+export const D3D11_APPNAME_STRING = "Name";
+export const D3D11_FORCE_DEBUGGABLE = "ForceDebuggable";
+export const D3D11_FORCE_SHADER_SKIP_OPTIMIZATION = "ForceShaderSkipOptimization";
 export const D3D11_INFO_QUEUE_DEFAULT_MESSAGE_COUNT_LIMIT = 1024;
 export const D3D_RETURN_PARAMETER_INDEX = "-1";
 export const D3D_SHADER_REQUIRES_DOUBLES = 1;
@@ -800,6 +817,9 @@ export const D3D11_TRACE_MISC_GS_EMIT_STREAM = 8;
 export const D3D11_TRACE_MISC_GS_CUT_STREAM = 16;
 export const D3D11_TRACE_MISC_HALT = 32;
 export const D3D11_TRACE_MISC_MESSAGE = 64;
+export const D3DCSX_DLL_W = "d3dcsx_47.dll";
+export const D3DCSX_DLL_A = "d3dcsx_47.dll";
+export const D3DCSX_DLL = "d3dcsx_47.dll";
 export const D3DX11_FFT_MAX_PRECOMPUTE_BUFFERS = 4;
 export const D3DX11_FFT_MAX_TEMP_BUFFERS = 4;
 export const D3DX11_FFT_MAX_DIMENSIONS = 32;
@@ -1605,6 +1625,27 @@ export const D3D_COMPONENT_MASK_Y = 2;
 export const D3D_COMPONENT_MASK_Z = 4;
 export const D3D_COMPONENT_MASK_W = 8;
 export const DXC_HASHFLAG_INCLUDES_SOURCE = 1;
+export const DXC_ARG_DEBUG = "-Zi";
+export const DXC_ARG_SKIP_VALIDATION = "-Vd";
+export const DXC_ARG_SKIP_OPTIMIZATIONS = "-Od";
+export const DXC_ARG_PACK_MATRIX_ROW_MAJOR = "-Zpr";
+export const DXC_ARG_PACK_MATRIX_COLUMN_MAJOR = "-Zpc";
+export const DXC_ARG_AVOID_FLOW_CONTROL = "-Gfa";
+export const DXC_ARG_PREFER_FLOW_CONTROL = "-Gfp";
+export const DXC_ARG_ENABLE_STRICTNESS = "-Ges";
+export const DXC_ARG_ENABLE_BACKWARDS_COMPATIBILITY = "-Gec";
+export const DXC_ARG_IEEE_STRICTNESS = "-Gis";
+export const DXC_ARG_OPTIMIZATION_LEVEL0 = "-O0";
+export const DXC_ARG_OPTIMIZATION_LEVEL1 = "-O1";
+export const DXC_ARG_OPTIMIZATION_LEVEL2 = "-O2";
+export const DXC_ARG_OPTIMIZATION_LEVEL3 = "-O3";
+export const DXC_ARG_WARNINGS_ARE_ERRORS = "-WX";
+export const DXC_ARG_RESOURCES_MAY_ALIAS = "-res_may_alias";
+export const DXC_ARG_ALL_RESOURCES_BOUND = "-all_resources_bound";
+export const DXC_ARG_DEBUG_NAME_FOR_SOURCE = "-Zss";
+export const DXC_ARG_DEBUG_NAME_FOR_BINARY = "-Zsb";
+export const DXC_EXTRA_OUTPUT_NAME_STDOUT = "*stdout*";
+export const DXC_EXTRA_OUTPUT_NAME_STDERR = "*stderr*";
 export const DxcValidatorFlags_Default = 0;
 export const DxcValidatorFlags_InPlaceEdit = 1;
 export const DxcValidatorFlags_RootSignatureOnly = 2;
@@ -1613,6 +1654,8 @@ export const DxcValidatorFlags_ValidMask = 7;
 export const DxcVersionInfoFlags_None = 0;
 export const DxcVersionInfoFlags_Debug = 1;
 export const DxcVersionInfoFlags_Internal = 2;
+export const D3DCOMPILER_DLL_W = "d3dcompiler_47.dll";
+export const D3DCOMPILER_DLL_A = "d3dcompiler_47.dll";
 export const D3D_COMPILER_VERSION = 47;
 export const D3DCOMPILE_DEBUG = 1;
 export const D3DCOMPILE_SKIP_VALIDATION = 2;
@@ -1908,6 +1951,21 @@ export const D3D10_SDK_LAYERS_VERSION = 11;
 export const D3D10_DEBUG_FEATURE_FLUSH_PER_RENDER_OP = 1;
 export const D3D10_DEBUG_FEATURE_FINISH_PER_RENDER_OP = 2;
 export const D3D10_DEBUG_FEATURE_PRESENT_PER_RENDER_OP = 4;
+export const D3D10_REGKEY_PATH = "Software\Microsoft\Direct3D";
+export const D3D10_MUTE_DEBUG_OUTPUT = "MuteDebugOutput";
+export const D3D10_ENABLE_BREAK_ON_MESSAGE = "EnableBreakOnMessage";
+export const D3D10_INFOQUEUE_STORAGE_FILTER_OVERRIDE = "InfoQueueStorageFilterOverride";
+export const D3D10_MUTE_CATEGORY = "Mute_CATEGORY_%s";
+export const D3D10_MUTE_SEVERITY = "Mute_SEVERITY_%s";
+export const D3D10_MUTE_ID_STRING = "Mute_ID_%s";
+export const D3D10_MUTE_ID_DECIMAL = "Mute_ID_%d";
+export const D3D10_UNMUTE_SEVERITY_INFO = "Unmute_SEVERITY_INFO";
+export const D3D10_BREAKON_CATEGORY = "BreakOn_CATEGORY_%s";
+export const D3D10_BREAKON_SEVERITY = "BreakOn_SEVERITY_%s";
+export const D3D10_BREAKON_ID_STRING = "BreakOn_ID_%s";
+export const D3D10_BREAKON_ID_DECIMAL = "BreakOn_ID_%d";
+export const D3D10_APPSIZE_STRING = "Size";
+export const D3D10_APPNAME_STRING = "Name";
 export const D3D10_INFO_QUEUE_DEFAULT_MESSAGE_COUNT_LIMIT = 1024;
 export const D3D10_SHADER_DEBUG = 1;
 export const D3D10_SHADER_SKIP_VALIDATION = 2;
@@ -7291,6 +7349,10 @@ export const D3DTS_TEXTURE5 = 21;
 export const D3DTS_TEXTURE6 = 22;
 export const D3DTS_TEXTURE7 = 23;
 export const D3DTS_FORCE_DWORD = 2147483647;
+export const D3DTS_WORLD = 256;
+export const D3DTS_WORLD1 = 257;
+export const D3DTS_WORLD2 = 258;
+export const D3DTS_WORLD3 = 259;
 export const D3DRS_ZENABLE = 7;
 export const D3DRS_FILLMODE = 8;
 export const D3DRS_SHADEMODE = 9;
@@ -11400,12 +11462,12 @@ export interface D3D11_BUFFER_DESC {
   ByteWidth: number;
   /** Windows.Win32.Graphics.Direct3D11.D3D11_USAGE */
   Usage: D3D11_USAGE;
-  /** u32 */
-  BindFlags: number;
-  /** u32 */
-  CPUAccessFlags: number;
-  /** u32 */
-  MiscFlags: number;
+  /** Windows.Win32.Graphics.Direct3D11.D3D11_BIND_FLAG */
+  BindFlags: D3D11_BIND_FLAG;
+  /** Windows.Win32.Graphics.Direct3D11.D3D11_CPU_ACCESS_FLAG */
+  CPUAccessFlags: D3D11_CPU_ACCESS_FLAG;
+  /** Windows.Win32.Graphics.Direct3D11.D3D11_RESOURCE_MISC_FLAG */
+  MiscFlags: D3D11_RESOURCE_MISC_FLAG;
   /** u32 */
   StructureByteStride: number;
 }
@@ -11444,12 +11506,12 @@ export interface D3D11_TEXTURE1D_DESC {
   Format: DXGI_FORMAT;
   /** Windows.Win32.Graphics.Direct3D11.D3D11_USAGE */
   Usage: D3D11_USAGE;
-  /** u32 */
-  BindFlags: number;
-  /** u32 */
-  CPUAccessFlags: number;
-  /** u32 */
-  MiscFlags: number;
+  /** Windows.Win32.Graphics.Direct3D11.D3D11_BIND_FLAG */
+  BindFlags: D3D11_BIND_FLAG;
+  /** Windows.Win32.Graphics.Direct3D11.D3D11_CPU_ACCESS_FLAG */
+  CPUAccessFlags: D3D11_CPU_ACCESS_FLAG;
+  /** Windows.Win32.Graphics.Direct3D11.D3D11_RESOURCE_MISC_FLAG */
+  MiscFlags: D3D11_RESOURCE_MISC_FLAG;
 }
 
 export const sizeofD3D11_TEXTURE1D_DESC = 32;
@@ -11547,12 +11609,12 @@ export interface D3D11_TEXTURE3D_DESC {
   Format: DXGI_FORMAT;
   /** Windows.Win32.Graphics.Direct3D11.D3D11_USAGE */
   Usage: D3D11_USAGE;
-  /** u32 */
-  BindFlags: number;
-  /** u32 */
-  CPUAccessFlags: number;
-  /** u32 */
-  MiscFlags: number;
+  /** Windows.Win32.Graphics.Direct3D11.D3D11_BIND_FLAG */
+  BindFlags: D3D11_BIND_FLAG;
+  /** Windows.Win32.Graphics.Direct3D11.D3D11_CPU_ACCESS_FLAG */
+  CPUAccessFlags: D3D11_CPU_ACCESS_FLAG;
+  /** Windows.Win32.Graphics.Direct3D11.D3D11_RESOURCE_MISC_FLAG */
+  MiscFlags: D3D11_RESOURCE_MISC_FLAG;
 }
 
 export const sizeofD3D11_TEXTURE3D_DESC = 40;
@@ -15500,12 +15562,12 @@ export interface D3D11_TEXTURE2D_DESC1 {
   SampleDesc: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.Graphics.Direct3D11.D3D11_USAGE */
   Usage: D3D11_USAGE;
-  /** u32 */
-  BindFlags: number;
-  /** u32 */
-  CPUAccessFlags: number;
-  /** u32 */
-  MiscFlags: number;
+  /** Windows.Win32.Graphics.Direct3D11.D3D11_BIND_FLAG */
+  BindFlags: D3D11_BIND_FLAG;
+  /** Windows.Win32.Graphics.Direct3D11.D3D11_CPU_ACCESS_FLAG */
+  CPUAccessFlags: D3D11_CPU_ACCESS_FLAG;
+  /** Windows.Win32.Graphics.Direct3D11.D3D11_RESOURCE_MISC_FLAG */
+  MiscFlags: D3D11_RESOURCE_MISC_FLAG;
   /** Windows.Win32.Graphics.Direct3D11.D3D11_TEXTURE_LAYOUT */
   TextureLayout: D3D11_TEXTURE_LAYOUT;
 }
@@ -15558,12 +15620,12 @@ export interface D3D11_TEXTURE3D_DESC1 {
   Format: DXGI_FORMAT;
   /** Windows.Win32.Graphics.Direct3D11.D3D11_USAGE */
   Usage: D3D11_USAGE;
-  /** u32 */
-  BindFlags: number;
-  /** u32 */
-  CPUAccessFlags: number;
-  /** u32 */
-  MiscFlags: number;
+  /** Windows.Win32.Graphics.Direct3D11.D3D11_BIND_FLAG */
+  BindFlags: D3D11_BIND_FLAG;
+  /** Windows.Win32.Graphics.Direct3D11.D3D11_CPU_ACCESS_FLAG */
+  CPUAccessFlags: D3D11_CPU_ACCESS_FLAG;
+  /** Windows.Win32.Graphics.Direct3D11.D3D11_RESOURCE_MISC_FLAG */
+  MiscFlags: D3D11_RESOURCE_MISC_FLAG;
   /** Windows.Win32.Graphics.Direct3D11.D3D11_TEXTURE_LAYOUT */
   TextureLayout: D3D11_TEXTURE_LAYOUT;
 }
@@ -24335,6 +24397,285 @@ export function allocD3D_SHADER_DATA(data?: Partial<D3D_SHADER_DATA>): Uint8Arra
 }
 
 /**
+ * _u_e__Struct (size: 16)
+ */
+export interface _u_e__Struct {
+  /** u32 */
+  dwValue: number;
+  /** Windows.Win32.Foundation.PWSTR */
+  pwszName: string | null;
+}
+
+export const sizeof_u_e__Struct = 16;
+
+export function alloc_u_e__Struct(data?: Partial<_u_e__Struct>): Uint8Array {
+  const buf = new Uint8Array(sizeof_u_e__Struct);
+  const view = new DataView(buf.buffer);
+  // 0x00: u32
+  if (data?.dwValue !== undefined) view.setUint32(0, Number(data.dwValue), true);
+  // 0x04: pad4
+  // 0x08: buffer
+  if (data?.pwszName !== undefined) {
+    (buf as any)._f8 = util.pwstrToFfi(data.pwszName);
+    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f8)), true);
+  }
+  return buf;
+}
+
+/**
+ * Windows.Win32.Foundation.LARGE_INTEGER (size: 24)
+ */
+export interface LARGE_INTEGER {
+  /** _Anonymous_e__Struct */
+  Anonymous: Uint8Array | Deno.PointerValue | null;
+  /** _u_e__Struct */
+  u: Uint8Array | Deno.PointerValue | null;
+  /** i64 */
+  QuadPart: Deno.PointerValue;
+}
+
+export const sizeofLARGE_INTEGER = 24;
+
+export function allocLARGE_INTEGER(data?: Partial<LARGE_INTEGER>): Uint8Array {
+  const buf = new Uint8Array(sizeofLARGE_INTEGER);
+  const view = new DataView(buf.buffer);
+  // 0x00: pointer
+  if (data?.Anonymous !== undefined) view.setBigUint64(0, data.Anonymous === null ? 0n : BigInt(util.toPointer(data.Anonymous)), true);
+  // 0x08: pointer
+  if (data?.u !== undefined) view.setBigUint64(8, data.u === null ? 0n : BigInt(util.toPointer(data.u)), true);
+  // 0x10: i64
+  if (data?.QuadPart !== undefined) view.setBigInt64(16, BigInt(data.QuadPart), true);
+  return buf;
+}
+
+/**
+ * Windows.Win32.Graphics.Direct3D9.D3DADAPTER_IDENTIFIER9 (size: 64)
+ */
+export interface D3DADAPTER_IDENTIFIER9 {
+  /** array */
+  Driver: Deno.PointerValue | null;
+  /** array */
+  Description: Deno.PointerValue | null;
+  /** array */
+  DeviceName: Deno.PointerValue | null;
+  /** Windows.Win32.Foundation.LARGE_INTEGER */
+  DriverVersion: Uint8Array | Deno.PointerValue | null;
+  /** u32 */
+  VendorId: number;
+  /** u32 */
+  DeviceId: number;
+  /** u32 */
+  SubSysId: number;
+  /** u32 */
+  Revision: number;
+  /** System.Guid */
+  DeviceIdentifier: Uint8Array | Deno.PointerValue | null;
+  /** u32 */
+  WHQLLevel: number;
+}
+
+export const sizeofD3DADAPTER_IDENTIFIER9 = 64;
+
+export function allocD3DADAPTER_IDENTIFIER9(data?: Partial<D3DADAPTER_IDENTIFIER9>): Uint8Array {
+  const buf = new Uint8Array(sizeofD3DADAPTER_IDENTIFIER9);
+  const view = new DataView(buf.buffer);
+  // 0x00: pointer
+  if (data?.Driver !== undefined) view.setBigUint64(0, data.Driver === null ? 0n : BigInt(util.toPointer(data.Driver)), true);
+  // 0x08: pointer
+  if (data?.Description !== undefined) view.setBigUint64(8, data.Description === null ? 0n : BigInt(util.toPointer(data.Description)), true);
+  // 0x10: pointer
+  if (data?.DeviceName !== undefined) view.setBigUint64(16, data.DeviceName === null ? 0n : BigInt(util.toPointer(data.DeviceName)), true);
+  // 0x18: pointer
+  if (data?.DriverVersion !== undefined) view.setBigUint64(24, data.DriverVersion === null ? 0n : BigInt(util.toPointer(data.DriverVersion)), true);
+  // 0x20: u32
+  if (data?.VendorId !== undefined) view.setUint32(32, Number(data.VendorId), true);
+  // 0x24: u32
+  if (data?.DeviceId !== undefined) view.setUint32(36, Number(data.DeviceId), true);
+  // 0x28: u32
+  if (data?.SubSysId !== undefined) view.setUint32(40, Number(data.SubSysId), true);
+  // 0x2c: u32
+  if (data?.Revision !== undefined) view.setUint32(44, Number(data.Revision), true);
+  // 0x30: pointer
+  if (data?.DeviceIdentifier !== undefined) view.setBigUint64(48, data.DeviceIdentifier === null ? 0n : BigInt(util.toPointer(data.DeviceIdentifier)), true);
+  // 0x38: u32
+  if (data?.WHQLLevel !== undefined) view.setUint32(56, Number(data.WHQLLevel), true);
+  // 0x3c: pad4
+  return buf;
+}
+
+/**
+ * Windows.Win32.Graphics.Direct3D9.D3DMEMORYPRESSURE (size: 24)
+ */
+export interface D3DMEMORYPRESSURE {
+  /** u64 */
+  BytesEvictedFromProcess: Deno.PointerValue;
+  /** u64 */
+  SizeOfInefficientAllocation: Deno.PointerValue;
+  /** u32 */
+  LevelOfEfficiency: number;
+}
+
+export const sizeofD3DMEMORYPRESSURE = 24;
+
+export function allocD3DMEMORYPRESSURE(data?: Partial<D3DMEMORYPRESSURE>): Uint8Array {
+  const buf = new Uint8Array(sizeofD3DMEMORYPRESSURE);
+  const view = new DataView(buf.buffer);
+  // 0x00: u64
+  if (data?.BytesEvictedFromProcess !== undefined) view.setBigUint64(0, BigInt(data.BytesEvictedFromProcess), true);
+  // 0x08: u64
+  if (data?.SizeOfInefficientAllocation !== undefined) view.setBigUint64(8, BigInt(data.SizeOfInefficientAllocation), true);
+  // 0x10: u32
+  if (data?.LevelOfEfficiency !== undefined) view.setUint32(16, Number(data.LevelOfEfficiency), true);
+  // 0x14: pad4
+  return buf;
+}
+
+/**
+ * Windows.Win32.Graphics.Direct3D9.D3DPRESENTSTATS (size: 32)
+ */
+export interface D3DPRESENTSTATS {
+  /** u32 */
+  PresentCount: number;
+  /** u32 */
+  PresentRefreshCount: number;
+  /** u32 */
+  SyncRefreshCount: number;
+  /** Windows.Win32.Foundation.LARGE_INTEGER */
+  SyncQPCTime: Uint8Array | Deno.PointerValue | null;
+  /** Windows.Win32.Foundation.LARGE_INTEGER */
+  SyncGPUTime: Uint8Array | Deno.PointerValue | null;
+}
+
+export const sizeofD3DPRESENTSTATS = 32;
+
+export function allocD3DPRESENTSTATS(data?: Partial<D3DPRESENTSTATS>): Uint8Array {
+  const buf = new Uint8Array(sizeofD3DPRESENTSTATS);
+  const view = new DataView(buf.buffer);
+  // 0x00: u32
+  if (data?.PresentCount !== undefined) view.setUint32(0, Number(data.PresentCount), true);
+  // 0x04: u32
+  if (data?.PresentRefreshCount !== undefined) view.setUint32(4, Number(data.PresentRefreshCount), true);
+  // 0x08: u32
+  if (data?.SyncRefreshCount !== undefined) view.setUint32(8, Number(data.SyncRefreshCount), true);
+  // 0x0c: pad4
+  // 0x10: pointer
+  if (data?.SyncQPCTime !== undefined) view.setBigUint64(16, data.SyncQPCTime === null ? 0n : BigInt(util.toPointer(data.SyncQPCTime)), true);
+  // 0x18: pointer
+  if (data?.SyncGPUTime !== undefined) view.setBigUint64(24, data.SyncGPUTime === null ? 0n : BigInt(util.toPointer(data.SyncGPUTime)), true);
+  return buf;
+}
+
+/**
+ * Windows.Win32.Graphics.Direct3D9.D3D_OMAC (size: 8)
+ */
+export interface D3D_OMAC {
+  /** array */
+  Omac: Deno.PointerValue | null;
+}
+
+export const sizeofD3D_OMAC = 8;
+
+export function allocD3D_OMAC(data?: Partial<D3D_OMAC>): Uint8Array {
+  const buf = new Uint8Array(sizeofD3D_OMAC);
+  const view = new DataView(buf.buffer);
+  // 0x00: pointer
+  if (data?.Omac !== undefined) view.setBigUint64(0, data.Omac === null ? 0n : BigInt(util.toPointer(data.Omac)), true);
+  return buf;
+}
+
+/**
+ * Windows.Win32.Graphics.Direct3D9.D3DAUTHENTICATEDCHANNEL_QUERY_OUTPUT (size: 40)
+ */
+export interface D3DAUTHENTICATEDCHANNEL_QUERY_OUTPUT {
+  /** Windows.Win32.Graphics.Direct3D9.D3D_OMAC */
+  omac: Uint8Array | Deno.PointerValue | null;
+  /** System.Guid */
+  QueryType: Uint8Array | Deno.PointerValue | null;
+  /** Windows.Win32.Foundation.HANDLE */
+  hChannel: Uint8Array | Deno.PointerValue | null;
+  /** u32 */
+  SequenceNumber: number;
+  /** Windows.Win32.Foundation.HRESULT */
+  ReturnCode: Uint8Array | Deno.PointerValue | null;
+}
+
+export const sizeofD3DAUTHENTICATEDCHANNEL_QUERY_OUTPUT = 40;
+
+export function allocD3DAUTHENTICATEDCHANNEL_QUERY_OUTPUT(data?: Partial<D3DAUTHENTICATEDCHANNEL_QUERY_OUTPUT>): Uint8Array {
+  const buf = new Uint8Array(sizeofD3DAUTHENTICATEDCHANNEL_QUERY_OUTPUT);
+  const view = new DataView(buf.buffer);
+  // 0x00: pointer
+  if (data?.omac !== undefined) view.setBigUint64(0, data.omac === null ? 0n : BigInt(util.toPointer(data.omac)), true);
+  // 0x08: pointer
+  if (data?.QueryType !== undefined) view.setBigUint64(8, data.QueryType === null ? 0n : BigInt(util.toPointer(data.QueryType)), true);
+  // 0x10: pointer
+  if (data?.hChannel !== undefined) view.setBigUint64(16, data.hChannel === null ? 0n : BigInt(util.toPointer(data.hChannel)), true);
+  // 0x18: u32
+  if (data?.SequenceNumber !== undefined) view.setUint32(24, Number(data.SequenceNumber), true);
+  // 0x1c: pad4
+  // 0x20: pointer
+  if (data?.ReturnCode !== undefined) view.setBigUint64(32, data.ReturnCode === null ? 0n : BigInt(util.toPointer(data.ReturnCode)), true);
+  return buf;
+}
+
+/**
+ * Windows.Win32.Graphics.Direct3D9.D3DAUTHENTICATEDCHANNEL_QUERYOUTPUTID_OUTPUT (size: 40)
+ */
+export interface D3DAUTHENTICATEDCHANNEL_QUERYOUTPUTID_OUTPUT {
+  /** Windows.Win32.Graphics.Direct3D9.D3DAUTHENTICATEDCHANNEL_QUERY_OUTPUT */
+  Output: Uint8Array | Deno.PointerValue | null;
+  /** Windows.Win32.Foundation.HANDLE */
+  DeviceHandle: Uint8Array | Deno.PointerValue | null;
+  /** Windows.Win32.Foundation.HANDLE */
+  CryptoSessionHandle: Uint8Array | Deno.PointerValue | null;
+  /** u32 */
+  OutputIDIndex: number;
+  /** u64 */
+  OutputID: Deno.PointerValue;
+}
+
+export const sizeofD3DAUTHENTICATEDCHANNEL_QUERYOUTPUTID_OUTPUT = 40;
+
+export function allocD3DAUTHENTICATEDCHANNEL_QUERYOUTPUTID_OUTPUT(data?: Partial<D3DAUTHENTICATEDCHANNEL_QUERYOUTPUTID_OUTPUT>): Uint8Array {
+  const buf = new Uint8Array(sizeofD3DAUTHENTICATEDCHANNEL_QUERYOUTPUTID_OUTPUT);
+  const view = new DataView(buf.buffer);
+  // 0x00: pointer
+  if (data?.Output !== undefined) view.setBigUint64(0, data.Output === null ? 0n : BigInt(util.toPointer(data.Output)), true);
+  // 0x08: pointer
+  if (data?.DeviceHandle !== undefined) view.setBigUint64(8, data.DeviceHandle === null ? 0n : BigInt(util.toPointer(data.DeviceHandle)), true);
+  // 0x10: pointer
+  if (data?.CryptoSessionHandle !== undefined) view.setBigUint64(16, data.CryptoSessionHandle === null ? 0n : BigInt(util.toPointer(data.CryptoSessionHandle)), true);
+  // 0x18: u32
+  if (data?.OutputIDIndex !== undefined) view.setUint32(24, Number(data.OutputIDIndex), true);
+  // 0x1c: pad4
+  // 0x20: u64
+  if (data?.OutputID !== undefined) view.setBigUint64(32, BigInt(data.OutputID), true);
+  return buf;
+}
+
+/**
+ * Windows.Win32.Graphics.Direct3D9.D3DAES_CTR_IV (size: 16)
+ */
+export interface D3DAES_CTR_IV {
+  /** u64 */
+  IV: Deno.PointerValue;
+  /** u64 */
+  Count: Deno.PointerValue;
+}
+
+export const sizeofD3DAES_CTR_IV = 16;
+
+export function allocD3DAES_CTR_IV(data?: Partial<D3DAES_CTR_IV>): Uint8Array {
+  const buf = new Uint8Array(sizeofD3DAES_CTR_IV);
+  const view = new DataView(buf.buffer);
+  // 0x00: u64
+  if (data?.IV !== undefined) view.setBigUint64(0, BigInt(data.IV), true);
+  // 0x08: u64
+  if (data?.Count !== undefined) view.setBigUint64(8, BigInt(data.Count), true);
+  return buf;
+}
+
+/**
  * Windows.Win32.Graphics.Direct3D9.D3DCOLORVALUE (size: 16)
  */
 export interface D3DCOLORVALUE {
@@ -25127,113 +25468,6 @@ export function allocD3DTRIPATCH_INFO(data?: Partial<D3DTRIPATCH_INFO>): Uint8Ar
 }
 
 /**
- * _u_e__Struct (size: 16)
- */
-export interface _u_e__Struct {
-  /** u32 */
-  dwValue: number;
-  /** Windows.Win32.Foundation.PWSTR */
-  pwszName: string | null;
-}
-
-export const sizeof_u_e__Struct = 16;
-
-export function alloc_u_e__Struct(data?: Partial<_u_e__Struct>): Uint8Array {
-  const buf = new Uint8Array(sizeof_u_e__Struct);
-  const view = new DataView(buf.buffer);
-  // 0x00: u32
-  if (data?.dwValue !== undefined) view.setUint32(0, Number(data.dwValue), true);
-  // 0x04: pad4
-  // 0x08: buffer
-  if (data?.pwszName !== undefined) {
-    (buf as any)._f8 = util.pwstrToFfi(data.pwszName);
-    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f8)), true);
-  }
-  return buf;
-}
-
-/**
- * Windows.Win32.Foundation.LARGE_INTEGER (size: 24)
- */
-export interface LARGE_INTEGER {
-  /** _Anonymous_e__Struct */
-  Anonymous: Uint8Array | Deno.PointerValue | null;
-  /** _u_e__Struct */
-  u: Uint8Array | Deno.PointerValue | null;
-  /** i64 */
-  QuadPart: Deno.PointerValue;
-}
-
-export const sizeofLARGE_INTEGER = 24;
-
-export function allocLARGE_INTEGER(data?: Partial<LARGE_INTEGER>): Uint8Array {
-  const buf = new Uint8Array(sizeofLARGE_INTEGER);
-  const view = new DataView(buf.buffer);
-  // 0x00: pointer
-  if (data?.Anonymous !== undefined) view.setBigUint64(0, data.Anonymous === null ? 0n : BigInt(util.toPointer(data.Anonymous)), true);
-  // 0x08: pointer
-  if (data?.u !== undefined) view.setBigUint64(8, data.u === null ? 0n : BigInt(util.toPointer(data.u)), true);
-  // 0x10: i64
-  if (data?.QuadPart !== undefined) view.setBigInt64(16, BigInt(data.QuadPart), true);
-  return buf;
-}
-
-/**
- * Windows.Win32.Graphics.Direct3D9.D3DADAPTER_IDENTIFIER9 (size: 64)
- */
-export interface D3DADAPTER_IDENTIFIER9 {
-  /** array */
-  Driver: Deno.PointerValue | null;
-  /** array */
-  Description: Deno.PointerValue | null;
-  /** array */
-  DeviceName: Deno.PointerValue | null;
-  /** Windows.Win32.Foundation.LARGE_INTEGER */
-  DriverVersion: Uint8Array | Deno.PointerValue | null;
-  /** u32 */
-  VendorId: number;
-  /** u32 */
-  DeviceId: number;
-  /** u32 */
-  SubSysId: number;
-  /** u32 */
-  Revision: number;
-  /** System.Guid */
-  DeviceIdentifier: Uint8Array | Deno.PointerValue | null;
-  /** u32 */
-  WHQLLevel: number;
-}
-
-export const sizeofD3DADAPTER_IDENTIFIER9 = 64;
-
-export function allocD3DADAPTER_IDENTIFIER9(data?: Partial<D3DADAPTER_IDENTIFIER9>): Uint8Array {
-  const buf = new Uint8Array(sizeofD3DADAPTER_IDENTIFIER9);
-  const view = new DataView(buf.buffer);
-  // 0x00: pointer
-  if (data?.Driver !== undefined) view.setBigUint64(0, data.Driver === null ? 0n : BigInt(util.toPointer(data.Driver)), true);
-  // 0x08: pointer
-  if (data?.Description !== undefined) view.setBigUint64(8, data.Description === null ? 0n : BigInt(util.toPointer(data.Description)), true);
-  // 0x10: pointer
-  if (data?.DeviceName !== undefined) view.setBigUint64(16, data.DeviceName === null ? 0n : BigInt(util.toPointer(data.DeviceName)), true);
-  // 0x18: pointer
-  if (data?.DriverVersion !== undefined) view.setBigUint64(24, data.DriverVersion === null ? 0n : BigInt(util.toPointer(data.DriverVersion)), true);
-  // 0x20: u32
-  if (data?.VendorId !== undefined) view.setUint32(32, Number(data.VendorId), true);
-  // 0x24: u32
-  if (data?.DeviceId !== undefined) view.setUint32(36, Number(data.DeviceId), true);
-  // 0x28: u32
-  if (data?.SubSysId !== undefined) view.setUint32(40, Number(data.SubSysId), true);
-  // 0x2c: u32
-  if (data?.Revision !== undefined) view.setUint32(44, Number(data.Revision), true);
-  // 0x30: pointer
-  if (data?.DeviceIdentifier !== undefined) view.setBigUint64(48, data.DeviceIdentifier === null ? 0n : BigInt(util.toPointer(data.DeviceIdentifier)), true);
-  // 0x38: u32
-  if (data?.WHQLLevel !== undefined) view.setUint32(56, Number(data.WHQLLevel), true);
-  // 0x3c: pad4
-  return buf;
-}
-
-/**
  * Windows.Win32.Graphics.Direct3D9.D3DRASTER_STATUS (size: 8)
  */
 export interface D3DRASTER_STATUS {
@@ -25529,33 +25763,6 @@ export function allocD3DDEVINFO_D3D9CACHEUTILIZATION(data?: Partial<D3DDEVINFO_D
 }
 
 /**
- * Windows.Win32.Graphics.Direct3D9.D3DMEMORYPRESSURE (size: 24)
- */
-export interface D3DMEMORYPRESSURE {
-  /** u64 */
-  BytesEvictedFromProcess: Deno.PointerValue;
-  /** u64 */
-  SizeOfInefficientAllocation: Deno.PointerValue;
-  /** u32 */
-  LevelOfEfficiency: number;
-}
-
-export const sizeofD3DMEMORYPRESSURE = 24;
-
-export function allocD3DMEMORYPRESSURE(data?: Partial<D3DMEMORYPRESSURE>): Uint8Array {
-  const buf = new Uint8Array(sizeofD3DMEMORYPRESSURE);
-  const view = new DataView(buf.buffer);
-  // 0x00: u64
-  if (data?.BytesEvictedFromProcess !== undefined) view.setBigUint64(0, BigInt(data.BytesEvictedFromProcess), true);
-  // 0x08: u64
-  if (data?.SizeOfInefficientAllocation !== undefined) view.setBigUint64(8, BigInt(data.SizeOfInefficientAllocation), true);
-  // 0x10: u32
-  if (data?.LevelOfEfficiency !== undefined) view.setUint32(16, Number(data.LevelOfEfficiency), true);
-  // 0x14: pad4
-  return buf;
-}
-
-/**
  * Windows.Win32.Graphics.Direct3D9.D3DCOMPOSERECTDESC (size: 8)
  */
 export interface D3DCOMPOSERECTDESC {
@@ -25612,41 +25819,6 @@ export function allocD3DCOMPOSERECTDESTINATION(data?: Partial<D3DCOMPOSERECTDEST
   if (data?.X !== undefined) view.setInt16(4, Number(data.X), true);
   // 0x06: i16
   if (data?.Y !== undefined) view.setInt16(6, Number(data.Y), true);
-  return buf;
-}
-
-/**
- * Windows.Win32.Graphics.Direct3D9.D3DPRESENTSTATS (size: 32)
- */
-export interface D3DPRESENTSTATS {
-  /** u32 */
-  PresentCount: number;
-  /** u32 */
-  PresentRefreshCount: number;
-  /** u32 */
-  SyncRefreshCount: number;
-  /** Windows.Win32.Foundation.LARGE_INTEGER */
-  SyncQPCTime: Uint8Array | Deno.PointerValue | null;
-  /** Windows.Win32.Foundation.LARGE_INTEGER */
-  SyncGPUTime: Uint8Array | Deno.PointerValue | null;
-}
-
-export const sizeofD3DPRESENTSTATS = 32;
-
-export function allocD3DPRESENTSTATS(data?: Partial<D3DPRESENTSTATS>): Uint8Array {
-  const buf = new Uint8Array(sizeofD3DPRESENTSTATS);
-  const view = new DataView(buf.buffer);
-  // 0x00: u32
-  if (data?.PresentCount !== undefined) view.setUint32(0, Number(data.PresentCount), true);
-  // 0x04: u32
-  if (data?.PresentRefreshCount !== undefined) view.setUint32(4, Number(data.PresentRefreshCount), true);
-  // 0x08: u32
-  if (data?.SyncRefreshCount !== undefined) view.setUint32(8, Number(data.SyncRefreshCount), true);
-  // 0x0c: pad4
-  // 0x10: pointer
-  if (data?.SyncQPCTime !== undefined) view.setBigUint64(16, data.SyncQPCTime === null ? 0n : BigInt(util.toPointer(data.SyncQPCTime)), true);
-  // 0x18: pointer
-  if (data?.SyncGPUTime !== undefined) view.setBigUint64(24, data.SyncGPUTime === null ? 0n : BigInt(util.toPointer(data.SyncGPUTime)), true);
   return buf;
 }
 
@@ -25716,24 +25888,6 @@ export function allocD3DDISPLAYMODEFILTER(data?: Partial<D3DDISPLAYMODEFILTER>):
 }
 
 /**
- * Windows.Win32.Graphics.Direct3D9.D3D_OMAC (size: 8)
- */
-export interface D3D_OMAC {
-  /** array */
-  Omac: Deno.PointerValue | null;
-}
-
-export const sizeofD3D_OMAC = 8;
-
-export function allocD3D_OMAC(data?: Partial<D3D_OMAC>): Uint8Array {
-  const buf = new Uint8Array(sizeofD3D_OMAC);
-  const view = new DataView(buf.buffer);
-  // 0x00: pointer
-  if (data?.Omac !== undefined) view.setBigUint64(0, data.Omac === null ? 0n : BigInt(util.toPointer(data.Omac)), true);
-  return buf;
-}
-
-/**
  * Windows.Win32.Graphics.Direct3D9.D3DAUTHENTICATEDCHANNEL_QUERY_INPUT (size: 24)
  */
 export interface D3DAUTHENTICATEDCHANNEL_QUERY_INPUT {
@@ -25757,41 +25911,6 @@ export function allocD3DAUTHENTICATEDCHANNEL_QUERY_INPUT(data?: Partial<D3DAUTHE
   // 0x10: u32
   if (data?.SequenceNumber !== undefined) view.setUint32(16, Number(data.SequenceNumber), true);
   // 0x14: pad4
-  return buf;
-}
-
-/**
- * Windows.Win32.Graphics.Direct3D9.D3DAUTHENTICATEDCHANNEL_QUERY_OUTPUT (size: 40)
- */
-export interface D3DAUTHENTICATEDCHANNEL_QUERY_OUTPUT {
-  /** Windows.Win32.Graphics.Direct3D9.D3D_OMAC */
-  omac: Uint8Array | Deno.PointerValue | null;
-  /** System.Guid */
-  QueryType: Uint8Array | Deno.PointerValue | null;
-  /** Windows.Win32.Foundation.HANDLE */
-  hChannel: Uint8Array | Deno.PointerValue | null;
-  /** u32 */
-  SequenceNumber: number;
-  /** Windows.Win32.Foundation.HRESULT */
-  ReturnCode: Uint8Array | Deno.PointerValue | null;
-}
-
-export const sizeofD3DAUTHENTICATEDCHANNEL_QUERY_OUTPUT = 40;
-
-export function allocD3DAUTHENTICATEDCHANNEL_QUERY_OUTPUT(data?: Partial<D3DAUTHENTICATEDCHANNEL_QUERY_OUTPUT>): Uint8Array {
-  const buf = new Uint8Array(sizeofD3DAUTHENTICATEDCHANNEL_QUERY_OUTPUT);
-  const view = new DataView(buf.buffer);
-  // 0x00: pointer
-  if (data?.omac !== undefined) view.setBigUint64(0, data.omac === null ? 0n : BigInt(util.toPointer(data.omac)), true);
-  // 0x08: pointer
-  if (data?.QueryType !== undefined) view.setBigUint64(8, data.QueryType === null ? 0n : BigInt(util.toPointer(data.QueryType)), true);
-  // 0x10: pointer
-  if (data?.hChannel !== undefined) view.setBigUint64(16, data.hChannel === null ? 0n : BigInt(util.toPointer(data.hChannel)), true);
-  // 0x18: u32
-  if (data?.SequenceNumber !== undefined) view.setUint32(24, Number(data.SequenceNumber), true);
-  // 0x1c: pad4
-  // 0x20: pointer
-  if (data?.ReturnCode !== undefined) view.setBigUint64(32, data.ReturnCode === null ? 0n : BigInt(util.toPointer(data.ReturnCode)), true);
   return buf;
 }
 
@@ -26116,41 +26235,6 @@ export function allocD3DAUTHENTICATEDCHANNEL_QUERYOUTPUTID_INPUT(data?: Partial<
   // 0x18: u32
   if (data?.OutputIDIndex !== undefined) view.setUint32(24, Number(data.OutputIDIndex), true);
   // 0x1c: pad4
-  return buf;
-}
-
-/**
- * Windows.Win32.Graphics.Direct3D9.D3DAUTHENTICATEDCHANNEL_QUERYOUTPUTID_OUTPUT (size: 40)
- */
-export interface D3DAUTHENTICATEDCHANNEL_QUERYOUTPUTID_OUTPUT {
-  /** Windows.Win32.Graphics.Direct3D9.D3DAUTHENTICATEDCHANNEL_QUERY_OUTPUT */
-  Output: Uint8Array | Deno.PointerValue | null;
-  /** Windows.Win32.Foundation.HANDLE */
-  DeviceHandle: Uint8Array | Deno.PointerValue | null;
-  /** Windows.Win32.Foundation.HANDLE */
-  CryptoSessionHandle: Uint8Array | Deno.PointerValue | null;
-  /** u32 */
-  OutputIDIndex: number;
-  /** u64 */
-  OutputID: Deno.PointerValue;
-}
-
-export const sizeofD3DAUTHENTICATEDCHANNEL_QUERYOUTPUTID_OUTPUT = 40;
-
-export function allocD3DAUTHENTICATEDCHANNEL_QUERYOUTPUTID_OUTPUT(data?: Partial<D3DAUTHENTICATEDCHANNEL_QUERYOUTPUTID_OUTPUT>): Uint8Array {
-  const buf = new Uint8Array(sizeofD3DAUTHENTICATEDCHANNEL_QUERYOUTPUTID_OUTPUT);
-  const view = new DataView(buf.buffer);
-  // 0x00: pointer
-  if (data?.Output !== undefined) view.setBigUint64(0, data.Output === null ? 0n : BigInt(util.toPointer(data.Output)), true);
-  // 0x08: pointer
-  if (data?.DeviceHandle !== undefined) view.setBigUint64(8, data.DeviceHandle === null ? 0n : BigInt(util.toPointer(data.DeviceHandle)), true);
-  // 0x10: pointer
-  if (data?.CryptoSessionHandle !== undefined) view.setBigUint64(16, data.CryptoSessionHandle === null ? 0n : BigInt(util.toPointer(data.CryptoSessionHandle)), true);
-  // 0x18: u32
-  if (data?.OutputIDIndex !== undefined) view.setUint32(24, Number(data.OutputIDIndex), true);
-  // 0x1c: pad4
-  // 0x20: u64
-  if (data?.OutputID !== undefined) view.setBigUint64(32, BigInt(data.OutputID), true);
   return buf;
 }
 
@@ -26502,28 +26586,6 @@ export function allocD3DENCRYPTED_BLOCK_INFO(data?: Partial<D3DENCRYPTED_BLOCK_I
   // 0x08: u32
   if (data?.NumBytesInEncryptPattern !== undefined) view.setUint32(8, Number(data.NumBytesInEncryptPattern), true);
   // 0x0c: pad4
-  return buf;
-}
-
-/**
- * Windows.Win32.Graphics.Direct3D9.D3DAES_CTR_IV (size: 16)
- */
-export interface D3DAES_CTR_IV {
-  /** u64 */
-  IV: Deno.PointerValue;
-  /** u64 */
-  Count: Deno.PointerValue;
-}
-
-export const sizeofD3DAES_CTR_IV = 16;
-
-export function allocD3DAES_CTR_IV(data?: Partial<D3DAES_CTR_IV>): Uint8Array {
-  const buf = new Uint8Array(sizeofD3DAES_CTR_IV);
-  const view = new DataView(buf.buffer);
-  // 0x00: u64
-  if (data?.IV !== undefined) view.setBigUint64(0, BigInt(data.IV), true);
-  // 0x08: u64
-  if (data?.Count !== undefined) view.setBigUint64(8, BigInt(data.Count), true);
   return buf;
 }
 

@@ -50,6 +50,18 @@ export const GPO_LIST_FLAG_MACHINE = 1;
 export const GPO_LIST_FLAG_SITEONLY = 2;
 export const GPO_LIST_FLAG_NO_WMIFILTERS = 4;
 export const GPO_LIST_FLAG_NO_SECURITYFILTERS = 8;
+export const GP_DLLNAME = "DllName";
+export const GP_ENABLEASYNCHRONOUSPROCESSING = "EnableAsynchronousProcessing";
+export const GP_MAXNOGPOLISTCHANGESINTERVAL = "MaxNoGPOListChangesInterval";
+export const GP_NOBACKGROUNDPOLICY = "NoBackgroundPolicy";
+export const GP_NOGPOLISTCHANGES = "NoGPOListChanges";
+export const GP_NOMACHINEPOLICY = "NoMachinePolicy";
+export const GP_NOSLOWLINK = "NoSlowLink";
+export const GP_NOTIFYLINKTRANSITION = "NotifyLinkTransition";
+export const GP_NOUSERPOLICY = "NoUserPolicy";
+export const GP_PERUSERLOCALSETTINGS = "PerUserLocalSettings";
+export const GP_PROCESSGROUPPOLICY = "ProcessGroupPolicy";
+export const GP_REQUIRESSUCCESSFULREGISTRY = "RequiresSuccessfulRegistry";
 export const GPO_INFO_FLAG_MACHINE = 1;
 export const GPO_INFO_FLAG_BACKGROUND = 16;
 export const GPO_INFO_FLAG_SLOWLINK = 32;
@@ -842,14 +854,16 @@ export function allocGPOBROWSEINFO(data?: Partial<GPOBROWSEINFO>): Uint8Array {
 
 export type HANDLE = Deno.PointerValue;
 
-export type PSID = Deno.PointerValue;
+export type PSID = Deno.PointerValue | Uint8Array | null;
 
 export type HRESULT = number;
+
+export type PSECURITY_DESCRIPTOR = Deno.PointerValue | Uint8Array | null;
 
 // Native Libraries
 
 try {
-  var libUSERENV = Deno.dlopen("USERENV", {
+  var libUSERENV_dll = Deno.dlopen("USERENV.dll", {
     RefreshPolicy: {
       parameters: ["i32"],
       result: "i32",
@@ -930,7 +944,7 @@ try {
 } catch(e) { /* ignore */ }
 
 try {
-  var libADVAPI32 = Deno.dlopen("ADVAPI32", {
+  var libADVAPI32_dll = Deno.dlopen("ADVAPI32.dll", {
     InstallApplication: {
       parameters: ["pointer"],
       result: "u32",
@@ -963,7 +977,7 @@ try {
 } catch(e) { /* ignore */ }
 
 try {
-  var libGPEDIT = Deno.dlopen("GPEDIT", {
+  var libGPEDIT_dll = Deno.dlopen("GPEDIT.dll", {
     CreateGPOLink: {
       parameters: ["buffer", "buffer", "i32"],
       result: "pointer",
@@ -996,39 +1010,39 @@ try {
 export function RefreshPolicy(
   bMachine: boolean /* Windows.Win32.Foundation.BOOL */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSERENV.RefreshPolicy(util.boolToFfi(bMachine)));
+  return util.boolFromFfi(libUSERENV_dll.RefreshPolicy(util.boolToFfi(bMachine)));
 }
 
 export function RefreshPolicyEx(
   bMachine: boolean /* Windows.Win32.Foundation.BOOL */,
   dwOptions: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSERENV.RefreshPolicyEx(util.boolToFfi(bMachine), dwOptions));
+  return util.boolFromFfi(libUSERENV_dll.RefreshPolicyEx(util.boolToFfi(bMachine), dwOptions));
 }
 
 export function EnterCriticalPolicySection(
   bMachine: boolean /* Windows.Win32.Foundation.BOOL */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */ {
-  return util.pointerFromFfi(libUSERENV.EnterCriticalPolicySection(util.boolToFfi(bMachine)));
+  return util.pointerFromFfi(libUSERENV_dll.EnterCriticalPolicySection(util.boolToFfi(bMachine)));
 }
 
 export function LeaveCriticalPolicySection(
   hSection: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSERENV.LeaveCriticalPolicySection(util.toPointer(hSection)));
+  return util.boolFromFfi(libUSERENV_dll.LeaveCriticalPolicySection(util.toPointer(hSection)));
 }
 
 export function RegisterGPNotification(
   hEvent: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
   bMachine: boolean /* Windows.Win32.Foundation.BOOL */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSERENV.RegisterGPNotification(util.toPointer(hEvent), util.boolToFfi(bMachine)));
+  return util.boolFromFfi(libUSERENV_dll.RegisterGPNotification(util.toPointer(hEvent), util.boolToFfi(bMachine)));
 }
 
 export function UnregisterGPNotification(
   hEvent: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSERENV.UnregisterGPNotification(util.toPointer(hEvent)));
+  return util.boolFromFfi(libUSERENV_dll.UnregisterGPNotification(util.toPointer(hEvent)));
 }
 
 export function GetGPOListA(
@@ -1039,7 +1053,7 @@ export function GetGPOListA(
   dwFlags: number /* u32 */,
   pGPOList: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSERENV.GetGPOListA(util.toPointer(hToken), util.pstrToFfi(lpName), util.pstrToFfi(lpHostName), util.pstrToFfi(lpComputerName), dwFlags, util.toPointer(pGPOList)));
+  return util.boolFromFfi(libUSERENV_dll.GetGPOListA(util.toPointer(hToken), util.pstrToFfi(lpName), util.pstrToFfi(lpHostName), util.pstrToFfi(lpComputerName), dwFlags, util.toPointer(pGPOList)));
 }
 
 export function GetGPOListW(
@@ -1050,19 +1064,19 @@ export function GetGPOListW(
   dwFlags: number /* u32 */,
   pGPOList: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSERENV.GetGPOListW(util.toPointer(hToken), util.pwstrToFfi(lpName), util.pwstrToFfi(lpHostName), util.pwstrToFfi(lpComputerName), dwFlags, util.toPointer(pGPOList)));
+  return util.boolFromFfi(libUSERENV_dll.GetGPOListW(util.toPointer(hToken), util.pwstrToFfi(lpName), util.pwstrToFfi(lpHostName), util.pwstrToFfi(lpComputerName), dwFlags, util.toPointer(pGPOList)));
 }
 
 export function FreeGPOListA(
   pGPOList: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSERENV.FreeGPOListA(util.toPointer(pGPOList)));
+  return util.boolFromFfi(libUSERENV_dll.FreeGPOListA(util.toPointer(pGPOList)));
 }
 
 export function FreeGPOListW(
   pGPOList: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSERENV.FreeGPOListW(util.toPointer(pGPOList)));
+  return util.boolFromFfi(libUSERENV_dll.FreeGPOListW(util.toPointer(pGPOList)));
 }
 
 export function GetAppliedGPOListA(
@@ -1072,7 +1086,7 @@ export function GetAppliedGPOListA(
   pGuidExtension: Deno.PointerValue | Uint8Array | null /* ptr */,
   ppGPOList: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libUSERENV.GetAppliedGPOListA(dwFlags, util.pstrToFfi(pMachineName), util.toPointer(pSidUser), util.toPointer(pGuidExtension), util.toPointer(ppGPOList));
+  return libUSERENV_dll.GetAppliedGPOListA(dwFlags, util.pstrToFfi(pMachineName), util.toPointer(pSidUser), util.toPointer(pGuidExtension), util.toPointer(ppGPOList));
 }
 
 export function GetAppliedGPOListW(
@@ -1082,7 +1096,7 @@ export function GetAppliedGPOListW(
   pGuidExtension: Deno.PointerValue | Uint8Array | null /* ptr */,
   ppGPOList: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libUSERENV.GetAppliedGPOListW(dwFlags, util.pwstrToFfi(pMachineName), util.toPointer(pSidUser), util.toPointer(pGuidExtension), util.toPointer(ppGPOList));
+  return libUSERENV_dll.GetAppliedGPOListW(dwFlags, util.pwstrToFfi(pMachineName), util.toPointer(pSidUser), util.toPointer(pGuidExtension), util.toPointer(ppGPOList));
 }
 
 export function ProcessGroupPolicyCompleted(
@@ -1090,7 +1104,7 @@ export function ProcessGroupPolicyCompleted(
   pAsyncHandle: Deno.PointerValue /* usize */,
   dwStatus: number /* u32 */,
 ): number /* u32 */ {
-  return libUSERENV.ProcessGroupPolicyCompleted(util.toPointer(extensionId), pAsyncHandle, dwStatus);
+  return libUSERENV_dll.ProcessGroupPolicyCompleted(util.toPointer(extensionId), pAsyncHandle, dwStatus);
 }
 
 export function ProcessGroupPolicyCompletedEx(
@@ -1099,11 +1113,11 @@ export function ProcessGroupPolicyCompletedEx(
   dwStatus: number /* u32 */,
   RsopStatus: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */,
 ): number /* u32 */ {
-  return libUSERENV.ProcessGroupPolicyCompletedEx(util.toPointer(extensionId), pAsyncHandle, dwStatus, util.toPointer(RsopStatus));
+  return libUSERENV_dll.ProcessGroupPolicyCompletedEx(util.toPointer(extensionId), pAsyncHandle, dwStatus, util.toPointer(RsopStatus));
 }
 
 export function RsopAccessCheckByType(
-  pSecurityDescriptor: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pSecurityDescriptor: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Security.PSECURITY_DESCRIPTOR */,
   pPrincipalSelfSid: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.PSID */,
   pRsopToken: Deno.PointerValue | Uint8Array | null /* ptr */,
   dwDesiredAccessMask: number /* u32 */,
@@ -1115,7 +1129,7 @@ export function RsopAccessCheckByType(
   pdwGrantedAccessMask: Deno.PointerValue | Uint8Array | null /* ptr */,
   pbAccessStatus: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libUSERENV.RsopAccessCheckByType(util.toPointer(pSecurityDescriptor), util.toPointer(pPrincipalSelfSid), util.toPointer(pRsopToken), dwDesiredAccessMask, util.toPointer(pObjectTypeList), ObjectTypeListLength, util.toPointer(pGenericMapping), util.toPointer(pPrivilegeSet), util.toPointer(pdwPrivilegeSetLength), util.toPointer(pdwGrantedAccessMask), util.toPointer(pbAccessStatus)));
+  return util.pointerFromFfi(libUSERENV_dll.RsopAccessCheckByType(util.toPointer(pSecurityDescriptor), util.toPointer(pPrincipalSelfSid), util.toPointer(pRsopToken), dwDesiredAccessMask, util.toPointer(pObjectTypeList), ObjectTypeListLength, util.toPointer(pGenericMapping), util.toPointer(pPrivilegeSet), util.toPointer(pdwPrivilegeSetLength), util.toPointer(pdwGrantedAccessMask), util.toPointer(pbAccessStatus)));
 }
 
 export function RsopFileAccessCheck(
@@ -1125,7 +1139,7 @@ export function RsopFileAccessCheck(
   pdwGrantedAccessMask: Deno.PointerValue | Uint8Array | null /* ptr */,
   pbAccessStatus: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libUSERENV.RsopFileAccessCheck(util.pwstrToFfi(pszFileName), util.toPointer(pRsopToken), dwDesiredAccessMask, util.toPointer(pdwGrantedAccessMask), util.toPointer(pbAccessStatus)));
+  return util.pointerFromFfi(libUSERENV_dll.RsopFileAccessCheck(util.pwstrToFfi(pszFileName), util.toPointer(pRsopToken), dwDesiredAccessMask, util.toPointer(pdwGrantedAccessMask), util.toPointer(pbAccessStatus)));
 }
 
 export function RsopSetPolicySettingStatus(
@@ -1135,7 +1149,7 @@ export function RsopSetPolicySettingStatus(
   nInfo: number /* u32 */,
   pStatus: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libUSERENV.RsopSetPolicySettingStatus(dwFlags, util.toPointer(pServices), util.toPointer(pSettingInstance), nInfo, util.toPointer(pStatus)));
+  return util.pointerFromFfi(libUSERENV_dll.RsopSetPolicySettingStatus(dwFlags, util.toPointer(pServices), util.toPointer(pSettingInstance), nInfo, util.toPointer(pStatus)));
 }
 
 export function RsopResetPolicySettingStatus(
@@ -1143,7 +1157,7 @@ export function RsopResetPolicySettingStatus(
   pServices: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Wmi.IWbemServices */,
   pSettingInstance: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Wmi.IWbemClassObject */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libUSERENV.RsopResetPolicySettingStatus(dwFlags, util.toPointer(pServices), util.toPointer(pSettingInstance)));
+  return util.pointerFromFfi(libUSERENV_dll.RsopResetPolicySettingStatus(dwFlags, util.toPointer(pServices), util.toPointer(pSettingInstance)));
 }
 
 export function GenerateGPNotification(
@@ -1151,20 +1165,20 @@ export function GenerateGPNotification(
   lpwszMgmtProduct: string | null /* Windows.Win32.Foundation.PWSTR */,
   dwMgmtProductOptions: number /* u32 */,
 ): number /* u32 */ {
-  return libUSERENV.GenerateGPNotification(util.boolToFfi(bMachine), util.pwstrToFfi(lpwszMgmtProduct), dwMgmtProductOptions);
+  return libUSERENV_dll.GenerateGPNotification(util.boolToFfi(bMachine), util.pwstrToFfi(lpwszMgmtProduct), dwMgmtProductOptions);
 }
 
 export function InstallApplication(
   pInstallInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libADVAPI32.InstallApplication(util.toPointer(pInstallInfo));
+  return libADVAPI32_dll.InstallApplication(util.toPointer(pInstallInfo));
 }
 
 export function UninstallApplication(
   ProductCode: string | null /* Windows.Win32.Foundation.PWSTR */,
   dwStatus: number /* u32 */,
 ): number /* u32 */ {
-  return libADVAPI32.UninstallApplication(util.pwstrToFfi(ProductCode), dwStatus);
+  return libADVAPI32_dll.UninstallApplication(util.pwstrToFfi(ProductCode), dwStatus);
 }
 
 export function CommandLineFromMsiDescriptor(
@@ -1172,7 +1186,7 @@ export function CommandLineFromMsiDescriptor(
   CommandLine: string | null /* Windows.Win32.Foundation.PWSTR */,
   CommandLineLength: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libADVAPI32.CommandLineFromMsiDescriptor(util.pwstrToFfi(Descriptor), util.pwstrToFfi(CommandLine), util.toPointer(CommandLineLength));
+  return libADVAPI32_dll.CommandLineFromMsiDescriptor(util.pwstrToFfi(Descriptor), util.pwstrToFfi(CommandLine), util.toPointer(CommandLineLength));
 }
 
 export function GetManagedApplications(
@@ -1182,7 +1196,7 @@ export function GetManagedApplications(
   pdwApps: Deno.PointerValue | Uint8Array | null /* ptr */,
   prgManagedApps: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libADVAPI32.GetManagedApplications(util.toPointer(pCategory), dwQueryFlags, dwInfoLevel, util.toPointer(pdwApps), util.toPointer(prgManagedApps));
+  return libADVAPI32_dll.GetManagedApplications(util.toPointer(pCategory), dwQueryFlags, dwInfoLevel, util.toPointer(pdwApps), util.toPointer(prgManagedApps));
 }
 
 export function GetLocalManagedApplications(
@@ -1190,7 +1204,7 @@ export function GetLocalManagedApplications(
   pdwApps: Deno.PointerValue | Uint8Array | null /* ptr */,
   prgLocalApps: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libADVAPI32.GetLocalManagedApplications(util.boolToFfi(bUserApps), util.toPointer(pdwApps), util.toPointer(prgLocalApps));
+  return libADVAPI32_dll.GetLocalManagedApplications(util.boolToFfi(bUserApps), util.toPointer(pdwApps), util.toPointer(prgLocalApps));
 }
 
 export function GetLocalManagedApplicationData(
@@ -1198,14 +1212,14 @@ export function GetLocalManagedApplicationData(
   DisplayName: Deno.PointerValue | Uint8Array | null /* ptr */,
   SupportUrl: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): void /* void */ {
-  return libADVAPI32.GetLocalManagedApplicationData(util.pwstrToFfi(ProductCode), util.toPointer(DisplayName), util.toPointer(SupportUrl));
+  return libADVAPI32_dll.GetLocalManagedApplicationData(util.pwstrToFfi(ProductCode), util.toPointer(DisplayName), util.toPointer(SupportUrl));
 }
 
 export function GetManagedApplicationCategories(
   dwReserved: number /* u32 */,
   pAppCategory: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libADVAPI32.GetManagedApplicationCategories(dwReserved, util.toPointer(pAppCategory));
+  return libADVAPI32_dll.GetManagedApplicationCategories(dwReserved, util.toPointer(pAppCategory));
 }
 
 export function CreateGPOLink(
@@ -1213,39 +1227,39 @@ export function CreateGPOLink(
   lpContainer: string | null /* Windows.Win32.Foundation.PWSTR */,
   fHighPriority: boolean /* Windows.Win32.Foundation.BOOL */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libGPEDIT.CreateGPOLink(util.pwstrToFfi(lpGPO), util.pwstrToFfi(lpContainer), util.boolToFfi(fHighPriority)));
+  return util.pointerFromFfi(libGPEDIT_dll.CreateGPOLink(util.pwstrToFfi(lpGPO), util.pwstrToFfi(lpContainer), util.boolToFfi(fHighPriority)));
 }
 
 export function DeleteGPOLink(
   lpGPO: string | null /* Windows.Win32.Foundation.PWSTR */,
   lpContainer: string | null /* Windows.Win32.Foundation.PWSTR */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libGPEDIT.DeleteGPOLink(util.pwstrToFfi(lpGPO), util.pwstrToFfi(lpContainer)));
+  return util.pointerFromFfi(libGPEDIT_dll.DeleteGPOLink(util.pwstrToFfi(lpGPO), util.pwstrToFfi(lpContainer)));
 }
 
 export function DeleteAllGPOLinks(
   lpContainer: string | null /* Windows.Win32.Foundation.PWSTR */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libGPEDIT.DeleteAllGPOLinks(util.pwstrToFfi(lpContainer)));
+  return util.pointerFromFfi(libGPEDIT_dll.DeleteAllGPOLinks(util.pwstrToFfi(lpContainer)));
 }
 
 export function BrowseForGPO(
   lpBrowseInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libGPEDIT.BrowseForGPO(util.toPointer(lpBrowseInfo)));
+  return util.pointerFromFfi(libGPEDIT_dll.BrowseForGPO(util.toPointer(lpBrowseInfo)));
 }
 
 export function ImportRSoPData(
   lpNameSpace: string | null /* Windows.Win32.Foundation.PWSTR */,
   lpFileName: string | null /* Windows.Win32.Foundation.PWSTR */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libGPEDIT.ImportRSoPData(util.pwstrToFfi(lpNameSpace), util.pwstrToFfi(lpFileName)));
+  return util.pointerFromFfi(libGPEDIT_dll.ImportRSoPData(util.pwstrToFfi(lpNameSpace), util.pwstrToFfi(lpFileName)));
 }
 
 export function ExportRSoPData(
   lpNameSpace: string | null /* Windows.Win32.Foundation.PWSTR */,
   lpFileName: string | null /* Windows.Win32.Foundation.PWSTR */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libGPEDIT.ExportRSoPData(util.pwstrToFfi(lpNameSpace), util.pwstrToFfi(lpFileName)));
+  return util.pointerFromFfi(libGPEDIT_dll.ExportRSoPData(util.pwstrToFfi(lpNameSpace), util.pwstrToFfi(lpFileName)));
 }
 

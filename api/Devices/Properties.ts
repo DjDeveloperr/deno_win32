@@ -45,29 +45,6 @@ export const DEVPROP_STORE_USER = 1;
 // Structs
 
 /**
- * Windows.Win32.UI.Shell.PropertiesSystem.PROPERTYKEY (size: 16)
- */
-export interface PROPERTYKEY {
-  /** System.Guid */
-  fmtid: Uint8Array | Deno.PointerValue | null;
-  /** u32 */
-  pid: number;
-}
-
-export const sizeofPROPERTYKEY = 16;
-
-export function allocPROPERTYKEY(data?: Partial<PROPERTYKEY>): Uint8Array {
-  const buf = new Uint8Array(sizeofPROPERTYKEY);
-  const view = new DataView(buf.buffer);
-  // 0x00: pointer
-  if (data?.fmtid !== undefined) view.setBigUint64(0, data.fmtid === null ? 0n : BigInt(util.toPointer(data.fmtid)), true);
-  // 0x08: u32
-  if (data?.pid !== undefined) view.setUint32(8, Number(data.pid), true);
-  // 0x0c: pad4
-  return buf;
-}
-
-/**
  * Windows.Win32.Devices.Properties.DEVPROPKEY (size: 16)
  */
 export interface DEVPROPKEY {

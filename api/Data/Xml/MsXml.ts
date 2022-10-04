@@ -4,7 +4,7 @@ import * as util from "../../../util.ts";
 
 // Enums
 export type DOMNodeType = number;
-export type XMLEMEM_TYPE = number;
+export type XMLELEM_TYPE = number;
 export type SERVERXMLHTTP_OPTION = number;
 export type SXH_SERVER_CERT_OPTION = number;
 export type SXH_PROXY_SETTING = number;

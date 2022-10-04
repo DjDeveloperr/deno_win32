@@ -76,6 +76,37 @@ export const EAP_E_SIM_NOT_VALID = 2151810304;
 export const EAP_METHOD_INVALID_PACKET = 2151809047;
 export const EAP_INVALID_PACKET = 2151809048;
 export const EAP_PEER_FLAG_GUEST_ACCESS = 64;
+export const eapPropCipherSuiteNegotiation = 1;
+export const eapPropMutualAuth = 2;
+export const eapPropIntegrity = 4;
+export const eapPropReplayProtection = 8;
+export const eapPropConfidentiality = 16;
+export const eapPropKeyDerivation = 32;
+export const eapPropKeyStrength64 = 64;
+export const eapPropKeyStrength128 = 128;
+export const eapPropKeyStrength256 = 256;
+export const eapPropKeyStrength512 = 512;
+export const eapPropKeyStrength1024 = 1024;
+export const eapPropDictionaryAttackResistance = 2048;
+export const eapPropFastReconnect = 4096;
+export const eapPropCryptoBinding = 8192;
+export const eapPropSessionIndependence = 16384;
+export const eapPropFragmentation = 32768;
+export const eapPropChannelBinding = 65536;
+export const eapPropNap = 131072;
+export const eapPropStandalone = 262144;
+export const eapPropMppeEncryption = 524288;
+export const eapPropTunnelMethod = 1048576;
+export const eapPropSupportsConfig = 2097152;
+export const eapPropCertifiedMethod = 4194304;
+export const eapPropHiddenMethod = 8388608;
+export const eapPropMachineAuth = 16777216;
+export const eapPropUserAuth = 33554432;
+export const eapPropIdentityPrivacy = 67108864;
+export const eapPropMethodChaining = 134217728;
+export const eapPropSharedStateEquivalence = 268435456;
+export const eapPropReserved = 2147483648;
+export const EAP_VALUENAME_PROPERTIES = "Properties";
 export const EAP_FLAG_Reserved1 = 1;
 export const EAP_FLAG_NON_INTERACTIVE = 2;
 export const EAP_FLAG_LOGON = 4;
@@ -116,12 +147,47 @@ export const MAX_EAP_CONFIG_INPUT_FIELD_LENGTH = 256;
 export const MAX_EAP_CONFIG_INPUT_FIELD_VALUE_LENGTH = 1024;
 export const CERTIFICATE_HASH_LENGTH = 20;
 export const NCRYPT_PIN_CACHE_PIN_BYTE_LENGTH = 90;
+export const EAP_REGISTRY_LOCATION = "System\CurrentControlSet\Services\EapHost\Methods";
+export const EAP_PEER_VALUENAME_DLL_PATH = "PeerDllPath";
+export const EAP_PEER_VALUENAME_FRIENDLY_NAME = "PeerFriendlyName";
+export const EAP_PEER_VALUENAME_CONFIGUI = "PeerConfigUIPath";
+export const EAP_PEER_VALUENAME_REQUIRE_CONFIGUI = "PeerRequireConfigUI";
+export const EAP_PEER_VALUENAME_IDENTITY = "PeerIdentityPath";
+export const EAP_PEER_VALUENAME_INTERACTIVEUI = "PeerInteractiveUIPath";
+export const EAP_PEER_VALUENAME_INVOKE_NAMEDLG = "PeerInvokeUsernameDialog";
+export const EAP_PEER_VALUENAME_INVOKE_PWDDLG = "PeerInvokePasswordDialog";
+export const EAP_PEER_VALUENAME_PROPERTIES = "Properties";
+export const EAP_AUTHENTICATOR_VALUENAME_DLL_PATH = "AuthenticatorDllPath";
+export const EAP_AUTHENTICATOR_VALUENAME_FRIENDLY_NAME = "AuthenticatorFriendlyName";
+export const EAP_AUTHENTICATOR_VALUENAME_PROPERTIES = "Properties";
+export const EAP_AUTHENTICATOR_VALUENAME_CONFIGUI = "AuthenticatorConfigUIPath";
 export const EAP_METHOD_AUTHENTICATOR_CONFIG_IS_IDENTITY_PRIVACY = 1;
+export const RAS_EAP_REGISTRY_LOCATION = "System\CurrentControlSet\Services\Rasman\PPP\EAP";
+export const RAS_EAP_VALUENAME_PATH = "Path";
+export const RAS_EAP_VALUENAME_CONFIGUI = "ConfigUIPath";
+export const RAS_EAP_VALUENAME_INTERACTIVEUI = "InteractiveUIPath";
+export const RAS_EAP_VALUENAME_IDENTITY = "IdentityPath";
+export const RAS_EAP_VALUENAME_FRIENDLY_NAME = "FriendlyName";
+export const RAS_EAP_VALUENAME_DEFAULT_DATA = "ConfigData";
+export const RAS_EAP_VALUENAME_REQUIRE_CONFIGUI = "RequireConfigUI";
+export const RAS_EAP_VALUENAME_ENCRYPTION = "MPPEEncryptionSupported";
+export const RAS_EAP_VALUENAME_INVOKE_NAMEDLG = "InvokeUsernameDialog";
+export const RAS_EAP_VALUENAME_INVOKE_PWDDLG = "InvokePasswordDialog";
+export const RAS_EAP_VALUENAME_CONFIG_CLSID = "ConfigCLSID";
+export const RAS_EAP_VALUENAME_STANDALONE_SUPPORTED = "StandaloneSupported";
+export const RAS_EAP_VALUENAME_ROLES_SUPPORTED = "RolesSupported";
+export const RAS_EAP_VALUENAME_PER_POLICY_CONFIG = "PerPolicyConfig";
+export const RAS_EAP_VALUENAME_ISTUNNEL_METHOD = "IsTunnelMethod";
+export const RAS_EAP_VALUENAME_FILTER_INNERMETHODS = "FilterInnerMethods";
 export const RAS_EAP_ROLE_AUTHENTICATOR = 1;
 export const RAS_EAP_ROLE_AUTHENTICATEE = 2;
 export const RAS_EAP_ROLE_EXCLUDE_IN_EAP = 4;
 export const RAS_EAP_ROLE_EXCLUDE_IN_PEAP = 8;
 export const RAS_EAP_ROLE_EXCLUDE_IN_VPN = 16;
+export const raatARAPChallenge = 33;
+export const raatARAPOldPassword = 19;
+export const raatARAPNewPassword = 20;
+export const raatARAPPasswordChangeReason = 21;
 export const EAPCODE_Request = 1;
 export const EAPCODE_Response = 2;
 export const EAPCODE_Success = 3;
@@ -454,6 +520,8 @@ export const EAP_AUTHENTICATOR_SEND_TIMEOUT_INTERACTIVE = 2;
 
 // Structs
 
+export type NCRYPT_KEY_HANDLE = Deno.PointerValue;
+
 export type HANDLE = Deno.PointerValue;
 
 /**
@@ -462,8 +530,8 @@ export type HANDLE = Deno.PointerValue;
 export interface NgcTicketContext {
   /** array */
   wszTicket: Deno.PointerValue | null;
-  /** usize */
-  hKey: Deno.PointerValue;
+  /** Windows.Win32.Security.Cryptography.NCRYPT_KEY_HANDLE */
+  hKey: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.Foundation.HANDLE */
   hImpersonateToken: Uint8Array | Deno.PointerValue | null;
 }
@@ -475,8 +543,8 @@ export function allocNgcTicketContext(data?: Partial<NgcTicketContext>): Uint8Ar
   const view = new DataView(buf.buffer);
   // 0x00: pointer
   if (data?.wszTicket !== undefined) view.setBigUint64(0, data.wszTicket === null ? 0n : BigInt(util.toPointer(data.wszTicket)), true);
-  // 0x08: usize
-  if (data?.hKey !== undefined) view.setBigUint64(8, BigInt(data.hKey), true);
+  // 0x08: pointer
+  if (data?.hKey !== undefined) view.setBigUint64(8, data.hKey === null ? 0n : BigInt(util.toPointer(data.hKey)), true);
   // 0x10: pointer
   if (data?.hImpersonateToken !== undefined) view.setBigUint64(16, data.hImpersonateToken === null ? 0n : BigInt(util.toPointer(data.hImpersonateToken)), true);
   return buf;
@@ -2053,7 +2121,7 @@ export type HWND = Deno.PointerValue;
 // Native Libraries
 
 try {
-  var libeappcfg = Deno.dlopen("eappcfg", {
+  var libeappcfg_dll = Deno.dlopen("eappcfg.dll", {
     EapHostPeerGetMethods: {
       parameters: ["pointer", "pointer"],
       result: "u32",
@@ -2114,7 +2182,7 @@ try {
 } catch(e) { /* ignore */ }
 
 try {
-  var libeappprxy = Deno.dlopen("eappprxy", {
+  var libeappprxy_dll = Deno.dlopen("eappprxy.dll", {
     EapHostPeerInitialize: {
       parameters: [],
       result: "u32",
@@ -2196,7 +2264,7 @@ export function EapHostPeerGetMethods(
   pEapMethodInfoArray: Deno.PointerValue | Uint8Array | null /* ptr */,
   ppEapError: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libeappcfg.EapHostPeerGetMethods(util.toPointer(pEapMethodInfoArray), util.toPointer(ppEapError));
+  return libeappcfg_dll.EapHostPeerGetMethods(util.toPointer(pEapMethodInfoArray), util.toPointer(ppEapError));
 }
 
 export function EapHostPeerGetMethodProperties(
@@ -2211,7 +2279,7 @@ export function EapHostPeerGetMethodProperties(
   pMethodPropertyArray: Deno.PointerValue | Uint8Array | null /* ptr */,
   ppEapError: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libeappcfg.EapHostPeerGetMethodProperties(dwVersion, dwFlags, util.toPointer(eapMethodType), util.toPointer(hUserImpersonationToken), dwEapConnDataSize, util.toPointer(pbEapConnData), dwUserDataSize, util.toPointer(pbUserData), util.toPointer(pMethodPropertyArray), util.toPointer(ppEapError));
+  return libeappcfg_dll.EapHostPeerGetMethodProperties(dwVersion, dwFlags, util.toPointer(eapMethodType), util.toPointer(hUserImpersonationToken), dwEapConnDataSize, util.toPointer(pbEapConnData), dwUserDataSize, util.toPointer(pbUserData), util.toPointer(pMethodPropertyArray), util.toPointer(ppEapError));
 }
 
 export function EapHostPeerInvokeConfigUI(
@@ -2224,7 +2292,7 @@ export function EapHostPeerInvokeConfigUI(
   ppConfigOut: Deno.PointerValue | Uint8Array | null /* ptr */,
   ppEapError: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libeappcfg.EapHostPeerInvokeConfigUI(util.hwndToFfi(hwndParent), dwFlags, util.toPointer(eapMethodType), dwSizeOfConfigIn, util.toPointer(pConfigIn), util.toPointer(pdwSizeOfConfigOut), util.toPointer(ppConfigOut), util.toPointer(ppEapError));
+  return libeappcfg_dll.EapHostPeerInvokeConfigUI(util.hwndToFfi(hwndParent), dwFlags, util.toPointer(eapMethodType), dwSizeOfConfigIn, util.toPointer(pConfigIn), util.toPointer(pdwSizeOfConfigOut), util.toPointer(ppConfigOut), util.toPointer(ppEapError));
 }
 
 export function EapHostPeerQueryCredentialInputFields(
@@ -2236,7 +2304,7 @@ export function EapHostPeerQueryCredentialInputFields(
   pEapConfigInputFieldArray: Deno.PointerValue | Uint8Array | null /* ptr */,
   ppEapError: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libeappcfg.EapHostPeerQueryCredentialInputFields(util.toPointer(hUserImpersonationToken), util.toPointer(eapMethodType), dwFlags, dwEapConnDataSize, util.toPointer(pbEapConnData), util.toPointer(pEapConfigInputFieldArray), util.toPointer(ppEapError));
+  return libeappcfg_dll.EapHostPeerQueryCredentialInputFields(util.toPointer(hUserImpersonationToken), util.toPointer(eapMethodType), dwFlags, dwEapConnDataSize, util.toPointer(pbEapConnData), util.toPointer(pEapConfigInputFieldArray), util.toPointer(ppEapError));
 }
 
 export function EapHostPeerQueryUserBlobFromCredentialInputFields(
@@ -2250,7 +2318,7 @@ export function EapHostPeerQueryUserBlobFromCredentialInputFields(
   ppbUserBlob: Deno.PointerValue | Uint8Array | null /* ptr */,
   ppEapError: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libeappcfg.EapHostPeerQueryUserBlobFromCredentialInputFields(util.toPointer(hUserImpersonationToken), util.toPointer(eapMethodType), dwFlags, dwEapConnDataSize, util.toPointer(pbEapConnData), util.toPointer(pEapConfigInputFieldArray), util.toPointer(pdwUserBlobSize), util.toPointer(ppbUserBlob), util.toPointer(ppEapError));
+  return libeappcfg_dll.EapHostPeerQueryUserBlobFromCredentialInputFields(util.toPointer(hUserImpersonationToken), util.toPointer(eapMethodType), dwFlags, dwEapConnDataSize, util.toPointer(pbEapConnData), util.toPointer(pEapConfigInputFieldArray), util.toPointer(pdwUserBlobSize), util.toPointer(ppbUserBlob), util.toPointer(ppEapError));
 }
 
 export function EapHostPeerInvokeIdentityUI(
@@ -2268,7 +2336,7 @@ export function EapHostPeerInvokeIdentityUI(
   ppEapError: Deno.PointerValue | Uint8Array | null /* ptr */,
   ppvReserved: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libeappcfg.EapHostPeerInvokeIdentityUI(dwVersion, util.toPointer(eapMethodType), dwFlags, util.hwndToFfi(hwndParent), dwSizeofConnectionData, util.toPointer(pConnectionData), dwSizeofUserData, util.toPointer(pUserData), util.toPointer(pdwSizeOfUserDataOut), util.toPointer(ppUserDataOut), util.toPointer(ppwszIdentity), util.toPointer(ppEapError), util.toPointer(ppvReserved));
+  return libeappcfg_dll.EapHostPeerInvokeIdentityUI(dwVersion, util.toPointer(eapMethodType), dwFlags, util.hwndToFfi(hwndParent), dwSizeofConnectionData, util.toPointer(pConnectionData), dwSizeofUserData, util.toPointer(pUserData), util.toPointer(pdwSizeOfUserDataOut), util.toPointer(ppUserDataOut), util.toPointer(ppwszIdentity), util.toPointer(ppEapError), util.toPointer(ppvReserved));
 }
 
 export function EapHostPeerInvokeInteractiveUI(
@@ -2279,7 +2347,7 @@ export function EapHostPeerInvokeInteractiveUI(
   ppDataFromInteractiveUI: Deno.PointerValue | Uint8Array | null /* ptr */,
   ppEapError: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libeappcfg.EapHostPeerInvokeInteractiveUI(util.hwndToFfi(hwndParent), dwSizeofUIContextData, util.toPointer(pUIContextData), util.toPointer(pdwSizeOfDataFromInteractiveUI), util.toPointer(ppDataFromInteractiveUI), util.toPointer(ppEapError));
+  return libeappcfg_dll.EapHostPeerInvokeInteractiveUI(util.hwndToFfi(hwndParent), dwSizeofUIContextData, util.toPointer(pUIContextData), util.toPointer(pdwSizeOfDataFromInteractiveUI), util.toPointer(ppDataFromInteractiveUI), util.toPointer(ppEapError));
 }
 
 export function EapHostPeerQueryInteractiveUIInputFields(
@@ -2291,7 +2359,7 @@ export function EapHostPeerQueryInteractiveUIInputFields(
   ppEapError: Deno.PointerValue | Uint8Array | null /* ptr */,
   ppvReserved: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libeappcfg.EapHostPeerQueryInteractiveUIInputFields(dwVersion, dwFlags, dwSizeofUIContextData, util.toPointer(pUIContextData), util.toPointer(pEapInteractiveUIData), util.toPointer(ppEapError), util.toPointer(ppvReserved));
+  return libeappcfg_dll.EapHostPeerQueryInteractiveUIInputFields(dwVersion, dwFlags, dwSizeofUIContextData, util.toPointer(pUIContextData), util.toPointer(pEapInteractiveUIData), util.toPointer(ppEapError), util.toPointer(ppvReserved));
 }
 
 export function EapHostPeerQueryUIBlobFromInteractiveUIInputFields(
@@ -2305,7 +2373,7 @@ export function EapHostPeerQueryUIBlobFromInteractiveUIInputFields(
   ppEapError: Deno.PointerValue | Uint8Array | null /* ptr */,
   ppvReserved: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libeappcfg.EapHostPeerQueryUIBlobFromInteractiveUIInputFields(dwVersion, dwFlags, dwSizeofUIContextData, util.toPointer(pUIContextData), util.toPointer(pEapInteractiveUIData), util.toPointer(pdwSizeOfDataFromInteractiveUI), util.toPointer(ppDataFromInteractiveUI), util.toPointer(ppEapError), util.toPointer(ppvReserved));
+  return libeappcfg_dll.EapHostPeerQueryUIBlobFromInteractiveUIInputFields(dwVersion, dwFlags, dwSizeofUIContextData, util.toPointer(pUIContextData), util.toPointer(pEapInteractiveUIData), util.toPointer(pdwSizeOfDataFromInteractiveUI), util.toPointer(ppDataFromInteractiveUI), util.toPointer(ppEapError), util.toPointer(ppvReserved));
 }
 
 export function EapHostPeerConfigXml2Blob(
@@ -2316,7 +2384,7 @@ export function EapHostPeerConfigXml2Blob(
   pEapMethodType: Deno.PointerValue | Uint8Array | null /* ptr */,
   ppEapError: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libeappcfg.EapHostPeerConfigXml2Blob(dwFlags, util.toPointer(pConfigDoc), util.toPointer(pdwSizeOfConfigOut), util.toPointer(ppConfigOut), util.toPointer(pEapMethodType), util.toPointer(ppEapError));
+  return libeappcfg_dll.EapHostPeerConfigXml2Blob(dwFlags, util.toPointer(pConfigDoc), util.toPointer(pdwSizeOfConfigOut), util.toPointer(ppConfigOut), util.toPointer(pEapMethodType), util.toPointer(ppEapError));
 }
 
 export function EapHostPeerCredentialsXml2Blob(
@@ -2329,7 +2397,7 @@ export function EapHostPeerCredentialsXml2Blob(
   pEapMethodType: Deno.PointerValue | Uint8Array | null /* ptr */,
   ppEapError: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libeappcfg.EapHostPeerCredentialsXml2Blob(dwFlags, util.toPointer(pCredentialsDoc), dwSizeOfConfigIn, util.toPointer(pConfigIn), util.toPointer(pdwSizeOfCredentialsOut), util.toPointer(ppCredentialsOut), util.toPointer(pEapMethodType), util.toPointer(ppEapError));
+  return libeappcfg_dll.EapHostPeerCredentialsXml2Blob(dwFlags, util.toPointer(pCredentialsDoc), dwSizeOfConfigIn, util.toPointer(pConfigIn), util.toPointer(pdwSizeOfCredentialsOut), util.toPointer(ppCredentialsOut), util.toPointer(pEapMethodType), util.toPointer(ppEapError));
 }
 
 export function EapHostPeerConfigBlob2Xml(
@@ -2340,27 +2408,27 @@ export function EapHostPeerConfigBlob2Xml(
   ppConfigDoc: Deno.PointerValue | Uint8Array | null /* ptr */,
   ppEapError: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libeappcfg.EapHostPeerConfigBlob2Xml(dwFlags, util.toPointer(eapMethodType), dwSizeOfConfigIn, util.toPointer(pConfigIn), util.toPointer(ppConfigDoc), util.toPointer(ppEapError));
+  return libeappcfg_dll.EapHostPeerConfigBlob2Xml(dwFlags, util.toPointer(eapMethodType), dwSizeOfConfigIn, util.toPointer(pConfigIn), util.toPointer(ppConfigDoc), util.toPointer(ppEapError));
 }
 
 export function EapHostPeerFreeMemory(
   pData: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): void /* void */ {
-  return libeappcfg.EapHostPeerFreeMemory(util.toPointer(pData));
+  return libeappcfg_dll.EapHostPeerFreeMemory(util.toPointer(pData));
 }
 
 export function EapHostPeerFreeErrorMemory(
   pEapError: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): void /* void */ {
-  return libeappcfg.EapHostPeerFreeErrorMemory(util.toPointer(pEapError));
+  return libeappcfg_dll.EapHostPeerFreeErrorMemory(util.toPointer(pEapError));
 }
 
 export function EapHostPeerInitialize(): number /* u32 */ {
-  return libeappprxy.EapHostPeerInitialize();
+  return libeappprxy_dll.EapHostPeerInitialize();
 }
 
 export function EapHostPeerUninitialize(): void /* void */ {
-  return libeappprxy.EapHostPeerUninitialize();
+  return libeappprxy_dll.EapHostPeerUninitialize();
 }
 
 export function EapHostPeerBeginSession(
@@ -2379,7 +2447,7 @@ export function EapHostPeerBeginSession(
   pSessionId: Deno.PointerValue | Uint8Array | null /* ptr */,
   ppEapError: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libeappprxy.EapHostPeerBeginSession(dwFlags, util.toPointer(eapType), util.toPointer(pAttributeArray), util.toPointer(hTokenImpersonateUser), dwSizeofConnectionData, util.toPointer(pConnectionData), dwSizeofUserData, util.toPointer(pUserData), dwMaxSendPacketSize, util.toPointer(pConnectionId), util.toPointer(func), util.toPointer(pContextData), util.toPointer(pSessionId), util.toPointer(ppEapError));
+  return libeappprxy_dll.EapHostPeerBeginSession(dwFlags, util.toPointer(eapType), util.toPointer(pAttributeArray), util.toPointer(hTokenImpersonateUser), dwSizeofConnectionData, util.toPointer(pConnectionData), dwSizeofUserData, util.toPointer(pUserData), dwMaxSendPacketSize, util.toPointer(pConnectionId), util.toPointer(func), util.toPointer(pContextData), util.toPointer(pSessionId), util.toPointer(ppEapError));
 }
 
 export function EapHostPeerProcessReceivedPacket(
@@ -2389,7 +2457,7 @@ export function EapHostPeerProcessReceivedPacket(
   pEapOutput: Deno.PointerValue | Uint8Array | null /* ptr */,
   ppEapError: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libeappprxy.EapHostPeerProcessReceivedPacket(sessionHandle, cbReceivePacket, util.toPointer(pReceivePacket), util.toPointer(pEapOutput), util.toPointer(ppEapError));
+  return libeappprxy_dll.EapHostPeerProcessReceivedPacket(sessionHandle, cbReceivePacket, util.toPointer(pReceivePacket), util.toPointer(pEapOutput), util.toPointer(ppEapError));
 }
 
 export function EapHostPeerGetSendPacket(
@@ -2398,7 +2466,7 @@ export function EapHostPeerGetSendPacket(
   ppSendPacket: Deno.PointerValue | Uint8Array | null /* ptr */,
   ppEapError: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libeappprxy.EapHostPeerGetSendPacket(sessionHandle, util.toPointer(pcbSendPacket), util.toPointer(ppSendPacket), util.toPointer(ppEapError));
+  return libeappprxy_dll.EapHostPeerGetSendPacket(sessionHandle, util.toPointer(pcbSendPacket), util.toPointer(ppSendPacket), util.toPointer(ppEapError));
 }
 
 export function EapHostPeerGetResult(
@@ -2407,7 +2475,7 @@ export function EapHostPeerGetResult(
   ppResult: Deno.PointerValue | Uint8Array | null /* ptr */,
   ppEapError: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libeappprxy.EapHostPeerGetResult(sessionHandle, reason, util.toPointer(ppResult), util.toPointer(ppEapError));
+  return libeappprxy_dll.EapHostPeerGetResult(sessionHandle, reason, util.toPointer(ppResult), util.toPointer(ppEapError));
 }
 
 export function EapHostPeerGetUIContext(
@@ -2416,7 +2484,7 @@ export function EapHostPeerGetUIContext(
   ppUIContextData: Deno.PointerValue | Uint8Array | null /* ptr */,
   ppEapError: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libeappprxy.EapHostPeerGetUIContext(sessionHandle, util.toPointer(pdwSizeOfUIContextData), util.toPointer(ppUIContextData), util.toPointer(ppEapError));
+  return libeappprxy_dll.EapHostPeerGetUIContext(sessionHandle, util.toPointer(pdwSizeOfUIContextData), util.toPointer(ppUIContextData), util.toPointer(ppEapError));
 }
 
 export function EapHostPeerSetUIContext(
@@ -2426,7 +2494,7 @@ export function EapHostPeerSetUIContext(
   pEapOutput: Deno.PointerValue | Uint8Array | null /* ptr */,
   ppEapError: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libeappprxy.EapHostPeerSetUIContext(sessionHandle, dwSizeOfUIContextData, util.toPointer(pUIContextData), util.toPointer(pEapOutput), util.toPointer(ppEapError));
+  return libeappprxy_dll.EapHostPeerSetUIContext(sessionHandle, dwSizeOfUIContextData, util.toPointer(pUIContextData), util.toPointer(pEapOutput), util.toPointer(ppEapError));
 }
 
 export function EapHostPeerGetResponseAttributes(
@@ -2434,7 +2502,7 @@ export function EapHostPeerGetResponseAttributes(
   pAttribs: Deno.PointerValue | Uint8Array | null /* ptr */,
   ppEapError: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libeappprxy.EapHostPeerGetResponseAttributes(sessionHandle, util.toPointer(pAttribs), util.toPointer(ppEapError));
+  return libeappprxy_dll.EapHostPeerGetResponseAttributes(sessionHandle, util.toPointer(pAttribs), util.toPointer(ppEapError));
 }
 
 export function EapHostPeerSetResponseAttributes(
@@ -2443,7 +2511,7 @@ export function EapHostPeerSetResponseAttributes(
   pEapOutput: Deno.PointerValue | Uint8Array | null /* ptr */,
   ppEapError: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libeappprxy.EapHostPeerSetResponseAttributes(sessionHandle, util.toPointer(pAttribs), util.toPointer(pEapOutput), util.toPointer(ppEapError));
+  return libeappprxy_dll.EapHostPeerSetResponseAttributes(sessionHandle, util.toPointer(pAttribs), util.toPointer(pEapOutput), util.toPointer(ppEapError));
 }
 
 export function EapHostPeerGetAuthStatus(
@@ -2453,14 +2521,14 @@ export function EapHostPeerGetAuthStatus(
   ppAuthData: Deno.PointerValue | Uint8Array | null /* ptr */,
   ppEapError: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libeappprxy.EapHostPeerGetAuthStatus(sessionHandle, authParam, util.toPointer(pcbAuthData), util.toPointer(ppAuthData), util.toPointer(ppEapError));
+  return libeappprxy_dll.EapHostPeerGetAuthStatus(sessionHandle, authParam, util.toPointer(pcbAuthData), util.toPointer(ppAuthData), util.toPointer(ppEapError));
 }
 
 export function EapHostPeerEndSession(
   sessionHandle: number /* u32 */,
   ppEapError: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libeappprxy.EapHostPeerEndSession(sessionHandle, util.toPointer(ppEapError));
+  return libeappprxy_dll.EapHostPeerEndSession(sessionHandle, util.toPointer(ppEapError));
 }
 
 export function EapHostPeerGetDataToUnplumbCredentials(
@@ -2470,20 +2538,20 @@ export function EapHostPeerGetDataToUnplumbCredentials(
   ppEapError: Deno.PointerValue | Uint8Array | null /* ptr */,
   fSaveToCredMan: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libeappprxy.EapHostPeerGetDataToUnplumbCredentials(util.toPointer(pConnectionIdThatLastSavedCreds), util.toPointer(phCredentialImpersonationToken), sessionHandle, util.toPointer(ppEapError), util.toPointer(fSaveToCredMan));
+  return libeappprxy_dll.EapHostPeerGetDataToUnplumbCredentials(util.toPointer(pConnectionIdThatLastSavedCreds), util.toPointer(phCredentialImpersonationToken), sessionHandle, util.toPointer(ppEapError), util.toPointer(fSaveToCredMan));
 }
 
 export function EapHostPeerClearConnection(
   pConnectionId: Deno.PointerValue | Uint8Array | null /* ptr */,
   ppEapError: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libeappprxy.EapHostPeerClearConnection(util.toPointer(pConnectionId), util.toPointer(ppEapError));
+  return libeappprxy_dll.EapHostPeerClearConnection(util.toPointer(pConnectionId), util.toPointer(ppEapError));
 }
 
 export function EapHostPeerFreeEapError(
   pEapError: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): void /* void */ {
-  return libeappprxy.EapHostPeerFreeEapError(util.toPointer(pEapError));
+  return libeappprxy_dll.EapHostPeerFreeEapError(util.toPointer(pEapError));
 }
 
 export function EapHostPeerGetIdentity(
@@ -2502,7 +2570,7 @@ export function EapHostPeerGetIdentity(
   ppEapError: Deno.PointerValue | Uint8Array | null /* ptr */,
   ppvReserved: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libeappprxy.EapHostPeerGetIdentity(dwVersion, dwFlags, util.toPointer(eapMethodType), dwSizeofConnectionData, util.toPointer(pConnectionData), dwSizeofUserData, util.toPointer(pUserData), util.toPointer(hTokenImpersonateUser), util.toPointer(pfInvokeUI), util.toPointer(pdwSizeOfUserDataOut), util.toPointer(ppUserDataOut), util.toPointer(ppwszIdentity), util.toPointer(ppEapError), util.toPointer(ppvReserved));
+  return libeappprxy_dll.EapHostPeerGetIdentity(dwVersion, dwFlags, util.toPointer(eapMethodType), dwSizeofConnectionData, util.toPointer(pConnectionData), dwSizeofUserData, util.toPointer(pUserData), util.toPointer(hTokenImpersonateUser), util.toPointer(pfInvokeUI), util.toPointer(pdwSizeOfUserDataOut), util.toPointer(ppUserDataOut), util.toPointer(ppwszIdentity), util.toPointer(ppEapError), util.toPointer(ppvReserved));
 }
 
 export function EapHostPeerGetEncryptedPassword(
@@ -2510,12 +2578,12 @@ export function EapHostPeerGetEncryptedPassword(
   szPassword: string | null /* Windows.Win32.Foundation.PWSTR */,
   ppszEncPassword: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libeappprxy.EapHostPeerGetEncryptedPassword(dwSizeofPassword, util.pwstrToFfi(szPassword), util.toPointer(ppszEncPassword));
+  return libeappprxy_dll.EapHostPeerGetEncryptedPassword(dwSizeofPassword, util.pwstrToFfi(szPassword), util.toPointer(ppszEncPassword));
 }
 
 export function EapHostPeerFreeRuntimeMemory(
   pData: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): void /* void */ {
-  return libeappprxy.EapHostPeerFreeRuntimeMemory(util.toPointer(pData));
+  return libeappprxy_dll.EapHostPeerFreeRuntimeMemory(util.toPointer(pData));
 }
 

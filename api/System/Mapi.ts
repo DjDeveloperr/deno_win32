@@ -445,7 +445,7 @@ export function allocMapiMessageW(data?: Partial<MapiMessageW>): Uint8Array {
 // Native Libraries
 
 try {
-  var libMAPI32 = Deno.dlopen("MAPI32", {
+  var libMAPI32_dll = Deno.dlopen("MAPI32.dll", {
     MAPIFreeBuffer: {
       parameters: ["pointer"],
       result: "u32",
@@ -458,6 +458,6 @@ try {
 export function MAPIFreeBuffer(
   pv: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libMAPI32.MAPIFreeBuffer(util.toPointer(pv));
+  return libMAPI32_dll.MAPIFreeBuffer(util.toPointer(pv));
 }
 

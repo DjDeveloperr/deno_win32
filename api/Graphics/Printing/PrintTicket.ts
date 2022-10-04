@@ -31,7 +31,7 @@ export type HPTPROVIDER = Deno.PointerValue;
 // Native Libraries
 
 try {
-  var libprntvpt = Deno.dlopen("prntvpt", {
+  var libprntvpt_dll = Deno.dlopen("prntvpt.dll", {
     PTQuerySchemaVersionSupport: {
       parameters: ["buffer", "pointer"],
       result: "pointer",
@@ -85,7 +85,7 @@ export function PTQuerySchemaVersionSupport(
   pszPrinterName: string | null /* Windows.Win32.Foundation.PWSTR */,
   pMaxVersion: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libprntvpt.PTQuerySchemaVersionSupport(util.pwstrToFfi(pszPrinterName), util.toPointer(pMaxVersion)));
+  return util.pointerFromFfi(libprntvpt_dll.PTQuerySchemaVersionSupport(util.pwstrToFfi(pszPrinterName), util.toPointer(pMaxVersion)));
 }
 
 export function PTOpenProvider(
@@ -93,7 +93,7 @@ export function PTOpenProvider(
   dwVersion: number /* u32 */,
   phProvider: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libprntvpt.PTOpenProvider(util.pwstrToFfi(pszPrinterName), dwVersion, util.toPointer(phProvider)));
+  return util.pointerFromFfi(libprntvpt_dll.PTOpenProvider(util.pwstrToFfi(pszPrinterName), dwVersion, util.toPointer(phProvider)));
 }
 
 export function PTOpenProviderEx(
@@ -103,19 +103,19 @@ export function PTOpenProviderEx(
   phProvider: Deno.PointerValue | Uint8Array | null /* ptr */,
   pUsedVersion: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libprntvpt.PTOpenProviderEx(util.pwstrToFfi(pszPrinterName), dwMaxVersion, dwPrefVersion, util.toPointer(phProvider), util.toPointer(pUsedVersion)));
+  return util.pointerFromFfi(libprntvpt_dll.PTOpenProviderEx(util.pwstrToFfi(pszPrinterName), dwMaxVersion, dwPrefVersion, util.toPointer(phProvider), util.toPointer(pUsedVersion)));
 }
 
 export function PTCloseProvider(
   hProvider: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Storage.Xps.HPTPROVIDER */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libprntvpt.PTCloseProvider(util.toPointer(hProvider)));
+  return util.pointerFromFfi(libprntvpt_dll.PTCloseProvider(util.toPointer(hProvider)));
 }
 
 export function PTReleaseMemory(
   pBuffer: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libprntvpt.PTReleaseMemory(util.toPointer(pBuffer)));
+  return util.pointerFromFfi(libprntvpt_dll.PTReleaseMemory(util.toPointer(pBuffer)));
 }
 
 export function PTGetPrintCapabilities(
@@ -124,7 +124,7 @@ export function PTGetPrintCapabilities(
   pCapabilities: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Com.IStream */,
   pbstrErrorMessage: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libprntvpt.PTGetPrintCapabilities(util.toPointer(hProvider), util.toPointer(pPrintTicket), util.toPointer(pCapabilities), util.toPointer(pbstrErrorMessage)));
+  return util.pointerFromFfi(libprntvpt_dll.PTGetPrintCapabilities(util.toPointer(hProvider), util.toPointer(pPrintTicket), util.toPointer(pCapabilities), util.toPointer(pbstrErrorMessage)));
 }
 
 export function PTGetPrintDeviceCapabilities(
@@ -133,7 +133,7 @@ export function PTGetPrintDeviceCapabilities(
   pDeviceCapabilities: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Com.IStream */,
   pbstrErrorMessage: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libprntvpt.PTGetPrintDeviceCapabilities(util.toPointer(hProvider), util.toPointer(pPrintTicket), util.toPointer(pDeviceCapabilities), util.toPointer(pbstrErrorMessage)));
+  return util.pointerFromFfi(libprntvpt_dll.PTGetPrintDeviceCapabilities(util.toPointer(hProvider), util.toPointer(pPrintTicket), util.toPointer(pDeviceCapabilities), util.toPointer(pbstrErrorMessage)));
 }
 
 export function PTGetPrintDeviceResources(
@@ -143,7 +143,7 @@ export function PTGetPrintDeviceResources(
   pDeviceResources: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Com.IStream */,
   pbstrErrorMessage: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libprntvpt.PTGetPrintDeviceResources(util.toPointer(hProvider), util.pwstrToFfi(pszLocaleName), util.toPointer(pPrintTicket), util.toPointer(pDeviceResources), util.toPointer(pbstrErrorMessage)));
+  return util.pointerFromFfi(libprntvpt_dll.PTGetPrintDeviceResources(util.toPointer(hProvider), util.pwstrToFfi(pszLocaleName), util.toPointer(pPrintTicket), util.toPointer(pDeviceResources), util.toPointer(pbstrErrorMessage)));
 }
 
 export function PTMergeAndValidatePrintTicket(
@@ -154,7 +154,7 @@ export function PTMergeAndValidatePrintTicket(
   pResultTicket: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Com.IStream */,
   pbstrErrorMessage: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libprntvpt.PTMergeAndValidatePrintTicket(util.toPointer(hProvider), util.toPointer(pBaseTicket), util.toPointer(pDeltaTicket), scope, util.toPointer(pResultTicket), util.toPointer(pbstrErrorMessage)));
+  return util.pointerFromFfi(libprntvpt_dll.PTMergeAndValidatePrintTicket(util.toPointer(hProvider), util.toPointer(pBaseTicket), util.toPointer(pDeltaTicket), scope, util.toPointer(pResultTicket), util.toPointer(pbstrErrorMessage)));
 }
 
 export function PTConvertPrintTicketToDevMode(
@@ -166,7 +166,7 @@ export function PTConvertPrintTicketToDevMode(
   ppDevmode: Deno.PointerValue | Uint8Array | null /* ptr */,
   pbstrErrorMessage: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libprntvpt.PTConvertPrintTicketToDevMode(util.toPointer(hProvider), util.toPointer(pPrintTicket), baseDevmodeType, scope, util.toPointer(pcbDevmode), util.toPointer(ppDevmode), util.toPointer(pbstrErrorMessage)));
+  return util.pointerFromFfi(libprntvpt_dll.PTConvertPrintTicketToDevMode(util.toPointer(hProvider), util.toPointer(pPrintTicket), baseDevmodeType, scope, util.toPointer(pcbDevmode), util.toPointer(ppDevmode), util.toPointer(pbstrErrorMessage)));
 }
 
 export function PTConvertDevModeToPrintTicket(
@@ -176,6 +176,6 @@ export function PTConvertDevModeToPrintTicket(
   scope: EPrintTicketScope /* Windows.Win32.Graphics.Printing.PrintTicket.EPrintTicketScope */,
   pPrintTicket: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Com.IStream */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libprntvpt.PTConvertDevModeToPrintTicket(util.toPointer(hProvider), cbDevmode, util.toPointer(pDevmode), scope, util.toPointer(pPrintTicket)));
+  return util.pointerFromFfi(libprntvpt_dll.PTConvertDevModeToPrintTicket(util.toPointer(hProvider), cbDevmode, util.toPointer(pDevmode), scope, util.toPointer(pPrintTicket)));
 }
 

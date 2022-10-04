@@ -268,10 +268,10 @@ export type VIEW_OBJECT_ALPHA_MODE = number;
 export type VIEW_OBJECT_COMPOSITION_MODE = number;
 export type ExtensionValidationContexts = number;
 export type ExtensionValidationResults = number;
-export type __MIDL_ITargetFrame2_0001 = number;
-export type __MIDL_ITargetFrame2_0002 = number;
-export type __MIDL_ITargetFrame_0001 = number;
-export type MediaActivityNotifyType = number;
+export type FINDFRAME_FLAGS = number;
+export type FRAMEOPTIONS_FLAGS = number;
+export type NAVIGATEFRAME_FLAGS = number;
+export type MEDIA_ACTIVITY_NOTIFY_TYPE = number;
 export type SCROLLABLECONTEXTMENU_PLACEMENT = number;
 export type INTERNETEXPLORERCONFIGURATION = number;
 export type IELAUNCHOPTION_FLAGS = number;
@@ -513,31 +513,192 @@ export const DISPID_SELECTEDITEMS = 24;
 export const DISPID_EXPAND = 25;
 export const DISPID_UNSELECTALL = 26;
 export const TF_NAVIGATE = 2142153644;
+export const TARGET_NOTIFY_OBJECT_NAME = "863a99a0-21bc-11d0-82b4-00a0c90c29c5";
+export const IEPROCESS_MODULE_NAME = "IERtUtil.dll";
+export const IEGetProcessModule_PROC_NAME = "IEGetProcessModule";
+export const IEGetTabWindowExports_PROC_NAME = "IEGetTabWindowExports";
+export const TSZMICROSOFTPATH = "Software\Microsoft";
+export const SZ_IE_MAIN = "Main";
+export const REGSTR_VAL_SMOOTHSCROLL = "SmoothScroll";
 export const REGSTR_VAL_SMOOTHSCROLL_DEF = 1;
+export const REGSTR_VAL_SHOWTOOLBAR = "Show_ToolBar";
+export const REGSTR_VAL_SHOWADDRESSBAR = "Show_URLToolBar";
+export const REGSTR_VAL_STARTPAGE = "Start Page";
+export const REGSTRA_VAL_STARTPAGE = "Start Page";
+export const REGSTR_VAL_SEARCHPAGE = "Search Page";
+export const REGSTR_VAL_LOCALPAGE = "Local Page";
+export const REGSTR_VAL_USESTYLESHEETS = "Use Stylesheets";
+export const REGSTR_VAL_USESTYLESHEETS_DEF = "yes";
+export const REGSTR_VAL_USEICM = "UseICM";
 export const REGSTR_VAL_USEICM_DEF = 0;
+export const REGSTR_VAL_SHOWFOCUS = "Tabstop - MouseDown";
+export const REGSTR_VAL_SHOWFOCUS_DEF = "no";
+export const REGSTR_VAL_LOADIMAGES = "Display Inline Images";
+export const REGSTR_VAL_PLAYSOUNDS = "Play_Background_Sounds";
+export const REGSTR_VAL_PLAYVIDEOS = "Display Inline Videos";
+export const REGSTR_VAL_ANCHORUNDERLINE = "Anchor Underline";
+export const REGSTR_VAL_USEDLGCOLORS = "Use_DlgBox_Colors";
+export const REGSTR_VAL_CHECKASSOC = "Check_Associations";
+export const REGSTR_VAL_SHOWFULLURLS = "Show_FullURL";
+export const REGSTR_VAL_AUTOSEARCH = "Do404Search";
+export const REGSTR_VAL_AUTONAVIGATE = "SearchForExtensions";
+export const REGSTR_VAL_HTTP_ERRORS = "Friendly http errors";
+export const REGSTR_VAL_USEIBAR = "UseBar";
+export const SZ_IE_SETTINGS = "Settings";
+export const REGSTR_VAL_IE_CUSTOMCOLORS = "Custom Colors";
+export const REGSTR_VAL_ANCHORCOLOR = "Anchor Color";
+export const REGSTR_VAL_ANCHORCOLORVISITED = "Anchor Color Visited";
+export const REGSTR_VAL_BACKGROUNDCOLOR = "Background Color";
+export const REGSTR_VAL_TEXTCOLOR = "Text Color";
+export const REGSTR_VAL_ANCHORCOLORHOVER = "Anchor Color Hover";
+export const REGSTR_VAL_USEHOVERCOLOR = "Use Anchor Hover Color";
+export const SZ_IE_SECURITY = "Security";
+export const REGSTR_VAL_SAFETYWARNINGLEVEL = "Safety Warning Level";
+export const SZ_IE_DEFAULT_HTML_EDITOR = "Default HTML Editor";
+export const REGSTR_VAL_USEAUTOAPPEND = "Append Completion";
+export const REGSTR_VAL_USEAUTOSUGGEST = "AutoSuggest";
+export const REGSTR_VAL_USEAUTOCOMPLETE = "Use AutoComplete";
+export const SZ_IE_IBAR = "Bar";
+export const SZ_IE_IBAR_BANDS = "Bands";
+export const REGSTR_VAL_USERAGENT = "User Agent";
+export const REGSTR_VAL_INTERNETENTRY = "InternetProfile";
+export const REGSTR_VAL_INTERNETPROFILE = "InternetProfile";
+export const REGSTR_VAL_INTERNETENTRYBKUP = "BackupInternetProfile";
+export const REGSTR_VAL_CODEDOWNLOAD = "Code Download";
+export const REGSTR_VAL_CODEDOWNLOAD_DEF = "yes";
+export const REGSTR_PATH_INETCPL_RESTRICTIONS = "Software\Policies\Microsoft\Internet Explorer\Control Panel";
+export const REGSTR_VAL_INETCPL_GENERALTAB = "GeneralTab";
+export const REGSTR_VAL_INETCPL_SECURITYTAB = "SecurityTab";
+export const REGSTR_VAL_INETCPL_CONTENTTAB = "ContentTab";
+export const REGSTR_VAL_INETCPL_CONNECTIONSTAB = "ConnectionsTab";
+export const REGSTR_VAL_INETCPL_PROGRAMSTAB = "ProgramsTab";
+export const REGSTR_VAL_INETCPL_ADVANCEDTAB = "AdvancedTab";
+export const REGSTR_VAL_INETCPL_PRIVACYTAB = "PrivacyTab";
+export const REGSTR_VAL_INETCPL_IEAK = "IEAKContext";
+export const REGSTR_VAL_DIRECTORY = "Directory";
+export const REGSTR_VAL_NEWDIRECTORY = "NewDirectory";
+export const REGSTR_VAL_CACHEPREFIX = "CachePrefix";
+export const SZ_IE_SEARCHSTRINGS = "UrlTemplate";
 export const MAX_SEARCH_FORMAT_STRING = 255;
+export const SZ_IE_THRESHOLDS = "ErrorThresholds";
+export const REGSTR_VAL_ACCESSMEDIUM = "AccessMedium";
+export const REGSTR_VAL_ACCESSTYPE = "AccessType";
+export const REGSTR_VAL_AUTODIALDLLNAME = "AutodialDllName";
+export const REGSTR_VAL_AUTODIALFCNNAME = "AutodialFcnName";
+export const REGSTR_VAL_AUTODIAL_MONITORCLASSNAME = "MS_AutodialMonitor";
+export const REGSTR_VAL_AUTODIAL_TRYONLYONCE = "TryAutodialOnce";
+export const REGSTR_PATH_REMOTEACCESS = "RemoteAccess";
+export const REGSTR_PATH_REMOTEACESS = "RemoteAccess";
+export const REGSTR_VAL_RNAINSTALLED = "Installed";
+export const REGSTR_VAL_ENABLEAUTODIAL = "EnableAutodial";
+export const REGSTR_VAL_ENABLEUNATTENDED = "EnableUnattended";
+export const REGSTR_VAL_NONETAUTODIAL = "NoNetAutodial";
+export const REGSTR_VAL_REDIALATTEMPTS = "RedialAttempts";
+export const REGSTR_VAL_REDIALINTERVAL = "RedialWait";
+export const REGSTR_VAL_ENABLEAUTODIALDISCONNECT = "EnableAutodisconnect";
+export const REGSTR_VAL_ENABLEAUTODISCONNECT = "EnableAutodisconnect";
+export const REGSTR_VAL_ENABLEEXITDISCONNECT = "EnableExitDisconnect";
+export const REGSTR_VAL_ENABLESECURITYCHECK = "EnableSecurityCheck";
+export const REGSTR_VAL_COVEREXCLUDE = "CoverExclude";
+export const REGSTR_VAL_DISCONNECTIDLETIME = "DisconnectIdleTime";
+export const REGSTR_VAL_MOSDISCONNECT = "DisconnectTimeout";
+export const REGSTR_VAL_PROXYENABLE = "ProxyEnable";
+export const REGSTR_VAL_PROXYSERVER = "ProxyServer";
+export const REGSTR_VAL_PROXYOVERRIDE = "ProxyOverride";
+export const REGSTR_VAL_BYPASSAUTOCONFIG = "BypassAutoconfig";
+export const SZTRUSTWARNLEVEL = "Trust Warning Level";
+export const REGSTR_VAL_TRUSTWARNINGLEVEL_HIGH = "High";
+export const REGSTR_VAL_TRUSTWARNINGLEVEL_MED = "Medium";
+export const REGSTR_VAL_TRUSTWARNINGLEVEL_LOW = "No Security";
+export const REGSTR_VAL_SECURITYWARNONSEND = "WarnOnPost";
 export const REGSTR_VAL_SECURITYWARNONSEND_DEF = 1;
+export const REGSTR_VAL_SECURITYWARNONSENDALWAYS = "WarnAlwaysOnPost";
 export const REGSTR_VAL_SECURITYWARNONSENDALWAYS_DEF = 1;
+export const REGSTR_VAL_SECURITYWARNONVIEW = "WarnOnView";
 export const REGSTR_VAL_SECURITYWARNONVIEW_DEF = 1;
+export const REGSTR_VAL_SECURITYALLOWCOOKIES = "AllowCookies";
 export const REGSTR_VAL_SECURITYALLOWCOOKIES_DEF = 1;
+export const REGSTR_VAL_SECURITYWARNONZONECROSSING = "WarnOnZoneCrossing";
 export const REGSTR_VAL_SECURITYWARNONZONECROSSING_DEF = 1;
+export const REGSTR_VAL_SECURITYWARNONBADCERTVIEWING = "WarnOnBadCertRecving";
 export const REGSTR_VAL_SECURITYWARNONBADCERTVIEWING_DEF = 1;
+export const REGSTR_VAL_SECURITYWARNONBADCERTSENDING = "WarnOnBadCertSending";
 export const REGSTR_VAL_SECURITYWARNONBADCERTSENDING_DEF = 1;
+export const REGSTR_VAL_SECURITYDISABLECACHINGOFSSLPAGES = "DisableCachingOfSSLPages";
 export const REGSTR_VAL_SECURITYDISABLECACHINGOFSSLPAGES_DEF = 0;
+export const REGSTR_VAL_SECURITYACTIVEX = "Security_RunActiveXControls";
 export const REGSTR_VAL_SECURITYACTIVEX_DEF = 1;
+export const REGSTR_VAL_SECURITYACTICEXSCRIPTS = "Security_RunScripts";
 export const REGSTR_VAL_SECURITYACTICEXSCRIPTS_DEF = 1;
+export const REGSTR_VAL_SECURITYJAVA = "Security_RunJavaApplets";
 export const REGSTR_VAL_SECURITYJAVA_DEF = 1;
+export const SZJAVAVMPATH = "\Java VM";
+export const REGSTR_VAL_JAVAJIT = "EnableJIT";
 export const REGSTR_VAL_JAVAJIT_DEF = 0;
+export const REGSTR_VAL_JAVALOGGING = "EnableLogging";
 export const REGSTR_VAL_JAVALOGGING_DEF = 0;
+export const SZTOOLBAR = "\Toolbar";
+export const REGSTR_VAL_DAYSTOKEEP = "DaysToKeep";
+export const SZNOTEXT = "NoText";
+export const SZVISIBLE = "VisibleBands";
+export const REGSTR_VAL_VISIBLEBANDS = "VisibleBands";
 export const REGSTR_VAL_VISIBLEBANDS_DEF = 7;
 export const TOOLSBAND = 1;
 export const ADDRESSBAND = 2;
 export const LINKSBAND = 4;
+export const SZBACKBITMAP = "BackBitmap";
+export const REGSTR_VAL_BACKBITMAP = "BackBitmap";
+export const REGSTR_SHIFTQUICKSUFFIX = "ShiftQuickCompleteSuffix";
+export const TSZSCHANNELPATH = "SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL";
+export const REGSTR_VAL_SCHANNELENABLEPROTOCOL = "Enabled";
 export const REGSTR_VAL_SCHANNELENABLEPROTOCOL_DEF = 1;
+export const TSZINTERNETCLIENTSPATH = "Software\Microsoft\Internet Explorer\Unix";
+export const REGSTR_PATH_DEFAULT = "default";
+export const REGSTR_PATH_CURRENT = "current";
 export const IE_USE_OE_PRESENT_HKEY = "-2147483646";
+export const IE_USE_OE_PRESENT_KEY = "Software\Microsoft\Windows\CurrentVersion\app.paths\msimn.exe";
 export const IE_USE_OE_MAIL_HKEY = "-2147483647";
+export const IE_USE_OE_MAIL_KEY = "Software\Microsoft\Internet Explorer\Mail";
+export const IE_USE_OE_MAIL_VALUE = "Use Outlook Express";
 export const IE_USE_OE_NEWS_HKEY = "-2147483647";
+export const IE_USE_OE_NEWS_KEY = "Software\Microsoft\Internet Explorer\News";
+export const IE_USE_OE_NEWS_VALUE = "Use Outlook Express";
+export const TSZPROTOCOLSPATH = "Protocols\";
+export const TSZMAILTOPROTOCOL = "mailto";
+export const TSZNEWSPROTOCOL = "news";
+export const TSZCALLTOPROTOCOL = "callto";
+export const TSZLDAPPROTOCOL = "ldap";
+export const TSZCALENDARPROTOCOL = "unk";
+export const TSZVSOURCEPROTOCOL = "view source";
+export const REGSTR_VAL_DEFAULT_CODEPAGE = "Default_CodePage";
+export const REGSTR_VAL_DEFAULT_SCRIPT = "Default_Script";
+export const REGSTR_VAL_ACCEPT_LANGUAGE = "AcceptLanguage";
+export const REGSTR_VAL_FONT_SCRIPTS = "Scripts";
+export const REGSTR_VAL_FONT_SCRIPT = "Script";
+export const REGSTR_VAL_FONT_SCRIPT_NAME = "Script";
+export const REGSTR_VAL_DEF_ENCODING = "Default_Encoding";
+export const REGSTR_VAL_DEF_INETENCODING = "Default_InternetEncoding";
+export const REGSTR_VAL_FIXED_FONT = "IEFixedFontName";
+export const REGSTR_VAL_SCRIPT_FIXED_FONT = "IEFixedFontName";
+export const REGSTR_VAL_PROP_FONT = "IEPropFontName";
+export const REGSTR_VAL_SCRIPT_PROP_FONT = "IEPropFontName";
+export const REGSTR_VAL_FONT_SIZE = "IEFontSize";
 export const REGSTR_VAL_FONT_SIZE_DEF = 2;
+export const REGSTR_VAL_AUTODETECT = "AutoDetect";
+export const REGSTR_PATH_MIME_DATABASE = "MIME\Database";
+export const REGSTR_VAL_CODEPAGE = "CodePage";
+export const REGSTR_VAL_INETENCODING = "InternetEncoding";
+export const REGSTR_VAL_FAMILY = "Family";
+export const REGSTR_VAL_LEVEL = "Level";
+export const REGSTR_VAL_ALIASTO = "AliasForCharset";
+export const REGSTR_VAL_ENCODENAME = "EncodingName";
+export const REGSTR_VAL_DESCRIPTION = "Description";
+export const REGSTR_VAL_WEBCHARSET = "WebCharset";
+export const REGSTR_VAL_BODYCHARSET = "BodyCharset";
+export const REGSTR_VAL_HEADERCHARSET = "HeaderCharset";
+export const REGSTR_VAL_FIXEDWIDTHFONT = "FixedWidthFont";
+export const REGSTR_VAL_PROPORTIONALFONT = "ProportionalFont";
+export const REGSTR_VAL_PRIVCONVERTER = "PrivConverter";
 export const IDM_UNKNOWN = 0;
 export const IDM_ALIGNBOTTOM = 1;
 export const IDM_ALIGNHORIZONTALCENTERS = 2;
@@ -6816,6 +6977,7 @@ export const CMDID_SCRIPTSITE_IURI = 7;
 export const CMDID_HOSTCONTEXT_URL = 8;
 export const CMDID_SCRIPTSITE_ALLOWRECOVERY = 9;
 export const CMDID_SCRIPTSITE_BASEIURI = 10;
+export const SZ_HTML_CLIENTSITE_OBJECTPARAM = "{d4db6850-5385-11d0-89e9-00a0c90a90ac}";
 export const IECMDID_CLEAR_AUTOCOMPLETE_FOR_FORMS = 0;
 export const IECMDID_SETID_AUTOCOMPLETE_FOR_FORMS = 1;
 export const IECMDID_BEFORENAVIGATE_GETSHELLBROWSE = 2;
@@ -6826,6 +6988,19 @@ export const IECMDID_GET_INVOKE_DEFAULT_BROWSER_ON_NEW_WINDOW = 6;
 export const IECMDID_ARG_CLEAR_FORMS_ALL = 0;
 export const IECMDID_ARG_CLEAR_FORMS_ALL_BUT_PASSWORDS = 1;
 export const IECMDID_ARG_CLEAR_FORMS_PASSWORDS_ONLY = 2;
+export const msoedmEnable = 1;
+export const msoedmDisable = 2;
+export const msoedmDontOpen = 3;
+export const msoslUndefined = 0;
+export const msoslNone = 1;
+export const msoslMedium = 2;
+export const msoslHigh = 3;
+export const msodsvNoMacros = 0;
+export const msodsvUnsigned = 1;
+export const msodsvPassedTrusted = 2;
+export const msodsvFailed = 3;
+export const msodsvLowSecurityLevel = 4;
+export const msodsvPassedTrustedCert = 5;
 export const STATURL_QUERYFLAG_ISCACHED = 65536;
 export const STATURL_QUERYFLAG_NOURL = 131072;
 export const STATURL_QUERYFLAG_NOTITLE = 262144;
@@ -9024,9 +9199,9 @@ export function allocHTML_PAINT_DRAW_INFO(data?: Partial<HTML_PAINT_DRAW_INFO>):
 }
 
 /**
- * Windows.Win32.Web.MsHtml.tagNavigateData (size: 24)
+ * Windows.Win32.Web.MsHtml.NAVIGATEDATA (size: 24)
  */
-export interface tagNavigateData {
+export interface NAVIGATEDATA {
   /** u32 */
   ulTarget: number;
   /** u32 */
@@ -9039,10 +9214,10 @@ export interface tagNavigateData {
   dwFlags: number;
 }
 
-export const sizeofTagNavigateData = 24;
+export const sizeofNAVIGATEDATA = 24;
 
-export function allocTagNavigateData(data?: Partial<tagNavigateData>): Uint8Array {
-  const buf = new Uint8Array(sizeofTagNavigateData);
+export function allocNAVIGATEDATA(data?: Partial<NAVIGATEDATA>): Uint8Array {
+  const buf = new Uint8Array(sizeofNAVIGATEDATA);
   const view = new DataView(buf.buffer);
   // 0x00: u32
   if (data?.ulTarget !== undefined) view.setUint32(0, Number(data.ulTarget), true);
@@ -9093,10 +9268,10 @@ export type PWSTR = Deno.PointerValue | Uint8Array | null;
 export interface DOCHOSTUIINFO {
   /** u32 */
   cbSize: number;
-  /** u32 */
-  dwFlags: number;
-  /** u32 */
-  dwDoubleClick: number;
+  /** Windows.Win32.Web.MsHtml.DOCHOSTUIFLAG */
+  dwFlags: DOCHOSTUIFLAG;
+  /** Windows.Win32.Web.MsHtml.DOCHOSTUIDBLCLK */
+  dwDoubleClick: DOCHOSTUIDBLCLK;
   /** Windows.Win32.Foundation.PWSTR */
   pchHostCss: string | null;
   /** Windows.Win32.Foundation.PWSTR */
@@ -9110,10 +9285,10 @@ export function allocDOCHOSTUIINFO(data?: Partial<DOCHOSTUIINFO>): Uint8Array {
   const view = new DataView(buf.buffer);
   // 0x00: u32
   if (data?.cbSize !== undefined) view.setUint32(0, Number(data.cbSize), true);
-  // 0x04: u32
-  if (data?.dwFlags !== undefined) view.setUint32(4, Number(data.dwFlags), true);
-  // 0x08: u32
-  if (data?.dwDoubleClick !== undefined) view.setUint32(8, Number(data.dwDoubleClick), true);
+  // 0x04: i32
+  if (data?.dwFlags !== undefined) view.setInt32(4, Number(data.dwFlags), true);
+  // 0x08: i32
+  if (data?.dwDoubleClick !== undefined) view.setInt32(8, Number(data.dwDoubleClick), true);
   // 0x0c: pad4
   // 0x10: buffer
   if (data?.pchHostCss !== undefined) {
@@ -9217,7 +9392,7 @@ export type HBITMAP = Deno.PointerValue;
 // Native Libraries
 
 try {
-  var libMSRATING = Deno.dlopen("MSRATING", {
+  var libMSRATING_dll = Deno.dlopen("MSRATING.dll", {
     RatingEnable: {
       parameters: ["pointer", "buffer", "i32"],
       result: "pointer",
@@ -9298,7 +9473,7 @@ try {
 } catch(e) { /* ignore */ }
 
 try {
-  var libImgUtil = Deno.dlopen("ImgUtil", {
+  var libImgUtil_dll = Deno.dlopen("ImgUtil.dll", {
     CreateMIMEMap: {
       parameters: ["pointer"],
       result: "pointer",
@@ -9339,7 +9514,7 @@ try {
 } catch(e) { /* ignore */ }
 
 try {
-  var libSHDOCVW = Deno.dlopen("SHDOCVW", {
+  var libSHDOCVW_dll = Deno.dlopen("SHDOCVW.dll", {
     DoPrivacyDlg: {
       parameters: ["pointer", "buffer", "pointer", "i32"],
       result: "pointer",
@@ -9354,7 +9529,7 @@ export function RatingEnable(
   pszUsername: string | null /* Windows.Win32.Foundation.PSTR */,
   fEnable: boolean /* Windows.Win32.Foundation.BOOL */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libMSRATING.RatingEnable(util.hwndToFfi(hwndParent), util.pstrToFfi(pszUsername), util.boolToFfi(fEnable)));
+  return util.pointerFromFfi(libMSRATING_dll.RatingEnable(util.hwndToFfi(hwndParent), util.pstrToFfi(pszUsername), util.boolToFfi(fEnable)));
 }
 
 export function RatingEnableW(
@@ -9362,7 +9537,7 @@ export function RatingEnableW(
   pszUsername: string | null /* Windows.Win32.Foundation.PWSTR */,
   fEnable: boolean /* Windows.Win32.Foundation.BOOL */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libMSRATING.RatingEnableW(util.hwndToFfi(hwndParent), util.pwstrToFfi(pszUsername), util.boolToFfi(fEnable)));
+  return util.pointerFromFfi(libMSRATING_dll.RatingEnableW(util.hwndToFfi(hwndParent), util.pwstrToFfi(pszUsername), util.boolToFfi(fEnable)));
 }
 
 export function RatingCheckUserAccess(
@@ -9373,7 +9548,7 @@ export function RatingCheckUserAccess(
   cbData: number /* u32 */,
   ppRatingDetails: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libMSRATING.RatingCheckUserAccess(util.pstrToFfi(pszUsername), util.pstrToFfi(pszURL), util.pstrToFfi(pszRatingInfo), util.toPointer(pData), cbData, util.toPointer(ppRatingDetails)));
+  return util.pointerFromFfi(libMSRATING_dll.RatingCheckUserAccess(util.pstrToFfi(pszUsername), util.pstrToFfi(pszURL), util.pstrToFfi(pszRatingInfo), util.toPointer(pData), cbData, util.toPointer(ppRatingDetails)));
 }
 
 export function RatingCheckUserAccessW(
@@ -9384,7 +9559,7 @@ export function RatingCheckUserAccessW(
   cbData: number /* u32 */,
   ppRatingDetails: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libMSRATING.RatingCheckUserAccessW(util.pwstrToFfi(pszUsername), util.pwstrToFfi(pszURL), util.pwstrToFfi(pszRatingInfo), util.toPointer(pData), cbData, util.toPointer(ppRatingDetails)));
+  return util.pointerFromFfi(libMSRATING_dll.RatingCheckUserAccessW(util.pwstrToFfi(pszUsername), util.pwstrToFfi(pszURL), util.pwstrToFfi(pszRatingInfo), util.toPointer(pData), cbData, util.toPointer(ppRatingDetails)));
 }
 
 export function RatingAccessDeniedDialog(
@@ -9393,7 +9568,7 @@ export function RatingAccessDeniedDialog(
   pszContentDescription: string | null /* Windows.Win32.Foundation.PSTR */,
   pRatingDetails: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libMSRATING.RatingAccessDeniedDialog(util.hwndToFfi(hDlg), util.pstrToFfi(pszUsername), util.pstrToFfi(pszContentDescription), util.toPointer(pRatingDetails)));
+  return util.pointerFromFfi(libMSRATING_dll.RatingAccessDeniedDialog(util.hwndToFfi(hDlg), util.pstrToFfi(pszUsername), util.pstrToFfi(pszContentDescription), util.toPointer(pRatingDetails)));
 }
 
 export function RatingAccessDeniedDialogW(
@@ -9402,7 +9577,7 @@ export function RatingAccessDeniedDialogW(
   pszContentDescription: string | null /* Windows.Win32.Foundation.PWSTR */,
   pRatingDetails: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libMSRATING.RatingAccessDeniedDialogW(util.hwndToFfi(hDlg), util.pwstrToFfi(pszUsername), util.pwstrToFfi(pszContentDescription), util.toPointer(pRatingDetails)));
+  return util.pointerFromFfi(libMSRATING_dll.RatingAccessDeniedDialogW(util.hwndToFfi(hDlg), util.pwstrToFfi(pszUsername), util.pwstrToFfi(pszContentDescription), util.toPointer(pRatingDetails)));
 }
 
 export function RatingAccessDeniedDialog2(
@@ -9410,7 +9585,7 @@ export function RatingAccessDeniedDialog2(
   pszUsername: string | null /* Windows.Win32.Foundation.PSTR */,
   pRatingDetails: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libMSRATING.RatingAccessDeniedDialog2(util.hwndToFfi(hDlg), util.pstrToFfi(pszUsername), util.toPointer(pRatingDetails)));
+  return util.pointerFromFfi(libMSRATING_dll.RatingAccessDeniedDialog2(util.hwndToFfi(hDlg), util.pstrToFfi(pszUsername), util.toPointer(pRatingDetails)));
 }
 
 export function RatingAccessDeniedDialog2W(
@@ -9418,19 +9593,19 @@ export function RatingAccessDeniedDialog2W(
   pszUsername: string | null /* Windows.Win32.Foundation.PWSTR */,
   pRatingDetails: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libMSRATING.RatingAccessDeniedDialog2W(util.hwndToFfi(hDlg), util.pwstrToFfi(pszUsername), util.toPointer(pRatingDetails)));
+  return util.pointerFromFfi(libMSRATING_dll.RatingAccessDeniedDialog2W(util.hwndToFfi(hDlg), util.pwstrToFfi(pszUsername), util.toPointer(pRatingDetails)));
 }
 
 export function RatingFreeDetails(
   pRatingDetails: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libMSRATING.RatingFreeDetails(util.toPointer(pRatingDetails)));
+  return util.pointerFromFfi(libMSRATING_dll.RatingFreeDetails(util.toPointer(pRatingDetails)));
 }
 
 export function RatingObtainCancel(
   hRatingObtainQuery: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libMSRATING.RatingObtainCancel(util.toPointer(hRatingObtainQuery)));
+  return util.pointerFromFfi(libMSRATING_dll.RatingObtainCancel(util.toPointer(hRatingObtainQuery)));
 }
 
 export function RatingObtainQuery(
@@ -9439,7 +9614,7 @@ export function RatingObtainQuery(
   fCallback: Deno.PointerValue /* isize */,
   phRatingObtainQuery: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libMSRATING.RatingObtainQuery(util.pstrToFfi(pszTargetUrl), dwUserData, fCallback, util.toPointer(phRatingObtainQuery)));
+  return util.pointerFromFfi(libMSRATING_dll.RatingObtainQuery(util.pstrToFfi(pszTargetUrl), dwUserData, fCallback, util.toPointer(phRatingObtainQuery)));
 }
 
 export function RatingObtainQueryW(
@@ -9448,21 +9623,21 @@ export function RatingObtainQueryW(
   fCallback: Deno.PointerValue /* isize */,
   phRatingObtainQuery: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libMSRATING.RatingObtainQueryW(util.pwstrToFfi(pszTargetUrl), dwUserData, fCallback, util.toPointer(phRatingObtainQuery)));
+  return util.pointerFromFfi(libMSRATING_dll.RatingObtainQueryW(util.pwstrToFfi(pszTargetUrl), dwUserData, fCallback, util.toPointer(phRatingObtainQuery)));
 }
 
 export function RatingSetupUI(
   hDlg: Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */,
   pszUsername: string | null /* Windows.Win32.Foundation.PSTR */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libMSRATING.RatingSetupUI(util.hwndToFfi(hDlg), util.pstrToFfi(pszUsername)));
+  return util.pointerFromFfi(libMSRATING_dll.RatingSetupUI(util.hwndToFfi(hDlg), util.pstrToFfi(pszUsername)));
 }
 
 export function RatingSetupUIW(
   hDlg: Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */,
   pszUsername: string | null /* Windows.Win32.Foundation.PWSTR */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libMSRATING.RatingSetupUIW(util.hwndToFfi(hDlg), util.pwstrToFfi(pszUsername)));
+  return util.pointerFromFfi(libMSRATING_dll.RatingSetupUIW(util.hwndToFfi(hDlg), util.pwstrToFfi(pszUsername)));
 }
 
 export function RatingAddToApprovedSites(
@@ -9474,7 +9649,7 @@ export function RatingAddToApprovedSites(
   fSitePage: boolean /* Windows.Win32.Foundation.BOOL */,
   fApprovedSitesEnforced: boolean /* Windows.Win32.Foundation.BOOL */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libMSRATING.RatingAddToApprovedSites(util.hwndToFfi(hDlg), cbPasswordBlob, util.toPointer(pbPasswordBlob), util.pwstrToFfi(lpszUrl), util.boolToFfi(fAlwaysNever), util.boolToFfi(fSitePage), util.boolToFfi(fApprovedSitesEnforced)));
+  return util.pointerFromFfi(libMSRATING_dll.RatingAddToApprovedSites(util.hwndToFfi(hDlg), cbPasswordBlob, util.toPointer(pbPasswordBlob), util.pwstrToFfi(lpszUrl), util.boolToFfi(fAlwaysNever), util.boolToFfi(fSitePage), util.boolToFfi(fApprovedSitesEnforced)));
 }
 
 export function RatingClickedOnPRFInternal(
@@ -9483,7 +9658,7 @@ export function RatingClickedOnPRFInternal(
   lpszFileName: string | null /* Windows.Win32.Foundation.PSTR */,
   nShow: number /* i32 */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libMSRATING.RatingClickedOnPRFInternal(util.hwndToFfi(hWndOwner), util.toPointer(param1), util.pstrToFfi(lpszFileName), nShow));
+  return util.pointerFromFfi(libMSRATING_dll.RatingClickedOnPRFInternal(util.hwndToFfi(hWndOwner), util.toPointer(param1), util.pstrToFfi(lpszFileName), nShow));
 }
 
 export function RatingClickedOnRATInternal(
@@ -9492,21 +9667,21 @@ export function RatingClickedOnRATInternal(
   lpszFileName: string | null /* Windows.Win32.Foundation.PSTR */,
   nShow: number /* i32 */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libMSRATING.RatingClickedOnRATInternal(util.hwndToFfi(hWndOwner), util.toPointer(param1), util.pstrToFfi(lpszFileName), nShow));
+  return util.pointerFromFfi(libMSRATING_dll.RatingClickedOnRATInternal(util.hwndToFfi(hWndOwner), util.toPointer(param1), util.pstrToFfi(lpszFileName), nShow));
 }
 
 export function RatingEnabledQuery(): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libMSRATING.RatingEnabledQuery());
+  return util.pointerFromFfi(libMSRATING_dll.RatingEnabledQuery());
 }
 
 export function RatingInit(): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libMSRATING.RatingInit());
+  return util.pointerFromFfi(libMSRATING_dll.RatingInit());
 }
 
 export function CreateMIMEMap(
   ppMap: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libImgUtil.CreateMIMEMap(util.toPointer(ppMap)));
+  return util.pointerFromFfi(libImgUtil_dll.CreateMIMEMap(util.toPointer(ppMap)));
 }
 
 export function DecodeImage(
@@ -9514,7 +9689,7 @@ export function DecodeImage(
   pMap: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Web.MsHtml.IMapMIMEToCLSID */,
   pEventSink: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Com.IUnknown */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libImgUtil.DecodeImage(util.toPointer(pStream), util.toPointer(pMap), util.toPointer(pEventSink)));
+  return util.pointerFromFfi(libImgUtil_dll.DecodeImage(util.toPointer(pStream), util.toPointer(pMap), util.toPointer(pEventSink)));
 }
 
 export function SniffStream(
@@ -9522,13 +9697,13 @@ export function SniffStream(
   pnFormat: Deno.PointerValue | Uint8Array | null /* ptr */,
   ppOutStream: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libImgUtil.SniffStream(util.toPointer(pInStream), util.toPointer(pnFormat), util.toPointer(ppOutStream)));
+  return util.pointerFromFfi(libImgUtil_dll.SniffStream(util.toPointer(pInStream), util.toPointer(pnFormat), util.toPointer(ppOutStream)));
 }
 
 export function GetMaxMIMEIDBytes(
   pnMaxBytes: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libImgUtil.GetMaxMIMEIDBytes(util.toPointer(pnMaxBytes)));
+  return util.pointerFromFfi(libImgUtil_dll.GetMaxMIMEIDBytes(util.toPointer(pnMaxBytes)));
 }
 
 export function IdentifyMIMEType(
@@ -9536,7 +9711,7 @@ export function IdentifyMIMEType(
   nBytes: number /* u32 */,
   pnFormat: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libImgUtil.IdentifyMIMEType(util.toPointer(pbBytes), nBytes, util.toPointer(pnFormat)));
+  return util.pointerFromFfi(libImgUtil_dll.IdentifyMIMEType(util.toPointer(pbBytes), nBytes, util.toPointer(pnFormat)));
 }
 
 export function ComputeInvCMAP(
@@ -9545,7 +9720,7 @@ export function ComputeInvCMAP(
   pInvTable: Deno.PointerValue | Uint8Array | null /* ptr */,
   cbTable: number /* u32 */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libImgUtil.ComputeInvCMAP(util.toPointer(pRGBColors), nColors, util.toPointer(pInvTable), cbTable));
+  return util.pointerFromFfi(libImgUtil_dll.ComputeInvCMAP(util.toPointer(pRGBColors), nColors, util.toPointer(pInvTable), cbTable));
 }
 
 export function DitherTo8(
@@ -9564,14 +9739,14 @@ export function DitherTo8(
   lDestTrans: number /* i32 */,
   lSrcTrans: number /* i32 */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libImgUtil.DitherTo8(util.toPointer(pDestBits), nDestPitch, util.toPointer(pSrcBits), nSrcPitch, util.toPointer(bfidSrc), util.toPointer(prgbDestColors), util.toPointer(prgbSrcColors), util.toPointer(pbDestInvMap), x, y, cx, cy, lDestTrans, lSrcTrans));
+  return util.pointerFromFfi(libImgUtil_dll.DitherTo8(util.toPointer(pDestBits), nDestPitch, util.toPointer(pSrcBits), nSrcPitch, util.toPointer(bfidSrc), util.toPointer(prgbDestColors), util.toPointer(prgbSrcColors), util.toPointer(pbDestInvMap), x, y, cx, cy, lDestTrans, lSrcTrans));
 }
 
 export function CreateDDrawSurfaceOnDIB(
   hbmDib: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Graphics.Gdi.HBITMAP */,
   ppSurface: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libImgUtil.CreateDDrawSurfaceOnDIB(util.toPointer(hbmDib), util.toPointer(ppSurface)));
+  return util.pointerFromFfi(libImgUtil_dll.CreateDDrawSurfaceOnDIB(util.toPointer(hbmDib), util.toPointer(ppSurface)));
 }
 
 export function DecodeImageEx(
@@ -9580,7 +9755,7 @@ export function DecodeImageEx(
   pEventSink: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Com.IUnknown */,
   pszMIMETypeParam: string | null /* Windows.Win32.Foundation.PWSTR */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libImgUtil.DecodeImageEx(util.toPointer(pStream), util.toPointer(pMap), util.toPointer(pEventSink), util.pwstrToFfi(pszMIMETypeParam)));
+  return util.pointerFromFfi(libImgUtil_dll.DecodeImageEx(util.toPointer(pStream), util.toPointer(pMap), util.toPointer(pEventSink), util.pwstrToFfi(pszMIMETypeParam)));
 }
 
 export function DoPrivacyDlg(
@@ -9589,6 +9764,6 @@ export function DoPrivacyDlg(
   pPrivacyEnum: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Web.MsHtml.IEnumPrivacyRecords */,
   fReportAllSites: boolean /* Windows.Win32.Foundation.BOOL */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libSHDOCVW.DoPrivacyDlg(util.hwndToFfi(hwndOwner), util.pwstrToFfi(pszUrl), util.toPointer(pPrivacyEnum), util.boolToFfi(fReportAllSites)));
+  return util.pointerFromFfi(libSHDOCVW_dll.DoPrivacyDlg(util.hwndToFfi(hwndOwner), util.pwstrToFfi(pszUrl), util.toPointer(pPrivacyEnum), util.boolToFfi(fReportAllSites)));
 }
 

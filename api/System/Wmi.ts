@@ -23,12 +23,11 @@ export type WMIQ_ANALYSIS_TYPE = number;
 export type WMIQ_RPN_TOKEN_FLAGS = number;
 export type WMIQ_ASSOCQ_FLAGS = number;
 export type WMIQ_LANGUAGE_FEATURES = number;
-export type WMIQ_RPNQ_FEATURE = number;
+export type WMIQ_RPNF_FEATURE = number;
 export type WBEM_GENUS_TYPE = number;
 export type WBEM_CHANGE_FLAG_TYPE = number;
 export type WBEM_GENERIC_FLAG_TYPE = number;
 export type WBEM_STATUS_TYPE = number;
-export type WBEM_TIMEOUT_TYPE = number;
 export type WBEM_CONDITION_FLAG_TYPE = number;
 export type WBEM_FLAVOR_TYPE = number;
 export type WBEM_QUERY_FLAG_TYPE = number;
@@ -36,7 +35,7 @@ export type WBEM_SECURITY_FLAGS = number;
 export type WBEM_LIMITATION_FLAG_TYPE = number;
 export type WBEM_TEXT_FLAG_TYPE = number;
 export type WBEM_COMPARISON_FLAG = number;
-export type WBEM_LOCKING = number;
+export type WBEM_LOCKING_FLAG_TYPE = number;
 export type CIMTYPE_ENUMERATION = number;
 export type WBEM_BACKUP_RESTORE_FLAGS = number;
 export type WBEM_REFRESHER_FLAGS = number;
@@ -66,7 +65,7 @@ export type WbemImpersonationLevelEnum = number;
 export type WbemPrivilegeEnum = number;
 export type WbemObjectTextFormatEnum = number;
 export type WbemConnectOptionsEnum = number;
-export type tag_WBEM_LOGIN_TYPE = number;
+export type WBEM_LOGIN_TYPE = number;
 
 // Constants
 export const MI_FLAG_ANY = 127;
@@ -123,6 +122,8 @@ export const MI_OPERATIONFLAGS_EXPENSIVE_PROPERTIES = 64;
 export const MI_OPERATIONFLAGS_POLYMORPHISM_SHALLOW = 128;
 export const MI_OPERATIONFLAGS_POLYMORPHISM_DEEP_BASE_PROPS_ONLY = 384;
 export const MI_OPERATIONFLAGS_REPORT_OPERATION_STARTED = 512;
+export const MI_SUBSCRIBE_BOOKMARK_OLDEST = "MI_SUBSCRIBE_BOOKMARK_OLDEST";
+export const MI_SUBSCRIBE_BOOKMARK_NEWEST = "MI_SUBSCRIBE_BOOKMARK_NEWEST";
 export const MI_SERIALIZER_FLAGS_CLASS_DEEP = 1;
 export const MI_SERIALIZER_FLAGS_INSTANCE_WITH_CLASS = 1;
 export const WBEMS_DISPID_DERIVATION = 23;
@@ -131,6 +132,8 @@ export const WBEMS_DISPID_COMPLETED = 2;
 export const WBEMS_DISPID_PROGRESS = 3;
 export const WBEMS_DISPID_OBJECT_PUT = 4;
 export const WBEMS_DISPID_CONNECTION_READY = 5;
+export const WBEM_NO_WAIT = 0;
+export const WBEM_INFINITE = "-1";
 export const MI_RESULT_OK = 0;
 export const MI_RESULT_FAILED = 1;
 export const MI_RESULT_ACCESS_DENIED = 2;
@@ -421,8 +424,6 @@ export const WBEM_STATUS_LOGGING_INFORMATION_PROVIDER = 512;
 export const WBEM_STATUS_LOGGING_INFORMATION_HOST = 1024;
 export const WBEM_STATUS_LOGGING_INFORMATION_REPOSITORY = 2048;
 export const WBEM_STATUS_LOGGING_INFORMATION_ESS = 4096;
-export const WBEM_NO_WAIT = 0;
-export const WBEM_INFINITE = "-1";
 export const WBEM_FLAG_ALWAYS = 0;
 export const WBEM_FLAG_ONLY_IF_TRUE = 1;
 export const WBEM_FLAG_ONLY_IF_FALSE = 2;
@@ -6745,7 +6746,7 @@ export function allocWBEM_COMPILE_STATUS_INFO(data?: Partial<WBEM_COMPILE_STATUS
 // Native Libraries
 
 try {
-  var libmi = Deno.dlopen("mi", {
+  var libmi_dll = Deno.dlopen("mi.dll", {
     MI_Application_InitializeV1: {
       parameters: ["u32", "pointer", "pointer", "pointer"],
       result: "i32",
@@ -6761,6 +6762,6 @@ export function MI_Application_InitializeV1(
   extendedError: Deno.PointerValue | Uint8Array | null /* ptr */,
   application: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): MI_Result /* Windows.Win32.System.Wmi.MI_Result */ {
-  return libmi.MI_Application_InitializeV1(flags, util.toPointer(applicationID), util.toPointer(extendedError), util.toPointer(application));
+  return libmi_dll.MI_Application_InitializeV1(flags, util.toPointer(applicationID), util.toPointer(extendedError), util.toPointer(application));
 }
 

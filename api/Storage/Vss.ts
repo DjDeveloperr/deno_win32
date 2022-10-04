@@ -678,7 +678,7 @@ export type HRESULT = number;
 // Native Libraries
 
 try {
-  var libVSSAPI = Deno.dlopen("VSSAPI", {
+  var libVSSAPI_dll = Deno.dlopen("VSSAPI.dll", {
     CreateVssExpressWriterInternal: {
       parameters: ["pointer"],
       result: "pointer",
@@ -691,6 +691,6 @@ try {
 export function CreateVssExpressWriterInternal(
   ppWriter: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libVSSAPI.CreateVssExpressWriterInternal(util.toPointer(ppWriter)));
+  return util.pointerFromFfi(libVSSAPI_dll.CreateVssExpressWriterInternal(util.toPointer(ppWriter)));
 }
 

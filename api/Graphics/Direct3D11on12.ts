@@ -39,7 +39,7 @@ export type HRESULT = number;
 // Native Libraries
 
 try {
-  var libd3d11 = Deno.dlopen("d3d11", {
+  var libd3d11_dll = Deno.dlopen("d3d11.dll", {
     D3D11On12CreateDevice: {
       parameters: ["pointer", "u32", "pointer", "u32", "pointer", "u32", "u32", "pointer", "pointer", "pointer"],
       result: "pointer",
@@ -61,6 +61,6 @@ export function D3D11On12CreateDevice(
   ppImmediateContext: Deno.PointerValue | Uint8Array | null /* ptr */,
   pChosenFeatureLevel: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libd3d11.D3D11On12CreateDevice(util.toPointer(pDevice), Flags, util.toPointer(pFeatureLevels), FeatureLevels, util.toPointer(ppCommandQueues), NumQueues, NodeMask, util.toPointer(ppDevice), util.toPointer(ppImmediateContext), util.toPointer(pChosenFeatureLevel)));
+  return util.pointerFromFfi(libd3d11_dll.D3D11On12CreateDevice(util.toPointer(pDevice), Flags, util.toPointer(pFeatureLevels), FeatureLevels, util.toPointer(ppCommandQueues), NumQueues, NodeMask, util.toPointer(ppDevice), util.toPointer(ppImmediateContext), util.toPointer(pChosenFeatureLevel)));
 }
 

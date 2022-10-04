@@ -195,7 +195,7 @@ export type HRESULT = number;
 // Native Libraries
 
 try {
-  var libwebsocket = Deno.dlopen("websocket", {
+  var libwebsocket_dll = Deno.dlopen("websocket.dll", {
     WebSocketCreateClientHandle: {
       parameters: ["pointer", "u32", "pointer"],
       result: "pointer",
@@ -258,7 +258,7 @@ export function WebSocketCreateClientHandle(
   ulPropertyCount: number /* u32 */,
   phWebSocket: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libwebsocket.WebSocketCreateClientHandle(util.toPointer(pProperties), ulPropertyCount, util.toPointer(phWebSocket)));
+  return util.pointerFromFfi(libwebsocket_dll.WebSocketCreateClientHandle(util.toPointer(pProperties), ulPropertyCount, util.toPointer(phWebSocket)));
 }
 
 export function WebSocketBeginClientHandshake(
@@ -272,7 +272,7 @@ export function WebSocketBeginClientHandshake(
   pAdditionalHeaders: Deno.PointerValue | Uint8Array | null /* ptr */,
   pulAdditionalHeaderCount: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libwebsocket.WebSocketBeginClientHandshake(util.toPointer(hWebSocket), util.toPointer(pszSubprotocols), ulSubprotocolCount, util.toPointer(pszExtensions), ulExtensionCount, util.toPointer(pInitialHeaders), ulInitialHeaderCount, util.toPointer(pAdditionalHeaders), util.toPointer(pulAdditionalHeaderCount)));
+  return util.pointerFromFfi(libwebsocket_dll.WebSocketBeginClientHandshake(util.toPointer(hWebSocket), util.toPointer(pszSubprotocols), ulSubprotocolCount, util.toPointer(pszExtensions), ulExtensionCount, util.toPointer(pInitialHeaders), ulInitialHeaderCount, util.toPointer(pAdditionalHeaders), util.toPointer(pulAdditionalHeaderCount)));
 }
 
 export function WebSocketEndClientHandshake(
@@ -283,7 +283,7 @@ export function WebSocketEndClientHandshake(
   pulSelectedExtensionCount: Deno.PointerValue | Uint8Array | null /* ptr */,
   pulSelectedSubprotocol: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libwebsocket.WebSocketEndClientHandshake(util.toPointer(hWebSocket), util.toPointer(pResponseHeaders), ulReponseHeaderCount, util.toPointer(pulSelectedExtensions), util.toPointer(pulSelectedExtensionCount), util.toPointer(pulSelectedSubprotocol)));
+  return util.pointerFromFfi(libwebsocket_dll.WebSocketEndClientHandshake(util.toPointer(hWebSocket), util.toPointer(pResponseHeaders), ulReponseHeaderCount, util.toPointer(pulSelectedExtensions), util.toPointer(pulSelectedExtensionCount), util.toPointer(pulSelectedSubprotocol)));
 }
 
 export function WebSocketCreateServerHandle(
@@ -291,7 +291,7 @@ export function WebSocketCreateServerHandle(
   ulPropertyCount: number /* u32 */,
   phWebSocket: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libwebsocket.WebSocketCreateServerHandle(util.toPointer(pProperties), ulPropertyCount, util.toPointer(phWebSocket)));
+  return util.pointerFromFfi(libwebsocket_dll.WebSocketCreateServerHandle(util.toPointer(pProperties), ulPropertyCount, util.toPointer(phWebSocket)));
 }
 
 export function WebSocketBeginServerHandshake(
@@ -304,13 +304,13 @@ export function WebSocketBeginServerHandshake(
   pResponseHeaders: Deno.PointerValue | Uint8Array | null /* ptr */,
   pulResponseHeaderCount: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libwebsocket.WebSocketBeginServerHandshake(util.toPointer(hWebSocket), util.pstrToFfi(pszSubprotocolSelected), util.toPointer(pszExtensionSelected), ulExtensionSelectedCount, util.toPointer(pRequestHeaders), ulRequestHeaderCount, util.toPointer(pResponseHeaders), util.toPointer(pulResponseHeaderCount)));
+  return util.pointerFromFfi(libwebsocket_dll.WebSocketBeginServerHandshake(util.toPointer(hWebSocket), util.pstrToFfi(pszSubprotocolSelected), util.toPointer(pszExtensionSelected), ulExtensionSelectedCount, util.toPointer(pRequestHeaders), ulRequestHeaderCount, util.toPointer(pResponseHeaders), util.toPointer(pulResponseHeaderCount)));
 }
 
 export function WebSocketEndServerHandshake(
   hWebSocket: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Networking.WebSocket.WEB_SOCKET_HANDLE */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libwebsocket.WebSocketEndServerHandshake(util.toPointer(hWebSocket)));
+  return util.pointerFromFfi(libwebsocket_dll.WebSocketEndServerHandshake(util.toPointer(hWebSocket)));
 }
 
 export function WebSocketSend(
@@ -319,7 +319,7 @@ export function WebSocketSend(
   pBuffer: Deno.PointerValue | Uint8Array | null /* ptr */,
   Context: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libwebsocket.WebSocketSend(util.toPointer(hWebSocket), BufferType, util.toPointer(pBuffer), util.toPointer(Context)));
+  return util.pointerFromFfi(libwebsocket_dll.WebSocketSend(util.toPointer(hWebSocket), BufferType, util.toPointer(pBuffer), util.toPointer(Context)));
 }
 
 export function WebSocketReceive(
@@ -327,7 +327,7 @@ export function WebSocketReceive(
   pBuffer: Deno.PointerValue | Uint8Array | null /* ptr */,
   pvContext: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libwebsocket.WebSocketReceive(util.toPointer(hWebSocket), util.toPointer(pBuffer), util.toPointer(pvContext)));
+  return util.pointerFromFfi(libwebsocket_dll.WebSocketReceive(util.toPointer(hWebSocket), util.toPointer(pBuffer), util.toPointer(pvContext)));
 }
 
 export function WebSocketGetAction(
@@ -340,7 +340,7 @@ export function WebSocketGetAction(
   pvApplicationContext: Deno.PointerValue | Uint8Array | null /* ptr */,
   pvActionContext: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libwebsocket.WebSocketGetAction(util.toPointer(hWebSocket), eActionQueue, util.toPointer(pDataBuffers), util.toPointer(pulDataBufferCount), util.toPointer(pAction), util.toPointer(pBufferType), util.toPointer(pvApplicationContext), util.toPointer(pvActionContext)));
+  return util.pointerFromFfi(libwebsocket_dll.WebSocketGetAction(util.toPointer(hWebSocket), eActionQueue, util.toPointer(pDataBuffers), util.toPointer(pulDataBufferCount), util.toPointer(pAction), util.toPointer(pBufferType), util.toPointer(pvApplicationContext), util.toPointer(pvActionContext)));
 }
 
 export function WebSocketCompleteAction(
@@ -348,19 +348,19 @@ export function WebSocketCompleteAction(
   pvActionContext: Deno.PointerValue | Uint8Array | null /* ptr */,
   ulBytesTransferred: number /* u32 */,
 ): void /* void */ {
-  return libwebsocket.WebSocketCompleteAction(util.toPointer(hWebSocket), util.toPointer(pvActionContext), ulBytesTransferred);
+  return libwebsocket_dll.WebSocketCompleteAction(util.toPointer(hWebSocket), util.toPointer(pvActionContext), ulBytesTransferred);
 }
 
 export function WebSocketAbortHandle(
   hWebSocket: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Networking.WebSocket.WEB_SOCKET_HANDLE */,
 ): void /* void */ {
-  return libwebsocket.WebSocketAbortHandle(util.toPointer(hWebSocket));
+  return libwebsocket_dll.WebSocketAbortHandle(util.toPointer(hWebSocket));
 }
 
 export function WebSocketDeleteHandle(
   hWebSocket: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Networking.WebSocket.WEB_SOCKET_HANDLE */,
 ): void /* void */ {
-  return libwebsocket.WebSocketDeleteHandle(util.toPointer(hWebSocket));
+  return libwebsocket_dll.WebSocketDeleteHandle(util.toPointer(hWebSocket));
 }
 
 export function WebSocketGetGlobalProperty(
@@ -368,6 +368,6 @@ export function WebSocketGetGlobalProperty(
   pvValue: Deno.PointerValue | Uint8Array | null /* ptr */,
   ulSize: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libwebsocket.WebSocketGetGlobalProperty(eType, util.toPointer(pvValue), util.toPointer(ulSize)));
+  return util.pointerFromFfi(libwebsocket_dll.WebSocketGetGlobalProperty(eType, util.toPointer(pvValue), util.toPointer(ulSize)));
 }
 

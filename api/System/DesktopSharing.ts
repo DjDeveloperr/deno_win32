@@ -14,7 +14,7 @@ export type RDPSRAPI_APP_FLAGS = number;
 export type RDPSRAPI_MOUSE_BUTTON_TYPE = number;
 export type RDPSRAPI_KBD_CODE_TYPE = number;
 export type RDPSRAPI_KBD_SYNC_FLAG = number;
-export type __MIDL___MIDL_itf_rdpencomapi_0000_0027_0001 = number;
+export type RDPENCOMAPI_CONSTANTS = number;
 
 // Constants
 export const DISPID_RDPSRAPI_METHOD_OPEN = 100;

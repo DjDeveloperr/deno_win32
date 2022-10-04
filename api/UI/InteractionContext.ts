@@ -414,7 +414,7 @@ export type HRESULT = number;
 // Native Libraries
 
 try {
-  var libNInput = Deno.dlopen("NInput", {
+  var libNInput_dll = Deno.dlopen("NInput.dll", {
     CreateInteractionContext: {
       parameters: ["pointer"],
       result: "pointer",
@@ -543,13 +543,13 @@ try {
 export function CreateInteractionContext(
   interactionContext: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libNInput.CreateInteractionContext(util.toPointer(interactionContext)));
+  return util.pointerFromFfi(libNInput_dll.CreateInteractionContext(util.toPointer(interactionContext)));
 }
 
 export function DestroyInteractionContext(
   interactionContext: Uint8Array | Deno.PointerValue | null /* Windows.Win32.UI.InteractionContext.HINTERACTIONCONTEXT */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libNInput.DestroyInteractionContext(util.toPointer(interactionContext)));
+  return util.pointerFromFfi(libNInput_dll.DestroyInteractionContext(util.toPointer(interactionContext)));
 }
 
 export function RegisterOutputCallbackInteractionContext(
@@ -557,7 +557,7 @@ export function RegisterOutputCallbackInteractionContext(
   outputCallback: Uint8Array | Deno.PointerValue | null /* Windows.Win32.UI.InteractionContext.INTERACTION_CONTEXT_OUTPUT_CALLBACK */,
   clientData: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libNInput.RegisterOutputCallbackInteractionContext(util.toPointer(interactionContext), util.toPointer(outputCallback), util.toPointer(clientData)));
+  return util.pointerFromFfi(libNInput_dll.RegisterOutputCallbackInteractionContext(util.toPointer(interactionContext), util.toPointer(outputCallback), util.toPointer(clientData)));
 }
 
 export function RegisterOutputCallbackInteractionContext2(
@@ -565,7 +565,7 @@ export function RegisterOutputCallbackInteractionContext2(
   outputCallback: Uint8Array | Deno.PointerValue | null /* Windows.Win32.UI.InteractionContext.INTERACTION_CONTEXT_OUTPUT_CALLBACK2 */,
   clientData: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libNInput.RegisterOutputCallbackInteractionContext2(util.toPointer(interactionContext), util.toPointer(outputCallback), util.toPointer(clientData)));
+  return util.pointerFromFfi(libNInput_dll.RegisterOutputCallbackInteractionContext2(util.toPointer(interactionContext), util.toPointer(outputCallback), util.toPointer(clientData)));
 }
 
 export function SetInteractionConfigurationInteractionContext(
@@ -573,7 +573,7 @@ export function SetInteractionConfigurationInteractionContext(
   configurationCount: number /* u32 */,
   configuration: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libNInput.SetInteractionConfigurationInteractionContext(util.toPointer(interactionContext), configurationCount, util.toPointer(configuration)));
+  return util.pointerFromFfi(libNInput_dll.SetInteractionConfigurationInteractionContext(util.toPointer(interactionContext), configurationCount, util.toPointer(configuration)));
 }
 
 export function GetInteractionConfigurationInteractionContext(
@@ -581,7 +581,7 @@ export function GetInteractionConfigurationInteractionContext(
   configurationCount: number /* u32 */,
   configuration: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libNInput.GetInteractionConfigurationInteractionContext(util.toPointer(interactionContext), configurationCount, util.toPointer(configuration)));
+  return util.pointerFromFfi(libNInput_dll.GetInteractionConfigurationInteractionContext(util.toPointer(interactionContext), configurationCount, util.toPointer(configuration)));
 }
 
 export function SetPropertyInteractionContext(
@@ -589,7 +589,7 @@ export function SetPropertyInteractionContext(
   contextProperty: INTERACTION_CONTEXT_PROPERTY /* Windows.Win32.UI.InteractionContext.INTERACTION_CONTEXT_PROPERTY */,
   value: number /* u32 */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libNInput.SetPropertyInteractionContext(util.toPointer(interactionContext), contextProperty, value));
+  return util.pointerFromFfi(libNInput_dll.SetPropertyInteractionContext(util.toPointer(interactionContext), contextProperty, value));
 }
 
 export function GetPropertyInteractionContext(
@@ -597,7 +597,7 @@ export function GetPropertyInteractionContext(
   contextProperty: INTERACTION_CONTEXT_PROPERTY /* Windows.Win32.UI.InteractionContext.INTERACTION_CONTEXT_PROPERTY */,
   value: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libNInput.GetPropertyInteractionContext(util.toPointer(interactionContext), contextProperty, util.toPointer(value)));
+  return util.pointerFromFfi(libNInput_dll.GetPropertyInteractionContext(util.toPointer(interactionContext), contextProperty, util.toPointer(value)));
 }
 
 export function SetInertiaParameterInteractionContext(
@@ -605,7 +605,7 @@ export function SetInertiaParameterInteractionContext(
   inertiaParameter: INERTIA_PARAMETER /* Windows.Win32.UI.InteractionContext.INERTIA_PARAMETER */,
   value: number /* f32 */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libNInput.SetInertiaParameterInteractionContext(util.toPointer(interactionContext), inertiaParameter, value));
+  return util.pointerFromFfi(libNInput_dll.SetInertiaParameterInteractionContext(util.toPointer(interactionContext), inertiaParameter, value));
 }
 
 export function GetInertiaParameterInteractionContext(
@@ -613,7 +613,7 @@ export function GetInertiaParameterInteractionContext(
   inertiaParameter: INERTIA_PARAMETER /* Windows.Win32.UI.InteractionContext.INERTIA_PARAMETER */,
   value: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libNInput.GetInertiaParameterInteractionContext(util.toPointer(interactionContext), inertiaParameter, util.toPointer(value)));
+  return util.pointerFromFfi(libNInput_dll.GetInertiaParameterInteractionContext(util.toPointer(interactionContext), inertiaParameter, util.toPointer(value)));
 }
 
 export function SetCrossSlideParametersInteractionContext(
@@ -621,7 +621,7 @@ export function SetCrossSlideParametersInteractionContext(
   parameterCount: number /* u32 */,
   crossSlideParameters: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libNInput.SetCrossSlideParametersInteractionContext(util.toPointer(interactionContext), parameterCount, util.toPointer(crossSlideParameters)));
+  return util.pointerFromFfi(libNInput_dll.SetCrossSlideParametersInteractionContext(util.toPointer(interactionContext), parameterCount, util.toPointer(crossSlideParameters)));
 }
 
 export function GetCrossSlideParameterInteractionContext(
@@ -629,7 +629,7 @@ export function GetCrossSlideParameterInteractionContext(
   threshold: CROSS_SLIDE_THRESHOLD /* Windows.Win32.UI.InteractionContext.CROSS_SLIDE_THRESHOLD */,
   distance: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libNInput.GetCrossSlideParameterInteractionContext(util.toPointer(interactionContext), threshold, util.toPointer(distance)));
+  return util.pointerFromFfi(libNInput_dll.GetCrossSlideParameterInteractionContext(util.toPointer(interactionContext), threshold, util.toPointer(distance)));
 }
 
 export function SetTapParameterInteractionContext(
@@ -637,7 +637,7 @@ export function SetTapParameterInteractionContext(
   parameter: TAP_PARAMETER /* Windows.Win32.UI.InteractionContext.TAP_PARAMETER */,
   value: number /* f32 */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libNInput.SetTapParameterInteractionContext(util.toPointer(interactionContext), parameter, value));
+  return util.pointerFromFfi(libNInput_dll.SetTapParameterInteractionContext(util.toPointer(interactionContext), parameter, value));
 }
 
 export function GetTapParameterInteractionContext(
@@ -645,7 +645,7 @@ export function GetTapParameterInteractionContext(
   parameter: TAP_PARAMETER /* Windows.Win32.UI.InteractionContext.TAP_PARAMETER */,
   value: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libNInput.GetTapParameterInteractionContext(util.toPointer(interactionContext), parameter, util.toPointer(value)));
+  return util.pointerFromFfi(libNInput_dll.GetTapParameterInteractionContext(util.toPointer(interactionContext), parameter, util.toPointer(value)));
 }
 
 export function SetHoldParameterInteractionContext(
@@ -653,7 +653,7 @@ export function SetHoldParameterInteractionContext(
   parameter: HOLD_PARAMETER /* Windows.Win32.UI.InteractionContext.HOLD_PARAMETER */,
   value: number /* f32 */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libNInput.SetHoldParameterInteractionContext(util.toPointer(interactionContext), parameter, value));
+  return util.pointerFromFfi(libNInput_dll.SetHoldParameterInteractionContext(util.toPointer(interactionContext), parameter, value));
 }
 
 export function GetHoldParameterInteractionContext(
@@ -661,7 +661,7 @@ export function GetHoldParameterInteractionContext(
   parameter: HOLD_PARAMETER /* Windows.Win32.UI.InteractionContext.HOLD_PARAMETER */,
   value: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libNInput.GetHoldParameterInteractionContext(util.toPointer(interactionContext), parameter, util.toPointer(value)));
+  return util.pointerFromFfi(libNInput_dll.GetHoldParameterInteractionContext(util.toPointer(interactionContext), parameter, util.toPointer(value)));
 }
 
 export function SetTranslationParameterInteractionContext(
@@ -669,7 +669,7 @@ export function SetTranslationParameterInteractionContext(
   parameter: TRANSLATION_PARAMETER /* Windows.Win32.UI.InteractionContext.TRANSLATION_PARAMETER */,
   value: number /* f32 */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libNInput.SetTranslationParameterInteractionContext(util.toPointer(interactionContext), parameter, value));
+  return util.pointerFromFfi(libNInput_dll.SetTranslationParameterInteractionContext(util.toPointer(interactionContext), parameter, value));
 }
 
 export function GetTranslationParameterInteractionContext(
@@ -677,7 +677,7 @@ export function GetTranslationParameterInteractionContext(
   parameter: TRANSLATION_PARAMETER /* Windows.Win32.UI.InteractionContext.TRANSLATION_PARAMETER */,
   value: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libNInput.GetTranslationParameterInteractionContext(util.toPointer(interactionContext), parameter, util.toPointer(value)));
+  return util.pointerFromFfi(libNInput_dll.GetTranslationParameterInteractionContext(util.toPointer(interactionContext), parameter, util.toPointer(value)));
 }
 
 export function SetMouseWheelParameterInteractionContext(
@@ -685,7 +685,7 @@ export function SetMouseWheelParameterInteractionContext(
   parameter: MOUSE_WHEEL_PARAMETER /* Windows.Win32.UI.InteractionContext.MOUSE_WHEEL_PARAMETER */,
   value: number /* f32 */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libNInput.SetMouseWheelParameterInteractionContext(util.toPointer(interactionContext), parameter, value));
+  return util.pointerFromFfi(libNInput_dll.SetMouseWheelParameterInteractionContext(util.toPointer(interactionContext), parameter, value));
 }
 
 export function GetMouseWheelParameterInteractionContext(
@@ -693,13 +693,13 @@ export function GetMouseWheelParameterInteractionContext(
   parameter: MOUSE_WHEEL_PARAMETER /* Windows.Win32.UI.InteractionContext.MOUSE_WHEEL_PARAMETER */,
   value: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libNInput.GetMouseWheelParameterInteractionContext(util.toPointer(interactionContext), parameter, util.toPointer(value)));
+  return util.pointerFromFfi(libNInput_dll.GetMouseWheelParameterInteractionContext(util.toPointer(interactionContext), parameter, util.toPointer(value)));
 }
 
 export function ResetInteractionContext(
   interactionContext: Uint8Array | Deno.PointerValue | null /* Windows.Win32.UI.InteractionContext.HINTERACTIONCONTEXT */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libNInput.ResetInteractionContext(util.toPointer(interactionContext)));
+  return util.pointerFromFfi(libNInput_dll.ResetInteractionContext(util.toPointer(interactionContext)));
 }
 
 export function GetStateInteractionContext(
@@ -707,21 +707,21 @@ export function GetStateInteractionContext(
   pointerInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
   state: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libNInput.GetStateInteractionContext(util.toPointer(interactionContext), util.toPointer(pointerInfo), util.toPointer(state)));
+  return util.pointerFromFfi(libNInput_dll.GetStateInteractionContext(util.toPointer(interactionContext), util.toPointer(pointerInfo), util.toPointer(state)));
 }
 
 export function AddPointerInteractionContext(
   interactionContext: Uint8Array | Deno.PointerValue | null /* Windows.Win32.UI.InteractionContext.HINTERACTIONCONTEXT */,
   pointerId: number /* u32 */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libNInput.AddPointerInteractionContext(util.toPointer(interactionContext), pointerId));
+  return util.pointerFromFfi(libNInput_dll.AddPointerInteractionContext(util.toPointer(interactionContext), pointerId));
 }
 
 export function RemovePointerInteractionContext(
   interactionContext: Uint8Array | Deno.PointerValue | null /* Windows.Win32.UI.InteractionContext.HINTERACTIONCONTEXT */,
   pointerId: number /* u32 */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libNInput.RemovePointerInteractionContext(util.toPointer(interactionContext), pointerId));
+  return util.pointerFromFfi(libNInput_dll.RemovePointerInteractionContext(util.toPointer(interactionContext), pointerId));
 }
 
 export function ProcessPointerFramesInteractionContext(
@@ -730,7 +730,7 @@ export function ProcessPointerFramesInteractionContext(
   pointerCount: number /* u32 */,
   pointerInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libNInput.ProcessPointerFramesInteractionContext(util.toPointer(interactionContext), entriesCount, pointerCount, util.toPointer(pointerInfo)));
+  return util.pointerFromFfi(libNInput_dll.ProcessPointerFramesInteractionContext(util.toPointer(interactionContext), entriesCount, pointerCount, util.toPointer(pointerInfo)));
 }
 
 export function BufferPointerPacketsInteractionContext(
@@ -738,25 +738,25 @@ export function BufferPointerPacketsInteractionContext(
   entriesCount: number /* u32 */,
   pointerInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libNInput.BufferPointerPacketsInteractionContext(util.toPointer(interactionContext), entriesCount, util.toPointer(pointerInfo)));
+  return util.pointerFromFfi(libNInput_dll.BufferPointerPacketsInteractionContext(util.toPointer(interactionContext), entriesCount, util.toPointer(pointerInfo)));
 }
 
 export function ProcessBufferedPacketsInteractionContext(
   interactionContext: Uint8Array | Deno.PointerValue | null /* Windows.Win32.UI.InteractionContext.HINTERACTIONCONTEXT */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libNInput.ProcessBufferedPacketsInteractionContext(util.toPointer(interactionContext)));
+  return util.pointerFromFfi(libNInput_dll.ProcessBufferedPacketsInteractionContext(util.toPointer(interactionContext)));
 }
 
 export function ProcessInertiaInteractionContext(
   interactionContext: Uint8Array | Deno.PointerValue | null /* Windows.Win32.UI.InteractionContext.HINTERACTIONCONTEXT */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libNInput.ProcessInertiaInteractionContext(util.toPointer(interactionContext)));
+  return util.pointerFromFfi(libNInput_dll.ProcessInertiaInteractionContext(util.toPointer(interactionContext)));
 }
 
 export function StopInteractionContext(
   interactionContext: Uint8Array | Deno.PointerValue | null /* Windows.Win32.UI.InteractionContext.HINTERACTIONCONTEXT */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libNInput.StopInteractionContext(util.toPointer(interactionContext)));
+  return util.pointerFromFfi(libNInput_dll.StopInteractionContext(util.toPointer(interactionContext)));
 }
 
 export function SetPivotInteractionContext(
@@ -765,6 +765,6 @@ export function SetPivotInteractionContext(
   y: number /* f32 */,
   radius: number /* f32 */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libNInput.SetPivotInteractionContext(util.toPointer(interactionContext), x, y, radius));
+  return util.pointerFromFfi(libNInput_dll.SetPivotInteractionContext(util.toPointer(interactionContext), x, y, radius));
 }
 

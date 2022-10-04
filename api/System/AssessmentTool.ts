@@ -3,7 +3,7 @@
 import * as util from "../../util.ts";
 
 // Enums
-export type WINSAT_OEM_DATA_TYPE = number;
+export type WINSAT_OEM_CUSTOMIZATION_STATE = number;
 export type WINSAT_ASSESSMENT_STATE = number;
 export type WINSAT_ASSESSMENT_TYPE = number;
 export type WINSAT_BITMAP_SIZE = number;

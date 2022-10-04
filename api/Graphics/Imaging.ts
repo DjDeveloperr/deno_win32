@@ -1153,7 +1153,7 @@ export type HANDLE = Deno.PointerValue;
 // Native Libraries
 
 try {
-  var libWindowsCodecs = Deno.dlopen("WindowsCodecs", {
+  var libWindowsCodecs_dll = Deno.dlopen("WindowsCodecs.dll", {
     WICConvertBitmapSource: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "pointer",
@@ -1200,7 +1200,7 @@ export function WICConvertBitmapSource(
   pISrc: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Graphics.Imaging.IWICBitmapSource */,
   ppIDst: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libWindowsCodecs.WICConvertBitmapSource(util.toPointer(dstFormat), util.toPointer(pISrc), util.toPointer(ppIDst)));
+  return util.pointerFromFfi(libWindowsCodecs_dll.WICConvertBitmapSource(util.toPointer(dstFormat), util.toPointer(pISrc), util.toPointer(ppIDst)));
 }
 
 export function WICCreateBitmapFromSection(
@@ -1212,7 +1212,7 @@ export function WICCreateBitmapFromSection(
   offset: number /* u32 */,
   ppIBitmap: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libWindowsCodecs.WICCreateBitmapFromSection(width, height, util.toPointer(pixelFormat), util.toPointer(hSection), stride, offset, util.toPointer(ppIBitmap)));
+  return util.pointerFromFfi(libWindowsCodecs_dll.WICCreateBitmapFromSection(width, height, util.toPointer(pixelFormat), util.toPointer(hSection), stride, offset, util.toPointer(ppIBitmap)));
 }
 
 export function WICCreateBitmapFromSectionEx(
@@ -1225,7 +1225,7 @@ export function WICCreateBitmapFromSectionEx(
   desiredAccessLevel: WICSectionAccessLevel /* Windows.Win32.Graphics.Imaging.WICSectionAccessLevel */,
   ppIBitmap: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libWindowsCodecs.WICCreateBitmapFromSectionEx(width, height, util.toPointer(pixelFormat), util.toPointer(hSection), stride, offset, desiredAccessLevel, util.toPointer(ppIBitmap)));
+  return util.pointerFromFfi(libWindowsCodecs_dll.WICCreateBitmapFromSectionEx(width, height, util.toPointer(pixelFormat), util.toPointer(hSection), stride, offset, desiredAccessLevel, util.toPointer(ppIBitmap)));
 }
 
 export function WICMapGuidToShortName(
@@ -1234,14 +1234,14 @@ export function WICMapGuidToShortName(
   wzName: string | null /* Windows.Win32.Foundation.PWSTR */,
   pcchActual: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libWindowsCodecs.WICMapGuidToShortName(util.toPointer(guid), cchName, util.pwstrToFfi(wzName), util.toPointer(pcchActual)));
+  return util.pointerFromFfi(libWindowsCodecs_dll.WICMapGuidToShortName(util.toPointer(guid), cchName, util.pwstrToFfi(wzName), util.toPointer(pcchActual)));
 }
 
 export function WICMapShortNameToGuid(
   wzName: string | null /* Windows.Win32.Foundation.PWSTR */,
   pguid: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libWindowsCodecs.WICMapShortNameToGuid(util.pwstrToFfi(wzName), util.toPointer(pguid)));
+  return util.pointerFromFfi(libWindowsCodecs_dll.WICMapShortNameToGuid(util.pwstrToFfi(wzName), util.toPointer(pguid)));
 }
 
 export function WICMapSchemaToName(
@@ -1251,7 +1251,7 @@ export function WICMapSchemaToName(
   wzName: string | null /* Windows.Win32.Foundation.PWSTR */,
   pcchActual: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libWindowsCodecs.WICMapSchemaToName(util.toPointer(guidMetadataFormat), util.pwstrToFfi(pwzSchema), cchName, util.pwstrToFfi(wzName), util.toPointer(pcchActual)));
+  return util.pointerFromFfi(libWindowsCodecs_dll.WICMapSchemaToName(util.toPointer(guidMetadataFormat), util.pwstrToFfi(pwzSchema), cchName, util.pwstrToFfi(wzName), util.toPointer(pcchActual)));
 }
 
 export function WICMatchMetadataContent(
@@ -1260,7 +1260,7 @@ export function WICMatchMetadataContent(
   pIStream: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Com.IStream */,
   pguidMetadataFormat: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libWindowsCodecs.WICMatchMetadataContent(util.toPointer(guidContainerFormat), util.toPointer(pguidVendor), util.toPointer(pIStream), util.toPointer(pguidMetadataFormat)));
+  return util.pointerFromFfi(libWindowsCodecs_dll.WICMatchMetadataContent(util.toPointer(guidContainerFormat), util.toPointer(pguidVendor), util.toPointer(pIStream), util.toPointer(pguidMetadataFormat)));
 }
 
 export function WICSerializeMetadataContent(
@@ -1269,7 +1269,7 @@ export function WICSerializeMetadataContent(
   dwPersistOptions: number /* u32 */,
   pIStream: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Com.IStream */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libWindowsCodecs.WICSerializeMetadataContent(util.toPointer(guidContainerFormat), util.toPointer(pIWriter), dwPersistOptions, util.toPointer(pIStream)));
+  return util.pointerFromFfi(libWindowsCodecs_dll.WICSerializeMetadataContent(util.toPointer(guidContainerFormat), util.toPointer(pIWriter), dwPersistOptions, util.toPointer(pIStream)));
 }
 
 export function WICGetMetadataContentSize(
@@ -1277,6 +1277,6 @@ export function WICGetMetadataContentSize(
   pIWriter: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Graphics.Imaging.IWICMetadataWriter */,
   pcbSize: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libWindowsCodecs.WICGetMetadataContentSize(util.toPointer(guidContainerFormat), util.toPointer(pIWriter), util.toPointer(pcbSize)));
+  return util.pointerFromFfi(libWindowsCodecs_dll.WICGetMetadataContentSize(util.toPointer(guidContainerFormat), util.toPointer(pIWriter), util.toPointer(pcbSize)));
 }
 

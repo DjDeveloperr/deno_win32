@@ -17,8 +17,10 @@ export type GETTEXTLENGTHEX_FLAGS = number;
 export type REOBJECT_FLAGS = number;
 export type PARAFORMAT_NUMBERING_STYLE = number;
 export type PARAFORMAT_ALIGNMENT = number;
+export type PARAFORMAT_NUMBERING = number;
 export type TEXTMODE = number;
 export type TEXT_ALIGN_OPTIONS = number;
+export type EMBED_FONT_CHARSET = number;
 export type DVASPECT = number;
 export type UNDONAMEID = number;
 export type KHYPH = number;
@@ -182,9 +184,20 @@ export const PFNS_NEWNUMBER = 32768;
 export const PFA_CENTER = 3;
 export const PFA_LEFT = 1;
 export const PFA_RIGHT = 2;
-export const WM_CONTEXTMENU = 123;
-export const WM_UNICHAR = 265;
-export const WM_PRINTCLIENT = 792;
+export const PFN_BULLET = 1;
+export const PFN_ARABIC = 2;
+export const PFN_LCLETTER = 3;
+export const PFN_UCLETTER = 4;
+export const PFN_LCROMAN = 5;
+export const PFN_UCROMAN = 6;
+export const cchTextLimitDefault = 32767;
+export const MSFTEDIT_CLASS = "RICHEDIT50W";
+export const CERICHEDIT_CLASSA = "RichEditCEA";
+export const CERICHEDIT_CLASSW = "RichEditCEW";
+export const RICHEDIT_CLASSA = "RichEdit20A";
+export const RICHEDIT_CLASS10A = "RICHEDIT";
+export const RICHEDIT_CLASSW = "RichEdit20W";
+export const RICHEDIT_CLASS = "RichEdit20W";
 export const EM_CANPASTE = 1074;
 export const EM_DISPLAYBAND = 1075;
 export const EM_EXGETSEL = 1076;
@@ -500,6 +513,7 @@ export const IMF_FORCEACTIVE = 64;
 export const IMF_FORCEINACTIVE = 128;
 export const IMF_FORCEREMEMBER = 256;
 export const IMF_MULTIPLEEDIT = 1024;
+export const yHeightCharPtsMost = 1638;
 export const SCF_SELECTION = 1;
 export const SCF_WORD = 2;
 export const SCF_DEFAULT = 0;
@@ -527,6 +541,7 @@ export const SFF_KEEPDOCINFO = 4096;
 export const SFF_PWD = 2048;
 export const SF_RTFVAL = 1792;
 export const MAX_TAB_STOPS = 32;
+export const lDefaultTab = 720;
 export const MAX_TABLE_CELLS = 63;
 export const PFM_SPACEBEFORE = 64;
 export const PFM_SPACEAFTER = 128;
@@ -551,20 +566,16 @@ export const PFM_RESERVED2 = 134217728;
 export const PFM_TABLEROWDELIMITER = 268435456;
 export const PFM_TEXTWRAPPINGBREAK = 536870912;
 export const PFM_TABLE = 1073741824;
-export const PFN_BULLET = 1;
-export const PFN_ARABIC = 2;
-export const PFN_LCLETTER = 3;
-export const PFN_UCLETTER = 4;
-export const PFN_LCROMAN = 5;
-export const PFN_UCROMAN = 6;
 export const PFA_JUSTIFY = 4;
 export const PFA_FULL_INTERWORD = 4;
-export const WM_NOTIFY = 78;
 export const GCMF_GRIPPER = 1;
 export const GCMF_SPELLING = 2;
 export const GCMF_TOUCHMENU = 16384;
 export const GCMF_MOUSEMENU = 8192;
 export const OLEOP_DOVERB = 1;
+export const CF_RTF = "Rich Text Format";
+export const CF_RTFNOOBJS = "Rich Text Format Without Objects";
+export const CF_RETEXTOBJ = "RichEdit Text and Objects";
 export const ST_DEFAULT = 0;
 export const ST_KEEPUNDO = 1;
 export const ST_SELECTION = 2;
@@ -588,6 +599,7 @@ export const BOE_UNICODEBIDI = 128;
 export const FR_MATCHDIAC = 536870912;
 export const FR_MATCHKASHIDA = 1073741824;
 export const FR_MATCHALEFHAMZA = 2147483648;
+export const RICHEDIT60_CLASS = "RICHEDIT60W";
 export const PFA_FULL_NEWSPAPER = 5;
 export const PFA_FULL_INTERLETTER = 6;
 export const PFA_FULL_SCALED = 7;
@@ -629,11 +641,6 @@ export const TXTBIT_ADVANCEDINPUT = 536870912;
 export const TXES_ISDIALOG = 1;
 export const REO_NULL = 0;
 export const REO_READWRITEMASK = 2047;
-export const RECO_PASTE = 0;
-export const RECO_DROP = 1;
-export const RECO_COPY = 2;
-export const RECO_CUT = 3;
-export const RECO_DRAG = 4;
 export const TM_PLAINTEXT = 1;
 export const TM_RICHTEXT = 2;
 export const TM_SINGLELEVELUNDO = 4;
@@ -656,10 +663,14 @@ export const VTA_RIGHT = 0;
 export const VTA_CENTER = 6;
 export const VTA_BOTTOM = 2;
 export const VTA_TOP = 0;
+export const CHARSET_UNICODE = 1;
+export const CHARSET_SYMBOL = 2;
 export const DVASPECT_CONTENT = 1;
 export const DVASPECT_THUMBNAIL = 2;
 export const DVASPECT_ICON = 4;
 export const DVASPECT_DOCPRINT = 8;
+export const DVASPECT_OPAQUE = 16;
+export const DVASPECT_TRANSPARENT = 32;
 export const UID_UNKNOWN = 0;
 export const UID_TYPING = 1;
 export const UID_DELETE = 2;
@@ -1414,8 +1425,10 @@ export function allocTABLEROWPARMS(data?: Partial<TABLEROWPARMS>): Uint8Array {
   return buf;
 }
 
+export type COLORREF = number;
+
 /**
- * Windows.Win32.UI.Controls.RichEdit.TABLECELLPARMS (size: 40)
+ * Windows.Win32.UI.Controls.RichEdit.TABLECELLPARMS (size: 64)
  */
 export interface TABLECELLPARMS {
   /** i32 */
@@ -1432,21 +1445,21 @@ export interface TABLECELLPARMS {
   dxBrdrRight: number;
   /** i16 */
   dyBrdrBottom: number;
-  /** u32 */
-  crBrdrLeft: number;
-  /** u32 */
-  crBrdrTop: number;
-  /** u32 */
-  crBrdrRight: number;
-  /** u32 */
-  crBrdrBottom: number;
-  /** u32 */
-  crBackPat: number;
-  /** u32 */
-  crForePat: number;
+  /** Windows.Win32.Foundation.COLORREF */
+  crBrdrLeft: Uint8Array | Deno.PointerValue | null;
+  /** Windows.Win32.Foundation.COLORREF */
+  crBrdrTop: Uint8Array | Deno.PointerValue | null;
+  /** Windows.Win32.Foundation.COLORREF */
+  crBrdrRight: Uint8Array | Deno.PointerValue | null;
+  /** Windows.Win32.Foundation.COLORREF */
+  crBrdrBottom: Uint8Array | Deno.PointerValue | null;
+  /** Windows.Win32.Foundation.COLORREF */
+  crBackPat: Uint8Array | Deno.PointerValue | null;
+  /** Windows.Win32.Foundation.COLORREF */
+  crForePat: Uint8Array | Deno.PointerValue | null;
 }
 
-export const sizeofTABLECELLPARMS = 40;
+export const sizeofTABLECELLPARMS = 64;
 
 export function allocTABLECELLPARMS(data?: Partial<TABLECELLPARMS>): Uint8Array {
   const buf = new Uint8Array(sizeofTABLECELLPARMS);
@@ -1465,18 +1478,18 @@ export function allocTABLECELLPARMS(data?: Partial<TABLECELLPARMS>): Uint8Array 
   if (data?.dxBrdrRight !== undefined) view.setInt16(12, Number(data.dxBrdrRight), true);
   // 0x0e: i16
   if (data?.dyBrdrBottom !== undefined) view.setInt16(14, Number(data.dyBrdrBottom), true);
-  // 0x10: u32
-  if (data?.crBrdrLeft !== undefined) view.setUint32(16, Number(data.crBrdrLeft), true);
-  // 0x14: u32
-  if (data?.crBrdrTop !== undefined) view.setUint32(20, Number(data.crBrdrTop), true);
-  // 0x18: u32
-  if (data?.crBrdrRight !== undefined) view.setUint32(24, Number(data.crBrdrRight), true);
-  // 0x1c: u32
-  if (data?.crBrdrBottom !== undefined) view.setUint32(28, Number(data.crBrdrBottom), true);
-  // 0x20: u32
-  if (data?.crBackPat !== undefined) view.setUint32(32, Number(data.crBackPat), true);
-  // 0x24: u32
-  if (data?.crForePat !== undefined) view.setUint32(36, Number(data.crForePat), true);
+  // 0x10: pointer
+  if (data?.crBrdrLeft !== undefined) view.setBigUint64(16, data.crBrdrLeft === null ? 0n : BigInt(util.toPointer(data.crBrdrLeft)), true);
+  // 0x18: pointer
+  if (data?.crBrdrTop !== undefined) view.setBigUint64(24, data.crBrdrTop === null ? 0n : BigInt(util.toPointer(data.crBrdrTop)), true);
+  // 0x20: pointer
+  if (data?.crBrdrRight !== undefined) view.setBigUint64(32, data.crBrdrRight === null ? 0n : BigInt(util.toPointer(data.crBrdrRight)), true);
+  // 0x28: pointer
+  if (data?.crBrdrBottom !== undefined) view.setBigUint64(40, data.crBrdrBottom === null ? 0n : BigInt(util.toPointer(data.crBrdrBottom)), true);
+  // 0x30: pointer
+  if (data?.crBackPat !== undefined) view.setBigUint64(48, data.crBackPat === null ? 0n : BigInt(util.toPointer(data.crBackPat)), true);
+  // 0x38: pointer
+  if (data?.crForePat !== undefined) view.setBigUint64(56, data.crForePat === null ? 0n : BigInt(util.toPointer(data.crForePat)), true);
   return buf;
 }
 
@@ -1576,7 +1589,7 @@ export function allocENDCOMPOSITIONNOTIFY(data?: Partial<ENDCOMPOSITIONNOTIFY>):
 }
 
 /**
- * Windows.Win32.UI.Controls.RichEdit.CHARFORMATA (size: 40)
+ * Windows.Win32.UI.Controls.RichEdit.CHARFORMATA (size: 48)
  */
 export interface CHARFORMATA {
   /** u32 */
@@ -1589,17 +1602,17 @@ export interface CHARFORMATA {
   yHeight: number;
   /** i32 */
   yOffset: number;
-  /** u32 */
-  crTextColor: number;
-  /** u8 */
-  bCharSet: number;
+  /** Windows.Win32.Foundation.COLORREF */
+  crTextColor: Uint8Array | Deno.PointerValue | null;
+  /** Windows.Win32.Graphics.Gdi.EMBED_FONT_CHARSET */
+  bCharSet: EMBED_FONT_CHARSET;
   /** u8 */
   bPitchAndFamily: number;
   /** array */
   szFaceName: Deno.PointerValue | null;
 }
 
-export const sizeofCHARFORMATA = 40;
+export const sizeofCHARFORMATA = 48;
 
 export function allocCHARFORMATA(data?: Partial<CHARFORMATA>): Uint8Array {
   const buf = new Uint8Array(sizeofCHARFORMATA);
@@ -1614,20 +1627,21 @@ export function allocCHARFORMATA(data?: Partial<CHARFORMATA>): Uint8Array {
   if (data?.yHeight !== undefined) view.setInt32(12, Number(data.yHeight), true);
   // 0x10: i32
   if (data?.yOffset !== undefined) view.setInt32(16, Number(data.yOffset), true);
-  // 0x14: u32
-  if (data?.crTextColor !== undefined) view.setUint32(20, Number(data.crTextColor), true);
-  // 0x18: u8
-  if (data?.bCharSet !== undefined) view.setUint8(24, Number(data.bCharSet));
-  // 0x19: u8
-  if (data?.bPitchAndFamily !== undefined) view.setUint8(25, Number(data.bPitchAndFamily));
-  // 0x1a: pad6
-  // 0x20: pointer
-  if (data?.szFaceName !== undefined) view.setBigUint64(32, data.szFaceName === null ? 0n : BigInt(util.toPointer(data.szFaceName)), true);
+  // 0x14: pad4
+  // 0x18: pointer
+  if (data?.crTextColor !== undefined) view.setBigUint64(24, data.crTextColor === null ? 0n : BigInt(util.toPointer(data.crTextColor)), true);
+  // 0x20: u32
+  if (data?.bCharSet !== undefined) view.setUint32(32, Number(data.bCharSet), true);
+  // 0x24: u8
+  if (data?.bPitchAndFamily !== undefined) view.setUint8(36, Number(data.bPitchAndFamily));
+  // 0x25: pad3
+  // 0x28: pointer
+  if (data?.szFaceName !== undefined) view.setBigUint64(40, data.szFaceName === null ? 0n : BigInt(util.toPointer(data.szFaceName)), true);
   return buf;
 }
 
 /**
- * Windows.Win32.UI.Controls.RichEdit.CHARFORMATW (size: 40)
+ * Windows.Win32.UI.Controls.RichEdit.CHARFORMATW (size: 48)
  */
 export interface CHARFORMATW {
   /** u32 */
@@ -1640,17 +1654,17 @@ export interface CHARFORMATW {
   yHeight: number;
   /** i32 */
   yOffset: number;
-  /** u32 */
-  crTextColor: number;
-  /** u8 */
-  bCharSet: number;
+  /** Windows.Win32.Foundation.COLORREF */
+  crTextColor: Uint8Array | Deno.PointerValue | null;
+  /** Windows.Win32.Graphics.Gdi.EMBED_FONT_CHARSET */
+  bCharSet: EMBED_FONT_CHARSET;
   /** u8 */
   bPitchAndFamily: number;
   /** array */
   szFaceName: Deno.PointerValue | null;
 }
 
-export const sizeofCHARFORMATW = 40;
+export const sizeofCHARFORMATW = 48;
 
 export function allocCHARFORMATW(data?: Partial<CHARFORMATW>): Uint8Array {
   const buf = new Uint8Array(sizeofCHARFORMATW);
@@ -1665,15 +1679,16 @@ export function allocCHARFORMATW(data?: Partial<CHARFORMATW>): Uint8Array {
   if (data?.yHeight !== undefined) view.setInt32(12, Number(data.yHeight), true);
   // 0x10: i32
   if (data?.yOffset !== undefined) view.setInt32(16, Number(data.yOffset), true);
-  // 0x14: u32
-  if (data?.crTextColor !== undefined) view.setUint32(20, Number(data.crTextColor), true);
-  // 0x18: u8
-  if (data?.bCharSet !== undefined) view.setUint8(24, Number(data.bCharSet));
-  // 0x19: u8
-  if (data?.bPitchAndFamily !== undefined) view.setUint8(25, Number(data.bPitchAndFamily));
-  // 0x1a: pad6
-  // 0x20: pointer
-  if (data?.szFaceName !== undefined) view.setBigUint64(32, data.szFaceName === null ? 0n : BigInt(util.toPointer(data.szFaceName)), true);
+  // 0x14: pad4
+  // 0x18: pointer
+  if (data?.crTextColor !== undefined) view.setBigUint64(24, data.crTextColor === null ? 0n : BigInt(util.toPointer(data.crTextColor)), true);
+  // 0x20: u32
+  if (data?.bCharSet !== undefined) view.setUint32(32, Number(data.bCharSet), true);
+  // 0x24: u8
+  if (data?.bPitchAndFamily !== undefined) view.setUint8(36, Number(data.bPitchAndFamily));
+  // 0x25: pad3
+  // 0x28: pointer
+  if (data?.szFaceName !== undefined) view.setBigUint64(40, data.szFaceName === null ? 0n : BigInt(util.toPointer(data.szFaceName)), true);
   return buf;
 }
 
@@ -1722,17 +1737,17 @@ export function alloc_Anonymous_e__Union(data?: Partial<_Anonymous_e__Union>): U
 }
 
 /**
- * Windows.Win32.UI.Controls.RichEdit.CHARFORMAT2W (size: 40)
+ * Windows.Win32.UI.Controls.RichEdit.CHARFORMAT2W (size: 48)
  */
 export interface CHARFORMAT2W {
   /** Windows.Win32.UI.Controls.RichEdit.CHARFORMATW */
-  __AnonymousBase_richedit_L711_C23: Uint8Array | Deno.PointerValue | null;
+  Base: Uint8Array | Deno.PointerValue | null;
   /** u16 */
   wWeight: number;
   /** i16 */
   sSpacing: number;
-  /** u32 */
-  crBackColor: number;
+  /** Windows.Win32.Foundation.COLORREF */
+  crBackColor: Uint8Array | Deno.PointerValue | null;
   /** u32 */
   lcid: number;
   /** _Anonymous_e__Union */
@@ -1751,51 +1766,52 @@ export interface CHARFORMAT2W {
   bUnderlineColor: number;
 }
 
-export const sizeofCHARFORMAT2W = 40;
+export const sizeofCHARFORMAT2W = 48;
 
 export function allocCHARFORMAT2W(data?: Partial<CHARFORMAT2W>): Uint8Array {
   const buf = new Uint8Array(sizeofCHARFORMAT2W);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.__AnonymousBase_richedit_L711_C23 !== undefined) view.setBigUint64(0, data.__AnonymousBase_richedit_L711_C23 === null ? 0n : BigInt(util.toPointer(data.__AnonymousBase_richedit_L711_C23)), true);
+  if (data?.Base !== undefined) view.setBigUint64(0, data.Base === null ? 0n : BigInt(util.toPointer(data.Base)), true);
   // 0x08: u16
   if (data?.wWeight !== undefined) view.setUint16(8, Number(data.wWeight), true);
   // 0x0a: i16
   if (data?.sSpacing !== undefined) view.setInt16(10, Number(data.sSpacing), true);
-  // 0x0c: u32
-  if (data?.crBackColor !== undefined) view.setUint32(12, Number(data.crBackColor), true);
-  // 0x10: u32
-  if (data?.lcid !== undefined) view.setUint32(16, Number(data.lcid), true);
-  // 0x14: pad4
-  // 0x18: pointer
-  if (data?.Anonymous !== undefined) view.setBigUint64(24, data.Anonymous === null ? 0n : BigInt(util.toPointer(data.Anonymous)), true);
-  // 0x20: i16
-  if (data?.sStyle !== undefined) view.setInt16(32, Number(data.sStyle), true);
-  // 0x22: u16
-  if (data?.wKerning !== undefined) view.setUint16(34, Number(data.wKerning), true);
-  // 0x24: u8
-  if (data?.bUnderlineType !== undefined) view.setUint8(36, Number(data.bUnderlineType));
-  // 0x25: u8
-  if (data?.bAnimation !== undefined) view.setUint8(37, Number(data.bAnimation));
-  // 0x26: u8
-  if (data?.bRevAuthor !== undefined) view.setUint8(38, Number(data.bRevAuthor));
-  // 0x27: u8
-  if (data?.bUnderlineColor !== undefined) view.setUint8(39, Number(data.bUnderlineColor));
+  // 0x0c: pad4
+  // 0x10: pointer
+  if (data?.crBackColor !== undefined) view.setBigUint64(16, data.crBackColor === null ? 0n : BigInt(util.toPointer(data.crBackColor)), true);
+  // 0x18: u32
+  if (data?.lcid !== undefined) view.setUint32(24, Number(data.lcid), true);
+  // 0x1c: pad4
+  // 0x20: pointer
+  if (data?.Anonymous !== undefined) view.setBigUint64(32, data.Anonymous === null ? 0n : BigInt(util.toPointer(data.Anonymous)), true);
+  // 0x28: i16
+  if (data?.sStyle !== undefined) view.setInt16(40, Number(data.sStyle), true);
+  // 0x2a: u16
+  if (data?.wKerning !== undefined) view.setUint16(42, Number(data.wKerning), true);
+  // 0x2c: u8
+  if (data?.bUnderlineType !== undefined) view.setUint8(44, Number(data.bUnderlineType));
+  // 0x2d: u8
+  if (data?.bAnimation !== undefined) view.setUint8(45, Number(data.bAnimation));
+  // 0x2e: u8
+  if (data?.bRevAuthor !== undefined) view.setUint8(46, Number(data.bRevAuthor));
+  // 0x2f: u8
+  if (data?.bUnderlineColor !== undefined) view.setUint8(47, Number(data.bUnderlineColor));
   return buf;
 }
 
 /**
- * Windows.Win32.UI.Controls.RichEdit.CHARFORMAT2A (size: 40)
+ * Windows.Win32.UI.Controls.RichEdit.CHARFORMAT2A (size: 48)
  */
 export interface CHARFORMAT2A {
   /** Windows.Win32.UI.Controls.RichEdit.CHARFORMATA */
-  __AnonymousBase_richedit_L736_C23: Uint8Array | Deno.PointerValue | null;
+  Base: Uint8Array | Deno.PointerValue | null;
   /** u16 */
   wWeight: number;
   /** i16 */
   sSpacing: number;
-  /** u32 */
-  crBackColor: number;
+  /** Windows.Win32.Foundation.COLORREF */
+  crBackColor: Uint8Array | Deno.PointerValue | null;
   /** u32 */
   lcid: number;
   /** _Anonymous_e__Union */
@@ -1814,36 +1830,37 @@ export interface CHARFORMAT2A {
   bUnderlineColor: number;
 }
 
-export const sizeofCHARFORMAT2A = 40;
+export const sizeofCHARFORMAT2A = 48;
 
 export function allocCHARFORMAT2A(data?: Partial<CHARFORMAT2A>): Uint8Array {
   const buf = new Uint8Array(sizeofCHARFORMAT2A);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.__AnonymousBase_richedit_L736_C23 !== undefined) view.setBigUint64(0, data.__AnonymousBase_richedit_L736_C23 === null ? 0n : BigInt(util.toPointer(data.__AnonymousBase_richedit_L736_C23)), true);
+  if (data?.Base !== undefined) view.setBigUint64(0, data.Base === null ? 0n : BigInt(util.toPointer(data.Base)), true);
   // 0x08: u16
   if (data?.wWeight !== undefined) view.setUint16(8, Number(data.wWeight), true);
   // 0x0a: i16
   if (data?.sSpacing !== undefined) view.setInt16(10, Number(data.sSpacing), true);
-  // 0x0c: u32
-  if (data?.crBackColor !== undefined) view.setUint32(12, Number(data.crBackColor), true);
-  // 0x10: u32
-  if (data?.lcid !== undefined) view.setUint32(16, Number(data.lcid), true);
-  // 0x14: pad4
-  // 0x18: pointer
-  if (data?.Anonymous !== undefined) view.setBigUint64(24, data.Anonymous === null ? 0n : BigInt(util.toPointer(data.Anonymous)), true);
-  // 0x20: i16
-  if (data?.sStyle !== undefined) view.setInt16(32, Number(data.sStyle), true);
-  // 0x22: u16
-  if (data?.wKerning !== undefined) view.setUint16(34, Number(data.wKerning), true);
-  // 0x24: u8
-  if (data?.bUnderlineType !== undefined) view.setUint8(36, Number(data.bUnderlineType));
-  // 0x25: u8
-  if (data?.bAnimation !== undefined) view.setUint8(37, Number(data.bAnimation));
-  // 0x26: u8
-  if (data?.bRevAuthor !== undefined) view.setUint8(38, Number(data.bRevAuthor));
-  // 0x27: u8
-  if (data?.bUnderlineColor !== undefined) view.setUint8(39, Number(data.bUnderlineColor));
+  // 0x0c: pad4
+  // 0x10: pointer
+  if (data?.crBackColor !== undefined) view.setBigUint64(16, data.crBackColor === null ? 0n : BigInt(util.toPointer(data.crBackColor)), true);
+  // 0x18: u32
+  if (data?.lcid !== undefined) view.setUint32(24, Number(data.lcid), true);
+  // 0x1c: pad4
+  // 0x20: pointer
+  if (data?.Anonymous !== undefined) view.setBigUint64(32, data.Anonymous === null ? 0n : BigInt(util.toPointer(data.Anonymous)), true);
+  // 0x28: i16
+  if (data?.sStyle !== undefined) view.setInt16(40, Number(data.sStyle), true);
+  // 0x2a: u16
+  if (data?.wKerning !== undefined) view.setUint16(42, Number(data.wKerning), true);
+  // 0x2c: u8
+  if (data?.bUnderlineType !== undefined) view.setUint8(44, Number(data.bUnderlineType));
+  // 0x2d: u8
+  if (data?.bAnimation !== undefined) view.setUint8(45, Number(data.bAnimation));
+  // 0x2e: u8
+  if (data?.bRevAuthor !== undefined) view.setUint8(46, Number(data.bRevAuthor));
+  // 0x2f: u8
+  if (data?.bUnderlineColor !== undefined) view.setUint8(47, Number(data.bUnderlineColor));
   return buf;
 }
 
@@ -2130,8 +2147,8 @@ export interface PARAFORMAT {
   cbSize: number;
   /** Windows.Win32.UI.Controls.RichEdit.PARAFORMAT_MASK */
   dwMask: PARAFORMAT_MASK;
-  /** u16 */
-  wNumbering: number;
+  /** Windows.Win32.UI.Controls.RichEdit.PARAFORMAT_NUMBERING */
+  wNumbering: PARAFORMAT_NUMBERING;
   /** _Anonymous_e__Union */
   Anonymous: Uint8Array | Deno.PointerValue | null;
   /** i32 */
@@ -2182,7 +2199,7 @@ export function allocPARAFORMAT(data?: Partial<PARAFORMAT>): Uint8Array {
  */
 export interface PARAFORMAT2 {
   /** Windows.Win32.UI.Controls.RichEdit.PARAFORMAT */
-  __AnonymousBase_richedit_L1149_C22: Uint8Array | Deno.PointerValue | null;
+  Base: Uint8Array | Deno.PointerValue | null;
   /** i32 */
   dySpaceBefore: number;
   /** i32 */
@@ -2219,7 +2236,7 @@ export function allocPARAFORMAT2(data?: Partial<PARAFORMAT2>): Uint8Array {
   const buf = new Uint8Array(sizeofPARAFORMAT2);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.__AnonymousBase_richedit_L1149_C22 !== undefined) view.setBigUint64(0, data.__AnonymousBase_richedit_L1149_C22 === null ? 0n : BigInt(util.toPointer(data.__AnonymousBase_richedit_L1149_C22)), true);
+  if (data?.Base !== undefined) view.setBigUint64(0, data.Base === null ? 0n : BigInt(util.toPointer(data.Base)), true);
   // 0x08: i32
   if (data?.dySpaceBefore !== undefined) view.setInt32(8, Number(data.dySpaceBefore), true);
   // 0x0c: i32
@@ -2338,19 +2355,19 @@ export function allocSELCHANGE(data?: Partial<SELCHANGE>): Uint8Array {
 export type BOOL = number;
 
 /**
- * Windows.Win32.UI.Controls.RichEdit._grouptypingchange (size: 16)
+ * Windows.Win32.UI.Controls.RichEdit.GROUPTYPINGCHANGE (size: 16)
  */
-export interface _grouptypingchange {
+export interface GROUPTYPINGCHANGE {
   /** Windows.Win32.UI.Controls.NMHDR */
   nmhdr: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.Foundation.BOOL */
   fGroupTyping: boolean;
 }
 
-export const sizeof_grouptypingchange = 16;
+export const sizeofGROUPTYPINGCHANGE = 16;
 
-export function alloc_grouptypingchange(data?: Partial<_grouptypingchange>): Uint8Array {
-  const buf = new Uint8Array(sizeof_grouptypingchange);
+export function allocGROUPTYPINGCHANGE(data?: Partial<GROUPTYPINGCHANGE>): Uint8Array {
+  const buf = new Uint8Array(sizeofGROUPTYPINGCHANGE);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
   if (data?.nmhdr !== undefined) view.setBigUint64(0, data.nmhdr === null ? 0n : BigInt(util.toPointer(data.nmhdr)), true);
@@ -2702,29 +2719,29 @@ export function allocPUNCTUATION(data?: Partial<PUNCTUATION>): Uint8Array {
 }
 
 /**
- * Windows.Win32.UI.Controls.RichEdit.COMPCOLOR (size: 16)
+ * Windows.Win32.UI.Controls.RichEdit.COMPCOLOR (size: 24)
  */
 export interface COMPCOLOR {
-  /** u32 */
-  crText: number;
-  /** u32 */
-  crBackground: number;
+  /** Windows.Win32.Foundation.COLORREF */
+  crText: Uint8Array | Deno.PointerValue | null;
+  /** Windows.Win32.Foundation.COLORREF */
+  crBackground: Uint8Array | Deno.PointerValue | null;
   /** u32 */
   dwEffects: number;
 }
 
-export const sizeofCOMPCOLOR = 16;
+export const sizeofCOMPCOLOR = 24;
 
 export function allocCOMPCOLOR(data?: Partial<COMPCOLOR>): Uint8Array {
   const buf = new Uint8Array(sizeofCOMPCOLOR);
   const view = new DataView(buf.buffer);
-  // 0x00: u32
-  if (data?.crText !== undefined) view.setUint32(0, Number(data.crText), true);
-  // 0x04: u32
-  if (data?.crBackground !== undefined) view.setUint32(4, Number(data.crBackground), true);
-  // 0x08: u32
-  if (data?.dwEffects !== undefined) view.setUint32(8, Number(data.dwEffects), true);
-  // 0x0c: pad4
+  // 0x00: pointer
+  if (data?.crText !== undefined) view.setBigUint64(0, data.crText === null ? 0n : BigInt(util.toPointer(data.crText)), true);
+  // 0x08: pointer
+  if (data?.crBackground !== undefined) view.setBigUint64(8, data.crBackground === null ? 0n : BigInt(util.toPointer(data.crBackground)), true);
+  // 0x10: u32
+  if (data?.dwEffects !== undefined) view.setUint32(16, Number(data.dwEffects), true);
+  // 0x14: pad4
   return buf;
 }
 
@@ -2743,8 +2760,8 @@ export const sizeofREPASTESPECIAL = 16;
 export function allocREPASTESPECIAL(data?: Partial<REPASTESPECIAL>): Uint8Array {
   const buf = new Uint8Array(sizeofREPASTESPECIAL);
   const view = new DataView(buf.buffer);
-  // 0x00: i32
-  if (data?.dwAspect !== undefined) view.setInt32(0, Number(data.dwAspect), true);
+  // 0x00: u32
+  if (data?.dwAspect !== undefined) view.setUint32(0, Number(data.dwAspect), true);
   // 0x04: pad4
   // 0x08: usize
   if (data?.dwParam !== undefined) view.setBigUint64(8, BigInt(data.dwParam), true);
@@ -2860,9 +2877,9 @@ export function allocBIDIOPTIONS(data?: Partial<BIDIOPTIONS>): Uint8Array {
 }
 
 /**
- * Windows.Win32.UI.Controls.RichEdit.hyphresult (size: 16)
+ * Windows.Win32.UI.Controls.RichEdit.HYPHRESULT (size: 16)
  */
-export interface hyphresult {
+export interface HYPHRESULT {
   /** Windows.Win32.UI.Controls.RichEdit.KHYPH */
   khyph: KHYPH;
   /** i32 */
@@ -2871,10 +2888,10 @@ export interface hyphresult {
   chHyph: Uint8Array | Deno.PointerValue | null;
 }
 
-export const sizeofHyphresult = 16;
+export const sizeofHYPHRESULT = 16;
 
-export function allocHyphresult(data?: Partial<hyphresult>): Uint8Array {
-  const buf = new Uint8Array(sizeofHyphresult);
+export function allocHYPHRESULT(data?: Partial<HYPHRESULT>): Uint8Array {
+  const buf = new Uint8Array(sizeofHYPHRESULT);
   const view = new DataView(buf.buffer);
   // 0x00: i32
   if (data?.khyph !== undefined) view.setInt32(0, Number(data.khyph), true);

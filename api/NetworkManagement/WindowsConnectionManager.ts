@@ -359,7 +359,7 @@ export type HRESULT = number;
 // Native Libraries
 
 try {
-  var libwcmapi = Deno.dlopen("wcmapi", {
+  var libwcmapi_dll = Deno.dlopen("wcmapi.dll", {
     WcmQueryProperty: {
       parameters: ["pointer", "buffer", "i32", "pointer", "pointer", "pointer"],
       result: "u32",
@@ -384,7 +384,7 @@ try {
 } catch(e) { /* ignore */ }
 
 try {
-  var libOnDemandConnRouteHelper = Deno.dlopen("OnDemandConnRouteHelper", {
+  var libOnDemandConnRouteHelper_dll = Deno.dlopen("OnDemandConnRouteHelper.dll", {
     OnDemandGetRoutingHint: {
       parameters: ["buffer", "pointer"],
       result: "pointer",
@@ -418,7 +418,7 @@ export function WcmQueryProperty(
   pdwDataSize: Deno.PointerValue | Uint8Array | null /* ptr */,
   ppData: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libwcmapi.WcmQueryProperty(util.toPointer(pInterface), util.pwstrToFfi(strProfileName), Property, util.toPointer(pReserved), util.toPointer(pdwDataSize), util.toPointer(ppData));
+  return libwcmapi_dll.WcmQueryProperty(util.toPointer(pInterface), util.pwstrToFfi(strProfileName), Property, util.toPointer(pReserved), util.toPointer(pdwDataSize), util.toPointer(ppData));
 }
 
 export function WcmSetProperty(
@@ -429,14 +429,14 @@ export function WcmSetProperty(
   dwDataSize: number /* u32 */,
   pbData: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libwcmapi.WcmSetProperty(util.toPointer(pInterface), util.pwstrToFfi(strProfileName), Property, util.toPointer(pReserved), dwDataSize, util.toPointer(pbData));
+  return libwcmapi_dll.WcmSetProperty(util.toPointer(pInterface), util.pwstrToFfi(strProfileName), Property, util.toPointer(pReserved), dwDataSize, util.toPointer(pbData));
 }
 
 export function WcmGetProfileList(
   pReserved: Deno.PointerValue | Uint8Array | null /* ptr */,
   ppProfileList: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libwcmapi.WcmGetProfileList(util.toPointer(pReserved), util.toPointer(ppProfileList));
+  return libwcmapi_dll.WcmGetProfileList(util.toPointer(pReserved), util.toPointer(ppProfileList));
 }
 
 export function WcmSetProfileList(
@@ -445,20 +445,20 @@ export function WcmSetProfileList(
   fIgnoreUnknownProfiles: boolean /* Windows.Win32.Foundation.BOOL */,
   pReserved: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libwcmapi.WcmSetProfileList(util.toPointer(pProfileList), dwPosition, util.boolToFfi(fIgnoreUnknownProfiles), util.toPointer(pReserved));
+  return libwcmapi_dll.WcmSetProfileList(util.toPointer(pProfileList), dwPosition, util.boolToFfi(fIgnoreUnknownProfiles), util.toPointer(pReserved));
 }
 
 export function WcmFreeMemory(
   pMemory: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): void /* void */ {
-  return libwcmapi.WcmFreeMemory(util.toPointer(pMemory));
+  return libwcmapi_dll.WcmFreeMemory(util.toPointer(pMemory));
 }
 
 export function OnDemandGetRoutingHint(
   destinationHostName: string | null /* Windows.Win32.Foundation.PWSTR */,
   interfaceIndex: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libOnDemandConnRouteHelper.OnDemandGetRoutingHint(util.pwstrToFfi(destinationHostName), util.toPointer(interfaceIndex)));
+  return util.pointerFromFfi(libOnDemandConnRouteHelper_dll.OnDemandGetRoutingHint(util.pwstrToFfi(destinationHostName), util.toPointer(interfaceIndex)));
 }
 
 export function OnDemandRegisterNotification(
@@ -466,13 +466,13 @@ export function OnDemandRegisterNotification(
   callbackContext: Deno.PointerValue | Uint8Array | null /* ptr */,
   registrationHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libOnDemandConnRouteHelper.OnDemandRegisterNotification(util.toPointer(callback), util.toPointer(callbackContext), util.toPointer(registrationHandle)));
+  return util.pointerFromFfi(libOnDemandConnRouteHelper_dll.OnDemandRegisterNotification(util.toPointer(callback), util.toPointer(callbackContext), util.toPointer(registrationHandle)));
 }
 
 export function OnDemandUnRegisterNotification(
   registrationHandle: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libOnDemandConnRouteHelper.OnDemandUnRegisterNotification(util.toPointer(registrationHandle)));
+  return util.pointerFromFfi(libOnDemandConnRouteHelper_dll.OnDemandUnRegisterNotification(util.toPointer(registrationHandle)));
 }
 
 export function GetInterfaceContextTableForHostName(
@@ -483,12 +483,12 @@ export function GetInterfaceContextTableForHostName(
   ConnectionProfileFilterRawDataSize: number /* u32 */,
   InterfaceContextTable: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libOnDemandConnRouteHelper.GetInterfaceContextTableForHostName(util.pwstrToFfi(HostName), util.pwstrToFfi(ProxyName), Flags, util.toPointer(ConnectionProfileFilterRawData), ConnectionProfileFilterRawDataSize, util.toPointer(InterfaceContextTable)));
+  return util.pointerFromFfi(libOnDemandConnRouteHelper_dll.GetInterfaceContextTableForHostName(util.pwstrToFfi(HostName), util.pwstrToFfi(ProxyName), Flags, util.toPointer(ConnectionProfileFilterRawData), ConnectionProfileFilterRawDataSize, util.toPointer(InterfaceContextTable)));
 }
 
 export function FreeInterfaceContextTable(
   InterfaceContextTable: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): void /* void */ {
-  return libOnDemandConnRouteHelper.FreeInterfaceContextTable(util.toPointer(InterfaceContextTable));
+  return libOnDemandConnRouteHelper_dll.FreeInterfaceContextTable(util.toPointer(InterfaceContextTable));
 }
 

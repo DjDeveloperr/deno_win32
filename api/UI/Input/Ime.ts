@@ -9,10 +9,19 @@ export type NOTIFY_IME_INDEX = number;
 export type NOTIFY_IME_ACTION = number;
 export type GET_CONVERSION_LIST_FLAG = number;
 export type IME_PAD_REQUEST_FLAGS = number;
+export type IME_CONVERSION_MODE = number;
+export type IME_SENTENCE_MODE = number;
+export type IME_COMPOSITION_STRING = number;
+export type IME_ESCAPE = number;
+export type IME_HOTKEY_IDENTIFIER = number;
 export type IMEREG = number;
 export type IMEFMT = number;
 export type IMEUCT = number;
 export type IMEREL = number;
+export type FONT_CHARSET = number;
+export type FONT_OUTPUT_PRECISION = number;
+export type FONT_CLIP_PRECISION = number;
+export type FONT_QUALITY = number;
 
 // Constants
 export const SCS_SETSTR = 9;
@@ -58,6 +67,341 @@ export const IMEPADREQ_SETAPPLETMINMAXSIZE = 4125;
 export const IMEPADREQ_GETCONVERSIONSTATUS = 4126;
 export const IMEPADREQ_GETVERSION = 4127;
 export const IMEPADREQ_GETCURRENTIMEINFO = 4128;
+export const IME_CMODE_ALPHANUMERIC = 0;
+export const IME_CMODE_NATIVE = 1;
+export const IME_CMODE_CHINESE = 1;
+export const IME_CMODE_HANGUL = 1;
+export const IME_CMODE_JAPANESE = 1;
+export const IME_CMODE_KATAKANA = 2;
+export const IME_CMODE_LANGUAGE = 3;
+export const IME_CMODE_FULLSHAPE = 8;
+export const IME_CMODE_ROMAN = 16;
+export const IME_CMODE_CHARCODE = 32;
+export const IME_CMODE_HANJACONVERT = 64;
+export const IME_CMODE_NATIVESYMBOL = 128;
+export const IME_CMODE_HANGEUL = 1;
+export const IME_CMODE_SOFTKBD = 128;
+export const IME_CMODE_NOCONVERSION = 256;
+export const IME_CMODE_EUDC = 512;
+export const IME_CMODE_SYMBOL = 1024;
+export const IME_CMODE_FIXED = 2048;
+export const IME_CMODE_RESERVED = 4026531840;
+export const IME_SMODE_NONE = 0;
+export const IME_SMODE_PLAURALCLAUSE = 1;
+export const IME_SMODE_SINGLECONVERT = 2;
+export const IME_SMODE_AUTOMATIC = 4;
+export const IME_SMODE_PHRASEPREDICT = 8;
+export const IME_SMODE_CONVERSATION = 16;
+export const IME_SMODE_RESERVED = 61440;
+export const GCS_COMPREADSTR = 1;
+export const GCS_COMPREADATTR = 2;
+export const GCS_COMPREADCLAUSE = 4;
+export const GCS_COMPSTR = 8;
+export const GCS_COMPATTR = 16;
+export const GCS_COMPCLAUSE = 32;
+export const GCS_CURSORPOS = 128;
+export const GCS_DELTASTART = 256;
+export const GCS_RESULTREADSTR = 512;
+export const GCS_RESULTREADCLAUSE = 1024;
+export const GCS_RESULTSTR = 2048;
+export const GCS_RESULTCLAUSE = 4096;
+export const IME_ESC_QUERY_SUPPORT = 3;
+export const IME_ESC_RESERVED_FIRST = 4;
+export const IME_ESC_RESERVED_LAST = 2047;
+export const IME_ESC_PRIVATE_FIRST = 2048;
+export const IME_ESC_PRIVATE_LAST = 4095;
+export const IME_ESC_SEQUENCE_TO_INTERNAL = 4097;
+export const IME_ESC_GET_EUDC_DICTIONARY = 4099;
+export const IME_ESC_SET_EUDC_DICTIONARY = 4100;
+export const IME_ESC_MAX_KEY = 4101;
+export const IME_ESC_IME_NAME = 4102;
+export const IME_ESC_SYNC_HOTKEY = 4103;
+export const IME_ESC_HANJA_MODE = 4104;
+export const IME_ESC_AUTOMATA = 4105;
+export const IME_ESC_PRIVATE_HOTKEY = 4106;
+export const IME_ESC_GETHELPFILENAME = 4107;
+export const IME_CHOTKEY_IME_NONIME_TOGGLE = 16;
+export const IME_CHOTKEY_SHAPE_TOGGLE = 17;
+export const IME_CHOTKEY_SYMBOL_TOGGLE = 18;
+export const IME_JHOTKEY_CLOSE_OPEN = 48;
+export const IME_KHOTKEY_SHAPE_TOGGLE = 80;
+export const IME_KHOTKEY_HANJACONVERT = 81;
+export const IME_KHOTKEY_ENGLISH = 82;
+export const IME_THOTKEY_IME_NONIME_TOGGLE = 112;
+export const IME_THOTKEY_SHAPE_TOGGLE = 113;
+export const IME_THOTKEY_SYMBOL_TOGGLE = 114;
+export const IME_ITHOTKEY_RESEND_RESULTSTR = 512;
+export const IME_ITHOTKEY_PREVIOUS_COMPOSITION = 513;
+export const IME_ITHOTKEY_UISTYLE_TOGGLE = 514;
+export const IME_ITHOTKEY_RECONVERTSTRING = 515;
+export const FEID_NONE = 0;
+export const FEID_CHINESE_TRADITIONAL = 1;
+export const FEID_CHINESE_SIMPLIFIED = 2;
+export const FEID_CHINESE_HONGKONG = 3;
+export const FEID_CHINESE_SINGAPORE = 4;
+export const FEID_JAPANESE = 5;
+export const FEID_KOREAN = 6;
+export const FEID_KOREAN_JOHAB = 7;
+export const INFOMASK_NONE = 0;
+export const INFOMASK_QUERY_CAND = 1;
+export const INFOMASK_APPLY_CAND = 2;
+export const INFOMASK_APPLY_CAND_EX = 4;
+export const INFOMASK_STRING_FIX = 65536;
+export const INFOMASK_HIDE_CAND = 131072;
+export const INFOMASK_BLOCK_CAND = 262144;
+export const IMEFAREASTINFO_TYPE_DEFAULT = 0;
+export const IMEFAREASTINFO_TYPE_READING = 1;
+export const IMEFAREASTINFO_TYPE_COMMENT = 2;
+export const IMEFAREASTINFO_TYPE_COSTTIME = 3;
+export const CHARINFO_APPLETID_MASK = 4278190080;
+export const CHARINFO_FEID_MASK = 15728640;
+export const CHARINFO_CHARID_MASK = 65535;
+export const MAX_APPLETTITLE = 64;
+export const MAX_FONTFACE = 32;
+export const IPACFG_NONE = 0;
+export const IPACFG_PROPERTY = 1;
+export const IPACFG_HELP = 2;
+export const IPACFG_TITLE = 65536;
+export const IPACFG_TITLEFONTFACE = 131072;
+export const IPACFG_CATEGORY = 262144;
+export const IPACFG_LANG = 16;
+export const IPACID_NONE = 0;
+export const IPACID_SOFTKEY = 1;
+export const IPACID_HANDWRITING = 2;
+export const IPACID_STROKESEARCH = 3;
+export const IPACID_RADICALSEARCH = 4;
+export const IPACID_SYMBOLSEARCH = 5;
+export const IPACID_VOICE = 6;
+export const IPACID_EPWING = 7;
+export const IPACID_OCR = 8;
+export const IPACID_CHARLIST = 9;
+export const IPACID_USER = 256;
+export const IMEPADREQ_FIRST = 4096;
+export const IMEPADREQ_INSERTSTRINGCANDIDATE = 4098;
+export const IMEPADREQ_INSERTITEMCANDIDATE = 4099;
+export const IMEPADREQ_SENDKEYCONTROL = 4101;
+export const IMEPADREQ_GETSELECTEDSTRING = 4103;
+export const IMEPADREQ_SETAPPLETDATA = 4105;
+export const IMEPADREQ_GETAPPLETDATA = 4106;
+export const IMEPADREQ_SETTITLEFONT = 4107;
+export const IMEPADREQ_GETCOMPOSITIONSTRINGID = 4109;
+export const IMEPADREQ_INSERTSTRINGCANDIDATEINFO = 4110;
+export const IMEPADREQ_CHANGESTRINGCANDIDATEINFO = 4111;
+export const IMEPADREQ_INSERTSTRINGINFO = 4114;
+export const IMEPADREQ_CHANGESTRINGINFO = 4115;
+export const IMEPADREQ_GETCURRENTUILANGID = 4120;
+export const IMEPADCTRL_CONVERTALL = 1;
+export const IMEPADCTRL_DETERMINALL = 2;
+export const IMEPADCTRL_DETERMINCHAR = 3;
+export const IMEPADCTRL_CLEARALL = 4;
+export const IMEPADCTRL_CARETSET = 5;
+export const IMEPADCTRL_CARETLEFT = 6;
+export const IMEPADCTRL_CARETRIGHT = 7;
+export const IMEPADCTRL_CARETTOP = 8;
+export const IMEPADCTRL_CARETBOTTOM = 9;
+export const IMEPADCTRL_CARETBACKSPACE = 10;
+export const IMEPADCTRL_CARETDELETE = 11;
+export const IMEPADCTRL_PHRASEDELETE = 12;
+export const IMEPADCTRL_INSERTSPACE = 13;
+export const IMEPADCTRL_INSERTFULLSPACE = 14;
+export const IMEPADCTRL_INSERTHALFSPACE = 15;
+export const IMEPADCTRL_ONIME = 16;
+export const IMEPADCTRL_OFFIME = 17;
+export const IMEPADCTRL_ONPRECONVERSION = 18;
+export const IMEPADCTRL_OFFPRECONVERSION = 19;
+export const IMEPADCTRL_PHONETICCANDIDATE = 20;
+export const IMEKEYCTRLMASK_ALT = 1;
+export const IMEKEYCTRLMASK_CTRL = 2;
+export const IMEKEYCTRLMASK_SHIFT = 4;
+export const IMEKEYCTRL_UP = 1;
+export const IMEKEYCTRL_DOWN = 0;
+export const IMEPN_FIRST = 256;
+export const IMEPN_ACTIVATE = 257;
+export const IMEPN_INACTIVATE = 258;
+export const IMEPN_SHOW = 260;
+export const IMEPN_HIDE = 261;
+export const IMEPN_SIZECHANGING = 262;
+export const IMEPN_SIZECHANGED = 263;
+export const IMEPN_CONFIG = 264;
+export const IMEPN_HELP = 265;
+export const IMEPN_QUERYCAND = 266;
+export const IMEPN_APPLYCAND = 267;
+export const IMEPN_APPLYCANDEX = 268;
+export const IMEPN_SETTINGCHANGED = 269;
+export const IMEPN_USER = 356;
+export const IPAWS_ENABLED = 1;
+export const IPAWS_SIZINGNOTIFY = 4;
+export const IPAWS_VERTICALFIXED = 256;
+export const IPAWS_HORIZONTALFIXED = 512;
+export const IPAWS_SIZEFIXED = 768;
+export const IPAWS_MAXWIDTHFIXED = 4096;
+export const IPAWS_MAXHEIGHTFIXED = 8192;
+export const IPAWS_MAXSIZEFIXED = 12288;
+export const IPAWS_MINWIDTHFIXED = 65536;
+export const IPAWS_MINHEIGHTFIXED = 131072;
+export const IPAWS_MINSIZEFIXED = 196608;
+export const STYLE_DESCRIPTION_SIZE = 32;
+export const IMEMENUITEM_STRING_SIZE = 80;
+export const IMC_GETCANDIDATEPOS = 7;
+export const IMC_SETCANDIDATEPOS = 8;
+export const IMC_GETCOMPOSITIONFONT = 9;
+export const IMC_SETCOMPOSITIONFONT = 10;
+export const IMC_GETCOMPOSITIONWINDOW = 11;
+export const IMC_SETCOMPOSITIONWINDOW = 12;
+export const IMC_GETSTATUSWINDOWPOS = 15;
+export const IMC_SETSTATUSWINDOWPOS = 16;
+export const IMC_CLOSESTATUSWINDOW = 33;
+export const IMC_OPENSTATUSWINDOW = 34;
+export const NI_FINALIZECONVERSIONRESULT = 20;
+export const ISC_SHOWUICANDIDATEWINDOW = 1;
+export const ISC_SHOWUICOMPOSITIONWINDOW = 2147483648;
+export const ISC_SHOWUIGUIDELINE = 1073741824;
+export const ISC_SHOWUIALLCANDIDATEWINDOW = 15;
+export const ISC_SHOWUIALL = 3221225487;
+export const MOD_LEFT = 32768;
+export const MOD_RIGHT = 16384;
+export const MOD_ON_KEYUP = 2048;
+export const MOD_IGNORE_ALL_MODIFIER = 1024;
+export const IME_HOTKEY_DSWITCH_FIRST = 256;
+export const IME_HOTKEY_DSWITCH_LAST = 287;
+export const IME_HOTKEY_PRIVATE_FIRST = 512;
+export const IME_HOTKEY_PRIVATE_LAST = 543;
+export const CS_INSERTCHAR = 8192;
+export const CS_NOMOVECARET = 16384;
+export const IMEVER_0310 = 196618;
+export const IMEVER_0400 = 262144;
+export const IME_PROP_AT_CARET = 65536;
+export const IME_PROP_SPECIAL_UI = 131072;
+export const IME_PROP_CANDLIST_START_FROM_1 = 262144;
+export const IME_PROP_UNICODE = 524288;
+export const IME_PROP_COMPLETE_ON_UNSELECT = 1048576;
+export const UI_CAP_2700 = 1;
+export const UI_CAP_ROT90 = 2;
+export const UI_CAP_ROTANY = 4;
+export const SCS_CAP_COMPSTR = 1;
+export const SCS_CAP_MAKEREAD = 2;
+export const SCS_CAP_SETRECONVERTSTRING = 4;
+export const SELECT_CAP_CONVERSION = 1;
+export const SELECT_CAP_SENTENCE = 2;
+export const GL_LEVEL_NOGUIDELINE = 0;
+export const GL_LEVEL_FATAL = 1;
+export const GL_LEVEL_ERROR = 2;
+export const GL_LEVEL_WARNING = 3;
+export const GL_LEVEL_INFORMATION = 4;
+export const GL_ID_UNKNOWN = 0;
+export const GL_ID_NOMODULE = 1;
+export const GL_ID_NODICTIONARY = 16;
+export const GL_ID_CANNOTSAVE = 17;
+export const GL_ID_NOCONVERT = 32;
+export const GL_ID_TYPINGERROR = 33;
+export const GL_ID_TOOMANYSTROKE = 34;
+export const GL_ID_READINGCONFLICT = 35;
+export const GL_ID_INPUTREADING = 36;
+export const GL_ID_INPUTRADICAL = 37;
+export const GL_ID_INPUTCODE = 38;
+export const GL_ID_INPUTSYMBOL = 39;
+export const GL_ID_CHOOSECANDIDATE = 40;
+export const GL_ID_REVERSECONVERSION = 41;
+export const GL_ID_PRIVATE_FIRST = 32768;
+export const GL_ID_PRIVATE_LAST = 65535;
+export const ATTR_INPUT = 0;
+export const ATTR_TARGET_CONVERTED = 1;
+export const ATTR_CONVERTED = 2;
+export const ATTR_TARGET_NOTCONVERTED = 3;
+export const ATTR_INPUT_ERROR = 4;
+export const ATTR_FIXEDCONVERTED = 5;
+export const CFS_DEFAULT = 0;
+export const CFS_RECT = 1;
+export const CFS_POINT = 2;
+export const CFS_FORCE_POSITION = 32;
+export const CFS_CANDIDATEPOS = 64;
+export const CFS_EXCLUDE = 128;
+export const IME_CAND_UNKNOWN = 0;
+export const IME_CAND_READ = 1;
+export const IME_CAND_CODE = 2;
+export const IME_CAND_MEANING = 3;
+export const IME_CAND_RADICAL = 4;
+export const IME_CAND_STROKE = 5;
+export const IMN_CLOSESTATUSWINDOW = 1;
+export const IMN_OPENSTATUSWINDOW = 2;
+export const IMN_CHANGECANDIDATE = 3;
+export const IMN_CLOSECANDIDATE = 4;
+export const IMN_OPENCANDIDATE = 5;
+export const IMN_SETCONVERSIONMODE = 6;
+export const IMN_SETSENTENCEMODE = 7;
+export const IMN_SETOPENSTATUS = 8;
+export const IMN_SETCANDIDATEPOS = 9;
+export const IMN_SETCOMPOSITIONFONT = 10;
+export const IMN_SETCOMPOSITIONWINDOW = 11;
+export const IMN_SETSTATUSWINDOWPOS = 12;
+export const IMN_GUIDELINE = 13;
+export const IMN_PRIVATE = 14;
+export const IMR_COMPOSITIONWINDOW = 1;
+export const IMR_CANDIDATEWINDOW = 2;
+export const IMR_COMPOSITIONFONT = 3;
+export const IMR_RECONVERTSTRING = 4;
+export const IMR_CONFIRMRECONVERTSTRING = 5;
+export const IMR_QUERYCHARPOSITION = 6;
+export const IMR_DOCUMENTFEED = 7;
+export const IMM_ERROR_NODATA = "-1";
+export const IMM_ERROR_GENERAL = "-2";
+export const IME_CONFIG_GENERAL = 1;
+export const IME_CONFIG_REGISTERWORD = 2;
+export const IME_CONFIG_SELECTDICTIONARY = 3;
+export const IME_REGWORD_STYLE_EUDC = 1;
+export const IME_REGWORD_STYLE_USER_FIRST = 2147483648;
+export const IME_REGWORD_STYLE_USER_LAST = 4294967295;
+export const IACE_CHILDREN = 1;
+export const IACE_DEFAULT = 16;
+export const IACE_IGNORENOCONTEXT = 32;
+export const IGIMIF_RIGHTMENU = 1;
+export const IGIMII_CMODE = 1;
+export const IGIMII_SMODE = 2;
+export const IGIMII_CONFIGURE = 4;
+export const IGIMII_TOOLS = 8;
+export const IGIMII_HELP = 16;
+export const IGIMII_OTHER = 32;
+export const IGIMII_INPUTTOOLS = 64;
+export const IMFT_RADIOCHECK = 1;
+export const IMFT_SEPARATOR = 2;
+export const IMFT_SUBMENU = 4;
+export const SOFTKEYBOARD_TYPE_T1 = 1;
+export const SOFTKEYBOARD_TYPE_C1 = 2;
+export const IMMGWL_IMC = 0;
+export const IMMGWLP_IMC = 0;
+export const IMC_SETCONVERSIONMODE = 2;
+export const IMC_SETSENTENCEMODE = 4;
+export const IMC_SETOPENSTATUS = 6;
+export const IMC_GETSOFTKBDFONT = 17;
+export const IMC_SETSOFTKBDFONT = 18;
+export const IMC_GETSOFTKBDPOS = 19;
+export const IMC_SETSOFTKBDPOS = 20;
+export const IMC_GETSOFTKBDSUBTYPE = 21;
+export const IMC_SETSOFTKBDSUBTYPE = 22;
+export const IMC_SETSOFTKBDDATA = 24;
+export const NI_CONTEXTUPDATED = 3;
+export const IME_SYSINFO_WINLOGON = 1;
+export const IME_SYSINFO_WOW16 = 2;
+export const INIT_STATUSWNDPOS = 1;
+export const INIT_CONVERSION = 2;
+export const INIT_SENTENCE = 4;
+export const INIT_LOGFONT = 8;
+export const INIT_COMPFORM = 16;
+export const INIT_SOFTKBDPOS = 32;
+export const IME_PROP_END_UNLOAD = 1;
+export const IME_PROP_KBD_CHAR_FIRST = 2;
+export const IME_PROP_IGNORE_UPKEYS = 4;
+export const IME_PROP_NEED_ALTKEY = 8;
+export const IME_PROP_NO_KEYS_ON_CLOSE = 16;
+export const IME_PROP_ACCEPT_WIDE_VKEY = 32;
+export const UI_CAP_SOFTKBD = 65536;
+export const IMN_SOFTKBDDESTROYED = 17;
+export const IME_UI_CLASS_NAME_SIZE = 16;
+export const IME_ESC_STRING_BUFFER_SIZE = 80;
+export const szImeJapan = "MSIME.Japan";
+export const szImeKorea = "MSIME.Korea";
+export const szImeChina = "MSIME.China";
+export const szImeTaiwan = "MSIME.Taiwan";
 export const IFEC_S_ALREADY_DEFAULT = 320318540676887552n;
 export const FELANG_REQ_CONV = 65536;
 export const FELANG_REQ_RECONV = 131072;
@@ -152,7 +496,9 @@ export const IFED_E_NOT_SUPPORTED = 320608813894103815n;
 export const IFED_E_USER_COMMENT = 320609913405731592n;
 export const IFED_E_REGISTER_ILLEGAL_POS = 320611012917359369n;
 export const IFED_E_REGISTER_IMPROPER_WORD = 320612112428987146n;
-export const IFED_E_REGISTER_DISCONNECTED = 216183796557705995n;
+export const IFED_E_REGISTER_DISCONNECTED = 5980865072770347787n;
+export const cbCommentMax = 256;
+export const wchPrivate1 = 57344;
 export const POS_UNDEFINED = 0;
 export const JPOS_UNDEFINED = 0;
 export const JPOS_MEISHI_FUTSU = 100;
@@ -318,7 +664,10 @@ export const VERSION_ID_JAPANESE = 16777216;
 export const VERSION_ID_KOREAN = 33554432;
 export const VERSION_ID_CHINESE_TRADITIONAL = 67108864;
 export const VERSION_ID_CHINESE_SIMPLIFIED = 134217728;
+export const RWM_SERVICE = "MSIMEService";
 export const FID_MSIME_VERSION = 0;
+export const RWM_UIREADY = "MSIMEUIReady";
+export const RWM_MOUSE = "MSIMEMouseOperation";
 export const VERSION_MOUSE_OPERATION = 1;
 export const IMEMOUSERET_NOTHANDLED = "-1";
 export const IMEMOUSE_VERSION = 255;
@@ -328,10 +677,15 @@ export const IMEMOUSE_RDOWN = 2;
 export const IMEMOUSE_MDOWN = 4;
 export const IMEMOUSE_WUP = 16;
 export const IMEMOUSE_WDOWN = 32;
+export const RWM_RECONVERT = "MSIMEReconvert";
 export const FID_RECONVERT_VERSION = 268435456;
 export const VERSION_RECONVERSION = 1;
+export const RWM_RECONVERTREQUEST = "MSIMEReconvertRequest";
 export const VERSION_DOCUMENTFEED = 1;
+export const RWM_DOCUMENTFEED = "MSIMEDocumentFeed";
 export const VERSION_QUERYPOSITION = 1;
+export const RWM_QUERYPOSITION = "MSIMEQueryPosition";
+export const RWM_MODEBIAS = "MSIMEModeBias";
 export const VERSION_MODEBIAS = 1;
 export const MODEBIAS_GETVERSION = 0;
 export const MODEBIAS_SETVALUE = 1;
@@ -340,9 +694,13 @@ export const MODEBIASMODE_DEFAULT = 0;
 export const MODEBIASMODE_FILENAME = 1;
 export const MODEBIASMODE_READING = 2;
 export const MODEBIASMODE_DIGIT = 4;
+export const RWM_SHOWIMEPAD = "MSIMEShowImePad";
 export const SHOWIMEPAD_DEFAULT = 0;
 export const SHOWIMEPAD_CATEGORY = 1;
 export const SHOWIMEPAD_GUID = 2;
+export const RWM_KEYMAP = "MSIMEKeyMap";
+export const RWM_CHGKEYMAP = "MSIMEChangeKeyMap";
+export const RWM_NTFYKEYMAP = "MSIMENotifyKeyMap";
 export const FID_MSIME_KMS_VERSION = 1;
 export const FID_MSIME_KMS_INIT = 2;
 export const FID_MSIME_KMS_TERM = 3;
@@ -362,327 +720,10 @@ export const IMEKMS_2NDLEVEL = 4;
 export const IMEKMS_INPTGL = 5;
 export const IMEKMS_CANDIDATE = 6;
 export const IMEKMS_TYPECAND = 7;
+export const RWM_RECONVERTOPTIONS = "MSIMEReconvertOptions";
 export const RECONVOPT_NONE = 0;
 export const RECONVOPT_USECANCELNOTIFY = 1;
 export const GCSEX_CANCELRECONVERT = 268435456;
-export const STYLE_DESCRIPTION_SIZE = 32;
-export const IMEMENUITEM_STRING_SIZE = 80;
-export const IMC_GETCANDIDATEPOS = 7;
-export const IMC_SETCANDIDATEPOS = 8;
-export const IMC_GETCOMPOSITIONFONT = 9;
-export const IMC_SETCOMPOSITIONFONT = 10;
-export const IMC_GETCOMPOSITIONWINDOW = 11;
-export const IMC_SETCOMPOSITIONWINDOW = 12;
-export const IMC_GETSTATUSWINDOWPOS = 15;
-export const IMC_SETSTATUSWINDOWPOS = 16;
-export const IMC_CLOSESTATUSWINDOW = 33;
-export const IMC_OPENSTATUSWINDOW = 34;
-export const NI_FINALIZECONVERSIONRESULT = 20;
-export const ISC_SHOWUICANDIDATEWINDOW = 1;
-export const ISC_SHOWUICOMPOSITIONWINDOW = 2147483648;
-export const ISC_SHOWUIGUIDELINE = 1073741824;
-export const ISC_SHOWUIALLCANDIDATEWINDOW = 15;
-export const ISC_SHOWUIALL = 3221225487;
-export const MOD_LEFT = 32768;
-export const MOD_RIGHT = 16384;
-export const MOD_ON_KEYUP = 2048;
-export const MOD_IGNORE_ALL_MODIFIER = 1024;
-export const IME_CHOTKEY_IME_NONIME_TOGGLE = 16;
-export const IME_CHOTKEY_SHAPE_TOGGLE = 17;
-export const IME_CHOTKEY_SYMBOL_TOGGLE = 18;
-export const IME_JHOTKEY_CLOSE_OPEN = 48;
-export const IME_KHOTKEY_SHAPE_TOGGLE = 80;
-export const IME_KHOTKEY_HANJACONVERT = 81;
-export const IME_KHOTKEY_ENGLISH = 82;
-export const IME_THOTKEY_IME_NONIME_TOGGLE = 112;
-export const IME_THOTKEY_SHAPE_TOGGLE = 113;
-export const IME_THOTKEY_SYMBOL_TOGGLE = 114;
-export const IME_HOTKEY_DSWITCH_FIRST = 256;
-export const IME_HOTKEY_DSWITCH_LAST = 287;
-export const IME_HOTKEY_PRIVATE_FIRST = 512;
-export const IME_ITHOTKEY_RESEND_RESULTSTR = 512;
-export const IME_ITHOTKEY_PREVIOUS_COMPOSITION = 513;
-export const IME_ITHOTKEY_UISTYLE_TOGGLE = 514;
-export const IME_ITHOTKEY_RECONVERTSTRING = 515;
-export const IME_HOTKEY_PRIVATE_LAST = 543;
-export const GCS_COMPREADSTR = 1;
-export const GCS_COMPREADATTR = 2;
-export const GCS_COMPREADCLAUSE = 4;
-export const GCS_COMPSTR = 8;
-export const GCS_COMPATTR = 16;
-export const GCS_COMPCLAUSE = 32;
-export const GCS_CURSORPOS = 128;
-export const GCS_DELTASTART = 256;
-export const GCS_RESULTREADSTR = 512;
-export const GCS_RESULTREADCLAUSE = 1024;
-export const GCS_RESULTSTR = 2048;
-export const GCS_RESULTCLAUSE = 4096;
-export const CS_INSERTCHAR = 8192;
-export const CS_NOMOVECARET = 16384;
-export const IMEVER_0310 = 196618;
-export const IMEVER_0400 = 262144;
-export const IME_PROP_AT_CARET = 65536;
-export const IME_PROP_SPECIAL_UI = 131072;
-export const IME_PROP_CANDLIST_START_FROM_1 = 262144;
-export const IME_PROP_UNICODE = 524288;
-export const IME_PROP_COMPLETE_ON_UNSELECT = 1048576;
-export const UI_CAP_2700 = 1;
-export const UI_CAP_ROT90 = 2;
-export const UI_CAP_ROTANY = 4;
-export const SCS_CAP_COMPSTR = 1;
-export const SCS_CAP_MAKEREAD = 2;
-export const SCS_CAP_SETRECONVERTSTRING = 4;
-export const SELECT_CAP_CONVERSION = 1;
-export const SELECT_CAP_SENTENCE = 2;
-export const GL_LEVEL_NOGUIDELINE = 0;
-export const GL_LEVEL_FATAL = 1;
-export const GL_LEVEL_ERROR = 2;
-export const GL_LEVEL_WARNING = 3;
-export const GL_LEVEL_INFORMATION = 4;
-export const GL_ID_UNKNOWN = 0;
-export const GL_ID_NOMODULE = 1;
-export const GL_ID_NODICTIONARY = 16;
-export const GL_ID_CANNOTSAVE = 17;
-export const GL_ID_NOCONVERT = 32;
-export const GL_ID_TYPINGERROR = 33;
-export const GL_ID_TOOMANYSTROKE = 34;
-export const GL_ID_READINGCONFLICT = 35;
-export const GL_ID_INPUTREADING = 36;
-export const GL_ID_INPUTRADICAL = 37;
-export const GL_ID_INPUTCODE = 38;
-export const GL_ID_INPUTSYMBOL = 39;
-export const GL_ID_CHOOSECANDIDATE = 40;
-export const GL_ID_REVERSECONVERSION = 41;
-export const GL_ID_PRIVATE_FIRST = 32768;
-export const GL_ID_PRIVATE_LAST = 65535;
-export const ATTR_INPUT = 0;
-export const ATTR_TARGET_CONVERTED = 1;
-export const ATTR_CONVERTED = 2;
-export const ATTR_TARGET_NOTCONVERTED = 3;
-export const ATTR_INPUT_ERROR = 4;
-export const ATTR_FIXEDCONVERTED = 5;
-export const CFS_DEFAULT = 0;
-export const CFS_RECT = 1;
-export const CFS_POINT = 2;
-export const CFS_FORCE_POSITION = 32;
-export const CFS_CANDIDATEPOS = 64;
-export const CFS_EXCLUDE = 128;
-export const IME_CMODE_SOFTKBD = 128;
-export const IME_CMODE_NOCONVERSION = 256;
-export const IME_CMODE_EUDC = 512;
-export const IME_CMODE_SYMBOL = 1024;
-export const IME_CMODE_FIXED = 2048;
-export const IME_CMODE_RESERVED = 4026531840;
-export const IME_SMODE_NONE = 0;
-export const IME_SMODE_PLAURALCLAUSE = 1;
-export const IME_SMODE_SINGLECONVERT = 2;
-export const IME_SMODE_AUTOMATIC = 4;
-export const IME_SMODE_PHRASEPREDICT = 8;
-export const IME_SMODE_CONVERSATION = 16;
-export const IME_SMODE_RESERVED = 61440;
-export const IME_CAND_UNKNOWN = 0;
-export const IME_CAND_READ = 1;
-export const IME_CAND_CODE = 2;
-export const IME_CAND_MEANING = 3;
-export const IME_CAND_RADICAL = 4;
-export const IME_CAND_STROKE = 5;
-export const IMN_CLOSESTATUSWINDOW = 1;
-export const IMN_OPENSTATUSWINDOW = 2;
-export const IMN_CHANGECANDIDATE = 3;
-export const IMN_CLOSECANDIDATE = 4;
-export const IMN_OPENCANDIDATE = 5;
-export const IMN_SETCONVERSIONMODE = 6;
-export const IMN_SETSENTENCEMODE = 7;
-export const IMN_SETOPENSTATUS = 8;
-export const IMN_SETCANDIDATEPOS = 9;
-export const IMN_SETCOMPOSITIONFONT = 10;
-export const IMN_SETCOMPOSITIONWINDOW = 11;
-export const IMN_SETSTATUSWINDOWPOS = 12;
-export const IMN_GUIDELINE = 13;
-export const IMN_PRIVATE = 14;
-export const IMR_COMPOSITIONWINDOW = 1;
-export const IMR_CANDIDATEWINDOW = 2;
-export const IMR_COMPOSITIONFONT = 3;
-export const IMR_RECONVERTSTRING = 4;
-export const IMR_CONFIRMRECONVERTSTRING = 5;
-export const IMR_QUERYCHARPOSITION = 6;
-export const IMR_DOCUMENTFEED = 7;
-export const IMM_ERROR_NODATA = "-1";
-export const IMM_ERROR_GENERAL = "-2";
-export const IME_CONFIG_GENERAL = 1;
-export const IME_CONFIG_REGISTERWORD = 2;
-export const IME_CONFIG_SELECTDICTIONARY = 3;
-export const IME_ESC_QUERY_SUPPORT = 3;
-export const IME_ESC_RESERVED_FIRST = 4;
-export const IME_ESC_RESERVED_LAST = 2047;
-export const IME_ESC_PRIVATE_FIRST = 2048;
-export const IME_ESC_PRIVATE_LAST = 4095;
-export const IME_ESC_SEQUENCE_TO_INTERNAL = 4097;
-export const IME_ESC_GET_EUDC_DICTIONARY = 4099;
-export const IME_ESC_SET_EUDC_DICTIONARY = 4100;
-export const IME_ESC_MAX_KEY = 4101;
-export const IME_ESC_IME_NAME = 4102;
-export const IME_ESC_SYNC_HOTKEY = 4103;
-export const IME_ESC_HANJA_MODE = 4104;
-export const IME_ESC_AUTOMATA = 4105;
-export const IME_ESC_PRIVATE_HOTKEY = 4106;
-export const IME_ESC_GETHELPFILENAME = 4107;
-export const IME_REGWORD_STYLE_EUDC = 1;
-export const IME_REGWORD_STYLE_USER_FIRST = 2147483648;
-export const IME_REGWORD_STYLE_USER_LAST = 4294967295;
-export const IACE_CHILDREN = 1;
-export const IACE_DEFAULT = 16;
-export const IACE_IGNORENOCONTEXT = 32;
-export const IGIMIF_RIGHTMENU = 1;
-export const IGIMII_CMODE = 1;
-export const IGIMII_SMODE = 2;
-export const IGIMII_CONFIGURE = 4;
-export const IGIMII_TOOLS = 8;
-export const IGIMII_HELP = 16;
-export const IGIMII_OTHER = 32;
-export const IGIMII_INPUTTOOLS = 64;
-export const IMFT_RADIOCHECK = 1;
-export const IMFT_SEPARATOR = 2;
-export const IMFT_SUBMENU = 4;
-export const SOFTKEYBOARD_TYPE_T1 = 1;
-export const SOFTKEYBOARD_TYPE_C1 = 2;
-export const IMMGWL_IMC = 0;
-export const IMMGWLP_IMC = 0;
-export const IMC_SETCONVERSIONMODE = 2;
-export const IMC_SETSENTENCEMODE = 4;
-export const IMC_SETOPENSTATUS = 6;
-export const IMC_GETSOFTKBDFONT = 17;
-export const IMC_SETSOFTKBDFONT = 18;
-export const IMC_GETSOFTKBDPOS = 19;
-export const IMC_SETSOFTKBDPOS = 20;
-export const IMC_GETSOFTKBDSUBTYPE = 21;
-export const IMC_SETSOFTKBDSUBTYPE = 22;
-export const IMC_SETSOFTKBDDATA = 24;
-export const NI_CONTEXTUPDATED = 3;
-export const IME_SYSINFO_WINLOGON = 1;
-export const IME_SYSINFO_WOW16 = 2;
-export const INIT_STATUSWNDPOS = 1;
-export const INIT_CONVERSION = 2;
-export const INIT_SENTENCE = 4;
-export const INIT_LOGFONT = 8;
-export const INIT_COMPFORM = 16;
-export const INIT_SOFTKBDPOS = 32;
-export const IME_PROP_END_UNLOAD = 1;
-export const IME_PROP_KBD_CHAR_FIRST = 2;
-export const IME_PROP_IGNORE_UPKEYS = 4;
-export const IME_PROP_NEED_ALTKEY = 8;
-export const IME_PROP_NO_KEYS_ON_CLOSE = 16;
-export const IME_PROP_ACCEPT_WIDE_VKEY = 32;
-export const UI_CAP_SOFTKBD = 65536;
-export const IMN_SOFTKBDDESTROYED = 17;
-export const IME_UI_CLASS_NAME_SIZE = 16;
-export const IME_ESC_STRING_BUFFER_SIZE = 80;
-export const FEID_NONE = 0;
-export const FEID_CHINESE_TRADITIONAL = 1;
-export const FEID_CHINESE_SIMPLIFIED = 2;
-export const FEID_CHINESE_HONGKONG = 3;
-export const FEID_CHINESE_SINGAPORE = 4;
-export const FEID_JAPANESE = 5;
-export const FEID_KOREAN = 6;
-export const FEID_KOREAN_JOHAB = 7;
-export const INFOMASK_NONE = 0;
-export const INFOMASK_QUERY_CAND = 1;
-export const INFOMASK_APPLY_CAND = 2;
-export const INFOMASK_APPLY_CAND_EX = 4;
-export const INFOMASK_STRING_FIX = 65536;
-export const INFOMASK_HIDE_CAND = 131072;
-export const INFOMASK_BLOCK_CAND = 262144;
-export const IMEFAREASTINFO_TYPE_DEFAULT = 0;
-export const IMEFAREASTINFO_TYPE_READING = 1;
-export const IMEFAREASTINFO_TYPE_COMMENT = 2;
-export const IMEFAREASTINFO_TYPE_COSTTIME = 3;
-export const CHARINFO_APPLETID_MASK = 4278190080;
-export const CHARINFO_FEID_MASK = 15728640;
-export const CHARINFO_CHARID_MASK = 65535;
-export const MAX_APPLETTITLE = 64;
-export const MAX_FONTFACE = 32;
-export const IPACFG_NONE = 0;
-export const IPACFG_PROPERTY = 1;
-export const IPACFG_HELP = 2;
-export const IPACFG_TITLE = 65536;
-export const IPACFG_TITLEFONTFACE = 131072;
-export const IPACFG_CATEGORY = 262144;
-export const IPACFG_LANG = 16;
-export const IPACID_NONE = 0;
-export const IPACID_SOFTKEY = 1;
-export const IPACID_HANDWRITING = 2;
-export const IPACID_STROKESEARCH = 3;
-export const IPACID_RADICALSEARCH = 4;
-export const IPACID_SYMBOLSEARCH = 5;
-export const IPACID_VOICE = 6;
-export const IPACID_EPWING = 7;
-export const IPACID_OCR = 8;
-export const IPACID_CHARLIST = 9;
-export const IPACID_USER = 256;
-export const IMEPADREQ_FIRST = 4096;
-export const IMEPADREQ_INSERTSTRINGCANDIDATE = 4098;
-export const IMEPADREQ_INSERTITEMCANDIDATE = 4099;
-export const IMEPADREQ_SENDKEYCONTROL = 4101;
-export const IMEPADREQ_GETSELECTEDSTRING = 4103;
-export const IMEPADREQ_SETAPPLETDATA = 4105;
-export const IMEPADREQ_GETAPPLETDATA = 4106;
-export const IMEPADREQ_SETTITLEFONT = 4107;
-export const IMEPADREQ_GETCOMPOSITIONSTRINGID = 4109;
-export const IMEPADREQ_INSERTSTRINGCANDIDATEINFO = 4110;
-export const IMEPADREQ_CHANGESTRINGCANDIDATEINFO = 4111;
-export const IMEPADREQ_INSERTSTRINGINFO = 4114;
-export const IMEPADREQ_CHANGESTRINGINFO = 4115;
-export const IMEPADREQ_GETCURRENTUILANGID = 4120;
-export const IMEPADCTRL_CONVERTALL = 1;
-export const IMEPADCTRL_DETERMINALL = 2;
-export const IMEPADCTRL_DETERMINCHAR = 3;
-export const IMEPADCTRL_CLEARALL = 4;
-export const IMEPADCTRL_CARETSET = 5;
-export const IMEPADCTRL_CARETLEFT = 6;
-export const IMEPADCTRL_CARETRIGHT = 7;
-export const IMEPADCTRL_CARETTOP = 8;
-export const IMEPADCTRL_CARETBOTTOM = 9;
-export const IMEPADCTRL_CARETBACKSPACE = 10;
-export const IMEPADCTRL_CARETDELETE = 11;
-export const IMEPADCTRL_PHRASEDELETE = 12;
-export const IMEPADCTRL_INSERTSPACE = 13;
-export const IMEPADCTRL_INSERTFULLSPACE = 14;
-export const IMEPADCTRL_INSERTHALFSPACE = 15;
-export const IMEPADCTRL_ONIME = 16;
-export const IMEPADCTRL_OFFIME = 17;
-export const IMEPADCTRL_ONPRECONVERSION = 18;
-export const IMEPADCTRL_OFFPRECONVERSION = 19;
-export const IMEPADCTRL_PHONETICCANDIDATE = 20;
-export const IMEKEYCTRLMASK_ALT = 1;
-export const IMEKEYCTRLMASK_CTRL = 2;
-export const IMEKEYCTRLMASK_SHIFT = 4;
-export const IMEKEYCTRL_UP = 1;
-export const IMEKEYCTRL_DOWN = 0;
-export const IMEPN_FIRST = 256;
-export const IMEPN_ACTIVATE = 257;
-export const IMEPN_INACTIVATE = 258;
-export const IMEPN_SHOW = 260;
-export const IMEPN_HIDE = 261;
-export const IMEPN_SIZECHANGING = 262;
-export const IMEPN_SIZECHANGED = 263;
-export const IMEPN_CONFIG = 264;
-export const IMEPN_HELP = 265;
-export const IMEPN_QUERYCAND = 266;
-export const IMEPN_APPLYCAND = 267;
-export const IMEPN_APPLYCANDEX = 268;
-export const IMEPN_SETTINGCHANGED = 269;
-export const IMEPN_USER = 356;
-export const IPAWS_ENABLED = 1;
-export const IPAWS_SIZINGNOTIFY = 4;
-export const IPAWS_VERTICALFIXED = 256;
-export const IPAWS_HORIZONTALFIXED = 512;
-export const IPAWS_SIZEFIXED = 768;
-export const IPAWS_MAXWIDTHFIXED = 4096;
-export const IPAWS_MAXHEIGHTFIXED = 8192;
-export const IPAWS_MAXSIZEFIXED = 12288;
-export const IPAWS_MINWIDTHFIXED = 65536;
-export const IPAWS_MINHEIGHTFIXED = 131072;
-export const IPAWS_MINSIZEFIXED = 196608;
 export const IFED_REG_HEAD = 0;
 export const IFED_REG_TAIL = 1;
 export const IFED_REG_DEL = 2;
@@ -743,6 +784,52 @@ export const IFED_REL_KEIYOU_TARU_YOUGEN = 21;
 export const IFED_REL_UNKNOWN1 = 22;
 export const IFED_REL_UNKNOWN2 = 23;
 export const IFED_REL_ALL = 24;
+export const ANSI_CHARSET = 0;
+export const DEFAULT_CHARSET = 1;
+export const SYMBOL_CHARSET = 2;
+export const SHIFTJIS_CHARSET = 128;
+export const HANGEUL_CHARSET = 129;
+export const HANGUL_CHARSET = 129;
+export const GB2312_CHARSET = 134;
+export const CHINESEBIG5_CHARSET = 136;
+export const OEM_CHARSET = 255;
+export const JOHAB_CHARSET = 130;
+export const HEBREW_CHARSET = 177;
+export const ARABIC_CHARSET = 178;
+export const GREEK_CHARSET = 161;
+export const TURKISH_CHARSET = 162;
+export const VIETNAMESE_CHARSET = 163;
+export const THAI_CHARSET = 222;
+export const EASTEUROPE_CHARSET = 238;
+export const RUSSIAN_CHARSET = 204;
+export const MAC_CHARSET = 77;
+export const BALTIC_CHARSET = 186;
+export const OUT_DEFAULT_PRECIS = 0;
+export const OUT_STRING_PRECIS = 1;
+export const OUT_CHARACTER_PRECIS = 2;
+export const OUT_STROKE_PRECIS = 3;
+export const OUT_TT_PRECIS = 4;
+export const OUT_DEVICE_PRECIS = 5;
+export const OUT_RASTER_PRECIS = 6;
+export const OUT_TT_ONLY_PRECIS = 7;
+export const OUT_OUTLINE_PRECIS = 8;
+export const OUT_SCREEN_OUTLINE_PRECIS = 9;
+export const OUT_PS_ONLY_PRECIS = 10;
+export const CLIP_DEFAULT_PRECIS = 0;
+export const CLIP_CHARACTER_PRECIS = 1;
+export const CLIP_STROKE_PRECIS = 2;
+export const CLIP_MASK = 15;
+export const CLIP_LH_ANGLES = 16;
+export const CLIP_TT_ALWAYS = 32;
+export const CLIP_DFA_DISABLE = 64;
+export const CLIP_EMBEDDED = 128;
+export const CLIP_DFA_OVERRIDE = 64;
+export const DEFAULT_QUALITY = 0;
+export const DRAFT_QUALITY = 1;
+export const PROOF_QUALITY = 2;
+export const NONANTIALIASED_QUALITY = 3;
+export const ANTIALIASED_QUALITY = 4;
+export const CLEARTYPE_QUALITY = 5;
 
 // Structs
 
@@ -2109,14 +2196,14 @@ export interface LOGFONTA {
   lfUnderline: number;
   /** u8 */
   lfStrikeOut: number;
-  /** u8 */
-  lfCharSet: number;
-  /** u8 */
-  lfOutPrecision: number;
-  /** u8 */
-  lfClipPrecision: number;
-  /** u8 */
-  lfQuality: number;
+  /** Windows.Win32.Graphics.Gdi.FONT_CHARSET */
+  lfCharSet: FONT_CHARSET;
+  /** Windows.Win32.Graphics.Gdi.FONT_OUTPUT_PRECISION */
+  lfOutPrecision: FONT_OUTPUT_PRECISION;
+  /** Windows.Win32.Graphics.Gdi.FONT_CLIP_PRECISION */
+  lfClipPrecision: FONT_CLIP_PRECISION;
+  /** Windows.Win32.Graphics.Gdi.FONT_QUALITY */
+  lfQuality: FONT_QUALITY;
   /** u8 */
   lfPitchAndFamily: number;
   /** array */
@@ -2180,14 +2267,14 @@ export interface LOGFONTW {
   lfUnderline: number;
   /** u8 */
   lfStrikeOut: number;
-  /** u8 */
-  lfCharSet: number;
-  /** u8 */
-  lfOutPrecision: number;
-  /** u8 */
-  lfClipPrecision: number;
-  /** u8 */
-  lfQuality: number;
+  /** Windows.Win32.Graphics.Gdi.FONT_CHARSET */
+  lfCharSet: FONT_CHARSET;
+  /** Windows.Win32.Graphics.Gdi.FONT_OUTPUT_PRECISION */
+  lfOutPrecision: FONT_OUTPUT_PRECISION;
+  /** Windows.Win32.Graphics.Gdi.FONT_CLIP_PRECISION */
+  lfClipPrecision: FONT_CLIP_PRECISION;
+  /** Windows.Win32.Graphics.Gdi.FONT_QUALITY */
+  lfQuality: FONT_QUALITY;
   /** u8 */
   lfPitchAndFamily: number;
   /** array */
@@ -2502,19 +2589,19 @@ export function allocIMEITEMCANDIDATE(data?: Partial<IMEITEMCANDIDATE>): Uint8Ar
 }
 
 /**
- * Windows.Win32.UI.Input.Ime.tabIMESTRINGINFO (size: 16)
+ * Windows.Win32.UI.Input.Ime.IMESTRINGINFO (size: 16)
  */
-export interface tabIMESTRINGINFO {
+export interface IMESTRINGINFO {
   /** u32 */
   dwFarEastId: number;
   /** Windows.Win32.Foundation.PWSTR */
   lpwstr: string | null;
 }
 
-export const sizeofTabIMESTRINGINFO = 16;
+export const sizeofIMESTRINGINFO = 16;
 
-export function allocTabIMESTRINGINFO(data?: Partial<tabIMESTRINGINFO>): Uint8Array {
-  const buf = new Uint8Array(sizeofTabIMESTRINGINFO);
+export function allocIMESTRINGINFO(data?: Partial<IMESTRINGINFO>): Uint8Array {
+  const buf = new Uint8Array(sizeofIMESTRINGINFO);
   const view = new DataView(buf.buffer);
   // 0x00: u32
   if (data?.dwFarEastId !== undefined) view.setUint32(0, Number(data.dwFarEastId), true);
@@ -2528,9 +2615,9 @@ export function allocTabIMESTRINGINFO(data?: Partial<tabIMESTRINGINFO>): Uint8Ar
 }
 
 /**
- * Windows.Win32.UI.Input.Ime.tabIMEFAREASTINFO (size: 16)
+ * Windows.Win32.UI.Input.Ime.IMEFAREASTINFO (size: 16)
  */
-export interface tabIMEFAREASTINFO {
+export interface IMEFAREASTINFO {
   /** u32 */
   dwSize: number;
   /** u32 */
@@ -2539,10 +2626,10 @@ export interface tabIMEFAREASTINFO {
   dwData: Deno.PointerValue | null;
 }
 
-export const sizeofTabIMEFAREASTINFO = 16;
+export const sizeofIMEFAREASTINFO = 16;
 
-export function allocTabIMEFAREASTINFO(data?: Partial<tabIMEFAREASTINFO>): Uint8Array {
-  const buf = new Uint8Array(sizeofTabIMEFAREASTINFO);
+export function allocIMEFAREASTINFO(data?: Partial<IMEFAREASTINFO>): Uint8Array {
+  const buf = new Uint8Array(sizeofIMEFAREASTINFO);
   const view = new DataView(buf.buffer);
   // 0x00: u32
   if (data?.dwSize !== undefined) view.setUint32(0, Number(data.dwSize), true);
@@ -2808,7 +2895,7 @@ export type LRESULT = Deno.PointerValue;
 // Native Libraries
 
 try {
-  var libIMM32 = Deno.dlopen("IMM32", {
+  var libIMM32_dll = Deno.dlopen("IMM32.dll", {
     ImmInstallIMEA: {
       parameters: ["buffer", "buffer"],
       result: "pointer",
@@ -3146,20 +3233,20 @@ export function ImmInstallIMEA(
   lpszIMEFileName: string | null /* Windows.Win32.Foundation.PSTR */,
   lpszLayoutText: string | null /* Windows.Win32.Foundation.PSTR */,
 ): Deno.PointerValue | null /* Windows.Win32.UI.TextServices.HKL */ {
-  return util.pointerFromFfi(libIMM32.ImmInstallIMEA(util.pstrToFfi(lpszIMEFileName), util.pstrToFfi(lpszLayoutText)));
+  return util.pointerFromFfi(libIMM32_dll.ImmInstallIMEA(util.pstrToFfi(lpszIMEFileName), util.pstrToFfi(lpszLayoutText)));
 }
 
 export function ImmInstallIMEW(
   lpszIMEFileName: string | null /* Windows.Win32.Foundation.PWSTR */,
   lpszLayoutText: string | null /* Windows.Win32.Foundation.PWSTR */,
 ): Deno.PointerValue | null /* Windows.Win32.UI.TextServices.HKL */ {
-  return util.pointerFromFfi(libIMM32.ImmInstallIMEW(util.pwstrToFfi(lpszIMEFileName), util.pwstrToFfi(lpszLayoutText)));
+  return util.pointerFromFfi(libIMM32_dll.ImmInstallIMEW(util.pwstrToFfi(lpszIMEFileName), util.pwstrToFfi(lpszLayoutText)));
 }
 
 export function ImmGetDefaultIMEWnd(
   param0: Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */ {
-  return util.hwndFromFfi(libIMM32.ImmGetDefaultIMEWnd(util.hwndToFfi(param0)));
+  return util.hwndFromFfi(libIMM32_dll.ImmGetDefaultIMEWnd(util.hwndToFfi(param0)));
 }
 
 export function ImmGetDescriptionA(
@@ -3167,7 +3254,7 @@ export function ImmGetDescriptionA(
   lpszDescription: string | null /* Windows.Win32.Foundation.PSTR */,
   uBufLen: number /* u32 */,
 ): number /* u32 */ {
-  return libIMM32.ImmGetDescriptionA(util.toPointer(param0), util.pstrToFfi(lpszDescription), uBufLen);
+  return libIMM32_dll.ImmGetDescriptionA(util.toPointer(param0), util.pstrToFfi(lpszDescription), uBufLen);
 }
 
 export function ImmGetDescriptionW(
@@ -3175,7 +3262,7 @@ export function ImmGetDescriptionW(
   lpszDescription: string | null /* Windows.Win32.Foundation.PWSTR */,
   uBufLen: number /* u32 */,
 ): number /* u32 */ {
-  return libIMM32.ImmGetDescriptionW(util.toPointer(param0), util.pwstrToFfi(lpszDescription), uBufLen);
+  return libIMM32_dll.ImmGetDescriptionW(util.toPointer(param0), util.pwstrToFfi(lpszDescription), uBufLen);
 }
 
 export function ImmGetIMEFileNameA(
@@ -3183,7 +3270,7 @@ export function ImmGetIMEFileNameA(
   lpszFileName: string | null /* Windows.Win32.Foundation.PSTR */,
   uBufLen: number /* u32 */,
 ): number /* u32 */ {
-  return libIMM32.ImmGetIMEFileNameA(util.toPointer(param0), util.pstrToFfi(lpszFileName), uBufLen);
+  return libIMM32_dll.ImmGetIMEFileNameA(util.toPointer(param0), util.pstrToFfi(lpszFileName), uBufLen);
 }
 
 export function ImmGetIMEFileNameW(
@@ -3191,57 +3278,57 @@ export function ImmGetIMEFileNameW(
   lpszFileName: string | null /* Windows.Win32.Foundation.PWSTR */,
   uBufLen: number /* u32 */,
 ): number /* u32 */ {
-  return libIMM32.ImmGetIMEFileNameW(util.toPointer(param0), util.pwstrToFfi(lpszFileName), uBufLen);
+  return libIMM32_dll.ImmGetIMEFileNameW(util.toPointer(param0), util.pwstrToFfi(lpszFileName), uBufLen);
 }
 
 export function ImmGetProperty(
   param0: Uint8Array | Deno.PointerValue | null /* Windows.Win32.UI.TextServices.HKL */,
   param1: number /* u32 */,
 ): number /* u32 */ {
-  return libIMM32.ImmGetProperty(util.toPointer(param0), param1);
+  return libIMM32_dll.ImmGetProperty(util.toPointer(param0), param1);
 }
 
 export function ImmIsIME(
   param0: Uint8Array | Deno.PointerValue | null /* Windows.Win32.UI.TextServices.HKL */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libIMM32.ImmIsIME(util.toPointer(param0)));
+  return util.boolFromFfi(libIMM32_dll.ImmIsIME(util.toPointer(param0)));
 }
 
 export function ImmSimulateHotKey(
   param0: Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */,
-  param1: number /* u32 */,
+  param1: IME_HOTKEY_IDENTIFIER /* Windows.Win32.UI.Input.Ime.IME_HOTKEY_IDENTIFIER */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libIMM32.ImmSimulateHotKey(util.hwndToFfi(param0), param1));
+  return util.boolFromFfi(libIMM32_dll.ImmSimulateHotKey(util.hwndToFfi(param0), param1));
 }
 
 export function ImmCreateContext(): Deno.PointerValue | null /* Windows.Win32.Globalization.HIMC */ {
-  return util.pointerFromFfi(libIMM32.ImmCreateContext());
+  return util.pointerFromFfi(libIMM32_dll.ImmCreateContext());
 }
 
 export function ImmDestroyContext(
   param0: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Globalization.HIMC */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libIMM32.ImmDestroyContext(util.toPointer(param0)));
+  return util.boolFromFfi(libIMM32_dll.ImmDestroyContext(util.toPointer(param0)));
 }
 
 export function ImmGetContext(
   param0: Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */,
 ): Deno.PointerValue | null /* Windows.Win32.Globalization.HIMC */ {
-  return util.pointerFromFfi(libIMM32.ImmGetContext(util.hwndToFfi(param0)));
+  return util.pointerFromFfi(libIMM32_dll.ImmGetContext(util.hwndToFfi(param0)));
 }
 
 export function ImmReleaseContext(
   param0: Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */,
   param1: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Globalization.HIMC */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libIMM32.ImmReleaseContext(util.hwndToFfi(param0), util.toPointer(param1)));
+  return util.boolFromFfi(libIMM32_dll.ImmReleaseContext(util.hwndToFfi(param0), util.toPointer(param1)));
 }
 
 export function ImmAssociateContext(
   param0: Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */,
   param1: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Globalization.HIMC */,
 ): Deno.PointerValue | null /* Windows.Win32.Globalization.HIMC */ {
-  return util.pointerFromFfi(libIMM32.ImmAssociateContext(util.hwndToFfi(param0), util.toPointer(param1)));
+  return util.pointerFromFfi(libIMM32_dll.ImmAssociateContext(util.hwndToFfi(param0), util.toPointer(param1)));
 }
 
 export function ImmAssociateContextEx(
@@ -3249,25 +3336,25 @@ export function ImmAssociateContextEx(
   param1: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Globalization.HIMC */,
   param2: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libIMM32.ImmAssociateContextEx(util.hwndToFfi(param0), util.toPointer(param1), param2));
+  return util.boolFromFfi(libIMM32_dll.ImmAssociateContextEx(util.hwndToFfi(param0), util.toPointer(param1), param2));
 }
 
 export function ImmGetCompositionStringA(
   param0: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Globalization.HIMC */,
-  param1: number /* u32 */,
+  param1: IME_COMPOSITION_STRING /* Windows.Win32.UI.Input.Ime.IME_COMPOSITION_STRING */,
   lpBuf: Deno.PointerValue | Uint8Array | null /* ptr */,
   dwBufLen: number /* u32 */,
 ): number /* i32 */ {
-  return libIMM32.ImmGetCompositionStringA(util.toPointer(param0), param1, util.toPointer(lpBuf), dwBufLen);
+  return libIMM32_dll.ImmGetCompositionStringA(util.toPointer(param0), param1, util.toPointer(lpBuf), dwBufLen);
 }
 
 export function ImmGetCompositionStringW(
   param0: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Globalization.HIMC */,
-  param1: number /* u32 */,
+  param1: IME_COMPOSITION_STRING /* Windows.Win32.UI.Input.Ime.IME_COMPOSITION_STRING */,
   lpBuf: Deno.PointerValue | Uint8Array | null /* ptr */,
   dwBufLen: number /* u32 */,
 ): number /* i32 */ {
-  return libIMM32.ImmGetCompositionStringW(util.toPointer(param0), param1, util.toPointer(lpBuf), dwBufLen);
+  return libIMM32_dll.ImmGetCompositionStringW(util.toPointer(param0), param1, util.toPointer(lpBuf), dwBufLen);
 }
 
 export function ImmSetCompositionStringA(
@@ -3278,7 +3365,7 @@ export function ImmSetCompositionStringA(
   lpRead: Deno.PointerValue | Uint8Array | null /* ptr */,
   dwReadLen: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libIMM32.ImmSetCompositionStringA(util.toPointer(param0), dwIndex, util.toPointer(lpComp), dwCompLen, util.toPointer(lpRead), dwReadLen));
+  return util.boolFromFfi(libIMM32_dll.ImmSetCompositionStringA(util.toPointer(param0), dwIndex, util.toPointer(lpComp), dwCompLen, util.toPointer(lpRead), dwReadLen));
 }
 
 export function ImmSetCompositionStringW(
@@ -3289,21 +3376,21 @@ export function ImmSetCompositionStringW(
   lpRead: Deno.PointerValue | Uint8Array | null /* ptr */,
   dwReadLen: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libIMM32.ImmSetCompositionStringW(util.toPointer(param0), dwIndex, util.toPointer(lpComp), dwCompLen, util.toPointer(lpRead), dwReadLen));
+  return util.boolFromFfi(libIMM32_dll.ImmSetCompositionStringW(util.toPointer(param0), dwIndex, util.toPointer(lpComp), dwCompLen, util.toPointer(lpRead), dwReadLen));
 }
 
 export function ImmGetCandidateListCountA(
   param0: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Globalization.HIMC */,
   lpdwListCount: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libIMM32.ImmGetCandidateListCountA(util.toPointer(param0), util.toPointer(lpdwListCount));
+  return libIMM32_dll.ImmGetCandidateListCountA(util.toPointer(param0), util.toPointer(lpdwListCount));
 }
 
 export function ImmGetCandidateListCountW(
   param0: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Globalization.HIMC */,
   lpdwListCount: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libIMM32.ImmGetCandidateListCountW(util.toPointer(param0), util.toPointer(lpdwListCount));
+  return libIMM32_dll.ImmGetCandidateListCountW(util.toPointer(param0), util.toPointer(lpdwListCount));
 }
 
 export function ImmGetCandidateListA(
@@ -3312,7 +3399,7 @@ export function ImmGetCandidateListA(
   lpCandList: Deno.PointerValue | Uint8Array | null /* ptr */,
   dwBufLen: number /* u32 */,
 ): number /* u32 */ {
-  return libIMM32.ImmGetCandidateListA(util.toPointer(param0), deIndex, util.toPointer(lpCandList), dwBufLen);
+  return libIMM32_dll.ImmGetCandidateListA(util.toPointer(param0), deIndex, util.toPointer(lpCandList), dwBufLen);
 }
 
 export function ImmGetCandidateListW(
@@ -3321,7 +3408,7 @@ export function ImmGetCandidateListW(
   lpCandList: Deno.PointerValue | Uint8Array | null /* ptr */,
   dwBufLen: number /* u32 */,
 ): number /* u32 */ {
-  return libIMM32.ImmGetCandidateListW(util.toPointer(param0), deIndex, util.toPointer(lpCandList), dwBufLen);
+  return libIMM32_dll.ImmGetCandidateListW(util.toPointer(param0), deIndex, util.toPointer(lpCandList), dwBufLen);
 }
 
 export function ImmGetGuideLineA(
@@ -3330,7 +3417,7 @@ export function ImmGetGuideLineA(
   lpBuf: string | null /* Windows.Win32.Foundation.PSTR */,
   dwBufLen: number /* u32 */,
 ): number /* u32 */ {
-  return libIMM32.ImmGetGuideLineA(util.toPointer(param0), dwIndex, util.pstrToFfi(lpBuf), dwBufLen);
+  return libIMM32_dll.ImmGetGuideLineA(util.toPointer(param0), dwIndex, util.pstrToFfi(lpBuf), dwBufLen);
 }
 
 export function ImmGetGuideLineW(
@@ -3339,7 +3426,7 @@ export function ImmGetGuideLineW(
   lpBuf: string | null /* Windows.Win32.Foundation.PWSTR */,
   dwBufLen: number /* u32 */,
 ): number /* u32 */ {
-  return libIMM32.ImmGetGuideLineW(util.toPointer(param0), dwIndex, util.pwstrToFfi(lpBuf), dwBufLen);
+  return libIMM32_dll.ImmGetGuideLineW(util.toPointer(param0), dwIndex, util.pwstrToFfi(lpBuf), dwBufLen);
 }
 
 export function ImmGetConversionStatus(
@@ -3347,56 +3434,56 @@ export function ImmGetConversionStatus(
   lpfdwConversion: Deno.PointerValue | Uint8Array | null /* ptr */,
   lpfdwSentence: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libIMM32.ImmGetConversionStatus(util.toPointer(param0), util.toPointer(lpfdwConversion), util.toPointer(lpfdwSentence)));
+  return util.boolFromFfi(libIMM32_dll.ImmGetConversionStatus(util.toPointer(param0), util.toPointer(lpfdwConversion), util.toPointer(lpfdwSentence)));
 }
 
 export function ImmSetConversionStatus(
   param0: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Globalization.HIMC */,
-  param1: number /* u32 */,
-  param2: number /* u32 */,
+  param1: IME_CONVERSION_MODE /* Windows.Win32.UI.Input.Ime.IME_CONVERSION_MODE */,
+  param2: IME_SENTENCE_MODE /* Windows.Win32.UI.Input.Ime.IME_SENTENCE_MODE */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libIMM32.ImmSetConversionStatus(util.toPointer(param0), param1, param2));
+  return util.boolFromFfi(libIMM32_dll.ImmSetConversionStatus(util.toPointer(param0), param1, param2));
 }
 
 export function ImmGetOpenStatus(
   param0: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Globalization.HIMC */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libIMM32.ImmGetOpenStatus(util.toPointer(param0)));
+  return util.boolFromFfi(libIMM32_dll.ImmGetOpenStatus(util.toPointer(param0)));
 }
 
 export function ImmSetOpenStatus(
   param0: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Globalization.HIMC */,
   param1: boolean /* Windows.Win32.Foundation.BOOL */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libIMM32.ImmSetOpenStatus(util.toPointer(param0), util.boolToFfi(param1)));
+  return util.boolFromFfi(libIMM32_dll.ImmSetOpenStatus(util.toPointer(param0), util.boolToFfi(param1)));
 }
 
 export function ImmGetCompositionFontA(
   param0: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Globalization.HIMC */,
   lplf: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libIMM32.ImmGetCompositionFontA(util.toPointer(param0), util.toPointer(lplf)));
+  return util.boolFromFfi(libIMM32_dll.ImmGetCompositionFontA(util.toPointer(param0), util.toPointer(lplf)));
 }
 
 export function ImmGetCompositionFontW(
   param0: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Globalization.HIMC */,
   lplf: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libIMM32.ImmGetCompositionFontW(util.toPointer(param0), util.toPointer(lplf)));
+  return util.boolFromFfi(libIMM32_dll.ImmGetCompositionFontW(util.toPointer(param0), util.toPointer(lplf)));
 }
 
 export function ImmSetCompositionFontA(
   param0: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Globalization.HIMC */,
   lplf: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libIMM32.ImmSetCompositionFontA(util.toPointer(param0), util.toPointer(lplf)));
+  return util.boolFromFfi(libIMM32_dll.ImmSetCompositionFontA(util.toPointer(param0), util.toPointer(lplf)));
 }
 
 export function ImmSetCompositionFontW(
   param0: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Globalization.HIMC */,
   lplf: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libIMM32.ImmSetCompositionFontW(util.toPointer(param0), util.toPointer(lplf)));
+  return util.boolFromFfi(libIMM32_dll.ImmSetCompositionFontW(util.toPointer(param0), util.toPointer(lplf)));
 }
 
 export function ImmConfigureIMEA(
@@ -3405,7 +3492,7 @@ export function ImmConfigureIMEA(
   param2: number /* u32 */,
   param3: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libIMM32.ImmConfigureIMEA(util.toPointer(param0), util.hwndToFfi(param1), param2, util.toPointer(param3)));
+  return util.boolFromFfi(libIMM32_dll.ImmConfigureIMEA(util.toPointer(param0), util.hwndToFfi(param1), param2, util.toPointer(param3)));
 }
 
 export function ImmConfigureIMEW(
@@ -3414,25 +3501,25 @@ export function ImmConfigureIMEW(
   param2: number /* u32 */,
   param3: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libIMM32.ImmConfigureIMEW(util.toPointer(param0), util.hwndToFfi(param1), param2, util.toPointer(param3)));
+  return util.boolFromFfi(libIMM32_dll.ImmConfigureIMEW(util.toPointer(param0), util.hwndToFfi(param1), param2, util.toPointer(param3)));
 }
 
 export function ImmEscapeA(
   param0: Uint8Array | Deno.PointerValue | null /* Windows.Win32.UI.TextServices.HKL */,
   param1: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Globalization.HIMC */,
-  param2: number /* u32 */,
+  param2: IME_ESCAPE /* Windows.Win32.UI.Input.Ime.IME_ESCAPE */,
   param3: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.LRESULT */ {
-  return util.pointerFromFfi(libIMM32.ImmEscapeA(util.toPointer(param0), util.toPointer(param1), param2, util.toPointer(param3)));
+  return util.pointerFromFfi(libIMM32_dll.ImmEscapeA(util.toPointer(param0), util.toPointer(param1), param2, util.toPointer(param3)));
 }
 
 export function ImmEscapeW(
   param0: Uint8Array | Deno.PointerValue | null /* Windows.Win32.UI.TextServices.HKL */,
   param1: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Globalization.HIMC */,
-  param2: number /* u32 */,
+  param2: IME_ESCAPE /* Windows.Win32.UI.Input.Ime.IME_ESCAPE */,
   param3: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.LRESULT */ {
-  return util.pointerFromFfi(libIMM32.ImmEscapeW(util.toPointer(param0), util.toPointer(param1), param2, util.toPointer(param3)));
+  return util.pointerFromFfi(libIMM32_dll.ImmEscapeW(util.toPointer(param0), util.toPointer(param1), param2, util.toPointer(param3)));
 }
 
 export function ImmGetConversionListA(
@@ -3443,7 +3530,7 @@ export function ImmGetConversionListA(
   dwBufLen: number /* u32 */,
   uFlag: GET_CONVERSION_LIST_FLAG /* Windows.Win32.UI.Input.Ime.GET_CONVERSION_LIST_FLAG */,
 ): number /* u32 */ {
-  return libIMM32.ImmGetConversionListA(util.toPointer(param0), util.toPointer(param1), util.pstrToFfi(lpSrc), util.toPointer(lpDst), dwBufLen, uFlag);
+  return libIMM32_dll.ImmGetConversionListA(util.toPointer(param0), util.toPointer(param1), util.pstrToFfi(lpSrc), util.toPointer(lpDst), dwBufLen, uFlag);
 }
 
 export function ImmGetConversionListW(
@@ -3454,7 +3541,7 @@ export function ImmGetConversionListW(
   dwBufLen: number /* u32 */,
   uFlag: GET_CONVERSION_LIST_FLAG /* Windows.Win32.UI.Input.Ime.GET_CONVERSION_LIST_FLAG */,
 ): number /* u32 */ {
-  return libIMM32.ImmGetConversionListW(util.toPointer(param0), util.toPointer(param1), util.pwstrToFfi(lpSrc), util.toPointer(lpDst), dwBufLen, uFlag);
+  return libIMM32_dll.ImmGetConversionListW(util.toPointer(param0), util.toPointer(param1), util.pwstrToFfi(lpSrc), util.toPointer(lpDst), dwBufLen, uFlag);
 }
 
 export function ImmNotifyIME(
@@ -3463,35 +3550,35 @@ export function ImmNotifyIME(
   dwIndex: NOTIFY_IME_INDEX /* Windows.Win32.UI.Input.Ime.NOTIFY_IME_INDEX */,
   dwValue: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libIMM32.ImmNotifyIME(util.toPointer(param0), dwAction, dwIndex, dwValue));
+  return util.boolFromFfi(libIMM32_dll.ImmNotifyIME(util.toPointer(param0), dwAction, dwIndex, dwValue));
 }
 
 export function ImmGetStatusWindowPos(
   param0: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Globalization.HIMC */,
   lpptPos: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libIMM32.ImmGetStatusWindowPos(util.toPointer(param0), util.toPointer(lpptPos)));
+  return util.boolFromFfi(libIMM32_dll.ImmGetStatusWindowPos(util.toPointer(param0), util.toPointer(lpptPos)));
 }
 
 export function ImmSetStatusWindowPos(
   param0: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Globalization.HIMC */,
   lpptPos: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libIMM32.ImmSetStatusWindowPos(util.toPointer(param0), util.toPointer(lpptPos)));
+  return util.boolFromFfi(libIMM32_dll.ImmSetStatusWindowPos(util.toPointer(param0), util.toPointer(lpptPos)));
 }
 
 export function ImmGetCompositionWindow(
   param0: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Globalization.HIMC */,
   lpCompForm: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libIMM32.ImmGetCompositionWindow(util.toPointer(param0), util.toPointer(lpCompForm)));
+  return util.boolFromFfi(libIMM32_dll.ImmGetCompositionWindow(util.toPointer(param0), util.toPointer(lpCompForm)));
 }
 
 export function ImmSetCompositionWindow(
   param0: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Globalization.HIMC */,
   lpCompForm: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libIMM32.ImmSetCompositionWindow(util.toPointer(param0), util.toPointer(lpCompForm)));
+  return util.boolFromFfi(libIMM32_dll.ImmSetCompositionWindow(util.toPointer(param0), util.toPointer(lpCompForm)));
 }
 
 export function ImmGetCandidateWindow(
@@ -3499,14 +3586,14 @@ export function ImmGetCandidateWindow(
   param1: number /* u32 */,
   lpCandidate: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libIMM32.ImmGetCandidateWindow(util.toPointer(param0), param1, util.toPointer(lpCandidate)));
+  return util.boolFromFfi(libIMM32_dll.ImmGetCandidateWindow(util.toPointer(param0), param1, util.toPointer(lpCandidate)));
 }
 
 export function ImmSetCandidateWindow(
   param0: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Globalization.HIMC */,
   lpCandidate: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libIMM32.ImmSetCandidateWindow(util.toPointer(param0), util.toPointer(lpCandidate)));
+  return util.boolFromFfi(libIMM32_dll.ImmSetCandidateWindow(util.toPointer(param0), util.toPointer(lpCandidate)));
 }
 
 export function ImmIsUIMessageA(
@@ -3515,7 +3602,7 @@ export function ImmIsUIMessageA(
   param2: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.WPARAM */,
   param3: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.LPARAM */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libIMM32.ImmIsUIMessageA(util.hwndToFfi(param0), param1, util.toPointer(param2), util.toPointer(param3)));
+  return util.boolFromFfi(libIMM32_dll.ImmIsUIMessageA(util.hwndToFfi(param0), param1, util.toPointer(param2), util.toPointer(param3)));
 }
 
 export function ImmIsUIMessageW(
@@ -3524,13 +3611,13 @@ export function ImmIsUIMessageW(
   param2: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.WPARAM */,
   param3: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.LPARAM */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libIMM32.ImmIsUIMessageW(util.hwndToFfi(param0), param1, util.toPointer(param2), util.toPointer(param3)));
+  return util.boolFromFfi(libIMM32_dll.ImmIsUIMessageW(util.hwndToFfi(param0), param1, util.toPointer(param2), util.toPointer(param3)));
 }
 
 export function ImmGetVirtualKey(
   param0: Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */,
 ): number /* u32 */ {
-  return libIMM32.ImmGetVirtualKey(util.hwndToFfi(param0));
+  return libIMM32_dll.ImmGetVirtualKey(util.hwndToFfi(param0));
 }
 
 export function ImmRegisterWordA(
@@ -3539,7 +3626,7 @@ export function ImmRegisterWordA(
   param2: number /* u32 */,
   lpszRegister: string | null /* Windows.Win32.Foundation.PSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libIMM32.ImmRegisterWordA(util.toPointer(param0), util.pstrToFfi(lpszReading), param2, util.pstrToFfi(lpszRegister)));
+  return util.boolFromFfi(libIMM32_dll.ImmRegisterWordA(util.toPointer(param0), util.pstrToFfi(lpszReading), param2, util.pstrToFfi(lpszRegister)));
 }
 
 export function ImmRegisterWordW(
@@ -3548,7 +3635,7 @@ export function ImmRegisterWordW(
   param2: number /* u32 */,
   lpszRegister: string | null /* Windows.Win32.Foundation.PWSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libIMM32.ImmRegisterWordW(util.toPointer(param0), util.pwstrToFfi(lpszReading), param2, util.pwstrToFfi(lpszRegister)));
+  return util.boolFromFfi(libIMM32_dll.ImmRegisterWordW(util.toPointer(param0), util.pwstrToFfi(lpszReading), param2, util.pwstrToFfi(lpszRegister)));
 }
 
 export function ImmUnregisterWordA(
@@ -3557,7 +3644,7 @@ export function ImmUnregisterWordA(
   param2: number /* u32 */,
   lpszUnregister: string | null /* Windows.Win32.Foundation.PSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libIMM32.ImmUnregisterWordA(util.toPointer(param0), util.pstrToFfi(lpszReading), param2, util.pstrToFfi(lpszUnregister)));
+  return util.boolFromFfi(libIMM32_dll.ImmUnregisterWordA(util.toPointer(param0), util.pstrToFfi(lpszReading), param2, util.pstrToFfi(lpszUnregister)));
 }
 
 export function ImmUnregisterWordW(
@@ -3566,7 +3653,7 @@ export function ImmUnregisterWordW(
   param2: number /* u32 */,
   lpszUnregister: string | null /* Windows.Win32.Foundation.PWSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libIMM32.ImmUnregisterWordW(util.toPointer(param0), util.pwstrToFfi(lpszReading), param2, util.pwstrToFfi(lpszUnregister)));
+  return util.boolFromFfi(libIMM32_dll.ImmUnregisterWordW(util.toPointer(param0), util.pwstrToFfi(lpszReading), param2, util.pwstrToFfi(lpszUnregister)));
 }
 
 export function ImmGetRegisterWordStyleA(
@@ -3574,7 +3661,7 @@ export function ImmGetRegisterWordStyleA(
   nItem: number /* u32 */,
   lpStyleBuf: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libIMM32.ImmGetRegisterWordStyleA(util.toPointer(param0), nItem, util.toPointer(lpStyleBuf));
+  return libIMM32_dll.ImmGetRegisterWordStyleA(util.toPointer(param0), nItem, util.toPointer(lpStyleBuf));
 }
 
 export function ImmGetRegisterWordStyleW(
@@ -3582,7 +3669,7 @@ export function ImmGetRegisterWordStyleW(
   nItem: number /* u32 */,
   lpStyleBuf: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libIMM32.ImmGetRegisterWordStyleW(util.toPointer(param0), nItem, util.toPointer(lpStyleBuf));
+  return libIMM32_dll.ImmGetRegisterWordStyleW(util.toPointer(param0), nItem, util.toPointer(lpStyleBuf));
 }
 
 export function ImmEnumRegisterWordA(
@@ -3593,7 +3680,7 @@ export function ImmEnumRegisterWordA(
   lpszRegister: string | null /* Windows.Win32.Foundation.PSTR */,
   param5: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libIMM32.ImmEnumRegisterWordA(util.toPointer(param0), util.toPointer(param1), util.pstrToFfi(lpszReading), param3, util.pstrToFfi(lpszRegister), util.toPointer(param5));
+  return libIMM32_dll.ImmEnumRegisterWordA(util.toPointer(param0), util.toPointer(param1), util.pstrToFfi(lpszReading), param3, util.pstrToFfi(lpszRegister), util.toPointer(param5));
 }
 
 export function ImmEnumRegisterWordW(
@@ -3604,13 +3691,13 @@ export function ImmEnumRegisterWordW(
   lpszRegister: string | null /* Windows.Win32.Foundation.PWSTR */,
   param5: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libIMM32.ImmEnumRegisterWordW(util.toPointer(param0), util.toPointer(param1), util.pwstrToFfi(lpszReading), param3, util.pwstrToFfi(lpszRegister), util.toPointer(param5));
+  return libIMM32_dll.ImmEnumRegisterWordW(util.toPointer(param0), util.toPointer(param1), util.pwstrToFfi(lpszReading), param3, util.pwstrToFfi(lpszRegister), util.toPointer(param5));
 }
 
 export function ImmDisableIME(
   param0: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libIMM32.ImmDisableIME(param0));
+  return util.boolFromFfi(libIMM32_dll.ImmDisableIME(param0));
 }
 
 export function ImmEnumInputContext(
@@ -3618,7 +3705,7 @@ export function ImmEnumInputContext(
   lpfn: Uint8Array | Deno.PointerValue | null /* Windows.Win32.UI.Input.Ime.IMCENUMPROC */,
   lParam: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.LPARAM */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libIMM32.ImmEnumInputContext(idThread, util.toPointer(lpfn), util.toPointer(lParam)));
+  return util.boolFromFfi(libIMM32_dll.ImmEnumInputContext(idThread, util.toPointer(lpfn), util.toPointer(lParam)));
 }
 
 export function ImmGetImeMenuItemsA(
@@ -3629,7 +3716,7 @@ export function ImmGetImeMenuItemsA(
   lpImeMenu: Deno.PointerValue | Uint8Array | null /* ptr */,
   dwSize: number /* u32 */,
 ): number /* u32 */ {
-  return libIMM32.ImmGetImeMenuItemsA(util.toPointer(param0), param1, param2, util.toPointer(lpImeParentMenu), util.toPointer(lpImeMenu), dwSize);
+  return libIMM32_dll.ImmGetImeMenuItemsA(util.toPointer(param0), param1, param2, util.toPointer(lpImeParentMenu), util.toPointer(lpImeMenu), dwSize);
 }
 
 export function ImmGetImeMenuItemsW(
@@ -3640,17 +3727,17 @@ export function ImmGetImeMenuItemsW(
   lpImeMenu: Deno.PointerValue | Uint8Array | null /* ptr */,
   dwSize: number /* u32 */,
 ): number /* u32 */ {
-  return libIMM32.ImmGetImeMenuItemsW(util.toPointer(param0), param1, param2, util.toPointer(lpImeParentMenu), util.toPointer(lpImeMenu), dwSize);
+  return libIMM32_dll.ImmGetImeMenuItemsW(util.toPointer(param0), param1, param2, util.toPointer(lpImeParentMenu), util.toPointer(lpImeMenu), dwSize);
 }
 
 export function ImmDisableTextFrameService(
   idThread: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libIMM32.ImmDisableTextFrameService(idThread));
+  return util.boolFromFfi(libIMM32_dll.ImmDisableTextFrameService(idThread));
 }
 
 export function ImmDisableLegacyIME(): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libIMM32.ImmDisableLegacyIME());
+  return util.boolFromFfi(libIMM32_dll.ImmDisableLegacyIME());
 }
 
 export function ImmGetHotKey(
@@ -3659,7 +3746,7 @@ export function ImmGetHotKey(
   lpuVKey: Deno.PointerValue | Uint8Array | null /* ptr */,
   phKL: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libIMM32.ImmGetHotKey(param0, util.toPointer(lpuModifiers), util.toPointer(lpuVKey), util.toPointer(phKL)));
+  return util.boolFromFfi(libIMM32_dll.ImmGetHotKey(param0, util.toPointer(lpuModifiers), util.toPointer(lpuVKey), util.toPointer(phKL)));
 }
 
 export function ImmSetHotKey(
@@ -3668,13 +3755,13 @@ export function ImmSetHotKey(
   param2: number /* u32 */,
   param3: Uint8Array | Deno.PointerValue | null /* Windows.Win32.UI.TextServices.HKL */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libIMM32.ImmSetHotKey(param0, param1, param2, util.toPointer(param3)));
+  return util.boolFromFfi(libIMM32_dll.ImmSetHotKey(param0, param1, param2, util.toPointer(param3)));
 }
 
 export function ImmGenerateMessage(
   param0: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Globalization.HIMC */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libIMM32.ImmGenerateMessage(util.toPointer(param0)));
+  return util.boolFromFfi(libIMM32_dll.ImmGenerateMessage(util.toPointer(param0)));
 }
 
 export function ImmRequestMessageA(
@@ -3682,7 +3769,7 @@ export function ImmRequestMessageA(
   param1: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.WPARAM */,
   param2: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.LPARAM */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.LRESULT */ {
-  return util.pointerFromFfi(libIMM32.ImmRequestMessageA(util.toPointer(param0), util.toPointer(param1), util.toPointer(param2)));
+  return util.pointerFromFfi(libIMM32_dll.ImmRequestMessageA(util.toPointer(param0), util.toPointer(param1), util.toPointer(param2)));
 }
 
 export function ImmRequestMessageW(
@@ -3690,7 +3777,7 @@ export function ImmRequestMessageW(
   param1: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.WPARAM */,
   param2: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.LPARAM */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.LRESULT */ {
-  return util.pointerFromFfi(libIMM32.ImmRequestMessageW(util.toPointer(param0), util.toPointer(param1), util.toPointer(param2)));
+  return util.pointerFromFfi(libIMM32_dll.ImmRequestMessageW(util.toPointer(param0), util.toPointer(param1), util.toPointer(param2)));
 }
 
 export function ImmCreateSoftKeyboard(
@@ -3699,80 +3786,80 @@ export function ImmCreateSoftKeyboard(
   param2: number /* i32 */,
   param3: number /* i32 */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */ {
-  return util.hwndFromFfi(libIMM32.ImmCreateSoftKeyboard(param0, util.hwndToFfi(param1), param2, param3));
+  return util.hwndFromFfi(libIMM32_dll.ImmCreateSoftKeyboard(param0, util.hwndToFfi(param1), param2, param3));
 }
 
 export function ImmDestroySoftKeyboard(
   param0: Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libIMM32.ImmDestroySoftKeyboard(util.hwndToFfi(param0)));
+  return util.boolFromFfi(libIMM32_dll.ImmDestroySoftKeyboard(util.hwndToFfi(param0)));
 }
 
 export function ImmShowSoftKeyboard(
   param0: Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */,
   param1: number /* i32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libIMM32.ImmShowSoftKeyboard(util.hwndToFfi(param0), param1));
+  return util.boolFromFfi(libIMM32_dll.ImmShowSoftKeyboard(util.hwndToFfi(param0), param1));
 }
 
 export function ImmLockIMC(
   param0: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Globalization.HIMC */,
 ): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libIMM32.ImmLockIMC(util.toPointer(param0)));
+  return util.pointerFromFfi(libIMM32_dll.ImmLockIMC(util.toPointer(param0)));
 }
 
 export function ImmUnlockIMC(
   param0: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Globalization.HIMC */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libIMM32.ImmUnlockIMC(util.toPointer(param0)));
+  return util.boolFromFfi(libIMM32_dll.ImmUnlockIMC(util.toPointer(param0)));
 }
 
 export function ImmGetIMCLockCount(
   param0: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Globalization.HIMC */,
 ): number /* u32 */ {
-  return libIMM32.ImmGetIMCLockCount(util.toPointer(param0));
+  return libIMM32_dll.ImmGetIMCLockCount(util.toPointer(param0));
 }
 
 export function ImmCreateIMCC(
   param0: number /* u32 */,
 ): Deno.PointerValue | null /* Windows.Win32.Globalization.HIMCC */ {
-  return util.pointerFromFfi(libIMM32.ImmCreateIMCC(param0));
+  return util.pointerFromFfi(libIMM32_dll.ImmCreateIMCC(param0));
 }
 
 export function ImmDestroyIMCC(
   param0: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Globalization.HIMCC */,
 ): Deno.PointerValue | null /* Windows.Win32.Globalization.HIMCC */ {
-  return util.pointerFromFfi(libIMM32.ImmDestroyIMCC(util.toPointer(param0)));
+  return util.pointerFromFfi(libIMM32_dll.ImmDestroyIMCC(util.toPointer(param0)));
 }
 
 export function ImmLockIMCC(
   param0: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Globalization.HIMCC */,
 ): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libIMM32.ImmLockIMCC(util.toPointer(param0)));
+  return util.pointerFromFfi(libIMM32_dll.ImmLockIMCC(util.toPointer(param0)));
 }
 
 export function ImmUnlockIMCC(
   param0: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Globalization.HIMCC */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libIMM32.ImmUnlockIMCC(util.toPointer(param0)));
+  return util.boolFromFfi(libIMM32_dll.ImmUnlockIMCC(util.toPointer(param0)));
 }
 
 export function ImmGetIMCCLockCount(
   param0: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Globalization.HIMCC */,
 ): number /* u32 */ {
-  return libIMM32.ImmGetIMCCLockCount(util.toPointer(param0));
+  return libIMM32_dll.ImmGetIMCCLockCount(util.toPointer(param0));
 }
 
 export function ImmReSizeIMCC(
   param0: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Globalization.HIMCC */,
   param1: number /* u32 */,
 ): Deno.PointerValue | null /* Windows.Win32.Globalization.HIMCC */ {
-  return util.pointerFromFfi(libIMM32.ImmReSizeIMCC(util.toPointer(param0), param1));
+  return util.pointerFromFfi(libIMM32_dll.ImmReSizeIMCC(util.toPointer(param0), param1));
 }
 
 export function ImmGetIMCCSize(
   param0: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Globalization.HIMCC */,
 ): number /* u32 */ {
-  return libIMM32.ImmGetIMCCSize(util.toPointer(param0));
+  return libIMM32_dll.ImmGetIMCCSize(util.toPointer(param0));
 }
 

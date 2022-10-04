@@ -1327,7 +1327,7 @@ export type HANDLE = Deno.PointerValue;
 // Native Libraries
 
 try {
-  var liburlmon = Deno.dlopen("urlmon", {
+  var liburlmon_dll = Deno.dlopen("urlmon.dll", {
     CreateURLMoniker: {
       parameters: ["pointer", "buffer", "pointer"],
       result: "pointer",
@@ -1630,7 +1630,7 @@ export function CreateURLMoniker(
   szURL: string | null /* Windows.Win32.Foundation.PWSTR */,
   ppmk: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(liburlmon.CreateURLMoniker(util.toPointer(pMkCtx), util.pwstrToFfi(szURL), util.toPointer(ppmk)));
+  return util.pointerFromFfi(liburlmon_dll.CreateURLMoniker(util.toPointer(pMkCtx), util.pwstrToFfi(szURL), util.toPointer(ppmk)));
 }
 
 export function CreateURLMonikerEx(
@@ -1639,14 +1639,14 @@ export function CreateURLMonikerEx(
   ppmk: Deno.PointerValue | Uint8Array | null /* ptr */,
   dwFlags: number /* u32 */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(liburlmon.CreateURLMonikerEx(util.toPointer(pMkCtx), util.pwstrToFfi(szURL), util.toPointer(ppmk), dwFlags));
+  return util.pointerFromFfi(liburlmon_dll.CreateURLMonikerEx(util.toPointer(pMkCtx), util.pwstrToFfi(szURL), util.toPointer(ppmk), dwFlags));
 }
 
 export function GetClassURL(
   szURL: string | null /* Windows.Win32.Foundation.PWSTR */,
   pClsID: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(liburlmon.GetClassURL(util.pwstrToFfi(szURL), util.toPointer(pClsID)));
+  return util.pointerFromFfi(liburlmon_dll.GetClassURL(util.pwstrToFfi(szURL), util.toPointer(pClsID)));
 }
 
 export function CreateAsyncBindCtx(
@@ -1655,7 +1655,7 @@ export function CreateAsyncBindCtx(
   pEFetc: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Com.IEnumFORMATETC */,
   ppBC: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(liburlmon.CreateAsyncBindCtx(reserved, util.toPointer(pBSCb), util.toPointer(pEFetc), util.toPointer(ppBC)));
+  return util.pointerFromFfi(liburlmon_dll.CreateAsyncBindCtx(reserved, util.toPointer(pBSCb), util.toPointer(pEFetc), util.toPointer(ppBC)));
 }
 
 export function CreateURLMonikerEx2(
@@ -1664,7 +1664,7 @@ export function CreateURLMonikerEx2(
   ppmk: Deno.PointerValue | Uint8Array | null /* ptr */,
   dwFlags: number /* u32 */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(liburlmon.CreateURLMonikerEx2(util.toPointer(pMkCtx), util.toPointer(pUri), util.toPointer(ppmk), dwFlags));
+  return util.pointerFromFfi(liburlmon_dll.CreateURLMonikerEx2(util.toPointer(pMkCtx), util.toPointer(pUri), util.toPointer(ppmk), dwFlags));
 }
 
 export function CreateAsyncBindCtxEx(
@@ -1675,7 +1675,7 @@ export function CreateAsyncBindCtxEx(
   ppBC: Deno.PointerValue | Uint8Array | null /* ptr */,
   reserved: number /* u32 */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(liburlmon.CreateAsyncBindCtxEx(util.toPointer(pbc), dwOptions, util.toPointer(pBSCb), util.toPointer(pEnum), util.toPointer(ppBC), reserved));
+  return util.pointerFromFfi(liburlmon_dll.CreateAsyncBindCtxEx(util.toPointer(pbc), dwOptions, util.toPointer(pBSCb), util.toPointer(pEnum), util.toPointer(ppBC), reserved));
 }
 
 export function MkParseDisplayNameEx(
@@ -1684,7 +1684,7 @@ export function MkParseDisplayNameEx(
   pchEaten: Deno.PointerValue | Uint8Array | null /* ptr */,
   ppmk: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(liburlmon.MkParseDisplayNameEx(util.toPointer(pbc), util.pwstrToFfi(szDisplayName), util.toPointer(pchEaten), util.toPointer(ppmk)));
+  return util.pointerFromFfi(liburlmon_dll.MkParseDisplayNameEx(util.toPointer(pbc), util.pwstrToFfi(szDisplayName), util.toPointer(pchEaten), util.toPointer(ppmk)));
 }
 
 export function RegisterBindStatusCallback(
@@ -1693,14 +1693,14 @@ export function RegisterBindStatusCallback(
   ppBSCBPrev: Deno.PointerValue | Uint8Array | null /* ptr */,
   dwReserved: number /* u32 */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(liburlmon.RegisterBindStatusCallback(util.toPointer(pBC), util.toPointer(pBSCb), util.toPointer(ppBSCBPrev), dwReserved));
+  return util.pointerFromFfi(liburlmon_dll.RegisterBindStatusCallback(util.toPointer(pBC), util.toPointer(pBSCb), util.toPointer(ppBSCBPrev), dwReserved));
 }
 
 export function RevokeBindStatusCallback(
   pBC: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Com.IBindCtx */,
   pBSCb: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Com.IBindStatusCallback */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(liburlmon.RevokeBindStatusCallback(util.toPointer(pBC), util.toPointer(pBSCb)));
+  return util.pointerFromFfi(liburlmon_dll.RevokeBindStatusCallback(util.toPointer(pBC), util.toPointer(pBSCb)));
 }
 
 export function GetClassFileOrMime(
@@ -1712,7 +1712,7 @@ export function GetClassFileOrMime(
   dwReserved: number /* u32 */,
   pclsid: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(liburlmon.GetClassFileOrMime(util.toPointer(pBC), util.pwstrToFfi(szFilename), util.toPointer(pBuffer), cbSize, util.pwstrToFfi(szMime), dwReserved, util.toPointer(pclsid)));
+  return util.pointerFromFfi(liburlmon_dll.GetClassFileOrMime(util.toPointer(pBC), util.pwstrToFfi(szFilename), util.toPointer(pBuffer), cbSize, util.pwstrToFfi(szMime), dwReserved, util.toPointer(pclsid)));
 }
 
 export function IsValidURL(
@@ -1720,7 +1720,7 @@ export function IsValidURL(
   szURL: string | null /* Windows.Win32.Foundation.PWSTR */,
   dwReserved: number /* u32 */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(liburlmon.IsValidURL(util.toPointer(pBC), util.pwstrToFfi(szURL), dwReserved));
+  return util.pointerFromFfi(liburlmon_dll.IsValidURL(util.toPointer(pBC), util.pwstrToFfi(szURL), dwReserved));
 }
 
 export function CoGetClassObjectFromURL(
@@ -1735,13 +1735,13 @@ export function CoGetClassObjectFromURL(
   riid: Deno.PointerValue | Uint8Array | null /* ptr */,
   ppv: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(liburlmon.CoGetClassObjectFromURL(util.toPointer(rCLASSID), util.pwstrToFfi(szCODE), dwFileVersionMS, dwFileVersionLS, util.pwstrToFfi(szTYPE), util.toPointer(pBindCtx), dwClsContext, util.toPointer(pvReserved), util.toPointer(riid), util.toPointer(ppv)));
+  return util.pointerFromFfi(liburlmon_dll.CoGetClassObjectFromURL(util.toPointer(rCLASSID), util.pwstrToFfi(szCODE), dwFileVersionMS, dwFileVersionLS, util.pwstrToFfi(szTYPE), util.toPointer(pBindCtx), dwClsContext, util.toPointer(pvReserved), util.toPointer(riid), util.toPointer(ppv)));
 }
 
 export function IEInstallScope(
   pdwScope: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(liburlmon.IEInstallScope(util.toPointer(pdwScope)));
+  return util.pointerFromFfi(liburlmon_dll.IEInstallScope(util.toPointer(pdwScope)));
 }
 
 export function FaultInIEFeature(
@@ -1750,20 +1750,20 @@ export function FaultInIEFeature(
   pQuery: Deno.PointerValue | Uint8Array | null /* ptr */,
   dwFlags: number /* u32 */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(liburlmon.FaultInIEFeature(util.hwndToFfi(hWnd), util.toPointer(pClassSpec), util.toPointer(pQuery), dwFlags));
+  return util.pointerFromFfi(liburlmon_dll.FaultInIEFeature(util.hwndToFfi(hWnd), util.toPointer(pClassSpec), util.toPointer(pQuery), dwFlags));
 }
 
 export function GetComponentIDFromCLSSPEC(
   pClassspec: Deno.PointerValue | Uint8Array | null /* ptr */,
   ppszComponentID: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(liburlmon.GetComponentIDFromCLSSPEC(util.toPointer(pClassspec), util.toPointer(ppszComponentID)));
+  return util.pointerFromFfi(liburlmon_dll.GetComponentIDFromCLSSPEC(util.toPointer(pClassspec), util.toPointer(ppszComponentID)));
 }
 
 export function IsAsyncMoniker(
   pmk: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Com.IMoniker */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(liburlmon.IsAsyncMoniker(util.toPointer(pmk)));
+  return util.pointerFromFfi(liburlmon_dll.IsAsyncMoniker(util.toPointer(pmk)));
 }
 
 export function RegisterMediaTypes(
@@ -1771,14 +1771,14 @@ export function RegisterMediaTypes(
   rgszTypes: Deno.PointerValue | Uint8Array | null /* ptr */,
   rgcfTypes: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(liburlmon.RegisterMediaTypes(ctypes, util.toPointer(rgszTypes), util.toPointer(rgcfTypes)));
+  return util.pointerFromFfi(liburlmon_dll.RegisterMediaTypes(ctypes, util.toPointer(rgszTypes), util.toPointer(rgcfTypes)));
 }
 
 export function FindMediaType(
   rgszTypes: string | null /* Windows.Win32.Foundation.PSTR */,
   rgcfTypes: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(liburlmon.FindMediaType(util.pstrToFfi(rgszTypes), util.toPointer(rgcfTypes)));
+  return util.pointerFromFfi(liburlmon_dll.FindMediaType(util.pstrToFfi(rgszTypes), util.toPointer(rgcfTypes)));
 }
 
 export function CreateFormatEnumerator(
@@ -1786,7 +1786,7 @@ export function CreateFormatEnumerator(
   rgfmtetc: Deno.PointerValue | Uint8Array | null /* ptr */,
   ppenumfmtetc: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(liburlmon.CreateFormatEnumerator(cfmtetc, util.toPointer(rgfmtetc), util.toPointer(ppenumfmtetc)));
+  return util.pointerFromFfi(liburlmon_dll.CreateFormatEnumerator(cfmtetc, util.toPointer(rgfmtetc), util.toPointer(ppenumfmtetc)));
 }
 
 export function RegisterFormatEnumerator(
@@ -1794,14 +1794,14 @@ export function RegisterFormatEnumerator(
   pEFetc: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Com.IEnumFORMATETC */,
   reserved: number /* u32 */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(liburlmon.RegisterFormatEnumerator(util.toPointer(pBC), util.toPointer(pEFetc), reserved));
+  return util.pointerFromFfi(liburlmon_dll.RegisterFormatEnumerator(util.toPointer(pBC), util.toPointer(pEFetc), reserved));
 }
 
 export function RevokeFormatEnumerator(
   pBC: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Com.IBindCtx */,
   pEFetc: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Com.IEnumFORMATETC */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(liburlmon.RevokeFormatEnumerator(util.toPointer(pBC), util.toPointer(pEFetc)));
+  return util.pointerFromFfi(liburlmon_dll.RevokeFormatEnumerator(util.toPointer(pBC), util.toPointer(pEFetc)));
 }
 
 export function RegisterMediaTypeClass(
@@ -1811,7 +1811,7 @@ export function RegisterMediaTypeClass(
   rgclsID: Deno.PointerValue | Uint8Array | null /* ptr */,
   reserved: number /* u32 */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(liburlmon.RegisterMediaTypeClass(util.toPointer(pBC), ctypes, util.toPointer(rgszTypes), util.toPointer(rgclsID), reserved));
+  return util.pointerFromFfi(liburlmon_dll.RegisterMediaTypeClass(util.toPointer(pBC), ctypes, util.toPointer(rgszTypes), util.toPointer(rgclsID), reserved));
 }
 
 export function FindMediaTypeClass(
@@ -1820,7 +1820,7 @@ export function FindMediaTypeClass(
   pclsID: Deno.PointerValue | Uint8Array | null /* ptr */,
   reserved: number /* u32 */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(liburlmon.FindMediaTypeClass(util.toPointer(pBC), util.pstrToFfi(szType), util.toPointer(pclsID), reserved));
+  return util.pointerFromFfi(liburlmon_dll.FindMediaTypeClass(util.toPointer(pBC), util.pstrToFfi(szType), util.toPointer(pclsID), reserved));
 }
 
 export function UrlMkSetSessionOption(
@@ -1829,7 +1829,7 @@ export function UrlMkSetSessionOption(
   dwBufferLength: number /* u32 */,
   dwReserved: number /* u32 */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(liburlmon.UrlMkSetSessionOption(dwOption, util.toPointer(pBuffer), dwBufferLength, dwReserved));
+  return util.pointerFromFfi(liburlmon_dll.UrlMkSetSessionOption(dwOption, util.toPointer(pBuffer), dwBufferLength, dwReserved));
 }
 
 export function UrlMkGetSessionOption(
@@ -1839,7 +1839,7 @@ export function UrlMkGetSessionOption(
   pdwBufferLengthOut: Deno.PointerValue | Uint8Array | null /* ptr */,
   dwReserved: number /* u32 */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(liburlmon.UrlMkGetSessionOption(dwOption, util.toPointer(pBuffer), dwBufferLength, util.toPointer(pdwBufferLengthOut), dwReserved));
+  return util.pointerFromFfi(liburlmon_dll.UrlMkGetSessionOption(dwOption, util.toPointer(pBuffer), dwBufferLength, util.toPointer(pdwBufferLengthOut), dwReserved));
 }
 
 export function FindMimeFromData(
@@ -1852,7 +1852,7 @@ export function FindMimeFromData(
   ppwzMimeOut: Deno.PointerValue | Uint8Array | null /* ptr */,
   dwReserved: number /* u32 */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(liburlmon.FindMimeFromData(util.toPointer(pBC), util.pwstrToFfi(pwzUrl), util.toPointer(pBuffer), cbSize, util.pwstrToFfi(pwzMimeProposed), dwMimeFlags, util.toPointer(ppwzMimeOut), dwReserved));
+  return util.pointerFromFfi(liburlmon_dll.FindMimeFromData(util.toPointer(pBC), util.pwstrToFfi(pwzUrl), util.toPointer(pBuffer), cbSize, util.pwstrToFfi(pwzMimeProposed), dwMimeFlags, util.toPointer(ppwzMimeOut), dwReserved));
 }
 
 export function ObtainUserAgentString(
@@ -1860,7 +1860,7 @@ export function ObtainUserAgentString(
   pszUAOut: string | null /* Windows.Win32.Foundation.PSTR */,
   cbSize: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(liburlmon.ObtainUserAgentString(dwOption, util.pstrToFfi(pszUAOut), util.toPointer(cbSize)));
+  return util.pointerFromFfi(liburlmon_dll.ObtainUserAgentString(dwOption, util.pstrToFfi(pszUAOut), util.toPointer(cbSize)));
 }
 
 export function CompareSecurityIds(
@@ -1870,7 +1870,7 @@ export function CompareSecurityIds(
   dwLen2: number /* u32 */,
   dwReserved: number /* u32 */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(liburlmon.CompareSecurityIds(util.toPointer(pbSecurityId1), dwLen1, util.toPointer(pbSecurityId2), dwLen2, dwReserved));
+  return util.pointerFromFfi(liburlmon_dll.CompareSecurityIds(util.toPointer(pbSecurityId1), dwLen1, util.toPointer(pbSecurityId2), dwLen2, dwReserved));
 }
 
 export function CompatFlagsFromClsid(
@@ -1878,7 +1878,7 @@ export function CompatFlagsFromClsid(
   pdwCompatFlags: Deno.PointerValue | Uint8Array | null /* ptr */,
   pdwMiscStatusFlags: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(liburlmon.CompatFlagsFromClsid(util.toPointer(pclsid), util.toPointer(pdwCompatFlags), util.toPointer(pdwMiscStatusFlags)));
+  return util.pointerFromFfi(liburlmon_dll.CompatFlagsFromClsid(util.toPointer(pclsid), util.toPointer(pdwCompatFlags), util.toPointer(pdwMiscStatusFlags)));
 }
 
 export function SetAccessForIEAppContainer(
@@ -1886,7 +1886,7 @@ export function SetAccessForIEAppContainer(
   ieObjectType: IEObjectType /* Windows.Win32.System.Com.Urlmon.IEObjectType */,
   dwAccessMask: number /* u32 */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(liburlmon.SetAccessForIEAppContainer(util.toPointer(hObject), ieObjectType, dwAccessMask));
+  return util.pointerFromFfi(liburlmon_dll.SetAccessForIEAppContainer(util.toPointer(hObject), ieObjectType, dwAccessMask));
 }
 
 export function HlinkSimpleNavigateToString(
@@ -1899,7 +1899,7 @@ export function HlinkSimpleNavigateToString(
   grfHLNF: number /* u32 */,
   dwReserved: number /* u32 */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(liburlmon.HlinkSimpleNavigateToString(util.pwstrToFfi(szTarget), util.pwstrToFfi(szLocation), util.pwstrToFfi(szTargetFrameName), util.toPointer(pUnk), util.toPointer(pbc), util.toPointer(param5), grfHLNF, dwReserved));
+  return util.pointerFromFfi(liburlmon_dll.HlinkSimpleNavigateToString(util.pwstrToFfi(szTarget), util.pwstrToFfi(szLocation), util.pwstrToFfi(szTargetFrameName), util.toPointer(pUnk), util.toPointer(pbc), util.toPointer(param5), grfHLNF, dwReserved));
 }
 
 export function HlinkSimpleNavigateToMoniker(
@@ -1912,7 +1912,7 @@ export function HlinkSimpleNavigateToMoniker(
   grfHLNF: number /* u32 */,
   dwReserved: number /* u32 */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(liburlmon.HlinkSimpleNavigateToMoniker(util.toPointer(pmkTarget), util.pwstrToFfi(szLocation), util.pwstrToFfi(szTargetFrameName), util.toPointer(pUnk), util.toPointer(pbc), util.toPointer(param5), grfHLNF, dwReserved));
+  return util.pointerFromFfi(liburlmon_dll.HlinkSimpleNavigateToMoniker(util.toPointer(pmkTarget), util.pwstrToFfi(szLocation), util.pwstrToFfi(szTargetFrameName), util.toPointer(pUnk), util.toPointer(pbc), util.toPointer(param5), grfHLNF, dwReserved));
 }
 
 export function URLOpenStreamA(
@@ -1921,7 +1921,7 @@ export function URLOpenStreamA(
   param2: number /* u32 */,
   param3: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Com.IBindStatusCallback */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(liburlmon.URLOpenStreamA(util.toPointer(param0), util.pstrToFfi(param1), param2, util.toPointer(param3)));
+  return util.pointerFromFfi(liburlmon_dll.URLOpenStreamA(util.toPointer(param0), util.pstrToFfi(param1), param2, util.toPointer(param3)));
 }
 
 export function URLOpenStreamW(
@@ -1930,7 +1930,7 @@ export function URLOpenStreamW(
   param2: number /* u32 */,
   param3: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Com.IBindStatusCallback */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(liburlmon.URLOpenStreamW(util.toPointer(param0), util.pwstrToFfi(param1), param2, util.toPointer(param3)));
+  return util.pointerFromFfi(liburlmon_dll.URLOpenStreamW(util.toPointer(param0), util.pwstrToFfi(param1), param2, util.toPointer(param3)));
 }
 
 export function URLOpenPullStreamA(
@@ -1939,7 +1939,7 @@ export function URLOpenPullStreamA(
   param2: number /* u32 */,
   param3: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Com.IBindStatusCallback */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(liburlmon.URLOpenPullStreamA(util.toPointer(param0), util.pstrToFfi(param1), param2, util.toPointer(param3)));
+  return util.pointerFromFfi(liburlmon_dll.URLOpenPullStreamA(util.toPointer(param0), util.pstrToFfi(param1), param2, util.toPointer(param3)));
 }
 
 export function URLOpenPullStreamW(
@@ -1948,7 +1948,7 @@ export function URLOpenPullStreamW(
   param2: number /* u32 */,
   param3: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Com.IBindStatusCallback */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(liburlmon.URLOpenPullStreamW(util.toPointer(param0), util.pwstrToFfi(param1), param2, util.toPointer(param3)));
+  return util.pointerFromFfi(liburlmon_dll.URLOpenPullStreamW(util.toPointer(param0), util.pwstrToFfi(param1), param2, util.toPointer(param3)));
 }
 
 export function URLDownloadToFileA(
@@ -1958,7 +1958,7 @@ export function URLDownloadToFileA(
   param3: number /* u32 */,
   param4: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Com.IBindStatusCallback */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(liburlmon.URLDownloadToFileA(util.toPointer(param0), util.pstrToFfi(param1), util.pstrToFfi(param2), param3, util.toPointer(param4)));
+  return util.pointerFromFfi(liburlmon_dll.URLDownloadToFileA(util.toPointer(param0), util.pstrToFfi(param1), util.pstrToFfi(param2), param3, util.toPointer(param4)));
 }
 
 export function URLDownloadToFileW(
@@ -1968,7 +1968,7 @@ export function URLDownloadToFileW(
   param3: number /* u32 */,
   param4: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Com.IBindStatusCallback */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(liburlmon.URLDownloadToFileW(util.toPointer(param0), util.pwstrToFfi(param1), util.pwstrToFfi(param2), param3, util.toPointer(param4)));
+  return util.pointerFromFfi(liburlmon_dll.URLDownloadToFileW(util.toPointer(param0), util.pwstrToFfi(param1), util.pwstrToFfi(param2), param3, util.toPointer(param4)));
 }
 
 export function URLDownloadToCacheFileA(
@@ -1979,7 +1979,7 @@ export function URLDownloadToCacheFileA(
   param4: number /* u32 */,
   param5: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Com.IBindStatusCallback */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(liburlmon.URLDownloadToCacheFileA(util.toPointer(param0), util.pstrToFfi(param1), util.pstrToFfi(param2), cchFileName, param4, util.toPointer(param5)));
+  return util.pointerFromFfi(liburlmon_dll.URLDownloadToCacheFileA(util.toPointer(param0), util.pstrToFfi(param1), util.pstrToFfi(param2), cchFileName, param4, util.toPointer(param5)));
 }
 
 export function URLDownloadToCacheFileW(
@@ -1990,7 +1990,7 @@ export function URLDownloadToCacheFileW(
   param4: number /* u32 */,
   param5: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Com.IBindStatusCallback */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(liburlmon.URLDownloadToCacheFileW(util.toPointer(param0), util.pwstrToFfi(param1), util.pwstrToFfi(param2), cchFileName, param4, util.toPointer(param5)));
+  return util.pointerFromFfi(liburlmon_dll.URLDownloadToCacheFileW(util.toPointer(param0), util.pwstrToFfi(param1), util.pwstrToFfi(param2), cchFileName, param4, util.toPointer(param5)));
 }
 
 export function URLOpenBlockingStreamA(
@@ -2000,7 +2000,7 @@ export function URLOpenBlockingStreamA(
   param3: number /* u32 */,
   param4: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Com.IBindStatusCallback */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(liburlmon.URLOpenBlockingStreamA(util.toPointer(param0), util.pstrToFfi(param1), util.toPointer(param2), param3, util.toPointer(param4)));
+  return util.pointerFromFfi(liburlmon_dll.URLOpenBlockingStreamA(util.toPointer(param0), util.pstrToFfi(param1), util.toPointer(param2), param3, util.toPointer(param4)));
 }
 
 export function URLOpenBlockingStreamW(
@@ -2010,33 +2010,33 @@ export function URLOpenBlockingStreamW(
   param3: number /* u32 */,
   param4: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Com.IBindStatusCallback */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(liburlmon.URLOpenBlockingStreamW(util.toPointer(param0), util.pwstrToFfi(param1), util.toPointer(param2), param3, util.toPointer(param4)));
+  return util.pointerFromFfi(liburlmon_dll.URLOpenBlockingStreamW(util.toPointer(param0), util.pwstrToFfi(param1), util.toPointer(param2), param3, util.toPointer(param4)));
 }
 
 export function HlinkGoBack(
   pUnk: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Com.IUnknown */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(liburlmon.HlinkGoBack(util.toPointer(pUnk)));
+  return util.pointerFromFfi(liburlmon_dll.HlinkGoBack(util.toPointer(pUnk)));
 }
 
 export function HlinkGoForward(
   pUnk: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Com.IUnknown */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(liburlmon.HlinkGoForward(util.toPointer(pUnk)));
+  return util.pointerFromFfi(liburlmon_dll.HlinkGoForward(util.toPointer(pUnk)));
 }
 
 export function HlinkNavigateString(
   pUnk: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Com.IUnknown */,
   szTarget: string | null /* Windows.Win32.Foundation.PWSTR */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(liburlmon.HlinkNavigateString(util.toPointer(pUnk), util.pwstrToFfi(szTarget)));
+  return util.pointerFromFfi(liburlmon_dll.HlinkNavigateString(util.toPointer(pUnk), util.pwstrToFfi(szTarget)));
 }
 
 export function HlinkNavigateMoniker(
   pUnk: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Com.IUnknown */,
   pmkTarget: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Com.IMoniker */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(liburlmon.HlinkNavigateMoniker(util.toPointer(pUnk), util.toPointer(pmkTarget)));
+  return util.pointerFromFfi(liburlmon_dll.HlinkNavigateMoniker(util.toPointer(pUnk), util.toPointer(pmkTarget)));
 }
 
 export function CoInternetParseUrl(
@@ -2048,7 +2048,7 @@ export function CoInternetParseUrl(
   pcchResult: Deno.PointerValue | Uint8Array | null /* ptr */,
   dwReserved: number /* u32 */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(liburlmon.CoInternetParseUrl(util.pwstrToFfi(pwzUrl), ParseAction, dwFlags, util.pwstrToFfi(pszResult), cchResult, util.toPointer(pcchResult), dwReserved));
+  return util.pointerFromFfi(liburlmon_dll.CoInternetParseUrl(util.pwstrToFfi(pwzUrl), ParseAction, dwFlags, util.pwstrToFfi(pszResult), cchResult, util.toPointer(pcchResult), dwReserved));
 }
 
 export function CoInternetParseIUri(
@@ -2060,7 +2060,7 @@ export function CoInternetParseIUri(
   pcchResult: Deno.PointerValue | Uint8Array | null /* ptr */,
   dwReserved: Deno.PointerValue /* usize */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(liburlmon.CoInternetParseIUri(util.toPointer(pIUri), ParseAction, dwFlags, util.pwstrToFfi(pwzResult), cchResult, util.toPointer(pcchResult), dwReserved));
+  return util.pointerFromFfi(liburlmon_dll.CoInternetParseIUri(util.toPointer(pIUri), ParseAction, dwFlags, util.pwstrToFfi(pwzResult), cchResult, util.toPointer(pcchResult), dwReserved));
 }
 
 export function CoInternetCombineUrl(
@@ -2072,7 +2072,7 @@ export function CoInternetCombineUrl(
   pcchResult: Deno.PointerValue | Uint8Array | null /* ptr */,
   dwReserved: number /* u32 */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(liburlmon.CoInternetCombineUrl(util.pwstrToFfi(pwzBaseUrl), util.pwstrToFfi(pwzRelativeUrl), dwCombineFlags, util.pwstrToFfi(pszResult), cchResult, util.toPointer(pcchResult), dwReserved));
+  return util.pointerFromFfi(liburlmon_dll.CoInternetCombineUrl(util.pwstrToFfi(pwzBaseUrl), util.pwstrToFfi(pwzRelativeUrl), dwCombineFlags, util.pwstrToFfi(pszResult), cchResult, util.toPointer(pcchResult), dwReserved));
 }
 
 export function CoInternetCombineUrlEx(
@@ -2082,7 +2082,7 @@ export function CoInternetCombineUrlEx(
   ppCombinedUri: Deno.PointerValue | Uint8Array | null /* ptr */,
   dwReserved: Deno.PointerValue /* usize */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(liburlmon.CoInternetCombineUrlEx(util.toPointer(pBaseUri), util.pwstrToFfi(pwzRelativeUrl), dwCombineFlags, util.toPointer(ppCombinedUri), dwReserved));
+  return util.pointerFromFfi(liburlmon_dll.CoInternetCombineUrlEx(util.toPointer(pBaseUri), util.pwstrToFfi(pwzRelativeUrl), dwCombineFlags, util.toPointer(ppCombinedUri), dwReserved));
 }
 
 export function CoInternetCombineIUri(
@@ -2092,7 +2092,7 @@ export function CoInternetCombineIUri(
   ppCombinedUri: Deno.PointerValue | Uint8Array | null /* ptr */,
   dwReserved: Deno.PointerValue /* usize */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(liburlmon.CoInternetCombineIUri(util.toPointer(pBaseUri), util.toPointer(pRelativeUri), dwCombineFlags, util.toPointer(ppCombinedUri), dwReserved));
+  return util.pointerFromFfi(liburlmon_dll.CoInternetCombineIUri(util.toPointer(pBaseUri), util.toPointer(pRelativeUri), dwCombineFlags, util.toPointer(ppCombinedUri), dwReserved));
 }
 
 export function CoInternetCompareUrl(
@@ -2100,7 +2100,7 @@ export function CoInternetCompareUrl(
   pwzUrl2: string | null /* Windows.Win32.Foundation.PWSTR */,
   dwFlags: number /* u32 */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(liburlmon.CoInternetCompareUrl(util.pwstrToFfi(pwzUrl1), util.pwstrToFfi(pwzUrl2), dwFlags));
+  return util.pointerFromFfi(liburlmon_dll.CoInternetCompareUrl(util.pwstrToFfi(pwzUrl1), util.pwstrToFfi(pwzUrl2), dwFlags));
 }
 
 export function CoInternetGetProtocolFlags(
@@ -2108,7 +2108,7 @@ export function CoInternetGetProtocolFlags(
   pdwFlags: Deno.PointerValue | Uint8Array | null /* ptr */,
   dwReserved: number /* u32 */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(liburlmon.CoInternetGetProtocolFlags(util.pwstrToFfi(pwzUrl), util.toPointer(pdwFlags), dwReserved));
+  return util.pointerFromFfi(liburlmon_dll.CoInternetGetProtocolFlags(util.pwstrToFfi(pwzUrl), util.toPointer(pdwFlags), dwReserved));
 }
 
 export function CoInternetQueryInfo(
@@ -2120,7 +2120,7 @@ export function CoInternetQueryInfo(
   pcbBuffer: Deno.PointerValue | Uint8Array | null /* ptr */,
   dwReserved: number /* u32 */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(liburlmon.CoInternetQueryInfo(util.pwstrToFfi(pwzUrl), QueryOptions, dwQueryFlags, util.toPointer(pvBuffer), cbBuffer, util.toPointer(pcbBuffer), dwReserved));
+  return util.pointerFromFfi(liburlmon_dll.CoInternetQueryInfo(util.pwstrToFfi(pwzUrl), QueryOptions, dwQueryFlags, util.toPointer(pvBuffer), cbBuffer, util.toPointer(pcbBuffer), dwReserved));
 }
 
 export function CoInternetGetSession(
@@ -2128,7 +2128,7 @@ export function CoInternetGetSession(
   ppIInternetSession: Deno.PointerValue | Uint8Array | null /* ptr */,
   dwReserved: number /* u32 */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(liburlmon.CoInternetGetSession(dwSessionMode, util.toPointer(ppIInternetSession), dwReserved));
+  return util.pointerFromFfi(liburlmon_dll.CoInternetGetSession(dwSessionMode, util.toPointer(ppIInternetSession), dwReserved));
 }
 
 export function CoInternetGetSecurityUrl(
@@ -2137,7 +2137,7 @@ export function CoInternetGetSecurityUrl(
   psuAction: PSUACTION /* Windows.Win32.System.Com.Urlmon.PSUACTION */,
   dwReserved: number /* u32 */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(liburlmon.CoInternetGetSecurityUrl(util.pwstrToFfi(pwszUrl), util.toPointer(ppwszSecUrl), psuAction, dwReserved));
+  return util.pointerFromFfi(liburlmon_dll.CoInternetGetSecurityUrl(util.pwstrToFfi(pwszUrl), util.toPointer(ppwszSecUrl), psuAction, dwReserved));
 }
 
 export function CoInternetGetSecurityUrlEx(
@@ -2146,7 +2146,7 @@ export function CoInternetGetSecurityUrlEx(
   psuAction: PSUACTION /* Windows.Win32.System.Com.Urlmon.PSUACTION */,
   dwReserved: Deno.PointerValue /* usize */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(liburlmon.CoInternetGetSecurityUrlEx(util.toPointer(pUri), util.toPointer(ppSecUri), psuAction, dwReserved));
+  return util.pointerFromFfi(liburlmon_dll.CoInternetGetSecurityUrlEx(util.toPointer(pUri), util.toPointer(ppSecUri), psuAction, dwReserved));
 }
 
 export function CoInternetSetFeatureEnabled(
@@ -2154,14 +2154,14 @@ export function CoInternetSetFeatureEnabled(
   dwFlags: number /* u32 */,
   fEnable: boolean /* Windows.Win32.Foundation.BOOL */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(liburlmon.CoInternetSetFeatureEnabled(FeatureEntry, dwFlags, util.boolToFfi(fEnable)));
+  return util.pointerFromFfi(liburlmon_dll.CoInternetSetFeatureEnabled(FeatureEntry, dwFlags, util.boolToFfi(fEnable)));
 }
 
 export function CoInternetIsFeatureEnabled(
   FeatureEntry: INTERNETFEATURELIST /* Windows.Win32.System.Com.Urlmon.INTERNETFEATURELIST */,
   dwFlags: number /* u32 */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(liburlmon.CoInternetIsFeatureEnabled(FeatureEntry, dwFlags));
+  return util.pointerFromFfi(liburlmon_dll.CoInternetIsFeatureEnabled(FeatureEntry, dwFlags));
 }
 
 export function CoInternetIsFeatureEnabledForUrl(
@@ -2170,7 +2170,7 @@ export function CoInternetIsFeatureEnabledForUrl(
   szURL: string | null /* Windows.Win32.Foundation.PWSTR */,
   pSecMgr: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Com.Urlmon.IInternetSecurityManager */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(liburlmon.CoInternetIsFeatureEnabledForUrl(FeatureEntry, dwFlags, util.pwstrToFfi(szURL), util.toPointer(pSecMgr)));
+  return util.pointerFromFfi(liburlmon_dll.CoInternetIsFeatureEnabledForUrl(FeatureEntry, dwFlags, util.pwstrToFfi(szURL), util.toPointer(pSecMgr)));
 }
 
 export function CoInternetIsFeatureEnabledForIUri(
@@ -2179,7 +2179,7 @@ export function CoInternetIsFeatureEnabledForIUri(
   pIUri: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Com.IUri */,
   pSecMgr: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Com.Urlmon.IInternetSecurityManagerEx2 */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(liburlmon.CoInternetIsFeatureEnabledForIUri(FeatureEntry, dwFlags, util.toPointer(pIUri), util.toPointer(pSecMgr)));
+  return util.pointerFromFfi(liburlmon_dll.CoInternetIsFeatureEnabledForIUri(FeatureEntry, dwFlags, util.toPointer(pIUri), util.toPointer(pSecMgr)));
 }
 
 export function CoInternetIsFeatureZoneElevationEnabled(
@@ -2188,31 +2188,31 @@ export function CoInternetIsFeatureZoneElevationEnabled(
   pSecMgr: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Com.Urlmon.IInternetSecurityManager */,
   dwFlags: number /* u32 */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(liburlmon.CoInternetIsFeatureZoneElevationEnabled(util.pwstrToFfi(szFromURL), util.pwstrToFfi(szToURL), util.toPointer(pSecMgr), dwFlags));
+  return util.pointerFromFfi(liburlmon_dll.CoInternetIsFeatureZoneElevationEnabled(util.pwstrToFfi(szFromURL), util.pwstrToFfi(szToURL), util.toPointer(pSecMgr), dwFlags));
 }
 
 export function CopyStgMedium(
   pcstgmedSrc: Deno.PointerValue | Uint8Array | null /* ptr */,
   pstgmedDest: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(liburlmon.CopyStgMedium(util.toPointer(pcstgmedSrc), util.toPointer(pstgmedDest)));
+  return util.pointerFromFfi(liburlmon_dll.CopyStgMedium(util.toPointer(pcstgmedSrc), util.toPointer(pstgmedDest)));
 }
 
 export function CopyBindInfo(
   pcbiSrc: Deno.PointerValue | Uint8Array | null /* ptr */,
   pbiDest: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(liburlmon.CopyBindInfo(util.toPointer(pcbiSrc), util.toPointer(pbiDest)));
+  return util.pointerFromFfi(liburlmon_dll.CopyBindInfo(util.toPointer(pcbiSrc), util.toPointer(pbiDest)));
 }
 
 export function ReleaseBindInfo(
   pbindinfo: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): void /* void */ {
-  return liburlmon.ReleaseBindInfo(util.toPointer(pbindinfo));
+  return liburlmon_dll.ReleaseBindInfo(util.toPointer(pbindinfo));
 }
 
 export function IEGetUserPrivateNamespaceName(): string | null /* Windows.Win32.Foundation.PWSTR */ {
-  return util.pwstrFromFfi(liburlmon.IEGetUserPrivateNamespaceName());
+  return util.pwstrFromFfi(liburlmon_dll.IEGetUserPrivateNamespaceName());
 }
 
 export function CoInternetCreateSecurityManager(
@@ -2220,7 +2220,7 @@ export function CoInternetCreateSecurityManager(
   ppSM: Deno.PointerValue | Uint8Array | null /* ptr */,
   dwReserved: number /* u32 */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(liburlmon.CoInternetCreateSecurityManager(util.toPointer(pSP), util.toPointer(ppSM), dwReserved));
+  return util.pointerFromFfi(liburlmon_dll.CoInternetCreateSecurityManager(util.toPointer(pSP), util.toPointer(ppSM), dwReserved));
 }
 
 export function CoInternetCreateZoneManager(
@@ -2228,14 +2228,14 @@ export function CoInternetCreateZoneManager(
   ppZM: Deno.PointerValue | Uint8Array | null /* ptr */,
   dwReserved: number /* u32 */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(liburlmon.CoInternetCreateZoneManager(util.toPointer(pSP), util.toPointer(ppZM), dwReserved));
+  return util.pointerFromFfi(liburlmon_dll.CoInternetCreateZoneManager(util.toPointer(pSP), util.toPointer(ppZM), dwReserved));
 }
 
 export function GetSoftwareUpdateInfo(
   szDistUnit: string | null /* Windows.Win32.Foundation.PWSTR */,
   psdi: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(liburlmon.GetSoftwareUpdateInfo(util.pwstrToFfi(szDistUnit), util.toPointer(psdi)));
+  return util.pointerFromFfi(liburlmon_dll.GetSoftwareUpdateInfo(util.pwstrToFfi(szDistUnit), util.toPointer(psdi)));
 }
 
 export function SetSoftwareUpdateAdvertisementState(
@@ -2244,24 +2244,24 @@ export function SetSoftwareUpdateAdvertisementState(
   dwAdvertisedVersionMS: number /* u32 */,
   dwAdvertisedVersionLS: number /* u32 */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(liburlmon.SetSoftwareUpdateAdvertisementState(util.pwstrToFfi(szDistUnit), dwAdState, dwAdvertisedVersionMS, dwAdvertisedVersionLS));
+  return util.pointerFromFfi(liburlmon_dll.SetSoftwareUpdateAdvertisementState(util.pwstrToFfi(szDistUnit), dwAdState, dwAdvertisedVersionMS, dwAdvertisedVersionLS));
 }
 
 export function IsLoggingEnabledA(
   pszUrl: string | null /* Windows.Win32.Foundation.PSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(liburlmon.IsLoggingEnabledA(util.pstrToFfi(pszUrl)));
+  return util.boolFromFfi(liburlmon_dll.IsLoggingEnabledA(util.pstrToFfi(pszUrl)));
 }
 
 export function IsLoggingEnabledW(
   pwszUrl: string | null /* Windows.Win32.Foundation.PWSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(liburlmon.IsLoggingEnabledW(util.pwstrToFfi(pwszUrl)));
+  return util.boolFromFfi(liburlmon_dll.IsLoggingEnabledW(util.pwstrToFfi(pwszUrl)));
 }
 
 export function WriteHitLogging(
   lpLogginginfo: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(liburlmon.WriteHitLogging(util.toPointer(lpLogginginfo)));
+  return util.boolFromFfi(liburlmon_dll.WriteHitLogging(util.toPointer(lpLogginginfo)));
 }
 

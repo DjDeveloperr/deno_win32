@@ -2,6 +2,9 @@
 
 import * as util from "../../util.ts";
 
+// Enums
+export type BI_COMPRESSION = number;
+
 // Constants
 export const WM_CAP_START = 1024;
 export const MODM_USER = 16384;
@@ -2409,6 +2412,7 @@ export const SEARCH_FORWARD = 1;
 export const SEARCH_KEY = 16;
 export const SEARCH_ANY = 32;
 export const AVIERR_OK = 0;
+export const MCIWND_WINDOW_CLASS = "MCIWndClass";
 export const MCIWNDOPENF_NEW = 1;
 export const MCIWNDF_NOAUTOSIZEWINDOW = 1;
 export const MCIWNDF_NOPLAYBAR = 2;
@@ -2830,6 +2834,8 @@ export const DRV_INSTALL = 9;
 export const DRV_REMOVE = 10;
 export const DRV_RESERVED = 2048;
 export const DRV_USER = 16384;
+export const DRIVERS_SECTION = "DRIVERS32";
+export const MCI_SECTION = "MCI32";
 export const DCB_NOSWITCH = 8;
 export const DCB_TYPEMASK = 7;
 export const DCB_NULL = 0;
@@ -2958,6 +2964,7 @@ export const TDD_GETSYSTEMTIME = 2056;
 export const TDD_GETDEVCAPS = 2060;
 export const TDD_BEGINMINPERIOD = 2064;
 export const TDD_ENDMINPERIOD = 2068;
+export const JOY_CONFIGCHANGED_MSGSTRING = "MSJSTICK_VJOYD_MSGSTR";
 export const JDD_GETNUMDEVS = 2049;
 export const JDD_GETDEVCAPS = 2050;
 export const JDD_GETPOS = 2305;
@@ -4319,7 +4326,7 @@ export const NS_E_METADATA_NOT_AVAILABLE = 951063284777038554n;
 export const NS_E_METADATA_CACHE_DATA_NOT_AVAILABLE = 951064384288666331n;
 export const NS_E_METADATA_INVALID_DOCUMENT_TYPE = 951065483800294108n;
 export const NS_E_METADATA_IDENTIFIER_NOT_AVAILABLE = 951066583311921885n;
-export const NS_E_METADATA_CANNOT_RETRIEVE_FROM_OFFLINE_CACHE = 357361680986846;
+export const NS_E_METADATA_CANNOT_RETRIEVE_FROM_OFFLINE_CACHE = 6989679190036263646n;
 export const VFW_HIDE_SETTINGS_PAGE = 1;
 export const VFW_HIDE_VIDEOSRC_PAGE = 2;
 export const VFW_HIDE_CAMERACONTROL_PAGE = 4;
@@ -4327,6 +4334,8 @@ export const VFW_OEM_ADD_PAGE = 2147483648;
 export const VFW_USE_DEVICE_HANDLE = 1;
 export const VFW_USE_STREAM_HANDLE = 2;
 export const VFW_QUERY_DEV_CHANGED = 256;
+export const TARGET_DEVICE_FRIENDLY_NAME = "TargetDeviceFriendlyName";
+export const TARGET_DEVICE_OPEN_EXCLUSIVELY = "TargetDeviceOpenExclusively";
 export const MCIERR_INVALID_DEVICE_ID = 257;
 export const MCIERR_UNRECOGNIZED_KEYWORD = 259;
 export const MCIERR_UNRECOGNIZED_COMMAND = 261;
@@ -4643,6 +4652,12 @@ export const MCI_OVLY_WHERE_SOURCE = 131072;
 export const MCI_OVLY_WHERE_DESTINATION = 262144;
 export const MCI_OVLY_WHERE_FRAME = 524288;
 export const MCI_OVLY_WHERE_VIDEO = 1048576;
+export const BI_RGB = 0;
+export const BI_RLE8 = 1;
+export const BI_RLE4 = 2;
+export const BI_BITFIELDS = 3;
+export const BI_JPEG = 4;
+export const BI_PNG = 5;
 
 // Structs
 
@@ -5667,8 +5682,8 @@ export interface BITMAPINFOHEADER {
   biPlanes: number;
   /** u16 */
   biBitCount: number;
-  /** u32 */
-  biCompression: number;
+  /** Windows.Win32.Graphics.Gdi.BI_COMPRESSION */
+  biCompression: BI_COMPRESSION;
   /** u32 */
   biSizeImage: number;
   /** i32 */
@@ -5696,8 +5711,8 @@ export function allocBITMAPINFOHEADER(data?: Partial<BITMAPINFOHEADER>): Uint8Ar
   if (data?.biPlanes !== undefined) view.setUint16(12, Number(data.biPlanes), true);
   // 0x0e: u16
   if (data?.biBitCount !== undefined) view.setUint16(14, Number(data.biBitCount), true);
-  // 0x10: u32
-  if (data?.biCompression !== undefined) view.setUint32(16, Number(data.biCompression), true);
+  // 0x10: i32
+  if (data?.biCompression !== undefined) view.setInt32(16, Number(data.biCompression), true);
   // 0x14: u32
   if (data?.biSizeImage !== undefined) view.setUint32(20, Number(data.biSizeImage), true);
   // 0x18: i32
@@ -10974,7 +10989,7 @@ export type HRESULT = number;
 // Native Libraries
 
 try {
-  var libWINMM = Deno.dlopen("WINMM", {
+  var libWINMM_dll = Deno.dlopen("WINMM.dll", {
     mciSendCommandA: {
       parameters: ["u32", "u32", "usize", "usize"],
       result: "u32",
@@ -11227,7 +11242,7 @@ try {
 } catch(e) { /* ignore */ }
 
 try {
-  var libapi_ms_win_mm_misc_l1_1_1 = Deno.dlopen("api-ms-win-mm-misc-l1-1-1", {
+  var libapi_ms_win_mm_misc_l1_1_1_dll = Deno.dlopen("api-ms-win-mm-misc-l1-1-1.dll", {
     sndOpenSound: {
       parameters: ["buffer", "buffer", "i32", "pointer"],
       result: "i32",
@@ -11236,7 +11251,7 @@ try {
 } catch(e) { /* ignore */ }
 
 try {
-  var libMSVFW32 = Deno.dlopen("MSVFW32", {
+  var libMSVFW32_dll = Deno.dlopen("MSVFW32.dll", {
     VideoForWindowsVersion: {
       parameters: [],
       result: "u32",
@@ -11413,7 +11428,7 @@ try {
 } catch(e) { /* ignore */ }
 
 try {
-  var libAVIFIL32 = Deno.dlopen("AVIFIL32", {
+  var libAVIFIL32_dll = Deno.dlopen("AVIFIL32.dll", {
     AVIFileInit: {
       parameters: [],
       result: "void",
@@ -11658,7 +11673,7 @@ try {
 } catch(e) { /* ignore */ }
 
 try {
-  var libAVICAP32 = Deno.dlopen("AVICAP32", {
+  var libAVICAP32_dll = Deno.dlopen("AVICAP32.dll", {
     capCreateCaptureWindowA: {
       parameters: ["buffer", "u32", "i32", "i32", "i32", "i32", "pointer", "i32"],
       result: "pointer",
@@ -11686,7 +11701,7 @@ export function mciSendCommandA(
   dwParam1: Deno.PointerValue /* usize */,
   dwParam2: Deno.PointerValue /* usize */,
 ): number /* u32 */ {
-  return libWINMM.mciSendCommandA(mciId, uMsg, dwParam1, dwParam2);
+  return libWINMM_dll.mciSendCommandA(mciId, uMsg, dwParam1, dwParam2);
 }
 
 export function mciSendCommandW(
@@ -11695,7 +11710,7 @@ export function mciSendCommandW(
   dwParam1: Deno.PointerValue /* usize */,
   dwParam2: Deno.PointerValue /* usize */,
 ): number /* u32 */ {
-  return libWINMM.mciSendCommandW(mciId, uMsg, dwParam1, dwParam2);
+  return libWINMM_dll.mciSendCommandW(mciId, uMsg, dwParam1, dwParam2);
 }
 
 export function mciSendStringA(
@@ -11704,7 +11719,7 @@ export function mciSendStringA(
   uReturnLength: number /* u32 */,
   hwndCallback: Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */,
 ): number /* u32 */ {
-  return libWINMM.mciSendStringA(util.pstrToFfi(lpstrCommand), util.pstrToFfi(lpstrReturnString), uReturnLength, util.hwndToFfi(hwndCallback));
+  return libWINMM_dll.mciSendStringA(util.pstrToFfi(lpstrCommand), util.pstrToFfi(lpstrReturnString), uReturnLength, util.hwndToFfi(hwndCallback));
 }
 
 export function mciSendStringW(
@@ -11713,33 +11728,33 @@ export function mciSendStringW(
   uReturnLength: number /* u32 */,
   hwndCallback: Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */,
 ): number /* u32 */ {
-  return libWINMM.mciSendStringW(util.pwstrToFfi(lpstrCommand), util.pwstrToFfi(lpstrReturnString), uReturnLength, util.hwndToFfi(hwndCallback));
+  return libWINMM_dll.mciSendStringW(util.pwstrToFfi(lpstrCommand), util.pwstrToFfi(lpstrReturnString), uReturnLength, util.hwndToFfi(hwndCallback));
 }
 
 export function mciGetDeviceIDA(
   pszDevice: string | null /* Windows.Win32.Foundation.PSTR */,
 ): number /* u32 */ {
-  return libWINMM.mciGetDeviceIDA(util.pstrToFfi(pszDevice));
+  return libWINMM_dll.mciGetDeviceIDA(util.pstrToFfi(pszDevice));
 }
 
 export function mciGetDeviceIDW(
   pszDevice: string | null /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
-  return libWINMM.mciGetDeviceIDW(util.pwstrToFfi(pszDevice));
+  return libWINMM_dll.mciGetDeviceIDW(util.pwstrToFfi(pszDevice));
 }
 
 export function mciGetDeviceIDFromElementIDA(
   dwElementID: number /* u32 */,
   lpstrType: string | null /* Windows.Win32.Foundation.PSTR */,
 ): number /* u32 */ {
-  return libWINMM.mciGetDeviceIDFromElementIDA(dwElementID, util.pstrToFfi(lpstrType));
+  return libWINMM_dll.mciGetDeviceIDFromElementIDA(dwElementID, util.pstrToFfi(lpstrType));
 }
 
 export function mciGetDeviceIDFromElementIDW(
   dwElementID: number /* u32 */,
   lpstrType: string | null /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
-  return libWINMM.mciGetDeviceIDFromElementIDW(dwElementID, util.pwstrToFfi(lpstrType));
+  return libWINMM_dll.mciGetDeviceIDFromElementIDW(dwElementID, util.pwstrToFfi(lpstrType));
 }
 
 export function mciGetErrorStringA(
@@ -11747,7 +11762,7 @@ export function mciGetErrorStringA(
   pszText: string | null /* Windows.Win32.Foundation.PSTR */,
   cchText: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWINMM.mciGetErrorStringA(mcierr, util.pstrToFfi(pszText), cchText));
+  return util.boolFromFfi(libWINMM_dll.mciGetErrorStringA(mcierr, util.pstrToFfi(pszText), cchText));
 }
 
 export function mciGetErrorStringW(
@@ -11755,7 +11770,7 @@ export function mciGetErrorStringW(
   pszText: string | null /* Windows.Win32.Foundation.PWSTR */,
   cchText: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWINMM.mciGetErrorStringW(mcierr, util.pwstrToFfi(pszText), cchText));
+  return util.boolFromFfi(libWINMM_dll.mciGetErrorStringW(mcierr, util.pwstrToFfi(pszText), cchText));
 }
 
 export function mciSetYieldProc(
@@ -11763,26 +11778,26 @@ export function mciSetYieldProc(
   fpYieldProc: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Media.Multimedia.YIELDPROC */,
   dwYieldData: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWINMM.mciSetYieldProc(mciId, util.toPointer(fpYieldProc), dwYieldData));
+  return util.boolFromFfi(libWINMM_dll.mciSetYieldProc(mciId, util.toPointer(fpYieldProc), dwYieldData));
 }
 
 export function mciGetCreatorTask(
   mciId: number /* u32 */,
 ): Deno.PointerValue | null /* Windows.Win32.Media.HTASK */ {
-  return util.pointerFromFfi(libWINMM.mciGetCreatorTask(mciId));
+  return util.pointerFromFfi(libWINMM_dll.mciGetCreatorTask(mciId));
 }
 
 export function mciGetYieldProc(
   mciId: number /* u32 */,
   pdwYieldData: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Media.Multimedia.YIELDPROC */ {
-  return util.pointerFromFfi(libWINMM.mciGetYieldProc(mciId, util.toPointer(pdwYieldData)));
+  return util.pointerFromFfi(libWINMM_dll.mciGetYieldProc(mciId, util.toPointer(pdwYieldData)));
 }
 
 export function mciGetDriverData(
   wDeviceID: number /* u32 */,
 ): Deno.PointerValue /* usize */ {
-  return libWINMM.mciGetDriverData(wDeviceID);
+  return libWINMM_dll.mciGetDriverData(wDeviceID);
 }
 
 export function mciLoadCommandResource(
@@ -11790,20 +11805,20 @@ export function mciLoadCommandResource(
   lpResName: string | null /* Windows.Win32.Foundation.PWSTR */,
   wType: number /* u32 */,
 ): number /* u32 */ {
-  return libWINMM.mciLoadCommandResource(util.toPointer(hInstance), util.pwstrToFfi(lpResName), wType);
+  return libWINMM_dll.mciLoadCommandResource(util.toPointer(hInstance), util.pwstrToFfi(lpResName), wType);
 }
 
 export function mciSetDriverData(
   wDeviceID: number /* u32 */,
   dwData: Deno.PointerValue /* usize */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWINMM.mciSetDriverData(wDeviceID, dwData));
+  return util.boolFromFfi(libWINMM_dll.mciSetDriverData(wDeviceID, dwData));
 }
 
 export function mciDriverYield(
   wDeviceID: number /* u32 */,
 ): number /* u32 */ {
-  return libWINMM.mciDriverYield(wDeviceID);
+  return libWINMM_dll.mciDriverYield(wDeviceID);
 }
 
 export function mciDriverNotify(
@@ -11811,13 +11826,13 @@ export function mciDriverNotify(
   wDeviceID: number /* u32 */,
   uStatus: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWINMM.mciDriverNotify(util.toPointer(hwndCallback), wDeviceID, uStatus));
+  return util.boolFromFfi(libWINMM_dll.mciDriverNotify(util.toPointer(hwndCallback), wDeviceID, uStatus));
 }
 
 export function mciFreeCommandResource(
   wTable: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWINMM.mciFreeCommandResource(wTable));
+  return util.boolFromFfi(libWINMM_dll.mciFreeCommandResource(wTable));
 }
 
 export function CloseDriver(
@@ -11825,7 +11840,7 @@ export function CloseDriver(
   lParam1: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.LPARAM */,
   lParam2: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.LPARAM */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.LRESULT */ {
-  return util.pointerFromFfi(libWINMM.CloseDriver(util.toPointer(hDriver), util.toPointer(lParam1), util.toPointer(lParam2)));
+  return util.pointerFromFfi(libWINMM_dll.CloseDriver(util.toPointer(hDriver), util.toPointer(lParam1), util.toPointer(lParam2)));
 }
 
 export function OpenDriver(
@@ -11833,7 +11848,7 @@ export function OpenDriver(
   szSectionName: string | null /* Windows.Win32.Foundation.PWSTR */,
   lParam2: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.LPARAM */,
 ): Deno.PointerValue | null /* Windows.Win32.Media.Multimedia.HDRVR */ {
-  return util.pointerFromFfi(libWINMM.OpenDriver(util.pwstrToFfi(szDriverName), util.pwstrToFfi(szSectionName), util.toPointer(lParam2)));
+  return util.pointerFromFfi(libWINMM_dll.OpenDriver(util.pwstrToFfi(szDriverName), util.pwstrToFfi(szSectionName), util.toPointer(lParam2)));
 }
 
 export function SendDriverMessage(
@@ -11842,19 +11857,19 @@ export function SendDriverMessage(
   lParam1: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.LPARAM */,
   lParam2: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.LPARAM */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.LRESULT */ {
-  return util.pointerFromFfi(libWINMM.SendDriverMessage(util.toPointer(hDriver), message, util.toPointer(lParam1), util.toPointer(lParam2)));
+  return util.pointerFromFfi(libWINMM_dll.SendDriverMessage(util.toPointer(hDriver), message, util.toPointer(lParam1), util.toPointer(lParam2)));
 }
 
 export function DrvGetModuleHandle(
   hDriver: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Media.Multimedia.HDRVR */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HINSTANCE */ {
-  return util.pointerFromFfi(libWINMM.DrvGetModuleHandle(util.toPointer(hDriver)));
+  return util.pointerFromFfi(libWINMM_dll.DrvGetModuleHandle(util.toPointer(hDriver)));
 }
 
 export function GetDriverModuleHandle(
   hDriver: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Media.Multimedia.HDRVR */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HINSTANCE */ {
-  return util.pointerFromFfi(libWINMM.GetDriverModuleHandle(util.toPointer(hDriver)));
+  return util.pointerFromFfi(libWINMM_dll.GetDriverModuleHandle(util.toPointer(hDriver)));
 }
 
 export function DefDriverProc(
@@ -11864,7 +11879,7 @@ export function DefDriverProc(
   lParam1: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.LPARAM */,
   lParam2: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.LPARAM */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.LRESULT */ {
-  return util.pointerFromFfi(libWINMM.DefDriverProc(dwDriverIdentifier, util.toPointer(hdrvr), uMsg, util.toPointer(lParam1), util.toPointer(lParam2)));
+  return util.pointerFromFfi(libWINMM_dll.DefDriverProc(dwDriverIdentifier, util.toPointer(hdrvr), uMsg, util.toPointer(lParam1), util.toPointer(lParam2)));
 }
 
 export function DriverCallback(
@@ -11876,7 +11891,7 @@ export function DriverCallback(
   dwParam1: Deno.PointerValue /* usize */,
   dwParam2: Deno.PointerValue /* usize */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWINMM.DriverCallback(dwCallback, dwFlags, util.toPointer(hDevice), dwMsg, dwUser, dwParam1, dwParam2));
+  return util.boolFromFfi(libWINMM_dll.DriverCallback(dwCallback, dwFlags, util.toPointer(hDevice), dwMsg, dwUser, dwParam1, dwParam2));
 }
 
 export function sndOpenSound(
@@ -11885,7 +11900,7 @@ export function sndOpenSound(
   Flags: number /* i32 */,
   FileHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
-  return libapi_ms_win_mm_misc_l1_1_1.sndOpenSound(util.pwstrToFfi(EventName), util.pwstrToFfi(AppName), Flags, util.toPointer(FileHandle));
+  return libapi_ms_win_mm_misc_l1_1_1_dll.sndOpenSound(util.pwstrToFfi(EventName), util.pwstrToFfi(AppName), Flags, util.toPointer(FileHandle));
 }
 
 export function mmDrvInstall(
@@ -11894,21 +11909,21 @@ export function mmDrvInstall(
   drvMessage: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Media.Multimedia.DRIVERMSGPROC */,
   wFlags: number /* u32 */,
 ): number /* u32 */ {
-  return libWINMM.mmDrvInstall(util.toPointer(hDriver), util.pwstrToFfi(wszDrvEntry), util.toPointer(drvMessage), wFlags);
+  return libWINMM_dll.mmDrvInstall(util.toPointer(hDriver), util.pwstrToFfi(wszDrvEntry), util.toPointer(drvMessage), wFlags);
 }
 
 export function mmioStringToFOURCCA(
   sz: string | null /* Windows.Win32.Foundation.PSTR */,
   uFlags: number /* u32 */,
 ): number /* u32 */ {
-  return libWINMM.mmioStringToFOURCCA(util.pstrToFfi(sz), uFlags);
+  return libWINMM_dll.mmioStringToFOURCCA(util.pstrToFfi(sz), uFlags);
 }
 
 export function mmioStringToFOURCCW(
   sz: string | null /* Windows.Win32.Foundation.PWSTR */,
   uFlags: number /* u32 */,
 ): number /* u32 */ {
-  return libWINMM.mmioStringToFOURCCW(util.pwstrToFfi(sz), uFlags);
+  return libWINMM_dll.mmioStringToFOURCCW(util.pwstrToFfi(sz), uFlags);
 }
 
 export function mmioInstallIOProcA(
@@ -11916,7 +11931,7 @@ export function mmioInstallIOProcA(
   pIOProc: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Media.Multimedia.LPMMIOPROC */,
   dwFlags: number /* u32 */,
 ): Deno.PointerValue | null /* Windows.Win32.Media.Multimedia.LPMMIOPROC */ {
-  return util.pointerFromFfi(libWINMM.mmioInstallIOProcA(fccIOProc, util.toPointer(pIOProc), dwFlags));
+  return util.pointerFromFfi(libWINMM_dll.mmioInstallIOProcA(fccIOProc, util.toPointer(pIOProc), dwFlags));
 }
 
 export function mmioInstallIOProcW(
@@ -11924,7 +11939,7 @@ export function mmioInstallIOProcW(
   pIOProc: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Media.Multimedia.LPMMIOPROC */,
   dwFlags: number /* u32 */,
 ): Deno.PointerValue | null /* Windows.Win32.Media.Multimedia.LPMMIOPROC */ {
-  return util.pointerFromFfi(libWINMM.mmioInstallIOProcW(fccIOProc, util.toPointer(pIOProc), dwFlags));
+  return util.pointerFromFfi(libWINMM_dll.mmioInstallIOProcW(fccIOProc, util.toPointer(pIOProc), dwFlags));
 }
 
 export function mmioOpenA(
@@ -11932,7 +11947,7 @@ export function mmioOpenA(
   pmmioinfo: Deno.PointerValue | Uint8Array | null /* ptr */,
   fdwOpen: number /* u32 */,
 ): Deno.PointerValue | null /* Windows.Win32.Media.Multimedia.HMMIO */ {
-  return util.pointerFromFfi(libWINMM.mmioOpenA(util.pstrToFfi(pszFileName), util.toPointer(pmmioinfo), fdwOpen));
+  return util.pointerFromFfi(libWINMM_dll.mmioOpenA(util.pstrToFfi(pszFileName), util.toPointer(pmmioinfo), fdwOpen));
 }
 
 export function mmioOpenW(
@@ -11940,7 +11955,7 @@ export function mmioOpenW(
   pmmioinfo: Deno.PointerValue | Uint8Array | null /* ptr */,
   fdwOpen: number /* u32 */,
 ): Deno.PointerValue | null /* Windows.Win32.Media.Multimedia.HMMIO */ {
-  return util.pointerFromFfi(libWINMM.mmioOpenW(util.pwstrToFfi(pszFileName), util.toPointer(pmmioinfo), fdwOpen));
+  return util.pointerFromFfi(libWINMM_dll.mmioOpenW(util.pwstrToFfi(pszFileName), util.toPointer(pmmioinfo), fdwOpen));
 }
 
 export function mmioRenameA(
@@ -11949,7 +11964,7 @@ export function mmioRenameA(
   pmmioinfo: Deno.PointerValue | Uint8Array | null /* ptr */,
   fdwRename: number /* u32 */,
 ): number /* u32 */ {
-  return libWINMM.mmioRenameA(util.pstrToFfi(pszFileName), util.pstrToFfi(pszNewFileName), util.toPointer(pmmioinfo), fdwRename);
+  return libWINMM_dll.mmioRenameA(util.pstrToFfi(pszFileName), util.pstrToFfi(pszNewFileName), util.toPointer(pmmioinfo), fdwRename);
 }
 
 export function mmioRenameW(
@@ -11958,14 +11973,14 @@ export function mmioRenameW(
   pmmioinfo: Deno.PointerValue | Uint8Array | null /* ptr */,
   fdwRename: number /* u32 */,
 ): number /* u32 */ {
-  return libWINMM.mmioRenameW(util.pwstrToFfi(pszFileName), util.pwstrToFfi(pszNewFileName), util.toPointer(pmmioinfo), fdwRename);
+  return libWINMM_dll.mmioRenameW(util.pwstrToFfi(pszFileName), util.pwstrToFfi(pszNewFileName), util.toPointer(pmmioinfo), fdwRename);
 }
 
 export function mmioClose(
   hmmio: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Media.Multimedia.HMMIO */,
   fuClose: number /* u32 */,
 ): number /* u32 */ {
-  return libWINMM.mmioClose(util.toPointer(hmmio), fuClose);
+  return libWINMM_dll.mmioClose(util.toPointer(hmmio), fuClose);
 }
 
 export function mmioRead(
@@ -11973,7 +11988,7 @@ export function mmioRead(
   pch: Deno.PointerValue | Uint8Array | null /* ptr */,
   cch: number /* i32 */,
 ): number /* i32 */ {
-  return libWINMM.mmioRead(util.toPointer(hmmio), util.toPointer(pch), cch);
+  return libWINMM_dll.mmioRead(util.toPointer(hmmio), util.toPointer(pch), cch);
 }
 
 export function mmioWrite(
@@ -11981,7 +11996,7 @@ export function mmioWrite(
   pch: string | null /* Windows.Win32.Foundation.PSTR */,
   cch: number /* i32 */,
 ): number /* i32 */ {
-  return libWINMM.mmioWrite(util.toPointer(hmmio), util.pstrToFfi(pch), cch);
+  return libWINMM_dll.mmioWrite(util.toPointer(hmmio), util.pstrToFfi(pch), cch);
 }
 
 export function mmioSeek(
@@ -11989,7 +12004,7 @@ export function mmioSeek(
   lOffset: number /* i32 */,
   iOrigin: number /* i32 */,
 ): number /* i32 */ {
-  return libWINMM.mmioSeek(util.toPointer(hmmio), lOffset, iOrigin);
+  return libWINMM_dll.mmioSeek(util.toPointer(hmmio), lOffset, iOrigin);
 }
 
 export function mmioGetInfo(
@@ -11997,7 +12012,7 @@ export function mmioGetInfo(
   pmmioinfo: Deno.PointerValue | Uint8Array | null /* ptr */,
   fuInfo: number /* u32 */,
 ): number /* u32 */ {
-  return libWINMM.mmioGetInfo(util.toPointer(hmmio), util.toPointer(pmmioinfo), fuInfo);
+  return libWINMM_dll.mmioGetInfo(util.toPointer(hmmio), util.toPointer(pmmioinfo), fuInfo);
 }
 
 export function mmioSetInfo(
@@ -12005,7 +12020,7 @@ export function mmioSetInfo(
   pmmioinfo: Deno.PointerValue | Uint8Array | null /* ptr */,
   fuInfo: number /* u32 */,
 ): number /* u32 */ {
-  return libWINMM.mmioSetInfo(util.toPointer(hmmio), util.toPointer(pmmioinfo), fuInfo);
+  return libWINMM_dll.mmioSetInfo(util.toPointer(hmmio), util.toPointer(pmmioinfo), fuInfo);
 }
 
 export function mmioSetBuffer(
@@ -12014,14 +12029,14 @@ export function mmioSetBuffer(
   cchBuffer: number /* i32 */,
   fuBuffer: number /* u32 */,
 ): number /* u32 */ {
-  return libWINMM.mmioSetBuffer(util.toPointer(hmmio), util.pstrToFfi(pchBuffer), cchBuffer, fuBuffer);
+  return libWINMM_dll.mmioSetBuffer(util.toPointer(hmmio), util.pstrToFfi(pchBuffer), cchBuffer, fuBuffer);
 }
 
 export function mmioFlush(
   hmmio: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Media.Multimedia.HMMIO */,
   fuFlush: number /* u32 */,
 ): number /* u32 */ {
-  return libWINMM.mmioFlush(util.toPointer(hmmio), fuFlush);
+  return libWINMM_dll.mmioFlush(util.toPointer(hmmio), fuFlush);
 }
 
 export function mmioAdvance(
@@ -12029,7 +12044,7 @@ export function mmioAdvance(
   pmmioinfo: Deno.PointerValue | Uint8Array | null /* ptr */,
   fuAdvance: number /* u32 */,
 ): number /* u32 */ {
-  return libWINMM.mmioAdvance(util.toPointer(hmmio), util.toPointer(pmmioinfo), fuAdvance);
+  return libWINMM_dll.mmioAdvance(util.toPointer(hmmio), util.toPointer(pmmioinfo), fuAdvance);
 }
 
 export function mmioSendMessage(
@@ -12038,7 +12053,7 @@ export function mmioSendMessage(
   lParam1: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.LPARAM */,
   lParam2: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.LPARAM */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.LRESULT */ {
-  return util.pointerFromFfi(libWINMM.mmioSendMessage(util.toPointer(hmmio), uMsg, util.toPointer(lParam1), util.toPointer(lParam2)));
+  return util.pointerFromFfi(libWINMM_dll.mmioSendMessage(util.toPointer(hmmio), uMsg, util.toPointer(lParam1), util.toPointer(lParam2)));
 }
 
 export function mmioDescend(
@@ -12047,7 +12062,7 @@ export function mmioDescend(
   pmmckiParent: Deno.PointerValue | Uint8Array | null /* ptr */,
   fuDescend: number /* u32 */,
 ): number /* u32 */ {
-  return libWINMM.mmioDescend(util.toPointer(hmmio), util.toPointer(pmmcki), util.toPointer(pmmckiParent), fuDescend);
+  return libWINMM_dll.mmioDescend(util.toPointer(hmmio), util.toPointer(pmmcki), util.toPointer(pmmckiParent), fuDescend);
 }
 
 export function mmioAscend(
@@ -12055,7 +12070,7 @@ export function mmioAscend(
   pmmcki: Deno.PointerValue | Uint8Array | null /* ptr */,
   fuAscend: number /* u32 */,
 ): number /* u32 */ {
-  return libWINMM.mmioAscend(util.toPointer(hmmio), util.toPointer(pmmcki), fuAscend);
+  return libWINMM_dll.mmioAscend(util.toPointer(hmmio), util.toPointer(pmmcki), fuAscend);
 }
 
 export function mmioCreateChunk(
@@ -12063,18 +12078,18 @@ export function mmioCreateChunk(
   pmmcki: Deno.PointerValue | Uint8Array | null /* ptr */,
   fuCreate: number /* u32 */,
 ): number /* u32 */ {
-  return libWINMM.mmioCreateChunk(util.toPointer(hmmio), util.toPointer(pmmcki), fuCreate);
+  return libWINMM_dll.mmioCreateChunk(util.toPointer(hmmio), util.toPointer(pmmcki), fuCreate);
 }
 
 export function joyGetPosEx(
   uJoyID: number /* u32 */,
   pji: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libWINMM.joyGetPosEx(uJoyID, util.toPointer(pji));
+  return libWINMM_dll.joyGetPosEx(uJoyID, util.toPointer(pji));
 }
 
 export function joyGetNumDevs(): number /* u32 */ {
-  return libWINMM.joyGetNumDevs();
+  return libWINMM_dll.joyGetNumDevs();
 }
 
 export function joyGetDevCapsA(
@@ -12082,7 +12097,7 @@ export function joyGetDevCapsA(
   pjc: Deno.PointerValue | Uint8Array | null /* ptr */,
   cbjc: number /* u32 */,
 ): number /* u32 */ {
-  return libWINMM.joyGetDevCapsA(uJoyID, util.toPointer(pjc), cbjc);
+  return libWINMM_dll.joyGetDevCapsA(uJoyID, util.toPointer(pjc), cbjc);
 }
 
 export function joyGetDevCapsW(
@@ -12090,27 +12105,27 @@ export function joyGetDevCapsW(
   pjc: Deno.PointerValue | Uint8Array | null /* ptr */,
   cbjc: number /* u32 */,
 ): number /* u32 */ {
-  return libWINMM.joyGetDevCapsW(uJoyID, util.toPointer(pjc), cbjc);
+  return libWINMM_dll.joyGetDevCapsW(uJoyID, util.toPointer(pjc), cbjc);
 }
 
 export function joyGetPos(
   uJoyID: number /* u32 */,
   pji: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libWINMM.joyGetPos(uJoyID, util.toPointer(pji));
+  return libWINMM_dll.joyGetPos(uJoyID, util.toPointer(pji));
 }
 
 export function joyGetThreshold(
   uJoyID: number /* u32 */,
   puThreshold: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libWINMM.joyGetThreshold(uJoyID, util.toPointer(puThreshold));
+  return libWINMM_dll.joyGetThreshold(uJoyID, util.toPointer(puThreshold));
 }
 
 export function joyReleaseCapture(
   uJoyID: number /* u32 */,
 ): number /* u32 */ {
-  return libWINMM.joyReleaseCapture(uJoyID);
+  return libWINMM_dll.joyReleaseCapture(uJoyID);
 }
 
 export function joySetCapture(
@@ -12119,18 +12134,18 @@ export function joySetCapture(
   uPeriod: number /* u32 */,
   fChanged: boolean /* Windows.Win32.Foundation.BOOL */,
 ): number /* u32 */ {
-  return libWINMM.joySetCapture(util.hwndToFfi(hwnd), uJoyID, uPeriod, util.boolToFfi(fChanged));
+  return libWINMM_dll.joySetCapture(util.hwndToFfi(hwnd), uJoyID, uPeriod, util.boolToFfi(fChanged));
 }
 
 export function joySetThreshold(
   uJoyID: number /* u32 */,
   uThreshold: number /* u32 */,
 ): number /* u32 */ {
-  return libWINMM.joySetThreshold(uJoyID, uThreshold);
+  return libWINMM_dll.joySetThreshold(uJoyID, uThreshold);
 }
 
 export function VideoForWindowsVersion(): number /* u32 */ {
-  return libMSVFW32.VideoForWindowsVersion();
+  return libMSVFW32_dll.VideoForWindowsVersion();
 }
 
 export function ICInfo(
@@ -12138,7 +12153,7 @@ export function ICInfo(
   fccHandler: number /* u32 */,
   lpicinfo: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libMSVFW32.ICInfo(fccType, fccHandler, util.toPointer(lpicinfo)));
+  return util.boolFromFfi(libMSVFW32_dll.ICInfo(fccType, fccHandler, util.toPointer(lpicinfo)));
 }
 
 export function ICInstall(
@@ -12148,7 +12163,7 @@ export function ICInstall(
   szDesc: string | null /* Windows.Win32.Foundation.PSTR */,
   wFlags: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libMSVFW32.ICInstall(fccType, fccHandler, util.toPointer(lParam), util.pstrToFfi(szDesc), wFlags));
+  return util.boolFromFfi(libMSVFW32_dll.ICInstall(fccType, fccHandler, util.toPointer(lParam), util.pstrToFfi(szDesc), wFlags));
 }
 
 export function ICRemove(
@@ -12156,7 +12171,7 @@ export function ICRemove(
   fccHandler: number /* u32 */,
   wFlags: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libMSVFW32.ICRemove(fccType, fccHandler, wFlags));
+  return util.boolFromFfi(libMSVFW32_dll.ICRemove(fccType, fccHandler, wFlags));
 }
 
 export function ICGetInfo(
@@ -12164,7 +12179,7 @@ export function ICGetInfo(
   picinfo: Deno.PointerValue | Uint8Array | null /* ptr */,
   cb: number /* u32 */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.LRESULT */ {
-  return util.pointerFromFfi(libMSVFW32.ICGetInfo(util.toPointer(hic), util.toPointer(picinfo), cb));
+  return util.pointerFromFfi(libMSVFW32_dll.ICGetInfo(util.toPointer(hic), util.toPointer(picinfo), cb));
 }
 
 export function ICOpen(
@@ -12172,7 +12187,7 @@ export function ICOpen(
   fccHandler: number /* u32 */,
   wMode: number /* u32 */,
 ): Deno.PointerValue | null /* Windows.Win32.Media.Multimedia.HIC */ {
-  return util.pointerFromFfi(libMSVFW32.ICOpen(fccType, fccHandler, wMode));
+  return util.pointerFromFfi(libMSVFW32_dll.ICOpen(fccType, fccHandler, wMode));
 }
 
 export function ICOpenFunction(
@@ -12181,13 +12196,13 @@ export function ICOpenFunction(
   wMode: number /* u32 */,
   lpfnHandler: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.FARPROC */,
 ): Deno.PointerValue | null /* Windows.Win32.Media.Multimedia.HIC */ {
-  return util.pointerFromFfi(libMSVFW32.ICOpenFunction(fccType, fccHandler, wMode, util.toPointer(lpfnHandler)));
+  return util.pointerFromFfi(libMSVFW32_dll.ICOpenFunction(fccType, fccHandler, wMode, util.toPointer(lpfnHandler)));
 }
 
 export function ICClose(
   hic: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Media.Multimedia.HIC */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.LRESULT */ {
-  return util.pointerFromFfi(libMSVFW32.ICClose(util.toPointer(hic)));
+  return util.pointerFromFfi(libMSVFW32_dll.ICClose(util.toPointer(hic)));
 }
 
 export function ICSendMessage(
@@ -12196,7 +12211,7 @@ export function ICSendMessage(
   dw1: Deno.PointerValue /* usize */,
   dw2: Deno.PointerValue /* usize */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.LRESULT */ {
-  return util.pointerFromFfi(libMSVFW32.ICSendMessage(util.toPointer(hic), msg, dw1, dw2));
+  return util.pointerFromFfi(libMSVFW32_dll.ICSendMessage(util.toPointer(hic), msg, dw1, dw2));
 }
 
 export function ICCompress(
@@ -12214,7 +12229,7 @@ export function ICCompress(
   lpbiPrev: Deno.PointerValue | Uint8Array | null /* ptr */,
   lpPrev: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libMSVFW32.ICCompress(util.toPointer(hic), dwFlags, util.toPointer(lpbiOutput), util.toPointer(lpData), util.toPointer(lpbiInput), util.toPointer(lpBits), util.toPointer(lpckid), util.toPointer(lpdwFlags), lFrameNum, dwFrameSize, dwQuality, util.toPointer(lpbiPrev), util.toPointer(lpPrev));
+  return libMSVFW32_dll.ICCompress(util.toPointer(hic), dwFlags, util.toPointer(lpbiOutput), util.toPointer(lpData), util.toPointer(lpbiInput), util.toPointer(lpBits), util.toPointer(lpckid), util.toPointer(lpdwFlags), lFrameNum, dwFrameSize, dwQuality, util.toPointer(lpbiPrev), util.toPointer(lpPrev));
 }
 
 export function ICDecompress(
@@ -12225,7 +12240,7 @@ export function ICDecompress(
   lpbi: Deno.PointerValue | Uint8Array | null /* ptr */,
   lpBits: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libMSVFW32.ICDecompress(util.toPointer(hic), dwFlags, util.toPointer(lpbiFormat), util.toPointer(lpData), util.toPointer(lpbi), util.toPointer(lpBits));
+  return libMSVFW32_dll.ICDecompress(util.toPointer(hic), dwFlags, util.toPointer(lpbiFormat), util.toPointer(lpData), util.toPointer(lpbi), util.toPointer(lpBits));
 }
 
 export function ICDrawBegin(
@@ -12246,7 +12261,7 @@ export function ICDrawBegin(
   dwRate: number /* u32 */,
   dwScale: number /* u32 */,
 ): number /* u32 */ {
-  return libMSVFW32.ICDrawBegin(util.toPointer(hic), dwFlags, util.toPointer(hpal), util.hwndToFfi(hwnd), util.toPointer(hdc), xDst, yDst, dxDst, dyDst, util.toPointer(lpbi), xSrc, ySrc, dxSrc, dySrc, dwRate, dwScale);
+  return libMSVFW32_dll.ICDrawBegin(util.toPointer(hic), dwFlags, util.toPointer(hpal), util.hwndToFfi(hwnd), util.toPointer(hdc), xDst, yDst, dxDst, dyDst, util.toPointer(lpbi), xSrc, ySrc, dxSrc, dySrc, dwRate, dwScale);
 }
 
 export function ICDraw(
@@ -12257,7 +12272,7 @@ export function ICDraw(
   cbData: number /* u32 */,
   lTime: number /* i32 */,
 ): number /* u32 */ {
-  return libMSVFW32.ICDraw(util.toPointer(hic), dwFlags, util.toPointer(lpFormat), util.toPointer(lpData), cbData, lTime);
+  return libMSVFW32_dll.ICDraw(util.toPointer(hic), dwFlags, util.toPointer(lpFormat), util.toPointer(lpData), cbData, lTime);
 }
 
 export function ICLocate(
@@ -12267,7 +12282,7 @@ export function ICLocate(
   lpbiOut: Deno.PointerValue | Uint8Array | null /* ptr */,
   wFlags: number /* u16 */,
 ): Deno.PointerValue | null /* Windows.Win32.Media.Multimedia.HIC */ {
-  return util.pointerFromFfi(libMSVFW32.ICLocate(fccType, fccHandler, util.toPointer(lpbiIn), util.toPointer(lpbiOut), wFlags));
+  return util.pointerFromFfi(libMSVFW32_dll.ICLocate(fccType, fccHandler, util.toPointer(lpbiIn), util.toPointer(lpbiOut), wFlags));
 }
 
 export function ICGetDisplayFormat(
@@ -12278,7 +12293,7 @@ export function ICGetDisplayFormat(
   dx: number /* i32 */,
   dy: number /* i32 */,
 ): Deno.PointerValue | null /* Windows.Win32.Media.Multimedia.HIC */ {
-  return util.pointerFromFfi(libMSVFW32.ICGetDisplayFormat(util.toPointer(hic), util.toPointer(lpbiIn), util.toPointer(lpbiOut), BitDepth, dx, dy));
+  return util.pointerFromFfi(libMSVFW32_dll.ICGetDisplayFormat(util.toPointer(hic), util.toPointer(lpbiIn), util.toPointer(lpbiOut), BitDepth, dx, dy));
 }
 
 export function ICImageCompress(
@@ -12290,7 +12305,7 @@ export function ICImageCompress(
   lQuality: number /* i32 */,
   plSize: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */ {
-  return util.pointerFromFfi(libMSVFW32.ICImageCompress(util.toPointer(hic), uiFlags, util.toPointer(lpbiIn), util.toPointer(lpBits), util.toPointer(lpbiOut), lQuality, util.toPointer(plSize)));
+  return util.pointerFromFfi(libMSVFW32_dll.ICImageCompress(util.toPointer(hic), uiFlags, util.toPointer(lpbiIn), util.toPointer(lpBits), util.toPointer(lpbiOut), lQuality, util.toPointer(plSize)));
 }
 
 export function ICImageDecompress(
@@ -12300,7 +12315,7 @@ export function ICImageDecompress(
   lpBits: Deno.PointerValue | Uint8Array | null /* ptr */,
   lpbiOut: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */ {
-  return util.pointerFromFfi(libMSVFW32.ICImageDecompress(util.toPointer(hic), uiFlags, util.toPointer(lpbiIn), util.toPointer(lpBits), util.toPointer(lpbiOut)));
+  return util.pointerFromFfi(libMSVFW32_dll.ICImageDecompress(util.toPointer(hic), uiFlags, util.toPointer(lpbiIn), util.toPointer(lpBits), util.toPointer(lpbiOut)));
 }
 
 export function ICCompressorChoose(
@@ -12311,20 +12326,20 @@ export function ICCompressorChoose(
   pc: Deno.PointerValue | Uint8Array | null /* ptr */,
   lpszTitle: string | null /* Windows.Win32.Foundation.PSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libMSVFW32.ICCompressorChoose(util.hwndToFfi(hwnd), uiFlags, util.toPointer(pvIn), util.toPointer(lpData), util.toPointer(pc), util.pstrToFfi(lpszTitle)));
+  return util.boolFromFfi(libMSVFW32_dll.ICCompressorChoose(util.hwndToFfi(hwnd), uiFlags, util.toPointer(pvIn), util.toPointer(lpData), util.toPointer(pc), util.pstrToFfi(lpszTitle)));
 }
 
 export function ICSeqCompressFrameStart(
   pc: Deno.PointerValue | Uint8Array | null /* ptr */,
   lpbiIn: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libMSVFW32.ICSeqCompressFrameStart(util.toPointer(pc), util.toPointer(lpbiIn)));
+  return util.boolFromFfi(libMSVFW32_dll.ICSeqCompressFrameStart(util.toPointer(pc), util.toPointer(lpbiIn)));
 }
 
 export function ICSeqCompressFrameEnd(
   pc: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): void /* void */ {
-  return libMSVFW32.ICSeqCompressFrameEnd(util.toPointer(pc));
+  return libMSVFW32_dll.ICSeqCompressFrameEnd(util.toPointer(pc));
 }
 
 export function ICSeqCompressFrame(
@@ -12334,23 +12349,23 @@ export function ICSeqCompressFrame(
   pfKey: Deno.PointerValue | Uint8Array | null /* ptr */,
   plSize: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libMSVFW32.ICSeqCompressFrame(util.toPointer(pc), uiFlags, util.toPointer(lpBits), util.toPointer(pfKey), util.toPointer(plSize)));
+  return util.pointerFromFfi(libMSVFW32_dll.ICSeqCompressFrame(util.toPointer(pc), uiFlags, util.toPointer(lpBits), util.toPointer(pfKey), util.toPointer(plSize)));
 }
 
 export function ICCompressorFree(
   pc: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): void /* void */ {
-  return libMSVFW32.ICCompressorFree(util.toPointer(pc));
+  return libMSVFW32_dll.ICCompressorFree(util.toPointer(pc));
 }
 
 export function DrawDibOpen(): Deno.PointerValue /* isize */ {
-  return libMSVFW32.DrawDibOpen();
+  return libMSVFW32_dll.DrawDibOpen();
 }
 
 export function DrawDibClose(
   hdd: Deno.PointerValue /* isize */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libMSVFW32.DrawDibClose(hdd));
+  return util.boolFromFfi(libMSVFW32_dll.DrawDibClose(hdd));
 }
 
 export function DrawDibGetBuffer(
@@ -12359,20 +12374,20 @@ export function DrawDibGetBuffer(
   dwSize: number /* u32 */,
   dwFlags: number /* u32 */,
 ): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libMSVFW32.DrawDibGetBuffer(hdd, util.toPointer(lpbi), dwSize, dwFlags));
+  return util.pointerFromFfi(libMSVFW32_dll.DrawDibGetBuffer(hdd, util.toPointer(lpbi), dwSize, dwFlags));
 }
 
 export function DrawDibGetPalette(
   hdd: Deno.PointerValue /* isize */,
 ): Deno.PointerValue | null /* Windows.Win32.Graphics.Gdi.HPALETTE */ {
-  return util.pointerFromFfi(libMSVFW32.DrawDibGetPalette(hdd));
+  return util.pointerFromFfi(libMSVFW32_dll.DrawDibGetPalette(hdd));
 }
 
 export function DrawDibSetPalette(
   hdd: Deno.PointerValue /* isize */,
   hpal: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Graphics.Gdi.HPALETTE */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libMSVFW32.DrawDibSetPalette(hdd, util.toPointer(hpal)));
+  return util.boolFromFfi(libMSVFW32_dll.DrawDibSetPalette(hdd, util.toPointer(hpal)));
 }
 
 export function DrawDibChangePalette(
@@ -12381,7 +12396,7 @@ export function DrawDibChangePalette(
   iLen: number /* i32 */,
   lppe: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libMSVFW32.DrawDibChangePalette(hdd, iStart, iLen, util.toPointer(lppe)));
+  return util.boolFromFfi(libMSVFW32_dll.DrawDibChangePalette(hdd, iStart, iLen, util.toPointer(lppe)));
 }
 
 export function DrawDibRealize(
@@ -12389,20 +12404,20 @@ export function DrawDibRealize(
   hdc: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Graphics.Gdi.HDC */,
   fBackground: boolean /* Windows.Win32.Foundation.BOOL */,
 ): number /* u32 */ {
-  return libMSVFW32.DrawDibRealize(hdd, util.toPointer(hdc), util.boolToFfi(fBackground));
+  return libMSVFW32_dll.DrawDibRealize(hdd, util.toPointer(hdc), util.boolToFfi(fBackground));
 }
 
 export function DrawDibStart(
   hdd: Deno.PointerValue /* isize */,
   rate: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libMSVFW32.DrawDibStart(hdd, rate));
+  return util.boolFromFfi(libMSVFW32_dll.DrawDibStart(hdd, rate));
 }
 
 export function DrawDibStop(
   hdd: Deno.PointerValue /* isize */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libMSVFW32.DrawDibStop(hdd));
+  return util.boolFromFfi(libMSVFW32_dll.DrawDibStop(hdd));
 }
 
 export function DrawDibBegin(
@@ -12415,7 +12430,7 @@ export function DrawDibBegin(
   dySrc: number /* i32 */,
   wFlags: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libMSVFW32.DrawDibBegin(hdd, util.toPointer(hdc), dxDst, dyDst, util.toPointer(lpbi), dxSrc, dySrc, wFlags));
+  return util.boolFromFfi(libMSVFW32_dll.DrawDibBegin(hdd, util.toPointer(hdc), dxDst, dyDst, util.toPointer(lpbi), dxSrc, dySrc, wFlags));
 }
 
 export function DrawDibDraw(
@@ -12433,46 +12448,46 @@ export function DrawDibDraw(
   dySrc: number /* i32 */,
   wFlags: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libMSVFW32.DrawDibDraw(hdd, util.toPointer(hdc), xDst, yDst, dxDst, dyDst, util.toPointer(lpbi), util.toPointer(lpBits), xSrc, ySrc, dxSrc, dySrc, wFlags));
+  return util.boolFromFfi(libMSVFW32_dll.DrawDibDraw(hdd, util.toPointer(hdc), xDst, yDst, dxDst, dyDst, util.toPointer(lpbi), util.toPointer(lpBits), xSrc, ySrc, dxSrc, dySrc, wFlags));
 }
 
 export function DrawDibEnd(
   hdd: Deno.PointerValue /* isize */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libMSVFW32.DrawDibEnd(hdd));
+  return util.boolFromFfi(libMSVFW32_dll.DrawDibEnd(hdd));
 }
 
 export function DrawDibTime(
   hdd: Deno.PointerValue /* isize */,
   lpddtime: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libMSVFW32.DrawDibTime(hdd, util.toPointer(lpddtime)));
+  return util.boolFromFfi(libMSVFW32_dll.DrawDibTime(hdd, util.toPointer(lpddtime)));
 }
 
 export function DrawDibProfileDisplay(
   lpbi: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.LRESULT */ {
-  return util.pointerFromFfi(libMSVFW32.DrawDibProfileDisplay(util.toPointer(lpbi)));
+  return util.pointerFromFfi(libMSVFW32_dll.DrawDibProfileDisplay(util.toPointer(lpbi)));
 }
 
 export function AVIFileInit(): void /* void */ {
-  return libAVIFIL32.AVIFileInit();
+  return libAVIFIL32_dll.AVIFileInit();
 }
 
 export function AVIFileExit(): void /* void */ {
-  return libAVIFIL32.AVIFileExit();
+  return libAVIFIL32_dll.AVIFileExit();
 }
 
 export function AVIFileAddRef(
   pfile: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Media.Multimedia.IAVIFile */,
 ): number /* u32 */ {
-  return libAVIFIL32.AVIFileAddRef(util.toPointer(pfile));
+  return libAVIFIL32_dll.AVIFileAddRef(util.toPointer(pfile));
 }
 
 export function AVIFileRelease(
   pfile: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Media.Multimedia.IAVIFile */,
 ): number /* u32 */ {
-  return libAVIFIL32.AVIFileRelease(util.toPointer(pfile));
+  return libAVIFIL32_dll.AVIFileRelease(util.toPointer(pfile));
 }
 
 export function AVIFileOpenA(
@@ -12481,7 +12496,7 @@ export function AVIFileOpenA(
   uMode: number /* u32 */,
   lpHandler: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libAVIFIL32.AVIFileOpenA(util.toPointer(ppfile), util.pstrToFfi(szFile), uMode, util.toPointer(lpHandler)));
+  return util.pointerFromFfi(libAVIFIL32_dll.AVIFileOpenA(util.toPointer(ppfile), util.pstrToFfi(szFile), uMode, util.toPointer(lpHandler)));
 }
 
 export function AVIFileOpenW(
@@ -12490,7 +12505,7 @@ export function AVIFileOpenW(
   uMode: number /* u32 */,
   lpHandler: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libAVIFIL32.AVIFileOpenW(util.toPointer(ppfile), util.pwstrToFfi(szFile), uMode, util.toPointer(lpHandler)));
+  return util.pointerFromFfi(libAVIFIL32_dll.AVIFileOpenW(util.toPointer(ppfile), util.pwstrToFfi(szFile), uMode, util.toPointer(lpHandler)));
 }
 
 export function AVIFileInfoW(
@@ -12498,7 +12513,7 @@ export function AVIFileInfoW(
   pfi: Deno.PointerValue | Uint8Array | null /* ptr */,
   lSize: number /* i32 */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libAVIFIL32.AVIFileInfoW(util.toPointer(pfile), util.toPointer(pfi), lSize));
+  return util.pointerFromFfi(libAVIFIL32_dll.AVIFileInfoW(util.toPointer(pfile), util.toPointer(pfi), lSize));
 }
 
 export function AVIFileInfoA(
@@ -12506,7 +12521,7 @@ export function AVIFileInfoA(
   pfi: Deno.PointerValue | Uint8Array | null /* ptr */,
   lSize: number /* i32 */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libAVIFIL32.AVIFileInfoA(util.toPointer(pfile), util.toPointer(pfi), lSize));
+  return util.pointerFromFfi(libAVIFIL32_dll.AVIFileInfoA(util.toPointer(pfile), util.toPointer(pfi), lSize));
 }
 
 export function AVIFileGetStream(
@@ -12515,7 +12530,7 @@ export function AVIFileGetStream(
   fccType: number /* u32 */,
   lParam: number /* i32 */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libAVIFIL32.AVIFileGetStream(util.toPointer(pfile), util.toPointer(ppavi), fccType, lParam));
+  return util.pointerFromFfi(libAVIFIL32_dll.AVIFileGetStream(util.toPointer(pfile), util.toPointer(ppavi), fccType, lParam));
 }
 
 export function AVIFileCreateStreamW(
@@ -12523,7 +12538,7 @@ export function AVIFileCreateStreamW(
   ppavi: Deno.PointerValue | Uint8Array | null /* ptr */,
   psi: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libAVIFIL32.AVIFileCreateStreamW(util.toPointer(pfile), util.toPointer(ppavi), util.toPointer(psi)));
+  return util.pointerFromFfi(libAVIFIL32_dll.AVIFileCreateStreamW(util.toPointer(pfile), util.toPointer(ppavi), util.toPointer(psi)));
 }
 
 export function AVIFileCreateStreamA(
@@ -12531,7 +12546,7 @@ export function AVIFileCreateStreamA(
   ppavi: Deno.PointerValue | Uint8Array | null /* ptr */,
   psi: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libAVIFIL32.AVIFileCreateStreamA(util.toPointer(pfile), util.toPointer(ppavi), util.toPointer(psi)));
+  return util.pointerFromFfi(libAVIFIL32_dll.AVIFileCreateStreamA(util.toPointer(pfile), util.toPointer(ppavi), util.toPointer(psi)));
 }
 
 export function AVIFileWriteData(
@@ -12540,7 +12555,7 @@ export function AVIFileWriteData(
   lpData: Deno.PointerValue | Uint8Array | null /* ptr */,
   cbData: number /* i32 */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libAVIFIL32.AVIFileWriteData(util.toPointer(pfile), ckid, util.toPointer(lpData), cbData));
+  return util.pointerFromFfi(libAVIFIL32_dll.AVIFileWriteData(util.toPointer(pfile), ckid, util.toPointer(lpData), cbData));
 }
 
 export function AVIFileReadData(
@@ -12549,25 +12564,25 @@ export function AVIFileReadData(
   lpData: Deno.PointerValue | Uint8Array | null /* ptr */,
   lpcbData: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libAVIFIL32.AVIFileReadData(util.toPointer(pfile), ckid, util.toPointer(lpData), util.toPointer(lpcbData)));
+  return util.pointerFromFfi(libAVIFIL32_dll.AVIFileReadData(util.toPointer(pfile), ckid, util.toPointer(lpData), util.toPointer(lpcbData)));
 }
 
 export function AVIFileEndRecord(
   pfile: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Media.Multimedia.IAVIFile */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libAVIFIL32.AVIFileEndRecord(util.toPointer(pfile)));
+  return util.pointerFromFfi(libAVIFIL32_dll.AVIFileEndRecord(util.toPointer(pfile)));
 }
 
 export function AVIStreamAddRef(
   pavi: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Media.Multimedia.IAVIStream */,
 ): number /* u32 */ {
-  return libAVIFIL32.AVIStreamAddRef(util.toPointer(pavi));
+  return libAVIFIL32_dll.AVIStreamAddRef(util.toPointer(pavi));
 }
 
 export function AVIStreamRelease(
   pavi: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Media.Multimedia.IAVIStream */,
 ): number /* u32 */ {
-  return libAVIFIL32.AVIStreamRelease(util.toPointer(pavi));
+  return libAVIFIL32_dll.AVIStreamRelease(util.toPointer(pavi));
 }
 
 export function AVIStreamInfoW(
@@ -12575,7 +12590,7 @@ export function AVIStreamInfoW(
   psi: Deno.PointerValue | Uint8Array | null /* ptr */,
   lSize: number /* i32 */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libAVIFIL32.AVIStreamInfoW(util.toPointer(pavi), util.toPointer(psi), lSize));
+  return util.pointerFromFfi(libAVIFIL32_dll.AVIStreamInfoW(util.toPointer(pavi), util.toPointer(psi), lSize));
 }
 
 export function AVIStreamInfoA(
@@ -12583,7 +12598,7 @@ export function AVIStreamInfoA(
   psi: Deno.PointerValue | Uint8Array | null /* ptr */,
   lSize: number /* i32 */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libAVIFIL32.AVIStreamInfoA(util.toPointer(pavi), util.toPointer(psi), lSize));
+  return util.pointerFromFfi(libAVIFIL32_dll.AVIStreamInfoA(util.toPointer(pavi), util.toPointer(psi), lSize));
 }
 
 export function AVIStreamFindSample(
@@ -12591,7 +12606,7 @@ export function AVIStreamFindSample(
   lPos: number /* i32 */,
   lFlags: number /* i32 */,
 ): number /* i32 */ {
-  return libAVIFIL32.AVIStreamFindSample(util.toPointer(pavi), lPos, lFlags);
+  return libAVIFIL32_dll.AVIStreamFindSample(util.toPointer(pavi), lPos, lFlags);
 }
 
 export function AVIStreamReadFormat(
@@ -12600,7 +12615,7 @@ export function AVIStreamReadFormat(
   lpFormat: Deno.PointerValue | Uint8Array | null /* ptr */,
   lpcbFormat: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libAVIFIL32.AVIStreamReadFormat(util.toPointer(pavi), lPos, util.toPointer(lpFormat), util.toPointer(lpcbFormat)));
+  return util.pointerFromFfi(libAVIFIL32_dll.AVIStreamReadFormat(util.toPointer(pavi), lPos, util.toPointer(lpFormat), util.toPointer(lpcbFormat)));
 }
 
 export function AVIStreamSetFormat(
@@ -12609,7 +12624,7 @@ export function AVIStreamSetFormat(
   lpFormat: Deno.PointerValue | Uint8Array | null /* ptr */,
   cbFormat: number /* i32 */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libAVIFIL32.AVIStreamSetFormat(util.toPointer(pavi), lPos, util.toPointer(lpFormat), cbFormat));
+  return util.pointerFromFfi(libAVIFIL32_dll.AVIStreamSetFormat(util.toPointer(pavi), lPos, util.toPointer(lpFormat), cbFormat));
 }
 
 export function AVIStreamReadData(
@@ -12618,7 +12633,7 @@ export function AVIStreamReadData(
   lp: Deno.PointerValue | Uint8Array | null /* ptr */,
   lpcb: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libAVIFIL32.AVIStreamReadData(util.toPointer(pavi), fcc, util.toPointer(lp), util.toPointer(lpcb)));
+  return util.pointerFromFfi(libAVIFIL32_dll.AVIStreamReadData(util.toPointer(pavi), fcc, util.toPointer(lp), util.toPointer(lpcb)));
 }
 
 export function AVIStreamWriteData(
@@ -12627,7 +12642,7 @@ export function AVIStreamWriteData(
   lp: Deno.PointerValue | Uint8Array | null /* ptr */,
   cb: number /* i32 */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libAVIFIL32.AVIStreamWriteData(util.toPointer(pavi), fcc, util.toPointer(lp), cb));
+  return util.pointerFromFfi(libAVIFIL32_dll.AVIStreamWriteData(util.toPointer(pavi), fcc, util.toPointer(lp), cb));
 }
 
 export function AVIStreamRead(
@@ -12639,7 +12654,7 @@ export function AVIStreamRead(
   plBytes: Deno.PointerValue | Uint8Array | null /* ptr */,
   plSamples: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libAVIFIL32.AVIStreamRead(util.toPointer(pavi), lStart, lSamples, util.toPointer(lpBuffer), cbBuffer, util.toPointer(plBytes), util.toPointer(plSamples)));
+  return util.pointerFromFfi(libAVIFIL32_dll.AVIStreamRead(util.toPointer(pavi), lStart, lSamples, util.toPointer(lpBuffer), cbBuffer, util.toPointer(plBytes), util.toPointer(plSamples)));
 }
 
 export function AVIStreamWrite(
@@ -12652,33 +12667,33 @@ export function AVIStreamWrite(
   plSampWritten: Deno.PointerValue | Uint8Array | null /* ptr */,
   plBytesWritten: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libAVIFIL32.AVIStreamWrite(util.toPointer(pavi), lStart, lSamples, util.toPointer(lpBuffer), cbBuffer, dwFlags, util.toPointer(plSampWritten), util.toPointer(plBytesWritten)));
+  return util.pointerFromFfi(libAVIFIL32_dll.AVIStreamWrite(util.toPointer(pavi), lStart, lSamples, util.toPointer(lpBuffer), cbBuffer, dwFlags, util.toPointer(plSampWritten), util.toPointer(plBytesWritten)));
 }
 
 export function AVIStreamStart(
   pavi: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Media.Multimedia.IAVIStream */,
 ): number /* i32 */ {
-  return libAVIFIL32.AVIStreamStart(util.toPointer(pavi));
+  return libAVIFIL32_dll.AVIStreamStart(util.toPointer(pavi));
 }
 
 export function AVIStreamLength(
   pavi: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Media.Multimedia.IAVIStream */,
 ): number /* i32 */ {
-  return libAVIFIL32.AVIStreamLength(util.toPointer(pavi));
+  return libAVIFIL32_dll.AVIStreamLength(util.toPointer(pavi));
 }
 
 export function AVIStreamTimeToSample(
   pavi: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Media.Multimedia.IAVIStream */,
   lTime: number /* i32 */,
 ): number /* i32 */ {
-  return libAVIFIL32.AVIStreamTimeToSample(util.toPointer(pavi), lTime);
+  return libAVIFIL32_dll.AVIStreamTimeToSample(util.toPointer(pavi), lTime);
 }
 
 export function AVIStreamSampleToTime(
   pavi: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Media.Multimedia.IAVIStream */,
   lSample: number /* i32 */,
 ): number /* i32 */ {
-  return libAVIFIL32.AVIStreamSampleToTime(util.toPointer(pavi), lSample);
+  return libAVIFIL32_dll.AVIStreamSampleToTime(util.toPointer(pavi), lSample);
 }
 
 export function AVIStreamBeginStreaming(
@@ -12687,33 +12702,33 @@ export function AVIStreamBeginStreaming(
   lEnd: number /* i32 */,
   lRate: number /* i32 */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libAVIFIL32.AVIStreamBeginStreaming(util.toPointer(pavi), lStart, lEnd, lRate));
+  return util.pointerFromFfi(libAVIFIL32_dll.AVIStreamBeginStreaming(util.toPointer(pavi), lStart, lEnd, lRate));
 }
 
 export function AVIStreamEndStreaming(
   pavi: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Media.Multimedia.IAVIStream */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libAVIFIL32.AVIStreamEndStreaming(util.toPointer(pavi)));
+  return util.pointerFromFfi(libAVIFIL32_dll.AVIStreamEndStreaming(util.toPointer(pavi)));
 }
 
 export function AVIStreamGetFrameOpen(
   pavi: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Media.Multimedia.IAVIStream */,
   lpbiWanted: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Media.Multimedia.IGetFrame */ {
-  return util.pointerFromFfi(libAVIFIL32.AVIStreamGetFrameOpen(util.toPointer(pavi), util.toPointer(lpbiWanted)));
+  return util.pointerFromFfi(libAVIFIL32_dll.AVIStreamGetFrameOpen(util.toPointer(pavi), util.toPointer(lpbiWanted)));
 }
 
 export function AVIStreamGetFrame(
   pg: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Media.Multimedia.IGetFrame */,
   lPos: number /* i32 */,
 ): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libAVIFIL32.AVIStreamGetFrame(util.toPointer(pg), lPos));
+  return util.pointerFromFfi(libAVIFIL32_dll.AVIStreamGetFrame(util.toPointer(pg), lPos));
 }
 
 export function AVIStreamGetFrameClose(
   pg: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Media.Multimedia.IGetFrame */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libAVIFIL32.AVIStreamGetFrameClose(util.toPointer(pg)));
+  return util.pointerFromFfi(libAVIFIL32_dll.AVIStreamGetFrameClose(util.toPointer(pg)));
 }
 
 export function AVIStreamOpenFromFileA(
@@ -12724,7 +12739,7 @@ export function AVIStreamOpenFromFileA(
   mode: number /* u32 */,
   pclsidHandler: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libAVIFIL32.AVIStreamOpenFromFileA(util.toPointer(ppavi), util.pstrToFfi(szFile), fccType, lParam, mode, util.toPointer(pclsidHandler)));
+  return util.pointerFromFfi(libAVIFIL32_dll.AVIStreamOpenFromFileA(util.toPointer(ppavi), util.pstrToFfi(szFile), fccType, lParam, mode, util.toPointer(pclsidHandler)));
 }
 
 export function AVIStreamOpenFromFileW(
@@ -12735,7 +12750,7 @@ export function AVIStreamOpenFromFileW(
   mode: number /* u32 */,
   pclsidHandler: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libAVIFIL32.AVIStreamOpenFromFileW(util.toPointer(ppavi), util.pwstrToFfi(szFile), fccType, lParam, mode, util.toPointer(pclsidHandler)));
+  return util.pointerFromFfi(libAVIFIL32_dll.AVIStreamOpenFromFileW(util.toPointer(ppavi), util.pwstrToFfi(szFile), fccType, lParam, mode, util.toPointer(pclsidHandler)));
 }
 
 export function AVIStreamCreate(
@@ -12744,7 +12759,7 @@ export function AVIStreamCreate(
   lParam2: number /* i32 */,
   pclsidHandler: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libAVIFIL32.AVIStreamCreate(util.toPointer(ppavi), lParam1, lParam2, util.toPointer(pclsidHandler)));
+  return util.pointerFromFfi(libAVIFIL32_dll.AVIStreamCreate(util.toPointer(ppavi), lParam1, lParam2, util.toPointer(pclsidHandler)));
 }
 
 export function AVIMakeCompressedStream(
@@ -12753,7 +12768,7 @@ export function AVIMakeCompressedStream(
   lpOptions: Deno.PointerValue | Uint8Array | null /* ptr */,
   pclsidHandler: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libAVIFIL32.AVIMakeCompressedStream(util.toPointer(ppsCompressed), util.toPointer(ppsSource), util.toPointer(lpOptions), util.toPointer(pclsidHandler)));
+  return util.pointerFromFfi(libAVIFIL32_dll.AVIMakeCompressedStream(util.toPointer(ppsCompressed), util.toPointer(ppsSource), util.toPointer(lpOptions), util.toPointer(pclsidHandler)));
 }
 
 export function AVISaveA(
@@ -12764,7 +12779,7 @@ export function AVISaveA(
   pfile: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Media.Multimedia.IAVIStream */,
   lpOptions: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libAVIFIL32.AVISaveA(util.pstrToFfi(szFile), util.toPointer(pclsidHandler), util.toPointer(lpfnCallback), nStreams, util.toPointer(pfile), util.toPointer(lpOptions)));
+  return util.pointerFromFfi(libAVIFIL32_dll.AVISaveA(util.pstrToFfi(szFile), util.toPointer(pclsidHandler), util.toPointer(lpfnCallback), nStreams, util.toPointer(pfile), util.toPointer(lpOptions)));
 }
 
 export function AVISaveVA(
@@ -12775,7 +12790,7 @@ export function AVISaveVA(
   ppavi: Deno.PointerValue | Uint8Array | null /* ptr */,
   plpOptions: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libAVIFIL32.AVISaveVA(util.pstrToFfi(szFile), util.toPointer(pclsidHandler), util.toPointer(lpfnCallback), nStreams, util.toPointer(ppavi), util.toPointer(plpOptions)));
+  return util.pointerFromFfi(libAVIFIL32_dll.AVISaveVA(util.pstrToFfi(szFile), util.toPointer(pclsidHandler), util.toPointer(lpfnCallback), nStreams, util.toPointer(ppavi), util.toPointer(plpOptions)));
 }
 
 export function AVISaveW(
@@ -12786,7 +12801,7 @@ export function AVISaveW(
   pfile: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Media.Multimedia.IAVIStream */,
   lpOptions: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libAVIFIL32.AVISaveW(util.pwstrToFfi(szFile), util.toPointer(pclsidHandler), util.toPointer(lpfnCallback), nStreams, util.toPointer(pfile), util.toPointer(lpOptions)));
+  return util.pointerFromFfi(libAVIFIL32_dll.AVISaveW(util.pwstrToFfi(szFile), util.toPointer(pclsidHandler), util.toPointer(lpfnCallback), nStreams, util.toPointer(pfile), util.toPointer(lpOptions)));
 }
 
 export function AVISaveVW(
@@ -12797,7 +12812,7 @@ export function AVISaveVW(
   ppavi: Deno.PointerValue | Uint8Array | null /* ptr */,
   plpOptions: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libAVIFIL32.AVISaveVW(util.pwstrToFfi(szFile), util.toPointer(pclsidHandler), util.toPointer(lpfnCallback), nStreams, util.toPointer(ppavi), util.toPointer(plpOptions)));
+  return util.pointerFromFfi(libAVIFIL32_dll.AVISaveVW(util.pwstrToFfi(szFile), util.toPointer(pclsidHandler), util.toPointer(lpfnCallback), nStreams, util.toPointer(ppavi), util.toPointer(plpOptions)));
 }
 
 export function AVISaveOptions(
@@ -12807,14 +12822,14 @@ export function AVISaveOptions(
   ppavi: Deno.PointerValue | Uint8Array | null /* ptr */,
   plpOptions: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue /* isize */ {
-  return libAVIFIL32.AVISaveOptions(util.hwndToFfi(hwnd), uiFlags, nStreams, util.toPointer(ppavi), util.toPointer(plpOptions));
+  return libAVIFIL32_dll.AVISaveOptions(util.hwndToFfi(hwnd), uiFlags, nStreams, util.toPointer(ppavi), util.toPointer(plpOptions));
 }
 
 export function AVISaveOptionsFree(
   nStreams: number /* i32 */,
   plpOptions: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libAVIFIL32.AVISaveOptionsFree(nStreams, util.toPointer(plpOptions)));
+  return util.pointerFromFfi(libAVIFIL32_dll.AVISaveOptionsFree(nStreams, util.toPointer(plpOptions)));
 }
 
 export function AVIBuildFilterW(
@@ -12822,7 +12837,7 @@ export function AVIBuildFilterW(
   cbFilter: number /* i32 */,
   fSaving: boolean /* Windows.Win32.Foundation.BOOL */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libAVIFIL32.AVIBuildFilterW(util.pwstrToFfi(lpszFilter), cbFilter, util.boolToFfi(fSaving)));
+  return util.pointerFromFfi(libAVIFIL32_dll.AVIBuildFilterW(util.pwstrToFfi(lpszFilter), cbFilter, util.boolToFfi(fSaving)));
 }
 
 export function AVIBuildFilterA(
@@ -12830,7 +12845,7 @@ export function AVIBuildFilterA(
   cbFilter: number /* i32 */,
   fSaving: boolean /* Windows.Win32.Foundation.BOOL */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libAVIFIL32.AVIBuildFilterA(util.pstrToFfi(lpszFilter), cbFilter, util.boolToFfi(fSaving)));
+  return util.pointerFromFfi(libAVIFIL32_dll.AVIBuildFilterA(util.pstrToFfi(lpszFilter), cbFilter, util.boolToFfi(fSaving)));
 }
 
 export function AVIMakeFileFromStreams(
@@ -12838,7 +12853,7 @@ export function AVIMakeFileFromStreams(
   nStreams: number /* i32 */,
   papStreams: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libAVIFIL32.AVIMakeFileFromStreams(util.toPointer(ppfile), nStreams, util.toPointer(papStreams)));
+  return util.pointerFromFfi(libAVIFIL32_dll.AVIMakeFileFromStreams(util.toPointer(ppfile), nStreams, util.toPointer(papStreams)));
 }
 
 export function AVIMakeStreamFromClipboard(
@@ -12846,30 +12861,30 @@ export function AVIMakeStreamFromClipboard(
   hGlobal: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
   ppstream: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libAVIFIL32.AVIMakeStreamFromClipboard(cfFormat, util.toPointer(hGlobal), util.toPointer(ppstream)));
+  return util.pointerFromFfi(libAVIFIL32_dll.AVIMakeStreamFromClipboard(cfFormat, util.toPointer(hGlobal), util.toPointer(ppstream)));
 }
 
 export function AVIPutFileOnClipboard(
   pf: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Media.Multimedia.IAVIFile */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libAVIFIL32.AVIPutFileOnClipboard(util.toPointer(pf)));
+  return util.pointerFromFfi(libAVIFIL32_dll.AVIPutFileOnClipboard(util.toPointer(pf)));
 }
 
 export function AVIGetFromClipboard(
   lppf: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libAVIFIL32.AVIGetFromClipboard(util.toPointer(lppf)));
+  return util.pointerFromFfi(libAVIFIL32_dll.AVIGetFromClipboard(util.toPointer(lppf)));
 }
 
 export function AVIClearClipboard(): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libAVIFIL32.AVIClearClipboard());
+  return util.pointerFromFfi(libAVIFIL32_dll.AVIClearClipboard());
 }
 
 export function CreateEditableStream(
   ppsEditable: Deno.PointerValue | Uint8Array | null /* ptr */,
   psSource: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Media.Multimedia.IAVIStream */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libAVIFIL32.CreateEditableStream(util.toPointer(ppsEditable), util.toPointer(psSource)));
+  return util.pointerFromFfi(libAVIFIL32_dll.CreateEditableStream(util.toPointer(ppsEditable), util.toPointer(psSource)));
 }
 
 export function EditStreamCut(
@@ -12878,7 +12893,7 @@ export function EditStreamCut(
   plLength: Deno.PointerValue | Uint8Array | null /* ptr */,
   ppResult: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libAVIFIL32.EditStreamCut(util.toPointer(pavi), util.toPointer(plStart), util.toPointer(plLength), util.toPointer(ppResult)));
+  return util.pointerFromFfi(libAVIFIL32_dll.EditStreamCut(util.toPointer(pavi), util.toPointer(plStart), util.toPointer(plLength), util.toPointer(ppResult)));
 }
 
 export function EditStreamCopy(
@@ -12887,7 +12902,7 @@ export function EditStreamCopy(
   plLength: Deno.PointerValue | Uint8Array | null /* ptr */,
   ppResult: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libAVIFIL32.EditStreamCopy(util.toPointer(pavi), util.toPointer(plStart), util.toPointer(plLength), util.toPointer(ppResult)));
+  return util.pointerFromFfi(libAVIFIL32_dll.EditStreamCopy(util.toPointer(pavi), util.toPointer(plStart), util.toPointer(plLength), util.toPointer(ppResult)));
 }
 
 export function EditStreamPaste(
@@ -12898,28 +12913,28 @@ export function EditStreamPaste(
   lStart: number /* i32 */,
   lEnd: number /* i32 */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libAVIFIL32.EditStreamPaste(util.toPointer(pavi), util.toPointer(plPos), util.toPointer(plLength), util.toPointer(pstream), lStart, lEnd));
+  return util.pointerFromFfi(libAVIFIL32_dll.EditStreamPaste(util.toPointer(pavi), util.toPointer(plPos), util.toPointer(plLength), util.toPointer(pstream), lStart, lEnd));
 }
 
 export function EditStreamClone(
   pavi: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Media.Multimedia.IAVIStream */,
   ppResult: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libAVIFIL32.EditStreamClone(util.toPointer(pavi), util.toPointer(ppResult)));
+  return util.pointerFromFfi(libAVIFIL32_dll.EditStreamClone(util.toPointer(pavi), util.toPointer(ppResult)));
 }
 
 export function EditStreamSetNameA(
   pavi: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Media.Multimedia.IAVIStream */,
   lpszName: string | null /* Windows.Win32.Foundation.PSTR */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libAVIFIL32.EditStreamSetNameA(util.toPointer(pavi), util.pstrToFfi(lpszName)));
+  return util.pointerFromFfi(libAVIFIL32_dll.EditStreamSetNameA(util.toPointer(pavi), util.pstrToFfi(lpszName)));
 }
 
 export function EditStreamSetNameW(
   pavi: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Media.Multimedia.IAVIStream */,
   lpszName: string | null /* Windows.Win32.Foundation.PWSTR */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libAVIFIL32.EditStreamSetNameW(util.toPointer(pavi), util.pwstrToFfi(lpszName)));
+  return util.pointerFromFfi(libAVIFIL32_dll.EditStreamSetNameW(util.toPointer(pavi), util.pwstrToFfi(lpszName)));
 }
 
 export function EditStreamSetInfoW(
@@ -12927,7 +12942,7 @@ export function EditStreamSetInfoW(
   lpInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
   cbInfo: number /* i32 */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libAVIFIL32.EditStreamSetInfoW(util.toPointer(pavi), util.toPointer(lpInfo), cbInfo));
+  return util.pointerFromFfi(libAVIFIL32_dll.EditStreamSetInfoW(util.toPointer(pavi), util.toPointer(lpInfo), cbInfo));
 }
 
 export function EditStreamSetInfoA(
@@ -12935,7 +12950,7 @@ export function EditStreamSetInfoA(
   lpInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
   cbInfo: number /* i32 */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libAVIFIL32.EditStreamSetInfoA(util.toPointer(pavi), util.toPointer(lpInfo), cbInfo));
+  return util.pointerFromFfi(libAVIFIL32_dll.EditStreamSetInfoA(util.toPointer(pavi), util.toPointer(lpInfo), cbInfo));
 }
 
 export function MCIWndCreateA(
@@ -12944,7 +12959,7 @@ export function MCIWndCreateA(
   dwStyle: number /* u32 */,
   szFile: string | null /* Windows.Win32.Foundation.PSTR */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */ {
-  return util.hwndFromFfi(libMSVFW32.MCIWndCreateA(util.hwndToFfi(hwndParent), util.toPointer(hInstance), dwStyle, util.pstrToFfi(szFile)));
+  return util.hwndFromFfi(libMSVFW32_dll.MCIWndCreateA(util.hwndToFfi(hwndParent), util.toPointer(hInstance), dwStyle, util.pstrToFfi(szFile)));
 }
 
 export function MCIWndCreateW(
@@ -12953,11 +12968,11 @@ export function MCIWndCreateW(
   dwStyle: number /* u32 */,
   szFile: string | null /* Windows.Win32.Foundation.PWSTR */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */ {
-  return util.hwndFromFfi(libMSVFW32.MCIWndCreateW(util.hwndToFfi(hwndParent), util.toPointer(hInstance), dwStyle, util.pwstrToFfi(szFile)));
+  return util.hwndFromFfi(libMSVFW32_dll.MCIWndCreateW(util.hwndToFfi(hwndParent), util.toPointer(hInstance), dwStyle, util.pwstrToFfi(szFile)));
 }
 
 export function MCIWndRegisterClass(): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libMSVFW32.MCIWndRegisterClass());
+  return util.boolFromFfi(libMSVFW32_dll.MCIWndRegisterClass());
 }
 
 export function capCreateCaptureWindowA(
@@ -12970,7 +12985,7 @@ export function capCreateCaptureWindowA(
   hwndParent: Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */,
   nID: number /* i32 */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */ {
-  return util.hwndFromFfi(libAVICAP32.capCreateCaptureWindowA(util.pstrToFfi(lpszWindowName), dwStyle, x, y, nWidth, nHeight, util.hwndToFfi(hwndParent), nID));
+  return util.hwndFromFfi(libAVICAP32_dll.capCreateCaptureWindowA(util.pstrToFfi(lpszWindowName), dwStyle, x, y, nWidth, nHeight, util.hwndToFfi(hwndParent), nID));
 }
 
 export function capGetDriverDescriptionA(
@@ -12980,7 +12995,7 @@ export function capGetDriverDescriptionA(
   lpszVer: string | null /* Windows.Win32.Foundation.PSTR */,
   cbVer: number /* i32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libAVICAP32.capGetDriverDescriptionA(wDriverIndex, util.pstrToFfi(lpszName), cbName, util.pstrToFfi(lpszVer), cbVer));
+  return util.boolFromFfi(libAVICAP32_dll.capGetDriverDescriptionA(wDriverIndex, util.pstrToFfi(lpszName), cbName, util.pstrToFfi(lpszVer), cbVer));
 }
 
 export function capCreateCaptureWindowW(
@@ -12993,7 +13008,7 @@ export function capCreateCaptureWindowW(
   hwndParent: Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */,
   nID: number /* i32 */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */ {
-  return util.hwndFromFfi(libAVICAP32.capCreateCaptureWindowW(util.pwstrToFfi(lpszWindowName), dwStyle, x, y, nWidth, nHeight, util.hwndToFfi(hwndParent), nID));
+  return util.hwndFromFfi(libAVICAP32_dll.capCreateCaptureWindowW(util.pwstrToFfi(lpszWindowName), dwStyle, x, y, nWidth, nHeight, util.hwndToFfi(hwndParent), nID));
 }
 
 export function capGetDriverDescriptionW(
@@ -13003,31 +13018,31 @@ export function capGetDriverDescriptionW(
   lpszVer: string | null /* Windows.Win32.Foundation.PWSTR */,
   cbVer: number /* i32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libAVICAP32.capGetDriverDescriptionW(wDriverIndex, util.pwstrToFfi(lpszName), cbName, util.pwstrToFfi(lpszVer), cbVer));
+  return util.boolFromFfi(libAVICAP32_dll.capGetDriverDescriptionW(wDriverIndex, util.pwstrToFfi(lpszName), cbName, util.pwstrToFfi(lpszVer), cbVer));
 }
 
 export function GetOpenFileNamePreviewA(
   lpofn: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libMSVFW32.GetOpenFileNamePreviewA(util.toPointer(lpofn)));
+  return util.boolFromFfi(libMSVFW32_dll.GetOpenFileNamePreviewA(util.toPointer(lpofn)));
 }
 
 export function GetSaveFileNamePreviewA(
   lpofn: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libMSVFW32.GetSaveFileNamePreviewA(util.toPointer(lpofn)));
+  return util.boolFromFfi(libMSVFW32_dll.GetSaveFileNamePreviewA(util.toPointer(lpofn)));
 }
 
 export function GetOpenFileNamePreviewW(
   lpofn: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libMSVFW32.GetOpenFileNamePreviewW(util.toPointer(lpofn)));
+  return util.boolFromFfi(libMSVFW32_dll.GetOpenFileNamePreviewW(util.toPointer(lpofn)));
 }
 
 export function GetSaveFileNamePreviewW(
   lpofn: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libMSVFW32.GetSaveFileNamePreviewW(util.toPointer(lpofn)));
+  return util.boolFromFfi(libMSVFW32_dll.GetSaveFileNamePreviewW(util.toPointer(lpofn)));
 }
 
 export function mmTaskCreate(
@@ -13035,26 +13050,26 @@ export function mmTaskCreate(
   lph: Deno.PointerValue | Uint8Array | null /* ptr */,
   dwInst: Deno.PointerValue /* usize */,
 ): number /* u32 */ {
-  return libWINMM.mmTaskCreate(util.toPointer(lpfn), util.toPointer(lph), dwInst);
+  return libWINMM_dll.mmTaskCreate(util.toPointer(lpfn), util.toPointer(lph), dwInst);
 }
 
 export function mmTaskBlock(
   h: number /* u32 */,
 ): void /* void */ {
-  return libWINMM.mmTaskBlock(h);
+  return libWINMM_dll.mmTaskBlock(h);
 }
 
 export function mmTaskSignal(
   h: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWINMM.mmTaskSignal(h));
+  return util.boolFromFfi(libWINMM_dll.mmTaskSignal(h));
 }
 
 export function mmTaskYield(): void /* void */ {
-  return libWINMM.mmTaskYield();
+  return libWINMM_dll.mmTaskYield();
 }
 
 export function mmGetCurrentTask(): number /* u32 */ {
-  return libWINMM.mmGetCurrentTask();
+  return libWINMM_dll.mmGetCurrentTask();
 }
 

@@ -138,6 +138,7 @@ export const HTTP_SERVICE_CONFIG_SSL_FLAG_ENABLE_CLIENT_CORRELATION = 8192;
 export const HTTP_REQUEST_PROPERTY_SNI_HOST_MAX_LENGTH = 255;
 export const HTTP_REQUEST_PROPERTY_SNI_FLAG_SNI_USED = 1;
 export const HTTP_REQUEST_PROPERTY_SNI_FLAG_NO_SNI = 2;
+export const HTTP_VERSION = "HTTP/1.0";
 export const HttpServerAuthenticationProperty = 0;
 export const HttpServerLoggingProperty = 1;
 export const HttpServerQosProperty = 2;
@@ -930,6 +931,8 @@ export function allocHTTP_REQUEST_TOKEN_BINDING_INFO(data?: Partial<HTTP_REQUEST
   return buf;
 }
 
+export type PSECURITY_DESCRIPTOR = Deno.PointerValue | Uint8Array | null;
+
 /**
  * Windows.Win32.Networking.HttpServer.HTTP_LOGGING_INFO (size: 80)
  */
@@ -960,8 +963,8 @@ export interface HTTP_LOGGING_INFO {
   RolloverType: HTTP_LOGGING_ROLLOVER_TYPE;
   /** u32 */
   RolloverSize: number;
-  /** ptr */
-  pSecurityDescriptor: Deno.PointerValue | Uint8Array | null;
+  /** Windows.Win32.Security.PSECURITY_DESCRIPTOR */
+  pSecurityDescriptor: Uint8Array | Deno.PointerValue | null;
 }
 
 export const sizeofHTTP_LOGGING_INFO = 80;
@@ -1887,14 +1890,16 @@ export function allocHTTP_REQUEST_INFO(data?: Partial<HTTP_REQUEST_INFO>): Uint8
   return buf;
 }
 
+export type HRESULT = number;
+
 /**
- * Windows.Win32.Networking.HttpServer.HTTP_REQUEST_AUTH_INFO (size: 80)
+ * Windows.Win32.Networking.HttpServer.HTTP_REQUEST_AUTH_INFO (size: 88)
  */
 export interface HTTP_REQUEST_AUTH_INFO {
   /** Windows.Win32.Networking.HttpServer.HTTP_AUTH_STATUS */
   AuthStatus: HTTP_AUTH_STATUS;
-  /** i32 */
-  SecStatus: number;
+  /** Windows.Win32.Foundation.HRESULT */
+  SecStatus: Uint8Array | Deno.PointerValue | null;
   /** u32 */
   Flags: number;
   /** Windows.Win32.Networking.HttpServer.HTTP_REQUEST_AUTH_TYPE */
@@ -1919,45 +1924,46 @@ export interface HTTP_REQUEST_AUTH_INFO {
   pPackageName: string | null;
 }
 
-export const sizeofHTTP_REQUEST_AUTH_INFO = 80;
+export const sizeofHTTP_REQUEST_AUTH_INFO = 88;
 
 export function allocHTTP_REQUEST_AUTH_INFO(data?: Partial<HTTP_REQUEST_AUTH_INFO>): Uint8Array {
   const buf = new Uint8Array(sizeofHTTP_REQUEST_AUTH_INFO);
   const view = new DataView(buf.buffer);
   // 0x00: i32
   if (data?.AuthStatus !== undefined) view.setInt32(0, Number(data.AuthStatus), true);
-  // 0x04: i32
-  if (data?.SecStatus !== undefined) view.setInt32(4, Number(data.SecStatus), true);
-  // 0x08: u32
-  if (data?.Flags !== undefined) view.setUint32(8, Number(data.Flags), true);
-  // 0x0c: i32
-  if (data?.AuthType !== undefined) view.setInt32(12, Number(data.AuthType), true);
-  // 0x10: pointer
-  if (data?.AccessToken !== undefined) view.setBigUint64(16, data.AccessToken === null ? 0n : BigInt(util.toPointer(data.AccessToken)), true);
-  // 0x18: u32
-  if (data?.ContextAttributes !== undefined) view.setUint32(24, Number(data.ContextAttributes), true);
-  // 0x1c: u32
-  if (data?.PackedContextLength !== undefined) view.setUint32(28, Number(data.PackedContextLength), true);
+  // 0x04: pad4
+  // 0x08: pointer
+  if (data?.SecStatus !== undefined) view.setBigUint64(8, data.SecStatus === null ? 0n : BigInt(util.toPointer(data.SecStatus)), true);
+  // 0x10: u32
+  if (data?.Flags !== undefined) view.setUint32(16, Number(data.Flags), true);
+  // 0x14: i32
+  if (data?.AuthType !== undefined) view.setInt32(20, Number(data.AuthType), true);
+  // 0x18: pointer
+  if (data?.AccessToken !== undefined) view.setBigUint64(24, data.AccessToken === null ? 0n : BigInt(util.toPointer(data.AccessToken)), true);
   // 0x20: u32
-  if (data?.PackedContextType !== undefined) view.setUint32(32, Number(data.PackedContextType), true);
-  // 0x24: pad4
-  // 0x28: pointer
-  if (data?.PackedContext !== undefined) view.setBigUint64(40, data.PackedContext === null ? 0n : BigInt(util.toPointer(data.PackedContext)), true);
-  // 0x30: u32
-  if (data?.MutualAuthDataLength !== undefined) view.setUint32(48, Number(data.MutualAuthDataLength), true);
-  // 0x34: pad4
-  // 0x38: buffer
+  if (data?.ContextAttributes !== undefined) view.setUint32(32, Number(data.ContextAttributes), true);
+  // 0x24: u32
+  if (data?.PackedContextLength !== undefined) view.setUint32(36, Number(data.PackedContextLength), true);
+  // 0x28: u32
+  if (data?.PackedContextType !== undefined) view.setUint32(40, Number(data.PackedContextType), true);
+  // 0x2c: pad4
+  // 0x30: pointer
+  if (data?.PackedContext !== undefined) view.setBigUint64(48, data.PackedContext === null ? 0n : BigInt(util.toPointer(data.PackedContext)), true);
+  // 0x38: u32
+  if (data?.MutualAuthDataLength !== undefined) view.setUint32(56, Number(data.MutualAuthDataLength), true);
+  // 0x3c: pad4
+  // 0x40: buffer
   if (data?.pMutualAuthData !== undefined) {
-    (buf as any)._f56 = util.pstrToFfi(data.pMutualAuthData);
-    view.setBigUint64(56, (buf as any)._f56 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f56)), true);
+    (buf as any)._f64 = util.pstrToFfi(data.pMutualAuthData);
+    view.setBigUint64(64, (buf as any)._f64 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f64)), true);
   }
-  // 0x40: u16
-  if (data?.PackageNameLength !== undefined) view.setUint16(64, Number(data.PackageNameLength), true);
-  // 0x42: pad6
-  // 0x48: buffer
+  // 0x48: u16
+  if (data?.PackageNameLength !== undefined) view.setUint16(72, Number(data.PackageNameLength), true);
+  // 0x4a: pad6
+  // 0x50: buffer
   if (data?.pPackageName !== undefined) {
-    (buf as any)._f72 = util.pwstrToFfi(data.pPackageName);
-    view.setBigUint64(72, (buf as any)._f72 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f72)), true);
+    (buf as any)._f80 = util.pwstrToFfi(data.pPackageName);
+    view.setBigUint64(80, (buf as any)._f80 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f80)), true);
   }
   return buf;
 }
@@ -2061,7 +2067,7 @@ export function allocHTTP_REQUEST_V1(data?: Partial<HTTP_REQUEST_V1>): Uint8Arra
  */
 export interface HTTP_REQUEST_V2 {
   /** Windows.Win32.Networking.HttpServer.HTTP_REQUEST_V1 */
-  __AnonymousBase_http_L1861_C35: Uint8Array | Deno.PointerValue | null;
+  Base: Uint8Array | Deno.PointerValue | null;
   /** u16 */
   RequestInfoCount: number;
   /** ptr */
@@ -2074,7 +2080,7 @@ export function allocHTTP_REQUEST_V2(data?: Partial<HTTP_REQUEST_V2>): Uint8Arra
   const buf = new Uint8Array(sizeofHTTP_REQUEST_V2);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.__AnonymousBase_http_L1861_C35 !== undefined) view.setBigUint64(0, data.__AnonymousBase_http_L1861_C35 === null ? 0n : BigInt(util.toPointer(data.__AnonymousBase_http_L1861_C35)), true);
+  if (data?.Base !== undefined) view.setBigUint64(0, data.Base === null ? 0n : BigInt(util.toPointer(data.Base)), true);
   // 0x08: u16
   if (data?.RequestInfoCount !== undefined) view.setUint16(8, Number(data.RequestInfoCount), true);
   // 0x0a: pad6
@@ -2197,7 +2203,7 @@ export function allocHTTP_MULTIPLE_KNOWN_HEADERS(data?: Partial<HTTP_MULTIPLE_KN
  */
 export interface HTTP_RESPONSE_V2 {
   /** Windows.Win32.Networking.HttpServer.HTTP_RESPONSE_V1 */
-  __AnonymousBase_http_L2050_C36: Uint8Array | Deno.PointerValue | null;
+  Base: Uint8Array | Deno.PointerValue | null;
   /** u16 */
   ResponseInfoCount: number;
   /** ptr */
@@ -2210,7 +2216,7 @@ export function allocHTTP_RESPONSE_V2(data?: Partial<HTTP_RESPONSE_V2>): Uint8Ar
   const buf = new Uint8Array(sizeofHTTP_RESPONSE_V2);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.__AnonymousBase_http_L2050_C36 !== undefined) view.setBigUint64(0, data.__AnonymousBase_http_L2050_C36 === null ? 0n : BigInt(util.toPointer(data.__AnonymousBase_http_L2050_C36)), true);
+  if (data?.Base !== undefined) view.setBigUint64(0, data.Base === null ? 0n : BigInt(util.toPointer(data.Base)), true);
   // 0x08: u16
   if (data?.ResponseInfoCount !== undefined) view.setUint16(8, Number(data.ResponseInfoCount), true);
   // 0x0a: pad6
@@ -3395,7 +3401,7 @@ export type BOOL = number;
 // Native Libraries
 
 try {
-  var libHTTPAPI = Deno.dlopen("HTTPAPI", {
+  var libHTTPAPI_dll = Deno.dlopen("HTTPAPI.dll", {
     HttpInitialize: {
       parameters: ["pointer", "u32", "pointer"],
       result: "u32",
@@ -3578,21 +3584,21 @@ export function HttpInitialize(
   Flags: HTTP_INITIALIZE /* Windows.Win32.Networking.HttpServer.HTTP_INITIALIZE */,
   pReserved: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libHTTPAPI.HttpInitialize(util.toPointer(Version), Flags, util.toPointer(pReserved));
+  return libHTTPAPI_dll.HttpInitialize(util.toPointer(Version), Flags, util.toPointer(pReserved));
 }
 
 export function HttpTerminate(
   Flags: HTTP_INITIALIZE /* Windows.Win32.Networking.HttpServer.HTTP_INITIALIZE */,
   pReserved: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libHTTPAPI.HttpTerminate(Flags, util.toPointer(pReserved));
+  return libHTTPAPI_dll.HttpTerminate(Flags, util.toPointer(pReserved));
 }
 
 export function HttpCreateHttpHandle(
   RequestQueueHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
   Reserved: number /* u32 */,
 ): number /* u32 */ {
-  return libHTTPAPI.HttpCreateHttpHandle(util.toPointer(RequestQueueHandle), Reserved);
+  return libHTTPAPI_dll.HttpCreateHttpHandle(util.toPointer(RequestQueueHandle), Reserved);
 }
 
 export function HttpCreateRequestQueue(
@@ -3602,13 +3608,13 @@ export function HttpCreateRequestQueue(
   Flags: number /* u32 */,
   RequestQueueHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libHTTPAPI.HttpCreateRequestQueue(util.toPointer(Version), util.pwstrToFfi(Name), util.toPointer(SecurityAttributes), Flags, util.toPointer(RequestQueueHandle));
+  return libHTTPAPI_dll.HttpCreateRequestQueue(util.toPointer(Version), util.pwstrToFfi(Name), util.toPointer(SecurityAttributes), Flags, util.toPointer(RequestQueueHandle));
 }
 
 export function HttpCloseRequestQueue(
   RequestQueueHandle: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
 ): number /* u32 */ {
-  return libHTTPAPI.HttpCloseRequestQueue(util.toPointer(RequestQueueHandle));
+  return libHTTPAPI_dll.HttpCloseRequestQueue(util.toPointer(RequestQueueHandle));
 }
 
 export function HttpSetRequestQueueProperty(
@@ -3619,7 +3625,7 @@ export function HttpSetRequestQueueProperty(
   Reserved1: number /* u32 */,
   Reserved2: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libHTTPAPI.HttpSetRequestQueueProperty(util.toPointer(RequestQueueHandle), Property, util.toPointer(PropertyInformation), PropertyInformationLength, Reserved1, util.toPointer(Reserved2));
+  return libHTTPAPI_dll.HttpSetRequestQueueProperty(util.toPointer(RequestQueueHandle), Property, util.toPointer(PropertyInformation), PropertyInformationLength, Reserved1, util.toPointer(Reserved2));
 }
 
 export function HttpQueryRequestQueueProperty(
@@ -3631,7 +3637,7 @@ export function HttpQueryRequestQueueProperty(
   ReturnLength: Deno.PointerValue | Uint8Array | null /* ptr */,
   Reserved2: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libHTTPAPI.HttpQueryRequestQueueProperty(util.toPointer(RequestQueueHandle), Property, util.toPointer(PropertyInformation), PropertyInformationLength, Reserved1, util.toPointer(ReturnLength), util.toPointer(Reserved2));
+  return libHTTPAPI_dll.HttpQueryRequestQueueProperty(util.toPointer(RequestQueueHandle), Property, util.toPointer(PropertyInformation), PropertyInformationLength, Reserved1, util.toPointer(ReturnLength), util.toPointer(Reserved2));
 }
 
 export function HttpSetRequestProperty(
@@ -3642,13 +3648,13 @@ export function HttpSetRequestProperty(
   InputPropertySize: number /* u32 */,
   Overlapped: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libHTTPAPI.HttpSetRequestProperty(util.toPointer(RequestQueueHandle), Id, PropertyId, util.toPointer(Input), InputPropertySize, util.toPointer(Overlapped));
+  return libHTTPAPI_dll.HttpSetRequestProperty(util.toPointer(RequestQueueHandle), Id, PropertyId, util.toPointer(Input), InputPropertySize, util.toPointer(Overlapped));
 }
 
 export function HttpShutdownRequestQueue(
   RequestQueueHandle: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
 ): number /* u32 */ {
-  return libHTTPAPI.HttpShutdownRequestQueue(util.toPointer(RequestQueueHandle));
+  return libHTTPAPI_dll.HttpShutdownRequestQueue(util.toPointer(RequestQueueHandle));
 }
 
 export function HttpReceiveClientCertificate(
@@ -3660,7 +3666,7 @@ export function HttpReceiveClientCertificate(
   BytesReceived: Deno.PointerValue | Uint8Array | null /* ptr */,
   Overlapped: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libHTTPAPI.HttpReceiveClientCertificate(util.toPointer(RequestQueueHandle), ConnectionId, Flags, util.toPointer(SslClientCertInfo), SslClientCertInfoSize, util.toPointer(BytesReceived), util.toPointer(Overlapped));
+  return libHTTPAPI_dll.HttpReceiveClientCertificate(util.toPointer(RequestQueueHandle), ConnectionId, Flags, util.toPointer(SslClientCertInfo), SslClientCertInfoSize, util.toPointer(BytesReceived), util.toPointer(Overlapped));
 }
 
 export function HttpCreateServerSession(
@@ -3668,13 +3674,13 @@ export function HttpCreateServerSession(
   ServerSessionId: Deno.PointerValue | Uint8Array | null /* ptr */,
   Reserved: number /* u32 */,
 ): number /* u32 */ {
-  return libHTTPAPI.HttpCreateServerSession(util.toPointer(Version), util.toPointer(ServerSessionId), Reserved);
+  return libHTTPAPI_dll.HttpCreateServerSession(util.toPointer(Version), util.toPointer(ServerSessionId), Reserved);
 }
 
 export function HttpCloseServerSession(
   ServerSessionId: Deno.PointerValue /* u64 */,
 ): number /* u32 */ {
-  return libHTTPAPI.HttpCloseServerSession(ServerSessionId);
+  return libHTTPAPI_dll.HttpCloseServerSession(ServerSessionId);
 }
 
 export function HttpQueryServerSessionProperty(
@@ -3684,7 +3690,7 @@ export function HttpQueryServerSessionProperty(
   PropertyInformationLength: number /* u32 */,
   ReturnLength: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libHTTPAPI.HttpQueryServerSessionProperty(ServerSessionId, Property, util.toPointer(PropertyInformation), PropertyInformationLength, util.toPointer(ReturnLength));
+  return libHTTPAPI_dll.HttpQueryServerSessionProperty(ServerSessionId, Property, util.toPointer(PropertyInformation), PropertyInformationLength, util.toPointer(ReturnLength));
 }
 
 export function HttpSetServerSessionProperty(
@@ -3693,7 +3699,7 @@ export function HttpSetServerSessionProperty(
   PropertyInformation: Deno.PointerValue | Uint8Array | null /* ptr */,
   PropertyInformationLength: number /* u32 */,
 ): number /* u32 */ {
-  return libHTTPAPI.HttpSetServerSessionProperty(ServerSessionId, Property, util.toPointer(PropertyInformation), PropertyInformationLength);
+  return libHTTPAPI_dll.HttpSetServerSessionProperty(ServerSessionId, Property, util.toPointer(PropertyInformation), PropertyInformationLength);
 }
 
 export function HttpAddUrl(
@@ -3701,14 +3707,14 @@ export function HttpAddUrl(
   FullyQualifiedUrl: string | null /* Windows.Win32.Foundation.PWSTR */,
   Reserved: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libHTTPAPI.HttpAddUrl(util.toPointer(RequestQueueHandle), util.pwstrToFfi(FullyQualifiedUrl), util.toPointer(Reserved));
+  return libHTTPAPI_dll.HttpAddUrl(util.toPointer(RequestQueueHandle), util.pwstrToFfi(FullyQualifiedUrl), util.toPointer(Reserved));
 }
 
 export function HttpRemoveUrl(
   RequestQueueHandle: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
   FullyQualifiedUrl: string | null /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
-  return libHTTPAPI.HttpRemoveUrl(util.toPointer(RequestQueueHandle), util.pwstrToFfi(FullyQualifiedUrl));
+  return libHTTPAPI_dll.HttpRemoveUrl(util.toPointer(RequestQueueHandle), util.pwstrToFfi(FullyQualifiedUrl));
 }
 
 export function HttpCreateUrlGroup(
@@ -3716,13 +3722,13 @@ export function HttpCreateUrlGroup(
   pUrlGroupId: Deno.PointerValue | Uint8Array | null /* ptr */,
   Reserved: number /* u32 */,
 ): number /* u32 */ {
-  return libHTTPAPI.HttpCreateUrlGroup(ServerSessionId, util.toPointer(pUrlGroupId), Reserved);
+  return libHTTPAPI_dll.HttpCreateUrlGroup(ServerSessionId, util.toPointer(pUrlGroupId), Reserved);
 }
 
 export function HttpCloseUrlGroup(
   UrlGroupId: Deno.PointerValue /* u64 */,
 ): number /* u32 */ {
-  return libHTTPAPI.HttpCloseUrlGroup(UrlGroupId);
+  return libHTTPAPI_dll.HttpCloseUrlGroup(UrlGroupId);
 }
 
 export function HttpAddUrlToUrlGroup(
@@ -3731,7 +3737,7 @@ export function HttpAddUrlToUrlGroup(
   UrlContext: Deno.PointerValue /* u64 */,
   Reserved: number /* u32 */,
 ): number /* u32 */ {
-  return libHTTPAPI.HttpAddUrlToUrlGroup(UrlGroupId, util.pwstrToFfi(pFullyQualifiedUrl), UrlContext, Reserved);
+  return libHTTPAPI_dll.HttpAddUrlToUrlGroup(UrlGroupId, util.pwstrToFfi(pFullyQualifiedUrl), UrlContext, Reserved);
 }
 
 export function HttpRemoveUrlFromUrlGroup(
@@ -3739,7 +3745,7 @@ export function HttpRemoveUrlFromUrlGroup(
   pFullyQualifiedUrl: string | null /* Windows.Win32.Foundation.PWSTR */,
   Flags: number /* u32 */,
 ): number /* u32 */ {
-  return libHTTPAPI.HttpRemoveUrlFromUrlGroup(UrlGroupId, util.pwstrToFfi(pFullyQualifiedUrl), Flags);
+  return libHTTPAPI_dll.HttpRemoveUrlFromUrlGroup(UrlGroupId, util.pwstrToFfi(pFullyQualifiedUrl), Flags);
 }
 
 export function HttpSetUrlGroupProperty(
@@ -3748,7 +3754,7 @@ export function HttpSetUrlGroupProperty(
   PropertyInformation: Deno.PointerValue | Uint8Array | null /* ptr */,
   PropertyInformationLength: number /* u32 */,
 ): number /* u32 */ {
-  return libHTTPAPI.HttpSetUrlGroupProperty(UrlGroupId, Property, util.toPointer(PropertyInformation), PropertyInformationLength);
+  return libHTTPAPI_dll.HttpSetUrlGroupProperty(UrlGroupId, Property, util.toPointer(PropertyInformation), PropertyInformationLength);
 }
 
 export function HttpQueryUrlGroupProperty(
@@ -3758,7 +3764,7 @@ export function HttpQueryUrlGroupProperty(
   PropertyInformationLength: number /* u32 */,
   ReturnLength: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libHTTPAPI.HttpQueryUrlGroupProperty(UrlGroupId, Property, util.toPointer(PropertyInformation), PropertyInformationLength, util.toPointer(ReturnLength));
+  return libHTTPAPI_dll.HttpQueryUrlGroupProperty(UrlGroupId, Property, util.toPointer(PropertyInformation), PropertyInformationLength, util.toPointer(ReturnLength));
 }
 
 export function HttpPrepareUrl(
@@ -3767,7 +3773,7 @@ export function HttpPrepareUrl(
   Url: string | null /* Windows.Win32.Foundation.PWSTR */,
   PreparedUrl: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libHTTPAPI.HttpPrepareUrl(util.toPointer(Reserved), Flags, util.pwstrToFfi(Url), util.toPointer(PreparedUrl));
+  return libHTTPAPI_dll.HttpPrepareUrl(util.toPointer(Reserved), Flags, util.pwstrToFfi(Url), util.toPointer(PreparedUrl));
 }
 
 export function HttpReceiveHttpRequest(
@@ -3779,7 +3785,7 @@ export function HttpReceiveHttpRequest(
   BytesReturned: Deno.PointerValue | Uint8Array | null /* ptr */,
   Overlapped: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libHTTPAPI.HttpReceiveHttpRequest(util.toPointer(RequestQueueHandle), RequestId, Flags, util.toPointer(RequestBuffer), RequestBufferLength, util.toPointer(BytesReturned), util.toPointer(Overlapped));
+  return libHTTPAPI_dll.HttpReceiveHttpRequest(util.toPointer(RequestQueueHandle), RequestId, Flags, util.toPointer(RequestBuffer), RequestBufferLength, util.toPointer(BytesReturned), util.toPointer(Overlapped));
 }
 
 export function HttpReceiveRequestEntityBody(
@@ -3791,7 +3797,7 @@ export function HttpReceiveRequestEntityBody(
   BytesReturned: Deno.PointerValue | Uint8Array | null /* ptr */,
   Overlapped: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libHTTPAPI.HttpReceiveRequestEntityBody(util.toPointer(RequestQueueHandle), RequestId, Flags, util.toPointer(EntityBuffer), EntityBufferLength, util.toPointer(BytesReturned), util.toPointer(Overlapped));
+  return libHTTPAPI_dll.HttpReceiveRequestEntityBody(util.toPointer(RequestQueueHandle), RequestId, Flags, util.toPointer(EntityBuffer), EntityBufferLength, util.toPointer(BytesReturned), util.toPointer(Overlapped));
 }
 
 export function HttpSendHttpResponse(
@@ -3806,7 +3812,7 @@ export function HttpSendHttpResponse(
   Overlapped: Deno.PointerValue | Uint8Array | null /* ptr */,
   LogData: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libHTTPAPI.HttpSendHttpResponse(util.toPointer(RequestQueueHandle), RequestId, Flags, util.toPointer(HttpResponse), util.toPointer(CachePolicy), util.toPointer(BytesSent), util.toPointer(Reserved1), Reserved2, util.toPointer(Overlapped), util.toPointer(LogData));
+  return libHTTPAPI_dll.HttpSendHttpResponse(util.toPointer(RequestQueueHandle), RequestId, Flags, util.toPointer(HttpResponse), util.toPointer(CachePolicy), util.toPointer(BytesSent), util.toPointer(Reserved1), Reserved2, util.toPointer(Overlapped), util.toPointer(LogData));
 }
 
 export function HttpSendResponseEntityBody(
@@ -3821,7 +3827,7 @@ export function HttpSendResponseEntityBody(
   Overlapped: Deno.PointerValue | Uint8Array | null /* ptr */,
   LogData: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libHTTPAPI.HttpSendResponseEntityBody(util.toPointer(RequestQueueHandle), RequestId, Flags, EntityChunkCount, util.toPointer(EntityChunks), util.toPointer(BytesSent), util.toPointer(Reserved1), Reserved2, util.toPointer(Overlapped), util.toPointer(LogData));
+  return libHTTPAPI_dll.HttpSendResponseEntityBody(util.toPointer(RequestQueueHandle), RequestId, Flags, EntityChunkCount, util.toPointer(EntityChunks), util.toPointer(BytesSent), util.toPointer(Reserved1), Reserved2, util.toPointer(Overlapped), util.toPointer(LogData));
 }
 
 export function HttpDeclarePush(
@@ -3832,7 +3838,7 @@ export function HttpDeclarePush(
   Query: string | null /* Windows.Win32.Foundation.PSTR */,
   Headers: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libHTTPAPI.HttpDeclarePush(util.toPointer(RequestQueueHandle), RequestId, Verb, util.pwstrToFfi(Path), util.pstrToFfi(Query), util.toPointer(Headers));
+  return libHTTPAPI_dll.HttpDeclarePush(util.toPointer(RequestQueueHandle), RequestId, Verb, util.pwstrToFfi(Path), util.pstrToFfi(Query), util.toPointer(Headers));
 }
 
 export function HttpWaitForDisconnect(
@@ -3840,7 +3846,7 @@ export function HttpWaitForDisconnect(
   ConnectionId: Deno.PointerValue /* u64 */,
   Overlapped: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libHTTPAPI.HttpWaitForDisconnect(util.toPointer(RequestQueueHandle), ConnectionId, util.toPointer(Overlapped));
+  return libHTTPAPI_dll.HttpWaitForDisconnect(util.toPointer(RequestQueueHandle), ConnectionId, util.toPointer(Overlapped));
 }
 
 export function HttpWaitForDisconnectEx(
@@ -3849,7 +3855,7 @@ export function HttpWaitForDisconnectEx(
   Reserved: number /* u32 */,
   Overlapped: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libHTTPAPI.HttpWaitForDisconnectEx(util.toPointer(RequestQueueHandle), ConnectionId, Reserved, util.toPointer(Overlapped));
+  return libHTTPAPI_dll.HttpWaitForDisconnectEx(util.toPointer(RequestQueueHandle), ConnectionId, Reserved, util.toPointer(Overlapped));
 }
 
 export function HttpCancelHttpRequest(
@@ -3857,20 +3863,20 @@ export function HttpCancelHttpRequest(
   RequestId: Deno.PointerValue /* u64 */,
   Overlapped: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libHTTPAPI.HttpCancelHttpRequest(util.toPointer(RequestQueueHandle), RequestId, util.toPointer(Overlapped));
+  return libHTTPAPI_dll.HttpCancelHttpRequest(util.toPointer(RequestQueueHandle), RequestId, util.toPointer(Overlapped));
 }
 
 export function HttpWaitForDemandStart(
   RequestQueueHandle: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
   Overlapped: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libHTTPAPI.HttpWaitForDemandStart(util.toPointer(RequestQueueHandle), util.toPointer(Overlapped));
+  return libHTTPAPI_dll.HttpWaitForDemandStart(util.toPointer(RequestQueueHandle), util.toPointer(Overlapped));
 }
 
 export function HttpIsFeatureSupported(
   FeatureId: HTTP_FEATURE_ID /* Windows.Win32.Networking.HttpServer.HTTP_FEATURE_ID */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libHTTPAPI.HttpIsFeatureSupported(FeatureId));
+  return util.boolFromFfi(libHTTPAPI_dll.HttpIsFeatureSupported(FeatureId));
 }
 
 export function HttpDelegateRequestEx(
@@ -3881,7 +3887,7 @@ export function HttpDelegateRequestEx(
   PropertyInfoSetSize: number /* u32 */,
   PropertyInfoSet: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libHTTPAPI.HttpDelegateRequestEx(util.toPointer(RequestQueueHandle), util.toPointer(DelegateQueueHandle), RequestId, DelegateUrlGroupId, PropertyInfoSetSize, util.toPointer(PropertyInfoSet));
+  return libHTTPAPI_dll.HttpDelegateRequestEx(util.toPointer(RequestQueueHandle), util.toPointer(DelegateQueueHandle), RequestId, DelegateUrlGroupId, PropertyInfoSetSize, util.toPointer(PropertyInfoSet));
 }
 
 export function HttpFindUrlGroupId(
@@ -3889,7 +3895,7 @@ export function HttpFindUrlGroupId(
   RequestQueueHandle: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
   UrlGroupId: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libHTTPAPI.HttpFindUrlGroupId(util.pwstrToFfi(FullyQualifiedUrl), util.toPointer(RequestQueueHandle), util.toPointer(UrlGroupId));
+  return libHTTPAPI_dll.HttpFindUrlGroupId(util.pwstrToFfi(FullyQualifiedUrl), util.toPointer(RequestQueueHandle), util.toPointer(UrlGroupId));
 }
 
 export function HttpFlushResponseCache(
@@ -3898,7 +3904,7 @@ export function HttpFlushResponseCache(
   Flags: number /* u32 */,
   Overlapped: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libHTTPAPI.HttpFlushResponseCache(util.toPointer(RequestQueueHandle), util.pwstrToFfi(UrlPrefix), Flags, util.toPointer(Overlapped));
+  return libHTTPAPI_dll.HttpFlushResponseCache(util.toPointer(RequestQueueHandle), util.pwstrToFfi(UrlPrefix), Flags, util.toPointer(Overlapped));
 }
 
 export function HttpAddFragmentToCache(
@@ -3908,7 +3914,7 @@ export function HttpAddFragmentToCache(
   CachePolicy: Deno.PointerValue | Uint8Array | null /* ptr */,
   Overlapped: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libHTTPAPI.HttpAddFragmentToCache(util.toPointer(RequestQueueHandle), util.pwstrToFfi(UrlPrefix), util.toPointer(DataChunk), util.toPointer(CachePolicy), util.toPointer(Overlapped));
+  return libHTTPAPI_dll.HttpAddFragmentToCache(util.toPointer(RequestQueueHandle), util.pwstrToFfi(UrlPrefix), util.toPointer(DataChunk), util.toPointer(CachePolicy), util.toPointer(Overlapped));
 }
 
 export function HttpReadFragmentFromCache(
@@ -3920,7 +3926,7 @@ export function HttpReadFragmentFromCache(
   BytesRead: Deno.PointerValue | Uint8Array | null /* ptr */,
   Overlapped: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libHTTPAPI.HttpReadFragmentFromCache(util.toPointer(RequestQueueHandle), util.pwstrToFfi(UrlPrefix), util.toPointer(ByteRange), util.toPointer(Buffer), BufferLength, util.toPointer(BytesRead), util.toPointer(Overlapped));
+  return libHTTPAPI_dll.HttpReadFragmentFromCache(util.toPointer(RequestQueueHandle), util.pwstrToFfi(UrlPrefix), util.toPointer(ByteRange), util.toPointer(Buffer), BufferLength, util.toPointer(BytesRead), util.toPointer(Overlapped));
 }
 
 export function HttpSetServiceConfiguration(
@@ -3930,7 +3936,7 @@ export function HttpSetServiceConfiguration(
   ConfigInformationLength: number /* u32 */,
   pOverlapped: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libHTTPAPI.HttpSetServiceConfiguration(util.toPointer(ServiceHandle), ConfigId, util.toPointer(pConfigInformation), ConfigInformationLength, util.toPointer(pOverlapped));
+  return libHTTPAPI_dll.HttpSetServiceConfiguration(util.toPointer(ServiceHandle), ConfigId, util.toPointer(pConfigInformation), ConfigInformationLength, util.toPointer(pOverlapped));
 }
 
 export function HttpUpdateServiceConfiguration(
@@ -3940,7 +3946,7 @@ export function HttpUpdateServiceConfiguration(
   ConfigInfoLength: number /* u32 */,
   Overlapped: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libHTTPAPI.HttpUpdateServiceConfiguration(util.toPointer(Handle), ConfigId, util.toPointer(ConfigInfo), ConfigInfoLength, util.toPointer(Overlapped));
+  return libHTTPAPI_dll.HttpUpdateServiceConfiguration(util.toPointer(Handle), ConfigId, util.toPointer(ConfigInfo), ConfigInfoLength, util.toPointer(Overlapped));
 }
 
 export function HttpDeleteServiceConfiguration(
@@ -3950,7 +3956,7 @@ export function HttpDeleteServiceConfiguration(
   ConfigInformationLength: number /* u32 */,
   pOverlapped: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libHTTPAPI.HttpDeleteServiceConfiguration(util.toPointer(ServiceHandle), ConfigId, util.toPointer(pConfigInformation), ConfigInformationLength, util.toPointer(pOverlapped));
+  return libHTTPAPI_dll.HttpDeleteServiceConfiguration(util.toPointer(ServiceHandle), ConfigId, util.toPointer(pConfigInformation), ConfigInformationLength, util.toPointer(pOverlapped));
 }
 
 export function HttpQueryServiceConfiguration(
@@ -3963,7 +3969,7 @@ export function HttpQueryServiceConfiguration(
   pReturnLength: Deno.PointerValue | Uint8Array | null /* ptr */,
   pOverlapped: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libHTTPAPI.HttpQueryServiceConfiguration(util.toPointer(ServiceHandle), ConfigId, util.toPointer(pInput), InputLength, util.toPointer(pOutput), OutputLength, util.toPointer(pReturnLength), util.toPointer(pOverlapped));
+  return libHTTPAPI_dll.HttpQueryServiceConfiguration(util.toPointer(ServiceHandle), ConfigId, util.toPointer(pInput), InputLength, util.toPointer(pOutput), OutputLength, util.toPointer(pReturnLength), util.toPointer(pOverlapped));
 }
 
 export function HttpGetExtension(
@@ -3972,6 +3978,6 @@ export function HttpGetExtension(
   Buffer: Deno.PointerValue | Uint8Array | null /* ptr */,
   BufferSize: number /* u32 */,
 ): number /* u32 */ {
-  return libHTTPAPI.HttpGetExtension(util.toPointer(Version), Extension, util.toPointer(Buffer), BufferSize);
+  return libHTTPAPI_dll.HttpGetExtension(util.toPointer(Version), Extension, util.toPointer(Buffer), BufferSize);
 }
 

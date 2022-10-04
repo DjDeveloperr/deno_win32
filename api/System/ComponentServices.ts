@@ -47,6 +47,8 @@ export type CRMREGFLAGS = number;
 export type APTTYPE = number;
 
 // Constants
+export const TRACKER_STARTSTOP_EVENT = "Global\COM+ Tracker Push Event";
+export const TRACKER_INIT_EVENT = "Global\COM+ Tracker Init Event";
 export const GUID_STRING_SIZE = 40;
 export const DATA_NOT_AVAILABLE = 4294967295;
 export const MTXDM_E_ENLISTRESOURCEFAILED = 2147803392;
@@ -497,9 +499,9 @@ export function allocHANG_INFO(data?: Partial<HANG_INFO>): Uint8Array {
 }
 
 /**
- * Windows.Win32.System.ComponentServices.CAppStatistics (size: 16)
+ * Windows.Win32.System.ComponentServices.APPSTATISTICS (size: 16)
  */
-export interface CAppStatistics {
+export interface APPSTATISTICS {
   /** u32 */
   m_cTotalCalls: number;
   /** u32 */
@@ -510,10 +512,10 @@ export interface CAppStatistics {
   m_cCallsPerSecond: number;
 }
 
-export const sizeofCAppStatistics = 16;
+export const sizeofAPPSTATISTICS = 16;
 
-export function allocCAppStatistics(data?: Partial<CAppStatistics>): Uint8Array {
-  const buf = new Uint8Array(sizeofCAppStatistics);
+export function allocAPPSTATISTICS(data?: Partial<APPSTATISTICS>): Uint8Array {
+  const buf = new Uint8Array(sizeofAPPSTATISTICS);
   const view = new DataView(buf.buffer);
   // 0x00: u32
   if (data?.m_cTotalCalls !== undefined) view.setUint32(0, Number(data.m_cTotalCalls), true);
@@ -527,23 +529,23 @@ export function allocCAppStatistics(data?: Partial<CAppStatistics>): Uint8Array 
 }
 
 /**
- * Windows.Win32.System.ComponentServices.CAppData (size: 32)
+ * Windows.Win32.System.ComponentServices.APPDATA (size: 32)
  */
-export interface CAppData {
+export interface APPDATA {
   /** u32 */
   m_idApp: number;
   /** array */
   m_szAppGuid: Deno.PointerValue | null;
   /** u32 */
   m_dwAppProcessId: number;
-  /** Windows.Win32.System.ComponentServices.CAppStatistics */
+  /** Windows.Win32.System.ComponentServices.APPSTATISTICS */
   m_AppStatistics: Uint8Array | Deno.PointerValue | null;
 }
 
-export const sizeofCAppData = 32;
+export const sizeofAPPDATA = 32;
 
-export function allocCAppData(data?: Partial<CAppData>): Uint8Array {
-  const buf = new Uint8Array(sizeofCAppData);
+export function allocAPPDATA(data?: Partial<APPDATA>): Uint8Array {
+  const buf = new Uint8Array(sizeofAPPDATA);
   const view = new DataView(buf.buffer);
   // 0x00: u32
   if (data?.m_idApp !== undefined) view.setUint32(0, Number(data.m_idApp), true);
@@ -559,9 +561,9 @@ export function allocCAppData(data?: Partial<CAppData>): Uint8Array {
 }
 
 /**
- * Windows.Win32.System.ComponentServices.CCLSIDData (size: 40)
+ * Windows.Win32.System.ComponentServices.CLSIDDATA (size: 40)
  */
-export interface CCLSIDData {
+export interface CLSIDDATA {
   /** System.Guid */
   m_clsid: Uint8Array | Deno.PointerValue | null;
   /** u32 */
@@ -580,10 +582,10 @@ export interface CCLSIDData {
   m_cCallsFailed: number;
 }
 
-export const sizeofCCLSIDData = 40;
+export const sizeofCLSIDDATA = 40;
 
-export function allocCCLSIDData(data?: Partial<CCLSIDData>): Uint8Array {
-  const buf = new Uint8Array(sizeofCCLSIDData);
+export function allocCLSIDDATA(data?: Partial<CLSIDDATA>): Uint8Array {
+  const buf = new Uint8Array(sizeofCLSIDDATA);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
   if (data?.m_clsid !== undefined) view.setBigUint64(0, data.m_clsid === null ? 0n : BigInt(util.toPointer(data.m_clsid)), true);
@@ -606,9 +608,9 @@ export function allocCCLSIDData(data?: Partial<CCLSIDData>): Uint8Array {
 }
 
 /**
- * Windows.Win32.System.ComponentServices.CCLSIDData2 (size: 72)
+ * Windows.Win32.System.ComponentServices.CLSIDDATA2 (size: 72)
  */
-export interface CCLSIDData2 {
+export interface CLSIDDATA2 {
   /** System.Guid */
   m_clsid: Uint8Array | Deno.PointerValue | null;
   /** System.Guid */
@@ -637,10 +639,10 @@ export interface CCLSIDData2 {
   m_cCallsFailed: number;
 }
 
-export const sizeofCCLSIDData2 = 72;
+export const sizeofCLSIDDATA2 = 72;
 
-export function allocCCLSIDData2(data?: Partial<CCLSIDData2>): Uint8Array {
-  const buf = new Uint8Array(sizeofCCLSIDData2);
+export function allocCLSIDDATA2(data?: Partial<CLSIDDATA2>): Uint8Array {
+  const buf = new Uint8Array(sizeofCLSIDDATA2);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
   if (data?.m_clsid !== undefined) view.setBigUint64(0, data.m_clsid === null ? 0n : BigInt(util.toPointer(data.m_clsid)), true);
@@ -1108,7 +1110,7 @@ export type HRESULT = number;
 // Native Libraries
 
 try {
-  var libOLE32 = Deno.dlopen("OLE32", {
+  var libOLE32_dll = Deno.dlopen("OLE32.dll", {
     CoGetDefaultContext: {
       parameters: ["i32", "pointer", "pointer"],
       result: "pointer",
@@ -1117,7 +1119,7 @@ try {
 } catch(e) { /* ignore */ }
 
 try {
-  var libcomsvcs = Deno.dlopen("comsvcs", {
+  var libcomsvcs_dll = Deno.dlopen("comsvcs.dll", {
     CoCreateActivity: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "pointer",
@@ -1150,7 +1152,7 @@ try {
 } catch(e) { /* ignore */ }
 
 try {
-  var libMTxDM = Deno.dlopen("MTxDM", {
+  var libMTxDM_dll = Deno.dlopen("MTxDM.dll", {
     GetDispenserManager: {
       parameters: ["pointer"],
       result: "pointer",
@@ -1165,7 +1167,7 @@ export function CoGetDefaultContext(
   riid: Deno.PointerValue | Uint8Array | null /* ptr */,
   ppv: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libOLE32.CoGetDefaultContext(aptType, util.toPointer(riid), util.toPointer(ppv)));
+  return util.pointerFromFfi(libOLE32_dll.CoGetDefaultContext(aptType, util.toPointer(riid), util.toPointer(ppv)));
 }
 
 export function CoCreateActivity(
@@ -1173,50 +1175,50 @@ export function CoCreateActivity(
   riid: Deno.PointerValue | Uint8Array | null /* ptr */,
   ppObj: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libcomsvcs.CoCreateActivity(util.toPointer(pIUnknown), util.toPointer(riid), util.toPointer(ppObj)));
+  return util.pointerFromFfi(libcomsvcs_dll.CoCreateActivity(util.toPointer(pIUnknown), util.toPointer(riid), util.toPointer(ppObj)));
 }
 
 export function CoEnterServiceDomain(
   pConfigObject: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Com.IUnknown */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libcomsvcs.CoEnterServiceDomain(util.toPointer(pConfigObject)));
+  return util.pointerFromFfi(libcomsvcs_dll.CoEnterServiceDomain(util.toPointer(pConfigObject)));
 }
 
 export function CoLeaveServiceDomain(
   pUnkStatus: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Com.IUnknown */,
 ): void /* void */ {
-  return libcomsvcs.CoLeaveServiceDomain(util.toPointer(pUnkStatus));
+  return libcomsvcs_dll.CoLeaveServiceDomain(util.toPointer(pUnkStatus));
 }
 
 export function GetManagedExtensions(
   dwExts: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libcomsvcs.GetManagedExtensions(util.toPointer(dwExts)));
+  return util.pointerFromFfi(libcomsvcs_dll.GetManagedExtensions(util.toPointer(dwExts)));
 }
 
 export function SafeRef(
   rid: Deno.PointerValue | Uint8Array | null /* ptr */,
   pUnk: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Com.IUnknown */,
 ): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libcomsvcs.SafeRef(util.toPointer(rid), util.toPointer(pUnk)));
+  return util.pointerFromFfi(libcomsvcs_dll.SafeRef(util.toPointer(rid), util.toPointer(pUnk)));
 }
 
 export function RecycleSurrogate(
   lReasonCode: number /* i32 */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libcomsvcs.RecycleSurrogate(lReasonCode));
+  return util.pointerFromFfi(libcomsvcs_dll.RecycleSurrogate(lReasonCode));
 }
 
 export function MTSCreateActivity(
   riid: Deno.PointerValue | Uint8Array | null /* ptr */,
   ppobj: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libcomsvcs.MTSCreateActivity(util.toPointer(riid), util.toPointer(ppobj)));
+  return util.pointerFromFfi(libcomsvcs_dll.MTSCreateActivity(util.toPointer(riid), util.toPointer(ppobj)));
 }
 
 export function GetDispenserManager(
   param0: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libMTxDM.GetDispenserManager(util.toPointer(param0)));
+  return util.pointerFromFfi(libMTxDM_dll.GetDispenserManager(util.toPointer(param0)));
 }
 

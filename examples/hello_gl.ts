@@ -79,12 +79,6 @@ const cb = new Deno.UnsafeCallback(
 const wc = Wm.allocWNDCLASSA({
   style: Wm.CS_OWNDC,
   lpfnWndProc: cb.pointer,
-  cbClsExtra: 0,
-  cbWndExtra: 0,
-  hIcon: Wm.LoadIconA(null, "IDI_APPLICATION"),
-  hCursor: Wm.LoadCursorA(null, "IDC_ARROW"),
-  hbrBackground: null,
-  lpszMenuName: null,
   lpszClassName: "OpenGL",
 });
 
@@ -137,7 +131,7 @@ function createOpenGLWindow(
   const pfd = Gfx.allocPIXELFORMATDESCRIPTOR({
     nSize: 40,
     nVersion: 1,
-    dwFlags: Gdi.PFD_DRAW_TO_WINDOW | Gdi.PFD_SUPPORT_OPENGL | flags,
+    dwFlags: Gfx.PFD_DRAW_TO_WINDOW | Gfx.PFD_SUPPORT_OPENGL | flags,
     iPixelType: type,
     cColorBits: 32,
   });
@@ -178,7 +172,7 @@ const hWnd = createOpenGLWindow(
   0,
   800,
   600,
-  Gdi.PFD_TYPE_RGBA,
+  Gfx.PFD_TYPE_RGBA,
   0,
 );
 if (!hWnd) {

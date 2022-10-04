@@ -186,7 +186,7 @@ export type HRESULT = number;
 // Native Libraries
 
 try {
-  var libcomputecore = Deno.dlopen("computecore", {
+  var libcomputecore_dll = Deno.dlopen("computecore.dll", {
     HcsEnumerateComputeSystems: {
       parameters: ["buffer", "pointer"],
       result: "pointer",
@@ -399,7 +399,7 @@ try {
 } catch(e) { /* ignore */ }
 
 try {
-  var libcomputestorage = Deno.dlopen("computestorage", {
+  var libcomputestorage_dll = Deno.dlopen("computestorage.dll", {
     HcsImportLayer: {
       parameters: ["buffer", "buffer", "buffer"],
       result: "pointer",
@@ -457,7 +457,7 @@ export function HcsEnumerateComputeSystems(
   query: string | null /* Windows.Win32.Foundation.PWSTR */,
   operation: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.HostComputeSystem.HCS_OPERATION */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libcomputecore.HcsEnumerateComputeSystems(util.pwstrToFfi(query), util.toPointer(operation)));
+  return util.pointerFromFfi(libcomputecore_dll.HcsEnumerateComputeSystems(util.pwstrToFfi(query), util.toPointer(operation)));
 }
 
 export function HcsEnumerateComputeSystemsInNamespace(
@@ -465,64 +465,64 @@ export function HcsEnumerateComputeSystemsInNamespace(
   query: string | null /* Windows.Win32.Foundation.PWSTR */,
   operation: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.HostComputeSystem.HCS_OPERATION */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libcomputecore.HcsEnumerateComputeSystemsInNamespace(util.pwstrToFfi(idNamespace), util.pwstrToFfi(query), util.toPointer(operation)));
+  return util.pointerFromFfi(libcomputecore_dll.HcsEnumerateComputeSystemsInNamespace(util.pwstrToFfi(idNamespace), util.pwstrToFfi(query), util.toPointer(operation)));
 }
 
 export function HcsCreateOperation(
   context: Deno.PointerValue | Uint8Array | null /* ptr */,
   callback: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.HostComputeSystem.HCS_OPERATION_COMPLETION */,
 ): Deno.PointerValue | null /* Windows.Win32.System.HostComputeSystem.HCS_OPERATION */ {
-  return util.pointerFromFfi(libcomputecore.HcsCreateOperation(util.toPointer(context), util.toPointer(callback)));
+  return util.pointerFromFfi(libcomputecore_dll.HcsCreateOperation(util.toPointer(context), util.toPointer(callback)));
 }
 
 export function HcsCloseOperation(
   operation: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.HostComputeSystem.HCS_OPERATION */,
 ): void /* void */ {
-  return libcomputecore.HcsCloseOperation(util.toPointer(operation));
+  return libcomputecore_dll.HcsCloseOperation(util.toPointer(operation));
 }
 
 export function HcsGetOperationContext(
   operation: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.HostComputeSystem.HCS_OPERATION */,
 ): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libcomputecore.HcsGetOperationContext(util.toPointer(operation)));
+  return util.pointerFromFfi(libcomputecore_dll.HcsGetOperationContext(util.toPointer(operation)));
 }
 
 export function HcsSetOperationContext(
   operation: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.HostComputeSystem.HCS_OPERATION */,
   context: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libcomputecore.HcsSetOperationContext(util.toPointer(operation), util.toPointer(context)));
+  return util.pointerFromFfi(libcomputecore_dll.HcsSetOperationContext(util.toPointer(operation), util.toPointer(context)));
 }
 
 export function HcsGetComputeSystemFromOperation(
   operation: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.HostComputeSystem.HCS_OPERATION */,
 ): Deno.PointerValue | null /* Windows.Win32.System.HostComputeSystem.HCS_SYSTEM */ {
-  return util.pointerFromFfi(libcomputecore.HcsGetComputeSystemFromOperation(util.toPointer(operation)));
+  return util.pointerFromFfi(libcomputecore_dll.HcsGetComputeSystemFromOperation(util.toPointer(operation)));
 }
 
 export function HcsGetProcessFromOperation(
   operation: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.HostComputeSystem.HCS_OPERATION */,
 ): Deno.PointerValue | null /* Windows.Win32.System.HostComputeSystem.HCS_PROCESS */ {
-  return util.pointerFromFfi(libcomputecore.HcsGetProcessFromOperation(util.toPointer(operation)));
+  return util.pointerFromFfi(libcomputecore_dll.HcsGetProcessFromOperation(util.toPointer(operation)));
 }
 
 export function HcsGetOperationType(
   operation: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.HostComputeSystem.HCS_OPERATION */,
 ): HCS_OPERATION_TYPE /* Windows.Win32.System.HostComputeSystem.HCS_OPERATION_TYPE */ {
-  return libcomputecore.HcsGetOperationType(util.toPointer(operation));
+  return libcomputecore_dll.HcsGetOperationType(util.toPointer(operation));
 }
 
 export function HcsGetOperationId(
   operation: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.HostComputeSystem.HCS_OPERATION */,
 ): Deno.PointerValue /* u64 */ {
-  return libcomputecore.HcsGetOperationId(util.toPointer(operation));
+  return libcomputecore_dll.HcsGetOperationId(util.toPointer(operation));
 }
 
 export function HcsGetOperationResult(
   operation: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.HostComputeSystem.HCS_OPERATION */,
   resultDocument: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libcomputecore.HcsGetOperationResult(util.toPointer(operation), util.toPointer(resultDocument)));
+  return util.pointerFromFfi(libcomputecore_dll.HcsGetOperationResult(util.toPointer(operation), util.toPointer(resultDocument)));
 }
 
 export function HcsGetOperationResultAndProcessInfo(
@@ -530,14 +530,14 @@ export function HcsGetOperationResultAndProcessInfo(
   processInformation: Deno.PointerValue | Uint8Array | null /* ptr */,
   resultDocument: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libcomputecore.HcsGetOperationResultAndProcessInfo(util.toPointer(operation), util.toPointer(processInformation), util.toPointer(resultDocument)));
+  return util.pointerFromFfi(libcomputecore_dll.HcsGetOperationResultAndProcessInfo(util.toPointer(operation), util.toPointer(processInformation), util.toPointer(resultDocument)));
 }
 
 export function HcsGetProcessorCompatibilityFromSavedState(
   RuntimeFileName: string | null /* Windows.Win32.Foundation.PWSTR */,
   ProcessorFeaturesString: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libcomputecore.HcsGetProcessorCompatibilityFromSavedState(util.pwstrToFfi(RuntimeFileName), util.toPointer(ProcessorFeaturesString)));
+  return util.pointerFromFfi(libcomputecore_dll.HcsGetProcessorCompatibilityFromSavedState(util.pwstrToFfi(RuntimeFileName), util.toPointer(ProcessorFeaturesString)));
 }
 
 export function HcsWaitForOperationResult(
@@ -545,7 +545,7 @@ export function HcsWaitForOperationResult(
   timeoutMs: number /* u32 */,
   resultDocument: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libcomputecore.HcsWaitForOperationResult(util.toPointer(operation), timeoutMs, util.toPointer(resultDocument)));
+  return util.pointerFromFfi(libcomputecore_dll.HcsWaitForOperationResult(util.toPointer(operation), timeoutMs, util.toPointer(resultDocument)));
 }
 
 export function HcsWaitForOperationResultAndProcessInfo(
@@ -554,7 +554,7 @@ export function HcsWaitForOperationResultAndProcessInfo(
   processInformation: Deno.PointerValue | Uint8Array | null /* ptr */,
   resultDocument: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libcomputecore.HcsWaitForOperationResultAndProcessInfo(util.toPointer(operation), timeoutMs, util.toPointer(processInformation), util.toPointer(resultDocument)));
+  return util.pointerFromFfi(libcomputecore_dll.HcsWaitForOperationResultAndProcessInfo(util.toPointer(operation), timeoutMs, util.toPointer(processInformation), util.toPointer(resultDocument)));
 }
 
 export function HcsSetOperationCallback(
@@ -562,13 +562,13 @@ export function HcsSetOperationCallback(
   context: Deno.PointerValue | Uint8Array | null /* ptr */,
   callback: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.HostComputeSystem.HCS_OPERATION_COMPLETION */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libcomputecore.HcsSetOperationCallback(util.toPointer(operation), util.toPointer(context), util.toPointer(callback)));
+  return util.pointerFromFfi(libcomputecore_dll.HcsSetOperationCallback(util.toPointer(operation), util.toPointer(context), util.toPointer(callback)));
 }
 
 export function HcsCancelOperation(
   operation: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.HostComputeSystem.HCS_OPERATION */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libcomputecore.HcsCancelOperation(util.toPointer(operation)));
+  return util.pointerFromFfi(libcomputecore_dll.HcsCancelOperation(util.toPointer(operation)));
 }
 
 export function HcsCreateComputeSystem(
@@ -578,7 +578,7 @@ export function HcsCreateComputeSystem(
   securityDescriptor: Deno.PointerValue | Uint8Array | null /* ptr */,
   computeSystem: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libcomputecore.HcsCreateComputeSystem(util.pwstrToFfi(id), util.pwstrToFfi(configuration), util.toPointer(operation), util.toPointer(securityDescriptor), util.toPointer(computeSystem)));
+  return util.pointerFromFfi(libcomputecore_dll.HcsCreateComputeSystem(util.pwstrToFfi(id), util.pwstrToFfi(configuration), util.toPointer(operation), util.toPointer(securityDescriptor), util.toPointer(computeSystem)));
 }
 
 export function HcsCreateComputeSystemInNamespace(
@@ -589,7 +589,7 @@ export function HcsCreateComputeSystemInNamespace(
   options: Deno.PointerValue | Uint8Array | null /* ptr */,
   computeSystem: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libcomputecore.HcsCreateComputeSystemInNamespace(util.pwstrToFfi(idNamespace), util.pwstrToFfi(id), util.pwstrToFfi(configuration), util.toPointer(operation), util.toPointer(options), util.toPointer(computeSystem)));
+  return util.pointerFromFfi(libcomputecore_dll.HcsCreateComputeSystemInNamespace(util.pwstrToFfi(idNamespace), util.pwstrToFfi(id), util.pwstrToFfi(configuration), util.toPointer(operation), util.toPointer(options), util.toPointer(computeSystem)));
 }
 
 export function HcsOpenComputeSystem(
@@ -597,7 +597,7 @@ export function HcsOpenComputeSystem(
   requestedAccess: number /* u32 */,
   computeSystem: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libcomputecore.HcsOpenComputeSystem(util.pwstrToFfi(id), requestedAccess, util.toPointer(computeSystem)));
+  return util.pointerFromFfi(libcomputecore_dll.HcsOpenComputeSystem(util.pwstrToFfi(id), requestedAccess, util.toPointer(computeSystem)));
 }
 
 export function HcsOpenComputeSystemInNamespace(
@@ -606,13 +606,13 @@ export function HcsOpenComputeSystemInNamespace(
   requestedAccess: number /* u32 */,
   computeSystem: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libcomputecore.HcsOpenComputeSystemInNamespace(util.pwstrToFfi(idNamespace), util.pwstrToFfi(id), requestedAccess, util.toPointer(computeSystem)));
+  return util.pointerFromFfi(libcomputecore_dll.HcsOpenComputeSystemInNamespace(util.pwstrToFfi(idNamespace), util.pwstrToFfi(id), requestedAccess, util.toPointer(computeSystem)));
 }
 
 export function HcsCloseComputeSystem(
   computeSystem: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.HostComputeSystem.HCS_SYSTEM */,
 ): void /* void */ {
-  return libcomputecore.HcsCloseComputeSystem(util.toPointer(computeSystem));
+  return libcomputecore_dll.HcsCloseComputeSystem(util.toPointer(computeSystem));
 }
 
 export function HcsStartComputeSystem(
@@ -620,7 +620,7 @@ export function HcsStartComputeSystem(
   operation: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.HostComputeSystem.HCS_OPERATION */,
   options: string | null /* Windows.Win32.Foundation.PWSTR */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libcomputecore.HcsStartComputeSystem(util.toPointer(computeSystem), util.toPointer(operation), util.pwstrToFfi(options)));
+  return util.pointerFromFfi(libcomputecore_dll.HcsStartComputeSystem(util.toPointer(computeSystem), util.toPointer(operation), util.pwstrToFfi(options)));
 }
 
 export function HcsShutDownComputeSystem(
@@ -628,7 +628,7 @@ export function HcsShutDownComputeSystem(
   operation: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.HostComputeSystem.HCS_OPERATION */,
   options: string | null /* Windows.Win32.Foundation.PWSTR */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libcomputecore.HcsShutDownComputeSystem(util.toPointer(computeSystem), util.toPointer(operation), util.pwstrToFfi(options)));
+  return util.pointerFromFfi(libcomputecore_dll.HcsShutDownComputeSystem(util.toPointer(computeSystem), util.toPointer(operation), util.pwstrToFfi(options)));
 }
 
 export function HcsTerminateComputeSystem(
@@ -636,7 +636,7 @@ export function HcsTerminateComputeSystem(
   operation: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.HostComputeSystem.HCS_OPERATION */,
   options: string | null /* Windows.Win32.Foundation.PWSTR */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libcomputecore.HcsTerminateComputeSystem(util.toPointer(computeSystem), util.toPointer(operation), util.pwstrToFfi(options)));
+  return util.pointerFromFfi(libcomputecore_dll.HcsTerminateComputeSystem(util.toPointer(computeSystem), util.toPointer(operation), util.pwstrToFfi(options)));
 }
 
 export function HcsCrashComputeSystem(
@@ -644,7 +644,7 @@ export function HcsCrashComputeSystem(
   operation: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.HostComputeSystem.HCS_OPERATION */,
   options: string | null /* Windows.Win32.Foundation.PWSTR */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libcomputecore.HcsCrashComputeSystem(util.toPointer(computeSystem), util.toPointer(operation), util.pwstrToFfi(options)));
+  return util.pointerFromFfi(libcomputecore_dll.HcsCrashComputeSystem(util.toPointer(computeSystem), util.toPointer(operation), util.pwstrToFfi(options)));
 }
 
 export function HcsPauseComputeSystem(
@@ -652,7 +652,7 @@ export function HcsPauseComputeSystem(
   operation: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.HostComputeSystem.HCS_OPERATION */,
   options: string | null /* Windows.Win32.Foundation.PWSTR */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libcomputecore.HcsPauseComputeSystem(util.toPointer(computeSystem), util.toPointer(operation), util.pwstrToFfi(options)));
+  return util.pointerFromFfi(libcomputecore_dll.HcsPauseComputeSystem(util.toPointer(computeSystem), util.toPointer(operation), util.pwstrToFfi(options)));
 }
 
 export function HcsResumeComputeSystem(
@@ -660,7 +660,7 @@ export function HcsResumeComputeSystem(
   operation: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.HostComputeSystem.HCS_OPERATION */,
   options: string | null /* Windows.Win32.Foundation.PWSTR */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libcomputecore.HcsResumeComputeSystem(util.toPointer(computeSystem), util.toPointer(operation), util.pwstrToFfi(options)));
+  return util.pointerFromFfi(libcomputecore_dll.HcsResumeComputeSystem(util.toPointer(computeSystem), util.toPointer(operation), util.pwstrToFfi(options)));
 }
 
 export function HcsSaveComputeSystem(
@@ -668,7 +668,7 @@ export function HcsSaveComputeSystem(
   operation: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.HostComputeSystem.HCS_OPERATION */,
   options: string | null /* Windows.Win32.Foundation.PWSTR */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libcomputecore.HcsSaveComputeSystem(util.toPointer(computeSystem), util.toPointer(operation), util.pwstrToFfi(options)));
+  return util.pointerFromFfi(libcomputecore_dll.HcsSaveComputeSystem(util.toPointer(computeSystem), util.toPointer(operation), util.pwstrToFfi(options)));
 }
 
 export function HcsGetComputeSystemProperties(
@@ -676,7 +676,7 @@ export function HcsGetComputeSystemProperties(
   operation: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.HostComputeSystem.HCS_OPERATION */,
   propertyQuery: string | null /* Windows.Win32.Foundation.PWSTR */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libcomputecore.HcsGetComputeSystemProperties(util.toPointer(computeSystem), util.toPointer(operation), util.pwstrToFfi(propertyQuery)));
+  return util.pointerFromFfi(libcomputecore_dll.HcsGetComputeSystemProperties(util.toPointer(computeSystem), util.toPointer(operation), util.pwstrToFfi(propertyQuery)));
 }
 
 export function HcsModifyComputeSystem(
@@ -685,7 +685,7 @@ export function HcsModifyComputeSystem(
   configuration: string | null /* Windows.Win32.Foundation.PWSTR */,
   identity: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libcomputecore.HcsModifyComputeSystem(util.toPointer(computeSystem), util.toPointer(operation), util.pwstrToFfi(configuration), util.toPointer(identity)));
+  return util.pointerFromFfi(libcomputecore_dll.HcsModifyComputeSystem(util.toPointer(computeSystem), util.toPointer(operation), util.pwstrToFfi(configuration), util.toPointer(identity)));
 }
 
 export function HcsWaitForComputeSystemExit(
@@ -693,7 +693,7 @@ export function HcsWaitForComputeSystemExit(
   timeoutMs: number /* u32 */,
   result: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libcomputecore.HcsWaitForComputeSystemExit(util.toPointer(computeSystem), timeoutMs, util.toPointer(result)));
+  return util.pointerFromFfi(libcomputecore_dll.HcsWaitForComputeSystemExit(util.toPointer(computeSystem), timeoutMs, util.toPointer(result)));
 }
 
 export function HcsSetComputeSystemCallback(
@@ -702,7 +702,7 @@ export function HcsSetComputeSystemCallback(
   context: Deno.PointerValue | Uint8Array | null /* ptr */,
   callback: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.HostComputeSystem.HCS_EVENT_CALLBACK */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libcomputecore.HcsSetComputeSystemCallback(util.toPointer(computeSystem), callbackOptions, util.toPointer(context), util.toPointer(callback)));
+  return util.pointerFromFfi(libcomputecore_dll.HcsSetComputeSystemCallback(util.toPointer(computeSystem), callbackOptions, util.toPointer(context), util.toPointer(callback)));
 }
 
 export function HcsCreateProcess(
@@ -712,7 +712,7 @@ export function HcsCreateProcess(
   securityDescriptor: Deno.PointerValue | Uint8Array | null /* ptr */,
   process: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libcomputecore.HcsCreateProcess(util.toPointer(computeSystem), util.pwstrToFfi(processParameters), util.toPointer(operation), util.toPointer(securityDescriptor), util.toPointer(process)));
+  return util.pointerFromFfi(libcomputecore_dll.HcsCreateProcess(util.toPointer(computeSystem), util.pwstrToFfi(processParameters), util.toPointer(operation), util.toPointer(securityDescriptor), util.toPointer(process)));
 }
 
 export function HcsOpenProcess(
@@ -721,13 +721,13 @@ export function HcsOpenProcess(
   requestedAccess: number /* u32 */,
   process: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libcomputecore.HcsOpenProcess(util.toPointer(computeSystem), processId, requestedAccess, util.toPointer(process)));
+  return util.pointerFromFfi(libcomputecore_dll.HcsOpenProcess(util.toPointer(computeSystem), processId, requestedAccess, util.toPointer(process)));
 }
 
 export function HcsCloseProcess(
   process: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.HostComputeSystem.HCS_PROCESS */,
 ): void /* void */ {
-  return libcomputecore.HcsCloseProcess(util.toPointer(process));
+  return libcomputecore_dll.HcsCloseProcess(util.toPointer(process));
 }
 
 export function HcsTerminateProcess(
@@ -735,7 +735,7 @@ export function HcsTerminateProcess(
   operation: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.HostComputeSystem.HCS_OPERATION */,
   options: string | null /* Windows.Win32.Foundation.PWSTR */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libcomputecore.HcsTerminateProcess(util.toPointer(process), util.toPointer(operation), util.pwstrToFfi(options)));
+  return util.pointerFromFfi(libcomputecore_dll.HcsTerminateProcess(util.toPointer(process), util.toPointer(operation), util.pwstrToFfi(options)));
 }
 
 export function HcsSignalProcess(
@@ -743,14 +743,14 @@ export function HcsSignalProcess(
   operation: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.HostComputeSystem.HCS_OPERATION */,
   options: string | null /* Windows.Win32.Foundation.PWSTR */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libcomputecore.HcsSignalProcess(util.toPointer(process), util.toPointer(operation), util.pwstrToFfi(options)));
+  return util.pointerFromFfi(libcomputecore_dll.HcsSignalProcess(util.toPointer(process), util.toPointer(operation), util.pwstrToFfi(options)));
 }
 
 export function HcsGetProcessInfo(
   process: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.HostComputeSystem.HCS_PROCESS */,
   operation: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.HostComputeSystem.HCS_OPERATION */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libcomputecore.HcsGetProcessInfo(util.toPointer(process), util.toPointer(operation)));
+  return util.pointerFromFfi(libcomputecore_dll.HcsGetProcessInfo(util.toPointer(process), util.toPointer(operation)));
 }
 
 export function HcsGetProcessProperties(
@@ -758,7 +758,7 @@ export function HcsGetProcessProperties(
   operation: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.HostComputeSystem.HCS_OPERATION */,
   propertyQuery: string | null /* Windows.Win32.Foundation.PWSTR */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libcomputecore.HcsGetProcessProperties(util.toPointer(process), util.toPointer(operation), util.pwstrToFfi(propertyQuery)));
+  return util.pointerFromFfi(libcomputecore_dll.HcsGetProcessProperties(util.toPointer(process), util.toPointer(operation), util.pwstrToFfi(propertyQuery)));
 }
 
 export function HcsModifyProcess(
@@ -766,7 +766,7 @@ export function HcsModifyProcess(
   operation: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.HostComputeSystem.HCS_OPERATION */,
   settings: string | null /* Windows.Win32.Foundation.PWSTR */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libcomputecore.HcsModifyProcess(util.toPointer(process), util.toPointer(operation), util.pwstrToFfi(settings)));
+  return util.pointerFromFfi(libcomputecore_dll.HcsModifyProcess(util.toPointer(process), util.toPointer(operation), util.pwstrToFfi(settings)));
 }
 
 export function HcsSetProcessCallback(
@@ -775,7 +775,7 @@ export function HcsSetProcessCallback(
   context: Deno.PointerValue | Uint8Array | null /* ptr */,
   callback: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.HostComputeSystem.HCS_EVENT_CALLBACK */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libcomputecore.HcsSetProcessCallback(util.toPointer(process), callbackOptions, util.toPointer(context), util.toPointer(callback)));
+  return util.pointerFromFfi(libcomputecore_dll.HcsSetProcessCallback(util.toPointer(process), callbackOptions, util.toPointer(context), util.toPointer(callback)));
 }
 
 export function HcsWaitForProcessExit(
@@ -783,65 +783,65 @@ export function HcsWaitForProcessExit(
   timeoutMs: number /* u32 */,
   result: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libcomputecore.HcsWaitForProcessExit(util.toPointer(computeSystem), timeoutMs, util.toPointer(result)));
+  return util.pointerFromFfi(libcomputecore_dll.HcsWaitForProcessExit(util.toPointer(computeSystem), timeoutMs, util.toPointer(result)));
 }
 
 export function HcsGetServiceProperties(
   propertyQuery: string | null /* Windows.Win32.Foundation.PWSTR */,
   result: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libcomputecore.HcsGetServiceProperties(util.pwstrToFfi(propertyQuery), util.toPointer(result)));
+  return util.pointerFromFfi(libcomputecore_dll.HcsGetServiceProperties(util.pwstrToFfi(propertyQuery), util.toPointer(result)));
 }
 
 export function HcsModifyServiceSettings(
   settings: string | null /* Windows.Win32.Foundation.PWSTR */,
   result: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libcomputecore.HcsModifyServiceSettings(util.pwstrToFfi(settings), util.toPointer(result)));
+  return util.pointerFromFfi(libcomputecore_dll.HcsModifyServiceSettings(util.pwstrToFfi(settings), util.toPointer(result)));
 }
 
 export function HcsSubmitWerReport(
   settings: string | null /* Windows.Win32.Foundation.PWSTR */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libcomputecore.HcsSubmitWerReport(util.pwstrToFfi(settings)));
+  return util.pointerFromFfi(libcomputecore_dll.HcsSubmitWerReport(util.pwstrToFfi(settings)));
 }
 
 export function HcsCreateEmptyGuestStateFile(
   guestStateFilePath: string | null /* Windows.Win32.Foundation.PWSTR */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libcomputecore.HcsCreateEmptyGuestStateFile(util.pwstrToFfi(guestStateFilePath)));
+  return util.pointerFromFfi(libcomputecore_dll.HcsCreateEmptyGuestStateFile(util.pwstrToFfi(guestStateFilePath)));
 }
 
 export function HcsCreateEmptyRuntimeStateFile(
   runtimeStateFilePath: string | null /* Windows.Win32.Foundation.PWSTR */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libcomputecore.HcsCreateEmptyRuntimeStateFile(util.pwstrToFfi(runtimeStateFilePath)));
+  return util.pointerFromFfi(libcomputecore_dll.HcsCreateEmptyRuntimeStateFile(util.pwstrToFfi(runtimeStateFilePath)));
 }
 
 export function HcsGrantVmAccess(
   vmId: string | null /* Windows.Win32.Foundation.PWSTR */,
   filePath: string | null /* Windows.Win32.Foundation.PWSTR */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libcomputecore.HcsGrantVmAccess(util.pwstrToFfi(vmId), util.pwstrToFfi(filePath)));
+  return util.pointerFromFfi(libcomputecore_dll.HcsGrantVmAccess(util.pwstrToFfi(vmId), util.pwstrToFfi(filePath)));
 }
 
 export function HcsRevokeVmAccess(
   vmId: string | null /* Windows.Win32.Foundation.PWSTR */,
   filePath: string | null /* Windows.Win32.Foundation.PWSTR */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libcomputecore.HcsRevokeVmAccess(util.pwstrToFfi(vmId), util.pwstrToFfi(filePath)));
+  return util.pointerFromFfi(libcomputecore_dll.HcsRevokeVmAccess(util.pwstrToFfi(vmId), util.pwstrToFfi(filePath)));
 }
 
 export function HcsGrantVmGroupAccess(
   filePath: string | null /* Windows.Win32.Foundation.PWSTR */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libcomputecore.HcsGrantVmGroupAccess(util.pwstrToFfi(filePath)));
+  return util.pointerFromFfi(libcomputecore_dll.HcsGrantVmGroupAccess(util.pwstrToFfi(filePath)));
 }
 
 export function HcsRevokeVmGroupAccess(
   filePath: string | null /* Windows.Win32.Foundation.PWSTR */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libcomputecore.HcsRevokeVmGroupAccess(util.pwstrToFfi(filePath)));
+  return util.pointerFromFfi(libcomputecore_dll.HcsRevokeVmGroupAccess(util.pwstrToFfi(filePath)));
 }
 
 export function HcsImportLayer(
@@ -849,7 +849,7 @@ export function HcsImportLayer(
   sourceFolderPath: string | null /* Windows.Win32.Foundation.PWSTR */,
   layerData: string | null /* Windows.Win32.Foundation.PWSTR */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libcomputestorage.HcsImportLayer(util.pwstrToFfi(layerPath), util.pwstrToFfi(sourceFolderPath), util.pwstrToFfi(layerData)));
+  return util.pointerFromFfi(libcomputestorage_dll.HcsImportLayer(util.pwstrToFfi(layerPath), util.pwstrToFfi(sourceFolderPath), util.pwstrToFfi(layerData)));
 }
 
 export function HcsExportLayer(
@@ -858,7 +858,7 @@ export function HcsExportLayer(
   layerData: string | null /* Windows.Win32.Foundation.PWSTR */,
   options: string | null /* Windows.Win32.Foundation.PWSTR */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libcomputestorage.HcsExportLayer(util.pwstrToFfi(layerPath), util.pwstrToFfi(exportFolderPath), util.pwstrToFfi(layerData), util.pwstrToFfi(options)));
+  return util.pointerFromFfi(libcomputestorage_dll.HcsExportLayer(util.pwstrToFfi(layerPath), util.pwstrToFfi(exportFolderPath), util.pwstrToFfi(layerData), util.pwstrToFfi(options)));
 }
 
 export function HcsExportLegacyWritableLayer(
@@ -867,13 +867,13 @@ export function HcsExportLegacyWritableLayer(
   exportFolderPath: string | null /* Windows.Win32.Foundation.PWSTR */,
   layerData: string | null /* Windows.Win32.Foundation.PWSTR */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libcomputestorage.HcsExportLegacyWritableLayer(util.pwstrToFfi(writableLayerMountPath), util.pwstrToFfi(writableLayerFolderPath), util.pwstrToFfi(exportFolderPath), util.pwstrToFfi(layerData)));
+  return util.pointerFromFfi(libcomputestorage_dll.HcsExportLegacyWritableLayer(util.pwstrToFfi(writableLayerMountPath), util.pwstrToFfi(writableLayerFolderPath), util.pwstrToFfi(exportFolderPath), util.pwstrToFfi(layerData)));
 }
 
 export function HcsDestroyLayer(
   layerPath: string | null /* Windows.Win32.Foundation.PWSTR */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libcomputestorage.HcsDestroyLayer(util.pwstrToFfi(layerPath)));
+  return util.pointerFromFfi(libcomputestorage_dll.HcsDestroyLayer(util.pwstrToFfi(layerPath)));
 }
 
 export function HcsSetupBaseOSLayer(
@@ -881,7 +881,7 @@ export function HcsSetupBaseOSLayer(
   vhdHandle: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
   options: string | null /* Windows.Win32.Foundation.PWSTR */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libcomputestorage.HcsSetupBaseOSLayer(util.pwstrToFfi(layerPath), util.toPointer(vhdHandle), util.pwstrToFfi(options)));
+  return util.pointerFromFfi(libcomputestorage_dll.HcsSetupBaseOSLayer(util.pwstrToFfi(layerPath), util.toPointer(vhdHandle), util.pwstrToFfi(options)));
 }
 
 export function HcsInitializeWritableLayer(
@@ -889,7 +889,7 @@ export function HcsInitializeWritableLayer(
   layerData: string | null /* Windows.Win32.Foundation.PWSTR */,
   options: string | null /* Windows.Win32.Foundation.PWSTR */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libcomputestorage.HcsInitializeWritableLayer(util.pwstrToFfi(writableLayerPath), util.pwstrToFfi(layerData), util.pwstrToFfi(options)));
+  return util.pointerFromFfi(libcomputestorage_dll.HcsInitializeWritableLayer(util.pwstrToFfi(writableLayerPath), util.pwstrToFfi(layerData), util.pwstrToFfi(options)));
 }
 
 export function HcsInitializeLegacyWritableLayer(
@@ -898,33 +898,33 @@ export function HcsInitializeLegacyWritableLayer(
   layerData: string | null /* Windows.Win32.Foundation.PWSTR */,
   options: string | null /* Windows.Win32.Foundation.PWSTR */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libcomputestorage.HcsInitializeLegacyWritableLayer(util.pwstrToFfi(writableLayerMountPath), util.pwstrToFfi(writableLayerFolderPath), util.pwstrToFfi(layerData), util.pwstrToFfi(options)));
+  return util.pointerFromFfi(libcomputestorage_dll.HcsInitializeLegacyWritableLayer(util.pwstrToFfi(writableLayerMountPath), util.pwstrToFfi(writableLayerFolderPath), util.pwstrToFfi(layerData), util.pwstrToFfi(options)));
 }
 
 export function HcsAttachLayerStorageFilter(
   layerPath: string | null /* Windows.Win32.Foundation.PWSTR */,
   layerData: string | null /* Windows.Win32.Foundation.PWSTR */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libcomputestorage.HcsAttachLayerStorageFilter(util.pwstrToFfi(layerPath), util.pwstrToFfi(layerData)));
+  return util.pointerFromFfi(libcomputestorage_dll.HcsAttachLayerStorageFilter(util.pwstrToFfi(layerPath), util.pwstrToFfi(layerData)));
 }
 
 export function HcsDetachLayerStorageFilter(
   layerPath: string | null /* Windows.Win32.Foundation.PWSTR */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libcomputestorage.HcsDetachLayerStorageFilter(util.pwstrToFfi(layerPath)));
+  return util.pointerFromFfi(libcomputestorage_dll.HcsDetachLayerStorageFilter(util.pwstrToFfi(layerPath)));
 }
 
 export function HcsFormatWritableLayerVhd(
   vhdHandle: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libcomputestorage.HcsFormatWritableLayerVhd(util.toPointer(vhdHandle)));
+  return util.pointerFromFfi(libcomputestorage_dll.HcsFormatWritableLayerVhd(util.toPointer(vhdHandle)));
 }
 
 export function HcsGetLayerVhdMountPath(
   vhdHandle: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
   mountPath: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libcomputestorage.HcsGetLayerVhdMountPath(util.toPointer(vhdHandle), util.toPointer(mountPath)));
+  return util.pointerFromFfi(libcomputestorage_dll.HcsGetLayerVhdMountPath(util.toPointer(vhdHandle), util.toPointer(mountPath)));
 }
 
 export function HcsSetupBaseOSVolume(
@@ -932,6 +932,6 @@ export function HcsSetupBaseOSVolume(
   volumePath: string | null /* Windows.Win32.Foundation.PWSTR */,
   options: string | null /* Windows.Win32.Foundation.PWSTR */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libcomputestorage.HcsSetupBaseOSVolume(util.pwstrToFfi(layerPath), util.pwstrToFfi(volumePath), util.pwstrToFfi(options)));
+  return util.pointerFromFfi(libcomputestorage_dll.HcsSetupBaseOSVolume(util.pwstrToFfi(layerPath), util.pwstrToFfi(volumePath), util.pwstrToFfi(options)));
 }
 

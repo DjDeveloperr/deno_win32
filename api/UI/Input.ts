@@ -13,6 +13,11 @@ export type NOTIFY_IME_INDEX = number;
 export type NOTIFY_IME_ACTION = number;
 export type GET_CONVERSION_LIST_FLAG = number;
 export type IME_PAD_REQUEST_FLAGS = number;
+export type IME_CONVERSION_MODE = number;
+export type IME_SENTENCE_MODE = number;
+export type IME_COMPOSITION_STRING = number;
+export type IME_ESCAPE = number;
+export type IME_HOTKEY_IDENTIFIER = number;
 export type HOT_KEY_MODIFIERS = number;
 export type ACTIVATE_KEYBOARD_LAYOUT_FLAGS = number;
 export type GET_MOUSE_MOVE_POINTS_EX_RESOLUTION = number;
@@ -28,10 +33,23 @@ export type TOUCHEVENTF_FLAGS = number;
 export type TOUCHINPUTMASKF_MASK = number;
 export type REGISTER_TOUCH_WINDOW_FLAGS = number;
 export type XINPUT_VIRTUAL_KEY = number;
+export type BATTERY_TYPE = number;
+export type BATTERY_LEVEL = number;
+export type BATTERY_DEVTYPE = number;
+export type XINPUT_DEVTYPE = number;
+export type XINPUT_DEVSUBTYPE = number;
+export type XINPUT_CAPABILITIES_FLAGS = number;
+export type XINPUT_GAMEPAD_BUTTON_FLAGS = number;
+export type XINPUT_KEYSTROKE_FLAGS = number;
+export type XINPUT_FLAG = number;
 export type IMEREG = number;
 export type IMEFMT = number;
 export type IMEUCT = number;
 export type IMEREL = number;
+export type FONT_CHARSET = number;
+export type FONT_OUTPUT_PRECISION = number;
+export type FONT_CLIP_PRECISION = number;
+export type FONT_QUALITY = number;
 export type INK_HIGH_CONTRAST_ADJUSTMENT = number;
 export type MANIPULATION_PROCESSOR_MANIPULATIONS = number;
 export type POINTER_BUTTON_CHANGE_TYPE = number;
@@ -101,6 +119,73 @@ export const IMEPADREQ_SETAPPLETMINMAXSIZE = 4125;
 export const IMEPADREQ_GETCONVERSIONSTATUS = 4126;
 export const IMEPADREQ_GETVERSION = 4127;
 export const IMEPADREQ_GETCURRENTIMEINFO = 4128;
+export const IME_CMODE_ALPHANUMERIC = 0;
+export const IME_CMODE_NATIVE = 1;
+export const IME_CMODE_CHINESE = 1;
+export const IME_CMODE_HANGUL = 1;
+export const IME_CMODE_JAPANESE = 1;
+export const IME_CMODE_KATAKANA = 2;
+export const IME_CMODE_LANGUAGE = 3;
+export const IME_CMODE_FULLSHAPE = 8;
+export const IME_CMODE_ROMAN = 16;
+export const IME_CMODE_CHARCODE = 32;
+export const IME_CMODE_HANJACONVERT = 64;
+export const IME_CMODE_NATIVESYMBOL = 128;
+export const IME_CMODE_HANGEUL = 1;
+export const IME_CMODE_SOFTKBD = 128;
+export const IME_CMODE_NOCONVERSION = 256;
+export const IME_CMODE_EUDC = 512;
+export const IME_CMODE_SYMBOL = 1024;
+export const IME_CMODE_FIXED = 2048;
+export const IME_CMODE_RESERVED = 4026531840;
+export const IME_SMODE_NONE = 0;
+export const IME_SMODE_PLAURALCLAUSE = 1;
+export const IME_SMODE_SINGLECONVERT = 2;
+export const IME_SMODE_AUTOMATIC = 4;
+export const IME_SMODE_PHRASEPREDICT = 8;
+export const IME_SMODE_CONVERSATION = 16;
+export const IME_SMODE_RESERVED = 61440;
+export const GCS_COMPREADSTR = 1;
+export const GCS_COMPREADATTR = 2;
+export const GCS_COMPREADCLAUSE = 4;
+export const GCS_COMPSTR = 8;
+export const GCS_COMPATTR = 16;
+export const GCS_COMPCLAUSE = 32;
+export const GCS_CURSORPOS = 128;
+export const GCS_DELTASTART = 256;
+export const GCS_RESULTREADSTR = 512;
+export const GCS_RESULTREADCLAUSE = 1024;
+export const GCS_RESULTSTR = 2048;
+export const GCS_RESULTCLAUSE = 4096;
+export const IME_ESC_QUERY_SUPPORT = 3;
+export const IME_ESC_RESERVED_FIRST = 4;
+export const IME_ESC_RESERVED_LAST = 2047;
+export const IME_ESC_PRIVATE_FIRST = 2048;
+export const IME_ESC_PRIVATE_LAST = 4095;
+export const IME_ESC_SEQUENCE_TO_INTERNAL = 4097;
+export const IME_ESC_GET_EUDC_DICTIONARY = 4099;
+export const IME_ESC_SET_EUDC_DICTIONARY = 4100;
+export const IME_ESC_MAX_KEY = 4101;
+export const IME_ESC_IME_NAME = 4102;
+export const IME_ESC_SYNC_HOTKEY = 4103;
+export const IME_ESC_HANJA_MODE = 4104;
+export const IME_ESC_AUTOMATA = 4105;
+export const IME_ESC_PRIVATE_HOTKEY = 4106;
+export const IME_ESC_GETHELPFILENAME = 4107;
+export const IME_CHOTKEY_IME_NONIME_TOGGLE = 16;
+export const IME_CHOTKEY_SHAPE_TOGGLE = 17;
+export const IME_CHOTKEY_SYMBOL_TOGGLE = 18;
+export const IME_JHOTKEY_CLOSE_OPEN = 48;
+export const IME_KHOTKEY_SHAPE_TOGGLE = 80;
+export const IME_KHOTKEY_HANJACONVERT = 81;
+export const IME_KHOTKEY_ENGLISH = 82;
+export const IME_THOTKEY_IME_NONIME_TOGGLE = 112;
+export const IME_THOTKEY_SHAPE_TOGGLE = 113;
+export const IME_THOTKEY_SYMBOL_TOGGLE = 114;
+export const IME_ITHOTKEY_RESEND_RESULTSTR = 512;
+export const IME_ITHOTKEY_PREVIOUS_COMPOSITION = 513;
+export const IME_ITHOTKEY_UISTYLE_TOGGLE = 514;
+export const IME_ITHOTKEY_RECONVERTSTRING = 515;
 export const MOD_ALT = 1;
 export const MOD_CONTROL = 2;
 export const MOD_NOREPEAT = 16384;
@@ -447,6 +532,324 @@ export const VK_PAD_RTHUMB_UPLEFT = 22580;
 export const VK_PAD_RTHUMB_UPRIGHT = 22581;
 export const VK_PAD_RTHUMB_DOWNRIGHT = 22582;
 export const VK_PAD_RTHUMB_DOWNLEFT = 22583;
+export const BATTERY_TYPE_DISCONNECTED = 0;
+export const BATTERY_TYPE_WIRED = 1;
+export const BATTERY_TYPE_ALKALINE = 2;
+export const BATTERY_TYPE_NIMH = 3;
+export const BATTERY_TYPE_UNKNOWN = 255;
+export const BATTERY_LEVEL_EMPTY = 0;
+export const BATTERY_LEVEL_LOW = 1;
+export const BATTERY_LEVEL_MEDIUM = 2;
+export const BATTERY_LEVEL_FULL = 3;
+export const BATTERY_DEVTYPE_GAMEPAD = 0;
+export const BATTERY_DEVTYPE_HEADSET = 1;
+export const XINPUT_DEVTYPE_GAMEPAD = 1;
+export const XINPUT_DEVSUBTYPE_GAMEPAD = 1;
+export const XINPUT_DEVSUBTYPE_UNKNOWN = 0;
+export const XINPUT_DEVSUBTYPE_WHEEL = 2;
+export const XINPUT_DEVSUBTYPE_ARCADE_STICK = 3;
+export const XINPUT_DEVSUBTYPE_FLIGHT_STICK = 4;
+export const XINPUT_DEVSUBTYPE_DANCE_PAD = 5;
+export const XINPUT_DEVSUBTYPE_GUITAR = 6;
+export const XINPUT_DEVSUBTYPE_GUITAR_ALTERNATE = 7;
+export const XINPUT_DEVSUBTYPE_DRUM_KIT = 8;
+export const XINPUT_DEVSUBTYPE_GUITAR_BASS = 11;
+export const XINPUT_DEVSUBTYPE_ARCADE_PAD = 19;
+export const XINPUT_CAPS_VOICE_SUPPORTED = 4;
+export const XINPUT_CAPS_FFB_SUPPORTED = 1;
+export const XINPUT_CAPS_WIRELESS = 2;
+export const XINPUT_CAPS_PMD_SUPPORTED = 8;
+export const XINPUT_CAPS_NO_NAVIGATION = 16;
+export const XINPUT_GAMEPAD_DPAD_UP = 1;
+export const XINPUT_GAMEPAD_DPAD_DOWN = 2;
+export const XINPUT_GAMEPAD_DPAD_LEFT = 4;
+export const XINPUT_GAMEPAD_DPAD_RIGHT = 8;
+export const XINPUT_GAMEPAD_START = 16;
+export const XINPUT_GAMEPAD_BACK = 32;
+export const XINPUT_GAMEPAD_LEFT_THUMB = 64;
+export const XINPUT_GAMEPAD_RIGHT_THUMB = 128;
+export const XINPUT_GAMEPAD_LEFT_SHOULDER = 256;
+export const XINPUT_GAMEPAD_RIGHT_SHOULDER = 512;
+export const XINPUT_GAMEPAD_A = 4096;
+export const XINPUT_GAMEPAD_B = 8192;
+export const XINPUT_GAMEPAD_X = 16384;
+export const XINPUT_GAMEPAD_Y = 32768;
+export const XINPUT_GAMEPAD_LEFT_THUMB_DEADZONE = 7849;
+export const XINPUT_GAMEPAD_RIGHT_THUMB_DEADZONE = 8689;
+export const XINPUT_GAMEPAD_TRIGGER_THRESHOLD = 30;
+export const XINPUT_KEYSTROKE_KEYDOWN = 1;
+export const XINPUT_KEYSTROKE_KEYUP = 2;
+export const XINPUT_KEYSTROKE_REPEAT = 4;
+export const XINPUT_FLAG_ALL = 0;
+export const XINPUT_FLAG_GAMEPAD = 1;
+export const FEID_NONE = 0;
+export const FEID_CHINESE_TRADITIONAL = 1;
+export const FEID_CHINESE_SIMPLIFIED = 2;
+export const FEID_CHINESE_HONGKONG = 3;
+export const FEID_CHINESE_SINGAPORE = 4;
+export const FEID_JAPANESE = 5;
+export const FEID_KOREAN = 6;
+export const FEID_KOREAN_JOHAB = 7;
+export const INFOMASK_NONE = 0;
+export const INFOMASK_QUERY_CAND = 1;
+export const INFOMASK_APPLY_CAND = 2;
+export const INFOMASK_APPLY_CAND_EX = 4;
+export const INFOMASK_STRING_FIX = 65536;
+export const INFOMASK_HIDE_CAND = 131072;
+export const INFOMASK_BLOCK_CAND = 262144;
+export const IMEFAREASTINFO_TYPE_DEFAULT = 0;
+export const IMEFAREASTINFO_TYPE_READING = 1;
+export const IMEFAREASTINFO_TYPE_COMMENT = 2;
+export const IMEFAREASTINFO_TYPE_COSTTIME = 3;
+export const CHARINFO_APPLETID_MASK = 4278190080;
+export const CHARINFO_FEID_MASK = 15728640;
+export const CHARINFO_CHARID_MASK = 65535;
+export const MAX_APPLETTITLE = 64;
+export const MAX_FONTFACE = 32;
+export const IPACFG_NONE = 0;
+export const IPACFG_PROPERTY = 1;
+export const IPACFG_HELP = 2;
+export const IPACFG_TITLE = 65536;
+export const IPACFG_TITLEFONTFACE = 131072;
+export const IPACFG_CATEGORY = 262144;
+export const IPACFG_LANG = 16;
+export const IPACID_NONE = 0;
+export const IPACID_SOFTKEY = 1;
+export const IPACID_HANDWRITING = 2;
+export const IPACID_STROKESEARCH = 3;
+export const IPACID_RADICALSEARCH = 4;
+export const IPACID_SYMBOLSEARCH = 5;
+export const IPACID_VOICE = 6;
+export const IPACID_EPWING = 7;
+export const IPACID_OCR = 8;
+export const IPACID_CHARLIST = 9;
+export const IPACID_USER = 256;
+export const IMEPADREQ_FIRST = 4096;
+export const IMEPADREQ_INSERTSTRINGCANDIDATE = 4098;
+export const IMEPADREQ_INSERTITEMCANDIDATE = 4099;
+export const IMEPADREQ_SENDKEYCONTROL = 4101;
+export const IMEPADREQ_GETSELECTEDSTRING = 4103;
+export const IMEPADREQ_SETAPPLETDATA = 4105;
+export const IMEPADREQ_GETAPPLETDATA = 4106;
+export const IMEPADREQ_SETTITLEFONT = 4107;
+export const IMEPADREQ_GETCOMPOSITIONSTRINGID = 4109;
+export const IMEPADREQ_INSERTSTRINGCANDIDATEINFO = 4110;
+export const IMEPADREQ_CHANGESTRINGCANDIDATEINFO = 4111;
+export const IMEPADREQ_INSERTSTRINGINFO = 4114;
+export const IMEPADREQ_CHANGESTRINGINFO = 4115;
+export const IMEPADREQ_GETCURRENTUILANGID = 4120;
+export const IMEPADCTRL_CONVERTALL = 1;
+export const IMEPADCTRL_DETERMINALL = 2;
+export const IMEPADCTRL_DETERMINCHAR = 3;
+export const IMEPADCTRL_CLEARALL = 4;
+export const IMEPADCTRL_CARETSET = 5;
+export const IMEPADCTRL_CARETLEFT = 6;
+export const IMEPADCTRL_CARETRIGHT = 7;
+export const IMEPADCTRL_CARETTOP = 8;
+export const IMEPADCTRL_CARETBOTTOM = 9;
+export const IMEPADCTRL_CARETBACKSPACE = 10;
+export const IMEPADCTRL_CARETDELETE = 11;
+export const IMEPADCTRL_PHRASEDELETE = 12;
+export const IMEPADCTRL_INSERTSPACE = 13;
+export const IMEPADCTRL_INSERTFULLSPACE = 14;
+export const IMEPADCTRL_INSERTHALFSPACE = 15;
+export const IMEPADCTRL_ONIME = 16;
+export const IMEPADCTRL_OFFIME = 17;
+export const IMEPADCTRL_ONPRECONVERSION = 18;
+export const IMEPADCTRL_OFFPRECONVERSION = 19;
+export const IMEPADCTRL_PHONETICCANDIDATE = 20;
+export const IMEKEYCTRLMASK_ALT = 1;
+export const IMEKEYCTRLMASK_CTRL = 2;
+export const IMEKEYCTRLMASK_SHIFT = 4;
+export const IMEKEYCTRL_UP = 1;
+export const IMEKEYCTRL_DOWN = 0;
+export const IMEPN_FIRST = 256;
+export const IMEPN_ACTIVATE = 257;
+export const IMEPN_INACTIVATE = 258;
+export const IMEPN_SHOW = 260;
+export const IMEPN_HIDE = 261;
+export const IMEPN_SIZECHANGING = 262;
+export const IMEPN_SIZECHANGED = 263;
+export const IMEPN_CONFIG = 264;
+export const IMEPN_HELP = 265;
+export const IMEPN_QUERYCAND = 266;
+export const IMEPN_APPLYCAND = 267;
+export const IMEPN_APPLYCANDEX = 268;
+export const IMEPN_SETTINGCHANGED = 269;
+export const IMEPN_USER = 356;
+export const IPAWS_ENABLED = 1;
+export const IPAWS_SIZINGNOTIFY = 4;
+export const IPAWS_VERTICALFIXED = 256;
+export const IPAWS_HORIZONTALFIXED = 512;
+export const IPAWS_SIZEFIXED = 768;
+export const IPAWS_MAXWIDTHFIXED = 4096;
+export const IPAWS_MAXHEIGHTFIXED = 8192;
+export const IPAWS_MAXSIZEFIXED = 12288;
+export const IPAWS_MINWIDTHFIXED = 65536;
+export const IPAWS_MINHEIGHTFIXED = 131072;
+export const IPAWS_MINSIZEFIXED = 196608;
+export const STYLE_DESCRIPTION_SIZE = 32;
+export const IMEMENUITEM_STRING_SIZE = 80;
+export const IMC_GETCANDIDATEPOS = 7;
+export const IMC_SETCANDIDATEPOS = 8;
+export const IMC_GETCOMPOSITIONFONT = 9;
+export const IMC_SETCOMPOSITIONFONT = 10;
+export const IMC_GETCOMPOSITIONWINDOW = 11;
+export const IMC_SETCOMPOSITIONWINDOW = 12;
+export const IMC_GETSTATUSWINDOWPOS = 15;
+export const IMC_SETSTATUSWINDOWPOS = 16;
+export const IMC_CLOSESTATUSWINDOW = 33;
+export const IMC_OPENSTATUSWINDOW = 34;
+export const NI_FINALIZECONVERSIONRESULT = 20;
+export const ISC_SHOWUICANDIDATEWINDOW = 1;
+export const ISC_SHOWUICOMPOSITIONWINDOW = 2147483648;
+export const ISC_SHOWUIGUIDELINE = 1073741824;
+export const ISC_SHOWUIALLCANDIDATEWINDOW = 15;
+export const ISC_SHOWUIALL = 3221225487;
+export const MOD_LEFT = 32768;
+export const MOD_RIGHT = 16384;
+export const MOD_ON_KEYUP = 2048;
+export const MOD_IGNORE_ALL_MODIFIER = 1024;
+export const IME_HOTKEY_DSWITCH_FIRST = 256;
+export const IME_HOTKEY_DSWITCH_LAST = 287;
+export const IME_HOTKEY_PRIVATE_FIRST = 512;
+export const IME_HOTKEY_PRIVATE_LAST = 543;
+export const CS_INSERTCHAR = 8192;
+export const CS_NOMOVECARET = 16384;
+export const IMEVER_0310 = 196618;
+export const IMEVER_0400 = 262144;
+export const IME_PROP_AT_CARET = 65536;
+export const IME_PROP_SPECIAL_UI = 131072;
+export const IME_PROP_CANDLIST_START_FROM_1 = 262144;
+export const IME_PROP_UNICODE = 524288;
+export const IME_PROP_COMPLETE_ON_UNSELECT = 1048576;
+export const UI_CAP_2700 = 1;
+export const UI_CAP_ROT90 = 2;
+export const UI_CAP_ROTANY = 4;
+export const SCS_CAP_COMPSTR = 1;
+export const SCS_CAP_MAKEREAD = 2;
+export const SCS_CAP_SETRECONVERTSTRING = 4;
+export const SELECT_CAP_CONVERSION = 1;
+export const SELECT_CAP_SENTENCE = 2;
+export const GL_LEVEL_NOGUIDELINE = 0;
+export const GL_LEVEL_FATAL = 1;
+export const GL_LEVEL_ERROR = 2;
+export const GL_LEVEL_WARNING = 3;
+export const GL_LEVEL_INFORMATION = 4;
+export const GL_ID_UNKNOWN = 0;
+export const GL_ID_NOMODULE = 1;
+export const GL_ID_NODICTIONARY = 16;
+export const GL_ID_CANNOTSAVE = 17;
+export const GL_ID_NOCONVERT = 32;
+export const GL_ID_TYPINGERROR = 33;
+export const GL_ID_TOOMANYSTROKE = 34;
+export const GL_ID_READINGCONFLICT = 35;
+export const GL_ID_INPUTREADING = 36;
+export const GL_ID_INPUTRADICAL = 37;
+export const GL_ID_INPUTCODE = 38;
+export const GL_ID_INPUTSYMBOL = 39;
+export const GL_ID_CHOOSECANDIDATE = 40;
+export const GL_ID_REVERSECONVERSION = 41;
+export const GL_ID_PRIVATE_FIRST = 32768;
+export const GL_ID_PRIVATE_LAST = 65535;
+export const ATTR_INPUT = 0;
+export const ATTR_TARGET_CONVERTED = 1;
+export const ATTR_CONVERTED = 2;
+export const ATTR_TARGET_NOTCONVERTED = 3;
+export const ATTR_INPUT_ERROR = 4;
+export const ATTR_FIXEDCONVERTED = 5;
+export const CFS_DEFAULT = 0;
+export const CFS_RECT = 1;
+export const CFS_POINT = 2;
+export const CFS_FORCE_POSITION = 32;
+export const CFS_CANDIDATEPOS = 64;
+export const CFS_EXCLUDE = 128;
+export const IME_CAND_UNKNOWN = 0;
+export const IME_CAND_READ = 1;
+export const IME_CAND_CODE = 2;
+export const IME_CAND_MEANING = 3;
+export const IME_CAND_RADICAL = 4;
+export const IME_CAND_STROKE = 5;
+export const IMN_CLOSESTATUSWINDOW = 1;
+export const IMN_OPENSTATUSWINDOW = 2;
+export const IMN_CHANGECANDIDATE = 3;
+export const IMN_CLOSECANDIDATE = 4;
+export const IMN_OPENCANDIDATE = 5;
+export const IMN_SETCONVERSIONMODE = 6;
+export const IMN_SETSENTENCEMODE = 7;
+export const IMN_SETOPENSTATUS = 8;
+export const IMN_SETCANDIDATEPOS = 9;
+export const IMN_SETCOMPOSITIONFONT = 10;
+export const IMN_SETCOMPOSITIONWINDOW = 11;
+export const IMN_SETSTATUSWINDOWPOS = 12;
+export const IMN_GUIDELINE = 13;
+export const IMN_PRIVATE = 14;
+export const IMR_COMPOSITIONWINDOW = 1;
+export const IMR_CANDIDATEWINDOW = 2;
+export const IMR_COMPOSITIONFONT = 3;
+export const IMR_RECONVERTSTRING = 4;
+export const IMR_CONFIRMRECONVERTSTRING = 5;
+export const IMR_QUERYCHARPOSITION = 6;
+export const IMR_DOCUMENTFEED = 7;
+export const IMM_ERROR_NODATA = "-1";
+export const IMM_ERROR_GENERAL = "-2";
+export const IME_CONFIG_GENERAL = 1;
+export const IME_CONFIG_REGISTERWORD = 2;
+export const IME_CONFIG_SELECTDICTIONARY = 3;
+export const IME_REGWORD_STYLE_EUDC = 1;
+export const IME_REGWORD_STYLE_USER_FIRST = 2147483648;
+export const IME_REGWORD_STYLE_USER_LAST = 4294967295;
+export const IACE_CHILDREN = 1;
+export const IACE_DEFAULT = 16;
+export const IACE_IGNORENOCONTEXT = 32;
+export const IGIMIF_RIGHTMENU = 1;
+export const IGIMII_CMODE = 1;
+export const IGIMII_SMODE = 2;
+export const IGIMII_CONFIGURE = 4;
+export const IGIMII_TOOLS = 8;
+export const IGIMII_HELP = 16;
+export const IGIMII_OTHER = 32;
+export const IGIMII_INPUTTOOLS = 64;
+export const IMFT_RADIOCHECK = 1;
+export const IMFT_SEPARATOR = 2;
+export const IMFT_SUBMENU = 4;
+export const SOFTKEYBOARD_TYPE_T1 = 1;
+export const SOFTKEYBOARD_TYPE_C1 = 2;
+export const IMMGWL_IMC = 0;
+export const IMMGWLP_IMC = 0;
+export const IMC_SETCONVERSIONMODE = 2;
+export const IMC_SETSENTENCEMODE = 4;
+export const IMC_SETOPENSTATUS = 6;
+export const IMC_GETSOFTKBDFONT = 17;
+export const IMC_SETSOFTKBDFONT = 18;
+export const IMC_GETSOFTKBDPOS = 19;
+export const IMC_SETSOFTKBDPOS = 20;
+export const IMC_GETSOFTKBDSUBTYPE = 21;
+export const IMC_SETSOFTKBDSUBTYPE = 22;
+export const IMC_SETSOFTKBDDATA = 24;
+export const NI_CONTEXTUPDATED = 3;
+export const IME_SYSINFO_WINLOGON = 1;
+export const IME_SYSINFO_WOW16 = 2;
+export const INIT_STATUSWNDPOS = 1;
+export const INIT_CONVERSION = 2;
+export const INIT_SENTENCE = 4;
+export const INIT_LOGFONT = 8;
+export const INIT_COMPFORM = 16;
+export const INIT_SOFTKBDPOS = 32;
+export const IME_PROP_END_UNLOAD = 1;
+export const IME_PROP_KBD_CHAR_FIRST = 2;
+export const IME_PROP_IGNORE_UPKEYS = 4;
+export const IME_PROP_NEED_ALTKEY = 8;
+export const IME_PROP_NO_KEYS_ON_CLOSE = 16;
+export const IME_PROP_ACCEPT_WIDE_VKEY = 32;
+export const UI_CAP_SOFTKBD = 65536;
+export const IMN_SOFTKBDDESTROYED = 17;
+export const IME_UI_CLASS_NAME_SIZE = 16;
+export const IME_ESC_STRING_BUFFER_SIZE = 80;
+export const szImeJapan = "MSIME.Japan";
+export const szImeKorea = "MSIME.Korea";
+export const szImeChina = "MSIME.China";
+export const szImeTaiwan = "MSIME.Taiwan";
 export const IFEC_S_ALREADY_DEFAULT = 320318540676887552n;
 export const FELANG_REQ_CONV = 65536;
 export const FELANG_REQ_RECONV = 131072;
@@ -541,7 +944,9 @@ export const IFED_E_NOT_SUPPORTED = 320608813894103815n;
 export const IFED_E_USER_COMMENT = 320609913405731592n;
 export const IFED_E_REGISTER_ILLEGAL_POS = 320611012917359369n;
 export const IFED_E_REGISTER_IMPROPER_WORD = 320612112428987146n;
-export const IFED_E_REGISTER_DISCONNECTED = 216183796557705995n;
+export const IFED_E_REGISTER_DISCONNECTED = 5980865072770347787n;
+export const cbCommentMax = 256;
+export const wchPrivate1 = 57344;
 export const POS_UNDEFINED = 0;
 export const JPOS_UNDEFINED = 0;
 export const JPOS_MEISHI_FUTSU = 100;
@@ -707,7 +1112,10 @@ export const VERSION_ID_JAPANESE = 16777216;
 export const VERSION_ID_KOREAN = 33554432;
 export const VERSION_ID_CHINESE_TRADITIONAL = 67108864;
 export const VERSION_ID_CHINESE_SIMPLIFIED = 134217728;
+export const RWM_SERVICE = "MSIMEService";
 export const FID_MSIME_VERSION = 0;
+export const RWM_UIREADY = "MSIMEUIReady";
+export const RWM_MOUSE = "MSIMEMouseOperation";
 export const VERSION_MOUSE_OPERATION = 1;
 export const IMEMOUSERET_NOTHANDLED = "-1";
 export const IMEMOUSE_VERSION = 255;
@@ -717,10 +1125,15 @@ export const IMEMOUSE_RDOWN = 2;
 export const IMEMOUSE_MDOWN = 4;
 export const IMEMOUSE_WUP = 16;
 export const IMEMOUSE_WDOWN = 32;
+export const RWM_RECONVERT = "MSIMEReconvert";
 export const FID_RECONVERT_VERSION = 268435456;
 export const VERSION_RECONVERSION = 1;
+export const RWM_RECONVERTREQUEST = "MSIMEReconvertRequest";
 export const VERSION_DOCUMENTFEED = 1;
+export const RWM_DOCUMENTFEED = "MSIMEDocumentFeed";
 export const VERSION_QUERYPOSITION = 1;
+export const RWM_QUERYPOSITION = "MSIMEQueryPosition";
+export const RWM_MODEBIAS = "MSIMEModeBias";
 export const VERSION_MODEBIAS = 1;
 export const MODEBIAS_GETVERSION = 0;
 export const MODEBIAS_SETVALUE = 1;
@@ -729,9 +1142,13 @@ export const MODEBIASMODE_DEFAULT = 0;
 export const MODEBIASMODE_FILENAME = 1;
 export const MODEBIASMODE_READING = 2;
 export const MODEBIASMODE_DIGIT = 4;
+export const RWM_SHOWIMEPAD = "MSIMEShowImePad";
 export const SHOWIMEPAD_DEFAULT = 0;
 export const SHOWIMEPAD_CATEGORY = 1;
 export const SHOWIMEPAD_GUID = 2;
+export const RWM_KEYMAP = "MSIMEKeyMap";
+export const RWM_CHGKEYMAP = "MSIMEChangeKeyMap";
+export const RWM_NTFYKEYMAP = "MSIMENotifyKeyMap";
 export const FID_MSIME_KMS_VERSION = 1;
 export const FID_MSIME_KMS_INIT = 2;
 export const FID_MSIME_KMS_TERM = 3;
@@ -751,327 +1168,10 @@ export const IMEKMS_2NDLEVEL = 4;
 export const IMEKMS_INPTGL = 5;
 export const IMEKMS_CANDIDATE = 6;
 export const IMEKMS_TYPECAND = 7;
+export const RWM_RECONVERTOPTIONS = "MSIMEReconvertOptions";
 export const RECONVOPT_NONE = 0;
 export const RECONVOPT_USECANCELNOTIFY = 1;
 export const GCSEX_CANCELRECONVERT = 268435456;
-export const STYLE_DESCRIPTION_SIZE = 32;
-export const IMEMENUITEM_STRING_SIZE = 80;
-export const IMC_GETCANDIDATEPOS = 7;
-export const IMC_SETCANDIDATEPOS = 8;
-export const IMC_GETCOMPOSITIONFONT = 9;
-export const IMC_SETCOMPOSITIONFONT = 10;
-export const IMC_GETCOMPOSITIONWINDOW = 11;
-export const IMC_SETCOMPOSITIONWINDOW = 12;
-export const IMC_GETSTATUSWINDOWPOS = 15;
-export const IMC_SETSTATUSWINDOWPOS = 16;
-export const IMC_CLOSESTATUSWINDOW = 33;
-export const IMC_OPENSTATUSWINDOW = 34;
-export const NI_FINALIZECONVERSIONRESULT = 20;
-export const ISC_SHOWUICANDIDATEWINDOW = 1;
-export const ISC_SHOWUICOMPOSITIONWINDOW = 2147483648;
-export const ISC_SHOWUIGUIDELINE = 1073741824;
-export const ISC_SHOWUIALLCANDIDATEWINDOW = 15;
-export const ISC_SHOWUIALL = 3221225487;
-export const MOD_LEFT = 32768;
-export const MOD_RIGHT = 16384;
-export const MOD_ON_KEYUP = 2048;
-export const MOD_IGNORE_ALL_MODIFIER = 1024;
-export const IME_CHOTKEY_IME_NONIME_TOGGLE = 16;
-export const IME_CHOTKEY_SHAPE_TOGGLE = 17;
-export const IME_CHOTKEY_SYMBOL_TOGGLE = 18;
-export const IME_JHOTKEY_CLOSE_OPEN = 48;
-export const IME_KHOTKEY_SHAPE_TOGGLE = 80;
-export const IME_KHOTKEY_HANJACONVERT = 81;
-export const IME_KHOTKEY_ENGLISH = 82;
-export const IME_THOTKEY_IME_NONIME_TOGGLE = 112;
-export const IME_THOTKEY_SHAPE_TOGGLE = 113;
-export const IME_THOTKEY_SYMBOL_TOGGLE = 114;
-export const IME_HOTKEY_DSWITCH_FIRST = 256;
-export const IME_HOTKEY_DSWITCH_LAST = 287;
-export const IME_HOTKEY_PRIVATE_FIRST = 512;
-export const IME_ITHOTKEY_RESEND_RESULTSTR = 512;
-export const IME_ITHOTKEY_PREVIOUS_COMPOSITION = 513;
-export const IME_ITHOTKEY_UISTYLE_TOGGLE = 514;
-export const IME_ITHOTKEY_RECONVERTSTRING = 515;
-export const IME_HOTKEY_PRIVATE_LAST = 543;
-export const GCS_COMPREADSTR = 1;
-export const GCS_COMPREADATTR = 2;
-export const GCS_COMPREADCLAUSE = 4;
-export const GCS_COMPSTR = 8;
-export const GCS_COMPATTR = 16;
-export const GCS_COMPCLAUSE = 32;
-export const GCS_CURSORPOS = 128;
-export const GCS_DELTASTART = 256;
-export const GCS_RESULTREADSTR = 512;
-export const GCS_RESULTREADCLAUSE = 1024;
-export const GCS_RESULTSTR = 2048;
-export const GCS_RESULTCLAUSE = 4096;
-export const CS_INSERTCHAR = 8192;
-export const CS_NOMOVECARET = 16384;
-export const IMEVER_0310 = 196618;
-export const IMEVER_0400 = 262144;
-export const IME_PROP_AT_CARET = 65536;
-export const IME_PROP_SPECIAL_UI = 131072;
-export const IME_PROP_CANDLIST_START_FROM_1 = 262144;
-export const IME_PROP_UNICODE = 524288;
-export const IME_PROP_COMPLETE_ON_UNSELECT = 1048576;
-export const UI_CAP_2700 = 1;
-export const UI_CAP_ROT90 = 2;
-export const UI_CAP_ROTANY = 4;
-export const SCS_CAP_COMPSTR = 1;
-export const SCS_CAP_MAKEREAD = 2;
-export const SCS_CAP_SETRECONVERTSTRING = 4;
-export const SELECT_CAP_CONVERSION = 1;
-export const SELECT_CAP_SENTENCE = 2;
-export const GL_LEVEL_NOGUIDELINE = 0;
-export const GL_LEVEL_FATAL = 1;
-export const GL_LEVEL_ERROR = 2;
-export const GL_LEVEL_WARNING = 3;
-export const GL_LEVEL_INFORMATION = 4;
-export const GL_ID_UNKNOWN = 0;
-export const GL_ID_NOMODULE = 1;
-export const GL_ID_NODICTIONARY = 16;
-export const GL_ID_CANNOTSAVE = 17;
-export const GL_ID_NOCONVERT = 32;
-export const GL_ID_TYPINGERROR = 33;
-export const GL_ID_TOOMANYSTROKE = 34;
-export const GL_ID_READINGCONFLICT = 35;
-export const GL_ID_INPUTREADING = 36;
-export const GL_ID_INPUTRADICAL = 37;
-export const GL_ID_INPUTCODE = 38;
-export const GL_ID_INPUTSYMBOL = 39;
-export const GL_ID_CHOOSECANDIDATE = 40;
-export const GL_ID_REVERSECONVERSION = 41;
-export const GL_ID_PRIVATE_FIRST = 32768;
-export const GL_ID_PRIVATE_LAST = 65535;
-export const ATTR_INPUT = 0;
-export const ATTR_TARGET_CONVERTED = 1;
-export const ATTR_CONVERTED = 2;
-export const ATTR_TARGET_NOTCONVERTED = 3;
-export const ATTR_INPUT_ERROR = 4;
-export const ATTR_FIXEDCONVERTED = 5;
-export const CFS_DEFAULT = 0;
-export const CFS_RECT = 1;
-export const CFS_POINT = 2;
-export const CFS_FORCE_POSITION = 32;
-export const CFS_CANDIDATEPOS = 64;
-export const CFS_EXCLUDE = 128;
-export const IME_CMODE_SOFTKBD = 128;
-export const IME_CMODE_NOCONVERSION = 256;
-export const IME_CMODE_EUDC = 512;
-export const IME_CMODE_SYMBOL = 1024;
-export const IME_CMODE_FIXED = 2048;
-export const IME_CMODE_RESERVED = 4026531840;
-export const IME_SMODE_NONE = 0;
-export const IME_SMODE_PLAURALCLAUSE = 1;
-export const IME_SMODE_SINGLECONVERT = 2;
-export const IME_SMODE_AUTOMATIC = 4;
-export const IME_SMODE_PHRASEPREDICT = 8;
-export const IME_SMODE_CONVERSATION = 16;
-export const IME_SMODE_RESERVED = 61440;
-export const IME_CAND_UNKNOWN = 0;
-export const IME_CAND_READ = 1;
-export const IME_CAND_CODE = 2;
-export const IME_CAND_MEANING = 3;
-export const IME_CAND_RADICAL = 4;
-export const IME_CAND_STROKE = 5;
-export const IMN_CLOSESTATUSWINDOW = 1;
-export const IMN_OPENSTATUSWINDOW = 2;
-export const IMN_CHANGECANDIDATE = 3;
-export const IMN_CLOSECANDIDATE = 4;
-export const IMN_OPENCANDIDATE = 5;
-export const IMN_SETCONVERSIONMODE = 6;
-export const IMN_SETSENTENCEMODE = 7;
-export const IMN_SETOPENSTATUS = 8;
-export const IMN_SETCANDIDATEPOS = 9;
-export const IMN_SETCOMPOSITIONFONT = 10;
-export const IMN_SETCOMPOSITIONWINDOW = 11;
-export const IMN_SETSTATUSWINDOWPOS = 12;
-export const IMN_GUIDELINE = 13;
-export const IMN_PRIVATE = 14;
-export const IMR_COMPOSITIONWINDOW = 1;
-export const IMR_CANDIDATEWINDOW = 2;
-export const IMR_COMPOSITIONFONT = 3;
-export const IMR_RECONVERTSTRING = 4;
-export const IMR_CONFIRMRECONVERTSTRING = 5;
-export const IMR_QUERYCHARPOSITION = 6;
-export const IMR_DOCUMENTFEED = 7;
-export const IMM_ERROR_NODATA = "-1";
-export const IMM_ERROR_GENERAL = "-2";
-export const IME_CONFIG_GENERAL = 1;
-export const IME_CONFIG_REGISTERWORD = 2;
-export const IME_CONFIG_SELECTDICTIONARY = 3;
-export const IME_ESC_QUERY_SUPPORT = 3;
-export const IME_ESC_RESERVED_FIRST = 4;
-export const IME_ESC_RESERVED_LAST = 2047;
-export const IME_ESC_PRIVATE_FIRST = 2048;
-export const IME_ESC_PRIVATE_LAST = 4095;
-export const IME_ESC_SEQUENCE_TO_INTERNAL = 4097;
-export const IME_ESC_GET_EUDC_DICTIONARY = 4099;
-export const IME_ESC_SET_EUDC_DICTIONARY = 4100;
-export const IME_ESC_MAX_KEY = 4101;
-export const IME_ESC_IME_NAME = 4102;
-export const IME_ESC_SYNC_HOTKEY = 4103;
-export const IME_ESC_HANJA_MODE = 4104;
-export const IME_ESC_AUTOMATA = 4105;
-export const IME_ESC_PRIVATE_HOTKEY = 4106;
-export const IME_ESC_GETHELPFILENAME = 4107;
-export const IME_REGWORD_STYLE_EUDC = 1;
-export const IME_REGWORD_STYLE_USER_FIRST = 2147483648;
-export const IME_REGWORD_STYLE_USER_LAST = 4294967295;
-export const IACE_CHILDREN = 1;
-export const IACE_DEFAULT = 16;
-export const IACE_IGNORENOCONTEXT = 32;
-export const IGIMIF_RIGHTMENU = 1;
-export const IGIMII_CMODE = 1;
-export const IGIMII_SMODE = 2;
-export const IGIMII_CONFIGURE = 4;
-export const IGIMII_TOOLS = 8;
-export const IGIMII_HELP = 16;
-export const IGIMII_OTHER = 32;
-export const IGIMII_INPUTTOOLS = 64;
-export const IMFT_RADIOCHECK = 1;
-export const IMFT_SEPARATOR = 2;
-export const IMFT_SUBMENU = 4;
-export const SOFTKEYBOARD_TYPE_T1 = 1;
-export const SOFTKEYBOARD_TYPE_C1 = 2;
-export const IMMGWL_IMC = 0;
-export const IMMGWLP_IMC = 0;
-export const IMC_SETCONVERSIONMODE = 2;
-export const IMC_SETSENTENCEMODE = 4;
-export const IMC_SETOPENSTATUS = 6;
-export const IMC_GETSOFTKBDFONT = 17;
-export const IMC_SETSOFTKBDFONT = 18;
-export const IMC_GETSOFTKBDPOS = 19;
-export const IMC_SETSOFTKBDPOS = 20;
-export const IMC_GETSOFTKBDSUBTYPE = 21;
-export const IMC_SETSOFTKBDSUBTYPE = 22;
-export const IMC_SETSOFTKBDDATA = 24;
-export const NI_CONTEXTUPDATED = 3;
-export const IME_SYSINFO_WINLOGON = 1;
-export const IME_SYSINFO_WOW16 = 2;
-export const INIT_STATUSWNDPOS = 1;
-export const INIT_CONVERSION = 2;
-export const INIT_SENTENCE = 4;
-export const INIT_LOGFONT = 8;
-export const INIT_COMPFORM = 16;
-export const INIT_SOFTKBDPOS = 32;
-export const IME_PROP_END_UNLOAD = 1;
-export const IME_PROP_KBD_CHAR_FIRST = 2;
-export const IME_PROP_IGNORE_UPKEYS = 4;
-export const IME_PROP_NEED_ALTKEY = 8;
-export const IME_PROP_NO_KEYS_ON_CLOSE = 16;
-export const IME_PROP_ACCEPT_WIDE_VKEY = 32;
-export const UI_CAP_SOFTKBD = 65536;
-export const IMN_SOFTKBDDESTROYED = 17;
-export const IME_UI_CLASS_NAME_SIZE = 16;
-export const IME_ESC_STRING_BUFFER_SIZE = 80;
-export const FEID_NONE = 0;
-export const FEID_CHINESE_TRADITIONAL = 1;
-export const FEID_CHINESE_SIMPLIFIED = 2;
-export const FEID_CHINESE_HONGKONG = 3;
-export const FEID_CHINESE_SINGAPORE = 4;
-export const FEID_JAPANESE = 5;
-export const FEID_KOREAN = 6;
-export const FEID_KOREAN_JOHAB = 7;
-export const INFOMASK_NONE = 0;
-export const INFOMASK_QUERY_CAND = 1;
-export const INFOMASK_APPLY_CAND = 2;
-export const INFOMASK_APPLY_CAND_EX = 4;
-export const INFOMASK_STRING_FIX = 65536;
-export const INFOMASK_HIDE_CAND = 131072;
-export const INFOMASK_BLOCK_CAND = 262144;
-export const IMEFAREASTINFO_TYPE_DEFAULT = 0;
-export const IMEFAREASTINFO_TYPE_READING = 1;
-export const IMEFAREASTINFO_TYPE_COMMENT = 2;
-export const IMEFAREASTINFO_TYPE_COSTTIME = 3;
-export const CHARINFO_APPLETID_MASK = 4278190080;
-export const CHARINFO_FEID_MASK = 15728640;
-export const CHARINFO_CHARID_MASK = 65535;
-export const MAX_APPLETTITLE = 64;
-export const MAX_FONTFACE = 32;
-export const IPACFG_NONE = 0;
-export const IPACFG_PROPERTY = 1;
-export const IPACFG_HELP = 2;
-export const IPACFG_TITLE = 65536;
-export const IPACFG_TITLEFONTFACE = 131072;
-export const IPACFG_CATEGORY = 262144;
-export const IPACFG_LANG = 16;
-export const IPACID_NONE = 0;
-export const IPACID_SOFTKEY = 1;
-export const IPACID_HANDWRITING = 2;
-export const IPACID_STROKESEARCH = 3;
-export const IPACID_RADICALSEARCH = 4;
-export const IPACID_SYMBOLSEARCH = 5;
-export const IPACID_VOICE = 6;
-export const IPACID_EPWING = 7;
-export const IPACID_OCR = 8;
-export const IPACID_CHARLIST = 9;
-export const IPACID_USER = 256;
-export const IMEPADREQ_FIRST = 4096;
-export const IMEPADREQ_INSERTSTRINGCANDIDATE = 4098;
-export const IMEPADREQ_INSERTITEMCANDIDATE = 4099;
-export const IMEPADREQ_SENDKEYCONTROL = 4101;
-export const IMEPADREQ_GETSELECTEDSTRING = 4103;
-export const IMEPADREQ_SETAPPLETDATA = 4105;
-export const IMEPADREQ_GETAPPLETDATA = 4106;
-export const IMEPADREQ_SETTITLEFONT = 4107;
-export const IMEPADREQ_GETCOMPOSITIONSTRINGID = 4109;
-export const IMEPADREQ_INSERTSTRINGCANDIDATEINFO = 4110;
-export const IMEPADREQ_CHANGESTRINGCANDIDATEINFO = 4111;
-export const IMEPADREQ_INSERTSTRINGINFO = 4114;
-export const IMEPADREQ_CHANGESTRINGINFO = 4115;
-export const IMEPADREQ_GETCURRENTUILANGID = 4120;
-export const IMEPADCTRL_CONVERTALL = 1;
-export const IMEPADCTRL_DETERMINALL = 2;
-export const IMEPADCTRL_DETERMINCHAR = 3;
-export const IMEPADCTRL_CLEARALL = 4;
-export const IMEPADCTRL_CARETSET = 5;
-export const IMEPADCTRL_CARETLEFT = 6;
-export const IMEPADCTRL_CARETRIGHT = 7;
-export const IMEPADCTRL_CARETTOP = 8;
-export const IMEPADCTRL_CARETBOTTOM = 9;
-export const IMEPADCTRL_CARETBACKSPACE = 10;
-export const IMEPADCTRL_CARETDELETE = 11;
-export const IMEPADCTRL_PHRASEDELETE = 12;
-export const IMEPADCTRL_INSERTSPACE = 13;
-export const IMEPADCTRL_INSERTFULLSPACE = 14;
-export const IMEPADCTRL_INSERTHALFSPACE = 15;
-export const IMEPADCTRL_ONIME = 16;
-export const IMEPADCTRL_OFFIME = 17;
-export const IMEPADCTRL_ONPRECONVERSION = 18;
-export const IMEPADCTRL_OFFPRECONVERSION = 19;
-export const IMEPADCTRL_PHONETICCANDIDATE = 20;
-export const IMEKEYCTRLMASK_ALT = 1;
-export const IMEKEYCTRLMASK_CTRL = 2;
-export const IMEKEYCTRLMASK_SHIFT = 4;
-export const IMEKEYCTRL_UP = 1;
-export const IMEKEYCTRL_DOWN = 0;
-export const IMEPN_FIRST = 256;
-export const IMEPN_ACTIVATE = 257;
-export const IMEPN_INACTIVATE = 258;
-export const IMEPN_SHOW = 260;
-export const IMEPN_HIDE = 261;
-export const IMEPN_SIZECHANGING = 262;
-export const IMEPN_SIZECHANGED = 263;
-export const IMEPN_CONFIG = 264;
-export const IMEPN_HELP = 265;
-export const IMEPN_QUERYCAND = 266;
-export const IMEPN_APPLYCAND = 267;
-export const IMEPN_APPLYCANDEX = 268;
-export const IMEPN_SETTINGCHANGED = 269;
-export const IMEPN_USER = 356;
-export const IPAWS_ENABLED = 1;
-export const IPAWS_SIZINGNOTIFY = 4;
-export const IPAWS_VERTICALFIXED = 256;
-export const IPAWS_HORIZONTALFIXED = 512;
-export const IPAWS_SIZEFIXED = 768;
-export const IPAWS_MAXWIDTHFIXED = 4096;
-export const IPAWS_MAXHEIGHTFIXED = 8192;
-export const IPAWS_MAXSIZEFIXED = 12288;
-export const IPAWS_MINWIDTHFIXED = 65536;
-export const IPAWS_MINHEIGHTFIXED = 131072;
-export const IPAWS_MINSIZEFIXED = 196608;
 export const EXTENDED_BIT = 16777216;
 export const DONTCARE_BIT = 33554432;
 export const FAKE_KEYSTROKE = 33554432;
@@ -1101,6 +1201,24 @@ export const CEDILLA = 807;
 export const OGONEK = 808;
 export const TONOS = 900;
 export const DIARESIS_TONOS = 901;
+export const wszGRAVE = " ";
+export const wszACUTE = "";
+export const wszCIRCUMFLEX = "";
+export const wszTILDE = "";
+export const wszMACRON = "";
+export const wszOVERSCORE = "";
+export const wszBREVE = "";
+export const wszDOT_ABOVE = "";
+export const wszUMLAUT = "";
+export const wszHOOK_ABOVE = "	";
+export const wszRING = "
+";
+export const wszDOUBLE_ACUTE = "";
+export const wszHACEK = "";
+export const wszCEDILLA = "'";
+export const wszOGONEK = "(";
+export const wszTONOS = "�";
+export const wszDIARESIS_TONOS = "�";
 export const SHFT_INVALID = 15;
 export const WCH_NONE = 61440;
 export const WCH_DEAD = 61441;
@@ -1205,57 +1323,11 @@ export const VK_DBE_CODEINPUT = 250;
 export const VK_DBE_NOCODEINPUT = 251;
 export const VK_DBE_DETERMINESTRING = 252;
 export const VK_DBE_ENTERDLGCONVERSIONMODE = 253;
-export const XINPUT_DEVTYPE_GAMEPAD = 1;
-export const XINPUT_DEVSUBTYPE_GAMEPAD = 1;
-export const XINPUT_DEVSUBTYPE_UNKNOWN = 0;
-export const XINPUT_DEVSUBTYPE_WHEEL = 2;
-export const XINPUT_DEVSUBTYPE_ARCADE_STICK = 3;
-export const XINPUT_DEVSUBTYPE_FLIGHT_STICK = 4;
-export const XINPUT_DEVSUBTYPE_DANCE_PAD = 5;
-export const XINPUT_DEVSUBTYPE_GUITAR = 6;
-export const XINPUT_DEVSUBTYPE_GUITAR_ALTERNATE = 7;
-export const XINPUT_DEVSUBTYPE_DRUM_KIT = 8;
-export const XINPUT_DEVSUBTYPE_GUITAR_BASS = 11;
-export const XINPUT_DEVSUBTYPE_ARCADE_PAD = 19;
-export const XINPUT_CAPS_VOICE_SUPPORTED = 4;
-export const XINPUT_CAPS_FFB_SUPPORTED = 1;
-export const XINPUT_CAPS_WIRELESS = 2;
-export const XINPUT_CAPS_PMD_SUPPORTED = 8;
-export const XINPUT_CAPS_NO_NAVIGATION = 16;
-export const XINPUT_GAMEPAD_DPAD_UP = 1;
-export const XINPUT_GAMEPAD_DPAD_DOWN = 2;
-export const XINPUT_GAMEPAD_DPAD_LEFT = 4;
-export const XINPUT_GAMEPAD_DPAD_RIGHT = 8;
-export const XINPUT_GAMEPAD_START = 16;
-export const XINPUT_GAMEPAD_BACK = 32;
-export const XINPUT_GAMEPAD_LEFT_THUMB = 64;
-export const XINPUT_GAMEPAD_RIGHT_THUMB = 128;
-export const XINPUT_GAMEPAD_LEFT_SHOULDER = 256;
-export const XINPUT_GAMEPAD_RIGHT_SHOULDER = 512;
-export const XINPUT_GAMEPAD_A = 4096;
-export const XINPUT_GAMEPAD_B = 8192;
-export const XINPUT_GAMEPAD_X = 16384;
-export const XINPUT_GAMEPAD_Y = 32768;
-export const XINPUT_GAMEPAD_LEFT_THUMB_DEADZONE = 7849;
-export const XINPUT_GAMEPAD_RIGHT_THUMB_DEADZONE = 8689;
-export const XINPUT_GAMEPAD_TRIGGER_THRESHOLD = 30;
-export const XINPUT_FLAG_GAMEPAD = 1;
-export const BATTERY_DEVTYPE_GAMEPAD = 0;
-export const BATTERY_DEVTYPE_HEADSET = 1;
-export const BATTERY_TYPE_DISCONNECTED = 0;
-export const BATTERY_TYPE_WIRED = 1;
-export const BATTERY_TYPE_ALKALINE = 2;
-export const BATTERY_TYPE_NIMH = 3;
-export const BATTERY_TYPE_UNKNOWN = 255;
-export const BATTERY_LEVEL_EMPTY = 0;
-export const BATTERY_LEVEL_LOW = 1;
-export const BATTERY_LEVEL_MEDIUM = 2;
-export const BATTERY_LEVEL_FULL = 3;
+export const XINPUT_DLL_A = "xinput1_4.dll";
+export const XINPUT_DLL_W = "xinput1_4.dll";
+export const XINPUT_DLL = "xinput1_4.dll";
 export const XUSER_MAX_COUNT = 4;
 export const XUSER_INDEX_ANY = 255;
-export const XINPUT_KEYSTROKE_KEYDOWN = 1;
-export const XINPUT_KEYSTROKE_KEYUP = 2;
-export const XINPUT_KEYSTROKE_REPEAT = 4;
 export const IFED_REG_HEAD = 0;
 export const IFED_REG_TAIL = 1;
 export const IFED_REG_DEL = 2;
@@ -1316,6 +1388,52 @@ export const IFED_REL_KEIYOU_TARU_YOUGEN = 21;
 export const IFED_REL_UNKNOWN1 = 22;
 export const IFED_REL_UNKNOWN2 = 23;
 export const IFED_REL_ALL = 24;
+export const ANSI_CHARSET = 0;
+export const DEFAULT_CHARSET = 1;
+export const SYMBOL_CHARSET = 2;
+export const SHIFTJIS_CHARSET = 128;
+export const HANGEUL_CHARSET = 129;
+export const HANGUL_CHARSET = 129;
+export const GB2312_CHARSET = 134;
+export const CHINESEBIG5_CHARSET = 136;
+export const OEM_CHARSET = 255;
+export const JOHAB_CHARSET = 130;
+export const HEBREW_CHARSET = 177;
+export const ARABIC_CHARSET = 178;
+export const GREEK_CHARSET = 161;
+export const TURKISH_CHARSET = 162;
+export const VIETNAMESE_CHARSET = 163;
+export const THAI_CHARSET = 222;
+export const EASTEUROPE_CHARSET = 238;
+export const RUSSIAN_CHARSET = 204;
+export const MAC_CHARSET = 77;
+export const BALTIC_CHARSET = 186;
+export const OUT_DEFAULT_PRECIS = 0;
+export const OUT_STRING_PRECIS = 1;
+export const OUT_CHARACTER_PRECIS = 2;
+export const OUT_STROKE_PRECIS = 3;
+export const OUT_TT_PRECIS = 4;
+export const OUT_DEVICE_PRECIS = 5;
+export const OUT_RASTER_PRECIS = 6;
+export const OUT_TT_ONLY_PRECIS = 7;
+export const OUT_OUTLINE_PRECIS = 8;
+export const OUT_SCREEN_OUTLINE_PRECIS = 9;
+export const OUT_PS_ONLY_PRECIS = 10;
+export const CLIP_DEFAULT_PRECIS = 0;
+export const CLIP_CHARACTER_PRECIS = 1;
+export const CLIP_STROKE_PRECIS = 2;
+export const CLIP_MASK = 15;
+export const CLIP_LH_ANGLES = 16;
+export const CLIP_TT_ALWAYS = 32;
+export const CLIP_DFA_DISABLE = 64;
+export const CLIP_EMBEDDED = 128;
+export const CLIP_DFA_OVERRIDE = 64;
+export const DEFAULT_QUALITY = 0;
+export const DRAFT_QUALITY = 1;
+export const PROOF_QUALITY = 2;
+export const NONANTIALIASED_QUALITY = 3;
+export const ANTIALIASED_QUALITY = 4;
+export const CLEARTYPE_QUALITY = 5;
 export const USE_SYSTEM_COLORS_WHEN_NECESSARY = 0;
 export const USE_SYSTEM_COLORS = 1;
 export const USE_ORIGINAL_COLORS = 2;
@@ -2723,14 +2841,14 @@ export interface LOGFONTA {
   lfUnderline: number;
   /** u8 */
   lfStrikeOut: number;
-  /** u8 */
-  lfCharSet: number;
-  /** u8 */
-  lfOutPrecision: number;
-  /** u8 */
-  lfClipPrecision: number;
-  /** u8 */
-  lfQuality: number;
+  /** Windows.Win32.Graphics.Gdi.FONT_CHARSET */
+  lfCharSet: FONT_CHARSET;
+  /** Windows.Win32.Graphics.Gdi.FONT_OUTPUT_PRECISION */
+  lfOutPrecision: FONT_OUTPUT_PRECISION;
+  /** Windows.Win32.Graphics.Gdi.FONT_CLIP_PRECISION */
+  lfClipPrecision: FONT_CLIP_PRECISION;
+  /** Windows.Win32.Graphics.Gdi.FONT_QUALITY */
+  lfQuality: FONT_QUALITY;
   /** u8 */
   lfPitchAndFamily: number;
   /** array */
@@ -2794,14 +2912,14 @@ export interface LOGFONTW {
   lfUnderline: number;
   /** u8 */
   lfStrikeOut: number;
-  /** u8 */
-  lfCharSet: number;
-  /** u8 */
-  lfOutPrecision: number;
-  /** u8 */
-  lfClipPrecision: number;
-  /** u8 */
-  lfQuality: number;
+  /** Windows.Win32.Graphics.Gdi.FONT_CHARSET */
+  lfCharSet: FONT_CHARSET;
+  /** Windows.Win32.Graphics.Gdi.FONT_OUTPUT_PRECISION */
+  lfOutPrecision: FONT_OUTPUT_PRECISION;
+  /** Windows.Win32.Graphics.Gdi.FONT_CLIP_PRECISION */
+  lfClipPrecision: FONT_CLIP_PRECISION;
+  /** Windows.Win32.Graphics.Gdi.FONT_QUALITY */
+  lfQuality: FONT_QUALITY;
   /** u8 */
   lfPitchAndFamily: number;
   /** array */
@@ -3116,19 +3234,19 @@ export function allocIMEITEMCANDIDATE(data?: Partial<IMEITEMCANDIDATE>): Uint8Ar
 }
 
 /**
- * Windows.Win32.UI.Input.Ime.tabIMESTRINGINFO (size: 16)
+ * Windows.Win32.UI.Input.Ime.IMESTRINGINFO (size: 16)
  */
-export interface tabIMESTRINGINFO {
+export interface IMESTRINGINFO {
   /** u32 */
   dwFarEastId: number;
   /** Windows.Win32.Foundation.PWSTR */
   lpwstr: string | null;
 }
 
-export const sizeofTabIMESTRINGINFO = 16;
+export const sizeofIMESTRINGINFO = 16;
 
-export function allocTabIMESTRINGINFO(data?: Partial<tabIMESTRINGINFO>): Uint8Array {
-  const buf = new Uint8Array(sizeofTabIMESTRINGINFO);
+export function allocIMESTRINGINFO(data?: Partial<IMESTRINGINFO>): Uint8Array {
+  const buf = new Uint8Array(sizeofIMESTRINGINFO);
   const view = new DataView(buf.buffer);
   // 0x00: u32
   if (data?.dwFarEastId !== undefined) view.setUint32(0, Number(data.dwFarEastId), true);
@@ -3142,9 +3260,9 @@ export function allocTabIMESTRINGINFO(data?: Partial<tabIMESTRINGINFO>): Uint8Ar
 }
 
 /**
- * Windows.Win32.UI.Input.Ime.tabIMEFAREASTINFO (size: 16)
+ * Windows.Win32.UI.Input.Ime.IMEFAREASTINFO (size: 16)
  */
-export interface tabIMEFAREASTINFO {
+export interface IMEFAREASTINFO {
   /** u32 */
   dwSize: number;
   /** u32 */
@@ -3153,10 +3271,10 @@ export interface tabIMEFAREASTINFO {
   dwData: Deno.PointerValue | null;
 }
 
-export const sizeofTabIMEFAREASTINFO = 16;
+export const sizeofIMEFAREASTINFO = 16;
 
-export function allocTabIMEFAREASTINFO(data?: Partial<tabIMEFAREASTINFO>): Uint8Array {
-  const buf = new Uint8Array(sizeofTabIMEFAREASTINFO);
+export function allocIMEFAREASTINFO(data?: Partial<IMEFAREASTINFO>): Uint8Array {
+  const buf = new Uint8Array(sizeofIMEFAREASTINFO);
   const view = new DataView(buf.buffer);
   // 0x00: u32
   if (data?.dwSize !== undefined) view.setUint32(0, Number(data.dwSize), true);
@@ -3998,9 +4116,9 @@ export function allocVSC_LPWSTR(data?: Partial<VSC_LPWSTR>): Uint8Array {
 }
 
 /**
- * Windows.Win32.UI.Input.KeyboardAndMouse.tagKbdLayer (size: 104)
+ * Windows.Win32.UI.Input.KeyboardAndMouse.KBDTABLES (size: 104)
  */
-export interface tagKbdLayer {
+export interface KBDTABLES {
   /** ptr */
   pCharModifiers: Deno.PointerValue | Uint8Array | null;
   /** ptr */
@@ -4035,10 +4153,10 @@ export interface tagKbdLayer {
   dwSubType: number;
 }
 
-export const sizeofTagKbdLayer = 104;
+export const sizeofKBDTABLES = 104;
 
-export function allocTagKbdLayer(data?: Partial<tagKbdLayer>): Uint8Array {
-  const buf = new Uint8Array(sizeofTagKbdLayer);
+export function allocKBDTABLES(data?: Partial<KBDTABLES>): Uint8Array {
+  const buf = new Uint8Array(sizeofKBDTABLES);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
   if (data?.pCharModifiers !== undefined) view.setBigUint64(0, data.pCharModifiers === null ? 0n : BigInt(util.toPointer(data.pCharModifiers)), true);
@@ -4078,19 +4196,19 @@ export function allocTagKbdLayer(data?: Partial<tagKbdLayer>): Uint8Array {
 }
 
 /**
- * Windows.Win32.UI.Input.KeyboardAndMouse._VK_FUNCTION_PARAM (size: 8)
+ * Windows.Win32.UI.Input.KeyboardAndMouse.VK_FPARAM (size: 8)
  */
-export interface _VK_FUNCTION_PARAM {
+export interface VK_FPARAM {
   /** u8 */
   NLSFEProcIndex: number;
   /** u32 */
   NLSFEProcParam: number;
 }
 
-export const sizeof_VK_FUNCTION_PARAM = 8;
+export const sizeofVK_FPARAM = 8;
 
-export function alloc_VK_FUNCTION_PARAM(data?: Partial<_VK_FUNCTION_PARAM>): Uint8Array {
-  const buf = new Uint8Array(sizeof_VK_FUNCTION_PARAM);
+export function allocVK_FPARAM(data?: Partial<VK_FPARAM>): Uint8Array {
+  const buf = new Uint8Array(sizeofVK_FPARAM);
   const view = new DataView(buf.buffer);
   // 0x00: u8
   if (data?.NLSFEProcIndex !== undefined) view.setUint8(0, Number(data.NLSFEProcIndex));
@@ -4101,9 +4219,9 @@ export function alloc_VK_FUNCTION_PARAM(data?: Partial<_VK_FUNCTION_PARAM>): Uin
 }
 
 /**
- * Windows.Win32.UI.Input.KeyboardAndMouse._VK_TO_FUNCTION_TABLE (size: 24)
+ * Windows.Win32.UI.Input.KeyboardAndMouse.VK_F (size: 24)
  */
-export interface _VK_TO_FUNCTION_TABLE {
+export interface VK_F {
   /** u8 */
   Vk: number;
   /** u8 */
@@ -4118,10 +4236,10 @@ export interface _VK_TO_FUNCTION_TABLE {
   NLSFEProcAlt: Deno.PointerValue | null;
 }
 
-export const sizeof_VK_TO_FUNCTION_TABLE = 24;
+export const sizeofVK_F = 24;
 
-export function alloc_VK_TO_FUNCTION_TABLE(data?: Partial<_VK_TO_FUNCTION_TABLE>): Uint8Array {
-  const buf = new Uint8Array(sizeof_VK_TO_FUNCTION_TABLE);
+export function allocVK_F(data?: Partial<VK_F>): Uint8Array {
+  const buf = new Uint8Array(sizeofVK_F);
   const view = new DataView(buf.buffer);
   // 0x00: u8
   if (data?.Vk !== undefined) view.setUint8(0, Number(data.Vk));
@@ -4140,9 +4258,9 @@ export function alloc_VK_TO_FUNCTION_TABLE(data?: Partial<_VK_TO_FUNCTION_TABLE>
 }
 
 /**
- * Windows.Win32.UI.Input.KeyboardAndMouse.tagKbdNlsLayer (size: 32)
+ * Windows.Win32.UI.Input.KeyboardAndMouse.KBDNLSTABLES (size: 32)
  */
-export interface tagKbdNlsLayer {
+export interface KBDNLSTABLES {
   /** u16 */
   OEMIdentifier: number;
   /** u16 */
@@ -4157,10 +4275,10 @@ export interface tagKbdNlsLayer {
   pusMouseVKey: Deno.PointerValue | Uint8Array | null;
 }
 
-export const sizeofTagKbdNlsLayer = 32;
+export const sizeofKBDNLSTABLES = 32;
 
-export function allocTagKbdNlsLayer(data?: Partial<tagKbdNlsLayer>): Uint8Array {
-  const buf = new Uint8Array(sizeofTagKbdNlsLayer);
+export function allocKBDNLSTABLES(data?: Partial<KBDNLSTABLES>): Uint8Array {
+  const buf = new Uint8Array(sizeofKBDNLSTABLES);
   const view = new DataView(buf.buffer);
   // 0x00: u16
   if (data?.OEMIdentifier !== undefined) view.setUint16(0, Number(data.OEMIdentifier), true);
@@ -4258,8 +4376,8 @@ export function allocKBD_TYPE_INFO(data?: Partial<KBD_TYPE_INFO>): Uint8Array {
  * Windows.Win32.UI.Input.XboxController.XINPUT_GAMEPAD (size: 16)
  */
 export interface XINPUT_GAMEPAD {
-  /** u16 */
-  wButtons: number;
+  /** Windows.Win32.UI.Input.XboxController.XINPUT_GAMEPAD_BUTTON_FLAGS */
+  wButtons: XINPUT_GAMEPAD_BUTTON_FLAGS;
   /** u8 */
   bLeftTrigger: number;
   /** u8 */
@@ -4344,37 +4462,37 @@ export function allocXINPUT_VIBRATION(data?: Partial<XINPUT_VIBRATION>): Uint8Ar
 }
 
 /**
- * Windows.Win32.UI.Input.XboxController.XINPUT_CAPABILITIES (size: 24)
+ * Windows.Win32.UI.Input.XboxController.XINPUT_CAPABILITIES (size: 32)
  */
 export interface XINPUT_CAPABILITIES {
-  /** u8 */
-  Type: number;
-  /** u8 */
-  SubType: number;
-  /** u16 */
-  Flags: number;
+  /** Windows.Win32.UI.Input.XboxController.XINPUT_DEVTYPE */
+  Type: XINPUT_DEVTYPE;
+  /** Windows.Win32.UI.Input.XboxController.XINPUT_DEVSUBTYPE */
+  SubType: XINPUT_DEVSUBTYPE;
+  /** Windows.Win32.UI.Input.XboxController.XINPUT_CAPABILITIES_FLAGS */
+  Flags: XINPUT_CAPABILITIES_FLAGS;
   /** Windows.Win32.UI.Input.XboxController.XINPUT_GAMEPAD */
   Gamepad: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.UI.Input.XboxController.XINPUT_VIBRATION */
   Vibration: Uint8Array | Deno.PointerValue | null;
 }
 
-export const sizeofXINPUT_CAPABILITIES = 24;
+export const sizeofXINPUT_CAPABILITIES = 32;
 
 export function allocXINPUT_CAPABILITIES(data?: Partial<XINPUT_CAPABILITIES>): Uint8Array {
   const buf = new Uint8Array(sizeofXINPUT_CAPABILITIES);
   const view = new DataView(buf.buffer);
-  // 0x00: u8
-  if (data?.Type !== undefined) view.setUint8(0, Number(data.Type));
-  // 0x01: u8
-  if (data?.SubType !== undefined) view.setUint8(1, Number(data.SubType));
-  // 0x02: u16
-  if (data?.Flags !== undefined) view.setUint16(2, Number(data.Flags), true);
-  // 0x04: pad4
-  // 0x08: pointer
-  if (data?.Gamepad !== undefined) view.setBigUint64(8, data.Gamepad === null ? 0n : BigInt(util.toPointer(data.Gamepad)), true);
+  // 0x00: u32
+  if (data?.Type !== undefined) view.setUint32(0, Number(data.Type), true);
+  // 0x04: u32
+  if (data?.SubType !== undefined) view.setUint32(4, Number(data.SubType), true);
+  // 0x08: u16
+  if (data?.Flags !== undefined) view.setUint16(8, Number(data.Flags), true);
+  // 0x0a: pad6
   // 0x10: pointer
-  if (data?.Vibration !== undefined) view.setBigUint64(16, data.Vibration === null ? 0n : BigInt(util.toPointer(data.Vibration)), true);
+  if (data?.Gamepad !== undefined) view.setBigUint64(16, data.Gamepad === null ? 0n : BigInt(util.toPointer(data.Gamepad)), true);
+  // 0x18: pointer
+  if (data?.Vibration !== undefined) view.setBigUint64(24, data.Vibration === null ? 0n : BigInt(util.toPointer(data.Vibration)), true);
   return buf;
 }
 
@@ -4382,10 +4500,10 @@ export function allocXINPUT_CAPABILITIES(data?: Partial<XINPUT_CAPABILITIES>): U
  * Windows.Win32.UI.Input.XboxController.XINPUT_BATTERY_INFORMATION (size: 8)
  */
 export interface XINPUT_BATTERY_INFORMATION {
-  /** u8 */
-  BatteryType: number;
-  /** u8 */
-  BatteryLevel: number;
+  /** Windows.Win32.UI.Input.XboxController.BATTERY_TYPE */
+  BatteryType: BATTERY_TYPE;
+  /** Windows.Win32.UI.Input.XboxController.BATTERY_LEVEL */
+  BatteryLevel: BATTERY_LEVEL;
 }
 
 export const sizeofXINPUT_BATTERY_INFORMATION = 8;
@@ -4393,11 +4511,10 @@ export const sizeofXINPUT_BATTERY_INFORMATION = 8;
 export function allocXINPUT_BATTERY_INFORMATION(data?: Partial<XINPUT_BATTERY_INFORMATION>): Uint8Array {
   const buf = new Uint8Array(sizeofXINPUT_BATTERY_INFORMATION);
   const view = new DataView(buf.buffer);
-  // 0x00: u8
-  if (data?.BatteryType !== undefined) view.setUint8(0, Number(data.BatteryType));
-  // 0x01: u8
-  if (data?.BatteryLevel !== undefined) view.setUint8(1, Number(data.BatteryLevel));
-  // 0x02: pad6
+  // 0x00: u32
+  if (data?.BatteryType !== undefined) view.setUint32(0, Number(data.BatteryType), true);
+  // 0x04: u32
+  if (data?.BatteryLevel !== undefined) view.setUint32(4, Number(data.BatteryLevel), true);
   return buf;
 }
 
@@ -4409,8 +4526,8 @@ export interface XINPUT_KEYSTROKE {
   VirtualKey: XINPUT_VIRTUAL_KEY;
   /** char */
   Unicode: Uint8Array | Deno.PointerValue | null;
-  /** u16 */
-  Flags: number;
+  /** Windows.Win32.UI.Input.XboxController.XINPUT_KEYSTROKE_FLAGS */
+  Flags: XINPUT_KEYSTROKE_FLAGS;
   /** u8 */
   UserIndex: number;
   /** u8 */
@@ -4507,7 +4624,7 @@ export interface MOUSEINPUT {
   dx: number;
   /** i32 */
   dy: number;
-  /** u32 */
+  /** i32 */
   mouseData: number;
   /** Windows.Win32.UI.Input.KeyboardAndMouse.MOUSE_EVENT_FLAGS */
   dwFlags: MOUSE_EVENT_FLAGS;
@@ -4526,8 +4643,8 @@ export function allocMOUSEINPUT(data?: Partial<MOUSEINPUT>): Uint8Array {
   if (data?.dx !== undefined) view.setInt32(0, Number(data.dx), true);
   // 0x04: i32
   if (data?.dy !== undefined) view.setInt32(4, Number(data.dy), true);
-  // 0x08: u32
-  if (data?.mouseData !== undefined) view.setUint32(8, Number(data.mouseData), true);
+  // 0x08: i32
+  if (data?.mouseData !== undefined) view.setInt32(8, Number(data.mouseData), true);
   // 0x0c: u32
   if (data?.dwFlags !== undefined) view.setUint32(12, Number(data.dwFlags), true);
   // 0x10: u32
@@ -5638,7 +5755,7 @@ export type LRESULT = Deno.PointerValue;
 // Native Libraries
 
 try {
-  var libUSER32 = Deno.dlopen("USER32", {
+  var libUSER32_dll = Deno.dlopen("USER32.dll", {
     GetRawInputData: {
       parameters: ["pointer", "u32", "pointer", "pointer", "u32"],
       result: "u32",
@@ -5691,7 +5808,7 @@ export function GetRawInputData(
   pcbSize: Deno.PointerValue | Uint8Array | null /* ptr */,
   cbSizeHeader: number /* u32 */,
 ): number /* u32 */ {
-  return libUSER32.GetRawInputData(util.toPointer(hRawInput), uiCommand, util.toPointer(pData), util.toPointer(pcbSize), cbSizeHeader);
+  return libUSER32_dll.GetRawInputData(util.toPointer(hRawInput), uiCommand, util.toPointer(pData), util.toPointer(pcbSize), cbSizeHeader);
 }
 
 export function GetRawInputDeviceInfoA(
@@ -5700,7 +5817,7 @@ export function GetRawInputDeviceInfoA(
   pData: Deno.PointerValue | Uint8Array | null /* ptr */,
   pcbSize: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libUSER32.GetRawInputDeviceInfoA(util.toPointer(hDevice), uiCommand, util.toPointer(pData), util.toPointer(pcbSize));
+  return libUSER32_dll.GetRawInputDeviceInfoA(util.toPointer(hDevice), uiCommand, util.toPointer(pData), util.toPointer(pcbSize));
 }
 
 export function GetRawInputDeviceInfoW(
@@ -5709,7 +5826,7 @@ export function GetRawInputDeviceInfoW(
   pData: Deno.PointerValue | Uint8Array | null /* ptr */,
   pcbSize: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libUSER32.GetRawInputDeviceInfoW(util.toPointer(hDevice), uiCommand, util.toPointer(pData), util.toPointer(pcbSize));
+  return libUSER32_dll.GetRawInputDeviceInfoW(util.toPointer(hDevice), uiCommand, util.toPointer(pData), util.toPointer(pcbSize));
 }
 
 export function GetRawInputBuffer(
@@ -5717,7 +5834,7 @@ export function GetRawInputBuffer(
   pcbSize: Deno.PointerValue | Uint8Array | null /* ptr */,
   cbSizeHeader: number /* u32 */,
 ): number /* u32 */ {
-  return libUSER32.GetRawInputBuffer(util.toPointer(pData), util.toPointer(pcbSize), cbSizeHeader);
+  return libUSER32_dll.GetRawInputBuffer(util.toPointer(pData), util.toPointer(pcbSize), cbSizeHeader);
 }
 
 export function RegisterRawInputDevices(
@@ -5725,7 +5842,7 @@ export function RegisterRawInputDevices(
   uiNumDevices: number /* u32 */,
   cbSize: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSER32.RegisterRawInputDevices(util.toPointer(pRawInputDevices), uiNumDevices, cbSize));
+  return util.boolFromFfi(libUSER32_dll.RegisterRawInputDevices(util.toPointer(pRawInputDevices), uiNumDevices, cbSize));
 }
 
 export function GetRegisteredRawInputDevices(
@@ -5733,7 +5850,7 @@ export function GetRegisteredRawInputDevices(
   puiNumDevices: Deno.PointerValue | Uint8Array | null /* ptr */,
   cbSize: number /* u32 */,
 ): number /* u32 */ {
-  return libUSER32.GetRegisteredRawInputDevices(util.toPointer(pRawInputDevices), util.toPointer(puiNumDevices), cbSize);
+  return libUSER32_dll.GetRegisteredRawInputDevices(util.toPointer(pRawInputDevices), util.toPointer(puiNumDevices), cbSize);
 }
 
 export function GetRawInputDeviceList(
@@ -5741,7 +5858,7 @@ export function GetRawInputDeviceList(
   puiNumDevices: Deno.PointerValue | Uint8Array | null /* ptr */,
   cbSize: number /* u32 */,
 ): number /* u32 */ {
-  return libUSER32.GetRawInputDeviceList(util.toPointer(pRawInputDeviceList), util.toPointer(puiNumDevices), cbSize);
+  return libUSER32_dll.GetRawInputDeviceList(util.toPointer(pRawInputDeviceList), util.toPointer(puiNumDevices), cbSize);
 }
 
 export function DefRawInputProc(
@@ -5749,18 +5866,18 @@ export function DefRawInputProc(
   nInput: number /* i32 */,
   cbSizeHeader: number /* u32 */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.LRESULT */ {
-  return util.pointerFromFfi(libUSER32.DefRawInputProc(util.toPointer(paRawInput), nInput, cbSizeHeader));
+  return util.pointerFromFfi(libUSER32_dll.DefRawInputProc(util.toPointer(paRawInput), nInput, cbSizeHeader));
 }
 
 export function GetCurrentInputMessageSource(
   inputMessageSource: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSER32.GetCurrentInputMessageSource(util.toPointer(inputMessageSource)));
+  return util.boolFromFfi(libUSER32_dll.GetCurrentInputMessageSource(util.toPointer(inputMessageSource)));
 }
 
 export function GetCIMSSM(
   inputMessageSource: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSER32.GetCIMSSM(util.toPointer(inputMessageSource)));
+  return util.boolFromFfi(libUSER32_dll.GetCIMSSM(util.toPointer(inputMessageSource)));
 }
 

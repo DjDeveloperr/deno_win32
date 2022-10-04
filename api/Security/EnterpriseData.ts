@@ -45,18 +45,21 @@ export function allocHTHREAD_NETWORK_CONTEXT(data?: Partial<HTHREAD_NETWORK_CONT
 }
 
 /**
- * Windows.Win32.Security.EnterpriseData.FILE_UNPROTECT_OPTIONS (size: 0)
+ * Windows.Win32.Security.EnterpriseData.FILE_UNPROTECT_OPTIONS (size: 8)
  */
 export interface FILE_UNPROTECT_OPTIONS {
-  /** bool */
-  audit: boolean;
+  /** u8 */
+  audit: number;
 }
 
-export const sizeofFILE_UNPROTECT_OPTIONS = 0;
+export const sizeofFILE_UNPROTECT_OPTIONS = 8;
 
 export function allocFILE_UNPROTECT_OPTIONS(data?: Partial<FILE_UNPROTECT_OPTIONS>): Uint8Array {
   const buf = new Uint8Array(sizeofFILE_UNPROTECT_OPTIONS);
   const view = new DataView(buf.buffer);
+  // 0x00: u8
+  if (data?.audit !== undefined) view.setUint8(0, Number(data.audit));
+  // 0x01: pad7
   return buf;
 }
 
@@ -69,7 +72,7 @@ export type NTSTATUS = number;
 // Native Libraries
 
 try {
-  var libsrpapi = Deno.dlopen("srpapi", {
+  var libsrpapi_dll = Deno.dlopen("srpapi.dll", {
     SrpCreateThreadNetworkContext: {
       parameters: ["buffer", "pointer"],
       result: "pointer",
@@ -118,7 +121,7 @@ try {
 } catch(e) { /* ignore */ }
 
 try {
-  var libefswrt = Deno.dlopen("efswrt", {
+  var libefswrt_dll = Deno.dlopen("efswrt.dll", {
     ProtectFileToEnterpriseIdentity: {
       parameters: ["buffer", "buffer"],
       result: "pointer",
@@ -136,20 +139,20 @@ export function SrpCreateThreadNetworkContext(
   enterpriseId: string | null /* Windows.Win32.Foundation.PWSTR */,
   threadNetworkContext: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libsrpapi.SrpCreateThreadNetworkContext(util.pwstrToFfi(enterpriseId), util.toPointer(threadNetworkContext)));
+  return util.pointerFromFfi(libsrpapi_dll.SrpCreateThreadNetworkContext(util.pwstrToFfi(enterpriseId), util.toPointer(threadNetworkContext)));
 }
 
 export function SrpCloseThreadNetworkContext(
   threadNetworkContext: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libsrpapi.SrpCloseThreadNetworkContext(util.toPointer(threadNetworkContext)));
+  return util.pointerFromFfi(libsrpapi_dll.SrpCloseThreadNetworkContext(util.toPointer(threadNetworkContext)));
 }
 
 export function SrpSetTokenEnterpriseId(
   tokenHandle: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
   enterpriseId: string | null /* Windows.Win32.Foundation.PWSTR */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libsrpapi.SrpSetTokenEnterpriseId(util.toPointer(tokenHandle), util.pwstrToFfi(enterpriseId)));
+  return util.pointerFromFfi(libsrpapi_dll.SrpSetTokenEnterpriseId(util.toPointer(tokenHandle), util.pwstrToFfi(enterpriseId)));
 }
 
 export function SrpGetEnterpriseIds(
@@ -158,38 +161,38 @@ export function SrpGetEnterpriseIds(
   enterpriseIds: Deno.PointerValue | Uint8Array | null /* ptr */,
   enterpriseIdCount: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libsrpapi.SrpGetEnterpriseIds(util.toPointer(tokenHandle), util.toPointer(numberOfBytes), util.toPointer(enterpriseIds), util.toPointer(enterpriseIdCount)));
+  return util.pointerFromFfi(libsrpapi_dll.SrpGetEnterpriseIds(util.toPointer(tokenHandle), util.toPointer(numberOfBytes), util.toPointer(enterpriseIds), util.toPointer(enterpriseIdCount)));
 }
 
 export function SrpEnablePermissiveModeFileEncryption(
   enterpriseId: string | null /* Windows.Win32.Foundation.PWSTR */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libsrpapi.SrpEnablePermissiveModeFileEncryption(util.pwstrToFfi(enterpriseId)));
+  return util.pointerFromFfi(libsrpapi_dll.SrpEnablePermissiveModeFileEncryption(util.pwstrToFfi(enterpriseId)));
 }
 
 export function SrpDisablePermissiveModeFileEncryption(): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libsrpapi.SrpDisablePermissiveModeFileEncryption());
+  return util.pointerFromFfi(libsrpapi_dll.SrpDisablePermissiveModeFileEncryption());
 }
 
 export function SrpGetEnterprisePolicy(
   tokenHandle: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
   policyFlags: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libsrpapi.SrpGetEnterprisePolicy(util.toPointer(tokenHandle), util.toPointer(policyFlags)));
+  return util.pointerFromFfi(libsrpapi_dll.SrpGetEnterprisePolicy(util.toPointer(tokenHandle), util.toPointer(policyFlags)));
 }
 
 export function SrpIsTokenService(
   TokenHandle: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
   IsTokenService: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.NTSTATUS */ {
-  return util.pointerFromFfi(libsrpapi.SrpIsTokenService(util.toPointer(TokenHandle), util.toPointer(IsTokenService)));
+  return util.pointerFromFfi(libsrpapi_dll.SrpIsTokenService(util.toPointer(TokenHandle), util.toPointer(IsTokenService)));
 }
 
 export function SrpDoesPolicyAllowAppExecution(
   packageId: Deno.PointerValue | Uint8Array | null /* ptr */,
   isAllowed: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libsrpapi.SrpDoesPolicyAllowAppExecution(util.toPointer(packageId), util.toPointer(isAllowed)));
+  return util.pointerFromFfi(libsrpapi_dll.SrpDoesPolicyAllowAppExecution(util.toPointer(packageId), util.toPointer(isAllowed)));
 }
 
 export function SrpHostingInitialize(
@@ -198,26 +201,26 @@ export function SrpHostingInitialize(
   pvData: Deno.PointerValue | Uint8Array | null /* ptr */,
   cbData: number /* u32 */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libsrpapi.SrpHostingInitialize(Version, Type, util.toPointer(pvData), cbData));
+  return util.pointerFromFfi(libsrpapi_dll.SrpHostingInitialize(Version, Type, util.toPointer(pvData), cbData));
 }
 
 export function SrpHostingTerminate(
   Type: SRPHOSTING_TYPE /* Windows.Win32.Security.EnterpriseData.SRPHOSTING_TYPE */,
 ): void /* void */ {
-  return libsrpapi.SrpHostingTerminate(Type);
+  return libsrpapi_dll.SrpHostingTerminate(Type);
 }
 
 export function ProtectFileToEnterpriseIdentity(
   fileOrFolderPath: string | null /* Windows.Win32.Foundation.PWSTR */,
   identity: string | null /* Windows.Win32.Foundation.PWSTR */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libefswrt.ProtectFileToEnterpriseIdentity(util.pwstrToFfi(fileOrFolderPath), util.pwstrToFfi(identity)));
+  return util.pointerFromFfi(libefswrt_dll.ProtectFileToEnterpriseIdentity(util.pwstrToFfi(fileOrFolderPath), util.pwstrToFfi(identity)));
 }
 
 export function UnprotectFile(
   fileOrFolderPath: string | null /* Windows.Win32.Foundation.PWSTR */,
   options: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libefswrt.UnprotectFile(util.pwstrToFfi(fileOrFolderPath), util.toPointer(options)));
+  return util.pointerFromFfi(libefswrt_dll.UnprotectFile(util.pwstrToFfi(fileOrFolderPath), util.toPointer(options)));
 }
 

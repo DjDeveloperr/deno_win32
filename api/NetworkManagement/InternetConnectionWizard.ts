@@ -3,6 +3,8 @@
 import * as util from "../../util.ts";
 
 // Constants
+export const ICW_REGPATHSETTINGS = "Software\Microsoft\Internet Connection Wizard";
+export const ICW_REGKEYCOMPLETED = "Completed";
 export const ICW_MAX_ACCTNAME = 256;
 export const ICW_MAX_PASSWORD = 256;
 export const ICW_MAX_LOGONNAME = 256;

@@ -3,6 +3,7 @@
 import * as util from "../../util.ts";
 
 // Enums
+export type VARENUM = number;
 export type DBTYPEENUM = number;
 export type DBTYPEENUM15 = number;
 export type DBTYPEENUM20 = number;
@@ -916,6 +917,8 @@ export const MAXNAME = 129;
 export const MAXNUMERICLEN = 16;
 export const SQL_PERF_START = 1;
 export const SQL_PERF_STOP = 2;
+export const SQL_SS_DL_DEFAULT = "STATS.LOG";
+export const SQL_SS_QL_DEFAULT = "QUERY.LOG";
 export const SQL_SS_QI_DEFAULT = 30000;
 export const SUCCEED = 1;
 export const FAIL = 0;
@@ -1140,7 +1143,7 @@ export const DB_S_ERRORSOCCURRED = 292411836052279002n;
 export const DB_S_PARAMUNAVAILABLE = 292412935563906779n;
 export const DB_S_MULTIPLECHANGES = 292407438005767900n;
 export const DB_S_NOTSINGLETON = 292414035075534551n;
-export const DB_S_NOROWSPECIFICCOLUMNS = 18446635239238536925n;
+export const DB_S_NOROWSPECIFICCOLUMNS = 5980865044853034717n;
 export const DBPROPFLAGS_PERSIST = 8192;
 export const DBPROPVAL_PERSIST_ADTG = 0;
 export const DBPROPVAL_PERSIST_XML = 1;
@@ -1150,6 +1153,7 @@ export const DBPROP_HCHAPTER = 4;
 export const DBPROP_MAINTAINPROPS = 5;
 export const DBPROP_Unicode = 6;
 export const DBPROP_INTERLEAVEDROWS = 8;
+export const MS_PERSIST_PROGID = "MSPersist";
 export const DISPID_QUERY_RANKVECTOR = 2;
 export const DISPID_QUERY_RANK = 3;
 export const DISPID_QUERY_HITCOUNT = 4;
@@ -1531,6 +1535,7 @@ export const SQL_NC_HIGH = 0;
 export const SQL_NC_LOW = 1;
 export const SQL_SPEC_MAJOR = 3;
 export const SQL_SPEC_MINOR = 80;
+export const SQL_SPEC_STRING = "03.80";
 export const SQL_SQLSTATE_SIZE = 5;
 export const SQL_MAX_DSN_LENGTH = 32;
 export const SQL_MAX_OPTION_STRING_LENGTH = 256;
@@ -1597,6 +1602,7 @@ export const SQL_LOGIN_TIMEOUT_DEFAULT = 15;
 export const SQL_OPT_TRACE_OFF = 0;
 export const SQL_OPT_TRACE_ON = 1;
 export const SQL_OPT_TRACE_DEFAULT = 0;
+export const SQL_OPT_TRACE_FILE_DEFAULT = "\SQL.LOG";
 export const SQL_CUR_USE_IF_NEEDED = 0;
 export const SQL_CUR_USE_ODBC = 1;
 export const SQL_CUR_USE_DRIVER = 2;
@@ -2531,6 +2537,9 @@ export const SQL_PC_NOT_PSEUDO = 1;
 export const SQL_QUICK = 0;
 export const SQL_ENSURE = 1;
 export const SQL_TABLE_STAT = 0;
+export const SQL_ALL_CATALOGS = "%";
+export const SQL_ALL_SCHEMAS = "%";
+export const SQL_ALL_TABLE_TYPES = "%";
 export const SQL_DRIVER_NOPROMPT = 0;
 export const SQL_DRIVER_COMPLETE = 1;
 export const SQL_DRIVER_PROMPT = 2;
@@ -2571,6 +2580,7 @@ export const SQL_PARAM_OUTPUT_STREAM = 16;
 export const SQL_PT_UNKNOWN = 0;
 export const SQL_PT_PROCEDURE = 1;
 export const SQL_PT_FUNCTION = 2;
+export const SQL_ODBC_KEYWORDS = "ABSOLUTE,ACTION,ADA,ADD,ALL,ALLOCATE,ALTER,AND,ANY,ARE,AS,ASC,ASSERTION,AT,AUTHORIZATION,AVG,BEGIN,BETWEEN,BIT,BIT_LENGTH,BOTH,BY,CASCADE,CASCADED,CASE,CAST,CATALOG,CHAR,CHAR_LENGTH,CHARACTER,CHARACTER_LENGTH,CHECK,CLOSE,COALESCE,COLLATE,COLLATION,COLUMN,COMMIT,CONNECT,CONNECTION,CONSTRAINT,CONSTRAINTS,CONTINUE,CONVERT,CORRESPONDING,COUNT,CREATE,CROSS,CURRENT,CURRENT_DATE,CURRENT_TIME,CURRENT_TIMESTAMP,CURRENT_USER,CURSOR,DATE,DAY,DEALLOCATE,DEC,DECIMAL,DECLARE,DEFAULT,DEFERRABLE,DEFERRED,DELETE,DESC,DESCRIBE,DESCRIPTOR,DIAGNOSTICS,DISCONNECT,DISTINCT,DOMAIN,DOUBLE,DROP,ELSE,END,END-EXEC,ESCAPE,EXCEPT,EXCEPTION,EXEC,EXECUTE,EXISTS,EXTERNAL,EXTRACT,FALSE,FETCH,FIRST,FLOAT,FOR,FOREIGN,FORTRAN,FOUND,FROM,FULL,GET,GLOBAL,GO,GOTO,GRANT,GROUP,HAVING,HOUR,IDENTITY,IMMEDIATE,IN,INCLUDE,INDEX,INDICATOR,INITIALLY,INNER,INPUT,INSENSITIVE,INSERT,INT,INTEGER,INTERSECT,INTERVAL,INTO,IS,ISOLATION,JOIN,KEY,LANGUAGE,LAST,LEADING,LEFT,LEVEL,LIKE,LOCAL,LOWER,MATCH,MAX,MIN,MINUTE,MODULE,MONTH,NAMES,NATIONAL,NATURAL,NCHAR,NEXT,NO,NONE,NOT,NULL,NULLIF,NUMERIC,OCTET_LENGTH,OF,ON,ONLY,OPEN,OPTION,OR,ORDER,OUTER,OUTPUT,OVERLAPS,PAD,PARTIAL,PASCAL,PLI,POSITION,PRECISION,PREPARE,PRESERVE,PRIMARY,PRIOR,PRIVILEGES,PROCEDURE,PUBLIC,READ,REAL,REFERENCES,RELATIVE,RESTRICT,REVOKE,RIGHT,ROLLBACK,ROWSSCHEMA,SCROLL,SECOND,SECTION,SELECT,SESSION,SESSION_USER,SET,SIZE,SMALLINT,SOME,SPACE,SQL,SQLCA,SQLCODE,SQLERROR,SQLSTATE,SQLWARNING,SUBSTRING,SUM,SYSTEM_USER,TABLE,TEMPORARY,THEN,TIME,TIMESTAMP,TIMEZONE_HOUR,TIMEZONE_MINUTE,TO,TRAILING,TRANSACTION,TRANSLATE,TRANSLATION,TRIM,TRUE,UNION,UNIQUE,UNKNOWN,UPDATE,UPPER,USAGE,USER,USING,VALUE,VALUES,VARCHAR,VARYING,VIEW,WHEN,WHENEVER,WHERE,WITH,WORK,WRITE,YEAR,ZONE";
 export const SQL_YEAR = 1;
 export const SQL_MONTH = 2;
 export const SQL_DAY = 3;
@@ -3492,9 +3502,61 @@ export const IDS_MON_INVALID_CATALOG = 290839534424557892n;
 export const IDS_MON_INVALIDSELECT_COALESCE = 290840633936185669n;
 export const IDS_MON_CANNOT_CAST = 290841733447813446n;
 export const IDS_MON_DATE_OUT_OF_RANGE = 290842832959441223n;
-export const IDS_MON_INVALID_IN_GROUP_CLAUSE = 432908548540991816n;
+export const IDS_MON_INVALID_IN_GROUP_CLAUSE = 434034465627703624n;
 export const PROGID_MSPersist_W = "MSPersist";
 export const PROGID_MSPersist_Version_W = "MSPersist.1";
+export const VT_EMPTY = 0;
+export const VT_NULL = 1;
+export const VT_I2 = 2;
+export const VT_I4 = 3;
+export const VT_R4 = 4;
+export const VT_R8 = 5;
+export const VT_CY = 6;
+export const VT_DATE = 7;
+export const VT_BSTR = 8;
+export const VT_DISPATCH = 9;
+export const VT_ERROR = 10;
+export const VT_BOOL = 11;
+export const VT_VARIANT = 12;
+export const VT_UNKNOWN = 13;
+export const VT_DECIMAL = 14;
+export const VT_I1 = 16;
+export const VT_UI1 = 17;
+export const VT_UI2 = 18;
+export const VT_UI4 = 19;
+export const VT_I8 = 20;
+export const VT_UI8 = 21;
+export const VT_INT = 22;
+export const VT_UINT = 23;
+export const VT_VOID = 24;
+export const VT_HRESULT = 25;
+export const VT_PTR = 26;
+export const VT_SAFEARRAY = 27;
+export const VT_CARRAY = 28;
+export const VT_USERDEFINED = 29;
+export const VT_LPSTR = 30;
+export const VT_LPWSTR = 31;
+export const VT_RECORD = 36;
+export const VT_INT_PTR = 37;
+export const VT_UINT_PTR = 38;
+export const VT_FILETIME = 64;
+export const VT_BLOB = 65;
+export const VT_STREAM = 66;
+export const VT_STORAGE = 67;
+export const VT_STREAMED_OBJECT = 68;
+export const VT_STORED_OBJECT = 69;
+export const VT_BLOB_OBJECT = 70;
+export const VT_CF = 71;
+export const VT_CLSID = 72;
+export const VT_VERSIONED_STREAM = 73;
+export const VT_BSTR_BLOB = 4095;
+export const VT_VECTOR = 4096;
+export const VT_ARRAY = 8192;
+export const VT_BYREF = 16384;
+export const VT_RESERVED = 32768;
+export const VT_ILLEGAL = 65535;
+export const VT_ILLEGALMASKED = 4095;
+export const VT_TYPEMASK = 4095;
 export const DBTYPE_EMPTY = 0;
 export const DBTYPE_NULL = 1;
 export const DBTYPE_I2 = 2;
@@ -4438,110 +4500,7 @@ export const COP_APPLICATION_SPECIFIC = 14;
 
 // Structs
 
-export type PWSTR = Deno.PointerValue | Uint8Array | null;
-
-/**
- * Windows.Win32.System.Search.TEXT_SOURCE (size: 24)
- */
-export interface TEXT_SOURCE {
-  /** Windows.Win32.System.Search.PFNFILLTEXTBUFFER */
-  pfnFillTextBuffer: Uint8Array | Deno.PointerValue | null;
-  /** Windows.Win32.Foundation.PWSTR */
-  awcBuffer: string | null;
-  /** u32 */
-  iEnd: number;
-  /** u32 */
-  iCur: number;
-}
-
-export const sizeofTEXT_SOURCE = 24;
-
-export function allocTEXT_SOURCE(data?: Partial<TEXT_SOURCE>): Uint8Array {
-  const buf = new Uint8Array(sizeofTEXT_SOURCE);
-  const view = new DataView(buf.buffer);
-  // 0x00: pointer
-  if (data?.pfnFillTextBuffer !== undefined) view.setBigUint64(0, data.pfnFillTextBuffer === null ? 0n : BigInt(util.toPointer(data.pfnFillTextBuffer)), true);
-  // 0x08: buffer
-  if (data?.awcBuffer !== undefined) {
-    (buf as any)._f8 = util.pwstrToFfi(data.awcBuffer);
-    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f8)), true);
-  }
-  // 0x10: u32
-  if (data?.iEnd !== undefined) view.setUint32(16, Number(data.iEnd), true);
-  // 0x14: u32
-  if (data?.iCur !== undefined) view.setUint32(20, Number(data.iCur), true);
-  return buf;
-}
-
-/**
- * Windows.Win32.System.Search.FILTERED_DATA_SOURCES (size: 32)
- */
-export interface FILTERED_DATA_SOURCES {
-  /** Windows.Win32.Foundation.PWSTR */
-  pwcsExtension: string | null;
-  /** Windows.Win32.Foundation.PWSTR */
-  pwcsMime: string | null;
-  /** ptr */
-  pClsid: Deno.PointerValue | Uint8Array | null;
-  /** Windows.Win32.Foundation.PWSTR */
-  pwcsOverride: string | null;
-}
-
-export const sizeofFILTERED_DATA_SOURCES = 32;
-
-export function allocFILTERED_DATA_SOURCES(data?: Partial<FILTERED_DATA_SOURCES>): Uint8Array {
-  const buf = new Uint8Array(sizeofFILTERED_DATA_SOURCES);
-  const view = new DataView(buf.buffer);
-  // 0x00: buffer
-  if (data?.pwcsExtension !== undefined) {
-    (buf as any)._f0 = util.pwstrToFfi(data.pwcsExtension);
-    view.setBigUint64(0, (buf as any)._f0 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f0)), true);
-  }
-  // 0x08: buffer
-  if (data?.pwcsMime !== undefined) {
-    (buf as any)._f8 = util.pwstrToFfi(data.pwcsMime);
-    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f8)), true);
-  }
-  // 0x10: pointer
-  if (data?.pClsid !== undefined) view.setBigUint64(16, data.pClsid === null ? 0n : BigInt(util.toPointer(data.pClsid)), true);
-  // 0x18: buffer
-  if (data?.pwcsOverride !== undefined) {
-    (buf as any)._f24 = util.pwstrToFfi(data.pwcsOverride);
-    view.setBigUint64(24, (buf as any)._f24 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f24)), true);
-  }
-  return buf;
-}
-
-/**
- * Windows.Win32.System.Search.DB_NUMERIC (size: 16)
- */
-export interface DB_NUMERIC {
-  /** u8 */
-  precision: number;
-  /** u8 */
-  scale: number;
-  /** u8 */
-  sign: number;
-  /** array */
-  val: Deno.PointerValue | null;
-}
-
-export const sizeofDB_NUMERIC = 16;
-
-export function allocDB_NUMERIC(data?: Partial<DB_NUMERIC>): Uint8Array {
-  const buf = new Uint8Array(sizeofDB_NUMERIC);
-  const view = new DataView(buf.buffer);
-  // 0x00: u8
-  if (data?.precision !== undefined) view.setUint8(0, Number(data.precision));
-  // 0x01: u8
-  if (data?.scale !== undefined) view.setUint8(1, Number(data.scale));
-  // 0x02: u8
-  if (data?.sign !== undefined) view.setUint8(2, Number(data.sign));
-  // 0x03: pad5
-  // 0x08: pointer
-  if (data?.val !== undefined) view.setBigUint64(8, data.val === null ? 0n : BigInt(util.toPointer(data.val)), true);
-  return buf;
-}
+export type HACCESSOR = Deno.PointerValue;
 
 /**
  * Windows.Win32.System.Search.DBVECTOR (size: 16)
@@ -4562,60 +4521,6 @@ export function allocDBVECTOR(data?: Partial<DBVECTOR>): Uint8Array {
   if (data?.size !== undefined) view.setBigUint64(0, BigInt(data.size), true);
   // 0x08: pointer
   if (data?.ptr !== undefined) view.setBigUint64(8, data.ptr === null ? 0n : BigInt(util.toPointer(data.ptr)), true);
-  return buf;
-}
-
-/**
- * Windows.Win32.System.Search.DBDATE (size: 8)
- */
-export interface DBDATE {
-  /** i16 */
-  year: number;
-  /** u16 */
-  month: number;
-  /** u16 */
-  day: number;
-}
-
-export const sizeofDBDATE = 8;
-
-export function allocDBDATE(data?: Partial<DBDATE>): Uint8Array {
-  const buf = new Uint8Array(sizeofDBDATE);
-  const view = new DataView(buf.buffer);
-  // 0x00: i16
-  if (data?.year !== undefined) view.setInt16(0, Number(data.year), true);
-  // 0x02: u16
-  if (data?.month !== undefined) view.setUint16(2, Number(data.month), true);
-  // 0x04: u16
-  if (data?.day !== undefined) view.setUint16(4, Number(data.day), true);
-  // 0x06: pad2
-  return buf;
-}
-
-/**
- * Windows.Win32.System.Search.DBTIME (size: 8)
- */
-export interface DBTIME {
-  /** u16 */
-  hour: number;
-  /** u16 */
-  minute: number;
-  /** u16 */
-  second: number;
-}
-
-export const sizeofDBTIME = 8;
-
-export function allocDBTIME(data?: Partial<DBTIME>): Uint8Array {
-  const buf = new Uint8Array(sizeofDBTIME);
-  const view = new DataView(buf.buffer);
-  // 0x00: u16
-  if (data?.hour !== undefined) view.setUint16(0, Number(data.hour), true);
-  // 0x02: u16
-  if (data?.minute !== undefined) view.setUint16(2, Number(data.minute), true);
-  // 0x04: u16
-  if (data?.second !== undefined) view.setUint16(4, Number(data.second), true);
-  // 0x06: pad2
   return buf;
 }
 
@@ -4662,37 +4567,6 @@ export function allocDBTIMESTAMP(data?: Partial<DBTIMESTAMP>): Uint8Array {
 }
 
 /**
- * Windows.Win32.System.Search.DB_VARNUMERIC (size: 16)
- */
-export interface DB_VARNUMERIC {
-  /** u8 */
-  precision: number;
-  /** i8 */
-  scale: number;
-  /** u8 */
-  sign: number;
-  /** array */
-  val: Deno.PointerValue | null;
-}
-
-export const sizeofDB_VARNUMERIC = 16;
-
-export function allocDB_VARNUMERIC(data?: Partial<DB_VARNUMERIC>): Uint8Array {
-  const buf = new Uint8Array(sizeofDB_VARNUMERIC);
-  const view = new DataView(buf.buffer);
-  // 0x00: u8
-  if (data?.precision !== undefined) view.setUint8(0, Number(data.precision));
-  // 0x01: i8
-  if (data?.scale !== undefined) view.setInt8(1, Number(data.scale));
-  // 0x02: u8
-  if (data?.sign !== undefined) view.setUint8(2, Number(data.sign));
-  // 0x03: pad5
-  // 0x08: pointer
-  if (data?.val !== undefined) view.setBigUint64(8, data.val === null ? 0n : BigInt(util.toPointer(data.val)), true);
-  return buf;
-}
-
-/**
  * _uGuid_e__Union (size: 16)
  */
 export interface _uGuid_e__Union {
@@ -4713,6 +4587,8 @@ export function alloc_uGuid_e__Union(data?: Partial<_uGuid_e__Union>): Uint8Arra
   if (data?.pguid !== undefined) view.setBigUint64(8, data.pguid === null ? 0n : BigInt(util.toPointer(data.pguid)), true);
   return buf;
 }
+
+export type PWSTR = Deno.PointerValue | Uint8Array | null;
 
 /**
  * _uName_e__Union (size: 16)
@@ -5049,8 +4925,8 @@ export interface DBPARAMS {
   pData: Deno.PointerValue | Uint8Array | null;
   /** usize */
   cParamSets: Deno.PointerValue;
-  /** usize */
-  hAccessor: Deno.PointerValue;
+  /** Windows.Win32.System.Search.HACCESSOR */
+  hAccessor: Uint8Array | Deno.PointerValue | null;
 }
 
 export const sizeofDBPARAMS = 24;
@@ -5062,8 +4938,8 @@ export function allocDBPARAMS(data?: Partial<DBPARAMS>): Uint8Array {
   if (data?.pData !== undefined) view.setBigUint64(0, data.pData === null ? 0n : BigInt(util.toPointer(data.pData)), true);
   // 0x08: usize
   if (data?.cParamSets !== undefined) view.setBigUint64(8, BigInt(data.cParamSets), true);
-  // 0x10: usize
-  if (data?.hAccessor !== undefined) view.setBigUint64(16, BigInt(data.hAccessor), true);
+  // 0x10: pointer
+  if (data?.hAccessor !== undefined) view.setBigUint64(16, data.hAccessor === null ? 0n : BigInt(util.toPointer(data.hAccessor)), true);
   return buf;
 }
 
@@ -5217,8 +5093,8 @@ export interface DBPROPINFO {
   dwPropertyID: number;
   /** u32 */
   dwFlags: number;
-  /** u16 */
-  vtType: number;
+  /** Windows.Win32.System.Com.VARENUM */
+  vtType: VARENUM;
   /** Windows.Win32.System.Com.VARIANT */
   vValues: Uint8Array | Deno.PointerValue | null;
 }
@@ -5787,6 +5663,252 @@ export function allocERRORINFO(data?: Partial<ERRORINFO>): Uint8Array {
 }
 
 /**
+ * Windows.Win32.System.Search.DBROWWATCHCHANGE (size: 32)
+ */
+export interface DBROWWATCHCHANGE {
+  /** usize */
+  hRegion: Deno.PointerValue;
+  /** u32 */
+  eChangeKind: number;
+  /** usize */
+  hRow: Deno.PointerValue;
+  /** usize */
+  iRow: Deno.PointerValue;
+}
+
+export const sizeofDBROWWATCHCHANGE = 32;
+
+export function allocDBROWWATCHCHANGE(data?: Partial<DBROWWATCHCHANGE>): Uint8Array {
+  const buf = new Uint8Array(sizeofDBROWWATCHCHANGE);
+  const view = new DataView(buf.buffer);
+  // 0x00: usize
+  if (data?.hRegion !== undefined) view.setBigUint64(0, BigInt(data.hRegion), true);
+  // 0x08: u32
+  if (data?.eChangeKind !== undefined) view.setUint32(8, Number(data.eChangeKind), true);
+  // 0x0c: pad4
+  // 0x10: usize
+  if (data?.hRow !== undefined) view.setBigUint64(16, BigInt(data.hRow), true);
+  // 0x18: usize
+  if (data?.iRow !== undefined) view.setBigUint64(24, BigInt(data.iRow), true);
+  return buf;
+}
+
+/**
+ * Windows.Win32.System.Search.DBCOST (size: 16)
+ */
+export interface DBCOST {
+  /** u32 */
+  eKind: number;
+  /** u32 */
+  dwUnits: number;
+  /** i32 */
+  lValue: number;
+}
+
+export const sizeofDBCOST = 16;
+
+export function allocDBCOST(data?: Partial<DBCOST>): Uint8Array {
+  const buf = new Uint8Array(sizeofDBCOST);
+  const view = new DataView(buf.buffer);
+  // 0x00: u32
+  if (data?.eKind !== undefined) view.setUint32(0, Number(data.eKind), true);
+  // 0x04: u32
+  if (data?.dwUnits !== undefined) view.setUint32(4, Number(data.dwUnits), true);
+  // 0x08: i32
+  if (data?.lValue !== undefined) view.setInt32(8, Number(data.lValue), true);
+  // 0x0c: pad4
+  return buf;
+}
+
+/**
+ * Windows.Win32.System.Search.TEXT_SOURCE (size: 24)
+ */
+export interface TEXT_SOURCE {
+  /** Windows.Win32.System.Search.PFNFILLTEXTBUFFER */
+  pfnFillTextBuffer: Uint8Array | Deno.PointerValue | null;
+  /** Windows.Win32.Foundation.PWSTR */
+  awcBuffer: string | null;
+  /** u32 */
+  iEnd: number;
+  /** u32 */
+  iCur: number;
+}
+
+export const sizeofTEXT_SOURCE = 24;
+
+export function allocTEXT_SOURCE(data?: Partial<TEXT_SOURCE>): Uint8Array {
+  const buf = new Uint8Array(sizeofTEXT_SOURCE);
+  const view = new DataView(buf.buffer);
+  // 0x00: pointer
+  if (data?.pfnFillTextBuffer !== undefined) view.setBigUint64(0, data.pfnFillTextBuffer === null ? 0n : BigInt(util.toPointer(data.pfnFillTextBuffer)), true);
+  // 0x08: buffer
+  if (data?.awcBuffer !== undefined) {
+    (buf as any)._f8 = util.pwstrToFfi(data.awcBuffer);
+    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f8)), true);
+  }
+  // 0x10: u32
+  if (data?.iEnd !== undefined) view.setUint32(16, Number(data.iEnd), true);
+  // 0x14: u32
+  if (data?.iCur !== undefined) view.setUint32(20, Number(data.iCur), true);
+  return buf;
+}
+
+/**
+ * Windows.Win32.System.Search.FILTERED_DATA_SOURCES (size: 32)
+ */
+export interface FILTERED_DATA_SOURCES {
+  /** Windows.Win32.Foundation.PWSTR */
+  pwcsExtension: string | null;
+  /** Windows.Win32.Foundation.PWSTR */
+  pwcsMime: string | null;
+  /** ptr */
+  pClsid: Deno.PointerValue | Uint8Array | null;
+  /** Windows.Win32.Foundation.PWSTR */
+  pwcsOverride: string | null;
+}
+
+export const sizeofFILTERED_DATA_SOURCES = 32;
+
+export function allocFILTERED_DATA_SOURCES(data?: Partial<FILTERED_DATA_SOURCES>): Uint8Array {
+  const buf = new Uint8Array(sizeofFILTERED_DATA_SOURCES);
+  const view = new DataView(buf.buffer);
+  // 0x00: buffer
+  if (data?.pwcsExtension !== undefined) {
+    (buf as any)._f0 = util.pwstrToFfi(data.pwcsExtension);
+    view.setBigUint64(0, (buf as any)._f0 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f0)), true);
+  }
+  // 0x08: buffer
+  if (data?.pwcsMime !== undefined) {
+    (buf as any)._f8 = util.pwstrToFfi(data.pwcsMime);
+    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f8)), true);
+  }
+  // 0x10: pointer
+  if (data?.pClsid !== undefined) view.setBigUint64(16, data.pClsid === null ? 0n : BigInt(util.toPointer(data.pClsid)), true);
+  // 0x18: buffer
+  if (data?.pwcsOverride !== undefined) {
+    (buf as any)._f24 = util.pwstrToFfi(data.pwcsOverride);
+    view.setBigUint64(24, (buf as any)._f24 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f24)), true);
+  }
+  return buf;
+}
+
+/**
+ * Windows.Win32.System.Search.DB_NUMERIC (size: 16)
+ */
+export interface DB_NUMERIC {
+  /** u8 */
+  precision: number;
+  /** u8 */
+  scale: number;
+  /** u8 */
+  sign: number;
+  /** array */
+  val: Deno.PointerValue | null;
+}
+
+export const sizeofDB_NUMERIC = 16;
+
+export function allocDB_NUMERIC(data?: Partial<DB_NUMERIC>): Uint8Array {
+  const buf = new Uint8Array(sizeofDB_NUMERIC);
+  const view = new DataView(buf.buffer);
+  // 0x00: u8
+  if (data?.precision !== undefined) view.setUint8(0, Number(data.precision));
+  // 0x01: u8
+  if (data?.scale !== undefined) view.setUint8(1, Number(data.scale));
+  // 0x02: u8
+  if (data?.sign !== undefined) view.setUint8(2, Number(data.sign));
+  // 0x03: pad5
+  // 0x08: pointer
+  if (data?.val !== undefined) view.setBigUint64(8, data.val === null ? 0n : BigInt(util.toPointer(data.val)), true);
+  return buf;
+}
+
+/**
+ * Windows.Win32.System.Search.DBDATE (size: 8)
+ */
+export interface DBDATE {
+  /** i16 */
+  year: number;
+  /** u16 */
+  month: number;
+  /** u16 */
+  day: number;
+}
+
+export const sizeofDBDATE = 8;
+
+export function allocDBDATE(data?: Partial<DBDATE>): Uint8Array {
+  const buf = new Uint8Array(sizeofDBDATE);
+  const view = new DataView(buf.buffer);
+  // 0x00: i16
+  if (data?.year !== undefined) view.setInt16(0, Number(data.year), true);
+  // 0x02: u16
+  if (data?.month !== undefined) view.setUint16(2, Number(data.month), true);
+  // 0x04: u16
+  if (data?.day !== undefined) view.setUint16(4, Number(data.day), true);
+  // 0x06: pad2
+  return buf;
+}
+
+/**
+ * Windows.Win32.System.Search.DBTIME (size: 8)
+ */
+export interface DBTIME {
+  /** u16 */
+  hour: number;
+  /** u16 */
+  minute: number;
+  /** u16 */
+  second: number;
+}
+
+export const sizeofDBTIME = 8;
+
+export function allocDBTIME(data?: Partial<DBTIME>): Uint8Array {
+  const buf = new Uint8Array(sizeofDBTIME);
+  const view = new DataView(buf.buffer);
+  // 0x00: u16
+  if (data?.hour !== undefined) view.setUint16(0, Number(data.hour), true);
+  // 0x02: u16
+  if (data?.minute !== undefined) view.setUint16(2, Number(data.minute), true);
+  // 0x04: u16
+  if (data?.second !== undefined) view.setUint16(4, Number(data.second), true);
+  // 0x06: pad2
+  return buf;
+}
+
+/**
+ * Windows.Win32.System.Search.DB_VARNUMERIC (size: 16)
+ */
+export interface DB_VARNUMERIC {
+  /** u8 */
+  precision: number;
+  /** i8 */
+  scale: number;
+  /** u8 */
+  sign: number;
+  /** array */
+  val: Deno.PointerValue | null;
+}
+
+export const sizeofDB_VARNUMERIC = 16;
+
+export function allocDB_VARNUMERIC(data?: Partial<DB_VARNUMERIC>): Uint8Array {
+  const buf = new Uint8Array(sizeofDB_VARNUMERIC);
+  const view = new DataView(buf.buffer);
+  // 0x00: u8
+  if (data?.precision !== undefined) view.setUint8(0, Number(data.precision));
+  // 0x01: i8
+  if (data?.scale !== undefined) view.setInt8(1, Number(data.scale));
+  // 0x02: u8
+  if (data?.sign !== undefined) view.setUint8(2, Number(data.sign));
+  // 0x03: pad5
+  // 0x08: pointer
+  if (data?.val !== undefined) view.setBigUint64(8, data.val === null ? 0n : BigInt(util.toPointer(data.val)), true);
+  return buf;
+}
+
+/**
  * Windows.Win32.System.Search.HITRANGE (size: 8)
  */
 export interface HITRANGE {
@@ -6341,8 +6463,8 @@ export function allocDCINFO(data?: Partial<DCINFO>): Uint8Array {
 export interface KAGREQDIAG {
   /** u32 */
   ulDiagFlags: number;
-  /** u16 */
-  vt: number;
+  /** Windows.Win32.System.Com.VARENUM */
+  vt: VARENUM;
   /** i16 */
   sDiagField: number;
 }
@@ -6486,19 +6608,19 @@ export function allocTIMESTAMP_STRUCT(data?: Partial<TIMESTAMP_STRUCT>): Uint8Ar
 }
 
 /**
- * Windows.Win32.System.Search.tagSQL_YEAR_MONTH (size: 8)
+ * Windows.Win32.System.Search.SQL_YEAR_MONTH_STRUCT (size: 8)
  */
-export interface tagSQL_YEAR_MONTH {
+export interface SQL_YEAR_MONTH_STRUCT {
   /** u32 */
   year: number;
   /** u32 */
   month: number;
 }
 
-export const sizeofTagSQL_YEAR_MONTH = 8;
+export const sizeofSQL_YEAR_MONTH_STRUCT = 8;
 
-export function allocTagSQL_YEAR_MONTH(data?: Partial<tagSQL_YEAR_MONTH>): Uint8Array {
-  const buf = new Uint8Array(sizeofTagSQL_YEAR_MONTH);
+export function allocSQL_YEAR_MONTH_STRUCT(data?: Partial<SQL_YEAR_MONTH_STRUCT>): Uint8Array {
+  const buf = new Uint8Array(sizeofSQL_YEAR_MONTH_STRUCT);
   const view = new DataView(buf.buffer);
   // 0x00: u32
   if (data?.year !== undefined) view.setUint32(0, Number(data.year), true);
@@ -6508,9 +6630,9 @@ export function allocTagSQL_YEAR_MONTH(data?: Partial<tagSQL_YEAR_MONTH>): Uint8
 }
 
 /**
- * Windows.Win32.System.Search.tagSQL_DAY_SECOND (size: 24)
+ * Windows.Win32.System.Search.SQL_DAY_SECOND_STRUCT (size: 24)
  */
-export interface tagSQL_DAY_SECOND {
+export interface SQL_DAY_SECOND_STRUCT {
   /** u32 */
   day: number;
   /** u32 */
@@ -6523,10 +6645,10 @@ export interface tagSQL_DAY_SECOND {
   fraction: number;
 }
 
-export const sizeofTagSQL_DAY_SECOND = 24;
+export const sizeofSQL_DAY_SECOND_STRUCT = 24;
 
-export function allocTagSQL_DAY_SECOND(data?: Partial<tagSQL_DAY_SECOND>): Uint8Array {
-  const buf = new Uint8Array(sizeofTagSQL_DAY_SECOND);
+export function allocSQL_DAY_SECOND_STRUCT(data?: Partial<SQL_DAY_SECOND_STRUCT>): Uint8Array {
+  const buf = new Uint8Array(sizeofSQL_DAY_SECOND_STRUCT);
   const view = new DataView(buf.buffer);
   // 0x00: u32
   if (data?.day !== undefined) view.setUint32(0, Number(data.day), true);
@@ -6546,9 +6668,9 @@ export function allocTagSQL_DAY_SECOND(data?: Partial<tagSQL_DAY_SECOND>): Uint8
  * _intval_e__Union (size: 16)
  */
 export interface _intval_e__Union {
-  /** Windows.Win32.System.Search.tagSQL_YEAR_MONTH */
+  /** Windows.Win32.System.Search.SQL_YEAR_MONTH_STRUCT */
   year_month: Uint8Array | Deno.PointerValue | null;
-  /** Windows.Win32.System.Search.tagSQL_DAY_SECOND */
+  /** Windows.Win32.System.Search.SQL_DAY_SECOND_STRUCT */
   day_second: Uint8Array | Deno.PointerValue | null;
 }
 
@@ -6623,19 +6745,19 @@ export function allocSQL_NUMERIC_STRUCT(data?: Partial<SQL_NUMERIC_STRUCT>): Uin
 }
 
 /**
- * Windows.Win32.System.Search.dbvarychar (size: 16)
+ * Windows.Win32.System.Search.DBVARYCHAR (size: 16)
  */
-export interface dbvarychar {
+export interface DBVARYCHAR {
   /** i16 */
   len: number;
   /** array */
   str: Deno.PointerValue | null;
 }
 
-export const sizeofDbvarychar = 16;
+export const sizeofDBVARYCHAR = 16;
 
-export function allocDbvarychar(data?: Partial<dbvarychar>): Uint8Array {
-  const buf = new Uint8Array(sizeofDbvarychar);
+export function allocDBVARYCHAR(data?: Partial<DBVARYCHAR>): Uint8Array {
+  const buf = new Uint8Array(sizeofDBVARYCHAR);
   const view = new DataView(buf.buffer);
   // 0x00: i16
   if (data?.len !== undefined) view.setInt16(0, Number(data.len), true);
@@ -6646,19 +6768,19 @@ export function allocDbvarychar(data?: Partial<dbvarychar>): Uint8Array {
 }
 
 /**
- * Windows.Win32.System.Search.dbvarybin (size: 16)
+ * Windows.Win32.System.Search.DBVARYBIN (size: 16)
  */
-export interface dbvarybin {
+export interface DBVARYBIN {
   /** i16 */
   len: number;
   /** array */
   array: Deno.PointerValue | null;
 }
 
-export const sizeofDbvarybin = 16;
+export const sizeofDBVARYBIN = 16;
 
-export function allocDbvarybin(data?: Partial<dbvarybin>): Uint8Array {
-  const buf = new Uint8Array(sizeofDbvarybin);
+export function allocDBVARYBIN(data?: Partial<DBVARYBIN>): Uint8Array {
+  const buf = new Uint8Array(sizeofDBVARYBIN);
   const view = new DataView(buf.buffer);
   // 0x00: i16
   if (data?.len !== undefined) view.setInt16(0, Number(data.len), true);
@@ -6669,19 +6791,19 @@ export function allocDbvarybin(data?: Partial<dbvarybin>): Uint8Array {
 }
 
 /**
- * Windows.Win32.System.Search.dbmoney (size: 8)
+ * Windows.Win32.System.Search.DBMONEY (size: 8)
  */
-export interface dbmoney {
+export interface DBMONEY {
   /** i32 */
   mnyhigh: number;
   /** u32 */
   mnylow: number;
 }
 
-export const sizeofDbmoney = 8;
+export const sizeofDBMONEY = 8;
 
-export function allocDbmoney(data?: Partial<dbmoney>): Uint8Array {
-  const buf = new Uint8Array(sizeofDbmoney);
+export function allocDBMONEY(data?: Partial<DBMONEY>): Uint8Array {
+  const buf = new Uint8Array(sizeofDBMONEY);
   const view = new DataView(buf.buffer);
   // 0x00: i32
   if (data?.mnyhigh !== undefined) view.setInt32(0, Number(data.mnyhigh), true);
@@ -6691,19 +6813,19 @@ export function allocDbmoney(data?: Partial<dbmoney>): Uint8Array {
 }
 
 /**
- * Windows.Win32.System.Search.dbdatetime (size: 8)
+ * Windows.Win32.System.Search.DBDATETIME (size: 8)
  */
-export interface dbdatetime {
+export interface DBDATETIME {
   /** i32 */
   dtdays: number;
   /** u32 */
   dttime: number;
 }
 
-export const sizeofDbdatetime = 8;
+export const sizeofDBDATETIME = 8;
 
-export function allocDbdatetime(data?: Partial<dbdatetime>): Uint8Array {
-  const buf = new Uint8Array(sizeofDbdatetime);
+export function allocDBDATETIME(data?: Partial<DBDATETIME>): Uint8Array {
+  const buf = new Uint8Array(sizeofDBDATETIME);
   const view = new DataView(buf.buffer);
   // 0x00: i32
   if (data?.dtdays !== undefined) view.setInt32(0, Number(data.dtdays), true);
@@ -6713,19 +6835,19 @@ export function allocDbdatetime(data?: Partial<dbdatetime>): Uint8Array {
 }
 
 /**
- * Windows.Win32.System.Search.dbdatetime4 (size: 8)
+ * Windows.Win32.System.Search.DBDATETIM4 (size: 8)
  */
-export interface dbdatetime4 {
+export interface DBDATETIM4 {
   /** u16 */
   numdays: number;
   /** u16 */
   nummins: number;
 }
 
-export const sizeofDbdatetime4 = 8;
+export const sizeofDBDATETIM4 = 8;
 
-export function allocDbdatetime4(data?: Partial<dbdatetime4>): Uint8Array {
-  const buf = new Uint8Array(sizeofDbdatetime4);
+export function allocDBDATETIM4(data?: Partial<DBDATETIM4>): Uint8Array {
+  const buf = new Uint8Array(sizeofDBDATETIM4);
   const view = new DataView(buf.buffer);
   // 0x00: u16
   if (data?.numdays !== undefined) view.setUint16(0, Number(data.numdays), true);
@@ -6736,9 +6858,9 @@ export function allocDbdatetime4(data?: Partial<dbdatetime4>): Uint8Array {
 }
 
 /**
- * Windows.Win32.System.Search.sqlperf (size: 160)
+ * Windows.Win32.System.Search.SQLPERF (size: 160)
  */
-export interface sqlperf {
+export interface SQLPERF {
   /** u32 */
   TimerResolution: number;
   /** u32 */
@@ -6807,10 +6929,10 @@ export interface sqlperf {
   msNetWorkServerTime: number;
 }
 
-export const sizeofSqlperf = 160;
+export const sizeofSQLPERF = 160;
 
-export function allocSqlperf(data?: Partial<sqlperf>): Uint8Array {
-  const buf = new Uint8Array(sizeofSqlperf);
+export function allocSQLPERF(data?: Partial<SQLPERF>): Uint8Array {
+  const buf = new Uint8Array(sizeofSQLPERF);
   const view = new DataView(buf.buffer);
   // 0x00: u32
   if (data?.TimerResolution !== undefined) view.setUint32(0, Number(data.TimerResolution), true);
@@ -6880,64 +7002,6 @@ export function allocSqlperf(data?: Partial<sqlperf>): Uint8Array {
   // 0x98: u32
   if (data?.msNetWorkServerTime !== undefined) view.setUint32(152, Number(data.msNetWorkServerTime), true);
   // 0x9c: pad4
-  return buf;
-}
-
-/**
- * Windows.Win32.System.Search.tagDBROWWATCHRANGE (size: 32)
- */
-export interface tagDBROWWATCHRANGE {
-  /** usize */
-  hRegion: Deno.PointerValue;
-  /** u32 */
-  eChangeKind: number;
-  /** usize */
-  hRow: Deno.PointerValue;
-  /** usize */
-  iRow: Deno.PointerValue;
-}
-
-export const sizeofTagDBROWWATCHRANGE = 32;
-
-export function allocTagDBROWWATCHRANGE(data?: Partial<tagDBROWWATCHRANGE>): Uint8Array {
-  const buf = new Uint8Array(sizeofTagDBROWWATCHRANGE);
-  const view = new DataView(buf.buffer);
-  // 0x00: usize
-  if (data?.hRegion !== undefined) view.setBigUint64(0, BigInt(data.hRegion), true);
-  // 0x08: u32
-  if (data?.eChangeKind !== undefined) view.setUint32(8, Number(data.eChangeKind), true);
-  // 0x0c: pad4
-  // 0x10: usize
-  if (data?.hRow !== undefined) view.setBigUint64(16, BigInt(data.hRow), true);
-  // 0x18: usize
-  if (data?.iRow !== undefined) view.setBigUint64(24, BigInt(data.iRow), true);
-  return buf;
-}
-
-/**
- * Windows.Win32.System.Search.DBCOST (size: 16)
- */
-export interface DBCOST {
-  /** u32 */
-  eKind: number;
-  /** u32 */
-  dwUnits: number;
-  /** i32 */
-  lValue: number;
-}
-
-export const sizeofDBCOST = 16;
-
-export function allocDBCOST(data?: Partial<DBCOST>): Uint8Array {
-  const buf = new Uint8Array(sizeofDBCOST);
-  const view = new DataView(buf.buffer);
-  // 0x00: u32
-  if (data?.eKind !== undefined) view.setUint32(0, Number(data.eKind), true);
-  // 0x04: u32
-  if (data?.dwUnits !== undefined) view.setUint32(4, Number(data.dwUnits), true);
-  // 0x08: i32
-  if (data?.lValue !== undefined) view.setInt32(8, Number(data.lValue), true);
-  // 0x0c: pad4
   return buf;
 }
 
@@ -7525,9 +7589,9 @@ export function allocSSVARIANT(data?: Partial<SSVARIANT>): Uint8Array {
 }
 
 /**
- * Windows.Win32.System.Search.tagSSErrorInfo (size: 32)
+ * Windows.Win32.System.Search.SSERRORINFO (size: 32)
  */
-export interface tagSSErrorInfo {
+export interface SSERRORINFO {
   /** Windows.Win32.Foundation.PWSTR */
   pwszMessage: string | null;
   /** Windows.Win32.Foundation.PWSTR */
@@ -7544,10 +7608,10 @@ export interface tagSSErrorInfo {
   wLineNumber: number;
 }
 
-export const sizeofTagSSErrorInfo = 32;
+export const sizeofSSERRORINFO = 32;
 
-export function allocTagSSErrorInfo(data?: Partial<tagSSErrorInfo>): Uint8Array {
-  const buf = new Uint8Array(sizeofTagSSErrorInfo);
+export function allocSSERRORINFO(data?: Partial<SSERRORINFO>): Uint8Array {
+  const buf = new Uint8Array(sizeofSSERRORINFO);
   const view = new DataView(buf.buffer);
   // 0x00: buffer
   if (data?.pwszMessage !== undefined) {
@@ -7582,7 +7646,127 @@ export type HANDLE = Deno.PointerValue;
 // Native Libraries
 
 try {
-  var libODBC32 = Deno.dlopen("ODBC32", {
+  var libODBC32_dll = Deno.dlopen("ODBC32.dll", {
+    SQLBindCol: {
+      parameters: ["pointer", "u16", "i16", "pointer", "i32", "pointer"],
+      result: "i16",
+    },
+    SQLBindParam: {
+      parameters: ["pointer", "u16", "i16", "i16", "u32", "i16", "pointer", "pointer"],
+      result: "i16",
+    },
+    SQLColAttribute: {
+      parameters: ["pointer", "u16", "u16", "pointer", "i16", "pointer", "pointer"],
+      result: "i16",
+    },
+    SQLDescribeCol: {
+      parameters: ["pointer", "u16", "pointer", "i16", "pointer", "pointer", "pointer", "pointer", "pointer"],
+      result: "i16",
+    },
+    SQLFetchScroll: {
+      parameters: ["pointer", "i16", "i32"],
+      result: "i16",
+    },
+    SQLGetData: {
+      parameters: ["pointer", "u16", "i16", "pointer", "i32", "pointer"],
+      result: "i16",
+    },
+    SQLGetDescRec: {
+      parameters: ["pointer", "i16", "pointer", "i16", "pointer", "pointer", "pointer", "pointer", "pointer", "pointer", "pointer"],
+      result: "i16",
+    },
+    SQLPutData: {
+      parameters: ["pointer", "pointer", "i32"],
+      result: "i16",
+    },
+    SQLRowCount: {
+      parameters: ["pointer", "pointer"],
+      result: "i16",
+    },
+    SQLSetConnectOption: {
+      parameters: ["pointer", "u16", "u32"],
+      result: "i16",
+    },
+    SQLSetDescRec: {
+      parameters: ["pointer", "i16", "i16", "i16", "i32", "i16", "i16", "pointer", "pointer", "pointer"],
+      result: "i16",
+    },
+    SQLSetParam: {
+      parameters: ["pointer", "u16", "i16", "i16", "u32", "i16", "pointer", "pointer"],
+      result: "i16",
+    },
+    SQLSetStmtOption: {
+      parameters: ["pointer", "u16", "u32"],
+      result: "i16",
+    },
+    SQLColAttributes: {
+      parameters: ["pointer", "u16", "u16", "pointer", "i16", "pointer", "pointer"],
+      result: "i16",
+    },
+    SQLDescribeParam: {
+      parameters: ["pointer", "u16", "pointer", "pointer", "pointer", "pointer"],
+      result: "i16",
+    },
+    SQLExtendedFetch: {
+      parameters: ["pointer", "u16", "i32", "pointer", "pointer"],
+      result: "i16",
+    },
+    SQLParamOptions: {
+      parameters: ["pointer", "u32", "pointer"],
+      result: "i16",
+    },
+    SQLSetPos: {
+      parameters: ["pointer", "u16", "u16", "u16"],
+      result: "i16",
+    },
+    SQLBindParameter: {
+      parameters: ["pointer", "u16", "i16", "i16", "i16", "u32", "i16", "pointer", "i32", "pointer"],
+      result: "i16",
+    },
+    SQLSetScrollOptions: {
+      parameters: ["pointer", "u16", "i32", "u16"],
+      result: "i16",
+    },
+    SQLColAttributeW: {
+      parameters: ["pointer", "u16", "u16", "pointer", "i16", "pointer", "pointer"],
+      result: "i16",
+    },
+    SQLColAttributesW: {
+      parameters: ["pointer", "u16", "u16", "pointer", "i16", "pointer", "pointer"],
+      result: "i16",
+    },
+    SQLDescribeColW: {
+      parameters: ["pointer", "u16", "pointer", "i16", "pointer", "pointer", "pointer", "pointer", "pointer"],
+      result: "i16",
+    },
+    SQLGetDescRecW: {
+      parameters: ["pointer", "i16", "pointer", "i16", "pointer", "pointer", "pointer", "pointer", "pointer", "pointer", "pointer"],
+      result: "i16",
+    },
+    SQLSetConnectOptionW: {
+      parameters: ["pointer", "u16", "u32"],
+      result: "i16",
+    },
+    SQLColAttributeA: {
+      parameters: ["pointer", "i16", "i16", "pointer", "i16", "pointer", "pointer"],
+      result: "i16",
+    },
+    SQLColAttributesA: {
+      parameters: ["pointer", "u16", "u16", "pointer", "i16", "pointer", "pointer"],
+      result: "i16",
+    },
+    SQLDescribeColA: {
+      parameters: ["pointer", "u16", "pointer", "i16", "pointer", "pointer", "pointer", "pointer", "pointer"],
+      result: "i16",
+    },
+    SQLGetDescRecA: {
+      parameters: ["pointer", "i16", "pointer", "i16", "pointer", "pointer", "pointer", "pointer", "pointer", "pointer", "pointer"],
+      result: "i16",
+    },
+    SQLSetConnectOptionA: {
+      parameters: ["pointer", "u16", "u32"],
+      result: "i16",
+    },
     SQLAllocConnect: {
       parameters: ["pointer", "pointer"],
       result: "i16",
@@ -7599,14 +7783,6 @@ try {
       parameters: ["pointer", "pointer"],
       result: "i16",
     },
-    SQLBindCol: {
-      parameters: ["pointer", "u16", "i16", "pointer", "i32", "pointer"],
-      result: "i16",
-    },
-    SQLBindParam: {
-      parameters: ["pointer", "u16", "i16", "i16", "u32", "i16", "pointer", "pointer"],
-      result: "i16",
-    },
     SQLCancel: {
       parameters: ["pointer"],
       result: "i16",
@@ -7617,10 +7793,6 @@ try {
     },
     SQLCloseCursor: {
       parameters: ["pointer"],
-      result: "i16",
-    },
-    SQLColAttribute: {
-      parameters: ["pointer", "u16", "u16", "pointer", "i16", "pointer", "pointer"],
       result: "i16",
     },
     SQLColumns: {
@@ -7641,10 +7813,6 @@ try {
     },
     SQLDataSources: {
       parameters: ["pointer", "u16", "pointer", "i16", "pointer", "pointer", "i16", "pointer"],
-      result: "i16",
-    },
-    SQLDescribeCol: {
-      parameters: ["pointer", "u16", "pointer", "i16", "pointer", "pointer", "pointer", "pointer", "pointer"],
       result: "i16",
     },
     SQLDisconnect: {
@@ -7669,10 +7837,6 @@ try {
     },
     SQLFetch: {
       parameters: ["pointer"],
-      result: "i16",
-    },
-    SQLFetchScroll: {
-      parameters: ["pointer", "i16", "i32"],
       result: "i16",
     },
     SQLFreeConnect: {
@@ -7703,16 +7867,8 @@ try {
       parameters: ["pointer", "pointer", "i16", "pointer"],
       result: "i16",
     },
-    SQLGetData: {
-      parameters: ["pointer", "u16", "i16", "pointer", "i32", "pointer"],
-      result: "i16",
-    },
     SQLGetDescField: {
       parameters: ["pointer", "i16", "i16", "pointer", "i32", "pointer"],
-      result: "i16",
-    },
-    SQLGetDescRec: {
-      parameters: ["pointer", "i16", "pointer", "i16", "pointer", "pointer", "pointer", "pointer", "pointer", "pointer", "pointer"],
       result: "i16",
     },
     SQLGetDiagField: {
@@ -7759,20 +7915,8 @@ try {
       parameters: ["pointer", "pointer", "i32"],
       result: "i16",
     },
-    SQLPutData: {
-      parameters: ["pointer", "pointer", "i32"],
-      result: "i16",
-    },
-    SQLRowCount: {
-      parameters: ["pointer", "pointer"],
-      result: "i16",
-    },
     SQLSetConnectAttr: {
       parameters: ["pointer", "i32", "pointer", "i32"],
-      result: "i16",
-    },
-    SQLSetConnectOption: {
-      parameters: ["pointer", "u16", "u32"],
       result: "i16",
     },
     SQLSetCursorName: {
@@ -7783,24 +7927,12 @@ try {
       parameters: ["pointer", "i16", "i16", "pointer", "i32"],
       result: "i16",
     },
-    SQLSetDescRec: {
-      parameters: ["pointer", "i16", "i16", "i16", "i32", "i16", "i16", "pointer", "pointer", "pointer"],
-      result: "i16",
-    },
     SQLSetEnvAttr: {
       parameters: ["pointer", "i32", "pointer", "i32"],
       result: "i16",
     },
-    SQLSetParam: {
-      parameters: ["pointer", "u16", "i16", "i16", "u32", "i16", "pointer", "pointer"],
-      result: "i16",
-    },
     SQLSetStmtAttr: {
       parameters: ["pointer", "i32", "pointer", "i32"],
-      result: "i16",
-    },
-    SQLSetStmtOption: {
-      parameters: ["pointer", "u16", "u32"],
       result: "i16",
     },
     SQLSpecialColumns: {
@@ -7831,20 +7963,8 @@ try {
       parameters: ["pointer", "i16"],
       result: "i16",
     },
-    SQLColAttributes: {
-      parameters: ["pointer", "u16", "u16", "pointer", "i16", "pointer", "pointer"],
-      result: "i16",
-    },
     SQLColumnPrivileges: {
       parameters: ["pointer", "pointer", "i16", "pointer", "i16", "pointer", "i16", "pointer", "i16"],
-      result: "i16",
-    },
-    SQLDescribeParam: {
-      parameters: ["pointer", "u16", "pointer", "pointer", "pointer", "pointer"],
-      result: "i16",
-    },
-    SQLExtendedFetch: {
-      parameters: ["pointer", "u16", "i32", "pointer", "pointer"],
       result: "i16",
     },
     SQLForeignKeys: {
@@ -7863,10 +7983,6 @@ try {
       parameters: ["pointer", "pointer"],
       result: "i16",
     },
-    SQLParamOptions: {
-      parameters: ["pointer", "u32", "pointer"],
-      result: "i16",
-    },
     SQLPrimaryKeys: {
       parameters: ["pointer", "pointer", "i16", "pointer", "i16", "pointer", "i16"],
       result: "i16",
@@ -7879,10 +7995,6 @@ try {
       parameters: ["pointer", "pointer", "i16", "pointer", "i16", "pointer", "i16"],
       result: "i16",
     },
-    SQLSetPos: {
-      parameters: ["pointer", "u16", "u16", "u16"],
-      result: "i16",
-    },
     SQLTablePrivileges: {
       parameters: ["pointer", "pointer", "i16", "pointer", "i16", "pointer", "i16"],
       result: "i16",
@@ -7891,16 +8003,8 @@ try {
       parameters: ["pointer", "u16", "pointer", "i16", "pointer", "pointer", "i16", "pointer"],
       result: "i16",
     },
-    SQLBindParameter: {
-      parameters: ["pointer", "u16", "i16", "i16", "i16", "u32", "i16", "pointer", "i32", "pointer"],
-      result: "i16",
-    },
     SQLAllocHandleStd: {
       parameters: ["i16", "pointer", "pointer"],
-      result: "i16",
-    },
-    SQLSetScrollOptions: {
-      parameters: ["pointer", "u16", "i32", "u16"],
       result: "i16",
     },
     ODBCSetTryWaitValue: {
@@ -7911,20 +8015,8 @@ try {
       parameters: [],
       result: "u32",
     },
-    SQLColAttributeW: {
-      parameters: ["pointer", "u16", "u16", "pointer", "i16", "pointer", "pointer"],
-      result: "i16",
-    },
-    SQLColAttributesW: {
-      parameters: ["pointer", "u16", "u16", "pointer", "i16", "pointer", "pointer"],
-      result: "i16",
-    },
     SQLConnectW: {
       parameters: ["pointer", "pointer", "i16", "pointer", "i16", "pointer", "i16"],
-      result: "i16",
-    },
-    SQLDescribeColW: {
-      parameters: ["pointer", "u16", "pointer", "i16", "pointer", "pointer", "pointer", "pointer", "pointer"],
       result: "i16",
     },
     SQLErrorW: {
@@ -7949,10 +8041,6 @@ try {
     },
     SQLGetDescFieldW: {
       parameters: ["pointer", "i16", "i16", "pointer", "i32", "pointer"],
-      result: "i16",
-    },
-    SQLGetDescRecW: {
-      parameters: ["pointer", "i16", "pointer", "i16", "pointer", "pointer", "pointer", "pointer", "pointer", "pointer", "pointer"],
       result: "i16",
     },
     SQLGetDiagFieldW: {
@@ -7989,10 +8077,6 @@ try {
     },
     SQLGetTypeInfoW: {
       parameters: ["pointer", "i16"],
-      result: "i16",
-    },
-    SQLSetConnectOptionW: {
-      parameters: ["pointer", "u16", "u32"],
       result: "i16",
     },
     SQLSpecialColumnsW: {
@@ -8059,20 +8143,8 @@ try {
       parameters: ["pointer", "u16", "pointer", "i16", "pointer", "pointer", "i16", "pointer"],
       result: "i16",
     },
-    SQLColAttributeA: {
-      parameters: ["pointer", "i16", "i16", "pointer", "i16", "pointer", "pointer"],
-      result: "i16",
-    },
-    SQLColAttributesA: {
-      parameters: ["pointer", "u16", "u16", "pointer", "i16", "pointer", "pointer"],
-      result: "i16",
-    },
     SQLConnectA: {
       parameters: ["pointer", "pointer", "i16", "pointer", "i16", "pointer", "i16"],
-      result: "i16",
-    },
-    SQLDescribeColA: {
-      parameters: ["pointer", "u16", "pointer", "i16", "pointer", "pointer", "pointer", "pointer", "pointer"],
       result: "i16",
     },
     SQLErrorA: {
@@ -8093,10 +8165,6 @@ try {
     },
     SQLGetDescFieldA: {
       parameters: ["pointer", "i16", "i16", "pointer", "i32", "pointer"],
-      result: "i16",
-    },
-    SQLGetDescRecA: {
-      parameters: ["pointer", "i16", "pointer", "i16", "pointer", "pointer", "pointer", "pointer", "pointer", "pointer", "pointer"],
       result: "i16",
     },
     SQLGetDiagFieldA: {
@@ -8137,10 +8205,6 @@ try {
     },
     SQLGetInfoA: {
       parameters: ["pointer", "u16", "pointer", "i16", "pointer"],
-      result: "i16",
-    },
-    SQLSetConnectOptionA: {
-      parameters: ["pointer", "u16", "u32"],
       result: "i16",
     },
     SQLSpecialColumnsA: {
@@ -8203,7 +8267,7 @@ try {
 } catch(e) { /* ignore */ }
 
 try {
-  var libodbcbcp = Deno.dlopen("odbcbcp", {
+  var libodbcbcp_dll = Deno.dlopen("odbcbcp.dll", {
     bcp_batch: {
       parameters: ["pointer"],
       result: "i32",
@@ -8317,34 +8381,6 @@ try {
 
 // Symbols
 
-export function SQLAllocConnect(
-  EnvironmentHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
-  ConnectionHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
-): number /* i16 */ {
-  return libODBC32.SQLAllocConnect(util.toPointer(EnvironmentHandle), util.toPointer(ConnectionHandle));
-}
-
-export function SQLAllocEnv(
-  EnvironmentHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
-): number /* i16 */ {
-  return libODBC32.SQLAllocEnv(util.toPointer(EnvironmentHandle));
-}
-
-export function SQLAllocHandle(
-  HandleType: number /* i16 */,
-  InputHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
-  OutputHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
-): number /* i16 */ {
-  return libODBC32.SQLAllocHandle(HandleType, util.toPointer(InputHandle), util.toPointer(OutputHandle));
-}
-
-export function SQLAllocStmt(
-  ConnectionHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
-  StatementHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
-): number /* i16 */ {
-  return libODBC32.SQLAllocStmt(util.toPointer(ConnectionHandle), util.toPointer(StatementHandle));
-}
-
 export function SQLBindCol(
   StatementHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
   ColumnNumber: number /* u16 */,
@@ -8353,7 +8389,7 @@ export function SQLBindCol(
   BufferLength: number /* i32 */,
   StrLen_or_Ind: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i16 */ {
-  return libODBC32.SQLBindCol(util.toPointer(StatementHandle), ColumnNumber, TargetType, util.toPointer(TargetValue), BufferLength, util.toPointer(StrLen_or_Ind));
+  return libODBC32_dll.SQLBindCol(util.toPointer(StatementHandle), ColumnNumber, TargetType, util.toPointer(TargetValue), BufferLength, util.toPointer(StrLen_or_Ind));
 }
 
 export function SQLBindParam(
@@ -8366,26 +8402,7 @@ export function SQLBindParam(
   ParameterValue: Deno.PointerValue | Uint8Array | null /* ptr */,
   StrLen_or_Ind: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i16 */ {
-  return libODBC32.SQLBindParam(util.toPointer(StatementHandle), ParameterNumber, ValueType, ParameterType, LengthPrecision, ParameterScale, util.toPointer(ParameterValue), util.toPointer(StrLen_or_Ind));
-}
-
-export function SQLCancel(
-  StatementHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
-): number /* i16 */ {
-  return libODBC32.SQLCancel(util.toPointer(StatementHandle));
-}
-
-export function SQLCancelHandle(
-  HandleType: number /* i16 */,
-  InputHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
-): number /* i16 */ {
-  return libODBC32.SQLCancelHandle(HandleType, util.toPointer(InputHandle));
-}
-
-export function SQLCloseCursor(
-  StatementHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
-): number /* i16 */ {
-  return libODBC32.SQLCloseCursor(util.toPointer(StatementHandle));
+  return libODBC32_dll.SQLBindParam(util.toPointer(StatementHandle), ParameterNumber, ValueType, ParameterType, LengthPrecision, ParameterScale, util.toPointer(ParameterValue), util.toPointer(StrLen_or_Ind));
 }
 
 export function SQLColAttribute(
@@ -8397,61 +8414,7 @@ export function SQLColAttribute(
   StringLength: Deno.PointerValue | Uint8Array | null /* ptr */,
   NumericAttribute: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i16 */ {
-  return libODBC32.SQLColAttribute(util.toPointer(StatementHandle), ColumnNumber, FieldIdentifier, util.toPointer(CharacterAttribute), BufferLength, util.toPointer(StringLength), util.toPointer(NumericAttribute));
-}
-
-export function SQLColumns(
-  StatementHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
-  CatalogName: Deno.PointerValue | Uint8Array | null /* ptr */,
-  NameLength1: number /* i16 */,
-  SchemaName: Deno.PointerValue | Uint8Array | null /* ptr */,
-  NameLength2: number /* i16 */,
-  TableName: Deno.PointerValue | Uint8Array | null /* ptr */,
-  NameLength3: number /* i16 */,
-  ColumnName: Deno.PointerValue | Uint8Array | null /* ptr */,
-  NameLength4: number /* i16 */,
-): number /* i16 */ {
-  return libODBC32.SQLColumns(util.toPointer(StatementHandle), util.toPointer(CatalogName), NameLength1, util.toPointer(SchemaName), NameLength2, util.toPointer(TableName), NameLength3, util.toPointer(ColumnName), NameLength4);
-}
-
-export function SQLCompleteAsync(
-  HandleType: number /* i16 */,
-  Handle: Deno.PointerValue | Uint8Array | null /* ptr */,
-  AsyncRetCodePtr: Deno.PointerValue | Uint8Array | null /* ptr */,
-): number /* i16 */ {
-  return libODBC32.SQLCompleteAsync(HandleType, util.toPointer(Handle), util.toPointer(AsyncRetCodePtr));
-}
-
-export function SQLConnect(
-  ConnectionHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
-  ServerName: Deno.PointerValue | Uint8Array | null /* ptr */,
-  NameLength1: number /* i16 */,
-  UserName: Deno.PointerValue | Uint8Array | null /* ptr */,
-  NameLength2: number /* i16 */,
-  Authentication: Deno.PointerValue | Uint8Array | null /* ptr */,
-  NameLength3: number /* i16 */,
-): number /* i16 */ {
-  return libODBC32.SQLConnect(util.toPointer(ConnectionHandle), util.toPointer(ServerName), NameLength1, util.toPointer(UserName), NameLength2, util.toPointer(Authentication), NameLength3);
-}
-
-export function SQLCopyDesc(
-  SourceDescHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
-  TargetDescHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
-): number /* i16 */ {
-  return libODBC32.SQLCopyDesc(util.toPointer(SourceDescHandle), util.toPointer(TargetDescHandle));
-}
-
-export function SQLDataSources(
-  EnvironmentHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
-  Direction: number /* u16 */,
-  ServerName: Deno.PointerValue | Uint8Array | null /* ptr */,
-  BufferLength1: number /* i16 */,
-  NameLength1Ptr: Deno.PointerValue | Uint8Array | null /* ptr */,
-  Description: Deno.PointerValue | Uint8Array | null /* ptr */,
-  BufferLength2: number /* i16 */,
-  NameLength2Ptr: Deno.PointerValue | Uint8Array | null /* ptr */,
-): number /* i16 */ {
-  return libODBC32.SQLDataSources(util.toPointer(EnvironmentHandle), Direction, util.toPointer(ServerName), BufferLength1, util.toPointer(NameLength1Ptr), util.toPointer(Description), BufferLength2, util.toPointer(NameLength2Ptr));
+  return libODBC32_dll.SQLColAttribute(util.toPointer(StatementHandle), ColumnNumber, FieldIdentifier, util.toPointer(CharacterAttribute), BufferLength, util.toPointer(StringLength), util.toPointer(NumericAttribute));
 }
 
 export function SQLDescribeCol(
@@ -8465,54 +8428,7 @@ export function SQLDescribeCol(
   DecimalDigits: Deno.PointerValue | Uint8Array | null /* ptr */,
   Nullable: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i16 */ {
-  return libODBC32.SQLDescribeCol(util.toPointer(StatementHandle), ColumnNumber, util.toPointer(ColumnName), BufferLength, util.toPointer(NameLength), util.toPointer(DataType), util.toPointer(ColumnSize), util.toPointer(DecimalDigits), util.toPointer(Nullable));
-}
-
-export function SQLDisconnect(
-  ConnectionHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
-): number /* i16 */ {
-  return libODBC32.SQLDisconnect(util.toPointer(ConnectionHandle));
-}
-
-export function SQLEndTran(
-  HandleType: number /* i16 */,
-  Handle: Deno.PointerValue | Uint8Array | null /* ptr */,
-  CompletionType: number /* i16 */,
-): number /* i16 */ {
-  return libODBC32.SQLEndTran(HandleType, util.toPointer(Handle), CompletionType);
-}
-
-export function SQLError(
-  EnvironmentHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
-  ConnectionHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
-  StatementHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
-  Sqlstate: Deno.PointerValue | Uint8Array | null /* ptr */,
-  NativeError: Deno.PointerValue | Uint8Array | null /* ptr */,
-  MessageText: Deno.PointerValue | Uint8Array | null /* ptr */,
-  BufferLength: number /* i16 */,
-  TextLength: Deno.PointerValue | Uint8Array | null /* ptr */,
-): number /* i16 */ {
-  return libODBC32.SQLError(util.toPointer(EnvironmentHandle), util.toPointer(ConnectionHandle), util.toPointer(StatementHandle), util.toPointer(Sqlstate), util.toPointer(NativeError), util.toPointer(MessageText), BufferLength, util.toPointer(TextLength));
-}
-
-export function SQLExecDirect(
-  StatementHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
-  StatementText: Deno.PointerValue | Uint8Array | null /* ptr */,
-  TextLength: number /* i32 */,
-): number /* i16 */ {
-  return libODBC32.SQLExecDirect(util.toPointer(StatementHandle), util.toPointer(StatementText), TextLength);
-}
-
-export function SQLExecute(
-  StatementHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
-): number /* i16 */ {
-  return libODBC32.SQLExecute(util.toPointer(StatementHandle));
-}
-
-export function SQLFetch(
-  StatementHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
-): number /* i16 */ {
-  return libODBC32.SQLFetch(util.toPointer(StatementHandle));
+  return libODBC32_dll.SQLDescribeCol(util.toPointer(StatementHandle), ColumnNumber, util.toPointer(ColumnName), BufferLength, util.toPointer(NameLength), util.toPointer(DataType), util.toPointer(ColumnSize), util.toPointer(DecimalDigits), util.toPointer(Nullable));
 }
 
 export function SQLFetchScroll(
@@ -8520,60 +8436,7 @@ export function SQLFetchScroll(
   FetchOrientation: number /* i16 */,
   FetchOffset: number /* i32 */,
 ): number /* i16 */ {
-  return libODBC32.SQLFetchScroll(util.toPointer(StatementHandle), FetchOrientation, FetchOffset);
-}
-
-export function SQLFreeConnect(
-  ConnectionHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
-): number /* i16 */ {
-  return libODBC32.SQLFreeConnect(util.toPointer(ConnectionHandle));
-}
-
-export function SQLFreeEnv(
-  EnvironmentHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
-): number /* i16 */ {
-  return libODBC32.SQLFreeEnv(util.toPointer(EnvironmentHandle));
-}
-
-export function SQLFreeHandle(
-  HandleType: number /* i16 */,
-  Handle: Deno.PointerValue | Uint8Array | null /* ptr */,
-): number /* i16 */ {
-  return libODBC32.SQLFreeHandle(HandleType, util.toPointer(Handle));
-}
-
-export function SQLFreeStmt(
-  StatementHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
-  Option: number /* u16 */,
-): number /* i16 */ {
-  return libODBC32.SQLFreeStmt(util.toPointer(StatementHandle), Option);
-}
-
-export function SQLGetConnectAttr(
-  ConnectionHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
-  Attribute: number /* i32 */,
-  Value: Deno.PointerValue | Uint8Array | null /* ptr */,
-  BufferLength: number /* i32 */,
-  StringLengthPtr: Deno.PointerValue | Uint8Array | null /* ptr */,
-): number /* i16 */ {
-  return libODBC32.SQLGetConnectAttr(util.toPointer(ConnectionHandle), Attribute, util.toPointer(Value), BufferLength, util.toPointer(StringLengthPtr));
-}
-
-export function SQLGetConnectOption(
-  ConnectionHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
-  Option: number /* u16 */,
-  Value: Deno.PointerValue | Uint8Array | null /* ptr */,
-): number /* i16 */ {
-  return libODBC32.SQLGetConnectOption(util.toPointer(ConnectionHandle), Option, util.toPointer(Value));
-}
-
-export function SQLGetCursorName(
-  StatementHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
-  CursorName: Deno.PointerValue | Uint8Array | null /* ptr */,
-  BufferLength: number /* i16 */,
-  NameLengthPtr: Deno.PointerValue | Uint8Array | null /* ptr */,
-): number /* i16 */ {
-  return libODBC32.SQLGetCursorName(util.toPointer(StatementHandle), util.toPointer(CursorName), BufferLength, util.toPointer(NameLengthPtr));
+  return libODBC32_dll.SQLFetchScroll(util.toPointer(StatementHandle), FetchOrientation, FetchOffset);
 }
 
 export function SQLGetData(
@@ -8584,18 +8447,7 @@ export function SQLGetData(
   BufferLength: number /* i32 */,
   StrLen_or_IndPtr: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i16 */ {
-  return libODBC32.SQLGetData(util.toPointer(StatementHandle), ColumnNumber, TargetType, util.toPointer(TargetValue), BufferLength, util.toPointer(StrLen_or_IndPtr));
-}
-
-export function SQLGetDescField(
-  DescriptorHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
-  RecNumber: number /* i16 */,
-  FieldIdentifier: number /* i16 */,
-  Value: Deno.PointerValue | Uint8Array | null /* ptr */,
-  BufferLength: number /* i32 */,
-  StringLength: Deno.PointerValue | Uint8Array | null /* ptr */,
-): number /* i16 */ {
-  return libODBC32.SQLGetDescField(util.toPointer(DescriptorHandle), RecNumber, FieldIdentifier, util.toPointer(Value), BufferLength, util.toPointer(StringLength));
+  return libODBC32_dll.SQLGetData(util.toPointer(StatementHandle), ColumnNumber, TargetType, util.toPointer(TargetValue), BufferLength, util.toPointer(StrLen_or_IndPtr));
 }
 
 export function SQLGetDescRec(
@@ -8611,107 +8463,7 @@ export function SQLGetDescRec(
   ScalePtr: Deno.PointerValue | Uint8Array | null /* ptr */,
   NullablePtr: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i16 */ {
-  return libODBC32.SQLGetDescRec(util.toPointer(DescriptorHandle), RecNumber, util.toPointer(Name), BufferLength, util.toPointer(StringLengthPtr), util.toPointer(TypePtr), util.toPointer(SubTypePtr), util.toPointer(LengthPtr), util.toPointer(PrecisionPtr), util.toPointer(ScalePtr), util.toPointer(NullablePtr));
-}
-
-export function SQLGetDiagField(
-  HandleType: number /* i16 */,
-  Handle: Deno.PointerValue | Uint8Array | null /* ptr */,
-  RecNumber: number /* i16 */,
-  DiagIdentifier: number /* i16 */,
-  DiagInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
-  BufferLength: number /* i16 */,
-  StringLength: Deno.PointerValue | Uint8Array | null /* ptr */,
-): number /* i16 */ {
-  return libODBC32.SQLGetDiagField(HandleType, util.toPointer(Handle), RecNumber, DiagIdentifier, util.toPointer(DiagInfo), BufferLength, util.toPointer(StringLength));
-}
-
-export function SQLGetDiagRec(
-  HandleType: number /* i16 */,
-  Handle: Deno.PointerValue | Uint8Array | null /* ptr */,
-  RecNumber: number /* i16 */,
-  Sqlstate: Deno.PointerValue | Uint8Array | null /* ptr */,
-  NativeError: Deno.PointerValue | Uint8Array | null /* ptr */,
-  MessageText: Deno.PointerValue | Uint8Array | null /* ptr */,
-  BufferLength: number /* i16 */,
-  TextLength: Deno.PointerValue | Uint8Array | null /* ptr */,
-): number /* i16 */ {
-  return libODBC32.SQLGetDiagRec(HandleType, util.toPointer(Handle), RecNumber, util.toPointer(Sqlstate), util.toPointer(NativeError), util.toPointer(MessageText), BufferLength, util.toPointer(TextLength));
-}
-
-export function SQLGetEnvAttr(
-  EnvironmentHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
-  Attribute: number /* i32 */,
-  Value: Deno.PointerValue | Uint8Array | null /* ptr */,
-  BufferLength: number /* i32 */,
-  StringLength: Deno.PointerValue | Uint8Array | null /* ptr */,
-): number /* i16 */ {
-  return libODBC32.SQLGetEnvAttr(util.toPointer(EnvironmentHandle), Attribute, util.toPointer(Value), BufferLength, util.toPointer(StringLength));
-}
-
-export function SQLGetFunctions(
-  ConnectionHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
-  FunctionId: number /* u16 */,
-  Supported: Deno.PointerValue | Uint8Array | null /* ptr */,
-): number /* i16 */ {
-  return libODBC32.SQLGetFunctions(util.toPointer(ConnectionHandle), FunctionId, util.toPointer(Supported));
-}
-
-export function SQLGetInfo(
-  ConnectionHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
-  InfoType: number /* u16 */,
-  InfoValue: Deno.PointerValue | Uint8Array | null /* ptr */,
-  BufferLength: number /* i16 */,
-  StringLengthPtr: Deno.PointerValue | Uint8Array | null /* ptr */,
-): number /* i16 */ {
-  return libODBC32.SQLGetInfo(util.toPointer(ConnectionHandle), InfoType, util.toPointer(InfoValue), BufferLength, util.toPointer(StringLengthPtr));
-}
-
-export function SQLGetStmtAttr(
-  StatementHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
-  Attribute: number /* i32 */,
-  Value: Deno.PointerValue | Uint8Array | null /* ptr */,
-  BufferLength: number /* i32 */,
-  StringLength: Deno.PointerValue | Uint8Array | null /* ptr */,
-): number /* i16 */ {
-  return libODBC32.SQLGetStmtAttr(util.toPointer(StatementHandle), Attribute, util.toPointer(Value), BufferLength, util.toPointer(StringLength));
-}
-
-export function SQLGetStmtOption(
-  StatementHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
-  Option: number /* u16 */,
-  Value: Deno.PointerValue | Uint8Array | null /* ptr */,
-): number /* i16 */ {
-  return libODBC32.SQLGetStmtOption(util.toPointer(StatementHandle), Option, util.toPointer(Value));
-}
-
-export function SQLGetTypeInfo(
-  StatementHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
-  DataType: number /* i16 */,
-): number /* i16 */ {
-  return libODBC32.SQLGetTypeInfo(util.toPointer(StatementHandle), DataType);
-}
-
-export function SQLNumResultCols(
-  StatementHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
-  ColumnCount: Deno.PointerValue | Uint8Array | null /* ptr */,
-): number /* i16 */ {
-  return libODBC32.SQLNumResultCols(util.toPointer(StatementHandle), util.toPointer(ColumnCount));
-}
-
-export function SQLParamData(
-  StatementHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
-  Value: Deno.PointerValue | Uint8Array | null /* ptr */,
-): number /* i16 */ {
-  return libODBC32.SQLParamData(util.toPointer(StatementHandle), util.toPointer(Value));
-}
-
-export function SQLPrepare(
-  StatementHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
-  StatementText: Deno.PointerValue | Uint8Array | null /* ptr */,
-  TextLength: number /* i32 */,
-): number /* i16 */ {
-  return libODBC32.SQLPrepare(util.toPointer(StatementHandle), util.toPointer(StatementText), TextLength);
+  return libODBC32_dll.SQLGetDescRec(util.toPointer(DescriptorHandle), RecNumber, util.toPointer(Name), BufferLength, util.toPointer(StringLengthPtr), util.toPointer(TypePtr), util.toPointer(SubTypePtr), util.toPointer(LengthPtr), util.toPointer(PrecisionPtr), util.toPointer(ScalePtr), util.toPointer(NullablePtr));
 }
 
 export function SQLPutData(
@@ -8719,23 +8471,14 @@ export function SQLPutData(
   Data: Deno.PointerValue | Uint8Array | null /* ptr */,
   StrLen_or_Ind: number /* i32 */,
 ): number /* i16 */ {
-  return libODBC32.SQLPutData(util.toPointer(StatementHandle), util.toPointer(Data), StrLen_or_Ind);
+  return libODBC32_dll.SQLPutData(util.toPointer(StatementHandle), util.toPointer(Data), StrLen_or_Ind);
 }
 
 export function SQLRowCount(
   StatementHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
   RowCount: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i16 */ {
-  return libODBC32.SQLRowCount(util.toPointer(StatementHandle), util.toPointer(RowCount));
-}
-
-export function SQLSetConnectAttr(
-  ConnectionHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
-  Attribute: number /* i32 */,
-  Value: Deno.PointerValue | Uint8Array | null /* ptr */,
-  StringLength: number /* i32 */,
-): number /* i16 */ {
-  return libODBC32.SQLSetConnectAttr(util.toPointer(ConnectionHandle), Attribute, util.toPointer(Value), StringLength);
+  return libODBC32_dll.SQLRowCount(util.toPointer(StatementHandle), util.toPointer(RowCount));
 }
 
 export function SQLSetConnectOption(
@@ -8743,25 +8486,7 @@ export function SQLSetConnectOption(
   Option: number /* u16 */,
   Value: number /* u32 */,
 ): number /* i16 */ {
-  return libODBC32.SQLSetConnectOption(util.toPointer(ConnectionHandle), Option, Value);
-}
-
-export function SQLSetCursorName(
-  StatementHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
-  CursorName: Deno.PointerValue | Uint8Array | null /* ptr */,
-  NameLength: number /* i16 */,
-): number /* i16 */ {
-  return libODBC32.SQLSetCursorName(util.toPointer(StatementHandle), util.toPointer(CursorName), NameLength);
-}
-
-export function SQLSetDescField(
-  DescriptorHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
-  RecNumber: number /* i16 */,
-  FieldIdentifier: number /* i16 */,
-  Value: Deno.PointerValue | Uint8Array | null /* ptr */,
-  BufferLength: number /* i32 */,
-): number /* i16 */ {
-  return libODBC32.SQLSetDescField(util.toPointer(DescriptorHandle), RecNumber, FieldIdentifier, util.toPointer(Value), BufferLength);
+  return libODBC32_dll.SQLSetConnectOption(util.toPointer(ConnectionHandle), Option, Value);
 }
 
 export function SQLSetDescRec(
@@ -8776,16 +8501,7 @@ export function SQLSetDescRec(
   StringLength: Deno.PointerValue | Uint8Array | null /* ptr */,
   Indicator: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i16 */ {
-  return libODBC32.SQLSetDescRec(util.toPointer(DescriptorHandle), RecNumber, Type, SubType, Length, Precision, Scale, util.toPointer(Data), util.toPointer(StringLength), util.toPointer(Indicator));
-}
-
-export function SQLSetEnvAttr(
-  EnvironmentHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
-  Attribute: number /* i32 */,
-  Value: Deno.PointerValue | Uint8Array | null /* ptr */,
-  StringLength: number /* i32 */,
-): number /* i16 */ {
-  return libODBC32.SQLSetEnvAttr(util.toPointer(EnvironmentHandle), Attribute, util.toPointer(Value), StringLength);
+  return libODBC32_dll.SQLSetDescRec(util.toPointer(DescriptorHandle), RecNumber, Type, SubType, Length, Precision, Scale, util.toPointer(Data), util.toPointer(StringLength), util.toPointer(Indicator));
 }
 
 export function SQLSetParam(
@@ -8798,7 +8514,561 @@ export function SQLSetParam(
   ParameterValue: Deno.PointerValue | Uint8Array | null /* ptr */,
   StrLen_or_Ind: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i16 */ {
-  return libODBC32.SQLSetParam(util.toPointer(StatementHandle), ParameterNumber, ValueType, ParameterType, LengthPrecision, ParameterScale, util.toPointer(ParameterValue), util.toPointer(StrLen_or_Ind));
+  return libODBC32_dll.SQLSetParam(util.toPointer(StatementHandle), ParameterNumber, ValueType, ParameterType, LengthPrecision, ParameterScale, util.toPointer(ParameterValue), util.toPointer(StrLen_or_Ind));
+}
+
+export function SQLSetStmtOption(
+  StatementHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
+  Option: number /* u16 */,
+  Value: number /* u32 */,
+): number /* i16 */ {
+  return libODBC32_dll.SQLSetStmtOption(util.toPointer(StatementHandle), Option, Value);
+}
+
+export function SQLColAttributes(
+  hstmt: Deno.PointerValue | Uint8Array | null /* ptr */,
+  icol: number /* u16 */,
+  fDescType: number /* u16 */,
+  rgbDesc: Deno.PointerValue | Uint8Array | null /* ptr */,
+  cbDescMax: number /* i16 */,
+  pcbDesc: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pfDesc: Deno.PointerValue | Uint8Array | null /* ptr */,
+): number /* i16 */ {
+  return libODBC32_dll.SQLColAttributes(util.toPointer(hstmt), icol, fDescType, util.toPointer(rgbDesc), cbDescMax, util.toPointer(pcbDesc), util.toPointer(pfDesc));
+}
+
+export function SQLDescribeParam(
+  hstmt: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ipar: number /* u16 */,
+  pfSqlType: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pcbParamDef: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pibScale: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pfNullable: Deno.PointerValue | Uint8Array | null /* ptr */,
+): number /* i16 */ {
+  return libODBC32_dll.SQLDescribeParam(util.toPointer(hstmt), ipar, util.toPointer(pfSqlType), util.toPointer(pcbParamDef), util.toPointer(pibScale), util.toPointer(pfNullable));
+}
+
+export function SQLExtendedFetch(
+  hstmt: Deno.PointerValue | Uint8Array | null /* ptr */,
+  fFetchType: number /* u16 */,
+  irow: number /* i32 */,
+  pcrow: Deno.PointerValue | Uint8Array | null /* ptr */,
+  rgfRowStatus: Deno.PointerValue | Uint8Array | null /* ptr */,
+): number /* i16 */ {
+  return libODBC32_dll.SQLExtendedFetch(util.toPointer(hstmt), fFetchType, irow, util.toPointer(pcrow), util.toPointer(rgfRowStatus));
+}
+
+export function SQLParamOptions(
+  hstmt: Deno.PointerValue | Uint8Array | null /* ptr */,
+  crow: number /* u32 */,
+  pirow: Deno.PointerValue | Uint8Array | null /* ptr */,
+): number /* i16 */ {
+  return libODBC32_dll.SQLParamOptions(util.toPointer(hstmt), crow, util.toPointer(pirow));
+}
+
+export function SQLSetPos(
+  hstmt: Deno.PointerValue | Uint8Array | null /* ptr */,
+  irow: number /* u16 */,
+  fOption: number /* u16 */,
+  fLock: number /* u16 */,
+): number /* i16 */ {
+  return libODBC32_dll.SQLSetPos(util.toPointer(hstmt), irow, fOption, fLock);
+}
+
+export function SQLBindParameter(
+  hstmt: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ipar: number /* u16 */,
+  fParamType: number /* i16 */,
+  fCType: number /* i16 */,
+  fSqlType: number /* i16 */,
+  cbColDef: number /* u32 */,
+  ibScale: number /* i16 */,
+  rgbValue: Deno.PointerValue | Uint8Array | null /* ptr */,
+  cbValueMax: number /* i32 */,
+  pcbValue: Deno.PointerValue | Uint8Array | null /* ptr */,
+): number /* i16 */ {
+  return libODBC32_dll.SQLBindParameter(util.toPointer(hstmt), ipar, fParamType, fCType, fSqlType, cbColDef, ibScale, util.toPointer(rgbValue), cbValueMax, util.toPointer(pcbValue));
+}
+
+export function SQLSetScrollOptions(
+  hstmt: Deno.PointerValue | Uint8Array | null /* ptr */,
+  fConcurrency: number /* u16 */,
+  crowKeyset: number /* i32 */,
+  crowRowset: number /* u16 */,
+): number /* i16 */ {
+  return libODBC32_dll.SQLSetScrollOptions(util.toPointer(hstmt), fConcurrency, crowKeyset, crowRowset);
+}
+
+export function SQLColAttributeW(
+  hstmt: Deno.PointerValue | Uint8Array | null /* ptr */,
+  iCol: number /* u16 */,
+  iField: number /* u16 */,
+  pCharAttr: Deno.PointerValue | Uint8Array | null /* ptr */,
+  cbDescMax: number /* i16 */,
+  pcbCharAttr: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pNumAttr: Deno.PointerValue | Uint8Array | null /* ptr */,
+): number /* i16 */ {
+  return libODBC32_dll.SQLColAttributeW(util.toPointer(hstmt), iCol, iField, util.toPointer(pCharAttr), cbDescMax, util.toPointer(pcbCharAttr), util.toPointer(pNumAttr));
+}
+
+export function SQLColAttributesW(
+  hstmt: Deno.PointerValue | Uint8Array | null /* ptr */,
+  icol: number /* u16 */,
+  fDescType: number /* u16 */,
+  rgbDesc: Deno.PointerValue | Uint8Array | null /* ptr */,
+  cbDescMax: number /* i16 */,
+  pcbDesc: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pfDesc: Deno.PointerValue | Uint8Array | null /* ptr */,
+): number /* i16 */ {
+  return libODBC32_dll.SQLColAttributesW(util.toPointer(hstmt), icol, fDescType, util.toPointer(rgbDesc), cbDescMax, util.toPointer(pcbDesc), util.toPointer(pfDesc));
+}
+
+export function SQLDescribeColW(
+  hstmt: Deno.PointerValue | Uint8Array | null /* ptr */,
+  icol: number /* u16 */,
+  szColName: Deno.PointerValue | Uint8Array | null /* ptr */,
+  cchColNameMax: number /* i16 */,
+  pcchColName: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pfSqlType: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pcbColDef: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pibScale: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pfNullable: Deno.PointerValue | Uint8Array | null /* ptr */,
+): number /* i16 */ {
+  return libODBC32_dll.SQLDescribeColW(util.toPointer(hstmt), icol, util.toPointer(szColName), cchColNameMax, util.toPointer(pcchColName), util.toPointer(pfSqlType), util.toPointer(pcbColDef), util.toPointer(pibScale), util.toPointer(pfNullable));
+}
+
+export function SQLGetDescRecW(
+  hdesc: Deno.PointerValue | Uint8Array | null /* ptr */,
+  iRecord: number /* i16 */,
+  szName: Deno.PointerValue | Uint8Array | null /* ptr */,
+  cchNameMax: number /* i16 */,
+  pcchName: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pfType: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pfSubType: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pLength: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pPrecision: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pScale: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pNullable: Deno.PointerValue | Uint8Array | null /* ptr */,
+): number /* i16 */ {
+  return libODBC32_dll.SQLGetDescRecW(util.toPointer(hdesc), iRecord, util.toPointer(szName), cchNameMax, util.toPointer(pcchName), util.toPointer(pfType), util.toPointer(pfSubType), util.toPointer(pLength), util.toPointer(pPrecision), util.toPointer(pScale), util.toPointer(pNullable));
+}
+
+export function SQLSetConnectOptionW(
+  hdbc: Deno.PointerValue | Uint8Array | null /* ptr */,
+  fOption: number /* u16 */,
+  vParam: number /* u32 */,
+): number /* i16 */ {
+  return libODBC32_dll.SQLSetConnectOptionW(util.toPointer(hdbc), fOption, vParam);
+}
+
+export function SQLColAttributeA(
+  hstmt: Deno.PointerValue | Uint8Array | null /* ptr */,
+  iCol: number /* i16 */,
+  iField: number /* i16 */,
+  pCharAttr: Deno.PointerValue | Uint8Array | null /* ptr */,
+  cbCharAttrMax: number /* i16 */,
+  pcbCharAttr: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pNumAttr: Deno.PointerValue | Uint8Array | null /* ptr */,
+): number /* i16 */ {
+  return libODBC32_dll.SQLColAttributeA(util.toPointer(hstmt), iCol, iField, util.toPointer(pCharAttr), cbCharAttrMax, util.toPointer(pcbCharAttr), util.toPointer(pNumAttr));
+}
+
+export function SQLColAttributesA(
+  hstmt: Deno.PointerValue | Uint8Array | null /* ptr */,
+  icol: number /* u16 */,
+  fDescType: number /* u16 */,
+  rgbDesc: Deno.PointerValue | Uint8Array | null /* ptr */,
+  cbDescMax: number /* i16 */,
+  pcbDesc: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pfDesc: Deno.PointerValue | Uint8Array | null /* ptr */,
+): number /* i16 */ {
+  return libODBC32_dll.SQLColAttributesA(util.toPointer(hstmt), icol, fDescType, util.toPointer(rgbDesc), cbDescMax, util.toPointer(pcbDesc), util.toPointer(pfDesc));
+}
+
+export function SQLDescribeColA(
+  hstmt: Deno.PointerValue | Uint8Array | null /* ptr */,
+  icol: number /* u16 */,
+  szColName: Deno.PointerValue | Uint8Array | null /* ptr */,
+  cbColNameMax: number /* i16 */,
+  pcbColName: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pfSqlType: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pcbColDef: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pibScale: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pfNullable: Deno.PointerValue | Uint8Array | null /* ptr */,
+): number /* i16 */ {
+  return libODBC32_dll.SQLDescribeColA(util.toPointer(hstmt), icol, util.toPointer(szColName), cbColNameMax, util.toPointer(pcbColName), util.toPointer(pfSqlType), util.toPointer(pcbColDef), util.toPointer(pibScale), util.toPointer(pfNullable));
+}
+
+export function SQLGetDescRecA(
+  hdesc: Deno.PointerValue | Uint8Array | null /* ptr */,
+  iRecord: number /* i16 */,
+  szName: Deno.PointerValue | Uint8Array | null /* ptr */,
+  cbNameMax: number /* i16 */,
+  pcbName: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pfType: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pfSubType: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pLength: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pPrecision: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pScale: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pNullable: Deno.PointerValue | Uint8Array | null /* ptr */,
+): number /* i16 */ {
+  return libODBC32_dll.SQLGetDescRecA(util.toPointer(hdesc), iRecord, util.toPointer(szName), cbNameMax, util.toPointer(pcbName), util.toPointer(pfType), util.toPointer(pfSubType), util.toPointer(pLength), util.toPointer(pPrecision), util.toPointer(pScale), util.toPointer(pNullable));
+}
+
+export function SQLSetConnectOptionA(
+  hdbc: Deno.PointerValue | Uint8Array | null /* ptr */,
+  fOption: number /* u16 */,
+  vParam: number /* u32 */,
+): number /* i16 */ {
+  return libODBC32_dll.SQLSetConnectOptionA(util.toPointer(hdbc), fOption, vParam);
+}
+
+export function SQLAllocConnect(
+  EnvironmentHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ConnectionHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
+): number /* i16 */ {
+  return libODBC32_dll.SQLAllocConnect(util.toPointer(EnvironmentHandle), util.toPointer(ConnectionHandle));
+}
+
+export function SQLAllocEnv(
+  EnvironmentHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
+): number /* i16 */ {
+  return libODBC32_dll.SQLAllocEnv(util.toPointer(EnvironmentHandle));
+}
+
+export function SQLAllocHandle(
+  HandleType: number /* i16 */,
+  InputHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
+  OutputHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
+): number /* i16 */ {
+  return libODBC32_dll.SQLAllocHandle(HandleType, util.toPointer(InputHandle), util.toPointer(OutputHandle));
+}
+
+export function SQLAllocStmt(
+  ConnectionHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
+  StatementHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
+): number /* i16 */ {
+  return libODBC32_dll.SQLAllocStmt(util.toPointer(ConnectionHandle), util.toPointer(StatementHandle));
+}
+
+export function SQLCancel(
+  StatementHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
+): number /* i16 */ {
+  return libODBC32_dll.SQLCancel(util.toPointer(StatementHandle));
+}
+
+export function SQLCancelHandle(
+  HandleType: number /* i16 */,
+  InputHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
+): number /* i16 */ {
+  return libODBC32_dll.SQLCancelHandle(HandleType, util.toPointer(InputHandle));
+}
+
+export function SQLCloseCursor(
+  StatementHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
+): number /* i16 */ {
+  return libODBC32_dll.SQLCloseCursor(util.toPointer(StatementHandle));
+}
+
+export function SQLColumns(
+  StatementHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
+  CatalogName: Deno.PointerValue | Uint8Array | null /* ptr */,
+  NameLength1: number /* i16 */,
+  SchemaName: Deno.PointerValue | Uint8Array | null /* ptr */,
+  NameLength2: number /* i16 */,
+  TableName: Deno.PointerValue | Uint8Array | null /* ptr */,
+  NameLength3: number /* i16 */,
+  ColumnName: Deno.PointerValue | Uint8Array | null /* ptr */,
+  NameLength4: number /* i16 */,
+): number /* i16 */ {
+  return libODBC32_dll.SQLColumns(util.toPointer(StatementHandle), util.toPointer(CatalogName), NameLength1, util.toPointer(SchemaName), NameLength2, util.toPointer(TableName), NameLength3, util.toPointer(ColumnName), NameLength4);
+}
+
+export function SQLCompleteAsync(
+  HandleType: number /* i16 */,
+  Handle: Deno.PointerValue | Uint8Array | null /* ptr */,
+  AsyncRetCodePtr: Deno.PointerValue | Uint8Array | null /* ptr */,
+): number /* i16 */ {
+  return libODBC32_dll.SQLCompleteAsync(HandleType, util.toPointer(Handle), util.toPointer(AsyncRetCodePtr));
+}
+
+export function SQLConnect(
+  ConnectionHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ServerName: Deno.PointerValue | Uint8Array | null /* ptr */,
+  NameLength1: number /* i16 */,
+  UserName: Deno.PointerValue | Uint8Array | null /* ptr */,
+  NameLength2: number /* i16 */,
+  Authentication: Deno.PointerValue | Uint8Array | null /* ptr */,
+  NameLength3: number /* i16 */,
+): number /* i16 */ {
+  return libODBC32_dll.SQLConnect(util.toPointer(ConnectionHandle), util.toPointer(ServerName), NameLength1, util.toPointer(UserName), NameLength2, util.toPointer(Authentication), NameLength3);
+}
+
+export function SQLCopyDesc(
+  SourceDescHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
+  TargetDescHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
+): number /* i16 */ {
+  return libODBC32_dll.SQLCopyDesc(util.toPointer(SourceDescHandle), util.toPointer(TargetDescHandle));
+}
+
+export function SQLDataSources(
+  EnvironmentHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
+  Direction: number /* u16 */,
+  ServerName: Deno.PointerValue | Uint8Array | null /* ptr */,
+  BufferLength1: number /* i16 */,
+  NameLength1Ptr: Deno.PointerValue | Uint8Array | null /* ptr */,
+  Description: Deno.PointerValue | Uint8Array | null /* ptr */,
+  BufferLength2: number /* i16 */,
+  NameLength2Ptr: Deno.PointerValue | Uint8Array | null /* ptr */,
+): number /* i16 */ {
+  return libODBC32_dll.SQLDataSources(util.toPointer(EnvironmentHandle), Direction, util.toPointer(ServerName), BufferLength1, util.toPointer(NameLength1Ptr), util.toPointer(Description), BufferLength2, util.toPointer(NameLength2Ptr));
+}
+
+export function SQLDisconnect(
+  ConnectionHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
+): number /* i16 */ {
+  return libODBC32_dll.SQLDisconnect(util.toPointer(ConnectionHandle));
+}
+
+export function SQLEndTran(
+  HandleType: number /* i16 */,
+  Handle: Deno.PointerValue | Uint8Array | null /* ptr */,
+  CompletionType: number /* i16 */,
+): number /* i16 */ {
+  return libODBC32_dll.SQLEndTran(HandleType, util.toPointer(Handle), CompletionType);
+}
+
+export function SQLError(
+  EnvironmentHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ConnectionHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
+  StatementHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
+  Sqlstate: Deno.PointerValue | Uint8Array | null /* ptr */,
+  NativeError: Deno.PointerValue | Uint8Array | null /* ptr */,
+  MessageText: Deno.PointerValue | Uint8Array | null /* ptr */,
+  BufferLength: number /* i16 */,
+  TextLength: Deno.PointerValue | Uint8Array | null /* ptr */,
+): number /* i16 */ {
+  return libODBC32_dll.SQLError(util.toPointer(EnvironmentHandle), util.toPointer(ConnectionHandle), util.toPointer(StatementHandle), util.toPointer(Sqlstate), util.toPointer(NativeError), util.toPointer(MessageText), BufferLength, util.toPointer(TextLength));
+}
+
+export function SQLExecDirect(
+  StatementHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
+  StatementText: Deno.PointerValue | Uint8Array | null /* ptr */,
+  TextLength: number /* i32 */,
+): number /* i16 */ {
+  return libODBC32_dll.SQLExecDirect(util.toPointer(StatementHandle), util.toPointer(StatementText), TextLength);
+}
+
+export function SQLExecute(
+  StatementHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
+): number /* i16 */ {
+  return libODBC32_dll.SQLExecute(util.toPointer(StatementHandle));
+}
+
+export function SQLFetch(
+  StatementHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
+): number /* i16 */ {
+  return libODBC32_dll.SQLFetch(util.toPointer(StatementHandle));
+}
+
+export function SQLFreeConnect(
+  ConnectionHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
+): number /* i16 */ {
+  return libODBC32_dll.SQLFreeConnect(util.toPointer(ConnectionHandle));
+}
+
+export function SQLFreeEnv(
+  EnvironmentHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
+): number /* i16 */ {
+  return libODBC32_dll.SQLFreeEnv(util.toPointer(EnvironmentHandle));
+}
+
+export function SQLFreeHandle(
+  HandleType: number /* i16 */,
+  Handle: Deno.PointerValue | Uint8Array | null /* ptr */,
+): number /* i16 */ {
+  return libODBC32_dll.SQLFreeHandle(HandleType, util.toPointer(Handle));
+}
+
+export function SQLFreeStmt(
+  StatementHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
+  Option: number /* u16 */,
+): number /* i16 */ {
+  return libODBC32_dll.SQLFreeStmt(util.toPointer(StatementHandle), Option);
+}
+
+export function SQLGetConnectAttr(
+  ConnectionHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
+  Attribute: number /* i32 */,
+  Value: Deno.PointerValue | Uint8Array | null /* ptr */,
+  BufferLength: number /* i32 */,
+  StringLengthPtr: Deno.PointerValue | Uint8Array | null /* ptr */,
+): number /* i16 */ {
+  return libODBC32_dll.SQLGetConnectAttr(util.toPointer(ConnectionHandle), Attribute, util.toPointer(Value), BufferLength, util.toPointer(StringLengthPtr));
+}
+
+export function SQLGetConnectOption(
+  ConnectionHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
+  Option: number /* u16 */,
+  Value: Deno.PointerValue | Uint8Array | null /* ptr */,
+): number /* i16 */ {
+  return libODBC32_dll.SQLGetConnectOption(util.toPointer(ConnectionHandle), Option, util.toPointer(Value));
+}
+
+export function SQLGetCursorName(
+  StatementHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
+  CursorName: Deno.PointerValue | Uint8Array | null /* ptr */,
+  BufferLength: number /* i16 */,
+  NameLengthPtr: Deno.PointerValue | Uint8Array | null /* ptr */,
+): number /* i16 */ {
+  return libODBC32_dll.SQLGetCursorName(util.toPointer(StatementHandle), util.toPointer(CursorName), BufferLength, util.toPointer(NameLengthPtr));
+}
+
+export function SQLGetDescField(
+  DescriptorHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
+  RecNumber: number /* i16 */,
+  FieldIdentifier: number /* i16 */,
+  Value: Deno.PointerValue | Uint8Array | null /* ptr */,
+  BufferLength: number /* i32 */,
+  StringLength: Deno.PointerValue | Uint8Array | null /* ptr */,
+): number /* i16 */ {
+  return libODBC32_dll.SQLGetDescField(util.toPointer(DescriptorHandle), RecNumber, FieldIdentifier, util.toPointer(Value), BufferLength, util.toPointer(StringLength));
+}
+
+export function SQLGetDiagField(
+  HandleType: number /* i16 */,
+  Handle: Deno.PointerValue | Uint8Array | null /* ptr */,
+  RecNumber: number /* i16 */,
+  DiagIdentifier: number /* i16 */,
+  DiagInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
+  BufferLength: number /* i16 */,
+  StringLength: Deno.PointerValue | Uint8Array | null /* ptr */,
+): number /* i16 */ {
+  return libODBC32_dll.SQLGetDiagField(HandleType, util.toPointer(Handle), RecNumber, DiagIdentifier, util.toPointer(DiagInfo), BufferLength, util.toPointer(StringLength));
+}
+
+export function SQLGetDiagRec(
+  HandleType: number /* i16 */,
+  Handle: Deno.PointerValue | Uint8Array | null /* ptr */,
+  RecNumber: number /* i16 */,
+  Sqlstate: Deno.PointerValue | Uint8Array | null /* ptr */,
+  NativeError: Deno.PointerValue | Uint8Array | null /* ptr */,
+  MessageText: Deno.PointerValue | Uint8Array | null /* ptr */,
+  BufferLength: number /* i16 */,
+  TextLength: Deno.PointerValue | Uint8Array | null /* ptr */,
+): number /* i16 */ {
+  return libODBC32_dll.SQLGetDiagRec(HandleType, util.toPointer(Handle), RecNumber, util.toPointer(Sqlstate), util.toPointer(NativeError), util.toPointer(MessageText), BufferLength, util.toPointer(TextLength));
+}
+
+export function SQLGetEnvAttr(
+  EnvironmentHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
+  Attribute: number /* i32 */,
+  Value: Deno.PointerValue | Uint8Array | null /* ptr */,
+  BufferLength: number /* i32 */,
+  StringLength: Deno.PointerValue | Uint8Array | null /* ptr */,
+): number /* i16 */ {
+  return libODBC32_dll.SQLGetEnvAttr(util.toPointer(EnvironmentHandle), Attribute, util.toPointer(Value), BufferLength, util.toPointer(StringLength));
+}
+
+export function SQLGetFunctions(
+  ConnectionHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
+  FunctionId: number /* u16 */,
+  Supported: Deno.PointerValue | Uint8Array | null /* ptr */,
+): number /* i16 */ {
+  return libODBC32_dll.SQLGetFunctions(util.toPointer(ConnectionHandle), FunctionId, util.toPointer(Supported));
+}
+
+export function SQLGetInfo(
+  ConnectionHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
+  InfoType: number /* u16 */,
+  InfoValue: Deno.PointerValue | Uint8Array | null /* ptr */,
+  BufferLength: number /* i16 */,
+  StringLengthPtr: Deno.PointerValue | Uint8Array | null /* ptr */,
+): number /* i16 */ {
+  return libODBC32_dll.SQLGetInfo(util.toPointer(ConnectionHandle), InfoType, util.toPointer(InfoValue), BufferLength, util.toPointer(StringLengthPtr));
+}
+
+export function SQLGetStmtAttr(
+  StatementHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
+  Attribute: number /* i32 */,
+  Value: Deno.PointerValue | Uint8Array | null /* ptr */,
+  BufferLength: number /* i32 */,
+  StringLength: Deno.PointerValue | Uint8Array | null /* ptr */,
+): number /* i16 */ {
+  return libODBC32_dll.SQLGetStmtAttr(util.toPointer(StatementHandle), Attribute, util.toPointer(Value), BufferLength, util.toPointer(StringLength));
+}
+
+export function SQLGetStmtOption(
+  StatementHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
+  Option: number /* u16 */,
+  Value: Deno.PointerValue | Uint8Array | null /* ptr */,
+): number /* i16 */ {
+  return libODBC32_dll.SQLGetStmtOption(util.toPointer(StatementHandle), Option, util.toPointer(Value));
+}
+
+export function SQLGetTypeInfo(
+  StatementHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
+  DataType: number /* i16 */,
+): number /* i16 */ {
+  return libODBC32_dll.SQLGetTypeInfo(util.toPointer(StatementHandle), DataType);
+}
+
+export function SQLNumResultCols(
+  StatementHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ColumnCount: Deno.PointerValue | Uint8Array | null /* ptr */,
+): number /* i16 */ {
+  return libODBC32_dll.SQLNumResultCols(util.toPointer(StatementHandle), util.toPointer(ColumnCount));
+}
+
+export function SQLParamData(
+  StatementHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
+  Value: Deno.PointerValue | Uint8Array | null /* ptr */,
+): number /* i16 */ {
+  return libODBC32_dll.SQLParamData(util.toPointer(StatementHandle), util.toPointer(Value));
+}
+
+export function SQLPrepare(
+  StatementHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
+  StatementText: Deno.PointerValue | Uint8Array | null /* ptr */,
+  TextLength: number /* i32 */,
+): number /* i16 */ {
+  return libODBC32_dll.SQLPrepare(util.toPointer(StatementHandle), util.toPointer(StatementText), TextLength);
+}
+
+export function SQLSetConnectAttr(
+  ConnectionHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
+  Attribute: number /* i32 */,
+  Value: Deno.PointerValue | Uint8Array | null /* ptr */,
+  StringLength: number /* i32 */,
+): number /* i16 */ {
+  return libODBC32_dll.SQLSetConnectAttr(util.toPointer(ConnectionHandle), Attribute, util.toPointer(Value), StringLength);
+}
+
+export function SQLSetCursorName(
+  StatementHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
+  CursorName: Deno.PointerValue | Uint8Array | null /* ptr */,
+  NameLength: number /* i16 */,
+): number /* i16 */ {
+  return libODBC32_dll.SQLSetCursorName(util.toPointer(StatementHandle), util.toPointer(CursorName), NameLength);
+}
+
+export function SQLSetDescField(
+  DescriptorHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
+  RecNumber: number /* i16 */,
+  FieldIdentifier: number /* i16 */,
+  Value: Deno.PointerValue | Uint8Array | null /* ptr */,
+  BufferLength: number /* i32 */,
+): number /* i16 */ {
+  return libODBC32_dll.SQLSetDescField(util.toPointer(DescriptorHandle), RecNumber, FieldIdentifier, util.toPointer(Value), BufferLength);
+}
+
+export function SQLSetEnvAttr(
+  EnvironmentHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
+  Attribute: number /* i32 */,
+  Value: Deno.PointerValue | Uint8Array | null /* ptr */,
+  StringLength: number /* i32 */,
+): number /* i16 */ {
+  return libODBC32_dll.SQLSetEnvAttr(util.toPointer(EnvironmentHandle), Attribute, util.toPointer(Value), StringLength);
 }
 
 export function SQLSetStmtAttr(
@@ -8807,15 +9077,7 @@ export function SQLSetStmtAttr(
   Value: Deno.PointerValue | Uint8Array | null /* ptr */,
   StringLength: number /* i32 */,
 ): number /* i16 */ {
-  return libODBC32.SQLSetStmtAttr(util.toPointer(StatementHandle), Attribute, util.toPointer(Value), StringLength);
-}
-
-export function SQLSetStmtOption(
-  StatementHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
-  Option: number /* u16 */,
-  Value: number /* u32 */,
-): number /* i16 */ {
-  return libODBC32.SQLSetStmtOption(util.toPointer(StatementHandle), Option, Value);
+  return libODBC32_dll.SQLSetStmtAttr(util.toPointer(StatementHandle), Attribute, util.toPointer(Value), StringLength);
 }
 
 export function SQLSpecialColumns(
@@ -8830,7 +9092,7 @@ export function SQLSpecialColumns(
   Scope: number /* u16 */,
   Nullable: number /* u16 */,
 ): number /* i16 */ {
-  return libODBC32.SQLSpecialColumns(util.toPointer(StatementHandle), IdentifierType, util.toPointer(CatalogName), NameLength1, util.toPointer(SchemaName), NameLength2, util.toPointer(TableName), NameLength3, Scope, Nullable);
+  return libODBC32_dll.SQLSpecialColumns(util.toPointer(StatementHandle), IdentifierType, util.toPointer(CatalogName), NameLength1, util.toPointer(SchemaName), NameLength2, util.toPointer(TableName), NameLength3, Scope, Nullable);
 }
 
 export function SQLStatistics(
@@ -8844,7 +9106,7 @@ export function SQLStatistics(
   Unique: number /* u16 */,
   Reserved: number /* u16 */,
 ): number /* i16 */ {
-  return libODBC32.SQLStatistics(util.toPointer(StatementHandle), util.toPointer(CatalogName), NameLength1, util.toPointer(SchemaName), NameLength2, util.toPointer(TableName), NameLength3, Unique, Reserved);
+  return libODBC32_dll.SQLStatistics(util.toPointer(StatementHandle), util.toPointer(CatalogName), NameLength1, util.toPointer(SchemaName), NameLength2, util.toPointer(TableName), NameLength3, Unique, Reserved);
 }
 
 export function SQLTables(
@@ -8858,7 +9120,7 @@ export function SQLTables(
   TableType: Deno.PointerValue | Uint8Array | null /* ptr */,
   NameLength4: number /* i16 */,
 ): number /* i16 */ {
-  return libODBC32.SQLTables(util.toPointer(StatementHandle), util.toPointer(CatalogName), NameLength1, util.toPointer(SchemaName), NameLength2, util.toPointer(TableName), NameLength3, util.toPointer(TableType), NameLength4);
+  return libODBC32_dll.SQLTables(util.toPointer(StatementHandle), util.toPointer(CatalogName), NameLength1, util.toPointer(SchemaName), NameLength2, util.toPointer(TableName), NameLength3, util.toPointer(TableType), NameLength4);
 }
 
 export function SQLTransact(
@@ -8866,13 +9128,13 @@ export function SQLTransact(
   ConnectionHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
   CompletionType: number /* u16 */,
 ): number /* i16 */ {
-  return libODBC32.SQLTransact(util.toPointer(EnvironmentHandle), util.toPointer(ConnectionHandle), CompletionType);
+  return libODBC32_dll.SQLTransact(util.toPointer(EnvironmentHandle), util.toPointer(ConnectionHandle), CompletionType);
 }
 
 export function bcp_batch(
   param0: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
-  return libodbcbcp.bcp_batch(util.toPointer(param0));
+  return libodbcbcp_dll.bcp_batch(util.toPointer(param0));
 }
 
 export function bcp_bind(
@@ -8885,7 +9147,7 @@ export function bcp_bind(
   param6: number /* i32 */,
   param7: number /* i32 */,
 ): number /* i16 */ {
-  return libodbcbcp.bcp_bind(util.toPointer(param0), util.toPointer(param1), param2, param3, util.toPointer(param4), param5, param6, param7);
+  return libodbcbcp_dll.bcp_bind(util.toPointer(param0), util.toPointer(param1), param2, param3, util.toPointer(param4), param5, param6, param7);
 }
 
 export function bcp_colfmt(
@@ -8898,7 +9160,7 @@ export function bcp_colfmt(
   param6: number /* i32 */,
   param7: number /* i32 */,
 ): number /* i16 */ {
-  return libodbcbcp.bcp_colfmt(util.toPointer(param0), param1, param2, param3, param4, util.toPointer(param5), param6, param7);
+  return libodbcbcp_dll.bcp_colfmt(util.toPointer(param0), param1, param2, param3, param4, util.toPointer(param5), param6, param7);
 }
 
 export function bcp_collen(
@@ -8906,7 +9168,7 @@ export function bcp_collen(
   param1: number /* i32 */,
   param2: number /* i32 */,
 ): number /* i16 */ {
-  return libodbcbcp.bcp_collen(util.toPointer(param0), param1, param2);
+  return libodbcbcp_dll.bcp_collen(util.toPointer(param0), param1, param2);
 }
 
 export function bcp_colptr(
@@ -8914,14 +9176,14 @@ export function bcp_colptr(
   param1: Deno.PointerValue | Uint8Array | null /* ptr */,
   param2: number /* i32 */,
 ): number /* i16 */ {
-  return libodbcbcp.bcp_colptr(util.toPointer(param0), util.toPointer(param1), param2);
+  return libodbcbcp_dll.bcp_colptr(util.toPointer(param0), util.toPointer(param1), param2);
 }
 
 export function bcp_columns(
   param0: Deno.PointerValue | Uint8Array | null /* ptr */,
   param1: number /* i32 */,
 ): number /* i16 */ {
-  return libodbcbcp.bcp_columns(util.toPointer(param0), param1);
+  return libodbcbcp_dll.bcp_columns(util.toPointer(param0), param1);
 }
 
 export function bcp_control(
@@ -8929,20 +9191,20 @@ export function bcp_control(
   param1: number /* i32 */,
   param2: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i16 */ {
-  return libodbcbcp.bcp_control(util.toPointer(param0), param1, util.toPointer(param2));
+  return libodbcbcp_dll.bcp_control(util.toPointer(param0), param1, util.toPointer(param2));
 }
 
 export function bcp_done(
   param0: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
-  return libodbcbcp.bcp_done(util.toPointer(param0));
+  return libodbcbcp_dll.bcp_done(util.toPointer(param0));
 }
 
 export function bcp_exec(
   param0: Deno.PointerValue | Uint8Array | null /* ptr */,
   param1: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i16 */ {
-  return libodbcbcp.bcp_exec(util.toPointer(param0), util.toPointer(param1));
+  return libodbcbcp_dll.bcp_exec(util.toPointer(param0), util.toPointer(param1));
 }
 
 export function bcp_getcolfmt(
@@ -8953,7 +9215,7 @@ export function bcp_getcolfmt(
   param4: number /* i32 */,
   param5: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i16 */ {
-  return libodbcbcp.bcp_getcolfmt(util.toPointer(param0), param1, param2, util.toPointer(param3), param4, util.toPointer(param5));
+  return libodbcbcp_dll.bcp_getcolfmt(util.toPointer(param0), param1, param2, util.toPointer(param3), param4, util.toPointer(param5));
 }
 
 export function bcp_initA(
@@ -8963,7 +9225,7 @@ export function bcp_initA(
   param3: string | null /* Windows.Win32.Foundation.PSTR */,
   param4: number /* i32 */,
 ): number /* i16 */ {
-  return libodbcbcp.bcp_initA(util.toPointer(param0), util.pstrToFfi(param1), util.pstrToFfi(param2), util.pstrToFfi(param3), param4);
+  return libodbcbcp_dll.bcp_initA(util.toPointer(param0), util.pstrToFfi(param1), util.pstrToFfi(param2), util.pstrToFfi(param3), param4);
 }
 
 export function bcp_initW(
@@ -8973,7 +9235,7 @@ export function bcp_initW(
   param3: string | null /* Windows.Win32.Foundation.PWSTR */,
   param4: number /* i32 */,
 ): number /* i16 */ {
-  return libodbcbcp.bcp_initW(util.toPointer(param0), util.pwstrToFfi(param1), util.pwstrToFfi(param2), util.pwstrToFfi(param3), param4);
+  return libodbcbcp_dll.bcp_initW(util.toPointer(param0), util.pwstrToFfi(param1), util.pwstrToFfi(param2), util.pwstrToFfi(param3), param4);
 }
 
 export function bcp_moretext(
@@ -8981,27 +9243,27 @@ export function bcp_moretext(
   param1: number /* i32 */,
   param2: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i16 */ {
-  return libodbcbcp.bcp_moretext(util.toPointer(param0), param1, util.toPointer(param2));
+  return libodbcbcp_dll.bcp_moretext(util.toPointer(param0), param1, util.toPointer(param2));
 }
 
 export function bcp_readfmtA(
   param0: Deno.PointerValue | Uint8Array | null /* ptr */,
   param1: string | null /* Windows.Win32.Foundation.PSTR */,
 ): number /* i16 */ {
-  return libodbcbcp.bcp_readfmtA(util.toPointer(param0), util.pstrToFfi(param1));
+  return libodbcbcp_dll.bcp_readfmtA(util.toPointer(param0), util.pstrToFfi(param1));
 }
 
 export function bcp_readfmtW(
   param0: Deno.PointerValue | Uint8Array | null /* ptr */,
   param1: string | null /* Windows.Win32.Foundation.PWSTR */,
 ): number /* i16 */ {
-  return libodbcbcp.bcp_readfmtW(util.toPointer(param0), util.pwstrToFfi(param1));
+  return libodbcbcp_dll.bcp_readfmtW(util.toPointer(param0), util.pwstrToFfi(param1));
 }
 
 export function bcp_sendrow(
   param0: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i16 */ {
-  return libodbcbcp.bcp_sendrow(util.toPointer(param0));
+  return libodbcbcp_dll.bcp_sendrow(util.toPointer(param0));
 }
 
 export function bcp_setcolfmt(
@@ -9011,39 +9273,39 @@ export function bcp_setcolfmt(
   param3: Deno.PointerValue | Uint8Array | null /* ptr */,
   param4: number /* i32 */,
 ): number /* i16 */ {
-  return libodbcbcp.bcp_setcolfmt(util.toPointer(param0), param1, param2, util.toPointer(param3), param4);
+  return libodbcbcp_dll.bcp_setcolfmt(util.toPointer(param0), param1, param2, util.toPointer(param3), param4);
 }
 
 export function bcp_writefmtA(
   param0: Deno.PointerValue | Uint8Array | null /* ptr */,
   param1: string | null /* Windows.Win32.Foundation.PSTR */,
 ): number /* i16 */ {
-  return libodbcbcp.bcp_writefmtA(util.toPointer(param0), util.pstrToFfi(param1));
+  return libodbcbcp_dll.bcp_writefmtA(util.toPointer(param0), util.pstrToFfi(param1));
 }
 
 export function bcp_writefmtW(
   param0: Deno.PointerValue | Uint8Array | null /* ptr */,
   param1: string | null /* Windows.Win32.Foundation.PWSTR */,
 ): number /* i16 */ {
-  return libodbcbcp.bcp_writefmtW(util.toPointer(param0), util.pwstrToFfi(param1));
+  return libodbcbcp_dll.bcp_writefmtW(util.toPointer(param0), util.pwstrToFfi(param1));
 }
 
 export function dbprtypeA(
   param0: number /* i32 */,
 ): string | null /* Windows.Win32.Foundation.PSTR */ {
-  return util.pstrFromFfi(libodbcbcp.dbprtypeA(param0));
+  return util.pstrFromFfi(libodbcbcp_dll.dbprtypeA(param0));
 }
 
 export function dbprtypeW(
   param0: number /* i32 */,
 ): string | null /* Windows.Win32.Foundation.PWSTR */ {
-  return util.pwstrFromFfi(libodbcbcp.dbprtypeW(param0));
+  return util.pwstrFromFfi(libodbcbcp_dll.dbprtypeW(param0));
 }
 
 export function SQLLinkedServers(
   param0: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i16 */ {
-  return libodbcbcp.SQLLinkedServers(util.toPointer(param0));
+  return libodbcbcp_dll.SQLLinkedServers(util.toPointer(param0));
 }
 
 export function SQLLinkedCatalogsA(
@@ -9051,7 +9313,7 @@ export function SQLLinkedCatalogsA(
   param1: string | null /* Windows.Win32.Foundation.PSTR */,
   param2: number /* i16 */,
 ): number /* i16 */ {
-  return libodbcbcp.SQLLinkedCatalogsA(util.toPointer(param0), util.pstrToFfi(param1), param2);
+  return libodbcbcp_dll.SQLLinkedCatalogsA(util.toPointer(param0), util.pstrToFfi(param1), param2);
 }
 
 export function SQLLinkedCatalogsW(
@@ -9059,14 +9321,14 @@ export function SQLLinkedCatalogsW(
   param1: string | null /* Windows.Win32.Foundation.PWSTR */,
   param2: number /* i16 */,
 ): number /* i16 */ {
-  return libodbcbcp.SQLLinkedCatalogsW(util.toPointer(param0), util.pwstrToFfi(param1), param2);
+  return libodbcbcp_dll.SQLLinkedCatalogsW(util.toPointer(param0), util.pwstrToFfi(param1), param2);
 }
 
 export function SQLInitEnumServers(
   pwchServerName: string | null /* Windows.Win32.Foundation.PWSTR */,
   pwchInstanceName: string | null /* Windows.Win32.Foundation.PWSTR */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */ {
-  return util.pointerFromFfi(libodbcbcp.SQLInitEnumServers(util.pwstrToFfi(pwchServerName), util.pwstrToFfi(pwchInstanceName)));
+  return util.pointerFromFfi(libodbcbcp_dll.SQLInitEnumServers(util.pwstrToFfi(pwchServerName), util.pwstrToFfi(pwchInstanceName)));
 }
 
 export function SQLGetNextEnumeration(
@@ -9074,13 +9336,13 @@ export function SQLGetNextEnumeration(
   prgEnumData: Deno.PointerValue | Uint8Array | null /* ptr */,
   piEnumLength: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i16 */ {
-  return libodbcbcp.SQLGetNextEnumeration(util.toPointer(hEnumHandle), util.toPointer(prgEnumData), util.toPointer(piEnumLength));
+  return libodbcbcp_dll.SQLGetNextEnumeration(util.toPointer(hEnumHandle), util.toPointer(prgEnumData), util.toPointer(piEnumLength));
 }
 
 export function SQLCloseEnumServers(
   hEnumHandle: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
 ): number /* i16 */ {
-  return libodbcbcp.SQLCloseEnumServers(util.toPointer(hEnumHandle));
+  return libodbcbcp_dll.SQLCloseEnumServers(util.toPointer(hEnumHandle));
 }
 
 export function SQLDriverConnect(
@@ -9093,7 +9355,7 @@ export function SQLDriverConnect(
   pcchConnStrOut: Deno.PointerValue | Uint8Array | null /* ptr */,
   fDriverCompletion: number /* u16 */,
 ): number /* i16 */ {
-  return libODBC32.SQLDriverConnect(util.toPointer(hdbc), hwnd, util.toPointer(szConnStrIn), cchConnStrIn, util.toPointer(szConnStrOut), cchConnStrOutMax, util.toPointer(pcchConnStrOut), fDriverCompletion);
+  return libODBC32_dll.SQLDriverConnect(util.toPointer(hdbc), hwnd, util.toPointer(szConnStrIn), cchConnStrIn, util.toPointer(szConnStrOut), cchConnStrOutMax, util.toPointer(pcchConnStrOut), fDriverCompletion);
 }
 
 export function SQLBrowseConnect(
@@ -9104,26 +9366,14 @@ export function SQLBrowseConnect(
   cchConnStrOutMax: number /* i16 */,
   pcchConnStrOut: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i16 */ {
-  return libODBC32.SQLBrowseConnect(util.toPointer(hdbc), util.toPointer(szConnStrIn), cchConnStrIn, util.toPointer(szConnStrOut), cchConnStrOutMax, util.toPointer(pcchConnStrOut));
+  return libODBC32_dll.SQLBrowseConnect(util.toPointer(hdbc), util.toPointer(szConnStrIn), cchConnStrIn, util.toPointer(szConnStrOut), cchConnStrOutMax, util.toPointer(pcchConnStrOut));
 }
 
 export function SQLBulkOperations(
   StatementHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
   Operation: number /* i16 */,
 ): number /* i16 */ {
-  return libODBC32.SQLBulkOperations(util.toPointer(StatementHandle), Operation);
-}
-
-export function SQLColAttributes(
-  hstmt: Deno.PointerValue | Uint8Array | null /* ptr */,
-  icol: number /* u16 */,
-  fDescType: number /* u16 */,
-  rgbDesc: Deno.PointerValue | Uint8Array | null /* ptr */,
-  cbDescMax: number /* i16 */,
-  pcbDesc: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pfDesc: Deno.PointerValue | Uint8Array | null /* ptr */,
-): number /* i16 */ {
-  return libODBC32.SQLColAttributes(util.toPointer(hstmt), icol, fDescType, util.toPointer(rgbDesc), cbDescMax, util.toPointer(pcbDesc), util.toPointer(pfDesc));
+  return libODBC32_dll.SQLBulkOperations(util.toPointer(StatementHandle), Operation);
 }
 
 export function SQLColumnPrivileges(
@@ -9137,28 +9387,7 @@ export function SQLColumnPrivileges(
   szColumnName: Deno.PointerValue | Uint8Array | null /* ptr */,
   cchColumnName: number /* i16 */,
 ): number /* i16 */ {
-  return libODBC32.SQLColumnPrivileges(util.toPointer(hstmt), util.toPointer(szCatalogName), cchCatalogName, util.toPointer(szSchemaName), cchSchemaName, util.toPointer(szTableName), cchTableName, util.toPointer(szColumnName), cchColumnName);
-}
-
-export function SQLDescribeParam(
-  hstmt: Deno.PointerValue | Uint8Array | null /* ptr */,
-  ipar: number /* u16 */,
-  pfSqlType: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pcbParamDef: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pibScale: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pfNullable: Deno.PointerValue | Uint8Array | null /* ptr */,
-): number /* i16 */ {
-  return libODBC32.SQLDescribeParam(util.toPointer(hstmt), ipar, util.toPointer(pfSqlType), util.toPointer(pcbParamDef), util.toPointer(pibScale), util.toPointer(pfNullable));
-}
-
-export function SQLExtendedFetch(
-  hstmt: Deno.PointerValue | Uint8Array | null /* ptr */,
-  fFetchType: number /* u16 */,
-  irow: number /* i32 */,
-  pcrow: Deno.PointerValue | Uint8Array | null /* ptr */,
-  rgfRowStatus: Deno.PointerValue | Uint8Array | null /* ptr */,
-): number /* i16 */ {
-  return libODBC32.SQLExtendedFetch(util.toPointer(hstmt), fFetchType, irow, util.toPointer(pcrow), util.toPointer(rgfRowStatus));
+  return libODBC32_dll.SQLColumnPrivileges(util.toPointer(hstmt), util.toPointer(szCatalogName), cchCatalogName, util.toPointer(szSchemaName), cchSchemaName, util.toPointer(szTableName), cchTableName, util.toPointer(szColumnName), cchColumnName);
 }
 
 export function SQLForeignKeys(
@@ -9176,13 +9405,13 @@ export function SQLForeignKeys(
   szFkTableName: Deno.PointerValue | Uint8Array | null /* ptr */,
   cchFkTableName: number /* i16 */,
 ): number /* i16 */ {
-  return libODBC32.SQLForeignKeys(util.toPointer(hstmt), util.toPointer(szPkCatalogName), cchPkCatalogName, util.toPointer(szPkSchemaName), cchPkSchemaName, util.toPointer(szPkTableName), cchPkTableName, util.toPointer(szFkCatalogName), cchFkCatalogName, util.toPointer(szFkSchemaName), cchFkSchemaName, util.toPointer(szFkTableName), cchFkTableName);
+  return libODBC32_dll.SQLForeignKeys(util.toPointer(hstmt), util.toPointer(szPkCatalogName), cchPkCatalogName, util.toPointer(szPkSchemaName), cchPkSchemaName, util.toPointer(szPkTableName), cchPkTableName, util.toPointer(szFkCatalogName), cchFkCatalogName, util.toPointer(szFkSchemaName), cchFkSchemaName, util.toPointer(szFkTableName), cchFkTableName);
 }
 
 export function SQLMoreResults(
   hstmt: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i16 */ {
-  return libODBC32.SQLMoreResults(util.toPointer(hstmt));
+  return libODBC32_dll.SQLMoreResults(util.toPointer(hstmt));
 }
 
 export function SQLNativeSql(
@@ -9193,22 +9422,14 @@ export function SQLNativeSql(
   cchSqlStrMax: number /* i32 */,
   pcbSqlStr: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i16 */ {
-  return libODBC32.SQLNativeSql(util.toPointer(hdbc), util.toPointer(szSqlStrIn), cchSqlStrIn, util.toPointer(szSqlStr), cchSqlStrMax, util.toPointer(pcbSqlStr));
+  return libODBC32_dll.SQLNativeSql(util.toPointer(hdbc), util.toPointer(szSqlStrIn), cchSqlStrIn, util.toPointer(szSqlStr), cchSqlStrMax, util.toPointer(pcbSqlStr));
 }
 
 export function SQLNumParams(
   hstmt: Deno.PointerValue | Uint8Array | null /* ptr */,
   pcpar: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i16 */ {
-  return libODBC32.SQLNumParams(util.toPointer(hstmt), util.toPointer(pcpar));
-}
-
-export function SQLParamOptions(
-  hstmt: Deno.PointerValue | Uint8Array | null /* ptr */,
-  crow: number /* u32 */,
-  pirow: Deno.PointerValue | Uint8Array | null /* ptr */,
-): number /* i16 */ {
-  return libODBC32.SQLParamOptions(util.toPointer(hstmt), crow, util.toPointer(pirow));
+  return libODBC32_dll.SQLNumParams(util.toPointer(hstmt), util.toPointer(pcpar));
 }
 
 export function SQLPrimaryKeys(
@@ -9220,7 +9441,7 @@ export function SQLPrimaryKeys(
   szTableName: Deno.PointerValue | Uint8Array | null /* ptr */,
   cchTableName: number /* i16 */,
 ): number /* i16 */ {
-  return libODBC32.SQLPrimaryKeys(util.toPointer(hstmt), util.toPointer(szCatalogName), cchCatalogName, util.toPointer(szSchemaName), cchSchemaName, util.toPointer(szTableName), cchTableName);
+  return libODBC32_dll.SQLPrimaryKeys(util.toPointer(hstmt), util.toPointer(szCatalogName), cchCatalogName, util.toPointer(szSchemaName), cchSchemaName, util.toPointer(szTableName), cchTableName);
 }
 
 export function SQLProcedureColumns(
@@ -9234,7 +9455,7 @@ export function SQLProcedureColumns(
   szColumnName: Deno.PointerValue | Uint8Array | null /* ptr */,
   cchColumnName: number /* i16 */,
 ): number /* i16 */ {
-  return libODBC32.SQLProcedureColumns(util.toPointer(hstmt), util.toPointer(szCatalogName), cchCatalogName, util.toPointer(szSchemaName), cchSchemaName, util.toPointer(szProcName), cchProcName, util.toPointer(szColumnName), cchColumnName);
+  return libODBC32_dll.SQLProcedureColumns(util.toPointer(hstmt), util.toPointer(szCatalogName), cchCatalogName, util.toPointer(szSchemaName), cchSchemaName, util.toPointer(szProcName), cchProcName, util.toPointer(szColumnName), cchColumnName);
 }
 
 export function SQLProcedures(
@@ -9246,16 +9467,7 @@ export function SQLProcedures(
   szProcName: Deno.PointerValue | Uint8Array | null /* ptr */,
   cchProcName: number /* i16 */,
 ): number /* i16 */ {
-  return libODBC32.SQLProcedures(util.toPointer(hstmt), util.toPointer(szCatalogName), cchCatalogName, util.toPointer(szSchemaName), cchSchemaName, util.toPointer(szProcName), cchProcName);
-}
-
-export function SQLSetPos(
-  hstmt: Deno.PointerValue | Uint8Array | null /* ptr */,
-  irow: number /* u16 */,
-  fOption: number /* u16 */,
-  fLock: number /* u16 */,
-): number /* i16 */ {
-  return libODBC32.SQLSetPos(util.toPointer(hstmt), irow, fOption, fLock);
+  return libODBC32_dll.SQLProcedures(util.toPointer(hstmt), util.toPointer(szCatalogName), cchCatalogName, util.toPointer(szSchemaName), cchSchemaName, util.toPointer(szProcName), cchProcName);
 }
 
 export function SQLTablePrivileges(
@@ -9267,7 +9479,7 @@ export function SQLTablePrivileges(
   szTableName: Deno.PointerValue | Uint8Array | null /* ptr */,
   cchTableName: number /* i16 */,
 ): number /* i16 */ {
-  return libODBC32.SQLTablePrivileges(util.toPointer(hstmt), util.toPointer(szCatalogName), cchCatalogName, util.toPointer(szSchemaName), cchSchemaName, util.toPointer(szTableName), cchTableName);
+  return libODBC32_dll.SQLTablePrivileges(util.toPointer(hstmt), util.toPointer(szCatalogName), cchCatalogName, util.toPointer(szSchemaName), cchSchemaName, util.toPointer(szTableName), cchTableName);
 }
 
 export function SQLDrivers(
@@ -9280,22 +9492,7 @@ export function SQLDrivers(
   cchDrvrAttrMax: number /* i16 */,
   pcchDrvrAttr: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i16 */ {
-  return libODBC32.SQLDrivers(util.toPointer(henv), fDirection, util.toPointer(szDriverDesc), cchDriverDescMax, util.toPointer(pcchDriverDesc), util.toPointer(szDriverAttributes), cchDrvrAttrMax, util.toPointer(pcchDrvrAttr));
-}
-
-export function SQLBindParameter(
-  hstmt: Deno.PointerValue | Uint8Array | null /* ptr */,
-  ipar: number /* u16 */,
-  fParamType: number /* i16 */,
-  fCType: number /* i16 */,
-  fSqlType: number /* i16 */,
-  cbColDef: number /* u32 */,
-  ibScale: number /* i16 */,
-  rgbValue: Deno.PointerValue | Uint8Array | null /* ptr */,
-  cbValueMax: number /* i32 */,
-  pcbValue: Deno.PointerValue | Uint8Array | null /* ptr */,
-): number /* i16 */ {
-  return libODBC32.SQLBindParameter(util.toPointer(hstmt), ipar, fParamType, fCType, fSqlType, cbColDef, ibScale, util.toPointer(rgbValue), cbValueMax, util.toPointer(pcbValue));
+  return libODBC32_dll.SQLDrivers(util.toPointer(henv), fDirection, util.toPointer(szDriverDesc), cchDriverDescMax, util.toPointer(pcchDriverDesc), util.toPointer(szDriverAttributes), cchDrvrAttrMax, util.toPointer(pcchDrvrAttr));
 }
 
 export function SQLAllocHandleStd(
@@ -9303,50 +9500,17 @@ export function SQLAllocHandleStd(
   hInput: Deno.PointerValue | Uint8Array | null /* ptr */,
   phOutput: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i16 */ {
-  return libODBC32.SQLAllocHandleStd(fHandleType, util.toPointer(hInput), util.toPointer(phOutput));
-}
-
-export function SQLSetScrollOptions(
-  hstmt: Deno.PointerValue | Uint8Array | null /* ptr */,
-  fConcurrency: number /* u16 */,
-  crowKeyset: number /* i32 */,
-  crowRowset: number /* u16 */,
-): number /* i16 */ {
-  return libODBC32.SQLSetScrollOptions(util.toPointer(hstmt), fConcurrency, crowKeyset, crowRowset);
+  return libODBC32_dll.SQLAllocHandleStd(fHandleType, util.toPointer(hInput), util.toPointer(phOutput));
 }
 
 export function ODBCSetTryWaitValue(
   dwValue: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libODBC32.ODBCSetTryWaitValue(dwValue));
+  return util.boolFromFfi(libODBC32_dll.ODBCSetTryWaitValue(dwValue));
 }
 
 export function ODBCGetTryWaitValue(): number /* u32 */ {
-  return libODBC32.ODBCGetTryWaitValue();
-}
-
-export function SQLColAttributeW(
-  hstmt: Deno.PointerValue | Uint8Array | null /* ptr */,
-  iCol: number /* u16 */,
-  iField: number /* u16 */,
-  pCharAttr: Deno.PointerValue | Uint8Array | null /* ptr */,
-  cbDescMax: number /* i16 */,
-  pcbCharAttr: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pNumAttr: Deno.PointerValue | Uint8Array | null /* ptr */,
-): number /* i16 */ {
-  return libODBC32.SQLColAttributeW(util.toPointer(hstmt), iCol, iField, util.toPointer(pCharAttr), cbDescMax, util.toPointer(pcbCharAttr), util.toPointer(pNumAttr));
-}
-
-export function SQLColAttributesW(
-  hstmt: Deno.PointerValue | Uint8Array | null /* ptr */,
-  icol: number /* u16 */,
-  fDescType: number /* u16 */,
-  rgbDesc: Deno.PointerValue | Uint8Array | null /* ptr */,
-  cbDescMax: number /* i16 */,
-  pcbDesc: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pfDesc: Deno.PointerValue | Uint8Array | null /* ptr */,
-): number /* i16 */ {
-  return libODBC32.SQLColAttributesW(util.toPointer(hstmt), icol, fDescType, util.toPointer(rgbDesc), cbDescMax, util.toPointer(pcbDesc), util.toPointer(pfDesc));
+  return libODBC32_dll.ODBCGetTryWaitValue();
 }
 
 export function SQLConnectW(
@@ -9358,21 +9522,7 @@ export function SQLConnectW(
   szAuthStr: Deno.PointerValue | Uint8Array | null /* ptr */,
   cchAuthStr: number /* i16 */,
 ): number /* i16 */ {
-  return libODBC32.SQLConnectW(util.toPointer(hdbc), util.toPointer(szDSN), cchDSN, util.toPointer(szUID), cchUID, util.toPointer(szAuthStr), cchAuthStr);
-}
-
-export function SQLDescribeColW(
-  hstmt: Deno.PointerValue | Uint8Array | null /* ptr */,
-  icol: number /* u16 */,
-  szColName: Deno.PointerValue | Uint8Array | null /* ptr */,
-  cchColNameMax: number /* i16 */,
-  pcchColName: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pfSqlType: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pcbColDef: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pibScale: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pfNullable: Deno.PointerValue | Uint8Array | null /* ptr */,
-): number /* i16 */ {
-  return libODBC32.SQLDescribeColW(util.toPointer(hstmt), icol, util.toPointer(szColName), cchColNameMax, util.toPointer(pcchColName), util.toPointer(pfSqlType), util.toPointer(pcbColDef), util.toPointer(pibScale), util.toPointer(pfNullable));
+  return libODBC32_dll.SQLConnectW(util.toPointer(hdbc), util.toPointer(szDSN), cchDSN, util.toPointer(szUID), cchUID, util.toPointer(szAuthStr), cchAuthStr);
 }
 
 export function SQLErrorW(
@@ -9385,7 +9535,7 @@ export function SQLErrorW(
   cchErrorMsgMax: number /* i16 */,
   pcchErrorMsg: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i16 */ {
-  return libODBC32.SQLErrorW(util.toPointer(henv), util.toPointer(hdbc), util.toPointer(hstmt), util.toPointer(wszSqlState), util.toPointer(pfNativeError), util.toPointer(wszErrorMsg), cchErrorMsgMax, util.toPointer(pcchErrorMsg));
+  return libODBC32_dll.SQLErrorW(util.toPointer(henv), util.toPointer(hdbc), util.toPointer(hstmt), util.toPointer(wszSqlState), util.toPointer(pfNativeError), util.toPointer(wszErrorMsg), cchErrorMsgMax, util.toPointer(pcchErrorMsg));
 }
 
 export function SQLExecDirectW(
@@ -9393,7 +9543,7 @@ export function SQLExecDirectW(
   szSqlStr: Deno.PointerValue | Uint8Array | null /* ptr */,
   TextLength: number /* i32 */,
 ): number /* i16 */ {
-  return libODBC32.SQLExecDirectW(util.toPointer(hstmt), util.toPointer(szSqlStr), TextLength);
+  return libODBC32_dll.SQLExecDirectW(util.toPointer(hstmt), util.toPointer(szSqlStr), TextLength);
 }
 
 export function SQLGetConnectAttrW(
@@ -9403,7 +9553,7 @@ export function SQLGetConnectAttrW(
   cbValueMax: number /* i32 */,
   pcbValue: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i16 */ {
-  return libODBC32.SQLGetConnectAttrW(util.toPointer(hdbc), fAttribute, util.toPointer(rgbValue), cbValueMax, util.toPointer(pcbValue));
+  return libODBC32_dll.SQLGetConnectAttrW(util.toPointer(hdbc), fAttribute, util.toPointer(rgbValue), cbValueMax, util.toPointer(pcbValue));
 }
 
 export function SQLGetCursorNameW(
@@ -9412,7 +9562,7 @@ export function SQLGetCursorNameW(
   cchCursorMax: number /* i16 */,
   pcchCursor: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i16 */ {
-  return libODBC32.SQLGetCursorNameW(util.toPointer(hstmt), util.toPointer(szCursor), cchCursorMax, util.toPointer(pcchCursor));
+  return libODBC32_dll.SQLGetCursorNameW(util.toPointer(hstmt), util.toPointer(szCursor), cchCursorMax, util.toPointer(pcchCursor));
 }
 
 export function SQLSetDescFieldW(
@@ -9422,7 +9572,7 @@ export function SQLSetDescFieldW(
   Value: Deno.PointerValue | Uint8Array | null /* ptr */,
   BufferLength: number /* i32 */,
 ): number /* i16 */ {
-  return libODBC32.SQLSetDescFieldW(util.toPointer(DescriptorHandle), RecNumber, FieldIdentifier, util.toPointer(Value), BufferLength);
+  return libODBC32_dll.SQLSetDescFieldW(util.toPointer(DescriptorHandle), RecNumber, FieldIdentifier, util.toPointer(Value), BufferLength);
 }
 
 export function SQLGetDescFieldW(
@@ -9433,23 +9583,7 @@ export function SQLGetDescFieldW(
   cbBufferLength: number /* i32 */,
   StringLength: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i16 */ {
-  return libODBC32.SQLGetDescFieldW(util.toPointer(hdesc), iRecord, iField, util.toPointer(rgbValue), cbBufferLength, util.toPointer(StringLength));
-}
-
-export function SQLGetDescRecW(
-  hdesc: Deno.PointerValue | Uint8Array | null /* ptr */,
-  iRecord: number /* i16 */,
-  szName: Deno.PointerValue | Uint8Array | null /* ptr */,
-  cchNameMax: number /* i16 */,
-  pcchName: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pfType: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pfSubType: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pLength: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pPrecision: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pScale: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pNullable: Deno.PointerValue | Uint8Array | null /* ptr */,
-): number /* i16 */ {
-  return libODBC32.SQLGetDescRecW(util.toPointer(hdesc), iRecord, util.toPointer(szName), cchNameMax, util.toPointer(pcchName), util.toPointer(pfType), util.toPointer(pfSubType), util.toPointer(pLength), util.toPointer(pPrecision), util.toPointer(pScale), util.toPointer(pNullable));
+  return libODBC32_dll.SQLGetDescFieldW(util.toPointer(hdesc), iRecord, iField, util.toPointer(rgbValue), cbBufferLength, util.toPointer(StringLength));
 }
 
 export function SQLGetDiagFieldW(
@@ -9461,7 +9595,7 @@ export function SQLGetDiagFieldW(
   cbBufferLength: number /* i16 */,
   pcbStringLength: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i16 */ {
-  return libODBC32.SQLGetDiagFieldW(fHandleType, util.toPointer(handle), iRecord, fDiagField, util.toPointer(rgbDiagInfo), cbBufferLength, util.toPointer(pcbStringLength));
+  return libODBC32_dll.SQLGetDiagFieldW(fHandleType, util.toPointer(handle), iRecord, fDiagField, util.toPointer(rgbDiagInfo), cbBufferLength, util.toPointer(pcbStringLength));
 }
 
 export function SQLGetDiagRecW(
@@ -9474,7 +9608,7 @@ export function SQLGetDiagRecW(
   cchErrorMsgMax: number /* i16 */,
   pcchErrorMsg: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i16 */ {
-  return libODBC32.SQLGetDiagRecW(fHandleType, util.toPointer(handle), iRecord, util.toPointer(szSqlState), util.toPointer(pfNativeError), util.toPointer(szErrorMsg), cchErrorMsgMax, util.toPointer(pcchErrorMsg));
+  return libODBC32_dll.SQLGetDiagRecW(fHandleType, util.toPointer(handle), iRecord, util.toPointer(szSqlState), util.toPointer(pfNativeError), util.toPointer(szErrorMsg), cchErrorMsgMax, util.toPointer(pcchErrorMsg));
 }
 
 export function SQLPrepareW(
@@ -9482,7 +9616,7 @@ export function SQLPrepareW(
   szSqlStr: Deno.PointerValue | Uint8Array | null /* ptr */,
   cchSqlStr: number /* i32 */,
 ): number /* i16 */ {
-  return libODBC32.SQLPrepareW(util.toPointer(hstmt), util.toPointer(szSqlStr), cchSqlStr);
+  return libODBC32_dll.SQLPrepareW(util.toPointer(hstmt), util.toPointer(szSqlStr), cchSqlStr);
 }
 
 export function SQLSetConnectAttrW(
@@ -9491,7 +9625,7 @@ export function SQLSetConnectAttrW(
   rgbValue: Deno.PointerValue | Uint8Array | null /* ptr */,
   cbValue: number /* i32 */,
 ): number /* i16 */ {
-  return libODBC32.SQLSetConnectAttrW(util.toPointer(hdbc), fAttribute, util.toPointer(rgbValue), cbValue);
+  return libODBC32_dll.SQLSetConnectAttrW(util.toPointer(hdbc), fAttribute, util.toPointer(rgbValue), cbValue);
 }
 
 export function SQLSetCursorNameW(
@@ -9499,7 +9633,7 @@ export function SQLSetCursorNameW(
   szCursor: Deno.PointerValue | Uint8Array | null /* ptr */,
   cchCursor: number /* i16 */,
 ): number /* i16 */ {
-  return libODBC32.SQLSetCursorNameW(util.toPointer(hstmt), util.toPointer(szCursor), cchCursor);
+  return libODBC32_dll.SQLSetCursorNameW(util.toPointer(hstmt), util.toPointer(szCursor), cchCursor);
 }
 
 export function SQLColumnsW(
@@ -9513,7 +9647,7 @@ export function SQLColumnsW(
   szColumnName: Deno.PointerValue | Uint8Array | null /* ptr */,
   cchColumnName: number /* i16 */,
 ): number /* i16 */ {
-  return libODBC32.SQLColumnsW(util.toPointer(hstmt), util.toPointer(szCatalogName), cchCatalogName, util.toPointer(szSchemaName), cchSchemaName, util.toPointer(szTableName), cchTableName, util.toPointer(szColumnName), cchColumnName);
+  return libODBC32_dll.SQLColumnsW(util.toPointer(hstmt), util.toPointer(szCatalogName), cchCatalogName, util.toPointer(szSchemaName), cchSchemaName, util.toPointer(szTableName), cchTableName, util.toPointer(szColumnName), cchColumnName);
 }
 
 export function SQLGetConnectOptionW(
@@ -9521,7 +9655,7 @@ export function SQLGetConnectOptionW(
   fOption: number /* u16 */,
   pvParam: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i16 */ {
-  return libODBC32.SQLGetConnectOptionW(util.toPointer(hdbc), fOption, util.toPointer(pvParam));
+  return libODBC32_dll.SQLGetConnectOptionW(util.toPointer(hdbc), fOption, util.toPointer(pvParam));
 }
 
 export function SQLGetInfoW(
@@ -9531,22 +9665,14 @@ export function SQLGetInfoW(
   cbInfoValueMax: number /* i16 */,
   pcbInfoValue: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i16 */ {
-  return libODBC32.SQLGetInfoW(util.toPointer(hdbc), fInfoType, util.toPointer(rgbInfoValue), cbInfoValueMax, util.toPointer(pcbInfoValue));
+  return libODBC32_dll.SQLGetInfoW(util.toPointer(hdbc), fInfoType, util.toPointer(rgbInfoValue), cbInfoValueMax, util.toPointer(pcbInfoValue));
 }
 
 export function SQLGetTypeInfoW(
   StatementHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
   DataType: number /* i16 */,
 ): number /* i16 */ {
-  return libODBC32.SQLGetTypeInfoW(util.toPointer(StatementHandle), DataType);
-}
-
-export function SQLSetConnectOptionW(
-  hdbc: Deno.PointerValue | Uint8Array | null /* ptr */,
-  fOption: number /* u16 */,
-  vParam: number /* u32 */,
-): number /* i16 */ {
-  return libODBC32.SQLSetConnectOptionW(util.toPointer(hdbc), fOption, vParam);
+  return libODBC32_dll.SQLGetTypeInfoW(util.toPointer(StatementHandle), DataType);
 }
 
 export function SQLSpecialColumnsW(
@@ -9561,7 +9687,7 @@ export function SQLSpecialColumnsW(
   fScope: number /* u16 */,
   fNullable: number /* u16 */,
 ): number /* i16 */ {
-  return libODBC32.SQLSpecialColumnsW(util.toPointer(hstmt), fColType, util.toPointer(szCatalogName), cchCatalogName, util.toPointer(szSchemaName), cchSchemaName, util.toPointer(szTableName), cchTableName, fScope, fNullable);
+  return libODBC32_dll.SQLSpecialColumnsW(util.toPointer(hstmt), fColType, util.toPointer(szCatalogName), cchCatalogName, util.toPointer(szSchemaName), cchSchemaName, util.toPointer(szTableName), cchTableName, fScope, fNullable);
 }
 
 export function SQLStatisticsW(
@@ -9575,7 +9701,7 @@ export function SQLStatisticsW(
   fUnique: number /* u16 */,
   fAccuracy: number /* u16 */,
 ): number /* i16 */ {
-  return libODBC32.SQLStatisticsW(util.toPointer(hstmt), util.toPointer(szCatalogName), cchCatalogName, util.toPointer(szSchemaName), cchSchemaName, util.toPointer(szTableName), cchTableName, fUnique, fAccuracy);
+  return libODBC32_dll.SQLStatisticsW(util.toPointer(hstmt), util.toPointer(szCatalogName), cchCatalogName, util.toPointer(szSchemaName), cchSchemaName, util.toPointer(szTableName), cchTableName, fUnique, fAccuracy);
 }
 
 export function SQLTablesW(
@@ -9589,7 +9715,7 @@ export function SQLTablesW(
   szTableType: Deno.PointerValue | Uint8Array | null /* ptr */,
   cchTableType: number /* i16 */,
 ): number /* i16 */ {
-  return libODBC32.SQLTablesW(util.toPointer(hstmt), util.toPointer(szCatalogName), cchCatalogName, util.toPointer(szSchemaName), cchSchemaName, util.toPointer(szTableName), cchTableName, util.toPointer(szTableType), cchTableType);
+  return libODBC32_dll.SQLTablesW(util.toPointer(hstmt), util.toPointer(szCatalogName), cchCatalogName, util.toPointer(szSchemaName), cchSchemaName, util.toPointer(szTableName), cchTableName, util.toPointer(szTableType), cchTableType);
 }
 
 export function SQLDataSourcesW(
@@ -9602,7 +9728,7 @@ export function SQLDataSourcesW(
   cchDescriptionMax: number /* i16 */,
   pcchDescription: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i16 */ {
-  return libODBC32.SQLDataSourcesW(util.toPointer(henv), fDirection, util.toPointer(szDSN), cchDSNMax, util.toPointer(pcchDSN), util.toPointer(wszDescription), cchDescriptionMax, util.toPointer(pcchDescription));
+  return libODBC32_dll.SQLDataSourcesW(util.toPointer(henv), fDirection, util.toPointer(szDSN), cchDSNMax, util.toPointer(pcchDSN), util.toPointer(wszDescription), cchDescriptionMax, util.toPointer(pcchDescription));
 }
 
 export function SQLDriverConnectW(
@@ -9615,7 +9741,7 @@ export function SQLDriverConnectW(
   pcchConnStrOut: Deno.PointerValue | Uint8Array | null /* ptr */,
   fDriverCompletion: number /* u16 */,
 ): number /* i16 */ {
-  return libODBC32.SQLDriverConnectW(util.toPointer(hdbc), hwnd, util.toPointer(szConnStrIn), cchConnStrIn, util.toPointer(szConnStrOut), cchConnStrOutMax, util.toPointer(pcchConnStrOut), fDriverCompletion);
+  return libODBC32_dll.SQLDriverConnectW(util.toPointer(hdbc), hwnd, util.toPointer(szConnStrIn), cchConnStrIn, util.toPointer(szConnStrOut), cchConnStrOutMax, util.toPointer(pcchConnStrOut), fDriverCompletion);
 }
 
 export function SQLBrowseConnectW(
@@ -9626,7 +9752,7 @@ export function SQLBrowseConnectW(
   cchConnStrOutMax: number /* i16 */,
   pcchConnStrOut: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i16 */ {
-  return libODBC32.SQLBrowseConnectW(util.toPointer(hdbc), util.toPointer(szConnStrIn), cchConnStrIn, util.toPointer(szConnStrOut), cchConnStrOutMax, util.toPointer(pcchConnStrOut));
+  return libODBC32_dll.SQLBrowseConnectW(util.toPointer(hdbc), util.toPointer(szConnStrIn), cchConnStrIn, util.toPointer(szConnStrOut), cchConnStrOutMax, util.toPointer(pcchConnStrOut));
 }
 
 export function SQLColumnPrivilegesW(
@@ -9640,7 +9766,7 @@ export function SQLColumnPrivilegesW(
   szColumnName: Deno.PointerValue | Uint8Array | null /* ptr */,
   cchColumnName: number /* i16 */,
 ): number /* i16 */ {
-  return libODBC32.SQLColumnPrivilegesW(util.toPointer(hstmt), util.toPointer(szCatalogName), cchCatalogName, util.toPointer(szSchemaName), cchSchemaName, util.toPointer(szTableName), cchTableName, util.toPointer(szColumnName), cchColumnName);
+  return libODBC32_dll.SQLColumnPrivilegesW(util.toPointer(hstmt), util.toPointer(szCatalogName), cchCatalogName, util.toPointer(szSchemaName), cchSchemaName, util.toPointer(szTableName), cchTableName, util.toPointer(szColumnName), cchColumnName);
 }
 
 export function SQLGetStmtAttrW(
@@ -9650,7 +9776,7 @@ export function SQLGetStmtAttrW(
   cbValueMax: number /* i32 */,
   pcbValue: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i16 */ {
-  return libODBC32.SQLGetStmtAttrW(util.toPointer(hstmt), fAttribute, util.toPointer(rgbValue), cbValueMax, util.toPointer(pcbValue));
+  return libODBC32_dll.SQLGetStmtAttrW(util.toPointer(hstmt), fAttribute, util.toPointer(rgbValue), cbValueMax, util.toPointer(pcbValue));
 }
 
 export function SQLSetStmtAttrW(
@@ -9659,7 +9785,7 @@ export function SQLSetStmtAttrW(
   rgbValue: Deno.PointerValue | Uint8Array | null /* ptr */,
   cbValueMax: number /* i32 */,
 ): number /* i16 */ {
-  return libODBC32.SQLSetStmtAttrW(util.toPointer(hstmt), fAttribute, util.toPointer(rgbValue), cbValueMax);
+  return libODBC32_dll.SQLSetStmtAttrW(util.toPointer(hstmt), fAttribute, util.toPointer(rgbValue), cbValueMax);
 }
 
 export function SQLForeignKeysW(
@@ -9677,7 +9803,7 @@ export function SQLForeignKeysW(
   szFkTableName: Deno.PointerValue | Uint8Array | null /* ptr */,
   cchFkTableName: number /* i16 */,
 ): number /* i16 */ {
-  return libODBC32.SQLForeignKeysW(util.toPointer(hstmt), util.toPointer(szPkCatalogName), cchPkCatalogName, util.toPointer(szPkSchemaName), cchPkSchemaName, util.toPointer(szPkTableName), cchPkTableName, util.toPointer(szFkCatalogName), cchFkCatalogName, util.toPointer(szFkSchemaName), cchFkSchemaName, util.toPointer(szFkTableName), cchFkTableName);
+  return libODBC32_dll.SQLForeignKeysW(util.toPointer(hstmt), util.toPointer(szPkCatalogName), cchPkCatalogName, util.toPointer(szPkSchemaName), cchPkSchemaName, util.toPointer(szPkTableName), cchPkTableName, util.toPointer(szFkCatalogName), cchFkCatalogName, util.toPointer(szFkSchemaName), cchFkSchemaName, util.toPointer(szFkTableName), cchFkTableName);
 }
 
 export function SQLNativeSqlW(
@@ -9688,7 +9814,7 @@ export function SQLNativeSqlW(
   cchSqlStrMax: number /* i32 */,
   pcchSqlStr: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i16 */ {
-  return libODBC32.SQLNativeSqlW(util.toPointer(hdbc), util.toPointer(szSqlStrIn), cchSqlStrIn, util.toPointer(szSqlStr), cchSqlStrMax, util.toPointer(pcchSqlStr));
+  return libODBC32_dll.SQLNativeSqlW(util.toPointer(hdbc), util.toPointer(szSqlStrIn), cchSqlStrIn, util.toPointer(szSqlStr), cchSqlStrMax, util.toPointer(pcchSqlStr));
 }
 
 export function SQLPrimaryKeysW(
@@ -9700,7 +9826,7 @@ export function SQLPrimaryKeysW(
   szTableName: Deno.PointerValue | Uint8Array | null /* ptr */,
   cchTableName: number /* i16 */,
 ): number /* i16 */ {
-  return libODBC32.SQLPrimaryKeysW(util.toPointer(hstmt), util.toPointer(szCatalogName), cchCatalogName, util.toPointer(szSchemaName), cchSchemaName, util.toPointer(szTableName), cchTableName);
+  return libODBC32_dll.SQLPrimaryKeysW(util.toPointer(hstmt), util.toPointer(szCatalogName), cchCatalogName, util.toPointer(szSchemaName), cchSchemaName, util.toPointer(szTableName), cchTableName);
 }
 
 export function SQLProcedureColumnsW(
@@ -9714,7 +9840,7 @@ export function SQLProcedureColumnsW(
   szColumnName: Deno.PointerValue | Uint8Array | null /* ptr */,
   cchColumnName: number /* i16 */,
 ): number /* i16 */ {
-  return libODBC32.SQLProcedureColumnsW(util.toPointer(hstmt), util.toPointer(szCatalogName), cchCatalogName, util.toPointer(szSchemaName), cchSchemaName, util.toPointer(szProcName), cchProcName, util.toPointer(szColumnName), cchColumnName);
+  return libODBC32_dll.SQLProcedureColumnsW(util.toPointer(hstmt), util.toPointer(szCatalogName), cchCatalogName, util.toPointer(szSchemaName), cchSchemaName, util.toPointer(szProcName), cchProcName, util.toPointer(szColumnName), cchColumnName);
 }
 
 export function SQLProceduresW(
@@ -9726,7 +9852,7 @@ export function SQLProceduresW(
   szProcName: Deno.PointerValue | Uint8Array | null /* ptr */,
   cchProcName: number /* i16 */,
 ): number /* i16 */ {
-  return libODBC32.SQLProceduresW(util.toPointer(hstmt), util.toPointer(szCatalogName), cchCatalogName, util.toPointer(szSchemaName), cchSchemaName, util.toPointer(szProcName), cchProcName);
+  return libODBC32_dll.SQLProceduresW(util.toPointer(hstmt), util.toPointer(szCatalogName), cchCatalogName, util.toPointer(szSchemaName), cchSchemaName, util.toPointer(szProcName), cchProcName);
 }
 
 export function SQLTablePrivilegesW(
@@ -9738,7 +9864,7 @@ export function SQLTablePrivilegesW(
   szTableName: Deno.PointerValue | Uint8Array | null /* ptr */,
   cchTableName: number /* i16 */,
 ): number /* i16 */ {
-  return libODBC32.SQLTablePrivilegesW(util.toPointer(hstmt), util.toPointer(szCatalogName), cchCatalogName, util.toPointer(szSchemaName), cchSchemaName, util.toPointer(szTableName), cchTableName);
+  return libODBC32_dll.SQLTablePrivilegesW(util.toPointer(hstmt), util.toPointer(szCatalogName), cchCatalogName, util.toPointer(szSchemaName), cchSchemaName, util.toPointer(szTableName), cchTableName);
 }
 
 export function SQLDriversW(
@@ -9751,31 +9877,7 @@ export function SQLDriversW(
   cchDrvrAttrMax: number /* i16 */,
   pcchDrvrAttr: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i16 */ {
-  return libODBC32.SQLDriversW(util.toPointer(henv), fDirection, util.toPointer(szDriverDesc), cchDriverDescMax, util.toPointer(pcchDriverDesc), util.toPointer(szDriverAttributes), cchDrvrAttrMax, util.toPointer(pcchDrvrAttr));
-}
-
-export function SQLColAttributeA(
-  hstmt: Deno.PointerValue | Uint8Array | null /* ptr */,
-  iCol: number /* i16 */,
-  iField: number /* i16 */,
-  pCharAttr: Deno.PointerValue | Uint8Array | null /* ptr */,
-  cbCharAttrMax: number /* i16 */,
-  pcbCharAttr: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pNumAttr: Deno.PointerValue | Uint8Array | null /* ptr */,
-): number /* i16 */ {
-  return libODBC32.SQLColAttributeA(util.toPointer(hstmt), iCol, iField, util.toPointer(pCharAttr), cbCharAttrMax, util.toPointer(pcbCharAttr), util.toPointer(pNumAttr));
-}
-
-export function SQLColAttributesA(
-  hstmt: Deno.PointerValue | Uint8Array | null /* ptr */,
-  icol: number /* u16 */,
-  fDescType: number /* u16 */,
-  rgbDesc: Deno.PointerValue | Uint8Array | null /* ptr */,
-  cbDescMax: number /* i16 */,
-  pcbDesc: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pfDesc: Deno.PointerValue | Uint8Array | null /* ptr */,
-): number /* i16 */ {
-  return libODBC32.SQLColAttributesA(util.toPointer(hstmt), icol, fDescType, util.toPointer(rgbDesc), cbDescMax, util.toPointer(pcbDesc), util.toPointer(pfDesc));
+  return libODBC32_dll.SQLDriversW(util.toPointer(henv), fDirection, util.toPointer(szDriverDesc), cchDriverDescMax, util.toPointer(pcchDriverDesc), util.toPointer(szDriverAttributes), cchDrvrAttrMax, util.toPointer(pcchDrvrAttr));
 }
 
 export function SQLConnectA(
@@ -9787,21 +9889,7 @@ export function SQLConnectA(
   szAuthStr: Deno.PointerValue | Uint8Array | null /* ptr */,
   cbAuthStr: number /* i16 */,
 ): number /* i16 */ {
-  return libODBC32.SQLConnectA(util.toPointer(hdbc), util.toPointer(szDSN), cbDSN, util.toPointer(szUID), cbUID, util.toPointer(szAuthStr), cbAuthStr);
-}
-
-export function SQLDescribeColA(
-  hstmt: Deno.PointerValue | Uint8Array | null /* ptr */,
-  icol: number /* u16 */,
-  szColName: Deno.PointerValue | Uint8Array | null /* ptr */,
-  cbColNameMax: number /* i16 */,
-  pcbColName: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pfSqlType: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pcbColDef: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pibScale: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pfNullable: Deno.PointerValue | Uint8Array | null /* ptr */,
-): number /* i16 */ {
-  return libODBC32.SQLDescribeColA(util.toPointer(hstmt), icol, util.toPointer(szColName), cbColNameMax, util.toPointer(pcbColName), util.toPointer(pfSqlType), util.toPointer(pcbColDef), util.toPointer(pibScale), util.toPointer(pfNullable));
+  return libODBC32_dll.SQLConnectA(util.toPointer(hdbc), util.toPointer(szDSN), cbDSN, util.toPointer(szUID), cbUID, util.toPointer(szAuthStr), cbAuthStr);
 }
 
 export function SQLErrorA(
@@ -9814,7 +9902,7 @@ export function SQLErrorA(
   cbErrorMsgMax: number /* i16 */,
   pcbErrorMsg: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i16 */ {
-  return libODBC32.SQLErrorA(util.toPointer(henv), util.toPointer(hdbc), util.toPointer(hstmt), util.toPointer(szSqlState), util.toPointer(pfNativeError), util.toPointer(szErrorMsg), cbErrorMsgMax, util.toPointer(pcbErrorMsg));
+  return libODBC32_dll.SQLErrorA(util.toPointer(henv), util.toPointer(hdbc), util.toPointer(hstmt), util.toPointer(szSqlState), util.toPointer(pfNativeError), util.toPointer(szErrorMsg), cbErrorMsgMax, util.toPointer(pcbErrorMsg));
 }
 
 export function SQLExecDirectA(
@@ -9822,7 +9910,7 @@ export function SQLExecDirectA(
   szSqlStr: Deno.PointerValue | Uint8Array | null /* ptr */,
   cbSqlStr: number /* i32 */,
 ): number /* i16 */ {
-  return libODBC32.SQLExecDirectA(util.toPointer(hstmt), util.toPointer(szSqlStr), cbSqlStr);
+  return libODBC32_dll.SQLExecDirectA(util.toPointer(hstmt), util.toPointer(szSqlStr), cbSqlStr);
 }
 
 export function SQLGetConnectAttrA(
@@ -9832,7 +9920,7 @@ export function SQLGetConnectAttrA(
   cbValueMax: number /* i32 */,
   pcbValue: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i16 */ {
-  return libODBC32.SQLGetConnectAttrA(util.toPointer(hdbc), fAttribute, util.toPointer(rgbValue), cbValueMax, util.toPointer(pcbValue));
+  return libODBC32_dll.SQLGetConnectAttrA(util.toPointer(hdbc), fAttribute, util.toPointer(rgbValue), cbValueMax, util.toPointer(pcbValue));
 }
 
 export function SQLGetCursorNameA(
@@ -9841,7 +9929,7 @@ export function SQLGetCursorNameA(
   cbCursorMax: number /* i16 */,
   pcbCursor: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i16 */ {
-  return libODBC32.SQLGetCursorNameA(util.toPointer(hstmt), util.toPointer(szCursor), cbCursorMax, util.toPointer(pcbCursor));
+  return libODBC32_dll.SQLGetCursorNameA(util.toPointer(hstmt), util.toPointer(szCursor), cbCursorMax, util.toPointer(pcbCursor));
 }
 
 export function SQLGetDescFieldA(
@@ -9852,23 +9940,7 @@ export function SQLGetDescFieldA(
   cbBufferLength: number /* i32 */,
   StringLength: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i16 */ {
-  return libODBC32.SQLGetDescFieldA(util.toPointer(hdesc), iRecord, iField, util.toPointer(rgbValue), cbBufferLength, util.toPointer(StringLength));
-}
-
-export function SQLGetDescRecA(
-  hdesc: Deno.PointerValue | Uint8Array | null /* ptr */,
-  iRecord: number /* i16 */,
-  szName: Deno.PointerValue | Uint8Array | null /* ptr */,
-  cbNameMax: number /* i16 */,
-  pcbName: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pfType: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pfSubType: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pLength: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pPrecision: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pScale: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pNullable: Deno.PointerValue | Uint8Array | null /* ptr */,
-): number /* i16 */ {
-  return libODBC32.SQLGetDescRecA(util.toPointer(hdesc), iRecord, util.toPointer(szName), cbNameMax, util.toPointer(pcbName), util.toPointer(pfType), util.toPointer(pfSubType), util.toPointer(pLength), util.toPointer(pPrecision), util.toPointer(pScale), util.toPointer(pNullable));
+  return libODBC32_dll.SQLGetDescFieldA(util.toPointer(hdesc), iRecord, iField, util.toPointer(rgbValue), cbBufferLength, util.toPointer(StringLength));
 }
 
 export function SQLGetDiagFieldA(
@@ -9880,7 +9952,7 @@ export function SQLGetDiagFieldA(
   cbDiagInfoMax: number /* i16 */,
   pcbDiagInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i16 */ {
-  return libODBC32.SQLGetDiagFieldA(fHandleType, util.toPointer(handle), iRecord, fDiagField, util.toPointer(rgbDiagInfo), cbDiagInfoMax, util.toPointer(pcbDiagInfo));
+  return libODBC32_dll.SQLGetDiagFieldA(fHandleType, util.toPointer(handle), iRecord, fDiagField, util.toPointer(rgbDiagInfo), cbDiagInfoMax, util.toPointer(pcbDiagInfo));
 }
 
 export function SQLGetDiagRecA(
@@ -9893,7 +9965,7 @@ export function SQLGetDiagRecA(
   cbErrorMsgMax: number /* i16 */,
   pcbErrorMsg: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i16 */ {
-  return libODBC32.SQLGetDiagRecA(fHandleType, util.toPointer(handle), iRecord, util.toPointer(szSqlState), util.toPointer(pfNativeError), util.toPointer(szErrorMsg), cbErrorMsgMax, util.toPointer(pcbErrorMsg));
+  return libODBC32_dll.SQLGetDiagRecA(fHandleType, util.toPointer(handle), iRecord, util.toPointer(szSqlState), util.toPointer(pfNativeError), util.toPointer(szErrorMsg), cbErrorMsgMax, util.toPointer(pcbErrorMsg));
 }
 
 export function SQLGetStmtAttrA(
@@ -9903,14 +9975,14 @@ export function SQLGetStmtAttrA(
   cbValueMax: number /* i32 */,
   pcbValue: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i16 */ {
-  return libODBC32.SQLGetStmtAttrA(util.toPointer(hstmt), fAttribute, util.toPointer(rgbValue), cbValueMax, util.toPointer(pcbValue));
+  return libODBC32_dll.SQLGetStmtAttrA(util.toPointer(hstmt), fAttribute, util.toPointer(rgbValue), cbValueMax, util.toPointer(pcbValue));
 }
 
 export function SQLGetTypeInfoA(
   StatementHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
   DataType: number /* i16 */,
 ): number /* i16 */ {
-  return libODBC32.SQLGetTypeInfoA(util.toPointer(StatementHandle), DataType);
+  return libODBC32_dll.SQLGetTypeInfoA(util.toPointer(StatementHandle), DataType);
 }
 
 export function SQLPrepareA(
@@ -9918,7 +9990,7 @@ export function SQLPrepareA(
   szSqlStr: Deno.PointerValue | Uint8Array | null /* ptr */,
   cbSqlStr: number /* i32 */,
 ): number /* i16 */ {
-  return libODBC32.SQLPrepareA(util.toPointer(hstmt), util.toPointer(szSqlStr), cbSqlStr);
+  return libODBC32_dll.SQLPrepareA(util.toPointer(hstmt), util.toPointer(szSqlStr), cbSqlStr);
 }
 
 export function SQLSetConnectAttrA(
@@ -9927,7 +9999,7 @@ export function SQLSetConnectAttrA(
   rgbValue: Deno.PointerValue | Uint8Array | null /* ptr */,
   cbValue: number /* i32 */,
 ): number /* i16 */ {
-  return libODBC32.SQLSetConnectAttrA(util.toPointer(hdbc), fAttribute, util.toPointer(rgbValue), cbValue);
+  return libODBC32_dll.SQLSetConnectAttrA(util.toPointer(hdbc), fAttribute, util.toPointer(rgbValue), cbValue);
 }
 
 export function SQLSetCursorNameA(
@@ -9935,7 +10007,7 @@ export function SQLSetCursorNameA(
   szCursor: Deno.PointerValue | Uint8Array | null /* ptr */,
   cbCursor: number /* i16 */,
 ): number /* i16 */ {
-  return libODBC32.SQLSetCursorNameA(util.toPointer(hstmt), util.toPointer(szCursor), cbCursor);
+  return libODBC32_dll.SQLSetCursorNameA(util.toPointer(hstmt), util.toPointer(szCursor), cbCursor);
 }
 
 export function SQLColumnsA(
@@ -9949,7 +10021,7 @@ export function SQLColumnsA(
   szColumnName: Deno.PointerValue | Uint8Array | null /* ptr */,
   cbColumnName: number /* i16 */,
 ): number /* i16 */ {
-  return libODBC32.SQLColumnsA(util.toPointer(hstmt), util.toPointer(szCatalogName), cbCatalogName, util.toPointer(szSchemaName), cbSchemaName, util.toPointer(szTableName), cbTableName, util.toPointer(szColumnName), cbColumnName);
+  return libODBC32_dll.SQLColumnsA(util.toPointer(hstmt), util.toPointer(szCatalogName), cbCatalogName, util.toPointer(szSchemaName), cbSchemaName, util.toPointer(szTableName), cbTableName, util.toPointer(szColumnName), cbColumnName);
 }
 
 export function SQLGetConnectOptionA(
@@ -9957,7 +10029,7 @@ export function SQLGetConnectOptionA(
   fOption: number /* u16 */,
   pvParam: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i16 */ {
-  return libODBC32.SQLGetConnectOptionA(util.toPointer(hdbc), fOption, util.toPointer(pvParam));
+  return libODBC32_dll.SQLGetConnectOptionA(util.toPointer(hdbc), fOption, util.toPointer(pvParam));
 }
 
 export function SQLGetInfoA(
@@ -9967,15 +10039,7 @@ export function SQLGetInfoA(
   cbInfoValueMax: number /* i16 */,
   pcbInfoValue: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i16 */ {
-  return libODBC32.SQLGetInfoA(util.toPointer(hdbc), fInfoType, util.toPointer(rgbInfoValue), cbInfoValueMax, util.toPointer(pcbInfoValue));
-}
-
-export function SQLSetConnectOptionA(
-  hdbc: Deno.PointerValue | Uint8Array | null /* ptr */,
-  fOption: number /* u16 */,
-  vParam: number /* u32 */,
-): number /* i16 */ {
-  return libODBC32.SQLSetConnectOptionA(util.toPointer(hdbc), fOption, vParam);
+  return libODBC32_dll.SQLGetInfoA(util.toPointer(hdbc), fInfoType, util.toPointer(rgbInfoValue), cbInfoValueMax, util.toPointer(pcbInfoValue));
 }
 
 export function SQLSpecialColumnsA(
@@ -9990,7 +10054,7 @@ export function SQLSpecialColumnsA(
   fScope: number /* u16 */,
   fNullable: number /* u16 */,
 ): number /* i16 */ {
-  return libODBC32.SQLSpecialColumnsA(util.toPointer(hstmt), fColType, util.toPointer(szCatalogName), cbCatalogName, util.toPointer(szSchemaName), cbSchemaName, util.toPointer(szTableName), cbTableName, fScope, fNullable);
+  return libODBC32_dll.SQLSpecialColumnsA(util.toPointer(hstmt), fColType, util.toPointer(szCatalogName), cbCatalogName, util.toPointer(szSchemaName), cbSchemaName, util.toPointer(szTableName), cbTableName, fScope, fNullable);
 }
 
 export function SQLStatisticsA(
@@ -10004,7 +10068,7 @@ export function SQLStatisticsA(
   fUnique: number /* u16 */,
   fAccuracy: number /* u16 */,
 ): number /* i16 */ {
-  return libODBC32.SQLStatisticsA(util.toPointer(hstmt), util.toPointer(szCatalogName), cbCatalogName, util.toPointer(szSchemaName), cbSchemaName, util.toPointer(szTableName), cbTableName, fUnique, fAccuracy);
+  return libODBC32_dll.SQLStatisticsA(util.toPointer(hstmt), util.toPointer(szCatalogName), cbCatalogName, util.toPointer(szSchemaName), cbSchemaName, util.toPointer(szTableName), cbTableName, fUnique, fAccuracy);
 }
 
 export function SQLTablesA(
@@ -10018,7 +10082,7 @@ export function SQLTablesA(
   szTableType: Deno.PointerValue | Uint8Array | null /* ptr */,
   cbTableType: number /* i16 */,
 ): number /* i16 */ {
-  return libODBC32.SQLTablesA(util.toPointer(hstmt), util.toPointer(szCatalogName), cbCatalogName, util.toPointer(szSchemaName), cbSchemaName, util.toPointer(szTableName), cbTableName, util.toPointer(szTableType), cbTableType);
+  return libODBC32_dll.SQLTablesA(util.toPointer(hstmt), util.toPointer(szCatalogName), cbCatalogName, util.toPointer(szSchemaName), cbSchemaName, util.toPointer(szTableName), cbTableName, util.toPointer(szTableType), cbTableType);
 }
 
 export function SQLDataSourcesA(
@@ -10031,7 +10095,7 @@ export function SQLDataSourcesA(
   cbDescriptionMax: number /* i16 */,
   pcbDescription: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i16 */ {
-  return libODBC32.SQLDataSourcesA(util.toPointer(henv), fDirection, util.toPointer(szDSN), cbDSNMax, util.toPointer(pcbDSN), util.toPointer(szDescription), cbDescriptionMax, util.toPointer(pcbDescription));
+  return libODBC32_dll.SQLDataSourcesA(util.toPointer(henv), fDirection, util.toPointer(szDSN), cbDSNMax, util.toPointer(pcbDSN), util.toPointer(szDescription), cbDescriptionMax, util.toPointer(pcbDescription));
 }
 
 export function SQLDriverConnectA(
@@ -10044,7 +10108,7 @@ export function SQLDriverConnectA(
   pcbConnStrOut: Deno.PointerValue | Uint8Array | null /* ptr */,
   fDriverCompletion: number /* u16 */,
 ): number /* i16 */ {
-  return libODBC32.SQLDriverConnectA(util.toPointer(hdbc), hwnd, util.toPointer(szConnStrIn), cbConnStrIn, util.toPointer(szConnStrOut), cbConnStrOutMax, util.toPointer(pcbConnStrOut), fDriverCompletion);
+  return libODBC32_dll.SQLDriverConnectA(util.toPointer(hdbc), hwnd, util.toPointer(szConnStrIn), cbConnStrIn, util.toPointer(szConnStrOut), cbConnStrOutMax, util.toPointer(pcbConnStrOut), fDriverCompletion);
 }
 
 export function SQLBrowseConnectA(
@@ -10055,7 +10119,7 @@ export function SQLBrowseConnectA(
   cbConnStrOutMax: number /* i16 */,
   pcbConnStrOut: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i16 */ {
-  return libODBC32.SQLBrowseConnectA(util.toPointer(hdbc), util.toPointer(szConnStrIn), cbConnStrIn, util.toPointer(szConnStrOut), cbConnStrOutMax, util.toPointer(pcbConnStrOut));
+  return libODBC32_dll.SQLBrowseConnectA(util.toPointer(hdbc), util.toPointer(szConnStrIn), cbConnStrIn, util.toPointer(szConnStrOut), cbConnStrOutMax, util.toPointer(pcbConnStrOut));
 }
 
 export function SQLColumnPrivilegesA(
@@ -10069,7 +10133,7 @@ export function SQLColumnPrivilegesA(
   szColumnName: Deno.PointerValue | Uint8Array | null /* ptr */,
   cbColumnName: number /* i16 */,
 ): number /* i16 */ {
-  return libODBC32.SQLColumnPrivilegesA(util.toPointer(hstmt), util.toPointer(szCatalogName), cbCatalogName, util.toPointer(szSchemaName), cbSchemaName, util.toPointer(szTableName), cbTableName, util.toPointer(szColumnName), cbColumnName);
+  return libODBC32_dll.SQLColumnPrivilegesA(util.toPointer(hstmt), util.toPointer(szCatalogName), cbCatalogName, util.toPointer(szSchemaName), cbSchemaName, util.toPointer(szTableName), cbTableName, util.toPointer(szColumnName), cbColumnName);
 }
 
 export function SQLForeignKeysA(
@@ -10087,7 +10151,7 @@ export function SQLForeignKeysA(
   szFkTableName: Deno.PointerValue | Uint8Array | null /* ptr */,
   cbFkTableName: number /* i16 */,
 ): number /* i16 */ {
-  return libODBC32.SQLForeignKeysA(util.toPointer(hstmt), util.toPointer(szPkCatalogName), cbPkCatalogName, util.toPointer(szPkSchemaName), cbPkSchemaName, util.toPointer(szPkTableName), cbPkTableName, util.toPointer(szFkCatalogName), cbFkCatalogName, util.toPointer(szFkSchemaName), cbFkSchemaName, util.toPointer(szFkTableName), cbFkTableName);
+  return libODBC32_dll.SQLForeignKeysA(util.toPointer(hstmt), util.toPointer(szPkCatalogName), cbPkCatalogName, util.toPointer(szPkSchemaName), cbPkSchemaName, util.toPointer(szPkTableName), cbPkTableName, util.toPointer(szFkCatalogName), cbFkCatalogName, util.toPointer(szFkSchemaName), cbFkSchemaName, util.toPointer(szFkTableName), cbFkTableName);
 }
 
 export function SQLNativeSqlA(
@@ -10098,7 +10162,7 @@ export function SQLNativeSqlA(
   cbSqlStrMax: number /* i32 */,
   pcbSqlStr: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i16 */ {
-  return libODBC32.SQLNativeSqlA(util.toPointer(hdbc), util.toPointer(szSqlStrIn), cbSqlStrIn, util.toPointer(szSqlStr), cbSqlStrMax, util.toPointer(pcbSqlStr));
+  return libODBC32_dll.SQLNativeSqlA(util.toPointer(hdbc), util.toPointer(szSqlStrIn), cbSqlStrIn, util.toPointer(szSqlStr), cbSqlStrMax, util.toPointer(pcbSqlStr));
 }
 
 export function SQLPrimaryKeysA(
@@ -10110,7 +10174,7 @@ export function SQLPrimaryKeysA(
   szTableName: Deno.PointerValue | Uint8Array | null /* ptr */,
   cbTableName: number /* i16 */,
 ): number /* i16 */ {
-  return libODBC32.SQLPrimaryKeysA(util.toPointer(hstmt), util.toPointer(szCatalogName), cbCatalogName, util.toPointer(szSchemaName), cbSchemaName, util.toPointer(szTableName), cbTableName);
+  return libODBC32_dll.SQLPrimaryKeysA(util.toPointer(hstmt), util.toPointer(szCatalogName), cbCatalogName, util.toPointer(szSchemaName), cbSchemaName, util.toPointer(szTableName), cbTableName);
 }
 
 export function SQLProcedureColumnsA(
@@ -10124,7 +10188,7 @@ export function SQLProcedureColumnsA(
   szColumnName: Deno.PointerValue | Uint8Array | null /* ptr */,
   cbColumnName: number /* i16 */,
 ): number /* i16 */ {
-  return libODBC32.SQLProcedureColumnsA(util.toPointer(hstmt), util.toPointer(szCatalogName), cbCatalogName, util.toPointer(szSchemaName), cbSchemaName, util.toPointer(szProcName), cbProcName, util.toPointer(szColumnName), cbColumnName);
+  return libODBC32_dll.SQLProcedureColumnsA(util.toPointer(hstmt), util.toPointer(szCatalogName), cbCatalogName, util.toPointer(szSchemaName), cbSchemaName, util.toPointer(szProcName), cbProcName, util.toPointer(szColumnName), cbColumnName);
 }
 
 export function SQLProceduresA(
@@ -10136,7 +10200,7 @@ export function SQLProceduresA(
   szProcName: Deno.PointerValue | Uint8Array | null /* ptr */,
   cbProcName: number /* i16 */,
 ): number /* i16 */ {
-  return libODBC32.SQLProceduresA(util.toPointer(hstmt), util.toPointer(szCatalogName), cbCatalogName, util.toPointer(szSchemaName), cbSchemaName, util.toPointer(szProcName), cbProcName);
+  return libODBC32_dll.SQLProceduresA(util.toPointer(hstmt), util.toPointer(szCatalogName), cbCatalogName, util.toPointer(szSchemaName), cbSchemaName, util.toPointer(szProcName), cbProcName);
 }
 
 export function SQLTablePrivilegesA(
@@ -10148,7 +10212,7 @@ export function SQLTablePrivilegesA(
   szTableName: Deno.PointerValue | Uint8Array | null /* ptr */,
   cbTableName: number /* i16 */,
 ): number /* i16 */ {
-  return libODBC32.SQLTablePrivilegesA(util.toPointer(hstmt), util.toPointer(szCatalogName), cbCatalogName, util.toPointer(szSchemaName), cbSchemaName, util.toPointer(szTableName), cbTableName);
+  return libODBC32_dll.SQLTablePrivilegesA(util.toPointer(hstmt), util.toPointer(szCatalogName), cbCatalogName, util.toPointer(szSchemaName), cbSchemaName, util.toPointer(szTableName), cbTableName);
 }
 
 export function SQLDriversA(
@@ -10161,6 +10225,6 @@ export function SQLDriversA(
   cbDrvrAttrMax: number /* i16 */,
   pcbDrvrAttr: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i16 */ {
-  return libODBC32.SQLDriversA(util.toPointer(henv), fDirection, util.toPointer(szDriverDesc), cbDriverDescMax, util.toPointer(pcbDriverDesc), util.toPointer(szDriverAttributes), cbDrvrAttrMax, util.toPointer(pcbDrvrAttr));
+  return libODBC32_dll.SQLDriversA(util.toPointer(henv), fDirection, util.toPointer(szDriverDesc), cbDriverDescMax, util.toPointer(pcbDriverDesc), util.toPointer(szDriverAttributes), cbDrvrAttrMax, util.toPointer(pcbDrvrAttr));
 }
 

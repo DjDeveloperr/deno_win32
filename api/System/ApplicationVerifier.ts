@@ -151,7 +151,7 @@ export type HANDLE = Deno.PointerValue;
 // Native Libraries
 
 try {
-  var libverifier = Deno.dlopen("verifier", {
+  var libverifier_dll = Deno.dlopen("verifier.dll", {
     VerifierEnumerateResource: {
       parameters: ["pointer", "u32", "i32", "pointer", "pointer"],
       result: "u32",
@@ -168,6 +168,6 @@ export function VerifierEnumerateResource(
   ResourceCallback: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.ApplicationVerifier.AVRF_RESOURCE_ENUMERATE_CALLBACK */,
   EnumerationContext: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libverifier.VerifierEnumerateResource(util.toPointer(Process), Flags, ResourceType, util.toPointer(ResourceCallback), util.toPointer(EnumerationContext));
+  return libverifier_dll.VerifierEnumerateResource(util.toPointer(Process), Flags, ResourceType, util.toPointer(ResourceCallback), util.toPointer(EnumerationContext));
 }
 

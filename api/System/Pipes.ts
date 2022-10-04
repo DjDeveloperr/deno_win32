@@ -80,7 +80,7 @@ export type PSTR = Deno.PointerValue | Uint8Array | null;
 // Native Libraries
 
 try {
-  var libKERNEL32 = Deno.dlopen("KERNEL32", {
+  var libKERNEL32_dll = Deno.dlopen("KERNEL32.dll", {
     CreatePipe: {
       parameters: ["pointer", "pointer", "pointer", "u32"],
       result: "i32",
@@ -169,7 +169,7 @@ try {
 } catch(e) { /* ignore */ }
 
 try {
-  var libADVAPI32 = Deno.dlopen("ADVAPI32", {
+  var libADVAPI32_dll = Deno.dlopen("ADVAPI32.dll", {
     ImpersonateNamedPipeClient: {
       parameters: ["pointer"],
       result: "i32",
@@ -185,20 +185,20 @@ export function CreatePipe(
   lpPipeAttributes: Deno.PointerValue | Uint8Array | null /* ptr */,
   nSize: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32.CreatePipe(util.toPointer(hReadPipe), util.toPointer(hWritePipe), util.toPointer(lpPipeAttributes), nSize));
+  return util.boolFromFfi(libKERNEL32_dll.CreatePipe(util.toPointer(hReadPipe), util.toPointer(hWritePipe), util.toPointer(lpPipeAttributes), nSize));
 }
 
 export function ConnectNamedPipe(
   hNamedPipe: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
   lpOverlapped: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32.ConnectNamedPipe(util.toPointer(hNamedPipe), util.toPointer(lpOverlapped)));
+  return util.boolFromFfi(libKERNEL32_dll.ConnectNamedPipe(util.toPointer(hNamedPipe), util.toPointer(lpOverlapped)));
 }
 
 export function DisconnectNamedPipe(
   hNamedPipe: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32.DisconnectNamedPipe(util.toPointer(hNamedPipe)));
+  return util.boolFromFfi(libKERNEL32_dll.DisconnectNamedPipe(util.toPointer(hNamedPipe)));
 }
 
 export function SetNamedPipeHandleState(
@@ -207,7 +207,7 @@ export function SetNamedPipeHandleState(
   lpMaxCollectionCount: Deno.PointerValue | Uint8Array | null /* ptr */,
   lpCollectDataTimeout: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32.SetNamedPipeHandleState(util.toPointer(hNamedPipe), util.toPointer(lpMode), util.toPointer(lpMaxCollectionCount), util.toPointer(lpCollectDataTimeout)));
+  return util.boolFromFfi(libKERNEL32_dll.SetNamedPipeHandleState(util.toPointer(hNamedPipe), util.toPointer(lpMode), util.toPointer(lpMaxCollectionCount), util.toPointer(lpCollectDataTimeout)));
 }
 
 export function PeekNamedPipe(
@@ -218,7 +218,7 @@ export function PeekNamedPipe(
   lpTotalBytesAvail: Deno.PointerValue | Uint8Array | null /* ptr */,
   lpBytesLeftThisMessage: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32.PeekNamedPipe(util.toPointer(hNamedPipe), util.toPointer(lpBuffer), nBufferSize, util.toPointer(lpBytesRead), util.toPointer(lpTotalBytesAvail), util.toPointer(lpBytesLeftThisMessage)));
+  return util.boolFromFfi(libKERNEL32_dll.PeekNamedPipe(util.toPointer(hNamedPipe), util.toPointer(lpBuffer), nBufferSize, util.toPointer(lpBytesRead), util.toPointer(lpTotalBytesAvail), util.toPointer(lpBytesLeftThisMessage)));
 }
 
 export function TransactNamedPipe(
@@ -230,7 +230,7 @@ export function TransactNamedPipe(
   lpBytesRead: Deno.PointerValue | Uint8Array | null /* ptr */,
   lpOverlapped: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32.TransactNamedPipe(util.toPointer(hNamedPipe), util.toPointer(lpInBuffer), nInBufferSize, util.toPointer(lpOutBuffer), nOutBufferSize, util.toPointer(lpBytesRead), util.toPointer(lpOverlapped)));
+  return util.boolFromFfi(libKERNEL32_dll.TransactNamedPipe(util.toPointer(hNamedPipe), util.toPointer(lpInBuffer), nInBufferSize, util.toPointer(lpOutBuffer), nOutBufferSize, util.toPointer(lpBytesRead), util.toPointer(lpOverlapped)));
 }
 
 export function CreateNamedPipeW(
@@ -243,14 +243,14 @@ export function CreateNamedPipeW(
   nDefaultTimeOut: number /* u32 */,
   lpSecurityAttributes: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */ {
-  return util.pointerFromFfi(libKERNEL32.CreateNamedPipeW(util.pwstrToFfi(lpName), dwOpenMode, dwPipeMode, nMaxInstances, nOutBufferSize, nInBufferSize, nDefaultTimeOut, util.toPointer(lpSecurityAttributes)));
+  return util.pointerFromFfi(libKERNEL32_dll.CreateNamedPipeW(util.pwstrToFfi(lpName), dwOpenMode, dwPipeMode, nMaxInstances, nOutBufferSize, nInBufferSize, nDefaultTimeOut, util.toPointer(lpSecurityAttributes)));
 }
 
 export function WaitNamedPipeW(
   lpNamedPipeName: string | null /* Windows.Win32.Foundation.PWSTR */,
   nTimeOut: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32.WaitNamedPipeW(util.pwstrToFfi(lpNamedPipeName), nTimeOut));
+  return util.boolFromFfi(libKERNEL32_dll.WaitNamedPipeW(util.pwstrToFfi(lpNamedPipeName), nTimeOut));
 }
 
 export function GetNamedPipeClientComputerNameW(
@@ -258,13 +258,13 @@ export function GetNamedPipeClientComputerNameW(
   ClientComputerName: string | null /* Windows.Win32.Foundation.PWSTR */,
   ClientComputerNameLength: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32.GetNamedPipeClientComputerNameW(util.toPointer(Pipe), util.pwstrToFfi(ClientComputerName), ClientComputerNameLength));
+  return util.boolFromFfi(libKERNEL32_dll.GetNamedPipeClientComputerNameW(util.toPointer(Pipe), util.pwstrToFfi(ClientComputerName), ClientComputerNameLength));
 }
 
 export function ImpersonateNamedPipeClient(
   hNamedPipe: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32.ImpersonateNamedPipeClient(util.toPointer(hNamedPipe)));
+  return util.boolFromFfi(libADVAPI32_dll.ImpersonateNamedPipeClient(util.toPointer(hNamedPipe)));
 }
 
 export function GetNamedPipeInfo(
@@ -274,7 +274,7 @@ export function GetNamedPipeInfo(
   lpInBufferSize: Deno.PointerValue | Uint8Array | null /* ptr */,
   lpMaxInstances: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32.GetNamedPipeInfo(util.toPointer(hNamedPipe), util.toPointer(lpFlags), util.toPointer(lpOutBufferSize), util.toPointer(lpInBufferSize), util.toPointer(lpMaxInstances)));
+  return util.boolFromFfi(libKERNEL32_dll.GetNamedPipeInfo(util.toPointer(hNamedPipe), util.toPointer(lpFlags), util.toPointer(lpOutBufferSize), util.toPointer(lpInBufferSize), util.toPointer(lpMaxInstances)));
 }
 
 export function GetNamedPipeHandleStateW(
@@ -286,7 +286,7 @@ export function GetNamedPipeHandleStateW(
   lpUserName: string | null /* Windows.Win32.Foundation.PWSTR */,
   nMaxUserNameSize: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32.GetNamedPipeHandleStateW(util.toPointer(hNamedPipe), util.toPointer(lpState), util.toPointer(lpCurInstances), util.toPointer(lpMaxCollectionCount), util.toPointer(lpCollectDataTimeout), util.pwstrToFfi(lpUserName), nMaxUserNameSize));
+  return util.boolFromFfi(libKERNEL32_dll.GetNamedPipeHandleStateW(util.toPointer(hNamedPipe), util.toPointer(lpState), util.toPointer(lpCurInstances), util.toPointer(lpMaxCollectionCount), util.toPointer(lpCollectDataTimeout), util.pwstrToFfi(lpUserName), nMaxUserNameSize));
 }
 
 export function CallNamedPipeW(
@@ -298,7 +298,7 @@ export function CallNamedPipeW(
   lpBytesRead: Deno.PointerValue | Uint8Array | null /* ptr */,
   nTimeOut: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32.CallNamedPipeW(util.pwstrToFfi(lpNamedPipeName), util.toPointer(lpInBuffer), nInBufferSize, util.toPointer(lpOutBuffer), nOutBufferSize, util.toPointer(lpBytesRead), nTimeOut));
+  return util.boolFromFfi(libKERNEL32_dll.CallNamedPipeW(util.pwstrToFfi(lpNamedPipeName), util.toPointer(lpInBuffer), nInBufferSize, util.toPointer(lpOutBuffer), nOutBufferSize, util.toPointer(lpBytesRead), nTimeOut));
 }
 
 export function CreateNamedPipeA(
@@ -311,7 +311,7 @@ export function CreateNamedPipeA(
   nDefaultTimeOut: number /* u32 */,
   lpSecurityAttributes: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */ {
-  return util.pointerFromFfi(libKERNEL32.CreateNamedPipeA(util.pstrToFfi(lpName), dwOpenMode, dwPipeMode, nMaxInstances, nOutBufferSize, nInBufferSize, nDefaultTimeOut, util.toPointer(lpSecurityAttributes)));
+  return util.pointerFromFfi(libKERNEL32_dll.CreateNamedPipeA(util.pstrToFfi(lpName), dwOpenMode, dwPipeMode, nMaxInstances, nOutBufferSize, nInBufferSize, nDefaultTimeOut, util.toPointer(lpSecurityAttributes)));
 }
 
 export function GetNamedPipeHandleStateA(
@@ -323,7 +323,7 @@ export function GetNamedPipeHandleStateA(
   lpUserName: string | null /* Windows.Win32.Foundation.PSTR */,
   nMaxUserNameSize: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32.GetNamedPipeHandleStateA(util.toPointer(hNamedPipe), util.toPointer(lpState), util.toPointer(lpCurInstances), util.toPointer(lpMaxCollectionCount), util.toPointer(lpCollectDataTimeout), util.pstrToFfi(lpUserName), nMaxUserNameSize));
+  return util.boolFromFfi(libKERNEL32_dll.GetNamedPipeHandleStateA(util.toPointer(hNamedPipe), util.toPointer(lpState), util.toPointer(lpCurInstances), util.toPointer(lpMaxCollectionCount), util.toPointer(lpCollectDataTimeout), util.pstrToFfi(lpUserName), nMaxUserNameSize));
 }
 
 export function CallNamedPipeA(
@@ -335,14 +335,14 @@ export function CallNamedPipeA(
   lpBytesRead: Deno.PointerValue | Uint8Array | null /* ptr */,
   nTimeOut: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32.CallNamedPipeA(util.pstrToFfi(lpNamedPipeName), util.toPointer(lpInBuffer), nInBufferSize, util.toPointer(lpOutBuffer), nOutBufferSize, util.toPointer(lpBytesRead), nTimeOut));
+  return util.boolFromFfi(libKERNEL32_dll.CallNamedPipeA(util.pstrToFfi(lpNamedPipeName), util.toPointer(lpInBuffer), nInBufferSize, util.toPointer(lpOutBuffer), nOutBufferSize, util.toPointer(lpBytesRead), nTimeOut));
 }
 
 export function WaitNamedPipeA(
   lpNamedPipeName: string | null /* Windows.Win32.Foundation.PSTR */,
   nTimeOut: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32.WaitNamedPipeA(util.pstrToFfi(lpNamedPipeName), nTimeOut));
+  return util.boolFromFfi(libKERNEL32_dll.WaitNamedPipeA(util.pstrToFfi(lpNamedPipeName), nTimeOut));
 }
 
 export function GetNamedPipeClientComputerNameA(
@@ -350,34 +350,34 @@ export function GetNamedPipeClientComputerNameA(
   ClientComputerName: string | null /* Windows.Win32.Foundation.PSTR */,
   ClientComputerNameLength: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32.GetNamedPipeClientComputerNameA(util.toPointer(Pipe), util.pstrToFfi(ClientComputerName), ClientComputerNameLength));
+  return util.boolFromFfi(libKERNEL32_dll.GetNamedPipeClientComputerNameA(util.toPointer(Pipe), util.pstrToFfi(ClientComputerName), ClientComputerNameLength));
 }
 
 export function GetNamedPipeClientProcessId(
   Pipe: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
   ClientProcessId: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32.GetNamedPipeClientProcessId(util.toPointer(Pipe), util.toPointer(ClientProcessId)));
+  return util.boolFromFfi(libKERNEL32_dll.GetNamedPipeClientProcessId(util.toPointer(Pipe), util.toPointer(ClientProcessId)));
 }
 
 export function GetNamedPipeClientSessionId(
   Pipe: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
   ClientSessionId: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32.GetNamedPipeClientSessionId(util.toPointer(Pipe), util.toPointer(ClientSessionId)));
+  return util.boolFromFfi(libKERNEL32_dll.GetNamedPipeClientSessionId(util.toPointer(Pipe), util.toPointer(ClientSessionId)));
 }
 
 export function GetNamedPipeServerProcessId(
   Pipe: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
   ServerProcessId: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32.GetNamedPipeServerProcessId(util.toPointer(Pipe), util.toPointer(ServerProcessId)));
+  return util.boolFromFfi(libKERNEL32_dll.GetNamedPipeServerProcessId(util.toPointer(Pipe), util.toPointer(ServerProcessId)));
 }
 
 export function GetNamedPipeServerSessionId(
   Pipe: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
   ServerSessionId: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32.GetNamedPipeServerSessionId(util.toPointer(Pipe), util.toPointer(ServerSessionId)));
+  return util.boolFromFfi(libKERNEL32_dll.GetNamedPipeServerSessionId(util.toPointer(Pipe), util.toPointer(ServerSessionId)));
 }
 

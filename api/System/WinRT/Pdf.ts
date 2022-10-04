@@ -105,7 +105,7 @@ export type HRESULT = number;
 // Native Libraries
 
 try {
-  var libWindows_Data_Pdf = Deno.dlopen("Windows.Data.Pdf", {
+  var libWindows_Data_Pdf_dll = Deno.dlopen("Windows.Data.Pdf.dll", {
     PdfCreateRenderer: {
       parameters: ["pointer", "pointer"],
       result: "pointer",
@@ -119,6 +119,6 @@ export function PdfCreateRenderer(
   pDevice: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Graphics.Dxgi.IDXGIDevice */,
   ppRenderer: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libWindows_Data_Pdf.PdfCreateRenderer(util.toPointer(pDevice), util.toPointer(ppRenderer)));
+  return util.pointerFromFfi(libWindows_Data_Pdf_dll.PdfCreateRenderer(util.toPointer(pDevice), util.toPointer(ppRenderer)));
 }
 

@@ -66,6 +66,9 @@ export type DOT11_ADHOC_CIPHER_ALGORITHM = number;
 export type DOT11_ADHOC_AUTH_ALGORITHM = number;
 export type DOT11_ADHOC_NETWORK_CONNECTION_STATUS = number;
 export type DOT11_ADHOC_CONNECT_FAIL_REASON = number;
+export type DOT11EXT_IHV_CONNECTION_PHASE = number;
+export type DOT11_MSONEX_RESULT = number;
+export type DOT11EXT_IHV_INDICATION_TYPE = number;
 
 // Constants
 export const L2_REASON_CODE_DOT11_AC_BASE = 131072;
@@ -822,6 +825,14 @@ export const WFD_API_VERSION_1_0 = 1;
 export const WFD_API_VERSION = 1;
 export const WLAN_UI_API_VERSION = 1;
 export const WLAN_UI_API_INITIAL_VERSION = 1;
+export const DOT11EXT_PSK_MAX_LENGTH = 64;
+export const WDIAG_IHV_WLAN_ID_FLAG_SECURITY_ENABLED = 1;
+export const IHV_VERSION_FUNCTION_NAME = "Dot11ExtIhvGetVersionInfo";
+export const IHV_INIT_FUNCTION_NAME = "Dot11ExtIhvInitService";
+export const IHV_INIT_VS_FUNCTION_NAME = "Dot11ExtIhvInitVirtualStation";
+export const MS_MAX_PROFILE_NAME_LENGTH = 256;
+export const MS_PROFILE_GROUP_POLICY = 1;
+export const MS_PROFILE_USER = 2;
 export const WLAN_SET_EAPHOST_DATA_ALL_USERS = 1;
 export const WLAN_CONNECTION_NOTIFICATION_ADHOC_NETWORK_FORMED = 1;
 export const WLAN_CONNECTION_NOTIFICATION_CONSOLE_USER_PROFILE = 4;
@@ -1240,23 +1251,34 @@ export const DOT11_ADHOC_NETWORK_CONNECTION_STATUS_FORMED = 14;
 export const DOT11_ADHOC_CONNECT_FAIL_DOMAIN_MISMATCH = 0;
 export const DOT11_ADHOC_CONNECT_FAIL_PASSPHRASE_MISMATCH = 1;
 export const DOT11_ADHOC_CONNECT_FAIL_OTHER = 2;
+export const connection_phase_any = 0;
+export const connection_phase_initial_connection = 1;
+export const connection_phase_post_l3_connection = 2;
+export const DOT11_MSONEX_SUCCESS = 0;
+export const DOT11_MSONEX_FAILURE = 1;
+export const DOT11_MSONEX_IN_PROGRESS = 2;
+export const IndicationTypeNicSpecificNotification = 0;
+export const IndicationTypePmkidCandidateList = 1;
+export const IndicationTypeTkipMicFailure = 2;
+export const IndicationTypePhyStateChange = 3;
+export const IndicationTypeLinkQuality = 4;
 
 // Structs
 
 /**
- * Windows.Win32.UI.Shell.PropertiesSystem.PROPERTYKEY (size: 16)
+ * Windows.Win32.Devices.Properties.DEVPROPKEY (size: 16)
  */
-export interface PROPERTYKEY {
+export interface DEVPROPKEY {
   /** System.Guid */
   fmtid: Uint8Array | Deno.PointerValue | null;
   /** u32 */
   pid: number;
 }
 
-export const sizeofPROPERTYKEY = 16;
+export const sizeofDEVPROPKEY = 16;
 
-export function allocPROPERTYKEY(data?: Partial<PROPERTYKEY>): Uint8Array {
-  const buf = new Uint8Array(sizeofPROPERTYKEY);
+export function allocDEVPROPKEY(data?: Partial<DEVPROPKEY>): Uint8Array {
+  const buf = new Uint8Array(sizeofDEVPROPKEY);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
   if (data?.fmtid !== undefined) view.setBigUint64(0, data.fmtid === null ? 0n : BigInt(util.toPointer(data.fmtid)), true);
@@ -3023,9 +3045,9 @@ export function allocDOT11_WME_AC_PARAMETERS(data?: Partial<DOT11_WME_AC_PARAMET
 }
 
 /**
- * Windows.Win32.NetworkManagement.WiFi._DOT11_WME_AC_PARAMTERS_LIST (size: 16)
+ * Windows.Win32.NetworkManagement.WiFi.DOT11_WME_AC_PARAMETERS_LIST (size: 16)
  */
-export interface _DOT11_WME_AC_PARAMTERS_LIST {
+export interface DOT11_WME_AC_PARAMETERS_LIST {
   /** u32 */
   uNumOfEntries: number;
   /** u32 */
@@ -3034,10 +3056,10 @@ export interface _DOT11_WME_AC_PARAMTERS_LIST {
   dot11WMEACParameters: Deno.PointerValue | null;
 }
 
-export const sizeof_DOT11_WME_AC_PARAMTERS_LIST = 16;
+export const sizeofDOT11_WME_AC_PARAMETERS_LIST = 16;
 
-export function alloc_DOT11_WME_AC_PARAMTERS_LIST(data?: Partial<_DOT11_WME_AC_PARAMTERS_LIST>): Uint8Array {
-  const buf = new Uint8Array(sizeof_DOT11_WME_AC_PARAMTERS_LIST);
+export function allocDOT11_WME_AC_PARAMETERS_LIST(data?: Partial<DOT11_WME_AC_PARAMETERS_LIST>): Uint8Array {
+  const buf = new Uint8Array(sizeofDOT11_WME_AC_PARAMETERS_LIST);
   const view = new DataView(buf.buffer);
   // 0x00: u32
   if (data?.uNumOfEntries !== undefined) view.setUint32(0, Number(data.uNumOfEntries), true);
@@ -10750,12 +10772,755 @@ export function allocONEX_USER_INFO(data?: Partial<ONEX_USER_INFO>): Uint8Array 
   return buf;
 }
 
+/**
+ * Windows.Win32.NetworkManagement.WiFi.DOT11_ADAPTER (size: 24)
+ */
+export interface DOT11_ADAPTER {
+  /** System.Guid */
+  gAdapterId: Uint8Array | Deno.PointerValue | null;
+  /** Windows.Win32.Foundation.PWSTR */
+  pszDescription: string | null;
+  /** Windows.Win32.NetworkManagement.WiFi.DOT11_CURRENT_OPERATION_MODE */
+  Dot11CurrentOpMode: Uint8Array | Deno.PointerValue | null;
+}
+
+export const sizeofDOT11_ADAPTER = 24;
+
+export function allocDOT11_ADAPTER(data?: Partial<DOT11_ADAPTER>): Uint8Array {
+  const buf = new Uint8Array(sizeofDOT11_ADAPTER);
+  const view = new DataView(buf.buffer);
+  // 0x00: pointer
+  if (data?.gAdapterId !== undefined) view.setBigUint64(0, data.gAdapterId === null ? 0n : BigInt(util.toPointer(data.gAdapterId)), true);
+  // 0x08: buffer
+  if (data?.pszDescription !== undefined) {
+    (buf as any)._f8 = util.pwstrToFfi(data.pszDescription);
+    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f8)), true);
+  }
+  // 0x10: pointer
+  if (data?.Dot11CurrentOpMode !== undefined) view.setBigUint64(16, data.Dot11CurrentOpMode === null ? 0n : BigInt(util.toPointer(data.Dot11CurrentOpMode)), true);
+  return buf;
+}
+
+/**
+ * Windows.Win32.NetworkManagement.WiFi.DOT11_BSS_LIST (size: 16)
+ */
+export interface DOT11_BSS_LIST {
+  /** u32 */
+  uNumOfBytes: number;
+  /** ptr */
+  pucBuffer: Deno.PointerValue | Uint8Array | null;
+}
+
+export const sizeofDOT11_BSS_LIST = 16;
+
+export function allocDOT11_BSS_LIST(data?: Partial<DOT11_BSS_LIST>): Uint8Array {
+  const buf = new Uint8Array(sizeofDOT11_BSS_LIST);
+  const view = new DataView(buf.buffer);
+  // 0x00: u32
+  if (data?.uNumOfBytes !== undefined) view.setUint32(0, Number(data.uNumOfBytes), true);
+  // 0x04: pad4
+  // 0x08: pointer
+  if (data?.pucBuffer !== undefined) view.setBigUint64(8, data.pucBuffer === null ? 0n : BigInt(util.toPointer(data.pucBuffer)), true);
+  return buf;
+}
+
+/**
+ * Windows.Win32.NetworkManagement.WiFi.DOT11_PORT_STATE (size: 24)
+ */
+export interface DOT11_PORT_STATE {
+  /** array */
+  PeerMacAddress: Deno.PointerValue | null;
+  /** u32 */
+  uSessionId: number;
+  /** Windows.Win32.Foundation.BOOL */
+  bPortControlled: boolean;
+  /** Windows.Win32.Foundation.BOOL */
+  bPortAuthorized: boolean;
+}
+
+export const sizeofDOT11_PORT_STATE = 24;
+
+export function allocDOT11_PORT_STATE(data?: Partial<DOT11_PORT_STATE>): Uint8Array {
+  const buf = new Uint8Array(sizeofDOT11_PORT_STATE);
+  const view = new DataView(buf.buffer);
+  // 0x00: pointer
+  if (data?.PeerMacAddress !== undefined) view.setBigUint64(0, data.PeerMacAddress === null ? 0n : BigInt(util.toPointer(data.PeerMacAddress)), true);
+  // 0x08: u32
+  if (data?.uSessionId !== undefined) view.setUint32(8, Number(data.uSessionId), true);
+  // 0x0c: i32
+  if (data?.bPortControlled !== undefined) view.setInt32(12, Number(data.bPortControlled), true);
+  // 0x10: i32
+  if (data?.bPortAuthorized !== undefined) view.setInt32(16, Number(data.bPortAuthorized), true);
+  // 0x14: pad4
+  return buf;
+}
+
+/**
+ * Windows.Win32.NetworkManagement.WiFi.DOT11_SECURITY_PACKET_HEADER (size: 24)
+ */
+export interface DOT11_SECURITY_PACKET_HEADER {
+  /** array */
+  PeerMac: Deno.PointerValue | null;
+  /** u16 */
+  usEtherType: number;
+  /** array */
+  Data: Deno.PointerValue | null;
+}
+
+export const sizeofDOT11_SECURITY_PACKET_HEADER = 24;
+
+export function allocDOT11_SECURITY_PACKET_HEADER(data?: Partial<DOT11_SECURITY_PACKET_HEADER>): Uint8Array {
+  const buf = new Uint8Array(sizeofDOT11_SECURITY_PACKET_HEADER);
+  const view = new DataView(buf.buffer);
+  // 0x00: pointer
+  if (data?.PeerMac !== undefined) view.setBigUint64(0, data.PeerMac === null ? 0n : BigInt(util.toPointer(data.PeerMac)), true);
+  // 0x08: u16
+  if (data?.usEtherType !== undefined) view.setUint16(8, Number(data.usEtherType), true);
+  // 0x0a: pad6
+  // 0x10: pointer
+  if (data?.Data !== undefined) view.setBigUint64(16, data.Data === null ? 0n : BigInt(util.toPointer(data.Data)), true);
+  return buf;
+}
+
+/**
+ * Windows.Win32.NetworkManagement.WiFi.DOT11_MSSECURITY_SETTINGS (size: 40)
+ */
+export interface DOT11_MSSECURITY_SETTINGS {
+  /** Windows.Win32.NetworkManagement.WiFi.DOT11_AUTH_ALGORITHM */
+  dot11AuthAlgorithm: DOT11_AUTH_ALGORITHM;
+  /** Windows.Win32.NetworkManagement.WiFi.DOT11_CIPHER_ALGORITHM */
+  dot11CipherAlgorithm: DOT11_CIPHER_ALGORITHM;
+  /** Windows.Win32.Foundation.BOOL */
+  fOneXEnabled: boolean;
+  /** Windows.Win32.Security.ExtensibleAuthenticationProtocol.EAP_METHOD_TYPE */
+  eapMethodType: Uint8Array | Deno.PointerValue | null;
+  /** u32 */
+  dwEapConnectionDataLen: number;
+  /** ptr */
+  pEapConnectionData: Deno.PointerValue | Uint8Array | null;
+}
+
+export const sizeofDOT11_MSSECURITY_SETTINGS = 40;
+
+export function allocDOT11_MSSECURITY_SETTINGS(data?: Partial<DOT11_MSSECURITY_SETTINGS>): Uint8Array {
+  const buf = new Uint8Array(sizeofDOT11_MSSECURITY_SETTINGS);
+  const view = new DataView(buf.buffer);
+  // 0x00: i32
+  if (data?.dot11AuthAlgorithm !== undefined) view.setInt32(0, Number(data.dot11AuthAlgorithm), true);
+  // 0x04: i32
+  if (data?.dot11CipherAlgorithm !== undefined) view.setInt32(4, Number(data.dot11CipherAlgorithm), true);
+  // 0x08: i32
+  if (data?.fOneXEnabled !== undefined) view.setInt32(8, Number(data.fOneXEnabled), true);
+  // 0x0c: pad4
+  // 0x10: pointer
+  if (data?.eapMethodType !== undefined) view.setBigUint64(16, data.eapMethodType === null ? 0n : BigInt(util.toPointer(data.eapMethodType)), true);
+  // 0x18: u32
+  if (data?.dwEapConnectionDataLen !== undefined) view.setUint32(24, Number(data.dwEapConnectionDataLen), true);
+  // 0x1c: pad4
+  // 0x20: pointer
+  if (data?.pEapConnectionData !== undefined) view.setBigUint64(32, data.pEapConnectionData === null ? 0n : BigInt(util.toPointer(data.pEapConnectionData)), true);
+  return buf;
+}
+
+/**
+ * Windows.Win32.NetworkManagement.WiFi.DOT11EXT_IHV_SSID_LIST (size: 16)
+ */
+export interface DOT11EXT_IHV_SSID_LIST {
+  /** u32 */
+  ulCount: number;
+  /** array */
+  SSIDs: Deno.PointerValue | null;
+}
+
+export const sizeofDOT11EXT_IHV_SSID_LIST = 16;
+
+export function allocDOT11EXT_IHV_SSID_LIST(data?: Partial<DOT11EXT_IHV_SSID_LIST>): Uint8Array {
+  const buf = new Uint8Array(sizeofDOT11EXT_IHV_SSID_LIST);
+  const view = new DataView(buf.buffer);
+  // 0x00: u32
+  if (data?.ulCount !== undefined) view.setUint32(0, Number(data.ulCount), true);
+  // 0x04: pad4
+  // 0x08: pointer
+  if (data?.SSIDs !== undefined) view.setBigUint64(8, data.SSIDs === null ? 0n : BigInt(util.toPointer(data.SSIDs)), true);
+  return buf;
+}
+
+/**
+ * Windows.Win32.NetworkManagement.WiFi.DOT11EXT_IHV_PROFILE_PARAMS (size: 24)
+ */
+export interface DOT11EXT_IHV_PROFILE_PARAMS {
+  /** ptr */
+  pSsidList: Deno.PointerValue | Uint8Array | null;
+  /** Windows.Win32.NetworkManagement.WiFi.DOT11_BSS_TYPE */
+  BssType: DOT11_BSS_TYPE;
+  /** ptr */
+  pMSSecuritySettings: Deno.PointerValue | Uint8Array | null;
+}
+
+export const sizeofDOT11EXT_IHV_PROFILE_PARAMS = 24;
+
+export function allocDOT11EXT_IHV_PROFILE_PARAMS(data?: Partial<DOT11EXT_IHV_PROFILE_PARAMS>): Uint8Array {
+  const buf = new Uint8Array(sizeofDOT11EXT_IHV_PROFILE_PARAMS);
+  const view = new DataView(buf.buffer);
+  // 0x00: pointer
+  if (data?.pSsidList !== undefined) view.setBigUint64(0, data.pSsidList === null ? 0n : BigInt(util.toPointer(data.pSsidList)), true);
+  // 0x08: i32
+  if (data?.BssType !== undefined) view.setInt32(8, Number(data.BssType), true);
+  // 0x0c: pad4
+  // 0x10: pointer
+  if (data?.pMSSecuritySettings !== undefined) view.setBigUint64(16, data.pMSSecuritySettings === null ? 0n : BigInt(util.toPointer(data.pMSSecuritySettings)), true);
+  return buf;
+}
+
+/**
+ * Windows.Win32.NetworkManagement.WiFi.DOT11EXT_IHV_PARAMS (size: 32)
+ */
+export interface DOT11EXT_IHV_PARAMS {
+  /** Windows.Win32.NetworkManagement.WiFi.DOT11EXT_IHV_PROFILE_PARAMS */
+  dot11ExtIhvProfileParams: Uint8Array | Deno.PointerValue | null;
+  /** array */
+  wstrProfileName: Deno.PointerValue | null;
+  /** u32 */
+  dwProfileTypeFlags: number;
+  /** System.Guid */
+  interfaceGuid: Uint8Array | Deno.PointerValue | null;
+}
+
+export const sizeofDOT11EXT_IHV_PARAMS = 32;
+
+export function allocDOT11EXT_IHV_PARAMS(data?: Partial<DOT11EXT_IHV_PARAMS>): Uint8Array {
+  const buf = new Uint8Array(sizeofDOT11EXT_IHV_PARAMS);
+  const view = new DataView(buf.buffer);
+  // 0x00: pointer
+  if (data?.dot11ExtIhvProfileParams !== undefined) view.setBigUint64(0, data.dot11ExtIhvProfileParams === null ? 0n : BigInt(util.toPointer(data.dot11ExtIhvProfileParams)), true);
+  // 0x08: pointer
+  if (data?.wstrProfileName !== undefined) view.setBigUint64(8, data.wstrProfileName === null ? 0n : BigInt(util.toPointer(data.wstrProfileName)), true);
+  // 0x10: u32
+  if (data?.dwProfileTypeFlags !== undefined) view.setUint32(16, Number(data.dwProfileTypeFlags), true);
+  // 0x14: pad4
+  // 0x18: pointer
+  if (data?.interfaceGuid !== undefined) view.setBigUint64(24, data.interfaceGuid === null ? 0n : BigInt(util.toPointer(data.interfaceGuid)), true);
+  return buf;
+}
+
+/**
+ * Windows.Win32.NetworkManagement.WiFi.DOT11_IHV_VERSION_INFO (size: 8)
+ */
+export interface DOT11_IHV_VERSION_INFO {
+  /** u32 */
+  dwVerMin: number;
+  /** u32 */
+  dwVerMax: number;
+}
+
+export const sizeofDOT11_IHV_VERSION_INFO = 8;
+
+export function allocDOT11_IHV_VERSION_INFO(data?: Partial<DOT11_IHV_VERSION_INFO>): Uint8Array {
+  const buf = new Uint8Array(sizeofDOT11_IHV_VERSION_INFO);
+  const view = new DataView(buf.buffer);
+  // 0x00: u32
+  if (data?.dwVerMin !== undefined) view.setUint32(0, Number(data.dwVerMin), true);
+  // 0x04: u32
+  if (data?.dwVerMax !== undefined) view.setUint32(4, Number(data.dwVerMax), true);
+  return buf;
+}
+
+/**
+ * Windows.Win32.NetworkManagement.WiFi.DOT11EXT_IHV_UI_REQUEST (size: 40)
+ */
+export interface DOT11EXT_IHV_UI_REQUEST {
+  /** u32 */
+  dwSessionId: number;
+  /** System.Guid */
+  guidUIRequest: Uint8Array | Deno.PointerValue | null;
+  /** System.Guid */
+  UIPageClsid: Uint8Array | Deno.PointerValue | null;
+  /** u32 */
+  dwByteCount: number;
+  /** ptr */
+  pvUIRequest: Deno.PointerValue | Uint8Array | null;
+}
+
+export const sizeofDOT11EXT_IHV_UI_REQUEST = 40;
+
+export function allocDOT11EXT_IHV_UI_REQUEST(data?: Partial<DOT11EXT_IHV_UI_REQUEST>): Uint8Array {
+  const buf = new Uint8Array(sizeofDOT11EXT_IHV_UI_REQUEST);
+  const view = new DataView(buf.buffer);
+  // 0x00: u32
+  if (data?.dwSessionId !== undefined) view.setUint32(0, Number(data.dwSessionId), true);
+  // 0x04: pad4
+  // 0x08: pointer
+  if (data?.guidUIRequest !== undefined) view.setBigUint64(8, data.guidUIRequest === null ? 0n : BigInt(util.toPointer(data.guidUIRequest)), true);
+  // 0x10: pointer
+  if (data?.UIPageClsid !== undefined) view.setBigUint64(16, data.UIPageClsid === null ? 0n : BigInt(util.toPointer(data.UIPageClsid)), true);
+  // 0x18: u32
+  if (data?.dwByteCount !== undefined) view.setUint32(24, Number(data.dwByteCount), true);
+  // 0x1c: pad4
+  // 0x20: pointer
+  if (data?.pvUIRequest !== undefined) view.setBigUint64(32, data.pvUIRequest === null ? 0n : BigInt(util.toPointer(data.pvUIRequest)), true);
+  return buf;
+}
+
+/**
+ * Windows.Win32.NetworkManagement.WiFi.DOT11_EAP_RESULT (size: 16)
+ */
+export interface DOT11_EAP_RESULT {
+  /** u32 */
+  dwFailureReasonCode: number;
+  /** ptr */
+  pAttribArray: Deno.PointerValue | Uint8Array | null;
+}
+
+export const sizeofDOT11_EAP_RESULT = 16;
+
+export function allocDOT11_EAP_RESULT(data?: Partial<DOT11_EAP_RESULT>): Uint8Array {
+  const buf = new Uint8Array(sizeofDOT11_EAP_RESULT);
+  const view = new DataView(buf.buffer);
+  // 0x00: u32
+  if (data?.dwFailureReasonCode !== undefined) view.setUint32(0, Number(data.dwFailureReasonCode), true);
+  // 0x04: pad4
+  // 0x08: pointer
+  if (data?.pAttribArray !== undefined) view.setBigUint64(8, data.pAttribArray === null ? 0n : BigInt(util.toPointer(data.pAttribArray)), true);
+  return buf;
+}
+
+/**
+ * Windows.Win32.NetworkManagement.WiFi.DOT11_MSONEX_RESULT_PARAMS (size: 48)
+ */
+export interface DOT11_MSONEX_RESULT_PARAMS {
+  /** Windows.Win32.NetworkManagement.WiFi.ONEX_AUTH_STATUS */
+  Dot11OnexAuthStatus: ONEX_AUTH_STATUS;
+  /** Windows.Win32.NetworkManagement.WiFi.ONEX_REASON_CODE */
+  Dot11OneXReasonCode: ONEX_REASON_CODE;
+  /** ptr */
+  pbMPPESendKey: Deno.PointerValue | Uint8Array | null;
+  /** u32 */
+  dwMPPESendKeyLen: number;
+  /** ptr */
+  pbMPPERecvKey: Deno.PointerValue | Uint8Array | null;
+  /** u32 */
+  dwMPPERecvKeyLen: number;
+  /** ptr */
+  pDot11EapResult: Deno.PointerValue | Uint8Array | null;
+}
+
+export const sizeofDOT11_MSONEX_RESULT_PARAMS = 48;
+
+export function allocDOT11_MSONEX_RESULT_PARAMS(data?: Partial<DOT11_MSONEX_RESULT_PARAMS>): Uint8Array {
+  const buf = new Uint8Array(sizeofDOT11_MSONEX_RESULT_PARAMS);
+  const view = new DataView(buf.buffer);
+  // 0x00: i32
+  if (data?.Dot11OnexAuthStatus !== undefined) view.setInt32(0, Number(data.Dot11OnexAuthStatus), true);
+  // 0x04: i32
+  if (data?.Dot11OneXReasonCode !== undefined) view.setInt32(4, Number(data.Dot11OneXReasonCode), true);
+  // 0x08: pointer
+  if (data?.pbMPPESendKey !== undefined) view.setBigUint64(8, data.pbMPPESendKey === null ? 0n : BigInt(util.toPointer(data.pbMPPESendKey)), true);
+  // 0x10: u32
+  if (data?.dwMPPESendKeyLen !== undefined) view.setUint32(16, Number(data.dwMPPESendKeyLen), true);
+  // 0x14: pad4
+  // 0x18: pointer
+  if (data?.pbMPPERecvKey !== undefined) view.setBigUint64(24, data.pbMPPERecvKey === null ? 0n : BigInt(util.toPointer(data.pbMPPERecvKey)), true);
+  // 0x20: u32
+  if (data?.dwMPPERecvKeyLen !== undefined) view.setUint32(32, Number(data.dwMPPERecvKeyLen), true);
+  // 0x24: pad4
+  // 0x28: pointer
+  if (data?.pDot11EapResult !== undefined) view.setBigUint64(40, data.pDot11EapResult === null ? 0n : BigInt(util.toPointer(data.pDot11EapResult)), true);
+  return buf;
+}
+
+/**
+ * Windows.Win32.NetworkManagement.WiFi.DOT11EXT_IHV_CONNECTIVITY_PROFILE (size: 8)
+ */
+export interface DOT11EXT_IHV_CONNECTIVITY_PROFILE {
+  /** Windows.Win32.Foundation.PWSTR */
+  pszXmlFragmentIhvConnectivity: string | null;
+}
+
+export const sizeofDOT11EXT_IHV_CONNECTIVITY_PROFILE = 8;
+
+export function allocDOT11EXT_IHV_CONNECTIVITY_PROFILE(data?: Partial<DOT11EXT_IHV_CONNECTIVITY_PROFILE>): Uint8Array {
+  const buf = new Uint8Array(sizeofDOT11EXT_IHV_CONNECTIVITY_PROFILE);
+  const view = new DataView(buf.buffer);
+  // 0x00: buffer
+  if (data?.pszXmlFragmentIhvConnectivity !== undefined) {
+    (buf as any)._f0 = util.pwstrToFfi(data.pszXmlFragmentIhvConnectivity);
+    view.setBigUint64(0, (buf as any)._f0 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f0)), true);
+  }
+  return buf;
+}
+
+/**
+ * Windows.Win32.NetworkManagement.WiFi.DOT11EXT_IHV_SECURITY_PROFILE (size: 16)
+ */
+export interface DOT11EXT_IHV_SECURITY_PROFILE {
+  /** Windows.Win32.Foundation.PWSTR */
+  pszXmlFragmentIhvSecurity: string | null;
+  /** Windows.Win32.Foundation.BOOL */
+  bUseMSOnex: boolean;
+}
+
+export const sizeofDOT11EXT_IHV_SECURITY_PROFILE = 16;
+
+export function allocDOT11EXT_IHV_SECURITY_PROFILE(data?: Partial<DOT11EXT_IHV_SECURITY_PROFILE>): Uint8Array {
+  const buf = new Uint8Array(sizeofDOT11EXT_IHV_SECURITY_PROFILE);
+  const view = new DataView(buf.buffer);
+  // 0x00: buffer
+  if (data?.pszXmlFragmentIhvSecurity !== undefined) {
+    (buf as any)._f0 = util.pwstrToFfi(data.pszXmlFragmentIhvSecurity);
+    view.setBigUint64(0, (buf as any)._f0 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f0)), true);
+  }
+  // 0x08: i32
+  if (data?.bUseMSOnex !== undefined) view.setInt32(8, Number(data.bUseMSOnex), true);
+  // 0x0c: pad4
+  return buf;
+}
+
+/**
+ * Windows.Win32.NetworkManagement.WiFi.DOT11EXT_IHV_DISCOVERY_PROFILE (size: 16)
+ */
+export interface DOT11EXT_IHV_DISCOVERY_PROFILE {
+  /** Windows.Win32.NetworkManagement.WiFi.DOT11EXT_IHV_CONNECTIVITY_PROFILE */
+  IhvConnectivityProfile: Uint8Array | Deno.PointerValue | null;
+  /** Windows.Win32.NetworkManagement.WiFi.DOT11EXT_IHV_SECURITY_PROFILE */
+  IhvSecurityProfile: Uint8Array | Deno.PointerValue | null;
+}
+
+export const sizeofDOT11EXT_IHV_DISCOVERY_PROFILE = 16;
+
+export function allocDOT11EXT_IHV_DISCOVERY_PROFILE(data?: Partial<DOT11EXT_IHV_DISCOVERY_PROFILE>): Uint8Array {
+  const buf = new Uint8Array(sizeofDOT11EXT_IHV_DISCOVERY_PROFILE);
+  const view = new DataView(buf.buffer);
+  // 0x00: pointer
+  if (data?.IhvConnectivityProfile !== undefined) view.setBigUint64(0, data.IhvConnectivityProfile === null ? 0n : BigInt(util.toPointer(data.IhvConnectivityProfile)), true);
+  // 0x08: pointer
+  if (data?.IhvSecurityProfile !== undefined) view.setBigUint64(8, data.IhvSecurityProfile === null ? 0n : BigInt(util.toPointer(data.IhvSecurityProfile)), true);
+  return buf;
+}
+
+/**
+ * Windows.Win32.NetworkManagement.WiFi.DOT11EXT_IHV_DISCOVERY_PROFILE_LIST (size: 16)
+ */
+export interface DOT11EXT_IHV_DISCOVERY_PROFILE_LIST {
+  /** u32 */
+  dwCount: number;
+  /** ptr */
+  pIhvDiscoveryProfiles: Deno.PointerValue | Uint8Array | null;
+}
+
+export const sizeofDOT11EXT_IHV_DISCOVERY_PROFILE_LIST = 16;
+
+export function allocDOT11EXT_IHV_DISCOVERY_PROFILE_LIST(data?: Partial<DOT11EXT_IHV_DISCOVERY_PROFILE_LIST>): Uint8Array {
+  const buf = new Uint8Array(sizeofDOT11EXT_IHV_DISCOVERY_PROFILE_LIST);
+  const view = new DataView(buf.buffer);
+  // 0x00: u32
+  if (data?.dwCount !== undefined) view.setUint32(0, Number(data.dwCount), true);
+  // 0x04: pad4
+  // 0x08: pointer
+  if (data?.pIhvDiscoveryProfiles !== undefined) view.setBigUint64(8, data.pIhvDiscoveryProfiles === null ? 0n : BigInt(util.toPointer(data.pIhvDiscoveryProfiles)), true);
+  return buf;
+}
+
+/**
+ * Windows.Win32.NetworkManagement.WiFi.DOT11EXT_VIRTUAL_STATION_AP_PROPERTY (size: 32)
+ */
+export interface DOT11EXT_VIRTUAL_STATION_AP_PROPERTY {
+  /** Windows.Win32.NetworkManagement.WiFi.DOT11_SSID */
+  dot11SSID: Uint8Array | Deno.PointerValue | null;
+  /** Windows.Win32.NetworkManagement.WiFi.DOT11_AUTH_ALGORITHM */
+  dot11AuthAlgo: DOT11_AUTH_ALGORITHM;
+  /** Windows.Win32.NetworkManagement.WiFi.DOT11_CIPHER_ALGORITHM */
+  dot11CipherAlgo: DOT11_CIPHER_ALGORITHM;
+  /** Windows.Win32.Foundation.BOOL */
+  bIsPassPhrase: boolean;
+  /** u32 */
+  dwKeyLength: number;
+  /** array */
+  ucKeyData: Deno.PointerValue | null;
+}
+
+export const sizeofDOT11EXT_VIRTUAL_STATION_AP_PROPERTY = 32;
+
+export function allocDOT11EXT_VIRTUAL_STATION_AP_PROPERTY(data?: Partial<DOT11EXT_VIRTUAL_STATION_AP_PROPERTY>): Uint8Array {
+  const buf = new Uint8Array(sizeofDOT11EXT_VIRTUAL_STATION_AP_PROPERTY);
+  const view = new DataView(buf.buffer);
+  // 0x00: pointer
+  if (data?.dot11SSID !== undefined) view.setBigUint64(0, data.dot11SSID === null ? 0n : BigInt(util.toPointer(data.dot11SSID)), true);
+  // 0x08: i32
+  if (data?.dot11AuthAlgo !== undefined) view.setInt32(8, Number(data.dot11AuthAlgo), true);
+  // 0x0c: i32
+  if (data?.dot11CipherAlgo !== undefined) view.setInt32(12, Number(data.dot11CipherAlgo), true);
+  // 0x10: i32
+  if (data?.bIsPassPhrase !== undefined) view.setInt32(16, Number(data.bIsPassPhrase), true);
+  // 0x14: u32
+  if (data?.dwKeyLength !== undefined) view.setUint32(20, Number(data.dwKeyLength), true);
+  // 0x18: pointer
+  if (data?.ucKeyData !== undefined) view.setBigUint64(24, data.ucKeyData === null ? 0n : BigInt(util.toPointer(data.ucKeyData)), true);
+  return buf;
+}
+
+/**
+ * Windows.Win32.NetworkManagement.WiFi.WDIAG_IHV_WLAN_ID (size: 32)
+ */
+export interface WDIAG_IHV_WLAN_ID {
+  /** array */
+  strProfileName: Deno.PointerValue | null;
+  /** Windows.Win32.NetworkManagement.WiFi.DOT11_SSID */
+  Ssid: Uint8Array | Deno.PointerValue | null;
+  /** Windows.Win32.NetworkManagement.WiFi.DOT11_BSS_TYPE */
+  BssType: DOT11_BSS_TYPE;
+  /** u32 */
+  dwFlags: number;
+  /** u32 */
+  dwReasonCode: number;
+}
+
+export const sizeofWDIAG_IHV_WLAN_ID = 32;
+
+export function allocWDIAG_IHV_WLAN_ID(data?: Partial<WDIAG_IHV_WLAN_ID>): Uint8Array {
+  const buf = new Uint8Array(sizeofWDIAG_IHV_WLAN_ID);
+  const view = new DataView(buf.buffer);
+  // 0x00: pointer
+  if (data?.strProfileName !== undefined) view.setBigUint64(0, data.strProfileName === null ? 0n : BigInt(util.toPointer(data.strProfileName)), true);
+  // 0x08: pointer
+  if (data?.Ssid !== undefined) view.setBigUint64(8, data.Ssid === null ? 0n : BigInt(util.toPointer(data.Ssid)), true);
+  // 0x10: i32
+  if (data?.BssType !== undefined) view.setInt32(16, Number(data.BssType), true);
+  // 0x14: u32
+  if (data?.dwFlags !== undefined) view.setUint32(20, Number(data.dwFlags), true);
+  // 0x18: u32
+  if (data?.dwReasonCode !== undefined) view.setUint32(24, Number(data.dwReasonCode), true);
+  // 0x1c: pad4
+  return buf;
+}
+
+/**
+ * Windows.Win32.NetworkManagement.WiFi.DOT11EXT_APIS (size: 176)
+ */
+export interface DOT11EXT_APIS {
+  /** Windows.Win32.NetworkManagement.WiFi.DOT11EXT_ALLOCATE_BUFFER */
+  Dot11ExtAllocateBuffer: Uint8Array | Deno.PointerValue | null;
+  /** Windows.Win32.NetworkManagement.WiFi.DOT11EXT_FREE_BUFFER */
+  Dot11ExtFreeBuffer: Uint8Array | Deno.PointerValue | null;
+  /** Windows.Win32.NetworkManagement.WiFi.DOT11EXT_SET_PROFILE_CUSTOM_USER_DATA */
+  Dot11ExtSetProfileCustomUserData: Uint8Array | Deno.PointerValue | null;
+  /** Windows.Win32.NetworkManagement.WiFi.DOT11EXT_GET_PROFILE_CUSTOM_USER_DATA */
+  Dot11ExtGetProfileCustomUserData: Uint8Array | Deno.PointerValue | null;
+  /** Windows.Win32.NetworkManagement.WiFi.DOT11EXT_SET_CURRENT_PROFILE */
+  Dot11ExtSetCurrentProfile: Uint8Array | Deno.PointerValue | null;
+  /** Windows.Win32.NetworkManagement.WiFi.DOT11EXT_SEND_UI_REQUEST */
+  Dot11ExtSendUIRequest: Uint8Array | Deno.PointerValue | null;
+  /** Windows.Win32.NetworkManagement.WiFi.DOT11EXT_PRE_ASSOCIATE_COMPLETION */
+  Dot11ExtPreAssociateCompletion: Uint8Array | Deno.PointerValue | null;
+  /** Windows.Win32.NetworkManagement.WiFi.DOT11EXT_POST_ASSOCIATE_COMPLETION */
+  Dot11ExtPostAssociateCompletion: Uint8Array | Deno.PointerValue | null;
+  /** Windows.Win32.NetworkManagement.WiFi.DOT11EXT_SEND_NOTIFICATION */
+  Dot11ExtSendNotification: Uint8Array | Deno.PointerValue | null;
+  /** Windows.Win32.NetworkManagement.WiFi.DOT11EXT_SEND_PACKET */
+  Dot11ExtSendPacket: Uint8Array | Deno.PointerValue | null;
+  /** Windows.Win32.NetworkManagement.WiFi.DOT11EXT_SET_ETHERTYPE_HANDLING */
+  Dot11ExtSetEtherTypeHandling: Uint8Array | Deno.PointerValue | null;
+  /** Windows.Win32.NetworkManagement.WiFi.DOT11EXT_SET_AUTH_ALGORITHM */
+  Dot11ExtSetAuthAlgorithm: Uint8Array | Deno.PointerValue | null;
+  /** Windows.Win32.NetworkManagement.WiFi.DOT11EXT_SET_UNICAST_CIPHER_ALGORITHM */
+  Dot11ExtSetUnicastCipherAlgorithm: Uint8Array | Deno.PointerValue | null;
+  /** Windows.Win32.NetworkManagement.WiFi.DOT11EXT_SET_MULTICAST_CIPHER_ALGORITHM */
+  Dot11ExtSetMulticastCipherAlgorithm: Uint8Array | Deno.PointerValue | null;
+  /** Windows.Win32.NetworkManagement.WiFi.DOT11EXT_SET_DEFAULT_KEY */
+  Dot11ExtSetDefaultKey: Uint8Array | Deno.PointerValue | null;
+  /** Windows.Win32.NetworkManagement.WiFi.DOT11EXT_SET_KEY_MAPPING_KEY */
+  Dot11ExtSetKeyMappingKey: Uint8Array | Deno.PointerValue | null;
+  /** Windows.Win32.NetworkManagement.WiFi.DOT11EXT_SET_DEFAULT_KEY_ID */
+  Dot11ExtSetDefaultKeyId: Uint8Array | Deno.PointerValue | null;
+  /** Windows.Win32.NetworkManagement.WiFi.DOT11EXT_NIC_SPECIFIC_EXTENSION */
+  Dot11ExtNicSpecificExtension: Uint8Array | Deno.PointerValue | null;
+  /** Windows.Win32.NetworkManagement.WiFi.DOT11EXT_SET_EXCLUDE_UNENCRYPTED */
+  Dot11ExtSetExcludeUnencrypted: Uint8Array | Deno.PointerValue | null;
+  /** Windows.Win32.NetworkManagement.WiFi.DOT11EXT_ONEX_START */
+  Dot11ExtStartOneX: Uint8Array | Deno.PointerValue | null;
+  /** Windows.Win32.NetworkManagement.WiFi.DOT11EXT_ONEX_STOP */
+  Dot11ExtStopOneX: Uint8Array | Deno.PointerValue | null;
+  /** Windows.Win32.NetworkManagement.WiFi.DOT11EXT_PROCESS_ONEX_PACKET */
+  Dot11ExtProcessSecurityPacket: Uint8Array | Deno.PointerValue | null;
+}
+
+export const sizeofDOT11EXT_APIS = 176;
+
+export function allocDOT11EXT_APIS(data?: Partial<DOT11EXT_APIS>): Uint8Array {
+  const buf = new Uint8Array(sizeofDOT11EXT_APIS);
+  const view = new DataView(buf.buffer);
+  // 0x00: pointer
+  if (data?.Dot11ExtAllocateBuffer !== undefined) view.setBigUint64(0, data.Dot11ExtAllocateBuffer === null ? 0n : BigInt(util.toPointer(data.Dot11ExtAllocateBuffer)), true);
+  // 0x08: pointer
+  if (data?.Dot11ExtFreeBuffer !== undefined) view.setBigUint64(8, data.Dot11ExtFreeBuffer === null ? 0n : BigInt(util.toPointer(data.Dot11ExtFreeBuffer)), true);
+  // 0x10: pointer
+  if (data?.Dot11ExtSetProfileCustomUserData !== undefined) view.setBigUint64(16, data.Dot11ExtSetProfileCustomUserData === null ? 0n : BigInt(util.toPointer(data.Dot11ExtSetProfileCustomUserData)), true);
+  // 0x18: pointer
+  if (data?.Dot11ExtGetProfileCustomUserData !== undefined) view.setBigUint64(24, data.Dot11ExtGetProfileCustomUserData === null ? 0n : BigInt(util.toPointer(data.Dot11ExtGetProfileCustomUserData)), true);
+  // 0x20: pointer
+  if (data?.Dot11ExtSetCurrentProfile !== undefined) view.setBigUint64(32, data.Dot11ExtSetCurrentProfile === null ? 0n : BigInt(util.toPointer(data.Dot11ExtSetCurrentProfile)), true);
+  // 0x28: pointer
+  if (data?.Dot11ExtSendUIRequest !== undefined) view.setBigUint64(40, data.Dot11ExtSendUIRequest === null ? 0n : BigInt(util.toPointer(data.Dot11ExtSendUIRequest)), true);
+  // 0x30: pointer
+  if (data?.Dot11ExtPreAssociateCompletion !== undefined) view.setBigUint64(48, data.Dot11ExtPreAssociateCompletion === null ? 0n : BigInt(util.toPointer(data.Dot11ExtPreAssociateCompletion)), true);
+  // 0x38: pointer
+  if (data?.Dot11ExtPostAssociateCompletion !== undefined) view.setBigUint64(56, data.Dot11ExtPostAssociateCompletion === null ? 0n : BigInt(util.toPointer(data.Dot11ExtPostAssociateCompletion)), true);
+  // 0x40: pointer
+  if (data?.Dot11ExtSendNotification !== undefined) view.setBigUint64(64, data.Dot11ExtSendNotification === null ? 0n : BigInt(util.toPointer(data.Dot11ExtSendNotification)), true);
+  // 0x48: pointer
+  if (data?.Dot11ExtSendPacket !== undefined) view.setBigUint64(72, data.Dot11ExtSendPacket === null ? 0n : BigInt(util.toPointer(data.Dot11ExtSendPacket)), true);
+  // 0x50: pointer
+  if (data?.Dot11ExtSetEtherTypeHandling !== undefined) view.setBigUint64(80, data.Dot11ExtSetEtherTypeHandling === null ? 0n : BigInt(util.toPointer(data.Dot11ExtSetEtherTypeHandling)), true);
+  // 0x58: pointer
+  if (data?.Dot11ExtSetAuthAlgorithm !== undefined) view.setBigUint64(88, data.Dot11ExtSetAuthAlgorithm === null ? 0n : BigInt(util.toPointer(data.Dot11ExtSetAuthAlgorithm)), true);
+  // 0x60: pointer
+  if (data?.Dot11ExtSetUnicastCipherAlgorithm !== undefined) view.setBigUint64(96, data.Dot11ExtSetUnicastCipherAlgorithm === null ? 0n : BigInt(util.toPointer(data.Dot11ExtSetUnicastCipherAlgorithm)), true);
+  // 0x68: pointer
+  if (data?.Dot11ExtSetMulticastCipherAlgorithm !== undefined) view.setBigUint64(104, data.Dot11ExtSetMulticastCipherAlgorithm === null ? 0n : BigInt(util.toPointer(data.Dot11ExtSetMulticastCipherAlgorithm)), true);
+  // 0x70: pointer
+  if (data?.Dot11ExtSetDefaultKey !== undefined) view.setBigUint64(112, data.Dot11ExtSetDefaultKey === null ? 0n : BigInt(util.toPointer(data.Dot11ExtSetDefaultKey)), true);
+  // 0x78: pointer
+  if (data?.Dot11ExtSetKeyMappingKey !== undefined) view.setBigUint64(120, data.Dot11ExtSetKeyMappingKey === null ? 0n : BigInt(util.toPointer(data.Dot11ExtSetKeyMappingKey)), true);
+  // 0x80: pointer
+  if (data?.Dot11ExtSetDefaultKeyId !== undefined) view.setBigUint64(128, data.Dot11ExtSetDefaultKeyId === null ? 0n : BigInt(util.toPointer(data.Dot11ExtSetDefaultKeyId)), true);
+  // 0x88: pointer
+  if (data?.Dot11ExtNicSpecificExtension !== undefined) view.setBigUint64(136, data.Dot11ExtNicSpecificExtension === null ? 0n : BigInt(util.toPointer(data.Dot11ExtNicSpecificExtension)), true);
+  // 0x90: pointer
+  if (data?.Dot11ExtSetExcludeUnencrypted !== undefined) view.setBigUint64(144, data.Dot11ExtSetExcludeUnencrypted === null ? 0n : BigInt(util.toPointer(data.Dot11ExtSetExcludeUnencrypted)), true);
+  // 0x98: pointer
+  if (data?.Dot11ExtStartOneX !== undefined) view.setBigUint64(152, data.Dot11ExtStartOneX === null ? 0n : BigInt(util.toPointer(data.Dot11ExtStartOneX)), true);
+  // 0xa0: pointer
+  if (data?.Dot11ExtStopOneX !== undefined) view.setBigUint64(160, data.Dot11ExtStopOneX === null ? 0n : BigInt(util.toPointer(data.Dot11ExtStopOneX)), true);
+  // 0xa8: pointer
+  if (data?.Dot11ExtProcessSecurityPacket !== undefined) view.setBigUint64(168, data.Dot11ExtProcessSecurityPacket === null ? 0n : BigInt(util.toPointer(data.Dot11ExtProcessSecurityPacket)), true);
+  return buf;
+}
+
+/**
+ * Windows.Win32.NetworkManagement.WiFi.DOT11EXT_IHV_HANDLERS (size: 152)
+ */
+export interface DOT11EXT_IHV_HANDLERS {
+  /** Windows.Win32.NetworkManagement.WiFi.DOT11EXTIHV_DEINIT_SERVICE */
+  Dot11ExtIhvDeinitService: Uint8Array | Deno.PointerValue | null;
+  /** Windows.Win32.NetworkManagement.WiFi.DOT11EXTIHV_INIT_ADAPTER */
+  Dot11ExtIhvInitAdapter: Uint8Array | Deno.PointerValue | null;
+  /** Windows.Win32.NetworkManagement.WiFi.DOT11EXTIHV_DEINIT_ADAPTER */
+  Dot11ExtIhvDeinitAdapter: Uint8Array | Deno.PointerValue | null;
+  /** Windows.Win32.NetworkManagement.WiFi.DOT11EXTIHV_PERFORM_PRE_ASSOCIATE */
+  Dot11ExtIhvPerformPreAssociate: Uint8Array | Deno.PointerValue | null;
+  /** Windows.Win32.NetworkManagement.WiFi.DOT11EXTIHV_ADAPTER_RESET */
+  Dot11ExtIhvAdapterReset: Uint8Array | Deno.PointerValue | null;
+  /** Windows.Win32.NetworkManagement.WiFi.DOT11EXTIHV_PERFORM_POST_ASSOCIATE */
+  Dot11ExtIhvPerformPostAssociate: Uint8Array | Deno.PointerValue | null;
+  /** Windows.Win32.NetworkManagement.WiFi.DOT11EXTIHV_STOP_POST_ASSOCIATE */
+  Dot11ExtIhvStopPostAssociate: Uint8Array | Deno.PointerValue | null;
+  /** Windows.Win32.NetworkManagement.WiFi.DOT11EXTIHV_VALIDATE_PROFILE */
+  Dot11ExtIhvValidateProfile: Uint8Array | Deno.PointerValue | null;
+  /** Windows.Win32.NetworkManagement.WiFi.DOT11EXTIHV_PERFORM_CAPABILITY_MATCH */
+  Dot11ExtIhvPerformCapabilityMatch: Uint8Array | Deno.PointerValue | null;
+  /** Windows.Win32.NetworkManagement.WiFi.DOT11EXTIHV_CREATE_DISCOVERY_PROFILES */
+  Dot11ExtIhvCreateDiscoveryProfiles: Uint8Array | Deno.PointerValue | null;
+  /** Windows.Win32.NetworkManagement.WiFi.DOT11EXTIHV_PROCESS_SESSION_CHANGE */
+  Dot11ExtIhvProcessSessionChange: Uint8Array | Deno.PointerValue | null;
+  /** Windows.Win32.NetworkManagement.WiFi.DOT11EXTIHV_RECEIVE_INDICATION */
+  Dot11ExtIhvReceiveIndication: Uint8Array | Deno.PointerValue | null;
+  /** Windows.Win32.NetworkManagement.WiFi.DOT11EXTIHV_RECEIVE_PACKET */
+  Dot11ExtIhvReceivePacket: Uint8Array | Deno.PointerValue | null;
+  /** Windows.Win32.NetworkManagement.WiFi.DOT11EXTIHV_SEND_PACKET_COMPLETION */
+  Dot11ExtIhvSendPacketCompletion: Uint8Array | Deno.PointerValue | null;
+  /** Windows.Win32.NetworkManagement.WiFi.DOT11EXTIHV_IS_UI_REQUEST_PENDING */
+  Dot11ExtIhvIsUIRequestPending: Uint8Array | Deno.PointerValue | null;
+  /** Windows.Win32.NetworkManagement.WiFi.DOT11EXTIHV_PROCESS_UI_RESPONSE */
+  Dot11ExtIhvProcessUIResponse: Uint8Array | Deno.PointerValue | null;
+  /** Windows.Win32.NetworkManagement.WiFi.DOT11EXTIHV_QUERY_UI_REQUEST */
+  Dot11ExtIhvQueryUIRequest: Uint8Array | Deno.PointerValue | null;
+  /** Windows.Win32.NetworkManagement.WiFi.DOT11EXTIHV_ONEX_INDICATE_RESULT */
+  Dot11ExtIhvOnexIndicateResult: Uint8Array | Deno.PointerValue | null;
+  /** Windows.Win32.NetworkManagement.WiFi.DOT11EXTIHV_CONTROL */
+  Dot11ExtIhvControl: Uint8Array | Deno.PointerValue | null;
+}
+
+export const sizeofDOT11EXT_IHV_HANDLERS = 152;
+
+export function allocDOT11EXT_IHV_HANDLERS(data?: Partial<DOT11EXT_IHV_HANDLERS>): Uint8Array {
+  const buf = new Uint8Array(sizeofDOT11EXT_IHV_HANDLERS);
+  const view = new DataView(buf.buffer);
+  // 0x00: pointer
+  if (data?.Dot11ExtIhvDeinitService !== undefined) view.setBigUint64(0, data.Dot11ExtIhvDeinitService === null ? 0n : BigInt(util.toPointer(data.Dot11ExtIhvDeinitService)), true);
+  // 0x08: pointer
+  if (data?.Dot11ExtIhvInitAdapter !== undefined) view.setBigUint64(8, data.Dot11ExtIhvInitAdapter === null ? 0n : BigInt(util.toPointer(data.Dot11ExtIhvInitAdapter)), true);
+  // 0x10: pointer
+  if (data?.Dot11ExtIhvDeinitAdapter !== undefined) view.setBigUint64(16, data.Dot11ExtIhvDeinitAdapter === null ? 0n : BigInt(util.toPointer(data.Dot11ExtIhvDeinitAdapter)), true);
+  // 0x18: pointer
+  if (data?.Dot11ExtIhvPerformPreAssociate !== undefined) view.setBigUint64(24, data.Dot11ExtIhvPerformPreAssociate === null ? 0n : BigInt(util.toPointer(data.Dot11ExtIhvPerformPreAssociate)), true);
+  // 0x20: pointer
+  if (data?.Dot11ExtIhvAdapterReset !== undefined) view.setBigUint64(32, data.Dot11ExtIhvAdapterReset === null ? 0n : BigInt(util.toPointer(data.Dot11ExtIhvAdapterReset)), true);
+  // 0x28: pointer
+  if (data?.Dot11ExtIhvPerformPostAssociate !== undefined) view.setBigUint64(40, data.Dot11ExtIhvPerformPostAssociate === null ? 0n : BigInt(util.toPointer(data.Dot11ExtIhvPerformPostAssociate)), true);
+  // 0x30: pointer
+  if (data?.Dot11ExtIhvStopPostAssociate !== undefined) view.setBigUint64(48, data.Dot11ExtIhvStopPostAssociate === null ? 0n : BigInt(util.toPointer(data.Dot11ExtIhvStopPostAssociate)), true);
+  // 0x38: pointer
+  if (data?.Dot11ExtIhvValidateProfile !== undefined) view.setBigUint64(56, data.Dot11ExtIhvValidateProfile === null ? 0n : BigInt(util.toPointer(data.Dot11ExtIhvValidateProfile)), true);
+  // 0x40: pointer
+  if (data?.Dot11ExtIhvPerformCapabilityMatch !== undefined) view.setBigUint64(64, data.Dot11ExtIhvPerformCapabilityMatch === null ? 0n : BigInt(util.toPointer(data.Dot11ExtIhvPerformCapabilityMatch)), true);
+  // 0x48: pointer
+  if (data?.Dot11ExtIhvCreateDiscoveryProfiles !== undefined) view.setBigUint64(72, data.Dot11ExtIhvCreateDiscoveryProfiles === null ? 0n : BigInt(util.toPointer(data.Dot11ExtIhvCreateDiscoveryProfiles)), true);
+  // 0x50: pointer
+  if (data?.Dot11ExtIhvProcessSessionChange !== undefined) view.setBigUint64(80, data.Dot11ExtIhvProcessSessionChange === null ? 0n : BigInt(util.toPointer(data.Dot11ExtIhvProcessSessionChange)), true);
+  // 0x58: pointer
+  if (data?.Dot11ExtIhvReceiveIndication !== undefined) view.setBigUint64(88, data.Dot11ExtIhvReceiveIndication === null ? 0n : BigInt(util.toPointer(data.Dot11ExtIhvReceiveIndication)), true);
+  // 0x60: pointer
+  if (data?.Dot11ExtIhvReceivePacket !== undefined) view.setBigUint64(96, data.Dot11ExtIhvReceivePacket === null ? 0n : BigInt(util.toPointer(data.Dot11ExtIhvReceivePacket)), true);
+  // 0x68: pointer
+  if (data?.Dot11ExtIhvSendPacketCompletion !== undefined) view.setBigUint64(104, data.Dot11ExtIhvSendPacketCompletion === null ? 0n : BigInt(util.toPointer(data.Dot11ExtIhvSendPacketCompletion)), true);
+  // 0x70: pointer
+  if (data?.Dot11ExtIhvIsUIRequestPending !== undefined) view.setBigUint64(112, data.Dot11ExtIhvIsUIRequestPending === null ? 0n : BigInt(util.toPointer(data.Dot11ExtIhvIsUIRequestPending)), true);
+  // 0x78: pointer
+  if (data?.Dot11ExtIhvProcessUIResponse !== undefined) view.setBigUint64(120, data.Dot11ExtIhvProcessUIResponse === null ? 0n : BigInt(util.toPointer(data.Dot11ExtIhvProcessUIResponse)), true);
+  // 0x80: pointer
+  if (data?.Dot11ExtIhvQueryUIRequest !== undefined) view.setBigUint64(128, data.Dot11ExtIhvQueryUIRequest === null ? 0n : BigInt(util.toPointer(data.Dot11ExtIhvQueryUIRequest)), true);
+  // 0x88: pointer
+  if (data?.Dot11ExtIhvOnexIndicateResult !== undefined) view.setBigUint64(136, data.Dot11ExtIhvOnexIndicateResult === null ? 0n : BigInt(util.toPointer(data.Dot11ExtIhvOnexIndicateResult)), true);
+  // 0x90: pointer
+  if (data?.Dot11ExtIhvControl !== undefined) view.setBigUint64(144, data.Dot11ExtIhvControl === null ? 0n : BigInt(util.toPointer(data.Dot11ExtIhvControl)), true);
+  return buf;
+}
+
+/**
+ * Windows.Win32.NetworkManagement.WiFi.DOT11EXT_VIRTUAL_STATION_APIS (size: 32)
+ */
+export interface DOT11EXT_VIRTUAL_STATION_APIS {
+  /** Windows.Win32.NetworkManagement.WiFi.DOT11EXT_REQUEST_VIRTUAL_STATION */
+  Dot11ExtRequestVirtualStation: Uint8Array | Deno.PointerValue | null;
+  /** Windows.Win32.NetworkManagement.WiFi.DOT11EXT_RELEASE_VIRTUAL_STATION */
+  Dot11ExtReleaseVirtualStation: Uint8Array | Deno.PointerValue | null;
+  /** Windows.Win32.NetworkManagement.WiFi.DOT11EXT_QUERY_VIRTUAL_STATION_PROPERTIES */
+  Dot11ExtQueryVirtualStationProperties: Uint8Array | Deno.PointerValue | null;
+  /** Windows.Win32.NetworkManagement.WiFi.DOT11EXT_SET_VIRTUAL_STATION_AP_PROPERTIES */
+  Dot11ExtSetVirtualStationAPProperties: Uint8Array | Deno.PointerValue | null;
+}
+
+export const sizeofDOT11EXT_VIRTUAL_STATION_APIS = 32;
+
+export function allocDOT11EXT_VIRTUAL_STATION_APIS(data?: Partial<DOT11EXT_VIRTUAL_STATION_APIS>): Uint8Array {
+  const buf = new Uint8Array(sizeofDOT11EXT_VIRTUAL_STATION_APIS);
+  const view = new DataView(buf.buffer);
+  // 0x00: pointer
+  if (data?.Dot11ExtRequestVirtualStation !== undefined) view.setBigUint64(0, data.Dot11ExtRequestVirtualStation === null ? 0n : BigInt(util.toPointer(data.Dot11ExtRequestVirtualStation)), true);
+  // 0x08: pointer
+  if (data?.Dot11ExtReleaseVirtualStation !== undefined) view.setBigUint64(8, data.Dot11ExtReleaseVirtualStation === null ? 0n : BigInt(util.toPointer(data.Dot11ExtReleaseVirtualStation)), true);
+  // 0x10: pointer
+  if (data?.Dot11ExtQueryVirtualStationProperties !== undefined) view.setBigUint64(16, data.Dot11ExtQueryVirtualStationProperties === null ? 0n : BigInt(util.toPointer(data.Dot11ExtQueryVirtualStationProperties)), true);
+  // 0x18: pointer
+  if (data?.Dot11ExtSetVirtualStationAPProperties !== undefined) view.setBigUint64(24, data.Dot11ExtSetVirtualStationAPProperties === null ? 0n : BigInt(util.toPointer(data.Dot11ExtSetVirtualStationAPProperties)), true);
+  return buf;
+}
+
 export type HWND = Deno.PointerValue;
 
 // Native Libraries
 
 try {
-  var libwlanapi = Deno.dlopen("wlanapi", {
+  var libwlanapi_dll = Deno.dlopen("wlanapi.dll", {
     WlanOpenHandle: {
       parameters: ["u32", "pointer", "pointer", "pointer"],
       result: "u32",
@@ -11000,7 +11765,7 @@ try {
 } catch(e) { /* ignore */ }
 
 try {
-  var libwlanui = Deno.dlopen("wlanui", {
+  var libwlanui_dll = Deno.dlopen("wlanui.dll", {
     WlanUIEditProfile: {
       parameters: ["u32", "buffer", "pointer", "pointer", "i32", "pointer", "pointer"],
       result: "u32",
@@ -11016,14 +11781,14 @@ export function WlanOpenHandle(
   pdwNegotiatedVersion: Deno.PointerValue | Uint8Array | null /* ptr */,
   phClientHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libwlanapi.WlanOpenHandle(dwClientVersion, util.toPointer(pReserved), util.toPointer(pdwNegotiatedVersion), util.toPointer(phClientHandle));
+  return libwlanapi_dll.WlanOpenHandle(dwClientVersion, util.toPointer(pReserved), util.toPointer(pdwNegotiatedVersion), util.toPointer(phClientHandle));
 }
 
 export function WlanCloseHandle(
   hClientHandle: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
   pReserved: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libwlanapi.WlanCloseHandle(util.toPointer(hClientHandle), util.toPointer(pReserved));
+  return libwlanapi_dll.WlanCloseHandle(util.toPointer(hClientHandle), util.toPointer(pReserved));
 }
 
 export function WlanEnumInterfaces(
@@ -11031,7 +11796,7 @@ export function WlanEnumInterfaces(
   pReserved: Deno.PointerValue | Uint8Array | null /* ptr */,
   ppInterfaceList: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libwlanapi.WlanEnumInterfaces(util.toPointer(hClientHandle), util.toPointer(pReserved), util.toPointer(ppInterfaceList));
+  return libwlanapi_dll.WlanEnumInterfaces(util.toPointer(hClientHandle), util.toPointer(pReserved), util.toPointer(ppInterfaceList));
 }
 
 export function WlanSetAutoConfigParameter(
@@ -11041,7 +11806,7 @@ export function WlanSetAutoConfigParameter(
   pData: Deno.PointerValue | Uint8Array | null /* ptr */,
   pReserved: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libwlanapi.WlanSetAutoConfigParameter(util.toPointer(hClientHandle), OpCode, dwDataSize, util.toPointer(pData), util.toPointer(pReserved));
+  return libwlanapi_dll.WlanSetAutoConfigParameter(util.toPointer(hClientHandle), OpCode, dwDataSize, util.toPointer(pData), util.toPointer(pReserved));
 }
 
 export function WlanQueryAutoConfigParameter(
@@ -11052,7 +11817,7 @@ export function WlanQueryAutoConfigParameter(
   ppData: Deno.PointerValue | Uint8Array | null /* ptr */,
   pWlanOpcodeValueType: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libwlanapi.WlanQueryAutoConfigParameter(util.toPointer(hClientHandle), OpCode, util.toPointer(pReserved), util.toPointer(pdwDataSize), util.toPointer(ppData), util.toPointer(pWlanOpcodeValueType));
+  return libwlanapi_dll.WlanQueryAutoConfigParameter(util.toPointer(hClientHandle), OpCode, util.toPointer(pReserved), util.toPointer(pdwDataSize), util.toPointer(ppData), util.toPointer(pWlanOpcodeValueType));
 }
 
 export function WlanGetInterfaceCapability(
@@ -11061,7 +11826,7 @@ export function WlanGetInterfaceCapability(
   pReserved: Deno.PointerValue | Uint8Array | null /* ptr */,
   ppCapability: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libwlanapi.WlanGetInterfaceCapability(util.toPointer(hClientHandle), util.toPointer(pInterfaceGuid), util.toPointer(pReserved), util.toPointer(ppCapability));
+  return libwlanapi_dll.WlanGetInterfaceCapability(util.toPointer(hClientHandle), util.toPointer(pInterfaceGuid), util.toPointer(pReserved), util.toPointer(ppCapability));
 }
 
 export function WlanSetInterface(
@@ -11072,7 +11837,7 @@ export function WlanSetInterface(
   pData: Deno.PointerValue | Uint8Array | null /* ptr */,
   pReserved: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libwlanapi.WlanSetInterface(util.toPointer(hClientHandle), util.toPointer(pInterfaceGuid), OpCode, dwDataSize, util.toPointer(pData), util.toPointer(pReserved));
+  return libwlanapi_dll.WlanSetInterface(util.toPointer(hClientHandle), util.toPointer(pInterfaceGuid), OpCode, dwDataSize, util.toPointer(pData), util.toPointer(pReserved));
 }
 
 export function WlanQueryInterface(
@@ -11084,7 +11849,7 @@ export function WlanQueryInterface(
   ppData: Deno.PointerValue | Uint8Array | null /* ptr */,
   pWlanOpcodeValueType: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libwlanapi.WlanQueryInterface(util.toPointer(hClientHandle), util.toPointer(pInterfaceGuid), OpCode, util.toPointer(pReserved), util.toPointer(pdwDataSize), util.toPointer(ppData), util.toPointer(pWlanOpcodeValueType));
+  return libwlanapi_dll.WlanQueryInterface(util.toPointer(hClientHandle), util.toPointer(pInterfaceGuid), OpCode, util.toPointer(pReserved), util.toPointer(pdwDataSize), util.toPointer(ppData), util.toPointer(pWlanOpcodeValueType));
 }
 
 export function WlanIhvControl(
@@ -11097,7 +11862,7 @@ export function WlanIhvControl(
   pOutBuffer: Deno.PointerValue | Uint8Array | null /* ptr */,
   pdwBytesReturned: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libwlanapi.WlanIhvControl(util.toPointer(hClientHandle), util.toPointer(pInterfaceGuid), Type, dwInBufferSize, util.toPointer(pInBuffer), dwOutBufferSize, util.toPointer(pOutBuffer), util.toPointer(pdwBytesReturned));
+  return libwlanapi_dll.WlanIhvControl(util.toPointer(hClientHandle), util.toPointer(pInterfaceGuid), Type, dwInBufferSize, util.toPointer(pInBuffer), dwOutBufferSize, util.toPointer(pOutBuffer), util.toPointer(pdwBytesReturned));
 }
 
 export function WlanScan(
@@ -11107,7 +11872,7 @@ export function WlanScan(
   pIeData: Deno.PointerValue | Uint8Array | null /* ptr */,
   pReserved: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libwlanapi.WlanScan(util.toPointer(hClientHandle), util.toPointer(pInterfaceGuid), util.toPointer(pDot11Ssid), util.toPointer(pIeData), util.toPointer(pReserved));
+  return libwlanapi_dll.WlanScan(util.toPointer(hClientHandle), util.toPointer(pInterfaceGuid), util.toPointer(pDot11Ssid), util.toPointer(pIeData), util.toPointer(pReserved));
 }
 
 export function WlanGetAvailableNetworkList(
@@ -11117,7 +11882,7 @@ export function WlanGetAvailableNetworkList(
   pReserved: Deno.PointerValue | Uint8Array | null /* ptr */,
   ppAvailableNetworkList: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libwlanapi.WlanGetAvailableNetworkList(util.toPointer(hClientHandle), util.toPointer(pInterfaceGuid), dwFlags, util.toPointer(pReserved), util.toPointer(ppAvailableNetworkList));
+  return libwlanapi_dll.WlanGetAvailableNetworkList(util.toPointer(hClientHandle), util.toPointer(pInterfaceGuid), dwFlags, util.toPointer(pReserved), util.toPointer(ppAvailableNetworkList));
 }
 
 export function WlanGetAvailableNetworkList2(
@@ -11127,7 +11892,7 @@ export function WlanGetAvailableNetworkList2(
   pReserved: Deno.PointerValue | Uint8Array | null /* ptr */,
   ppAvailableNetworkList: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libwlanapi.WlanGetAvailableNetworkList2(util.toPointer(hClientHandle), util.toPointer(pInterfaceGuid), dwFlags, util.toPointer(pReserved), util.toPointer(ppAvailableNetworkList));
+  return libwlanapi_dll.WlanGetAvailableNetworkList2(util.toPointer(hClientHandle), util.toPointer(pInterfaceGuid), dwFlags, util.toPointer(pReserved), util.toPointer(ppAvailableNetworkList));
 }
 
 export function WlanGetNetworkBssList(
@@ -11139,7 +11904,7 @@ export function WlanGetNetworkBssList(
   pReserved: Deno.PointerValue | Uint8Array | null /* ptr */,
   ppWlanBssList: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libwlanapi.WlanGetNetworkBssList(util.toPointer(hClientHandle), util.toPointer(pInterfaceGuid), util.toPointer(pDot11Ssid), dot11BssType, util.boolToFfi(bSecurityEnabled), util.toPointer(pReserved), util.toPointer(ppWlanBssList));
+  return libwlanapi_dll.WlanGetNetworkBssList(util.toPointer(hClientHandle), util.toPointer(pInterfaceGuid), util.toPointer(pDot11Ssid), dot11BssType, util.boolToFfi(bSecurityEnabled), util.toPointer(pReserved), util.toPointer(ppWlanBssList));
 }
 
 export function WlanConnect(
@@ -11148,7 +11913,7 @@ export function WlanConnect(
   pConnectionParameters: Deno.PointerValue | Uint8Array | null /* ptr */,
   pReserved: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libwlanapi.WlanConnect(util.toPointer(hClientHandle), util.toPointer(pInterfaceGuid), util.toPointer(pConnectionParameters), util.toPointer(pReserved));
+  return libwlanapi_dll.WlanConnect(util.toPointer(hClientHandle), util.toPointer(pInterfaceGuid), util.toPointer(pConnectionParameters), util.toPointer(pReserved));
 }
 
 export function WlanConnect2(
@@ -11157,7 +11922,7 @@ export function WlanConnect2(
   pConnectionParameters: Deno.PointerValue | Uint8Array | null /* ptr */,
   pReserved: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libwlanapi.WlanConnect2(util.toPointer(hClientHandle), util.toPointer(pInterfaceGuid), util.toPointer(pConnectionParameters), util.toPointer(pReserved));
+  return libwlanapi_dll.WlanConnect2(util.toPointer(hClientHandle), util.toPointer(pInterfaceGuid), util.toPointer(pConnectionParameters), util.toPointer(pReserved));
 }
 
 export function WlanDisconnect(
@@ -11165,7 +11930,7 @@ export function WlanDisconnect(
   pInterfaceGuid: Deno.PointerValue | Uint8Array | null /* ptr */,
   pReserved: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libwlanapi.WlanDisconnect(util.toPointer(hClientHandle), util.toPointer(pInterfaceGuid), util.toPointer(pReserved));
+  return libwlanapi_dll.WlanDisconnect(util.toPointer(hClientHandle), util.toPointer(pInterfaceGuid), util.toPointer(pReserved));
 }
 
 export function WlanRegisterNotification(
@@ -11177,7 +11942,7 @@ export function WlanRegisterNotification(
   pReserved: Deno.PointerValue | Uint8Array | null /* ptr */,
   pdwPrevNotifSource: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libwlanapi.WlanRegisterNotification(util.toPointer(hClientHandle), dwNotifSource, util.boolToFfi(bIgnoreDuplicate), util.toPointer(funcCallback), util.toPointer(pCallbackContext), util.toPointer(pReserved), util.toPointer(pdwPrevNotifSource));
+  return libwlanapi_dll.WlanRegisterNotification(util.toPointer(hClientHandle), dwNotifSource, util.boolToFfi(bIgnoreDuplicate), util.toPointer(funcCallback), util.toPointer(pCallbackContext), util.toPointer(pReserved), util.toPointer(pdwPrevNotifSource));
 }
 
 export function WlanGetProfile(
@@ -11189,7 +11954,7 @@ export function WlanGetProfile(
   pdwFlags: Deno.PointerValue | Uint8Array | null /* ptr */,
   pdwGrantedAccess: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libwlanapi.WlanGetProfile(util.toPointer(hClientHandle), util.toPointer(pInterfaceGuid), util.pwstrToFfi(strProfileName), util.toPointer(pReserved), util.toPointer(pstrProfileXml), util.toPointer(pdwFlags), util.toPointer(pdwGrantedAccess));
+  return libwlanapi_dll.WlanGetProfile(util.toPointer(hClientHandle), util.toPointer(pInterfaceGuid), util.pwstrToFfi(strProfileName), util.toPointer(pReserved), util.toPointer(pstrProfileXml), util.toPointer(pdwFlags), util.toPointer(pdwGrantedAccess));
 }
 
 export function WlanSetProfileEapUserData(
@@ -11202,7 +11967,7 @@ export function WlanSetProfileEapUserData(
   pbEapUserData: Deno.PointerValue | Uint8Array | null /* ptr */,
   pReserved: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libwlanapi.WlanSetProfileEapUserData(util.toPointer(hClientHandle), util.toPointer(pInterfaceGuid), util.pwstrToFfi(strProfileName), util.toPointer(eapType), dwFlags, dwEapUserDataSize, util.toPointer(pbEapUserData), util.toPointer(pReserved));
+  return libwlanapi_dll.WlanSetProfileEapUserData(util.toPointer(hClientHandle), util.toPointer(pInterfaceGuid), util.pwstrToFfi(strProfileName), util.toPointer(eapType), dwFlags, dwEapUserDataSize, util.toPointer(pbEapUserData), util.toPointer(pReserved));
 }
 
 export function WlanSetProfileEapXmlUserData(
@@ -11213,7 +11978,7 @@ export function WlanSetProfileEapXmlUserData(
   strEapXmlUserData: string | null /* Windows.Win32.Foundation.PWSTR */,
   pReserved: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libwlanapi.WlanSetProfileEapXmlUserData(util.toPointer(hClientHandle), util.toPointer(pInterfaceGuid), util.pwstrToFfi(strProfileName), dwFlags, util.pwstrToFfi(strEapXmlUserData), util.toPointer(pReserved));
+  return libwlanapi_dll.WlanSetProfileEapXmlUserData(util.toPointer(hClientHandle), util.toPointer(pInterfaceGuid), util.pwstrToFfi(strProfileName), dwFlags, util.pwstrToFfi(strEapXmlUserData), util.toPointer(pReserved));
 }
 
 export function WlanSetProfile(
@@ -11226,7 +11991,7 @@ export function WlanSetProfile(
   pReserved: Deno.PointerValue | Uint8Array | null /* ptr */,
   pdwReasonCode: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libwlanapi.WlanSetProfile(util.toPointer(hClientHandle), util.toPointer(pInterfaceGuid), dwFlags, util.pwstrToFfi(strProfileXml), util.pwstrToFfi(strAllUserProfileSecurity), util.boolToFfi(bOverwrite), util.toPointer(pReserved), util.toPointer(pdwReasonCode));
+  return libwlanapi_dll.WlanSetProfile(util.toPointer(hClientHandle), util.toPointer(pInterfaceGuid), dwFlags, util.pwstrToFfi(strProfileXml), util.pwstrToFfi(strAllUserProfileSecurity), util.boolToFfi(bOverwrite), util.toPointer(pReserved), util.toPointer(pdwReasonCode));
 }
 
 export function WlanDeleteProfile(
@@ -11235,7 +12000,7 @@ export function WlanDeleteProfile(
   strProfileName: string | null /* Windows.Win32.Foundation.PWSTR */,
   pReserved: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libwlanapi.WlanDeleteProfile(util.toPointer(hClientHandle), util.toPointer(pInterfaceGuid), util.pwstrToFfi(strProfileName), util.toPointer(pReserved));
+  return libwlanapi_dll.WlanDeleteProfile(util.toPointer(hClientHandle), util.toPointer(pInterfaceGuid), util.pwstrToFfi(strProfileName), util.toPointer(pReserved));
 }
 
 export function WlanRenameProfile(
@@ -11245,7 +12010,7 @@ export function WlanRenameProfile(
   strNewProfileName: string | null /* Windows.Win32.Foundation.PWSTR */,
   pReserved: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libwlanapi.WlanRenameProfile(util.toPointer(hClientHandle), util.toPointer(pInterfaceGuid), util.pwstrToFfi(strOldProfileName), util.pwstrToFfi(strNewProfileName), util.toPointer(pReserved));
+  return libwlanapi_dll.WlanRenameProfile(util.toPointer(hClientHandle), util.toPointer(pInterfaceGuid), util.pwstrToFfi(strOldProfileName), util.pwstrToFfi(strNewProfileName), util.toPointer(pReserved));
 }
 
 export function WlanGetProfileList(
@@ -11254,7 +12019,7 @@ export function WlanGetProfileList(
   pReserved: Deno.PointerValue | Uint8Array | null /* ptr */,
   ppProfileList: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libwlanapi.WlanGetProfileList(util.toPointer(hClientHandle), util.toPointer(pInterfaceGuid), util.toPointer(pReserved), util.toPointer(ppProfileList));
+  return libwlanapi_dll.WlanGetProfileList(util.toPointer(hClientHandle), util.toPointer(pInterfaceGuid), util.toPointer(pReserved), util.toPointer(ppProfileList));
 }
 
 export function WlanSetProfileList(
@@ -11264,7 +12029,7 @@ export function WlanSetProfileList(
   strProfileNames: Deno.PointerValue | Uint8Array | null /* ptr */,
   pReserved: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libwlanapi.WlanSetProfileList(util.toPointer(hClientHandle), util.toPointer(pInterfaceGuid), dwItems, util.toPointer(strProfileNames), util.toPointer(pReserved));
+  return libwlanapi_dll.WlanSetProfileList(util.toPointer(hClientHandle), util.toPointer(pInterfaceGuid), dwItems, util.toPointer(strProfileNames), util.toPointer(pReserved));
 }
 
 export function WlanSetProfilePosition(
@@ -11274,7 +12039,7 @@ export function WlanSetProfilePosition(
   dwPosition: number /* u32 */,
   pReserved: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libwlanapi.WlanSetProfilePosition(util.toPointer(hClientHandle), util.toPointer(pInterfaceGuid), util.pwstrToFfi(strProfileName), dwPosition, util.toPointer(pReserved));
+  return libwlanapi_dll.WlanSetProfilePosition(util.toPointer(hClientHandle), util.toPointer(pInterfaceGuid), util.pwstrToFfi(strProfileName), dwPosition, util.toPointer(pReserved));
 }
 
 export function WlanSetProfileCustomUserData(
@@ -11285,7 +12050,7 @@ export function WlanSetProfileCustomUserData(
   pData: Deno.PointerValue | Uint8Array | null /* ptr */,
   pReserved: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libwlanapi.WlanSetProfileCustomUserData(util.toPointer(hClientHandle), util.toPointer(pInterfaceGuid), util.pwstrToFfi(strProfileName), dwDataSize, util.toPointer(pData), util.toPointer(pReserved));
+  return libwlanapi_dll.WlanSetProfileCustomUserData(util.toPointer(hClientHandle), util.toPointer(pInterfaceGuid), util.pwstrToFfi(strProfileName), dwDataSize, util.toPointer(pData), util.toPointer(pReserved));
 }
 
 export function WlanGetProfileCustomUserData(
@@ -11296,7 +12061,7 @@ export function WlanGetProfileCustomUserData(
   pdwDataSize: Deno.PointerValue | Uint8Array | null /* ptr */,
   ppData: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libwlanapi.WlanGetProfileCustomUserData(util.toPointer(hClientHandle), util.toPointer(pInterfaceGuid), util.pwstrToFfi(strProfileName), util.toPointer(pReserved), util.toPointer(pdwDataSize), util.toPointer(ppData));
+  return libwlanapi_dll.WlanGetProfileCustomUserData(util.toPointer(hClientHandle), util.toPointer(pInterfaceGuid), util.pwstrToFfi(strProfileName), util.toPointer(pReserved), util.toPointer(pdwDataSize), util.toPointer(ppData));
 }
 
 export function WlanSetFilterList(
@@ -11305,7 +12070,7 @@ export function WlanSetFilterList(
   pNetworkList: Deno.PointerValue | Uint8Array | null /* ptr */,
   pReserved: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libwlanapi.WlanSetFilterList(util.toPointer(hClientHandle), wlanFilterListType, util.toPointer(pNetworkList), util.toPointer(pReserved));
+  return libwlanapi_dll.WlanSetFilterList(util.toPointer(hClientHandle), wlanFilterListType, util.toPointer(pNetworkList), util.toPointer(pReserved));
 }
 
 export function WlanGetFilterList(
@@ -11314,7 +12079,7 @@ export function WlanGetFilterList(
   pReserved: Deno.PointerValue | Uint8Array | null /* ptr */,
   ppNetworkList: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libwlanapi.WlanGetFilterList(util.toPointer(hClientHandle), wlanFilterListType, util.toPointer(pReserved), util.toPointer(ppNetworkList));
+  return libwlanapi_dll.WlanGetFilterList(util.toPointer(hClientHandle), wlanFilterListType, util.toPointer(pReserved), util.toPointer(ppNetworkList));
 }
 
 export function WlanSetPsdIEDataList(
@@ -11323,7 +12088,7 @@ export function WlanSetPsdIEDataList(
   pPsdIEDataList: Deno.PointerValue | Uint8Array | null /* ptr */,
   pReserved: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libwlanapi.WlanSetPsdIEDataList(util.toPointer(hClientHandle), util.pwstrToFfi(strFormat), util.toPointer(pPsdIEDataList), util.toPointer(pReserved));
+  return libwlanapi_dll.WlanSetPsdIEDataList(util.toPointer(hClientHandle), util.pwstrToFfi(strFormat), util.toPointer(pPsdIEDataList), util.toPointer(pReserved));
 }
 
 export function WlanSaveTemporaryProfile(
@@ -11335,7 +12100,7 @@ export function WlanSaveTemporaryProfile(
   bOverWrite: boolean /* Windows.Win32.Foundation.BOOL */,
   pReserved: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libwlanapi.WlanSaveTemporaryProfile(util.toPointer(hClientHandle), util.toPointer(pInterfaceGuid), util.pwstrToFfi(strProfileName), util.pwstrToFfi(strAllUserProfileSecurity), dwFlags, util.boolToFfi(bOverWrite), util.toPointer(pReserved));
+  return libwlanapi_dll.WlanSaveTemporaryProfile(util.toPointer(hClientHandle), util.toPointer(pInterfaceGuid), util.pwstrToFfi(strProfileName), util.pwstrToFfi(strAllUserProfileSecurity), dwFlags, util.boolToFfi(bOverWrite), util.toPointer(pReserved));
 }
 
 export function WlanDeviceServiceCommand(
@@ -11349,7 +12114,7 @@ export function WlanDeviceServiceCommand(
   pOutBuffer: Deno.PointerValue | Uint8Array | null /* ptr */,
   pdwBytesReturned: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libwlanapi.WlanDeviceServiceCommand(util.toPointer(hClientHandle), util.toPointer(pInterfaceGuid), util.toPointer(pDeviceServiceGuid), dwOpCode, dwInBufferSize, util.toPointer(pInBuffer), dwOutBufferSize, util.toPointer(pOutBuffer), util.toPointer(pdwBytesReturned));
+  return libwlanapi_dll.WlanDeviceServiceCommand(util.toPointer(hClientHandle), util.toPointer(pInterfaceGuid), util.toPointer(pDeviceServiceGuid), dwOpCode, dwInBufferSize, util.toPointer(pInBuffer), dwOutBufferSize, util.toPointer(pOutBuffer), util.toPointer(pdwBytesReturned));
 }
 
 export function WlanGetSupportedDeviceServices(
@@ -11357,14 +12122,14 @@ export function WlanGetSupportedDeviceServices(
   pInterfaceGuid: Deno.PointerValue | Uint8Array | null /* ptr */,
   ppDevSvcGuidList: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libwlanapi.WlanGetSupportedDeviceServices(util.toPointer(hClientHandle), util.toPointer(pInterfaceGuid), util.toPointer(ppDevSvcGuidList));
+  return libwlanapi_dll.WlanGetSupportedDeviceServices(util.toPointer(hClientHandle), util.toPointer(pInterfaceGuid), util.toPointer(ppDevSvcGuidList));
 }
 
 export function WlanRegisterDeviceServiceNotification(
   hClientHandle: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
   pDevSvcGuidList: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libwlanapi.WlanRegisterDeviceServiceNotification(util.toPointer(hClientHandle), util.toPointer(pDevSvcGuidList));
+  return libwlanapi_dll.WlanRegisterDeviceServiceNotification(util.toPointer(hClientHandle), util.toPointer(pDevSvcGuidList));
 }
 
 export function WlanExtractPsdIEDataList(
@@ -11375,7 +12140,7 @@ export function WlanExtractPsdIEDataList(
   pReserved: Deno.PointerValue | Uint8Array | null /* ptr */,
   ppPsdIEDataList: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libwlanapi.WlanExtractPsdIEDataList(util.toPointer(hClientHandle), dwIeDataSize, util.toPointer(pRawIeData), util.pwstrToFfi(strFormat), util.toPointer(pReserved), util.toPointer(ppPsdIEDataList));
+  return libwlanapi_dll.WlanExtractPsdIEDataList(util.toPointer(hClientHandle), dwIeDataSize, util.toPointer(pRawIeData), util.pwstrToFfi(strFormat), util.toPointer(pReserved), util.toPointer(ppPsdIEDataList));
 }
 
 export function WlanReasonCodeToString(
@@ -11384,19 +12149,19 @@ export function WlanReasonCodeToString(
   pStringBuffer: string | null /* Windows.Win32.Foundation.PWSTR */,
   pReserved: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libwlanapi.WlanReasonCodeToString(dwReasonCode, dwBufferSize, util.pwstrToFfi(pStringBuffer), util.toPointer(pReserved));
+  return libwlanapi_dll.WlanReasonCodeToString(dwReasonCode, dwBufferSize, util.pwstrToFfi(pStringBuffer), util.toPointer(pReserved));
 }
 
 export function WlanAllocateMemory(
   dwMemorySize: number /* u32 */,
 ): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libwlanapi.WlanAllocateMemory(dwMemorySize));
+  return util.pointerFromFfi(libwlanapi_dll.WlanAllocateMemory(dwMemorySize));
 }
 
 export function WlanFreeMemory(
   pMemory: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): void /* void */ {
-  return libwlanapi.WlanFreeMemory(util.toPointer(pMemory));
+  return libwlanapi_dll.WlanFreeMemory(util.toPointer(pMemory));
 }
 
 export function WlanSetSecuritySettings(
@@ -11404,7 +12169,7 @@ export function WlanSetSecuritySettings(
   SecurableObject: WLAN_SECURABLE_OBJECT /* Windows.Win32.NetworkManagement.WiFi.WLAN_SECURABLE_OBJECT */,
   strModifiedSDDL: string | null /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
-  return libwlanapi.WlanSetSecuritySettings(util.toPointer(hClientHandle), SecurableObject, util.pwstrToFfi(strModifiedSDDL));
+  return libwlanapi_dll.WlanSetSecuritySettings(util.toPointer(hClientHandle), SecurableObject, util.pwstrToFfi(strModifiedSDDL));
 }
 
 export function WlanGetSecuritySettings(
@@ -11414,7 +12179,7 @@ export function WlanGetSecuritySettings(
   pstrCurrentSDDL: Deno.PointerValue | Uint8Array | null /* ptr */,
   pdwGrantedAccess: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libwlanapi.WlanGetSecuritySettings(util.toPointer(hClientHandle), SecurableObject, util.toPointer(pValueType), util.toPointer(pstrCurrentSDDL), util.toPointer(pdwGrantedAccess));
+  return libwlanapi_dll.WlanGetSecuritySettings(util.toPointer(hClientHandle), SecurableObject, util.toPointer(pValueType), util.toPointer(pstrCurrentSDDL), util.toPointer(pdwGrantedAccess));
 }
 
 export function WlanUIEditProfile(
@@ -11426,7 +12191,7 @@ export function WlanUIEditProfile(
   pReserved: Deno.PointerValue | Uint8Array | null /* ptr */,
   pWlanReasonCode: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libwlanui.WlanUIEditProfile(dwClientVersion, util.pwstrToFfi(wstrProfileName), util.toPointer(pInterfaceGuid), util.hwndToFfi(hWnd), wlStartPage, util.toPointer(pReserved), util.toPointer(pWlanReasonCode));
+  return libwlanui_dll.WlanUIEditProfile(dwClientVersion, util.pwstrToFfi(wstrProfileName), util.toPointer(pInterfaceGuid), util.hwndToFfi(hWnd), wlStartPage, util.toPointer(pReserved), util.toPointer(pWlanReasonCode));
 }
 
 export function WlanHostedNetworkStartUsing(
@@ -11434,7 +12199,7 @@ export function WlanHostedNetworkStartUsing(
   pFailReason: Deno.PointerValue | Uint8Array | null /* ptr */,
   pvReserved: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libwlanapi.WlanHostedNetworkStartUsing(util.toPointer(hClientHandle), util.toPointer(pFailReason), util.toPointer(pvReserved));
+  return libwlanapi_dll.WlanHostedNetworkStartUsing(util.toPointer(hClientHandle), util.toPointer(pFailReason), util.toPointer(pvReserved));
 }
 
 export function WlanHostedNetworkStopUsing(
@@ -11442,7 +12207,7 @@ export function WlanHostedNetworkStopUsing(
   pFailReason: Deno.PointerValue | Uint8Array | null /* ptr */,
   pvReserved: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libwlanapi.WlanHostedNetworkStopUsing(util.toPointer(hClientHandle), util.toPointer(pFailReason), util.toPointer(pvReserved));
+  return libwlanapi_dll.WlanHostedNetworkStopUsing(util.toPointer(hClientHandle), util.toPointer(pFailReason), util.toPointer(pvReserved));
 }
 
 export function WlanHostedNetworkForceStart(
@@ -11450,7 +12215,7 @@ export function WlanHostedNetworkForceStart(
   pFailReason: Deno.PointerValue | Uint8Array | null /* ptr */,
   pvReserved: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libwlanapi.WlanHostedNetworkForceStart(util.toPointer(hClientHandle), util.toPointer(pFailReason), util.toPointer(pvReserved));
+  return libwlanapi_dll.WlanHostedNetworkForceStart(util.toPointer(hClientHandle), util.toPointer(pFailReason), util.toPointer(pvReserved));
 }
 
 export function WlanHostedNetworkForceStop(
@@ -11458,7 +12223,7 @@ export function WlanHostedNetworkForceStop(
   pFailReason: Deno.PointerValue | Uint8Array | null /* ptr */,
   pvReserved: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libwlanapi.WlanHostedNetworkForceStop(util.toPointer(hClientHandle), util.toPointer(pFailReason), util.toPointer(pvReserved));
+  return libwlanapi_dll.WlanHostedNetworkForceStop(util.toPointer(hClientHandle), util.toPointer(pFailReason), util.toPointer(pvReserved));
 }
 
 export function WlanHostedNetworkQueryProperty(
@@ -11469,7 +12234,7 @@ export function WlanHostedNetworkQueryProperty(
   pWlanOpcodeValueType: Deno.PointerValue | Uint8Array | null /* ptr */,
   pvReserved: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libwlanapi.WlanHostedNetworkQueryProperty(util.toPointer(hClientHandle), OpCode, util.toPointer(pdwDataSize), util.toPointer(ppvData), util.toPointer(pWlanOpcodeValueType), util.toPointer(pvReserved));
+  return libwlanapi_dll.WlanHostedNetworkQueryProperty(util.toPointer(hClientHandle), OpCode, util.toPointer(pdwDataSize), util.toPointer(ppvData), util.toPointer(pWlanOpcodeValueType), util.toPointer(pvReserved));
 }
 
 export function WlanHostedNetworkSetProperty(
@@ -11480,7 +12245,7 @@ export function WlanHostedNetworkSetProperty(
   pFailReason: Deno.PointerValue | Uint8Array | null /* ptr */,
   pvReserved: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libwlanapi.WlanHostedNetworkSetProperty(util.toPointer(hClientHandle), OpCode, dwDataSize, util.toPointer(pvData), util.toPointer(pFailReason), util.toPointer(pvReserved));
+  return libwlanapi_dll.WlanHostedNetworkSetProperty(util.toPointer(hClientHandle), OpCode, dwDataSize, util.toPointer(pvData), util.toPointer(pFailReason), util.toPointer(pvReserved));
 }
 
 export function WlanHostedNetworkInitSettings(
@@ -11488,7 +12253,7 @@ export function WlanHostedNetworkInitSettings(
   pFailReason: Deno.PointerValue | Uint8Array | null /* ptr */,
   pvReserved: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libwlanapi.WlanHostedNetworkInitSettings(util.toPointer(hClientHandle), util.toPointer(pFailReason), util.toPointer(pvReserved));
+  return libwlanapi_dll.WlanHostedNetworkInitSettings(util.toPointer(hClientHandle), util.toPointer(pFailReason), util.toPointer(pvReserved));
 }
 
 export function WlanHostedNetworkRefreshSecuritySettings(
@@ -11496,7 +12261,7 @@ export function WlanHostedNetworkRefreshSecuritySettings(
   pFailReason: Deno.PointerValue | Uint8Array | null /* ptr */,
   pvReserved: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libwlanapi.WlanHostedNetworkRefreshSecuritySettings(util.toPointer(hClientHandle), util.toPointer(pFailReason), util.toPointer(pvReserved));
+  return libwlanapi_dll.WlanHostedNetworkRefreshSecuritySettings(util.toPointer(hClientHandle), util.toPointer(pFailReason), util.toPointer(pvReserved));
 }
 
 export function WlanHostedNetworkQueryStatus(
@@ -11504,7 +12269,7 @@ export function WlanHostedNetworkQueryStatus(
   ppWlanHostedNetworkStatus: Deno.PointerValue | Uint8Array | null /* ptr */,
   pvReserved: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libwlanapi.WlanHostedNetworkQueryStatus(util.toPointer(hClientHandle), util.toPointer(ppWlanHostedNetworkStatus), util.toPointer(pvReserved));
+  return libwlanapi_dll.WlanHostedNetworkQueryStatus(util.toPointer(hClientHandle), util.toPointer(ppWlanHostedNetworkStatus), util.toPointer(pvReserved));
 }
 
 export function WlanHostedNetworkSetSecondaryKey(
@@ -11516,7 +12281,7 @@ export function WlanHostedNetworkSetSecondaryKey(
   pFailReason: Deno.PointerValue | Uint8Array | null /* ptr */,
   pvReserved: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libwlanapi.WlanHostedNetworkSetSecondaryKey(util.toPointer(hClientHandle), dwKeyLength, util.toPointer(pucKeyData), util.boolToFfi(bIsPassPhrase), util.boolToFfi(bPersistent), util.toPointer(pFailReason), util.toPointer(pvReserved));
+  return libwlanapi_dll.WlanHostedNetworkSetSecondaryKey(util.toPointer(hClientHandle), dwKeyLength, util.toPointer(pucKeyData), util.boolToFfi(bIsPassPhrase), util.boolToFfi(bPersistent), util.toPointer(pFailReason), util.toPointer(pvReserved));
 }
 
 export function WlanHostedNetworkQuerySecondaryKey(
@@ -11528,7 +12293,7 @@ export function WlanHostedNetworkQuerySecondaryKey(
   pFailReason: Deno.PointerValue | Uint8Array | null /* ptr */,
   pvReserved: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libwlanapi.WlanHostedNetworkQuerySecondaryKey(util.toPointer(hClientHandle), util.toPointer(pdwKeyLength), util.toPointer(ppucKeyData), util.toPointer(pbIsPassPhrase), util.toPointer(pbPersistent), util.toPointer(pFailReason), util.toPointer(pvReserved));
+  return libwlanapi_dll.WlanHostedNetworkQuerySecondaryKey(util.toPointer(hClientHandle), util.toPointer(pdwKeyLength), util.toPointer(ppucKeyData), util.toPointer(pbIsPassPhrase), util.toPointer(pbPersistent), util.toPointer(pFailReason), util.toPointer(pvReserved));
 }
 
 export function WlanRegisterVirtualStationNotification(
@@ -11536,7 +12301,7 @@ export function WlanRegisterVirtualStationNotification(
   bRegister: boolean /* Windows.Win32.Foundation.BOOL */,
   pReserved: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libwlanapi.WlanRegisterVirtualStationNotification(util.toPointer(hClientHandle), util.boolToFfi(bRegister), util.toPointer(pReserved));
+  return libwlanapi_dll.WlanRegisterVirtualStationNotification(util.toPointer(hClientHandle), util.boolToFfi(bRegister), util.toPointer(pReserved));
 }
 
 export function WFDOpenHandle(
@@ -11544,13 +12309,13 @@ export function WFDOpenHandle(
   pdwNegotiatedVersion: Deno.PointerValue | Uint8Array | null /* ptr */,
   phClientHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libwlanapi.WFDOpenHandle(dwClientVersion, util.toPointer(pdwNegotiatedVersion), util.toPointer(phClientHandle));
+  return libwlanapi_dll.WFDOpenHandle(dwClientVersion, util.toPointer(pdwNegotiatedVersion), util.toPointer(phClientHandle));
 }
 
 export function WFDCloseHandle(
   hClientHandle: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
 ): number /* u32 */ {
-  return libwlanapi.WFDCloseHandle(util.toPointer(hClientHandle));
+  return libwlanapi_dll.WFDCloseHandle(util.toPointer(hClientHandle));
 }
 
 export function WFDStartOpenSession(
@@ -11560,13 +12325,13 @@ export function WFDStartOpenSession(
   pfnCallback: Uint8Array | Deno.PointerValue | null /* Windows.Win32.NetworkManagement.WiFi.WFD_OPEN_SESSION_COMPLETE_CALLBACK */,
   phSessionHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libwlanapi.WFDStartOpenSession(util.toPointer(hClientHandle), util.toPointer(pDeviceAddress), util.toPointer(pvContext), util.toPointer(pfnCallback), util.toPointer(phSessionHandle));
+  return libwlanapi_dll.WFDStartOpenSession(util.toPointer(hClientHandle), util.toPointer(pDeviceAddress), util.toPointer(pvContext), util.toPointer(pfnCallback), util.toPointer(phSessionHandle));
 }
 
 export function WFDCancelOpenSession(
   hSessionHandle: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
 ): number /* u32 */ {
-  return libwlanapi.WFDCancelOpenSession(util.toPointer(hSessionHandle));
+  return libwlanapi_dll.WFDCancelOpenSession(util.toPointer(hSessionHandle));
 }
 
 export function WFDOpenLegacySession(
@@ -11575,18 +12340,18 @@ export function WFDOpenLegacySession(
   phSessionHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
   pGuidSessionInterface: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libwlanapi.WFDOpenLegacySession(util.toPointer(hClientHandle), util.toPointer(pLegacyMacAddress), util.toPointer(phSessionHandle), util.toPointer(pGuidSessionInterface));
+  return libwlanapi_dll.WFDOpenLegacySession(util.toPointer(hClientHandle), util.toPointer(pLegacyMacAddress), util.toPointer(phSessionHandle), util.toPointer(pGuidSessionInterface));
 }
 
 export function WFDCloseSession(
   hSessionHandle: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
 ): number /* u32 */ {
-  return libwlanapi.WFDCloseSession(util.toPointer(hSessionHandle));
+  return libwlanapi_dll.WFDCloseSession(util.toPointer(hSessionHandle));
 }
 
 export function WFDUpdateDeviceVisibility(
   pDeviceAddress: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libwlanapi.WFDUpdateDeviceVisibility(util.toPointer(pDeviceAddress));
+  return libwlanapi_dll.WFDUpdateDeviceVisibility(util.toPointer(pDeviceAddress));
 }
 

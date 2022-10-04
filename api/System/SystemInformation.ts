@@ -4,6 +4,7 @@ import * as util from "../../util.ts";
 
 // Enums
 export type VER_FLAGS = number;
+export type IMAGE_FILE_MACHINE = number;
 export type FIRMWARE_TABLE_PROVIDER = number;
 export type USER_CET_ENVIRONMENT = number;
 export type OS_PRODUCT_TYPE = number;
@@ -27,6 +28,38 @@ export const VER_SERVICEPACKMINOR = 16;
 export const VER_SERVICEPACKMAJOR = 32;
 export const VER_SUITENAME = 64;
 export const VER_PRODUCT_TYPE = 128;
+export const IMAGE_FILE_MACHINE_AXP64 = 644;
+export const IMAGE_FILE_MACHINE_I386 = 332;
+export const IMAGE_FILE_MACHINE_IA64 = 512;
+export const IMAGE_FILE_MACHINE_AMD64 = 34404;
+export const IMAGE_FILE_MACHINE_UNKNOWN = 0;
+export const IMAGE_FILE_MACHINE_TARGET_HOST = 1;
+export const IMAGE_FILE_MACHINE_R3000 = 354;
+export const IMAGE_FILE_MACHINE_R4000 = 358;
+export const IMAGE_FILE_MACHINE_R10000 = 360;
+export const IMAGE_FILE_MACHINE_WCEMIPSV2 = 361;
+export const IMAGE_FILE_MACHINE_ALPHA = 388;
+export const IMAGE_FILE_MACHINE_SH3 = 418;
+export const IMAGE_FILE_MACHINE_SH3DSP = 419;
+export const IMAGE_FILE_MACHINE_SH3E = 420;
+export const IMAGE_FILE_MACHINE_SH4 = 422;
+export const IMAGE_FILE_MACHINE_SH5 = 424;
+export const IMAGE_FILE_MACHINE_ARM = 448;
+export const IMAGE_FILE_MACHINE_THUMB = 450;
+export const IMAGE_FILE_MACHINE_ARMNT = 452;
+export const IMAGE_FILE_MACHINE_AM33 = 467;
+export const IMAGE_FILE_MACHINE_POWERPC = 496;
+export const IMAGE_FILE_MACHINE_POWERPCFP = 497;
+export const IMAGE_FILE_MACHINE_MIPS16 = 614;
+export const IMAGE_FILE_MACHINE_ALPHA64 = 644;
+export const IMAGE_FILE_MACHINE_MIPSFPU = 870;
+export const IMAGE_FILE_MACHINE_MIPSFPU16 = 1126;
+export const IMAGE_FILE_MACHINE_TRICORE = 1312;
+export const IMAGE_FILE_MACHINE_CEF = 3311;
+export const IMAGE_FILE_MACHINE_EBC = 3772;
+export const IMAGE_FILE_MACHINE_M32R = 36929;
+export const IMAGE_FILE_MACHINE_ARM64 = 43620;
+export const IMAGE_FILE_MACHINE_CEE = 49390;
 export const ACPI = 1094930505;
 export const FIRM = 1179210317;
 export const RSMB = 1381190978;
@@ -1142,7 +1175,7 @@ export type HANDLE = Deno.PointerValue;
 // Native Libraries
 
 try {
-  var libKERNEL32 = Deno.dlopen("KERNEL32", {
+  var libKERNEL32_dll = Deno.dlopen("KERNEL32.dll", {
     GlobalMemoryStatusEx: {
       parameters: ["pointer"],
       result: "i32",
@@ -1343,7 +1376,7 @@ try {
 } catch(e) { /* ignore */ }
 
 try {
-  var libapi_ms_win_core_sysinfo_l1_2_4 = Deno.dlopen("api-ms-win-core-sysinfo-l1-2-4", {
+  var libapi_ms_win_core_sysinfo_l1_2_4_dll = Deno.dlopen("api-ms-win-core-sysinfo-l1-2-4.dll", {
     GetSystemTimeAdjustmentPrecise: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "i32",
@@ -1356,7 +1389,7 @@ try {
 } catch(e) { /* ignore */ }
 
 try {
-  var libapi_ms_win_core_sysinfo_l1_2_0 = Deno.dlopen("api-ms-win-core-sysinfo-l1-2-0", {
+  var libapi_ms_win_core_sysinfo_l1_2_0_dll = Deno.dlopen("api-ms-win-core-sysinfo-l1-2-0.dll", {
     GetOsSafeBootMode: {
       parameters: ["pointer"],
       result: "i32",
@@ -1365,7 +1398,7 @@ try {
 } catch(e) { /* ignore */ }
 
 try {
-  var libapi_ms_win_core_sysinfo_l1_2_3 = Deno.dlopen("api-ms-win-core-sysinfo-l1-2-3", {
+  var libapi_ms_win_core_sysinfo_l1_2_3_dll = Deno.dlopen("api-ms-win-core-sysinfo-l1-2-3.dll", {
     GetOsManufacturingMode: {
       parameters: ["pointer"],
       result: "i32",
@@ -1378,7 +1411,7 @@ try {
 } catch(e) { /* ignore */ }
 
 try {
-  var libapi_ms_win_core_wow64_l1_1_1 = Deno.dlopen("api-ms-win-core-wow64-l1-1-1", {
+  var libapi_ms_win_core_wow64_l1_1_1_dll = Deno.dlopen("api-ms-win-core-wow64-l1-1-1.dll", {
     GetSystemWow64Directory2A: {
       parameters: ["buffer", "u32", "u16"],
       result: "u32",
@@ -1391,7 +1424,7 @@ try {
 } catch(e) { /* ignore */ }
 
 try {
-  var libntdll = Deno.dlopen("ntdll", {
+  var libntdll_dll = Deno.dlopen("ntdll.dll", {
     RtlGetProductInfo: {
       parameters: ["u32", "u32", "u32", "u32", "pointer"],
       result: "pointer",
@@ -1416,7 +1449,7 @@ try {
 } catch(e) { /* ignore */ }
 
 try {
-  var libntdllk = Deno.dlopen("ntdllk", {
+  var libntdllk_dll = Deno.dlopen("ntdllk.dll", {
     RtlGetSystemGlobalData: {
       parameters: ["i32", "pointer", "u32"],
       result: "u32",
@@ -1429,62 +1462,62 @@ try {
 export function GlobalMemoryStatusEx(
   lpBuffer: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32.GlobalMemoryStatusEx(util.toPointer(lpBuffer)));
+  return util.boolFromFfi(libKERNEL32_dll.GlobalMemoryStatusEx(util.toPointer(lpBuffer)));
 }
 
 export function GetSystemInfo(
   lpSystemInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): void /* void */ {
-  return libKERNEL32.GetSystemInfo(util.toPointer(lpSystemInfo));
+  return libKERNEL32_dll.GetSystemInfo(util.toPointer(lpSystemInfo));
 }
 
 export function GetSystemTime(
   lpSystemTime: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): void /* void */ {
-  return libKERNEL32.GetSystemTime(util.toPointer(lpSystemTime));
+  return libKERNEL32_dll.GetSystemTime(util.toPointer(lpSystemTime));
 }
 
 export function GetSystemTimeAsFileTime(
   lpSystemTimeAsFileTime: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): void /* void */ {
-  return libKERNEL32.GetSystemTimeAsFileTime(util.toPointer(lpSystemTimeAsFileTime));
+  return libKERNEL32_dll.GetSystemTimeAsFileTime(util.toPointer(lpSystemTimeAsFileTime));
 }
 
 export function GetLocalTime(
   lpSystemTime: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): void /* void */ {
-  return libKERNEL32.GetLocalTime(util.toPointer(lpSystemTime));
+  return libKERNEL32_dll.GetLocalTime(util.toPointer(lpSystemTime));
 }
 
 export function IsUserCetAvailableInEnvironment(
   UserCetEnvironment: USER_CET_ENVIRONMENT /* Windows.Win32.System.SystemInformation.USER_CET_ENVIRONMENT */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32.IsUserCetAvailableInEnvironment(UserCetEnvironment));
+  return util.boolFromFfi(libKERNEL32_dll.IsUserCetAvailableInEnvironment(UserCetEnvironment));
 }
 
 export function GetSystemLeapSecondInformation(
   Enabled: Deno.PointerValue | Uint8Array | null /* ptr */,
   Flags: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32.GetSystemLeapSecondInformation(util.toPointer(Enabled), util.toPointer(Flags)));
+  return util.boolFromFfi(libKERNEL32_dll.GetSystemLeapSecondInformation(util.toPointer(Enabled), util.toPointer(Flags)));
 }
 
 export function GetVersion(): number /* u32 */ {
-  return libKERNEL32.GetVersion();
+  return libKERNEL32_dll.GetVersion();
 }
 
 export function SetLocalTime(
   lpSystemTime: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32.SetLocalTime(util.toPointer(lpSystemTime)));
+  return util.boolFromFfi(libKERNEL32_dll.SetLocalTime(util.toPointer(lpSystemTime)));
 }
 
 export function GetTickCount(): number /* u32 */ {
-  return libKERNEL32.GetTickCount();
+  return libKERNEL32_dll.GetTickCount();
 }
 
 export function GetTickCount64(): Deno.PointerValue /* u64 */ {
-  return libKERNEL32.GetTickCount64();
+  return libKERNEL32_dll.GetTickCount64();
 }
 
 export function GetSystemTimeAdjustment(
@@ -1492,7 +1525,7 @@ export function GetSystemTimeAdjustment(
   lpTimeIncrement: Deno.PointerValue | Uint8Array | null /* ptr */,
   lpTimeAdjustmentDisabled: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32.GetSystemTimeAdjustment(util.toPointer(lpTimeAdjustment), util.toPointer(lpTimeIncrement), util.toPointer(lpTimeAdjustmentDisabled)));
+  return util.boolFromFfi(libKERNEL32_dll.GetSystemTimeAdjustment(util.toPointer(lpTimeAdjustment), util.toPointer(lpTimeIncrement), util.toPointer(lpTimeAdjustmentDisabled)));
 }
 
 export function GetSystemTimeAdjustmentPrecise(
@@ -1500,49 +1533,49 @@ export function GetSystemTimeAdjustmentPrecise(
   lpTimeIncrement: Deno.PointerValue | Uint8Array | null /* ptr */,
   lpTimeAdjustmentDisabled: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libapi_ms_win_core_sysinfo_l1_2_4.GetSystemTimeAdjustmentPrecise(util.toPointer(lpTimeAdjustment), util.toPointer(lpTimeIncrement), util.toPointer(lpTimeAdjustmentDisabled)));
+  return util.boolFromFfi(libapi_ms_win_core_sysinfo_l1_2_4_dll.GetSystemTimeAdjustmentPrecise(util.toPointer(lpTimeAdjustment), util.toPointer(lpTimeIncrement), util.toPointer(lpTimeAdjustmentDisabled)));
 }
 
 export function GetSystemDirectoryA(
   lpBuffer: string | null /* Windows.Win32.Foundation.PSTR */,
   uSize: number /* u32 */,
 ): number /* u32 */ {
-  return libKERNEL32.GetSystemDirectoryA(util.pstrToFfi(lpBuffer), uSize);
+  return libKERNEL32_dll.GetSystemDirectoryA(util.pstrToFfi(lpBuffer), uSize);
 }
 
 export function GetSystemDirectoryW(
   lpBuffer: string | null /* Windows.Win32.Foundation.PWSTR */,
   uSize: number /* u32 */,
 ): number /* u32 */ {
-  return libKERNEL32.GetSystemDirectoryW(util.pwstrToFfi(lpBuffer), uSize);
+  return libKERNEL32_dll.GetSystemDirectoryW(util.pwstrToFfi(lpBuffer), uSize);
 }
 
 export function GetWindowsDirectoryA(
   lpBuffer: string | null /* Windows.Win32.Foundation.PSTR */,
   uSize: number /* u32 */,
 ): number /* u32 */ {
-  return libKERNEL32.GetWindowsDirectoryA(util.pstrToFfi(lpBuffer), uSize);
+  return libKERNEL32_dll.GetWindowsDirectoryA(util.pstrToFfi(lpBuffer), uSize);
 }
 
 export function GetWindowsDirectoryW(
   lpBuffer: string | null /* Windows.Win32.Foundation.PWSTR */,
   uSize: number /* u32 */,
 ): number /* u32 */ {
-  return libKERNEL32.GetWindowsDirectoryW(util.pwstrToFfi(lpBuffer), uSize);
+  return libKERNEL32_dll.GetWindowsDirectoryW(util.pwstrToFfi(lpBuffer), uSize);
 }
 
 export function GetSystemWindowsDirectoryA(
   lpBuffer: string | null /* Windows.Win32.Foundation.PSTR */,
   uSize: number /* u32 */,
 ): number /* u32 */ {
-  return libKERNEL32.GetSystemWindowsDirectoryA(util.pstrToFfi(lpBuffer), uSize);
+  return libKERNEL32_dll.GetSystemWindowsDirectoryA(util.pstrToFfi(lpBuffer), uSize);
 }
 
 export function GetSystemWindowsDirectoryW(
   lpBuffer: string | null /* Windows.Win32.Foundation.PWSTR */,
   uSize: number /* u32 */,
 ): number /* u32 */ {
-  return libKERNEL32.GetSystemWindowsDirectoryW(util.pwstrToFfi(lpBuffer), uSize);
+  return libKERNEL32_dll.GetSystemWindowsDirectoryW(util.pwstrToFfi(lpBuffer), uSize);
 }
 
 export function GetComputerNameExA(
@@ -1550,7 +1583,7 @@ export function GetComputerNameExA(
   lpBuffer: string | null /* Windows.Win32.Foundation.PSTR */,
   nSize: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32.GetComputerNameExA(NameType, util.pstrToFfi(lpBuffer), util.toPointer(nSize)));
+  return util.boolFromFfi(libKERNEL32_dll.GetComputerNameExA(NameType, util.pstrToFfi(lpBuffer), util.toPointer(nSize)));
 }
 
 export function GetComputerNameExW(
@@ -1558,39 +1591,39 @@ export function GetComputerNameExW(
   lpBuffer: string | null /* Windows.Win32.Foundation.PWSTR */,
   nSize: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32.GetComputerNameExW(NameType, util.pwstrToFfi(lpBuffer), util.toPointer(nSize)));
+  return util.boolFromFfi(libKERNEL32_dll.GetComputerNameExW(NameType, util.pwstrToFfi(lpBuffer), util.toPointer(nSize)));
 }
 
 export function SetComputerNameExW(
   NameType: COMPUTER_NAME_FORMAT /* Windows.Win32.System.SystemInformation.COMPUTER_NAME_FORMAT */,
   lpBuffer: string | null /* Windows.Win32.Foundation.PWSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32.SetComputerNameExW(NameType, util.pwstrToFfi(lpBuffer)));
+  return util.boolFromFfi(libKERNEL32_dll.SetComputerNameExW(NameType, util.pwstrToFfi(lpBuffer)));
 }
 
 export function SetSystemTime(
   lpSystemTime: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32.SetSystemTime(util.toPointer(lpSystemTime)));
+  return util.boolFromFfi(libKERNEL32_dll.SetSystemTime(util.toPointer(lpSystemTime)));
 }
 
 export function GetVersionExA(
   lpVersionInformation: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32.GetVersionExA(util.toPointer(lpVersionInformation)));
+  return util.boolFromFfi(libKERNEL32_dll.GetVersionExA(util.toPointer(lpVersionInformation)));
 }
 
 export function GetVersionExW(
   lpVersionInformation: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32.GetVersionExW(util.toPointer(lpVersionInformation)));
+  return util.boolFromFfi(libKERNEL32_dll.GetVersionExW(util.toPointer(lpVersionInformation)));
 }
 
 export function GetLogicalProcessorInformation(
   Buffer: Deno.PointerValue | Uint8Array | null /* ptr */,
   ReturnedLength: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32.GetLogicalProcessorInformation(util.toPointer(Buffer), util.toPointer(ReturnedLength)));
+  return util.boolFromFfi(libKERNEL32_dll.GetLogicalProcessorInformation(util.toPointer(Buffer), util.toPointer(ReturnedLength)));
 }
 
 export function GetLogicalProcessorInformationEx(
@@ -1598,19 +1631,19 @@ export function GetLogicalProcessorInformationEx(
   Buffer: Deno.PointerValue | Uint8Array | null /* ptr */,
   ReturnedLength: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32.GetLogicalProcessorInformationEx(RelationshipType, util.toPointer(Buffer), util.toPointer(ReturnedLength)));
+  return util.boolFromFfi(libKERNEL32_dll.GetLogicalProcessorInformationEx(RelationshipType, util.toPointer(Buffer), util.toPointer(ReturnedLength)));
 }
 
 export function GetNativeSystemInfo(
   lpSystemInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): void /* void */ {
-  return libKERNEL32.GetNativeSystemInfo(util.toPointer(lpSystemInfo));
+  return libKERNEL32_dll.GetNativeSystemInfo(util.toPointer(lpSystemInfo));
 }
 
 export function GetSystemTimePreciseAsFileTime(
   lpSystemTimeAsFileTime: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): void /* void */ {
-  return libKERNEL32.GetSystemTimePreciseAsFileTime(util.toPointer(lpSystemTimeAsFileTime));
+  return libKERNEL32_dll.GetSystemTimePreciseAsFileTime(util.toPointer(lpSystemTimeAsFileTime));
 }
 
 export function GetProductInfo(
@@ -1620,7 +1653,7 @@ export function GetProductInfo(
   dwSpMinorVersion: number /* u32 */,
   pdwReturnedProductType: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32.GetProductInfo(dwOSMajorVersion, dwOSMinorVersion, dwSpMajorVersion, dwSpMinorVersion, util.toPointer(pdwReturnedProductType)));
+  return util.boolFromFfi(libKERNEL32_dll.GetProductInfo(dwOSMajorVersion, dwOSMinorVersion, dwSpMajorVersion, dwSpMinorVersion, util.toPointer(pdwReturnedProductType)));
 }
 
 export function VerSetConditionMask(
@@ -1628,13 +1661,13 @@ export function VerSetConditionMask(
   TypeMask: VER_FLAGS /* Windows.Win32.System.SystemInformation.VER_FLAGS */,
   Condition: number /* u8 */,
 ): Deno.PointerValue /* u64 */ {
-  return libKERNEL32.VerSetConditionMask(ConditionMask, TypeMask, Condition);
+  return libKERNEL32_dll.VerSetConditionMask(ConditionMask, TypeMask, Condition);
 }
 
 export function GetOsSafeBootMode(
   Flags: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libapi_ms_win_core_sysinfo_l1_2_0.GetOsSafeBootMode(util.toPointer(Flags)));
+  return util.boolFromFfi(libapi_ms_win_core_sysinfo_l1_2_0_dll.GetOsSafeBootMode(util.toPointer(Flags)));
 }
 
 export function EnumSystemFirmwareTables(
@@ -1642,7 +1675,7 @@ export function EnumSystemFirmwareTables(
   pFirmwareTableEnumBuffer: Deno.PointerValue | Uint8Array | null /* ptr */,
   BufferSize: number /* u32 */,
 ): number /* u32 */ {
-  return libKERNEL32.EnumSystemFirmwareTables(FirmwareTableProviderSignature, util.toPointer(pFirmwareTableEnumBuffer), BufferSize);
+  return libKERNEL32_dll.EnumSystemFirmwareTables(FirmwareTableProviderSignature, util.toPointer(pFirmwareTableEnumBuffer), BufferSize);
 }
 
 export function GetSystemFirmwareTable(
@@ -1651,7 +1684,7 @@ export function GetSystemFirmwareTable(
   pFirmwareTableBuffer: Deno.PointerValue | Uint8Array | null /* ptr */,
   BufferSize: number /* u32 */,
 ): number /* u32 */ {
-  return libKERNEL32.GetSystemFirmwareTable(FirmwareTableProviderSignature, util.toPointer(FirmwareTableID), util.toPointer(pFirmwareTableBuffer), BufferSize);
+  return libKERNEL32_dll.GetSystemFirmwareTable(FirmwareTableProviderSignature, util.toPointer(FirmwareTableID), util.toPointer(pFirmwareTableBuffer), BufferSize);
 }
 
 export function DnsHostnameToComputerNameExW(
@@ -1659,13 +1692,13 @@ export function DnsHostnameToComputerNameExW(
   ComputerName: string | null /* Windows.Win32.Foundation.PWSTR */,
   nSize: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32.DnsHostnameToComputerNameExW(util.pwstrToFfi(Hostname), util.pwstrToFfi(ComputerName), util.toPointer(nSize)));
+  return util.boolFromFfi(libKERNEL32_dll.DnsHostnameToComputerNameExW(util.pwstrToFfi(Hostname), util.pwstrToFfi(ComputerName), util.toPointer(nSize)));
 }
 
 export function GetPhysicallyInstalledSystemMemory(
   TotalMemoryInKilobytes: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32.GetPhysicallyInstalledSystemMemory(util.toPointer(TotalMemoryInKilobytes)));
+  return util.boolFromFfi(libKERNEL32_dll.GetPhysicallyInstalledSystemMemory(util.toPointer(TotalMemoryInKilobytes)));
 }
 
 export function SetComputerNameEx2W(
@@ -1673,21 +1706,21 @@ export function SetComputerNameEx2W(
   Flags: number /* u32 */,
   lpBuffer: string | null /* Windows.Win32.Foundation.PWSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32.SetComputerNameEx2W(NameType, Flags, util.pwstrToFfi(lpBuffer)));
+  return util.boolFromFfi(libKERNEL32_dll.SetComputerNameEx2W(NameType, Flags, util.pwstrToFfi(lpBuffer)));
 }
 
 export function SetSystemTimeAdjustment(
   dwTimeAdjustment: number /* u32 */,
   bTimeAdjustmentDisabled: boolean /* Windows.Win32.Foundation.BOOL */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32.SetSystemTimeAdjustment(dwTimeAdjustment, util.boolToFfi(bTimeAdjustmentDisabled)));
+  return util.boolFromFfi(libKERNEL32_dll.SetSystemTimeAdjustment(dwTimeAdjustment, util.boolToFfi(bTimeAdjustmentDisabled)));
 }
 
 export function SetSystemTimeAdjustmentPrecise(
   dwTimeAdjustment: Deno.PointerValue /* u64 */,
   bTimeAdjustmentDisabled: boolean /* Windows.Win32.Foundation.BOOL */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libapi_ms_win_core_sysinfo_l1_2_4.SetSystemTimeAdjustmentPrecise(dwTimeAdjustment, util.boolToFfi(bTimeAdjustmentDisabled)));
+  return util.boolFromFfi(libapi_ms_win_core_sysinfo_l1_2_4_dll.SetSystemTimeAdjustmentPrecise(dwTimeAdjustment, util.boolToFfi(bTimeAdjustmentDisabled)));
 }
 
 export function GetProcessorSystemCycleTime(
@@ -1695,38 +1728,38 @@ export function GetProcessorSystemCycleTime(
   Buffer: Deno.PointerValue | Uint8Array | null /* ptr */,
   ReturnedLength: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32.GetProcessorSystemCycleTime(Group, util.toPointer(Buffer), util.toPointer(ReturnedLength)));
+  return util.boolFromFfi(libKERNEL32_dll.GetProcessorSystemCycleTime(Group, util.toPointer(Buffer), util.toPointer(ReturnedLength)));
 }
 
 export function GetOsManufacturingMode(
   pbEnabled: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libapi_ms_win_core_sysinfo_l1_2_3.GetOsManufacturingMode(util.toPointer(pbEnabled)));
+  return util.boolFromFfi(libapi_ms_win_core_sysinfo_l1_2_3_dll.GetOsManufacturingMode(util.toPointer(pbEnabled)));
 }
 
 export function GetIntegratedDisplaySize(
   sizeInInches: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libapi_ms_win_core_sysinfo_l1_2_3.GetIntegratedDisplaySize(util.toPointer(sizeInInches)));
+  return util.pointerFromFfi(libapi_ms_win_core_sysinfo_l1_2_3_dll.GetIntegratedDisplaySize(util.toPointer(sizeInInches)));
 }
 
 export function SetComputerNameA(
   lpComputerName: string | null /* Windows.Win32.Foundation.PSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32.SetComputerNameA(util.pstrToFfi(lpComputerName)));
+  return util.boolFromFfi(libKERNEL32_dll.SetComputerNameA(util.pstrToFfi(lpComputerName)));
 }
 
 export function SetComputerNameW(
   lpComputerName: string | null /* Windows.Win32.Foundation.PWSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32.SetComputerNameW(util.pwstrToFfi(lpComputerName)));
+  return util.boolFromFfi(libKERNEL32_dll.SetComputerNameW(util.pwstrToFfi(lpComputerName)));
 }
 
 export function SetComputerNameExA(
   NameType: COMPUTER_NAME_FORMAT /* Windows.Win32.System.SystemInformation.COMPUTER_NAME_FORMAT */,
   lpBuffer: string | null /* Windows.Win32.Foundation.PSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32.SetComputerNameExA(NameType, util.pstrToFfi(lpBuffer)));
+  return util.boolFromFfi(libKERNEL32_dll.SetComputerNameExA(NameType, util.pstrToFfi(lpBuffer)));
 }
 
 export function GetSystemCpuSetInformation(
@@ -1736,44 +1769,44 @@ export function GetSystemCpuSetInformation(
   Process: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
   Flags: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32.GetSystemCpuSetInformation(util.toPointer(Information), BufferLength, util.toPointer(ReturnedLength), util.toPointer(Process), Flags));
+  return util.boolFromFfi(libKERNEL32_dll.GetSystemCpuSetInformation(util.toPointer(Information), BufferLength, util.toPointer(ReturnedLength), util.toPointer(Process), Flags));
 }
 
 export function GetSystemWow64DirectoryA(
   lpBuffer: string | null /* Windows.Win32.Foundation.PSTR */,
   uSize: number /* u32 */,
 ): number /* u32 */ {
-  return libKERNEL32.GetSystemWow64DirectoryA(util.pstrToFfi(lpBuffer), uSize);
+  return libKERNEL32_dll.GetSystemWow64DirectoryA(util.pstrToFfi(lpBuffer), uSize);
 }
 
 export function GetSystemWow64DirectoryW(
   lpBuffer: string | null /* Windows.Win32.Foundation.PWSTR */,
   uSize: number /* u32 */,
 ): number /* u32 */ {
-  return libKERNEL32.GetSystemWow64DirectoryW(util.pwstrToFfi(lpBuffer), uSize);
+  return libKERNEL32_dll.GetSystemWow64DirectoryW(util.pwstrToFfi(lpBuffer), uSize);
 }
 
 export function GetSystemWow64Directory2A(
   lpBuffer: string | null /* Windows.Win32.Foundation.PSTR */,
   uSize: number /* u32 */,
-  ImageFileMachineType: number /* u16 */,
+  ImageFileMachineType: IMAGE_FILE_MACHINE /* Windows.Win32.System.SystemInformation.IMAGE_FILE_MACHINE */,
 ): number /* u32 */ {
-  return libapi_ms_win_core_wow64_l1_1_1.GetSystemWow64Directory2A(util.pstrToFfi(lpBuffer), uSize, ImageFileMachineType);
+  return libapi_ms_win_core_wow64_l1_1_1_dll.GetSystemWow64Directory2A(util.pstrToFfi(lpBuffer), uSize, ImageFileMachineType);
 }
 
 export function GetSystemWow64Directory2W(
   lpBuffer: string | null /* Windows.Win32.Foundation.PWSTR */,
   uSize: number /* u32 */,
-  ImageFileMachineType: number /* u16 */,
+  ImageFileMachineType: IMAGE_FILE_MACHINE /* Windows.Win32.System.SystemInformation.IMAGE_FILE_MACHINE */,
 ): number /* u32 */ {
-  return libapi_ms_win_core_wow64_l1_1_1.GetSystemWow64Directory2W(util.pwstrToFfi(lpBuffer), uSize, ImageFileMachineType);
+  return libapi_ms_win_core_wow64_l1_1_1_dll.GetSystemWow64Directory2W(util.pwstrToFfi(lpBuffer), uSize, ImageFileMachineType);
 }
 
 export function IsWow64GuestMachineSupported(
-  WowGuestMachine: number /* u16 */,
+  WowGuestMachine: IMAGE_FILE_MACHINE /* Windows.Win32.System.SystemInformation.IMAGE_FILE_MACHINE */,
   MachineIsSupported: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libKERNEL32.IsWow64GuestMachineSupported(WowGuestMachine, util.toPointer(MachineIsSupported)));
+  return util.pointerFromFfi(libKERNEL32_dll.IsWow64GuestMachineSupported(WowGuestMachine, util.toPointer(MachineIsSupported)));
 }
 
 export function RtlGetProductInfo(
@@ -1783,13 +1816,13 @@ export function RtlGetProductInfo(
   SpMinorVersion: number /* u32 */,
   ReturnedProductType: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.BOOLEAN */ {
-  return util.pointerFromFfi(libntdll.RtlGetProductInfo(OSMajorVersion, OSMinorVersion, SpMajorVersion, SpMinorVersion, util.toPointer(ReturnedProductType)));
+  return util.pointerFromFfi(libntdll_dll.RtlGetProductInfo(OSMajorVersion, OSMinorVersion, SpMajorVersion, SpMinorVersion, util.toPointer(ReturnedProductType)));
 }
 
 export function RtlOsDeploymentState(
   Flags: number /* u32 */,
 ): OS_DEPLOYEMENT_STATE_VALUES /* Windows.Win32.System.SystemInformation.OS_DEPLOYEMENT_STATE_VALUES */ {
-  return libntdll.RtlOsDeploymentState(Flags);
+  return libntdll_dll.RtlOsDeploymentState(Flags);
 }
 
 export function RtlGetSystemGlobalData(
@@ -1797,7 +1830,7 @@ export function RtlGetSystemGlobalData(
   Buffer: Deno.PointerValue | Uint8Array | null /* ptr */,
   Size: number /* u32 */,
 ): number /* u32 */ {
-  return libntdllk.RtlGetSystemGlobalData(DataId, util.toPointer(Buffer), Size);
+  return libntdllk_dll.RtlGetSystemGlobalData(DataId, util.toPointer(Buffer), Size);
 }
 
 export function RtlGetDeviceFamilyInfoEnum(
@@ -1805,7 +1838,7 @@ export function RtlGetDeviceFamilyInfoEnum(
   pulDeviceFamily: Deno.PointerValue | Uint8Array | null /* ptr */,
   pulDeviceForm: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): void /* void */ {
-  return libntdll.RtlGetDeviceFamilyInfoEnum(util.toPointer(pullUAPInfo), util.toPointer(pulDeviceFamily), util.toPointer(pulDeviceForm));
+  return libntdll_dll.RtlGetDeviceFamilyInfoEnum(util.toPointer(pullUAPInfo), util.toPointer(pulDeviceFamily), util.toPointer(pulDeviceForm));
 }
 
 export function RtlConvertDeviceFamilyInfoToString(
@@ -1814,7 +1847,7 @@ export function RtlConvertDeviceFamilyInfoToString(
   DeviceFamily: string | null /* Windows.Win32.Foundation.PWSTR */,
   DeviceForm: string | null /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
-  return libntdll.RtlConvertDeviceFamilyInfoToString(util.toPointer(pulDeviceFamilyBufferSize), util.toPointer(pulDeviceFormBufferSize), util.pwstrToFfi(DeviceFamily), util.pwstrToFfi(DeviceForm));
+  return libntdll_dll.RtlConvertDeviceFamilyInfoToString(util.toPointer(pulDeviceFamilyBufferSize), util.toPointer(pulDeviceFormBufferSize), util.pwstrToFfi(DeviceFamily), util.pwstrToFfi(DeviceForm));
 }
 
 export function RtlSwitchedVVI(
@@ -1822,23 +1855,23 @@ export function RtlSwitchedVVI(
   TypeMask: number /* u32 */,
   ConditionMask: Deno.PointerValue /* u64 */,
 ): number /* u32 */ {
-  return libntdll.RtlSwitchedVVI(util.toPointer(VersionInfo), TypeMask, ConditionMask);
+  return libntdll_dll.RtlSwitchedVVI(util.toPointer(VersionInfo), TypeMask, ConditionMask);
 }
 
 export function GlobalMemoryStatus(
   lpBuffer: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): void /* void */ {
-  return libKERNEL32.GlobalMemoryStatus(util.toPointer(lpBuffer));
+  return libKERNEL32_dll.GlobalMemoryStatus(util.toPointer(lpBuffer));
 }
 
 export function GetSystemDEPPolicy(): DEP_SYSTEM_POLICY_TYPE /* Windows.Win32.System.SystemInformation.DEP_SYSTEM_POLICY_TYPE */ {
-  return libKERNEL32.GetSystemDEPPolicy();
+  return libKERNEL32_dll.GetSystemDEPPolicy();
 }
 
 export function GetFirmwareType(
   FirmwareType: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32.GetFirmwareType(util.toPointer(FirmwareType)));
+  return util.boolFromFfi(libKERNEL32_dll.GetFirmwareType(util.toPointer(FirmwareType)));
 }
 
 export function VerifyVersionInfoA(
@@ -1846,7 +1879,7 @@ export function VerifyVersionInfoA(
   dwTypeMask: VER_FLAGS /* Windows.Win32.System.SystemInformation.VER_FLAGS */,
   dwlConditionMask: Deno.PointerValue /* u64 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32.VerifyVersionInfoA(util.toPointer(lpVersionInformation), dwTypeMask, dwlConditionMask));
+  return util.boolFromFfi(libKERNEL32_dll.VerifyVersionInfoA(util.toPointer(lpVersionInformation), dwTypeMask, dwlConditionMask));
 }
 
 export function VerifyVersionInfoW(
@@ -1854,6 +1887,6 @@ export function VerifyVersionInfoW(
   dwTypeMask: VER_FLAGS /* Windows.Win32.System.SystemInformation.VER_FLAGS */,
   dwlConditionMask: Deno.PointerValue /* u64 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32.VerifyVersionInfoW(util.toPointer(lpVersionInformation), dwTypeMask, dwlConditionMask));
+  return util.boolFromFfi(libKERNEL32_dll.VerifyVersionInfoW(util.toPointer(lpVersionInformation), dwTypeMask, dwlConditionMask));
 }
 

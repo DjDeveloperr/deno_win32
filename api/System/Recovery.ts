@@ -24,7 +24,7 @@ export type BOOL = number;
 // Native Libraries
 
 try {
-  var libKERNEL32 = Deno.dlopen("KERNEL32", {
+  var libKERNEL32_dll = Deno.dlopen("KERNEL32.dll", {
     RegisterApplicationRecoveryCallback: {
       parameters: ["pointer", "pointer", "u32", "u32"],
       result: "pointer",
@@ -68,22 +68,22 @@ export function RegisterApplicationRecoveryCallback(
   dwPingInterval: number /* u32 */,
   dwFlags: number /* u32 */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libKERNEL32.RegisterApplicationRecoveryCallback(util.toPointer(pRecoveyCallback), util.toPointer(pvParameter), dwPingInterval, dwFlags));
+  return util.pointerFromFfi(libKERNEL32_dll.RegisterApplicationRecoveryCallback(util.toPointer(pRecoveyCallback), util.toPointer(pvParameter), dwPingInterval, dwFlags));
 }
 
 export function UnregisterApplicationRecoveryCallback(): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libKERNEL32.UnregisterApplicationRecoveryCallback());
+  return util.pointerFromFfi(libKERNEL32_dll.UnregisterApplicationRecoveryCallback());
 }
 
 export function RegisterApplicationRestart(
   pwzCommandline: string | null /* Windows.Win32.Foundation.PWSTR */,
   dwFlags: REGISTER_APPLICATION_RESTART_FLAGS /* Windows.Win32.System.Recovery.REGISTER_APPLICATION_RESTART_FLAGS */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libKERNEL32.RegisterApplicationRestart(util.pwstrToFfi(pwzCommandline), dwFlags));
+  return util.pointerFromFfi(libKERNEL32_dll.RegisterApplicationRestart(util.pwstrToFfi(pwzCommandline), dwFlags));
 }
 
 export function UnregisterApplicationRestart(): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libKERNEL32.UnregisterApplicationRestart());
+  return util.pointerFromFfi(libKERNEL32_dll.UnregisterApplicationRestart());
 }
 
 export function GetApplicationRecoveryCallback(
@@ -93,7 +93,7 @@ export function GetApplicationRecoveryCallback(
   pdwPingInterval: Deno.PointerValue | Uint8Array | null /* ptr */,
   pdwFlags: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libKERNEL32.GetApplicationRecoveryCallback(util.toPointer(hProcess), util.toPointer(pRecoveryCallback), util.toPointer(ppvParameter), util.toPointer(pdwPingInterval), util.toPointer(pdwFlags)));
+  return util.pointerFromFfi(libKERNEL32_dll.GetApplicationRecoveryCallback(util.toPointer(hProcess), util.toPointer(pRecoveryCallback), util.toPointer(ppvParameter), util.toPointer(pdwPingInterval), util.toPointer(pdwFlags)));
 }
 
 export function GetApplicationRestartSettings(
@@ -102,18 +102,18 @@ export function GetApplicationRestartSettings(
   pcchSize: Deno.PointerValue | Uint8Array | null /* ptr */,
   pdwFlags: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libKERNEL32.GetApplicationRestartSettings(util.toPointer(hProcess), util.pwstrToFfi(pwzCommandline), util.toPointer(pcchSize), util.toPointer(pdwFlags)));
+  return util.pointerFromFfi(libKERNEL32_dll.GetApplicationRestartSettings(util.toPointer(hProcess), util.pwstrToFfi(pwzCommandline), util.toPointer(pcchSize), util.toPointer(pdwFlags)));
 }
 
 export function ApplicationRecoveryInProgress(
   pbCancelled: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libKERNEL32.ApplicationRecoveryInProgress(util.toPointer(pbCancelled)));
+  return util.pointerFromFfi(libKERNEL32_dll.ApplicationRecoveryInProgress(util.toPointer(pbCancelled)));
 }
 
 export function ApplicationRecoveryFinished(
   bSuccess: boolean /* Windows.Win32.Foundation.BOOL */,
 ): void /* void */ {
-  return libKERNEL32.ApplicationRecoveryFinished(util.boolToFfi(bSuccess));
+  return libKERNEL32_dll.ApplicationRecoveryFinished(util.boolToFfi(bSuccess));
 }
 

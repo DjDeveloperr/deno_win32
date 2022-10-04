@@ -28,6 +28,7 @@ export const ALLJOYN_TRAFFIC_TYPE_RAW_RELIABLE = 4;
 export const ALLJOYN_PROXIMITY_ANY = 255;
 export const ALLJOYN_PROXIMITY_PHYSICAL = 1;
 export const ALLJOYN_PROXIMITY_NETWORK = 2;
+export const ALLJOYN_NAMED_PIPE_CONNECT_SPEC = "npipe:";
 export const ALLJOYN_READ_READY = 1;
 export const ALLJOYN_WRITE_READY = 2;
 export const ALLJOYN_DISCONNECTED = 4;
@@ -1135,7 +1136,7 @@ export type BOOL = number;
 // Native Libraries
 
 try {
-  var libMSAJApi = Deno.dlopen("MSAJApi", {
+  var libMSAJApi_dll = Deno.dlopen("MSAJApi.dll", {
     AllJoynConnectToBus: {
       parameters: ["buffer"],
       result: "pointer",
@@ -3332,13 +3333,13 @@ try {
 export function AllJoynConnectToBus(
   connectionSpec: string | null /* Windows.Win32.Foundation.PWSTR */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */ {
-  return util.pointerFromFfi(libMSAJApi.AllJoynConnectToBus(util.pwstrToFfi(connectionSpec)));
+  return util.pointerFromFfi(libMSAJApi_dll.AllJoynConnectToBus(util.pwstrToFfi(connectionSpec)));
 }
 
 export function AllJoynCloseBusHandle(
   busHandle: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libMSAJApi.AllJoynCloseBusHandle(util.toPointer(busHandle)));
+  return util.boolFromFfi(libMSAJApi_dll.AllJoynCloseBusHandle(util.toPointer(busHandle)));
 }
 
 export function AllJoynSendToBus(
@@ -3348,7 +3349,7 @@ export function AllJoynSendToBus(
   bytesTransferred: Deno.PointerValue | Uint8Array | null /* ptr */,
   reserved: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libMSAJApi.AllJoynSendToBus(util.toPointer(connectedBusHandle), util.toPointer(buffer), bytesToWrite, util.toPointer(bytesTransferred), util.toPointer(reserved)));
+  return util.boolFromFfi(libMSAJApi_dll.AllJoynSendToBus(util.toPointer(connectedBusHandle), util.toPointer(buffer), bytesToWrite, util.toPointer(bytesTransferred), util.toPointer(reserved)));
 }
 
 export function AllJoynReceiveFromBus(
@@ -3358,7 +3359,7 @@ export function AllJoynReceiveFromBus(
   bytesTransferred: Deno.PointerValue | Uint8Array | null /* ptr */,
   reserved: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libMSAJApi.AllJoynReceiveFromBus(util.toPointer(connectedBusHandle), util.toPointer(buffer), bytesToRead, util.toPointer(bytesTransferred), util.toPointer(reserved)));
+  return util.boolFromFfi(libMSAJApi_dll.AllJoynReceiveFromBus(util.toPointer(connectedBusHandle), util.toPointer(buffer), bytesToRead, util.toPointer(bytesTransferred), util.toPointer(reserved)));
 }
 
 export function AllJoynEventSelect(
@@ -3366,7 +3367,7 @@ export function AllJoynEventSelect(
   eventHandle: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
   eventTypes: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libMSAJApi.AllJoynEventSelect(util.toPointer(connectedBusHandle), util.toPointer(eventHandle), eventTypes));
+  return util.boolFromFfi(libMSAJApi_dll.AllJoynEventSelect(util.toPointer(connectedBusHandle), util.toPointer(eventHandle), eventTypes));
 }
 
 export function AllJoynEnumEvents(
@@ -3374,7 +3375,7 @@ export function AllJoynEnumEvents(
   eventToReset: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
   eventTypes: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libMSAJApi.AllJoynEnumEvents(util.toPointer(connectedBusHandle), util.toPointer(eventToReset), util.toPointer(eventTypes)));
+  return util.boolFromFfi(libMSAJApi_dll.AllJoynEnumEvents(util.toPointer(connectedBusHandle), util.toPointer(eventToReset), util.toPointer(eventTypes)));
 }
 
 export function AllJoynCreateBus(
@@ -3382,93 +3383,93 @@ export function AllJoynCreateBus(
   inBufferSize: number /* u32 */,
   lpSecurityAttributes: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */ {
-  return util.pointerFromFfi(libMSAJApi.AllJoynCreateBus(outBufferSize, inBufferSize, util.toPointer(lpSecurityAttributes)));
+  return util.pointerFromFfi(libMSAJApi_dll.AllJoynCreateBus(outBufferSize, inBufferSize, util.toPointer(lpSecurityAttributes)));
 }
 
 export function AllJoynAcceptBusConnection(
   serverBusHandle: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
   abortEvent: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
 ): number /* u32 */ {
-  return libMSAJApi.AllJoynAcceptBusConnection(util.toPointer(serverBusHandle), util.toPointer(abortEvent));
+  return libMSAJApi_dll.AllJoynAcceptBusConnection(util.toPointer(serverBusHandle), util.toPointer(abortEvent));
 }
 
 export function alljoyn_unity_deferred_callbacks_process(): number /* i32 */ {
-  return libMSAJApi.alljoyn_unity_deferred_callbacks_process();
+  return libMSAJApi_dll.alljoyn_unity_deferred_callbacks_process();
 }
 
 export function alljoyn_unity_set_deferred_callback_mainthread_only(
   mainthread_only: number /* i32 */,
 ): void /* void */ {
-  return libMSAJApi.alljoyn_unity_set_deferred_callback_mainthread_only(mainthread_only);
+  return libMSAJApi_dll.alljoyn_unity_set_deferred_callback_mainthread_only(mainthread_only);
 }
 
 export function QCC_StatusText(
   status: QStatus /* Windows.Win32.Devices.AllJoyn.QStatus */,
 ): string | null /* Windows.Win32.Foundation.PSTR */ {
-  return util.pstrFromFfi(libMSAJApi.QCC_StatusText(status));
+  return util.pstrFromFfi(libMSAJApi_dll.QCC_StatusText(status));
 }
 
 export function alljoyn_msgarg_create(): Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_msgarg */ {
-  return util.pointerFromFfi(libMSAJApi.alljoyn_msgarg_create());
+  return util.pointerFromFfi(libMSAJApi_dll.alljoyn_msgarg_create());
 }
 
 export function alljoyn_msgarg_create_and_set(
   signature: string | null /* Windows.Win32.Foundation.PSTR */,
 ): Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_msgarg */ {
-  return util.pointerFromFfi(libMSAJApi.alljoyn_msgarg_create_and_set(util.pstrToFfi(signature)));
+  return util.pointerFromFfi(libMSAJApi_dll.alljoyn_msgarg_create_and_set(util.pstrToFfi(signature)));
 }
 
 export function alljoyn_msgarg_destroy(
   arg: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_msgarg */,
 ): void /* void */ {
-  return libMSAJApi.alljoyn_msgarg_destroy(util.toPointer(arg));
+  return libMSAJApi_dll.alljoyn_msgarg_destroy(util.toPointer(arg));
 }
 
 export function alljoyn_msgarg_array_create(
   size: Deno.PointerValue /* usize */,
 ): Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_msgarg */ {
-  return util.pointerFromFfi(libMSAJApi.alljoyn_msgarg_array_create(size));
+  return util.pointerFromFfi(libMSAJApi_dll.alljoyn_msgarg_array_create(size));
 }
 
 export function alljoyn_msgarg_array_element(
   arg: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_msgarg */,
   index: Deno.PointerValue /* usize */,
 ): Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_msgarg */ {
-  return util.pointerFromFfi(libMSAJApi.alljoyn_msgarg_array_element(util.toPointer(arg), index));
+  return util.pointerFromFfi(libMSAJApi_dll.alljoyn_msgarg_array_element(util.toPointer(arg), index));
 }
 
 export function alljoyn_msgarg_set(
   arg: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_msgarg */,
   signature: string | null /* Windows.Win32.Foundation.PSTR */,
 ): QStatus /* Windows.Win32.Devices.AllJoyn.QStatus */ {
-  return libMSAJApi.alljoyn_msgarg_set(util.toPointer(arg), util.pstrToFfi(signature));
+  return libMSAJApi_dll.alljoyn_msgarg_set(util.toPointer(arg), util.pstrToFfi(signature));
 }
 
 export function alljoyn_msgarg_get(
   arg: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_msgarg */,
   signature: string | null /* Windows.Win32.Foundation.PSTR */,
 ): QStatus /* Windows.Win32.Devices.AllJoyn.QStatus */ {
-  return libMSAJApi.alljoyn_msgarg_get(util.toPointer(arg), util.pstrToFfi(signature));
+  return libMSAJApi_dll.alljoyn_msgarg_get(util.toPointer(arg), util.pstrToFfi(signature));
 }
 
 export function alljoyn_msgarg_copy(
   source: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_msgarg */,
 ): Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_msgarg */ {
-  return util.pointerFromFfi(libMSAJApi.alljoyn_msgarg_copy(util.toPointer(source)));
+  return util.pointerFromFfi(libMSAJApi_dll.alljoyn_msgarg_copy(util.toPointer(source)));
 }
 
 export function alljoyn_msgarg_clone(
   destination: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_msgarg */,
   source: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_msgarg */,
 ): void /* void */ {
-  return libMSAJApi.alljoyn_msgarg_clone(util.toPointer(destination), util.toPointer(source));
+  return libMSAJApi_dll.alljoyn_msgarg_clone(util.toPointer(destination), util.toPointer(source));
 }
 
 export function alljoyn_msgarg_equal(
   lhv: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_msgarg */,
   rhv: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_msgarg */,
 ): number /* i32 */ {
-  return libMSAJApi.alljoyn_msgarg_equal(util.toPointer(lhv), util.toPointer(rhv));
+  return libMSAJApi_dll.alljoyn_msgarg_equal(util.toPointer(lhv), util.toPointer(rhv));
 }
 
 export function alljoyn_msgarg_array_set(
@@ -3476,7 +3477,7 @@ export function alljoyn_msgarg_array_set(
   numArgs: Deno.PointerValue | Uint8Array | null /* ptr */,
   signature: string | null /* Windows.Win32.Foundation.PSTR */,
 ): QStatus /* Windows.Win32.Devices.AllJoyn.QStatus */ {
-  return libMSAJApi.alljoyn_msgarg_array_set(util.toPointer(args), util.toPointer(numArgs), util.pstrToFfi(signature));
+  return libMSAJApi_dll.alljoyn_msgarg_array_set(util.toPointer(args), util.toPointer(numArgs), util.pstrToFfi(signature));
 }
 
 export function alljoyn_msgarg_array_get(
@@ -3484,7 +3485,7 @@ export function alljoyn_msgarg_array_get(
   numArgs: Deno.PointerValue /* usize */,
   signature: string | null /* Windows.Win32.Foundation.PSTR */,
 ): QStatus /* Windows.Win32.Devices.AllJoyn.QStatus */ {
-  return libMSAJApi.alljoyn_msgarg_array_get(util.toPointer(args), numArgs, util.pstrToFfi(signature));
+  return libMSAJApi_dll.alljoyn_msgarg_array_get(util.toPointer(args), numArgs, util.pstrToFfi(signature));
 }
 
 export function alljoyn_msgarg_tostring(
@@ -3493,7 +3494,7 @@ export function alljoyn_msgarg_tostring(
   buf: Deno.PointerValue /* usize */,
   indent: Deno.PointerValue /* usize */,
 ): Deno.PointerValue /* usize */ {
-  return libMSAJApi.alljoyn_msgarg_tostring(util.toPointer(arg), util.pstrToFfi(str), buf, indent);
+  return libMSAJApi_dll.alljoyn_msgarg_tostring(util.toPointer(arg), util.pstrToFfi(str), buf, indent);
 }
 
 export function alljoyn_msgarg_array_tostring(
@@ -3503,7 +3504,7 @@ export function alljoyn_msgarg_array_tostring(
   buf: Deno.PointerValue /* usize */,
   indent: Deno.PointerValue /* usize */,
 ): Deno.PointerValue /* usize */ {
-  return libMSAJApi.alljoyn_msgarg_array_tostring(util.toPointer(args), numArgs, util.pstrToFfi(str), buf, indent);
+  return libMSAJApi_dll.alljoyn_msgarg_array_tostring(util.toPointer(args), numArgs, util.pstrToFfi(str), buf, indent);
 }
 
 export function alljoyn_msgarg_signature(
@@ -3511,7 +3512,7 @@ export function alljoyn_msgarg_signature(
   str: string | null /* Windows.Win32.Foundation.PSTR */,
   buf: Deno.PointerValue /* usize */,
 ): Deno.PointerValue /* usize */ {
-  return libMSAJApi.alljoyn_msgarg_signature(util.toPointer(arg), util.pstrToFfi(str), buf);
+  return libMSAJApi_dll.alljoyn_msgarg_signature(util.toPointer(arg), util.pstrToFfi(str), buf);
 }
 
 export function alljoyn_msgarg_array_signature(
@@ -3520,39 +3521,39 @@ export function alljoyn_msgarg_array_signature(
   str: string | null /* Windows.Win32.Foundation.PSTR */,
   buf: Deno.PointerValue /* usize */,
 ): Deno.PointerValue /* usize */ {
-  return libMSAJApi.alljoyn_msgarg_array_signature(util.toPointer(values), numValues, util.pstrToFfi(str), buf);
+  return libMSAJApi_dll.alljoyn_msgarg_array_signature(util.toPointer(values), numValues, util.pstrToFfi(str), buf);
 }
 
 export function alljoyn_msgarg_hassignature(
   arg: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_msgarg */,
   signature: string | null /* Windows.Win32.Foundation.PSTR */,
 ): number /* i32 */ {
-  return libMSAJApi.alljoyn_msgarg_hassignature(util.toPointer(arg), util.pstrToFfi(signature));
+  return libMSAJApi_dll.alljoyn_msgarg_hassignature(util.toPointer(arg), util.pstrToFfi(signature));
 }
 
 export function alljoyn_msgarg_getdictelement(
   arg: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_msgarg */,
   elemSig: string | null /* Windows.Win32.Foundation.PSTR */,
 ): QStatus /* Windows.Win32.Devices.AllJoyn.QStatus */ {
-  return libMSAJApi.alljoyn_msgarg_getdictelement(util.toPointer(arg), util.pstrToFfi(elemSig));
+  return libMSAJApi_dll.alljoyn_msgarg_getdictelement(util.toPointer(arg), util.pstrToFfi(elemSig));
 }
 
 export function alljoyn_msgarg_gettype(
   arg: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_msgarg */,
 ): alljoyn_typeid /* Windows.Win32.Devices.AllJoyn.alljoyn_typeid */ {
-  return libMSAJApi.alljoyn_msgarg_gettype(util.toPointer(arg));
+  return libMSAJApi_dll.alljoyn_msgarg_gettype(util.toPointer(arg));
 }
 
 export function alljoyn_msgarg_clear(
   arg: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_msgarg */,
 ): void /* void */ {
-  return libMSAJApi.alljoyn_msgarg_clear(util.toPointer(arg));
+  return libMSAJApi_dll.alljoyn_msgarg_clear(util.toPointer(arg));
 }
 
 export function alljoyn_msgarg_stabilize(
   arg: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_msgarg */,
 ): void /* void */ {
-  return libMSAJApi.alljoyn_msgarg_stabilize(util.toPointer(arg));
+  return libMSAJApi_dll.alljoyn_msgarg_stabilize(util.toPointer(arg));
 }
 
 export function alljoyn_msgarg_array_set_offset(
@@ -3561,189 +3562,189 @@ export function alljoyn_msgarg_array_set_offset(
   numArgs: Deno.PointerValue | Uint8Array | null /* ptr */,
   signature: string | null /* Windows.Win32.Foundation.PSTR */,
 ): QStatus /* Windows.Win32.Devices.AllJoyn.QStatus */ {
-  return libMSAJApi.alljoyn_msgarg_array_set_offset(util.toPointer(args), argOffset, util.toPointer(numArgs), util.pstrToFfi(signature));
+  return libMSAJApi_dll.alljoyn_msgarg_array_set_offset(util.toPointer(args), argOffset, util.toPointer(numArgs), util.pstrToFfi(signature));
 }
 
 export function alljoyn_msgarg_set_and_stabilize(
   arg: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_msgarg */,
   signature: string | null /* Windows.Win32.Foundation.PSTR */,
 ): QStatus /* Windows.Win32.Devices.AllJoyn.QStatus */ {
-  return libMSAJApi.alljoyn_msgarg_set_and_stabilize(util.toPointer(arg), util.pstrToFfi(signature));
+  return libMSAJApi_dll.alljoyn_msgarg_set_and_stabilize(util.toPointer(arg), util.pstrToFfi(signature));
 }
 
 export function alljoyn_msgarg_set_uint8(
   arg: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_msgarg */,
   y: number /* u8 */,
 ): QStatus /* Windows.Win32.Devices.AllJoyn.QStatus */ {
-  return libMSAJApi.alljoyn_msgarg_set_uint8(util.toPointer(arg), y);
+  return libMSAJApi_dll.alljoyn_msgarg_set_uint8(util.toPointer(arg), y);
 }
 
 export function alljoyn_msgarg_set_bool(
   arg: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_msgarg */,
   b: number /* i32 */,
 ): QStatus /* Windows.Win32.Devices.AllJoyn.QStatus */ {
-  return libMSAJApi.alljoyn_msgarg_set_bool(util.toPointer(arg), b);
+  return libMSAJApi_dll.alljoyn_msgarg_set_bool(util.toPointer(arg), b);
 }
 
 export function alljoyn_msgarg_set_int16(
   arg: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_msgarg */,
   n: number /* i16 */,
 ): QStatus /* Windows.Win32.Devices.AllJoyn.QStatus */ {
-  return libMSAJApi.alljoyn_msgarg_set_int16(util.toPointer(arg), n);
+  return libMSAJApi_dll.alljoyn_msgarg_set_int16(util.toPointer(arg), n);
 }
 
 export function alljoyn_msgarg_set_uint16(
   arg: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_msgarg */,
   q: number /* u16 */,
 ): QStatus /* Windows.Win32.Devices.AllJoyn.QStatus */ {
-  return libMSAJApi.alljoyn_msgarg_set_uint16(util.toPointer(arg), q);
+  return libMSAJApi_dll.alljoyn_msgarg_set_uint16(util.toPointer(arg), q);
 }
 
 export function alljoyn_msgarg_set_int32(
   arg: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_msgarg */,
   i: number /* i32 */,
 ): QStatus /* Windows.Win32.Devices.AllJoyn.QStatus */ {
-  return libMSAJApi.alljoyn_msgarg_set_int32(util.toPointer(arg), i);
+  return libMSAJApi_dll.alljoyn_msgarg_set_int32(util.toPointer(arg), i);
 }
 
 export function alljoyn_msgarg_set_uint32(
   arg: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_msgarg */,
   u: number /* u32 */,
 ): QStatus /* Windows.Win32.Devices.AllJoyn.QStatus */ {
-  return libMSAJApi.alljoyn_msgarg_set_uint32(util.toPointer(arg), u);
+  return libMSAJApi_dll.alljoyn_msgarg_set_uint32(util.toPointer(arg), u);
 }
 
 export function alljoyn_msgarg_set_int64(
   arg: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_msgarg */,
   x: Deno.PointerValue /* i64 */,
 ): QStatus /* Windows.Win32.Devices.AllJoyn.QStatus */ {
-  return libMSAJApi.alljoyn_msgarg_set_int64(util.toPointer(arg), x);
+  return libMSAJApi_dll.alljoyn_msgarg_set_int64(util.toPointer(arg), x);
 }
 
 export function alljoyn_msgarg_set_uint64(
   arg: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_msgarg */,
   t: Deno.PointerValue /* u64 */,
 ): QStatus /* Windows.Win32.Devices.AllJoyn.QStatus */ {
-  return libMSAJApi.alljoyn_msgarg_set_uint64(util.toPointer(arg), t);
+  return libMSAJApi_dll.alljoyn_msgarg_set_uint64(util.toPointer(arg), t);
 }
 
 export function alljoyn_msgarg_set_double(
   arg: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_msgarg */,
   d: number /* f64 */,
 ): QStatus /* Windows.Win32.Devices.AllJoyn.QStatus */ {
-  return libMSAJApi.alljoyn_msgarg_set_double(util.toPointer(arg), d);
+  return libMSAJApi_dll.alljoyn_msgarg_set_double(util.toPointer(arg), d);
 }
 
 export function alljoyn_msgarg_set_string(
   arg: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_msgarg */,
   s: string | null /* Windows.Win32.Foundation.PSTR */,
 ): QStatus /* Windows.Win32.Devices.AllJoyn.QStatus */ {
-  return libMSAJApi.alljoyn_msgarg_set_string(util.toPointer(arg), util.pstrToFfi(s));
+  return libMSAJApi_dll.alljoyn_msgarg_set_string(util.toPointer(arg), util.pstrToFfi(s));
 }
 
 export function alljoyn_msgarg_set_objectpath(
   arg: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_msgarg */,
   o: string | null /* Windows.Win32.Foundation.PSTR */,
 ): QStatus /* Windows.Win32.Devices.AllJoyn.QStatus */ {
-  return libMSAJApi.alljoyn_msgarg_set_objectpath(util.toPointer(arg), util.pstrToFfi(o));
+  return libMSAJApi_dll.alljoyn_msgarg_set_objectpath(util.toPointer(arg), util.pstrToFfi(o));
 }
 
 export function alljoyn_msgarg_set_signature(
   arg: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_msgarg */,
   g: string | null /* Windows.Win32.Foundation.PSTR */,
 ): QStatus /* Windows.Win32.Devices.AllJoyn.QStatus */ {
-  return libMSAJApi.alljoyn_msgarg_set_signature(util.toPointer(arg), util.pstrToFfi(g));
+  return libMSAJApi_dll.alljoyn_msgarg_set_signature(util.toPointer(arg), util.pstrToFfi(g));
 }
 
 export function alljoyn_msgarg_get_uint8(
   arg: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_msgarg */,
   y: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): QStatus /* Windows.Win32.Devices.AllJoyn.QStatus */ {
-  return libMSAJApi.alljoyn_msgarg_get_uint8(util.toPointer(arg), util.toPointer(y));
+  return libMSAJApi_dll.alljoyn_msgarg_get_uint8(util.toPointer(arg), util.toPointer(y));
 }
 
 export function alljoyn_msgarg_get_bool(
   arg: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_msgarg */,
   b: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): QStatus /* Windows.Win32.Devices.AllJoyn.QStatus */ {
-  return libMSAJApi.alljoyn_msgarg_get_bool(util.toPointer(arg), util.toPointer(b));
+  return libMSAJApi_dll.alljoyn_msgarg_get_bool(util.toPointer(arg), util.toPointer(b));
 }
 
 export function alljoyn_msgarg_get_int16(
   arg: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_msgarg */,
   n: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): QStatus /* Windows.Win32.Devices.AllJoyn.QStatus */ {
-  return libMSAJApi.alljoyn_msgarg_get_int16(util.toPointer(arg), util.toPointer(n));
+  return libMSAJApi_dll.alljoyn_msgarg_get_int16(util.toPointer(arg), util.toPointer(n));
 }
 
 export function alljoyn_msgarg_get_uint16(
   arg: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_msgarg */,
   q: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): QStatus /* Windows.Win32.Devices.AllJoyn.QStatus */ {
-  return libMSAJApi.alljoyn_msgarg_get_uint16(util.toPointer(arg), util.toPointer(q));
+  return libMSAJApi_dll.alljoyn_msgarg_get_uint16(util.toPointer(arg), util.toPointer(q));
 }
 
 export function alljoyn_msgarg_get_int32(
   arg: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_msgarg */,
   i: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): QStatus /* Windows.Win32.Devices.AllJoyn.QStatus */ {
-  return libMSAJApi.alljoyn_msgarg_get_int32(util.toPointer(arg), util.toPointer(i));
+  return libMSAJApi_dll.alljoyn_msgarg_get_int32(util.toPointer(arg), util.toPointer(i));
 }
 
 export function alljoyn_msgarg_get_uint32(
   arg: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_msgarg */,
   u: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): QStatus /* Windows.Win32.Devices.AllJoyn.QStatus */ {
-  return libMSAJApi.alljoyn_msgarg_get_uint32(util.toPointer(arg), util.toPointer(u));
+  return libMSAJApi_dll.alljoyn_msgarg_get_uint32(util.toPointer(arg), util.toPointer(u));
 }
 
 export function alljoyn_msgarg_get_int64(
   arg: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_msgarg */,
   x: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): QStatus /* Windows.Win32.Devices.AllJoyn.QStatus */ {
-  return libMSAJApi.alljoyn_msgarg_get_int64(util.toPointer(arg), util.toPointer(x));
+  return libMSAJApi_dll.alljoyn_msgarg_get_int64(util.toPointer(arg), util.toPointer(x));
 }
 
 export function alljoyn_msgarg_get_uint64(
   arg: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_msgarg */,
   t: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): QStatus /* Windows.Win32.Devices.AllJoyn.QStatus */ {
-  return libMSAJApi.alljoyn_msgarg_get_uint64(util.toPointer(arg), util.toPointer(t));
+  return libMSAJApi_dll.alljoyn_msgarg_get_uint64(util.toPointer(arg), util.toPointer(t));
 }
 
 export function alljoyn_msgarg_get_double(
   arg: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_msgarg */,
   d: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): QStatus /* Windows.Win32.Devices.AllJoyn.QStatus */ {
-  return libMSAJApi.alljoyn_msgarg_get_double(util.toPointer(arg), util.toPointer(d));
+  return libMSAJApi_dll.alljoyn_msgarg_get_double(util.toPointer(arg), util.toPointer(d));
 }
 
 export function alljoyn_msgarg_get_string(
   arg: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_msgarg */,
   s: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): QStatus /* Windows.Win32.Devices.AllJoyn.QStatus */ {
-  return libMSAJApi.alljoyn_msgarg_get_string(util.toPointer(arg), util.toPointer(s));
+  return libMSAJApi_dll.alljoyn_msgarg_get_string(util.toPointer(arg), util.toPointer(s));
 }
 
 export function alljoyn_msgarg_get_objectpath(
   arg: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_msgarg */,
   o: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): QStatus /* Windows.Win32.Devices.AllJoyn.QStatus */ {
-  return libMSAJApi.alljoyn_msgarg_get_objectpath(util.toPointer(arg), util.toPointer(o));
+  return libMSAJApi_dll.alljoyn_msgarg_get_objectpath(util.toPointer(arg), util.toPointer(o));
 }
 
 export function alljoyn_msgarg_get_signature(
   arg: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_msgarg */,
   g: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): QStatus /* Windows.Win32.Devices.AllJoyn.QStatus */ {
-  return libMSAJApi.alljoyn_msgarg_get_signature(util.toPointer(arg), util.toPointer(g));
+  return libMSAJApi_dll.alljoyn_msgarg_get_signature(util.toPointer(arg), util.toPointer(g));
 }
 
 export function alljoyn_msgarg_get_variant(
   arg: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_msgarg */,
   v: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_msgarg */,
 ): QStatus /* Windows.Win32.Devices.AllJoyn.QStatus */ {
-  return libMSAJApi.alljoyn_msgarg_get_variant(util.toPointer(arg), util.toPointer(v));
+  return libMSAJApi_dll.alljoyn_msgarg_get_variant(util.toPointer(arg), util.toPointer(v));
 }
 
 export function alljoyn_msgarg_set_uint8_array(
@@ -3751,7 +3752,7 @@ export function alljoyn_msgarg_set_uint8_array(
   length: Deno.PointerValue /* usize */,
   ay: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): QStatus /* Windows.Win32.Devices.AllJoyn.QStatus */ {
-  return libMSAJApi.alljoyn_msgarg_set_uint8_array(util.toPointer(arg), length, util.toPointer(ay));
+  return libMSAJApi_dll.alljoyn_msgarg_set_uint8_array(util.toPointer(arg), length, util.toPointer(ay));
 }
 
 export function alljoyn_msgarg_set_bool_array(
@@ -3759,7 +3760,7 @@ export function alljoyn_msgarg_set_bool_array(
   length: Deno.PointerValue /* usize */,
   ab: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): QStatus /* Windows.Win32.Devices.AllJoyn.QStatus */ {
-  return libMSAJApi.alljoyn_msgarg_set_bool_array(util.toPointer(arg), length, util.toPointer(ab));
+  return libMSAJApi_dll.alljoyn_msgarg_set_bool_array(util.toPointer(arg), length, util.toPointer(ab));
 }
 
 export function alljoyn_msgarg_set_int16_array(
@@ -3767,7 +3768,7 @@ export function alljoyn_msgarg_set_int16_array(
   length: Deno.PointerValue /* usize */,
   an: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): QStatus /* Windows.Win32.Devices.AllJoyn.QStatus */ {
-  return libMSAJApi.alljoyn_msgarg_set_int16_array(util.toPointer(arg), length, util.toPointer(an));
+  return libMSAJApi_dll.alljoyn_msgarg_set_int16_array(util.toPointer(arg), length, util.toPointer(an));
 }
 
 export function alljoyn_msgarg_set_uint16_array(
@@ -3775,7 +3776,7 @@ export function alljoyn_msgarg_set_uint16_array(
   length: Deno.PointerValue /* usize */,
   aq: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): QStatus /* Windows.Win32.Devices.AllJoyn.QStatus */ {
-  return libMSAJApi.alljoyn_msgarg_set_uint16_array(util.toPointer(arg), length, util.toPointer(aq));
+  return libMSAJApi_dll.alljoyn_msgarg_set_uint16_array(util.toPointer(arg), length, util.toPointer(aq));
 }
 
 export function alljoyn_msgarg_set_int32_array(
@@ -3783,7 +3784,7 @@ export function alljoyn_msgarg_set_int32_array(
   length: Deno.PointerValue /* usize */,
   ai: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): QStatus /* Windows.Win32.Devices.AllJoyn.QStatus */ {
-  return libMSAJApi.alljoyn_msgarg_set_int32_array(util.toPointer(arg), length, util.toPointer(ai));
+  return libMSAJApi_dll.alljoyn_msgarg_set_int32_array(util.toPointer(arg), length, util.toPointer(ai));
 }
 
 export function alljoyn_msgarg_set_uint32_array(
@@ -3791,7 +3792,7 @@ export function alljoyn_msgarg_set_uint32_array(
   length: Deno.PointerValue /* usize */,
   au: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): QStatus /* Windows.Win32.Devices.AllJoyn.QStatus */ {
-  return libMSAJApi.alljoyn_msgarg_set_uint32_array(util.toPointer(arg), length, util.toPointer(au));
+  return libMSAJApi_dll.alljoyn_msgarg_set_uint32_array(util.toPointer(arg), length, util.toPointer(au));
 }
 
 export function alljoyn_msgarg_set_int64_array(
@@ -3799,7 +3800,7 @@ export function alljoyn_msgarg_set_int64_array(
   length: Deno.PointerValue /* usize */,
   ax: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): QStatus /* Windows.Win32.Devices.AllJoyn.QStatus */ {
-  return libMSAJApi.alljoyn_msgarg_set_int64_array(util.toPointer(arg), length, util.toPointer(ax));
+  return libMSAJApi_dll.alljoyn_msgarg_set_int64_array(util.toPointer(arg), length, util.toPointer(ax));
 }
 
 export function alljoyn_msgarg_set_uint64_array(
@@ -3807,7 +3808,7 @@ export function alljoyn_msgarg_set_uint64_array(
   length: Deno.PointerValue /* usize */,
   at: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): QStatus /* Windows.Win32.Devices.AllJoyn.QStatus */ {
-  return libMSAJApi.alljoyn_msgarg_set_uint64_array(util.toPointer(arg), length, util.toPointer(at));
+  return libMSAJApi_dll.alljoyn_msgarg_set_uint64_array(util.toPointer(arg), length, util.toPointer(at));
 }
 
 export function alljoyn_msgarg_set_double_array(
@@ -3815,7 +3816,7 @@ export function alljoyn_msgarg_set_double_array(
   length: Deno.PointerValue /* usize */,
   ad: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): QStatus /* Windows.Win32.Devices.AllJoyn.QStatus */ {
-  return libMSAJApi.alljoyn_msgarg_set_double_array(util.toPointer(arg), length, util.toPointer(ad));
+  return libMSAJApi_dll.alljoyn_msgarg_set_double_array(util.toPointer(arg), length, util.toPointer(ad));
 }
 
 export function alljoyn_msgarg_set_string_array(
@@ -3823,7 +3824,7 @@ export function alljoyn_msgarg_set_string_array(
   length: Deno.PointerValue /* usize */,
   as: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): QStatus /* Windows.Win32.Devices.AllJoyn.QStatus */ {
-  return libMSAJApi.alljoyn_msgarg_set_string_array(util.toPointer(arg), length, util.toPointer(as));
+  return libMSAJApi_dll.alljoyn_msgarg_set_string_array(util.toPointer(arg), length, util.toPointer(as));
 }
 
 export function alljoyn_msgarg_set_objectpath_array(
@@ -3831,7 +3832,7 @@ export function alljoyn_msgarg_set_objectpath_array(
   length: Deno.PointerValue /* usize */,
   ao: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): QStatus /* Windows.Win32.Devices.AllJoyn.QStatus */ {
-  return libMSAJApi.alljoyn_msgarg_set_objectpath_array(util.toPointer(arg), length, util.toPointer(ao));
+  return libMSAJApi_dll.alljoyn_msgarg_set_objectpath_array(util.toPointer(arg), length, util.toPointer(ao));
 }
 
 export function alljoyn_msgarg_set_signature_array(
@@ -3839,7 +3840,7 @@ export function alljoyn_msgarg_set_signature_array(
   length: Deno.PointerValue /* usize */,
   ag: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): QStatus /* Windows.Win32.Devices.AllJoyn.QStatus */ {
-  return libMSAJApi.alljoyn_msgarg_set_signature_array(util.toPointer(arg), length, util.toPointer(ag));
+  return libMSAJApi_dll.alljoyn_msgarg_set_signature_array(util.toPointer(arg), length, util.toPointer(ag));
 }
 
 export function alljoyn_msgarg_get_uint8_array(
@@ -3847,7 +3848,7 @@ export function alljoyn_msgarg_get_uint8_array(
   length: Deno.PointerValue | Uint8Array | null /* ptr */,
   ay: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): QStatus /* Windows.Win32.Devices.AllJoyn.QStatus */ {
-  return libMSAJApi.alljoyn_msgarg_get_uint8_array(util.toPointer(arg), util.toPointer(length), util.toPointer(ay));
+  return libMSAJApi_dll.alljoyn_msgarg_get_uint8_array(util.toPointer(arg), util.toPointer(length), util.toPointer(ay));
 }
 
 export function alljoyn_msgarg_get_bool_array(
@@ -3855,7 +3856,7 @@ export function alljoyn_msgarg_get_bool_array(
   length: Deno.PointerValue | Uint8Array | null /* ptr */,
   ab: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): QStatus /* Windows.Win32.Devices.AllJoyn.QStatus */ {
-  return libMSAJApi.alljoyn_msgarg_get_bool_array(util.toPointer(arg), util.toPointer(length), util.toPointer(ab));
+  return libMSAJApi_dll.alljoyn_msgarg_get_bool_array(util.toPointer(arg), util.toPointer(length), util.toPointer(ab));
 }
 
 export function alljoyn_msgarg_get_int16_array(
@@ -3863,7 +3864,7 @@ export function alljoyn_msgarg_get_int16_array(
   length: Deno.PointerValue | Uint8Array | null /* ptr */,
   an: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): QStatus /* Windows.Win32.Devices.AllJoyn.QStatus */ {
-  return libMSAJApi.alljoyn_msgarg_get_int16_array(util.toPointer(arg), util.toPointer(length), util.toPointer(an));
+  return libMSAJApi_dll.alljoyn_msgarg_get_int16_array(util.toPointer(arg), util.toPointer(length), util.toPointer(an));
 }
 
 export function alljoyn_msgarg_get_uint16_array(
@@ -3871,7 +3872,7 @@ export function alljoyn_msgarg_get_uint16_array(
   length: Deno.PointerValue | Uint8Array | null /* ptr */,
   aq: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): QStatus /* Windows.Win32.Devices.AllJoyn.QStatus */ {
-  return libMSAJApi.alljoyn_msgarg_get_uint16_array(util.toPointer(arg), util.toPointer(length), util.toPointer(aq));
+  return libMSAJApi_dll.alljoyn_msgarg_get_uint16_array(util.toPointer(arg), util.toPointer(length), util.toPointer(aq));
 }
 
 export function alljoyn_msgarg_get_int32_array(
@@ -3879,7 +3880,7 @@ export function alljoyn_msgarg_get_int32_array(
   length: Deno.PointerValue | Uint8Array | null /* ptr */,
   ai: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): QStatus /* Windows.Win32.Devices.AllJoyn.QStatus */ {
-  return libMSAJApi.alljoyn_msgarg_get_int32_array(util.toPointer(arg), util.toPointer(length), util.toPointer(ai));
+  return libMSAJApi_dll.alljoyn_msgarg_get_int32_array(util.toPointer(arg), util.toPointer(length), util.toPointer(ai));
 }
 
 export function alljoyn_msgarg_get_uint32_array(
@@ -3887,7 +3888,7 @@ export function alljoyn_msgarg_get_uint32_array(
   length: Deno.PointerValue | Uint8Array | null /* ptr */,
   au: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): QStatus /* Windows.Win32.Devices.AllJoyn.QStatus */ {
-  return libMSAJApi.alljoyn_msgarg_get_uint32_array(util.toPointer(arg), util.toPointer(length), util.toPointer(au));
+  return libMSAJApi_dll.alljoyn_msgarg_get_uint32_array(util.toPointer(arg), util.toPointer(length), util.toPointer(au));
 }
 
 export function alljoyn_msgarg_get_int64_array(
@@ -3895,7 +3896,7 @@ export function alljoyn_msgarg_get_int64_array(
   length: Deno.PointerValue | Uint8Array | null /* ptr */,
   ax: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): QStatus /* Windows.Win32.Devices.AllJoyn.QStatus */ {
-  return libMSAJApi.alljoyn_msgarg_get_int64_array(util.toPointer(arg), util.toPointer(length), util.toPointer(ax));
+  return libMSAJApi_dll.alljoyn_msgarg_get_int64_array(util.toPointer(arg), util.toPointer(length), util.toPointer(ax));
 }
 
 export function alljoyn_msgarg_get_uint64_array(
@@ -3903,7 +3904,7 @@ export function alljoyn_msgarg_get_uint64_array(
   length: Deno.PointerValue | Uint8Array | null /* ptr */,
   at: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): QStatus /* Windows.Win32.Devices.AllJoyn.QStatus */ {
-  return libMSAJApi.alljoyn_msgarg_get_uint64_array(util.toPointer(arg), util.toPointer(length), util.toPointer(at));
+  return libMSAJApi_dll.alljoyn_msgarg_get_uint64_array(util.toPointer(arg), util.toPointer(length), util.toPointer(at));
 }
 
 export function alljoyn_msgarg_get_double_array(
@@ -3911,7 +3912,7 @@ export function alljoyn_msgarg_get_double_array(
   length: Deno.PointerValue | Uint8Array | null /* ptr */,
   ad: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): QStatus /* Windows.Win32.Devices.AllJoyn.QStatus */ {
-  return libMSAJApi.alljoyn_msgarg_get_double_array(util.toPointer(arg), util.toPointer(length), util.toPointer(ad));
+  return libMSAJApi_dll.alljoyn_msgarg_get_double_array(util.toPointer(arg), util.toPointer(length), util.toPointer(ad));
 }
 
 export function alljoyn_msgarg_get_variant_array(
@@ -3920,13 +3921,13 @@ export function alljoyn_msgarg_get_variant_array(
   length: Deno.PointerValue | Uint8Array | null /* ptr */,
   av: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): QStatus /* Windows.Win32.Devices.AllJoyn.QStatus */ {
-  return libMSAJApi.alljoyn_msgarg_get_variant_array(util.toPointer(arg), util.pstrToFfi(signature), util.toPointer(length), util.toPointer(av));
+  return libMSAJApi_dll.alljoyn_msgarg_get_variant_array(util.toPointer(arg), util.pstrToFfi(signature), util.toPointer(length), util.toPointer(av));
 }
 
 export function alljoyn_msgarg_get_array_numberofelements(
   arg: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_msgarg */,
 ): Deno.PointerValue /* usize */ {
-  return libMSAJApi.alljoyn_msgarg_get_array_numberofelements(util.toPointer(arg));
+  return libMSAJApi_dll.alljoyn_msgarg_get_array_numberofelements(util.toPointer(arg));
 }
 
 export function alljoyn_msgarg_get_array_element(
@@ -3934,26 +3935,26 @@ export function alljoyn_msgarg_get_array_element(
   index: Deno.PointerValue /* usize */,
   element: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): void /* void */ {
-  return libMSAJApi.alljoyn_msgarg_get_array_element(util.toPointer(arg), index, util.toPointer(element));
+  return libMSAJApi_dll.alljoyn_msgarg_get_array_element(util.toPointer(arg), index, util.toPointer(element));
 }
 
 export function alljoyn_msgarg_get_array_elementsignature(
   arg: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_msgarg */,
   index: Deno.PointerValue /* usize */,
 ): string | null /* Windows.Win32.Foundation.PSTR */ {
-  return util.pstrFromFfi(libMSAJApi.alljoyn_msgarg_get_array_elementsignature(util.toPointer(arg), index));
+  return util.pstrFromFfi(libMSAJApi_dll.alljoyn_msgarg_get_array_elementsignature(util.toPointer(arg), index));
 }
 
 export function alljoyn_msgarg_getkey(
   arg: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_msgarg */,
 ): Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_msgarg */ {
-  return util.pointerFromFfi(libMSAJApi.alljoyn_msgarg_getkey(util.toPointer(arg)));
+  return util.pointerFromFfi(libMSAJApi_dll.alljoyn_msgarg_getkey(util.toPointer(arg)));
 }
 
 export function alljoyn_msgarg_getvalue(
   arg: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_msgarg */,
 ): Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_msgarg */ {
-  return util.pointerFromFfi(libMSAJApi.alljoyn_msgarg_getvalue(util.toPointer(arg)));
+  return util.pointerFromFfi(libMSAJApi_dll.alljoyn_msgarg_getvalue(util.toPointer(arg)));
 }
 
 export function alljoyn_msgarg_setdictentry(
@@ -3961,7 +3962,7 @@ export function alljoyn_msgarg_setdictentry(
   key: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_msgarg */,
   value: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_msgarg */,
 ): QStatus /* Windows.Win32.Devices.AllJoyn.QStatus */ {
-  return libMSAJApi.alljoyn_msgarg_setdictentry(util.toPointer(arg), util.toPointer(key), util.toPointer(value));
+  return libMSAJApi_dll.alljoyn_msgarg_setdictentry(util.toPointer(arg), util.toPointer(key), util.toPointer(value));
 }
 
 export function alljoyn_msgarg_setstruct(
@@ -3969,57 +3970,57 @@ export function alljoyn_msgarg_setstruct(
   struct_members: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_msgarg */,
   num_members: Deno.PointerValue /* usize */,
 ): QStatus /* Windows.Win32.Devices.AllJoyn.QStatus */ {
-  return libMSAJApi.alljoyn_msgarg_setstruct(util.toPointer(arg), util.toPointer(struct_members), num_members);
+  return libMSAJApi_dll.alljoyn_msgarg_setstruct(util.toPointer(arg), util.toPointer(struct_members), num_members);
 }
 
 export function alljoyn_msgarg_getnummembers(
   arg: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_msgarg */,
 ): Deno.PointerValue /* usize */ {
-  return libMSAJApi.alljoyn_msgarg_getnummembers(util.toPointer(arg));
+  return libMSAJApi_dll.alljoyn_msgarg_getnummembers(util.toPointer(arg));
 }
 
 export function alljoyn_msgarg_getmember(
   arg: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_msgarg */,
   index: Deno.PointerValue /* usize */,
 ): Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_msgarg */ {
-  return util.pointerFromFfi(libMSAJApi.alljoyn_msgarg_getmember(util.toPointer(arg), index));
+  return util.pointerFromFfi(libMSAJApi_dll.alljoyn_msgarg_getmember(util.toPointer(arg), index));
 }
 
 export function alljoyn_aboutdata_create_empty(): Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_aboutdata */ {
-  return util.pointerFromFfi(libMSAJApi.alljoyn_aboutdata_create_empty());
+  return util.pointerFromFfi(libMSAJApi_dll.alljoyn_aboutdata_create_empty());
 }
 
 export function alljoyn_aboutdata_create(
   defaultLanguage: string | null /* Windows.Win32.Foundation.PSTR */,
 ): Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_aboutdata */ {
-  return util.pointerFromFfi(libMSAJApi.alljoyn_aboutdata_create(util.pstrToFfi(defaultLanguage)));
+  return util.pointerFromFfi(libMSAJApi_dll.alljoyn_aboutdata_create(util.pstrToFfi(defaultLanguage)));
 }
 
 export function alljoyn_aboutdata_create_full(
   arg: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_msgarg */,
   language: string | null /* Windows.Win32.Foundation.PSTR */,
 ): Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_aboutdata */ {
-  return util.pointerFromFfi(libMSAJApi.alljoyn_aboutdata_create_full(util.toPointer(arg), util.pstrToFfi(language)));
+  return util.pointerFromFfi(libMSAJApi_dll.alljoyn_aboutdata_create_full(util.toPointer(arg), util.pstrToFfi(language)));
 }
 
 export function alljoyn_aboutdata_destroy(
   data: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_aboutdata */,
 ): void /* void */ {
-  return libMSAJApi.alljoyn_aboutdata_destroy(util.toPointer(data));
+  return libMSAJApi_dll.alljoyn_aboutdata_destroy(util.toPointer(data));
 }
 
 export function alljoyn_aboutdata_createfromxml(
   data: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_aboutdata */,
   aboutDataXml: string | null /* Windows.Win32.Foundation.PSTR */,
 ): QStatus /* Windows.Win32.Devices.AllJoyn.QStatus */ {
-  return libMSAJApi.alljoyn_aboutdata_createfromxml(util.toPointer(data), util.pstrToFfi(aboutDataXml));
+  return libMSAJApi_dll.alljoyn_aboutdata_createfromxml(util.toPointer(data), util.pstrToFfi(aboutDataXml));
 }
 
 export function alljoyn_aboutdata_isvalid(
   data: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_aboutdata */,
   language: string | null /* Windows.Win32.Foundation.PSTR */,
 ): number /* u8 */ {
-  return libMSAJApi.alljoyn_aboutdata_isvalid(util.toPointer(data), util.pstrToFfi(language));
+  return libMSAJApi_dll.alljoyn_aboutdata_isvalid(util.toPointer(data), util.pstrToFfi(language));
 }
 
 export function alljoyn_aboutdata_createfrommsgarg(
@@ -4027,7 +4028,7 @@ export function alljoyn_aboutdata_createfrommsgarg(
   arg: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_msgarg */,
   language: string | null /* Windows.Win32.Foundation.PSTR */,
 ): QStatus /* Windows.Win32.Devices.AllJoyn.QStatus */ {
-  return libMSAJApi.alljoyn_aboutdata_createfrommsgarg(util.toPointer(data), util.toPointer(arg), util.pstrToFfi(language));
+  return libMSAJApi_dll.alljoyn_aboutdata_createfrommsgarg(util.toPointer(data), util.toPointer(arg), util.pstrToFfi(language));
 }
 
 export function alljoyn_aboutdata_setappid(
@@ -4035,14 +4036,14 @@ export function alljoyn_aboutdata_setappid(
   appId: Deno.PointerValue | Uint8Array | null /* ptr */,
   num: Deno.PointerValue /* usize */,
 ): QStatus /* Windows.Win32.Devices.AllJoyn.QStatus */ {
-  return libMSAJApi.alljoyn_aboutdata_setappid(util.toPointer(data), util.toPointer(appId), num);
+  return libMSAJApi_dll.alljoyn_aboutdata_setappid(util.toPointer(data), util.toPointer(appId), num);
 }
 
 export function alljoyn_aboutdata_setappid_fromstring(
   data: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_aboutdata */,
   appId: string | null /* Windows.Win32.Foundation.PSTR */,
 ): QStatus /* Windows.Win32.Devices.AllJoyn.QStatus */ {
-  return libMSAJApi.alljoyn_aboutdata_setappid_fromstring(util.toPointer(data), util.pstrToFfi(appId));
+  return libMSAJApi_dll.alljoyn_aboutdata_setappid_fromstring(util.toPointer(data), util.pstrToFfi(appId));
 }
 
 export function alljoyn_aboutdata_getappid(
@@ -4050,21 +4051,21 @@ export function alljoyn_aboutdata_getappid(
   appId: Deno.PointerValue | Uint8Array | null /* ptr */,
   num: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): QStatus /* Windows.Win32.Devices.AllJoyn.QStatus */ {
-  return libMSAJApi.alljoyn_aboutdata_getappid(util.toPointer(data), util.toPointer(appId), util.toPointer(num));
+  return libMSAJApi_dll.alljoyn_aboutdata_getappid(util.toPointer(data), util.toPointer(appId), util.toPointer(num));
 }
 
 export function alljoyn_aboutdata_setdefaultlanguage(
   data: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_aboutdata */,
   defaultLanguage: string | null /* Windows.Win32.Foundation.PSTR */,
 ): QStatus /* Windows.Win32.Devices.AllJoyn.QStatus */ {
-  return libMSAJApi.alljoyn_aboutdata_setdefaultlanguage(util.toPointer(data), util.pstrToFfi(defaultLanguage));
+  return libMSAJApi_dll.alljoyn_aboutdata_setdefaultlanguage(util.toPointer(data), util.pstrToFfi(defaultLanguage));
 }
 
 export function alljoyn_aboutdata_getdefaultlanguage(
   data: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_aboutdata */,
   defaultLanguage: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): QStatus /* Windows.Win32.Devices.AllJoyn.QStatus */ {
-  return libMSAJApi.alljoyn_aboutdata_getdefaultlanguage(util.toPointer(data), util.toPointer(defaultLanguage));
+  return libMSAJApi_dll.alljoyn_aboutdata_getdefaultlanguage(util.toPointer(data), util.toPointer(defaultLanguage));
 }
 
 export function alljoyn_aboutdata_setdevicename(
@@ -4072,7 +4073,7 @@ export function alljoyn_aboutdata_setdevicename(
   deviceName: string | null /* Windows.Win32.Foundation.PSTR */,
   language: string | null /* Windows.Win32.Foundation.PSTR */,
 ): QStatus /* Windows.Win32.Devices.AllJoyn.QStatus */ {
-  return libMSAJApi.alljoyn_aboutdata_setdevicename(util.toPointer(data), util.pstrToFfi(deviceName), util.pstrToFfi(language));
+  return libMSAJApi_dll.alljoyn_aboutdata_setdevicename(util.toPointer(data), util.pstrToFfi(deviceName), util.pstrToFfi(language));
 }
 
 export function alljoyn_aboutdata_getdevicename(
@@ -4080,21 +4081,21 @@ export function alljoyn_aboutdata_getdevicename(
   deviceName: Deno.PointerValue | Uint8Array | null /* ptr */,
   language: string | null /* Windows.Win32.Foundation.PSTR */,
 ): QStatus /* Windows.Win32.Devices.AllJoyn.QStatus */ {
-  return libMSAJApi.alljoyn_aboutdata_getdevicename(util.toPointer(data), util.toPointer(deviceName), util.pstrToFfi(language));
+  return libMSAJApi_dll.alljoyn_aboutdata_getdevicename(util.toPointer(data), util.toPointer(deviceName), util.pstrToFfi(language));
 }
 
 export function alljoyn_aboutdata_setdeviceid(
   data: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_aboutdata */,
   deviceId: string | null /* Windows.Win32.Foundation.PSTR */,
 ): QStatus /* Windows.Win32.Devices.AllJoyn.QStatus */ {
-  return libMSAJApi.alljoyn_aboutdata_setdeviceid(util.toPointer(data), util.pstrToFfi(deviceId));
+  return libMSAJApi_dll.alljoyn_aboutdata_setdeviceid(util.toPointer(data), util.pstrToFfi(deviceId));
 }
 
 export function alljoyn_aboutdata_getdeviceid(
   data: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_aboutdata */,
   deviceId: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): QStatus /* Windows.Win32.Devices.AllJoyn.QStatus */ {
-  return libMSAJApi.alljoyn_aboutdata_getdeviceid(util.toPointer(data), util.toPointer(deviceId));
+  return libMSAJApi_dll.alljoyn_aboutdata_getdeviceid(util.toPointer(data), util.toPointer(deviceId));
 }
 
 export function alljoyn_aboutdata_setappname(
@@ -4102,7 +4103,7 @@ export function alljoyn_aboutdata_setappname(
   appName: string | null /* Windows.Win32.Foundation.PSTR */,
   language: string | null /* Windows.Win32.Foundation.PSTR */,
 ): QStatus /* Windows.Win32.Devices.AllJoyn.QStatus */ {
-  return libMSAJApi.alljoyn_aboutdata_setappname(util.toPointer(data), util.pstrToFfi(appName), util.pstrToFfi(language));
+  return libMSAJApi_dll.alljoyn_aboutdata_setappname(util.toPointer(data), util.pstrToFfi(appName), util.pstrToFfi(language));
 }
 
 export function alljoyn_aboutdata_getappname(
@@ -4110,7 +4111,7 @@ export function alljoyn_aboutdata_getappname(
   appName: Deno.PointerValue | Uint8Array | null /* ptr */,
   language: string | null /* Windows.Win32.Foundation.PSTR */,
 ): QStatus /* Windows.Win32.Devices.AllJoyn.QStatus */ {
-  return libMSAJApi.alljoyn_aboutdata_getappname(util.toPointer(data), util.toPointer(appName), util.pstrToFfi(language));
+  return libMSAJApi_dll.alljoyn_aboutdata_getappname(util.toPointer(data), util.toPointer(appName), util.pstrToFfi(language));
 }
 
 export function alljoyn_aboutdata_setmanufacturer(
@@ -4118,7 +4119,7 @@ export function alljoyn_aboutdata_setmanufacturer(
   manufacturer: string | null /* Windows.Win32.Foundation.PSTR */,
   language: string | null /* Windows.Win32.Foundation.PSTR */,
 ): QStatus /* Windows.Win32.Devices.AllJoyn.QStatus */ {
-  return libMSAJApi.alljoyn_aboutdata_setmanufacturer(util.toPointer(data), util.pstrToFfi(manufacturer), util.pstrToFfi(language));
+  return libMSAJApi_dll.alljoyn_aboutdata_setmanufacturer(util.toPointer(data), util.pstrToFfi(manufacturer), util.pstrToFfi(language));
 }
 
 export function alljoyn_aboutdata_getmanufacturer(
@@ -4126,28 +4127,28 @@ export function alljoyn_aboutdata_getmanufacturer(
   manufacturer: Deno.PointerValue | Uint8Array | null /* ptr */,
   language: string | null /* Windows.Win32.Foundation.PSTR */,
 ): QStatus /* Windows.Win32.Devices.AllJoyn.QStatus */ {
-  return libMSAJApi.alljoyn_aboutdata_getmanufacturer(util.toPointer(data), util.toPointer(manufacturer), util.pstrToFfi(language));
+  return libMSAJApi_dll.alljoyn_aboutdata_getmanufacturer(util.toPointer(data), util.toPointer(manufacturer), util.pstrToFfi(language));
 }
 
 export function alljoyn_aboutdata_setmodelnumber(
   data: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_aboutdata */,
   modelNumber: string | null /* Windows.Win32.Foundation.PSTR */,
 ): QStatus /* Windows.Win32.Devices.AllJoyn.QStatus */ {
-  return libMSAJApi.alljoyn_aboutdata_setmodelnumber(util.toPointer(data), util.pstrToFfi(modelNumber));
+  return libMSAJApi_dll.alljoyn_aboutdata_setmodelnumber(util.toPointer(data), util.pstrToFfi(modelNumber));
 }
 
 export function alljoyn_aboutdata_getmodelnumber(
   data: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_aboutdata */,
   modelNumber: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): QStatus /* Windows.Win32.Devices.AllJoyn.QStatus */ {
-  return libMSAJApi.alljoyn_aboutdata_getmodelnumber(util.toPointer(data), util.toPointer(modelNumber));
+  return libMSAJApi_dll.alljoyn_aboutdata_getmodelnumber(util.toPointer(data), util.toPointer(modelNumber));
 }
 
 export function alljoyn_aboutdata_setsupportedlanguage(
   data: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_aboutdata */,
   language: string | null /* Windows.Win32.Foundation.PSTR */,
 ): QStatus /* Windows.Win32.Devices.AllJoyn.QStatus */ {
-  return libMSAJApi.alljoyn_aboutdata_setsupportedlanguage(util.toPointer(data), util.pstrToFfi(language));
+  return libMSAJApi_dll.alljoyn_aboutdata_setsupportedlanguage(util.toPointer(data), util.pstrToFfi(language));
 }
 
 export function alljoyn_aboutdata_getsupportedlanguages(
@@ -4155,7 +4156,7 @@ export function alljoyn_aboutdata_getsupportedlanguages(
   languageTags: Deno.PointerValue | Uint8Array | null /* ptr */,
   num: Deno.PointerValue /* usize */,
 ): Deno.PointerValue /* usize */ {
-  return libMSAJApi.alljoyn_aboutdata_getsupportedlanguages(util.toPointer(data), util.toPointer(languageTags), num);
+  return libMSAJApi_dll.alljoyn_aboutdata_getsupportedlanguages(util.toPointer(data), util.toPointer(languageTags), num);
 }
 
 export function alljoyn_aboutdata_setdescription(
@@ -4163,7 +4164,7 @@ export function alljoyn_aboutdata_setdescription(
   description: string | null /* Windows.Win32.Foundation.PSTR */,
   language: string | null /* Windows.Win32.Foundation.PSTR */,
 ): QStatus /* Windows.Win32.Devices.AllJoyn.QStatus */ {
-  return libMSAJApi.alljoyn_aboutdata_setdescription(util.toPointer(data), util.pstrToFfi(description), util.pstrToFfi(language));
+  return libMSAJApi_dll.alljoyn_aboutdata_setdescription(util.toPointer(data), util.pstrToFfi(description), util.pstrToFfi(language));
 }
 
 export function alljoyn_aboutdata_getdescription(
@@ -4171,70 +4172,70 @@ export function alljoyn_aboutdata_getdescription(
   description: Deno.PointerValue | Uint8Array | null /* ptr */,
   language: string | null /* Windows.Win32.Foundation.PSTR */,
 ): QStatus /* Windows.Win32.Devices.AllJoyn.QStatus */ {
-  return libMSAJApi.alljoyn_aboutdata_getdescription(util.toPointer(data), util.toPointer(description), util.pstrToFfi(language));
+  return libMSAJApi_dll.alljoyn_aboutdata_getdescription(util.toPointer(data), util.toPointer(description), util.pstrToFfi(language));
 }
 
 export function alljoyn_aboutdata_setdateofmanufacture(
   data: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_aboutdata */,
   dateOfManufacture: string | null /* Windows.Win32.Foundation.PSTR */,
 ): QStatus /* Windows.Win32.Devices.AllJoyn.QStatus */ {
-  return libMSAJApi.alljoyn_aboutdata_setdateofmanufacture(util.toPointer(data), util.pstrToFfi(dateOfManufacture));
+  return libMSAJApi_dll.alljoyn_aboutdata_setdateofmanufacture(util.toPointer(data), util.pstrToFfi(dateOfManufacture));
 }
 
 export function alljoyn_aboutdata_getdateofmanufacture(
   data: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_aboutdata */,
   dateOfManufacture: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): QStatus /* Windows.Win32.Devices.AllJoyn.QStatus */ {
-  return libMSAJApi.alljoyn_aboutdata_getdateofmanufacture(util.toPointer(data), util.toPointer(dateOfManufacture));
+  return libMSAJApi_dll.alljoyn_aboutdata_getdateofmanufacture(util.toPointer(data), util.toPointer(dateOfManufacture));
 }
 
 export function alljoyn_aboutdata_setsoftwareversion(
   data: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_aboutdata */,
   softwareVersion: string | null /* Windows.Win32.Foundation.PSTR */,
 ): QStatus /* Windows.Win32.Devices.AllJoyn.QStatus */ {
-  return libMSAJApi.alljoyn_aboutdata_setsoftwareversion(util.toPointer(data), util.pstrToFfi(softwareVersion));
+  return libMSAJApi_dll.alljoyn_aboutdata_setsoftwareversion(util.toPointer(data), util.pstrToFfi(softwareVersion));
 }
 
 export function alljoyn_aboutdata_getsoftwareversion(
   data: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_aboutdata */,
   softwareVersion: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): QStatus /* Windows.Win32.Devices.AllJoyn.QStatus */ {
-  return libMSAJApi.alljoyn_aboutdata_getsoftwareversion(util.toPointer(data), util.toPointer(softwareVersion));
+  return libMSAJApi_dll.alljoyn_aboutdata_getsoftwareversion(util.toPointer(data), util.toPointer(softwareVersion));
 }
 
 export function alljoyn_aboutdata_getajsoftwareversion(
   data: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_aboutdata */,
   ajSoftwareVersion: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): QStatus /* Windows.Win32.Devices.AllJoyn.QStatus */ {
-  return libMSAJApi.alljoyn_aboutdata_getajsoftwareversion(util.toPointer(data), util.toPointer(ajSoftwareVersion));
+  return libMSAJApi_dll.alljoyn_aboutdata_getajsoftwareversion(util.toPointer(data), util.toPointer(ajSoftwareVersion));
 }
 
 export function alljoyn_aboutdata_sethardwareversion(
   data: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_aboutdata */,
   hardwareVersion: string | null /* Windows.Win32.Foundation.PSTR */,
 ): QStatus /* Windows.Win32.Devices.AllJoyn.QStatus */ {
-  return libMSAJApi.alljoyn_aboutdata_sethardwareversion(util.toPointer(data), util.pstrToFfi(hardwareVersion));
+  return libMSAJApi_dll.alljoyn_aboutdata_sethardwareversion(util.toPointer(data), util.pstrToFfi(hardwareVersion));
 }
 
 export function alljoyn_aboutdata_gethardwareversion(
   data: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_aboutdata */,
   hardwareVersion: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): QStatus /* Windows.Win32.Devices.AllJoyn.QStatus */ {
-  return libMSAJApi.alljoyn_aboutdata_gethardwareversion(util.toPointer(data), util.toPointer(hardwareVersion));
+  return libMSAJApi_dll.alljoyn_aboutdata_gethardwareversion(util.toPointer(data), util.toPointer(hardwareVersion));
 }
 
 export function alljoyn_aboutdata_setsupporturl(
   data: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_aboutdata */,
   supportUrl: string | null /* Windows.Win32.Foundation.PSTR */,
 ): QStatus /* Windows.Win32.Devices.AllJoyn.QStatus */ {
-  return libMSAJApi.alljoyn_aboutdata_setsupporturl(util.toPointer(data), util.pstrToFfi(supportUrl));
+  return libMSAJApi_dll.alljoyn_aboutdata_setsupporturl(util.toPointer(data), util.pstrToFfi(supportUrl));
 }
 
 export function alljoyn_aboutdata_getsupporturl(
   data: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_aboutdata */,
   supportUrl: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): QStatus /* Windows.Win32.Devices.AllJoyn.QStatus */ {
-  return libMSAJApi.alljoyn_aboutdata_getsupporturl(util.toPointer(data), util.toPointer(supportUrl));
+  return libMSAJApi_dll.alljoyn_aboutdata_getsupporturl(util.toPointer(data), util.toPointer(supportUrl));
 }
 
 export function alljoyn_aboutdata_setfield(
@@ -4243,7 +4244,7 @@ export function alljoyn_aboutdata_setfield(
   value: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_msgarg */,
   language: string | null /* Windows.Win32.Foundation.PSTR */,
 ): QStatus /* Windows.Win32.Devices.AllJoyn.QStatus */ {
-  return libMSAJApi.alljoyn_aboutdata_setfield(util.toPointer(data), util.pstrToFfi(name), util.toPointer(value), util.pstrToFfi(language));
+  return libMSAJApi_dll.alljoyn_aboutdata_setfield(util.toPointer(data), util.pstrToFfi(name), util.toPointer(value), util.pstrToFfi(language));
 }
 
 export function alljoyn_aboutdata_getfield(
@@ -4252,7 +4253,7 @@ export function alljoyn_aboutdata_getfield(
   value: Deno.PointerValue | Uint8Array | null /* ptr */,
   language: string | null /* Windows.Win32.Foundation.PSTR */,
 ): QStatus /* Windows.Win32.Devices.AllJoyn.QStatus */ {
-  return libMSAJApi.alljoyn_aboutdata_getfield(util.toPointer(data), util.pstrToFfi(name), util.toPointer(value), util.pstrToFfi(language));
+  return libMSAJApi_dll.alljoyn_aboutdata_getfield(util.toPointer(data), util.pstrToFfi(name), util.toPointer(value), util.pstrToFfi(language));
 }
 
 export function alljoyn_aboutdata_getfields(
@@ -4260,7 +4261,7 @@ export function alljoyn_aboutdata_getfields(
   fields: Deno.PointerValue | Uint8Array | null /* ptr */,
   num_fields: Deno.PointerValue /* usize */,
 ): Deno.PointerValue /* usize */ {
-  return libMSAJApi.alljoyn_aboutdata_getfields(util.toPointer(data), util.toPointer(fields), num_fields);
+  return libMSAJApi_dll.alljoyn_aboutdata_getfields(util.toPointer(data), util.toPointer(fields), num_fields);
 }
 
 export function alljoyn_aboutdata_getaboutdata(
@@ -4268,52 +4269,52 @@ export function alljoyn_aboutdata_getaboutdata(
   msgArg: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_msgarg */,
   language: string | null /* Windows.Win32.Foundation.PSTR */,
 ): QStatus /* Windows.Win32.Devices.AllJoyn.QStatus */ {
-  return libMSAJApi.alljoyn_aboutdata_getaboutdata(util.toPointer(data), util.toPointer(msgArg), util.pstrToFfi(language));
+  return libMSAJApi_dll.alljoyn_aboutdata_getaboutdata(util.toPointer(data), util.toPointer(msgArg), util.pstrToFfi(language));
 }
 
 export function alljoyn_aboutdata_getannouncedaboutdata(
   data: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_aboutdata */,
   msgArg: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_msgarg */,
 ): QStatus /* Windows.Win32.Devices.AllJoyn.QStatus */ {
-  return libMSAJApi.alljoyn_aboutdata_getannouncedaboutdata(util.toPointer(data), util.toPointer(msgArg));
+  return libMSAJApi_dll.alljoyn_aboutdata_getannouncedaboutdata(util.toPointer(data), util.toPointer(msgArg));
 }
 
 export function alljoyn_aboutdata_isfieldrequired(
   data: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_aboutdata */,
   fieldName: string | null /* Windows.Win32.Foundation.PSTR */,
 ): number /* u8 */ {
-  return libMSAJApi.alljoyn_aboutdata_isfieldrequired(util.toPointer(data), util.pstrToFfi(fieldName));
+  return libMSAJApi_dll.alljoyn_aboutdata_isfieldrequired(util.toPointer(data), util.pstrToFfi(fieldName));
 }
 
 export function alljoyn_aboutdata_isfieldannounced(
   data: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_aboutdata */,
   fieldName: string | null /* Windows.Win32.Foundation.PSTR */,
 ): number /* u8 */ {
-  return libMSAJApi.alljoyn_aboutdata_isfieldannounced(util.toPointer(data), util.pstrToFfi(fieldName));
+  return libMSAJApi_dll.alljoyn_aboutdata_isfieldannounced(util.toPointer(data), util.pstrToFfi(fieldName));
 }
 
 export function alljoyn_aboutdata_isfieldlocalized(
   data: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_aboutdata */,
   fieldName: string | null /* Windows.Win32.Foundation.PSTR */,
 ): number /* u8 */ {
-  return libMSAJApi.alljoyn_aboutdata_isfieldlocalized(util.toPointer(data), util.pstrToFfi(fieldName));
+  return libMSAJApi_dll.alljoyn_aboutdata_isfieldlocalized(util.toPointer(data), util.pstrToFfi(fieldName));
 }
 
 export function alljoyn_aboutdata_getfieldsignature(
   data: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_aboutdata */,
   fieldName: string | null /* Windows.Win32.Foundation.PSTR */,
 ): string | null /* Windows.Win32.Foundation.PSTR */ {
-  return util.pstrFromFfi(libMSAJApi.alljoyn_aboutdata_getfieldsignature(util.toPointer(data), util.pstrToFfi(fieldName)));
+  return util.pstrFromFfi(libMSAJApi_dll.alljoyn_aboutdata_getfieldsignature(util.toPointer(data), util.pstrToFfi(fieldName)));
 }
 
 export function alljoyn_abouticon_create(): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libMSAJApi.alljoyn_abouticon_create());
+  return util.pointerFromFfi(libMSAJApi_dll.alljoyn_abouticon_create());
 }
 
 export function alljoyn_abouticon_destroy(
   icon: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): void /* void */ {
-  return libMSAJApi.alljoyn_abouticon_destroy(util.toPointer(icon));
+  return libMSAJApi_dll.alljoyn_abouticon_destroy(util.toPointer(icon));
 }
 
 export function alljoyn_abouticon_getcontent(
@@ -4321,7 +4322,7 @@ export function alljoyn_abouticon_getcontent(
   data: Deno.PointerValue | Uint8Array | null /* ptr */,
   size: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): void /* void */ {
-  return libMSAJApi.alljoyn_abouticon_getcontent(util.toPointer(icon), util.toPointer(data), util.toPointer(size));
+  return libMSAJApi_dll.alljoyn_abouticon_getcontent(util.toPointer(icon), util.toPointer(data), util.toPointer(size));
 }
 
 export function alljoyn_abouticon_setcontent(
@@ -4331,7 +4332,7 @@ export function alljoyn_abouticon_setcontent(
   csize: Deno.PointerValue /* usize */,
   ownsData: number /* u8 */,
 ): QStatus /* Windows.Win32.Devices.AllJoyn.QStatus */ {
-  return libMSAJApi.alljoyn_abouticon_setcontent(util.toPointer(icon), util.pstrToFfi(type), util.toPointer(data), csize, ownsData);
+  return libMSAJApi_dll.alljoyn_abouticon_setcontent(util.toPointer(icon), util.pstrToFfi(type), util.toPointer(data), csize, ownsData);
 }
 
 export function alljoyn_abouticon_geturl(
@@ -4339,7 +4340,7 @@ export function alljoyn_abouticon_geturl(
   type: Deno.PointerValue | Uint8Array | null /* ptr */,
   url: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): void /* void */ {
-  return libMSAJApi.alljoyn_abouticon_geturl(util.toPointer(icon), util.toPointer(type), util.toPointer(url));
+  return libMSAJApi_dll.alljoyn_abouticon_geturl(util.toPointer(icon), util.toPointer(type), util.toPointer(url));
 }
 
 export function alljoyn_abouticon_seturl(
@@ -4347,105 +4348,105 @@ export function alljoyn_abouticon_seturl(
   type: string | null /* Windows.Win32.Foundation.PSTR */,
   url: string | null /* Windows.Win32.Foundation.PSTR */,
 ): QStatus /* Windows.Win32.Devices.AllJoyn.QStatus */ {
-  return libMSAJApi.alljoyn_abouticon_seturl(util.toPointer(icon), util.pstrToFfi(type), util.pstrToFfi(url));
+  return libMSAJApi_dll.alljoyn_abouticon_seturl(util.toPointer(icon), util.pstrToFfi(type), util.pstrToFfi(url));
 }
 
 export function alljoyn_abouticon_clear(
   icon: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): void /* void */ {
-  return libMSAJApi.alljoyn_abouticon_clear(util.toPointer(icon));
+  return libMSAJApi_dll.alljoyn_abouticon_clear(util.toPointer(icon));
 }
 
 export function alljoyn_abouticon_setcontent_frommsgarg(
   icon: Deno.PointerValue | Uint8Array | null /* ptr */,
   arg: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_msgarg */,
 ): QStatus /* Windows.Win32.Devices.AllJoyn.QStatus */ {
-  return libMSAJApi.alljoyn_abouticon_setcontent_frommsgarg(util.toPointer(icon), util.toPointer(arg));
+  return libMSAJApi_dll.alljoyn_abouticon_setcontent_frommsgarg(util.toPointer(icon), util.toPointer(arg));
 }
 
 export function alljoyn_permissionconfigurator_getdefaultclaimcapabilities(): number /* u16 */ {
-  return libMSAJApi.alljoyn_permissionconfigurator_getdefaultclaimcapabilities();
+  return libMSAJApi_dll.alljoyn_permissionconfigurator_getdefaultclaimcapabilities();
 }
 
 export function alljoyn_permissionconfigurator_getapplicationstate(
   configurator: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_permissionconfigurator */,
   state: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): QStatus /* Windows.Win32.Devices.AllJoyn.QStatus */ {
-  return libMSAJApi.alljoyn_permissionconfigurator_getapplicationstate(util.toPointer(configurator), util.toPointer(state));
+  return libMSAJApi_dll.alljoyn_permissionconfigurator_getapplicationstate(util.toPointer(configurator), util.toPointer(state));
 }
 
 export function alljoyn_permissionconfigurator_setapplicationstate(
   configurator: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_permissionconfigurator */,
   state: alljoyn_applicationstate /* Windows.Win32.Devices.AllJoyn.alljoyn_applicationstate */,
 ): QStatus /* Windows.Win32.Devices.AllJoyn.QStatus */ {
-  return libMSAJApi.alljoyn_permissionconfigurator_setapplicationstate(util.toPointer(configurator), state);
+  return libMSAJApi_dll.alljoyn_permissionconfigurator_setapplicationstate(util.toPointer(configurator), state);
 }
 
 export function alljoyn_permissionconfigurator_getpublickey(
   configurator: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_permissionconfigurator */,
   publicKey: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): QStatus /* Windows.Win32.Devices.AllJoyn.QStatus */ {
-  return libMSAJApi.alljoyn_permissionconfigurator_getpublickey(util.toPointer(configurator), util.toPointer(publicKey));
+  return libMSAJApi_dll.alljoyn_permissionconfigurator_getpublickey(util.toPointer(configurator), util.toPointer(publicKey));
 }
 
 export function alljoyn_permissionconfigurator_publickey_destroy(
   publicKey: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): void /* void */ {
-  return libMSAJApi.alljoyn_permissionconfigurator_publickey_destroy(util.toPointer(publicKey));
+  return libMSAJApi_dll.alljoyn_permissionconfigurator_publickey_destroy(util.toPointer(publicKey));
 }
 
 export function alljoyn_permissionconfigurator_getmanifesttemplate(
   configurator: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_permissionconfigurator */,
   manifestTemplateXml: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): QStatus /* Windows.Win32.Devices.AllJoyn.QStatus */ {
-  return libMSAJApi.alljoyn_permissionconfigurator_getmanifesttemplate(util.toPointer(configurator), util.toPointer(manifestTemplateXml));
+  return libMSAJApi_dll.alljoyn_permissionconfigurator_getmanifesttemplate(util.toPointer(configurator), util.toPointer(manifestTemplateXml));
 }
 
 export function alljoyn_permissionconfigurator_manifesttemplate_destroy(
   manifestTemplateXml: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): void /* void */ {
-  return libMSAJApi.alljoyn_permissionconfigurator_manifesttemplate_destroy(util.toPointer(manifestTemplateXml));
+  return libMSAJApi_dll.alljoyn_permissionconfigurator_manifesttemplate_destroy(util.toPointer(manifestTemplateXml));
 }
 
 export function alljoyn_permissionconfigurator_setmanifesttemplatefromxml(
   configurator: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_permissionconfigurator */,
   manifestTemplateXml: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): QStatus /* Windows.Win32.Devices.AllJoyn.QStatus */ {
-  return libMSAJApi.alljoyn_permissionconfigurator_setmanifesttemplatefromxml(util.toPointer(configurator), util.toPointer(manifestTemplateXml));
+  return libMSAJApi_dll.alljoyn_permissionconfigurator_setmanifesttemplatefromxml(util.toPointer(configurator), util.toPointer(manifestTemplateXml));
 }
 
 export function alljoyn_permissionconfigurator_getclaimcapabilities(
   configurator: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_permissionconfigurator */,
   claimCapabilities: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): QStatus /* Windows.Win32.Devices.AllJoyn.QStatus */ {
-  return libMSAJApi.alljoyn_permissionconfigurator_getclaimcapabilities(util.toPointer(configurator), util.toPointer(claimCapabilities));
+  return libMSAJApi_dll.alljoyn_permissionconfigurator_getclaimcapabilities(util.toPointer(configurator), util.toPointer(claimCapabilities));
 }
 
 export function alljoyn_permissionconfigurator_setclaimcapabilities(
   configurator: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_permissionconfigurator */,
   claimCapabilities: number /* u16 */,
 ): QStatus /* Windows.Win32.Devices.AllJoyn.QStatus */ {
-  return libMSAJApi.alljoyn_permissionconfigurator_setclaimcapabilities(util.toPointer(configurator), claimCapabilities);
+  return libMSAJApi_dll.alljoyn_permissionconfigurator_setclaimcapabilities(util.toPointer(configurator), claimCapabilities);
 }
 
 export function alljoyn_permissionconfigurator_getclaimcapabilitiesadditionalinfo(
   configurator: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_permissionconfigurator */,
   additionalInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): QStatus /* Windows.Win32.Devices.AllJoyn.QStatus */ {
-  return libMSAJApi.alljoyn_permissionconfigurator_getclaimcapabilitiesadditionalinfo(util.toPointer(configurator), util.toPointer(additionalInfo));
+  return libMSAJApi_dll.alljoyn_permissionconfigurator_getclaimcapabilitiesadditionalinfo(util.toPointer(configurator), util.toPointer(additionalInfo));
 }
 
 export function alljoyn_permissionconfigurator_setclaimcapabilitiesadditionalinfo(
   configurator: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_permissionconfigurator */,
   additionalInfo: number /* u16 */,
 ): QStatus /* Windows.Win32.Devices.AllJoyn.QStatus */ {
-  return libMSAJApi.alljoyn_permissionconfigurator_setclaimcapabilitiesadditionalinfo(util.toPointer(configurator), additionalInfo);
+  return libMSAJApi_dll.alljoyn_permissionconfigurator_setclaimcapabilitiesadditionalinfo(util.toPointer(configurator), additionalInfo);
 }
 
 export function alljoyn_permissionconfigurator_reset(
   configurator: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_permissionconfigurator */,
 ): QStatus /* Windows.Win32.Devices.AllJoyn.QStatus */ {
-  return libMSAJApi.alljoyn_permissionconfigurator_reset(util.toPointer(configurator));
+  return libMSAJApi_dll.alljoyn_permissionconfigurator_reset(util.toPointer(configurator));
 }
 
 export function alljoyn_permissionconfigurator_claim(
@@ -4458,7 +4459,7 @@ export function alljoyn_permissionconfigurator_claim(
   manifestsXmls: Deno.PointerValue | Uint8Array | null /* ptr */,
   manifestsCount: Deno.PointerValue /* usize */,
 ): QStatus /* Windows.Win32.Devices.AllJoyn.QStatus */ {
-  return libMSAJApi.alljoyn_permissionconfigurator_claim(util.toPointer(configurator), util.toPointer(caKey), util.toPointer(identityCertificateChain), util.toPointer(groupId), groupSize, util.toPointer(groupAuthority), util.toPointer(manifestsXmls), manifestsCount);
+  return libMSAJApi_dll.alljoyn_permissionconfigurator_claim(util.toPointer(configurator), util.toPointer(caKey), util.toPointer(identityCertificateChain), util.toPointer(groupId), groupSize, util.toPointer(groupAuthority), util.toPointer(manifestsXmls), manifestsCount);
 }
 
 export function alljoyn_permissionconfigurator_updateidentity(
@@ -4467,33 +4468,33 @@ export function alljoyn_permissionconfigurator_updateidentity(
   manifestsXmls: Deno.PointerValue | Uint8Array | null /* ptr */,
   manifestsCount: Deno.PointerValue /* usize */,
 ): QStatus /* Windows.Win32.Devices.AllJoyn.QStatus */ {
-  return libMSAJApi.alljoyn_permissionconfigurator_updateidentity(util.toPointer(configurator), util.toPointer(identityCertificateChain), util.toPointer(manifestsXmls), manifestsCount);
+  return libMSAJApi_dll.alljoyn_permissionconfigurator_updateidentity(util.toPointer(configurator), util.toPointer(identityCertificateChain), util.toPointer(manifestsXmls), manifestsCount);
 }
 
 export function alljoyn_permissionconfigurator_getidentity(
   configurator: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_permissionconfigurator */,
   identityCertificateChain: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): QStatus /* Windows.Win32.Devices.AllJoyn.QStatus */ {
-  return libMSAJApi.alljoyn_permissionconfigurator_getidentity(util.toPointer(configurator), util.toPointer(identityCertificateChain));
+  return libMSAJApi_dll.alljoyn_permissionconfigurator_getidentity(util.toPointer(configurator), util.toPointer(identityCertificateChain));
 }
 
 export function alljoyn_permissionconfigurator_certificatechain_destroy(
   certificateChain: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): void /* void */ {
-  return libMSAJApi.alljoyn_permissionconfigurator_certificatechain_destroy(util.toPointer(certificateChain));
+  return libMSAJApi_dll.alljoyn_permissionconfigurator_certificatechain_destroy(util.toPointer(certificateChain));
 }
 
 export function alljoyn_permissionconfigurator_getmanifests(
   configurator: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_permissionconfigurator */,
   manifestArray: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): QStatus /* Windows.Win32.Devices.AllJoyn.QStatus */ {
-  return libMSAJApi.alljoyn_permissionconfigurator_getmanifests(util.toPointer(configurator), util.toPointer(manifestArray));
+  return libMSAJApi_dll.alljoyn_permissionconfigurator_getmanifests(util.toPointer(configurator), util.toPointer(manifestArray));
 }
 
 export function alljoyn_permissionconfigurator_manifestarray_cleanup(
   manifestArray: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): void /* void */ {
-  return libMSAJApi.alljoyn_permissionconfigurator_manifestarray_cleanup(util.toPointer(manifestArray));
+  return libMSAJApi_dll.alljoyn_permissionconfigurator_manifestarray_cleanup(util.toPointer(manifestArray));
 }
 
 export function alljoyn_permissionconfigurator_installmanifests(
@@ -4502,73 +4503,73 @@ export function alljoyn_permissionconfigurator_installmanifests(
   manifestsCount: Deno.PointerValue /* usize */,
   append: number /* i32 */,
 ): QStatus /* Windows.Win32.Devices.AllJoyn.QStatus */ {
-  return libMSAJApi.alljoyn_permissionconfigurator_installmanifests(util.toPointer(configurator), util.toPointer(manifestsXmls), manifestsCount, append);
+  return libMSAJApi_dll.alljoyn_permissionconfigurator_installmanifests(util.toPointer(configurator), util.toPointer(manifestsXmls), manifestsCount, append);
 }
 
 export function alljoyn_permissionconfigurator_getidentitycertificateid(
   configurator: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_permissionconfigurator */,
   certificateId: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): QStatus /* Windows.Win32.Devices.AllJoyn.QStatus */ {
-  return libMSAJApi.alljoyn_permissionconfigurator_getidentitycertificateid(util.toPointer(configurator), util.toPointer(certificateId));
+  return libMSAJApi_dll.alljoyn_permissionconfigurator_getidentitycertificateid(util.toPointer(configurator), util.toPointer(certificateId));
 }
 
 export function alljoyn_permissionconfigurator_certificateid_cleanup(
   certificateId: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): void /* void */ {
-  return libMSAJApi.alljoyn_permissionconfigurator_certificateid_cleanup(util.toPointer(certificateId));
+  return libMSAJApi_dll.alljoyn_permissionconfigurator_certificateid_cleanup(util.toPointer(certificateId));
 }
 
 export function alljoyn_permissionconfigurator_updatepolicy(
   configurator: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_permissionconfigurator */,
   policyXml: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): QStatus /* Windows.Win32.Devices.AllJoyn.QStatus */ {
-  return libMSAJApi.alljoyn_permissionconfigurator_updatepolicy(util.toPointer(configurator), util.toPointer(policyXml));
+  return libMSAJApi_dll.alljoyn_permissionconfigurator_updatepolicy(util.toPointer(configurator), util.toPointer(policyXml));
 }
 
 export function alljoyn_permissionconfigurator_getpolicy(
   configurator: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_permissionconfigurator */,
   policyXml: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): QStatus /* Windows.Win32.Devices.AllJoyn.QStatus */ {
-  return libMSAJApi.alljoyn_permissionconfigurator_getpolicy(util.toPointer(configurator), util.toPointer(policyXml));
+  return libMSAJApi_dll.alljoyn_permissionconfigurator_getpolicy(util.toPointer(configurator), util.toPointer(policyXml));
 }
 
 export function alljoyn_permissionconfigurator_getdefaultpolicy(
   configurator: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_permissionconfigurator */,
   policyXml: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): QStatus /* Windows.Win32.Devices.AllJoyn.QStatus */ {
-  return libMSAJApi.alljoyn_permissionconfigurator_getdefaultpolicy(util.toPointer(configurator), util.toPointer(policyXml));
+  return libMSAJApi_dll.alljoyn_permissionconfigurator_getdefaultpolicy(util.toPointer(configurator), util.toPointer(policyXml));
 }
 
 export function alljoyn_permissionconfigurator_policy_destroy(
   policyXml: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): void /* void */ {
-  return libMSAJApi.alljoyn_permissionconfigurator_policy_destroy(util.toPointer(policyXml));
+  return libMSAJApi_dll.alljoyn_permissionconfigurator_policy_destroy(util.toPointer(policyXml));
 }
 
 export function alljoyn_permissionconfigurator_resetpolicy(
   configurator: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_permissionconfigurator */,
 ): QStatus /* Windows.Win32.Devices.AllJoyn.QStatus */ {
-  return libMSAJApi.alljoyn_permissionconfigurator_resetpolicy(util.toPointer(configurator));
+  return libMSAJApi_dll.alljoyn_permissionconfigurator_resetpolicy(util.toPointer(configurator));
 }
 
 export function alljoyn_permissionconfigurator_getmembershipsummaries(
   configurator: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_permissionconfigurator */,
   certificateIds: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): QStatus /* Windows.Win32.Devices.AllJoyn.QStatus */ {
-  return libMSAJApi.alljoyn_permissionconfigurator_getmembershipsummaries(util.toPointer(configurator), util.toPointer(certificateIds));
+  return libMSAJApi_dll.alljoyn_permissionconfigurator_getmembershipsummaries(util.toPointer(configurator), util.toPointer(certificateIds));
 }
 
 export function alljoyn_permissionconfigurator_certificateidarray_cleanup(
   certificateIdArray: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): void /* void */ {
-  return libMSAJApi.alljoyn_permissionconfigurator_certificateidarray_cleanup(util.toPointer(certificateIdArray));
+  return libMSAJApi_dll.alljoyn_permissionconfigurator_certificateidarray_cleanup(util.toPointer(certificateIdArray));
 }
 
 export function alljoyn_permissionconfigurator_installmembership(
   configurator: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_permissionconfigurator */,
   membershipCertificateChain: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): QStatus /* Windows.Win32.Devices.AllJoyn.QStatus */ {
-  return libMSAJApi.alljoyn_permissionconfigurator_installmembership(util.toPointer(configurator), util.toPointer(membershipCertificateChain));
+  return libMSAJApi_dll.alljoyn_permissionconfigurator_installmembership(util.toPointer(configurator), util.toPointer(membershipCertificateChain));
 }
 
 export function alljoyn_permissionconfigurator_removemembership(
@@ -4579,52 +4580,52 @@ export function alljoyn_permissionconfigurator_removemembership(
   issuerAki: Deno.PointerValue | Uint8Array | null /* ptr */,
   issuerAkiLen: Deno.PointerValue /* usize */,
 ): QStatus /* Windows.Win32.Devices.AllJoyn.QStatus */ {
-  return libMSAJApi.alljoyn_permissionconfigurator_removemembership(util.toPointer(configurator), util.toPointer(serial), serialLen, util.toPointer(issuerPublicKey), util.toPointer(issuerAki), issuerAkiLen);
+  return libMSAJApi_dll.alljoyn_permissionconfigurator_removemembership(util.toPointer(configurator), util.toPointer(serial), serialLen, util.toPointer(issuerPublicKey), util.toPointer(issuerAki), issuerAkiLen);
 }
 
 export function alljoyn_permissionconfigurator_startmanagement(
   configurator: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_permissionconfigurator */,
 ): QStatus /* Windows.Win32.Devices.AllJoyn.QStatus */ {
-  return libMSAJApi.alljoyn_permissionconfigurator_startmanagement(util.toPointer(configurator));
+  return libMSAJApi_dll.alljoyn_permissionconfigurator_startmanagement(util.toPointer(configurator));
 }
 
 export function alljoyn_permissionconfigurator_endmanagement(
   configurator: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_permissionconfigurator */,
 ): QStatus /* Windows.Win32.Devices.AllJoyn.QStatus */ {
-  return libMSAJApi.alljoyn_permissionconfigurator_endmanagement(util.toPointer(configurator));
+  return libMSAJApi_dll.alljoyn_permissionconfigurator_endmanagement(util.toPointer(configurator));
 }
 
 export function alljoyn_applicationstatelistener_create(
   callbacks: Deno.PointerValue | Uint8Array | null /* ptr */,
   context: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_applicationstatelistener */ {
-  return util.pointerFromFfi(libMSAJApi.alljoyn_applicationstatelistener_create(util.toPointer(callbacks), util.toPointer(context)));
+  return util.pointerFromFfi(libMSAJApi_dll.alljoyn_applicationstatelistener_create(util.toPointer(callbacks), util.toPointer(context)));
 }
 
 export function alljoyn_applicationstatelistener_destroy(
   listener: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_applicationstatelistener */,
 ): void /* void */ {
-  return libMSAJApi.alljoyn_applicationstatelistener_destroy(util.toPointer(listener));
+  return libMSAJApi_dll.alljoyn_applicationstatelistener_destroy(util.toPointer(listener));
 }
 
 export function alljoyn_keystorelistener_create(
   callbacks: Deno.PointerValue | Uint8Array | null /* ptr */,
   context: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_keystorelistener */ {
-  return util.pointerFromFfi(libMSAJApi.alljoyn_keystorelistener_create(util.toPointer(callbacks), util.toPointer(context)));
+  return util.pointerFromFfi(libMSAJApi_dll.alljoyn_keystorelistener_create(util.toPointer(callbacks), util.toPointer(context)));
 }
 
 export function alljoyn_keystorelistener_with_synchronization_create(
   callbacks: Deno.PointerValue | Uint8Array | null /* ptr */,
   context: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_keystorelistener */ {
-  return util.pointerFromFfi(libMSAJApi.alljoyn_keystorelistener_with_synchronization_create(util.toPointer(callbacks), util.toPointer(context)));
+  return util.pointerFromFfi(libMSAJApi_dll.alljoyn_keystorelistener_with_synchronization_create(util.toPointer(callbacks), util.toPointer(context)));
 }
 
 export function alljoyn_keystorelistener_destroy(
   listener: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_keystorelistener */,
 ): void /* void */ {
-  return libMSAJApi.alljoyn_keystorelistener_destroy(util.toPointer(listener));
+  return libMSAJApi_dll.alljoyn_keystorelistener_destroy(util.toPointer(listener));
 }
 
 export function alljoyn_keystorelistener_putkeys(
@@ -4633,7 +4634,7 @@ export function alljoyn_keystorelistener_putkeys(
   source: string | null /* Windows.Win32.Foundation.PSTR */,
   password: string | null /* Windows.Win32.Foundation.PSTR */,
 ): QStatus /* Windows.Win32.Devices.AllJoyn.QStatus */ {
-  return libMSAJApi.alljoyn_keystorelistener_putkeys(util.toPointer(listener), util.toPointer(keyStore), util.pstrToFfi(source), util.pstrToFfi(password));
+  return libMSAJApi_dll.alljoyn_keystorelistener_putkeys(util.toPointer(listener), util.toPointer(keyStore), util.pstrToFfi(source), util.pstrToFfi(password));
 }
 
 export function alljoyn_keystorelistener_getkeys(
@@ -4642,7 +4643,7 @@ export function alljoyn_keystorelistener_getkeys(
   sink: string | null /* Windows.Win32.Foundation.PSTR */,
   sink_sz: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): QStatus /* Windows.Win32.Devices.AllJoyn.QStatus */ {
-  return libMSAJApi.alljoyn_keystorelistener_getkeys(util.toPointer(listener), util.toPointer(keyStore), util.pstrToFfi(sink), util.toPointer(sink_sz));
+  return libMSAJApi_dll.alljoyn_keystorelistener_getkeys(util.toPointer(listener), util.toPointer(keyStore), util.pstrToFfi(sink), util.toPointer(sink_sz));
 }
 
 export function alljoyn_sessionopts_create(
@@ -4651,146 +4652,146 @@ export function alljoyn_sessionopts_create(
   proximity: number /* u8 */,
   transports: number /* u16 */,
 ): Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_sessionopts */ {
-  return util.pointerFromFfi(libMSAJApi.alljoyn_sessionopts_create(traffic, isMultipoint, proximity, transports));
+  return util.pointerFromFfi(libMSAJApi_dll.alljoyn_sessionopts_create(traffic, isMultipoint, proximity, transports));
 }
 
 export function alljoyn_sessionopts_destroy(
   opts: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_sessionopts */,
 ): void /* void */ {
-  return libMSAJApi.alljoyn_sessionopts_destroy(util.toPointer(opts));
+  return libMSAJApi_dll.alljoyn_sessionopts_destroy(util.toPointer(opts));
 }
 
 export function alljoyn_sessionopts_get_traffic(
   opts: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_sessionopts */,
 ): number /* u8 */ {
-  return libMSAJApi.alljoyn_sessionopts_get_traffic(util.toPointer(opts));
+  return libMSAJApi_dll.alljoyn_sessionopts_get_traffic(util.toPointer(opts));
 }
 
 export function alljoyn_sessionopts_set_traffic(
   opts: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_sessionopts */,
   traffic: number /* u8 */,
 ): void /* void */ {
-  return libMSAJApi.alljoyn_sessionopts_set_traffic(util.toPointer(opts), traffic);
+  return libMSAJApi_dll.alljoyn_sessionopts_set_traffic(util.toPointer(opts), traffic);
 }
 
 export function alljoyn_sessionopts_get_multipoint(
   opts: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_sessionopts */,
 ): number /* i32 */ {
-  return libMSAJApi.alljoyn_sessionopts_get_multipoint(util.toPointer(opts));
+  return libMSAJApi_dll.alljoyn_sessionopts_get_multipoint(util.toPointer(opts));
 }
 
 export function alljoyn_sessionopts_set_multipoint(
   opts: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_sessionopts */,
   isMultipoint: number /* i32 */,
 ): void /* void */ {
-  return libMSAJApi.alljoyn_sessionopts_set_multipoint(util.toPointer(opts), isMultipoint);
+  return libMSAJApi_dll.alljoyn_sessionopts_set_multipoint(util.toPointer(opts), isMultipoint);
 }
 
 export function alljoyn_sessionopts_get_proximity(
   opts: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_sessionopts */,
 ): number /* u8 */ {
-  return libMSAJApi.alljoyn_sessionopts_get_proximity(util.toPointer(opts));
+  return libMSAJApi_dll.alljoyn_sessionopts_get_proximity(util.toPointer(opts));
 }
 
 export function alljoyn_sessionopts_set_proximity(
   opts: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_sessionopts */,
   proximity: number /* u8 */,
 ): void /* void */ {
-  return libMSAJApi.alljoyn_sessionopts_set_proximity(util.toPointer(opts), proximity);
+  return libMSAJApi_dll.alljoyn_sessionopts_set_proximity(util.toPointer(opts), proximity);
 }
 
 export function alljoyn_sessionopts_get_transports(
   opts: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_sessionopts */,
 ): number /* u16 */ {
-  return libMSAJApi.alljoyn_sessionopts_get_transports(util.toPointer(opts));
+  return libMSAJApi_dll.alljoyn_sessionopts_get_transports(util.toPointer(opts));
 }
 
 export function alljoyn_sessionopts_set_transports(
   opts: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_sessionopts */,
   transports: number /* u16 */,
 ): void /* void */ {
-  return libMSAJApi.alljoyn_sessionopts_set_transports(util.toPointer(opts), transports);
+  return libMSAJApi_dll.alljoyn_sessionopts_set_transports(util.toPointer(opts), transports);
 }
 
 export function alljoyn_sessionopts_iscompatible(
   one: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_sessionopts */,
   other: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_sessionopts */,
 ): number /* i32 */ {
-  return libMSAJApi.alljoyn_sessionopts_iscompatible(util.toPointer(one), util.toPointer(other));
+  return libMSAJApi_dll.alljoyn_sessionopts_iscompatible(util.toPointer(one), util.toPointer(other));
 }
 
 export function alljoyn_sessionopts_cmp(
   one: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_sessionopts */,
   other: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_sessionopts */,
 ): number /* i32 */ {
-  return libMSAJApi.alljoyn_sessionopts_cmp(util.toPointer(one), util.toPointer(other));
+  return libMSAJApi_dll.alljoyn_sessionopts_cmp(util.toPointer(one), util.toPointer(other));
 }
 
 export function alljoyn_message_create(
   bus: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_busattachment */,
 ): Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_message */ {
-  return util.pointerFromFfi(libMSAJApi.alljoyn_message_create(util.toPointer(bus)));
+  return util.pointerFromFfi(libMSAJApi_dll.alljoyn_message_create(util.toPointer(bus)));
 }
 
 export function alljoyn_message_destroy(
   msg: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_message */,
 ): void /* void */ {
-  return libMSAJApi.alljoyn_message_destroy(util.toPointer(msg));
+  return libMSAJApi_dll.alljoyn_message_destroy(util.toPointer(msg));
 }
 
 export function alljoyn_message_isbroadcastsignal(
   msg: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_message */,
 ): number /* i32 */ {
-  return libMSAJApi.alljoyn_message_isbroadcastsignal(util.toPointer(msg));
+  return libMSAJApi_dll.alljoyn_message_isbroadcastsignal(util.toPointer(msg));
 }
 
 export function alljoyn_message_isglobalbroadcast(
   msg: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_message */,
 ): number /* i32 */ {
-  return libMSAJApi.alljoyn_message_isglobalbroadcast(util.toPointer(msg));
+  return libMSAJApi_dll.alljoyn_message_isglobalbroadcast(util.toPointer(msg));
 }
 
 export function alljoyn_message_issessionless(
   msg: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_message */,
 ): number /* i32 */ {
-  return libMSAJApi.alljoyn_message_issessionless(util.toPointer(msg));
+  return libMSAJApi_dll.alljoyn_message_issessionless(util.toPointer(msg));
 }
 
 export function alljoyn_message_getflags(
   msg: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_message */,
 ): number /* u8 */ {
-  return libMSAJApi.alljoyn_message_getflags(util.toPointer(msg));
+  return libMSAJApi_dll.alljoyn_message_getflags(util.toPointer(msg));
 }
 
 export function alljoyn_message_isexpired(
   msg: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_message */,
   tillExpireMS: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
-  return libMSAJApi.alljoyn_message_isexpired(util.toPointer(msg), util.toPointer(tillExpireMS));
+  return libMSAJApi_dll.alljoyn_message_isexpired(util.toPointer(msg), util.toPointer(tillExpireMS));
 }
 
 export function alljoyn_message_isunreliable(
   msg: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_message */,
 ): number /* i32 */ {
-  return libMSAJApi.alljoyn_message_isunreliable(util.toPointer(msg));
+  return libMSAJApi_dll.alljoyn_message_isunreliable(util.toPointer(msg));
 }
 
 export function alljoyn_message_isencrypted(
   msg: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_message */,
 ): number /* i32 */ {
-  return libMSAJApi.alljoyn_message_isencrypted(util.toPointer(msg));
+  return libMSAJApi_dll.alljoyn_message_isencrypted(util.toPointer(msg));
 }
 
 export function alljoyn_message_getauthmechanism(
   msg: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_message */,
 ): string | null /* Windows.Win32.Foundation.PSTR */ {
-  return util.pstrFromFfi(libMSAJApi.alljoyn_message_getauthmechanism(util.toPointer(msg)));
+  return util.pstrFromFfi(libMSAJApi_dll.alljoyn_message_getauthmechanism(util.toPointer(msg)));
 }
 
 export function alljoyn_message_gettype(
   msg: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_message */,
 ): alljoyn_messagetype /* Windows.Win32.Devices.AllJoyn.alljoyn_messagetype */ {
-  return libMSAJApi.alljoyn_message_gettype(util.toPointer(msg));
+  return libMSAJApi_dll.alljoyn_message_gettype(util.toPointer(msg));
 }
 
 export function alljoyn_message_getargs(
@@ -4798,87 +4799,87 @@ export function alljoyn_message_getargs(
   numArgs: Deno.PointerValue | Uint8Array | null /* ptr */,
   args: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): void /* void */ {
-  return libMSAJApi.alljoyn_message_getargs(util.toPointer(msg), util.toPointer(numArgs), util.toPointer(args));
+  return libMSAJApi_dll.alljoyn_message_getargs(util.toPointer(msg), util.toPointer(numArgs), util.toPointer(args));
 }
 
 export function alljoyn_message_getarg(
   msg: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_message */,
   argN: Deno.PointerValue /* usize */,
 ): Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_msgarg */ {
-  return util.pointerFromFfi(libMSAJApi.alljoyn_message_getarg(util.toPointer(msg), argN));
+  return util.pointerFromFfi(libMSAJApi_dll.alljoyn_message_getarg(util.toPointer(msg), argN));
 }
 
 export function alljoyn_message_parseargs(
   msg: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_message */,
   signature: string | null /* Windows.Win32.Foundation.PSTR */,
 ): QStatus /* Windows.Win32.Devices.AllJoyn.QStatus */ {
-  return libMSAJApi.alljoyn_message_parseargs(util.toPointer(msg), util.pstrToFfi(signature));
+  return libMSAJApi_dll.alljoyn_message_parseargs(util.toPointer(msg), util.pstrToFfi(signature));
 }
 
 export function alljoyn_message_getcallserial(
   msg: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_message */,
 ): number /* u32 */ {
-  return libMSAJApi.alljoyn_message_getcallserial(util.toPointer(msg));
+  return libMSAJApi_dll.alljoyn_message_getcallserial(util.toPointer(msg));
 }
 
 export function alljoyn_message_getsignature(
   msg: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_message */,
 ): string | null /* Windows.Win32.Foundation.PSTR */ {
-  return util.pstrFromFfi(libMSAJApi.alljoyn_message_getsignature(util.toPointer(msg)));
+  return util.pstrFromFfi(libMSAJApi_dll.alljoyn_message_getsignature(util.toPointer(msg)));
 }
 
 export function alljoyn_message_getobjectpath(
   msg: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_message */,
 ): string | null /* Windows.Win32.Foundation.PSTR */ {
-  return util.pstrFromFfi(libMSAJApi.alljoyn_message_getobjectpath(util.toPointer(msg)));
+  return util.pstrFromFfi(libMSAJApi_dll.alljoyn_message_getobjectpath(util.toPointer(msg)));
 }
 
 export function alljoyn_message_getinterface(
   msg: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_message */,
 ): string | null /* Windows.Win32.Foundation.PSTR */ {
-  return util.pstrFromFfi(libMSAJApi.alljoyn_message_getinterface(util.toPointer(msg)));
+  return util.pstrFromFfi(libMSAJApi_dll.alljoyn_message_getinterface(util.toPointer(msg)));
 }
 
 export function alljoyn_message_getmembername(
   msg: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_message */,
 ): string | null /* Windows.Win32.Foundation.PSTR */ {
-  return util.pstrFromFfi(libMSAJApi.alljoyn_message_getmembername(util.toPointer(msg)));
+  return util.pstrFromFfi(libMSAJApi_dll.alljoyn_message_getmembername(util.toPointer(msg)));
 }
 
 export function alljoyn_message_getreplyserial(
   msg: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_message */,
 ): number /* u32 */ {
-  return libMSAJApi.alljoyn_message_getreplyserial(util.toPointer(msg));
+  return libMSAJApi_dll.alljoyn_message_getreplyserial(util.toPointer(msg));
 }
 
 export function alljoyn_message_getsender(
   msg: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_message */,
 ): string | null /* Windows.Win32.Foundation.PSTR */ {
-  return util.pstrFromFfi(libMSAJApi.alljoyn_message_getsender(util.toPointer(msg)));
+  return util.pstrFromFfi(libMSAJApi_dll.alljoyn_message_getsender(util.toPointer(msg)));
 }
 
 export function alljoyn_message_getreceiveendpointname(
   msg: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_message */,
 ): string | null /* Windows.Win32.Foundation.PSTR */ {
-  return util.pstrFromFfi(libMSAJApi.alljoyn_message_getreceiveendpointname(util.toPointer(msg)));
+  return util.pstrFromFfi(libMSAJApi_dll.alljoyn_message_getreceiveendpointname(util.toPointer(msg)));
 }
 
 export function alljoyn_message_getdestination(
   msg: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_message */,
 ): string | null /* Windows.Win32.Foundation.PSTR */ {
-  return util.pstrFromFfi(libMSAJApi.alljoyn_message_getdestination(util.toPointer(msg)));
+  return util.pstrFromFfi(libMSAJApi_dll.alljoyn_message_getdestination(util.toPointer(msg)));
 }
 
 export function alljoyn_message_getcompressiontoken(
   msg: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_message */,
 ): number /* u32 */ {
-  return libMSAJApi.alljoyn_message_getcompressiontoken(util.toPointer(msg));
+  return libMSAJApi_dll.alljoyn_message_getcompressiontoken(util.toPointer(msg));
 }
 
 export function alljoyn_message_getsessionid(
   msg: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_message */,
 ): number /* u32 */ {
-  return libMSAJApi.alljoyn_message_getsessionid(util.toPointer(msg));
+  return libMSAJApi_dll.alljoyn_message_getsessionid(util.toPointer(msg));
 }
 
 export function alljoyn_message_geterrorname(
@@ -4886,7 +4887,7 @@ export function alljoyn_message_geterrorname(
   errorMessage: string | null /* Windows.Win32.Foundation.PSTR */,
   errorMessage_size: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): string | null /* Windows.Win32.Foundation.PSTR */ {
-  return util.pstrFromFfi(libMSAJApi.alljoyn_message_geterrorname(util.toPointer(msg), util.pstrToFfi(errorMessage), util.toPointer(errorMessage_size)));
+  return util.pstrFromFfi(libMSAJApi_dll.alljoyn_message_geterrorname(util.toPointer(msg), util.pstrToFfi(errorMessage), util.toPointer(errorMessage_size)));
 }
 
 export function alljoyn_message_tostring(
@@ -4894,7 +4895,7 @@ export function alljoyn_message_tostring(
   str: string | null /* Windows.Win32.Foundation.PSTR */,
   buf: Deno.PointerValue /* usize */,
 ): Deno.PointerValue /* usize */ {
-  return libMSAJApi.alljoyn_message_tostring(util.toPointer(msg), util.pstrToFfi(str), buf);
+  return libMSAJApi_dll.alljoyn_message_tostring(util.toPointer(msg), util.pstrToFfi(str), buf);
 }
 
 export function alljoyn_message_description(
@@ -4902,26 +4903,26 @@ export function alljoyn_message_description(
   str: string | null /* Windows.Win32.Foundation.PSTR */,
   buf: Deno.PointerValue /* usize */,
 ): Deno.PointerValue /* usize */ {
-  return libMSAJApi.alljoyn_message_description(util.toPointer(msg), util.pstrToFfi(str), buf);
+  return libMSAJApi_dll.alljoyn_message_description(util.toPointer(msg), util.pstrToFfi(str), buf);
 }
 
 export function alljoyn_message_gettimestamp(
   msg: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_message */,
 ): number /* u32 */ {
-  return libMSAJApi.alljoyn_message_gettimestamp(util.toPointer(msg));
+  return libMSAJApi_dll.alljoyn_message_gettimestamp(util.toPointer(msg));
 }
 
 export function alljoyn_message_eql(
   one: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_message */,
   other: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_message */,
 ): number /* i32 */ {
-  return libMSAJApi.alljoyn_message_eql(util.toPointer(one), util.toPointer(other));
+  return libMSAJApi_dll.alljoyn_message_eql(util.toPointer(one), util.toPointer(other));
 }
 
 export function alljoyn_message_setendianess(
   endian: number /* i8 */,
 ): void /* void */ {
-  return libMSAJApi.alljoyn_message_setendianess(endian);
+  return libMSAJApi_dll.alljoyn_message_setendianess(endian);
 }
 
 export function alljoyn_authlistener_requestcredentialsresponse(
@@ -4930,7 +4931,7 @@ export function alljoyn_authlistener_requestcredentialsresponse(
   accept: number /* i32 */,
   credentials: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_credentials */,
 ): QStatus /* Windows.Win32.Devices.AllJoyn.QStatus */ {
-  return libMSAJApi.alljoyn_authlistener_requestcredentialsresponse(util.toPointer(listener), util.toPointer(authContext), accept, util.toPointer(credentials));
+  return libMSAJApi_dll.alljoyn_authlistener_requestcredentialsresponse(util.toPointer(listener), util.toPointer(authContext), accept, util.toPointer(credentials));
 }
 
 export function alljoyn_authlistener_verifycredentialsresponse(
@@ -4938,33 +4939,33 @@ export function alljoyn_authlistener_verifycredentialsresponse(
   authContext: Deno.PointerValue | Uint8Array | null /* ptr */,
   accept: number /* i32 */,
 ): QStatus /* Windows.Win32.Devices.AllJoyn.QStatus */ {
-  return libMSAJApi.alljoyn_authlistener_verifycredentialsresponse(util.toPointer(listener), util.toPointer(authContext), accept);
+  return libMSAJApi_dll.alljoyn_authlistener_verifycredentialsresponse(util.toPointer(listener), util.toPointer(authContext), accept);
 }
 
 export function alljoyn_authlistener_create(
   callbacks: Deno.PointerValue | Uint8Array | null /* ptr */,
   context: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_authlistener */ {
-  return util.pointerFromFfi(libMSAJApi.alljoyn_authlistener_create(util.toPointer(callbacks), util.toPointer(context)));
+  return util.pointerFromFfi(libMSAJApi_dll.alljoyn_authlistener_create(util.toPointer(callbacks), util.toPointer(context)));
 }
 
 export function alljoyn_authlistenerasync_create(
   callbacks: Deno.PointerValue | Uint8Array | null /* ptr */,
   context: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_authlistener */ {
-  return util.pointerFromFfi(libMSAJApi.alljoyn_authlistenerasync_create(util.toPointer(callbacks), util.toPointer(context)));
+  return util.pointerFromFfi(libMSAJApi_dll.alljoyn_authlistenerasync_create(util.toPointer(callbacks), util.toPointer(context)));
 }
 
 export function alljoyn_authlistener_destroy(
   listener: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_authlistener */,
 ): void /* void */ {
-  return libMSAJApi.alljoyn_authlistener_destroy(util.toPointer(listener));
+  return libMSAJApi_dll.alljoyn_authlistener_destroy(util.toPointer(listener));
 }
 
 export function alljoyn_authlistenerasync_destroy(
   listener: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_authlistener */,
 ): void /* void */ {
-  return libMSAJApi.alljoyn_authlistenerasync_destroy(util.toPointer(listener));
+  return libMSAJApi_dll.alljoyn_authlistenerasync_destroy(util.toPointer(listener));
 }
 
 export function alljoyn_authlistener_setsharedsecret(
@@ -4972,127 +4973,127 @@ export function alljoyn_authlistener_setsharedsecret(
   sharedSecret: Deno.PointerValue | Uint8Array | null /* ptr */,
   sharedSecretSize: Deno.PointerValue /* usize */,
 ): QStatus /* Windows.Win32.Devices.AllJoyn.QStatus */ {
-  return libMSAJApi.alljoyn_authlistener_setsharedsecret(util.toPointer(listener), util.toPointer(sharedSecret), sharedSecretSize);
+  return libMSAJApi_dll.alljoyn_authlistener_setsharedsecret(util.toPointer(listener), util.toPointer(sharedSecret), sharedSecretSize);
 }
 
 export function alljoyn_credentials_create(): Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_credentials */ {
-  return util.pointerFromFfi(libMSAJApi.alljoyn_credentials_create());
+  return util.pointerFromFfi(libMSAJApi_dll.alljoyn_credentials_create());
 }
 
 export function alljoyn_credentials_destroy(
   cred: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_credentials */,
 ): void /* void */ {
-  return libMSAJApi.alljoyn_credentials_destroy(util.toPointer(cred));
+  return libMSAJApi_dll.alljoyn_credentials_destroy(util.toPointer(cred));
 }
 
 export function alljoyn_credentials_isset(
   cred: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_credentials */,
   creds: number /* u16 */,
 ): number /* i32 */ {
-  return libMSAJApi.alljoyn_credentials_isset(util.toPointer(cred), creds);
+  return libMSAJApi_dll.alljoyn_credentials_isset(util.toPointer(cred), creds);
 }
 
 export function alljoyn_credentials_setpassword(
   cred: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_credentials */,
   pwd: string | null /* Windows.Win32.Foundation.PSTR */,
 ): void /* void */ {
-  return libMSAJApi.alljoyn_credentials_setpassword(util.toPointer(cred), util.pstrToFfi(pwd));
+  return libMSAJApi_dll.alljoyn_credentials_setpassword(util.toPointer(cred), util.pstrToFfi(pwd));
 }
 
 export function alljoyn_credentials_setusername(
   cred: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_credentials */,
   userName: string | null /* Windows.Win32.Foundation.PSTR */,
 ): void /* void */ {
-  return libMSAJApi.alljoyn_credentials_setusername(util.toPointer(cred), util.pstrToFfi(userName));
+  return libMSAJApi_dll.alljoyn_credentials_setusername(util.toPointer(cred), util.pstrToFfi(userName));
 }
 
 export function alljoyn_credentials_setcertchain(
   cred: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_credentials */,
   certChain: string | null /* Windows.Win32.Foundation.PSTR */,
 ): void /* void */ {
-  return libMSAJApi.alljoyn_credentials_setcertchain(util.toPointer(cred), util.pstrToFfi(certChain));
+  return libMSAJApi_dll.alljoyn_credentials_setcertchain(util.toPointer(cred), util.pstrToFfi(certChain));
 }
 
 export function alljoyn_credentials_setprivatekey(
   cred: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_credentials */,
   pk: string | null /* Windows.Win32.Foundation.PSTR */,
 ): void /* void */ {
-  return libMSAJApi.alljoyn_credentials_setprivatekey(util.toPointer(cred), util.pstrToFfi(pk));
+  return libMSAJApi_dll.alljoyn_credentials_setprivatekey(util.toPointer(cred), util.pstrToFfi(pk));
 }
 
 export function alljoyn_credentials_setlogonentry(
   cred: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_credentials */,
   logonEntry: string | null /* Windows.Win32.Foundation.PSTR */,
 ): void /* void */ {
-  return libMSAJApi.alljoyn_credentials_setlogonentry(util.toPointer(cred), util.pstrToFfi(logonEntry));
+  return libMSAJApi_dll.alljoyn_credentials_setlogonentry(util.toPointer(cred), util.pstrToFfi(logonEntry));
 }
 
 export function alljoyn_credentials_setexpiration(
   cred: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_credentials */,
   expiration: number /* u32 */,
 ): void /* void */ {
-  return libMSAJApi.alljoyn_credentials_setexpiration(util.toPointer(cred), expiration);
+  return libMSAJApi_dll.alljoyn_credentials_setexpiration(util.toPointer(cred), expiration);
 }
 
 export function alljoyn_credentials_getpassword(
   cred: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_credentials */,
 ): string | null /* Windows.Win32.Foundation.PSTR */ {
-  return util.pstrFromFfi(libMSAJApi.alljoyn_credentials_getpassword(util.toPointer(cred)));
+  return util.pstrFromFfi(libMSAJApi_dll.alljoyn_credentials_getpassword(util.toPointer(cred)));
 }
 
 export function alljoyn_credentials_getusername(
   cred: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_credentials */,
 ): string | null /* Windows.Win32.Foundation.PSTR */ {
-  return util.pstrFromFfi(libMSAJApi.alljoyn_credentials_getusername(util.toPointer(cred)));
+  return util.pstrFromFfi(libMSAJApi_dll.alljoyn_credentials_getusername(util.toPointer(cred)));
 }
 
 export function alljoyn_credentials_getcertchain(
   cred: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_credentials */,
 ): string | null /* Windows.Win32.Foundation.PSTR */ {
-  return util.pstrFromFfi(libMSAJApi.alljoyn_credentials_getcertchain(util.toPointer(cred)));
+  return util.pstrFromFfi(libMSAJApi_dll.alljoyn_credentials_getcertchain(util.toPointer(cred)));
 }
 
 export function alljoyn_credentials_getprivateKey(
   cred: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_credentials */,
 ): string | null /* Windows.Win32.Foundation.PSTR */ {
-  return util.pstrFromFfi(libMSAJApi.alljoyn_credentials_getprivateKey(util.toPointer(cred)));
+  return util.pstrFromFfi(libMSAJApi_dll.alljoyn_credentials_getprivateKey(util.toPointer(cred)));
 }
 
 export function alljoyn_credentials_getlogonentry(
   cred: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_credentials */,
 ): string | null /* Windows.Win32.Foundation.PSTR */ {
-  return util.pstrFromFfi(libMSAJApi.alljoyn_credentials_getlogonentry(util.toPointer(cred)));
+  return util.pstrFromFfi(libMSAJApi_dll.alljoyn_credentials_getlogonentry(util.toPointer(cred)));
 }
 
 export function alljoyn_credentials_getexpiration(
   cred: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_credentials */,
 ): number /* u32 */ {
-  return libMSAJApi.alljoyn_credentials_getexpiration(util.toPointer(cred));
+  return libMSAJApi_dll.alljoyn_credentials_getexpiration(util.toPointer(cred));
 }
 
 export function alljoyn_credentials_clear(
   cred: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_credentials */,
 ): void /* void */ {
-  return libMSAJApi.alljoyn_credentials_clear(util.toPointer(cred));
+  return libMSAJApi_dll.alljoyn_credentials_clear(util.toPointer(cred));
 }
 
 export function alljoyn_buslistener_create(
   callbacks: Deno.PointerValue | Uint8Array | null /* ptr */,
   context: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_buslistener */ {
-  return util.pointerFromFfi(libMSAJApi.alljoyn_buslistener_create(util.toPointer(callbacks), util.toPointer(context)));
+  return util.pointerFromFfi(libMSAJApi_dll.alljoyn_buslistener_create(util.toPointer(callbacks), util.toPointer(context)));
 }
 
 export function alljoyn_buslistener_destroy(
   listener: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_buslistener */,
 ): void /* void */ {
-  return libMSAJApi.alljoyn_buslistener_destroy(util.toPointer(listener));
+  return libMSAJApi_dll.alljoyn_buslistener_destroy(util.toPointer(listener));
 }
 
 export function alljoyn_interfacedescription_member_getannotationscount(
   member: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_interfacedescription_member */,
 ): Deno.PointerValue /* usize */ {
-  return libMSAJApi.alljoyn_interfacedescription_member_getannotationscount(util.toPointer(member));
+  return libMSAJApi_dll.alljoyn_interfacedescription_member_getannotationscount(util.toPointer(member));
 }
 
 export function alljoyn_interfacedescription_member_getannotationatindex(
@@ -5103,7 +5104,7 @@ export function alljoyn_interfacedescription_member_getannotationatindex(
   value: string | null /* Windows.Win32.Foundation.PSTR */,
   value_size: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): void /* void */ {
-  return libMSAJApi.alljoyn_interfacedescription_member_getannotationatindex(util.toPointer(member), index, util.pstrToFfi(name), util.toPointer(name_size), util.pstrToFfi(value), util.toPointer(value_size));
+  return libMSAJApi_dll.alljoyn_interfacedescription_member_getannotationatindex(util.toPointer(member), index, util.pstrToFfi(name), util.toPointer(name_size), util.pstrToFfi(value), util.toPointer(value_size));
 }
 
 export function alljoyn_interfacedescription_member_getannotation(
@@ -5112,14 +5113,14 @@ export function alljoyn_interfacedescription_member_getannotation(
   value: string | null /* Windows.Win32.Foundation.PSTR */,
   value_size: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
-  return libMSAJApi.alljoyn_interfacedescription_member_getannotation(util.toPointer(member), util.pstrToFfi(name), util.pstrToFfi(value), util.toPointer(value_size));
+  return libMSAJApi_dll.alljoyn_interfacedescription_member_getannotation(util.toPointer(member), util.pstrToFfi(name), util.pstrToFfi(value), util.toPointer(value_size));
 }
 
 export function alljoyn_interfacedescription_member_getargannotationscount(
   member: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_interfacedescription_member */,
   argName: string | null /* Windows.Win32.Foundation.PSTR */,
 ): Deno.PointerValue /* usize */ {
-  return libMSAJApi.alljoyn_interfacedescription_member_getargannotationscount(util.toPointer(member), util.pstrToFfi(argName));
+  return libMSAJApi_dll.alljoyn_interfacedescription_member_getargannotationscount(util.toPointer(member), util.pstrToFfi(argName));
 }
 
 export function alljoyn_interfacedescription_member_getargannotationatindex(
@@ -5131,7 +5132,7 @@ export function alljoyn_interfacedescription_member_getargannotationatindex(
   value: string | null /* Windows.Win32.Foundation.PSTR */,
   value_size: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): void /* void */ {
-  return libMSAJApi.alljoyn_interfacedescription_member_getargannotationatindex(util.toPointer(member), util.pstrToFfi(argName), index, util.pstrToFfi(name), util.toPointer(name_size), util.pstrToFfi(value), util.toPointer(value_size));
+  return libMSAJApi_dll.alljoyn_interfacedescription_member_getargannotationatindex(util.toPointer(member), util.pstrToFfi(argName), index, util.pstrToFfi(name), util.toPointer(name_size), util.pstrToFfi(value), util.toPointer(value_size));
 }
 
 export function alljoyn_interfacedescription_member_getargannotation(
@@ -5141,13 +5142,13 @@ export function alljoyn_interfacedescription_member_getargannotation(
   value: string | null /* Windows.Win32.Foundation.PSTR */,
   value_size: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
-  return libMSAJApi.alljoyn_interfacedescription_member_getargannotation(util.toPointer(member), util.pstrToFfi(argName), util.pstrToFfi(name), util.pstrToFfi(value), util.toPointer(value_size));
+  return libMSAJApi_dll.alljoyn_interfacedescription_member_getargannotation(util.toPointer(member), util.pstrToFfi(argName), util.pstrToFfi(name), util.pstrToFfi(value), util.toPointer(value_size));
 }
 
 export function alljoyn_interfacedescription_property_getannotationscount(
   property: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_interfacedescription_property */,
 ): Deno.PointerValue /* usize */ {
-  return libMSAJApi.alljoyn_interfacedescription_property_getannotationscount(util.toPointer(property));
+  return libMSAJApi_dll.alljoyn_interfacedescription_property_getannotationscount(util.toPointer(property));
 }
 
 export function alljoyn_interfacedescription_property_getannotationatindex(
@@ -5158,7 +5159,7 @@ export function alljoyn_interfacedescription_property_getannotationatindex(
   value: string | null /* Windows.Win32.Foundation.PSTR */,
   value_size: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): void /* void */ {
-  return libMSAJApi.alljoyn_interfacedescription_property_getannotationatindex(util.toPointer(property), index, util.pstrToFfi(name), util.toPointer(name_size), util.pstrToFfi(value), util.toPointer(value_size));
+  return libMSAJApi_dll.alljoyn_interfacedescription_property_getannotationatindex(util.toPointer(property), index, util.pstrToFfi(name), util.toPointer(name_size), util.pstrToFfi(value), util.toPointer(value_size));
 }
 
 export function alljoyn_interfacedescription_property_getannotation(
@@ -5167,13 +5168,13 @@ export function alljoyn_interfacedescription_property_getannotation(
   value: string | null /* Windows.Win32.Foundation.PSTR */,
   value_size: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
-  return libMSAJApi.alljoyn_interfacedescription_property_getannotation(util.toPointer(property), util.pstrToFfi(name), util.pstrToFfi(value), util.toPointer(value_size));
+  return libMSAJApi_dll.alljoyn_interfacedescription_property_getannotation(util.toPointer(property), util.pstrToFfi(name), util.pstrToFfi(value), util.toPointer(value_size));
 }
 
 export function alljoyn_interfacedescription_activate(
   iface: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_interfacedescription */,
 ): void /* void */ {
-  return libMSAJApi.alljoyn_interfacedescription_activate(util.toPointer(iface));
+  return libMSAJApi_dll.alljoyn_interfacedescription_activate(util.toPointer(iface));
 }
 
 export function alljoyn_interfacedescription_addannotation(
@@ -5181,7 +5182,7 @@ export function alljoyn_interfacedescription_addannotation(
   name: string | null /* Windows.Win32.Foundation.PSTR */,
   value: string | null /* Windows.Win32.Foundation.PSTR */,
 ): QStatus /* Windows.Win32.Devices.AllJoyn.QStatus */ {
-  return libMSAJApi.alljoyn_interfacedescription_addannotation(util.toPointer(iface), util.pstrToFfi(name), util.pstrToFfi(value));
+  return libMSAJApi_dll.alljoyn_interfacedescription_addannotation(util.toPointer(iface), util.pstrToFfi(name), util.pstrToFfi(value));
 }
 
 export function alljoyn_interfacedescription_getannotation(
@@ -5190,13 +5191,13 @@ export function alljoyn_interfacedescription_getannotation(
   value: string | null /* Windows.Win32.Foundation.PSTR */,
   value_size: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
-  return libMSAJApi.alljoyn_interfacedescription_getannotation(util.toPointer(iface), util.pstrToFfi(name), util.pstrToFfi(value), util.toPointer(value_size));
+  return libMSAJApi_dll.alljoyn_interfacedescription_getannotation(util.toPointer(iface), util.pstrToFfi(name), util.pstrToFfi(value), util.toPointer(value_size));
 }
 
 export function alljoyn_interfacedescription_getannotationscount(
   iface: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_interfacedescription */,
 ): Deno.PointerValue /* usize */ {
-  return libMSAJApi.alljoyn_interfacedescription_getannotationscount(util.toPointer(iface));
+  return libMSAJApi_dll.alljoyn_interfacedescription_getannotationscount(util.toPointer(iface));
 }
 
 export function alljoyn_interfacedescription_getannotationatindex(
@@ -5207,7 +5208,7 @@ export function alljoyn_interfacedescription_getannotationatindex(
   value: string | null /* Windows.Win32.Foundation.PSTR */,
   value_size: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): void /* void */ {
-  return libMSAJApi.alljoyn_interfacedescription_getannotationatindex(util.toPointer(iface), index, util.pstrToFfi(name), util.toPointer(name_size), util.pstrToFfi(value), util.toPointer(value_size));
+  return libMSAJApi_dll.alljoyn_interfacedescription_getannotationatindex(util.toPointer(iface), index, util.pstrToFfi(name), util.toPointer(name_size), util.pstrToFfi(value), util.toPointer(value_size));
 }
 
 export function alljoyn_interfacedescription_getmember(
@@ -5215,7 +5216,7 @@ export function alljoyn_interfacedescription_getmember(
   name: string | null /* Windows.Win32.Foundation.PSTR */,
   member: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
-  return libMSAJApi.alljoyn_interfacedescription_getmember(util.toPointer(iface), util.pstrToFfi(name), util.toPointer(member));
+  return libMSAJApi_dll.alljoyn_interfacedescription_getmember(util.toPointer(iface), util.pstrToFfi(name), util.toPointer(member));
 }
 
 export function alljoyn_interfacedescription_addmember(
@@ -5227,7 +5228,7 @@ export function alljoyn_interfacedescription_addmember(
   argNames: string | null /* Windows.Win32.Foundation.PSTR */,
   annotation: number /* u8 */,
 ): QStatus /* Windows.Win32.Devices.AllJoyn.QStatus */ {
-  return libMSAJApi.alljoyn_interfacedescription_addmember(util.toPointer(iface), type, util.pstrToFfi(name), util.pstrToFfi(inputSig), util.pstrToFfi(outSig), util.pstrToFfi(argNames), annotation);
+  return libMSAJApi_dll.alljoyn_interfacedescription_addmember(util.toPointer(iface), type, util.pstrToFfi(name), util.pstrToFfi(inputSig), util.pstrToFfi(outSig), util.pstrToFfi(argNames), annotation);
 }
 
 export function alljoyn_interfacedescription_addmemberannotation(
@@ -5236,7 +5237,7 @@ export function alljoyn_interfacedescription_addmemberannotation(
   name: string | null /* Windows.Win32.Foundation.PSTR */,
   value: string | null /* Windows.Win32.Foundation.PSTR */,
 ): QStatus /* Windows.Win32.Devices.AllJoyn.QStatus */ {
-  return libMSAJApi.alljoyn_interfacedescription_addmemberannotation(util.toPointer(iface), util.pstrToFfi(member), util.pstrToFfi(name), util.pstrToFfi(value));
+  return libMSAJApi_dll.alljoyn_interfacedescription_addmemberannotation(util.toPointer(iface), util.pstrToFfi(member), util.pstrToFfi(name), util.pstrToFfi(value));
 }
 
 export function alljoyn_interfacedescription_getmemberannotation(
@@ -5246,7 +5247,7 @@ export function alljoyn_interfacedescription_getmemberannotation(
   value: string | null /* Windows.Win32.Foundation.PSTR */,
   value_size: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
-  return libMSAJApi.alljoyn_interfacedescription_getmemberannotation(util.toPointer(iface), util.pstrToFfi(member), util.pstrToFfi(name), util.pstrToFfi(value), util.toPointer(value_size));
+  return libMSAJApi_dll.alljoyn_interfacedescription_getmemberannotation(util.toPointer(iface), util.pstrToFfi(member), util.pstrToFfi(name), util.pstrToFfi(value), util.toPointer(value_size));
 }
 
 export function alljoyn_interfacedescription_getmembers(
@@ -5254,7 +5255,7 @@ export function alljoyn_interfacedescription_getmembers(
   members: Deno.PointerValue | Uint8Array | null /* ptr */,
   numMembers: Deno.PointerValue /* usize */,
 ): Deno.PointerValue /* usize */ {
-  return libMSAJApi.alljoyn_interfacedescription_getmembers(util.toPointer(iface), util.toPointer(members), numMembers);
+  return libMSAJApi_dll.alljoyn_interfacedescription_getmembers(util.toPointer(iface), util.toPointer(members), numMembers);
 }
 
 export function alljoyn_interfacedescription_hasmember(
@@ -5263,7 +5264,7 @@ export function alljoyn_interfacedescription_hasmember(
   inSig: string | null /* Windows.Win32.Foundation.PSTR */,
   outSig: string | null /* Windows.Win32.Foundation.PSTR */,
 ): number /* i32 */ {
-  return libMSAJApi.alljoyn_interfacedescription_hasmember(util.toPointer(iface), util.pstrToFfi(name), util.pstrToFfi(inSig), util.pstrToFfi(outSig));
+  return libMSAJApi_dll.alljoyn_interfacedescription_hasmember(util.toPointer(iface), util.pstrToFfi(name), util.pstrToFfi(inSig), util.pstrToFfi(outSig));
 }
 
 export function alljoyn_interfacedescription_addmethod(
@@ -5275,7 +5276,7 @@ export function alljoyn_interfacedescription_addmethod(
   annotation: number /* u8 */,
   accessPerms: string | null /* Windows.Win32.Foundation.PSTR */,
 ): QStatus /* Windows.Win32.Devices.AllJoyn.QStatus */ {
-  return libMSAJApi.alljoyn_interfacedescription_addmethod(util.toPointer(iface), util.pstrToFfi(name), util.pstrToFfi(inputSig), util.pstrToFfi(outSig), util.pstrToFfi(argNames), annotation, util.pstrToFfi(accessPerms));
+  return libMSAJApi_dll.alljoyn_interfacedescription_addmethod(util.toPointer(iface), util.pstrToFfi(name), util.pstrToFfi(inputSig), util.pstrToFfi(outSig), util.pstrToFfi(argNames), annotation, util.pstrToFfi(accessPerms));
 }
 
 export function alljoyn_interfacedescription_getmethod(
@@ -5283,7 +5284,7 @@ export function alljoyn_interfacedescription_getmethod(
   name: string | null /* Windows.Win32.Foundation.PSTR */,
   member: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
-  return libMSAJApi.alljoyn_interfacedescription_getmethod(util.toPointer(iface), util.pstrToFfi(name), util.toPointer(member));
+  return libMSAJApi_dll.alljoyn_interfacedescription_getmethod(util.toPointer(iface), util.pstrToFfi(name), util.toPointer(member));
 }
 
 export function alljoyn_interfacedescription_addsignal(
@@ -5294,7 +5295,7 @@ export function alljoyn_interfacedescription_addsignal(
   annotation: number /* u8 */,
   accessPerms: string | null /* Windows.Win32.Foundation.PSTR */,
 ): QStatus /* Windows.Win32.Devices.AllJoyn.QStatus */ {
-  return libMSAJApi.alljoyn_interfacedescription_addsignal(util.toPointer(iface), util.pstrToFfi(name), util.pstrToFfi(sig), util.pstrToFfi(argNames), annotation, util.pstrToFfi(accessPerms));
+  return libMSAJApi_dll.alljoyn_interfacedescription_addsignal(util.toPointer(iface), util.pstrToFfi(name), util.pstrToFfi(sig), util.pstrToFfi(argNames), annotation, util.pstrToFfi(accessPerms));
 }
 
 export function alljoyn_interfacedescription_getsignal(
@@ -5302,7 +5303,7 @@ export function alljoyn_interfacedescription_getsignal(
   name: string | null /* Windows.Win32.Foundation.PSTR */,
   member: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
-  return libMSAJApi.alljoyn_interfacedescription_getsignal(util.toPointer(iface), util.pstrToFfi(name), util.toPointer(member));
+  return libMSAJApi_dll.alljoyn_interfacedescription_getsignal(util.toPointer(iface), util.pstrToFfi(name), util.toPointer(member));
 }
 
 export function alljoyn_interfacedescription_getproperty(
@@ -5310,7 +5311,7 @@ export function alljoyn_interfacedescription_getproperty(
   name: string | null /* Windows.Win32.Foundation.PSTR */,
   property: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
-  return libMSAJApi.alljoyn_interfacedescription_getproperty(util.toPointer(iface), util.pstrToFfi(name), util.toPointer(property));
+  return libMSAJApi_dll.alljoyn_interfacedescription_getproperty(util.toPointer(iface), util.pstrToFfi(name), util.toPointer(property));
 }
 
 export function alljoyn_interfacedescription_getproperties(
@@ -5318,7 +5319,7 @@ export function alljoyn_interfacedescription_getproperties(
   props: Deno.PointerValue | Uint8Array | null /* ptr */,
   numProps: Deno.PointerValue /* usize */,
 ): Deno.PointerValue /* usize */ {
-  return libMSAJApi.alljoyn_interfacedescription_getproperties(util.toPointer(iface), util.toPointer(props), numProps);
+  return libMSAJApi_dll.alljoyn_interfacedescription_getproperties(util.toPointer(iface), util.toPointer(props), numProps);
 }
 
 export function alljoyn_interfacedescription_addproperty(
@@ -5327,7 +5328,7 @@ export function alljoyn_interfacedescription_addproperty(
   signature: string | null /* Windows.Win32.Foundation.PSTR */,
   access: number /* u8 */,
 ): QStatus /* Windows.Win32.Devices.AllJoyn.QStatus */ {
-  return libMSAJApi.alljoyn_interfacedescription_addproperty(util.toPointer(iface), util.pstrToFfi(name), util.pstrToFfi(signature), access);
+  return libMSAJApi_dll.alljoyn_interfacedescription_addproperty(util.toPointer(iface), util.pstrToFfi(name), util.pstrToFfi(signature), access);
 }
 
 export function alljoyn_interfacedescription_addpropertyannotation(
@@ -5336,7 +5337,7 @@ export function alljoyn_interfacedescription_addpropertyannotation(
   name: string | null /* Windows.Win32.Foundation.PSTR */,
   value: string | null /* Windows.Win32.Foundation.PSTR */,
 ): QStatus /* Windows.Win32.Devices.AllJoyn.QStatus */ {
-  return libMSAJApi.alljoyn_interfacedescription_addpropertyannotation(util.toPointer(iface), util.pstrToFfi(property), util.pstrToFfi(name), util.pstrToFfi(value));
+  return libMSAJApi_dll.alljoyn_interfacedescription_addpropertyannotation(util.toPointer(iface), util.pstrToFfi(property), util.pstrToFfi(name), util.pstrToFfi(value));
 }
 
 export function alljoyn_interfacedescription_getpropertyannotation(
@@ -5346,26 +5347,26 @@ export function alljoyn_interfacedescription_getpropertyannotation(
   value: string | null /* Windows.Win32.Foundation.PSTR */,
   str_size: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
-  return libMSAJApi.alljoyn_interfacedescription_getpropertyannotation(util.toPointer(iface), util.pstrToFfi(property), util.pstrToFfi(name), util.pstrToFfi(value), util.toPointer(str_size));
+  return libMSAJApi_dll.alljoyn_interfacedescription_getpropertyannotation(util.toPointer(iface), util.pstrToFfi(property), util.pstrToFfi(name), util.pstrToFfi(value), util.toPointer(str_size));
 }
 
 export function alljoyn_interfacedescription_hasproperty(
   iface: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_interfacedescription */,
   name: string | null /* Windows.Win32.Foundation.PSTR */,
 ): number /* i32 */ {
-  return libMSAJApi.alljoyn_interfacedescription_hasproperty(util.toPointer(iface), util.pstrToFfi(name));
+  return libMSAJApi_dll.alljoyn_interfacedescription_hasproperty(util.toPointer(iface), util.pstrToFfi(name));
 }
 
 export function alljoyn_interfacedescription_hasproperties(
   iface: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_interfacedescription */,
 ): number /* i32 */ {
-  return libMSAJApi.alljoyn_interfacedescription_hasproperties(util.toPointer(iface));
+  return libMSAJApi_dll.alljoyn_interfacedescription_hasproperties(util.toPointer(iface));
 }
 
 export function alljoyn_interfacedescription_getname(
   iface: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_interfacedescription */,
 ): string | null /* Windows.Win32.Foundation.PSTR */ {
-  return util.pstrFromFfi(libMSAJApi.alljoyn_interfacedescription_getname(util.toPointer(iface)));
+  return util.pstrFromFfi(libMSAJApi_dll.alljoyn_interfacedescription_getname(util.toPointer(iface)));
 }
 
 export function alljoyn_interfacedescription_introspect(
@@ -5374,26 +5375,26 @@ export function alljoyn_interfacedescription_introspect(
   buf: Deno.PointerValue /* usize */,
   indent: Deno.PointerValue /* usize */,
 ): Deno.PointerValue /* usize */ {
-  return libMSAJApi.alljoyn_interfacedescription_introspect(util.toPointer(iface), util.pstrToFfi(str), buf, indent);
+  return libMSAJApi_dll.alljoyn_interfacedescription_introspect(util.toPointer(iface), util.pstrToFfi(str), buf, indent);
 }
 
 export function alljoyn_interfacedescription_issecure(
   iface: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_interfacedescription */,
 ): number /* i32 */ {
-  return libMSAJApi.alljoyn_interfacedescription_issecure(util.toPointer(iface));
+  return libMSAJApi_dll.alljoyn_interfacedescription_issecure(util.toPointer(iface));
 }
 
 export function alljoyn_interfacedescription_getsecuritypolicy(
   iface: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_interfacedescription */,
 ): alljoyn_interfacedescription_securitypolicy /* Windows.Win32.Devices.AllJoyn.alljoyn_interfacedescription_securitypolicy */ {
-  return libMSAJApi.alljoyn_interfacedescription_getsecuritypolicy(util.toPointer(iface));
+  return libMSAJApi_dll.alljoyn_interfacedescription_getsecuritypolicy(util.toPointer(iface));
 }
 
 export function alljoyn_interfacedescription_setdescriptionlanguage(
   iface: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_interfacedescription */,
   language: string | null /* Windows.Win32.Foundation.PSTR */,
 ): void /* void */ {
-  return libMSAJApi.alljoyn_interfacedescription_setdescriptionlanguage(util.toPointer(iface), util.pstrToFfi(language));
+  return libMSAJApi_dll.alljoyn_interfacedescription_setdescriptionlanguage(util.toPointer(iface), util.pstrToFfi(language));
 }
 
 export function alljoyn_interfacedescription_getdescriptionlanguages(
@@ -5401,7 +5402,7 @@ export function alljoyn_interfacedescription_getdescriptionlanguages(
   languages: Deno.PointerValue | Uint8Array | null /* ptr */,
   size: Deno.PointerValue /* usize */,
 ): Deno.PointerValue /* usize */ {
-  return libMSAJApi.alljoyn_interfacedescription_getdescriptionlanguages(util.toPointer(iface), util.toPointer(languages), size);
+  return libMSAJApi_dll.alljoyn_interfacedescription_getdescriptionlanguages(util.toPointer(iface), util.toPointer(languages), size);
 }
 
 export function alljoyn_interfacedescription_getdescriptionlanguages2(
@@ -5409,14 +5410,14 @@ export function alljoyn_interfacedescription_getdescriptionlanguages2(
   languages: string | null /* Windows.Win32.Foundation.PSTR */,
   languagesSize: Deno.PointerValue /* usize */,
 ): Deno.PointerValue /* usize */ {
-  return libMSAJApi.alljoyn_interfacedescription_getdescriptionlanguages2(util.toPointer(iface), util.pstrToFfi(languages), languagesSize);
+  return libMSAJApi_dll.alljoyn_interfacedescription_getdescriptionlanguages2(util.toPointer(iface), util.pstrToFfi(languages), languagesSize);
 }
 
 export function alljoyn_interfacedescription_setdescription(
   iface: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_interfacedescription */,
   description: string | null /* Windows.Win32.Foundation.PSTR */,
 ): void /* void */ {
-  return libMSAJApi.alljoyn_interfacedescription_setdescription(util.toPointer(iface), util.pstrToFfi(description));
+  return libMSAJApi_dll.alljoyn_interfacedescription_setdescription(util.toPointer(iface), util.pstrToFfi(description));
 }
 
 export function alljoyn_interfacedescription_setdescriptionforlanguage(
@@ -5424,7 +5425,7 @@ export function alljoyn_interfacedescription_setdescriptionforlanguage(
   description: string | null /* Windows.Win32.Foundation.PSTR */,
   languageTag: string | null /* Windows.Win32.Foundation.PSTR */,
 ): QStatus /* Windows.Win32.Devices.AllJoyn.QStatus */ {
-  return libMSAJApi.alljoyn_interfacedescription_setdescriptionforlanguage(util.toPointer(iface), util.pstrToFfi(description), util.pstrToFfi(languageTag));
+  return libMSAJApi_dll.alljoyn_interfacedescription_setdescriptionforlanguage(util.toPointer(iface), util.pstrToFfi(description), util.pstrToFfi(languageTag));
 }
 
 export function alljoyn_interfacedescription_getdescriptionforlanguage(
@@ -5433,7 +5434,7 @@ export function alljoyn_interfacedescription_getdescriptionforlanguage(
   maxLanguageLength: Deno.PointerValue /* usize */,
   languageTag: string | null /* Windows.Win32.Foundation.PSTR */,
 ): Deno.PointerValue /* usize */ {
-  return libMSAJApi.alljoyn_interfacedescription_getdescriptionforlanguage(util.toPointer(iface), util.pstrToFfi(description), maxLanguageLength, util.pstrToFfi(languageTag));
+  return libMSAJApi_dll.alljoyn_interfacedescription_getdescriptionforlanguage(util.toPointer(iface), util.pstrToFfi(description), maxLanguageLength, util.pstrToFfi(languageTag));
 }
 
 export function alljoyn_interfacedescription_setmemberdescription(
@@ -5441,7 +5442,7 @@ export function alljoyn_interfacedescription_setmemberdescription(
   member: string | null /* Windows.Win32.Foundation.PSTR */,
   description: string | null /* Windows.Win32.Foundation.PSTR */,
 ): QStatus /* Windows.Win32.Devices.AllJoyn.QStatus */ {
-  return libMSAJApi.alljoyn_interfacedescription_setmemberdescription(util.toPointer(iface), util.pstrToFfi(member), util.pstrToFfi(description));
+  return libMSAJApi_dll.alljoyn_interfacedescription_setmemberdescription(util.toPointer(iface), util.pstrToFfi(member), util.pstrToFfi(description));
 }
 
 export function alljoyn_interfacedescription_setmemberdescriptionforlanguage(
@@ -5450,7 +5451,7 @@ export function alljoyn_interfacedescription_setmemberdescriptionforlanguage(
   description: string | null /* Windows.Win32.Foundation.PSTR */,
   languageTag: string | null /* Windows.Win32.Foundation.PSTR */,
 ): QStatus /* Windows.Win32.Devices.AllJoyn.QStatus */ {
-  return libMSAJApi.alljoyn_interfacedescription_setmemberdescriptionforlanguage(util.toPointer(iface), util.pstrToFfi(member), util.pstrToFfi(description), util.pstrToFfi(languageTag));
+  return libMSAJApi_dll.alljoyn_interfacedescription_setmemberdescriptionforlanguage(util.toPointer(iface), util.pstrToFfi(member), util.pstrToFfi(description), util.pstrToFfi(languageTag));
 }
 
 export function alljoyn_interfacedescription_getmemberdescriptionforlanguage(
@@ -5460,7 +5461,7 @@ export function alljoyn_interfacedescription_getmemberdescriptionforlanguage(
   maxLanguageLength: Deno.PointerValue /* usize */,
   languageTag: string | null /* Windows.Win32.Foundation.PSTR */,
 ): Deno.PointerValue /* usize */ {
-  return libMSAJApi.alljoyn_interfacedescription_getmemberdescriptionforlanguage(util.toPointer(iface), util.pstrToFfi(member), util.pstrToFfi(description), maxLanguageLength, util.pstrToFfi(languageTag));
+  return libMSAJApi_dll.alljoyn_interfacedescription_getmemberdescriptionforlanguage(util.toPointer(iface), util.pstrToFfi(member), util.pstrToFfi(description), maxLanguageLength, util.pstrToFfi(languageTag));
 }
 
 export function alljoyn_interfacedescription_setargdescription(
@@ -5469,7 +5470,7 @@ export function alljoyn_interfacedescription_setargdescription(
   argName: string | null /* Windows.Win32.Foundation.PSTR */,
   description: string | null /* Windows.Win32.Foundation.PSTR */,
 ): QStatus /* Windows.Win32.Devices.AllJoyn.QStatus */ {
-  return libMSAJApi.alljoyn_interfacedescription_setargdescription(util.toPointer(iface), util.pstrToFfi(member), util.pstrToFfi(argName), util.pstrToFfi(description));
+  return libMSAJApi_dll.alljoyn_interfacedescription_setargdescription(util.toPointer(iface), util.pstrToFfi(member), util.pstrToFfi(argName), util.pstrToFfi(description));
 }
 
 export function alljoyn_interfacedescription_setargdescriptionforlanguage(
@@ -5479,7 +5480,7 @@ export function alljoyn_interfacedescription_setargdescriptionforlanguage(
   description: string | null /* Windows.Win32.Foundation.PSTR */,
   languageTag: string | null /* Windows.Win32.Foundation.PSTR */,
 ): QStatus /* Windows.Win32.Devices.AllJoyn.QStatus */ {
-  return libMSAJApi.alljoyn_interfacedescription_setargdescriptionforlanguage(util.toPointer(iface), util.pstrToFfi(member), util.pstrToFfi(arg), util.pstrToFfi(description), util.pstrToFfi(languageTag));
+  return libMSAJApi_dll.alljoyn_interfacedescription_setargdescriptionforlanguage(util.toPointer(iface), util.pstrToFfi(member), util.pstrToFfi(arg), util.pstrToFfi(description), util.pstrToFfi(languageTag));
 }
 
 export function alljoyn_interfacedescription_getargdescriptionforlanguage(
@@ -5490,7 +5491,7 @@ export function alljoyn_interfacedescription_getargdescriptionforlanguage(
   maxLanguageLength: Deno.PointerValue /* usize */,
   languageTag: string | null /* Windows.Win32.Foundation.PSTR */,
 ): Deno.PointerValue /* usize */ {
-  return libMSAJApi.alljoyn_interfacedescription_getargdescriptionforlanguage(util.toPointer(iface), util.pstrToFfi(member), util.pstrToFfi(arg), util.pstrToFfi(description), maxLanguageLength, util.pstrToFfi(languageTag));
+  return libMSAJApi_dll.alljoyn_interfacedescription_getargdescriptionforlanguage(util.toPointer(iface), util.pstrToFfi(member), util.pstrToFfi(arg), util.pstrToFfi(description), maxLanguageLength, util.pstrToFfi(languageTag));
 }
 
 export function alljoyn_interfacedescription_setpropertydescription(
@@ -5498,7 +5499,7 @@ export function alljoyn_interfacedescription_setpropertydescription(
   name: string | null /* Windows.Win32.Foundation.PSTR */,
   description: string | null /* Windows.Win32.Foundation.PSTR */,
 ): QStatus /* Windows.Win32.Devices.AllJoyn.QStatus */ {
-  return libMSAJApi.alljoyn_interfacedescription_setpropertydescription(util.toPointer(iface), util.pstrToFfi(name), util.pstrToFfi(description));
+  return libMSAJApi_dll.alljoyn_interfacedescription_setpropertydescription(util.toPointer(iface), util.pstrToFfi(name), util.pstrToFfi(description));
 }
 
 export function alljoyn_interfacedescription_setpropertydescriptionforlanguage(
@@ -5507,7 +5508,7 @@ export function alljoyn_interfacedescription_setpropertydescriptionforlanguage(
   description: string | null /* Windows.Win32.Foundation.PSTR */,
   languageTag: string | null /* Windows.Win32.Foundation.PSTR */,
 ): QStatus /* Windows.Win32.Devices.AllJoyn.QStatus */ {
-  return libMSAJApi.alljoyn_interfacedescription_setpropertydescriptionforlanguage(util.toPointer(iface), util.pstrToFfi(name), util.pstrToFfi(description), util.pstrToFfi(languageTag));
+  return libMSAJApi_dll.alljoyn_interfacedescription_setpropertydescriptionforlanguage(util.toPointer(iface), util.pstrToFfi(name), util.pstrToFfi(description), util.pstrToFfi(languageTag));
 }
 
 export function alljoyn_interfacedescription_getpropertydescriptionforlanguage(
@@ -5517,26 +5518,26 @@ export function alljoyn_interfacedescription_getpropertydescriptionforlanguage(
   maxLanguageLength: Deno.PointerValue /* usize */,
   languageTag: string | null /* Windows.Win32.Foundation.PSTR */,
 ): Deno.PointerValue /* usize */ {
-  return libMSAJApi.alljoyn_interfacedescription_getpropertydescriptionforlanguage(util.toPointer(iface), util.pstrToFfi(property), util.pstrToFfi(description), maxLanguageLength, util.pstrToFfi(languageTag));
+  return libMSAJApi_dll.alljoyn_interfacedescription_getpropertydescriptionforlanguage(util.toPointer(iface), util.pstrToFfi(property), util.pstrToFfi(description), maxLanguageLength, util.pstrToFfi(languageTag));
 }
 
 export function alljoyn_interfacedescription_setdescriptiontranslationcallback(
   iface: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_interfacedescription */,
   translationCallback: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_interfacedescription_translation_callback_ptr */,
 ): void /* void */ {
-  return libMSAJApi.alljoyn_interfacedescription_setdescriptiontranslationcallback(util.toPointer(iface), util.toPointer(translationCallback));
+  return libMSAJApi_dll.alljoyn_interfacedescription_setdescriptiontranslationcallback(util.toPointer(iface), util.toPointer(translationCallback));
 }
 
 export function alljoyn_interfacedescription_getdescriptiontranslationcallback(
   iface: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_interfacedescription */,
 ): Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_interfacedescription_translation_callback_ptr */ {
-  return util.pointerFromFfi(libMSAJApi.alljoyn_interfacedescription_getdescriptiontranslationcallback(util.toPointer(iface)));
+  return util.pointerFromFfi(libMSAJApi_dll.alljoyn_interfacedescription_getdescriptiontranslationcallback(util.toPointer(iface)));
 }
 
 export function alljoyn_interfacedescription_hasdescription(
   iface: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_interfacedescription */,
 ): number /* i32 */ {
-  return libMSAJApi.alljoyn_interfacedescription_hasdescription(util.toPointer(iface));
+  return libMSAJApi_dll.alljoyn_interfacedescription_hasdescription(util.toPointer(iface));
 }
 
 export function alljoyn_interfacedescription_addargannotation(
@@ -5546,7 +5547,7 @@ export function alljoyn_interfacedescription_addargannotation(
   name: string | null /* Windows.Win32.Foundation.PSTR */,
   value: string | null /* Windows.Win32.Foundation.PSTR */,
 ): QStatus /* Windows.Win32.Devices.AllJoyn.QStatus */ {
-  return libMSAJApi.alljoyn_interfacedescription_addargannotation(util.toPointer(iface), util.pstrToFfi(member), util.pstrToFfi(argName), util.pstrToFfi(name), util.pstrToFfi(value));
+  return libMSAJApi_dll.alljoyn_interfacedescription_addargannotation(util.toPointer(iface), util.pstrToFfi(member), util.pstrToFfi(argName), util.pstrToFfi(name), util.pstrToFfi(value));
 }
 
 export function alljoyn_interfacedescription_getmemberargannotation(
@@ -5557,28 +5558,28 @@ export function alljoyn_interfacedescription_getmemberargannotation(
   value: string | null /* Windows.Win32.Foundation.PSTR */,
   value_size: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
-  return libMSAJApi.alljoyn_interfacedescription_getmemberargannotation(util.toPointer(iface), util.pstrToFfi(member), util.pstrToFfi(argName), util.pstrToFfi(name), util.pstrToFfi(value), util.toPointer(value_size));
+  return libMSAJApi_dll.alljoyn_interfacedescription_getmemberargannotation(util.toPointer(iface), util.pstrToFfi(member), util.pstrToFfi(argName), util.pstrToFfi(name), util.pstrToFfi(value), util.toPointer(value_size));
 }
 
 export function alljoyn_interfacedescription_eql(
   one: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_interfacedescription */,
   other: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_interfacedescription */,
 ): number /* i32 */ {
-  return libMSAJApi.alljoyn_interfacedescription_eql(util.toPointer(one), util.toPointer(other));
+  return libMSAJApi_dll.alljoyn_interfacedescription_eql(util.toPointer(one), util.toPointer(other));
 }
 
 export function alljoyn_interfacedescription_member_eql(
   one: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_interfacedescription_member */,
   other: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_interfacedescription_member */,
 ): number /* i32 */ {
-  return libMSAJApi.alljoyn_interfacedescription_member_eql(util.toPointer(one), util.toPointer(other));
+  return libMSAJApi_dll.alljoyn_interfacedescription_member_eql(util.toPointer(one), util.toPointer(other));
 }
 
 export function alljoyn_interfacedescription_property_eql(
   one: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_interfacedescription_property */,
   other: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_interfacedescription_property */,
 ): number /* i32 */ {
-  return libMSAJApi.alljoyn_interfacedescription_property_eql(util.toPointer(one), util.toPointer(other));
+  return libMSAJApi_dll.alljoyn_interfacedescription_property_eql(util.toPointer(one), util.toPointer(other));
 }
 
 export function alljoyn_busobject_create(
@@ -5587,19 +5588,19 @@ export function alljoyn_busobject_create(
   callbacks_in: Deno.PointerValue | Uint8Array | null /* ptr */,
   context_in: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_busobject */ {
-  return util.pointerFromFfi(libMSAJApi.alljoyn_busobject_create(util.pstrToFfi(path), isPlaceholder, util.toPointer(callbacks_in), util.toPointer(context_in)));
+  return util.pointerFromFfi(libMSAJApi_dll.alljoyn_busobject_create(util.pstrToFfi(path), isPlaceholder, util.toPointer(callbacks_in), util.toPointer(context_in)));
 }
 
 export function alljoyn_busobject_destroy(
   bus: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_busobject */,
 ): void /* void */ {
-  return libMSAJApi.alljoyn_busobject_destroy(util.toPointer(bus));
+  return libMSAJApi_dll.alljoyn_busobject_destroy(util.toPointer(bus));
 }
 
 export function alljoyn_busobject_getpath(
   bus: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_busobject */,
 ): string | null /* Windows.Win32.Foundation.PSTR */ {
-  return util.pstrFromFfi(libMSAJApi.alljoyn_busobject_getpath(util.toPointer(bus)));
+  return util.pstrFromFfi(libMSAJApi_dll.alljoyn_busobject_getpath(util.toPointer(bus)));
 }
 
 export function alljoyn_busobject_emitpropertychanged(
@@ -5609,7 +5610,7 @@ export function alljoyn_busobject_emitpropertychanged(
   val: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_msgarg */,
   id: number /* u32 */,
 ): void /* void */ {
-  return libMSAJApi.alljoyn_busobject_emitpropertychanged(util.toPointer(bus), util.pstrToFfi(ifcName), util.pstrToFfi(propName), util.toPointer(val), id);
+  return libMSAJApi_dll.alljoyn_busobject_emitpropertychanged(util.toPointer(bus), util.pstrToFfi(ifcName), util.pstrToFfi(propName), util.toPointer(val), id);
 }
 
 export function alljoyn_busobject_emitpropertieschanged(
@@ -5619,7 +5620,7 @@ export function alljoyn_busobject_emitpropertieschanged(
   numProps: Deno.PointerValue /* usize */,
   id: number /* u32 */,
 ): void /* void */ {
-  return libMSAJApi.alljoyn_busobject_emitpropertieschanged(util.toPointer(bus), util.pstrToFfi(ifcName), util.toPointer(propNames), numProps, id);
+  return libMSAJApi_dll.alljoyn_busobject_emitpropertieschanged(util.toPointer(bus), util.pstrToFfi(ifcName), util.toPointer(propNames), numProps, id);
 }
 
 export function alljoyn_busobject_getname(
@@ -5627,14 +5628,14 @@ export function alljoyn_busobject_getname(
   buffer: string | null /* Windows.Win32.Foundation.PSTR */,
   bufferSz: Deno.PointerValue /* usize */,
 ): Deno.PointerValue /* usize */ {
-  return libMSAJApi.alljoyn_busobject_getname(util.toPointer(bus), util.pstrToFfi(buffer), bufferSz);
+  return libMSAJApi_dll.alljoyn_busobject_getname(util.toPointer(bus), util.pstrToFfi(buffer), bufferSz);
 }
 
 export function alljoyn_busobject_addinterface(
   bus: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_busobject */,
   iface: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_interfacedescription */,
 ): QStatus /* Windows.Win32.Devices.AllJoyn.QStatus */ {
-  return libMSAJApi.alljoyn_busobject_addinterface(util.toPointer(bus), util.toPointer(iface));
+  return libMSAJApi_dll.alljoyn_busobject_addinterface(util.toPointer(bus), util.toPointer(iface));
 }
 
 export function alljoyn_busobject_addmethodhandler(
@@ -5643,7 +5644,7 @@ export function alljoyn_busobject_addmethodhandler(
   handler: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_messagereceiver_methodhandler_ptr */,
   context: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): QStatus /* Windows.Win32.Devices.AllJoyn.QStatus */ {
-  return libMSAJApi.alljoyn_busobject_addmethodhandler(util.toPointer(bus), util.toPointer(member), util.toPointer(handler), util.toPointer(context));
+  return libMSAJApi_dll.alljoyn_busobject_addmethodhandler(util.toPointer(bus), util.toPointer(member), util.toPointer(handler), util.toPointer(context));
 }
 
 export function alljoyn_busobject_addmethodhandlers(
@@ -5651,7 +5652,7 @@ export function alljoyn_busobject_addmethodhandlers(
   entries: Deno.PointerValue | Uint8Array | null /* ptr */,
   numEntries: Deno.PointerValue /* usize */,
 ): QStatus /* Windows.Win32.Devices.AllJoyn.QStatus */ {
-  return libMSAJApi.alljoyn_busobject_addmethodhandlers(util.toPointer(bus), util.toPointer(entries), numEntries);
+  return libMSAJApi_dll.alljoyn_busobject_addmethodhandlers(util.toPointer(bus), util.toPointer(entries), numEntries);
 }
 
 export function alljoyn_busobject_methodreply_args(
@@ -5660,7 +5661,7 @@ export function alljoyn_busobject_methodreply_args(
   args: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_msgarg */,
   numArgs: Deno.PointerValue /* usize */,
 ): QStatus /* Windows.Win32.Devices.AllJoyn.QStatus */ {
-  return libMSAJApi.alljoyn_busobject_methodreply_args(util.toPointer(bus), util.toPointer(msg), util.toPointer(args), numArgs);
+  return libMSAJApi_dll.alljoyn_busobject_methodreply_args(util.toPointer(bus), util.toPointer(msg), util.toPointer(args), numArgs);
 }
 
 export function alljoyn_busobject_methodreply_err(
@@ -5669,7 +5670,7 @@ export function alljoyn_busobject_methodreply_err(
   error: string | null /* Windows.Win32.Foundation.PSTR */,
   errorMessage: string | null /* Windows.Win32.Foundation.PSTR */,
 ): QStatus /* Windows.Win32.Devices.AllJoyn.QStatus */ {
-  return libMSAJApi.alljoyn_busobject_methodreply_err(util.toPointer(bus), util.toPointer(msg), util.pstrToFfi(error), util.pstrToFfi(errorMessage));
+  return libMSAJApi_dll.alljoyn_busobject_methodreply_err(util.toPointer(bus), util.toPointer(msg), util.pstrToFfi(error), util.pstrToFfi(errorMessage));
 }
 
 export function alljoyn_busobject_methodreply_status(
@@ -5677,13 +5678,13 @@ export function alljoyn_busobject_methodreply_status(
   msg: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_message */,
   status: QStatus /* Windows.Win32.Devices.AllJoyn.QStatus */,
 ): QStatus /* Windows.Win32.Devices.AllJoyn.QStatus */ {
-  return libMSAJApi.alljoyn_busobject_methodreply_status(util.toPointer(bus), util.toPointer(msg), status);
+  return libMSAJApi_dll.alljoyn_busobject_methodreply_status(util.toPointer(bus), util.toPointer(msg), status);
 }
 
 export function alljoyn_busobject_getbusattachment(
   bus: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_busobject */,
 ): Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_busattachment */ {
-  return util.pointerFromFfi(libMSAJApi.alljoyn_busobject_getbusattachment(util.toPointer(bus)));
+  return util.pointerFromFfi(libMSAJApi_dll.alljoyn_busobject_getbusattachment(util.toPointer(bus)));
 }
 
 export function alljoyn_busobject_signal(
@@ -5697,27 +5698,27 @@ export function alljoyn_busobject_signal(
   flags: number /* u8 */,
   msg: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_message */,
 ): QStatus /* Windows.Win32.Devices.AllJoyn.QStatus */ {
-  return libMSAJApi.alljoyn_busobject_signal(util.toPointer(bus), util.pstrToFfi(destination), sessionId, util.toPointer(signal), util.toPointer(args), numArgs, timeToLive, flags, util.toPointer(msg));
+  return libMSAJApi_dll.alljoyn_busobject_signal(util.toPointer(bus), util.pstrToFfi(destination), sessionId, util.toPointer(signal), util.toPointer(args), numArgs, timeToLive, flags, util.toPointer(msg));
 }
 
 export function alljoyn_busobject_cancelsessionlessmessage_serial(
   bus: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_busobject */,
   serialNumber: number /* u32 */,
 ): QStatus /* Windows.Win32.Devices.AllJoyn.QStatus */ {
-  return libMSAJApi.alljoyn_busobject_cancelsessionlessmessage_serial(util.toPointer(bus), serialNumber);
+  return libMSAJApi_dll.alljoyn_busobject_cancelsessionlessmessage_serial(util.toPointer(bus), serialNumber);
 }
 
 export function alljoyn_busobject_cancelsessionlessmessage(
   bus: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_busobject */,
   msg: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_message */,
 ): QStatus /* Windows.Win32.Devices.AllJoyn.QStatus */ {
-  return libMSAJApi.alljoyn_busobject_cancelsessionlessmessage(util.toPointer(bus), util.toPointer(msg));
+  return libMSAJApi_dll.alljoyn_busobject_cancelsessionlessmessage(util.toPointer(bus), util.toPointer(msg));
 }
 
 export function alljoyn_busobject_issecure(
   bus: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_busobject */,
 ): number /* i32 */ {
-  return libMSAJApi.alljoyn_busobject_issecure(util.toPointer(bus));
+  return libMSAJApi_dll.alljoyn_busobject_issecure(util.toPointer(bus));
 }
 
 export function alljoyn_busobject_getannouncedinterfacenames(
@@ -5725,7 +5726,7 @@ export function alljoyn_busobject_getannouncedinterfacenames(
   interfaces: Deno.PointerValue | Uint8Array | null /* ptr */,
   numInterfaces: Deno.PointerValue /* usize */,
 ): Deno.PointerValue /* usize */ {
-  return libMSAJApi.alljoyn_busobject_getannouncedinterfacenames(util.toPointer(bus), util.toPointer(interfaces), numInterfaces);
+  return libMSAJApi_dll.alljoyn_busobject_getannouncedinterfacenames(util.toPointer(bus), util.toPointer(interfaces), numInterfaces);
 }
 
 export function alljoyn_busobject_setannounceflag(
@@ -5733,14 +5734,14 @@ export function alljoyn_busobject_setannounceflag(
   iface: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_interfacedescription */,
   isAnnounced: alljoyn_about_announceflag /* Windows.Win32.Devices.AllJoyn.alljoyn_about_announceflag */,
 ): QStatus /* Windows.Win32.Devices.AllJoyn.QStatus */ {
-  return libMSAJApi.alljoyn_busobject_setannounceflag(util.toPointer(bus), util.toPointer(iface), isAnnounced);
+  return libMSAJApi_dll.alljoyn_busobject_setannounceflag(util.toPointer(bus), util.toPointer(iface), isAnnounced);
 }
 
 export function alljoyn_busobject_addinterface_announced(
   bus: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_busobject */,
   iface: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_interfacedescription */,
 ): QStatus /* Windows.Win32.Devices.AllJoyn.QStatus */ {
-  return libMSAJApi.alljoyn_busobject_addinterface_announced(util.toPointer(bus), util.toPointer(iface));
+  return libMSAJApi_dll.alljoyn_busobject_addinterface_announced(util.toPointer(bus), util.toPointer(iface));
 }
 
 export function alljoyn_proxybusobject_create(
@@ -5749,7 +5750,7 @@ export function alljoyn_proxybusobject_create(
   path: string | null /* Windows.Win32.Foundation.PSTR */,
   sessionId: number /* u32 */,
 ): Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_proxybusobject */ {
-  return util.pointerFromFfi(libMSAJApi.alljoyn_proxybusobject_create(util.toPointer(bus), util.pstrToFfi(service), util.pstrToFfi(path), sessionId));
+  return util.pointerFromFfi(libMSAJApi_dll.alljoyn_proxybusobject_create(util.toPointer(bus), util.pstrToFfi(service), util.pstrToFfi(path), sessionId));
 }
 
 export function alljoyn_proxybusobject_create_secure(
@@ -5758,27 +5759,27 @@ export function alljoyn_proxybusobject_create_secure(
   path: string | null /* Windows.Win32.Foundation.PSTR */,
   sessionId: number /* u32 */,
 ): Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_proxybusobject */ {
-  return util.pointerFromFfi(libMSAJApi.alljoyn_proxybusobject_create_secure(util.toPointer(bus), util.pstrToFfi(service), util.pstrToFfi(path), sessionId));
+  return util.pointerFromFfi(libMSAJApi_dll.alljoyn_proxybusobject_create_secure(util.toPointer(bus), util.pstrToFfi(service), util.pstrToFfi(path), sessionId));
 }
 
 export function alljoyn_proxybusobject_destroy(
   proxyObj: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_proxybusobject */,
 ): void /* void */ {
-  return libMSAJApi.alljoyn_proxybusobject_destroy(util.toPointer(proxyObj));
+  return libMSAJApi_dll.alljoyn_proxybusobject_destroy(util.toPointer(proxyObj));
 }
 
 export function alljoyn_proxybusobject_addinterface(
   proxyObj: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_proxybusobject */,
   iface: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_interfacedescription */,
 ): QStatus /* Windows.Win32.Devices.AllJoyn.QStatus */ {
-  return libMSAJApi.alljoyn_proxybusobject_addinterface(util.toPointer(proxyObj), util.toPointer(iface));
+  return libMSAJApi_dll.alljoyn_proxybusobject_addinterface(util.toPointer(proxyObj), util.toPointer(iface));
 }
 
 export function alljoyn_proxybusobject_addinterface_by_name(
   proxyObj: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_proxybusobject */,
   name: string | null /* Windows.Win32.Foundation.PSTR */,
 ): QStatus /* Windows.Win32.Devices.AllJoyn.QStatus */ {
-  return libMSAJApi.alljoyn_proxybusobject_addinterface_by_name(util.toPointer(proxyObj), util.pstrToFfi(name));
+  return libMSAJApi_dll.alljoyn_proxybusobject_addinterface_by_name(util.toPointer(proxyObj), util.pstrToFfi(name));
 }
 
 export function alljoyn_proxybusobject_getchildren(
@@ -5786,34 +5787,34 @@ export function alljoyn_proxybusobject_getchildren(
   children: Deno.PointerValue | Uint8Array | null /* ptr */,
   numChildren: Deno.PointerValue /* usize */,
 ): Deno.PointerValue /* usize */ {
-  return libMSAJApi.alljoyn_proxybusobject_getchildren(util.toPointer(proxyObj), util.toPointer(children), numChildren);
+  return libMSAJApi_dll.alljoyn_proxybusobject_getchildren(util.toPointer(proxyObj), util.toPointer(children), numChildren);
 }
 
 export function alljoyn_proxybusobject_getchild(
   proxyObj: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_proxybusobject */,
   path: string | null /* Windows.Win32.Foundation.PSTR */,
 ): Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_proxybusobject */ {
-  return util.pointerFromFfi(libMSAJApi.alljoyn_proxybusobject_getchild(util.toPointer(proxyObj), util.pstrToFfi(path)));
+  return util.pointerFromFfi(libMSAJApi_dll.alljoyn_proxybusobject_getchild(util.toPointer(proxyObj), util.pstrToFfi(path)));
 }
 
 export function alljoyn_proxybusobject_addchild(
   proxyObj: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_proxybusobject */,
   child: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_proxybusobject */,
 ): QStatus /* Windows.Win32.Devices.AllJoyn.QStatus */ {
-  return libMSAJApi.alljoyn_proxybusobject_addchild(util.toPointer(proxyObj), util.toPointer(child));
+  return libMSAJApi_dll.alljoyn_proxybusobject_addchild(util.toPointer(proxyObj), util.toPointer(child));
 }
 
 export function alljoyn_proxybusobject_removechild(
   proxyObj: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_proxybusobject */,
   path: string | null /* Windows.Win32.Foundation.PSTR */,
 ): QStatus /* Windows.Win32.Devices.AllJoyn.QStatus */ {
-  return libMSAJApi.alljoyn_proxybusobject_removechild(util.toPointer(proxyObj), util.pstrToFfi(path));
+  return libMSAJApi_dll.alljoyn_proxybusobject_removechild(util.toPointer(proxyObj), util.pstrToFfi(path));
 }
 
 export function alljoyn_proxybusobject_introspectremoteobject(
   proxyObj: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_proxybusobject */,
 ): QStatus /* Windows.Win32.Devices.AllJoyn.QStatus */ {
-  return libMSAJApi.alljoyn_proxybusobject_introspectremoteobject(util.toPointer(proxyObj));
+  return libMSAJApi_dll.alljoyn_proxybusobject_introspectremoteobject(util.toPointer(proxyObj));
 }
 
 export function alljoyn_proxybusobject_introspectremoteobjectasync(
@@ -5821,7 +5822,7 @@ export function alljoyn_proxybusobject_introspectremoteobjectasync(
   callback: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_proxybusobject_listener_introspectcb_ptr */,
   context: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): QStatus /* Windows.Win32.Devices.AllJoyn.QStatus */ {
-  return libMSAJApi.alljoyn_proxybusobject_introspectremoteobjectasync(util.toPointer(proxyObj), util.toPointer(callback), util.toPointer(context));
+  return libMSAJApi_dll.alljoyn_proxybusobject_introspectremoteobjectasync(util.toPointer(proxyObj), util.toPointer(callback), util.toPointer(context));
 }
 
 export function alljoyn_proxybusobject_getproperty(
@@ -5830,7 +5831,7 @@ export function alljoyn_proxybusobject_getproperty(
   property: string | null /* Windows.Win32.Foundation.PSTR */,
   value: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_msgarg */,
 ): QStatus /* Windows.Win32.Devices.AllJoyn.QStatus */ {
-  return libMSAJApi.alljoyn_proxybusobject_getproperty(util.toPointer(proxyObj), util.pstrToFfi(iface), util.pstrToFfi(property), util.toPointer(value));
+  return libMSAJApi_dll.alljoyn_proxybusobject_getproperty(util.toPointer(proxyObj), util.pstrToFfi(iface), util.pstrToFfi(property), util.toPointer(value));
 }
 
 export function alljoyn_proxybusobject_getpropertyasync(
@@ -5841,7 +5842,7 @@ export function alljoyn_proxybusobject_getpropertyasync(
   timeout: number /* u32 */,
   context: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): QStatus /* Windows.Win32.Devices.AllJoyn.QStatus */ {
-  return libMSAJApi.alljoyn_proxybusobject_getpropertyasync(util.toPointer(proxyObj), util.pstrToFfi(iface), util.pstrToFfi(property), util.toPointer(callback), timeout, util.toPointer(context));
+  return libMSAJApi_dll.alljoyn_proxybusobject_getpropertyasync(util.toPointer(proxyObj), util.pstrToFfi(iface), util.pstrToFfi(property), util.toPointer(callback), timeout, util.toPointer(context));
 }
 
 export function alljoyn_proxybusobject_getallproperties(
@@ -5849,7 +5850,7 @@ export function alljoyn_proxybusobject_getallproperties(
   iface: string | null /* Windows.Win32.Foundation.PSTR */,
   values: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_msgarg */,
 ): QStatus /* Windows.Win32.Devices.AllJoyn.QStatus */ {
-  return libMSAJApi.alljoyn_proxybusobject_getallproperties(util.toPointer(proxyObj), util.pstrToFfi(iface), util.toPointer(values));
+  return libMSAJApi_dll.alljoyn_proxybusobject_getallproperties(util.toPointer(proxyObj), util.pstrToFfi(iface), util.toPointer(values));
 }
 
 export function alljoyn_proxybusobject_getallpropertiesasync(
@@ -5859,7 +5860,7 @@ export function alljoyn_proxybusobject_getallpropertiesasync(
   timeout: number /* u32 */,
   context: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): QStatus /* Windows.Win32.Devices.AllJoyn.QStatus */ {
-  return libMSAJApi.alljoyn_proxybusobject_getallpropertiesasync(util.toPointer(proxyObj), util.pstrToFfi(iface), util.toPointer(callback), timeout, util.toPointer(context));
+  return libMSAJApi_dll.alljoyn_proxybusobject_getallpropertiesasync(util.toPointer(proxyObj), util.pstrToFfi(iface), util.toPointer(callback), timeout, util.toPointer(context));
 }
 
 export function alljoyn_proxybusobject_setproperty(
@@ -5868,7 +5869,7 @@ export function alljoyn_proxybusobject_setproperty(
   property: string | null /* Windows.Win32.Foundation.PSTR */,
   value: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_msgarg */,
 ): QStatus /* Windows.Win32.Devices.AllJoyn.QStatus */ {
-  return libMSAJApi.alljoyn_proxybusobject_setproperty(util.toPointer(proxyObj), util.pstrToFfi(iface), util.pstrToFfi(property), util.toPointer(value));
+  return libMSAJApi_dll.alljoyn_proxybusobject_setproperty(util.toPointer(proxyObj), util.pstrToFfi(iface), util.pstrToFfi(property), util.toPointer(value));
 }
 
 export function alljoyn_proxybusobject_registerpropertieschangedlistener(
@@ -5879,7 +5880,7 @@ export function alljoyn_proxybusobject_registerpropertieschangedlistener(
   callback: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_proxybusobject_listener_propertieschanged_ptr */,
   context: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): QStatus /* Windows.Win32.Devices.AllJoyn.QStatus */ {
-  return libMSAJApi.alljoyn_proxybusobject_registerpropertieschangedlistener(util.toPointer(proxyObj), util.pstrToFfi(iface), util.toPointer(properties), numProperties, util.toPointer(callback), util.toPointer(context));
+  return libMSAJApi_dll.alljoyn_proxybusobject_registerpropertieschangedlistener(util.toPointer(proxyObj), util.pstrToFfi(iface), util.toPointer(properties), numProperties, util.toPointer(callback), util.toPointer(context));
 }
 
 export function alljoyn_proxybusobject_unregisterpropertieschangedlistener(
@@ -5887,7 +5888,7 @@ export function alljoyn_proxybusobject_unregisterpropertieschangedlistener(
   iface: string | null /* Windows.Win32.Foundation.PSTR */,
   callback: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_proxybusobject_listener_propertieschanged_ptr */,
 ): QStatus /* Windows.Win32.Devices.AllJoyn.QStatus */ {
-  return libMSAJApi.alljoyn_proxybusobject_unregisterpropertieschangedlistener(util.toPointer(proxyObj), util.pstrToFfi(iface), util.toPointer(callback));
+  return libMSAJApi_dll.alljoyn_proxybusobject_unregisterpropertieschangedlistener(util.toPointer(proxyObj), util.pstrToFfi(iface), util.toPointer(callback));
 }
 
 export function alljoyn_proxybusobject_setpropertyasync(
@@ -5899,7 +5900,7 @@ export function alljoyn_proxybusobject_setpropertyasync(
   timeout: number /* u32 */,
   context: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): QStatus /* Windows.Win32.Devices.AllJoyn.QStatus */ {
-  return libMSAJApi.alljoyn_proxybusobject_setpropertyasync(util.toPointer(proxyObj), util.pstrToFfi(iface), util.pstrToFfi(property), util.toPointer(value), util.toPointer(callback), timeout, util.toPointer(context));
+  return libMSAJApi_dll.alljoyn_proxybusobject_setpropertyasync(util.toPointer(proxyObj), util.pstrToFfi(iface), util.pstrToFfi(property), util.toPointer(value), util.toPointer(callback), timeout, util.toPointer(context));
 }
 
 export function alljoyn_proxybusobject_methodcall(
@@ -5912,7 +5913,7 @@ export function alljoyn_proxybusobject_methodcall(
   timeout: number /* u32 */,
   flags: number /* u8 */,
 ): QStatus /* Windows.Win32.Devices.AllJoyn.QStatus */ {
-  return libMSAJApi.alljoyn_proxybusobject_methodcall(util.toPointer(proxyObj), util.pstrToFfi(ifaceName), util.pstrToFfi(methodName), util.toPointer(args), numArgs, util.toPointer(replyMsg), timeout, flags);
+  return libMSAJApi_dll.alljoyn_proxybusobject_methodcall(util.toPointer(proxyObj), util.pstrToFfi(ifaceName), util.pstrToFfi(methodName), util.toPointer(args), numArgs, util.toPointer(replyMsg), timeout, flags);
 }
 
 export function alljoyn_proxybusobject_methodcall_member(
@@ -5924,7 +5925,7 @@ export function alljoyn_proxybusobject_methodcall_member(
   timeout: number /* u32 */,
   flags: number /* u8 */,
 ): QStatus /* Windows.Win32.Devices.AllJoyn.QStatus */ {
-  return libMSAJApi.alljoyn_proxybusobject_methodcall_member(util.toPointer(proxyObj), util.toPointer(method), util.toPointer(args), numArgs, util.toPointer(replyMsg), timeout, flags);
+  return libMSAJApi_dll.alljoyn_proxybusobject_methodcall_member(util.toPointer(proxyObj), util.toPointer(method), util.toPointer(args), numArgs, util.toPointer(replyMsg), timeout, flags);
 }
 
 export function alljoyn_proxybusobject_methodcall_noreply(
@@ -5935,7 +5936,7 @@ export function alljoyn_proxybusobject_methodcall_noreply(
   numArgs: Deno.PointerValue /* usize */,
   flags: number /* u8 */,
 ): QStatus /* Windows.Win32.Devices.AllJoyn.QStatus */ {
-  return libMSAJApi.alljoyn_proxybusobject_methodcall_noreply(util.toPointer(proxyObj), util.pstrToFfi(ifaceName), util.pstrToFfi(methodName), util.toPointer(args), numArgs, flags);
+  return libMSAJApi_dll.alljoyn_proxybusobject_methodcall_noreply(util.toPointer(proxyObj), util.pstrToFfi(ifaceName), util.pstrToFfi(methodName), util.toPointer(args), numArgs, flags);
 }
 
 export function alljoyn_proxybusobject_methodcall_member_noreply(
@@ -5945,7 +5946,7 @@ export function alljoyn_proxybusobject_methodcall_member_noreply(
   numArgs: Deno.PointerValue /* usize */,
   flags: number /* u8 */,
 ): QStatus /* Windows.Win32.Devices.AllJoyn.QStatus */ {
-  return libMSAJApi.alljoyn_proxybusobject_methodcall_member_noreply(util.toPointer(proxyObj), util.toPointer(method), util.toPointer(args), numArgs, flags);
+  return libMSAJApi_dll.alljoyn_proxybusobject_methodcall_member_noreply(util.toPointer(proxyObj), util.toPointer(method), util.toPointer(args), numArgs, flags);
 }
 
 export function alljoyn_proxybusobject_methodcallasync(
@@ -5959,7 +5960,7 @@ export function alljoyn_proxybusobject_methodcallasync(
   timeout: number /* u32 */,
   flags: number /* u8 */,
 ): QStatus /* Windows.Win32.Devices.AllJoyn.QStatus */ {
-  return libMSAJApi.alljoyn_proxybusobject_methodcallasync(util.toPointer(proxyObj), util.pstrToFfi(ifaceName), util.pstrToFfi(methodName), util.toPointer(replyFunc), util.toPointer(args), numArgs, util.toPointer(context), timeout, flags);
+  return libMSAJApi_dll.alljoyn_proxybusobject_methodcallasync(util.toPointer(proxyObj), util.pstrToFfi(ifaceName), util.pstrToFfi(methodName), util.toPointer(replyFunc), util.toPointer(args), numArgs, util.toPointer(context), timeout, flags);
 }
 
 export function alljoyn_proxybusobject_methodcallasync_member(
@@ -5972,7 +5973,7 @@ export function alljoyn_proxybusobject_methodcallasync_member(
   timeout: number /* u32 */,
   flags: number /* u8 */,
 ): QStatus /* Windows.Win32.Devices.AllJoyn.QStatus */ {
-  return libMSAJApi.alljoyn_proxybusobject_methodcallasync_member(util.toPointer(proxyObj), util.toPointer(method), util.toPointer(replyFunc), util.toPointer(args), numArgs, util.toPointer(context), timeout, flags);
+  return libMSAJApi_dll.alljoyn_proxybusobject_methodcallasync_member(util.toPointer(proxyObj), util.toPointer(method), util.toPointer(replyFunc), util.toPointer(args), numArgs, util.toPointer(context), timeout, flags);
 }
 
 export function alljoyn_proxybusobject_parsexml(
@@ -5980,28 +5981,28 @@ export function alljoyn_proxybusobject_parsexml(
   xml: string | null /* Windows.Win32.Foundation.PSTR */,
   identifier: string | null /* Windows.Win32.Foundation.PSTR */,
 ): QStatus /* Windows.Win32.Devices.AllJoyn.QStatus */ {
-  return libMSAJApi.alljoyn_proxybusobject_parsexml(util.toPointer(proxyObj), util.pstrToFfi(xml), util.pstrToFfi(identifier));
+  return libMSAJApi_dll.alljoyn_proxybusobject_parsexml(util.toPointer(proxyObj), util.pstrToFfi(xml), util.pstrToFfi(identifier));
 }
 
 export function alljoyn_proxybusobject_secureconnection(
   proxyObj: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_proxybusobject */,
   forceAuth: number /* i32 */,
 ): QStatus /* Windows.Win32.Devices.AllJoyn.QStatus */ {
-  return libMSAJApi.alljoyn_proxybusobject_secureconnection(util.toPointer(proxyObj), forceAuth);
+  return libMSAJApi_dll.alljoyn_proxybusobject_secureconnection(util.toPointer(proxyObj), forceAuth);
 }
 
 export function alljoyn_proxybusobject_secureconnectionasync(
   proxyObj: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_proxybusobject */,
   forceAuth: number /* i32 */,
 ): QStatus /* Windows.Win32.Devices.AllJoyn.QStatus */ {
-  return libMSAJApi.alljoyn_proxybusobject_secureconnectionasync(util.toPointer(proxyObj), forceAuth);
+  return libMSAJApi_dll.alljoyn_proxybusobject_secureconnectionasync(util.toPointer(proxyObj), forceAuth);
 }
 
 export function alljoyn_proxybusobject_getinterface(
   proxyObj: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_proxybusobject */,
   iface: string | null /* Windows.Win32.Foundation.PSTR */,
 ): Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_interfacedescription */ {
-  return util.pointerFromFfi(libMSAJApi.alljoyn_proxybusobject_getinterface(util.toPointer(proxyObj), util.pstrToFfi(iface)));
+  return util.pointerFromFfi(libMSAJApi_dll.alljoyn_proxybusobject_getinterface(util.toPointer(proxyObj), util.pstrToFfi(iface)));
 }
 
 export function alljoyn_proxybusobject_getinterfaces(
@@ -6009,121 +6010,121 @@ export function alljoyn_proxybusobject_getinterfaces(
   ifaces: Deno.PointerValue | Uint8Array | null /* ptr */,
   numIfaces: Deno.PointerValue /* usize */,
 ): Deno.PointerValue /* usize */ {
-  return libMSAJApi.alljoyn_proxybusobject_getinterfaces(util.toPointer(proxyObj), util.toPointer(ifaces), numIfaces);
+  return libMSAJApi_dll.alljoyn_proxybusobject_getinterfaces(util.toPointer(proxyObj), util.toPointer(ifaces), numIfaces);
 }
 
 export function alljoyn_proxybusobject_getpath(
   proxyObj: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_proxybusobject */,
 ): string | null /* Windows.Win32.Foundation.PSTR */ {
-  return util.pstrFromFfi(libMSAJApi.alljoyn_proxybusobject_getpath(util.toPointer(proxyObj)));
+  return util.pstrFromFfi(libMSAJApi_dll.alljoyn_proxybusobject_getpath(util.toPointer(proxyObj)));
 }
 
 export function alljoyn_proxybusobject_getservicename(
   proxyObj: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_proxybusobject */,
 ): string | null /* Windows.Win32.Foundation.PSTR */ {
-  return util.pstrFromFfi(libMSAJApi.alljoyn_proxybusobject_getservicename(util.toPointer(proxyObj)));
+  return util.pstrFromFfi(libMSAJApi_dll.alljoyn_proxybusobject_getservicename(util.toPointer(proxyObj)));
 }
 
 export function alljoyn_proxybusobject_getuniquename(
   proxyObj: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_proxybusobject */,
 ): string | null /* Windows.Win32.Foundation.PSTR */ {
-  return util.pstrFromFfi(libMSAJApi.alljoyn_proxybusobject_getuniquename(util.toPointer(proxyObj)));
+  return util.pstrFromFfi(libMSAJApi_dll.alljoyn_proxybusobject_getuniquename(util.toPointer(proxyObj)));
 }
 
 export function alljoyn_proxybusobject_getsessionid(
   proxyObj: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_proxybusobject */,
 ): number /* u32 */ {
-  return libMSAJApi.alljoyn_proxybusobject_getsessionid(util.toPointer(proxyObj));
+  return libMSAJApi_dll.alljoyn_proxybusobject_getsessionid(util.toPointer(proxyObj));
 }
 
 export function alljoyn_proxybusobject_implementsinterface(
   proxyObj: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_proxybusobject */,
   iface: string | null /* Windows.Win32.Foundation.PSTR */,
 ): number /* i32 */ {
-  return libMSAJApi.alljoyn_proxybusobject_implementsinterface(util.toPointer(proxyObj), util.pstrToFfi(iface));
+  return libMSAJApi_dll.alljoyn_proxybusobject_implementsinterface(util.toPointer(proxyObj), util.pstrToFfi(iface));
 }
 
 export function alljoyn_proxybusobject_copy(
   source: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_proxybusobject */,
 ): Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_proxybusobject */ {
-  return util.pointerFromFfi(libMSAJApi.alljoyn_proxybusobject_copy(util.toPointer(source)));
+  return util.pointerFromFfi(libMSAJApi_dll.alljoyn_proxybusobject_copy(util.toPointer(source)));
 }
 
 export function alljoyn_proxybusobject_isvalid(
   proxyObj: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_proxybusobject */,
 ): number /* i32 */ {
-  return libMSAJApi.alljoyn_proxybusobject_isvalid(util.toPointer(proxyObj));
+  return libMSAJApi_dll.alljoyn_proxybusobject_isvalid(util.toPointer(proxyObj));
 }
 
 export function alljoyn_proxybusobject_issecure(
   proxyObj: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_proxybusobject */,
 ): number /* i32 */ {
-  return libMSAJApi.alljoyn_proxybusobject_issecure(util.toPointer(proxyObj));
+  return libMSAJApi_dll.alljoyn_proxybusobject_issecure(util.toPointer(proxyObj));
 }
 
 export function alljoyn_proxybusobject_enablepropertycaching(
   proxyObj: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_proxybusobject */,
 ): void /* void */ {
-  return libMSAJApi.alljoyn_proxybusobject_enablepropertycaching(util.toPointer(proxyObj));
+  return libMSAJApi_dll.alljoyn_proxybusobject_enablepropertycaching(util.toPointer(proxyObj));
 }
 
 export function alljoyn_permissionconfigurationlistener_create(
   callbacks: Deno.PointerValue | Uint8Array | null /* ptr */,
   context: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_permissionconfigurationlistener */ {
-  return util.pointerFromFfi(libMSAJApi.alljoyn_permissionconfigurationlistener_create(util.toPointer(callbacks), util.toPointer(context)));
+  return util.pointerFromFfi(libMSAJApi_dll.alljoyn_permissionconfigurationlistener_create(util.toPointer(callbacks), util.toPointer(context)));
 }
 
 export function alljoyn_permissionconfigurationlistener_destroy(
   listener: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_permissionconfigurationlistener */,
 ): void /* void */ {
-  return libMSAJApi.alljoyn_permissionconfigurationlistener_destroy(util.toPointer(listener));
+  return libMSAJApi_dll.alljoyn_permissionconfigurationlistener_destroy(util.toPointer(listener));
 }
 
 export function alljoyn_sessionlistener_create(
   callbacks: Deno.PointerValue | Uint8Array | null /* ptr */,
   context: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_sessionlistener */ {
-  return util.pointerFromFfi(libMSAJApi.alljoyn_sessionlistener_create(util.toPointer(callbacks), util.toPointer(context)));
+  return util.pointerFromFfi(libMSAJApi_dll.alljoyn_sessionlistener_create(util.toPointer(callbacks), util.toPointer(context)));
 }
 
 export function alljoyn_sessionlistener_destroy(
   listener: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_sessionlistener */,
 ): void /* void */ {
-  return libMSAJApi.alljoyn_sessionlistener_destroy(util.toPointer(listener));
+  return libMSAJApi_dll.alljoyn_sessionlistener_destroy(util.toPointer(listener));
 }
 
 export function alljoyn_sessionportlistener_create(
   callbacks: Deno.PointerValue | Uint8Array | null /* ptr */,
   context: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_sessionportlistener */ {
-  return util.pointerFromFfi(libMSAJApi.alljoyn_sessionportlistener_create(util.toPointer(callbacks), util.toPointer(context)));
+  return util.pointerFromFfi(libMSAJApi_dll.alljoyn_sessionportlistener_create(util.toPointer(callbacks), util.toPointer(context)));
 }
 
 export function alljoyn_sessionportlistener_destroy(
   listener: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_sessionportlistener */,
 ): void /* void */ {
-  return libMSAJApi.alljoyn_sessionportlistener_destroy(util.toPointer(listener));
+  return libMSAJApi_dll.alljoyn_sessionportlistener_destroy(util.toPointer(listener));
 }
 
 export function alljoyn_aboutlistener_create(
   callback: Deno.PointerValue | Uint8Array | null /* ptr */,
   context: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_aboutlistener */ {
-  return util.pointerFromFfi(libMSAJApi.alljoyn_aboutlistener_create(util.toPointer(callback), util.toPointer(context)));
+  return util.pointerFromFfi(libMSAJApi_dll.alljoyn_aboutlistener_create(util.toPointer(callback), util.toPointer(context)));
 }
 
 export function alljoyn_aboutlistener_destroy(
   listener: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_aboutlistener */,
 ): void /* void */ {
-  return libMSAJApi.alljoyn_aboutlistener_destroy(util.toPointer(listener));
+  return libMSAJApi_dll.alljoyn_aboutlistener_destroy(util.toPointer(listener));
 }
 
 export function alljoyn_busattachment_create(
   applicationName: string | null /* Windows.Win32.Foundation.PSTR */,
   allowRemoteMessages: number /* i32 */,
 ): Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_busattachment */ {
-  return util.pointerFromFfi(libMSAJApi.alljoyn_busattachment_create(util.pstrToFfi(applicationName), allowRemoteMessages));
+  return util.pointerFromFfi(libMSAJApi_dll.alljoyn_busattachment_create(util.pstrToFfi(applicationName), allowRemoteMessages));
 }
 
 export function alljoyn_busattachment_create_concurrency(
@@ -6131,49 +6132,49 @@ export function alljoyn_busattachment_create_concurrency(
   allowRemoteMessages: number /* i32 */,
   concurrency: number /* u32 */,
 ): Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_busattachment */ {
-  return util.pointerFromFfi(libMSAJApi.alljoyn_busattachment_create_concurrency(util.pstrToFfi(applicationName), allowRemoteMessages, concurrency));
+  return util.pointerFromFfi(libMSAJApi_dll.alljoyn_busattachment_create_concurrency(util.pstrToFfi(applicationName), allowRemoteMessages, concurrency));
 }
 
 export function alljoyn_busattachment_destroy(
   bus: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_busattachment */,
 ): void /* void */ {
-  return libMSAJApi.alljoyn_busattachment_destroy(util.toPointer(bus));
+  return libMSAJApi_dll.alljoyn_busattachment_destroy(util.toPointer(bus));
 }
 
 export function alljoyn_busattachment_start(
   bus: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_busattachment */,
 ): QStatus /* Windows.Win32.Devices.AllJoyn.QStatus */ {
-  return libMSAJApi.alljoyn_busattachment_start(util.toPointer(bus));
+  return libMSAJApi_dll.alljoyn_busattachment_start(util.toPointer(bus));
 }
 
 export function alljoyn_busattachment_stop(
   bus: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_busattachment */,
 ): QStatus /* Windows.Win32.Devices.AllJoyn.QStatus */ {
-  return libMSAJApi.alljoyn_busattachment_stop(util.toPointer(bus));
+  return libMSAJApi_dll.alljoyn_busattachment_stop(util.toPointer(bus));
 }
 
 export function alljoyn_busattachment_join(
   bus: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_busattachment */,
 ): QStatus /* Windows.Win32.Devices.AllJoyn.QStatus */ {
-  return libMSAJApi.alljoyn_busattachment_join(util.toPointer(bus));
+  return libMSAJApi_dll.alljoyn_busattachment_join(util.toPointer(bus));
 }
 
 export function alljoyn_busattachment_getconcurrency(
   bus: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_busattachment */,
 ): number /* u32 */ {
-  return libMSAJApi.alljoyn_busattachment_getconcurrency(util.toPointer(bus));
+  return libMSAJApi_dll.alljoyn_busattachment_getconcurrency(util.toPointer(bus));
 }
 
 export function alljoyn_busattachment_getconnectspec(
   bus: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_busattachment */,
 ): string | null /* Windows.Win32.Foundation.PSTR */ {
-  return util.pstrFromFfi(libMSAJApi.alljoyn_busattachment_getconnectspec(util.toPointer(bus)));
+  return util.pstrFromFfi(libMSAJApi_dll.alljoyn_busattachment_getconnectspec(util.toPointer(bus)));
 }
 
 export function alljoyn_busattachment_enableconcurrentcallbacks(
   bus: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_busattachment */,
 ): void /* void */ {
-  return libMSAJApi.alljoyn_busattachment_enableconcurrentcallbacks(util.toPointer(bus));
+  return libMSAJApi_dll.alljoyn_busattachment_enableconcurrentcallbacks(util.toPointer(bus));
 }
 
 export function alljoyn_busattachment_createinterface(
@@ -6181,7 +6182,7 @@ export function alljoyn_busattachment_createinterface(
   name: string | null /* Windows.Win32.Foundation.PSTR */,
   iface: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): QStatus /* Windows.Win32.Devices.AllJoyn.QStatus */ {
-  return libMSAJApi.alljoyn_busattachment_createinterface(util.toPointer(bus), util.pstrToFfi(name), util.toPointer(iface));
+  return libMSAJApi_dll.alljoyn_busattachment_createinterface(util.toPointer(bus), util.pstrToFfi(name), util.toPointer(iface));
 }
 
 export function alljoyn_busattachment_createinterface_secure(
@@ -6190,35 +6191,35 @@ export function alljoyn_busattachment_createinterface_secure(
   iface: Deno.PointerValue | Uint8Array | null /* ptr */,
   secPolicy: alljoyn_interfacedescription_securitypolicy /* Windows.Win32.Devices.AllJoyn.alljoyn_interfacedescription_securitypolicy */,
 ): QStatus /* Windows.Win32.Devices.AllJoyn.QStatus */ {
-  return libMSAJApi.alljoyn_busattachment_createinterface_secure(util.toPointer(bus), util.pstrToFfi(name), util.toPointer(iface), secPolicy);
+  return libMSAJApi_dll.alljoyn_busattachment_createinterface_secure(util.toPointer(bus), util.pstrToFfi(name), util.toPointer(iface), secPolicy);
 }
 
 export function alljoyn_busattachment_connect(
   bus: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_busattachment */,
   connectSpec: string | null /* Windows.Win32.Foundation.PSTR */,
 ): QStatus /* Windows.Win32.Devices.AllJoyn.QStatus */ {
-  return libMSAJApi.alljoyn_busattachment_connect(util.toPointer(bus), util.pstrToFfi(connectSpec));
+  return libMSAJApi_dll.alljoyn_busattachment_connect(util.toPointer(bus), util.pstrToFfi(connectSpec));
 }
 
 export function alljoyn_busattachment_registerbuslistener(
   bus: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_busattachment */,
   listener: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_buslistener */,
 ): void /* void */ {
-  return libMSAJApi.alljoyn_busattachment_registerbuslistener(util.toPointer(bus), util.toPointer(listener));
+  return libMSAJApi_dll.alljoyn_busattachment_registerbuslistener(util.toPointer(bus), util.toPointer(listener));
 }
 
 export function alljoyn_busattachment_unregisterbuslistener(
   bus: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_busattachment */,
   listener: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_buslistener */,
 ): void /* void */ {
-  return libMSAJApi.alljoyn_busattachment_unregisterbuslistener(util.toPointer(bus), util.toPointer(listener));
+  return libMSAJApi_dll.alljoyn_busattachment_unregisterbuslistener(util.toPointer(bus), util.toPointer(listener));
 }
 
 export function alljoyn_busattachment_findadvertisedname(
   bus: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_busattachment */,
   namePrefix: string | null /* Windows.Win32.Foundation.PSTR */,
 ): QStatus /* Windows.Win32.Devices.AllJoyn.QStatus */ {
-  return libMSAJApi.alljoyn_busattachment_findadvertisedname(util.toPointer(bus), util.pstrToFfi(namePrefix));
+  return libMSAJApi_dll.alljoyn_busattachment_findadvertisedname(util.toPointer(bus), util.pstrToFfi(namePrefix));
 }
 
 export function alljoyn_busattachment_findadvertisednamebytransport(
@@ -6226,14 +6227,14 @@ export function alljoyn_busattachment_findadvertisednamebytransport(
   namePrefix: string | null /* Windows.Win32.Foundation.PSTR */,
   transports: number /* u16 */,
 ): QStatus /* Windows.Win32.Devices.AllJoyn.QStatus */ {
-  return libMSAJApi.alljoyn_busattachment_findadvertisednamebytransport(util.toPointer(bus), util.pstrToFfi(namePrefix), transports);
+  return libMSAJApi_dll.alljoyn_busattachment_findadvertisednamebytransport(util.toPointer(bus), util.pstrToFfi(namePrefix), transports);
 }
 
 export function alljoyn_busattachment_cancelfindadvertisedname(
   bus: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_busattachment */,
   namePrefix: string | null /* Windows.Win32.Foundation.PSTR */,
 ): QStatus /* Windows.Win32.Devices.AllJoyn.QStatus */ {
-  return libMSAJApi.alljoyn_busattachment_cancelfindadvertisedname(util.toPointer(bus), util.pstrToFfi(namePrefix));
+  return libMSAJApi_dll.alljoyn_busattachment_cancelfindadvertisedname(util.toPointer(bus), util.pstrToFfi(namePrefix));
 }
 
 export function alljoyn_busattachment_cancelfindadvertisednamebytransport(
@@ -6241,7 +6242,7 @@ export function alljoyn_busattachment_cancelfindadvertisednamebytransport(
   namePrefix: string | null /* Windows.Win32.Foundation.PSTR */,
   transports: number /* u16 */,
 ): QStatus /* Windows.Win32.Devices.AllJoyn.QStatus */ {
-  return libMSAJApi.alljoyn_busattachment_cancelfindadvertisednamebytransport(util.toPointer(bus), util.pstrToFfi(namePrefix), transports);
+  return libMSAJApi_dll.alljoyn_busattachment_cancelfindadvertisednamebytransport(util.toPointer(bus), util.pstrToFfi(namePrefix), transports);
 }
 
 export function alljoyn_busattachment_advertisename(
@@ -6249,7 +6250,7 @@ export function alljoyn_busattachment_advertisename(
   name: string | null /* Windows.Win32.Foundation.PSTR */,
   transports: number /* u16 */,
 ): QStatus /* Windows.Win32.Devices.AllJoyn.QStatus */ {
-  return libMSAJApi.alljoyn_busattachment_advertisename(util.toPointer(bus), util.pstrToFfi(name), transports);
+  return libMSAJApi_dll.alljoyn_busattachment_advertisename(util.toPointer(bus), util.pstrToFfi(name), transports);
 }
 
 export function alljoyn_busattachment_canceladvertisename(
@@ -6257,14 +6258,14 @@ export function alljoyn_busattachment_canceladvertisename(
   name: string | null /* Windows.Win32.Foundation.PSTR */,
   transports: number /* u16 */,
 ): QStatus /* Windows.Win32.Devices.AllJoyn.QStatus */ {
-  return libMSAJApi.alljoyn_busattachment_canceladvertisename(util.toPointer(bus), util.pstrToFfi(name), transports);
+  return libMSAJApi_dll.alljoyn_busattachment_canceladvertisename(util.toPointer(bus), util.pstrToFfi(name), transports);
 }
 
 export function alljoyn_busattachment_getinterface(
   bus: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_busattachment */,
   name: string | null /* Windows.Win32.Foundation.PSTR */,
 ): Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_interfacedescription */ {
-  return util.pointerFromFfi(libMSAJApi.alljoyn_busattachment_getinterface(util.toPointer(bus), util.pstrToFfi(name)));
+  return util.pointerFromFfi(libMSAJApi_dll.alljoyn_busattachment_getinterface(util.toPointer(bus), util.pstrToFfi(name)));
 }
 
 export function alljoyn_busattachment_joinsession(
@@ -6275,7 +6276,7 @@ export function alljoyn_busattachment_joinsession(
   sessionId: Deno.PointerValue | Uint8Array | null /* ptr */,
   opts: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_sessionopts */,
 ): QStatus /* Windows.Win32.Devices.AllJoyn.QStatus */ {
-  return libMSAJApi.alljoyn_busattachment_joinsession(util.toPointer(bus), util.pstrToFfi(sessionHost), sessionPort, util.toPointer(listener), util.toPointer(sessionId), util.toPointer(opts));
+  return libMSAJApi_dll.alljoyn_busattachment_joinsession(util.toPointer(bus), util.pstrToFfi(sessionHost), sessionPort, util.toPointer(listener), util.toPointer(sessionId), util.toPointer(opts));
 }
 
 export function alljoyn_busattachment_joinsessionasync(
@@ -6287,28 +6288,28 @@ export function alljoyn_busattachment_joinsessionasync(
   callback: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_busattachment_joinsessioncb_ptr */,
   context: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): QStatus /* Windows.Win32.Devices.AllJoyn.QStatus */ {
-  return libMSAJApi.alljoyn_busattachment_joinsessionasync(util.toPointer(bus), util.pstrToFfi(sessionHost), sessionPort, util.toPointer(listener), util.toPointer(opts), util.toPointer(callback), util.toPointer(context));
+  return libMSAJApi_dll.alljoyn_busattachment_joinsessionasync(util.toPointer(bus), util.pstrToFfi(sessionHost), sessionPort, util.toPointer(listener), util.toPointer(opts), util.toPointer(callback), util.toPointer(context));
 }
 
 export function alljoyn_busattachment_registerbusobject(
   bus: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_busattachment */,
   obj: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_busobject */,
 ): QStatus /* Windows.Win32.Devices.AllJoyn.QStatus */ {
-  return libMSAJApi.alljoyn_busattachment_registerbusobject(util.toPointer(bus), util.toPointer(obj));
+  return libMSAJApi_dll.alljoyn_busattachment_registerbusobject(util.toPointer(bus), util.toPointer(obj));
 }
 
 export function alljoyn_busattachment_registerbusobject_secure(
   bus: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_busattachment */,
   obj: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_busobject */,
 ): QStatus /* Windows.Win32.Devices.AllJoyn.QStatus */ {
-  return libMSAJApi.alljoyn_busattachment_registerbusobject_secure(util.toPointer(bus), util.toPointer(obj));
+  return libMSAJApi_dll.alljoyn_busattachment_registerbusobject_secure(util.toPointer(bus), util.toPointer(obj));
 }
 
 export function alljoyn_busattachment_unregisterbusobject(
   bus: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_busattachment */,
   object: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_busobject */,
 ): void /* void */ {
-  return libMSAJApi.alljoyn_busattachment_unregisterbusobject(util.toPointer(bus), util.toPointer(object));
+  return libMSAJApi_dll.alljoyn_busattachment_unregisterbusobject(util.toPointer(bus), util.toPointer(object));
 }
 
 export function alljoyn_busattachment_requestname(
@@ -6316,14 +6317,14 @@ export function alljoyn_busattachment_requestname(
   requestedName: string | null /* Windows.Win32.Foundation.PSTR */,
   flags: number /* u32 */,
 ): QStatus /* Windows.Win32.Devices.AllJoyn.QStatus */ {
-  return libMSAJApi.alljoyn_busattachment_requestname(util.toPointer(bus), util.pstrToFfi(requestedName), flags);
+  return libMSAJApi_dll.alljoyn_busattachment_requestname(util.toPointer(bus), util.pstrToFfi(requestedName), flags);
 }
 
 export function alljoyn_busattachment_releasename(
   bus: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_busattachment */,
   name: string | null /* Windows.Win32.Foundation.PSTR */,
 ): QStatus /* Windows.Win32.Devices.AllJoyn.QStatus */ {
-  return libMSAJApi.alljoyn_busattachment_releasename(util.toPointer(bus), util.pstrToFfi(name));
+  return libMSAJApi_dll.alljoyn_busattachment_releasename(util.toPointer(bus), util.pstrToFfi(name));
 }
 
 export function alljoyn_busattachment_bindsessionport(
@@ -6332,14 +6333,14 @@ export function alljoyn_busattachment_bindsessionport(
   opts: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_sessionopts */,
   listener: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_sessionportlistener */,
 ): QStatus /* Windows.Win32.Devices.AllJoyn.QStatus */ {
-  return libMSAJApi.alljoyn_busattachment_bindsessionport(util.toPointer(bus), util.toPointer(sessionPort), util.toPointer(opts), util.toPointer(listener));
+  return libMSAJApi_dll.alljoyn_busattachment_bindsessionport(util.toPointer(bus), util.toPointer(sessionPort), util.toPointer(opts), util.toPointer(listener));
 }
 
 export function alljoyn_busattachment_unbindsessionport(
   bus: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_busattachment */,
   sessionPort: number /* u16 */,
 ): QStatus /* Windows.Win32.Devices.AllJoyn.QStatus */ {
-  return libMSAJApi.alljoyn_busattachment_unbindsessionport(util.toPointer(bus), sessionPort);
+  return libMSAJApi_dll.alljoyn_busattachment_unbindsessionport(util.toPointer(bus), sessionPort);
 }
 
 export function alljoyn_busattachment_enablepeersecurity(
@@ -6349,7 +6350,7 @@ export function alljoyn_busattachment_enablepeersecurity(
   keyStoreFileName: string | null /* Windows.Win32.Foundation.PSTR */,
   isShared: number /* i32 */,
 ): QStatus /* Windows.Win32.Devices.AllJoyn.QStatus */ {
-  return libMSAJApi.alljoyn_busattachment_enablepeersecurity(util.toPointer(bus), util.pstrToFfi(authMechanisms), util.toPointer(listener), util.pstrToFfi(keyStoreFileName), isShared);
+  return libMSAJApi_dll.alljoyn_busattachment_enablepeersecurity(util.toPointer(bus), util.pstrToFfi(authMechanisms), util.toPointer(listener), util.pstrToFfi(keyStoreFileName), isShared);
 }
 
 export function alljoyn_busattachment_enablepeersecuritywithpermissionconfigurationlistener(
@@ -6360,20 +6361,20 @@ export function alljoyn_busattachment_enablepeersecuritywithpermissionconfigurat
   isShared: number /* i32 */,
   permissionConfigurationListener: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_permissionconfigurationlistener */,
 ): QStatus /* Windows.Win32.Devices.AllJoyn.QStatus */ {
-  return libMSAJApi.alljoyn_busattachment_enablepeersecuritywithpermissionconfigurationlistener(util.toPointer(bus), util.pstrToFfi(authMechanisms), util.toPointer(authListener), util.pstrToFfi(keyStoreFileName), isShared, util.toPointer(permissionConfigurationListener));
+  return libMSAJApi_dll.alljoyn_busattachment_enablepeersecuritywithpermissionconfigurationlistener(util.toPointer(bus), util.pstrToFfi(authMechanisms), util.toPointer(authListener), util.pstrToFfi(keyStoreFileName), isShared, util.toPointer(permissionConfigurationListener));
 }
 
 export function alljoyn_busattachment_ispeersecurityenabled(
   bus: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_busattachment */,
 ): number /* i32 */ {
-  return libMSAJApi.alljoyn_busattachment_ispeersecurityenabled(util.toPointer(bus));
+  return libMSAJApi_dll.alljoyn_busattachment_ispeersecurityenabled(util.toPointer(bus));
 }
 
 export function alljoyn_busattachment_createinterfacesfromxml(
   bus: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_busattachment */,
   xml: string | null /* Windows.Win32.Foundation.PSTR */,
 ): QStatus /* Windows.Win32.Devices.AllJoyn.QStatus */ {
-  return libMSAJApi.alljoyn_busattachment_createinterfacesfromxml(util.toPointer(bus), util.pstrToFfi(xml));
+  return libMSAJApi_dll.alljoyn_busattachment_createinterfacesfromxml(util.toPointer(bus), util.pstrToFfi(xml));
 }
 
 export function alljoyn_busattachment_getinterfaces(
@@ -6381,69 +6382,69 @@ export function alljoyn_busattachment_getinterfaces(
   ifaces: Deno.PointerValue | Uint8Array | null /* ptr */,
   numIfaces: Deno.PointerValue /* usize */,
 ): Deno.PointerValue /* usize */ {
-  return libMSAJApi.alljoyn_busattachment_getinterfaces(util.toPointer(bus), util.toPointer(ifaces), numIfaces);
+  return libMSAJApi_dll.alljoyn_busattachment_getinterfaces(util.toPointer(bus), util.toPointer(ifaces), numIfaces);
 }
 
 export function alljoyn_busattachment_deleteinterface(
   bus: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_busattachment */,
   iface: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_interfacedescription */,
 ): QStatus /* Windows.Win32.Devices.AllJoyn.QStatus */ {
-  return libMSAJApi.alljoyn_busattachment_deleteinterface(util.toPointer(bus), util.toPointer(iface));
+  return libMSAJApi_dll.alljoyn_busattachment_deleteinterface(util.toPointer(bus), util.toPointer(iface));
 }
 
 export function alljoyn_busattachment_isstarted(
   bus: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_busattachment */,
 ): number /* i32 */ {
-  return libMSAJApi.alljoyn_busattachment_isstarted(util.toPointer(bus));
+  return libMSAJApi_dll.alljoyn_busattachment_isstarted(util.toPointer(bus));
 }
 
 export function alljoyn_busattachment_isstopping(
   bus: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_busattachment */,
 ): number /* i32 */ {
-  return libMSAJApi.alljoyn_busattachment_isstopping(util.toPointer(bus));
+  return libMSAJApi_dll.alljoyn_busattachment_isstopping(util.toPointer(bus));
 }
 
 export function alljoyn_busattachment_isconnected(
   bus: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_busattachment */,
 ): number /* i32 */ {
-  return libMSAJApi.alljoyn_busattachment_isconnected(util.toPointer(bus));
+  return libMSAJApi_dll.alljoyn_busattachment_isconnected(util.toPointer(bus));
 }
 
 export function alljoyn_busattachment_disconnect(
   bus: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_busattachment */,
   unused: string | null /* Windows.Win32.Foundation.PSTR */,
 ): QStatus /* Windows.Win32.Devices.AllJoyn.QStatus */ {
-  return libMSAJApi.alljoyn_busattachment_disconnect(util.toPointer(bus), util.pstrToFfi(unused));
+  return libMSAJApi_dll.alljoyn_busattachment_disconnect(util.toPointer(bus), util.pstrToFfi(unused));
 }
 
 export function alljoyn_busattachment_getdbusproxyobj(
   bus: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_busattachment */,
 ): Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_proxybusobject */ {
-  return util.pointerFromFfi(libMSAJApi.alljoyn_busattachment_getdbusproxyobj(util.toPointer(bus)));
+  return util.pointerFromFfi(libMSAJApi_dll.alljoyn_busattachment_getdbusproxyobj(util.toPointer(bus)));
 }
 
 export function alljoyn_busattachment_getalljoynproxyobj(
   bus: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_busattachment */,
 ): Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_proxybusobject */ {
-  return util.pointerFromFfi(libMSAJApi.alljoyn_busattachment_getalljoynproxyobj(util.toPointer(bus)));
+  return util.pointerFromFfi(libMSAJApi_dll.alljoyn_busattachment_getalljoynproxyobj(util.toPointer(bus)));
 }
 
 export function alljoyn_busattachment_getalljoyndebugobj(
   bus: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_busattachment */,
 ): Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_proxybusobject */ {
-  return util.pointerFromFfi(libMSAJApi.alljoyn_busattachment_getalljoyndebugobj(util.toPointer(bus)));
+  return util.pointerFromFfi(libMSAJApi_dll.alljoyn_busattachment_getalljoyndebugobj(util.toPointer(bus)));
 }
 
 export function alljoyn_busattachment_getuniquename(
   bus: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_busattachment */,
 ): string | null /* Windows.Win32.Foundation.PSTR */ {
-  return util.pstrFromFfi(libMSAJApi.alljoyn_busattachment_getuniquename(util.toPointer(bus)));
+  return util.pstrFromFfi(libMSAJApi_dll.alljoyn_busattachment_getuniquename(util.toPointer(bus)));
 }
 
 export function alljoyn_busattachment_getglobalguidstring(
   bus: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_busattachment */,
 ): string | null /* Windows.Win32.Foundation.PSTR */ {
-  return util.pstrFromFfi(libMSAJApi.alljoyn_busattachment_getglobalguidstring(util.toPointer(bus)));
+  return util.pstrFromFfi(libMSAJApi_dll.alljoyn_busattachment_getglobalguidstring(util.toPointer(bus)));
 }
 
 export function alljoyn_busattachment_registersignalhandler(
@@ -6452,7 +6453,7 @@ export function alljoyn_busattachment_registersignalhandler(
   member: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_interfacedescription_member */,
   srcPath: string | null /* Windows.Win32.Foundation.PSTR */,
 ): QStatus /* Windows.Win32.Devices.AllJoyn.QStatus */ {
-  return libMSAJApi.alljoyn_busattachment_registersignalhandler(util.toPointer(bus), util.toPointer(signal_handler), util.toPointer(member), util.pstrToFfi(srcPath));
+  return libMSAJApi_dll.alljoyn_busattachment_registersignalhandler(util.toPointer(bus), util.toPointer(signal_handler), util.toPointer(member), util.pstrToFfi(srcPath));
 }
 
 export function alljoyn_busattachment_registersignalhandlerwithrule(
@@ -6461,7 +6462,7 @@ export function alljoyn_busattachment_registersignalhandlerwithrule(
   member: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_interfacedescription_member */,
   matchRule: string | null /* Windows.Win32.Foundation.PSTR */,
 ): QStatus /* Windows.Win32.Devices.AllJoyn.QStatus */ {
-  return libMSAJApi.alljoyn_busattachment_registersignalhandlerwithrule(util.toPointer(bus), util.toPointer(signal_handler), util.toPointer(member), util.pstrToFfi(matchRule));
+  return libMSAJApi_dll.alljoyn_busattachment_registersignalhandlerwithrule(util.toPointer(bus), util.toPointer(signal_handler), util.toPointer(member), util.pstrToFfi(matchRule));
 }
 
 export function alljoyn_busattachment_unregistersignalhandler(
@@ -6470,7 +6471,7 @@ export function alljoyn_busattachment_unregistersignalhandler(
   member: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_interfacedescription_member */,
   srcPath: string | null /* Windows.Win32.Foundation.PSTR */,
 ): QStatus /* Windows.Win32.Devices.AllJoyn.QStatus */ {
-  return libMSAJApi.alljoyn_busattachment_unregistersignalhandler(util.toPointer(bus), util.toPointer(signal_handler), util.toPointer(member), util.pstrToFfi(srcPath));
+  return libMSAJApi_dll.alljoyn_busattachment_unregistersignalhandler(util.toPointer(bus), util.toPointer(signal_handler), util.toPointer(member), util.pstrToFfi(srcPath));
 }
 
 export function alljoyn_busattachment_unregistersignalhandlerwithrule(
@@ -6479,39 +6480,39 @@ export function alljoyn_busattachment_unregistersignalhandlerwithrule(
   member: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_interfacedescription_member */,
   matchRule: string | null /* Windows.Win32.Foundation.PSTR */,
 ): QStatus /* Windows.Win32.Devices.AllJoyn.QStatus */ {
-  return libMSAJApi.alljoyn_busattachment_unregistersignalhandlerwithrule(util.toPointer(bus), util.toPointer(signal_handler), util.toPointer(member), util.pstrToFfi(matchRule));
+  return libMSAJApi_dll.alljoyn_busattachment_unregistersignalhandlerwithrule(util.toPointer(bus), util.toPointer(signal_handler), util.toPointer(member), util.pstrToFfi(matchRule));
 }
 
 export function alljoyn_busattachment_unregisterallhandlers(
   bus: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_busattachment */,
 ): QStatus /* Windows.Win32.Devices.AllJoyn.QStatus */ {
-  return libMSAJApi.alljoyn_busattachment_unregisterallhandlers(util.toPointer(bus));
+  return libMSAJApi_dll.alljoyn_busattachment_unregisterallhandlers(util.toPointer(bus));
 }
 
 export function alljoyn_busattachment_registerkeystorelistener(
   bus: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_busattachment */,
   listener: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_keystorelistener */,
 ): QStatus /* Windows.Win32.Devices.AllJoyn.QStatus */ {
-  return libMSAJApi.alljoyn_busattachment_registerkeystorelistener(util.toPointer(bus), util.toPointer(listener));
+  return libMSAJApi_dll.alljoyn_busattachment_registerkeystorelistener(util.toPointer(bus), util.toPointer(listener));
 }
 
 export function alljoyn_busattachment_reloadkeystore(
   bus: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_busattachment */,
 ): QStatus /* Windows.Win32.Devices.AllJoyn.QStatus */ {
-  return libMSAJApi.alljoyn_busattachment_reloadkeystore(util.toPointer(bus));
+  return libMSAJApi_dll.alljoyn_busattachment_reloadkeystore(util.toPointer(bus));
 }
 
 export function alljoyn_busattachment_clearkeystore(
   bus: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_busattachment */,
 ): void /* void */ {
-  return libMSAJApi.alljoyn_busattachment_clearkeystore(util.toPointer(bus));
+  return libMSAJApi_dll.alljoyn_busattachment_clearkeystore(util.toPointer(bus));
 }
 
 export function alljoyn_busattachment_clearkeys(
   bus: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_busattachment */,
   guid: string | null /* Windows.Win32.Foundation.PSTR */,
 ): QStatus /* Windows.Win32.Devices.AllJoyn.QStatus */ {
-  return libMSAJApi.alljoyn_busattachment_clearkeys(util.toPointer(bus), util.pstrToFfi(guid));
+  return libMSAJApi_dll.alljoyn_busattachment_clearkeys(util.toPointer(bus), util.pstrToFfi(guid));
 }
 
 export function alljoyn_busattachment_setkeyexpiration(
@@ -6519,7 +6520,7 @@ export function alljoyn_busattachment_setkeyexpiration(
   guid: string | null /* Windows.Win32.Foundation.PSTR */,
   timeout: number /* u32 */,
 ): QStatus /* Windows.Win32.Devices.AllJoyn.QStatus */ {
-  return libMSAJApi.alljoyn_busattachment_setkeyexpiration(util.toPointer(bus), util.pstrToFfi(guid), timeout);
+  return libMSAJApi_dll.alljoyn_busattachment_setkeyexpiration(util.toPointer(bus), util.pstrToFfi(guid), timeout);
 }
 
 export function alljoyn_busattachment_getkeyexpiration(
@@ -6527,7 +6528,7 @@ export function alljoyn_busattachment_getkeyexpiration(
   guid: string | null /* Windows.Win32.Foundation.PSTR */,
   timeout: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): QStatus /* Windows.Win32.Devices.AllJoyn.QStatus */ {
-  return libMSAJApi.alljoyn_busattachment_getkeyexpiration(util.toPointer(bus), util.pstrToFfi(guid), util.toPointer(timeout));
+  return libMSAJApi_dll.alljoyn_busattachment_getkeyexpiration(util.toPointer(bus), util.pstrToFfi(guid), util.toPointer(timeout));
 }
 
 export function alljoyn_busattachment_addlogonentry(
@@ -6536,21 +6537,21 @@ export function alljoyn_busattachment_addlogonentry(
   userName: string | null /* Windows.Win32.Foundation.PSTR */,
   password: string | null /* Windows.Win32.Foundation.PSTR */,
 ): QStatus /* Windows.Win32.Devices.AllJoyn.QStatus */ {
-  return libMSAJApi.alljoyn_busattachment_addlogonentry(util.toPointer(bus), util.pstrToFfi(authMechanism), util.pstrToFfi(userName), util.pstrToFfi(password));
+  return libMSAJApi_dll.alljoyn_busattachment_addlogonentry(util.toPointer(bus), util.pstrToFfi(authMechanism), util.pstrToFfi(userName), util.pstrToFfi(password));
 }
 
 export function alljoyn_busattachment_addmatch(
   bus: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_busattachment */,
   rule: string | null /* Windows.Win32.Foundation.PSTR */,
 ): QStatus /* Windows.Win32.Devices.AllJoyn.QStatus */ {
-  return libMSAJApi.alljoyn_busattachment_addmatch(util.toPointer(bus), util.pstrToFfi(rule));
+  return libMSAJApi_dll.alljoyn_busattachment_addmatch(util.toPointer(bus), util.pstrToFfi(rule));
 }
 
 export function alljoyn_busattachment_removematch(
   bus: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_busattachment */,
   rule: string | null /* Windows.Win32.Foundation.PSTR */,
 ): QStatus /* Windows.Win32.Devices.AllJoyn.QStatus */ {
-  return libMSAJApi.alljoyn_busattachment_removematch(util.toPointer(bus), util.pstrToFfi(rule));
+  return libMSAJApi_dll.alljoyn_busattachment_removematch(util.toPointer(bus), util.pstrToFfi(rule));
 }
 
 export function alljoyn_busattachment_setsessionlistener(
@@ -6558,14 +6559,14 @@ export function alljoyn_busattachment_setsessionlistener(
   sessionId: number /* u32 */,
   listener: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_sessionlistener */,
 ): QStatus /* Windows.Win32.Devices.AllJoyn.QStatus */ {
-  return libMSAJApi.alljoyn_busattachment_setsessionlistener(util.toPointer(bus), sessionId, util.toPointer(listener));
+  return libMSAJApi_dll.alljoyn_busattachment_setsessionlistener(util.toPointer(bus), sessionId, util.toPointer(listener));
 }
 
 export function alljoyn_busattachment_leavesession(
   bus: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_busattachment */,
   sessionId: number /* u32 */,
 ): QStatus /* Windows.Win32.Devices.AllJoyn.QStatus */ {
-  return libMSAJApi.alljoyn_busattachment_leavesession(util.toPointer(bus), sessionId);
+  return libMSAJApi_dll.alljoyn_busattachment_leavesession(util.toPointer(bus), sessionId);
 }
 
 export function alljoyn_busattachment_secureconnection(
@@ -6573,7 +6574,7 @@ export function alljoyn_busattachment_secureconnection(
   name: string | null /* Windows.Win32.Foundation.PSTR */,
   forceAuth: number /* i32 */,
 ): QStatus /* Windows.Win32.Devices.AllJoyn.QStatus */ {
-  return libMSAJApi.alljoyn_busattachment_secureconnection(util.toPointer(bus), util.pstrToFfi(name), forceAuth);
+  return libMSAJApi_dll.alljoyn_busattachment_secureconnection(util.toPointer(bus), util.pstrToFfi(name), forceAuth);
 }
 
 export function alljoyn_busattachment_secureconnectionasync(
@@ -6581,7 +6582,7 @@ export function alljoyn_busattachment_secureconnectionasync(
   name: string | null /* Windows.Win32.Foundation.PSTR */,
   forceAuth: number /* i32 */,
 ): QStatus /* Windows.Win32.Devices.AllJoyn.QStatus */ {
-  return libMSAJApi.alljoyn_busattachment_secureconnectionasync(util.toPointer(bus), util.pstrToFfi(name), forceAuth);
+  return libMSAJApi_dll.alljoyn_busattachment_secureconnectionasync(util.toPointer(bus), util.pstrToFfi(name), forceAuth);
 }
 
 export function alljoyn_busattachment_removesessionmember(
@@ -6589,7 +6590,7 @@ export function alljoyn_busattachment_removesessionmember(
   sessionId: number /* u32 */,
   memberName: string | null /* Windows.Win32.Foundation.PSTR */,
 ): QStatus /* Windows.Win32.Devices.AllJoyn.QStatus */ {
-  return libMSAJApi.alljoyn_busattachment_removesessionmember(util.toPointer(bus), sessionId, util.pstrToFfi(memberName));
+  return libMSAJApi_dll.alljoyn_busattachment_removesessionmember(util.toPointer(bus), sessionId, util.pstrToFfi(memberName));
 }
 
 export function alljoyn_busattachment_setlinktimeout(
@@ -6597,7 +6598,7 @@ export function alljoyn_busattachment_setlinktimeout(
   sessionid: number /* u32 */,
   linkTimeout: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): QStatus /* Windows.Win32.Devices.AllJoyn.QStatus */ {
-  return libMSAJApi.alljoyn_busattachment_setlinktimeout(util.toPointer(bus), sessionid, util.toPointer(linkTimeout));
+  return libMSAJApi_dll.alljoyn_busattachment_setlinktimeout(util.toPointer(bus), sessionid, util.toPointer(linkTimeout));
 }
 
 export function alljoyn_busattachment_setlinktimeoutasync(
@@ -6607,7 +6608,7 @@ export function alljoyn_busattachment_setlinktimeoutasync(
   callback: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_busattachment_setlinktimeoutcb_ptr */,
   context: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): QStatus /* Windows.Win32.Devices.AllJoyn.QStatus */ {
-  return libMSAJApi.alljoyn_busattachment_setlinktimeoutasync(util.toPointer(bus), sessionid, linkTimeout, util.toPointer(callback), util.toPointer(context));
+  return libMSAJApi_dll.alljoyn_busattachment_setlinktimeoutasync(util.toPointer(bus), sessionid, linkTimeout, util.toPointer(callback), util.toPointer(context));
 }
 
 export function alljoyn_busattachment_namehasowner(
@@ -6615,7 +6616,7 @@ export function alljoyn_busattachment_namehasowner(
   name: string | null /* Windows.Win32.Foundation.PSTR */,
   hasOwner: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): QStatus /* Windows.Win32.Devices.AllJoyn.QStatus */ {
-  return libMSAJApi.alljoyn_busattachment_namehasowner(util.toPointer(bus), util.pstrToFfi(name), util.toPointer(hasOwner));
+  return libMSAJApi_dll.alljoyn_busattachment_namehasowner(util.toPointer(bus), util.pstrToFfi(name), util.toPointer(hasOwner));
 }
 
 export function alljoyn_busattachment_getpeerguid(
@@ -6624,7 +6625,7 @@ export function alljoyn_busattachment_getpeerguid(
   guid: string | null /* Windows.Win32.Foundation.PSTR */,
   guidSz: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): QStatus /* Windows.Win32.Devices.AllJoyn.QStatus */ {
-  return libMSAJApi.alljoyn_busattachment_getpeerguid(util.toPointer(bus), util.pstrToFfi(name), util.pstrToFfi(guid), util.toPointer(guidSz));
+  return libMSAJApi_dll.alljoyn_busattachment_getpeerguid(util.toPointer(bus), util.pstrToFfi(name), util.pstrToFfi(guid), util.toPointer(guidSz));
 }
 
 export function alljoyn_busattachment_setdaemondebug(
@@ -6632,11 +6633,11 @@ export function alljoyn_busattachment_setdaemondebug(
   module: string | null /* Windows.Win32.Foundation.PSTR */,
   level: number /* u32 */,
 ): QStatus /* Windows.Win32.Devices.AllJoyn.QStatus */ {
-  return libMSAJApi.alljoyn_busattachment_setdaemondebug(util.toPointer(bus), util.pstrToFfi(module), level);
+  return libMSAJApi_dll.alljoyn_busattachment_setdaemondebug(util.toPointer(bus), util.pstrToFfi(module), level);
 }
 
 export function alljoyn_busattachment_gettimestamp(): number /* u32 */ {
-  return libMSAJApi.alljoyn_busattachment_gettimestamp();
+  return libMSAJApi_dll.alljoyn_busattachment_gettimestamp();
 }
 
 export function alljoyn_busattachment_ping(
@@ -6644,27 +6645,27 @@ export function alljoyn_busattachment_ping(
   name: string | null /* Windows.Win32.Foundation.PSTR */,
   timeout: number /* u32 */,
 ): QStatus /* Windows.Win32.Devices.AllJoyn.QStatus */ {
-  return libMSAJApi.alljoyn_busattachment_ping(util.toPointer(bus), util.pstrToFfi(name), timeout);
+  return libMSAJApi_dll.alljoyn_busattachment_ping(util.toPointer(bus), util.pstrToFfi(name), timeout);
 }
 
 export function alljoyn_busattachment_registeraboutlistener(
   bus: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_busattachment */,
   aboutListener: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_aboutlistener */,
 ): void /* void */ {
-  return libMSAJApi.alljoyn_busattachment_registeraboutlistener(util.toPointer(bus), util.toPointer(aboutListener));
+  return libMSAJApi_dll.alljoyn_busattachment_registeraboutlistener(util.toPointer(bus), util.toPointer(aboutListener));
 }
 
 export function alljoyn_busattachment_unregisteraboutlistener(
   bus: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_busattachment */,
   aboutListener: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_aboutlistener */,
 ): void /* void */ {
-  return libMSAJApi.alljoyn_busattachment_unregisteraboutlistener(util.toPointer(bus), util.toPointer(aboutListener));
+  return libMSAJApi_dll.alljoyn_busattachment_unregisteraboutlistener(util.toPointer(bus), util.toPointer(aboutListener));
 }
 
 export function alljoyn_busattachment_unregisterallaboutlisteners(
   bus: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_busattachment */,
 ): void /* void */ {
-  return libMSAJApi.alljoyn_busattachment_unregisterallaboutlisteners(util.toPointer(bus));
+  return libMSAJApi_dll.alljoyn_busattachment_unregisterallaboutlisteners(util.toPointer(bus));
 }
 
 export function alljoyn_busattachment_whoimplements_interfaces(
@@ -6672,14 +6673,14 @@ export function alljoyn_busattachment_whoimplements_interfaces(
   implementsInterfaces: Deno.PointerValue | Uint8Array | null /* ptr */,
   numberInterfaces: Deno.PointerValue /* usize */,
 ): QStatus /* Windows.Win32.Devices.AllJoyn.QStatus */ {
-  return libMSAJApi.alljoyn_busattachment_whoimplements_interfaces(util.toPointer(bus), util.toPointer(implementsInterfaces), numberInterfaces);
+  return libMSAJApi_dll.alljoyn_busattachment_whoimplements_interfaces(util.toPointer(bus), util.toPointer(implementsInterfaces), numberInterfaces);
 }
 
 export function alljoyn_busattachment_whoimplements_interface(
   bus: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_busattachment */,
   implementsInterface: string | null /* Windows.Win32.Foundation.PSTR */,
 ): QStatus /* Windows.Win32.Devices.AllJoyn.QStatus */ {
-  return libMSAJApi.alljoyn_busattachment_whoimplements_interface(util.toPointer(bus), util.pstrToFfi(implementsInterface));
+  return libMSAJApi_dll.alljoyn_busattachment_whoimplements_interface(util.toPointer(bus), util.pstrToFfi(implementsInterface));
 }
 
 export function alljoyn_busattachment_cancelwhoimplements_interfaces(
@@ -6687,53 +6688,53 @@ export function alljoyn_busattachment_cancelwhoimplements_interfaces(
   implementsInterfaces: Deno.PointerValue | Uint8Array | null /* ptr */,
   numberInterfaces: Deno.PointerValue /* usize */,
 ): QStatus /* Windows.Win32.Devices.AllJoyn.QStatus */ {
-  return libMSAJApi.alljoyn_busattachment_cancelwhoimplements_interfaces(util.toPointer(bus), util.toPointer(implementsInterfaces), numberInterfaces);
+  return libMSAJApi_dll.alljoyn_busattachment_cancelwhoimplements_interfaces(util.toPointer(bus), util.toPointer(implementsInterfaces), numberInterfaces);
 }
 
 export function alljoyn_busattachment_cancelwhoimplements_interface(
   bus: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_busattachment */,
   implementsInterface: string | null /* Windows.Win32.Foundation.PSTR */,
 ): QStatus /* Windows.Win32.Devices.AllJoyn.QStatus */ {
-  return libMSAJApi.alljoyn_busattachment_cancelwhoimplements_interface(util.toPointer(bus), util.pstrToFfi(implementsInterface));
+  return libMSAJApi_dll.alljoyn_busattachment_cancelwhoimplements_interface(util.toPointer(bus), util.pstrToFfi(implementsInterface));
 }
 
 export function alljoyn_busattachment_getpermissionconfigurator(
   bus: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_busattachment */,
 ): Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_permissionconfigurator */ {
-  return util.pointerFromFfi(libMSAJApi.alljoyn_busattachment_getpermissionconfigurator(util.toPointer(bus)));
+  return util.pointerFromFfi(libMSAJApi_dll.alljoyn_busattachment_getpermissionconfigurator(util.toPointer(bus)));
 }
 
 export function alljoyn_busattachment_registerapplicationstatelistener(
   bus: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_busattachment */,
   listener: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_applicationstatelistener */,
 ): QStatus /* Windows.Win32.Devices.AllJoyn.QStatus */ {
-  return libMSAJApi.alljoyn_busattachment_registerapplicationstatelistener(util.toPointer(bus), util.toPointer(listener));
+  return libMSAJApi_dll.alljoyn_busattachment_registerapplicationstatelistener(util.toPointer(bus), util.toPointer(listener));
 }
 
 export function alljoyn_busattachment_unregisterapplicationstatelistener(
   bus: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_busattachment */,
   listener: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_applicationstatelistener */,
 ): QStatus /* Windows.Win32.Devices.AllJoyn.QStatus */ {
-  return libMSAJApi.alljoyn_busattachment_unregisterapplicationstatelistener(util.toPointer(bus), util.toPointer(listener));
+  return libMSAJApi_dll.alljoyn_busattachment_unregisterapplicationstatelistener(util.toPointer(bus), util.toPointer(listener));
 }
 
 export function alljoyn_busattachment_deletedefaultkeystore(
   applicationName: string | null /* Windows.Win32.Foundation.PSTR */,
 ): QStatus /* Windows.Win32.Devices.AllJoyn.QStatus */ {
-  return libMSAJApi.alljoyn_busattachment_deletedefaultkeystore(util.pstrToFfi(applicationName));
+  return libMSAJApi_dll.alljoyn_busattachment_deletedefaultkeystore(util.pstrToFfi(applicationName));
 }
 
 export function alljoyn_abouticonobj_create(
   bus: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_busattachment */,
   icon: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libMSAJApi.alljoyn_abouticonobj_create(util.toPointer(bus), util.toPointer(icon)));
+  return util.pointerFromFfi(libMSAJApi_dll.alljoyn_abouticonobj_create(util.toPointer(bus), util.toPointer(icon)));
 }
 
 export function alljoyn_abouticonobj_destroy(
   icon: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): void /* void */ {
-  return libMSAJApi.alljoyn_abouticonobj_destroy(util.toPointer(icon));
+  return libMSAJApi_dll.alljoyn_abouticonobj_destroy(util.toPointer(icon));
 }
 
 export function alljoyn_abouticonproxy_create(
@@ -6741,53 +6742,53 @@ export function alljoyn_abouticonproxy_create(
   busName: string | null /* Windows.Win32.Foundation.PSTR */,
   sessionId: number /* u32 */,
 ): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libMSAJApi.alljoyn_abouticonproxy_create(util.toPointer(bus), util.pstrToFfi(busName), sessionId));
+  return util.pointerFromFfi(libMSAJApi_dll.alljoyn_abouticonproxy_create(util.toPointer(bus), util.pstrToFfi(busName), sessionId));
 }
 
 export function alljoyn_abouticonproxy_destroy(
   proxy: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): void /* void */ {
-  return libMSAJApi.alljoyn_abouticonproxy_destroy(util.toPointer(proxy));
+  return libMSAJApi_dll.alljoyn_abouticonproxy_destroy(util.toPointer(proxy));
 }
 
 export function alljoyn_abouticonproxy_geticon(
   proxy: Deno.PointerValue | Uint8Array | null /* ptr */,
   icon: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): QStatus /* Windows.Win32.Devices.AllJoyn.QStatus */ {
-  return libMSAJApi.alljoyn_abouticonproxy_geticon(util.toPointer(proxy), util.toPointer(icon));
+  return libMSAJApi_dll.alljoyn_abouticonproxy_geticon(util.toPointer(proxy), util.toPointer(icon));
 }
 
 export function alljoyn_abouticonproxy_getversion(
   proxy: Deno.PointerValue | Uint8Array | null /* ptr */,
   version: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): QStatus /* Windows.Win32.Devices.AllJoyn.QStatus */ {
-  return libMSAJApi.alljoyn_abouticonproxy_getversion(util.toPointer(proxy), util.toPointer(version));
+  return libMSAJApi_dll.alljoyn_abouticonproxy_getversion(util.toPointer(proxy), util.toPointer(version));
 }
 
 export function alljoyn_aboutdatalistener_create(
   callbacks: Deno.PointerValue | Uint8Array | null /* ptr */,
   context: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_aboutdatalistener */ {
-  return util.pointerFromFfi(libMSAJApi.alljoyn_aboutdatalistener_create(util.toPointer(callbacks), util.toPointer(context)));
+  return util.pointerFromFfi(libMSAJApi_dll.alljoyn_aboutdatalistener_create(util.toPointer(callbacks), util.toPointer(context)));
 }
 
 export function alljoyn_aboutdatalistener_destroy(
   listener: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_aboutdatalistener */,
 ): void /* void */ {
-  return libMSAJApi.alljoyn_aboutdatalistener_destroy(util.toPointer(listener));
+  return libMSAJApi_dll.alljoyn_aboutdatalistener_destroy(util.toPointer(listener));
 }
 
 export function alljoyn_aboutobj_create(
   bus: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_busattachment */,
   isAnnounced: alljoyn_about_announceflag /* Windows.Win32.Devices.AllJoyn.alljoyn_about_announceflag */,
 ): Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_aboutobj */ {
-  return util.pointerFromFfi(libMSAJApi.alljoyn_aboutobj_create(util.toPointer(bus), isAnnounced));
+  return util.pointerFromFfi(libMSAJApi_dll.alljoyn_aboutobj_create(util.toPointer(bus), isAnnounced));
 }
 
 export function alljoyn_aboutobj_destroy(
   obj: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_aboutobj */,
 ): void /* void */ {
-  return libMSAJApi.alljoyn_aboutobj_destroy(util.toPointer(obj));
+  return libMSAJApi_dll.alljoyn_aboutobj_destroy(util.toPointer(obj));
 }
 
 export function alljoyn_aboutobj_announce(
@@ -6795,7 +6796,7 @@ export function alljoyn_aboutobj_announce(
   sessionPort: number /* u16 */,
   aboutData: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_aboutdata */,
 ): QStatus /* Windows.Win32.Devices.AllJoyn.QStatus */ {
-  return libMSAJApi.alljoyn_aboutobj_announce(util.toPointer(obj), sessionPort, util.toPointer(aboutData));
+  return libMSAJApi_dll.alljoyn_aboutobj_announce(util.toPointer(obj), sessionPort, util.toPointer(aboutData));
 }
 
 export function alljoyn_aboutobj_announce_using_datalistener(
@@ -6803,36 +6804,36 @@ export function alljoyn_aboutobj_announce_using_datalistener(
   sessionPort: number /* u16 */,
   aboutListener: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_aboutdatalistener */,
 ): QStatus /* Windows.Win32.Devices.AllJoyn.QStatus */ {
-  return libMSAJApi.alljoyn_aboutobj_announce_using_datalistener(util.toPointer(obj), sessionPort, util.toPointer(aboutListener));
+  return libMSAJApi_dll.alljoyn_aboutobj_announce_using_datalistener(util.toPointer(obj), sessionPort, util.toPointer(aboutListener));
 }
 
 export function alljoyn_aboutobj_unannounce(
   obj: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_aboutobj */,
 ): QStatus /* Windows.Win32.Devices.AllJoyn.QStatus */ {
-  return libMSAJApi.alljoyn_aboutobj_unannounce(util.toPointer(obj));
+  return libMSAJApi_dll.alljoyn_aboutobj_unannounce(util.toPointer(obj));
 }
 
 export function alljoyn_aboutobjectdescription_create(): Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_aboutobjectdescription */ {
-  return util.pointerFromFfi(libMSAJApi.alljoyn_aboutobjectdescription_create());
+  return util.pointerFromFfi(libMSAJApi_dll.alljoyn_aboutobjectdescription_create());
 }
 
 export function alljoyn_aboutobjectdescription_create_full(
   arg: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_msgarg */,
 ): Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_aboutobjectdescription */ {
-  return util.pointerFromFfi(libMSAJApi.alljoyn_aboutobjectdescription_create_full(util.toPointer(arg)));
+  return util.pointerFromFfi(libMSAJApi_dll.alljoyn_aboutobjectdescription_create_full(util.toPointer(arg)));
 }
 
 export function alljoyn_aboutobjectdescription_createfrommsgarg(
   description: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_aboutobjectdescription */,
   arg: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_msgarg */,
 ): QStatus /* Windows.Win32.Devices.AllJoyn.QStatus */ {
-  return libMSAJApi.alljoyn_aboutobjectdescription_createfrommsgarg(util.toPointer(description), util.toPointer(arg));
+  return libMSAJApi_dll.alljoyn_aboutobjectdescription_createfrommsgarg(util.toPointer(description), util.toPointer(arg));
 }
 
 export function alljoyn_aboutobjectdescription_destroy(
   description: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_aboutobjectdescription */,
 ): void /* void */ {
-  return libMSAJApi.alljoyn_aboutobjectdescription_destroy(util.toPointer(description));
+  return libMSAJApi_dll.alljoyn_aboutobjectdescription_destroy(util.toPointer(description));
 }
 
 export function alljoyn_aboutobjectdescription_getpaths(
@@ -6840,7 +6841,7 @@ export function alljoyn_aboutobjectdescription_getpaths(
   paths: Deno.PointerValue | Uint8Array | null /* ptr */,
   numPaths: Deno.PointerValue /* usize */,
 ): Deno.PointerValue /* usize */ {
-  return libMSAJApi.alljoyn_aboutobjectdescription_getpaths(util.toPointer(description), util.toPointer(paths), numPaths);
+  return libMSAJApi_dll.alljoyn_aboutobjectdescription_getpaths(util.toPointer(description), util.toPointer(paths), numPaths);
 }
 
 export function alljoyn_aboutobjectdescription_getinterfaces(
@@ -6849,7 +6850,7 @@ export function alljoyn_aboutobjectdescription_getinterfaces(
   interfaces: Deno.PointerValue | Uint8Array | null /* ptr */,
   numInterfaces: Deno.PointerValue /* usize */,
 ): Deno.PointerValue /* usize */ {
-  return libMSAJApi.alljoyn_aboutobjectdescription_getinterfaces(util.toPointer(description), util.pstrToFfi(path), util.toPointer(interfaces), numInterfaces);
+  return libMSAJApi_dll.alljoyn_aboutobjectdescription_getinterfaces(util.toPointer(description), util.pstrToFfi(path), util.toPointer(interfaces), numInterfaces);
 }
 
 export function alljoyn_aboutobjectdescription_getinterfacepaths(
@@ -6858,27 +6859,27 @@ export function alljoyn_aboutobjectdescription_getinterfacepaths(
   paths: Deno.PointerValue | Uint8Array | null /* ptr */,
   numPaths: Deno.PointerValue /* usize */,
 ): Deno.PointerValue /* usize */ {
-  return libMSAJApi.alljoyn_aboutobjectdescription_getinterfacepaths(util.toPointer(description), util.pstrToFfi(interfaceName), util.toPointer(paths), numPaths);
+  return libMSAJApi_dll.alljoyn_aboutobjectdescription_getinterfacepaths(util.toPointer(description), util.pstrToFfi(interfaceName), util.toPointer(paths), numPaths);
 }
 
 export function alljoyn_aboutobjectdescription_clear(
   description: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_aboutobjectdescription */,
 ): void /* void */ {
-  return libMSAJApi.alljoyn_aboutobjectdescription_clear(util.toPointer(description));
+  return libMSAJApi_dll.alljoyn_aboutobjectdescription_clear(util.toPointer(description));
 }
 
 export function alljoyn_aboutobjectdescription_haspath(
   description: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_aboutobjectdescription */,
   path: string | null /* Windows.Win32.Foundation.PSTR */,
 ): number /* u8 */ {
-  return libMSAJApi.alljoyn_aboutobjectdescription_haspath(util.toPointer(description), util.pstrToFfi(path));
+  return libMSAJApi_dll.alljoyn_aboutobjectdescription_haspath(util.toPointer(description), util.pstrToFfi(path));
 }
 
 export function alljoyn_aboutobjectdescription_hasinterface(
   description: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_aboutobjectdescription */,
   interfaceName: string | null /* Windows.Win32.Foundation.PSTR */,
 ): number /* u8 */ {
-  return libMSAJApi.alljoyn_aboutobjectdescription_hasinterface(util.toPointer(description), util.pstrToFfi(interfaceName));
+  return libMSAJApi_dll.alljoyn_aboutobjectdescription_hasinterface(util.toPointer(description), util.pstrToFfi(interfaceName));
 }
 
 export function alljoyn_aboutobjectdescription_hasinterfaceatpath(
@@ -6886,14 +6887,14 @@ export function alljoyn_aboutobjectdescription_hasinterfaceatpath(
   path: string | null /* Windows.Win32.Foundation.PSTR */,
   interfaceName: string | null /* Windows.Win32.Foundation.PSTR */,
 ): number /* u8 */ {
-  return libMSAJApi.alljoyn_aboutobjectdescription_hasinterfaceatpath(util.toPointer(description), util.pstrToFfi(path), util.pstrToFfi(interfaceName));
+  return libMSAJApi_dll.alljoyn_aboutobjectdescription_hasinterfaceatpath(util.toPointer(description), util.pstrToFfi(path), util.pstrToFfi(interfaceName));
 }
 
 export function alljoyn_aboutobjectdescription_getmsgarg(
   description: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_aboutobjectdescription */,
   msgArg: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_msgarg */,
 ): QStatus /* Windows.Win32.Devices.AllJoyn.QStatus */ {
-  return libMSAJApi.alljoyn_aboutobjectdescription_getmsgarg(util.toPointer(description), util.toPointer(msgArg));
+  return libMSAJApi_dll.alljoyn_aboutobjectdescription_getmsgarg(util.toPointer(description), util.toPointer(msgArg));
 }
 
 export function alljoyn_aboutproxy_create(
@@ -6901,20 +6902,20 @@ export function alljoyn_aboutproxy_create(
   busName: string | null /* Windows.Win32.Foundation.PSTR */,
   sessionId: number /* u32 */,
 ): Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_aboutproxy */ {
-  return util.pointerFromFfi(libMSAJApi.alljoyn_aboutproxy_create(util.toPointer(bus), util.pstrToFfi(busName), sessionId));
+  return util.pointerFromFfi(libMSAJApi_dll.alljoyn_aboutproxy_create(util.toPointer(bus), util.pstrToFfi(busName), sessionId));
 }
 
 export function alljoyn_aboutproxy_destroy(
   proxy: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_aboutproxy */,
 ): void /* void */ {
-  return libMSAJApi.alljoyn_aboutproxy_destroy(util.toPointer(proxy));
+  return libMSAJApi_dll.alljoyn_aboutproxy_destroy(util.toPointer(proxy));
 }
 
 export function alljoyn_aboutproxy_getobjectdescription(
   proxy: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_aboutproxy */,
   objectDesc: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_msgarg */,
 ): QStatus /* Windows.Win32.Devices.AllJoyn.QStatus */ {
-  return libMSAJApi.alljoyn_aboutproxy_getobjectdescription(util.toPointer(proxy), util.toPointer(objectDesc));
+  return libMSAJApi_dll.alljoyn_aboutproxy_getobjectdescription(util.toPointer(proxy), util.toPointer(objectDesc));
 }
 
 export function alljoyn_aboutproxy_getaboutdata(
@@ -6922,51 +6923,51 @@ export function alljoyn_aboutproxy_getaboutdata(
   language: string | null /* Windows.Win32.Foundation.PSTR */,
   data: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_msgarg */,
 ): QStatus /* Windows.Win32.Devices.AllJoyn.QStatus */ {
-  return libMSAJApi.alljoyn_aboutproxy_getaboutdata(util.toPointer(proxy), util.pstrToFfi(language), util.toPointer(data));
+  return libMSAJApi_dll.alljoyn_aboutproxy_getaboutdata(util.toPointer(proxy), util.pstrToFfi(language), util.toPointer(data));
 }
 
 export function alljoyn_aboutproxy_getversion(
   proxy: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_aboutproxy */,
   version: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): QStatus /* Windows.Win32.Devices.AllJoyn.QStatus */ {
-  return libMSAJApi.alljoyn_aboutproxy_getversion(util.toPointer(proxy), util.toPointer(version));
+  return libMSAJApi_dll.alljoyn_aboutproxy_getversion(util.toPointer(proxy), util.toPointer(version));
 }
 
 export function alljoyn_pinglistener_create(
   callback: Deno.PointerValue | Uint8Array | null /* ptr */,
   context: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_pinglistener */ {
-  return util.pointerFromFfi(libMSAJApi.alljoyn_pinglistener_create(util.toPointer(callback), util.toPointer(context)));
+  return util.pointerFromFfi(libMSAJApi_dll.alljoyn_pinglistener_create(util.toPointer(callback), util.toPointer(context)));
 }
 
 export function alljoyn_pinglistener_destroy(
   listener: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_pinglistener */,
 ): void /* void */ {
-  return libMSAJApi.alljoyn_pinglistener_destroy(util.toPointer(listener));
+  return libMSAJApi_dll.alljoyn_pinglistener_destroy(util.toPointer(listener));
 }
 
 export function alljoyn_autopinger_create(
   bus: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_busattachment */,
 ): Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_autopinger */ {
-  return util.pointerFromFfi(libMSAJApi.alljoyn_autopinger_create(util.toPointer(bus)));
+  return util.pointerFromFfi(libMSAJApi_dll.alljoyn_autopinger_create(util.toPointer(bus)));
 }
 
 export function alljoyn_autopinger_destroy(
   autopinger: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_autopinger */,
 ): void /* void */ {
-  return libMSAJApi.alljoyn_autopinger_destroy(util.toPointer(autopinger));
+  return libMSAJApi_dll.alljoyn_autopinger_destroy(util.toPointer(autopinger));
 }
 
 export function alljoyn_autopinger_pause(
   autopinger: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_autopinger */,
 ): void /* void */ {
-  return libMSAJApi.alljoyn_autopinger_pause(util.toPointer(autopinger));
+  return libMSAJApi_dll.alljoyn_autopinger_pause(util.toPointer(autopinger));
 }
 
 export function alljoyn_autopinger_resume(
   autopinger: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_autopinger */,
 ): void /* void */ {
-  return libMSAJApi.alljoyn_autopinger_resume(util.toPointer(autopinger));
+  return libMSAJApi_dll.alljoyn_autopinger_resume(util.toPointer(autopinger));
 }
 
 export function alljoyn_autopinger_addpinggroup(
@@ -6975,14 +6976,14 @@ export function alljoyn_autopinger_addpinggroup(
   listener: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_pinglistener */,
   pinginterval: number /* u32 */,
 ): void /* void */ {
-  return libMSAJApi.alljoyn_autopinger_addpinggroup(util.toPointer(autopinger), util.pstrToFfi(group), util.toPointer(listener), pinginterval);
+  return libMSAJApi_dll.alljoyn_autopinger_addpinggroup(util.toPointer(autopinger), util.pstrToFfi(group), util.toPointer(listener), pinginterval);
 }
 
 export function alljoyn_autopinger_removepinggroup(
   autopinger: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_autopinger */,
   group: string | null /* Windows.Win32.Foundation.PSTR */,
 ): void /* void */ {
-  return libMSAJApi.alljoyn_autopinger_removepinggroup(util.toPointer(autopinger), util.pstrToFfi(group));
+  return libMSAJApi_dll.alljoyn_autopinger_removepinggroup(util.toPointer(autopinger), util.pstrToFfi(group));
 }
 
 export function alljoyn_autopinger_setpinginterval(
@@ -6990,7 +6991,7 @@ export function alljoyn_autopinger_setpinginterval(
   group: string | null /* Windows.Win32.Foundation.PSTR */,
   pinginterval: number /* u32 */,
 ): QStatus /* Windows.Win32.Devices.AllJoyn.QStatus */ {
-  return libMSAJApi.alljoyn_autopinger_setpinginterval(util.toPointer(autopinger), util.pstrToFfi(group), pinginterval);
+  return libMSAJApi_dll.alljoyn_autopinger_setpinginterval(util.toPointer(autopinger), util.pstrToFfi(group), pinginterval);
 }
 
 export function alljoyn_autopinger_adddestination(
@@ -6998,7 +6999,7 @@ export function alljoyn_autopinger_adddestination(
   group: string | null /* Windows.Win32.Foundation.PSTR */,
   destination: string | null /* Windows.Win32.Foundation.PSTR */,
 ): QStatus /* Windows.Win32.Devices.AllJoyn.QStatus */ {
-  return libMSAJApi.alljoyn_autopinger_adddestination(util.toPointer(autopinger), util.pstrToFfi(group), util.pstrToFfi(destination));
+  return libMSAJApi_dll.alljoyn_autopinger_adddestination(util.toPointer(autopinger), util.pstrToFfi(group), util.pstrToFfi(destination));
 }
 
 export function alljoyn_autopinger_removedestination(
@@ -7007,78 +7008,78 @@ export function alljoyn_autopinger_removedestination(
   destination: string | null /* Windows.Win32.Foundation.PSTR */,
   removeall: number /* i32 */,
 ): QStatus /* Windows.Win32.Devices.AllJoyn.QStatus */ {
-  return libMSAJApi.alljoyn_autopinger_removedestination(util.toPointer(autopinger), util.pstrToFfi(group), util.pstrToFfi(destination), removeall);
+  return libMSAJApi_dll.alljoyn_autopinger_removedestination(util.toPointer(autopinger), util.pstrToFfi(group), util.pstrToFfi(destination), removeall);
 }
 
 export function alljoyn_getversion(): string | null /* Windows.Win32.Foundation.PSTR */ {
-  return util.pstrFromFfi(libMSAJApi.alljoyn_getversion());
+  return util.pstrFromFfi(libMSAJApi_dll.alljoyn_getversion());
 }
 
 export function alljoyn_getbuildinfo(): string | null /* Windows.Win32.Foundation.PSTR */ {
-  return util.pstrFromFfi(libMSAJApi.alljoyn_getbuildinfo());
+  return util.pstrFromFfi(libMSAJApi_dll.alljoyn_getbuildinfo());
 }
 
 export function alljoyn_getnumericversion(): number /* u32 */ {
-  return libMSAJApi.alljoyn_getnumericversion();
+  return libMSAJApi_dll.alljoyn_getnumericversion();
 }
 
 export function alljoyn_init(): QStatus /* Windows.Win32.Devices.AllJoyn.QStatus */ {
-  return libMSAJApi.alljoyn_init();
+  return libMSAJApi_dll.alljoyn_init();
 }
 
 export function alljoyn_shutdown(): QStatus /* Windows.Win32.Devices.AllJoyn.QStatus */ {
-  return libMSAJApi.alljoyn_shutdown();
+  return libMSAJApi_dll.alljoyn_shutdown();
 }
 
 export function alljoyn_routerinit(): QStatus /* Windows.Win32.Devices.AllJoyn.QStatus */ {
-  return libMSAJApi.alljoyn_routerinit();
+  return libMSAJApi_dll.alljoyn_routerinit();
 }
 
 export function alljoyn_routerinitwithconfig(
   configXml: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): QStatus /* Windows.Win32.Devices.AllJoyn.QStatus */ {
-  return libMSAJApi.alljoyn_routerinitwithconfig(util.toPointer(configXml));
+  return libMSAJApi_dll.alljoyn_routerinitwithconfig(util.toPointer(configXml));
 }
 
 export function alljoyn_routershutdown(): QStatus /* Windows.Win32.Devices.AllJoyn.QStatus */ {
-  return libMSAJApi.alljoyn_routershutdown();
+  return libMSAJApi_dll.alljoyn_routershutdown();
 }
 
 export function alljoyn_proxybusobject_ref_create(
   proxy: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_proxybusobject */,
 ): Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_proxybusobject_ref */ {
-  return util.pointerFromFfi(libMSAJApi.alljoyn_proxybusobject_ref_create(util.toPointer(proxy)));
+  return util.pointerFromFfi(libMSAJApi_dll.alljoyn_proxybusobject_ref_create(util.toPointer(proxy)));
 }
 
 export function alljoyn_proxybusobject_ref_get(
   ref: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_proxybusobject_ref */,
 ): Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_proxybusobject */ {
-  return util.pointerFromFfi(libMSAJApi.alljoyn_proxybusobject_ref_get(util.toPointer(ref)));
+  return util.pointerFromFfi(libMSAJApi_dll.alljoyn_proxybusobject_ref_get(util.toPointer(ref)));
 }
 
 export function alljoyn_proxybusobject_ref_incref(
   ref: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_proxybusobject_ref */,
 ): void /* void */ {
-  return libMSAJApi.alljoyn_proxybusobject_ref_incref(util.toPointer(ref));
+  return libMSAJApi_dll.alljoyn_proxybusobject_ref_incref(util.toPointer(ref));
 }
 
 export function alljoyn_proxybusobject_ref_decref(
   ref: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_proxybusobject_ref */,
 ): void /* void */ {
-  return libMSAJApi.alljoyn_proxybusobject_ref_decref(util.toPointer(ref));
+  return libMSAJApi_dll.alljoyn_proxybusobject_ref_decref(util.toPointer(ref));
 }
 
 export function alljoyn_observerlistener_create(
   callback: Deno.PointerValue | Uint8Array | null /* ptr */,
   context: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_observerlistener */ {
-  return util.pointerFromFfi(libMSAJApi.alljoyn_observerlistener_create(util.toPointer(callback), util.toPointer(context)));
+  return util.pointerFromFfi(libMSAJApi_dll.alljoyn_observerlistener_create(util.toPointer(callback), util.toPointer(context)));
 }
 
 export function alljoyn_observerlistener_destroy(
   listener: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_observerlistener */,
 ): void /* void */ {
-  return libMSAJApi.alljoyn_observerlistener_destroy(util.toPointer(listener));
+  return libMSAJApi_dll.alljoyn_observerlistener_destroy(util.toPointer(listener));
 }
 
 export function alljoyn_observer_create(
@@ -7086,13 +7087,13 @@ export function alljoyn_observer_create(
   mandatoryInterfaces: Deno.PointerValue | Uint8Array | null /* ptr */,
   numMandatoryInterfaces: Deno.PointerValue /* usize */,
 ): Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_observer */ {
-  return util.pointerFromFfi(libMSAJApi.alljoyn_observer_create(util.toPointer(bus), util.toPointer(mandatoryInterfaces), numMandatoryInterfaces));
+  return util.pointerFromFfi(libMSAJApi_dll.alljoyn_observer_create(util.toPointer(bus), util.toPointer(mandatoryInterfaces), numMandatoryInterfaces));
 }
 
 export function alljoyn_observer_destroy(
   observer: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_observer */,
 ): void /* void */ {
-  return libMSAJApi.alljoyn_observer_destroy(util.toPointer(observer));
+  return libMSAJApi_dll.alljoyn_observer_destroy(util.toPointer(observer));
 }
 
 export function alljoyn_observer_registerlistener(
@@ -7100,20 +7101,20 @@ export function alljoyn_observer_registerlistener(
   listener: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_observerlistener */,
   triggerOnExisting: number /* i32 */,
 ): void /* void */ {
-  return libMSAJApi.alljoyn_observer_registerlistener(util.toPointer(observer), util.toPointer(listener), triggerOnExisting);
+  return libMSAJApi_dll.alljoyn_observer_registerlistener(util.toPointer(observer), util.toPointer(listener), triggerOnExisting);
 }
 
 export function alljoyn_observer_unregisterlistener(
   observer: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_observer */,
   listener: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_observerlistener */,
 ): void /* void */ {
-  return libMSAJApi.alljoyn_observer_unregisterlistener(util.toPointer(observer), util.toPointer(listener));
+  return libMSAJApi_dll.alljoyn_observer_unregisterlistener(util.toPointer(observer), util.toPointer(listener));
 }
 
 export function alljoyn_observer_unregisteralllisteners(
   observer: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_observer */,
 ): void /* void */ {
-  return libMSAJApi.alljoyn_observer_unregisteralllisteners(util.toPointer(observer));
+  return libMSAJApi_dll.alljoyn_observer_unregisteralllisteners(util.toPointer(observer));
 }
 
 export function alljoyn_observer_get(
@@ -7121,31 +7122,31 @@ export function alljoyn_observer_get(
   uniqueBusName: string | null /* Windows.Win32.Foundation.PSTR */,
   objectPath: string | null /* Windows.Win32.Foundation.PSTR */,
 ): Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_proxybusobject_ref */ {
-  return util.pointerFromFfi(libMSAJApi.alljoyn_observer_get(util.toPointer(observer), util.pstrToFfi(uniqueBusName), util.pstrToFfi(objectPath)));
+  return util.pointerFromFfi(libMSAJApi_dll.alljoyn_observer_get(util.toPointer(observer), util.pstrToFfi(uniqueBusName), util.pstrToFfi(objectPath)));
 }
 
 export function alljoyn_observer_getfirst(
   observer: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_observer */,
 ): Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_proxybusobject_ref */ {
-  return util.pointerFromFfi(libMSAJApi.alljoyn_observer_getfirst(util.toPointer(observer)));
+  return util.pointerFromFfi(libMSAJApi_dll.alljoyn_observer_getfirst(util.toPointer(observer)));
 }
 
 export function alljoyn_observer_getnext(
   observer: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_observer */,
   proxyref: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_proxybusobject_ref */,
 ): Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_proxybusobject_ref */ {
-  return util.pointerFromFfi(libMSAJApi.alljoyn_observer_getnext(util.toPointer(observer), util.toPointer(proxyref)));
+  return util.pointerFromFfi(libMSAJApi_dll.alljoyn_observer_getnext(util.toPointer(observer), util.toPointer(proxyref)));
 }
 
 export function alljoyn_passwordmanager_setcredentials(
   authMechanism: string | null /* Windows.Win32.Foundation.PSTR */,
   password: string | null /* Windows.Win32.Foundation.PSTR */,
 ): QStatus /* Windows.Win32.Devices.AllJoyn.QStatus */ {
-  return libMSAJApi.alljoyn_passwordmanager_setcredentials(util.pstrToFfi(authMechanism), util.pstrToFfi(password));
+  return libMSAJApi_dll.alljoyn_passwordmanager_setcredentials(util.pstrToFfi(authMechanism), util.pstrToFfi(password));
 }
 
 export function alljoyn_securityapplicationproxy_getpermissionmanagementsessionport(): number /* u16 */ {
-  return libMSAJApi.alljoyn_securityapplicationproxy_getpermissionmanagementsessionport();
+  return libMSAJApi_dll.alljoyn_securityapplicationproxy_getpermissionmanagementsessionport();
 }
 
 export function alljoyn_securityapplicationproxy_create(
@@ -7153,13 +7154,13 @@ export function alljoyn_securityapplicationproxy_create(
   appBusName: Deno.PointerValue | Uint8Array | null /* ptr */,
   sessionId: number /* u32 */,
 ): Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_securityapplicationproxy */ {
-  return util.pointerFromFfi(libMSAJApi.alljoyn_securityapplicationproxy_create(util.toPointer(bus), util.toPointer(appBusName), sessionId));
+  return util.pointerFromFfi(libMSAJApi_dll.alljoyn_securityapplicationproxy_create(util.toPointer(bus), util.toPointer(appBusName), sessionId));
 }
 
 export function alljoyn_securityapplicationproxy_destroy(
   proxy: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_securityapplicationproxy */,
 ): void /* void */ {
-  return libMSAJApi.alljoyn_securityapplicationproxy_destroy(util.toPointer(proxy));
+  return libMSAJApi_dll.alljoyn_securityapplicationproxy_destroy(util.toPointer(proxy));
 }
 
 export function alljoyn_securityapplicationproxy_claim(
@@ -7172,68 +7173,68 @@ export function alljoyn_securityapplicationproxy_claim(
   manifestsXmls: Deno.PointerValue | Uint8Array | null /* ptr */,
   manifestsCount: Deno.PointerValue /* usize */,
 ): QStatus /* Windows.Win32.Devices.AllJoyn.QStatus */ {
-  return libMSAJApi.alljoyn_securityapplicationproxy_claim(util.toPointer(proxy), util.toPointer(caKey), util.toPointer(identityCertificateChain), util.toPointer(groupId), groupSize, util.toPointer(groupAuthority), util.toPointer(manifestsXmls), manifestsCount);
+  return libMSAJApi_dll.alljoyn_securityapplicationproxy_claim(util.toPointer(proxy), util.toPointer(caKey), util.toPointer(identityCertificateChain), util.toPointer(groupId), groupSize, util.toPointer(groupAuthority), util.toPointer(manifestsXmls), manifestsCount);
 }
 
 export function alljoyn_securityapplicationproxy_getmanifesttemplate(
   proxy: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_securityapplicationproxy */,
   manifestTemplateXml: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): QStatus /* Windows.Win32.Devices.AllJoyn.QStatus */ {
-  return libMSAJApi.alljoyn_securityapplicationproxy_getmanifesttemplate(util.toPointer(proxy), util.toPointer(manifestTemplateXml));
+  return libMSAJApi_dll.alljoyn_securityapplicationproxy_getmanifesttemplate(util.toPointer(proxy), util.toPointer(manifestTemplateXml));
 }
 
 export function alljoyn_securityapplicationproxy_manifesttemplate_destroy(
   manifestTemplateXml: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): void /* void */ {
-  return libMSAJApi.alljoyn_securityapplicationproxy_manifesttemplate_destroy(util.toPointer(manifestTemplateXml));
+  return libMSAJApi_dll.alljoyn_securityapplicationproxy_manifesttemplate_destroy(util.toPointer(manifestTemplateXml));
 }
 
 export function alljoyn_securityapplicationproxy_getapplicationstate(
   proxy: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_securityapplicationproxy */,
   applicationState: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): QStatus /* Windows.Win32.Devices.AllJoyn.QStatus */ {
-  return libMSAJApi.alljoyn_securityapplicationproxy_getapplicationstate(util.toPointer(proxy), util.toPointer(applicationState));
+  return libMSAJApi_dll.alljoyn_securityapplicationproxy_getapplicationstate(util.toPointer(proxy), util.toPointer(applicationState));
 }
 
 export function alljoyn_securityapplicationproxy_getclaimcapabilities(
   proxy: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_securityapplicationproxy */,
   capabilities: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): QStatus /* Windows.Win32.Devices.AllJoyn.QStatus */ {
-  return libMSAJApi.alljoyn_securityapplicationproxy_getclaimcapabilities(util.toPointer(proxy), util.toPointer(capabilities));
+  return libMSAJApi_dll.alljoyn_securityapplicationproxy_getclaimcapabilities(util.toPointer(proxy), util.toPointer(capabilities));
 }
 
 export function alljoyn_securityapplicationproxy_getclaimcapabilitiesadditionalinfo(
   proxy: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_securityapplicationproxy */,
   additionalInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): QStatus /* Windows.Win32.Devices.AllJoyn.QStatus */ {
-  return libMSAJApi.alljoyn_securityapplicationproxy_getclaimcapabilitiesadditionalinfo(util.toPointer(proxy), util.toPointer(additionalInfo));
+  return libMSAJApi_dll.alljoyn_securityapplicationproxy_getclaimcapabilitiesadditionalinfo(util.toPointer(proxy), util.toPointer(additionalInfo));
 }
 
 export function alljoyn_securityapplicationproxy_getpolicy(
   proxy: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_securityapplicationproxy */,
   policyXml: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): QStatus /* Windows.Win32.Devices.AllJoyn.QStatus */ {
-  return libMSAJApi.alljoyn_securityapplicationproxy_getpolicy(util.toPointer(proxy), util.toPointer(policyXml));
+  return libMSAJApi_dll.alljoyn_securityapplicationproxy_getpolicy(util.toPointer(proxy), util.toPointer(policyXml));
 }
 
 export function alljoyn_securityapplicationproxy_getdefaultpolicy(
   proxy: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_securityapplicationproxy */,
   policyXml: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): QStatus /* Windows.Win32.Devices.AllJoyn.QStatus */ {
-  return libMSAJApi.alljoyn_securityapplicationproxy_getdefaultpolicy(util.toPointer(proxy), util.toPointer(policyXml));
+  return libMSAJApi_dll.alljoyn_securityapplicationproxy_getdefaultpolicy(util.toPointer(proxy), util.toPointer(policyXml));
 }
 
 export function alljoyn_securityapplicationproxy_policy_destroy(
   policyXml: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): void /* void */ {
-  return libMSAJApi.alljoyn_securityapplicationproxy_policy_destroy(util.toPointer(policyXml));
+  return libMSAJApi_dll.alljoyn_securityapplicationproxy_policy_destroy(util.toPointer(policyXml));
 }
 
 export function alljoyn_securityapplicationproxy_updatepolicy(
   proxy: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_securityapplicationproxy */,
   policyXml: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): QStatus /* Windows.Win32.Devices.AllJoyn.QStatus */ {
-  return libMSAJApi.alljoyn_securityapplicationproxy_updatepolicy(util.toPointer(proxy), util.toPointer(policyXml));
+  return libMSAJApi_dll.alljoyn_securityapplicationproxy_updatepolicy(util.toPointer(proxy), util.toPointer(policyXml));
 }
 
 export function alljoyn_securityapplicationproxy_updateidentity(
@@ -7242,51 +7243,51 @@ export function alljoyn_securityapplicationproxy_updateidentity(
   manifestsXmls: Deno.PointerValue | Uint8Array | null /* ptr */,
   manifestsCount: Deno.PointerValue /* usize */,
 ): QStatus /* Windows.Win32.Devices.AllJoyn.QStatus */ {
-  return libMSAJApi.alljoyn_securityapplicationproxy_updateidentity(util.toPointer(proxy), util.toPointer(identityCertificateChain), util.toPointer(manifestsXmls), manifestsCount);
+  return libMSAJApi_dll.alljoyn_securityapplicationproxy_updateidentity(util.toPointer(proxy), util.toPointer(identityCertificateChain), util.toPointer(manifestsXmls), manifestsCount);
 }
 
 export function alljoyn_securityapplicationproxy_installmembership(
   proxy: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_securityapplicationproxy */,
   membershipCertificateChain: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): QStatus /* Windows.Win32.Devices.AllJoyn.QStatus */ {
-  return libMSAJApi.alljoyn_securityapplicationproxy_installmembership(util.toPointer(proxy), util.toPointer(membershipCertificateChain));
+  return libMSAJApi_dll.alljoyn_securityapplicationproxy_installmembership(util.toPointer(proxy), util.toPointer(membershipCertificateChain));
 }
 
 export function alljoyn_securityapplicationproxy_reset(
   proxy: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_securityapplicationproxy */,
 ): QStatus /* Windows.Win32.Devices.AllJoyn.QStatus */ {
-  return libMSAJApi.alljoyn_securityapplicationproxy_reset(util.toPointer(proxy));
+  return libMSAJApi_dll.alljoyn_securityapplicationproxy_reset(util.toPointer(proxy));
 }
 
 export function alljoyn_securityapplicationproxy_resetpolicy(
   proxy: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_securityapplicationproxy */,
 ): QStatus /* Windows.Win32.Devices.AllJoyn.QStatus */ {
-  return libMSAJApi.alljoyn_securityapplicationproxy_resetpolicy(util.toPointer(proxy));
+  return libMSAJApi_dll.alljoyn_securityapplicationproxy_resetpolicy(util.toPointer(proxy));
 }
 
 export function alljoyn_securityapplicationproxy_startmanagement(
   proxy: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_securityapplicationproxy */,
 ): QStatus /* Windows.Win32.Devices.AllJoyn.QStatus */ {
-  return libMSAJApi.alljoyn_securityapplicationproxy_startmanagement(util.toPointer(proxy));
+  return libMSAJApi_dll.alljoyn_securityapplicationproxy_startmanagement(util.toPointer(proxy));
 }
 
 export function alljoyn_securityapplicationproxy_endmanagement(
   proxy: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_securityapplicationproxy */,
 ): QStatus /* Windows.Win32.Devices.AllJoyn.QStatus */ {
-  return libMSAJApi.alljoyn_securityapplicationproxy_endmanagement(util.toPointer(proxy));
+  return libMSAJApi_dll.alljoyn_securityapplicationproxy_endmanagement(util.toPointer(proxy));
 }
 
 export function alljoyn_securityapplicationproxy_geteccpublickey(
   proxy: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_securityapplicationproxy */,
   eccPublicKey: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): QStatus /* Windows.Win32.Devices.AllJoyn.QStatus */ {
-  return libMSAJApi.alljoyn_securityapplicationproxy_geteccpublickey(util.toPointer(proxy), util.toPointer(eccPublicKey));
+  return libMSAJApi_dll.alljoyn_securityapplicationproxy_geteccpublickey(util.toPointer(proxy), util.toPointer(eccPublicKey));
 }
 
 export function alljoyn_securityapplicationproxy_eccpublickey_destroy(
   eccPublicKey: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): void /* void */ {
-  return libMSAJApi.alljoyn_securityapplicationproxy_eccpublickey_destroy(util.toPointer(eccPublicKey));
+  return libMSAJApi_dll.alljoyn_securityapplicationproxy_eccpublickey_destroy(util.toPointer(eccPublicKey));
 }
 
 export function alljoyn_securityapplicationproxy_signmanifest(
@@ -7295,13 +7296,13 @@ export function alljoyn_securityapplicationproxy_signmanifest(
   signingPrivateKeyPem: Deno.PointerValue | Uint8Array | null /* ptr */,
   signedManifestXml: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): QStatus /* Windows.Win32.Devices.AllJoyn.QStatus */ {
-  return libMSAJApi.alljoyn_securityapplicationproxy_signmanifest(util.toPointer(unsignedManifestXml), util.toPointer(identityCertificatePem), util.toPointer(signingPrivateKeyPem), util.toPointer(signedManifestXml));
+  return libMSAJApi_dll.alljoyn_securityapplicationproxy_signmanifest(util.toPointer(unsignedManifestXml), util.toPointer(identityCertificatePem), util.toPointer(signingPrivateKeyPem), util.toPointer(signedManifestXml));
 }
 
 export function alljoyn_securityapplicationproxy_manifest_destroy(
   signedManifestXml: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): void /* void */ {
-  return libMSAJApi.alljoyn_securityapplicationproxy_manifest_destroy(util.toPointer(signedManifestXml));
+  return libMSAJApi_dll.alljoyn_securityapplicationproxy_manifest_destroy(util.toPointer(signedManifestXml));
 }
 
 export function alljoyn_securityapplicationproxy_computemanifestdigest(
@@ -7310,13 +7311,13 @@ export function alljoyn_securityapplicationproxy_computemanifestdigest(
   digest: Deno.PointerValue | Uint8Array | null /* ptr */,
   digestSize: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): QStatus /* Windows.Win32.Devices.AllJoyn.QStatus */ {
-  return libMSAJApi.alljoyn_securityapplicationproxy_computemanifestdigest(util.toPointer(unsignedManifestXml), util.toPointer(identityCertificatePem), util.toPointer(digest), util.toPointer(digestSize));
+  return libMSAJApi_dll.alljoyn_securityapplicationproxy_computemanifestdigest(util.toPointer(unsignedManifestXml), util.toPointer(identityCertificatePem), util.toPointer(digest), util.toPointer(digestSize));
 }
 
 export function alljoyn_securityapplicationproxy_digest_destroy(
   digest: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): void /* void */ {
-  return libMSAJApi.alljoyn_securityapplicationproxy_digest_destroy(util.toPointer(digest));
+  return libMSAJApi_dll.alljoyn_securityapplicationproxy_digest_destroy(util.toPointer(digest));
 }
 
 export function alljoyn_securityapplicationproxy_setmanifestsignature(
@@ -7326,6 +7327,6 @@ export function alljoyn_securityapplicationproxy_setmanifestsignature(
   signatureSize: Deno.PointerValue /* usize */,
   signedManifestXml: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): QStatus /* Windows.Win32.Devices.AllJoyn.QStatus */ {
-  return libMSAJApi.alljoyn_securityapplicationproxy_setmanifestsignature(util.toPointer(unsignedManifestXml), util.toPointer(identityCertificatePem), util.toPointer(signature), signatureSize, util.toPointer(signedManifestXml));
+  return libMSAJApi_dll.alljoyn_securityapplicationproxy_setmanifestsignature(util.toPointer(unsignedManifestXml), util.toPointer(identityCertificatePem), util.toPointer(signature), signatureSize, util.toPointer(signedManifestXml));
 }
 

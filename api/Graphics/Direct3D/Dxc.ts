@@ -11,6 +11,27 @@ export const DXC_CP_ACP = 0;
 export const DXC_CP_UTF16 = 1200;
 export const DXC_CP_UTF8 = 65001;
 export const DXC_HASHFLAG_INCLUDES_SOURCE = 1;
+export const DXC_ARG_DEBUG = "-Zi";
+export const DXC_ARG_SKIP_VALIDATION = "-Vd";
+export const DXC_ARG_SKIP_OPTIMIZATIONS = "-Od";
+export const DXC_ARG_PACK_MATRIX_ROW_MAJOR = "-Zpr";
+export const DXC_ARG_PACK_MATRIX_COLUMN_MAJOR = "-Zpc";
+export const DXC_ARG_AVOID_FLOW_CONTROL = "-Gfa";
+export const DXC_ARG_PREFER_FLOW_CONTROL = "-Gfp";
+export const DXC_ARG_ENABLE_STRICTNESS = "-Ges";
+export const DXC_ARG_ENABLE_BACKWARDS_COMPATIBILITY = "-Gec";
+export const DXC_ARG_IEEE_STRICTNESS = "-Gis";
+export const DXC_ARG_OPTIMIZATION_LEVEL0 = "-O0";
+export const DXC_ARG_OPTIMIZATION_LEVEL1 = "-O1";
+export const DXC_ARG_OPTIMIZATION_LEVEL2 = "-O2";
+export const DXC_ARG_OPTIMIZATION_LEVEL3 = "-O3";
+export const DXC_ARG_WARNINGS_ARE_ERRORS = "-WX";
+export const DXC_ARG_RESOURCES_MAY_ALIAS = "-res_may_alias";
+export const DXC_ARG_ALL_RESOURCES_BOUND = "-all_resources_bound";
+export const DXC_ARG_DEBUG_NAME_FOR_SOURCE = "-Zss";
+export const DXC_ARG_DEBUG_NAME_FOR_BINARY = "-Zsb";
+export const DXC_EXTRA_OUTPUT_NAME_STDOUT = "*stdout*";
+export const DXC_EXTRA_OUTPUT_NAME_STDERR = "*stderr*";
 export const DxcValidatorFlags_Default = 0;
 export const DxcValidatorFlags_InPlaceEdit = 1;
 export const DxcValidatorFlags_RootSignatureOnly = 2;
@@ -147,7 +168,7 @@ export type HRESULT = number;
 // Native Libraries
 
 try {
-  var libdxcompiler = Deno.dlopen("dxcompiler", {
+  var libdxcompiler_dll = Deno.dlopen("dxcompiler.dll", {
     DxcCreateInstance: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "pointer",
@@ -166,7 +187,7 @@ export function DxcCreateInstance(
   riid: Deno.PointerValue | Uint8Array | null /* ptr */,
   ppv: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libdxcompiler.DxcCreateInstance(util.toPointer(rclsid), util.toPointer(riid), util.toPointer(ppv)));
+  return util.pointerFromFfi(libdxcompiler_dll.DxcCreateInstance(util.toPointer(rclsid), util.toPointer(riid), util.toPointer(ppv)));
 }
 
 export function DxcCreateInstance2(
@@ -175,6 +196,6 @@ export function DxcCreateInstance2(
   riid: Deno.PointerValue | Uint8Array | null /* ptr */,
   ppv: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libdxcompiler.DxcCreateInstance2(util.toPointer(pMalloc), util.toPointer(rclsid), util.toPointer(riid), util.toPointer(ppv)));
+  return util.pointerFromFfi(libdxcompiler_dll.DxcCreateInstance2(util.toPointer(pMalloc), util.toPointer(rclsid), util.toPointer(riid), util.toPointer(ppv)));
 }
 

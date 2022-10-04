@@ -655,6 +655,58 @@ export function allocOBJECTID(data?: Partial<OBJECTID>): Uint8Array {
 }
 
 /**
+ * Windows.Win32.System.Kernel.FLOATING_SAVE_AREA (size: 48)
+ */
+export interface FLOATING_SAVE_AREA {
+  /** u32 */
+  ControlWord: number;
+  /** u32 */
+  StatusWord: number;
+  /** u32 */
+  TagWord: number;
+  /** u32 */
+  ErrorOffset: number;
+  /** u32 */
+  ErrorSelector: number;
+  /** u32 */
+  DataOffset: number;
+  /** u32 */
+  DataSelector: number;
+  /** array */
+  RegisterArea: Deno.PointerValue | null;
+  /** u32 */
+  Cr0NpxState: number;
+}
+
+export const sizeofFLOATING_SAVE_AREA = 48;
+
+export function allocFLOATING_SAVE_AREA(data?: Partial<FLOATING_SAVE_AREA>): Uint8Array {
+  const buf = new Uint8Array(sizeofFLOATING_SAVE_AREA);
+  const view = new DataView(buf.buffer);
+  // 0x00: u32
+  if (data?.ControlWord !== undefined) view.setUint32(0, Number(data.ControlWord), true);
+  // 0x04: u32
+  if (data?.StatusWord !== undefined) view.setUint32(4, Number(data.StatusWord), true);
+  // 0x08: u32
+  if (data?.TagWord !== undefined) view.setUint32(8, Number(data.TagWord), true);
+  // 0x0c: u32
+  if (data?.ErrorOffset !== undefined) view.setUint32(12, Number(data.ErrorOffset), true);
+  // 0x10: u32
+  if (data?.ErrorSelector !== undefined) view.setUint32(16, Number(data.ErrorSelector), true);
+  // 0x14: u32
+  if (data?.DataOffset !== undefined) view.setUint32(20, Number(data.DataOffset), true);
+  // 0x18: u32
+  if (data?.DataSelector !== undefined) view.setUint32(24, Number(data.DataSelector), true);
+  // 0x1c: pad4
+  // 0x20: pointer
+  if (data?.RegisterArea !== undefined) view.setBigUint64(32, data.RegisterArea === null ? 0n : BigInt(util.toPointer(data.RegisterArea)), true);
+  // 0x28: u32
+  if (data?.Cr0NpxState !== undefined) view.setUint32(40, Number(data.Cr0NpxState), true);
+  // 0x2c: pad4
+  return buf;
+}
+
+/**
  * Windows.Win32.System.Kernel.EXCEPTION_REGISTRATION_RECORD (size: 16)
  */
 export interface EXCEPTION_REGISTRATION_RECORD {
@@ -718,62 +770,10 @@ export function allocNT_TIB(data?: Partial<NT_TIB>): Uint8Array {
   return buf;
 }
 
-/**
- * Windows.Win32.System.Kernel.FLOATING_SAVE_AREA (size: 48)
- */
-export interface FLOATING_SAVE_AREA {
-  /** u32 */
-  ControlWord: number;
-  /** u32 */
-  StatusWord: number;
-  /** u32 */
-  TagWord: number;
-  /** u32 */
-  ErrorOffset: number;
-  /** u32 */
-  ErrorSelector: number;
-  /** u32 */
-  DataOffset: number;
-  /** u32 */
-  DataSelector: number;
-  /** array */
-  RegisterArea: Deno.PointerValue | null;
-  /** u32 */
-  Cr0NpxState: number;
-}
-
-export const sizeofFLOATING_SAVE_AREA = 48;
-
-export function allocFLOATING_SAVE_AREA(data?: Partial<FLOATING_SAVE_AREA>): Uint8Array {
-  const buf = new Uint8Array(sizeofFLOATING_SAVE_AREA);
-  const view = new DataView(buf.buffer);
-  // 0x00: u32
-  if (data?.ControlWord !== undefined) view.setUint32(0, Number(data.ControlWord), true);
-  // 0x04: u32
-  if (data?.StatusWord !== undefined) view.setUint32(4, Number(data.StatusWord), true);
-  // 0x08: u32
-  if (data?.TagWord !== undefined) view.setUint32(8, Number(data.TagWord), true);
-  // 0x0c: u32
-  if (data?.ErrorOffset !== undefined) view.setUint32(12, Number(data.ErrorOffset), true);
-  // 0x10: u32
-  if (data?.ErrorSelector !== undefined) view.setUint32(16, Number(data.ErrorSelector), true);
-  // 0x14: u32
-  if (data?.DataOffset !== undefined) view.setUint32(20, Number(data.DataOffset), true);
-  // 0x18: u32
-  if (data?.DataSelector !== undefined) view.setUint32(24, Number(data.DataSelector), true);
-  // 0x1c: pad4
-  // 0x20: pointer
-  if (data?.RegisterArea !== undefined) view.setBigUint64(32, data.RegisterArea === null ? 0n : BigInt(util.toPointer(data.RegisterArea)), true);
-  // 0x28: u32
-  if (data?.Cr0NpxState !== undefined) view.setUint32(40, Number(data.Cr0NpxState), true);
-  // 0x2c: pad4
-  return buf;
-}
-
 // Native Libraries
 
 try {
-  var libntdll = Deno.dlopen("ntdll", {
+  var libntdll_dll = Deno.dlopen("ntdll.dll", {
     RtlInitializeSListHead: {
       parameters: ["pointer"],
       result: "void",
@@ -810,26 +810,26 @@ try {
 export function RtlInitializeSListHead(
   ListHead: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): void /* void */ {
-  return libntdll.RtlInitializeSListHead(util.toPointer(ListHead));
+  return libntdll_dll.RtlInitializeSListHead(util.toPointer(ListHead));
 }
 
 export function RtlFirstEntrySList(
   ListHead: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libntdll.RtlFirstEntrySList(util.toPointer(ListHead)));
+  return util.pointerFromFfi(libntdll_dll.RtlFirstEntrySList(util.toPointer(ListHead)));
 }
 
 export function RtlInterlockedPopEntrySList(
   ListHead: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libntdll.RtlInterlockedPopEntrySList(util.toPointer(ListHead)));
+  return util.pointerFromFfi(libntdll_dll.RtlInterlockedPopEntrySList(util.toPointer(ListHead)));
 }
 
 export function RtlInterlockedPushEntrySList(
   ListHead: Deno.PointerValue | Uint8Array | null /* ptr */,
   ListEntry: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libntdll.RtlInterlockedPushEntrySList(util.toPointer(ListHead), util.toPointer(ListEntry)));
+  return util.pointerFromFfi(libntdll_dll.RtlInterlockedPushEntrySList(util.toPointer(ListHead), util.toPointer(ListEntry)));
 }
 
 export function RtlInterlockedPushListSListEx(
@@ -838,18 +838,18 @@ export function RtlInterlockedPushListSListEx(
   ListEnd: Deno.PointerValue | Uint8Array | null /* ptr */,
   Count: number /* u32 */,
 ): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libntdll.RtlInterlockedPushListSListEx(util.toPointer(ListHead), util.toPointer(List), util.toPointer(ListEnd), Count));
+  return util.pointerFromFfi(libntdll_dll.RtlInterlockedPushListSListEx(util.toPointer(ListHead), util.toPointer(List), util.toPointer(ListEnd), Count));
 }
 
 export function RtlInterlockedFlushSList(
   ListHead: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libntdll.RtlInterlockedFlushSList(util.toPointer(ListHead)));
+  return util.pointerFromFfi(libntdll_dll.RtlInterlockedFlushSList(util.toPointer(ListHead)));
 }
 
 export function RtlQueryDepthSList(
   ListHead: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u16 */ {
-  return libntdll.RtlQueryDepthSList(util.toPointer(ListHead));
+  return libntdll_dll.RtlQueryDepthSList(util.toPointer(ListHead));
 }
 

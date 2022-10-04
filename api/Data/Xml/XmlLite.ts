@@ -154,7 +154,7 @@ export type PWSTR = Deno.PointerValue | Uint8Array | null;
 // Native Libraries
 
 try {
-  var libXmlLite = Deno.dlopen("XmlLite", {
+  var libXmlLite_dll = Deno.dlopen("XmlLite.dll", {
     CreateXmlReader: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "pointer",
@@ -189,7 +189,7 @@ export function CreateXmlReader(
   ppvObject: Deno.PointerValue | Uint8Array | null /* ptr */,
   pMalloc: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Com.IMalloc */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libXmlLite.CreateXmlReader(util.toPointer(riid), util.toPointer(ppvObject), util.toPointer(pMalloc)));
+  return util.pointerFromFfi(libXmlLite_dll.CreateXmlReader(util.toPointer(riid), util.toPointer(ppvObject), util.toPointer(pMalloc)));
 }
 
 export function CreateXmlReaderInputWithEncodingCodePage(
@@ -200,7 +200,7 @@ export function CreateXmlReaderInputWithEncodingCodePage(
   pwszBaseUri: string | null /* Windows.Win32.Foundation.PWSTR */,
   ppInput: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libXmlLite.CreateXmlReaderInputWithEncodingCodePage(util.toPointer(pInputStream), util.toPointer(pMalloc), nEncodingCodePage, util.boolToFfi(fEncodingHint), util.pwstrToFfi(pwszBaseUri), util.toPointer(ppInput)));
+  return util.pointerFromFfi(libXmlLite_dll.CreateXmlReaderInputWithEncodingCodePage(util.toPointer(pInputStream), util.toPointer(pMalloc), nEncodingCodePage, util.boolToFfi(fEncodingHint), util.pwstrToFfi(pwszBaseUri), util.toPointer(ppInput)));
 }
 
 export function CreateXmlReaderInputWithEncodingName(
@@ -211,7 +211,7 @@ export function CreateXmlReaderInputWithEncodingName(
   pwszBaseUri: string | null /* Windows.Win32.Foundation.PWSTR */,
   ppInput: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libXmlLite.CreateXmlReaderInputWithEncodingName(util.toPointer(pInputStream), util.toPointer(pMalloc), util.pwstrToFfi(pwszEncodingName), util.boolToFfi(fEncodingHint), util.pwstrToFfi(pwszBaseUri), util.toPointer(ppInput)));
+  return util.pointerFromFfi(libXmlLite_dll.CreateXmlReaderInputWithEncodingName(util.toPointer(pInputStream), util.toPointer(pMalloc), util.pwstrToFfi(pwszEncodingName), util.boolToFfi(fEncodingHint), util.pwstrToFfi(pwszBaseUri), util.toPointer(ppInput)));
 }
 
 export function CreateXmlWriter(
@@ -219,7 +219,7 @@ export function CreateXmlWriter(
   ppvObject: Deno.PointerValue | Uint8Array | null /* ptr */,
   pMalloc: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Com.IMalloc */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libXmlLite.CreateXmlWriter(util.toPointer(riid), util.toPointer(ppvObject), util.toPointer(pMalloc)));
+  return util.pointerFromFfi(libXmlLite_dll.CreateXmlWriter(util.toPointer(riid), util.toPointer(ppvObject), util.toPointer(pMalloc)));
 }
 
 export function CreateXmlWriterOutputWithEncodingCodePage(
@@ -228,7 +228,7 @@ export function CreateXmlWriterOutputWithEncodingCodePage(
   nEncodingCodePage: number /* u32 */,
   ppOutput: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libXmlLite.CreateXmlWriterOutputWithEncodingCodePage(util.toPointer(pOutputStream), util.toPointer(pMalloc), nEncodingCodePage, util.toPointer(ppOutput)));
+  return util.pointerFromFfi(libXmlLite_dll.CreateXmlWriterOutputWithEncodingCodePage(util.toPointer(pOutputStream), util.toPointer(pMalloc), nEncodingCodePage, util.toPointer(ppOutput)));
 }
 
 export function CreateXmlWriterOutputWithEncodingName(
@@ -237,6 +237,6 @@ export function CreateXmlWriterOutputWithEncodingName(
   pwszEncodingName: string | null /* Windows.Win32.Foundation.PWSTR */,
   ppOutput: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libXmlLite.CreateXmlWriterOutputWithEncodingName(util.toPointer(pOutputStream), util.toPointer(pMalloc), util.pwstrToFfi(pwszEncodingName), util.toPointer(ppOutput)));
+  return util.pointerFromFfi(libXmlLite_dll.CreateXmlWriterOutputWithEncodingName(util.toPointer(pOutputStream), util.toPointer(pMalloc), util.pwstrToFfi(pwszEncodingName), util.toPointer(ppOutput)));
 }
 

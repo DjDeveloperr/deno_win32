@@ -32,6 +32,7 @@ export type PROPERTYUI_FLAGS = number;
 export type PROPERTYUI_FORMAT_FLAGS = number;
 export type PDOPSTATUS = number;
 export type SYNC_ENGINE_STATE_FLAGS = number;
+export type VARENUM = number;
 
 // Constants
 export const PKEY_PIDSTR_MAX = 10;
@@ -75,8 +76,8 @@ export const PDTF_CANBEPURGED = 512;
 export const PDTF_SEARCHRAWVALUE = 1024;
 export const PDTF_DONTCOERCEEMPTYSTRINGS = 2048;
 export const PDTF_ALWAYSINSUPPLEMENTALSTORE = 4096;
-export const PDTF_ISSYSTEMPROPERTY = "-2147483648";
-export const PDTF_MASK_ALL = "-2147475457";
+export const PDTF_ISSYSTEMPROPERTY = 2147483648;
+export const PDTF_MASK_ALL = 2147491839;
 export const PDVF_DEFAULT = 0;
 export const PDVF_CENTERALIGN = 1;
 export const PDVF_RIGHTALIGN = 2;
@@ -243,6 +244,58 @@ export const SESF_PAUSED_DUE_TO_SERVICE_POLICY = 64;
 export const SESF_SERVICE_UNAVAILABLE = 128;
 export const SESF_PAUSED_DUE_TO_USER_REQUEST = 256;
 export const SESF_ALL_FLAGS = 511;
+export const VT_EMPTY = 0;
+export const VT_NULL = 1;
+export const VT_I2 = 2;
+export const VT_I4 = 3;
+export const VT_R4 = 4;
+export const VT_R8 = 5;
+export const VT_CY = 6;
+export const VT_DATE = 7;
+export const VT_BSTR = 8;
+export const VT_DISPATCH = 9;
+export const VT_ERROR = 10;
+export const VT_BOOL = 11;
+export const VT_VARIANT = 12;
+export const VT_UNKNOWN = 13;
+export const VT_DECIMAL = 14;
+export const VT_I1 = 16;
+export const VT_UI1 = 17;
+export const VT_UI2 = 18;
+export const VT_UI4 = 19;
+export const VT_I8 = 20;
+export const VT_UI8 = 21;
+export const VT_INT = 22;
+export const VT_UINT = 23;
+export const VT_VOID = 24;
+export const VT_HRESULT = 25;
+export const VT_PTR = 26;
+export const VT_SAFEARRAY = 27;
+export const VT_CARRAY = 28;
+export const VT_USERDEFINED = 29;
+export const VT_LPSTR = 30;
+export const VT_LPWSTR = 31;
+export const VT_RECORD = 36;
+export const VT_INT_PTR = 37;
+export const VT_UINT_PTR = 38;
+export const VT_FILETIME = 64;
+export const VT_BLOB = 65;
+export const VT_STREAM = 66;
+export const VT_STORAGE = 67;
+export const VT_STREAMED_OBJECT = 68;
+export const VT_STORED_OBJECT = 69;
+export const VT_BLOB_OBJECT = 70;
+export const VT_CF = 71;
+export const VT_CLSID = 72;
+export const VT_VERSIONED_STREAM = 73;
+export const VT_BSTR_BLOB = 4095;
+export const VT_VECTOR = 4096;
+export const VT_ARRAY = 8192;
+export const VT_BYREF = 16384;
+export const VT_RESERVED = 32768;
+export const VT_ILLEGAL = 65535;
+export const VT_ILLEGALMASKED = 4095;
+export const VT_TYPEMASK = 4095;
 
 // Structs
 
@@ -353,7 +406,7 @@ export type HWND = Deno.PointerValue;
 // Native Libraries
 
 try {
-  var libPROPSYS = Deno.dlopen("PROPSYS", {
+  var libPROPSYS_dll = Deno.dlopen("PROPSYS.dll", {
     PropVariantToWinRTPropertyValue: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "pointer",
@@ -1222,7 +1275,7 @@ try {
 } catch(e) { /* ignore */ }
 
 try {
-  var libSHELL32 = Deno.dlopen("SHELL32", {
+  var libSHELL32_dll = Deno.dlopen("SHELL32.dll", {
     SHGetPropertyStoreFromIDList: {
       parameters: ["pointer", "u32", "pointer", "pointer"],
       result: "pointer",
@@ -1277,14 +1330,14 @@ export function PropVariantToWinRTPropertyValue(
   riid: Deno.PointerValue | Uint8Array | null /* ptr */,
   ppv: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libPROPSYS.PropVariantToWinRTPropertyValue(util.toPointer(propvar), util.toPointer(riid), util.toPointer(ppv)));
+  return util.pointerFromFfi(libPROPSYS_dll.PropVariantToWinRTPropertyValue(util.toPointer(propvar), util.toPointer(riid), util.toPointer(ppv)));
 }
 
 export function WinRTPropertyValueToPropVariant(
   punkPropertyValue: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Com.IUnknown */,
   ppropvar: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libPROPSYS.WinRTPropertyValueToPropVariant(util.toPointer(punkPropertyValue), util.toPointer(ppropvar)));
+  return util.pointerFromFfi(libPROPSYS_dll.WinRTPropertyValueToPropVariant(util.toPointer(punkPropertyValue), util.toPointer(ppropvar)));
 }
 
 export function PSFormatForDisplay(
@@ -1294,7 +1347,7 @@ export function PSFormatForDisplay(
   pwszText: string | null /* Windows.Win32.Foundation.PWSTR */,
   cchText: number /* u32 */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libPROPSYS.PSFormatForDisplay(util.toPointer(propkey), util.toPointer(propvar), pdfFlags, util.pwstrToFfi(pwszText), cchText));
+  return util.pointerFromFfi(libPROPSYS_dll.PSFormatForDisplay(util.toPointer(propkey), util.toPointer(propvar), pdfFlags, util.pwstrToFfi(pwszText), cchText));
 }
 
 export function PSFormatForDisplayAlloc(
@@ -1303,7 +1356,7 @@ export function PSFormatForDisplayAlloc(
   pdff: PROPDESC_FORMAT_FLAGS /* Windows.Win32.UI.Shell.PropertiesSystem.PROPDESC_FORMAT_FLAGS */,
   ppszDisplay: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libPROPSYS.PSFormatForDisplayAlloc(util.toPointer(key), util.toPointer(propvar), pdff, util.toPointer(ppszDisplay)));
+  return util.pointerFromFfi(libPROPSYS_dll.PSFormatForDisplayAlloc(util.toPointer(key), util.toPointer(propvar), pdff, util.toPointer(ppszDisplay)));
 }
 
 export function PSFormatPropertyValue(
@@ -1312,7 +1365,7 @@ export function PSFormatPropertyValue(
   pdff: PROPDESC_FORMAT_FLAGS /* Windows.Win32.UI.Shell.PropertiesSystem.PROPDESC_FORMAT_FLAGS */,
   ppszDisplay: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libPROPSYS.PSFormatPropertyValue(util.toPointer(pps), util.toPointer(ppd), pdff, util.toPointer(ppszDisplay)));
+  return util.pointerFromFfi(libPROPSYS_dll.PSFormatPropertyValue(util.toPointer(pps), util.toPointer(ppd), pdff, util.toPointer(ppszDisplay)));
 }
 
 export function PSGetImageReferenceForValue(
@@ -1320,7 +1373,7 @@ export function PSGetImageReferenceForValue(
   propvar: Deno.PointerValue | Uint8Array | null /* ptr */,
   ppszImageRes: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libPROPSYS.PSGetImageReferenceForValue(util.toPointer(propkey), util.toPointer(propvar), util.toPointer(ppszImageRes)));
+  return util.pointerFromFfi(libPROPSYS_dll.PSGetImageReferenceForValue(util.toPointer(propkey), util.toPointer(propvar), util.toPointer(ppszImageRes)));
 }
 
 export function PSStringFromPropertyKey(
@@ -1328,21 +1381,21 @@ export function PSStringFromPropertyKey(
   psz: string | null /* Windows.Win32.Foundation.PWSTR */,
   cch: number /* u32 */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libPROPSYS.PSStringFromPropertyKey(util.toPointer(pkey), util.pwstrToFfi(psz), cch));
+  return util.pointerFromFfi(libPROPSYS_dll.PSStringFromPropertyKey(util.toPointer(pkey), util.pwstrToFfi(psz), cch));
 }
 
 export function PSPropertyKeyFromString(
   pszString: string | null /* Windows.Win32.Foundation.PWSTR */,
   pkey: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libPROPSYS.PSPropertyKeyFromString(util.pwstrToFfi(pszString), util.toPointer(pkey)));
+  return util.pointerFromFfi(libPROPSYS_dll.PSPropertyKeyFromString(util.pwstrToFfi(pszString), util.toPointer(pkey)));
 }
 
 export function PSCreateMemoryPropertyStore(
   riid: Deno.PointerValue | Uint8Array | null /* ptr */,
   ppv: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libPROPSYS.PSCreateMemoryPropertyStore(util.toPointer(riid), util.toPointer(ppv)));
+  return util.pointerFromFfi(libPROPSYS_dll.PSCreateMemoryPropertyStore(util.toPointer(riid), util.toPointer(ppv)));
 }
 
 export function PSCreateDelayedMultiplexPropertyStore(
@@ -1353,7 +1406,7 @@ export function PSCreateDelayedMultiplexPropertyStore(
   riid: Deno.PointerValue | Uint8Array | null /* ptr */,
   ppv: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libPROPSYS.PSCreateDelayedMultiplexPropertyStore(flags, util.toPointer(pdpsf), util.toPointer(rgStoreIds), cStores, util.toPointer(riid), util.toPointer(ppv)));
+  return util.pointerFromFfi(libPROPSYS_dll.PSCreateDelayedMultiplexPropertyStore(flags, util.toPointer(pdpsf), util.toPointer(rgStoreIds), cStores, util.toPointer(riid), util.toPointer(ppv)));
 }
 
 export function PSCreateMultiplexPropertyStore(
@@ -1362,7 +1415,7 @@ export function PSCreateMultiplexPropertyStore(
   riid: Deno.PointerValue | Uint8Array | null /* ptr */,
   ppv: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libPROPSYS.PSCreateMultiplexPropertyStore(util.toPointer(prgpunkStores), cStores, util.toPointer(riid), util.toPointer(ppv)));
+  return util.pointerFromFfi(libPROPSYS_dll.PSCreateMultiplexPropertyStore(util.toPointer(prgpunkStores), cStores, util.toPointer(riid), util.toPointer(ppv)));
 }
 
 export function PSCreatePropertyChangeArray(
@@ -1373,7 +1426,7 @@ export function PSCreatePropertyChangeArray(
   riid: Deno.PointerValue | Uint8Array | null /* ptr */,
   ppv: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libPROPSYS.PSCreatePropertyChangeArray(util.toPointer(rgpropkey), util.toPointer(rgflags), util.toPointer(rgpropvar), cChanges, util.toPointer(riid), util.toPointer(ppv)));
+  return util.pointerFromFfi(libPROPSYS_dll.PSCreatePropertyChangeArray(util.toPointer(rgpropkey), util.toPointer(rgflags), util.toPointer(rgpropvar), cChanges, util.toPointer(riid), util.toPointer(ppv)));
 }
 
 export function PSCreateSimplePropertyChange(
@@ -1383,7 +1436,7 @@ export function PSCreateSimplePropertyChange(
   riid: Deno.PointerValue | Uint8Array | null /* ptr */,
   ppv: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libPROPSYS.PSCreateSimplePropertyChange(flags, util.toPointer(key), util.toPointer(propvar), util.toPointer(riid), util.toPointer(ppv)));
+  return util.pointerFromFfi(libPROPSYS_dll.PSCreateSimplePropertyChange(flags, util.toPointer(key), util.toPointer(propvar), util.toPointer(riid), util.toPointer(ppv)));
 }
 
 export function PSGetPropertyDescription(
@@ -1391,7 +1444,7 @@ export function PSGetPropertyDescription(
   riid: Deno.PointerValue | Uint8Array | null /* ptr */,
   ppv: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libPROPSYS.PSGetPropertyDescription(util.toPointer(propkey), util.toPointer(riid), util.toPointer(ppv)));
+  return util.pointerFromFfi(libPROPSYS_dll.PSGetPropertyDescription(util.toPointer(propkey), util.toPointer(riid), util.toPointer(ppv)));
 }
 
 export function PSGetPropertyDescriptionByName(
@@ -1399,14 +1452,14 @@ export function PSGetPropertyDescriptionByName(
   riid: Deno.PointerValue | Uint8Array | null /* ptr */,
   ppv: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libPROPSYS.PSGetPropertyDescriptionByName(util.pwstrToFfi(pszCanonicalName), util.toPointer(riid), util.toPointer(ppv)));
+  return util.pointerFromFfi(libPROPSYS_dll.PSGetPropertyDescriptionByName(util.pwstrToFfi(pszCanonicalName), util.toPointer(riid), util.toPointer(ppv)));
 }
 
 export function PSLookupPropertyHandlerCLSID(
   pszFilePath: string | null /* Windows.Win32.Foundation.PWSTR */,
   pclsid: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libPROPSYS.PSLookupPropertyHandlerCLSID(util.pwstrToFfi(pszFilePath), util.toPointer(pclsid)));
+  return util.pointerFromFfi(libPROPSYS_dll.PSLookupPropertyHandlerCLSID(util.pwstrToFfi(pszFilePath), util.toPointer(pclsid)));
 }
 
 export function PSGetItemPropertyHandler(
@@ -1415,7 +1468,7 @@ export function PSGetItemPropertyHandler(
   riid: Deno.PointerValue | Uint8Array | null /* ptr */,
   ppv: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libPROPSYS.PSGetItemPropertyHandler(util.toPointer(punkItem), util.boolToFfi(fReadWrite), util.toPointer(riid), util.toPointer(ppv)));
+  return util.pointerFromFfi(libPROPSYS_dll.PSGetItemPropertyHandler(util.toPointer(punkItem), util.boolToFfi(fReadWrite), util.toPointer(riid), util.toPointer(ppv)));
 }
 
 export function PSGetItemPropertyHandlerWithCreateObject(
@@ -1425,7 +1478,7 @@ export function PSGetItemPropertyHandlerWithCreateObject(
   riid: Deno.PointerValue | Uint8Array | null /* ptr */,
   ppv: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libPROPSYS.PSGetItemPropertyHandlerWithCreateObject(util.toPointer(punkItem), util.boolToFfi(fReadWrite), util.toPointer(punkCreateObject), util.toPointer(riid), util.toPointer(ppv)));
+  return util.pointerFromFfi(libPROPSYS_dll.PSGetItemPropertyHandlerWithCreateObject(util.toPointer(punkItem), util.boolToFfi(fReadWrite), util.toPointer(punkCreateObject), util.toPointer(riid), util.toPointer(ppv)));
 }
 
 export function PSGetPropertyValue(
@@ -1433,7 +1486,7 @@ export function PSGetPropertyValue(
   ppd: Uint8Array | Deno.PointerValue | null /* Windows.Win32.UI.Shell.PropertiesSystem.IPropertyDescription */,
   ppropvar: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libPROPSYS.PSGetPropertyValue(util.toPointer(pps), util.toPointer(ppd), util.toPointer(ppropvar)));
+  return util.pointerFromFfi(libPROPSYS_dll.PSGetPropertyValue(util.toPointer(pps), util.toPointer(ppd), util.toPointer(ppropvar)));
 }
 
 export function PSSetPropertyValue(
@@ -1441,23 +1494,23 @@ export function PSSetPropertyValue(
   ppd: Uint8Array | Deno.PointerValue | null /* Windows.Win32.UI.Shell.PropertiesSystem.IPropertyDescription */,
   propvar: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libPROPSYS.PSSetPropertyValue(util.toPointer(pps), util.toPointer(ppd), util.toPointer(propvar)));
+  return util.pointerFromFfi(libPROPSYS_dll.PSSetPropertyValue(util.toPointer(pps), util.toPointer(ppd), util.toPointer(propvar)));
 }
 
 export function PSRegisterPropertySchema(
   pszPath: string | null /* Windows.Win32.Foundation.PWSTR */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libPROPSYS.PSRegisterPropertySchema(util.pwstrToFfi(pszPath)));
+  return util.pointerFromFfi(libPROPSYS_dll.PSRegisterPropertySchema(util.pwstrToFfi(pszPath)));
 }
 
 export function PSUnregisterPropertySchema(
   pszPath: string | null /* Windows.Win32.Foundation.PWSTR */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libPROPSYS.PSUnregisterPropertySchema(util.pwstrToFfi(pszPath)));
+  return util.pointerFromFfi(libPROPSYS_dll.PSUnregisterPropertySchema(util.pwstrToFfi(pszPath)));
 }
 
 export function PSRefreshPropertySchema(): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libPROPSYS.PSRefreshPropertySchema());
+  return util.pointerFromFfi(libPROPSYS_dll.PSRefreshPropertySchema());
 }
 
 export function PSEnumeratePropertyDescriptions(
@@ -1465,28 +1518,28 @@ export function PSEnumeratePropertyDescriptions(
   riid: Deno.PointerValue | Uint8Array | null /* ptr */,
   ppv: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libPROPSYS.PSEnumeratePropertyDescriptions(filterOn, util.toPointer(riid), util.toPointer(ppv)));
+  return util.pointerFromFfi(libPROPSYS_dll.PSEnumeratePropertyDescriptions(filterOn, util.toPointer(riid), util.toPointer(ppv)));
 }
 
 export function PSGetPropertyKeyFromName(
   pszName: string | null /* Windows.Win32.Foundation.PWSTR */,
   ppropkey: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libPROPSYS.PSGetPropertyKeyFromName(util.pwstrToFfi(pszName), util.toPointer(ppropkey)));
+  return util.pointerFromFfi(libPROPSYS_dll.PSGetPropertyKeyFromName(util.pwstrToFfi(pszName), util.toPointer(ppropkey)));
 }
 
 export function PSGetNameFromPropertyKey(
   propkey: Deno.PointerValue | Uint8Array | null /* ptr */,
   ppszCanonicalName: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libPROPSYS.PSGetNameFromPropertyKey(util.toPointer(propkey), util.toPointer(ppszCanonicalName)));
+  return util.pointerFromFfi(libPROPSYS_dll.PSGetNameFromPropertyKey(util.toPointer(propkey), util.toPointer(ppszCanonicalName)));
 }
 
 export function PSCoerceToCanonicalValue(
   key: Deno.PointerValue | Uint8Array | null /* ptr */,
   ppropvar: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libPROPSYS.PSCoerceToCanonicalValue(util.toPointer(key), util.toPointer(ppropvar)));
+  return util.pointerFromFfi(libPROPSYS_dll.PSCoerceToCanonicalValue(util.toPointer(key), util.toPointer(ppropvar)));
 }
 
 export function PSGetPropertyDescriptionListFromString(
@@ -1494,7 +1547,7 @@ export function PSGetPropertyDescriptionListFromString(
   riid: Deno.PointerValue | Uint8Array | null /* ptr */,
   ppv: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libPROPSYS.PSGetPropertyDescriptionListFromString(util.pwstrToFfi(pszPropList), util.toPointer(riid), util.toPointer(ppv)));
+  return util.pointerFromFfi(libPROPSYS_dll.PSGetPropertyDescriptionListFromString(util.pwstrToFfi(pszPropList), util.toPointer(riid), util.toPointer(ppv)));
 }
 
 export function PSCreatePropertyStoreFromPropertySetStorage(
@@ -1503,7 +1556,7 @@ export function PSCreatePropertyStoreFromPropertySetStorage(
   riid: Deno.PointerValue | Uint8Array | null /* ptr */,
   ppv: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libPROPSYS.PSCreatePropertyStoreFromPropertySetStorage(util.toPointer(ppss), grfMode, util.toPointer(riid), util.toPointer(ppv)));
+  return util.pointerFromFfi(libPROPSYS_dll.PSCreatePropertyStoreFromPropertySetStorage(util.toPointer(ppss), grfMode, util.toPointer(riid), util.toPointer(ppv)));
 }
 
 export function PSCreatePropertyStoreFromObject(
@@ -1512,7 +1565,7 @@ export function PSCreatePropertyStoreFromObject(
   riid: Deno.PointerValue | Uint8Array | null /* ptr */,
   ppv: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libPROPSYS.PSCreatePropertyStoreFromObject(util.toPointer(punk), grfMode, util.toPointer(riid), util.toPointer(ppv)));
+  return util.pointerFromFfi(libPROPSYS_dll.PSCreatePropertyStoreFromObject(util.toPointer(punk), grfMode, util.toPointer(riid), util.toPointer(ppv)));
 }
 
 export function PSCreateAdapterFromPropertyStore(
@@ -1520,14 +1573,14 @@ export function PSCreateAdapterFromPropertyStore(
   riid: Deno.PointerValue | Uint8Array | null /* ptr */,
   ppv: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libPROPSYS.PSCreateAdapterFromPropertyStore(util.toPointer(pps), util.toPointer(riid), util.toPointer(ppv)));
+  return util.pointerFromFfi(libPROPSYS_dll.PSCreateAdapterFromPropertyStore(util.toPointer(pps), util.toPointer(riid), util.toPointer(ppv)));
 }
 
 export function PSGetPropertySystem(
   riid: Deno.PointerValue | Uint8Array | null /* ptr */,
   ppv: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libPROPSYS.PSGetPropertySystem(util.toPointer(riid), util.toPointer(ppv)));
+  return util.pointerFromFfi(libPROPSYS_dll.PSGetPropertySystem(util.toPointer(riid), util.toPointer(ppv)));
 }
 
 export function PSGetPropertyFromPropertyStorage(
@@ -1536,7 +1589,7 @@ export function PSGetPropertyFromPropertyStorage(
   rpkey: Deno.PointerValue | Uint8Array | null /* ptr */,
   ppropvar: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libPROPSYS.PSGetPropertyFromPropertyStorage(util.toPointer(psps), cb, util.toPointer(rpkey), util.toPointer(ppropvar)));
+  return util.pointerFromFfi(libPROPSYS_dll.PSGetPropertyFromPropertyStorage(util.toPointer(psps), cb, util.toPointer(rpkey), util.toPointer(ppropvar)));
 }
 
 export function PSGetNamedPropertyFromPropertyStorage(
@@ -1545,16 +1598,16 @@ export function PSGetNamedPropertyFromPropertyStorage(
   pszName: string | null /* Windows.Win32.Foundation.PWSTR */,
   ppropvar: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libPROPSYS.PSGetNamedPropertyFromPropertyStorage(util.toPointer(psps), cb, util.pwstrToFfi(pszName), util.toPointer(ppropvar)));
+  return util.pointerFromFfi(libPROPSYS_dll.PSGetNamedPropertyFromPropertyStorage(util.toPointer(psps), cb, util.pwstrToFfi(pszName), util.toPointer(ppropvar)));
 }
 
 export function PSPropertyBag_ReadType(
   propBag: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Com.StructuredStorage.IPropertyBag */,
   propName: string | null /* Windows.Win32.Foundation.PWSTR */,
   var__: Deno.PointerValue | Uint8Array | null /* ptr */,
-  type: number /* u16 */,
+  type: VARENUM /* Windows.Win32.System.Com.VARENUM */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libPROPSYS.PSPropertyBag_ReadType(util.toPointer(propBag), util.pwstrToFfi(propName), util.toPointer(var__), type));
+  return util.pointerFromFfi(libPROPSYS_dll.PSPropertyBag_ReadType(util.toPointer(propBag), util.pwstrToFfi(propName), util.toPointer(var__), type));
 }
 
 export function PSPropertyBag_ReadStr(
@@ -1563,7 +1616,7 @@ export function PSPropertyBag_ReadStr(
   value: string | null /* Windows.Win32.Foundation.PWSTR */,
   characterCount: number /* i32 */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libPROPSYS.PSPropertyBag_ReadStr(util.toPointer(propBag), util.pwstrToFfi(propName), util.pwstrToFfi(value), characterCount));
+  return util.pointerFromFfi(libPROPSYS_dll.PSPropertyBag_ReadStr(util.toPointer(propBag), util.pwstrToFfi(propName), util.pwstrToFfi(value), characterCount));
 }
 
 export function PSPropertyBag_ReadStrAlloc(
@@ -1571,7 +1624,7 @@ export function PSPropertyBag_ReadStrAlloc(
   propName: string | null /* Windows.Win32.Foundation.PWSTR */,
   value: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libPROPSYS.PSPropertyBag_ReadStrAlloc(util.toPointer(propBag), util.pwstrToFfi(propName), util.toPointer(value)));
+  return util.pointerFromFfi(libPROPSYS_dll.PSPropertyBag_ReadStrAlloc(util.toPointer(propBag), util.pwstrToFfi(propName), util.toPointer(value)));
 }
 
 export function PSPropertyBag_ReadBSTR(
@@ -1579,7 +1632,7 @@ export function PSPropertyBag_ReadBSTR(
   propName: string | null /* Windows.Win32.Foundation.PWSTR */,
   value: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libPROPSYS.PSPropertyBag_ReadBSTR(util.toPointer(propBag), util.pwstrToFfi(propName), util.toPointer(value)));
+  return util.pointerFromFfi(libPROPSYS_dll.PSPropertyBag_ReadBSTR(util.toPointer(propBag), util.pwstrToFfi(propName), util.toPointer(value)));
 }
 
 export function PSPropertyBag_WriteStr(
@@ -1587,7 +1640,7 @@ export function PSPropertyBag_WriteStr(
   propName: string | null /* Windows.Win32.Foundation.PWSTR */,
   value: string | null /* Windows.Win32.Foundation.PWSTR */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libPROPSYS.PSPropertyBag_WriteStr(util.toPointer(propBag), util.pwstrToFfi(propName), util.pwstrToFfi(value)));
+  return util.pointerFromFfi(libPROPSYS_dll.PSPropertyBag_WriteStr(util.toPointer(propBag), util.pwstrToFfi(propName), util.pwstrToFfi(value)));
 }
 
 export function PSPropertyBag_WriteBSTR(
@@ -1595,7 +1648,7 @@ export function PSPropertyBag_WriteBSTR(
   propName: string | null /* Windows.Win32.Foundation.PWSTR */,
   value: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.BSTR */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libPROPSYS.PSPropertyBag_WriteBSTR(util.toPointer(propBag), util.pwstrToFfi(propName), util.toPointer(value)));
+  return util.pointerFromFfi(libPROPSYS_dll.PSPropertyBag_WriteBSTR(util.toPointer(propBag), util.pwstrToFfi(propName), util.toPointer(value)));
 }
 
 export function PSPropertyBag_ReadInt(
@@ -1603,7 +1656,7 @@ export function PSPropertyBag_ReadInt(
   propName: string | null /* Windows.Win32.Foundation.PWSTR */,
   value: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libPROPSYS.PSPropertyBag_ReadInt(util.toPointer(propBag), util.pwstrToFfi(propName), util.toPointer(value)));
+  return util.pointerFromFfi(libPROPSYS_dll.PSPropertyBag_ReadInt(util.toPointer(propBag), util.pwstrToFfi(propName), util.toPointer(value)));
 }
 
 export function PSPropertyBag_WriteInt(
@@ -1611,7 +1664,7 @@ export function PSPropertyBag_WriteInt(
   propName: string | null /* Windows.Win32.Foundation.PWSTR */,
   value: number /* i32 */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libPROPSYS.PSPropertyBag_WriteInt(util.toPointer(propBag), util.pwstrToFfi(propName), value));
+  return util.pointerFromFfi(libPROPSYS_dll.PSPropertyBag_WriteInt(util.toPointer(propBag), util.pwstrToFfi(propName), value));
 }
 
 export function PSPropertyBag_ReadSHORT(
@@ -1619,7 +1672,7 @@ export function PSPropertyBag_ReadSHORT(
   propName: string | null /* Windows.Win32.Foundation.PWSTR */,
   value: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libPROPSYS.PSPropertyBag_ReadSHORT(util.toPointer(propBag), util.pwstrToFfi(propName), util.toPointer(value)));
+  return util.pointerFromFfi(libPROPSYS_dll.PSPropertyBag_ReadSHORT(util.toPointer(propBag), util.pwstrToFfi(propName), util.toPointer(value)));
 }
 
 export function PSPropertyBag_WriteSHORT(
@@ -1627,7 +1680,7 @@ export function PSPropertyBag_WriteSHORT(
   propName: string | null /* Windows.Win32.Foundation.PWSTR */,
   value: number /* i16 */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libPROPSYS.PSPropertyBag_WriteSHORT(util.toPointer(propBag), util.pwstrToFfi(propName), value));
+  return util.pointerFromFfi(libPROPSYS_dll.PSPropertyBag_WriteSHORT(util.toPointer(propBag), util.pwstrToFfi(propName), value));
 }
 
 export function PSPropertyBag_ReadLONG(
@@ -1635,7 +1688,7 @@ export function PSPropertyBag_ReadLONG(
   propName: string | null /* Windows.Win32.Foundation.PWSTR */,
   value: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libPROPSYS.PSPropertyBag_ReadLONG(util.toPointer(propBag), util.pwstrToFfi(propName), util.toPointer(value)));
+  return util.pointerFromFfi(libPROPSYS_dll.PSPropertyBag_ReadLONG(util.toPointer(propBag), util.pwstrToFfi(propName), util.toPointer(value)));
 }
 
 export function PSPropertyBag_WriteLONG(
@@ -1643,7 +1696,7 @@ export function PSPropertyBag_WriteLONG(
   propName: string | null /* Windows.Win32.Foundation.PWSTR */,
   value: number /* i32 */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libPROPSYS.PSPropertyBag_WriteLONG(util.toPointer(propBag), util.pwstrToFfi(propName), value));
+  return util.pointerFromFfi(libPROPSYS_dll.PSPropertyBag_WriteLONG(util.toPointer(propBag), util.pwstrToFfi(propName), value));
 }
 
 export function PSPropertyBag_ReadDWORD(
@@ -1651,7 +1704,7 @@ export function PSPropertyBag_ReadDWORD(
   propName: string | null /* Windows.Win32.Foundation.PWSTR */,
   value: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libPROPSYS.PSPropertyBag_ReadDWORD(util.toPointer(propBag), util.pwstrToFfi(propName), util.toPointer(value)));
+  return util.pointerFromFfi(libPROPSYS_dll.PSPropertyBag_ReadDWORD(util.toPointer(propBag), util.pwstrToFfi(propName), util.toPointer(value)));
 }
 
 export function PSPropertyBag_WriteDWORD(
@@ -1659,7 +1712,7 @@ export function PSPropertyBag_WriteDWORD(
   propName: string | null /* Windows.Win32.Foundation.PWSTR */,
   value: number /* u32 */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libPROPSYS.PSPropertyBag_WriteDWORD(util.toPointer(propBag), util.pwstrToFfi(propName), value));
+  return util.pointerFromFfi(libPROPSYS_dll.PSPropertyBag_WriteDWORD(util.toPointer(propBag), util.pwstrToFfi(propName), value));
 }
 
 export function PSPropertyBag_ReadBOOL(
@@ -1667,7 +1720,7 @@ export function PSPropertyBag_ReadBOOL(
   propName: string | null /* Windows.Win32.Foundation.PWSTR */,
   value: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libPROPSYS.PSPropertyBag_ReadBOOL(util.toPointer(propBag), util.pwstrToFfi(propName), util.toPointer(value)));
+  return util.pointerFromFfi(libPROPSYS_dll.PSPropertyBag_ReadBOOL(util.toPointer(propBag), util.pwstrToFfi(propName), util.toPointer(value)));
 }
 
 export function PSPropertyBag_WriteBOOL(
@@ -1675,7 +1728,7 @@ export function PSPropertyBag_WriteBOOL(
   propName: string | null /* Windows.Win32.Foundation.PWSTR */,
   value: boolean /* Windows.Win32.Foundation.BOOL */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libPROPSYS.PSPropertyBag_WriteBOOL(util.toPointer(propBag), util.pwstrToFfi(propName), util.boolToFfi(value)));
+  return util.pointerFromFfi(libPROPSYS_dll.PSPropertyBag_WriteBOOL(util.toPointer(propBag), util.pwstrToFfi(propName), util.boolToFfi(value)));
 }
 
 export function PSPropertyBag_ReadPOINTL(
@@ -1683,7 +1736,7 @@ export function PSPropertyBag_ReadPOINTL(
   propName: string | null /* Windows.Win32.Foundation.PWSTR */,
   value: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libPROPSYS.PSPropertyBag_ReadPOINTL(util.toPointer(propBag), util.pwstrToFfi(propName), util.toPointer(value)));
+  return util.pointerFromFfi(libPROPSYS_dll.PSPropertyBag_ReadPOINTL(util.toPointer(propBag), util.pwstrToFfi(propName), util.toPointer(value)));
 }
 
 export function PSPropertyBag_WritePOINTL(
@@ -1691,7 +1744,7 @@ export function PSPropertyBag_WritePOINTL(
   propName: string | null /* Windows.Win32.Foundation.PWSTR */,
   value: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libPROPSYS.PSPropertyBag_WritePOINTL(util.toPointer(propBag), util.pwstrToFfi(propName), util.toPointer(value)));
+  return util.pointerFromFfi(libPROPSYS_dll.PSPropertyBag_WritePOINTL(util.toPointer(propBag), util.pwstrToFfi(propName), util.toPointer(value)));
 }
 
 export function PSPropertyBag_ReadPOINTS(
@@ -1699,7 +1752,7 @@ export function PSPropertyBag_ReadPOINTS(
   propName: string | null /* Windows.Win32.Foundation.PWSTR */,
   value: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libPROPSYS.PSPropertyBag_ReadPOINTS(util.toPointer(propBag), util.pwstrToFfi(propName), util.toPointer(value)));
+  return util.pointerFromFfi(libPROPSYS_dll.PSPropertyBag_ReadPOINTS(util.toPointer(propBag), util.pwstrToFfi(propName), util.toPointer(value)));
 }
 
 export function PSPropertyBag_WritePOINTS(
@@ -1707,7 +1760,7 @@ export function PSPropertyBag_WritePOINTS(
   propName: string | null /* Windows.Win32.Foundation.PWSTR */,
   value: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libPROPSYS.PSPropertyBag_WritePOINTS(util.toPointer(propBag), util.pwstrToFfi(propName), util.toPointer(value)));
+  return util.pointerFromFfi(libPROPSYS_dll.PSPropertyBag_WritePOINTS(util.toPointer(propBag), util.pwstrToFfi(propName), util.toPointer(value)));
 }
 
 export function PSPropertyBag_ReadRECTL(
@@ -1715,7 +1768,7 @@ export function PSPropertyBag_ReadRECTL(
   propName: string | null /* Windows.Win32.Foundation.PWSTR */,
   value: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libPROPSYS.PSPropertyBag_ReadRECTL(util.toPointer(propBag), util.pwstrToFfi(propName), util.toPointer(value)));
+  return util.pointerFromFfi(libPROPSYS_dll.PSPropertyBag_ReadRECTL(util.toPointer(propBag), util.pwstrToFfi(propName), util.toPointer(value)));
 }
 
 export function PSPropertyBag_WriteRECTL(
@@ -1723,7 +1776,7 @@ export function PSPropertyBag_WriteRECTL(
   propName: string | null /* Windows.Win32.Foundation.PWSTR */,
   value: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libPROPSYS.PSPropertyBag_WriteRECTL(util.toPointer(propBag), util.pwstrToFfi(propName), util.toPointer(value)));
+  return util.pointerFromFfi(libPROPSYS_dll.PSPropertyBag_WriteRECTL(util.toPointer(propBag), util.pwstrToFfi(propName), util.toPointer(value)));
 }
 
 export function PSPropertyBag_ReadStream(
@@ -1731,7 +1784,7 @@ export function PSPropertyBag_ReadStream(
   propName: string | null /* Windows.Win32.Foundation.PWSTR */,
   value: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libPROPSYS.PSPropertyBag_ReadStream(util.toPointer(propBag), util.pwstrToFfi(propName), util.toPointer(value)));
+  return util.pointerFromFfi(libPROPSYS_dll.PSPropertyBag_ReadStream(util.toPointer(propBag), util.pwstrToFfi(propName), util.toPointer(value)));
 }
 
 export function PSPropertyBag_WriteStream(
@@ -1739,14 +1792,14 @@ export function PSPropertyBag_WriteStream(
   propName: string | null /* Windows.Win32.Foundation.PWSTR */,
   value: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Com.IStream */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libPROPSYS.PSPropertyBag_WriteStream(util.toPointer(propBag), util.pwstrToFfi(propName), util.toPointer(value)));
+  return util.pointerFromFfi(libPROPSYS_dll.PSPropertyBag_WriteStream(util.toPointer(propBag), util.pwstrToFfi(propName), util.toPointer(value)));
 }
 
 export function PSPropertyBag_Delete(
   propBag: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Com.StructuredStorage.IPropertyBag */,
   propName: string | null /* Windows.Win32.Foundation.PWSTR */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libPROPSYS.PSPropertyBag_Delete(util.toPointer(propBag), util.pwstrToFfi(propName)));
+  return util.pointerFromFfi(libPROPSYS_dll.PSPropertyBag_Delete(util.toPointer(propBag), util.pwstrToFfi(propName)));
 }
 
 export function PSPropertyBag_ReadULONGLONG(
@@ -1754,7 +1807,7 @@ export function PSPropertyBag_ReadULONGLONG(
   propName: string | null /* Windows.Win32.Foundation.PWSTR */,
   value: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libPROPSYS.PSPropertyBag_ReadULONGLONG(util.toPointer(propBag), util.pwstrToFfi(propName), util.toPointer(value)));
+  return util.pointerFromFfi(libPROPSYS_dll.PSPropertyBag_ReadULONGLONG(util.toPointer(propBag), util.pwstrToFfi(propName), util.toPointer(value)));
 }
 
 export function PSPropertyBag_WriteULONGLONG(
@@ -1762,7 +1815,7 @@ export function PSPropertyBag_WriteULONGLONG(
   propName: string | null /* Windows.Win32.Foundation.PWSTR */,
   value: Deno.PointerValue /* u64 */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libPROPSYS.PSPropertyBag_WriteULONGLONG(util.toPointer(propBag), util.pwstrToFfi(propName), value));
+  return util.pointerFromFfi(libPROPSYS_dll.PSPropertyBag_WriteULONGLONG(util.toPointer(propBag), util.pwstrToFfi(propName), value));
 }
 
 export function PSPropertyBag_ReadUnknown(
@@ -1771,7 +1824,7 @@ export function PSPropertyBag_ReadUnknown(
   riid: Deno.PointerValue | Uint8Array | null /* ptr */,
   ppv: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libPROPSYS.PSPropertyBag_ReadUnknown(util.toPointer(propBag), util.pwstrToFfi(propName), util.toPointer(riid), util.toPointer(ppv)));
+  return util.pointerFromFfi(libPROPSYS_dll.PSPropertyBag_ReadUnknown(util.toPointer(propBag), util.pwstrToFfi(propName), util.toPointer(riid), util.toPointer(ppv)));
 }
 
 export function PSPropertyBag_WriteUnknown(
@@ -1779,7 +1832,7 @@ export function PSPropertyBag_WriteUnknown(
   propName: string | null /* Windows.Win32.Foundation.PWSTR */,
   punk: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Com.IUnknown */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libPROPSYS.PSPropertyBag_WriteUnknown(util.toPointer(propBag), util.pwstrToFfi(propName), util.toPointer(punk)));
+  return util.pointerFromFfi(libPROPSYS_dll.PSPropertyBag_WriteUnknown(util.toPointer(propBag), util.pwstrToFfi(propName), util.toPointer(punk)));
 }
 
 export function PSPropertyBag_ReadGUID(
@@ -1787,7 +1840,7 @@ export function PSPropertyBag_ReadGUID(
   propName: string | null /* Windows.Win32.Foundation.PWSTR */,
   value: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libPROPSYS.PSPropertyBag_ReadGUID(util.toPointer(propBag), util.pwstrToFfi(propName), util.toPointer(value)));
+  return util.pointerFromFfi(libPROPSYS_dll.PSPropertyBag_ReadGUID(util.toPointer(propBag), util.pwstrToFfi(propName), util.toPointer(value)));
 }
 
 export function PSPropertyBag_WriteGUID(
@@ -1795,7 +1848,7 @@ export function PSPropertyBag_WriteGUID(
   propName: string | null /* Windows.Win32.Foundation.PWSTR */,
   value: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libPROPSYS.PSPropertyBag_WriteGUID(util.toPointer(propBag), util.pwstrToFfi(propName), util.toPointer(value)));
+  return util.pointerFromFfi(libPROPSYS_dll.PSPropertyBag_WriteGUID(util.toPointer(propBag), util.pwstrToFfi(propName), util.toPointer(value)));
 }
 
 export function PSPropertyBag_ReadPropertyKey(
@@ -1803,7 +1856,7 @@ export function PSPropertyBag_ReadPropertyKey(
   propName: string | null /* Windows.Win32.Foundation.PWSTR */,
   value: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libPROPSYS.PSPropertyBag_ReadPropertyKey(util.toPointer(propBag), util.pwstrToFfi(propName), util.toPointer(value)));
+  return util.pointerFromFfi(libPROPSYS_dll.PSPropertyBag_ReadPropertyKey(util.toPointer(propBag), util.pwstrToFfi(propName), util.toPointer(value)));
 }
 
 export function PSPropertyBag_WritePropertyKey(
@@ -1811,7 +1864,7 @@ export function PSPropertyBag_WritePropertyKey(
   propName: string | null /* Windows.Win32.Foundation.PWSTR */,
   value: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libPROPSYS.PSPropertyBag_WritePropertyKey(util.toPointer(propBag), util.pwstrToFfi(propName), util.toPointer(value)));
+  return util.pointerFromFfi(libPROPSYS_dll.PSPropertyBag_WritePropertyKey(util.toPointer(propBag), util.pwstrToFfi(propName), util.toPointer(value)));
 }
 
 export function InitPropVariantFromResource(
@@ -1819,7 +1872,7 @@ export function InitPropVariantFromResource(
   id: number /* u32 */,
   ppropvar: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libPROPSYS.InitPropVariantFromResource(util.toPointer(hinst), id, util.toPointer(ppropvar)));
+  return util.pointerFromFfi(libPROPSYS_dll.InitPropVariantFromResource(util.toPointer(hinst), id, util.toPointer(ppropvar)));
 }
 
 export function InitPropVariantFromBuffer(
@@ -1827,28 +1880,28 @@ export function InitPropVariantFromBuffer(
   cb: number /* u32 */,
   ppropvar: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libPROPSYS.InitPropVariantFromBuffer(util.toPointer(pv), cb, util.toPointer(ppropvar)));
+  return util.pointerFromFfi(libPROPSYS_dll.InitPropVariantFromBuffer(util.toPointer(pv), cb, util.toPointer(ppropvar)));
 }
 
 export function InitPropVariantFromCLSID(
   clsid: Deno.PointerValue | Uint8Array | null /* ptr */,
   ppropvar: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libPROPSYS.InitPropVariantFromCLSID(util.toPointer(clsid), util.toPointer(ppropvar)));
+  return util.pointerFromFfi(libPROPSYS_dll.InitPropVariantFromCLSID(util.toPointer(clsid), util.toPointer(ppropvar)));
 }
 
 export function InitPropVariantFromGUIDAsString(
   guid: Deno.PointerValue | Uint8Array | null /* ptr */,
   ppropvar: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libPROPSYS.InitPropVariantFromGUIDAsString(util.toPointer(guid), util.toPointer(ppropvar)));
+  return util.pointerFromFfi(libPROPSYS_dll.InitPropVariantFromGUIDAsString(util.toPointer(guid), util.toPointer(ppropvar)));
 }
 
 export function InitPropVariantFromFileTime(
   pftIn: Deno.PointerValue | Uint8Array | null /* ptr */,
   ppropvar: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libPROPSYS.InitPropVariantFromFileTime(util.toPointer(pftIn), util.toPointer(ppropvar)));
+  return util.pointerFromFfi(libPROPSYS_dll.InitPropVariantFromFileTime(util.toPointer(pftIn), util.toPointer(ppropvar)));
 }
 
 export function InitPropVariantFromPropVariantVectorElem(
@@ -1856,14 +1909,14 @@ export function InitPropVariantFromPropVariantVectorElem(
   iElem: number /* u32 */,
   ppropvar: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libPROPSYS.InitPropVariantFromPropVariantVectorElem(util.toPointer(propvarIn), iElem, util.toPointer(ppropvar)));
+  return util.pointerFromFfi(libPROPSYS_dll.InitPropVariantFromPropVariantVectorElem(util.toPointer(propvarIn), iElem, util.toPointer(ppropvar)));
 }
 
 export function InitPropVariantVectorFromPropVariant(
   propvarSingle: Deno.PointerValue | Uint8Array | null /* ptr */,
   ppropvarVector: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libPROPSYS.InitPropVariantVectorFromPropVariant(util.toPointer(propvarSingle), util.toPointer(ppropvarVector)));
+  return util.pointerFromFfi(libPROPSYS_dll.InitPropVariantVectorFromPropVariant(util.toPointer(propvarSingle), util.toPointer(ppropvarVector)));
 }
 
 export function InitPropVariantFromStrRet(
@@ -1871,7 +1924,7 @@ export function InitPropVariantFromStrRet(
   pidl: Deno.PointerValue | Uint8Array | null /* ptr */,
   ppropvar: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libPROPSYS.InitPropVariantFromStrRet(util.toPointer(pstrret), util.toPointer(pidl), util.toPointer(ppropvar)));
+  return util.pointerFromFfi(libPROPSYS_dll.InitPropVariantFromStrRet(util.toPointer(pstrret), util.toPointer(pidl), util.toPointer(ppropvar)));
 }
 
 export function InitPropVariantFromBooleanVector(
@@ -1879,7 +1932,7 @@ export function InitPropVariantFromBooleanVector(
   cElems: number /* u32 */,
   ppropvar: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libPROPSYS.InitPropVariantFromBooleanVector(util.toPointer(prgf), cElems, util.toPointer(ppropvar)));
+  return util.pointerFromFfi(libPROPSYS_dll.InitPropVariantFromBooleanVector(util.toPointer(prgf), cElems, util.toPointer(ppropvar)));
 }
 
 export function InitPropVariantFromInt16Vector(
@@ -1887,7 +1940,7 @@ export function InitPropVariantFromInt16Vector(
   cElems: number /* u32 */,
   ppropvar: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libPROPSYS.InitPropVariantFromInt16Vector(util.toPointer(prgn), cElems, util.toPointer(ppropvar)));
+  return util.pointerFromFfi(libPROPSYS_dll.InitPropVariantFromInt16Vector(util.toPointer(prgn), cElems, util.toPointer(ppropvar)));
 }
 
 export function InitPropVariantFromUInt16Vector(
@@ -1895,7 +1948,7 @@ export function InitPropVariantFromUInt16Vector(
   cElems: number /* u32 */,
   ppropvar: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libPROPSYS.InitPropVariantFromUInt16Vector(util.toPointer(prgn), cElems, util.toPointer(ppropvar)));
+  return util.pointerFromFfi(libPROPSYS_dll.InitPropVariantFromUInt16Vector(util.toPointer(prgn), cElems, util.toPointer(ppropvar)));
 }
 
 export function InitPropVariantFromInt32Vector(
@@ -1903,7 +1956,7 @@ export function InitPropVariantFromInt32Vector(
   cElems: number /* u32 */,
   ppropvar: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libPROPSYS.InitPropVariantFromInt32Vector(util.toPointer(prgn), cElems, util.toPointer(ppropvar)));
+  return util.pointerFromFfi(libPROPSYS_dll.InitPropVariantFromInt32Vector(util.toPointer(prgn), cElems, util.toPointer(ppropvar)));
 }
 
 export function InitPropVariantFromUInt32Vector(
@@ -1911,7 +1964,7 @@ export function InitPropVariantFromUInt32Vector(
   cElems: number /* u32 */,
   ppropvar: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libPROPSYS.InitPropVariantFromUInt32Vector(util.toPointer(prgn), cElems, util.toPointer(ppropvar)));
+  return util.pointerFromFfi(libPROPSYS_dll.InitPropVariantFromUInt32Vector(util.toPointer(prgn), cElems, util.toPointer(ppropvar)));
 }
 
 export function InitPropVariantFromInt64Vector(
@@ -1919,7 +1972,7 @@ export function InitPropVariantFromInt64Vector(
   cElems: number /* u32 */,
   ppropvar: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libPROPSYS.InitPropVariantFromInt64Vector(util.toPointer(prgn), cElems, util.toPointer(ppropvar)));
+  return util.pointerFromFfi(libPROPSYS_dll.InitPropVariantFromInt64Vector(util.toPointer(prgn), cElems, util.toPointer(ppropvar)));
 }
 
 export function InitPropVariantFromUInt64Vector(
@@ -1927,7 +1980,7 @@ export function InitPropVariantFromUInt64Vector(
   cElems: number /* u32 */,
   ppropvar: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libPROPSYS.InitPropVariantFromUInt64Vector(util.toPointer(prgn), cElems, util.toPointer(ppropvar)));
+  return util.pointerFromFfi(libPROPSYS_dll.InitPropVariantFromUInt64Vector(util.toPointer(prgn), cElems, util.toPointer(ppropvar)));
 }
 
 export function InitPropVariantFromDoubleVector(
@@ -1935,7 +1988,7 @@ export function InitPropVariantFromDoubleVector(
   cElems: number /* u32 */,
   ppropvar: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libPROPSYS.InitPropVariantFromDoubleVector(util.toPointer(prgn), cElems, util.toPointer(ppropvar)));
+  return util.pointerFromFfi(libPROPSYS_dll.InitPropVariantFromDoubleVector(util.toPointer(prgn), cElems, util.toPointer(ppropvar)));
 }
 
 export function InitPropVariantFromFileTimeVector(
@@ -1943,7 +1996,7 @@ export function InitPropVariantFromFileTimeVector(
   cElems: number /* u32 */,
   ppropvar: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libPROPSYS.InitPropVariantFromFileTimeVector(util.toPointer(prgft), cElems, util.toPointer(ppropvar)));
+  return util.pointerFromFfi(libPROPSYS_dll.InitPropVariantFromFileTimeVector(util.toPointer(prgft), cElems, util.toPointer(ppropvar)));
 }
 
 export function InitPropVariantFromStringVector(
@@ -1951,133 +2004,133 @@ export function InitPropVariantFromStringVector(
   cElems: number /* u32 */,
   ppropvar: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libPROPSYS.InitPropVariantFromStringVector(util.toPointer(prgsz), cElems, util.toPointer(ppropvar)));
+  return util.pointerFromFfi(libPROPSYS_dll.InitPropVariantFromStringVector(util.toPointer(prgsz), cElems, util.toPointer(ppropvar)));
 }
 
 export function InitPropVariantFromStringAsVector(
   psz: string | null /* Windows.Win32.Foundation.PWSTR */,
   ppropvar: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libPROPSYS.InitPropVariantFromStringAsVector(util.pwstrToFfi(psz), util.toPointer(ppropvar)));
+  return util.pointerFromFfi(libPROPSYS_dll.InitPropVariantFromStringAsVector(util.pwstrToFfi(psz), util.toPointer(ppropvar)));
 }
 
 export function PropVariantToBooleanWithDefault(
   propvarIn: Deno.PointerValue | Uint8Array | null /* ptr */,
   fDefault: boolean /* Windows.Win32.Foundation.BOOL */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libPROPSYS.PropVariantToBooleanWithDefault(util.toPointer(propvarIn), util.boolToFfi(fDefault)));
+  return util.boolFromFfi(libPROPSYS_dll.PropVariantToBooleanWithDefault(util.toPointer(propvarIn), util.boolToFfi(fDefault)));
 }
 
 export function PropVariantToInt16WithDefault(
   propvarIn: Deno.PointerValue | Uint8Array | null /* ptr */,
   iDefault: number /* i16 */,
 ): number /* i16 */ {
-  return libPROPSYS.PropVariantToInt16WithDefault(util.toPointer(propvarIn), iDefault);
+  return libPROPSYS_dll.PropVariantToInt16WithDefault(util.toPointer(propvarIn), iDefault);
 }
 
 export function PropVariantToUInt16WithDefault(
   propvarIn: Deno.PointerValue | Uint8Array | null /* ptr */,
   uiDefault: number /* u16 */,
 ): number /* u16 */ {
-  return libPROPSYS.PropVariantToUInt16WithDefault(util.toPointer(propvarIn), uiDefault);
+  return libPROPSYS_dll.PropVariantToUInt16WithDefault(util.toPointer(propvarIn), uiDefault);
 }
 
 export function PropVariantToInt32WithDefault(
   propvarIn: Deno.PointerValue | Uint8Array | null /* ptr */,
   lDefault: number /* i32 */,
 ): number /* i32 */ {
-  return libPROPSYS.PropVariantToInt32WithDefault(util.toPointer(propvarIn), lDefault);
+  return libPROPSYS_dll.PropVariantToInt32WithDefault(util.toPointer(propvarIn), lDefault);
 }
 
 export function PropVariantToUInt32WithDefault(
   propvarIn: Deno.PointerValue | Uint8Array | null /* ptr */,
   ulDefault: number /* u32 */,
 ): number /* u32 */ {
-  return libPROPSYS.PropVariantToUInt32WithDefault(util.toPointer(propvarIn), ulDefault);
+  return libPROPSYS_dll.PropVariantToUInt32WithDefault(util.toPointer(propvarIn), ulDefault);
 }
 
 export function PropVariantToInt64WithDefault(
   propvarIn: Deno.PointerValue | Uint8Array | null /* ptr */,
   llDefault: Deno.PointerValue /* i64 */,
 ): Deno.PointerValue /* i64 */ {
-  return libPROPSYS.PropVariantToInt64WithDefault(util.toPointer(propvarIn), llDefault);
+  return libPROPSYS_dll.PropVariantToInt64WithDefault(util.toPointer(propvarIn), llDefault);
 }
 
 export function PropVariantToUInt64WithDefault(
   propvarIn: Deno.PointerValue | Uint8Array | null /* ptr */,
   ullDefault: Deno.PointerValue /* u64 */,
 ): Deno.PointerValue /* u64 */ {
-  return libPROPSYS.PropVariantToUInt64WithDefault(util.toPointer(propvarIn), ullDefault);
+  return libPROPSYS_dll.PropVariantToUInt64WithDefault(util.toPointer(propvarIn), ullDefault);
 }
 
 export function PropVariantToDoubleWithDefault(
   propvarIn: Deno.PointerValue | Uint8Array | null /* ptr */,
   dblDefault: number /* f64 */,
 ): number /* f64 */ {
-  return libPROPSYS.PropVariantToDoubleWithDefault(util.toPointer(propvarIn), dblDefault);
+  return libPROPSYS_dll.PropVariantToDoubleWithDefault(util.toPointer(propvarIn), dblDefault);
 }
 
 export function PropVariantToStringWithDefault(
   propvarIn: Deno.PointerValue | Uint8Array | null /* ptr */,
   pszDefault: string | null /* Windows.Win32.Foundation.PWSTR */,
 ): string | null /* Windows.Win32.Foundation.PWSTR */ {
-  return util.pwstrFromFfi(libPROPSYS.PropVariantToStringWithDefault(util.toPointer(propvarIn), util.pwstrToFfi(pszDefault)));
+  return util.pwstrFromFfi(libPROPSYS_dll.PropVariantToStringWithDefault(util.toPointer(propvarIn), util.pwstrToFfi(pszDefault)));
 }
 
 export function PropVariantToBoolean(
   propvarIn: Deno.PointerValue | Uint8Array | null /* ptr */,
   pfRet: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libPROPSYS.PropVariantToBoolean(util.toPointer(propvarIn), util.toPointer(pfRet)));
+  return util.pointerFromFfi(libPROPSYS_dll.PropVariantToBoolean(util.toPointer(propvarIn), util.toPointer(pfRet)));
 }
 
 export function PropVariantToInt16(
   propvarIn: Deno.PointerValue | Uint8Array | null /* ptr */,
   piRet: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libPROPSYS.PropVariantToInt16(util.toPointer(propvarIn), util.toPointer(piRet)));
+  return util.pointerFromFfi(libPROPSYS_dll.PropVariantToInt16(util.toPointer(propvarIn), util.toPointer(piRet)));
 }
 
 export function PropVariantToUInt16(
   propvarIn: Deno.PointerValue | Uint8Array | null /* ptr */,
   puiRet: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libPROPSYS.PropVariantToUInt16(util.toPointer(propvarIn), util.toPointer(puiRet)));
+  return util.pointerFromFfi(libPROPSYS_dll.PropVariantToUInt16(util.toPointer(propvarIn), util.toPointer(puiRet)));
 }
 
 export function PropVariantToInt32(
   propvarIn: Deno.PointerValue | Uint8Array | null /* ptr */,
   plRet: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libPROPSYS.PropVariantToInt32(util.toPointer(propvarIn), util.toPointer(plRet)));
+  return util.pointerFromFfi(libPROPSYS_dll.PropVariantToInt32(util.toPointer(propvarIn), util.toPointer(plRet)));
 }
 
 export function PropVariantToUInt32(
   propvarIn: Deno.PointerValue | Uint8Array | null /* ptr */,
   pulRet: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libPROPSYS.PropVariantToUInt32(util.toPointer(propvarIn), util.toPointer(pulRet)));
+  return util.pointerFromFfi(libPROPSYS_dll.PropVariantToUInt32(util.toPointer(propvarIn), util.toPointer(pulRet)));
 }
 
 export function PropVariantToInt64(
   propvarIn: Deno.PointerValue | Uint8Array | null /* ptr */,
   pllRet: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libPROPSYS.PropVariantToInt64(util.toPointer(propvarIn), util.toPointer(pllRet)));
+  return util.pointerFromFfi(libPROPSYS_dll.PropVariantToInt64(util.toPointer(propvarIn), util.toPointer(pllRet)));
 }
 
 export function PropVariantToUInt64(
   propvarIn: Deno.PointerValue | Uint8Array | null /* ptr */,
   pullRet: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libPROPSYS.PropVariantToUInt64(util.toPointer(propvarIn), util.toPointer(pullRet)));
+  return util.pointerFromFfi(libPROPSYS_dll.PropVariantToUInt64(util.toPointer(propvarIn), util.toPointer(pullRet)));
 }
 
 export function PropVariantToDouble(
   propvarIn: Deno.PointerValue | Uint8Array | null /* ptr */,
   pdblRet: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libPROPSYS.PropVariantToDouble(util.toPointer(propvarIn), util.toPointer(pdblRet)));
+  return util.pointerFromFfi(libPROPSYS_dll.PropVariantToDouble(util.toPointer(propvarIn), util.toPointer(pdblRet)));
 }
 
 export function PropVariantToBuffer(
@@ -2085,7 +2138,7 @@ export function PropVariantToBuffer(
   pv: Deno.PointerValue | Uint8Array | null /* ptr */,
   cb: number /* u32 */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libPROPSYS.PropVariantToBuffer(util.toPointer(propvar), util.toPointer(pv), cb));
+  return util.pointerFromFfi(libPROPSYS_dll.PropVariantToBuffer(util.toPointer(propvar), util.toPointer(pv), cb));
 }
 
 export function PropVariantToString(
@@ -2093,35 +2146,35 @@ export function PropVariantToString(
   psz: string | null /* Windows.Win32.Foundation.PWSTR */,
   cch: number /* u32 */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libPROPSYS.PropVariantToString(util.toPointer(propvar), util.pwstrToFfi(psz), cch));
+  return util.pointerFromFfi(libPROPSYS_dll.PropVariantToString(util.toPointer(propvar), util.pwstrToFfi(psz), cch));
 }
 
 export function PropVariantToGUID(
   propvar: Deno.PointerValue | Uint8Array | null /* ptr */,
   pguid: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libPROPSYS.PropVariantToGUID(util.toPointer(propvar), util.toPointer(pguid)));
+  return util.pointerFromFfi(libPROPSYS_dll.PropVariantToGUID(util.toPointer(propvar), util.toPointer(pguid)));
 }
 
 export function PropVariantToStringAlloc(
   propvar: Deno.PointerValue | Uint8Array | null /* ptr */,
   ppszOut: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libPROPSYS.PropVariantToStringAlloc(util.toPointer(propvar), util.toPointer(ppszOut)));
+  return util.pointerFromFfi(libPROPSYS_dll.PropVariantToStringAlloc(util.toPointer(propvar), util.toPointer(ppszOut)));
 }
 
 export function PropVariantToBSTR(
   propvar: Deno.PointerValue | Uint8Array | null /* ptr */,
   pbstrOut: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libPROPSYS.PropVariantToBSTR(util.toPointer(propvar), util.toPointer(pbstrOut)));
+  return util.pointerFromFfi(libPROPSYS_dll.PropVariantToBSTR(util.toPointer(propvar), util.toPointer(pbstrOut)));
 }
 
 export function PropVariantToStrRet(
   propvar: Deno.PointerValue | Uint8Array | null /* ptr */,
   pstrret: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libPROPSYS.PropVariantToStrRet(util.toPointer(propvar), util.toPointer(pstrret)));
+  return util.pointerFromFfi(libPROPSYS_dll.PropVariantToStrRet(util.toPointer(propvar), util.toPointer(pstrret)));
 }
 
 export function PropVariantToFileTime(
@@ -2129,13 +2182,13 @@ export function PropVariantToFileTime(
   pstfOut: PSTIME_FLAGS /* Windows.Win32.UI.Shell.PropertiesSystem.PSTIME_FLAGS */,
   pftOut: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libPROPSYS.PropVariantToFileTime(util.toPointer(propvar), pstfOut, util.toPointer(pftOut)));
+  return util.pointerFromFfi(libPROPSYS_dll.PropVariantToFileTime(util.toPointer(propvar), pstfOut, util.toPointer(pftOut)));
 }
 
 export function PropVariantGetElementCount(
   propvar: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libPROPSYS.PropVariantGetElementCount(util.toPointer(propvar));
+  return libPROPSYS_dll.PropVariantGetElementCount(util.toPointer(propvar));
 }
 
 export function PropVariantToBooleanVector(
@@ -2144,7 +2197,7 @@ export function PropVariantToBooleanVector(
   crgf: number /* u32 */,
   pcElem: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libPROPSYS.PropVariantToBooleanVector(util.toPointer(propvar), util.toPointer(prgf), crgf, util.toPointer(pcElem)));
+  return util.pointerFromFfi(libPROPSYS_dll.PropVariantToBooleanVector(util.toPointer(propvar), util.toPointer(prgf), crgf, util.toPointer(pcElem)));
 }
 
 export function PropVariantToInt16Vector(
@@ -2153,7 +2206,7 @@ export function PropVariantToInt16Vector(
   crgn: number /* u32 */,
   pcElem: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libPROPSYS.PropVariantToInt16Vector(util.toPointer(propvar), util.toPointer(prgn), crgn, util.toPointer(pcElem)));
+  return util.pointerFromFfi(libPROPSYS_dll.PropVariantToInt16Vector(util.toPointer(propvar), util.toPointer(prgn), crgn, util.toPointer(pcElem)));
 }
 
 export function PropVariantToUInt16Vector(
@@ -2162,7 +2215,7 @@ export function PropVariantToUInt16Vector(
   crgn: number /* u32 */,
   pcElem: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libPROPSYS.PropVariantToUInt16Vector(util.toPointer(propvar), util.toPointer(prgn), crgn, util.toPointer(pcElem)));
+  return util.pointerFromFfi(libPROPSYS_dll.PropVariantToUInt16Vector(util.toPointer(propvar), util.toPointer(prgn), crgn, util.toPointer(pcElem)));
 }
 
 export function PropVariantToInt32Vector(
@@ -2171,7 +2224,7 @@ export function PropVariantToInt32Vector(
   crgn: number /* u32 */,
   pcElem: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libPROPSYS.PropVariantToInt32Vector(util.toPointer(propvar), util.toPointer(prgn), crgn, util.toPointer(pcElem)));
+  return util.pointerFromFfi(libPROPSYS_dll.PropVariantToInt32Vector(util.toPointer(propvar), util.toPointer(prgn), crgn, util.toPointer(pcElem)));
 }
 
 export function PropVariantToUInt32Vector(
@@ -2180,7 +2233,7 @@ export function PropVariantToUInt32Vector(
   crgn: number /* u32 */,
   pcElem: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libPROPSYS.PropVariantToUInt32Vector(util.toPointer(propvar), util.toPointer(prgn), crgn, util.toPointer(pcElem)));
+  return util.pointerFromFfi(libPROPSYS_dll.PropVariantToUInt32Vector(util.toPointer(propvar), util.toPointer(prgn), crgn, util.toPointer(pcElem)));
 }
 
 export function PropVariantToInt64Vector(
@@ -2189,7 +2242,7 @@ export function PropVariantToInt64Vector(
   crgn: number /* u32 */,
   pcElem: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libPROPSYS.PropVariantToInt64Vector(util.toPointer(propvar), util.toPointer(prgn), crgn, util.toPointer(pcElem)));
+  return util.pointerFromFfi(libPROPSYS_dll.PropVariantToInt64Vector(util.toPointer(propvar), util.toPointer(prgn), crgn, util.toPointer(pcElem)));
 }
 
 export function PropVariantToUInt64Vector(
@@ -2198,7 +2251,7 @@ export function PropVariantToUInt64Vector(
   crgn: number /* u32 */,
   pcElem: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libPROPSYS.PropVariantToUInt64Vector(util.toPointer(propvar), util.toPointer(prgn), crgn, util.toPointer(pcElem)));
+  return util.pointerFromFfi(libPROPSYS_dll.PropVariantToUInt64Vector(util.toPointer(propvar), util.toPointer(prgn), crgn, util.toPointer(pcElem)));
 }
 
 export function PropVariantToDoubleVector(
@@ -2207,7 +2260,7 @@ export function PropVariantToDoubleVector(
   crgn: number /* u32 */,
   pcElem: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libPROPSYS.PropVariantToDoubleVector(util.toPointer(propvar), util.toPointer(prgn), crgn, util.toPointer(pcElem)));
+  return util.pointerFromFfi(libPROPSYS_dll.PropVariantToDoubleVector(util.toPointer(propvar), util.toPointer(prgn), crgn, util.toPointer(pcElem)));
 }
 
 export function PropVariantToFileTimeVector(
@@ -2216,7 +2269,7 @@ export function PropVariantToFileTimeVector(
   crgft: number /* u32 */,
   pcElem: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libPROPSYS.PropVariantToFileTimeVector(util.toPointer(propvar), util.toPointer(prgft), crgft, util.toPointer(pcElem)));
+  return util.pointerFromFfi(libPROPSYS_dll.PropVariantToFileTimeVector(util.toPointer(propvar), util.toPointer(prgft), crgft, util.toPointer(pcElem)));
 }
 
 export function PropVariantToStringVector(
@@ -2225,7 +2278,7 @@ export function PropVariantToStringVector(
   crgsz: number /* u32 */,
   pcElem: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libPROPSYS.PropVariantToStringVector(util.toPointer(propvar), util.toPointer(prgsz), crgsz, util.toPointer(pcElem)));
+  return util.pointerFromFfi(libPROPSYS_dll.PropVariantToStringVector(util.toPointer(propvar), util.toPointer(prgsz), crgsz, util.toPointer(pcElem)));
 }
 
 export function PropVariantToBooleanVectorAlloc(
@@ -2233,7 +2286,7 @@ export function PropVariantToBooleanVectorAlloc(
   pprgf: Deno.PointerValue | Uint8Array | null /* ptr */,
   pcElem: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libPROPSYS.PropVariantToBooleanVectorAlloc(util.toPointer(propvar), util.toPointer(pprgf), util.toPointer(pcElem)));
+  return util.pointerFromFfi(libPROPSYS_dll.PropVariantToBooleanVectorAlloc(util.toPointer(propvar), util.toPointer(pprgf), util.toPointer(pcElem)));
 }
 
 export function PropVariantToInt16VectorAlloc(
@@ -2241,7 +2294,7 @@ export function PropVariantToInt16VectorAlloc(
   pprgn: Deno.PointerValue | Uint8Array | null /* ptr */,
   pcElem: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libPROPSYS.PropVariantToInt16VectorAlloc(util.toPointer(propvar), util.toPointer(pprgn), util.toPointer(pcElem)));
+  return util.pointerFromFfi(libPROPSYS_dll.PropVariantToInt16VectorAlloc(util.toPointer(propvar), util.toPointer(pprgn), util.toPointer(pcElem)));
 }
 
 export function PropVariantToUInt16VectorAlloc(
@@ -2249,7 +2302,7 @@ export function PropVariantToUInt16VectorAlloc(
   pprgn: Deno.PointerValue | Uint8Array | null /* ptr */,
   pcElem: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libPROPSYS.PropVariantToUInt16VectorAlloc(util.toPointer(propvar), util.toPointer(pprgn), util.toPointer(pcElem)));
+  return util.pointerFromFfi(libPROPSYS_dll.PropVariantToUInt16VectorAlloc(util.toPointer(propvar), util.toPointer(pprgn), util.toPointer(pcElem)));
 }
 
 export function PropVariantToInt32VectorAlloc(
@@ -2257,7 +2310,7 @@ export function PropVariantToInt32VectorAlloc(
   pprgn: Deno.PointerValue | Uint8Array | null /* ptr */,
   pcElem: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libPROPSYS.PropVariantToInt32VectorAlloc(util.toPointer(propvar), util.toPointer(pprgn), util.toPointer(pcElem)));
+  return util.pointerFromFfi(libPROPSYS_dll.PropVariantToInt32VectorAlloc(util.toPointer(propvar), util.toPointer(pprgn), util.toPointer(pcElem)));
 }
 
 export function PropVariantToUInt32VectorAlloc(
@@ -2265,7 +2318,7 @@ export function PropVariantToUInt32VectorAlloc(
   pprgn: Deno.PointerValue | Uint8Array | null /* ptr */,
   pcElem: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libPROPSYS.PropVariantToUInt32VectorAlloc(util.toPointer(propvar), util.toPointer(pprgn), util.toPointer(pcElem)));
+  return util.pointerFromFfi(libPROPSYS_dll.PropVariantToUInt32VectorAlloc(util.toPointer(propvar), util.toPointer(pprgn), util.toPointer(pcElem)));
 }
 
 export function PropVariantToInt64VectorAlloc(
@@ -2273,7 +2326,7 @@ export function PropVariantToInt64VectorAlloc(
   pprgn: Deno.PointerValue | Uint8Array | null /* ptr */,
   pcElem: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libPROPSYS.PropVariantToInt64VectorAlloc(util.toPointer(propvar), util.toPointer(pprgn), util.toPointer(pcElem)));
+  return util.pointerFromFfi(libPROPSYS_dll.PropVariantToInt64VectorAlloc(util.toPointer(propvar), util.toPointer(pprgn), util.toPointer(pcElem)));
 }
 
 export function PropVariantToUInt64VectorAlloc(
@@ -2281,7 +2334,7 @@ export function PropVariantToUInt64VectorAlloc(
   pprgn: Deno.PointerValue | Uint8Array | null /* ptr */,
   pcElem: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libPROPSYS.PropVariantToUInt64VectorAlloc(util.toPointer(propvar), util.toPointer(pprgn), util.toPointer(pcElem)));
+  return util.pointerFromFfi(libPROPSYS_dll.PropVariantToUInt64VectorAlloc(util.toPointer(propvar), util.toPointer(pprgn), util.toPointer(pcElem)));
 }
 
 export function PropVariantToDoubleVectorAlloc(
@@ -2289,7 +2342,7 @@ export function PropVariantToDoubleVectorAlloc(
   pprgn: Deno.PointerValue | Uint8Array | null /* ptr */,
   pcElem: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libPROPSYS.PropVariantToDoubleVectorAlloc(util.toPointer(propvar), util.toPointer(pprgn), util.toPointer(pcElem)));
+  return util.pointerFromFfi(libPROPSYS_dll.PropVariantToDoubleVectorAlloc(util.toPointer(propvar), util.toPointer(pprgn), util.toPointer(pcElem)));
 }
 
 export function PropVariantToFileTimeVectorAlloc(
@@ -2297,7 +2350,7 @@ export function PropVariantToFileTimeVectorAlloc(
   pprgft: Deno.PointerValue | Uint8Array | null /* ptr */,
   pcElem: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libPROPSYS.PropVariantToFileTimeVectorAlloc(util.toPointer(propvar), util.toPointer(pprgft), util.toPointer(pcElem)));
+  return util.pointerFromFfi(libPROPSYS_dll.PropVariantToFileTimeVectorAlloc(util.toPointer(propvar), util.toPointer(pprgft), util.toPointer(pcElem)));
 }
 
 export function PropVariantToStringVectorAlloc(
@@ -2305,7 +2358,7 @@ export function PropVariantToStringVectorAlloc(
   pprgsz: Deno.PointerValue | Uint8Array | null /* ptr */,
   pcElem: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libPROPSYS.PropVariantToStringVectorAlloc(util.toPointer(propvar), util.toPointer(pprgsz), util.toPointer(pcElem)));
+  return util.pointerFromFfi(libPROPSYS_dll.PropVariantToStringVectorAlloc(util.toPointer(propvar), util.toPointer(pprgsz), util.toPointer(pcElem)));
 }
 
 export function PropVariantGetBooleanElem(
@@ -2313,7 +2366,7 @@ export function PropVariantGetBooleanElem(
   iElem: number /* u32 */,
   pfVal: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libPROPSYS.PropVariantGetBooleanElem(util.toPointer(propvar), iElem, util.toPointer(pfVal)));
+  return util.pointerFromFfi(libPROPSYS_dll.PropVariantGetBooleanElem(util.toPointer(propvar), iElem, util.toPointer(pfVal)));
 }
 
 export function PropVariantGetInt16Elem(
@@ -2321,7 +2374,7 @@ export function PropVariantGetInt16Elem(
   iElem: number /* u32 */,
   pnVal: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libPROPSYS.PropVariantGetInt16Elem(util.toPointer(propvar), iElem, util.toPointer(pnVal)));
+  return util.pointerFromFfi(libPROPSYS_dll.PropVariantGetInt16Elem(util.toPointer(propvar), iElem, util.toPointer(pnVal)));
 }
 
 export function PropVariantGetUInt16Elem(
@@ -2329,7 +2382,7 @@ export function PropVariantGetUInt16Elem(
   iElem: number /* u32 */,
   pnVal: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libPROPSYS.PropVariantGetUInt16Elem(util.toPointer(propvar), iElem, util.toPointer(pnVal)));
+  return util.pointerFromFfi(libPROPSYS_dll.PropVariantGetUInt16Elem(util.toPointer(propvar), iElem, util.toPointer(pnVal)));
 }
 
 export function PropVariantGetInt32Elem(
@@ -2337,7 +2390,7 @@ export function PropVariantGetInt32Elem(
   iElem: number /* u32 */,
   pnVal: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libPROPSYS.PropVariantGetInt32Elem(util.toPointer(propvar), iElem, util.toPointer(pnVal)));
+  return util.pointerFromFfi(libPROPSYS_dll.PropVariantGetInt32Elem(util.toPointer(propvar), iElem, util.toPointer(pnVal)));
 }
 
 export function PropVariantGetUInt32Elem(
@@ -2345,7 +2398,7 @@ export function PropVariantGetUInt32Elem(
   iElem: number /* u32 */,
   pnVal: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libPROPSYS.PropVariantGetUInt32Elem(util.toPointer(propvar), iElem, util.toPointer(pnVal)));
+  return util.pointerFromFfi(libPROPSYS_dll.PropVariantGetUInt32Elem(util.toPointer(propvar), iElem, util.toPointer(pnVal)));
 }
 
 export function PropVariantGetInt64Elem(
@@ -2353,7 +2406,7 @@ export function PropVariantGetInt64Elem(
   iElem: number /* u32 */,
   pnVal: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libPROPSYS.PropVariantGetInt64Elem(util.toPointer(propvar), iElem, util.toPointer(pnVal)));
+  return util.pointerFromFfi(libPROPSYS_dll.PropVariantGetInt64Elem(util.toPointer(propvar), iElem, util.toPointer(pnVal)));
 }
 
 export function PropVariantGetUInt64Elem(
@@ -2361,7 +2414,7 @@ export function PropVariantGetUInt64Elem(
   iElem: number /* u32 */,
   pnVal: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libPROPSYS.PropVariantGetUInt64Elem(util.toPointer(propvar), iElem, util.toPointer(pnVal)));
+  return util.pointerFromFfi(libPROPSYS_dll.PropVariantGetUInt64Elem(util.toPointer(propvar), iElem, util.toPointer(pnVal)));
 }
 
 export function PropVariantGetDoubleElem(
@@ -2369,7 +2422,7 @@ export function PropVariantGetDoubleElem(
   iElem: number /* u32 */,
   pnVal: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libPROPSYS.PropVariantGetDoubleElem(util.toPointer(propvar), iElem, util.toPointer(pnVal)));
+  return util.pointerFromFfi(libPROPSYS_dll.PropVariantGetDoubleElem(util.toPointer(propvar), iElem, util.toPointer(pnVal)));
 }
 
 export function PropVariantGetFileTimeElem(
@@ -2377,7 +2430,7 @@ export function PropVariantGetFileTimeElem(
   iElem: number /* u32 */,
   pftVal: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libPROPSYS.PropVariantGetFileTimeElem(util.toPointer(propvar), iElem, util.toPointer(pftVal)));
+  return util.pointerFromFfi(libPROPSYS_dll.PropVariantGetFileTimeElem(util.toPointer(propvar), iElem, util.toPointer(pftVal)));
 }
 
 export function PropVariantGetStringElem(
@@ -2385,14 +2438,14 @@ export function PropVariantGetStringElem(
   iElem: number /* u32 */,
   ppszVal: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libPROPSYS.PropVariantGetStringElem(util.toPointer(propvar), iElem, util.toPointer(ppszVal)));
+  return util.pointerFromFfi(libPROPSYS_dll.PropVariantGetStringElem(util.toPointer(propvar), iElem, util.toPointer(ppszVal)));
 }
 
 export function ClearPropVariantArray(
   rgPropVar: Deno.PointerValue | Uint8Array | null /* ptr */,
   cVars: number /* u32 */,
 ): void /* void */ {
-  return libPROPSYS.ClearPropVariantArray(util.toPointer(rgPropVar), cVars);
+  return libPROPSYS_dll.ClearPropVariantArray(util.toPointer(rgPropVar), cVars);
 }
 
 export function PropVariantCompareEx(
@@ -2401,30 +2454,30 @@ export function PropVariantCompareEx(
   unit: PROPVAR_COMPARE_UNIT /* Windows.Win32.UI.Shell.PropertiesSystem.PROPVAR_COMPARE_UNIT */,
   flags: PROPVAR_COMPARE_FLAGS /* Windows.Win32.UI.Shell.PropertiesSystem.PROPVAR_COMPARE_FLAGS */,
 ): number /* i32 */ {
-  return libPROPSYS.PropVariantCompareEx(util.toPointer(propvar1), util.toPointer(propvar2), unit, flags);
+  return libPROPSYS_dll.PropVariantCompareEx(util.toPointer(propvar1), util.toPointer(propvar2), unit, flags);
 }
 
 export function PropVariantChangeType(
   ppropvarDest: Deno.PointerValue | Uint8Array | null /* ptr */,
   propvarSrc: Deno.PointerValue | Uint8Array | null /* ptr */,
   flags: PROPVAR_CHANGE_FLAGS /* Windows.Win32.UI.Shell.PropertiesSystem.PROPVAR_CHANGE_FLAGS */,
-  vt: number /* u16 */,
+  vt: VARENUM /* Windows.Win32.System.Com.VARENUM */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libPROPSYS.PropVariantChangeType(util.toPointer(ppropvarDest), util.toPointer(propvarSrc), flags, vt));
+  return util.pointerFromFfi(libPROPSYS_dll.PropVariantChangeType(util.toPointer(ppropvarDest), util.toPointer(propvarSrc), flags, vt));
 }
 
 export function PropVariantToVariant(
   pPropVar: Deno.PointerValue | Uint8Array | null /* ptr */,
   pVar: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libPROPSYS.PropVariantToVariant(util.toPointer(pPropVar), util.toPointer(pVar)));
+  return util.pointerFromFfi(libPROPSYS_dll.PropVariantToVariant(util.toPointer(pPropVar), util.toPointer(pVar)));
 }
 
 export function VariantToPropVariant(
   pVar: Deno.PointerValue | Uint8Array | null /* ptr */,
   pPropVar: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libPROPSYS.VariantToPropVariant(util.toPointer(pVar), util.toPointer(pPropVar)));
+  return util.pointerFromFfi(libPROPSYS_dll.VariantToPropVariant(util.toPointer(pVar), util.toPointer(pPropVar)));
 }
 
 export function InitVariantFromResource(
@@ -2432,7 +2485,7 @@ export function InitVariantFromResource(
   id: number /* u32 */,
   pvar: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libPROPSYS.InitVariantFromResource(util.toPointer(hinst), id, util.toPointer(pvar)));
+  return util.pointerFromFfi(libPROPSYS_dll.InitVariantFromResource(util.toPointer(hinst), id, util.toPointer(pvar)));
 }
 
 export function InitVariantFromBuffer(
@@ -2440,21 +2493,21 @@ export function InitVariantFromBuffer(
   cb: number /* u32 */,
   pvar: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libPROPSYS.InitVariantFromBuffer(util.toPointer(pv), cb, util.toPointer(pvar)));
+  return util.pointerFromFfi(libPROPSYS_dll.InitVariantFromBuffer(util.toPointer(pv), cb, util.toPointer(pvar)));
 }
 
 export function InitVariantFromGUIDAsString(
   guid: Deno.PointerValue | Uint8Array | null /* ptr */,
   pvar: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libPROPSYS.InitVariantFromGUIDAsString(util.toPointer(guid), util.toPointer(pvar)));
+  return util.pointerFromFfi(libPROPSYS_dll.InitVariantFromGUIDAsString(util.toPointer(guid), util.toPointer(pvar)));
 }
 
 export function InitVariantFromFileTime(
   pft: Deno.PointerValue | Uint8Array | null /* ptr */,
   pvar: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libPROPSYS.InitVariantFromFileTime(util.toPointer(pft), util.toPointer(pvar)));
+  return util.pointerFromFfi(libPROPSYS_dll.InitVariantFromFileTime(util.toPointer(pft), util.toPointer(pvar)));
 }
 
 export function InitVariantFromFileTimeArray(
@@ -2462,7 +2515,7 @@ export function InitVariantFromFileTimeArray(
   cElems: number /* u32 */,
   pvar: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libPROPSYS.InitVariantFromFileTimeArray(util.toPointer(prgft), cElems, util.toPointer(pvar)));
+  return util.pointerFromFfi(libPROPSYS_dll.InitVariantFromFileTimeArray(util.toPointer(prgft), cElems, util.toPointer(pvar)));
 }
 
 export function InitVariantFromStrRet(
@@ -2470,7 +2523,7 @@ export function InitVariantFromStrRet(
   pidl: Deno.PointerValue | Uint8Array | null /* ptr */,
   pvar: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libPROPSYS.InitVariantFromStrRet(util.toPointer(pstrret), util.toPointer(pidl), util.toPointer(pvar)));
+  return util.pointerFromFfi(libPROPSYS_dll.InitVariantFromStrRet(util.toPointer(pstrret), util.toPointer(pidl), util.toPointer(pvar)));
 }
 
 export function InitVariantFromVariantArrayElem(
@@ -2478,7 +2531,7 @@ export function InitVariantFromVariantArrayElem(
   iElem: number /* u32 */,
   pvar: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libPROPSYS.InitVariantFromVariantArrayElem(util.toPointer(varIn), iElem, util.toPointer(pvar)));
+  return util.pointerFromFfi(libPROPSYS_dll.InitVariantFromVariantArrayElem(util.toPointer(varIn), iElem, util.toPointer(pvar)));
 }
 
 export function InitVariantFromBooleanArray(
@@ -2486,7 +2539,7 @@ export function InitVariantFromBooleanArray(
   cElems: number /* u32 */,
   pvar: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libPROPSYS.InitVariantFromBooleanArray(util.toPointer(prgf), cElems, util.toPointer(pvar)));
+  return util.pointerFromFfi(libPROPSYS_dll.InitVariantFromBooleanArray(util.toPointer(prgf), cElems, util.toPointer(pvar)));
 }
 
 export function InitVariantFromInt16Array(
@@ -2494,7 +2547,7 @@ export function InitVariantFromInt16Array(
   cElems: number /* u32 */,
   pvar: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libPROPSYS.InitVariantFromInt16Array(util.toPointer(prgn), cElems, util.toPointer(pvar)));
+  return util.pointerFromFfi(libPROPSYS_dll.InitVariantFromInt16Array(util.toPointer(prgn), cElems, util.toPointer(pvar)));
 }
 
 export function InitVariantFromUInt16Array(
@@ -2502,7 +2555,7 @@ export function InitVariantFromUInt16Array(
   cElems: number /* u32 */,
   pvar: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libPROPSYS.InitVariantFromUInt16Array(util.toPointer(prgn), cElems, util.toPointer(pvar)));
+  return util.pointerFromFfi(libPROPSYS_dll.InitVariantFromUInt16Array(util.toPointer(prgn), cElems, util.toPointer(pvar)));
 }
 
 export function InitVariantFromInt32Array(
@@ -2510,7 +2563,7 @@ export function InitVariantFromInt32Array(
   cElems: number /* u32 */,
   pvar: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libPROPSYS.InitVariantFromInt32Array(util.toPointer(prgn), cElems, util.toPointer(pvar)));
+  return util.pointerFromFfi(libPROPSYS_dll.InitVariantFromInt32Array(util.toPointer(prgn), cElems, util.toPointer(pvar)));
 }
 
 export function InitVariantFromUInt32Array(
@@ -2518,7 +2571,7 @@ export function InitVariantFromUInt32Array(
   cElems: number /* u32 */,
   pvar: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libPROPSYS.InitVariantFromUInt32Array(util.toPointer(prgn), cElems, util.toPointer(pvar)));
+  return util.pointerFromFfi(libPROPSYS_dll.InitVariantFromUInt32Array(util.toPointer(prgn), cElems, util.toPointer(pvar)));
 }
 
 export function InitVariantFromInt64Array(
@@ -2526,7 +2579,7 @@ export function InitVariantFromInt64Array(
   cElems: number /* u32 */,
   pvar: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libPROPSYS.InitVariantFromInt64Array(util.toPointer(prgn), cElems, util.toPointer(pvar)));
+  return util.pointerFromFfi(libPROPSYS_dll.InitVariantFromInt64Array(util.toPointer(prgn), cElems, util.toPointer(pvar)));
 }
 
 export function InitVariantFromUInt64Array(
@@ -2534,7 +2587,7 @@ export function InitVariantFromUInt64Array(
   cElems: number /* u32 */,
   pvar: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libPROPSYS.InitVariantFromUInt64Array(util.toPointer(prgn), cElems, util.toPointer(pvar)));
+  return util.pointerFromFfi(libPROPSYS_dll.InitVariantFromUInt64Array(util.toPointer(prgn), cElems, util.toPointer(pvar)));
 }
 
 export function InitVariantFromDoubleArray(
@@ -2542,7 +2595,7 @@ export function InitVariantFromDoubleArray(
   cElems: number /* u32 */,
   pvar: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libPROPSYS.InitVariantFromDoubleArray(util.toPointer(prgn), cElems, util.toPointer(pvar)));
+  return util.pointerFromFfi(libPROPSYS_dll.InitVariantFromDoubleArray(util.toPointer(prgn), cElems, util.toPointer(pvar)));
 }
 
 export function InitVariantFromStringArray(
@@ -2550,126 +2603,126 @@ export function InitVariantFromStringArray(
   cElems: number /* u32 */,
   pvar: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libPROPSYS.InitVariantFromStringArray(util.toPointer(prgsz), cElems, util.toPointer(pvar)));
+  return util.pointerFromFfi(libPROPSYS_dll.InitVariantFromStringArray(util.toPointer(prgsz), cElems, util.toPointer(pvar)));
 }
 
 export function VariantToBooleanWithDefault(
   varIn: Deno.PointerValue | Uint8Array | null /* ptr */,
   fDefault: boolean /* Windows.Win32.Foundation.BOOL */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libPROPSYS.VariantToBooleanWithDefault(util.toPointer(varIn), util.boolToFfi(fDefault)));
+  return util.boolFromFfi(libPROPSYS_dll.VariantToBooleanWithDefault(util.toPointer(varIn), util.boolToFfi(fDefault)));
 }
 
 export function VariantToInt16WithDefault(
   varIn: Deno.PointerValue | Uint8Array | null /* ptr */,
   iDefault: number /* i16 */,
 ): number /* i16 */ {
-  return libPROPSYS.VariantToInt16WithDefault(util.toPointer(varIn), iDefault);
+  return libPROPSYS_dll.VariantToInt16WithDefault(util.toPointer(varIn), iDefault);
 }
 
 export function VariantToUInt16WithDefault(
   varIn: Deno.PointerValue | Uint8Array | null /* ptr */,
   uiDefault: number /* u16 */,
 ): number /* u16 */ {
-  return libPROPSYS.VariantToUInt16WithDefault(util.toPointer(varIn), uiDefault);
+  return libPROPSYS_dll.VariantToUInt16WithDefault(util.toPointer(varIn), uiDefault);
 }
 
 export function VariantToInt32WithDefault(
   varIn: Deno.PointerValue | Uint8Array | null /* ptr */,
   lDefault: number /* i32 */,
 ): number /* i32 */ {
-  return libPROPSYS.VariantToInt32WithDefault(util.toPointer(varIn), lDefault);
+  return libPROPSYS_dll.VariantToInt32WithDefault(util.toPointer(varIn), lDefault);
 }
 
 export function VariantToUInt32WithDefault(
   varIn: Deno.PointerValue | Uint8Array | null /* ptr */,
   ulDefault: number /* u32 */,
 ): number /* u32 */ {
-  return libPROPSYS.VariantToUInt32WithDefault(util.toPointer(varIn), ulDefault);
+  return libPROPSYS_dll.VariantToUInt32WithDefault(util.toPointer(varIn), ulDefault);
 }
 
 export function VariantToInt64WithDefault(
   varIn: Deno.PointerValue | Uint8Array | null /* ptr */,
   llDefault: Deno.PointerValue /* i64 */,
 ): Deno.PointerValue /* i64 */ {
-  return libPROPSYS.VariantToInt64WithDefault(util.toPointer(varIn), llDefault);
+  return libPROPSYS_dll.VariantToInt64WithDefault(util.toPointer(varIn), llDefault);
 }
 
 export function VariantToUInt64WithDefault(
   varIn: Deno.PointerValue | Uint8Array | null /* ptr */,
   ullDefault: Deno.PointerValue /* u64 */,
 ): Deno.PointerValue /* u64 */ {
-  return libPROPSYS.VariantToUInt64WithDefault(util.toPointer(varIn), ullDefault);
+  return libPROPSYS_dll.VariantToUInt64WithDefault(util.toPointer(varIn), ullDefault);
 }
 
 export function VariantToDoubleWithDefault(
   varIn: Deno.PointerValue | Uint8Array | null /* ptr */,
   dblDefault: number /* f64 */,
 ): number /* f64 */ {
-  return libPROPSYS.VariantToDoubleWithDefault(util.toPointer(varIn), dblDefault);
+  return libPROPSYS_dll.VariantToDoubleWithDefault(util.toPointer(varIn), dblDefault);
 }
 
 export function VariantToStringWithDefault(
   varIn: Deno.PointerValue | Uint8Array | null /* ptr */,
   pszDefault: string | null /* Windows.Win32.Foundation.PWSTR */,
 ): string | null /* Windows.Win32.Foundation.PWSTR */ {
-  return util.pwstrFromFfi(libPROPSYS.VariantToStringWithDefault(util.toPointer(varIn), util.pwstrToFfi(pszDefault)));
+  return util.pwstrFromFfi(libPROPSYS_dll.VariantToStringWithDefault(util.toPointer(varIn), util.pwstrToFfi(pszDefault)));
 }
 
 export function VariantToBoolean(
   varIn: Deno.PointerValue | Uint8Array | null /* ptr */,
   pfRet: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libPROPSYS.VariantToBoolean(util.toPointer(varIn), util.toPointer(pfRet)));
+  return util.pointerFromFfi(libPROPSYS_dll.VariantToBoolean(util.toPointer(varIn), util.toPointer(pfRet)));
 }
 
 export function VariantToInt16(
   varIn: Deno.PointerValue | Uint8Array | null /* ptr */,
   piRet: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libPROPSYS.VariantToInt16(util.toPointer(varIn), util.toPointer(piRet)));
+  return util.pointerFromFfi(libPROPSYS_dll.VariantToInt16(util.toPointer(varIn), util.toPointer(piRet)));
 }
 
 export function VariantToUInt16(
   varIn: Deno.PointerValue | Uint8Array | null /* ptr */,
   puiRet: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libPROPSYS.VariantToUInt16(util.toPointer(varIn), util.toPointer(puiRet)));
+  return util.pointerFromFfi(libPROPSYS_dll.VariantToUInt16(util.toPointer(varIn), util.toPointer(puiRet)));
 }
 
 export function VariantToInt32(
   varIn: Deno.PointerValue | Uint8Array | null /* ptr */,
   plRet: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libPROPSYS.VariantToInt32(util.toPointer(varIn), util.toPointer(plRet)));
+  return util.pointerFromFfi(libPROPSYS_dll.VariantToInt32(util.toPointer(varIn), util.toPointer(plRet)));
 }
 
 export function VariantToUInt32(
   varIn: Deno.PointerValue | Uint8Array | null /* ptr */,
   pulRet: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libPROPSYS.VariantToUInt32(util.toPointer(varIn), util.toPointer(pulRet)));
+  return util.pointerFromFfi(libPROPSYS_dll.VariantToUInt32(util.toPointer(varIn), util.toPointer(pulRet)));
 }
 
 export function VariantToInt64(
   varIn: Deno.PointerValue | Uint8Array | null /* ptr */,
   pllRet: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libPROPSYS.VariantToInt64(util.toPointer(varIn), util.toPointer(pllRet)));
+  return util.pointerFromFfi(libPROPSYS_dll.VariantToInt64(util.toPointer(varIn), util.toPointer(pllRet)));
 }
 
 export function VariantToUInt64(
   varIn: Deno.PointerValue | Uint8Array | null /* ptr */,
   pullRet: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libPROPSYS.VariantToUInt64(util.toPointer(varIn), util.toPointer(pullRet)));
+  return util.pointerFromFfi(libPROPSYS_dll.VariantToUInt64(util.toPointer(varIn), util.toPointer(pullRet)));
 }
 
 export function VariantToDouble(
   varIn: Deno.PointerValue | Uint8Array | null /* ptr */,
   pdblRet: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libPROPSYS.VariantToDouble(util.toPointer(varIn), util.toPointer(pdblRet)));
+  return util.pointerFromFfi(libPROPSYS_dll.VariantToDouble(util.toPointer(varIn), util.toPointer(pdblRet)));
 }
 
 export function VariantToBuffer(
@@ -2677,14 +2730,14 @@ export function VariantToBuffer(
   pv: Deno.PointerValue | Uint8Array | null /* ptr */,
   cb: number /* u32 */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libPROPSYS.VariantToBuffer(util.toPointer(varIn), util.toPointer(pv), cb));
+  return util.pointerFromFfi(libPROPSYS_dll.VariantToBuffer(util.toPointer(varIn), util.toPointer(pv), cb));
 }
 
 export function VariantToGUID(
   varIn: Deno.PointerValue | Uint8Array | null /* ptr */,
   pguid: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libPROPSYS.VariantToGUID(util.toPointer(varIn), util.toPointer(pguid)));
+  return util.pointerFromFfi(libPROPSYS_dll.VariantToGUID(util.toPointer(varIn), util.toPointer(pguid)));
 }
 
 export function VariantToString(
@@ -2692,14 +2745,14 @@ export function VariantToString(
   pszBuf: string | null /* Windows.Win32.Foundation.PWSTR */,
   cchBuf: number /* u32 */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libPROPSYS.VariantToString(util.toPointer(varIn), util.pwstrToFfi(pszBuf), cchBuf));
+  return util.pointerFromFfi(libPROPSYS_dll.VariantToString(util.toPointer(varIn), util.pwstrToFfi(pszBuf), cchBuf));
 }
 
 export function VariantToStringAlloc(
   varIn: Deno.PointerValue | Uint8Array | null /* ptr */,
   ppszBuf: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libPROPSYS.VariantToStringAlloc(util.toPointer(varIn), util.toPointer(ppszBuf)));
+  return util.pointerFromFfi(libPROPSYS_dll.VariantToStringAlloc(util.toPointer(varIn), util.toPointer(ppszBuf)));
 }
 
 export function VariantToDosDateTime(
@@ -2707,14 +2760,14 @@ export function VariantToDosDateTime(
   pwDate: Deno.PointerValue | Uint8Array | null /* ptr */,
   pwTime: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libPROPSYS.VariantToDosDateTime(util.toPointer(varIn), util.toPointer(pwDate), util.toPointer(pwTime)));
+  return util.pointerFromFfi(libPROPSYS_dll.VariantToDosDateTime(util.toPointer(varIn), util.toPointer(pwDate), util.toPointer(pwTime)));
 }
 
 export function VariantToStrRet(
   varIn: Deno.PointerValue | Uint8Array | null /* ptr */,
   pstrret: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libPROPSYS.VariantToStrRet(util.toPointer(varIn), util.toPointer(pstrret)));
+  return util.pointerFromFfi(libPROPSYS_dll.VariantToStrRet(util.toPointer(varIn), util.toPointer(pstrret)));
 }
 
 export function VariantToFileTime(
@@ -2722,13 +2775,13 @@ export function VariantToFileTime(
   stfOut: PSTIME_FLAGS /* Windows.Win32.UI.Shell.PropertiesSystem.PSTIME_FLAGS */,
   pftOut: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libPROPSYS.VariantToFileTime(util.toPointer(varIn), stfOut, util.toPointer(pftOut)));
+  return util.pointerFromFfi(libPROPSYS_dll.VariantToFileTime(util.toPointer(varIn), stfOut, util.toPointer(pftOut)));
 }
 
 export function VariantGetElementCount(
   varIn: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libPROPSYS.VariantGetElementCount(util.toPointer(varIn));
+  return libPROPSYS_dll.VariantGetElementCount(util.toPointer(varIn));
 }
 
 export function VariantToBooleanArray(
@@ -2737,7 +2790,7 @@ export function VariantToBooleanArray(
   crgn: number /* u32 */,
   pcElem: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libPROPSYS.VariantToBooleanArray(util.toPointer(var__), util.toPointer(prgf), crgn, util.toPointer(pcElem)));
+  return util.pointerFromFfi(libPROPSYS_dll.VariantToBooleanArray(util.toPointer(var__), util.toPointer(prgf), crgn, util.toPointer(pcElem)));
 }
 
 export function VariantToInt16Array(
@@ -2746,7 +2799,7 @@ export function VariantToInt16Array(
   crgn: number /* u32 */,
   pcElem: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libPROPSYS.VariantToInt16Array(util.toPointer(var__), util.toPointer(prgn), crgn, util.toPointer(pcElem)));
+  return util.pointerFromFfi(libPROPSYS_dll.VariantToInt16Array(util.toPointer(var__), util.toPointer(prgn), crgn, util.toPointer(pcElem)));
 }
 
 export function VariantToUInt16Array(
@@ -2755,7 +2808,7 @@ export function VariantToUInt16Array(
   crgn: number /* u32 */,
   pcElem: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libPROPSYS.VariantToUInt16Array(util.toPointer(var__), util.toPointer(prgn), crgn, util.toPointer(pcElem)));
+  return util.pointerFromFfi(libPROPSYS_dll.VariantToUInt16Array(util.toPointer(var__), util.toPointer(prgn), crgn, util.toPointer(pcElem)));
 }
 
 export function VariantToInt32Array(
@@ -2764,7 +2817,7 @@ export function VariantToInt32Array(
   crgn: number /* u32 */,
   pcElem: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libPROPSYS.VariantToInt32Array(util.toPointer(var__), util.toPointer(prgn), crgn, util.toPointer(pcElem)));
+  return util.pointerFromFfi(libPROPSYS_dll.VariantToInt32Array(util.toPointer(var__), util.toPointer(prgn), crgn, util.toPointer(pcElem)));
 }
 
 export function VariantToUInt32Array(
@@ -2773,7 +2826,7 @@ export function VariantToUInt32Array(
   crgn: number /* u32 */,
   pcElem: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libPROPSYS.VariantToUInt32Array(util.toPointer(var__), util.toPointer(prgn), crgn, util.toPointer(pcElem)));
+  return util.pointerFromFfi(libPROPSYS_dll.VariantToUInt32Array(util.toPointer(var__), util.toPointer(prgn), crgn, util.toPointer(pcElem)));
 }
 
 export function VariantToInt64Array(
@@ -2782,7 +2835,7 @@ export function VariantToInt64Array(
   crgn: number /* u32 */,
   pcElem: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libPROPSYS.VariantToInt64Array(util.toPointer(var__), util.toPointer(prgn), crgn, util.toPointer(pcElem)));
+  return util.pointerFromFfi(libPROPSYS_dll.VariantToInt64Array(util.toPointer(var__), util.toPointer(prgn), crgn, util.toPointer(pcElem)));
 }
 
 export function VariantToUInt64Array(
@@ -2791,7 +2844,7 @@ export function VariantToUInt64Array(
   crgn: number /* u32 */,
   pcElem: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libPROPSYS.VariantToUInt64Array(util.toPointer(var__), util.toPointer(prgn), crgn, util.toPointer(pcElem)));
+  return util.pointerFromFfi(libPROPSYS_dll.VariantToUInt64Array(util.toPointer(var__), util.toPointer(prgn), crgn, util.toPointer(pcElem)));
 }
 
 export function VariantToDoubleArray(
@@ -2800,7 +2853,7 @@ export function VariantToDoubleArray(
   crgn: number /* u32 */,
   pcElem: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libPROPSYS.VariantToDoubleArray(util.toPointer(var__), util.toPointer(prgn), crgn, util.toPointer(pcElem)));
+  return util.pointerFromFfi(libPROPSYS_dll.VariantToDoubleArray(util.toPointer(var__), util.toPointer(prgn), crgn, util.toPointer(pcElem)));
 }
 
 export function VariantToStringArray(
@@ -2809,7 +2862,7 @@ export function VariantToStringArray(
   crgsz: number /* u32 */,
   pcElem: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libPROPSYS.VariantToStringArray(util.toPointer(var__), util.toPointer(prgsz), crgsz, util.toPointer(pcElem)));
+  return util.pointerFromFfi(libPROPSYS_dll.VariantToStringArray(util.toPointer(var__), util.toPointer(prgsz), crgsz, util.toPointer(pcElem)));
 }
 
 export function VariantToBooleanArrayAlloc(
@@ -2817,7 +2870,7 @@ export function VariantToBooleanArrayAlloc(
   pprgf: Deno.PointerValue | Uint8Array | null /* ptr */,
   pcElem: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libPROPSYS.VariantToBooleanArrayAlloc(util.toPointer(var__), util.toPointer(pprgf), util.toPointer(pcElem)));
+  return util.pointerFromFfi(libPROPSYS_dll.VariantToBooleanArrayAlloc(util.toPointer(var__), util.toPointer(pprgf), util.toPointer(pcElem)));
 }
 
 export function VariantToInt16ArrayAlloc(
@@ -2825,7 +2878,7 @@ export function VariantToInt16ArrayAlloc(
   pprgn: Deno.PointerValue | Uint8Array | null /* ptr */,
   pcElem: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libPROPSYS.VariantToInt16ArrayAlloc(util.toPointer(var__), util.toPointer(pprgn), util.toPointer(pcElem)));
+  return util.pointerFromFfi(libPROPSYS_dll.VariantToInt16ArrayAlloc(util.toPointer(var__), util.toPointer(pprgn), util.toPointer(pcElem)));
 }
 
 export function VariantToUInt16ArrayAlloc(
@@ -2833,7 +2886,7 @@ export function VariantToUInt16ArrayAlloc(
   pprgn: Deno.PointerValue | Uint8Array | null /* ptr */,
   pcElem: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libPROPSYS.VariantToUInt16ArrayAlloc(util.toPointer(var__), util.toPointer(pprgn), util.toPointer(pcElem)));
+  return util.pointerFromFfi(libPROPSYS_dll.VariantToUInt16ArrayAlloc(util.toPointer(var__), util.toPointer(pprgn), util.toPointer(pcElem)));
 }
 
 export function VariantToInt32ArrayAlloc(
@@ -2841,7 +2894,7 @@ export function VariantToInt32ArrayAlloc(
   pprgn: Deno.PointerValue | Uint8Array | null /* ptr */,
   pcElem: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libPROPSYS.VariantToInt32ArrayAlloc(util.toPointer(var__), util.toPointer(pprgn), util.toPointer(pcElem)));
+  return util.pointerFromFfi(libPROPSYS_dll.VariantToInt32ArrayAlloc(util.toPointer(var__), util.toPointer(pprgn), util.toPointer(pcElem)));
 }
 
 export function VariantToUInt32ArrayAlloc(
@@ -2849,7 +2902,7 @@ export function VariantToUInt32ArrayAlloc(
   pprgn: Deno.PointerValue | Uint8Array | null /* ptr */,
   pcElem: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libPROPSYS.VariantToUInt32ArrayAlloc(util.toPointer(var__), util.toPointer(pprgn), util.toPointer(pcElem)));
+  return util.pointerFromFfi(libPROPSYS_dll.VariantToUInt32ArrayAlloc(util.toPointer(var__), util.toPointer(pprgn), util.toPointer(pcElem)));
 }
 
 export function VariantToInt64ArrayAlloc(
@@ -2857,7 +2910,7 @@ export function VariantToInt64ArrayAlloc(
   pprgn: Deno.PointerValue | Uint8Array | null /* ptr */,
   pcElem: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libPROPSYS.VariantToInt64ArrayAlloc(util.toPointer(var__), util.toPointer(pprgn), util.toPointer(pcElem)));
+  return util.pointerFromFfi(libPROPSYS_dll.VariantToInt64ArrayAlloc(util.toPointer(var__), util.toPointer(pprgn), util.toPointer(pcElem)));
 }
 
 export function VariantToUInt64ArrayAlloc(
@@ -2865,7 +2918,7 @@ export function VariantToUInt64ArrayAlloc(
   pprgn: Deno.PointerValue | Uint8Array | null /* ptr */,
   pcElem: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libPROPSYS.VariantToUInt64ArrayAlloc(util.toPointer(var__), util.toPointer(pprgn), util.toPointer(pcElem)));
+  return util.pointerFromFfi(libPROPSYS_dll.VariantToUInt64ArrayAlloc(util.toPointer(var__), util.toPointer(pprgn), util.toPointer(pcElem)));
 }
 
 export function VariantToDoubleArrayAlloc(
@@ -2873,7 +2926,7 @@ export function VariantToDoubleArrayAlloc(
   pprgn: Deno.PointerValue | Uint8Array | null /* ptr */,
   pcElem: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libPROPSYS.VariantToDoubleArrayAlloc(util.toPointer(var__), util.toPointer(pprgn), util.toPointer(pcElem)));
+  return util.pointerFromFfi(libPROPSYS_dll.VariantToDoubleArrayAlloc(util.toPointer(var__), util.toPointer(pprgn), util.toPointer(pcElem)));
 }
 
 export function VariantToStringArrayAlloc(
@@ -2881,7 +2934,7 @@ export function VariantToStringArrayAlloc(
   pprgsz: Deno.PointerValue | Uint8Array | null /* ptr */,
   pcElem: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libPROPSYS.VariantToStringArrayAlloc(util.toPointer(var__), util.toPointer(pprgsz), util.toPointer(pcElem)));
+  return util.pointerFromFfi(libPROPSYS_dll.VariantToStringArrayAlloc(util.toPointer(var__), util.toPointer(pprgsz), util.toPointer(pcElem)));
 }
 
 export function VariantGetBooleanElem(
@@ -2889,7 +2942,7 @@ export function VariantGetBooleanElem(
   iElem: number /* u32 */,
   pfVal: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libPROPSYS.VariantGetBooleanElem(util.toPointer(var__), iElem, util.toPointer(pfVal)));
+  return util.pointerFromFfi(libPROPSYS_dll.VariantGetBooleanElem(util.toPointer(var__), iElem, util.toPointer(pfVal)));
 }
 
 export function VariantGetInt16Elem(
@@ -2897,7 +2950,7 @@ export function VariantGetInt16Elem(
   iElem: number /* u32 */,
   pnVal: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libPROPSYS.VariantGetInt16Elem(util.toPointer(var__), iElem, util.toPointer(pnVal)));
+  return util.pointerFromFfi(libPROPSYS_dll.VariantGetInt16Elem(util.toPointer(var__), iElem, util.toPointer(pnVal)));
 }
 
 export function VariantGetUInt16Elem(
@@ -2905,7 +2958,7 @@ export function VariantGetUInt16Elem(
   iElem: number /* u32 */,
   pnVal: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libPROPSYS.VariantGetUInt16Elem(util.toPointer(var__), iElem, util.toPointer(pnVal)));
+  return util.pointerFromFfi(libPROPSYS_dll.VariantGetUInt16Elem(util.toPointer(var__), iElem, util.toPointer(pnVal)));
 }
 
 export function VariantGetInt32Elem(
@@ -2913,7 +2966,7 @@ export function VariantGetInt32Elem(
   iElem: number /* u32 */,
   pnVal: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libPROPSYS.VariantGetInt32Elem(util.toPointer(var__), iElem, util.toPointer(pnVal)));
+  return util.pointerFromFfi(libPROPSYS_dll.VariantGetInt32Elem(util.toPointer(var__), iElem, util.toPointer(pnVal)));
 }
 
 export function VariantGetUInt32Elem(
@@ -2921,7 +2974,7 @@ export function VariantGetUInt32Elem(
   iElem: number /* u32 */,
   pnVal: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libPROPSYS.VariantGetUInt32Elem(util.toPointer(var__), iElem, util.toPointer(pnVal)));
+  return util.pointerFromFfi(libPROPSYS_dll.VariantGetUInt32Elem(util.toPointer(var__), iElem, util.toPointer(pnVal)));
 }
 
 export function VariantGetInt64Elem(
@@ -2929,7 +2982,7 @@ export function VariantGetInt64Elem(
   iElem: number /* u32 */,
   pnVal: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libPROPSYS.VariantGetInt64Elem(util.toPointer(var__), iElem, util.toPointer(pnVal)));
+  return util.pointerFromFfi(libPROPSYS_dll.VariantGetInt64Elem(util.toPointer(var__), iElem, util.toPointer(pnVal)));
 }
 
 export function VariantGetUInt64Elem(
@@ -2937,7 +2990,7 @@ export function VariantGetUInt64Elem(
   iElem: number /* u32 */,
   pnVal: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libPROPSYS.VariantGetUInt64Elem(util.toPointer(var__), iElem, util.toPointer(pnVal)));
+  return util.pointerFromFfi(libPROPSYS_dll.VariantGetUInt64Elem(util.toPointer(var__), iElem, util.toPointer(pnVal)));
 }
 
 export function VariantGetDoubleElem(
@@ -2945,7 +2998,7 @@ export function VariantGetDoubleElem(
   iElem: number /* u32 */,
   pnVal: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libPROPSYS.VariantGetDoubleElem(util.toPointer(var__), iElem, util.toPointer(pnVal)));
+  return util.pointerFromFfi(libPROPSYS_dll.VariantGetDoubleElem(util.toPointer(var__), iElem, util.toPointer(pnVal)));
 }
 
 export function VariantGetStringElem(
@@ -2953,21 +3006,21 @@ export function VariantGetStringElem(
   iElem: number /* u32 */,
   ppszVal: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libPROPSYS.VariantGetStringElem(util.toPointer(var__), iElem, util.toPointer(ppszVal)));
+  return util.pointerFromFfi(libPROPSYS_dll.VariantGetStringElem(util.toPointer(var__), iElem, util.toPointer(ppszVal)));
 }
 
 export function ClearVariantArray(
   pvars: Deno.PointerValue | Uint8Array | null /* ptr */,
   cvars: number /* u32 */,
 ): void /* void */ {
-  return libPROPSYS.ClearVariantArray(util.toPointer(pvars), cvars);
+  return libPROPSYS_dll.ClearVariantArray(util.toPointer(pvars), cvars);
 }
 
 export function VariantCompare(
   var1: Deno.PointerValue | Uint8Array | null /* ptr */,
   var2: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
-  return libPROPSYS.VariantCompare(util.toPointer(var1), util.toPointer(var2));
+  return libPROPSYS_dll.VariantCompare(util.toPointer(var1), util.toPointer(var2));
 }
 
 export function SHGetPropertyStoreFromIDList(
@@ -2976,7 +3029,7 @@ export function SHGetPropertyStoreFromIDList(
   riid: Deno.PointerValue | Uint8Array | null /* ptr */,
   ppv: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libSHELL32.SHGetPropertyStoreFromIDList(util.toPointer(pidl), flags, util.toPointer(riid), util.toPointer(ppv)));
+  return util.pointerFromFfi(libSHELL32_dll.SHGetPropertyStoreFromIDList(util.toPointer(pidl), flags, util.toPointer(riid), util.toPointer(ppv)));
 }
 
 export function SHGetPropertyStoreFromParsingName(
@@ -2986,14 +3039,14 @@ export function SHGetPropertyStoreFromParsingName(
   riid: Deno.PointerValue | Uint8Array | null /* ptr */,
   ppv: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libSHELL32.SHGetPropertyStoreFromParsingName(util.pwstrToFfi(pszPath), util.toPointer(pbc), flags, util.toPointer(riid), util.toPointer(ppv)));
+  return util.pointerFromFfi(libSHELL32_dll.SHGetPropertyStoreFromParsingName(util.pwstrToFfi(pszPath), util.toPointer(pbc), flags, util.toPointer(riid), util.toPointer(ppv)));
 }
 
 export function SHAddDefaultPropertiesByExt(
   pszExt: string | null /* Windows.Win32.Foundation.PWSTR */,
   pPropStore: Uint8Array | Deno.PointerValue | null /* Windows.Win32.UI.Shell.PropertiesSystem.IPropertyStore */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libSHELL32.SHAddDefaultPropertiesByExt(util.pwstrToFfi(pszExt), util.toPointer(pPropStore)));
+  return util.pointerFromFfi(libSHELL32_dll.SHAddDefaultPropertiesByExt(util.pwstrToFfi(pszExt), util.toPointer(pPropStore)));
 }
 
 export function PifMgr_OpenProperties(
@@ -3002,7 +3055,7 @@ export function PifMgr_OpenProperties(
   hInf: number /* u32 */,
   flOpt: number /* u32 */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */ {
-  return util.pointerFromFfi(libSHELL32.PifMgr_OpenProperties(util.pwstrToFfi(pszApp), util.pwstrToFfi(pszPIF), hInf, flOpt));
+  return util.pointerFromFfi(libSHELL32_dll.PifMgr_OpenProperties(util.pwstrToFfi(pszApp), util.pwstrToFfi(pszPIF), hInf, flOpt));
 }
 
 export function PifMgr_GetProperties(
@@ -3012,7 +3065,7 @@ export function PifMgr_GetProperties(
   cbProps: number /* i32 */,
   flOpt: number /* u32 */,
 ): number /* i32 */ {
-  return libSHELL32.PifMgr_GetProperties(util.toPointer(hProps), util.pstrToFfi(pszGroup), util.toPointer(lpProps), cbProps, flOpt);
+  return libSHELL32_dll.PifMgr_GetProperties(util.toPointer(hProps), util.pstrToFfi(pszGroup), util.toPointer(lpProps), cbProps, flOpt);
 }
 
 export function PifMgr_SetProperties(
@@ -3022,14 +3075,14 @@ export function PifMgr_SetProperties(
   cbProps: number /* i32 */,
   flOpt: number /* u32 */,
 ): number /* i32 */ {
-  return libSHELL32.PifMgr_SetProperties(util.toPointer(hProps), util.pstrToFfi(pszGroup), util.toPointer(lpProps), cbProps, flOpt);
+  return libSHELL32_dll.PifMgr_SetProperties(util.toPointer(hProps), util.pstrToFfi(pszGroup), util.toPointer(lpProps), cbProps, flOpt);
 }
 
 export function PifMgr_CloseProperties(
   hProps: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
   flOpt: number /* u32 */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */ {
-  return util.pointerFromFfi(libSHELL32.PifMgr_CloseProperties(util.toPointer(hProps), flOpt));
+  return util.pointerFromFfi(libSHELL32_dll.PifMgr_CloseProperties(util.toPointer(hProps), flOpt));
 }
 
 export function SHPropStgCreate(
@@ -3042,7 +3095,7 @@ export function SHPropStgCreate(
   ppstg: Deno.PointerValue | Uint8Array | null /* ptr */,
   puCodePage: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libSHELL32.SHPropStgCreate(util.toPointer(psstg), util.toPointer(fmtid), util.toPointer(pclsid), grfFlags, grfMode, dwDisposition, util.toPointer(ppstg), util.toPointer(puCodePage)));
+  return util.pointerFromFfi(libSHELL32_dll.SHPropStgCreate(util.toPointer(psstg), util.toPointer(fmtid), util.toPointer(pclsid), grfFlags, grfMode, dwDisposition, util.toPointer(ppstg), util.toPointer(puCodePage)));
 }
 
 export function SHPropStgReadMultiple(
@@ -3052,7 +3105,7 @@ export function SHPropStgReadMultiple(
   rgpspec: Deno.PointerValue | Uint8Array | null /* ptr */,
   rgvar: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libSHELL32.SHPropStgReadMultiple(util.toPointer(pps), uCodePage, cpspec, util.toPointer(rgpspec), util.toPointer(rgvar)));
+  return util.pointerFromFfi(libSHELL32_dll.SHPropStgReadMultiple(util.toPointer(pps), uCodePage, cpspec, util.toPointer(rgpspec), util.toPointer(rgvar)));
 }
 
 export function SHPropStgWriteMultiple(
@@ -3063,7 +3116,7 @@ export function SHPropStgWriteMultiple(
   rgvar: Deno.PointerValue | Uint8Array | null /* ptr */,
   propidNameFirst: number /* u32 */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libSHELL32.SHPropStgWriteMultiple(util.toPointer(pps), util.toPointer(puCodePage), cpspec, util.toPointer(rgpspec), util.toPointer(rgvar), propidNameFirst));
+  return util.pointerFromFfi(libSHELL32_dll.SHPropStgWriteMultiple(util.toPointer(pps), util.toPointer(puCodePage), cpspec, util.toPointer(rgpspec), util.toPointer(rgvar), propidNameFirst));
 }
 
 export function SHGetPropertyStoreForWindow(
@@ -3071,6 +3124,6 @@ export function SHGetPropertyStoreForWindow(
   riid: Deno.PointerValue | Uint8Array | null /* ptr */,
   ppv: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libSHELL32.SHGetPropertyStoreForWindow(util.hwndToFfi(hwnd), util.toPointer(riid), util.toPointer(ppv)));
+  return util.pointerFromFfi(libSHELL32_dll.SHGetPropertyStoreForWindow(util.hwndToFfi(hwnd), util.toPointer(riid), util.toPointer(ppv)));
 }
 

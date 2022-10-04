@@ -85,115 +85,8 @@ export type ImportPFXFlags = number;
 export type ENUM_CATYPES = number;
 
 // Constants
-export const CV_COLUMN_LOG_DEFAULT = "-2";
-export const CV_COLUMN_LOG_FAILED_DEFAULT = "-3";
-export const CV_COLUMN_QUEUE_DEFAULT = "-1";
-export const CDR_EXPIRED = 1;
-export const CDR_REQUEST_LAST_CHANGED = 2;
-export const FR_PROP_NONE = 0;
-export const FR_PROP_FULLRESPONSE = 1;
-export const FR_PROP_STATUSINFOCOUNT = 2;
-export const FR_PROP_BODYPARTSTRING = 3;
-export const FR_PROP_STATUS = 4;
-export const FR_PROP_STATUSSTRING = 5;
-export const FR_PROP_OTHERINFOCHOICE = 6;
-export const FR_PROP_FAILINFO = 7;
-export const FR_PROP_PENDINFOTOKEN = 8;
-export const FR_PROP_PENDINFOTIME = 9;
-export const FR_PROP_ISSUEDCERTIFICATEHASH = 10;
-export const FR_PROP_ISSUEDCERTIFICATE = 11;
-export const FR_PROP_ISSUEDCERTIFICATECHAIN = 12;
-export const FR_PROP_ISSUEDCERTIFICATECRLCHAIN = 13;
-export const FR_PROP_ENCRYPTEDKEYHASH = 14;
-export const FR_PROP_FULLRESPONSENOPKCS7 = 15;
-export const FR_PROP_CAEXCHANGECERTIFICATEHASH = 16;
-export const FR_PROP_CAEXCHANGECERTIFICATE = 17;
-export const FR_PROP_CAEXCHANGECERTIFICATECHAIN = 18;
-export const FR_PROP_CAEXCHANGECERTIFICATECRLCHAIN = 19;
-export const FR_PROP_ATTESTATIONCHALLENGE = 20;
-export const FR_PROP_ATTESTATIONPROVIDERNAME = 21;
-export const CVRC_COLUMN_SCHEMA = 0;
-export const CVRC_COLUMN_RESULT = 1;
-export const CVRC_COLUMN_VALUE = 2;
-export const CVRC_COLUMN_MASK = 4095;
-export const CR_IN_BASE64HEADER = 0;
-export const CR_IN_BASE64 = 1;
-export const CR_IN_BINARY = 2;
-export const CC_DEFAULTCONFIG = 0;
-export const CC_FIRSTCONFIG = 2;
-export const CC_LOCALACTIVECONFIG = 4;
-export const CC_LOCALCONFIG = 3;
-export const CC_UIPICKCONFIG = 1;
-export const CC_UIPICKCONFIGSKIPLOCALCA_ = 5;
-export const CV_OUT_BASE64 = 1;
-export const CV_OUT_BASE64HEADER = 0;
-export const CV_OUT_BASE64REQUESTHEADER = 3;
-export const CV_OUT_BASE64X509CRLHEADER = 9;
-export const CV_OUT_BINARY = 2;
-export const CV_OUT_HEX = 4;
-export const CV_OUT_HEXADDR = 10;
-export const CV_OUT_HEXASCII = 5;
-export const CV_OUT_HEXASCIIADDR = 11;
-export const XEPR_CADNS = 1;
-export const XEPR_CAFRIENDLYNAME = 3;
-export const XEPR_CANAME = 2;
-export const XEPR_HASH = 8;
-export const XEPR_REQUESTID = 4;
-export const CA_ACCESS_ADMIN = 1;
-export const CA_ACCESS_AUDITOR = 4;
-export const CA_ACCESS_ENROLL = 512;
-export const CA_ACCESS_OFFICER = 2;
-export const CA_ACCESS_OPERATOR = 8;
-export const CA_ACCESS_READ = 256;
-export const CR_DISP_DENIED = 2;
-export const CR_DISP_ERROR = 1;
-export const CR_DISP_INCOMPLETE = 0;
-export const CR_DISP_ISSUED = 3;
-export const CR_DISP_ISSUED_OUT_OF_BAND = 4;
-export const CR_DISP_UNDER_SUBMISSION = 5;
-export const XEKL_KEYSIZE_MIN = 1;
-export const XEKL_KEYSIZE_MAX = 2;
-export const XEKL_KEYSIZE_INC = 3;
-export const XECR_CMC = 3;
-export const XECR_PKCS10_V1_5 = 4;
-export const XECR_PKCS10_V2_0 = 1;
-export const XECR_PKCS7 = 2;
-export const EXITEVENT_CERTDENIED = 4;
-export const EXITEVENT_CERTISSUED = 1;
-export const EXITEVENT_CERTPENDING = 2;
-export const EXITEVENT_CERTRETRIEVEPENDING = 16;
-export const EXITEVENT_CERTREVOKED = 8;
-export const EXITEVENT_CRLISSUED = 32;
-export const EXITEVENT_SHUTDOWN = 64;
-export const XECT_EXTENSION_V1 = 1;
-export const XECT_EXTENSION_V2 = 2;
-export const CVRC_TABLE_ATTRIBUTES = 16384;
-export const CVRC_TABLE_CRL = 20480;
-export const CVRC_TABLE_EXTENSIONS = 12288;
-export const CVRC_TABLE_REQCERT = 0;
-export const PROPTYPE_BINARY = 3;
-export const PROPTYPE_DATE = 2;
-export const PROPTYPE_LONG = 1;
-export const PROPTYPE_STRING = 4;
-export const CERT_ALT_NAME_RFC822_NAME = 2;
-export const CERT_ALT_NAME_DNS_NAME = 3;
-export const CERT_ALT_NAME_URL = 7;
-export const CERT_ALT_NAME_REGISTERED_ID = 9;
-export const CERT_ALT_NAME_DIRECTORY_NAME = 5;
-export const CERT_ALT_NAME_IP_ADDRESS = 8;
-export const CERT_ALT_NAME_OTHER_NAME = 1;
-export const CSBACKUP_TYPE_FULL = 1;
-export const CSBACKUP_TYPE_LOGS_ONLY = 2;
-export const XEKL_KEYSPEC_KEYX = 1;
-export const XEKL_KEYSPEC_SIG = 2;
-export const CR_OUT_BASE64HEADER = 0;
-export const CR_OUT_BASE64 = 1;
-export const CR_OUT_BINARY = 2;
-export const CVR_SEEK_EQ = 1;
-export const CVR_SEEK_LE = 4;
-export const CVR_SEEK_LT = 2;
-export const CVR_SEEK_GE = 8;
-export const CVR_SEEK_GT = 16;
+export const wszREGKEYNOSYSTEMCERTSVCPATH = "CurrentControlSet\Services\CertSvc";
+export const wszREGKEYCERTSVCPATH = "SYSTEM\CurrentControlSet\Services\CertSvc";
 export const CA_DISP_INCOMPLETE = 0;
 export const CA_DISP_ERROR = 1;
 export const CA_DISP_REVOKED = 2;
@@ -214,6 +107,45 @@ export const CA_CRL_REPUBLISH = 16;
 export const ICF_ALLOWFOREIGN = 65536;
 export const ICF_EXISTINGROW = 131072;
 export const IKF_OVERWRITE = 65536;
+export const wszOCSPCAPROP_CACERTIFICATE = "CACertificate";
+export const wszOCSPCAPROP_HASHALGORITHMID = "HashAlgorithmId";
+export const wszOCSPCAPROP_SIGNINGFLAGS = "SigningFlags";
+export const wszOCSPCAPROP_REMINDERDURATION = "ReminderDuration";
+export const wszOCSPCAPROP_SIGNINGCERTIFICATE = "SigningCertificate";
+export const wszOCSPCAPROP_CSPNAME = "CSPName";
+export const wszOCSPCAPROP_KEYSPEC = "KeySpec";
+export const wszOCSPCAPROP_ERRORCODE = "ErrorCode";
+export const wszOCSPCAPROP_PROVIDERCLSID = "ProviderCLSID";
+export const wszOCSPCAPROP_PROVIDERPROPERTIES = "Provider";
+export const wszOCSPCAPROP_LOCALREVOCATIONINFORMATION = "LocalRevocationInformation";
+export const wszOCSPCAPROP_SIGNINGCERTIFICATETEMPLATE = "SigningCertificateTemplate";
+export const wszOCSPCAPROP_CACONFIG = "CAConfig";
+export const wszOCSPPROP_LOGLEVEL = "LogLevel";
+export const wszOCSPPROP_DEBUG = "Debug";
+export const wszOCSPPROP_AUDITFILTER = "AuditFilter";
+export const wszOCSPPROP_ARRAYCONTROLLER = "ArrayController";
+export const wszOCSPPROP_ARRAYMEMBERS = "ArrayMembers";
+export const wszOCSPPROP_ENROLLPOLLINTERVAL = "EnrollPollInterval";
+export const wszOCSPISAPIPROP_VIRTUALROOTNAME = "VirtualRootName";
+export const wszOCSPISAPIPROP_NUMOFTHREADS = "NumOfThreads";
+export const wszOCSPISAPIPROP_NUMOFBACKENDCONNECTIONS = "NumOfBackendConnections";
+export const wszOCSPISAPIPROP_REFRESHRATE = "RefreshRate";
+export const wszOCSPISAPIPROP_MAXNUMOFCACHEENTRIES = "MaxNumOfCacheEntries";
+export const wszOCSPISAPIPROP_MAXAGE = "MaxAge";
+export const wszOCSPISAPIPROP_DEBUG = "ISAPIDebug";
+export const wszOCSPCOMMONPROP_REQFLAGS = "RequestFlags";
+export const wszOCSPCOMMONPROP_MAXINCOMINGMESSAGESIZE = "MaxIncomingMessageSize";
+export const wszOCSPCOMMONPROP_MAXNUMOFREQUESTENTRIES = "MaxNumOfRequestEntries";
+export const wszOCSPREVPROP_CRLURLTIMEOUT = "CrlUrlTimeOut";
+export const wszOCSPREVPROP_BASECRLURLS = "BaseCrlUrls";
+export const wszOCSPREVPROP_SERIALNUMBERSDIRS = "IssuedSerialNumbersDirectories";
+export const wszOCSPREVPROP_BASECRL = "BaseCrl";
+export const wszOCSPREVPROP_DELTACRLURLS = "DeltaCrlUrls";
+export const wszOCSPREVPROP_DELTACRL = "DeltaCrl";
+export const wszOCSPREVPROP_REFRESHTIMEOUT = "RefreshTimeOut";
+export const wszOCSPREVPROP_ERRORCODE = "RevocationErrorCode";
+export const szBACKUPANNOTATION = "Cert Server Backup Interface";
+export const szRESTOREANNOTATION = "Cert Server Restore Interface";
 export const CSBACKUP_TYPE_MASK = 3;
 export const CSRESTORE_TYPE_FULL = 1;
 export const CSRESTORE_TYPE_ONLINE = 2;
@@ -226,6 +158,24 @@ export const CSBFT_LOG_DIRECTORY = 32;
 export const CSCONTROL_SHUTDOWN = 1;
 export const CSCONTROL_SUSPEND = 2;
 export const CSCONTROL_RESTART = 3;
+export const wszCONFIG_COMMONNAME = "CommonName";
+export const wszCONFIG_ORGUNIT = "OrgUnit";
+export const wszCONFIG_ORGANIZATION = "Organization";
+export const wszCONFIG_LOCALITY = "Locality";
+export const wszCONFIG_STATE = "State";
+export const wszCONFIG_COUNTRY = "Country";
+export const wszCONFIG_CONFIG = "Config";
+export const wszCONFIG_EXCHANGECERTIFICATE = "ExchangeCertificate";
+export const wszCONFIG_SIGNATURECERTIFICATE = "SignatureCertificate";
+export const wszCONFIG_DESCRIPTION = "Description";
+export const wszCONFIG_COMMENT = "Comment";
+export const wszCONFIG_SERVER = "Server";
+export const wszCONFIG_AUTHORITY = "Authority";
+export const wszCONFIG_SANITIZEDNAME = "SanitizedName";
+export const wszCONFIG_SHORTNAME = "ShortName";
+export const wszCONFIG_SANITIZEDSHORTNAME = "SanitizedShortName";
+export const wszCONFIG_FLAGS = "Flags";
+export const wszCONFIG_WEBENROLLMENTSERVERS = "WebEnrollmentServers";
 export const CAIF_DSENTRY = 1;
 export const CAIF_SHAREDFOLDERENTRY = 2;
 export const CAIF_REGISTRY = 4;
@@ -253,7 +203,6 @@ export const CR_IN_CONNECTONLY = 8388608;
 export const CR_IN_RETURNCHALLENGE = 16777216;
 export const CR_IN_SCEPPOST = 33554432;
 export const CR_IN_CERTIFICATETRANSPARENCY = 67108864;
-export const CC_UIPICKCONFIGSKIPLOCALCA = 5;
 export const CR_DISP_REVOKED = 6;
 export const CR_OUT_BASE64REQUESTHEADER = 3;
 export const CR_OUT_HEX = 4;
@@ -332,6 +281,27 @@ export const ENUMEXT_OBJECTID = 1;
 export const CMM_REFRESHONLY = 1;
 export const CMM_READONLY = 2;
 export const DBG_CERTSRV = 1;
+export const wszSERVICE_NAME = "CertSvc";
+export const wszREGKEYBASE = "SYSTEM\CurrentControlSet\Services\CertSvc";
+export const wszREGKEYCONFIG = "Configuration";
+export const wszREGACTIVE = "Active";
+export const wszREGDIRECTORY = "ConfigurationDirectory";
+export const wszREGDBDIRECTORY = "DBDirectory";
+export const wszREGDBLOGDIRECTORY = "DBLogDirectory";
+export const wszREGDBSYSDIRECTORY = "DBSystemDirectory";
+export const wszREGDBTEMPDIRECTORY = "DBTempDirectory";
+export const wszREGDBSESSIONCOUNT = "DBSessionCount";
+export const wszREGDBMAXREADSESSIONCOUNT = "DBMaxReadSessionCount";
+export const wszREGDBFLAGS = "DBFlags";
+export const wszREGDBLASTFULLBACKUP = "DBLastFullBackup";
+export const wszREGDBLASTINCREMENTALBACKUP = "DBLastIncrementalBackup";
+export const wszREGDBLASTRECOVERY = "DBLastRecovery";
+export const wszREGWEBCLIENTCAMACHINE = "WebClientCAMachine";
+export const wszREGVERSION = "Version";
+export const wszREGWEBCLIENTCANAME = "WebClientCAName";
+export const wszREGWEBCLIENTCATYPE = "WebClientCAType";
+export const wszREGLDAPFLAGS = "LDAPFlags";
+export const wszREGCERTSRVDEBUG = "Debug";
 export const DBSESSIONCOUNTDEFAULT = 100;
 export const DBFLAGS_READONLY = 1;
 export const DBFLAGS_CREATEIFNEEDED = 2;
@@ -364,8 +334,100 @@ export const CSVER_MAJOR_THRESHOLD = 7;
 export const CSVER_MINOR_THRESHOLD = 1;
 export const CSVER_MAJOR = 7;
 export const CSVER_MINOR = 1;
+export const wszREGKEYRESTOREINPROGRESS = "RestoreInProgress";
+export const wszREGKEYDBPARAMETERS = "DBParameters";
+export const wszREGCADESCRIPTION = "CADescription";
+export const wszREGCACERTHASH = "CACertHash";
+export const wszREGCASERIALNUMBER = "CACertSerialNumber";
+export const wszREGCAXCHGCERTHASH = "CAXchgCertHash";
+export const wszREGKRACERTHASH = "KRACertHash";
+export const wszREGKRACERTCOUNT = "KRACertCount";
+export const wszREGKRAFLAGS = "KRAFlags";
+export const wszREGCATYPE = "CAType";
+export const wszREGCERTENROLLCOMPATIBLE = "CertEnrollCompatible";
+export const wszREGENFORCEX500NAMELENGTHS = "EnforceX500NameLengths";
+export const wszREGCOMMONNAME = "CommonName";
+export const wszREGCLOCKSKEWMINUTES = "ClockSkewMinutes";
+export const wszREGCRLNEXTPUBLISH = "CRLNextPublish";
+export const wszREGCRLPERIODSTRING = "CRLPeriod";
+export const wszREGCRLPERIODCOUNT = "CRLPeriodUnits";
+export const wszREGCRLOVERLAPPERIODSTRING = "CRLOverlapPeriod";
+export const wszREGCRLOVERLAPPERIODCOUNT = "CRLOverlapUnits";
+export const wszREGCRLDELTANEXTPUBLISH = "CRLDeltaNextPublish";
+export const wszREGCRLDELTAPERIODSTRING = "CRLDeltaPeriod";
+export const wszREGCRLDELTAPERIODCOUNT = "CRLDeltaPeriodUnits";
+export const wszREGCRLDELTAOVERLAPPERIODSTRING = "CRLDeltaOverlapPeriod";
+export const wszREGCRLDELTAOVERLAPPERIODCOUNT = "CRLDeltaOverlapUnits";
+export const wszREGCRLPUBLICATIONURLS = "CRLPublicationURLs";
+export const wszREGCACERTPUBLICATIONURLS = "CACertPublicationURLs";
+export const wszREGCAXCHGVALIDITYPERIODSTRING = "CAXchgValidityPeriod";
+export const wszREGCAXCHGVALIDITYPERIODCOUNT = "CAXchgValidityPeriodUnits";
+export const wszREGCAXCHGOVERLAPPERIODSTRING = "CAXchgOverlapPeriod";
+export const wszREGCAXCHGOVERLAPPERIODCOUNT = "CAXchgOverlapPeriodUnits";
+export const wszREGCRLPATH_OLD = "CRLPath";
+export const wszREGCRLEDITFLAGS = "CRLEditFlags";
+export const wszREGCRLFLAGS = "CRLFlags";
+export const wszREGCRLATTEMPTREPUBLISH = "CRLAttemptRepublish";
+export const wszREGENABLED = "Enabled";
+export const wszREGFORCETELETEX = "ForceTeletex";
+export const wszREGLOGLEVEL = "LogLevel";
+export const wszREGHIGHSERIAL = "HighSerial";
+export const wszREGPOLICYFLAGS = "PolicyFlags";
+export const wszREGNAMESEPARATOR = "SubjectNameSeparator";
+export const wszREGSUBJECTTEMPLATE = "SubjectTemplate";
+export const wszREGCAUSEDS = "UseDS";
+export const wszREGVALIDITYPERIODSTRING = "ValidityPeriod";
+export const wszREGVALIDITYPERIODCOUNT = "ValidityPeriodUnits";
+export const wszREGPARENTCAMACHINE = "ParentCAMachine";
+export const wszREGPARENTCANAME = "ParentCAName";
+export const wszREGREQUESTFILENAME = "RequestFileName";
+export const wszREGREQUESTID = "RequestId";
+export const wszREGREQUESTKEYCONTAINER = "RequestKeyContainer";
+export const wszREGREQUESTKEYINDEX = "RequestKeyIndex";
+export const wszREGCASERVERNAME = "CAServerName";
+export const wszREGCACERTFILENAME = "CACertFileName";
+export const wszREGCASECURITY = "Security";
+export const wszREGAUDITFILTER = "AuditFilter";
+export const wszREGOFFICERRIGHTS = "OfficerRights";
+export const wszENROLLMENTAGENTRIGHTS = "EnrollmentAgentRights";
+export const wszREGMAXINCOMINGMESSAGESIZE = "MaxIncomingMessageSize";
+export const wszREGMAXINCOMINGALLOCSIZE = "MaxIncomingAllocSize";
+export const wszREGROLESEPARATIONENABLED = "RoleSeparationEnabled";
+export const wszREGALTERNATEPUBLISHDOMAINS = "AlternatePublishDomains";
+export const wszREGSETUPSTATUS = "SetupStatus";
+export const wszREGINTERFACEFLAGS = "InterfaceFlags";
+export const wszREGDSCONFIGDN = "DSConfigDN";
+export const wszREGDSDOMAINDN = "DSDomainDN";
+export const wszREGVIEWAGEMINUTES = "ViewAgeMinutes";
+export const wszREGVIEWIDLEMINUTES = "ViewIdleMinutes";
+export const wszREGEKPUBLISTDIRECTORIES = "EndorsementKeyListDirectories";
+export const wszCERTIFICATETRANSPARENCYFLAGS = "CertificateTransparencyFlags";
+export const wszREGMAXSCTLISTSIZE = "MaxSCTListSize";
+export const wszREGCERTIFICATETRANSPARENCYINFOOID = "CTInformationExtensionOid";
+export const wszREGPROCESSINGFLAGS = "ProcessingFlags";
+export const wszREGUSEDEFINEDCACERTINREQ = "UseDefinedCACertInRequest";
+export const wszREGENABLEDEKUFORDEFINEDCACERT = "EnabledEKUForDefinedCACert";
+export const wszREGEKUOIDSFORPUBLISHEXPIREDCERTINCRL = "EKUOIDsForPublishExpiredCertInCRL";
+export const wszCRTFILENAMEEXT = ".crt";
+export const wszPFXFILENAMEEXT = ".p12";
+export const wszDATFILENAMEEXT = ".dat";
+export const wszLOGFILENAMEEXT = ".log";
+export const wszDBFILENAMEEXT = ".edb";
+export const szDBBASENAMEPARM = "edb";
+export const wszLOGPATH = "CertLog";
+export const wszDBBACKUPSUBDIR = "DataBase";
+export const wszDBBACKUPCERTBACKDAT = "certbkxp.dat";
 export const CCLOCKSKEWMINUTESDEFAULT = 10;
 export const CVIEWAGEMINUTESDEFAULT = 16;
+export const dwVALIDITYPERIODCOUNTDEFAULT_ROOT = 5;
+export const dwVALIDITYPERIODCOUNTDEFAULT_ENTERPRISE = 2;
+export const dwVALIDITYPERIODCOUNTDEFAULT_STANDALONE = 1;
+export const dwCAXCHGVALIDITYPERIODCOUNTDEFAULT = 1;
+export const dwCAXCHGOVERLAPPERIODCOUNTDEFAULT = 1;
+export const dwCRLPERIODCOUNTDEFAULT = 1;
+export const dwCRLOVERLAPPERIODCOUNTDEFAULT = 0;
+export const dwCRLDELTAPERIODCOUNTDEFAULT = 1;
+export const dwCRLDELTAOVERLAPPERIODCOUNTDEFAULT = 0;
 export const SETUP_SERVER_FLAG = 1;
 export const SETUP_CLIENT_FLAG = 2;
 export const SETUP_SUSPEND_FLAG = 4;
@@ -430,6 +492,73 @@ export const CSURL_PUBLISHRETRY = 16;
 export const CSURL_ADDTOCERTOCSP = 32;
 export const CSURL_SERVERPUBLISHDELTA = 64;
 export const CSURL_ADDTOIDP = 128;
+export const wszREGKEYCSP = "CSP";
+export const wszREGKEYENCRYPTIONCSP = "EncryptionCSP";
+export const wszREGKEYEXITMODULES = "ExitModules";
+export const wszREGKEYPOLICYMODULES = "PolicyModules";
+export const wszSECUREDATTRIBUTES = "SignedAttributes";
+export const wszzDEFAULTSIGNEDATTRIBUTES = "RequesterName ";
+export const wszREGBACKUPLOGDIRECTORY = "BackupLogDirectory";
+export const wszREGCHECKPOINTFILE = "CheckPointFile";
+export const wszREGHIGHLOGNUMBER = "HighLogNumber";
+export const wszREGLOWLOGNUMBER = "LowLogNumber";
+export const wszREGLOGPATH = "LogPath";
+export const wszREGRESTOREMAPCOUNT = "RestoreMapCount";
+export const wszREGRESTOREMAP = "RestoreMap";
+export const wszREGDATABASERECOVERED = "DatabaseRecovered";
+export const wszREGRESTORESTATUS = "RestoreStatus";
+export const wszREGB2ICERTMANAGEMODULE = "ICertManageModule";
+export const wszREGSP4DEFAULTCONFIGURATION = "DefaultConfiguration";
+export const wszREGSP4KEYSETNAME = "KeySetName";
+export const wszREGSP4SUBJECTNAMESEPARATOR = "SubjectNameSeparator";
+export const wszREGSP4NAMES = "Names";
+export const wszREGSP4QUERIES = "Queries";
+export const wszREGNETSCAPECERTTYPE = "NetscapeCertType";
+export const wszNETSCAPEREVOCATIONTYPE = "Netscape";
+export const wszREGPROVIDERTYPE = "ProviderType";
+export const wszREGPROVIDER = "Provider";
+export const wszHASHALGORITHM = "HashAlgorithm";
+export const wszENCRYPTIONALGORITHM = "EncryptionAlgorithm";
+export const wszMACHINEKEYSET = "MachineKeyset";
+export const wszREGKEYSIZE = "KeySize";
+export const wszREGSYMMETRICKEYSIZE = "SymmetricKeySize";
+export const wszCNGPUBLICKEYALGORITHM = "CNGPublicKeyAlgorithm";
+export const wszCNGHASHALGORITHM = "CNGHashAlgorithm";
+export const wszCNGENCRYPTIONALGORITHM = "CNGEncryptionAlgorithm";
+export const wszREGALTERNATESIGNATUREALGORITHM = "AlternateSignatureAlgorithm";
+export const szNAMESEPARATORDEFAULT = "
+";
+export const wszPERIODYEARS = "Years";
+export const wszPERIODMONTHS = "Months";
+export const wszPERIODWEEKS = "Weeks";
+export const wszPERIODDAYS = "Days";
+export const wszPERIODHOURS = "Hours";
+export const wszPERIODMINUTES = "Minutes";
+export const wszPERIODSECONDS = "Seconds";
+export const wszREGISSUERCERTURLFLAGS = "IssuerCertURLFlags";
+export const wszREGEDITFLAGS = "EditFlags";
+export const wszREGUPNMAP = "UPNMap";
+export const wszREGSUBJECTALTNAME = "SubjectAltName";
+export const wszREGSUBJECTALTNAME2 = "SubjectAltName2";
+export const wszREGREQUESTDISPOSITION = "RequestDisposition";
+export const wszREGCAPATHLENGTH = "CAPathLength";
+export const wszREGREVOCATIONTYPE = "RevocationType";
+export const wszREGLDAPREVOCATIONCRLURL_OLD = "LDAPRevocationCRLURL";
+export const wszREGREVOCATIONCRLURL_OLD = "RevocationCRLURL";
+export const wszREGFTPREVOCATIONCRLURL_OLD = "FTPRevocationCRLURL";
+export const wszREGFILEREVOCATIONCRLURL_OLD = "FileRevocationCRLURL";
+export const wszREGREVOCATIONURL = "RevocationURL";
+export const wszREGLDAPISSUERCERTURL_OLD = "LDAPIssuerCertURL";
+export const wszREGISSUERCERTURL_OLD = "IssuerCertURL";
+export const wszREGFTPISSUERCERTURL_OLD = "FTPIssuerCertURL";
+export const wszREGFILEISSUERCERTURL_OLD = "FileIssuerCertURL";
+export const wszREGENABLEREQUESTEXTENSIONLIST = "EnableRequestExtensionList";
+export const wszREGENABLEENROLLEEREQUESTEXTENSIONLIST = "EnableEnrolleeRequestExtensionList";
+export const wszREGDISABLEEXTENSIONLIST = "DisableExtensionList";
+export const wszREGEKUOIDSFORVOLATILEREQUESTS = "EKUOIDsforVolatileRequests";
+export const wszREGLDAPSESSIONOPTIONS = "LDAPSessionOptions";
+export const wszLDAPSESSIONOPTIONVALUE = "LDAPSessionOptionValue";
+export const wszREGDEFAULTSMIME = "DefaultSMIME";
 export const CAPATHLENGTH_INFINITE = 4294967295;
 export const REQDISP_PENDING = 0;
 export const REQDISP_ISSUE = 1;
@@ -483,14 +612,317 @@ export const EDITF_ENABLEUPNMAP = 16777216;
 export const EDITF_ENABLEOCSPREVNOCHECK = 33554432;
 export const EDITF_ENABLERENEWONBEHALFOF = 67108864;
 export const EDITF_ENABLEKEYENCIPHERMENTCACERT = 134217728;
+export const wszREGLDAPREVOCATIONDN_OLD = "LDAPRevocationDN";
+export const wszREGLDAPREVOCATIONDNTEMPLATE_OLD = "LDAPRevocationDNTemplate";
+export const wszCRLPUBLISHRETRYCOUNT = "CRLPublishRetryCount";
+export const wszREGCERTPUBLISHFLAGS = "PublishCertFlags";
 export const EXITPUB_FILE = 1;
 export const EXITPUB_ACTIVEDIRECTORY = 2;
 export const EXITPUB_REMOVEOLDCERTS = 16;
 export const EXITPUB_DEFAULT_ENTERPRISE = 2;
 export const EXITPUB_DEFAULT_STANDALONE = 1;
+export const wszCLASS_CERTADMIN = "CertificateAuthority.Admin";
+export const wszCLASS_CERTCONFIG = "CertificateAuthority.Config";
+export const wszCLASS_CERTGETCONFIG = "CertificateAuthority.GetConfig";
+export const wszCLASS_CERTENCODE = "CertificateAuthority.Encode";
+export const wszCLASS_CERTDBMEM = "CertificateAuthority.DBMem";
+export const wszCLASS_CERTREQUEST = "CertificateAuthority.Request";
+export const wszCLASS_CERTSERVEREXIT = "CertificateAuthority.ServerExit";
+export const wszCLASS_CERTSERVERPOLICY = "CertificateAuthority.ServerPolicy";
+export const wszCLASS_CERTVIEW = "CertificateAuthority.View";
+export const wszMICROSOFTCERTMODULE_PREFIX = "CertificateAuthority_MicrosoftDefault";
+export const wszCERTMANAGE_SUFFIX = "Manage";
+export const wszCERTEXITMODULE_POSTFIX = ".Exit";
+export const wszCERTPOLICYMODULE_POSTFIX = ".Policy";
+export const wszCAPOLICYFILE = "CAPolicy.inf";
+export const wszINFSECTION_CDP = "CRLDistributionPoint";
+export const wszINFSECTION_AIA = "AuthorityInformationAccess";
+export const wszINFSECTION_EKU = "EnhancedKeyUsageExtension";
+export const wszINFSECTION_CCDP = "CrossCertificateDistributionPointsExtension";
+export const wszINFSECTION_CERTSERVER = "certsrv_server";
+export const wszINFKEY_RENEWALKEYLENGTH = "RenewalKeyLength";
+export const wszINFKEY_RENEWALVALIDITYPERIODSTRING = "RenewalValidityPeriod";
+export const wszINFKEY_RENEWALVALIDITYPERIODCOUNT = "RenewalValidityPeriodUnits";
+export const wszINFKEY_UTF8 = "UTF8";
+export const wszINFKEY_CRLPERIODSTRING = "CRLPeriod";
+export const wszINFKEY_CRLPERIODCOUNT = "CRLPeriodUnits";
+export const wszINFKEY_CRLDELTAPERIODSTRING = "CRLDeltaPeriod";
+export const wszINFKEY_CRLDELTAPERIODCOUNT = "CRLDeltaPeriodUnits";
+export const wszINFKEY_LOADDEFAULTTEMPLATES = "LoadDefaultTemplates";
+export const wszINFKEY_ENABLEKEYCOUNTING = "EnableKeyCounting";
+export const wszINFKEY_FORCEUTF8 = "ForceUTF8";
+export const wszINFKEY_ALTERNATESIGNATUREALGORITHM = "AlternateSignatureAlgorithm";
+export const wszINFKEY_SHOWALLCSPS = "ShowAllCSPs";
+export const wszINFKEY_CRITICAL = "Critical";
+export const wszINFKEY_EMPTY = "Empty";
+export const wszINFKEY_CCDPSYNCDELTATIME = "SyncDeltaTime";
+export const wszINFSECTION_CAPOLICY = "CAPolicy";
+export const wszINFSECTION_POLICYSTATEMENT = "PolicyStatementExtension";
+export const wszINFSECTION_APPLICATIONPOLICYSTATEMENT = "ApplicationPolicyStatementExtension";
+export const wszINFKEY_POLICIES = "Policies";
+export const wszINFKEY_OID = "OID";
+export const wszINFKEY_NOTICE = "Notice";
+export const wszINFKEY_FLAGS = "Flags";
+export const wszINFSECTION_REQUESTATTRIBUTES = "RequestAttributes";
+export const wszINFSECTION_NAMECONSTRAINTS = "NameConstraintsExtension";
+export const wszINFKEY_INCLUDE = "Include";
+export const wszINFKEY_EXCLUDE = "Exclude";
+export const wszINFKEY_SUBTREE = "SubTree";
+export const wszINFKEY_UPN = "UPN";
+export const wszINFKEY_EMAIL = "EMail";
+export const wszINFKEY_DNS = "DNS";
+export const wszINFKEY_DIRECTORYNAME = "DirectoryName";
+export const wszINFKEY_URL = "URL";
+export const wszINFKEY_IPADDRESS = "IPAddress";
+export const wszINFKEY_REGISTEREDID = "RegisteredId";
+export const wszINFKEY_OTHERNAME = "OtherName";
+export const wszINFSECTION_POLICYMAPPINGS = "PolicyMappingsExtension";
+export const wszINFSECTION_APPLICATIONPOLICYMAPPINGS = "ApplicationPolicyMappingsExtension";
+export const wszINFSECTION_POLICYCONSTRAINTS = "PolicyConstraintsExtension";
+export const wszINFSECTION_APPLICATIONPOLICYCONSTRAINTS = "ApplicationPolicyConstraintsExtension";
+export const wszINFKEY_REQUIREEXPLICITPOLICY = "RequireExplicitPolicy";
+export const wszINFKEY_INHIBITPOLICYMAPPING = "InhibitPolicyMapping";
+export const wszINFSECTION_BASICCONSTRAINTS = "BasicConstraintsExtension";
+export const wszINFKEY_PATHLENGTH = "PathLength";
+export const wszINFSECTION_EXTENSIONS = "Extensions";
+export const wszINFSECTION_PROPERTIES = "Properties";
+export const wszINFKEY_CONTINUE = "_continue_";
+export const wszINFSECTION_NEWREQUEST = "NewRequest";
+export const wszINFKEY_SUBJECT = "Subject";
+export const wszINFKEY_SUBJECTNAMEFLAGS = "SubjectNameFlags";
+export const wszINFKEY_X500NAMEFLAGS = "X500NameFlags";
+export const wszINFKEY_EXPORTABLE = "Exportable";
+export const wszINFKEY_EXPORTABLEENCRYPTED = "ExportableEncrypted";
+export const wszINFKEY_HASHALGORITHM = "HashAlgorithm";
+export const wszINFKEY_KEYALGORITHM = "KeyAlgorithm";
+export const wszINFKEY_KEYALGORITHMPARMETERS = "KeyAlgorithmParameters";
+export const wszINFKEY_KEYCONTAINER = "KeyContainer";
+export const wszINFKEY_READERNAME = "ReaderName";
+export const wszINFKEY_KEYLENGTH = "KeyLength";
+export const wszINFKEY_LEGACYKEYSPEC = "KeySpec";
+export const wszINFKEY_KEYUSAGEEXTENSION = "KeyUsage";
+export const wszINFKEY_KEYUSAGEPROPERTY = "KeyUsageProperty";
+export const wszINFKEY_MACHINEKEYSET = "MachineKeySet";
+export const wszINFKEY_PRIVATEKEYARCHIVE = "PrivateKeyArchive";
+export const wszINFKEY_ENCRYPTIONALGORITHM = "EncryptionAlgorithm";
+export const wszINFKEY_ENCRYPTIONLENGTH = "EncryptionLength";
+export const wszINFKEY_PROVIDERNAME = "ProviderName";
+export const wszINFKEY_PROVIDERTYPE = "ProviderType";
+export const wszINFKEY_RENEWALCERT = "RenewalCert";
+export const wszINFKEY_REQUESTTYPE = "RequestType";
+export const wszINFKEY_SECURITYDESCRIPTOR = "SecurityDescriptor";
+export const wszINFKEY_SILENT = "Silent";
+export const wszINFKEY_SMIME = "SMIME";
+export const wszINFKEY_SUPPRESSDEFAULTS = "SuppressDefaults";
+export const wszINFKEY_USEEXISTINGKEY = "UseExistingKeySet";
+export const wszINFKEY_USERPROTECTED = "UserProtected";
+export const wszINFKEY_KEYPROTECTION = "KeyProtection";
+export const wszINFKEY_UICONTEXTMESSAGE = "UIContextMessage";
+export const wszINFKEY_FRIENDLYNAME = "FriendlyName";
+export const wszINFKEY_NOTBEFORE = "NotBefore";
+export const wszINFKEY_NOTAFTER = "NotAfter";
+export const wszINFKEY_ATTESTPRIVATEKEY = "AttestPrivateKey";
+export const wszINFKEY_PUBLICKEY = "PublicKey";
+export const wszINFKEY_PUBLICKEYPARAMETERS = "PublicKeyParameters";
+export const wszINFKEY_ECCKEYPARAMETERS = "EccKeyParameters";
+export const wszINFKEY_ECCKEYPARAMETERS_P = "EccKeyParameters_P";
+export const wszINFKEY_ECCKEYPARAMETERS_A = "EccKeyParameters_A";
+export const wszINFKEY_ECCKEYPARAMETERS_B = "EccKeyParameters_B";
+export const wszINFKEY_ECCKEYPARAMETERS_SEED = "EccKeyParameters_Seed";
+export const wszINFKEY_ECCKEYPARAMETERS_BASE = "EccKeyParameters_Base";
+export const wszINFKEY_ECCKEYPARAMETERS_ORDER = "EccKeyParameters_Order";
+export const wszINFKEY_ECCKEYPARAMETERS_COFACTOR = "EccKeyParameters_Cofactor";
+export const wszINFKEY_ECCKEYPARAMETERSTYPE = "EccKeyParametersType";
+export const wszINFKEY_SERIALNUMBER = "SerialNumber";
+export const wszINFKEY_CATHUMBPRINT = "CAThumbprint";
+export const wszINFKEY_CACERTS = "CACerts";
+export const wszINFKEY_CACAPABILITIES = "CACapabilities";
+export const wszINFKEY_CHALLENGEPASSWORD = "ChallengePassword";
+export const wszINFVALUE_REQUESTTYPE_PKCS10 = "PKCS10";
+export const wszINFVALUE_REQUESTTYPE_PKCS7 = "PKCS7";
+export const wszINFVALUE_REQUESTTYPE_CMC = "CMC";
+export const wszINFVALUE_REQUESTTYPE_CERT = "Cert";
+export const wszINFVALUE_REQUESTTYPE_SCEP = "SCEP";
+export const wszINFVALUE_ENDORSEMENTKEY = "EndorsementKey";
+export const wszREGEXITSMTPKEY = "SMTP";
+export const wszREGEXITSMTPTEMPLATES = "Templates";
+export const wszREGEXITSMTPEVENTFILTER = "EventFilter";
+export const wszREGEXITSMTPSERVER = "SMTPServer";
+export const wszREGEXITSMTPAUTHENTICATE = "SMTPAuthenticate";
+export const wszREGEXITDENIEDKEY = "Denied";
+export const wszREGEXITISSUEDKEY = "Issued";
+export const wszREGEXITPENDINGKEY = "Pending";
+export const wszREGEXITREVOKEDKEY = "Revoked";
+export const wszREGEXITCRLISSUEDKEY = "CRLIssued";
+export const wszREGEXITSHUTDOWNKEY = "Shutdown";
+export const wszREGEXITSTARTUPKEY = "Startup";
+export const wszREGEXITIMPORTEDKEY = "Imported";
+export const wszREGEXITSMTPFROM = "From";
+export const wszREGEXITSMTPTO = "To";
+export const wszREGEXITSMTPCC = "Cc";
+export const wszREGEXITTITLEFORMAT = "TitleFormat";
+export const wszREGEXITTITLEARG = "TitleArg";
+export const wszREGEXITBODYFORMAT = "BodyFormat";
+export const wszREGEXITBODYARG = "BodyArg";
+export const wszREGEXITPROPNOTFOUND = "???";
+export const wszREGKEYENROLLMENT = "Software\Microsoft\Cryptography\AutoEnrollment";
+export const wszREGKEYGROUPPOLICYENROLLMENT = "Software\Policies\Microsoft\Cryptography\AutoEnrollment";
+export const wszREGMAXPENDINGREQUESTDAYS = "MaxPendingRequestDays";
+export const wszREGAELOGLEVEL_OLD = "AEEventLogLevel";
+export const wszREGENROLLFLAGS = "EnrollFlags";
+export const wszREGVERIFYFLAGS = "VerifyFlags";
+export const wszREGUNICODE = "Unicode";
+export const wszREGAIKCLOUDCAURL = "AIKCloudCAURL";
+export const wszREGAIKKEYALGORITHM = "AIKKeyAlgorithm";
+export const wszREGAIKKEYLENGTH = "AIKKeyLength";
+export const wszREGPRESERVESCEPDUMMYCERTS = "PreserveSCEPDummyCerts";
+export const wszREGALLPROVIDERS = "All";
 export const TP_MACHINEPOLICY = 1;
+export const wszREGKEYREPAIR = "KeyRepair";
 export const KR_ENABLE_MACHINE = 1;
 export const KR_ENABLE_USER = 2;
+export const wszPROPDISTINGUISHEDNAME = "DistinguishedName";
+export const wszPROPRAWNAME = "RawName";
+export const wszPROPCOUNTRY = "Country";
+export const wszPROPORGANIZATION = "Organization";
+export const wszPROPORGUNIT = "OrgUnit";
+export const wszPROPCOMMONNAME = "CommonName";
+export const wszPROPLOCALITY = "Locality";
+export const wszPROPSTATE = "State";
+export const wszPROPTITLE = "Title";
+export const wszPROPGIVENNAME = "GivenName";
+export const wszPROPINITIALS = "Initials";
+export const wszPROPSURNAME = "SurName";
+export const wszPROPDOMAINCOMPONENT = "DomainComponent";
+export const wszPROPEMAIL = "EMail";
+export const wszPROPSTREETADDRESS = "StreetAddress";
+export const wszPROPUNSTRUCTUREDNAME = "UnstructuredName";
+export const wszPROPUNSTRUCTUREDADDRESS = "UnstructuredAddress";
+export const wszPROPDEVICESERIALNUMBER = "DeviceSerialNumber";
+export const wszPROPSUBJECTDOT = "Subject.";
+export const wszPROPREQUESTDOT = "Request.";
+export const wszPROPREQUESTREQUESTID = "RequestID";
+export const wszPROPREQUESTRAWREQUEST = "RawRequest";
+export const wszPROPREQUESTRAWARCHIVEDKEY = "RawArchivedKey";
+export const wszPROPREQUESTARCHIVEDKEY = "ArchivedKey";
+export const wszPROPREQUESTKEYRECOVERYHASHES = "KeyRecoveryHashes";
+export const wszPROPREQUESTRAWOLDCERTIFICATE = "RawOldCertificate";
+export const wszPROPREQUESTATTRIBUTES = "RequestAttributes";
+export const wszPROPREQUESTTYPE = "RequestType";
+export const wszPROPREQUESTFLAGS = "RequestFlags";
+export const wszPROPREQUESTSTATUSCODE = "StatusCode";
+export const wszPROPREQUESTDISPOSITION = "Disposition";
+export const wszPROPREQUESTDISPOSITIONMESSAGE = "DispositionMessage";
+export const wszPROPREQUESTSUBMITTEDWHEN = "SubmittedWhen";
+export const wszPROPREQUESTRESOLVEDWHEN = "ResolvedWhen";
+export const wszPROPREQUESTREVOKEDWHEN = "RevokedWhen";
+export const wszPROPREQUESTREVOKEDEFFECTIVEWHEN = "RevokedEffectiveWhen";
+export const wszPROPREQUESTREVOKEDREASON = "RevokedReason";
+export const wszPROPREQUESTERNAME = "RequesterName";
+export const wszPROPCALLERNAME = "CallerName";
+export const wszPROPSIGNERPOLICIES = "SignerPolicies";
+export const wszPROPSIGNERAPPLICATIONPOLICIES = "SignerApplicationPolicies";
+export const wszPROPOFFICER = "Officer";
+export const wszPROPPUBLISHEXPIREDCERTINCRL = "PublishExpiredCertInCRL";
+export const wszPROPREQUESTERNAMEFROMOLDCERTIFICATE = "RequesterNameFromOldCertificate";
+export const wszPROPATTESTATIONCHALLENGE = "AttestationChallenge";
+export const wszPROPENDORSEMENTKEYHASH = "EndorsementKeyHash";
+export const wszPROPENDORSEMENTCERTIFICATEHASH = "EndorsementCertificateHash";
+export const wszPROPRAWPRECERTIFICATE = "RawPrecertificate";
+export const wszPROPCHALLENGE = "Challenge";
+export const wszPROPEXPECTEDCHALLENGE = "ExpectedChallenge";
+export const wszPROPDISPOSITION = "Disposition";
+export const wszPROPDISPOSITIONDENY = "Deny";
+export const wszPROPDISPOSITIONPENDING = "Pending";
+export const wszPROPVALIDITYPERIODSTRING = "ValidityPeriod";
+export const wszPROPVALIDITYPERIODCOUNT = "ValidityPeriodUnits";
+export const wszPROPEXPIRATIONDATE = "ExpirationDate";
+export const wszPROPCERTTYPE = "CertType";
+export const wszPROPCERTTEMPLATE = "CertificateTemplate";
+export const wszPROPCERTUSAGE = "CertificateUsage";
+export const wszPROPREQUESTOSVERSION = "RequestOSVersion";
+export const wszPROPREQUESTCSPPROVIDER = "RequestCSPProvider";
+export const wszPROPEXITCERTFILE = "CertFile";
+export const wszPROPCLIENTBROWSERMACHINE = "cbm";
+export const wszPROPCERTCLIENTMACHINE = "ccm";
+export const wszPROPCLIENTDCDNS = "cdc";
+export const wszPROPREQUESTMACHINEDNS = "rmd";
+export const wszPROPSUBJECTALTNAME2 = "san";
+export const wszPROPDNS = "dns";
+export const wszPROPDN = "dn";
+export const wszPROPURL = "url";
+export const wszPROPIPADDRESS = "ipaddress";
+export const wszPROPGUID = "guid";
+export const wszPROPOID = "oid";
+export const wszPROPUPN = "upn";
+export const szPROPASNTAG = "{asn}";
+export const wszPROPCRITICALTAG = "{critical}";
+export const wszPROPUTF8TAG = "{utf8}";
+export const wszPROPOCTETTAG = "{octet}";
+export const wszPROPHEXTAG = "{hex}";
+export const wszPROPTEXTTAG = "{text}";
+export const wszPROPDECIMALTAG = "{decimal}";
+export const wszPROPFILETAG = "{file}";
+export const wszAT_EKCERTINF = "@EKCert";
+export const wszAT_TESTROOT = "@TestRoot";
+export const wszPROPCATYPE = "CAType";
+export const wszPROPSANITIZEDCANAME = "SanitizedCAName";
+export const wszPROPSANITIZEDSHORTNAME = "SanitizedShortName";
+export const wszPROPMACHINEDNSNAME = "MachineDNSName";
+export const wszPROPMODULEREGLOC = "ModuleRegistryLocation";
+export const wszPROPUSEDS = "fUseDS";
+export const wszPROPDELTACRLSDISABLED = "fDeltaCRLsDisabled";
+export const wszPROPSERVERUPGRADED = "fServerUpgraded";
+export const wszPROPCONFIGDN = "ConfigDN";
+export const wszPROPDOMAINDN = "DomainDN";
+export const wszPROPLOGLEVEL = "LogLevel";
+export const wszPROPSESSIONCOUNT = "SessionCount";
+export const wszPROPTEMPLATECHANGESEQUENCENUMBER = "TemplateChangeSequenceNumber";
+export const wszPROPVOLATILEMODE = "VolatileMode";
+export const wszLOCALIZEDTIMEPERIODUNITS = "LocalizedTimePeriodUnits";
+export const wszPROPREQUESTERCAACCESS = "RequesterCAAccess";
+export const wszPROPUSERDN = "UserDN";
+export const wszPROPKEYARCHIVED = "KeyArchived";
+export const wszPROPCERTCOUNT = "CertCount";
+export const wszPROPRAWCACERTIFICATE = "RawCACertificate";
+export const wszPROPCERTSTATE = "CertState";
+export const wszPROPCERTSUFFIX = "CertSuffix";
+export const wszPROPRAWCRL = "RawCRL";
+export const wszPROPRAWDELTACRL = "RawDeltaCRL";
+export const wszPROPCRLINDEX = "CRLIndex";
+export const wszPROPCRLSTATE = "CRLState";
+export const wszPROPCRLSUFFIX = "CRLSuffix";
+export const wszPROPEVENTLOGTERSE = "EventLogTerse";
+export const wszPROPEVENTLOGERROR = "EventLogError";
+export const wszPROPEVENTLOGWARNING = "EventLogWarning";
+export const wszPROPEVENTLOGVERBOSE = "EventLogVerbose";
+export const wszPROPEVENTLOGEXHAUSTIVE = "EventLogExhaustive";
+export const wszPROPDCNAME = "DCName";
+export const wszPROPCROSSFOREST = "CrossForest";
+export const wszPROPREQUESTERSAMNAME = "RequesterSAMName";
+export const wszPROPREQUESTERUPN = "RequesterUPN";
+export const wszPROPREQUESTERDN = "RequesterDN";
+export const wszPROPSEAUDITID = "SEAuditId";
+export const wszPROPSEAUDITFILTER = "SEAuditFilter";
+export const wszPROPCERTIFICATEREQUESTID = "RequestID";
+export const wszPROPRAWCERTIFICATE = "RawCertificate";
+export const wszPROPCERTIFICATEHASH = "CertificateHash";
+export const wszPROPCERTIFICATETEMPLATE = "CertificateTemplate";
+export const wszPROPCERTIFICATEENROLLMENTFLAGS = "EnrollmentFlags";
+export const wszPROPCERTIFICATEGENERALFLAGS = "GeneralFlags";
+export const wszPROPCERTIFICATEPRIVATEKEYFLAGS = "PrivatekeyFlags";
+export const wszPROPCERTIFICATESERIALNUMBER = "SerialNumber";
+export const wszPROPCERTIFICATENOTBEFOREDATE = "NotBefore";
+export const wszPROPCERTIFICATENOTAFTERDATE = "NotAfter";
+export const wszPROPCERTIFICATESUBJECTKEYIDENTIFIER = "SubjectKeyIdentifier";
+export const wszPROPCERTIFICATERAWPUBLICKEY = "RawPublicKey";
+export const wszPROPCERTIFICATEPUBLICKEYLENGTH = "PublicKeyLength";
+export const wszPROPCERTIFICATEPUBLICKEYALGORITHM = "PublicKeyAlgorithm";
+export const wszPROPCERTIFICATERAWPUBLICKEYALGORITHMPARAMETERS = "RawPublicKeyAlgorithmParameters";
+export const wszPROPCERTIFICATEUPN = "UPN";
+export const wszPROPCERTIFICATETYPE = "CertificateType";
+export const wszPROPCERTIFICATERAWSMIMECAPABILITIES = "RawSMIMECapabilities";
+export const wszPROPNAMETYPE = "NameType";
 export const EXTENSION_CRITICAL_FLAG = 1;
 export const EXTENSION_DISABLE_FLAG = 2;
 export const EXTENSION_DELETE_FLAG = 4;
@@ -505,6 +937,30 @@ export const EXTENSION_ORIGIN_PKCS7 = 458752;
 export const EXTENSION_ORIGIN_CMC = 524288;
 export const EXTENSION_ORIGIN_CACERT = 589824;
 export const EXTENSION_ORIGIN_MASK = 983040;
+export const wszPROPEXTREQUESTID = "ExtensionRequestId";
+export const wszPROPEXTNAME = "ExtensionName";
+export const wszPROPEXTFLAGS = "ExtensionFlags";
+export const wszPROPEXTRAWVALUE = "ExtensionRawValue";
+export const wszPROPATTRIBREQUESTID = "AttributeRequestId";
+export const wszPROPATTRIBNAME = "AttributeName";
+export const wszPROPATTRIBVALUE = "AttributeValue";
+export const wszPROPCRLROWID = "CRLRowId";
+export const wszPROPCRLNUMBER = "CRLNumber";
+export const wszPROPCRLMINBASE = "CRLMinBase";
+export const wszPROPCRLNAMEID = "CRLNameId";
+export const wszPROPCRLCOUNT = "CRLCount";
+export const wszPROPCRLTHISUPDATE = "CRLThisUpdate";
+export const wszPROPCRLNEXTUPDATE = "CRLNextUpdate";
+export const wszPROPCRLTHISPUBLISH = "CRLThisPublish";
+export const wszPROPCRLNEXTPUBLISH = "CRLNextPublish";
+export const wszPROPCRLEFFECTIVE = "CRLEffective";
+export const wszPROPCRLPROPAGATIONCOMPLETE = "CRLPropagationComplete";
+export const wszPROPCRLLASTPUBLISHED = "CRLLastPublished";
+export const wszPROPCRLPUBLISHATTEMPTS = "CRLPublishAttempts";
+export const wszPROPCRLPUBLISHFLAGS = "CRLPublishFlags";
+export const wszPROPCRLPUBLISHSTATUSCODE = "CRLPublishStatusCode";
+export const wszPROPCRLPUBLISHERROR = "CRLPublishError";
+export const wszPROPCRLRAWCRL = "CRLRawCRL";
 export const CPF_BASE = 1;
 export const CPF_DELTA = 2;
 export const CPF_COMPLETE = 4;
@@ -559,6 +1015,17 @@ export const DB_DISP_DENIED = 31;
 export const VR_PENDING = 0;
 export const VR_INSTANT_OK = 1;
 export const VR_INSTANT_BAD = 2;
+export const wszCERT_TYPE = "RequestType";
+export const wszCERT_TYPE_CLIENT = "Client";
+export const wszCERT_TYPE_SERVER = "Server";
+export const wszCERT_TYPE_CODESIGN = "CodeSign";
+export const wszCERT_TYPE_CUSTOMER = "SetCustomer";
+export const wszCERT_TYPE_MERCHANT = "SetMerchant";
+export const wszCERT_TYPE_PAYMENT = "SetPayment";
+export const wszCERT_VERSION = "Version";
+export const wszCERT_VERSION_1 = 1;
+export const wszCERT_VERSION_2 = 2;
+export const wszCERT_VERSION_3 = 3;
 export const CV_OUT_HEXRAW = 12;
 export const CV_OUT_ENCODEMASK = 255;
 export const CV_OUT_NOCRLF = 1073741824;
@@ -596,6 +1063,115 @@ export const wszCMM_PROP_FILEVER = "File Version";
 export const wszCMM_PROP_PRODUCTVER = "Product Version";
 export const wszCMM_PROP_DISPLAY_HWND = "HWND";
 export const wszCMM_PROP_ISMULTITHREADED = "IsMultiThreaded";
+export const CV_COLUMN_LOG_DEFAULT = "-2";
+export const CV_COLUMN_LOG_FAILED_DEFAULT = "-3";
+export const CV_COLUMN_QUEUE_DEFAULT = "-1";
+export const CDR_EXPIRED = 1;
+export const CDR_REQUEST_LAST_CHANGED = 2;
+export const FR_PROP_NONE = 0;
+export const FR_PROP_FULLRESPONSE = 1;
+export const FR_PROP_STATUSINFOCOUNT = 2;
+export const FR_PROP_BODYPARTSTRING = 3;
+export const FR_PROP_STATUS = 4;
+export const FR_PROP_STATUSSTRING = 5;
+export const FR_PROP_OTHERINFOCHOICE = 6;
+export const FR_PROP_FAILINFO = 7;
+export const FR_PROP_PENDINFOTOKEN = 8;
+export const FR_PROP_PENDINFOTIME = 9;
+export const FR_PROP_ISSUEDCERTIFICATEHASH = 10;
+export const FR_PROP_ISSUEDCERTIFICATE = 11;
+export const FR_PROP_ISSUEDCERTIFICATECHAIN = 12;
+export const FR_PROP_ISSUEDCERTIFICATECRLCHAIN = 13;
+export const FR_PROP_ENCRYPTEDKEYHASH = 14;
+export const FR_PROP_FULLRESPONSENOPKCS7 = 15;
+export const FR_PROP_CAEXCHANGECERTIFICATEHASH = 16;
+export const FR_PROP_CAEXCHANGECERTIFICATE = 17;
+export const FR_PROP_CAEXCHANGECERTIFICATECHAIN = 18;
+export const FR_PROP_CAEXCHANGECERTIFICATECRLCHAIN = 19;
+export const FR_PROP_ATTESTATIONCHALLENGE = 20;
+export const FR_PROP_ATTESTATIONPROVIDERNAME = 21;
+export const CVRC_COLUMN_SCHEMA = 0;
+export const CVRC_COLUMN_RESULT = 1;
+export const CVRC_COLUMN_VALUE = 2;
+export const CVRC_COLUMN_MASK = 4095;
+export const CR_IN_BASE64HEADER = 0;
+export const CR_IN_BASE64 = 1;
+export const CR_IN_BINARY = 2;
+export const CC_DEFAULTCONFIG = 0;
+export const CC_FIRSTCONFIG = 2;
+export const CC_LOCALACTIVECONFIG = 4;
+export const CC_LOCALCONFIG = 3;
+export const CC_UIPICKCONFIG = 1;
+export const CC_UIPICKCONFIGSKIPLOCALCA = 5;
+export const CV_OUT_BASE64 = 1;
+export const CV_OUT_BASE64HEADER = 0;
+export const CV_OUT_BASE64REQUESTHEADER = 3;
+export const CV_OUT_BASE64X509CRLHEADER = 9;
+export const CV_OUT_BINARY = 2;
+export const CV_OUT_HEX = 4;
+export const CV_OUT_HEXADDR = 10;
+export const CV_OUT_HEXASCII = 5;
+export const CV_OUT_HEXASCIIADDR = 11;
+export const XEPR_CADNS = 1;
+export const XEPR_CAFRIENDLYNAME = 3;
+export const XEPR_CANAME = 2;
+export const XEPR_HASH = 8;
+export const XEPR_REQUESTID = 4;
+export const CA_ACCESS_ADMIN = 1;
+export const CA_ACCESS_AUDITOR = 4;
+export const CA_ACCESS_ENROLL = 512;
+export const CA_ACCESS_OFFICER = 2;
+export const CA_ACCESS_OPERATOR = 8;
+export const CA_ACCESS_READ = 256;
+export const CR_DISP_DENIED = 2;
+export const CR_DISP_ERROR = 1;
+export const CR_DISP_INCOMPLETE = 0;
+export const CR_DISP_ISSUED = 3;
+export const CR_DISP_ISSUED_OUT_OF_BAND = 4;
+export const CR_DISP_UNDER_SUBMISSION = 5;
+export const XEKL_KEYSIZE_MIN = 1;
+export const XEKL_KEYSIZE_MAX = 2;
+export const XEKL_KEYSIZE_INC = 3;
+export const XECR_CMC = 3;
+export const XECR_PKCS10_V1_5 = 4;
+export const XECR_PKCS10_V2_0 = 1;
+export const XECR_PKCS7 = 2;
+export const EXITEVENT_CERTDENIED = 4;
+export const EXITEVENT_CERTISSUED = 1;
+export const EXITEVENT_CERTPENDING = 2;
+export const EXITEVENT_CERTRETRIEVEPENDING = 16;
+export const EXITEVENT_CERTREVOKED = 8;
+export const EXITEVENT_CRLISSUED = 32;
+export const EXITEVENT_SHUTDOWN = 64;
+export const XECT_EXTENSION_V1 = 1;
+export const XECT_EXTENSION_V2 = 2;
+export const CVRC_TABLE_ATTRIBUTES = 16384;
+export const CVRC_TABLE_CRL = 20480;
+export const CVRC_TABLE_EXTENSIONS = 12288;
+export const CVRC_TABLE_REQCERT = 0;
+export const PROPTYPE_BINARY = 3;
+export const PROPTYPE_DATE = 2;
+export const PROPTYPE_LONG = 1;
+export const PROPTYPE_STRING = 4;
+export const CERT_ALT_NAME_RFC822_NAME = 2;
+export const CERT_ALT_NAME_DNS_NAME = 3;
+export const CERT_ALT_NAME_URL = 7;
+export const CERT_ALT_NAME_REGISTERED_ID = 9;
+export const CERT_ALT_NAME_DIRECTORY_NAME = 5;
+export const CERT_ALT_NAME_IP_ADDRESS = 8;
+export const CERT_ALT_NAME_OTHER_NAME = 1;
+export const CSBACKUP_TYPE_FULL = 1;
+export const CSBACKUP_TYPE_LOGS_ONLY = 2;
+export const XEKL_KEYSPEC_KEYX = 1;
+export const XEKL_KEYSPEC_SIG = 2;
+export const CR_OUT_BASE64HEADER = 0;
+export const CR_OUT_BASE64 = 1;
+export const CR_OUT_BINARY = 2;
+export const CVR_SEEK_EQ = 1;
+export const CVR_SEEK_LE = 4;
+export const CVR_SEEK_LT = 2;
+export const CVR_SEEK_GE = 8;
+export const CVR_SEEK_GT = 16;
 export const OCSP_SF_SILENT = 1;
 export const OCSP_SF_USE_CACERT = 2;
 export const OCSP_SF_ALLOW_SIGNINGCERT_AUTORENEWAL = 4;
@@ -1722,7 +2298,7 @@ export type BOOL = number;
 // Native Libraries
 
 try {
-  var libcertadm = Deno.dlopen("certadm", {
+  var libcertadm_dll = Deno.dlopen("certadm.dll", {
     CertSrvIsServerOnlineW: {
       parameters: ["buffer", "pointer"],
       result: "pointer",
@@ -1799,7 +2375,7 @@ try {
 } catch(e) { /* ignore */ }
 
 try {
-  var libcertpoleng = Deno.dlopen("certpoleng", {
+  var libcertpoleng_dll = Deno.dlopen("certpoleng.dll", {
     PstGetTrustAnchors: {
       parameters: ["pointer", "u32", "pointer", "pointer"],
       result: "pointer",
@@ -1841,7 +2417,7 @@ export function CertSrvIsServerOnlineW(
   pwszServerName: string | null /* Windows.Win32.Foundation.PWSTR */,
   pfServerOnline: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libcertadm.CertSrvIsServerOnlineW(util.pwstrToFfi(pwszServerName), util.toPointer(pfServerOnline)));
+  return util.pointerFromFfi(libcertadm_dll.CertSrvIsServerOnlineW(util.pwstrToFfi(pwszServerName), util.toPointer(pfServerOnline)));
 }
 
 export function CertSrvBackupGetDynamicFileListW(
@@ -1849,7 +2425,7 @@ export function CertSrvBackupGetDynamicFileListW(
   ppwszzFileList: Deno.PointerValue | Uint8Array | null /* ptr */,
   pcbSize: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libcertadm.CertSrvBackupGetDynamicFileListW(util.toPointer(hbc), util.toPointer(ppwszzFileList), util.toPointer(pcbSize)));
+  return util.pointerFromFfi(libcertadm_dll.CertSrvBackupGetDynamicFileListW(util.toPointer(hbc), util.toPointer(ppwszzFileList), util.toPointer(pcbSize)));
 }
 
 export function CertSrvBackupPrepareW(
@@ -1858,7 +2434,7 @@ export function CertSrvBackupPrepareW(
   dwBackupFlags: CSBACKUP_TYPE /* Windows.Win32.Security.Cryptography.Certificates.CSBACKUP_TYPE */,
   phbc: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libcertadm.CertSrvBackupPrepareW(util.pwstrToFfi(pwszServerName), grbitJet, dwBackupFlags, util.toPointer(phbc)));
+  return util.pointerFromFfi(libcertadm_dll.CertSrvBackupPrepareW(util.pwstrToFfi(pwszServerName), grbitJet, dwBackupFlags, util.toPointer(phbc)));
 }
 
 export function CertSrvBackupGetDatabaseNamesW(
@@ -1866,7 +2442,7 @@ export function CertSrvBackupGetDatabaseNamesW(
   ppwszzAttachmentInformation: Deno.PointerValue | Uint8Array | null /* ptr */,
   pcbSize: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libcertadm.CertSrvBackupGetDatabaseNamesW(util.toPointer(hbc), util.toPointer(ppwszzAttachmentInformation), util.toPointer(pcbSize)));
+  return util.pointerFromFfi(libcertadm_dll.CertSrvBackupGetDatabaseNamesW(util.toPointer(hbc), util.toPointer(ppwszzAttachmentInformation), util.toPointer(pcbSize)));
 }
 
 export function CertSrvBackupOpenFileW(
@@ -1875,7 +2451,7 @@ export function CertSrvBackupOpenFileW(
   cbReadHintSize: number /* u32 */,
   pliFileSize: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libcertadm.CertSrvBackupOpenFileW(util.toPointer(hbc), util.pwstrToFfi(pwszAttachmentName), cbReadHintSize, util.toPointer(pliFileSize)));
+  return util.pointerFromFfi(libcertadm_dll.CertSrvBackupOpenFileW(util.toPointer(hbc), util.pwstrToFfi(pwszAttachmentName), cbReadHintSize, util.toPointer(pliFileSize)));
 }
 
 export function CertSrvBackupRead(
@@ -1884,13 +2460,13 @@ export function CertSrvBackupRead(
   cbBuffer: number /* u32 */,
   pcbRead: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libcertadm.CertSrvBackupRead(util.toPointer(hbc), util.toPointer(pvBuffer), cbBuffer, util.toPointer(pcbRead)));
+  return util.pointerFromFfi(libcertadm_dll.CertSrvBackupRead(util.toPointer(hbc), util.toPointer(pvBuffer), cbBuffer, util.toPointer(pcbRead)));
 }
 
 export function CertSrvBackupClose(
   hbc: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libcertadm.CertSrvBackupClose(util.toPointer(hbc)));
+  return util.pointerFromFfi(libcertadm_dll.CertSrvBackupClose(util.toPointer(hbc)));
 }
 
 export function CertSrvBackupGetBackupLogsW(
@@ -1898,25 +2474,25 @@ export function CertSrvBackupGetBackupLogsW(
   ppwszzBackupLogFiles: Deno.PointerValue | Uint8Array | null /* ptr */,
   pcbSize: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libcertadm.CertSrvBackupGetBackupLogsW(util.toPointer(hbc), util.toPointer(ppwszzBackupLogFiles), util.toPointer(pcbSize)));
+  return util.pointerFromFfi(libcertadm_dll.CertSrvBackupGetBackupLogsW(util.toPointer(hbc), util.toPointer(ppwszzBackupLogFiles), util.toPointer(pcbSize)));
 }
 
 export function CertSrvBackupTruncateLogs(
   hbc: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libcertadm.CertSrvBackupTruncateLogs(util.toPointer(hbc)));
+  return util.pointerFromFfi(libcertadm_dll.CertSrvBackupTruncateLogs(util.toPointer(hbc)));
 }
 
 export function CertSrvBackupEnd(
   hbc: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libcertadm.CertSrvBackupEnd(util.toPointer(hbc)));
+  return util.pointerFromFfi(libcertadm_dll.CertSrvBackupEnd(util.toPointer(hbc)));
 }
 
 export function CertSrvBackupFree(
   pv: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): void /* void */ {
-  return libcertadm.CertSrvBackupFree(util.toPointer(pv));
+  return libcertadm_dll.CertSrvBackupFree(util.toPointer(pv));
 }
 
 export function CertSrvRestoreGetDatabaseLocationsW(
@@ -1924,7 +2500,7 @@ export function CertSrvRestoreGetDatabaseLocationsW(
   ppwszzDatabaseLocationList: Deno.PointerValue | Uint8Array | null /* ptr */,
   pcbSize: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libcertadm.CertSrvRestoreGetDatabaseLocationsW(util.toPointer(hbc), util.toPointer(ppwszzDatabaseLocationList), util.toPointer(pcbSize)));
+  return util.pointerFromFfi(libcertadm_dll.CertSrvRestoreGetDatabaseLocationsW(util.toPointer(hbc), util.toPointer(ppwszzDatabaseLocationList), util.toPointer(pcbSize)));
 }
 
 export function CertSrvRestorePrepareW(
@@ -1932,7 +2508,7 @@ export function CertSrvRestorePrepareW(
   dwRestoreFlags: number /* u32 */,
   phbc: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libcertadm.CertSrvRestorePrepareW(util.pwstrToFfi(pwszServerName), dwRestoreFlags, util.toPointer(phbc)));
+  return util.pointerFromFfi(libcertadm_dll.CertSrvRestorePrepareW(util.pwstrToFfi(pwszServerName), dwRestoreFlags, util.toPointer(phbc)));
 }
 
 export function CertSrvRestoreRegisterW(
@@ -1945,7 +2521,7 @@ export function CertSrvRestoreRegisterW(
   genLow: number /* u32 */,
   genHigh: number /* u32 */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libcertadm.CertSrvRestoreRegisterW(util.toPointer(hbc), util.pwstrToFfi(pwszCheckPointFilePath), util.pwstrToFfi(pwszLogPath), util.toPointer(rgrstmap), crstmap, util.pwstrToFfi(pwszBackupLogPath), genLow, genHigh));
+  return util.pointerFromFfi(libcertadm_dll.CertSrvRestoreRegisterW(util.toPointer(hbc), util.pwstrToFfi(pwszCheckPointFilePath), util.pwstrToFfi(pwszLogPath), util.toPointer(rgrstmap), crstmap, util.pwstrToFfi(pwszBackupLogPath), genLow, genHigh));
 }
 
 export function CertSrvRestoreRegisterThroughFile(
@@ -1958,20 +2534,20 @@ export function CertSrvRestoreRegisterThroughFile(
   genLow: number /* u32 */,
   genHigh: number /* u32 */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libcertadm.CertSrvRestoreRegisterThroughFile(util.toPointer(hbc), util.pwstrToFfi(pwszCheckPointFilePath), util.pwstrToFfi(pwszLogPath), util.toPointer(rgrstmap), crstmap, util.pwstrToFfi(pwszBackupLogPath), genLow, genHigh));
+  return util.pointerFromFfi(libcertadm_dll.CertSrvRestoreRegisterThroughFile(util.toPointer(hbc), util.pwstrToFfi(pwszCheckPointFilePath), util.pwstrToFfi(pwszLogPath), util.toPointer(rgrstmap), crstmap, util.pwstrToFfi(pwszBackupLogPath), genLow, genHigh));
 }
 
 export function CertSrvRestoreRegisterComplete(
   hbc: Deno.PointerValue | Uint8Array | null /* ptr */,
   hrRestoreState: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libcertadm.CertSrvRestoreRegisterComplete(util.toPointer(hbc), util.toPointer(hrRestoreState)));
+  return util.pointerFromFfi(libcertadm_dll.CertSrvRestoreRegisterComplete(util.toPointer(hbc), util.toPointer(hrRestoreState)));
 }
 
 export function CertSrvRestoreEnd(
   hbc: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libcertadm.CertSrvRestoreEnd(util.toPointer(hbc)));
+  return util.pointerFromFfi(libcertadm_dll.CertSrvRestoreEnd(util.toPointer(hbc)));
 }
 
 export function CertSrvServerControlW(
@@ -1980,7 +2556,7 @@ export function CertSrvServerControlW(
   pcbOut: Deno.PointerValue | Uint8Array | null /* ptr */,
   ppbOut: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libcertadm.CertSrvServerControlW(util.pwstrToFfi(pwszServerName), dwControlFlags, util.toPointer(pcbOut), util.toPointer(ppbOut)));
+  return util.pointerFromFfi(libcertadm_dll.CertSrvServerControlW(util.pwstrToFfi(pwszServerName), dwControlFlags, util.toPointer(pcbOut), util.toPointer(ppbOut)));
 }
 
 export function PstGetTrustAnchors(
@@ -1989,7 +2565,7 @@ export function PstGetTrustAnchors(
   rgpCriteria: Deno.PointerValue | Uint8Array | null /* ptr */,
   ppTrustedIssuers: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.NTSTATUS */ {
-  return util.pointerFromFfi(libcertpoleng.PstGetTrustAnchors(util.toPointer(pTargetName), cCriteria, util.toPointer(rgpCriteria), util.toPointer(ppTrustedIssuers)));
+  return util.pointerFromFfi(libcertpoleng_dll.PstGetTrustAnchors(util.toPointer(pTargetName), cCriteria, util.toPointer(rgpCriteria), util.toPointer(ppTrustedIssuers)));
 }
 
 export function PstGetTrustAnchorsEx(
@@ -1999,7 +2575,7 @@ export function PstGetTrustAnchorsEx(
   pCertContext: Deno.PointerValue | Uint8Array | null /* ptr */,
   ppTrustedIssuers: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.NTSTATUS */ {
-  return util.pointerFromFfi(libcertpoleng.PstGetTrustAnchorsEx(util.toPointer(pTargetName), cCriteria, util.toPointer(rgpCriteria), util.toPointer(pCertContext), util.toPointer(ppTrustedIssuers)));
+  return util.pointerFromFfi(libcertpoleng_dll.PstGetTrustAnchorsEx(util.toPointer(pTargetName), cCriteria, util.toPointer(rgpCriteria), util.toPointer(pCertContext), util.toPointer(ppTrustedIssuers)));
 }
 
 export function PstGetCertificateChain(
@@ -2007,7 +2583,7 @@ export function PstGetCertificateChain(
   pTrustedIssuers: Deno.PointerValue | Uint8Array | null /* ptr */,
   ppCertChainContext: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.NTSTATUS */ {
-  return util.pointerFromFfi(libcertpoleng.PstGetCertificateChain(util.toPointer(pCert), util.toPointer(pTrustedIssuers), util.toPointer(ppCertChainContext)));
+  return util.pointerFromFfi(libcertpoleng_dll.PstGetCertificateChain(util.toPointer(pCert), util.toPointer(pTrustedIssuers), util.toPointer(ppCertChainContext)));
 }
 
 export function PstGetCertificates(
@@ -2018,13 +2594,13 @@ export function PstGetCertificates(
   pdwCertChainContextCount: Deno.PointerValue | Uint8Array | null /* ptr */,
   ppCertChainContexts: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.NTSTATUS */ {
-  return util.pointerFromFfi(libcertpoleng.PstGetCertificates(util.toPointer(pTargetName), cCriteria, util.toPointer(rgpCriteria), util.boolToFfi(bIsClient), util.toPointer(pdwCertChainContextCount), util.toPointer(ppCertChainContexts)));
+  return util.pointerFromFfi(libcertpoleng_dll.PstGetCertificates(util.toPointer(pTargetName), cCriteria, util.toPointer(rgpCriteria), util.boolToFfi(bIsClient), util.toPointer(pdwCertChainContextCount), util.toPointer(ppCertChainContexts)));
 }
 
 export function PstAcquirePrivateKey(
   pCert: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.NTSTATUS */ {
-  return util.pointerFromFfi(libcertpoleng.PstAcquirePrivateKey(util.toPointer(pCert)));
+  return util.pointerFromFfi(libcertpoleng_dll.PstAcquirePrivateKey(util.toPointer(pCert)));
 }
 
 export function PstValidate(
@@ -2035,7 +2611,7 @@ export function PstValidate(
   pCert: Deno.PointerValue | Uint8Array | null /* ptr */,
   pProvGUID: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.NTSTATUS */ {
-  return util.pointerFromFfi(libcertpoleng.PstValidate(util.toPointer(pTargetName), util.boolToFfi(bIsClient), util.toPointer(pRequestedIssuancePolicy), util.toPointer(phAdditionalCertStore), util.toPointer(pCert), util.toPointer(pProvGUID)));
+  return util.pointerFromFfi(libcertpoleng_dll.PstValidate(util.toPointer(pTargetName), util.boolToFfi(bIsClient), util.toPointer(pRequestedIssuancePolicy), util.toPointer(phAdditionalCertStore), util.toPointer(pCert), util.toPointer(pProvGUID)));
 }
 
 export function PstMapCertificate(
@@ -2043,13 +2619,13 @@ export function PstMapCertificate(
   pTokenInformationType: Deno.PointerValue | Uint8Array | null /* ptr */,
   ppTokenInformation: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.NTSTATUS */ {
-  return util.pointerFromFfi(libcertpoleng.PstMapCertificate(util.toPointer(pCert), util.toPointer(pTokenInformationType), util.toPointer(ppTokenInformation)));
+  return util.pointerFromFfi(libcertpoleng_dll.PstMapCertificate(util.toPointer(pCert), util.toPointer(pTokenInformationType), util.toPointer(ppTokenInformation)));
 }
 
 export function PstGetUserNameForCertificate(
   pCertContext: Deno.PointerValue | Uint8Array | null /* ptr */,
   UserName: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.NTSTATUS */ {
-  return util.pointerFromFfi(libcertpoleng.PstGetUserNameForCertificate(util.toPointer(pCertContext), util.toPointer(UserName)));
+  return util.pointerFromFfi(libcertpoleng_dll.PstGetUserNameForCertificate(util.toPointer(pCertContext), util.toPointer(UserName)));
 }
 

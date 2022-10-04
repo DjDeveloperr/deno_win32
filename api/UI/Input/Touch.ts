@@ -244,7 +244,7 @@ export type BOOL = number;
 // Native Libraries
 
 try {
-  var libUSER32 = Deno.dlopen("USER32", {
+  var libUSER32_dll = Deno.dlopen("USER32.dll", {
     GetTouchInputInfo: {
       parameters: ["pointer", "u32", "pointer", "i32"],
       result: "i32",
@@ -296,40 +296,40 @@ export function GetTouchInputInfo(
   pInputs: Deno.PointerValue | Uint8Array | null /* ptr */,
   cbSize: number /* i32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSER32.GetTouchInputInfo(util.toPointer(hTouchInput), cInputs, util.toPointer(pInputs), cbSize));
+  return util.boolFromFfi(libUSER32_dll.GetTouchInputInfo(util.toPointer(hTouchInput), cInputs, util.toPointer(pInputs), cbSize));
 }
 
 export function CloseTouchInputHandle(
   hTouchInput: Uint8Array | Deno.PointerValue | null /* Windows.Win32.UI.Input.Touch.HTOUCHINPUT */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSER32.CloseTouchInputHandle(util.toPointer(hTouchInput)));
+  return util.boolFromFfi(libUSER32_dll.CloseTouchInputHandle(util.toPointer(hTouchInput)));
 }
 
 export function RegisterTouchWindow(
   hwnd: Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */,
   ulFlags: REGISTER_TOUCH_WINDOW_FLAGS /* Windows.Win32.UI.Input.Touch.REGISTER_TOUCH_WINDOW_FLAGS */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSER32.RegisterTouchWindow(util.hwndToFfi(hwnd), ulFlags));
+  return util.boolFromFfi(libUSER32_dll.RegisterTouchWindow(util.hwndToFfi(hwnd), ulFlags));
 }
 
 export function UnregisterTouchWindow(
   hwnd: Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSER32.UnregisterTouchWindow(util.hwndToFfi(hwnd)));
+  return util.boolFromFfi(libUSER32_dll.UnregisterTouchWindow(util.hwndToFfi(hwnd)));
 }
 
 export function IsTouchWindow(
   hwnd: Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */,
   pulFlags: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSER32.IsTouchWindow(util.hwndToFfi(hwnd), util.toPointer(pulFlags)));
+  return util.boolFromFfi(libUSER32_dll.IsTouchWindow(util.hwndToFfi(hwnd), util.toPointer(pulFlags)));
 }
 
 export function GetGestureInfo(
   hGestureInfo: Uint8Array | Deno.PointerValue | null /* Windows.Win32.UI.Input.Touch.HGESTUREINFO */,
   pGestureInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSER32.GetGestureInfo(util.toPointer(hGestureInfo), util.toPointer(pGestureInfo)));
+  return util.boolFromFfi(libUSER32_dll.GetGestureInfo(util.toPointer(hGestureInfo), util.toPointer(pGestureInfo)));
 }
 
 export function GetGestureExtraArgs(
@@ -337,13 +337,13 @@ export function GetGestureExtraArgs(
   cbExtraArgs: number /* u32 */,
   pExtraArgs: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSER32.GetGestureExtraArgs(util.toPointer(hGestureInfo), cbExtraArgs, util.toPointer(pExtraArgs)));
+  return util.boolFromFfi(libUSER32_dll.GetGestureExtraArgs(util.toPointer(hGestureInfo), cbExtraArgs, util.toPointer(pExtraArgs)));
 }
 
 export function CloseGestureInfoHandle(
   hGestureInfo: Uint8Array | Deno.PointerValue | null /* Windows.Win32.UI.Input.Touch.HGESTUREINFO */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSER32.CloseGestureInfoHandle(util.toPointer(hGestureInfo)));
+  return util.boolFromFfi(libUSER32_dll.CloseGestureInfoHandle(util.toPointer(hGestureInfo)));
 }
 
 export function SetGestureConfig(
@@ -353,7 +353,7 @@ export function SetGestureConfig(
   pGestureConfig: Deno.PointerValue | Uint8Array | null /* ptr */,
   cbSize: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSER32.SetGestureConfig(util.hwndToFfi(hwnd), dwReserved, cIDs, util.toPointer(pGestureConfig), cbSize));
+  return util.boolFromFfi(libUSER32_dll.SetGestureConfig(util.hwndToFfi(hwnd), dwReserved, cIDs, util.toPointer(pGestureConfig), cbSize));
 }
 
 export function GetGestureConfig(
@@ -364,6 +364,6 @@ export function GetGestureConfig(
   pGestureConfig: Deno.PointerValue | Uint8Array | null /* ptr */,
   cbSize: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSER32.GetGestureConfig(util.hwndToFfi(hwnd), dwReserved, dwFlags, util.toPointer(pcIDs), util.toPointer(pGestureConfig), cbSize));
+  return util.boolFromFfi(libUSER32_dll.GetGestureConfig(util.hwndToFfi(hwnd), dwReserved, dwFlags, util.toPointer(pcIDs), util.toPointer(pGestureConfig), cbSize));
 }
 

@@ -77,7 +77,7 @@ export const DWRITE_ERR_BASE = 20480;
 export const DWRITE_E_REMOTEFONT = 10975287704536240141n;
 export const DWRITE_E_DOWNLOADCANCELLED = 10975288804047867918n;
 export const DWRITE_E_DOWNLOADFAILED = 10975289903559495695n;
-export const DWRITE_E_TOOMANYDOWNLOADS = 1225823585996132368n;
+export const DWRITE_E_TOOMANYDOWNLOADS = 1225823581701165072n;
 export const DWRITE_FONT_AXIS_TAG_WEIGHT = 1952999287;
 export const DWRITE_FONT_AXIS_TAG_WIDTH = 1752458359;
 export const DWRITE_FONT_AXIS_TAG_SLANT = 1953393779;
@@ -1450,7 +1450,7 @@ export function allocDWRITE_HIT_TEST_METRICS(data?: Partial<DWRITE_HIT_TEST_METR
  */
 export interface DWRITE_FONT_METRICS1 {
   /** Windows.Win32.Graphics.DirectWrite.DWRITE_FONT_METRICS */
-  __AnonymousBase_DWrite_1_L627_C38: Uint8Array | Deno.PointerValue | null;
+  Base: Uint8Array | Deno.PointerValue | null;
   /** i16 */
   glyphBoxLeft: number;
   /** i16 */
@@ -1485,7 +1485,7 @@ export function allocDWRITE_FONT_METRICS1(data?: Partial<DWRITE_FONT_METRICS1>):
   const buf = new Uint8Array(sizeofDWRITE_FONT_METRICS1);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.__AnonymousBase_DWrite_1_L627_C38 !== undefined) view.setBigUint64(0, data.__AnonymousBase_DWrite_1_L627_C38 === null ? 0n : BigInt(util.toPointer(data.__AnonymousBase_DWrite_1_L627_C38)), true);
+  if (data?.Base !== undefined) view.setBigUint64(0, data.Base === null ? 0n : BigInt(util.toPointer(data.Base)), true);
   // 0x08: i16
   if (data?.glyphBoxLeft !== undefined) view.setInt16(8, Number(data.glyphBoxLeft), true);
   // 0x0a: i16
@@ -2242,7 +2242,7 @@ export type HRESULT = number;
 // Native Libraries
 
 try {
-  var libDWrite = Deno.dlopen("DWrite", {
+  var libDWrite_dll = Deno.dlopen("DWrite.dll", {
     DWriteCreateFactory: {
       parameters: ["i32", "pointer", "pointer"],
       result: "pointer",
@@ -2257,6 +2257,6 @@ export function DWriteCreateFactory(
   iid: Deno.PointerValue | Uint8Array | null /* ptr */,
   factory: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libDWrite.DWriteCreateFactory(factoryType, util.toPointer(iid), util.toPointer(factory)));
+  return util.pointerFromFfi(libDWrite_dll.DWriteCreateFactory(factoryType, util.toPointer(iid), util.toPointer(factory)));
 }
 

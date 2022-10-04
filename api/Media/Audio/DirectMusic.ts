@@ -192,6 +192,7 @@ export const DLS_CDL_QUERY = 17;
 export const DLS_CDL_QUERYSUPPORTED = 18;
 export const WLOOP_TYPE_RELEASE = 2;
 export const F_WAVELINK_MULTICHANNEL = 2;
+export const REGSTR_PATH_SOFTWARESYNTHS = "Software\Microsoft\DirectMusic\SoftwareSynths";
 export const REFRESH_F_LASTBUFFER = 1;
 export const DV_DVSD_NTSC_FRAMESIZE = 120000;
 export const DV_DVSD_PAL_FRAMESIZE = 144000;
@@ -527,9 +528,9 @@ export function allocPOOLTABLE(data?: Partial<POOLTABLE>): Uint8Array {
 }
 
 /**
- * Windows.Win32.Media.Audio.DirectMusic._rwsmp (size: 24)
+ * Windows.Win32.Media.Audio.DirectMusic.WSMPL (size: 24)
  */
-export interface _rwsmp {
+export interface WSMPL {
   /** u32 */
   cbSize: number;
   /** u16 */
@@ -544,10 +545,10 @@ export interface _rwsmp {
   cSampleLoops: number;
 }
 
-export const sizeof_rwsmp = 24;
+export const sizeofWSMPL = 24;
 
-export function alloc_rwsmp(data?: Partial<_rwsmp>): Uint8Array {
-  const buf = new Uint8Array(sizeof_rwsmp);
+export function allocWSMPL(data?: Partial<WSMPL>): Uint8Array {
+  const buf = new Uint8Array(sizeofWSMPL);
   const view = new DataView(buf.buffer);
   // 0x00: u32
   if (data?.cbSize !== undefined) view.setUint32(0, Number(data.cbSize), true);
@@ -566,9 +567,9 @@ export function alloc_rwsmp(data?: Partial<_rwsmp>): Uint8Array {
 }
 
 /**
- * Windows.Win32.Media.Audio.DirectMusic._rloop (size: 16)
+ * Windows.Win32.Media.Audio.DirectMusic.WLOOP (size: 16)
  */
-export interface _rloop {
+export interface WLOOP {
   /** u32 */
   cbSize: number;
   /** u32 */
@@ -579,10 +580,10 @@ export interface _rloop {
   ulLength: number;
 }
 
-export const sizeof_rloop = 16;
+export const sizeofWLOOP = 16;
 
-export function alloc_rloop(data?: Partial<_rloop>): Uint8Array {
-  const buf = new Uint8Array(sizeof_rloop);
+export function allocWLOOP(data?: Partial<WLOOP>): Uint8Array {
+  const buf = new Uint8Array(sizeofWLOOP);
   const view = new DataView(buf.buffer);
   // 0x00: u32
   if (data?.cbSize !== undefined) view.setUint32(0, Number(data.cbSize), true);
@@ -701,7 +702,7 @@ export interface DMUS_REGION {
   ulFirstExtCkIdx: number;
   /** Windows.Win32.Media.Audio.DirectMusic.WAVELINK */
   WaveLink: Uint8Array | Deno.PointerValue | null;
-  /** Windows.Win32.Media.Audio.DirectMusic._rwsmp */
+  /** Windows.Win32.Media.Audio.DirectMusic.WSMPL */
   WSMP: Uint8Array | Deno.PointerValue | null;
   /** array */
   WLOOP: Deno.PointerValue | null;
@@ -1303,9 +1304,9 @@ export function allocDMUS_PORTCAPS(data?: Partial<DMUS_PORTCAPS>): Uint8Array {
 export type BOOL = number;
 
 /**
- * Windows.Win32.Media.Audio.DirectMusic._DMUS_PORTPARAMS (size: 32)
+ * Windows.Win32.Media.Audio.DirectMusic.DMUS_PORTPARAMS7 (size: 32)
  */
-export interface _DMUS_PORTPARAMS {
+export interface DMUS_PORTPARAMS7 {
   /** u32 */
   dwSize: number;
   /** u32 */
@@ -1324,10 +1325,10 @@ export interface _DMUS_PORTPARAMS {
   fShare: boolean;
 }
 
-export const sizeof_DMUS_PORTPARAMS = 32;
+export const sizeofDMUS_PORTPARAMS7 = 32;
 
-export function alloc_DMUS_PORTPARAMS(data?: Partial<_DMUS_PORTPARAMS>): Uint8Array {
-  const buf = new Uint8Array(sizeof_DMUS_PORTPARAMS);
+export function allocDMUS_PORTPARAMS7(data?: Partial<DMUS_PORTPARAMS7>): Uint8Array {
+  const buf = new Uint8Array(sizeofDMUS_PORTPARAMS7);
   const view = new DataView(buf.buffer);
   // 0x00: u32
   if (data?.dwSize !== undefined) view.setUint32(0, Number(data.dwSize), true);
@@ -1899,9 +1900,9 @@ export function allocDSPROPERTY_DIRECTSOUNDDEVICE_ENUMERATE_W_DATA(data?: Partia
 }
 
 /**
- * Windows.Win32.Media.Audio.DirectMusic.Tag_DVAudInfo (size: 40)
+ * Windows.Win32.Media.Audio.DirectMusic.DVAudInfo (size: 40)
  */
-export interface Tag_DVAudInfo {
+export interface DVAudInfo {
   /** array */
   bAudStyle: Deno.PointerValue | null;
   /** array */
@@ -1918,10 +1919,10 @@ export interface Tag_DVAudInfo {
   wBlkDiv: number;
 }
 
-export const sizeofTag_DVAudInfo = 40;
+export const sizeofDVAudInfo = 40;
 
-export function allocTag_DVAudInfo(data?: Partial<Tag_DVAudInfo>): Uint8Array {
-  const buf = new Uint8Array(sizeofTag_DVAudInfo);
+export function allocDVAudInfo(data?: Partial<DVAudInfo>): Uint8Array {
+  const buf = new Uint8Array(sizeofDVAudInfo);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
   if (data?.bAudStyle !== undefined) view.setBigUint64(0, data.bAudStyle === null ? 0n : BigInt(util.toPointer(data.bAudStyle)), true);

@@ -2,7 +2,37 @@
 
 import * as util from "../../util.ts";
 
+// Enums
+export type PFD_PIXEL_TYPE = number;
+export type PFD_LAYER_TYPE = number;
+export type PFD_FLAGS = number;
+export type ENHANCED_METAFILE_RECORD_TYPE = number;
+
 // Constants
+export const PFD_TYPE_RGBA = 0;
+export const PFD_TYPE_COLORINDEX = 1;
+export const PFD_UNDERLAY_PLANE = "-1";
+export const PFD_MAIN_PLANE = 0;
+export const PFD_OVERLAY_PLANE = 1;
+export const PFD_DOUBLEBUFFER = 1;
+export const PFD_STEREO = 2;
+export const PFD_DRAW_TO_WINDOW = 4;
+export const PFD_DRAW_TO_BITMAP = 8;
+export const PFD_SUPPORT_GDI = 16;
+export const PFD_SUPPORT_OPENGL = 32;
+export const PFD_GENERIC_FORMAT = 64;
+export const PFD_NEED_PALETTE = 128;
+export const PFD_NEED_SYSTEM_PALETTE = 256;
+export const PFD_SWAP_EXCHANGE = 512;
+export const PFD_SWAP_COPY = 1024;
+export const PFD_SWAP_LAYER_BUFFERS = 2048;
+export const PFD_GENERIC_ACCELERATED = 4096;
+export const PFD_SUPPORT_DIRECTDRAW = 8192;
+export const PFD_DIRECT3D_ACCELERATED = 16384;
+export const PFD_SUPPORT_COMPOSITION = 32768;
+export const PFD_DEPTH_DONTCARE = 536870912;
+export const PFD_DOUBLEBUFFER_DONTCARE = 1073741824;
+export const PFD_STEREO_DONTCARE = 2147483648;
 export const GL_VERSION_1_1 = 1;
 export const GL_ACCUM = 256;
 export const GL_LOAD = 257;
@@ -706,6 +736,129 @@ export const GLU_VERTEX = 100101;
 export const GLU_END = 100102;
 export const GLU_ERROR = 100103;
 export const GLU_EDGE_FLAG = 100104;
+export const EMR_HEADER = 1;
+export const EMR_POLYBEZIER = 2;
+export const EMR_POLYGON = 3;
+export const EMR_POLYLINE = 4;
+export const EMR_POLYBEZIERTO = 5;
+export const EMR_POLYLINETO = 6;
+export const EMR_POLYPOLYLINE = 7;
+export const EMR_POLYPOLYGON = 8;
+export const EMR_SETWINDOWEXTEX = 9;
+export const EMR_SETWINDOWORGEX = 10;
+export const EMR_SETVIEWPORTEXTEX = 11;
+export const EMR_SETVIEWPORTORGEX = 12;
+export const EMR_SETBRUSHORGEX = 13;
+export const EMR_EOF = 14;
+export const EMR_SETPIXELV = 15;
+export const EMR_SETMAPPERFLAGS = 16;
+export const EMR_SETMAPMODE = 17;
+export const EMR_SETBKMODE = 18;
+export const EMR_SETPOLYFILLMODE = 19;
+export const EMR_SETROP2 = 20;
+export const EMR_SETSTRETCHBLTMODE = 21;
+export const EMR_SETTEXTALIGN = 22;
+export const EMR_SETCOLORADJUSTMENT = 23;
+export const EMR_SETTEXTCOLOR = 24;
+export const EMR_SETBKCOLOR = 25;
+export const EMR_OFFSETCLIPRGN = 26;
+export const EMR_MOVETOEX = 27;
+export const EMR_SETMETARGN = 28;
+export const EMR_EXCLUDECLIPRECT = 29;
+export const EMR_INTERSECTCLIPRECT = 30;
+export const EMR_SCALEVIEWPORTEXTEX = 31;
+export const EMR_SCALEWINDOWEXTEX = 32;
+export const EMR_SAVEDC = 33;
+export const EMR_RESTOREDC = 34;
+export const EMR_SETWORLDTRANSFORM = 35;
+export const EMR_MODIFYWORLDTRANSFORM = 36;
+export const EMR_SELECTOBJECT = 37;
+export const EMR_CREATEPEN = 38;
+export const EMR_CREATEBRUSHINDIRECT = 39;
+export const EMR_DELETEOBJECT = 40;
+export const EMR_ANGLEARC = 41;
+export const EMR_ELLIPSE = 42;
+export const EMR_RECTANGLE = 43;
+export const EMR_ROUNDRECT = 44;
+export const EMR_ARC = 45;
+export const EMR_CHORD = 46;
+export const EMR_PIE = 47;
+export const EMR_SELECTPALETTE = 48;
+export const EMR_CREATEPALETTE = 49;
+export const EMR_SETPALETTEENTRIES = 50;
+export const EMR_RESIZEPALETTE = 51;
+export const EMR_REALIZEPALETTE = 52;
+export const EMR_EXTFLOODFILL = 53;
+export const EMR_LINETO = 54;
+export const EMR_ARCTO = 55;
+export const EMR_POLYDRAW = 56;
+export const EMR_SETARCDIRECTION = 57;
+export const EMR_SETMITERLIMIT = 58;
+export const EMR_BEGINPATH = 59;
+export const EMR_ENDPATH = 60;
+export const EMR_CLOSEFIGURE = 61;
+export const EMR_FILLPATH = 62;
+export const EMR_STROKEANDFILLPATH = 63;
+export const EMR_STROKEPATH = 64;
+export const EMR_FLATTENPATH = 65;
+export const EMR_WIDENPATH = 66;
+export const EMR_SELECTCLIPPATH = 67;
+export const EMR_ABORTPATH = 68;
+export const EMR_GDICOMMENT = 70;
+export const EMR_FILLRGN = 71;
+export const EMR_FRAMERGN = 72;
+export const EMR_INVERTRGN = 73;
+export const EMR_PAINTRGN = 74;
+export const EMR_EXTSELECTCLIPRGN = 75;
+export const EMR_BITBLT = 76;
+export const EMR_STRETCHBLT = 77;
+export const EMR_MASKBLT = 78;
+export const EMR_PLGBLT = 79;
+export const EMR_SETDIBITSTODEVICE = 80;
+export const EMR_STRETCHDIBITS = 81;
+export const EMR_EXTCREATEFONTINDIRECTW = 82;
+export const EMR_EXTTEXTOUTA = 83;
+export const EMR_EXTTEXTOUTW = 84;
+export const EMR_POLYBEZIER16 = 85;
+export const EMR_POLYGON16 = 86;
+export const EMR_POLYLINE16 = 87;
+export const EMR_POLYBEZIERTO16 = 88;
+export const EMR_POLYLINETO16 = 89;
+export const EMR_POLYPOLYLINE16 = 90;
+export const EMR_POLYPOLYGON16 = 91;
+export const EMR_POLYDRAW16 = 92;
+export const EMR_CREATEMONOBRUSH = 93;
+export const EMR_CREATEDIBPATTERNBRUSHPT = 94;
+export const EMR_EXTCREATEPEN = 95;
+export const EMR_POLYTEXTOUTA = 96;
+export const EMR_POLYTEXTOUTW = 97;
+export const EMR_SETICMMODE = 98;
+export const EMR_CREATECOLORSPACE = 99;
+export const EMR_SETCOLORSPACE = 100;
+export const EMR_DELETECOLORSPACE = 101;
+export const EMR_GLSRECORD = 102;
+export const EMR_GLSBOUNDEDRECORD = 103;
+export const EMR_PIXELFORMAT = 104;
+export const EMR_RESERVED_105 = 105;
+export const EMR_RESERVED_106 = 106;
+export const EMR_RESERVED_107 = 107;
+export const EMR_RESERVED_108 = 108;
+export const EMR_RESERVED_109 = 109;
+export const EMR_RESERVED_110 = 110;
+export const EMR_COLORCORRECTPALETTE = 111;
+export const EMR_SETICMPROFILEA = 112;
+export const EMR_SETICMPROFILEW = 113;
+export const EMR_ALPHABLEND = 114;
+export const EMR_SETLAYOUT = 115;
+export const EMR_TRANSPARENTBLT = 116;
+export const EMR_RESERVED_117 = 117;
+export const EMR_GRADIENTFILL = 118;
+export const EMR_RESERVED_119 = 119;
+export const EMR_RESERVED_120 = 120;
+export const EMR_COLORMATCHTOTARGETW = 121;
+export const EMR_CREATECOLORSPACEW = 122;
+export const EMR_MIN = 1;
+export const EMR_MAX = 122;
 
 // Structs
 
@@ -719,10 +872,10 @@ export interface PIXELFORMATDESCRIPTOR {
   nSize: number;
   /** u16 */
   nVersion: number;
-  /** u32 */
-  dwFlags: number;
-  /** u8 */
-  iPixelType: number;
+  /** Windows.Win32.Graphics.OpenGL.PFD_FLAGS */
+  dwFlags: PFD_FLAGS;
+  /** Windows.Win32.Graphics.OpenGL.PFD_PIXEL_TYPE */
+  iPixelType: PFD_PIXEL_TYPE;
   /** u8 */
   cColorBits: number;
   /** u8 */
@@ -757,8 +910,8 @@ export interface PIXELFORMATDESCRIPTOR {
   cStencilBits: number;
   /** u8 */
   cAuxBuffers: number;
-  /** u8 */
-  iLayerType: number;
+  /** Windows.Win32.Graphics.OpenGL.PFD_LAYER_TYPE */
+  iLayerType: PFD_LAYER_TYPE;
   /** u8 */
   bReserved: number;
   /** u32 */
@@ -780,8 +933,8 @@ export function allocPIXELFORMATDESCRIPTOR(data?: Partial<PIXELFORMATDESCRIPTOR>
   if (data?.nVersion !== undefined) view.setUint16(2, Number(data.nVersion), true);
   // 0x04: u32
   if (data?.dwFlags !== undefined) view.setUint32(4, Number(data.dwFlags), true);
-  // 0x08: u8
-  if (data?.iPixelType !== undefined) view.setUint8(8, Number(data.iPixelType));
+  // 0x08: i8
+  if (data?.iPixelType !== undefined) view.setInt8(8, Number(data.iPixelType));
   // 0x09: u8
   if (data?.cColorBits !== undefined) view.setUint8(9, Number(data.cColorBits));
   // 0x0a: u8
@@ -816,8 +969,8 @@ export function allocPIXELFORMATDESCRIPTOR(data?: Partial<PIXELFORMATDESCRIPTOR>
   if (data?.cStencilBits !== undefined) view.setUint8(24, Number(data.cStencilBits));
   // 0x19: u8
   if (data?.cAuxBuffers !== undefined) view.setUint8(25, Number(data.cAuxBuffers));
-  // 0x1a: u8
-  if (data?.iLayerType !== undefined) view.setUint8(26, Number(data.iLayerType));
+  // 0x1a: i8
+  if (data?.iLayerType !== undefined) view.setInt8(26, Number(data.iLayerType));
   // 0x1b: u8
   if (data?.bReserved !== undefined) view.setUint8(27, Number(data.bReserved));
   // 0x1c: u32
@@ -833,8 +986,8 @@ export function allocPIXELFORMATDESCRIPTOR(data?: Partial<PIXELFORMATDESCRIPTOR>
  * Windows.Win32.Graphics.Gdi.EMR (size: 8)
  */
 export interface EMR {
-  /** u32 */
-  iType: number;
+  /** Windows.Win32.Graphics.Gdi.ENHANCED_METAFILE_RECORD_TYPE */
+  iType: ENHANCED_METAFILE_RECORD_TYPE;
   /** u32 */
   nSize: number;
 }
@@ -929,8 +1082,10 @@ export function allocGLYPHMETRICSFLOAT(data?: Partial<GLYPHMETRICSFLOAT>): Uint8
   return buf;
 }
 
+export type COLORREF = number;
+
 /**
- * Windows.Win32.Graphics.OpenGL.LAYERPLANEDESCRIPTOR (size: 32)
+ * Windows.Win32.Graphics.OpenGL.LAYERPLANEDESCRIPTOR (size: 40)
  */
 export interface LAYERPLANEDESCRIPTOR {
   /** u16 */
@@ -979,11 +1134,11 @@ export interface LAYERPLANEDESCRIPTOR {
   iLayerPlane: number;
   /** u8 */
   bReserved: number;
-  /** u32 */
-  crTransparent: number;
+  /** Windows.Win32.Foundation.COLORREF */
+  crTransparent: Uint8Array | Deno.PointerValue | null;
 }
 
-export const sizeofLAYERPLANEDESCRIPTOR = 32;
+export const sizeofLAYERPLANEDESCRIPTOR = 40;
 
 export function allocLAYERPLANEDESCRIPTOR(data?: Partial<LAYERPLANEDESCRIPTOR>): Uint8Array {
   const buf = new Uint8Array(sizeofLAYERPLANEDESCRIPTOR);
@@ -1034,8 +1189,9 @@ export function allocLAYERPLANEDESCRIPTOR(data?: Partial<LAYERPLANEDESCRIPTOR>):
   if (data?.iLayerPlane !== undefined) view.setUint8(26, Number(data.iLayerPlane));
   // 0x1b: u8
   if (data?.bReserved !== undefined) view.setUint8(27, Number(data.bReserved));
-  // 0x1c: u32
-  if (data?.crTransparent !== undefined) view.setUint32(28, Number(data.crTransparent), true);
+  // 0x1c: pad4
+  // 0x20: pointer
+  if (data?.crTransparent !== undefined) view.setBigUint64(32, data.crTransparent === null ? 0n : BigInt(util.toPointer(data.crTransparent)), true);
   return buf;
 }
 
@@ -1052,13 +1208,13 @@ export type PWSTR = Deno.PointerValue | Uint8Array | null;
 // Native Libraries
 
 try {
-  var libGDI32 = Deno.dlopen("GDI32", {
+  var libGDI32_dll = Deno.dlopen("GDI32.dll", {
     ChoosePixelFormat: {
       parameters: ["pointer", "pointer"],
       result: "i32",
     },
     DescribePixelFormat: {
-      parameters: ["pointer", "i32", "u32", "pointer"],
+      parameters: ["pointer", "i8", "u32", "pointer"],
       result: "i32",
     },
     GetPixelFormat: {
@@ -1081,7 +1237,7 @@ try {
 } catch(e) { /* ignore */ }
 
 try {
-  var libOPENGL32 = Deno.dlopen("OPENGL32", {
+  var libOPENGL32_dll = Deno.dlopen("OPENGL32.dll", {
     wglCopyContext: {
       parameters: ["pointer", "pointer", "u32"],
       result: "i32",
@@ -2502,7 +2658,7 @@ try {
 } catch(e) { /* ignore */ }
 
 try {
-  var libGLU32 = Deno.dlopen("GLU32", {
+  var libGLU32_dll = Deno.dlopen("GLU32.dll", {
     gluErrorString: {
       parameters: ["u32"],
       result: "pointer",
@@ -2720,22 +2876,22 @@ export function ChoosePixelFormat(
   hdc: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Graphics.Gdi.HDC */,
   ppfd: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
-  return libGDI32.ChoosePixelFormat(util.toPointer(hdc), util.toPointer(ppfd));
+  return libGDI32_dll.ChoosePixelFormat(util.toPointer(hdc), util.toPointer(ppfd));
 }
 
 export function DescribePixelFormat(
   hdc: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Graphics.Gdi.HDC */,
-  iPixelFormat: number /* i32 */,
+  iPixelFormat: PFD_PIXEL_TYPE /* Windows.Win32.Graphics.OpenGL.PFD_PIXEL_TYPE */,
   nBytes: number /* u32 */,
   ppfd: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
-  return libGDI32.DescribePixelFormat(util.toPointer(hdc), iPixelFormat, nBytes, util.toPointer(ppfd));
+  return libGDI32_dll.DescribePixelFormat(util.toPointer(hdc), iPixelFormat, nBytes, util.toPointer(ppfd));
 }
 
 export function GetPixelFormat(
   hdc: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Graphics.Gdi.HDC */,
 ): number /* i32 */ {
-  return libGDI32.GetPixelFormat(util.toPointer(hdc));
+  return libGDI32_dll.GetPixelFormat(util.toPointer(hdc));
 }
 
 export function SetPixelFormat(
@@ -2743,7 +2899,7 @@ export function SetPixelFormat(
   format: number /* i32 */,
   ppfd: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libGDI32.SetPixelFormat(util.toPointer(hdc), format, util.toPointer(ppfd)));
+  return util.boolFromFfi(libGDI32_dll.SetPixelFormat(util.toPointer(hdc), format, util.toPointer(ppfd)));
 }
 
 export function GetEnhMetaFilePixelFormat(
@@ -2751,7 +2907,7 @@ export function GetEnhMetaFilePixelFormat(
   cbBuffer: number /* u32 */,
   ppfd: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libGDI32.GetEnhMetaFilePixelFormat(util.toPointer(hemf), cbBuffer, util.toPointer(ppfd));
+  return libGDI32_dll.GetEnhMetaFilePixelFormat(util.toPointer(hemf), cbBuffer, util.toPointer(ppfd));
 }
 
 export function wglCopyContext(
@@ -2759,54 +2915,54 @@ export function wglCopyContext(
   param1: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Graphics.OpenGL.HGLRC */,
   param2: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libOPENGL32.wglCopyContext(util.toPointer(param0), util.toPointer(param1), param2));
+  return util.boolFromFfi(libOPENGL32_dll.wglCopyContext(util.toPointer(param0), util.toPointer(param1), param2));
 }
 
 export function wglCreateContext(
   param0: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Graphics.Gdi.HDC */,
 ): Deno.PointerValue | null /* Windows.Win32.Graphics.OpenGL.HGLRC */ {
-  return util.pointerFromFfi(libOPENGL32.wglCreateContext(util.toPointer(param0)));
+  return util.pointerFromFfi(libOPENGL32_dll.wglCreateContext(util.toPointer(param0)));
 }
 
 export function wglCreateLayerContext(
   param0: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Graphics.Gdi.HDC */,
   param1: number /* i32 */,
 ): Deno.PointerValue | null /* Windows.Win32.Graphics.OpenGL.HGLRC */ {
-  return util.pointerFromFfi(libOPENGL32.wglCreateLayerContext(util.toPointer(param0), param1));
+  return util.pointerFromFfi(libOPENGL32_dll.wglCreateLayerContext(util.toPointer(param0), param1));
 }
 
 export function wglDeleteContext(
   param0: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Graphics.OpenGL.HGLRC */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libOPENGL32.wglDeleteContext(util.toPointer(param0)));
+  return util.boolFromFfi(libOPENGL32_dll.wglDeleteContext(util.toPointer(param0)));
 }
 
 export function wglGetCurrentContext(): Deno.PointerValue | null /* Windows.Win32.Graphics.OpenGL.HGLRC */ {
-  return util.pointerFromFfi(libOPENGL32.wglGetCurrentContext());
+  return util.pointerFromFfi(libOPENGL32_dll.wglGetCurrentContext());
 }
 
 export function wglGetCurrentDC(): Deno.PointerValue | null /* Windows.Win32.Graphics.Gdi.HDC */ {
-  return util.pointerFromFfi(libOPENGL32.wglGetCurrentDC());
+  return util.pointerFromFfi(libOPENGL32_dll.wglGetCurrentDC());
 }
 
 export function wglGetProcAddress(
   param0: string | null /* Windows.Win32.Foundation.PSTR */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.PROC */ {
-  return util.pointerFromFfi(libOPENGL32.wglGetProcAddress(util.pstrToFfi(param0)));
+  return util.pointerFromFfi(libOPENGL32_dll.wglGetProcAddress(util.pstrToFfi(param0)));
 }
 
 export function wglMakeCurrent(
   param0: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Graphics.Gdi.HDC */,
   param1: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Graphics.OpenGL.HGLRC */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libOPENGL32.wglMakeCurrent(util.toPointer(param0), util.toPointer(param1)));
+  return util.boolFromFfi(libOPENGL32_dll.wglMakeCurrent(util.toPointer(param0), util.toPointer(param1)));
 }
 
 export function wglShareLists(
   param0: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Graphics.OpenGL.HGLRC */,
   param1: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Graphics.OpenGL.HGLRC */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libOPENGL32.wglShareLists(util.toPointer(param0), util.toPointer(param1)));
+  return util.boolFromFfi(libOPENGL32_dll.wglShareLists(util.toPointer(param0), util.toPointer(param1)));
 }
 
 export function wglUseFontBitmapsA(
@@ -2815,7 +2971,7 @@ export function wglUseFontBitmapsA(
   param2: number /* u32 */,
   param3: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libOPENGL32.wglUseFontBitmapsA(util.toPointer(param0), param1, param2, param3));
+  return util.boolFromFfi(libOPENGL32_dll.wglUseFontBitmapsA(util.toPointer(param0), param1, param2, param3));
 }
 
 export function wglUseFontBitmapsW(
@@ -2824,13 +2980,13 @@ export function wglUseFontBitmapsW(
   param2: number /* u32 */,
   param3: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libOPENGL32.wglUseFontBitmapsW(util.toPointer(param0), param1, param2, param3));
+  return util.boolFromFfi(libOPENGL32_dll.wglUseFontBitmapsW(util.toPointer(param0), param1, param2, param3));
 }
 
 export function SwapBuffers(
   param0: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Graphics.Gdi.HDC */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libGDI32.SwapBuffers(util.toPointer(param0)));
+  return util.boolFromFfi(libGDI32_dll.SwapBuffers(util.toPointer(param0)));
 }
 
 export function wglUseFontOutlinesA(
@@ -2843,7 +2999,7 @@ export function wglUseFontOutlinesA(
   param6: number /* i32 */,
   param7: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libOPENGL32.wglUseFontOutlinesA(util.toPointer(param0), param1, param2, param3, param4, param5, param6, util.toPointer(param7)));
+  return util.boolFromFfi(libOPENGL32_dll.wglUseFontOutlinesA(util.toPointer(param0), param1, param2, param3, param4, param5, param6, util.toPointer(param7)));
 }
 
 export function wglUseFontOutlinesW(
@@ -2856,7 +3012,7 @@ export function wglUseFontOutlinesW(
   param6: number /* i32 */,
   param7: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libOPENGL32.wglUseFontOutlinesW(util.toPointer(param0), param1, param2, param3, param4, param5, param6, util.toPointer(param7)));
+  return util.boolFromFfi(libOPENGL32_dll.wglUseFontOutlinesW(util.toPointer(param0), param1, param2, param3, param4, param5, param6, util.toPointer(param7)));
 }
 
 export function wglDescribeLayerPlane(
@@ -2866,7 +3022,7 @@ export function wglDescribeLayerPlane(
   param3: number /* u32 */,
   param4: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libOPENGL32.wglDescribeLayerPlane(util.toPointer(param0), param1, param2, param3, util.toPointer(param4)));
+  return util.boolFromFfi(libOPENGL32_dll.wglDescribeLayerPlane(util.toPointer(param0), param1, param2, param3, util.toPointer(param4)));
 }
 
 export function wglSetLayerPaletteEntries(
@@ -2876,7 +3032,7 @@ export function wglSetLayerPaletteEntries(
   param3: number /* i32 */,
   param4: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
-  return libOPENGL32.wglSetLayerPaletteEntries(util.toPointer(param0), param1, param2, param3, util.toPointer(param4));
+  return libOPENGL32_dll.wglSetLayerPaletteEntries(util.toPointer(param0), param1, param2, param3, util.toPointer(param4));
 }
 
 export function wglGetLayerPaletteEntries(
@@ -2886,7 +3042,7 @@ export function wglGetLayerPaletteEntries(
   param3: number /* i32 */,
   param4: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
-  return libOPENGL32.wglGetLayerPaletteEntries(util.toPointer(param0), param1, param2, param3, util.toPointer(param4));
+  return libOPENGL32_dll.wglGetLayerPaletteEntries(util.toPointer(param0), param1, param2, param3, util.toPointer(param4));
 }
 
 export function wglRealizeLayerPalette(
@@ -2894,28 +3050,28 @@ export function wglRealizeLayerPalette(
   param1: number /* i32 */,
   param2: boolean /* Windows.Win32.Foundation.BOOL */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libOPENGL32.wglRealizeLayerPalette(util.toPointer(param0), param1, util.boolToFfi(param2)));
+  return util.boolFromFfi(libOPENGL32_dll.wglRealizeLayerPalette(util.toPointer(param0), param1, util.boolToFfi(param2)));
 }
 
 export function wglSwapLayerBuffers(
   param0: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Graphics.Gdi.HDC */,
   param1: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libOPENGL32.wglSwapLayerBuffers(util.toPointer(param0), param1));
+  return util.boolFromFfi(libOPENGL32_dll.wglSwapLayerBuffers(util.toPointer(param0), param1));
 }
 
 export function glAccum(
   op: number /* u32 */,
   value: number /* f32 */,
 ): void /* void */ {
-  return libOPENGL32.glAccum(op, value);
+  return libOPENGL32_dll.glAccum(op, value);
 }
 
 export function glAlphaFunc(
   func: number /* u32 */,
   ref: number /* f32 */,
 ): void /* void */ {
-  return libOPENGL32.glAlphaFunc(func, ref);
+  return libOPENGL32_dll.glAlphaFunc(func, ref);
 }
 
 export function glAreTexturesResident(
@@ -2923,26 +3079,26 @@ export function glAreTexturesResident(
   textures: Deno.PointerValue | Uint8Array | null /* ptr */,
   residences: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u8 */ {
-  return libOPENGL32.glAreTexturesResident(n, util.toPointer(textures), util.toPointer(residences));
+  return libOPENGL32_dll.glAreTexturesResident(n, util.toPointer(textures), util.toPointer(residences));
 }
 
 export function glArrayElement(
   i: number /* i32 */,
 ): void /* void */ {
-  return libOPENGL32.glArrayElement(i);
+  return libOPENGL32_dll.glArrayElement(i);
 }
 
 export function glBegin(
   mode: number /* u32 */,
 ): void /* void */ {
-  return libOPENGL32.glBegin(mode);
+  return libOPENGL32_dll.glBegin(mode);
 }
 
 export function glBindTexture(
   target: number /* u32 */,
   texture: number /* u32 */,
 ): void /* void */ {
-  return libOPENGL32.glBindTexture(target, texture);
+  return libOPENGL32_dll.glBindTexture(target, texture);
 }
 
 export function glBitmap(
@@ -2954,20 +3110,20 @@ export function glBitmap(
   ymove: number /* f32 */,
   bitmap: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): void /* void */ {
-  return libOPENGL32.glBitmap(width, height, xorig, yorig, xmove, ymove, util.toPointer(bitmap));
+  return libOPENGL32_dll.glBitmap(width, height, xorig, yorig, xmove, ymove, util.toPointer(bitmap));
 }
 
 export function glBlendFunc(
   sfactor: number /* u32 */,
   dfactor: number /* u32 */,
 ): void /* void */ {
-  return libOPENGL32.glBlendFunc(sfactor, dfactor);
+  return libOPENGL32_dll.glBlendFunc(sfactor, dfactor);
 }
 
 export function glCallList(
   list: number /* u32 */,
 ): void /* void */ {
-  return libOPENGL32.glCallList(list);
+  return libOPENGL32_dll.glCallList(list);
 }
 
 export function glCallLists(
@@ -2975,13 +3131,13 @@ export function glCallLists(
   type: number /* u32 */,
   lists: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): void /* void */ {
-  return libOPENGL32.glCallLists(n, type, util.toPointer(lists));
+  return libOPENGL32_dll.glCallLists(n, type, util.toPointer(lists));
 }
 
 export function glClear(
   mask: number /* u32 */,
 ): void /* void */ {
-  return libOPENGL32.glClear(mask);
+  return libOPENGL32_dll.glClear(mask);
 }
 
 export function glClearAccum(
@@ -2990,7 +3146,7 @@ export function glClearAccum(
   blue: number /* f32 */,
   alpha: number /* f32 */,
 ): void /* void */ {
-  return libOPENGL32.glClearAccum(red, green, blue, alpha);
+  return libOPENGL32_dll.glClearAccum(red, green, blue, alpha);
 }
 
 export function glClearColor(
@@ -2999,32 +3155,32 @@ export function glClearColor(
   blue: number /* f32 */,
   alpha: number /* f32 */,
 ): void /* void */ {
-  return libOPENGL32.glClearColor(red, green, blue, alpha);
+  return libOPENGL32_dll.glClearColor(red, green, blue, alpha);
 }
 
 export function glClearDepth(
   depth: number /* f64 */,
 ): void /* void */ {
-  return libOPENGL32.glClearDepth(depth);
+  return libOPENGL32_dll.glClearDepth(depth);
 }
 
 export function glClearIndex(
   c: number /* f32 */,
 ): void /* void */ {
-  return libOPENGL32.glClearIndex(c);
+  return libOPENGL32_dll.glClearIndex(c);
 }
 
 export function glClearStencil(
   s: number /* i32 */,
 ): void /* void */ {
-  return libOPENGL32.glClearStencil(s);
+  return libOPENGL32_dll.glClearStencil(s);
 }
 
 export function glClipPlane(
   plane: number /* u32 */,
   equation: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): void /* void */ {
-  return libOPENGL32.glClipPlane(plane, util.toPointer(equation));
+  return libOPENGL32_dll.glClipPlane(plane, util.toPointer(equation));
 }
 
 export function glColor3b(
@@ -3032,13 +3188,13 @@ export function glColor3b(
   green: number /* i8 */,
   blue: number /* i8 */,
 ): void /* void */ {
-  return libOPENGL32.glColor3b(red, green, blue);
+  return libOPENGL32_dll.glColor3b(red, green, blue);
 }
 
 export function glColor3bv(
   v: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): void /* void */ {
-  return libOPENGL32.glColor3bv(util.toPointer(v));
+  return libOPENGL32_dll.glColor3bv(util.toPointer(v));
 }
 
 export function glColor3d(
@@ -3046,13 +3202,13 @@ export function glColor3d(
   green: number /* f64 */,
   blue: number /* f64 */,
 ): void /* void */ {
-  return libOPENGL32.glColor3d(red, green, blue);
+  return libOPENGL32_dll.glColor3d(red, green, blue);
 }
 
 export function glColor3dv(
   v: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): void /* void */ {
-  return libOPENGL32.glColor3dv(util.toPointer(v));
+  return libOPENGL32_dll.glColor3dv(util.toPointer(v));
 }
 
 export function glColor3f(
@@ -3060,13 +3216,13 @@ export function glColor3f(
   green: number /* f32 */,
   blue: number /* f32 */,
 ): void /* void */ {
-  return libOPENGL32.glColor3f(red, green, blue);
+  return libOPENGL32_dll.glColor3f(red, green, blue);
 }
 
 export function glColor3fv(
   v: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): void /* void */ {
-  return libOPENGL32.glColor3fv(util.toPointer(v));
+  return libOPENGL32_dll.glColor3fv(util.toPointer(v));
 }
 
 export function glColor3i(
@@ -3074,13 +3230,13 @@ export function glColor3i(
   green: number /* i32 */,
   blue: number /* i32 */,
 ): void /* void */ {
-  return libOPENGL32.glColor3i(red, green, blue);
+  return libOPENGL32_dll.glColor3i(red, green, blue);
 }
 
 export function glColor3iv(
   v: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): void /* void */ {
-  return libOPENGL32.glColor3iv(util.toPointer(v));
+  return libOPENGL32_dll.glColor3iv(util.toPointer(v));
 }
 
 export function glColor3s(
@@ -3088,13 +3244,13 @@ export function glColor3s(
   green: number /* i16 */,
   blue: number /* i16 */,
 ): void /* void */ {
-  return libOPENGL32.glColor3s(red, green, blue);
+  return libOPENGL32_dll.glColor3s(red, green, blue);
 }
 
 export function glColor3sv(
   v: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): void /* void */ {
-  return libOPENGL32.glColor3sv(util.toPointer(v));
+  return libOPENGL32_dll.glColor3sv(util.toPointer(v));
 }
 
 export function glColor3ub(
@@ -3102,13 +3258,13 @@ export function glColor3ub(
   green: number /* u8 */,
   blue: number /* u8 */,
 ): void /* void */ {
-  return libOPENGL32.glColor3ub(red, green, blue);
+  return libOPENGL32_dll.glColor3ub(red, green, blue);
 }
 
 export function glColor3ubv(
   v: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): void /* void */ {
-  return libOPENGL32.glColor3ubv(util.toPointer(v));
+  return libOPENGL32_dll.glColor3ubv(util.toPointer(v));
 }
 
 export function glColor3ui(
@@ -3116,13 +3272,13 @@ export function glColor3ui(
   green: number /* u32 */,
   blue: number /* u32 */,
 ): void /* void */ {
-  return libOPENGL32.glColor3ui(red, green, blue);
+  return libOPENGL32_dll.glColor3ui(red, green, blue);
 }
 
 export function glColor3uiv(
   v: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): void /* void */ {
-  return libOPENGL32.glColor3uiv(util.toPointer(v));
+  return libOPENGL32_dll.glColor3uiv(util.toPointer(v));
 }
 
 export function glColor3us(
@@ -3130,13 +3286,13 @@ export function glColor3us(
   green: number /* u16 */,
   blue: number /* u16 */,
 ): void /* void */ {
-  return libOPENGL32.glColor3us(red, green, blue);
+  return libOPENGL32_dll.glColor3us(red, green, blue);
 }
 
 export function glColor3usv(
   v: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): void /* void */ {
-  return libOPENGL32.glColor3usv(util.toPointer(v));
+  return libOPENGL32_dll.glColor3usv(util.toPointer(v));
 }
 
 export function glColor4b(
@@ -3145,13 +3301,13 @@ export function glColor4b(
   blue: number /* i8 */,
   alpha: number /* i8 */,
 ): void /* void */ {
-  return libOPENGL32.glColor4b(red, green, blue, alpha);
+  return libOPENGL32_dll.glColor4b(red, green, blue, alpha);
 }
 
 export function glColor4bv(
   v: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): void /* void */ {
-  return libOPENGL32.glColor4bv(util.toPointer(v));
+  return libOPENGL32_dll.glColor4bv(util.toPointer(v));
 }
 
 export function glColor4d(
@@ -3160,13 +3316,13 @@ export function glColor4d(
   blue: number /* f64 */,
   alpha: number /* f64 */,
 ): void /* void */ {
-  return libOPENGL32.glColor4d(red, green, blue, alpha);
+  return libOPENGL32_dll.glColor4d(red, green, blue, alpha);
 }
 
 export function glColor4dv(
   v: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): void /* void */ {
-  return libOPENGL32.glColor4dv(util.toPointer(v));
+  return libOPENGL32_dll.glColor4dv(util.toPointer(v));
 }
 
 export function glColor4f(
@@ -3175,13 +3331,13 @@ export function glColor4f(
   blue: number /* f32 */,
   alpha: number /* f32 */,
 ): void /* void */ {
-  return libOPENGL32.glColor4f(red, green, blue, alpha);
+  return libOPENGL32_dll.glColor4f(red, green, blue, alpha);
 }
 
 export function glColor4fv(
   v: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): void /* void */ {
-  return libOPENGL32.glColor4fv(util.toPointer(v));
+  return libOPENGL32_dll.glColor4fv(util.toPointer(v));
 }
 
 export function glColor4i(
@@ -3190,13 +3346,13 @@ export function glColor4i(
   blue: number /* i32 */,
   alpha: number /* i32 */,
 ): void /* void */ {
-  return libOPENGL32.glColor4i(red, green, blue, alpha);
+  return libOPENGL32_dll.glColor4i(red, green, blue, alpha);
 }
 
 export function glColor4iv(
   v: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): void /* void */ {
-  return libOPENGL32.glColor4iv(util.toPointer(v));
+  return libOPENGL32_dll.glColor4iv(util.toPointer(v));
 }
 
 export function glColor4s(
@@ -3205,13 +3361,13 @@ export function glColor4s(
   blue: number /* i16 */,
   alpha: number /* i16 */,
 ): void /* void */ {
-  return libOPENGL32.glColor4s(red, green, blue, alpha);
+  return libOPENGL32_dll.glColor4s(red, green, blue, alpha);
 }
 
 export function glColor4sv(
   v: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): void /* void */ {
-  return libOPENGL32.glColor4sv(util.toPointer(v));
+  return libOPENGL32_dll.glColor4sv(util.toPointer(v));
 }
 
 export function glColor4ub(
@@ -3220,13 +3376,13 @@ export function glColor4ub(
   blue: number /* u8 */,
   alpha: number /* u8 */,
 ): void /* void */ {
-  return libOPENGL32.glColor4ub(red, green, blue, alpha);
+  return libOPENGL32_dll.glColor4ub(red, green, blue, alpha);
 }
 
 export function glColor4ubv(
   v: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): void /* void */ {
-  return libOPENGL32.glColor4ubv(util.toPointer(v));
+  return libOPENGL32_dll.glColor4ubv(util.toPointer(v));
 }
 
 export function glColor4ui(
@@ -3235,13 +3391,13 @@ export function glColor4ui(
   blue: number /* u32 */,
   alpha: number /* u32 */,
 ): void /* void */ {
-  return libOPENGL32.glColor4ui(red, green, blue, alpha);
+  return libOPENGL32_dll.glColor4ui(red, green, blue, alpha);
 }
 
 export function glColor4uiv(
   v: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): void /* void */ {
-  return libOPENGL32.glColor4uiv(util.toPointer(v));
+  return libOPENGL32_dll.glColor4uiv(util.toPointer(v));
 }
 
 export function glColor4us(
@@ -3250,13 +3406,13 @@ export function glColor4us(
   blue: number /* u16 */,
   alpha: number /* u16 */,
 ): void /* void */ {
-  return libOPENGL32.glColor4us(red, green, blue, alpha);
+  return libOPENGL32_dll.glColor4us(red, green, blue, alpha);
 }
 
 export function glColor4usv(
   v: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): void /* void */ {
-  return libOPENGL32.glColor4usv(util.toPointer(v));
+  return libOPENGL32_dll.glColor4usv(util.toPointer(v));
 }
 
 export function glColorMask(
@@ -3265,14 +3421,14 @@ export function glColorMask(
   blue: number /* u8 */,
   alpha: number /* u8 */,
 ): void /* void */ {
-  return libOPENGL32.glColorMask(red, green, blue, alpha);
+  return libOPENGL32_dll.glColorMask(red, green, blue, alpha);
 }
 
 export function glColorMaterial(
   face: number /* u32 */,
   mode: number /* u32 */,
 ): void /* void */ {
-  return libOPENGL32.glColorMaterial(face, mode);
+  return libOPENGL32_dll.glColorMaterial(face, mode);
 }
 
 export function glColorPointer(
@@ -3281,7 +3437,7 @@ export function glColorPointer(
   stride: number /* i32 */,
   pointer: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): void /* void */ {
-  return libOPENGL32.glColorPointer(size, type, stride, util.toPointer(pointer));
+  return libOPENGL32_dll.glColorPointer(size, type, stride, util.toPointer(pointer));
 }
 
 export function glCopyPixels(
@@ -3291,7 +3447,7 @@ export function glCopyPixels(
   height: number /* i32 */,
   type: number /* u32 */,
 ): void /* void */ {
-  return libOPENGL32.glCopyPixels(x, y, width, height, type);
+  return libOPENGL32_dll.glCopyPixels(x, y, width, height, type);
 }
 
 export function glCopyTexImage1D(
@@ -3303,7 +3459,7 @@ export function glCopyTexImage1D(
   width: number /* i32 */,
   border: number /* i32 */,
 ): void /* void */ {
-  return libOPENGL32.glCopyTexImage1D(target, level, internalFormat, x, y, width, border);
+  return libOPENGL32_dll.glCopyTexImage1D(target, level, internalFormat, x, y, width, border);
 }
 
 export function glCopyTexImage2D(
@@ -3316,7 +3472,7 @@ export function glCopyTexImage2D(
   height: number /* i32 */,
   border: number /* i32 */,
 ): void /* void */ {
-  return libOPENGL32.glCopyTexImage2D(target, level, internalFormat, x, y, width, height, border);
+  return libOPENGL32_dll.glCopyTexImage2D(target, level, internalFormat, x, y, width, height, border);
 }
 
 export function glCopyTexSubImage1D(
@@ -3327,7 +3483,7 @@ export function glCopyTexSubImage1D(
   y: number /* i32 */,
   width: number /* i32 */,
 ): void /* void */ {
-  return libOPENGL32.glCopyTexSubImage1D(target, level, xoffset, x, y, width);
+  return libOPENGL32_dll.glCopyTexSubImage1D(target, level, xoffset, x, y, width);
 }
 
 export function glCopyTexSubImage2D(
@@ -3340,58 +3496,58 @@ export function glCopyTexSubImage2D(
   width: number /* i32 */,
   height: number /* i32 */,
 ): void /* void */ {
-  return libOPENGL32.glCopyTexSubImage2D(target, level, xoffset, yoffset, x, y, width, height);
+  return libOPENGL32_dll.glCopyTexSubImage2D(target, level, xoffset, yoffset, x, y, width, height);
 }
 
 export function glCullFace(
   mode: number /* u32 */,
 ): void /* void */ {
-  return libOPENGL32.glCullFace(mode);
+  return libOPENGL32_dll.glCullFace(mode);
 }
 
 export function glDeleteLists(
   list: number /* u32 */,
   range: number /* i32 */,
 ): void /* void */ {
-  return libOPENGL32.glDeleteLists(list, range);
+  return libOPENGL32_dll.glDeleteLists(list, range);
 }
 
 export function glDeleteTextures(
   n: number /* i32 */,
   textures: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): void /* void */ {
-  return libOPENGL32.glDeleteTextures(n, util.toPointer(textures));
+  return libOPENGL32_dll.glDeleteTextures(n, util.toPointer(textures));
 }
 
 export function glDepthFunc(
   func: number /* u32 */,
 ): void /* void */ {
-  return libOPENGL32.glDepthFunc(func);
+  return libOPENGL32_dll.glDepthFunc(func);
 }
 
 export function glDepthMask(
   flag: number /* u8 */,
 ): void /* void */ {
-  return libOPENGL32.glDepthMask(flag);
+  return libOPENGL32_dll.glDepthMask(flag);
 }
 
 export function glDepthRange(
   zNear: number /* f64 */,
   zFar: number /* f64 */,
 ): void /* void */ {
-  return libOPENGL32.glDepthRange(zNear, zFar);
+  return libOPENGL32_dll.glDepthRange(zNear, zFar);
 }
 
 export function glDisable(
   cap: number /* u32 */,
 ): void /* void */ {
-  return libOPENGL32.glDisable(cap);
+  return libOPENGL32_dll.glDisable(cap);
 }
 
 export function glDisableClientState(
   array: number /* u32 */,
 ): void /* void */ {
-  return libOPENGL32.glDisableClientState(array);
+  return libOPENGL32_dll.glDisableClientState(array);
 }
 
 export function glDrawArrays(
@@ -3399,13 +3555,13 @@ export function glDrawArrays(
   first: number /* i32 */,
   count: number /* i32 */,
 ): void /* void */ {
-  return libOPENGL32.glDrawArrays(mode, first, count);
+  return libOPENGL32_dll.glDrawArrays(mode, first, count);
 }
 
 export function glDrawBuffer(
   mode: number /* u32 */,
 ): void /* void */ {
-  return libOPENGL32.glDrawBuffer(mode);
+  return libOPENGL32_dll.glDrawBuffer(mode);
 }
 
 export function glDrawElements(
@@ -3414,7 +3570,7 @@ export function glDrawElements(
   type: number /* u32 */,
   indices: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): void /* void */ {
-  return libOPENGL32.glDrawElements(mode, count, type, util.toPointer(indices));
+  return libOPENGL32_dll.glDrawElements(mode, count, type, util.toPointer(indices));
 }
 
 export function glDrawPixels(
@@ -3424,96 +3580,96 @@ export function glDrawPixels(
   type: number /* u32 */,
   pixels: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): void /* void */ {
-  return libOPENGL32.glDrawPixels(width, height, format, type, util.toPointer(pixels));
+  return libOPENGL32_dll.glDrawPixels(width, height, format, type, util.toPointer(pixels));
 }
 
 export function glEdgeFlag(
   flag: number /* u8 */,
 ): void /* void */ {
-  return libOPENGL32.glEdgeFlag(flag);
+  return libOPENGL32_dll.glEdgeFlag(flag);
 }
 
 export function glEdgeFlagPointer(
   stride: number /* i32 */,
   pointer: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): void /* void */ {
-  return libOPENGL32.glEdgeFlagPointer(stride, util.toPointer(pointer));
+  return libOPENGL32_dll.glEdgeFlagPointer(stride, util.toPointer(pointer));
 }
 
 export function glEdgeFlagv(
   flag: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): void /* void */ {
-  return libOPENGL32.glEdgeFlagv(util.toPointer(flag));
+  return libOPENGL32_dll.glEdgeFlagv(util.toPointer(flag));
 }
 
 export function glEnable(
   cap: number /* u32 */,
 ): void /* void */ {
-  return libOPENGL32.glEnable(cap);
+  return libOPENGL32_dll.glEnable(cap);
 }
 
 export function glEnableClientState(
   array: number /* u32 */,
 ): void /* void */ {
-  return libOPENGL32.glEnableClientState(array);
+  return libOPENGL32_dll.glEnableClientState(array);
 }
 
 export function glEnd(): void /* void */ {
-  return libOPENGL32.glEnd();
+  return libOPENGL32_dll.glEnd();
 }
 
 export function glEndList(): void /* void */ {
-  return libOPENGL32.glEndList();
+  return libOPENGL32_dll.glEndList();
 }
 
 export function glEvalCoord1d(
   u: number /* f64 */,
 ): void /* void */ {
-  return libOPENGL32.glEvalCoord1d(u);
+  return libOPENGL32_dll.glEvalCoord1d(u);
 }
 
 export function glEvalCoord1dv(
   u: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): void /* void */ {
-  return libOPENGL32.glEvalCoord1dv(util.toPointer(u));
+  return libOPENGL32_dll.glEvalCoord1dv(util.toPointer(u));
 }
 
 export function glEvalCoord1f(
   u: number /* f32 */,
 ): void /* void */ {
-  return libOPENGL32.glEvalCoord1f(u);
+  return libOPENGL32_dll.glEvalCoord1f(u);
 }
 
 export function glEvalCoord1fv(
   u: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): void /* void */ {
-  return libOPENGL32.glEvalCoord1fv(util.toPointer(u));
+  return libOPENGL32_dll.glEvalCoord1fv(util.toPointer(u));
 }
 
 export function glEvalCoord2d(
   u: number /* f64 */,
   v: number /* f64 */,
 ): void /* void */ {
-  return libOPENGL32.glEvalCoord2d(u, v);
+  return libOPENGL32_dll.glEvalCoord2d(u, v);
 }
 
 export function glEvalCoord2dv(
   u: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): void /* void */ {
-  return libOPENGL32.glEvalCoord2dv(util.toPointer(u));
+  return libOPENGL32_dll.glEvalCoord2dv(util.toPointer(u));
 }
 
 export function glEvalCoord2f(
   u: number /* f32 */,
   v: number /* f32 */,
 ): void /* void */ {
-  return libOPENGL32.glEvalCoord2f(u, v);
+  return libOPENGL32_dll.glEvalCoord2f(u, v);
 }
 
 export function glEvalCoord2fv(
   u: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): void /* void */ {
-  return libOPENGL32.glEvalCoord2fv(util.toPointer(u));
+  return libOPENGL32_dll.glEvalCoord2fv(util.toPointer(u));
 }
 
 export function glEvalMesh1(
@@ -3521,7 +3677,7 @@ export function glEvalMesh1(
   i1: number /* i32 */,
   i2: number /* i32 */,
 ): void /* void */ {
-  return libOPENGL32.glEvalMesh1(mode, i1, i2);
+  return libOPENGL32_dll.glEvalMesh1(mode, i1, i2);
 }
 
 export function glEvalMesh2(
@@ -3531,20 +3687,20 @@ export function glEvalMesh2(
   j1: number /* i32 */,
   j2: number /* i32 */,
 ): void /* void */ {
-  return libOPENGL32.glEvalMesh2(mode, i1, i2, j1, j2);
+  return libOPENGL32_dll.glEvalMesh2(mode, i1, i2, j1, j2);
 }
 
 export function glEvalPoint1(
   i: number /* i32 */,
 ): void /* void */ {
-  return libOPENGL32.glEvalPoint1(i);
+  return libOPENGL32_dll.glEvalPoint1(i);
 }
 
 export function glEvalPoint2(
   i: number /* i32 */,
   j: number /* i32 */,
 ): void /* void */ {
-  return libOPENGL32.glEvalPoint2(i, j);
+  return libOPENGL32_dll.glEvalPoint2(i, j);
 }
 
 export function glFeedbackBuffer(
@@ -3552,49 +3708,49 @@ export function glFeedbackBuffer(
   type: number /* u32 */,
   buffer: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): void /* void */ {
-  return libOPENGL32.glFeedbackBuffer(size, type, util.toPointer(buffer));
+  return libOPENGL32_dll.glFeedbackBuffer(size, type, util.toPointer(buffer));
 }
 
 export function glFinish(): void /* void */ {
-  return libOPENGL32.glFinish();
+  return libOPENGL32_dll.glFinish();
 }
 
 export function glFlush(): void /* void */ {
-  return libOPENGL32.glFlush();
+  return libOPENGL32_dll.glFlush();
 }
 
 export function glFogf(
   pname: number /* u32 */,
   param1: number /* f32 */,
 ): void /* void */ {
-  return libOPENGL32.glFogf(pname, param1);
+  return libOPENGL32_dll.glFogf(pname, param1);
 }
 
 export function glFogfv(
   pname: number /* u32 */,
   params: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): void /* void */ {
-  return libOPENGL32.glFogfv(pname, util.toPointer(params));
+  return libOPENGL32_dll.glFogfv(pname, util.toPointer(params));
 }
 
 export function glFogi(
   pname: number /* u32 */,
   param1: number /* i32 */,
 ): void /* void */ {
-  return libOPENGL32.glFogi(pname, param1);
+  return libOPENGL32_dll.glFogi(pname, param1);
 }
 
 export function glFogiv(
   pname: number /* u32 */,
   params: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): void /* void */ {
-  return libOPENGL32.glFogiv(pname, util.toPointer(params));
+  return libOPENGL32_dll.glFogiv(pname, util.toPointer(params));
 }
 
 export function glFrontFace(
   mode: number /* u32 */,
 ): void /* void */ {
-  return libOPENGL32.glFrontFace(mode);
+  return libOPENGL32_dll.glFrontFace(mode);
 }
 
 export function glFrustum(
@@ -3605,59 +3761,59 @@ export function glFrustum(
   zNear: number /* f64 */,
   zFar: number /* f64 */,
 ): void /* void */ {
-  return libOPENGL32.glFrustum(left, right, bottom, top, zNear, zFar);
+  return libOPENGL32_dll.glFrustum(left, right, bottom, top, zNear, zFar);
 }
 
 export function glGenLists(
   range: number /* i32 */,
 ): number /* u32 */ {
-  return libOPENGL32.glGenLists(range);
+  return libOPENGL32_dll.glGenLists(range);
 }
 
 export function glGenTextures(
   n: number /* i32 */,
   textures: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): void /* void */ {
-  return libOPENGL32.glGenTextures(n, util.toPointer(textures));
+  return libOPENGL32_dll.glGenTextures(n, util.toPointer(textures));
 }
 
 export function glGetBooleanv(
   pname: number /* u32 */,
   params: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): void /* void */ {
-  return libOPENGL32.glGetBooleanv(pname, util.toPointer(params));
+  return libOPENGL32_dll.glGetBooleanv(pname, util.toPointer(params));
 }
 
 export function glGetClipPlane(
   plane: number /* u32 */,
   equation: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): void /* void */ {
-  return libOPENGL32.glGetClipPlane(plane, util.toPointer(equation));
+  return libOPENGL32_dll.glGetClipPlane(plane, util.toPointer(equation));
 }
 
 export function glGetDoublev(
   pname: number /* u32 */,
   params: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): void /* void */ {
-  return libOPENGL32.glGetDoublev(pname, util.toPointer(params));
+  return libOPENGL32_dll.glGetDoublev(pname, util.toPointer(params));
 }
 
 export function glGetError(): number /* u32 */ {
-  return libOPENGL32.glGetError();
+  return libOPENGL32_dll.glGetError();
 }
 
 export function glGetFloatv(
   pname: number /* u32 */,
   params: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): void /* void */ {
-  return libOPENGL32.glGetFloatv(pname, util.toPointer(params));
+  return libOPENGL32_dll.glGetFloatv(pname, util.toPointer(params));
 }
 
 export function glGetIntegerv(
   pname: number /* u32 */,
   params: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): void /* void */ {
-  return libOPENGL32.glGetIntegerv(pname, util.toPointer(params));
+  return libOPENGL32_dll.glGetIntegerv(pname, util.toPointer(params));
 }
 
 export function glGetLightfv(
@@ -3665,7 +3821,7 @@ export function glGetLightfv(
   pname: number /* u32 */,
   params: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): void /* void */ {
-  return libOPENGL32.glGetLightfv(light, pname, util.toPointer(params));
+  return libOPENGL32_dll.glGetLightfv(light, pname, util.toPointer(params));
 }
 
 export function glGetLightiv(
@@ -3673,7 +3829,7 @@ export function glGetLightiv(
   pname: number /* u32 */,
   params: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): void /* void */ {
-  return libOPENGL32.glGetLightiv(light, pname, util.toPointer(params));
+  return libOPENGL32_dll.glGetLightiv(light, pname, util.toPointer(params));
 }
 
 export function glGetMapdv(
@@ -3681,7 +3837,7 @@ export function glGetMapdv(
   query: number /* u32 */,
   v: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): void /* void */ {
-  return libOPENGL32.glGetMapdv(target, query, util.toPointer(v));
+  return libOPENGL32_dll.glGetMapdv(target, query, util.toPointer(v));
 }
 
 export function glGetMapfv(
@@ -3689,7 +3845,7 @@ export function glGetMapfv(
   query: number /* u32 */,
   v: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): void /* void */ {
-  return libOPENGL32.glGetMapfv(target, query, util.toPointer(v));
+  return libOPENGL32_dll.glGetMapfv(target, query, util.toPointer(v));
 }
 
 export function glGetMapiv(
@@ -3697,7 +3853,7 @@ export function glGetMapiv(
   query: number /* u32 */,
   v: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): void /* void */ {
-  return libOPENGL32.glGetMapiv(target, query, util.toPointer(v));
+  return libOPENGL32_dll.glGetMapiv(target, query, util.toPointer(v));
 }
 
 export function glGetMaterialfv(
@@ -3705,7 +3861,7 @@ export function glGetMaterialfv(
   pname: number /* u32 */,
   params: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): void /* void */ {
-  return libOPENGL32.glGetMaterialfv(face, pname, util.toPointer(params));
+  return libOPENGL32_dll.glGetMaterialfv(face, pname, util.toPointer(params));
 }
 
 export function glGetMaterialiv(
@@ -3713,47 +3869,47 @@ export function glGetMaterialiv(
   pname: number /* u32 */,
   params: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): void /* void */ {
-  return libOPENGL32.glGetMaterialiv(face, pname, util.toPointer(params));
+  return libOPENGL32_dll.glGetMaterialiv(face, pname, util.toPointer(params));
 }
 
 export function glGetPixelMapfv(
   map: number /* u32 */,
   values: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): void /* void */ {
-  return libOPENGL32.glGetPixelMapfv(map, util.toPointer(values));
+  return libOPENGL32_dll.glGetPixelMapfv(map, util.toPointer(values));
 }
 
 export function glGetPixelMapuiv(
   map: number /* u32 */,
   values: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): void /* void */ {
-  return libOPENGL32.glGetPixelMapuiv(map, util.toPointer(values));
+  return libOPENGL32_dll.glGetPixelMapuiv(map, util.toPointer(values));
 }
 
 export function glGetPixelMapusv(
   map: number /* u32 */,
   values: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): void /* void */ {
-  return libOPENGL32.glGetPixelMapusv(map, util.toPointer(values));
+  return libOPENGL32_dll.glGetPixelMapusv(map, util.toPointer(values));
 }
 
 export function glGetPointerv(
   pname: number /* u32 */,
   params: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): void /* void */ {
-  return libOPENGL32.glGetPointerv(pname, util.toPointer(params));
+  return libOPENGL32_dll.glGetPointerv(pname, util.toPointer(params));
 }
 
 export function glGetPolygonStipple(
   mask: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): void /* void */ {
-  return libOPENGL32.glGetPolygonStipple(util.toPointer(mask));
+  return libOPENGL32_dll.glGetPolygonStipple(util.toPointer(mask));
 }
 
 export function glGetString(
   name: number /* u32 */,
 ): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libOPENGL32.glGetString(name));
+  return util.pointerFromFfi(libOPENGL32_dll.glGetString(name));
 }
 
 export function glGetTexEnvfv(
@@ -3761,7 +3917,7 @@ export function glGetTexEnvfv(
   pname: number /* u32 */,
   params: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): void /* void */ {
-  return libOPENGL32.glGetTexEnvfv(target, pname, util.toPointer(params));
+  return libOPENGL32_dll.glGetTexEnvfv(target, pname, util.toPointer(params));
 }
 
 export function glGetTexEnviv(
@@ -3769,7 +3925,7 @@ export function glGetTexEnviv(
   pname: number /* u32 */,
   params: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): void /* void */ {
-  return libOPENGL32.glGetTexEnviv(target, pname, util.toPointer(params));
+  return libOPENGL32_dll.glGetTexEnviv(target, pname, util.toPointer(params));
 }
 
 export function glGetTexGendv(
@@ -3777,7 +3933,7 @@ export function glGetTexGendv(
   pname: number /* u32 */,
   params: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): void /* void */ {
-  return libOPENGL32.glGetTexGendv(coord, pname, util.toPointer(params));
+  return libOPENGL32_dll.glGetTexGendv(coord, pname, util.toPointer(params));
 }
 
 export function glGetTexGenfv(
@@ -3785,7 +3941,7 @@ export function glGetTexGenfv(
   pname: number /* u32 */,
   params: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): void /* void */ {
-  return libOPENGL32.glGetTexGenfv(coord, pname, util.toPointer(params));
+  return libOPENGL32_dll.glGetTexGenfv(coord, pname, util.toPointer(params));
 }
 
 export function glGetTexGeniv(
@@ -3793,7 +3949,7 @@ export function glGetTexGeniv(
   pname: number /* u32 */,
   params: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): void /* void */ {
-  return libOPENGL32.glGetTexGeniv(coord, pname, util.toPointer(params));
+  return libOPENGL32_dll.glGetTexGeniv(coord, pname, util.toPointer(params));
 }
 
 export function glGetTexImage(
@@ -3803,7 +3959,7 @@ export function glGetTexImage(
   type: number /* u32 */,
   pixels: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): void /* void */ {
-  return libOPENGL32.glGetTexImage(target, level, format, type, util.toPointer(pixels));
+  return libOPENGL32_dll.glGetTexImage(target, level, format, type, util.toPointer(pixels));
 }
 
 export function glGetTexLevelParameterfv(
@@ -3812,7 +3968,7 @@ export function glGetTexLevelParameterfv(
   pname: number /* u32 */,
   params: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): void /* void */ {
-  return libOPENGL32.glGetTexLevelParameterfv(target, level, pname, util.toPointer(params));
+  return libOPENGL32_dll.glGetTexLevelParameterfv(target, level, pname, util.toPointer(params));
 }
 
 export function glGetTexLevelParameteriv(
@@ -3821,7 +3977,7 @@ export function glGetTexLevelParameteriv(
   pname: number /* u32 */,
   params: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): void /* void */ {
-  return libOPENGL32.glGetTexLevelParameteriv(target, level, pname, util.toPointer(params));
+  return libOPENGL32_dll.glGetTexLevelParameteriv(target, level, pname, util.toPointer(params));
 }
 
 export function glGetTexParameterfv(
@@ -3829,7 +3985,7 @@ export function glGetTexParameterfv(
   pname: number /* u32 */,
   params: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): void /* void */ {
-  return libOPENGL32.glGetTexParameterfv(target, pname, util.toPointer(params));
+  return libOPENGL32_dll.glGetTexParameterfv(target, pname, util.toPointer(params));
 }
 
 export function glGetTexParameteriv(
@@ -3837,20 +3993,20 @@ export function glGetTexParameteriv(
   pname: number /* u32 */,
   params: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): void /* void */ {
-  return libOPENGL32.glGetTexParameteriv(target, pname, util.toPointer(params));
+  return libOPENGL32_dll.glGetTexParameteriv(target, pname, util.toPointer(params));
 }
 
 export function glHint(
   target: number /* u32 */,
   mode: number /* u32 */,
 ): void /* void */ {
-  return libOPENGL32.glHint(target, mode);
+  return libOPENGL32_dll.glHint(target, mode);
 }
 
 export function glIndexMask(
   mask: number /* u32 */,
 ): void /* void */ {
-  return libOPENGL32.glIndexMask(mask);
+  return libOPENGL32_dll.glIndexMask(mask);
 }
 
 export function glIndexPointer(
@@ -3858,71 +4014,71 @@ export function glIndexPointer(
   stride: number /* i32 */,
   pointer: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): void /* void */ {
-  return libOPENGL32.glIndexPointer(type, stride, util.toPointer(pointer));
+  return libOPENGL32_dll.glIndexPointer(type, stride, util.toPointer(pointer));
 }
 
 export function glIndexd(
   c: number /* f64 */,
 ): void /* void */ {
-  return libOPENGL32.glIndexd(c);
+  return libOPENGL32_dll.glIndexd(c);
 }
 
 export function glIndexdv(
   c: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): void /* void */ {
-  return libOPENGL32.glIndexdv(util.toPointer(c));
+  return libOPENGL32_dll.glIndexdv(util.toPointer(c));
 }
 
 export function glIndexf(
   c: number /* f32 */,
 ): void /* void */ {
-  return libOPENGL32.glIndexf(c);
+  return libOPENGL32_dll.glIndexf(c);
 }
 
 export function glIndexfv(
   c: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): void /* void */ {
-  return libOPENGL32.glIndexfv(util.toPointer(c));
+  return libOPENGL32_dll.glIndexfv(util.toPointer(c));
 }
 
 export function glIndexi(
   c: number /* i32 */,
 ): void /* void */ {
-  return libOPENGL32.glIndexi(c);
+  return libOPENGL32_dll.glIndexi(c);
 }
 
 export function glIndexiv(
   c: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): void /* void */ {
-  return libOPENGL32.glIndexiv(util.toPointer(c));
+  return libOPENGL32_dll.glIndexiv(util.toPointer(c));
 }
 
 export function glIndexs(
   c: number /* i16 */,
 ): void /* void */ {
-  return libOPENGL32.glIndexs(c);
+  return libOPENGL32_dll.glIndexs(c);
 }
 
 export function glIndexsv(
   c: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): void /* void */ {
-  return libOPENGL32.glIndexsv(util.toPointer(c));
+  return libOPENGL32_dll.glIndexsv(util.toPointer(c));
 }
 
 export function glIndexub(
   c: number /* u8 */,
 ): void /* void */ {
-  return libOPENGL32.glIndexub(c);
+  return libOPENGL32_dll.glIndexub(c);
 }
 
 export function glIndexubv(
   c: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): void /* void */ {
-  return libOPENGL32.glIndexubv(util.toPointer(c));
+  return libOPENGL32_dll.glIndexubv(util.toPointer(c));
 }
 
 export function glInitNames(): void /* void */ {
-  return libOPENGL32.glInitNames();
+  return libOPENGL32_dll.glInitNames();
 }
 
 export function glInterleavedArrays(
@@ -3930,53 +4086,53 @@ export function glInterleavedArrays(
   stride: number /* i32 */,
   pointer: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): void /* void */ {
-  return libOPENGL32.glInterleavedArrays(format, stride, util.toPointer(pointer));
+  return libOPENGL32_dll.glInterleavedArrays(format, stride, util.toPointer(pointer));
 }
 
 export function glIsEnabled(
   cap: number /* u32 */,
 ): number /* u8 */ {
-  return libOPENGL32.glIsEnabled(cap);
+  return libOPENGL32_dll.glIsEnabled(cap);
 }
 
 export function glIsList(
   list: number /* u32 */,
 ): number /* u8 */ {
-  return libOPENGL32.glIsList(list);
+  return libOPENGL32_dll.glIsList(list);
 }
 
 export function glIsTexture(
   texture: number /* u32 */,
 ): number /* u8 */ {
-  return libOPENGL32.glIsTexture(texture);
+  return libOPENGL32_dll.glIsTexture(texture);
 }
 
 export function glLightModelf(
   pname: number /* u32 */,
   param1: number /* f32 */,
 ): void /* void */ {
-  return libOPENGL32.glLightModelf(pname, param1);
+  return libOPENGL32_dll.glLightModelf(pname, param1);
 }
 
 export function glLightModelfv(
   pname: number /* u32 */,
   params: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): void /* void */ {
-  return libOPENGL32.glLightModelfv(pname, util.toPointer(params));
+  return libOPENGL32_dll.glLightModelfv(pname, util.toPointer(params));
 }
 
 export function glLightModeli(
   pname: number /* u32 */,
   param1: number /* i32 */,
 ): void /* void */ {
-  return libOPENGL32.glLightModeli(pname, param1);
+  return libOPENGL32_dll.glLightModeli(pname, param1);
 }
 
 export function glLightModeliv(
   pname: number /* u32 */,
   params: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): void /* void */ {
-  return libOPENGL32.glLightModeliv(pname, util.toPointer(params));
+  return libOPENGL32_dll.glLightModeliv(pname, util.toPointer(params));
 }
 
 export function glLightf(
@@ -3984,7 +4140,7 @@ export function glLightf(
   pname: number /* u32 */,
   param2: number /* f32 */,
 ): void /* void */ {
-  return libOPENGL32.glLightf(light, pname, param2);
+  return libOPENGL32_dll.glLightf(light, pname, param2);
 }
 
 export function glLightfv(
@@ -3992,7 +4148,7 @@ export function glLightfv(
   pname: number /* u32 */,
   params: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): void /* void */ {
-  return libOPENGL32.glLightfv(light, pname, util.toPointer(params));
+  return libOPENGL32_dll.glLightfv(light, pname, util.toPointer(params));
 }
 
 export function glLighti(
@@ -4000,7 +4156,7 @@ export function glLighti(
   pname: number /* u32 */,
   param2: number /* i32 */,
 ): void /* void */ {
-  return libOPENGL32.glLighti(light, pname, param2);
+  return libOPENGL32_dll.glLighti(light, pname, param2);
 }
 
 export function glLightiv(
@@ -4008,54 +4164,54 @@ export function glLightiv(
   pname: number /* u32 */,
   params: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): void /* void */ {
-  return libOPENGL32.glLightiv(light, pname, util.toPointer(params));
+  return libOPENGL32_dll.glLightiv(light, pname, util.toPointer(params));
 }
 
 export function glLineStipple(
   factor: number /* i32 */,
   pattern: number /* u16 */,
 ): void /* void */ {
-  return libOPENGL32.glLineStipple(factor, pattern);
+  return libOPENGL32_dll.glLineStipple(factor, pattern);
 }
 
 export function glLineWidth(
   width: number /* f32 */,
 ): void /* void */ {
-  return libOPENGL32.glLineWidth(width);
+  return libOPENGL32_dll.glLineWidth(width);
 }
 
 export function glListBase(
   base: number /* u32 */,
 ): void /* void */ {
-  return libOPENGL32.glListBase(base);
+  return libOPENGL32_dll.glListBase(base);
 }
 
 export function glLoadIdentity(): void /* void */ {
-  return libOPENGL32.glLoadIdentity();
+  return libOPENGL32_dll.glLoadIdentity();
 }
 
 export function glLoadMatrixd(
   m: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): void /* void */ {
-  return libOPENGL32.glLoadMatrixd(util.toPointer(m));
+  return libOPENGL32_dll.glLoadMatrixd(util.toPointer(m));
 }
 
 export function glLoadMatrixf(
   m: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): void /* void */ {
-  return libOPENGL32.glLoadMatrixf(util.toPointer(m));
+  return libOPENGL32_dll.glLoadMatrixf(util.toPointer(m));
 }
 
 export function glLoadName(
   name: number /* u32 */,
 ): void /* void */ {
-  return libOPENGL32.glLoadName(name);
+  return libOPENGL32_dll.glLoadName(name);
 }
 
 export function glLogicOp(
   opcode: number /* u32 */,
 ): void /* void */ {
-  return libOPENGL32.glLogicOp(opcode);
+  return libOPENGL32_dll.glLogicOp(opcode);
 }
 
 export function glMap1d(
@@ -4066,7 +4222,7 @@ export function glMap1d(
   order: number /* i32 */,
   points: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): void /* void */ {
-  return libOPENGL32.glMap1d(target, u1, u2, stride, order, util.toPointer(points));
+  return libOPENGL32_dll.glMap1d(target, u1, u2, stride, order, util.toPointer(points));
 }
 
 export function glMap1f(
@@ -4077,7 +4233,7 @@ export function glMap1f(
   order: number /* i32 */,
   points: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): void /* void */ {
-  return libOPENGL32.glMap1f(target, u1, u2, stride, order, util.toPointer(points));
+  return libOPENGL32_dll.glMap1f(target, u1, u2, stride, order, util.toPointer(points));
 }
 
 export function glMap2d(
@@ -4092,7 +4248,7 @@ export function glMap2d(
   vorder: number /* i32 */,
   points: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): void /* void */ {
-  return libOPENGL32.glMap2d(target, u1, u2, ustride, uorder, v1, v2, vstride, vorder, util.toPointer(points));
+  return libOPENGL32_dll.glMap2d(target, u1, u2, ustride, uorder, v1, v2, vstride, vorder, util.toPointer(points));
 }
 
 export function glMap2f(
@@ -4107,7 +4263,7 @@ export function glMap2f(
   vorder: number /* i32 */,
   points: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): void /* void */ {
-  return libOPENGL32.glMap2f(target, u1, u2, ustride, uorder, v1, v2, vstride, vorder, util.toPointer(points));
+  return libOPENGL32_dll.glMap2f(target, u1, u2, ustride, uorder, v1, v2, vstride, vorder, util.toPointer(points));
 }
 
 export function glMapGrid1d(
@@ -4115,7 +4271,7 @@ export function glMapGrid1d(
   u1: number /* f64 */,
   u2: number /* f64 */,
 ): void /* void */ {
-  return libOPENGL32.glMapGrid1d(un, u1, u2);
+  return libOPENGL32_dll.glMapGrid1d(un, u1, u2);
 }
 
 export function glMapGrid1f(
@@ -4123,7 +4279,7 @@ export function glMapGrid1f(
   u1: number /* f32 */,
   u2: number /* f32 */,
 ): void /* void */ {
-  return libOPENGL32.glMapGrid1f(un, u1, u2);
+  return libOPENGL32_dll.glMapGrid1f(un, u1, u2);
 }
 
 export function glMapGrid2d(
@@ -4134,7 +4290,7 @@ export function glMapGrid2d(
   v1: number /* f64 */,
   v2: number /* f64 */,
 ): void /* void */ {
-  return libOPENGL32.glMapGrid2d(un, u1, u2, vn, v1, v2);
+  return libOPENGL32_dll.glMapGrid2d(un, u1, u2, vn, v1, v2);
 }
 
 export function glMapGrid2f(
@@ -4145,7 +4301,7 @@ export function glMapGrid2f(
   v1: number /* f32 */,
   v2: number /* f32 */,
 ): void /* void */ {
-  return libOPENGL32.glMapGrid2f(un, u1, u2, vn, v1, v2);
+  return libOPENGL32_dll.glMapGrid2f(un, u1, u2, vn, v1, v2);
 }
 
 export function glMaterialf(
@@ -4153,7 +4309,7 @@ export function glMaterialf(
   pname: number /* u32 */,
   param2: number /* f32 */,
 ): void /* void */ {
-  return libOPENGL32.glMaterialf(face, pname, param2);
+  return libOPENGL32_dll.glMaterialf(face, pname, param2);
 }
 
 export function glMaterialfv(
@@ -4161,7 +4317,7 @@ export function glMaterialfv(
   pname: number /* u32 */,
   params: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): void /* void */ {
-  return libOPENGL32.glMaterialfv(face, pname, util.toPointer(params));
+  return libOPENGL32_dll.glMaterialfv(face, pname, util.toPointer(params));
 }
 
 export function glMateriali(
@@ -4169,7 +4325,7 @@ export function glMateriali(
   pname: number /* u32 */,
   param2: number /* i32 */,
 ): void /* void */ {
-  return libOPENGL32.glMateriali(face, pname, param2);
+  return libOPENGL32_dll.glMateriali(face, pname, param2);
 }
 
 export function glMaterialiv(
@@ -4177,32 +4333,32 @@ export function glMaterialiv(
   pname: number /* u32 */,
   params: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): void /* void */ {
-  return libOPENGL32.glMaterialiv(face, pname, util.toPointer(params));
+  return libOPENGL32_dll.glMaterialiv(face, pname, util.toPointer(params));
 }
 
 export function glMatrixMode(
   mode: number /* u32 */,
 ): void /* void */ {
-  return libOPENGL32.glMatrixMode(mode);
+  return libOPENGL32_dll.glMatrixMode(mode);
 }
 
 export function glMultMatrixd(
   m: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): void /* void */ {
-  return libOPENGL32.glMultMatrixd(util.toPointer(m));
+  return libOPENGL32_dll.glMultMatrixd(util.toPointer(m));
 }
 
 export function glMultMatrixf(
   m: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): void /* void */ {
-  return libOPENGL32.glMultMatrixf(util.toPointer(m));
+  return libOPENGL32_dll.glMultMatrixf(util.toPointer(m));
 }
 
 export function glNewList(
   list: number /* u32 */,
   mode: number /* u32 */,
 ): void /* void */ {
-  return libOPENGL32.glNewList(list, mode);
+  return libOPENGL32_dll.glNewList(list, mode);
 }
 
 export function glNormal3b(
@@ -4210,13 +4366,13 @@ export function glNormal3b(
   ny: number /* i8 */,
   nz: number /* i8 */,
 ): void /* void */ {
-  return libOPENGL32.glNormal3b(nx, ny, nz);
+  return libOPENGL32_dll.glNormal3b(nx, ny, nz);
 }
 
 export function glNormal3bv(
   v: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): void /* void */ {
-  return libOPENGL32.glNormal3bv(util.toPointer(v));
+  return libOPENGL32_dll.glNormal3bv(util.toPointer(v));
 }
 
 export function glNormal3d(
@@ -4224,13 +4380,13 @@ export function glNormal3d(
   ny: number /* f64 */,
   nz: number /* f64 */,
 ): void /* void */ {
-  return libOPENGL32.glNormal3d(nx, ny, nz);
+  return libOPENGL32_dll.glNormal3d(nx, ny, nz);
 }
 
 export function glNormal3dv(
   v: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): void /* void */ {
-  return libOPENGL32.glNormal3dv(util.toPointer(v));
+  return libOPENGL32_dll.glNormal3dv(util.toPointer(v));
 }
 
 export function glNormal3f(
@@ -4238,13 +4394,13 @@ export function glNormal3f(
   ny: number /* f32 */,
   nz: number /* f32 */,
 ): void /* void */ {
-  return libOPENGL32.glNormal3f(nx, ny, nz);
+  return libOPENGL32_dll.glNormal3f(nx, ny, nz);
 }
 
 export function glNormal3fv(
   v: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): void /* void */ {
-  return libOPENGL32.glNormal3fv(util.toPointer(v));
+  return libOPENGL32_dll.glNormal3fv(util.toPointer(v));
 }
 
 export function glNormal3i(
@@ -4252,13 +4408,13 @@ export function glNormal3i(
   ny: number /* i32 */,
   nz: number /* i32 */,
 ): void /* void */ {
-  return libOPENGL32.glNormal3i(nx, ny, nz);
+  return libOPENGL32_dll.glNormal3i(nx, ny, nz);
 }
 
 export function glNormal3iv(
   v: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): void /* void */ {
-  return libOPENGL32.glNormal3iv(util.toPointer(v));
+  return libOPENGL32_dll.glNormal3iv(util.toPointer(v));
 }
 
 export function glNormal3s(
@@ -4266,13 +4422,13 @@ export function glNormal3s(
   ny: number /* i16 */,
   nz: number /* i16 */,
 ): void /* void */ {
-  return libOPENGL32.glNormal3s(nx, ny, nz);
+  return libOPENGL32_dll.glNormal3s(nx, ny, nz);
 }
 
 export function glNormal3sv(
   v: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): void /* void */ {
-  return libOPENGL32.glNormal3sv(util.toPointer(v));
+  return libOPENGL32_dll.glNormal3sv(util.toPointer(v));
 }
 
 export function glNormalPointer(
@@ -4280,7 +4436,7 @@ export function glNormalPointer(
   stride: number /* i32 */,
   pointer: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): void /* void */ {
-  return libOPENGL32.glNormalPointer(type, stride, util.toPointer(pointer));
+  return libOPENGL32_dll.glNormalPointer(type, stride, util.toPointer(pointer));
 }
 
 export function glOrtho(
@@ -4291,13 +4447,13 @@ export function glOrtho(
   zNear: number /* f64 */,
   zFar: number /* f64 */,
 ): void /* void */ {
-  return libOPENGL32.glOrtho(left, right, bottom, top, zNear, zFar);
+  return libOPENGL32_dll.glOrtho(left, right, bottom, top, zNear, zFar);
 }
 
 export function glPassThrough(
   token: number /* f32 */,
 ): void /* void */ {
-  return libOPENGL32.glPassThrough(token);
+  return libOPENGL32_dll.glPassThrough(token);
 }
 
 export function glPixelMapfv(
@@ -4305,7 +4461,7 @@ export function glPixelMapfv(
   mapsize: number /* i32 */,
   values: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): void /* void */ {
-  return libOPENGL32.glPixelMapfv(map, mapsize, util.toPointer(values));
+  return libOPENGL32_dll.glPixelMapfv(map, mapsize, util.toPointer(values));
 }
 
 export function glPixelMapuiv(
@@ -4313,7 +4469,7 @@ export function glPixelMapuiv(
   mapsize: number /* i32 */,
   values: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): void /* void */ {
-  return libOPENGL32.glPixelMapuiv(map, mapsize, util.toPointer(values));
+  return libOPENGL32_dll.glPixelMapuiv(map, mapsize, util.toPointer(values));
 }
 
 export function glPixelMapusv(
@@ -4321,84 +4477,84 @@ export function glPixelMapusv(
   mapsize: number /* i32 */,
   values: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): void /* void */ {
-  return libOPENGL32.glPixelMapusv(map, mapsize, util.toPointer(values));
+  return libOPENGL32_dll.glPixelMapusv(map, mapsize, util.toPointer(values));
 }
 
 export function glPixelStoref(
   pname: number /* u32 */,
   param1: number /* f32 */,
 ): void /* void */ {
-  return libOPENGL32.glPixelStoref(pname, param1);
+  return libOPENGL32_dll.glPixelStoref(pname, param1);
 }
 
 export function glPixelStorei(
   pname: number /* u32 */,
   param1: number /* i32 */,
 ): void /* void */ {
-  return libOPENGL32.glPixelStorei(pname, param1);
+  return libOPENGL32_dll.glPixelStorei(pname, param1);
 }
 
 export function glPixelTransferf(
   pname: number /* u32 */,
   param1: number /* f32 */,
 ): void /* void */ {
-  return libOPENGL32.glPixelTransferf(pname, param1);
+  return libOPENGL32_dll.glPixelTransferf(pname, param1);
 }
 
 export function glPixelTransferi(
   pname: number /* u32 */,
   param1: number /* i32 */,
 ): void /* void */ {
-  return libOPENGL32.glPixelTransferi(pname, param1);
+  return libOPENGL32_dll.glPixelTransferi(pname, param1);
 }
 
 export function glPixelZoom(
   xfactor: number /* f32 */,
   yfactor: number /* f32 */,
 ): void /* void */ {
-  return libOPENGL32.glPixelZoom(xfactor, yfactor);
+  return libOPENGL32_dll.glPixelZoom(xfactor, yfactor);
 }
 
 export function glPointSize(
   size: number /* f32 */,
 ): void /* void */ {
-  return libOPENGL32.glPointSize(size);
+  return libOPENGL32_dll.glPointSize(size);
 }
 
 export function glPolygonMode(
   face: number /* u32 */,
   mode: number /* u32 */,
 ): void /* void */ {
-  return libOPENGL32.glPolygonMode(face, mode);
+  return libOPENGL32_dll.glPolygonMode(face, mode);
 }
 
 export function glPolygonOffset(
   factor: number /* f32 */,
   units: number /* f32 */,
 ): void /* void */ {
-  return libOPENGL32.glPolygonOffset(factor, units);
+  return libOPENGL32_dll.glPolygonOffset(factor, units);
 }
 
 export function glPolygonStipple(
   mask: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): void /* void */ {
-  return libOPENGL32.glPolygonStipple(util.toPointer(mask));
+  return libOPENGL32_dll.glPolygonStipple(util.toPointer(mask));
 }
 
 export function glPopAttrib(): void /* void */ {
-  return libOPENGL32.glPopAttrib();
+  return libOPENGL32_dll.glPopAttrib();
 }
 
 export function glPopClientAttrib(): void /* void */ {
-  return libOPENGL32.glPopClientAttrib();
+  return libOPENGL32_dll.glPopClientAttrib();
 }
 
 export function glPopMatrix(): void /* void */ {
-  return libOPENGL32.glPopMatrix();
+  return libOPENGL32_dll.glPopMatrix();
 }
 
 export function glPopName(): void /* void */ {
-  return libOPENGL32.glPopName();
+  return libOPENGL32_dll.glPopName();
 }
 
 export function glPrioritizeTextures(
@@ -4406,81 +4562,81 @@ export function glPrioritizeTextures(
   textures: Deno.PointerValue | Uint8Array | null /* ptr */,
   priorities: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): void /* void */ {
-  return libOPENGL32.glPrioritizeTextures(n, util.toPointer(textures), util.toPointer(priorities));
+  return libOPENGL32_dll.glPrioritizeTextures(n, util.toPointer(textures), util.toPointer(priorities));
 }
 
 export function glPushAttrib(
   mask: number /* u32 */,
 ): void /* void */ {
-  return libOPENGL32.glPushAttrib(mask);
+  return libOPENGL32_dll.glPushAttrib(mask);
 }
 
 export function glPushClientAttrib(
   mask: number /* u32 */,
 ): void /* void */ {
-  return libOPENGL32.glPushClientAttrib(mask);
+  return libOPENGL32_dll.glPushClientAttrib(mask);
 }
 
 export function glPushMatrix(): void /* void */ {
-  return libOPENGL32.glPushMatrix();
+  return libOPENGL32_dll.glPushMatrix();
 }
 
 export function glPushName(
   name: number /* u32 */,
 ): void /* void */ {
-  return libOPENGL32.glPushName(name);
+  return libOPENGL32_dll.glPushName(name);
 }
 
 export function glRasterPos2d(
   x: number /* f64 */,
   y: number /* f64 */,
 ): void /* void */ {
-  return libOPENGL32.glRasterPos2d(x, y);
+  return libOPENGL32_dll.glRasterPos2d(x, y);
 }
 
 export function glRasterPos2dv(
   v: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): void /* void */ {
-  return libOPENGL32.glRasterPos2dv(util.toPointer(v));
+  return libOPENGL32_dll.glRasterPos2dv(util.toPointer(v));
 }
 
 export function glRasterPos2f(
   x: number /* f32 */,
   y: number /* f32 */,
 ): void /* void */ {
-  return libOPENGL32.glRasterPos2f(x, y);
+  return libOPENGL32_dll.glRasterPos2f(x, y);
 }
 
 export function glRasterPos2fv(
   v: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): void /* void */ {
-  return libOPENGL32.glRasterPos2fv(util.toPointer(v));
+  return libOPENGL32_dll.glRasterPos2fv(util.toPointer(v));
 }
 
 export function glRasterPos2i(
   x: number /* i32 */,
   y: number /* i32 */,
 ): void /* void */ {
-  return libOPENGL32.glRasterPos2i(x, y);
+  return libOPENGL32_dll.glRasterPos2i(x, y);
 }
 
 export function glRasterPos2iv(
   v: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): void /* void */ {
-  return libOPENGL32.glRasterPos2iv(util.toPointer(v));
+  return libOPENGL32_dll.glRasterPos2iv(util.toPointer(v));
 }
 
 export function glRasterPos2s(
   x: number /* i16 */,
   y: number /* i16 */,
 ): void /* void */ {
-  return libOPENGL32.glRasterPos2s(x, y);
+  return libOPENGL32_dll.glRasterPos2s(x, y);
 }
 
 export function glRasterPos2sv(
   v: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): void /* void */ {
-  return libOPENGL32.glRasterPos2sv(util.toPointer(v));
+  return libOPENGL32_dll.glRasterPos2sv(util.toPointer(v));
 }
 
 export function glRasterPos3d(
@@ -4488,13 +4644,13 @@ export function glRasterPos3d(
   y: number /* f64 */,
   z: number /* f64 */,
 ): void /* void */ {
-  return libOPENGL32.glRasterPos3d(x, y, z);
+  return libOPENGL32_dll.glRasterPos3d(x, y, z);
 }
 
 export function glRasterPos3dv(
   v: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): void /* void */ {
-  return libOPENGL32.glRasterPos3dv(util.toPointer(v));
+  return libOPENGL32_dll.glRasterPos3dv(util.toPointer(v));
 }
 
 export function glRasterPos3f(
@@ -4502,13 +4658,13 @@ export function glRasterPos3f(
   y: number /* f32 */,
   z: number /* f32 */,
 ): void /* void */ {
-  return libOPENGL32.glRasterPos3f(x, y, z);
+  return libOPENGL32_dll.glRasterPos3f(x, y, z);
 }
 
 export function glRasterPos3fv(
   v: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): void /* void */ {
-  return libOPENGL32.glRasterPos3fv(util.toPointer(v));
+  return libOPENGL32_dll.glRasterPos3fv(util.toPointer(v));
 }
 
 export function glRasterPos3i(
@@ -4516,13 +4672,13 @@ export function glRasterPos3i(
   y: number /* i32 */,
   z: number /* i32 */,
 ): void /* void */ {
-  return libOPENGL32.glRasterPos3i(x, y, z);
+  return libOPENGL32_dll.glRasterPos3i(x, y, z);
 }
 
 export function glRasterPos3iv(
   v: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): void /* void */ {
-  return libOPENGL32.glRasterPos3iv(util.toPointer(v));
+  return libOPENGL32_dll.glRasterPos3iv(util.toPointer(v));
 }
 
 export function glRasterPos3s(
@@ -4530,13 +4686,13 @@ export function glRasterPos3s(
   y: number /* i16 */,
   z: number /* i16 */,
 ): void /* void */ {
-  return libOPENGL32.glRasterPos3s(x, y, z);
+  return libOPENGL32_dll.glRasterPos3s(x, y, z);
 }
 
 export function glRasterPos3sv(
   v: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): void /* void */ {
-  return libOPENGL32.glRasterPos3sv(util.toPointer(v));
+  return libOPENGL32_dll.glRasterPos3sv(util.toPointer(v));
 }
 
 export function glRasterPos4d(
@@ -4545,13 +4701,13 @@ export function glRasterPos4d(
   z: number /* f64 */,
   w: number /* f64 */,
 ): void /* void */ {
-  return libOPENGL32.glRasterPos4d(x, y, z, w);
+  return libOPENGL32_dll.glRasterPos4d(x, y, z, w);
 }
 
 export function glRasterPos4dv(
   v: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): void /* void */ {
-  return libOPENGL32.glRasterPos4dv(util.toPointer(v));
+  return libOPENGL32_dll.glRasterPos4dv(util.toPointer(v));
 }
 
 export function glRasterPos4f(
@@ -4560,13 +4716,13 @@ export function glRasterPos4f(
   z: number /* f32 */,
   w: number /* f32 */,
 ): void /* void */ {
-  return libOPENGL32.glRasterPos4f(x, y, z, w);
+  return libOPENGL32_dll.glRasterPos4f(x, y, z, w);
 }
 
 export function glRasterPos4fv(
   v: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): void /* void */ {
-  return libOPENGL32.glRasterPos4fv(util.toPointer(v));
+  return libOPENGL32_dll.glRasterPos4fv(util.toPointer(v));
 }
 
 export function glRasterPos4i(
@@ -4575,13 +4731,13 @@ export function glRasterPos4i(
   z: number /* i32 */,
   w: number /* i32 */,
 ): void /* void */ {
-  return libOPENGL32.glRasterPos4i(x, y, z, w);
+  return libOPENGL32_dll.glRasterPos4i(x, y, z, w);
 }
 
 export function glRasterPos4iv(
   v: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): void /* void */ {
-  return libOPENGL32.glRasterPos4iv(util.toPointer(v));
+  return libOPENGL32_dll.glRasterPos4iv(util.toPointer(v));
 }
 
 export function glRasterPos4s(
@@ -4590,19 +4746,19 @@ export function glRasterPos4s(
   z: number /* i16 */,
   w: number /* i16 */,
 ): void /* void */ {
-  return libOPENGL32.glRasterPos4s(x, y, z, w);
+  return libOPENGL32_dll.glRasterPos4s(x, y, z, w);
 }
 
 export function glRasterPos4sv(
   v: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): void /* void */ {
-  return libOPENGL32.glRasterPos4sv(util.toPointer(v));
+  return libOPENGL32_dll.glRasterPos4sv(util.toPointer(v));
 }
 
 export function glReadBuffer(
   mode: number /* u32 */,
 ): void /* void */ {
-  return libOPENGL32.glReadBuffer(mode);
+  return libOPENGL32_dll.glReadBuffer(mode);
 }
 
 export function glReadPixels(
@@ -4614,7 +4770,7 @@ export function glReadPixels(
   type: number /* u32 */,
   pixels: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): void /* void */ {
-  return libOPENGL32.glReadPixels(x, y, width, height, format, type, util.toPointer(pixels));
+  return libOPENGL32_dll.glReadPixels(x, y, width, height, format, type, util.toPointer(pixels));
 }
 
 export function glRectd(
@@ -4623,14 +4779,14 @@ export function glRectd(
   x2: number /* f64 */,
   y2: number /* f64 */,
 ): void /* void */ {
-  return libOPENGL32.glRectd(x1, y1, x2, y2);
+  return libOPENGL32_dll.glRectd(x1, y1, x2, y2);
 }
 
 export function glRectdv(
   v1: Deno.PointerValue | Uint8Array | null /* ptr */,
   v2: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): void /* void */ {
-  return libOPENGL32.glRectdv(util.toPointer(v1), util.toPointer(v2));
+  return libOPENGL32_dll.glRectdv(util.toPointer(v1), util.toPointer(v2));
 }
 
 export function glRectf(
@@ -4639,14 +4795,14 @@ export function glRectf(
   x2: number /* f32 */,
   y2: number /* f32 */,
 ): void /* void */ {
-  return libOPENGL32.glRectf(x1, y1, x2, y2);
+  return libOPENGL32_dll.glRectf(x1, y1, x2, y2);
 }
 
 export function glRectfv(
   v1: Deno.PointerValue | Uint8Array | null /* ptr */,
   v2: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): void /* void */ {
-  return libOPENGL32.glRectfv(util.toPointer(v1), util.toPointer(v2));
+  return libOPENGL32_dll.glRectfv(util.toPointer(v1), util.toPointer(v2));
 }
 
 export function glRecti(
@@ -4655,14 +4811,14 @@ export function glRecti(
   x2: number /* i32 */,
   y2: number /* i32 */,
 ): void /* void */ {
-  return libOPENGL32.glRecti(x1, y1, x2, y2);
+  return libOPENGL32_dll.glRecti(x1, y1, x2, y2);
 }
 
 export function glRectiv(
   v1: Deno.PointerValue | Uint8Array | null /* ptr */,
   v2: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): void /* void */ {
-  return libOPENGL32.glRectiv(util.toPointer(v1), util.toPointer(v2));
+  return libOPENGL32_dll.glRectiv(util.toPointer(v1), util.toPointer(v2));
 }
 
 export function glRects(
@@ -4671,20 +4827,20 @@ export function glRects(
   x2: number /* i16 */,
   y2: number /* i16 */,
 ): void /* void */ {
-  return libOPENGL32.glRects(x1, y1, x2, y2);
+  return libOPENGL32_dll.glRects(x1, y1, x2, y2);
 }
 
 export function glRectsv(
   v1: Deno.PointerValue | Uint8Array | null /* ptr */,
   v2: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): void /* void */ {
-  return libOPENGL32.glRectsv(util.toPointer(v1), util.toPointer(v2));
+  return libOPENGL32_dll.glRectsv(util.toPointer(v1), util.toPointer(v2));
 }
 
 export function glRenderMode(
   mode: number /* u32 */,
 ): number /* i32 */ {
-  return libOPENGL32.glRenderMode(mode);
+  return libOPENGL32_dll.glRenderMode(mode);
 }
 
 export function glRotated(
@@ -4693,7 +4849,7 @@ export function glRotated(
   y: number /* f64 */,
   z: number /* f64 */,
 ): void /* void */ {
-  return libOPENGL32.glRotated(angle, x, y, z);
+  return libOPENGL32_dll.glRotated(angle, x, y, z);
 }
 
 export function glRotatef(
@@ -4702,7 +4858,7 @@ export function glRotatef(
   y: number /* f32 */,
   z: number /* f32 */,
 ): void /* void */ {
-  return libOPENGL32.glRotatef(angle, x, y, z);
+  return libOPENGL32_dll.glRotatef(angle, x, y, z);
 }
 
 export function glScaled(
@@ -4710,7 +4866,7 @@ export function glScaled(
   y: number /* f64 */,
   z: number /* f64 */,
 ): void /* void */ {
-  return libOPENGL32.glScaled(x, y, z);
+  return libOPENGL32_dll.glScaled(x, y, z);
 }
 
 export function glScalef(
@@ -4718,7 +4874,7 @@ export function glScalef(
   y: number /* f32 */,
   z: number /* f32 */,
 ): void /* void */ {
-  return libOPENGL32.glScalef(x, y, z);
+  return libOPENGL32_dll.glScalef(x, y, z);
 }
 
 export function glScissor(
@@ -4727,20 +4883,20 @@ export function glScissor(
   width: number /* i32 */,
   height: number /* i32 */,
 ): void /* void */ {
-  return libOPENGL32.glScissor(x, y, width, height);
+  return libOPENGL32_dll.glScissor(x, y, width, height);
 }
 
 export function glSelectBuffer(
   size: number /* i32 */,
   buffer: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): void /* void */ {
-  return libOPENGL32.glSelectBuffer(size, util.toPointer(buffer));
+  return libOPENGL32_dll.glSelectBuffer(size, util.toPointer(buffer));
 }
 
 export function glShadeModel(
   mode: number /* u32 */,
 ): void /* void */ {
-  return libOPENGL32.glShadeModel(mode);
+  return libOPENGL32_dll.glShadeModel(mode);
 }
 
 export function glStencilFunc(
@@ -4748,13 +4904,13 @@ export function glStencilFunc(
   ref: number /* i32 */,
   mask: number /* u32 */,
 ): void /* void */ {
-  return libOPENGL32.glStencilFunc(func, ref, mask);
+  return libOPENGL32_dll.glStencilFunc(func, ref, mask);
 }
 
 export function glStencilMask(
   mask: number /* u32 */,
 ): void /* void */ {
-  return libOPENGL32.glStencilMask(mask);
+  return libOPENGL32_dll.glStencilMask(mask);
 }
 
 export function glStencilOp(
@@ -4762,107 +4918,107 @@ export function glStencilOp(
   zfail: number /* u32 */,
   zpass: number /* u32 */,
 ): void /* void */ {
-  return libOPENGL32.glStencilOp(fail, zfail, zpass);
+  return libOPENGL32_dll.glStencilOp(fail, zfail, zpass);
 }
 
 export function glTexCoord1d(
   s: number /* f64 */,
 ): void /* void */ {
-  return libOPENGL32.glTexCoord1d(s);
+  return libOPENGL32_dll.glTexCoord1d(s);
 }
 
 export function glTexCoord1dv(
   v: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): void /* void */ {
-  return libOPENGL32.glTexCoord1dv(util.toPointer(v));
+  return libOPENGL32_dll.glTexCoord1dv(util.toPointer(v));
 }
 
 export function glTexCoord1f(
   s: number /* f32 */,
 ): void /* void */ {
-  return libOPENGL32.glTexCoord1f(s);
+  return libOPENGL32_dll.glTexCoord1f(s);
 }
 
 export function glTexCoord1fv(
   v: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): void /* void */ {
-  return libOPENGL32.glTexCoord1fv(util.toPointer(v));
+  return libOPENGL32_dll.glTexCoord1fv(util.toPointer(v));
 }
 
 export function glTexCoord1i(
   s: number /* i32 */,
 ): void /* void */ {
-  return libOPENGL32.glTexCoord1i(s);
+  return libOPENGL32_dll.glTexCoord1i(s);
 }
 
 export function glTexCoord1iv(
   v: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): void /* void */ {
-  return libOPENGL32.glTexCoord1iv(util.toPointer(v));
+  return libOPENGL32_dll.glTexCoord1iv(util.toPointer(v));
 }
 
 export function glTexCoord1s(
   s: number /* i16 */,
 ): void /* void */ {
-  return libOPENGL32.glTexCoord1s(s);
+  return libOPENGL32_dll.glTexCoord1s(s);
 }
 
 export function glTexCoord1sv(
   v: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): void /* void */ {
-  return libOPENGL32.glTexCoord1sv(util.toPointer(v));
+  return libOPENGL32_dll.glTexCoord1sv(util.toPointer(v));
 }
 
 export function glTexCoord2d(
   s: number /* f64 */,
   t: number /* f64 */,
 ): void /* void */ {
-  return libOPENGL32.glTexCoord2d(s, t);
+  return libOPENGL32_dll.glTexCoord2d(s, t);
 }
 
 export function glTexCoord2dv(
   v: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): void /* void */ {
-  return libOPENGL32.glTexCoord2dv(util.toPointer(v));
+  return libOPENGL32_dll.glTexCoord2dv(util.toPointer(v));
 }
 
 export function glTexCoord2f(
   s: number /* f32 */,
   t: number /* f32 */,
 ): void /* void */ {
-  return libOPENGL32.glTexCoord2f(s, t);
+  return libOPENGL32_dll.glTexCoord2f(s, t);
 }
 
 export function glTexCoord2fv(
   v: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): void /* void */ {
-  return libOPENGL32.glTexCoord2fv(util.toPointer(v));
+  return libOPENGL32_dll.glTexCoord2fv(util.toPointer(v));
 }
 
 export function glTexCoord2i(
   s: number /* i32 */,
   t: number /* i32 */,
 ): void /* void */ {
-  return libOPENGL32.glTexCoord2i(s, t);
+  return libOPENGL32_dll.glTexCoord2i(s, t);
 }
 
 export function glTexCoord2iv(
   v: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): void /* void */ {
-  return libOPENGL32.glTexCoord2iv(util.toPointer(v));
+  return libOPENGL32_dll.glTexCoord2iv(util.toPointer(v));
 }
 
 export function glTexCoord2s(
   s: number /* i16 */,
   t: number /* i16 */,
 ): void /* void */ {
-  return libOPENGL32.glTexCoord2s(s, t);
+  return libOPENGL32_dll.glTexCoord2s(s, t);
 }
 
 export function glTexCoord2sv(
   v: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): void /* void */ {
-  return libOPENGL32.glTexCoord2sv(util.toPointer(v));
+  return libOPENGL32_dll.glTexCoord2sv(util.toPointer(v));
 }
 
 export function glTexCoord3d(
@@ -4870,13 +5026,13 @@ export function glTexCoord3d(
   t: number /* f64 */,
   r: number /* f64 */,
 ): void /* void */ {
-  return libOPENGL32.glTexCoord3d(s, t, r);
+  return libOPENGL32_dll.glTexCoord3d(s, t, r);
 }
 
 export function glTexCoord3dv(
   v: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): void /* void */ {
-  return libOPENGL32.glTexCoord3dv(util.toPointer(v));
+  return libOPENGL32_dll.glTexCoord3dv(util.toPointer(v));
 }
 
 export function glTexCoord3f(
@@ -4884,13 +5040,13 @@ export function glTexCoord3f(
   t: number /* f32 */,
   r: number /* f32 */,
 ): void /* void */ {
-  return libOPENGL32.glTexCoord3f(s, t, r);
+  return libOPENGL32_dll.glTexCoord3f(s, t, r);
 }
 
 export function glTexCoord3fv(
   v: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): void /* void */ {
-  return libOPENGL32.glTexCoord3fv(util.toPointer(v));
+  return libOPENGL32_dll.glTexCoord3fv(util.toPointer(v));
 }
 
 export function glTexCoord3i(
@@ -4898,13 +5054,13 @@ export function glTexCoord3i(
   t: number /* i32 */,
   r: number /* i32 */,
 ): void /* void */ {
-  return libOPENGL32.glTexCoord3i(s, t, r);
+  return libOPENGL32_dll.glTexCoord3i(s, t, r);
 }
 
 export function glTexCoord3iv(
   v: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): void /* void */ {
-  return libOPENGL32.glTexCoord3iv(util.toPointer(v));
+  return libOPENGL32_dll.glTexCoord3iv(util.toPointer(v));
 }
 
 export function glTexCoord3s(
@@ -4912,13 +5068,13 @@ export function glTexCoord3s(
   t: number /* i16 */,
   r: number /* i16 */,
 ): void /* void */ {
-  return libOPENGL32.glTexCoord3s(s, t, r);
+  return libOPENGL32_dll.glTexCoord3s(s, t, r);
 }
 
 export function glTexCoord3sv(
   v: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): void /* void */ {
-  return libOPENGL32.glTexCoord3sv(util.toPointer(v));
+  return libOPENGL32_dll.glTexCoord3sv(util.toPointer(v));
 }
 
 export function glTexCoord4d(
@@ -4927,13 +5083,13 @@ export function glTexCoord4d(
   r: number /* f64 */,
   q: number /* f64 */,
 ): void /* void */ {
-  return libOPENGL32.glTexCoord4d(s, t, r, q);
+  return libOPENGL32_dll.glTexCoord4d(s, t, r, q);
 }
 
 export function glTexCoord4dv(
   v: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): void /* void */ {
-  return libOPENGL32.glTexCoord4dv(util.toPointer(v));
+  return libOPENGL32_dll.glTexCoord4dv(util.toPointer(v));
 }
 
 export function glTexCoord4f(
@@ -4942,13 +5098,13 @@ export function glTexCoord4f(
   r: number /* f32 */,
   q: number /* f32 */,
 ): void /* void */ {
-  return libOPENGL32.glTexCoord4f(s, t, r, q);
+  return libOPENGL32_dll.glTexCoord4f(s, t, r, q);
 }
 
 export function glTexCoord4fv(
   v: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): void /* void */ {
-  return libOPENGL32.glTexCoord4fv(util.toPointer(v));
+  return libOPENGL32_dll.glTexCoord4fv(util.toPointer(v));
 }
 
 export function glTexCoord4i(
@@ -4957,13 +5113,13 @@ export function glTexCoord4i(
   r: number /* i32 */,
   q: number /* i32 */,
 ): void /* void */ {
-  return libOPENGL32.glTexCoord4i(s, t, r, q);
+  return libOPENGL32_dll.glTexCoord4i(s, t, r, q);
 }
 
 export function glTexCoord4iv(
   v: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): void /* void */ {
-  return libOPENGL32.glTexCoord4iv(util.toPointer(v));
+  return libOPENGL32_dll.glTexCoord4iv(util.toPointer(v));
 }
 
 export function glTexCoord4s(
@@ -4972,13 +5128,13 @@ export function glTexCoord4s(
   r: number /* i16 */,
   q: number /* i16 */,
 ): void /* void */ {
-  return libOPENGL32.glTexCoord4s(s, t, r, q);
+  return libOPENGL32_dll.glTexCoord4s(s, t, r, q);
 }
 
 export function glTexCoord4sv(
   v: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): void /* void */ {
-  return libOPENGL32.glTexCoord4sv(util.toPointer(v));
+  return libOPENGL32_dll.glTexCoord4sv(util.toPointer(v));
 }
 
 export function glTexCoordPointer(
@@ -4987,7 +5143,7 @@ export function glTexCoordPointer(
   stride: number /* i32 */,
   pointer: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): void /* void */ {
-  return libOPENGL32.glTexCoordPointer(size, type, stride, util.toPointer(pointer));
+  return libOPENGL32_dll.glTexCoordPointer(size, type, stride, util.toPointer(pointer));
 }
 
 export function glTexEnvf(
@@ -4995,7 +5151,7 @@ export function glTexEnvf(
   pname: number /* u32 */,
   param2: number /* f32 */,
 ): void /* void */ {
-  return libOPENGL32.glTexEnvf(target, pname, param2);
+  return libOPENGL32_dll.glTexEnvf(target, pname, param2);
 }
 
 export function glTexEnvfv(
@@ -5003,7 +5159,7 @@ export function glTexEnvfv(
   pname: number /* u32 */,
   params: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): void /* void */ {
-  return libOPENGL32.glTexEnvfv(target, pname, util.toPointer(params));
+  return libOPENGL32_dll.glTexEnvfv(target, pname, util.toPointer(params));
 }
 
 export function glTexEnvi(
@@ -5011,7 +5167,7 @@ export function glTexEnvi(
   pname: number /* u32 */,
   param2: number /* i32 */,
 ): void /* void */ {
-  return libOPENGL32.glTexEnvi(target, pname, param2);
+  return libOPENGL32_dll.glTexEnvi(target, pname, param2);
 }
 
 export function glTexEnviv(
@@ -5019,7 +5175,7 @@ export function glTexEnviv(
   pname: number /* u32 */,
   params: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): void /* void */ {
-  return libOPENGL32.glTexEnviv(target, pname, util.toPointer(params));
+  return libOPENGL32_dll.glTexEnviv(target, pname, util.toPointer(params));
 }
 
 export function glTexGend(
@@ -5027,7 +5183,7 @@ export function glTexGend(
   pname: number /* u32 */,
   param2: number /* f64 */,
 ): void /* void */ {
-  return libOPENGL32.glTexGend(coord, pname, param2);
+  return libOPENGL32_dll.glTexGend(coord, pname, param2);
 }
 
 export function glTexGendv(
@@ -5035,7 +5191,7 @@ export function glTexGendv(
   pname: number /* u32 */,
   params: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): void /* void */ {
-  return libOPENGL32.glTexGendv(coord, pname, util.toPointer(params));
+  return libOPENGL32_dll.glTexGendv(coord, pname, util.toPointer(params));
 }
 
 export function glTexGenf(
@@ -5043,7 +5199,7 @@ export function glTexGenf(
   pname: number /* u32 */,
   param2: number /* f32 */,
 ): void /* void */ {
-  return libOPENGL32.glTexGenf(coord, pname, param2);
+  return libOPENGL32_dll.glTexGenf(coord, pname, param2);
 }
 
 export function glTexGenfv(
@@ -5051,7 +5207,7 @@ export function glTexGenfv(
   pname: number /* u32 */,
   params: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): void /* void */ {
-  return libOPENGL32.glTexGenfv(coord, pname, util.toPointer(params));
+  return libOPENGL32_dll.glTexGenfv(coord, pname, util.toPointer(params));
 }
 
 export function glTexGeni(
@@ -5059,7 +5215,7 @@ export function glTexGeni(
   pname: number /* u32 */,
   param2: number /* i32 */,
 ): void /* void */ {
-  return libOPENGL32.glTexGeni(coord, pname, param2);
+  return libOPENGL32_dll.glTexGeni(coord, pname, param2);
 }
 
 export function glTexGeniv(
@@ -5067,7 +5223,7 @@ export function glTexGeniv(
   pname: number /* u32 */,
   params: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): void /* void */ {
-  return libOPENGL32.glTexGeniv(coord, pname, util.toPointer(params));
+  return libOPENGL32_dll.glTexGeniv(coord, pname, util.toPointer(params));
 }
 
 export function glTexImage1D(
@@ -5080,7 +5236,7 @@ export function glTexImage1D(
   type: number /* u32 */,
   pixels: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): void /* void */ {
-  return libOPENGL32.glTexImage1D(target, level, internalformat, width, border, format, type, util.toPointer(pixels));
+  return libOPENGL32_dll.glTexImage1D(target, level, internalformat, width, border, format, type, util.toPointer(pixels));
 }
 
 export function glTexImage2D(
@@ -5094,7 +5250,7 @@ export function glTexImage2D(
   type: number /* u32 */,
   pixels: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): void /* void */ {
-  return libOPENGL32.glTexImage2D(target, level, internalformat, width, height, border, format, type, util.toPointer(pixels));
+  return libOPENGL32_dll.glTexImage2D(target, level, internalformat, width, height, border, format, type, util.toPointer(pixels));
 }
 
 export function glTexParameterf(
@@ -5102,7 +5258,7 @@ export function glTexParameterf(
   pname: number /* u32 */,
   param2: number /* f32 */,
 ): void /* void */ {
-  return libOPENGL32.glTexParameterf(target, pname, param2);
+  return libOPENGL32_dll.glTexParameterf(target, pname, param2);
 }
 
 export function glTexParameterfv(
@@ -5110,7 +5266,7 @@ export function glTexParameterfv(
   pname: number /* u32 */,
   params: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): void /* void */ {
-  return libOPENGL32.glTexParameterfv(target, pname, util.toPointer(params));
+  return libOPENGL32_dll.glTexParameterfv(target, pname, util.toPointer(params));
 }
 
 export function glTexParameteri(
@@ -5118,7 +5274,7 @@ export function glTexParameteri(
   pname: number /* u32 */,
   param2: number /* i32 */,
 ): void /* void */ {
-  return libOPENGL32.glTexParameteri(target, pname, param2);
+  return libOPENGL32_dll.glTexParameteri(target, pname, param2);
 }
 
 export function glTexParameteriv(
@@ -5126,7 +5282,7 @@ export function glTexParameteriv(
   pname: number /* u32 */,
   params: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): void /* void */ {
-  return libOPENGL32.glTexParameteriv(target, pname, util.toPointer(params));
+  return libOPENGL32_dll.glTexParameteriv(target, pname, util.toPointer(params));
 }
 
 export function glTexSubImage1D(
@@ -5138,7 +5294,7 @@ export function glTexSubImage1D(
   type: number /* u32 */,
   pixels: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): void /* void */ {
-  return libOPENGL32.glTexSubImage1D(target, level, xoffset, width, format, type, util.toPointer(pixels));
+  return libOPENGL32_dll.glTexSubImage1D(target, level, xoffset, width, format, type, util.toPointer(pixels));
 }
 
 export function glTexSubImage2D(
@@ -5152,7 +5308,7 @@ export function glTexSubImage2D(
   type: number /* u32 */,
   pixels: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): void /* void */ {
-  return libOPENGL32.glTexSubImage2D(target, level, xoffset, yoffset, width, height, format, type, util.toPointer(pixels));
+  return libOPENGL32_dll.glTexSubImage2D(target, level, xoffset, yoffset, width, height, format, type, util.toPointer(pixels));
 }
 
 export function glTranslated(
@@ -5160,7 +5316,7 @@ export function glTranslated(
   y: number /* f64 */,
   z: number /* f64 */,
 ): void /* void */ {
-  return libOPENGL32.glTranslated(x, y, z);
+  return libOPENGL32_dll.glTranslated(x, y, z);
 }
 
 export function glTranslatef(
@@ -5168,59 +5324,59 @@ export function glTranslatef(
   y: number /* f32 */,
   z: number /* f32 */,
 ): void /* void */ {
-  return libOPENGL32.glTranslatef(x, y, z);
+  return libOPENGL32_dll.glTranslatef(x, y, z);
 }
 
 export function glVertex2d(
   x: number /* f64 */,
   y: number /* f64 */,
 ): void /* void */ {
-  return libOPENGL32.glVertex2d(x, y);
+  return libOPENGL32_dll.glVertex2d(x, y);
 }
 
 export function glVertex2dv(
   v: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): void /* void */ {
-  return libOPENGL32.glVertex2dv(util.toPointer(v));
+  return libOPENGL32_dll.glVertex2dv(util.toPointer(v));
 }
 
 export function glVertex2f(
   x: number /* f32 */,
   y: number /* f32 */,
 ): void /* void */ {
-  return libOPENGL32.glVertex2f(x, y);
+  return libOPENGL32_dll.glVertex2f(x, y);
 }
 
 export function glVertex2fv(
   v: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): void /* void */ {
-  return libOPENGL32.glVertex2fv(util.toPointer(v));
+  return libOPENGL32_dll.glVertex2fv(util.toPointer(v));
 }
 
 export function glVertex2i(
   x: number /* i32 */,
   y: number /* i32 */,
 ): void /* void */ {
-  return libOPENGL32.glVertex2i(x, y);
+  return libOPENGL32_dll.glVertex2i(x, y);
 }
 
 export function glVertex2iv(
   v: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): void /* void */ {
-  return libOPENGL32.glVertex2iv(util.toPointer(v));
+  return libOPENGL32_dll.glVertex2iv(util.toPointer(v));
 }
 
 export function glVertex2s(
   x: number /* i16 */,
   y: number /* i16 */,
 ): void /* void */ {
-  return libOPENGL32.glVertex2s(x, y);
+  return libOPENGL32_dll.glVertex2s(x, y);
 }
 
 export function glVertex2sv(
   v: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): void /* void */ {
-  return libOPENGL32.glVertex2sv(util.toPointer(v));
+  return libOPENGL32_dll.glVertex2sv(util.toPointer(v));
 }
 
 export function glVertex3d(
@@ -5228,13 +5384,13 @@ export function glVertex3d(
   y: number /* f64 */,
   z: number /* f64 */,
 ): void /* void */ {
-  return libOPENGL32.glVertex3d(x, y, z);
+  return libOPENGL32_dll.glVertex3d(x, y, z);
 }
 
 export function glVertex3dv(
   v: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): void /* void */ {
-  return libOPENGL32.glVertex3dv(util.toPointer(v));
+  return libOPENGL32_dll.glVertex3dv(util.toPointer(v));
 }
 
 export function glVertex3f(
@@ -5242,13 +5398,13 @@ export function glVertex3f(
   y: number /* f32 */,
   z: number /* f32 */,
 ): void /* void */ {
-  return libOPENGL32.glVertex3f(x, y, z);
+  return libOPENGL32_dll.glVertex3f(x, y, z);
 }
 
 export function glVertex3fv(
   v: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): void /* void */ {
-  return libOPENGL32.glVertex3fv(util.toPointer(v));
+  return libOPENGL32_dll.glVertex3fv(util.toPointer(v));
 }
 
 export function glVertex3i(
@@ -5256,13 +5412,13 @@ export function glVertex3i(
   y: number /* i32 */,
   z: number /* i32 */,
 ): void /* void */ {
-  return libOPENGL32.glVertex3i(x, y, z);
+  return libOPENGL32_dll.glVertex3i(x, y, z);
 }
 
 export function glVertex3iv(
   v: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): void /* void */ {
-  return libOPENGL32.glVertex3iv(util.toPointer(v));
+  return libOPENGL32_dll.glVertex3iv(util.toPointer(v));
 }
 
 export function glVertex3s(
@@ -5270,13 +5426,13 @@ export function glVertex3s(
   y: number /* i16 */,
   z: number /* i16 */,
 ): void /* void */ {
-  return libOPENGL32.glVertex3s(x, y, z);
+  return libOPENGL32_dll.glVertex3s(x, y, z);
 }
 
 export function glVertex3sv(
   v: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): void /* void */ {
-  return libOPENGL32.glVertex3sv(util.toPointer(v));
+  return libOPENGL32_dll.glVertex3sv(util.toPointer(v));
 }
 
 export function glVertex4d(
@@ -5285,13 +5441,13 @@ export function glVertex4d(
   z: number /* f64 */,
   w: number /* f64 */,
 ): void /* void */ {
-  return libOPENGL32.glVertex4d(x, y, z, w);
+  return libOPENGL32_dll.glVertex4d(x, y, z, w);
 }
 
 export function glVertex4dv(
   v: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): void /* void */ {
-  return libOPENGL32.glVertex4dv(util.toPointer(v));
+  return libOPENGL32_dll.glVertex4dv(util.toPointer(v));
 }
 
 export function glVertex4f(
@@ -5300,13 +5456,13 @@ export function glVertex4f(
   z: number /* f32 */,
   w: number /* f32 */,
 ): void /* void */ {
-  return libOPENGL32.glVertex4f(x, y, z, w);
+  return libOPENGL32_dll.glVertex4f(x, y, z, w);
 }
 
 export function glVertex4fv(
   v: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): void /* void */ {
-  return libOPENGL32.glVertex4fv(util.toPointer(v));
+  return libOPENGL32_dll.glVertex4fv(util.toPointer(v));
 }
 
 export function glVertex4i(
@@ -5315,13 +5471,13 @@ export function glVertex4i(
   z: number /* i32 */,
   w: number /* i32 */,
 ): void /* void */ {
-  return libOPENGL32.glVertex4i(x, y, z, w);
+  return libOPENGL32_dll.glVertex4i(x, y, z, w);
 }
 
 export function glVertex4iv(
   v: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): void /* void */ {
-  return libOPENGL32.glVertex4iv(util.toPointer(v));
+  return libOPENGL32_dll.glVertex4iv(util.toPointer(v));
 }
 
 export function glVertex4s(
@@ -5330,13 +5486,13 @@ export function glVertex4s(
   z: number /* i16 */,
   w: number /* i16 */,
 ): void /* void */ {
-  return libOPENGL32.glVertex4s(x, y, z, w);
+  return libOPENGL32_dll.glVertex4s(x, y, z, w);
 }
 
 export function glVertex4sv(
   v: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): void /* void */ {
-  return libOPENGL32.glVertex4sv(util.toPointer(v));
+  return libOPENGL32_dll.glVertex4sv(util.toPointer(v));
 }
 
 export function glVertexPointer(
@@ -5345,7 +5501,7 @@ export function glVertexPointer(
   stride: number /* i32 */,
   pointer: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): void /* void */ {
-  return libOPENGL32.glVertexPointer(size, type, stride, util.toPointer(pointer));
+  return libOPENGL32_dll.glVertexPointer(size, type, stride, util.toPointer(pointer));
 }
 
 export function glViewport(
@@ -5354,25 +5510,25 @@ export function glViewport(
   width: number /* i32 */,
   height: number /* i32 */,
 ): void /* void */ {
-  return libOPENGL32.glViewport(x, y, width, height);
+  return libOPENGL32_dll.glViewport(x, y, width, height);
 }
 
 export function gluErrorString(
   errCode: number /* u32 */,
 ): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libGLU32.gluErrorString(errCode));
+  return util.pointerFromFfi(libGLU32_dll.gluErrorString(errCode));
 }
 
 export function gluErrorUnicodeStringEXT(
   errCode: number /* u32 */,
 ): string | null /* Windows.Win32.Foundation.PWSTR */ {
-  return util.pwstrFromFfi(libGLU32.gluErrorUnicodeStringEXT(errCode));
+  return util.pwstrFromFfi(libGLU32_dll.gluErrorUnicodeStringEXT(errCode));
 }
 
 export function gluGetString(
   name: number /* u32 */,
 ): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libGLU32.gluGetString(name));
+  return util.pointerFromFfi(libGLU32_dll.gluGetString(name));
 }
 
 export function gluOrtho2D(
@@ -5381,7 +5537,7 @@ export function gluOrtho2D(
   bottom: number /* f64 */,
   top: number /* f64 */,
 ): void /* void */ {
-  return libGLU32.gluOrtho2D(left, right, bottom, top);
+  return libGLU32_dll.gluOrtho2D(left, right, bottom, top);
 }
 
 export function gluPerspective(
@@ -5390,7 +5546,7 @@ export function gluPerspective(
   zNear: number /* f64 */,
   zFar: number /* f64 */,
 ): void /* void */ {
-  return libGLU32.gluPerspective(fovy, aspect, zNear, zFar);
+  return libGLU32_dll.gluPerspective(fovy, aspect, zNear, zFar);
 }
 
 export function gluPickMatrix(
@@ -5400,7 +5556,7 @@ export function gluPickMatrix(
   height: number /* f64 */,
   viewport: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): void /* void */ {
-  return libGLU32.gluPickMatrix(x, y, width, height, util.toPointer(viewport));
+  return libGLU32_dll.gluPickMatrix(x, y, width, height, util.toPointer(viewport));
 }
 
 export function gluLookAt(
@@ -5414,7 +5570,7 @@ export function gluLookAt(
   upy: number /* f64 */,
   upz: number /* f64 */,
 ): void /* void */ {
-  return libGLU32.gluLookAt(eyex, eyey, eyez, centerx, centery, centerz, upx, upy, upz);
+  return libGLU32_dll.gluLookAt(eyex, eyey, eyez, centerx, centery, centerz, upx, upy, upz);
 }
 
 export function gluProject(
@@ -5428,7 +5584,7 @@ export function gluProject(
   winy: Deno.PointerValue | Uint8Array | null /* ptr */,
   winz: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
-  return libGLU32.gluProject(objx, objy, objz, util.toPointer(modelMatrix), util.toPointer(projMatrix), util.toPointer(viewport), util.toPointer(winx), util.toPointer(winy), util.toPointer(winz));
+  return libGLU32_dll.gluProject(objx, objy, objz, util.toPointer(modelMatrix), util.toPointer(projMatrix), util.toPointer(viewport), util.toPointer(winx), util.toPointer(winy), util.toPointer(winz));
 }
 
 export function gluUnProject(
@@ -5442,7 +5598,7 @@ export function gluUnProject(
   objy: Deno.PointerValue | Uint8Array | null /* ptr */,
   objz: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
-  return libGLU32.gluUnProject(winx, winy, winz, util.toPointer(modelMatrix), util.toPointer(projMatrix), util.toPointer(viewport), util.toPointer(objx), util.toPointer(objy), util.toPointer(objz));
+  return libGLU32_dll.gluUnProject(winx, winy, winz, util.toPointer(modelMatrix), util.toPointer(projMatrix), util.toPointer(viewport), util.toPointer(objx), util.toPointer(objy), util.toPointer(objz));
 }
 
 export function gluScaleImage(
@@ -5456,7 +5612,7 @@ export function gluScaleImage(
   typeout: number /* u32 */,
   dataout: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
-  return libGLU32.gluScaleImage(format, widthin, heightin, typein, util.toPointer(datain), widthout, heightout, typeout, util.toPointer(dataout));
+  return libGLU32_dll.gluScaleImage(format, widthin, heightin, typein, util.toPointer(datain), widthout, heightout, typeout, util.toPointer(dataout));
 }
 
 export function gluBuild1DMipmaps(
@@ -5467,7 +5623,7 @@ export function gluBuild1DMipmaps(
   type: number /* u32 */,
   data: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
-  return libGLU32.gluBuild1DMipmaps(target, components, width, format, type, util.toPointer(data));
+  return libGLU32_dll.gluBuild1DMipmaps(target, components, width, format, type, util.toPointer(data));
 }
 
 export function gluBuild2DMipmaps(
@@ -5479,45 +5635,45 @@ export function gluBuild2DMipmaps(
   type: number /* u32 */,
   data: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
-  return libGLU32.gluBuild2DMipmaps(target, components, width, height, format, type, util.toPointer(data));
+  return libGLU32_dll.gluBuild2DMipmaps(target, components, width, height, format, type, util.toPointer(data));
 }
 
 export function gluNewQuadric(): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libGLU32.gluNewQuadric());
+  return util.pointerFromFfi(libGLU32_dll.gluNewQuadric());
 }
 
 export function gluDeleteQuadric(
   state: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): void /* void */ {
-  return libGLU32.gluDeleteQuadric(util.toPointer(state));
+  return libGLU32_dll.gluDeleteQuadric(util.toPointer(state));
 }
 
 export function gluQuadricNormals(
   quadObject: Deno.PointerValue | Uint8Array | null /* ptr */,
   normals: number /* u32 */,
 ): void /* void */ {
-  return libGLU32.gluQuadricNormals(util.toPointer(quadObject), normals);
+  return libGLU32_dll.gluQuadricNormals(util.toPointer(quadObject), normals);
 }
 
 export function gluQuadricTexture(
   quadObject: Deno.PointerValue | Uint8Array | null /* ptr */,
   textureCoords: number /* u8 */,
 ): void /* void */ {
-  return libGLU32.gluQuadricTexture(util.toPointer(quadObject), textureCoords);
+  return libGLU32_dll.gluQuadricTexture(util.toPointer(quadObject), textureCoords);
 }
 
 export function gluQuadricOrientation(
   quadObject: Deno.PointerValue | Uint8Array | null /* ptr */,
   orientation: number /* u32 */,
 ): void /* void */ {
-  return libGLU32.gluQuadricOrientation(util.toPointer(quadObject), orientation);
+  return libGLU32_dll.gluQuadricOrientation(util.toPointer(quadObject), orientation);
 }
 
 export function gluQuadricDrawStyle(
   quadObject: Deno.PointerValue | Uint8Array | null /* ptr */,
   drawStyle: number /* u32 */,
 ): void /* void */ {
-  return libGLU32.gluQuadricDrawStyle(util.toPointer(quadObject), drawStyle);
+  return libGLU32_dll.gluQuadricDrawStyle(util.toPointer(quadObject), drawStyle);
 }
 
 export function gluCylinder(
@@ -5528,7 +5684,7 @@ export function gluCylinder(
   slices: number /* i32 */,
   stacks: number /* i32 */,
 ): void /* void */ {
-  return libGLU32.gluCylinder(util.toPointer(qobj), baseRadius, topRadius, height, slices, stacks);
+  return libGLU32_dll.gluCylinder(util.toPointer(qobj), baseRadius, topRadius, height, slices, stacks);
 }
 
 export function gluDisk(
@@ -5538,7 +5694,7 @@ export function gluDisk(
   slices: number /* i32 */,
   loops: number /* i32 */,
 ): void /* void */ {
-  return libGLU32.gluDisk(util.toPointer(qobj), innerRadius, outerRadius, slices, loops);
+  return libGLU32_dll.gluDisk(util.toPointer(qobj), innerRadius, outerRadius, slices, loops);
 }
 
 export function gluPartialDisk(
@@ -5550,7 +5706,7 @@ export function gluPartialDisk(
   startAngle: number /* f64 */,
   sweepAngle: number /* f64 */,
 ): void /* void */ {
-  return libGLU32.gluPartialDisk(util.toPointer(qobj), innerRadius, outerRadius, slices, loops, startAngle, sweepAngle);
+  return libGLU32_dll.gluPartialDisk(util.toPointer(qobj), innerRadius, outerRadius, slices, loops, startAngle, sweepAngle);
 }
 
 export function gluSphere(
@@ -5559,7 +5715,7 @@ export function gluSphere(
   slices: number /* i32 */,
   stacks: number /* i32 */,
 ): void /* void */ {
-  return libGLU32.gluSphere(util.toPointer(qobj), radius, slices, stacks);
+  return libGLU32_dll.gluSphere(util.toPointer(qobj), radius, slices, stacks);
 }
 
 export function gluQuadricCallback(
@@ -5567,30 +5723,30 @@ export function gluQuadricCallback(
   which: number /* u32 */,
   fn: Deno.PointerValue /* isize */,
 ): void /* void */ {
-  return libGLU32.gluQuadricCallback(util.toPointer(qobj), which, fn);
+  return libGLU32_dll.gluQuadricCallback(util.toPointer(qobj), which, fn);
 }
 
 export function gluNewTess(): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libGLU32.gluNewTess());
+  return util.pointerFromFfi(libGLU32_dll.gluNewTess());
 }
 
 export function gluDeleteTess(
   tess: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): void /* void */ {
-  return libGLU32.gluDeleteTess(util.toPointer(tess));
+  return libGLU32_dll.gluDeleteTess(util.toPointer(tess));
 }
 
 export function gluTessBeginPolygon(
   tess: Deno.PointerValue | Uint8Array | null /* ptr */,
   polygon_data: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): void /* void */ {
-  return libGLU32.gluTessBeginPolygon(util.toPointer(tess), util.toPointer(polygon_data));
+  return libGLU32_dll.gluTessBeginPolygon(util.toPointer(tess), util.toPointer(polygon_data));
 }
 
 export function gluTessBeginContour(
   tess: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): void /* void */ {
-  return libGLU32.gluTessBeginContour(util.toPointer(tess));
+  return libGLU32_dll.gluTessBeginContour(util.toPointer(tess));
 }
 
 export function gluTessVertex(
@@ -5598,19 +5754,19 @@ export function gluTessVertex(
   coords: Deno.PointerValue | Uint8Array | null /* ptr */,
   data: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): void /* void */ {
-  return libGLU32.gluTessVertex(util.toPointer(tess), util.toPointer(coords), util.toPointer(data));
+  return libGLU32_dll.gluTessVertex(util.toPointer(tess), util.toPointer(coords), util.toPointer(data));
 }
 
 export function gluTessEndContour(
   tess: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): void /* void */ {
-  return libGLU32.gluTessEndContour(util.toPointer(tess));
+  return libGLU32_dll.gluTessEndContour(util.toPointer(tess));
 }
 
 export function gluTessEndPolygon(
   tess: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): void /* void */ {
-  return libGLU32.gluTessEndPolygon(util.toPointer(tess));
+  return libGLU32_dll.gluTessEndPolygon(util.toPointer(tess));
 }
 
 export function gluTessProperty(
@@ -5618,7 +5774,7 @@ export function gluTessProperty(
   which: number /* u32 */,
   value: number /* f64 */,
 ): void /* void */ {
-  return libGLU32.gluTessProperty(util.toPointer(tess), which, value);
+  return libGLU32_dll.gluTessProperty(util.toPointer(tess), which, value);
 }
 
 export function gluTessNormal(
@@ -5627,7 +5783,7 @@ export function gluTessNormal(
   y: number /* f64 */,
   z: number /* f64 */,
 ): void /* void */ {
-  return libGLU32.gluTessNormal(util.toPointer(tess), x, y, z);
+  return libGLU32_dll.gluTessNormal(util.toPointer(tess), x, y, z);
 }
 
 export function gluTessCallback(
@@ -5635,7 +5791,7 @@ export function gluTessCallback(
   which: number /* u32 */,
   fn: Deno.PointerValue /* isize */,
 ): void /* void */ {
-  return libGLU32.gluTessCallback(util.toPointer(tess), which, fn);
+  return libGLU32_dll.gluTessCallback(util.toPointer(tess), which, fn);
 }
 
 export function gluGetTessProperty(
@@ -5643,53 +5799,53 @@ export function gluGetTessProperty(
   which: number /* u32 */,
   value: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): void /* void */ {
-  return libGLU32.gluGetTessProperty(util.toPointer(tess), which, util.toPointer(value));
+  return libGLU32_dll.gluGetTessProperty(util.toPointer(tess), which, util.toPointer(value));
 }
 
 export function gluNewNurbsRenderer(): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libGLU32.gluNewNurbsRenderer());
+  return util.pointerFromFfi(libGLU32_dll.gluNewNurbsRenderer());
 }
 
 export function gluDeleteNurbsRenderer(
   nobj: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): void /* void */ {
-  return libGLU32.gluDeleteNurbsRenderer(util.toPointer(nobj));
+  return libGLU32_dll.gluDeleteNurbsRenderer(util.toPointer(nobj));
 }
 
 export function gluBeginSurface(
   nobj: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): void /* void */ {
-  return libGLU32.gluBeginSurface(util.toPointer(nobj));
+  return libGLU32_dll.gluBeginSurface(util.toPointer(nobj));
 }
 
 export function gluBeginCurve(
   nobj: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): void /* void */ {
-  return libGLU32.gluBeginCurve(util.toPointer(nobj));
+  return libGLU32_dll.gluBeginCurve(util.toPointer(nobj));
 }
 
 export function gluEndCurve(
   nobj: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): void /* void */ {
-  return libGLU32.gluEndCurve(util.toPointer(nobj));
+  return libGLU32_dll.gluEndCurve(util.toPointer(nobj));
 }
 
 export function gluEndSurface(
   nobj: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): void /* void */ {
-  return libGLU32.gluEndSurface(util.toPointer(nobj));
+  return libGLU32_dll.gluEndSurface(util.toPointer(nobj));
 }
 
 export function gluBeginTrim(
   nobj: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): void /* void */ {
-  return libGLU32.gluBeginTrim(util.toPointer(nobj));
+  return libGLU32_dll.gluBeginTrim(util.toPointer(nobj));
 }
 
 export function gluEndTrim(
   nobj: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): void /* void */ {
-  return libGLU32.gluEndTrim(util.toPointer(nobj));
+  return libGLU32_dll.gluEndTrim(util.toPointer(nobj));
 }
 
 export function gluPwlCurve(
@@ -5699,7 +5855,7 @@ export function gluPwlCurve(
   stride: number /* i32 */,
   type: number /* u32 */,
 ): void /* void */ {
-  return libGLU32.gluPwlCurve(util.toPointer(nobj), count, util.toPointer(array), stride, type);
+  return libGLU32_dll.gluPwlCurve(util.toPointer(nobj), count, util.toPointer(array), stride, type);
 }
 
 export function gluNurbsCurve(
@@ -5711,7 +5867,7 @@ export function gluNurbsCurve(
   order: number /* i32 */,
   type: number /* u32 */,
 ): void /* void */ {
-  return libGLU32.gluNurbsCurve(util.toPointer(nobj), nknots, util.toPointer(knot), stride, util.toPointer(ctlarray), order, type);
+  return libGLU32_dll.gluNurbsCurve(util.toPointer(nobj), nknots, util.toPointer(knot), stride, util.toPointer(ctlarray), order, type);
 }
 
 export function gluNurbsSurface(
@@ -5727,7 +5883,7 @@ export function gluNurbsSurface(
   torder: number /* i32 */,
   type: number /* u32 */,
 ): void /* void */ {
-  return libGLU32.gluNurbsSurface(util.toPointer(nobj), sknot_count, util.toPointer(sknot), tknot_count, util.toPointer(tknot), s_stride, t_stride, util.toPointer(ctlarray), sorder, torder, type);
+  return libGLU32_dll.gluNurbsSurface(util.toPointer(nobj), sknot_count, util.toPointer(sknot), tknot_count, util.toPointer(tknot), s_stride, t_stride, util.toPointer(ctlarray), sorder, torder, type);
 }
 
 export function gluLoadSamplingMatrices(
@@ -5736,7 +5892,7 @@ export function gluLoadSamplingMatrices(
   projMatrix: Deno.PointerValue | Uint8Array | null /* ptr */,
   viewport: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): void /* void */ {
-  return libGLU32.gluLoadSamplingMatrices(util.toPointer(nobj), util.toPointer(modelMatrix), util.toPointer(projMatrix), util.toPointer(viewport));
+  return libGLU32_dll.gluLoadSamplingMatrices(util.toPointer(nobj), util.toPointer(modelMatrix), util.toPointer(projMatrix), util.toPointer(viewport));
 }
 
 export function gluNurbsProperty(
@@ -5744,7 +5900,7 @@ export function gluNurbsProperty(
   property: number /* u32 */,
   value: number /* f32 */,
 ): void /* void */ {
-  return libGLU32.gluNurbsProperty(util.toPointer(nobj), property, value);
+  return libGLU32_dll.gluNurbsProperty(util.toPointer(nobj), property, value);
 }
 
 export function gluGetNurbsProperty(
@@ -5752,7 +5908,7 @@ export function gluGetNurbsProperty(
   property: number /* u32 */,
   value: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): void /* void */ {
-  return libGLU32.gluGetNurbsProperty(util.toPointer(nobj), property, util.toPointer(value));
+  return libGLU32_dll.gluGetNurbsProperty(util.toPointer(nobj), property, util.toPointer(value));
 }
 
 export function gluNurbsCallback(
@@ -5760,25 +5916,25 @@ export function gluNurbsCallback(
   which: number /* u32 */,
   fn: Deno.PointerValue /* isize */,
 ): void /* void */ {
-  return libGLU32.gluNurbsCallback(util.toPointer(nobj), which, fn);
+  return libGLU32_dll.gluNurbsCallback(util.toPointer(nobj), which, fn);
 }
 
 export function gluBeginPolygon(
   tess: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): void /* void */ {
-  return libGLU32.gluBeginPolygon(util.toPointer(tess));
+  return libGLU32_dll.gluBeginPolygon(util.toPointer(tess));
 }
 
 export function gluNextContour(
   tess: Deno.PointerValue | Uint8Array | null /* ptr */,
   type: number /* u32 */,
 ): void /* void */ {
-  return libGLU32.gluNextContour(util.toPointer(tess), type);
+  return libGLU32_dll.gluNextContour(util.toPointer(tess), type);
 }
 
 export function gluEndPolygon(
   tess: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): void /* void */ {
-  return libGLU32.gluEndPolygon(util.toPointer(tess));
+  return libGLU32_dll.gluEndPolygon(util.toPointer(tess));
 }
 

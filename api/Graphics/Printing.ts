@@ -17,9 +17,9 @@ export type EPrintPropertyType = number;
 export type EPrintXPSJobProgress = number;
 export type EPrintXPSJobOperation = number;
 export type PRINT_EXECUTION_CONTEXT = number;
-export type MxdcLandscapeRotationEnums = number;
-export type MxdcImageTypeEnums = number;
-export type MxdcS0PageEnums = number;
+export type MXDC_LANDSCAPE_ROTATION_ENUMS = number;
+export type MXDC_IMAGE_TYPE_ENUMS = number;
+export type MXDC_S0_PAGE_ENUMS = number;
 export type EATTRIBUTE_DATATYPE = number;
 export type SHIMOPTS = number;
 export type PrintSchemaConstrainedSetting = number;
@@ -29,6 +29,16 @@ export type PrintJobStatus = number;
 export type PrintAsyncNotifyUserFilter = number;
 export type PrintAsyncNotifyConversationStyle = number;
 export type PrintAsyncNotifyError = number;
+export type PAN_FAMILY_TYPE = number;
+export type PAN_SERIF_STYLE = number;
+export type PAN_WEIGHT = number;
+export type PAN_PROPORTION = number;
+export type PAN_CONTRAST = number;
+export type PAN_STROKE_VARIATION = number;
+export type PAN_ARM_STYLE = number;
+export type PAN_LETT_FORM = number;
+export type PAN_MIDLINE = number;
+export type PAN_XHEIGHT = number;
 export type EBranchOfficeJobEventType = number;
 export type NOTIFICATION_CALLBACK_COMMANDS = number;
 export type NOTIFICATION_CONFIG_FLAGS = number;
@@ -639,6 +649,23 @@ export const IDS_CPSUI_BOOKLET_EDGE_RIGHT = 64890;
 export const IDS_CPSUI_NUP_BORDER = 64891;
 export const IDS_CPSUI_NUP_BORDERED = 64892;
 export const IDS_CPSUI_STRID_LAST = 64892;
+export const XPS_FP_PRINTER_NAME = "PrinterName";
+export const XPS_FP_PROGRESS_REPORT = "ProgressReport";
+export const XPS_FP_PRINTER_HANDLE = "PrinterHandle";
+export const XPS_FP_USER_PRINT_TICKET = "PerUserPrintTicket";
+export const XPS_FP_USER_TOKEN = "UserSecurityToken";
+export const XPS_FP_JOB_ID = "PrintJobId";
+export const XPS_FP_PRINT_CLASS_FACTORY = "PrintClassFactory";
+export const XPS_FP_OUTPUT_FILE = "PrintOutputFileName";
+export const XPS_FP_MS_CONTENT_TYPE = "DriverMultiContentType";
+export const XPS_FP_MS_CONTENT_TYPE_XPS = "XPS";
+export const XPS_FP_MS_CONTENT_TYPE_OPENXPS = "OpenXPS";
+export const XPS_FP_DRIVER_PROPERTY_BAG = "DriverPropertyBag";
+export const XPS_FP_QUEUE_PROPERTY_BAG = "QueuePropertyBag";
+export const XPS_FP_MERGED_DATAFILE_PATH = "MergedDataFilePath";
+export const XPS_FP_RESOURCE_DLL_PATHS = "ResourceDLLPaths";
+export const XPS_FP_JOB_LEVEL_PRINTTICKET = "JobPrintTicket";
+export const XPS_FP_PRINTDEVICECAPABILITIES = "PrintDeviceCapabilities";
 export const MXDC_ESCAPE = 4122;
 export const MXDCOP_GET_FILENAME = 14;
 export const MXDCOP_PRINTTICKET_FIXED_DOC_SEQ = 22;
@@ -888,6 +915,7 @@ export const QCP_DEVICEPROFILE = 0;
 export const QCP_SOURCEPROFILE = 1;
 export const QCP_PROFILEMEMORY = 1;
 export const QCP_PROFILEDISK = 2;
+export const SPLPRINTER_USER_MODE_PRINTER_DRIVER = "SPLUserModePrinterDriver";
 export const EMF_PP_COLOR_OPTIMIZATION = 1;
 export const PRINTER_NOTIFY_STATUS_ENDPOINT = 1;
 export const PRINTER_NOTIFY_STATUS_POLL = 2;
@@ -1136,6 +1164,11 @@ export const PRINTER_NOTIFY_CATEGORY_ALL = 4096;
 export const PRINTER_NOTIFY_CATEGORY_3D = 8192;
 export const PRINTER_NOTIFY_OPTIONS_REFRESH = 1;
 export const PRINTER_NOTIFY_INFO_DISCARDED = 1;
+export const BIDI_ACTION_ENUM_SCHEMA = "EnumSchema";
+export const BIDI_ACTION_GET = "Get";
+export const BIDI_ACTION_SET = "Set";
+export const BIDI_ACTION_GET_ALL = "GetAll";
+export const BIDI_ACTION_GET_WITH_ARGUMENT = "GetWithArgument";
 export const BIDI_ACCESS_ADMINISTRATOR = 1;
 export const BIDI_ACCESS_USER = 2;
 export const ERROR_BIDI_STATUS_OK = 0;
@@ -1192,14 +1225,98 @@ export const PRINTER_ERROR_SEVERE = 536870912;
 export const PRINTER_ERROR_OUTOFPAPER = 1;
 export const PRINTER_ERROR_JAM = 2;
 export const PRINTER_ERROR_OUTOFTONER = 4;
+export const SPLREG_DEFAULT_SPOOL_DIRECTORY = "DefaultSpoolDirectory";
+export const SPLREG_PORT_THREAD_PRIORITY_DEFAULT = "PortThreadPriorityDefault";
+export const SPLREG_PORT_THREAD_PRIORITY = "PortThreadPriority";
+export const SPLREG_SCHEDULER_THREAD_PRIORITY_DEFAULT = "SchedulerThreadPriorityDefault";
+export const SPLREG_SCHEDULER_THREAD_PRIORITY = "SchedulerThreadPriority";
+export const SPLREG_BEEP_ENABLED = "BeepEnabled";
+export const SPLREG_NET_POPUP = "NetPopup";
+export const SPLREG_RETRY_POPUP = "RetryPopup";
+export const SPLREG_NET_POPUP_TO_COMPUTER = "NetPopupToComputer";
+export const SPLREG_EVENT_LOG = "EventLog";
+export const SPLREG_MAJOR_VERSION = "MajorVersion";
+export const SPLREG_MINOR_VERSION = "MinorVersion";
+export const SPLREG_ARCHITECTURE = "Architecture";
+export const SPLREG_OS_VERSION = "OSVersion";
+export const SPLREG_OS_VERSIONEX = "OSVersionEx";
+export const SPLREG_DS_PRESENT = "DsPresent";
+export const SPLREG_DS_PRESENT_FOR_USER = "DsPresentForUser";
+export const SPLREG_REMOTE_FAX = "RemoteFax";
+export const SPLREG_RESTART_JOB_ON_POOL_ERROR = "RestartJobOnPoolError";
+export const SPLREG_RESTART_JOB_ON_POOL_ENABLED = "RestartJobOnPoolEnabled";
+export const SPLREG_DNS_MACHINE_NAME = "DNSMachineName";
+export const SPLREG_ALLOW_USER_MANAGEFORMS = "AllowUserManageForms";
+export const SPLREG_WEBSHAREMGMT = "WebShareMgmt";
+export const SPLREG_PRINT_DRIVER_ISOLATION_GROUPS = "PrintDriverIsolationGroups";
+export const SPLREG_PRINT_DRIVER_ISOLATION_TIME_BEFORE_RECYCLE = "PrintDriverIsolationTimeBeforeRecycle";
+export const SPLREG_PRINT_DRIVER_ISOLATION_MAX_OBJECTS_BEFORE_RECYCLE = "PrintDriverIsolationMaxobjsBeforeRecycle";
+export const SPLREG_PRINT_DRIVER_ISOLATION_IDLE_TIMEOUT = "PrintDriverIsolationIdleTimeout";
+export const SPLREG_PRINT_DRIVER_ISOLATION_EXECUTION_POLICY = "PrintDriverIsolationExecutionPolicy";
+export const SPLREG_PRINT_DRIVER_ISOLATION_OVERRIDE_POLICY = "PrintDriverIsolationOverrideCompat";
+export const SPLREG_PRINT_QUEUE_V4_DRIVER_DIRECTORY = "PrintQueueV4DriverDirectory";
 export const JOB_ACCESS_ADMINISTER = 16;
 export const JOB_ACCESS_READ = 32;
+export const SPLDS_SPOOLER_KEY = "DsSpooler";
+export const SPLDS_DRIVER_KEY = "DsDriver";
+export const SPLDS_USER_KEY = "DsUser";
+export const SPLDS_ASSET_NUMBER = "assetNumber";
+export const SPLDS_BYTES_PER_MINUTE = "bytesPerMinute";
+export const SPLDS_DESCRIPTION = "description";
+export const SPLDS_DRIVER_NAME = "driverName";
+export const SPLDS_DRIVER_VERSION = "driverVersion";
+export const SPLDS_LOCATION = "location";
+export const SPLDS_PORT_NAME = "portName";
+export const SPLDS_PRINT_ATTRIBUTES = "printAttributes";
+export const SPLDS_PRINT_BIN_NAMES = "printBinNames";
+export const SPLDS_PRINT_COLLATE = "printCollate";
+export const SPLDS_PRINT_COLOR = "printColor";
+export const SPLDS_PRINT_DUPLEX_SUPPORTED = "printDuplexSupported";
+export const SPLDS_PRINT_END_TIME = "printEndTime";
+export const SPLDS_PRINTER_CLASS = "printQueue";
+export const SPLDS_PRINTER_NAME = "printerName";
+export const SPLDS_PRINT_KEEP_PRINTED_JOBS = "printKeepPrintedJobs";
+export const SPLDS_PRINT_LANGUAGE = "printLanguage";
+export const SPLDS_PRINT_MAC_ADDRESS = "printMACAddress";
+export const SPLDS_PRINT_MAX_X_EXTENT = "printMaxXExtent";
+export const SPLDS_PRINT_MAX_Y_EXTENT = "printMaxYExtent";
+export const SPLDS_PRINT_MAX_RESOLUTION_SUPPORTED = "printMaxResolutionSupported";
+export const SPLDS_PRINT_MEDIA_READY = "printMediaReady";
+export const SPLDS_PRINT_MEDIA_SUPPORTED = "printMediaSupported";
+export const SPLDS_PRINT_MEMORY = "printMemory";
+export const SPLDS_PRINT_MIN_X_EXTENT = "printMinXExtent";
+export const SPLDS_PRINT_MIN_Y_EXTENT = "printMinYExtent";
+export const SPLDS_PRINT_NETWORK_ADDRESS = "printNetworkAddress";
+export const SPLDS_PRINT_NOTIFY = "printNotify";
+export const SPLDS_PRINT_NUMBER_UP = "printNumberUp";
+export const SPLDS_PRINT_ORIENTATIONS_SUPPORTED = "printOrientationsSupported";
+export const SPLDS_PRINT_OWNER = "printOwner";
+export const SPLDS_PRINT_PAGES_PER_MINUTE = "printPagesPerMinute";
+export const SPLDS_PRINT_RATE = "printRate";
+export const SPLDS_PRINT_RATE_UNIT = "printRateUnit";
+export const SPLDS_PRINT_SEPARATOR_FILE = "printSeparatorFile";
+export const SPLDS_PRINT_SHARE_NAME = "printShareName";
+export const SPLDS_PRINT_SPOOLING = "printSpooling";
+export const SPLDS_PRINT_STAPLING_SUPPORTED = "printStaplingSupported";
+export const SPLDS_PRINT_START_TIME = "printStartTime";
+export const SPLDS_PRINT_STATUS = "printStatus";
+export const SPLDS_PRIORITY = "priority";
+export const SPLDS_SERVER_NAME = "serverName";
+export const SPLDS_SHORT_SERVER_NAME = "shortServerName";
+export const SPLDS_UNC_NAME = "uNCName";
+export const SPLDS_URL = "url";
+export const SPLDS_FLAGS = "flags";
+export const SPLDS_VERSION_NUMBER = "versionNumber";
+export const SPLDS_PRINTER_NAME_ALIASES = "printerNameAliases";
+export const SPLDS_PRINTER_LOCATIONS = "printerLocations";
+export const SPLDS_PRINTER_MODEL = "printerModel";
 export const PRINTER_CONNECTION_MISMATCH = 32;
 export const PRINTER_CONNECTION_NO_UI = 64;
 export const IPDFP_COPY_ALL_FILES = 1;
 export const UPDP_SILENT_UPLOAD = 1;
 export const UPDP_UPLOAD_ALWAYS = 2;
 export const UPDP_CHECK_DRIVERSTORE = 4;
+export const MS_PRINT_JOB_OUTPUT_FILE = "MsPrintJobOutputFile";
 export const DISPID_PRINTSCHEMA_ELEMENT = 10000;
 export const DISPID_PRINTSCHEMA_ELEMENT_XMLNODE = 10001;
 export const DISPID_PRINTSCHEMA_ELEMENT_NAME = 10002;
@@ -1481,6 +1598,123 @@ export const MAX_REGISTRATION_COUNT_EXCEEDED = 21;
 export const MAX_CHANNEL_COUNT_EXCEEDED = 22;
 export const LOCAL_ONLY_REGISTRATION = 23;
 export const REMOTE_ONLY_REGISTRATION = 24;
+export const PAN_FAMILY_ANY = 0;
+export const PAN_FAMILY_NO_FIT = 1;
+export const PAN_FAMILY_TEXT_DISPLAY = 2;
+export const PAN_FAMILY_SCRIPT = 3;
+export const PAN_FAMILY_DECORATIVE = 4;
+export const PAN_FAMILY_PICTORIAL = 5;
+export const PAN_SERIF_ANY = 0;
+export const PAN_SERIF_NO_FIT = 1;
+export const PAN_SERIF_COVE = 2;
+export const PAN_SERIF_OBTUSE_COVE = 3;
+export const PAN_SERIF_SQUARE_COVE = 4;
+export const PAN_SERIF_OBTUSE_SQUARE_COVE = 5;
+export const PAN_SERIF_SQUARE = 6;
+export const PAN_SERIF_THIN = 7;
+export const PAN_SERIF_BONE = 8;
+export const PAN_SERIF_EXAGGERATED = 9;
+export const PAN_SERIF_TRIANGLE = 10;
+export const PAN_SERIF_NORMAL_SANS = 11;
+export const PAN_SERIF_OBTUSE_SANS = 12;
+export const PAN_SERIF_PERP_SANS = 13;
+export const PAN_SERIF_FLARED = 14;
+export const PAN_SERIF_ROUNDED = 15;
+export const PAN_WEIGHT_ANY = 0;
+export const PAN_WEIGHT_NO_FIT = 1;
+export const PAN_WEIGHT_INDEX = 2;
+export const PAN_WEIGHT_VERY_LIGHT = 2;
+export const PAN_WEIGHT_LIGHT = 3;
+export const PAN_WEIGHT_THIN = 4;
+export const PAN_WEIGHT_BOOK = 5;
+export const PAN_WEIGHT_MEDIUM = 6;
+export const PAN_WEIGHT_DEMI = 7;
+export const PAN_WEIGHT_BOLD = 8;
+export const PAN_WEIGHT_HEAVY = 9;
+export const PAN_WEIGHT_BLACK = 10;
+export const PAN_WEIGHT_NORD = 11;
+export const PAN_PROP_ANY = 0;
+export const PAN_PROP_NO_FIT = 1;
+export const PAN_PROP_OLD_STYLE = 2;
+export const PAN_PROP_MODERN = 3;
+export const PAN_PROP_EVEN_WIDTH = 4;
+export const PAN_PROP_EXPANDED = 5;
+export const PAN_PROP_CONDENSED = 6;
+export const PAN_PROP_VERY_EXPANDED = 7;
+export const PAN_PROP_VERY_CONDENSED = 8;
+export const PAN_PROP_MONOSPACED = 9;
+export const PAN_CONTRAST_ANY = 0;
+export const PAN_CONTRAST_NO_FIT = 1;
+export const PAN_CONTRAST_INDEX = 4;
+export const PAN_CONTRAST_NONE = 2;
+export const PAN_CONTRAST_VERY_LOW = 3;
+export const PAN_CONTRAST_LOW = 4;
+export const PAN_CONTRAST_MEDIUM_LOW = 5;
+export const PAN_CONTRAST_MEDIUM = 6;
+export const PAN_CONTRAST_MEDIUM_HIGH = 7;
+export const PAN_CONTRAST_HIGH = 8;
+export const PAN_CONTRAST_VERY_HIGH = 9;
+export const PAN_STROKE_ANY = 0;
+export const PAN_STROKE_NO_FIT = 1;
+export const PAN_STROKE_GRADUAL_DIAG = 2;
+export const PAN_STROKE_GRADUAL_TRAN = 3;
+export const PAN_STROKE_GRADUAL_VERT = 4;
+export const PAN_STROKE_GRADUAL_HORZ = 5;
+export const PAN_STROKE_RAPID_VERT = 6;
+export const PAN_STROKE_RAPID_HORZ = 7;
+export const PAN_STROKE_INSTANT_VERT = 8;
+export const PAN_ARM_ANY = 0;
+export const PAN_ARM_NO_FIT = 1;
+export const PAN_STRAIGHT_ARMS_HORZ = 2;
+export const PAN_STRAIGHT_ARMS_WEDGE = 3;
+export const PAN_STRAIGHT_ARMS_VERT = 4;
+export const PAN_STRAIGHT_ARMS_SINGLE_SERIF = 5;
+export const PAN_STRAIGHT_ARMS_DOUBLE_SERIF = 6;
+export const PAN_BENT_ARMS_HORZ = 7;
+export const PAN_BENT_ARMS_WEDGE = 8;
+export const PAN_BENT_ARMS_VERT = 9;
+export const PAN_BENT_ARMS_SINGLE_SERIF = 10;
+export const PAN_BENT_ARMS_DOUBLE_SERIF = 11;
+export const PAN_LETT_FORM_ANY = 0;
+export const PAN_LETT_FORM_NO_FIT = 1;
+export const PAN_LETT_NORMAL_CONTACT = 2;
+export const PAN_LETT_NORMAL_WEIGHTED = 3;
+export const PAN_LETT_NORMAL_BOXED = 4;
+export const PAN_LETT_NORMAL_FLATTENED = 5;
+export const PAN_LETT_NORMAL_ROUNDED = 6;
+export const PAN_LETT_NORMAL_OFF_CENTER = 7;
+export const PAN_LETT_NORMAL_SQUARE = 8;
+export const PAN_LETT_OBLIQUE_CONTACT = 9;
+export const PAN_LETT_OBLIQUE_WEIGHTED = 10;
+export const PAN_LETT_OBLIQUE_BOXED = 11;
+export const PAN_LETT_OBLIQUE_FLATTENED = 12;
+export const PAN_LETT_OBLIQUE_ROUNDED = 13;
+export const PAN_LETT_OBLIQUE_OFF_CENTER = 14;
+export const PAN_LETT_OBLIQUE_SQUARE = 15;
+export const PAN_MIDLINE_ANY = 0;
+export const PAN_MIDLINE_NO_FIT = 1;
+export const PAN_MIDLINE_INDEX = 8;
+export const PAN_MIDLINE_STANDARD_TRIMMED = 2;
+export const PAN_MIDLINE_STANDARD_POINTED = 3;
+export const PAN_MIDLINE_STANDARD_SERIFED = 4;
+export const PAN_MIDLINE_HIGH_TRIMMED = 5;
+export const PAN_MIDLINE_HIGH_POINTED = 6;
+export const PAN_MIDLINE_HIGH_SERIFED = 7;
+export const PAN_MIDLINE_CONSTANT_TRIMMED = 8;
+export const PAN_MIDLINE_CONSTANT_POINTED = 9;
+export const PAN_MIDLINE_CONSTANT_SERIFED = 10;
+export const PAN_MIDLINE_LOW_TRIMMED = 11;
+export const PAN_MIDLINE_LOW_POINTED = 12;
+export const PAN_MIDLINE_LOW_SERIFED = 13;
+export const PAN_XHEIGHT_ANY = 0;
+export const PAN_XHEIGHT_NO_FIT = 1;
+export const PAN_XHEIGHT_INDEX = 9;
+export const PAN_XHEIGHT_CONSTANT_SMALL = 2;
+export const PAN_XHEIGHT_CONSTANT_STD = 3;
+export const PAN_XHEIGHT_CONSTANT_LARGE = 4;
+export const PAN_XHEIGHT_DUCKING_SMALL = 5;
+export const PAN_XHEIGHT_DUCKING_STD = 6;
+export const PAN_XHEIGHT_DUCKING_LARGE = 7;
 export const kInvalidJobState = 0;
 export const kLogJobPrinted = 1;
 export const kLogJobRendered = 2;
@@ -1508,251 +1742,29 @@ export const IntermediatePageCount = 1;
 // Structs
 
 /**
- * Windows.Win32.Graphics.Printing.IBidiRequestVtbl (size: 64)
+ * Windows.Win32.Graphics.Printing.SPLCLIENT_INFO_2_WINXP (size: 8)
  */
-export interface IBidiRequestVtbl {
-  /** isize */
-  QueryInterface: Deno.PointerValue;
-  /** isize */
-  AddRef: Deno.PointerValue;
-  /** isize */
-  Release: Deno.PointerValue;
-  /** isize */
-  SetSchema: Deno.PointerValue;
-  /** isize */
-  SetInputData: Deno.PointerValue;
-  /** isize */
-  GetResult: Deno.PointerValue;
-  /** isize */
-  GetOutputData: Deno.PointerValue;
-  /** isize */
-  GetEnumCount: Deno.PointerValue;
+export interface SPLCLIENT_INFO_2_WINXP {
+  /** u64 */
+  hSplPrinter: Deno.PointerValue;
 }
 
-export const sizeofIBidiRequestVtbl = 64;
+export const sizeofSPLCLIENT_INFO_2_WINXP = 8;
 
-export function allocIBidiRequestVtbl(data?: Partial<IBidiRequestVtbl>): Uint8Array {
-  const buf = new Uint8Array(sizeofIBidiRequestVtbl);
+export function allocSPLCLIENT_INFO_2_WINXP(data?: Partial<SPLCLIENT_INFO_2_WINXP>): Uint8Array {
+  const buf = new Uint8Array(sizeofSPLCLIENT_INFO_2_WINXP);
   const view = new DataView(buf.buffer);
-  // 0x00: isize
-  if (data?.QueryInterface !== undefined) view.setBigInt64(0, BigInt(data.QueryInterface), true);
-  // 0x08: isize
-  if (data?.AddRef !== undefined) view.setBigInt64(8, BigInt(data.AddRef), true);
-  // 0x10: isize
-  if (data?.Release !== undefined) view.setBigInt64(16, BigInt(data.Release), true);
-  // 0x18: isize
-  if (data?.SetSchema !== undefined) view.setBigInt64(24, BigInt(data.SetSchema), true);
-  // 0x20: isize
-  if (data?.SetInputData !== undefined) view.setBigInt64(32, BigInt(data.SetInputData), true);
-  // 0x28: isize
-  if (data?.GetResult !== undefined) view.setBigInt64(40, BigInt(data.GetResult), true);
-  // 0x30: isize
-  if (data?.GetOutputData !== undefined) view.setBigInt64(48, BigInt(data.GetOutputData), true);
-  // 0x38: isize
-  if (data?.GetEnumCount !== undefined) view.setBigInt64(56, BigInt(data.GetEnumCount), true);
-  return buf;
-}
-
-/**
- * Windows.Win32.Graphics.Printing.IBidiRequest (size: 8)
- */
-export interface IBidiRequest {
-  /** ptr */
-  lpVtbl: Deno.PointerValue | Uint8Array | null;
-}
-
-export const sizeofIBidiRequest = 8;
-
-export function allocIBidiRequest(data?: Partial<IBidiRequest>): Uint8Array {
-  const buf = new Uint8Array(sizeofIBidiRequest);
-  const view = new DataView(buf.buffer);
-  // 0x00: pointer
-  if (data?.lpVtbl !== undefined) view.setBigUint64(0, data.lpVtbl === null ? 0n : BigInt(util.toPointer(data.lpVtbl)), true);
-  return buf;
-}
-
-/**
- * Windows.Win32.Graphics.Printing.IBidiRequestContainerVtbl (size: 48)
- */
-export interface IBidiRequestContainerVtbl {
-  /** isize */
-  QueryInterface: Deno.PointerValue;
-  /** isize */
-  AddRef: Deno.PointerValue;
-  /** isize */
-  Release: Deno.PointerValue;
-  /** isize */
-  AddRequest: Deno.PointerValue;
-  /** isize */
-  GetEnumObject: Deno.PointerValue;
-  /** isize */
-  GetRequestCount: Deno.PointerValue;
-}
-
-export const sizeofIBidiRequestContainerVtbl = 48;
-
-export function allocIBidiRequestContainerVtbl(data?: Partial<IBidiRequestContainerVtbl>): Uint8Array {
-  const buf = new Uint8Array(sizeofIBidiRequestContainerVtbl);
-  const view = new DataView(buf.buffer);
-  // 0x00: isize
-  if (data?.QueryInterface !== undefined) view.setBigInt64(0, BigInt(data.QueryInterface), true);
-  // 0x08: isize
-  if (data?.AddRef !== undefined) view.setBigInt64(8, BigInt(data.AddRef), true);
-  // 0x10: isize
-  if (data?.Release !== undefined) view.setBigInt64(16, BigInt(data.Release), true);
-  // 0x18: isize
-  if (data?.AddRequest !== undefined) view.setBigInt64(24, BigInt(data.AddRequest), true);
-  // 0x20: isize
-  if (data?.GetEnumObject !== undefined) view.setBigInt64(32, BigInt(data.GetEnumObject), true);
-  // 0x28: isize
-  if (data?.GetRequestCount !== undefined) view.setBigInt64(40, BigInt(data.GetRequestCount), true);
-  return buf;
-}
-
-/**
- * Windows.Win32.Graphics.Printing.IBidiRequestContainer (size: 8)
- */
-export interface IBidiRequestContainer {
-  /** ptr */
-  lpVtbl: Deno.PointerValue | Uint8Array | null;
-}
-
-export const sizeofIBidiRequestContainer = 8;
-
-export function allocIBidiRequestContainer(data?: Partial<IBidiRequestContainer>): Uint8Array {
-  const buf = new Uint8Array(sizeofIBidiRequestContainer);
-  const view = new DataView(buf.buffer);
-  // 0x00: pointer
-  if (data?.lpVtbl !== undefined) view.setBigUint64(0, data.lpVtbl === null ? 0n : BigInt(util.toPointer(data.lpVtbl)), true);
-  return buf;
-}
-
-/**
- * Windows.Win32.Graphics.Printing.IBidiSplVtbl (size: 56)
- */
-export interface IBidiSplVtbl {
-  /** isize */
-  QueryInterface: Deno.PointerValue;
-  /** isize */
-  AddRef: Deno.PointerValue;
-  /** isize */
-  Release: Deno.PointerValue;
-  /** isize */
-  BindDevice: Deno.PointerValue;
-  /** isize */
-  UnbindDevice: Deno.PointerValue;
-  /** isize */
-  SendRecv: Deno.PointerValue;
-  /** isize */
-  MultiSendRecv: Deno.PointerValue;
-}
-
-export const sizeofIBidiSplVtbl = 56;
-
-export function allocIBidiSplVtbl(data?: Partial<IBidiSplVtbl>): Uint8Array {
-  const buf = new Uint8Array(sizeofIBidiSplVtbl);
-  const view = new DataView(buf.buffer);
-  // 0x00: isize
-  if (data?.QueryInterface !== undefined) view.setBigInt64(0, BigInt(data.QueryInterface), true);
-  // 0x08: isize
-  if (data?.AddRef !== undefined) view.setBigInt64(8, BigInt(data.AddRef), true);
-  // 0x10: isize
-  if (data?.Release !== undefined) view.setBigInt64(16, BigInt(data.Release), true);
-  // 0x18: isize
-  if (data?.BindDevice !== undefined) view.setBigInt64(24, BigInt(data.BindDevice), true);
-  // 0x20: isize
-  if (data?.UnbindDevice !== undefined) view.setBigInt64(32, BigInt(data.UnbindDevice), true);
-  // 0x28: isize
-  if (data?.SendRecv !== undefined) view.setBigInt64(40, BigInt(data.SendRecv), true);
-  // 0x30: isize
-  if (data?.MultiSendRecv !== undefined) view.setBigInt64(48, BigInt(data.MultiSendRecv), true);
-  return buf;
-}
-
-/**
- * Windows.Win32.Graphics.Printing.IBidiSpl (size: 8)
- */
-export interface IBidiSpl {
-  /** ptr */
-  lpVtbl: Deno.PointerValue | Uint8Array | null;
-}
-
-export const sizeofIBidiSpl = 8;
-
-export function allocIBidiSpl(data?: Partial<IBidiSpl>): Uint8Array {
-  const buf = new Uint8Array(sizeofIBidiSpl);
-  const view = new DataView(buf.buffer);
-  // 0x00: pointer
-  if (data?.lpVtbl !== undefined) view.setBigUint64(0, data.lpVtbl === null ? 0n : BigInt(util.toPointer(data.lpVtbl)), true);
-  return buf;
-}
-
-/**
- * Windows.Win32.Graphics.Printing.IBidiSpl2Vtbl (size: 56)
- */
-export interface IBidiSpl2Vtbl {
-  /** isize */
-  QueryInterface: Deno.PointerValue;
-  /** isize */
-  AddRef: Deno.PointerValue;
-  /** isize */
-  Release: Deno.PointerValue;
-  /** isize */
-  BindDevice: Deno.PointerValue;
-  /** isize */
-  UnbindDevice: Deno.PointerValue;
-  /** isize */
-  SendRecvXMLString: Deno.PointerValue;
-  /** isize */
-  SendRecvXMLStream: Deno.PointerValue;
-}
-
-export const sizeofIBidiSpl2Vtbl = 56;
-
-export function allocIBidiSpl2Vtbl(data?: Partial<IBidiSpl2Vtbl>): Uint8Array {
-  const buf = new Uint8Array(sizeofIBidiSpl2Vtbl);
-  const view = new DataView(buf.buffer);
-  // 0x00: isize
-  if (data?.QueryInterface !== undefined) view.setBigInt64(0, BigInt(data.QueryInterface), true);
-  // 0x08: isize
-  if (data?.AddRef !== undefined) view.setBigInt64(8, BigInt(data.AddRef), true);
-  // 0x10: isize
-  if (data?.Release !== undefined) view.setBigInt64(16, BigInt(data.Release), true);
-  // 0x18: isize
-  if (data?.BindDevice !== undefined) view.setBigInt64(24, BigInt(data.BindDevice), true);
-  // 0x20: isize
-  if (data?.UnbindDevice !== undefined) view.setBigInt64(32, BigInt(data.UnbindDevice), true);
-  // 0x28: isize
-  if (data?.SendRecvXMLString !== undefined) view.setBigInt64(40, BigInt(data.SendRecvXMLString), true);
-  // 0x30: isize
-  if (data?.SendRecvXMLStream !== undefined) view.setBigInt64(48, BigInt(data.SendRecvXMLStream), true);
-  return buf;
-}
-
-/**
- * Windows.Win32.Graphics.Printing.IBidiSpl2 (size: 8)
- */
-export interface IBidiSpl2 {
-  /** ptr */
-  lpVtbl: Deno.PointerValue | Uint8Array | null;
-}
-
-export const sizeofIBidiSpl2 = 8;
-
-export function allocIBidiSpl2(data?: Partial<IBidiSpl2>): Uint8Array {
-  const buf = new Uint8Array(sizeofIBidiSpl2);
-  const view = new DataView(buf.buffer);
-  // 0x00: pointer
-  if (data?.lpVtbl !== undefined) view.setBigUint64(0, data.lpVtbl === null ? 0n : BigInt(util.toPointer(data.lpVtbl)), true);
+  // 0x00: u64
+  if (data?.hSplPrinter !== undefined) view.setBigUint64(0, BigInt(data.hSplPrinter), true);
   return buf;
 }
 
 export type BSTR = Deno.PointerValue | Uint8Array | null;
 
 /**
- * Windows.Win32.Graphics.Printing.__MIDL___MIDL_itf_imgerror_0000_0000_0001 (size: 88)
+ * Windows.Win32.Graphics.Printing.ImgErrorInfo (size: 88)
  */
-export interface __MIDL___MIDL_itf_imgerror_0000_0000_0001 {
+export interface ImgErrorInfo {
   /** Windows.Win32.Foundation.BSTR */
   description: Uint8Array | Deno.PointerValue | null;
   /** System.Guid */
@@ -1777,10 +1789,10 @@ export interface __MIDL___MIDL_itf_imgerror_0000_0000_0001 {
   exceptionID: number;
 }
 
-export const sizeof__MIDL___MIDL_itf_imgerror_0000_0000_0001 = 88;
+export const sizeofImgErrorInfo = 88;
 
-export function alloc__MIDL___MIDL_itf_imgerror_0000_0000_0001(data?: Partial<__MIDL___MIDL_itf_imgerror_0000_0000_0001>): Uint8Array {
-  const buf = new Uint8Array(sizeof__MIDL___MIDL_itf_imgerror_0000_0000_0001);
+export function allocImgErrorInfo(data?: Partial<ImgErrorInfo>): Uint8Array {
+  const buf = new Uint8Array(sizeofImgErrorInfo);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
   if (data?.description !== undefined) view.setBigUint64(0, data.description === null ? 0n : BigInt(util.toPointer(data.description)), true);
@@ -1807,1682 +1819,6 @@ export function alloc__MIDL___MIDL_itf_imgerror_0000_0000_0001(data?: Partial<__
   // 0x50: u32
   if (data?.exceptionID !== undefined) view.setUint32(80, Number(data.exceptionID), true);
   // 0x54: pad4
-  return buf;
-}
-
-/**
- * Windows.Win32.Graphics.Printing.IImgErrorInfoVtbl (size: 120)
- */
-export interface IImgErrorInfoVtbl {
-  /** isize */
-  QueryInterface: Deno.PointerValue;
-  /** isize */
-  AddRef: Deno.PointerValue;
-  /** isize */
-  Release: Deno.PointerValue;
-  /** isize */
-  GetGUID: Deno.PointerValue;
-  /** isize */
-  GetSource: Deno.PointerValue;
-  /** isize */
-  GetDescription: Deno.PointerValue;
-  /** isize */
-  GetHelpFile: Deno.PointerValue;
-  /** isize */
-  GetHelpContext: Deno.PointerValue;
-  /** isize */
-  GetDeveloperDescription: Deno.PointerValue;
-  /** isize */
-  GetUserErrorId: Deno.PointerValue;
-  /** isize */
-  GetUserParameterCount: Deno.PointerValue;
-  /** isize */
-  GetUserParameter: Deno.PointerValue;
-  /** isize */
-  GetUserFallback: Deno.PointerValue;
-  /** isize */
-  GetExceptionId: Deno.PointerValue;
-  /** isize */
-  DetachErrorInfo: Deno.PointerValue;
-}
-
-export const sizeofIImgErrorInfoVtbl = 120;
-
-export function allocIImgErrorInfoVtbl(data?: Partial<IImgErrorInfoVtbl>): Uint8Array {
-  const buf = new Uint8Array(sizeofIImgErrorInfoVtbl);
-  const view = new DataView(buf.buffer);
-  // 0x00: isize
-  if (data?.QueryInterface !== undefined) view.setBigInt64(0, BigInt(data.QueryInterface), true);
-  // 0x08: isize
-  if (data?.AddRef !== undefined) view.setBigInt64(8, BigInt(data.AddRef), true);
-  // 0x10: isize
-  if (data?.Release !== undefined) view.setBigInt64(16, BigInt(data.Release), true);
-  // 0x18: isize
-  if (data?.GetGUID !== undefined) view.setBigInt64(24, BigInt(data.GetGUID), true);
-  // 0x20: isize
-  if (data?.GetSource !== undefined) view.setBigInt64(32, BigInt(data.GetSource), true);
-  // 0x28: isize
-  if (data?.GetDescription !== undefined) view.setBigInt64(40, BigInt(data.GetDescription), true);
-  // 0x30: isize
-  if (data?.GetHelpFile !== undefined) view.setBigInt64(48, BigInt(data.GetHelpFile), true);
-  // 0x38: isize
-  if (data?.GetHelpContext !== undefined) view.setBigInt64(56, BigInt(data.GetHelpContext), true);
-  // 0x40: isize
-  if (data?.GetDeveloperDescription !== undefined) view.setBigInt64(64, BigInt(data.GetDeveloperDescription), true);
-  // 0x48: isize
-  if (data?.GetUserErrorId !== undefined) view.setBigInt64(72, BigInt(data.GetUserErrorId), true);
-  // 0x50: isize
-  if (data?.GetUserParameterCount !== undefined) view.setBigInt64(80, BigInt(data.GetUserParameterCount), true);
-  // 0x58: isize
-  if (data?.GetUserParameter !== undefined) view.setBigInt64(88, BigInt(data.GetUserParameter), true);
-  // 0x60: isize
-  if (data?.GetUserFallback !== undefined) view.setBigInt64(96, BigInt(data.GetUserFallback), true);
-  // 0x68: isize
-  if (data?.GetExceptionId !== undefined) view.setBigInt64(104, BigInt(data.GetExceptionId), true);
-  // 0x70: isize
-  if (data?.DetachErrorInfo !== undefined) view.setBigInt64(112, BigInt(data.DetachErrorInfo), true);
-  return buf;
-}
-
-/**
- * Windows.Win32.Graphics.Printing.IImgErrorInfo (size: 8)
- */
-export interface IImgErrorInfo {
-  /** ptr */
-  lpVtbl: Deno.PointerValue | Uint8Array | null;
-}
-
-export const sizeofIImgErrorInfo = 8;
-
-export function allocIImgErrorInfo(data?: Partial<IImgErrorInfo>): Uint8Array {
-  const buf = new Uint8Array(sizeofIImgErrorInfo);
-  const view = new DataView(buf.buffer);
-  // 0x00: pointer
-  if (data?.lpVtbl !== undefined) view.setBigUint64(0, data.lpVtbl === null ? 0n : BigInt(util.toPointer(data.lpVtbl)), true);
-  return buf;
-}
-
-/**
- * Windows.Win32.Graphics.Printing.IImgCreateErrorInfoVtbl (size: 72)
- */
-export interface IImgCreateErrorInfoVtbl {
-  /** isize */
-  QueryInterface: Deno.PointerValue;
-  /** isize */
-  AddRef: Deno.PointerValue;
-  /** isize */
-  Release: Deno.PointerValue;
-  /** isize */
-  SetGUID: Deno.PointerValue;
-  /** isize */
-  SetSource: Deno.PointerValue;
-  /** isize */
-  SetDescription: Deno.PointerValue;
-  /** isize */
-  SetHelpFile: Deno.PointerValue;
-  /** isize */
-  SetHelpContext: Deno.PointerValue;
-  /** isize */
-  AttachToErrorInfo: Deno.PointerValue;
-}
-
-export const sizeofIImgCreateErrorInfoVtbl = 72;
-
-export function allocIImgCreateErrorInfoVtbl(data?: Partial<IImgCreateErrorInfoVtbl>): Uint8Array {
-  const buf = new Uint8Array(sizeofIImgCreateErrorInfoVtbl);
-  const view = new DataView(buf.buffer);
-  // 0x00: isize
-  if (data?.QueryInterface !== undefined) view.setBigInt64(0, BigInt(data.QueryInterface), true);
-  // 0x08: isize
-  if (data?.AddRef !== undefined) view.setBigInt64(8, BigInt(data.AddRef), true);
-  // 0x10: isize
-  if (data?.Release !== undefined) view.setBigInt64(16, BigInt(data.Release), true);
-  // 0x18: isize
-  if (data?.SetGUID !== undefined) view.setBigInt64(24, BigInt(data.SetGUID), true);
-  // 0x20: isize
-  if (data?.SetSource !== undefined) view.setBigInt64(32, BigInt(data.SetSource), true);
-  // 0x28: isize
-  if (data?.SetDescription !== undefined) view.setBigInt64(40, BigInt(data.SetDescription), true);
-  // 0x30: isize
-  if (data?.SetHelpFile !== undefined) view.setBigInt64(48, BigInt(data.SetHelpFile), true);
-  // 0x38: isize
-  if (data?.SetHelpContext !== undefined) view.setBigInt64(56, BigInt(data.SetHelpContext), true);
-  // 0x40: isize
-  if (data?.AttachToErrorInfo !== undefined) view.setBigInt64(64, BigInt(data.AttachToErrorInfo), true);
-  return buf;
-}
-
-/**
- * Windows.Win32.Graphics.Printing.IImgCreateErrorInfo (size: 8)
- */
-export interface IImgCreateErrorInfo {
-  /** ptr */
-  lpVtbl: Deno.PointerValue | Uint8Array | null;
-}
-
-export const sizeofIImgCreateErrorInfo = 8;
-
-export function allocIImgCreateErrorInfo(data?: Partial<IImgCreateErrorInfo>): Uint8Array {
-  const buf = new Uint8Array(sizeofIImgCreateErrorInfo);
-  const view = new DataView(buf.buffer);
-  // 0x00: pointer
-  if (data?.lpVtbl !== undefined) view.setBigUint64(0, data.lpVtbl === null ? 0n : BigInt(util.toPointer(data.lpVtbl)), true);
-  return buf;
-}
-
-/**
- * Windows.Win32.Graphics.Printing.IPrintReadStreamVtbl (size: 40)
- */
-export interface IPrintReadStreamVtbl {
-  /** isize */
-  QueryInterface: Deno.PointerValue;
-  /** isize */
-  AddRef: Deno.PointerValue;
-  /** isize */
-  Release: Deno.PointerValue;
-  /** isize */
-  Seek: Deno.PointerValue;
-  /** isize */
-  ReadBytes: Deno.PointerValue;
-}
-
-export const sizeofIPrintReadStreamVtbl = 40;
-
-export function allocIPrintReadStreamVtbl(data?: Partial<IPrintReadStreamVtbl>): Uint8Array {
-  const buf = new Uint8Array(sizeofIPrintReadStreamVtbl);
-  const view = new DataView(buf.buffer);
-  // 0x00: isize
-  if (data?.QueryInterface !== undefined) view.setBigInt64(0, BigInt(data.QueryInterface), true);
-  // 0x08: isize
-  if (data?.AddRef !== undefined) view.setBigInt64(8, BigInt(data.AddRef), true);
-  // 0x10: isize
-  if (data?.Release !== undefined) view.setBigInt64(16, BigInt(data.Release), true);
-  // 0x18: isize
-  if (data?.Seek !== undefined) view.setBigInt64(24, BigInt(data.Seek), true);
-  // 0x20: isize
-  if (data?.ReadBytes !== undefined) view.setBigInt64(32, BigInt(data.ReadBytes), true);
-  return buf;
-}
-
-/**
- * Windows.Win32.Graphics.Printing.IPrintReadStream (size: 8)
- */
-export interface IPrintReadStream {
-  /** ptr */
-  lpVtbl: Deno.PointerValue | Uint8Array | null;
-}
-
-export const sizeofIPrintReadStream = 8;
-
-export function allocIPrintReadStream(data?: Partial<IPrintReadStream>): Uint8Array {
-  const buf = new Uint8Array(sizeofIPrintReadStream);
-  const view = new DataView(buf.buffer);
-  // 0x00: pointer
-  if (data?.lpVtbl !== undefined) view.setBigUint64(0, data.lpVtbl === null ? 0n : BigInt(util.toPointer(data.lpVtbl)), true);
-  return buf;
-}
-
-/**
- * Windows.Win32.Graphics.Printing.IPrintWriteStreamVtbl (size: 40)
- */
-export interface IPrintWriteStreamVtbl {
-  /** isize */
-  QueryInterface: Deno.PointerValue;
-  /** isize */
-  AddRef: Deno.PointerValue;
-  /** isize */
-  Release: Deno.PointerValue;
-  /** isize */
-  WriteBytes: Deno.PointerValue;
-  /** isize */
-  Close: Deno.PointerValue;
-}
-
-export const sizeofIPrintWriteStreamVtbl = 40;
-
-export function allocIPrintWriteStreamVtbl(data?: Partial<IPrintWriteStreamVtbl>): Uint8Array {
-  const buf = new Uint8Array(sizeofIPrintWriteStreamVtbl);
-  const view = new DataView(buf.buffer);
-  // 0x00: isize
-  if (data?.QueryInterface !== undefined) view.setBigInt64(0, BigInt(data.QueryInterface), true);
-  // 0x08: isize
-  if (data?.AddRef !== undefined) view.setBigInt64(8, BigInt(data.AddRef), true);
-  // 0x10: isize
-  if (data?.Release !== undefined) view.setBigInt64(16, BigInt(data.Release), true);
-  // 0x18: isize
-  if (data?.WriteBytes !== undefined) view.setBigInt64(24, BigInt(data.WriteBytes), true);
-  // 0x20: isize
-  if (data?.Close !== undefined) view.setBigInt64(32, BigInt(data.Close), true);
-  return buf;
-}
-
-/**
- * Windows.Win32.Graphics.Printing.IPrintWriteStream (size: 8)
- */
-export interface IPrintWriteStream {
-  /** ptr */
-  lpVtbl: Deno.PointerValue | Uint8Array | null;
-}
-
-export const sizeofIPrintWriteStream = 8;
-
-export function allocIPrintWriteStream(data?: Partial<IPrintWriteStream>): Uint8Array {
-  const buf = new Uint8Array(sizeofIPrintWriteStream);
-  const view = new DataView(buf.buffer);
-  // 0x00: pointer
-  if (data?.lpVtbl !== undefined) view.setBigUint64(0, data.lpVtbl === null ? 0n : BigInt(util.toPointer(data.lpVtbl)), true);
-  return buf;
-}
-
-/**
- * Windows.Win32.Graphics.Printing.IPrintWriteStreamFlushVtbl (size: 32)
- */
-export interface IPrintWriteStreamFlushVtbl {
-  /** isize */
-  QueryInterface: Deno.PointerValue;
-  /** isize */
-  AddRef: Deno.PointerValue;
-  /** isize */
-  Release: Deno.PointerValue;
-  /** isize */
-  FlushData: Deno.PointerValue;
-}
-
-export const sizeofIPrintWriteStreamFlushVtbl = 32;
-
-export function allocIPrintWriteStreamFlushVtbl(data?: Partial<IPrintWriteStreamFlushVtbl>): Uint8Array {
-  const buf = new Uint8Array(sizeofIPrintWriteStreamFlushVtbl);
-  const view = new DataView(buf.buffer);
-  // 0x00: isize
-  if (data?.QueryInterface !== undefined) view.setBigInt64(0, BigInt(data.QueryInterface), true);
-  // 0x08: isize
-  if (data?.AddRef !== undefined) view.setBigInt64(8, BigInt(data.AddRef), true);
-  // 0x10: isize
-  if (data?.Release !== undefined) view.setBigInt64(16, BigInt(data.Release), true);
-  // 0x18: isize
-  if (data?.FlushData !== undefined) view.setBigInt64(24, BigInt(data.FlushData), true);
-  return buf;
-}
-
-/**
- * Windows.Win32.Graphics.Printing.IPrintWriteStreamFlush (size: 8)
- */
-export interface IPrintWriteStreamFlush {
-  /** ptr */
-  lpVtbl: Deno.PointerValue | Uint8Array | null;
-}
-
-export const sizeofIPrintWriteStreamFlush = 8;
-
-export function allocIPrintWriteStreamFlush(data?: Partial<IPrintWriteStreamFlush>): Uint8Array {
-  const buf = new Uint8Array(sizeofIPrintWriteStreamFlush);
-  const view = new DataView(buf.buffer);
-  // 0x00: pointer
-  if (data?.lpVtbl !== undefined) view.setBigUint64(0, data.lpVtbl === null ? 0n : BigInt(util.toPointer(data.lpVtbl)), true);
-  return buf;
-}
-
-/**
- * Windows.Win32.Graphics.Printing.IInterFilterCommunicatorVtbl (size: 40)
- */
-export interface IInterFilterCommunicatorVtbl {
-  /** isize */
-  QueryInterface: Deno.PointerValue;
-  /** isize */
-  AddRef: Deno.PointerValue;
-  /** isize */
-  Release: Deno.PointerValue;
-  /** isize */
-  RequestReader: Deno.PointerValue;
-  /** isize */
-  RequestWriter: Deno.PointerValue;
-}
-
-export const sizeofIInterFilterCommunicatorVtbl = 40;
-
-export function allocIInterFilterCommunicatorVtbl(data?: Partial<IInterFilterCommunicatorVtbl>): Uint8Array {
-  const buf = new Uint8Array(sizeofIInterFilterCommunicatorVtbl);
-  const view = new DataView(buf.buffer);
-  // 0x00: isize
-  if (data?.QueryInterface !== undefined) view.setBigInt64(0, BigInt(data.QueryInterface), true);
-  // 0x08: isize
-  if (data?.AddRef !== undefined) view.setBigInt64(8, BigInt(data.AddRef), true);
-  // 0x10: isize
-  if (data?.Release !== undefined) view.setBigInt64(16, BigInt(data.Release), true);
-  // 0x18: isize
-  if (data?.RequestReader !== undefined) view.setBigInt64(24, BigInt(data.RequestReader), true);
-  // 0x20: isize
-  if (data?.RequestWriter !== undefined) view.setBigInt64(32, BigInt(data.RequestWriter), true);
-  return buf;
-}
-
-/**
- * Windows.Win32.Graphics.Printing.IInterFilterCommunicator (size: 8)
- */
-export interface IInterFilterCommunicator {
-  /** ptr */
-  lpVtbl: Deno.PointerValue | Uint8Array | null;
-}
-
-export const sizeofIInterFilterCommunicator = 8;
-
-export function allocIInterFilterCommunicator(data?: Partial<IInterFilterCommunicator>): Uint8Array {
-  const buf = new Uint8Array(sizeofIInterFilterCommunicator);
-  const view = new DataView(buf.buffer);
-  // 0x00: pointer
-  if (data?.lpVtbl !== undefined) view.setBigUint64(0, data.lpVtbl === null ? 0n : BigInt(util.toPointer(data.lpVtbl)), true);
-  return buf;
-}
-
-/**
- * Windows.Win32.Graphics.Printing.IPrintPipelineManagerControlVtbl (size: 40)
- */
-export interface IPrintPipelineManagerControlVtbl {
-  /** isize */
-  QueryInterface: Deno.PointerValue;
-  /** isize */
-  AddRef: Deno.PointerValue;
-  /** isize */
-  Release: Deno.PointerValue;
-  /** isize */
-  RequestShutdown: Deno.PointerValue;
-  /** isize */
-  FilterFinished: Deno.PointerValue;
-}
-
-export const sizeofIPrintPipelineManagerControlVtbl = 40;
-
-export function allocIPrintPipelineManagerControlVtbl(data?: Partial<IPrintPipelineManagerControlVtbl>): Uint8Array {
-  const buf = new Uint8Array(sizeofIPrintPipelineManagerControlVtbl);
-  const view = new DataView(buf.buffer);
-  // 0x00: isize
-  if (data?.QueryInterface !== undefined) view.setBigInt64(0, BigInt(data.QueryInterface), true);
-  // 0x08: isize
-  if (data?.AddRef !== undefined) view.setBigInt64(8, BigInt(data.AddRef), true);
-  // 0x10: isize
-  if (data?.Release !== undefined) view.setBigInt64(16, BigInt(data.Release), true);
-  // 0x18: isize
-  if (data?.RequestShutdown !== undefined) view.setBigInt64(24, BigInt(data.RequestShutdown), true);
-  // 0x20: isize
-  if (data?.FilterFinished !== undefined) view.setBigInt64(32, BigInt(data.FilterFinished), true);
-  return buf;
-}
-
-/**
- * Windows.Win32.Graphics.Printing.IPrintPipelineManagerControl (size: 8)
- */
-export interface IPrintPipelineManagerControl {
-  /** ptr */
-  lpVtbl: Deno.PointerValue | Uint8Array | null;
-}
-
-export const sizeofIPrintPipelineManagerControl = 8;
-
-export function allocIPrintPipelineManagerControl(data?: Partial<IPrintPipelineManagerControl>): Uint8Array {
-  const buf = new Uint8Array(sizeofIPrintPipelineManagerControl);
-  const view = new DataView(buf.buffer);
-  // 0x00: pointer
-  if (data?.lpVtbl !== undefined) view.setBigUint64(0, data.lpVtbl === null ? 0n : BigInt(util.toPointer(data.lpVtbl)), true);
-  return buf;
-}
-
-/**
- * Windows.Win32.Graphics.Printing.IPrintPipelinePropertyBagVtbl (size: 48)
- */
-export interface IPrintPipelinePropertyBagVtbl {
-  /** isize */
-  QueryInterface: Deno.PointerValue;
-  /** isize */
-  AddRef: Deno.PointerValue;
-  /** isize */
-  Release: Deno.PointerValue;
-  /** isize */
-  AddProperty: Deno.PointerValue;
-  /** isize */
-  GetProperty: Deno.PointerValue;
-  /** isize */
-  DeleteProperty: Deno.PointerValue;
-}
-
-export const sizeofIPrintPipelinePropertyBagVtbl = 48;
-
-export function allocIPrintPipelinePropertyBagVtbl(data?: Partial<IPrintPipelinePropertyBagVtbl>): Uint8Array {
-  const buf = new Uint8Array(sizeofIPrintPipelinePropertyBagVtbl);
-  const view = new DataView(buf.buffer);
-  // 0x00: isize
-  if (data?.QueryInterface !== undefined) view.setBigInt64(0, BigInt(data.QueryInterface), true);
-  // 0x08: isize
-  if (data?.AddRef !== undefined) view.setBigInt64(8, BigInt(data.AddRef), true);
-  // 0x10: isize
-  if (data?.Release !== undefined) view.setBigInt64(16, BigInt(data.Release), true);
-  // 0x18: isize
-  if (data?.AddProperty !== undefined) view.setBigInt64(24, BigInt(data.AddProperty), true);
-  // 0x20: isize
-  if (data?.GetProperty !== undefined) view.setBigInt64(32, BigInt(data.GetProperty), true);
-  // 0x28: isize
-  if (data?.DeleteProperty !== undefined) view.setBigInt64(40, BigInt(data.DeleteProperty), true);
-  return buf;
-}
-
-/**
- * Windows.Win32.Graphics.Printing.IPrintPipelinePropertyBag (size: 8)
- */
-export interface IPrintPipelinePropertyBag {
-  /** ptr */
-  lpVtbl: Deno.PointerValue | Uint8Array | null;
-}
-
-export const sizeofIPrintPipelinePropertyBag = 8;
-
-export function allocIPrintPipelinePropertyBag(data?: Partial<IPrintPipelinePropertyBag>): Uint8Array {
-  const buf = new Uint8Array(sizeofIPrintPipelinePropertyBag);
-  const view = new DataView(buf.buffer);
-  // 0x00: pointer
-  if (data?.lpVtbl !== undefined) view.setBigUint64(0, data.lpVtbl === null ? 0n : BigInt(util.toPointer(data.lpVtbl)), true);
-  return buf;
-}
-
-/**
- * Windows.Win32.Graphics.Printing.IPrintPipelineProgressReportVtbl (size: 32)
- */
-export interface IPrintPipelineProgressReportVtbl {
-  /** isize */
-  QueryInterface: Deno.PointerValue;
-  /** isize */
-  AddRef: Deno.PointerValue;
-  /** isize */
-  Release: Deno.PointerValue;
-  /** isize */
-  ReportProgress: Deno.PointerValue;
-}
-
-export const sizeofIPrintPipelineProgressReportVtbl = 32;
-
-export function allocIPrintPipelineProgressReportVtbl(data?: Partial<IPrintPipelineProgressReportVtbl>): Uint8Array {
-  const buf = new Uint8Array(sizeofIPrintPipelineProgressReportVtbl);
-  const view = new DataView(buf.buffer);
-  // 0x00: isize
-  if (data?.QueryInterface !== undefined) view.setBigInt64(0, BigInt(data.QueryInterface), true);
-  // 0x08: isize
-  if (data?.AddRef !== undefined) view.setBigInt64(8, BigInt(data.AddRef), true);
-  // 0x10: isize
-  if (data?.Release !== undefined) view.setBigInt64(16, BigInt(data.Release), true);
-  // 0x18: isize
-  if (data?.ReportProgress !== undefined) view.setBigInt64(24, BigInt(data.ReportProgress), true);
-  return buf;
-}
-
-/**
- * Windows.Win32.Graphics.Printing.IPrintPipelineProgressReport (size: 8)
- */
-export interface IPrintPipelineProgressReport {
-  /** ptr */
-  lpVtbl: Deno.PointerValue | Uint8Array | null;
-}
-
-export const sizeofIPrintPipelineProgressReport = 8;
-
-export function allocIPrintPipelineProgressReport(data?: Partial<IPrintPipelineProgressReport>): Uint8Array {
-  const buf = new Uint8Array(sizeofIPrintPipelineProgressReport);
-  const view = new DataView(buf.buffer);
-  // 0x00: pointer
-  if (data?.lpVtbl !== undefined) view.setBigUint64(0, data.lpVtbl === null ? 0n : BigInt(util.toPointer(data.lpVtbl)), true);
-  return buf;
-}
-
-/**
- * Windows.Win32.Graphics.Printing.IPrintClassObjectFactoryVtbl (size: 32)
- */
-export interface IPrintClassObjectFactoryVtbl {
-  /** isize */
-  QueryInterface: Deno.PointerValue;
-  /** isize */
-  AddRef: Deno.PointerValue;
-  /** isize */
-  Release: Deno.PointerValue;
-  /** isize */
-  GetPrintClassObject: Deno.PointerValue;
-}
-
-export const sizeofIPrintClassObjectFactoryVtbl = 32;
-
-export function allocIPrintClassObjectFactoryVtbl(data?: Partial<IPrintClassObjectFactoryVtbl>): Uint8Array {
-  const buf = new Uint8Array(sizeofIPrintClassObjectFactoryVtbl);
-  const view = new DataView(buf.buffer);
-  // 0x00: isize
-  if (data?.QueryInterface !== undefined) view.setBigInt64(0, BigInt(data.QueryInterface), true);
-  // 0x08: isize
-  if (data?.AddRef !== undefined) view.setBigInt64(8, BigInt(data.AddRef), true);
-  // 0x10: isize
-  if (data?.Release !== undefined) view.setBigInt64(16, BigInt(data.Release), true);
-  // 0x18: isize
-  if (data?.GetPrintClassObject !== undefined) view.setBigInt64(24, BigInt(data.GetPrintClassObject), true);
-  return buf;
-}
-
-/**
- * Windows.Win32.Graphics.Printing.IPrintClassObjectFactory (size: 8)
- */
-export interface IPrintClassObjectFactory {
-  /** ptr */
-  lpVtbl: Deno.PointerValue | Uint8Array | null;
-}
-
-export const sizeofIPrintClassObjectFactory = 8;
-
-export function allocIPrintClassObjectFactory(data?: Partial<IPrintClassObjectFactory>): Uint8Array {
-  const buf = new Uint8Array(sizeofIPrintClassObjectFactory);
-  const view = new DataView(buf.buffer);
-  // 0x00: pointer
-  if (data?.lpVtbl !== undefined) view.setBigUint64(0, data.lpVtbl === null ? 0n : BigInt(util.toPointer(data.lpVtbl)), true);
-  return buf;
-}
-
-/**
- * Windows.Win32.Graphics.Printing.IPrintPipelineFilterVtbl (size: 48)
- */
-export interface IPrintPipelineFilterVtbl {
-  /** isize */
-  QueryInterface: Deno.PointerValue;
-  /** isize */
-  AddRef: Deno.PointerValue;
-  /** isize */
-  Release: Deno.PointerValue;
-  /** isize */
-  InitializeFilter: Deno.PointerValue;
-  /** isize */
-  ShutdownOperation: Deno.PointerValue;
-  /** isize */
-  StartOperation: Deno.PointerValue;
-}
-
-export const sizeofIPrintPipelineFilterVtbl = 48;
-
-export function allocIPrintPipelineFilterVtbl(data?: Partial<IPrintPipelineFilterVtbl>): Uint8Array {
-  const buf = new Uint8Array(sizeofIPrintPipelineFilterVtbl);
-  const view = new DataView(buf.buffer);
-  // 0x00: isize
-  if (data?.QueryInterface !== undefined) view.setBigInt64(0, BigInt(data.QueryInterface), true);
-  // 0x08: isize
-  if (data?.AddRef !== undefined) view.setBigInt64(8, BigInt(data.AddRef), true);
-  // 0x10: isize
-  if (data?.Release !== undefined) view.setBigInt64(16, BigInt(data.Release), true);
-  // 0x18: isize
-  if (data?.InitializeFilter !== undefined) view.setBigInt64(24, BigInt(data.InitializeFilter), true);
-  // 0x20: isize
-  if (data?.ShutdownOperation !== undefined) view.setBigInt64(32, BigInt(data.ShutdownOperation), true);
-  // 0x28: isize
-  if (data?.StartOperation !== undefined) view.setBigInt64(40, BigInt(data.StartOperation), true);
-  return buf;
-}
-
-/**
- * Windows.Win32.Graphics.Printing.IPrintPipelineFilter (size: 8)
- */
-export interface IPrintPipelineFilter {
-  /** ptr */
-  lpVtbl: Deno.PointerValue | Uint8Array | null;
-}
-
-export const sizeofIPrintPipelineFilter = 8;
-
-export function allocIPrintPipelineFilter(data?: Partial<IPrintPipelineFilter>): Uint8Array {
-  const buf = new Uint8Array(sizeofIPrintPipelineFilter);
-  const view = new DataView(buf.buffer);
-  // 0x00: pointer
-  if (data?.lpVtbl !== undefined) view.setBigUint64(0, data.lpVtbl === null ? 0n : BigInt(util.toPointer(data.lpVtbl)), true);
-  return buf;
-}
-
-/**
- * Windows.Win32.Graphics.Printing.IXpsDocumentProviderVtbl (size: 32)
- */
-export interface IXpsDocumentProviderVtbl {
-  /** isize */
-  QueryInterface: Deno.PointerValue;
-  /** isize */
-  AddRef: Deno.PointerValue;
-  /** isize */
-  Release: Deno.PointerValue;
-  /** isize */
-  GetXpsPart: Deno.PointerValue;
-}
-
-export const sizeofIXpsDocumentProviderVtbl = 32;
-
-export function allocIXpsDocumentProviderVtbl(data?: Partial<IXpsDocumentProviderVtbl>): Uint8Array {
-  const buf = new Uint8Array(sizeofIXpsDocumentProviderVtbl);
-  const view = new DataView(buf.buffer);
-  // 0x00: isize
-  if (data?.QueryInterface !== undefined) view.setBigInt64(0, BigInt(data.QueryInterface), true);
-  // 0x08: isize
-  if (data?.AddRef !== undefined) view.setBigInt64(8, BigInt(data.AddRef), true);
-  // 0x10: isize
-  if (data?.Release !== undefined) view.setBigInt64(16, BigInt(data.Release), true);
-  // 0x18: isize
-  if (data?.GetXpsPart !== undefined) view.setBigInt64(24, BigInt(data.GetXpsPart), true);
-  return buf;
-}
-
-/**
- * Windows.Win32.Graphics.Printing.IXpsDocumentProvider (size: 8)
- */
-export interface IXpsDocumentProvider {
-  /** ptr */
-  lpVtbl: Deno.PointerValue | Uint8Array | null;
-}
-
-export const sizeofIXpsDocumentProvider = 8;
-
-export function allocIXpsDocumentProvider(data?: Partial<IXpsDocumentProvider>): Uint8Array {
-  const buf = new Uint8Array(sizeofIXpsDocumentProvider);
-  const view = new DataView(buf.buffer);
-  // 0x00: pointer
-  if (data?.lpVtbl !== undefined) view.setBigUint64(0, data.lpVtbl === null ? 0n : BigInt(util.toPointer(data.lpVtbl)), true);
-  return buf;
-}
-
-/**
- * Windows.Win32.Graphics.Printing.IXpsDocumentConsumerVtbl (size: 80)
- */
-export interface IXpsDocumentConsumerVtbl {
-  /** isize */
-  QueryInterface: Deno.PointerValue;
-  /** isize */
-  AddRef: Deno.PointerValue;
-  /** isize */
-  Release: Deno.PointerValue;
-  /** isize */
-  SendXpsUnknown: Deno.PointerValue;
-  /** isize */
-  SendXpsDocument: Deno.PointerValue;
-  /** isize */
-  SendFixedDocumentSequence: Deno.PointerValue;
-  /** isize */
-  SendFixedDocument: Deno.PointerValue;
-  /** isize */
-  SendFixedPage: Deno.PointerValue;
-  /** isize */
-  CloseSender: Deno.PointerValue;
-  /** isize */
-  GetNewEmptyPart: Deno.PointerValue;
-}
-
-export const sizeofIXpsDocumentConsumerVtbl = 80;
-
-export function allocIXpsDocumentConsumerVtbl(data?: Partial<IXpsDocumentConsumerVtbl>): Uint8Array {
-  const buf = new Uint8Array(sizeofIXpsDocumentConsumerVtbl);
-  const view = new DataView(buf.buffer);
-  // 0x00: isize
-  if (data?.QueryInterface !== undefined) view.setBigInt64(0, BigInt(data.QueryInterface), true);
-  // 0x08: isize
-  if (data?.AddRef !== undefined) view.setBigInt64(8, BigInt(data.AddRef), true);
-  // 0x10: isize
-  if (data?.Release !== undefined) view.setBigInt64(16, BigInt(data.Release), true);
-  // 0x18: isize
-  if (data?.SendXpsUnknown !== undefined) view.setBigInt64(24, BigInt(data.SendXpsUnknown), true);
-  // 0x20: isize
-  if (data?.SendXpsDocument !== undefined) view.setBigInt64(32, BigInt(data.SendXpsDocument), true);
-  // 0x28: isize
-  if (data?.SendFixedDocumentSequence !== undefined) view.setBigInt64(40, BigInt(data.SendFixedDocumentSequence), true);
-  // 0x30: isize
-  if (data?.SendFixedDocument !== undefined) view.setBigInt64(48, BigInt(data.SendFixedDocument), true);
-  // 0x38: isize
-  if (data?.SendFixedPage !== undefined) view.setBigInt64(56, BigInt(data.SendFixedPage), true);
-  // 0x40: isize
-  if (data?.CloseSender !== undefined) view.setBigInt64(64, BigInt(data.CloseSender), true);
-  // 0x48: isize
-  if (data?.GetNewEmptyPart !== undefined) view.setBigInt64(72, BigInt(data.GetNewEmptyPart), true);
-  return buf;
-}
-
-/**
- * Windows.Win32.Graphics.Printing.IXpsDocumentConsumer (size: 8)
- */
-export interface IXpsDocumentConsumer {
-  /** ptr */
-  lpVtbl: Deno.PointerValue | Uint8Array | null;
-}
-
-export const sizeofIXpsDocumentConsumer = 8;
-
-export function allocIXpsDocumentConsumer(data?: Partial<IXpsDocumentConsumer>): Uint8Array {
-  const buf = new Uint8Array(sizeofIXpsDocumentConsumer);
-  const view = new DataView(buf.buffer);
-  // 0x00: pointer
-  if (data?.lpVtbl !== undefined) view.setBigUint64(0, data.lpVtbl === null ? 0n : BigInt(util.toPointer(data.lpVtbl)), true);
-  return buf;
-}
-
-/**
- * Windows.Win32.Graphics.Printing.IXpsDocumentVtbl (size: 40)
- */
-export interface IXpsDocumentVtbl {
-  /** isize */
-  QueryInterface: Deno.PointerValue;
-  /** isize */
-  AddRef: Deno.PointerValue;
-  /** isize */
-  Release: Deno.PointerValue;
-  /** isize */
-  GetThumbnail: Deno.PointerValue;
-  /** isize */
-  SetThumbnail: Deno.PointerValue;
-}
-
-export const sizeofIXpsDocumentVtbl = 40;
-
-export function allocIXpsDocumentVtbl(data?: Partial<IXpsDocumentVtbl>): Uint8Array {
-  const buf = new Uint8Array(sizeofIXpsDocumentVtbl);
-  const view = new DataView(buf.buffer);
-  // 0x00: isize
-  if (data?.QueryInterface !== undefined) view.setBigInt64(0, BigInt(data.QueryInterface), true);
-  // 0x08: isize
-  if (data?.AddRef !== undefined) view.setBigInt64(8, BigInt(data.AddRef), true);
-  // 0x10: isize
-  if (data?.Release !== undefined) view.setBigInt64(16, BigInt(data.Release), true);
-  // 0x18: isize
-  if (data?.GetThumbnail !== undefined) view.setBigInt64(24, BigInt(data.GetThumbnail), true);
-  // 0x20: isize
-  if (data?.SetThumbnail !== undefined) view.setBigInt64(32, BigInt(data.SetThumbnail), true);
-  return buf;
-}
-
-/**
- * Windows.Win32.Graphics.Printing.IXpsDocument (size: 8)
- */
-export interface IXpsDocument {
-  /** ptr */
-  lpVtbl: Deno.PointerValue | Uint8Array | null;
-}
-
-export const sizeofIXpsDocument = 8;
-
-export function allocIXpsDocument(data?: Partial<IXpsDocument>): Uint8Array {
-  const buf = new Uint8Array(sizeofIXpsDocument);
-  const view = new DataView(buf.buffer);
-  // 0x00: pointer
-  if (data?.lpVtbl !== undefined) view.setBigUint64(0, data.lpVtbl === null ? 0n : BigInt(util.toPointer(data.lpVtbl)), true);
-  return buf;
-}
-
-/**
- * Windows.Win32.Graphics.Printing.IFixedDocumentSequenceVtbl (size: 48)
- */
-export interface IFixedDocumentSequenceVtbl {
-  /** isize */
-  QueryInterface: Deno.PointerValue;
-  /** isize */
-  AddRef: Deno.PointerValue;
-  /** isize */
-  Release: Deno.PointerValue;
-  /** isize */
-  GetUri: Deno.PointerValue;
-  /** isize */
-  GetPrintTicket: Deno.PointerValue;
-  /** isize */
-  SetPrintTicket: Deno.PointerValue;
-}
-
-export const sizeofIFixedDocumentSequenceVtbl = 48;
-
-export function allocIFixedDocumentSequenceVtbl(data?: Partial<IFixedDocumentSequenceVtbl>): Uint8Array {
-  const buf = new Uint8Array(sizeofIFixedDocumentSequenceVtbl);
-  const view = new DataView(buf.buffer);
-  // 0x00: isize
-  if (data?.QueryInterface !== undefined) view.setBigInt64(0, BigInt(data.QueryInterface), true);
-  // 0x08: isize
-  if (data?.AddRef !== undefined) view.setBigInt64(8, BigInt(data.AddRef), true);
-  // 0x10: isize
-  if (data?.Release !== undefined) view.setBigInt64(16, BigInt(data.Release), true);
-  // 0x18: isize
-  if (data?.GetUri !== undefined) view.setBigInt64(24, BigInt(data.GetUri), true);
-  // 0x20: isize
-  if (data?.GetPrintTicket !== undefined) view.setBigInt64(32, BigInt(data.GetPrintTicket), true);
-  // 0x28: isize
-  if (data?.SetPrintTicket !== undefined) view.setBigInt64(40, BigInt(data.SetPrintTicket), true);
-  return buf;
-}
-
-/**
- * Windows.Win32.Graphics.Printing.IFixedDocumentSequence (size: 8)
- */
-export interface IFixedDocumentSequence {
-  /** ptr */
-  lpVtbl: Deno.PointerValue | Uint8Array | null;
-}
-
-export const sizeofIFixedDocumentSequence = 8;
-
-export function allocIFixedDocumentSequence(data?: Partial<IFixedDocumentSequence>): Uint8Array {
-  const buf = new Uint8Array(sizeofIFixedDocumentSequence);
-  const view = new DataView(buf.buffer);
-  // 0x00: pointer
-  if (data?.lpVtbl !== undefined) view.setBigUint64(0, data.lpVtbl === null ? 0n : BigInt(util.toPointer(data.lpVtbl)), true);
-  return buf;
-}
-
-/**
- * Windows.Win32.Graphics.Printing.IFixedDocumentVtbl (size: 48)
- */
-export interface IFixedDocumentVtbl {
-  /** isize */
-  QueryInterface: Deno.PointerValue;
-  /** isize */
-  AddRef: Deno.PointerValue;
-  /** isize */
-  Release: Deno.PointerValue;
-  /** isize */
-  GetUri: Deno.PointerValue;
-  /** isize */
-  GetPrintTicket: Deno.PointerValue;
-  /** isize */
-  SetPrintTicket: Deno.PointerValue;
-}
-
-export const sizeofIFixedDocumentVtbl = 48;
-
-export function allocIFixedDocumentVtbl(data?: Partial<IFixedDocumentVtbl>): Uint8Array {
-  const buf = new Uint8Array(sizeofIFixedDocumentVtbl);
-  const view = new DataView(buf.buffer);
-  // 0x00: isize
-  if (data?.QueryInterface !== undefined) view.setBigInt64(0, BigInt(data.QueryInterface), true);
-  // 0x08: isize
-  if (data?.AddRef !== undefined) view.setBigInt64(8, BigInt(data.AddRef), true);
-  // 0x10: isize
-  if (data?.Release !== undefined) view.setBigInt64(16, BigInt(data.Release), true);
-  // 0x18: isize
-  if (data?.GetUri !== undefined) view.setBigInt64(24, BigInt(data.GetUri), true);
-  // 0x20: isize
-  if (data?.GetPrintTicket !== undefined) view.setBigInt64(32, BigInt(data.GetPrintTicket), true);
-  // 0x28: isize
-  if (data?.SetPrintTicket !== undefined) view.setBigInt64(40, BigInt(data.SetPrintTicket), true);
-  return buf;
-}
-
-/**
- * Windows.Win32.Graphics.Printing.IFixedDocument (size: 8)
- */
-export interface IFixedDocument {
-  /** ptr */
-  lpVtbl: Deno.PointerValue | Uint8Array | null;
-}
-
-export const sizeofIFixedDocument = 8;
-
-export function allocIFixedDocument(data?: Partial<IFixedDocument>): Uint8Array {
-  const buf = new Uint8Array(sizeofIFixedDocument);
-  const view = new DataView(buf.buffer);
-  // 0x00: pointer
-  if (data?.lpVtbl !== undefined) view.setBigUint64(0, data.lpVtbl === null ? 0n : BigInt(util.toPointer(data.lpVtbl)), true);
-  return buf;
-}
-
-/**
- * Windows.Win32.Graphics.Printing.IPartBaseVtbl (size: 56)
- */
-export interface IPartBaseVtbl {
-  /** isize */
-  QueryInterface: Deno.PointerValue;
-  /** isize */
-  AddRef: Deno.PointerValue;
-  /** isize */
-  Release: Deno.PointerValue;
-  /** isize */
-  GetUri: Deno.PointerValue;
-  /** isize */
-  GetStream: Deno.PointerValue;
-  /** isize */
-  GetPartCompression: Deno.PointerValue;
-  /** isize */
-  SetPartCompression: Deno.PointerValue;
-}
-
-export const sizeofIPartBaseVtbl = 56;
-
-export function allocIPartBaseVtbl(data?: Partial<IPartBaseVtbl>): Uint8Array {
-  const buf = new Uint8Array(sizeofIPartBaseVtbl);
-  const view = new DataView(buf.buffer);
-  // 0x00: isize
-  if (data?.QueryInterface !== undefined) view.setBigInt64(0, BigInt(data.QueryInterface), true);
-  // 0x08: isize
-  if (data?.AddRef !== undefined) view.setBigInt64(8, BigInt(data.AddRef), true);
-  // 0x10: isize
-  if (data?.Release !== undefined) view.setBigInt64(16, BigInt(data.Release), true);
-  // 0x18: isize
-  if (data?.GetUri !== undefined) view.setBigInt64(24, BigInt(data.GetUri), true);
-  // 0x20: isize
-  if (data?.GetStream !== undefined) view.setBigInt64(32, BigInt(data.GetStream), true);
-  // 0x28: isize
-  if (data?.GetPartCompression !== undefined) view.setBigInt64(40, BigInt(data.GetPartCompression), true);
-  // 0x30: isize
-  if (data?.SetPartCompression !== undefined) view.setBigInt64(48, BigInt(data.SetPartCompression), true);
-  return buf;
-}
-
-/**
- * Windows.Win32.Graphics.Printing.IPartBase (size: 8)
- */
-export interface IPartBase {
-  /** ptr */
-  lpVtbl: Deno.PointerValue | Uint8Array | null;
-}
-
-export const sizeofIPartBase = 8;
-
-export function allocIPartBase(data?: Partial<IPartBase>): Uint8Array {
-  const buf = new Uint8Array(sizeofIPartBase);
-  const view = new DataView(buf.buffer);
-  // 0x00: pointer
-  if (data?.lpVtbl !== undefined) view.setBigUint64(0, data.lpVtbl === null ? 0n : BigInt(util.toPointer(data.lpVtbl)), true);
-  return buf;
-}
-
-/**
- * Windows.Win32.Graphics.Printing.IFixedPageVtbl (size: 112)
- */
-export interface IFixedPageVtbl {
-  /** isize */
-  QueryInterface: Deno.PointerValue;
-  /** isize */
-  AddRef: Deno.PointerValue;
-  /** isize */
-  Release: Deno.PointerValue;
-  /** isize */
-  GetUri: Deno.PointerValue;
-  /** isize */
-  GetStream: Deno.PointerValue;
-  /** isize */
-  GetPartCompression: Deno.PointerValue;
-  /** isize */
-  SetPartCompression: Deno.PointerValue;
-  /** isize */
-  GetPrintTicket: Deno.PointerValue;
-  /** isize */
-  GetPagePart: Deno.PointerValue;
-  /** isize */
-  GetWriteStream: Deno.PointerValue;
-  /** isize */
-  SetPrintTicket: Deno.PointerValue;
-  /** isize */
-  SetPagePart: Deno.PointerValue;
-  /** isize */
-  DeleteResource: Deno.PointerValue;
-  /** isize */
-  GetXpsPartIterator: Deno.PointerValue;
-}
-
-export const sizeofIFixedPageVtbl = 112;
-
-export function allocIFixedPageVtbl(data?: Partial<IFixedPageVtbl>): Uint8Array {
-  const buf = new Uint8Array(sizeofIFixedPageVtbl);
-  const view = new DataView(buf.buffer);
-  // 0x00: isize
-  if (data?.QueryInterface !== undefined) view.setBigInt64(0, BigInt(data.QueryInterface), true);
-  // 0x08: isize
-  if (data?.AddRef !== undefined) view.setBigInt64(8, BigInt(data.AddRef), true);
-  // 0x10: isize
-  if (data?.Release !== undefined) view.setBigInt64(16, BigInt(data.Release), true);
-  // 0x18: isize
-  if (data?.GetUri !== undefined) view.setBigInt64(24, BigInt(data.GetUri), true);
-  // 0x20: isize
-  if (data?.GetStream !== undefined) view.setBigInt64(32, BigInt(data.GetStream), true);
-  // 0x28: isize
-  if (data?.GetPartCompression !== undefined) view.setBigInt64(40, BigInt(data.GetPartCompression), true);
-  // 0x30: isize
-  if (data?.SetPartCompression !== undefined) view.setBigInt64(48, BigInt(data.SetPartCompression), true);
-  // 0x38: isize
-  if (data?.GetPrintTicket !== undefined) view.setBigInt64(56, BigInt(data.GetPrintTicket), true);
-  // 0x40: isize
-  if (data?.GetPagePart !== undefined) view.setBigInt64(64, BigInt(data.GetPagePart), true);
-  // 0x48: isize
-  if (data?.GetWriteStream !== undefined) view.setBigInt64(72, BigInt(data.GetWriteStream), true);
-  // 0x50: isize
-  if (data?.SetPrintTicket !== undefined) view.setBigInt64(80, BigInt(data.SetPrintTicket), true);
-  // 0x58: isize
-  if (data?.SetPagePart !== undefined) view.setBigInt64(88, BigInt(data.SetPagePart), true);
-  // 0x60: isize
-  if (data?.DeleteResource !== undefined) view.setBigInt64(96, BigInt(data.DeleteResource), true);
-  // 0x68: isize
-  if (data?.GetXpsPartIterator !== undefined) view.setBigInt64(104, BigInt(data.GetXpsPartIterator), true);
-  return buf;
-}
-
-/**
- * Windows.Win32.Graphics.Printing.IFixedPage (size: 8)
- */
-export interface IFixedPage {
-  /** ptr */
-  lpVtbl: Deno.PointerValue | Uint8Array | null;
-}
-
-export const sizeofIFixedPage = 8;
-
-export function allocIFixedPage(data?: Partial<IFixedPage>): Uint8Array {
-  const buf = new Uint8Array(sizeofIFixedPage);
-  const view = new DataView(buf.buffer);
-  // 0x00: pointer
-  if (data?.lpVtbl !== undefined) view.setBigUint64(0, data.lpVtbl === null ? 0n : BigInt(util.toPointer(data.lpVtbl)), true);
-  return buf;
-}
-
-/**
- * Windows.Win32.Graphics.Printing.IPartImageVtbl (size: 72)
- */
-export interface IPartImageVtbl {
-  /** isize */
-  QueryInterface: Deno.PointerValue;
-  /** isize */
-  AddRef: Deno.PointerValue;
-  /** isize */
-  Release: Deno.PointerValue;
-  /** isize */
-  GetUri: Deno.PointerValue;
-  /** isize */
-  GetStream: Deno.PointerValue;
-  /** isize */
-  GetPartCompression: Deno.PointerValue;
-  /** isize */
-  SetPartCompression: Deno.PointerValue;
-  /** isize */
-  GetImageProperties: Deno.PointerValue;
-  /** isize */
-  SetImageContent: Deno.PointerValue;
-}
-
-export const sizeofIPartImageVtbl = 72;
-
-export function allocIPartImageVtbl(data?: Partial<IPartImageVtbl>): Uint8Array {
-  const buf = new Uint8Array(sizeofIPartImageVtbl);
-  const view = new DataView(buf.buffer);
-  // 0x00: isize
-  if (data?.QueryInterface !== undefined) view.setBigInt64(0, BigInt(data.QueryInterface), true);
-  // 0x08: isize
-  if (data?.AddRef !== undefined) view.setBigInt64(8, BigInt(data.AddRef), true);
-  // 0x10: isize
-  if (data?.Release !== undefined) view.setBigInt64(16, BigInt(data.Release), true);
-  // 0x18: isize
-  if (data?.GetUri !== undefined) view.setBigInt64(24, BigInt(data.GetUri), true);
-  // 0x20: isize
-  if (data?.GetStream !== undefined) view.setBigInt64(32, BigInt(data.GetStream), true);
-  // 0x28: isize
-  if (data?.GetPartCompression !== undefined) view.setBigInt64(40, BigInt(data.GetPartCompression), true);
-  // 0x30: isize
-  if (data?.SetPartCompression !== undefined) view.setBigInt64(48, BigInt(data.SetPartCompression), true);
-  // 0x38: isize
-  if (data?.GetImageProperties !== undefined) view.setBigInt64(56, BigInt(data.GetImageProperties), true);
-  // 0x40: isize
-  if (data?.SetImageContent !== undefined) view.setBigInt64(64, BigInt(data.SetImageContent), true);
-  return buf;
-}
-
-/**
- * Windows.Win32.Graphics.Printing.IPartImage (size: 8)
- */
-export interface IPartImage {
-  /** ptr */
-  lpVtbl: Deno.PointerValue | Uint8Array | null;
-}
-
-export const sizeofIPartImage = 8;
-
-export function allocIPartImage(data?: Partial<IPartImage>): Uint8Array {
-  const buf = new Uint8Array(sizeofIPartImage);
-  const view = new DataView(buf.buffer);
-  // 0x00: pointer
-  if (data?.lpVtbl !== undefined) view.setBigUint64(0, data.lpVtbl === null ? 0n : BigInt(util.toPointer(data.lpVtbl)), true);
-  return buf;
-}
-
-/**
- * Windows.Win32.Graphics.Printing.IPartFontVtbl (size: 80)
- */
-export interface IPartFontVtbl {
-  /** isize */
-  QueryInterface: Deno.PointerValue;
-  /** isize */
-  AddRef: Deno.PointerValue;
-  /** isize */
-  Release: Deno.PointerValue;
-  /** isize */
-  GetUri: Deno.PointerValue;
-  /** isize */
-  GetStream: Deno.PointerValue;
-  /** isize */
-  GetPartCompression: Deno.PointerValue;
-  /** isize */
-  SetPartCompression: Deno.PointerValue;
-  /** isize */
-  GetFontProperties: Deno.PointerValue;
-  /** isize */
-  SetFontContent: Deno.PointerValue;
-  /** isize */
-  SetFontOptions: Deno.PointerValue;
-}
-
-export const sizeofIPartFontVtbl = 80;
-
-export function allocIPartFontVtbl(data?: Partial<IPartFontVtbl>): Uint8Array {
-  const buf = new Uint8Array(sizeofIPartFontVtbl);
-  const view = new DataView(buf.buffer);
-  // 0x00: isize
-  if (data?.QueryInterface !== undefined) view.setBigInt64(0, BigInt(data.QueryInterface), true);
-  // 0x08: isize
-  if (data?.AddRef !== undefined) view.setBigInt64(8, BigInt(data.AddRef), true);
-  // 0x10: isize
-  if (data?.Release !== undefined) view.setBigInt64(16, BigInt(data.Release), true);
-  // 0x18: isize
-  if (data?.GetUri !== undefined) view.setBigInt64(24, BigInt(data.GetUri), true);
-  // 0x20: isize
-  if (data?.GetStream !== undefined) view.setBigInt64(32, BigInt(data.GetStream), true);
-  // 0x28: isize
-  if (data?.GetPartCompression !== undefined) view.setBigInt64(40, BigInt(data.GetPartCompression), true);
-  // 0x30: isize
-  if (data?.SetPartCompression !== undefined) view.setBigInt64(48, BigInt(data.SetPartCompression), true);
-  // 0x38: isize
-  if (data?.GetFontProperties !== undefined) view.setBigInt64(56, BigInt(data.GetFontProperties), true);
-  // 0x40: isize
-  if (data?.SetFontContent !== undefined) view.setBigInt64(64, BigInt(data.SetFontContent), true);
-  // 0x48: isize
-  if (data?.SetFontOptions !== undefined) view.setBigInt64(72, BigInt(data.SetFontOptions), true);
-  return buf;
-}
-
-/**
- * Windows.Win32.Graphics.Printing.IPartFont (size: 8)
- */
-export interface IPartFont {
-  /** ptr */
-  lpVtbl: Deno.PointerValue | Uint8Array | null;
-}
-
-export const sizeofIPartFont = 8;
-
-export function allocIPartFont(data?: Partial<IPartFont>): Uint8Array {
-  const buf = new Uint8Array(sizeofIPartFont);
-  const view = new DataView(buf.buffer);
-  // 0x00: pointer
-  if (data?.lpVtbl !== undefined) view.setBigUint64(0, data.lpVtbl === null ? 0n : BigInt(util.toPointer(data.lpVtbl)), true);
-  return buf;
-}
-
-/**
- * Windows.Win32.Graphics.Printing.IPartFont2Vtbl (size: 88)
- */
-export interface IPartFont2Vtbl {
-  /** isize */
-  QueryInterface: Deno.PointerValue;
-  /** isize */
-  AddRef: Deno.PointerValue;
-  /** isize */
-  Release: Deno.PointerValue;
-  /** isize */
-  GetUri: Deno.PointerValue;
-  /** isize */
-  GetStream: Deno.PointerValue;
-  /** isize */
-  GetPartCompression: Deno.PointerValue;
-  /** isize */
-  SetPartCompression: Deno.PointerValue;
-  /** isize */
-  GetFontProperties: Deno.PointerValue;
-  /** isize */
-  SetFontContent: Deno.PointerValue;
-  /** isize */
-  SetFontOptions: Deno.PointerValue;
-  /** isize */
-  GetFontRestriction: Deno.PointerValue;
-}
-
-export const sizeofIPartFont2Vtbl = 88;
-
-export function allocIPartFont2Vtbl(data?: Partial<IPartFont2Vtbl>): Uint8Array {
-  const buf = new Uint8Array(sizeofIPartFont2Vtbl);
-  const view = new DataView(buf.buffer);
-  // 0x00: isize
-  if (data?.QueryInterface !== undefined) view.setBigInt64(0, BigInt(data.QueryInterface), true);
-  // 0x08: isize
-  if (data?.AddRef !== undefined) view.setBigInt64(8, BigInt(data.AddRef), true);
-  // 0x10: isize
-  if (data?.Release !== undefined) view.setBigInt64(16, BigInt(data.Release), true);
-  // 0x18: isize
-  if (data?.GetUri !== undefined) view.setBigInt64(24, BigInt(data.GetUri), true);
-  // 0x20: isize
-  if (data?.GetStream !== undefined) view.setBigInt64(32, BigInt(data.GetStream), true);
-  // 0x28: isize
-  if (data?.GetPartCompression !== undefined) view.setBigInt64(40, BigInt(data.GetPartCompression), true);
-  // 0x30: isize
-  if (data?.SetPartCompression !== undefined) view.setBigInt64(48, BigInt(data.SetPartCompression), true);
-  // 0x38: isize
-  if (data?.GetFontProperties !== undefined) view.setBigInt64(56, BigInt(data.GetFontProperties), true);
-  // 0x40: isize
-  if (data?.SetFontContent !== undefined) view.setBigInt64(64, BigInt(data.SetFontContent), true);
-  // 0x48: isize
-  if (data?.SetFontOptions !== undefined) view.setBigInt64(72, BigInt(data.SetFontOptions), true);
-  // 0x50: isize
-  if (data?.GetFontRestriction !== undefined) view.setBigInt64(80, BigInt(data.GetFontRestriction), true);
-  return buf;
-}
-
-/**
- * Windows.Win32.Graphics.Printing.IPartFont2 (size: 8)
- */
-export interface IPartFont2 {
-  /** ptr */
-  lpVtbl: Deno.PointerValue | Uint8Array | null;
-}
-
-export const sizeofIPartFont2 = 8;
-
-export function allocIPartFont2(data?: Partial<IPartFont2>): Uint8Array {
-  const buf = new Uint8Array(sizeofIPartFont2);
-  const view = new DataView(buf.buffer);
-  // 0x00: pointer
-  if (data?.lpVtbl !== undefined) view.setBigUint64(0, data.lpVtbl === null ? 0n : BigInt(util.toPointer(data.lpVtbl)), true);
-  return buf;
-}
-
-/**
- * Windows.Win32.Graphics.Printing.IPartThumbnailVtbl (size: 72)
- */
-export interface IPartThumbnailVtbl {
-  /** isize */
-  QueryInterface: Deno.PointerValue;
-  /** isize */
-  AddRef: Deno.PointerValue;
-  /** isize */
-  Release: Deno.PointerValue;
-  /** isize */
-  GetUri: Deno.PointerValue;
-  /** isize */
-  GetStream: Deno.PointerValue;
-  /** isize */
-  GetPartCompression: Deno.PointerValue;
-  /** isize */
-  SetPartCompression: Deno.PointerValue;
-  /** isize */
-  GetThumbnailProperties: Deno.PointerValue;
-  /** isize */
-  SetThumbnailContent: Deno.PointerValue;
-}
-
-export const sizeofIPartThumbnailVtbl = 72;
-
-export function allocIPartThumbnailVtbl(data?: Partial<IPartThumbnailVtbl>): Uint8Array {
-  const buf = new Uint8Array(sizeofIPartThumbnailVtbl);
-  const view = new DataView(buf.buffer);
-  // 0x00: isize
-  if (data?.QueryInterface !== undefined) view.setBigInt64(0, BigInt(data.QueryInterface), true);
-  // 0x08: isize
-  if (data?.AddRef !== undefined) view.setBigInt64(8, BigInt(data.AddRef), true);
-  // 0x10: isize
-  if (data?.Release !== undefined) view.setBigInt64(16, BigInt(data.Release), true);
-  // 0x18: isize
-  if (data?.GetUri !== undefined) view.setBigInt64(24, BigInt(data.GetUri), true);
-  // 0x20: isize
-  if (data?.GetStream !== undefined) view.setBigInt64(32, BigInt(data.GetStream), true);
-  // 0x28: isize
-  if (data?.GetPartCompression !== undefined) view.setBigInt64(40, BigInt(data.GetPartCompression), true);
-  // 0x30: isize
-  if (data?.SetPartCompression !== undefined) view.setBigInt64(48, BigInt(data.SetPartCompression), true);
-  // 0x38: isize
-  if (data?.GetThumbnailProperties !== undefined) view.setBigInt64(56, BigInt(data.GetThumbnailProperties), true);
-  // 0x40: isize
-  if (data?.SetThumbnailContent !== undefined) view.setBigInt64(64, BigInt(data.SetThumbnailContent), true);
-  return buf;
-}
-
-/**
- * Windows.Win32.Graphics.Printing.IPartThumbnail (size: 8)
- */
-export interface IPartThumbnail {
-  /** ptr */
-  lpVtbl: Deno.PointerValue | Uint8Array | null;
-}
-
-export const sizeofIPartThumbnail = 8;
-
-export function allocIPartThumbnail(data?: Partial<IPartThumbnail>): Uint8Array {
-  const buf = new Uint8Array(sizeofIPartThumbnail);
-  const view = new DataView(buf.buffer);
-  // 0x00: pointer
-  if (data?.lpVtbl !== undefined) view.setBigUint64(0, data.lpVtbl === null ? 0n : BigInt(util.toPointer(data.lpVtbl)), true);
-  return buf;
-}
-
-/**
- * Windows.Win32.Graphics.Printing.IPartPrintTicketVtbl (size: 56)
- */
-export interface IPartPrintTicketVtbl {
-  /** isize */
-  QueryInterface: Deno.PointerValue;
-  /** isize */
-  AddRef: Deno.PointerValue;
-  /** isize */
-  Release: Deno.PointerValue;
-  /** isize */
-  GetUri: Deno.PointerValue;
-  /** isize */
-  GetStream: Deno.PointerValue;
-  /** isize */
-  GetPartCompression: Deno.PointerValue;
-  /** isize */
-  SetPartCompression: Deno.PointerValue;
-}
-
-export const sizeofIPartPrintTicketVtbl = 56;
-
-export function allocIPartPrintTicketVtbl(data?: Partial<IPartPrintTicketVtbl>): Uint8Array {
-  const buf = new Uint8Array(sizeofIPartPrintTicketVtbl);
-  const view = new DataView(buf.buffer);
-  // 0x00: isize
-  if (data?.QueryInterface !== undefined) view.setBigInt64(0, BigInt(data.QueryInterface), true);
-  // 0x08: isize
-  if (data?.AddRef !== undefined) view.setBigInt64(8, BigInt(data.AddRef), true);
-  // 0x10: isize
-  if (data?.Release !== undefined) view.setBigInt64(16, BigInt(data.Release), true);
-  // 0x18: isize
-  if (data?.GetUri !== undefined) view.setBigInt64(24, BigInt(data.GetUri), true);
-  // 0x20: isize
-  if (data?.GetStream !== undefined) view.setBigInt64(32, BigInt(data.GetStream), true);
-  // 0x28: isize
-  if (data?.GetPartCompression !== undefined) view.setBigInt64(40, BigInt(data.GetPartCompression), true);
-  // 0x30: isize
-  if (data?.SetPartCompression !== undefined) view.setBigInt64(48, BigInt(data.SetPartCompression), true);
-  return buf;
-}
-
-/**
- * Windows.Win32.Graphics.Printing.IPartPrintTicket (size: 8)
- */
-export interface IPartPrintTicket {
-  /** ptr */
-  lpVtbl: Deno.PointerValue | Uint8Array | null;
-}
-
-export const sizeofIPartPrintTicket = 8;
-
-export function allocIPartPrintTicket(data?: Partial<IPartPrintTicket>): Uint8Array {
-  const buf = new Uint8Array(sizeofIPartPrintTicket);
-  const view = new DataView(buf.buffer);
-  // 0x00: pointer
-  if (data?.lpVtbl !== undefined) view.setBigUint64(0, data.lpVtbl === null ? 0n : BigInt(util.toPointer(data.lpVtbl)), true);
-  return buf;
-}
-
-/**
- * Windows.Win32.Graphics.Printing.IPartColorProfileVtbl (size: 56)
- */
-export interface IPartColorProfileVtbl {
-  /** isize */
-  QueryInterface: Deno.PointerValue;
-  /** isize */
-  AddRef: Deno.PointerValue;
-  /** isize */
-  Release: Deno.PointerValue;
-  /** isize */
-  GetUri: Deno.PointerValue;
-  /** isize */
-  GetStream: Deno.PointerValue;
-  /** isize */
-  GetPartCompression: Deno.PointerValue;
-  /** isize */
-  SetPartCompression: Deno.PointerValue;
-}
-
-export const sizeofIPartColorProfileVtbl = 56;
-
-export function allocIPartColorProfileVtbl(data?: Partial<IPartColorProfileVtbl>): Uint8Array {
-  const buf = new Uint8Array(sizeofIPartColorProfileVtbl);
-  const view = new DataView(buf.buffer);
-  // 0x00: isize
-  if (data?.QueryInterface !== undefined) view.setBigInt64(0, BigInt(data.QueryInterface), true);
-  // 0x08: isize
-  if (data?.AddRef !== undefined) view.setBigInt64(8, BigInt(data.AddRef), true);
-  // 0x10: isize
-  if (data?.Release !== undefined) view.setBigInt64(16, BigInt(data.Release), true);
-  // 0x18: isize
-  if (data?.GetUri !== undefined) view.setBigInt64(24, BigInt(data.GetUri), true);
-  // 0x20: isize
-  if (data?.GetStream !== undefined) view.setBigInt64(32, BigInt(data.GetStream), true);
-  // 0x28: isize
-  if (data?.GetPartCompression !== undefined) view.setBigInt64(40, BigInt(data.GetPartCompression), true);
-  // 0x30: isize
-  if (data?.SetPartCompression !== undefined) view.setBigInt64(48, BigInt(data.SetPartCompression), true);
-  return buf;
-}
-
-/**
- * Windows.Win32.Graphics.Printing.IPartColorProfile (size: 8)
- */
-export interface IPartColorProfile {
-  /** ptr */
-  lpVtbl: Deno.PointerValue | Uint8Array | null;
-}
-
-export const sizeofIPartColorProfile = 8;
-
-export function allocIPartColorProfile(data?: Partial<IPartColorProfile>): Uint8Array {
-  const buf = new Uint8Array(sizeofIPartColorProfile);
-  const view = new DataView(buf.buffer);
-  // 0x00: pointer
-  if (data?.lpVtbl !== undefined) view.setBigUint64(0, data.lpVtbl === null ? 0n : BigInt(util.toPointer(data.lpVtbl)), true);
-  return buf;
-}
-
-/**
- * Windows.Win32.Graphics.Printing.IPartResourceDictionaryVtbl (size: 56)
- */
-export interface IPartResourceDictionaryVtbl {
-  /** isize */
-  QueryInterface: Deno.PointerValue;
-  /** isize */
-  AddRef: Deno.PointerValue;
-  /** isize */
-  Release: Deno.PointerValue;
-  /** isize */
-  GetUri: Deno.PointerValue;
-  /** isize */
-  GetStream: Deno.PointerValue;
-  /** isize */
-  GetPartCompression: Deno.PointerValue;
-  /** isize */
-  SetPartCompression: Deno.PointerValue;
-}
-
-export const sizeofIPartResourceDictionaryVtbl = 56;
-
-export function allocIPartResourceDictionaryVtbl(data?: Partial<IPartResourceDictionaryVtbl>): Uint8Array {
-  const buf = new Uint8Array(sizeofIPartResourceDictionaryVtbl);
-  const view = new DataView(buf.buffer);
-  // 0x00: isize
-  if (data?.QueryInterface !== undefined) view.setBigInt64(0, BigInt(data.QueryInterface), true);
-  // 0x08: isize
-  if (data?.AddRef !== undefined) view.setBigInt64(8, BigInt(data.AddRef), true);
-  // 0x10: isize
-  if (data?.Release !== undefined) view.setBigInt64(16, BigInt(data.Release), true);
-  // 0x18: isize
-  if (data?.GetUri !== undefined) view.setBigInt64(24, BigInt(data.GetUri), true);
-  // 0x20: isize
-  if (data?.GetStream !== undefined) view.setBigInt64(32, BigInt(data.GetStream), true);
-  // 0x28: isize
-  if (data?.GetPartCompression !== undefined) view.setBigInt64(40, BigInt(data.GetPartCompression), true);
-  // 0x30: isize
-  if (data?.SetPartCompression !== undefined) view.setBigInt64(48, BigInt(data.SetPartCompression), true);
-  return buf;
-}
-
-/**
- * Windows.Win32.Graphics.Printing.IPartResourceDictionary (size: 8)
- */
-export interface IPartResourceDictionary {
-  /** ptr */
-  lpVtbl: Deno.PointerValue | Uint8Array | null;
-}
-
-export const sizeofIPartResourceDictionary = 8;
-
-export function allocIPartResourceDictionary(data?: Partial<IPartResourceDictionary>): Uint8Array {
-  const buf = new Uint8Array(sizeofIPartResourceDictionary);
-  const view = new DataView(buf.buffer);
-  // 0x00: pointer
-  if (data?.lpVtbl !== undefined) view.setBigUint64(0, data.lpVtbl === null ? 0n : BigInt(util.toPointer(data.lpVtbl)), true);
-  return buf;
-}
-
-/**
- * Windows.Win32.Graphics.Printing.IXpsPartIteratorVtbl (size: 56)
- */
-export interface IXpsPartIteratorVtbl {
-  /** isize */
-  QueryInterface: Deno.PointerValue;
-  /** isize */
-  AddRef: Deno.PointerValue;
-  /** isize */
-  Release: Deno.PointerValue;
-  /** isize */
-  Reset: Deno.PointerValue;
-  /** isize */
-  Current: Deno.PointerValue;
-  /** isize */
-  IsDone: Deno.PointerValue;
-  /** isize */
-  Next: Deno.PointerValue;
-}
-
-export const sizeofIXpsPartIteratorVtbl = 56;
-
-export function allocIXpsPartIteratorVtbl(data?: Partial<IXpsPartIteratorVtbl>): Uint8Array {
-  const buf = new Uint8Array(sizeofIXpsPartIteratorVtbl);
-  const view = new DataView(buf.buffer);
-  // 0x00: isize
-  if (data?.QueryInterface !== undefined) view.setBigInt64(0, BigInt(data.QueryInterface), true);
-  // 0x08: isize
-  if (data?.AddRef !== undefined) view.setBigInt64(8, BigInt(data.AddRef), true);
-  // 0x10: isize
-  if (data?.Release !== undefined) view.setBigInt64(16, BigInt(data.Release), true);
-  // 0x18: isize
-  if (data?.Reset !== undefined) view.setBigInt64(24, BigInt(data.Reset), true);
-  // 0x20: isize
-  if (data?.Current !== undefined) view.setBigInt64(32, BigInt(data.Current), true);
-  // 0x28: isize
-  if (data?.IsDone !== undefined) view.setBigInt64(40, BigInt(data.IsDone), true);
-  // 0x30: isize
-  if (data?.Next !== undefined) view.setBigInt64(48, BigInt(data.Next), true);
-  return buf;
-}
-
-/**
- * Windows.Win32.Graphics.Printing.IXpsPartIterator (size: 8)
- */
-export interface IXpsPartIterator {
-  /** ptr */
-  lpVtbl: Deno.PointerValue | Uint8Array | null;
-}
-
-export const sizeofIXpsPartIterator = 8;
-
-export function allocIXpsPartIterator(data?: Partial<IXpsPartIterator>): Uint8Array {
-  const buf = new Uint8Array(sizeofIXpsPartIterator);
-  const view = new DataView(buf.buffer);
-  // 0x00: pointer
-  if (data?.lpVtbl !== undefined) view.setBigUint64(0, data.lpVtbl === null ? 0n : BigInt(util.toPointer(data.lpVtbl)), true);
-  return buf;
-}
-
-/**
- * Windows.Win32.Graphics.Printing.IPrintReadStreamFactoryVtbl (size: 32)
- */
-export interface IPrintReadStreamFactoryVtbl {
-  /** isize */
-  QueryInterface: Deno.PointerValue;
-  /** isize */
-  AddRef: Deno.PointerValue;
-  /** isize */
-  Release: Deno.PointerValue;
-  /** isize */
-  GetStream: Deno.PointerValue;
-}
-
-export const sizeofIPrintReadStreamFactoryVtbl = 32;
-
-export function allocIPrintReadStreamFactoryVtbl(data?: Partial<IPrintReadStreamFactoryVtbl>): Uint8Array {
-  const buf = new Uint8Array(sizeofIPrintReadStreamFactoryVtbl);
-  const view = new DataView(buf.buffer);
-  // 0x00: isize
-  if (data?.QueryInterface !== undefined) view.setBigInt64(0, BigInt(data.QueryInterface), true);
-  // 0x08: isize
-  if (data?.AddRef !== undefined) view.setBigInt64(8, BigInt(data.AddRef), true);
-  // 0x10: isize
-  if (data?.Release !== undefined) view.setBigInt64(16, BigInt(data.Release), true);
-  // 0x18: isize
-  if (data?.GetStream !== undefined) view.setBigInt64(24, BigInt(data.GetStream), true);
-  return buf;
-}
-
-/**
- * Windows.Win32.Graphics.Printing.IPrintReadStreamFactory (size: 8)
- */
-export interface IPrintReadStreamFactory {
-  /** ptr */
-  lpVtbl: Deno.PointerValue | Uint8Array | null;
-}
-
-export const sizeofIPrintReadStreamFactory = 8;
-
-export function allocIPrintReadStreamFactory(data?: Partial<IPrintReadStreamFactory>): Uint8Array {
-  const buf = new Uint8Array(sizeofIPrintReadStreamFactory);
-  const view = new DataView(buf.buffer);
-  // 0x00: pointer
-  if (data?.lpVtbl !== undefined) view.setBigUint64(0, data.lpVtbl === null ? 0n : BigInt(util.toPointer(data.lpVtbl)), true);
-  return buf;
-}
-
-/**
- * Windows.Win32.Graphics.Printing.IPartDiscardControlVtbl (size: 32)
- */
-export interface IPartDiscardControlVtbl {
-  /** isize */
-  QueryInterface: Deno.PointerValue;
-  /** isize */
-  AddRef: Deno.PointerValue;
-  /** isize */
-  Release: Deno.PointerValue;
-  /** isize */
-  GetDiscardProperties: Deno.PointerValue;
-}
-
-export const sizeofIPartDiscardControlVtbl = 32;
-
-export function allocIPartDiscardControlVtbl(data?: Partial<IPartDiscardControlVtbl>): Uint8Array {
-  const buf = new Uint8Array(sizeofIPartDiscardControlVtbl);
-  const view = new DataView(buf.buffer);
-  // 0x00: isize
-  if (data?.QueryInterface !== undefined) view.setBigInt64(0, BigInt(data.QueryInterface), true);
-  // 0x08: isize
-  if (data?.AddRef !== undefined) view.setBigInt64(8, BigInt(data.AddRef), true);
-  // 0x10: isize
-  if (data?.Release !== undefined) view.setBigInt64(16, BigInt(data.Release), true);
-  // 0x18: isize
-  if (data?.GetDiscardProperties !== undefined) view.setBigInt64(24, BigInt(data.GetDiscardProperties), true);
-  return buf;
-}
-
-/**
- * Windows.Win32.Graphics.Printing.IPartDiscardControl (size: 8)
- */
-export interface IPartDiscardControl {
-  /** ptr */
-  lpVtbl: Deno.PointerValue | Uint8Array | null;
-}
-
-export const sizeofIPartDiscardControl = 8;
-
-export function allocIPartDiscardControl(data?: Partial<IPartDiscardControl>): Uint8Array {
-  const buf = new Uint8Array(sizeofIPartDiscardControl);
-  const view = new DataView(buf.buffer);
-  // 0x00: pointer
-  if (data?.lpVtbl !== undefined) view.setBigUint64(0, data.lpVtbl === null ? 0n : BigInt(util.toPointer(data.lpVtbl)), true);
   return buf;
 }
 
@@ -4459,6 +2795,8 @@ export function allocPRINTER_INFO_1W(data?: Partial<PRINTER_INFO_1W>): Uint8Arra
   return buf;
 }
 
+export type PSECURITY_DESCRIPTOR = Deno.PointerValue | Uint8Array | null;
+
 /**
  * Windows.Win32.Graphics.Printing.PRINTER_INFO_2A (size: 136)
  */
@@ -4487,8 +2825,8 @@ export interface PRINTER_INFO_2A {
   pDatatype: string | null;
   /** Windows.Win32.Foundation.PSTR */
   pParameters: string | null;
-  /** ptr */
-  pSecurityDescriptor: Deno.PointerValue | Uint8Array | null;
+  /** Windows.Win32.Security.PSECURITY_DESCRIPTOR */
+  pSecurityDescriptor: Uint8Array | Deno.PointerValue | null;
   /** u32 */
   Attributes: number;
   /** u32 */
@@ -4618,8 +2956,8 @@ export interface PRINTER_INFO_2W {
   pDatatype: string | null;
   /** Windows.Win32.Foundation.PWSTR */
   pParameters: string | null;
-  /** ptr */
-  pSecurityDescriptor: Deno.PointerValue | Uint8Array | null;
+  /** Windows.Win32.Security.PSECURITY_DESCRIPTOR */
+  pSecurityDescriptor: Uint8Array | Deno.PointerValue | null;
   /** u32 */
   Attributes: number;
   /** u32 */
@@ -4725,8 +3063,8 @@ export function allocPRINTER_INFO_2W(data?: Partial<PRINTER_INFO_2W>): Uint8Arra
  * Windows.Win32.Graphics.Printing.PRINTER_INFO_3 (size: 8)
  */
 export interface PRINTER_INFO_3 {
-  /** ptr */
-  pSecurityDescriptor: Deno.PointerValue | Uint8Array | null;
+  /** Windows.Win32.Security.PSECURITY_DESCRIPTOR */
+  pSecurityDescriptor: Uint8Array | Deno.PointerValue | null;
 }
 
 export const sizeofPRINTER_INFO_3 = 8;
@@ -5276,8 +3614,8 @@ export interface JOB_INFO_2A {
   pDevMode: Deno.PointerValue | Uint8Array | null;
   /** Windows.Win32.Foundation.PSTR */
   pStatus: string | null;
-  /** ptr */
-  pSecurityDescriptor: Deno.PointerValue | Uint8Array | null;
+  /** Windows.Win32.Security.PSECURITY_DESCRIPTOR */
+  pSecurityDescriptor: Uint8Array | Deno.PointerValue | null;
   /** u32 */
   Status: number;
   /** u32 */
@@ -5414,8 +3752,8 @@ export interface JOB_INFO_2W {
   pDevMode: Deno.PointerValue | Uint8Array | null;
   /** Windows.Win32.Foundation.PWSTR */
   pStatus: string | null;
-  /** ptr */
-  pSecurityDescriptor: Deno.PointerValue | Uint8Array | null;
+  /** Windows.Win32.Security.PSECURITY_DESCRIPTOR */
+  pSecurityDescriptor: Uint8Array | Deno.PointerValue | null;
   /** u32 */
   Status: number;
   /** u32 */
@@ -5579,8 +3917,8 @@ export interface JOB_INFO_4A {
   pDevMode: Deno.PointerValue | Uint8Array | null;
   /** Windows.Win32.Foundation.PSTR */
   pStatus: string | null;
-  /** ptr */
-  pSecurityDescriptor: Deno.PointerValue | Uint8Array | null;
+  /** Windows.Win32.Security.PSECURITY_DESCRIPTOR */
+  pSecurityDescriptor: Uint8Array | Deno.PointerValue | null;
   /** u32 */
   Status: number;
   /** u32 */
@@ -5722,8 +4060,8 @@ export interface JOB_INFO_4W {
   pDevMode: Deno.PointerValue | Uint8Array | null;
   /** Windows.Win32.Foundation.PWSTR */
   pStatus: string | null;
-  /** ptr */
-  pSecurityDescriptor: Deno.PointerValue | Uint8Array | null;
+  /** Windows.Win32.Security.PSECURITY_DESCRIPTOR */
+  pSecurityDescriptor: Uint8Array | Deno.PointerValue | null;
   /** u32 */
   Status: number;
   /** u32 */
@@ -9195,70 +7533,25 @@ export function allocCORE_PRINTER_DRIVERW(data?: Partial<CORE_PRINTER_DRIVERW>):
 }
 
 /**
- * Windows.Win32.NetworkManagement.Snmp.smiCNTR64 (size: 8)
+ * _propertyBlob_e__Struct (size: 16)
  */
-export interface smiCNTR64 {
+export interface _propertyBlob_e__Struct {
   /** u32 */
-  hipart: number;
-  /** u32 */
-  lopart: number;
-}
-
-export const sizeofSmiCNTR64 = 8;
-
-export function allocSmiCNTR64(data?: Partial<smiCNTR64>): Uint8Array {
-  const buf = new Uint8Array(sizeofSmiCNTR64);
-  const view = new DataView(buf.buffer);
-  // 0x00: u32
-  if (data?.hipart !== undefined) view.setUint32(0, Number(data.hipart), true);
-  // 0x04: u32
-  if (data?.lopart !== undefined) view.setUint32(4, Number(data.lopart), true);
-  return buf;
-}
-
-/**
- * Windows.Win32.NetworkManagement.Snmp.smiOCTETS (size: 16)
- */
-export interface smiOCTETS {
-  /** u32 */
-  len: number;
+  cbBuf: number;
   /** ptr */
-  ptr: Deno.PointerValue | Uint8Array | null;
+  pBuf: Deno.PointerValue | Uint8Array | null;
 }
 
-export const sizeofSmiOCTETS = 16;
+export const sizeof_propertyBlob_e__Struct = 16;
 
-export function allocSmiOCTETS(data?: Partial<smiOCTETS>): Uint8Array {
-  const buf = new Uint8Array(sizeofSmiOCTETS);
+export function alloc_propertyBlob_e__Struct(data?: Partial<_propertyBlob_e__Struct>): Uint8Array {
+  const buf = new Uint8Array(sizeof_propertyBlob_e__Struct);
   const view = new DataView(buf.buffer);
   // 0x00: u32
-  if (data?.len !== undefined) view.setUint32(0, Number(data.len), true);
+  if (data?.cbBuf !== undefined) view.setUint32(0, Number(data.cbBuf), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.ptr !== undefined) view.setBigUint64(8, data.ptr === null ? 0n : BigInt(util.toPointer(data.ptr)), true);
-  return buf;
-}
-
-/**
- * Windows.Win32.NetworkManagement.Snmp.smiOID (size: 16)
- */
-export interface smiOID {
-  /** u32 */
-  len: number;
-  /** ptr */
-  ptr: Deno.PointerValue | Uint8Array | null;
-}
-
-export const sizeofSmiOID = 16;
-
-export function allocSmiOID(data?: Partial<smiOID>): Uint8Array {
-  const buf = new Uint8Array(sizeofSmiOID);
-  const view = new DataView(buf.buffer);
-  // 0x00: u32
-  if (data?.len !== undefined) view.setUint32(0, Number(data.len), true);
-  // 0x04: pad4
-  // 0x08: pointer
-  if (data?.ptr !== undefined) view.setBigUint64(8, data.ptr === null ? 0n : BigInt(util.toPointer(data.ptr)), true);
+  if (data?.pBuf !== undefined) view.setBigUint64(8, data.pBuf === null ? 0n : BigInt(util.toPointer(data.pBuf)), true);
   return buf;
 }
 
@@ -9266,18 +7559,16 @@ export function allocSmiOID(data?: Partial<smiOID>): Uint8Array {
  * _value_e__Union (size: 40)
  */
 export interface _value_e__Union {
-  /** i32 */
-  sNumber: number;
-  /** u32 */
-  uNumber: number;
-  /** Windows.Win32.NetworkManagement.Snmp.smiCNTR64 */
-  hNumber: Uint8Array | Deno.PointerValue | null;
-  /** Windows.Win32.NetworkManagement.Snmp.smiOCTETS */
-  string: Uint8Array | Deno.PointerValue | null;
-  /** Windows.Win32.NetworkManagement.Snmp.smiOID */
-  oid: Uint8Array | Deno.PointerValue | null;
   /** u8 */
-  empty: number;
+  propertyByte: number;
+  /** Windows.Win32.Foundation.PWSTR */
+  propertyString: string | null;
+  /** i32 */
+  propertyInt32: number;
+  /** i64 */
+  propertyInt64: Deno.PointerValue;
+  /** _propertyBlob_e__Struct */
+  propertyBlob: Uint8Array | Deno.PointerValue | null;
 }
 
 export const sizeof_value_e__Union = 40;
@@ -9285,19 +7576,21 @@ export const sizeof_value_e__Union = 40;
 export function alloc_value_e__Union(data?: Partial<_value_e__Union>): Uint8Array {
   const buf = new Uint8Array(sizeof_value_e__Union);
   const view = new DataView(buf.buffer);
-  // 0x00: i32
-  if (data?.sNumber !== undefined) view.setInt32(0, Number(data.sNumber), true);
-  // 0x04: u32
-  if (data?.uNumber !== undefined) view.setUint32(4, Number(data.uNumber), true);
-  // 0x08: pointer
-  if (data?.hNumber !== undefined) view.setBigUint64(8, data.hNumber === null ? 0n : BigInt(util.toPointer(data.hNumber)), true);
-  // 0x10: pointer
-  if (data?.string !== undefined) view.setBigUint64(16, data.string === null ? 0n : BigInt(util.toPointer(data.string)), true);
-  // 0x18: pointer
-  if (data?.oid !== undefined) view.setBigUint64(24, data.oid === null ? 0n : BigInt(util.toPointer(data.oid)), true);
-  // 0x20: u8
-  if (data?.empty !== undefined) view.setUint8(32, Number(data.empty));
-  // 0x21: pad7
+  // 0x00: u8
+  if (data?.propertyByte !== undefined) view.setUint8(0, Number(data.propertyByte));
+  // 0x01: pad7
+  // 0x08: buffer
+  if (data?.propertyString !== undefined) {
+    (buf as any)._f8 = util.pwstrToFfi(data.propertyString);
+    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f8)), true);
+  }
+  // 0x10: i32
+  if (data?.propertyInt32 !== undefined) view.setInt32(16, Number(data.propertyInt32), true);
+  // 0x14: pad4
+  // 0x18: i64
+  if (data?.propertyInt64 !== undefined) view.setBigInt64(24, BigInt(data.propertyInt64), true);
+  // 0x20: pointer
+  if (data?.propertyBlob !== undefined) view.setBigUint64(32, data.propertyBlob === null ? 0n : BigInt(util.toPointer(data.propertyBlob)), true);
   return buf;
 }
 
@@ -9395,9 +7688,9 @@ export function allocPRINT_EXECUTION_DATA(data?: Partial<PRINT_EXECUTION_DATA>):
 }
 
 /**
- * Windows.Win32.Graphics.Printing.MxdcEscapeHeader (size: 16)
+ * Windows.Win32.Graphics.Printing.MXDC_ESCAPE_HEADER_T (size: 16)
  */
-export interface MxdcEscapeHeader {
+export interface MXDC_ESCAPE_HEADER_T {
   /** u32 */
   cbInput: number;
   /** u32 */
@@ -9406,10 +7699,10 @@ export interface MxdcEscapeHeader {
   opCode: number;
 }
 
-export const sizeofMxdcEscapeHeader = 16;
+export const sizeofMXDC_ESCAPE_HEADER_T = 16;
 
-export function allocMxdcEscapeHeader(data?: Partial<MxdcEscapeHeader>): Uint8Array {
-  const buf = new Uint8Array(sizeofMxdcEscapeHeader);
+export function allocMXDC_ESCAPE_HEADER_T(data?: Partial<MXDC_ESCAPE_HEADER_T>): Uint8Array {
+  const buf = new Uint8Array(sizeofMXDC_ESCAPE_HEADER_T);
   const view = new DataView(buf.buffer);
   // 0x00: u32
   if (data?.cbInput !== undefined) view.setUint32(0, Number(data.cbInput), true);
@@ -9422,19 +7715,19 @@ export function allocMxdcEscapeHeader(data?: Partial<MxdcEscapeHeader>): Uint8Ar
 }
 
 /**
- * Windows.Win32.Graphics.Printing.MxdcGetFileNameData (size: 16)
+ * Windows.Win32.Graphics.Printing.MXDC_GET_FILENAME_DATA_T (size: 16)
  */
-export interface MxdcGetFileNameData {
+export interface MXDC_GET_FILENAME_DATA_T {
   /** u32 */
   cbOutput: number;
   /** array */
   wszData: Deno.PointerValue | null;
 }
 
-export const sizeofMxdcGetFileNameData = 16;
+export const sizeofMXDC_GET_FILENAME_DATA_T = 16;
 
-export function allocMxdcGetFileNameData(data?: Partial<MxdcGetFileNameData>): Uint8Array {
-  const buf = new Uint8Array(sizeofMxdcGetFileNameData);
+export function allocMXDC_GET_FILENAME_DATA_T(data?: Partial<MXDC_GET_FILENAME_DATA_T>): Uint8Array {
+  const buf = new Uint8Array(sizeofMXDC_GET_FILENAME_DATA_T);
   const view = new DataView(buf.buffer);
   // 0x00: u32
   if (data?.cbOutput !== undefined) view.setUint32(0, Number(data.cbOutput), true);
@@ -9445,19 +7738,19 @@ export function allocMxdcGetFileNameData(data?: Partial<MxdcGetFileNameData>): U
 }
 
 /**
- * Windows.Win32.Graphics.Printing.MxdcS0PageData (size: 16)
+ * Windows.Win32.Graphics.Printing.MXDC_S0PAGE_DATA_T (size: 16)
  */
-export interface MxdcS0PageData {
+export interface MXDC_S0PAGE_DATA_T {
   /** u32 */
   dwSize: number;
   /** array */
   bData: Deno.PointerValue | null;
 }
 
-export const sizeofMxdcS0PageData = 16;
+export const sizeofMXDC_S0PAGE_DATA_T = 16;
 
-export function allocMxdcS0PageData(data?: Partial<MxdcS0PageData>): Uint8Array {
-  const buf = new Uint8Array(sizeofMxdcS0PageData);
+export function allocMXDC_S0PAGE_DATA_T(data?: Partial<MXDC_S0PAGE_DATA_T>): Uint8Array {
+  const buf = new Uint8Array(sizeofMXDC_S0PAGE_DATA_T);
   const view = new DataView(buf.buffer);
   // 0x00: u32
   if (data?.dwSize !== undefined) view.setUint32(0, Number(data.dwSize), true);
@@ -9468,9 +7761,9 @@ export function allocMxdcS0PageData(data?: Partial<MxdcS0PageData>): Uint8Array 
 }
 
 /**
- * Windows.Win32.Graphics.Printing.MxdcXpsS0PageResource (size: 32)
+ * Windows.Win32.Graphics.Printing.MXDC_XPS_S0PAGE_RESOURCE_T (size: 32)
  */
-export interface MxdcXpsS0PageResource {
+export interface MXDC_XPS_S0PAGE_RESOURCE_T {
   /** u32 */
   dwSize: number;
   /** u32 */
@@ -9483,10 +7776,10 @@ export interface MxdcXpsS0PageResource {
   bData: Deno.PointerValue | null;
 }
 
-export const sizeofMxdcXpsS0PageResource = 32;
+export const sizeofMXDC_XPS_S0PAGE_RESOURCE_T = 32;
 
-export function allocMxdcXpsS0PageResource(data?: Partial<MxdcXpsS0PageResource>): Uint8Array {
-  const buf = new Uint8Array(sizeofMxdcXpsS0PageResource);
+export function allocMXDC_XPS_S0PAGE_RESOURCE_T(data?: Partial<MXDC_XPS_S0PAGE_RESOURCE_T>): Uint8Array {
+  const buf = new Uint8Array(sizeofMXDC_XPS_S0PAGE_RESOURCE_T);
   const view = new DataView(buf.buffer);
   // 0x00: u32
   if (data?.dwSize !== undefined) view.setUint32(0, Number(data.dwSize), true);
@@ -9503,19 +7796,19 @@ export function allocMxdcXpsS0PageResource(data?: Partial<MxdcXpsS0PageResource>
 }
 
 /**
- * Windows.Win32.Graphics.Printing.MxdcPrintTicketPassthrough (size: 16)
+ * Windows.Win32.Graphics.Printing.MXDC_PRINTTICKET_DATA_T (size: 16)
  */
-export interface MxdcPrintTicketPassthrough {
+export interface MXDC_PRINTTICKET_DATA_T {
   /** u32 */
   dwDataSize: number;
   /** array */
   bData: Deno.PointerValue | null;
 }
 
-export const sizeofMxdcPrintTicketPassthrough = 16;
+export const sizeofMXDC_PRINTTICKET_DATA_T = 16;
 
-export function allocMxdcPrintTicketPassthrough(data?: Partial<MxdcPrintTicketPassthrough>): Uint8Array {
-  const buf = new Uint8Array(sizeofMxdcPrintTicketPassthrough);
+export function allocMXDC_PRINTTICKET_DATA_T(data?: Partial<MXDC_PRINTTICKET_DATA_T>): Uint8Array {
+  const buf = new Uint8Array(sizeofMXDC_PRINTTICKET_DATA_T);
   const view = new DataView(buf.buffer);
   // 0x00: u32
   if (data?.dwDataSize !== undefined) view.setUint32(0, Number(data.dwDataSize), true);
@@ -9526,19 +7819,19 @@ export function allocMxdcPrintTicketPassthrough(data?: Partial<MxdcPrintTicketPa
 }
 
 /**
- * Windows.Win32.Graphics.Printing.MxdcPrintTicketEscape (size: 16)
+ * Windows.Win32.Graphics.Printing.MXDC_PRINTTICKET_ESCAPE_T (size: 16)
  */
-export interface MxdcPrintTicketEscape {
-  /** Windows.Win32.Graphics.Printing.MxdcEscapeHeader */
+export interface MXDC_PRINTTICKET_ESCAPE_T {
+  /** Windows.Win32.Graphics.Printing.MXDC_ESCAPE_HEADER_T */
   mxdcEscape: Uint8Array | Deno.PointerValue | null;
-  /** Windows.Win32.Graphics.Printing.MxdcPrintTicketPassthrough */
+  /** Windows.Win32.Graphics.Printing.MXDC_PRINTTICKET_DATA_T */
   printTicketData: Uint8Array | Deno.PointerValue | null;
 }
 
-export const sizeofMxdcPrintTicketEscape = 16;
+export const sizeofMXDC_PRINTTICKET_ESCAPE_T = 16;
 
-export function allocMxdcPrintTicketEscape(data?: Partial<MxdcPrintTicketEscape>): Uint8Array {
-  const buf = new Uint8Array(sizeofMxdcPrintTicketEscape);
+export function allocMXDC_PRINTTICKET_ESCAPE_T(data?: Partial<MXDC_PRINTTICKET_ESCAPE_T>): Uint8Array {
+  const buf = new Uint8Array(sizeofMXDC_PRINTTICKET_ESCAPE_T);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
   if (data?.mxdcEscape !== undefined) view.setBigUint64(0, data.mxdcEscape === null ? 0n : BigInt(util.toPointer(data.mxdcEscape)), true);
@@ -9548,19 +7841,19 @@ export function allocMxdcPrintTicketEscape(data?: Partial<MxdcPrintTicketEscape>
 }
 
 /**
- * Windows.Win32.Graphics.Printing.MxdcS0PagePassthroughEscape (size: 16)
+ * Windows.Win32.Graphics.Printing.MXDC_S0PAGE_PASSTHROUGH_ESCAPE_T (size: 16)
  */
-export interface MxdcS0PagePassthroughEscape {
-  /** Windows.Win32.Graphics.Printing.MxdcEscapeHeader */
+export interface MXDC_S0PAGE_PASSTHROUGH_ESCAPE_T {
+  /** Windows.Win32.Graphics.Printing.MXDC_ESCAPE_HEADER_T */
   mxdcEscape: Uint8Array | Deno.PointerValue | null;
-  /** Windows.Win32.Graphics.Printing.MxdcS0PageData */
+  /** Windows.Win32.Graphics.Printing.MXDC_S0PAGE_DATA_T */
   xpsS0PageData: Uint8Array | Deno.PointerValue | null;
 }
 
-export const sizeofMxdcS0PagePassthroughEscape = 16;
+export const sizeofMXDC_S0PAGE_PASSTHROUGH_ESCAPE_T = 16;
 
-export function allocMxdcS0PagePassthroughEscape(data?: Partial<MxdcS0PagePassthroughEscape>): Uint8Array {
-  const buf = new Uint8Array(sizeofMxdcS0PagePassthroughEscape);
+export function allocMXDC_S0PAGE_PASSTHROUGH_ESCAPE_T(data?: Partial<MXDC_S0PAGE_PASSTHROUGH_ESCAPE_T>): Uint8Array {
+  const buf = new Uint8Array(sizeofMXDC_S0PAGE_PASSTHROUGH_ESCAPE_T);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
   if (data?.mxdcEscape !== undefined) view.setBigUint64(0, data.mxdcEscape === null ? 0n : BigInt(util.toPointer(data.mxdcEscape)), true);
@@ -9570,19 +7863,19 @@ export function allocMxdcS0PagePassthroughEscape(data?: Partial<MxdcS0PagePassth
 }
 
 /**
- * Windows.Win32.Graphics.Printing.MxdcS0PageResourceEscape (size: 16)
+ * Windows.Win32.Graphics.Printing.MXDC_S0PAGE_RESOURCE_ESCAPE_T (size: 16)
  */
-export interface MxdcS0PageResourceEscape {
-  /** Windows.Win32.Graphics.Printing.MxdcEscapeHeader */
+export interface MXDC_S0PAGE_RESOURCE_ESCAPE_T {
+  /** Windows.Win32.Graphics.Printing.MXDC_ESCAPE_HEADER_T */
   mxdcEscape: Uint8Array | Deno.PointerValue | null;
-  /** Windows.Win32.Graphics.Printing.MxdcXpsS0PageResource */
+  /** Windows.Win32.Graphics.Printing.MXDC_XPS_S0PAGE_RESOURCE_T */
   xpsS0PageResourcePassthrough: Uint8Array | Deno.PointerValue | null;
 }
 
-export const sizeofMxdcS0PageResourceEscape = 16;
+export const sizeofMXDC_S0PAGE_RESOURCE_ESCAPE_T = 16;
 
-export function allocMxdcS0PageResourceEscape(data?: Partial<MxdcS0PageResourceEscape>): Uint8Array {
-  const buf = new Uint8Array(sizeofMxdcS0PageResourceEscape);
+export function allocMXDC_S0PAGE_RESOURCE_ESCAPE_T(data?: Partial<MXDC_S0PAGE_RESOURCE_ESCAPE_T>): Uint8Array {
+  const buf = new Uint8Array(sizeofMXDC_S0PAGE_RESOURCE_ESCAPE_T);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
   if (data?.mxdcEscape !== undefined) view.setBigUint64(0, data.mxdcEscape === null ? 0n : BigInt(util.toPointer(data.mxdcEscape)), true);
@@ -10778,57 +9071,56 @@ export function allocPOINTL(data?: Partial<POINTL>): Uint8Array {
 }
 
 /**
- * Windows.Win32.Graphics.Gdi.PANOSE (size: 16)
+ * Windows.Win32.Graphics.Gdi.PANOSE (size: 40)
  */
 export interface PANOSE {
-  /** u8 */
-  bFamilyType: number;
-  /** u8 */
-  bSerifStyle: number;
-  /** u8 */
-  bWeight: number;
-  /** u8 */
-  bProportion: number;
-  /** u8 */
-  bContrast: number;
-  /** u8 */
-  bStrokeVariation: number;
-  /** u8 */
-  bArmStyle: number;
-  /** u8 */
-  bLetterform: number;
-  /** u8 */
-  bMidline: number;
-  /** u8 */
-  bXHeight: number;
+  /** Windows.Win32.Graphics.Gdi.PAN_FAMILY_TYPE */
+  bFamilyType: PAN_FAMILY_TYPE;
+  /** Windows.Win32.Graphics.Gdi.PAN_SERIF_STYLE */
+  bSerifStyle: PAN_SERIF_STYLE;
+  /** Windows.Win32.Graphics.Gdi.PAN_WEIGHT */
+  bWeight: PAN_WEIGHT;
+  /** Windows.Win32.Graphics.Gdi.PAN_PROPORTION */
+  bProportion: PAN_PROPORTION;
+  /** Windows.Win32.Graphics.Gdi.PAN_CONTRAST */
+  bContrast: PAN_CONTRAST;
+  /** Windows.Win32.Graphics.Gdi.PAN_STROKE_VARIATION */
+  bStrokeVariation: PAN_STROKE_VARIATION;
+  /** Windows.Win32.Graphics.Gdi.PAN_ARM_STYLE */
+  bArmStyle: PAN_ARM_STYLE;
+  /** Windows.Win32.Graphics.Gdi.PAN_LETT_FORM */
+  bLetterform: PAN_LETT_FORM;
+  /** Windows.Win32.Graphics.Gdi.PAN_MIDLINE */
+  bMidline: PAN_MIDLINE;
+  /** Windows.Win32.Graphics.Gdi.PAN_XHEIGHT */
+  bXHeight: PAN_XHEIGHT;
 }
 
-export const sizeofPANOSE = 16;
+export const sizeofPANOSE = 40;
 
 export function allocPANOSE(data?: Partial<PANOSE>): Uint8Array {
   const buf = new Uint8Array(sizeofPANOSE);
   const view = new DataView(buf.buffer);
-  // 0x00: u8
-  if (data?.bFamilyType !== undefined) view.setUint8(0, Number(data.bFamilyType));
-  // 0x01: u8
-  if (data?.bSerifStyle !== undefined) view.setUint8(1, Number(data.bSerifStyle));
-  // 0x02: u8
-  if (data?.bWeight !== undefined) view.setUint8(2, Number(data.bWeight));
-  // 0x03: u8
-  if (data?.bProportion !== undefined) view.setUint8(3, Number(data.bProportion));
-  // 0x04: u8
-  if (data?.bContrast !== undefined) view.setUint8(4, Number(data.bContrast));
-  // 0x05: u8
-  if (data?.bStrokeVariation !== undefined) view.setUint8(5, Number(data.bStrokeVariation));
-  // 0x06: u8
-  if (data?.bArmStyle !== undefined) view.setUint8(6, Number(data.bArmStyle));
-  // 0x07: u8
-  if (data?.bLetterform !== undefined) view.setUint8(7, Number(data.bLetterform));
-  // 0x08: u8
-  if (data?.bMidline !== undefined) view.setUint8(8, Number(data.bMidline));
-  // 0x09: u8
-  if (data?.bXHeight !== undefined) view.setUint8(9, Number(data.bXHeight));
-  // 0x0a: pad6
+  // 0x00: u32
+  if (data?.bFamilyType !== undefined) view.setUint32(0, Number(data.bFamilyType), true);
+  // 0x04: u32
+  if (data?.bSerifStyle !== undefined) view.setUint32(4, Number(data.bSerifStyle), true);
+  // 0x08: u32
+  if (data?.bWeight !== undefined) view.setUint32(8, Number(data.bWeight), true);
+  // 0x0c: u32
+  if (data?.bProportion !== undefined) view.setUint32(12, Number(data.bProportion), true);
+  // 0x10: u32
+  if (data?.bContrast !== undefined) view.setUint32(16, Number(data.bContrast), true);
+  // 0x14: u32
+  if (data?.bStrokeVariation !== undefined) view.setUint32(20, Number(data.bStrokeVariation), true);
+  // 0x18: u32
+  if (data?.bArmStyle !== undefined) view.setUint32(24, Number(data.bArmStyle), true);
+  // 0x1c: u32
+  if (data?.bLetterform !== undefined) view.setUint32(28, Number(data.bLetterform), true);
+  // 0x20: u32
+  if (data?.bMidline !== undefined) view.setUint32(32, Number(data.bMidline), true);
+  // 0x24: u32
+  if (data?.bXHeight !== undefined) view.setUint32(36, Number(data.bXHeight), true);
   return buf;
 }
 
@@ -12282,37 +10574,19 @@ export function allocSPLCLIENT_INFO_1(data?: Partial<SPLCLIENT_INFO_1>): Uint8Ar
 }
 
 /**
- * Windows.Win32.Graphics.Printing._SPLCLIENT_INFO_2_V1 (size: 8)
+ * Windows.Win32.Graphics.Printing.SPLCLIENT_INFO_2_W2K (size: 8)
  */
-export interface _SPLCLIENT_INFO_2_V1 {
+export interface SPLCLIENT_INFO_2_W2K {
   /** usize */
   hSplPrinter: Deno.PointerValue;
 }
 
-export const sizeof_SPLCLIENT_INFO_2_V1 = 8;
+export const sizeofSPLCLIENT_INFO_2_W2K = 8;
 
-export function alloc_SPLCLIENT_INFO_2_V1(data?: Partial<_SPLCLIENT_INFO_2_V1>): Uint8Array {
-  const buf = new Uint8Array(sizeof_SPLCLIENT_INFO_2_V1);
+export function allocSPLCLIENT_INFO_2_W2K(data?: Partial<SPLCLIENT_INFO_2_W2K>): Uint8Array {
+  const buf = new Uint8Array(sizeofSPLCLIENT_INFO_2_W2K);
   const view = new DataView(buf.buffer);
   // 0x00: usize
-  if (data?.hSplPrinter !== undefined) view.setBigUint64(0, BigInt(data.hSplPrinter), true);
-  return buf;
-}
-
-/**
- * Windows.Win32.Graphics.Printing._SPLCLIENT_INFO_2_V2 (size: 8)
- */
-export interface _SPLCLIENT_INFO_2_V2 {
-  /** u64 */
-  hSplPrinter: Deno.PointerValue;
-}
-
-export const sizeof_SPLCLIENT_INFO_2_V2 = 8;
-
-export function alloc_SPLCLIENT_INFO_2_V2(data?: Partial<_SPLCLIENT_INFO_2_V2>): Uint8Array {
-  const buf = new Uint8Array(sizeof_SPLCLIENT_INFO_2_V2);
-  const view = new DataView(buf.buffer);
-  // 0x00: u64
   if (data?.hSplPrinter !== undefined) view.setBigUint64(0, BigInt(data.hSplPrinter), true);
   return buf;
 }
@@ -13346,7 +11620,7 @@ export type HDC = Deno.PointerValue;
 // Native Libraries
 
 try {
-  var libCOMPSTUI = Deno.dlopen("COMPSTUI", {
+  var libCOMPSTUI_dll = Deno.dlopen("COMPSTUI.dll", {
     CommonPropertySheetUIA: {
       parameters: ["pointer", "pointer", "pointer", "pointer"],
       result: "i32",
@@ -13367,7 +11641,7 @@ try {
 } catch(e) { /* ignore */ }
 
 try {
-  var libWINSPOOL = Deno.dlopen("WINSPOOL", {
+  var libwinspool_drv = Deno.dlopen("winspool.drv", {
     EnumPrintersA: {
       parameters: ["u32", "buffer", "u32", "pointer", "u32", "pointer", "pointer"],
       result: "i32",
@@ -14052,7 +12326,7 @@ try {
 } catch(e) { /* ignore */ }
 
 try {
-  var libGDI32 = Deno.dlopen("GDI32", {
+  var libGDI32_dll = Deno.dlopen("GDI32.dll", {
     GdiGetSpoolFileHandle: {
       parameters: ["buffer", "pointer", "buffer"],
       result: "pointer",
@@ -14105,7 +12379,7 @@ try {
 } catch(e) { /* ignore */ }
 
 try {
-  var libSPOOLSS = Deno.dlopen("SPOOLSS", {
+  var libSPOOLSS_dll = Deno.dlopen("SPOOLSS.dll", {
     GetJobAttributes: {
       parameters: ["buffer", "pointer", "pointer"],
       result: "i32",
@@ -14214,7 +12488,7 @@ try {
 } catch(e) { /* ignore */ }
 
 try {
-  var libmscms = Deno.dlopen("mscms", {
+  var libmscms_dll = Deno.dlopen("mscms.dll", {
     SpoolerCopyFileEvent: {
       parameters: ["buffer", "buffer", "u32"],
       result: "i32",
@@ -14234,7 +12508,7 @@ export function CommonPropertySheetUIA(
   lParam: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.LPARAM */,
   pResult: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
-  return libCOMPSTUI.CommonPropertySheetUIA(util.hwndToFfi(hWndOwner), util.toPointer(pfnPropSheetUI), util.toPointer(lParam), util.toPointer(pResult));
+  return libCOMPSTUI_dll.CommonPropertySheetUIA(util.hwndToFfi(hWndOwner), util.toPointer(pfnPropSheetUI), util.toPointer(lParam), util.toPointer(pResult));
 }
 
 export function CommonPropertySheetUIW(
@@ -14243,20 +12517,20 @@ export function CommonPropertySheetUIW(
   lParam: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.LPARAM */,
   pResult: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
-  return libCOMPSTUI.CommonPropertySheetUIW(util.hwndToFfi(hWndOwner), util.toPointer(pfnPropSheetUI), util.toPointer(lParam), util.toPointer(pResult));
+  return libCOMPSTUI_dll.CommonPropertySheetUIW(util.hwndToFfi(hWndOwner), util.toPointer(pfnPropSheetUI), util.toPointer(lParam), util.toPointer(pResult));
 }
 
 export function GetCPSUIUserData(
   hDlg: Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */,
 ): Deno.PointerValue /* usize */ {
-  return libCOMPSTUI.GetCPSUIUserData(util.hwndToFfi(hDlg));
+  return libCOMPSTUI_dll.GetCPSUIUserData(util.hwndToFfi(hDlg));
 }
 
 export function SetCPSUIUserData(
   hDlg: Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */,
   CPSUIUserData: Deno.PointerValue /* usize */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libCOMPSTUI.SetCPSUIUserData(util.hwndToFfi(hDlg), CPSUIUserData));
+  return util.boolFromFfi(libCOMPSTUI_dll.SetCPSUIUserData(util.hwndToFfi(hDlg), CPSUIUserData));
 }
 
 export function EnumPrintersA(
@@ -14268,7 +12542,7 @@ export function EnumPrintersA(
   pcbNeeded: Deno.PointerValue | Uint8Array | null /* ptr */,
   pcReturned: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWINSPOOL.EnumPrintersA(Flags, util.pstrToFfi(Name), Level, util.toPointer(pPrinterEnum), cbBuf, util.toPointer(pcbNeeded), util.toPointer(pcReturned)));
+  return util.boolFromFfi(libwinspool_drv.EnumPrintersA(Flags, util.pstrToFfi(Name), Level, util.toPointer(pPrinterEnum), cbBuf, util.toPointer(pcbNeeded), util.toPointer(pcReturned)));
 }
 
 export function EnumPrintersW(
@@ -14280,13 +12554,13 @@ export function EnumPrintersW(
   pcbNeeded: Deno.PointerValue | Uint8Array | null /* ptr */,
   pcReturned: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWINSPOOL.EnumPrintersW(Flags, util.pwstrToFfi(Name), Level, util.toPointer(pPrinterEnum), cbBuf, util.toPointer(pcbNeeded), util.toPointer(pcReturned)));
+  return util.boolFromFfi(libwinspool_drv.EnumPrintersW(Flags, util.pwstrToFfi(Name), Level, util.toPointer(pPrinterEnum), cbBuf, util.toPointer(pcbNeeded), util.toPointer(pcReturned)));
 }
 
 export function GetSpoolFileHandle(
   hPrinter: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */ {
-  return util.pointerFromFfi(libWINSPOOL.GetSpoolFileHandle(util.toPointer(hPrinter)));
+  return util.pointerFromFfi(libwinspool_drv.GetSpoolFileHandle(util.toPointer(hPrinter)));
 }
 
 export function CommitSpoolData(
@@ -14294,14 +12568,14 @@ export function CommitSpoolData(
   hSpoolFile: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
   cbCommit: number /* u32 */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */ {
-  return util.pointerFromFfi(libWINSPOOL.CommitSpoolData(util.toPointer(hPrinter), util.toPointer(hSpoolFile), cbCommit));
+  return util.pointerFromFfi(libwinspool_drv.CommitSpoolData(util.toPointer(hPrinter), util.toPointer(hSpoolFile), cbCommit));
 }
 
 export function CloseSpoolFileHandle(
   hPrinter: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
   hSpoolFile: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWINSPOOL.CloseSpoolFileHandle(util.toPointer(hPrinter), util.toPointer(hSpoolFile)));
+  return util.boolFromFfi(libwinspool_drv.CloseSpoolFileHandle(util.toPointer(hPrinter), util.toPointer(hSpoolFile)));
 }
 
 export function OpenPrinterA(
@@ -14309,7 +12583,7 @@ export function OpenPrinterA(
   phPrinter: Deno.PointerValue | Uint8Array | null /* ptr */,
   pDefault: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWINSPOOL.OpenPrinterA(util.pstrToFfi(pPrinterName), util.toPointer(phPrinter), util.toPointer(pDefault)));
+  return util.boolFromFfi(libwinspool_drv.OpenPrinterA(util.pstrToFfi(pPrinterName), util.toPointer(phPrinter), util.toPointer(pDefault)));
 }
 
 export function OpenPrinterW(
@@ -14317,21 +12591,21 @@ export function OpenPrinterW(
   phPrinter: Deno.PointerValue | Uint8Array | null /* ptr */,
   pDefault: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWINSPOOL.OpenPrinterW(util.pwstrToFfi(pPrinterName), util.toPointer(phPrinter), util.toPointer(pDefault)));
+  return util.boolFromFfi(libwinspool_drv.OpenPrinterW(util.pwstrToFfi(pPrinterName), util.toPointer(phPrinter), util.toPointer(pDefault)));
 }
 
 export function ResetPrinterA(
   hPrinter: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
   pDefault: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWINSPOOL.ResetPrinterA(util.toPointer(hPrinter), util.toPointer(pDefault)));
+  return util.boolFromFfi(libwinspool_drv.ResetPrinterA(util.toPointer(hPrinter), util.toPointer(pDefault)));
 }
 
 export function ResetPrinterW(
   hPrinter: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
   pDefault: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWINSPOOL.ResetPrinterW(util.toPointer(hPrinter), util.toPointer(pDefault)));
+  return util.boolFromFfi(libwinspool_drv.ResetPrinterW(util.toPointer(hPrinter), util.toPointer(pDefault)));
 }
 
 export function SetJobA(
@@ -14341,7 +12615,7 @@ export function SetJobA(
   pJob: Deno.PointerValue | Uint8Array | null /* ptr */,
   Command: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWINSPOOL.SetJobA(util.toPointer(hPrinter), JobId, Level, util.toPointer(pJob), Command));
+  return util.boolFromFfi(libwinspool_drv.SetJobA(util.toPointer(hPrinter), JobId, Level, util.toPointer(pJob), Command));
 }
 
 export function SetJobW(
@@ -14351,7 +12625,7 @@ export function SetJobW(
   pJob: Deno.PointerValue | Uint8Array | null /* ptr */,
   Command: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWINSPOOL.SetJobW(util.toPointer(hPrinter), JobId, Level, util.toPointer(pJob), Command));
+  return util.boolFromFfi(libwinspool_drv.SetJobW(util.toPointer(hPrinter), JobId, Level, util.toPointer(pJob), Command));
 }
 
 export function GetJobA(
@@ -14362,7 +12636,7 @@ export function GetJobA(
   cbBuf: number /* u32 */,
   pcbNeeded: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWINSPOOL.GetJobA(util.toPointer(hPrinter), JobId, Level, util.toPointer(pJob), cbBuf, util.toPointer(pcbNeeded)));
+  return util.boolFromFfi(libwinspool_drv.GetJobA(util.toPointer(hPrinter), JobId, Level, util.toPointer(pJob), cbBuf, util.toPointer(pcbNeeded)));
 }
 
 export function GetJobW(
@@ -14373,7 +12647,7 @@ export function GetJobW(
   cbBuf: number /* u32 */,
   pcbNeeded: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWINSPOOL.GetJobW(util.toPointer(hPrinter), JobId, Level, util.toPointer(pJob), cbBuf, util.toPointer(pcbNeeded)));
+  return util.boolFromFfi(libwinspool_drv.GetJobW(util.toPointer(hPrinter), JobId, Level, util.toPointer(pJob), cbBuf, util.toPointer(pcbNeeded)));
 }
 
 export function EnumJobsA(
@@ -14386,7 +12660,7 @@ export function EnumJobsA(
   pcbNeeded: Deno.PointerValue | Uint8Array | null /* ptr */,
   pcReturned: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWINSPOOL.EnumJobsA(util.toPointer(hPrinter), FirstJob, NoJobs, Level, util.toPointer(pJob), cbBuf, util.toPointer(pcbNeeded), util.toPointer(pcReturned)));
+  return util.boolFromFfi(libwinspool_drv.EnumJobsA(util.toPointer(hPrinter), FirstJob, NoJobs, Level, util.toPointer(pJob), cbBuf, util.toPointer(pcbNeeded), util.toPointer(pcReturned)));
 }
 
 export function EnumJobsW(
@@ -14399,7 +12673,7 @@ export function EnumJobsW(
   pcbNeeded: Deno.PointerValue | Uint8Array | null /* ptr */,
   pcReturned: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWINSPOOL.EnumJobsW(util.toPointer(hPrinter), FirstJob, NoJobs, Level, util.toPointer(pJob), cbBuf, util.toPointer(pcbNeeded), util.toPointer(pcReturned)));
+  return util.boolFromFfi(libwinspool_drv.EnumJobsW(util.toPointer(hPrinter), FirstJob, NoJobs, Level, util.toPointer(pJob), cbBuf, util.toPointer(pcbNeeded), util.toPointer(pcReturned)));
 }
 
 export function AddPrinterA(
@@ -14407,7 +12681,7 @@ export function AddPrinterA(
   Level: number /* u32 */,
   pPrinter: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */ {
-  return util.pointerFromFfi(libWINSPOOL.AddPrinterA(util.pstrToFfi(pName), Level, util.toPointer(pPrinter)));
+  return util.pointerFromFfi(libwinspool_drv.AddPrinterA(util.pstrToFfi(pName), Level, util.toPointer(pPrinter)));
 }
 
 export function AddPrinterW(
@@ -14415,13 +12689,13 @@ export function AddPrinterW(
   Level: number /* u32 */,
   pPrinter: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */ {
-  return util.pointerFromFfi(libWINSPOOL.AddPrinterW(util.pwstrToFfi(pName), Level, util.toPointer(pPrinter)));
+  return util.pointerFromFfi(libwinspool_drv.AddPrinterW(util.pwstrToFfi(pName), Level, util.toPointer(pPrinter)));
 }
 
 export function DeletePrinter(
   hPrinter: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWINSPOOL.DeletePrinter(util.toPointer(hPrinter)));
+  return util.boolFromFfi(libwinspool_drv.DeletePrinter(util.toPointer(hPrinter)));
 }
 
 export function SetPrinterA(
@@ -14430,7 +12704,7 @@ export function SetPrinterA(
   pPrinter: Deno.PointerValue | Uint8Array | null /* ptr */,
   Command: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWINSPOOL.SetPrinterA(util.toPointer(hPrinter), Level, util.toPointer(pPrinter), Command));
+  return util.boolFromFfi(libwinspool_drv.SetPrinterA(util.toPointer(hPrinter), Level, util.toPointer(pPrinter), Command));
 }
 
 export function SetPrinterW(
@@ -14439,7 +12713,7 @@ export function SetPrinterW(
   pPrinter: Deno.PointerValue | Uint8Array | null /* ptr */,
   Command: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWINSPOOL.SetPrinterW(util.toPointer(hPrinter), Level, util.toPointer(pPrinter), Command));
+  return util.boolFromFfi(libwinspool_drv.SetPrinterW(util.toPointer(hPrinter), Level, util.toPointer(pPrinter), Command));
 }
 
 export function GetPrinterA(
@@ -14449,7 +12723,7 @@ export function GetPrinterA(
   cbBuf: number /* u32 */,
   pcbNeeded: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWINSPOOL.GetPrinterA(util.toPointer(hPrinter), Level, util.toPointer(pPrinter), cbBuf, util.toPointer(pcbNeeded)));
+  return util.boolFromFfi(libwinspool_drv.GetPrinterA(util.toPointer(hPrinter), Level, util.toPointer(pPrinter), cbBuf, util.toPointer(pcbNeeded)));
 }
 
 export function GetPrinterW(
@@ -14459,7 +12733,7 @@ export function GetPrinterW(
   cbBuf: number /* u32 */,
   pcbNeeded: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWINSPOOL.GetPrinterW(util.toPointer(hPrinter), Level, util.toPointer(pPrinter), cbBuf, util.toPointer(pcbNeeded)));
+  return util.boolFromFfi(libwinspool_drv.GetPrinterW(util.toPointer(hPrinter), Level, util.toPointer(pPrinter), cbBuf, util.toPointer(pcbNeeded)));
 }
 
 export function AddPrinterDriverA(
@@ -14467,7 +12741,7 @@ export function AddPrinterDriverA(
   Level: number /* u32 */,
   pDriverInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWINSPOOL.AddPrinterDriverA(util.pstrToFfi(pName), Level, util.toPointer(pDriverInfo)));
+  return util.boolFromFfi(libwinspool_drv.AddPrinterDriverA(util.pstrToFfi(pName), Level, util.toPointer(pDriverInfo)));
 }
 
 export function AddPrinterDriverW(
@@ -14475,7 +12749,7 @@ export function AddPrinterDriverW(
   Level: number /* u32 */,
   pDriverInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWINSPOOL.AddPrinterDriverW(util.pwstrToFfi(pName), Level, util.toPointer(pDriverInfo)));
+  return util.boolFromFfi(libwinspool_drv.AddPrinterDriverW(util.pwstrToFfi(pName), Level, util.toPointer(pDriverInfo)));
 }
 
 export function AddPrinterDriverExA(
@@ -14484,7 +12758,7 @@ export function AddPrinterDriverExA(
   lpbDriverInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
   dwFileCopyFlags: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWINSPOOL.AddPrinterDriverExA(util.pstrToFfi(pName), Level, util.toPointer(lpbDriverInfo), dwFileCopyFlags));
+  return util.boolFromFfi(libwinspool_drv.AddPrinterDriverExA(util.pstrToFfi(pName), Level, util.toPointer(lpbDriverInfo), dwFileCopyFlags));
 }
 
 export function AddPrinterDriverExW(
@@ -14493,7 +12767,7 @@ export function AddPrinterDriverExW(
   lpbDriverInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
   dwFileCopyFlags: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWINSPOOL.AddPrinterDriverExW(util.pwstrToFfi(pName), Level, util.toPointer(lpbDriverInfo), dwFileCopyFlags));
+  return util.boolFromFfi(libwinspool_drv.AddPrinterDriverExW(util.pwstrToFfi(pName), Level, util.toPointer(lpbDriverInfo), dwFileCopyFlags));
 }
 
 export function EnumPrinterDriversA(
@@ -14505,7 +12779,7 @@ export function EnumPrinterDriversA(
   pcbNeeded: Deno.PointerValue | Uint8Array | null /* ptr */,
   pcReturned: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWINSPOOL.EnumPrinterDriversA(util.pstrToFfi(pName), util.pstrToFfi(pEnvironment), Level, util.toPointer(pDriverInfo), cbBuf, util.toPointer(pcbNeeded), util.toPointer(pcReturned)));
+  return util.boolFromFfi(libwinspool_drv.EnumPrinterDriversA(util.pstrToFfi(pName), util.pstrToFfi(pEnvironment), Level, util.toPointer(pDriverInfo), cbBuf, util.toPointer(pcbNeeded), util.toPointer(pcReturned)));
 }
 
 export function EnumPrinterDriversW(
@@ -14517,7 +12791,7 @@ export function EnumPrinterDriversW(
   pcbNeeded: Deno.PointerValue | Uint8Array | null /* ptr */,
   pcReturned: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWINSPOOL.EnumPrinterDriversW(util.pwstrToFfi(pName), util.pwstrToFfi(pEnvironment), Level, util.toPointer(pDriverInfo), cbBuf, util.toPointer(pcbNeeded), util.toPointer(pcReturned)));
+  return util.boolFromFfi(libwinspool_drv.EnumPrinterDriversW(util.pwstrToFfi(pName), util.pwstrToFfi(pEnvironment), Level, util.toPointer(pDriverInfo), cbBuf, util.toPointer(pcbNeeded), util.toPointer(pcReturned)));
 }
 
 export function GetPrinterDriverA(
@@ -14528,7 +12802,7 @@ export function GetPrinterDriverA(
   cbBuf: number /* u32 */,
   pcbNeeded: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWINSPOOL.GetPrinterDriverA(util.toPointer(hPrinter), util.pstrToFfi(pEnvironment), Level, util.toPointer(pDriverInfo), cbBuf, util.toPointer(pcbNeeded)));
+  return util.boolFromFfi(libwinspool_drv.GetPrinterDriverA(util.toPointer(hPrinter), util.pstrToFfi(pEnvironment), Level, util.toPointer(pDriverInfo), cbBuf, util.toPointer(pcbNeeded)));
 }
 
 export function GetPrinterDriverW(
@@ -14539,7 +12813,7 @@ export function GetPrinterDriverW(
   cbBuf: number /* u32 */,
   pcbNeeded: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWINSPOOL.GetPrinterDriverW(util.toPointer(hPrinter), util.pwstrToFfi(pEnvironment), Level, util.toPointer(pDriverInfo), cbBuf, util.toPointer(pcbNeeded)));
+  return util.boolFromFfi(libwinspool_drv.GetPrinterDriverW(util.toPointer(hPrinter), util.pwstrToFfi(pEnvironment), Level, util.toPointer(pDriverInfo), cbBuf, util.toPointer(pcbNeeded)));
 }
 
 export function GetPrinterDriverDirectoryA(
@@ -14550,7 +12824,7 @@ export function GetPrinterDriverDirectoryA(
   cbBuf: number /* u32 */,
   pcbNeeded: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWINSPOOL.GetPrinterDriverDirectoryA(util.pstrToFfi(pName), util.pstrToFfi(pEnvironment), Level, util.toPointer(pDriverDirectory), cbBuf, util.toPointer(pcbNeeded)));
+  return util.boolFromFfi(libwinspool_drv.GetPrinterDriverDirectoryA(util.pstrToFfi(pName), util.pstrToFfi(pEnvironment), Level, util.toPointer(pDriverDirectory), cbBuf, util.toPointer(pcbNeeded)));
 }
 
 export function GetPrinterDriverDirectoryW(
@@ -14561,7 +12835,7 @@ export function GetPrinterDriverDirectoryW(
   cbBuf: number /* u32 */,
   pcbNeeded: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWINSPOOL.GetPrinterDriverDirectoryW(util.pwstrToFfi(pName), util.pwstrToFfi(pEnvironment), Level, util.toPointer(pDriverDirectory), cbBuf, util.toPointer(pcbNeeded)));
+  return util.boolFromFfi(libwinspool_drv.GetPrinterDriverDirectoryW(util.pwstrToFfi(pName), util.pwstrToFfi(pEnvironment), Level, util.toPointer(pDriverDirectory), cbBuf, util.toPointer(pcbNeeded)));
 }
 
 export function DeletePrinterDriverA(
@@ -14569,7 +12843,7 @@ export function DeletePrinterDriverA(
   pEnvironment: string | null /* Windows.Win32.Foundation.PSTR */,
   pDriverName: string | null /* Windows.Win32.Foundation.PSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWINSPOOL.DeletePrinterDriverA(util.pstrToFfi(pName), util.pstrToFfi(pEnvironment), util.pstrToFfi(pDriverName)));
+  return util.boolFromFfi(libwinspool_drv.DeletePrinterDriverA(util.pstrToFfi(pName), util.pstrToFfi(pEnvironment), util.pstrToFfi(pDriverName)));
 }
 
 export function DeletePrinterDriverW(
@@ -14577,7 +12851,7 @@ export function DeletePrinterDriverW(
   pEnvironment: string | null /* Windows.Win32.Foundation.PWSTR */,
   pDriverName: string | null /* Windows.Win32.Foundation.PWSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWINSPOOL.DeletePrinterDriverW(util.pwstrToFfi(pName), util.pwstrToFfi(pEnvironment), util.pwstrToFfi(pDriverName)));
+  return util.boolFromFfi(libwinspool_drv.DeletePrinterDriverW(util.pwstrToFfi(pName), util.pwstrToFfi(pEnvironment), util.pwstrToFfi(pDriverName)));
 }
 
 export function DeletePrinterDriverExA(
@@ -14587,7 +12861,7 @@ export function DeletePrinterDriverExA(
   dwDeleteFlag: number /* u32 */,
   dwVersionFlag: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWINSPOOL.DeletePrinterDriverExA(util.pstrToFfi(pName), util.pstrToFfi(pEnvironment), util.pstrToFfi(pDriverName), dwDeleteFlag, dwVersionFlag));
+  return util.boolFromFfi(libwinspool_drv.DeletePrinterDriverExA(util.pstrToFfi(pName), util.pstrToFfi(pEnvironment), util.pstrToFfi(pDriverName), dwDeleteFlag, dwVersionFlag));
 }
 
 export function DeletePrinterDriverExW(
@@ -14597,7 +12871,7 @@ export function DeletePrinterDriverExW(
   dwDeleteFlag: number /* u32 */,
   dwVersionFlag: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWINSPOOL.DeletePrinterDriverExW(util.pwstrToFfi(pName), util.pwstrToFfi(pEnvironment), util.pwstrToFfi(pDriverName), dwDeleteFlag, dwVersionFlag));
+  return util.boolFromFfi(libwinspool_drv.DeletePrinterDriverExW(util.pwstrToFfi(pName), util.pwstrToFfi(pEnvironment), util.pwstrToFfi(pDriverName), dwDeleteFlag, dwVersionFlag));
 }
 
 export function AddPrintProcessorA(
@@ -14606,7 +12880,7 @@ export function AddPrintProcessorA(
   pPathName: string | null /* Windows.Win32.Foundation.PSTR */,
   pPrintProcessorName: string | null /* Windows.Win32.Foundation.PSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWINSPOOL.AddPrintProcessorA(util.pstrToFfi(pName), util.pstrToFfi(pEnvironment), util.pstrToFfi(pPathName), util.pstrToFfi(pPrintProcessorName)));
+  return util.boolFromFfi(libwinspool_drv.AddPrintProcessorA(util.pstrToFfi(pName), util.pstrToFfi(pEnvironment), util.pstrToFfi(pPathName), util.pstrToFfi(pPrintProcessorName)));
 }
 
 export function AddPrintProcessorW(
@@ -14615,7 +12889,7 @@ export function AddPrintProcessorW(
   pPathName: string | null /* Windows.Win32.Foundation.PWSTR */,
   pPrintProcessorName: string | null /* Windows.Win32.Foundation.PWSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWINSPOOL.AddPrintProcessorW(util.pwstrToFfi(pName), util.pwstrToFfi(pEnvironment), util.pwstrToFfi(pPathName), util.pwstrToFfi(pPrintProcessorName)));
+  return util.boolFromFfi(libwinspool_drv.AddPrintProcessorW(util.pwstrToFfi(pName), util.pwstrToFfi(pEnvironment), util.pwstrToFfi(pPathName), util.pwstrToFfi(pPrintProcessorName)));
 }
 
 export function EnumPrintProcessorsA(
@@ -14627,7 +12901,7 @@ export function EnumPrintProcessorsA(
   pcbNeeded: Deno.PointerValue | Uint8Array | null /* ptr */,
   pcReturned: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWINSPOOL.EnumPrintProcessorsA(util.pstrToFfi(pName), util.pstrToFfi(pEnvironment), Level, util.toPointer(pPrintProcessorInfo), cbBuf, util.toPointer(pcbNeeded), util.toPointer(pcReturned)));
+  return util.boolFromFfi(libwinspool_drv.EnumPrintProcessorsA(util.pstrToFfi(pName), util.pstrToFfi(pEnvironment), Level, util.toPointer(pPrintProcessorInfo), cbBuf, util.toPointer(pcbNeeded), util.toPointer(pcReturned)));
 }
 
 export function EnumPrintProcessorsW(
@@ -14639,7 +12913,7 @@ export function EnumPrintProcessorsW(
   pcbNeeded: Deno.PointerValue | Uint8Array | null /* ptr */,
   pcReturned: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWINSPOOL.EnumPrintProcessorsW(util.pwstrToFfi(pName), util.pwstrToFfi(pEnvironment), Level, util.toPointer(pPrintProcessorInfo), cbBuf, util.toPointer(pcbNeeded), util.toPointer(pcReturned)));
+  return util.boolFromFfi(libwinspool_drv.EnumPrintProcessorsW(util.pwstrToFfi(pName), util.pwstrToFfi(pEnvironment), Level, util.toPointer(pPrintProcessorInfo), cbBuf, util.toPointer(pcbNeeded), util.toPointer(pcReturned)));
 }
 
 export function GetPrintProcessorDirectoryA(
@@ -14650,7 +12924,7 @@ export function GetPrintProcessorDirectoryA(
   cbBuf: number /* u32 */,
   pcbNeeded: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWINSPOOL.GetPrintProcessorDirectoryA(util.pstrToFfi(pName), util.pstrToFfi(pEnvironment), Level, util.toPointer(pPrintProcessorInfo), cbBuf, util.toPointer(pcbNeeded)));
+  return util.boolFromFfi(libwinspool_drv.GetPrintProcessorDirectoryA(util.pstrToFfi(pName), util.pstrToFfi(pEnvironment), Level, util.toPointer(pPrintProcessorInfo), cbBuf, util.toPointer(pcbNeeded)));
 }
 
 export function GetPrintProcessorDirectoryW(
@@ -14661,7 +12935,7 @@ export function GetPrintProcessorDirectoryW(
   cbBuf: number /* u32 */,
   pcbNeeded: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWINSPOOL.GetPrintProcessorDirectoryW(util.pwstrToFfi(pName), util.pwstrToFfi(pEnvironment), Level, util.toPointer(pPrintProcessorInfo), cbBuf, util.toPointer(pcbNeeded)));
+  return util.boolFromFfi(libwinspool_drv.GetPrintProcessorDirectoryW(util.pwstrToFfi(pName), util.pwstrToFfi(pEnvironment), Level, util.toPointer(pPrintProcessorInfo), cbBuf, util.toPointer(pcbNeeded)));
 }
 
 export function EnumPrintProcessorDatatypesA(
@@ -14673,7 +12947,7 @@ export function EnumPrintProcessorDatatypesA(
   pcbNeeded: Deno.PointerValue | Uint8Array | null /* ptr */,
   pcReturned: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWINSPOOL.EnumPrintProcessorDatatypesA(util.pstrToFfi(pName), util.pstrToFfi(pPrintProcessorName), Level, util.toPointer(pDatatypes), cbBuf, util.toPointer(pcbNeeded), util.toPointer(pcReturned)));
+  return util.boolFromFfi(libwinspool_drv.EnumPrintProcessorDatatypesA(util.pstrToFfi(pName), util.pstrToFfi(pPrintProcessorName), Level, util.toPointer(pDatatypes), cbBuf, util.toPointer(pcbNeeded), util.toPointer(pcReturned)));
 }
 
 export function EnumPrintProcessorDatatypesW(
@@ -14685,7 +12959,7 @@ export function EnumPrintProcessorDatatypesW(
   pcbNeeded: Deno.PointerValue | Uint8Array | null /* ptr */,
   pcReturned: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWINSPOOL.EnumPrintProcessorDatatypesW(util.pwstrToFfi(pName), util.pwstrToFfi(pPrintProcessorName), Level, util.toPointer(pDatatypes), cbBuf, util.toPointer(pcbNeeded), util.toPointer(pcReturned)));
+  return util.boolFromFfi(libwinspool_drv.EnumPrintProcessorDatatypesW(util.pwstrToFfi(pName), util.pwstrToFfi(pPrintProcessorName), Level, util.toPointer(pDatatypes), cbBuf, util.toPointer(pcbNeeded), util.toPointer(pcReturned)));
 }
 
 export function DeletePrintProcessorA(
@@ -14693,7 +12967,7 @@ export function DeletePrintProcessorA(
   pEnvironment: string | null /* Windows.Win32.Foundation.PSTR */,
   pPrintProcessorName: string | null /* Windows.Win32.Foundation.PSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWINSPOOL.DeletePrintProcessorA(util.pstrToFfi(pName), util.pstrToFfi(pEnvironment), util.pstrToFfi(pPrintProcessorName)));
+  return util.boolFromFfi(libwinspool_drv.DeletePrintProcessorA(util.pstrToFfi(pName), util.pstrToFfi(pEnvironment), util.pstrToFfi(pPrintProcessorName)));
 }
 
 export function DeletePrintProcessorW(
@@ -14701,7 +12975,7 @@ export function DeletePrintProcessorW(
   pEnvironment: string | null /* Windows.Win32.Foundation.PWSTR */,
   pPrintProcessorName: string | null /* Windows.Win32.Foundation.PWSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWINSPOOL.DeletePrintProcessorW(util.pwstrToFfi(pName), util.pwstrToFfi(pEnvironment), util.pwstrToFfi(pPrintProcessorName)));
+  return util.boolFromFfi(libwinspool_drv.DeletePrintProcessorW(util.pwstrToFfi(pName), util.pwstrToFfi(pEnvironment), util.pwstrToFfi(pPrintProcessorName)));
 }
 
 export function StartDocPrinterA(
@@ -14709,7 +12983,7 @@ export function StartDocPrinterA(
   Level: number /* u32 */,
   pDocInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libWINSPOOL.StartDocPrinterA(util.toPointer(hPrinter), Level, util.toPointer(pDocInfo));
+  return libwinspool_drv.StartDocPrinterA(util.toPointer(hPrinter), Level, util.toPointer(pDocInfo));
 }
 
 export function StartDocPrinterW(
@@ -14717,13 +12991,13 @@ export function StartDocPrinterW(
   Level: number /* u32 */,
   pDocInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libWINSPOOL.StartDocPrinterW(util.toPointer(hPrinter), Level, util.toPointer(pDocInfo));
+  return libwinspool_drv.StartDocPrinterW(util.toPointer(hPrinter), Level, util.toPointer(pDocInfo));
 }
 
 export function StartPagePrinter(
   hPrinter: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWINSPOOL.StartPagePrinter(util.toPointer(hPrinter)));
+  return util.boolFromFfi(libwinspool_drv.StartPagePrinter(util.toPointer(hPrinter)));
 }
 
 export function WritePrinter(
@@ -14732,7 +13006,7 @@ export function WritePrinter(
   cbBuf: number /* u32 */,
   pcWritten: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWINSPOOL.WritePrinter(util.toPointer(hPrinter), util.toPointer(pBuf), cbBuf, util.toPointer(pcWritten)));
+  return util.boolFromFfi(libwinspool_drv.WritePrinter(util.toPointer(hPrinter), util.toPointer(pBuf), cbBuf, util.toPointer(pcWritten)));
 }
 
 export function FlushPrinter(
@@ -14742,19 +13016,19 @@ export function FlushPrinter(
   pcWritten: Deno.PointerValue | Uint8Array | null /* ptr */,
   cSleep: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWINSPOOL.FlushPrinter(util.toPointer(hPrinter), util.toPointer(pBuf), cbBuf, util.toPointer(pcWritten), cSleep));
+  return util.boolFromFfi(libwinspool_drv.FlushPrinter(util.toPointer(hPrinter), util.toPointer(pBuf), cbBuf, util.toPointer(pcWritten), cSleep));
 }
 
 export function EndPagePrinter(
   hPrinter: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWINSPOOL.EndPagePrinter(util.toPointer(hPrinter)));
+  return util.boolFromFfi(libwinspool_drv.EndPagePrinter(util.toPointer(hPrinter)));
 }
 
 export function AbortPrinter(
   hPrinter: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWINSPOOL.AbortPrinter(util.toPointer(hPrinter)));
+  return util.boolFromFfi(libwinspool_drv.AbortPrinter(util.toPointer(hPrinter)));
 }
 
 export function ReadPrinter(
@@ -14763,13 +13037,13 @@ export function ReadPrinter(
   cbBuf: number /* u32 */,
   pNoBytesRead: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWINSPOOL.ReadPrinter(util.toPointer(hPrinter), util.toPointer(pBuf), cbBuf, util.toPointer(pNoBytesRead)));
+  return util.boolFromFfi(libwinspool_drv.ReadPrinter(util.toPointer(hPrinter), util.toPointer(pBuf), cbBuf, util.toPointer(pNoBytesRead)));
 }
 
 export function EndDocPrinter(
   hPrinter: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWINSPOOL.EndDocPrinter(util.toPointer(hPrinter)));
+  return util.boolFromFfi(libwinspool_drv.EndDocPrinter(util.toPointer(hPrinter)));
 }
 
 export function AddJobA(
@@ -14779,7 +13053,7 @@ export function AddJobA(
   cbBuf: number /* u32 */,
   pcbNeeded: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWINSPOOL.AddJobA(util.toPointer(hPrinter), Level, util.toPointer(pData), cbBuf, util.toPointer(pcbNeeded)));
+  return util.boolFromFfi(libwinspool_drv.AddJobA(util.toPointer(hPrinter), Level, util.toPointer(pData), cbBuf, util.toPointer(pcbNeeded)));
 }
 
 export function AddJobW(
@@ -14789,21 +13063,21 @@ export function AddJobW(
   cbBuf: number /* u32 */,
   pcbNeeded: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWINSPOOL.AddJobW(util.toPointer(hPrinter), Level, util.toPointer(pData), cbBuf, util.toPointer(pcbNeeded)));
+  return util.boolFromFfi(libwinspool_drv.AddJobW(util.toPointer(hPrinter), Level, util.toPointer(pData), cbBuf, util.toPointer(pcbNeeded)));
 }
 
 export function ScheduleJob(
   hPrinter: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
   JobId: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWINSPOOL.ScheduleJob(util.toPointer(hPrinter), JobId));
+  return util.boolFromFfi(libwinspool_drv.ScheduleJob(util.toPointer(hPrinter), JobId));
 }
 
 export function PrinterProperties(
   hWnd: Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */,
   hPrinter: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWINSPOOL.PrinterProperties(util.hwndToFfi(hWnd), util.toPointer(hPrinter)));
+  return util.boolFromFfi(libwinspool_drv.PrinterProperties(util.hwndToFfi(hWnd), util.toPointer(hPrinter)));
 }
 
 export function DocumentPropertiesA(
@@ -14814,7 +13088,7 @@ export function DocumentPropertiesA(
   pDevModeInput: Deno.PointerValue | Uint8Array | null /* ptr */,
   fMode: number /* u32 */,
 ): number /* i32 */ {
-  return libWINSPOOL.DocumentPropertiesA(util.hwndToFfi(hWnd), util.toPointer(hPrinter), util.pstrToFfi(pDeviceName), util.toPointer(pDevModeOutput), util.toPointer(pDevModeInput), fMode);
+  return libwinspool_drv.DocumentPropertiesA(util.hwndToFfi(hWnd), util.toPointer(hPrinter), util.pstrToFfi(pDeviceName), util.toPointer(pDevModeOutput), util.toPointer(pDevModeInput), fMode);
 }
 
 export function DocumentPropertiesW(
@@ -14825,7 +13099,7 @@ export function DocumentPropertiesW(
   pDevModeInput: Deno.PointerValue | Uint8Array | null /* ptr */,
   fMode: number /* u32 */,
 ): number /* i32 */ {
-  return libWINSPOOL.DocumentPropertiesW(util.hwndToFfi(hWnd), util.toPointer(hPrinter), util.pwstrToFfi(pDeviceName), util.toPointer(pDevModeOutput), util.toPointer(pDevModeInput), fMode);
+  return libwinspool_drv.DocumentPropertiesW(util.hwndToFfi(hWnd), util.toPointer(hPrinter), util.pwstrToFfi(pDeviceName), util.toPointer(pDevModeOutput), util.toPointer(pDevModeInput), fMode);
 }
 
 export function AdvancedDocumentPropertiesA(
@@ -14835,7 +13109,7 @@ export function AdvancedDocumentPropertiesA(
   pDevModeOutput: Deno.PointerValue | Uint8Array | null /* ptr */,
   pDevModeInput: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
-  return libWINSPOOL.AdvancedDocumentPropertiesA(util.hwndToFfi(hWnd), util.toPointer(hPrinter), util.pstrToFfi(pDeviceName), util.toPointer(pDevModeOutput), util.toPointer(pDevModeInput));
+  return libwinspool_drv.AdvancedDocumentPropertiesA(util.hwndToFfi(hWnd), util.toPointer(hPrinter), util.pstrToFfi(pDeviceName), util.toPointer(pDevModeOutput), util.toPointer(pDevModeInput));
 }
 
 export function AdvancedDocumentPropertiesW(
@@ -14845,7 +13119,7 @@ export function AdvancedDocumentPropertiesW(
   pDevModeOutput: Deno.PointerValue | Uint8Array | null /* ptr */,
   pDevModeInput: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
-  return libWINSPOOL.AdvancedDocumentPropertiesW(util.hwndToFfi(hWnd), util.toPointer(hPrinter), util.pwstrToFfi(pDeviceName), util.toPointer(pDevModeOutput), util.toPointer(pDevModeInput));
+  return libwinspool_drv.AdvancedDocumentPropertiesW(util.hwndToFfi(hWnd), util.toPointer(hPrinter), util.pwstrToFfi(pDeviceName), util.toPointer(pDevModeOutput), util.toPointer(pDevModeInput));
 }
 
 export function ExtDeviceMode(
@@ -14858,7 +13132,7 @@ export function ExtDeviceMode(
   pProfile: string | null /* Windows.Win32.Foundation.PSTR */,
   fMode: number /* u32 */,
 ): number /* i32 */ {
-  return libWINSPOOL.ExtDeviceMode(util.hwndToFfi(hWnd), util.toPointer(hInst), util.toPointer(pDevModeOutput), util.pstrToFfi(pDeviceName), util.pstrToFfi(pPort), util.toPointer(pDevModeInput), util.pstrToFfi(pProfile), fMode);
+  return libwinspool_drv.ExtDeviceMode(util.hwndToFfi(hWnd), util.toPointer(hInst), util.toPointer(pDevModeOutput), util.pstrToFfi(pDeviceName), util.pstrToFfi(pPort), util.toPointer(pDevModeInput), util.pstrToFfi(pProfile), fMode);
 }
 
 export function GetPrinterDataA(
@@ -14869,7 +13143,7 @@ export function GetPrinterDataA(
   nSize: number /* u32 */,
   pcbNeeded: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libWINSPOOL.GetPrinterDataA(util.toPointer(hPrinter), util.pstrToFfi(pValueName), util.toPointer(pType), util.toPointer(pData), nSize, util.toPointer(pcbNeeded));
+  return libwinspool_drv.GetPrinterDataA(util.toPointer(hPrinter), util.pstrToFfi(pValueName), util.toPointer(pType), util.toPointer(pData), nSize, util.toPointer(pcbNeeded));
 }
 
 export function GetPrinterDataW(
@@ -14880,7 +13154,7 @@ export function GetPrinterDataW(
   nSize: number /* u32 */,
   pcbNeeded: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libWINSPOOL.GetPrinterDataW(util.toPointer(hPrinter), util.pwstrToFfi(pValueName), util.toPointer(pType), util.toPointer(pData), nSize, util.toPointer(pcbNeeded));
+  return libwinspool_drv.GetPrinterDataW(util.toPointer(hPrinter), util.pwstrToFfi(pValueName), util.toPointer(pType), util.toPointer(pData), nSize, util.toPointer(pcbNeeded));
 }
 
 export function GetPrinterDataExA(
@@ -14892,7 +13166,7 @@ export function GetPrinterDataExA(
   nSize: number /* u32 */,
   pcbNeeded: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libWINSPOOL.GetPrinterDataExA(util.toPointer(hPrinter), util.pstrToFfi(pKeyName), util.pstrToFfi(pValueName), util.toPointer(pType), util.toPointer(pData), nSize, util.toPointer(pcbNeeded));
+  return libwinspool_drv.GetPrinterDataExA(util.toPointer(hPrinter), util.pstrToFfi(pKeyName), util.pstrToFfi(pValueName), util.toPointer(pType), util.toPointer(pData), nSize, util.toPointer(pcbNeeded));
 }
 
 export function GetPrinterDataExW(
@@ -14904,7 +13178,7 @@ export function GetPrinterDataExW(
   nSize: number /* u32 */,
   pcbNeeded: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libWINSPOOL.GetPrinterDataExW(util.toPointer(hPrinter), util.pwstrToFfi(pKeyName), util.pwstrToFfi(pValueName), util.toPointer(pType), util.toPointer(pData), nSize, util.toPointer(pcbNeeded));
+  return libwinspool_drv.GetPrinterDataExW(util.toPointer(hPrinter), util.pwstrToFfi(pKeyName), util.pwstrToFfi(pValueName), util.toPointer(pType), util.toPointer(pData), nSize, util.toPointer(pcbNeeded));
 }
 
 export function EnumPrinterDataA(
@@ -14918,7 +13192,7 @@ export function EnumPrinterDataA(
   cbData: number /* u32 */,
   pcbData: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libWINSPOOL.EnumPrinterDataA(util.toPointer(hPrinter), dwIndex, util.pstrToFfi(pValueName), cbValueName, util.toPointer(pcbValueName), util.toPointer(pType), util.toPointer(pData), cbData, util.toPointer(pcbData));
+  return libwinspool_drv.EnumPrinterDataA(util.toPointer(hPrinter), dwIndex, util.pstrToFfi(pValueName), cbValueName, util.toPointer(pcbValueName), util.toPointer(pType), util.toPointer(pData), cbData, util.toPointer(pcbData));
 }
 
 export function EnumPrinterDataW(
@@ -14932,7 +13206,7 @@ export function EnumPrinterDataW(
   cbData: number /* u32 */,
   pcbData: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libWINSPOOL.EnumPrinterDataW(util.toPointer(hPrinter), dwIndex, util.pwstrToFfi(pValueName), cbValueName, util.toPointer(pcbValueName), util.toPointer(pType), util.toPointer(pData), cbData, util.toPointer(pcbData));
+  return libwinspool_drv.EnumPrinterDataW(util.toPointer(hPrinter), dwIndex, util.pwstrToFfi(pValueName), cbValueName, util.toPointer(pcbValueName), util.toPointer(pType), util.toPointer(pData), cbData, util.toPointer(pcbData));
 }
 
 export function EnumPrinterDataExA(
@@ -14943,7 +13217,7 @@ export function EnumPrinterDataExA(
   pcbEnumValues: Deno.PointerValue | Uint8Array | null /* ptr */,
   pnEnumValues: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libWINSPOOL.EnumPrinterDataExA(util.toPointer(hPrinter), util.pstrToFfi(pKeyName), util.toPointer(pEnumValues), cbEnumValues, util.toPointer(pcbEnumValues), util.toPointer(pnEnumValues));
+  return libwinspool_drv.EnumPrinterDataExA(util.toPointer(hPrinter), util.pstrToFfi(pKeyName), util.toPointer(pEnumValues), cbEnumValues, util.toPointer(pcbEnumValues), util.toPointer(pnEnumValues));
 }
 
 export function EnumPrinterDataExW(
@@ -14954,7 +13228,7 @@ export function EnumPrinterDataExW(
   pcbEnumValues: Deno.PointerValue | Uint8Array | null /* ptr */,
   pnEnumValues: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libWINSPOOL.EnumPrinterDataExW(util.toPointer(hPrinter), util.pwstrToFfi(pKeyName), util.toPointer(pEnumValues), cbEnumValues, util.toPointer(pcbEnumValues), util.toPointer(pnEnumValues));
+  return libwinspool_drv.EnumPrinterDataExW(util.toPointer(hPrinter), util.pwstrToFfi(pKeyName), util.toPointer(pEnumValues), cbEnumValues, util.toPointer(pcbEnumValues), util.toPointer(pnEnumValues));
 }
 
 export function EnumPrinterKeyA(
@@ -14964,7 +13238,7 @@ export function EnumPrinterKeyA(
   cbSubkey: number /* u32 */,
   pcbSubkey: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libWINSPOOL.EnumPrinterKeyA(util.toPointer(hPrinter), util.pstrToFfi(pKeyName), util.pstrToFfi(pSubkey), cbSubkey, util.toPointer(pcbSubkey));
+  return libwinspool_drv.EnumPrinterKeyA(util.toPointer(hPrinter), util.pstrToFfi(pKeyName), util.pstrToFfi(pSubkey), cbSubkey, util.toPointer(pcbSubkey));
 }
 
 export function EnumPrinterKeyW(
@@ -14974,7 +13248,7 @@ export function EnumPrinterKeyW(
   cbSubkey: number /* u32 */,
   pcbSubkey: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libWINSPOOL.EnumPrinterKeyW(util.toPointer(hPrinter), util.pwstrToFfi(pKeyName), util.pwstrToFfi(pSubkey), cbSubkey, util.toPointer(pcbSubkey));
+  return libwinspool_drv.EnumPrinterKeyW(util.toPointer(hPrinter), util.pwstrToFfi(pKeyName), util.pwstrToFfi(pSubkey), cbSubkey, util.toPointer(pcbSubkey));
 }
 
 export function SetPrinterDataA(
@@ -14984,7 +13258,7 @@ export function SetPrinterDataA(
   pData: Deno.PointerValue | Uint8Array | null /* ptr */,
   cbData: number /* u32 */,
 ): number /* u32 */ {
-  return libWINSPOOL.SetPrinterDataA(util.toPointer(hPrinter), util.pstrToFfi(pValueName), Type, util.toPointer(pData), cbData);
+  return libwinspool_drv.SetPrinterDataA(util.toPointer(hPrinter), util.pstrToFfi(pValueName), Type, util.toPointer(pData), cbData);
 }
 
 export function SetPrinterDataW(
@@ -14994,7 +13268,7 @@ export function SetPrinterDataW(
   pData: Deno.PointerValue | Uint8Array | null /* ptr */,
   cbData: number /* u32 */,
 ): number /* u32 */ {
-  return libWINSPOOL.SetPrinterDataW(util.toPointer(hPrinter), util.pwstrToFfi(pValueName), Type, util.toPointer(pData), cbData);
+  return libwinspool_drv.SetPrinterDataW(util.toPointer(hPrinter), util.pwstrToFfi(pValueName), Type, util.toPointer(pData), cbData);
 }
 
 export function SetPrinterDataExA(
@@ -15005,7 +13279,7 @@ export function SetPrinterDataExA(
   pData: Deno.PointerValue | Uint8Array | null /* ptr */,
   cbData: number /* u32 */,
 ): number /* u32 */ {
-  return libWINSPOOL.SetPrinterDataExA(util.toPointer(hPrinter), util.pstrToFfi(pKeyName), util.pstrToFfi(pValueName), Type, util.toPointer(pData), cbData);
+  return libwinspool_drv.SetPrinterDataExA(util.toPointer(hPrinter), util.pstrToFfi(pKeyName), util.pstrToFfi(pValueName), Type, util.toPointer(pData), cbData);
 }
 
 export function SetPrinterDataExW(
@@ -15016,21 +13290,21 @@ export function SetPrinterDataExW(
   pData: Deno.PointerValue | Uint8Array | null /* ptr */,
   cbData: number /* u32 */,
 ): number /* u32 */ {
-  return libWINSPOOL.SetPrinterDataExW(util.toPointer(hPrinter), util.pwstrToFfi(pKeyName), util.pwstrToFfi(pValueName), Type, util.toPointer(pData), cbData);
+  return libwinspool_drv.SetPrinterDataExW(util.toPointer(hPrinter), util.pwstrToFfi(pKeyName), util.pwstrToFfi(pValueName), Type, util.toPointer(pData), cbData);
 }
 
 export function DeletePrinterDataA(
   hPrinter: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
   pValueName: string | null /* Windows.Win32.Foundation.PSTR */,
 ): number /* u32 */ {
-  return libWINSPOOL.DeletePrinterDataA(util.toPointer(hPrinter), util.pstrToFfi(pValueName));
+  return libwinspool_drv.DeletePrinterDataA(util.toPointer(hPrinter), util.pstrToFfi(pValueName));
 }
 
 export function DeletePrinterDataW(
   hPrinter: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
   pValueName: string | null /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
-  return libWINSPOOL.DeletePrinterDataW(util.toPointer(hPrinter), util.pwstrToFfi(pValueName));
+  return libwinspool_drv.DeletePrinterDataW(util.toPointer(hPrinter), util.pwstrToFfi(pValueName));
 }
 
 export function DeletePrinterDataExA(
@@ -15038,7 +13312,7 @@ export function DeletePrinterDataExA(
   pKeyName: string | null /* Windows.Win32.Foundation.PSTR */,
   pValueName: string | null /* Windows.Win32.Foundation.PSTR */,
 ): number /* u32 */ {
-  return libWINSPOOL.DeletePrinterDataExA(util.toPointer(hPrinter), util.pstrToFfi(pKeyName), util.pstrToFfi(pValueName));
+  return libwinspool_drv.DeletePrinterDataExA(util.toPointer(hPrinter), util.pstrToFfi(pKeyName), util.pstrToFfi(pValueName));
 }
 
 export function DeletePrinterDataExW(
@@ -15046,28 +13320,28 @@ export function DeletePrinterDataExW(
   pKeyName: string | null /* Windows.Win32.Foundation.PWSTR */,
   pValueName: string | null /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
-  return libWINSPOOL.DeletePrinterDataExW(util.toPointer(hPrinter), util.pwstrToFfi(pKeyName), util.pwstrToFfi(pValueName));
+  return libwinspool_drv.DeletePrinterDataExW(util.toPointer(hPrinter), util.pwstrToFfi(pKeyName), util.pwstrToFfi(pValueName));
 }
 
 export function DeletePrinterKeyA(
   hPrinter: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
   pKeyName: string | null /* Windows.Win32.Foundation.PSTR */,
 ): number /* u32 */ {
-  return libWINSPOOL.DeletePrinterKeyA(util.toPointer(hPrinter), util.pstrToFfi(pKeyName));
+  return libwinspool_drv.DeletePrinterKeyA(util.toPointer(hPrinter), util.pstrToFfi(pKeyName));
 }
 
 export function DeletePrinterKeyW(
   hPrinter: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
   pKeyName: string | null /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
-  return libWINSPOOL.DeletePrinterKeyW(util.toPointer(hPrinter), util.pwstrToFfi(pKeyName));
+  return libwinspool_drv.DeletePrinterKeyW(util.toPointer(hPrinter), util.pwstrToFfi(pKeyName));
 }
 
 export function WaitForPrinterChange(
   hPrinter: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
   Flags: number /* u32 */,
 ): number /* u32 */ {
-  return libWINSPOOL.WaitForPrinterChange(util.toPointer(hPrinter), Flags);
+  return libwinspool_drv.WaitForPrinterChange(util.toPointer(hPrinter), Flags);
 }
 
 export function FindFirstPrinterChangeNotification(
@@ -15076,7 +13350,7 @@ export function FindFirstPrinterChangeNotification(
   fdwOptions: number /* u32 */,
   pPrinterNotifyOptions: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */ {
-  return util.pointerFromFfi(libWINSPOOL.FindFirstPrinterChangeNotification(util.toPointer(hPrinter), fdwFilter, fdwOptions, util.toPointer(pPrinterNotifyOptions)));
+  return util.pointerFromFfi(libwinspool_drv.FindFirstPrinterChangeNotification(util.toPointer(hPrinter), fdwFilter, fdwOptions, util.toPointer(pPrinterNotifyOptions)));
 }
 
 export function FindNextPrinterChangeNotification(
@@ -15085,19 +13359,19 @@ export function FindNextPrinterChangeNotification(
   pvReserved: Deno.PointerValue | Uint8Array | null /* ptr */,
   ppPrinterNotifyInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWINSPOOL.FindNextPrinterChangeNotification(util.toPointer(hChange), util.toPointer(pdwChange), util.toPointer(pvReserved), util.toPointer(ppPrinterNotifyInfo)));
+  return util.boolFromFfi(libwinspool_drv.FindNextPrinterChangeNotification(util.toPointer(hChange), util.toPointer(pdwChange), util.toPointer(pvReserved), util.toPointer(ppPrinterNotifyInfo)));
 }
 
 export function FreePrinterNotifyInfo(
   pPrinterNotifyInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWINSPOOL.FreePrinterNotifyInfo(util.toPointer(pPrinterNotifyInfo)));
+  return util.boolFromFfi(libwinspool_drv.FreePrinterNotifyInfo(util.toPointer(pPrinterNotifyInfo)));
 }
 
 export function FindClosePrinterChangeNotification(
   hChange: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWINSPOOL.FindClosePrinterChangeNotification(util.toPointer(hChange)));
+  return util.boolFromFfi(libwinspool_drv.FindClosePrinterChangeNotification(util.toPointer(hChange)));
 }
 
 export function PrinterMessageBoxA(
@@ -15108,7 +13382,7 @@ export function PrinterMessageBoxA(
   pCaption: string | null /* Windows.Win32.Foundation.PSTR */,
   dwType: number /* u32 */,
 ): number /* u32 */ {
-  return libWINSPOOL.PrinterMessageBoxA(util.toPointer(hPrinter), Error, util.hwndToFfi(hWnd), util.pstrToFfi(pText), util.pstrToFfi(pCaption), dwType);
+  return libwinspool_drv.PrinterMessageBoxA(util.toPointer(hPrinter), Error, util.hwndToFfi(hWnd), util.pstrToFfi(pText), util.pstrToFfi(pCaption), dwType);
 }
 
 export function PrinterMessageBoxW(
@@ -15119,13 +13393,13 @@ export function PrinterMessageBoxW(
   pCaption: string | null /* Windows.Win32.Foundation.PWSTR */,
   dwType: number /* u32 */,
 ): number /* u32 */ {
-  return libWINSPOOL.PrinterMessageBoxW(util.toPointer(hPrinter), Error, util.hwndToFfi(hWnd), util.pwstrToFfi(pText), util.pwstrToFfi(pCaption), dwType);
+  return libwinspool_drv.PrinterMessageBoxW(util.toPointer(hPrinter), Error, util.hwndToFfi(hWnd), util.pwstrToFfi(pText), util.pwstrToFfi(pCaption), dwType);
 }
 
 export function ClosePrinter(
   hPrinter: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWINSPOOL.ClosePrinter(util.toPointer(hPrinter)));
+  return util.boolFromFfi(libwinspool_drv.ClosePrinter(util.toPointer(hPrinter)));
 }
 
 export function AddFormA(
@@ -15133,7 +13407,7 @@ export function AddFormA(
   Level: number /* u32 */,
   pForm: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWINSPOOL.AddFormA(util.toPointer(hPrinter), Level, util.toPointer(pForm)));
+  return util.boolFromFfi(libwinspool_drv.AddFormA(util.toPointer(hPrinter), Level, util.toPointer(pForm)));
 }
 
 export function AddFormW(
@@ -15141,21 +13415,21 @@ export function AddFormW(
   Level: number /* u32 */,
   pForm: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWINSPOOL.AddFormW(util.toPointer(hPrinter), Level, util.toPointer(pForm)));
+  return util.boolFromFfi(libwinspool_drv.AddFormW(util.toPointer(hPrinter), Level, util.toPointer(pForm)));
 }
 
 export function DeleteFormA(
   hPrinter: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
   pFormName: string | null /* Windows.Win32.Foundation.PSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWINSPOOL.DeleteFormA(util.toPointer(hPrinter), util.pstrToFfi(pFormName)));
+  return util.boolFromFfi(libwinspool_drv.DeleteFormA(util.toPointer(hPrinter), util.pstrToFfi(pFormName)));
 }
 
 export function DeleteFormW(
   hPrinter: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
   pFormName: string | null /* Windows.Win32.Foundation.PWSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWINSPOOL.DeleteFormW(util.toPointer(hPrinter), util.pwstrToFfi(pFormName)));
+  return util.boolFromFfi(libwinspool_drv.DeleteFormW(util.toPointer(hPrinter), util.pwstrToFfi(pFormName)));
 }
 
 export function GetFormA(
@@ -15166,7 +13440,7 @@ export function GetFormA(
   cbBuf: number /* u32 */,
   pcbNeeded: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWINSPOOL.GetFormA(util.toPointer(hPrinter), util.pstrToFfi(pFormName), Level, util.toPointer(pForm), cbBuf, util.toPointer(pcbNeeded)));
+  return util.boolFromFfi(libwinspool_drv.GetFormA(util.toPointer(hPrinter), util.pstrToFfi(pFormName), Level, util.toPointer(pForm), cbBuf, util.toPointer(pcbNeeded)));
 }
 
 export function GetFormW(
@@ -15177,7 +13451,7 @@ export function GetFormW(
   cbBuf: number /* u32 */,
   pcbNeeded: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWINSPOOL.GetFormW(util.toPointer(hPrinter), util.pwstrToFfi(pFormName), Level, util.toPointer(pForm), cbBuf, util.toPointer(pcbNeeded)));
+  return util.boolFromFfi(libwinspool_drv.GetFormW(util.toPointer(hPrinter), util.pwstrToFfi(pFormName), Level, util.toPointer(pForm), cbBuf, util.toPointer(pcbNeeded)));
 }
 
 export function SetFormA(
@@ -15186,7 +13460,7 @@ export function SetFormA(
   Level: number /* u32 */,
   pForm: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWINSPOOL.SetFormA(util.toPointer(hPrinter), util.pstrToFfi(pFormName), Level, util.toPointer(pForm)));
+  return util.boolFromFfi(libwinspool_drv.SetFormA(util.toPointer(hPrinter), util.pstrToFfi(pFormName), Level, util.toPointer(pForm)));
 }
 
 export function SetFormW(
@@ -15195,7 +13469,7 @@ export function SetFormW(
   Level: number /* u32 */,
   pForm: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWINSPOOL.SetFormW(util.toPointer(hPrinter), util.pwstrToFfi(pFormName), Level, util.toPointer(pForm)));
+  return util.boolFromFfi(libwinspool_drv.SetFormW(util.toPointer(hPrinter), util.pwstrToFfi(pFormName), Level, util.toPointer(pForm)));
 }
 
 export function EnumFormsA(
@@ -15206,7 +13480,7 @@ export function EnumFormsA(
   pcbNeeded: Deno.PointerValue | Uint8Array | null /* ptr */,
   pcReturned: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWINSPOOL.EnumFormsA(util.toPointer(hPrinter), Level, util.toPointer(pForm), cbBuf, util.toPointer(pcbNeeded), util.toPointer(pcReturned)));
+  return util.boolFromFfi(libwinspool_drv.EnumFormsA(util.toPointer(hPrinter), Level, util.toPointer(pForm), cbBuf, util.toPointer(pcbNeeded), util.toPointer(pcReturned)));
 }
 
 export function EnumFormsW(
@@ -15217,7 +13491,7 @@ export function EnumFormsW(
   pcbNeeded: Deno.PointerValue | Uint8Array | null /* ptr */,
   pcReturned: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWINSPOOL.EnumFormsW(util.toPointer(hPrinter), Level, util.toPointer(pForm), cbBuf, util.toPointer(pcbNeeded), util.toPointer(pcReturned)));
+  return util.boolFromFfi(libwinspool_drv.EnumFormsW(util.toPointer(hPrinter), Level, util.toPointer(pForm), cbBuf, util.toPointer(pcbNeeded), util.toPointer(pcReturned)));
 }
 
 export function EnumMonitorsA(
@@ -15228,7 +13502,7 @@ export function EnumMonitorsA(
   pcbNeeded: Deno.PointerValue | Uint8Array | null /* ptr */,
   pcReturned: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWINSPOOL.EnumMonitorsA(util.pstrToFfi(pName), Level, util.toPointer(pMonitor), cbBuf, util.toPointer(pcbNeeded), util.toPointer(pcReturned)));
+  return util.boolFromFfi(libwinspool_drv.EnumMonitorsA(util.pstrToFfi(pName), Level, util.toPointer(pMonitor), cbBuf, util.toPointer(pcbNeeded), util.toPointer(pcReturned)));
 }
 
 export function EnumMonitorsW(
@@ -15239,7 +13513,7 @@ export function EnumMonitorsW(
   pcbNeeded: Deno.PointerValue | Uint8Array | null /* ptr */,
   pcReturned: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWINSPOOL.EnumMonitorsW(util.pwstrToFfi(pName), Level, util.toPointer(pMonitor), cbBuf, util.toPointer(pcbNeeded), util.toPointer(pcReturned)));
+  return util.boolFromFfi(libwinspool_drv.EnumMonitorsW(util.pwstrToFfi(pName), Level, util.toPointer(pMonitor), cbBuf, util.toPointer(pcbNeeded), util.toPointer(pcReturned)));
 }
 
 export function AddMonitorA(
@@ -15247,7 +13521,7 @@ export function AddMonitorA(
   Level: number /* u32 */,
   pMonitors: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWINSPOOL.AddMonitorA(util.pstrToFfi(pName), Level, util.toPointer(pMonitors)));
+  return util.boolFromFfi(libwinspool_drv.AddMonitorA(util.pstrToFfi(pName), Level, util.toPointer(pMonitors)));
 }
 
 export function AddMonitorW(
@@ -15255,7 +13529,7 @@ export function AddMonitorW(
   Level: number /* u32 */,
   pMonitors: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWINSPOOL.AddMonitorW(util.pwstrToFfi(pName), Level, util.toPointer(pMonitors)));
+  return util.boolFromFfi(libwinspool_drv.AddMonitorW(util.pwstrToFfi(pName), Level, util.toPointer(pMonitors)));
 }
 
 export function DeleteMonitorA(
@@ -15263,7 +13537,7 @@ export function DeleteMonitorA(
   pEnvironment: string | null /* Windows.Win32.Foundation.PSTR */,
   pMonitorName: string | null /* Windows.Win32.Foundation.PSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWINSPOOL.DeleteMonitorA(util.pstrToFfi(pName), util.pstrToFfi(pEnvironment), util.pstrToFfi(pMonitorName)));
+  return util.boolFromFfi(libwinspool_drv.DeleteMonitorA(util.pstrToFfi(pName), util.pstrToFfi(pEnvironment), util.pstrToFfi(pMonitorName)));
 }
 
 export function DeleteMonitorW(
@@ -15271,7 +13545,7 @@ export function DeleteMonitorW(
   pEnvironment: string | null /* Windows.Win32.Foundation.PWSTR */,
   pMonitorName: string | null /* Windows.Win32.Foundation.PWSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWINSPOOL.DeleteMonitorW(util.pwstrToFfi(pName), util.pwstrToFfi(pEnvironment), util.pwstrToFfi(pMonitorName)));
+  return util.boolFromFfi(libwinspool_drv.DeleteMonitorW(util.pwstrToFfi(pName), util.pwstrToFfi(pEnvironment), util.pwstrToFfi(pMonitorName)));
 }
 
 export function EnumPortsA(
@@ -15282,7 +13556,7 @@ export function EnumPortsA(
   pcbNeeded: Deno.PointerValue | Uint8Array | null /* ptr */,
   pcReturned: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWINSPOOL.EnumPortsA(util.pstrToFfi(pName), Level, util.toPointer(pPort), cbBuf, util.toPointer(pcbNeeded), util.toPointer(pcReturned)));
+  return util.boolFromFfi(libwinspool_drv.EnumPortsA(util.pstrToFfi(pName), Level, util.toPointer(pPort), cbBuf, util.toPointer(pcbNeeded), util.toPointer(pcReturned)));
 }
 
 export function EnumPortsW(
@@ -15293,7 +13567,7 @@ export function EnumPortsW(
   pcbNeeded: Deno.PointerValue | Uint8Array | null /* ptr */,
   pcReturned: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWINSPOOL.EnumPortsW(util.pwstrToFfi(pName), Level, util.toPointer(pPort), cbBuf, util.toPointer(pcbNeeded), util.toPointer(pcReturned)));
+  return util.boolFromFfi(libwinspool_drv.EnumPortsW(util.pwstrToFfi(pName), Level, util.toPointer(pPort), cbBuf, util.toPointer(pcbNeeded), util.toPointer(pcReturned)));
 }
 
 export function AddPortA(
@@ -15301,7 +13575,7 @@ export function AddPortA(
   hWnd: Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */,
   pMonitorName: string | null /* Windows.Win32.Foundation.PSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWINSPOOL.AddPortA(util.pstrToFfi(pName), util.hwndToFfi(hWnd), util.pstrToFfi(pMonitorName)));
+  return util.boolFromFfi(libwinspool_drv.AddPortA(util.pstrToFfi(pName), util.hwndToFfi(hWnd), util.pstrToFfi(pMonitorName)));
 }
 
 export function AddPortW(
@@ -15309,7 +13583,7 @@ export function AddPortW(
   hWnd: Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */,
   pMonitorName: string | null /* Windows.Win32.Foundation.PWSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWINSPOOL.AddPortW(util.pwstrToFfi(pName), util.hwndToFfi(hWnd), util.pwstrToFfi(pMonitorName)));
+  return util.boolFromFfi(libwinspool_drv.AddPortW(util.pwstrToFfi(pName), util.hwndToFfi(hWnd), util.pwstrToFfi(pMonitorName)));
 }
 
 export function ConfigurePortA(
@@ -15317,7 +13591,7 @@ export function ConfigurePortA(
   hWnd: Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */,
   pPortName: string | null /* Windows.Win32.Foundation.PSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWINSPOOL.ConfigurePortA(util.pstrToFfi(pName), util.hwndToFfi(hWnd), util.pstrToFfi(pPortName)));
+  return util.boolFromFfi(libwinspool_drv.ConfigurePortA(util.pstrToFfi(pName), util.hwndToFfi(hWnd), util.pstrToFfi(pPortName)));
 }
 
 export function ConfigurePortW(
@@ -15325,7 +13599,7 @@ export function ConfigurePortW(
   hWnd: Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */,
   pPortName: string | null /* Windows.Win32.Foundation.PWSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWINSPOOL.ConfigurePortW(util.pwstrToFfi(pName), util.hwndToFfi(hWnd), util.pwstrToFfi(pPortName)));
+  return util.boolFromFfi(libwinspool_drv.ConfigurePortW(util.pwstrToFfi(pName), util.hwndToFfi(hWnd), util.pwstrToFfi(pPortName)));
 }
 
 export function DeletePortA(
@@ -15333,7 +13607,7 @@ export function DeletePortA(
   hWnd: Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */,
   pPortName: string | null /* Windows.Win32.Foundation.PSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWINSPOOL.DeletePortA(util.pstrToFfi(pName), util.hwndToFfi(hWnd), util.pstrToFfi(pPortName)));
+  return util.boolFromFfi(libwinspool_drv.DeletePortA(util.pstrToFfi(pName), util.hwndToFfi(hWnd), util.pstrToFfi(pPortName)));
 }
 
 export function DeletePortW(
@@ -15341,7 +13615,7 @@ export function DeletePortW(
   hWnd: Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */,
   pPortName: string | null /* Windows.Win32.Foundation.PWSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWINSPOOL.DeletePortW(util.pwstrToFfi(pName), util.hwndToFfi(hWnd), util.pwstrToFfi(pPortName)));
+  return util.boolFromFfi(libwinspool_drv.DeletePortW(util.pwstrToFfi(pName), util.hwndToFfi(hWnd), util.pwstrToFfi(pPortName)));
 }
 
 export function XcvDataW(
@@ -15354,33 +13628,33 @@ export function XcvDataW(
   pcbOutputNeeded: Deno.PointerValue | Uint8Array | null /* ptr */,
   pdwStatus: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWINSPOOL.XcvDataW(util.toPointer(hXcv), util.pwstrToFfi(pszDataName), util.toPointer(pInputData), cbInputData, util.toPointer(pOutputData), cbOutputData, util.toPointer(pcbOutputNeeded), util.toPointer(pdwStatus)));
+  return util.boolFromFfi(libwinspool_drv.XcvDataW(util.toPointer(hXcv), util.pwstrToFfi(pszDataName), util.toPointer(pInputData), cbInputData, util.toPointer(pOutputData), cbOutputData, util.toPointer(pcbOutputNeeded), util.toPointer(pdwStatus)));
 }
 
 export function GetDefaultPrinterA(
   pszBuffer: string | null /* Windows.Win32.Foundation.PSTR */,
   pcchBuffer: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWINSPOOL.GetDefaultPrinterA(util.pstrToFfi(pszBuffer), util.toPointer(pcchBuffer)));
+  return util.boolFromFfi(libwinspool_drv.GetDefaultPrinterA(util.pstrToFfi(pszBuffer), util.toPointer(pcchBuffer)));
 }
 
 export function GetDefaultPrinterW(
   pszBuffer: string | null /* Windows.Win32.Foundation.PWSTR */,
   pcchBuffer: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWINSPOOL.GetDefaultPrinterW(util.pwstrToFfi(pszBuffer), util.toPointer(pcchBuffer)));
+  return util.boolFromFfi(libwinspool_drv.GetDefaultPrinterW(util.pwstrToFfi(pszBuffer), util.toPointer(pcchBuffer)));
 }
 
 export function SetDefaultPrinterA(
   pszPrinter: string | null /* Windows.Win32.Foundation.PSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWINSPOOL.SetDefaultPrinterA(util.pstrToFfi(pszPrinter)));
+  return util.boolFromFfi(libwinspool_drv.SetDefaultPrinterA(util.pstrToFfi(pszPrinter)));
 }
 
 export function SetDefaultPrinterW(
   pszPrinter: string | null /* Windows.Win32.Foundation.PWSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWINSPOOL.SetDefaultPrinterW(util.pwstrToFfi(pszPrinter)));
+  return util.boolFromFfi(libwinspool_drv.SetDefaultPrinterW(util.pwstrToFfi(pszPrinter)));
 }
 
 export function SetPortA(
@@ -15389,7 +13663,7 @@ export function SetPortA(
   dwLevel: number /* u32 */,
   pPortInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWINSPOOL.SetPortA(util.pstrToFfi(pName), util.pstrToFfi(pPortName), dwLevel, util.toPointer(pPortInfo)));
+  return util.boolFromFfi(libwinspool_drv.SetPortA(util.pstrToFfi(pName), util.pstrToFfi(pPortName), dwLevel, util.toPointer(pPortInfo)));
 }
 
 export function SetPortW(
@@ -15398,38 +13672,38 @@ export function SetPortW(
   dwLevel: number /* u32 */,
   pPortInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWINSPOOL.SetPortW(util.pwstrToFfi(pName), util.pwstrToFfi(pPortName), dwLevel, util.toPointer(pPortInfo)));
+  return util.boolFromFfi(libwinspool_drv.SetPortW(util.pwstrToFfi(pName), util.pwstrToFfi(pPortName), dwLevel, util.toPointer(pPortInfo)));
 }
 
 export function AddPrinterConnectionA(
   pName: string | null /* Windows.Win32.Foundation.PSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWINSPOOL.AddPrinterConnectionA(util.pstrToFfi(pName)));
+  return util.boolFromFfi(libwinspool_drv.AddPrinterConnectionA(util.pstrToFfi(pName)));
 }
 
 export function AddPrinterConnectionW(
   pName: string | null /* Windows.Win32.Foundation.PWSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWINSPOOL.AddPrinterConnectionW(util.pwstrToFfi(pName)));
+  return util.boolFromFfi(libwinspool_drv.AddPrinterConnectionW(util.pwstrToFfi(pName)));
 }
 
 export function DeletePrinterConnectionA(
   pName: string | null /* Windows.Win32.Foundation.PSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWINSPOOL.DeletePrinterConnectionA(util.pstrToFfi(pName)));
+  return util.boolFromFfi(libwinspool_drv.DeletePrinterConnectionA(util.pstrToFfi(pName)));
 }
 
 export function DeletePrinterConnectionW(
   pName: string | null /* Windows.Win32.Foundation.PWSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWINSPOOL.DeletePrinterConnectionW(util.pwstrToFfi(pName)));
+  return util.boolFromFfi(libwinspool_drv.DeletePrinterConnectionW(util.pwstrToFfi(pName)));
 }
 
 export function ConnectToPrinterDlg(
   hwnd: Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */,
   Flags: number /* u32 */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */ {
-  return util.pointerFromFfi(libWINSPOOL.ConnectToPrinterDlg(util.hwndToFfi(hwnd), Flags));
+  return util.pointerFromFfi(libwinspool_drv.ConnectToPrinterDlg(util.hwndToFfi(hwnd), Flags));
 }
 
 export function AddPrintProvidorA(
@@ -15437,7 +13711,7 @@ export function AddPrintProvidorA(
   Level: number /* u32 */,
   pProvidorInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWINSPOOL.AddPrintProvidorA(util.pstrToFfi(pName), Level, util.toPointer(pProvidorInfo)));
+  return util.boolFromFfi(libwinspool_drv.AddPrintProvidorA(util.pstrToFfi(pName), Level, util.toPointer(pProvidorInfo)));
 }
 
 export function AddPrintProvidorW(
@@ -15445,7 +13719,7 @@ export function AddPrintProvidorW(
   Level: number /* u32 */,
   pProvidorInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWINSPOOL.AddPrintProvidorW(util.pwstrToFfi(pName), Level, util.toPointer(pProvidorInfo)));
+  return util.boolFromFfi(libwinspool_drv.AddPrintProvidorW(util.pwstrToFfi(pName), Level, util.toPointer(pProvidorInfo)));
 }
 
 export function DeletePrintProvidorA(
@@ -15453,7 +13727,7 @@ export function DeletePrintProvidorA(
   pEnvironment: string | null /* Windows.Win32.Foundation.PSTR */,
   pPrintProvidorName: string | null /* Windows.Win32.Foundation.PSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWINSPOOL.DeletePrintProvidorA(util.pstrToFfi(pName), util.pstrToFfi(pEnvironment), util.pstrToFfi(pPrintProvidorName)));
+  return util.boolFromFfi(libwinspool_drv.DeletePrintProvidorA(util.pstrToFfi(pName), util.pstrToFfi(pEnvironment), util.pstrToFfi(pPrintProvidorName)));
 }
 
 export function DeletePrintProvidorW(
@@ -15461,21 +13735,21 @@ export function DeletePrintProvidorW(
   pEnvironment: string | null /* Windows.Win32.Foundation.PWSTR */,
   pPrintProvidorName: string | null /* Windows.Win32.Foundation.PWSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWINSPOOL.DeletePrintProvidorW(util.pwstrToFfi(pName), util.pwstrToFfi(pEnvironment), util.pwstrToFfi(pPrintProvidorName)));
+  return util.boolFromFfi(libwinspool_drv.DeletePrintProvidorW(util.pwstrToFfi(pName), util.pwstrToFfi(pEnvironment), util.pwstrToFfi(pPrintProvidorName)));
 }
 
 export function IsValidDevmodeA(
   pDevmode: Deno.PointerValue | Uint8Array | null /* ptr */,
   DevmodeSize: Deno.PointerValue /* usize */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWINSPOOL.IsValidDevmodeA(util.toPointer(pDevmode), DevmodeSize));
+  return util.boolFromFfi(libwinspool_drv.IsValidDevmodeA(util.toPointer(pDevmode), DevmodeSize));
 }
 
 export function IsValidDevmodeW(
   pDevmode: Deno.PointerValue | Uint8Array | null /* ptr */,
   DevmodeSize: Deno.PointerValue /* usize */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWINSPOOL.IsValidDevmodeW(util.toPointer(pDevmode), DevmodeSize));
+  return util.boolFromFfi(libwinspool_drv.IsValidDevmodeW(util.toPointer(pDevmode), DevmodeSize));
 }
 
 export function OpenPrinter2A(
@@ -15484,7 +13758,7 @@ export function OpenPrinter2A(
   pDefault: Deno.PointerValue | Uint8Array | null /* ptr */,
   pOptions: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWINSPOOL.OpenPrinter2A(util.pstrToFfi(pPrinterName), util.toPointer(phPrinter), util.toPointer(pDefault), util.toPointer(pOptions)));
+  return util.boolFromFfi(libwinspool_drv.OpenPrinter2A(util.pstrToFfi(pPrinterName), util.toPointer(phPrinter), util.toPointer(pDefault), util.toPointer(pOptions)));
 }
 
 export function OpenPrinter2W(
@@ -15493,7 +13767,7 @@ export function OpenPrinter2W(
   pDefault: Deno.PointerValue | Uint8Array | null /* ptr */,
   pOptions: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWINSPOOL.OpenPrinter2W(util.pwstrToFfi(pPrinterName), util.toPointer(phPrinter), util.toPointer(pDefault), util.toPointer(pOptions)));
+  return util.boolFromFfi(libwinspool_drv.OpenPrinter2W(util.pwstrToFfi(pPrinterName), util.toPointer(phPrinter), util.toPointer(pDefault), util.toPointer(pOptions)));
 }
 
 export function AddPrinterConnection2A(
@@ -15502,7 +13776,7 @@ export function AddPrinterConnection2A(
   dwLevel: number /* u32 */,
   pConnectionInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWINSPOOL.AddPrinterConnection2A(util.hwndToFfi(hWnd), util.pstrToFfi(pszName), dwLevel, util.toPointer(pConnectionInfo)));
+  return util.boolFromFfi(libwinspool_drv.AddPrinterConnection2A(util.hwndToFfi(hWnd), util.pstrToFfi(pszName), dwLevel, util.toPointer(pConnectionInfo)));
 }
 
 export function AddPrinterConnection2W(
@@ -15511,7 +13785,7 @@ export function AddPrinterConnection2W(
   dwLevel: number /* u32 */,
   pConnectionInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWINSPOOL.AddPrinterConnection2W(util.hwndToFfi(hWnd), util.pwstrToFfi(pszName), dwLevel, util.toPointer(pConnectionInfo)));
+  return util.boolFromFfi(libwinspool_drv.AddPrinterConnection2W(util.hwndToFfi(hWnd), util.pwstrToFfi(pszName), dwLevel, util.toPointer(pConnectionInfo)));
 }
 
 export function InstallPrinterDriverFromPackageA(
@@ -15521,7 +13795,7 @@ export function InstallPrinterDriverFromPackageA(
   pszEnvironment: string | null /* Windows.Win32.Foundation.PSTR */,
   dwFlags: number /* u32 */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libWINSPOOL.InstallPrinterDriverFromPackageA(util.pstrToFfi(pszServer), util.pstrToFfi(pszInfPath), util.pstrToFfi(pszDriverName), util.pstrToFfi(pszEnvironment), dwFlags));
+  return util.pointerFromFfi(libwinspool_drv.InstallPrinterDriverFromPackageA(util.pstrToFfi(pszServer), util.pstrToFfi(pszInfPath), util.pstrToFfi(pszDriverName), util.pstrToFfi(pszEnvironment), dwFlags));
 }
 
 export function InstallPrinterDriverFromPackageW(
@@ -15531,7 +13805,7 @@ export function InstallPrinterDriverFromPackageW(
   pszEnvironment: string | null /* Windows.Win32.Foundation.PWSTR */,
   dwFlags: number /* u32 */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libWINSPOOL.InstallPrinterDriverFromPackageW(util.pwstrToFfi(pszServer), util.pwstrToFfi(pszInfPath), util.pwstrToFfi(pszDriverName), util.pwstrToFfi(pszEnvironment), dwFlags));
+  return util.pointerFromFfi(libwinspool_drv.InstallPrinterDriverFromPackageW(util.pwstrToFfi(pszServer), util.pwstrToFfi(pszInfPath), util.pwstrToFfi(pszDriverName), util.pwstrToFfi(pszEnvironment), dwFlags));
 }
 
 export function UploadPrinterDriverPackageA(
@@ -15543,7 +13817,7 @@ export function UploadPrinterDriverPackageA(
   pszDestInfPath: string | null /* Windows.Win32.Foundation.PSTR */,
   pcchDestInfPath: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libWINSPOOL.UploadPrinterDriverPackageA(util.pstrToFfi(pszServer), util.pstrToFfi(pszInfPath), util.pstrToFfi(pszEnvironment), dwFlags, util.hwndToFfi(hwnd), util.pstrToFfi(pszDestInfPath), util.toPointer(pcchDestInfPath)));
+  return util.pointerFromFfi(libwinspool_drv.UploadPrinterDriverPackageA(util.pstrToFfi(pszServer), util.pstrToFfi(pszInfPath), util.pstrToFfi(pszEnvironment), dwFlags, util.hwndToFfi(hwnd), util.pstrToFfi(pszDestInfPath), util.toPointer(pcchDestInfPath)));
 }
 
 export function UploadPrinterDriverPackageW(
@@ -15555,7 +13829,7 @@ export function UploadPrinterDriverPackageW(
   pszDestInfPath: string | null /* Windows.Win32.Foundation.PWSTR */,
   pcchDestInfPath: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libWINSPOOL.UploadPrinterDriverPackageW(util.pwstrToFfi(pszServer), util.pwstrToFfi(pszInfPath), util.pwstrToFfi(pszEnvironment), dwFlags, util.hwndToFfi(hwnd), util.pwstrToFfi(pszDestInfPath), util.toPointer(pcchDestInfPath)));
+  return util.pointerFromFfi(libwinspool_drv.UploadPrinterDriverPackageW(util.pwstrToFfi(pszServer), util.pwstrToFfi(pszInfPath), util.pwstrToFfi(pszEnvironment), dwFlags, util.hwndToFfi(hwnd), util.pwstrToFfi(pszDestInfPath), util.toPointer(pcchDestInfPath)));
 }
 
 export function GetCorePrinterDriversA(
@@ -15565,7 +13839,7 @@ export function GetCorePrinterDriversA(
   cCorePrinterDrivers: number /* u32 */,
   pCorePrinterDrivers: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libWINSPOOL.GetCorePrinterDriversA(util.pstrToFfi(pszServer), util.pstrToFfi(pszEnvironment), util.pstrToFfi(pszzCoreDriverDependencies), cCorePrinterDrivers, util.toPointer(pCorePrinterDrivers)));
+  return util.pointerFromFfi(libwinspool_drv.GetCorePrinterDriversA(util.pstrToFfi(pszServer), util.pstrToFfi(pszEnvironment), util.pstrToFfi(pszzCoreDriverDependencies), cCorePrinterDrivers, util.toPointer(pCorePrinterDrivers)));
 }
 
 export function GetCorePrinterDriversW(
@@ -15575,7 +13849,7 @@ export function GetCorePrinterDriversW(
   cCorePrinterDrivers: number /* u32 */,
   pCorePrinterDrivers: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libWINSPOOL.GetCorePrinterDriversW(util.pwstrToFfi(pszServer), util.pwstrToFfi(pszEnvironment), util.pwstrToFfi(pszzCoreDriverDependencies), cCorePrinterDrivers, util.toPointer(pCorePrinterDrivers)));
+  return util.pointerFromFfi(libwinspool_drv.GetCorePrinterDriversW(util.pwstrToFfi(pszServer), util.pwstrToFfi(pszEnvironment), util.pwstrToFfi(pszzCoreDriverDependencies), cCorePrinterDrivers, util.toPointer(pCorePrinterDrivers)));
 }
 
 export function CorePrinterDriverInstalledA(
@@ -15586,7 +13860,7 @@ export function CorePrinterDriverInstalledA(
   dwlDriverVersion: Deno.PointerValue /* u64 */,
   pbDriverInstalled: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libWINSPOOL.CorePrinterDriverInstalledA(util.pstrToFfi(pszServer), util.pstrToFfi(pszEnvironment), util.toPointer(CoreDriverGUID), util.toPointer(ftDriverDate), dwlDriverVersion, util.toPointer(pbDriverInstalled)));
+  return util.pointerFromFfi(libwinspool_drv.CorePrinterDriverInstalledA(util.pstrToFfi(pszServer), util.pstrToFfi(pszEnvironment), util.toPointer(CoreDriverGUID), util.toPointer(ftDriverDate), dwlDriverVersion, util.toPointer(pbDriverInstalled)));
 }
 
 export function CorePrinterDriverInstalledW(
@@ -15597,7 +13871,7 @@ export function CorePrinterDriverInstalledW(
   dwlDriverVersion: Deno.PointerValue /* u64 */,
   pbDriverInstalled: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libWINSPOOL.CorePrinterDriverInstalledW(util.pwstrToFfi(pszServer), util.pwstrToFfi(pszEnvironment), util.toPointer(CoreDriverGUID), util.toPointer(ftDriverDate), dwlDriverVersion, util.toPointer(pbDriverInstalled)));
+  return util.pointerFromFfi(libwinspool_drv.CorePrinterDriverInstalledW(util.pwstrToFfi(pszServer), util.pwstrToFfi(pszEnvironment), util.toPointer(CoreDriverGUID), util.toPointer(ftDriverDate), dwlDriverVersion, util.toPointer(pbDriverInstalled)));
 }
 
 export function GetPrinterDriverPackagePathA(
@@ -15609,7 +13883,7 @@ export function GetPrinterDriverPackagePathA(
   cchDriverPackageCab: number /* u32 */,
   pcchRequiredSize: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libWINSPOOL.GetPrinterDriverPackagePathA(util.pstrToFfi(pszServer), util.pstrToFfi(pszEnvironment), util.pstrToFfi(pszLanguage), util.pstrToFfi(pszPackageID), util.pstrToFfi(pszDriverPackageCab), cchDriverPackageCab, util.toPointer(pcchRequiredSize)));
+  return util.pointerFromFfi(libwinspool_drv.GetPrinterDriverPackagePathA(util.pstrToFfi(pszServer), util.pstrToFfi(pszEnvironment), util.pstrToFfi(pszLanguage), util.pstrToFfi(pszPackageID), util.pstrToFfi(pszDriverPackageCab), cchDriverPackageCab, util.toPointer(pcchRequiredSize)));
 }
 
 export function GetPrinterDriverPackagePathW(
@@ -15621,7 +13895,7 @@ export function GetPrinterDriverPackagePathW(
   cchDriverPackageCab: number /* u32 */,
   pcchRequiredSize: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libWINSPOOL.GetPrinterDriverPackagePathW(util.pwstrToFfi(pszServer), util.pwstrToFfi(pszEnvironment), util.pwstrToFfi(pszLanguage), util.pwstrToFfi(pszPackageID), util.pwstrToFfi(pszDriverPackageCab), cchDriverPackageCab, util.toPointer(pcchRequiredSize)));
+  return util.pointerFromFfi(libwinspool_drv.GetPrinterDriverPackagePathW(util.pwstrToFfi(pszServer), util.pwstrToFfi(pszEnvironment), util.pwstrToFfi(pszLanguage), util.pwstrToFfi(pszPackageID), util.pwstrToFfi(pszDriverPackageCab), cchDriverPackageCab, util.toPointer(pcchRequiredSize)));
 }
 
 export function DeletePrinterDriverPackageA(
@@ -15629,7 +13903,7 @@ export function DeletePrinterDriverPackageA(
   pszInfPath: string | null /* Windows.Win32.Foundation.PSTR */,
   pszEnvironment: string | null /* Windows.Win32.Foundation.PSTR */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libWINSPOOL.DeletePrinterDriverPackageA(util.pstrToFfi(pszServer), util.pstrToFfi(pszInfPath), util.pstrToFfi(pszEnvironment)));
+  return util.pointerFromFfi(libwinspool_drv.DeletePrinterDriverPackageA(util.pstrToFfi(pszServer), util.pstrToFfi(pszInfPath), util.pstrToFfi(pszEnvironment)));
 }
 
 export function DeletePrinterDriverPackageW(
@@ -15637,7 +13911,7 @@ export function DeletePrinterDriverPackageW(
   pszInfPath: string | null /* Windows.Win32.Foundation.PWSTR */,
   pszEnvironment: string | null /* Windows.Win32.Foundation.PWSTR */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libWINSPOOL.DeletePrinterDriverPackageW(util.pwstrToFfi(pszServer), util.pwstrToFfi(pszInfPath), util.pwstrToFfi(pszEnvironment)));
+  return util.pointerFromFfi(libwinspool_drv.DeletePrinterDriverPackageW(util.pwstrToFfi(pszServer), util.pwstrToFfi(pszInfPath), util.pwstrToFfi(pszEnvironment)));
 }
 
 export function ReportJobProcessingProgress(
@@ -15646,7 +13920,7 @@ export function ReportJobProcessingProgress(
   jobOperation: EPrintXPSJobOperation /* Windows.Win32.Graphics.Printing.EPrintXPSJobOperation */,
   jobProgress: EPrintXPSJobProgress /* Windows.Win32.Graphics.Printing.EPrintXPSJobProgress */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libWINSPOOL.ReportJobProcessingProgress(util.toPointer(printerHandle), jobId, jobOperation, jobProgress));
+  return util.pointerFromFfi(libwinspool_drv.ReportJobProcessingProgress(util.toPointer(printerHandle), jobId, jobOperation, jobProgress));
 }
 
 export function GetPrinterDriver2A(
@@ -15658,7 +13932,7 @@ export function GetPrinterDriver2A(
   cbBuf: number /* u32 */,
   pcbNeeded: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWINSPOOL.GetPrinterDriver2A(util.hwndToFfi(hWnd), util.toPointer(hPrinter), util.pstrToFfi(pEnvironment), Level, util.toPointer(pDriverInfo), cbBuf, util.toPointer(pcbNeeded)));
+  return util.boolFromFfi(libwinspool_drv.GetPrinterDriver2A(util.hwndToFfi(hWnd), util.toPointer(hPrinter), util.pstrToFfi(pEnvironment), Level, util.toPointer(pDriverInfo), cbBuf, util.toPointer(pcbNeeded)));
 }
 
 export function GetPrinterDriver2W(
@@ -15670,13 +13944,13 @@ export function GetPrinterDriver2W(
   cbBuf: number /* u32 */,
   pcbNeeded: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWINSPOOL.GetPrinterDriver2W(util.hwndToFfi(hWnd), util.toPointer(hPrinter), util.pwstrToFfi(pEnvironment), Level, util.toPointer(pDriverInfo), cbBuf, util.toPointer(pcbNeeded)));
+  return util.boolFromFfi(libwinspool_drv.GetPrinterDriver2W(util.hwndToFfi(hWnd), util.toPointer(hPrinter), util.pwstrToFfi(pEnvironment), Level, util.toPointer(pDriverInfo), cbBuf, util.toPointer(pcbNeeded)));
 }
 
 export function GetPrintExecutionData(
   pData: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWINSPOOL.GetPrintExecutionData(util.toPointer(pData)));
+  return util.boolFromFfi(libwinspool_drv.GetPrintExecutionData(util.toPointer(pData)));
 }
 
 export function GetJobNamedPropertyValue(
@@ -15685,20 +13959,20 @@ export function GetJobNamedPropertyValue(
   pszName: string | null /* Windows.Win32.Foundation.PWSTR */,
   pValue: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libWINSPOOL.GetJobNamedPropertyValue(util.toPointer(hPrinter), JobId, util.pwstrToFfi(pszName), util.toPointer(pValue));
+  return libwinspool_drv.GetJobNamedPropertyValue(util.toPointer(hPrinter), JobId, util.pwstrToFfi(pszName), util.toPointer(pValue));
 }
 
 export function FreePrintPropertyValue(
   pValue: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): void /* void */ {
-  return libWINSPOOL.FreePrintPropertyValue(util.toPointer(pValue));
+  return libwinspool_drv.FreePrintPropertyValue(util.toPointer(pValue));
 }
 
 export function FreePrintNamedPropertyArray(
   cProperties: number /* u32 */,
   ppProperties: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): void /* void */ {
-  return libWINSPOOL.FreePrintNamedPropertyArray(cProperties, util.toPointer(ppProperties));
+  return libwinspool_drv.FreePrintNamedPropertyArray(cProperties, util.toPointer(ppProperties));
 }
 
 export function SetJobNamedProperty(
@@ -15706,7 +13980,7 @@ export function SetJobNamedProperty(
   JobId: number /* u32 */,
   pProperty: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libWINSPOOL.SetJobNamedProperty(util.toPointer(hPrinter), JobId, util.toPointer(pProperty));
+  return libwinspool_drv.SetJobNamedProperty(util.toPointer(hPrinter), JobId, util.toPointer(pProperty));
 }
 
 export function DeleteJobNamedProperty(
@@ -15714,7 +13988,7 @@ export function DeleteJobNamedProperty(
   JobId: number /* u32 */,
   pszName: string | null /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
-  return libWINSPOOL.DeleteJobNamedProperty(util.toPointer(hPrinter), JobId, util.pwstrToFfi(pszName));
+  return libwinspool_drv.DeleteJobNamedProperty(util.toPointer(hPrinter), JobId, util.pwstrToFfi(pszName));
 }
 
 export function EnumJobNamedProperties(
@@ -15723,7 +13997,7 @@ export function EnumJobNamedProperties(
   pcProperties: Deno.PointerValue | Uint8Array | null /* ptr */,
   ppProperties: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libWINSPOOL.EnumJobNamedProperties(util.toPointer(hPrinter), JobId, util.toPointer(pcProperties), util.toPointer(ppProperties));
+  return libwinspool_drv.EnumJobNamedProperties(util.toPointer(hPrinter), JobId, util.toPointer(pcProperties), util.toPointer(ppProperties));
 }
 
 export function GetPrintOutputInfo(
@@ -15732,13 +14006,13 @@ export function GetPrintOutputInfo(
   phFile: Deno.PointerValue | Uint8Array | null /* ptr */,
   ppszOutputFile: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libWINSPOOL.GetPrintOutputInfo(util.hwndToFfi(hWnd), util.pwstrToFfi(pszPrinter), util.toPointer(phFile), util.toPointer(ppszOutputFile)));
+  return util.pointerFromFfi(libwinspool_drv.GetPrintOutputInfo(util.hwndToFfi(hWnd), util.pwstrToFfi(pszPrinter), util.toPointer(phFile), util.toPointer(ppszOutputFile)));
 }
 
 export function DevQueryPrintEx(
   pDQPInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWINSPOOL.DevQueryPrintEx(util.toPointer(pDQPInfo)));
+  return util.boolFromFfi(libwinspool_drv.DevQueryPrintEx(util.toPointer(pDQPInfo)));
 }
 
 export function RegisterForPrintAsyncNotifications(
@@ -15749,13 +14023,13 @@ export function RegisterForPrintAsyncNotifications(
   pCallback: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Graphics.Printing.IPrintAsyncNotifyCallback */,
   phNotify: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libWINSPOOL.RegisterForPrintAsyncNotifications(util.pwstrToFfi(pszName), util.toPointer(pNotificationType), eUserFilter, eConversationStyle, util.toPointer(pCallback), util.toPointer(phNotify)));
+  return util.pointerFromFfi(libwinspool_drv.RegisterForPrintAsyncNotifications(util.pwstrToFfi(pszName), util.toPointer(pNotificationType), eUserFilter, eConversationStyle, util.toPointer(pCallback), util.toPointer(phNotify)));
 }
 
 export function UnRegisterForPrintAsyncNotifications(
   param0: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libWINSPOOL.UnRegisterForPrintAsyncNotifications(util.toPointer(param0)));
+  return util.pointerFromFfi(libwinspool_drv.UnRegisterForPrintAsyncNotifications(util.toPointer(param0)));
 }
 
 export function CreatePrintAsyncNotifyChannel(
@@ -15766,7 +14040,7 @@ export function CreatePrintAsyncNotifyChannel(
   pCallback: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Graphics.Printing.IPrintAsyncNotifyCallback */,
   ppIAsynchNotification: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libWINSPOOL.CreatePrintAsyncNotifyChannel(util.pwstrToFfi(pszName), util.toPointer(pNotificationType), eUserFilter, eConversationStyle, util.toPointer(pCallback), util.toPointer(ppIAsynchNotification)));
+  return util.pointerFromFfi(libwinspool_drv.CreatePrintAsyncNotifyChannel(util.pwstrToFfi(pszName), util.toPointer(pNotificationType), eUserFilter, eConversationStyle, util.toPointer(pCallback), util.toPointer(ppIAsynchNotification)));
 }
 
 export function GdiGetSpoolFileHandle(
@@ -15774,25 +14048,25 @@ export function GdiGetSpoolFileHandle(
   pDevmode: Deno.PointerValue | Uint8Array | null /* ptr */,
   pwszDocName: string | null /* Windows.Win32.Foundation.PWSTR */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */ {
-  return util.pointerFromFfi(libGDI32.GdiGetSpoolFileHandle(util.pwstrToFfi(pwszPrinterName), util.toPointer(pDevmode), util.pwstrToFfi(pwszDocName)));
+  return util.pointerFromFfi(libGDI32_dll.GdiGetSpoolFileHandle(util.pwstrToFfi(pwszPrinterName), util.toPointer(pDevmode), util.pwstrToFfi(pwszDocName)));
 }
 
 export function GdiDeleteSpoolFileHandle(
   SpoolFileHandle: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libGDI32.GdiDeleteSpoolFileHandle(util.toPointer(SpoolFileHandle)));
+  return util.boolFromFfi(libGDI32_dll.GdiDeleteSpoolFileHandle(util.toPointer(SpoolFileHandle)));
 }
 
 export function GdiGetPageCount(
   SpoolFileHandle: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
 ): number /* u32 */ {
-  return libGDI32.GdiGetPageCount(util.toPointer(SpoolFileHandle));
+  return libGDI32_dll.GdiGetPageCount(util.toPointer(SpoolFileHandle));
 }
 
 export function GdiGetDC(
   SpoolFileHandle: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
 ): Deno.PointerValue | null /* Windows.Win32.Graphics.Gdi.HDC */ {
-  return util.pointerFromFfi(libGDI32.GdiGetDC(util.toPointer(SpoolFileHandle)));
+  return util.pointerFromFfi(libGDI32_dll.GdiGetDC(util.toPointer(SpoolFileHandle)));
 }
 
 export function GdiGetPageHandle(
@@ -15800,20 +14074,20 @@ export function GdiGetPageHandle(
   Page: number /* u32 */,
   pdwPageType: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */ {
-  return util.pointerFromFfi(libGDI32.GdiGetPageHandle(util.toPointer(SpoolFileHandle), Page, util.toPointer(pdwPageType)));
+  return util.pointerFromFfi(libGDI32_dll.GdiGetPageHandle(util.toPointer(SpoolFileHandle), Page, util.toPointer(pdwPageType)));
 }
 
 export function GdiStartDocEMF(
   SpoolFileHandle: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
   pDocInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libGDI32.GdiStartDocEMF(util.toPointer(SpoolFileHandle), util.toPointer(pDocInfo)));
+  return util.boolFromFfi(libGDI32_dll.GdiStartDocEMF(util.toPointer(SpoolFileHandle), util.toPointer(pDocInfo)));
 }
 
 export function GdiStartPageEMF(
   SpoolFileHandle: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libGDI32.GdiStartPageEMF(util.toPointer(SpoolFileHandle)));
+  return util.boolFromFfi(libGDI32_dll.GdiStartPageEMF(util.toPointer(SpoolFileHandle)));
 }
 
 export function GdiPlayPageEMF(
@@ -15823,20 +14097,20 @@ export function GdiPlayPageEMF(
   prectBorder: Deno.PointerValue | Uint8Array | null /* ptr */,
   prectClip: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libGDI32.GdiPlayPageEMF(util.toPointer(SpoolFileHandle), util.toPointer(hemf), util.toPointer(prectDocument), util.toPointer(prectBorder), util.toPointer(prectClip)));
+  return util.boolFromFfi(libGDI32_dll.GdiPlayPageEMF(util.toPointer(SpoolFileHandle), util.toPointer(hemf), util.toPointer(prectDocument), util.toPointer(prectBorder), util.toPointer(prectClip)));
 }
 
 export function GdiEndPageEMF(
   SpoolFileHandle: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
   dwOptimization: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libGDI32.GdiEndPageEMF(util.toPointer(SpoolFileHandle), dwOptimization));
+  return util.boolFromFfi(libGDI32_dll.GdiEndPageEMF(util.toPointer(SpoolFileHandle), dwOptimization));
 }
 
 export function GdiEndDocEMF(
   SpoolFileHandle: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libGDI32.GdiEndDocEMF(util.toPointer(SpoolFileHandle)));
+  return util.boolFromFfi(libGDI32_dll.GdiEndDocEMF(util.toPointer(SpoolFileHandle)));
 }
 
 export function GdiGetDevmodeForPage(
@@ -15845,14 +14119,14 @@ export function GdiGetDevmodeForPage(
   pCurrDM: Deno.PointerValue | Uint8Array | null /* ptr */,
   pLastDM: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libGDI32.GdiGetDevmodeForPage(util.toPointer(SpoolFileHandle), dwPageNumber, util.toPointer(pCurrDM), util.toPointer(pLastDM)));
+  return util.boolFromFfi(libGDI32_dll.GdiGetDevmodeForPage(util.toPointer(SpoolFileHandle), dwPageNumber, util.toPointer(pCurrDM), util.toPointer(pLastDM)));
 }
 
 export function GdiResetDCEMF(
   SpoolFileHandle: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
   pCurrDM: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libGDI32.GdiResetDCEMF(util.toPointer(SpoolFileHandle), util.toPointer(pCurrDM)));
+  return util.boolFromFfi(libGDI32_dll.GdiResetDCEMF(util.toPointer(SpoolFileHandle), util.toPointer(pCurrDM)));
 }
 
 export function GetJobAttributes(
@@ -15860,7 +14134,7 @@ export function GetJobAttributes(
   pDevmode: Deno.PointerValue | Uint8Array | null /* ptr */,
   pAttributeInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSPOOLSS.GetJobAttributes(util.pwstrToFfi(pPrinterName), util.toPointer(pDevmode), util.toPointer(pAttributeInfo)));
+  return util.boolFromFfi(libSPOOLSS_dll.GetJobAttributes(util.pwstrToFfi(pPrinterName), util.toPointer(pDevmode), util.toPointer(pAttributeInfo)));
 }
 
 export function GetJobAttributesEx(
@@ -15871,14 +14145,14 @@ export function GetJobAttributesEx(
   nSize: number /* u32 */,
   dwFlags: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSPOOLSS.GetJobAttributesEx(util.pwstrToFfi(pPrinterName), util.toPointer(pDevmode), dwLevel, util.toPointer(pAttributeInfo), nSize, dwFlags));
+  return util.boolFromFfi(libSPOOLSS_dll.GetJobAttributesEx(util.pwstrToFfi(pPrinterName), util.toPointer(pDevmode), dwLevel, util.toPointer(pAttributeInfo), nSize, dwFlags));
 }
 
 export function CreatePrinterIC(
   hPrinter: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
   pDevMode: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */ {
-  return util.pointerFromFfi(libWINSPOOL.CreatePrinterIC(util.toPointer(hPrinter), util.toPointer(pDevMode)));
+  return util.pointerFromFfi(libwinspool_drv.CreatePrinterIC(util.toPointer(hPrinter), util.toPointer(pDevMode)));
 }
 
 export function PlayGdiScriptOnPrinterIC(
@@ -15889,13 +14163,13 @@ export function PlayGdiScriptOnPrinterIC(
   cOut: number /* u32 */,
   ul: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWINSPOOL.PlayGdiScriptOnPrinterIC(util.toPointer(hPrinterIC), util.toPointer(pIn), cIn, util.toPointer(pOut), cOut, ul));
+  return util.boolFromFfi(libwinspool_drv.PlayGdiScriptOnPrinterIC(util.toPointer(hPrinterIC), util.toPointer(pIn), cIn, util.toPointer(pOut), cOut, ul));
 }
 
 export function DeletePrinterIC(
   hPrinterIC: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWINSPOOL.DeletePrinterIC(util.toPointer(hPrinterIC)));
+  return util.boolFromFfi(libwinspool_drv.DeletePrinterIC(util.toPointer(hPrinterIC)));
 }
 
 export function DevQueryPrint(
@@ -15903,17 +14177,17 @@ export function DevQueryPrint(
   pDevMode: Deno.PointerValue | Uint8Array | null /* ptr */,
   pResID: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWINSPOOL.DevQueryPrint(util.toPointer(hPrinter), util.toPointer(pDevMode), util.toPointer(pResID)));
+  return util.boolFromFfi(libwinspool_drv.DevQueryPrint(util.toPointer(hPrinter), util.toPointer(pDevMode), util.toPointer(pResID)));
 }
 
 export function RevertToPrinterSelf(): Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */ {
-  return util.pointerFromFfi(libSPOOLSS.RevertToPrinterSelf());
+  return util.pointerFromFfi(libSPOOLSS_dll.RevertToPrinterSelf());
 }
 
 export function ImpersonatePrinterClient(
   hToken: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSPOOLSS.ImpersonatePrinterClient(util.toPointer(hToken)));
+  return util.boolFromFfi(libSPOOLSS_dll.ImpersonatePrinterClient(util.toPointer(hToken)));
 }
 
 export function ReplyPrinterChangeNotification(
@@ -15922,7 +14196,7 @@ export function ReplyPrinterChangeNotification(
   pdwResult: Deno.PointerValue | Uint8Array | null /* ptr */,
   pPrinterNotifyInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSPOOLSS.ReplyPrinterChangeNotification(util.toPointer(hPrinter), fdwChangeFlags, util.toPointer(pdwResult), util.toPointer(pPrinterNotifyInfo)));
+  return util.boolFromFfi(libSPOOLSS_dll.ReplyPrinterChangeNotification(util.toPointer(hPrinter), fdwChangeFlags, util.toPointer(pdwResult), util.toPointer(pPrinterNotifyInfo)));
 }
 
 export function ReplyPrinterChangeNotificationEx(
@@ -15932,50 +14206,50 @@ export function ReplyPrinterChangeNotificationEx(
   pdwResult: Deno.PointerValue | Uint8Array | null /* ptr */,
   pPrinterNotifyInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSPOOLSS.ReplyPrinterChangeNotificationEx(util.toPointer(hNotify), dwColor, fdwFlags, util.toPointer(pdwResult), util.toPointer(pPrinterNotifyInfo)));
+  return util.boolFromFfi(libSPOOLSS_dll.ReplyPrinterChangeNotificationEx(util.toPointer(hNotify), dwColor, fdwFlags, util.toPointer(pdwResult), util.toPointer(pPrinterNotifyInfo)));
 }
 
 export function PartialReplyPrinterChangeNotification(
   hPrinter: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
   pDataSrc: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSPOOLSS.PartialReplyPrinterChangeNotification(util.toPointer(hPrinter), util.toPointer(pDataSrc)));
+  return util.boolFromFfi(libSPOOLSS_dll.PartialReplyPrinterChangeNotification(util.toPointer(hPrinter), util.toPointer(pDataSrc)));
 }
 
 export function RouterAllocPrinterNotifyInfo(
   cPrinterNotifyInfoData: number /* u32 */,
 ): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libSPOOLSS.RouterAllocPrinterNotifyInfo(cPrinterNotifyInfoData));
+  return util.pointerFromFfi(libSPOOLSS_dll.RouterAllocPrinterNotifyInfo(cPrinterNotifyInfoData));
 }
 
 export function RouterFreePrinterNotifyInfo(
   pInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSPOOLSS.RouterFreePrinterNotifyInfo(util.toPointer(pInfo)));
+  return util.boolFromFfi(libSPOOLSS_dll.RouterFreePrinterNotifyInfo(util.toPointer(pInfo)));
 }
 
 export function RouterAllocBidiResponseContainer(
   Count: number /* u32 */,
 ): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libSPOOLSS.RouterAllocBidiResponseContainer(Count));
+  return util.pointerFromFfi(libSPOOLSS_dll.RouterAllocBidiResponseContainer(Count));
 }
 
 export function RouterAllocBidiMem(
   NumBytes: Deno.PointerValue /* usize */,
 ): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libSPOOLSS.RouterAllocBidiMem(NumBytes));
+  return util.pointerFromFfi(libSPOOLSS_dll.RouterAllocBidiMem(NumBytes));
 }
 
 export function RouterFreeBidiResponseContainer(
   pData: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libWINSPOOL.RouterFreeBidiResponseContainer(util.toPointer(pData));
+  return libwinspool_drv.RouterFreeBidiResponseContainer(util.toPointer(pData));
 }
 
 export function RouterFreeBidiMem(
   pMemPointer: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): void /* void */ {
-  return libSPOOLSS.RouterFreeBidiMem(util.toPointer(pMemPointer));
+  return libSPOOLSS_dll.RouterFreeBidiMem(util.toPointer(pMemPointer));
 }
 
 export function AppendPrinterNotifyInfoData(
@@ -15983,7 +14257,7 @@ export function AppendPrinterNotifyInfoData(
   pDataSrc: Deno.PointerValue | Uint8Array | null /* ptr */,
   fdwFlags: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSPOOLSS.AppendPrinterNotifyInfoData(util.toPointer(pInfoDest), util.toPointer(pDataSrc), fdwFlags));
+  return util.boolFromFfi(libSPOOLSS_dll.AppendPrinterNotifyInfoData(util.toPointer(pInfoDest), util.toPointer(pDataSrc), fdwFlags));
 }
 
 export function CallRouterFindFirstPrinterChangeNotification(
@@ -15993,7 +14267,7 @@ export function CallRouterFindFirstPrinterChangeNotification(
   hNotify: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
   pPrinterNotifyOptions: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libSPOOLSS.CallRouterFindFirstPrinterChangeNotification(util.toPointer(hPrinterRPC), fdwFilterFlags, fdwOptions, util.toPointer(hNotify), util.toPointer(pPrinterNotifyOptions));
+  return libSPOOLSS_dll.CallRouterFindFirstPrinterChangeNotification(util.toPointer(hPrinterRPC), fdwFilterFlags, fdwOptions, util.toPointer(hNotify), util.toPointer(pPrinterNotifyOptions));
 }
 
 export function ProvidorFindFirstPrinterChangeNotification(
@@ -16004,13 +14278,13 @@ export function ProvidorFindFirstPrinterChangeNotification(
   pPrinterNotifyOptions: Deno.PointerValue | Uint8Array | null /* ptr */,
   pvReserved1: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSPOOLSS.ProvidorFindFirstPrinterChangeNotification(util.toPointer(hPrinter), fdwFlags, fdwOptions, util.toPointer(hNotify), util.toPointer(pPrinterNotifyOptions), util.toPointer(pvReserved1)));
+  return util.boolFromFfi(libSPOOLSS_dll.ProvidorFindFirstPrinterChangeNotification(util.toPointer(hPrinter), fdwFlags, fdwOptions, util.toPointer(hNotify), util.toPointer(pPrinterNotifyOptions), util.toPointer(pvReserved1)));
 }
 
 export function ProvidorFindClosePrinterChangeNotification(
   hPrinter: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSPOOLSS.ProvidorFindClosePrinterChangeNotification(util.toPointer(hPrinter)));
+  return util.boolFromFfi(libSPOOLSS_dll.ProvidorFindClosePrinterChangeNotification(util.toPointer(hPrinter)));
 }
 
 export function SpoolerFindFirstPrinterChangeNotification(
@@ -16023,7 +14297,7 @@ export function SpoolerFindFirstPrinterChangeNotification(
   phNotify: Deno.PointerValue | Uint8Array | null /* ptr */,
   phEvent: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSPOOLSS.SpoolerFindFirstPrinterChangeNotification(util.toPointer(hPrinter), fdwFilterFlags, fdwOptions, util.toPointer(pPrinterNotifyOptions), util.toPointer(pvReserved), util.toPointer(pNotificationConfig), util.toPointer(phNotify), util.toPointer(phEvent)));
+  return util.boolFromFfi(libSPOOLSS_dll.SpoolerFindFirstPrinterChangeNotification(util.toPointer(hPrinter), fdwFilterFlags, fdwOptions, util.toPointer(pPrinterNotifyOptions), util.toPointer(pvReserved), util.toPointer(pNotificationConfig), util.toPointer(phNotify), util.toPointer(phEvent)));
 }
 
 export function SpoolerFindNextPrinterChangeNotification(
@@ -16032,7 +14306,7 @@ export function SpoolerFindNextPrinterChangeNotification(
   pPrinterNotifyOptions: Deno.PointerValue | Uint8Array | null /* ptr */,
   ppPrinterNotifyInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSPOOLSS.SpoolerFindNextPrinterChangeNotification(util.toPointer(hPrinter), util.toPointer(pfdwChange), util.toPointer(pPrinterNotifyOptions), util.toPointer(ppPrinterNotifyInfo)));
+  return util.boolFromFfi(libSPOOLSS_dll.SpoolerFindNextPrinterChangeNotification(util.toPointer(hPrinter), util.toPointer(pfdwChange), util.toPointer(pPrinterNotifyOptions), util.toPointer(ppPrinterNotifyInfo)));
 }
 
 export function SpoolerRefreshPrinterChangeNotification(
@@ -16041,19 +14315,19 @@ export function SpoolerRefreshPrinterChangeNotification(
   pOptions: Deno.PointerValue | Uint8Array | null /* ptr */,
   ppInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSPOOLSS.SpoolerRefreshPrinterChangeNotification(util.toPointer(hPrinter), dwColor, util.toPointer(pOptions), util.toPointer(ppInfo)));
+  return util.boolFromFfi(libSPOOLSS_dll.SpoolerRefreshPrinterChangeNotification(util.toPointer(hPrinter), dwColor, util.toPointer(pOptions), util.toPointer(ppInfo)));
 }
 
 export function SpoolerFreePrinterNotifyInfo(
   pInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): void /* void */ {
-  return libSPOOLSS.SpoolerFreePrinterNotifyInfo(util.toPointer(pInfo));
+  return libSPOOLSS_dll.SpoolerFreePrinterNotifyInfo(util.toPointer(pInfo));
 }
 
 export function SpoolerFindClosePrinterChangeNotification(
   hPrinter: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSPOOLSS.SpoolerFindClosePrinterChangeNotification(util.toPointer(hPrinter)));
+  return util.boolFromFfi(libSPOOLSS_dll.SpoolerFindClosePrinterChangeNotification(util.toPointer(hPrinter)));
 }
 
 export function SpoolerCopyFileEvent(
@@ -16061,7 +14335,7 @@ export function SpoolerCopyFileEvent(
   pszKey: string | null /* Windows.Win32.Foundation.PWSTR */,
   dwCopyFileEvent: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libmscms.SpoolerCopyFileEvent(util.pwstrToFfi(pszPrinterName), util.pwstrToFfi(pszKey), dwCopyFileEvent));
+  return util.boolFromFfi(libmscms_dll.SpoolerCopyFileEvent(util.pwstrToFfi(pszPrinterName), util.pwstrToFfi(pszKey), dwCopyFileEvent));
 }
 
 export function GenerateCopyFilePaths(
@@ -16075,7 +14349,7 @@ export function GenerateCopyFilePaths(
   pcchTargetDirSize: Deno.PointerValue | Uint8Array | null /* ptr */,
   dwFlags: number /* u32 */,
 ): number /* u32 */ {
-  return libmscms.GenerateCopyFilePaths(util.pwstrToFfi(pszPrinterName), util.pwstrToFfi(pszDirectory), util.toPointer(pSplClientInfo), dwLevel, util.pwstrToFfi(pszSourceDir), util.toPointer(pcchSourceDirSize), util.pwstrToFfi(pszTargetDir), util.toPointer(pcchTargetDirSize), dwFlags);
+  return libmscms_dll.GenerateCopyFilePaths(util.pwstrToFfi(pszPrinterName), util.pwstrToFfi(pszDirectory), util.toPointer(pSplClientInfo), dwLevel, util.pwstrToFfi(pszSourceDir), util.toPointer(pcchSourceDirSize), util.pwstrToFfi(pszTargetDir), util.toPointer(pcchTargetDirSize), dwFlags);
 }
 
 export function SplPromptUIInUsersSession(
@@ -16084,7 +14358,7 @@ export function SplPromptUIInUsersSession(
   pUIParams: Deno.PointerValue | Uint8Array | null /* ptr */,
   pResponse: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSPOOLSS.SplPromptUIInUsersSession(util.toPointer(hPrinter), JobId, util.toPointer(pUIParams), util.toPointer(pResponse)));
+  return util.boolFromFfi(libSPOOLSS_dll.SplPromptUIInUsersSession(util.toPointer(hPrinter), JobId, util.toPointer(pUIParams), util.toPointer(pResponse)));
 }
 
 export function SplIsSessionZero(
@@ -16092,26 +14366,26 @@ export function SplIsSessionZero(
   JobId: number /* u32 */,
   pIsSessionZero: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libSPOOLSS.SplIsSessionZero(util.toPointer(hPrinter), JobId, util.toPointer(pIsSessionZero));
+  return libSPOOLSS_dll.SplIsSessionZero(util.toPointer(hPrinter), JobId, util.toPointer(pIsSessionZero));
 }
 
 export function AddPrintDeviceObject(
   hPrinter: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
   phDeviceObject: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libSPOOLSS.AddPrintDeviceObject(util.toPointer(hPrinter), util.toPointer(phDeviceObject)));
+  return util.pointerFromFfi(libSPOOLSS_dll.AddPrintDeviceObject(util.toPointer(hPrinter), util.toPointer(phDeviceObject)));
 }
 
 export function UpdatePrintDeviceObject(
   hPrinter: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
   hDeviceObject: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libSPOOLSS.UpdatePrintDeviceObject(util.toPointer(hPrinter), util.toPointer(hDeviceObject)));
+  return util.pointerFromFfi(libSPOOLSS_dll.UpdatePrintDeviceObject(util.toPointer(hPrinter), util.toPointer(hDeviceObject)));
 }
 
 export function RemovePrintDeviceObject(
   hDeviceObject: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libSPOOLSS.RemovePrintDeviceObject(util.toPointer(hDeviceObject)));
+  return util.pointerFromFfi(libSPOOLSS_dll.RemovePrintDeviceObject(util.toPointer(hDeviceObject)));
 }
 

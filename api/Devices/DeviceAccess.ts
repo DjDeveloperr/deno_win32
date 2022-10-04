@@ -57,7 +57,7 @@ export type HRESULT = number;
 // Native Libraries
 
 try {
-  var libdeviceaccess = Deno.dlopen("deviceaccess", {
+  var libdeviceaccess_dll = Deno.dlopen("deviceaccess.dll", {
     CreateDeviceAccessInstance: {
       parameters: ["buffer", "u32", "pointer"],
       result: "pointer",
@@ -72,6 +72,6 @@ export function CreateDeviceAccessInstance(
   desiredAccess: number /* u32 */,
   createAsync: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libdeviceaccess.CreateDeviceAccessInstance(util.pwstrToFfi(deviceInterfacePath), desiredAccess, util.toPointer(createAsync)));
+  return util.pointerFromFfi(libdeviceaccess_dll.CreateDeviceAccessInstance(util.pwstrToFfi(deviceInterfacePath), desiredAccess, util.toPointer(createAsync)));
 }
 

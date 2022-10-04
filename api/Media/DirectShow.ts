@@ -4,14 +4,13 @@ import * as util from "../../util.ts";
 
 // Enums
 export type OA_BOOL = number;
-export type MPEG2VIDEOINFO_FLAGS = number;
 export type MPEGLAYER3WAVEFORMAT_FLAGS = number;
 export type AMVP_SELECT_FORMAT_BY = number;
 export type AMVP_MODE = number;
 export type PIN_DIRECTION = number;
 export type FILTER_STATE = number;
 export type AM_SAMPLE_PROPERTY_FLAGS = number;
-export type AM_SEEKING_SeekingFlags = number;
+export type AM_SEEKING_SEEKING_FLAGS = number;
 export type AM_SEEKING_SEEKING_CAPABILITIES = number;
 export type AM_MEDIAEVENT_FLAGS = number;
 export type IFILTERMAPPER_MERIT = number;
@@ -160,6 +159,7 @@ export type AMMSF_MMS_INIT_FLAGS = number;
 export type AMMSF_MS_FLAGS = number;
 export type AMMSF_RENDER_FLAGS = number;
 export type OUTPUT_STATE = number;
+export type BI_COMPRESSION = number;
 export type AM_PROPERTY_FRAMESTEP = number;
 export type AM_ASPECT_RATIO_MODE = number;
 export type VMR9PresentationFlags = number;
@@ -307,16 +307,6 @@ export type COPP_BusType = number;
 // Constants
 export const OATRUE = "-1";
 export const OAFALSE = 0;
-export const AMMPEG2_DoPanScan = 1;
-export const AMMPEG2_DVDLine21Field1 = 2;
-export const AMMPEG2_DVDLine21Field2 = 4;
-export const AMMPEG2_SourceIsLetterboxed = 8;
-export const AMMPEG2_FilmCameraMode = 16;
-export const AMMPEG2_LetterboxAnalogOut = 32;
-export const AMMPEG2_DSS_UserData = 64;
-export const AMMPEG2_DVB_UserData = 128;
-export const AMMPEG2_27MhzTimebase = 256;
-export const AMMPEG2_WidescreenAnalogOut = 512;
 export const MPEGLAYER3_FLAG_PADDING_ISO = 0;
 export const MPEGLAYER3_FLAG_PADDING_ON = 1;
 export const MPEGLAYER3_FLAG_PADDING_OFF = 2;
@@ -599,6 +589,15 @@ export const AMDDS_RGBFLP = 64;
 export const AMDDS_YUVFLP = 128;
 export const AMDDS_ALL = 255;
 export const AMDDS_DEFAULT = 255;
+export const iPALETTE_COLORS = 256;
+export const iEGA_COLORS = 16;
+export const iMASK_COLORS = 3;
+export const iTRUECOLOR = 16;
+export const iRED = 0;
+export const iGREEN = 1;
+export const iBLUE = 2;
+export const iPALETTE = 8;
+export const iMAXBITS = 8;
 export const MAX_SIZE_MPEG1_SEQUENCE_INFO = 140;
 export const AM_MPEG_AUDIO_DUAL_MERGE = 0;
 export const AM_MPEG_AUDIO_DUAL_LEFT = 1;
@@ -768,7 +767,8 @@ export const VFW_E_CODECAPI_ENUMERATED = 289095711130387217n;
 export const VFW_E_CODECAPI_NO_DEFAULT = 289096810642014995n;
 export const VFW_E_CODECAPI_NO_CURRENT_VALUE = 289097910153642772n;
 export const VFW_E_DVD_CHAPTER_DOES_NOT_EXIST = 289110004781548309n;
-export const VFW_S_DVD_RENDER_STATUS = 1185411236640;
+export const VFW_S_DVD_RENDER_STATUS = 7566142163910918944n;
+export const CFSTR_VFW_FILTERLIST = "Video for Windows 4 Filters";
 export const DXVA_RESTRICTED_MODE_UNRESTRICTED = 65535;
 export const DXVA_RESTRICTED_MODE_H261_A = 1;
 export const DXVA_RESTRICTED_MODE_H261_B = 2;
@@ -2087,6 +2087,12 @@ export const AMMSF_RUN = 8;
 export const Disabled = 0;
 export const ReadData = 1;
 export const RenderData = 2;
+export const BI_RGB = 0;
+export const BI_RLE8 = 1;
+export const BI_RLE4 = 2;
+export const BI_BITFIELDS = 3;
+export const BI_JPEG = 4;
+export const BI_PNG = 5;
 export const AM_PROPERTY_FRAMESTEP_STEP = 1;
 export const AM_PROPERTY_FRAMESTEP_CANCEL = 2;
 export const AM_PROPERTY_FRAMESTEP_CANSTEP = 3;
@@ -3532,58 +3538,6 @@ export function allocAMVPDATAINFO(data?: Partial<AMVPDATAINFO>): Uint8Array {
 }
 
 /**
- * Windows.Win32.Media.DirectShow.AM_MEDIA_TYPE (size: 64)
- */
-export interface AM_MEDIA_TYPE {
-  /** System.Guid */
-  majortype: Uint8Array | Deno.PointerValue | null;
-  /** System.Guid */
-  subtype: Uint8Array | Deno.PointerValue | null;
-  /** Windows.Win32.Foundation.BOOL */
-  bFixedSizeSamples: boolean;
-  /** Windows.Win32.Foundation.BOOL */
-  bTemporalCompression: boolean;
-  /** u32 */
-  lSampleSize: number;
-  /** System.Guid */
-  formattype: Uint8Array | Deno.PointerValue | null;
-  /** Windows.Win32.System.Com.IUnknown */
-  pUnk: Uint8Array | Deno.PointerValue | null;
-  /** u32 */
-  cbFormat: number;
-  /** ptr */
-  pbFormat: Deno.PointerValue | Uint8Array | null;
-}
-
-export const sizeofAM_MEDIA_TYPE = 64;
-
-export function allocAM_MEDIA_TYPE(data?: Partial<AM_MEDIA_TYPE>): Uint8Array {
-  const buf = new Uint8Array(sizeofAM_MEDIA_TYPE);
-  const view = new DataView(buf.buffer);
-  // 0x00: pointer
-  if (data?.majortype !== undefined) view.setBigUint64(0, data.majortype === null ? 0n : BigInt(util.toPointer(data.majortype)), true);
-  // 0x08: pointer
-  if (data?.subtype !== undefined) view.setBigUint64(8, data.subtype === null ? 0n : BigInt(util.toPointer(data.subtype)), true);
-  // 0x10: i32
-  if (data?.bFixedSizeSamples !== undefined) view.setInt32(16, Number(data.bFixedSizeSamples), true);
-  // 0x14: i32
-  if (data?.bTemporalCompression !== undefined) view.setInt32(20, Number(data.bTemporalCompression), true);
-  // 0x18: u32
-  if (data?.lSampleSize !== undefined) view.setUint32(24, Number(data.lSampleSize), true);
-  // 0x1c: pad4
-  // 0x20: pointer
-  if (data?.formattype !== undefined) view.setBigUint64(32, data.formattype === null ? 0n : BigInt(util.toPointer(data.formattype)), true);
-  // 0x28: pointer
-  if (data?.pUnk !== undefined) view.setBigUint64(40, data.pUnk === null ? 0n : BigInt(util.toPointer(data.pUnk)), true);
-  // 0x30: u32
-  if (data?.cbFormat !== undefined) view.setUint32(48, Number(data.cbFormat), true);
-  // 0x34: pad4
-  // 0x38: pointer
-  if (data?.pbFormat !== undefined) view.setBigUint64(56, data.pbFormat === null ? 0n : BigInt(util.toPointer(data.pbFormat)), true);
-  return buf;
-}
-
-/**
  * Windows.Win32.Media.DirectShow.ALLOCATOR_PROPERTIES (size: 16)
  */
 export interface ALLOCATOR_PROPERTIES {
@@ -3994,21 +3948,23 @@ export function allocQuality(data?: Partial<Quality>): Uint8Array {
   return buf;
 }
 
+export type COLORREF = number;
+
 /**
- * Windows.Win32.Media.DirectShow.COLORKEY (size: 16)
+ * Windows.Win32.Media.DirectShow.COLORKEY (size: 24)
  */
 export interface COLORKEY {
   /** u32 */
   KeyType: number;
   /** u32 */
   PaletteIndex: number;
-  /** u32 */
-  LowColorValue: number;
-  /** u32 */
-  HighColorValue: number;
+  /** Windows.Win32.Foundation.COLORREF */
+  LowColorValue: Uint8Array | Deno.PointerValue | null;
+  /** Windows.Win32.Foundation.COLORREF */
+  HighColorValue: Uint8Array | Deno.PointerValue | null;
 }
 
-export const sizeofCOLORKEY = 16;
+export const sizeofCOLORKEY = 24;
 
 export function allocCOLORKEY(data?: Partial<COLORKEY>): Uint8Array {
   const buf = new Uint8Array(sizeofCOLORKEY);
@@ -4017,10 +3973,10 @@ export function allocCOLORKEY(data?: Partial<COLORKEY>): Uint8Array {
   if (data?.KeyType !== undefined) view.setUint32(0, Number(data.KeyType), true);
   // 0x04: u32
   if (data?.PaletteIndex !== undefined) view.setUint32(4, Number(data.PaletteIndex), true);
-  // 0x08: u32
-  if (data?.LowColorValue !== undefined) view.setUint32(8, Number(data.LowColorValue), true);
-  // 0x0c: u32
-  if (data?.HighColorValue !== undefined) view.setUint32(12, Number(data.HighColorValue), true);
+  // 0x08: pointer
+  if (data?.LowColorValue !== undefined) view.setBigUint64(8, data.LowColorValue === null ? 0n : BigInt(util.toPointer(data.LowColorValue)), true);
+  // 0x10: pointer
+  if (data?.HighColorValue !== undefined) view.setBigUint64(16, data.HighColorValue === null ? 0n : BigInt(util.toPointer(data.HighColorValue)), true);
   return buf;
 }
 
@@ -4787,7 +4743,7 @@ export function allocVMRDeinterlaceCaps(data?: Partial<VMRDeinterlaceCaps>): Uin
 export type HDC = Deno.PointerValue;
 
 /**
- * Windows.Win32.Media.DirectShow.VMRALPHABITMAP (size: 48)
+ * Windows.Win32.Media.DirectShow.VMRALPHABITMAP (size: 56)
  */
 export interface VMRALPHABITMAP {
   /** u32 */
@@ -4802,11 +4758,11 @@ export interface VMRALPHABITMAP {
   rDest: Uint8Array | Deno.PointerValue | null;
   /** f32 */
   fAlpha: number;
-  /** u32 */
-  clrSrcKey: number;
+  /** Windows.Win32.Foundation.COLORREF */
+  clrSrcKey: Uint8Array | Deno.PointerValue | null;
 }
 
-export const sizeofVMRALPHABITMAP = 48;
+export const sizeofVMRALPHABITMAP = 56;
 
 export function allocVMRALPHABITMAP(data?: Partial<VMRALPHABITMAP>): Uint8Array {
   const buf = new Uint8Array(sizeofVMRALPHABITMAP);
@@ -4824,8 +4780,9 @@ export function allocVMRALPHABITMAP(data?: Partial<VMRALPHABITMAP>): Uint8Array 
   if (data?.rDest !== undefined) view.setBigUint64(32, data.rDest === null ? 0n : BigInt(util.toPointer(data.rDest)), true);
   // 0x28: f32
   if (data?.fAlpha !== undefined) view.setFloat32(40, Number(data.fAlpha), true);
-  // 0x2c: u32
-  if (data?.clrSrcKey !== undefined) view.setUint32(44, Number(data.clrSrcKey), true);
+  // 0x2c: pad4
+  // 0x30: pointer
+  if (data?.clrSrcKey !== undefined) view.setBigUint64(48, data.clrSrcKey === null ? 0n : BigInt(util.toPointer(data.clrSrcKey)), true);
   return buf;
 }
 
@@ -7426,8 +7383,8 @@ export interface BITMAPINFOHEADER {
   biPlanes: number;
   /** u16 */
   biBitCount: number;
-  /** u32 */
-  biCompression: number;
+  /** Windows.Win32.Graphics.Gdi.BI_COMPRESSION */
+  biCompression: BI_COMPRESSION;
   /** u32 */
   biSizeImage: number;
   /** i32 */
@@ -7455,8 +7412,8 @@ export function allocBITMAPINFOHEADER(data?: Partial<BITMAPINFOHEADER>): Uint8Ar
   if (data?.biPlanes !== undefined) view.setUint16(12, Number(data.biPlanes), true);
   // 0x0e: u16
   if (data?.biBitCount !== undefined) view.setUint16(14, Number(data.biBitCount), true);
-  // 0x10: u32
-  if (data?.biCompression !== undefined) view.setUint32(16, Number(data.biCompression), true);
+  // 0x10: i32
+  if (data?.biCompression !== undefined) view.setInt32(16, Number(data.biCompression), true);
   // 0x14: u32
   if (data?.biSizeImage !== undefined) view.setUint32(20, Number(data.biSizeImage), true);
   // 0x18: i32
@@ -7467,44 +7424,6 @@ export function allocBITMAPINFOHEADER(data?: Partial<BITMAPINFOHEADER>): Uint8Ar
   if (data?.biClrUsed !== undefined) view.setUint32(32, Number(data.biClrUsed), true);
   // 0x24: u32
   if (data?.biClrImportant !== undefined) view.setUint32(36, Number(data.biClrImportant), true);
-  return buf;
-}
-
-/**
- * Windows.Win32.Media.DirectShow.VIDEOINFOHEADER (size: 40)
- */
-export interface VIDEOINFOHEADER {
-  /** Windows.Win32.Foundation.RECT */
-  rcSource: Uint8Array | Deno.PointerValue | null;
-  /** Windows.Win32.Foundation.RECT */
-  rcTarget: Uint8Array | Deno.PointerValue | null;
-  /** u32 */
-  dwBitRate: number;
-  /** u32 */
-  dwBitErrorRate: number;
-  /** i64 */
-  AvgTimePerFrame: Deno.PointerValue;
-  /** Windows.Win32.Graphics.Gdi.BITMAPINFOHEADER */
-  bmiHeader: Uint8Array | Deno.PointerValue | null;
-}
-
-export const sizeofVIDEOINFOHEADER = 40;
-
-export function allocVIDEOINFOHEADER(data?: Partial<VIDEOINFOHEADER>): Uint8Array {
-  const buf = new Uint8Array(sizeofVIDEOINFOHEADER);
-  const view = new DataView(buf.buffer);
-  // 0x00: pointer
-  if (data?.rcSource !== undefined) view.setBigUint64(0, data.rcSource === null ? 0n : BigInt(util.toPointer(data.rcSource)), true);
-  // 0x08: pointer
-  if (data?.rcTarget !== undefined) view.setBigUint64(8, data.rcTarget === null ? 0n : BigInt(util.toPointer(data.rcTarget)), true);
-  // 0x10: u32
-  if (data?.dwBitRate !== undefined) view.setUint32(16, Number(data.dwBitRate), true);
-  // 0x14: u32
-  if (data?.dwBitErrorRate !== undefined) view.setUint32(20, Number(data.dwBitErrorRate), true);
-  // 0x18: i64
-  if (data?.AvgTimePerFrame !== undefined) view.setBigInt64(24, BigInt(data.AvgTimePerFrame), true);
-  // 0x20: pointer
-  if (data?.bmiHeader !== undefined) view.setBigUint64(32, data.bmiHeader === null ? 0n : BigInt(util.toPointer(data.bmiHeader)), true);
   return buf;
 }
 
@@ -7547,36 +7466,6 @@ export function allocVIDEOINFO(data?: Partial<VIDEOINFO>): Uint8Array {
   if (data?.bmiHeader !== undefined) view.setBigUint64(32, data.bmiHeader === null ? 0n : BigInt(util.toPointer(data.bmiHeader)), true);
   // 0x28: pointer
   if (data?.Anonymous !== undefined) view.setBigUint64(40, data.Anonymous === null ? 0n : BigInt(util.toPointer(data.Anonymous)), true);
-  return buf;
-}
-
-/**
- * Windows.Win32.Media.DirectShow.MPEG1VIDEOINFO (size: 24)
- */
-export interface MPEG1VIDEOINFO {
-  /** Windows.Win32.Media.DirectShow.VIDEOINFOHEADER */
-  hdr: Uint8Array | Deno.PointerValue | null;
-  /** u32 */
-  dwStartTimeCode: number;
-  /** u32 */
-  cbSequenceHeader: number;
-  /** array */
-  bSequenceHeader: Deno.PointerValue | null;
-}
-
-export const sizeofMPEG1VIDEOINFO = 24;
-
-export function allocMPEG1VIDEOINFO(data?: Partial<MPEG1VIDEOINFO>): Uint8Array {
-  const buf = new Uint8Array(sizeofMPEG1VIDEOINFO);
-  const view = new DataView(buf.buffer);
-  // 0x00: pointer
-  if (data?.hdr !== undefined) view.setBigUint64(0, data.hdr === null ? 0n : BigInt(util.toPointer(data.hdr)), true);
-  // 0x08: u32
-  if (data?.dwStartTimeCode !== undefined) view.setUint32(8, Number(data.dwStartTimeCode), true);
-  // 0x0c: u32
-  if (data?.cbSequenceHeader !== undefined) view.setUint32(12, Number(data.cbSequenceHeader), true);
-  // 0x10: pointer
-  if (data?.bSequenceHeader !== undefined) view.setBigUint64(16, data.bSequenceHeader === null ? 0n : BigInt(util.toPointer(data.bSequenceHeader)), true);
   return buf;
 }
 
@@ -7634,6 +7523,58 @@ export function allocAM_FRAMESTEP_STEP(data?: Partial<AM_FRAMESTEP_STEP>): Uint8
 }
 
 /**
+ * Windows.Win32.Media.MediaFoundation.AM_MEDIA_TYPE (size: 64)
+ */
+export interface AM_MEDIA_TYPE {
+  /** System.Guid */
+  majortype: Uint8Array | Deno.PointerValue | null;
+  /** System.Guid */
+  subtype: Uint8Array | Deno.PointerValue | null;
+  /** Windows.Win32.Foundation.BOOL */
+  bFixedSizeSamples: boolean;
+  /** Windows.Win32.Foundation.BOOL */
+  bTemporalCompression: boolean;
+  /** u32 */
+  lSampleSize: number;
+  /** System.Guid */
+  formattype: Uint8Array | Deno.PointerValue | null;
+  /** Windows.Win32.System.Com.IUnknown */
+  pUnk: Uint8Array | Deno.PointerValue | null;
+  /** u32 */
+  cbFormat: number;
+  /** ptr */
+  pbFormat: Deno.PointerValue | Uint8Array | null;
+}
+
+export const sizeofAM_MEDIA_TYPE = 64;
+
+export function allocAM_MEDIA_TYPE(data?: Partial<AM_MEDIA_TYPE>): Uint8Array {
+  const buf = new Uint8Array(sizeofAM_MEDIA_TYPE);
+  const view = new DataView(buf.buffer);
+  // 0x00: pointer
+  if (data?.majortype !== undefined) view.setBigUint64(0, data.majortype === null ? 0n : BigInt(util.toPointer(data.majortype)), true);
+  // 0x08: pointer
+  if (data?.subtype !== undefined) view.setBigUint64(8, data.subtype === null ? 0n : BigInt(util.toPointer(data.subtype)), true);
+  // 0x10: i32
+  if (data?.bFixedSizeSamples !== undefined) view.setInt32(16, Number(data.bFixedSizeSamples), true);
+  // 0x14: i32
+  if (data?.bTemporalCompression !== undefined) view.setInt32(20, Number(data.bTemporalCompression), true);
+  // 0x18: u32
+  if (data?.lSampleSize !== undefined) view.setUint32(24, Number(data.lSampleSize), true);
+  // 0x1c: pad4
+  // 0x20: pointer
+  if (data?.formattype !== undefined) view.setBigUint64(32, data.formattype === null ? 0n : BigInt(util.toPointer(data.formattype)), true);
+  // 0x28: pointer
+  if (data?.pUnk !== undefined) view.setBigUint64(40, data.pUnk === null ? 0n : BigInt(util.toPointer(data.pUnk)), true);
+  // 0x30: u32
+  if (data?.cbFormat !== undefined) view.setUint32(48, Number(data.cbFormat), true);
+  // 0x34: pad4
+  // 0x38: pointer
+  if (data?.pbFormat !== undefined) view.setBigUint64(56, data.pbFormat === null ? 0n : BigInt(util.toPointer(data.pbFormat)), true);
+  return buf;
+}
+
+/**
  * Windows.Win32.Media.DirectShow.AM_MPEGSTREAMTYPE (size: 24)
  */
 export interface AM_MPEGSTREAMTYPE {
@@ -7641,7 +7582,7 @@ export interface AM_MPEGSTREAMTYPE {
   dwStreamId: number;
   /** u32 */
   dwReserved: number;
-  /** Windows.Win32.Media.DirectShow.AM_MEDIA_TYPE */
+  /** Windows.Win32.Media.MediaFoundation.AM_MEDIA_TYPE */
   mt: Uint8Array | Deno.PointerValue | null;
   /** array */
   bFormat: Deno.PointerValue | null;
@@ -7893,7 +7834,7 @@ export function allocVMR9ProcAmpControlRange(data?: Partial<VMR9ProcAmpControlRa
 }
 
 /**
- * Windows.Win32.Media.DirectShow.VMR9AlphaBitmap (size: 56)
+ * Windows.Win32.Media.DirectShow.VMR9AlphaBitmap (size: 64)
  */
 export interface VMR9AlphaBitmap {
   /** u32 */
@@ -7908,13 +7849,13 @@ export interface VMR9AlphaBitmap {
   rDest: Uint8Array | Deno.PointerValue | null;
   /** f32 */
   fAlpha: number;
-  /** u32 */
-  clrSrcKey: number;
+  /** Windows.Win32.Foundation.COLORREF */
+  clrSrcKey: Uint8Array | Deno.PointerValue | null;
   /** u32 */
   dwFilterMode: number;
 }
 
-export const sizeofVMR9AlphaBitmap = 56;
+export const sizeofVMR9AlphaBitmap = 64;
 
 export function allocVMR9AlphaBitmap(data?: Partial<VMR9AlphaBitmap>): Uint8Array {
   const buf = new Uint8Array(sizeofVMR9AlphaBitmap);
@@ -7932,11 +7873,12 @@ export function allocVMR9AlphaBitmap(data?: Partial<VMR9AlphaBitmap>): Uint8Arra
   if (data?.rDest !== undefined) view.setBigUint64(32, data.rDest === null ? 0n : BigInt(util.toPointer(data.rDest)), true);
   // 0x28: f32
   if (data?.fAlpha !== undefined) view.setFloat32(40, Number(data.fAlpha), true);
-  // 0x2c: u32
-  if (data?.clrSrcKey !== undefined) view.setUint32(44, Number(data.clrSrcKey), true);
-  // 0x30: u32
-  if (data?.dwFilterMode !== undefined) view.setUint32(48, Number(data.dwFilterMode), true);
-  // 0x34: pad4
+  // 0x2c: pad4
+  // 0x30: pointer
+  if (data?.clrSrcKey !== undefined) view.setBigUint64(48, data.clrSrcKey === null ? 0n : BigInt(util.toPointer(data.clrSrcKey)), true);
+  // 0x38: u32
+  if (data?.dwFilterMode !== undefined) view.setUint32(56, Number(data.dwFilterMode), true);
+  // 0x3c: pad4
   return buf;
 }
 
@@ -8687,9 +8629,9 @@ export function allocAVITIMEDINDEX_ENTRY(data?: Partial<AVITIMEDINDEX_ENTRY>): U
 }
 
 /**
- * Windows.Win32.Media.DirectShow._avitimedindex (size: 56)
+ * Windows.Win32.Media.DirectShow.AVITIMEDINDEX (size: 56)
  */
-export interface _avitimedindex {
+export interface AVITIMEDINDEX {
   /** u32 */
   fcc: number;
   /** u32 */
@@ -8714,10 +8656,10 @@ export interface _avitimedindex {
   adwTrailingFill: Deno.PointerValue | null;
 }
 
-export const sizeof_avitimedindex = 56;
+export const sizeofAVITIMEDINDEX = 56;
 
-export function alloc_avitimedindex(data?: Partial<_avitimedindex>): Uint8Array {
-  const buf = new Uint8Array(sizeof_avitimedindex);
+export function allocAVITIMEDINDEX(data?: Partial<AVITIMEDINDEX>): Uint8Array {
+  const buf = new Uint8Array(sizeofAVITIMEDINDEX);
   const view = new DataView(buf.buffer);
   // 0x00: u32
   if (data?.fcc !== undefined) view.setUint32(0, Number(data.fcc), true);
@@ -8833,9 +8775,9 @@ export function allocAVITCDLINDEX_ENTRY(data?: Partial<AVITCDLINDEX_ENTRY>): Uin
 }
 
 /**
- * Windows.Win32.Media.DirectShow._avitcdlindex (size: 48)
+ * Windows.Win32.Media.DirectShow.AVITCDLINDEX (size: 48)
  */
-export interface _avitcdlindex {
+export interface AVITCDLINDEX {
   /** u32 */
   fcc: number;
   /** u32 */
@@ -8858,10 +8800,10 @@ export interface _avitcdlindex {
   adwTrailingFill: Deno.PointerValue | null;
 }
 
-export const sizeof_avitcdlindex = 48;
+export const sizeofAVITCDLINDEX = 48;
 
-export function alloc_avitcdlindex(data?: Partial<_avitcdlindex>): Uint8Array {
-  const buf = new Uint8Array(sizeof_avitcdlindex);
+export function allocAVITCDLINDEX(data?: Partial<AVITCDLINDEX>): Uint8Array {
+  const buf = new Uint8Array(sizeofAVITCDLINDEX);
   const view = new DataView(buf.buffer);
   // 0x00: u32
   if (data?.fcc !== undefined) view.setUint32(0, Number(data.fcc), true);
@@ -9545,112 +9487,6 @@ export function allocDVD_REGION(data?: Partial<DVD_REGION>): Uint8Array {
   // 0x03: u8
   if (data?.ResetCount !== undefined) view.setUint8(3, Number(data.ResetCount));
   // 0x04: pad4
-  return buf;
-}
-
-/**
- * Windows.Win32.Media.DirectShow.VIDEOINFOHEADER2 (size: 72)
- */
-export interface VIDEOINFOHEADER2 {
-  /** Windows.Win32.Foundation.RECT */
-  rcSource: Uint8Array | Deno.PointerValue | null;
-  /** Windows.Win32.Foundation.RECT */
-  rcTarget: Uint8Array | Deno.PointerValue | null;
-  /** u32 */
-  dwBitRate: number;
-  /** u32 */
-  dwBitErrorRate: number;
-  /** i64 */
-  AvgTimePerFrame: Deno.PointerValue;
-  /** u32 */
-  dwInterlaceFlags: number;
-  /** u32 */
-  dwCopyProtectFlags: number;
-  /** u32 */
-  dwPictAspectRatioX: number;
-  /** u32 */
-  dwPictAspectRatioY: number;
-  /** _Anonymous_e__Union */
-  Anonymous: Uint8Array | Deno.PointerValue | null;
-  /** u32 */
-  dwReserved2: number;
-  /** Windows.Win32.Graphics.Gdi.BITMAPINFOHEADER */
-  bmiHeader: Uint8Array | Deno.PointerValue | null;
-}
-
-export const sizeofVIDEOINFOHEADER2 = 72;
-
-export function allocVIDEOINFOHEADER2(data?: Partial<VIDEOINFOHEADER2>): Uint8Array {
-  const buf = new Uint8Array(sizeofVIDEOINFOHEADER2);
-  const view = new DataView(buf.buffer);
-  // 0x00: pointer
-  if (data?.rcSource !== undefined) view.setBigUint64(0, data.rcSource === null ? 0n : BigInt(util.toPointer(data.rcSource)), true);
-  // 0x08: pointer
-  if (data?.rcTarget !== undefined) view.setBigUint64(8, data.rcTarget === null ? 0n : BigInt(util.toPointer(data.rcTarget)), true);
-  // 0x10: u32
-  if (data?.dwBitRate !== undefined) view.setUint32(16, Number(data.dwBitRate), true);
-  // 0x14: u32
-  if (data?.dwBitErrorRate !== undefined) view.setUint32(20, Number(data.dwBitErrorRate), true);
-  // 0x18: i64
-  if (data?.AvgTimePerFrame !== undefined) view.setBigInt64(24, BigInt(data.AvgTimePerFrame), true);
-  // 0x20: u32
-  if (data?.dwInterlaceFlags !== undefined) view.setUint32(32, Number(data.dwInterlaceFlags), true);
-  // 0x24: u32
-  if (data?.dwCopyProtectFlags !== undefined) view.setUint32(36, Number(data.dwCopyProtectFlags), true);
-  // 0x28: u32
-  if (data?.dwPictAspectRatioX !== undefined) view.setUint32(40, Number(data.dwPictAspectRatioX), true);
-  // 0x2c: u32
-  if (data?.dwPictAspectRatioY !== undefined) view.setUint32(44, Number(data.dwPictAspectRatioY), true);
-  // 0x30: pointer
-  if (data?.Anonymous !== undefined) view.setBigUint64(48, data.Anonymous === null ? 0n : BigInt(util.toPointer(data.Anonymous)), true);
-  // 0x38: u32
-  if (data?.dwReserved2 !== undefined) view.setUint32(56, Number(data.dwReserved2), true);
-  // 0x3c: pad4
-  // 0x40: pointer
-  if (data?.bmiHeader !== undefined) view.setBigUint64(64, data.bmiHeader === null ? 0n : BigInt(util.toPointer(data.bmiHeader)), true);
-  return buf;
-}
-
-/**
- * Windows.Win32.Media.DirectShow.MPEG2VIDEOINFO (size: 40)
- */
-export interface MPEG2VIDEOINFO {
-  /** Windows.Win32.Media.DirectShow.VIDEOINFOHEADER2 */
-  hdr: Uint8Array | Deno.PointerValue | null;
-  /** u32 */
-  dwStartTimeCode: number;
-  /** u32 */
-  cbSequenceHeader: number;
-  /** u32 */
-  dwProfile: number;
-  /** u32 */
-  dwLevel: number;
-  /** Windows.Win32.Media.DirectShow.MPEG2VIDEOINFO_FLAGS */
-  dwFlags: MPEG2VIDEOINFO_FLAGS;
-  /** array */
-  dwSequenceHeader: Deno.PointerValue | null;
-}
-
-export const sizeofMPEG2VIDEOINFO = 40;
-
-export function allocMPEG2VIDEOINFO(data?: Partial<MPEG2VIDEOINFO>): Uint8Array {
-  const buf = new Uint8Array(sizeofMPEG2VIDEOINFO);
-  const view = new DataView(buf.buffer);
-  // 0x00: pointer
-  if (data?.hdr !== undefined) view.setBigUint64(0, data.hdr === null ? 0n : BigInt(util.toPointer(data.hdr)), true);
-  // 0x08: u32
-  if (data?.dwStartTimeCode !== undefined) view.setUint32(8, Number(data.dwStartTimeCode), true);
-  // 0x0c: u32
-  if (data?.cbSequenceHeader !== undefined) view.setUint32(12, Number(data.cbSequenceHeader), true);
-  // 0x10: u32
-  if (data?.dwProfile !== undefined) view.setUint32(16, Number(data.dwProfile), true);
-  // 0x14: u32
-  if (data?.dwLevel !== undefined) view.setUint32(20, Number(data.dwLevel), true);
-  // 0x18: u32
-  if (data?.dwFlags !== undefined) view.setUint32(24, Number(data.dwFlags), true);
-  // 0x1c: pad4
-  // 0x20: pointer
-  if (data?.dwSequenceHeader !== undefined) view.setBigUint64(32, data.dwSequenceHeader === null ? 0n : BigInt(util.toPointer(data.dwSequenceHeader)), true);
   return buf;
 }
 
@@ -10652,7 +10488,7 @@ export interface DVR_STREAM_DESC {
   guidSubMediaType: Uint8Array | Deno.PointerValue | null;
   /** System.Guid */
   guidFormatType: Uint8Array | Deno.PointerValue | null;
-  /** Windows.Win32.Media.DirectShow.AM_MEDIA_TYPE */
+  /** Windows.Win32.Media.MediaFoundation.AM_MEDIA_TYPE */
   MediaType: Uint8Array | Deno.PointerValue | null;
 }
 
@@ -14135,7 +13971,7 @@ export type PSTR = Deno.PointerValue | Uint8Array | null;
 // Native Libraries
 
 try {
-  var libQUARTZ = Deno.dlopen("QUARTZ", {
+  var libQUARTZ_dll = Deno.dlopen("QUARTZ.dll", {
     AMGetErrorTextA: {
       parameters: ["pointer", "buffer", "u32"],
       result: "u32",
@@ -14154,7 +13990,7 @@ export function AMGetErrorTextA(
   pbuffer: string | null /* Windows.Win32.Foundation.PSTR */,
   MaxLen: number /* u32 */,
 ): number /* u32 */ {
-  return libQUARTZ.AMGetErrorTextA(util.toPointer(hr), util.pstrToFfi(pbuffer), MaxLen);
+  return libQUARTZ_dll.AMGetErrorTextA(util.toPointer(hr), util.pstrToFfi(pbuffer), MaxLen);
 }
 
 export function AMGetErrorTextW(
@@ -14162,6 +13998,6 @@ export function AMGetErrorTextW(
   pbuffer: string | null /* Windows.Win32.Foundation.PWSTR */,
   MaxLen: number /* u32 */,
 ): number /* u32 */ {
-  return libQUARTZ.AMGetErrorTextW(util.toPointer(hr), util.pwstrToFfi(pbuffer), MaxLen);
+  return libQUARTZ_dll.AMGetErrorTextW(util.toPointer(hr), util.pwstrToFfi(pbuffer), MaxLen);
 }
 

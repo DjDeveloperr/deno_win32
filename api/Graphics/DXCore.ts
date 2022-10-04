@@ -162,7 +162,7 @@ export type HRESULT = number;
 // Native Libraries
 
 try {
-  var libDXCORE = Deno.dlopen("DXCORE", {
+  var libDXCORE_dll = Deno.dlopen("DXCORE.dll", {
     DXCoreCreateAdapterFactory: {
       parameters: ["pointer", "pointer"],
       result: "pointer",
@@ -176,6 +176,6 @@ export function DXCoreCreateAdapterFactory(
   riid: Deno.PointerValue | Uint8Array | null /* ptr */,
   ppvFactory: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libDXCORE.DXCoreCreateAdapterFactory(util.toPointer(riid), util.toPointer(ppvFactory)));
+  return util.pointerFromFfi(libDXCORE_dll.DXCoreCreateAdapterFactory(util.toPointer(riid), util.toPointer(ppvFactory)));
 }
 

@@ -86,6 +86,9 @@ export const CRED_PACK_PROTECTED_CREDENTIALS = 1;
 export const CRED_PACK_WOW_BUFFER = 2;
 export const CRED_PACK_GENERIC_CREDENTIALS = 4;
 export const CRED_PACK_ID_PROVIDER_CREDENTIALS = 8;
+export const CRED_MAX_CREDENTIAL_BLOB_SIZE = 2560;
+export const CRED_MAX_USERNAME_LENGTH = 513;
+export const CRED_MAX_DOMAIN_TARGET_NAME_LENGTH = 337;
 export const FILE_DEVICE_SMARTCARD = 49;
 export const SCARD_ATR_LENGTH = 33;
 export const SCARD_PROTOCOL_UNDEFINED = 0;
@@ -143,8 +146,7 @@ export const SCARD_READER_TYPE_VENDOR = 240;
 export const STATUS_LOGON_FAILURE = 116568633639021;
 export const STATUS_WRONG_PASSWORD = 124265215033450;
 export const STATUS_PASSWORD_EXPIRED = 602552773116017;
-export const STATUS_PASSWORD_MUST_CHANGE = 37403796439588;
-export const STATUS_ACCESS_DENIED = 993978912604194;
+export const STATUS_PASSWORD_MUST_CHANGE = 993978912604708;
 export const STATUS_DOWNGRADE_DETECTED = 1146811028865928;
 export const STATUS_AUTHENTICATION_FIREWALL_FAILED = 125364726662163;
 export const STATUS_ACCOUNT_DISABLED = 120966680150130;
@@ -153,13 +155,48 @@ export const STATUS_ACCOUNT_LOCKED_OUT = 443123587088948;
 export const STATUS_ACCOUNT_EXPIRED = 381550935933331;
 export const STATUS_LOGON_TYPE_NOT_GRANTED = 104474005733723;
 export const STATUS_NO_SUCH_LOGON_SESSION = 109971563872351;
-export const STATUS_NO_SUCH_USER = 67693652788379748n;
+export const STATUS_NO_SUCH_USER = 5980826556577087588n;
 export const CRED_MAX_STRING_LENGTH = 256;
 export const CRED_MAX_GENERIC_TARGET_NAME_LENGTH = 32767;
 export const CRED_MAX_TARGETNAME_NAMESPACE_LENGTH = 256;
 export const CRED_MAX_TARGETNAME_ATTRIBUTE_LENGTH = 256;
 export const CRED_MAX_VALUE_SIZE = 256;
 export const CRED_MAX_ATTRIBUTES = 64;
+export const CRED_SESSION_WILDCARD_NAME_W = "*Session";
+export const CRED_SESSION_WILDCARD_NAME_A = "*Session";
+export const CRED_TARGETNAME_DOMAIN_NAMESPACE_W = "Domain";
+export const CRED_TARGETNAME_DOMAIN_NAMESPACE_A = "Domain";
+export const CRED_TARGETNAME_LEGACYGENERIC_NAMESPACE_W = "LegacyGeneric";
+export const CRED_TARGETNAME_LEGACYGENERIC_NAMESPACE_A = "LegacyGeneric";
+export const CRED_TARGETNAME_ATTRIBUTE_TARGET_W = "target";
+export const CRED_TARGETNAME_ATTRIBUTE_TARGET_A = "target";
+export const CRED_TARGETNAME_ATTRIBUTE_NAME_W = "name";
+export const CRED_TARGETNAME_ATTRIBUTE_NAME_A = "name";
+export const CRED_TARGETNAME_ATTRIBUTE_BATCH_W = "batch";
+export const CRED_TARGETNAME_ATTRIBUTE_BATCH_A = "batch";
+export const CRED_TARGETNAME_ATTRIBUTE_INTERACTIVE_W = "interactive";
+export const CRED_TARGETNAME_ATTRIBUTE_INTERACTIVE_A = "interactive";
+export const CRED_TARGETNAME_ATTRIBUTE_SERVICE_W = "service";
+export const CRED_TARGETNAME_ATTRIBUTE_SERVICE_A = "service";
+export const CRED_TARGETNAME_ATTRIBUTE_NETWORK_W = "network";
+export const CRED_TARGETNAME_ATTRIBUTE_NETWORK_A = "network";
+export const CRED_TARGETNAME_ATTRIBUTE_NETWORKCLEARTEXT_W = "networkcleartext";
+export const CRED_TARGETNAME_ATTRIBUTE_NETWORKCLEARTEXT_A = "networkcleartext";
+export const CRED_TARGETNAME_ATTRIBUTE_REMOTEINTERACTIVE_W = "remoteinteractive";
+export const CRED_TARGETNAME_ATTRIBUTE_REMOTEINTERACTIVE_A = "remoteinteractive";
+export const CRED_TARGETNAME_ATTRIBUTE_CACHEDINTERACTIVE_W = "cachedinteractive";
+export const CRED_TARGETNAME_ATTRIBUTE_CACHEDINTERACTIVE_A = "cachedinteractive";
+export const CRED_SESSION_WILDCARD_NAME = "*Session";
+export const CRED_TARGETNAME_DOMAIN_NAMESPACE = "Domain";
+export const CRED_TARGETNAME_ATTRIBUTE_NAME = "name";
+export const CRED_TARGETNAME_ATTRIBUTE_TARGET = "target";
+export const CRED_TARGETNAME_ATTRIBUTE_BATCH = "batch";
+export const CRED_TARGETNAME_ATTRIBUTE_INTERACTIVE = "interactive";
+export const CRED_TARGETNAME_ATTRIBUTE_SERVICE = "service";
+export const CRED_TARGETNAME_ATTRIBUTE_NETWORK = "network";
+export const CRED_TARGETNAME_ATTRIBUTE_NETWORKCLEARTEXT = "networkcleartext";
+export const CRED_TARGETNAME_ATTRIBUTE_REMOTEINTERACTIVE = "remoteinteractive";
+export const CRED_TARGETNAME_ATTRIBUTE_CACHEDINTERACTIVE = "cachedinteractive";
 export const CRED_LOGON_TYPES_MASK = 61440;
 export const CRED_TI_SERVER_FORMAT_UNKNOWN = 1;
 export const CRED_TI_DOMAIN_FORMAT_UNKNOWN = 2;
@@ -173,6 +210,8 @@ export const CERT_HASH_LENGTH = 20;
 export const CREDUI_MAX_MESSAGE_LENGTH = 1024;
 export const CREDUI_MAX_CAPTION_LENGTH = 128;
 export const CREDUI_MAX_GENERIC_TARGET_LENGTH = 32767;
+export const CREDUI_MAX_DOMAIN_TARGET_LENGTH = 337;
+export const CREDUI_MAX_USERNAME_LENGTH = 513;
 export const CREDUIWIN_IGNORE_CLOUDAUTHORITY_NAME = 262144;
 export const CREDUIWIN_DOWNLEVEL_HELLO_AS_SMART_CARD = 2147483648;
 export const CRED_PRESERVE_CREDENTIAL_BLOB = 1;
@@ -183,6 +222,10 @@ export const CRED_PROTECT_TO_SYSTEM = 2;
 export const CRED_UNPROTECT_AS_SELF = 1;
 export const CRED_UNPROTECT_ALLOW_TO_SYSTEM = 2;
 export const SCARD_SCOPE_TERMINAL = 1;
+export const SCARD_ALL_READERS = "SCard$AllReaders 00";
+export const SCARD_DEFAULT_READERS = "SCard$DefaultReaders 00";
+export const SCARD_LOCAL_READERS = "SCard$LocalReaders 00";
+export const SCARD_SYSTEM_READERS = "SCard$SystemReaders 00";
 export const SCARD_PROVIDER_PRIMARY = 1;
 export const SCARD_PROVIDER_CSP = 2;
 export const SCARD_PROVIDER_KSP = 3;
@@ -201,6 +244,10 @@ export const SCERR_NOCARDNAME = 16384;
 export const SCERR_NOGUIDS = 32768;
 export const SCARD_AUDIT_CHV_FAILURE = 0;
 export const SCARD_AUDIT_CHV_SUCCESS = 1;
+export const CREDSSP_NAME = "CREDSSP";
+export const TS_SSP_NAME_A = "TSSSP";
+export const TS_SSP_NAME = "TSSSP";
+export const szOID_TS_KP_TS_SERVER_AUTH = "1.3.6.1.4.1.311.54.1.2";
 export const CREDSSP_SERVER_AUTH_NEGOTIATE = 1;
 export const CREDSSP_SERVER_AUTH_CERTIFICATE = 2;
 export const CREDSSP_SERVER_AUTH_LOOPBACK = 4;
@@ -1854,7 +1901,7 @@ export type HANDLE = Deno.PointerValue;
 // Native Libraries
 
 try {
-  var libKeyCredMgr = Deno.dlopen("KeyCredMgr", {
+  var libKeyCredMgr_dll = Deno.dlopen("KeyCredMgr.dll", {
     KeyCredentialManagerGetOperationErrorStates: {
       parameters: ["i32", "pointer", "pointer"],
       result: "pointer",
@@ -1875,7 +1922,7 @@ try {
 } catch(e) { /* ignore */ }
 
 try {
-  var libADVAPI32 = Deno.dlopen("ADVAPI32", {
+  var libADVAPI32_dll = Deno.dlopen("ADVAPI32.dll", {
     CredWriteW: {
       parameters: ["pointer", "u32"],
       result: "i32",
@@ -2008,7 +2055,7 @@ try {
 } catch(e) { /* ignore */ }
 
 try {
-  var libcredui = Deno.dlopen("credui", {
+  var libcredui_dll = Deno.dlopen("credui.dll", {
     CredUnPackAuthenticationBufferW: {
       parameters: ["u32", "pointer", "u32", "buffer", "pointer", "buffer", "pointer", "buffer", "pointer"],
       result: "i32",
@@ -2077,7 +2124,7 @@ try {
 } catch(e) { /* ignore */ }
 
 try {
-  var libWinSCard = Deno.dlopen("WinSCard", {
+  var libWinSCard_dll = Deno.dlopen("WinSCard.dll", {
     SCardEstablishContext: {
       parameters: ["u32", "pointer", "pointer", "pointer"],
       result: "i32",
@@ -2362,7 +2409,7 @@ try {
 } catch(e) { /* ignore */ }
 
 try {
-  var libSCARDDLG = Deno.dlopen("SCARDDLG", {
+  var libSCARDDLG_dll = Deno.dlopen("SCARDDLG.dll", {
     SCardUIDlgSelectCardA: {
       parameters: ["pointer"],
       result: "i32",
@@ -2393,40 +2440,40 @@ export function KeyCredentialManagerGetOperationErrorStates(
   isReady: Deno.PointerValue | Uint8Array | null /* ptr */,
   keyCredentialManagerOperationErrorStates: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libKeyCredMgr.KeyCredentialManagerGetOperationErrorStates(keyCredentialManagerOperationType, util.toPointer(isReady), util.toPointer(keyCredentialManagerOperationErrorStates)));
+  return util.pointerFromFfi(libKeyCredMgr_dll.KeyCredentialManagerGetOperationErrorStates(keyCredentialManagerOperationType, util.toPointer(isReady), util.toPointer(keyCredentialManagerOperationErrorStates)));
 }
 
 export function KeyCredentialManagerShowUIOperation(
   hWndOwner: Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */,
   keyCredentialManagerOperationType: KeyCredentialManagerOperationType /* Windows.Win32.Security.Credentials.KeyCredentialManagerOperationType */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libKeyCredMgr.KeyCredentialManagerShowUIOperation(util.hwndToFfi(hWndOwner), keyCredentialManagerOperationType));
+  return util.pointerFromFfi(libKeyCredMgr_dll.KeyCredentialManagerShowUIOperation(util.hwndToFfi(hWndOwner), keyCredentialManagerOperationType));
 }
 
 export function KeyCredentialManagerGetInformation(
   keyCredentialManagerInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libKeyCredMgr.KeyCredentialManagerGetInformation(util.toPointer(keyCredentialManagerInfo)));
+  return util.pointerFromFfi(libKeyCredMgr_dll.KeyCredentialManagerGetInformation(util.toPointer(keyCredentialManagerInfo)));
 }
 
 export function KeyCredentialManagerFreeInformation(
   keyCredentialManagerInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): void /* void */ {
-  return libKeyCredMgr.KeyCredentialManagerFreeInformation(util.toPointer(keyCredentialManagerInfo));
+  return libKeyCredMgr_dll.KeyCredentialManagerFreeInformation(util.toPointer(keyCredentialManagerInfo));
 }
 
 export function CredWriteW(
   Credential: Deno.PointerValue | Uint8Array | null /* ptr */,
   Flags: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32.CredWriteW(util.toPointer(Credential), Flags));
+  return util.boolFromFfi(libADVAPI32_dll.CredWriteW(util.toPointer(Credential), Flags));
 }
 
 export function CredWriteA(
   Credential: Deno.PointerValue | Uint8Array | null /* ptr */,
   Flags: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32.CredWriteA(util.toPointer(Credential), Flags));
+  return util.boolFromFfi(libADVAPI32_dll.CredWriteA(util.toPointer(Credential), Flags));
 }
 
 export function CredReadW(
@@ -2435,7 +2482,7 @@ export function CredReadW(
   Flags: number /* u32 */,
   Credential: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32.CredReadW(util.pwstrToFfi(TargetName), Type, Flags, util.toPointer(Credential)));
+  return util.boolFromFfi(libADVAPI32_dll.CredReadW(util.pwstrToFfi(TargetName), Type, Flags, util.toPointer(Credential)));
 }
 
 export function CredReadA(
@@ -2444,7 +2491,7 @@ export function CredReadA(
   Flags: number /* u32 */,
   Credential: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32.CredReadA(util.pstrToFfi(TargetName), Type, Flags, util.toPointer(Credential)));
+  return util.boolFromFfi(libADVAPI32_dll.CredReadA(util.pstrToFfi(TargetName), Type, Flags, util.toPointer(Credential)));
 }
 
 export function CredEnumerateW(
@@ -2453,7 +2500,7 @@ export function CredEnumerateW(
   Count: Deno.PointerValue | Uint8Array | null /* ptr */,
   Credential: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32.CredEnumerateW(util.pwstrToFfi(Filter), Flags, util.toPointer(Count), util.toPointer(Credential)));
+  return util.boolFromFfi(libADVAPI32_dll.CredEnumerateW(util.pwstrToFfi(Filter), Flags, util.toPointer(Count), util.toPointer(Credential)));
 }
 
 export function CredEnumerateA(
@@ -2462,7 +2509,7 @@ export function CredEnumerateA(
   Count: Deno.PointerValue | Uint8Array | null /* ptr */,
   Credential: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32.CredEnumerateA(util.pstrToFfi(Filter), Flags, util.toPointer(Count), util.toPointer(Credential)));
+  return util.boolFromFfi(libADVAPI32_dll.CredEnumerateA(util.pstrToFfi(Filter), Flags, util.toPointer(Count), util.toPointer(Credential)));
 }
 
 export function CredWriteDomainCredentialsW(
@@ -2470,7 +2517,7 @@ export function CredWriteDomainCredentialsW(
   Credential: Deno.PointerValue | Uint8Array | null /* ptr */,
   Flags: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32.CredWriteDomainCredentialsW(util.toPointer(TargetInfo), util.toPointer(Credential), Flags));
+  return util.boolFromFfi(libADVAPI32_dll.CredWriteDomainCredentialsW(util.toPointer(TargetInfo), util.toPointer(Credential), Flags));
 }
 
 export function CredWriteDomainCredentialsA(
@@ -2478,7 +2525,7 @@ export function CredWriteDomainCredentialsA(
   Credential: Deno.PointerValue | Uint8Array | null /* ptr */,
   Flags: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32.CredWriteDomainCredentialsA(util.toPointer(TargetInfo), util.toPointer(Credential), Flags));
+  return util.boolFromFfi(libADVAPI32_dll.CredWriteDomainCredentialsA(util.toPointer(TargetInfo), util.toPointer(Credential), Flags));
 }
 
 export function CredReadDomainCredentialsW(
@@ -2487,7 +2534,7 @@ export function CredReadDomainCredentialsW(
   Count: Deno.PointerValue | Uint8Array | null /* ptr */,
   Credential: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32.CredReadDomainCredentialsW(util.toPointer(TargetInfo), Flags, util.toPointer(Count), util.toPointer(Credential)));
+  return util.boolFromFfi(libADVAPI32_dll.CredReadDomainCredentialsW(util.toPointer(TargetInfo), Flags, util.toPointer(Count), util.toPointer(Credential)));
 }
 
 export function CredReadDomainCredentialsA(
@@ -2496,7 +2543,7 @@ export function CredReadDomainCredentialsA(
   Count: Deno.PointerValue | Uint8Array | null /* ptr */,
   Credential: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32.CredReadDomainCredentialsA(util.toPointer(TargetInfo), Flags, util.toPointer(Count), util.toPointer(Credential)));
+  return util.boolFromFfi(libADVAPI32_dll.CredReadDomainCredentialsA(util.toPointer(TargetInfo), Flags, util.toPointer(Count), util.toPointer(Credential)));
 }
 
 export function CredDeleteW(
@@ -2504,7 +2551,7 @@ export function CredDeleteW(
   Type: number /* u32 */,
   Flags: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32.CredDeleteW(util.pwstrToFfi(TargetName), Type, Flags));
+  return util.boolFromFfi(libADVAPI32_dll.CredDeleteW(util.pwstrToFfi(TargetName), Type, Flags));
 }
 
 export function CredDeleteA(
@@ -2512,7 +2559,7 @@ export function CredDeleteA(
   Type: number /* u32 */,
   Flags: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32.CredDeleteA(util.pstrToFfi(TargetName), Type, Flags));
+  return util.boolFromFfi(libADVAPI32_dll.CredDeleteA(util.pstrToFfi(TargetName), Type, Flags));
 }
 
 export function CredRenameW(
@@ -2521,7 +2568,7 @@ export function CredRenameW(
   Type: number /* u32 */,
   Flags: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32.CredRenameW(util.pwstrToFfi(OldTargetName), util.pwstrToFfi(NewTargetName), Type, Flags));
+  return util.boolFromFfi(libADVAPI32_dll.CredRenameW(util.pwstrToFfi(OldTargetName), util.pwstrToFfi(NewTargetName), Type, Flags));
 }
 
 export function CredRenameA(
@@ -2530,7 +2577,7 @@ export function CredRenameA(
   Type: number /* u32 */,
   Flags: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32.CredRenameA(util.pstrToFfi(OldTargetName), util.pstrToFfi(NewTargetName), Type, Flags));
+  return util.boolFromFfi(libADVAPI32_dll.CredRenameA(util.pstrToFfi(OldTargetName), util.pstrToFfi(NewTargetName), Type, Flags));
 }
 
 export function CredGetTargetInfoW(
@@ -2538,7 +2585,7 @@ export function CredGetTargetInfoW(
   Flags: number /* u32 */,
   TargetInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32.CredGetTargetInfoW(util.pwstrToFfi(TargetName), Flags, util.toPointer(TargetInfo)));
+  return util.boolFromFfi(libADVAPI32_dll.CredGetTargetInfoW(util.pwstrToFfi(TargetName), Flags, util.toPointer(TargetInfo)));
 }
 
 export function CredGetTargetInfoA(
@@ -2546,7 +2593,7 @@ export function CredGetTargetInfoA(
   Flags: number /* u32 */,
   TargetInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32.CredGetTargetInfoA(util.pstrToFfi(TargetName), Flags, util.toPointer(TargetInfo)));
+  return util.boolFromFfi(libADVAPI32_dll.CredGetTargetInfoA(util.pstrToFfi(TargetName), Flags, util.toPointer(TargetInfo)));
 }
 
 export function CredMarshalCredentialW(
@@ -2554,7 +2601,7 @@ export function CredMarshalCredentialW(
   Credential: Deno.PointerValue | Uint8Array | null /* ptr */,
   MarshaledCredential: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32.CredMarshalCredentialW(CredType, util.toPointer(Credential), util.toPointer(MarshaledCredential)));
+  return util.boolFromFfi(libADVAPI32_dll.CredMarshalCredentialW(CredType, util.toPointer(Credential), util.toPointer(MarshaledCredential)));
 }
 
 export function CredMarshalCredentialA(
@@ -2562,7 +2609,7 @@ export function CredMarshalCredentialA(
   Credential: Deno.PointerValue | Uint8Array | null /* ptr */,
   MarshaledCredential: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32.CredMarshalCredentialA(CredType, util.toPointer(Credential), util.toPointer(MarshaledCredential)));
+  return util.boolFromFfi(libADVAPI32_dll.CredMarshalCredentialA(CredType, util.toPointer(Credential), util.toPointer(MarshaledCredential)));
 }
 
 export function CredUnmarshalCredentialW(
@@ -2570,7 +2617,7 @@ export function CredUnmarshalCredentialW(
   CredType: Deno.PointerValue | Uint8Array | null /* ptr */,
   Credential: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32.CredUnmarshalCredentialW(util.pwstrToFfi(MarshaledCredential), util.toPointer(CredType), util.toPointer(Credential)));
+  return util.boolFromFfi(libADVAPI32_dll.CredUnmarshalCredentialW(util.pwstrToFfi(MarshaledCredential), util.toPointer(CredType), util.toPointer(Credential)));
 }
 
 export function CredUnmarshalCredentialA(
@@ -2578,19 +2625,19 @@ export function CredUnmarshalCredentialA(
   CredType: Deno.PointerValue | Uint8Array | null /* ptr */,
   Credential: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32.CredUnmarshalCredentialA(util.pstrToFfi(MarshaledCredential), util.toPointer(CredType), util.toPointer(Credential)));
+  return util.boolFromFfi(libADVAPI32_dll.CredUnmarshalCredentialA(util.pstrToFfi(MarshaledCredential), util.toPointer(CredType), util.toPointer(Credential)));
 }
 
 export function CredIsMarshaledCredentialW(
   MarshaledCredential: string | null /* Windows.Win32.Foundation.PWSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32.CredIsMarshaledCredentialW(util.pwstrToFfi(MarshaledCredential)));
+  return util.boolFromFfi(libADVAPI32_dll.CredIsMarshaledCredentialW(util.pwstrToFfi(MarshaledCredential)));
 }
 
 export function CredIsMarshaledCredentialA(
   MarshaledCredential: string | null /* Windows.Win32.Foundation.PSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32.CredIsMarshaledCredentialA(util.pstrToFfi(MarshaledCredential)));
+  return util.boolFromFfi(libADVAPI32_dll.CredIsMarshaledCredentialA(util.pstrToFfi(MarshaledCredential)));
 }
 
 export function CredUnPackAuthenticationBufferW(
@@ -2604,7 +2651,7 @@ export function CredUnPackAuthenticationBufferW(
   pszPassword: string | null /* Windows.Win32.Foundation.PWSTR */,
   pcchMaxPassword: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libcredui.CredUnPackAuthenticationBufferW(dwFlags, util.toPointer(pAuthBuffer), cbAuthBuffer, util.pwstrToFfi(pszUserName), util.toPointer(pcchMaxUserName), util.pwstrToFfi(pszDomainName), util.toPointer(pcchMaxDomainName), util.pwstrToFfi(pszPassword), util.toPointer(pcchMaxPassword)));
+  return util.boolFromFfi(libcredui_dll.CredUnPackAuthenticationBufferW(dwFlags, util.toPointer(pAuthBuffer), cbAuthBuffer, util.pwstrToFfi(pszUserName), util.toPointer(pcchMaxUserName), util.pwstrToFfi(pszDomainName), util.toPointer(pcchMaxDomainName), util.pwstrToFfi(pszPassword), util.toPointer(pcchMaxPassword)));
 }
 
 export function CredUnPackAuthenticationBufferA(
@@ -2618,7 +2665,7 @@ export function CredUnPackAuthenticationBufferA(
   pszPassword: string | null /* Windows.Win32.Foundation.PSTR */,
   pcchMaxPassword: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libcredui.CredUnPackAuthenticationBufferA(dwFlags, util.toPointer(pAuthBuffer), cbAuthBuffer, util.pstrToFfi(pszUserName), util.toPointer(pcchlMaxUserName), util.pstrToFfi(pszDomainName), util.toPointer(pcchMaxDomainName), util.pstrToFfi(pszPassword), util.toPointer(pcchMaxPassword)));
+  return util.boolFromFfi(libcredui_dll.CredUnPackAuthenticationBufferA(dwFlags, util.toPointer(pAuthBuffer), cbAuthBuffer, util.pstrToFfi(pszUserName), util.toPointer(pcchlMaxUserName), util.pstrToFfi(pszDomainName), util.toPointer(pcchMaxDomainName), util.pstrToFfi(pszPassword), util.toPointer(pcchMaxPassword)));
 }
 
 export function CredPackAuthenticationBufferW(
@@ -2628,7 +2675,7 @@ export function CredPackAuthenticationBufferW(
   pPackedCredentials: Deno.PointerValue | Uint8Array | null /* ptr */,
   pcbPackedCredentials: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libcredui.CredPackAuthenticationBufferW(dwFlags, util.pwstrToFfi(pszUserName), util.pwstrToFfi(pszPassword), util.toPointer(pPackedCredentials), util.toPointer(pcbPackedCredentials)));
+  return util.boolFromFfi(libcredui_dll.CredPackAuthenticationBufferW(dwFlags, util.pwstrToFfi(pszUserName), util.pwstrToFfi(pszPassword), util.toPointer(pPackedCredentials), util.toPointer(pcbPackedCredentials)));
 }
 
 export function CredPackAuthenticationBufferA(
@@ -2638,7 +2685,7 @@ export function CredPackAuthenticationBufferA(
   pPackedCredentials: Deno.PointerValue | Uint8Array | null /* ptr */,
   pcbPackedCredentials: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libcredui.CredPackAuthenticationBufferA(dwFlags, util.pstrToFfi(pszUserName), util.pstrToFfi(pszPassword), util.toPointer(pPackedCredentials), util.toPointer(pcbPackedCredentials)));
+  return util.boolFromFfi(libcredui_dll.CredPackAuthenticationBufferA(dwFlags, util.pstrToFfi(pszUserName), util.pstrToFfi(pszPassword), util.toPointer(pPackedCredentials), util.toPointer(pcbPackedCredentials)));
 }
 
 export function CredProtectW(
@@ -2649,7 +2696,7 @@ export function CredProtectW(
   pcchMaxChars: Deno.PointerValue | Uint8Array | null /* ptr */,
   ProtectionType: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32.CredProtectW(util.boolToFfi(fAsSelf), util.pwstrToFfi(pszCredentials), cchCredentials, util.pwstrToFfi(pszProtectedCredentials), util.toPointer(pcchMaxChars), util.toPointer(ProtectionType)));
+  return util.boolFromFfi(libADVAPI32_dll.CredProtectW(util.boolToFfi(fAsSelf), util.pwstrToFfi(pszCredentials), cchCredentials, util.pwstrToFfi(pszProtectedCredentials), util.toPointer(pcchMaxChars), util.toPointer(ProtectionType)));
 }
 
 export function CredProtectA(
@@ -2660,7 +2707,7 @@ export function CredProtectA(
   pcchMaxChars: Deno.PointerValue | Uint8Array | null /* ptr */,
   ProtectionType: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32.CredProtectA(util.boolToFfi(fAsSelf), util.pstrToFfi(pszCredentials), cchCredentials, util.pstrToFfi(pszProtectedCredentials), util.toPointer(pcchMaxChars), util.toPointer(ProtectionType)));
+  return util.boolFromFfi(libADVAPI32_dll.CredProtectA(util.boolToFfi(fAsSelf), util.pstrToFfi(pszCredentials), cchCredentials, util.pstrToFfi(pszProtectedCredentials), util.toPointer(pcchMaxChars), util.toPointer(ProtectionType)));
 }
 
 export function CredUnprotectW(
@@ -2670,7 +2717,7 @@ export function CredUnprotectW(
   pszCredentials: string | null /* Windows.Win32.Foundation.PWSTR */,
   pcchMaxChars: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32.CredUnprotectW(util.boolToFfi(fAsSelf), util.pwstrToFfi(pszProtectedCredentials), cchProtectedCredentials, util.pwstrToFfi(pszCredentials), util.toPointer(pcchMaxChars)));
+  return util.boolFromFfi(libADVAPI32_dll.CredUnprotectW(util.boolToFfi(fAsSelf), util.pwstrToFfi(pszProtectedCredentials), cchProtectedCredentials, util.pwstrToFfi(pszCredentials), util.toPointer(pcchMaxChars)));
 }
 
 export function CredUnprotectA(
@@ -2680,21 +2727,21 @@ export function CredUnprotectA(
   pszCredentials: string | null /* Windows.Win32.Foundation.PSTR */,
   pcchMaxChars: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32.CredUnprotectA(util.boolToFfi(fAsSelf), util.pstrToFfi(pszProtectedCredentials), cchProtectedCredentials, util.pstrToFfi(pszCredentials), util.toPointer(pcchMaxChars)));
+  return util.boolFromFfi(libADVAPI32_dll.CredUnprotectA(util.boolToFfi(fAsSelf), util.pstrToFfi(pszProtectedCredentials), cchProtectedCredentials, util.pstrToFfi(pszCredentials), util.toPointer(pcchMaxChars)));
 }
 
 export function CredIsProtectedW(
   pszProtectedCredentials: string | null /* Windows.Win32.Foundation.PWSTR */,
   pProtectionType: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32.CredIsProtectedW(util.pwstrToFfi(pszProtectedCredentials), util.toPointer(pProtectionType)));
+  return util.boolFromFfi(libADVAPI32_dll.CredIsProtectedW(util.pwstrToFfi(pszProtectedCredentials), util.toPointer(pProtectionType)));
 }
 
 export function CredIsProtectedA(
   pszProtectedCredentials: string | null /* Windows.Win32.Foundation.PSTR */,
   pProtectionType: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32.CredIsProtectedA(util.pstrToFfi(pszProtectedCredentials), util.toPointer(pProtectionType)));
+  return util.boolFromFfi(libADVAPI32_dll.CredIsProtectedA(util.pstrToFfi(pszProtectedCredentials), util.toPointer(pProtectionType)));
 }
 
 export function CredFindBestCredentialW(
@@ -2703,7 +2750,7 @@ export function CredFindBestCredentialW(
   Flags: number /* u32 */,
   Credential: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32.CredFindBestCredentialW(util.pwstrToFfi(TargetName), Type, Flags, util.toPointer(Credential)));
+  return util.boolFromFfi(libADVAPI32_dll.CredFindBestCredentialW(util.pwstrToFfi(TargetName), Type, Flags, util.toPointer(Credential)));
 }
 
 export function CredFindBestCredentialA(
@@ -2712,20 +2759,20 @@ export function CredFindBestCredentialA(
   Flags: number /* u32 */,
   Credential: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32.CredFindBestCredentialA(util.pstrToFfi(TargetName), Type, Flags, util.toPointer(Credential)));
+  return util.boolFromFfi(libADVAPI32_dll.CredFindBestCredentialA(util.pstrToFfi(TargetName), Type, Flags, util.toPointer(Credential)));
 }
 
 export function CredGetSessionTypes(
   MaximumPersistCount: number /* u32 */,
   MaximumPersist: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32.CredGetSessionTypes(MaximumPersistCount, util.toPointer(MaximumPersist)));
+  return util.boolFromFfi(libADVAPI32_dll.CredGetSessionTypes(MaximumPersistCount, util.toPointer(MaximumPersist)));
 }
 
 export function CredFree(
   Buffer: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): void /* void */ {
-  return libADVAPI32.CredFree(util.toPointer(Buffer));
+  return libADVAPI32_dll.CredFree(util.toPointer(Buffer));
 }
 
 export function CredUIPromptForCredentialsW(
@@ -2740,7 +2787,7 @@ export function CredUIPromptForCredentialsW(
   save: Deno.PointerValue | Uint8Array | null /* ptr */,
   dwFlags: CREDUI_FLAGS /* Windows.Win32.Security.Credentials.CREDUI_FLAGS */,
 ): number /* u32 */ {
-  return libcredui.CredUIPromptForCredentialsW(util.toPointer(pUiInfo), util.pwstrToFfi(pszTargetName), util.toPointer(pContext), dwAuthError, util.pwstrToFfi(pszUserName), ulUserNameBufferSize, util.pwstrToFfi(pszPassword), ulPasswordBufferSize, util.toPointer(save), dwFlags);
+  return libcredui_dll.CredUIPromptForCredentialsW(util.toPointer(pUiInfo), util.pwstrToFfi(pszTargetName), util.toPointer(pContext), dwAuthError, util.pwstrToFfi(pszUserName), ulUserNameBufferSize, util.pwstrToFfi(pszPassword), ulPasswordBufferSize, util.toPointer(save), dwFlags);
 }
 
 export function CredUIPromptForCredentialsA(
@@ -2755,7 +2802,7 @@ export function CredUIPromptForCredentialsA(
   save: Deno.PointerValue | Uint8Array | null /* ptr */,
   dwFlags: CREDUI_FLAGS /* Windows.Win32.Security.Credentials.CREDUI_FLAGS */,
 ): number /* u32 */ {
-  return libcredui.CredUIPromptForCredentialsA(util.toPointer(pUiInfo), util.pstrToFfi(pszTargetName), util.toPointer(pContext), dwAuthError, util.pstrToFfi(pszUserName), ulUserNameBufferSize, util.pstrToFfi(pszPassword), ulPasswordBufferSize, util.toPointer(save), dwFlags);
+  return libcredui_dll.CredUIPromptForCredentialsA(util.toPointer(pUiInfo), util.pstrToFfi(pszTargetName), util.toPointer(pContext), dwAuthError, util.pstrToFfi(pszUserName), ulUserNameBufferSize, util.pstrToFfi(pszPassword), ulPasswordBufferSize, util.toPointer(save), dwFlags);
 }
 
 export function CredUIPromptForWindowsCredentialsW(
@@ -2769,7 +2816,7 @@ export function CredUIPromptForWindowsCredentialsW(
   pfSave: Deno.PointerValue | Uint8Array | null /* ptr */,
   dwFlags: CREDUIWIN_FLAGS /* Windows.Win32.Security.Credentials.CREDUIWIN_FLAGS */,
 ): number /* u32 */ {
-  return libcredui.CredUIPromptForWindowsCredentialsW(util.toPointer(pUiInfo), dwAuthError, util.toPointer(pulAuthPackage), util.toPointer(pvInAuthBuffer), ulInAuthBufferSize, util.toPointer(ppvOutAuthBuffer), util.toPointer(pulOutAuthBufferSize), util.toPointer(pfSave), dwFlags);
+  return libcredui_dll.CredUIPromptForWindowsCredentialsW(util.toPointer(pUiInfo), dwAuthError, util.toPointer(pulAuthPackage), util.toPointer(pvInAuthBuffer), ulInAuthBufferSize, util.toPointer(ppvOutAuthBuffer), util.toPointer(pulOutAuthBufferSize), util.toPointer(pfSave), dwFlags);
 }
 
 export function CredUIPromptForWindowsCredentialsA(
@@ -2783,7 +2830,7 @@ export function CredUIPromptForWindowsCredentialsA(
   pfSave: Deno.PointerValue | Uint8Array | null /* ptr */,
   dwFlags: CREDUIWIN_FLAGS /* Windows.Win32.Security.Credentials.CREDUIWIN_FLAGS */,
 ): number /* u32 */ {
-  return libcredui.CredUIPromptForWindowsCredentialsA(util.toPointer(pUiInfo), dwAuthError, util.toPointer(pulAuthPackage), util.toPointer(pvInAuthBuffer), ulInAuthBufferSize, util.toPointer(ppvOutAuthBuffer), util.toPointer(pulOutAuthBufferSize), util.toPointer(pfSave), dwFlags);
+  return libcredui_dll.CredUIPromptForWindowsCredentialsA(util.toPointer(pUiInfo), dwAuthError, util.toPointer(pulAuthPackage), util.toPointer(pvInAuthBuffer), ulInAuthBufferSize, util.toPointer(ppvOutAuthBuffer), util.toPointer(pulOutAuthBufferSize), util.toPointer(pfSave), dwFlags);
 }
 
 export function CredUIParseUserNameW(
@@ -2793,7 +2840,7 @@ export function CredUIParseUserNameW(
   domain: string | null /* Windows.Win32.Foundation.PWSTR */,
   domainBufferSize: number /* u32 */,
 ): number /* u32 */ {
-  return libcredui.CredUIParseUserNameW(util.pwstrToFfi(UserName), util.pwstrToFfi(user), userBufferSize, util.pwstrToFfi(domain), domainBufferSize);
+  return libcredui_dll.CredUIParseUserNameW(util.pwstrToFfi(UserName), util.pwstrToFfi(user), userBufferSize, util.pwstrToFfi(domain), domainBufferSize);
 }
 
 export function CredUIParseUserNameA(
@@ -2803,7 +2850,7 @@ export function CredUIParseUserNameA(
   domain: string | null /* Windows.Win32.Foundation.PSTR */,
   domainBufferSize: number /* u32 */,
 ): number /* u32 */ {
-  return libcredui.CredUIParseUserNameA(util.pstrToFfi(userName), util.pstrToFfi(user), userBufferSize, util.pstrToFfi(domain), domainBufferSize);
+  return libcredui_dll.CredUIParseUserNameA(util.pstrToFfi(userName), util.pstrToFfi(user), userBufferSize, util.pstrToFfi(domain), domainBufferSize);
 }
 
 export function CredUICmdLinePromptForCredentialsW(
@@ -2817,7 +2864,7 @@ export function CredUICmdLinePromptForCredentialsW(
   pfSave: Deno.PointerValue | Uint8Array | null /* ptr */,
   dwFlags: CREDUI_FLAGS /* Windows.Win32.Security.Credentials.CREDUI_FLAGS */,
 ): number /* u32 */ {
-  return libcredui.CredUICmdLinePromptForCredentialsW(util.pwstrToFfi(pszTargetName), util.toPointer(pContext), dwAuthError, util.pwstrToFfi(UserName), ulUserBufferSize, util.pwstrToFfi(pszPassword), ulPasswordBufferSize, util.toPointer(pfSave), dwFlags);
+  return libcredui_dll.CredUICmdLinePromptForCredentialsW(util.pwstrToFfi(pszTargetName), util.toPointer(pContext), dwAuthError, util.pwstrToFfi(UserName), ulUserBufferSize, util.pwstrToFfi(pszPassword), ulPasswordBufferSize, util.toPointer(pfSave), dwFlags);
 }
 
 export function CredUICmdLinePromptForCredentialsA(
@@ -2831,21 +2878,21 @@ export function CredUICmdLinePromptForCredentialsA(
   pfSave: Deno.PointerValue | Uint8Array | null /* ptr */,
   dwFlags: CREDUI_FLAGS /* Windows.Win32.Security.Credentials.CREDUI_FLAGS */,
 ): number /* u32 */ {
-  return libcredui.CredUICmdLinePromptForCredentialsA(util.pstrToFfi(pszTargetName), util.toPointer(pContext), dwAuthError, util.pstrToFfi(UserName), ulUserBufferSize, util.pstrToFfi(pszPassword), ulPasswordBufferSize, util.toPointer(pfSave), dwFlags);
+  return libcredui_dll.CredUICmdLinePromptForCredentialsA(util.pstrToFfi(pszTargetName), util.toPointer(pContext), dwAuthError, util.pstrToFfi(UserName), ulUserBufferSize, util.pstrToFfi(pszPassword), ulPasswordBufferSize, util.toPointer(pfSave), dwFlags);
 }
 
 export function CredUIConfirmCredentialsW(
   pszTargetName: string | null /* Windows.Win32.Foundation.PWSTR */,
   bConfirm: boolean /* Windows.Win32.Foundation.BOOL */,
 ): number /* u32 */ {
-  return libcredui.CredUIConfirmCredentialsW(util.pwstrToFfi(pszTargetName), util.boolToFfi(bConfirm));
+  return libcredui_dll.CredUIConfirmCredentialsW(util.pwstrToFfi(pszTargetName), util.boolToFfi(bConfirm));
 }
 
 export function CredUIConfirmCredentialsA(
   pszTargetName: string | null /* Windows.Win32.Foundation.PSTR */,
   bConfirm: boolean /* Windows.Win32.Foundation.BOOL */,
 ): number /* u32 */ {
-  return libcredui.CredUIConfirmCredentialsA(util.pstrToFfi(pszTargetName), util.boolToFfi(bConfirm));
+  return libcredui_dll.CredUIConfirmCredentialsA(util.pstrToFfi(pszTargetName), util.boolToFfi(bConfirm));
 }
 
 export function CredUIStoreSSOCredW(
@@ -2854,14 +2901,14 @@ export function CredUIStoreSSOCredW(
   pszPassword: string | null /* Windows.Win32.Foundation.PWSTR */,
   bPersist: boolean /* Windows.Win32.Foundation.BOOL */,
 ): number /* u32 */ {
-  return libcredui.CredUIStoreSSOCredW(util.pwstrToFfi(pszRealm), util.pwstrToFfi(pszUsername), util.pwstrToFfi(pszPassword), util.boolToFfi(bPersist));
+  return libcredui_dll.CredUIStoreSSOCredW(util.pwstrToFfi(pszRealm), util.pwstrToFfi(pszUsername), util.pwstrToFfi(pszPassword), util.boolToFfi(bPersist));
 }
 
 export function CredUIReadSSOCredW(
   pszRealm: string | null /* Windows.Win32.Foundation.PWSTR */,
   ppszUsername: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libcredui.CredUIReadSSOCredW(util.pwstrToFfi(pszRealm), util.toPointer(ppszUsername));
+  return libcredui_dll.CredUIReadSSOCredW(util.pwstrToFfi(pszRealm), util.toPointer(ppszUsername));
 }
 
 export function SCardEstablishContext(
@@ -2870,19 +2917,19 @@ export function SCardEstablishContext(
   pvReserved2: Deno.PointerValue | Uint8Array | null /* ptr */,
   phContext: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
-  return libWinSCard.SCardEstablishContext(dwScope, util.toPointer(pvReserved1), util.toPointer(pvReserved2), util.toPointer(phContext));
+  return libWinSCard_dll.SCardEstablishContext(dwScope, util.toPointer(pvReserved1), util.toPointer(pvReserved2), util.toPointer(phContext));
 }
 
 export function SCardReleaseContext(
   hContext: Deno.PointerValue /* usize */,
 ): number /* i32 */ {
-  return libWinSCard.SCardReleaseContext(hContext);
+  return libWinSCard_dll.SCardReleaseContext(hContext);
 }
 
 export function SCardIsValidContext(
   hContext: Deno.PointerValue /* usize */,
 ): number /* i32 */ {
-  return libWinSCard.SCardIsValidContext(hContext);
+  return libWinSCard_dll.SCardIsValidContext(hContext);
 }
 
 export function SCardListReaderGroupsA(
@@ -2890,7 +2937,7 @@ export function SCardListReaderGroupsA(
   mszGroups: string | null /* Windows.Win32.Foundation.PSTR */,
   pcchGroups: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
-  return libWinSCard.SCardListReaderGroupsA(hContext, util.pstrToFfi(mszGroups), util.toPointer(pcchGroups));
+  return libWinSCard_dll.SCardListReaderGroupsA(hContext, util.pstrToFfi(mszGroups), util.toPointer(pcchGroups));
 }
 
 export function SCardListReaderGroupsW(
@@ -2898,7 +2945,7 @@ export function SCardListReaderGroupsW(
   mszGroups: string | null /* Windows.Win32.Foundation.PWSTR */,
   pcchGroups: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
-  return libWinSCard.SCardListReaderGroupsW(hContext, util.pwstrToFfi(mszGroups), util.toPointer(pcchGroups));
+  return libWinSCard_dll.SCardListReaderGroupsW(hContext, util.pwstrToFfi(mszGroups), util.toPointer(pcchGroups));
 }
 
 export function SCardListReadersA(
@@ -2907,7 +2954,7 @@ export function SCardListReadersA(
   mszReaders: string | null /* Windows.Win32.Foundation.PSTR */,
   pcchReaders: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
-  return libWinSCard.SCardListReadersA(hContext, util.pstrToFfi(mszGroups), util.pstrToFfi(mszReaders), util.toPointer(pcchReaders));
+  return libWinSCard_dll.SCardListReadersA(hContext, util.pstrToFfi(mszGroups), util.pstrToFfi(mszReaders), util.toPointer(pcchReaders));
 }
 
 export function SCardListReadersW(
@@ -2916,7 +2963,7 @@ export function SCardListReadersW(
   mszReaders: string | null /* Windows.Win32.Foundation.PWSTR */,
   pcchReaders: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
-  return libWinSCard.SCardListReadersW(hContext, util.pwstrToFfi(mszGroups), util.pwstrToFfi(mszReaders), util.toPointer(pcchReaders));
+  return libWinSCard_dll.SCardListReadersW(hContext, util.pwstrToFfi(mszGroups), util.pwstrToFfi(mszReaders), util.toPointer(pcchReaders));
 }
 
 export function SCardListCardsA(
@@ -2927,7 +2974,7 @@ export function SCardListCardsA(
   mszCards: string | null /* Windows.Win32.Foundation.PSTR */,
   pcchCards: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
-  return libWinSCard.SCardListCardsA(hContext, util.toPointer(pbAtr), util.toPointer(rgquidInterfaces), cguidInterfaceCount, util.pstrToFfi(mszCards), util.toPointer(pcchCards));
+  return libWinSCard_dll.SCardListCardsA(hContext, util.toPointer(pbAtr), util.toPointer(rgquidInterfaces), cguidInterfaceCount, util.pstrToFfi(mszCards), util.toPointer(pcchCards));
 }
 
 export function SCardListCardsW(
@@ -2938,7 +2985,7 @@ export function SCardListCardsW(
   mszCards: string | null /* Windows.Win32.Foundation.PWSTR */,
   pcchCards: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
-  return libWinSCard.SCardListCardsW(hContext, util.toPointer(pbAtr), util.toPointer(rgquidInterfaces), cguidInterfaceCount, util.pwstrToFfi(mszCards), util.toPointer(pcchCards));
+  return libWinSCard_dll.SCardListCardsW(hContext, util.toPointer(pbAtr), util.toPointer(rgquidInterfaces), cguidInterfaceCount, util.pwstrToFfi(mszCards), util.toPointer(pcchCards));
 }
 
 export function SCardListInterfacesA(
@@ -2947,7 +2994,7 @@ export function SCardListInterfacesA(
   pguidInterfaces: Deno.PointerValue | Uint8Array | null /* ptr */,
   pcguidInterfaces: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
-  return libWinSCard.SCardListInterfacesA(hContext, util.pstrToFfi(szCard), util.toPointer(pguidInterfaces), util.toPointer(pcguidInterfaces));
+  return libWinSCard_dll.SCardListInterfacesA(hContext, util.pstrToFfi(szCard), util.toPointer(pguidInterfaces), util.toPointer(pcguidInterfaces));
 }
 
 export function SCardListInterfacesW(
@@ -2956,7 +3003,7 @@ export function SCardListInterfacesW(
   pguidInterfaces: Deno.PointerValue | Uint8Array | null /* ptr */,
   pcguidInterfaces: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
-  return libWinSCard.SCardListInterfacesW(hContext, util.pwstrToFfi(szCard), util.toPointer(pguidInterfaces), util.toPointer(pcguidInterfaces));
+  return libWinSCard_dll.SCardListInterfacesW(hContext, util.pwstrToFfi(szCard), util.toPointer(pguidInterfaces), util.toPointer(pcguidInterfaces));
 }
 
 export function SCardGetProviderIdA(
@@ -2964,7 +3011,7 @@ export function SCardGetProviderIdA(
   szCard: string | null /* Windows.Win32.Foundation.PSTR */,
   pguidProviderId: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
-  return libWinSCard.SCardGetProviderIdA(hContext, util.pstrToFfi(szCard), util.toPointer(pguidProviderId));
+  return libWinSCard_dll.SCardGetProviderIdA(hContext, util.pstrToFfi(szCard), util.toPointer(pguidProviderId));
 }
 
 export function SCardGetProviderIdW(
@@ -2972,7 +3019,7 @@ export function SCardGetProviderIdW(
   szCard: string | null /* Windows.Win32.Foundation.PWSTR */,
   pguidProviderId: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
-  return libWinSCard.SCardGetProviderIdW(hContext, util.pwstrToFfi(szCard), util.toPointer(pguidProviderId));
+  return libWinSCard_dll.SCardGetProviderIdW(hContext, util.pwstrToFfi(szCard), util.toPointer(pguidProviderId));
 }
 
 export function SCardGetCardTypeProviderNameA(
@@ -2982,7 +3029,7 @@ export function SCardGetCardTypeProviderNameA(
   szProvider: string | null /* Windows.Win32.Foundation.PSTR */,
   pcchProvider: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
-  return libWinSCard.SCardGetCardTypeProviderNameA(hContext, util.pstrToFfi(szCardName), dwProviderId, util.pstrToFfi(szProvider), util.toPointer(pcchProvider));
+  return libWinSCard_dll.SCardGetCardTypeProviderNameA(hContext, util.pstrToFfi(szCardName), dwProviderId, util.pstrToFfi(szProvider), util.toPointer(pcchProvider));
 }
 
 export function SCardGetCardTypeProviderNameW(
@@ -2992,35 +3039,35 @@ export function SCardGetCardTypeProviderNameW(
   szProvider: string | null /* Windows.Win32.Foundation.PWSTR */,
   pcchProvider: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
-  return libWinSCard.SCardGetCardTypeProviderNameW(hContext, util.pwstrToFfi(szCardName), dwProviderId, util.pwstrToFfi(szProvider), util.toPointer(pcchProvider));
+  return libWinSCard_dll.SCardGetCardTypeProviderNameW(hContext, util.pwstrToFfi(szCardName), dwProviderId, util.pwstrToFfi(szProvider), util.toPointer(pcchProvider));
 }
 
 export function SCardIntroduceReaderGroupA(
   hContext: Deno.PointerValue /* usize */,
   szGroupName: string | null /* Windows.Win32.Foundation.PSTR */,
 ): number /* i32 */ {
-  return libWinSCard.SCardIntroduceReaderGroupA(hContext, util.pstrToFfi(szGroupName));
+  return libWinSCard_dll.SCardIntroduceReaderGroupA(hContext, util.pstrToFfi(szGroupName));
 }
 
 export function SCardIntroduceReaderGroupW(
   hContext: Deno.PointerValue /* usize */,
   szGroupName: string | null /* Windows.Win32.Foundation.PWSTR */,
 ): number /* i32 */ {
-  return libWinSCard.SCardIntroduceReaderGroupW(hContext, util.pwstrToFfi(szGroupName));
+  return libWinSCard_dll.SCardIntroduceReaderGroupW(hContext, util.pwstrToFfi(szGroupName));
 }
 
 export function SCardForgetReaderGroupA(
   hContext: Deno.PointerValue /* usize */,
   szGroupName: string | null /* Windows.Win32.Foundation.PSTR */,
 ): number /* i32 */ {
-  return libWinSCard.SCardForgetReaderGroupA(hContext, util.pstrToFfi(szGroupName));
+  return libWinSCard_dll.SCardForgetReaderGroupA(hContext, util.pstrToFfi(szGroupName));
 }
 
 export function SCardForgetReaderGroupW(
   hContext: Deno.PointerValue /* usize */,
   szGroupName: string | null /* Windows.Win32.Foundation.PWSTR */,
 ): number /* i32 */ {
-  return libWinSCard.SCardForgetReaderGroupW(hContext, util.pwstrToFfi(szGroupName));
+  return libWinSCard_dll.SCardForgetReaderGroupW(hContext, util.pwstrToFfi(szGroupName));
 }
 
 export function SCardIntroduceReaderA(
@@ -3028,7 +3075,7 @@ export function SCardIntroduceReaderA(
   szReaderName: string | null /* Windows.Win32.Foundation.PSTR */,
   szDeviceName: string | null /* Windows.Win32.Foundation.PSTR */,
 ): number /* i32 */ {
-  return libWinSCard.SCardIntroduceReaderA(hContext, util.pstrToFfi(szReaderName), util.pstrToFfi(szDeviceName));
+  return libWinSCard_dll.SCardIntroduceReaderA(hContext, util.pstrToFfi(szReaderName), util.pstrToFfi(szDeviceName));
 }
 
 export function SCardIntroduceReaderW(
@@ -3036,21 +3083,21 @@ export function SCardIntroduceReaderW(
   szReaderName: string | null /* Windows.Win32.Foundation.PWSTR */,
   szDeviceName: string | null /* Windows.Win32.Foundation.PWSTR */,
 ): number /* i32 */ {
-  return libWinSCard.SCardIntroduceReaderW(hContext, util.pwstrToFfi(szReaderName), util.pwstrToFfi(szDeviceName));
+  return libWinSCard_dll.SCardIntroduceReaderW(hContext, util.pwstrToFfi(szReaderName), util.pwstrToFfi(szDeviceName));
 }
 
 export function SCardForgetReaderA(
   hContext: Deno.PointerValue /* usize */,
   szReaderName: string | null /* Windows.Win32.Foundation.PSTR */,
 ): number /* i32 */ {
-  return libWinSCard.SCardForgetReaderA(hContext, util.pstrToFfi(szReaderName));
+  return libWinSCard_dll.SCardForgetReaderA(hContext, util.pstrToFfi(szReaderName));
 }
 
 export function SCardForgetReaderW(
   hContext: Deno.PointerValue /* usize */,
   szReaderName: string | null /* Windows.Win32.Foundation.PWSTR */,
 ): number /* i32 */ {
-  return libWinSCard.SCardForgetReaderW(hContext, util.pwstrToFfi(szReaderName));
+  return libWinSCard_dll.SCardForgetReaderW(hContext, util.pwstrToFfi(szReaderName));
 }
 
 export function SCardAddReaderToGroupA(
@@ -3058,7 +3105,7 @@ export function SCardAddReaderToGroupA(
   szReaderName: string | null /* Windows.Win32.Foundation.PSTR */,
   szGroupName: string | null /* Windows.Win32.Foundation.PSTR */,
 ): number /* i32 */ {
-  return libWinSCard.SCardAddReaderToGroupA(hContext, util.pstrToFfi(szReaderName), util.pstrToFfi(szGroupName));
+  return libWinSCard_dll.SCardAddReaderToGroupA(hContext, util.pstrToFfi(szReaderName), util.pstrToFfi(szGroupName));
 }
 
 export function SCardAddReaderToGroupW(
@@ -3066,7 +3113,7 @@ export function SCardAddReaderToGroupW(
   szReaderName: string | null /* Windows.Win32.Foundation.PWSTR */,
   szGroupName: string | null /* Windows.Win32.Foundation.PWSTR */,
 ): number /* i32 */ {
-  return libWinSCard.SCardAddReaderToGroupW(hContext, util.pwstrToFfi(szReaderName), util.pwstrToFfi(szGroupName));
+  return libWinSCard_dll.SCardAddReaderToGroupW(hContext, util.pwstrToFfi(szReaderName), util.pwstrToFfi(szGroupName));
 }
 
 export function SCardRemoveReaderFromGroupA(
@@ -3074,7 +3121,7 @@ export function SCardRemoveReaderFromGroupA(
   szReaderName: string | null /* Windows.Win32.Foundation.PSTR */,
   szGroupName: string | null /* Windows.Win32.Foundation.PSTR */,
 ): number /* i32 */ {
-  return libWinSCard.SCardRemoveReaderFromGroupA(hContext, util.pstrToFfi(szReaderName), util.pstrToFfi(szGroupName));
+  return libWinSCard_dll.SCardRemoveReaderFromGroupA(hContext, util.pstrToFfi(szReaderName), util.pstrToFfi(szGroupName));
 }
 
 export function SCardRemoveReaderFromGroupW(
@@ -3082,7 +3129,7 @@ export function SCardRemoveReaderFromGroupW(
   szReaderName: string | null /* Windows.Win32.Foundation.PWSTR */,
   szGroupName: string | null /* Windows.Win32.Foundation.PWSTR */,
 ): number /* i32 */ {
-  return libWinSCard.SCardRemoveReaderFromGroupW(hContext, util.pwstrToFfi(szReaderName), util.pwstrToFfi(szGroupName));
+  return libWinSCard_dll.SCardRemoveReaderFromGroupW(hContext, util.pwstrToFfi(szReaderName), util.pwstrToFfi(szGroupName));
 }
 
 export function SCardIntroduceCardTypeA(
@@ -3095,7 +3142,7 @@ export function SCardIntroduceCardTypeA(
   pbAtrMask: Deno.PointerValue | Uint8Array | null /* ptr */,
   cbAtrLen: number /* u32 */,
 ): number /* i32 */ {
-  return libWinSCard.SCardIntroduceCardTypeA(hContext, util.pstrToFfi(szCardName), util.toPointer(pguidPrimaryProvider), util.toPointer(rgguidInterfaces), dwInterfaceCount, util.toPointer(pbAtr), util.toPointer(pbAtrMask), cbAtrLen);
+  return libWinSCard_dll.SCardIntroduceCardTypeA(hContext, util.pstrToFfi(szCardName), util.toPointer(pguidPrimaryProvider), util.toPointer(rgguidInterfaces), dwInterfaceCount, util.toPointer(pbAtr), util.toPointer(pbAtrMask), cbAtrLen);
 }
 
 export function SCardIntroduceCardTypeW(
@@ -3108,7 +3155,7 @@ export function SCardIntroduceCardTypeW(
   pbAtrMask: Deno.PointerValue | Uint8Array | null /* ptr */,
   cbAtrLen: number /* u32 */,
 ): number /* i32 */ {
-  return libWinSCard.SCardIntroduceCardTypeW(hContext, util.pwstrToFfi(szCardName), util.toPointer(pguidPrimaryProvider), util.toPointer(rgguidInterfaces), dwInterfaceCount, util.toPointer(pbAtr), util.toPointer(pbAtrMask), cbAtrLen);
+  return libWinSCard_dll.SCardIntroduceCardTypeW(hContext, util.pwstrToFfi(szCardName), util.toPointer(pguidPrimaryProvider), util.toPointer(rgguidInterfaces), dwInterfaceCount, util.toPointer(pbAtr), util.toPointer(pbAtrMask), cbAtrLen);
 }
 
 export function SCardSetCardTypeProviderNameA(
@@ -3117,7 +3164,7 @@ export function SCardSetCardTypeProviderNameA(
   dwProviderId: number /* u32 */,
   szProvider: string | null /* Windows.Win32.Foundation.PSTR */,
 ): number /* i32 */ {
-  return libWinSCard.SCardSetCardTypeProviderNameA(hContext, util.pstrToFfi(szCardName), dwProviderId, util.pstrToFfi(szProvider));
+  return libWinSCard_dll.SCardSetCardTypeProviderNameA(hContext, util.pstrToFfi(szCardName), dwProviderId, util.pstrToFfi(szProvider));
 }
 
 export function SCardSetCardTypeProviderNameW(
@@ -3126,36 +3173,36 @@ export function SCardSetCardTypeProviderNameW(
   dwProviderId: number /* u32 */,
   szProvider: string | null /* Windows.Win32.Foundation.PWSTR */,
 ): number /* i32 */ {
-  return libWinSCard.SCardSetCardTypeProviderNameW(hContext, util.pwstrToFfi(szCardName), dwProviderId, util.pwstrToFfi(szProvider));
+  return libWinSCard_dll.SCardSetCardTypeProviderNameW(hContext, util.pwstrToFfi(szCardName), dwProviderId, util.pwstrToFfi(szProvider));
 }
 
 export function SCardForgetCardTypeA(
   hContext: Deno.PointerValue /* usize */,
   szCardName: string | null /* Windows.Win32.Foundation.PSTR */,
 ): number /* i32 */ {
-  return libWinSCard.SCardForgetCardTypeA(hContext, util.pstrToFfi(szCardName));
+  return libWinSCard_dll.SCardForgetCardTypeA(hContext, util.pstrToFfi(szCardName));
 }
 
 export function SCardForgetCardTypeW(
   hContext: Deno.PointerValue /* usize */,
   szCardName: string | null /* Windows.Win32.Foundation.PWSTR */,
 ): number /* i32 */ {
-  return libWinSCard.SCardForgetCardTypeW(hContext, util.pwstrToFfi(szCardName));
+  return libWinSCard_dll.SCardForgetCardTypeW(hContext, util.pwstrToFfi(szCardName));
 }
 
 export function SCardFreeMemory(
   hContext: Deno.PointerValue /* usize */,
   pvMem: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
-  return libWinSCard.SCardFreeMemory(hContext, util.toPointer(pvMem));
+  return libWinSCard_dll.SCardFreeMemory(hContext, util.toPointer(pvMem));
 }
 
 export function SCardAccessStartedEvent(): Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */ {
-  return util.pointerFromFfi(libWinSCard.SCardAccessStartedEvent());
+  return util.pointerFromFfi(libWinSCard_dll.SCardAccessStartedEvent());
 }
 
 export function SCardReleaseStartedEvent(): void /* void */ {
-  return libWinSCard.SCardReleaseStartedEvent();
+  return libWinSCard_dll.SCardReleaseStartedEvent();
 }
 
 export function SCardLocateCardsA(
@@ -3164,7 +3211,7 @@ export function SCardLocateCardsA(
   rgReaderStates: Deno.PointerValue | Uint8Array | null /* ptr */,
   cReaders: number /* u32 */,
 ): number /* i32 */ {
-  return libWinSCard.SCardLocateCardsA(hContext, util.pstrToFfi(mszCards), util.toPointer(rgReaderStates), cReaders);
+  return libWinSCard_dll.SCardLocateCardsA(hContext, util.pstrToFfi(mszCards), util.toPointer(rgReaderStates), cReaders);
 }
 
 export function SCardLocateCardsW(
@@ -3173,7 +3220,7 @@ export function SCardLocateCardsW(
   rgReaderStates: Deno.PointerValue | Uint8Array | null /* ptr */,
   cReaders: number /* u32 */,
 ): number /* i32 */ {
-  return libWinSCard.SCardLocateCardsW(hContext, util.pwstrToFfi(mszCards), util.toPointer(rgReaderStates), cReaders);
+  return libWinSCard_dll.SCardLocateCardsW(hContext, util.pwstrToFfi(mszCards), util.toPointer(rgReaderStates), cReaders);
 }
 
 export function SCardLocateCardsByATRA(
@@ -3183,7 +3230,7 @@ export function SCardLocateCardsByATRA(
   rgReaderStates: Deno.PointerValue | Uint8Array | null /* ptr */,
   cReaders: number /* u32 */,
 ): number /* i32 */ {
-  return libWinSCard.SCardLocateCardsByATRA(hContext, util.toPointer(rgAtrMasks), cAtrs, util.toPointer(rgReaderStates), cReaders);
+  return libWinSCard_dll.SCardLocateCardsByATRA(hContext, util.toPointer(rgAtrMasks), cAtrs, util.toPointer(rgReaderStates), cReaders);
 }
 
 export function SCardLocateCardsByATRW(
@@ -3193,7 +3240,7 @@ export function SCardLocateCardsByATRW(
   rgReaderStates: Deno.PointerValue | Uint8Array | null /* ptr */,
   cReaders: number /* u32 */,
 ): number /* i32 */ {
-  return libWinSCard.SCardLocateCardsByATRW(hContext, util.toPointer(rgAtrMasks), cAtrs, util.toPointer(rgReaderStates), cReaders);
+  return libWinSCard_dll.SCardLocateCardsByATRW(hContext, util.toPointer(rgAtrMasks), cAtrs, util.toPointer(rgReaderStates), cReaders);
 }
 
 export function SCardGetStatusChangeA(
@@ -3202,7 +3249,7 @@ export function SCardGetStatusChangeA(
   rgReaderStates: Deno.PointerValue | Uint8Array | null /* ptr */,
   cReaders: number /* u32 */,
 ): number /* i32 */ {
-  return libWinSCard.SCardGetStatusChangeA(hContext, dwTimeout, util.toPointer(rgReaderStates), cReaders);
+  return libWinSCard_dll.SCardGetStatusChangeA(hContext, dwTimeout, util.toPointer(rgReaderStates), cReaders);
 }
 
 export function SCardGetStatusChangeW(
@@ -3211,13 +3258,13 @@ export function SCardGetStatusChangeW(
   rgReaderStates: Deno.PointerValue | Uint8Array | null /* ptr */,
   cReaders: number /* u32 */,
 ): number /* i32 */ {
-  return libWinSCard.SCardGetStatusChangeW(hContext, dwTimeout, util.toPointer(rgReaderStates), cReaders);
+  return libWinSCard_dll.SCardGetStatusChangeW(hContext, dwTimeout, util.toPointer(rgReaderStates), cReaders);
 }
 
 export function SCardCancel(
   hContext: Deno.PointerValue /* usize */,
 ): number /* i32 */ {
-  return libWinSCard.SCardCancel(hContext);
+  return libWinSCard_dll.SCardCancel(hContext);
 }
 
 export function SCardConnectA(
@@ -3228,7 +3275,7 @@ export function SCardConnectA(
   phCard: Deno.PointerValue | Uint8Array | null /* ptr */,
   pdwActiveProtocol: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
-  return libWinSCard.SCardConnectA(hContext, util.pstrToFfi(szReader), dwShareMode, dwPreferredProtocols, util.toPointer(phCard), util.toPointer(pdwActiveProtocol));
+  return libWinSCard_dll.SCardConnectA(hContext, util.pstrToFfi(szReader), dwShareMode, dwPreferredProtocols, util.toPointer(phCard), util.toPointer(pdwActiveProtocol));
 }
 
 export function SCardConnectW(
@@ -3239,7 +3286,7 @@ export function SCardConnectW(
   phCard: Deno.PointerValue | Uint8Array | null /* ptr */,
   pdwActiveProtocol: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
-  return libWinSCard.SCardConnectW(hContext, util.pwstrToFfi(szReader), dwShareMode, dwPreferredProtocols, util.toPointer(phCard), util.toPointer(pdwActiveProtocol));
+  return libWinSCard_dll.SCardConnectW(hContext, util.pwstrToFfi(szReader), dwShareMode, dwPreferredProtocols, util.toPointer(phCard), util.toPointer(pdwActiveProtocol));
 }
 
 export function SCardReconnect(
@@ -3249,27 +3296,27 @@ export function SCardReconnect(
   dwInitialization: number /* u32 */,
   pdwActiveProtocol: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
-  return libWinSCard.SCardReconnect(hCard, dwShareMode, dwPreferredProtocols, dwInitialization, util.toPointer(pdwActiveProtocol));
+  return libWinSCard_dll.SCardReconnect(hCard, dwShareMode, dwPreferredProtocols, dwInitialization, util.toPointer(pdwActiveProtocol));
 }
 
 export function SCardDisconnect(
   hCard: Deno.PointerValue /* usize */,
   dwDisposition: number /* u32 */,
 ): number /* i32 */ {
-  return libWinSCard.SCardDisconnect(hCard, dwDisposition);
+  return libWinSCard_dll.SCardDisconnect(hCard, dwDisposition);
 }
 
 export function SCardBeginTransaction(
   hCard: Deno.PointerValue /* usize */,
 ): number /* i32 */ {
-  return libWinSCard.SCardBeginTransaction(hCard);
+  return libWinSCard_dll.SCardBeginTransaction(hCard);
 }
 
 export function SCardEndTransaction(
   hCard: Deno.PointerValue /* usize */,
   dwDisposition: number /* u32 */,
 ): number /* i32 */ {
-  return libWinSCard.SCardEndTransaction(hCard, dwDisposition);
+  return libWinSCard_dll.SCardEndTransaction(hCard, dwDisposition);
 }
 
 export function SCardState(
@@ -3279,7 +3326,7 @@ export function SCardState(
   pbAtr: Deno.PointerValue | Uint8Array | null /* ptr */,
   pcbAtrLen: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
-  return libWinSCard.SCardState(hCard, util.toPointer(pdwState), util.toPointer(pdwProtocol), util.toPointer(pbAtr), util.toPointer(pcbAtrLen));
+  return libWinSCard_dll.SCardState(hCard, util.toPointer(pdwState), util.toPointer(pdwProtocol), util.toPointer(pbAtr), util.toPointer(pcbAtrLen));
 }
 
 export function SCardStatusA(
@@ -3291,7 +3338,7 @@ export function SCardStatusA(
   pbAtr: Deno.PointerValue | Uint8Array | null /* ptr */,
   pcbAtrLen: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
-  return libWinSCard.SCardStatusA(hCard, util.pstrToFfi(mszReaderNames), util.toPointer(pcchReaderLen), util.toPointer(pdwState), util.toPointer(pdwProtocol), util.toPointer(pbAtr), util.toPointer(pcbAtrLen));
+  return libWinSCard_dll.SCardStatusA(hCard, util.pstrToFfi(mszReaderNames), util.toPointer(pcchReaderLen), util.toPointer(pdwState), util.toPointer(pdwProtocol), util.toPointer(pbAtr), util.toPointer(pcbAtrLen));
 }
 
 export function SCardStatusW(
@@ -3303,7 +3350,7 @@ export function SCardStatusW(
   pbAtr: Deno.PointerValue | Uint8Array | null /* ptr */,
   pcbAtrLen: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
-  return libWinSCard.SCardStatusW(hCard, util.pwstrToFfi(mszReaderNames), util.toPointer(pcchReaderLen), util.toPointer(pdwState), util.toPointer(pdwProtocol), util.toPointer(pbAtr), util.toPointer(pcbAtrLen));
+  return libWinSCard_dll.SCardStatusW(hCard, util.pwstrToFfi(mszReaderNames), util.toPointer(pcchReaderLen), util.toPointer(pdwState), util.toPointer(pdwProtocol), util.toPointer(pbAtr), util.toPointer(pcbAtrLen));
 }
 
 export function SCardTransmit(
@@ -3315,14 +3362,14 @@ export function SCardTransmit(
   pbRecvBuffer: Deno.PointerValue | Uint8Array | null /* ptr */,
   pcbRecvLength: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
-  return libWinSCard.SCardTransmit(hCard, util.toPointer(pioSendPci), util.toPointer(pbSendBuffer), cbSendLength, util.toPointer(pioRecvPci), util.toPointer(pbRecvBuffer), util.toPointer(pcbRecvLength));
+  return libWinSCard_dll.SCardTransmit(hCard, util.toPointer(pioSendPci), util.toPointer(pbSendBuffer), cbSendLength, util.toPointer(pioRecvPci), util.toPointer(pbRecvBuffer), util.toPointer(pcbRecvLength));
 }
 
 export function SCardGetTransmitCount(
   hCard: Deno.PointerValue /* usize */,
   pcTransmitCount: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
-  return libWinSCard.SCardGetTransmitCount(hCard, util.toPointer(pcTransmitCount));
+  return libWinSCard_dll.SCardGetTransmitCount(hCard, util.toPointer(pcTransmitCount));
 }
 
 export function SCardControl(
@@ -3334,7 +3381,7 @@ export function SCardControl(
   cbOutBufferSize: number /* u32 */,
   lpBytesReturned: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
-  return libWinSCard.SCardControl(hCard, dwControlCode, util.toPointer(lpInBuffer), cbInBufferSize, util.toPointer(lpOutBuffer), cbOutBufferSize, util.toPointer(lpBytesReturned));
+  return libWinSCard_dll.SCardControl(hCard, dwControlCode, util.toPointer(lpInBuffer), cbInBufferSize, util.toPointer(lpOutBuffer), cbOutBufferSize, util.toPointer(lpBytesReturned));
 }
 
 export function SCardGetAttrib(
@@ -3343,7 +3390,7 @@ export function SCardGetAttrib(
   pbAttr: Deno.PointerValue | Uint8Array | null /* ptr */,
   pcbAttrLen: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
-  return libWinSCard.SCardGetAttrib(hCard, dwAttrId, util.toPointer(pbAttr), util.toPointer(pcbAttrLen));
+  return libWinSCard_dll.SCardGetAttrib(hCard, dwAttrId, util.toPointer(pbAttr), util.toPointer(pcbAttrLen));
 }
 
 export function SCardSetAttrib(
@@ -3352,35 +3399,35 @@ export function SCardSetAttrib(
   pbAttr: Deno.PointerValue | Uint8Array | null /* ptr */,
   cbAttrLen: number /* u32 */,
 ): number /* i32 */ {
-  return libWinSCard.SCardSetAttrib(hCard, dwAttrId, util.toPointer(pbAttr), cbAttrLen);
+  return libWinSCard_dll.SCardSetAttrib(hCard, dwAttrId, util.toPointer(pbAttr), cbAttrLen);
 }
 
 export function SCardUIDlgSelectCardA(
   param0: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
-  return libSCARDDLG.SCardUIDlgSelectCardA(util.toPointer(param0));
+  return libSCARDDLG_dll.SCardUIDlgSelectCardA(util.toPointer(param0));
 }
 
 export function SCardUIDlgSelectCardW(
   param0: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
-  return libSCARDDLG.SCardUIDlgSelectCardW(util.toPointer(param0));
+  return libSCARDDLG_dll.SCardUIDlgSelectCardW(util.toPointer(param0));
 }
 
 export function GetOpenCardNameA(
   param0: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
-  return libSCARDDLG.GetOpenCardNameA(util.toPointer(param0));
+  return libSCARDDLG_dll.GetOpenCardNameA(util.toPointer(param0));
 }
 
 export function GetOpenCardNameW(
   param0: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
-  return libSCARDDLG.GetOpenCardNameW(util.toPointer(param0));
+  return libSCARDDLG_dll.GetOpenCardNameW(util.toPointer(param0));
 }
 
 export function SCardDlgExtendedError(): number /* i32 */ {
-  return libSCARDDLG.SCardDlgExtendedError();
+  return libSCARDDLG_dll.SCardDlgExtendedError();
 }
 
 export function SCardReadCacheA(
@@ -3391,7 +3438,7 @@ export function SCardReadCacheA(
   Data: Deno.PointerValue | Uint8Array | null /* ptr */,
   DataLen: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
-  return libWinSCard.SCardReadCacheA(hContext, util.toPointer(CardIdentifier), FreshnessCounter, util.pstrToFfi(LookupName), util.toPointer(Data), util.toPointer(DataLen));
+  return libWinSCard_dll.SCardReadCacheA(hContext, util.toPointer(CardIdentifier), FreshnessCounter, util.pstrToFfi(LookupName), util.toPointer(Data), util.toPointer(DataLen));
 }
 
 export function SCardReadCacheW(
@@ -3402,7 +3449,7 @@ export function SCardReadCacheW(
   Data: Deno.PointerValue | Uint8Array | null /* ptr */,
   DataLen: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
-  return libWinSCard.SCardReadCacheW(hContext, util.toPointer(CardIdentifier), FreshnessCounter, util.pwstrToFfi(LookupName), util.toPointer(Data), util.toPointer(DataLen));
+  return libWinSCard_dll.SCardReadCacheW(hContext, util.toPointer(CardIdentifier), FreshnessCounter, util.pwstrToFfi(LookupName), util.toPointer(Data), util.toPointer(DataLen));
 }
 
 export function SCardWriteCacheA(
@@ -3413,7 +3460,7 @@ export function SCardWriteCacheA(
   Data: Deno.PointerValue | Uint8Array | null /* ptr */,
   DataLen: number /* u32 */,
 ): number /* i32 */ {
-  return libWinSCard.SCardWriteCacheA(hContext, util.toPointer(CardIdentifier), FreshnessCounter, util.pstrToFfi(LookupName), util.toPointer(Data), DataLen);
+  return libWinSCard_dll.SCardWriteCacheA(hContext, util.toPointer(CardIdentifier), FreshnessCounter, util.pstrToFfi(LookupName), util.toPointer(Data), DataLen);
 }
 
 export function SCardWriteCacheW(
@@ -3424,7 +3471,7 @@ export function SCardWriteCacheW(
   Data: Deno.PointerValue | Uint8Array | null /* ptr */,
   DataLen: number /* u32 */,
 ): number /* i32 */ {
-  return libWinSCard.SCardWriteCacheW(hContext, util.toPointer(CardIdentifier), FreshnessCounter, util.pwstrToFfi(LookupName), util.toPointer(Data), DataLen);
+  return libWinSCard_dll.SCardWriteCacheW(hContext, util.toPointer(CardIdentifier), FreshnessCounter, util.pwstrToFfi(LookupName), util.toPointer(Data), DataLen);
 }
 
 export function SCardGetReaderIconA(
@@ -3433,7 +3480,7 @@ export function SCardGetReaderIconA(
   pbIcon: Deno.PointerValue | Uint8Array | null /* ptr */,
   pcbIcon: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
-  return libWinSCard.SCardGetReaderIconA(hContext, util.pstrToFfi(szReaderName), util.toPointer(pbIcon), util.toPointer(pcbIcon));
+  return libWinSCard_dll.SCardGetReaderIconA(hContext, util.pstrToFfi(szReaderName), util.toPointer(pbIcon), util.toPointer(pcbIcon));
 }
 
 export function SCardGetReaderIconW(
@@ -3442,7 +3489,7 @@ export function SCardGetReaderIconW(
   pbIcon: Deno.PointerValue | Uint8Array | null /* ptr */,
   pcbIcon: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
-  return libWinSCard.SCardGetReaderIconW(hContext, util.pwstrToFfi(szReaderName), util.toPointer(pbIcon), util.toPointer(pcbIcon));
+  return libWinSCard_dll.SCardGetReaderIconW(hContext, util.pwstrToFfi(szReaderName), util.toPointer(pbIcon), util.toPointer(pcbIcon));
 }
 
 export function SCardGetDeviceTypeIdA(
@@ -3450,7 +3497,7 @@ export function SCardGetDeviceTypeIdA(
   szReaderName: string | null /* Windows.Win32.Foundation.PSTR */,
   pdwDeviceTypeId: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
-  return libWinSCard.SCardGetDeviceTypeIdA(hContext, util.pstrToFfi(szReaderName), util.toPointer(pdwDeviceTypeId));
+  return libWinSCard_dll.SCardGetDeviceTypeIdA(hContext, util.pstrToFfi(szReaderName), util.toPointer(pdwDeviceTypeId));
 }
 
 export function SCardGetDeviceTypeIdW(
@@ -3458,7 +3505,7 @@ export function SCardGetDeviceTypeIdW(
   szReaderName: string | null /* Windows.Win32.Foundation.PWSTR */,
   pdwDeviceTypeId: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
-  return libWinSCard.SCardGetDeviceTypeIdW(hContext, util.pwstrToFfi(szReaderName), util.toPointer(pdwDeviceTypeId));
+  return libWinSCard_dll.SCardGetDeviceTypeIdW(hContext, util.pwstrToFfi(szReaderName), util.toPointer(pdwDeviceTypeId));
 }
 
 export function SCardGetReaderDeviceInstanceIdA(
@@ -3467,7 +3514,7 @@ export function SCardGetReaderDeviceInstanceIdA(
   szDeviceInstanceId: string | null /* Windows.Win32.Foundation.PSTR */,
   pcchDeviceInstanceId: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
-  return libWinSCard.SCardGetReaderDeviceInstanceIdA(hContext, util.pstrToFfi(szReaderName), util.pstrToFfi(szDeviceInstanceId), util.toPointer(pcchDeviceInstanceId));
+  return libWinSCard_dll.SCardGetReaderDeviceInstanceIdA(hContext, util.pstrToFfi(szReaderName), util.pstrToFfi(szDeviceInstanceId), util.toPointer(pcchDeviceInstanceId));
 }
 
 export function SCardGetReaderDeviceInstanceIdW(
@@ -3476,7 +3523,7 @@ export function SCardGetReaderDeviceInstanceIdW(
   szDeviceInstanceId: string | null /* Windows.Win32.Foundation.PWSTR */,
   pcchDeviceInstanceId: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
-  return libWinSCard.SCardGetReaderDeviceInstanceIdW(hContext, util.pwstrToFfi(szReaderName), util.pwstrToFfi(szDeviceInstanceId), util.toPointer(pcchDeviceInstanceId));
+  return libWinSCard_dll.SCardGetReaderDeviceInstanceIdW(hContext, util.pwstrToFfi(szReaderName), util.pwstrToFfi(szDeviceInstanceId), util.toPointer(pcchDeviceInstanceId));
 }
 
 export function SCardListReadersWithDeviceInstanceIdA(
@@ -3485,7 +3532,7 @@ export function SCardListReadersWithDeviceInstanceIdA(
   mszReaders: string | null /* Windows.Win32.Foundation.PSTR */,
   pcchReaders: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
-  return libWinSCard.SCardListReadersWithDeviceInstanceIdA(hContext, util.pstrToFfi(szDeviceInstanceId), util.pstrToFfi(mszReaders), util.toPointer(pcchReaders));
+  return libWinSCard_dll.SCardListReadersWithDeviceInstanceIdA(hContext, util.pstrToFfi(szDeviceInstanceId), util.pstrToFfi(mszReaders), util.toPointer(pcchReaders));
 }
 
 export function SCardListReadersWithDeviceInstanceIdW(
@@ -3494,13 +3541,13 @@ export function SCardListReadersWithDeviceInstanceIdW(
   mszReaders: string | null /* Windows.Win32.Foundation.PWSTR */,
   pcchReaders: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
-  return libWinSCard.SCardListReadersWithDeviceInstanceIdW(hContext, util.pwstrToFfi(szDeviceInstanceId), util.pwstrToFfi(mszReaders), util.toPointer(pcchReaders));
+  return libWinSCard_dll.SCardListReadersWithDeviceInstanceIdW(hContext, util.pwstrToFfi(szDeviceInstanceId), util.pwstrToFfi(mszReaders), util.toPointer(pcchReaders));
 }
 
 export function SCardAudit(
   hContext: Deno.PointerValue /* usize */,
   dwEvent: number /* u32 */,
 ): number /* i32 */ {
-  return libWinSCard.SCardAudit(hContext, dwEvent);
+  return libWinSCard_dll.SCardAudit(hContext, dwEvent);
 }
 

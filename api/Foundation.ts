@@ -10,6 +10,10 @@ export type HANDLE_FLAGS = number;
 
 // Constants
 export const NO_ERROR = 0;
+export const WAIT_OBJECT_0 = 0;
+export const WAIT_ABANDONED = 128;
+export const WAIT_ABANDONED_0 = 128;
+export const WAIT_IO_COMPLETION = 192;
 export const WAIT_TIMEOUT = 258;
 export const WAIT_FAILED = 4294967295;
 export const ERROR_SUCCESS = 0;
@@ -3265,12 +3269,12 @@ export const DUPLICATE_SAME_ACCESS = 2;
 export const HANDLE_FLAG_INHERIT = 1;
 export const HANDLE_FLAG_PROTECT_FROM_CLOSE = 2;
 export const INVALID_HANDLE_VALUE = 1120986464255;
-export const CO_E_NOTINITIALIZED = 9444336509970022896n;
-export const STILL_ACTIVE = 1080863927748788483n;
-export const EXCEPTION_ACCESS_VIOLATION = 2219424350213;
-export const EXCEPTION_DATATYPE_MISALIGNMENT = 3317862236162;
-export const EXCEPTION_BREAKPOINT = 4417373863939;
-export const EXCEPTION_SINGLE_STEP = 153950955241476;
+export const CO_E_NOTINITIALIZED = 9372278915932094960n;
+export const STILL_ACTIVE = 17179869443;
+export const EXCEPTION_ACCESS_VIOLATION = 3318935977989;
+export const EXCEPTION_DATATYPE_MISALIGNMENT = 4417373863938;
+export const EXCEPTION_BREAKPOINT = 153950955241475;
+export const EXCEPTION_SINGLE_STEP = 8815420375044;
 export const EXCEPTION_ARRAY_BOUNDS_EXCEEDED = 155051540611212;
 export const EXCEPTION_FLT_DENORMAL_OPERAND = 156151052238989;
 export const EXCEPTION_FLT_DIVIDE_BY_ZERO = 157250563866766;
@@ -3286,11 +3290,12 @@ export const EXCEPTION_IN_PAGE_ERROR = 31906238300166;
 export const EXCEPTION_ILLEGAL_INSTRUCTION = 40702331322397;
 export const EXCEPTION_NONCONTINUABLE_EXCEPTION = 278196842922021;
 export const EXCEPTION_STACK_OVERFLOW = 41801842950397;
-export const EXCEPTION_INVALID_DISPOSITION = 1119912722470;
-export const EXCEPTION_GUARD_PAGE = 8815420375041;
+export const EXCEPTION_INVALID_DISPOSITION = 8816494116902;
+export const EXCEPTION_GUARD_PAGE = 2218350608385;
 export const EXCEPTION_INVALID_HANDLE = 444223098716168;
 export const EXCEPTION_POSSIBLE_DEADLOCK = 345267052216724;
-export const CONTROL_C_EXIT = 18015518422204730n;
+export const CONTROL_C_EXIT = 37403796439354;
+export const STATUS_ACCESS_DENIED = 18015518422204450n;
 export const E_NOTIMPL = 504418570755653633n;
 export const E_OUTOFMEMORY = 504498835104923662n;
 export const E_INVALIDARG = 18019915395432535n;
@@ -3308,12 +3313,12 @@ export const STATUS_ABANDONED = 281492156579968;
 export const STATUS_ABANDONED_WAIT_0 = 281492156579968;
 export const STATUS_ABANDONED_WAIT_63 = 222118528680127;
 export const STATUS_USER_APC = 214421947285696;
-export const STATUS_ALREADY_COMPLETE = 36027714687205631n;
+export const STATUS_ALREADY_COMPLETE = 8286743307158028543n;
 export const STATUS_KERNEL_APC = 562967133290752;
 export const STATUS_ALERTED = 283691179835649;
 export const STATUS_TIMEOUT = 284790691463426;
-export const STATUS_PENDING = 1080863927748788483n;
-export const STATUS_REPARSE = 5350240760627460;
+export const STATUS_PENDING = 17179869443;
+export const STATUS_REPARSE = 8719060266903404804n;
 export const STATUS_MORE_ENTRIES = 288089226346757;
 export const STATUS_NOT_ALL_ASSIGNED = 289188737974534;
 export const STATUS_SOME_NOT_MAPPED = 290288249602311;
@@ -3433,10 +3438,10 @@ export const DBG_CONTROL_BREAK = 72067507896254472n;
 export const DBG_COMMAND_EXCEPTION = 72068607407882249n;
 export const DBG_PRINTEXCEPTION_WIDE_C = 1801440968713502730n;
 export const STATUS_HEURISTIC_DAMAGE_POSSIBLE = 5515813388289;
-export const STATUS_GUARD_PAGE_VIOLATION = 8815420375041;
-export const STATUS_DATATYPE_MISALIGNMENT = 3317862236162;
-export const STATUS_BREAKPOINT = 4417373863939;
-export const STATUS_SINGLE_STEP = 153950955241476;
+export const STATUS_GUARD_PAGE_VIOLATION = 2218350608385;
+export const STATUS_DATATYPE_MISALIGNMENT = 4417373863938;
+export const STATUS_BREAKPOINT = 153950955241475;
+export const STATUS_SINGLE_STEP = 8815420375044;
 export const STATUS_BUFFER_OVERFLOW = 6616397119493;
 export const STATUS_NO_MORE_FILES = 7715908747270;
 export const STATUS_WAKE_SYSTEM_DEBUGGER = 11014443630599;
@@ -3445,8 +3450,8 @@ export const STATUS_NO_INHERITANCE = 13213466886155;
 export const STATUS_GUID_SUBSTITUTION_MADE = 14312978513932;
 export const STATUS_PARTIAL_COPY = 15412490141709;
 export const STATUS_DEVICE_PAPER_EMPTY = 16512001769486;
-export const STATUS_DEVICE_POWERED_OFF = 17611513397263;
-export const STATUS_DEVICE_OFF_LINE = 18711025025040;
+export const STATUS_DEVICE_POWERED_OFF = 18711025025039;
+export const STATUS_DEVICE_OFF_LINE = 35203699441680;
 export const STATUS_DEVICE_BUSY = 19810536652817;
 export const STATUS_NO_MORE_EAS = 20910048280594;
 export const STATUS_INVALID_EA_NAME = 22009559908371;
@@ -3459,9 +3464,9 @@ export const STATUS_NO_MORE_ENTRIES = 29706141302810;
 export const STATUS_FILEMARK_DETECTED = 30805652930587;
 export const STATUS_MEDIA_CHANGED = 31905164558364;
 export const STATUS_BUS_RESET = 33004676186141;
-export const STATUS_END_OF_MEDIA = 35203699441694;
+export const STATUS_END_OF_MEDIA = 36303211069470;
 export const STATUS_BEGINNING_OF_MEDIA = 2381561513115679;
-export const STATUS_MEDIA_CHECK = 36303211069472;
+export const STATUS_MEDIA_CHECK = 281494304063520;
 export const STATUS_SETMARK_DETECTED = 37402722697249;
 export const STATUS_NO_DATA_DETECTED = 38502234325026;
 export const STATUS_REDIRECTOR_HAS_OPEN_HANDLES = 39601745952803;
@@ -3496,7 +3501,7 @@ export const STATUS_UNSUCCESSFUL = 2219424350209;
 export const STATUS_NOT_IMPLEMENTED = 3318935977986;
 export const STATUS_INVALID_INFO_CLASS = 4418447605763;
 export const STATUS_INFO_LENGTH_MISMATCH = 7716982489092;
-export const STATUS_ACCESS_VIOLATION = 2219424350213;
+export const STATUS_ACCESS_VIOLATION = 3318935977989;
 export const STATUS_IN_PAGE_ERROR = 31906238300166;
 export const STATUS_PAGEFILE_QUOTA = 9916005744647;
 export const STATUS_INVALID_HANDLE = 444223098716168;
@@ -3528,7 +3533,7 @@ export const STATUS_ALREADY_COMMITTED = 38503308066849;
 export const STATUS_BUFFER_TOO_SMALL = 39602819694627;
 export const STATUS_OBJECT_TYPE_MISMATCH = 42901354577956;
 export const STATUS_NONCONTINUABLE_EXCEPTION = 278196842922021;
-export const STATUS_INVALID_DISPOSITION = 1119912722470;
+export const STATUS_INVALID_DISPOSITION = 8816494116902;
 export const STATUS_UNWIND = 44000866205735;
 export const STATUS_BAD_STACK = 45100377833512;
 export const STATUS_INVALID_UNWIND_TARGET = 46199889461289;
@@ -3797,7 +3802,7 @@ export const STATUS_OPEN_FAILED = 341968517333302;
 export const STATUS_IO_PRIVILEGE_FAILED = 343068028961079;
 export const STATUS_ORDINAL_NOT_FOUND = 344167540588856;
 export const STATUS_ENTRYPOINT_NOT_FOUND = 346366563844409;
-export const STATUS_CONTROL_C_EXIT = 18015518422204730n;
+export const STATUS_CONTROL_C_EXIT = 37403796439354;
 export const STATUS_LOCAL_DISCONNECT = 347466075472187;
 export const STATUS_REMOTE_DISCONNECT = 348565587099964;
 export const STATUS_REMOTE_RESOURCES = 349665098727741;
@@ -5915,7 +5920,7 @@ export const STATUS_VHD_MISSING_CHANGE_TRACKING_INFORMATION = 417934157411634385
 export const STATUS_VHD_RESIZE_WOULD_TRUNCATE_DATA = 4179395450186104881n;
 export const STATUS_VHD_COULD_NOT_COMPUTE_MINIMUM_VIRTUAL_SIZE = 4179396549697732658n;
 export const STATUS_VHD_ALREADY_AT_OR_BELOW_MINIMUM_VIRTUAL_SIZE = 4539629544305983539n;
-export const STATUS_QUERY_STORAGE_ERROR = 9444336509973561345n;
+export const STATUS_QUERY_STORAGE_ERROR = 9660509292087345153n;
 export const STATUS_GDI_HANDLE_LEAK = 4611687137270497281n;
 export const STATUS_RKF_KEY_NOT_FOUND = 4611688237855932417n;
 export const STATUS_RKF_DUPLICATE_KEY = 4611689337367560194n;
@@ -6087,14 +6092,6 @@ export const STATUS_IORING_SUBMIT_IN_PROGRESS = 5044039299642032134n;
 export const STATUS_IORING_CORRUPT = 1948355010101255;
 export const WINVER = 1280;
 export const APP_LOCAL_DEVICE_ID_SIZE = 32;
-export const DM_UPDATE = 1;
-export const DM_COPY = 2;
-export const DM_PROMPT = 4;
-export const DM_MODIFY = 8;
-export const DM_IN_BUFFER = 8;
-export const DM_IN_PROMPT = 4;
-export const DM_OUT_BUFFER = 2;
-export const DM_OUT_DEFAULT = 1;
 export const SEC_E_OK = 72057611217797120n;
 export const RPC_X_NO_MORE_ENTRIES = 1772;
 export const RPC_X_SS_CHAR_TRANS_OPEN_FAIL = 1773;
@@ -6191,8 +6188,8 @@ export const E_BOUNDS = 13213466886155;
 export const E_CHANGED_STATE = 14312978513932;
 export const E_ILLEGAL_STATE_CHANGE = 15412490141709;
 export const E_ILLEGAL_METHOD_CALL = 16512001769486;
-export const RO_E_METADATA_NAME_NOT_FOUND = 17611513397263;
-export const RO_E_METADATA_NAME_IS_NAMESPACE = 18711025025040;
+export const RO_E_METADATA_NAME_NOT_FOUND = 18711025025039;
+export const RO_E_METADATA_NAME_IS_NAMESPACE = 35203699441680;
 export const RO_E_METADATA_INVALID_TYPE_FORMAT = 19810536652817;
 export const RO_E_INVALID_METADATA_FILE = 20910048280594;
 export const RO_E_CLOSED = 22009559908371;
@@ -6206,9 +6203,9 @@ export const E_APPLICATION_EXITING = 29706141302810;
 export const E_APPLICATION_VIEW_EXITING = 30805652930587;
 export const RO_E_MUST_BE_AGILE = 31905164558364;
 export const RO_E_UNSUPPORTED_FROM_MTA = 33004676186141;
-export const RO_E_COMMITTED = 35203699441694;
+export const RO_E_COMMITTED = 36303211069470;
 export const RO_E_BLOCKED_CROSS_ASTA_CALL = 2381561513115679;
-export const RO_E_CANNOT_ACTIVATE_FULL_TRUST_SERVER = 36303211069472;
+export const RO_E_CANNOT_ACTIVATE_FULL_TRUST_SERVER = 281494304063520;
 export const RO_E_CANNOT_ACTIVATE_UNIVERSAL_APPLICATION_SERVER = 37402722697249;
 export const CO_E_INIT_TLS = 18022114418245638n;
 export const CO_E_INIT_SHARED_ALLOCATOR = 18023213929873415n;
@@ -9812,13 +9809,15 @@ export type LRESULT = Deno.PointerValue;
 
 export type NTSTATUS = number;
 
-export type PSID = Deno.PointerValue;
+export type PSID = Deno.PointerValue | Uint8Array | null;
 
 export type PSTR = Deno.PointerValue | Uint8Array | null;
 
 export type PWSTR = Deno.PointerValue | Uint8Array | null;
 
 export type WPARAM = Deno.PointerValue;
+
+export type COLORREF = number;
 
 export type HRSRC = Deno.PointerValue;
 
@@ -10421,7 +10420,7 @@ export function allocLUID(data?: Partial<LUID>): Uint8Array {
 // Native Libraries
 
 try {
-  var libOLEAUT32 = Deno.dlopen("OLEAUT32", {
+  var libOLEAUT32_dll = Deno.dlopen("OLEAUT32.dll", {
     SysAllocString: {
       parameters: ["buffer"],
       result: "pointer",
@@ -10466,7 +10465,7 @@ try {
 } catch(e) { /* ignore */ }
 
 try {
-  var libKERNEL32 = Deno.dlopen("KERNEL32", {
+  var libKERNEL32_dll = Deno.dlopen("KERNEL32.dll", {
     CloseHandle: {
       parameters: ["pointer"],
       result: "i32",
@@ -10495,7 +10494,7 @@ try {
 } catch(e) { /* ignore */ }
 
 try {
-  var libapi_ms_win_core_handle_l1_1_0 = Deno.dlopen("api-ms-win-core-handle-l1-1-0", {
+  var libapi_ms_win_core_handle_l1_1_0_dll = Deno.dlopen("api-ms-win-core-handle-l1-1-0.dll", {
     CompareObjectHandles: {
       parameters: ["pointer", "pointer"],
       result: "i32",
@@ -10504,7 +10503,7 @@ try {
 } catch(e) { /* ignore */ }
 
 try {
-  var libUSER32 = Deno.dlopen("USER32", {
+  var libUSER32_dll = Deno.dlopen("USER32.dll", {
     SetLastErrorEx: {
       parameters: ["u32", "u32"],
       result: "void",
@@ -10513,7 +10512,7 @@ try {
 } catch(e) { /* ignore */ }
 
 try {
-  var libntdll = Deno.dlopen("ntdll", {
+  var libntdll_dll = Deno.dlopen("ntdll.dll", {
     RtlNtStatusToDosError: {
       parameters: ["pointer"],
       result: "u32",
@@ -10526,21 +10525,21 @@ try {
 export function SysAllocString(
   psz: string | null /* Windows.Win32.Foundation.PWSTR */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.BSTR */ {
-  return util.pointerFromFfi(libOLEAUT32.SysAllocString(util.pwstrToFfi(psz)));
+  return util.pointerFromFfi(libOLEAUT32_dll.SysAllocString(util.pwstrToFfi(psz)));
 }
 
 export function SysReAllocString(
   pbstr: Deno.PointerValue | Uint8Array | null /* ptr */,
   psz: string | null /* Windows.Win32.Foundation.PWSTR */,
 ): number /* i32 */ {
-  return libOLEAUT32.SysReAllocString(util.toPointer(pbstr), util.pwstrToFfi(psz));
+  return libOLEAUT32_dll.SysReAllocString(util.toPointer(pbstr), util.pwstrToFfi(psz));
 }
 
 export function SysAllocStringLen(
   strIn: string | null /* Windows.Win32.Foundation.PWSTR */,
   ui: number /* u32 */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.BSTR */ {
-  return util.pointerFromFfi(libOLEAUT32.SysAllocStringLen(util.pwstrToFfi(strIn), ui));
+  return util.pointerFromFfi(libOLEAUT32_dll.SysAllocStringLen(util.pwstrToFfi(strIn), ui));
 }
 
 export function SysReAllocStringLen(
@@ -10548,50 +10547,50 @@ export function SysReAllocStringLen(
   psz: string | null /* Windows.Win32.Foundation.PWSTR */,
   len: number /* u32 */,
 ): number /* i32 */ {
-  return libOLEAUT32.SysReAllocStringLen(util.toPointer(pbstr), util.pwstrToFfi(psz), len);
+  return libOLEAUT32_dll.SysReAllocStringLen(util.toPointer(pbstr), util.pwstrToFfi(psz), len);
 }
 
 export function SysAddRefString(
   bstrString: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.BSTR */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libOLEAUT32.SysAddRefString(util.toPointer(bstrString)));
+  return util.pointerFromFfi(libOLEAUT32_dll.SysAddRefString(util.toPointer(bstrString)));
 }
 
 export function SysReleaseString(
   bstrString: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.BSTR */,
 ): void /* void */ {
-  return libOLEAUT32.SysReleaseString(util.toPointer(bstrString));
+  return libOLEAUT32_dll.SysReleaseString(util.toPointer(bstrString));
 }
 
 export function SysFreeString(
   bstrString: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.BSTR */,
 ): void /* void */ {
-  return libOLEAUT32.SysFreeString(util.toPointer(bstrString));
+  return libOLEAUT32_dll.SysFreeString(util.toPointer(bstrString));
 }
 
 export function SysStringLen(
   pbstr: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.BSTR */,
 ): number /* u32 */ {
-  return libOLEAUT32.SysStringLen(util.toPointer(pbstr));
+  return libOLEAUT32_dll.SysStringLen(util.toPointer(pbstr));
 }
 
 export function SysStringByteLen(
   bstr: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.BSTR */,
 ): number /* u32 */ {
-  return libOLEAUT32.SysStringByteLen(util.toPointer(bstr));
+  return libOLEAUT32_dll.SysStringByteLen(util.toPointer(bstr));
 }
 
 export function SysAllocStringByteLen(
   psz: string | null /* Windows.Win32.Foundation.PSTR */,
   len: number /* u32 */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.BSTR */ {
-  return util.pointerFromFfi(libOLEAUT32.SysAllocStringByteLen(util.pstrToFfi(psz), len));
+  return util.pointerFromFfi(libOLEAUT32_dll.SysAllocStringByteLen(util.pstrToFfi(psz), len));
 }
 
 export function CloseHandle(
   hObject: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32.CloseHandle(util.toPointer(hObject)));
+  return util.boolFromFfi(libKERNEL32_dll.CloseHandle(util.toPointer(hObject)));
 }
 
 export function DuplicateHandle(
@@ -10603,21 +10602,21 @@ export function DuplicateHandle(
   bInheritHandle: boolean /* Windows.Win32.Foundation.BOOL */,
   dwOptions: DUPLICATE_HANDLE_OPTIONS /* Windows.Win32.Foundation.DUPLICATE_HANDLE_OPTIONS */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32.DuplicateHandle(util.toPointer(hSourceProcessHandle), util.toPointer(hSourceHandle), util.toPointer(hTargetProcessHandle), util.toPointer(lpTargetHandle), dwDesiredAccess, util.boolToFfi(bInheritHandle), dwOptions));
+  return util.boolFromFfi(libKERNEL32_dll.DuplicateHandle(util.toPointer(hSourceProcessHandle), util.toPointer(hSourceHandle), util.toPointer(hTargetProcessHandle), util.toPointer(lpTargetHandle), dwDesiredAccess, util.boolToFfi(bInheritHandle), dwOptions));
 }
 
 export function CompareObjectHandles(
   hFirstObjectHandle: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
   hSecondObjectHandle: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libapi_ms_win_core_handle_l1_1_0.CompareObjectHandles(util.toPointer(hFirstObjectHandle), util.toPointer(hSecondObjectHandle)));
+  return util.boolFromFfi(libapi_ms_win_core_handle_l1_1_0_dll.CompareObjectHandles(util.toPointer(hFirstObjectHandle), util.toPointer(hSecondObjectHandle)));
 }
 
 export function GetHandleInformation(
   hObject: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
   lpdwFlags: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32.GetHandleInformation(util.toPointer(hObject), util.toPointer(lpdwFlags)));
+  return util.boolFromFfi(libKERNEL32_dll.GetHandleInformation(util.toPointer(hObject), util.toPointer(lpdwFlags)));
 }
 
 export function SetHandleInformation(
@@ -10625,29 +10624,29 @@ export function SetHandleInformation(
   dwMask: number /* u32 */,
   dwFlags: HANDLE_FLAGS /* Windows.Win32.Foundation.HANDLE_FLAGS */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32.SetHandleInformation(util.toPointer(hObject), dwMask, dwFlags));
+  return util.boolFromFfi(libKERNEL32_dll.SetHandleInformation(util.toPointer(hObject), dwMask, dwFlags));
 }
 
 export function GetLastError(): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
-  return libKERNEL32.GetLastError();
+  return libKERNEL32_dll.GetLastError();
 }
 
 export function SetLastError(
   dwErrCode: WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */,
 ): void /* void */ {
-  return libKERNEL32.SetLastError(dwErrCode);
+  return libKERNEL32_dll.SetLastError(dwErrCode);
 }
 
 export function SetLastErrorEx(
   dwErrCode: WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */,
   dwType: number /* u32 */,
 ): void /* void */ {
-  return libUSER32.SetLastErrorEx(dwErrCode, dwType);
+  return libUSER32_dll.SetLastErrorEx(dwErrCode, dwType);
 }
 
 export function RtlNtStatusToDosError(
   Status: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.NTSTATUS */,
 ): number /* u32 */ {
-  return libntdll.RtlNtStatusToDosError(util.toPointer(Status));
+  return libntdll_dll.RtlNtStatusToDosError(util.toPointer(Status));
 }
 

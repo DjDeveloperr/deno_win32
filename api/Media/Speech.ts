@@ -13,7 +13,7 @@ export type SPVFEATURE = number;
 export type SPVISEMES = number;
 export type SPFILEMODE = number;
 export type SPAUDIOSTATE = number;
-export type SPDISPLYATTRIBUTES = number;
+export type SPDISPLAYATTRIBUTES = number;
 export type SPPHRASEPROPERTYUNIONTYPE = number;
 export type SPSEMANTICFORMAT = number;
 export type SPVALUETYPE = number;
@@ -45,7 +45,7 @@ export type SPAUDIOOPTIONS = number;
 export type SPGRAMMAROPTIONS = number;
 export type SPADAPTATIONSETTINGS = number;
 export type SPADAPTATIONRELEVANCE = number;
-export type SPWAVEFORMATTYPE = number;
+export type SPSTREAMFORMATTYPE = number;
 export type SPRECOSTATE = number;
 export type DISPID_SpeechDataKey = number;
 export type DISPID_SpeechObjectToken = number;
@@ -135,6 +135,54 @@ export type DISPID_SpeechLexiconPronunciation = number;
 export type DISPID_SpeechPhoneConverter = number;
 
 // Constants
+export const SPDUI_EngineProperties = "EngineProperties";
+export const SPDUI_AddRemoveWord = "AddRemoveWord";
+export const SPDUI_UserTraining = "UserTraining";
+export const SPDUI_MicTraining = "MicTraining";
+export const SPDUI_RecoProfileProperties = "RecoProfileProperties";
+export const SPDUI_AudioProperties = "AudioProperties";
+export const SPDUI_AudioVolume = "AudioVolume";
+export const SPDUI_UserEnrollment = "UserEnrollment";
+export const SPDUI_ShareData = "ShareData";
+export const SPDUI_Tutorial = "Tutorial";
+export const SPREG_USER_ROOT = "HKEY_CURRENT_USER\SOFTWARE\Microsoft\Speech";
+export const SPREG_LOCAL_MACHINE_ROOT = "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Speech";
+export const SPCAT_AUDIOOUT = "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Speech\AudioOutput";
+export const SPCAT_AUDIOIN = "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Speech\AudioInput";
+export const SPCAT_VOICES = "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Speech\Voices";
+export const SPCAT_RECOGNIZERS = "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Speech\Recognizers";
+export const SPCAT_APPLEXICONS = "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Speech\AppLexicons";
+export const SPCAT_PHONECONVERTERS = "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Speech\PhoneConverters";
+export const SPCAT_TEXTNORMALIZERS = "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Speech\TextNormalizers";
+export const SPCAT_RECOPROFILES = "HKEY_CURRENT_USER\SOFTWARE\Microsoft\Speech\RecoProfiles";
+export const SPMMSYS_AUDIO_IN_TOKEN_ID = "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Speech\AudioInput\TokenEnums\MMAudioIn\";
+export const SPMMSYS_AUDIO_OUT_TOKEN_ID = "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Speech\AudioOutput\TokenEnums\MMAudioOut\";
+export const SPCURRENT_USER_LEXICON_TOKEN_ID = "HKEY_CURRENT_USER\SOFTWARE\Microsoft\Speech\CurrentUserLexicon";
+export const SPCURRENT_USER_SHORTCUT_TOKEN_ID = "HKEY_CURRENT_USER\SOFTWARE\Microsoft\Speech\CurrentUserShortcut";
+export const SPTOKENVALUE_CLSID = "CLSID";
+export const SPTOKENKEY_FILES = "Files";
+export const SPTOKENKEY_UI = "UI";
+export const SPTOKENKEY_ATTRIBUTES = "Attributes";
+export const SPTOKENKEY_RETAINEDAUDIO = "SecondsPerRetainedAudioEvent";
+export const SPTOKENKEY_AUDIO_LATENCY_WARNING = "LatencyWarningThreshold";
+export const SPTOKENKEY_AUDIO_LATENCY_TRUNCATE = "LatencyTruncateThreshold";
+export const SPTOKENKEY_AUDIO_LATENCY_UPDATE_INTERVAL = "LatencyUpdateInterval";
+export const SPVOICECATEGORY_TTSRATE = "DefaultTTSRate";
+export const SPPROP_RESOURCE_USAGE = "ResourceUsage";
+export const SPPROP_HIGH_CONFIDENCE_THRESHOLD = "HighConfidenceThreshold";
+export const SPPROP_NORMAL_CONFIDENCE_THRESHOLD = "NormalConfidenceThreshold";
+export const SPPROP_LOW_CONFIDENCE_THRESHOLD = "LowConfidenceThreshold";
+export const SPPROP_RESPONSE_SPEED = "ResponseSpeed";
+export const SPPROP_COMPLEX_RESPONSE_SPEED = "ComplexResponseSpeed";
+export const SPPROP_ADAPTATION_ON = "AdaptationOn";
+export const SPPROP_PERSISTED_BACKGROUND_ADAPTATION = "PersistedBackgroundAdaptation";
+export const SPPROP_PERSISTED_LANGUAGE_MODEL_ADAPTATION = "PersistedLanguageModelAdaptation";
+export const SPPROP_UX_IS_LISTENING = "UXIsListening";
+export const SPTOPIC_SPELLING = "Spelling";
+export const SPWILDCARD = "...";
+export const SPDICTATION = "*";
+export const SPINFDICTATION = "*+";
+export const SPREG_SAFE_USER_TOKENS = "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Speech\UserTokens";
 export const SP_LOW_CONFIDENCE = "-1";
 export const SP_NORMAL_CONFIDENCE = 0;
 export const DEFAULT_WEIGHT = 1;
@@ -145,6 +193,9 @@ export const SP_STREAMPOS_ASAP = 0;
 export const SP_STREAMPOS_REALTIME = "-1";
 export const SPRP_NORMAL = 0;
 export const SP_MAX_LANGIDS = 20;
+export const SPRECOEXTENSION = "RecoExtension";
+export const SPALTERNATESCLSID = "AlternatesCLSID";
+export const SR_LOCALIZED_DESCRIPTION = "Description";
 export const SAPI_ERROR_BASE = 20480;
 export const Speech_Default_Weight = 1;
 export const Speech_Max_Word_Length = 128;
@@ -1778,7 +1829,7 @@ export function allocSPPHRASE_50(data?: Partial<SPPHRASE_50>): Uint8Array {
  */
 export interface SPPHRASE {
   /** Windows.Win32.Media.Speech.SPPHRASE_50 */
-  __AnonymousBase_sapi53_L5821_C34: Uint8Array | Deno.PointerValue | null;
+  Base: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.Foundation.PWSTR */
   pSML: string | null;
   /** ptr */
@@ -1791,7 +1842,7 @@ export function allocSPPHRASE(data?: Partial<SPPHRASE>): Uint8Array {
   const buf = new Uint8Array(sizeofSPPHRASE);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.__AnonymousBase_sapi53_L5821_C34 !== undefined) view.setBigUint64(0, data.__AnonymousBase_sapi53_L5821_C34 === null ? 0n : BigInt(util.toPointer(data.__AnonymousBase_sapi53_L5821_C34)), true);
+  if (data?.Base !== undefined) view.setBigUint64(0, data.Base === null ? 0n : BigInt(util.toPointer(data.Base)), true);
   // 0x08: buffer
   if (data?.pSML !== undefined) {
     (buf as any)._f8 = util.pwstrToFfi(data.pSML);

@@ -658,8 +658,8 @@ export interface MLOperatorAttribute {
   name: string | null;
   /** Windows.Win32.AI.MachineLearning.WinML.MLOperatorAttributeType */
   type: MLOperatorAttributeType;
-  /** bool */
-  required: boolean;
+  /** u8 */
+  required: number;
 }
 
 export const sizeofMLOperatorAttribute = 16;
@@ -674,7 +674,9 @@ export function allocMLOperatorAttribute(data?: Partial<MLOperatorAttribute>): U
   }
   // 0x08: u32
   if (data?.type !== undefined) view.setUint32(8, Number(data.type), true);
-  // 0x0c: pad4
+  // 0x0c: u8
+  if (data?.required !== undefined) view.setUint8(12, Number(data.required));
+  // 0x0d: pad3
   return buf;
 }
 
@@ -875,7 +877,7 @@ export type HRESULT = number;
 // Native Libraries
 
 try {
-  var libwinml = Deno.dlopen("winml", {
+  var libwinml_dll = Deno.dlopen("winml.dll", {
     WinMLCreateRuntime: {
       parameters: ["pointer"],
       result: "pointer",
@@ -884,7 +886,7 @@ try {
 } catch(e) { /* ignore */ }
 
 try {
-  var libwindows_ai_machinelearning = Deno.dlopen("windows.ai.machinelearning", {
+  var libwindows_ai_machinelearning_dll = Deno.dlopen("windows.ai.machinelearning.dll", {
     MLCreateOperatorRegistry: {
       parameters: ["pointer"],
       result: "pointer",
@@ -897,12 +899,12 @@ try {
 export function WinMLCreateRuntime(
   runtime: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libwinml.WinMLCreateRuntime(util.toPointer(runtime)));
+  return util.pointerFromFfi(libwinml_dll.WinMLCreateRuntime(util.toPointer(runtime)));
 }
 
 export function MLCreateOperatorRegistry(
   registry: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libwindows_ai_machinelearning.MLCreateOperatorRegistry(util.toPointer(registry)));
+  return util.pointerFromFfi(libwindows_ai_machinelearning_dll.MLCreateOperatorRegistry(util.toPointer(registry)));
 }
 

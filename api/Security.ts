@@ -9,7 +9,6 @@ export type MSV1_0 = number;
 export type SECPKG_CRED = number;
 export type MSV_SUB_AUTHENTICATION_FILTER = number;
 export type EXPORT_SECURITY_CONTEXT_FLAGS = number;
-export type ACCEPT_SECURITY_CONTEXT_CONTEXT_REQ = number;
 export type KERB_TICKET_FLAGS = number;
 export type KERB_ADDRESS_TYPE = number;
 export type SCHANNEL_CRED_FLAGS = number;
@@ -26,6 +25,10 @@ export type KERB_CRYPTO_KEY_TYPE = number;
 export type LSA_AUTH_INFORMATION_AUTH_TYPE = number;
 export type SECPKG_PACKAGE_CHANGE_TYPE = number;
 export type TRUSTED_DOMAIN_TRUST_ATTRIBUTES = number;
+export type ISC_REQ_HIGH_FLAGS = Deno.PointerValue;
+export type ISC_REQ_FLAGS = number;
+export type ASC_REQ_HIGH_FLAGS = Deno.PointerValue;
+export type ASC_REQ_FLAGS = number;
 export type AUTHZ_RESOURCE_MANAGER_FLAGS = number;
 export type AUTHZ_ACCESS_CHECK_FLAGS = number;
 export type AUTHZ_INITIALIZE_OBJECT_ACCESS_AUDIT_EVENT_FLAGS = number;
@@ -392,6 +395,984 @@ export type TOKEN_INFORMATION_CLASS = number;
 export type MANDATORY_LEVEL = number;
 
 // Constants
+export const wszREGKEYNOSYSTEMCERTSVCPATH = "CurrentControlSet\Services\CertSvc";
+export const wszREGKEYCERTSVCPATH = "SYSTEM\CurrentControlSet\Services\CertSvc";
+export const CA_DISP_INCOMPLETE = 0;
+export const CA_DISP_ERROR = 1;
+export const CA_DISP_REVOKED = 2;
+export const CA_DISP_VALID = 3;
+export const CA_DISP_INVALID = 4;
+export const CA_DISP_UNDER_SUBMISSION = 5;
+export const KRA_DISP_EXPIRED = 0;
+export const KRA_DISP_NOTFOUND = 1;
+export const KRA_DISP_REVOKED = 2;
+export const KRA_DISP_VALID = 3;
+export const KRA_DISP_INVALID = 4;
+export const KRA_DISP_UNTRUSTED = 5;
+export const KRA_DISP_NOTLOADED = 6;
+export const CA_ACCESS_MASKROLES = 255;
+export const CA_CRL_BASE = 1;
+export const CA_CRL_DELTA = 2;
+export const CA_CRL_REPUBLISH = 16;
+export const ICF_ALLOWFOREIGN = 65536;
+export const ICF_EXISTINGROW = 131072;
+export const IKF_OVERWRITE = 65536;
+export const wszOCSPCAPROP_CACERTIFICATE = "CACertificate";
+export const wszOCSPCAPROP_HASHALGORITHMID = "HashAlgorithmId";
+export const wszOCSPCAPROP_SIGNINGFLAGS = "SigningFlags";
+export const wszOCSPCAPROP_REMINDERDURATION = "ReminderDuration";
+export const wszOCSPCAPROP_SIGNINGCERTIFICATE = "SigningCertificate";
+export const wszOCSPCAPROP_CSPNAME = "CSPName";
+export const wszOCSPCAPROP_KEYSPEC = "KeySpec";
+export const wszOCSPCAPROP_ERRORCODE = "ErrorCode";
+export const wszOCSPCAPROP_PROVIDERCLSID = "ProviderCLSID";
+export const wszOCSPCAPROP_PROVIDERPROPERTIES = "Provider";
+export const wszOCSPCAPROP_LOCALREVOCATIONINFORMATION = "LocalRevocationInformation";
+export const wszOCSPCAPROP_SIGNINGCERTIFICATETEMPLATE = "SigningCertificateTemplate";
+export const wszOCSPCAPROP_CACONFIG = "CAConfig";
+export const wszOCSPPROP_LOGLEVEL = "LogLevel";
+export const wszOCSPPROP_DEBUG = "Debug";
+export const wszOCSPPROP_AUDITFILTER = "AuditFilter";
+export const wszOCSPPROP_ARRAYCONTROLLER = "ArrayController";
+export const wszOCSPPROP_ARRAYMEMBERS = "ArrayMembers";
+export const wszOCSPPROP_ENROLLPOLLINTERVAL = "EnrollPollInterval";
+export const wszOCSPISAPIPROP_VIRTUALROOTNAME = "VirtualRootName";
+export const wszOCSPISAPIPROP_NUMOFTHREADS = "NumOfThreads";
+export const wszOCSPISAPIPROP_NUMOFBACKENDCONNECTIONS = "NumOfBackendConnections";
+export const wszOCSPISAPIPROP_REFRESHRATE = "RefreshRate";
+export const wszOCSPISAPIPROP_MAXNUMOFCACHEENTRIES = "MaxNumOfCacheEntries";
+export const wszOCSPISAPIPROP_MAXAGE = "MaxAge";
+export const wszOCSPISAPIPROP_DEBUG = "ISAPIDebug";
+export const wszOCSPCOMMONPROP_REQFLAGS = "RequestFlags";
+export const wszOCSPCOMMONPROP_MAXINCOMINGMESSAGESIZE = "MaxIncomingMessageSize";
+export const wszOCSPCOMMONPROP_MAXNUMOFREQUESTENTRIES = "MaxNumOfRequestEntries";
+export const wszOCSPREVPROP_CRLURLTIMEOUT = "CrlUrlTimeOut";
+export const wszOCSPREVPROP_BASECRLURLS = "BaseCrlUrls";
+export const wszOCSPREVPROP_SERIALNUMBERSDIRS = "IssuedSerialNumbersDirectories";
+export const wszOCSPREVPROP_BASECRL = "BaseCrl";
+export const wszOCSPREVPROP_DELTACRLURLS = "DeltaCrlUrls";
+export const wszOCSPREVPROP_DELTACRL = "DeltaCrl";
+export const wszOCSPREVPROP_REFRESHTIMEOUT = "RefreshTimeOut";
+export const wszOCSPREVPROP_ERRORCODE = "RevocationErrorCode";
+export const szBACKUPANNOTATION = "Cert Server Backup Interface";
+export const szRESTOREANNOTATION = "Cert Server Restore Interface";
+export const CSBACKUP_TYPE_MASK = 3;
+export const CSRESTORE_TYPE_FULL = 1;
+export const CSRESTORE_TYPE_ONLINE = 2;
+export const CSRESTORE_TYPE_CATCHUP = 4;
+export const CSRESTORE_TYPE_MASK = 5;
+export const CSBACKUP_DISABLE_INCREMENTAL = 4294967295;
+export const CSBFT_DIRECTORY = 128;
+export const CSBFT_DATABASE_DIRECTORY = 64;
+export const CSBFT_LOG_DIRECTORY = 32;
+export const CSCONTROL_SHUTDOWN = 1;
+export const CSCONTROL_SUSPEND = 2;
+export const CSCONTROL_RESTART = 3;
+export const wszCONFIG_COMMONNAME = "CommonName";
+export const wszCONFIG_ORGUNIT = "OrgUnit";
+export const wszCONFIG_ORGANIZATION = "Organization";
+export const wszCONFIG_LOCALITY = "Locality";
+export const wszCONFIG_STATE = "State";
+export const wszCONFIG_COUNTRY = "Country";
+export const wszCONFIG_CONFIG = "Config";
+export const wszCONFIG_EXCHANGECERTIFICATE = "ExchangeCertificate";
+export const wszCONFIG_SIGNATURECERTIFICATE = "SignatureCertificate";
+export const wszCONFIG_DESCRIPTION = "Description";
+export const wszCONFIG_COMMENT = "Comment";
+export const wszCONFIG_SERVER = "Server";
+export const wszCONFIG_AUTHORITY = "Authority";
+export const wszCONFIG_SANITIZEDNAME = "SanitizedName";
+export const wszCONFIG_SHORTNAME = "ShortName";
+export const wszCONFIG_SANITIZEDSHORTNAME = "SanitizedShortName";
+export const wszCONFIG_FLAGS = "Flags";
+export const wszCONFIG_WEBENROLLMENTSERVERS = "WebEnrollmentServers";
+export const CAIF_DSENTRY = 1;
+export const CAIF_SHAREDFOLDERENTRY = 2;
+export const CAIF_REGISTRY = 4;
+export const CAIF_LOCAL = 8;
+export const CAIF_REGISTRYPARENT = 16;
+export const CR_IN_ENCODEANY = 255;
+export const CR_IN_ENCODEMASK = 255;
+export const CR_IN_FORMATANY = 0;
+export const CR_IN_PKCS10 = 256;
+export const CR_IN_KEYGEN = 512;
+export const CR_IN_PKCS7 = 768;
+export const CR_IN_CMC = 1024;
+export const CR_IN_CHALLENGERESPONSE = 1280;
+export const CR_IN_SIGNEDCERTIFICATETIMESTAMPLIST = 1536;
+export const CR_IN_FORMATMASK = 65280;
+export const CR_IN_SCEP = 65536;
+export const CR_IN_RPC = 131072;
+export const CR_IN_HTTP = 196608;
+export const CR_IN_FULLRESPONSE = 262144;
+export const CR_IN_CRLS = 524288;
+export const CR_IN_MACHINE = 1048576;
+export const CR_IN_ROBO = 2097152;
+export const CR_IN_CLIENTIDNONE = 4194304;
+export const CR_IN_CONNECTONLY = 8388608;
+export const CR_IN_RETURNCHALLENGE = 16777216;
+export const CR_IN_SCEPPOST = 33554432;
+export const CR_IN_CERTIFICATETRANSPARENCY = 67108864;
+export const CR_DISP_REVOKED = 6;
+export const CR_OUT_BASE64REQUESTHEADER = 3;
+export const CR_OUT_HEX = 4;
+export const CR_OUT_HEXASCII = 5;
+export const CR_OUT_BASE64X509CRLHEADER = 9;
+export const CR_OUT_HEXADDR = 10;
+export const CR_OUT_HEXASCIIADDR = 11;
+export const CR_OUT_HEXRAW = 12;
+export const CR_OUT_ENCODEMASK = 255;
+export const CR_OUT_CHAIN = 256;
+export const CR_OUT_CRLS = 512;
+export const CR_OUT_NOCRLF = 1073741824;
+export const CR_OUT_NOCR = 2147483648;
+export const CR_GEMT_DEFAULT = 0;
+export const CR_GEMT_HRESULT_STRING = 1;
+export const CR_GEMT_HTTP_ERROR = 2;
+export const CR_PROP_NONE = 0;
+export const CR_PROP_FILEVERSION = 1;
+export const CR_PROP_PRODUCTVERSION = 2;
+export const CR_PROP_EXITCOUNT = 3;
+export const CR_PROP_EXITDESCRIPTION = 4;
+export const CR_PROP_POLICYDESCRIPTION = 5;
+export const CR_PROP_CANAME = 6;
+export const CR_PROP_SANITIZEDCANAME = 7;
+export const CR_PROP_SHAREDFOLDER = 8;
+export const CR_PROP_PARENTCA = 9;
+export const CR_PROP_CATYPE = 10;
+export const CR_PROP_CASIGCERTCOUNT = 11;
+export const CR_PROP_CASIGCERT = 12;
+export const CR_PROP_CASIGCERTCHAIN = 13;
+export const CR_PROP_CAXCHGCERTCOUNT = 14;
+export const CR_PROP_CAXCHGCERT = 15;
+export const CR_PROP_CAXCHGCERTCHAIN = 16;
+export const CR_PROP_BASECRL = 17;
+export const CR_PROP_DELTACRL = 18;
+export const CR_PROP_CACERTSTATE = 19;
+export const CR_PROP_CRLSTATE = 20;
+export const CR_PROP_CAPROPIDMAX = 21;
+export const CR_PROP_DNSNAME = 22;
+export const CR_PROP_ROLESEPARATIONENABLED = 23;
+export const CR_PROP_KRACERTUSEDCOUNT = 24;
+export const CR_PROP_KRACERTCOUNT = 25;
+export const CR_PROP_KRACERT = 26;
+export const CR_PROP_KRACERTSTATE = 27;
+export const CR_PROP_ADVANCEDSERVER = 28;
+export const CR_PROP_TEMPLATES = 29;
+export const CR_PROP_BASECRLPUBLISHSTATUS = 30;
+export const CR_PROP_DELTACRLPUBLISHSTATUS = 31;
+export const CR_PROP_CASIGCERTCRLCHAIN = 32;
+export const CR_PROP_CAXCHGCERTCRLCHAIN = 33;
+export const CR_PROP_CACERTSTATUSCODE = 34;
+export const CR_PROP_CAFORWARDCROSSCERT = 35;
+export const CR_PROP_CABACKWARDCROSSCERT = 36;
+export const CR_PROP_CAFORWARDCROSSCERTSTATE = 37;
+export const CR_PROP_CABACKWARDCROSSCERTSTATE = 38;
+export const CR_PROP_CACERTVERSION = 39;
+export const CR_PROP_SANITIZEDCASHORTNAME = 40;
+export const CR_PROP_CERTCDPURLS = 41;
+export const CR_PROP_CERTAIAURLS = 42;
+export const CR_PROP_CERTAIAOCSPURLS = 43;
+export const CR_PROP_LOCALENAME = 44;
+export const CR_PROP_SUBJECTTEMPLATE_OIDS = 45;
+export const CR_PROP_SCEPSERVERCERTS = 1000;
+export const CR_PROP_SCEPSERVERCAPABILITIES = 1001;
+export const CR_PROP_SCEPSERVERCERTSCHAIN = 1002;
+export const CR_PROP_SCEPMIN = 1000;
+export const CR_PROP_SCEPMAX = 1002;
+export const FR_PROP_CLAIMCHALLENGE = 22;
+export const EAN_NAMEOBJECTID = 2147483648;
+export const EANR_SUPPRESS_IA5CONVERSION = 2147483648;
+export const CERTENROLL_INDEX_BASE = 0;
+export const EXITEVENT_INVALID = 0;
+export const EXITEVENT_STARTUP = 128;
+export const EXITEVENT_CERTIMPORTED = 512;
+export const ENUMEXT_OBJECTID = 1;
+export const CMM_REFRESHONLY = 1;
+export const CMM_READONLY = 2;
+export const DBG_CERTSRV = 1;
+export const wszSERVICE_NAME = "CertSvc";
+export const wszREGKEYBASE = "SYSTEM\CurrentControlSet\Services\CertSvc";
+export const wszREGKEYCONFIG = "Configuration";
+export const wszREGACTIVE = "Active";
+export const wszREGDIRECTORY = "ConfigurationDirectory";
+export const wszREGDBDIRECTORY = "DBDirectory";
+export const wszREGDBLOGDIRECTORY = "DBLogDirectory";
+export const wszREGDBSYSDIRECTORY = "DBSystemDirectory";
+export const wszREGDBTEMPDIRECTORY = "DBTempDirectory";
+export const wszREGDBSESSIONCOUNT = "DBSessionCount";
+export const wszREGDBMAXREADSESSIONCOUNT = "DBMaxReadSessionCount";
+export const wszREGDBFLAGS = "DBFlags";
+export const wszREGDBLASTFULLBACKUP = "DBLastFullBackup";
+export const wszREGDBLASTINCREMENTALBACKUP = "DBLastIncrementalBackup";
+export const wszREGDBLASTRECOVERY = "DBLastRecovery";
+export const wszREGWEBCLIENTCAMACHINE = "WebClientCAMachine";
+export const wszREGVERSION = "Version";
+export const wszREGWEBCLIENTCANAME = "WebClientCAName";
+export const wszREGWEBCLIENTCATYPE = "WebClientCAType";
+export const wszREGLDAPFLAGS = "LDAPFlags";
+export const wszREGCERTSRVDEBUG = "Debug";
+export const DBSESSIONCOUNTDEFAULT = 100;
+export const DBFLAGS_READONLY = 1;
+export const DBFLAGS_CREATEIFNEEDED = 2;
+export const DBFLAGS_CIRCULARLOGGING = 4;
+export const DBFLAGS_LAZYFLUSH = 8;
+export const DBFLAGS_MAXCACHESIZEX100 = 16;
+export const DBFLAGS_CHECKPOINTDEPTH60MB = 32;
+export const DBFLAGS_LOGBUFFERSLARGE = 64;
+export const DBFLAGS_LOGBUFFERSHUGE = 128;
+export const DBFLAGS_LOGFILESIZE16MB = 256;
+export const DBFLAGS_MULTITHREADTRANSACTIONS = 512;
+export const DBFLAGS_DISABLESNAPSHOTBACKUP = 1024;
+export const DBFLAGS_ENABLEVOLATILEREQUESTS = 2048;
+export const LDAPF_SSLENABLE = 1;
+export const LDAPF_SIGNDISABLE = 2;
+export const CSVER_MAJOR_WIN2K = 1;
+export const CSVER_MINOR_WIN2K = 1;
+export const CSVER_MAJOR_WHISTLER = 2;
+export const CSVER_MINOR_WHISTLER_BETA2 = 1;
+export const CSVER_MINOR_WHISTLER_BETA3 = 2;
+export const CSVER_MAJOR_LONGHORN = 3;
+export const CSVER_MINOR_LONGHORN_BETA1 = 1;
+export const CSVER_MAJOR_WIN7 = 4;
+export const CSVER_MINOR_WIN7 = 1;
+export const CSVER_MAJOR_WIN8 = 5;
+export const CSVER_MINOR_WIN8 = 1;
+export const CSVER_MAJOR_WINBLUE = 6;
+export const CSVER_MINOR_WINBLUE = 1;
+export const CSVER_MAJOR_THRESHOLD = 7;
+export const CSVER_MINOR_THRESHOLD = 1;
+export const CSVER_MAJOR = 7;
+export const CSVER_MINOR = 1;
+export const wszREGKEYRESTOREINPROGRESS = "RestoreInProgress";
+export const wszREGKEYDBPARAMETERS = "DBParameters";
+export const wszREGCADESCRIPTION = "CADescription";
+export const wszREGCACERTHASH = "CACertHash";
+export const wszREGCASERIALNUMBER = "CACertSerialNumber";
+export const wszREGCAXCHGCERTHASH = "CAXchgCertHash";
+export const wszREGKRACERTHASH = "KRACertHash";
+export const wszREGKRACERTCOUNT = "KRACertCount";
+export const wszREGKRAFLAGS = "KRAFlags";
+export const wszREGCATYPE = "CAType";
+export const wszREGCERTENROLLCOMPATIBLE = "CertEnrollCompatible";
+export const wszREGENFORCEX500NAMELENGTHS = "EnforceX500NameLengths";
+export const wszREGCOMMONNAME = "CommonName";
+export const wszREGCLOCKSKEWMINUTES = "ClockSkewMinutes";
+export const wszREGCRLNEXTPUBLISH = "CRLNextPublish";
+export const wszREGCRLPERIODSTRING = "CRLPeriod";
+export const wszREGCRLPERIODCOUNT = "CRLPeriodUnits";
+export const wszREGCRLOVERLAPPERIODSTRING = "CRLOverlapPeriod";
+export const wszREGCRLOVERLAPPERIODCOUNT = "CRLOverlapUnits";
+export const wszREGCRLDELTANEXTPUBLISH = "CRLDeltaNextPublish";
+export const wszREGCRLDELTAPERIODSTRING = "CRLDeltaPeriod";
+export const wszREGCRLDELTAPERIODCOUNT = "CRLDeltaPeriodUnits";
+export const wszREGCRLDELTAOVERLAPPERIODSTRING = "CRLDeltaOverlapPeriod";
+export const wszREGCRLDELTAOVERLAPPERIODCOUNT = "CRLDeltaOverlapUnits";
+export const wszREGCRLPUBLICATIONURLS = "CRLPublicationURLs";
+export const wszREGCACERTPUBLICATIONURLS = "CACertPublicationURLs";
+export const wszREGCAXCHGVALIDITYPERIODSTRING = "CAXchgValidityPeriod";
+export const wszREGCAXCHGVALIDITYPERIODCOUNT = "CAXchgValidityPeriodUnits";
+export const wszREGCAXCHGOVERLAPPERIODSTRING = "CAXchgOverlapPeriod";
+export const wszREGCAXCHGOVERLAPPERIODCOUNT = "CAXchgOverlapPeriodUnits";
+export const wszREGCRLPATH_OLD = "CRLPath";
+export const wszREGCRLEDITFLAGS = "CRLEditFlags";
+export const wszREGCRLFLAGS = "CRLFlags";
+export const wszREGCRLATTEMPTREPUBLISH = "CRLAttemptRepublish";
+export const wszREGENABLED = "Enabled";
+export const wszREGFORCETELETEX = "ForceTeletex";
+export const wszREGLOGLEVEL = "LogLevel";
+export const wszREGHIGHSERIAL = "HighSerial";
+export const wszREGPOLICYFLAGS = "PolicyFlags";
+export const wszREGNAMESEPARATOR = "SubjectNameSeparator";
+export const wszREGSUBJECTTEMPLATE = "SubjectTemplate";
+export const wszREGCAUSEDS = "UseDS";
+export const wszREGVALIDITYPERIODSTRING = "ValidityPeriod";
+export const wszREGVALIDITYPERIODCOUNT = "ValidityPeriodUnits";
+export const wszREGPARENTCAMACHINE = "ParentCAMachine";
+export const wszREGPARENTCANAME = "ParentCAName";
+export const wszREGREQUESTFILENAME = "RequestFileName";
+export const wszREGREQUESTID = "RequestId";
+export const wszREGREQUESTKEYCONTAINER = "RequestKeyContainer";
+export const wszREGREQUESTKEYINDEX = "RequestKeyIndex";
+export const wszREGCASERVERNAME = "CAServerName";
+export const wszREGCACERTFILENAME = "CACertFileName";
+export const wszREGCASECURITY = "Security";
+export const wszREGAUDITFILTER = "AuditFilter";
+export const wszREGOFFICERRIGHTS = "OfficerRights";
+export const wszENROLLMENTAGENTRIGHTS = "EnrollmentAgentRights";
+export const wszREGMAXINCOMINGMESSAGESIZE = "MaxIncomingMessageSize";
+export const wszREGMAXINCOMINGALLOCSIZE = "MaxIncomingAllocSize";
+export const wszREGROLESEPARATIONENABLED = "RoleSeparationEnabled";
+export const wszREGALTERNATEPUBLISHDOMAINS = "AlternatePublishDomains";
+export const wszREGSETUPSTATUS = "SetupStatus";
+export const wszREGINTERFACEFLAGS = "InterfaceFlags";
+export const wszREGDSCONFIGDN = "DSConfigDN";
+export const wszREGDSDOMAINDN = "DSDomainDN";
+export const wszREGVIEWAGEMINUTES = "ViewAgeMinutes";
+export const wszREGVIEWIDLEMINUTES = "ViewIdleMinutes";
+export const wszREGEKPUBLISTDIRECTORIES = "EndorsementKeyListDirectories";
+export const wszCERTIFICATETRANSPARENCYFLAGS = "CertificateTransparencyFlags";
+export const wszREGMAXSCTLISTSIZE = "MaxSCTListSize";
+export const wszREGCERTIFICATETRANSPARENCYINFOOID = "CTInformationExtensionOid";
+export const wszREGPROCESSINGFLAGS = "ProcessingFlags";
+export const wszREGUSEDEFINEDCACERTINREQ = "UseDefinedCACertInRequest";
+export const wszREGENABLEDEKUFORDEFINEDCACERT = "EnabledEKUForDefinedCACert";
+export const wszREGEKUOIDSFORPUBLISHEXPIREDCERTINCRL = "EKUOIDsForPublishExpiredCertInCRL";
+export const wszCRTFILENAMEEXT = ".crt";
+export const wszPFXFILENAMEEXT = ".p12";
+export const wszDATFILENAMEEXT = ".dat";
+export const wszLOGFILENAMEEXT = ".log";
+export const wszDBFILENAMEEXT = ".edb";
+export const szDBBASENAMEPARM = "edb";
+export const wszLOGPATH = "CertLog";
+export const wszDBBACKUPSUBDIR = "DataBase";
+export const wszDBBACKUPCERTBACKDAT = "certbkxp.dat";
+export const CCLOCKSKEWMINUTESDEFAULT = 10;
+export const CVIEWAGEMINUTESDEFAULT = 16;
+export const dwVALIDITYPERIODCOUNTDEFAULT_ROOT = 5;
+export const dwVALIDITYPERIODCOUNTDEFAULT_ENTERPRISE = 2;
+export const dwVALIDITYPERIODCOUNTDEFAULT_STANDALONE = 1;
+export const dwCAXCHGVALIDITYPERIODCOUNTDEFAULT = 1;
+export const dwCAXCHGOVERLAPPERIODCOUNTDEFAULT = 1;
+export const dwCRLPERIODCOUNTDEFAULT = 1;
+export const dwCRLOVERLAPPERIODCOUNTDEFAULT = 0;
+export const dwCRLDELTAPERIODCOUNTDEFAULT = 1;
+export const dwCRLDELTAOVERLAPPERIODCOUNTDEFAULT = 0;
+export const SETUP_SERVER_FLAG = 1;
+export const SETUP_CLIENT_FLAG = 2;
+export const SETUP_SUSPEND_FLAG = 4;
+export const SETUP_REQUEST_FLAG = 8;
+export const SETUP_ONLINE_FLAG = 16;
+export const SETUP_DENIED_FLAG = 32;
+export const SETUP_CREATEDB_FLAG = 64;
+export const SETUP_ATTEMPT_VROOT_CREATE = 128;
+export const SETUP_FORCECRL_FLAG = 256;
+export const SETUP_UPDATE_CAOBJECT_SVRTYPE = 512;
+export const SETUP_SERVER_UPGRADED_FLAG = 1024;
+export const SETUP_W2K_SECURITY_NOT_UPGRADED_FLAG = 2048;
+export const SETUP_SECURITY_CHANGED = 4096;
+export const SETUP_DCOM_SECURITY_UPDATED_FLAG = 8192;
+export const SETUP_SERVER_IS_UP_TO_DATE_FLAG = 16384;
+export const CRLF_DELTA_USE_OLDEST_UNEXPIRED_BASE = 1;
+export const CRLF_DELETE_EXPIRED_CRLS = 2;
+export const CRLF_CRLNUMBER_CRITICAL = 4;
+export const CRLF_REVCHECK_IGNORE_OFFLINE = 8;
+export const CRLF_IGNORE_INVALID_POLICIES = 16;
+export const CRLF_REBUILD_MODIFIED_SUBJECT_ONLY = 32;
+export const CRLF_SAVE_FAILED_CERTS = 64;
+export const CRLF_IGNORE_UNKNOWN_CMC_ATTRIBUTES = 128;
+export const CRLF_IGNORE_CROSS_CERT_TRUST_ERROR = 256;
+export const CRLF_PUBLISH_EXPIRED_CERT_CRLS = 512;
+export const CRLF_ENFORCE_ENROLLMENT_AGENT = 1024;
+export const CRLF_DISABLE_RDN_REORDER = 2048;
+export const CRLF_DISABLE_ROOT_CROSS_CERTS = 4096;
+export const CRLF_LOG_FULL_RESPONSE = 8192;
+export const CRLF_USE_XCHG_CERT_TEMPLATE = 16384;
+export const CRLF_USE_CROSS_CERT_TEMPLATE = 32768;
+export const CRLF_ALLOW_REQUEST_ATTRIBUTE_SUBJECT = 65536;
+export const CRLF_REVCHECK_IGNORE_NOREVCHECK = 131072;
+export const CRLF_PRESERVE_EXPIRED_CA_CERTS = 262144;
+export const CRLF_PRESERVE_REVOKED_CA_CERTS = 524288;
+export const CRLF_DISABLE_CHAIN_VERIFICATION = 1048576;
+export const CRLF_BUILD_ROOTCA_CRLENTRIES_BASEDONKEY = 2097152;
+export const KRAF_ENABLEFOREIGN = 1;
+export const KRAF_SAVEBADREQUESTKEY = 2;
+export const KRAF_ENABLEARCHIVEALL = 4;
+export const KRAF_DISABLEUSEDEFAULTPROVIDER = 8;
+export const IF_LOCKICERTREQUEST = 1;
+export const IF_NOREMOTEICERTREQUEST = 2;
+export const IF_NOLOCALICERTREQUEST = 4;
+export const IF_NORPCICERTREQUEST = 8;
+export const IF_NOREMOTEICERTADMIN = 16;
+export const IF_NOLOCALICERTADMIN = 32;
+export const IF_NOREMOTEICERTADMINBACKUP = 64;
+export const IF_NOLOCALICERTADMINBACKUP = 128;
+export const IF_NOSNAPSHOTBACKUP = 256;
+export const IF_ENFORCEENCRYPTICERTREQUEST = 512;
+export const IF_ENFORCEENCRYPTICERTADMIN = 1024;
+export const IF_ENABLEEXITKEYRETRIEVAL = 2048;
+export const IF_ENABLEADMINASAUDITOR = 4096;
+export const PROCFLG_NONE = 0;
+export const PROCFLG_ENFORCEGOODKEYS = 1;
+export const CSURL_SERVERPUBLISH = 1;
+export const CSURL_ADDTOCERTCDP = 2;
+export const CSURL_ADDTOFRESHESTCRL = 4;
+export const CSURL_ADDTOCRLCDP = 8;
+export const CSURL_PUBLISHRETRY = 16;
+export const CSURL_ADDTOCERTOCSP = 32;
+export const CSURL_SERVERPUBLISHDELTA = 64;
+export const CSURL_ADDTOIDP = 128;
+export const wszREGKEYCSP = "CSP";
+export const wszREGKEYENCRYPTIONCSP = "EncryptionCSP";
+export const wszREGKEYEXITMODULES = "ExitModules";
+export const wszREGKEYPOLICYMODULES = "PolicyModules";
+export const wszSECUREDATTRIBUTES = "SignedAttributes";
+export const wszzDEFAULTSIGNEDATTRIBUTES = "RequesterName ";
+export const wszREGBACKUPLOGDIRECTORY = "BackupLogDirectory";
+export const wszREGCHECKPOINTFILE = "CheckPointFile";
+export const wszREGHIGHLOGNUMBER = "HighLogNumber";
+export const wszREGLOWLOGNUMBER = "LowLogNumber";
+export const wszREGLOGPATH = "LogPath";
+export const wszREGRESTOREMAPCOUNT = "RestoreMapCount";
+export const wszREGRESTOREMAP = "RestoreMap";
+export const wszREGDATABASERECOVERED = "DatabaseRecovered";
+export const wszREGRESTORESTATUS = "RestoreStatus";
+export const wszREGB2ICERTMANAGEMODULE = "ICertManageModule";
+export const wszREGSP4DEFAULTCONFIGURATION = "DefaultConfiguration";
+export const wszREGSP4KEYSETNAME = "KeySetName";
+export const wszREGSP4SUBJECTNAMESEPARATOR = "SubjectNameSeparator";
+export const wszREGSP4NAMES = "Names";
+export const wszREGSP4QUERIES = "Queries";
+export const wszREGNETSCAPECERTTYPE = "NetscapeCertType";
+export const wszNETSCAPEREVOCATIONTYPE = "Netscape";
+export const wszREGPROVIDERTYPE = "ProviderType";
+export const wszREGPROVIDER = "Provider";
+export const wszHASHALGORITHM = "HashAlgorithm";
+export const wszENCRYPTIONALGORITHM = "EncryptionAlgorithm";
+export const wszMACHINEKEYSET = "MachineKeyset";
+export const wszREGKEYSIZE = "KeySize";
+export const wszREGSYMMETRICKEYSIZE = "SymmetricKeySize";
+export const wszCNGPUBLICKEYALGORITHM = "CNGPublicKeyAlgorithm";
+export const wszCNGHASHALGORITHM = "CNGHashAlgorithm";
+export const wszCNGENCRYPTIONALGORITHM = "CNGEncryptionAlgorithm";
+export const wszREGALTERNATESIGNATUREALGORITHM = "AlternateSignatureAlgorithm";
+export const szNAMESEPARATORDEFAULT = "
+";
+export const wszPERIODYEARS = "Years";
+export const wszPERIODMONTHS = "Months";
+export const wszPERIODWEEKS = "Weeks";
+export const wszPERIODDAYS = "Days";
+export const wszPERIODHOURS = "Hours";
+export const wszPERIODMINUTES = "Minutes";
+export const wszPERIODSECONDS = "Seconds";
+export const wszREGISSUERCERTURLFLAGS = "IssuerCertURLFlags";
+export const wszREGEDITFLAGS = "EditFlags";
+export const wszREGUPNMAP = "UPNMap";
+export const wszREGSUBJECTALTNAME = "SubjectAltName";
+export const wszREGSUBJECTALTNAME2 = "SubjectAltName2";
+export const wszREGREQUESTDISPOSITION = "RequestDisposition";
+export const wszREGCAPATHLENGTH = "CAPathLength";
+export const wszREGREVOCATIONTYPE = "RevocationType";
+export const wszREGLDAPREVOCATIONCRLURL_OLD = "LDAPRevocationCRLURL";
+export const wszREGREVOCATIONCRLURL_OLD = "RevocationCRLURL";
+export const wszREGFTPREVOCATIONCRLURL_OLD = "FTPRevocationCRLURL";
+export const wszREGFILEREVOCATIONCRLURL_OLD = "FileRevocationCRLURL";
+export const wszREGREVOCATIONURL = "RevocationURL";
+export const wszREGLDAPISSUERCERTURL_OLD = "LDAPIssuerCertURL";
+export const wszREGISSUERCERTURL_OLD = "IssuerCertURL";
+export const wszREGFTPISSUERCERTURL_OLD = "FTPIssuerCertURL";
+export const wszREGFILEISSUERCERTURL_OLD = "FileIssuerCertURL";
+export const wszREGENABLEREQUESTEXTENSIONLIST = "EnableRequestExtensionList";
+export const wszREGENABLEENROLLEEREQUESTEXTENSIONLIST = "EnableEnrolleeRequestExtensionList";
+export const wszREGDISABLEEXTENSIONLIST = "DisableExtensionList";
+export const wszREGEKUOIDSFORVOLATILEREQUESTS = "EKUOIDsforVolatileRequests";
+export const wszREGLDAPSESSIONOPTIONS = "LDAPSessionOptions";
+export const wszLDAPSESSIONOPTIONVALUE = "LDAPSessionOptionValue";
+export const wszREGDEFAULTSMIME = "DefaultSMIME";
+export const CAPATHLENGTH_INFINITE = 4294967295;
+export const REQDISP_PENDING = 0;
+export const REQDISP_ISSUE = 1;
+export const REQDISP_DENY = 2;
+export const REQDISP_USEREQUESTATTRIBUTE = 3;
+export const REQDISP_MASK = 255;
+export const REQDISP_PENDINGFIRST = 256;
+export const REQDISP_DEFAULT_ENTERPRISE = 1;
+export const REVEXT_CDPLDAPURL_OLD = 1;
+export const REVEXT_CDPHTTPURL_OLD = 2;
+export const REVEXT_CDPFTPURL_OLD = 4;
+export const REVEXT_CDPFILEURL_OLD = 8;
+export const REVEXT_CDPURLMASK_OLD = 255;
+export const REVEXT_CDPENABLE = 256;
+export const REVEXT_ASPENABLE = 512;
+export const REVEXT_DEFAULT_NODS = 256;
+export const REVEXT_DEFAULT_DS = 256;
+export const ISSCERT_LDAPURL_OLD = 1;
+export const ISSCERT_HTTPURL_OLD = 2;
+export const ISSCERT_FTPURL_OLD = 4;
+export const ISSCERT_FILEURL_OLD = 8;
+export const ISSCERT_URLMASK_OLD = 255;
+export const ISSCERT_ENABLE = 256;
+export const ISSCERT_DEFAULT_NODS = 256;
+export const ISSCERT_DEFAULT_DS = 256;
+export const EDITF_ENABLEREQUESTEXTENSIONS = 1;
+export const EDITF_REQUESTEXTENSIONLIST = 2;
+export const EDITF_DISABLEEXTENSIONLIST = 4;
+export const EDITF_ADDOLDKEYUSAGE = 8;
+export const EDITF_ADDOLDCERTTYPE = 16;
+export const EDITF_ATTRIBUTEENDDATE = 32;
+export const EDITF_BASICCONSTRAINTSCRITICAL = 64;
+export const EDITF_BASICCONSTRAINTSCA = 128;
+export const EDITF_ENABLEAKIKEYID = 256;
+export const EDITF_ATTRIBUTECA = 512;
+export const EDITF_IGNOREREQUESTERGROUP = 1024;
+export const EDITF_ENABLEAKIISSUERNAME = 2048;
+export const EDITF_ENABLEAKIISSUERSERIAL = 4096;
+export const EDITF_ENABLEAKICRITICAL = 8192;
+export const EDITF_SERVERUPGRADED = 16384;
+export const EDITF_ATTRIBUTEEKU = 32768;
+export const EDITF_ENABLEDEFAULTSMIME = 65536;
+export const EDITF_EMAILOPTIONAL = 131072;
+export const EDITF_ATTRIBUTESUBJECTALTNAME2 = 262144;
+export const EDITF_ENABLELDAPREFERRALS = 524288;
+export const EDITF_ENABLECHASECLIENTDC = 1048576;
+export const EDITF_AUDITCERTTEMPLATELOAD = 2097152;
+export const EDITF_DISABLEOLDOSCNUPN = 4194304;
+export const EDITF_DISABLELDAPPACKAGELIST = 8388608;
+export const EDITF_ENABLEUPNMAP = 16777216;
+export const EDITF_ENABLEOCSPREVNOCHECK = 33554432;
+export const EDITF_ENABLERENEWONBEHALFOF = 67108864;
+export const EDITF_ENABLEKEYENCIPHERMENTCACERT = 134217728;
+export const wszREGLDAPREVOCATIONDN_OLD = "LDAPRevocationDN";
+export const wszREGLDAPREVOCATIONDNTEMPLATE_OLD = "LDAPRevocationDNTemplate";
+export const wszCRLPUBLISHRETRYCOUNT = "CRLPublishRetryCount";
+export const wszREGCERTPUBLISHFLAGS = "PublishCertFlags";
+export const EXITPUB_FILE = 1;
+export const EXITPUB_ACTIVEDIRECTORY = 2;
+export const EXITPUB_REMOVEOLDCERTS = 16;
+export const EXITPUB_DEFAULT_ENTERPRISE = 2;
+export const EXITPUB_DEFAULT_STANDALONE = 1;
+export const wszCLASS_CERTADMIN = "CertificateAuthority.Admin";
+export const wszCLASS_CERTCONFIG = "CertificateAuthority.Config";
+export const wszCLASS_CERTGETCONFIG = "CertificateAuthority.GetConfig";
+export const wszCLASS_CERTENCODE = "CertificateAuthority.Encode";
+export const wszCLASS_CERTDBMEM = "CertificateAuthority.DBMem";
+export const wszCLASS_CERTREQUEST = "CertificateAuthority.Request";
+export const wszCLASS_CERTSERVEREXIT = "CertificateAuthority.ServerExit";
+export const wszCLASS_CERTSERVERPOLICY = "CertificateAuthority.ServerPolicy";
+export const wszCLASS_CERTVIEW = "CertificateAuthority.View";
+export const wszMICROSOFTCERTMODULE_PREFIX = "CertificateAuthority_MicrosoftDefault";
+export const wszCERTMANAGE_SUFFIX = "Manage";
+export const wszCERTEXITMODULE_POSTFIX = ".Exit";
+export const wszCERTPOLICYMODULE_POSTFIX = ".Policy";
+export const wszCAPOLICYFILE = "CAPolicy.inf";
+export const wszINFSECTION_CDP = "CRLDistributionPoint";
+export const wszINFSECTION_AIA = "AuthorityInformationAccess";
+export const wszINFSECTION_EKU = "EnhancedKeyUsageExtension";
+export const wszINFSECTION_CCDP = "CrossCertificateDistributionPointsExtension";
+export const wszINFSECTION_CERTSERVER = "certsrv_server";
+export const wszINFKEY_RENEWALKEYLENGTH = "RenewalKeyLength";
+export const wszINFKEY_RENEWALVALIDITYPERIODSTRING = "RenewalValidityPeriod";
+export const wszINFKEY_RENEWALVALIDITYPERIODCOUNT = "RenewalValidityPeriodUnits";
+export const wszINFKEY_UTF8 = "UTF8";
+export const wszINFKEY_CRLPERIODSTRING = "CRLPeriod";
+export const wszINFKEY_CRLPERIODCOUNT = "CRLPeriodUnits";
+export const wszINFKEY_CRLDELTAPERIODSTRING = "CRLDeltaPeriod";
+export const wszINFKEY_CRLDELTAPERIODCOUNT = "CRLDeltaPeriodUnits";
+export const wszINFKEY_LOADDEFAULTTEMPLATES = "LoadDefaultTemplates";
+export const wszINFKEY_ENABLEKEYCOUNTING = "EnableKeyCounting";
+export const wszINFKEY_FORCEUTF8 = "ForceUTF8";
+export const wszINFKEY_ALTERNATESIGNATUREALGORITHM = "AlternateSignatureAlgorithm";
+export const wszINFKEY_SHOWALLCSPS = "ShowAllCSPs";
+export const wszINFKEY_CRITICAL = "Critical";
+export const wszINFKEY_EMPTY = "Empty";
+export const wszINFKEY_CCDPSYNCDELTATIME = "SyncDeltaTime";
+export const wszINFSECTION_CAPOLICY = "CAPolicy";
+export const wszINFSECTION_POLICYSTATEMENT = "PolicyStatementExtension";
+export const wszINFSECTION_APPLICATIONPOLICYSTATEMENT = "ApplicationPolicyStatementExtension";
+export const wszINFKEY_POLICIES = "Policies";
+export const wszINFKEY_OID = "OID";
+export const wszINFKEY_NOTICE = "Notice";
+export const wszINFKEY_FLAGS = "Flags";
+export const wszINFSECTION_REQUESTATTRIBUTES = "RequestAttributes";
+export const wszINFSECTION_NAMECONSTRAINTS = "NameConstraintsExtension";
+export const wszINFKEY_INCLUDE = "Include";
+export const wszINFKEY_EXCLUDE = "Exclude";
+export const wszINFKEY_SUBTREE = "SubTree";
+export const wszINFKEY_UPN = "UPN";
+export const wszINFKEY_EMAIL = "EMail";
+export const wszINFKEY_DNS = "DNS";
+export const wszINFKEY_DIRECTORYNAME = "DirectoryName";
+export const wszINFKEY_URL = "URL";
+export const wszINFKEY_IPADDRESS = "IPAddress";
+export const wszINFKEY_REGISTEREDID = "RegisteredId";
+export const wszINFKEY_OTHERNAME = "OtherName";
+export const wszINFSECTION_POLICYMAPPINGS = "PolicyMappingsExtension";
+export const wszINFSECTION_APPLICATIONPOLICYMAPPINGS = "ApplicationPolicyMappingsExtension";
+export const wszINFSECTION_POLICYCONSTRAINTS = "PolicyConstraintsExtension";
+export const wszINFSECTION_APPLICATIONPOLICYCONSTRAINTS = "ApplicationPolicyConstraintsExtension";
+export const wszINFKEY_REQUIREEXPLICITPOLICY = "RequireExplicitPolicy";
+export const wszINFKEY_INHIBITPOLICYMAPPING = "InhibitPolicyMapping";
+export const wszINFSECTION_BASICCONSTRAINTS = "BasicConstraintsExtension";
+export const wszINFKEY_PATHLENGTH = "PathLength";
+export const wszINFSECTION_EXTENSIONS = "Extensions";
+export const wszINFSECTION_PROPERTIES = "Properties";
+export const wszINFKEY_CONTINUE = "_continue_";
+export const wszINFSECTION_NEWREQUEST = "NewRequest";
+export const wszINFKEY_SUBJECT = "Subject";
+export const wszINFKEY_SUBJECTNAMEFLAGS = "SubjectNameFlags";
+export const wszINFKEY_X500NAMEFLAGS = "X500NameFlags";
+export const wszINFKEY_EXPORTABLE = "Exportable";
+export const wszINFKEY_EXPORTABLEENCRYPTED = "ExportableEncrypted";
+export const wszINFKEY_HASHALGORITHM = "HashAlgorithm";
+export const wszINFKEY_KEYALGORITHM = "KeyAlgorithm";
+export const wszINFKEY_KEYALGORITHMPARMETERS = "KeyAlgorithmParameters";
+export const wszINFKEY_KEYCONTAINER = "KeyContainer";
+export const wszINFKEY_READERNAME = "ReaderName";
+export const wszINFKEY_KEYLENGTH = "KeyLength";
+export const wszINFKEY_LEGACYKEYSPEC = "KeySpec";
+export const wszINFKEY_KEYUSAGEEXTENSION = "KeyUsage";
+export const wszINFKEY_KEYUSAGEPROPERTY = "KeyUsageProperty";
+export const wszINFKEY_MACHINEKEYSET = "MachineKeySet";
+export const wszINFKEY_PRIVATEKEYARCHIVE = "PrivateKeyArchive";
+export const wszINFKEY_ENCRYPTIONALGORITHM = "EncryptionAlgorithm";
+export const wszINFKEY_ENCRYPTIONLENGTH = "EncryptionLength";
+export const wszINFKEY_PROVIDERNAME = "ProviderName";
+export const wszINFKEY_PROVIDERTYPE = "ProviderType";
+export const wszINFKEY_RENEWALCERT = "RenewalCert";
+export const wszINFKEY_REQUESTTYPE = "RequestType";
+export const wszINFKEY_SECURITYDESCRIPTOR = "SecurityDescriptor";
+export const wszINFKEY_SILENT = "Silent";
+export const wszINFKEY_SMIME = "SMIME";
+export const wszINFKEY_SUPPRESSDEFAULTS = "SuppressDefaults";
+export const wszINFKEY_USEEXISTINGKEY = "UseExistingKeySet";
+export const wszINFKEY_USERPROTECTED = "UserProtected";
+export const wszINFKEY_KEYPROTECTION = "KeyProtection";
+export const wszINFKEY_UICONTEXTMESSAGE = "UIContextMessage";
+export const wszINFKEY_FRIENDLYNAME = "FriendlyName";
+export const wszINFKEY_NOTBEFORE = "NotBefore";
+export const wszINFKEY_NOTAFTER = "NotAfter";
+export const wszINFKEY_ATTESTPRIVATEKEY = "AttestPrivateKey";
+export const wszINFKEY_PUBLICKEY = "PublicKey";
+export const wszINFKEY_PUBLICKEYPARAMETERS = "PublicKeyParameters";
+export const wszINFKEY_ECCKEYPARAMETERS = "EccKeyParameters";
+export const wszINFKEY_ECCKEYPARAMETERS_P = "EccKeyParameters_P";
+export const wszINFKEY_ECCKEYPARAMETERS_A = "EccKeyParameters_A";
+export const wszINFKEY_ECCKEYPARAMETERS_B = "EccKeyParameters_B";
+export const wszINFKEY_ECCKEYPARAMETERS_SEED = "EccKeyParameters_Seed";
+export const wszINFKEY_ECCKEYPARAMETERS_BASE = "EccKeyParameters_Base";
+export const wszINFKEY_ECCKEYPARAMETERS_ORDER = "EccKeyParameters_Order";
+export const wszINFKEY_ECCKEYPARAMETERS_COFACTOR = "EccKeyParameters_Cofactor";
+export const wszINFKEY_ECCKEYPARAMETERSTYPE = "EccKeyParametersType";
+export const wszINFKEY_SERIALNUMBER = "SerialNumber";
+export const wszINFKEY_CATHUMBPRINT = "CAThumbprint";
+export const wszINFKEY_CACERTS = "CACerts";
+export const wszINFKEY_CACAPABILITIES = "CACapabilities";
+export const wszINFKEY_CHALLENGEPASSWORD = "ChallengePassword";
+export const wszINFVALUE_REQUESTTYPE_PKCS10 = "PKCS10";
+export const wszINFVALUE_REQUESTTYPE_PKCS7 = "PKCS7";
+export const wszINFVALUE_REQUESTTYPE_CMC = "CMC";
+export const wszINFVALUE_REQUESTTYPE_CERT = "Cert";
+export const wszINFVALUE_REQUESTTYPE_SCEP = "SCEP";
+export const wszINFVALUE_ENDORSEMENTKEY = "EndorsementKey";
+export const wszREGEXITSMTPKEY = "SMTP";
+export const wszREGEXITSMTPTEMPLATES = "Templates";
+export const wszREGEXITSMTPEVENTFILTER = "EventFilter";
+export const wszREGEXITSMTPSERVER = "SMTPServer";
+export const wszREGEXITSMTPAUTHENTICATE = "SMTPAuthenticate";
+export const wszREGEXITDENIEDKEY = "Denied";
+export const wszREGEXITISSUEDKEY = "Issued";
+export const wszREGEXITPENDINGKEY = "Pending";
+export const wszREGEXITREVOKEDKEY = "Revoked";
+export const wszREGEXITCRLISSUEDKEY = "CRLIssued";
+export const wszREGEXITSHUTDOWNKEY = "Shutdown";
+export const wszREGEXITSTARTUPKEY = "Startup";
+export const wszREGEXITIMPORTEDKEY = "Imported";
+export const wszREGEXITSMTPFROM = "From";
+export const wszREGEXITSMTPTO = "To";
+export const wszREGEXITSMTPCC = "Cc";
+export const wszREGEXITTITLEFORMAT = "TitleFormat";
+export const wszREGEXITTITLEARG = "TitleArg";
+export const wszREGEXITBODYFORMAT = "BodyFormat";
+export const wszREGEXITBODYARG = "BodyArg";
+export const wszREGEXITPROPNOTFOUND = "???";
+export const wszREGKEYENROLLMENT = "Software\Microsoft\Cryptography\AutoEnrollment";
+export const wszREGKEYGROUPPOLICYENROLLMENT = "Software\Policies\Microsoft\Cryptography\AutoEnrollment";
+export const wszREGMAXPENDINGREQUESTDAYS = "MaxPendingRequestDays";
+export const wszREGAELOGLEVEL_OLD = "AEEventLogLevel";
+export const wszREGENROLLFLAGS = "EnrollFlags";
+export const wszREGVERIFYFLAGS = "VerifyFlags";
+export const wszREGUNICODE = "Unicode";
+export const wszREGAIKCLOUDCAURL = "AIKCloudCAURL";
+export const wszREGAIKKEYALGORITHM = "AIKKeyAlgorithm";
+export const wszREGAIKKEYLENGTH = "AIKKeyLength";
+export const wszREGPRESERVESCEPDUMMYCERTS = "PreserveSCEPDummyCerts";
+export const wszREGALLPROVIDERS = "All";
+export const TP_MACHINEPOLICY = 1;
+export const wszREGKEYREPAIR = "KeyRepair";
+export const KR_ENABLE_MACHINE = 1;
+export const KR_ENABLE_USER = 2;
+export const wszPROPDISTINGUISHEDNAME = "DistinguishedName";
+export const wszPROPRAWNAME = "RawName";
+export const wszPROPCOUNTRY = "Country";
+export const wszPROPORGANIZATION = "Organization";
+export const wszPROPORGUNIT = "OrgUnit";
+export const wszPROPCOMMONNAME = "CommonName";
+export const wszPROPLOCALITY = "Locality";
+export const wszPROPSTATE = "State";
+export const wszPROPTITLE = "Title";
+export const wszPROPGIVENNAME = "GivenName";
+export const wszPROPINITIALS = "Initials";
+export const wszPROPSURNAME = "SurName";
+export const wszPROPDOMAINCOMPONENT = "DomainComponent";
+export const wszPROPEMAIL = "EMail";
+export const wszPROPSTREETADDRESS = "StreetAddress";
+export const wszPROPUNSTRUCTUREDNAME = "UnstructuredName";
+export const wszPROPUNSTRUCTUREDADDRESS = "UnstructuredAddress";
+export const wszPROPDEVICESERIALNUMBER = "DeviceSerialNumber";
+export const wszPROPSUBJECTDOT = "Subject.";
+export const wszPROPREQUESTDOT = "Request.";
+export const wszPROPREQUESTREQUESTID = "RequestID";
+export const wszPROPREQUESTRAWREQUEST = "RawRequest";
+export const wszPROPREQUESTRAWARCHIVEDKEY = "RawArchivedKey";
+export const wszPROPREQUESTARCHIVEDKEY = "ArchivedKey";
+export const wszPROPREQUESTKEYRECOVERYHASHES = "KeyRecoveryHashes";
+export const wszPROPREQUESTRAWOLDCERTIFICATE = "RawOldCertificate";
+export const wszPROPREQUESTATTRIBUTES = "RequestAttributes";
+export const wszPROPREQUESTTYPE = "RequestType";
+export const wszPROPREQUESTFLAGS = "RequestFlags";
+export const wszPROPREQUESTSTATUSCODE = "StatusCode";
+export const wszPROPREQUESTDISPOSITION = "Disposition";
+export const wszPROPREQUESTDISPOSITIONMESSAGE = "DispositionMessage";
+export const wszPROPREQUESTSUBMITTEDWHEN = "SubmittedWhen";
+export const wszPROPREQUESTRESOLVEDWHEN = "ResolvedWhen";
+export const wszPROPREQUESTREVOKEDWHEN = "RevokedWhen";
+export const wszPROPREQUESTREVOKEDEFFECTIVEWHEN = "RevokedEffectiveWhen";
+export const wszPROPREQUESTREVOKEDREASON = "RevokedReason";
+export const wszPROPREQUESTERNAME = "RequesterName";
+export const wszPROPCALLERNAME = "CallerName";
+export const wszPROPSIGNERPOLICIES = "SignerPolicies";
+export const wszPROPSIGNERAPPLICATIONPOLICIES = "SignerApplicationPolicies";
+export const wszPROPOFFICER = "Officer";
+export const wszPROPPUBLISHEXPIREDCERTINCRL = "PublishExpiredCertInCRL";
+export const wszPROPREQUESTERNAMEFROMOLDCERTIFICATE = "RequesterNameFromOldCertificate";
+export const wszPROPATTESTATIONCHALLENGE = "AttestationChallenge";
+export const wszPROPENDORSEMENTKEYHASH = "EndorsementKeyHash";
+export const wszPROPENDORSEMENTCERTIFICATEHASH = "EndorsementCertificateHash";
+export const wszPROPRAWPRECERTIFICATE = "RawPrecertificate";
+export const wszPROPCHALLENGE = "Challenge";
+export const wszPROPEXPECTEDCHALLENGE = "ExpectedChallenge";
+export const wszPROPDISPOSITION = "Disposition";
+export const wszPROPDISPOSITIONDENY = "Deny";
+export const wszPROPDISPOSITIONPENDING = "Pending";
+export const wszPROPVALIDITYPERIODSTRING = "ValidityPeriod";
+export const wszPROPVALIDITYPERIODCOUNT = "ValidityPeriodUnits";
+export const wszPROPEXPIRATIONDATE = "ExpirationDate";
+export const wszPROPCERTTYPE = "CertType";
+export const wszPROPCERTTEMPLATE = "CertificateTemplate";
+export const wszPROPCERTUSAGE = "CertificateUsage";
+export const wszPROPREQUESTOSVERSION = "RequestOSVersion";
+export const wszPROPREQUESTCSPPROVIDER = "RequestCSPProvider";
+export const wszPROPEXITCERTFILE = "CertFile";
+export const wszPROPCLIENTBROWSERMACHINE = "cbm";
+export const wszPROPCERTCLIENTMACHINE = "ccm";
+export const wszPROPCLIENTDCDNS = "cdc";
+export const wszPROPREQUESTMACHINEDNS = "rmd";
+export const wszPROPSUBJECTALTNAME2 = "san";
+export const wszPROPDNS = "dns";
+export const wszPROPDN = "dn";
+export const wszPROPURL = "url";
+export const wszPROPIPADDRESS = "ipaddress";
+export const wszPROPGUID = "guid";
+export const wszPROPOID = "oid";
+export const wszPROPUPN = "upn";
+export const szPROPASNTAG = "{asn}";
+export const wszPROPCRITICALTAG = "{critical}";
+export const wszPROPUTF8TAG = "{utf8}";
+export const wszPROPOCTETTAG = "{octet}";
+export const wszPROPHEXTAG = "{hex}";
+export const wszPROPTEXTTAG = "{text}";
+export const wszPROPDECIMALTAG = "{decimal}";
+export const wszPROPFILETAG = "{file}";
+export const wszAT_EKCERTINF = "@EKCert";
+export const wszAT_TESTROOT = "@TestRoot";
+export const wszPROPCATYPE = "CAType";
+export const wszPROPSANITIZEDCANAME = "SanitizedCAName";
+export const wszPROPSANITIZEDSHORTNAME = "SanitizedShortName";
+export const wszPROPMACHINEDNSNAME = "MachineDNSName";
+export const wszPROPMODULEREGLOC = "ModuleRegistryLocation";
+export const wszPROPUSEDS = "fUseDS";
+export const wszPROPDELTACRLSDISABLED = "fDeltaCRLsDisabled";
+export const wszPROPSERVERUPGRADED = "fServerUpgraded";
+export const wszPROPCONFIGDN = "ConfigDN";
+export const wszPROPDOMAINDN = "DomainDN";
+export const wszPROPLOGLEVEL = "LogLevel";
+export const wszPROPSESSIONCOUNT = "SessionCount";
+export const wszPROPTEMPLATECHANGESEQUENCENUMBER = "TemplateChangeSequenceNumber";
+export const wszPROPVOLATILEMODE = "VolatileMode";
+export const wszLOCALIZEDTIMEPERIODUNITS = "LocalizedTimePeriodUnits";
+export const wszPROPREQUESTERCAACCESS = "RequesterCAAccess";
+export const wszPROPUSERDN = "UserDN";
+export const wszPROPKEYARCHIVED = "KeyArchived";
+export const wszPROPCERTCOUNT = "CertCount";
+export const wszPROPRAWCACERTIFICATE = "RawCACertificate";
+export const wszPROPCERTSTATE = "CertState";
+export const wszPROPCERTSUFFIX = "CertSuffix";
+export const wszPROPRAWCRL = "RawCRL";
+export const wszPROPRAWDELTACRL = "RawDeltaCRL";
+export const wszPROPCRLINDEX = "CRLIndex";
+export const wszPROPCRLSTATE = "CRLState";
+export const wszPROPCRLSUFFIX = "CRLSuffix";
+export const wszPROPEVENTLOGTERSE = "EventLogTerse";
+export const wszPROPEVENTLOGERROR = "EventLogError";
+export const wszPROPEVENTLOGWARNING = "EventLogWarning";
+export const wszPROPEVENTLOGVERBOSE = "EventLogVerbose";
+export const wszPROPEVENTLOGEXHAUSTIVE = "EventLogExhaustive";
+export const wszPROPDCNAME = "DCName";
+export const wszPROPCROSSFOREST = "CrossForest";
+export const wszPROPREQUESTERSAMNAME = "RequesterSAMName";
+export const wszPROPREQUESTERUPN = "RequesterUPN";
+export const wszPROPREQUESTERDN = "RequesterDN";
+export const wszPROPSEAUDITID = "SEAuditId";
+export const wszPROPSEAUDITFILTER = "SEAuditFilter";
+export const wszPROPCERTIFICATEREQUESTID = "RequestID";
+export const wszPROPRAWCERTIFICATE = "RawCertificate";
+export const wszPROPCERTIFICATEHASH = "CertificateHash";
+export const wszPROPCERTIFICATETEMPLATE = "CertificateTemplate";
+export const wszPROPCERTIFICATEENROLLMENTFLAGS = "EnrollmentFlags";
+export const wszPROPCERTIFICATEGENERALFLAGS = "GeneralFlags";
+export const wszPROPCERTIFICATEPRIVATEKEYFLAGS = "PrivatekeyFlags";
+export const wszPROPCERTIFICATESERIALNUMBER = "SerialNumber";
+export const wszPROPCERTIFICATENOTBEFOREDATE = "NotBefore";
+export const wszPROPCERTIFICATENOTAFTERDATE = "NotAfter";
+export const wszPROPCERTIFICATESUBJECTKEYIDENTIFIER = "SubjectKeyIdentifier";
+export const wszPROPCERTIFICATERAWPUBLICKEY = "RawPublicKey";
+export const wszPROPCERTIFICATEPUBLICKEYLENGTH = "PublicKeyLength";
+export const wszPROPCERTIFICATEPUBLICKEYALGORITHM = "PublicKeyAlgorithm";
+export const wszPROPCERTIFICATERAWPUBLICKEYALGORITHMPARAMETERS = "RawPublicKeyAlgorithmParameters";
+export const wszPROPCERTIFICATEUPN = "UPN";
+export const wszPROPCERTIFICATETYPE = "CertificateType";
+export const wszPROPCERTIFICATERAWSMIMECAPABILITIES = "RawSMIMECapabilities";
+export const wszPROPNAMETYPE = "NameType";
+export const EXTENSION_CRITICAL_FLAG = 1;
+export const EXTENSION_DISABLE_FLAG = 2;
+export const EXTENSION_DELETE_FLAG = 4;
+export const EXTENSION_POLICY_MASK = 65535;
+export const EXTENSION_ORIGIN_REQUEST = 65536;
+export const EXTENSION_ORIGIN_POLICY = 131072;
+export const EXTENSION_ORIGIN_ADMIN = 196608;
+export const EXTENSION_ORIGIN_SERVER = 262144;
+export const EXTENSION_ORIGIN_RENEWALCERT = 327680;
+export const EXTENSION_ORIGIN_IMPORTEDCERT = 393216;
+export const EXTENSION_ORIGIN_PKCS7 = 458752;
+export const EXTENSION_ORIGIN_CMC = 524288;
+export const EXTENSION_ORIGIN_CACERT = 589824;
+export const EXTENSION_ORIGIN_MASK = 983040;
+export const wszPROPEXTREQUESTID = "ExtensionRequestId";
+export const wszPROPEXTNAME = "ExtensionName";
+export const wszPROPEXTFLAGS = "ExtensionFlags";
+export const wszPROPEXTRAWVALUE = "ExtensionRawValue";
+export const wszPROPATTRIBREQUESTID = "AttributeRequestId";
+export const wszPROPATTRIBNAME = "AttributeName";
+export const wszPROPATTRIBVALUE = "AttributeValue";
+export const wszPROPCRLROWID = "CRLRowId";
+export const wszPROPCRLNUMBER = "CRLNumber";
+export const wszPROPCRLMINBASE = "CRLMinBase";
+export const wszPROPCRLNAMEID = "CRLNameId";
+export const wszPROPCRLCOUNT = "CRLCount";
+export const wszPROPCRLTHISUPDATE = "CRLThisUpdate";
+export const wszPROPCRLNEXTUPDATE = "CRLNextUpdate";
+export const wszPROPCRLTHISPUBLISH = "CRLThisPublish";
+export const wszPROPCRLNEXTPUBLISH = "CRLNextPublish";
+export const wszPROPCRLEFFECTIVE = "CRLEffective";
+export const wszPROPCRLPROPAGATIONCOMPLETE = "CRLPropagationComplete";
+export const wszPROPCRLLASTPUBLISHED = "CRLLastPublished";
+export const wszPROPCRLPUBLISHATTEMPTS = "CRLPublishAttempts";
+export const wszPROPCRLPUBLISHFLAGS = "CRLPublishFlags";
+export const wszPROPCRLPUBLISHSTATUSCODE = "CRLPublishStatusCode";
+export const wszPROPCRLPUBLISHERROR = "CRLPublishError";
+export const wszPROPCRLRAWCRL = "CRLRawCRL";
+export const CPF_BASE = 1;
+export const CPF_DELTA = 2;
+export const CPF_COMPLETE = 4;
+export const CPF_SHADOW = 8;
+export const CPF_CASTORE_ERROR = 16;
+export const CPF_BADURL_ERROR = 32;
+export const CPF_MANUAL = 64;
+export const CPF_SIGNATURE_ERROR = 128;
+export const CPF_LDAP_ERROR = 256;
+export const CPF_FILE_ERROR = 512;
+export const CPF_FTP_ERROR = 1024;
+export const CPF_HTTP_ERROR = 2048;
+export const CPF_POSTPONED_BASE_LDAP_ERROR = 4096;
+export const CPF_POSTPONED_BASE_FILE_ERROR = 8192;
+export const PROPTYPE_MASK = 255;
+export const PROPCALLER_SERVER = 256;
+export const PROPCALLER_POLICY = 512;
+export const PROPCALLER_EXIT = 768;
+export const PROPCALLER_ADMIN = 1024;
+export const PROPCALLER_REQUEST = 1280;
+export const PROPCALLER_MASK = 3840;
+export const PROPFLAGS_INDEXED = 65536;
+export const CR_FLG_FORCETELETEX = 1;
+export const CR_FLG_RENEWAL = 2;
+export const CR_FLG_FORCEUTF8 = 4;
+export const CR_FLG_CAXCHGCERT = 8;
+export const CR_FLG_ENROLLONBEHALFOF = 16;
+export const CR_FLG_SUBJECTUNMODIFIED = 32;
+export const CR_FLG_VALIDENCRYPTEDKEYHASH = 64;
+export const CR_FLG_CACROSSCERT = 128;
+export const CR_FLG_ENFORCEUTF8 = 256;
+export const CR_FLG_DEFINEDCACERT = 512;
+export const CR_FLG_CHALLENGEPENDING = 1024;
+export const CR_FLG_CHALLENGESATISFIED = 2048;
+export const CR_FLG_TRUSTONUSE = 4096;
+export const CR_FLG_TRUSTEKCERT = 8192;
+export const CR_FLG_TRUSTEKKEY = 16384;
+export const CR_FLG_PUBLISHERROR = 2147483648;
+export const DB_DISP_ACTIVE = 8;
+export const DB_DISP_PENDING = 9;
+export const DB_DISP_QUEUE_MAX = 9;
+export const DB_DISP_FOREIGN = 12;
+export const DB_DISP_CA_CERT = 15;
+export const DB_DISP_CA_CERT_CHAIN = 16;
+export const DB_DISP_KRA_CERT = 17;
+export const DB_DISP_LOG_MIN = 20;
+export const DB_DISP_ISSUED = 20;
+export const DB_DISP_REVOKED = 21;
+export const DB_DISP_LOG_FAILED_MIN = 30;
+export const DB_DISP_ERROR = 30;
+export const DB_DISP_DENIED = 31;
+export const VR_PENDING = 0;
+export const VR_INSTANT_OK = 1;
+export const VR_INSTANT_BAD = 2;
+export const wszCERT_TYPE = "RequestType";
+export const wszCERT_TYPE_CLIENT = "Client";
+export const wszCERT_TYPE_SERVER = "Server";
+export const wszCERT_TYPE_CODESIGN = "CodeSign";
+export const wszCERT_TYPE_CUSTOMER = "SetCustomer";
+export const wszCERT_TYPE_MERCHANT = "SetMerchant";
+export const wszCERT_TYPE_PAYMENT = "SetPayment";
+export const wszCERT_VERSION = "Version";
+export const wszCERT_VERSION_1 = 1;
+export const wszCERT_VERSION_2 = 2;
+export const wszCERT_VERSION_3 = 3;
+export const CV_OUT_HEXRAW = 12;
+export const CV_OUT_ENCODEMASK = 255;
+export const CV_OUT_NOCRLF = 1073741824;
+export const CV_OUT_NOCR = 2147483648;
+export const CVR_SEEK_NONE = 0;
+export const CVR_SEEK_MASK = 255;
+export const CVR_SEEK_NODELTA = 4096;
+export const CVR_SORT_NONE = 0;
+export const CVR_SORT_ASCEND = 1;
+export const CVR_SORT_DESCEND = 2;
+export const CV_COLUMN_EXTENSION_DEFAULT = "-4";
+export const CV_COLUMN_ATTRIBUTE_DEFAULT = "-5";
+export const CV_COLUMN_CRL_DEFAULT = "-6";
+export const CV_COLUMN_LOG_REVOKED_DEFAULT = "-7";
+export const CVRC_TABLE_MASK = 61440;
+export const CVRC_TABLE_SHIFT = 12;
+export const CRYPT_ENUM_ALL_PROVIDERS = 1;
+export const XEPR_ENUM_FIRST = "-1";
+export const XEPR_DATE = 5;
+export const XEPR_TEMPLATENAME = 6;
+export const XEPR_VERSION = 7;
+export const XEPR_V1TEMPLATENAME = 9;
+export const XEPR_V2TEMPLATEOID = 16;
+export const XEKL_KEYSIZE_DEFAULT = 4;
+export const XECP_STRING_PROPERTY = 1;
+export const XECI_DISABLE = 0;
+export const XECI_XENROLL = 1;
+export const XECI_AUTOENROLL = 2;
+export const XECI_REQWIZARD = 3;
+export const XECI_CERTREQ = 4;
+export const wszCMM_PROP_NAME = "Name";
+export const wszCMM_PROP_DESCRIPTION = "Description";
+export const wszCMM_PROP_COPYRIGHT = "Copyright";
+export const wszCMM_PROP_FILEVER = "File Version";
+export const wszCMM_PROP_PRODUCTVER = "Product Version";
+export const wszCMM_PROP_DISPLAY_HWND = "HWND";
+export const wszCMM_PROP_ISMULTITHREADED = "IsMultiThreaded";
 export const SAFER_TOKEN_NULL_IF_EQUAL = 1;
 export const SAFER_TOKEN_COMPARE_ONLY = 2;
 export const SAFER_TOKEN_MAKE_INERT = 4;
@@ -453,13 +1434,6 @@ export const LOGON_RESOURCE_GROUPS = 512;
 export const SECPKG_CONTEXT_EXPORT_RESET_NEW = 1;
 export const SECPKG_CONTEXT_EXPORT_DELETE_OLD = 2;
 export const SECPKG_CONTEXT_EXPORT_TO_KERNEL = 4;
-export const ASC_REQ_ALLOCATE_MEMORY = 256;
-export const ASC_REQ_CONNECTION = 2048;
-export const ASC_REQ_DELEGATE = 1;
-export const ASC_REQ_EXTENDED_ERROR = 32768;
-export const ASC_REQ_REPLAY_DETECT = 4;
-export const ASC_REQ_SEQUENCE_DETECT = 8;
-export const ASC_REQ_STREAM = 65536;
 export const KERB_TICKET_FLAGS_forwardable = 1073741824;
 export const KERB_TICKET_FLAGS_forwarded = 536870912;
 export const KERB_TICKET_FLAGS_hw_authent = 1048576;
@@ -550,6 +1524,61 @@ export const TRUST_ATTRIBUTE_FOREST_TRANSITIVE = 8;
 export const TRUST_ATTRIBUTE_CROSS_ORGANIZATION = 16;
 export const TRUST_ATTRIBUTE_TREAT_AS_EXTERNAL = 64;
 export const TRUST_ATTRIBUTE_WITHIN_FOREST = 32;
+export const ISC_REQ_MESSAGES = 4294967296;
+export const ISC_REQ_DEFERRED_CRED_VALIDATION = 8589934592;
+export const ISC_REQ_DELEGATE = 1;
+export const ISC_REQ_MUTUAL_AUTH = 2;
+export const ISC_REQ_REPLAY_DETECT = 4;
+export const ISC_REQ_SEQUENCE_DETECT = 8;
+export const ISC_REQ_CONFIDENTIALITY = 16;
+export const ISC_REQ_USE_SESSION_KEY = 32;
+export const ISC_REQ_PROMPT_FOR_CREDS = 64;
+export const ISC_REQ_USE_SUPPLIED_CREDS = 128;
+export const ISC_REQ_ALLOCATE_MEMORY = 256;
+export const ISC_REQ_USE_DCE_STYLE = 512;
+export const ISC_REQ_DATAGRAM = 1024;
+export const ISC_REQ_CONNECTION = 2048;
+export const ISC_REQ_CALL_LEVEL = 4096;
+export const ISC_REQ_FRAGMENT_SUPPLIED = 8192;
+export const ISC_REQ_EXTENDED_ERROR = 16384;
+export const ISC_REQ_STREAM = 32768;
+export const ISC_REQ_INTEGRITY = 65536;
+export const ISC_REQ_IDENTIFY = 131072;
+export const ISC_REQ_NULL_SESSION = 262144;
+export const ISC_REQ_MANUAL_CRED_VALIDATION = 524288;
+export const ISC_REQ_RESERVED1 = 1048576;
+export const ISC_REQ_FRAGMENT_TO_FIT = 2097152;
+export const ISC_REQ_FORWARD_CREDENTIALS = 4194304;
+export const ISC_REQ_NO_INTEGRITY = 8388608;
+export const ISC_REQ_USE_HTTP_STYLE = 16777216;
+export const ISC_REQ_UNVERIFIED_TARGET_NAME = 536870912;
+export const ISC_REQ_CONFIDENTIALITY_ONLY = 1073741824;
+export const ASC_REQ_MESSAGES = 4294967296;
+export const ASC_REQ_DELEGATE = 1;
+export const ASC_REQ_MUTUAL_AUTH = 2;
+export const ASC_REQ_REPLAY_DETECT = 4;
+export const ASC_REQ_SEQUENCE_DETECT = 8;
+export const ASC_REQ_CONFIDENTIALITY = 16;
+export const ASC_REQ_USE_SESSION_KEY = 32;
+export const ASC_REQ_SESSION_TICKET = 64;
+export const ASC_REQ_ALLOCATE_MEMORY = 256;
+export const ASC_REQ_USE_DCE_STYLE = 512;
+export const ASC_REQ_DATAGRAM = 1024;
+export const ASC_REQ_CONNECTION = 2048;
+export const ASC_REQ_CALL_LEVEL = 4096;
+export const ASC_REQ_FRAGMENT_SUPPLIED = 8192;
+export const ASC_REQ_EXTENDED_ERROR = 32768;
+export const ASC_REQ_STREAM = 65536;
+export const ASC_REQ_INTEGRITY = 131072;
+export const ASC_REQ_LICENSING = 262144;
+export const ASC_REQ_IDENTIFY = 524288;
+export const ASC_REQ_ALLOW_NULL_SESSION = 1048576;
+export const ASC_REQ_ALLOW_NON_USER_LOGONS = 2097152;
+export const ASC_REQ_ALLOW_CONTEXT_REPLAY = 4194304;
+export const ASC_REQ_FRAGMENT_TO_FIT = 8388608;
+export const ASC_REQ_NO_TOKEN = 16777216;
+export const ASC_REQ_PROXY_BINDINGS = 67108864;
+export const ASC_REQ_ALLOW_MISSING_BINDINGS = 268435456;
 export const AUTHZ_RM_FLAG_NO_AUDIT = 1;
 export const AUTHZ_RM_FLAG_INITIALIZE_UNDER_IMPERSONATION = 2;
 export const AUTHZ_RM_FLAG_NO_CENTRAL_ACCESS_POLICIES = 4;
@@ -705,7 +1734,7 @@ export const CC_FIRSTCONFIG = 2;
 export const CC_LOCALACTIVECONFIG = 4;
 export const CC_LOCALCONFIG = 3;
 export const CC_UIPICKCONFIG = 1;
-export const CC_UIPICKCONFIGSKIPLOCALCA_ = 5;
+export const CC_UIPICKCONFIGSKIPLOCALCA = 5;
 export const CV_OUT_BASE64 = 1;
 export const CV_OUT_BASE64HEADER = 0;
 export const CV_OUT_BASE64REQUESTHEADER = 3;
@@ -1154,8 +2183,8 @@ export const CRYPT_XML_STATUS_OPENED_TO_ENCODE = 2147483648;
 export const CRYPT_XML_TRANSFORM_ON_STREAM = 1;
 export const CRYPT_XML_TRANSFORM_ON_NODESET = 2;
 export const CRYPT_XML_TRANSFORM_URI_QUERY_STRING = 3;
-export const CRYPT_XML_GROUP_ID_HASH_________ = 1;
-export const CRYPT_XML_GROUP_ID_SIGN_________ = 2;
+export const CRYPT_XML_GROUP_ID_HASH = 1;
+export const CRYPT_XML_GROUP_ID_SIGN = 2;
 export const CERT_SELECT_BY_ENHKEY_USAGE = 1;
 export const CERT_SELECT_BY_KEY_USAGE = 2;
 export const CERT_SELECT_BY_POLICY_OID = 3;
@@ -1310,7 +2339,6 @@ export const SUB_OBJECTS_ONLY_INHERIT = 1;
 export const INHERIT_NO_PROPAGATE = 4;
 export const INHERIT_ONLY = 8;
 export const NO_INHERITANCE = 0;
-export const INHERIT_ONLY_ACE_ = 8;
 export const ATTRIBUTE_SECURITY_INFORMATION = 32;
 export const BACKUP_SECURITY_INFORMATION = 65536;
 export const DACL_SECURITY_INFORMATION = 4;
@@ -1369,9 +2397,190 @@ export const TOKEN_ADJUST_PRIVILEGES = 32;
 export const TOKEN_ADJUST_GROUPS = 64;
 export const TOKEN_ADJUST_DEFAULT = 128;
 export const TOKEN_ADJUST_SESSIONID = 256;
+export const TOKEN_READ = 131080;
+export const TOKEN_WRITE = 131296;
+export const TOKEN_EXECUTE = 131072;
+export const TOKEN_TRUST_CONSTRAINT_MASK = 131096;
+export const TOKEN_ACCESS_PSEUDO_HANDLE_WIN8 = 24;
+export const TOKEN_ACCESS_PSEUDO_HANDLE = 24;
 export const TOKEN_ALL_ACCESS = 983295;
+export const CRED_MAX_CREDENTIAL_BLOB_SIZE = 2560;
+export const CRED_MAX_USERNAME_LENGTH = 513;
+export const CRED_MAX_DOMAIN_TARGET_NAME_LENGTH = 337;
+export const FILE_DEVICE_SMARTCARD = 49;
+export const SCARD_ATR_LENGTH = 33;
+export const SCARD_PROTOCOL_UNDEFINED = 0;
+export const SCARD_PROTOCOL_T0 = 1;
+export const SCARD_PROTOCOL_T1 = 2;
+export const SCARD_PROTOCOL_RAW = 65536;
+export const SCARD_PROTOCOL_DEFAULT = 2147483648;
+export const SCARD_PROTOCOL_OPTIMAL = 0;
+export const SCARD_POWER_DOWN = 0;
+export const SCARD_COLD_RESET = 1;
+export const SCARD_WARM_RESET = 2;
+export const MAXIMUM_ATTR_STRING_LENGTH = 32;
+export const MAXIMUM_SMARTCARD_READERS = 10;
+export const SCARD_CLASS_VENDOR_INFO = 1;
+export const SCARD_CLASS_COMMUNICATIONS = 2;
+export const SCARD_CLASS_PROTOCOL = 3;
+export const SCARD_CLASS_POWER_MGMT = 4;
+export const SCARD_CLASS_SECURITY = 5;
+export const SCARD_CLASS_MECHANICAL = 6;
+export const SCARD_CLASS_VENDOR_DEFINED = 7;
+export const SCARD_CLASS_IFD_PROTOCOL = 8;
+export const SCARD_CLASS_ICC_STATE = 9;
+export const SCARD_CLASS_PERF = 32766;
+export const SCARD_CLASS_SYSTEM = 32767;
+export const SCARD_T0_HEADER_LENGTH = 7;
+export const SCARD_T0_CMD_LENGTH = 5;
+export const SCARD_T1_PROLOGUE_LENGTH = 3;
+export const SCARD_T1_EPILOGUE_LENGTH = 2;
+export const SCARD_T1_EPILOGUE_LENGTH_LRC = 1;
+export const SCARD_T1_MAX_IFS = 254;
+export const SCARD_UNKNOWN = 0;
+export const SCARD_ABSENT = 1;
+export const SCARD_PRESENT = 2;
+export const SCARD_SWALLOWED = 3;
+export const SCARD_POWERED = 4;
+export const SCARD_NEGOTIABLE = 5;
+export const SCARD_SPECIFIC = 6;
+export const SCARD_READER_SWALLOWS = 1;
+export const SCARD_READER_EJECTS = 2;
+export const SCARD_READER_CONFISCATES = 4;
+export const SCARD_READER_CONTACTLESS = 8;
+export const SCARD_READER_TYPE_SERIAL = 1;
+export const SCARD_READER_TYPE_PARALELL = 2;
+export const SCARD_READER_TYPE_KEYBOARD = 4;
+export const SCARD_READER_TYPE_SCSI = 8;
+export const SCARD_READER_TYPE_IDE = 16;
+export const SCARD_READER_TYPE_USB = 32;
+export const SCARD_READER_TYPE_PCMCIA = 64;
+export const SCARD_READER_TYPE_TPM = 128;
+export const SCARD_READER_TYPE_NFC = 256;
+export const SCARD_READER_TYPE_UICC = 512;
+export const SCARD_READER_TYPE_NGC = 1024;
+export const SCARD_READER_TYPE_EMBEDDEDSE = 2048;
+export const SCARD_READER_TYPE_VENDOR = 240;
+export const STATUS_LOGON_FAILURE = 116568633639021;
+export const STATUS_WRONG_PASSWORD = 124265215033450;
+export const STATUS_PASSWORD_EXPIRED = 602552773116017;
+export const STATUS_PASSWORD_MUST_CHANGE = 993978912604708;
+export const STATUS_DOWNGRADE_DETECTED = 1146811028865928;
+export const STATUS_AUTHENTICATION_FIREWALL_FAILED = 125364726662163;
+export const STATUS_ACCOUNT_DISABLED = 120966680150130;
+export const STATUS_ACCOUNT_RESTRICTION = 620144959160430;
+export const STATUS_ACCOUNT_LOCKED_OUT = 443123587088948;
+export const STATUS_ACCOUNT_EXPIRED = 381550935933331;
+export const STATUS_LOGON_TYPE_NOT_GRANTED = 104474005733723;
+export const STATUS_NO_SUCH_LOGON_SESSION = 109971563872351;
+export const STATUS_NO_SUCH_USER = 5980826556577087588n;
+export const CRED_MAX_STRING_LENGTH = 256;
+export const CRED_MAX_GENERIC_TARGET_NAME_LENGTH = 32767;
+export const CRED_MAX_TARGETNAME_NAMESPACE_LENGTH = 256;
+export const CRED_MAX_TARGETNAME_ATTRIBUTE_LENGTH = 256;
+export const CRED_MAX_VALUE_SIZE = 256;
+export const CRED_MAX_ATTRIBUTES = 64;
+export const CRED_SESSION_WILDCARD_NAME_W = "*Session";
+export const CRED_SESSION_WILDCARD_NAME_A = "*Session";
+export const CRED_TARGETNAME_DOMAIN_NAMESPACE_W = "Domain";
+export const CRED_TARGETNAME_DOMAIN_NAMESPACE_A = "Domain";
+export const CRED_TARGETNAME_LEGACYGENERIC_NAMESPACE_W = "LegacyGeneric";
+export const CRED_TARGETNAME_LEGACYGENERIC_NAMESPACE_A = "LegacyGeneric";
+export const CRED_TARGETNAME_ATTRIBUTE_TARGET_W = "target";
+export const CRED_TARGETNAME_ATTRIBUTE_TARGET_A = "target";
+export const CRED_TARGETNAME_ATTRIBUTE_NAME_W = "name";
+export const CRED_TARGETNAME_ATTRIBUTE_NAME_A = "name";
+export const CRED_TARGETNAME_ATTRIBUTE_BATCH_W = "batch";
+export const CRED_TARGETNAME_ATTRIBUTE_BATCH_A = "batch";
+export const CRED_TARGETNAME_ATTRIBUTE_INTERACTIVE_W = "interactive";
+export const CRED_TARGETNAME_ATTRIBUTE_INTERACTIVE_A = "interactive";
+export const CRED_TARGETNAME_ATTRIBUTE_SERVICE_W = "service";
+export const CRED_TARGETNAME_ATTRIBUTE_SERVICE_A = "service";
+export const CRED_TARGETNAME_ATTRIBUTE_NETWORK_W = "network";
+export const CRED_TARGETNAME_ATTRIBUTE_NETWORK_A = "network";
+export const CRED_TARGETNAME_ATTRIBUTE_NETWORKCLEARTEXT_W = "networkcleartext";
+export const CRED_TARGETNAME_ATTRIBUTE_NETWORKCLEARTEXT_A = "networkcleartext";
+export const CRED_TARGETNAME_ATTRIBUTE_REMOTEINTERACTIVE_W = "remoteinteractive";
+export const CRED_TARGETNAME_ATTRIBUTE_REMOTEINTERACTIVE_A = "remoteinteractive";
+export const CRED_TARGETNAME_ATTRIBUTE_CACHEDINTERACTIVE_W = "cachedinteractive";
+export const CRED_TARGETNAME_ATTRIBUTE_CACHEDINTERACTIVE_A = "cachedinteractive";
+export const CRED_SESSION_WILDCARD_NAME = "*Session";
+export const CRED_TARGETNAME_DOMAIN_NAMESPACE = "Domain";
+export const CRED_TARGETNAME_ATTRIBUTE_NAME = "name";
+export const CRED_TARGETNAME_ATTRIBUTE_TARGET = "target";
+export const CRED_TARGETNAME_ATTRIBUTE_BATCH = "batch";
+export const CRED_TARGETNAME_ATTRIBUTE_INTERACTIVE = "interactive";
+export const CRED_TARGETNAME_ATTRIBUTE_SERVICE = "service";
+export const CRED_TARGETNAME_ATTRIBUTE_NETWORK = "network";
+export const CRED_TARGETNAME_ATTRIBUTE_NETWORKCLEARTEXT = "networkcleartext";
+export const CRED_TARGETNAME_ATTRIBUTE_REMOTEINTERACTIVE = "remoteinteractive";
+export const CRED_TARGETNAME_ATTRIBUTE_CACHEDINTERACTIVE = "cachedinteractive";
+export const CRED_LOGON_TYPES_MASK = 61440;
+export const CRED_TI_SERVER_FORMAT_UNKNOWN = 1;
+export const CRED_TI_DOMAIN_FORMAT_UNKNOWN = 2;
+export const CRED_TI_ONLY_PASSWORD_REQUIRED = 4;
+export const CRED_TI_USERNAME_TARGET = 8;
+export const CRED_TI_CREATE_EXPLICIT_CRED = 16;
+export const CRED_TI_WORKGROUP_MEMBER = 32;
+export const CRED_TI_DNSTREE_IS_DFS_SERVER = 64;
+export const CRED_TI_VALID_FLAGS = 61567;
+export const CERT_HASH_LENGTH = 20;
+export const CREDUI_MAX_MESSAGE_LENGTH = 1024;
+export const CREDUI_MAX_CAPTION_LENGTH = 128;
+export const CREDUI_MAX_GENERIC_TARGET_LENGTH = 32767;
+export const CREDUI_MAX_DOMAIN_TARGET_LENGTH = 337;
+export const CREDUI_MAX_USERNAME_LENGTH = 513;
+export const CREDUIWIN_IGNORE_CLOUDAUTHORITY_NAME = 262144;
+export const CREDUIWIN_DOWNLEVEL_HELLO_AS_SMART_CARD = 2147483648;
+export const CRED_PRESERVE_CREDENTIAL_BLOB = 1;
+export const CRED_CACHE_TARGET_INFORMATION = 1;
+export const CRED_ALLOW_NAME_RESOLUTION = 1;
+export const CRED_PROTECT_AS_SELF = 1;
+export const CRED_PROTECT_TO_SYSTEM = 2;
+export const CRED_UNPROTECT_AS_SELF = 1;
+export const CRED_UNPROTECT_ALLOW_TO_SYSTEM = 2;
+export const SCARD_SCOPE_TERMINAL = 1;
+export const SCARD_ALL_READERS = "SCard$AllReaders 00";
+export const SCARD_DEFAULT_READERS = "SCard$DefaultReaders 00";
+export const SCARD_LOCAL_READERS = "SCard$LocalReaders 00";
+export const SCARD_SYSTEM_READERS = "SCard$SystemReaders 00";
+export const SCARD_PROVIDER_PRIMARY = 1;
+export const SCARD_PROVIDER_CSP = 2;
+export const SCARD_PROVIDER_KSP = 3;
+export const SCARD_STATE_UNPOWERED = 1024;
+export const SCARD_SHARE_EXCLUSIVE = 1;
+export const SCARD_SHARE_SHARED = 2;
+export const SCARD_SHARE_DIRECT = 3;
+export const SCARD_LEAVE_CARD = 0;
+export const SCARD_RESET_CARD = 1;
+export const SCARD_UNPOWER_CARD = 2;
+export const SCARD_EJECT_CARD = 3;
+export const SC_DLG_MINIMAL_UI = 1;
+export const SC_DLG_NO_UI = 2;
+export const SC_DLG_FORCE_UI = 4;
+export const SCERR_NOCARDNAME = 16384;
+export const SCERR_NOGUIDS = 32768;
+export const SCARD_AUDIT_CHV_FAILURE = 0;
+export const SCARD_AUDIT_CHV_SUCCESS = 1;
+export const CREDSSP_NAME = "CREDSSP";
+export const TS_SSP_NAME_A = "TSSSP";
+export const TS_SSP_NAME = "TSSSP";
+export const szOID_TS_KP_TS_SERVER_AUTH = "1.3.6.1.4.1.311.54.1.2";
+export const CREDSSP_SERVER_AUTH_NEGOTIATE = 1;
+export const CREDSSP_SERVER_AUTH_CERTIFICATE = 2;
+export const CREDSSP_SERVER_AUTH_LOOPBACK = 4;
+export const SECPKG_ALT_ATTR = 2147483648;
+export const SECPKG_ATTR_C_FULL_IDENT_TOKEN = 2147483781;
+export const CREDSSP_CRED_EX_VERSION = 0;
+export const CREDSSP_FLAG_REDIRECT = 1;
 export const CERT_COMPARE_SHIFT = 16;
 export const BCRYPT_OBJECT_ALIGNMENT = 16;
+export const BCRYPT_KDF_HASH = "HASH";
+export const BCRYPT_KDF_HMAC = "HMAC";
+export const BCRYPT_KDF_TLS_PRF = "TLS_PRF";
+export const BCRYPT_KDF_SP80056A_CONCAT = "SP800_56A_CONCAT";
+export const BCRYPT_KDF_RAW_SECRET = "TRUNCATE";
+export const BCRYPT_KDF_HKDF = "HKDF";
 export const KDF_HASH_ALGORITHM = 0;
 export const KDF_SECRET_PREPEND = 1;
 export const KDF_SECRET_APPEND = 2;
@@ -1397,6 +2606,45 @@ export const KDF_USE_SECRET_AS_HMAC_KEY_FLAG = 1;
 export const BCRYPT_AUTHENTICATED_CIPHER_MODE_INFO_VERSION = 1;
 export const BCRYPT_AUTH_MODE_CHAIN_CALLS_FLAG = 1;
 export const BCRYPT_AUTH_MODE_IN_PROGRESS_FLAG = 2;
+export const BCRYPT_OPAQUE_KEY_BLOB = "OpaqueKeyBlob";
+export const BCRYPT_KEY_DATA_BLOB = "KeyDataBlob";
+export const BCRYPT_AES_WRAP_KEY_BLOB = "Rfc3565KeyWrapBlob";
+export const BCRYPT_OBJECT_LENGTH = "ObjectLength";
+export const BCRYPT_ALGORITHM_NAME = "AlgorithmName";
+export const BCRYPT_PROVIDER_HANDLE = "ProviderHandle";
+export const BCRYPT_CHAINING_MODE = "ChainingMode";
+export const BCRYPT_BLOCK_LENGTH = "BlockLength";
+export const BCRYPT_KEY_LENGTH = "KeyLength";
+export const BCRYPT_KEY_OBJECT_LENGTH = "KeyObjectLength";
+export const BCRYPT_KEY_STRENGTH = "KeyStrength";
+export const BCRYPT_KEY_LENGTHS = "KeyLengths";
+export const BCRYPT_BLOCK_SIZE_LIST = "BlockSizeList";
+export const BCRYPT_EFFECTIVE_KEY_LENGTH = "EffectiveKeyLength";
+export const BCRYPT_HASH_LENGTH = "HashDigestLength";
+export const BCRYPT_HASH_OID_LIST = "HashOIDList";
+export const BCRYPT_PADDING_SCHEMES = "PaddingSchemes";
+export const BCRYPT_SIGNATURE_LENGTH = "SignatureLength";
+export const BCRYPT_HASH_BLOCK_LENGTH = "HashBlockLength";
+export const BCRYPT_AUTH_TAG_LENGTH = "AuthTagLength";
+export const BCRYPT_PRIMITIVE_TYPE = "PrimitiveType";
+export const BCRYPT_IS_KEYED_HASH = "IsKeyedHash";
+export const BCRYPT_IS_REUSABLE_HASH = "IsReusableHash";
+export const BCRYPT_MESSAGE_BLOCK_LENGTH = "MessageBlockLength";
+export const BCRYPT_PUBLIC_KEY_LENGTH = "PublicKeyLength";
+export const BCRYPT_PCP_PLATFORM_TYPE_PROPERTY = "PCP_PLATFORM_TYPE";
+export const BCRYPT_PCP_PROVIDER_VERSION_PROPERTY = "PCP_PROVIDER_VERSION";
+export const BCRYPT_MULTI_OBJECT_LENGTH = "MultiObjectLength";
+export const BCRYPT_IS_IFX_TPM_WEAK_KEY = "IsIfxTpmWeakKey";
+export const BCRYPT_HKDF_HASH_ALGORITHM = "HkdfHashAlgorithm";
+export const BCRYPT_HKDF_SALT_AND_FINALIZE = "HkdfSaltAndFinalize";
+export const BCRYPT_HKDF_PRK_AND_FINALIZE = "HkdfPrkAndFinalize";
+export const BCRYPT_INITIALIZATION_VECTOR = "IV";
+export const BCRYPT_CHAIN_MODE_NA = "ChainingModeN/A";
+export const BCRYPT_CHAIN_MODE_CBC = "ChainingModeCBC";
+export const BCRYPT_CHAIN_MODE_ECB = "ChainingModeECB";
+export const BCRYPT_CHAIN_MODE_CFB = "ChainingModeCFB";
+export const BCRYPT_CHAIN_MODE_CCM = "ChainingModeCCM";
+export const BCRYPT_CHAIN_MODE_GCM = "ChainingModeGCM";
 export const BCRYPT_SUPPORTED_PAD_ROUTER = 1;
 export const BCRYPT_SUPPORTED_PAD_PKCS1_ENC = 2;
 export const BCRYPT_SUPPORTED_PAD_PKCS1_SIG = 4;
@@ -1406,6 +2654,20 @@ export const BCRYPT_BLOCK_PADDING = 1;
 export const BCRYPT_GENERATE_IV = 32;
 export const BCRYPT_PAD_PKCS1_OPTIONAL_HASH_OID = 16;
 export const BCRYPTBUFFER_VERSION = 0;
+export const BCRYPT_PUBLIC_KEY_BLOB = "PUBLICBLOB";
+export const BCRYPT_PRIVATE_KEY_BLOB = "PRIVATEBLOB";
+export const BCRYPT_RSAPUBLIC_BLOB = "RSAPUBLICBLOB";
+export const BCRYPT_RSAPRIVATE_BLOB = "RSAPRIVATEBLOB";
+export const LEGACY_RSAPUBLIC_BLOB = "CAPIPUBLICBLOB";
+export const LEGACY_RSAPRIVATE_BLOB = "CAPIPRIVATEBLOB";
+export const BCRYPT_RSAFULLPRIVATE_BLOB = "RSAFULLPRIVATEBLOB";
+export const BCRYPT_GLOBAL_PARAMETERS = "SecretAgreementParam";
+export const BCRYPT_PRIVATE_KEY = "PrivKeyVal";
+export const BCRYPT_ECCPUBLIC_BLOB = "ECCPUBLICBLOB";
+export const BCRYPT_ECCPRIVATE_BLOB = "ECCPRIVATEBLOB";
+export const BCRYPT_ECCFULLPUBLIC_BLOB = "ECCFULLPUBLICBLOB";
+export const BCRYPT_ECCFULLPRIVATE_BLOB = "ECCFULLPRIVATEBLOB";
+export const SSL_ECCPUBLIC_BLOB = "SSLECCPUBLICBLOB";
 export const BCRYPT_ECDH_PUBLIC_P256_MAGIC = 827016005;
 export const BCRYPT_ECDH_PRIVATE_P256_MAGIC = 843793221;
 export const BCRYPT_ECDH_PUBLIC_P384_MAGIC = 860570437;
@@ -1423,14 +2685,116 @@ export const BCRYPT_ECDSA_PRIVATE_P521_MAGIC = 911426373;
 export const BCRYPT_ECDSA_PUBLIC_GENERIC_MAGIC = 1346650949;
 export const BCRYPT_ECDSA_PRIVATE_GENERIC_MAGIC = 1447314245;
 export const BCRYPT_ECC_FULLKEY_BLOB_V1 = 1;
+export const BCRYPT_DH_PUBLIC_BLOB = "DHPUBLICBLOB";
+export const BCRYPT_DH_PRIVATE_BLOB = "DHPRIVATEBLOB";
+export const LEGACY_DH_PUBLIC_BLOB = "CAPIDHPUBLICBLOB";
+export const LEGACY_DH_PRIVATE_BLOB = "CAPIDHPRIVATEBLOB";
+export const BCRYPT_DH_PARAMETERS = "DHParameters";
 export const BCRYPT_DH_PARAMETERS_MAGIC = 1297107012;
+export const BCRYPT_DSA_PUBLIC_BLOB = "DSAPUBLICBLOB";
+export const BCRYPT_DSA_PRIVATE_BLOB = "DSAPRIVATEBLOB";
+export const LEGACY_DSA_PUBLIC_BLOB = "CAPIDSAPUBLICBLOB";
+export const LEGACY_DSA_PRIVATE_BLOB = "CAPIDSAPRIVATEBLOB";
+export const LEGACY_DSA_V2_PUBLIC_BLOB = "V2CAPIDSAPUBLICBLOB";
+export const LEGACY_DSA_V2_PRIVATE_BLOB = "V2CAPIDSAPRIVATEBLOB";
 export const BCRYPT_DSA_PUBLIC_MAGIC_V2 = 843206724;
 export const BCRYPT_DSA_PRIVATE_MAGIC_V2 = 844517444;
 export const BCRYPT_KEY_DATA_BLOB_MAGIC = 1296188491;
 export const BCRYPT_KEY_DATA_BLOB_VERSION1 = 1;
+export const BCRYPT_DSA_PARAMETERS = "DSAParameters";
 export const BCRYPT_DSA_PARAMETERS_MAGIC = 1297109828;
 export const BCRYPT_DSA_PARAMETERS_MAGIC_V2 = 843927620;
+export const BCRYPT_ECC_PARAMETERS = "ECCParameters";
+export const BCRYPT_ECC_CURVE_NAME = "ECCCurveName";
+export const BCRYPT_ECC_CURVE_NAME_LIST = "ECCCurveNameList";
 export const BCRYPT_ECC_PARAMETERS_MAGIC = 1346585413;
+export const BCRYPT_ECC_CURVE_BRAINPOOLP160R1 = "brainpoolP160r1";
+export const BCRYPT_ECC_CURVE_BRAINPOOLP160T1 = "brainpoolP160t1";
+export const BCRYPT_ECC_CURVE_BRAINPOOLP192R1 = "brainpoolP192r1";
+export const BCRYPT_ECC_CURVE_BRAINPOOLP192T1 = "brainpoolP192t1";
+export const BCRYPT_ECC_CURVE_BRAINPOOLP224R1 = "brainpoolP224r1";
+export const BCRYPT_ECC_CURVE_BRAINPOOLP224T1 = "brainpoolP224t1";
+export const BCRYPT_ECC_CURVE_BRAINPOOLP256R1 = "brainpoolP256r1";
+export const BCRYPT_ECC_CURVE_BRAINPOOLP256T1 = "brainpoolP256t1";
+export const BCRYPT_ECC_CURVE_BRAINPOOLP320R1 = "brainpoolP320r1";
+export const BCRYPT_ECC_CURVE_BRAINPOOLP320T1 = "brainpoolP320t1";
+export const BCRYPT_ECC_CURVE_BRAINPOOLP384R1 = "brainpoolP384r1";
+export const BCRYPT_ECC_CURVE_BRAINPOOLP384T1 = "brainpoolP384t1";
+export const BCRYPT_ECC_CURVE_BRAINPOOLP512R1 = "brainpoolP512r1";
+export const BCRYPT_ECC_CURVE_BRAINPOOLP512T1 = "brainpoolP512t1";
+export const BCRYPT_ECC_CURVE_25519 = "curve25519";
+export const BCRYPT_ECC_CURVE_EC192WAPI = "ec192wapi";
+export const BCRYPT_ECC_CURVE_NISTP192 = "nistP192";
+export const BCRYPT_ECC_CURVE_NISTP224 = "nistP224";
+export const BCRYPT_ECC_CURVE_NISTP256 = "nistP256";
+export const BCRYPT_ECC_CURVE_NISTP384 = "nistP384";
+export const BCRYPT_ECC_CURVE_NISTP521 = "nistP521";
+export const BCRYPT_ECC_CURVE_NUMSP256T1 = "numsP256t1";
+export const BCRYPT_ECC_CURVE_NUMSP384T1 = "numsP384t1";
+export const BCRYPT_ECC_CURVE_NUMSP512T1 = "numsP512t1";
+export const BCRYPT_ECC_CURVE_SECP160K1 = "secP160k1";
+export const BCRYPT_ECC_CURVE_SECP160R1 = "secP160r1";
+export const BCRYPT_ECC_CURVE_SECP160R2 = "secP160r2";
+export const BCRYPT_ECC_CURVE_SECP192K1 = "secP192k1";
+export const BCRYPT_ECC_CURVE_SECP192R1 = "secP192r1";
+export const BCRYPT_ECC_CURVE_SECP224K1 = "secP224k1";
+export const BCRYPT_ECC_CURVE_SECP224R1 = "secP224r1";
+export const BCRYPT_ECC_CURVE_SECP256K1 = "secP256k1";
+export const BCRYPT_ECC_CURVE_SECP256R1 = "secP256r1";
+export const BCRYPT_ECC_CURVE_SECP384R1 = "secP384r1";
+export const BCRYPT_ECC_CURVE_SECP521R1 = "secP521r1";
+export const BCRYPT_ECC_CURVE_WTLS7 = "wtls7";
+export const BCRYPT_ECC_CURVE_WTLS9 = "wtls9";
+export const BCRYPT_ECC_CURVE_WTLS12 = "wtls12";
+export const BCRYPT_ECC_CURVE_X962P192V1 = "x962P192v1";
+export const BCRYPT_ECC_CURVE_X962P192V2 = "x962P192v2";
+export const BCRYPT_ECC_CURVE_X962P192V3 = "x962P192v3";
+export const BCRYPT_ECC_CURVE_X962P239V1 = "x962P239v1";
+export const BCRYPT_ECC_CURVE_X962P239V2 = "x962P239v2";
+export const BCRYPT_ECC_CURVE_X962P239V3 = "x962P239v3";
+export const BCRYPT_ECC_CURVE_X962P256V1 = "x962P256v1";
+export const MS_PRIMITIVE_PROVIDER = "Microsoft Primitive Provider";
+export const MS_PLATFORM_CRYPTO_PROVIDER = "Microsoft Platform Crypto Provider";
+export const BCRYPT_RSA_ALGORITHM = "RSA";
+export const BCRYPT_RSA_SIGN_ALGORITHM = "RSA_SIGN";
+export const BCRYPT_DH_ALGORITHM = "DH";
+export const BCRYPT_DSA_ALGORITHM = "DSA";
+export const BCRYPT_RC2_ALGORITHM = "RC2";
+export const BCRYPT_RC4_ALGORITHM = "RC4";
+export const BCRYPT_AES_ALGORITHM = "AES";
+export const BCRYPT_DES_ALGORITHM = "DES";
+export const BCRYPT_DESX_ALGORITHM = "DESX";
+export const BCRYPT_3DES_ALGORITHM = "3DES";
+export const BCRYPT_3DES_112_ALGORITHM = "3DES_112";
+export const BCRYPT_MD2_ALGORITHM = "MD2";
+export const BCRYPT_MD4_ALGORITHM = "MD4";
+export const BCRYPT_MD5_ALGORITHM = "MD5";
+export const BCRYPT_SHA1_ALGORITHM = "SHA1";
+export const BCRYPT_SHA256_ALGORITHM = "SHA256";
+export const BCRYPT_SHA384_ALGORITHM = "SHA384";
+export const BCRYPT_SHA512_ALGORITHM = "SHA512";
+export const BCRYPT_AES_GMAC_ALGORITHM = "AES-GMAC";
+export const BCRYPT_AES_CMAC_ALGORITHM = "AES-CMAC";
+export const BCRYPT_ECDSA_P256_ALGORITHM = "ECDSA_P256";
+export const BCRYPT_ECDSA_P384_ALGORITHM = "ECDSA_P384";
+export const BCRYPT_ECDSA_P521_ALGORITHM = "ECDSA_P521";
+export const BCRYPT_ECDH_P256_ALGORITHM = "ECDH_P256";
+export const BCRYPT_ECDH_P384_ALGORITHM = "ECDH_P384";
+export const BCRYPT_ECDH_P521_ALGORITHM = "ECDH_P521";
+export const BCRYPT_RNG_ALGORITHM = "RNG";
+export const BCRYPT_RNG_FIPS186_DSA_ALGORITHM = "FIPS186DSARNG";
+export const BCRYPT_RNG_DUAL_EC_ALGORITHM = "DUALECRNG";
+export const BCRYPT_SP800108_CTR_HMAC_ALGORITHM = "SP800_108_CTR_HMAC";
+export const BCRYPT_SP80056A_CONCAT_ALGORITHM = "SP800_56A_CONCAT";
+export const BCRYPT_PBKDF2_ALGORITHM = "PBKDF2";
+export const BCRYPT_CAPI_KDF_ALGORITHM = "CAPI_KDF";
+export const BCRYPT_TLS1_1_KDF_ALGORITHM = "TLS1_1_KDF";
+export const BCRYPT_TLS1_2_KDF_ALGORITHM = "TLS1_2_KDF";
+export const BCRYPT_ECDSA_ALGORITHM = "ECDSA";
+export const BCRYPT_ECDH_ALGORITHM = "ECDH";
+export const BCRYPT_XTS_AES_ALGORITHM = "XTS-AES";
+export const BCRYPT_HKDF_ALGORITHM = "HKDF";
+export const BCRYPT_CHACHA20_POLY1305_ALGORITHM = "CHACHA20_POLY1305";
 export const BCRYPT_KEY_DERIVATION_INTERFACE = 7;
 export const BCRYPT_MD2_ALG_HANDLE = 2216203124737;
 export const BCRYPT_MD4_ALG_HANDLE = 19808389169169;
@@ -1488,7 +2852,7 @@ export const BCRYPT_SP800108_CTR_HMAC_ALG_HANDLE = 951094737896257;
 export const BCRYPT_SP80056A_CONCAT_ALG_HANDLE = 1829604528489297;
 export const BCRYPT_TLS1_1_KDF_ALG_HANDLE = 968686923940705;
 export const BCRYPT_TLS1_2_KDF_ALG_HANDLE = 986279109985137;
-export const BCRYPT_XTS_AES_ALG_HANDLE = 18446735294796399489n;
+export const BCRYPT_XTS_AES_ALG_HANDLE = 8358795549666706305n;
 export const BCRYPT_HKDF_ALG_HANDLE = 1004970807657361;
 export const BCRYPT_CHACHA20_POLY1305_ALG_HANDLE = 1022562993701793;
 export const BCRYPT_CAPI_AES_FLAG = 16;
@@ -1510,6 +2874,35 @@ export const BCRYPT_HASH_INTERFACE_MAJORVERSION_2 = 2;
 export const CRYPT_OVERWRITE = 1;
 export const CRYPT_PRIORITY_TOP = 0;
 export const CRYPT_PRIORITY_BOTTOM = 4294967295;
+export const CRYPT_DEFAULT_CONTEXT = "Default";
+export const wszXMLNS_DIGSIG = "http://www.w3.org/2000/09/xmldsig#";
+export const wszXMLNS_DIGSIG_SignatureProperties = "http://www.w3.org/2000/09/xmldsig#SignatureProperties";
+export const wszXMLNS_DIGSIG_Id = "Id";
+export const wszURI_XMLNS_DIGSIG_BASE64 = "http://www.w3.org/2000/09/xmldsig#base64";
+export const wszURI_XMLNS_DIGSIG_SHA1 = "http://www.w3.org/2000/09/xmldsig#sha1";
+export const wszURI_XMLNS_DIGSIG_SHA256 = "http://www.w3.org/2001/04/xmlenc#sha256";
+export const wszURI_XMLNS_DIGSIG_SHA384 = "http://www.w3.org/2001/04/xmldsig-more#sha384";
+export const wszURI_XMLNS_DIGSIG_SHA512 = "http://www.w3.org/2001/04/xmlenc#sha512";
+export const wszURI_XMLNS_DIGSIG_RSA_SHA1 = "http://www.w3.org/2000/09/xmldsig#rsa-sha1";
+export const wszURI_XMLNS_DIGSIG_DSA_SHA1 = "http://www.w3.org/2000/09/xmldsig#dsa-sha1";
+export const wszURI_XMLNS_DIGSIG_RSA_SHA256 = "http://www.w3.org/2001/04/xmldsig-more#rsa-sha256";
+export const wszURI_XMLNS_DIGSIG_RSA_SHA384 = "http://www.w3.org/2001/04/xmldsig-more#rsa-sha384";
+export const wszURI_XMLNS_DIGSIG_RSA_SHA512 = "http://www.w3.org/2001/04/xmldsig-more#rsa-sha512";
+export const wszURI_XMLNS_DIGSIG_ECDSA_SHA1 = "http://www.w3.org/2001/04/xmldsig-more#ecdsa-sha1";
+export const wszURI_XMLNS_DIGSIG_ECDSA_SHA256 = "http://www.w3.org/2001/04/xmldsig-more#ecdsa-sha256";
+export const wszURI_XMLNS_DIGSIG_ECDSA_SHA384 = "http://www.w3.org/2001/04/xmldsig-more#ecdsa-sha384";
+export const wszURI_XMLNS_DIGSIG_ECDSA_SHA512 = "http://www.w3.org/2001/04/xmldsig-more#ecdsa-sha512";
+export const wszURI_XMLNS_DIGSIG_HMAC_SHA1 = "http://www.w3.org/2000/09/xmldsig#hmac-sha1";
+export const wszURI_XMLNS_DIGSIG_HMAC_SHA256 = "http://www.w3.org/2001/04/xmldsig-more#hmac-sha256";
+export const wszURI_XMLNS_DIGSIG_HMAC_SHA384 = "http://www.w3.org/2001/04/xmldsig-more#hmac-sha384";
+export const wszURI_XMLNS_DIGSIG_HMAC_SHA512 = "http://www.w3.org/2001/04/xmldsig-more#hmac-sha512";
+export const wszURI_CANONICALIZATION_C14N = "http://www.w3.org/TR/2001/REC-xml-c14n-20010315";
+export const wszURI_CANONICALIZATION_C14NC = "http://www.w3.org/TR/2001/REC-xml-c14n-20010315#WithComments";
+export const wszURI_CANONICALIZATION_EXSLUSIVE_C14N = "http://www.w3.org/2001/10/xml-exc-c14n#";
+export const wszURI_CANONICALIZATION_EXSLUSIVE_C14NC = "http://www.w3.org/2001/10/xml-exc-c14n#WithComments";
+export const wszURI_TRANSFORM_XPATH = "http://www.w3.org/TR/1999/REC-xpath-19991116";
+export const wszURI_XMLNS_TRANSFORM_BASE64 = "http://www.w3.org/2000/09/xmldsig#base64";
+export const wszURI_XMLNS_TRANSFORM_ENVELOPED = "http://www.w3.org/2000/09/xmldsig#enveloped-signature";
 export const CRYPT_XML_BLOB_MAX = 2147483640;
 export const CRYPT_XML_ID_MAX = 256;
 export const CRYPT_XML_SIGNATURES_MAX = 16;
@@ -1536,8 +2929,8 @@ export const CRYPT_XML_E_TOO_MANY_SIGNATURES = 657823532575170830n;
 export const CRYPT_XML_E_INVALID_KEYVALUE = 657824632086798607n;
 export const CRYPT_XML_E_UNEXPECTED_XML = 657825731598426384n;
 export const CRYPT_XML_E_SIGNER = 657826831110054161n;
-export const CRYPT_XML_E_NON_UNIQUE_ID = 18446742993525874962n;
-export const CRYPT_XML_E_LAST = 18446742993525874962n;
+export const CRYPT_XML_E_NON_UNIQUE_ID = 7998470060790849810n;
+export const CRYPT_XML_E_LAST = 7998470060790849810n;
 export const CRYPT_XML_FLAG_ALWAYS_RETURN_ENCODED_OBJECT = 1073741824;
 export const CRYPT_XML_FLAG_ENFORCE_ID_NCNAME_FORMAT = 536870912;
 export const CRYPT_XML_FLAG_ENFORCE_ID_NAME_FORMAT = 134217728;
@@ -1546,12 +2939,14 @@ export const CRYPT_XML_STATUS_NO_ERROR = 0;
 export const CRYPT_XML_FLAG_ADD_OBJECT_CREATE_COPY = 1;
 export const CRYPT_XML_FLAG_CREATE_REFERENCE_AS_OBJECT = 1;
 export const CRYPT_XML_DIGEST_REFERENCE_DATA_TRANSFORMED = 1;
-export const CRYPT_XML_GROUP_ID_HASH = 1;
-export const CRYPT_XML_GROUP_ID_SIGN = 2;
 export const CRYPT_XML_ALGORITHM_INFO_FIND_BY_URI = 1;
 export const CRYPT_XML_ALGORITHM_INFO_FIND_BY_NAME = 2;
 export const CRYPT_XML_ALGORITHM_INFO_FIND_BY_CNG_ALGID = 3;
 export const CRYPT_XML_ALGORITHM_INFO_FIND_BY_CNG_SIGN_ALGID = 4;
+export const szFORCE_KEY_PROTECTION = "ForceKeyProtection";
+export const dwFORCE_KEY_PROTECTION_DISABLED = 0;
+export const dwFORCE_KEY_PROTECTION_USER_SELECT = 1;
+export const dwFORCE_KEY_PROTECTION_HIGH = 2;
 export const CRYPTPROTECT_PROMPT_ON_UNPROTECT = 1;
 export const CRYPTPROTECT_PROMPT_ON_PROTECT = 2;
 export const CRYPTPROTECT_PROMPT_RESERVED = 4;
@@ -1572,8 +2967,53 @@ export const CRYPTPROTECTMEMORY_CROSS_PROCESS = 1;
 export const CRYPTPROTECTMEMORY_SAME_LOGON = 2;
 export const NCRYPT_MAX_KEY_NAME_LENGTH = 512;
 export const NCRYPT_MAX_ALG_ID_LENGTH = 512;
+export const MS_KEY_STORAGE_PROVIDER = "Microsoft Software Key Storage Provider";
+export const MS_SMART_CARD_KEY_STORAGE_PROVIDER = "Microsoft Smart Card Key Storage Provider";
+export const MS_PLATFORM_KEY_STORAGE_PROVIDER = "Microsoft Platform Crypto Provider";
+export const MS_NGC_KEY_STORAGE_PROVIDER = "Microsoft Passport Key Storage Provider";
+export const TPM_RSA_SRK_SEAL_KEY = "MICROSOFT_PCP_KSP_RSA_SEAL_KEY_3BD1C4BF-004E-4E2F-8A4D-0BF633DCB074";
+export const NCRYPT_RSA_ALGORITHM = "RSA";
+export const NCRYPT_RSA_SIGN_ALGORITHM = "RSA_SIGN";
+export const NCRYPT_DH_ALGORITHM = "DH";
+export const NCRYPT_DSA_ALGORITHM = "DSA";
+export const NCRYPT_MD2_ALGORITHM = "MD2";
+export const NCRYPT_MD4_ALGORITHM = "MD4";
+export const NCRYPT_MD5_ALGORITHM = "MD5";
+export const NCRYPT_SHA1_ALGORITHM = "SHA1";
+export const NCRYPT_SHA256_ALGORITHM = "SHA256";
+export const NCRYPT_SHA384_ALGORITHM = "SHA384";
+export const NCRYPT_SHA512_ALGORITHM = "SHA512";
+export const NCRYPT_ECDSA_P256_ALGORITHM = "ECDSA_P256";
+export const NCRYPT_ECDSA_P384_ALGORITHM = "ECDSA_P384";
+export const NCRYPT_ECDSA_P521_ALGORITHM = "ECDSA_P521";
+export const NCRYPT_ECDH_P256_ALGORITHM = "ECDH_P256";
+export const NCRYPT_ECDH_P384_ALGORITHM = "ECDH_P384";
+export const NCRYPT_ECDH_P521_ALGORITHM = "ECDH_P521";
+export const NCRYPT_AES_ALGORITHM = "AES";
+export const NCRYPT_RC2_ALGORITHM = "RC2";
+export const NCRYPT_3DES_ALGORITHM = "3DES";
+export const NCRYPT_DES_ALGORITHM = "DES";
+export const NCRYPT_DESX_ALGORITHM = "DESX";
+export const NCRYPT_3DES_112_ALGORITHM = "3DES_112";
+export const NCRYPT_SP800108_CTR_HMAC_ALGORITHM = "SP800_108_CTR_HMAC";
+export const NCRYPT_SP80056A_CONCAT_ALGORITHM = "SP800_56A_CONCAT";
+export const NCRYPT_PBKDF2_ALGORITHM = "PBKDF2";
+export const NCRYPT_CAPI_KDF_ALGORITHM = "CAPI_KDF";
+export const NCRYPT_ECDSA_ALGORITHM = "ECDSA";
+export const NCRYPT_ECDH_ALGORITHM = "ECDH";
+export const NCRYPT_KEY_STORAGE_ALGORITHM = "KEY_STORAGE";
+export const NCRYPT_HMAC_SHA256_ALGORITHM = "HMAC-SHA256";
 export const NCRYPT_KEY_DERIVATION_INTERFACE = 7;
 export const NCRYPT_KEY_PROTECTION_INTERFACE = 65540;
+export const NCRYPT_RSA_ALGORITHM_GROUP = "RSA";
+export const NCRYPT_DH_ALGORITHM_GROUP = "DH";
+export const NCRYPT_DSA_ALGORITHM_GROUP = "DSA";
+export const NCRYPT_ECDSA_ALGORITHM_GROUP = "ECDSA";
+export const NCRYPT_ECDH_ALGORITHM_GROUP = "ECDH";
+export const NCRYPT_AES_ALGORITHM_GROUP = "AES";
+export const NCRYPT_RC2_ALGORITHM_GROUP = "RC2";
+export const NCRYPT_DES_ALGORITHM_GROUP = "DES";
+export const NCRYPT_KEY_DERIVATION_GROUP = "KEY_DERIVATION";
 export const NCRYPTBUFFER_VERSION = 0;
 export const NCRYPTBUFFER_EMPTY = 0;
 export const NCRYPTBUFFER_DATA = 1;
@@ -1647,12 +3087,111 @@ export const NCRYPT_USE_VIRTUAL_ISOLATION_FLAG = 131072;
 export const NCRYPT_USE_PER_BOOT_KEY_FLAG = 262144;
 export const NCRYPT_KEY_DERIVATION_OPERATION = 64;
 export const NCRYPT_AUTHORITY_KEY_FLAG = 256;
+export const NCRYPT_NAME_PROPERTY = "Name";
+export const NCRYPT_UNIQUE_NAME_PROPERTY = "Unique Name";
+export const NCRYPT_ALGORITHM_PROPERTY = "Algorithm Name";
+export const NCRYPT_LENGTH_PROPERTY = "Length";
+export const NCRYPT_LENGTHS_PROPERTY = "Lengths";
+export const NCRYPT_BLOCK_LENGTH_PROPERTY = "Block Length";
+export const NCRYPT_PUBLIC_LENGTH_PROPERTY = "PublicKeyLength";
+export const NCRYPT_SIGNATURE_LENGTH_PROPERTY = "SignatureLength";
+export const NCRYPT_CHAINING_MODE_PROPERTY = "Chaining Mode";
+export const NCRYPT_AUTH_TAG_LENGTH = "AuthTagLength";
+export const NCRYPT_UI_POLICY_PROPERTY = "UI Policy";
+export const NCRYPT_EXPORT_POLICY_PROPERTY = "Export Policy";
+export const NCRYPT_WINDOW_HANDLE_PROPERTY = "HWND Handle";
+export const NCRYPT_USE_CONTEXT_PROPERTY = "Use Context";
+export const NCRYPT_IMPL_TYPE_PROPERTY = "Impl Type";
+export const NCRYPT_KEY_USAGE_PROPERTY = "Key Usage";
+export const NCRYPT_KEY_TYPE_PROPERTY = "Key Type";
+export const NCRYPT_VERSION_PROPERTY = "Version";
+export const NCRYPT_SECURITY_DESCR_SUPPORT_PROPERTY = "Security Descr Support";
+export const NCRYPT_SECURITY_DESCR_PROPERTY = "Security Descr";
+export const NCRYPT_USE_COUNT_ENABLED_PROPERTY = "Enabled Use Count";
+export const NCRYPT_USE_COUNT_PROPERTY = "Use Count";
+export const NCRYPT_LAST_MODIFIED_PROPERTY = "Modified";
+export const NCRYPT_MAX_NAME_LENGTH_PROPERTY = "Max Name Length";
+export const NCRYPT_ALGORITHM_GROUP_PROPERTY = "Algorithm Group";
+export const NCRYPT_DH_PARAMETERS_PROPERTY = "DHParameters";
+export const NCRYPT_ECC_PARAMETERS_PROPERTY = "ECCParameters";
+export const NCRYPT_ECC_CURVE_NAME_PROPERTY = "ECCCurveName";
+export const NCRYPT_ECC_CURVE_NAME_LIST_PROPERTY = "ECCCurveNameList";
+export const NCRYPT_USE_VIRTUAL_ISOLATION_PROPERTY = "Virtual Iso";
+export const NCRYPT_USE_PER_BOOT_KEY_PROPERTY = "Per Boot Key";
+export const NCRYPT_PROVIDER_HANDLE_PROPERTY = "Provider Handle";
+export const NCRYPT_PIN_PROPERTY = "SmartCardPin";
+export const NCRYPT_READER_PROPERTY = "SmartCardReader";
+export const NCRYPT_SMARTCARD_GUID_PROPERTY = "SmartCardGuid";
+export const NCRYPT_CERTIFICATE_PROPERTY = "SmartCardKeyCertificate";
+export const NCRYPT_PIN_PROMPT_PROPERTY = "SmartCardPinPrompt";
+export const NCRYPT_USER_CERTSTORE_PROPERTY = "SmartCardUserCertStore";
+export const NCRYPT_ROOT_CERTSTORE_PROPERTY = "SmartcardRootCertStore";
+export const NCRYPT_SECURE_PIN_PROPERTY = "SmartCardSecurePin";
+export const NCRYPT_ASSOCIATED_ECDH_KEY = "SmartCardAssociatedECDHKey";
+export const NCRYPT_SCARD_PIN_ID = "SmartCardPinId";
+export const NCRYPT_SCARD_PIN_INFO = "SmartCardPinInfo";
+export const NCRYPT_READER_ICON_PROPERTY = "SmartCardReaderIcon";
+export const NCRYPT_KDF_SECRET_VALUE = "KDFKeySecret";
+export const NCRYPT_DISMISS_UI_TIMEOUT_SEC_PROPERTY = "SmartCardDismissUITimeoutSeconds";
+export const NCRYPT_PCP_PLATFORM_TYPE_PROPERTY = "PCP_PLATFORM_TYPE";
+export const NCRYPT_PCP_PROVIDER_VERSION_PROPERTY = "PCP_PROVIDER_VERSION";
+export const NCRYPT_PCP_EKPUB_PROPERTY = "PCP_EKPUB";
+export const NCRYPT_PCP_EKCERT_PROPERTY = "PCP_EKCERT";
+export const NCRYPT_PCP_EKNVCERT_PROPERTY = "PCP_EKNVCERT";
+export const NCRYPT_PCP_RSA_EKPUB_PROPERTY = "PCP_RSA_EKPUB";
+export const NCRYPT_PCP_RSA_EKCERT_PROPERTY = "PCP_RSA_EKCERT";
+export const NCRYPT_PCP_RSA_EKNVCERT_PROPERTY = "PCP_RSA_EKNVCERT";
+export const NCRYPT_PCP_ECC_EKPUB_PROPERTY = "PCP_ECC_EKPUB";
+export const NCRYPT_PCP_ECC_EKCERT_PROPERTY = "PCP_ECC_EKCERT";
+export const NCRYPT_PCP_ECC_EKNVCERT_PROPERTY = "PCP_ECC_EKNVCERT";
+export const NCRYPT_PCP_SRKPUB_PROPERTY = "PCP_SRKPUB";
+export const NCRYPT_PCP_PCRTABLE_PROPERTY = "PCP_PCRTABLE";
+export const NCRYPT_PCP_CHANGEPASSWORD_PROPERTY = "PCP_CHANGEPASSWORD";
+export const NCRYPT_PCP_PASSWORD_REQUIRED_PROPERTY = "PCP_PASSWORD_REQUIRED";
+export const NCRYPT_PCP_USAGEAUTH_PROPERTY = "PCP_USAGEAUTH";
+export const NCRYPT_PCP_MIGRATIONPASSWORD_PROPERTY = "PCP_MIGRATIONPASSWORD";
+export const NCRYPT_PCP_EXPORT_ALLOWED_PROPERTY = "PCP_EXPORT_ALLOWED";
+export const NCRYPT_PCP_STORAGEPARENT_PROPERTY = "PCP_STORAGEPARENT";
+export const NCRYPT_PCP_PROVIDERHANDLE_PROPERTY = "PCP_PROVIDERMHANDLE";
+export const NCRYPT_PCP_PLATFORMHANDLE_PROPERTY = "PCP_PLATFORMHANDLE";
+export const NCRYPT_PCP_PLATFORM_BINDING_PCRMASK_PROPERTY = "PCP_PLATFORM_BINDING_PCRMASK";
+export const NCRYPT_PCP_PLATFORM_BINDING_PCRDIGESTLIST_PROPERTY = "PCP_PLATFORM_BINDING_PCRDIGESTLIST";
+export const NCRYPT_PCP_PLATFORM_BINDING_PCRDIGEST_PROPERTY = "PCP_PLATFORM_BINDING_PCRDIGEST";
+export const NCRYPT_PCP_KEY_USAGE_POLICY_PROPERTY = "PCP_KEY_USAGE_POLICY";
+export const NCRYPT_PCP_RSA_SCHEME_PROPERTY = "PCP_RSA_SCHEME";
+export const NCRYPT_PCP_TPM12_IDBINDING_PROPERTY = "PCP_TPM12_IDBINDING";
+export const NCRYPT_PCP_TPM12_IDBINDING_DYNAMIC_PROPERTY = "PCP_TPM12_IDBINDING_DYNAMIC";
+export const NCRYPT_PCP_TPM12_IDACTIVATION_PROPERTY = "PCP_TPM12_IDACTIVATION";
+export const NCRYPT_PCP_KEYATTESTATION_PROPERTY = "PCP_TPM12_KEYATTESTATION";
+export const NCRYPT_PCP_ALTERNATE_KEY_STORAGE_LOCATION_PROPERTY = "PCP_ALTERNATE_KEY_STORAGE_LOCATION";
+export const NCRYPT_PCP_PLATFORM_BINDING_PCRALGID_PROPERTY = "PCP_PLATFORM_BINDING_PCRALGID";
+export const NCRYPT_PCP_HMAC_AUTH_POLICYREF = "PCP_HMAC_AUTH_POLICYREF";
+export const NCRYPT_PCP_HMAC_AUTH_POLICYINFO = "PCP_HMAC_AUTH_POLICYINFO";
+export const NCRYPT_PCP_HMAC_AUTH_NONCE = "PCP_HMAC_AUTH_NONCE";
+export const NCRYPT_PCP_HMAC_AUTH_SIGNATURE = "PCP_HMAC_AUTH_SIGNATURE";
+export const NCRYPT_PCP_HMAC_AUTH_TICKET = "PCP_HMAC_AUTH_TICKET";
+export const NCRYPT_PCP_NO_DA_PROTECTION_PROPERTY = "PCP_NO_DA_PROTECTION";
+export const NCRYPT_PCP_TPM_MANUFACTURER_ID_PROPERTY = "PCP_TPM_MANUFACTURER_ID";
+export const NCRYPT_PCP_TPM_FW_VERSION_PROPERTY = "PCP_TPM_FW_VERSION";
+export const NCRYPT_PCP_TPM2BNAME_PROPERTY = "PCP_TPM2BNAME";
+export const NCRYPT_PCP_TPM_VERSION_PROPERTY = "PCP_TPM_VERSION";
+export const NCRYPT_PCP_RAW_POLICYDIGEST_PROPERTY = "PCP_RAW_POLICYDIGEST";
+export const NCRYPT_PCP_KEY_CREATIONHASH_PROPERTY = "PCP_KEY_CREATIONHASH";
+export const NCRYPT_PCP_KEY_CREATIONTICKET_PROPERTY = "PCP_KEY_CREATIONTICKET";
+export const NCRYPT_PCP_RSA_SCHEME_HASH_ALG_PROPERTY = "PCP_RSA_SCHEME_HASH_ALG";
+export const NCRYPT_PCP_TPM_IFX_RSA_KEYGEN_PROHIBITED_PROPERTY = "PCP_TPM_IFX_RSA_KEYGEN_PROHIBITED";
+export const NCRYPT_PCP_TPM_IFX_RSA_KEYGEN_VULNERABILITY_PROPERTY = "PCP_TPM_IFX_RSA_KEYGEN_VULNERABILITY";
 export const IFX_RSA_KEYGEN_VUL_NOT_AFFECTED = 0;
 export const IFX_RSA_KEYGEN_VUL_AFFECTED_LEVEL_1 = 1;
 export const IFX_RSA_KEYGEN_VUL_AFFECTED_LEVEL_2 = 2;
+export const NCRYPT_PCP_SESSIONID_PROPERTY = "PCP_SESSIONID";
+export const NCRYPT_PCP_PSS_SALT_SIZE_PROPERTY = "PSS Salt Size";
 export const NCRYPT_TPM_PSS_SALT_SIZE_UNKNOWN = 0;
 export const NCRYPT_TPM_PSS_SALT_SIZE_MAXIMUM = 1;
 export const NCRYPT_TPM_PSS_SALT_SIZE_HASHSIZE = 2;
+export const NCRYPT_PCP_INTERMEDIATE_CA_EKCERT_PROPERTY = "PCP_INTERMEDIATE_CA_EKCERT";
+export const NCRYPT_PCP_PCRTABLE_ALGORITHM_PROPERTY = "PCP_PCRTABLE_ALGORITHM";
+export const NCRYPT_PCP_SYMMETRIC_KEYBITS_PROPERTY = "PCP_SYMMETRIC_KEYBITS";
 export const NCRYPT_TPM_PAD_PSS_IGNORE_SALT = 32;
 export const NCRYPT_TPM12_PROVIDER = 65536;
 export const NCRYPT_PCP_SIGNATURE_KEY = 1;
@@ -1660,6 +3199,11 @@ export const NCRYPT_PCP_ENCRYPTION_KEY = 2;
 export const NCRYPT_PCP_STORAGE_KEY = 4;
 export const NCRYPT_PCP_IDENTITY_KEY = 8;
 export const NCRYPT_PCP_HMACVERIFICATION_KEY = 16;
+export const NCRYPT_SCARD_NGC_KEY_NAME = "SmartCardNgcKeyName";
+export const NCRYPT_INITIALIZATION_VECTOR = "IV";
+export const NCRYPT_CHANGEPASSWORD_PROPERTY = "PCP_CHANGEPASSWORD";
+export const NCRYPT_ALTERNATE_KEY_STORAGE_LOCATION_PROPERTY = "PCP_ALTERNATE_KEY_STORAGE_LOCATION";
+export const NCRYPT_KEY_ACCESS_POLICY_PROPERTY = "Key Access Policy";
 export const NCRYPT_MAX_PROPERTY_NAME = 64;
 export const NCRYPT_MAX_PROPERTY_DATA = 1048576;
 export const NCRYPT_ALLOW_EXPORT_FLAG = 1;
@@ -1680,16 +3224,47 @@ export const NCRYPT_UI_PROTECT_KEY_FLAG = 1;
 export const NCRYPT_UI_FORCE_HIGH_PROTECTION_FLAG = 2;
 export const NCRYPT_UI_FINGERPRINT_PROTECTION_FLAG = 4;
 export const NCRYPT_UI_APPCONTAINER_ACCESS_MEDIUM_FLAG = 8;
+export const NCRYPT_PIN_CACHE_FREE_APPLICATION_TICKET_PROPERTY = "PinCacheFreeApplicationTicket";
+export const NCRYPT_PIN_CACHE_FLAGS_PROPERTY = "PinCacheFlags";
 export const NCRYPT_PIN_CACHE_DISABLE_DPL_FLAG = 1;
+export const NCRYPT_PIN_CACHE_APPLICATION_TICKET_PROPERTY = "PinCacheApplicationTicket";
+export const NCRYPT_PIN_CACHE_APPLICATION_IMAGE_PROPERTY = "PinCacheApplicationImage";
+export const NCRYPT_PIN_CACHE_APPLICATION_STATUS_PROPERTY = "PinCacheApplicationStatus";
+export const NCRYPT_PIN_CACHE_PIN_PROPERTY = "PinCachePin";
+export const NCRYPT_PIN_CACHE_IS_GESTURE_REQUIRED_PROPERTY = "PinCacheIsGestureRequired";
 export const NCRYPT_PIN_CACHE_REQUIRE_GESTURE_FLAG = 1;
 export const NCRYPT_PIN_CACHE_APPLICATION_TICKET_BYTE_LENGTH = 90;
+export const NCRYPT_PIN_CACHE_CLEAR_PROPERTY = "PinCacheClear";
 export const NCRYPT_PIN_CACHE_CLEAR_FOR_CALLING_PROCESS_OPTION = 1;
 export const NCRYPT_KEY_ACCESS_POLICY_VERSION = 1;
 export const NCRYPT_ALLOW_SILENT_KEY_ACCESS = 1;
 export const NCRYPT_CIPHER_KEY_BLOB_MAGIC = 1380470851;
 export const NCRYPT_KDF_KEY_BLOB_MAGIC = 826688587;
 export const NCRYPT_PROTECTED_KEY_BLOB_MAGIC = 1263817296;
+export const NCRYPT_CIPHER_KEY_BLOB = "CipherKeyBlob";
+export const NCRYPT_KDF_KEY_BLOB = "KDFKeyBlob";
+export const NCRYPT_PROTECTED_KEY_BLOB = "ProtectedKeyBlob";
+export const NCRYPT_TPM_LOADABLE_KEY_BLOB = "PcpTpmProtectedKeyBlob";
 export const NCRYPT_TPM_LOADABLE_KEY_BLOB_MAGIC = 1297371211;
+export const NCRYPT_PKCS7_ENVELOPE_BLOB = "PKCS7_ENVELOPE";
+export const NCRYPT_PKCS8_PRIVATE_KEY_BLOB = "PKCS8_PRIVATEKEY";
+export const NCRYPT_OPAQUETRANSPORT_BLOB = "OpaqueTransport";
+export const NCRYPT_ISOLATED_KEY_ENVELOPE_BLOB = "ISOLATED_KEY_ENVELOPE";
+export const NCRYPT_DESCR_DELIMITER_OR = "OR";
+export const NCRYPT_DESCR_DELIMITER_AND = "AND";
+export const NCRYPT_DESCR_EQUAL = "=";
+export const MS_KEY_PROTECTION_PROVIDER = "Microsoft Key Protection Provider";
+export const NCRYPT_KEY_PROTECTION_ALGORITHM_SID = "SID";
+export const NCRYPT_KEY_PROTECTION_ALGORITHM_LOCAL = "LOCAL";
+export const NCRYPT_KEY_PROTECTION_LOCAL_LOGON = "logon";
+export const NCRYPT_KEY_PROTECTION_LOCAL_USER = "user";
+export const NCRYPT_KEY_PROTECTION_LOCAL_MACHINE = "machine";
+export const NCRYPT_KEY_PROTECTION_ALGORITHM_SDDL = "SDDL";
+export const NCRYPT_KEY_PROTECTION_ALGORITHM_WEBCREDENTIALS = "WEBCREDENTIALS";
+export const NCRYPT_KEY_PROTECTION_ALGORITHM_LOCKEDCREDENTIALS = "LOCKEDCREDENTIALS";
+export const NCRYPT_KEY_PROTECTION_ALGORITHM_CERTIFICATE = "CERTIFICATE";
+export const NCRYPT_KEY_PROTECTION_CERT_HASHID = "HashId";
+export const NCRYPT_KEY_PROTECTION_CERT_CERTBLOB = "CertBlob";
 export const NCRYPT_NAMED_DESCRIPTOR_FLAG = 1;
 export const NCRYPT_PROTECTION_INFO_TYPE_DESCRIPTOR_STRING = 1;
 export const ALG_CLASS_ANY = 0;
@@ -1934,11 +3509,300 @@ export const PROV_STT_ACQ = 8;
 export const PROV_STT_BRND = 9;
 export const PROV_STT_ROOT = 10;
 export const PROV_STT_ISS = 11;
+export const MS_DEF_PROV_A = "Microsoft Base Cryptographic Provider v1.0";
+export const MS_DEF_PROV_W = "Microsoft Base Cryptographic Provider v1.0";
+export const MS_DEF_PROV = "Microsoft Base Cryptographic Provider v1.0";
+export const MS_ENHANCED_PROV_A = "Microsoft Enhanced Cryptographic Provider v1.0";
+export const MS_ENHANCED_PROV_W = "Microsoft Enhanced Cryptographic Provider v1.0";
+export const MS_ENHANCED_PROV = "Microsoft Enhanced Cryptographic Provider v1.0";
+export const MS_STRONG_PROV_A = "Microsoft Strong Cryptographic Provider";
+export const MS_STRONG_PROV_W = "Microsoft Strong Cryptographic Provider";
+export const MS_STRONG_PROV = "Microsoft Strong Cryptographic Provider";
+export const MS_DEF_RSA_SIG_PROV_A = "Microsoft RSA Signature Cryptographic Provider";
+export const MS_DEF_RSA_SIG_PROV_W = "Microsoft RSA Signature Cryptographic Provider";
+export const MS_DEF_RSA_SIG_PROV = "Microsoft RSA Signature Cryptographic Provider";
+export const MS_DEF_RSA_SCHANNEL_PROV_A = "Microsoft RSA SChannel Cryptographic Provider";
+export const MS_DEF_RSA_SCHANNEL_PROV_W = "Microsoft RSA SChannel Cryptographic Provider";
+export const MS_DEF_RSA_SCHANNEL_PROV = "Microsoft RSA SChannel Cryptographic Provider";
+export const MS_DEF_DSS_PROV_A = "Microsoft Base DSS Cryptographic Provider";
+export const MS_DEF_DSS_PROV_W = "Microsoft Base DSS Cryptographic Provider";
+export const MS_DEF_DSS_PROV = "Microsoft Base DSS Cryptographic Provider";
+export const MS_DEF_DSS_DH_PROV_A = "Microsoft Base DSS and Diffie-Hellman Cryptographic Provider";
+export const MS_DEF_DSS_DH_PROV_W = "Microsoft Base DSS and Diffie-Hellman Cryptographic Provider";
+export const MS_DEF_DSS_DH_PROV = "Microsoft Base DSS and Diffie-Hellman Cryptographic Provider";
+export const MS_ENH_DSS_DH_PROV_A = "Microsoft Enhanced DSS and Diffie-Hellman Cryptographic Provider";
+export const MS_ENH_DSS_DH_PROV_W = "Microsoft Enhanced DSS and Diffie-Hellman Cryptographic Provider";
+export const MS_ENH_DSS_DH_PROV = "Microsoft Enhanced DSS and Diffie-Hellman Cryptographic Provider";
+export const MS_DEF_DH_SCHANNEL_PROV_A = "Microsoft DH SChannel Cryptographic Provider";
+export const MS_DEF_DH_SCHANNEL_PROV_W = "Microsoft DH SChannel Cryptographic Provider";
+export const MS_DEF_DH_SCHANNEL_PROV = "Microsoft DH SChannel Cryptographic Provider";
+export const MS_SCARD_PROV_A = "Microsoft Base Smart Card Crypto Provider";
+export const MS_SCARD_PROV_W = "Microsoft Base Smart Card Crypto Provider";
+export const MS_SCARD_PROV = "Microsoft Base Smart Card Crypto Provider";
+export const MS_ENH_RSA_AES_PROV_A = "Microsoft Enhanced RSA and AES Cryptographic Provider";
+export const MS_ENH_RSA_AES_PROV_W = "Microsoft Enhanced RSA and AES Cryptographic Provider";
+export const MS_ENH_RSA_AES_PROV_XP_A = "Microsoft Enhanced RSA and AES Cryptographic Provider (Prototype)";
+export const MS_ENH_RSA_AES_PROV_XP_W = "Microsoft Enhanced RSA and AES Cryptographic Provider (Prototype)";
+export const MS_ENH_RSA_AES_PROV_XP = "Microsoft Enhanced RSA and AES Cryptographic Provider (Prototype)";
+export const MS_ENH_RSA_AES_PROV = "Microsoft Enhanced RSA and AES Cryptographic Provider";
 export const MAXUIDLEN = 64;
+export const EXPO_OFFLOAD_REG_VALUE = "ExpoOffload";
+export const EXPO_OFFLOAD_FUNC_NAME = "OffloadModExpo";
+export const szKEY_CRYPTOAPI_PRIVATE_KEY_OPTIONS = "Software\Policies\Microsoft\Cryptography";
+export const szKEY_CACHE_ENABLED = "CachePrivateKeys";
+export const szKEY_CACHE_SECONDS = "PrivateKeyLifetimeSeconds";
+export const szPRIV_KEY_CACHE_MAX_ITEMS = "PrivKeyCacheMaxItems";
+export const cPRIV_KEY_CACHE_MAX_ITEMS_DEFAULT = 20;
+export const szPRIV_KEY_CACHE_PURGE_INTERVAL_SECONDS = "PrivKeyCachePurgeIntervalSeconds";
+export const cPRIV_KEY_CACHE_PURGE_INTERVAL_SECONDS_DEFAULT = 86400;
 export const CUR_BLOB_VERSION = 2;
 export const SCHANNEL_MAC_KEY = 0;
 export const SCHANNEL_ENC_KEY = 1;
 export const INTERNATIONAL_USAGE = 1;
+export const szOID_RSA = "1.2.840.113549";
+export const szOID_PKCS = "1.2.840.113549.1";
+export const szOID_RSA_HASH = "1.2.840.113549.2";
+export const szOID_RSA_ENCRYPT = "1.2.840.113549.3";
+export const szOID_PKCS_1 = "1.2.840.113549.1.1";
+export const szOID_PKCS_2 = "1.2.840.113549.1.2";
+export const szOID_PKCS_3 = "1.2.840.113549.1.3";
+export const szOID_PKCS_4 = "1.2.840.113549.1.4";
+export const szOID_PKCS_5 = "1.2.840.113549.1.5";
+export const szOID_PKCS_6 = "1.2.840.113549.1.6";
+export const szOID_PKCS_7 = "1.2.840.113549.1.7";
+export const szOID_PKCS_8 = "1.2.840.113549.1.8";
+export const szOID_PKCS_9 = "1.2.840.113549.1.9";
+export const szOID_PKCS_10 = "1.2.840.113549.1.10";
+export const szOID_PKCS_12 = "1.2.840.113549.1.12";
+export const szOID_RSA_RSA = "1.2.840.113549.1.1.1";
+export const szOID_RSA_MD2RSA = "1.2.840.113549.1.1.2";
+export const szOID_RSA_MD4RSA = "1.2.840.113549.1.1.3";
+export const szOID_RSA_MD5RSA = "1.2.840.113549.1.1.4";
+export const szOID_RSA_SHA1RSA = "1.2.840.113549.1.1.5";
+export const szOID_RSA_SETOAEP_RSA = "1.2.840.113549.1.1.6";
+export const szOID_RSAES_OAEP = "1.2.840.113549.1.1.7";
+export const szOID_RSA_MGF1 = "1.2.840.113549.1.1.8";
+export const szOID_RSA_PSPECIFIED = "1.2.840.113549.1.1.9";
+export const szOID_RSA_SSA_PSS = "1.2.840.113549.1.1.10";
+export const szOID_RSA_SHA256RSA = "1.2.840.113549.1.1.11";
+export const szOID_RSA_SHA384RSA = "1.2.840.113549.1.1.12";
+export const szOID_RSA_SHA512RSA = "1.2.840.113549.1.1.13";
+export const szOID_RSA_DH = "1.2.840.113549.1.3.1";
+export const szOID_RSA_data = "1.2.840.113549.1.7.1";
+export const szOID_RSA_signedData = "1.2.840.113549.1.7.2";
+export const szOID_RSA_envelopedData = "1.2.840.113549.1.7.3";
+export const szOID_RSA_signEnvData = "1.2.840.113549.1.7.4";
+export const szOID_RSA_digestedData = "1.2.840.113549.1.7.5";
+export const szOID_RSA_hashedData = "1.2.840.113549.1.7.5";
+export const szOID_RSA_encryptedData = "1.2.840.113549.1.7.6";
+export const szOID_RSA_emailAddr = "1.2.840.113549.1.9.1";
+export const szOID_RSA_unstructName = "1.2.840.113549.1.9.2";
+export const szOID_RSA_contentType = "1.2.840.113549.1.9.3";
+export const szOID_RSA_messageDigest = "1.2.840.113549.1.9.4";
+export const szOID_RSA_signingTime = "1.2.840.113549.1.9.5";
+export const szOID_RSA_counterSign = "1.2.840.113549.1.9.6";
+export const szOID_RSA_challengePwd = "1.2.840.113549.1.9.7";
+export const szOID_RSA_unstructAddr = "1.2.840.113549.1.9.8";
+export const szOID_RSA_extCertAttrs = "1.2.840.113549.1.9.9";
+export const szOID_RSA_certExtensions = "1.2.840.113549.1.9.14";
+export const szOID_RSA_SMIMECapabilities = "1.2.840.113549.1.9.15";
+export const szOID_RSA_preferSignedData = "1.2.840.113549.1.9.15.1";
+export const szOID_TIMESTAMP_TOKEN = "1.2.840.113549.1.9.16.1.4";
+export const szOID_RFC3161_counterSign = "1.3.6.1.4.1.311.3.3.1";
+export const szOID_RSA_SMIMEalg = "1.2.840.113549.1.9.16.3";
+export const szOID_RSA_SMIMEalgESDH = "1.2.840.113549.1.9.16.3.5";
+export const szOID_RSA_SMIMEalgCMS3DESwrap = "1.2.840.113549.1.9.16.3.6";
+export const szOID_RSA_SMIMEalgCMSRC2wrap = "1.2.840.113549.1.9.16.3.7";
+export const szOID_RSA_MD2 = "1.2.840.113549.2.2";
+export const szOID_RSA_MD4 = "1.2.840.113549.2.4";
+export const szOID_RSA_MD5 = "1.2.840.113549.2.5";
+export const szOID_RSA_RC2CBC = "1.2.840.113549.3.2";
+export const szOID_RSA_RC4 = "1.2.840.113549.3.4";
+export const szOID_RSA_DES_EDE3_CBC = "1.2.840.113549.3.7";
+export const szOID_RSA_RC5_CBCPad = "1.2.840.113549.3.9";
+export const szOID_ANSI_X942 = "1.2.840.10046";
+export const szOID_ANSI_X942_DH = "1.2.840.10046.2.1";
+export const szOID_X957 = "1.2.840.10040";
+export const szOID_X957_DSA = "1.2.840.10040.4.1";
+export const szOID_X957_SHA1DSA = "1.2.840.10040.4.3";
+export const szOID_ECC_PUBLIC_KEY = "1.2.840.10045.2.1";
+export const szOID_ECC_CURVE_P256 = "1.2.840.10045.3.1.7";
+export const szOID_ECC_CURVE_P384 = "1.3.132.0.34";
+export const szOID_ECC_CURVE_P521 = "1.3.132.0.35";
+export const szOID_ECC_CURVE_BRAINPOOLP160R1 = "1.3.36.3.3.2.8.1.1.1";
+export const szOID_ECC_CURVE_BRAINPOOLP160T1 = "1.3.36.3.3.2.8.1.1.2";
+export const szOID_ECC_CURVE_BRAINPOOLP192R1 = "1.3.36.3.3.2.8.1.1.3";
+export const szOID_ECC_CURVE_BRAINPOOLP192T1 = "1.3.36.3.3.2.8.1.1.4";
+export const szOID_ECC_CURVE_BRAINPOOLP224R1 = "1.3.36.3.3.2.8.1.1.5";
+export const szOID_ECC_CURVE_BRAINPOOLP224T1 = "1.3.36.3.3.2.8.1.1.6";
+export const szOID_ECC_CURVE_BRAINPOOLP256R1 = "1.3.36.3.3.2.8.1.1.7";
+export const szOID_ECC_CURVE_BRAINPOOLP256T1 = "1.3.36.3.3.2.8.1.1.8";
+export const szOID_ECC_CURVE_BRAINPOOLP320R1 = "1.3.36.3.3.2.8.1.1.9";
+export const szOID_ECC_CURVE_BRAINPOOLP320T1 = "1.3.36.3.3.2.8.1.1.10";
+export const szOID_ECC_CURVE_BRAINPOOLP384R1 = "1.3.36.3.3.2.8.1.1.11";
+export const szOID_ECC_CURVE_BRAINPOOLP384T1 = "1.3.36.3.3.2.8.1.1.12";
+export const szOID_ECC_CURVE_BRAINPOOLP512R1 = "1.3.36.3.3.2.8.1.1.13";
+export const szOID_ECC_CURVE_BRAINPOOLP512T1 = "1.3.36.3.3.2.8.1.1.14";
+export const szOID_ECC_CURVE_EC192WAPI = "1.2.156.11235.1.1.2.1";
+export const szOID_CN_ECDSA_SHA256 = "1.2.156.11235.1.1.1";
+export const szOID_ECC_CURVE_NISTP192 = "1.2.840.10045.3.1.1";
+export const szOID_ECC_CURVE_NISTP224 = "1.3.132.0.33";
+export const szOID_ECC_CURVE_NISTP256 = "1.2.840.10045.3.1.7";
+export const szOID_ECC_CURVE_NISTP384 = "1.3.132.0.34";
+export const szOID_ECC_CURVE_NISTP521 = "1.3.132.0.35";
+export const szOID_ECC_CURVE_SECP160K1 = "1.3.132.0.9";
+export const szOID_ECC_CURVE_SECP160R1 = "1.3.132.0.8";
+export const szOID_ECC_CURVE_SECP160R2 = "1.3.132.0.30";
+export const szOID_ECC_CURVE_SECP192K1 = "1.3.132.0.31";
+export const szOID_ECC_CURVE_SECP192R1 = "1.2.840.10045.3.1.1";
+export const szOID_ECC_CURVE_SECP224K1 = "1.3.132.0.32";
+export const szOID_ECC_CURVE_SECP224R1 = "1.3.132.0.33";
+export const szOID_ECC_CURVE_SECP256K1 = "1.3.132.0.10";
+export const szOID_ECC_CURVE_SECP256R1 = "1.2.840.10045.3.1.7";
+export const szOID_ECC_CURVE_SECP384R1 = "1.3.132.0.34";
+export const szOID_ECC_CURVE_SECP521R1 = "1.3.132.0.35";
+export const szOID_ECC_CURVE_WTLS7 = "1.3.132.0.30";
+export const szOID_ECC_CURVE_WTLS9 = "2.23.43.1.4.9";
+export const szOID_ECC_CURVE_WTLS12 = "1.3.132.0.33";
+export const szOID_ECC_CURVE_X962P192V1 = "1.2.840.10045.3.1.1";
+export const szOID_ECC_CURVE_X962P192V2 = "1.2.840.10045.3.1.2";
+export const szOID_ECC_CURVE_X962P192V3 = "1.2.840.10045.3.1.3";
+export const szOID_ECC_CURVE_X962P239V1 = "1.2.840.10045.3.1.4";
+export const szOID_ECC_CURVE_X962P239V2 = "1.2.840.10045.3.1.5";
+export const szOID_ECC_CURVE_X962P239V3 = "1.2.840.10045.3.1.6";
+export const szOID_ECC_CURVE_X962P256V1 = "1.2.840.10045.3.1.7";
+export const szOID_ECDSA_SHA1 = "1.2.840.10045.4.1";
+export const szOID_ECDSA_SPECIFIED = "1.2.840.10045.4.3";
+export const szOID_ECDSA_SHA256 = "1.2.840.10045.4.3.2";
+export const szOID_ECDSA_SHA384 = "1.2.840.10045.4.3.3";
+export const szOID_ECDSA_SHA512 = "1.2.840.10045.4.3.4";
+export const szOID_NIST_AES128_CBC = "2.16.840.1.101.3.4.1.2";
+export const szOID_NIST_AES192_CBC = "2.16.840.1.101.3.4.1.22";
+export const szOID_NIST_AES256_CBC = "2.16.840.1.101.3.4.1.42";
+export const szOID_NIST_AES128_WRAP = "2.16.840.1.101.3.4.1.5";
+export const szOID_NIST_AES192_WRAP = "2.16.840.1.101.3.4.1.25";
+export const szOID_NIST_AES256_WRAP = "2.16.840.1.101.3.4.1.45";
+export const szOID_DH_SINGLE_PASS_STDDH_SHA1_KDF = "1.3.133.16.840.63.0.2";
+export const szOID_DH_SINGLE_PASS_STDDH_SHA256_KDF = "1.3.132.1.11.1";
+export const szOID_DH_SINGLE_PASS_STDDH_SHA384_KDF = "1.3.132.1.11.2";
+export const szOID_DS = "2.5";
+export const szOID_DSALG = "2.5.8";
+export const szOID_DSALG_CRPT = "2.5.8.1";
+export const szOID_DSALG_HASH = "2.5.8.2";
+export const szOID_DSALG_SIGN = "2.5.8.3";
+export const szOID_DSALG_RSA = "2.5.8.1.1";
+export const szOID_OIW = "1.3.14";
+export const szOID_OIWSEC = "1.3.14.3.2";
+export const szOID_OIWSEC_md4RSA = "1.3.14.3.2.2";
+export const szOID_OIWSEC_md5RSA = "1.3.14.3.2.3";
+export const szOID_OIWSEC_md4RSA2 = "1.3.14.3.2.4";
+export const szOID_OIWSEC_desECB = "1.3.14.3.2.6";
+export const szOID_OIWSEC_desCBC = "1.3.14.3.2.7";
+export const szOID_OIWSEC_desOFB = "1.3.14.3.2.8";
+export const szOID_OIWSEC_desCFB = "1.3.14.3.2.9";
+export const szOID_OIWSEC_desMAC = "1.3.14.3.2.10";
+export const szOID_OIWSEC_rsaSign = "1.3.14.3.2.11";
+export const szOID_OIWSEC_dsa = "1.3.14.3.2.12";
+export const szOID_OIWSEC_shaDSA = "1.3.14.3.2.13";
+export const szOID_OIWSEC_mdc2RSA = "1.3.14.3.2.14";
+export const szOID_OIWSEC_shaRSA = "1.3.14.3.2.15";
+export const szOID_OIWSEC_dhCommMod = "1.3.14.3.2.16";
+export const szOID_OIWSEC_desEDE = "1.3.14.3.2.17";
+export const szOID_OIWSEC_sha = "1.3.14.3.2.18";
+export const szOID_OIWSEC_mdc2 = "1.3.14.3.2.19";
+export const szOID_OIWSEC_dsaComm = "1.3.14.3.2.20";
+export const szOID_OIWSEC_dsaCommSHA = "1.3.14.3.2.21";
+export const szOID_OIWSEC_rsaXchg = "1.3.14.3.2.22";
+export const szOID_OIWSEC_keyHashSeal = "1.3.14.3.2.23";
+export const szOID_OIWSEC_md2RSASign = "1.3.14.3.2.24";
+export const szOID_OIWSEC_md5RSASign = "1.3.14.3.2.25";
+export const szOID_OIWSEC_sha1 = "1.3.14.3.2.26";
+export const szOID_OIWSEC_dsaSHA1 = "1.3.14.3.2.27";
+export const szOID_OIWSEC_dsaCommSHA1 = "1.3.14.3.2.28";
+export const szOID_OIWSEC_sha1RSASign = "1.3.14.3.2.29";
+export const szOID_OIWDIR = "1.3.14.7.2";
+export const szOID_OIWDIR_CRPT = "1.3.14.7.2.1";
+export const szOID_OIWDIR_HASH = "1.3.14.7.2.2";
+export const szOID_OIWDIR_SIGN = "1.3.14.7.2.3";
+export const szOID_OIWDIR_md2 = "1.3.14.7.2.2.1";
+export const szOID_OIWDIR_md2RSA = "1.3.14.7.2.3.1";
+export const szOID_INFOSEC = "2.16.840.1.101.2.1";
+export const szOID_INFOSEC_sdnsSignature = "2.16.840.1.101.2.1.1.1";
+export const szOID_INFOSEC_mosaicSignature = "2.16.840.1.101.2.1.1.2";
+export const szOID_INFOSEC_sdnsConfidentiality = "2.16.840.1.101.2.1.1.3";
+export const szOID_INFOSEC_mosaicConfidentiality = "2.16.840.1.101.2.1.1.4";
+export const szOID_INFOSEC_sdnsIntegrity = "2.16.840.1.101.2.1.1.5";
+export const szOID_INFOSEC_mosaicIntegrity = "2.16.840.1.101.2.1.1.6";
+export const szOID_INFOSEC_sdnsTokenProtection = "2.16.840.1.101.2.1.1.7";
+export const szOID_INFOSEC_mosaicTokenProtection = "2.16.840.1.101.2.1.1.8";
+export const szOID_INFOSEC_sdnsKeyManagement = "2.16.840.1.101.2.1.1.9";
+export const szOID_INFOSEC_mosaicKeyManagement = "2.16.840.1.101.2.1.1.10";
+export const szOID_INFOSEC_sdnsKMandSig = "2.16.840.1.101.2.1.1.11";
+export const szOID_INFOSEC_mosaicKMandSig = "2.16.840.1.101.2.1.1.12";
+export const szOID_INFOSEC_SuiteASignature = "2.16.840.1.101.2.1.1.13";
+export const szOID_INFOSEC_SuiteAConfidentiality = "2.16.840.1.101.2.1.1.14";
+export const szOID_INFOSEC_SuiteAIntegrity = "2.16.840.1.101.2.1.1.15";
+export const szOID_INFOSEC_SuiteATokenProtection = "2.16.840.1.101.2.1.1.16";
+export const szOID_INFOSEC_SuiteAKeyManagement = "2.16.840.1.101.2.1.1.17";
+export const szOID_INFOSEC_SuiteAKMandSig = "2.16.840.1.101.2.1.1.18";
+export const szOID_INFOSEC_mosaicUpdatedSig = "2.16.840.1.101.2.1.1.19";
+export const szOID_INFOSEC_mosaicKMandUpdSig = "2.16.840.1.101.2.1.1.20";
+export const szOID_INFOSEC_mosaicUpdatedInteg = "2.16.840.1.101.2.1.1.21";
+export const szOID_NIST_sha256 = "2.16.840.1.101.3.4.2.1";
+export const szOID_NIST_sha384 = "2.16.840.1.101.3.4.2.2";
+export const szOID_NIST_sha512 = "2.16.840.1.101.3.4.2.3";
+export const szOID_COMMON_NAME = "2.5.4.3";
+export const szOID_SUR_NAME = "2.5.4.4";
+export const szOID_DEVICE_SERIAL_NUMBER = "2.5.4.5";
+export const szOID_COUNTRY_NAME = "2.5.4.6";
+export const szOID_LOCALITY_NAME = "2.5.4.7";
+export const szOID_STATE_OR_PROVINCE_NAME = "2.5.4.8";
+export const szOID_STREET_ADDRESS = "2.5.4.9";
+export const szOID_ORGANIZATION_NAME = "2.5.4.10";
+export const szOID_ORGANIZATIONAL_UNIT_NAME = "2.5.4.11";
+export const szOID_TITLE = "2.5.4.12";
+export const szOID_DESCRIPTION = "2.5.4.13";
+export const szOID_SEARCH_GUIDE = "2.5.4.14";
+export const szOID_BUSINESS_CATEGORY = "2.5.4.15";
+export const szOID_POSTAL_ADDRESS = "2.5.4.16";
+export const szOID_POSTAL_CODE = "2.5.4.17";
+export const szOID_POST_OFFICE_BOX = "2.5.4.18";
+export const szOID_PHYSICAL_DELIVERY_OFFICE_NAME = "2.5.4.19";
+export const szOID_TELEPHONE_NUMBER = "2.5.4.20";
+export const szOID_TELEX_NUMBER = "2.5.4.21";
+export const szOID_TELETEXT_TERMINAL_IDENTIFIER = "2.5.4.22";
+export const szOID_FACSIMILE_TELEPHONE_NUMBER = "2.5.4.23";
+export const szOID_X21_ADDRESS = "2.5.4.24";
+export const szOID_INTERNATIONAL_ISDN_NUMBER = "2.5.4.25";
+export const szOID_REGISTERED_ADDRESS = "2.5.4.26";
+export const szOID_DESTINATION_INDICATOR = "2.5.4.27";
+export const szOID_PREFERRED_DELIVERY_METHOD = "2.5.4.28";
+export const szOID_PRESENTATION_ADDRESS = "2.5.4.29";
+export const szOID_SUPPORTED_APPLICATION_CONTEXT = "2.5.4.30";
+export const szOID_MEMBER = "2.5.4.31";
+export const szOID_OWNER = "2.5.4.32";
+export const szOID_ROLE_OCCUPANT = "2.5.4.33";
+export const szOID_SEE_ALSO = "2.5.4.34";
+export const szOID_USER_PASSWORD = "2.5.4.35";
+export const szOID_USER_CERTIFICATE = "2.5.4.36";
+export const szOID_CA_CERTIFICATE = "2.5.4.37";
+export const szOID_AUTHORITY_REVOCATION_LIST = "2.5.4.38";
+export const szOID_CERTIFICATE_REVOCATION_LIST = "2.5.4.39";
+export const szOID_CROSS_CERTIFICATE_PAIR = "2.5.4.40";
+export const szOID_GIVEN_NAME = "2.5.4.42";
+export const szOID_INITIALS = "2.5.4.43";
+export const szOID_DN_QUALIFIER = "2.5.4.46";
+export const szOID_DOMAIN_COMPONENT = "0.9.2342.19200300.100.1.25";
+export const szOID_PKCS_12_FRIENDLY_NAME_ATTR = "1.2.840.113549.1.9.20";
+export const szOID_PKCS_12_LOCAL_KEY_ID = "1.2.840.113549.1.9.21";
+export const szOID_PKCS_12_KEY_PROVIDER_NAME_ATTR = "1.3.6.1.4.1.311.17.1";
+export const szOID_LOCAL_MACHINE_KEYSET = "1.3.6.1.4.1.311.17.2";
+export const szOID_PKCS_12_EXTENDED_ATTRIBUTES = "1.3.6.1.4.1.311.17.3";
+export const szOID_PKCS_12_PROTECTED_PASSWORD_SECRET_BAG_TYPE_ID = "1.3.6.1.4.1.311.17.4";
+export const szOID_KEYID_RDN = "1.3.6.1.4.1.311.10.7.1";
+export const szOID_EV_RDN_LOCALE = "1.3.6.1.4.1.311.60.2.1.1";
+export const szOID_EV_RDN_STATE_OR_PROVINCE = "1.3.6.1.4.1.311.60.2.1.2";
+export const szOID_EV_RDN_COUNTRY = "1.3.6.1.4.1.311.60.2.1.3";
 export const CERT_RDN_TYPE_MASK = 255;
 export const CERT_RDN_FLAGS_MASK = 4278190080;
 export const CERT_RDN_ENABLE_T61_UNICODE_FLAG = 2147483648;
@@ -1947,6 +3811,9 @@ export const CERT_RDN_FORCE_UTF8_UNICODE_FLAG = 268435456;
 export const CERT_RDN_DISABLE_CHECK_TYPE_FLAG = 1073741824;
 export const CERT_RDN_DISABLE_IE4_UTF8_FLAG = 16777216;
 export const CERT_RDN_ENABLE_PUNYCODE_FLAG = 33554432;
+export const CERT_RSA_PUBLIC_KEY_OBJID = "1.2.840.113549.1.1.1";
+export const CERT_DEFAULT_OID_PUBLIC_KEY_SIGN = "1.2.840.113549.1.1.1";
+export const CERT_DEFAULT_OID_PUBLIC_KEY_XCHG = "1.2.840.113549.1.1.1";
 export const CRYPT_ECC_PRIVATE_KEY_INFO_v1 = 1;
 export const CERT_V1 = 0;
 export const CERT_V2 = 1;
@@ -2000,9 +3867,293 @@ export const CRYPT_UNICODE_NAME_DECODE_DISABLE_IE4_UTF8_FLAG = 16777216;
 export const CRYPT_DECODE_ENABLE_PUNYCODE_FLAG = 33554432;
 export const CRYPT_DECODE_ENABLE_UTF8PERCENT_FLAG = 67108864;
 export const CRYPT_ENCODE_DECODE_NONE = 0;
+export const X509_CERT = 2216203124737;
+export const X509_CERT_TO_BE_SIGNED = 4415226380290;
+export const X509_CERT_CRL_TO_BE_SIGNED = 5514738008067;
+export const X509_CERT_REQUEST_TO_BE_SIGNED = 1518001159355236356n;
+export const X509_EXTENSIONS = 6614249635845;
+export const X509_NAME_VALUE = 7713761263622;
+export const X509_NAME = 290488781625098247n;
+export const X509_PUBLIC_KEY_INFO = 16509854285832;
+export const X509_AUTHORITY_KEY_ID = 13211319402505;
+export const X509_KEY_ATTRIBUTES = 12111807774730;
+export const X509_KEY_USAGE_RESTRICTION = 1147907319267339;
+export const X509_ALTERNATE_NAME = 14310831030284;
+export const X509_BASIC_CONSTRAINTS = 15410342658061;
+export const X509_KEY_USAGE = 11012296146958;
+export const X509_BASIC_CONSTRAINTS2 = 1806231535506948111n;
+export const X509_CERT_POLICIES = 70385924046864;
+export const PKCS_UTC_TIME = 19808389169169;
+export const PKCS_TIME_REQUEST = 20907900796946;
+export const RSA_CSP_PUBLICKEYBLOB = 28604482191379;
+export const X509_UNICODE_NAME = 23106924052500;
+export const X509_KEYGEN_REQUEST_TO_BE_SIGNED = 24206435680277;
+export const PKCS_ATTRIBUTE = 25305947308054;
+export const PKCS_CONTENT_INFO_SEQUENCE_OF_ANY = 26405458935831;
+export const X509_UNICODE_NAME_VALUE = 33002528702488;
+export const X509_ANY_STRING = 6;
+export const X509_UNICODE_ANY_STRING = 24;
+export const X509_OCTET_STRING = 4785091783950361;
+export const X509_BITS = 29703993819162;
+export const X509_INTEGER = 30803505446939;
+export const X509_MULTI_BYTE_INTEGER = 31903017074716;
+export const X509_ENUMERATED = 39599598469149;
+export const X509_CHOICE_OF_TIME = 34102040330270;
+export const X509_AUTHORITY_KEY_ID2 = 54992761258015;
+export const X509_AUTHORITY_INFO_ACCESS = 36301063585824;
+export const X509_SUBJECT_INFO_ACCESS = 32;
+export const X509_CRL_REASON_CODE = 29;
+export const PKCS_CONTENT_INFO = 37400575213601;
+export const X509_SEQUENCE_OF_ANY = 38500086841378;
+export const X509_CRL_DIST_POINTS = 17609365913635;
+export const X509_ENHANCED_KEY_USAGE = 40699110096932;
+export const PKCS_CTL = 41798621724709;
+export const X509_MULTI_BYTE_UINT = 42898133352486;
+export const X509_DSS_PUBLICKEY = 38;
+export const X509_DSS_PARAMETERS = 43997644980263;
+export const X509_DSS_SIGNATURE = 45097156608040;
+export const PKCS_RC2_CBC_PARAMETERS = 46196668235817;
+export const PKCS_SMIME_CAPABILITIES = 47296179863594;
+export const X509_QC_STATEMENTS_EXT = 47296179863594;
+export const PKCS_RSA_PRIVATE_KEY = 48395691491371;
+export const PKCS_PRIVATE_KEY_INFO = 49495203119148;
+export const PKCS_ENCRYPTED_PRIVATE_KEY_INFO = 1099528807645229;
+export const X509_PKIX_POLICY_QUALIFIER_USERNOTICE = 51694226374702;
+export const X509_DH_PUBLICKEY = 38;
+export const X509_DH_PARAMETERS = 53893249630255;
+export const PKCS_ATTRIBUTES = 2305843026393563184n;
+export const PKCS_SORTED_CTL = 57191784513585;
+export const X509_ECC_SIGNATURE = 53893249630255;
+export const X942_DH_PARAMETERS = 56092272885810;
+export const X509_BITS_WITHOUT_TRAILING_ZEROES = 109968342646835;
+export const X942_OTHER_INFO = 58291296141364;
+export const X509_CERT_PAIR = 59390807769141;
+export const X509_ISSUING_DIST_POINT = 60490319396918;
+export const X509_NAME_CONSTRAINTS = 61589831024695;
+export const X509_POLICY_MAPPINGS = 62689342652472;
+export const X509_POLICY_CONSTRAINTS = 63788854280249;
+export const X509_CROSS_CERT_DIST_POINTS = 64888365908026;
+export const CMC_DATA = 65987877535803;
+export const CMC_RESPONSE = 648519531752325180n;
+export const CMC_STATUS = 68186900791357;
+export const CMC_ADD_EXTENSIONS = 90177133346878;
+export const CMC_ADD_ATTRIBUTES = 18410715293870456895n;
+export const X509_CERTIFICATE_TEMPLATE = 140754668224576;
+export const OCSP_SIGNED_REQUEST = 72584947302465;
+export const OCSP_REQUEST = 73684458930242;
+export const OCSP_RESPONSE = 74783970558019;
+export const OCSP_BASIC_SIGNED_RESPONSE = 75883482185796;
+export const OCSP_BASIC_RESPONSE = 76982993813573;
+export const X509_LOGOTYPE_EXT = 78082505441350;
+export const X509_BIOMETRIC_EXT = 3315714752583;
+export const CNG_RSA_PUBLIC_KEY_BLOB = 83580063580232;
+export const X509_OBJECT_IDENTIFIER = 81381040324681;
+export const X509_ALGORITHM_IDENTIFIER = 82480551952458;
+export const PKCS_RSA_SSA_PSS_PARAMETERS = 84679575208011;
+export const PKCS_RSAES_OAEP_PARAMETERS = 92376156602444;
+export const ECC_CMS_SHARED_INFO = 85779086835789;
+export const TIMESTAMP_REQUEST = 86878598463566;
+export const TIMESTAMP_RESPONSE = 98973226369103;
+export const TIMESTAMP_INFO = 52793738002512;
+export const X509_CERT_BUNDLE = 102271761252433;
+export const X509_ECC_PRIVATE_KEY = 91276644974674;
+export const CNG_RSA_PRIVATE_KEY_BLOB = 93475668230227;
+export const X509_SUBJECT_DIR_ATTRS = 175939040313428;
+export const X509_ECC_PARAMETERS = 95674691485781;
+export const PKCS7_SIGNER_INFO = 551972017013236;
+export const CMS_SIGNER_INFO = 553071528641013;
+export const szOID_AUTHORITY_KEY_IDENTIFIER = "2.5.29.1";
+export const szOID_KEY_ATTRIBUTES = "2.5.29.2";
+export const szOID_CERT_POLICIES_95 = "2.5.29.3";
+export const szOID_KEY_USAGE_RESTRICTION = "2.5.29.4";
+export const szOID_SUBJECT_ALT_NAME = "2.5.29.7";
+export const szOID_ISSUER_ALT_NAME = "2.5.29.8";
+export const szOID_BASIC_CONSTRAINTS = "2.5.29.10";
+export const szOID_KEY_USAGE = "2.5.29.15";
+export const szOID_PRIVATEKEY_USAGE_PERIOD = "2.5.29.16";
+export const szOID_BASIC_CONSTRAINTS2 = "2.5.29.19";
+export const szOID_CERT_POLICIES = "2.5.29.32";
+export const szOID_ANY_CERT_POLICY = "2.5.29.32.0";
+export const szOID_INHIBIT_ANY_POLICY = "2.5.29.54";
+export const szOID_AUTHORITY_KEY_IDENTIFIER2 = "2.5.29.35";
+export const szOID_SUBJECT_KEY_IDENTIFIER = "2.5.29.14";
+export const szOID_SUBJECT_ALT_NAME2 = "2.5.29.17";
+export const szOID_ISSUER_ALT_NAME2 = "2.5.29.18";
+export const szOID_CRL_REASON_CODE = "2.5.29.21";
+export const szOID_REASON_CODE_HOLD = "2.5.29.23";
+export const szOID_CRL_DIST_POINTS = "2.5.29.31";
+export const szOID_ENHANCED_KEY_USAGE = "2.5.29.37";
+export const szOID_ANY_ENHANCED_KEY_USAGE = "2.5.29.37.0";
+export const szOID_CRL_NUMBER = "2.5.29.20";
+export const szOID_DELTA_CRL_INDICATOR = "2.5.29.27";
+export const szOID_ISSUING_DIST_POINT = "2.5.29.28";
+export const szOID_FRESHEST_CRL = "2.5.29.46";
+export const szOID_NAME_CONSTRAINTS = "2.5.29.30";
+export const szOID_POLICY_MAPPINGS = "2.5.29.33";
+export const szOID_LEGACY_POLICY_MAPPINGS = "2.5.29.5";
+export const szOID_POLICY_CONSTRAINTS = "2.5.29.36";
+export const szOID_RENEWAL_CERTIFICATE = "1.3.6.1.4.1.311.13.1";
+export const szOID_ENROLLMENT_NAME_VALUE_PAIR = "1.3.6.1.4.1.311.13.2.1";
+export const szOID_ENROLLMENT_CSP_PROVIDER = "1.3.6.1.4.1.311.13.2.2";
+export const szOID_OS_VERSION = "1.3.6.1.4.1.311.13.2.3";
+export const szOID_ENROLLMENT_AGENT = "1.3.6.1.4.1.311.20.2.1";
+export const szOID_PKIX = "1.3.6.1.5.5.7";
+export const szOID_PKIX_PE = "1.3.6.1.5.5.7.1";
+export const szOID_AUTHORITY_INFO_ACCESS = "1.3.6.1.5.5.7.1.1";
+export const szOID_SUBJECT_INFO_ACCESS = "1.3.6.1.5.5.7.1.11";
+export const szOID_BIOMETRIC_EXT = "1.3.6.1.5.5.7.1.2";
+export const szOID_QC_STATEMENTS_EXT = "1.3.6.1.5.5.7.1.3";
+export const szOID_LOGOTYPE_EXT = "1.3.6.1.5.5.7.1.12";
+export const szOID_TLS_FEATURES_EXT = "1.3.6.1.5.5.7.1.24";
+export const szOID_CERT_EXTENSIONS = "1.3.6.1.4.1.311.2.1.14";
+export const szOID_NEXT_UPDATE_LOCATION = "1.3.6.1.4.1.311.10.2";
+export const szOID_REMOVE_CERTIFICATE = "1.3.6.1.4.1.311.10.8.1";
+export const szOID_CROSS_CERT_DIST_POINTS = "1.3.6.1.4.1.311.10.9.1";
+export const szOID_CTL = "1.3.6.1.4.1.311.10.1";
+export const szOID_SORTED_CTL = "1.3.6.1.4.1.311.10.1.1";
+export const szOID_SERIALIZED = "1.3.6.1.4.1.311.10.3.3.1";
+export const szOID_NT_PRINCIPAL_NAME = "1.3.6.1.4.1.311.20.2.3";
+export const szOID_INTERNATIONALIZED_EMAIL_ADDRESS = "1.3.6.1.4.1.311.20.2.4";
+export const szOID_PRODUCT_UPDATE = "1.3.6.1.4.1.311.31.1";
+export const szOID_ANY_APPLICATION_POLICY = "1.3.6.1.4.1.311.10.12.1";
+export const szOID_AUTO_ENROLL_CTL_USAGE = "1.3.6.1.4.1.311.20.1";
+export const szOID_ENROLL_CERTTYPE_EXTENSION = "1.3.6.1.4.1.311.20.2";
+export const szOID_CERT_MANIFOLD = "1.3.6.1.4.1.311.20.3";
+export const szOID_CERTSRV_CA_VERSION = "1.3.6.1.4.1.311.21.1";
+export const szOID_CERTSRV_PREVIOUS_CERT_HASH = "1.3.6.1.4.1.311.21.2";
+export const szOID_CRL_VIRTUAL_BASE = "1.3.6.1.4.1.311.21.3";
+export const szOID_CRL_NEXT_PUBLISH = "1.3.6.1.4.1.311.21.4";
+export const szOID_KP_CA_EXCHANGE = "1.3.6.1.4.1.311.21.5";
+export const szOID_KP_PRIVACY_CA = "1.3.6.1.4.1.311.21.36";
+export const szOID_KP_KEY_RECOVERY_AGENT = "1.3.6.1.4.1.311.21.6";
+export const szOID_CERTIFICATE_TEMPLATE = "1.3.6.1.4.1.311.21.7";
+export const szOID_ENTERPRISE_OID_ROOT = "1.3.6.1.4.1.311.21.8";
+export const szOID_RDN_DUMMY_SIGNER = "1.3.6.1.4.1.311.21.9";
+export const szOID_APPLICATION_CERT_POLICIES = "1.3.6.1.4.1.311.21.10";
+export const szOID_APPLICATION_POLICY_MAPPINGS = "1.3.6.1.4.1.311.21.11";
+export const szOID_APPLICATION_POLICY_CONSTRAINTS = "1.3.6.1.4.1.311.21.12";
+export const szOID_ARCHIVED_KEY_ATTR = "1.3.6.1.4.1.311.21.13";
+export const szOID_CRL_SELF_CDP = "1.3.6.1.4.1.311.21.14";
+export const szOID_REQUIRE_CERT_CHAIN_POLICY = "1.3.6.1.4.1.311.21.15";
+export const szOID_ARCHIVED_KEY_CERT_HASH = "1.3.6.1.4.1.311.21.16";
+export const szOID_ISSUED_CERT_HASH = "1.3.6.1.4.1.311.21.17";
+export const szOID_DS_EMAIL_REPLICATION = "1.3.6.1.4.1.311.21.19";
+export const szOID_REQUEST_CLIENT_INFO = "1.3.6.1.4.1.311.21.20";
+export const szOID_ENCRYPTED_KEY_HASH = "1.3.6.1.4.1.311.21.21";
+export const szOID_CERTSRV_CROSSCA_VERSION = "1.3.6.1.4.1.311.21.22";
+export const szOID_NTDS_REPLICATION = "1.3.6.1.4.1.311.25.1";
+export const szOID_SUBJECT_DIR_ATTRS = "2.5.29.9";
+export const szOID_PKIX_KP = "1.3.6.1.5.5.7.3";
+export const szOID_PKIX_KP_SERVER_AUTH = "1.3.6.1.5.5.7.3.1";
+export const szOID_PKIX_KP_CLIENT_AUTH = "1.3.6.1.5.5.7.3.2";
+export const szOID_PKIX_KP_CODE_SIGNING = "1.3.6.1.5.5.7.3.3";
+export const szOID_PKIX_KP_EMAIL_PROTECTION = "1.3.6.1.5.5.7.3.4";
+export const szOID_PKIX_KP_IPSEC_END_SYSTEM = "1.3.6.1.5.5.7.3.5";
+export const szOID_PKIX_KP_IPSEC_TUNNEL = "1.3.6.1.5.5.7.3.6";
+export const szOID_PKIX_KP_IPSEC_USER = "1.3.6.1.5.5.7.3.7";
+export const szOID_PKIX_KP_TIMESTAMP_SIGNING = "1.3.6.1.5.5.7.3.8";
+export const szOID_PKIX_KP_OCSP_SIGNING = "1.3.6.1.5.5.7.3.9";
+export const szOID_PKIX_OCSP_NOCHECK = "1.3.6.1.5.5.7.48.1.5";
+export const szOID_PKIX_OCSP_NONCE = "1.3.6.1.5.5.7.48.1.2";
+export const szOID_IPSEC_KP_IKE_INTERMEDIATE = "1.3.6.1.5.5.8.2.2";
+export const szOID_PKINIT_KP_KDC = "1.3.6.1.5.2.3.5";
+export const szOID_KP_CTL_USAGE_SIGNING = "1.3.6.1.4.1.311.10.3.1";
+export const szOID_KP_TIME_STAMP_SIGNING = "1.3.6.1.4.1.311.10.3.2";
+export const szOID_SERVER_GATED_CRYPTO = "1.3.6.1.4.1.311.10.3.3";
+export const szOID_SGC_NETSCAPE = "2.16.840.1.113730.4.1";
+export const szOID_KP_EFS = "1.3.6.1.4.1.311.10.3.4";
+export const szOID_EFS_RECOVERY = "1.3.6.1.4.1.311.10.3.4.1";
+export const szOID_WHQL_CRYPTO = "1.3.6.1.4.1.311.10.3.5";
+export const szOID_ATTEST_WHQL_CRYPTO = "1.3.6.1.4.1.311.10.3.5.1";
+export const szOID_NT5_CRYPTO = "1.3.6.1.4.1.311.10.3.6";
+export const szOID_OEM_WHQL_CRYPTO = "1.3.6.1.4.1.311.10.3.7";
+export const szOID_EMBEDDED_NT_CRYPTO = "1.3.6.1.4.1.311.10.3.8";
+export const szOID_ROOT_LIST_SIGNER = "1.3.6.1.4.1.311.10.3.9";
+export const szOID_KP_QUALIFIED_SUBORDINATION = "1.3.6.1.4.1.311.10.3.10";
+export const szOID_KP_KEY_RECOVERY = "1.3.6.1.4.1.311.10.3.11";
+export const szOID_KP_DOCUMENT_SIGNING = "1.3.6.1.4.1.311.10.3.12";
+export const szOID_KP_LIFETIME_SIGNING = "1.3.6.1.4.1.311.10.3.13";
+export const szOID_KP_MOBILE_DEVICE_SOFTWARE = "1.3.6.1.4.1.311.10.3.14";
+export const szOID_KP_SMART_DISPLAY = "1.3.6.1.4.1.311.10.3.15";
+export const szOID_KP_CSP_SIGNATURE = "1.3.6.1.4.1.311.10.3.16";
+export const szOID_KP_FLIGHT_SIGNING = "1.3.6.1.4.1.311.10.3.27";
+export const szOID_PLATFORM_MANIFEST_BINARY_ID = "1.3.6.1.4.1.311.10.3.28";
+export const szOID_DRM = "1.3.6.1.4.1.311.10.5.1";
+export const szOID_DRM_INDIVIDUALIZATION = "1.3.6.1.4.1.311.10.5.2";
+export const szOID_LICENSES = "1.3.6.1.4.1.311.10.6.1";
+export const szOID_LICENSE_SERVER = "1.3.6.1.4.1.311.10.6.2";
+export const szOID_KP_SMARTCARD_LOGON = "1.3.6.1.4.1.311.20.2.2";
+export const szOID_KP_KERNEL_MODE_CODE_SIGNING = "1.3.6.1.4.1.311.61.1.1";
+export const szOID_KP_KERNEL_MODE_TRUSTED_BOOT_SIGNING = "1.3.6.1.4.1.311.61.4.1";
+export const szOID_REVOKED_LIST_SIGNER = "1.3.6.1.4.1.311.10.3.19";
+export const szOID_WINDOWS_KITS_SIGNER = "1.3.6.1.4.1.311.10.3.20";
+export const szOID_WINDOWS_RT_SIGNER = "1.3.6.1.4.1.311.10.3.21";
+export const szOID_PROTECTED_PROCESS_LIGHT_SIGNER = "1.3.6.1.4.1.311.10.3.22";
+export const szOID_WINDOWS_TCB_SIGNER = "1.3.6.1.4.1.311.10.3.23";
+export const szOID_PROTECTED_PROCESS_SIGNER = "1.3.6.1.4.1.311.10.3.24";
+export const szOID_WINDOWS_THIRD_PARTY_COMPONENT_SIGNER = "1.3.6.1.4.1.311.10.3.25";
+export const szOID_WINDOWS_SOFTWARE_EXTENSION_SIGNER = "1.3.6.1.4.1.311.10.3.26";
+export const szOID_DISALLOWED_LIST = "1.3.6.1.4.1.311.10.3.30";
+export const szOID_PIN_RULES_SIGNER = "1.3.6.1.4.1.311.10.3.31";
+export const szOID_PIN_RULES_CTL = "1.3.6.1.4.1.311.10.3.32";
+export const szOID_PIN_RULES_EXT = "1.3.6.1.4.1.311.10.3.33";
+export const szOID_PIN_RULES_DOMAIN_NAME = "1.3.6.1.4.1.311.10.3.34";
+export const szOID_PIN_RULES_LOG_END_DATE_EXT = "1.3.6.1.4.1.311.10.3.35";
+export const szOID_IUM_SIGNING = "1.3.6.1.4.1.311.10.3.37";
+export const szOID_EV_WHQL_CRYPTO = "1.3.6.1.4.1.311.10.3.39";
+export const szOID_BIOMETRIC_SIGNING = "1.3.6.1.4.1.311.10.3.41";
+export const szOID_ENCLAVE_SIGNING = "1.3.6.1.4.1.311.10.3.42";
+export const szOID_SYNC_ROOT_CTL_EXT = "1.3.6.1.4.1.311.10.3.50";
+export const szOID_HPKP_DOMAIN_NAME_CTL = "1.3.6.1.4.1.311.10.3.60";
+export const szOID_HPKP_HEADER_VALUE_CTL = "1.3.6.1.4.1.311.10.3.61";
+export const szOID_KP_KERNEL_MODE_HAL_EXTENSION_SIGNING = "1.3.6.1.4.1.311.61.5.1";
+export const szOID_WINDOWS_STORE_SIGNER = "1.3.6.1.4.1.311.76.3.1";
+export const szOID_DYNAMIC_CODE_GEN_SIGNER = "1.3.6.1.4.1.311.76.5.1";
+export const szOID_MICROSOFT_PUBLISHER_SIGNER = "1.3.6.1.4.1.311.76.8.1";
+export const szOID_YESNO_TRUST_ATTR = "1.3.6.1.4.1.311.10.4.1";
+export const szOID_SITE_PIN_RULES_INDEX_ATTR = "1.3.6.1.4.1.311.10.4.2";
+export const szOID_SITE_PIN_RULES_FLAGS_ATTR = "1.3.6.1.4.1.311.10.4.3";
 export const SITE_PIN_RULES_ALL_SUBDOMAINS_FLAG = 1;
+export const szOID_PKIX_POLICY_QUALIFIER_CPS = "1.3.6.1.5.5.7.2.1";
+export const szOID_PKIX_POLICY_QUALIFIER_USERNOTICE = "1.3.6.1.5.5.7.2.2";
+export const szOID_ROOT_PROGRAM_FLAGS = "1.3.6.1.4.1.311.60.1.1";
 export const CERT_ROOT_PROGRAM_FLAG_OU = 16;
 export const CERT_ROOT_PROGRAM_FLAG_ADDRESS = 8;
+export const szOID_CERT_POLICIES_95_QUALIFIER1 = "2.16.840.1.113733.1.7.1.1";
+export const szOID_RDN_TPM_MANUFACTURER = "2.23.133.2.1";
+export const szOID_RDN_TPM_MODEL = "2.23.133.2.2";
+export const szOID_RDN_TPM_VERSION = "2.23.133.2.3";
+export const szOID_RDN_TCG_PLATFORM_MANUFACTURER = "2.23.133.2.4";
+export const szOID_RDN_TCG_PLATFORM_MODEL = "2.23.133.2.5";
+export const szOID_RDN_TCG_PLATFORM_VERSION = "2.23.133.2.6";
+export const szOID_CT_CERT_SCTLIST = "1.3.6.1.4.1.11129.2.4.2";
+export const szOID_ENROLL_EK_INFO = "1.3.6.1.4.1.311.21.23";
+export const szOID_ENROLL_AIK_INFO = "1.3.6.1.4.1.311.21.39";
+export const szOID_ENROLL_ATTESTATION_STATEMENT = "1.3.6.1.4.1.311.21.24";
+export const szOID_ENROLL_KSP_NAME = "1.3.6.1.4.1.311.21.25";
+export const szOID_ENROLL_EKPUB_CHALLENGE = "1.3.6.1.4.1.311.21.26";
+export const szOID_ENROLL_CAXCHGCERT_HASH = "1.3.6.1.4.1.311.21.27";
+export const szOID_ENROLL_ATTESTATION_CHALLENGE = "1.3.6.1.4.1.311.21.28";
+export const szOID_ENROLL_ENCRYPTION_ALGORITHM = "1.3.6.1.4.1.311.21.29";
+export const szOID_KP_TPM_EK_CERTIFICATE = "2.23.133.8.1";
+export const szOID_KP_TPM_PLATFORM_CERTIFICATE = "2.23.133.8.2";
+export const szOID_KP_TPM_AIK_CERTIFICATE = "2.23.133.8.3";
+export const szOID_ENROLL_EKVERIFYKEY = "1.3.6.1.4.1.311.21.30";
+export const szOID_ENROLL_EKVERIFYCERT = "1.3.6.1.4.1.311.21.31";
+export const szOID_ENROLL_EKVERIFYCREDS = "1.3.6.1.4.1.311.21.32";
+export const szOID_ENROLL_SCEP_ERROR = "1.3.6.1.4.1.311.21.33";
+export const szOID_ENROLL_SCEP_SERVER_STATE = "1.3.6.1.4.1.311.21.34";
+export const szOID_ENROLL_SCEP_CHALLENGE_ANSWER = "1.3.6.1.4.1.311.21.35";
+export const szOID_ENROLL_SCEP_CLIENT_REQUEST = "1.3.6.1.4.1.311.21.37";
+export const szOID_ENROLL_SCEP_SERVER_MESSAGE = "1.3.6.1.4.1.311.21.38";
+export const szOID_ENROLL_SCEP_SERVER_SECRET = "1.3.6.1.4.1.311.21.40";
+export const szOID_ENROLL_KEY_AFFINITY = "1.3.6.1.4.1.311.21.41";
+export const szOID_ENROLL_SCEP_SIGNER_HASH = "1.3.6.1.4.1.311.21.42";
+export const szOID_ENROLL_EK_CA_KEYID = "1.3.6.1.4.1.311.21.43";
+export const szOID_ATTR_SUPPORTED_ALGORITHMS = "2.5.4.52";
+export const szOID_ATTR_TPM_SPECIFICATION = "2.23.133.2.16";
+export const szOID_ATTR_PLATFORM_SPECIFICATION = "2.23.133.2.17";
+export const szOID_ATTR_TPM_SECURITY_ASSERTIONS = "2.23.133.2.18";
 export const CERT_UNICODE_RDN_ERR_INDEX_MASK = 1023;
 export const CERT_UNICODE_RDN_ERR_INDEX_SHIFT = 22;
 export const CERT_UNICODE_ATTR_ERR_INDEX_MASK = 63;
@@ -2027,6 +4178,11 @@ export const CERT_ALT_NAME_VALUE_ERR_INDEX_MASK = 65535;
 export const CERT_ALT_NAME_VALUE_ERR_INDEX_SHIFT = 0;
 export const CERT_CA_SUBJECT_FLAG = 128;
 export const CERT_END_ENTITY_SUBJECT_FLAG = 64;
+export const szOID_PKIX_ACC_DESCR = "1.3.6.1.5.5.7.48";
+export const szOID_PKIX_OCSP = "1.3.6.1.5.5.7.48.1";
+export const szOID_PKIX_CA_ISSUERS = "1.3.6.1.5.5.7.48.2";
+export const szOID_PKIX_TIME_STAMPING = "1.3.6.1.5.5.7.48.3";
+export const szOID_PKIX_CA_REPOSITORY = "1.3.6.1.5.5.7.48.5";
 export const CRL_REASON_PRIVILEGE_WITHDRAWN = 9;
 export const CRL_REASON_AA_COMPROMISE = 10;
 export const CRL_DIST_POINT_NO_NAME = 0;
@@ -2057,7 +4213,31 @@ export const CRYPT_RC2_40BIT_VERSION = 160;
 export const CRYPT_RC2_56BIT_VERSION = 52;
 export const CRYPT_RC2_64BIT_VERSION = 120;
 export const CRYPT_RC2_128BIT_VERSION = 58;
+export const szOID_QC_EU_COMPLIANCE = "0.4.0.1862.1.1";
+export const szOID_QC_SSCD = "0.4.0.1862.1.4";
 export const PKCS_RSA_SSA_PSS_TRAILER_FIELD_BC = 1;
+export const szOID_VERISIGN_PRIVATE_6_9 = "2.16.840.1.113733.1.6.9";
+export const szOID_VERISIGN_ONSITE_JURISDICTION_HASH = "2.16.840.1.113733.1.6.11";
+export const szOID_VERISIGN_BITSTRING_6_13 = "2.16.840.1.113733.1.6.13";
+export const szOID_VERISIGN_ISS_STRONG_CRYPTO = "2.16.840.1.113733.1.8.1";
+export const szOIDVerisign_MessageType = "2.16.840.1.113733.1.9.2";
+export const szOIDVerisign_PkiStatus = "2.16.840.1.113733.1.9.3";
+export const szOIDVerisign_FailInfo = "2.16.840.1.113733.1.9.4";
+export const szOIDVerisign_SenderNonce = "2.16.840.1.113733.1.9.5";
+export const szOIDVerisign_RecipientNonce = "2.16.840.1.113733.1.9.6";
+export const szOIDVerisign_TransactionID = "2.16.840.1.113733.1.9.7";
+export const szOID_NETSCAPE = "2.16.840.1.113730";
+export const szOID_NETSCAPE_CERT_EXTENSION = "2.16.840.1.113730.1";
+export const szOID_NETSCAPE_CERT_TYPE = "2.16.840.1.113730.1.1";
+export const szOID_NETSCAPE_BASE_URL = "2.16.840.1.113730.1.2";
+export const szOID_NETSCAPE_REVOCATION_URL = "2.16.840.1.113730.1.3";
+export const szOID_NETSCAPE_CA_REVOCATION_URL = "2.16.840.1.113730.1.4";
+export const szOID_NETSCAPE_CERT_RENEWAL_URL = "2.16.840.1.113730.1.7";
+export const szOID_NETSCAPE_CA_POLICY_URL = "2.16.840.1.113730.1.8";
+export const szOID_NETSCAPE_SSL_SERVER_NAME = "2.16.840.1.113730.1.12";
+export const szOID_NETSCAPE_COMMENT = "2.16.840.1.113730.1.13";
+export const szOID_NETSCAPE_DATA_TYPE = "2.16.840.1.113730.2";
+export const szOID_NETSCAPE_CERT_SEQUENCE = "2.16.840.1.113730.2.5";
 export const NETSCAPE_SSL_CLIENT_AUTH_CERT_TYPE = 128;
 export const NETSCAPE_SSL_SERVER_AUTH_CERT_TYPE = 64;
 export const NETSCAPE_SMIME_CERT_TYPE = 32;
@@ -2065,6 +4245,31 @@ export const NETSCAPE_SIGN_CERT_TYPE = 16;
 export const NETSCAPE_SSL_CA_CERT_TYPE = 4;
 export const NETSCAPE_SMIME_CA_CERT_TYPE = 2;
 export const NETSCAPE_SIGN_CA_CERT_TYPE = 1;
+export const szOID_CT_PKI_DATA = "1.3.6.1.5.5.7.12.2";
+export const szOID_CT_PKI_RESPONSE = "1.3.6.1.5.5.7.12.3";
+export const szOID_PKIX_NO_SIGNATURE = "1.3.6.1.5.5.7.6.2";
+export const szOID_CMC = "1.3.6.1.5.5.7.7";
+export const szOID_CMC_STATUS_INFO = "1.3.6.1.5.5.7.7.1";
+export const szOID_CMC_IDENTIFICATION = "1.3.6.1.5.5.7.7.2";
+export const szOID_CMC_IDENTITY_PROOF = "1.3.6.1.5.5.7.7.3";
+export const szOID_CMC_DATA_RETURN = "1.3.6.1.5.5.7.7.4";
+export const szOID_CMC_TRANSACTION_ID = "1.3.6.1.5.5.7.7.5";
+export const szOID_CMC_SENDER_NONCE = "1.3.6.1.5.5.7.7.6";
+export const szOID_CMC_RECIPIENT_NONCE = "1.3.6.1.5.5.7.7.7";
+export const szOID_CMC_ADD_EXTENSIONS = "1.3.6.1.5.5.7.7.8";
+export const szOID_CMC_ENCRYPTED_POP = "1.3.6.1.5.5.7.7.9";
+export const szOID_CMC_DECRYPTED_POP = "1.3.6.1.5.5.7.7.10";
+export const szOID_CMC_LRA_POP_WITNESS = "1.3.6.1.5.5.7.7.11";
+export const szOID_CMC_GET_CERT = "1.3.6.1.5.5.7.7.15";
+export const szOID_CMC_GET_CRL = "1.3.6.1.5.5.7.7.16";
+export const szOID_CMC_REVOKE_REQUEST = "1.3.6.1.5.5.7.7.17";
+export const szOID_CMC_REG_INFO = "1.3.6.1.5.5.7.7.18";
+export const szOID_CMC_RESPONSE_INFO = "1.3.6.1.5.5.7.7.19";
+export const szOID_CMC_QUERY_PENDING = "1.3.6.1.5.5.7.7.21";
+export const szOID_CMC_ID_POP_LINK_RANDOM = "1.3.6.1.5.5.7.7.22";
+export const szOID_CMC_ID_POP_LINK_WITNESS = "1.3.6.1.5.5.7.7.23";
+export const szOID_CMC_ID_CONFIRM_CERT_ACCEPTANCE = "1.3.6.1.5.5.7.7.24";
+export const szOID_CMC_ADD_ATTRIBUTES = "1.3.6.1.4.1.311.10.10.1";
 export const CMC_TAGGED_CERT_REQUEST_CHOICE = 1;
 export const CMC_OTHER_INFO_NO_CHOICE = 0;
 export const CMC_OTHER_INFO_FAIL_CHOICE = 1;
@@ -2087,6 +4292,8 @@ export const CMC_FAIL_POP_FAILED = 9;
 export const CMC_FAIL_NO_KEY_REUSE = 10;
 export const CMC_FAIL_INTERNAL_CA_ERROR = 11;
 export const CMC_FAIL_TRY_LATER = 12;
+export const szOID_LOYALTY_OTHER_LOGOTYPE = "1.3.6.1.5.5.7.20.1";
+export const szOID_BACKGROUND_OTHER_LOGOTYPE = "1.3.6.1.5.5.7.20.2";
 export const CERT_BIOMETRIC_PICTURE_TYPE = 0;
 export const CERT_BIOMETRIC_SIGNATURE_TYPE = 1;
 export const OCSP_REQUEST_V1 = 0;
@@ -2096,12 +4303,30 @@ export const OCSP_INTERNAL_ERROR_RESPONSE = 2;
 export const OCSP_TRY_LATER_RESPONSE = 3;
 export const OCSP_SIG_REQUIRED_RESPONSE = 5;
 export const OCSP_UNAUTHORIZED_RESPONSE = 6;
+export const szOID_PKIX_OCSP_BASIC_SIGNED_RESPONSE = "1.3.6.1.5.5.7.48.1.1";
 export const OCSP_BASIC_GOOD_CERT_STATUS = 0;
 export const OCSP_BASIC_REVOKED_CERT_STATUS = 1;
 export const OCSP_BASIC_UNKNOWN_CERT_STATUS = 2;
 export const OCSP_BASIC_RESPONSE_V1 = 0;
 export const OCSP_BASIC_BY_NAME_RESPONDER_ID = 1;
 export const OCSP_BASIC_BY_KEY_RESPONDER_ID = 2;
+export const CRYPT_OID_ENCODE_OBJECT_FUNC = "CryptDllEncodeObject";
+export const CRYPT_OID_DECODE_OBJECT_FUNC = "CryptDllDecodeObject";
+export const CRYPT_OID_ENCODE_OBJECT_EX_FUNC = "CryptDllEncodeObjectEx";
+export const CRYPT_OID_DECODE_OBJECT_EX_FUNC = "CryptDllDecodeObjectEx";
+export const CRYPT_OID_CREATE_COM_OBJECT_FUNC = "CryptDllCreateCOMObject";
+export const CRYPT_OID_VERIFY_REVOCATION_FUNC = "CertDllVerifyRevocation";
+export const CRYPT_OID_VERIFY_CTL_USAGE_FUNC = "CertDllVerifyCTLUsage";
+export const CRYPT_OID_FORMAT_OBJECT_FUNC = "CryptDllFormatObject";
+export const CRYPT_OID_FIND_OID_INFO_FUNC = "CryptDllFindOIDInfo";
+export const CRYPT_OID_FIND_LOCALIZED_NAME_FUNC = "CryptDllFindLocalizedName";
+export const CRYPT_OID_REGPATH = "Software\Microsoft\Cryptography\OID";
+export const CRYPT_OID_REG_ENCODING_TYPE_PREFIX = "EncodingType ";
+export const CRYPT_OID_REG_DLL_VALUE_NAME = "Dll";
+export const CRYPT_OID_REG_FUNC_NAME_VALUE_NAME = "FuncName";
+export const CRYPT_OID_REG_FUNC_NAME_VALUE_NAME_A = "FuncName";
+export const CRYPT_OID_REG_FLAGS_VALUE_NAME = "CryptFlags";
+export const CRYPT_DEFAULT_OID = "DEFAULT";
 export const CRYPT_INSTALL_OID_FUNC_BEFORE_FLAG = 1;
 export const CRYPT_GET_INSTALLED_OID_FUNC_FLAG = 1;
 export const CRYPT_REGISTER_FIRST_INDEX = 0;
@@ -2109,6 +4334,13 @@ export const CRYPT_REGISTER_LAST_INDEX = 4294967295;
 export const CRYPT_MATCH_ANY_ENCODING_TYPE = 4294967295;
 export const CALG_OID_INFO_CNG_ONLY = 4294967295;
 export const CALG_OID_INFO_PARAMETERS = 4294967294;
+export const CRYPT_OID_INFO_HASH_PARAMETERS_ALGORITHM = "CryptOIDInfoHashParameters";
+export const CRYPT_OID_INFO_ECC_PARAMETERS_ALGORITHM = "CryptOIDInfoECCParameters";
+export const CRYPT_OID_INFO_MGF1_PARAMETERS_ALGORITHM = "CryptOIDInfoMgf1Parameters";
+export const CRYPT_OID_INFO_NO_SIGN_ALGORITHM = "CryptOIDInfoNoSign";
+export const CRYPT_OID_INFO_OAEP_PARAMETERS_ALGORITHM = "CryptOIDInfoOAEPParameters";
+export const CRYPT_OID_INFO_ECC_WRAP_PARAMETERS_ALGORITHM = "CryptOIDInfoECCWrapParameters";
+export const CRYPT_OID_INFO_NO_PARAMETERS_ALGORITHM = "CryptOIDInfoNoParameters";
 export const CRYPT_HASH_ALG_OID_GROUP_ID = 1;
 export const CRYPT_ENCRYPT_ALG_OID_GROUP_ID = 2;
 export const CRYPT_PUBKEY_ALG_OID_GROUP_ID = 3;
@@ -2142,8 +4374,24 @@ export const CRYPT_OID_INFO_OID_GROUP_BIT_LEN_MASK = 268369920;
 export const CRYPT_OID_INFO_OID_GROUP_BIT_LEN_SHIFT = 16;
 export const CRYPT_INSTALL_OID_INFO_BEFORE_FLAG = 1;
 export const CRYPT_LOCALIZED_NAME_ENCODING_TYPE = 0;
+export const CRYPT_LOCALIZED_NAME_OID = "LocalizedNames";
+export const CERT_STRONG_SIGN_ECDSA_ALGORITHM = "ECDSA";
 export const CERT_STRONG_SIGN_SERIALIZED_INFO_CHOICE = 1;
 export const CERT_STRONG_SIGN_OID_INFO_CHOICE = 2;
+export const szOID_CERT_STRONG_SIGN_OS_PREFIX = "1.3.6.1.4.1.311.72.1.";
+export const szOID_CERT_STRONG_SIGN_OS_1 = "1.3.6.1.4.1.311.72.1.1";
+export const szOID_CERT_STRONG_SIGN_OS_CURRENT = "1.3.6.1.4.1.311.72.1.1";
+export const szOID_CERT_STRONG_KEY_OS_PREFIX = "1.3.6.1.4.1.311.72.2.";
+export const szOID_CERT_STRONG_KEY_OS_1 = "1.3.6.1.4.1.311.72.2.1";
+export const szOID_CERT_STRONG_KEY_OS_CURRENT = "1.3.6.1.4.1.311.72.2.1";
+export const szOID_PKCS_7_DATA = "1.2.840.113549.1.7.1";
+export const szOID_PKCS_7_SIGNED = "1.2.840.113549.1.7.2";
+export const szOID_PKCS_7_ENVELOPED = "1.2.840.113549.1.7.3";
+export const szOID_PKCS_7_SIGNEDANDENVELOPED = "1.2.840.113549.1.7.4";
+export const szOID_PKCS_7_DIGESTED = "1.2.840.113549.1.7.5";
+export const szOID_PKCS_7_ENCRYPTED = "1.2.840.113549.1.7.6";
+export const szOID_PKCS_9_CONTENT_TYPE = "1.2.840.113549.1.9.3";
+export const szOID_PKCS_9_MESSAGE_DIGEST = "1.2.840.113549.1.9.4";
 export const CMSG_ENCRYPTED = 6;
 export const CMSG_MAIL_LIST_HANDLE_KEY_CHOICE = 1;
 export const CMSG_KEY_TRANS_RECIPIENT = 1;
@@ -2244,20 +4492,44 @@ export const CMSG_VERIFY_SIGNER_CERT = 2;
 export const CMSG_VERIFY_SIGNER_CHAIN = 3;
 export const CMSG_VERIFY_SIGNER_NULL = 4;
 export const CMSG_VERIFY_COUNTER_SIGN_ENABLE_STRONG_FLAG = 1;
+export const CMSG_OID_GEN_ENCRYPT_KEY_FUNC = "CryptMsgDllGenEncryptKey";
+export const CMSG_OID_EXPORT_ENCRYPT_KEY_FUNC = "CryptMsgDllExportEncryptKey";
+export const CMSG_OID_IMPORT_ENCRYPT_KEY_FUNC = "CryptMsgDllImportEncryptKey";
+export const CMSG_DEFAULT_INSTALLABLE_FUNC_OID = 2216203124737;
 export const CMSG_CONTENT_ENCRYPT_PAD_ENCODED_LEN_FLAG = 1;
 export const CMSG_CONTENT_ENCRYPT_FREE_PARA_FLAG = 1;
 export const CMSG_CONTENT_ENCRYPT_FREE_OBJID_FLAG = 2;
 export const CMSG_CONTENT_ENCRYPT_RELEASE_CONTEXT_FLAG = 32768;
+export const CMSG_OID_GEN_CONTENT_ENCRYPT_KEY_FUNC = "CryptMsgDllGenContentEncryptKey";
+export const CMSG_OID_CAPI1_GEN_CONTENT_ENCRYPT_KEY_FUNC = "CryptMsgDllGenContentEncryptKey";
+export const CMSG_OID_CNG_GEN_CONTENT_ENCRYPT_KEY_FUNC = "CryptMsgDllCNGGenContentEncryptKey";
 export const CMSG_KEY_TRANS_ENCRYPT_FREE_PARA_FLAG = 1;
 export const CMSG_KEY_TRANS_ENCRYPT_FREE_OBJID_FLAG = 2;
+export const CMSG_OID_EXPORT_KEY_TRANS_FUNC = "CryptMsgDllExportKeyTrans";
+export const CMSG_OID_CAPI1_EXPORT_KEY_TRANS_FUNC = "CryptMsgDllExportKeyTrans";
+export const CMSG_OID_CNG_EXPORT_KEY_TRANS_FUNC = "CryptMsgDllCNGExportKeyTrans";
 export const CMSG_KEY_AGREE_ENCRYPT_FREE_PARA_FLAG = 1;
 export const CMSG_KEY_AGREE_ENCRYPT_FREE_MATERIAL_FLAG = 2;
 export const CMSG_KEY_AGREE_ENCRYPT_FREE_PUBKEY_ALG_FLAG = 4;
 export const CMSG_KEY_AGREE_ENCRYPT_FREE_PUBKEY_PARA_FLAG = 8;
 export const CMSG_KEY_AGREE_ENCRYPT_FREE_PUBKEY_BITS_FLAG = 16;
 export const CMSG_KEY_AGREE_ENCRYPT_FREE_OBJID_FLAG = 32;
+export const CMSG_OID_EXPORT_KEY_AGREE_FUNC = "CryptMsgDllExportKeyAgree";
+export const CMSG_OID_CAPI1_EXPORT_KEY_AGREE_FUNC = "CryptMsgDllExportKeyAgree";
+export const CMSG_OID_CNG_EXPORT_KEY_AGREE_FUNC = "CryptMsgDllCNGExportKeyAgree";
 export const CMSG_MAIL_LIST_ENCRYPT_FREE_PARA_FLAG = 1;
 export const CMSG_MAIL_LIST_ENCRYPT_FREE_OBJID_FLAG = 2;
+export const CMSG_OID_EXPORT_MAIL_LIST_FUNC = "CryptMsgDllExportMailList";
+export const CMSG_OID_CAPI1_EXPORT_MAIL_LIST_FUNC = "CryptMsgDllExportMailList";
+export const CMSG_OID_IMPORT_KEY_TRANS_FUNC = "CryptMsgDllImportKeyTrans";
+export const CMSG_OID_CAPI1_IMPORT_KEY_TRANS_FUNC = "CryptMsgDllImportKeyTrans";
+export const CMSG_OID_IMPORT_KEY_AGREE_FUNC = "CryptMsgDllImportKeyAgree";
+export const CMSG_OID_CAPI1_IMPORT_KEY_AGREE_FUNC = "CryptMsgDllImportKeyAgree";
+export const CMSG_OID_IMPORT_MAIL_LIST_FUNC = "CryptMsgDllImportMailList";
+export const CMSG_OID_CAPI1_IMPORT_MAIL_LIST_FUNC = "CryptMsgDllImportMailList";
+export const CMSG_OID_CNG_IMPORT_KEY_TRANS_FUNC = "CryptMsgDllCNGImportKeyTrans";
+export const CMSG_OID_CNG_IMPORT_KEY_AGREE_FUNC = "CryptMsgDllCNGImportKeyAgree";
+export const CMSG_OID_CNG_IMPORT_CONTENT_ENCRYPT_KEY_FUNC = "CryptMsgDllCNGImportContentEncryptKey";
 export const CERT_KEY_PROV_HANDLE_PROP_ID = 1;
 export const CERT_KEY_PROV_INFO_PROP_ID = 2;
 export const CERT_SHA1_HASH_PROP_ID = 3;
@@ -2357,11 +4629,62 @@ export const CERT_FIRST_RESERVED_PROP_ID = 128;
 export const CERT_LAST_RESERVED_PROP_ID = 32767;
 export const CERT_FIRST_USER_PROP_ID = 32768;
 export const CERT_LAST_USER_PROP_ID = 65535;
+export const szOID_CERT_PROP_ID_PREFIX = "1.3.6.1.4.1.311.10.11.";
+export const szOID_CERT_KEY_IDENTIFIER_PROP_ID = "1.3.6.1.4.1.311.10.11.20";
+export const szOID_CERT_ISSUER_SERIAL_NUMBER_MD5_HASH_PROP_ID = "1.3.6.1.4.1.311.10.11.28";
+export const szOID_CERT_SUBJECT_NAME_MD5_HASH_PROP_ID = "1.3.6.1.4.1.311.10.11.29";
+export const szOID_CERT_MD5_HASH_PROP_ID = "1.3.6.1.4.1.311.10.11.4";
+export const szOID_CERT_SIGNATURE_HASH_PROP_ID = "1.3.6.1.4.1.311.10.11.15";
+export const szOID_DISALLOWED_HASH = "1.3.6.1.4.1.311.10.11.15";
+export const szOID_CERT_DISALLOWED_FILETIME_PROP_ID = "1.3.6.1.4.1.311.10.11.104";
 export const CERT_ACCESS_STATE_WRITE_PERSIST_FLAG = 1;
 export const CERT_ACCESS_STATE_SYSTEM_STORE_FLAG = 2;
 export const CERT_ACCESS_STATE_LM_SYSTEM_STORE_FLAG = 4;
 export const CERT_ACCESS_STATE_GP_SYSTEM_STORE_FLAG = 8;
 export const CERT_ACCESS_STATE_SHARED_USER_FLAG = 16;
+export const szOID_ROOT_PROGRAM_AUTO_UPDATE_CA_REVOCATION = "1.3.6.1.4.1.311.60.3.1";
+export const szOID_ROOT_PROGRAM_AUTO_UPDATE_END_REVOCATION = "1.3.6.1.4.1.311.60.3.2";
+export const szOID_ROOT_PROGRAM_NO_OCSP_FAILOVER_TO_CRL = "1.3.6.1.4.1.311.60.3.3";
+export const CERT_STORE_PROV_MSG = 2216203124737;
+export const CERT_STORE_PROV_MEMORY = 4415226380290;
+export const CERT_STORE_PROV_FILE = 5514738008067;
+export const CERT_STORE_PROV_REG = 1518001159355236356n;
+export const CERT_STORE_PROV_PKCS7 = 6614249635845;
+export const CERT_STORE_PROV_SERIALIZED = 7713761263622;
+export const CERT_STORE_PROV_FILENAME_A = 290488781625098247n;
+export const CERT_STORE_PROV_FILENAME_W = 16509854285832;
+export const CERT_STORE_PROV_FILENAME = 8;
+export const CERT_STORE_PROV_SYSTEM_A = 13211319402505;
+export const CERT_STORE_PROV_SYSTEM_W = 12111807774730;
+export const CERT_STORE_PROV_SYSTEM = 10;
+export const CERT_STORE_PROV_COLLECTION = 1147907319267339;
+export const CERT_STORE_PROV_SYSTEM_REGISTRY_A = 14310831030284;
+export const CERT_STORE_PROV_SYSTEM_REGISTRY_W = 15410342658061;
+export const CERT_STORE_PROV_SYSTEM_REGISTRY = 13;
+export const CERT_STORE_PROV_PHYSICAL_W = 11012296146958;
+export const CERT_STORE_PROV_PHYSICAL = 14;
+export const CERT_STORE_PROV_SMART_CARD_W = 1806231535506948111n;
+export const CERT_STORE_PROV_SMART_CARD = 15;
+export const CERT_STORE_PROV_LDAP_W = 70385924046864;
+export const CERT_STORE_PROV_LDAP = 16;
+export const CERT_STORE_PROV_PKCS12 = 19808389169169;
+export const sz_CERT_STORE_PROV_MEMORY = "Memory";
+export const sz_CERT_STORE_PROV_FILENAME_W = "File";
+export const sz_CERT_STORE_PROV_FILENAME = "File";
+export const sz_CERT_STORE_PROV_SYSTEM_W = "System";
+export const sz_CERT_STORE_PROV_SYSTEM = "System";
+export const sz_CERT_STORE_PROV_PKCS7 = "PKCS7";
+export const sz_CERT_STORE_PROV_PKCS12 = "PKCS12";
+export const sz_CERT_STORE_PROV_SERIALIZED = "Serialized";
+export const sz_CERT_STORE_PROV_COLLECTION = "Collection";
+export const sz_CERT_STORE_PROV_SYSTEM_REGISTRY_W = "SystemRegistry";
+export const sz_CERT_STORE_PROV_SYSTEM_REGISTRY = "SystemRegistry";
+export const sz_CERT_STORE_PROV_PHYSICAL_W = "Physical";
+export const sz_CERT_STORE_PROV_PHYSICAL = "Physical";
+export const sz_CERT_STORE_PROV_SMART_CARD_W = "SmartCard";
+export const sz_CERT_STORE_PROV_SMART_CARD = "SmartCard";
+export const sz_CERT_STORE_PROV_LDAP_W = "Ldap";
+export const sz_CERT_STORE_PROV_LDAP = "Ldap";
 export const CERT_STORE_SIGNATURE_FLAG = 1;
 export const CERT_STORE_TIME_VALIDITY_FLAG = 2;
 export const CERT_STORE_REVOCATION_FLAG = 4;
@@ -2385,6 +4708,9 @@ export const CERT_SYSTEM_STORE_CURRENT_USER_GROUP_POLICY_ID = 7;
 export const CERT_SYSTEM_STORE_LOCAL_MACHINE_GROUP_POLICY_ID = 8;
 export const CERT_SYSTEM_STORE_LOCAL_MACHINE_ENTERPRISE_ID = 9;
 export const CERT_SYSTEM_STORE_LOCAL_MACHINE_WCOS_ID = 10;
+export const CERT_GROUP_POLICY_SYSTEM_STORE_REGPATH = "Software\Policies\Microsoft\SystemCertificates";
+export const CERT_EFSBLOB_VALUE_NAME = "EFSBlob";
+export const CERT_PROT_ROOT_FLAGS_VALUE_NAME = "Flags";
 export const CERT_PROT_ROOT_DISABLE_CURRENT_USER_FLAG = 1;
 export const CERT_PROT_ROOT_INHIBIT_ADD_AT_INIT_FLAG = 2;
 export const CERT_PROT_ROOT_INHIBIT_PURGE_LM_FLAG = 4;
@@ -2393,15 +4719,50 @@ export const CERT_PROT_ROOT_ONLY_LM_GPT_FLAG = 8;
 export const CERT_PROT_ROOT_DISABLE_NT_AUTH_REQUIRED_FLAG = 16;
 export const CERT_PROT_ROOT_DISABLE_NOT_DEFINED_NAME_CONSTRAINT_FLAG = 32;
 export const CERT_PROT_ROOT_DISABLE_PEER_TRUST = 65536;
+export const CERT_PROT_ROOT_PEER_USAGES_VALUE_NAME = "PeerUsages";
+export const CERT_PROT_ROOT_PEER_USAGES_VALUE_NAME_A = "PeerUsages";
+export const CERT_LOCAL_MACHINE_SYSTEM_STORE_REGPATH = "Software\Microsoft\SystemCertificates";
+export const CERT_TRUST_PUB_AUTHENTICODE_FLAGS_VALUE_NAME = "AuthenticodeFlags";
 export const CERT_TRUST_PUB_ALLOW_TRUST_MASK = 3;
 export const CERT_TRUST_PUB_ALLOW_END_USER_TRUST = 0;
 export const CERT_TRUST_PUB_ALLOW_MACHINE_ADMIN_TRUST = 1;
 export const CERT_TRUST_PUB_ALLOW_ENTERPRISE_ADMIN_TRUST = 2;
 export const CERT_TRUST_PUB_CHECK_PUBLISHER_REV_FLAG = 256;
 export const CERT_TRUST_PUB_CHECK_TIMESTAMP_REV_FLAG = 512;
+export const CERT_OCM_SUBCOMPONENTS_LOCAL_MACHINE_REGPATH = "SOFTWARE\Microsoft\Windows\CurrentVersion\Setup\OC Manager\Subcomponents";
+export const CERT_OCM_SUBCOMPONENTS_ROOT_AUTO_UPDATE_VALUE_NAME = "RootAutoUpdate";
+export const CERT_DISABLE_ROOT_AUTO_UPDATE_VALUE_NAME = "DisableRootAutoUpdate";
+export const CERT_ENABLE_DISALLOWED_CERT_AUTO_UPDATE_VALUE_NAME = "EnableDisallowedCertAutoUpdate";
+export const CERT_DISABLE_PIN_RULES_AUTO_UPDATE_VALUE_NAME = "DisablePinRulesAutoUpdate";
+export const CERT_AUTO_UPDATE_ROOT_DIR_URL_VALUE_NAME = "RootDirUrl";
+export const CERT_AUTO_UPDATE_SYNC_FROM_DIR_URL_VALUE_NAME = "SyncFromDirUrl";
+export const CERT_AUTH_ROOT_AUTO_UPDATE_ROOT_DIR_URL_VALUE_NAME = "RootDirUrl";
+export const CERT_AUTH_ROOT_AUTO_UPDATE_SYNC_DELTA_TIME_VALUE_NAME = "SyncDeltaTime";
+export const CERT_AUTH_ROOT_AUTO_UPDATE_FLAGS_VALUE_NAME = "Flags";
 export const CERT_AUTH_ROOT_AUTO_UPDATE_DISABLE_UNTRUSTED_ROOT_LOGGING_FLAG = 1;
 export const CERT_AUTH_ROOT_AUTO_UPDATE_DISABLE_PARTIAL_CHAIN_LOGGING_FLAG = 2;
 export const CERT_AUTO_UPDATE_DISABLE_RANDOM_QUERY_STRING_FLAG = 4;
+export const CERT_AUTH_ROOT_AUTO_UPDATE_LAST_SYNC_TIME_VALUE_NAME = "LastSyncTime";
+export const CERT_AUTH_ROOT_AUTO_UPDATE_ENCODED_CTL_VALUE_NAME = "EncodedCtl";
+export const CERT_AUTH_ROOT_CTL_FILENAME = "authroot.stl";
+export const CERT_AUTH_ROOT_CTL_FILENAME_A = "authroot.stl";
+export const CERT_AUTH_ROOT_CAB_FILENAME = "authrootstl.cab";
+export const CERT_AUTH_ROOT_SEQ_FILENAME = "authrootseq.txt";
+export const CERT_AUTH_ROOT_CERT_EXT = ".crt";
+export const CERT_DISALLOWED_CERT_AUTO_UPDATE_SYNC_DELTA_TIME_VALUE_NAME = "DisallowedCertSyncDeltaTime";
+export const CERT_DISALLOWED_CERT_AUTO_UPDATE_LAST_SYNC_TIME_VALUE_NAME = "DisallowedCertLastSyncTime";
+export const CERT_DISALLOWED_CERT_AUTO_UPDATE_ENCODED_CTL_VALUE_NAME = "DisallowedCertEncodedCtl";
+export const CERT_DISALLOWED_CERT_CTL_FILENAME = "disallowedcert.stl";
+export const CERT_DISALLOWED_CERT_CTL_FILENAME_A = "disallowedcert.stl";
+export const CERT_DISALLOWED_CERT_CAB_FILENAME = "disallowedcertstl.cab";
+export const CERT_DISALLOWED_CERT_AUTO_UPDATE_LIST_IDENTIFIER = "DisallowedCert_AutoUpdate_1";
+export const CERT_PIN_RULES_AUTO_UPDATE_SYNC_DELTA_TIME_VALUE_NAME = "PinRulesSyncDeltaTime";
+export const CERT_PIN_RULES_AUTO_UPDATE_LAST_SYNC_TIME_VALUE_NAME = "PinRulesLastSyncTime";
+export const CERT_PIN_RULES_AUTO_UPDATE_ENCODED_CTL_VALUE_NAME = "PinRulesEncodedCtl";
+export const CERT_PIN_RULES_CTL_FILENAME = "pinrules.stl";
+export const CERT_PIN_RULES_CTL_FILENAME_A = "pinrules.stl";
+export const CERT_PIN_RULES_CAB_FILENAME = "pinrulesstl.cab";
+export const CERT_PIN_RULES_AUTO_UPDATE_LIST_IDENTIFIER = "PinRules_AutoUpdate_1";
 export const CERT_REGISTRY_STORE_REMOTE_FLAG = 65536;
 export const CERT_REGISTRY_STORE_SERIALIZED_FLAG = 131072;
 export const CERT_REGISTRY_STORE_CLIENT_GPT_FLAG = 2147483648;
@@ -2409,11 +4770,13 @@ export const CERT_REGISTRY_STORE_LM_GPT_FLAG = 16777216;
 export const CERT_REGISTRY_STORE_ROAMING_FLAG = 262144;
 export const CERT_REGISTRY_STORE_MY_IE_DIRTY_FLAG = 524288;
 export const CERT_REGISTRY_STORE_EXTERNAL_FLAG = 1048576;
+export const CERT_IE_DIRTY_FLAGS_REGPATH = "Software\Microsoft\Cryptography\IEDirtyFlags";
 export const CERT_FILE_STORE_COMMIT_ENABLE_FLAG = 65536;
 export const CERT_LDAP_STORE_SIGN_FLAG = 65536;
 export const CERT_LDAP_STORE_AREC_EXCLUSIVE_FLAG = 131072;
 export const CERT_LDAP_STORE_OPENED_FLAG = 262144;
 export const CERT_LDAP_STORE_UNBIND_FLAG = 524288;
+export const CRYPT_OID_OPEN_STORE_PROV_FUNC = "CertDllOpenStoreProv";
 export const CERT_STORE_PROV_GP_SYSTEM_STORE_FLAG = 32;
 export const CERT_STORE_PROV_SHARED_USER_FLAG = 64;
 export const CERT_STORE_PROV_CLOSE_FUNC = 0;
@@ -2508,6 +4871,22 @@ export const CERT_PHYSICAL_STORE_OPEN_DISABLE_FLAG = 2;
 export const CERT_PHYSICAL_STORE_REMOTE_OPEN_DISABLE_FLAG = 4;
 export const CERT_PHYSICAL_STORE_INSERT_COMPUTER_NAME_ENABLE_FLAG = 8;
 export const CERT_PHYSICAL_STORE_PREDEFINED_ENUM_FLAG = 1;
+export const CERT_PHYSICAL_STORE_DEFAULT_NAME = ".Default";
+export const CERT_PHYSICAL_STORE_GROUP_POLICY_NAME = ".GroupPolicy";
+export const CERT_PHYSICAL_STORE_LOCAL_MACHINE_NAME = ".LocalMachine";
+export const CERT_PHYSICAL_STORE_DS_USER_CERTIFICATE_NAME = ".UserCertificate";
+export const CERT_PHYSICAL_STORE_LOCAL_MACHINE_GROUP_POLICY_NAME = ".LocalMachineGroupPolicy";
+export const CERT_PHYSICAL_STORE_ENTERPRISE_NAME = ".Enterprise";
+export const CERT_PHYSICAL_STORE_AUTH_ROOT_NAME = ".AuthRoot";
+export const CERT_PHYSICAL_STORE_SMART_CARD_NAME = ".SmartCard";
+export const CRYPT_OID_OPEN_SYSTEM_STORE_PROV_FUNC = "CertDllOpenSystemStoreProv";
+export const CRYPT_OID_REGISTER_SYSTEM_STORE_FUNC = "CertDllRegisterSystemStore";
+export const CRYPT_OID_UNREGISTER_SYSTEM_STORE_FUNC = "CertDllUnregisterSystemStore";
+export const CRYPT_OID_ENUM_SYSTEM_STORE_FUNC = "CertDllEnumSystemStore";
+export const CRYPT_OID_REGISTER_PHYSICAL_STORE_FUNC = "CertDllRegisterPhysicalStore";
+export const CRYPT_OID_UNREGISTER_PHYSICAL_STORE_FUNC = "CertDllUnregisterPhysicalStore";
+export const CRYPT_OID_ENUM_PHYSICAL_STORE_FUNC = "CertDllEnumPhysicalStore";
+export const CRYPT_OID_SYSTEM_STORE_LOCATION_VALUE_NAME = "SystemStoreLocation";
 export const CMSG_TRUSTED_SIGNER_FLAG = 1;
 export const CMSG_SIGNER_ONLY_FLAG = 2;
 export const CMSG_USE_SIGNER_INDEX_FLAG = 4;
@@ -2537,11 +4916,21 @@ export const CRYPT_VERIFY_CERT_SIGN_ISSUER_CERT = 2;
 export const CRYPT_VERIFY_CERT_SIGN_ISSUER_CHAIN = 3;
 export const CRYPT_VERIFY_CERT_SIGN_ISSUER_NULL = 4;
 export const CRYPT_VERIFY_CERT_SIGN_CHECK_WEAK_HASH_FLAG = 8;
+export const CRYPT_OID_EXTRACT_ENCODED_SIGNATURE_PARAMETERS_FUNC = "CryptDllExtractEncodedSignatureParameters";
+export const CRYPT_OID_SIGN_AND_ENCODE_HASH_FUNC = "CryptDllSignAndEncodeHash";
+export const CRYPT_OID_VERIFY_ENCODED_SIGNATURE_FUNC = "CryptDllVerifyEncodedSignature";
+export const CRYPT_OID_EXPORT_PUBLIC_KEY_INFO_FUNC = "CryptDllExportPublicKeyInfoEx";
+export const CRYPT_OID_EXPORT_PUBLIC_KEY_INFO_EX2_FUNC = "CryptDllExportPublicKeyInfoEx2";
+export const CRYPT_OID_EXPORT_PUBLIC_KEY_INFO_FROM_BCRYPT_HANDLE_FUNC = "CryptDllExportPublicKeyInfoFromBCryptKeyHandle";
+export const CRYPT_OID_IMPORT_PUBLIC_KEY_INFO_FUNC = "CryptDllImportPublicKeyInfoEx";
+export const CRYPT_OID_IMPORT_PUBLIC_KEY_INFO_EX2_FUNC = "CryptDllImportPublicKeyInfoEx2";
 export const CRYPT_ACQUIRE_WINDOW_HANDLE_FLAG = 128;
 export const CRYPT_ACQUIRE_NCRYPT_KEY_FLAGS_MASK = 458752;
 export const CRYPT_ACQUIRE_ALLOW_NCRYPT_KEY_FLAG = 65536;
 export const CRYPT_ACQUIRE_PREFER_NCRYPT_KEY_FLAG = 131072;
 export const CRYPT_ACQUIRE_ONLY_NCRYPT_KEY_FLAG = 262144;
+export const CRYPT_OID_IMPORT_PRIVATE_KEY_INFO_FUNC = "CryptDllImportPrivateKeyInfoEx";
+export const CRYPT_OID_EXPORT_PRIVATE_KEY_INFO_FUNC = "CryptDllExportPrivateKeyInfoEx";
 export const CRYPT_DELETE_KEYSET = 16;
 export const CERT_XML_NAME_STR = 4;
 export const CERT_NAME_STR_SEMICOLON_FLAG = 1073741824;
@@ -2573,6 +4962,18 @@ export const CRYPT_MESSAGE_ENCAPSULATED_CONTENT_OUT_FLAG = 2;
 export const CRYPT_MESSAGE_KEYID_SIGNER_FLAG = 4;
 export const CRYPT_MESSAGE_SILENT_KEYSET_FLAG = 64;
 export const CRYPT_MESSAGE_KEYID_RECIPIENT_FLAG = 4;
+export const CREDENTIAL_OID_PASSWORD_CREDENTIALS_A = 2216203124737;
+export const CREDENTIAL_OID_PASSWORD_CREDENTIALS_W = 4415226380290;
+export const CREDENTIAL_OID_PASSWORD_CREDENTIALS = 2;
+export const SCHEME_OID_RETRIEVE_ENCODED_OBJECT_FUNC = "SchemeDllRetrieveEncodedObject";
+export const SCHEME_OID_RETRIEVE_ENCODED_OBJECTW_FUNC = "SchemeDllRetrieveEncodedObjectW";
+export const CONTEXT_OID_CREATE_OBJECT_CONTEXT_FUNC = "ContextDllCreateObjectContext";
+export const CONTEXT_OID_CERTIFICATE = 2216203124737;
+export const CONTEXT_OID_CRL = 4415226380290;
+export const CONTEXT_OID_CTL = 5514738008067;
+export const CONTEXT_OID_PKCS7 = 1518001159355236356n;
+export const CONTEXT_OID_CAPI2_ANY = 6614249635845;
+export const CONTEXT_OID_OCSP_RESP = 7713761263622;
 export const CRYPT_RETRIEVE_MULTIPLE_OBJECTS = 1;
 export const CRYPT_CACHE_ONLY_RETRIEVAL = 2;
 export const CRYPT_WIRE_ONLY_RETRIEVAL = 4;
@@ -2615,22 +5016,81 @@ export const CRYPTNET_URL_CACHE_RESPONSE_NONE = 0;
 export const CRYPTNET_URL_CACHE_RESPONSE_HTTP = 1;
 export const CRYPTNET_URL_CACHE_RESPONSE_VALIDATED = 32768;
 export const CRYPT_RETRIEVE_MAX_ERROR_CONTENT_LENGTH = 4096;
+export const CRYPT_PARAM_ASYNC_RETRIEVAL_COMPLETION = 2216203124737;
+export const CRYPT_PARAM_CANCEL_ASYNC_RETRIEVAL = 4415226380290;
+export const URL_OID_GET_OBJECT_URL_FUNC = "UrlDllGetObjectUrl";
+export const URL_OID_CERTIFICATE_ISSUER = 2216203124737;
+export const URL_OID_CERTIFICATE_CRL_DIST_POINT = 4415226380290;
+export const URL_OID_CTL_ISSUER = 5514738008067;
+export const URL_OID_CTL_NEXT_UPDATE = 1518001159355236356n;
+export const URL_OID_CRL_ISSUER = 6614249635845;
+export const URL_OID_CERTIFICATE_FRESHEST_CRL = 7713761263622;
+export const URL_OID_CRL_FRESHEST_CRL = 290488781625098247n;
+export const URL_OID_CROSS_CERT_DIST_POINT = 16509854285832;
+export const URL_OID_CERTIFICATE_OCSP = 13211319402505;
+export const URL_OID_CERTIFICATE_OCSP_AND_CRL_DIST_POINT = 12111807774730;
+export const URL_OID_CERTIFICATE_CRL_DIST_POINT_AND_OCSP = 1147907319267339;
+export const URL_OID_CROSS_CERT_SUBJECT_INFO_ACCESS = 14310831030284;
+export const URL_OID_CERTIFICATE_ONLY_OCSP = 15410342658061;
+export const TIME_VALID_OID_GET_OBJECT_FUNC = "TimeValidDllGetObject";
+export const TIME_VALID_OID_GET_CTL = 2216203124737;
+export const TIME_VALID_OID_GET_CRL = 4415226380290;
+export const TIME_VALID_OID_GET_CRL_FROM_CERT = 5514738008067;
+export const TIME_VALID_OID_GET_FRESHEST_CRL_FROM_CERT = 1518001159355236356n;
+export const TIME_VALID_OID_GET_FRESHEST_CRL_FROM_CRL = 6614249635845;
+export const TIME_VALID_OID_FLUSH_OBJECT_FUNC = "TimeValidDllFlushObject";
+export const TIME_VALID_OID_FLUSH_CTL = 2216203124737;
+export const TIME_VALID_OID_FLUSH_CRL = 4415226380290;
+export const TIME_VALID_OID_FLUSH_CRL_FROM_CERT = 5514738008067;
+export const TIME_VALID_OID_FLUSH_FRESHEST_CRL_FROM_CERT = 1518001159355236356n;
+export const TIME_VALID_OID_FLUSH_FRESHEST_CRL_FROM_CRL = 6614249635845;
 export const CRYPT_KEYID_MACHINE_FLAG = 32;
 export const CRYPT_KEYID_ALLOC_FLAG = 32768;
 export const CRYPT_KEYID_DELETE_FLAG = 16;
 export const CRYPT_KEYID_SET_NEW_FLAG = 8192;
+export const CERT_CHAIN_CONFIG_REGPATH = "Software\Microsoft\Cryptography\OID\EncodingType 0\CertDllCreateCertificateChainEngine\Config";
+export const CERT_CHAIN_MAX_URL_RETRIEVAL_BYTE_COUNT_VALUE_NAME = "MaxUrlRetrievalByteCount";
+export const CERT_CHAIN_CACHE_RESYNC_FILETIME_VALUE_NAME = "ChainCacheResyncFiletime";
+export const CERT_CHAIN_DISABLE_MANDATORY_BASIC_CONSTRAINTS_VALUE_NAME = "DisableMandatoryBasicConstraints";
+export const CERT_CHAIN_DISABLE_CA_NAME_CONSTRAINTS_VALUE_NAME = "DisableCANameConstraints";
+export const CERT_CHAIN_DISABLE_UNSUPPORTED_CRITICAL_EXTENSIONS_VALUE_NAME = "DisableUnsupportedCriticalExtensions";
+export const CERT_CHAIN_MAX_AIA_URL_COUNT_IN_CERT_VALUE_NAME = "MaxAIAUrlCountInCert";
 export const CERT_CHAIN_MAX_AIA_URL_COUNT_IN_CERT_DEFAULT = 5;
+export const CERT_CHAIN_MAX_AIA_URL_RETRIEVAL_COUNT_PER_CHAIN_VALUE_NAME = "MaxAIAUrlRetrievalCountPerChain";
 export const CERT_CHAIN_MAX_AIA_URL_RETRIEVAL_COUNT_PER_CHAIN_DEFAULT = 3;
+export const CERT_CHAIN_MAX_AIA_URL_RETRIEVAL_BYTE_COUNT_VALUE_NAME = "MaxAIAUrlRetrievalByteCount";
 export const CERT_CHAIN_MAX_AIA_URL_RETRIEVAL_BYTE_COUNT_DEFAULT = 100000;
+export const CERT_CHAIN_MAX_AIA_URL_RETRIEVAL_CERT_COUNT_VALUE_NAME = "MaxAIAUrlRetrievalCertCount";
 export const CERT_CHAIN_MAX_AIA_URL_RETRIEVAL_CERT_COUNT_DEFAULT = 10;
+export const CERT_CHAIN_OCSP_VALIDITY_SECONDS_VALUE_NAME = "OcspValiditySeconds";
+export const CERT_CHAIN_DISABLE_SERIAL_CHAIN_VALUE_NAME = "DisableSerialChain";
+export const CERT_CHAIN_SERIAL_CHAIN_LOG_FILE_NAME_VALUE_NAME = "SerialChainLogFileName";
+export const CERT_CHAIN_DISABLE_SYNC_WITH_SSL_TIME_VALUE_NAME = "DisableSyncWithSslTime";
+export const CERT_CHAIN_MAX_SSL_TIME_UPDATED_EVENT_COUNT_VALUE_NAME = "MaxSslTimeUpdatedEventCount";
 export const CERT_CHAIN_MAX_SSL_TIME_UPDATED_EVENT_COUNT_DEFAULT = 5;
 export const CERT_CHAIN_MAX_SSL_TIME_UPDATED_EVENT_COUNT_DISABLE = 4294967295;
+export const CERT_CHAIN_SSL_HANDSHAKE_LOG_FILE_NAME_VALUE_NAME = "SslHandshakeLogFileName";
+export const CERT_CHAIN_ENABLE_WEAK_SIGNATURE_FLAGS_VALUE_NAME = "EnableWeakSignatureFlags";
 export const CERT_CHAIN_ENABLE_MD2_MD4_FLAG = 1;
 export const CERT_CHAIN_ENABLE_WEAK_RSA_ROOT_FLAG = 2;
 export const CERT_CHAIN_ENABLE_WEAK_LOGGING_FLAG = 4;
 export const CERT_CHAIN_ENABLE_ONLY_WEAK_LOGGING_FLAG = 8;
+export const CERT_CHAIN_MIN_RSA_PUB_KEY_BIT_LENGTH_VALUE_NAME = "MinRsaPubKeyBitLength";
 export const CERT_CHAIN_MIN_RSA_PUB_KEY_BIT_LENGTH_DEFAULT = 1023;
 export const CERT_CHAIN_MIN_RSA_PUB_KEY_BIT_LENGTH_DISABLE = 4294967295;
+export const CERT_CHAIN_WEAK_RSA_PUB_KEY_TIME_VALUE_NAME = "WeakRsaPubKeyTime";
+export const CERT_CHAIN_WEAK_SIGNATURE_LOG_DIR_VALUE_NAME = "WeakSignatureLogDir";
+export const CERT_CHAIN_DEFAULT_CONFIG_SUBDIR = "Default";
+export const CERT_CHAIN_WEAK_PREFIX_NAME = "Weak";
+export const CERT_CHAIN_WEAK_THIRD_PARTY_CONFIG_NAME = "ThirdParty";
+export const CERT_CHAIN_WEAK_ALL_CONFIG_NAME = "All";
+export const CERT_CHAIN_WEAK_FLAGS_NAME = "Flags";
+export const CERT_CHAIN_WEAK_HYGIENE_NAME = "Hygiene";
+export const CERT_CHAIN_WEAK_AFTER_TIME_NAME = "AfterTime";
+export const CERT_CHAIN_WEAK_FILE_HASH_AFTER_TIME_NAME = "FileHashAfterTime";
+export const CERT_CHAIN_WEAK_TIMESTAMP_HASH_AFTER_TIME_NAME = "TimestampHashAfterTime";
+export const CERT_CHAIN_WEAK_MIN_BIT_LENGTH_NAME = "MinBitLength";
+export const CERT_CHAIN_WEAK_SHA256_ALLOW_NAME = "Sha256Allow";
 export const CERT_CHAIN_MIN_PUB_KEY_BIT_LENGTH_DISABLE = 4294967295;
 export const CERT_CHAIN_ENABLE_WEAK_SETTINGS_FLAG = 2147483648;
 export const CERT_CHAIN_DISABLE_ECC_PARA_FLAG = 16;
@@ -2661,22 +5121,70 @@ export const CERT_CHAIN_AUTO_PINRULE_INFO = 5;
 export const CERT_CHAIN_AUTO_NETWORK_INFO = 6;
 export const CERT_CHAIN_AUTO_SERIAL_LOCAL_MACHINE = 7;
 export const CERT_CHAIN_AUTO_HPKP_RULE_INFO = 8;
+export const CERT_CHAIN_AUTO_FLAGS_VALUE_NAME = "AutoFlags";
 export const CERT_CHAIN_AUTO_FLUSH_DISABLE_FLAG = 1;
 export const CERT_CHAIN_AUTO_LOG_CREATE_FLAG = 2;
 export const CERT_CHAIN_AUTO_LOG_FREE_FLAG = 4;
 export const CERT_CHAIN_AUTO_LOG_FLUSH_FLAG = 8;
+export const CERT_CHAIN_AUTO_FLUSH_FIRST_DELTA_SECONDS_VALUE_NAME = "AutoFlushFirstDeltaSeconds";
+export const CERT_CHAIN_AUTO_FLUSH_NEXT_DELTA_SECONDS_VALUE_NAME = "AutoFlushNextDeltaSeconds";
+export const CERT_CHAIN_AUTO_LOG_FILE_NAME_VALUE_NAME = "AutoLogFileName";
+export const CERT_CHAIN_DISABLE_AUTO_FLUSH_PROCESS_NAME_LIST_VALUE_NAME = "DisableAutoFlushProcessNameList";
+export const CERT_SRV_OCSP_RESP_MIN_VALIDITY_SECONDS_VALUE_NAME = "SrvOcspRespMinValiditySeconds";
+export const CERT_SRV_OCSP_RESP_URL_RETRIEVAL_TIMEOUT_MILLISECONDS_VALUE_NAME = "SrvOcspRespUrlRetrievalTimeoutMilliseconds";
+export const CERT_SRV_OCSP_RESP_MAX_BEFORE_NEXT_UPDATE_SECONDS_VALUE_NAME = "SrvOcspRespMaxBeforeNextUpdateSeconds";
+export const CERT_SRV_OCSP_RESP_MIN_BEFORE_NEXT_UPDATE_SECONDS_VALUE_NAME = "SrvOcspRespMinBeforeNextUpdateSeconds";
+export const CERT_SRV_OCSP_RESP_MIN_AFTER_NEXT_UPDATE_SECONDS_VALUE_NAME = "SrvOcspRespMinAfterNextUpdateSeconds";
+export const CERT_SRV_OCSP_RESP_MIN_SYNC_CERT_FILE_SECONDS_VALUE_NAME = "SrvOcspRespMinSyncCertFileSeconds";
 export const CERT_SRV_OCSP_RESP_MIN_SYNC_CERT_FILE_SECONDS_DEFAULT = 5;
+export const CERT_SRV_OCSP_RESP_MAX_SYNC_CERT_FILE_SECONDS_VALUE_NAME = "SrvOcspRespMaxSyncCertFileSeconds";
+export const CRYPTNET_MAX_CACHED_OCSP_PER_CRL_COUNT_VALUE_NAME = "CryptnetMaxCachedOcspPerCrlCount";
 export const CRYPTNET_MAX_CACHED_OCSP_PER_CRL_COUNT_DEFAULT = 500;
 export const CRYPTNET_OCSP_AFTER_CRL_DISABLE = 4294967295;
+export const CRYPTNET_URL_CACHE_DEFAULT_FLUSH_EXEMPT_SECONDS_VALUE_NAME = "CryptnetDefaultFlushExemptSeconds";
+export const CRYPTNET_PRE_FETCH_MIN_MAX_AGE_SECONDS_VALUE_NAME = "CryptnetPreFetchMinMaxAgeSeconds";
+export const CRYPTNET_PRE_FETCH_MAX_MAX_AGE_SECONDS_VALUE_NAME = "CryptnetPreFetchMaxMaxAgeSeconds";
+export const CRYPTNET_PRE_FETCH_MIN_OCSP_VALIDITY_PERIOD_SECONDS_VALUE_NAME = "CryptnetPreFetchMinOcspValidityPeriodSeconds";
+export const CRYPTNET_PRE_FETCH_AFTER_PUBLISH_PRE_FETCH_DIVISOR_VALUE_NAME = "CryptnetPreFetchAfterPublishPreFetchDivisor";
 export const CRYPTNET_PRE_FETCH_AFTER_PUBLISH_PRE_FETCH_DIVISOR_DEFAULT = 10;
+export const CRYPTNET_PRE_FETCH_BEFORE_NEXT_UPDATE_PRE_FETCH_DIVISOR_VALUE_NAME = "CryptnetPreFetchBeforeNextUpdatePreFetchDivisor";
 export const CRYPTNET_PRE_FETCH_BEFORE_NEXT_UPDATE_PRE_FETCH_DIVISOR_DEFAULT = 20;
+export const CRYPTNET_PRE_FETCH_MIN_BEFORE_NEXT_UPDATE_PRE_FETCH_PERIOD_SECONDS_VALUE_NAME = "CryptnetPreFetchMinBeforeNextUpdatePreFetchSeconds";
+export const CRYPTNET_PRE_FETCH_VALIDITY_PERIOD_AFTER_NEXT_UPDATE_PRE_FETCH_DIVISOR_VALUE_NAME = "CryptnetPreFetchValidityPeriodAfterNextUpdatePreFetchDivisor";
 export const CRYPTNET_PRE_FETCH_VALIDITY_PERIOD_AFTER_NEXT_UPDATE_PRE_FETCH_DIVISOR_DEFAULT = 10;
+export const CRYPTNET_PRE_FETCH_MAX_AFTER_NEXT_UPDATE_PRE_FETCH_PERIOD_SECONDS_VALUE_NAME = "CryptnetPreFetchMaxAfterNextUpdatePreFetchPeriodSeconds";
+export const CRYPTNET_PRE_FETCH_MIN_AFTER_NEXT_UPDATE_PRE_FETCH_PERIOD_SECONDS_VALUE_NAME = "CryptnetPreFetchMinAfterNextUpdatePreFetchPeriodSeconds";
+export const CRYPTNET_PRE_FETCH_AFTER_CURRENT_TIME_PRE_FETCH_PERIOD_SECONDS_VALUE_NAME = "CryptnetPreFetchAfterCurrentTimePreFetchPeriodSeconds";
+export const CRYPTNET_PRE_FETCH_TRIGGER_PERIOD_SECONDS_VALUE_NAME = "CryptnetPreFetchTriggerPeriodSeconds";
 export const CRYPTNET_PRE_FETCH_TRIGGER_DISABLE = 4294967295;
+export const CRYPTNET_PRE_FETCH_SCAN_AFTER_TRIGGER_DELAY_SECONDS_VALUE_NAME = "CryptnetPreFetchScanAfterTriggerDelaySeconds";
 export const CRYPTNET_PRE_FETCH_SCAN_AFTER_TRIGGER_DELAY_SECONDS_DEFAULT = 60;
+export const CRYPTNET_PRE_FETCH_RETRIEVAL_TIMEOUT_SECONDS_VALUE_NAME = "CryptnetPreFetchRetrievalTimeoutSeconds";
+export const CRYPTNET_CRL_PRE_FETCH_PROCESS_NAME_LIST_VALUE_NAME = "ProcessNameList";
+export const CRYPTNET_CRL_PRE_FETCH_URL_LIST_VALUE_NAME = "PreFetchUrlList";
+export const CRYPTNET_CRL_PRE_FETCH_DISABLE_INFORMATION_EVENTS_VALUE_NAME = "DisableInformationEvents";
+export const CRYPTNET_CRL_PRE_FETCH_LOG_FILE_NAME_VALUE_NAME = "LogFileName";
+export const CRYPTNET_CRL_PRE_FETCH_TIMEOUT_SECONDS_VALUE_NAME = "TimeoutSeconds";
+export const CRYPTNET_CRL_PRE_FETCH_MAX_AGE_SECONDS_VALUE_NAME = "MaxAgeSeconds";
+export const CRYPTNET_CRL_PRE_FETCH_PUBLISH_BEFORE_NEXT_UPDATE_SECONDS_VALUE_NAME = "PublishBeforeNextUpdateSeconds";
+export const CRYPTNET_CRL_PRE_FETCH_PUBLISH_RANDOM_INTERVAL_SECONDS_VALUE_NAME = "PublishRandomIntervalSeconds";
+export const CRYPTNET_CRL_PRE_FETCH_MIN_BEFORE_NEXT_UPDATE_SECONDS_VALUE_NAME = "MinBeforeNextUpdateSeconds";
+export const CRYPTNET_CRL_PRE_FETCH_MIN_AFTER_NEXT_UPDATE_SECONDS_VALUE_NAME = "MinAfterNextUpdateSeconds";
+export const CERT_CHAIN_URL_RETRIEVAL_TIMEOUT_MILLISECONDS_VALUE_NAME = "ChainUrlRetrievalTimeoutMilliseconds";
+export const CERT_CHAIN_REV_ACCUMULATIVE_URL_RETRIEVAL_TIMEOUT_MILLISECONDS_VALUE_NAME = "ChainRevAccumulativeUrlRetrievalTimeoutMilliseconds";
+export const CERT_RETR_BEHAVIOR_INET_AUTH_VALUE_NAME = "EnableInetUnknownAuth";
+export const CERT_RETR_BEHAVIOR_INET_STATUS_VALUE_NAME = "EnableInetLocal";
+export const CERT_RETR_BEHAVIOR_FILE_VALUE_NAME = "AllowFileUrlScheme";
+export const CERT_RETR_BEHAVIOR_LDAP_VALUE_NAME = "DisableLDAPSignAndEncrypt";
+export const CRYPTNET_CACHED_OCSP_SWITCH_TO_CRL_COUNT_VALUE_NAME = "CryptnetCachedOcspSwitchToCrlCount";
 export const CRYPTNET_CACHED_OCSP_SWITCH_TO_CRL_COUNT_DEFAULT = 50;
 export const CRYPTNET_CRL_BEFORE_OCSP_ENABLE = 4294967295;
+export const CERT_CHAIN_DISABLE_AIA_URL_RETRIEVAL_VALUE_NAME = "DisableAIAUrlRetrieval";
+export const CERT_CHAIN_OPTIONS_VALUE_NAME = "Options";
 export const CERT_CHAIN_OPTION_DISABLE_AIA_URL_RETRIEVAL = 2;
 export const CERT_CHAIN_OPTION_ENABLE_SIA_URL_RETRIEVAL = 4;
+export const CERT_CHAIN_CROSS_CERT_DOWNLOAD_INTERVAL_HOURS_VALUE_NAME = "CrossCertDownloadIntervalHours";
+export const CERT_CHAIN_CRL_VALIDITY_EXT_PERIOD_HOURS_VALUE_NAME = "CRLValidityExtensionPeriod";
 export const CERT_CHAIN_CRL_VALIDITY_EXT_PERIOD_HOURS_DEFAULT = 12;
 export const CERT_CHAIN_CACHE_END_CERT = 1;
 export const CERT_CHAIN_THREAD_STORE_SYNC = 2;
@@ -2755,8 +5263,22 @@ export const CERT_CHAIN_DISABLE_AIA = 8192;
 export const CERT_CHAIN_HAS_MOTW = 16384;
 export const CERT_CHAIN_ONLY_ADDITIONAL_AND_AUTH_ROOT = 32768;
 export const CERT_CHAIN_OPT_IN_WEAK_SIGNATURE = 65536;
+export const REVOCATION_OID_CRL_REVOCATION = 2216203124737;
 export const CERT_CHAIN_FIND_BY_ISSUER = 1;
 export const CERT_CHAIN_POLICY_IGNORE_WEAK_SIGNATURE_FLAG = 134217728;
+export const CRYPT_OID_VERIFY_CERTIFICATE_CHAIN_POLICY_FUNC = "CertDllVerifyCertificateChainPolicy";
+export const CERT_CHAIN_POLICY_BASE = 2216203124737;
+export const CERT_CHAIN_POLICY_AUTHENTICODE = 4415226380290;
+export const CERT_CHAIN_POLICY_AUTHENTICODE_TS = 5514738008067;
+export const CERT_CHAIN_POLICY_SSL = 1518001159355236356n;
+export const CERT_CHAIN_POLICY_BASIC_CONSTRAINTS = 6614249635845;
+export const CERT_CHAIN_POLICY_NT_AUTH = 7713761263622;
+export const CERT_CHAIN_POLICY_MICROSOFT_ROOT = 290488781625098247n;
+export const CERT_CHAIN_POLICY_EV = 16509854285832;
+export const CERT_CHAIN_POLICY_SSL_F12 = 13211319402505;
+export const CERT_CHAIN_POLICY_SSL_HPKP_HEADER = 12111807774730;
+export const CERT_CHAIN_POLICY_THIRD_PARTY_ROOT = 1147907319267339;
+export const CERT_CHAIN_POLICY_SSL_KEY_PIN = 14310831030284;
 export const BASIC_CONSTRAINTS_CERT_CHAIN_POLICY_CA_FLAG = 2147483648;
 export const BASIC_CONSTRAINTS_CERT_CHAIN_POLICY_END_ENTITY_FLAG = 1073741824;
 export const MICROSOFT_ROOT_CERT_CHAIN_POLICY_ENABLE_TEST_ROOT_FLAG = 65536;
@@ -2786,12 +5308,23 @@ export const CRYPT_STRING_PERCENTESCAPE = 134217728;
 export const CRYPT_STRING_HASHDATA = 268435456;
 export const CRYPT_STRING_NOCRLF = 1073741824;
 export const CRYPT_STRING_NOCR = 2147483648;
+export const szOID_PKCS_12_PbeIds = "1.2.840.113549.1.12.1";
+export const szOID_PKCS_12_pbeWithSHA1And128BitRC4 = "1.2.840.113549.1.12.1.1";
+export const szOID_PKCS_12_pbeWithSHA1And40BitRC4 = "1.2.840.113549.1.12.1.2";
+export const szOID_PKCS_12_pbeWithSHA1And3KeyTripleDES = "1.2.840.113549.1.12.1.3";
+export const szOID_PKCS_12_pbeWithSHA1And2KeyTripleDES = "1.2.840.113549.1.12.1.4";
+export const szOID_PKCS_12_pbeWithSHA1And128BitRC2 = "1.2.840.113549.1.12.1.5";
+export const szOID_PKCS_12_pbeWithSHA1And40BitRC2 = "1.2.840.113549.1.12.1.6";
+export const szOID_PKCS_5_PBKDF2 = "1.2.840.113549.1.5.12";
+export const szOID_PKCS_5_PBES2 = "1.2.840.113549.1.5.13";
 export const PKCS12_IMPORT_SILENT = 64;
 export const PKCS12_ONLY_CERTIFICATES = 1024;
 export const PKCS12_ONLY_NOT_ENCRYPTED_CERTIFICATES = 2048;
 export const PKCS12_VIRTUAL_ISOLATION_KEY = 65536;
 export const PKCS12_IMPORT_RESERVED_MASK = 4294901760;
 export const PKCS12_ONLY_CERTIFICATES_PROVIDER_TYPE = 0;
+export const PKCS12_ONLY_CERTIFICATES_PROVIDER_NAME = "PfxProvider";
+export const PKCS12_ONLY_CERTIFICATES_CONTAINER_NAME = "PfxContainer";
 export const REPORT_NO_PRIVATE_KEY = 1;
 export const REPORT_NOT_ABLE_TO_EXPORT_PRIVATE_KEY = 2;
 export const EXPORT_PRIVATE_KEYS = 4;
@@ -2803,9 +5336,20 @@ export const PKCS12_ENCRYPT_CERTIFICATES = 512;
 export const PKCS12_EXPORT_ECC_CURVE_PARAMETERS = 4096;
 export const PKCS12_EXPORT_ECC_CURVE_OID = 8192;
 export const PKCS12_EXPORT_RESERVED_MASK = 4294901760;
+export const PKCS12_PBKDF2_ID_HMAC_SHA1 = "1.2.840.113549.2.7";
+export const PKCS12_PBKDF2_ID_HMAC_SHA256 = "1.2.840.113549.2.9";
+export const PKCS12_PBKDF2_ID_HMAC_SHA384 = "1.2.840.113549.2.10";
+export const PKCS12_PBKDF2_ID_HMAC_SHA512 = "1.2.840.113549.2.11";
+export const PKCS12_PBES2_ALG_AES256_SHA256 = "AES256-SHA256";
+export const PKCS12_CONFIG_REGPATH = "Software\Microsoft\Windows\CurrentVersion\PFX";
+export const PKCS12_ENCRYPT_CERTIFICATES_VALUE_NAME = "EncryptCertificates";
 export const CERT_SERVER_OCSP_RESPONSE_OPEN_PARA_READ_FLAG = 1;
 export const CERT_SERVER_OCSP_RESPONSE_OPEN_PARA_WRITE_FLAG = 2;
 export const CERT_SERVER_OCSP_RESPONSE_ASYNC_FLAG = 1;
+export const CERT_RETRIEVE_ISSUER_LOGO = 2216203124737;
+export const CERT_RETRIEVE_SUBJECT_LOGO = 4415226380290;
+export const CERT_RETRIEVE_COMMUNITY_LOGO = 5514738008067;
+export const CERT_RETRIEVE_BIOMETRIC_PREDEFINED_BASE_TYPE = 1100628319273960;
 export const CERT_SELECT_MAX_PARA = 500;
 export const CERT_SELECT_BY_ISSUER_DISPLAYNAME = 12;
 export const CERT_SELECT_BY_FRIENDLYNAME = 13;
@@ -2834,6 +5378,9 @@ export const CRYPT_OBJECT_LOCATOR_SPN_NAME_TYPE = 1;
 export const CRYPT_OBJECT_LOCATOR_LAST_RESERVED_NAME_TYPE = 32;
 export const CRYPT_OBJECT_LOCATOR_FIRST_RESERVED_USER_NAME_TYPE = 33;
 export const CRYPT_OBJECT_LOCATOR_LAST_RESERVED_USER_NAME_TYPE = 65535;
+export const SSL_OBJECT_LOCATOR_PFX_FUNC = "SslObjectLocatorInitializePfx";
+export const SSL_OBJECT_LOCATOR_ISSUER_LIST_FUNC = "SslObjectLocatorInitializeIssuerList";
+export const SSL_OBJECT_LOCATOR_CERT_VALIDATION_CONFIG_FUNC = "SslObjectLocatorInitializeCertValidationConfig";
 export const CERT_FILE_HASH_USE_TYPE = 1;
 export const CERT_TIMESTAMP_HASH_USE_TYPE = 2;
 export const RECIPIENTPOLICYV1 = 1;
@@ -2953,6 +5500,28 @@ export const SAFER_POLICY_UIFLAGS_MASK = 255;
 export const SAFER_POLICY_UIFLAGS_INFORMATION_PROMPT = 1;
 export const SAFER_POLICY_UIFLAGS_OPTION_PROMPT = 2;
 export const SAFER_POLICY_UIFLAGS_HIDDEN = 4;
+export const SRP_POLICY_EXE = "EXE";
+export const SRP_POLICY_DLL = "DLL";
+export const SRP_POLICY_MSI = "MSI";
+export const SRP_POLICY_SCRIPT = "SCRIPT";
+export const SRP_POLICY_SHELL = "SHELL";
+export const SRP_POLICY_NOV2 = "IGNORESRPV2";
+export const SRP_POLICY_APPX = "APPX";
+export const SRP_POLICY_WLDPMSI = "WLDPMSI";
+export const SRP_POLICY_WLDPSCRIPT = "WLDPSCRIPT";
+export const SRP_POLICY_WLDPCONFIGCI = "WLDPCONFIGCI";
+export const SRP_POLICY_MANAGEDINSTALLER = "MANAGEDINSTALLER";
+export const NTLMSP_NAME_A = "NTLM";
+export const NTLMSP_NAME = "NTLM";
+export const MICROSOFT_KERBEROS_NAME_A = "Kerberos";
+export const MICROSOFT_KERBEROS_NAME_W = "Kerberos";
+export const MICROSOFT_KERBEROS_NAME = "Kerberos";
+export const NEGOSSP_NAME_W = "Negotiate";
+export const NEGOSSP_NAME_A = "Negotiate";
+export const NEGOSSP_NAME = "Negotiate";
+export const CLOUDAP_NAME_W = "CloudAP";
+export const ClOUDAP_NAME_A = "CloudAP";
+export const CLOUDAP_NAME = "CloudAP";
 export const ISSP_LEVEL = 32;
 export const ISSP_MODE = 1;
 export const SECPKG_FLAG_INTEGRITY = 1;
@@ -3028,35 +5597,6 @@ export const SECPKG_CRED_DEFAULT = 4;
 export const SECPKG_CRED_RESERVED = 4026531840;
 export const SECPKG_CRED_AUTOLOGON_RESTRICTED = 16;
 export const SECPKG_CRED_PROCESS_POLICY_ONLY = 32;
-export const ISC_REQ_DELEGATE = 1;
-export const ISC_REQ_MUTUAL_AUTH = 2;
-export const ISC_REQ_REPLAY_DETECT = 4;
-export const ISC_REQ_SEQUENCE_DETECT = 8;
-export const ISC_REQ_CONFIDENTIALITY = 16;
-export const ISC_REQ_USE_SESSION_KEY = 32;
-export const ISC_REQ_PROMPT_FOR_CREDS = 64;
-export const ISC_REQ_USE_SUPPLIED_CREDS = 128;
-export const ISC_REQ_ALLOCATE_MEMORY = 256;
-export const ISC_REQ_USE_DCE_STYLE = 512;
-export const ISC_REQ_DATAGRAM = 1024;
-export const ISC_REQ_CONNECTION = 2048;
-export const ISC_REQ_CALL_LEVEL = 4096;
-export const ISC_REQ_FRAGMENT_SUPPLIED = 8192;
-export const ISC_REQ_EXTENDED_ERROR = 16384;
-export const ISC_REQ_STREAM = 32768;
-export const ISC_REQ_INTEGRITY = 65536;
-export const ISC_REQ_IDENTIFY = 131072;
-export const ISC_REQ_NULL_SESSION = 262144;
-export const ISC_REQ_MANUAL_CRED_VALIDATION = 524288;
-export const ISC_REQ_RESERVED1 = 1048576;
-export const ISC_REQ_FRAGMENT_TO_FIT = 2097152;
-export const ISC_REQ_FORWARD_CREDENTIALS = 4194304;
-export const ISC_REQ_NO_INTEGRITY = 8388608;
-export const ISC_REQ_USE_HTTP_STYLE = 16777216;
-export const ISC_REQ_UNVERIFIED_TARGET_NAME = 536870912;
-export const ISC_REQ_CONFIDENTIALITY_ONLY = 1073741824;
-export const ISC_REQ_MESSAGES = 4294967296;
-export const ISC_REQ_DEFERRED_CRED_VALIDATION = 8589934592;
 export const ISC_RET_DELEGATE = 1;
 export const ISC_RET_MUTUAL_AUTH = 2;
 export const ISC_RET_REPLAY_DETECT = 4;
@@ -3086,25 +5626,6 @@ export const ISC_RET_REAUTHENTICATION = 134217728;
 export const ISC_RET_CONFIDENTIALITY_ONLY = 1073741824;
 export const ISC_RET_MESSAGES = 4294967296;
 export const ISC_RET_DEFERRED_CRED_VALIDATION = 8589934592;
-export const ASC_REQ_MUTUAL_AUTH = 2;
-export const ASC_REQ_CONFIDENTIALITY = 16;
-export const ASC_REQ_USE_SESSION_KEY = 32;
-export const ASC_REQ_SESSION_TICKET = 64;
-export const ASC_REQ_USE_DCE_STYLE = 512;
-export const ASC_REQ_DATAGRAM = 1024;
-export const ASC_REQ_CALL_LEVEL = 4096;
-export const ASC_REQ_FRAGMENT_SUPPLIED = 8192;
-export const ASC_REQ_INTEGRITY = 131072;
-export const ASC_REQ_LICENSING = 262144;
-export const ASC_REQ_IDENTIFY = 524288;
-export const ASC_REQ_ALLOW_NULL_SESSION = 1048576;
-export const ASC_REQ_ALLOW_NON_USER_LOGONS = 2097152;
-export const ASC_REQ_ALLOW_CONTEXT_REPLAY = 4194304;
-export const ASC_REQ_FRAGMENT_TO_FIT = 8388608;
-export const ASC_REQ_NO_TOKEN = 16777216;
-export const ASC_REQ_PROXY_BINDINGS = 67108864;
-export const ASC_REQ_ALLOW_MISSING_BINDINGS = 268435456;
-export const ASC_REQ_MESSAGES = 4294967296;
 export const ASC_RET_DELEGATE = 1;
 export const ASC_RET_MUTUAL_AUTH = 2;
 export const ASC_RET_REPLAY_DETECT = 4;
@@ -3162,6 +5683,11 @@ export const SECPKG_NEGOTIATION_TRY_MULTICRED = 4;
 export const MAX_PROTOCOL_ID_SIZE = 255;
 export const SECQOP_WRAP_NO_ENCRYPT = 2147483649;
 export const SECQOP_WRAP_OOB_DATA = 1073741824;
+export const SECURITY_ENTRYPOINT_ANSIW = "InitSecurityInterfaceW";
+export const SECURITY_ENTRYPOINT_ANSIA = "InitSecurityInterfaceA";
+export const SECURITY_ENTRYPOINT16 = "INITSECURITYINTERFACEA";
+export const SECURITY_ENTRYPOINT_ANSI = "InitSecurityInterfaceW";
+export const SECURITY_ENTRYPOINT = "INITSECURITYINTERFACEA";
 export const SECURITY_SUPPORT_PROVIDER_INTERFACE_VERSION = 1;
 export const SECURITY_SUPPORT_PROVIDER_INTERFACE_VERSION_2 = 2;
 export const SECURITY_SUPPORT_PROVIDER_INTERFACE_VERSION_3 = 3;
@@ -3244,11 +5770,20 @@ export const SE_ADT_PARAMETERS_SEND_TO_LSA = 2;
 export const SE_ADT_PARAMETER_EXTENSIBLE_AUDIT = 4;
 export const SE_ADT_PARAMETER_GENERIC_AUDIT = 8;
 export const SE_ADT_PARAMETER_WRITE_SYNCHRONOUS = 16;
+export const LSA_ADT_SECURITY_SOURCE_NAME = "Microsoft-Windows-Security-Auditing";
+export const LSA_ADT_LEGACY_SECURITY_SOURCE_NAME = "Security";
 export const SE_ADT_POLICY_AUDIT_EVENT_TYPE_EX_BEGIN = 100;
 export const POLICY_AUDIT_EVENT_UNCHANGED = 0;
 export const POLICY_AUDIT_EVENT_SUCCESS = 1;
 export const POLICY_AUDIT_EVENT_FAILURE = 2;
 export const POLICY_AUDIT_EVENT_NONE = 4;
+export const LSA_AP_NAME_INITIALIZE_PACKAGE = "LsaApInitializePackage ";
+export const LSA_AP_NAME_LOGON_USER = "LsaApLogonUser ";
+export const LSA_AP_NAME_LOGON_USER_EX = "LsaApLogonUserEx ";
+export const LSA_AP_NAME_CALL_PACKAGE = "LsaApCallPackage ";
+export const LSA_AP_NAME_LOGON_TERMINATED = "LsaApLogonTerminated ";
+export const LSA_AP_NAME_CALL_PACKAGE_UNTRUSTED = "LsaApCallPackageUntrusted ";
+export const LSA_AP_NAME_CALL_PACKAGE_PASSTHROUGH = "LsaApCallPackagePassthrough ";
 export const POLICY_VIEW_LOCAL_INFORMATION = 1;
 export const POLICY_VIEW_AUDIT_INFORMATION = 2;
 export const POLICY_GET_PRIVATE_INFORMATION = 4;
@@ -3313,8 +5848,11 @@ export const LSA_NB_DISABLED_CONFLICT = 8;
 export const MAX_RECORDS_IN_FOREST_TRUST_INFO = 4000;
 export const SECRET_SET_VALUE = 1;
 export const SECRET_QUERY_VALUE = 2;
+export const LSA_GLOBAL_SECRET_PREFIX = "G$";
 export const LSA_GLOBAL_SECRET_PREFIX_LENGTH = 2;
+export const LSA_LOCAL_SECRET_PREFIX = "L$";
 export const LSA_LOCAL_SECRET_PREFIX_LENGTH = 2;
+export const LSA_MACHINE_SECRET_PREFIX = "M$";
 export const LSA_SECRET_MAXIMUM_COUNT = 4096;
 export const LSA_SECRET_MAXIMUM_LENGTH = 512;
 export const MAXIMUM_CAPES_PER_CAP = 127;
@@ -3323,11 +5861,28 @@ export const CENTRAL_ACCESS_POLICY_STAGED_OWNER_RIGHTS_PRESENT_FLAG = 256;
 export const CENTRAL_ACCESS_POLICY_STAGED_FLAG = 65536;
 export const LSASETCAPS_RELOAD_FLAG = 1;
 export const LSASETCAPS_VALID_FLAG_MASK = 1;
+export const SE_INTERACTIVE_LOGON_NAME = "SeInteractiveLogonRight";
+export const SE_NETWORK_LOGON_NAME = "SeNetworkLogonRight";
+export const SE_BATCH_LOGON_NAME = "SeBatchLogonRight";
+export const SE_SERVICE_LOGON_NAME = "SeServiceLogonRight";
+export const SE_DENY_INTERACTIVE_LOGON_NAME = "SeDenyInteractiveLogonRight";
+export const SE_DENY_NETWORK_LOGON_NAME = "SeDenyNetworkLogonRight";
+export const SE_DENY_BATCH_LOGON_NAME = "SeDenyBatchLogonRight";
+export const SE_DENY_SERVICE_LOGON_NAME = "SeDenyServiceLogonRight";
+export const SE_REMOTE_INTERACTIVE_LOGON_NAME = "SeRemoteInteractiveLogonRight";
+export const SE_DENY_REMOTE_INTERACTIVE_LOGON_NAME = "SeDenyRemoteInteractiveLogonRight";
 export const NEGOTIATE_MAX_PREFIX = 32;
 export const NEGOTIATE_ALLOW_NTLM = 268435456;
 export const NEGOTIATE_NEG_NTLM = 536870912;
 export const MAX_USER_RECORDS = 1000;
 export const DOMAIN_NO_LM_OWF_CHANGE = 64;
+export const SAM_PASSWORD_CHANGE_NOTIFY_ROUTINE = "PasswordChangeNotify";
+export const SAM_INIT_NOTIFICATION_ROUTINE = "InitializeChangeNotify";
+export const SAM_PASSWORD_FILTER_ROUTINE = "PasswordFilter";
+export const MSV1_0_PACKAGE_NAME = "MICROSOFT_AUTHENTICATION_PACKAGE_V1_0";
+export const MSV1_0_PACKAGE_NAMEW = "MICROSOFT_AUTHENTICATION_PACKAGE_V1_0";
+export const MSV1_0_SUBAUTHENTICATION_KEY = "SYSTEM\CurrentControlSet\Control\Lsa\MSV1_0";
+export const MSV1_0_SUBAUTHENTICATION_VALUE = "Auth";
 export const MSV1_0_CHALLENGE_LENGTH = 8;
 export const MSV1_0_USER_SESSION_KEY_LENGTH = 16;
 export const MSV1_0_LANMAN_SESSION_KEY_LENGTH = 8;
@@ -3468,6 +6023,8 @@ export const KRB_NT_MS_PRINCIPAL = "-128";
 export const KRB_NT_MS_PRINCIPAL_AND_ID = "-129";
 export const KRB_NT_MS_BRANCH_ID = "-133";
 export const KRB_NT_X500_PRINCIPAL = 6;
+export const KRB_WELLKNOWN_STRING = "WELLKNOWN";
+export const KRB_ANONYMOUS_STRING = "ANONYMOUS";
 export const KERB_WRAP_NO_ENCRYPT = 2147483649;
 export const KERB_CERTIFICATE_LOGON_FLAG_CHECK_DUPLICATES = 1;
 export const KERB_CERTIFICATE_LOGON_FLAG_USE_CERTIFICATE_INFO = 2;
@@ -3511,6 +6068,13 @@ export const AUDIT_QUERY_USER_POLICY = 8;
 export const AUDIT_ENUMERATE_USERS = 16;
 export const AUDIT_SET_MISC_POLICY = 32;
 export const AUDIT_QUERY_MISC_POLICY = 64;
+export const PKU2U_PACKAGE_NAME_A = "pku2u";
+export const PKU2U_PACKAGE_NAME = "pku2u";
+export const PKU2U_PACKAGE_NAME_W = "pku2u";
+export const SAM_CREDENTIAL_UPDATE_NOTIFY_ROUTINE = "CredentialUpdateNotify";
+export const SAM_CREDENTIAL_UPDATE_REGISTER_ROUTINE = "CredentialUpdateRegister";
+export const SAM_CREDENTIAL_UPDATE_FREE_ROUTINE = "CredentialUpdateFree";
+export const SAM_CREDENTIAL_UPDATE_REGISTER_MAPPED_ENTRYPOINTS_ROUTINE = "RegisterMappedEntrypoints";
 export const SECPKG_CLIENT_PROCESS_TERMINATED = 1;
 export const SECPKG_CLIENT_THREAD_TERMINATED = 2;
 export const SECPKG_CALL_KERNEL_MODE = 1;
@@ -3603,9 +6167,13 @@ export const CREDP_FLAGS_USER_ENCRYPTED_PASSWORD = 16;
 export const CREDP_FLAGS_TRUSTED_CALLER = 32;
 export const CREDP_FLAGS_VALIDATE_PROXY_TARGET = 64;
 export const CRED_MARSHALED_TI_SIZE_SIZE = 12;
+export const LSA_AP_NAME_LOGON_USER_EX2 = "LsaApLogonUserEx2 ";
+export const SP_ACCEPT_CREDENTIALS_NAME = "SpAcceptCredentials ";
 export const SECPKG_UNICODE_ATTRIBUTE = 2147483648;
 export const SECPKG_ANSI_ATTRIBUTE = 0;
 export const SECPKG_CREDENTIAL_ATTRIBUTE = 0;
+export const SECPKG_LSAMODEINIT_NAME = "SpLsaModeInitialize";
+export const SECPKG_USERMODEINIT_NAME = "SpUserModeInitialize";
 export const SECPKG_INTERFACE_VERSION = 65536;
 export const SECPKG_INTERFACE_VERSION_2 = 131072;
 export const SECPKG_INTERFACE_VERSION_3 = 262144;
@@ -3616,6 +6184,27 @@ export const SECPKG_INTERFACE_VERSION_7 = 4194304;
 export const SECPKG_INTERFACE_VERSION_8 = 8388608;
 export const SECPKG_INTERFACE_VERSION_9 = 16777216;
 export const SECPKG_INTERFACE_VERSION_10 = 33554432;
+export const UNISP_NAME_A = "Microsoft Unified Security Protocol Provider";
+export const UNISP_NAME_W = "Microsoft Unified Security Protocol Provider";
+export const SSL2SP_NAME_A = "Microsoft SSL 2.0";
+export const SSL2SP_NAME_W = "Microsoft SSL 2.0";
+export const SSL3SP_NAME_A = "Microsoft SSL 3.0";
+export const SSL3SP_NAME_W = "Microsoft SSL 3.0";
+export const TLS1SP_NAME_A = "Microsoft TLS 1.0";
+export const TLS1SP_NAME_W = "Microsoft TLS 1.0";
+export const PCT1SP_NAME_A = "Microsoft PCT 1.0";
+export const PCT1SP_NAME_W = "Microsoft PCT 1.0";
+export const SCHANNEL_NAME_A = "Schannel";
+export const SCHANNEL_NAME_W = "Schannel";
+export const DEFAULT_TLS_SSP_NAME_A = "Default TLS SSP";
+export const DEFAULT_TLS_SSP_NAME_W = "Default TLS SSP";
+export const UNISP_NAME = "Microsoft Unified Security Protocol Provider";
+export const PCT1SP_NAME = "Microsoft PCT 1.0";
+export const SSL2SP_NAME = "Microsoft SSL 2.0";
+export const SSL3SP_NAME = "Microsoft SSL 3.0";
+export const TLS1SP_NAME = "Microsoft TLS 1.0";
+export const SCHANNEL_NAME = "Schannel";
+export const DEFAULT_TLS_SSP_NAME = "Default TLS SSP";
 export const UNISP_RPC_ID = 14;
 export const RCRED_STATUS_NOCRED = 0;
 export const RCRED_CRED_EXISTS = 1;
@@ -3720,12 +6309,68 @@ export const SCHANNEL_SECRET_PRIVKEY = 2;
 export const SCH_CRED_X509_CERTCHAIN = 1;
 export const SCH_CRED_X509_CAPI = 2;
 export const SCH_CRED_CERT_CONTEXT = 3;
+export const SSL_CRACK_CERTIFICATE_NAME = "SslCrackCertificate";
+export const SSL_FREE_CERTIFICATE_NAME = "SslFreeCertificate";
+export const SL_INFO_KEY_CHANNEL = "Channel";
+export const SL_INFO_KEY_NAME = "Name";
+export const SL_INFO_KEY_AUTHOR = "Author";
+export const SL_INFO_KEY_DESCRIPTION = "Description";
+export const SL_INFO_KEY_LICENSOR_URL = "LicensorUrl";
+export const SL_INFO_KEY_DIGITAL_PID = "DigitalPID";
+export const SL_INFO_KEY_DIGITAL_PID2 = "DigitalPID2";
+export const SL_INFO_KEY_PARTIAL_PRODUCT_KEY = "PartialProductKey";
+export const SL_INFO_KEY_PRODUCT_SKU_ID = "ProductSkuId";
+export const SL_INFO_KEY_LICENSE_TYPE = "LicenseType";
+export const SL_INFO_KEY_VERSION = "Version";
+export const SL_INFO_KEY_SYSTEM_STATE = "SystemState";
+export const SL_INFO_KEY_ACTIVE_PLUGINS = "ActivePlugins";
+export const SL_INFO_KEY_SECURE_STORE_ID = "SecureStoreId";
+export const SL_INFO_KEY_BIOS_PKEY = "BiosProductKey";
+export const SL_INFO_KEY_BIOS_SLIC_STATE = "BiosSlicState";
+export const SL_INFO_KEY_BIOS_OA2_MINOR_VERSION = "BiosOA2MinorVersion";
+export const SL_INFO_KEY_BIOS_PKEY_DESCRIPTION = "BiosProductKeyDescription";
+export const SL_INFO_KEY_BIOS_PKEY_PKPN = "BiosProductKeyPkPn";
+export const SL_INFO_KEY_SECURE_PROCESSOR_ACTIVATION_URL = "SPCURL";
+export const SL_INFO_KEY_RIGHT_ACCOUNT_ACTIVATION_URL = "RACURL";
+export const SL_INFO_KEY_PRODUCT_KEY_ACTIVATION_URL = "PKCURL";
+export const SL_INFO_KEY_USE_LICENSE_ACTIVATION_URL = "EULURL";
+export const SL_INFO_KEY_IS_KMS = "IsKeyManagementService";
+export const SL_INFO_KEY_KMS_CURRENT_COUNT = "KeyManagementServiceCurrentCount";
+export const SL_INFO_KEY_KMS_REQUIRED_CLIENT_COUNT = "KeyManagementServiceRequiredClientCount";
+export const SL_INFO_KEY_KMS_UNLICENSED_REQUESTS = "KeyManagementServiceUnlicensedRequests";
+export const SL_INFO_KEY_KMS_LICENSED_REQUESTS = "KeyManagementServiceLicensedRequests";
+export const SL_INFO_KEY_KMS_OOB_GRACE_REQUESTS = "KeyManagementServiceOOBGraceRequests";
+export const SL_INFO_KEY_KMS_OOT_GRACE_REQUESTS = "KeyManagementServiceOOTGraceRequests";
+export const SL_INFO_KEY_KMS_NON_GENUINE_GRACE_REQUESTS = "KeyManagementServiceNonGenuineGraceRequests";
+export const SL_INFO_KEY_KMS_NOTIFICATION_REQUESTS = "KeyManagementServiceNotificationRequests";
+export const SL_INFO_KEY_KMS_TOTAL_REQUESTS = "KeyManagementServiceTotalRequests";
+export const SL_INFO_KEY_KMS_FAILED_REQUESTS = "KeyManagementServiceFailedRequests";
+export const SL_INFO_KEY_IS_PRS = "IsPRS";
+export const SL_PKEY_MS2005 = "msft:rm/algorithm/pkey/2005";
+export const SL_PKEY_MS2009 = "msft:rm/algorithm/pkey/2009";
+export const SL_PKEY_DETECT = "msft:rm/algorithm/pkey/detect";
+export const SL_EVENT_LICENSING_STATE_CHANGED = "msft:rm/event/licensingstatechanged";
+export const SL_EVENT_POLICY_CHANGED = "msft:rm/event/policychanged";
+export const SL_EVENT_USER_NOTIFICATION = "msft:rm/event/usernotification";
 export const SL_SYSTEM_STATE_REBOOT_POLICY_FOUND = 1;
 export const SL_SYSTEM_STATE_TAMPERED = 2;
 export const SL_REARM_REBOOT_REQUIRED = 1;
 export const SPP_MIGRATION_GATHER_MIGRATABLE_APPS = 1;
 export const SPP_MIGRATION_GATHER_ACTIVATED_WINDOWS_STATE = 2;
 export const SPP_MIGRATION_GATHER_ALL = 4294967295;
+export const SL_PROP_BRT_DATA = "SL_BRT_DATA";
+export const SL_PROP_BRT_COMMIT = "SL_BRT_COMMIT";
+export const SL_PROP_GENUINE_RESULT = "SL_GENUINE_RESULT";
+export const SL_PROP_NONGENUINE_GRACE_FLAG = "SL_NONGENUINE_GRACE_FLAG";
+export const SL_PROP_GET_GENUINE_AUTHZ = "SL_GET_GENUINE_AUTHZ";
+export const SL_PROP_GET_GENUINE_SERVER_AUTHZ = "SL_GET_GENUINE_SERVER_AUTHZ";
+export const SL_PROP_LAST_ACT_ATTEMPT_HRESULT = "SL_LAST_ACT_ATTEMPT_HRESULT";
+export const SL_PROP_LAST_ACT_ATTEMPT_TIME = "SL_LAST_ACT_ATTEMPT_TIME";
+export const SL_PROP_LAST_ACT_ATTEMPT_SERVER_FLAGS = "SL_LAST_ACT_ATTEMPT_SERVER_FLAGS";
+export const SL_PROP_ACTIVATION_VALIDATION_IN_PROGRESS = "SL_ACTIVATION_VALIDATION_IN_PROGRESS";
+export const SL_POLICY_EVALUATION_MODE_ENABLED = "Security-SPP-EvaluationModeEnabled";
+export const SL_DEFAULT_MIGRATION_ENCRYPTOR_URI = "msft:spp/migrationencryptor/tokenact/1.0";
+export const ID_CAP_SLAPI = "slapiQueryLicenseValue";
 export const USER_ACCOUNT_DISABLED = 1;
 export const USER_HOME_DIRECTORY_REQUIRED = 2;
 export const USER_PASSWORD_NOT_REQUIRED = 4;
@@ -4182,12 +6827,177 @@ export const SL_REMAPPING_MDOLLAR_OSR_HARDWARE_BLOCKED = 4587972870482668480n;
 export const SL_REMAPPING_MDOLLAR_OSR_USER_BLOCKED = 4587973969994296257n;
 export const SL_REMAPPING_MDOLLAR_OSR_LICENSE_BLOCKED = 4587975069505924034n;
 export const SL_REMAPPING_MDOLLAR_OSR_DEVICE_BLOCKED = 3746996077534882755n;
+export const WDIGEST_SP_NAME_A = "WDigest";
+export const WDIGEST_SP_NAME_W = "WDigest";
+export const WDIGEST_SP_NAME = "WDigest";
+export const IDENTITY_KEYWORD_ASSOCIATED = "associated";
+export const IDENTITY_KEYWORD_LOCAL = "local";
+export const IDENTITY_KEYWORD_HOMEGROUP = "homegroup";
+export const IDENTITY_KEYWORD_CONNECTED = "connected";
+export const STR_OUT_OF_BOX_EXPERIENCE = "OutOfBoxExperience";
+export const STR_MODERN_SETTINGS_ADD_USER = "ModernSettingsAddUser";
+export const STR_OUT_OF_BOX_UPGRADE_EXPERIENCE = "OutOfBoxUpgradeExperience";
+export const STR_COMPLETE_ACCOUNT = "CompleteAccount";
+export const STR_NTH_USER_FIRST_AUTH = "NthUserFirstAuth";
+export const STR_USER_NAME = "Username";
+export const STR_PROPERTY_STORE = "PropertyStore";
 export const SDDL_REVISION_1 = 1;
 export const SDDL_REVISION = 1;
+export const SDDL_OWNER = "O";
+export const SDDL_GROUP = "G";
+export const SDDL_DACL = "D";
+export const SDDL_SACL = "S";
+export const SDDL_PROTECTED = "P";
+export const SDDL_AUTO_INHERIT_REQ = "AR";
+export const SDDL_AUTO_INHERITED = "AI";
+export const SDDL_NULL_ACL = "NO_ACCESS_CONTROL";
+export const SDDL_ACCESS_ALLOWED = "A";
+export const SDDL_ACCESS_DENIED = "D";
+export const SDDL_OBJECT_ACCESS_ALLOWED = "OA";
+export const SDDL_OBJECT_ACCESS_DENIED = "OD";
+export const SDDL_AUDIT = "AU";
+export const SDDL_ALARM = "AL";
+export const SDDL_OBJECT_AUDIT = "OU";
+export const SDDL_OBJECT_ALARM = "OL";
+export const SDDL_MANDATORY_LABEL = "ML";
+export const SDDL_PROCESS_TRUST_LABEL = "TL";
+export const SDDL_CALLBACK_ACCESS_ALLOWED = "XA";
+export const SDDL_CALLBACK_ACCESS_DENIED = "XD";
+export const SDDL_RESOURCE_ATTRIBUTE = "RA";
+export const SDDL_SCOPED_POLICY_ID = "SP";
+export const SDDL_CALLBACK_AUDIT = "XU";
+export const SDDL_CALLBACK_OBJECT_ACCESS_ALLOWED = "ZA";
+export const SDDL_ACCESS_FILTER = "FL";
+export const SDDL_INT = "TI";
+export const SDDL_UINT = "TU";
+export const SDDL_WSTRING = "TS";
+export const SDDL_SID = "TD";
+export const SDDL_BLOB = "TX";
+export const SDDL_BOOLEAN = "TB";
+export const SDDL_CONTAINER_INHERIT = "CI";
+export const SDDL_OBJECT_INHERIT = "OI";
+export const SDDL_NO_PROPAGATE = "NP";
+export const SDDL_INHERIT_ONLY = "IO";
+export const SDDL_INHERITED = "ID";
+export const SDDL_CRITICAL = "CR";
+export const SDDL_TRUST_PROTECTED_FILTER = "TP";
+export const SDDL_AUDIT_SUCCESS = "SA";
+export const SDDL_AUDIT_FAILURE = "FA";
+export const SDDL_READ_PROPERTY = "RP";
+export const SDDL_WRITE_PROPERTY = "WP";
+export const SDDL_CREATE_CHILD = "CC";
+export const SDDL_DELETE_CHILD = "DC";
+export const SDDL_LIST_CHILDREN = "LC";
+export const SDDL_SELF_WRITE = "SW";
+export const SDDL_LIST_OBJECT = "LO";
+export const SDDL_DELETE_TREE = "DT";
+export const SDDL_CONTROL_ACCESS = "CR";
+export const SDDL_READ_CONTROL = "RC";
+export const SDDL_WRITE_DAC = "WD";
+export const SDDL_WRITE_OWNER = "WO";
+export const SDDL_STANDARD_DELETE = "SD";
+export const SDDL_GENERIC_ALL = "GA";
+export const SDDL_GENERIC_READ = "GR";
+export const SDDL_GENERIC_WRITE = "GW";
+export const SDDL_GENERIC_EXECUTE = "GX";
+export const SDDL_FILE_ALL = "FA";
+export const SDDL_FILE_READ = "FR";
+export const SDDL_FILE_WRITE = "FW";
+export const SDDL_FILE_EXECUTE = "FX";
+export const SDDL_KEY_ALL = "KA";
+export const SDDL_KEY_READ = "KR";
+export const SDDL_KEY_WRITE = "KW";
+export const SDDL_KEY_EXECUTE = "KX";
+export const SDDL_NO_WRITE_UP = "NW";
+export const SDDL_NO_READ_UP = "NR";
+export const SDDL_NO_EXECUTE_UP = "NX";
 export const SDDL_ALIAS_SIZE = 2;
+export const SDDL_DOMAIN_ADMINISTRATORS = "DA";
+export const SDDL_DOMAIN_GUESTS = "DG";
+export const SDDL_DOMAIN_USERS = "DU";
+export const SDDL_ENTERPRISE_DOMAIN_CONTROLLERS = "ED";
+export const SDDL_DOMAIN_DOMAIN_CONTROLLERS = "DD";
+export const SDDL_DOMAIN_COMPUTERS = "DC";
+export const SDDL_BUILTIN_ADMINISTRATORS = "BA";
+export const SDDL_BUILTIN_GUESTS = "BG";
+export const SDDL_BUILTIN_USERS = "BU";
+export const SDDL_LOCAL_ADMIN = "LA";
+export const SDDL_LOCAL_GUEST = "LG";
+export const SDDL_ACCOUNT_OPERATORS = "AO";
+export const SDDL_BACKUP_OPERATORS = "BO";
+export const SDDL_PRINTER_OPERATORS = "PO";
+export const SDDL_SERVER_OPERATORS = "SO";
+export const SDDL_AUTHENTICATED_USERS = "AU";
+export const SDDL_PERSONAL_SELF = "PS";
+export const SDDL_CREATOR_OWNER = "CO";
+export const SDDL_CREATOR_GROUP = "CG";
+export const SDDL_LOCAL_SYSTEM = "SY";
+export const SDDL_POWER_USERS = "PU";
+export const SDDL_EVERYONE = "WD";
+export const SDDL_REPLICATOR = "RE";
+export const SDDL_INTERACTIVE = "IU";
+export const SDDL_NETWORK = "NU";
+export const SDDL_SERVICE = "SU";
+export const SDDL_RESTRICTED_CODE = "RC";
+export const SDDL_WRITE_RESTRICTED_CODE = "WR";
+export const SDDL_ANONYMOUS = "AN";
+export const SDDL_SCHEMA_ADMINISTRATORS = "SA";
+export const SDDL_CERT_SERV_ADMINISTRATORS = "CA";
+export const SDDL_RAS_SERVERS = "RS";
+export const SDDL_ENTERPRISE_ADMINS = "EA";
+export const SDDL_GROUP_POLICY_ADMINS = "PA";
+export const SDDL_ALIAS_PREW2KCOMPACC = "RU";
+export const SDDL_LOCAL_SERVICE = "LS";
+export const SDDL_NETWORK_SERVICE = "NS";
+export const SDDL_REMOTE_DESKTOP = "RD";
+export const SDDL_NETWORK_CONFIGURATION_OPS = "NO";
+export const SDDL_PERFMON_USERS = "MU";
+export const SDDL_PERFLOG_USERS = "LU";
+export const SDDL_IIS_USERS = "IS";
+export const SDDL_CRYPTO_OPERATORS = "CY";
+export const SDDL_OWNER_RIGHTS = "OW";
+export const SDDL_EVENT_LOG_READERS = "ER";
+export const SDDL_ENTERPRISE_RO_DCs = "RO";
+export const SDDL_CERTSVC_DCOM_ACCESS = "CD";
+export const SDDL_ALL_APP_PACKAGES = "AC";
+export const SDDL_RDS_REMOTE_ACCESS_SERVERS = "RA";
+export const SDDL_RDS_ENDPOINT_SERVERS = "ES";
+export const SDDL_RDS_MANAGEMENT_SERVERS = "MS";
+export const SDDL_USER_MODE_DRIVERS = "UD";
+export const SDDL_HYPER_V_ADMINS = "HA";
+export const SDDL_CLONEABLE_CONTROLLERS = "CN";
+export const SDDL_ACCESS_CONTROL_ASSISTANCE_OPS = "AA";
+export const SDDL_REMOTE_MANAGEMENT_USERS = "RM";
+export const SDDL_AUTHORITY_ASSERTED = "AS";
+export const SDDL_SERVICE_ASSERTED = "SS";
+export const SDDL_PROTECTED_USERS = "AP";
+export const SDDL_KEY_ADMINS = "KA";
+export const SDDL_ENTERPRISE_KEY_ADMINS = "EK";
+export const SDDL_ML_LOW = "LW";
+export const SDDL_ML_MEDIUM = "ME";
+export const SDDL_ML_MEDIUM_PLUS = "MP";
+export const SDDL_ML_HIGH = "HI";
+export const SDDL_ML_SYSTEM = "SI";
+export const SDDL_SEPERATOR = ";";
+export const SDDL_DELIMINATOR = ":";
+export const SDDL_ACE_BEGIN = "(";
+export const SDDL_ACE_END = ")";
+export const SDDL_ACE_COND_BEGIN = "(";
+export const SDDL_ACE_COND_END = ")";
+export const SDDL_SPACE = " ";
+export const SDDL_ACE_COND_BLOB_PREFIX = "#";
+export const SDDL_ACE_COND_SID_PREFIX = "SID";
+export const SDDL_ACE_COND_ATTRIBUTE_PREFIX = "@";
+export const SDDL_ACE_COND_USER_ATTRIBUTE_PREFIX = "@USER.";
+export const SDDL_ACE_COND_RESOURCE_ATTRIBUTE_PREFIX = "@RESOURCE.";
+export const SDDL_ACE_COND_DEVICE_ATTRIBUTE_PREFIX = "@DEVICE.";
+export const SDDL_ACE_COND_TOKEN_ATTRIBUTE_PREFIX = "@TOKEN.";
 export const INHERITED_ACCESS_ENTRY = 16;
 export const INHERITED_PARENT = 268435456;
 export const INHERITED_GRANDPARENT = 536870912;
+export const ACCCTRL_DEFAULT_PROVIDERA = "Windows NT Access Provider";
+export const ACCCTRL_DEFAULT_PROVIDERW = "Windows NT Access Provider";
+export const ACCCTRL_DEFAULT_PROVIDER = "Windows NT Access Provider";
 export const TRUSTEE_ACCESS_ALLOWED = 1;
 export const TRUSTEE_ACCESS_READ = 2;
 export const TRUSTEE_ACCESS_WRITE = 4;
@@ -4312,7 +7122,7 @@ export const AUTHZ_RPC_INIT_INFO_CLIENT_VERSION_V1 = 1;
 export const AUTHZ_INIT_INFO_VERSION_V1 = 1;
 export const AUTHZ_WPD_CATEGORY_FLAG = 16;
 export const AUTHZ_FLAG_ALLOW_MULTIPLE_SOURCE_INSTANCES = 1;
-export const OLESCRIPT_E_SYNTAX = 1227512517316706561n;
+export const OLESCRIPT_E_SYNTAX = 1227512508726771969n;
 export const SI_EDIT_PERMS = 0;
 export const SI_EDIT_OWNER = 1;
 export const SI_CONTAINER = 4;
@@ -4336,6 +7146,7 @@ export const DOBJ_RES_ROOT = 2;
 export const DOBJ_VOL_NTACLS = 4;
 export const DOBJ_COND_NTACLS = 8;
 export const DOBJ_RIBBON_LAUNCH = 16;
+export const CFSTR_ACLUI_SID_INFO_LIST = "CFSTR_ACLUI_SID_INFO_LIST";
 export const SECURITY_OBJECT_ID_OBJECT_SD = 1;
 export const SECURITY_OBJECT_ID_SHARE = 2;
 export const SECURITY_OBJECT_ID_CENTRAL_POLICY = 3;
@@ -4360,130 +7171,46 @@ export const SCESTATUS_EXCEPTION_IN_SERVER = 16;
 export const SCESTATUS_NO_TEMPLATE_GIVEN = 17;
 export const SCESTATUS_NO_MAPPING = 18;
 export const SCESTATUS_TRUST_FAIL = 19;
+export const SCE_ROOT_PATH = "Software\Microsoft\Windows NT\CurrentVersion\SeCEdit";
 export const SCESVC_ENUMERATION_MAX = 100;
+export const struuidNodetypeSceTemplateServices = "{24a7f717-1f0c-11d1-affb-00c04fb984f9}";
+export const lstruuidNodetypeSceTemplateServices = "{24a7f717-1f0c-11d1-affb-00c04fb984f9}";
+export const struuidNodetypeSceAnalysisServices = "{678050c7-1ff8-11d1-affb-00c04fb984f9}";
+export const lstruuidNodetypeSceAnalysisServices = "{678050c7-1ff8-11d1-affb-00c04fb984f9}";
+export const struuidNodetypeSceEventLog = "{2ce06698-4bf3-11d1-8c30-00c04fb984f9}";
+export const lstruuidNodetypeSceEventLog = "{2ce06698-4bf3-11d1-8c30-00c04fb984f9}";
+export const CCF_SCESVC_ATTACHMENT = "CCF_SCESVC_ATTACHMENT";
+export const CCF_SCESVC_ATTACHMENT_DATA = "CCF_SCESVC_ATTACHMENT_DATA";
+export const wszCERTENROLLSHAREPATH = "CertSrv\CertEnroll";
+export const cwcHRESULTSTRING = 40;
+export const szLBRACE = "{";
+export const szRBRACE = "}";
+export const wszLBRACE = "{";
+export const wszRBRACE = "}";
+export const szLPAREN = "(";
+export const szRPAREN = ")";
+export const wszLPAREN = "(";
+export const wszRPAREN = ")";
 export const CVT_SECONDS = 1;
-export const FILE_DEVICE_SMARTCARD = 49;
-export const SCARD_ATR_LENGTH = 33;
-export const SCARD_PROTOCOL_UNDEFINED = 0;
-export const SCARD_PROTOCOL_T0 = 1;
-export const SCARD_PROTOCOL_T1 = 2;
-export const SCARD_PROTOCOL_RAW = 65536;
-export const SCARD_PROTOCOL_DEFAULT = 2147483648;
-export const SCARD_PROTOCOL_OPTIMAL = 0;
-export const SCARD_POWER_DOWN = 0;
-export const SCARD_COLD_RESET = 1;
-export const SCARD_WARM_RESET = 2;
-export const MAXIMUM_ATTR_STRING_LENGTH = 32;
-export const MAXIMUM_SMARTCARD_READERS = 10;
-export const SCARD_CLASS_VENDOR_INFO = 1;
-export const SCARD_CLASS_COMMUNICATIONS = 2;
-export const SCARD_CLASS_PROTOCOL = 3;
-export const SCARD_CLASS_POWER_MGMT = 4;
-export const SCARD_CLASS_SECURITY = 5;
-export const SCARD_CLASS_MECHANICAL = 6;
-export const SCARD_CLASS_VENDOR_DEFINED = 7;
-export const SCARD_CLASS_IFD_PROTOCOL = 8;
-export const SCARD_CLASS_ICC_STATE = 9;
-export const SCARD_CLASS_PERF = 32766;
-export const SCARD_CLASS_SYSTEM = 32767;
-export const SCARD_T0_HEADER_LENGTH = 7;
-export const SCARD_T0_CMD_LENGTH = 5;
-export const SCARD_T1_PROLOGUE_LENGTH = 3;
-export const SCARD_T1_EPILOGUE_LENGTH = 2;
-export const SCARD_T1_EPILOGUE_LENGTH_LRC = 1;
-export const SCARD_T1_MAX_IFS = 254;
-export const SCARD_UNKNOWN = 0;
-export const SCARD_ABSENT = 1;
-export const SCARD_PRESENT = 2;
-export const SCARD_SWALLOWED = 3;
-export const SCARD_POWERED = 4;
-export const SCARD_NEGOTIABLE = 5;
-export const SCARD_SPECIFIC = 6;
-export const SCARD_READER_SWALLOWS = 1;
-export const SCARD_READER_EJECTS = 2;
-export const SCARD_READER_CONFISCATES = 4;
-export const SCARD_READER_CONTACTLESS = 8;
-export const SCARD_READER_TYPE_SERIAL = 1;
-export const SCARD_READER_TYPE_PARALELL = 2;
-export const SCARD_READER_TYPE_KEYBOARD = 4;
-export const SCARD_READER_TYPE_SCSI = 8;
-export const SCARD_READER_TYPE_IDE = 16;
-export const SCARD_READER_TYPE_USB = 32;
-export const SCARD_READER_TYPE_PCMCIA = 64;
-export const SCARD_READER_TYPE_TPM = 128;
-export const SCARD_READER_TYPE_NFC = 256;
-export const SCARD_READER_TYPE_UICC = 512;
-export const SCARD_READER_TYPE_NGC = 1024;
-export const SCARD_READER_TYPE_EMBEDDEDSE = 2048;
-export const SCARD_READER_TYPE_VENDOR = 240;
-export const STATUS_LOGON_FAILURE = 116568633639021;
-export const STATUS_WRONG_PASSWORD = 124265215033450;
-export const STATUS_PASSWORD_EXPIRED = 602552773116017;
-export const STATUS_PASSWORD_MUST_CHANGE = 37403796439588;
-export const STATUS_ACCESS_DENIED = 993978912604194;
-export const STATUS_DOWNGRADE_DETECTED = 1146811028865928;
-export const STATUS_AUTHENTICATION_FIREWALL_FAILED = 125364726662163;
-export const STATUS_ACCOUNT_DISABLED = 120966680150130;
-export const STATUS_ACCOUNT_RESTRICTION = 620144959160430;
-export const STATUS_ACCOUNT_LOCKED_OUT = 443123587088948;
-export const STATUS_ACCOUNT_EXPIRED = 381550935933331;
-export const STATUS_LOGON_TYPE_NOT_GRANTED = 104474005733723;
-export const STATUS_NO_SUCH_LOGON_SESSION = 109971563872351;
-export const STATUS_NO_SUCH_USER = 67693652788379748n;
-export const CRED_MAX_STRING_LENGTH = 256;
-export const CRED_MAX_GENERIC_TARGET_NAME_LENGTH = 32767;
-export const CRED_MAX_TARGETNAME_NAMESPACE_LENGTH = 256;
-export const CRED_MAX_TARGETNAME_ATTRIBUTE_LENGTH = 256;
-export const CRED_MAX_VALUE_SIZE = 256;
-export const CRED_MAX_ATTRIBUTES = 64;
-export const CRED_LOGON_TYPES_MASK = 61440;
-export const CRED_TI_SERVER_FORMAT_UNKNOWN = 1;
-export const CRED_TI_DOMAIN_FORMAT_UNKNOWN = 2;
-export const CRED_TI_ONLY_PASSWORD_REQUIRED = 4;
-export const CRED_TI_USERNAME_TARGET = 8;
-export const CRED_TI_CREATE_EXPLICIT_CRED = 16;
-export const CRED_TI_WORKGROUP_MEMBER = 32;
-export const CRED_TI_DNSTREE_IS_DFS_SERVER = 64;
-export const CRED_TI_VALID_FLAGS = 61567;
-export const CERT_HASH_LENGTH = 20;
-export const CREDUI_MAX_MESSAGE_LENGTH = 1024;
-export const CREDUI_MAX_CAPTION_LENGTH = 128;
-export const CREDUI_MAX_GENERIC_TARGET_LENGTH = 32767;
-export const CREDUIWIN_IGNORE_CLOUDAUTHORITY_NAME = 262144;
-export const CREDUIWIN_DOWNLEVEL_HELLO_AS_SMART_CARD = 2147483648;
-export const CRED_PRESERVE_CREDENTIAL_BLOB = 1;
-export const CRED_CACHE_TARGET_INFORMATION = 1;
-export const CRED_ALLOW_NAME_RESOLUTION = 1;
-export const CRED_PROTECT_AS_SELF = 1;
-export const CRED_PROTECT_TO_SYSTEM = 2;
-export const CRED_UNPROTECT_AS_SELF = 1;
-export const CRED_UNPROTECT_ALLOW_TO_SYSTEM = 2;
-export const SCARD_SCOPE_TERMINAL = 1;
-export const SCARD_PROVIDER_PRIMARY = 1;
-export const SCARD_PROVIDER_CSP = 2;
-export const SCARD_PROVIDER_KSP = 3;
-export const SCARD_STATE_UNPOWERED = 1024;
-export const SCARD_SHARE_EXCLUSIVE = 1;
-export const SCARD_SHARE_SHARED = 2;
-export const SCARD_SHARE_DIRECT = 3;
-export const SCARD_LEAVE_CARD = 0;
-export const SCARD_RESET_CARD = 1;
-export const SCARD_UNPOWER_CARD = 2;
-export const SCARD_EJECT_CARD = 3;
-export const SC_DLG_MINIMAL_UI = 1;
-export const SC_DLG_NO_UI = 2;
-export const SC_DLG_FORCE_UI = 4;
-export const SCERR_NOCARDNAME = 16384;
-export const SCERR_NOGUIDS = 32768;
-export const SCARD_AUDIT_CHV_FAILURE = 0;
-export const SCARD_AUDIT_CHV_SUCCESS = 1;
-export const CREDSSP_SERVER_AUTH_NEGOTIATE = 1;
-export const CREDSSP_SERVER_AUTH_CERTIFICATE = 2;
-export const CREDSSP_SERVER_AUTH_LOOPBACK = 4;
-export const SECPKG_ALT_ATTR = 2147483648;
-export const SECPKG_ATTR_C_FULL_IDENT_TOKEN = 2147483781;
-export const CREDSSP_CRED_EX_VERSION = 0;
-export const CREDSSP_FLAG_REDIRECT = 1;
+export const cwcFILENAMESUFFIXMAX = 20;
+export const wszFCSAPARM_SERVERDNSNAME = "%1";
+export const wszFCSAPARM_SERVERSHORTNAME = "%2";
+export const wszFCSAPARM_SANITIZEDCANAME = "%3";
+export const wszFCSAPARM_CERTFILENAMESUFFIX = "%4";
+export const wszFCSAPARM_DOMAINDN = "%5";
+export const wszFCSAPARM_CONFIGDN = "%6";
+export const wszFCSAPARM_SANITIZEDCANAMEHASH = "%7";
+export const wszFCSAPARM_CRLFILENAMESUFFIX = "%8";
+export const wszFCSAPARM_CRLDELTAFILENAMESUFFIX = "%9";
+export const wszFCSAPARM_DSCRLATTRIBUTE = "%10";
+export const wszFCSAPARM_DSCACERTATTRIBUTE = "%11";
+export const wszFCSAPARM_DSUSERCERTATTRIBUTE = "%12";
+export const wszFCSAPARM_DSKRACERTATTRIBUTE = "%13";
+export const wszFCSAPARM_DSCROSSCERTPAIRATTRIBUTE = "%14";
+export const szOID_CATALOG_LIST = "1.3.6.1.4.1.311.12.1.1";
+export const szOID_CATALOG_LIST_MEMBER = "1.3.6.1.4.1.311.12.1.2";
+export const szOID_CATALOG_LIST_MEMBER2 = "1.3.6.1.4.1.311.12.1.3";
+export const CRYPTCAT_FILEEXT = "CAT";
 export const CRYPTCAT_MAX_MEMBERTAG = 64;
 export const CRYPTCAT_MEMBER_SORTED = 1073741824;
 export const CRYPTCAT_ATTR_AUTHENTICATED = 268435456;
@@ -4508,408 +7235,6 @@ export const CRYPTCAT_E_CDF_ATTR_TOOFEWVALUES = 131074;
 export const CRYPTCAT_E_CDF_ATTR_TYPECOMBO = 131076;
 export const CRYPTCAT_ADDCATALOG_NONE = 0;
 export const CRYPTCAT_ADDCATALOG_HARDLINK = 1;
-export const CA_DISP_INCOMPLETE = 0;
-export const CA_DISP_ERROR = 1;
-export const CA_DISP_REVOKED = 2;
-export const CA_DISP_VALID = 3;
-export const CA_DISP_INVALID = 4;
-export const CA_DISP_UNDER_SUBMISSION = 5;
-export const KRA_DISP_EXPIRED = 0;
-export const KRA_DISP_NOTFOUND = 1;
-export const KRA_DISP_REVOKED = 2;
-export const KRA_DISP_VALID = 3;
-export const KRA_DISP_INVALID = 4;
-export const KRA_DISP_UNTRUSTED = 5;
-export const KRA_DISP_NOTLOADED = 6;
-export const CA_ACCESS_MASKROLES = 255;
-export const CA_CRL_BASE = 1;
-export const CA_CRL_DELTA = 2;
-export const CA_CRL_REPUBLISH = 16;
-export const ICF_ALLOWFOREIGN = 65536;
-export const ICF_EXISTINGROW = 131072;
-export const IKF_OVERWRITE = 65536;
-export const CSBACKUP_TYPE_MASK = 3;
-export const CSRESTORE_TYPE_FULL = 1;
-export const CSRESTORE_TYPE_ONLINE = 2;
-export const CSRESTORE_TYPE_CATCHUP = 4;
-export const CSRESTORE_TYPE_MASK = 5;
-export const CSBACKUP_DISABLE_INCREMENTAL = 4294967295;
-export const CSBFT_DIRECTORY = 128;
-export const CSBFT_DATABASE_DIRECTORY = 64;
-export const CSBFT_LOG_DIRECTORY = 32;
-export const CSCONTROL_SHUTDOWN = 1;
-export const CSCONTROL_SUSPEND = 2;
-export const CSCONTROL_RESTART = 3;
-export const CAIF_DSENTRY = 1;
-export const CAIF_SHAREDFOLDERENTRY = 2;
-export const CAIF_REGISTRY = 4;
-export const CAIF_LOCAL = 8;
-export const CAIF_REGISTRYPARENT = 16;
-export const CR_IN_ENCODEANY = 255;
-export const CR_IN_ENCODEMASK = 255;
-export const CR_IN_FORMATANY = 0;
-export const CR_IN_PKCS10 = 256;
-export const CR_IN_KEYGEN = 512;
-export const CR_IN_PKCS7 = 768;
-export const CR_IN_CMC = 1024;
-export const CR_IN_CHALLENGERESPONSE = 1280;
-export const CR_IN_SIGNEDCERTIFICATETIMESTAMPLIST = 1536;
-export const CR_IN_FORMATMASK = 65280;
-export const CR_IN_SCEP = 65536;
-export const CR_IN_RPC = 131072;
-export const CR_IN_HTTP = 196608;
-export const CR_IN_FULLRESPONSE = 262144;
-export const CR_IN_CRLS = 524288;
-export const CR_IN_MACHINE = 1048576;
-export const CR_IN_ROBO = 2097152;
-export const CR_IN_CLIENTIDNONE = 4194304;
-export const CR_IN_CONNECTONLY = 8388608;
-export const CR_IN_RETURNCHALLENGE = 16777216;
-export const CR_IN_SCEPPOST = 33554432;
-export const CR_IN_CERTIFICATETRANSPARENCY = 67108864;
-export const CC_UIPICKCONFIGSKIPLOCALCA = 5;
-export const CR_DISP_REVOKED = 6;
-export const CR_OUT_BASE64REQUESTHEADER = 3;
-export const CR_OUT_HEX = 4;
-export const CR_OUT_HEXASCII = 5;
-export const CR_OUT_BASE64X509CRLHEADER = 9;
-export const CR_OUT_HEXADDR = 10;
-export const CR_OUT_HEXASCIIADDR = 11;
-export const CR_OUT_HEXRAW = 12;
-export const CR_OUT_ENCODEMASK = 255;
-export const CR_OUT_CHAIN = 256;
-export const CR_OUT_CRLS = 512;
-export const CR_OUT_NOCRLF = 1073741824;
-export const CR_OUT_NOCR = 2147483648;
-export const CR_GEMT_DEFAULT = 0;
-export const CR_GEMT_HRESULT_STRING = 1;
-export const CR_GEMT_HTTP_ERROR = 2;
-export const CR_PROP_NONE = 0;
-export const CR_PROP_FILEVERSION = 1;
-export const CR_PROP_PRODUCTVERSION = 2;
-export const CR_PROP_EXITCOUNT = 3;
-export const CR_PROP_EXITDESCRIPTION = 4;
-export const CR_PROP_POLICYDESCRIPTION = 5;
-export const CR_PROP_CANAME = 6;
-export const CR_PROP_SANITIZEDCANAME = 7;
-export const CR_PROP_SHAREDFOLDER = 8;
-export const CR_PROP_PARENTCA = 9;
-export const CR_PROP_CATYPE = 10;
-export const CR_PROP_CASIGCERTCOUNT = 11;
-export const CR_PROP_CASIGCERT = 12;
-export const CR_PROP_CASIGCERTCHAIN = 13;
-export const CR_PROP_CAXCHGCERTCOUNT = 14;
-export const CR_PROP_CAXCHGCERT = 15;
-export const CR_PROP_CAXCHGCERTCHAIN = 16;
-export const CR_PROP_BASECRL = 17;
-export const CR_PROP_DELTACRL = 18;
-export const CR_PROP_CACERTSTATE = 19;
-export const CR_PROP_CRLSTATE = 20;
-export const CR_PROP_CAPROPIDMAX = 21;
-export const CR_PROP_DNSNAME = 22;
-export const CR_PROP_ROLESEPARATIONENABLED = 23;
-export const CR_PROP_KRACERTUSEDCOUNT = 24;
-export const CR_PROP_KRACERTCOUNT = 25;
-export const CR_PROP_KRACERT = 26;
-export const CR_PROP_KRACERTSTATE = 27;
-export const CR_PROP_ADVANCEDSERVER = 28;
-export const CR_PROP_TEMPLATES = 29;
-export const CR_PROP_BASECRLPUBLISHSTATUS = 30;
-export const CR_PROP_DELTACRLPUBLISHSTATUS = 31;
-export const CR_PROP_CASIGCERTCRLCHAIN = 32;
-export const CR_PROP_CAXCHGCERTCRLCHAIN = 33;
-export const CR_PROP_CACERTSTATUSCODE = 34;
-export const CR_PROP_CAFORWARDCROSSCERT = 35;
-export const CR_PROP_CABACKWARDCROSSCERT = 36;
-export const CR_PROP_CAFORWARDCROSSCERTSTATE = 37;
-export const CR_PROP_CABACKWARDCROSSCERTSTATE = 38;
-export const CR_PROP_CACERTVERSION = 39;
-export const CR_PROP_SANITIZEDCASHORTNAME = 40;
-export const CR_PROP_CERTCDPURLS = 41;
-export const CR_PROP_CERTAIAURLS = 42;
-export const CR_PROP_CERTAIAOCSPURLS = 43;
-export const CR_PROP_LOCALENAME = 44;
-export const CR_PROP_SUBJECTTEMPLATE_OIDS = 45;
-export const CR_PROP_SCEPSERVERCERTS = 1000;
-export const CR_PROP_SCEPSERVERCAPABILITIES = 1001;
-export const CR_PROP_SCEPSERVERCERTSCHAIN = 1002;
-export const CR_PROP_SCEPMIN = 1000;
-export const CR_PROP_SCEPMAX = 1002;
-export const FR_PROP_CLAIMCHALLENGE = 22;
-export const EAN_NAMEOBJECTID = 2147483648;
-export const EANR_SUPPRESS_IA5CONVERSION = 2147483648;
-export const CERTENROLL_INDEX_BASE = 0;
-export const EXITEVENT_INVALID = 0;
-export const EXITEVENT_STARTUP = 128;
-export const EXITEVENT_CERTIMPORTED = 512;
-export const ENUMEXT_OBJECTID = 1;
-export const CMM_REFRESHONLY = 1;
-export const CMM_READONLY = 2;
-export const DBG_CERTSRV = 1;
-export const DBSESSIONCOUNTDEFAULT = 100;
-export const DBFLAGS_READONLY = 1;
-export const DBFLAGS_CREATEIFNEEDED = 2;
-export const DBFLAGS_CIRCULARLOGGING = 4;
-export const DBFLAGS_LAZYFLUSH = 8;
-export const DBFLAGS_MAXCACHESIZEX100 = 16;
-export const DBFLAGS_CHECKPOINTDEPTH60MB = 32;
-export const DBFLAGS_LOGBUFFERSLARGE = 64;
-export const DBFLAGS_LOGBUFFERSHUGE = 128;
-export const DBFLAGS_LOGFILESIZE16MB = 256;
-export const DBFLAGS_MULTITHREADTRANSACTIONS = 512;
-export const DBFLAGS_DISABLESNAPSHOTBACKUP = 1024;
-export const DBFLAGS_ENABLEVOLATILEREQUESTS = 2048;
-export const LDAPF_SSLENABLE = 1;
-export const LDAPF_SIGNDISABLE = 2;
-export const CSVER_MAJOR_WIN2K = 1;
-export const CSVER_MINOR_WIN2K = 1;
-export const CSVER_MAJOR_WHISTLER = 2;
-export const CSVER_MINOR_WHISTLER_BETA2 = 1;
-export const CSVER_MINOR_WHISTLER_BETA3 = 2;
-export const CSVER_MAJOR_LONGHORN = 3;
-export const CSVER_MINOR_LONGHORN_BETA1 = 1;
-export const CSVER_MAJOR_WIN7 = 4;
-export const CSVER_MINOR_WIN7 = 1;
-export const CSVER_MAJOR_WIN8 = 5;
-export const CSVER_MINOR_WIN8 = 1;
-export const CSVER_MAJOR_WINBLUE = 6;
-export const CSVER_MINOR_WINBLUE = 1;
-export const CSVER_MAJOR_THRESHOLD = 7;
-export const CSVER_MINOR_THRESHOLD = 1;
-export const CSVER_MAJOR = 7;
-export const CSVER_MINOR = 1;
-export const CCLOCKSKEWMINUTESDEFAULT = 10;
-export const CVIEWAGEMINUTESDEFAULT = 16;
-export const SETUP_SERVER_FLAG = 1;
-export const SETUP_CLIENT_FLAG = 2;
-export const SETUP_SUSPEND_FLAG = 4;
-export const SETUP_REQUEST_FLAG = 8;
-export const SETUP_ONLINE_FLAG = 16;
-export const SETUP_DENIED_FLAG = 32;
-export const SETUP_CREATEDB_FLAG = 64;
-export const SETUP_ATTEMPT_VROOT_CREATE = 128;
-export const SETUP_FORCECRL_FLAG = 256;
-export const SETUP_UPDATE_CAOBJECT_SVRTYPE = 512;
-export const SETUP_SERVER_UPGRADED_FLAG = 1024;
-export const SETUP_W2K_SECURITY_NOT_UPGRADED_FLAG = 2048;
-export const SETUP_SECURITY_CHANGED = 4096;
-export const SETUP_DCOM_SECURITY_UPDATED_FLAG = 8192;
-export const SETUP_SERVER_IS_UP_TO_DATE_FLAG = 16384;
-export const CRLF_DELTA_USE_OLDEST_UNEXPIRED_BASE = 1;
-export const CRLF_DELETE_EXPIRED_CRLS = 2;
-export const CRLF_CRLNUMBER_CRITICAL = 4;
-export const CRLF_REVCHECK_IGNORE_OFFLINE = 8;
-export const CRLF_IGNORE_INVALID_POLICIES = 16;
-export const CRLF_REBUILD_MODIFIED_SUBJECT_ONLY = 32;
-export const CRLF_SAVE_FAILED_CERTS = 64;
-export const CRLF_IGNORE_UNKNOWN_CMC_ATTRIBUTES = 128;
-export const CRLF_IGNORE_CROSS_CERT_TRUST_ERROR = 256;
-export const CRLF_PUBLISH_EXPIRED_CERT_CRLS = 512;
-export const CRLF_ENFORCE_ENROLLMENT_AGENT = 1024;
-export const CRLF_DISABLE_RDN_REORDER = 2048;
-export const CRLF_DISABLE_ROOT_CROSS_CERTS = 4096;
-export const CRLF_LOG_FULL_RESPONSE = 8192;
-export const CRLF_USE_XCHG_CERT_TEMPLATE = 16384;
-export const CRLF_USE_CROSS_CERT_TEMPLATE = 32768;
-export const CRLF_ALLOW_REQUEST_ATTRIBUTE_SUBJECT = 65536;
-export const CRLF_REVCHECK_IGNORE_NOREVCHECK = 131072;
-export const CRLF_PRESERVE_EXPIRED_CA_CERTS = 262144;
-export const CRLF_PRESERVE_REVOKED_CA_CERTS = 524288;
-export const CRLF_DISABLE_CHAIN_VERIFICATION = 1048576;
-export const CRLF_BUILD_ROOTCA_CRLENTRIES_BASEDONKEY = 2097152;
-export const KRAF_ENABLEFOREIGN = 1;
-export const KRAF_SAVEBADREQUESTKEY = 2;
-export const KRAF_ENABLEARCHIVEALL = 4;
-export const KRAF_DISABLEUSEDEFAULTPROVIDER = 8;
-export const IF_LOCKICERTREQUEST = 1;
-export const IF_NOREMOTEICERTREQUEST = 2;
-export const IF_NOLOCALICERTREQUEST = 4;
-export const IF_NORPCICERTREQUEST = 8;
-export const IF_NOREMOTEICERTADMIN = 16;
-export const IF_NOLOCALICERTADMIN = 32;
-export const IF_NOREMOTEICERTADMINBACKUP = 64;
-export const IF_NOLOCALICERTADMINBACKUP = 128;
-export const IF_NOSNAPSHOTBACKUP = 256;
-export const IF_ENFORCEENCRYPTICERTREQUEST = 512;
-export const IF_ENFORCEENCRYPTICERTADMIN = 1024;
-export const IF_ENABLEEXITKEYRETRIEVAL = 2048;
-export const IF_ENABLEADMINASAUDITOR = 4096;
-export const PROCFLG_NONE = 0;
-export const PROCFLG_ENFORCEGOODKEYS = 1;
-export const CSURL_SERVERPUBLISH = 1;
-export const CSURL_ADDTOCERTCDP = 2;
-export const CSURL_ADDTOFRESHESTCRL = 4;
-export const CSURL_ADDTOCRLCDP = 8;
-export const CSURL_PUBLISHRETRY = 16;
-export const CSURL_ADDTOCERTOCSP = 32;
-export const CSURL_SERVERPUBLISHDELTA = 64;
-export const CSURL_ADDTOIDP = 128;
-export const CAPATHLENGTH_INFINITE = 4294967295;
-export const REQDISP_PENDING = 0;
-export const REQDISP_ISSUE = 1;
-export const REQDISP_DENY = 2;
-export const REQDISP_USEREQUESTATTRIBUTE = 3;
-export const REQDISP_MASK = 255;
-export const REQDISP_PENDINGFIRST = 256;
-export const REQDISP_DEFAULT_ENTERPRISE = 1;
-export const REVEXT_CDPLDAPURL_OLD = 1;
-export const REVEXT_CDPHTTPURL_OLD = 2;
-export const REVEXT_CDPFTPURL_OLD = 4;
-export const REVEXT_CDPFILEURL_OLD = 8;
-export const REVEXT_CDPURLMASK_OLD = 255;
-export const REVEXT_CDPENABLE = 256;
-export const REVEXT_ASPENABLE = 512;
-export const REVEXT_DEFAULT_NODS = 256;
-export const REVEXT_DEFAULT_DS = 256;
-export const ISSCERT_LDAPURL_OLD = 1;
-export const ISSCERT_HTTPURL_OLD = 2;
-export const ISSCERT_FTPURL_OLD = 4;
-export const ISSCERT_FILEURL_OLD = 8;
-export const ISSCERT_URLMASK_OLD = 255;
-export const ISSCERT_ENABLE = 256;
-export const ISSCERT_DEFAULT_NODS = 256;
-export const ISSCERT_DEFAULT_DS = 256;
-export const EDITF_ENABLEREQUESTEXTENSIONS = 1;
-export const EDITF_REQUESTEXTENSIONLIST = 2;
-export const EDITF_DISABLEEXTENSIONLIST = 4;
-export const EDITF_ADDOLDKEYUSAGE = 8;
-export const EDITF_ADDOLDCERTTYPE = 16;
-export const EDITF_ATTRIBUTEENDDATE = 32;
-export const EDITF_BASICCONSTRAINTSCRITICAL = 64;
-export const EDITF_BASICCONSTRAINTSCA = 128;
-export const EDITF_ENABLEAKIKEYID = 256;
-export const EDITF_ATTRIBUTECA = 512;
-export const EDITF_IGNOREREQUESTERGROUP = 1024;
-export const EDITF_ENABLEAKIISSUERNAME = 2048;
-export const EDITF_ENABLEAKIISSUERSERIAL = 4096;
-export const EDITF_ENABLEAKICRITICAL = 8192;
-export const EDITF_SERVERUPGRADED = 16384;
-export const EDITF_ATTRIBUTEEKU = 32768;
-export const EDITF_ENABLEDEFAULTSMIME = 65536;
-export const EDITF_EMAILOPTIONAL = 131072;
-export const EDITF_ATTRIBUTESUBJECTALTNAME2 = 262144;
-export const EDITF_ENABLELDAPREFERRALS = 524288;
-export const EDITF_ENABLECHASECLIENTDC = 1048576;
-export const EDITF_AUDITCERTTEMPLATELOAD = 2097152;
-export const EDITF_DISABLEOLDOSCNUPN = 4194304;
-export const EDITF_DISABLELDAPPACKAGELIST = 8388608;
-export const EDITF_ENABLEUPNMAP = 16777216;
-export const EDITF_ENABLEOCSPREVNOCHECK = 33554432;
-export const EDITF_ENABLERENEWONBEHALFOF = 67108864;
-export const EDITF_ENABLEKEYENCIPHERMENTCACERT = 134217728;
-export const EXITPUB_FILE = 1;
-export const EXITPUB_ACTIVEDIRECTORY = 2;
-export const EXITPUB_REMOVEOLDCERTS = 16;
-export const EXITPUB_DEFAULT_ENTERPRISE = 2;
-export const EXITPUB_DEFAULT_STANDALONE = 1;
-export const TP_MACHINEPOLICY = 1;
-export const KR_ENABLE_MACHINE = 1;
-export const KR_ENABLE_USER = 2;
-export const EXTENSION_CRITICAL_FLAG = 1;
-export const EXTENSION_DISABLE_FLAG = 2;
-export const EXTENSION_DELETE_FLAG = 4;
-export const EXTENSION_POLICY_MASK = 65535;
-export const EXTENSION_ORIGIN_REQUEST = 65536;
-export const EXTENSION_ORIGIN_POLICY = 131072;
-export const EXTENSION_ORIGIN_ADMIN = 196608;
-export const EXTENSION_ORIGIN_SERVER = 262144;
-export const EXTENSION_ORIGIN_RENEWALCERT = 327680;
-export const EXTENSION_ORIGIN_IMPORTEDCERT = 393216;
-export const EXTENSION_ORIGIN_PKCS7 = 458752;
-export const EXTENSION_ORIGIN_CMC = 524288;
-export const EXTENSION_ORIGIN_CACERT = 589824;
-export const EXTENSION_ORIGIN_MASK = 983040;
-export const CPF_BASE = 1;
-export const CPF_DELTA = 2;
-export const CPF_COMPLETE = 4;
-export const CPF_SHADOW = 8;
-export const CPF_CASTORE_ERROR = 16;
-export const CPF_BADURL_ERROR = 32;
-export const CPF_MANUAL = 64;
-export const CPF_SIGNATURE_ERROR = 128;
-export const CPF_LDAP_ERROR = 256;
-export const CPF_FILE_ERROR = 512;
-export const CPF_FTP_ERROR = 1024;
-export const CPF_HTTP_ERROR = 2048;
-export const CPF_POSTPONED_BASE_LDAP_ERROR = 4096;
-export const CPF_POSTPONED_BASE_FILE_ERROR = 8192;
-export const PROPTYPE_MASK = 255;
-export const PROPCALLER_SERVER = 256;
-export const PROPCALLER_POLICY = 512;
-export const PROPCALLER_EXIT = 768;
-export const PROPCALLER_ADMIN = 1024;
-export const PROPCALLER_REQUEST = 1280;
-export const PROPCALLER_MASK = 3840;
-export const PROPFLAGS_INDEXED = 65536;
-export const CR_FLG_FORCETELETEX = 1;
-export const CR_FLG_RENEWAL = 2;
-export const CR_FLG_FORCEUTF8 = 4;
-export const CR_FLG_CAXCHGCERT = 8;
-export const CR_FLG_ENROLLONBEHALFOF = 16;
-export const CR_FLG_SUBJECTUNMODIFIED = 32;
-export const CR_FLG_VALIDENCRYPTEDKEYHASH = 64;
-export const CR_FLG_CACROSSCERT = 128;
-export const CR_FLG_ENFORCEUTF8 = 256;
-export const CR_FLG_DEFINEDCACERT = 512;
-export const CR_FLG_CHALLENGEPENDING = 1024;
-export const CR_FLG_CHALLENGESATISFIED = 2048;
-export const CR_FLG_TRUSTONUSE = 4096;
-export const CR_FLG_TRUSTEKCERT = 8192;
-export const CR_FLG_TRUSTEKKEY = 16384;
-export const CR_FLG_PUBLISHERROR = 2147483648;
-export const DB_DISP_ACTIVE = 8;
-export const DB_DISP_PENDING = 9;
-export const DB_DISP_QUEUE_MAX = 9;
-export const DB_DISP_FOREIGN = 12;
-export const DB_DISP_CA_CERT = 15;
-export const DB_DISP_CA_CERT_CHAIN = 16;
-export const DB_DISP_KRA_CERT = 17;
-export const DB_DISP_LOG_MIN = 20;
-export const DB_DISP_ISSUED = 20;
-export const DB_DISP_REVOKED = 21;
-export const DB_DISP_LOG_FAILED_MIN = 30;
-export const DB_DISP_ERROR = 30;
-export const DB_DISP_DENIED = 31;
-export const VR_PENDING = 0;
-export const VR_INSTANT_OK = 1;
-export const VR_INSTANT_BAD = 2;
-export const CV_OUT_HEXRAW = 12;
-export const CV_OUT_ENCODEMASK = 255;
-export const CV_OUT_NOCRLF = 1073741824;
-export const CV_OUT_NOCR = 2147483648;
-export const CVR_SEEK_NONE = 0;
-export const CVR_SEEK_MASK = 255;
-export const CVR_SEEK_NODELTA = 4096;
-export const CVR_SORT_NONE = 0;
-export const CVR_SORT_ASCEND = 1;
-export const CVR_SORT_DESCEND = 2;
-export const CV_COLUMN_EXTENSION_DEFAULT = "-4";
-export const CV_COLUMN_ATTRIBUTE_DEFAULT = "-5";
-export const CV_COLUMN_CRL_DEFAULT = "-6";
-export const CV_COLUMN_LOG_REVOKED_DEFAULT = "-7";
-export const CVRC_TABLE_MASK = 61440;
-export const CVRC_TABLE_SHIFT = 12;
-export const CRYPT_ENUM_ALL_PROVIDERS = 1;
-export const XEPR_ENUM_FIRST = "-1";
-export const XEPR_DATE = 5;
-export const XEPR_TEMPLATENAME = 6;
-export const XEPR_VERSION = 7;
-export const XEPR_V1TEMPLATENAME = 9;
-export const XEPR_V2TEMPLATEOID = 16;
-export const XEKL_KEYSIZE_DEFAULT = 4;
-export const XECP_STRING_PROPERTY = 1;
-export const XECI_DISABLE = 0;
-export const XECI_XENROLL = 1;
-export const XECI_AUTOENROLL = 2;
-export const XECI_REQWIZARD = 3;
-export const XECI_CERTREQ = 4;
-export const wszCMM_PROP_NAME = "Name";
-export const wszCMM_PROP_DESCRIPTION = "Description";
-export const wszCMM_PROP_COPYRIGHT = "Copyright";
-export const wszCMM_PROP_FILEVER = "File Version";
-export const wszCMM_PROP_PRODUCTVER = "Product Version";
-export const wszCMM_PROP_DISPLAY_HWND = "HWND";
-export const wszCMM_PROP_ISMULTITHREADED = "IsMultiThreaded";
 export const MSSIP_FLAGS_PROHIBIT_RESIZE_ON_CREATE = 65536;
 export const MSSIP_FLAGS_USE_CATALOG = 131072;
 export const MSSIP_FLAGS_MULTI_HASH = 262144;
@@ -4975,6 +7300,7 @@ export const CERT_FILTER_VALID_SIGNATURE = 4;
 export const CERT_FILTER_LEAF_CERTS_ONLY = 8;
 export const CERT_FILTER_ISSUER_CERTS_ONLY = 16;
 export const CERT_FILTER_KEY_EXISTS = 32;
+export const szCERT_CERTIFICATE_ACTION_VERIFY = "{7801ebd0-cf4b-11d0-851f-0060979387ea}";
 export const CERT_VALIDITY_BEFORE_START = 1;
 export const CERT_VALIDITY_AFTER_END = 2;
 export const CERT_VALIDITY_SIGNATURE_FAILS = 4;
@@ -5072,6 +7398,37 @@ export const EAP_E_SIM_NOT_VALID = 2151810304;
 export const EAP_METHOD_INVALID_PACKET = 2151809047;
 export const EAP_INVALID_PACKET = 2151809048;
 export const EAP_PEER_FLAG_GUEST_ACCESS = 64;
+export const eapPropCipherSuiteNegotiation = 1;
+export const eapPropMutualAuth = 2;
+export const eapPropIntegrity = 4;
+export const eapPropReplayProtection = 8;
+export const eapPropConfidentiality = 16;
+export const eapPropKeyDerivation = 32;
+export const eapPropKeyStrength64 = 64;
+export const eapPropKeyStrength128 = 128;
+export const eapPropKeyStrength256 = 256;
+export const eapPropKeyStrength512 = 512;
+export const eapPropKeyStrength1024 = 1024;
+export const eapPropDictionaryAttackResistance = 2048;
+export const eapPropFastReconnect = 4096;
+export const eapPropCryptoBinding = 8192;
+export const eapPropSessionIndependence = 16384;
+export const eapPropFragmentation = 32768;
+export const eapPropChannelBinding = 65536;
+export const eapPropNap = 131072;
+export const eapPropStandalone = 262144;
+export const eapPropMppeEncryption = 524288;
+export const eapPropTunnelMethod = 1048576;
+export const eapPropSupportsConfig = 2097152;
+export const eapPropCertifiedMethod = 4194304;
+export const eapPropHiddenMethod = 8388608;
+export const eapPropMachineAuth = 16777216;
+export const eapPropUserAuth = 33554432;
+export const eapPropIdentityPrivacy = 67108864;
+export const eapPropMethodChaining = 134217728;
+export const eapPropSharedStateEquivalence = 268435456;
+export const eapPropReserved = 2147483648;
+export const EAP_VALUENAME_PROPERTIES = "Properties";
 export const EAP_FLAG_Reserved1 = 1;
 export const EAP_FLAG_NON_INTERACTIVE = 2;
 export const EAP_FLAG_LOGON = 4;
@@ -5112,12 +7469,47 @@ export const MAX_EAP_CONFIG_INPUT_FIELD_LENGTH = 256;
 export const MAX_EAP_CONFIG_INPUT_FIELD_VALUE_LENGTH = 1024;
 export const CERTIFICATE_HASH_LENGTH = 20;
 export const NCRYPT_PIN_CACHE_PIN_BYTE_LENGTH = 90;
+export const EAP_REGISTRY_LOCATION = "System\CurrentControlSet\Services\EapHost\Methods";
+export const EAP_PEER_VALUENAME_DLL_PATH = "PeerDllPath";
+export const EAP_PEER_VALUENAME_FRIENDLY_NAME = "PeerFriendlyName";
+export const EAP_PEER_VALUENAME_CONFIGUI = "PeerConfigUIPath";
+export const EAP_PEER_VALUENAME_REQUIRE_CONFIGUI = "PeerRequireConfigUI";
+export const EAP_PEER_VALUENAME_IDENTITY = "PeerIdentityPath";
+export const EAP_PEER_VALUENAME_INTERACTIVEUI = "PeerInteractiveUIPath";
+export const EAP_PEER_VALUENAME_INVOKE_NAMEDLG = "PeerInvokeUsernameDialog";
+export const EAP_PEER_VALUENAME_INVOKE_PWDDLG = "PeerInvokePasswordDialog";
+export const EAP_PEER_VALUENAME_PROPERTIES = "Properties";
+export const EAP_AUTHENTICATOR_VALUENAME_DLL_PATH = "AuthenticatorDllPath";
+export const EAP_AUTHENTICATOR_VALUENAME_FRIENDLY_NAME = "AuthenticatorFriendlyName";
+export const EAP_AUTHENTICATOR_VALUENAME_PROPERTIES = "Properties";
+export const EAP_AUTHENTICATOR_VALUENAME_CONFIGUI = "AuthenticatorConfigUIPath";
 export const EAP_METHOD_AUTHENTICATOR_CONFIG_IS_IDENTITY_PRIVACY = 1;
+export const RAS_EAP_REGISTRY_LOCATION = "System\CurrentControlSet\Services\Rasman\PPP\EAP";
+export const RAS_EAP_VALUENAME_PATH = "Path";
+export const RAS_EAP_VALUENAME_CONFIGUI = "ConfigUIPath";
+export const RAS_EAP_VALUENAME_INTERACTIVEUI = "InteractiveUIPath";
+export const RAS_EAP_VALUENAME_IDENTITY = "IdentityPath";
+export const RAS_EAP_VALUENAME_FRIENDLY_NAME = "FriendlyName";
+export const RAS_EAP_VALUENAME_DEFAULT_DATA = "ConfigData";
+export const RAS_EAP_VALUENAME_REQUIRE_CONFIGUI = "RequireConfigUI";
+export const RAS_EAP_VALUENAME_ENCRYPTION = "MPPEEncryptionSupported";
+export const RAS_EAP_VALUENAME_INVOKE_NAMEDLG = "InvokeUsernameDialog";
+export const RAS_EAP_VALUENAME_INVOKE_PWDDLG = "InvokePasswordDialog";
+export const RAS_EAP_VALUENAME_CONFIG_CLSID = "ConfigCLSID";
+export const RAS_EAP_VALUENAME_STANDALONE_SUPPORTED = "StandaloneSupported";
+export const RAS_EAP_VALUENAME_ROLES_SUPPORTED = "RolesSupported";
+export const RAS_EAP_VALUENAME_PER_POLICY_CONFIG = "PerPolicyConfig";
+export const RAS_EAP_VALUENAME_ISTUNNEL_METHOD = "IsTunnelMethod";
+export const RAS_EAP_VALUENAME_FILTER_INNERMETHODS = "FilterInnerMethods";
 export const RAS_EAP_ROLE_AUTHENTICATOR = 1;
 export const RAS_EAP_ROLE_AUTHENTICATEE = 2;
 export const RAS_EAP_ROLE_EXCLUDE_IN_EAP = 4;
 export const RAS_EAP_ROLE_EXCLUDE_IN_PEAP = 8;
 export const RAS_EAP_ROLE_EXCLUDE_IN_VPN = 16;
+export const raatARAPChallenge = 33;
+export const raatARAPOldPassword = 19;
+export const raatARAPNewPassword = 20;
+export const raatARAPPasswordChangeReason = 21;
 export const EAPCODE_Request = 1;
 export const EAPCODE_Response = 2;
 export const EAPCODE_Success = 3;
@@ -5141,10 +7533,26 @@ export const RAS_EAP_FLAG_CONFG_READONLY = 524288;
 export const RAS_EAP_FLAG_RESERVED = 1048576;
 export const RAS_EAP_FLAG_SAVE_CREDMAN = 2097152;
 export const RAS_EAP_FLAG_SERVER_VALIDATION_REQUIRED = 33554432;
+export const maxSoHAttributeCount = 100;
+export const maxSoHAttributeSize = 4000;
+export const minNetworkSoHSize = 12;
+export const maxNetworkSoHSize = 4000;
+export const maxStringLength = 1024;
+export const maxSystemHealthEntityCount = 20;
+export const maxEnforcerCount = 20;
+export const maxPrivateDataSize = 200;
+export const maxConnectionCountPerEnforcer = 20;
+export const freshSoHRequest = 1;
+export const shaFixup = 1;
+export const failureCategoryCount = 5;
 export const ComponentTypeEnforcementClientSoH = 1;
 export const ComponentTypeEnforcementClientRp = 2;
+export const percentageNotSupported = 101;
 export const TPMVSC_DEFAULT_ADMIN_ALGORITHM_ID = 130;
+export const WINTRUST_CONFIG_REGPATH = "Software\Microsoft\Cryptography\Wintrust\Config";
+export const WINTRUST_MAX_HEADER_BYTES_TO_MAP_VALUE_NAME = "MaxHeaderBytesToMap";
 export const WINTRUST_MAX_HEADER_BYTES_TO_MAP_DEFAULT = 10485760;
+export const WINTRUST_MAX_HASH_BYTES_TO_MAP_VALUE_NAME = "MaxHashBytesToMap";
 export const WINTRUST_MAX_HASH_BYTES_TO_MAP_DEFAULT = 1048576;
 export const WTD_PROV_FLAGS_MASK = 65535;
 export const WTD_CODE_INTEGRITY_DRIVER_MODE = 32768;
@@ -5206,7 +7614,63 @@ export const CERT_CONFIDENCE_AUTHIDEXT = 65536;
 export const CERT_CONFIDENCE_HYGIENE = 4096;
 export const CERT_CONFIDENCE_HIGHEST = 286330880;
 export const WT_CURRENT_VERSION = 512;
+export const WT_PROVIDER_DLL_NAME = "WINTRUST.DLL";
+export const WT_PROVIDER_CERTTRUST_FUNCTION = "WintrustCertificateTrust";
 export const WT_ADD_ACTION_ID_RET_RESULT_FLAG = 1;
+export const szOID_TRUSTED_CODESIGNING_CA_LIST = "1.3.6.1.4.1.311.2.2.1";
+export const szOID_TRUSTED_CLIENT_AUTH_CA_LIST = "1.3.6.1.4.1.311.2.2.2";
+export const szOID_TRUSTED_SERVER_AUTH_CA_LIST = "1.3.6.1.4.1.311.2.2.3";
+export const SPC_COMMON_NAME_OBJID = "2.5.4.3";
+export const SPC_TIME_STAMP_REQUEST_OBJID = "1.3.6.1.4.1.311.3.2.1";
+export const SPC_INDIRECT_DATA_OBJID = "1.3.6.1.4.1.311.2.1.4";
+export const SPC_SP_AGENCY_INFO_OBJID = "1.3.6.1.4.1.311.2.1.10";
+export const SPC_STATEMENT_TYPE_OBJID = "1.3.6.1.4.1.311.2.1.11";
+export const SPC_SP_OPUS_INFO_OBJID = "1.3.6.1.4.1.311.2.1.12";
+export const SPC_CERT_EXTENSIONS_OBJID = "1.3.6.1.4.1.311.2.1.14";
+export const SPC_PE_IMAGE_DATA_OBJID = "1.3.6.1.4.1.311.2.1.15";
+export const SPC_RAW_FILE_DATA_OBJID = "1.3.6.1.4.1.311.2.1.18";
+export const SPC_STRUCTURED_STORAGE_DATA_OBJID = "1.3.6.1.4.1.311.2.1.19";
+export const SPC_JAVA_CLASS_DATA_OBJID = "1.3.6.1.4.1.311.2.1.20";
+export const SPC_INDIVIDUAL_SP_KEY_PURPOSE_OBJID = "1.3.6.1.4.1.311.2.1.21";
+export const SPC_COMMERCIAL_SP_KEY_PURPOSE_OBJID = "1.3.6.1.4.1.311.2.1.22";
+export const SPC_CAB_DATA_OBJID = "1.3.6.1.4.1.311.2.1.25";
+export const SPC_GLUE_RDN_OBJID = "1.3.6.1.4.1.311.2.1.25";
+export const SPC_MINIMAL_CRITERIA_OBJID = "1.3.6.1.4.1.311.2.1.26";
+export const SPC_FINANCIAL_CRITERIA_OBJID = "1.3.6.1.4.1.311.2.1.27";
+export const SPC_LINK_OBJID = "1.3.6.1.4.1.311.2.1.28";
+export const SPC_SIGINFO_OBJID = "1.3.6.1.4.1.311.2.1.30";
+export const SPC_PE_IMAGE_PAGE_HASHES_V1_OBJID = "1.3.6.1.4.1.311.2.3.1";
+export const SPC_PE_IMAGE_PAGE_HASHES_V2_OBJID = "1.3.6.1.4.1.311.2.3.2";
+export const szOID_NESTED_SIGNATURE = "1.3.6.1.4.1.311.2.4.1";
+export const szOID_INTENT_TO_SEAL = "1.3.6.1.4.1.311.2.4.2";
+export const szOID_SEALING_SIGNATURE = "1.3.6.1.4.1.311.2.4.3";
+export const szOID_SEALING_TIMESTAMP = "1.3.6.1.4.1.311.2.4.4";
+export const szOID_ENHANCED_HASH = "1.3.6.1.4.1.311.2.5.1";
+export const SPC_RELAXED_PE_MARKER_CHECK_OBJID = "1.3.6.1.4.1.311.2.6.1";
+export const SPC_ENCRYPTED_DIGEST_RETRY_COUNT_OBJID = "1.3.6.1.4.1.311.2.6.2";
+export const szOID_PKCS_9_SEQUENCE_NUMBER = "1.2.840.113549.1.9.25.4";
+export const CAT_NAMEVALUE_OBJID = "1.3.6.1.4.1.311.12.2.1";
+export const CAT_MEMBERINFO_OBJID = "1.3.6.1.4.1.311.12.2.2";
+export const CAT_MEMBERINFO2_OBJID = "1.3.6.1.4.1.311.12.2.3";
+export const SPC_WINDOWS_HELLO_COMPATIBILITY_OBJID = "1.3.6.1.4.1.311.10.41.1";
+export const SPC_NATURAL_AUTH_PLUGIN_OBJID = "1.3.6.1.4.1.311.96.1.1";
+export const SPC_SP_AGENCY_INFO_STRUCT = 2200139947050960;
+export const SPC_MINIMAL_CRITERIA_STRUCT = 2201239458678737;
+export const SPC_FINANCIAL_CRITERIA_STRUCT = 2202338970306514;
+export const SPC_INDIRECT_DATA_CONTENT_STRUCT = 2203438481934291;
+export const SPC_PE_IMAGE_DATA_STRUCT = 2204537993562068;
+export const SPC_LINK_STRUCT = 2210035551700949;
+export const SPC_STATEMENT_TYPE_STRUCT = 2206737016817622;
+export const SPC_SP_OPUS_INFO_STRUCT = 2350773040056279;
+export const SPC_CAB_DATA_STRUCT = 2324384760989656;
+export const SPC_JAVA_CLASS_DATA_STRUCT = 2226528226117593;
+export const INTENT_TO_SEAL_ATTRIBUTE_STRUCT = 2212234574956506;
+export const SEALING_SIGNATURE_ATTRIBUTE_STRUCT = 16971004890035783643n;
+export const SEALING_TIMESTAMP_ATTRIBUTE_STRUCT = 2213334086584284;
+export const SPC_SIGINFO_STRUCT = 2343076458661970;
+export const CAT_NAMEVALUE_STRUCT = 2443132016789677;
+export const CAT_MEMBERINFO_STRUCT = 2451928109811886;
+export const CAT_MEMBERINFO2_STRUCT = 2446430551673007;
 export const SPC_UUID_LENGTH = 16;
 export const SPC_URL_LINK_CHOICE = 1;
 export const SPC_MONIKER_LINK_CHOICE = 2;
@@ -5221,6 +7685,26 @@ export const WT_TRUSTDBDIALOG_NO_UI_FLAG = 1;
 export const WT_TRUSTDBDIALOG_ONLY_PUB_TAB_FLAG = 2;
 export const WT_TRUSTDBDIALOG_WRITE_LEGACY_REG_FLAG = 256;
 export const WT_TRUSTDBDIALOG_WRITE_IEAK_STORE_FLAG = 512;
+export const SP_POLICY_PROVIDER_DLL_NAME = "WINTRUST.DLL";
+export const SP_INIT_FUNCTION = "SoftpubInitialize";
+export const SP_OBJTRUST_FUNCTION = "SoftpubLoadMessage";
+export const SP_SIGTRUST_FUNCTION = "SoftpubLoadSignature";
+export const SP_CHKCERT_FUNCTION = "SoftpubCheckCert";
+export const SP_FINALPOLICY_FUNCTION = "SoftpubAuthenticode";
+export const SP_CLEANUPPOLICY_FUNCTION = "SoftpubCleanup";
+export const SP_TESTDUMPPOLICY_FUNCTION_TEST = "SoftpubDumpStructure";
+export const SP_GENERIC_CERT_INIT_FUNCTION = "SoftpubDefCertInit";
+export const GENERIC_CHAIN_FINALPOLICY_FUNCTION = "GenericChainFinalProv";
+export const GENERIC_CHAIN_CERTTRUST_FUNCTION = "GenericChainCertificateTrust";
+export const HTTPS_FINALPOLICY_FUNCTION = "HTTPSFinalProv";
+export const HTTPS_CHKCERT_FUNCTION = "HTTPSCheckCertProv";
+export const HTTPS_CERTTRUST_FUNCTION = "HTTPSCertificateTrust";
+export const OFFICE_POLICY_PROVIDER_DLL_NAME = "WINTRUST.DLL";
+export const OFFICE_INITPROV_FUNCTION = "OfficeInitializePolicy";
+export const OFFICE_CLEANUPPOLICY_FUNCTION = "OfficeCleanupPolicy";
+export const DRIVER_INITPROV_FUNCTION = "DriverInitializePolicy";
+export const DRIVER_FINALPOLPROV_FUNCTION = "DriverFinalPolicy";
+export const DRIVER_CLEANUPPOLICY_FUNCTION = "DriverCleanupPolicy";
 export const CCPI_RESULT_ALLOW = 1;
 export const CCPI_RESULT_DENY = 2;
 export const CCPI_RESULT_AUDIT = 3;
@@ -8428,17 +10912,17 @@ export function allocACTRL_CONTROL_INFOW(data?: Partial<ACTRL_CONTROL_INFOW>): U
 }
 
 /**
- * Windows.Win32.Security.Authorization.FN_OBJECT_MGR_FUNCTIONS (size: 8)
+ * Windows.Win32.Security.Authorization.FN_OBJECT_MGR_FUNCTS (size: 8)
  */
-export interface FN_OBJECT_MGR_FUNCTIONS {
+export interface FN_OBJECT_MGR_FUNCTS {
   /** u32 */
   Placeholder: number;
 }
 
-export const sizeofFN_OBJECT_MGR_FUNCTIONS = 8;
+export const sizeofFN_OBJECT_MGR_FUNCTS = 8;
 
-export function allocFN_OBJECT_MGR_FUNCTIONS(data?: Partial<FN_OBJECT_MGR_FUNCTIONS>): Uint8Array {
-  const buf = new Uint8Array(sizeofFN_OBJECT_MGR_FUNCTIONS);
+export function allocFN_OBJECT_MGR_FUNCTS(data?: Partial<FN_OBJECT_MGR_FUNCTS>): Uint8Array {
+  const buf = new Uint8Array(sizeofFN_OBJECT_MGR_FUNCTS);
   const view = new DataView(buf.buffer);
   // 0x00: u32
   if (data?.Placeholder !== undefined) view.setUint32(0, Number(data.Placeholder), true);
@@ -8837,7 +11321,7 @@ export function allocAUTHZ_CAP_CHANGE_SUBSCRIPTION_HANDLE__(data?: Partial<AUTHZ
   return buf;
 }
 
-export type PSID = Deno.PointerValue;
+export type PSID = Deno.PointerValue | Uint8Array | null;
 
 /**
  * Windows.Win32.Security.Authorization.AUTHZ_ACCESS_REQUEST (size: 40)
@@ -9544,6 +12028,10 @@ export type BCRYPT_ALG_HANDLE = Deno.PointerValue;
 
 export type BCRYPT_KEY_HANDLE = Deno.PointerValue;
 
+export type BCRYPT_HASH_HANDLE = Deno.PointerValue;
+
+export type BCRYPT_SECRET_HANDLE = Deno.PointerValue;
+
 export type HDIAGNOSTIC_DATA_QUERY_SESSION = Deno.PointerValue;
 
 export type HDIAGNOSTIC_REPORT = Deno.PointerValue;
@@ -9564,6 +12052,8 @@ export type SAFER_LEVEL_HANDLE = Deno.PointerValue;
 
 export type SC_HANDLE = Deno.PointerValue;
 
+export type PSECURITY_DESCRIPTOR = Deno.PointerValue | Uint8Array | null;
+
 export type AUTHZ_ACCESS_CHECK_RESULTS_HANDLE = Deno.PointerValue;
 
 export type AUTHZ_CLIENT_CONTEXT_HANDLE = Deno.PointerValue;
@@ -9575,6 +12065,26 @@ export type AUTHZ_AUDIT_EVENT_HANDLE = Deno.PointerValue;
 export type AUTHZ_AUDIT_EVENT_TYPE_HANDLE = Deno.PointerValue;
 
 export type AUTHZ_SECURITY_EVENT_PROVIDER_HANDLE = Deno.PointerValue;
+
+export type BCRYPT_HANDLE = Deno.PointerValue;
+
+export type NCRYPT_HANDLE = Deno.PointerValue;
+
+export type NCRYPT_PROV_HANDLE = Deno.PointerValue;
+
+export type NCRYPT_KEY_HANDLE = Deno.PointerValue;
+
+export type NCRYPT_HASH_HANDLE = Deno.PointerValue;
+
+export type NCRYPT_SECRET_HANDLE = Deno.PointerValue;
+
+export type HCRYPTPROV_LEGACY = Deno.PointerValue;
+
+export type HCRYPTPROV_OR_NCRYPT_KEY_HANDLE = Deno.PointerValue;
+
+export type HCERTSTORE = Deno.PointerValue | Uint8Array | null;
+
+export type HCERTSTOREPROV = Deno.PointerValue | Uint8Array | null;
 
 export type BOOL = number;
 
@@ -11310,8 +13820,8 @@ export function allocCREDSSP_CRED_EX(data?: Partial<CREDSSP_CRED_EX>): Uint8Arra
 export interface NgcTicketContext {
   /** array */
   wszTicket: Deno.PointerValue | null;
-  /** usize */
-  hKey: Deno.PointerValue;
+  /** Windows.Win32.Security.Cryptography.NCRYPT_KEY_HANDLE */
+  hKey: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.Foundation.HANDLE */
   hImpersonateToken: Uint8Array | Deno.PointerValue | null;
 }
@@ -11323,8 +13833,8 @@ export function allocNgcTicketContext(data?: Partial<NgcTicketContext>): Uint8Ar
   const view = new DataView(buf.buffer);
   // 0x00: pointer
   if (data?.wszTicket !== undefined) view.setBigUint64(0, data.wszTicket === null ? 0n : BigInt(util.toPointer(data.wszTicket)), true);
-  // 0x08: usize
-  if (data?.hKey !== undefined) view.setBigUint64(8, BigInt(data.hKey), true);
+  // 0x08: pointer
+  if (data?.hKey !== undefined) view.setBigUint64(8, data.hKey === null ? 0n : BigInt(util.toPointer(data.hKey)), true);
   // 0x10: pointer
   if (data?.hImpersonateToken !== undefined) view.setBigUint64(16, data.hImpersonateToken === null ? 0n : BigInt(util.toPointer(data.hImpersonateToken)), true);
   return buf;
@@ -12916,18 +15426,21 @@ export function allocHTHREAD_NETWORK_CONTEXT(data?: Partial<HTHREAD_NETWORK_CONT
 }
 
 /**
- * Windows.Win32.Security.EnterpriseData.FILE_UNPROTECT_OPTIONS (size: 0)
+ * Windows.Win32.Security.EnterpriseData.FILE_UNPROTECT_OPTIONS (size: 8)
  */
 export interface FILE_UNPROTECT_OPTIONS {
-  /** bool */
-  audit: boolean;
+  /** u8 */
+  audit: number;
 }
 
-export const sizeofFILE_UNPROTECT_OPTIONS = 0;
+export const sizeofFILE_UNPROTECT_OPTIONS = 8;
 
 export function allocFILE_UNPROTECT_OPTIONS(data?: Partial<FILE_UNPROTECT_OPTIONS>): Uint8Array {
   const buf = new Uint8Array(sizeofFILE_UNPROTECT_OPTIONS);
   const view = new DataView(buf.buffer);
+  // 0x00: u8
+  if (data?.audit !== undefined) view.setUint8(0, Number(data.audit));
+  // 0x01: pad7
   return buf;
 }
 
@@ -13193,8 +15706,8 @@ export interface SE_ADT_ACCESS_REASON {
   ObjectTypeIndex: number;
   /** u32 */
   AccessGranted: number;
-  /** ptr */
-  SecurityDescriptor: Deno.PointerValue | Uint8Array | null;
+  /** Windows.Win32.Security.PSECURITY_DESCRIPTOR */
+  SecurityDescriptor: Uint8Array | Deno.PointerValue | null;
 }
 
 export const sizeofSE_ADT_ACCESS_REASON = 32;
@@ -14470,12 +16983,12 @@ export interface CENTRAL_ACCESS_POLICY_ENTRY {
   AppliesTo: Deno.PointerValue | Uint8Array | null;
   /** u32 */
   LengthSD: number;
-  /** ptr */
-  SD: Deno.PointerValue | Uint8Array | null;
+  /** Windows.Win32.Security.PSECURITY_DESCRIPTOR */
+  SD: Uint8Array | Deno.PointerValue | null;
   /** u32 */
   LengthStagedSD: number;
-  /** ptr */
-  StagedSD: Deno.PointerValue | Uint8Array | null;
+  /** Windows.Win32.Security.PSECURITY_DESCRIPTOR */
+  StagedSD: Uint8Array | Deno.PointerValue | null;
   /** u32 */
   Flags: number;
 }
@@ -24219,8 +26732,8 @@ export interface SCHANNEL_CRED {
   cCreds: number;
   /** ptr */
   paCred: Deno.PointerValue | Uint8Array | null;
-  /** ptr */
-  hRootStore: Deno.PointerValue | Uint8Array | null;
+  /** Windows.Win32.Security.Cryptography.HCERTSTORE */
+  hRootStore: Uint8Array | Deno.PointerValue | null;
   /** u32 */
   cMappers: number;
   /** ptr */
@@ -26654,9 +29167,9 @@ export function allocCMS_KEY_INFO(data?: Partial<CMS_KEY_INFO>): Uint8Array {
 }
 
 /**
- * Windows.Win32.Security.Cryptography.HMAC_Info (size: 40)
+ * Windows.Win32.Security.Cryptography.HMAC_INFO (size: 40)
  */
-export interface HMAC_Info {
+export interface HMAC_INFO {
   /** u32 */
   HashAlgid: number;
   /** ptr */
@@ -26669,10 +29182,10 @@ export interface HMAC_Info {
   cbOuterString: number;
 }
 
-export const sizeofHMAC_Info = 40;
+export const sizeofHMAC_INFO = 40;
 
-export function allocHMAC_Info(data?: Partial<HMAC_Info>): Uint8Array {
-  const buf = new Uint8Array(sizeofHMAC_Info);
+export function allocHMAC_INFO(data?: Partial<HMAC_INFO>): Uint8Array {
+  const buf = new Uint8Array(sizeofHMAC_INFO);
   const view = new DataView(buf.buffer);
   // 0x00: u32
   if (data?.HashAlgid !== undefined) view.setUint32(0, Number(data.HashAlgid), true);
@@ -28679,9 +31192,9 @@ export function allocNCRYPT_EXPORTED_ISOLATED_KEY_ENVELOPE(data?: Partial<NCRYPT
 }
 
 /**
- * Windows.Win32.Security.Cryptography.__NCRYPT_PCP_TPM_WEB_AUTHN_ATTESTATION_STATEMENT (size: 24)
+ * Windows.Win32.Security.Cryptography.NCRYPT_PCP_TPM_WEB_AUTHN_ATTESTATION_STATEMENT (size: 24)
  */
-export interface __NCRYPT_PCP_TPM_WEB_AUTHN_ATTESTATION_STATEMENT {
+export interface NCRYPT_PCP_TPM_WEB_AUTHN_ATTESTATION_STATEMENT {
   /** u32 */
   Magic: number;
   /** u32 */
@@ -28696,10 +31209,10 @@ export interface __NCRYPT_PCP_TPM_WEB_AUTHN_ATTESTATION_STATEMENT {
   cbTpmPublic: number;
 }
 
-export const sizeof__NCRYPT_PCP_TPM_WEB_AUTHN_ATTESTATION_STATEMENT = 24;
+export const sizeofNCRYPT_PCP_TPM_WEB_AUTHN_ATTESTATION_STATEMENT = 24;
 
-export function alloc__NCRYPT_PCP_TPM_WEB_AUTHN_ATTESTATION_STATEMENT(data?: Partial<__NCRYPT_PCP_TPM_WEB_AUTHN_ATTESTATION_STATEMENT>): Uint8Array {
-  const buf = new Uint8Array(sizeof__NCRYPT_PCP_TPM_WEB_AUTHN_ATTESTATION_STATEMENT);
+export function allocNCRYPT_PCP_TPM_WEB_AUTHN_ATTESTATION_STATEMENT(data?: Partial<NCRYPT_PCP_TPM_WEB_AUTHN_ATTESTATION_STATEMENT>): Uint8Array {
+  const buf = new Uint8Array(sizeofNCRYPT_PCP_TPM_WEB_AUTHN_ATTESTATION_STATEMENT);
   const view = new DataView(buf.buffer);
   // 0x00: u32
   if (data?.Magic !== undefined) view.setUint32(0, Number(data.Magic), true);
@@ -29020,19 +31533,19 @@ export function allocNCRYPT_PCP_TPM_FW_VERSION_INFO(data?: Partial<NCRYPT_PCP_TP
 }
 
 /**
- * Windows.Win32.Security.Cryptography.NCRYPT_PCP_RAW_POLICYDIGEST (size: 8)
+ * Windows.Win32.Security.Cryptography.NCRYPT_PCP_RAW_POLICYDIGEST_INFO (size: 8)
  */
-export interface NCRYPT_PCP_RAW_POLICYDIGEST {
+export interface NCRYPT_PCP_RAW_POLICYDIGEST_INFO {
   /** u32 */
   dwVersion: number;
   /** u32 */
   cbDigest: number;
 }
 
-export const sizeofNCRYPT_PCP_RAW_POLICYDIGEST = 8;
+export const sizeofNCRYPT_PCP_RAW_POLICYDIGEST_INFO = 8;
 
-export function allocNCRYPT_PCP_RAW_POLICYDIGEST(data?: Partial<NCRYPT_PCP_RAW_POLICYDIGEST>): Uint8Array {
-  const buf = new Uint8Array(sizeofNCRYPT_PCP_RAW_POLICYDIGEST);
+export function allocNCRYPT_PCP_RAW_POLICYDIGEST_INFO(data?: Partial<NCRYPT_PCP_RAW_POLICYDIGEST_INFO>): Uint8Array {
+  const buf = new Uint8Array(sizeofNCRYPT_PCP_RAW_POLICYDIGEST_INFO);
   const view = new DataView(buf.buffer);
   // 0x00: u32
   if (data?.dwVersion !== undefined) view.setUint32(0, Number(data.dwVersion), true);
@@ -32915,8 +35428,8 @@ export function allocCMSG_SIGNED_ENCODE_INFO(data?: Partial<CMSG_SIGNED_ENCODE_I
 export interface CMSG_ENVELOPED_ENCODE_INFO {
   /** u32 */
   cbSize: number;
-  /** usize */
-  hCryptProv: Deno.PointerValue;
+  /** Windows.Win32.Security.Cryptography.HCRYPTPROV_LEGACY */
+  hCryptProv: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.Security.Cryptography.CRYPT_ALGORITHM_IDENTIFIER */
   ContentEncryptionAlgorithm: Uint8Array | Deno.PointerValue | null;
   /** ptr */
@@ -32935,8 +35448,8 @@ export function allocCMSG_ENVELOPED_ENCODE_INFO(data?: Partial<CMSG_ENVELOPED_EN
   // 0x00: u32
   if (data?.cbSize !== undefined) view.setUint32(0, Number(data.cbSize), true);
   // 0x04: pad4
-  // 0x08: usize
-  if (data?.hCryptProv !== undefined) view.setBigUint64(8, BigInt(data.hCryptProv), true);
+  // 0x08: pointer
+  if (data?.hCryptProv !== undefined) view.setBigUint64(8, data.hCryptProv === null ? 0n : BigInt(util.toPointer(data.hCryptProv)), true);
   // 0x10: pointer
   if (data?.ContentEncryptionAlgorithm !== undefined) view.setBigUint64(16, data.ContentEncryptionAlgorithm === null ? 0n : BigInt(util.toPointer(data.ContentEncryptionAlgorithm)), true);
   // 0x18: pointer
@@ -32959,8 +35472,8 @@ export interface CMSG_KEY_TRANS_RECIPIENT_ENCODE_INFO {
   KeyEncryptionAlgorithm: Uint8Array | Deno.PointerValue | null;
   /** ptr */
   pvKeyEncryptionAuxInfo: Deno.PointerValue | Uint8Array | null;
-  /** usize */
-  hCryptProv: Deno.PointerValue;
+  /** Windows.Win32.Security.Cryptography.HCRYPTPROV_LEGACY */
+  hCryptProv: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.Security.Cryptography.CRYPT_BIT_BLOB */
   RecipientPublicKey: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.Security.Cryptography.CERT_ID */
@@ -32979,8 +35492,8 @@ export function allocCMSG_KEY_TRANS_RECIPIENT_ENCODE_INFO(data?: Partial<CMSG_KE
   if (data?.KeyEncryptionAlgorithm !== undefined) view.setBigUint64(8, data.KeyEncryptionAlgorithm === null ? 0n : BigInt(util.toPointer(data.KeyEncryptionAlgorithm)), true);
   // 0x10: pointer
   if (data?.pvKeyEncryptionAuxInfo !== undefined) view.setBigUint64(16, data.pvKeyEncryptionAuxInfo === null ? 0n : BigInt(util.toPointer(data.pvKeyEncryptionAuxInfo)), true);
-  // 0x18: usize
-  if (data?.hCryptProv !== undefined) view.setBigUint64(24, BigInt(data.hCryptProv), true);
+  // 0x18: pointer
+  if (data?.hCryptProv !== undefined) view.setBigUint64(24, data.hCryptProv === null ? 0n : BigInt(util.toPointer(data.hCryptProv)), true);
   // 0x20: pointer
   if (data?.RecipientPublicKey !== undefined) view.setBigUint64(32, data.RecipientPublicKey === null ? 0n : BigInt(util.toPointer(data.RecipientPublicKey)), true);
   // 0x28: pointer
@@ -33037,8 +35550,8 @@ export interface CMSG_KEY_AGREE_RECIPIENT_ENCODE_INFO {
   KeyWrapAlgorithm: Uint8Array | Deno.PointerValue | null;
   /** ptr */
   pvKeyWrapAuxInfo: Deno.PointerValue | Uint8Array | null;
-  /** usize */
-  hCryptProv: Deno.PointerValue;
+  /** Windows.Win32.Security.Cryptography.HCRYPTPROV_LEGACY */
+  hCryptProv: Uint8Array | Deno.PointerValue | null;
   /** u32 */
   dwKeySpec: number;
   /** Windows.Win32.Security.Cryptography.CMSG_KEY_AGREE_OPTION */
@@ -33069,8 +35582,8 @@ export function allocCMSG_KEY_AGREE_RECIPIENT_ENCODE_INFO(data?: Partial<CMSG_KE
   if (data?.KeyWrapAlgorithm !== undefined) view.setBigUint64(24, data.KeyWrapAlgorithm === null ? 0n : BigInt(util.toPointer(data.KeyWrapAlgorithm)), true);
   // 0x20: pointer
   if (data?.pvKeyWrapAuxInfo !== undefined) view.setBigUint64(32, data.pvKeyWrapAuxInfo === null ? 0n : BigInt(util.toPointer(data.pvKeyWrapAuxInfo)), true);
-  // 0x28: usize
-  if (data?.hCryptProv !== undefined) view.setBigUint64(40, BigInt(data.hCryptProv), true);
+  // 0x28: pointer
+  if (data?.hCryptProv !== undefined) view.setBigUint64(40, data.hCryptProv === null ? 0n : BigInt(util.toPointer(data.hCryptProv)), true);
   // 0x30: u32
   if (data?.dwKeySpec !== undefined) view.setUint32(48, Number(data.dwKeySpec), true);
   // 0x34: u32
@@ -33261,8 +35774,8 @@ export function allocCMSG_SIGNED_AND_ENVELOPED_ENCODE_INFO(data?: Partial<CMSG_S
 export interface CMSG_HASHED_ENCODE_INFO {
   /** u32 */
   cbSize: number;
-  /** usize */
-  hCryptProv: Deno.PointerValue;
+  /** Windows.Win32.Security.Cryptography.HCRYPTPROV_LEGACY */
+  hCryptProv: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.Security.Cryptography.CRYPT_ALGORITHM_IDENTIFIER */
   HashAlgorithm: Uint8Array | Deno.PointerValue | null;
   /** ptr */
@@ -33277,8 +35790,8 @@ export function allocCMSG_HASHED_ENCODE_INFO(data?: Partial<CMSG_HASHED_ENCODE_I
   // 0x00: u32
   if (data?.cbSize !== undefined) view.setUint32(0, Number(data.cbSize), true);
   // 0x04: pad4
-  // 0x08: usize
-  if (data?.hCryptProv !== undefined) view.setBigUint64(8, BigInt(data.hCryptProv), true);
+  // 0x08: pointer
+  if (data?.hCryptProv !== undefined) view.setBigUint64(8, data.hCryptProv === null ? 0n : BigInt(util.toPointer(data.hCryptProv)), true);
   // 0x10: pointer
   if (data?.HashAlgorithm !== undefined) view.setBigUint64(16, data.HashAlgorithm === null ? 0n : BigInt(util.toPointer(data.HashAlgorithm)), true);
   // 0x18: pointer
@@ -33602,8 +36115,8 @@ export function allocCMSG_CMS_RECIPIENT_INFO(data?: Partial<CMSG_CMS_RECIPIENT_I
 export interface CMSG_CTRL_VERIFY_SIGNATURE_EX_PARA {
   /** u32 */
   cbSize: number;
-  /** usize */
-  hCryptProv: Deno.PointerValue;
+  /** Windows.Win32.Security.Cryptography.HCRYPTPROV_LEGACY */
+  hCryptProv: Uint8Array | Deno.PointerValue | null;
   /** u32 */
   dwSignerIndex: number;
   /** u32 */
@@ -33620,8 +36133,8 @@ export function allocCMSG_CTRL_VERIFY_SIGNATURE_EX_PARA(data?: Partial<CMSG_CTRL
   // 0x00: u32
   if (data?.cbSize !== undefined) view.setUint32(0, Number(data.cbSize), true);
   // 0x04: pad4
-  // 0x08: usize
-  if (data?.hCryptProv !== undefined) view.setBigUint64(8, BigInt(data.hCryptProv), true);
+  // 0x08: pointer
+  if (data?.hCryptProv !== undefined) view.setBigUint64(8, data.hCryptProv === null ? 0n : BigInt(util.toPointer(data.hCryptProv)), true);
   // 0x10: u32
   if (data?.dwSignerIndex !== undefined) view.setUint32(16, Number(data.dwSignerIndex), true);
   // 0x14: u32
@@ -33841,8 +36354,8 @@ export function allocCMSG_CTRL_DEL_SIGNER_UNAUTH_ATTR_PARA(data?: Partial<CMSG_C
 export interface CMSG_CONTENT_ENCRYPT_INFO {
   /** u32 */
   cbSize: number;
-  /** usize */
-  hCryptProv: Deno.PointerValue;
+  /** Windows.Win32.Security.Cryptography.HCRYPTPROV_LEGACY */
+  hCryptProv: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.Security.Cryptography.CRYPT_ALGORITHM_IDENTIFIER */
   ContentEncryptionAlgorithm: Uint8Array | Deno.PointerValue | null;
   /** ptr */
@@ -33879,8 +36392,8 @@ export function allocCMSG_CONTENT_ENCRYPT_INFO(data?: Partial<CMSG_CONTENT_ENCRY
   // 0x00: u32
   if (data?.cbSize !== undefined) view.setUint32(0, Number(data.cbSize), true);
   // 0x04: pad4
-  // 0x08: usize
-  if (data?.hCryptProv !== undefined) view.setBigUint64(8, BigInt(data.hCryptProv), true);
+  // 0x08: pointer
+  if (data?.hCryptProv !== undefined) view.setBigUint64(8, data.hCryptProv === null ? 0n : BigInt(util.toPointer(data.hCryptProv)), true);
   // 0x10: pointer
   if (data?.ContentEncryptionAlgorithm !== undefined) view.setBigUint64(16, data.ContentEncryptionAlgorithm === null ? 0n : BigInt(util.toPointer(data.ContentEncryptionAlgorithm)), true);
   // 0x18: pointer
@@ -34071,8 +36584,8 @@ export interface CMSG_CNG_CONTENT_DECRYPT_INFO {
   pfnAlloc: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.Security.Cryptography.PFN_CMSG_FREE */
   pfnFree: Uint8Array | Deno.PointerValue | null;
-  /** usize */
-  hNCryptKey: Deno.PointerValue;
+  /** Windows.Win32.Security.Cryptography.NCRYPT_KEY_HANDLE */
+  hNCryptKey: Uint8Array | Deno.PointerValue | null;
   /** ptr */
   pbContentEncryptKey: Deno.PointerValue | Uint8Array | null;
   /** u32 */
@@ -34097,8 +36610,8 @@ export function allocCMSG_CNG_CONTENT_DECRYPT_INFO(data?: Partial<CMSG_CNG_CONTE
   if (data?.pfnAlloc !== undefined) view.setBigUint64(16, data.pfnAlloc === null ? 0n : BigInt(util.toPointer(data.pfnAlloc)), true);
   // 0x18: pointer
   if (data?.pfnFree !== undefined) view.setBigUint64(24, data.pfnFree === null ? 0n : BigInt(util.toPointer(data.pfnFree)), true);
-  // 0x20: usize
-  if (data?.hNCryptKey !== undefined) view.setBigUint64(32, BigInt(data.hNCryptKey), true);
+  // 0x20: pointer
+  if (data?.hNCryptKey !== undefined) view.setBigUint64(32, data.hNCryptKey === null ? 0n : BigInt(util.toPointer(data.hNCryptKey)), true);
   // 0x28: pointer
   if (data?.pbContentEncryptKey !== undefined) view.setBigUint64(40, data.pbContentEncryptKey === null ? 0n : BigInt(util.toPointer(data.pbContentEncryptKey)), true);
   // 0x30: u32
@@ -34123,8 +36636,8 @@ export interface CERT_CONTEXT {
   cbCertEncoded: number;
   /** ptr */
   pCertInfo: Deno.PointerValue | Uint8Array | null;
-  /** ptr */
-  hCertStore: Deno.PointerValue | Uint8Array | null;
+  /** Windows.Win32.Security.Cryptography.HCERTSTORE */
+  hCertStore: Uint8Array | Deno.PointerValue | null;
 }
 
 export const sizeofCERT_CONTEXT = 40;
@@ -34159,8 +36672,8 @@ export interface CRL_CONTEXT {
   cbCrlEncoded: number;
   /** ptr */
   pCrlInfo: Deno.PointerValue | Uint8Array | null;
-  /** ptr */
-  hCertStore: Deno.PointerValue | Uint8Array | null;
+  /** Windows.Win32.Security.Cryptography.HCERTSTORE */
+  hCertStore: Uint8Array | Deno.PointerValue | null;
 }
 
 export const sizeofCRL_CONTEXT = 40;
@@ -34195,8 +36708,8 @@ export interface CTL_CONTEXT {
   cbCtlEncoded: number;
   /** ptr */
   pCtlInfo: Deno.PointerValue | Uint8Array | null;
-  /** ptr */
-  hCertStore: Deno.PointerValue | Uint8Array | null;
+  /** Windows.Win32.Security.Cryptography.HCERTSTORE */
+  hCertStore: Uint8Array | Deno.PointerValue | null;
   /** ptr */
   hCryptMsg: Deno.PointerValue | Uint8Array | null;
   /** ptr */
@@ -34494,8 +37007,8 @@ export interface CERT_STORE_PROV_INFO {
   cStoreProvFunc: number;
   /** ptr */
   rgpvStoreProvFunc: Deno.PointerValue | Uint8Array | null;
-  /** ptr */
-  hStoreProv: Deno.PointerValue | Uint8Array | null;
+  /** Windows.Win32.Security.Cryptography.HCERTSTOREPROV */
+  hStoreProv: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.Security.Cryptography.CERT_STORE_PROV_FLAGS */
   dwStoreProvFlags: CERT_STORE_PROV_FLAGS;
   /** ptr */
@@ -34898,8 +37411,8 @@ export interface CERT_REVOCATION_PARA {
   cCertStore: number;
   /** ptr */
   rgCertStore: Deno.PointerValue | Uint8Array | null;
-  /** ptr */
-  hCrlStore: Deno.PointerValue | Uint8Array | null;
+  /** Windows.Win32.Security.Cryptography.HCERTSTORE */
+  hCrlStore: Uint8Array | Deno.PointerValue | null;
   /** ptr */
   pftTimeToUse: Deno.PointerValue | Uint8Array | null;
 }
@@ -35123,8 +37636,8 @@ export interface CRYPT_VERIFY_MESSAGE_PARA {
   cbSize: number;
   /** u32 */
   dwMsgAndCertEncodingType: number;
-  /** usize */
-  hCryptProv: Deno.PointerValue;
+  /** Windows.Win32.Security.Cryptography.HCRYPTPROV_LEGACY */
+  hCryptProv: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.Security.Cryptography.PFN_CRYPT_GET_SIGNER_CERTIFICATE */
   pfnGetSignerCertificate: Uint8Array | Deno.PointerValue | null;
   /** ptr */
@@ -35140,8 +37653,8 @@ export function allocCRYPT_VERIFY_MESSAGE_PARA(data?: Partial<CRYPT_VERIFY_MESSA
   if (data?.cbSize !== undefined) view.setUint32(0, Number(data.cbSize), true);
   // 0x04: u32
   if (data?.dwMsgAndCertEncodingType !== undefined) view.setUint32(4, Number(data.dwMsgAndCertEncodingType), true);
-  // 0x08: usize
-  if (data?.hCryptProv !== undefined) view.setBigUint64(8, BigInt(data.hCryptProv), true);
+  // 0x08: pointer
+  if (data?.hCryptProv !== undefined) view.setBigUint64(8, data.hCryptProv === null ? 0n : BigInt(util.toPointer(data.hCryptProv)), true);
   // 0x10: pointer
   if (data?.pfnGetSignerCertificate !== undefined) view.setBigUint64(16, data.pfnGetSignerCertificate === null ? 0n : BigInt(util.toPointer(data.pfnGetSignerCertificate)), true);
   // 0x18: pointer
@@ -35157,8 +37670,8 @@ export interface CRYPT_ENCRYPT_MESSAGE_PARA {
   cbSize: number;
   /** u32 */
   dwMsgEncodingType: number;
-  /** usize */
-  hCryptProv: Deno.PointerValue;
+  /** Windows.Win32.Security.Cryptography.HCRYPTPROV_LEGACY */
+  hCryptProv: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.Security.Cryptography.CRYPT_ALGORITHM_IDENTIFIER */
   ContentEncryptionAlgorithm: Uint8Array | Deno.PointerValue | null;
   /** ptr */
@@ -35178,8 +37691,8 @@ export function allocCRYPT_ENCRYPT_MESSAGE_PARA(data?: Partial<CRYPT_ENCRYPT_MES
   if (data?.cbSize !== undefined) view.setUint32(0, Number(data.cbSize), true);
   // 0x04: u32
   if (data?.dwMsgEncodingType !== undefined) view.setUint32(4, Number(data.dwMsgEncodingType), true);
-  // 0x08: usize
-  if (data?.hCryptProv !== undefined) view.setBigUint64(8, BigInt(data.hCryptProv), true);
+  // 0x08: pointer
+  if (data?.hCryptProv !== undefined) view.setBigUint64(8, data.hCryptProv === null ? 0n : BigInt(util.toPointer(data.hCryptProv)), true);
   // 0x10: pointer
   if (data?.ContentEncryptionAlgorithm !== undefined) view.setBigUint64(16, data.ContentEncryptionAlgorithm === null ? 0n : BigInt(util.toPointer(data.ContentEncryptionAlgorithm)), true);
   // 0x18: pointer
@@ -35230,8 +37743,8 @@ export interface CRYPT_HASH_MESSAGE_PARA {
   cbSize: number;
   /** u32 */
   dwMsgEncodingType: number;
-  /** usize */
-  hCryptProv: Deno.PointerValue;
+  /** Windows.Win32.Security.Cryptography.HCRYPTPROV_LEGACY */
+  hCryptProv: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.Security.Cryptography.CRYPT_ALGORITHM_IDENTIFIER */
   HashAlgorithm: Uint8Array | Deno.PointerValue | null;
   /** ptr */
@@ -35247,8 +37760,8 @@ export function allocCRYPT_HASH_MESSAGE_PARA(data?: Partial<CRYPT_HASH_MESSAGE_P
   if (data?.cbSize !== undefined) view.setUint32(0, Number(data.cbSize), true);
   // 0x04: u32
   if (data?.dwMsgEncodingType !== undefined) view.setUint32(4, Number(data.dwMsgEncodingType), true);
-  // 0x08: usize
-  if (data?.hCryptProv !== undefined) view.setBigUint64(8, BigInt(data.hCryptProv), true);
+  // 0x08: pointer
+  if (data?.hCryptProv !== undefined) view.setBigUint64(8, data.hCryptProv === null ? 0n : BigInt(util.toPointer(data.hCryptProv)), true);
   // 0x10: pointer
   if (data?.HashAlgorithm !== undefined) view.setBigUint64(16, data.HashAlgorithm === null ? 0n : BigInt(util.toPointer(data.HashAlgorithm)), true);
   // 0x18: pointer
@@ -35307,8 +37820,8 @@ export interface CRYPT_KEY_VERIFY_MESSAGE_PARA {
   cbSize: number;
   /** u32 */
   dwMsgEncodingType: number;
-  /** usize */
-  hCryptProv: Deno.PointerValue;
+  /** Windows.Win32.Security.Cryptography.HCRYPTPROV_LEGACY */
+  hCryptProv: Uint8Array | Deno.PointerValue | null;
 }
 
 export const sizeofCRYPT_KEY_VERIFY_MESSAGE_PARA = 16;
@@ -35320,8 +37833,8 @@ export function allocCRYPT_KEY_VERIFY_MESSAGE_PARA(data?: Partial<CRYPT_KEY_VERI
   if (data?.cbSize !== undefined) view.setUint32(0, Number(data.cbSize), true);
   // 0x04: u32
   if (data?.dwMsgEncodingType !== undefined) view.setUint32(4, Number(data.dwMsgEncodingType), true);
-  // 0x08: usize
-  if (data?.hCryptProv !== undefined) view.setBigUint64(8, BigInt(data.hCryptProv), true);
+  // 0x08: pointer
+  if (data?.hCryptProv !== undefined) view.setBigUint64(8, data.hCryptProv === null ? 0n : BigInt(util.toPointer(data.hCryptProv)), true);
   return buf;
 }
 
@@ -35799,12 +38312,12 @@ export function allocCRYPT_GET_TIME_VALID_OBJECT_EXTRA_INFO(data?: Partial<CRYPT
 export interface CERT_CHAIN_ENGINE_CONFIG {
   /** u32 */
   cbSize: number;
-  /** ptr */
-  hRestrictedRoot: Deno.PointerValue | Uint8Array | null;
-  /** ptr */
-  hRestrictedTrust: Deno.PointerValue | Uint8Array | null;
-  /** ptr */
-  hRestrictedOther: Deno.PointerValue | Uint8Array | null;
+  /** Windows.Win32.Security.Cryptography.HCERTSTORE */
+  hRestrictedRoot: Uint8Array | Deno.PointerValue | null;
+  /** Windows.Win32.Security.Cryptography.HCERTSTORE */
+  hRestrictedTrust: Uint8Array | Deno.PointerValue | null;
+  /** Windows.Win32.Security.Cryptography.HCERTSTORE */
+  hRestrictedOther: Uint8Array | Deno.PointerValue | null;
   /** u32 */
   cAdditionalStore: number;
   /** ptr */
@@ -35817,10 +38330,10 @@ export interface CERT_CHAIN_ENGINE_CONFIG {
   MaximumCachedCertificates: number;
   /** u32 */
   CycleDetectionModulus: number;
-  /** ptr */
-  hExclusiveRoot: Deno.PointerValue | Uint8Array | null;
-  /** ptr */
-  hExclusiveTrustedPeople: Deno.PointerValue | Uint8Array | null;
+  /** Windows.Win32.Security.Cryptography.HCERTSTORE */
+  hExclusiveRoot: Uint8Array | Deno.PointerValue | null;
+  /** Windows.Win32.Security.Cryptography.HCERTSTORE */
+  hExclusiveTrustedPeople: Uint8Array | Deno.PointerValue | null;
   /** u32 */
   dwExclusiveFlags: number;
 }
@@ -36181,8 +38694,8 @@ export interface CERT_REVOCATION_CHAIN_PARA {
   cbSize: number;
   /** Windows.Win32.Security.Cryptography.HCERTCHAINENGINE */
   hChainEngine: Uint8Array | Deno.PointerValue | null;
-  /** ptr */
-  hAdditionalStore: Deno.PointerValue | Uint8Array | null;
+  /** Windows.Win32.Security.Cryptography.HCERTSTORE */
+  hAdditionalStore: Uint8Array | Deno.PointerValue | null;
   /** u32 */
   dwChainFlags: number;
   /** u32 */
@@ -36766,8 +39279,8 @@ export interface CERT_SELECT_CHAIN_PARA {
   hChainEngine: Uint8Array | Deno.PointerValue | null;
   /** ptr */
   pTime: Deno.PointerValue | Uint8Array | null;
-  /** ptr */
-  hAdditionalStore: Deno.PointerValue | Uint8Array | null;
+  /** Windows.Win32.Security.Cryptography.HCERTSTORE */
+  hAdditionalStore: Uint8Array | Deno.PointerValue | null;
   /** ptr */
   pChainPara: Deno.PointerValue | Uint8Array | null;
   /** u32 */
@@ -38675,33 +41188,6 @@ export function allocMS_ADDINFO_FLAT(data?: Partial<MS_ADDINFO_FLAT>): Uint8Arra
 }
 
 /**
- * Windows.Win32.Security.Cryptography.Sip.MS_ADDINFO_CATALOGMEMBER (size: 24)
- */
-export interface MS_ADDINFO_CATALOGMEMBER {
-  /** u32 */
-  cbStruct: number;
-  /** ptr */
-  pStore: Deno.PointerValue | Uint8Array | null;
-  /** ptr */
-  pMember: Deno.PointerValue | Uint8Array | null;
-}
-
-export const sizeofMS_ADDINFO_CATALOGMEMBER = 24;
-
-export function allocMS_ADDINFO_CATALOGMEMBER(data?: Partial<MS_ADDINFO_CATALOGMEMBER>): Uint8Array {
-  const buf = new Uint8Array(sizeofMS_ADDINFO_CATALOGMEMBER);
-  const view = new DataView(buf.buffer);
-  // 0x00: u32
-  if (data?.cbStruct !== undefined) view.setUint32(0, Number(data.cbStruct), true);
-  // 0x04: pad4
-  // 0x08: pointer
-  if (data?.pStore !== undefined) view.setBigUint64(8, data.pStore === null ? 0n : BigInt(util.toPointer(data.pStore)), true);
-  // 0x10: pointer
-  if (data?.pMember !== undefined) view.setBigUint64(16, data.pMember === null ? 0n : BigInt(util.toPointer(data.pMember)), true);
-  return buf;
-}
-
-/**
  * Windows.Win32.Security.Cryptography.Sip.MS_ADDINFO_BLOB (size: 32)
  */
 export interface MS_ADDINFO_BLOB {
@@ -38956,6 +41442,33 @@ export function allocSIP_ADD_NEWPROVIDER(data?: Partial<SIP_ADD_NEWPROVIDER>): U
     (buf as any)._f88 = util.pwstrToFfi(data.pwszGetCapFuncName);
     view.setBigUint64(88, (buf as any)._f88 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f88)), true);
   }
+  return buf;
+}
+
+/**
+ * Windows.Win32.Security.Cryptography.Catalog.MS_ADDINFO_CATALOGMEMBER (size: 24)
+ */
+export interface MS_ADDINFO_CATALOGMEMBER {
+  /** u32 */
+  cbStruct: number;
+  /** ptr */
+  pStore: Deno.PointerValue | Uint8Array | null;
+  /** ptr */
+  pMember: Deno.PointerValue | Uint8Array | null;
+}
+
+export const sizeofMS_ADDINFO_CATALOGMEMBER = 24;
+
+export function allocMS_ADDINFO_CATALOGMEMBER(data?: Partial<MS_ADDINFO_CATALOGMEMBER>): Uint8Array {
+  const buf = new Uint8Array(sizeofMS_ADDINFO_CATALOGMEMBER);
+  const view = new DataView(buf.buffer);
+  // 0x00: u32
+  if (data?.cbStruct !== undefined) view.setUint32(0, Number(data.cbStruct), true);
+  // 0x04: pad4
+  // 0x08: pointer
+  if (data?.pStore !== undefined) view.setBigUint64(8, data.pStore === null ? 0n : BigInt(util.toPointer(data.pStore)), true);
+  // 0x10: pointer
+  if (data?.pMember !== undefined) view.setBigUint64(16, data.pMember === null ? 0n : BigInt(util.toPointer(data.pMember)), true);
   return buf;
 }
 
@@ -39388,9 +41901,9 @@ export function allocCERT_VIEWPROPERTIES_STRUCT_W(data?: Partial<CERT_VIEWPROPER
 }
 
 /**
- * Windows.Win32.Security.Cryptography.UI.CMOID (size: 32)
+ * Windows.Win32.Security.Cryptography.UI.CERT_FILTER_EXTENSION_MATCH (size: 32)
  */
-export interface CMOID {
+export interface CERT_FILTER_EXTENSION_MATCH {
   /** Windows.Win32.Foundation.PSTR */
   szExtensionOID: string | null;
   /** u32 */
@@ -39401,10 +41914,10 @@ export interface CMOID {
   cbTestData: number;
 }
 
-export const sizeofCMOID = 32;
+export const sizeofCERT_FILTER_EXTENSION_MATCH = 32;
 
-export function allocCMOID(data?: Partial<CMOID>): Uint8Array {
-  const buf = new Uint8Array(sizeofCMOID);
+export function allocCERT_FILTER_EXTENSION_MATCH(data?: Partial<CERT_FILTER_EXTENSION_MATCH>): Uint8Array {
+  const buf = new Uint8Array(sizeofCERT_FILTER_EXTENSION_MATCH);
   const view = new DataView(buf.buffer);
   // 0x00: buffer
   if (data?.szExtensionOID !== undefined) {
@@ -39423,9 +41936,9 @@ export function allocCMOID(data?: Partial<CMOID>): Uint8Array {
 }
 
 /**
- * Windows.Win32.Security.Cryptography.UI.CMFLTR (size: 24)
+ * Windows.Win32.Security.Cryptography.UI.CERT_FILTER_DATA (size: 24)
  */
-export interface CMFLTR {
+export interface CERT_FILTER_DATA {
   /** u32 */
   dwSize: number;
   /** u32 */
@@ -39436,10 +41949,10 @@ export interface CMFLTR {
   dwCheckingFlags: number;
 }
 
-export const sizeofCMFLTR = 24;
+export const sizeofCERT_FILTER_DATA = 24;
 
-export function allocCMFLTR(data?: Partial<CMFLTR>): Uint8Array {
-  const buf = new Uint8Array(sizeofCMFLTR);
+export function allocCERT_FILTER_DATA(data?: Partial<CERT_FILTER_DATA>): Uint8Array {
+  const buf = new Uint8Array(sizeofCERT_FILTER_DATA);
   const view = new DataView(buf.buffer);
   // 0x00: u32
   if (data?.dwSize !== undefined) view.setUint32(0, Number(data.dwSize), true);
@@ -39580,8 +42093,8 @@ export function allocCTL_MODIFY_REQUEST(data?: Partial<CTL_MODIFY_REQUEST>): Uin
  * Windows.Win32.Security.Cryptography.UI.CERT_SELECTUI_INPUT (size: 24)
  */
 export interface CERT_SELECTUI_INPUT {
-  /** ptr */
-  hStore: Deno.PointerValue | Uint8Array | null;
+  /** Windows.Win32.Security.Cryptography.HCERTSTORE */
+  hStore: Uint8Array | Deno.PointerValue | null;
   /** ptr */
   prgpChain: Deno.PointerValue | Uint8Array | null;
   /** u32 */
@@ -39807,8 +42320,8 @@ export interface CRYPTUI_WIZ_DIGITAL_SIGN_EXTENDED_INFO {
   pszHashAlg: string | null;
   /** Windows.Win32.Foundation.PWSTR */
   pwszSigningCertDisplayString: string | null;
-  /** ptr */
-  hAdditionalCertStore: Deno.PointerValue | Uint8Array | null;
+  /** Windows.Win32.Security.Cryptography.HCERTSTORE */
+  hAdditionalCertStore: Uint8Array | Deno.PointerValue | null;
   /** ptr */
   psAuthenticated: Deno.PointerValue | Uint8Array | null;
   /** ptr */
@@ -44757,8 +47270,8 @@ export interface SE_SECURITY_DESCRIPTOR {
   Size: number;
   /** u32 */
   Flags: number;
-  /** ptr */
-  SecurityDescriptor: Deno.PointerValue | Uint8Array | null;
+  /** Windows.Win32.Security.PSECURITY_DESCRIPTOR */
+  SecurityDescriptor: Uint8Array | Deno.PointerValue | null;
 }
 
 export const sizeofSE_SECURITY_DESCRIPTOR = 16;
@@ -45514,7 +48027,7 @@ export function allocSECURITY_CAPABILITIES(data?: Partial<SECURITY_CAPABILITIES>
 // Native Libraries
 
 try {
-  var libADVAPI32 = Deno.dlopen("ADVAPI32", {
+  var libADVAPI32_dll = Deno.dlopen("ADVAPI32.dll", {
     AccessCheck: {
       parameters: ["pointer", "pointer", "u32", "pointer", "pointer", "pointer", "pointer", "pointer"],
       result: "i32",
@@ -46003,7 +48516,7 @@ try {
 } catch(e) { /* ignore */ }
 
 try {
-  var libKERNEL32 = Deno.dlopen("KERNEL32", {
+  var libKERNEL32_dll = Deno.dlopen("KERNEL32.dll", {
     AddResourceAttributeAce: {
       parameters: ["pointer", "u32", "u32", "u32", "pointer", "pointer", "pointer"],
       result: "i32",
@@ -46036,7 +48549,7 @@ try {
 } catch(e) { /* ignore */ }
 
 try {
-  var libapi_ms_win_security_base_l1_2_2 = Deno.dlopen("api-ms-win-security-base-l1-2-2", {
+  var libapi_ms_win_security_base_l1_2_2_dll = Deno.dlopen("api-ms-win-security-base-l1-2-2.dll", {
     DeriveCapabilitySidsFromName: {
       parameters: ["buffer", "pointer", "pointer", "pointer", "pointer"],
       result: "i32",
@@ -46045,7 +48558,7 @@ try {
 } catch(e) { /* ignore */ }
 
 try {
-  var libntdll = Deno.dlopen("ntdll", {
+  var libntdll_dll = Deno.dlopen("ntdll.dll", {
     RtlNormalizeSecurityDescriptor: {
       parameters: ["pointer", "u32", "pointer", "pointer", "pointer"],
       result: "pointer",
@@ -46058,7 +48571,7 @@ try {
 } catch(e) { /* ignore */ }
 
 try {
-  var libUSER32 = Deno.dlopen("USER32", {
+  var libUSER32_dll = Deno.dlopen("USER32.dll", {
     SetUserObjectSecurity: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "i32",
@@ -46073,7 +48586,7 @@ try {
 // Symbols
 
 export function AccessCheck(
-  pSecurityDescriptor: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pSecurityDescriptor: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Security.PSECURITY_DESCRIPTOR */,
   ClientToken: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
   DesiredAccess: number /* u32 */,
   GenericMapping: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -46082,7 +48595,7 @@ export function AccessCheck(
   GrantedAccess: Deno.PointerValue | Uint8Array | null /* ptr */,
   AccessStatus: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32.AccessCheck(util.toPointer(pSecurityDescriptor), util.toPointer(ClientToken), DesiredAccess, util.toPointer(GenericMapping), util.toPointer(PrivilegeSet), util.toPointer(PrivilegeSetLength), util.toPointer(GrantedAccess), util.toPointer(AccessStatus)));
+  return util.boolFromFfi(libADVAPI32_dll.AccessCheck(util.toPointer(pSecurityDescriptor), util.toPointer(ClientToken), DesiredAccess, util.toPointer(GenericMapping), util.toPointer(PrivilegeSet), util.toPointer(PrivilegeSetLength), util.toPointer(GrantedAccess), util.toPointer(AccessStatus)));
 }
 
 export function AccessCheckAndAuditAlarmW(
@@ -46090,7 +48603,7 @@ export function AccessCheckAndAuditAlarmW(
   HandleId: Deno.PointerValue | Uint8Array | null /* ptr */,
   ObjectTypeName: string | null /* Windows.Win32.Foundation.PWSTR */,
   ObjectName: string | null /* Windows.Win32.Foundation.PWSTR */,
-  SecurityDescriptor: Deno.PointerValue | Uint8Array | null /* ptr */,
+  SecurityDescriptor: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Security.PSECURITY_DESCRIPTOR */,
   DesiredAccess: number /* u32 */,
   GenericMapping: Deno.PointerValue | Uint8Array | null /* ptr */,
   ObjectCreation: boolean /* Windows.Win32.Foundation.BOOL */,
@@ -46098,11 +48611,11 @@ export function AccessCheckAndAuditAlarmW(
   AccessStatus: Deno.PointerValue | Uint8Array | null /* ptr */,
   pfGenerateOnClose: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32.AccessCheckAndAuditAlarmW(util.pwstrToFfi(SubsystemName), util.toPointer(HandleId), util.pwstrToFfi(ObjectTypeName), util.pwstrToFfi(ObjectName), util.toPointer(SecurityDescriptor), DesiredAccess, util.toPointer(GenericMapping), util.boolToFfi(ObjectCreation), util.toPointer(GrantedAccess), util.toPointer(AccessStatus), util.toPointer(pfGenerateOnClose)));
+  return util.boolFromFfi(libADVAPI32_dll.AccessCheckAndAuditAlarmW(util.pwstrToFfi(SubsystemName), util.toPointer(HandleId), util.pwstrToFfi(ObjectTypeName), util.pwstrToFfi(ObjectName), util.toPointer(SecurityDescriptor), DesiredAccess, util.toPointer(GenericMapping), util.boolToFfi(ObjectCreation), util.toPointer(GrantedAccess), util.toPointer(AccessStatus), util.toPointer(pfGenerateOnClose)));
 }
 
 export function AccessCheckByType(
-  pSecurityDescriptor: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pSecurityDescriptor: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Security.PSECURITY_DESCRIPTOR */,
   PrincipalSelfSid: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.PSID */,
   ClientToken: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
   DesiredAccess: number /* u32 */,
@@ -46114,11 +48627,11 @@ export function AccessCheckByType(
   GrantedAccess: Deno.PointerValue | Uint8Array | null /* ptr */,
   AccessStatus: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32.AccessCheckByType(util.toPointer(pSecurityDescriptor), util.toPointer(PrincipalSelfSid), util.toPointer(ClientToken), DesiredAccess, util.toPointer(ObjectTypeList), ObjectTypeListLength, util.toPointer(GenericMapping), util.toPointer(PrivilegeSet), util.toPointer(PrivilegeSetLength), util.toPointer(GrantedAccess), util.toPointer(AccessStatus)));
+  return util.boolFromFfi(libADVAPI32_dll.AccessCheckByType(util.toPointer(pSecurityDescriptor), util.toPointer(PrincipalSelfSid), util.toPointer(ClientToken), DesiredAccess, util.toPointer(ObjectTypeList), ObjectTypeListLength, util.toPointer(GenericMapping), util.toPointer(PrivilegeSet), util.toPointer(PrivilegeSetLength), util.toPointer(GrantedAccess), util.toPointer(AccessStatus)));
 }
 
 export function AccessCheckByTypeResultList(
-  pSecurityDescriptor: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pSecurityDescriptor: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Security.PSECURITY_DESCRIPTOR */,
   PrincipalSelfSid: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.PSID */,
   ClientToken: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
   DesiredAccess: number /* u32 */,
@@ -46130,7 +48643,7 @@ export function AccessCheckByTypeResultList(
   GrantedAccessList: Deno.PointerValue | Uint8Array | null /* ptr */,
   AccessStatusList: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32.AccessCheckByTypeResultList(util.toPointer(pSecurityDescriptor), util.toPointer(PrincipalSelfSid), util.toPointer(ClientToken), DesiredAccess, util.toPointer(ObjectTypeList), ObjectTypeListLength, util.toPointer(GenericMapping), util.toPointer(PrivilegeSet), util.toPointer(PrivilegeSetLength), util.toPointer(GrantedAccessList), util.toPointer(AccessStatusList)));
+  return util.boolFromFfi(libADVAPI32_dll.AccessCheckByTypeResultList(util.toPointer(pSecurityDescriptor), util.toPointer(PrincipalSelfSid), util.toPointer(ClientToken), DesiredAccess, util.toPointer(ObjectTypeList), ObjectTypeListLength, util.toPointer(GenericMapping), util.toPointer(PrivilegeSet), util.toPointer(PrivilegeSetLength), util.toPointer(GrantedAccessList), util.toPointer(AccessStatusList)));
 }
 
 export function AccessCheckByTypeAndAuditAlarmW(
@@ -46138,7 +48651,7 @@ export function AccessCheckByTypeAndAuditAlarmW(
   HandleId: Deno.PointerValue | Uint8Array | null /* ptr */,
   ObjectTypeName: string | null /* Windows.Win32.Foundation.PWSTR */,
   ObjectName: string | null /* Windows.Win32.Foundation.PWSTR */,
-  SecurityDescriptor: Deno.PointerValue | Uint8Array | null /* ptr */,
+  SecurityDescriptor: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Security.PSECURITY_DESCRIPTOR */,
   PrincipalSelfSid: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.PSID */,
   DesiredAccess: number /* u32 */,
   AuditType: AUDIT_EVENT_TYPE /* Windows.Win32.Security.AUDIT_EVENT_TYPE */,
@@ -46151,7 +48664,7 @@ export function AccessCheckByTypeAndAuditAlarmW(
   AccessStatus: Deno.PointerValue | Uint8Array | null /* ptr */,
   pfGenerateOnClose: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32.AccessCheckByTypeAndAuditAlarmW(util.pwstrToFfi(SubsystemName), util.toPointer(HandleId), util.pwstrToFfi(ObjectTypeName), util.pwstrToFfi(ObjectName), util.toPointer(SecurityDescriptor), util.toPointer(PrincipalSelfSid), DesiredAccess, AuditType, Flags, util.toPointer(ObjectTypeList), ObjectTypeListLength, util.toPointer(GenericMapping), util.boolToFfi(ObjectCreation), util.toPointer(GrantedAccess), util.toPointer(AccessStatus), util.toPointer(pfGenerateOnClose)));
+  return util.boolFromFfi(libADVAPI32_dll.AccessCheckByTypeAndAuditAlarmW(util.pwstrToFfi(SubsystemName), util.toPointer(HandleId), util.pwstrToFfi(ObjectTypeName), util.pwstrToFfi(ObjectName), util.toPointer(SecurityDescriptor), util.toPointer(PrincipalSelfSid), DesiredAccess, AuditType, Flags, util.toPointer(ObjectTypeList), ObjectTypeListLength, util.toPointer(GenericMapping), util.boolToFfi(ObjectCreation), util.toPointer(GrantedAccess), util.toPointer(AccessStatus), util.toPointer(pfGenerateOnClose)));
 }
 
 export function AccessCheckByTypeResultListAndAuditAlarmW(
@@ -46159,7 +48672,7 @@ export function AccessCheckByTypeResultListAndAuditAlarmW(
   HandleId: Deno.PointerValue | Uint8Array | null /* ptr */,
   ObjectTypeName: string | null /* Windows.Win32.Foundation.PWSTR */,
   ObjectName: string | null /* Windows.Win32.Foundation.PWSTR */,
-  SecurityDescriptor: Deno.PointerValue | Uint8Array | null /* ptr */,
+  SecurityDescriptor: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Security.PSECURITY_DESCRIPTOR */,
   PrincipalSelfSid: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.PSID */,
   DesiredAccess: number /* u32 */,
   AuditType: AUDIT_EVENT_TYPE /* Windows.Win32.Security.AUDIT_EVENT_TYPE */,
@@ -46172,7 +48685,7 @@ export function AccessCheckByTypeResultListAndAuditAlarmW(
   AccessStatusList: Deno.PointerValue | Uint8Array | null /* ptr */,
   pfGenerateOnClose: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32.AccessCheckByTypeResultListAndAuditAlarmW(util.pwstrToFfi(SubsystemName), util.toPointer(HandleId), util.pwstrToFfi(ObjectTypeName), util.pwstrToFfi(ObjectName), util.toPointer(SecurityDescriptor), util.toPointer(PrincipalSelfSid), DesiredAccess, AuditType, Flags, util.toPointer(ObjectTypeList), ObjectTypeListLength, util.toPointer(GenericMapping), util.boolToFfi(ObjectCreation), util.toPointer(GrantedAccessList), util.toPointer(AccessStatusList), util.toPointer(pfGenerateOnClose)));
+  return util.boolFromFfi(libADVAPI32_dll.AccessCheckByTypeResultListAndAuditAlarmW(util.pwstrToFfi(SubsystemName), util.toPointer(HandleId), util.pwstrToFfi(ObjectTypeName), util.pwstrToFfi(ObjectName), util.toPointer(SecurityDescriptor), util.toPointer(PrincipalSelfSid), DesiredAccess, AuditType, Flags, util.toPointer(ObjectTypeList), ObjectTypeListLength, util.toPointer(GenericMapping), util.boolToFfi(ObjectCreation), util.toPointer(GrantedAccessList), util.toPointer(AccessStatusList), util.toPointer(pfGenerateOnClose)));
 }
 
 export function AccessCheckByTypeResultListAndAuditAlarmByHandleW(
@@ -46181,7 +48694,7 @@ export function AccessCheckByTypeResultListAndAuditAlarmByHandleW(
   ClientToken: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
   ObjectTypeName: string | null /* Windows.Win32.Foundation.PWSTR */,
   ObjectName: string | null /* Windows.Win32.Foundation.PWSTR */,
-  SecurityDescriptor: Deno.PointerValue | Uint8Array | null /* ptr */,
+  SecurityDescriptor: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Security.PSECURITY_DESCRIPTOR */,
   PrincipalSelfSid: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.PSID */,
   DesiredAccess: number /* u32 */,
   AuditType: AUDIT_EVENT_TYPE /* Windows.Win32.Security.AUDIT_EVENT_TYPE */,
@@ -46194,7 +48707,7 @@ export function AccessCheckByTypeResultListAndAuditAlarmByHandleW(
   AccessStatusList: Deno.PointerValue | Uint8Array | null /* ptr */,
   pfGenerateOnClose: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32.AccessCheckByTypeResultListAndAuditAlarmByHandleW(util.pwstrToFfi(SubsystemName), util.toPointer(HandleId), util.toPointer(ClientToken), util.pwstrToFfi(ObjectTypeName), util.pwstrToFfi(ObjectName), util.toPointer(SecurityDescriptor), util.toPointer(PrincipalSelfSid), DesiredAccess, AuditType, Flags, util.toPointer(ObjectTypeList), ObjectTypeListLength, util.toPointer(GenericMapping), util.boolToFfi(ObjectCreation), util.toPointer(GrantedAccessList), util.toPointer(AccessStatusList), util.toPointer(pfGenerateOnClose)));
+  return util.boolFromFfi(libADVAPI32_dll.AccessCheckByTypeResultListAndAuditAlarmByHandleW(util.pwstrToFfi(SubsystemName), util.toPointer(HandleId), util.toPointer(ClientToken), util.pwstrToFfi(ObjectTypeName), util.pwstrToFfi(ObjectName), util.toPointer(SecurityDescriptor), util.toPointer(PrincipalSelfSid), DesiredAccess, AuditType, Flags, util.toPointer(ObjectTypeList), ObjectTypeListLength, util.toPointer(GenericMapping), util.boolToFfi(ObjectCreation), util.toPointer(GrantedAccessList), util.toPointer(AccessStatusList), util.toPointer(pfGenerateOnClose)));
 }
 
 export function AddAccessAllowedAce(
@@ -46203,7 +48716,7 @@ export function AddAccessAllowedAce(
   AccessMask: number /* u32 */,
   pSid: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.PSID */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32.AddAccessAllowedAce(util.toPointer(pAcl), dwAceRevision, AccessMask, util.toPointer(pSid)));
+  return util.boolFromFfi(libADVAPI32_dll.AddAccessAllowedAce(util.toPointer(pAcl), dwAceRevision, AccessMask, util.toPointer(pSid)));
 }
 
 export function AddAccessAllowedAceEx(
@@ -46213,7 +48726,7 @@ export function AddAccessAllowedAceEx(
   AccessMask: number /* u32 */,
   pSid: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.PSID */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32.AddAccessAllowedAceEx(util.toPointer(pAcl), dwAceRevision, AceFlags, AccessMask, util.toPointer(pSid)));
+  return util.boolFromFfi(libADVAPI32_dll.AddAccessAllowedAceEx(util.toPointer(pAcl), dwAceRevision, AceFlags, AccessMask, util.toPointer(pSid)));
 }
 
 export function AddAccessAllowedObjectAce(
@@ -46225,7 +48738,7 @@ export function AddAccessAllowedObjectAce(
   InheritedObjectTypeGuid: Deno.PointerValue | Uint8Array | null /* ptr */,
   pSid: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.PSID */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32.AddAccessAllowedObjectAce(util.toPointer(pAcl), dwAceRevision, AceFlags, AccessMask, util.toPointer(ObjectTypeGuid), util.toPointer(InheritedObjectTypeGuid), util.toPointer(pSid)));
+  return util.boolFromFfi(libADVAPI32_dll.AddAccessAllowedObjectAce(util.toPointer(pAcl), dwAceRevision, AceFlags, AccessMask, util.toPointer(ObjectTypeGuid), util.toPointer(InheritedObjectTypeGuid), util.toPointer(pSid)));
 }
 
 export function AddAccessDeniedAce(
@@ -46234,7 +48747,7 @@ export function AddAccessDeniedAce(
   AccessMask: number /* u32 */,
   pSid: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.PSID */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32.AddAccessDeniedAce(util.toPointer(pAcl), dwAceRevision, AccessMask, util.toPointer(pSid)));
+  return util.boolFromFfi(libADVAPI32_dll.AddAccessDeniedAce(util.toPointer(pAcl), dwAceRevision, AccessMask, util.toPointer(pSid)));
 }
 
 export function AddAccessDeniedAceEx(
@@ -46244,7 +48757,7 @@ export function AddAccessDeniedAceEx(
   AccessMask: number /* u32 */,
   pSid: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.PSID */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32.AddAccessDeniedAceEx(util.toPointer(pAcl), dwAceRevision, AceFlags, AccessMask, util.toPointer(pSid)));
+  return util.boolFromFfi(libADVAPI32_dll.AddAccessDeniedAceEx(util.toPointer(pAcl), dwAceRevision, AceFlags, AccessMask, util.toPointer(pSid)));
 }
 
 export function AddAccessDeniedObjectAce(
@@ -46256,7 +48769,7 @@ export function AddAccessDeniedObjectAce(
   InheritedObjectTypeGuid: Deno.PointerValue | Uint8Array | null /* ptr */,
   pSid: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.PSID */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32.AddAccessDeniedObjectAce(util.toPointer(pAcl), dwAceRevision, AceFlags, AccessMask, util.toPointer(ObjectTypeGuid), util.toPointer(InheritedObjectTypeGuid), util.toPointer(pSid)));
+  return util.boolFromFfi(libADVAPI32_dll.AddAccessDeniedObjectAce(util.toPointer(pAcl), dwAceRevision, AceFlags, AccessMask, util.toPointer(ObjectTypeGuid), util.toPointer(InheritedObjectTypeGuid), util.toPointer(pSid)));
 }
 
 export function AddAce(
@@ -46266,7 +48779,7 @@ export function AddAce(
   pAceList: Deno.PointerValue | Uint8Array | null /* ptr */,
   nAceListLength: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32.AddAce(util.toPointer(pAcl), dwAceRevision, dwStartingAceIndex, util.toPointer(pAceList), nAceListLength));
+  return util.boolFromFfi(libADVAPI32_dll.AddAce(util.toPointer(pAcl), dwAceRevision, dwStartingAceIndex, util.toPointer(pAceList), nAceListLength));
 }
 
 export function AddAuditAccessAce(
@@ -46277,7 +48790,7 @@ export function AddAuditAccessAce(
   bAuditSuccess: boolean /* Windows.Win32.Foundation.BOOL */,
   bAuditFailure: boolean /* Windows.Win32.Foundation.BOOL */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32.AddAuditAccessAce(util.toPointer(pAcl), dwAceRevision, dwAccessMask, util.toPointer(pSid), util.boolToFfi(bAuditSuccess), util.boolToFfi(bAuditFailure)));
+  return util.boolFromFfi(libADVAPI32_dll.AddAuditAccessAce(util.toPointer(pAcl), dwAceRevision, dwAccessMask, util.toPointer(pSid), util.boolToFfi(bAuditSuccess), util.boolToFfi(bAuditFailure)));
 }
 
 export function AddAuditAccessAceEx(
@@ -46289,7 +48802,7 @@ export function AddAuditAccessAceEx(
   bAuditSuccess: boolean /* Windows.Win32.Foundation.BOOL */,
   bAuditFailure: boolean /* Windows.Win32.Foundation.BOOL */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32.AddAuditAccessAceEx(util.toPointer(pAcl), dwAceRevision, AceFlags, dwAccessMask, util.toPointer(pSid), util.boolToFfi(bAuditSuccess), util.boolToFfi(bAuditFailure)));
+  return util.boolFromFfi(libADVAPI32_dll.AddAuditAccessAceEx(util.toPointer(pAcl), dwAceRevision, AceFlags, dwAccessMask, util.toPointer(pSid), util.boolToFfi(bAuditSuccess), util.boolToFfi(bAuditFailure)));
 }
 
 export function AddAuditAccessObjectAce(
@@ -46303,7 +48816,7 @@ export function AddAuditAccessObjectAce(
   bAuditSuccess: boolean /* Windows.Win32.Foundation.BOOL */,
   bAuditFailure: boolean /* Windows.Win32.Foundation.BOOL */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32.AddAuditAccessObjectAce(util.toPointer(pAcl), dwAceRevision, AceFlags, AccessMask, util.toPointer(ObjectTypeGuid), util.toPointer(InheritedObjectTypeGuid), util.toPointer(pSid), util.boolToFfi(bAuditSuccess), util.boolToFfi(bAuditFailure)));
+  return util.boolFromFfi(libADVAPI32_dll.AddAuditAccessObjectAce(util.toPointer(pAcl), dwAceRevision, AceFlags, AccessMask, util.toPointer(ObjectTypeGuid), util.toPointer(InheritedObjectTypeGuid), util.toPointer(pSid), util.boolToFfi(bAuditSuccess), util.boolToFfi(bAuditFailure)));
 }
 
 export function AddMandatoryAce(
@@ -46313,7 +48826,7 @@ export function AddMandatoryAce(
   MandatoryPolicy: number /* u32 */,
   pLabelSid: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.PSID */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32.AddMandatoryAce(util.toPointer(pAcl), dwAceRevision, AceFlags, MandatoryPolicy, util.toPointer(pLabelSid)));
+  return util.boolFromFfi(libADVAPI32_dll.AddMandatoryAce(util.toPointer(pAcl), dwAceRevision, AceFlags, MandatoryPolicy, util.toPointer(pLabelSid)));
 }
 
 export function AddResourceAttributeAce(
@@ -46325,7 +48838,7 @@ export function AddResourceAttributeAce(
   pAttributeInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
   pReturnLength: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32.AddResourceAttributeAce(util.toPointer(pAcl), dwAceRevision, AceFlags, AccessMask, util.toPointer(pSid), util.toPointer(pAttributeInfo), util.toPointer(pReturnLength)));
+  return util.boolFromFfi(libKERNEL32_dll.AddResourceAttributeAce(util.toPointer(pAcl), dwAceRevision, AceFlags, AccessMask, util.toPointer(pSid), util.toPointer(pAttributeInfo), util.toPointer(pReturnLength)));
 }
 
 export function AddScopedPolicyIDAce(
@@ -46335,7 +48848,7 @@ export function AddScopedPolicyIDAce(
   AccessMask: number /* u32 */,
   pSid: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.PSID */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32.AddScopedPolicyIDAce(util.toPointer(pAcl), dwAceRevision, AceFlags, AccessMask, util.toPointer(pSid)));
+  return util.boolFromFfi(libKERNEL32_dll.AddScopedPolicyIDAce(util.toPointer(pAcl), dwAceRevision, AceFlags, AccessMask, util.toPointer(pSid)));
 }
 
 export function AdjustTokenGroups(
@@ -46346,7 +48859,7 @@ export function AdjustTokenGroups(
   PreviousState: Deno.PointerValue | Uint8Array | null /* ptr */,
   ReturnLength: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32.AdjustTokenGroups(util.toPointer(TokenHandle), util.boolToFfi(ResetToDefault), util.toPointer(NewState), BufferLength, util.toPointer(PreviousState), util.toPointer(ReturnLength)));
+  return util.boolFromFfi(libADVAPI32_dll.AdjustTokenGroups(util.toPointer(TokenHandle), util.boolToFfi(ResetToDefault), util.toPointer(NewState), BufferLength, util.toPointer(PreviousState), util.toPointer(ReturnLength)));
 }
 
 export function AdjustTokenPrivileges(
@@ -46357,7 +48870,7 @@ export function AdjustTokenPrivileges(
   PreviousState: Deno.PointerValue | Uint8Array | null /* ptr */,
   ReturnLength: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32.AdjustTokenPrivileges(util.toPointer(TokenHandle), util.boolToFfi(DisableAllPrivileges), util.toPointer(NewState), BufferLength, util.toPointer(PreviousState), util.toPointer(ReturnLength)));
+  return util.boolFromFfi(libADVAPI32_dll.AdjustTokenPrivileges(util.toPointer(TokenHandle), util.boolToFfi(DisableAllPrivileges), util.toPointer(NewState), BufferLength, util.toPointer(PreviousState), util.toPointer(ReturnLength)));
 }
 
 export function AllocateAndInitializeSid(
@@ -46373,27 +48886,27 @@ export function AllocateAndInitializeSid(
   nSubAuthority7: number /* u32 */,
   pSid: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32.AllocateAndInitializeSid(util.toPointer(pIdentifierAuthority), nSubAuthorityCount, nSubAuthority0, nSubAuthority1, nSubAuthority2, nSubAuthority3, nSubAuthority4, nSubAuthority5, nSubAuthority6, nSubAuthority7, util.toPointer(pSid)));
+  return util.boolFromFfi(libADVAPI32_dll.AllocateAndInitializeSid(util.toPointer(pIdentifierAuthority), nSubAuthorityCount, nSubAuthority0, nSubAuthority1, nSubAuthority2, nSubAuthority3, nSubAuthority4, nSubAuthority5, nSubAuthority6, nSubAuthority7, util.toPointer(pSid)));
 }
 
 export function AllocateLocallyUniqueId(
   Luid: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32.AllocateLocallyUniqueId(util.toPointer(Luid)));
+  return util.boolFromFfi(libADVAPI32_dll.AllocateLocallyUniqueId(util.toPointer(Luid)));
 }
 
 export function AreAllAccessesGranted(
   GrantedAccess: number /* u32 */,
   DesiredAccess: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32.AreAllAccessesGranted(GrantedAccess, DesiredAccess));
+  return util.boolFromFfi(libADVAPI32_dll.AreAllAccessesGranted(GrantedAccess, DesiredAccess));
 }
 
 export function AreAnyAccessesGranted(
   GrantedAccess: number /* u32 */,
   DesiredAccess: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32.AreAnyAccessesGranted(GrantedAccess, DesiredAccess));
+  return util.boolFromFfi(libADVAPI32_dll.AreAnyAccessesGranted(GrantedAccess, DesiredAccess));
 }
 
 export function CheckTokenMembership(
@@ -46401,7 +48914,7 @@ export function CheckTokenMembership(
   SidToCheck: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.PSID */,
   IsMember: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32.CheckTokenMembership(util.toPointer(TokenHandle), util.toPointer(SidToCheck), util.toPointer(IsMember)));
+  return util.boolFromFfi(libADVAPI32_dll.CheckTokenMembership(util.toPointer(TokenHandle), util.toPointer(SidToCheck), util.toPointer(IsMember)));
 }
 
 export function CheckTokenCapability(
@@ -46409,7 +48922,7 @@ export function CheckTokenCapability(
   CapabilitySidToCheck: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.PSID */,
   HasCapability: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32.CheckTokenCapability(util.toPointer(TokenHandle), util.toPointer(CapabilitySidToCheck), util.toPointer(HasCapability)));
+  return util.boolFromFfi(libKERNEL32_dll.CheckTokenCapability(util.toPointer(TokenHandle), util.toPointer(CapabilitySidToCheck), util.toPointer(HasCapability)));
 }
 
 export function GetAppContainerAce(
@@ -46418,7 +48931,7 @@ export function GetAppContainerAce(
   AppContainerAce: Deno.PointerValue | Uint8Array | null /* ptr */,
   AppContainerAceIndex: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32.GetAppContainerAce(util.toPointer(Acl), StartingAceIndex, util.toPointer(AppContainerAce), util.toPointer(AppContainerAceIndex)));
+  return util.boolFromFfi(libKERNEL32_dll.GetAppContainerAce(util.toPointer(Acl), StartingAceIndex, util.toPointer(AppContainerAce), util.toPointer(AppContainerAceIndex)));
 }
 
 export function CheckTokenMembershipEx(
@@ -46427,18 +48940,18 @@ export function CheckTokenMembershipEx(
   Flags: number /* u32 */,
   IsMember: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32.CheckTokenMembershipEx(util.toPointer(TokenHandle), util.toPointer(SidToCheck), Flags, util.toPointer(IsMember)));
+  return util.boolFromFfi(libKERNEL32_dll.CheckTokenMembershipEx(util.toPointer(TokenHandle), util.toPointer(SidToCheck), Flags, util.toPointer(IsMember)));
 }
 
 export function ConvertToAutoInheritPrivateObjectSecurity(
-  ParentDescriptor: Deno.PointerValue | Uint8Array | null /* ptr */,
-  CurrentSecurityDescriptor: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ParentDescriptor: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Security.PSECURITY_DESCRIPTOR */,
+  CurrentSecurityDescriptor: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Security.PSECURITY_DESCRIPTOR */,
   NewSecurityDescriptor: Deno.PointerValue | Uint8Array | null /* ptr */,
   ObjectType: Deno.PointerValue | Uint8Array | null /* ptr */,
   IsDirectoryObject: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.BOOLEAN */,
   GenericMapping: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32.ConvertToAutoInheritPrivateObjectSecurity(util.toPointer(ParentDescriptor), util.toPointer(CurrentSecurityDescriptor), util.toPointer(NewSecurityDescriptor), util.toPointer(ObjectType), util.toPointer(IsDirectoryObject), util.toPointer(GenericMapping)));
+  return util.boolFromFfi(libADVAPI32_dll.ConvertToAutoInheritPrivateObjectSecurity(util.toPointer(ParentDescriptor), util.toPointer(CurrentSecurityDescriptor), util.toPointer(NewSecurityDescriptor), util.toPointer(ObjectType), util.toPointer(IsDirectoryObject), util.toPointer(GenericMapping)));
 }
 
 export function CopySid(
@@ -46446,23 +48959,23 @@ export function CopySid(
   pDestinationSid: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.PSID */,
   pSourceSid: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.PSID */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32.CopySid(nDestinationSidLength, util.toPointer(pDestinationSid), util.toPointer(pSourceSid)));
+  return util.boolFromFfi(libADVAPI32_dll.CopySid(nDestinationSidLength, util.toPointer(pDestinationSid), util.toPointer(pSourceSid)));
 }
 
 export function CreatePrivateObjectSecurity(
-  ParentDescriptor: Deno.PointerValue | Uint8Array | null /* ptr */,
-  CreatorDescriptor: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ParentDescriptor: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Security.PSECURITY_DESCRIPTOR */,
+  CreatorDescriptor: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Security.PSECURITY_DESCRIPTOR */,
   NewDescriptor: Deno.PointerValue | Uint8Array | null /* ptr */,
   IsDirectoryObject: boolean /* Windows.Win32.Foundation.BOOL */,
   Token: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
   GenericMapping: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32.CreatePrivateObjectSecurity(util.toPointer(ParentDescriptor), util.toPointer(CreatorDescriptor), util.toPointer(NewDescriptor), util.boolToFfi(IsDirectoryObject), util.toPointer(Token), util.toPointer(GenericMapping)));
+  return util.boolFromFfi(libADVAPI32_dll.CreatePrivateObjectSecurity(util.toPointer(ParentDescriptor), util.toPointer(CreatorDescriptor), util.toPointer(NewDescriptor), util.boolToFfi(IsDirectoryObject), util.toPointer(Token), util.toPointer(GenericMapping)));
 }
 
 export function CreatePrivateObjectSecurityEx(
-  ParentDescriptor: Deno.PointerValue | Uint8Array | null /* ptr */,
-  CreatorDescriptor: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ParentDescriptor: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Security.PSECURITY_DESCRIPTOR */,
+  CreatorDescriptor: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Security.PSECURITY_DESCRIPTOR */,
   NewDescriptor: Deno.PointerValue | Uint8Array | null /* ptr */,
   ObjectType: Deno.PointerValue | Uint8Array | null /* ptr */,
   IsContainerObject: boolean /* Windows.Win32.Foundation.BOOL */,
@@ -46470,12 +48983,12 @@ export function CreatePrivateObjectSecurityEx(
   Token: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
   GenericMapping: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32.CreatePrivateObjectSecurityEx(util.toPointer(ParentDescriptor), util.toPointer(CreatorDescriptor), util.toPointer(NewDescriptor), util.toPointer(ObjectType), util.boolToFfi(IsContainerObject), AutoInheritFlags, util.toPointer(Token), util.toPointer(GenericMapping)));
+  return util.boolFromFfi(libADVAPI32_dll.CreatePrivateObjectSecurityEx(util.toPointer(ParentDescriptor), util.toPointer(CreatorDescriptor), util.toPointer(NewDescriptor), util.toPointer(ObjectType), util.boolToFfi(IsContainerObject), AutoInheritFlags, util.toPointer(Token), util.toPointer(GenericMapping)));
 }
 
 export function CreatePrivateObjectSecurityWithMultipleInheritance(
-  ParentDescriptor: Deno.PointerValue | Uint8Array | null /* ptr */,
-  CreatorDescriptor: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ParentDescriptor: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Security.PSECURITY_DESCRIPTOR */,
+  CreatorDescriptor: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Security.PSECURITY_DESCRIPTOR */,
   NewDescriptor: Deno.PointerValue | Uint8Array | null /* ptr */,
   ObjectTypes: Deno.PointerValue | Uint8Array | null /* ptr */,
   GuidCount: number /* u32 */,
@@ -46484,7 +48997,7 @@ export function CreatePrivateObjectSecurityWithMultipleInheritance(
   Token: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
   GenericMapping: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32.CreatePrivateObjectSecurityWithMultipleInheritance(util.toPointer(ParentDescriptor), util.toPointer(CreatorDescriptor), util.toPointer(NewDescriptor), util.toPointer(ObjectTypes), GuidCount, util.boolToFfi(IsContainerObject), AutoInheritFlags, util.toPointer(Token), util.toPointer(GenericMapping)));
+  return util.boolFromFfi(libADVAPI32_dll.CreatePrivateObjectSecurityWithMultipleInheritance(util.toPointer(ParentDescriptor), util.toPointer(CreatorDescriptor), util.toPointer(NewDescriptor), util.toPointer(ObjectTypes), GuidCount, util.boolToFfi(IsContainerObject), AutoInheritFlags, util.toPointer(Token), util.toPointer(GenericMapping)));
 }
 
 export function CreateRestrictedToken(
@@ -46498,7 +49011,7 @@ export function CreateRestrictedToken(
   SidsToRestrict: Deno.PointerValue | Uint8Array | null /* ptr */,
   NewTokenHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32.CreateRestrictedToken(util.toPointer(ExistingTokenHandle), Flags, DisableSidCount, util.toPointer(SidsToDisable), DeletePrivilegeCount, util.toPointer(PrivilegesToDelete), RestrictedSidCount, util.toPointer(SidsToRestrict), util.toPointer(NewTokenHandle)));
+  return util.boolFromFfi(libADVAPI32_dll.CreateRestrictedToken(util.toPointer(ExistingTokenHandle), Flags, DisableSidCount, util.toPointer(SidsToDisable), DeletePrivilegeCount, util.toPointer(PrivilegesToDelete), RestrictedSidCount, util.toPointer(SidsToRestrict), util.toPointer(NewTokenHandle)));
 }
 
 export function CreateWellKnownSid(
@@ -46507,7 +49020,7 @@ export function CreateWellKnownSid(
   pSid: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.PSID */,
   cbSid: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32.CreateWellKnownSid(WellKnownSidType, util.toPointer(DomainSid), util.toPointer(pSid), util.toPointer(cbSid)));
+  return util.boolFromFfi(libADVAPI32_dll.CreateWellKnownSid(WellKnownSidType, util.toPointer(DomainSid), util.toPointer(pSid), util.toPointer(cbSid)));
 }
 
 export function EqualDomainSid(
@@ -46515,20 +49028,20 @@ export function EqualDomainSid(
   pSid2: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.PSID */,
   pfEqual: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32.EqualDomainSid(util.toPointer(pSid1), util.toPointer(pSid2), util.toPointer(pfEqual)));
+  return util.boolFromFfi(libADVAPI32_dll.EqualDomainSid(util.toPointer(pSid1), util.toPointer(pSid2), util.toPointer(pfEqual)));
 }
 
 export function DeleteAce(
   pAcl: Deno.PointerValue | Uint8Array | null /* ptr */,
   dwAceIndex: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32.DeleteAce(util.toPointer(pAcl), dwAceIndex));
+  return util.boolFromFfi(libADVAPI32_dll.DeleteAce(util.toPointer(pAcl), dwAceIndex));
 }
 
 export function DestroyPrivateObjectSecurity(
   ObjectDescriptor: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32.DestroyPrivateObjectSecurity(util.toPointer(ObjectDescriptor)));
+  return util.boolFromFfi(libADVAPI32_dll.DestroyPrivateObjectSecurity(util.toPointer(ObjectDescriptor)));
 }
 
 export function DuplicateToken(
@@ -46536,7 +49049,7 @@ export function DuplicateToken(
   ImpersonationLevel: SECURITY_IMPERSONATION_LEVEL /* Windows.Win32.Security.SECURITY_IMPERSONATION_LEVEL */,
   DuplicateTokenHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32.DuplicateToken(util.toPointer(ExistingTokenHandle), ImpersonationLevel, util.toPointer(DuplicateTokenHandle)));
+  return util.boolFromFfi(libADVAPI32_dll.DuplicateToken(util.toPointer(ExistingTokenHandle), ImpersonationLevel, util.toPointer(DuplicateTokenHandle)));
 }
 
 export function DuplicateTokenEx(
@@ -46547,34 +49060,34 @@ export function DuplicateTokenEx(
   TokenType: TOKEN_TYPE /* Windows.Win32.Security.TOKEN_TYPE */,
   phNewToken: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32.DuplicateTokenEx(util.toPointer(hExistingToken), dwDesiredAccess, util.toPointer(lpTokenAttributes), ImpersonationLevel, TokenType, util.toPointer(phNewToken)));
+  return util.boolFromFfi(libADVAPI32_dll.DuplicateTokenEx(util.toPointer(hExistingToken), dwDesiredAccess, util.toPointer(lpTokenAttributes), ImpersonationLevel, TokenType, util.toPointer(phNewToken)));
 }
 
 export function EqualPrefixSid(
   pSid1: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.PSID */,
   pSid2: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.PSID */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32.EqualPrefixSid(util.toPointer(pSid1), util.toPointer(pSid2)));
+  return util.boolFromFfi(libADVAPI32_dll.EqualPrefixSid(util.toPointer(pSid1), util.toPointer(pSid2)));
 }
 
 export function EqualSid(
   pSid1: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.PSID */,
   pSid2: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.PSID */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32.EqualSid(util.toPointer(pSid1), util.toPointer(pSid2)));
+  return util.boolFromFfi(libADVAPI32_dll.EqualSid(util.toPointer(pSid1), util.toPointer(pSid2)));
 }
 
 export function FindFirstFreeAce(
   pAcl: Deno.PointerValue | Uint8Array | null /* ptr */,
   pAce: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32.FindFirstFreeAce(util.toPointer(pAcl), util.toPointer(pAce)));
+  return util.boolFromFfi(libADVAPI32_dll.FindFirstFreeAce(util.toPointer(pAcl), util.toPointer(pAce)));
 }
 
 export function FreeSid(
   pSid: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.PSID */,
 ): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libADVAPI32.FreeSid(util.toPointer(pSid)));
+  return util.pointerFromFfi(libADVAPI32_dll.FreeSid(util.toPointer(pSid)));
 }
 
 export function GetAce(
@@ -46582,7 +49095,7 @@ export function GetAce(
   dwAceIndex: number /* u32 */,
   pAce: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32.GetAce(util.toPointer(pAcl), dwAceIndex, util.toPointer(pAce)));
+  return util.boolFromFfi(libADVAPI32_dll.GetAce(util.toPointer(pAcl), dwAceIndex, util.toPointer(pAce)));
 }
 
 export function GetAclInformation(
@@ -46591,123 +49104,123 @@ export function GetAclInformation(
   nAclInformationLength: number /* u32 */,
   dwAclInformationClass: ACL_INFORMATION_CLASS /* Windows.Win32.Security.ACL_INFORMATION_CLASS */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32.GetAclInformation(util.toPointer(pAcl), util.toPointer(pAclInformation), nAclInformationLength, dwAclInformationClass));
+  return util.boolFromFfi(libADVAPI32_dll.GetAclInformation(util.toPointer(pAcl), util.toPointer(pAclInformation), nAclInformationLength, dwAclInformationClass));
 }
 
 export function GetFileSecurityW(
   lpFileName: string | null /* Windows.Win32.Foundation.PWSTR */,
   RequestedInformation: number /* u32 */,
-  pSecurityDescriptor: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pSecurityDescriptor: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Security.PSECURITY_DESCRIPTOR */,
   nLength: number /* u32 */,
   lpnLengthNeeded: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32.GetFileSecurityW(util.pwstrToFfi(lpFileName), RequestedInformation, util.toPointer(pSecurityDescriptor), nLength, util.toPointer(lpnLengthNeeded)));
+  return util.boolFromFfi(libADVAPI32_dll.GetFileSecurityW(util.pwstrToFfi(lpFileName), RequestedInformation, util.toPointer(pSecurityDescriptor), nLength, util.toPointer(lpnLengthNeeded)));
 }
 
 export function GetKernelObjectSecurity(
   Handle: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
   RequestedInformation: number /* u32 */,
-  pSecurityDescriptor: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pSecurityDescriptor: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Security.PSECURITY_DESCRIPTOR */,
   nLength: number /* u32 */,
   lpnLengthNeeded: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32.GetKernelObjectSecurity(util.toPointer(Handle), RequestedInformation, util.toPointer(pSecurityDescriptor), nLength, util.toPointer(lpnLengthNeeded)));
+  return util.boolFromFfi(libADVAPI32_dll.GetKernelObjectSecurity(util.toPointer(Handle), RequestedInformation, util.toPointer(pSecurityDescriptor), nLength, util.toPointer(lpnLengthNeeded)));
 }
 
 export function GetLengthSid(
   pSid: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.PSID */,
 ): number /* u32 */ {
-  return libADVAPI32.GetLengthSid(util.toPointer(pSid));
+  return libADVAPI32_dll.GetLengthSid(util.toPointer(pSid));
 }
 
 export function GetPrivateObjectSecurity(
-  ObjectDescriptor: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ObjectDescriptor: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Security.PSECURITY_DESCRIPTOR */,
   SecurityInformation: number /* u32 */,
-  ResultantDescriptor: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ResultantDescriptor: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Security.PSECURITY_DESCRIPTOR */,
   DescriptorLength: number /* u32 */,
   ReturnLength: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32.GetPrivateObjectSecurity(util.toPointer(ObjectDescriptor), SecurityInformation, util.toPointer(ResultantDescriptor), DescriptorLength, util.toPointer(ReturnLength)));
+  return util.boolFromFfi(libADVAPI32_dll.GetPrivateObjectSecurity(util.toPointer(ObjectDescriptor), SecurityInformation, util.toPointer(ResultantDescriptor), DescriptorLength, util.toPointer(ReturnLength)));
 }
 
 export function GetSecurityDescriptorControl(
-  pSecurityDescriptor: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pSecurityDescriptor: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Security.PSECURITY_DESCRIPTOR */,
   pControl: Deno.PointerValue | Uint8Array | null /* ptr */,
   lpdwRevision: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32.GetSecurityDescriptorControl(util.toPointer(pSecurityDescriptor), util.toPointer(pControl), util.toPointer(lpdwRevision)));
+  return util.boolFromFfi(libADVAPI32_dll.GetSecurityDescriptorControl(util.toPointer(pSecurityDescriptor), util.toPointer(pControl), util.toPointer(lpdwRevision)));
 }
 
 export function GetSecurityDescriptorDacl(
-  pSecurityDescriptor: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pSecurityDescriptor: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Security.PSECURITY_DESCRIPTOR */,
   lpbDaclPresent: Deno.PointerValue | Uint8Array | null /* ptr */,
   pDacl: Deno.PointerValue | Uint8Array | null /* ptr */,
   lpbDaclDefaulted: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32.GetSecurityDescriptorDacl(util.toPointer(pSecurityDescriptor), util.toPointer(lpbDaclPresent), util.toPointer(pDacl), util.toPointer(lpbDaclDefaulted)));
+  return util.boolFromFfi(libADVAPI32_dll.GetSecurityDescriptorDacl(util.toPointer(pSecurityDescriptor), util.toPointer(lpbDaclPresent), util.toPointer(pDacl), util.toPointer(lpbDaclDefaulted)));
 }
 
 export function GetSecurityDescriptorGroup(
-  pSecurityDescriptor: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pSecurityDescriptor: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Security.PSECURITY_DESCRIPTOR */,
   pGroup: Deno.PointerValue | Uint8Array | null /* ptr */,
   lpbGroupDefaulted: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32.GetSecurityDescriptorGroup(util.toPointer(pSecurityDescriptor), util.toPointer(pGroup), util.toPointer(lpbGroupDefaulted)));
+  return util.boolFromFfi(libADVAPI32_dll.GetSecurityDescriptorGroup(util.toPointer(pSecurityDescriptor), util.toPointer(pGroup), util.toPointer(lpbGroupDefaulted)));
 }
 
 export function GetSecurityDescriptorLength(
-  pSecurityDescriptor: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pSecurityDescriptor: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Security.PSECURITY_DESCRIPTOR */,
 ): number /* u32 */ {
-  return libADVAPI32.GetSecurityDescriptorLength(util.toPointer(pSecurityDescriptor));
+  return libADVAPI32_dll.GetSecurityDescriptorLength(util.toPointer(pSecurityDescriptor));
 }
 
 export function GetSecurityDescriptorOwner(
-  pSecurityDescriptor: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pSecurityDescriptor: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Security.PSECURITY_DESCRIPTOR */,
   pOwner: Deno.PointerValue | Uint8Array | null /* ptr */,
   lpbOwnerDefaulted: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32.GetSecurityDescriptorOwner(util.toPointer(pSecurityDescriptor), util.toPointer(pOwner), util.toPointer(lpbOwnerDefaulted)));
+  return util.boolFromFfi(libADVAPI32_dll.GetSecurityDescriptorOwner(util.toPointer(pSecurityDescriptor), util.toPointer(pOwner), util.toPointer(lpbOwnerDefaulted)));
 }
 
 export function GetSecurityDescriptorRMControl(
-  SecurityDescriptor: Deno.PointerValue | Uint8Array | null /* ptr */,
+  SecurityDescriptor: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Security.PSECURITY_DESCRIPTOR */,
   RMControl: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libADVAPI32.GetSecurityDescriptorRMControl(util.toPointer(SecurityDescriptor), util.toPointer(RMControl));
+  return libADVAPI32_dll.GetSecurityDescriptorRMControl(util.toPointer(SecurityDescriptor), util.toPointer(RMControl));
 }
 
 export function GetSecurityDescriptorSacl(
-  pSecurityDescriptor: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pSecurityDescriptor: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Security.PSECURITY_DESCRIPTOR */,
   lpbSaclPresent: Deno.PointerValue | Uint8Array | null /* ptr */,
   pSacl: Deno.PointerValue | Uint8Array | null /* ptr */,
   lpbSaclDefaulted: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32.GetSecurityDescriptorSacl(util.toPointer(pSecurityDescriptor), util.toPointer(lpbSaclPresent), util.toPointer(pSacl), util.toPointer(lpbSaclDefaulted)));
+  return util.boolFromFfi(libADVAPI32_dll.GetSecurityDescriptorSacl(util.toPointer(pSecurityDescriptor), util.toPointer(lpbSaclPresent), util.toPointer(pSacl), util.toPointer(lpbSaclDefaulted)));
 }
 
 export function GetSidIdentifierAuthority(
   pSid: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.PSID */,
 ): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libADVAPI32.GetSidIdentifierAuthority(util.toPointer(pSid)));
+  return util.pointerFromFfi(libADVAPI32_dll.GetSidIdentifierAuthority(util.toPointer(pSid)));
 }
 
 export function GetSidLengthRequired(
   nSubAuthorityCount: number /* u8 */,
 ): number /* u32 */ {
-  return libADVAPI32.GetSidLengthRequired(nSubAuthorityCount);
+  return libADVAPI32_dll.GetSidLengthRequired(nSubAuthorityCount);
 }
 
 export function GetSidSubAuthority(
   pSid: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.PSID */,
   nSubAuthority: number /* u32 */,
 ): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libADVAPI32.GetSidSubAuthority(util.toPointer(pSid), nSubAuthority));
+  return util.pointerFromFfi(libADVAPI32_dll.GetSidSubAuthority(util.toPointer(pSid), nSubAuthority));
 }
 
 export function GetSidSubAuthorityCount(
   pSid: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.PSID */,
 ): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libADVAPI32.GetSidSubAuthorityCount(util.toPointer(pSid)));
+  return util.pointerFromFfi(libADVAPI32_dll.GetSidSubAuthorityCount(util.toPointer(pSid)));
 }
 
 export function GetTokenInformation(
@@ -46717,7 +49230,7 @@ export function GetTokenInformation(
   TokenInformationLength: number /* u32 */,
   ReturnLength: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32.GetTokenInformation(util.toPointer(TokenHandle), TokenInformationClass, util.toPointer(TokenInformation), TokenInformationLength, util.toPointer(ReturnLength)));
+  return util.boolFromFfi(libADVAPI32_dll.GetTokenInformation(util.toPointer(TokenHandle), TokenInformationClass, util.toPointer(TokenInformation), TokenInformationLength, util.toPointer(ReturnLength)));
 }
 
 export function GetWindowsAccountDomainSid(
@@ -46725,25 +49238,25 @@ export function GetWindowsAccountDomainSid(
   pDomainSid: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.PSID */,
   cbDomainSid: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32.GetWindowsAccountDomainSid(util.toPointer(pSid), util.toPointer(pDomainSid), util.toPointer(cbDomainSid)));
+  return util.boolFromFfi(libADVAPI32_dll.GetWindowsAccountDomainSid(util.toPointer(pSid), util.toPointer(pDomainSid), util.toPointer(cbDomainSid)));
 }
 
 export function ImpersonateAnonymousToken(
   ThreadHandle: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32.ImpersonateAnonymousToken(util.toPointer(ThreadHandle)));
+  return util.boolFromFfi(libADVAPI32_dll.ImpersonateAnonymousToken(util.toPointer(ThreadHandle)));
 }
 
 export function ImpersonateLoggedOnUser(
   hToken: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32.ImpersonateLoggedOnUser(util.toPointer(hToken)));
+  return util.boolFromFfi(libADVAPI32_dll.ImpersonateLoggedOnUser(util.toPointer(hToken)));
 }
 
 export function ImpersonateSelf(
   ImpersonationLevel: SECURITY_IMPERSONATION_LEVEL /* Windows.Win32.Security.SECURITY_IMPERSONATION_LEVEL */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32.ImpersonateSelf(ImpersonationLevel));
+  return util.boolFromFfi(libADVAPI32_dll.ImpersonateSelf(ImpersonationLevel));
 }
 
 export function InitializeAcl(
@@ -46751,14 +49264,14 @@ export function InitializeAcl(
   nAclLength: number /* u32 */,
   dwAclRevision: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32.InitializeAcl(util.toPointer(pAcl), nAclLength, dwAclRevision));
+  return util.boolFromFfi(libADVAPI32_dll.InitializeAcl(util.toPointer(pAcl), nAclLength, dwAclRevision));
 }
 
 export function InitializeSecurityDescriptor(
-  pSecurityDescriptor: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pSecurityDescriptor: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Security.PSECURITY_DESCRIPTOR */,
   dwRevision: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32.InitializeSecurityDescriptor(util.toPointer(pSecurityDescriptor), dwRevision));
+  return util.boolFromFfi(libADVAPI32_dll.InitializeSecurityDescriptor(util.toPointer(pSecurityDescriptor), dwRevision));
 }
 
 export function InitializeSid(
@@ -46766,43 +49279,43 @@ export function InitializeSid(
   pIdentifierAuthority: Deno.PointerValue | Uint8Array | null /* ptr */,
   nSubAuthorityCount: number /* u8 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32.InitializeSid(util.toPointer(Sid), util.toPointer(pIdentifierAuthority), nSubAuthorityCount));
+  return util.boolFromFfi(libADVAPI32_dll.InitializeSid(util.toPointer(Sid), util.toPointer(pIdentifierAuthority), nSubAuthorityCount));
 }
 
 export function IsTokenRestricted(
   TokenHandle: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32.IsTokenRestricted(util.toPointer(TokenHandle)));
+  return util.boolFromFfi(libADVAPI32_dll.IsTokenRestricted(util.toPointer(TokenHandle)));
 }
 
 export function IsValidAcl(
   pAcl: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32.IsValidAcl(util.toPointer(pAcl)));
+  return util.boolFromFfi(libADVAPI32_dll.IsValidAcl(util.toPointer(pAcl)));
 }
 
 export function IsValidSecurityDescriptor(
-  pSecurityDescriptor: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pSecurityDescriptor: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Security.PSECURITY_DESCRIPTOR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32.IsValidSecurityDescriptor(util.toPointer(pSecurityDescriptor)));
+  return util.boolFromFfi(libADVAPI32_dll.IsValidSecurityDescriptor(util.toPointer(pSecurityDescriptor)));
 }
 
 export function IsValidSid(
   pSid: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.PSID */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32.IsValidSid(util.toPointer(pSid)));
+  return util.boolFromFfi(libADVAPI32_dll.IsValidSid(util.toPointer(pSid)));
 }
 
 export function IsWellKnownSid(
   pSid: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.PSID */,
   WellKnownSidType: WELL_KNOWN_SID_TYPE /* Windows.Win32.Security.WELL_KNOWN_SID_TYPE */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32.IsWellKnownSid(util.toPointer(pSid), WellKnownSidType));
+  return util.boolFromFfi(libADVAPI32_dll.IsWellKnownSid(util.toPointer(pSid), WellKnownSidType));
 }
 
 export function MakeAbsoluteSD(
-  pSelfRelativeSecurityDescriptor: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pAbsoluteSecurityDescriptor: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pSelfRelativeSecurityDescriptor: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Security.PSECURITY_DESCRIPTOR */,
+  pAbsoluteSecurityDescriptor: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Security.PSECURITY_DESCRIPTOR */,
   lpdwAbsoluteSecurityDescriptorSize: Deno.PointerValue | Uint8Array | null /* ptr */,
   pDacl: Deno.PointerValue | Uint8Array | null /* ptr */,
   lpdwDaclSize: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -46813,22 +49326,22 @@ export function MakeAbsoluteSD(
   pPrimaryGroup: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.PSID */,
   lpdwPrimaryGroupSize: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32.MakeAbsoluteSD(util.toPointer(pSelfRelativeSecurityDescriptor), util.toPointer(pAbsoluteSecurityDescriptor), util.toPointer(lpdwAbsoluteSecurityDescriptorSize), util.toPointer(pDacl), util.toPointer(lpdwDaclSize), util.toPointer(pSacl), util.toPointer(lpdwSaclSize), util.toPointer(pOwner), util.toPointer(lpdwOwnerSize), util.toPointer(pPrimaryGroup), util.toPointer(lpdwPrimaryGroupSize)));
+  return util.boolFromFfi(libADVAPI32_dll.MakeAbsoluteSD(util.toPointer(pSelfRelativeSecurityDescriptor), util.toPointer(pAbsoluteSecurityDescriptor), util.toPointer(lpdwAbsoluteSecurityDescriptorSize), util.toPointer(pDacl), util.toPointer(lpdwDaclSize), util.toPointer(pSacl), util.toPointer(lpdwSaclSize), util.toPointer(pOwner), util.toPointer(lpdwOwnerSize), util.toPointer(pPrimaryGroup), util.toPointer(lpdwPrimaryGroupSize)));
 }
 
 export function MakeSelfRelativeSD(
-  pAbsoluteSecurityDescriptor: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pSelfRelativeSecurityDescriptor: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pAbsoluteSecurityDescriptor: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Security.PSECURITY_DESCRIPTOR */,
+  pSelfRelativeSecurityDescriptor: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Security.PSECURITY_DESCRIPTOR */,
   lpdwBufferLength: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32.MakeSelfRelativeSD(util.toPointer(pAbsoluteSecurityDescriptor), util.toPointer(pSelfRelativeSecurityDescriptor), util.toPointer(lpdwBufferLength)));
+  return util.boolFromFfi(libADVAPI32_dll.MakeSelfRelativeSD(util.toPointer(pAbsoluteSecurityDescriptor), util.toPointer(pSelfRelativeSecurityDescriptor), util.toPointer(lpdwBufferLength)));
 }
 
 export function MapGenericMask(
   AccessMask: Deno.PointerValue | Uint8Array | null /* ptr */,
   GenericMapping: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): void /* void */ {
-  return libADVAPI32.MapGenericMask(util.toPointer(AccessMask), util.toPointer(GenericMapping));
+  return libADVAPI32_dll.MapGenericMask(util.toPointer(AccessMask), util.toPointer(GenericMapping));
 }
 
 export function ObjectCloseAuditAlarmW(
@@ -46836,7 +49349,7 @@ export function ObjectCloseAuditAlarmW(
   HandleId: Deno.PointerValue | Uint8Array | null /* ptr */,
   GenerateOnClose: boolean /* Windows.Win32.Foundation.BOOL */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32.ObjectCloseAuditAlarmW(util.pwstrToFfi(SubsystemName), util.toPointer(HandleId), util.boolToFfi(GenerateOnClose)));
+  return util.boolFromFfi(libADVAPI32_dll.ObjectCloseAuditAlarmW(util.pwstrToFfi(SubsystemName), util.toPointer(HandleId), util.boolToFfi(GenerateOnClose)));
 }
 
 export function ObjectDeleteAuditAlarmW(
@@ -46844,7 +49357,7 @@ export function ObjectDeleteAuditAlarmW(
   HandleId: Deno.PointerValue | Uint8Array | null /* ptr */,
   GenerateOnClose: boolean /* Windows.Win32.Foundation.BOOL */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32.ObjectDeleteAuditAlarmW(util.pwstrToFfi(SubsystemName), util.toPointer(HandleId), util.boolToFfi(GenerateOnClose)));
+  return util.boolFromFfi(libADVAPI32_dll.ObjectDeleteAuditAlarmW(util.pwstrToFfi(SubsystemName), util.toPointer(HandleId), util.boolToFfi(GenerateOnClose)));
 }
 
 export function ObjectOpenAuditAlarmW(
@@ -46852,7 +49365,7 @@ export function ObjectOpenAuditAlarmW(
   HandleId: Deno.PointerValue | Uint8Array | null /* ptr */,
   ObjectTypeName: string | null /* Windows.Win32.Foundation.PWSTR */,
   ObjectName: string | null /* Windows.Win32.Foundation.PWSTR */,
-  pSecurityDescriptor: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pSecurityDescriptor: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Security.PSECURITY_DESCRIPTOR */,
   ClientToken: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
   DesiredAccess: number /* u32 */,
   GrantedAccess: number /* u32 */,
@@ -46861,7 +49374,7 @@ export function ObjectOpenAuditAlarmW(
   AccessGranted: boolean /* Windows.Win32.Foundation.BOOL */,
   GenerateOnClose: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32.ObjectOpenAuditAlarmW(util.pwstrToFfi(SubsystemName), util.toPointer(HandleId), util.pwstrToFfi(ObjectTypeName), util.pwstrToFfi(ObjectName), util.toPointer(pSecurityDescriptor), util.toPointer(ClientToken), DesiredAccess, GrantedAccess, util.toPointer(Privileges), util.boolToFfi(ObjectCreation), util.boolToFfi(AccessGranted), util.toPointer(GenerateOnClose)));
+  return util.boolFromFfi(libADVAPI32_dll.ObjectOpenAuditAlarmW(util.pwstrToFfi(SubsystemName), util.toPointer(HandleId), util.pwstrToFfi(ObjectTypeName), util.pwstrToFfi(ObjectName), util.toPointer(pSecurityDescriptor), util.toPointer(ClientToken), DesiredAccess, GrantedAccess, util.toPointer(Privileges), util.boolToFfi(ObjectCreation), util.boolToFfi(AccessGranted), util.toPointer(GenerateOnClose)));
 }
 
 export function ObjectPrivilegeAuditAlarmW(
@@ -46872,7 +49385,7 @@ export function ObjectPrivilegeAuditAlarmW(
   Privileges: Deno.PointerValue | Uint8Array | null /* ptr */,
   AccessGranted: boolean /* Windows.Win32.Foundation.BOOL */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32.ObjectPrivilegeAuditAlarmW(util.pwstrToFfi(SubsystemName), util.toPointer(HandleId), util.toPointer(ClientToken), DesiredAccess, util.toPointer(Privileges), util.boolToFfi(AccessGranted)));
+  return util.boolFromFfi(libADVAPI32_dll.ObjectPrivilegeAuditAlarmW(util.pwstrToFfi(SubsystemName), util.toPointer(HandleId), util.toPointer(ClientToken), DesiredAccess, util.toPointer(Privileges), util.boolToFfi(AccessGranted)));
 }
 
 export function PrivilegeCheck(
@@ -46880,7 +49393,7 @@ export function PrivilegeCheck(
   RequiredPrivileges: Deno.PointerValue | Uint8Array | null /* ptr */,
   pfResult: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32.PrivilegeCheck(util.toPointer(ClientToken), util.toPointer(RequiredPrivileges), util.toPointer(pfResult)));
+  return util.boolFromFfi(libADVAPI32_dll.PrivilegeCheck(util.toPointer(ClientToken), util.toPointer(RequiredPrivileges), util.toPointer(pfResult)));
 }
 
 export function PrivilegedServiceAuditAlarmW(
@@ -46890,18 +49403,18 @@ export function PrivilegedServiceAuditAlarmW(
   Privileges: Deno.PointerValue | Uint8Array | null /* ptr */,
   AccessGranted: boolean /* Windows.Win32.Foundation.BOOL */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32.PrivilegedServiceAuditAlarmW(util.pwstrToFfi(SubsystemName), util.pwstrToFfi(ServiceName), util.toPointer(ClientToken), util.toPointer(Privileges), util.boolToFfi(AccessGranted)));
+  return util.boolFromFfi(libADVAPI32_dll.PrivilegedServiceAuditAlarmW(util.pwstrToFfi(SubsystemName), util.pwstrToFfi(ServiceName), util.toPointer(ClientToken), util.toPointer(Privileges), util.boolToFfi(AccessGranted)));
 }
 
 export function QuerySecurityAccessMask(
   SecurityInformation: number /* u32 */,
   DesiredAccess: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): void /* void */ {
-  return libADVAPI32.QuerySecurityAccessMask(SecurityInformation, util.toPointer(DesiredAccess));
+  return libADVAPI32_dll.QuerySecurityAccessMask(SecurityInformation, util.toPointer(DesiredAccess));
 }
 
 export function RevertToSelf(): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32.RevertToSelf());
+  return util.boolFromFfi(libADVAPI32_dll.RevertToSelf());
 }
 
 export function SetAclInformation(
@@ -46910,100 +49423,100 @@ export function SetAclInformation(
   nAclInformationLength: number /* u32 */,
   dwAclInformationClass: ACL_INFORMATION_CLASS /* Windows.Win32.Security.ACL_INFORMATION_CLASS */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32.SetAclInformation(util.toPointer(pAcl), util.toPointer(pAclInformation), nAclInformationLength, dwAclInformationClass));
+  return util.boolFromFfi(libADVAPI32_dll.SetAclInformation(util.toPointer(pAcl), util.toPointer(pAclInformation), nAclInformationLength, dwAclInformationClass));
 }
 
 export function SetFileSecurityW(
   lpFileName: string | null /* Windows.Win32.Foundation.PWSTR */,
   SecurityInformation: number /* u32 */,
-  pSecurityDescriptor: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pSecurityDescriptor: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Security.PSECURITY_DESCRIPTOR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32.SetFileSecurityW(util.pwstrToFfi(lpFileName), SecurityInformation, util.toPointer(pSecurityDescriptor)));
+  return util.boolFromFfi(libADVAPI32_dll.SetFileSecurityW(util.pwstrToFfi(lpFileName), SecurityInformation, util.toPointer(pSecurityDescriptor)));
 }
 
 export function SetKernelObjectSecurity(
   Handle: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
   SecurityInformation: number /* u32 */,
-  SecurityDescriptor: Deno.PointerValue | Uint8Array | null /* ptr */,
+  SecurityDescriptor: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Security.PSECURITY_DESCRIPTOR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32.SetKernelObjectSecurity(util.toPointer(Handle), SecurityInformation, util.toPointer(SecurityDescriptor)));
+  return util.boolFromFfi(libADVAPI32_dll.SetKernelObjectSecurity(util.toPointer(Handle), SecurityInformation, util.toPointer(SecurityDescriptor)));
 }
 
 export function SetPrivateObjectSecurity(
   SecurityInformation: number /* u32 */,
-  ModificationDescriptor: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ModificationDescriptor: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Security.PSECURITY_DESCRIPTOR */,
   ObjectsSecurityDescriptor: Deno.PointerValue | Uint8Array | null /* ptr */,
   GenericMapping: Deno.PointerValue | Uint8Array | null /* ptr */,
   Token: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32.SetPrivateObjectSecurity(SecurityInformation, util.toPointer(ModificationDescriptor), util.toPointer(ObjectsSecurityDescriptor), util.toPointer(GenericMapping), util.toPointer(Token)));
+  return util.boolFromFfi(libADVAPI32_dll.SetPrivateObjectSecurity(SecurityInformation, util.toPointer(ModificationDescriptor), util.toPointer(ObjectsSecurityDescriptor), util.toPointer(GenericMapping), util.toPointer(Token)));
 }
 
 export function SetPrivateObjectSecurityEx(
   SecurityInformation: number /* u32 */,
-  ModificationDescriptor: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ModificationDescriptor: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Security.PSECURITY_DESCRIPTOR */,
   ObjectsSecurityDescriptor: Deno.PointerValue | Uint8Array | null /* ptr */,
   AutoInheritFlags: SECURITY_AUTO_INHERIT_FLAGS /* Windows.Win32.Security.SECURITY_AUTO_INHERIT_FLAGS */,
   GenericMapping: Deno.PointerValue | Uint8Array | null /* ptr */,
   Token: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32.SetPrivateObjectSecurityEx(SecurityInformation, util.toPointer(ModificationDescriptor), util.toPointer(ObjectsSecurityDescriptor), AutoInheritFlags, util.toPointer(GenericMapping), util.toPointer(Token)));
+  return util.boolFromFfi(libADVAPI32_dll.SetPrivateObjectSecurityEx(SecurityInformation, util.toPointer(ModificationDescriptor), util.toPointer(ObjectsSecurityDescriptor), AutoInheritFlags, util.toPointer(GenericMapping), util.toPointer(Token)));
 }
 
 export function SetSecurityAccessMask(
   SecurityInformation: number /* u32 */,
   DesiredAccess: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): void /* void */ {
-  return libADVAPI32.SetSecurityAccessMask(SecurityInformation, util.toPointer(DesiredAccess));
+  return libADVAPI32_dll.SetSecurityAccessMask(SecurityInformation, util.toPointer(DesiredAccess));
 }
 
 export function SetSecurityDescriptorControl(
-  pSecurityDescriptor: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pSecurityDescriptor: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Security.PSECURITY_DESCRIPTOR */,
   ControlBitsOfInterest: number /* u16 */,
   ControlBitsToSet: number /* u16 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32.SetSecurityDescriptorControl(util.toPointer(pSecurityDescriptor), ControlBitsOfInterest, ControlBitsToSet));
+  return util.boolFromFfi(libADVAPI32_dll.SetSecurityDescriptorControl(util.toPointer(pSecurityDescriptor), ControlBitsOfInterest, ControlBitsToSet));
 }
 
 export function SetSecurityDescriptorDacl(
-  pSecurityDescriptor: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pSecurityDescriptor: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Security.PSECURITY_DESCRIPTOR */,
   bDaclPresent: boolean /* Windows.Win32.Foundation.BOOL */,
   pDacl: Deno.PointerValue | Uint8Array | null /* ptr */,
   bDaclDefaulted: boolean /* Windows.Win32.Foundation.BOOL */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32.SetSecurityDescriptorDacl(util.toPointer(pSecurityDescriptor), util.boolToFfi(bDaclPresent), util.toPointer(pDacl), util.boolToFfi(bDaclDefaulted)));
+  return util.boolFromFfi(libADVAPI32_dll.SetSecurityDescriptorDacl(util.toPointer(pSecurityDescriptor), util.boolToFfi(bDaclPresent), util.toPointer(pDacl), util.boolToFfi(bDaclDefaulted)));
 }
 
 export function SetSecurityDescriptorGroup(
-  pSecurityDescriptor: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pSecurityDescriptor: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Security.PSECURITY_DESCRIPTOR */,
   pGroup: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.PSID */,
   bGroupDefaulted: boolean /* Windows.Win32.Foundation.BOOL */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32.SetSecurityDescriptorGroup(util.toPointer(pSecurityDescriptor), util.toPointer(pGroup), util.boolToFfi(bGroupDefaulted)));
+  return util.boolFromFfi(libADVAPI32_dll.SetSecurityDescriptorGroup(util.toPointer(pSecurityDescriptor), util.toPointer(pGroup), util.boolToFfi(bGroupDefaulted)));
 }
 
 export function SetSecurityDescriptorOwner(
-  pSecurityDescriptor: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pSecurityDescriptor: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Security.PSECURITY_DESCRIPTOR */,
   pOwner: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.PSID */,
   bOwnerDefaulted: boolean /* Windows.Win32.Foundation.BOOL */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32.SetSecurityDescriptorOwner(util.toPointer(pSecurityDescriptor), util.toPointer(pOwner), util.boolToFfi(bOwnerDefaulted)));
+  return util.boolFromFfi(libADVAPI32_dll.SetSecurityDescriptorOwner(util.toPointer(pSecurityDescriptor), util.toPointer(pOwner), util.boolToFfi(bOwnerDefaulted)));
 }
 
 export function SetSecurityDescriptorRMControl(
-  SecurityDescriptor: Deno.PointerValue | Uint8Array | null /* ptr */,
+  SecurityDescriptor: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Security.PSECURITY_DESCRIPTOR */,
   RMControl: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libADVAPI32.SetSecurityDescriptorRMControl(util.toPointer(SecurityDescriptor), util.toPointer(RMControl));
+  return libADVAPI32_dll.SetSecurityDescriptorRMControl(util.toPointer(SecurityDescriptor), util.toPointer(RMControl));
 }
 
 export function SetSecurityDescriptorSacl(
-  pSecurityDescriptor: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pSecurityDescriptor: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Security.PSECURITY_DESCRIPTOR */,
   bSaclPresent: boolean /* Windows.Win32.Foundation.BOOL */,
   pSacl: Deno.PointerValue | Uint8Array | null /* ptr */,
   bSaclDefaulted: boolean /* Windows.Win32.Foundation.BOOL */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32.SetSecurityDescriptorSacl(util.toPointer(pSecurityDescriptor), util.boolToFfi(bSaclPresent), util.toPointer(pSacl), util.boolToFfi(bSaclDefaulted)));
+  return util.boolFromFfi(libADVAPI32_dll.SetSecurityDescriptorSacl(util.toPointer(pSecurityDescriptor), util.boolToFfi(bSaclPresent), util.toPointer(pSacl), util.boolToFfi(bSaclDefaulted)));
 }
 
 export function SetTokenInformation(
@@ -47012,7 +49525,7 @@ export function SetTokenInformation(
   TokenInformation: Deno.PointerValue | Uint8Array | null /* ptr */,
   TokenInformationLength: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32.SetTokenInformation(util.toPointer(TokenHandle), TokenInformationClass, util.toPointer(TokenInformation), TokenInformationLength));
+  return util.boolFromFfi(libADVAPI32_dll.SetTokenInformation(util.toPointer(TokenHandle), TokenInformationClass, util.toPointer(TokenInformation), TokenInformationLength));
 }
 
 export function SetCachedSigningLevel(
@@ -47021,7 +49534,7 @@ export function SetCachedSigningLevel(
   Flags: number /* u32 */,
   TargetFile: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32.SetCachedSigningLevel(util.toPointer(SourceFiles), SourceFileCount, Flags, util.toPointer(TargetFile)));
+  return util.boolFromFfi(libKERNEL32_dll.SetCachedSigningLevel(util.toPointer(SourceFiles), SourceFileCount, Flags, util.toPointer(TargetFile)));
 }
 
 export function GetCachedSigningLevel(
@@ -47032,7 +49545,7 @@ export function GetCachedSigningLevel(
   ThumbprintSize: Deno.PointerValue | Uint8Array | null /* ptr */,
   ThumbprintAlgorithm: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32.GetCachedSigningLevel(util.toPointer(File), util.toPointer(Flags), util.toPointer(SigningLevel), util.toPointer(Thumbprint), util.toPointer(ThumbprintSize), util.toPointer(ThumbprintAlgorithm)));
+  return util.boolFromFfi(libKERNEL32_dll.GetCachedSigningLevel(util.toPointer(File), util.toPointer(Flags), util.toPointer(SigningLevel), util.toPointer(Thumbprint), util.toPointer(ThumbprintSize), util.toPointer(ThumbprintAlgorithm)));
 }
 
 export function DeriveCapabilitySidsFromName(
@@ -47042,7 +49555,7 @@ export function DeriveCapabilitySidsFromName(
   CapabilitySids: Deno.PointerValue | Uint8Array | null /* ptr */,
   CapabilitySidCount: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libapi_ms_win_security_base_l1_2_2.DeriveCapabilitySidsFromName(util.pwstrToFfi(CapName), util.toPointer(CapabilityGroupSids), util.toPointer(CapabilityGroupSidCount), util.toPointer(CapabilitySids), util.toPointer(CapabilitySidCount)));
+  return util.boolFromFfi(libapi_ms_win_security_base_l1_2_2_dll.DeriveCapabilitySidsFromName(util.pwstrToFfi(CapName), util.toPointer(CapabilityGroupSids), util.toPointer(CapabilityGroupSidCount), util.toPointer(CapabilitySids), util.toPointer(CapabilitySidCount)));
 }
 
 export function RtlNormalizeSecurityDescriptor(
@@ -47052,25 +49565,25 @@ export function RtlNormalizeSecurityDescriptor(
   NewSecurityDescriptorLength: Deno.PointerValue | Uint8Array | null /* ptr */,
   CheckOnly: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.BOOLEAN */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.BOOLEAN */ {
-  return util.pointerFromFfi(libntdll.RtlNormalizeSecurityDescriptor(util.toPointer(SecurityDescriptor), SecurityDescriptorLength, util.toPointer(NewSecurityDescriptor), util.toPointer(NewSecurityDescriptorLength), util.toPointer(CheckOnly)));
+  return util.pointerFromFfi(libntdll_dll.RtlNormalizeSecurityDescriptor(util.toPointer(SecurityDescriptor), SecurityDescriptorLength, util.toPointer(NewSecurityDescriptor), util.toPointer(NewSecurityDescriptorLength), util.toPointer(CheckOnly)));
 }
 
 export function SetUserObjectSecurity(
   hObj: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
   pSIRequested: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pSID: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pSID: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Security.PSECURITY_DESCRIPTOR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSER32.SetUserObjectSecurity(util.toPointer(hObj), util.toPointer(pSIRequested), util.toPointer(pSID)));
+  return util.boolFromFfi(libUSER32_dll.SetUserObjectSecurity(util.toPointer(hObj), util.toPointer(pSIRequested), util.toPointer(pSID)));
 }
 
 export function GetUserObjectSecurity(
   hObj: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
   pSIRequested: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pSID: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pSID: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Security.PSECURITY_DESCRIPTOR */,
   nLength: number /* u32 */,
   lpnLengthNeeded: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSER32.GetUserObjectSecurity(util.toPointer(hObj), util.toPointer(pSIRequested), util.toPointer(pSID), nLength, util.toPointer(lpnLengthNeeded)));
+  return util.boolFromFfi(libUSER32_dll.GetUserObjectSecurity(util.toPointer(hObj), util.toPointer(pSIRequested), util.toPointer(pSID), nLength, util.toPointer(lpnLengthNeeded)));
 }
 
 export function AccessCheckAndAuditAlarmA(
@@ -47078,7 +49591,7 @@ export function AccessCheckAndAuditAlarmA(
   HandleId: Deno.PointerValue | Uint8Array | null /* ptr */,
   ObjectTypeName: string | null /* Windows.Win32.Foundation.PSTR */,
   ObjectName: string | null /* Windows.Win32.Foundation.PSTR */,
-  SecurityDescriptor: Deno.PointerValue | Uint8Array | null /* ptr */,
+  SecurityDescriptor: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Security.PSECURITY_DESCRIPTOR */,
   DesiredAccess: number /* u32 */,
   GenericMapping: Deno.PointerValue | Uint8Array | null /* ptr */,
   ObjectCreation: boolean /* Windows.Win32.Foundation.BOOL */,
@@ -47086,7 +49599,7 @@ export function AccessCheckAndAuditAlarmA(
   AccessStatus: Deno.PointerValue | Uint8Array | null /* ptr */,
   pfGenerateOnClose: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32.AccessCheckAndAuditAlarmA(util.pstrToFfi(SubsystemName), util.toPointer(HandleId), util.pstrToFfi(ObjectTypeName), util.pstrToFfi(ObjectName), util.toPointer(SecurityDescriptor), DesiredAccess, util.toPointer(GenericMapping), util.boolToFfi(ObjectCreation), util.toPointer(GrantedAccess), util.toPointer(AccessStatus), util.toPointer(pfGenerateOnClose)));
+  return util.boolFromFfi(libADVAPI32_dll.AccessCheckAndAuditAlarmA(util.pstrToFfi(SubsystemName), util.toPointer(HandleId), util.pstrToFfi(ObjectTypeName), util.pstrToFfi(ObjectName), util.toPointer(SecurityDescriptor), DesiredAccess, util.toPointer(GenericMapping), util.boolToFfi(ObjectCreation), util.toPointer(GrantedAccess), util.toPointer(AccessStatus), util.toPointer(pfGenerateOnClose)));
 }
 
 export function AccessCheckByTypeAndAuditAlarmA(
@@ -47094,7 +49607,7 @@ export function AccessCheckByTypeAndAuditAlarmA(
   HandleId: Deno.PointerValue | Uint8Array | null /* ptr */,
   ObjectTypeName: string | null /* Windows.Win32.Foundation.PSTR */,
   ObjectName: string | null /* Windows.Win32.Foundation.PSTR */,
-  SecurityDescriptor: Deno.PointerValue | Uint8Array | null /* ptr */,
+  SecurityDescriptor: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Security.PSECURITY_DESCRIPTOR */,
   PrincipalSelfSid: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.PSID */,
   DesiredAccess: number /* u32 */,
   AuditType: AUDIT_EVENT_TYPE /* Windows.Win32.Security.AUDIT_EVENT_TYPE */,
@@ -47107,7 +49620,7 @@ export function AccessCheckByTypeAndAuditAlarmA(
   AccessStatus: Deno.PointerValue | Uint8Array | null /* ptr */,
   pfGenerateOnClose: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32.AccessCheckByTypeAndAuditAlarmA(util.pstrToFfi(SubsystemName), util.toPointer(HandleId), util.pstrToFfi(ObjectTypeName), util.pstrToFfi(ObjectName), util.toPointer(SecurityDescriptor), util.toPointer(PrincipalSelfSid), DesiredAccess, AuditType, Flags, util.toPointer(ObjectTypeList), ObjectTypeListLength, util.toPointer(GenericMapping), util.boolToFfi(ObjectCreation), util.toPointer(GrantedAccess), util.toPointer(AccessStatus), util.toPointer(pfGenerateOnClose)));
+  return util.boolFromFfi(libADVAPI32_dll.AccessCheckByTypeAndAuditAlarmA(util.pstrToFfi(SubsystemName), util.toPointer(HandleId), util.pstrToFfi(ObjectTypeName), util.pstrToFfi(ObjectName), util.toPointer(SecurityDescriptor), util.toPointer(PrincipalSelfSid), DesiredAccess, AuditType, Flags, util.toPointer(ObjectTypeList), ObjectTypeListLength, util.toPointer(GenericMapping), util.boolToFfi(ObjectCreation), util.toPointer(GrantedAccess), util.toPointer(AccessStatus), util.toPointer(pfGenerateOnClose)));
 }
 
 export function AccessCheckByTypeResultListAndAuditAlarmA(
@@ -47115,7 +49628,7 @@ export function AccessCheckByTypeResultListAndAuditAlarmA(
   HandleId: Deno.PointerValue | Uint8Array | null /* ptr */,
   ObjectTypeName: string | null /* Windows.Win32.Foundation.PSTR */,
   ObjectName: string | null /* Windows.Win32.Foundation.PSTR */,
-  SecurityDescriptor: Deno.PointerValue | Uint8Array | null /* ptr */,
+  SecurityDescriptor: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Security.PSECURITY_DESCRIPTOR */,
   PrincipalSelfSid: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.PSID */,
   DesiredAccess: number /* u32 */,
   AuditType: AUDIT_EVENT_TYPE /* Windows.Win32.Security.AUDIT_EVENT_TYPE */,
@@ -47128,7 +49641,7 @@ export function AccessCheckByTypeResultListAndAuditAlarmA(
   AccessStatusList: Deno.PointerValue | Uint8Array | null /* ptr */,
   pfGenerateOnClose: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32.AccessCheckByTypeResultListAndAuditAlarmA(util.pstrToFfi(SubsystemName), util.toPointer(HandleId), util.pstrToFfi(ObjectTypeName), util.pstrToFfi(ObjectName), util.toPointer(SecurityDescriptor), util.toPointer(PrincipalSelfSid), DesiredAccess, AuditType, Flags, util.toPointer(ObjectTypeList), ObjectTypeListLength, util.toPointer(GenericMapping), util.boolToFfi(ObjectCreation), util.toPointer(GrantedAccess), util.toPointer(AccessStatusList), util.toPointer(pfGenerateOnClose)));
+  return util.boolFromFfi(libADVAPI32_dll.AccessCheckByTypeResultListAndAuditAlarmA(util.pstrToFfi(SubsystemName), util.toPointer(HandleId), util.pstrToFfi(ObjectTypeName), util.pstrToFfi(ObjectName), util.toPointer(SecurityDescriptor), util.toPointer(PrincipalSelfSid), DesiredAccess, AuditType, Flags, util.toPointer(ObjectTypeList), ObjectTypeListLength, util.toPointer(GenericMapping), util.boolToFfi(ObjectCreation), util.toPointer(GrantedAccess), util.toPointer(AccessStatusList), util.toPointer(pfGenerateOnClose)));
 }
 
 export function AccessCheckByTypeResultListAndAuditAlarmByHandleA(
@@ -47137,7 +49650,7 @@ export function AccessCheckByTypeResultListAndAuditAlarmByHandleA(
   ClientToken: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
   ObjectTypeName: string | null /* Windows.Win32.Foundation.PSTR */,
   ObjectName: string | null /* Windows.Win32.Foundation.PSTR */,
-  SecurityDescriptor: Deno.PointerValue | Uint8Array | null /* ptr */,
+  SecurityDescriptor: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Security.PSECURITY_DESCRIPTOR */,
   PrincipalSelfSid: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.PSID */,
   DesiredAccess: number /* u32 */,
   AuditType: AUDIT_EVENT_TYPE /* Windows.Win32.Security.AUDIT_EVENT_TYPE */,
@@ -47150,7 +49663,7 @@ export function AccessCheckByTypeResultListAndAuditAlarmByHandleA(
   AccessStatusList: Deno.PointerValue | Uint8Array | null /* ptr */,
   pfGenerateOnClose: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32.AccessCheckByTypeResultListAndAuditAlarmByHandleA(util.pstrToFfi(SubsystemName), util.toPointer(HandleId), util.toPointer(ClientToken), util.pstrToFfi(ObjectTypeName), util.pstrToFfi(ObjectName), util.toPointer(SecurityDescriptor), util.toPointer(PrincipalSelfSid), DesiredAccess, AuditType, Flags, util.toPointer(ObjectTypeList), ObjectTypeListLength, util.toPointer(GenericMapping), util.boolToFfi(ObjectCreation), util.toPointer(GrantedAccess), util.toPointer(AccessStatusList), util.toPointer(pfGenerateOnClose)));
+  return util.boolFromFfi(libADVAPI32_dll.AccessCheckByTypeResultListAndAuditAlarmByHandleA(util.pstrToFfi(SubsystemName), util.toPointer(HandleId), util.toPointer(ClientToken), util.pstrToFfi(ObjectTypeName), util.pstrToFfi(ObjectName), util.toPointer(SecurityDescriptor), util.toPointer(PrincipalSelfSid), DesiredAccess, AuditType, Flags, util.toPointer(ObjectTypeList), ObjectTypeListLength, util.toPointer(GenericMapping), util.boolToFfi(ObjectCreation), util.toPointer(GrantedAccess), util.toPointer(AccessStatusList), util.toPointer(pfGenerateOnClose)));
 }
 
 export function ObjectOpenAuditAlarmA(
@@ -47158,7 +49671,7 @@ export function ObjectOpenAuditAlarmA(
   HandleId: Deno.PointerValue | Uint8Array | null /* ptr */,
   ObjectTypeName: string | null /* Windows.Win32.Foundation.PSTR */,
   ObjectName: string | null /* Windows.Win32.Foundation.PSTR */,
-  pSecurityDescriptor: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pSecurityDescriptor: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Security.PSECURITY_DESCRIPTOR */,
   ClientToken: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
   DesiredAccess: number /* u32 */,
   GrantedAccess: number /* u32 */,
@@ -47167,7 +49680,7 @@ export function ObjectOpenAuditAlarmA(
   AccessGranted: boolean /* Windows.Win32.Foundation.BOOL */,
   GenerateOnClose: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32.ObjectOpenAuditAlarmA(util.pstrToFfi(SubsystemName), util.toPointer(HandleId), util.pstrToFfi(ObjectTypeName), util.pstrToFfi(ObjectName), util.toPointer(pSecurityDescriptor), util.toPointer(ClientToken), DesiredAccess, GrantedAccess, util.toPointer(Privileges), util.boolToFfi(ObjectCreation), util.boolToFfi(AccessGranted), util.toPointer(GenerateOnClose)));
+  return util.boolFromFfi(libADVAPI32_dll.ObjectOpenAuditAlarmA(util.pstrToFfi(SubsystemName), util.toPointer(HandleId), util.pstrToFfi(ObjectTypeName), util.pstrToFfi(ObjectName), util.toPointer(pSecurityDescriptor), util.toPointer(ClientToken), DesiredAccess, GrantedAccess, util.toPointer(Privileges), util.boolToFfi(ObjectCreation), util.boolToFfi(AccessGranted), util.toPointer(GenerateOnClose)));
 }
 
 export function ObjectPrivilegeAuditAlarmA(
@@ -47178,7 +49691,7 @@ export function ObjectPrivilegeAuditAlarmA(
   Privileges: Deno.PointerValue | Uint8Array | null /* ptr */,
   AccessGranted: boolean /* Windows.Win32.Foundation.BOOL */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32.ObjectPrivilegeAuditAlarmA(util.pstrToFfi(SubsystemName), util.toPointer(HandleId), util.toPointer(ClientToken), DesiredAccess, util.toPointer(Privileges), util.boolToFfi(AccessGranted)));
+  return util.boolFromFfi(libADVAPI32_dll.ObjectPrivilegeAuditAlarmA(util.pstrToFfi(SubsystemName), util.toPointer(HandleId), util.toPointer(ClientToken), DesiredAccess, util.toPointer(Privileges), util.boolToFfi(AccessGranted)));
 }
 
 export function ObjectCloseAuditAlarmA(
@@ -47186,7 +49699,7 @@ export function ObjectCloseAuditAlarmA(
   HandleId: Deno.PointerValue | Uint8Array | null /* ptr */,
   GenerateOnClose: boolean /* Windows.Win32.Foundation.BOOL */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32.ObjectCloseAuditAlarmA(util.pstrToFfi(SubsystemName), util.toPointer(HandleId), util.boolToFfi(GenerateOnClose)));
+  return util.boolFromFfi(libADVAPI32_dll.ObjectCloseAuditAlarmA(util.pstrToFfi(SubsystemName), util.toPointer(HandleId), util.boolToFfi(GenerateOnClose)));
 }
 
 export function ObjectDeleteAuditAlarmA(
@@ -47194,7 +49707,7 @@ export function ObjectDeleteAuditAlarmA(
   HandleId: Deno.PointerValue | Uint8Array | null /* ptr */,
   GenerateOnClose: boolean /* Windows.Win32.Foundation.BOOL */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32.ObjectDeleteAuditAlarmA(util.pstrToFfi(SubsystemName), util.toPointer(HandleId), util.boolToFfi(GenerateOnClose)));
+  return util.boolFromFfi(libADVAPI32_dll.ObjectDeleteAuditAlarmA(util.pstrToFfi(SubsystemName), util.toPointer(HandleId), util.boolToFfi(GenerateOnClose)));
 }
 
 export function PrivilegedServiceAuditAlarmA(
@@ -47204,7 +49717,7 @@ export function PrivilegedServiceAuditAlarmA(
   Privileges: Deno.PointerValue | Uint8Array | null /* ptr */,
   AccessGranted: boolean /* Windows.Win32.Foundation.BOOL */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32.PrivilegedServiceAuditAlarmA(util.pstrToFfi(SubsystemName), util.pstrToFfi(ServiceName), util.toPointer(ClientToken), util.toPointer(Privileges), util.boolToFfi(AccessGranted)));
+  return util.boolFromFfi(libADVAPI32_dll.PrivilegedServiceAuditAlarmA(util.pstrToFfi(SubsystemName), util.pstrToFfi(ServiceName), util.toPointer(ClientToken), util.toPointer(Privileges), util.boolToFfi(AccessGranted)));
 }
 
 export function AddConditionalAce(
@@ -47217,25 +49730,25 @@ export function AddConditionalAce(
   ConditionStr: string | null /* Windows.Win32.Foundation.PWSTR */,
   ReturnLength: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32.AddConditionalAce(util.toPointer(pAcl), dwAceRevision, AceFlags, AceType, AccessMask, util.toPointer(pSid), util.pwstrToFfi(ConditionStr), util.toPointer(ReturnLength)));
+  return util.boolFromFfi(libADVAPI32_dll.AddConditionalAce(util.toPointer(pAcl), dwAceRevision, AceFlags, AceType, AccessMask, util.toPointer(pSid), util.pwstrToFfi(ConditionStr), util.toPointer(ReturnLength)));
 }
 
 export function SetFileSecurityA(
   lpFileName: string | null /* Windows.Win32.Foundation.PSTR */,
   SecurityInformation: number /* u32 */,
-  pSecurityDescriptor: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pSecurityDescriptor: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Security.PSECURITY_DESCRIPTOR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32.SetFileSecurityA(util.pstrToFfi(lpFileName), SecurityInformation, util.toPointer(pSecurityDescriptor)));
+  return util.boolFromFfi(libADVAPI32_dll.SetFileSecurityA(util.pstrToFfi(lpFileName), SecurityInformation, util.toPointer(pSecurityDescriptor)));
 }
 
 export function GetFileSecurityA(
   lpFileName: string | null /* Windows.Win32.Foundation.PSTR */,
   RequestedInformation: number /* u32 */,
-  pSecurityDescriptor: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pSecurityDescriptor: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Security.PSECURITY_DESCRIPTOR */,
   nLength: number /* u32 */,
   lpnLengthNeeded: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32.GetFileSecurityA(util.pstrToFfi(lpFileName), RequestedInformation, util.toPointer(pSecurityDescriptor), nLength, util.toPointer(lpnLengthNeeded)));
+  return util.boolFromFfi(libADVAPI32_dll.GetFileSecurityA(util.pstrToFfi(lpFileName), RequestedInformation, util.toPointer(pSecurityDescriptor), nLength, util.toPointer(lpnLengthNeeded)));
 }
 
 export function LookupAccountSidA(
@@ -47247,7 +49760,7 @@ export function LookupAccountSidA(
   cchReferencedDomainName: Deno.PointerValue | Uint8Array | null /* ptr */,
   peUse: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32.LookupAccountSidA(util.pstrToFfi(lpSystemName), util.toPointer(Sid), util.pstrToFfi(Name), util.toPointer(cchName), util.pstrToFfi(ReferencedDomainName), util.toPointer(cchReferencedDomainName), util.toPointer(peUse)));
+  return util.boolFromFfi(libADVAPI32_dll.LookupAccountSidA(util.pstrToFfi(lpSystemName), util.toPointer(Sid), util.pstrToFfi(Name), util.toPointer(cchName), util.pstrToFfi(ReferencedDomainName), util.toPointer(cchReferencedDomainName), util.toPointer(peUse)));
 }
 
 export function LookupAccountSidW(
@@ -47259,7 +49772,7 @@ export function LookupAccountSidW(
   cchReferencedDomainName: Deno.PointerValue | Uint8Array | null /* ptr */,
   peUse: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32.LookupAccountSidW(util.pwstrToFfi(lpSystemName), util.toPointer(Sid), util.pwstrToFfi(Name), util.toPointer(cchName), util.pwstrToFfi(ReferencedDomainName), util.toPointer(cchReferencedDomainName), util.toPointer(peUse)));
+  return util.boolFromFfi(libADVAPI32_dll.LookupAccountSidW(util.pwstrToFfi(lpSystemName), util.toPointer(Sid), util.pwstrToFfi(Name), util.toPointer(cchName), util.pwstrToFfi(ReferencedDomainName), util.toPointer(cchReferencedDomainName), util.toPointer(peUse)));
 }
 
 export function LookupAccountNameA(
@@ -47271,7 +49784,7 @@ export function LookupAccountNameA(
   cchReferencedDomainName: Deno.PointerValue | Uint8Array | null /* ptr */,
   peUse: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32.LookupAccountNameA(util.pstrToFfi(lpSystemName), util.pstrToFfi(lpAccountName), util.toPointer(Sid), util.toPointer(cbSid), util.pstrToFfi(ReferencedDomainName), util.toPointer(cchReferencedDomainName), util.toPointer(peUse)));
+  return util.boolFromFfi(libADVAPI32_dll.LookupAccountNameA(util.pstrToFfi(lpSystemName), util.pstrToFfi(lpAccountName), util.toPointer(Sid), util.toPointer(cbSid), util.pstrToFfi(ReferencedDomainName), util.toPointer(cchReferencedDomainName), util.toPointer(peUse)));
 }
 
 export function LookupAccountNameW(
@@ -47283,7 +49796,7 @@ export function LookupAccountNameW(
   cchReferencedDomainName: Deno.PointerValue | Uint8Array | null /* ptr */,
   peUse: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32.LookupAccountNameW(util.pwstrToFfi(lpSystemName), util.pwstrToFfi(lpAccountName), util.toPointer(Sid), util.toPointer(cbSid), util.pwstrToFfi(ReferencedDomainName), util.toPointer(cchReferencedDomainName), util.toPointer(peUse)));
+  return util.boolFromFfi(libADVAPI32_dll.LookupAccountNameW(util.pwstrToFfi(lpSystemName), util.pwstrToFfi(lpAccountName), util.toPointer(Sid), util.toPointer(cbSid), util.pwstrToFfi(ReferencedDomainName), util.toPointer(cchReferencedDomainName), util.toPointer(peUse)));
 }
 
 export function LookupPrivilegeValueA(
@@ -47291,7 +49804,7 @@ export function LookupPrivilegeValueA(
   lpName: string | null /* Windows.Win32.Foundation.PSTR */,
   lpLuid: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32.LookupPrivilegeValueA(util.pstrToFfi(lpSystemName), util.pstrToFfi(lpName), util.toPointer(lpLuid)));
+  return util.boolFromFfi(libADVAPI32_dll.LookupPrivilegeValueA(util.pstrToFfi(lpSystemName), util.pstrToFfi(lpName), util.toPointer(lpLuid)));
 }
 
 export function LookupPrivilegeValueW(
@@ -47299,7 +49812,7 @@ export function LookupPrivilegeValueW(
   lpName: string | null /* Windows.Win32.Foundation.PWSTR */,
   lpLuid: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32.LookupPrivilegeValueW(util.pwstrToFfi(lpSystemName), util.pwstrToFfi(lpName), util.toPointer(lpLuid)));
+  return util.boolFromFfi(libADVAPI32_dll.LookupPrivilegeValueW(util.pwstrToFfi(lpSystemName), util.pwstrToFfi(lpName), util.toPointer(lpLuid)));
 }
 
 export function LookupPrivilegeNameA(
@@ -47308,7 +49821,7 @@ export function LookupPrivilegeNameA(
   lpName: string | null /* Windows.Win32.Foundation.PSTR */,
   cchName: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32.LookupPrivilegeNameA(util.pstrToFfi(lpSystemName), util.toPointer(lpLuid), util.pstrToFfi(lpName), util.toPointer(cchName)));
+  return util.boolFromFfi(libADVAPI32_dll.LookupPrivilegeNameA(util.pstrToFfi(lpSystemName), util.toPointer(lpLuid), util.pstrToFfi(lpName), util.toPointer(cchName)));
 }
 
 export function LookupPrivilegeNameW(
@@ -47317,7 +49830,7 @@ export function LookupPrivilegeNameW(
   lpName: string | null /* Windows.Win32.Foundation.PWSTR */,
   cchName: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32.LookupPrivilegeNameW(util.pwstrToFfi(lpSystemName), util.toPointer(lpLuid), util.pwstrToFfi(lpName), util.toPointer(cchName)));
+  return util.boolFromFfi(libADVAPI32_dll.LookupPrivilegeNameW(util.pwstrToFfi(lpSystemName), util.toPointer(lpLuid), util.pwstrToFfi(lpName), util.toPointer(cchName)));
 }
 
 export function LookupPrivilegeDisplayNameA(
@@ -47327,7 +49840,7 @@ export function LookupPrivilegeDisplayNameA(
   cchDisplayName: Deno.PointerValue | Uint8Array | null /* ptr */,
   lpLanguageId: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32.LookupPrivilegeDisplayNameA(util.pstrToFfi(lpSystemName), util.pstrToFfi(lpName), util.pstrToFfi(lpDisplayName), util.toPointer(cchDisplayName), util.toPointer(lpLanguageId)));
+  return util.boolFromFfi(libADVAPI32_dll.LookupPrivilegeDisplayNameA(util.pstrToFfi(lpSystemName), util.pstrToFfi(lpName), util.pstrToFfi(lpDisplayName), util.toPointer(cchDisplayName), util.toPointer(lpLanguageId)));
 }
 
 export function LookupPrivilegeDisplayNameW(
@@ -47337,7 +49850,7 @@ export function LookupPrivilegeDisplayNameW(
   cchDisplayName: Deno.PointerValue | Uint8Array | null /* ptr */,
   lpLanguageId: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32.LookupPrivilegeDisplayNameW(util.pwstrToFfi(lpSystemName), util.pwstrToFfi(lpName), util.pwstrToFfi(lpDisplayName), util.toPointer(cchDisplayName), util.toPointer(lpLanguageId)));
+  return util.boolFromFfi(libADVAPI32_dll.LookupPrivilegeDisplayNameW(util.pwstrToFfi(lpSystemName), util.pwstrToFfi(lpName), util.pwstrToFfi(lpDisplayName), util.toPointer(cchDisplayName), util.toPointer(lpLanguageId)));
 }
 
 export function LogonUserA(
@@ -47348,7 +49861,7 @@ export function LogonUserA(
   dwLogonProvider: LOGON32_PROVIDER /* Windows.Win32.Security.LOGON32_PROVIDER */,
   phToken: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32.LogonUserA(util.pstrToFfi(lpszUsername), util.pstrToFfi(lpszDomain), util.pstrToFfi(lpszPassword), dwLogonType, dwLogonProvider, util.toPointer(phToken)));
+  return util.boolFromFfi(libADVAPI32_dll.LogonUserA(util.pstrToFfi(lpszUsername), util.pstrToFfi(lpszDomain), util.pstrToFfi(lpszPassword), dwLogonType, dwLogonProvider, util.toPointer(phToken)));
 }
 
 export function LogonUserW(
@@ -47359,7 +49872,7 @@ export function LogonUserW(
   dwLogonProvider: LOGON32_PROVIDER /* Windows.Win32.Security.LOGON32_PROVIDER */,
   phToken: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32.LogonUserW(util.pwstrToFfi(lpszUsername), util.pwstrToFfi(lpszDomain), util.pwstrToFfi(lpszPassword), dwLogonType, dwLogonProvider, util.toPointer(phToken)));
+  return util.boolFromFfi(libADVAPI32_dll.LogonUserW(util.pwstrToFfi(lpszUsername), util.pwstrToFfi(lpszDomain), util.pwstrToFfi(lpszPassword), dwLogonType, dwLogonProvider, util.toPointer(phToken)));
 }
 
 export function LogonUserExA(
@@ -47374,7 +49887,7 @@ export function LogonUserExA(
   pdwProfileLength: Deno.PointerValue | Uint8Array | null /* ptr */,
   pQuotaLimits: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32.LogonUserExA(util.pstrToFfi(lpszUsername), util.pstrToFfi(lpszDomain), util.pstrToFfi(lpszPassword), dwLogonType, dwLogonProvider, util.toPointer(phToken), util.toPointer(ppLogonSid), util.toPointer(ppProfileBuffer), util.toPointer(pdwProfileLength), util.toPointer(pQuotaLimits)));
+  return util.boolFromFfi(libADVAPI32_dll.LogonUserExA(util.pstrToFfi(lpszUsername), util.pstrToFfi(lpszDomain), util.pstrToFfi(lpszPassword), dwLogonType, dwLogonProvider, util.toPointer(phToken), util.toPointer(ppLogonSid), util.toPointer(ppProfileBuffer), util.toPointer(pdwProfileLength), util.toPointer(pQuotaLimits)));
 }
 
 export function LogonUserExW(
@@ -47389,7 +49902,7 @@ export function LogonUserExW(
   pdwProfileLength: Deno.PointerValue | Uint8Array | null /* ptr */,
   pQuotaLimits: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32.LogonUserExW(util.pwstrToFfi(lpszUsername), util.pwstrToFfi(lpszDomain), util.pwstrToFfi(lpszPassword), dwLogonType, dwLogonProvider, util.toPointer(phToken), util.toPointer(ppLogonSid), util.toPointer(ppProfileBuffer), util.toPointer(pdwProfileLength), util.toPointer(pQuotaLimits)));
+  return util.boolFromFfi(libADVAPI32_dll.LogonUserExW(util.pwstrToFfi(lpszUsername), util.pwstrToFfi(lpszDomain), util.pwstrToFfi(lpszPassword), dwLogonType, dwLogonProvider, util.toPointer(phToken), util.toPointer(ppLogonSid), util.toPointer(ppProfileBuffer), util.toPointer(pdwProfileLength), util.toPointer(pQuotaLimits)));
 }
 
 export function RtlConvertSidToUnicodeString(
@@ -47397,6 +49910,6 @@ export function RtlConvertSidToUnicodeString(
   Sid: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.PSID */,
   AllocateDestinationString: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.BOOLEAN */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.NTSTATUS */ {
-  return util.pointerFromFfi(libntdll.RtlConvertSidToUnicodeString(util.toPointer(UnicodeString), util.toPointer(Sid), util.toPointer(AllocateDestinationString)));
+  return util.pointerFromFfi(libntdll_dll.RtlConvertSidToUnicodeString(util.toPointer(UnicodeString), util.toPointer(Sid), util.toPointer(AllocateDestinationString)));
 }
 

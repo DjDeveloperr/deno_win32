@@ -18,6 +18,10 @@ export const CRYPTCAT_OPEN_VERIFYSIGHASH = 268435456;
 export const CRYPTCAT_OPEN_NO_CONTENT_HCRYPTMSG = 536870912;
 export const CRYPTCAT_OPEN_SORTED = 1073741824;
 export const CRYPTCAT_OPEN_FLAGS_MASK = 4294901760;
+export const szOID_CATALOG_LIST = "1.3.6.1.4.1.311.12.1.1";
+export const szOID_CATALOG_LIST_MEMBER = "1.3.6.1.4.1.311.12.1.2";
+export const szOID_CATALOG_LIST_MEMBER2 = "1.3.6.1.4.1.311.12.1.3";
+export const CRYPTCAT_FILEEXT = "CAT";
 export const CRYPTCAT_MAX_MEMBERTAG = 64;
 export const CRYPTCAT_MEMBER_SORTED = 1073741824;
 export const CRYPTCAT_ATTR_AUTHENTICATED = 268435456;
@@ -310,10 +314,37 @@ export function allocCATALOG_INFO(data?: Partial<CATALOG_INFO>): Uint8Array {
   return buf;
 }
 
+/**
+ * Windows.Win32.Security.Cryptography.Catalog.MS_ADDINFO_CATALOGMEMBER (size: 24)
+ */
+export interface MS_ADDINFO_CATALOGMEMBER {
+  /** u32 */
+  cbStruct: number;
+  /** ptr */
+  pStore: Deno.PointerValue | Uint8Array | null;
+  /** ptr */
+  pMember: Deno.PointerValue | Uint8Array | null;
+}
+
+export const sizeofMS_ADDINFO_CATALOGMEMBER = 24;
+
+export function allocMS_ADDINFO_CATALOGMEMBER(data?: Partial<MS_ADDINFO_CATALOGMEMBER>): Uint8Array {
+  const buf = new Uint8Array(sizeofMS_ADDINFO_CATALOGMEMBER);
+  const view = new DataView(buf.buffer);
+  // 0x00: u32
+  if (data?.cbStruct !== undefined) view.setUint32(0, Number(data.cbStruct), true);
+  // 0x04: pad4
+  // 0x08: pointer
+  if (data?.pStore !== undefined) view.setBigUint64(8, data.pStore === null ? 0n : BigInt(util.toPointer(data.pStore)), true);
+  // 0x10: pointer
+  if (data?.pMember !== undefined) view.setBigUint64(16, data.pMember === null ? 0n : BigInt(util.toPointer(data.pMember)), true);
+  return buf;
+}
+
 // Native Libraries
 
 try {
-  var libWINTRUST = Deno.dlopen("WINTRUST", {
+  var libWINTRUST_dll = Deno.dlopen("WINTRUST.dll", {
     CryptCATOpen: {
       parameters: ["buffer", "u32", "usize", "u32", "u32"],
       result: "pointer",
@@ -462,38 +493,38 @@ export function CryptCATOpen(
   dwPublicVersion: CRYPTCAT_VERSION /* Windows.Win32.Security.Cryptography.Catalog.CRYPTCAT_VERSION */,
   dwEncodingType: number /* u32 */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */ {
-  return util.pointerFromFfi(libWINTRUST.CryptCATOpen(util.pwstrToFfi(pwszFileName), fdwOpenFlags, hProv, dwPublicVersion, dwEncodingType));
+  return util.pointerFromFfi(libWINTRUST_dll.CryptCATOpen(util.pwstrToFfi(pwszFileName), fdwOpenFlags, hProv, dwPublicVersion, dwEncodingType));
 }
 
 export function CryptCATClose(
   hCatalog: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWINTRUST.CryptCATClose(util.toPointer(hCatalog)));
+  return util.boolFromFfi(libWINTRUST_dll.CryptCATClose(util.toPointer(hCatalog)));
 }
 
 export function CryptCATStoreFromHandle(
   hCatalog: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
 ): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libWINTRUST.CryptCATStoreFromHandle(util.toPointer(hCatalog)));
+  return util.pointerFromFfi(libWINTRUST_dll.CryptCATStoreFromHandle(util.toPointer(hCatalog)));
 }
 
 export function CryptCATHandleFromStore(
   pCatStore: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */ {
-  return util.pointerFromFfi(libWINTRUST.CryptCATHandleFromStore(util.toPointer(pCatStore)));
+  return util.pointerFromFfi(libWINTRUST_dll.CryptCATHandleFromStore(util.toPointer(pCatStore)));
 }
 
 export function CryptCATPersistStore(
   hCatalog: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWINTRUST.CryptCATPersistStore(util.toPointer(hCatalog)));
+  return util.boolFromFfi(libWINTRUST_dll.CryptCATPersistStore(util.toPointer(hCatalog)));
 }
 
 export function CryptCATGetCatAttrInfo(
   hCatalog: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
   pwszReferenceTag: string | null /* Windows.Win32.Foundation.PWSTR */,
 ): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libWINTRUST.CryptCATGetCatAttrInfo(util.toPointer(hCatalog), util.pwstrToFfi(pwszReferenceTag)));
+  return util.pointerFromFfi(libWINTRUST_dll.CryptCATGetCatAttrInfo(util.toPointer(hCatalog), util.pwstrToFfi(pwszReferenceTag)));
 }
 
 export function CryptCATPutCatAttrInfo(
@@ -503,35 +534,35 @@ export function CryptCATPutCatAttrInfo(
   cbData: number /* u32 */,
   pbData: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libWINTRUST.CryptCATPutCatAttrInfo(util.toPointer(hCatalog), util.pwstrToFfi(pwszReferenceTag), dwAttrTypeAndAction, cbData, util.toPointer(pbData)));
+  return util.pointerFromFfi(libWINTRUST_dll.CryptCATPutCatAttrInfo(util.toPointer(hCatalog), util.pwstrToFfi(pwszReferenceTag), dwAttrTypeAndAction, cbData, util.toPointer(pbData)));
 }
 
 export function CryptCATEnumerateCatAttr(
   hCatalog: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
   pPrevAttr: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libWINTRUST.CryptCATEnumerateCatAttr(util.toPointer(hCatalog), util.toPointer(pPrevAttr)));
+  return util.pointerFromFfi(libWINTRUST_dll.CryptCATEnumerateCatAttr(util.toPointer(hCatalog), util.toPointer(pPrevAttr)));
 }
 
 export function CryptCATGetMemberInfo(
   hCatalog: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
   pwszReferenceTag: string | null /* Windows.Win32.Foundation.PWSTR */,
 ): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libWINTRUST.CryptCATGetMemberInfo(util.toPointer(hCatalog), util.pwstrToFfi(pwszReferenceTag)));
+  return util.pointerFromFfi(libWINTRUST_dll.CryptCATGetMemberInfo(util.toPointer(hCatalog), util.pwstrToFfi(pwszReferenceTag)));
 }
 
 export function CryptCATAllocSortedMemberInfo(
   hCatalog: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
   pwszReferenceTag: string | null /* Windows.Win32.Foundation.PWSTR */,
 ): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libWINTRUST.CryptCATAllocSortedMemberInfo(util.toPointer(hCatalog), util.pwstrToFfi(pwszReferenceTag)));
+  return util.pointerFromFfi(libWINTRUST_dll.CryptCATAllocSortedMemberInfo(util.toPointer(hCatalog), util.pwstrToFfi(pwszReferenceTag)));
 }
 
 export function CryptCATFreeSortedMemberInfo(
   hCatalog: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
   pCatMember: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): void /* void */ {
-  return libWINTRUST.CryptCATFreeSortedMemberInfo(util.toPointer(hCatalog), util.toPointer(pCatMember));
+  return libWINTRUST_dll.CryptCATFreeSortedMemberInfo(util.toPointer(hCatalog), util.toPointer(pCatMember));
 }
 
 export function CryptCATGetAttrInfo(
@@ -539,7 +570,7 @@ export function CryptCATGetAttrInfo(
   pCatMember: Deno.PointerValue | Uint8Array | null /* ptr */,
   pwszReferenceTag: string | null /* Windows.Win32.Foundation.PWSTR */,
 ): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libWINTRUST.CryptCATGetAttrInfo(util.toPointer(hCatalog), util.toPointer(pCatMember), util.pwstrToFfi(pwszReferenceTag)));
+  return util.pointerFromFfi(libWINTRUST_dll.CryptCATGetAttrInfo(util.toPointer(hCatalog), util.toPointer(pCatMember), util.pwstrToFfi(pwszReferenceTag)));
 }
 
 export function CryptCATPutMemberInfo(
@@ -551,7 +582,7 @@ export function CryptCATPutMemberInfo(
   cbSIPIndirectData: number /* u32 */,
   pbSIPIndirectData: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libWINTRUST.CryptCATPutMemberInfo(util.toPointer(hCatalog), util.pwstrToFfi(pwszFileName), util.pwstrToFfi(pwszReferenceTag), util.toPointer(pgSubjectType), dwCertVersion, cbSIPIndirectData, util.toPointer(pbSIPIndirectData)));
+  return util.pointerFromFfi(libWINTRUST_dll.CryptCATPutMemberInfo(util.toPointer(hCatalog), util.pwstrToFfi(pwszFileName), util.pwstrToFfi(pwszReferenceTag), util.toPointer(pgSubjectType), dwCertVersion, cbSIPIndirectData, util.toPointer(pbSIPIndirectData)));
 }
 
 export function CryptCATPutAttrInfo(
@@ -562,14 +593,14 @@ export function CryptCATPutAttrInfo(
   cbData: number /* u32 */,
   pbData: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libWINTRUST.CryptCATPutAttrInfo(util.toPointer(hCatalog), util.toPointer(pCatMember), util.pwstrToFfi(pwszReferenceTag), dwAttrTypeAndAction, cbData, util.toPointer(pbData)));
+  return util.pointerFromFfi(libWINTRUST_dll.CryptCATPutAttrInfo(util.toPointer(hCatalog), util.toPointer(pCatMember), util.pwstrToFfi(pwszReferenceTag), dwAttrTypeAndAction, cbData, util.toPointer(pbData)));
 }
 
 export function CryptCATEnumerateMember(
   hCatalog: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
   pPrevMember: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libWINTRUST.CryptCATEnumerateMember(util.toPointer(hCatalog), util.toPointer(pPrevMember)));
+  return util.pointerFromFfi(libWINTRUST_dll.CryptCATEnumerateMember(util.toPointer(hCatalog), util.toPointer(pPrevMember)));
 }
 
 export function CryptCATEnumerateAttr(
@@ -577,20 +608,20 @@ export function CryptCATEnumerateAttr(
   pCatMember: Deno.PointerValue | Uint8Array | null /* ptr */,
   pPrevAttr: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libWINTRUST.CryptCATEnumerateAttr(util.toPointer(hCatalog), util.toPointer(pCatMember), util.toPointer(pPrevAttr)));
+  return util.pointerFromFfi(libWINTRUST_dll.CryptCATEnumerateAttr(util.toPointer(hCatalog), util.toPointer(pCatMember), util.toPointer(pPrevAttr)));
 }
 
 export function CryptCATCDFOpen(
   pwszFilePath: string | null /* Windows.Win32.Foundation.PWSTR */,
   pfnParseError: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Security.Cryptography.Catalog.PFN_CDF_PARSE_ERROR_CALLBACK */,
 ): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libWINTRUST.CryptCATCDFOpen(util.pwstrToFfi(pwszFilePath), util.toPointer(pfnParseError)));
+  return util.pointerFromFfi(libWINTRUST_dll.CryptCATCDFOpen(util.pwstrToFfi(pwszFilePath), util.toPointer(pfnParseError)));
 }
 
 export function CryptCATCDFClose(
   pCDF: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWINTRUST.CryptCATCDFClose(util.toPointer(pCDF)));
+  return util.boolFromFfi(libWINTRUST_dll.CryptCATCDFClose(util.toPointer(pCDF)));
 }
 
 export function CryptCATCDFEnumCatAttributes(
@@ -598,7 +629,7 @@ export function CryptCATCDFEnumCatAttributes(
   pPrevAttr: Deno.PointerValue | Uint8Array | null /* ptr */,
   pfnParseError: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Security.Cryptography.Catalog.PFN_CDF_PARSE_ERROR_CALLBACK */,
 ): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libWINTRUST.CryptCATCDFEnumCatAttributes(util.toPointer(pCDF), util.toPointer(pPrevAttr), util.toPointer(pfnParseError)));
+  return util.pointerFromFfi(libWINTRUST_dll.CryptCATCDFEnumCatAttributes(util.toPointer(pCDF), util.toPointer(pPrevAttr), util.toPointer(pfnParseError)));
 }
 
 export function CryptCATCDFEnumMembers(
@@ -606,7 +637,7 @@ export function CryptCATCDFEnumMembers(
   pPrevMember: Deno.PointerValue | Uint8Array | null /* ptr */,
   pfnParseError: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Security.Cryptography.Catalog.PFN_CDF_PARSE_ERROR_CALLBACK */,
 ): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libWINTRUST.CryptCATCDFEnumMembers(util.toPointer(pCDF), util.toPointer(pPrevMember), util.toPointer(pfnParseError)));
+  return util.pointerFromFfi(libWINTRUST_dll.CryptCATCDFEnumMembers(util.toPointer(pCDF), util.toPointer(pPrevMember), util.toPointer(pfnParseError)));
 }
 
 export function CryptCATCDFEnumAttributes(
@@ -615,14 +646,14 @@ export function CryptCATCDFEnumAttributes(
   pPrevAttr: Deno.PointerValue | Uint8Array | null /* ptr */,
   pfnParseError: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Security.Cryptography.Catalog.PFN_CDF_PARSE_ERROR_CALLBACK */,
 ): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libWINTRUST.CryptCATCDFEnumAttributes(util.toPointer(pCDF), util.toPointer(pMember), util.toPointer(pPrevAttr), util.toPointer(pfnParseError)));
+  return util.pointerFromFfi(libWINTRUST_dll.CryptCATCDFEnumAttributes(util.toPointer(pCDF), util.toPointer(pMember), util.toPointer(pPrevAttr), util.toPointer(pfnParseError)));
 }
 
 export function IsCatalogFile(
   hFile: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
   pwszFileName: string | null /* Windows.Win32.Foundation.PWSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWINTRUST.IsCatalogFile(util.toPointer(hFile), util.pwstrToFfi(pwszFileName)));
+  return util.boolFromFfi(libWINTRUST_dll.IsCatalogFile(util.toPointer(hFile), util.pwstrToFfi(pwszFileName)));
 }
 
 export function CryptCATAdminAcquireContext(
@@ -630,7 +661,7 @@ export function CryptCATAdminAcquireContext(
   pgSubsystem: Deno.PointerValue | Uint8Array | null /* ptr */,
   dwFlags: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWINTRUST.CryptCATAdminAcquireContext(util.toPointer(phCatAdmin), util.toPointer(pgSubsystem), dwFlags));
+  return util.boolFromFfi(libWINTRUST_dll.CryptCATAdminAcquireContext(util.toPointer(phCatAdmin), util.toPointer(pgSubsystem), dwFlags));
 }
 
 export function CryptCATAdminAcquireContext2(
@@ -640,14 +671,14 @@ export function CryptCATAdminAcquireContext2(
   pStrongHashPolicy: Deno.PointerValue | Uint8Array | null /* ptr */,
   dwFlags: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWINTRUST.CryptCATAdminAcquireContext2(util.toPointer(phCatAdmin), util.toPointer(pgSubsystem), util.pwstrToFfi(pwszHashAlgorithm), util.toPointer(pStrongHashPolicy), dwFlags));
+  return util.boolFromFfi(libWINTRUST_dll.CryptCATAdminAcquireContext2(util.toPointer(phCatAdmin), util.toPointer(pgSubsystem), util.pwstrToFfi(pwszHashAlgorithm), util.toPointer(pStrongHashPolicy), dwFlags));
 }
 
 export function CryptCATAdminReleaseContext(
   hCatAdmin: Deno.PointerValue /* isize */,
   dwFlags: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWINTRUST.CryptCATAdminReleaseContext(hCatAdmin, dwFlags));
+  return util.boolFromFfi(libWINTRUST_dll.CryptCATAdminReleaseContext(hCatAdmin, dwFlags));
 }
 
 export function CryptCATAdminReleaseCatalogContext(
@@ -655,7 +686,7 @@ export function CryptCATAdminReleaseCatalogContext(
   hCatInfo: Deno.PointerValue /* isize */,
   dwFlags: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWINTRUST.CryptCATAdminReleaseCatalogContext(hCatAdmin, hCatInfo, dwFlags));
+  return util.boolFromFfi(libWINTRUST_dll.CryptCATAdminReleaseCatalogContext(hCatAdmin, hCatInfo, dwFlags));
 }
 
 export function CryptCATAdminEnumCatalogFromHash(
@@ -665,7 +696,7 @@ export function CryptCATAdminEnumCatalogFromHash(
   dwFlags: number /* u32 */,
   phPrevCatInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue /* isize */ {
-  return libWINTRUST.CryptCATAdminEnumCatalogFromHash(hCatAdmin, util.toPointer(pbHash), cbHash, dwFlags, util.toPointer(phPrevCatInfo));
+  return libWINTRUST_dll.CryptCATAdminEnumCatalogFromHash(hCatAdmin, util.toPointer(pbHash), cbHash, dwFlags, util.toPointer(phPrevCatInfo));
 }
 
 export function CryptCATAdminCalcHashFromFileHandle(
@@ -674,7 +705,7 @@ export function CryptCATAdminCalcHashFromFileHandle(
   pbHash: Deno.PointerValue | Uint8Array | null /* ptr */,
   dwFlags: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWINTRUST.CryptCATAdminCalcHashFromFileHandle(util.toPointer(hFile), util.toPointer(pcbHash), util.toPointer(pbHash), dwFlags));
+  return util.boolFromFfi(libWINTRUST_dll.CryptCATAdminCalcHashFromFileHandle(util.toPointer(hFile), util.toPointer(pcbHash), util.toPointer(pbHash), dwFlags));
 }
 
 export function CryptCATAdminCalcHashFromFileHandle2(
@@ -684,7 +715,7 @@ export function CryptCATAdminCalcHashFromFileHandle2(
   pbHash: Deno.PointerValue | Uint8Array | null /* ptr */,
   dwFlags: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWINTRUST.CryptCATAdminCalcHashFromFileHandle2(hCatAdmin, util.toPointer(hFile), util.toPointer(pcbHash), util.toPointer(pbHash), dwFlags));
+  return util.boolFromFfi(libWINTRUST_dll.CryptCATAdminCalcHashFromFileHandle2(hCatAdmin, util.toPointer(hFile), util.toPointer(pcbHash), util.toPointer(pbHash), dwFlags));
 }
 
 export function CryptCATAdminAddCatalog(
@@ -693,7 +724,7 @@ export function CryptCATAdminAddCatalog(
   pwszSelectBaseName: string | null /* Windows.Win32.Foundation.PWSTR */,
   dwFlags: number /* u32 */,
 ): Deno.PointerValue /* isize */ {
-  return libWINTRUST.CryptCATAdminAddCatalog(hCatAdmin, util.pwstrToFfi(pwszCatalogFile), util.pwstrToFfi(pwszSelectBaseName), dwFlags);
+  return libWINTRUST_dll.CryptCATAdminAddCatalog(hCatAdmin, util.pwstrToFfi(pwszCatalogFile), util.pwstrToFfi(pwszSelectBaseName), dwFlags);
 }
 
 export function CryptCATAdminRemoveCatalog(
@@ -701,7 +732,7 @@ export function CryptCATAdminRemoveCatalog(
   pwszCatalogFile: string | null /* Windows.Win32.Foundation.PWSTR */,
   dwFlags: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWINTRUST.CryptCATAdminRemoveCatalog(hCatAdmin, util.pwstrToFfi(pwszCatalogFile), dwFlags));
+  return util.boolFromFfi(libWINTRUST_dll.CryptCATAdminRemoveCatalog(hCatAdmin, util.pwstrToFfi(pwszCatalogFile), dwFlags));
 }
 
 export function CryptCATCatalogInfoFromContext(
@@ -709,7 +740,7 @@ export function CryptCATCatalogInfoFromContext(
   psCatInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
   dwFlags: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWINTRUST.CryptCATCatalogInfoFromContext(hCatInfo, util.toPointer(psCatInfo), dwFlags));
+  return util.boolFromFfi(libWINTRUST_dll.CryptCATCatalogInfoFromContext(hCatInfo, util.toPointer(psCatInfo), dwFlags));
 }
 
 export function CryptCATAdminResolveCatalogPath(
@@ -718,13 +749,13 @@ export function CryptCATAdminResolveCatalogPath(
   psCatInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
   dwFlags: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWINTRUST.CryptCATAdminResolveCatalogPath(hCatAdmin, util.pwstrToFfi(pwszCatalogFile), util.toPointer(psCatInfo), dwFlags));
+  return util.boolFromFfi(libWINTRUST_dll.CryptCATAdminResolveCatalogPath(hCatAdmin, util.pwstrToFfi(pwszCatalogFile), util.toPointer(psCatInfo), dwFlags));
 }
 
 export function CryptCATAdminPauseServiceForBackup(
   dwFlags: number /* u32 */,
   fResume: boolean /* Windows.Win32.Foundation.BOOL */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWINTRUST.CryptCATAdminPauseServiceForBackup(dwFlags, util.boolToFfi(fResume)));
+  return util.boolFromFfi(libWINTRUST_dll.CryptCATAdminPauseServiceForBackup(dwFlags, util.boolToFfi(fResume)));
 }
 

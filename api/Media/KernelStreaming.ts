@@ -90,7 +90,7 @@ export type KSPROPERTY_TUNER = number;
 export type KSPROPERTY_TUNER_MODES = number;
 export type KS_TUNER_TUNING_FLAGS = number;
 export type KS_TUNER_STRATEGY = number;
-export type _TunerDecoderLockType = number;
+export type TunerLockType = number;
 export type KSEVENT_TUNER = number;
 export type KSPROPERTY_VIDCAP_VIDEOENCODER = number;
 export type KSPROPERTY_VIDCAP_VIDEODECODER = number;
@@ -232,6 +232,12 @@ export const KSDATAFORMAT_BIT_ATTRIBUTES = 1;
 export const KSDATARANGE_BIT_ATTRIBUTES = 1;
 export const KSDATARANGE_BIT_REQUIRED_ATTRIBUTES = 2;
 export const KSATTRIBUTE_REQUIRED = 1;
+export const KSSTRING_Filter = "{9B365890-165F-11D0-A195-0020AFD156E4}";
+export const KSSTRING_Pin = "{146F1A80-4791-11D0-A5D6-28DB04C10000}";
+export const KSSTRING_Clock = "{53172480-4791-11D0-A5D6-28DB04C10000}";
+export const KSSTRING_Allocator = "{642F5D00-4791-11D0-A5D6-28DB04C10000}";
+export const KSSTRING_AllocatorEx = "{091BB63B-603F-11D1-B067-00A0C9062802}";
+export const KSSTRING_TopologyNode = "{0621061A-EE75-11D0-B915-00A0C9223196}";
 export const KSALLOCATOR_REQUIREMENTF_INPLACE_MODIFIER = 1;
 export const KSALLOCATOR_REQUIREMENTF_SYSTEM_MEMORY = 2;
 export const KSALLOCATOR_REQUIREMENTF_FRAME_INTEGRITY = 4;
@@ -1397,7 +1403,7 @@ export const KSCAMERA_PERFRAMESETTING_ITEM_PHOTOCONFIRMATION = 6;
 export const KSCAMERA_PERFRAMESETTING_ITEM_CUSTOM = 7;
 export const KSPROPERTY_NETWORKCAMERACONTROL_NTPINFO_TYPE_DISABLE = 0;
 export const KSPROPERTY_NETWORKCAMERACONTROL_NTPINFO_TYPE_HOSTNTP = 1;
-export const KSPROPERYT_NETWORKCAMERACONTROL_NTPINFO_TYPE_CUSTOM = 2;
+export const KSPROPERTY_NETWORKCAMERACONTROL_NTPINFO_TYPE_CUSTOM = 2;
 export const KSPROPERTY_NETWORKCAMERACONTROL_NTP = 0;
 export const KSPROPERTY_NETWORKCAMERACONTROL_URI = 1;
 export const KSPROPERTY_NETWORKCAMERACONTROL_METADATA = 2;
@@ -1643,19 +1649,19 @@ export const KS_MemoryTypeAnyHost = 6;
 // Structs
 
 /**
- * Windows.Win32.UI.Shell.PropertiesSystem.PROPERTYKEY (size: 16)
+ * Windows.Win32.Devices.Properties.DEVPROPKEY (size: 16)
  */
-export interface PROPERTYKEY {
+export interface DEVPROPKEY {
   /** System.Guid */
   fmtid: Uint8Array | Deno.PointerValue | null;
   /** u32 */
   pid: number;
 }
 
-export const sizeofPROPERTYKEY = 16;
+export const sizeofDEVPROPKEY = 16;
 
-export function allocPROPERTYKEY(data?: Partial<PROPERTYKEY>): Uint8Array {
-  const buf = new Uint8Array(sizeofPROPERTYKEY);
+export function allocDEVPROPKEY(data?: Partial<DEVPROPKEY>): Uint8Array {
+  const buf = new Uint8Array(sizeofDEVPROPKEY);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
   if (data?.fmtid !== undefined) view.setBigUint64(0, data.fmtid === null ? 0n : BigInt(util.toPointer(data.fmtid)), true);
@@ -1666,24 +1672,78 @@ export function allocPROPERTYKEY(data?: Partial<PROPERTYKEY>): Uint8Array {
 }
 
 /**
- * Windows.Win32.Media.KernelStreaming.KSPRIORITY (size: 8)
+ * Windows.Win32.Media.KernelStreaming.KSTIME (size: 16)
  */
-export interface KSPRIORITY {
+export interface KSTIME {
+  /** i64 */
+  Time: Deno.PointerValue;
   /** u32 */
-  PriorityClass: number;
+  Numerator: number;
   /** u32 */
-  PrioritySubClass: number;
+  Denominator: number;
 }
 
-export const sizeofKSPRIORITY = 8;
+export const sizeofKSTIME = 16;
 
-export function allocKSPRIORITY(data?: Partial<KSPRIORITY>): Uint8Array {
-  const buf = new Uint8Array(sizeofKSPRIORITY);
+export function allocKSTIME(data?: Partial<KSTIME>): Uint8Array {
+  const buf = new Uint8Array(sizeofKSTIME);
+  const view = new DataView(buf.buffer);
+  // 0x00: i64
+  if (data?.Time !== undefined) view.setBigInt64(0, BigInt(data.Time), true);
+  // 0x08: u32
+  if (data?.Numerator !== undefined) view.setUint32(8, Number(data.Numerator), true);
+  // 0x0c: u32
+  if (data?.Denominator !== undefined) view.setUint32(12, Number(data.Denominator), true);
+  return buf;
+}
+
+/**
+ * Windows.Win32.Media.KernelStreaming.KSSTREAM_HEADER (size: 48)
+ */
+export interface KSSTREAM_HEADER {
+  /** u32 */
+  Size: number;
+  /** u32 */
+  TypeSpecificFlags: number;
+  /** Windows.Win32.Media.KernelStreaming.KSTIME */
+  PresentationTime: Uint8Array | Deno.PointerValue | null;
+  /** i64 */
+  Duration: Deno.PointerValue;
+  /** u32 */
+  FrameExtent: number;
+  /** u32 */
+  DataUsed: number;
+  /** ptr */
+  Data: Deno.PointerValue | Uint8Array | null;
+  /** u32 */
+  OptionsFlags: number;
+  /** u32 */
+  Reserved: number;
+}
+
+export const sizeofKSSTREAM_HEADER = 48;
+
+export function allocKSSTREAM_HEADER(data?: Partial<KSSTREAM_HEADER>): Uint8Array {
+  const buf = new Uint8Array(sizeofKSSTREAM_HEADER);
   const view = new DataView(buf.buffer);
   // 0x00: u32
-  if (data?.PriorityClass !== undefined) view.setUint32(0, Number(data.PriorityClass), true);
+  if (data?.Size !== undefined) view.setUint32(0, Number(data.Size), true);
   // 0x04: u32
-  if (data?.PrioritySubClass !== undefined) view.setUint32(4, Number(data.PrioritySubClass), true);
+  if (data?.TypeSpecificFlags !== undefined) view.setUint32(4, Number(data.TypeSpecificFlags), true);
+  // 0x08: pointer
+  if (data?.PresentationTime !== undefined) view.setBigUint64(8, data.PresentationTime === null ? 0n : BigInt(util.toPointer(data.PresentationTime)), true);
+  // 0x10: i64
+  if (data?.Duration !== undefined) view.setBigInt64(16, BigInt(data.Duration), true);
+  // 0x18: u32
+  if (data?.FrameExtent !== undefined) view.setUint32(24, Number(data.FrameExtent), true);
+  // 0x1c: u32
+  if (data?.DataUsed !== undefined) view.setUint32(28, Number(data.DataUsed), true);
+  // 0x20: pointer
+  if (data?.Data !== undefined) view.setBigUint64(32, data.Data === null ? 0n : BigInt(util.toPointer(data.Data)), true);
+  // 0x28: u32
+  if (data?.OptionsFlags !== undefined) view.setUint32(40, Number(data.OptionsFlags), true);
+  // 0x2c: u32
+  if (data?.Reserved !== undefined) view.setUint32(44, Number(data.Reserved), true);
   return buf;
 }
 
@@ -1746,6 +1806,103 @@ export function allocKSIDENTIFIER(data?: Partial<KSIDENTIFIER>): Uint8Array {
   const view = new DataView(buf.buffer);
   // 0x00: pointer
   if (data?.Anonymous !== undefined) view.setBigUint64(0, data.Anonymous === null ? 0n : BigInt(util.toPointer(data.Anonymous)), true);
+  return buf;
+}
+
+/**
+ * Windows.Win32.Media.KernelStreaming.KSNODEPROPERTY (size: 16)
+ */
+export interface KSNODEPROPERTY {
+  /** Windows.Win32.Media.KernelStreaming.KSIDENTIFIER */
+  Property: Uint8Array | Deno.PointerValue | null;
+  /** u32 */
+  NodeId: number;
+  /** u32 */
+  Reserved: number;
+}
+
+export const sizeofKSNODEPROPERTY = 16;
+
+export function allocKSNODEPROPERTY(data?: Partial<KSNODEPROPERTY>): Uint8Array {
+  const buf = new Uint8Array(sizeofKSNODEPROPERTY);
+  const view = new DataView(buf.buffer);
+  // 0x00: pointer
+  if (data?.Property !== undefined) view.setBigUint64(0, data.Property === null ? 0n : BigInt(util.toPointer(data.Property)), true);
+  // 0x08: u32
+  if (data?.NodeId !== undefined) view.setUint32(8, Number(data.NodeId), true);
+  // 0x0c: u32
+  if (data?.Reserved !== undefined) view.setUint32(12, Number(data.Reserved), true);
+  return buf;
+}
+
+/**
+ * Windows.Win32.Media.KernelStreaming.KSNODEPROPERTY_AUDIO_3D_LISTENER (size: 16)
+ */
+export interface KSNODEPROPERTY_AUDIO_3D_LISTENER {
+  /** Windows.Win32.Media.KernelStreaming.KSNODEPROPERTY */
+  NodeProperty: Uint8Array | Deno.PointerValue | null;
+  /** ptr */
+  ListenerId: Deno.PointerValue | Uint8Array | null;
+}
+
+export const sizeofKSNODEPROPERTY_AUDIO_3D_LISTENER = 16;
+
+export function allocKSNODEPROPERTY_AUDIO_3D_LISTENER(data?: Partial<KSNODEPROPERTY_AUDIO_3D_LISTENER>): Uint8Array {
+  const buf = new Uint8Array(sizeofKSNODEPROPERTY_AUDIO_3D_LISTENER);
+  const view = new DataView(buf.buffer);
+  // 0x00: pointer
+  if (data?.NodeProperty !== undefined) view.setBigUint64(0, data.NodeProperty === null ? 0n : BigInt(util.toPointer(data.NodeProperty)), true);
+  // 0x08: pointer
+  if (data?.ListenerId !== undefined) view.setBigUint64(8, data.ListenerId === null ? 0n : BigInt(util.toPointer(data.ListenerId)), true);
+  return buf;
+}
+
+/**
+ * Windows.Win32.Media.KernelStreaming.KSNODEPROPERTY_AUDIO_PROPERTY (size: 24)
+ */
+export interface KSNODEPROPERTY_AUDIO_PROPERTY {
+  /** Windows.Win32.Media.KernelStreaming.KSNODEPROPERTY */
+  NodeProperty: Uint8Array | Deno.PointerValue | null;
+  /** ptr */
+  AppContext: Deno.PointerValue | Uint8Array | null;
+  /** u32 */
+  Length: number;
+}
+
+export const sizeofKSNODEPROPERTY_AUDIO_PROPERTY = 24;
+
+export function allocKSNODEPROPERTY_AUDIO_PROPERTY(data?: Partial<KSNODEPROPERTY_AUDIO_PROPERTY>): Uint8Array {
+  const buf = new Uint8Array(sizeofKSNODEPROPERTY_AUDIO_PROPERTY);
+  const view = new DataView(buf.buffer);
+  // 0x00: pointer
+  if (data?.NodeProperty !== undefined) view.setBigUint64(0, data.NodeProperty === null ? 0n : BigInt(util.toPointer(data.NodeProperty)), true);
+  // 0x08: pointer
+  if (data?.AppContext !== undefined) view.setBigUint64(8, data.AppContext === null ? 0n : BigInt(util.toPointer(data.AppContext)), true);
+  // 0x10: u32
+  if (data?.Length !== undefined) view.setUint32(16, Number(data.Length), true);
+  // 0x14: pad4
+  return buf;
+}
+
+/**
+ * Windows.Win32.Media.KernelStreaming.KSPRIORITY (size: 8)
+ */
+export interface KSPRIORITY {
+  /** u32 */
+  PriorityClass: number;
+  /** u32 */
+  PrioritySubClass: number;
+}
+
+export const sizeofKSPRIORITY = 8;
+
+export function allocKSPRIORITY(data?: Partial<KSPRIORITY>): Uint8Array {
+  const buf = new Uint8Array(sizeofKSPRIORITY);
+  const view = new DataView(buf.buffer);
+  // 0x00: u32
+  if (data?.PriorityClass !== undefined) view.setUint32(0, Number(data.PriorityClass), true);
+  // 0x04: u32
+  if (data?.PrioritySubClass !== undefined) view.setUint32(4, Number(data.PrioritySubClass), true);
   return buf;
 }
 
@@ -2984,82 +3141,6 @@ export function allocKSSTREAMALLOCATOR_STATUS_EX(data?: Partial<KSSTREAMALLOCATO
 }
 
 /**
- * Windows.Win32.Media.KernelStreaming.KSTIME (size: 16)
- */
-export interface KSTIME {
-  /** i64 */
-  Time: Deno.PointerValue;
-  /** u32 */
-  Numerator: number;
-  /** u32 */
-  Denominator: number;
-}
-
-export const sizeofKSTIME = 16;
-
-export function allocKSTIME(data?: Partial<KSTIME>): Uint8Array {
-  const buf = new Uint8Array(sizeofKSTIME);
-  const view = new DataView(buf.buffer);
-  // 0x00: i64
-  if (data?.Time !== undefined) view.setBigInt64(0, BigInt(data.Time), true);
-  // 0x08: u32
-  if (data?.Numerator !== undefined) view.setUint32(8, Number(data.Numerator), true);
-  // 0x0c: u32
-  if (data?.Denominator !== undefined) view.setUint32(12, Number(data.Denominator), true);
-  return buf;
-}
-
-/**
- * Windows.Win32.Media.KernelStreaming.KSSTREAM_HEADER (size: 48)
- */
-export interface KSSTREAM_HEADER {
-  /** u32 */
-  Size: number;
-  /** u32 */
-  TypeSpecificFlags: number;
-  /** Windows.Win32.Media.KernelStreaming.KSTIME */
-  PresentationTime: Uint8Array | Deno.PointerValue | null;
-  /** i64 */
-  Duration: Deno.PointerValue;
-  /** u32 */
-  FrameExtent: number;
-  /** u32 */
-  DataUsed: number;
-  /** ptr */
-  Data: Deno.PointerValue | Uint8Array | null;
-  /** u32 */
-  OptionsFlags: number;
-  /** u32 */
-  Reserved: number;
-}
-
-export const sizeofKSSTREAM_HEADER = 48;
-
-export function allocKSSTREAM_HEADER(data?: Partial<KSSTREAM_HEADER>): Uint8Array {
-  const buf = new Uint8Array(sizeofKSSTREAM_HEADER);
-  const view = new DataView(buf.buffer);
-  // 0x00: u32
-  if (data?.Size !== undefined) view.setUint32(0, Number(data.Size), true);
-  // 0x04: u32
-  if (data?.TypeSpecificFlags !== undefined) view.setUint32(4, Number(data.TypeSpecificFlags), true);
-  // 0x08: pointer
-  if (data?.PresentationTime !== undefined) view.setBigUint64(8, data.PresentationTime === null ? 0n : BigInt(util.toPointer(data.PresentationTime)), true);
-  // 0x10: i64
-  if (data?.Duration !== undefined) view.setBigInt64(16, BigInt(data.Duration), true);
-  // 0x18: u32
-  if (data?.FrameExtent !== undefined) view.setUint32(24, Number(data.FrameExtent), true);
-  // 0x1c: u32
-  if (data?.DataUsed !== undefined) view.setUint32(28, Number(data.DataUsed), true);
-  // 0x20: pointer
-  if (data?.Data !== undefined) view.setBigUint64(32, data.Data === null ? 0n : BigInt(util.toPointer(data.Data)), true);
-  // 0x28: u32
-  if (data?.OptionsFlags !== undefined) view.setUint32(40, Number(data.OptionsFlags), true);
-  // 0x2c: u32
-  if (data?.Reserved !== undefined) view.setUint32(44, Number(data.Reserved), true);
-  return buf;
-}
-
-/**
  * Windows.Win32.Media.KernelStreaming.KSSTREAM_METADATA_INFO (size: 32)
  */
 export interface KSSTREAM_METADATA_INFO {
@@ -3580,9 +3661,9 @@ export function allocKSAUDIO_PRESENTATION_POSITION(data?: Partial<KSAUDIO_PRESEN
 }
 
 /**
- * Windows.Win32.Media.KernelStreaming._KSAUDIO_PACKETSIZE_SIGNALPROCESSINGMODE_CONSTRAINT (size: 16)
+ * Windows.Win32.Media.KernelStreaming.KSAUDIO_PACKETSIZE_PROCESSINGMODE_CONSTRAINT (size: 16)
  */
-export interface _KSAUDIO_PACKETSIZE_SIGNALPROCESSINGMODE_CONSTRAINT {
+export interface KSAUDIO_PACKETSIZE_PROCESSINGMODE_CONSTRAINT {
   /** System.Guid */
   ProcessingMode: Uint8Array | Deno.PointerValue | null;
   /** u32 */
@@ -3591,10 +3672,10 @@ export interface _KSAUDIO_PACKETSIZE_SIGNALPROCESSINGMODE_CONSTRAINT {
   ProcessingPacketDurationInHns: number;
 }
 
-export const sizeof_KSAUDIO_PACKETSIZE_SIGNALPROCESSINGMODE_CONSTRAINT = 16;
+export const sizeofKSAUDIO_PACKETSIZE_PROCESSINGMODE_CONSTRAINT = 16;
 
-export function alloc_KSAUDIO_PACKETSIZE_SIGNALPROCESSINGMODE_CONSTRAINT(data?: Partial<_KSAUDIO_PACKETSIZE_SIGNALPROCESSINGMODE_CONSTRAINT>): Uint8Array {
-  const buf = new Uint8Array(sizeof_KSAUDIO_PACKETSIZE_SIGNALPROCESSINGMODE_CONSTRAINT);
+export function allocKSAUDIO_PACKETSIZE_PROCESSINGMODE_CONSTRAINT(data?: Partial<KSAUDIO_PACKETSIZE_PROCESSINGMODE_CONSTRAINT>): Uint8Array {
+  const buf = new Uint8Array(sizeofKSAUDIO_PACKETSIZE_PROCESSINGMODE_CONSTRAINT);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
   if (data?.ProcessingMode !== undefined) view.setBigUint64(0, data.ProcessingMode === null ? 0n : BigInt(util.toPointer(data.ProcessingMode)), true);
@@ -5362,32 +5443,6 @@ export function allocLOOPEDSTREAMING_POSITION_EVENT_DATA(data?: Partial<LOOPEDST
 }
 
 /**
- * Windows.Win32.Media.KernelStreaming.KSNODEPROPERTY (size: 16)
- */
-export interface KSNODEPROPERTY {
-  /** Windows.Win32.Media.KernelStreaming.KSIDENTIFIER */
-  Property: Uint8Array | Deno.PointerValue | null;
-  /** u32 */
-  NodeId: number;
-  /** u32 */
-  Reserved: number;
-}
-
-export const sizeofKSNODEPROPERTY = 16;
-
-export function allocKSNODEPROPERTY(data?: Partial<KSNODEPROPERTY>): Uint8Array {
-  const buf = new Uint8Array(sizeofKSNODEPROPERTY);
-  const view = new DataView(buf.buffer);
-  // 0x00: pointer
-  if (data?.Property !== undefined) view.setBigUint64(0, data.Property === null ? 0n : BigInt(util.toPointer(data.Property)), true);
-  // 0x08: u32
-  if (data?.NodeId !== undefined) view.setUint32(8, Number(data.NodeId), true);
-  // 0x0c: u32
-  if (data?.Reserved !== undefined) view.setUint32(12, Number(data.Reserved), true);
-  return buf;
-}
-
-/**
  * Windows.Win32.Media.KernelStreaming.KSNODEPROPERTY_AUDIO_CHANNEL (size: 16)
  */
 export interface KSNODEPROPERTY_AUDIO_CHANNEL {
@@ -5438,55 +5493,6 @@ export function allocKSNODEPROPERTY_AUDIO_DEV_SPECIFIC(data?: Partial<KSNODEPROP
   if (data?.DevSpecificId !== undefined) view.setUint32(8, Number(data.DevSpecificId), true);
   // 0x0c: u32
   if (data?.DeviceInfo !== undefined) view.setUint32(12, Number(data.DeviceInfo), true);
-  // 0x10: u32
-  if (data?.Length !== undefined) view.setUint32(16, Number(data.Length), true);
-  // 0x14: pad4
-  return buf;
-}
-
-/**
- * Windows.Win32.Media.KernelStreaming.KSNODEPROPERTY_AUDIO_3D_LISTENER (size: 16)
- */
-export interface KSNODEPROPERTY_AUDIO_3D_LISTENER {
-  /** Windows.Win32.Media.KernelStreaming.KSNODEPROPERTY */
-  NodeProperty: Uint8Array | Deno.PointerValue | null;
-  /** ptr */
-  ListenerId: Deno.PointerValue | Uint8Array | null;
-}
-
-export const sizeofKSNODEPROPERTY_AUDIO_3D_LISTENER = 16;
-
-export function allocKSNODEPROPERTY_AUDIO_3D_LISTENER(data?: Partial<KSNODEPROPERTY_AUDIO_3D_LISTENER>): Uint8Array {
-  const buf = new Uint8Array(sizeofKSNODEPROPERTY_AUDIO_3D_LISTENER);
-  const view = new DataView(buf.buffer);
-  // 0x00: pointer
-  if (data?.NodeProperty !== undefined) view.setBigUint64(0, data.NodeProperty === null ? 0n : BigInt(util.toPointer(data.NodeProperty)), true);
-  // 0x08: pointer
-  if (data?.ListenerId !== undefined) view.setBigUint64(8, data.ListenerId === null ? 0n : BigInt(util.toPointer(data.ListenerId)), true);
-  return buf;
-}
-
-/**
- * Windows.Win32.Media.KernelStreaming.KSNODEPROPERTY_AUDIO_PROPERTY (size: 24)
- */
-export interface KSNODEPROPERTY_AUDIO_PROPERTY {
-  /** Windows.Win32.Media.KernelStreaming.KSNODEPROPERTY */
-  NodeProperty: Uint8Array | Deno.PointerValue | null;
-  /** ptr */
-  AppContext: Deno.PointerValue | Uint8Array | null;
-  /** u32 */
-  Length: number;
-}
-
-export const sizeofKSNODEPROPERTY_AUDIO_PROPERTY = 24;
-
-export function allocKSNODEPROPERTY_AUDIO_PROPERTY(data?: Partial<KSNODEPROPERTY_AUDIO_PROPERTY>): Uint8Array {
-  const buf = new Uint8Array(sizeofKSNODEPROPERTY_AUDIO_PROPERTY);
-  const view = new DataView(buf.buffer);
-  // 0x00: pointer
-  if (data?.NodeProperty !== undefined) view.setBigUint64(0, data.NodeProperty === null ? 0n : BigInt(util.toPointer(data.NodeProperty)), true);
-  // 0x08: pointer
-  if (data?.AppContext !== undefined) view.setBigUint64(8, data.AppContext === null ? 0n : BigInt(util.toPointer(data.AppContext)), true);
   // 0x10: u32
   if (data?.Length !== undefined) view.setUint32(16, Number(data.Length), true);
   // 0x14: pad4
@@ -6269,9 +6275,9 @@ export function allocKS_VBIINFOHEADER(data?: Partial<KS_VBIINFOHEADER>): Uint8Ar
 }
 
 /**
- * Windows.Win32.Media.KernelStreaming.KS_AnalogVideoInfo (size: 32)
+ * Windows.Win32.Media.KernelStreaming.KS_ANALOGVIDEOINFO (size: 32)
  */
-export interface KS_AnalogVideoInfo {
+export interface KS_ANALOGVIDEOINFO {
   /** Windows.Win32.Foundation.RECT */
   rcSource: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.Foundation.RECT */
@@ -6284,10 +6290,10 @@ export interface KS_AnalogVideoInfo {
   AvgTimePerFrame: Deno.PointerValue;
 }
 
-export const sizeofKS_AnalogVideoInfo = 32;
+export const sizeofKS_ANALOGVIDEOINFO = 32;
 
-export function allocKS_AnalogVideoInfo(data?: Partial<KS_AnalogVideoInfo>): Uint8Array {
-  const buf = new Uint8Array(sizeofKS_AnalogVideoInfo);
+export function allocKS_ANALOGVIDEOINFO(data?: Partial<KS_ANALOGVIDEOINFO>): Uint8Array {
+  const buf = new Uint8Array(sizeofKS_ANALOGVIDEOINFO);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
   if (data?.rcSource !== undefined) view.setBigUint64(0, data.rcSource === null ? 0n : BigInt(util.toPointer(data.rcSource)), true);
@@ -6636,9 +6642,9 @@ export function allocKS_H264VIDEOINFO(data?: Partial<KS_H264VIDEOINFO>): Uint8Ar
 }
 
 /**
- * Windows.Win32.Media.KernelStreaming.KS_MPEAUDIOINFO (size: 16)
+ * Windows.Win32.Media.KernelStreaming.KS_MPEGAUDIOINFO (size: 16)
  */
-export interface KS_MPEAUDIOINFO {
+export interface KS_MPEGAUDIOINFO {
   /** u32 */
   dwFlags: number;
   /** u32 */
@@ -6649,10 +6655,10 @@ export interface KS_MPEAUDIOINFO {
   dwReserved3: number;
 }
 
-export const sizeofKS_MPEAUDIOINFO = 16;
+export const sizeofKS_MPEGAUDIOINFO = 16;
 
-export function allocKS_MPEAUDIOINFO(data?: Partial<KS_MPEAUDIOINFO>): Uint8Array {
-  const buf = new Uint8Array(sizeofKS_MPEAUDIOINFO);
+export function allocKS_MPEGAUDIOINFO(data?: Partial<KS_MPEGAUDIOINFO>): Uint8Array {
+  const buf = new Uint8Array(sizeofKS_MPEGAUDIOINFO);
   const view = new DataView(buf.buffer);
   // 0x00: u32
   if (data?.dwFlags !== undefined) view.setUint32(0, Number(data.dwFlags), true);
@@ -7266,7 +7272,7 @@ export function allocKS_DATARANGE_VIDEO_VBI(data?: Partial<KS_DATARANGE_VIDEO_VB
 export interface KS_DATARANGE_ANALOGVIDEO {
   /** Windows.Win32.Media.KernelStreaming.KSDATAFORMAT */
   DataRange: Uint8Array | Deno.PointerValue | null;
-  /** Windows.Win32.Media.KernelStreaming.KS_AnalogVideoInfo */
+  /** Windows.Win32.Media.KernelStreaming.KS_ANALOGVIDEOINFO */
   AnalogVideoInfo: Uint8Array | Deno.PointerValue | null;
 }
 
@@ -8839,8 +8845,8 @@ export function allocKSPROPERTY_TUNER_NETWORKTYPE_SCAN_CAPS_S(data?: Partial<KSP
 export interface KSPROPERTY_TUNER_SCAN_STATUS_S {
   /** Windows.Win32.Media.KernelStreaming.KSIDENTIFIER */
   Property: Uint8Array | Deno.PointerValue | null;
-  /** Windows.Win32.Media.KernelStreaming._TunerDecoderLockType */
-  LockStatus: _TunerDecoderLockType;
+  /** Windows.Win32.Media.KernelStreaming.TunerLockType */
+  LockStatus: TunerLockType;
   /** u32 */
   CurrentFrequency: number;
 }
@@ -9397,59 +9403,25 @@ export function allocKSCAMERA_EXTENDEDPROP_HEADER(data?: Partial<KSCAMERA_EXTEND
 }
 
 /**
- * _AccountSid_e__Struct (size: 16)
- */
-export interface _AccountSid_e__Struct {
-  /** u32 */
-  Size: number;
-  /** array */
-  Data: Deno.PointerValue | null;
-}
-
-export const sizeof_AccountSid_e__Struct = 16;
-
-export function alloc_AccountSid_e__Struct(data?: Partial<_AccountSid_e__Struct>): Uint8Array {
-  const buf = new Uint8Array(sizeof_AccountSid_e__Struct);
-  const view = new DataView(buf.buffer);
-  // 0x00: u32
-  if (data?.Size !== undefined) view.setUint32(0, Number(data.Size), true);
-  // 0x04: pad4
-  // 0x08: pointer
-  if (data?.Data !== undefined) view.setBigUint64(8, data.Data === null ? 0n : BigInt(util.toPointer(data.Data)), true);
-  return buf;
-}
-
-/**
- * _Value_e__Union (size: 32)
+ * _Value_e__Union (size: 16)
  */
 export interface _Value_e__Union {
-  /** u32 */
-  Null: number;
-  /** u32 */
-  Wildcard: number;
+  /** u16 */
+  ShortUuid: number;
   /** System.Guid */
-  TemplateGuid: Uint8Array | Deno.PointerValue | null;
-  /** _AccountSid_e__Struct */
-  AccountSid: Uint8Array | Deno.PointerValue | null;
-  /** array */
-  SecureId: Deno.PointerValue | null;
+  LongUuid: Uint8Array | Deno.PointerValue | null;
 }
 
-export const sizeof_Value_e__Union = 32;
+export const sizeof_Value_e__Union = 16;
 
 export function alloc_Value_e__Union(data?: Partial<_Value_e__Union>): Uint8Array {
   const buf = new Uint8Array(sizeof_Value_e__Union);
   const view = new DataView(buf.buffer);
-  // 0x00: u32
-  if (data?.Null !== undefined) view.setUint32(0, Number(data.Null), true);
-  // 0x04: u32
-  if (data?.Wildcard !== undefined) view.setUint32(4, Number(data.Wildcard), true);
+  // 0x00: u16
+  if (data?.ShortUuid !== undefined) view.setUint16(0, Number(data.ShortUuid), true);
+  // 0x02: pad6
   // 0x08: pointer
-  if (data?.TemplateGuid !== undefined) view.setBigUint64(8, data.TemplateGuid === null ? 0n : BigInt(util.toPointer(data.TemplateGuid)), true);
-  // 0x10: pointer
-  if (data?.AccountSid !== undefined) view.setBigUint64(16, data.AccountSid === null ? 0n : BigInt(util.toPointer(data.AccountSid)), true);
-  // 0x18: pointer
-  if (data?.SecureId !== undefined) view.setBigUint64(24, data.SecureId === null ? 0n : BigInt(util.toPointer(data.SecureId)), true);
+  if (data?.LongUuid !== undefined) view.setBigUint64(8, data.LongUuid === null ? 0n : BigInt(util.toPointer(data.LongUuid)), true);
   return buf;
 }
 
@@ -12922,7 +12894,7 @@ export type HRESULT = number;
 // Native Libraries
 
 try {
-  var libksuser = Deno.dlopen("ksuser", {
+  var libksuser_dll = Deno.dlopen("ksuser.dll", {
     KsCreateAllocator: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "u32",
@@ -12965,7 +12937,7 @@ export function KsCreateAllocator(
   AllocatorFraming: Deno.PointerValue | Uint8Array | null /* ptr */,
   AllocatorHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libksuser.KsCreateAllocator(util.toPointer(ConnectionHandle), util.toPointer(AllocatorFraming), util.toPointer(AllocatorHandle));
+  return libksuser_dll.KsCreateAllocator(util.toPointer(ConnectionHandle), util.toPointer(AllocatorFraming), util.toPointer(AllocatorHandle));
 }
 
 export function KsCreateClock(
@@ -12973,7 +12945,7 @@ export function KsCreateClock(
   ClockCreate: Deno.PointerValue | Uint8Array | null /* ptr */,
   ClockHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libksuser.KsCreateClock(util.toPointer(ConnectionHandle), util.toPointer(ClockCreate), util.toPointer(ClockHandle));
+  return libksuser_dll.KsCreateClock(util.toPointer(ConnectionHandle), util.toPointer(ClockCreate), util.toPointer(ClockHandle));
 }
 
 export function KsCreatePin(
@@ -12982,7 +12954,7 @@ export function KsCreatePin(
   DesiredAccess: number /* u32 */,
   ConnectionHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libksuser.KsCreatePin(util.toPointer(FilterHandle), util.toPointer(Connect), DesiredAccess, util.toPointer(ConnectionHandle));
+  return libksuser_dll.KsCreatePin(util.toPointer(FilterHandle), util.toPointer(Connect), DesiredAccess, util.toPointer(ConnectionHandle));
 }
 
 export function KsCreateTopologyNode(
@@ -12991,7 +12963,7 @@ export function KsCreateTopologyNode(
   DesiredAccess: number /* u32 */,
   NodeHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libksuser.KsCreateTopologyNode(util.toPointer(ParentHandle), util.toPointer(NodeCreate), DesiredAccess, util.toPointer(NodeHandle));
+  return libksuser_dll.KsCreateTopologyNode(util.toPointer(ParentHandle), util.toPointer(NodeCreate), DesiredAccess, util.toPointer(NodeHandle));
 }
 
 export function KsCreateAllocator2(
@@ -12999,7 +12971,7 @@ export function KsCreateAllocator2(
   AllocatorFraming: Deno.PointerValue | Uint8Array | null /* ptr */,
   AllocatorHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libksuser.KsCreateAllocator2(util.toPointer(ConnectionHandle), util.toPointer(AllocatorFraming), util.toPointer(AllocatorHandle)));
+  return util.pointerFromFfi(libksuser_dll.KsCreateAllocator2(util.toPointer(ConnectionHandle), util.toPointer(AllocatorFraming), util.toPointer(AllocatorHandle)));
 }
 
 export function KsCreateClock2(
@@ -13007,7 +12979,7 @@ export function KsCreateClock2(
   ClockCreate: Deno.PointerValue | Uint8Array | null /* ptr */,
   ClockHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libksuser.KsCreateClock2(util.toPointer(ConnectionHandle), util.toPointer(ClockCreate), util.toPointer(ClockHandle)));
+  return util.pointerFromFfi(libksuser_dll.KsCreateClock2(util.toPointer(ConnectionHandle), util.toPointer(ClockCreate), util.toPointer(ClockHandle)));
 }
 
 export function KsCreatePin2(
@@ -13016,7 +12988,7 @@ export function KsCreatePin2(
   DesiredAccess: number /* u32 */,
   ConnectionHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libksuser.KsCreatePin2(util.toPointer(FilterHandle), util.toPointer(Connect), DesiredAccess, util.toPointer(ConnectionHandle)));
+  return util.pointerFromFfi(libksuser_dll.KsCreatePin2(util.toPointer(FilterHandle), util.toPointer(Connect), DesiredAccess, util.toPointer(ConnectionHandle)));
 }
 
 export function KsCreateTopologyNode2(
@@ -13025,6 +12997,6 @@ export function KsCreateTopologyNode2(
   DesiredAccess: number /* u32 */,
   NodeHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libksuser.KsCreateTopologyNode2(util.toPointer(ParentHandle), util.toPointer(NodeCreate), DesiredAccess, util.toPointer(NodeHandle)));
+  return util.pointerFromFfi(libksuser_dll.KsCreateTopologyNode2(util.toPointer(ParentHandle), util.toPointer(NodeCreate), DesiredAccess, util.toPointer(NodeHandle)));
 }
 

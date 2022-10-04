@@ -3,9 +3,9 @@
 import * as util from "../../util.ts";
 
 // Enums
-export type __MIDL___MIDL_itf_mtxadmin_0107_0001 = number;
-export type __MIDL___MIDL_itf_mtxadmin_0107_0002 = number;
-export type __MIDL___MIDL_itf_mtxadmin_0107_0003 = number;
+export type MTSPackageInstallOptions = number;
+export type MTSPackageExportOptions = number;
+export type MTSAdminErrorCodes = number;
 
 // Constants
 export const mtsInstallUsers = 1;

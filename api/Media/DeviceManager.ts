@@ -406,194 +406,25 @@ export const WMDM_MSG_MEDIA_REMOVAL = 3;
 export type BOOL = number;
 
 /**
- * Windows.Win32.Media.DeviceManager.__MACINFO (size: 16)
+ * Windows.Win32.Media.DeviceManager.MACINFO (size: 16)
  */
-export interface __MACINFO {
+export interface MACINFO {
   /** Windows.Win32.Foundation.BOOL */
   fUsed: boolean;
   /** array */
   abMacState: Deno.PointerValue | null;
 }
 
-export const sizeof__MACINFO = 16;
+export const sizeofMACINFO = 16;
 
-export function alloc__MACINFO(data?: Partial<__MACINFO>): Uint8Array {
-  const buf = new Uint8Array(sizeof__MACINFO);
+export function allocMACINFO(data?: Partial<MACINFO>): Uint8Array {
+  const buf = new Uint8Array(sizeofMACINFO);
   const view = new DataView(buf.buffer);
   // 0x00: i32
   if (data?.fUsed !== undefined) view.setInt32(0, Number(data.fUsed), true);
   // 0x04: pad4
   // 0x08: pointer
   if (data?.abMacState !== undefined) view.setBigUint64(8, data.abMacState === null ? 0n : BigInt(util.toPointer(data.abMacState)), true);
-  return buf;
-}
-
-/**
- * Windows.Win32.Media.DeviceManager._WAVEFORMATEX (size: 24)
- */
-export interface _WAVEFORMATEX {
-  /** u16 */
-  wFormatTag: number;
-  /** u16 */
-  nChannels: number;
-  /** u32 */
-  nSamplesPerSec: number;
-  /** u32 */
-  nAvgBytesPerSec: number;
-  /** u16 */
-  nBlockAlign: number;
-  /** u16 */
-  wBitsPerSample: number;
-  /** u16 */
-  cbSize: number;
-}
-
-export const sizeof_WAVEFORMATEX = 24;
-
-export function alloc_WAVEFORMATEX(data?: Partial<_WAVEFORMATEX>): Uint8Array {
-  const buf = new Uint8Array(sizeof_WAVEFORMATEX);
-  const view = new DataView(buf.buffer);
-  // 0x00: u16
-  if (data?.wFormatTag !== undefined) view.setUint16(0, Number(data.wFormatTag), true);
-  // 0x02: u16
-  if (data?.nChannels !== undefined) view.setUint16(2, Number(data.nChannels), true);
-  // 0x04: u32
-  if (data?.nSamplesPerSec !== undefined) view.setUint32(4, Number(data.nSamplesPerSec), true);
-  // 0x08: u32
-  if (data?.nAvgBytesPerSec !== undefined) view.setUint32(8, Number(data.nAvgBytesPerSec), true);
-  // 0x0c: u16
-  if (data?.nBlockAlign !== undefined) view.setUint16(12, Number(data.nBlockAlign), true);
-  // 0x0e: u16
-  if (data?.wBitsPerSample !== undefined) view.setUint16(14, Number(data.wBitsPerSample), true);
-  // 0x10: u16
-  if (data?.cbSize !== undefined) view.setUint16(16, Number(data.cbSize), true);
-  // 0x12: pad6
-  return buf;
-}
-
-/**
- * Windows.Win32.Media.DeviceManager._BITMAPINFOHEADER (size: 40)
- */
-export interface _BITMAPINFOHEADER {
-  /** u32 */
-  biSize: number;
-  /** i32 */
-  biWidth: number;
-  /** i32 */
-  biHeight: number;
-  /** u16 */
-  biPlanes: number;
-  /** u16 */
-  biBitCount: number;
-  /** u32 */
-  biCompression: number;
-  /** u32 */
-  biSizeImage: number;
-  /** i32 */
-  biXPelsPerMeter: number;
-  /** i32 */
-  biYPelsPerMeter: number;
-  /** u32 */
-  biClrUsed: number;
-  /** u32 */
-  biClrImportant: number;
-}
-
-export const sizeof_BITMAPINFOHEADER = 40;
-
-export function alloc_BITMAPINFOHEADER(data?: Partial<_BITMAPINFOHEADER>): Uint8Array {
-  const buf = new Uint8Array(sizeof_BITMAPINFOHEADER);
-  const view = new DataView(buf.buffer);
-  // 0x00: u32
-  if (data?.biSize !== undefined) view.setUint32(0, Number(data.biSize), true);
-  // 0x04: i32
-  if (data?.biWidth !== undefined) view.setInt32(4, Number(data.biWidth), true);
-  // 0x08: i32
-  if (data?.biHeight !== undefined) view.setInt32(8, Number(data.biHeight), true);
-  // 0x0c: u16
-  if (data?.biPlanes !== undefined) view.setUint16(12, Number(data.biPlanes), true);
-  // 0x0e: u16
-  if (data?.biBitCount !== undefined) view.setUint16(14, Number(data.biBitCount), true);
-  // 0x10: u32
-  if (data?.biCompression !== undefined) view.setUint32(16, Number(data.biCompression), true);
-  // 0x14: u32
-  if (data?.biSizeImage !== undefined) view.setUint32(20, Number(data.biSizeImage), true);
-  // 0x18: i32
-  if (data?.biXPelsPerMeter !== undefined) view.setInt32(24, Number(data.biXPelsPerMeter), true);
-  // 0x1c: i32
-  if (data?.biYPelsPerMeter !== undefined) view.setInt32(28, Number(data.biYPelsPerMeter), true);
-  // 0x20: u32
-  if (data?.biClrUsed !== undefined) view.setUint32(32, Number(data.biClrUsed), true);
-  // 0x24: u32
-  if (data?.biClrImportant !== undefined) view.setUint32(36, Number(data.biClrImportant), true);
-  return buf;
-}
-
-/**
- * Windows.Win32.Foundation.RECT (size: 16)
- */
-export interface RECT {
-  /** i32 */
-  left: number;
-  /** i32 */
-  top: number;
-  /** i32 */
-  right: number;
-  /** i32 */
-  bottom: number;
-}
-
-export const sizeofRECT = 16;
-
-export function allocRECT(data?: Partial<RECT>): Uint8Array {
-  const buf = new Uint8Array(sizeofRECT);
-  const view = new DataView(buf.buffer);
-  // 0x00: i32
-  if (data?.left !== undefined) view.setInt32(0, Number(data.left), true);
-  // 0x04: i32
-  if (data?.top !== undefined) view.setInt32(4, Number(data.top), true);
-  // 0x08: i32
-  if (data?.right !== undefined) view.setInt32(8, Number(data.right), true);
-  // 0x0c: i32
-  if (data?.bottom !== undefined) view.setInt32(12, Number(data.bottom), true);
-  return buf;
-}
-
-/**
- * Windows.Win32.Media.DeviceManager._VIDEOINFOHEADER (size: 40)
- */
-export interface _VIDEOINFOHEADER {
-  /** Windows.Win32.Foundation.RECT */
-  rcSource: Uint8Array | Deno.PointerValue | null;
-  /** Windows.Win32.Foundation.RECT */
-  rcTarget: Uint8Array | Deno.PointerValue | null;
-  /** u32 */
-  dwBitRate: number;
-  /** u32 */
-  dwBitErrorRate: number;
-  /** i64 */
-  AvgTimePerFrame: Deno.PointerValue;
-  /** Windows.Win32.Media.DeviceManager._BITMAPINFOHEADER */
-  bmiHeader: Uint8Array | Deno.PointerValue | null;
-}
-
-export const sizeof_VIDEOINFOHEADER = 40;
-
-export function alloc_VIDEOINFOHEADER(data?: Partial<_VIDEOINFOHEADER>): Uint8Array {
-  const buf = new Uint8Array(sizeof_VIDEOINFOHEADER);
-  const view = new DataView(buf.buffer);
-  // 0x00: pointer
-  if (data?.rcSource !== undefined) view.setBigUint64(0, data.rcSource === null ? 0n : BigInt(util.toPointer(data.rcSource)), true);
-  // 0x08: pointer
-  if (data?.rcTarget !== undefined) view.setBigUint64(8, data.rcTarget === null ? 0n : BigInt(util.toPointer(data.rcTarget)), true);
-  // 0x10: u32
-  if (data?.dwBitRate !== undefined) view.setUint32(16, Number(data.dwBitRate), true);
-  // 0x14: u32
-  if (data?.dwBitErrorRate !== undefined) view.setUint32(20, Number(data.dwBitErrorRate), true);
-  // 0x18: i64
-  if (data?.AvgTimePerFrame !== undefined) view.setBigInt64(24, BigInt(data.AvgTimePerFrame), true);
-  // 0x20: pointer
-  if (data?.bmiHeader !== undefined) view.setBigUint64(32, data.bmiHeader === null ? 0n : BigInt(util.toPointer(data.bmiHeader)), true);
   return buf;
 }
 

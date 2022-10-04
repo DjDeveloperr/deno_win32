@@ -123,9 +123,9 @@ export function allocFILETIME(data?: Partial<FILETIME>): Uint8Array {
 }
 
 /**
- * Windows.Win32.System.Restore._RESTOREPTINFOEX (size: 32)
+ * Windows.Win32.System.Restore.RESTOREPOINTINFOEX (size: 32)
  */
-export interface _RESTOREPTINFOEX {
+export interface RESTOREPOINTINFOEX {
   /** Windows.Win32.Foundation.FILETIME */
   ftCreation: Uint8Array | Deno.PointerValue | null;
   /** u32 */
@@ -138,10 +138,10 @@ export interface _RESTOREPTINFOEX {
   szDescription: Deno.PointerValue | null;
 }
 
-export const sizeof_RESTOREPTINFOEX = 32;
+export const sizeofRESTOREPOINTINFOEX = 32;
 
-export function alloc_RESTOREPTINFOEX(data?: Partial<_RESTOREPTINFOEX>): Uint8Array {
-  const buf = new Uint8Array(sizeof_RESTOREPTINFOEX);
+export function allocRESTOREPOINTINFOEX(data?: Partial<RESTOREPOINTINFOEX>): Uint8Array {
+  const buf = new Uint8Array(sizeofRESTOREPOINTINFOEX);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
   if (data?.ftCreation !== undefined) view.setBigUint64(0, data.ftCreation === null ? 0n : BigInt(util.toPointer(data.ftCreation)), true);
@@ -185,7 +185,7 @@ export type BOOL = number;
 // Native Libraries
 
 try {
-  var libsfc = Deno.dlopen("sfc", {
+  var libsfc_dll = Deno.dlopen("sfc.dll", {
     SRSetRestorePointA: {
       parameters: ["pointer", "pointer"],
       result: "i32",
@@ -203,13 +203,13 @@ export function SRSetRestorePointA(
   pRestorePtSpec: Deno.PointerValue | Uint8Array | null /* ptr */,
   pSMgrStatus: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libsfc.SRSetRestorePointA(util.toPointer(pRestorePtSpec), util.toPointer(pSMgrStatus)));
+  return util.boolFromFfi(libsfc_dll.SRSetRestorePointA(util.toPointer(pRestorePtSpec), util.toPointer(pSMgrStatus)));
 }
 
 export function SRSetRestorePointW(
   pRestorePtSpec: Deno.PointerValue | Uint8Array | null /* ptr */,
   pSMgrStatus: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libsfc.SRSetRestorePointW(util.toPointer(pRestorePtSpec), util.toPointer(pSMgrStatus)));
+  return util.boolFromFfi(libsfc_dll.SRSetRestorePointW(util.toPointer(pRestorePtSpec), util.toPointer(pSMgrStatus)));
 }
 

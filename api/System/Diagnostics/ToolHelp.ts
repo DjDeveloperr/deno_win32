@@ -381,7 +381,7 @@ export type BOOL = number;
 // Native Libraries
 
 try {
-  var libKERNEL32 = Deno.dlopen("KERNEL32", {
+  var libKERNEL32_dll = Deno.dlopen("KERNEL32.dll", {
     CreateToolhelp32Snapshot: {
       parameters: ["u32", "u32"],
       result: "pointer",
@@ -455,21 +455,21 @@ export function CreateToolhelp32Snapshot(
   dwFlags: CREATE_TOOLHELP_SNAPSHOT_FLAGS /* Windows.Win32.System.Diagnostics.ToolHelp.CREATE_TOOLHELP_SNAPSHOT_FLAGS */,
   th32ProcessID: number /* u32 */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */ {
-  return util.pointerFromFfi(libKERNEL32.CreateToolhelp32Snapshot(dwFlags, th32ProcessID));
+  return util.pointerFromFfi(libKERNEL32_dll.CreateToolhelp32Snapshot(dwFlags, th32ProcessID));
 }
 
 export function Heap32ListFirst(
   hSnapshot: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
   lphl: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32.Heap32ListFirst(util.toPointer(hSnapshot), util.toPointer(lphl)));
+  return util.boolFromFfi(libKERNEL32_dll.Heap32ListFirst(util.toPointer(hSnapshot), util.toPointer(lphl)));
 }
 
 export function Heap32ListNext(
   hSnapshot: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
   lphl: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32.Heap32ListNext(util.toPointer(hSnapshot), util.toPointer(lphl)));
+  return util.boolFromFfi(libKERNEL32_dll.Heap32ListNext(util.toPointer(hSnapshot), util.toPointer(lphl)));
 }
 
 export function Heap32First(
@@ -477,13 +477,13 @@ export function Heap32First(
   th32ProcessID: number /* u32 */,
   th32HeapID: Deno.PointerValue /* usize */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32.Heap32First(util.toPointer(lphe), th32ProcessID, th32HeapID));
+  return util.boolFromFfi(libKERNEL32_dll.Heap32First(util.toPointer(lphe), th32ProcessID, th32HeapID));
 }
 
 export function Heap32Next(
   lphe: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32.Heap32Next(util.toPointer(lphe)));
+  return util.boolFromFfi(libKERNEL32_dll.Heap32Next(util.toPointer(lphe)));
 }
 
 export function Toolhelp32ReadProcessMemory(
@@ -493,76 +493,76 @@ export function Toolhelp32ReadProcessMemory(
   cbRead: Deno.PointerValue /* usize */,
   lpNumberOfBytesRead: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32.Toolhelp32ReadProcessMemory(th32ProcessID, util.toPointer(lpBaseAddress), util.toPointer(lpBuffer), cbRead, util.toPointer(lpNumberOfBytesRead)));
+  return util.boolFromFfi(libKERNEL32_dll.Toolhelp32ReadProcessMemory(th32ProcessID, util.toPointer(lpBaseAddress), util.toPointer(lpBuffer), cbRead, util.toPointer(lpNumberOfBytesRead)));
 }
 
 export function Process32FirstW(
   hSnapshot: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
   lppe: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32.Process32FirstW(util.toPointer(hSnapshot), util.toPointer(lppe)));
+  return util.boolFromFfi(libKERNEL32_dll.Process32FirstW(util.toPointer(hSnapshot), util.toPointer(lppe)));
 }
 
 export function Process32NextW(
   hSnapshot: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
   lppe: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32.Process32NextW(util.toPointer(hSnapshot), util.toPointer(lppe)));
+  return util.boolFromFfi(libKERNEL32_dll.Process32NextW(util.toPointer(hSnapshot), util.toPointer(lppe)));
 }
 
 export function Process32First(
   hSnapshot: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
   lppe: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32.Process32First(util.toPointer(hSnapshot), util.toPointer(lppe)));
+  return util.boolFromFfi(libKERNEL32_dll.Process32First(util.toPointer(hSnapshot), util.toPointer(lppe)));
 }
 
 export function Process32Next(
   hSnapshot: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
   lppe: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32.Process32Next(util.toPointer(hSnapshot), util.toPointer(lppe)));
+  return util.boolFromFfi(libKERNEL32_dll.Process32Next(util.toPointer(hSnapshot), util.toPointer(lppe)));
 }
 
 export function Thread32First(
   hSnapshot: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
   lpte: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32.Thread32First(util.toPointer(hSnapshot), util.toPointer(lpte)));
+  return util.boolFromFfi(libKERNEL32_dll.Thread32First(util.toPointer(hSnapshot), util.toPointer(lpte)));
 }
 
 export function Thread32Next(
   hSnapshot: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
   lpte: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32.Thread32Next(util.toPointer(hSnapshot), util.toPointer(lpte)));
+  return util.boolFromFfi(libKERNEL32_dll.Thread32Next(util.toPointer(hSnapshot), util.toPointer(lpte)));
 }
 
 export function Module32FirstW(
   hSnapshot: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
   lpme: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32.Module32FirstW(util.toPointer(hSnapshot), util.toPointer(lpme)));
+  return util.boolFromFfi(libKERNEL32_dll.Module32FirstW(util.toPointer(hSnapshot), util.toPointer(lpme)));
 }
 
 export function Module32NextW(
   hSnapshot: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
   lpme: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32.Module32NextW(util.toPointer(hSnapshot), util.toPointer(lpme)));
+  return util.boolFromFfi(libKERNEL32_dll.Module32NextW(util.toPointer(hSnapshot), util.toPointer(lpme)));
 }
 
 export function Module32First(
   hSnapshot: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
   lpme: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32.Module32First(util.toPointer(hSnapshot), util.toPointer(lpme)));
+  return util.boolFromFfi(libKERNEL32_dll.Module32First(util.toPointer(hSnapshot), util.toPointer(lpme)));
 }
 
 export function Module32Next(
   hSnapshot: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
   lpme: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32.Module32Next(util.toPointer(hSnapshot), util.toPointer(lpme)));
+  return util.boolFromFfi(libKERNEL32_dll.Module32Next(util.toPointer(hSnapshot), util.toPointer(lpme)));
 }
 

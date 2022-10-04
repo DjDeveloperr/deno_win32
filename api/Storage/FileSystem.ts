@@ -187,7 +187,10 @@ export const FILE_TRAVERSE = 32;
 export const FILE_DELETE_CHILD = 64;
 export const FILE_READ_ATTRIBUTES = 128;
 export const FILE_WRITE_ATTRIBUTES = 256;
+export const DELETE = 65536;
 export const READ_CONTROL = 131072;
+export const WRITE_DAC = 262144;
+export const WRITE_OWNER = 524288;
 export const SYNCHRONIZE = 1048576;
 export const STANDARD_RIGHTS_REQUIRED = 983040;
 export const STANDARD_RIGHTS_READ = 131072;
@@ -199,6 +202,261 @@ export const FILE_ALL_ACCESS = 2032127;
 export const FILE_GENERIC_READ = 1179785;
 export const FILE_GENERIC_WRITE = 1179926;
 export const FILE_GENERIC_EXECUTE = 1179808;
+export const MAXIMUM_REPARSE_DATA_BUFFER_SIZE = 16384;
+export const EA_CONTAINER_NAME = "ContainerName";
+export const EA_CONTAINER_SIZE = "ContainerSize";
+export const CLFS_BASELOG_EXTENSION = ".blf";
+export const CLFS_FLAG_REENTRANT_FILE_SYSTEM = 8;
+export const CLFS_FLAG_NON_REENTRANT_FILTER = 16;
+export const CLFS_FLAG_REENTRANT_FILTER = 32;
+export const CLFS_FLAG_IGNORE_SHARE_ACCESS = 64;
+export const CLFS_FLAG_READ_IN_PROGRESS = 128;
+export const CLFS_FLAG_MINIFILTER_LEVEL = 256;
+export const CLFS_FLAG_HIDDEN_SYSTEM_LOG = 512;
+export const CLFS_MARSHALLING_FLAG_NONE = 0;
+export const CLFS_MARSHALLING_FLAG_DISABLE_BUFF_INIT = 1;
+export const CLFS_FLAG_FILTER_INTERMEDIATE_LEVEL = 16;
+export const CLFS_FLAG_FILTER_TOP_LEVEL = 32;
+export const CLFS_CONTAINER_STREAM_PREFIX = "%BLF%:";
+export const CLFS_CONTAINER_RELATIVE_PREFIX = "%BLF%\";
+export const TRANSACTION_MANAGER_VOLATILE = 1;
+export const TRANSACTION_MANAGER_COMMIT_DEFAULT = 0;
+export const TRANSACTION_MANAGER_COMMIT_SYSTEM_VOLUME = 2;
+export const TRANSACTION_MANAGER_COMMIT_SYSTEM_HIVES = 4;
+export const TRANSACTION_MANAGER_COMMIT_LOWEST = 8;
+export const TRANSACTION_MANAGER_CORRUPT_FOR_RECOVERY = 16;
+export const TRANSACTION_MANAGER_CORRUPT_FOR_PROGRESS = 32;
+export const TRANSACTION_MANAGER_MAXIMUM_OPTION = 63;
+export const TRANSACTION_DO_NOT_PROMOTE = 1;
+export const TRANSACTION_MAXIMUM_OPTION = 1;
+export const RESOURCE_MANAGER_VOLATILE = 1;
+export const RESOURCE_MANAGER_COMMUNICATION = 2;
+export const RESOURCE_MANAGER_MAXIMUM_OPTION = 3;
+export const CRM_PROTOCOL_EXPLICIT_MARSHAL_ONLY = 1;
+export const CRM_PROTOCOL_DYNAMIC_MARSHAL_INFO = 2;
+export const CRM_PROTOCOL_MAXIMUM_OPTION = 3;
+export const ENLISTMENT_SUPERIOR = 1;
+export const ENLISTMENT_MAXIMUM_OPTION = 1;
+export const TRANSACTION_NOTIFY_MASK = 1073741823;
+export const TRANSACTION_NOTIFY_PREPREPARE = 1;
+export const TRANSACTION_NOTIFY_PREPARE = 2;
+export const TRANSACTION_NOTIFY_COMMIT = 4;
+export const TRANSACTION_NOTIFY_ROLLBACK = 8;
+export const TRANSACTION_NOTIFY_PREPREPARE_COMPLETE = 16;
+export const TRANSACTION_NOTIFY_PREPARE_COMPLETE = 32;
+export const TRANSACTION_NOTIFY_COMMIT_COMPLETE = 64;
+export const TRANSACTION_NOTIFY_ROLLBACK_COMPLETE = 128;
+export const TRANSACTION_NOTIFY_RECOVER = 256;
+export const TRANSACTION_NOTIFY_SINGLE_PHASE_COMMIT = 512;
+export const TRANSACTION_NOTIFY_DELEGATE_COMMIT = 1024;
+export const TRANSACTION_NOTIFY_RECOVER_QUERY = 2048;
+export const TRANSACTION_NOTIFY_ENLIST_PREPREPARE = 4096;
+export const TRANSACTION_NOTIFY_LAST_RECOVER = 8192;
+export const TRANSACTION_NOTIFY_INDOUBT = 16384;
+export const TRANSACTION_NOTIFY_PROPAGATE_PULL = 32768;
+export const TRANSACTION_NOTIFY_PROPAGATE_PUSH = 65536;
+export const TRANSACTION_NOTIFY_MARSHAL = 131072;
+export const TRANSACTION_NOTIFY_ENLIST_MASK = 262144;
+export const TRANSACTION_NOTIFY_RM_DISCONNECTED = 16777216;
+export const TRANSACTION_NOTIFY_TM_ONLINE = 33554432;
+export const TRANSACTION_NOTIFY_COMMIT_REQUEST = 67108864;
+export const TRANSACTION_NOTIFY_PROMOTE = 134217728;
+export const TRANSACTION_NOTIFY_PROMOTE_NEW = 268435456;
+export const TRANSACTION_NOTIFY_REQUEST_OUTCOME = 536870912;
+export const TRANSACTION_NOTIFY_COMMIT_FINALIZE = 1073741824;
+export const TRANSACTIONMANAGER_OBJECT_PATH = "\TransactionManager\";
+export const TRANSACTION_OBJECT_PATH = "\Transaction\";
+export const ENLISTMENT_OBJECT_PATH = "\Enlistment\";
+export const RESOURCE_MANAGER_OBJECT_PATH = "\ResourceManager\";
+export const TRANSACTION_NOTIFICATION_TM_ONLINE_FLAG_IS_CLUSTERED = 1;
+export const KTM_MARSHAL_BLOB_VERSION_MAJOR = 1;
+export const KTM_MARSHAL_BLOB_VERSION_MINOR = 1;
+export const MAX_TRANSACTION_DESCRIPTION_LENGTH = 64;
+export const MAX_RESOURCEMANAGER_DESCRIPTION_LENGTH = 64;
+export const IOCTL_VOLUME_BASE = 86;
+export const IOCTL_VOLUME_GET_VOLUME_DISK_EXTENTS = 5636096;
+export const IOCTL_VOLUME_ONLINE = 5685256;
+export const IOCTL_VOLUME_OFFLINE = 5685260;
+export const IOCTL_VOLUME_IS_CLUSTERED = 5636144;
+export const IOCTL_VOLUME_GET_GPT_ATTRIBUTES = 5636152;
+export const IOCTL_VOLUME_SUPPORTS_ONLINE_OFFLINE = 5636100;
+export const IOCTL_VOLUME_IS_OFFLINE = 5636112;
+export const IOCTL_VOLUME_IS_IO_CAPABLE = 5636116;
+export const IOCTL_VOLUME_QUERY_FAILOVER_SET = 5636120;
+export const IOCTL_VOLUME_QUERY_VOLUME_NUMBER = 5636124;
+export const IOCTL_VOLUME_LOGICAL_TO_PHYSICAL = 5636128;
+export const IOCTL_VOLUME_PHYSICAL_TO_LOGICAL = 5636132;
+export const IOCTL_VOLUME_IS_PARTITION = 5636136;
+export const IOCTL_VOLUME_READ_PLEX = 5652526;
+export const IOCTL_VOLUME_SET_GPT_ATTRIBUTES = 5636148;
+export const IOCTL_VOLUME_GET_BC_PROPERTIES = 5652540;
+export const IOCTL_VOLUME_ALLOCATE_BC_STREAM = 5685312;
+export const IOCTL_VOLUME_FREE_BC_STREAM = 5685316;
+export const IOCTL_VOLUME_BC_VERSION = 1;
+export const IOCTL_VOLUME_IS_DYNAMIC = 5636168;
+export const IOCTL_VOLUME_PREPARE_FOR_CRITICAL_IO = 5685324;
+export const IOCTL_VOLUME_QUERY_ALLOCATION_HINT = 5652562;
+export const IOCTL_VOLUME_UPDATE_PROPERTIES = 5636180;
+export const IOCTL_VOLUME_QUERY_MINIMUM_SHRINK_SIZE = 5652568;
+export const IOCTL_VOLUME_PREPARE_FOR_SHRINK = 5685340;
+export const IOCTL_VOLUME_IS_CSV = 5636192;
+export const IOCTL_VOLUME_POST_ONLINE = 5685348;
+export const IOCTL_VOLUME_GET_CSVBLOCKCACHE_CALLBACK = 5685352;
+export const CSV_BLOCK_CACHE_CALLBACK_VERSION = 1;
+export const CSV_BLOCK_AND_FILE_CACHE_CALLBACK_VERSION = 2;
+export const _FT_TYPES_DEFINITION_ = 1;
+export const CLFS_MGMT_POLICY_VERSION = 1;
+export const LOG_POLICY_OVERWRITE = 1;
+export const LOG_POLICY_PERSIST = 2;
+export const CLFS_MGMT_CLIENT_REGISTRATION_VERSION = 1;
+export const DISKQUOTA_STATE_DISABLED = 0;
+export const DISKQUOTA_STATE_TRACK = 1;
+export const DISKQUOTA_STATE_ENFORCE = 2;
+export const DISKQUOTA_STATE_MASK = 3;
+export const DISKQUOTA_FILESTATE_INCOMPLETE = 256;
+export const DISKQUOTA_FILESTATE_REBUILDING = 512;
+export const DISKQUOTA_FILESTATE_MASK = 768;
+export const DISKQUOTA_LOGFLAG_USER_THRESHOLD = 1;
+export const DISKQUOTA_LOGFLAG_USER_LIMIT = 2;
+export const DISKQUOTA_USER_ACCOUNT_RESOLVED = 0;
+export const DISKQUOTA_USER_ACCOUNT_UNAVAILABLE = 1;
+export const DISKQUOTA_USER_ACCOUNT_DELETED = 2;
+export const DISKQUOTA_USER_ACCOUNT_INVALID = 3;
+export const DISKQUOTA_USER_ACCOUNT_UNKNOWN = 4;
+export const DISKQUOTA_USER_ACCOUNT_UNRESOLVED = 5;
+export const INVALID_SET_FILE_POINTER = 4294967295;
+export const INVALID_FILE_ATTRIBUTES = 4294967295;
+export const SHARE_NETNAME_PARMNUM = 1;
+export const SHARE_TYPE_PARMNUM = 3;
+export const SHARE_REMARK_PARMNUM = 4;
+export const SHARE_PERMISSIONS_PARMNUM = 5;
+export const SHARE_MAX_USES_PARMNUM = 6;
+export const SHARE_CURRENT_USES_PARMNUM = 7;
+export const SHARE_PATH_PARMNUM = 8;
+export const SHARE_PASSWD_PARMNUM = 9;
+export const SHARE_FILE_SD_PARMNUM = 501;
+export const SHARE_SERVER_PARMNUM = 503;
+export const SHI1_NUM_ELEMENTS = 4;
+export const SHI2_NUM_ELEMENTS = 10;
+export const STYPE_RESERVED1 = 16777216;
+export const STYPE_RESERVED2 = 33554432;
+export const STYPE_RESERVED3 = 67108864;
+export const STYPE_RESERVED4 = 134217728;
+export const STYPE_RESERVED5 = 1048576;
+export const STYPE_RESERVED_ALL = 1073741568;
+export const SHI_USES_UNLIMITED = 4294967295;
+export const SHI1005_FLAGS_DFS = 1;
+export const SHI1005_FLAGS_DFS_ROOT = 2;
+export const CSC_MASK_EXT = 8240;
+export const CSC_MASK = 48;
+export const CSC_CACHE_MANUAL_REINT = 0;
+export const CSC_CACHE_AUTO_REINT = 16;
+export const CSC_CACHE_VDO = 32;
+export const CSC_CACHE_NONE = 48;
+export const SHI1005_FLAGS_RESTRICT_EXCLUSIVE_OPENS = 256;
+export const SHI1005_FLAGS_FORCE_SHARED_DELETE = 512;
+export const SHI1005_FLAGS_ALLOW_NAMESPACE_CACHING = 1024;
+export const SHI1005_FLAGS_ACCESS_BASED_DIRECTORY_ENUM = 2048;
+export const SHI1005_FLAGS_FORCE_LEVELII_OPLOCK = 4096;
+export const SHI1005_FLAGS_ENABLE_HASH = 8192;
+export const SHI1005_FLAGS_ENABLE_CA = 16384;
+export const SHI1005_FLAGS_ENCRYPT_DATA = 32768;
+export const SHI1005_FLAGS_RESERVED = 65536;
+export const SHI1005_FLAGS_DISABLE_CLIENT_BUFFERING = 131072;
+export const SHI1005_FLAGS_IDENTITY_REMOTING = 262144;
+export const SHI1005_FLAGS_CLUSTER_MANAGED = 524288;
+export const SHI1005_FLAGS_COMPRESS_DATA = 1048576;
+export const SESI1_NUM_ELEMENTS = 8;
+export const SESI2_NUM_ELEMENTS = 9;
+export const STATSOPT_CLR = 1;
+export const LZERROR_BADINHANDLE = "-1";
+export const LZERROR_BADOUTHANDLE = "-2";
+export const LZERROR_READ = "-3";
+export const LZERROR_WRITE = "-4";
+export const LZERROR_GLOBALLOC = "-5";
+export const LZERROR_GLOBLOCK = "-6";
+export const LZERROR_BADVALUE = "-7";
+export const LZERROR_UNKNOWNALG = "-8";
+export const NTMS_OBJECTNAME_LENGTH = 64;
+export const NTMS_DESCRIPTION_LENGTH = 127;
+export const NTMS_DEVICENAME_LENGTH = 64;
+export const NTMS_SERIALNUMBER_LENGTH = 32;
+export const NTMS_REVISION_LENGTH = 32;
+export const NTMS_BARCODE_LENGTH = 64;
+export const NTMS_SEQUENCE_LENGTH = 32;
+export const NTMS_VENDORNAME_LENGTH = 128;
+export const NTMS_PRODUCTNAME_LENGTH = 128;
+export const NTMS_USERNAME_LENGTH = 64;
+export const NTMS_APPLICATIONNAME_LENGTH = 64;
+export const NTMS_COMPUTERNAME_LENGTH = 64;
+export const NTMS_I1_MESSAGE_LENGTH = 127;
+export const NTMS_MESSAGE_LENGTH = 256;
+export const NTMS_POOLHIERARCHY_LENGTH = 512;
+export const NTMS_OMIDLABELID_LENGTH = 255;
+export const NTMS_OMIDLABELTYPE_LENGTH = 64;
+export const NTMS_OMIDLABELINFO_LENGTH = 256;
+export const NTMS_MAXATTR_LENGTH = 65536;
+export const NTMS_MAXATTR_NAMELEN = 32;
+export const NTMSMLI_MAXTYPE = 64;
+export const NTMSMLI_MAXIDSIZE = 256;
+export const NTMSMLI_MAXAPPDESCR = 256;
+export const TXF_LOG_RECORD_GENERIC_TYPE_COMMIT = 1;
+export const TXF_LOG_RECORD_GENERIC_TYPE_ABORT = 2;
+export const TXF_LOG_RECORD_GENERIC_TYPE_PREPARE = 4;
+export const TXF_LOG_RECORD_GENERIC_TYPE_DATA = 8;
+export const VS_VERSION_INFO = 1;
+export const VS_USER_DEFINED = 100;
+export const VS_FFI_SIGNATURE = "-17890115";
+export const VS_FFI_STRUCVERSION = 65536;
+export const VS_FFI_FILEFLAGSMASK = 63;
+export const WINEFS_SETUSERKEY_SET_CAPABILITIES = 1;
+export const EFS_COMPATIBILITY_VERSION_NCRYPT_PROTECTOR = 5;
+export const EFS_COMPATIBILITY_VERSION_PFILE_PROTECTOR = 6;
+export const EFS_SUBVER_UNKNOWN = 0;
+export const EFS_EFS_SUBVER_EFS_CERT = 1;
+export const EFS_PFILE_SUBVER_RMS = 2;
+export const EFS_PFILE_SUBVER_APPX = 3;
+export const MAX_SID_SIZE = 256;
+export const EFS_METADATA_ADD_USER = 1;
+export const EFS_METADATA_REMOVE_USER = 2;
+export const EFS_METADATA_REPLACE_USER = 4;
+export const EFS_METADATA_GENERAL_OP = 8;
+export const WOF_PROVIDER_WIM = 1;
+export const WOF_PROVIDER_FILE = 2;
+export const WIM_PROVIDER_HASH_SIZE = 20;
+export const WIM_BOOT_OS_WIM = 1;
+export const WIM_BOOT_NOT_OS_WIM = 0;
+export const WIM_ENTRY_FLAG_NOT_ACTIVE = 1;
+export const WIM_ENTRY_FLAG_SUSPENDED = 2;
+export const WIM_EXTERNAL_FILE_INFO_FLAG_NOT_ACTIVE = 1;
+export const WIM_EXTERNAL_FILE_INFO_FLAG_SUSPENDED = 2;
+export const FILE_PROVIDER_COMPRESSION_XPRESS4K = 0;
+export const FILE_PROVIDER_COMPRESSION_LZX = 1;
+export const FILE_PROVIDER_COMPRESSION_XPRESS8K = 2;
+export const FILE_PROVIDER_COMPRESSION_XPRESS16K = 3;
+export const ClfsNullRecord = 0;
+export const ClfsDataRecord = 1;
+export const ClfsRestartRecord = 2;
+export const ClfsClientRecord = 3;
+export const ClsContainerInitializing = 1;
+export const ClsContainerInactive = 2;
+export const ClsContainerActive = 4;
+export const ClsContainerActivePendingDelete = 8;
+export const ClsContainerPendingArchive = 16;
+export const ClsContainerPendingArchiveAndDelete = 32;
+export const ClfsContainerInitializing = 1;
+export const ClfsContainerInactive = 2;
+export const ClfsContainerActive = 4;
+export const ClfsContainerActivePendingDelete = 8;
+export const ClfsContainerPendingArchive = 16;
+export const ClfsContainerPendingArchiveAndDelete = 32;
+export const CLFS_MAX_CONTAINER_INFO = 256;
+export const CLFS_SCAN_INIT = 1;
+export const CLFS_SCAN_FORWARD = 2;
+export const CLFS_SCAN_BACKWARD = 4;
+export const CLFS_SCAN_CLOSE = 8;
+export const CLFS_SCAN_INITIALIZED = 16;
+export const CLFS_SCAN_BUFFERED = 32;
 export const FILE_VER_GET_LOCALISED = 1;
 export const FILE_VER_GET_NEUTRAL = 2;
 export const FILE_VER_GET_PREFETCHED = 4;
@@ -417,251 +675,6 @@ export const PERM_FILE_WRITE = 2;
 export const PERM_FILE_CREATE = 4;
 export const SYMBOLIC_LINK_FLAG_DIRECTORY = 1;
 export const SYMBOLIC_LINK_FLAG_ALLOW_UNPRIVILEGED_CREATE = 2;
-export const CLFS_FLAG_REENTRANT_FILE_SYSTEM = 8;
-export const CLFS_FLAG_NON_REENTRANT_FILTER = 16;
-export const CLFS_FLAG_REENTRANT_FILTER = 32;
-export const CLFS_FLAG_IGNORE_SHARE_ACCESS = 64;
-export const CLFS_FLAG_READ_IN_PROGRESS = 128;
-export const CLFS_FLAG_MINIFILTER_LEVEL = 256;
-export const CLFS_FLAG_HIDDEN_SYSTEM_LOG = 512;
-export const CLFS_MARSHALLING_FLAG_NONE = 0;
-export const CLFS_MARSHALLING_FLAG_DISABLE_BUFF_INIT = 1;
-export const CLFS_FLAG_FILTER_INTERMEDIATE_LEVEL = 16;
-export const CLFS_FLAG_FILTER_TOP_LEVEL = 32;
-export const TRANSACTION_MANAGER_VOLATILE = 1;
-export const TRANSACTION_MANAGER_COMMIT_DEFAULT = 0;
-export const TRANSACTION_MANAGER_COMMIT_SYSTEM_VOLUME = 2;
-export const TRANSACTION_MANAGER_COMMIT_SYSTEM_HIVES = 4;
-export const TRANSACTION_MANAGER_COMMIT_LOWEST = 8;
-export const TRANSACTION_MANAGER_CORRUPT_FOR_RECOVERY = 16;
-export const TRANSACTION_MANAGER_CORRUPT_FOR_PROGRESS = 32;
-export const TRANSACTION_MANAGER_MAXIMUM_OPTION = 63;
-export const TRANSACTION_DO_NOT_PROMOTE = 1;
-export const TRANSACTION_MAXIMUM_OPTION = 1;
-export const RESOURCE_MANAGER_VOLATILE = 1;
-export const RESOURCE_MANAGER_COMMUNICATION = 2;
-export const RESOURCE_MANAGER_MAXIMUM_OPTION = 3;
-export const CRM_PROTOCOL_EXPLICIT_MARSHAL_ONLY = 1;
-export const CRM_PROTOCOL_DYNAMIC_MARSHAL_INFO = 2;
-export const CRM_PROTOCOL_MAXIMUM_OPTION = 3;
-export const ENLISTMENT_SUPERIOR = 1;
-export const ENLISTMENT_MAXIMUM_OPTION = 1;
-export const TRANSACTION_NOTIFY_MASK = 1073741823;
-export const TRANSACTION_NOTIFY_PREPREPARE = 1;
-export const TRANSACTION_NOTIFY_PREPARE = 2;
-export const TRANSACTION_NOTIFY_COMMIT = 4;
-export const TRANSACTION_NOTIFY_ROLLBACK = 8;
-export const TRANSACTION_NOTIFY_PREPREPARE_COMPLETE = 16;
-export const TRANSACTION_NOTIFY_PREPARE_COMPLETE = 32;
-export const TRANSACTION_NOTIFY_COMMIT_COMPLETE = 64;
-export const TRANSACTION_NOTIFY_ROLLBACK_COMPLETE = 128;
-export const TRANSACTION_NOTIFY_RECOVER = 256;
-export const TRANSACTION_NOTIFY_SINGLE_PHASE_COMMIT = 512;
-export const TRANSACTION_NOTIFY_DELEGATE_COMMIT = 1024;
-export const TRANSACTION_NOTIFY_RECOVER_QUERY = 2048;
-export const TRANSACTION_NOTIFY_ENLIST_PREPREPARE = 4096;
-export const TRANSACTION_NOTIFY_LAST_RECOVER = 8192;
-export const TRANSACTION_NOTIFY_INDOUBT = 16384;
-export const TRANSACTION_NOTIFY_PROPAGATE_PULL = 32768;
-export const TRANSACTION_NOTIFY_PROPAGATE_PUSH = 65536;
-export const TRANSACTION_NOTIFY_MARSHAL = 131072;
-export const TRANSACTION_NOTIFY_ENLIST_MASK = 262144;
-export const TRANSACTION_NOTIFY_RM_DISCONNECTED = 16777216;
-export const TRANSACTION_NOTIFY_TM_ONLINE = 33554432;
-export const TRANSACTION_NOTIFY_COMMIT_REQUEST = 67108864;
-export const TRANSACTION_NOTIFY_PROMOTE = 134217728;
-export const TRANSACTION_NOTIFY_PROMOTE_NEW = 268435456;
-export const TRANSACTION_NOTIFY_REQUEST_OUTCOME = 536870912;
-export const TRANSACTION_NOTIFY_COMMIT_FINALIZE = 1073741824;
-export const TRANSACTION_NOTIFICATION_TM_ONLINE_FLAG_IS_CLUSTERED = 1;
-export const KTM_MARSHAL_BLOB_VERSION_MAJOR = 1;
-export const KTM_MARSHAL_BLOB_VERSION_MINOR = 1;
-export const MAX_TRANSACTION_DESCRIPTION_LENGTH = 64;
-export const MAX_RESOURCEMANAGER_DESCRIPTION_LENGTH = 64;
-export const IOCTL_VOLUME_BASE = 86;
-export const IOCTL_VOLUME_GET_VOLUME_DISK_EXTENTS = 5636096;
-export const IOCTL_VOLUME_ONLINE = 5685256;
-export const IOCTL_VOLUME_OFFLINE = 5685260;
-export const IOCTL_VOLUME_IS_CLUSTERED = 5636144;
-export const IOCTL_VOLUME_GET_GPT_ATTRIBUTES = 5636152;
-export const IOCTL_VOLUME_SUPPORTS_ONLINE_OFFLINE = 5636100;
-export const IOCTL_VOLUME_IS_OFFLINE = 5636112;
-export const IOCTL_VOLUME_IS_IO_CAPABLE = 5636116;
-export const IOCTL_VOLUME_QUERY_FAILOVER_SET = 5636120;
-export const IOCTL_VOLUME_QUERY_VOLUME_NUMBER = 5636124;
-export const IOCTL_VOLUME_LOGICAL_TO_PHYSICAL = 5636128;
-export const IOCTL_VOLUME_PHYSICAL_TO_LOGICAL = 5636132;
-export const IOCTL_VOLUME_IS_PARTITION = 5636136;
-export const IOCTL_VOLUME_READ_PLEX = 5652526;
-export const IOCTL_VOLUME_SET_GPT_ATTRIBUTES = 5636148;
-export const IOCTL_VOLUME_GET_BC_PROPERTIES = 5652540;
-export const IOCTL_VOLUME_ALLOCATE_BC_STREAM = 5685312;
-export const IOCTL_VOLUME_FREE_BC_STREAM = 5685316;
-export const IOCTL_VOLUME_BC_VERSION = 1;
-export const IOCTL_VOLUME_IS_DYNAMIC = 5636168;
-export const IOCTL_VOLUME_PREPARE_FOR_CRITICAL_IO = 5685324;
-export const IOCTL_VOLUME_QUERY_ALLOCATION_HINT = 5652562;
-export const IOCTL_VOLUME_UPDATE_PROPERTIES = 5636180;
-export const IOCTL_VOLUME_QUERY_MINIMUM_SHRINK_SIZE = 5652568;
-export const IOCTL_VOLUME_PREPARE_FOR_SHRINK = 5685340;
-export const IOCTL_VOLUME_IS_CSV = 5636192;
-export const IOCTL_VOLUME_POST_ONLINE = 5685348;
-export const IOCTL_VOLUME_GET_CSVBLOCKCACHE_CALLBACK = 5685352;
-export const CSV_BLOCK_CACHE_CALLBACK_VERSION = 1;
-export const CSV_BLOCK_AND_FILE_CACHE_CALLBACK_VERSION = 2;
-export const _FT_TYPES_DEFINITION_ = 1;
-export const CLFS_MGMT_POLICY_VERSION = 1;
-export const LOG_POLICY_OVERWRITE = 1;
-export const LOG_POLICY_PERSIST = 2;
-export const CLFS_MGMT_CLIENT_REGISTRATION_VERSION = 1;
-export const DISKQUOTA_STATE_DISABLED = 0;
-export const DISKQUOTA_STATE_TRACK = 1;
-export const DISKQUOTA_STATE_ENFORCE = 2;
-export const DISKQUOTA_STATE_MASK = 3;
-export const DISKQUOTA_FILESTATE_INCOMPLETE = 256;
-export const DISKQUOTA_FILESTATE_REBUILDING = 512;
-export const DISKQUOTA_FILESTATE_MASK = 768;
-export const DISKQUOTA_LOGFLAG_USER_THRESHOLD = 1;
-export const DISKQUOTA_LOGFLAG_USER_LIMIT = 2;
-export const DISKQUOTA_USER_ACCOUNT_RESOLVED = 0;
-export const DISKQUOTA_USER_ACCOUNT_UNAVAILABLE = 1;
-export const DISKQUOTA_USER_ACCOUNT_DELETED = 2;
-export const DISKQUOTA_USER_ACCOUNT_INVALID = 3;
-export const DISKQUOTA_USER_ACCOUNT_UNKNOWN = 4;
-export const DISKQUOTA_USER_ACCOUNT_UNRESOLVED = 5;
-export const INVALID_SET_FILE_POINTER = 4294967295;
-export const INVALID_FILE_ATTRIBUTES = 4294967295;
-export const SHARE_NETNAME_PARMNUM = 1;
-export const SHARE_TYPE_PARMNUM = 3;
-export const SHARE_REMARK_PARMNUM = 4;
-export const SHARE_PERMISSIONS_PARMNUM = 5;
-export const SHARE_MAX_USES_PARMNUM = 6;
-export const SHARE_CURRENT_USES_PARMNUM = 7;
-export const SHARE_PATH_PARMNUM = 8;
-export const SHARE_PASSWD_PARMNUM = 9;
-export const SHARE_FILE_SD_PARMNUM = 501;
-export const SHARE_SERVER_PARMNUM = 503;
-export const SHI1_NUM_ELEMENTS = 4;
-export const SHI2_NUM_ELEMENTS = 10;
-export const STYPE_RESERVED1 = 16777216;
-export const STYPE_RESERVED2 = 33554432;
-export const STYPE_RESERVED3 = 67108864;
-export const STYPE_RESERVED4 = 134217728;
-export const STYPE_RESERVED5 = 1048576;
-export const STYPE_RESERVED_ALL = 1073741568;
-export const SHI_USES_UNLIMITED = 4294967295;
-export const SHI1005_FLAGS_DFS = 1;
-export const SHI1005_FLAGS_DFS_ROOT = 2;
-export const CSC_MASK_EXT = 8240;
-export const CSC_MASK = 48;
-export const CSC_CACHE_MANUAL_REINT = 0;
-export const CSC_CACHE_AUTO_REINT = 16;
-export const CSC_CACHE_VDO = 32;
-export const CSC_CACHE_NONE = 48;
-export const SHI1005_FLAGS_RESTRICT_EXCLUSIVE_OPENS = 256;
-export const SHI1005_FLAGS_FORCE_SHARED_DELETE = 512;
-export const SHI1005_FLAGS_ALLOW_NAMESPACE_CACHING = 1024;
-export const SHI1005_FLAGS_ACCESS_BASED_DIRECTORY_ENUM = 2048;
-export const SHI1005_FLAGS_FORCE_LEVELII_OPLOCK = 4096;
-export const SHI1005_FLAGS_ENABLE_HASH = 8192;
-export const SHI1005_FLAGS_ENABLE_CA = 16384;
-export const SHI1005_FLAGS_ENCRYPT_DATA = 32768;
-export const SHI1005_FLAGS_RESERVED = 65536;
-export const SHI1005_FLAGS_DISABLE_CLIENT_BUFFERING = 131072;
-export const SHI1005_FLAGS_IDENTITY_REMOTING = 262144;
-export const SHI1005_FLAGS_CLUSTER_MANAGED = 524288;
-export const SHI1005_FLAGS_COMPRESS_DATA = 1048576;
-export const SESI1_NUM_ELEMENTS = 8;
-export const SESI2_NUM_ELEMENTS = 9;
-export const STATSOPT_CLR = 1;
-export const LZERROR_BADINHANDLE = "-1";
-export const LZERROR_BADOUTHANDLE = "-2";
-export const LZERROR_READ = "-3";
-export const LZERROR_WRITE = "-4";
-export const LZERROR_GLOBALLOC = "-5";
-export const LZERROR_GLOBLOCK = "-6";
-export const LZERROR_BADVALUE = "-7";
-export const LZERROR_UNKNOWNALG = "-8";
-export const NTMS_OBJECTNAME_LENGTH = 64;
-export const NTMS_DESCRIPTION_LENGTH = 127;
-export const NTMS_DEVICENAME_LENGTH = 64;
-export const NTMS_SERIALNUMBER_LENGTH = 32;
-export const NTMS_REVISION_LENGTH = 32;
-export const NTMS_BARCODE_LENGTH = 64;
-export const NTMS_SEQUENCE_LENGTH = 32;
-export const NTMS_VENDORNAME_LENGTH = 128;
-export const NTMS_PRODUCTNAME_LENGTH = 128;
-export const NTMS_USERNAME_LENGTH = 64;
-export const NTMS_APPLICATIONNAME_LENGTH = 64;
-export const NTMS_COMPUTERNAME_LENGTH = 64;
-export const NTMS_I1_MESSAGE_LENGTH = 127;
-export const NTMS_MESSAGE_LENGTH = 256;
-export const NTMS_POOLHIERARCHY_LENGTH = 512;
-export const NTMS_OMIDLABELID_LENGTH = 255;
-export const NTMS_OMIDLABELTYPE_LENGTH = 64;
-export const NTMS_OMIDLABELINFO_LENGTH = 256;
-export const NTMS_MAXATTR_LENGTH = 65536;
-export const NTMS_MAXATTR_NAMELEN = 32;
-export const NTMSMLI_MAXTYPE = 64;
-export const NTMSMLI_MAXIDSIZE = 256;
-export const NTMSMLI_MAXAPPDESCR = 256;
-export const TXF_LOG_RECORD_GENERIC_TYPE_COMMIT = 1;
-export const TXF_LOG_RECORD_GENERIC_TYPE_ABORT = 2;
-export const TXF_LOG_RECORD_GENERIC_TYPE_PREPARE = 4;
-export const TXF_LOG_RECORD_GENERIC_TYPE_DATA = 8;
-export const VS_VERSION_INFO = 1;
-export const VS_USER_DEFINED = 100;
-export const VS_FFI_SIGNATURE = "-17890115";
-export const VS_FFI_STRUCVERSION = 65536;
-export const VS_FFI_FILEFLAGSMASK = 63;
-export const WINEFS_SETUSERKEY_SET_CAPABILITIES = 1;
-export const EFS_COMPATIBILITY_VERSION_NCRYPT_PROTECTOR = 5;
-export const EFS_COMPATIBILITY_VERSION_PFILE_PROTECTOR = 6;
-export const EFS_SUBVER_UNKNOWN = 0;
-export const EFS_EFS_SUBVER_EFS_CERT = 1;
-export const EFS_PFILE_SUBVER_RMS = 2;
-export const EFS_PFILE_SUBVER_APPX = 3;
-export const MAX_SID_SIZE = 256;
-export const EFS_METADATA_ADD_USER = 1;
-export const EFS_METADATA_REMOVE_USER = 2;
-export const EFS_METADATA_REPLACE_USER = 4;
-export const EFS_METADATA_GENERAL_OP = 8;
-export const WOF_PROVIDER_WIM = 1;
-export const WOF_PROVIDER_FILE = 2;
-export const WIM_PROVIDER_HASH_SIZE = 20;
-export const WIM_BOOT_OS_WIM = 1;
-export const WIM_BOOT_NOT_OS_WIM = 0;
-export const WIM_ENTRY_FLAG_NOT_ACTIVE = 1;
-export const WIM_ENTRY_FLAG_SUSPENDED = 2;
-export const WIM_EXTERNAL_FILE_INFO_FLAG_NOT_ACTIVE = 1;
-export const WIM_EXTERNAL_FILE_INFO_FLAG_SUSPENDED = 2;
-export const FILE_PROVIDER_COMPRESSION_XPRESS4K = 0;
-export const FILE_PROVIDER_COMPRESSION_LZX = 1;
-export const FILE_PROVIDER_COMPRESSION_XPRESS8K = 2;
-export const FILE_PROVIDER_COMPRESSION_XPRESS16K = 3;
-export const ClfsNullRecord = 0;
-export const ClfsDataRecord = 1;
-export const ClfsRestartRecord = 2;
-export const ClfsClientRecord = 3;
-export const ClsContainerInitializing = 1;
-export const ClsContainerInactive = 2;
-export const ClsContainerActive = 4;
-export const ClsContainerActivePendingDelete = 8;
-export const ClsContainerPendingArchive = 16;
-export const ClsContainerPendingArchiveAndDelete = 32;
-export const ClfsContainerInitializing = 1;
-export const ClfsContainerInactive = 2;
-export const ClfsContainerActive = 4;
-export const ClfsContainerActivePendingDelete = 8;
-export const ClfsContainerPendingArchive = 16;
-export const ClfsContainerPendingArchiveAndDelete = 32;
-export const CLFS_MAX_CONTAINER_INFO = 256;
-export const CLFS_SCAN_INIT = 1;
-export const CLFS_SCAN_FORWARD = 2;
-export const CLFS_SCAN_BACKWARD = 4;
-export const CLFS_SCAN_CLOSE = 8;
-export const CLFS_SCAN_INITIALIZED = 16;
-export const CLFS_SCAN_BUFFERED = 32;
 export const FindExInfoStandard = 0;
 export const FindExInfoBasic = 1;
 export const FindExInfoMaxInfoLevel = 2;
@@ -1013,6 +1026,26 @@ export const ExtendedFileIdType = 2;
 export const MaximumFileIdType = 3;
 
 // Structs
+
+export type BOOLEAN = number;
+
+/**
+ * Windows.Win32.Storage.FileSystem.FILE_DISPOSITION_INFO (size: 8)
+ */
+export interface FILE_DISPOSITION_INFO {
+  /** Windows.Win32.Foundation.BOOLEAN */
+  DeleteFile: Uint8Array | Deno.PointerValue | null;
+}
+
+export const sizeofFILE_DISPOSITION_INFO = 8;
+
+export function allocFILE_DISPOSITION_INFO(data?: Partial<FILE_DISPOSITION_INFO>): Uint8Array {
+  const buf = new Uint8Array(sizeofFILE_DISPOSITION_INFO);
+  const view = new DataView(buf.buffer);
+  // 0x00: pointer
+  if (data?.DeleteFile !== undefined) view.setBigUint64(0, data.DeleteFile === null ? 0n : BigInt(util.toPointer(data.DeleteFile)), true);
+  return buf;
+}
 
 export type FindFileHandle = Deno.PointerValue;
 
@@ -5795,8 +5828,6 @@ export function allocVOLUME_READ_PLEX_INPUT(data?: Partial<VOLUME_READ_PLEX_INPU
   return buf;
 }
 
-export type BOOLEAN = number;
-
 /**
  * Windows.Win32.Storage.FileSystem.VOLUME_SET_GPT_ATTRIBUTES_INFORMATION (size: 32)
  */
@@ -6248,6 +6279,8 @@ export function allocSHARE_INFO_501(data?: Partial<SHARE_INFO_501>): Uint8Array 
   return buf;
 }
 
+export type PSECURITY_DESCRIPTOR = Deno.PointerValue | Uint8Array | null;
+
 /**
  * Windows.Win32.Storage.FileSystem.SHARE_INFO_502 (size: 72)
  */
@@ -6270,8 +6303,8 @@ export interface SHARE_INFO_502 {
   shi502_passwd: string | null;
   /** u32 */
   shi502_reserved: number;
-  /** ptr */
-  shi502_security_descriptor: Deno.PointerValue | Uint8Array | null;
+  /** Windows.Win32.Security.PSECURITY_DESCRIPTOR */
+  shi502_security_descriptor: Uint8Array | Deno.PointerValue | null;
 }
 
 export const sizeofSHARE_INFO_502 = 72;
@@ -6341,8 +6374,8 @@ export interface SHARE_INFO_503 {
   shi503_servername: string | null;
   /** u32 */
   shi503_reserved: number;
-  /** ptr */
-  shi503_security_descriptor: Deno.PointerValue | Uint8Array | null;
+  /** Windows.Win32.Security.PSECURITY_DESCRIPTOR */
+  shi503_security_descriptor: Uint8Array | Deno.PointerValue | null;
 }
 
 export const sizeofSHARE_INFO_503 = 80;
@@ -6458,8 +6491,8 @@ export function allocSHARE_INFO_1006(data?: Partial<SHARE_INFO_1006>): Uint8Arra
 export interface SHARE_INFO_1501 {
   /** u32 */
   shi1501_reserved: number;
-  /** ptr */
-  shi1501_security_descriptor: Deno.PointerValue | Uint8Array | null;
+  /** Windows.Win32.Security.PSECURITY_DESCRIPTOR */
+  shi1501_security_descriptor: Uint8Array | Deno.PointerValue | null;
 }
 
 export const sizeofSHARE_INFO_1501 = 16;
@@ -8375,24 +8408,6 @@ export function allocFILE_ATTRIBUTE_TAG_INFO(data?: Partial<FILE_ATTRIBUTE_TAG_I
 }
 
 /**
- * Windows.Win32.Storage.FileSystem.FILE_DISPOSITION_INFO (size: 8)
- */
-export interface FILE_DISPOSITION_INFO {
-  /** Windows.Win32.Foundation.BOOLEAN */
-  DeleteFileA: Uint8Array | Deno.PointerValue | null;
-}
-
-export const sizeofFILE_DISPOSITION_INFO = 8;
-
-export function allocFILE_DISPOSITION_INFO(data?: Partial<FILE_DISPOSITION_INFO>): Uint8Array {
-  const buf = new Uint8Array(sizeofFILE_DISPOSITION_INFO);
-  const view = new DataView(buf.buffer);
-  // 0x00: pointer
-  if (data?.DeleteFileA !== undefined) view.setBigUint64(0, data.DeleteFileA === null ? 0n : BigInt(util.toPointer(data.DeleteFileA)), true);
-  return buf;
-}
-
-/**
  * Windows.Win32.Storage.FileSystem.FILE_ID_BOTH_DIR_INFO (size: 96)
  */
 export interface FILE_ID_BOTH_DIR_INFO {
@@ -8894,7 +8909,7 @@ export type NTSTATUS = number;
 // Native Libraries
 
 try {
-  var libKERNEL32 = Deno.dlopen("KERNEL32", {
+  var libKERNEL32_dll = Deno.dlopen("KERNEL32.dll", {
     SearchPathW: {
       parameters: ["buffer", "buffer", "buffer", "u32", "buffer", "pointer"],
       result: "u32",
@@ -9328,11 +9343,11 @@ try {
       result: "i32",
     },
     LZOpenFileA: {
-      parameters: ["buffer", "pointer", "u32"],
+      parameters: ["buffer", "pointer", "u16"],
       result: "i32",
     },
     LZOpenFileW: {
-      parameters: ["buffer", "pointer", "u32"],
+      parameters: ["buffer", "pointer", "u16"],
       result: "i32",
     },
     LZSeek: {
@@ -9747,7 +9762,7 @@ try {
 } catch(e) { /* ignore */ }
 
 try {
-  var libapi_ms_win_core_file_fromapp_l1_1_0 = Deno.dlopen("api-ms-win-core-file-fromapp-l1-1-0", {
+  var libapi_ms_win_core_file_fromapp_l1_1_0_dll = Deno.dlopen("api-ms-win-core-file-fromapp-l1-1-0.dll", {
     CopyFileFromAppW: {
       parameters: ["buffer", "buffer", "i32"],
       result: "i32",
@@ -9796,7 +9811,7 @@ try {
 } catch(e) { /* ignore */ }
 
 try {
-  var libVERSION = Deno.dlopen("VERSION", {
+  var libVERSION_dll = Deno.dlopen("VERSION.dll", {
     VerFindFileA: {
       parameters: ["u32", "buffer", "buffer", "buffer", "buffer", "pointer", "buffer", "pointer"],
       result: "u32",
@@ -9857,7 +9872,7 @@ try {
 } catch(e) { /* ignore */ }
 
 try {
-  var libclfsw32 = Deno.dlopen("clfsw32", {
+  var libclfsw32_dll = Deno.dlopen("clfsw32.dll", {
     LsnEqual: {
       parameters: ["pointer", "pointer"],
       result: "pointer",
@@ -10098,7 +10113,7 @@ try {
 } catch(e) { /* ignore */ }
 
 try {
-  var libADVAPI32 = Deno.dlopen("ADVAPI32", {
+  var libADVAPI32_dll = Deno.dlopen("ADVAPI32.dll", {
     QueryUsersOnEncryptedFile: {
       parameters: ["buffer", "pointer"],
       result: "u32",
@@ -10195,7 +10210,7 @@ try {
 } catch(e) { /* ignore */ }
 
 try {
-  var libWOFUTIL = Deno.dlopen("WOFUTIL", {
+  var libWOFUTIL_dll = Deno.dlopen("WOFUTIL.dll", {
     WofShouldCompressBinaries: {
       parameters: ["buffer", "pointer"],
       result: "i32",
@@ -10244,7 +10259,7 @@ try {
 } catch(e) { /* ignore */ }
 
 try {
-  var libtxfw32 = Deno.dlopen("txfw32", {
+  var libtxfw32_dll = Deno.dlopen("txfw32.dll", {
     TxfLogCreateFileReadContext: {
       parameters: ["buffer", "pointer", "pointer", "pointer", "pointer"],
       result: "i32",
@@ -10285,7 +10300,7 @@ try {
 } catch(e) { /* ignore */ }
 
 try {
-  var libktmw32 = Deno.dlopen("ktmw32", {
+  var libktmw32_dll = Deno.dlopen("ktmw32.dll", {
     CreateTransaction: {
       parameters: ["pointer", "pointer", "u32", "u32", "u32", "u32", "buffer"],
       result: "pointer",
@@ -10446,7 +10461,7 @@ try {
 } catch(e) { /* ignore */ }
 
 try {
-  var libNETAPI32 = Deno.dlopen("NETAPI32", {
+  var libNETAPI32_dll = Deno.dlopen("NETAPI32.dll", {
     NetShareAdd: {
       parameters: ["buffer", "u32", "pointer", "pointer"],
       result: "u32",
@@ -10531,7 +10546,7 @@ try {
 } catch(e) { /* ignore */ }
 
 try {
-  var libapi_ms_win_core_ioring_l1_1_0 = Deno.dlopen("api-ms-win-core-ioring-l1-1-0", {
+  var libapi_ms_win_core_ioring_l1_1_0_dll = Deno.dlopen("api-ms-win-core-ioring-l1-1-0.dll", {
     QueryIoRingCapabilities: {
       parameters: ["pointer"],
       result: "pointer",
@@ -10584,7 +10599,7 @@ try {
 } catch(e) { /* ignore */ }
 
 try {
-  var libntdll = Deno.dlopen("ntdll", {
+  var libntdll_dll = Deno.dlopen("ntdll.dll", {
     NtCreateFile: {
       parameters: ["pointer", "u32", "pointer", "pointer", "pointer", "u32", "u32", "u32", "u32", "pointer", "u32"],
       result: "pointer",
@@ -10602,7 +10617,7 @@ export function SearchPathW(
   lpBuffer: string | null /* Windows.Win32.Foundation.PWSTR */,
   lpFilePart: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libKERNEL32.SearchPathW(util.pwstrToFfi(lpPath), util.pwstrToFfi(lpFileName), util.pwstrToFfi(lpExtension), nBufferLength, util.pwstrToFfi(lpBuffer), util.toPointer(lpFilePart));
+  return libKERNEL32_dll.SearchPathW(util.pwstrToFfi(lpPath), util.pwstrToFfi(lpFileName), util.pwstrToFfi(lpExtension), nBufferLength, util.pwstrToFfi(lpBuffer), util.toPointer(lpFilePart));
 }
 
 export function SearchPathA(
@@ -10613,28 +10628,28 @@ export function SearchPathA(
   lpBuffer: string | null /* Windows.Win32.Foundation.PSTR */,
   lpFilePart: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libKERNEL32.SearchPathA(util.pstrToFfi(lpPath), util.pstrToFfi(lpFileName), util.pstrToFfi(lpExtension), nBufferLength, util.pstrToFfi(lpBuffer), util.toPointer(lpFilePart));
+  return libKERNEL32_dll.SearchPathA(util.pstrToFfi(lpPath), util.pstrToFfi(lpFileName), util.pstrToFfi(lpExtension), nBufferLength, util.pstrToFfi(lpBuffer), util.toPointer(lpFilePart));
 }
 
 export function CompareFileTime(
   lpFileTime1: Deno.PointerValue | Uint8Array | null /* ptr */,
   lpFileTime2: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
-  return libKERNEL32.CompareFileTime(util.toPointer(lpFileTime1), util.toPointer(lpFileTime2));
+  return libKERNEL32_dll.CompareFileTime(util.toPointer(lpFileTime1), util.toPointer(lpFileTime2));
 }
 
 export function CreateDirectoryA(
   lpPathName: string | null /* Windows.Win32.Foundation.PSTR */,
   lpSecurityAttributes: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32.CreateDirectoryA(util.pstrToFfi(lpPathName), util.toPointer(lpSecurityAttributes)));
+  return util.boolFromFfi(libKERNEL32_dll.CreateDirectoryA(util.pstrToFfi(lpPathName), util.toPointer(lpSecurityAttributes)));
 }
 
 export function CreateDirectoryW(
   lpPathName: string | null /* Windows.Win32.Foundation.PWSTR */,
   lpSecurityAttributes: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32.CreateDirectoryW(util.pwstrToFfi(lpPathName), util.toPointer(lpSecurityAttributes)));
+  return util.boolFromFfi(libKERNEL32_dll.CreateDirectoryW(util.pwstrToFfi(lpPathName), util.toPointer(lpSecurityAttributes)));
 }
 
 export function CreateFileA(
@@ -10646,7 +10661,7 @@ export function CreateFileA(
   dwFlagsAndAttributes: FILE_FLAGS_AND_ATTRIBUTES /* Windows.Win32.Storage.FileSystem.FILE_FLAGS_AND_ATTRIBUTES */,
   hTemplateFile: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */ {
-  return util.pointerFromFfi(libKERNEL32.CreateFileA(util.pstrToFfi(lpFileName), dwDesiredAccess, dwShareMode, util.toPointer(lpSecurityAttributes), dwCreationDisposition, dwFlagsAndAttributes, util.toPointer(hTemplateFile)));
+  return util.pointerFromFfi(libKERNEL32_dll.CreateFileA(util.pstrToFfi(lpFileName), dwDesiredAccess, dwShareMode, util.toPointer(lpSecurityAttributes), dwCreationDisposition, dwFlagsAndAttributes, util.toPointer(hTemplateFile)));
 }
 
 export function CreateFileW(
@@ -10658,7 +10673,7 @@ export function CreateFileW(
   dwFlagsAndAttributes: FILE_FLAGS_AND_ATTRIBUTES /* Windows.Win32.Storage.FileSystem.FILE_FLAGS_AND_ATTRIBUTES */,
   hTemplateFile: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */ {
-  return util.pointerFromFfi(libKERNEL32.CreateFileW(util.pwstrToFfi(lpFileName), dwDesiredAccess, dwShareMode, util.toPointer(lpSecurityAttributes), dwCreationDisposition, dwFlagsAndAttributes, util.toPointer(hTemplateFile)));
+  return util.pointerFromFfi(libKERNEL32_dll.CreateFileW(util.pwstrToFfi(lpFileName), dwDesiredAccess, dwShareMode, util.toPointer(lpSecurityAttributes), dwCreationDisposition, dwFlagsAndAttributes, util.toPointer(hTemplateFile)));
 }
 
 export function DefineDosDeviceW(
@@ -10666,44 +10681,44 @@ export function DefineDosDeviceW(
   lpDeviceName: string | null /* Windows.Win32.Foundation.PWSTR */,
   lpTargetPath: string | null /* Windows.Win32.Foundation.PWSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32.DefineDosDeviceW(dwFlags, util.pwstrToFfi(lpDeviceName), util.pwstrToFfi(lpTargetPath)));
+  return util.boolFromFfi(libKERNEL32_dll.DefineDosDeviceW(dwFlags, util.pwstrToFfi(lpDeviceName), util.pwstrToFfi(lpTargetPath)));
 }
 
 export function DeleteFileA(
   lpFileName: string | null /* Windows.Win32.Foundation.PSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32.DeleteFileA(util.pstrToFfi(lpFileName)));
+  return util.boolFromFfi(libKERNEL32_dll.DeleteFileA(util.pstrToFfi(lpFileName)));
 }
 
 export function DeleteFileW(
   lpFileName: string | null /* Windows.Win32.Foundation.PWSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32.DeleteFileW(util.pwstrToFfi(lpFileName)));
+  return util.boolFromFfi(libKERNEL32_dll.DeleteFileW(util.pwstrToFfi(lpFileName)));
 }
 
 export function DeleteVolumeMountPointW(
   lpszVolumeMountPoint: string | null /* Windows.Win32.Foundation.PWSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32.DeleteVolumeMountPointW(util.pwstrToFfi(lpszVolumeMountPoint)));
+  return util.boolFromFfi(libKERNEL32_dll.DeleteVolumeMountPointW(util.pwstrToFfi(lpszVolumeMountPoint)));
 }
 
 export function FileTimeToLocalFileTime(
   lpFileTime: Deno.PointerValue | Uint8Array | null /* ptr */,
   lpLocalFileTime: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32.FileTimeToLocalFileTime(util.toPointer(lpFileTime), util.toPointer(lpLocalFileTime)));
+  return util.boolFromFfi(libKERNEL32_dll.FileTimeToLocalFileTime(util.toPointer(lpFileTime), util.toPointer(lpLocalFileTime)));
 }
 
 export function FindClose(
   hFindFile: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Storage.FileSystem.FindFileHandle */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32.FindClose(util.toPointer(hFindFile)));
+  return util.boolFromFfi(libKERNEL32_dll.FindClose(util.toPointer(hFindFile)));
 }
 
 export function FindCloseChangeNotification(
   hChangeHandle: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Storage.FileSystem.FindChangeNotificationHandle */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32.FindCloseChangeNotification(util.toPointer(hChangeHandle)));
+  return util.boolFromFfi(libKERNEL32_dll.FindCloseChangeNotification(util.toPointer(hChangeHandle)));
 }
 
 export function FindFirstChangeNotificationA(
@@ -10711,7 +10726,7 @@ export function FindFirstChangeNotificationA(
   bWatchSubtree: boolean /* Windows.Win32.Foundation.BOOL */,
   dwNotifyFilter: FILE_NOTIFY_CHANGE /* Windows.Win32.Storage.FileSystem.FILE_NOTIFY_CHANGE */,
 ): Deno.PointerValue | null /* Windows.Win32.Storage.FileSystem.FindChangeNotificationHandle */ {
-  return util.pointerFromFfi(libKERNEL32.FindFirstChangeNotificationA(util.pstrToFfi(lpPathName), util.boolToFfi(bWatchSubtree), dwNotifyFilter));
+  return util.pointerFromFfi(libKERNEL32_dll.FindFirstChangeNotificationA(util.pstrToFfi(lpPathName), util.boolToFfi(bWatchSubtree), dwNotifyFilter));
 }
 
 export function FindFirstChangeNotificationW(
@@ -10719,21 +10734,21 @@ export function FindFirstChangeNotificationW(
   bWatchSubtree: boolean /* Windows.Win32.Foundation.BOOL */,
   dwNotifyFilter: FILE_NOTIFY_CHANGE /* Windows.Win32.Storage.FileSystem.FILE_NOTIFY_CHANGE */,
 ): Deno.PointerValue | null /* Windows.Win32.Storage.FileSystem.FindChangeNotificationHandle */ {
-  return util.pointerFromFfi(libKERNEL32.FindFirstChangeNotificationW(util.pwstrToFfi(lpPathName), util.boolToFfi(bWatchSubtree), dwNotifyFilter));
+  return util.pointerFromFfi(libKERNEL32_dll.FindFirstChangeNotificationW(util.pwstrToFfi(lpPathName), util.boolToFfi(bWatchSubtree), dwNotifyFilter));
 }
 
 export function FindFirstFileA(
   lpFileName: string | null /* Windows.Win32.Foundation.PSTR */,
   lpFindFileData: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Storage.FileSystem.FindFileHandle */ {
-  return util.pointerFromFfi(libKERNEL32.FindFirstFileA(util.pstrToFfi(lpFileName), util.toPointer(lpFindFileData)));
+  return util.pointerFromFfi(libKERNEL32_dll.FindFirstFileA(util.pstrToFfi(lpFileName), util.toPointer(lpFindFileData)));
 }
 
 export function FindFirstFileW(
   lpFileName: string | null /* Windows.Win32.Foundation.PWSTR */,
   lpFindFileData: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Storage.FileSystem.FindFileHandle */ {
-  return util.pointerFromFfi(libKERNEL32.FindFirstFileW(util.pwstrToFfi(lpFileName), util.toPointer(lpFindFileData)));
+  return util.pointerFromFfi(libKERNEL32_dll.FindFirstFileW(util.pwstrToFfi(lpFileName), util.toPointer(lpFindFileData)));
 }
 
 export function FindFirstFileExA(
@@ -10744,7 +10759,7 @@ export function FindFirstFileExA(
   lpSearchFilter: Deno.PointerValue | Uint8Array | null /* ptr */,
   dwAdditionalFlags: FIND_FIRST_EX_FLAGS /* Windows.Win32.Storage.FileSystem.FIND_FIRST_EX_FLAGS */,
 ): Deno.PointerValue | null /* Windows.Win32.Storage.FileSystem.FindFileHandle */ {
-  return util.pointerFromFfi(libKERNEL32.FindFirstFileExA(util.pstrToFfi(lpFileName), fInfoLevelId, util.toPointer(lpFindFileData), fSearchOp, util.toPointer(lpSearchFilter), dwAdditionalFlags));
+  return util.pointerFromFfi(libKERNEL32_dll.FindFirstFileExA(util.pstrToFfi(lpFileName), fInfoLevelId, util.toPointer(lpFindFileData), fSearchOp, util.toPointer(lpSearchFilter), dwAdditionalFlags));
 }
 
 export function FindFirstFileExW(
@@ -10755,34 +10770,34 @@ export function FindFirstFileExW(
   lpSearchFilter: Deno.PointerValue | Uint8Array | null /* ptr */,
   dwAdditionalFlags: FIND_FIRST_EX_FLAGS /* Windows.Win32.Storage.FileSystem.FIND_FIRST_EX_FLAGS */,
 ): Deno.PointerValue | null /* Windows.Win32.Storage.FileSystem.FindFileHandle */ {
-  return util.pointerFromFfi(libKERNEL32.FindFirstFileExW(util.pwstrToFfi(lpFileName), fInfoLevelId, util.toPointer(lpFindFileData), fSearchOp, util.toPointer(lpSearchFilter), dwAdditionalFlags));
+  return util.pointerFromFfi(libKERNEL32_dll.FindFirstFileExW(util.pwstrToFfi(lpFileName), fInfoLevelId, util.toPointer(lpFindFileData), fSearchOp, util.toPointer(lpSearchFilter), dwAdditionalFlags));
 }
 
 export function FindFirstVolumeW(
   lpszVolumeName: string | null /* Windows.Win32.Foundation.PWSTR */,
   cchBufferLength: number /* u32 */,
 ): Deno.PointerValue | null /* Windows.Win32.Storage.FileSystem.FindVolumeHandle */ {
-  return util.pointerFromFfi(libKERNEL32.FindFirstVolumeW(util.pwstrToFfi(lpszVolumeName), cchBufferLength));
+  return util.pointerFromFfi(libKERNEL32_dll.FindFirstVolumeW(util.pwstrToFfi(lpszVolumeName), cchBufferLength));
 }
 
 export function FindNextChangeNotification(
   hChangeHandle: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Storage.FileSystem.FindChangeNotificationHandle */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32.FindNextChangeNotification(util.toPointer(hChangeHandle)));
+  return util.boolFromFfi(libKERNEL32_dll.FindNextChangeNotification(util.toPointer(hChangeHandle)));
 }
 
 export function FindNextFileA(
   hFindFile: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Storage.FileSystem.FindFileHandle */,
   lpFindFileData: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32.FindNextFileA(util.toPointer(hFindFile), util.toPointer(lpFindFileData)));
+  return util.boolFromFfi(libKERNEL32_dll.FindNextFileA(util.toPointer(hFindFile), util.toPointer(lpFindFileData)));
 }
 
 export function FindNextFileW(
-  hFindFile: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
+  hFindFile: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Storage.FileSystem.FindFileHandle */,
   lpFindFileData: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32.FindNextFileW(util.toPointer(hFindFile), util.toPointer(lpFindFileData)));
+  return util.boolFromFfi(libKERNEL32_dll.FindNextFileW(util.toPointer(hFindFile), util.toPointer(lpFindFileData)));
 }
 
 export function FindNextVolumeW(
@@ -10790,19 +10805,19 @@ export function FindNextVolumeW(
   lpszVolumeName: string | null /* Windows.Win32.Foundation.PWSTR */,
   cchBufferLength: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32.FindNextVolumeW(util.toPointer(hFindVolume), util.pwstrToFfi(lpszVolumeName), cchBufferLength));
+  return util.boolFromFfi(libKERNEL32_dll.FindNextVolumeW(util.toPointer(hFindVolume), util.pwstrToFfi(lpszVolumeName), cchBufferLength));
 }
 
 export function FindVolumeClose(
   hFindVolume: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Storage.FileSystem.FindVolumeHandle */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32.FindVolumeClose(util.toPointer(hFindVolume)));
+  return util.boolFromFfi(libKERNEL32_dll.FindVolumeClose(util.toPointer(hFindVolume)));
 }
 
 export function FlushFileBuffers(
   hFile: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32.FlushFileBuffers(util.toPointer(hFile)));
+  return util.boolFromFfi(libKERNEL32_dll.FlushFileBuffers(util.toPointer(hFile)));
 }
 
 export function GetDiskFreeSpaceA(
@@ -10812,7 +10827,7 @@ export function GetDiskFreeSpaceA(
   lpNumberOfFreeClusters: Deno.PointerValue | Uint8Array | null /* ptr */,
   lpTotalNumberOfClusters: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32.GetDiskFreeSpaceA(util.pstrToFfi(lpRootPathName), util.toPointer(lpSectorsPerCluster), util.toPointer(lpBytesPerSector), util.toPointer(lpNumberOfFreeClusters), util.toPointer(lpTotalNumberOfClusters)));
+  return util.boolFromFfi(libKERNEL32_dll.GetDiskFreeSpaceA(util.pstrToFfi(lpRootPathName), util.toPointer(lpSectorsPerCluster), util.toPointer(lpBytesPerSector), util.toPointer(lpNumberOfFreeClusters), util.toPointer(lpTotalNumberOfClusters)));
 }
 
 export function GetDiskFreeSpaceW(
@@ -10822,7 +10837,7 @@ export function GetDiskFreeSpaceW(
   lpNumberOfFreeClusters: Deno.PointerValue | Uint8Array | null /* ptr */,
   lpTotalNumberOfClusters: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32.GetDiskFreeSpaceW(util.pwstrToFfi(lpRootPathName), util.toPointer(lpSectorsPerCluster), util.toPointer(lpBytesPerSector), util.toPointer(lpNumberOfFreeClusters), util.toPointer(lpTotalNumberOfClusters)));
+  return util.boolFromFfi(libKERNEL32_dll.GetDiskFreeSpaceW(util.pwstrToFfi(lpRootPathName), util.toPointer(lpSectorsPerCluster), util.toPointer(lpBytesPerSector), util.toPointer(lpNumberOfFreeClusters), util.toPointer(lpTotalNumberOfClusters)));
 }
 
 export function GetDiskFreeSpaceExA(
@@ -10831,7 +10846,7 @@ export function GetDiskFreeSpaceExA(
   lpTotalNumberOfBytes: Deno.PointerValue | Uint8Array | null /* ptr */,
   lpTotalNumberOfFreeBytes: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32.GetDiskFreeSpaceExA(util.pstrToFfi(lpDirectoryName), util.toPointer(lpFreeBytesAvailableToCaller), util.toPointer(lpTotalNumberOfBytes), util.toPointer(lpTotalNumberOfFreeBytes)));
+  return util.boolFromFfi(libKERNEL32_dll.GetDiskFreeSpaceExA(util.pstrToFfi(lpDirectoryName), util.toPointer(lpFreeBytesAvailableToCaller), util.toPointer(lpTotalNumberOfBytes), util.toPointer(lpTotalNumberOfFreeBytes)));
 }
 
 export function GetDiskFreeSpaceExW(
@@ -10840,45 +10855,45 @@ export function GetDiskFreeSpaceExW(
   lpTotalNumberOfBytes: Deno.PointerValue | Uint8Array | null /* ptr */,
   lpTotalNumberOfFreeBytes: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32.GetDiskFreeSpaceExW(util.pwstrToFfi(lpDirectoryName), util.toPointer(lpFreeBytesAvailableToCaller), util.toPointer(lpTotalNumberOfBytes), util.toPointer(lpTotalNumberOfFreeBytes)));
+  return util.boolFromFfi(libKERNEL32_dll.GetDiskFreeSpaceExW(util.pwstrToFfi(lpDirectoryName), util.toPointer(lpFreeBytesAvailableToCaller), util.toPointer(lpTotalNumberOfBytes), util.toPointer(lpTotalNumberOfFreeBytes)));
 }
 
 export function GetDiskSpaceInformationA(
   rootPath: string | null /* Windows.Win32.Foundation.PSTR */,
   diskSpaceInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libKERNEL32.GetDiskSpaceInformationA(util.pstrToFfi(rootPath), util.toPointer(diskSpaceInfo)));
+  return util.pointerFromFfi(libKERNEL32_dll.GetDiskSpaceInformationA(util.pstrToFfi(rootPath), util.toPointer(diskSpaceInfo)));
 }
 
 export function GetDiskSpaceInformationW(
   rootPath: string | null /* Windows.Win32.Foundation.PWSTR */,
   diskSpaceInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libKERNEL32.GetDiskSpaceInformationW(util.pwstrToFfi(rootPath), util.toPointer(diskSpaceInfo)));
+  return util.pointerFromFfi(libKERNEL32_dll.GetDiskSpaceInformationW(util.pwstrToFfi(rootPath), util.toPointer(diskSpaceInfo)));
 }
 
 export function GetDriveTypeA(
   lpRootPathName: string | null /* Windows.Win32.Foundation.PSTR */,
 ): number /* u32 */ {
-  return libKERNEL32.GetDriveTypeA(util.pstrToFfi(lpRootPathName));
+  return libKERNEL32_dll.GetDriveTypeA(util.pstrToFfi(lpRootPathName));
 }
 
 export function GetDriveTypeW(
   lpRootPathName: string | null /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
-  return libKERNEL32.GetDriveTypeW(util.pwstrToFfi(lpRootPathName));
+  return libKERNEL32_dll.GetDriveTypeW(util.pwstrToFfi(lpRootPathName));
 }
 
 export function GetFileAttributesA(
   lpFileName: string | null /* Windows.Win32.Foundation.PSTR */,
 ): number /* u32 */ {
-  return libKERNEL32.GetFileAttributesA(util.pstrToFfi(lpFileName));
+  return libKERNEL32_dll.GetFileAttributesA(util.pstrToFfi(lpFileName));
 }
 
 export function GetFileAttributesW(
   lpFileName: string | null /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
-  return libKERNEL32.GetFileAttributesW(util.pwstrToFfi(lpFileName));
+  return libKERNEL32_dll.GetFileAttributesW(util.pwstrToFfi(lpFileName));
 }
 
 export function GetFileAttributesExA(
@@ -10886,7 +10901,7 @@ export function GetFileAttributesExA(
   fInfoLevelId: GET_FILEEX_INFO_LEVELS /* Windows.Win32.Storage.FileSystem.GET_FILEEX_INFO_LEVELS */,
   lpFileInformation: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32.GetFileAttributesExA(util.pstrToFfi(lpFileName), fInfoLevelId, util.toPointer(lpFileInformation)));
+  return util.boolFromFfi(libKERNEL32_dll.GetFileAttributesExA(util.pstrToFfi(lpFileName), fInfoLevelId, util.toPointer(lpFileInformation)));
 }
 
 export function GetFileAttributesExW(
@@ -10894,34 +10909,34 @@ export function GetFileAttributesExW(
   fInfoLevelId: GET_FILEEX_INFO_LEVELS /* Windows.Win32.Storage.FileSystem.GET_FILEEX_INFO_LEVELS */,
   lpFileInformation: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32.GetFileAttributesExW(util.pwstrToFfi(lpFileName), fInfoLevelId, util.toPointer(lpFileInformation)));
+  return util.boolFromFfi(libKERNEL32_dll.GetFileAttributesExW(util.pwstrToFfi(lpFileName), fInfoLevelId, util.toPointer(lpFileInformation)));
 }
 
 export function GetFileInformationByHandle(
   hFile: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
   lpFileInformation: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32.GetFileInformationByHandle(util.toPointer(hFile), util.toPointer(lpFileInformation)));
+  return util.boolFromFfi(libKERNEL32_dll.GetFileInformationByHandle(util.toPointer(hFile), util.toPointer(lpFileInformation)));
 }
 
 export function GetFileSize(
   hFile: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
   lpFileSizeHigh: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libKERNEL32.GetFileSize(util.toPointer(hFile), util.toPointer(lpFileSizeHigh));
+  return libKERNEL32_dll.GetFileSize(util.toPointer(hFile), util.toPointer(lpFileSizeHigh));
 }
 
 export function GetFileSizeEx(
   hFile: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
   lpFileSize: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32.GetFileSizeEx(util.toPointer(hFile), util.toPointer(lpFileSize)));
+  return util.boolFromFfi(libKERNEL32_dll.GetFileSizeEx(util.toPointer(hFile), util.toPointer(lpFileSize)));
 }
 
 export function GetFileType(
   hFile: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
 ): number /* u32 */ {
-  return libKERNEL32.GetFileType(util.toPointer(hFile));
+  return libKERNEL32_dll.GetFileType(util.toPointer(hFile));
 }
 
 export function GetFinalPathNameByHandleA(
@@ -10930,7 +10945,7 @@ export function GetFinalPathNameByHandleA(
   cchFilePath: number /* u32 */,
   dwFlags: FILE_NAME /* Windows.Win32.Storage.FileSystem.FILE_NAME */,
 ): number /* u32 */ {
-  return libKERNEL32.GetFinalPathNameByHandleA(util.toPointer(hFile), util.pstrToFfi(lpszFilePath), cchFilePath, dwFlags);
+  return libKERNEL32_dll.GetFinalPathNameByHandleA(util.toPointer(hFile), util.pstrToFfi(lpszFilePath), cchFilePath, dwFlags);
 }
 
 export function GetFinalPathNameByHandleW(
@@ -10939,7 +10954,7 @@ export function GetFinalPathNameByHandleW(
   cchFilePath: number /* u32 */,
   dwFlags: FILE_NAME /* Windows.Win32.Storage.FileSystem.FILE_NAME */,
 ): number /* u32 */ {
-  return libKERNEL32.GetFinalPathNameByHandleW(util.toPointer(hFile), util.pwstrToFfi(lpszFilePath), cchFilePath, dwFlags);
+  return libKERNEL32_dll.GetFinalPathNameByHandleW(util.toPointer(hFile), util.pwstrToFfi(lpszFilePath), cchFilePath, dwFlags);
 }
 
 export function GetFileTime(
@@ -10948,7 +10963,7 @@ export function GetFileTime(
   lpLastAccessTime: Deno.PointerValue | Uint8Array | null /* ptr */,
   lpLastWriteTime: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32.GetFileTime(util.toPointer(hFile), util.toPointer(lpCreationTime), util.toPointer(lpLastAccessTime), util.toPointer(lpLastWriteTime)));
+  return util.boolFromFfi(libKERNEL32_dll.GetFileTime(util.toPointer(hFile), util.toPointer(lpCreationTime), util.toPointer(lpLastAccessTime), util.toPointer(lpLastWriteTime)));
 }
 
 export function GetFullPathNameW(
@@ -10957,7 +10972,7 @@ export function GetFullPathNameW(
   lpBuffer: string | null /* Windows.Win32.Foundation.PWSTR */,
   lpFilePart: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libKERNEL32.GetFullPathNameW(util.pwstrToFfi(lpFileName), nBufferLength, util.pwstrToFfi(lpBuffer), util.toPointer(lpFilePart));
+  return libKERNEL32_dll.GetFullPathNameW(util.pwstrToFfi(lpFileName), nBufferLength, util.pwstrToFfi(lpBuffer), util.toPointer(lpFilePart));
 }
 
 export function GetFullPathNameA(
@@ -10966,18 +10981,18 @@ export function GetFullPathNameA(
   lpBuffer: string | null /* Windows.Win32.Foundation.PSTR */,
   lpFilePart: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libKERNEL32.GetFullPathNameA(util.pstrToFfi(lpFileName), nBufferLength, util.pstrToFfi(lpBuffer), util.toPointer(lpFilePart));
+  return libKERNEL32_dll.GetFullPathNameA(util.pstrToFfi(lpFileName), nBufferLength, util.pstrToFfi(lpBuffer), util.toPointer(lpFilePart));
 }
 
 export function GetLogicalDrives(): number /* u32 */ {
-  return libKERNEL32.GetLogicalDrives();
+  return libKERNEL32_dll.GetLogicalDrives();
 }
 
 export function GetLogicalDriveStringsW(
   nBufferLength: number /* u32 */,
   lpBuffer: string | null /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
-  return libKERNEL32.GetLogicalDriveStringsW(nBufferLength, util.pwstrToFfi(lpBuffer));
+  return libKERNEL32_dll.GetLogicalDriveStringsW(nBufferLength, util.pwstrToFfi(lpBuffer));
 }
 
 export function GetLongPathNameA(
@@ -10985,7 +11000,7 @@ export function GetLongPathNameA(
   lpszLongPath: string | null /* Windows.Win32.Foundation.PSTR */,
   cchBuffer: number /* u32 */,
 ): number /* u32 */ {
-  return libKERNEL32.GetLongPathNameA(util.pstrToFfi(lpszShortPath), util.pstrToFfi(lpszLongPath), cchBuffer);
+  return libKERNEL32_dll.GetLongPathNameA(util.pstrToFfi(lpszShortPath), util.pstrToFfi(lpszLongPath), cchBuffer);
 }
 
 export function GetLongPathNameW(
@@ -10993,14 +11008,14 @@ export function GetLongPathNameW(
   lpszLongPath: string | null /* Windows.Win32.Foundation.PWSTR */,
   cchBuffer: number /* u32 */,
 ): number /* u32 */ {
-  return libKERNEL32.GetLongPathNameW(util.pwstrToFfi(lpszShortPath), util.pwstrToFfi(lpszLongPath), cchBuffer);
+  return libKERNEL32_dll.GetLongPathNameW(util.pwstrToFfi(lpszShortPath), util.pwstrToFfi(lpszLongPath), cchBuffer);
 }
 
 export function AreShortNamesEnabled(
   Handle: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
   Enabled: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32.AreShortNamesEnabled(util.toPointer(Handle), util.toPointer(Enabled)));
+  return util.boolFromFfi(libKERNEL32_dll.AreShortNamesEnabled(util.toPointer(Handle), util.toPointer(Enabled)));
 }
 
 export function GetShortPathNameW(
@@ -11008,7 +11023,7 @@ export function GetShortPathNameW(
   lpszShortPath: string | null /* Windows.Win32.Foundation.PWSTR */,
   cchBuffer: number /* u32 */,
 ): number /* u32 */ {
-  return libKERNEL32.GetShortPathNameW(util.pwstrToFfi(lpszLongPath), util.pwstrToFfi(lpszShortPath), cchBuffer);
+  return libKERNEL32_dll.GetShortPathNameW(util.pwstrToFfi(lpszLongPath), util.pwstrToFfi(lpszShortPath), cchBuffer);
 }
 
 export function GetTempFileNameW(
@@ -11017,7 +11032,7 @@ export function GetTempFileNameW(
   uUnique: number /* u32 */,
   lpTempFileName: string | null /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
-  return libKERNEL32.GetTempFileNameW(util.pwstrToFfi(lpPathName), util.pwstrToFfi(lpPrefixString), uUnique, util.pwstrToFfi(lpTempFileName));
+  return libKERNEL32_dll.GetTempFileNameW(util.pwstrToFfi(lpPathName), util.pwstrToFfi(lpPrefixString), uUnique, util.pwstrToFfi(lpTempFileName));
 }
 
 export function GetVolumeInformationByHandleW(
@@ -11030,7 +11045,7 @@ export function GetVolumeInformationByHandleW(
   lpFileSystemNameBuffer: string | null /* Windows.Win32.Foundation.PWSTR */,
   nFileSystemNameSize: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32.GetVolumeInformationByHandleW(util.toPointer(hFile), util.pwstrToFfi(lpVolumeNameBuffer), nVolumeNameSize, util.toPointer(lpVolumeSerialNumber), util.toPointer(lpMaximumComponentLength), util.toPointer(lpFileSystemFlags), util.pwstrToFfi(lpFileSystemNameBuffer), nFileSystemNameSize));
+  return util.boolFromFfi(libKERNEL32_dll.GetVolumeInformationByHandleW(util.toPointer(hFile), util.pwstrToFfi(lpVolumeNameBuffer), nVolumeNameSize, util.toPointer(lpVolumeSerialNumber), util.toPointer(lpMaximumComponentLength), util.toPointer(lpFileSystemFlags), util.pwstrToFfi(lpFileSystemNameBuffer), nFileSystemNameSize));
 }
 
 export function GetVolumeInformationW(
@@ -11043,7 +11058,7 @@ export function GetVolumeInformationW(
   lpFileSystemNameBuffer: string | null /* Windows.Win32.Foundation.PWSTR */,
   nFileSystemNameSize: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32.GetVolumeInformationW(util.pwstrToFfi(lpRootPathName), util.pwstrToFfi(lpVolumeNameBuffer), nVolumeNameSize, util.toPointer(lpVolumeSerialNumber), util.toPointer(lpMaximumComponentLength), util.toPointer(lpFileSystemFlags), util.pwstrToFfi(lpFileSystemNameBuffer), nFileSystemNameSize));
+  return util.boolFromFfi(libKERNEL32_dll.GetVolumeInformationW(util.pwstrToFfi(lpRootPathName), util.pwstrToFfi(lpVolumeNameBuffer), nVolumeNameSize, util.toPointer(lpVolumeSerialNumber), util.toPointer(lpMaximumComponentLength), util.toPointer(lpFileSystemFlags), util.pwstrToFfi(lpFileSystemNameBuffer), nFileSystemNameSize));
 }
 
 export function GetVolumePathNameW(
@@ -11051,14 +11066,14 @@ export function GetVolumePathNameW(
   lpszVolumePathName: string | null /* Windows.Win32.Foundation.PWSTR */,
   cchBufferLength: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32.GetVolumePathNameW(util.pwstrToFfi(lpszFileName), util.pwstrToFfi(lpszVolumePathName), cchBufferLength));
+  return util.boolFromFfi(libKERNEL32_dll.GetVolumePathNameW(util.pwstrToFfi(lpszFileName), util.pwstrToFfi(lpszVolumePathName), cchBufferLength));
 }
 
 export function LocalFileTimeToFileTime(
   lpLocalFileTime: Deno.PointerValue | Uint8Array | null /* ptr */,
   lpFileTime: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32.LocalFileTimeToFileTime(util.toPointer(lpLocalFileTime), util.toPointer(lpFileTime)));
+  return util.boolFromFfi(libKERNEL32_dll.LocalFileTimeToFileTime(util.toPointer(lpLocalFileTime), util.toPointer(lpFileTime)));
 }
 
 export function LockFile(
@@ -11068,7 +11083,7 @@ export function LockFile(
   nNumberOfBytesToLockLow: number /* u32 */,
   nNumberOfBytesToLockHigh: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32.LockFile(util.toPointer(hFile), dwFileOffsetLow, dwFileOffsetHigh, nNumberOfBytesToLockLow, nNumberOfBytesToLockHigh));
+  return util.boolFromFfi(libKERNEL32_dll.LockFile(util.toPointer(hFile), dwFileOffsetLow, dwFileOffsetHigh, nNumberOfBytesToLockLow, nNumberOfBytesToLockHigh));
 }
 
 export function LockFileEx(
@@ -11079,7 +11094,7 @@ export function LockFileEx(
   nNumberOfBytesToLockHigh: number /* u32 */,
   lpOverlapped: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32.LockFileEx(util.toPointer(hFile), dwFlags, dwReserved, nNumberOfBytesToLockLow, nNumberOfBytesToLockHigh, util.toPointer(lpOverlapped)));
+  return util.boolFromFfi(libKERNEL32_dll.LockFileEx(util.toPointer(hFile), dwFlags, dwReserved, nNumberOfBytesToLockLow, nNumberOfBytesToLockHigh, util.toPointer(lpOverlapped)));
 }
 
 export function QueryDosDeviceW(
@@ -11087,7 +11102,7 @@ export function QueryDosDeviceW(
   lpTargetPath: string | null /* Windows.Win32.Foundation.PWSTR */,
   ucchMax: number /* u32 */,
 ): number /* u32 */ {
-  return libKERNEL32.QueryDosDeviceW(util.pwstrToFfi(lpDeviceName), util.pwstrToFfi(lpTargetPath), ucchMax);
+  return libKERNEL32_dll.QueryDosDeviceW(util.pwstrToFfi(lpDeviceName), util.pwstrToFfi(lpTargetPath), ucchMax);
 }
 
 export function ReadFile(
@@ -11097,7 +11112,7 @@ export function ReadFile(
   lpNumberOfBytesRead: Deno.PointerValue | Uint8Array | null /* ptr */,
   lpOverlapped: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32.ReadFile(util.toPointer(hFile), util.toPointer(lpBuffer), nNumberOfBytesToRead, util.toPointer(lpNumberOfBytesRead), util.toPointer(lpOverlapped)));
+  return util.boolFromFfi(libKERNEL32_dll.ReadFile(util.toPointer(hFile), util.toPointer(lpBuffer), nNumberOfBytesToRead, util.toPointer(lpNumberOfBytesRead), util.toPointer(lpOverlapped)));
 }
 
 export function ReadFileEx(
@@ -11107,7 +11122,7 @@ export function ReadFileEx(
   lpOverlapped: Deno.PointerValue | Uint8Array | null /* ptr */,
   lpCompletionRoutine: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.IO.LPOVERLAPPED_COMPLETION_ROUTINE */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32.ReadFileEx(util.toPointer(hFile), util.toPointer(lpBuffer), nNumberOfBytesToRead, util.toPointer(lpOverlapped), util.toPointer(lpCompletionRoutine)));
+  return util.boolFromFfi(libKERNEL32_dll.ReadFileEx(util.toPointer(hFile), util.toPointer(lpBuffer), nNumberOfBytesToRead, util.toPointer(lpOverlapped), util.toPointer(lpCompletionRoutine)));
 }
 
 export function ReadFileScatter(
@@ -11117,39 +11132,39 @@ export function ReadFileScatter(
   lpReserved: Deno.PointerValue | Uint8Array | null /* ptr */,
   lpOverlapped: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32.ReadFileScatter(util.toPointer(hFile), util.toPointer(aSegmentArray), nNumberOfBytesToRead, util.toPointer(lpReserved), util.toPointer(lpOverlapped)));
+  return util.boolFromFfi(libKERNEL32_dll.ReadFileScatter(util.toPointer(hFile), util.toPointer(aSegmentArray), nNumberOfBytesToRead, util.toPointer(lpReserved), util.toPointer(lpOverlapped)));
 }
 
 export function RemoveDirectoryA(
   lpPathName: string | null /* Windows.Win32.Foundation.PSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32.RemoveDirectoryA(util.pstrToFfi(lpPathName)));
+  return util.boolFromFfi(libKERNEL32_dll.RemoveDirectoryA(util.pstrToFfi(lpPathName)));
 }
 
 export function RemoveDirectoryW(
   lpPathName: string | null /* Windows.Win32.Foundation.PWSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32.RemoveDirectoryW(util.pwstrToFfi(lpPathName)));
+  return util.boolFromFfi(libKERNEL32_dll.RemoveDirectoryW(util.pwstrToFfi(lpPathName)));
 }
 
 export function SetEndOfFile(
   hFile: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32.SetEndOfFile(util.toPointer(hFile)));
+  return util.boolFromFfi(libKERNEL32_dll.SetEndOfFile(util.toPointer(hFile)));
 }
 
 export function SetFileAttributesA(
   lpFileName: string | null /* Windows.Win32.Foundation.PSTR */,
   dwFileAttributes: FILE_FLAGS_AND_ATTRIBUTES /* Windows.Win32.Storage.FileSystem.FILE_FLAGS_AND_ATTRIBUTES */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32.SetFileAttributesA(util.pstrToFfi(lpFileName), dwFileAttributes));
+  return util.boolFromFfi(libKERNEL32_dll.SetFileAttributesA(util.pstrToFfi(lpFileName), dwFileAttributes));
 }
 
 export function SetFileAttributesW(
   lpFileName: string | null /* Windows.Win32.Foundation.PWSTR */,
   dwFileAttributes: FILE_FLAGS_AND_ATTRIBUTES /* Windows.Win32.Storage.FileSystem.FILE_FLAGS_AND_ATTRIBUTES */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32.SetFileAttributesW(util.pwstrToFfi(lpFileName), dwFileAttributes));
+  return util.boolFromFfi(libKERNEL32_dll.SetFileAttributesW(util.pwstrToFfi(lpFileName), dwFileAttributes));
 }
 
 export function SetFileInformationByHandle(
@@ -11158,7 +11173,7 @@ export function SetFileInformationByHandle(
   lpFileInformation: Deno.PointerValue | Uint8Array | null /* ptr */,
   dwBufferSize: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32.SetFileInformationByHandle(util.toPointer(hFile), FileInformationClass, util.toPointer(lpFileInformation), dwBufferSize));
+  return util.boolFromFfi(libKERNEL32_dll.SetFileInformationByHandle(util.toPointer(hFile), FileInformationClass, util.toPointer(lpFileInformation), dwBufferSize));
 }
 
 export function SetFilePointer(
@@ -11167,7 +11182,7 @@ export function SetFilePointer(
   lpDistanceToMoveHigh: Deno.PointerValue | Uint8Array | null /* ptr */,
   dwMoveMethod: SET_FILE_POINTER_MOVE_METHOD /* Windows.Win32.Storage.FileSystem.SET_FILE_POINTER_MOVE_METHOD */,
 ): number /* u32 */ {
-  return libKERNEL32.SetFilePointer(util.toPointer(hFile), lDistanceToMove, util.toPointer(lpDistanceToMoveHigh), dwMoveMethod);
+  return libKERNEL32_dll.SetFilePointer(util.toPointer(hFile), lDistanceToMove, util.toPointer(lpDistanceToMoveHigh), dwMoveMethod);
 }
 
 export function SetFilePointerEx(
@@ -11176,7 +11191,7 @@ export function SetFilePointerEx(
   lpNewFilePointer: Deno.PointerValue | Uint8Array | null /* ptr */,
   dwMoveMethod: SET_FILE_POINTER_MOVE_METHOD /* Windows.Win32.Storage.FileSystem.SET_FILE_POINTER_MOVE_METHOD */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32.SetFilePointerEx(util.toPointer(hFile), util.toPointer(liDistanceToMove), util.toPointer(lpNewFilePointer), dwMoveMethod));
+  return util.boolFromFfi(libKERNEL32_dll.SetFilePointerEx(util.toPointer(hFile), util.toPointer(liDistanceToMove), util.toPointer(lpNewFilePointer), dwMoveMethod));
 }
 
 export function SetFileTime(
@@ -11185,14 +11200,14 @@ export function SetFileTime(
   lpLastAccessTime: Deno.PointerValue | Uint8Array | null /* ptr */,
   lpLastWriteTime: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32.SetFileTime(util.toPointer(hFile), util.toPointer(lpCreationTime), util.toPointer(lpLastAccessTime), util.toPointer(lpLastWriteTime)));
+  return util.boolFromFfi(libKERNEL32_dll.SetFileTime(util.toPointer(hFile), util.toPointer(lpCreationTime), util.toPointer(lpLastAccessTime), util.toPointer(lpLastWriteTime)));
 }
 
 export function SetFileValidData(
   hFile: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
   ValidDataLength: Deno.PointerValue /* i64 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32.SetFileValidData(util.toPointer(hFile), ValidDataLength));
+  return util.boolFromFfi(libKERNEL32_dll.SetFileValidData(util.toPointer(hFile), ValidDataLength));
 }
 
 export function UnlockFile(
@@ -11202,7 +11217,7 @@ export function UnlockFile(
   nNumberOfBytesToUnlockLow: number /* u32 */,
   nNumberOfBytesToUnlockHigh: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32.UnlockFile(util.toPointer(hFile), dwFileOffsetLow, dwFileOffsetHigh, nNumberOfBytesToUnlockLow, nNumberOfBytesToUnlockHigh));
+  return util.boolFromFfi(libKERNEL32_dll.UnlockFile(util.toPointer(hFile), dwFileOffsetLow, dwFileOffsetHigh, nNumberOfBytesToUnlockLow, nNumberOfBytesToUnlockHigh));
 }
 
 export function UnlockFileEx(
@@ -11212,7 +11227,7 @@ export function UnlockFileEx(
   nNumberOfBytesToUnlockHigh: number /* u32 */,
   lpOverlapped: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32.UnlockFileEx(util.toPointer(hFile), dwReserved, nNumberOfBytesToUnlockLow, nNumberOfBytesToUnlockHigh, util.toPointer(lpOverlapped)));
+  return util.boolFromFfi(libKERNEL32_dll.UnlockFileEx(util.toPointer(hFile), dwReserved, nNumberOfBytesToUnlockLow, nNumberOfBytesToUnlockHigh, util.toPointer(lpOverlapped)));
 }
 
 export function WriteFile(
@@ -11222,7 +11237,7 @@ export function WriteFile(
   lpNumberOfBytesWritten: Deno.PointerValue | Uint8Array | null /* ptr */,
   lpOverlapped: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32.WriteFile(util.toPointer(hFile), util.toPointer(lpBuffer), nNumberOfBytesToWrite, util.toPointer(lpNumberOfBytesWritten), util.toPointer(lpOverlapped)));
+  return util.boolFromFfi(libKERNEL32_dll.WriteFile(util.toPointer(hFile), util.toPointer(lpBuffer), nNumberOfBytesToWrite, util.toPointer(lpNumberOfBytesWritten), util.toPointer(lpOverlapped)));
 }
 
 export function WriteFileEx(
@@ -11232,7 +11247,7 @@ export function WriteFileEx(
   lpOverlapped: Deno.PointerValue | Uint8Array | null /* ptr */,
   lpCompletionRoutine: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.IO.LPOVERLAPPED_COMPLETION_ROUTINE */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32.WriteFileEx(util.toPointer(hFile), util.toPointer(lpBuffer), nNumberOfBytesToWrite, util.toPointer(lpOverlapped), util.toPointer(lpCompletionRoutine)));
+  return util.boolFromFfi(libKERNEL32_dll.WriteFileEx(util.toPointer(hFile), util.toPointer(lpBuffer), nNumberOfBytesToWrite, util.toPointer(lpOverlapped), util.toPointer(lpCompletionRoutine)));
 }
 
 export function WriteFileGather(
@@ -11242,14 +11257,14 @@ export function WriteFileGather(
   lpReserved: Deno.PointerValue | Uint8Array | null /* ptr */,
   lpOverlapped: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32.WriteFileGather(util.toPointer(hFile), util.toPointer(aSegmentArray), nNumberOfBytesToWrite, util.toPointer(lpReserved), util.toPointer(lpOverlapped)));
+  return util.boolFromFfi(libKERNEL32_dll.WriteFileGather(util.toPointer(hFile), util.toPointer(aSegmentArray), nNumberOfBytesToWrite, util.toPointer(lpReserved), util.toPointer(lpOverlapped)));
 }
 
 export function GetTempPathW(
   nBufferLength: number /* u32 */,
   lpBuffer: string | null /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
-  return libKERNEL32.GetTempPathW(nBufferLength, util.pwstrToFfi(lpBuffer));
+  return libKERNEL32_dll.GetTempPathW(nBufferLength, util.pwstrToFfi(lpBuffer));
 }
 
 export function GetVolumeNameForVolumeMountPointW(
@@ -11257,7 +11272,7 @@ export function GetVolumeNameForVolumeMountPointW(
   lpszVolumeName: string | null /* Windows.Win32.Foundation.PWSTR */,
   cchBufferLength: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32.GetVolumeNameForVolumeMountPointW(util.pwstrToFfi(lpszVolumeMountPoint), util.pwstrToFfi(lpszVolumeName), cchBufferLength));
+  return util.boolFromFfi(libKERNEL32_dll.GetVolumeNameForVolumeMountPointW(util.pwstrToFfi(lpszVolumeMountPoint), util.pwstrToFfi(lpszVolumeName), cchBufferLength));
 }
 
 export function GetVolumePathNamesForVolumeNameW(
@@ -11266,7 +11281,7 @@ export function GetVolumePathNamesForVolumeNameW(
   cchBufferLength: number /* u32 */,
   lpcchReturnLength: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32.GetVolumePathNamesForVolumeNameW(util.pwstrToFfi(lpszVolumeName), util.pwstrToFfi(lpszVolumePathNames), cchBufferLength, util.toPointer(lpcchReturnLength)));
+  return util.boolFromFfi(libKERNEL32_dll.GetVolumePathNamesForVolumeNameW(util.pwstrToFfi(lpszVolumeName), util.pwstrToFfi(lpszVolumePathNames), cchBufferLength, util.toPointer(lpcchReturnLength)));
 }
 
 export function CreateFile2(
@@ -11276,7 +11291,7 @@ export function CreateFile2(
   dwCreationDisposition: FILE_CREATION_DISPOSITION /* Windows.Win32.Storage.FileSystem.FILE_CREATION_DISPOSITION */,
   pCreateExParams: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */ {
-  return util.pointerFromFfi(libKERNEL32.CreateFile2(util.pwstrToFfi(lpFileName), dwDesiredAccess, dwShareMode, dwCreationDisposition, util.toPointer(pCreateExParams)));
+  return util.pointerFromFfi(libKERNEL32_dll.CreateFile2(util.pwstrToFfi(lpFileName), dwDesiredAccess, dwShareMode, dwCreationDisposition, util.toPointer(pCreateExParams)));
 }
 
 export function SetFileIoOverlappedRange(
@@ -11284,21 +11299,21 @@ export function SetFileIoOverlappedRange(
   OverlappedRangeStart: Deno.PointerValue | Uint8Array | null /* ptr */,
   Length: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32.SetFileIoOverlappedRange(util.toPointer(FileHandle), util.toPointer(OverlappedRangeStart), Length));
+  return util.boolFromFfi(libKERNEL32_dll.SetFileIoOverlappedRange(util.toPointer(FileHandle), util.toPointer(OverlappedRangeStart), Length));
 }
 
 export function GetCompressedFileSizeA(
   lpFileName: string | null /* Windows.Win32.Foundation.PSTR */,
   lpFileSizeHigh: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libKERNEL32.GetCompressedFileSizeA(util.pstrToFfi(lpFileName), util.toPointer(lpFileSizeHigh));
+  return libKERNEL32_dll.GetCompressedFileSizeA(util.pstrToFfi(lpFileName), util.toPointer(lpFileSizeHigh));
 }
 
 export function GetCompressedFileSizeW(
   lpFileName: string | null /* Windows.Win32.Foundation.PWSTR */,
   lpFileSizeHigh: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libKERNEL32.GetCompressedFileSizeW(util.pwstrToFfi(lpFileName), util.toPointer(lpFileSizeHigh));
+  return libKERNEL32_dll.GetCompressedFileSizeW(util.pwstrToFfi(lpFileName), util.toPointer(lpFileSizeHigh));
 }
 
 export function FindFirstStreamW(
@@ -11307,25 +11322,25 @@ export function FindFirstStreamW(
   lpFindStreamData: Deno.PointerValue | Uint8Array | null /* ptr */,
   dwFlags: number /* u32 */,
 ): Deno.PointerValue | null /* Windows.Win32.Storage.FileSystem.FindStreamHandle */ {
-  return util.pointerFromFfi(libKERNEL32.FindFirstStreamW(util.pwstrToFfi(lpFileName), InfoLevel, util.toPointer(lpFindStreamData), dwFlags));
+  return util.pointerFromFfi(libKERNEL32_dll.FindFirstStreamW(util.pwstrToFfi(lpFileName), InfoLevel, util.toPointer(lpFindStreamData), dwFlags));
 }
 
 export function FindNextStreamW(
   hFindStream: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Storage.FileSystem.FindStreamHandle */,
   lpFindStreamData: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32.FindNextStreamW(util.toPointer(hFindStream), util.toPointer(lpFindStreamData)));
+  return util.boolFromFfi(libKERNEL32_dll.FindNextStreamW(util.toPointer(hFindStream), util.toPointer(lpFindStreamData)));
 }
 
 export function AreFileApisANSI(): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32.AreFileApisANSI());
+  return util.boolFromFfi(libKERNEL32_dll.AreFileApisANSI());
 }
 
 export function GetTempPathA(
   nBufferLength: number /* u32 */,
   lpBuffer: string | null /* Windows.Win32.Foundation.PSTR */,
 ): number /* u32 */ {
-  return libKERNEL32.GetTempPathA(nBufferLength, util.pstrToFfi(lpBuffer));
+  return libKERNEL32_dll.GetTempPathA(nBufferLength, util.pstrToFfi(lpBuffer));
 }
 
 export function FindFirstFileNameW(
@@ -11334,7 +11349,7 @@ export function FindFirstFileNameW(
   StringLength: Deno.PointerValue | Uint8Array | null /* ptr */,
   LinkName: string | null /* Windows.Win32.Foundation.PWSTR */,
 ): Deno.PointerValue | null /* Windows.Win32.Storage.FileSystem.FindFileNameHandle */ {
-  return util.pointerFromFfi(libKERNEL32.FindFirstFileNameW(util.pwstrToFfi(lpFileName), dwFlags, util.toPointer(StringLength), util.pwstrToFfi(LinkName)));
+  return util.pointerFromFfi(libKERNEL32_dll.FindFirstFileNameW(util.pwstrToFfi(lpFileName), dwFlags, util.toPointer(StringLength), util.pwstrToFfi(LinkName)));
 }
 
 export function FindNextFileNameW(
@@ -11342,7 +11357,7 @@ export function FindNextFileNameW(
   StringLength: Deno.PointerValue | Uint8Array | null /* ptr */,
   LinkName: string | null /* Windows.Win32.Foundation.PWSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32.FindNextFileNameW(util.toPointer(hFindStream), util.toPointer(StringLength), util.pwstrToFfi(LinkName)));
+  return util.boolFromFfi(libKERNEL32_dll.FindNextFileNameW(util.toPointer(hFindStream), util.toPointer(StringLength), util.pwstrToFfi(LinkName)));
 }
 
 export function GetVolumeInformationA(
@@ -11355,7 +11370,7 @@ export function GetVolumeInformationA(
   lpFileSystemNameBuffer: string | null /* Windows.Win32.Foundation.PSTR */,
   nFileSystemNameSize: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32.GetVolumeInformationA(util.pstrToFfi(lpRootPathName), util.pstrToFfi(lpVolumeNameBuffer), nVolumeNameSize, util.toPointer(lpVolumeSerialNumber), util.toPointer(lpMaximumComponentLength), util.toPointer(lpFileSystemFlags), util.pstrToFfi(lpFileSystemNameBuffer), nFileSystemNameSize));
+  return util.boolFromFfi(libKERNEL32_dll.GetVolumeInformationA(util.pstrToFfi(lpRootPathName), util.pstrToFfi(lpVolumeNameBuffer), nVolumeNameSize, util.toPointer(lpVolumeSerialNumber), util.toPointer(lpMaximumComponentLength), util.toPointer(lpFileSystemFlags), util.pstrToFfi(lpFileSystemNameBuffer), nFileSystemNameSize));
 }
 
 export function GetTempFileNameA(
@@ -11364,29 +11379,29 @@ export function GetTempFileNameA(
   uUnique: number /* u32 */,
   lpTempFileName: string | null /* Windows.Win32.Foundation.PSTR */,
 ): number /* u32 */ {
-  return libKERNEL32.GetTempFileNameA(util.pstrToFfi(lpPathName), util.pstrToFfi(lpPrefixString), uUnique, util.pstrToFfi(lpTempFileName));
+  return libKERNEL32_dll.GetTempFileNameA(util.pstrToFfi(lpPathName), util.pstrToFfi(lpPrefixString), uUnique, util.pstrToFfi(lpTempFileName));
 }
 
 export function SetFileApisToOEM(): void /* void */ {
-  return libKERNEL32.SetFileApisToOEM();
+  return libKERNEL32_dll.SetFileApisToOEM();
 }
 
 export function SetFileApisToANSI(): void /* void */ {
-  return libKERNEL32.SetFileApisToANSI();
+  return libKERNEL32_dll.SetFileApisToANSI();
 }
 
 export function GetTempPath2W(
   BufferLength: number /* u32 */,
   Buffer: string | null /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
-  return libKERNEL32.GetTempPath2W(BufferLength, util.pwstrToFfi(Buffer));
+  return libKERNEL32_dll.GetTempPath2W(BufferLength, util.pwstrToFfi(Buffer));
 }
 
 export function GetTempPath2A(
   BufferLength: number /* u32 */,
   Buffer: string | null /* Windows.Win32.Foundation.PSTR */,
 ): number /* u32 */ {
-  return libKERNEL32.GetTempPath2A(BufferLength, util.pstrToFfi(Buffer));
+  return libKERNEL32_dll.GetTempPath2A(BufferLength, util.pstrToFfi(Buffer));
 }
 
 export function CopyFileFromAppW(
@@ -11394,14 +11409,14 @@ export function CopyFileFromAppW(
   lpNewFileName: string | null /* Windows.Win32.Foundation.PWSTR */,
   bFailIfExists: boolean /* Windows.Win32.Foundation.BOOL */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libapi_ms_win_core_file_fromapp_l1_1_0.CopyFileFromAppW(util.pwstrToFfi(lpExistingFileName), util.pwstrToFfi(lpNewFileName), util.boolToFfi(bFailIfExists)));
+  return util.boolFromFfi(libapi_ms_win_core_file_fromapp_l1_1_0_dll.CopyFileFromAppW(util.pwstrToFfi(lpExistingFileName), util.pwstrToFfi(lpNewFileName), util.boolToFfi(bFailIfExists)));
 }
 
 export function CreateDirectoryFromAppW(
   lpPathName: string | null /* Windows.Win32.Foundation.PWSTR */,
   lpSecurityAttributes: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libapi_ms_win_core_file_fromapp_l1_1_0.CreateDirectoryFromAppW(util.pwstrToFfi(lpPathName), util.toPointer(lpSecurityAttributes)));
+  return util.boolFromFfi(libapi_ms_win_core_file_fromapp_l1_1_0_dll.CreateDirectoryFromAppW(util.pwstrToFfi(lpPathName), util.toPointer(lpSecurityAttributes)));
 }
 
 export function CreateFileFromAppW(
@@ -11413,7 +11428,7 @@ export function CreateFileFromAppW(
   dwFlagsAndAttributes: number /* u32 */,
   hTemplateFile: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */ {
-  return util.pointerFromFfi(libapi_ms_win_core_file_fromapp_l1_1_0.CreateFileFromAppW(util.pwstrToFfi(lpFileName), dwDesiredAccess, dwShareMode, util.toPointer(lpSecurityAttributes), dwCreationDisposition, dwFlagsAndAttributes, util.toPointer(hTemplateFile)));
+  return util.pointerFromFfi(libapi_ms_win_core_file_fromapp_l1_1_0_dll.CreateFileFromAppW(util.pwstrToFfi(lpFileName), dwDesiredAccess, dwShareMode, util.toPointer(lpSecurityAttributes), dwCreationDisposition, dwFlagsAndAttributes, util.toPointer(hTemplateFile)));
 }
 
 export function CreateFile2FromAppW(
@@ -11423,13 +11438,13 @@ export function CreateFile2FromAppW(
   dwCreationDisposition: number /* u32 */,
   pCreateExParams: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */ {
-  return util.pointerFromFfi(libapi_ms_win_core_file_fromapp_l1_1_0.CreateFile2FromAppW(util.pwstrToFfi(lpFileName), dwDesiredAccess, dwShareMode, dwCreationDisposition, util.toPointer(pCreateExParams)));
+  return util.pointerFromFfi(libapi_ms_win_core_file_fromapp_l1_1_0_dll.CreateFile2FromAppW(util.pwstrToFfi(lpFileName), dwDesiredAccess, dwShareMode, dwCreationDisposition, util.toPointer(pCreateExParams)));
 }
 
 export function DeleteFileFromAppW(
   lpFileName: string | null /* Windows.Win32.Foundation.PWSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libapi_ms_win_core_file_fromapp_l1_1_0.DeleteFileFromAppW(util.pwstrToFfi(lpFileName)));
+  return util.boolFromFfi(libapi_ms_win_core_file_fromapp_l1_1_0_dll.DeleteFileFromAppW(util.pwstrToFfi(lpFileName)));
 }
 
 export function FindFirstFileExFromAppW(
@@ -11440,7 +11455,7 @@ export function FindFirstFileExFromAppW(
   lpSearchFilter: Deno.PointerValue | Uint8Array | null /* ptr */,
   dwAdditionalFlags: number /* u32 */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */ {
-  return util.pointerFromFfi(libapi_ms_win_core_file_fromapp_l1_1_0.FindFirstFileExFromAppW(util.pwstrToFfi(lpFileName), fInfoLevelId, util.toPointer(lpFindFileData), fSearchOp, util.toPointer(lpSearchFilter), dwAdditionalFlags));
+  return util.pointerFromFfi(libapi_ms_win_core_file_fromapp_l1_1_0_dll.FindFirstFileExFromAppW(util.pwstrToFfi(lpFileName), fInfoLevelId, util.toPointer(lpFindFileData), fSearchOp, util.toPointer(lpSearchFilter), dwAdditionalFlags));
 }
 
 export function GetFileAttributesExFromAppW(
@@ -11448,20 +11463,20 @@ export function GetFileAttributesExFromAppW(
   fInfoLevelId: GET_FILEEX_INFO_LEVELS /* Windows.Win32.Storage.FileSystem.GET_FILEEX_INFO_LEVELS */,
   lpFileInformation: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libapi_ms_win_core_file_fromapp_l1_1_0.GetFileAttributesExFromAppW(util.pwstrToFfi(lpFileName), fInfoLevelId, util.toPointer(lpFileInformation)));
+  return util.boolFromFfi(libapi_ms_win_core_file_fromapp_l1_1_0_dll.GetFileAttributesExFromAppW(util.pwstrToFfi(lpFileName), fInfoLevelId, util.toPointer(lpFileInformation)));
 }
 
 export function MoveFileFromAppW(
   lpExistingFileName: string | null /* Windows.Win32.Foundation.PWSTR */,
   lpNewFileName: string | null /* Windows.Win32.Foundation.PWSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libapi_ms_win_core_file_fromapp_l1_1_0.MoveFileFromAppW(util.pwstrToFfi(lpExistingFileName), util.pwstrToFfi(lpNewFileName)));
+  return util.boolFromFfi(libapi_ms_win_core_file_fromapp_l1_1_0_dll.MoveFileFromAppW(util.pwstrToFfi(lpExistingFileName), util.pwstrToFfi(lpNewFileName)));
 }
 
 export function RemoveDirectoryFromAppW(
   lpPathName: string | null /* Windows.Win32.Foundation.PWSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libapi_ms_win_core_file_fromapp_l1_1_0.RemoveDirectoryFromAppW(util.pwstrToFfi(lpPathName)));
+  return util.boolFromFfi(libapi_ms_win_core_file_fromapp_l1_1_0_dll.RemoveDirectoryFromAppW(util.pwstrToFfi(lpPathName)));
 }
 
 export function ReplaceFileFromAppW(
@@ -11472,14 +11487,14 @@ export function ReplaceFileFromAppW(
   lpExclude: Deno.PointerValue | Uint8Array | null /* ptr */,
   lpReserved: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libapi_ms_win_core_file_fromapp_l1_1_0.ReplaceFileFromAppW(util.pwstrToFfi(lpReplacedFileName), util.pwstrToFfi(lpReplacementFileName), util.pwstrToFfi(lpBackupFileName), dwReplaceFlags, util.toPointer(lpExclude), util.toPointer(lpReserved)));
+  return util.boolFromFfi(libapi_ms_win_core_file_fromapp_l1_1_0_dll.ReplaceFileFromAppW(util.pwstrToFfi(lpReplacedFileName), util.pwstrToFfi(lpReplacementFileName), util.pwstrToFfi(lpBackupFileName), dwReplaceFlags, util.toPointer(lpExclude), util.toPointer(lpReserved)));
 }
 
 export function SetFileAttributesFromAppW(
   lpFileName: string | null /* Windows.Win32.Foundation.PWSTR */,
   dwFileAttributes: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libapi_ms_win_core_file_fromapp_l1_1_0.SetFileAttributesFromAppW(util.pwstrToFfi(lpFileName), dwFileAttributes));
+  return util.boolFromFfi(libapi_ms_win_core_file_fromapp_l1_1_0_dll.SetFileAttributesFromAppW(util.pwstrToFfi(lpFileName), dwFileAttributes));
 }
 
 export function VerFindFileA(
@@ -11492,7 +11507,7 @@ export function VerFindFileA(
   szDestDir: string | null /* Windows.Win32.Foundation.PSTR */,
   puDestDirLen: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): VER_FIND_FILE_STATUS /* Windows.Win32.Storage.FileSystem.VER_FIND_FILE_STATUS */ {
-  return libVERSION.VerFindFileA(uFlags, util.pstrToFfi(szFileName), util.pstrToFfi(szWinDir), util.pstrToFfi(szAppDir), util.pstrToFfi(szCurDir), util.toPointer(puCurDirLen), util.pstrToFfi(szDestDir), util.toPointer(puDestDirLen));
+  return libVERSION_dll.VerFindFileA(uFlags, util.pstrToFfi(szFileName), util.pstrToFfi(szWinDir), util.pstrToFfi(szAppDir), util.pstrToFfi(szCurDir), util.toPointer(puCurDirLen), util.pstrToFfi(szDestDir), util.toPointer(puDestDirLen));
 }
 
 export function VerFindFileW(
@@ -11505,7 +11520,7 @@ export function VerFindFileW(
   szDestDir: string | null /* Windows.Win32.Foundation.PWSTR */,
   puDestDirLen: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): VER_FIND_FILE_STATUS /* Windows.Win32.Storage.FileSystem.VER_FIND_FILE_STATUS */ {
-  return libVERSION.VerFindFileW(uFlags, util.pwstrToFfi(szFileName), util.pwstrToFfi(szWinDir), util.pwstrToFfi(szAppDir), util.pwstrToFfi(szCurDir), util.toPointer(puCurDirLen), util.pwstrToFfi(szDestDir), util.toPointer(puDestDirLen));
+  return libVERSION_dll.VerFindFileW(uFlags, util.pwstrToFfi(szFileName), util.pwstrToFfi(szWinDir), util.pwstrToFfi(szAppDir), util.pwstrToFfi(szCurDir), util.toPointer(puCurDirLen), util.pwstrToFfi(szDestDir), util.toPointer(puDestDirLen));
 }
 
 export function VerInstallFileA(
@@ -11518,7 +11533,7 @@ export function VerInstallFileA(
   szTmpFile: string | null /* Windows.Win32.Foundation.PSTR */,
   puTmpFileLen: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): VER_INSTALL_FILE_STATUS /* Windows.Win32.Storage.FileSystem.VER_INSTALL_FILE_STATUS */ {
-  return libVERSION.VerInstallFileA(uFlags, util.pstrToFfi(szSrcFileName), util.pstrToFfi(szDestFileName), util.pstrToFfi(szSrcDir), util.pstrToFfi(szDestDir), util.pstrToFfi(szCurDir), util.pstrToFfi(szTmpFile), util.toPointer(puTmpFileLen));
+  return libVERSION_dll.VerInstallFileA(uFlags, util.pstrToFfi(szSrcFileName), util.pstrToFfi(szDestFileName), util.pstrToFfi(szSrcDir), util.pstrToFfi(szDestDir), util.pstrToFfi(szCurDir), util.pstrToFfi(szTmpFile), util.toPointer(puTmpFileLen));
 }
 
 export function VerInstallFileW(
@@ -11531,21 +11546,21 @@ export function VerInstallFileW(
   szTmpFile: string | null /* Windows.Win32.Foundation.PWSTR */,
   puTmpFileLen: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): VER_INSTALL_FILE_STATUS /* Windows.Win32.Storage.FileSystem.VER_INSTALL_FILE_STATUS */ {
-  return libVERSION.VerInstallFileW(uFlags, util.pwstrToFfi(szSrcFileName), util.pwstrToFfi(szDestFileName), util.pwstrToFfi(szSrcDir), util.pwstrToFfi(szDestDir), util.pwstrToFfi(szCurDir), util.pwstrToFfi(szTmpFile), util.toPointer(puTmpFileLen));
+  return libVERSION_dll.VerInstallFileW(uFlags, util.pwstrToFfi(szSrcFileName), util.pwstrToFfi(szDestFileName), util.pwstrToFfi(szSrcDir), util.pwstrToFfi(szDestDir), util.pwstrToFfi(szCurDir), util.pwstrToFfi(szTmpFile), util.toPointer(puTmpFileLen));
 }
 
 export function GetFileVersionInfoSizeA(
   lptstrFilename: string | null /* Windows.Win32.Foundation.PSTR */,
   lpdwHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libVERSION.GetFileVersionInfoSizeA(util.pstrToFfi(lptstrFilename), util.toPointer(lpdwHandle));
+  return libVERSION_dll.GetFileVersionInfoSizeA(util.pstrToFfi(lptstrFilename), util.toPointer(lpdwHandle));
 }
 
 export function GetFileVersionInfoSizeW(
   lptstrFilename: string | null /* Windows.Win32.Foundation.PWSTR */,
   lpdwHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libVERSION.GetFileVersionInfoSizeW(util.pwstrToFfi(lptstrFilename), util.toPointer(lpdwHandle));
+  return libVERSION_dll.GetFileVersionInfoSizeW(util.pwstrToFfi(lptstrFilename), util.toPointer(lpdwHandle));
 }
 
 export function GetFileVersionInfoA(
@@ -11554,7 +11569,7 @@ export function GetFileVersionInfoA(
   dwLen: number /* u32 */,
   lpData: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libVERSION.GetFileVersionInfoA(util.pstrToFfi(lptstrFilename), dwHandle, dwLen, util.toPointer(lpData)));
+  return util.boolFromFfi(libVERSION_dll.GetFileVersionInfoA(util.pstrToFfi(lptstrFilename), dwHandle, dwLen, util.toPointer(lpData)));
 }
 
 export function GetFileVersionInfoW(
@@ -11563,7 +11578,7 @@ export function GetFileVersionInfoW(
   dwLen: number /* u32 */,
   lpData: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libVERSION.GetFileVersionInfoW(util.pwstrToFfi(lptstrFilename), dwHandle, dwLen, util.toPointer(lpData)));
+  return util.boolFromFfi(libVERSION_dll.GetFileVersionInfoW(util.pwstrToFfi(lptstrFilename), dwHandle, dwLen, util.toPointer(lpData)));
 }
 
 export function GetFileVersionInfoSizeExA(
@@ -11571,7 +11586,7 @@ export function GetFileVersionInfoSizeExA(
   lpwstrFilename: string | null /* Windows.Win32.Foundation.PSTR */,
   lpdwHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libVERSION.GetFileVersionInfoSizeExA(dwFlags, util.pstrToFfi(lpwstrFilename), util.toPointer(lpdwHandle));
+  return libVERSION_dll.GetFileVersionInfoSizeExA(dwFlags, util.pstrToFfi(lpwstrFilename), util.toPointer(lpdwHandle));
 }
 
 export function GetFileVersionInfoSizeExW(
@@ -11579,7 +11594,7 @@ export function GetFileVersionInfoSizeExW(
   lpwstrFilename: string | null /* Windows.Win32.Foundation.PWSTR */,
   lpdwHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libVERSION.GetFileVersionInfoSizeExW(dwFlags, util.pwstrToFfi(lpwstrFilename), util.toPointer(lpdwHandle));
+  return libVERSION_dll.GetFileVersionInfoSizeExW(dwFlags, util.pwstrToFfi(lpwstrFilename), util.toPointer(lpdwHandle));
 }
 
 export function GetFileVersionInfoExA(
@@ -11589,7 +11604,7 @@ export function GetFileVersionInfoExA(
   dwLen: number /* u32 */,
   lpData: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libVERSION.GetFileVersionInfoExA(dwFlags, util.pstrToFfi(lpwstrFilename), dwHandle, dwLen, util.toPointer(lpData)));
+  return util.boolFromFfi(libVERSION_dll.GetFileVersionInfoExA(dwFlags, util.pstrToFfi(lpwstrFilename), dwHandle, dwLen, util.toPointer(lpData)));
 }
 
 export function GetFileVersionInfoExW(
@@ -11599,7 +11614,7 @@ export function GetFileVersionInfoExW(
   dwLen: number /* u32 */,
   lpData: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libVERSION.GetFileVersionInfoExW(dwFlags, util.pwstrToFfi(lpwstrFilename), dwHandle, dwLen, util.toPointer(lpData)));
+  return util.boolFromFfi(libVERSION_dll.GetFileVersionInfoExW(dwFlags, util.pwstrToFfi(lpwstrFilename), dwHandle, dwLen, util.toPointer(lpData)));
 }
 
 export function VerLanguageNameA(
@@ -11607,7 +11622,7 @@ export function VerLanguageNameA(
   szLang: string | null /* Windows.Win32.Foundation.PSTR */,
   cchLang: number /* u32 */,
 ): number /* u32 */ {
-  return libKERNEL32.VerLanguageNameA(wLang, util.pstrToFfi(szLang), cchLang);
+  return libKERNEL32_dll.VerLanguageNameA(wLang, util.pstrToFfi(szLang), cchLang);
 }
 
 export function VerLanguageNameW(
@@ -11615,7 +11630,7 @@ export function VerLanguageNameW(
   szLang: string | null /* Windows.Win32.Foundation.PWSTR */,
   cchLang: number /* u32 */,
 ): number /* u32 */ {
-  return libKERNEL32.VerLanguageNameW(wLang, util.pwstrToFfi(szLang), cchLang);
+  return libKERNEL32_dll.VerLanguageNameW(wLang, util.pwstrToFfi(szLang), cchLang);
 }
 
 export function VerQueryValueA(
@@ -11624,7 +11639,7 @@ export function VerQueryValueA(
   lplpBuffer: Deno.PointerValue | Uint8Array | null /* ptr */,
   puLen: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libVERSION.VerQueryValueA(util.toPointer(pBlock), util.pstrToFfi(lpSubBlock), util.toPointer(lplpBuffer), util.toPointer(puLen)));
+  return util.boolFromFfi(libVERSION_dll.VerQueryValueA(util.toPointer(pBlock), util.pstrToFfi(lpSubBlock), util.toPointer(lplpBuffer), util.toPointer(puLen)));
 }
 
 export function VerQueryValueW(
@@ -11633,40 +11648,40 @@ export function VerQueryValueW(
   lplpBuffer: Deno.PointerValue | Uint8Array | null /* ptr */,
   puLen: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libVERSION.VerQueryValueW(util.toPointer(pBlock), util.pwstrToFfi(lpSubBlock), util.toPointer(lplpBuffer), util.toPointer(puLen)));
+  return util.boolFromFfi(libVERSION_dll.VerQueryValueW(util.toPointer(pBlock), util.pwstrToFfi(lpSubBlock), util.toPointer(lplpBuffer), util.toPointer(puLen)));
 }
 
 export function LsnEqual(
   plsn1: Deno.PointerValue | Uint8Array | null /* ptr */,
   plsn2: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.BOOLEAN */ {
-  return util.pointerFromFfi(libclfsw32.LsnEqual(util.toPointer(plsn1), util.toPointer(plsn2)));
+  return util.pointerFromFfi(libclfsw32_dll.LsnEqual(util.toPointer(plsn1), util.toPointer(plsn2)));
 }
 
 export function LsnLess(
   plsn1: Deno.PointerValue | Uint8Array | null /* ptr */,
   plsn2: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.BOOLEAN */ {
-  return util.pointerFromFfi(libclfsw32.LsnLess(util.toPointer(plsn1), util.toPointer(plsn2)));
+  return util.pointerFromFfi(libclfsw32_dll.LsnLess(util.toPointer(plsn1), util.toPointer(plsn2)));
 }
 
 export function LsnGreater(
   plsn1: Deno.PointerValue | Uint8Array | null /* ptr */,
   plsn2: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.BOOLEAN */ {
-  return util.pointerFromFfi(libclfsw32.LsnGreater(util.toPointer(plsn1), util.toPointer(plsn2)));
+  return util.pointerFromFfi(libclfsw32_dll.LsnGreater(util.toPointer(plsn1), util.toPointer(plsn2)));
 }
 
 export function LsnNull(
   plsn: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.BOOLEAN */ {
-  return util.pointerFromFfi(libclfsw32.LsnNull(util.toPointer(plsn)));
+  return util.pointerFromFfi(libclfsw32_dll.LsnNull(util.toPointer(plsn)));
 }
 
 export function LsnContainer(
   plsn: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libclfsw32.LsnContainer(util.toPointer(plsn));
+  return libclfsw32_dll.LsnContainer(util.toPointer(plsn));
 }
 
 export function LsnCreate(
@@ -11674,31 +11689,31 @@ export function LsnCreate(
   offBlock: number /* u32 */,
   cRecord: number /* u32 */,
 ): Deno.PointerValue | null /* Windows.Win32.Storage.FileSystem.CLS_LSN */ {
-  return util.pointerFromFfi(libclfsw32.LsnCreate(cidContainer, offBlock, cRecord));
+  return util.pointerFromFfi(libclfsw32_dll.LsnCreate(cidContainer, offBlock, cRecord));
 }
 
 export function LsnBlockOffset(
   plsn: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libclfsw32.LsnBlockOffset(util.toPointer(plsn));
+  return libclfsw32_dll.LsnBlockOffset(util.toPointer(plsn));
 }
 
 export function LsnRecordSequence(
   plsn: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libclfsw32.LsnRecordSequence(util.toPointer(plsn));
+  return libclfsw32_dll.LsnRecordSequence(util.toPointer(plsn));
 }
 
 export function LsnInvalid(
   plsn: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.BOOLEAN */ {
-  return util.pointerFromFfi(libclfsw32.LsnInvalid(util.toPointer(plsn)));
+  return util.pointerFromFfi(libclfsw32_dll.LsnInvalid(util.toPointer(plsn)));
 }
 
 export function LsnIncrement(
   plsn: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Storage.FileSystem.CLS_LSN */ {
-  return util.pointerFromFfi(libclfsw32.LsnIncrement(util.toPointer(plsn)));
+  return util.pointerFromFfi(libclfsw32_dll.LsnIncrement(util.toPointer(plsn)));
 }
 
 export function CreateLogFile(
@@ -11709,20 +11724,20 @@ export function CreateLogFile(
   fCreateDisposition: FILE_CREATION_DISPOSITION /* Windows.Win32.Storage.FileSystem.FILE_CREATION_DISPOSITION */,
   fFlagsAndAttributes: FILE_FLAGS_AND_ATTRIBUTES /* Windows.Win32.Storage.FileSystem.FILE_FLAGS_AND_ATTRIBUTES */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */ {
-  return util.pointerFromFfi(libclfsw32.CreateLogFile(util.pwstrToFfi(pszLogFileName), fDesiredAccess, dwShareMode, util.toPointer(psaLogFile), fCreateDisposition, fFlagsAndAttributes));
+  return util.pointerFromFfi(libclfsw32_dll.CreateLogFile(util.pwstrToFfi(pszLogFileName), fDesiredAccess, dwShareMode, util.toPointer(psaLogFile), fCreateDisposition, fFlagsAndAttributes));
 }
 
 export function DeleteLogByHandle(
   hLog: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libclfsw32.DeleteLogByHandle(util.toPointer(hLog)));
+  return util.boolFromFfi(libclfsw32_dll.DeleteLogByHandle(util.toPointer(hLog)));
 }
 
 export function DeleteLogFile(
   pszLogFileName: string | null /* Windows.Win32.Foundation.PWSTR */,
   pvReserved: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libclfsw32.DeleteLogFile(util.pwstrToFfi(pszLogFileName), util.toPointer(pvReserved)));
+  return util.boolFromFfi(libclfsw32_dll.DeleteLogFile(util.pwstrToFfi(pszLogFileName), util.toPointer(pvReserved)));
 }
 
 export function AddLogContainer(
@@ -11731,7 +11746,7 @@ export function AddLogContainer(
   pwszContainerPath: string | null /* Windows.Win32.Foundation.PWSTR */,
   pReserved: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libclfsw32.AddLogContainer(util.toPointer(hLog), util.toPointer(pcbContainer), util.pwstrToFfi(pwszContainerPath), util.toPointer(pReserved)));
+  return util.boolFromFfi(libclfsw32_dll.AddLogContainer(util.toPointer(hLog), util.toPointer(pcbContainer), util.pwstrToFfi(pwszContainerPath), util.toPointer(pReserved)));
 }
 
 export function AddLogContainerSet(
@@ -11741,7 +11756,7 @@ export function AddLogContainerSet(
   rgwszContainerPath: Deno.PointerValue | Uint8Array | null /* ptr */,
   pReserved: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libclfsw32.AddLogContainerSet(util.toPointer(hLog), cContainer, util.toPointer(pcbContainer), util.toPointer(rgwszContainerPath), util.toPointer(pReserved)));
+  return util.boolFromFfi(libclfsw32_dll.AddLogContainerSet(util.toPointer(hLog), cContainer, util.toPointer(pcbContainer), util.toPointer(rgwszContainerPath), util.toPointer(pReserved)));
 }
 
 export function RemoveLogContainer(
@@ -11750,7 +11765,7 @@ export function RemoveLogContainer(
   fForce: boolean /* Windows.Win32.Foundation.BOOL */,
   pReserved: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libclfsw32.RemoveLogContainer(util.toPointer(hLog), util.pwstrToFfi(pwszContainerPath), util.boolToFfi(fForce), util.toPointer(pReserved)));
+  return util.boolFromFfi(libclfsw32_dll.RemoveLogContainer(util.toPointer(hLog), util.pwstrToFfi(pwszContainerPath), util.boolToFfi(fForce), util.toPointer(pReserved)));
 }
 
 export function RemoveLogContainerSet(
@@ -11760,7 +11775,7 @@ export function RemoveLogContainerSet(
   fForce: boolean /* Windows.Win32.Foundation.BOOL */,
   pReserved: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libclfsw32.RemoveLogContainerSet(util.toPointer(hLog), cContainer, util.toPointer(rgwszContainerPath), util.boolToFfi(fForce), util.toPointer(pReserved)));
+  return util.boolFromFfi(libclfsw32_dll.RemoveLogContainerSet(util.toPointer(hLog), cContainer, util.toPointer(rgwszContainerPath), util.boolToFfi(fForce), util.toPointer(pReserved)));
 }
 
 export function SetLogArchiveTail(
@@ -11768,7 +11783,7 @@ export function SetLogArchiveTail(
   plsnArchiveTail: Deno.PointerValue | Uint8Array | null /* ptr */,
   pReserved: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libclfsw32.SetLogArchiveTail(util.toPointer(hLog), util.toPointer(plsnArchiveTail), util.toPointer(pReserved)));
+  return util.boolFromFfi(libclfsw32_dll.SetLogArchiveTail(util.toPointer(hLog), util.toPointer(plsnArchiveTail), util.toPointer(pReserved)));
 }
 
 export function SetEndOfLog(
@@ -11776,7 +11791,7 @@ export function SetEndOfLog(
   plsnEnd: Deno.PointerValue | Uint8Array | null /* ptr */,
   lpOverlapped: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libclfsw32.SetEndOfLog(util.toPointer(hLog), util.toPointer(plsnEnd), util.toPointer(lpOverlapped)));
+  return util.boolFromFfi(libclfsw32_dll.SetEndOfLog(util.toPointer(hLog), util.toPointer(plsnEnd), util.toPointer(lpOverlapped)));
 }
 
 export function TruncateLog(
@@ -11784,7 +11799,7 @@ export function TruncateLog(
   plsnEnd: Deno.PointerValue | Uint8Array | null /* ptr */,
   lpOverlapped: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libclfsw32.TruncateLog(util.toPointer(pvMarshal), util.toPointer(plsnEnd), util.toPointer(lpOverlapped)));
+  return util.boolFromFfi(libclfsw32_dll.TruncateLog(util.toPointer(pvMarshal), util.toPointer(plsnEnd), util.toPointer(lpOverlapped)));
 }
 
 export function CreateLogContainerScanContext(
@@ -11795,7 +11810,7 @@ export function CreateLogContainerScanContext(
   pcxScan: Deno.PointerValue | Uint8Array | null /* ptr */,
   pOverlapped: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libclfsw32.CreateLogContainerScanContext(util.toPointer(hLog), cFromContainer, cContainers, eScanMode, util.toPointer(pcxScan), util.toPointer(pOverlapped)));
+  return util.boolFromFfi(libclfsw32_dll.CreateLogContainerScanContext(util.toPointer(hLog), cFromContainer, cContainers, eScanMode, util.toPointer(pcxScan), util.toPointer(pOverlapped)));
 }
 
 export function ScanLogContainers(
@@ -11803,7 +11818,7 @@ export function ScanLogContainers(
   eScanMode: number /* u8 */,
   pReserved: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libclfsw32.ScanLogContainers(util.toPointer(pcxScan), eScanMode, util.toPointer(pReserved)));
+  return util.boolFromFfi(libclfsw32_dll.ScanLogContainers(util.toPointer(pcxScan), eScanMode, util.toPointer(pReserved)));
 }
 
 export function AlignReservedLog(
@@ -11812,7 +11827,7 @@ export function AlignReservedLog(
   rgcbReservation: Deno.PointerValue | Uint8Array | null /* ptr */,
   pcbAlignReservation: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libclfsw32.AlignReservedLog(util.toPointer(pvMarshal), cReservedRecords, util.toPointer(rgcbReservation), util.toPointer(pcbAlignReservation)));
+  return util.boolFromFfi(libclfsw32_dll.AlignReservedLog(util.toPointer(pvMarshal), cReservedRecords, util.toPointer(rgcbReservation), util.toPointer(pcbAlignReservation)));
 }
 
 export function AllocReservedLog(
@@ -11820,7 +11835,7 @@ export function AllocReservedLog(
   cReservedRecords: number /* u32 */,
   pcbAdjustment: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libclfsw32.AllocReservedLog(util.toPointer(pvMarshal), cReservedRecords, util.toPointer(pcbAdjustment)));
+  return util.boolFromFfi(libclfsw32_dll.AllocReservedLog(util.toPointer(pvMarshal), cReservedRecords, util.toPointer(pcbAdjustment)));
 }
 
 export function FreeReservedLog(
@@ -11828,7 +11843,7 @@ export function FreeReservedLog(
   cReservedRecords: number /* u32 */,
   pcbAdjustment: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libclfsw32.FreeReservedLog(util.toPointer(pvMarshal), cReservedRecords, util.toPointer(pcbAdjustment)));
+  return util.boolFromFfi(libclfsw32_dll.FreeReservedLog(util.toPointer(pvMarshal), cReservedRecords, util.toPointer(pcbAdjustment)));
 }
 
 export function GetLogFileInformation(
@@ -11836,14 +11851,14 @@ export function GetLogFileInformation(
   pinfoBuffer: Deno.PointerValue | Uint8Array | null /* ptr */,
   cbBuffer: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libclfsw32.GetLogFileInformation(util.toPointer(hLog), util.toPointer(pinfoBuffer), util.toPointer(cbBuffer)));
+  return util.boolFromFfi(libclfsw32_dll.GetLogFileInformation(util.toPointer(hLog), util.toPointer(pinfoBuffer), util.toPointer(cbBuffer)));
 }
 
 export function SetLogArchiveMode(
   hLog: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
   eMode: CLFS_LOG_ARCHIVE_MODE /* Windows.Win32.Storage.FileSystem.CLFS_LOG_ARCHIVE_MODE */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libclfsw32.SetLogArchiveMode(util.toPointer(hLog), eMode));
+  return util.boolFromFfi(libclfsw32_dll.SetLogArchiveMode(util.toPointer(hLog), eMode));
 }
 
 export function ReadLogRestartArea(
@@ -11854,7 +11869,7 @@ export function ReadLogRestartArea(
   ppvContext: Deno.PointerValue | Uint8Array | null /* ptr */,
   pOverlapped: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libclfsw32.ReadLogRestartArea(util.toPointer(pvMarshal), util.toPointer(ppvRestartBuffer), util.toPointer(pcbRestartBuffer), util.toPointer(plsn), util.toPointer(ppvContext), util.toPointer(pOverlapped)));
+  return util.boolFromFfi(libclfsw32_dll.ReadLogRestartArea(util.toPointer(pvMarshal), util.toPointer(ppvRestartBuffer), util.toPointer(pcbRestartBuffer), util.toPointer(plsn), util.toPointer(ppvContext), util.toPointer(pOverlapped)));
 }
 
 export function ReadPreviousLogRestartArea(
@@ -11864,7 +11879,7 @@ export function ReadPreviousLogRestartArea(
   plsnRestart: Deno.PointerValue | Uint8Array | null /* ptr */,
   pOverlapped: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libclfsw32.ReadPreviousLogRestartArea(util.toPointer(pvReadContext), util.toPointer(ppvRestartBuffer), util.toPointer(pcbRestartBuffer), util.toPointer(plsnRestart), util.toPointer(pOverlapped)));
+  return util.boolFromFfi(libclfsw32_dll.ReadPreviousLogRestartArea(util.toPointer(pvReadContext), util.toPointer(ppvRestartBuffer), util.toPointer(pcbRestartBuffer), util.toPointer(plsnRestart), util.toPointer(pOverlapped)));
 }
 
 export function WriteLogRestartArea(
@@ -11877,7 +11892,7 @@ export function WriteLogRestartArea(
   plsnNext: Deno.PointerValue | Uint8Array | null /* ptr */,
   pOverlapped: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libclfsw32.WriteLogRestartArea(util.toPointer(pvMarshal), util.toPointer(pvRestartBuffer), cbRestartBuffer, util.toPointer(plsnBase), fFlags, util.toPointer(pcbWritten), util.toPointer(plsnNext), util.toPointer(pOverlapped)));
+  return util.boolFromFfi(libclfsw32_dll.WriteLogRestartArea(util.toPointer(pvMarshal), util.toPointer(pvRestartBuffer), cbRestartBuffer, util.toPointer(plsnBase), fFlags, util.toPointer(pcbWritten), util.toPointer(plsnNext), util.toPointer(pOverlapped)));
 }
 
 export function GetLogReservationInfo(
@@ -11886,7 +11901,7 @@ export function GetLogReservationInfo(
   pcbUserReservation: Deno.PointerValue | Uint8Array | null /* ptr */,
   pcbCommitReservation: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libclfsw32.GetLogReservationInfo(util.toPointer(pvMarshal), util.toPointer(pcbRecordNumber), util.toPointer(pcbUserReservation), util.toPointer(pcbCommitReservation)));
+  return util.boolFromFfi(libclfsw32_dll.GetLogReservationInfo(util.toPointer(pvMarshal), util.toPointer(pcbRecordNumber), util.toPointer(pcbUserReservation), util.toPointer(pcbCommitReservation)));
 }
 
 export function AdvanceLogBase(
@@ -11895,13 +11910,13 @@ export function AdvanceLogBase(
   fFlags: number /* u32 */,
   pOverlapped: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libclfsw32.AdvanceLogBase(util.toPointer(pvMarshal), util.toPointer(plsnBase), fFlags, util.toPointer(pOverlapped)));
+  return util.boolFromFfi(libclfsw32_dll.AdvanceLogBase(util.toPointer(pvMarshal), util.toPointer(plsnBase), fFlags, util.toPointer(pOverlapped)));
 }
 
 export function CloseAndResetLogFile(
   hLog: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libclfsw32.CloseAndResetLogFile(util.toPointer(hLog)));
+  return util.boolFromFfi(libclfsw32_dll.CloseAndResetLogFile(util.toPointer(hLog)));
 }
 
 export function CreateLogMarshallingArea(
@@ -11914,13 +11929,13 @@ export function CreateLogMarshallingArea(
   cMaxReadBuffers: number /* u32 */,
   ppvMarshal: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libclfsw32.CreateLogMarshallingArea(util.toPointer(hLog), util.toPointer(pfnAllocBuffer), util.toPointer(pfnFreeBuffer), util.toPointer(pvBlockAllocContext), cbMarshallingBuffer, cMaxWriteBuffers, cMaxReadBuffers, util.toPointer(ppvMarshal)));
+  return util.boolFromFfi(libclfsw32_dll.CreateLogMarshallingArea(util.toPointer(hLog), util.toPointer(pfnAllocBuffer), util.toPointer(pfnFreeBuffer), util.toPointer(pvBlockAllocContext), cbMarshallingBuffer, cMaxWriteBuffers, cMaxReadBuffers, util.toPointer(ppvMarshal)));
 }
 
 export function DeleteLogMarshallingArea(
   pvMarshal: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libclfsw32.DeleteLogMarshallingArea(util.toPointer(pvMarshal)));
+  return util.boolFromFfi(libclfsw32_dll.DeleteLogMarshallingArea(util.toPointer(pvMarshal)));
 }
 
 export function ReserveAndAppendLog(
@@ -11935,7 +11950,7 @@ export function ReserveAndAppendLog(
   plsn: Deno.PointerValue | Uint8Array | null /* ptr */,
   pOverlapped: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libclfsw32.ReserveAndAppendLog(util.toPointer(pvMarshal), util.toPointer(rgWriteEntries), cWriteEntries, util.toPointer(plsnUndoNext), util.toPointer(plsnPrevious), cReserveRecords, util.toPointer(rgcbReservation), fFlags, util.toPointer(plsn), util.toPointer(pOverlapped)));
+  return util.boolFromFfi(libclfsw32_dll.ReserveAndAppendLog(util.toPointer(pvMarshal), util.toPointer(rgWriteEntries), cWriteEntries, util.toPointer(plsnUndoNext), util.toPointer(plsnPrevious), cReserveRecords, util.toPointer(rgcbReservation), fFlags, util.toPointer(plsn), util.toPointer(pOverlapped)));
 }
 
 export function ReserveAndAppendLogAligned(
@@ -11951,14 +11966,14 @@ export function ReserveAndAppendLogAligned(
   plsn: Deno.PointerValue | Uint8Array | null /* ptr */,
   pOverlapped: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libclfsw32.ReserveAndAppendLogAligned(util.toPointer(pvMarshal), util.toPointer(rgWriteEntries), cWriteEntries, cbEntryAlignment, util.toPointer(plsnUndoNext), util.toPointer(plsnPrevious), cReserveRecords, util.toPointer(rgcbReservation), fFlags, util.toPointer(plsn), util.toPointer(pOverlapped)));
+  return util.boolFromFfi(libclfsw32_dll.ReserveAndAppendLogAligned(util.toPointer(pvMarshal), util.toPointer(rgWriteEntries), cWriteEntries, cbEntryAlignment, util.toPointer(plsnUndoNext), util.toPointer(plsnPrevious), cReserveRecords, util.toPointer(rgcbReservation), fFlags, util.toPointer(plsn), util.toPointer(pOverlapped)));
 }
 
 export function FlushLogBuffers(
   pvMarshal: Deno.PointerValue | Uint8Array | null /* ptr */,
   pOverlapped: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libclfsw32.FlushLogBuffers(util.toPointer(pvMarshal), util.toPointer(pOverlapped)));
+  return util.boolFromFfi(libclfsw32_dll.FlushLogBuffers(util.toPointer(pvMarshal), util.toPointer(pOverlapped)));
 }
 
 export function FlushLogToLsn(
@@ -11967,7 +11982,7 @@ export function FlushLogToLsn(
   plsnLastFlushed: Deno.PointerValue | Uint8Array | null /* ptr */,
   pOverlapped: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libclfsw32.FlushLogToLsn(util.toPointer(pvMarshalContext), util.toPointer(plsnFlush), util.toPointer(plsnLastFlushed), util.toPointer(pOverlapped)));
+  return util.boolFromFfi(libclfsw32_dll.FlushLogToLsn(util.toPointer(pvMarshalContext), util.toPointer(plsnFlush), util.toPointer(plsnLastFlushed), util.toPointer(pOverlapped)));
 }
 
 export function ReadLogRecord(
@@ -11982,7 +11997,7 @@ export function ReadLogRecord(
   ppvReadContext: Deno.PointerValue | Uint8Array | null /* ptr */,
   pOverlapped: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libclfsw32.ReadLogRecord(util.toPointer(pvMarshal), util.toPointer(plsnFirst), eContextMode, util.toPointer(ppvReadBuffer), util.toPointer(pcbReadBuffer), util.toPointer(peRecordType), util.toPointer(plsnUndoNext), util.toPointer(plsnPrevious), util.toPointer(ppvReadContext), util.toPointer(pOverlapped)));
+  return util.boolFromFfi(libclfsw32_dll.ReadLogRecord(util.toPointer(pvMarshal), util.toPointer(plsnFirst), eContextMode, util.toPointer(ppvReadBuffer), util.toPointer(pcbReadBuffer), util.toPointer(peRecordType), util.toPointer(plsnUndoNext), util.toPointer(plsnPrevious), util.toPointer(ppvReadContext), util.toPointer(pOverlapped)));
 }
 
 export function ReadNextLogRecord(
@@ -11996,13 +12011,13 @@ export function ReadNextLogRecord(
   plsnRecord: Deno.PointerValue | Uint8Array | null /* ptr */,
   pOverlapped: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libclfsw32.ReadNextLogRecord(util.toPointer(pvReadContext), util.toPointer(ppvBuffer), util.toPointer(pcbBuffer), util.toPointer(peRecordType), util.toPointer(plsnUser), util.toPointer(plsnUndoNext), util.toPointer(plsnPrevious), util.toPointer(plsnRecord), util.toPointer(pOverlapped)));
+  return util.boolFromFfi(libclfsw32_dll.ReadNextLogRecord(util.toPointer(pvReadContext), util.toPointer(ppvBuffer), util.toPointer(pcbBuffer), util.toPointer(peRecordType), util.toPointer(plsnUser), util.toPointer(plsnUndoNext), util.toPointer(plsnPrevious), util.toPointer(plsnRecord), util.toPointer(pOverlapped)));
 }
 
 export function TerminateReadLog(
   pvCursorContext: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libclfsw32.TerminateReadLog(util.toPointer(pvCursorContext)));
+  return util.boolFromFfi(libclfsw32_dll.TerminateReadLog(util.toPointer(pvCursorContext)));
 }
 
 export function PrepareLogArchive(
@@ -12019,7 +12034,7 @@ export function PrepareLogArchive(
   plsnCurrentArchiveTail: Deno.PointerValue | Uint8Array | null /* ptr */,
   ppvArchiveContext: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libclfsw32.PrepareLogArchive(util.toPointer(hLog), util.pwstrToFfi(pszBaseLogFileName), cLen, util.toPointer(plsnLow), util.toPointer(plsnHigh), util.toPointer(pcActualLength), util.toPointer(poffBaseLogFileData), util.toPointer(pcbBaseLogFileLength), util.toPointer(plsnBase), util.toPointer(plsnLast), util.toPointer(plsnCurrentArchiveTail), util.toPointer(ppvArchiveContext)));
+  return util.boolFromFfi(libclfsw32_dll.PrepareLogArchive(util.toPointer(hLog), util.pwstrToFfi(pszBaseLogFileName), cLen, util.toPointer(plsnLow), util.toPointer(plsnHigh), util.toPointer(pcActualLength), util.toPointer(poffBaseLogFileData), util.toPointer(pcbBaseLogFileLength), util.toPointer(plsnBase), util.toPointer(plsnLast), util.toPointer(plsnCurrentArchiveTail), util.toPointer(ppvArchiveContext)));
 }
 
 export function ReadLogArchiveMetadata(
@@ -12029,7 +12044,7 @@ export function ReadLogArchiveMetadata(
   pbReadBuffer: Deno.PointerValue | Uint8Array | null /* ptr */,
   pcbBytesRead: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libclfsw32.ReadLogArchiveMetadata(util.toPointer(pvArchiveContext), cbOffset, cbBytesToRead, util.toPointer(pbReadBuffer), util.toPointer(pcbBytesRead)));
+  return util.boolFromFfi(libclfsw32_dll.ReadLogArchiveMetadata(util.toPointer(pvArchiveContext), cbOffset, cbBytesToRead, util.toPointer(pbReadBuffer), util.toPointer(pcbBytesRead)));
 }
 
 export function GetNextLogArchiveExtent(
@@ -12038,13 +12053,13 @@ export function GetNextLogArchiveExtent(
   cDescriptors: number /* u32 */,
   pcDescriptorsReturned: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libclfsw32.GetNextLogArchiveExtent(util.toPointer(pvArchiveContext), util.toPointer(rgadExtent), cDescriptors, util.toPointer(pcDescriptorsReturned)));
+  return util.boolFromFfi(libclfsw32_dll.GetNextLogArchiveExtent(util.toPointer(pvArchiveContext), util.toPointer(rgadExtent), cDescriptors, util.toPointer(pcDescriptorsReturned)));
 }
 
 export function TerminateLogArchive(
   pvArchiveContext: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libclfsw32.TerminateLogArchive(util.toPointer(pvArchiveContext)));
+  return util.boolFromFfi(libclfsw32_dll.TerminateLogArchive(util.toPointer(pvArchiveContext)));
 }
 
 export function ValidateLog(
@@ -12053,7 +12068,7 @@ export function ValidateLog(
   pinfoBuffer: Deno.PointerValue | Uint8Array | null /* ptr */,
   pcbBuffer: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libclfsw32.ValidateLog(util.pwstrToFfi(pszLogFileName), util.toPointer(psaLogFile), util.toPointer(pinfoBuffer), util.toPointer(pcbBuffer)));
+  return util.boolFromFfi(libclfsw32_dll.ValidateLog(util.pwstrToFfi(pszLogFileName), util.toPointer(psaLogFile), util.toPointer(pinfoBuffer), util.toPointer(pcbBuffer)));
 }
 
 export function GetLogContainerName(
@@ -12063,7 +12078,7 @@ export function GetLogContainerName(
   cLenContainerName: number /* u32 */,
   pcActualLenContainerName: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libclfsw32.GetLogContainerName(util.toPointer(hLog), cidLogicalContainer, util.pwstrToFfi(pwstrContainerName), cLenContainerName, util.toPointer(pcActualLenContainerName)));
+  return util.boolFromFfi(libclfsw32_dll.GetLogContainerName(util.toPointer(hLog), cidLogicalContainer, util.pwstrToFfi(pwstrContainerName), cLenContainerName, util.toPointer(pcActualLenContainerName)));
 }
 
 export function GetLogIoStatistics(
@@ -12073,20 +12088,20 @@ export function GetLogIoStatistics(
   eStatsClass: CLFS_IOSTATS_CLASS /* Windows.Win32.Storage.FileSystem.CLFS_IOSTATS_CLASS */,
   pcbStatsWritten: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libclfsw32.GetLogIoStatistics(util.toPointer(hLog), util.toPointer(pvStatsBuffer), cbStatsBuffer, eStatsClass, util.toPointer(pcbStatsWritten)));
+  return util.boolFromFfi(libclfsw32_dll.GetLogIoStatistics(util.toPointer(hLog), util.toPointer(pvStatsBuffer), cbStatsBuffer, eStatsClass, util.toPointer(pcbStatsWritten)));
 }
 
 export function RegisterManageableLogClient(
   hLog: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
   pCallbacks: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libclfsw32.RegisterManageableLogClient(util.toPointer(hLog), util.toPointer(pCallbacks)));
+  return util.boolFromFfi(libclfsw32_dll.RegisterManageableLogClient(util.toPointer(hLog), util.toPointer(pCallbacks)));
 }
 
 export function DeregisterManageableLogClient(
   hLog: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libclfsw32.DeregisterManageableLogClient(util.toPointer(hLog)));
+  return util.boolFromFfi(libclfsw32_dll.DeregisterManageableLogClient(util.toPointer(hLog)));
 }
 
 export function ReadLogNotification(
@@ -12094,21 +12109,21 @@ export function ReadLogNotification(
   pNotification: Deno.PointerValue | Uint8Array | null /* ptr */,
   lpOverlapped: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libclfsw32.ReadLogNotification(util.toPointer(hLog), util.toPointer(pNotification), util.toPointer(lpOverlapped)));
+  return util.boolFromFfi(libclfsw32_dll.ReadLogNotification(util.toPointer(hLog), util.toPointer(pNotification), util.toPointer(lpOverlapped)));
 }
 
 export function InstallLogPolicy(
   hLog: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
   pPolicy: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libclfsw32.InstallLogPolicy(util.toPointer(hLog), util.toPointer(pPolicy)));
+  return util.boolFromFfi(libclfsw32_dll.InstallLogPolicy(util.toPointer(hLog), util.toPointer(pPolicy)));
 }
 
 export function RemoveLogPolicy(
   hLog: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
   ePolicyType: CLFS_MGMT_POLICY_TYPE /* Windows.Win32.Storage.FileSystem.CLFS_MGMT_POLICY_TYPE */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libclfsw32.RemoveLogPolicy(util.toPointer(hLog), ePolicyType));
+  return util.boolFromFfi(libclfsw32_dll.RemoveLogPolicy(util.toPointer(hLog), ePolicyType));
 }
 
 export function QueryLogPolicy(
@@ -12117,7 +12132,7 @@ export function QueryLogPolicy(
   pPolicyBuffer: Deno.PointerValue | Uint8Array | null /* ptr */,
   pcbPolicyBuffer: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libclfsw32.QueryLogPolicy(util.toPointer(hLog), ePolicyType, util.toPointer(pPolicyBuffer), util.toPointer(pcbPolicyBuffer)));
+  return util.boolFromFfi(libclfsw32_dll.QueryLogPolicy(util.toPointer(hLog), ePolicyType, util.toPointer(pPolicyBuffer), util.toPointer(pcbPolicyBuffer)));
 }
 
 export function SetLogFileSizeWithPolicy(
@@ -12125,20 +12140,20 @@ export function SetLogFileSizeWithPolicy(
   pDesiredSize: Deno.PointerValue | Uint8Array | null /* ptr */,
   pResultingSize: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libclfsw32.SetLogFileSizeWithPolicy(util.toPointer(hLog), util.toPointer(pDesiredSize), util.toPointer(pResultingSize)));
+  return util.boolFromFfi(libclfsw32_dll.SetLogFileSizeWithPolicy(util.toPointer(hLog), util.toPointer(pDesiredSize), util.toPointer(pResultingSize)));
 }
 
 export function HandleLogFull(
   hLog: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libclfsw32.HandleLogFull(util.toPointer(hLog)));
+  return util.boolFromFfi(libclfsw32_dll.HandleLogFull(util.toPointer(hLog)));
 }
 
 export function LogTailAdvanceFailure(
   hLog: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
   dwReason: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libclfsw32.LogTailAdvanceFailure(util.toPointer(hLog), dwReason));
+  return util.boolFromFfi(libclfsw32_dll.LogTailAdvanceFailure(util.toPointer(hLog), dwReason));
 }
 
 export function RegisterForLogWriteNotification(
@@ -12146,41 +12161,41 @@ export function RegisterForLogWriteNotification(
   cbThreshold: number /* u32 */,
   fEnable: boolean /* Windows.Win32.Foundation.BOOL */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libclfsw32.RegisterForLogWriteNotification(util.toPointer(hLog), cbThreshold, util.boolToFfi(fEnable)));
+  return util.boolFromFfi(libclfsw32_dll.RegisterForLogWriteNotification(util.toPointer(hLog), cbThreshold, util.boolToFfi(fEnable)));
 }
 
 export function QueryUsersOnEncryptedFile(
   lpFileName: string | null /* Windows.Win32.Foundation.PWSTR */,
   pUsers: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libADVAPI32.QueryUsersOnEncryptedFile(util.pwstrToFfi(lpFileName), util.toPointer(pUsers));
+  return libADVAPI32_dll.QueryUsersOnEncryptedFile(util.pwstrToFfi(lpFileName), util.toPointer(pUsers));
 }
 
 export function QueryRecoveryAgentsOnEncryptedFile(
   lpFileName: string | null /* Windows.Win32.Foundation.PWSTR */,
   pRecoveryAgents: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libADVAPI32.QueryRecoveryAgentsOnEncryptedFile(util.pwstrToFfi(lpFileName), util.toPointer(pRecoveryAgents));
+  return libADVAPI32_dll.QueryRecoveryAgentsOnEncryptedFile(util.pwstrToFfi(lpFileName), util.toPointer(pRecoveryAgents));
 }
 
 export function RemoveUsersFromEncryptedFile(
   lpFileName: string | null /* Windows.Win32.Foundation.PWSTR */,
   pHashes: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libADVAPI32.RemoveUsersFromEncryptedFile(util.pwstrToFfi(lpFileName), util.toPointer(pHashes));
+  return libADVAPI32_dll.RemoveUsersFromEncryptedFile(util.pwstrToFfi(lpFileName), util.toPointer(pHashes));
 }
 
 export function AddUsersToEncryptedFile(
   lpFileName: string | null /* Windows.Win32.Foundation.PWSTR */,
   pEncryptionCertificates: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libADVAPI32.AddUsersToEncryptedFile(util.pwstrToFfi(lpFileName), util.toPointer(pEncryptionCertificates));
+  return libADVAPI32_dll.AddUsersToEncryptedFile(util.pwstrToFfi(lpFileName), util.toPointer(pEncryptionCertificates));
 }
 
 export function SetUserFileEncryptionKey(
   pEncryptionCertificate: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libADVAPI32.SetUserFileEncryptionKey(util.toPointer(pEncryptionCertificate));
+  return libADVAPI32_dll.SetUserFileEncryptionKey(util.toPointer(pEncryptionCertificate));
 }
 
 export function SetUserFileEncryptionKeyEx(
@@ -12189,20 +12204,20 @@ export function SetUserFileEncryptionKeyEx(
   dwFlags: number /* u32 */,
   pvReserved: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libADVAPI32.SetUserFileEncryptionKeyEx(util.toPointer(pEncryptionCertificate), dwCapabilities, dwFlags, util.toPointer(pvReserved));
+  return libADVAPI32_dll.SetUserFileEncryptionKeyEx(util.toPointer(pEncryptionCertificate), dwCapabilities, dwFlags, util.toPointer(pvReserved));
 }
 
 export function FreeEncryptionCertificateHashList(
   pUsers: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): void /* void */ {
-  return libADVAPI32.FreeEncryptionCertificateHashList(util.toPointer(pUsers));
+  return libADVAPI32_dll.FreeEncryptionCertificateHashList(util.toPointer(pUsers));
 }
 
 export function EncryptionDisable(
   DirPath: string | null /* Windows.Win32.Foundation.PWSTR */,
   Disable: boolean /* Windows.Win32.Foundation.BOOL */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32.EncryptionDisable(util.pwstrToFfi(DirPath), util.boolToFfi(Disable)));
+  return util.boolFromFfi(libADVAPI32_dll.EncryptionDisable(util.pwstrToFfi(DirPath), util.boolToFfi(Disable)));
 }
 
 export function DuplicateEncryptionInfoFile(
@@ -12212,7 +12227,7 @@ export function DuplicateEncryptionInfoFile(
   dwAttributes: number /* u32 */,
   lpSecurityAttributes: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libADVAPI32.DuplicateEncryptionInfoFile(util.pwstrToFfi(SrcFileName), util.pwstrToFfi(DstFileName), dwCreationDistribution, dwAttributes, util.toPointer(lpSecurityAttributes));
+  return libADVAPI32_dll.DuplicateEncryptionInfoFile(util.pwstrToFfi(SrcFileName), util.pwstrToFfi(DstFileName), dwCreationDistribution, dwAttributes, util.toPointer(lpSecurityAttributes));
 }
 
 export function GetEncryptedFileMetadata(
@@ -12220,7 +12235,7 @@ export function GetEncryptedFileMetadata(
   pcbMetadata: Deno.PointerValue | Uint8Array | null /* ptr */,
   ppbMetadata: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libADVAPI32.GetEncryptedFileMetadata(util.pwstrToFfi(lpFileName), util.toPointer(pcbMetadata), util.toPointer(ppbMetadata));
+  return libADVAPI32_dll.GetEncryptedFileMetadata(util.pwstrToFfi(lpFileName), util.toPointer(pcbMetadata), util.toPointer(ppbMetadata));
 }
 
 export function SetEncryptedFileMetadata(
@@ -12231,55 +12246,55 @@ export function SetEncryptedFileMetadata(
   dwOperation: number /* u32 */,
   pCertificatesAdded: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libADVAPI32.SetEncryptedFileMetadata(util.pwstrToFfi(lpFileName), util.toPointer(pbOldMetadata), util.toPointer(pbNewMetadata), util.toPointer(pOwnerHash), dwOperation, util.toPointer(pCertificatesAdded));
+  return libADVAPI32_dll.SetEncryptedFileMetadata(util.pwstrToFfi(lpFileName), util.toPointer(pbOldMetadata), util.toPointer(pbNewMetadata), util.toPointer(pOwnerHash), dwOperation, util.toPointer(pCertificatesAdded));
 }
 
 export function FreeEncryptedFileMetadata(
   pbMetadata: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): void /* void */ {
-  return libADVAPI32.FreeEncryptedFileMetadata(util.toPointer(pbMetadata));
+  return libADVAPI32_dll.FreeEncryptedFileMetadata(util.toPointer(pbMetadata));
 }
 
 export function LZStart(): number /* i32 */ {
-  return libKERNEL32.LZStart();
+  return libKERNEL32_dll.LZStart();
 }
 
 export function LZDone(): void /* void */ {
-  return libKERNEL32.LZDone();
+  return libKERNEL32_dll.LZDone();
 }
 
 export function CopyLZFile(
   hfSource: number /* i32 */,
   hfDest: number /* i32 */,
 ): number /* i32 */ {
-  return libKERNEL32.CopyLZFile(hfSource, hfDest);
+  return libKERNEL32_dll.CopyLZFile(hfSource, hfDest);
 }
 
 export function LZCopy(
   hfSource: number /* i32 */,
   hfDest: number /* i32 */,
 ): number /* i32 */ {
-  return libKERNEL32.LZCopy(hfSource, hfDest);
+  return libKERNEL32_dll.LZCopy(hfSource, hfDest);
 }
 
 export function LZInit(
   hfSource: number /* i32 */,
 ): number /* i32 */ {
-  return libKERNEL32.LZInit(hfSource);
+  return libKERNEL32_dll.LZInit(hfSource);
 }
 
 export function GetExpandedNameA(
   lpszSource: string | null /* Windows.Win32.Foundation.PSTR */,
   lpszBuffer: string | null /* Windows.Win32.Foundation.PSTR */,
 ): number /* i32 */ {
-  return libKERNEL32.GetExpandedNameA(util.pstrToFfi(lpszSource), util.pstrToFfi(lpszBuffer));
+  return libKERNEL32_dll.GetExpandedNameA(util.pstrToFfi(lpszSource), util.pstrToFfi(lpszBuffer));
 }
 
 export function GetExpandedNameW(
   lpszSource: string | null /* Windows.Win32.Foundation.PWSTR */,
   lpszBuffer: string | null /* Windows.Win32.Foundation.PWSTR */,
 ): number /* i32 */ {
-  return libKERNEL32.GetExpandedNameW(util.pwstrToFfi(lpszSource), util.pwstrToFfi(lpszBuffer));
+  return libKERNEL32_dll.GetExpandedNameW(util.pwstrToFfi(lpszSource), util.pwstrToFfi(lpszBuffer));
 }
 
 export function LZOpenFileA(
@@ -12287,7 +12302,7 @@ export function LZOpenFileA(
   lpReOpenBuf: Deno.PointerValue | Uint8Array | null /* ptr */,
   wStyle: LZOPENFILE_STYLE /* Windows.Win32.Storage.FileSystem.LZOPENFILE_STYLE */,
 ): number /* i32 */ {
-  return libKERNEL32.LZOpenFileA(util.pstrToFfi(lpFileName), util.toPointer(lpReOpenBuf), wStyle);
+  return libKERNEL32_dll.LZOpenFileA(util.pstrToFfi(lpFileName), util.toPointer(lpReOpenBuf), wStyle);
 }
 
 export function LZOpenFileW(
@@ -12295,7 +12310,7 @@ export function LZOpenFileW(
   lpReOpenBuf: Deno.PointerValue | Uint8Array | null /* ptr */,
   wStyle: LZOPENFILE_STYLE /* Windows.Win32.Storage.FileSystem.LZOPENFILE_STYLE */,
 ): number /* i32 */ {
-  return libKERNEL32.LZOpenFileW(util.pwstrToFfi(lpFileName), util.toPointer(lpReOpenBuf), wStyle);
+  return libKERNEL32_dll.LZOpenFileW(util.pwstrToFfi(lpFileName), util.toPointer(lpReOpenBuf), wStyle);
 }
 
 export function LZSeek(
@@ -12303,7 +12318,7 @@ export function LZSeek(
   lOffset: number /* i32 */,
   iOrigin: number /* i32 */,
 ): number /* i32 */ {
-  return libKERNEL32.LZSeek(hFile, lOffset, iOrigin);
+  return libKERNEL32_dll.LZSeek(hFile, lOffset, iOrigin);
 }
 
 export function LZRead(
@@ -12311,20 +12326,20 @@ export function LZRead(
   lpBuffer: string | null /* Windows.Win32.Foundation.PSTR */,
   cbRead: number /* i32 */,
 ): number /* i32 */ {
-  return libKERNEL32.LZRead(hFile, util.pstrToFfi(lpBuffer), cbRead);
+  return libKERNEL32_dll.LZRead(hFile, util.pstrToFfi(lpBuffer), cbRead);
 }
 
 export function LZClose(
   hFile: number /* i32 */,
 ): void /* void */ {
-  return libKERNEL32.LZClose(hFile);
+  return libKERNEL32_dll.LZClose(hFile);
 }
 
 export function WofShouldCompressBinaries(
   Volume: string | null /* Windows.Win32.Foundation.PWSTR */,
   Algorithm: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWOFUTIL.WofShouldCompressBinaries(util.pwstrToFfi(Volume), util.toPointer(Algorithm)));
+  return util.boolFromFfi(libWOFUTIL_dll.WofShouldCompressBinaries(util.pwstrToFfi(Volume), util.toPointer(Algorithm)));
 }
 
 export function WofGetDriverVersion(
@@ -12332,7 +12347,7 @@ export function WofGetDriverVersion(
   Provider: number /* u32 */,
   WofVersion: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libWOFUTIL.WofGetDriverVersion(util.toPointer(FileOrVolumeHandle), Provider, util.toPointer(WofVersion)));
+  return util.pointerFromFfi(libWOFUTIL_dll.WofGetDriverVersion(util.toPointer(FileOrVolumeHandle), Provider, util.toPointer(WofVersion)));
 }
 
 export function WofSetFileDataLocation(
@@ -12341,7 +12356,7 @@ export function WofSetFileDataLocation(
   ExternalFileInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
   Length: number /* u32 */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libWOFUTIL.WofSetFileDataLocation(util.toPointer(FileHandle), Provider, util.toPointer(ExternalFileInfo), Length));
+  return util.pointerFromFfi(libWOFUTIL_dll.WofSetFileDataLocation(util.toPointer(FileHandle), Provider, util.toPointer(ExternalFileInfo), Length));
 }
 
 export function WofIsExternalFile(
@@ -12351,7 +12366,7 @@ export function WofIsExternalFile(
   ExternalFileInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
   BufferLength: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libWOFUTIL.WofIsExternalFile(util.pwstrToFfi(FilePath), util.toPointer(IsExternalFile), util.toPointer(Provider), util.toPointer(ExternalFileInfo), util.toPointer(BufferLength)));
+  return util.pointerFromFfi(libWOFUTIL_dll.WofIsExternalFile(util.pwstrToFfi(FilePath), util.toPointer(IsExternalFile), util.toPointer(Provider), util.toPointer(ExternalFileInfo), util.toPointer(BufferLength)));
 }
 
 export function WofEnumEntries(
@@ -12360,7 +12375,7 @@ export function WofEnumEntries(
   EnumProc: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Storage.FileSystem.WofEnumEntryProc */,
   UserData: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libWOFUTIL.WofEnumEntries(util.pwstrToFfi(VolumeName), Provider, util.toPointer(EnumProc), util.toPointer(UserData)));
+  return util.pointerFromFfi(libWOFUTIL_dll.WofEnumEntries(util.pwstrToFfi(VolumeName), Provider, util.toPointer(EnumProc), util.toPointer(UserData)));
 }
 
 export function WofWimAddEntry(
@@ -12370,7 +12385,7 @@ export function WofWimAddEntry(
   WimIndex: number /* u32 */,
   DataSourceId: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libWOFUTIL.WofWimAddEntry(util.pwstrToFfi(VolumeName), util.pwstrToFfi(WimPath), WimType, WimIndex, util.toPointer(DataSourceId)));
+  return util.pointerFromFfi(libWOFUTIL_dll.WofWimAddEntry(util.pwstrToFfi(VolumeName), util.pwstrToFfi(WimPath), WimType, WimIndex, util.toPointer(DataSourceId)));
 }
 
 export function WofWimEnumFiles(
@@ -12379,21 +12394,21 @@ export function WofWimEnumFiles(
   EnumProc: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Storage.FileSystem.WofEnumFilesProc */,
   UserData: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libWOFUTIL.WofWimEnumFiles(util.pwstrToFfi(VolumeName), util.toPointer(DataSourceId), util.toPointer(EnumProc), util.toPointer(UserData)));
+  return util.pointerFromFfi(libWOFUTIL_dll.WofWimEnumFiles(util.pwstrToFfi(VolumeName), util.toPointer(DataSourceId), util.toPointer(EnumProc), util.toPointer(UserData)));
 }
 
 export function WofWimSuspendEntry(
   VolumeName: string | null /* Windows.Win32.Foundation.PWSTR */,
   DataSourceId: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.LARGE_INTEGER */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libWOFUTIL.WofWimSuspendEntry(util.pwstrToFfi(VolumeName), util.toPointer(DataSourceId)));
+  return util.pointerFromFfi(libWOFUTIL_dll.WofWimSuspendEntry(util.pwstrToFfi(VolumeName), util.toPointer(DataSourceId)));
 }
 
 export function WofWimRemoveEntry(
   VolumeName: string | null /* Windows.Win32.Foundation.PWSTR */,
   DataSourceId: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.LARGE_INTEGER */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libWOFUTIL.WofWimRemoveEntry(util.pwstrToFfi(VolumeName), util.toPointer(DataSourceId)));
+  return util.pointerFromFfi(libWOFUTIL_dll.WofWimRemoveEntry(util.pwstrToFfi(VolumeName), util.toPointer(DataSourceId)));
 }
 
 export function WofWimUpdateEntry(
@@ -12401,7 +12416,7 @@ export function WofWimUpdateEntry(
   DataSourceId: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.LARGE_INTEGER */,
   NewWimPath: string | null /* Windows.Win32.Foundation.PWSTR */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libWOFUTIL.WofWimUpdateEntry(util.pwstrToFfi(VolumeName), util.toPointer(DataSourceId), util.pwstrToFfi(NewWimPath)));
+  return util.pointerFromFfi(libWOFUTIL_dll.WofWimUpdateEntry(util.pwstrToFfi(VolumeName), util.toPointer(DataSourceId), util.pwstrToFfi(NewWimPath)));
 }
 
 export function WofFileEnumFiles(
@@ -12410,7 +12425,7 @@ export function WofFileEnumFiles(
   EnumProc: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Storage.FileSystem.WofEnumFilesProc */,
   UserData: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libWOFUTIL.WofFileEnumFiles(util.pwstrToFfi(VolumeName), Algorithm, util.toPointer(EnumProc), util.toPointer(UserData)));
+  return util.pointerFromFfi(libWOFUTIL_dll.WofFileEnumFiles(util.pwstrToFfi(VolumeName), Algorithm, util.toPointer(EnumProc), util.toPointer(UserData)));
 }
 
 export function TxfLogCreateFileReadContext(
@@ -12420,7 +12435,7 @@ export function TxfLogCreateFileReadContext(
   TxfFileId: Deno.PointerValue | Uint8Array | null /* ptr */,
   TxfLogContext: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libtxfw32.TxfLogCreateFileReadContext(util.pwstrToFfi(LogPath), util.toPointer(BeginningLsn), util.toPointer(EndingLsn), util.toPointer(TxfFileId), util.toPointer(TxfLogContext)));
+  return util.boolFromFfi(libtxfw32_dll.TxfLogCreateFileReadContext(util.pwstrToFfi(LogPath), util.toPointer(BeginningLsn), util.toPointer(EndingLsn), util.toPointer(TxfFileId), util.toPointer(TxfLogContext)));
 }
 
 export function TxfLogCreateRangeReadContext(
@@ -12432,13 +12447,13 @@ export function TxfLogCreateRangeReadContext(
   RecordTypeMask: number /* u32 */,
   TxfLogContext: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libtxfw32.TxfLogCreateRangeReadContext(util.pwstrToFfi(LogPath), util.toPointer(BeginningLsn), util.toPointer(EndingLsn), util.toPointer(BeginningVirtualClock), util.toPointer(EndingVirtualClock), RecordTypeMask, util.toPointer(TxfLogContext)));
+  return util.boolFromFfi(libtxfw32_dll.TxfLogCreateRangeReadContext(util.pwstrToFfi(LogPath), util.toPointer(BeginningLsn), util.toPointer(EndingLsn), util.toPointer(BeginningVirtualClock), util.toPointer(EndingVirtualClock), RecordTypeMask, util.toPointer(TxfLogContext)));
 }
 
 export function TxfLogDestroyReadContext(
   TxfLogContext: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libtxfw32.TxfLogDestroyReadContext(util.toPointer(TxfLogContext)));
+  return util.boolFromFfi(libtxfw32_dll.TxfLogDestroyReadContext(util.toPointer(TxfLogContext)));
 }
 
 export function TxfLogReadRecords(
@@ -12448,7 +12463,7 @@ export function TxfLogReadRecords(
   BytesUsed: Deno.PointerValue | Uint8Array | null /* ptr */,
   RecordCount: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libtxfw32.TxfLogReadRecords(util.toPointer(TxfLogContext), BufferLength, util.toPointer(Buffer), util.toPointer(BytesUsed), util.toPointer(RecordCount)));
+  return util.boolFromFfi(libtxfw32_dll.TxfLogReadRecords(util.toPointer(TxfLogContext), BufferLength, util.toPointer(Buffer), util.toPointer(BytesUsed), util.toPointer(RecordCount)));
 }
 
 export function TxfReadMetadataInfo(
@@ -12458,7 +12473,7 @@ export function TxfReadMetadataInfo(
   TransactionState: Deno.PointerValue | Uint8Array | null /* ptr */,
   LockingTransaction: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libtxfw32.TxfReadMetadataInfo(util.toPointer(FileHandle), util.toPointer(TxfFileId), util.toPointer(LastLsn), util.toPointer(TransactionState), util.toPointer(LockingTransaction)));
+  return util.boolFromFfi(libtxfw32_dll.TxfReadMetadataInfo(util.toPointer(FileHandle), util.toPointer(TxfFileId), util.toPointer(LastLsn), util.toPointer(TransactionState), util.toPointer(LockingTransaction)));
 }
 
 export function TxfLogRecordGetFileName(
@@ -12468,7 +12483,7 @@ export function TxfLogRecordGetFileName(
   NameBufferLengthInBytes: Deno.PointerValue | Uint8Array | null /* ptr */,
   TxfId: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libtxfw32.TxfLogRecordGetFileName(util.toPointer(RecordBuffer), RecordBufferLengthInBytes, util.pwstrToFfi(NameBuffer), util.toPointer(NameBufferLengthInBytes), util.toPointer(TxfId)));
+  return util.boolFromFfi(libtxfw32_dll.TxfLogRecordGetFileName(util.toPointer(RecordBuffer), RecordBufferLengthInBytes, util.pwstrToFfi(NameBuffer), util.toPointer(NameBufferLengthInBytes), util.toPointer(TxfId)));
 }
 
 export function TxfLogRecordGetGenericType(
@@ -12477,19 +12492,19 @@ export function TxfLogRecordGetGenericType(
   GenericType: Deno.PointerValue | Uint8Array | null /* ptr */,
   VirtualClock: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libtxfw32.TxfLogRecordGetGenericType(util.toPointer(RecordBuffer), RecordBufferLengthInBytes, util.toPointer(GenericType), util.toPointer(VirtualClock)));
+  return util.boolFromFfi(libtxfw32_dll.TxfLogRecordGetGenericType(util.toPointer(RecordBuffer), RecordBufferLengthInBytes, util.toPointer(GenericType), util.toPointer(VirtualClock)));
 }
 
 export function TxfSetThreadMiniVersionForCreate(
   MiniVersion: number /* u16 */,
 ): void /* void */ {
-  return libtxfw32.TxfSetThreadMiniVersionForCreate(MiniVersion);
+  return libtxfw32_dll.TxfSetThreadMiniVersionForCreate(MiniVersion);
 }
 
 export function TxfGetThreadMiniVersionForCreate(
   MiniVersion: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): void /* void */ {
-  return libtxfw32.TxfGetThreadMiniVersionForCreate(util.toPointer(MiniVersion));
+  return libtxfw32_dll.TxfGetThreadMiniVersionForCreate(util.toPointer(MiniVersion));
 }
 
 export function CreateTransaction(
@@ -12501,45 +12516,45 @@ export function CreateTransaction(
   Timeout: number /* u32 */,
   Description: string | null /* Windows.Win32.Foundation.PWSTR */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */ {
-  return util.pointerFromFfi(libktmw32.CreateTransaction(util.toPointer(lpTransactionAttributes), util.toPointer(UOW), CreateOptions, IsolationLevel, IsolationFlags, Timeout, util.pwstrToFfi(Description)));
+  return util.pointerFromFfi(libktmw32_dll.CreateTransaction(util.toPointer(lpTransactionAttributes), util.toPointer(UOW), CreateOptions, IsolationLevel, IsolationFlags, Timeout, util.pwstrToFfi(Description)));
 }
 
 export function OpenTransaction(
   dwDesiredAccess: number /* u32 */,
   TransactionId: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */ {
-  return util.pointerFromFfi(libktmw32.OpenTransaction(dwDesiredAccess, util.toPointer(TransactionId)));
+  return util.pointerFromFfi(libktmw32_dll.OpenTransaction(dwDesiredAccess, util.toPointer(TransactionId)));
 }
 
 export function CommitTransaction(
   TransactionHandle: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libktmw32.CommitTransaction(util.toPointer(TransactionHandle)));
+  return util.boolFromFfi(libktmw32_dll.CommitTransaction(util.toPointer(TransactionHandle)));
 }
 
 export function CommitTransactionAsync(
   TransactionHandle: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libktmw32.CommitTransactionAsync(util.toPointer(TransactionHandle)));
+  return util.boolFromFfi(libktmw32_dll.CommitTransactionAsync(util.toPointer(TransactionHandle)));
 }
 
 export function RollbackTransaction(
   TransactionHandle: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libktmw32.RollbackTransaction(util.toPointer(TransactionHandle)));
+  return util.boolFromFfi(libktmw32_dll.RollbackTransaction(util.toPointer(TransactionHandle)));
 }
 
 export function RollbackTransactionAsync(
   TransactionHandle: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libktmw32.RollbackTransactionAsync(util.toPointer(TransactionHandle)));
+  return util.boolFromFfi(libktmw32_dll.RollbackTransactionAsync(util.toPointer(TransactionHandle)));
 }
 
 export function GetTransactionId(
   TransactionHandle: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
   TransactionId: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libktmw32.GetTransactionId(util.toPointer(TransactionHandle), util.toPointer(TransactionId)));
+  return util.boolFromFfi(libktmw32_dll.GetTransactionId(util.toPointer(TransactionHandle), util.toPointer(TransactionId)));
 }
 
 export function GetTransactionInformation(
@@ -12551,7 +12566,7 @@ export function GetTransactionInformation(
   BufferLength: number /* u32 */,
   Description: string | null /* Windows.Win32.Foundation.PWSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libktmw32.GetTransactionInformation(util.toPointer(TransactionHandle), util.toPointer(Outcome), util.toPointer(IsolationLevel), util.toPointer(IsolationFlags), util.toPointer(Timeout), BufferLength, util.pwstrToFfi(Description)));
+  return util.boolFromFfi(libktmw32_dll.GetTransactionInformation(util.toPointer(TransactionHandle), util.toPointer(Outcome), util.toPointer(IsolationLevel), util.toPointer(IsolationFlags), util.toPointer(Timeout), BufferLength, util.pwstrToFfi(Description)));
 }
 
 export function SetTransactionInformation(
@@ -12561,7 +12576,7 @@ export function SetTransactionInformation(
   Timeout: number /* u32 */,
   Description: string | null /* Windows.Win32.Foundation.PWSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libktmw32.SetTransactionInformation(util.toPointer(TransactionHandle), IsolationLevel, IsolationFlags, Timeout, util.pwstrToFfi(Description)));
+  return util.boolFromFfi(libktmw32_dll.SetTransactionInformation(util.toPointer(TransactionHandle), IsolationLevel, IsolationFlags, Timeout, util.pwstrToFfi(Description)));
 }
 
 export function CreateTransactionManager(
@@ -12570,7 +12585,7 @@ export function CreateTransactionManager(
   CreateOptions: number /* u32 */,
   CommitStrength: number /* u32 */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */ {
-  return util.pointerFromFfi(libktmw32.CreateTransactionManager(util.toPointer(lpTransactionAttributes), util.pwstrToFfi(LogFileName), CreateOptions, CommitStrength));
+  return util.pointerFromFfi(libktmw32_dll.CreateTransactionManager(util.toPointer(lpTransactionAttributes), util.pwstrToFfi(LogFileName), CreateOptions, CommitStrength));
 }
 
 export function OpenTransactionManager(
@@ -12578,7 +12593,7 @@ export function OpenTransactionManager(
   DesiredAccess: number /* u32 */,
   OpenOptions: number /* u32 */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */ {
-  return util.pointerFromFfi(libktmw32.OpenTransactionManager(util.pwstrToFfi(LogFileName), DesiredAccess, OpenOptions));
+  return util.pointerFromFfi(libktmw32_dll.OpenTransactionManager(util.pwstrToFfi(LogFileName), DesiredAccess, OpenOptions));
 }
 
 export function OpenTransactionManagerById(
@@ -12586,41 +12601,41 @@ export function OpenTransactionManagerById(
   DesiredAccess: number /* u32 */,
   OpenOptions: number /* u32 */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */ {
-  return util.pointerFromFfi(libktmw32.OpenTransactionManagerById(util.toPointer(TransactionManagerId), DesiredAccess, OpenOptions));
+  return util.pointerFromFfi(libktmw32_dll.OpenTransactionManagerById(util.toPointer(TransactionManagerId), DesiredAccess, OpenOptions));
 }
 
 export function RenameTransactionManager(
   LogFileName: string | null /* Windows.Win32.Foundation.PWSTR */,
   ExistingTransactionManagerGuid: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libktmw32.RenameTransactionManager(util.pwstrToFfi(LogFileName), util.toPointer(ExistingTransactionManagerGuid)));
+  return util.boolFromFfi(libktmw32_dll.RenameTransactionManager(util.pwstrToFfi(LogFileName), util.toPointer(ExistingTransactionManagerGuid)));
 }
 
 export function RollforwardTransactionManager(
   TransactionManagerHandle: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
   TmVirtualClock: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libktmw32.RollforwardTransactionManager(util.toPointer(TransactionManagerHandle), util.toPointer(TmVirtualClock)));
+  return util.boolFromFfi(libktmw32_dll.RollforwardTransactionManager(util.toPointer(TransactionManagerHandle), util.toPointer(TmVirtualClock)));
 }
 
 export function RecoverTransactionManager(
   TransactionManagerHandle: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libktmw32.RecoverTransactionManager(util.toPointer(TransactionManagerHandle)));
+  return util.boolFromFfi(libktmw32_dll.RecoverTransactionManager(util.toPointer(TransactionManagerHandle)));
 }
 
 export function GetCurrentClockTransactionManager(
   TransactionManagerHandle: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
   TmVirtualClock: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libktmw32.GetCurrentClockTransactionManager(util.toPointer(TransactionManagerHandle), util.toPointer(TmVirtualClock)));
+  return util.boolFromFfi(libktmw32_dll.GetCurrentClockTransactionManager(util.toPointer(TransactionManagerHandle), util.toPointer(TmVirtualClock)));
 }
 
 export function GetTransactionManagerId(
   TransactionManagerHandle: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
   TransactionManagerId: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libktmw32.GetTransactionManagerId(util.toPointer(TransactionManagerHandle), util.toPointer(TransactionManagerId)));
+  return util.boolFromFfi(libktmw32_dll.GetTransactionManagerId(util.toPointer(TransactionManagerHandle), util.toPointer(TransactionManagerId)));
 }
 
 export function CreateResourceManager(
@@ -12630,7 +12645,7 @@ export function CreateResourceManager(
   TmHandle: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
   Description: string | null /* Windows.Win32.Foundation.PWSTR */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */ {
-  return util.pointerFromFfi(libktmw32.CreateResourceManager(util.toPointer(lpResourceManagerAttributes), util.toPointer(ResourceManagerId), CreateOptions, util.toPointer(TmHandle), util.pwstrToFfi(Description)));
+  return util.pointerFromFfi(libktmw32_dll.CreateResourceManager(util.toPointer(lpResourceManagerAttributes), util.toPointer(ResourceManagerId), CreateOptions, util.toPointer(TmHandle), util.pwstrToFfi(Description)));
 }
 
 export function OpenResourceManager(
@@ -12638,13 +12653,13 @@ export function OpenResourceManager(
   TmHandle: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
   ResourceManagerId: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */ {
-  return util.pointerFromFfi(libktmw32.OpenResourceManager(dwDesiredAccess, util.toPointer(TmHandle), util.toPointer(ResourceManagerId)));
+  return util.pointerFromFfi(libktmw32_dll.OpenResourceManager(dwDesiredAccess, util.toPointer(TmHandle), util.toPointer(ResourceManagerId)));
 }
 
 export function RecoverResourceManager(
   ResourceManagerHandle: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libktmw32.RecoverResourceManager(util.toPointer(ResourceManagerHandle)));
+  return util.boolFromFfi(libktmw32_dll.RecoverResourceManager(util.toPointer(ResourceManagerHandle)));
 }
 
 export function GetNotificationResourceManager(
@@ -12654,7 +12669,7 @@ export function GetNotificationResourceManager(
   dwMilliseconds: number /* u32 */,
   ReturnLength: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libktmw32.GetNotificationResourceManager(util.toPointer(ResourceManagerHandle), util.toPointer(TransactionNotification), NotificationLength, dwMilliseconds, util.toPointer(ReturnLength)));
+  return util.boolFromFfi(libktmw32_dll.GetNotificationResourceManager(util.toPointer(ResourceManagerHandle), util.toPointer(TransactionNotification), NotificationLength, dwMilliseconds, util.toPointer(ReturnLength)));
 }
 
 export function GetNotificationResourceManagerAsync(
@@ -12664,7 +12679,7 @@ export function GetNotificationResourceManagerAsync(
   ReturnLength: Deno.PointerValue | Uint8Array | null /* ptr */,
   lpOverlapped: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libktmw32.GetNotificationResourceManagerAsync(util.toPointer(ResourceManagerHandle), util.toPointer(TransactionNotification), TransactionNotificationLength, util.toPointer(ReturnLength), util.toPointer(lpOverlapped)));
+  return util.boolFromFfi(libktmw32_dll.GetNotificationResourceManagerAsync(util.toPointer(ResourceManagerHandle), util.toPointer(TransactionNotification), TransactionNotificationLength, util.toPointer(ReturnLength), util.toPointer(lpOverlapped)));
 }
 
 export function SetResourceManagerCompletionPort(
@@ -12672,7 +12687,7 @@ export function SetResourceManagerCompletionPort(
   IoCompletionPortHandle: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
   CompletionKey: Deno.PointerValue /* usize */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libktmw32.SetResourceManagerCompletionPort(util.toPointer(ResourceManagerHandle), util.toPointer(IoCompletionPortHandle), CompletionKey));
+  return util.boolFromFfi(libktmw32_dll.SetResourceManagerCompletionPort(util.toPointer(ResourceManagerHandle), util.toPointer(IoCompletionPortHandle), CompletionKey));
 }
 
 export function CreateEnlistment(
@@ -12683,7 +12698,7 @@ export function CreateEnlistment(
   CreateOptions: number /* u32 */,
   EnlistmentKey: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */ {
-  return util.pointerFromFfi(libktmw32.CreateEnlistment(util.toPointer(lpEnlistmentAttributes), util.toPointer(ResourceManagerHandle), util.toPointer(TransactionHandle), NotificationMask, CreateOptions, util.toPointer(EnlistmentKey)));
+  return util.pointerFromFfi(libktmw32_dll.CreateEnlistment(util.toPointer(lpEnlistmentAttributes), util.toPointer(ResourceManagerHandle), util.toPointer(TransactionHandle), NotificationMask, CreateOptions, util.toPointer(EnlistmentKey)));
 }
 
 export function OpenEnlistment(
@@ -12691,14 +12706,14 @@ export function OpenEnlistment(
   ResourceManagerHandle: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
   EnlistmentId: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */ {
-  return util.pointerFromFfi(libktmw32.OpenEnlistment(dwDesiredAccess, util.toPointer(ResourceManagerHandle), util.toPointer(EnlistmentId)));
+  return util.pointerFromFfi(libktmw32_dll.OpenEnlistment(dwDesiredAccess, util.toPointer(ResourceManagerHandle), util.toPointer(EnlistmentId)));
 }
 
 export function RecoverEnlistment(
   EnlistmentHandle: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
   EnlistmentKey: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libktmw32.RecoverEnlistment(util.toPointer(EnlistmentHandle), util.toPointer(EnlistmentKey)));
+  return util.boolFromFfi(libktmw32_dll.RecoverEnlistment(util.toPointer(EnlistmentHandle), util.toPointer(EnlistmentKey)));
 }
 
 export function GetEnlistmentRecoveryInformation(
@@ -12707,14 +12722,14 @@ export function GetEnlistmentRecoveryInformation(
   Buffer: Deno.PointerValue | Uint8Array | null /* ptr */,
   BufferUsed: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libktmw32.GetEnlistmentRecoveryInformation(util.toPointer(EnlistmentHandle), BufferSize, util.toPointer(Buffer), util.toPointer(BufferUsed)));
+  return util.boolFromFfi(libktmw32_dll.GetEnlistmentRecoveryInformation(util.toPointer(EnlistmentHandle), BufferSize, util.toPointer(Buffer), util.toPointer(BufferUsed)));
 }
 
 export function GetEnlistmentId(
   EnlistmentHandle: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
   EnlistmentId: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libktmw32.GetEnlistmentId(util.toPointer(EnlistmentHandle), util.toPointer(EnlistmentId)));
+  return util.boolFromFfi(libktmw32_dll.GetEnlistmentId(util.toPointer(EnlistmentHandle), util.toPointer(EnlistmentId)));
 }
 
 export function SetEnlistmentRecoveryInformation(
@@ -12722,77 +12737,77 @@ export function SetEnlistmentRecoveryInformation(
   BufferSize: number /* u32 */,
   Buffer: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libktmw32.SetEnlistmentRecoveryInformation(util.toPointer(EnlistmentHandle), BufferSize, util.toPointer(Buffer)));
+  return util.boolFromFfi(libktmw32_dll.SetEnlistmentRecoveryInformation(util.toPointer(EnlistmentHandle), BufferSize, util.toPointer(Buffer)));
 }
 
 export function PrepareEnlistment(
   EnlistmentHandle: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
   TmVirtualClock: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libktmw32.PrepareEnlistment(util.toPointer(EnlistmentHandle), util.toPointer(TmVirtualClock)));
+  return util.boolFromFfi(libktmw32_dll.PrepareEnlistment(util.toPointer(EnlistmentHandle), util.toPointer(TmVirtualClock)));
 }
 
 export function PrePrepareEnlistment(
   EnlistmentHandle: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
   TmVirtualClock: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libktmw32.PrePrepareEnlistment(util.toPointer(EnlistmentHandle), util.toPointer(TmVirtualClock)));
+  return util.boolFromFfi(libktmw32_dll.PrePrepareEnlistment(util.toPointer(EnlistmentHandle), util.toPointer(TmVirtualClock)));
 }
 
 export function CommitEnlistment(
   EnlistmentHandle: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
   TmVirtualClock: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libktmw32.CommitEnlistment(util.toPointer(EnlistmentHandle), util.toPointer(TmVirtualClock)));
+  return util.boolFromFfi(libktmw32_dll.CommitEnlistment(util.toPointer(EnlistmentHandle), util.toPointer(TmVirtualClock)));
 }
 
 export function RollbackEnlistment(
   EnlistmentHandle: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
   TmVirtualClock: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libktmw32.RollbackEnlistment(util.toPointer(EnlistmentHandle), util.toPointer(TmVirtualClock)));
+  return util.boolFromFfi(libktmw32_dll.RollbackEnlistment(util.toPointer(EnlistmentHandle), util.toPointer(TmVirtualClock)));
 }
 
 export function PrePrepareComplete(
   EnlistmentHandle: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
   TmVirtualClock: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libktmw32.PrePrepareComplete(util.toPointer(EnlistmentHandle), util.toPointer(TmVirtualClock)));
+  return util.boolFromFfi(libktmw32_dll.PrePrepareComplete(util.toPointer(EnlistmentHandle), util.toPointer(TmVirtualClock)));
 }
 
 export function PrepareComplete(
   EnlistmentHandle: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
   TmVirtualClock: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libktmw32.PrepareComplete(util.toPointer(EnlistmentHandle), util.toPointer(TmVirtualClock)));
+  return util.boolFromFfi(libktmw32_dll.PrepareComplete(util.toPointer(EnlistmentHandle), util.toPointer(TmVirtualClock)));
 }
 
 export function ReadOnlyEnlistment(
   EnlistmentHandle: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
   TmVirtualClock: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libktmw32.ReadOnlyEnlistment(util.toPointer(EnlistmentHandle), util.toPointer(TmVirtualClock)));
+  return util.boolFromFfi(libktmw32_dll.ReadOnlyEnlistment(util.toPointer(EnlistmentHandle), util.toPointer(TmVirtualClock)));
 }
 
 export function CommitComplete(
   EnlistmentHandle: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
   TmVirtualClock: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libktmw32.CommitComplete(util.toPointer(EnlistmentHandle), util.toPointer(TmVirtualClock)));
+  return util.boolFromFfi(libktmw32_dll.CommitComplete(util.toPointer(EnlistmentHandle), util.toPointer(TmVirtualClock)));
 }
 
 export function RollbackComplete(
   EnlistmentHandle: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
   TmVirtualClock: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libktmw32.RollbackComplete(util.toPointer(EnlistmentHandle), util.toPointer(TmVirtualClock)));
+  return util.boolFromFfi(libktmw32_dll.RollbackComplete(util.toPointer(EnlistmentHandle), util.toPointer(TmVirtualClock)));
 }
 
 export function SinglePhaseReject(
   EnlistmentHandle: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
   TmVirtualClock: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libktmw32.SinglePhaseReject(util.toPointer(EnlistmentHandle), util.toPointer(TmVirtualClock)));
+  return util.boolFromFfi(libktmw32_dll.SinglePhaseReject(util.toPointer(EnlistmentHandle), util.toPointer(TmVirtualClock)));
 }
 
 export function NetShareAdd(
@@ -12801,7 +12816,7 @@ export function NetShareAdd(
   buf: Deno.PointerValue | Uint8Array | null /* ptr */,
   parm_err: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libNETAPI32.NetShareAdd(util.pwstrToFfi(servername), level, util.toPointer(buf), util.toPointer(parm_err));
+  return libNETAPI32_dll.NetShareAdd(util.pwstrToFfi(servername), level, util.toPointer(buf), util.toPointer(parm_err));
 }
 
 export function NetShareEnum(
@@ -12813,7 +12828,7 @@ export function NetShareEnum(
   totalentries: Deno.PointerValue | Uint8Array | null /* ptr */,
   resume_handle: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libNETAPI32.NetShareEnum(util.pwstrToFfi(servername), level, util.toPointer(bufptr), prefmaxlen, util.toPointer(entriesread), util.toPointer(totalentries), util.toPointer(resume_handle));
+  return libNETAPI32_dll.NetShareEnum(util.pwstrToFfi(servername), level, util.toPointer(bufptr), prefmaxlen, util.toPointer(entriesread), util.toPointer(totalentries), util.toPointer(resume_handle));
 }
 
 export function NetShareEnumSticky(
@@ -12825,7 +12840,7 @@ export function NetShareEnumSticky(
   totalentries: Deno.PointerValue | Uint8Array | null /* ptr */,
   resume_handle: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libNETAPI32.NetShareEnumSticky(util.pwstrToFfi(servername), level, util.toPointer(bufptr), prefmaxlen, util.toPointer(entriesread), util.toPointer(totalentries), util.toPointer(resume_handle));
+  return libNETAPI32_dll.NetShareEnumSticky(util.pwstrToFfi(servername), level, util.toPointer(bufptr), prefmaxlen, util.toPointer(entriesread), util.toPointer(totalentries), util.toPointer(resume_handle));
 }
 
 export function NetShareGetInfo(
@@ -12834,7 +12849,7 @@ export function NetShareGetInfo(
   level: number /* u32 */,
   bufptr: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libNETAPI32.NetShareGetInfo(util.pwstrToFfi(servername), util.pwstrToFfi(netname), level, util.toPointer(bufptr));
+  return libNETAPI32_dll.NetShareGetInfo(util.pwstrToFfi(servername), util.pwstrToFfi(netname), level, util.toPointer(bufptr));
 }
 
 export function NetShareSetInfo(
@@ -12844,7 +12859,7 @@ export function NetShareSetInfo(
   buf: Deno.PointerValue | Uint8Array | null /* ptr */,
   parm_err: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libNETAPI32.NetShareSetInfo(util.pwstrToFfi(servername), util.pwstrToFfi(netname), level, util.toPointer(buf), util.toPointer(parm_err));
+  return libNETAPI32_dll.NetShareSetInfo(util.pwstrToFfi(servername), util.pwstrToFfi(netname), level, util.toPointer(buf), util.toPointer(parm_err));
 }
 
 export function NetShareDel(
@@ -12852,7 +12867,7 @@ export function NetShareDel(
   netname: string | null /* Windows.Win32.Foundation.PWSTR */,
   reserved: number /* u32 */,
 ): number /* u32 */ {
-  return libNETAPI32.NetShareDel(util.pwstrToFfi(servername), util.pwstrToFfi(netname), reserved);
+  return libNETAPI32_dll.NetShareDel(util.pwstrToFfi(servername), util.pwstrToFfi(netname), reserved);
 }
 
 export function NetShareDelSticky(
@@ -12860,7 +12875,7 @@ export function NetShareDelSticky(
   netname: string | null /* Windows.Win32.Foundation.PWSTR */,
   reserved: number /* u32 */,
 ): number /* u32 */ {
-  return libNETAPI32.NetShareDelSticky(util.pwstrToFfi(servername), util.pwstrToFfi(netname), reserved);
+  return libNETAPI32_dll.NetShareDelSticky(util.pwstrToFfi(servername), util.pwstrToFfi(netname), reserved);
 }
 
 export function NetShareCheck(
@@ -12868,7 +12883,7 @@ export function NetShareCheck(
   device: string | null /* Windows.Win32.Foundation.PWSTR */,
   type: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libNETAPI32.NetShareCheck(util.pwstrToFfi(servername), util.pwstrToFfi(device), util.toPointer(type));
+  return libNETAPI32_dll.NetShareCheck(util.pwstrToFfi(servername), util.pwstrToFfi(device), util.toPointer(type));
 }
 
 export function NetShareDelEx(
@@ -12876,7 +12891,7 @@ export function NetShareDelEx(
   level: number /* u32 */,
   buf: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libNETAPI32.NetShareDelEx(util.pwstrToFfi(servername), level, util.toPointer(buf));
+  return libNETAPI32_dll.NetShareDelEx(util.pwstrToFfi(servername), level, util.toPointer(buf));
 }
 
 export function NetServerAliasAdd(
@@ -12884,7 +12899,7 @@ export function NetServerAliasAdd(
   level: number /* u32 */,
   buf: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libNETAPI32.NetServerAliasAdd(util.pwstrToFfi(servername), level, util.toPointer(buf));
+  return libNETAPI32_dll.NetServerAliasAdd(util.pwstrToFfi(servername), level, util.toPointer(buf));
 }
 
 export function NetServerAliasDel(
@@ -12892,7 +12907,7 @@ export function NetServerAliasDel(
   level: number /* u32 */,
   buf: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libNETAPI32.NetServerAliasDel(util.pwstrToFfi(servername), level, util.toPointer(buf));
+  return libNETAPI32_dll.NetServerAliasDel(util.pwstrToFfi(servername), level, util.toPointer(buf));
 }
 
 export function NetServerAliasEnum(
@@ -12904,7 +12919,7 @@ export function NetServerAliasEnum(
   totalentries: Deno.PointerValue | Uint8Array | null /* ptr */,
   resumehandle: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libNETAPI32.NetServerAliasEnum(util.pwstrToFfi(servername), level, util.toPointer(bufptr), prefmaxlen, util.toPointer(entriesread), util.toPointer(totalentries), util.toPointer(resumehandle));
+  return libNETAPI32_dll.NetServerAliasEnum(util.pwstrToFfi(servername), level, util.toPointer(bufptr), prefmaxlen, util.toPointer(entriesread), util.toPointer(totalentries), util.toPointer(resumehandle));
 }
 
 export function NetSessionEnum(
@@ -12918,7 +12933,7 @@ export function NetSessionEnum(
   totalentries: Deno.PointerValue | Uint8Array | null /* ptr */,
   resume_handle: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libNETAPI32.NetSessionEnum(util.pwstrToFfi(servername), util.pwstrToFfi(UncClientName), util.pwstrToFfi(username), level, util.toPointer(bufptr), prefmaxlen, util.toPointer(entriesread), util.toPointer(totalentries), util.toPointer(resume_handle));
+  return libNETAPI32_dll.NetSessionEnum(util.pwstrToFfi(servername), util.pwstrToFfi(UncClientName), util.pwstrToFfi(username), level, util.toPointer(bufptr), prefmaxlen, util.toPointer(entriesread), util.toPointer(totalentries), util.toPointer(resume_handle));
 }
 
 export function NetSessionDel(
@@ -12926,7 +12941,7 @@ export function NetSessionDel(
   UncClientName: string | null /* Windows.Win32.Foundation.PWSTR */,
   username: string | null /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
-  return libNETAPI32.NetSessionDel(util.pwstrToFfi(servername), util.pwstrToFfi(UncClientName), util.pwstrToFfi(username));
+  return libNETAPI32_dll.NetSessionDel(util.pwstrToFfi(servername), util.pwstrToFfi(UncClientName), util.pwstrToFfi(username));
 }
 
 export function NetSessionGetInfo(
@@ -12936,7 +12951,7 @@ export function NetSessionGetInfo(
   level: number /* u32 */,
   bufptr: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libNETAPI32.NetSessionGetInfo(util.pwstrToFfi(servername), util.pwstrToFfi(UncClientName), util.pwstrToFfi(username), level, util.toPointer(bufptr));
+  return libNETAPI32_dll.NetSessionGetInfo(util.pwstrToFfi(servername), util.pwstrToFfi(UncClientName), util.pwstrToFfi(username), level, util.toPointer(bufptr));
 }
 
 export function NetConnectionEnum(
@@ -12949,14 +12964,14 @@ export function NetConnectionEnum(
   totalentries: Deno.PointerValue | Uint8Array | null /* ptr */,
   resume_handle: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libNETAPI32.NetConnectionEnum(util.pwstrToFfi(servername), util.pwstrToFfi(qualifier), level, util.toPointer(bufptr), prefmaxlen, util.toPointer(entriesread), util.toPointer(totalentries), util.toPointer(resume_handle));
+  return libNETAPI32_dll.NetConnectionEnum(util.pwstrToFfi(servername), util.pwstrToFfi(qualifier), level, util.toPointer(bufptr), prefmaxlen, util.toPointer(entriesread), util.toPointer(totalentries), util.toPointer(resume_handle));
 }
 
 export function NetFileClose(
   servername: string | null /* Windows.Win32.Foundation.PWSTR */,
   fileid: number /* u32 */,
 ): number /* u32 */ {
-  return libNETAPI32.NetFileClose(util.pwstrToFfi(servername), fileid);
+  return libNETAPI32_dll.NetFileClose(util.pwstrToFfi(servername), fileid);
 }
 
 export function NetFileEnum(
@@ -12970,7 +12985,7 @@ export function NetFileEnum(
   totalentries: Deno.PointerValue | Uint8Array | null /* ptr */,
   resume_handle: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libNETAPI32.NetFileEnum(util.pwstrToFfi(servername), util.pwstrToFfi(basepath), util.pwstrToFfi(username), level, util.toPointer(bufptr), prefmaxlen, util.toPointer(entriesread), util.toPointer(totalentries), util.toPointer(resume_handle));
+  return libNETAPI32_dll.NetFileEnum(util.pwstrToFfi(servername), util.pwstrToFfi(basepath), util.pwstrToFfi(username), level, util.toPointer(bufptr), prefmaxlen, util.toPointer(entriesread), util.toPointer(totalentries), util.toPointer(resume_handle));
 }
 
 export function NetFileGetInfo(
@@ -12979,7 +12994,7 @@ export function NetFileGetInfo(
   level: number /* u32 */,
   bufptr: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libNETAPI32.NetFileGetInfo(util.pwstrToFfi(servername), fileid, level, util.toPointer(bufptr));
+  return libNETAPI32_dll.NetFileGetInfo(util.pwstrToFfi(servername), fileid, level, util.toPointer(bufptr));
 }
 
 export function NetStatisticsGet(
@@ -12989,20 +13004,20 @@ export function NetStatisticsGet(
   Options: number /* u32 */,
   Buffer: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libNETAPI32.NetStatisticsGet(util.toPointer(ServerName), util.toPointer(Service), Level, Options, util.toPointer(Buffer));
+  return libNETAPI32_dll.NetStatisticsGet(util.toPointer(ServerName), util.toPointer(Service), Level, Options, util.toPointer(Buffer));
 }
 
 export function QueryIoRingCapabilities(
   capabilities: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libapi_ms_win_core_ioring_l1_1_0.QueryIoRingCapabilities(util.toPointer(capabilities)));
+  return util.pointerFromFfi(libapi_ms_win_core_ioring_l1_1_0_dll.QueryIoRingCapabilities(util.toPointer(capabilities)));
 }
 
 export function IsIoRingOpSupported(
   ioRing: Deno.PointerValue | Uint8Array | null /* ptr */,
   op: IORING_OP_CODE /* Windows.Win32.Storage.FileSystem.IORING_OP_CODE */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libapi_ms_win_core_ioring_l1_1_0.IsIoRingOpSupported(util.toPointer(ioRing), op));
+  return util.boolFromFfi(libapi_ms_win_core_ioring_l1_1_0_dll.IsIoRingOpSupported(util.toPointer(ioRing), op));
 }
 
 export function CreateIoRing(
@@ -13012,14 +13027,14 @@ export function CreateIoRing(
   completionQueueSize: number /* u32 */,
   h: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libapi_ms_win_core_ioring_l1_1_0.CreateIoRing(ioringVersion, util.toPointer(flags), submissionQueueSize, completionQueueSize, util.toPointer(h)));
+  return util.pointerFromFfi(libapi_ms_win_core_ioring_l1_1_0_dll.CreateIoRing(ioringVersion, util.toPointer(flags), submissionQueueSize, completionQueueSize, util.toPointer(h)));
 }
 
 export function GetIoRingInfo(
   ioRing: Deno.PointerValue | Uint8Array | null /* ptr */,
   info: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libapi_ms_win_core_ioring_l1_1_0.GetIoRingInfo(util.toPointer(ioRing), util.toPointer(info)));
+  return util.pointerFromFfi(libapi_ms_win_core_ioring_l1_1_0_dll.GetIoRingInfo(util.toPointer(ioRing), util.toPointer(info)));
 }
 
 export function SubmitIoRing(
@@ -13028,27 +13043,27 @@ export function SubmitIoRing(
   milliseconds: number /* u32 */,
   submittedEntries: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libapi_ms_win_core_ioring_l1_1_0.SubmitIoRing(util.toPointer(ioRing), waitOperations, milliseconds, util.toPointer(submittedEntries)));
+  return util.pointerFromFfi(libapi_ms_win_core_ioring_l1_1_0_dll.SubmitIoRing(util.toPointer(ioRing), waitOperations, milliseconds, util.toPointer(submittedEntries)));
 }
 
 export function CloseIoRing(
   ioRing: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libapi_ms_win_core_ioring_l1_1_0.CloseIoRing(util.toPointer(ioRing)));
+  return util.pointerFromFfi(libapi_ms_win_core_ioring_l1_1_0_dll.CloseIoRing(util.toPointer(ioRing)));
 }
 
 export function PopIoRingCompletion(
   ioRing: Deno.PointerValue | Uint8Array | null /* ptr */,
   cqe: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libapi_ms_win_core_ioring_l1_1_0.PopIoRingCompletion(util.toPointer(ioRing), util.toPointer(cqe)));
+  return util.pointerFromFfi(libapi_ms_win_core_ioring_l1_1_0_dll.PopIoRingCompletion(util.toPointer(ioRing), util.toPointer(cqe)));
 }
 
 export function SetIoRingCompletionEvent(
   ioRing: Deno.PointerValue | Uint8Array | null /* ptr */,
   hEvent: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libapi_ms_win_core_ioring_l1_1_0.SetIoRingCompletionEvent(util.toPointer(ioRing), util.toPointer(hEvent)));
+  return util.pointerFromFfi(libapi_ms_win_core_ioring_l1_1_0_dll.SetIoRingCompletionEvent(util.toPointer(ioRing), util.toPointer(hEvent)));
 }
 
 export function BuildIoRingCancelRequest(
@@ -13057,7 +13072,7 @@ export function BuildIoRingCancelRequest(
   opToCancel: Deno.PointerValue /* usize */,
   userData: Deno.PointerValue /* usize */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libapi_ms_win_core_ioring_l1_1_0.BuildIoRingCancelRequest(util.toPointer(ioRing), util.toPointer(file), opToCancel, userData));
+  return util.pointerFromFfi(libapi_ms_win_core_ioring_l1_1_0_dll.BuildIoRingCancelRequest(util.toPointer(ioRing), util.toPointer(file), opToCancel, userData));
 }
 
 export function BuildIoRingReadFile(
@@ -13069,7 +13084,7 @@ export function BuildIoRingReadFile(
   userData: Deno.PointerValue /* usize */,
   flags: IORING_SQE_FLAGS /* Windows.Win32.Storage.FileSystem.IORING_SQE_FLAGS */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libapi_ms_win_core_ioring_l1_1_0.BuildIoRingReadFile(util.toPointer(ioRing), util.toPointer(fileRef), util.toPointer(dataRef), numberOfBytesToRead, fileOffset, userData, flags));
+  return util.pointerFromFfi(libapi_ms_win_core_ioring_l1_1_0_dll.BuildIoRingReadFile(util.toPointer(ioRing), util.toPointer(fileRef), util.toPointer(dataRef), numberOfBytesToRead, fileOffset, userData, flags));
 }
 
 export function BuildIoRingRegisterFileHandles(
@@ -13078,7 +13093,7 @@ export function BuildIoRingRegisterFileHandles(
   handles: Deno.PointerValue | Uint8Array | null /* ptr */,
   userData: Deno.PointerValue /* usize */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libapi_ms_win_core_ioring_l1_1_0.BuildIoRingRegisterFileHandles(util.toPointer(ioRing), count, util.toPointer(handles), userData));
+  return util.pointerFromFfi(libapi_ms_win_core_ioring_l1_1_0_dll.BuildIoRingRegisterFileHandles(util.toPointer(ioRing), count, util.toPointer(handles), userData));
 }
 
 export function BuildIoRingRegisterBuffers(
@@ -13087,39 +13102,39 @@ export function BuildIoRingRegisterBuffers(
   buffers: Deno.PointerValue | Uint8Array | null /* ptr */,
   userData: Deno.PointerValue /* usize */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libapi_ms_win_core_ioring_l1_1_0.BuildIoRingRegisterBuffers(util.toPointer(ioRing), count, util.toPointer(buffers), userData));
+  return util.pointerFromFfi(libapi_ms_win_core_ioring_l1_1_0_dll.BuildIoRingRegisterBuffers(util.toPointer(ioRing), count, util.toPointer(buffers), userData));
 }
 
 export function Wow64EnableWow64FsRedirection(
   Wow64FsEnableRedirection: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.BOOLEAN */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.BOOLEAN */ {
-  return util.pointerFromFfi(libKERNEL32.Wow64EnableWow64FsRedirection(util.toPointer(Wow64FsEnableRedirection)));
+  return util.pointerFromFfi(libKERNEL32_dll.Wow64EnableWow64FsRedirection(util.toPointer(Wow64FsEnableRedirection)));
 }
 
 export function Wow64DisableWow64FsRedirection(
   OldValue: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32.Wow64DisableWow64FsRedirection(util.toPointer(OldValue)));
+  return util.boolFromFfi(libKERNEL32_dll.Wow64DisableWow64FsRedirection(util.toPointer(OldValue)));
 }
 
 export function Wow64RevertWow64FsRedirection(
   OlValue: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32.Wow64RevertWow64FsRedirection(util.toPointer(OlValue)));
+  return util.boolFromFfi(libKERNEL32_dll.Wow64RevertWow64FsRedirection(util.toPointer(OlValue)));
 }
 
 export function GetBinaryTypeA(
   lpApplicationName: string | null /* Windows.Win32.Foundation.PSTR */,
   lpBinaryType: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32.GetBinaryTypeA(util.pstrToFfi(lpApplicationName), util.toPointer(lpBinaryType)));
+  return util.boolFromFfi(libKERNEL32_dll.GetBinaryTypeA(util.pstrToFfi(lpApplicationName), util.toPointer(lpBinaryType)));
 }
 
 export function GetBinaryTypeW(
   lpApplicationName: string | null /* Windows.Win32.Foundation.PWSTR */,
   lpBinaryType: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32.GetBinaryTypeW(util.pwstrToFfi(lpApplicationName), util.toPointer(lpBinaryType)));
+  return util.boolFromFfi(libKERNEL32_dll.GetBinaryTypeW(util.pwstrToFfi(lpApplicationName), util.toPointer(lpBinaryType)));
 }
 
 export function GetShortPathNameA(
@@ -13127,7 +13142,7 @@ export function GetShortPathNameA(
   lpszShortPath: string | null /* Windows.Win32.Foundation.PSTR */,
   cchBuffer: number /* u32 */,
 ): number /* u32 */ {
-  return libKERNEL32.GetShortPathNameA(util.pstrToFfi(lpszLongPath), util.pstrToFfi(lpszShortPath), cchBuffer);
+  return libKERNEL32_dll.GetShortPathNameA(util.pstrToFfi(lpszLongPath), util.pstrToFfi(lpszShortPath), cchBuffer);
 }
 
 export function GetLongPathNameTransactedA(
@@ -13136,7 +13151,7 @@ export function GetLongPathNameTransactedA(
   cchBuffer: number /* u32 */,
   hTransaction: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
 ): number /* u32 */ {
-  return libKERNEL32.GetLongPathNameTransactedA(util.pstrToFfi(lpszShortPath), util.pstrToFfi(lpszLongPath), cchBuffer, util.toPointer(hTransaction));
+  return libKERNEL32_dll.GetLongPathNameTransactedA(util.pstrToFfi(lpszShortPath), util.pstrToFfi(lpszLongPath), cchBuffer, util.toPointer(hTransaction));
 }
 
 export function GetLongPathNameTransactedW(
@@ -13145,28 +13160,28 @@ export function GetLongPathNameTransactedW(
   cchBuffer: number /* u32 */,
   hTransaction: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
 ): number /* u32 */ {
-  return libKERNEL32.GetLongPathNameTransactedW(util.pwstrToFfi(lpszShortPath), util.pwstrToFfi(lpszLongPath), cchBuffer, util.toPointer(hTransaction));
+  return libKERNEL32_dll.GetLongPathNameTransactedW(util.pwstrToFfi(lpszShortPath), util.pwstrToFfi(lpszLongPath), cchBuffer, util.toPointer(hTransaction));
 }
 
 export function SetFileCompletionNotificationModes(
   FileHandle: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
   Flags: number /* u8 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32.SetFileCompletionNotificationModes(util.toPointer(FileHandle), Flags));
+  return util.boolFromFfi(libKERNEL32_dll.SetFileCompletionNotificationModes(util.toPointer(FileHandle), Flags));
 }
 
 export function SetFileShortNameA(
   hFile: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
   lpShortName: string | null /* Windows.Win32.Foundation.PSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32.SetFileShortNameA(util.toPointer(hFile), util.pstrToFfi(lpShortName)));
+  return util.boolFromFfi(libKERNEL32_dll.SetFileShortNameA(util.toPointer(hFile), util.pstrToFfi(lpShortName)));
 }
 
 export function SetFileShortNameW(
   hFile: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
   lpShortName: string | null /* Windows.Win32.Foundation.PWSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32.SetFileShortNameW(util.toPointer(hFile), util.pwstrToFfi(lpShortName)));
+  return util.boolFromFfi(libKERNEL32_dll.SetFileShortNameW(util.toPointer(hFile), util.pwstrToFfi(lpShortName)));
 }
 
 export function SetTapePosition(
@@ -13177,7 +13192,7 @@ export function SetTapePosition(
   dwOffsetHigh: number /* u32 */,
   bImmediate: boolean /* Windows.Win32.Foundation.BOOL */,
 ): number /* u32 */ {
-  return libKERNEL32.SetTapePosition(util.toPointer(hDevice), dwPositionMethod, dwPartition, dwOffsetLow, dwOffsetHigh, util.boolToFfi(bImmediate));
+  return libKERNEL32_dll.SetTapePosition(util.toPointer(hDevice), dwPositionMethod, dwPartition, dwOffsetLow, dwOffsetHigh, util.boolToFfi(bImmediate));
 }
 
 export function GetTapePosition(
@@ -13187,7 +13202,7 @@ export function GetTapePosition(
   lpdwOffsetLow: Deno.PointerValue | Uint8Array | null /* ptr */,
   lpdwOffsetHigh: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libKERNEL32.GetTapePosition(util.toPointer(hDevice), dwPositionType, util.toPointer(lpdwPartition), util.toPointer(lpdwOffsetLow), util.toPointer(lpdwOffsetHigh));
+  return libKERNEL32_dll.GetTapePosition(util.toPointer(hDevice), dwPositionType, util.toPointer(lpdwPartition), util.toPointer(lpdwOffsetLow), util.toPointer(lpdwOffsetHigh));
 }
 
 export function PrepareTape(
@@ -13195,7 +13210,7 @@ export function PrepareTape(
   dwOperation: PREPARE_TAPE_OPERATION /* Windows.Win32.Storage.FileSystem.PREPARE_TAPE_OPERATION */,
   bImmediate: boolean /* Windows.Win32.Foundation.BOOL */,
 ): number /* u32 */ {
-  return libKERNEL32.PrepareTape(util.toPointer(hDevice), dwOperation, util.boolToFfi(bImmediate));
+  return libKERNEL32_dll.PrepareTape(util.toPointer(hDevice), dwOperation, util.boolToFfi(bImmediate));
 }
 
 export function EraseTape(
@@ -13203,7 +13218,7 @@ export function EraseTape(
   dwEraseType: ERASE_TAPE_TYPE /* Windows.Win32.Storage.FileSystem.ERASE_TAPE_TYPE */,
   bImmediate: boolean /* Windows.Win32.Foundation.BOOL */,
 ): number /* u32 */ {
-  return libKERNEL32.EraseTape(util.toPointer(hDevice), dwEraseType, util.boolToFfi(bImmediate));
+  return libKERNEL32_dll.EraseTape(util.toPointer(hDevice), dwEraseType, util.boolToFfi(bImmediate));
 }
 
 export function CreateTapePartition(
@@ -13212,7 +13227,7 @@ export function CreateTapePartition(
   dwCount: number /* u32 */,
   dwSize: number /* u32 */,
 ): number /* u32 */ {
-  return libKERNEL32.CreateTapePartition(util.toPointer(hDevice), dwPartitionMethod, dwCount, dwSize);
+  return libKERNEL32_dll.CreateTapePartition(util.toPointer(hDevice), dwPartitionMethod, dwCount, dwSize);
 }
 
 export function WriteTapemark(
@@ -13221,13 +13236,13 @@ export function WriteTapemark(
   dwTapemarkCount: number /* u32 */,
   bImmediate: boolean /* Windows.Win32.Foundation.BOOL */,
 ): number /* u32 */ {
-  return libKERNEL32.WriteTapemark(util.toPointer(hDevice), dwTapemarkType, dwTapemarkCount, util.boolToFfi(bImmediate));
+  return libKERNEL32_dll.WriteTapemark(util.toPointer(hDevice), dwTapemarkType, dwTapemarkCount, util.boolToFfi(bImmediate));
 }
 
 export function GetTapeStatus(
   hDevice: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
 ): number /* u32 */ {
-  return libKERNEL32.GetTapeStatus(util.toPointer(hDevice));
+  return libKERNEL32_dll.GetTapeStatus(util.toPointer(hDevice));
 }
 
 export function GetTapeParameters(
@@ -13236,7 +13251,7 @@ export function GetTapeParameters(
   lpdwSize: Deno.PointerValue | Uint8Array | null /* ptr */,
   lpTapeInformation: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libKERNEL32.GetTapeParameters(util.toPointer(hDevice), dwOperation, util.toPointer(lpdwSize), util.toPointer(lpTapeInformation));
+  return libKERNEL32_dll.GetTapeParameters(util.toPointer(hDevice), dwOperation, util.toPointer(lpdwSize), util.toPointer(lpTapeInformation));
 }
 
 export function SetTapeParameters(
@@ -13244,47 +13259,47 @@ export function SetTapeParameters(
   dwOperation: TAPE_INFORMATION_TYPE /* Windows.Win32.Storage.FileSystem.TAPE_INFORMATION_TYPE */,
   lpTapeInformation: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libKERNEL32.SetTapeParameters(util.toPointer(hDevice), dwOperation, util.toPointer(lpTapeInformation));
+  return libKERNEL32_dll.SetTapeParameters(util.toPointer(hDevice), dwOperation, util.toPointer(lpTapeInformation));
 }
 
 export function EncryptFileA(
   lpFileName: string | null /* Windows.Win32.Foundation.PSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32.EncryptFileA(util.pstrToFfi(lpFileName)));
+  return util.boolFromFfi(libADVAPI32_dll.EncryptFileA(util.pstrToFfi(lpFileName)));
 }
 
 export function EncryptFileW(
   lpFileName: string | null /* Windows.Win32.Foundation.PWSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32.EncryptFileW(util.pwstrToFfi(lpFileName)));
+  return util.boolFromFfi(libADVAPI32_dll.EncryptFileW(util.pwstrToFfi(lpFileName)));
 }
 
 export function DecryptFileA(
   lpFileName: string | null /* Windows.Win32.Foundation.PSTR */,
   dwReserved: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32.DecryptFileA(util.pstrToFfi(lpFileName), dwReserved));
+  return util.boolFromFfi(libADVAPI32_dll.DecryptFileA(util.pstrToFfi(lpFileName), dwReserved));
 }
 
 export function DecryptFileW(
   lpFileName: string | null /* Windows.Win32.Foundation.PWSTR */,
   dwReserved: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32.DecryptFileW(util.pwstrToFfi(lpFileName), dwReserved));
+  return util.boolFromFfi(libADVAPI32_dll.DecryptFileW(util.pwstrToFfi(lpFileName), dwReserved));
 }
 
 export function FileEncryptionStatusA(
   lpFileName: string | null /* Windows.Win32.Foundation.PSTR */,
   lpStatus: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32.FileEncryptionStatusA(util.pstrToFfi(lpFileName), util.toPointer(lpStatus)));
+  return util.boolFromFfi(libADVAPI32_dll.FileEncryptionStatusA(util.pstrToFfi(lpFileName), util.toPointer(lpStatus)));
 }
 
 export function FileEncryptionStatusW(
   lpFileName: string | null /* Windows.Win32.Foundation.PWSTR */,
   lpStatus: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32.FileEncryptionStatusW(util.pwstrToFfi(lpFileName), util.toPointer(lpStatus)));
+  return util.boolFromFfi(libADVAPI32_dll.FileEncryptionStatusW(util.pwstrToFfi(lpFileName), util.toPointer(lpStatus)));
 }
 
 export function OpenEncryptedFileRawA(
@@ -13292,7 +13307,7 @@ export function OpenEncryptedFileRawA(
   ulFlags: number /* u32 */,
   pvContext: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libADVAPI32.OpenEncryptedFileRawA(util.pstrToFfi(lpFileName), ulFlags, util.toPointer(pvContext));
+  return libADVAPI32_dll.OpenEncryptedFileRawA(util.pstrToFfi(lpFileName), ulFlags, util.toPointer(pvContext));
 }
 
 export function OpenEncryptedFileRawW(
@@ -13300,7 +13315,7 @@ export function OpenEncryptedFileRawW(
   ulFlags: number /* u32 */,
   pvContext: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libADVAPI32.OpenEncryptedFileRawW(util.pwstrToFfi(lpFileName), ulFlags, util.toPointer(pvContext));
+  return libADVAPI32_dll.OpenEncryptedFileRawW(util.pwstrToFfi(lpFileName), ulFlags, util.toPointer(pvContext));
 }
 
 export function ReadEncryptedFileRaw(
@@ -13308,7 +13323,7 @@ export function ReadEncryptedFileRaw(
   pvCallbackContext: Deno.PointerValue | Uint8Array | null /* ptr */,
   pvContext: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libADVAPI32.ReadEncryptedFileRaw(util.toPointer(pfExportCallback), util.toPointer(pvCallbackContext), util.toPointer(pvContext));
+  return libADVAPI32_dll.ReadEncryptedFileRaw(util.toPointer(pfExportCallback), util.toPointer(pvCallbackContext), util.toPointer(pvContext));
 }
 
 export function WriteEncryptedFileRaw(
@@ -13316,21 +13331,21 @@ export function WriteEncryptedFileRaw(
   pvCallbackContext: Deno.PointerValue | Uint8Array | null /* ptr */,
   pvContext: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libADVAPI32.WriteEncryptedFileRaw(util.toPointer(pfImportCallback), util.toPointer(pvCallbackContext), util.toPointer(pvContext));
+  return libADVAPI32_dll.WriteEncryptedFileRaw(util.toPointer(pfImportCallback), util.toPointer(pvCallbackContext), util.toPointer(pvContext));
 }
 
 export function CloseEncryptedFileRaw(
   pvContext: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): void /* void */ {
-  return libADVAPI32.CloseEncryptedFileRaw(util.toPointer(pvContext));
+  return libADVAPI32_dll.CloseEncryptedFileRaw(util.toPointer(pvContext));
 }
 
 export function OpenFile(
   lpFileName: string | null /* Windows.Win32.Foundation.PSTR */,
   lpReOpenBuff: Deno.PointerValue | Uint8Array | null /* ptr */,
-  uStyle: LZOPENFILE_STYLE /* Windows.Win32.Storage.FileSystem.LZOPENFILE_STYLE */,
+  uStyle: number /* u32 */,
 ): number /* i32 */ {
-  return libKERNEL32.OpenFile(util.pstrToFfi(lpFileName), util.toPointer(lpReOpenBuff), uStyle);
+  return libKERNEL32_dll.OpenFile(util.pstrToFfi(lpFileName), util.toPointer(lpReOpenBuff), uStyle);
 }
 
 export function BackupRead(
@@ -13342,7 +13357,7 @@ export function BackupRead(
   bProcessSecurity: boolean /* Windows.Win32.Foundation.BOOL */,
   lpContext: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32.BackupRead(util.toPointer(hFile), util.toPointer(lpBuffer), nNumberOfBytesToRead, util.toPointer(lpNumberOfBytesRead), util.boolToFfi(bAbort), util.boolToFfi(bProcessSecurity), util.toPointer(lpContext)));
+  return util.boolFromFfi(libKERNEL32_dll.BackupRead(util.toPointer(hFile), util.toPointer(lpBuffer), nNumberOfBytesToRead, util.toPointer(lpNumberOfBytesRead), util.boolToFfi(bAbort), util.boolToFfi(bProcessSecurity), util.toPointer(lpContext)));
 }
 
 export function BackupSeek(
@@ -13353,7 +13368,7 @@ export function BackupSeek(
   lpdwHighByteSeeked: Deno.PointerValue | Uint8Array | null /* ptr */,
   lpContext: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32.BackupSeek(util.toPointer(hFile), dwLowBytesToSeek, dwHighBytesToSeek, util.toPointer(lpdwLowByteSeeked), util.toPointer(lpdwHighByteSeeked), util.toPointer(lpContext)));
+  return util.boolFromFfi(libKERNEL32_dll.BackupSeek(util.toPointer(hFile), dwLowBytesToSeek, dwHighBytesToSeek, util.toPointer(lpdwLowByteSeeked), util.toPointer(lpdwHighByteSeeked), util.toPointer(lpContext)));
 }
 
 export function BackupWrite(
@@ -13365,20 +13380,20 @@ export function BackupWrite(
   bProcessSecurity: boolean /* Windows.Win32.Foundation.BOOL */,
   lpContext: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32.BackupWrite(util.toPointer(hFile), util.toPointer(lpBuffer), nNumberOfBytesToWrite, util.toPointer(lpNumberOfBytesWritten), util.boolToFfi(bAbort), util.boolToFfi(bProcessSecurity), util.toPointer(lpContext)));
+  return util.boolFromFfi(libKERNEL32_dll.BackupWrite(util.toPointer(hFile), util.toPointer(lpBuffer), nNumberOfBytesToWrite, util.toPointer(lpNumberOfBytesWritten), util.boolToFfi(bAbort), util.boolToFfi(bProcessSecurity), util.toPointer(lpContext)));
 }
 
 export function GetLogicalDriveStringsA(
   nBufferLength: number /* u32 */,
   lpBuffer: string | null /* Windows.Win32.Foundation.PSTR */,
 ): number /* u32 */ {
-  return libKERNEL32.GetLogicalDriveStringsA(nBufferLength, util.pstrToFfi(lpBuffer));
+  return libKERNEL32_dll.GetLogicalDriveStringsA(nBufferLength, util.pstrToFfi(lpBuffer));
 }
 
 export function SetSearchPathMode(
   Flags: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32.SetSearchPathMode(Flags));
+  return util.boolFromFfi(libKERNEL32_dll.SetSearchPathMode(Flags));
 }
 
 export function CreateDirectoryExA(
@@ -13386,7 +13401,7 @@ export function CreateDirectoryExA(
   lpNewDirectory: string | null /* Windows.Win32.Foundation.PSTR */,
   lpSecurityAttributes: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32.CreateDirectoryExA(util.pstrToFfi(lpTemplateDirectory), util.pstrToFfi(lpNewDirectory), util.toPointer(lpSecurityAttributes)));
+  return util.boolFromFfi(libKERNEL32_dll.CreateDirectoryExA(util.pstrToFfi(lpTemplateDirectory), util.pstrToFfi(lpNewDirectory), util.toPointer(lpSecurityAttributes)));
 }
 
 export function CreateDirectoryExW(
@@ -13394,7 +13409,7 @@ export function CreateDirectoryExW(
   lpNewDirectory: string | null /* Windows.Win32.Foundation.PWSTR */,
   lpSecurityAttributes: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32.CreateDirectoryExW(util.pwstrToFfi(lpTemplateDirectory), util.pwstrToFfi(lpNewDirectory), util.toPointer(lpSecurityAttributes)));
+  return util.boolFromFfi(libKERNEL32_dll.CreateDirectoryExW(util.pwstrToFfi(lpTemplateDirectory), util.pwstrToFfi(lpNewDirectory), util.toPointer(lpSecurityAttributes)));
 }
 
 export function CreateDirectoryTransactedA(
@@ -13403,7 +13418,7 @@ export function CreateDirectoryTransactedA(
   lpSecurityAttributes: Deno.PointerValue | Uint8Array | null /* ptr */,
   hTransaction: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32.CreateDirectoryTransactedA(util.pstrToFfi(lpTemplateDirectory), util.pstrToFfi(lpNewDirectory), util.toPointer(lpSecurityAttributes), util.toPointer(hTransaction)));
+  return util.boolFromFfi(libKERNEL32_dll.CreateDirectoryTransactedA(util.pstrToFfi(lpTemplateDirectory), util.pstrToFfi(lpNewDirectory), util.toPointer(lpSecurityAttributes), util.toPointer(hTransaction)));
 }
 
 export function CreateDirectoryTransactedW(
@@ -13412,21 +13427,21 @@ export function CreateDirectoryTransactedW(
   lpSecurityAttributes: Deno.PointerValue | Uint8Array | null /* ptr */,
   hTransaction: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32.CreateDirectoryTransactedW(util.pwstrToFfi(lpTemplateDirectory), util.pwstrToFfi(lpNewDirectory), util.toPointer(lpSecurityAttributes), util.toPointer(hTransaction)));
+  return util.boolFromFfi(libKERNEL32_dll.CreateDirectoryTransactedW(util.pwstrToFfi(lpTemplateDirectory), util.pwstrToFfi(lpNewDirectory), util.toPointer(lpSecurityAttributes), util.toPointer(hTransaction)));
 }
 
 export function RemoveDirectoryTransactedA(
   lpPathName: string | null /* Windows.Win32.Foundation.PSTR */,
   hTransaction: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32.RemoveDirectoryTransactedA(util.pstrToFfi(lpPathName), util.toPointer(hTransaction)));
+  return util.boolFromFfi(libKERNEL32_dll.RemoveDirectoryTransactedA(util.pstrToFfi(lpPathName), util.toPointer(hTransaction)));
 }
 
 export function RemoveDirectoryTransactedW(
   lpPathName: string | null /* Windows.Win32.Foundation.PWSTR */,
   hTransaction: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32.RemoveDirectoryTransactedW(util.pwstrToFfi(lpPathName), util.toPointer(hTransaction)));
+  return util.boolFromFfi(libKERNEL32_dll.RemoveDirectoryTransactedW(util.pwstrToFfi(lpPathName), util.toPointer(hTransaction)));
 }
 
 export function GetFullPathNameTransactedA(
@@ -13436,7 +13451,7 @@ export function GetFullPathNameTransactedA(
   lpFilePart: Deno.PointerValue | Uint8Array | null /* ptr */,
   hTransaction: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
 ): number /* u32 */ {
-  return libKERNEL32.GetFullPathNameTransactedA(util.pstrToFfi(lpFileName), nBufferLength, util.pstrToFfi(lpBuffer), util.toPointer(lpFilePart), util.toPointer(hTransaction));
+  return libKERNEL32_dll.GetFullPathNameTransactedA(util.pstrToFfi(lpFileName), nBufferLength, util.pstrToFfi(lpBuffer), util.toPointer(lpFilePart), util.toPointer(hTransaction));
 }
 
 export function GetFullPathNameTransactedW(
@@ -13446,7 +13461,7 @@ export function GetFullPathNameTransactedW(
   lpFilePart: Deno.PointerValue | Uint8Array | null /* ptr */,
   hTransaction: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
 ): number /* u32 */ {
-  return libKERNEL32.GetFullPathNameTransactedW(util.pwstrToFfi(lpFileName), nBufferLength, util.pwstrToFfi(lpBuffer), util.toPointer(lpFilePart), util.toPointer(hTransaction));
+  return libKERNEL32_dll.GetFullPathNameTransactedW(util.pwstrToFfi(lpFileName), nBufferLength, util.pwstrToFfi(lpBuffer), util.toPointer(lpFilePart), util.toPointer(hTransaction));
 }
 
 export function DefineDosDeviceA(
@@ -13454,7 +13469,7 @@ export function DefineDosDeviceA(
   lpDeviceName: string | null /* Windows.Win32.Foundation.PSTR */,
   lpTargetPath: string | null /* Windows.Win32.Foundation.PSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32.DefineDosDeviceA(dwFlags, util.pstrToFfi(lpDeviceName), util.pstrToFfi(lpTargetPath)));
+  return util.boolFromFfi(libKERNEL32_dll.DefineDosDeviceA(dwFlags, util.pstrToFfi(lpDeviceName), util.pstrToFfi(lpTargetPath)));
 }
 
 export function QueryDosDeviceA(
@@ -13462,7 +13477,7 @@ export function QueryDosDeviceA(
   lpTargetPath: string | null /* Windows.Win32.Foundation.PSTR */,
   ucchMax: number /* u32 */,
 ): number /* u32 */ {
-  return libKERNEL32.QueryDosDeviceA(util.pstrToFfi(lpDeviceName), util.pstrToFfi(lpTargetPath), ucchMax);
+  return libKERNEL32_dll.QueryDosDeviceA(util.pstrToFfi(lpDeviceName), util.pstrToFfi(lpTargetPath), ucchMax);
 }
 
 export function CreateFileTransactedA(
@@ -13477,7 +13492,7 @@ export function CreateFileTransactedA(
   pusMiniVersion: Deno.PointerValue | Uint8Array | null /* ptr */,
   lpExtendedParameter: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */ {
-  return util.pointerFromFfi(libKERNEL32.CreateFileTransactedA(util.pstrToFfi(lpFileName), dwDesiredAccess, dwShareMode, util.toPointer(lpSecurityAttributes), dwCreationDisposition, dwFlagsAndAttributes, util.toPointer(hTemplateFile), util.toPointer(hTransaction), util.toPointer(pusMiniVersion), util.toPointer(lpExtendedParameter)));
+  return util.pointerFromFfi(libKERNEL32_dll.CreateFileTransactedA(util.pstrToFfi(lpFileName), dwDesiredAccess, dwShareMode, util.toPointer(lpSecurityAttributes), dwCreationDisposition, dwFlagsAndAttributes, util.toPointer(hTemplateFile), util.toPointer(hTransaction), util.toPointer(pusMiniVersion), util.toPointer(lpExtendedParameter)));
 }
 
 export function CreateFileTransactedW(
@@ -13492,7 +13507,7 @@ export function CreateFileTransactedW(
   pusMiniVersion: Deno.PointerValue | Uint8Array | null /* ptr */,
   lpExtendedParameter: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */ {
-  return util.pointerFromFfi(libKERNEL32.CreateFileTransactedW(util.pwstrToFfi(lpFileName), dwDesiredAccess, dwShareMode, util.toPointer(lpSecurityAttributes), dwCreationDisposition, dwFlagsAndAttributes, util.toPointer(hTemplateFile), util.toPointer(hTransaction), util.toPointer(pusMiniVersion), util.toPointer(lpExtendedParameter)));
+  return util.pointerFromFfi(libKERNEL32_dll.CreateFileTransactedW(util.pwstrToFfi(lpFileName), dwDesiredAccess, dwShareMode, util.toPointer(lpSecurityAttributes), dwCreationDisposition, dwFlagsAndAttributes, util.toPointer(hTemplateFile), util.toPointer(hTransaction), util.toPointer(pusMiniVersion), util.toPointer(lpExtendedParameter)));
 }
 
 export function ReOpenFile(
@@ -13501,7 +13516,7 @@ export function ReOpenFile(
   dwShareMode: FILE_SHARE_MODE /* Windows.Win32.Storage.FileSystem.FILE_SHARE_MODE */,
   dwFlagsAndAttributes: FILE_FLAGS_AND_ATTRIBUTES /* Windows.Win32.Storage.FileSystem.FILE_FLAGS_AND_ATTRIBUTES */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */ {
-  return util.pointerFromFfi(libKERNEL32.ReOpenFile(util.toPointer(hOriginalFile), dwDesiredAccess, dwShareMode, dwFlagsAndAttributes));
+  return util.pointerFromFfi(libKERNEL32_dll.ReOpenFile(util.toPointer(hOriginalFile), dwDesiredAccess, dwShareMode, dwFlagsAndAttributes));
 }
 
 export function SetFileAttributesTransactedA(
@@ -13509,7 +13524,7 @@ export function SetFileAttributesTransactedA(
   dwFileAttributes: number /* u32 */,
   hTransaction: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32.SetFileAttributesTransactedA(util.pstrToFfi(lpFileName), dwFileAttributes, util.toPointer(hTransaction)));
+  return util.boolFromFfi(libKERNEL32_dll.SetFileAttributesTransactedA(util.pstrToFfi(lpFileName), dwFileAttributes, util.toPointer(hTransaction)));
 }
 
 export function SetFileAttributesTransactedW(
@@ -13517,7 +13532,7 @@ export function SetFileAttributesTransactedW(
   dwFileAttributes: number /* u32 */,
   hTransaction: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32.SetFileAttributesTransactedW(util.pwstrToFfi(lpFileName), dwFileAttributes, util.toPointer(hTransaction)));
+  return util.boolFromFfi(libKERNEL32_dll.SetFileAttributesTransactedW(util.pwstrToFfi(lpFileName), dwFileAttributes, util.toPointer(hTransaction)));
 }
 
 export function GetFileAttributesTransactedA(
@@ -13526,7 +13541,7 @@ export function GetFileAttributesTransactedA(
   lpFileInformation: Deno.PointerValue | Uint8Array | null /* ptr */,
   hTransaction: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32.GetFileAttributesTransactedA(util.pstrToFfi(lpFileName), fInfoLevelId, util.toPointer(lpFileInformation), util.toPointer(hTransaction)));
+  return util.boolFromFfi(libKERNEL32_dll.GetFileAttributesTransactedA(util.pstrToFfi(lpFileName), fInfoLevelId, util.toPointer(lpFileInformation), util.toPointer(hTransaction)));
 }
 
 export function GetFileAttributesTransactedW(
@@ -13535,7 +13550,7 @@ export function GetFileAttributesTransactedW(
   lpFileInformation: Deno.PointerValue | Uint8Array | null /* ptr */,
   hTransaction: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32.GetFileAttributesTransactedW(util.pwstrToFfi(lpFileName), fInfoLevelId, util.toPointer(lpFileInformation), util.toPointer(hTransaction)));
+  return util.boolFromFfi(libKERNEL32_dll.GetFileAttributesTransactedW(util.pwstrToFfi(lpFileName), fInfoLevelId, util.toPointer(lpFileInformation), util.toPointer(hTransaction)));
 }
 
 export function GetCompressedFileSizeTransactedA(
@@ -13543,7 +13558,7 @@ export function GetCompressedFileSizeTransactedA(
   lpFileSizeHigh: Deno.PointerValue | Uint8Array | null /* ptr */,
   hTransaction: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
 ): number /* u32 */ {
-  return libKERNEL32.GetCompressedFileSizeTransactedA(util.pstrToFfi(lpFileName), util.toPointer(lpFileSizeHigh), util.toPointer(hTransaction));
+  return libKERNEL32_dll.GetCompressedFileSizeTransactedA(util.pstrToFfi(lpFileName), util.toPointer(lpFileSizeHigh), util.toPointer(hTransaction));
 }
 
 export function GetCompressedFileSizeTransactedW(
@@ -13551,21 +13566,21 @@ export function GetCompressedFileSizeTransactedW(
   lpFileSizeHigh: Deno.PointerValue | Uint8Array | null /* ptr */,
   hTransaction: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
 ): number /* u32 */ {
-  return libKERNEL32.GetCompressedFileSizeTransactedW(util.pwstrToFfi(lpFileName), util.toPointer(lpFileSizeHigh), util.toPointer(hTransaction));
+  return libKERNEL32_dll.GetCompressedFileSizeTransactedW(util.pwstrToFfi(lpFileName), util.toPointer(lpFileSizeHigh), util.toPointer(hTransaction));
 }
 
 export function DeleteFileTransactedA(
   lpFileName: string | null /* Windows.Win32.Foundation.PSTR */,
   hTransaction: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32.DeleteFileTransactedA(util.pstrToFfi(lpFileName), util.toPointer(hTransaction)));
+  return util.boolFromFfi(libKERNEL32_dll.DeleteFileTransactedA(util.pstrToFfi(lpFileName), util.toPointer(hTransaction)));
 }
 
 export function DeleteFileTransactedW(
   lpFileName: string | null /* Windows.Win32.Foundation.PWSTR */,
   hTransaction: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32.DeleteFileTransactedW(util.pwstrToFfi(lpFileName), util.toPointer(hTransaction)));
+  return util.boolFromFfi(libKERNEL32_dll.DeleteFileTransactedW(util.pwstrToFfi(lpFileName), util.toPointer(hTransaction)));
 }
 
 export function CheckNameLegalDOS8Dot3A(
@@ -13575,7 +13590,7 @@ export function CheckNameLegalDOS8Dot3A(
   pbNameContainsSpaces: Deno.PointerValue | Uint8Array | null /* ptr */,
   pbNameLegal: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32.CheckNameLegalDOS8Dot3A(util.pstrToFfi(lpName), util.pstrToFfi(lpOemName), OemNameSize, util.toPointer(pbNameContainsSpaces), util.toPointer(pbNameLegal)));
+  return util.boolFromFfi(libKERNEL32_dll.CheckNameLegalDOS8Dot3A(util.pstrToFfi(lpName), util.pstrToFfi(lpOemName), OemNameSize, util.toPointer(pbNameContainsSpaces), util.toPointer(pbNameLegal)));
 }
 
 export function CheckNameLegalDOS8Dot3W(
@@ -13585,7 +13600,7 @@ export function CheckNameLegalDOS8Dot3W(
   pbNameContainsSpaces: Deno.PointerValue | Uint8Array | null /* ptr */,
   pbNameLegal: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32.CheckNameLegalDOS8Dot3W(util.pwstrToFfi(lpName), util.pstrToFfi(lpOemName), OemNameSize, util.toPointer(pbNameContainsSpaces), util.toPointer(pbNameLegal)));
+  return util.boolFromFfi(libKERNEL32_dll.CheckNameLegalDOS8Dot3W(util.pwstrToFfi(lpName), util.pstrToFfi(lpOemName), OemNameSize, util.toPointer(pbNameContainsSpaces), util.toPointer(pbNameLegal)));
 }
 
 export function FindFirstFileTransactedA(
@@ -13597,7 +13612,7 @@ export function FindFirstFileTransactedA(
   dwAdditionalFlags: number /* u32 */,
   hTransaction: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
 ): Deno.PointerValue | null /* Windows.Win32.Storage.FileSystem.FindFileHandle */ {
-  return util.pointerFromFfi(libKERNEL32.FindFirstFileTransactedA(util.pstrToFfi(lpFileName), fInfoLevelId, util.toPointer(lpFindFileData), fSearchOp, util.toPointer(lpSearchFilter), dwAdditionalFlags, util.toPointer(hTransaction)));
+  return util.pointerFromFfi(libKERNEL32_dll.FindFirstFileTransactedA(util.pstrToFfi(lpFileName), fInfoLevelId, util.toPointer(lpFindFileData), fSearchOp, util.toPointer(lpSearchFilter), dwAdditionalFlags, util.toPointer(hTransaction)));
 }
 
 export function FindFirstFileTransactedW(
@@ -13609,7 +13624,7 @@ export function FindFirstFileTransactedW(
   dwAdditionalFlags: number /* u32 */,
   hTransaction: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
 ): Deno.PointerValue | null /* Windows.Win32.Storage.FileSystem.FindFileHandle */ {
-  return util.pointerFromFfi(libKERNEL32.FindFirstFileTransactedW(util.pwstrToFfi(lpFileName), fInfoLevelId, util.toPointer(lpFindFileData), fSearchOp, util.toPointer(lpSearchFilter), dwAdditionalFlags, util.toPointer(hTransaction)));
+  return util.pointerFromFfi(libKERNEL32_dll.FindFirstFileTransactedW(util.pwstrToFfi(lpFileName), fInfoLevelId, util.toPointer(lpFindFileData), fSearchOp, util.toPointer(lpSearchFilter), dwAdditionalFlags, util.toPointer(hTransaction)));
 }
 
 export function CopyFileA(
@@ -13617,7 +13632,7 @@ export function CopyFileA(
   lpNewFileName: string | null /* Windows.Win32.Foundation.PSTR */,
   bFailIfExists: boolean /* Windows.Win32.Foundation.BOOL */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32.CopyFileA(util.pstrToFfi(lpExistingFileName), util.pstrToFfi(lpNewFileName), util.boolToFfi(bFailIfExists)));
+  return util.boolFromFfi(libKERNEL32_dll.CopyFileA(util.pstrToFfi(lpExistingFileName), util.pstrToFfi(lpNewFileName), util.boolToFfi(bFailIfExists)));
 }
 
 export function CopyFileW(
@@ -13625,7 +13640,7 @@ export function CopyFileW(
   lpNewFileName: string | null /* Windows.Win32.Foundation.PWSTR */,
   bFailIfExists: boolean /* Windows.Win32.Foundation.BOOL */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32.CopyFileW(util.pwstrToFfi(lpExistingFileName), util.pwstrToFfi(lpNewFileName), util.boolToFfi(bFailIfExists)));
+  return util.boolFromFfi(libKERNEL32_dll.CopyFileW(util.pwstrToFfi(lpExistingFileName), util.pwstrToFfi(lpNewFileName), util.boolToFfi(bFailIfExists)));
 }
 
 export function CopyFileExA(
@@ -13636,7 +13651,7 @@ export function CopyFileExA(
   pbCancel: Deno.PointerValue | Uint8Array | null /* ptr */,
   dwCopyFlags: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32.CopyFileExA(util.pstrToFfi(lpExistingFileName), util.pstrToFfi(lpNewFileName), util.toPointer(lpProgressRoutine), util.toPointer(lpData), util.toPointer(pbCancel), dwCopyFlags));
+  return util.boolFromFfi(libKERNEL32_dll.CopyFileExA(util.pstrToFfi(lpExistingFileName), util.pstrToFfi(lpNewFileName), util.toPointer(lpProgressRoutine), util.toPointer(lpData), util.toPointer(pbCancel), dwCopyFlags));
 }
 
 export function CopyFileExW(
@@ -13647,7 +13662,7 @@ export function CopyFileExW(
   pbCancel: Deno.PointerValue | Uint8Array | null /* ptr */,
   dwCopyFlags: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32.CopyFileExW(util.pwstrToFfi(lpExistingFileName), util.pwstrToFfi(lpNewFileName), util.toPointer(lpProgressRoutine), util.toPointer(lpData), util.toPointer(pbCancel), dwCopyFlags));
+  return util.boolFromFfi(libKERNEL32_dll.CopyFileExW(util.pwstrToFfi(lpExistingFileName), util.pwstrToFfi(lpNewFileName), util.toPointer(lpProgressRoutine), util.toPointer(lpData), util.toPointer(pbCancel), dwCopyFlags));
 }
 
 export function CopyFileTransactedA(
@@ -13659,7 +13674,7 @@ export function CopyFileTransactedA(
   dwCopyFlags: number /* u32 */,
   hTransaction: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32.CopyFileTransactedA(util.pstrToFfi(lpExistingFileName), util.pstrToFfi(lpNewFileName), util.toPointer(lpProgressRoutine), util.toPointer(lpData), util.toPointer(pbCancel), dwCopyFlags, util.toPointer(hTransaction)));
+  return util.boolFromFfi(libKERNEL32_dll.CopyFileTransactedA(util.pstrToFfi(lpExistingFileName), util.pstrToFfi(lpNewFileName), util.toPointer(lpProgressRoutine), util.toPointer(lpData), util.toPointer(pbCancel), dwCopyFlags, util.toPointer(hTransaction)));
 }
 
 export function CopyFileTransactedW(
@@ -13671,7 +13686,7 @@ export function CopyFileTransactedW(
   dwCopyFlags: number /* u32 */,
   hTransaction: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32.CopyFileTransactedW(util.pwstrToFfi(lpExistingFileName), util.pwstrToFfi(lpNewFileName), util.toPointer(lpProgressRoutine), util.toPointer(lpData), util.toPointer(pbCancel), dwCopyFlags, util.toPointer(hTransaction)));
+  return util.boolFromFfi(libKERNEL32_dll.CopyFileTransactedW(util.pwstrToFfi(lpExistingFileName), util.pwstrToFfi(lpNewFileName), util.toPointer(lpProgressRoutine), util.toPointer(lpData), util.toPointer(pbCancel), dwCopyFlags, util.toPointer(hTransaction)));
 }
 
 export function CopyFile2(
@@ -13679,21 +13694,21 @@ export function CopyFile2(
   pwszNewFileName: string | null /* Windows.Win32.Foundation.PWSTR */,
   pExtendedParameters: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libKERNEL32.CopyFile2(util.pwstrToFfi(pwszExistingFileName), util.pwstrToFfi(pwszNewFileName), util.toPointer(pExtendedParameters)));
+  return util.pointerFromFfi(libKERNEL32_dll.CopyFile2(util.pwstrToFfi(pwszExistingFileName), util.pwstrToFfi(pwszNewFileName), util.toPointer(pExtendedParameters)));
 }
 
 export function MoveFileA(
   lpExistingFileName: string | null /* Windows.Win32.Foundation.PSTR */,
   lpNewFileName: string | null /* Windows.Win32.Foundation.PSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32.MoveFileA(util.pstrToFfi(lpExistingFileName), util.pstrToFfi(lpNewFileName)));
+  return util.boolFromFfi(libKERNEL32_dll.MoveFileA(util.pstrToFfi(lpExistingFileName), util.pstrToFfi(lpNewFileName)));
 }
 
 export function MoveFileW(
   lpExistingFileName: string | null /* Windows.Win32.Foundation.PWSTR */,
   lpNewFileName: string | null /* Windows.Win32.Foundation.PWSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32.MoveFileW(util.pwstrToFfi(lpExistingFileName), util.pwstrToFfi(lpNewFileName)));
+  return util.boolFromFfi(libKERNEL32_dll.MoveFileW(util.pwstrToFfi(lpExistingFileName), util.pwstrToFfi(lpNewFileName)));
 }
 
 export function MoveFileExA(
@@ -13701,7 +13716,7 @@ export function MoveFileExA(
   lpNewFileName: string | null /* Windows.Win32.Foundation.PSTR */,
   dwFlags: MOVE_FILE_FLAGS /* Windows.Win32.Storage.FileSystem.MOVE_FILE_FLAGS */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32.MoveFileExA(util.pstrToFfi(lpExistingFileName), util.pstrToFfi(lpNewFileName), dwFlags));
+  return util.boolFromFfi(libKERNEL32_dll.MoveFileExA(util.pstrToFfi(lpExistingFileName), util.pstrToFfi(lpNewFileName), dwFlags));
 }
 
 export function MoveFileExW(
@@ -13709,7 +13724,7 @@ export function MoveFileExW(
   lpNewFileName: string | null /* Windows.Win32.Foundation.PWSTR */,
   dwFlags: MOVE_FILE_FLAGS /* Windows.Win32.Storage.FileSystem.MOVE_FILE_FLAGS */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32.MoveFileExW(util.pwstrToFfi(lpExistingFileName), util.pwstrToFfi(lpNewFileName), dwFlags));
+  return util.boolFromFfi(libKERNEL32_dll.MoveFileExW(util.pwstrToFfi(lpExistingFileName), util.pwstrToFfi(lpNewFileName), dwFlags));
 }
 
 export function MoveFileWithProgressA(
@@ -13719,7 +13734,7 @@ export function MoveFileWithProgressA(
   lpData: Deno.PointerValue | Uint8Array | null /* ptr */,
   dwFlags: MOVE_FILE_FLAGS /* Windows.Win32.Storage.FileSystem.MOVE_FILE_FLAGS */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32.MoveFileWithProgressA(util.pstrToFfi(lpExistingFileName), util.pstrToFfi(lpNewFileName), util.toPointer(lpProgressRoutine), util.toPointer(lpData), dwFlags));
+  return util.boolFromFfi(libKERNEL32_dll.MoveFileWithProgressA(util.pstrToFfi(lpExistingFileName), util.pstrToFfi(lpNewFileName), util.toPointer(lpProgressRoutine), util.toPointer(lpData), dwFlags));
 }
 
 export function MoveFileWithProgressW(
@@ -13729,7 +13744,7 @@ export function MoveFileWithProgressW(
   lpData: Deno.PointerValue | Uint8Array | null /* ptr */,
   dwFlags: MOVE_FILE_FLAGS /* Windows.Win32.Storage.FileSystem.MOVE_FILE_FLAGS */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32.MoveFileWithProgressW(util.pwstrToFfi(lpExistingFileName), util.pwstrToFfi(lpNewFileName), util.toPointer(lpProgressRoutine), util.toPointer(lpData), dwFlags));
+  return util.boolFromFfi(libKERNEL32_dll.MoveFileWithProgressW(util.pwstrToFfi(lpExistingFileName), util.pwstrToFfi(lpNewFileName), util.toPointer(lpProgressRoutine), util.toPointer(lpData), dwFlags));
 }
 
 export function MoveFileTransactedA(
@@ -13740,7 +13755,7 @@ export function MoveFileTransactedA(
   dwFlags: MOVE_FILE_FLAGS /* Windows.Win32.Storage.FileSystem.MOVE_FILE_FLAGS */,
   hTransaction: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32.MoveFileTransactedA(util.pstrToFfi(lpExistingFileName), util.pstrToFfi(lpNewFileName), util.toPointer(lpProgressRoutine), util.toPointer(lpData), dwFlags, util.toPointer(hTransaction)));
+  return util.boolFromFfi(libKERNEL32_dll.MoveFileTransactedA(util.pstrToFfi(lpExistingFileName), util.pstrToFfi(lpNewFileName), util.toPointer(lpProgressRoutine), util.toPointer(lpData), dwFlags, util.toPointer(hTransaction)));
 }
 
 export function MoveFileTransactedW(
@@ -13751,7 +13766,7 @@ export function MoveFileTransactedW(
   dwFlags: MOVE_FILE_FLAGS /* Windows.Win32.Storage.FileSystem.MOVE_FILE_FLAGS */,
   hTransaction: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32.MoveFileTransactedW(util.pwstrToFfi(lpExistingFileName), util.pwstrToFfi(lpNewFileName), util.toPointer(lpProgressRoutine), util.toPointer(lpData), dwFlags, util.toPointer(hTransaction)));
+  return util.boolFromFfi(libKERNEL32_dll.MoveFileTransactedW(util.pwstrToFfi(lpExistingFileName), util.pwstrToFfi(lpNewFileName), util.toPointer(lpProgressRoutine), util.toPointer(lpData), dwFlags, util.toPointer(hTransaction)));
 }
 
 export function ReplaceFileA(
@@ -13762,7 +13777,7 @@ export function ReplaceFileA(
   lpExclude: Deno.PointerValue | Uint8Array | null /* ptr */,
   lpReserved: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32.ReplaceFileA(util.pstrToFfi(lpReplacedFileName), util.pstrToFfi(lpReplacementFileName), util.pstrToFfi(lpBackupFileName), dwReplaceFlags, util.toPointer(lpExclude), util.toPointer(lpReserved)));
+  return util.boolFromFfi(libKERNEL32_dll.ReplaceFileA(util.pstrToFfi(lpReplacedFileName), util.pstrToFfi(lpReplacementFileName), util.pstrToFfi(lpBackupFileName), dwReplaceFlags, util.toPointer(lpExclude), util.toPointer(lpReserved)));
 }
 
 export function ReplaceFileW(
@@ -13773,7 +13788,7 @@ export function ReplaceFileW(
   lpExclude: Deno.PointerValue | Uint8Array | null /* ptr */,
   lpReserved: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32.ReplaceFileW(util.pwstrToFfi(lpReplacedFileName), util.pwstrToFfi(lpReplacementFileName), util.pwstrToFfi(lpBackupFileName), dwReplaceFlags, util.toPointer(lpExclude), util.toPointer(lpReserved)));
+  return util.boolFromFfi(libKERNEL32_dll.ReplaceFileW(util.pwstrToFfi(lpReplacedFileName), util.pwstrToFfi(lpReplacementFileName), util.pwstrToFfi(lpBackupFileName), dwReplaceFlags, util.toPointer(lpExclude), util.toPointer(lpReserved)));
 }
 
 export function CreateHardLinkA(
@@ -13781,7 +13796,7 @@ export function CreateHardLinkA(
   lpExistingFileName: string | null /* Windows.Win32.Foundation.PSTR */,
   lpSecurityAttributes: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32.CreateHardLinkA(util.pstrToFfi(lpFileName), util.pstrToFfi(lpExistingFileName), util.toPointer(lpSecurityAttributes)));
+  return util.boolFromFfi(libKERNEL32_dll.CreateHardLinkA(util.pstrToFfi(lpFileName), util.pstrToFfi(lpExistingFileName), util.toPointer(lpSecurityAttributes)));
 }
 
 export function CreateHardLinkW(
@@ -13789,7 +13804,7 @@ export function CreateHardLinkW(
   lpExistingFileName: string | null /* Windows.Win32.Foundation.PWSTR */,
   lpSecurityAttributes: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32.CreateHardLinkW(util.pwstrToFfi(lpFileName), util.pwstrToFfi(lpExistingFileName), util.toPointer(lpSecurityAttributes)));
+  return util.boolFromFfi(libKERNEL32_dll.CreateHardLinkW(util.pwstrToFfi(lpFileName), util.pwstrToFfi(lpExistingFileName), util.toPointer(lpSecurityAttributes)));
 }
 
 export function CreateHardLinkTransactedA(
@@ -13798,7 +13813,7 @@ export function CreateHardLinkTransactedA(
   lpSecurityAttributes: Deno.PointerValue | Uint8Array | null /* ptr */,
   hTransaction: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32.CreateHardLinkTransactedA(util.pstrToFfi(lpFileName), util.pstrToFfi(lpExistingFileName), util.toPointer(lpSecurityAttributes), util.toPointer(hTransaction)));
+  return util.boolFromFfi(libKERNEL32_dll.CreateHardLinkTransactedA(util.pstrToFfi(lpFileName), util.pstrToFfi(lpExistingFileName), util.toPointer(lpSecurityAttributes), util.toPointer(hTransaction)));
 }
 
 export function CreateHardLinkTransactedW(
@@ -13807,7 +13822,7 @@ export function CreateHardLinkTransactedW(
   lpSecurityAttributes: Deno.PointerValue | Uint8Array | null /* ptr */,
   hTransaction: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32.CreateHardLinkTransactedW(util.pwstrToFfi(lpFileName), util.pwstrToFfi(lpExistingFileName), util.toPointer(lpSecurityAttributes), util.toPointer(hTransaction)));
+  return util.boolFromFfi(libKERNEL32_dll.CreateHardLinkTransactedW(util.pwstrToFfi(lpFileName), util.pwstrToFfi(lpExistingFileName), util.toPointer(lpSecurityAttributes), util.toPointer(hTransaction)));
 }
 
 export function FindFirstStreamTransactedW(
@@ -13817,7 +13832,7 @@ export function FindFirstStreamTransactedW(
   dwFlags: number /* u32 */,
   hTransaction: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
 ): Deno.PointerValue | null /* Windows.Win32.Storage.FileSystem.FindStreamHandle */ {
-  return util.pointerFromFfi(libKERNEL32.FindFirstStreamTransactedW(util.pwstrToFfi(lpFileName), InfoLevel, util.toPointer(lpFindStreamData), dwFlags, util.toPointer(hTransaction)));
+  return util.pointerFromFfi(libKERNEL32_dll.FindFirstStreamTransactedW(util.pwstrToFfi(lpFileName), InfoLevel, util.toPointer(lpFindStreamData), dwFlags, util.toPointer(hTransaction)));
 }
 
 export function FindFirstFileNameTransactedW(
@@ -13827,21 +13842,21 @@ export function FindFirstFileNameTransactedW(
   LinkName: string | null /* Windows.Win32.Foundation.PWSTR */,
   hTransaction: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
 ): Deno.PointerValue | null /* Windows.Win32.Storage.FileSystem.FindFileNameHandle */ {
-  return util.pointerFromFfi(libKERNEL32.FindFirstFileNameTransactedW(util.pwstrToFfi(lpFileName), dwFlags, util.toPointer(StringLength), util.pwstrToFfi(LinkName), util.toPointer(hTransaction)));
+  return util.pointerFromFfi(libKERNEL32_dll.FindFirstFileNameTransactedW(util.pwstrToFfi(lpFileName), dwFlags, util.toPointer(StringLength), util.pwstrToFfi(LinkName), util.toPointer(hTransaction)));
 }
 
 export function SetVolumeLabelA(
   lpRootPathName: string | null /* Windows.Win32.Foundation.PSTR */,
   lpVolumeName: string | null /* Windows.Win32.Foundation.PSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32.SetVolumeLabelA(util.pstrToFfi(lpRootPathName), util.pstrToFfi(lpVolumeName)));
+  return util.boolFromFfi(libKERNEL32_dll.SetVolumeLabelA(util.pstrToFfi(lpRootPathName), util.pstrToFfi(lpVolumeName)));
 }
 
 export function SetVolumeLabelW(
   lpRootPathName: string | null /* Windows.Win32.Foundation.PWSTR */,
   lpVolumeName: string | null /* Windows.Win32.Foundation.PWSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32.SetVolumeLabelW(util.pwstrToFfi(lpRootPathName), util.pwstrToFfi(lpVolumeName)));
+  return util.boolFromFfi(libKERNEL32_dll.SetVolumeLabelW(util.pwstrToFfi(lpRootPathName), util.pwstrToFfi(lpVolumeName)));
 }
 
 export function SetFileBandwidthReservation(
@@ -13852,7 +13867,7 @@ export function SetFileBandwidthReservation(
   lpTransferSize: Deno.PointerValue | Uint8Array | null /* ptr */,
   lpNumOutstandingRequests: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32.SetFileBandwidthReservation(util.toPointer(hFile), nPeriodMilliseconds, nBytesPerPeriod, util.boolToFfi(bDiscardable), util.toPointer(lpTransferSize), util.toPointer(lpNumOutstandingRequests)));
+  return util.boolFromFfi(libKERNEL32_dll.SetFileBandwidthReservation(util.toPointer(hFile), nPeriodMilliseconds, nBytesPerPeriod, util.boolToFfi(bDiscardable), util.toPointer(lpTransferSize), util.toPointer(lpNumOutstandingRequests)));
 }
 
 export function GetFileBandwidthReservation(
@@ -13863,7 +13878,7 @@ export function GetFileBandwidthReservation(
   lpTransferSize: Deno.PointerValue | Uint8Array | null /* ptr */,
   lpNumOutstandingRequests: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32.GetFileBandwidthReservation(util.toPointer(hFile), util.toPointer(lpPeriodMilliseconds), util.toPointer(lpBytesPerPeriod), util.toPointer(pDiscardable), util.toPointer(lpTransferSize), util.toPointer(lpNumOutstandingRequests)));
+  return util.boolFromFfi(libKERNEL32_dll.GetFileBandwidthReservation(util.toPointer(hFile), util.toPointer(lpPeriodMilliseconds), util.toPointer(lpBytesPerPeriod), util.toPointer(pDiscardable), util.toPointer(lpTransferSize), util.toPointer(lpNumOutstandingRequests)));
 }
 
 export function ReadDirectoryChangesW(
@@ -13876,7 +13891,7 @@ export function ReadDirectoryChangesW(
   lpOverlapped: Deno.PointerValue | Uint8Array | null /* ptr */,
   lpCompletionRoutine: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.IO.LPOVERLAPPED_COMPLETION_ROUTINE */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32.ReadDirectoryChangesW(util.toPointer(hDirectory), util.toPointer(lpBuffer), nBufferLength, util.boolToFfi(bWatchSubtree), dwNotifyFilter, util.toPointer(lpBytesReturned), util.toPointer(lpOverlapped), util.toPointer(lpCompletionRoutine)));
+  return util.boolFromFfi(libKERNEL32_dll.ReadDirectoryChangesW(util.toPointer(hDirectory), util.toPointer(lpBuffer), nBufferLength, util.boolToFfi(bWatchSubtree), dwNotifyFilter, util.toPointer(lpBytesReturned), util.toPointer(lpOverlapped), util.toPointer(lpCompletionRoutine)));
 }
 
 export function ReadDirectoryChangesExW(
@@ -13890,14 +13905,14 @@ export function ReadDirectoryChangesExW(
   lpCompletionRoutine: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.IO.LPOVERLAPPED_COMPLETION_ROUTINE */,
   ReadDirectoryNotifyInformationClass: READ_DIRECTORY_NOTIFY_INFORMATION_CLASS /* Windows.Win32.Storage.FileSystem.READ_DIRECTORY_NOTIFY_INFORMATION_CLASS */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32.ReadDirectoryChangesExW(util.toPointer(hDirectory), util.toPointer(lpBuffer), nBufferLength, util.boolToFfi(bWatchSubtree), dwNotifyFilter, util.toPointer(lpBytesReturned), util.toPointer(lpOverlapped), util.toPointer(lpCompletionRoutine), ReadDirectoryNotifyInformationClass));
+  return util.boolFromFfi(libKERNEL32_dll.ReadDirectoryChangesExW(util.toPointer(hDirectory), util.toPointer(lpBuffer), nBufferLength, util.boolToFfi(bWatchSubtree), dwNotifyFilter, util.toPointer(lpBytesReturned), util.toPointer(lpOverlapped), util.toPointer(lpCompletionRoutine), ReadDirectoryNotifyInformationClass));
 }
 
 export function FindFirstVolumeA(
   lpszVolumeName: string | null /* Windows.Win32.Foundation.PSTR */,
   cchBufferLength: number /* u32 */,
 ): Deno.PointerValue | null /* Windows.Win32.Storage.FileSystem.FindVolumeHandle */ {
-  return util.pointerFromFfi(libKERNEL32.FindFirstVolumeA(util.pstrToFfi(lpszVolumeName), cchBufferLength));
+  return util.pointerFromFfi(libKERNEL32_dll.FindFirstVolumeA(util.pstrToFfi(lpszVolumeName), cchBufferLength));
 }
 
 export function FindNextVolumeA(
@@ -13905,7 +13920,7 @@ export function FindNextVolumeA(
   lpszVolumeName: string | null /* Windows.Win32.Foundation.PSTR */,
   cchBufferLength: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32.FindNextVolumeA(util.toPointer(hFindVolume), util.pstrToFfi(lpszVolumeName), cchBufferLength));
+  return util.boolFromFfi(libKERNEL32_dll.FindNextVolumeA(util.toPointer(hFindVolume), util.pstrToFfi(lpszVolumeName), cchBufferLength));
 }
 
 export function FindFirstVolumeMountPointA(
@@ -13913,7 +13928,7 @@ export function FindFirstVolumeMountPointA(
   lpszVolumeMountPoint: string | null /* Windows.Win32.Foundation.PSTR */,
   cchBufferLength: number /* u32 */,
 ): Deno.PointerValue | null /* Windows.Win32.Storage.FileSystem.FindVolumeMointPointHandle */ {
-  return util.pointerFromFfi(libKERNEL32.FindFirstVolumeMountPointA(util.pstrToFfi(lpszRootPathName), util.pstrToFfi(lpszVolumeMountPoint), cchBufferLength));
+  return util.pointerFromFfi(libKERNEL32_dll.FindFirstVolumeMountPointA(util.pstrToFfi(lpszRootPathName), util.pstrToFfi(lpszVolumeMountPoint), cchBufferLength));
 }
 
 export function FindFirstVolumeMountPointW(
@@ -13921,7 +13936,7 @@ export function FindFirstVolumeMountPointW(
   lpszVolumeMountPoint: string | null /* Windows.Win32.Foundation.PWSTR */,
   cchBufferLength: number /* u32 */,
 ): Deno.PointerValue | null /* Windows.Win32.Storage.FileSystem.FindVolumeMointPointHandle */ {
-  return util.pointerFromFfi(libKERNEL32.FindFirstVolumeMountPointW(util.pwstrToFfi(lpszRootPathName), util.pwstrToFfi(lpszVolumeMountPoint), cchBufferLength));
+  return util.pointerFromFfi(libKERNEL32_dll.FindFirstVolumeMountPointW(util.pwstrToFfi(lpszRootPathName), util.pwstrToFfi(lpszVolumeMountPoint), cchBufferLength));
 }
 
 export function FindNextVolumeMountPointA(
@@ -13929,7 +13944,7 @@ export function FindNextVolumeMountPointA(
   lpszVolumeMountPoint: string | null /* Windows.Win32.Foundation.PSTR */,
   cchBufferLength: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32.FindNextVolumeMountPointA(util.toPointer(hFindVolumeMountPoint), util.pstrToFfi(lpszVolumeMountPoint), cchBufferLength));
+  return util.boolFromFfi(libKERNEL32_dll.FindNextVolumeMountPointA(util.toPointer(hFindVolumeMountPoint), util.pstrToFfi(lpszVolumeMountPoint), cchBufferLength));
 }
 
 export function FindNextVolumeMountPointW(
@@ -13937,33 +13952,33 @@ export function FindNextVolumeMountPointW(
   lpszVolumeMountPoint: string | null /* Windows.Win32.Foundation.PWSTR */,
   cchBufferLength: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32.FindNextVolumeMountPointW(util.toPointer(hFindVolumeMountPoint), util.pwstrToFfi(lpszVolumeMountPoint), cchBufferLength));
+  return util.boolFromFfi(libKERNEL32_dll.FindNextVolumeMountPointW(util.toPointer(hFindVolumeMountPoint), util.pwstrToFfi(lpszVolumeMountPoint), cchBufferLength));
 }
 
 export function FindVolumeMountPointClose(
   hFindVolumeMountPoint: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Storage.FileSystem.FindVolumeMointPointHandle */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32.FindVolumeMountPointClose(util.toPointer(hFindVolumeMountPoint)));
+  return util.boolFromFfi(libKERNEL32_dll.FindVolumeMountPointClose(util.toPointer(hFindVolumeMountPoint)));
 }
 
 export function SetVolumeMountPointA(
   lpszVolumeMountPoint: string | null /* Windows.Win32.Foundation.PSTR */,
   lpszVolumeName: string | null /* Windows.Win32.Foundation.PSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32.SetVolumeMountPointA(util.pstrToFfi(lpszVolumeMountPoint), util.pstrToFfi(lpszVolumeName)));
+  return util.boolFromFfi(libKERNEL32_dll.SetVolumeMountPointA(util.pstrToFfi(lpszVolumeMountPoint), util.pstrToFfi(lpszVolumeName)));
 }
 
 export function SetVolumeMountPointW(
   lpszVolumeMountPoint: string | null /* Windows.Win32.Foundation.PWSTR */,
   lpszVolumeName: string | null /* Windows.Win32.Foundation.PWSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32.SetVolumeMountPointW(util.pwstrToFfi(lpszVolumeMountPoint), util.pwstrToFfi(lpszVolumeName)));
+  return util.boolFromFfi(libKERNEL32_dll.SetVolumeMountPointW(util.pwstrToFfi(lpszVolumeMountPoint), util.pwstrToFfi(lpszVolumeName)));
 }
 
 export function DeleteVolumeMountPointA(
   lpszVolumeMountPoint: string | null /* Windows.Win32.Foundation.PSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32.DeleteVolumeMountPointA(util.pstrToFfi(lpszVolumeMountPoint)));
+  return util.boolFromFfi(libKERNEL32_dll.DeleteVolumeMountPointA(util.pstrToFfi(lpszVolumeMountPoint)));
 }
 
 export function GetVolumeNameForVolumeMountPointA(
@@ -13971,7 +13986,7 @@ export function GetVolumeNameForVolumeMountPointA(
   lpszVolumeName: string | null /* Windows.Win32.Foundation.PSTR */,
   cchBufferLength: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32.GetVolumeNameForVolumeMountPointA(util.pstrToFfi(lpszVolumeMountPoint), util.pstrToFfi(lpszVolumeName), cchBufferLength));
+  return util.boolFromFfi(libKERNEL32_dll.GetVolumeNameForVolumeMountPointA(util.pstrToFfi(lpszVolumeMountPoint), util.pstrToFfi(lpszVolumeName), cchBufferLength));
 }
 
 export function GetVolumePathNameA(
@@ -13979,7 +13994,7 @@ export function GetVolumePathNameA(
   lpszVolumePathName: string | null /* Windows.Win32.Foundation.PSTR */,
   cchBufferLength: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32.GetVolumePathNameA(util.pstrToFfi(lpszFileName), util.pstrToFfi(lpszVolumePathName), cchBufferLength));
+  return util.boolFromFfi(libKERNEL32_dll.GetVolumePathNameA(util.pstrToFfi(lpszFileName), util.pstrToFfi(lpszVolumePathName), cchBufferLength));
 }
 
 export function GetVolumePathNamesForVolumeNameA(
@@ -13988,7 +14003,7 @@ export function GetVolumePathNamesForVolumeNameA(
   cchBufferLength: number /* u32 */,
   lpcchReturnLength: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32.GetVolumePathNamesForVolumeNameA(util.pstrToFfi(lpszVolumeName), util.pstrToFfi(lpszVolumePathNames), cchBufferLength, util.toPointer(lpcchReturnLength)));
+  return util.boolFromFfi(libKERNEL32_dll.GetVolumePathNamesForVolumeNameA(util.pstrToFfi(lpszVolumeName), util.pstrToFfi(lpszVolumePathNames), cchBufferLength, util.toPointer(lpcchReturnLength)));
 }
 
 export function GetFileInformationByHandleEx(
@@ -13997,7 +14012,7 @@ export function GetFileInformationByHandleEx(
   lpFileInformation: Deno.PointerValue | Uint8Array | null /* ptr */,
   dwBufferSize: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32.GetFileInformationByHandleEx(util.toPointer(hFile), FileInformationClass, util.toPointer(lpFileInformation), dwBufferSize));
+  return util.boolFromFfi(libKERNEL32_dll.GetFileInformationByHandleEx(util.toPointer(hFile), FileInformationClass, util.toPointer(lpFileInformation), dwBufferSize));
 }
 
 export function OpenFileById(
@@ -14008,7 +14023,7 @@ export function OpenFileById(
   lpSecurityAttributes: Deno.PointerValue | Uint8Array | null /* ptr */,
   dwFlagsAndAttributes: FILE_FLAGS_AND_ATTRIBUTES /* Windows.Win32.Storage.FileSystem.FILE_FLAGS_AND_ATTRIBUTES */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */ {
-  return util.pointerFromFfi(libKERNEL32.OpenFileById(util.toPointer(hVolumeHint), util.toPointer(lpFileId), dwDesiredAccess, dwShareMode, util.toPointer(lpSecurityAttributes), dwFlagsAndAttributes));
+  return util.pointerFromFfi(libKERNEL32_dll.OpenFileById(util.toPointer(hVolumeHint), util.toPointer(lpFileId), dwDesiredAccess, dwShareMode, util.toPointer(lpSecurityAttributes), dwFlagsAndAttributes));
 }
 
 export function CreateSymbolicLinkA(
@@ -14016,7 +14031,7 @@ export function CreateSymbolicLinkA(
   lpTargetFileName: string | null /* Windows.Win32.Foundation.PSTR */,
   dwFlags: SYMBOLIC_LINK_FLAGS /* Windows.Win32.Storage.FileSystem.SYMBOLIC_LINK_FLAGS */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.BOOLEAN */ {
-  return util.pointerFromFfi(libKERNEL32.CreateSymbolicLinkA(util.pstrToFfi(lpSymlinkFileName), util.pstrToFfi(lpTargetFileName), dwFlags));
+  return util.pointerFromFfi(libKERNEL32_dll.CreateSymbolicLinkA(util.pstrToFfi(lpSymlinkFileName), util.pstrToFfi(lpTargetFileName), dwFlags));
 }
 
 export function CreateSymbolicLinkW(
@@ -14024,7 +14039,7 @@ export function CreateSymbolicLinkW(
   lpTargetFileName: string | null /* Windows.Win32.Foundation.PWSTR */,
   dwFlags: SYMBOLIC_LINK_FLAGS /* Windows.Win32.Storage.FileSystem.SYMBOLIC_LINK_FLAGS */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.BOOLEAN */ {
-  return util.pointerFromFfi(libKERNEL32.CreateSymbolicLinkW(util.pwstrToFfi(lpSymlinkFileName), util.pwstrToFfi(lpTargetFileName), dwFlags));
+  return util.pointerFromFfi(libKERNEL32_dll.CreateSymbolicLinkW(util.pwstrToFfi(lpSymlinkFileName), util.pwstrToFfi(lpTargetFileName), dwFlags));
 }
 
 export function CreateSymbolicLinkTransactedA(
@@ -14033,7 +14048,7 @@ export function CreateSymbolicLinkTransactedA(
   dwFlags: SYMBOLIC_LINK_FLAGS /* Windows.Win32.Storage.FileSystem.SYMBOLIC_LINK_FLAGS */,
   hTransaction: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.BOOLEAN */ {
-  return util.pointerFromFfi(libKERNEL32.CreateSymbolicLinkTransactedA(util.pstrToFfi(lpSymlinkFileName), util.pstrToFfi(lpTargetFileName), dwFlags, util.toPointer(hTransaction)));
+  return util.pointerFromFfi(libKERNEL32_dll.CreateSymbolicLinkTransactedA(util.pstrToFfi(lpSymlinkFileName), util.pstrToFfi(lpTargetFileName), dwFlags, util.toPointer(hTransaction)));
 }
 
 export function CreateSymbolicLinkTransactedW(
@@ -14042,7 +14057,7 @@ export function CreateSymbolicLinkTransactedW(
   dwFlags: SYMBOLIC_LINK_FLAGS /* Windows.Win32.Storage.FileSystem.SYMBOLIC_LINK_FLAGS */,
   hTransaction: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.BOOLEAN */ {
-  return util.pointerFromFfi(libKERNEL32.CreateSymbolicLinkTransactedW(util.pwstrToFfi(lpSymlinkFileName), util.pwstrToFfi(lpTargetFileName), dwFlags, util.toPointer(hTransaction)));
+  return util.pointerFromFfi(libKERNEL32_dll.CreateSymbolicLinkTransactedW(util.pwstrToFfi(lpSymlinkFileName), util.pwstrToFfi(lpTargetFileName), dwFlags, util.toPointer(hTransaction)));
 }
 
 export function NtCreateFile(
@@ -14058,6 +14073,6 @@ export function NtCreateFile(
   EaBuffer: Deno.PointerValue | Uint8Array | null /* ptr */,
   EaLength: number /* u32 */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.NTSTATUS */ {
-  return util.pointerFromFfi(libntdll.NtCreateFile(util.toPointer(FileHandle), DesiredAccess, util.toPointer(ObjectAttributes), util.toPointer(IoStatusBlock), util.toPointer(AllocationSize), FileAttributes, ShareAccess, CreateDisposition, CreateOptions, util.toPointer(EaBuffer), EaLength));
+  return util.pointerFromFfi(libntdll_dll.NtCreateFile(util.toPointer(FileHandle), DesiredAccess, util.toPointer(ObjectAttributes), util.toPointer(IoStatusBlock), util.toPointer(AllocationSize), FileAttributes, ShareAccess, CreateDisposition, CreateOptions, util.toPointer(EaBuffer), EaLength));
 }
 

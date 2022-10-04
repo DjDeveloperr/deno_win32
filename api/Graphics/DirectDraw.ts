@@ -8,6 +8,9 @@ export const _FACDD = 2166;
 export const DDENUM_ATTACHEDSECONDARYDEVICES = 1;
 export const DDENUM_DETACHEDSECONDARYDEVICES = 2;
 export const DDENUM_NONDISPLAYDEVICES = 4;
+export const REGSTR_KEY_DDHW_DESCRIPTION = "Description";
+export const REGSTR_KEY_DDHW_DRIVERNAME = "DriverName";
+export const REGSTR_PATH_DDHW = "Hardware\DirectDrawDrivers";
 export const DDCREATE_HARDWAREONLY = 1;
 export const DDCREATE_EMULATIONONLY = 2;
 export const MAX_DDDEVICEID_STRING = 512;
@@ -471,6 +474,8 @@ export const DDCREATEDRIVEROBJECT = 10;
 export const DDGET32BITDRIVERNAME = 11;
 export const DDNEWCALLBACKFNS = 12;
 export const DDVERSIONINFO = 13;
+export const DDHAL_DRIVER_DLLNAME = "DDRAW16.DLL";
+export const DDHAL_APP_DLLNAME = "DDRAW.DLL";
 export const CCHDEVICENAME = 32;
 export const MAX_DRIVER_NAME = 32;
 export const MAX_PALETTE_SIZE = 256;
@@ -13979,7 +13984,7 @@ export function allocDXAPI_INTERFACE(data?: Partial<DXAPI_INTERFACE>): Uint8Arra
 // Native Libraries
 
 try {
-  var libDDRAW = Deno.dlopen("DDRAW", {
+  var libDDRAW_dll = Deno.dlopen("DDRAW.dll", {
     DirectDrawEnumerateW: {
       parameters: ["pointer", "pointer"],
       result: "pointer",
@@ -14017,14 +14022,14 @@ export function DirectDrawEnumerateW(
   lpCallback: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Graphics.DirectDraw.LPDDENUMCALLBACKW */,
   lpContext: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libDDRAW.DirectDrawEnumerateW(util.toPointer(lpCallback), util.toPointer(lpContext)));
+  return util.pointerFromFfi(libDDRAW_dll.DirectDrawEnumerateW(util.toPointer(lpCallback), util.toPointer(lpContext)));
 }
 
 export function DirectDrawEnumerateA(
   lpCallback: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Graphics.DirectDraw.LPDDENUMCALLBACKA */,
   lpContext: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libDDRAW.DirectDrawEnumerateA(util.toPointer(lpCallback), util.toPointer(lpContext)));
+  return util.pointerFromFfi(libDDRAW_dll.DirectDrawEnumerateA(util.toPointer(lpCallback), util.toPointer(lpContext)));
 }
 
 export function DirectDrawEnumerateExW(
@@ -14032,7 +14037,7 @@ export function DirectDrawEnumerateExW(
   lpContext: Deno.PointerValue | Uint8Array | null /* ptr */,
   dwFlags: number /* u32 */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libDDRAW.DirectDrawEnumerateExW(util.toPointer(lpCallback), util.toPointer(lpContext), dwFlags));
+  return util.pointerFromFfi(libDDRAW_dll.DirectDrawEnumerateExW(util.toPointer(lpCallback), util.toPointer(lpContext), dwFlags));
 }
 
 export function DirectDrawEnumerateExA(
@@ -14040,7 +14045,7 @@ export function DirectDrawEnumerateExA(
   lpContext: Deno.PointerValue | Uint8Array | null /* ptr */,
   dwFlags: number /* u32 */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libDDRAW.DirectDrawEnumerateExA(util.toPointer(lpCallback), util.toPointer(lpContext), dwFlags));
+  return util.pointerFromFfi(libDDRAW_dll.DirectDrawEnumerateExA(util.toPointer(lpCallback), util.toPointer(lpContext), dwFlags));
 }
 
 export function DirectDrawCreate(
@@ -14048,7 +14053,7 @@ export function DirectDrawCreate(
   lplpDD: Deno.PointerValue | Uint8Array | null /* ptr */,
   pUnkOuter: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Com.IUnknown */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libDDRAW.DirectDrawCreate(util.toPointer(lpGUID), util.toPointer(lplpDD), util.toPointer(pUnkOuter)));
+  return util.pointerFromFfi(libDDRAW_dll.DirectDrawCreate(util.toPointer(lpGUID), util.toPointer(lplpDD), util.toPointer(pUnkOuter)));
 }
 
 export function DirectDrawCreateEx(
@@ -14057,7 +14062,7 @@ export function DirectDrawCreateEx(
   iid: Deno.PointerValue | Uint8Array | null /* ptr */,
   pUnkOuter: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Com.IUnknown */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libDDRAW.DirectDrawCreateEx(util.toPointer(lpGuid), util.toPointer(lplpDD), util.toPointer(iid), util.toPointer(pUnkOuter)));
+  return util.pointerFromFfi(libDDRAW_dll.DirectDrawCreateEx(util.toPointer(lpGuid), util.toPointer(lplpDD), util.toPointer(iid), util.toPointer(pUnkOuter)));
 }
 
 export function DirectDrawCreateClipper(
@@ -14065,6 +14070,6 @@ export function DirectDrawCreateClipper(
   lplpDDClipper: Deno.PointerValue | Uint8Array | null /* ptr */,
   pUnkOuter: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Com.IUnknown */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libDDRAW.DirectDrawCreateClipper(dwFlags, util.toPointer(lplpDDClipper), util.toPointer(pUnkOuter)));
+  return util.pointerFromFfi(libDDRAW_dll.DirectDrawCreateClipper(dwFlags, util.toPointer(lplpDDClipper), util.toPointer(pUnkOuter)));
 }
 

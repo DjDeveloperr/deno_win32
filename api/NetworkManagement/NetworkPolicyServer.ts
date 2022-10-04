@@ -53,7 +53,17 @@ export type RADIUS_ACTION = number;
 export type RADIUS_EXTENSION_POINT = number;
 
 // Constants
+export const RADIUS_EXTENSION_INIT = "RadiusExtensionInit";
+export const RADIUS_EXTENSION_TERM = "RadiusExtensionTerm";
+export const RADIUS_EXTENSION_PROCESS = "RadiusExtensionProcess";
+export const RADIUS_EXTENSION_PROCESS_EX = "RadiusExtensionProcessEx";
+export const RADIUS_EXTENSION_FREE_ATTRIBUTES = "RadiusExtensionFreeAttributes";
+export const AUTHSRV_PARAMETERS_KEY_W = "System\CurrentControlSet\Services\AuthSrv\Parameters";
+export const AUTHSRV_EXTENSIONS_VALUE_W = "ExtensionDLLs";
+export const AUTHSRV_AUTHORIZATION_VALUE_W = "AuthorizationDLLs";
+export const AUTHSRV_ENFORCE_NP_FOR_PAP_CHALLENGE_RESPONSE_VALUE_W = "EnforceNetworkPolicyForPAPBasedChallengeResponse";
 export const RADIUS_EXTENSION_VERSION = 1;
+export const RADIUS_EXTENSION_PROCESS2 = "RadiusExtensionProcess2";
 export const ATTRIBUTE_UNDEFINED = 0;
 export const ATTRIBUTE_MIN_VALUE = 1;
 export const RADIUS_ATTRIBUTE_USER_NAME = 1;
