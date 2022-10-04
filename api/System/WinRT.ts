@@ -23,9 +23,9 @@ export type XAML_REFERENCETRACKER_DISCONNECT = number;
 
 // Constants
 export const MAX_ERROR_MESSAGE_CHARS = 512;
-export const CastingSourceInfo_Property_PreferredSourceUriScheme = "PreferredSourceUriScheme";
-export const CastingSourceInfo_Property_CastingTypes = "CastingTypes";
-export const CastingSourceInfo_Property_ProtectedMedia = "ProtectedMedia";
+export const CastingSourceInfo_Property_PreferredSourceUriScheme = `PreferredSourceUriScheme`;
+export const CastingSourceInfo_Property_CastingTypes = `CastingTypes`;
+export const CastingSourceInfo_Property_ProtectedMedia = `ProtectedMedia`;
 export const E_SURFACE_CONTENTS_LOST = 2150301728;
 export const ACTIVATIONTYPE_UNCATEGORIZED = 0;
 export const ACTIVATIONTYPE_FROM_MONIKER = 1;

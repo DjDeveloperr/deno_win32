@@ -182,7 +182,7 @@ export type D2D1_TURBULENCE_NOISE = number;
 export type D2D1_COMPOSITE_MODE = number;
 
 // Constants
-export const D2D1_DEFAULT_FLATTENING_TOLERANCE = "0.25";
+export const D2D1_DEFAULT_FLATTENING_TOLERANCE = `0.25`;
 export const D2D1_SCENE_REFERRED_SDR_WHITE_LEVEL = 80;
 export const D2D1_APPEND_ALIGNED_ELEMENT = 4294967295;
 export const FACILITY_D2D = 2201;

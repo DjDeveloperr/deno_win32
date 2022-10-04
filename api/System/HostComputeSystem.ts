@@ -11,7 +11,7 @@ export type HCS_NOTIFICATIONS = number;
 export type HCS_CREATE_OPTIONS = number;
 
 // Constants
-export const HcsOperationTypeNone = "-1";
+export const HcsOperationTypeNone = `-1`;
 export const HcsOperationTypeEnumerate = 0;
 export const HcsOperationTypeCreate = 1;
 export const HcsOperationTypeStart = 2;
@@ -41,7 +41,7 @@ export const HcsEventServiceDisconnect = 33554432;
 export const HcsEventOptionNone = 0;
 export const HcsEventOptionEnableOperationCallbacks = 1;
 export const HcsNotificationFlagSuccess = 0;
-export const HcsNotificationFlagFailure = "-2147483648";
+export const HcsNotificationFlagFailure = `-2147483648`;
 export const HcsNotificationInvalid = 0;
 export const HcsNotificationSystemExited = 1;
 export const HcsNotificationSystemCreateCompleted = 2;
@@ -62,7 +62,7 @@ export const HcsNotificationSystemOperationCompletion = 15;
 export const HcsNotificationSystemPassThru = 16;
 export const HcsNotificationProcessExited = 65536;
 export const HcsNotificationServiceDisconnect = 16777216;
-export const HcsNotificationFlagsReserved = "-268435456";
+export const HcsNotificationFlagsReserved = `-268435456`;
 export const HcsCreateOptions_1 = 65536;
 
 // Structs

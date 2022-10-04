@@ -12,8 +12,8 @@ export type KnownGamingPrivileges = number;
 export type XBL_IDP_AUTH_TOKEN_STATUS = number;
 
 // Constants
-export const ID_GDF_XML_STR = "__GDF_XML";
-export const ID_GDF_THUMBNAIL_STR = "__GDF_THUMBNAIL";
+export const ID_GDF_XML_STR = `__GDF_XML`;
+export const ID_GDF_THUMBNAIL_STR = `__GDF_THUMBNAIL`;
 export const GIS_NOT_INSTALLED = 1;
 export const GIS_CURRENT_USER = 2;
 export const GIS_ALL_USERS = 3;
@@ -22,7 +22,7 @@ export const GAMESTATS_OPEN_OPENONLY = 1;
 export const GAMESTATS_OPEN_CREATED = 0;
 export const GAMESTATS_OPEN_OPENED = 1;
 export const GAMING_DEVICE_VENDOR_ID_NONE = 0;
-export const GAMING_DEVICE_VENDOR_ID_MICROSOFT = "-1024700366";
+export const GAMING_DEVICE_VENDOR_ID_MICROSOFT = `-1024700366`;
 export const GAMING_DEVICE_DEVICE_ID_NONE = 0;
 export const GAMING_DEVICE_DEVICE_ID_XBOX_ONE = 1988865574;
 export const GAMING_DEVICE_DEVICE_ID_XBOX_ONE_S = 712204761;
@@ -58,7 +58,7 @@ export const XBL_IDP_AUTH_TOKEN_STATUS_XBOX_VETO = 4;
 export const XBL_IDP_AUTH_TOKEN_STATUS_MSA_INTERRUPT = 5;
 export const XBL_IDP_AUTH_TOKEN_STATUS_OFFLINE_NO_CONSENT = 6;
 export const XBL_IDP_AUTH_TOKEN_STATUS_VIEW_NOT_SET = 7;
-export const XBL_IDP_AUTH_TOKEN_STATUS_UNKNOWN = "-1";
+export const XBL_IDP_AUTH_TOKEN_STATUS_UNKNOWN = `-1`;
 
 // Structs
 

@@ -7,8 +7,8 @@ export type D3DCOMPILER_STRIP_FLAGS = number;
 export type D3D_BLOB_PART = number;
 
 // Constants
-export const D3DCOMPILER_DLL_W = "d3dcompiler_47.dll";
-export const D3DCOMPILER_DLL_A = "d3dcompiler_47.dll";
+export const D3DCOMPILER_DLL_W = `d3dcompiler_47.dll`;
+export const D3DCOMPILER_DLL_A = `d3dcompiler_47.dll`;
 export const D3D_COMPILER_VERSION = 47;
 export const D3DCOMPILE_DEBUG = 1;
 export const D3DCOMPILE_SKIP_VALIDATION = 2;

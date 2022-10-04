@@ -11,7 +11,7 @@ export type ENHANCED_METAFILE_RECORD_TYPE = number;
 // Constants
 export const PFD_TYPE_RGBA = 0;
 export const PFD_TYPE_COLORINDEX = 1;
-export const PFD_UNDERLAY_PLANE = "-1";
+export const PFD_UNDERLAY_PLANE = `-1`;
 export const PFD_MAIN_PLANE = 0;
 export const PFD_OVERLAY_PLANE = 1;
 export const PFD_DOUBLEBUFFER = 1;

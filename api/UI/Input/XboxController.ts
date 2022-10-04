@@ -97,9 +97,9 @@ export const XINPUT_KEYSTROKE_KEYUP = 2;
 export const XINPUT_KEYSTROKE_REPEAT = 4;
 export const XINPUT_FLAG_ALL = 0;
 export const XINPUT_FLAG_GAMEPAD = 1;
-export const XINPUT_DLL_A = "xinput1_4.dll";
-export const XINPUT_DLL_W = "xinput1_4.dll";
-export const XINPUT_DLL = "xinput1_4.dll";
+export const XINPUT_DLL_A = `xinput1_4.dll`;
+export const XINPUT_DLL_W = `xinput1_4.dll`;
+export const XINPUT_DLL = `xinput1_4.dll`;
 export const XUSER_MAX_COUNT = 4;
 export const XUSER_INDEX_ANY = 255;
 

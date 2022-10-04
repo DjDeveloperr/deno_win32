@@ -11,7 +11,7 @@ export type PROGRESS_DIALOG_CHECKBOX_ID = number;
 export type DEVICE_SELECTION_DEVICE_TYPE = number;
 
 // Constants
-export const PROGRESS_INDETERMINATE = "-1";
+export const PROGRESS_INDETERMINATE = `-1`;
 export const PHOTOACQ_ERROR_RESTART_REQUIRED = 7926411350061129729n;
 export const PHOTOACQ_RUN_DEFAULT = 0;
 export const PHOTOACQ_NO_GALLERY_LAUNCH = 1;

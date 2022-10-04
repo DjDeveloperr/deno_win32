@@ -8,9 +8,9 @@ export type MW_FILTERMODE = number;
 // Constants
 export const MW_FILTERMODE_EXCLUDE = 0;
 export const MW_FILTERMODE_INCLUDE = 1;
-export const WC_MAGNIFIERA = "Magnifier";
-export const WC_MAGNIFIERW = "Magnifier";
-export const WC_MAGNIFIER = "Magnifier";
+export const WC_MAGNIFIERA = `Magnifier`;
+export const WC_MAGNIFIERW = `Magnifier`;
+export const WC_MAGNIFIER = `Magnifier`;
 export const MS_SHOWMAGNIFIEDCURSOR = 1;
 export const MS_CLIPAROUNDCURSOR = 2;
 export const MS_INVERTCOLORS = 4;

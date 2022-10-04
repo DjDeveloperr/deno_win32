@@ -11,9 +11,9 @@ export type WSD_PROTOCOL_TYPE = number;
 export type WSDEventType = number;
 
 // Constants
-export const WSD_DEFAULT_HOSTING_ADDRESS = "http://*:5357/";
-export const WSD_DEFAULT_SECURE_HOSTING_ADDRESS = "https://*:5358/";
-export const WSD_DEFAULT_EVENTING_ADDRESS = "http://*:5357/";
+export const WSD_DEFAULT_HOSTING_ADDRESS = `http://*:5357/`;
+export const WSD_DEFAULT_SECURE_HOSTING_ADDRESS = `https://*:5358/`;
+export const WSD_DEFAULT_EVENTING_ADDRESS = `http://*:5357/`;
 export const WSDAPI_OPTION_MAX_INBOUND_MESSAGE_SIZE = 1;
 export const WSDAPI_OPTION_TRACE_XML_TO_DEBUGGER = 2;
 export const WSDAPI_OPTION_TRACE_XML_TO_FILE = 3;

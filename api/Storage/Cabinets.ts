@@ -10,7 +10,7 @@ export type FDIDECRYPTTYPE = number;
 export type FDINOTIFICATIONTYPE = number;
 
 // Constants
-export const cpuUNKNOWN = "-1";
+export const cpuUNKNOWN = `-1`;
 export const cpu80286 = 0;
 export const cpu80386 = 1;
 export const INCLUDED_FCI = 1;

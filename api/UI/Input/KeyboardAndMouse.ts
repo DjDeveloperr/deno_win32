@@ -313,24 +313,24 @@ export const CEDILLA = 807;
 export const OGONEK = 808;
 export const TONOS = 900;
 export const DIARESIS_TONOS = 901;
-export const wszGRAVE = " ";
-export const wszACUTE = "";
-export const wszCIRCUMFLEX = "";
-export const wszTILDE = "";
-export const wszMACRON = "";
-export const wszOVERSCORE = "";
-export const wszBREVE = "";
-export const wszDOT_ABOVE = "";
-export const wszUMLAUT = "";
-export const wszHOOK_ABOVE = "	";
-export const wszRING = "
-";
-export const wszDOUBLE_ACUTE = "";
-export const wszHACEK = "";
-export const wszCEDILLA = "'";
-export const wszOGONEK = "(";
-export const wszTONOS = "�";
-export const wszDIARESIS_TONOS = "�";
+export const wszGRAVE = ` `;
+export const wszACUTE = ``;
+export const wszCIRCUMFLEX = ``;
+export const wszTILDE = ``;
+export const wszMACRON = ``;
+export const wszOVERSCORE = ``;
+export const wszBREVE = ``;
+export const wszDOT_ABOVE = ``;
+export const wszUMLAUT = ``;
+export const wszHOOK_ABOVE = `	`;
+export const wszRING = `
+`;
+export const wszDOUBLE_ACUTE = ``;
+export const wszHACEK = ``;
+export const wszCEDILLA = `'`;
+export const wszOGONEK = `(`;
+export const wszTONOS = `�`;
+export const wszDIARESIS_TONOS = `�`;
 export const SHFT_INVALID = 15;
 export const WCH_NONE = 61440;
 export const WCH_DEAD = 61441;

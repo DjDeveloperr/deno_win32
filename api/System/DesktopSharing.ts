@@ -180,10 +180,10 @@ export const RDPSRAPI_KBD_SYNC_FLAG_KANA_LOCK = 8;
 export const CONST_MAX_CHANNEL_MESSAGE_SIZE = 1024;
 export const CONST_MAX_CHANNEL_NAME_LEN = 8;
 export const CONST_MAX_LEGACY_CHANNEL_MESSAGE_SIZE = 409600;
-export const CONST_ATTENDEE_ID_EVERYONE = "-1";
+export const CONST_ATTENDEE_ID_EVERYONE = `-1`;
 export const CONST_ATTENDEE_ID_HOST = 0;
 export const CONST_CONN_INTERVAL = 50;
-export const CONST_ATTENDEE_ID_DEFAULT = "-1";
+export const CONST_ATTENDEE_ID_DEFAULT = `-1`;
 
 // Structs
 

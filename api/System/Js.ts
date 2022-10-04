@@ -13,7 +13,7 @@ export type PROFILER_EVENT_MASK = number;
 // Constants
 export const JsRuntimeVersion10 = 0;
 export const JsRuntimeVersion11 = 1;
-export const JsRuntimeVersionEdge = "-1";
+export const JsRuntimeVersionEdge = `-1`;
 export const JS_SOURCE_CONTEXT_NONE = 18446744073709551615n;
 export const JsNoError = 0;
 export const JsErrorCategoryUsage = 65536;

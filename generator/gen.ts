@@ -255,7 +255,7 @@ for (const api in win32) {
     if ((value + "").match(/^[0-9]+n?$/)) {
       content += `export const ${name} = ${value};\n`;
     } else {
-      content += `export const ${name} = "${value}";\n`;
+      content += `export const ${name} = \`${value}\`;\n`;
     }
   }
   if (hasConsts) {

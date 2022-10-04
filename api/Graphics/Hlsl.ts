@@ -3,7 +3,7 @@
 import * as util from "../../util.ts";
 
 // Constants
-export const D3DCOMPILER_DLL = "d3dcompiler_47.dll";
+export const D3DCOMPILER_DLL = `d3dcompiler_47.dll`;
 export const D3DCOMPILE_OPTIMIZATION_LEVEL2 = 49152;
 export const D3D_COMPILE_STANDARD_FILE_INCLUDE = 1;
 

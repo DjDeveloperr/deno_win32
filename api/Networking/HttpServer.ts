@@ -138,7 +138,7 @@ export const HTTP_SERVICE_CONFIG_SSL_FLAG_ENABLE_CLIENT_CORRELATION = 8192;
 export const HTTP_REQUEST_PROPERTY_SNI_HOST_MAX_LENGTH = 255;
 export const HTTP_REQUEST_PROPERTY_SNI_FLAG_SNI_USED = 1;
 export const HTTP_REQUEST_PROPERTY_SNI_FLAG_NO_SNI = 2;
-export const HTTP_VERSION = "HTTP/1.0";
+export const HTTP_VERSION = `HTTP/1.0`;
 export const HttpServerAuthenticationProperty = 0;
 export const HttpServerLoggingProperty = 1;
 export const HttpServerQosProperty = 2;
@@ -381,7 +381,7 @@ export const HttpFeatureResponseTrailers = 1;
 export const HttpFeatureApiTimings = 2;
 export const HttpFeatureDelegateEx = 3;
 export const HttpFeatureHttp3 = 4;
-export const HttpFeaturemax = "-1";
+export const HttpFeaturemax = `-1`;
 
 // Structs
 
