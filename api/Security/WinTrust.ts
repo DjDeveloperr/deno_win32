@@ -61,7 +61,10 @@ export const WTD_REVOKE_NONE = 0;
 export const WTD_REVOKE_WHOLECHAIN = 1;
 export const WTD_UICONTEXT_EXECUTE = 0;
 export const WTD_UICONTEXT_INSTALL = 1;
+export const WINTRUST_CONFIG_REGPATH = `Software\Microsoft\Cryptography\Wintrust\Config`;
+export const WINTRUST_MAX_HEADER_BYTES_TO_MAP_VALUE_NAME = `MaxHeaderBytesToMap`;
 export const WINTRUST_MAX_HEADER_BYTES_TO_MAP_DEFAULT = 10485760;
+export const WINTRUST_MAX_HASH_BYTES_TO_MAP_VALUE_NAME = `MaxHashBytesToMap`;
 export const WINTRUST_MAX_HASH_BYTES_TO_MAP_DEFAULT = 1048576;
 export const WTD_PROV_FLAGS_MASK = 65535;
 export const WTD_CODE_INTEGRITY_DRIVER_MODE = 32768;
@@ -123,7 +126,63 @@ export const CERT_CONFIDENCE_AUTHIDEXT = 65536;
 export const CERT_CONFIDENCE_HYGIENE = 4096;
 export const CERT_CONFIDENCE_HIGHEST = 286330880;
 export const WT_CURRENT_VERSION = 512;
+export const WT_PROVIDER_DLL_NAME = `WINTRUST.DLL`;
+export const WT_PROVIDER_CERTTRUST_FUNCTION = `WintrustCertificateTrust`;
 export const WT_ADD_ACTION_ID_RET_RESULT_FLAG = 1;
+export const szOID_TRUSTED_CODESIGNING_CA_LIST = `1.3.6.1.4.1.311.2.2.1`;
+export const szOID_TRUSTED_CLIENT_AUTH_CA_LIST = `1.3.6.1.4.1.311.2.2.2`;
+export const szOID_TRUSTED_SERVER_AUTH_CA_LIST = `1.3.6.1.4.1.311.2.2.3`;
+export const SPC_COMMON_NAME_OBJID = `2.5.4.3`;
+export const SPC_TIME_STAMP_REQUEST_OBJID = `1.3.6.1.4.1.311.3.2.1`;
+export const SPC_INDIRECT_DATA_OBJID = `1.3.6.1.4.1.311.2.1.4`;
+export const SPC_SP_AGENCY_INFO_OBJID = `1.3.6.1.4.1.311.2.1.10`;
+export const SPC_STATEMENT_TYPE_OBJID = `1.3.6.1.4.1.311.2.1.11`;
+export const SPC_SP_OPUS_INFO_OBJID = `1.3.6.1.4.1.311.2.1.12`;
+export const SPC_CERT_EXTENSIONS_OBJID = `1.3.6.1.4.1.311.2.1.14`;
+export const SPC_PE_IMAGE_DATA_OBJID = `1.3.6.1.4.1.311.2.1.15`;
+export const SPC_RAW_FILE_DATA_OBJID = `1.3.6.1.4.1.311.2.1.18`;
+export const SPC_STRUCTURED_STORAGE_DATA_OBJID = `1.3.6.1.4.1.311.2.1.19`;
+export const SPC_JAVA_CLASS_DATA_OBJID = `1.3.6.1.4.1.311.2.1.20`;
+export const SPC_INDIVIDUAL_SP_KEY_PURPOSE_OBJID = `1.3.6.1.4.1.311.2.1.21`;
+export const SPC_COMMERCIAL_SP_KEY_PURPOSE_OBJID = `1.3.6.1.4.1.311.2.1.22`;
+export const SPC_CAB_DATA_OBJID = `1.3.6.1.4.1.311.2.1.25`;
+export const SPC_GLUE_RDN_OBJID = `1.3.6.1.4.1.311.2.1.25`;
+export const SPC_MINIMAL_CRITERIA_OBJID = `1.3.6.1.4.1.311.2.1.26`;
+export const SPC_FINANCIAL_CRITERIA_OBJID = `1.3.6.1.4.1.311.2.1.27`;
+export const SPC_LINK_OBJID = `1.3.6.1.4.1.311.2.1.28`;
+export const SPC_SIGINFO_OBJID = `1.3.6.1.4.1.311.2.1.30`;
+export const SPC_PE_IMAGE_PAGE_HASHES_V1_OBJID = `1.3.6.1.4.1.311.2.3.1`;
+export const SPC_PE_IMAGE_PAGE_HASHES_V2_OBJID = `1.3.6.1.4.1.311.2.3.2`;
+export const szOID_NESTED_SIGNATURE = `1.3.6.1.4.1.311.2.4.1`;
+export const szOID_INTENT_TO_SEAL = `1.3.6.1.4.1.311.2.4.2`;
+export const szOID_SEALING_SIGNATURE = `1.3.6.1.4.1.311.2.4.3`;
+export const szOID_SEALING_TIMESTAMP = `1.3.6.1.4.1.311.2.4.4`;
+export const szOID_ENHANCED_HASH = `1.3.6.1.4.1.311.2.5.1`;
+export const SPC_RELAXED_PE_MARKER_CHECK_OBJID = `1.3.6.1.4.1.311.2.6.1`;
+export const SPC_ENCRYPTED_DIGEST_RETRY_COUNT_OBJID = `1.3.6.1.4.1.311.2.6.2`;
+export const szOID_PKCS_9_SEQUENCE_NUMBER = `1.2.840.113549.1.9.25.4`;
+export const CAT_NAMEVALUE_OBJID = `1.3.6.1.4.1.311.12.2.1`;
+export const CAT_MEMBERINFO_OBJID = `1.3.6.1.4.1.311.12.2.2`;
+export const CAT_MEMBERINFO2_OBJID = `1.3.6.1.4.1.311.12.2.3`;
+export const SPC_WINDOWS_HELLO_COMPATIBILITY_OBJID = `1.3.6.1.4.1.311.10.41.1`;
+export const SPC_NATURAL_AUTH_PLUGIN_OBJID = `1.3.6.1.4.1.311.96.1.1`;
+export const SPC_SP_AGENCY_INFO_STRUCT = 2200139947050960;
+export const SPC_MINIMAL_CRITERIA_STRUCT = 2201239458678737;
+export const SPC_FINANCIAL_CRITERIA_STRUCT = 2202338970306514;
+export const SPC_INDIRECT_DATA_CONTENT_STRUCT = 2203438481934291;
+export const SPC_PE_IMAGE_DATA_STRUCT = 2204537993562068;
+export const SPC_LINK_STRUCT = 2210035551700949;
+export const SPC_STATEMENT_TYPE_STRUCT = 2206737016817622;
+export const SPC_SP_OPUS_INFO_STRUCT = 2350773040056279;
+export const SPC_CAB_DATA_STRUCT = 2324384760989656;
+export const SPC_JAVA_CLASS_DATA_STRUCT = 2226528226117593;
+export const INTENT_TO_SEAL_ATTRIBUTE_STRUCT = 2212234574956506;
+export const SEALING_SIGNATURE_ATTRIBUTE_STRUCT = 16971004890035783643n;
+export const SEALING_TIMESTAMP_ATTRIBUTE_STRUCT = 2213334086584284;
+export const SPC_SIGINFO_STRUCT = 2343076458661970;
+export const CAT_NAMEVALUE_STRUCT = 2443132016789677;
+export const CAT_MEMBERINFO_STRUCT = 2451928109811886;
+export const CAT_MEMBERINFO2_STRUCT = 2446430551673007;
 export const SPC_UUID_LENGTH = 16;
 export const SPC_URL_LINK_CHOICE = 1;
 export const SPC_MONIKER_LINK_CHOICE = 2;
@@ -138,6 +197,26 @@ export const WT_TRUSTDBDIALOG_NO_UI_FLAG = 1;
 export const WT_TRUSTDBDIALOG_ONLY_PUB_TAB_FLAG = 2;
 export const WT_TRUSTDBDIALOG_WRITE_LEGACY_REG_FLAG = 256;
 export const WT_TRUSTDBDIALOG_WRITE_IEAK_STORE_FLAG = 512;
+export const SP_POLICY_PROVIDER_DLL_NAME = `WINTRUST.DLL`;
+export const SP_INIT_FUNCTION = `SoftpubInitialize`;
+export const SP_OBJTRUST_FUNCTION = `SoftpubLoadMessage`;
+export const SP_SIGTRUST_FUNCTION = `SoftpubLoadSignature`;
+export const SP_CHKCERT_FUNCTION = `SoftpubCheckCert`;
+export const SP_FINALPOLICY_FUNCTION = `SoftpubAuthenticode`;
+export const SP_CLEANUPPOLICY_FUNCTION = `SoftpubCleanup`;
+export const SP_TESTDUMPPOLICY_FUNCTION_TEST = `SoftpubDumpStructure`;
+export const SP_GENERIC_CERT_INIT_FUNCTION = `SoftpubDefCertInit`;
+export const GENERIC_CHAIN_FINALPOLICY_FUNCTION = `GenericChainFinalProv`;
+export const GENERIC_CHAIN_CERTTRUST_FUNCTION = `GenericChainCertificateTrust`;
+export const HTTPS_FINALPOLICY_FUNCTION = `HTTPSFinalProv`;
+export const HTTPS_CHKCERT_FUNCTION = `HTTPSCheckCertProv`;
+export const HTTPS_CERTTRUST_FUNCTION = `HTTPSCertificateTrust`;
+export const OFFICE_POLICY_PROVIDER_DLL_NAME = `WINTRUST.DLL`;
+export const OFFICE_INITPROV_FUNCTION = `OfficeInitializePolicy`;
+export const OFFICE_CLEANUPPOLICY_FUNCTION = `OfficeCleanupPolicy`;
+export const DRIVER_INITPROV_FUNCTION = `DriverInitializePolicy`;
+export const DRIVER_FINALPOLPROV_FUNCTION = `DriverFinalPolicy`;
+export const DRIVER_CLEANUPPOLICY_FUNCTION = `DriverCleanupPolicy`;
 export const CCPI_RESULT_ALLOW = 1;
 export const CCPI_RESULT_DENY = 2;
 export const CCPI_RESULT_AUDIT = 3;
@@ -2311,7 +2390,7 @@ export function allocCONFIG_CI_PROV_INFO(data?: Partial<CONFIG_CI_PROV_INFO>): U
 // Native Libraries
 
 try {
-  var libWINTRUST = Deno.dlopen("WINTRUST", {
+  var libWINTRUST_dll = Deno.dlopen("WINTRUST.dll", {
     WinVerifyTrust: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "i32",
@@ -2394,7 +2473,7 @@ export function WinVerifyTrust(
   pgActionID: Deno.PointerValue | Uint8Array | null /* ptr */,
   pWVTData: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
-  return libWINTRUST.WinVerifyTrust(util.hwndToFfi(hwnd), util.toPointer(pgActionID), util.toPointer(pWVTData));
+  return libWINTRUST_dll.WinVerifyTrust(util.hwndToFfi(hwnd), util.toPointer(pgActionID), util.toPointer(pWVTData));
 }
 
 export function WinVerifyTrustEx(
@@ -2402,19 +2481,19 @@ export function WinVerifyTrustEx(
   pgActionID: Deno.PointerValue | Uint8Array | null /* ptr */,
   pWinTrustData: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
-  return libWINTRUST.WinVerifyTrustEx(util.hwndToFfi(hwnd), util.toPointer(pgActionID), util.toPointer(pWinTrustData));
+  return libWINTRUST_dll.WinVerifyTrustEx(util.hwndToFfi(hwnd), util.toPointer(pgActionID), util.toPointer(pWinTrustData));
 }
 
 export function WintrustGetRegPolicyFlags(
   pdwPolicyFlags: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): void /* void */ {
-  return libWINTRUST.WintrustGetRegPolicyFlags(util.toPointer(pdwPolicyFlags));
+  return libWINTRUST_dll.WintrustGetRegPolicyFlags(util.toPointer(pdwPolicyFlags));
 }
 
 export function WintrustSetRegPolicyFlags(
   dwPolicyFlags: WINTRUST_POLICY_FLAGS /* Windows.Win32.Security.WinTrust.WINTRUST_POLICY_FLAGS */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWINTRUST.WintrustSetRegPolicyFlags(dwPolicyFlags));
+  return util.boolFromFfi(libWINTRUST_dll.WintrustSetRegPolicyFlags(dwPolicyFlags));
 }
 
 export function WintrustAddActionID(
@@ -2422,27 +2501,27 @@ export function WintrustAddActionID(
   fdwFlags: number /* u32 */,
   psProvInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWINTRUST.WintrustAddActionID(util.toPointer(pgActionID), fdwFlags, util.toPointer(psProvInfo)));
+  return util.boolFromFfi(libWINTRUST_dll.WintrustAddActionID(util.toPointer(pgActionID), fdwFlags, util.toPointer(psProvInfo)));
 }
 
 export function WintrustRemoveActionID(
   pgActionID: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWINTRUST.WintrustRemoveActionID(util.toPointer(pgActionID)));
+  return util.boolFromFfi(libWINTRUST_dll.WintrustRemoveActionID(util.toPointer(pgActionID)));
 }
 
 export function WintrustLoadFunctionPointers(
   pgActionID: Deno.PointerValue | Uint8Array | null /* ptr */,
   pPfns: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWINTRUST.WintrustLoadFunctionPointers(util.toPointer(pgActionID), util.toPointer(pPfns)));
+  return util.boolFromFfi(libWINTRUST_dll.WintrustLoadFunctionPointers(util.toPointer(pgActionID), util.toPointer(pPfns)));
 }
 
 export function WintrustAddDefaultForUsage(
   pszUsageOID: string | null /* Windows.Win32.Foundation.PSTR */,
   psDefUsage: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWINTRUST.WintrustAddDefaultForUsage(util.pstrToFfi(pszUsageOID), util.toPointer(psDefUsage)));
+  return util.boolFromFfi(libWINTRUST_dll.WintrustAddDefaultForUsage(util.pstrToFfi(pszUsageOID), util.toPointer(psDefUsage)));
 }
 
 export function WintrustGetDefaultForUsage(
@@ -2450,7 +2529,7 @@ export function WintrustGetDefaultForUsage(
   pszUsageOID: string | null /* Windows.Win32.Foundation.PSTR */,
   psUsage: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWINTRUST.WintrustGetDefaultForUsage(dwAction, util.pstrToFfi(pszUsageOID), util.toPointer(psUsage)));
+  return util.boolFromFfi(libWINTRUST_dll.WintrustGetDefaultForUsage(dwAction, util.pstrToFfi(pszUsageOID), util.toPointer(psUsage)));
 }
 
 export function WTHelperGetProvSignerFromChain(
@@ -2459,40 +2538,40 @@ export function WTHelperGetProvSignerFromChain(
   fCounterSigner: boolean /* Windows.Win32.Foundation.BOOL */,
   idxCounterSigner: number /* u32 */,
 ): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libWINTRUST.WTHelperGetProvSignerFromChain(util.toPointer(pProvData), idxSigner, util.boolToFfi(fCounterSigner), idxCounterSigner));
+  return util.pointerFromFfi(libWINTRUST_dll.WTHelperGetProvSignerFromChain(util.toPointer(pProvData), idxSigner, util.boolToFfi(fCounterSigner), idxCounterSigner));
 }
 
 export function WTHelperGetProvCertFromChain(
   pSgnr: Deno.PointerValue | Uint8Array | null /* ptr */,
   idxCert: number /* u32 */,
 ): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libWINTRUST.WTHelperGetProvCertFromChain(util.toPointer(pSgnr), idxCert));
+  return util.pointerFromFfi(libWINTRUST_dll.WTHelperGetProvCertFromChain(util.toPointer(pSgnr), idxCert));
 }
 
 export function WTHelperProvDataFromStateData(
   hStateData: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
 ): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libWINTRUST.WTHelperProvDataFromStateData(util.toPointer(hStateData)));
+  return util.pointerFromFfi(libWINTRUST_dll.WTHelperProvDataFromStateData(util.toPointer(hStateData)));
 }
 
 export function WTHelperGetProvPrivateDataFromChain(
   pProvData: Deno.PointerValue | Uint8Array | null /* ptr */,
   pgProviderID: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libWINTRUST.WTHelperGetProvPrivateDataFromChain(util.toPointer(pProvData), util.toPointer(pgProviderID)));
+  return util.pointerFromFfi(libWINTRUST_dll.WTHelperGetProvPrivateDataFromChain(util.toPointer(pProvData), util.toPointer(pgProviderID)));
 }
 
 export function WTHelperCertIsSelfSigned(
   dwEncoding: number /* u32 */,
   pCert: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWINTRUST.WTHelperCertIsSelfSigned(dwEncoding, util.toPointer(pCert)));
+  return util.boolFromFfi(libWINTRUST_dll.WTHelperCertIsSelfSigned(dwEncoding, util.toPointer(pCert)));
 }
 
 export function WTHelperCertCheckValidSignature(
   pProvData: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libWINTRUST.WTHelperCertCheckValidSignature(util.toPointer(pProvData)));
+  return util.pointerFromFfi(libWINTRUST_dll.WTHelperCertCheckValidSignature(util.toPointer(pProvData)));
 }
 
 export function OpenPersonalTrustDBDialogEx(
@@ -2500,18 +2579,18 @@ export function OpenPersonalTrustDBDialogEx(
   dwFlags: number /* u32 */,
   pvReserved: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWINTRUST.OpenPersonalTrustDBDialogEx(util.hwndToFfi(hwndParent), dwFlags, util.toPointer(pvReserved)));
+  return util.boolFromFfi(libWINTRUST_dll.OpenPersonalTrustDBDialogEx(util.hwndToFfi(hwndParent), dwFlags, util.toPointer(pvReserved)));
 }
 
 export function OpenPersonalTrustDBDialog(
   hwndParent: Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWINTRUST.OpenPersonalTrustDBDialog(util.hwndToFfi(hwndParent)));
+  return util.boolFromFfi(libWINTRUST_dll.OpenPersonalTrustDBDialog(util.hwndToFfi(hwndParent)));
 }
 
 export function WintrustSetDefaultIncludePEPageHashes(
   fIncludePEPageHashes: boolean /* Windows.Win32.Foundation.BOOL */,
 ): void /* void */ {
-  return libWINTRUST.WintrustSetDefaultIncludePEPageHashes(util.boolToFfi(fIncludePEPageHashes));
+  return libWINTRUST_dll.WintrustSetDefaultIncludePEPageHashes(util.boolToFfi(fIncludePEPageHashes));
 }
 

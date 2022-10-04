@@ -576,7 +576,7 @@ export type HANDLE = Deno.PointerValue;
 // Native Libraries
 
 try {
-  var libFLTLIB = Deno.dlopen("FLTLIB", {
+  var libFLTLIB_dll = Deno.dlopen("FLTLIB.dll", {
     FilterLoad: {
       parameters: ["buffer"],
       result: "pointer",
@@ -697,26 +697,26 @@ try {
 export function FilterLoad(
   lpFilterName: string | null /* Windows.Win32.Foundation.PWSTR */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libFLTLIB.FilterLoad(util.pwstrToFfi(lpFilterName)));
+  return util.pointerFromFfi(libFLTLIB_dll.FilterLoad(util.pwstrToFfi(lpFilterName)));
 }
 
 export function FilterUnload(
   lpFilterName: string | null /* Windows.Win32.Foundation.PWSTR */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libFLTLIB.FilterUnload(util.pwstrToFfi(lpFilterName)));
+  return util.pointerFromFfi(libFLTLIB_dll.FilterUnload(util.pwstrToFfi(lpFilterName)));
 }
 
 export function FilterCreate(
   lpFilterName: string | null /* Windows.Win32.Foundation.PWSTR */,
   hFilter: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libFLTLIB.FilterCreate(util.pwstrToFfi(lpFilterName), util.toPointer(hFilter)));
+  return util.pointerFromFfi(libFLTLIB_dll.FilterCreate(util.pwstrToFfi(lpFilterName), util.toPointer(hFilter)));
 }
 
 export function FilterClose(
   hFilter: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Storage.InstallableFileSystems.HFILTER */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libFLTLIB.FilterClose(util.toPointer(hFilter)));
+  return util.pointerFromFfi(libFLTLIB_dll.FilterClose(util.toPointer(hFilter)));
 }
 
 export function FilterInstanceCreate(
@@ -725,13 +725,13 @@ export function FilterInstanceCreate(
   lpInstanceName: string | null /* Windows.Win32.Foundation.PWSTR */,
   hInstance: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libFLTLIB.FilterInstanceCreate(util.pwstrToFfi(lpFilterName), util.pwstrToFfi(lpVolumeName), util.pwstrToFfi(lpInstanceName), util.toPointer(hInstance)));
+  return util.pointerFromFfi(libFLTLIB_dll.FilterInstanceCreate(util.pwstrToFfi(lpFilterName), util.pwstrToFfi(lpVolumeName), util.pwstrToFfi(lpInstanceName), util.toPointer(hInstance)));
 }
 
 export function FilterInstanceClose(
   hInstance: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Storage.InstallableFileSystems.HFILTER_INSTANCE */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libFLTLIB.FilterInstanceClose(util.toPointer(hInstance)));
+  return util.pointerFromFfi(libFLTLIB_dll.FilterInstanceClose(util.toPointer(hInstance)));
 }
 
 export function FilterAttach(
@@ -741,7 +741,7 @@ export function FilterAttach(
   dwCreatedInstanceNameLength: number /* u32 */,
   lpCreatedInstanceName: string | null /* Windows.Win32.Foundation.PWSTR */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libFLTLIB.FilterAttach(util.pwstrToFfi(lpFilterName), util.pwstrToFfi(lpVolumeName), util.pwstrToFfi(lpInstanceName), dwCreatedInstanceNameLength, util.pwstrToFfi(lpCreatedInstanceName)));
+  return util.pointerFromFfi(libFLTLIB_dll.FilterAttach(util.pwstrToFfi(lpFilterName), util.pwstrToFfi(lpVolumeName), util.pwstrToFfi(lpInstanceName), dwCreatedInstanceNameLength, util.pwstrToFfi(lpCreatedInstanceName)));
 }
 
 export function FilterAttachAtAltitude(
@@ -752,7 +752,7 @@ export function FilterAttachAtAltitude(
   dwCreatedInstanceNameLength: number /* u32 */,
   lpCreatedInstanceName: string | null /* Windows.Win32.Foundation.PWSTR */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libFLTLIB.FilterAttachAtAltitude(util.pwstrToFfi(lpFilterName), util.pwstrToFfi(lpVolumeName), util.pwstrToFfi(lpAltitude), util.pwstrToFfi(lpInstanceName), dwCreatedInstanceNameLength, util.pwstrToFfi(lpCreatedInstanceName)));
+  return util.pointerFromFfi(libFLTLIB_dll.FilterAttachAtAltitude(util.pwstrToFfi(lpFilterName), util.pwstrToFfi(lpVolumeName), util.pwstrToFfi(lpAltitude), util.pwstrToFfi(lpInstanceName), dwCreatedInstanceNameLength, util.pwstrToFfi(lpCreatedInstanceName)));
 }
 
 export function FilterDetach(
@@ -760,7 +760,7 @@ export function FilterDetach(
   lpVolumeName: string | null /* Windows.Win32.Foundation.PWSTR */,
   lpInstanceName: string | null /* Windows.Win32.Foundation.PWSTR */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libFLTLIB.FilterDetach(util.pwstrToFfi(lpFilterName), util.pwstrToFfi(lpVolumeName), util.pwstrToFfi(lpInstanceName)));
+  return util.pointerFromFfi(libFLTLIB_dll.FilterDetach(util.pwstrToFfi(lpFilterName), util.pwstrToFfi(lpVolumeName), util.pwstrToFfi(lpInstanceName)));
 }
 
 export function FilterFindFirst(
@@ -770,7 +770,7 @@ export function FilterFindFirst(
   lpBytesReturned: Deno.PointerValue | Uint8Array | null /* ptr */,
   lpFilterFind: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libFLTLIB.FilterFindFirst(dwInformationClass, util.toPointer(lpBuffer), dwBufferSize, util.toPointer(lpBytesReturned), util.toPointer(lpFilterFind)));
+  return util.pointerFromFfi(libFLTLIB_dll.FilterFindFirst(dwInformationClass, util.toPointer(lpBuffer), dwBufferSize, util.toPointer(lpBytesReturned), util.toPointer(lpFilterFind)));
 }
 
 export function FilterFindNext(
@@ -780,13 +780,13 @@ export function FilterFindNext(
   dwBufferSize: number /* u32 */,
   lpBytesReturned: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libFLTLIB.FilterFindNext(util.toPointer(hFilterFind), dwInformationClass, util.toPointer(lpBuffer), dwBufferSize, util.toPointer(lpBytesReturned)));
+  return util.pointerFromFfi(libFLTLIB_dll.FilterFindNext(util.toPointer(hFilterFind), dwInformationClass, util.toPointer(lpBuffer), dwBufferSize, util.toPointer(lpBytesReturned)));
 }
 
 export function FilterFindClose(
   hFilterFind: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libFLTLIB.FilterFindClose(util.toPointer(hFilterFind)));
+  return util.pointerFromFfi(libFLTLIB_dll.FilterFindClose(util.toPointer(hFilterFind)));
 }
 
 export function FilterVolumeFindFirst(
@@ -796,7 +796,7 @@ export function FilterVolumeFindFirst(
   lpBytesReturned: Deno.PointerValue | Uint8Array | null /* ptr */,
   lpVolumeFind: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libFLTLIB.FilterVolumeFindFirst(dwInformationClass, util.toPointer(lpBuffer), dwBufferSize, util.toPointer(lpBytesReturned), util.toPointer(lpVolumeFind)));
+  return util.pointerFromFfi(libFLTLIB_dll.FilterVolumeFindFirst(dwInformationClass, util.toPointer(lpBuffer), dwBufferSize, util.toPointer(lpBytesReturned), util.toPointer(lpVolumeFind)));
 }
 
 export function FilterVolumeFindNext(
@@ -806,13 +806,13 @@ export function FilterVolumeFindNext(
   dwBufferSize: number /* u32 */,
   lpBytesReturned: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libFLTLIB.FilterVolumeFindNext(util.toPointer(hVolumeFind), dwInformationClass, util.toPointer(lpBuffer), dwBufferSize, util.toPointer(lpBytesReturned)));
+  return util.pointerFromFfi(libFLTLIB_dll.FilterVolumeFindNext(util.toPointer(hVolumeFind), dwInformationClass, util.toPointer(lpBuffer), dwBufferSize, util.toPointer(lpBytesReturned)));
 }
 
 export function FilterVolumeFindClose(
   hVolumeFind: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libFLTLIB.FilterVolumeFindClose(util.toPointer(hVolumeFind)));
+  return util.pointerFromFfi(libFLTLIB_dll.FilterVolumeFindClose(util.toPointer(hVolumeFind)));
 }
 
 export function FilterInstanceFindFirst(
@@ -823,7 +823,7 @@ export function FilterInstanceFindFirst(
   lpBytesReturned: Deno.PointerValue | Uint8Array | null /* ptr */,
   lpFilterInstanceFind: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libFLTLIB.FilterInstanceFindFirst(util.pwstrToFfi(lpFilterName), dwInformationClass, util.toPointer(lpBuffer), dwBufferSize, util.toPointer(lpBytesReturned), util.toPointer(lpFilterInstanceFind)));
+  return util.pointerFromFfi(libFLTLIB_dll.FilterInstanceFindFirst(util.pwstrToFfi(lpFilterName), dwInformationClass, util.toPointer(lpBuffer), dwBufferSize, util.toPointer(lpBytesReturned), util.toPointer(lpFilterInstanceFind)));
 }
 
 export function FilterInstanceFindNext(
@@ -833,13 +833,13 @@ export function FilterInstanceFindNext(
   dwBufferSize: number /* u32 */,
   lpBytesReturned: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libFLTLIB.FilterInstanceFindNext(util.toPointer(hFilterInstanceFind), dwInformationClass, util.toPointer(lpBuffer), dwBufferSize, util.toPointer(lpBytesReturned)));
+  return util.pointerFromFfi(libFLTLIB_dll.FilterInstanceFindNext(util.toPointer(hFilterInstanceFind), dwInformationClass, util.toPointer(lpBuffer), dwBufferSize, util.toPointer(lpBytesReturned)));
 }
 
 export function FilterInstanceFindClose(
   hFilterInstanceFind: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libFLTLIB.FilterInstanceFindClose(util.toPointer(hFilterInstanceFind)));
+  return util.pointerFromFfi(libFLTLIB_dll.FilterInstanceFindClose(util.toPointer(hFilterInstanceFind)));
 }
 
 export function FilterVolumeInstanceFindFirst(
@@ -850,7 +850,7 @@ export function FilterVolumeInstanceFindFirst(
   lpBytesReturned: Deno.PointerValue | Uint8Array | null /* ptr */,
   lpVolumeInstanceFind: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libFLTLIB.FilterVolumeInstanceFindFirst(util.pwstrToFfi(lpVolumeName), dwInformationClass, util.toPointer(lpBuffer), dwBufferSize, util.toPointer(lpBytesReturned), util.toPointer(lpVolumeInstanceFind)));
+  return util.pointerFromFfi(libFLTLIB_dll.FilterVolumeInstanceFindFirst(util.pwstrToFfi(lpVolumeName), dwInformationClass, util.toPointer(lpBuffer), dwBufferSize, util.toPointer(lpBytesReturned), util.toPointer(lpVolumeInstanceFind)));
 }
 
 export function FilterVolumeInstanceFindNext(
@@ -860,13 +860,13 @@ export function FilterVolumeInstanceFindNext(
   dwBufferSize: number /* u32 */,
   lpBytesReturned: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libFLTLIB.FilterVolumeInstanceFindNext(util.toPointer(hVolumeInstanceFind), dwInformationClass, util.toPointer(lpBuffer), dwBufferSize, util.toPointer(lpBytesReturned)));
+  return util.pointerFromFfi(libFLTLIB_dll.FilterVolumeInstanceFindNext(util.toPointer(hVolumeInstanceFind), dwInformationClass, util.toPointer(lpBuffer), dwBufferSize, util.toPointer(lpBytesReturned)));
 }
 
 export function FilterVolumeInstanceFindClose(
   hVolumeInstanceFind: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libFLTLIB.FilterVolumeInstanceFindClose(util.toPointer(hVolumeInstanceFind)));
+  return util.pointerFromFfi(libFLTLIB_dll.FilterVolumeInstanceFindClose(util.toPointer(hVolumeInstanceFind)));
 }
 
 export function FilterGetInformation(
@@ -876,7 +876,7 @@ export function FilterGetInformation(
   dwBufferSize: number /* u32 */,
   lpBytesReturned: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libFLTLIB.FilterGetInformation(util.toPointer(hFilter), dwInformationClass, util.toPointer(lpBuffer), dwBufferSize, util.toPointer(lpBytesReturned)));
+  return util.pointerFromFfi(libFLTLIB_dll.FilterGetInformation(util.toPointer(hFilter), dwInformationClass, util.toPointer(lpBuffer), dwBufferSize, util.toPointer(lpBytesReturned)));
 }
 
 export function FilterInstanceGetInformation(
@@ -886,7 +886,7 @@ export function FilterInstanceGetInformation(
   dwBufferSize: number /* u32 */,
   lpBytesReturned: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libFLTLIB.FilterInstanceGetInformation(util.toPointer(hInstance), dwInformationClass, util.toPointer(lpBuffer), dwBufferSize, util.toPointer(lpBytesReturned)));
+  return util.pointerFromFfi(libFLTLIB_dll.FilterInstanceGetInformation(util.toPointer(hInstance), dwInformationClass, util.toPointer(lpBuffer), dwBufferSize, util.toPointer(lpBytesReturned)));
 }
 
 export function FilterConnectCommunicationPort(
@@ -897,7 +897,7 @@ export function FilterConnectCommunicationPort(
   lpSecurityAttributes: Deno.PointerValue | Uint8Array | null /* ptr */,
   hPort: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libFLTLIB.FilterConnectCommunicationPort(util.pwstrToFfi(lpPortName), dwOptions, util.toPointer(lpContext), wSizeOfContext, util.toPointer(lpSecurityAttributes), util.toPointer(hPort)));
+  return util.pointerFromFfi(libFLTLIB_dll.FilterConnectCommunicationPort(util.pwstrToFfi(lpPortName), dwOptions, util.toPointer(lpContext), wSizeOfContext, util.toPointer(lpSecurityAttributes), util.toPointer(hPort)));
 }
 
 export function FilterSendMessage(
@@ -908,7 +908,7 @@ export function FilterSendMessage(
   dwOutBufferSize: number /* u32 */,
   lpBytesReturned: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libFLTLIB.FilterSendMessage(util.toPointer(hPort), util.toPointer(lpInBuffer), dwInBufferSize, util.toPointer(lpOutBuffer), dwOutBufferSize, util.toPointer(lpBytesReturned)));
+  return util.pointerFromFfi(libFLTLIB_dll.FilterSendMessage(util.toPointer(hPort), util.toPointer(lpInBuffer), dwInBufferSize, util.toPointer(lpOutBuffer), dwOutBufferSize, util.toPointer(lpBytesReturned)));
 }
 
 export function FilterGetMessage(
@@ -917,7 +917,7 @@ export function FilterGetMessage(
   dwMessageBufferSize: number /* u32 */,
   lpOverlapped: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libFLTLIB.FilterGetMessage(util.toPointer(hPort), util.toPointer(lpMessageBuffer), dwMessageBufferSize, util.toPointer(lpOverlapped)));
+  return util.pointerFromFfi(libFLTLIB_dll.FilterGetMessage(util.toPointer(hPort), util.toPointer(lpMessageBuffer), dwMessageBufferSize, util.toPointer(lpOverlapped)));
 }
 
 export function FilterReplyMessage(
@@ -925,7 +925,7 @@ export function FilterReplyMessage(
   lpReplyBuffer: Deno.PointerValue | Uint8Array | null /* ptr */,
   dwReplyBufferSize: number /* u32 */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libFLTLIB.FilterReplyMessage(util.toPointer(hPort), util.toPointer(lpReplyBuffer), dwReplyBufferSize));
+  return util.pointerFromFfi(libFLTLIB_dll.FilterReplyMessage(util.toPointer(hPort), util.toPointer(lpReplyBuffer), dwReplyBufferSize));
 }
 
 export function FilterGetDosName(
@@ -933,6 +933,6 @@ export function FilterGetDosName(
   lpDosName: string | null /* Windows.Win32.Foundation.PWSTR */,
   dwDosNameBufferSize: number /* u32 */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libFLTLIB.FilterGetDosName(util.pwstrToFfi(lpVolumeName), util.pwstrToFfi(lpDosName), dwDosNameBufferSize));
+  return util.pointerFromFfi(libFLTLIB_dll.FilterGetDosName(util.pwstrToFfi(lpVolumeName), util.pwstrToFfi(lpDosName), dwDosNameBufferSize));
 }
 

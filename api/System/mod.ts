@@ -63,7 +63,6 @@ export * as SettingsManagementInfrastructure from "./SettingsManagementInfrastru
 export * as SetupAndMigration from "./SetupAndMigration.ts";
 export * as Shutdown from "./Shutdown.ts";
 export * as SideShow from "./SideShow.ts";
-export * as SqlLite from "./SqlLite.ts";
 export * as StationsAndDesktops from "./StationsAndDesktops.ts";
 export * as SubsystemForLinux from "./SubsystemForLinux.ts";
 export * as SystemInformation from "./SystemInformation.ts";

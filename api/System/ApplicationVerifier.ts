@@ -18,10 +18,10 @@ export const AllocationStateUnknown = 0;
 export const AllocationStateBusy = 1;
 export const AllocationStateFree = 2;
 export const HeapFullPageHeap = 1073741824;
-export const HeapMetadata = "-2147483648";
-export const HeapStateMask = "-65536";
+export const HeapMetadata = `-2147483648`;
+export const HeapStateMask = `-65536`;
 export const HeapEnumerationEverything = 0;
-export const HeapEnumerationStop = "-1";
+export const HeapEnumerationStop = `-1`;
 export const OperationDbUnused = 0;
 export const OperationDbOPEN = 1;
 export const OperationDbCLOSE = 2;
@@ -151,7 +151,7 @@ export type HANDLE = Deno.PointerValue;
 // Native Libraries
 
 try {
-  var libverifier = Deno.dlopen("verifier", {
+  var libverifier_dll = Deno.dlopen("verifier.dll", {
     VerifierEnumerateResource: {
       parameters: ["pointer", "u32", "i32", "pointer", "pointer"],
       result: "u32",
@@ -168,6 +168,6 @@ export function VerifierEnumerateResource(
   ResourceCallback: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.ApplicationVerifier.AVRF_RESOURCE_ENUMERATE_CALLBACK */,
   EnumerationContext: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libverifier.VerifierEnumerateResource(util.toPointer(Process), Flags, ResourceType, util.toPointer(ResourceCallback), util.toPointer(EnumerationContext));
+  return libverifier_dll.VerifierEnumerateResource(util.toPointer(Process), Flags, ResourceType, util.toPointer(ResourceCallback), util.toPointer(EnumerationContext));
 }
 

@@ -463,7 +463,7 @@ export type HRESULT = number;
 // Native Libraries
 
 try {
-  var libWindows_UI_Xaml = Deno.dlopen("Windows.UI.Xaml", {
+  var libWindows_UI_Xaml_dll = Deno.dlopen("Windows.UI.Xaml.dll", {
     InitializeXamlDiagnostic: {
       parameters: ["buffer", "u32", "buffer", "buffer", "pointer"],
       result: "pointer",
@@ -484,7 +484,7 @@ export function InitializeXamlDiagnostic(
   wszTAPDllName: string | null /* Windows.Win32.Foundation.PWSTR */,
   tapClsid: Uint8Array | Deno.PointerValue | null /* System.Guid */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libWindows_UI_Xaml.InitializeXamlDiagnostic(util.pwstrToFfi(endPointName), pid, util.pwstrToFfi(wszDllXamlDiagnostics), util.pwstrToFfi(wszTAPDllName), util.toPointer(tapClsid)));
+  return util.pointerFromFfi(libWindows_UI_Xaml_dll.InitializeXamlDiagnostic(util.pwstrToFfi(endPointName), pid, util.pwstrToFfi(wszDllXamlDiagnostics), util.pwstrToFfi(wszTAPDllName), util.toPointer(tapClsid)));
 }
 
 export function InitializeXamlDiagnosticsEx(
@@ -495,6 +495,6 @@ export function InitializeXamlDiagnosticsEx(
   tapClsid: Uint8Array | Deno.PointerValue | null /* System.Guid */,
   wszInitializationData: string | null /* Windows.Win32.Foundation.PWSTR */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libWindows_UI_Xaml.InitializeXamlDiagnosticsEx(util.pwstrToFfi(endPointName), pid, util.pwstrToFfi(wszDllXamlDiagnostics), util.pwstrToFfi(wszTAPDllName), util.toPointer(tapClsid), util.pwstrToFfi(wszInitializationData)));
+  return util.pointerFromFfi(libWindows_UI_Xaml_dll.InitializeXamlDiagnosticsEx(util.pwstrToFfi(endPointName), pid, util.pwstrToFfi(wszDllXamlDiagnostics), util.pwstrToFfi(wszTAPDllName), util.toPointer(tapClsid), util.pwstrToFfi(wszInitializationData)));
 }
 

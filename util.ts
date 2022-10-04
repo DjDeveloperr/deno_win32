@@ -72,3 +72,10 @@ export function hwndFromFfi(ptr: Deno.PointerValue): Deno.PointerValue | null {
 export function hwndToFfi(ptr: Deno.PointerValue | null): Deno.PointerValue {
   return ptr === null ? 0 : ptr;
 }
+
+export function unwrap(hr: Deno.PointerValue | null): Deno.PointerValue {
+  if (hr !== 0) {
+    throw new Error(`HRESULT: 0x${hr?.toString(16).padStart(8, "0")}`);
+  }
+  return hr;
+}

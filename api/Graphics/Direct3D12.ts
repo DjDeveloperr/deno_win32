@@ -213,8 +213,8 @@ export const D3D12_COMMONSHADER_TEMP_REGISTER_COUNT = 4096;
 export const D3D12_COMMONSHADER_TEMP_REGISTER_READS_PER_INST = 3;
 export const D3D12_COMMONSHADER_TEMP_REGISTER_READ_PORTS = 3;
 export const D3D12_COMMONSHADER_TEXCOORD_RANGE_REDUCTION_MAX = 10;
-export const D3D12_COMMONSHADER_TEXCOORD_RANGE_REDUCTION_MIN = "-10";
-export const D3D12_COMMONSHADER_TEXEL_OFFSET_MAX_NEGATIVE = "-8";
+export const D3D12_COMMONSHADER_TEXCOORD_RANGE_REDUCTION_MIN = `-10`;
+export const D3D12_COMMONSHADER_TEXEL_OFFSET_MAX_NEGATIVE = `-8`;
 export const D3D12_COMMONSHADER_TEXEL_OFFSET_MAX_POSITIVE = 7;
 export const D3D12_CONSTANT_BUFFER_DATA_PLACEMENT_ALIGNMENT = 256;
 export const D3D12_CS_4_X_BUCKET00_MAX_BYTES_TGSM_WRITABLE_PER_THREAD = 256;
@@ -331,17 +331,17 @@ export const D3D12_DS_INPUT_PRIMITIVE_ID_REGISTER_READ_PORTS = 1;
 export const D3D12_DS_OUTPUT_REGISTER_COMPONENTS = 4;
 export const D3D12_DS_OUTPUT_REGISTER_COMPONENT_BIT_COUNT = 32;
 export const D3D12_DS_OUTPUT_REGISTER_COUNT = 32;
-export const D3D12_FLOAT16_FUSED_TOLERANCE_IN_ULP = "0.6";
-export const D3D12_FLOAT32_MAX = "3.4028234663852886e+38";
-export const D3D12_FLOAT32_TO_INTEGER_TOLERANCE_IN_ULP = "0.6000000238418579";
-export const D3D12_FLOAT_TO_SRGB_EXPONENT_DENOMINATOR = "2.4000000953674316";
+export const D3D12_FLOAT16_FUSED_TOLERANCE_IN_ULP = `0.6`;
+export const D3D12_FLOAT32_MAX = `3.4028234663852886e+38`;
+export const D3D12_FLOAT32_TO_INTEGER_TOLERANCE_IN_ULP = `0.6000000238418579`;
+export const D3D12_FLOAT_TO_SRGB_EXPONENT_DENOMINATOR = `2.4000000953674316`;
 export const D3D12_FLOAT_TO_SRGB_EXPONENT_NUMERATOR = 1;
-export const D3D12_FLOAT_TO_SRGB_OFFSET = "0.054999999701976776";
-export const D3D12_FLOAT_TO_SRGB_SCALE_1 = "12.920000076293945";
-export const D3D12_FLOAT_TO_SRGB_SCALE_2 = "1.0549999475479126";
-export const D3D12_FLOAT_TO_SRGB_THRESHOLD = "0.0031308000907301903";
+export const D3D12_FLOAT_TO_SRGB_OFFSET = `0.054999999701976776`;
+export const D3D12_FLOAT_TO_SRGB_SCALE_1 = `12.920000076293945`;
+export const D3D12_FLOAT_TO_SRGB_SCALE_2 = `1.0549999475479126`;
+export const D3D12_FLOAT_TO_SRGB_THRESHOLD = `0.0031308000907301903`;
 export const D3D12_FTOI_INSTRUCTION_MAX_INPUT = 2147483648;
-export const D3D12_FTOI_INSTRUCTION_MIN_INPUT = "-2147483648";
+export const D3D12_FTOI_INSTRUCTION_MIN_INPUT = `-2147483648`;
 export const D3D12_FTOU_INSTRUCTION_MAX_INPUT = 4294967296;
 export const D3D12_FTOU_INSTRUCTION_MIN_INPUT = 0;
 export const D3D12_GS_INPUT_INSTANCE_ID_READS_PER_INST = 2;
@@ -426,7 +426,7 @@ export const D3D12_MAX_DEPTH = 1;
 export const D3D12_MAX_LIVE_STATIC_SAMPLERS = 2032;
 export const D3D12_MAX_MAXANISOTROPY = 16;
 export const D3D12_MAX_MULTISAMPLE_SAMPLE_COUNT = 32;
-export const D3D12_MAX_POSITION_VALUE = "3.4028235832468283e+34";
+export const D3D12_MAX_POSITION_VALUE = `3.4028235832468283e+34`;
 export const D3D12_MAX_ROOT_COST = 64;
 export const D3D12_MAX_SHADER_VISIBLE_DESCRIPTOR_HEAP_SIZE_TIER_1 = 1000000;
 export const D3D12_MAX_SHADER_VISIBLE_DESCRIPTOR_HEAP_SIZE_TIER_2 = 1000000;
@@ -437,11 +437,11 @@ export const D3D12_MINOR_VERSION = 0;
 export const D3D12_MIN_BORDER_COLOR_COMPONENT = 0;
 export const D3D12_MIN_DEPTH = 0;
 export const D3D12_MIN_MAXANISOTROPY = 0;
-export const D3D12_MIP_LOD_BIAS_MAX = "15.989999771118164";
-export const D3D12_MIP_LOD_BIAS_MIN = "-16";
+export const D3D12_MIP_LOD_BIAS_MAX = `15.989999771118164`;
+export const D3D12_MIP_LOD_BIAS_MIN = `-16`;
 export const D3D12_MIP_LOD_FRACTIONAL_BIT_COUNT = 8;
 export const D3D12_MIP_LOD_RANGE_BIT_COUNT = 8;
-export const D3D12_MULTISAMPLE_ANTIALIAS_LINE_WIDTH = "1.399999976158142";
+export const D3D12_MULTISAMPLE_ANTIALIAS_LINE_WIDTH = `1.399999976158142`;
 export const D3D12_NONSAMPLE_FETCH_OUT_OF_RANGE_ACCESS_RESULT = 0;
 export const D3D12_OS_RESERVED_REGISTER_SPACE_VALUES_END = 4294967295;
 export const D3D12_OS_RESERVED_REGISTER_SPACE_VALUES_START = 4294967288;
@@ -470,7 +470,7 @@ export const D3D12_PS_OUTPUT_MASK_REGISTER_COUNT = 1;
 export const D3D12_PS_OUTPUT_REGISTER_COMPONENTS = 4;
 export const D3D12_PS_OUTPUT_REGISTER_COMPONENT_BIT_COUNT = 32;
 export const D3D12_PS_OUTPUT_REGISTER_COUNT = 8;
-export const D3D12_PS_PIXEL_CENTER_FRACTIONAL_COMPONENT = "0.5";
+export const D3D12_PS_PIXEL_CENTER_FRACTIONAL_COMPONENT = `0.5`;
 export const D3D12_RAW_UAV_SRV_BYTE_ALIGNMENT = 16;
 export const D3D12_RAYTRACING_AABB_BYTE_ALIGNMENT = 8;
 export const D3D12_RAYTRACING_ACCELERATION_STRUCTURE_BYTE_ALIGNMENT = 256;
@@ -500,7 +500,7 @@ export const D3D12_REQ_MULTI_ELEMENT_STRUCTURE_SIZE_IN_BYTES = 2048;
 export const D3D12_REQ_RASTERIZER_OBJECT_COUNT_PER_DEVICE = 4096;
 export const D3D12_REQ_RENDER_TO_BUFFER_WINDOW_WIDTH = 16384;
 export const D3D12_REQ_RESOURCE_SIZE_IN_MEGABYTES_EXPRESSION_A_TERM = 128;
-export const D3D12_REQ_RESOURCE_SIZE_IN_MEGABYTES_EXPRESSION_B_TERM = "0.25";
+export const D3D12_REQ_RESOURCE_SIZE_IN_MEGABYTES_EXPRESSION_B_TERM = `0.25`;
 export const D3D12_REQ_RESOURCE_SIZE_IN_MEGABYTES_EXPRESSION_C_TERM = 2048;
 export const D3D12_REQ_RESOURCE_VIEW_COUNT_PER_DEVICE_2_TO_EXP = 20;
 export const D3D12_REQ_SAMPLER_OBJECT_COUNT_PER_DEVICE = 4096;
@@ -537,14 +537,14 @@ export const D3D12_SO_STREAM_COUNT = 4;
 export const D3D12_SPEC_DATE_DAY = 14;
 export const D3D12_SPEC_DATE_MONTH = 11;
 export const D3D12_SPEC_DATE_YEAR = 2014;
-export const D3D12_SPEC_VERSION = "1.16";
-export const D3D12_SRGB_GAMMA = "2.200000047683716";
-export const D3D12_SRGB_TO_FLOAT_DENOMINATOR_1 = "12.920000076293945";
-export const D3D12_SRGB_TO_FLOAT_DENOMINATOR_2 = "1.0549999475479126";
-export const D3D12_SRGB_TO_FLOAT_EXPONENT = "2.4000000953674316";
-export const D3D12_SRGB_TO_FLOAT_OFFSET = "0.054999999701976776";
-export const D3D12_SRGB_TO_FLOAT_THRESHOLD = "0.040449999272823334";
-export const D3D12_SRGB_TO_FLOAT_TOLERANCE_IN_ULP = "0.5";
+export const D3D12_SPEC_VERSION = `1.16`;
+export const D3D12_SRGB_GAMMA = `2.200000047683716`;
+export const D3D12_SRGB_TO_FLOAT_DENOMINATOR_1 = `12.920000076293945`;
+export const D3D12_SRGB_TO_FLOAT_DENOMINATOR_2 = `1.0549999475479126`;
+export const D3D12_SRGB_TO_FLOAT_EXPONENT = `2.4000000953674316`;
+export const D3D12_SRGB_TO_FLOAT_OFFSET = `0.054999999701976776`;
+export const D3D12_SRGB_TO_FLOAT_THRESHOLD = `0.040449999272823334`;
+export const D3D12_SRGB_TO_FLOAT_TOLERANCE_IN_ULP = `0.5`;
 export const D3D12_STANDARD_COMPONENT_BIT_COUNT = 32;
 export const D3D12_STANDARD_COMPONENT_BIT_COUNT_DOUBLED = 64;
 export const D3D12_STANDARD_MAXIMUM_ELEMENT_ALIGNMENT_BYTE_MULTIPLE = 4;
@@ -582,7 +582,7 @@ export const D3D12_VIDEO_PROCESS_STEREO_VIEWS = 2;
 export const D3D12_VIEWPORT_AND_SCISSORRECT_MAX_INDEX = 15;
 export const D3D12_VIEWPORT_AND_SCISSORRECT_OBJECT_COUNT_PER_PIPELINE = 16;
 export const D3D12_VIEWPORT_BOUNDS_MAX = 32767;
-export const D3D12_VIEWPORT_BOUNDS_MIN = "-32768";
+export const D3D12_VIEWPORT_BOUNDS_MIN = `-32768`;
 export const D3D12_VS_INPUT_REGISTER_COMPONENTS = 4;
 export const D3D12_VS_INPUT_REGISTER_COMPONENT_BIT_COUNT = 32;
 export const D3D12_VS_INPUT_REGISTER_COUNT = 32;
@@ -1320,8 +1320,8 @@ export const D3D12_MULTIPLE_FENCE_WAIT_FLAG_ALL = 0;
 export const D3D12_RESIDENCY_PRIORITY_MINIMUM = 671088640;
 export const D3D12_RESIDENCY_PRIORITY_LOW = 1342177280;
 export const D3D12_RESIDENCY_PRIORITY_NORMAL = 2013265920;
-export const D3D12_RESIDENCY_PRIORITY_HIGH = "-1610547200";
-export const D3D12_RESIDENCY_PRIORITY_MAXIMUM = "-939524096";
+export const D3D12_RESIDENCY_PRIORITY_HIGH = `-1610547200`;
+export const D3D12_RESIDENCY_PRIORITY_MAXIMUM = `-939524096`;
 export const D3D12_RESIDENCY_FLAG_NONE = 0;
 export const D3D12_RESIDENCY_FLAG_DENY_OVERBUDGET = 1;
 export const D3D12_COMMAND_LIST_FLAG_NONE = 0;
@@ -1519,7 +1519,7 @@ export const D3D12_DRED_ALLOCATION_TYPE_VIDEO_MOTION_VECTOR_HEAP = 46;
 export const D3D12_DRED_ALLOCATION_TYPE_VIDEO_EXTENSION_COMMAND = 47;
 export const D3D12_DRED_ALLOCATION_TYPE_VIDEO_ENCODER = 48;
 export const D3D12_DRED_ALLOCATION_TYPE_VIDEO_ENCODER_HEAP = 49;
-export const D3D12_DRED_ALLOCATION_TYPE_INVALID = "-1";
+export const D3D12_DRED_ALLOCATION_TYPE_INVALID = `-1`;
 export const D3D12_DRED_PAGE_FAULT_FLAGS_NONE = 0;
 export const D3D12_DRED_DEVICE_STATE_UNKNOWN = 0;
 export const D3D12_DRED_DEVICE_STATE_HUNG = 3;
@@ -10136,7 +10136,7 @@ export function allocD3D12_PARAMETER_DESC(data?: Partial<D3D12_PARAMETER_DESC>):
 // Native Libraries
 
 try {
-  var libd3d12 = Deno.dlopen("d3d12", {
+  var libd3d12_dll = Deno.dlopen("d3d12.dll", {
     D3D12SerializeRootSignature: {
       parameters: ["pointer", "i32", "pointer", "pointer"],
       result: "pointer",
@@ -10180,7 +10180,7 @@ export function D3D12SerializeRootSignature(
   ppBlob: Deno.PointerValue | Uint8Array | null /* ptr */,
   ppErrorBlob: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libd3d12.D3D12SerializeRootSignature(util.toPointer(pRootSignature), Version, util.toPointer(ppBlob), util.toPointer(ppErrorBlob)));
+  return util.pointerFromFfi(libd3d12_dll.D3D12SerializeRootSignature(util.toPointer(pRootSignature), Version, util.toPointer(ppBlob), util.toPointer(ppErrorBlob)));
 }
 
 export function D3D12CreateRootSignatureDeserializer(
@@ -10189,7 +10189,7 @@ export function D3D12CreateRootSignatureDeserializer(
   pRootSignatureDeserializerInterface: Deno.PointerValue | Uint8Array | null /* ptr */,
   ppRootSignatureDeserializer: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libd3d12.D3D12CreateRootSignatureDeserializer(util.toPointer(pSrcData), SrcDataSizeInBytes, util.toPointer(pRootSignatureDeserializerInterface), util.toPointer(ppRootSignatureDeserializer)));
+  return util.pointerFromFfi(libd3d12_dll.D3D12CreateRootSignatureDeserializer(util.toPointer(pSrcData), SrcDataSizeInBytes, util.toPointer(pRootSignatureDeserializerInterface), util.toPointer(ppRootSignatureDeserializer)));
 }
 
 export function D3D12SerializeVersionedRootSignature(
@@ -10197,7 +10197,7 @@ export function D3D12SerializeVersionedRootSignature(
   ppBlob: Deno.PointerValue | Uint8Array | null /* ptr */,
   ppErrorBlob: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libd3d12.D3D12SerializeVersionedRootSignature(util.toPointer(pRootSignature), util.toPointer(ppBlob), util.toPointer(ppErrorBlob)));
+  return util.pointerFromFfi(libd3d12_dll.D3D12SerializeVersionedRootSignature(util.toPointer(pRootSignature), util.toPointer(ppBlob), util.toPointer(ppErrorBlob)));
 }
 
 export function D3D12CreateVersionedRootSignatureDeserializer(
@@ -10206,7 +10206,7 @@ export function D3D12CreateVersionedRootSignatureDeserializer(
   pRootSignatureDeserializerInterface: Deno.PointerValue | Uint8Array | null /* ptr */,
   ppRootSignatureDeserializer: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libd3d12.D3D12CreateVersionedRootSignatureDeserializer(util.toPointer(pSrcData), SrcDataSizeInBytes, util.toPointer(pRootSignatureDeserializerInterface), util.toPointer(ppRootSignatureDeserializer)));
+  return util.pointerFromFfi(libd3d12_dll.D3D12CreateVersionedRootSignatureDeserializer(util.toPointer(pSrcData), SrcDataSizeInBytes, util.toPointer(pRootSignatureDeserializerInterface), util.toPointer(ppRootSignatureDeserializer)));
 }
 
 export function D3D12CreateDevice(
@@ -10215,14 +10215,14 @@ export function D3D12CreateDevice(
   riid: Deno.PointerValue | Uint8Array | null /* ptr */,
   ppDevice: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libd3d12.D3D12CreateDevice(util.toPointer(pAdapter), MinimumFeatureLevel, util.toPointer(riid), util.toPointer(ppDevice)));
+  return util.pointerFromFfi(libd3d12_dll.D3D12CreateDevice(util.toPointer(pAdapter), MinimumFeatureLevel, util.toPointer(riid), util.toPointer(ppDevice)));
 }
 
 export function D3D12GetDebugInterface(
   riid: Deno.PointerValue | Uint8Array | null /* ptr */,
   ppvDebug: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libd3d12.D3D12GetDebugInterface(util.toPointer(riid), util.toPointer(ppvDebug)));
+  return util.pointerFromFfi(libd3d12_dll.D3D12GetDebugInterface(util.toPointer(riid), util.toPointer(ppvDebug)));
 }
 
 export function D3D12EnableExperimentalFeatures(
@@ -10231,7 +10231,7 @@ export function D3D12EnableExperimentalFeatures(
   pConfigurationStructs: Deno.PointerValue | Uint8Array | null /* ptr */,
   pConfigurationStructSizes: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libd3d12.D3D12EnableExperimentalFeatures(NumFeatures, util.toPointer(pIIDs), util.toPointer(pConfigurationStructs), util.toPointer(pConfigurationStructSizes)));
+  return util.pointerFromFfi(libd3d12_dll.D3D12EnableExperimentalFeatures(NumFeatures, util.toPointer(pIIDs), util.toPointer(pConfigurationStructs), util.toPointer(pConfigurationStructSizes)));
 }
 
 export function D3D12GetInterface(
@@ -10239,6 +10239,6 @@ export function D3D12GetInterface(
   riid: Deno.PointerValue | Uint8Array | null /* ptr */,
   ppvDebug: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libd3d12.D3D12GetInterface(util.toPointer(rclsid), util.toPointer(riid), util.toPointer(ppvDebug)));
+  return util.pointerFromFfi(libd3d12_dll.D3D12GetInterface(util.toPointer(rclsid), util.toPointer(riid), util.toPointer(ppvDebug)));
 }
 

@@ -51,7 +51,9 @@ export const UPNP_E_SUFFIX_TOO_LONG = 333311471729811496n;
 export const UPNP_E_URLBASE_PRESENT = 333319168311205929n;
 export const UPNP_E_VALUE_TOO_LONG = 333320267822833712n;
 export const UPNP_E_DEVICE_RUNNING = 333321367334461489n;
-export const UPNP_E_DEVICE_NOTREGISTERED = 1227231003685462066n;
+export const UPNP_E_DEVICE_NOTREGISTERED = 7277907271601135666n;
+export const REMOTE_ADDRESS_VALUE_NAME = `RemoteAddress`;
+export const ADDRESS_FAMILY_VALUE_NAME = `AddressFamily`;
 export const SWDeviceCapabilitiesNone = 0;
 export const SWDeviceCapabilitiesRemovable = 1;
 export const SWDeviceCapabilitiesSilentInstall = 2;
@@ -141,7 +143,7 @@ export type BOOL = number;
 // Native Libraries
 
 try {
-  var libCFGMGR32 = Deno.dlopen("CFGMGR32", {
+  var libCFGMGR32_dll = Deno.dlopen("CFGMGR32.dll", {
     SwDeviceCreate: {
       parameters: ["buffer", "buffer", "pointer", "u32", "pointer", "pointer", "pointer", "pointer"],
       result: "pointer",
@@ -193,27 +195,27 @@ export function SwDeviceCreate(
   pContext: Deno.PointerValue | Uint8Array | null /* ptr */,
   phSwDevice: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libCFGMGR32.SwDeviceCreate(util.pwstrToFfi(pszEnumeratorName), util.pwstrToFfi(pszParentDeviceInstance), util.toPointer(pCreateInfo), cPropertyCount, util.toPointer(pProperties), util.toPointer(pCallback), util.toPointer(pContext), util.toPointer(phSwDevice)));
+  return util.pointerFromFfi(libCFGMGR32_dll.SwDeviceCreate(util.pwstrToFfi(pszEnumeratorName), util.pwstrToFfi(pszParentDeviceInstance), util.toPointer(pCreateInfo), cPropertyCount, util.toPointer(pProperties), util.toPointer(pCallback), util.toPointer(pContext), util.toPointer(phSwDevice)));
 }
 
 export function SwDeviceClose(
   hSwDevice: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.Enumeration.Pnp.HSWDEVICE */,
 ): void /* void */ {
-  return libCFGMGR32.SwDeviceClose(util.toPointer(hSwDevice));
+  return libCFGMGR32_dll.SwDeviceClose(util.toPointer(hSwDevice));
 }
 
 export function SwDeviceSetLifetime(
   hSwDevice: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.Enumeration.Pnp.HSWDEVICE */,
   Lifetime: SW_DEVICE_LIFETIME /* Windows.Win32.Devices.Enumeration.Pnp.SW_DEVICE_LIFETIME */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libCFGMGR32.SwDeviceSetLifetime(util.toPointer(hSwDevice), Lifetime));
+  return util.pointerFromFfi(libCFGMGR32_dll.SwDeviceSetLifetime(util.toPointer(hSwDevice), Lifetime));
 }
 
 export function SwDeviceGetLifetime(
   hSwDevice: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.Enumeration.Pnp.HSWDEVICE */,
   pLifetime: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libCFGMGR32.SwDeviceGetLifetime(util.toPointer(hSwDevice), util.toPointer(pLifetime)));
+  return util.pointerFromFfi(libCFGMGR32_dll.SwDeviceGetLifetime(util.toPointer(hSwDevice), util.toPointer(pLifetime)));
 }
 
 export function SwDevicePropertySet(
@@ -221,7 +223,7 @@ export function SwDevicePropertySet(
   cPropertyCount: number /* u32 */,
   pProperties: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libCFGMGR32.SwDevicePropertySet(util.toPointer(hSwDevice), cPropertyCount, util.toPointer(pProperties)));
+  return util.pointerFromFfi(libCFGMGR32_dll.SwDevicePropertySet(util.toPointer(hSwDevice), cPropertyCount, util.toPointer(pProperties)));
 }
 
 export function SwDeviceInterfaceRegister(
@@ -233,13 +235,13 @@ export function SwDeviceInterfaceRegister(
   fEnabled: boolean /* Windows.Win32.Foundation.BOOL */,
   ppszDeviceInterfaceId: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libCFGMGR32.SwDeviceInterfaceRegister(util.toPointer(hSwDevice), util.toPointer(pInterfaceClassGuid), util.pwstrToFfi(pszReferenceString), cPropertyCount, util.toPointer(pProperties), util.boolToFfi(fEnabled), util.toPointer(ppszDeviceInterfaceId)));
+  return util.pointerFromFfi(libCFGMGR32_dll.SwDeviceInterfaceRegister(util.toPointer(hSwDevice), util.toPointer(pInterfaceClassGuid), util.pwstrToFfi(pszReferenceString), cPropertyCount, util.toPointer(pProperties), util.boolToFfi(fEnabled), util.toPointer(ppszDeviceInterfaceId)));
 }
 
 export function SwMemFree(
   pMem: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): void /* void */ {
-  return libCFGMGR32.SwMemFree(util.toPointer(pMem));
+  return libCFGMGR32_dll.SwMemFree(util.toPointer(pMem));
 }
 
 export function SwDeviceInterfaceSetState(
@@ -247,7 +249,7 @@ export function SwDeviceInterfaceSetState(
   pszDeviceInterfaceId: string | null /* Windows.Win32.Foundation.PWSTR */,
   fEnabled: boolean /* Windows.Win32.Foundation.BOOL */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libCFGMGR32.SwDeviceInterfaceSetState(util.toPointer(hSwDevice), util.pwstrToFfi(pszDeviceInterfaceId), util.boolToFfi(fEnabled)));
+  return util.pointerFromFfi(libCFGMGR32_dll.SwDeviceInterfaceSetState(util.toPointer(hSwDevice), util.pwstrToFfi(pszDeviceInterfaceId), util.boolToFfi(fEnabled)));
 }
 
 export function SwDeviceInterfacePropertySet(
@@ -256,6 +258,6 @@ export function SwDeviceInterfacePropertySet(
   cPropertyCount: number /* u32 */,
   pProperties: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libCFGMGR32.SwDeviceInterfacePropertySet(util.toPointer(hSwDevice), util.pwstrToFfi(pszDeviceInterfaceId), cPropertyCount, util.toPointer(pProperties)));
+  return util.pointerFromFfi(libCFGMGR32_dll.SwDeviceInterfacePropertySet(util.toPointer(hSwDevice), util.pwstrToFfi(pszDeviceInterfaceId), cPropertyCount, util.toPointer(pProperties)));
 }
 

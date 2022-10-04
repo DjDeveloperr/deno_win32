@@ -9,9 +9,9 @@ export type WIN_HTTP_CREATE_URL_FLAGS = number;
 export type WINHTTP_ACCESS_TYPE = number;
 export type WINHTTP_CREDS_AUTHSCHEME = number;
 export type WINHTTP_INTERNET_SCHEME = number;
+export type WINHTTP_SECURE_DNS_SETTING = number;
 export type WINHTTP_REQUEST_TIME_ENTRY = number;
 export type WINHTTP_REQUEST_STAT_ENTRY = number;
-export type WINHTTP_SECURE_DNS_SETTING = number;
 export type WINHTTP_WEB_SOCKET_OPERATION = number;
 export type WINHTTP_WEB_SOCKET_BUFFER_TYPE = number;
 export type WINHTTP_WEB_SOCKET_CLOSE_STATUS = number;
@@ -509,6 +509,11 @@ export const WINHTTP_RESET_OUT_OF_PROC = 131072;
 export const WINHTTP_RESET_DISCARD_RESOLVERS = 262144;
 export const WINHTTP_WEB_SOCKET_MAX_CLOSE_REASON_LENGTH = 123;
 export const WINHTTP_WEB_SOCKET_MIN_KEEPALIVE_VALUE = 15000;
+export const WinHttpSecureDnsSettingDefault = 0;
+export const WinHttpSecureDnsSettingForcePlaintext = 1;
+export const WinHttpSecureDnsSettingRequireEncryption = 2;
+export const WinHttpSecureDnsSettingTryEncryptionWithFallback = 3;
+export const WinHttpSecureDnsSettingMax = 4;
 export const WinHttpProxyDetectionStart = 0;
 export const WinHttpProxyDetectionEnd = 1;
 export const WinHttpConnectionAcquireStart = 2;
@@ -565,11 +570,6 @@ export const WinHttpProxyTlsHandshakeClientLeg2Size = 14;
 export const WinHttpProxyTlsHandshakeServerLeg2Size = 15;
 export const WinHttpRequestStatLast = 16;
 export const WinHttpRequestStatMax = 32;
-export const WinHttpSecureDnsSettingDefault = 0;
-export const WinHttpSecureDnsSettingForcePlaintext = 1;
-export const WinHttpSecureDnsSettingRequireEncryption = 2;
-export const WinHttpSecureDnsSettingTryEncryptionWithFallback = 3;
-export const WinHttpSecureDnsSettingMax = 4;
 export const WINHTTP_WEB_SOCKET_SEND_OPERATION = 0;
 export const WINHTTP_WEB_SOCKET_RECEIVE_OPERATION = 1;
 export const WINHTTP_WEB_SOCKET_CLOSE_OPERATION = 2;
@@ -593,6 +593,177 @@ export const WINHTTP_WEB_SOCKET_SERVER_ERROR_CLOSE_STATUS = 1011;
 export const WINHTTP_WEB_SOCKET_SECURE_HANDSHAKE_ERROR_CLOSE_STATUS = 1015;
 
 // Structs
+
+/**
+ * Windows.Win32.Networking.WinSock.SOCKADDR_STORAGE (size: 32)
+ */
+export interface SOCKADDR_STORAGE {
+  /** u16 */
+  ss_family: number;
+  /** array */
+  __ss_pad1: Deno.PointerValue | null;
+  /** i64 */
+  __ss_align: Deno.PointerValue;
+  /** array */
+  __ss_pad2: Deno.PointerValue | null;
+}
+
+export const sizeofSOCKADDR_STORAGE = 32;
+
+export function allocSOCKADDR_STORAGE(data?: Partial<SOCKADDR_STORAGE>): Uint8Array {
+  const buf = new Uint8Array(sizeofSOCKADDR_STORAGE);
+  const view = new DataView(buf.buffer);
+  // 0x00: u16
+  if (data?.ss_family !== undefined) view.setUint16(0, Number(data.ss_family), true);
+  // 0x02: pad6
+  // 0x08: pointer
+  if (data?.__ss_pad1 !== undefined) view.setBigUint64(8, data.__ss_pad1 === null ? 0n : BigInt(util.toPointer(data.__ss_pad1)), true);
+  // 0x10: i64
+  if (data?.__ss_align !== undefined) view.setBigInt64(16, BigInt(data.__ss_align), true);
+  // 0x18: pointer
+  if (data?.__ss_pad2 !== undefined) view.setBigUint64(24, data.__ss_pad2 === null ? 0n : BigInt(util.toPointer(data.__ss_pad2)), true);
+  return buf;
+}
+
+/**
+ * Windows.Win32.Networking.WinHttp.WINHTTP_CONNECTION_INFO (size: 24)
+ */
+export interface WINHTTP_CONNECTION_INFO {
+  /** u32 */
+  cbSize: number;
+  /** Windows.Win32.Networking.WinSock.SOCKADDR_STORAGE */
+  LocalAddress: Uint8Array | Deno.PointerValue | null;
+  /** Windows.Win32.Networking.WinSock.SOCKADDR_STORAGE */
+  RemoteAddress: Uint8Array | Deno.PointerValue | null;
+}
+
+export const sizeofWINHTTP_CONNECTION_INFO = 24;
+
+export function allocWINHTTP_CONNECTION_INFO(data?: Partial<WINHTTP_CONNECTION_INFO>): Uint8Array {
+  const buf = new Uint8Array(sizeofWINHTTP_CONNECTION_INFO);
+  const view = new DataView(buf.buffer);
+  // 0x00: u32
+  if (data?.cbSize !== undefined) view.setUint32(0, Number(data.cbSize), true);
+  // 0x04: pad4
+  // 0x08: pointer
+  if (data?.LocalAddress !== undefined) view.setBigUint64(8, data.LocalAddress === null ? 0n : BigInt(util.toPointer(data.LocalAddress)), true);
+  // 0x10: pointer
+  if (data?.RemoteAddress !== undefined) view.setBigUint64(16, data.RemoteAddress === null ? 0n : BigInt(util.toPointer(data.RemoteAddress)), true);
+  return buf;
+}
+
+/**
+ * Windows.Win32.Networking.WinHttp.WINHTTP_REQUEST_TIMES (size: 16)
+ */
+export interface WINHTTP_REQUEST_TIMES {
+  /** u32 */
+  cTimes: number;
+  /** array */
+  rgullTimes: Deno.PointerValue | null;
+}
+
+export const sizeofWINHTTP_REQUEST_TIMES = 16;
+
+export function allocWINHTTP_REQUEST_TIMES(data?: Partial<WINHTTP_REQUEST_TIMES>): Uint8Array {
+  const buf = new Uint8Array(sizeofWINHTTP_REQUEST_TIMES);
+  const view = new DataView(buf.buffer);
+  // 0x00: u32
+  if (data?.cTimes !== undefined) view.setUint32(0, Number(data.cTimes), true);
+  // 0x04: pad4
+  // 0x08: pointer
+  if (data?.rgullTimes !== undefined) view.setBigUint64(8, data.rgullTimes === null ? 0n : BigInt(util.toPointer(data.rgullTimes)), true);
+  return buf;
+}
+
+/**
+ * Windows.Win32.Networking.WinHttp.WINHTTP_REQUEST_STATS (size: 24)
+ */
+export interface WINHTTP_REQUEST_STATS {
+  /** u64 */
+  ullFlags: Deno.PointerValue;
+  /** u32 */
+  ulIndex: number;
+  /** u32 */
+  cStats: number;
+  /** array */
+  rgullStats: Deno.PointerValue | null;
+}
+
+export const sizeofWINHTTP_REQUEST_STATS = 24;
+
+export function allocWINHTTP_REQUEST_STATS(data?: Partial<WINHTTP_REQUEST_STATS>): Uint8Array {
+  const buf = new Uint8Array(sizeofWINHTTP_REQUEST_STATS);
+  const view = new DataView(buf.buffer);
+  // 0x00: u64
+  if (data?.ullFlags !== undefined) view.setBigUint64(0, BigInt(data.ullFlags), true);
+  // 0x08: u32
+  if (data?.ulIndex !== undefined) view.setUint32(8, Number(data.ulIndex), true);
+  // 0x0c: u32
+  if (data?.cStats !== undefined) view.setUint32(12, Number(data.cStats), true);
+  // 0x10: pointer
+  if (data?.rgullStats !== undefined) view.setBigUint64(16, data.rgullStats === null ? 0n : BigInt(util.toPointer(data.rgullStats)), true);
+  return buf;
+}
+
+/**
+ * Windows.Win32.Networking.WinHttp.WINHTTP_MATCH_CONNECTION_GUID (size: 16)
+ */
+export interface WINHTTP_MATCH_CONNECTION_GUID {
+  /** System.Guid */
+  ConnectionGuid: Uint8Array | Deno.PointerValue | null;
+  /** u64 */
+  ullFlags: Deno.PointerValue;
+}
+
+export const sizeofWINHTTP_MATCH_CONNECTION_GUID = 16;
+
+export function allocWINHTTP_MATCH_CONNECTION_GUID(data?: Partial<WINHTTP_MATCH_CONNECTION_GUID>): Uint8Array {
+  const buf = new Uint8Array(sizeofWINHTTP_MATCH_CONNECTION_GUID);
+  const view = new DataView(buf.buffer);
+  // 0x00: pointer
+  if (data?.ConnectionGuid !== undefined) view.setBigUint64(0, data.ConnectionGuid === null ? 0n : BigInt(util.toPointer(data.ConnectionGuid)), true);
+  // 0x08: u64
+  if (data?.ullFlags !== undefined) view.setBigUint64(8, BigInt(data.ullFlags), true);
+  return buf;
+}
+
+/**
+ * Windows.Win32.Networking.WinHttp.WINHTTP_RESOLVER_CACHE_CONFIG (size: 32)
+ */
+export interface WINHTTP_RESOLVER_CACHE_CONFIG {
+  /** u32 */
+  ulMaxResolverCacheEntries: number;
+  /** u32 */
+  ulMaxCacheEntryAge: number;
+  /** u32 */
+  ulMinCacheEntryTtl: number;
+  /** Windows.Win32.Networking.WinHttp.WINHTTP_SECURE_DNS_SETTING */
+  SecureDnsSetting: WINHTTP_SECURE_DNS_SETTING;
+  /** u64 */
+  ullConnResolutionWaitTime: Deno.PointerValue;
+  /** u64 */
+  ullFlags: Deno.PointerValue;
+}
+
+export const sizeofWINHTTP_RESOLVER_CACHE_CONFIG = 32;
+
+export function allocWINHTTP_RESOLVER_CACHE_CONFIG(data?: Partial<WINHTTP_RESOLVER_CACHE_CONFIG>): Uint8Array {
+  const buf = new Uint8Array(sizeofWINHTTP_RESOLVER_CACHE_CONFIG);
+  const view = new DataView(buf.buffer);
+  // 0x00: u32
+  if (data?.ulMaxResolverCacheEntries !== undefined) view.setUint32(0, Number(data.ulMaxResolverCacheEntries), true);
+  // 0x04: u32
+  if (data?.ulMaxCacheEntryAge !== undefined) view.setUint32(4, Number(data.ulMaxCacheEntryAge), true);
+  // 0x08: u32
+  if (data?.ulMinCacheEntryTtl !== undefined) view.setUint32(8, Number(data.ulMinCacheEntryTtl), true);
+  // 0x0c: i32
+  if (data?.SecureDnsSetting !== undefined) view.setInt32(12, Number(data.SecureDnsSetting), true);
+  // 0x10: u64
+  if (data?.ullConnResolutionWaitTime !== undefined) view.setBigUint64(16, BigInt(data.ullConnResolutionWaitTime), true);
+  // 0x18: u64
+  if (data?.ullFlags !== undefined) view.setBigUint64(24, BigInt(data.ullFlags), true);
+  return buf;
+}
 
 /**
  * Windows.Win32.Networking.WinHttp.WINHTTP_ASYNC_RESULT (size: 16)
@@ -912,17 +1083,17 @@ export function allocWINHTTP_PROXY_RESULT_EX(data?: Partial<WINHTTP_PROXY_RESULT
 }
 
 /**
- * Windows.Win32.Networking.WinHttp._WinHttpProxyNetworkKey (size: 8)
+ * Windows.Win32.Networking.WinHttp.WINHTTP_PROXY_NETWORKING_KEY (size: 8)
  */
-export interface _WinHttpProxyNetworkKey {
+export interface WINHTTP_PROXY_NETWORKING_KEY {
   /** array */
   pbBuffer: Deno.PointerValue | null;
 }
 
-export const sizeof_WinHttpProxyNetworkKey = 8;
+export const sizeofWINHTTP_PROXY_NETWORKING_KEY = 8;
 
-export function alloc_WinHttpProxyNetworkKey(data?: Partial<_WinHttpProxyNetworkKey>): Uint8Array {
-  const buf = new Uint8Array(sizeof_WinHttpProxyNetworkKey);
+export function allocWINHTTP_PROXY_NETWORKING_KEY(data?: Partial<WINHTTP_PROXY_NETWORKING_KEY>): Uint8Array {
+  const buf = new Uint8Array(sizeofWINHTTP_PROXY_NETWORKING_KEY);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
   if (data?.pbBuffer !== undefined) view.setBigUint64(0, data.pbBuffer === null ? 0n : BigInt(util.toPointer(data.pbBuffer)), true);
@@ -1115,139 +1286,6 @@ export function allocWINHTTP_CERTIFICATE_INFO(data?: Partial<WINHTTP_CERTIFICATE
 }
 
 /**
- * Windows.Win32.Networking.WinSock.SOCKADDR_STORAGE (size: 32)
- */
-export interface SOCKADDR_STORAGE {
-  /** u16 */
-  ss_family: number;
-  /** array */
-  __ss_pad1: Deno.PointerValue | null;
-  /** i64 */
-  __ss_align: Deno.PointerValue;
-  /** array */
-  __ss_pad2: Deno.PointerValue | null;
-}
-
-export const sizeofSOCKADDR_STORAGE = 32;
-
-export function allocSOCKADDR_STORAGE(data?: Partial<SOCKADDR_STORAGE>): Uint8Array {
-  const buf = new Uint8Array(sizeofSOCKADDR_STORAGE);
-  const view = new DataView(buf.buffer);
-  // 0x00: u16
-  if (data?.ss_family !== undefined) view.setUint16(0, Number(data.ss_family), true);
-  // 0x02: pad6
-  // 0x08: pointer
-  if (data?.__ss_pad1 !== undefined) view.setBigUint64(8, data.__ss_pad1 === null ? 0n : BigInt(util.toPointer(data.__ss_pad1)), true);
-  // 0x10: i64
-  if (data?.__ss_align !== undefined) view.setBigInt64(16, BigInt(data.__ss_align), true);
-  // 0x18: pointer
-  if (data?.__ss_pad2 !== undefined) view.setBigUint64(24, data.__ss_pad2 === null ? 0n : BigInt(util.toPointer(data.__ss_pad2)), true);
-  return buf;
-}
-
-/**
- * Windows.Win32.Networking.WinHttp.WINHTTP_CONNECTION_INFO (size: 24)
- */
-export interface WINHTTP_CONNECTION_INFO {
-  /** u32 */
-  cbSize: number;
-  /** Windows.Win32.Networking.WinSock.SOCKADDR_STORAGE */
-  LocalAddress: Uint8Array | Deno.PointerValue | null;
-  /** Windows.Win32.Networking.WinSock.SOCKADDR_STORAGE */
-  RemoteAddress: Uint8Array | Deno.PointerValue | null;
-}
-
-export const sizeofWINHTTP_CONNECTION_INFO = 24;
-
-export function allocWINHTTP_CONNECTION_INFO(data?: Partial<WINHTTP_CONNECTION_INFO>): Uint8Array {
-  const buf = new Uint8Array(sizeofWINHTTP_CONNECTION_INFO);
-  const view = new DataView(buf.buffer);
-  // 0x00: u32
-  if (data?.cbSize !== undefined) view.setUint32(0, Number(data.cbSize), true);
-  // 0x04: pad4
-  // 0x08: pointer
-  if (data?.LocalAddress !== undefined) view.setBigUint64(8, data.LocalAddress === null ? 0n : BigInt(util.toPointer(data.LocalAddress)), true);
-  // 0x10: pointer
-  if (data?.RemoteAddress !== undefined) view.setBigUint64(16, data.RemoteAddress === null ? 0n : BigInt(util.toPointer(data.RemoteAddress)), true);
-  return buf;
-}
-
-/**
- * Windows.Win32.Networking.WinHttp.WINHTTP_REQUEST_TIMES (size: 16)
- */
-export interface WINHTTP_REQUEST_TIMES {
-  /** u32 */
-  cTimes: number;
-  /** array */
-  rgullTimes: Deno.PointerValue | null;
-}
-
-export const sizeofWINHTTP_REQUEST_TIMES = 16;
-
-export function allocWINHTTP_REQUEST_TIMES(data?: Partial<WINHTTP_REQUEST_TIMES>): Uint8Array {
-  const buf = new Uint8Array(sizeofWINHTTP_REQUEST_TIMES);
-  const view = new DataView(buf.buffer);
-  // 0x00: u32
-  if (data?.cTimes !== undefined) view.setUint32(0, Number(data.cTimes), true);
-  // 0x04: pad4
-  // 0x08: pointer
-  if (data?.rgullTimes !== undefined) view.setBigUint64(8, data.rgullTimes === null ? 0n : BigInt(util.toPointer(data.rgullTimes)), true);
-  return buf;
-}
-
-/**
- * Windows.Win32.Networking.WinHttp.WINHTTP_REQUEST_STATS (size: 24)
- */
-export interface WINHTTP_REQUEST_STATS {
-  /** u64 */
-  ullFlags: Deno.PointerValue;
-  /** u32 */
-  ulIndex: number;
-  /** u32 */
-  cStats: number;
-  /** array */
-  rgullStats: Deno.PointerValue | null;
-}
-
-export const sizeofWINHTTP_REQUEST_STATS = 24;
-
-export function allocWINHTTP_REQUEST_STATS(data?: Partial<WINHTTP_REQUEST_STATS>): Uint8Array {
-  const buf = new Uint8Array(sizeofWINHTTP_REQUEST_STATS);
-  const view = new DataView(buf.buffer);
-  // 0x00: u64
-  if (data?.ullFlags !== undefined) view.setBigUint64(0, BigInt(data.ullFlags), true);
-  // 0x08: u32
-  if (data?.ulIndex !== undefined) view.setUint32(8, Number(data.ulIndex), true);
-  // 0x0c: u32
-  if (data?.cStats !== undefined) view.setUint32(12, Number(data.cStats), true);
-  // 0x10: pointer
-  if (data?.rgullStats !== undefined) view.setBigUint64(16, data.rgullStats === null ? 0n : BigInt(util.toPointer(data.rgullStats)), true);
-  return buf;
-}
-
-/**
- * Windows.Win32.Networking.WinHttp.WINHTTP_MATCH_CONNECTION_GUID (size: 16)
- */
-export interface WINHTTP_MATCH_CONNECTION_GUID {
-  /** System.Guid */
-  ConnectionGuid: Uint8Array | Deno.PointerValue | null;
-  /** u64 */
-  ullFlags: Deno.PointerValue;
-}
-
-export const sizeofWINHTTP_MATCH_CONNECTION_GUID = 16;
-
-export function allocWINHTTP_MATCH_CONNECTION_GUID(data?: Partial<WINHTTP_MATCH_CONNECTION_GUID>): Uint8Array {
-  const buf = new Uint8Array(sizeofWINHTTP_MATCH_CONNECTION_GUID);
-  const view = new DataView(buf.buffer);
-  // 0x00: pointer
-  if (data?.ConnectionGuid !== undefined) view.setBigUint64(0, data.ConnectionGuid === null ? 0n : BigInt(util.toPointer(data.ConnectionGuid)), true);
-  // 0x08: u64
-  if (data?.ullFlags !== undefined) view.setBigUint64(8, BigInt(data.ullFlags), true);
-  return buf;
-}
-
-/**
  * _Anonymous1_e__Union (size: 64)
  */
 export interface _Anonymous1_e__Union {
@@ -1369,44 +1407,6 @@ export function allocWINHTTP_HEADER_NAME(data?: Partial<WINHTTP_HEADER_NAME>): U
     (buf as any)._f8 = util.pstrToFfi(data.pszName);
     view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f8)), true);
   }
-  return buf;
-}
-
-/**
- * Windows.Win32.Networking.WinHttp.WINHTTP_RESOLVER_CACHE_CONFIG (size: 32)
- */
-export interface WINHTTP_RESOLVER_CACHE_CONFIG {
-  /** u32 */
-  ulMaxResolverCacheEntries: number;
-  /** u32 */
-  ulMaxCacheEntryAge: number;
-  /** u32 */
-  ulMinCacheEntryTtl: number;
-  /** Windows.Win32.Networking.WinHttp.WINHTTP_SECURE_DNS_SETTING */
-  SecureDnsSetting: WINHTTP_SECURE_DNS_SETTING;
-  /** u64 */
-  ullConnResolutionWaitTime: Deno.PointerValue;
-  /** u64 */
-  ullFlags: Deno.PointerValue;
-}
-
-export const sizeofWINHTTP_RESOLVER_CACHE_CONFIG = 32;
-
-export function allocWINHTTP_RESOLVER_CACHE_CONFIG(data?: Partial<WINHTTP_RESOLVER_CACHE_CONFIG>): Uint8Array {
-  const buf = new Uint8Array(sizeofWINHTTP_RESOLVER_CACHE_CONFIG);
-  const view = new DataView(buf.buffer);
-  // 0x00: u32
-  if (data?.ulMaxResolverCacheEntries !== undefined) view.setUint32(0, Number(data.ulMaxResolverCacheEntries), true);
-  // 0x04: u32
-  if (data?.ulMaxCacheEntryAge !== undefined) view.setUint32(4, Number(data.ulMaxCacheEntryAge), true);
-  // 0x08: u32
-  if (data?.ulMinCacheEntryTtl !== undefined) view.setUint32(8, Number(data.ulMinCacheEntryTtl), true);
-  // 0x0c: i32
-  if (data?.SecureDnsSetting !== undefined) view.setInt32(12, Number(data.SecureDnsSetting), true);
-  // 0x10: u64
-  if (data?.ullConnResolutionWaitTime !== undefined) view.setBigUint64(16, BigInt(data.ullConnResolutionWaitTime), true);
-  // 0x18: u64
-  if (data?.ullFlags !== undefined) view.setBigUint64(24, BigInt(data.ullFlags), true);
   return buf;
 }
 
@@ -1729,7 +1729,7 @@ export function allocWINHTTP_WEB_SOCKET_STATUS(data?: Partial<WINHTTP_WEB_SOCKET
 // Native Libraries
 
 try {
-  var libWINHTTP = Deno.dlopen("WINHTTP", {
+  var libWINHTTP_dll = Deno.dlopen("WINHTTP.dll", {
     WinHttpSetStatusCallback: {
       parameters: ["pointer", "pointer", "u32", "usize"],
       result: "pointer",
@@ -1945,21 +1945,21 @@ export function WinHttpSetStatusCallback(
   dwNotificationFlags: number /* u32 */,
   dwReserved: Deno.PointerValue /* usize */,
 ): Deno.PointerValue | null /* Windows.Win32.Networking.WinHttp.WINHTTP_STATUS_CALLBACK */ {
-  return util.pointerFromFfi(libWINHTTP.WinHttpSetStatusCallback(util.toPointer(hInternet), util.toPointer(lpfnInternetCallback), dwNotificationFlags, dwReserved));
+  return util.pointerFromFfi(libWINHTTP_dll.WinHttpSetStatusCallback(util.toPointer(hInternet), util.toPointer(lpfnInternetCallback), dwNotificationFlags, dwReserved));
 }
 
 export function WinHttpTimeFromSystemTime(
   pst: Deno.PointerValue | Uint8Array | null /* ptr */,
   pwszTime: string | null /* Windows.Win32.Foundation.PWSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWINHTTP.WinHttpTimeFromSystemTime(util.toPointer(pst), util.pwstrToFfi(pwszTime)));
+  return util.boolFromFfi(libWINHTTP_dll.WinHttpTimeFromSystemTime(util.toPointer(pst), util.pwstrToFfi(pwszTime)));
 }
 
 export function WinHttpTimeToSystemTime(
   pwszTime: string | null /* Windows.Win32.Foundation.PWSTR */,
   pst: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWINHTTP.WinHttpTimeToSystemTime(util.pwstrToFfi(pwszTime), util.toPointer(pst)));
+  return util.boolFromFfi(libWINHTTP_dll.WinHttpTimeToSystemTime(util.pwstrToFfi(pwszTime), util.toPointer(pst)));
 }
 
 export function WinHttpCrackUrl(
@@ -1968,7 +1968,7 @@ export function WinHttpCrackUrl(
   dwFlags: number /* u32 */,
   lpUrlComponents: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWINHTTP.WinHttpCrackUrl(util.pwstrToFfi(pwszUrl), dwUrlLength, dwFlags, util.toPointer(lpUrlComponents)));
+  return util.boolFromFfi(libWINHTTP_dll.WinHttpCrackUrl(util.pwstrToFfi(pwszUrl), dwUrlLength, dwFlags, util.toPointer(lpUrlComponents)));
 }
 
 export function WinHttpCreateUrl(
@@ -1977,23 +1977,23 @@ export function WinHttpCreateUrl(
   pwszUrl: string | null /* Windows.Win32.Foundation.PWSTR */,
   pdwUrlLength: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWINHTTP.WinHttpCreateUrl(util.toPointer(lpUrlComponents), dwFlags, util.pwstrToFfi(pwszUrl), util.toPointer(pdwUrlLength)));
+  return util.boolFromFfi(libWINHTTP_dll.WinHttpCreateUrl(util.toPointer(lpUrlComponents), dwFlags, util.pwstrToFfi(pwszUrl), util.toPointer(pdwUrlLength)));
 }
 
 export function WinHttpCheckPlatform(): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWINHTTP.WinHttpCheckPlatform());
+  return util.boolFromFfi(libWINHTTP_dll.WinHttpCheckPlatform());
 }
 
 export function WinHttpGetDefaultProxyConfiguration(
   pProxyInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWINHTTP.WinHttpGetDefaultProxyConfiguration(util.toPointer(pProxyInfo)));
+  return util.boolFromFfi(libWINHTTP_dll.WinHttpGetDefaultProxyConfiguration(util.toPointer(pProxyInfo)));
 }
 
 export function WinHttpSetDefaultProxyConfiguration(
   pProxyInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWINHTTP.WinHttpSetDefaultProxyConfiguration(util.toPointer(pProxyInfo)));
+  return util.boolFromFfi(libWINHTTP_dll.WinHttpSetDefaultProxyConfiguration(util.toPointer(pProxyInfo)));
 }
 
 export function WinHttpOpen(
@@ -2003,13 +2003,13 @@ export function WinHttpOpen(
   pszProxyBypassW: string | null /* Windows.Win32.Foundation.PWSTR */,
   dwFlags: number /* u32 */,
 ): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libWINHTTP.WinHttpOpen(util.pwstrToFfi(pszAgentW), dwAccessType, util.pwstrToFfi(pszProxyW), util.pwstrToFfi(pszProxyBypassW), dwFlags));
+  return util.pointerFromFfi(libWINHTTP_dll.WinHttpOpen(util.pwstrToFfi(pszAgentW), dwAccessType, util.pwstrToFfi(pszProxyW), util.pwstrToFfi(pszProxyBypassW), dwFlags));
 }
 
 export function WinHttpCloseHandle(
   hInternet: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWINHTTP.WinHttpCloseHandle(util.toPointer(hInternet)));
+  return util.boolFromFfi(libWINHTTP_dll.WinHttpCloseHandle(util.toPointer(hInternet)));
 }
 
 export function WinHttpConnect(
@@ -2018,7 +2018,7 @@ export function WinHttpConnect(
   nServerPort: INTERNET_PORT /* Windows.Win32.Networking.WinHttp.INTERNET_PORT */,
   dwReserved: number /* u32 */,
 ): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libWINHTTP.WinHttpConnect(util.toPointer(hSession), util.pwstrToFfi(pswzServerName), nServerPort, dwReserved));
+  return util.pointerFromFfi(libWINHTTP_dll.WinHttpConnect(util.toPointer(hSession), util.pwstrToFfi(pswzServerName), nServerPort, dwReserved));
 }
 
 export function WinHttpReadData(
@@ -2027,7 +2027,7 @@ export function WinHttpReadData(
   dwNumberOfBytesToRead: number /* u32 */,
   lpdwNumberOfBytesRead: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWINHTTP.WinHttpReadData(util.toPointer(hRequest), util.toPointer(lpBuffer), dwNumberOfBytesToRead, util.toPointer(lpdwNumberOfBytesRead)));
+  return util.boolFromFfi(libWINHTTP_dll.WinHttpReadData(util.toPointer(hRequest), util.toPointer(lpBuffer), dwNumberOfBytesToRead, util.toPointer(lpdwNumberOfBytesRead)));
 }
 
 export function WinHttpReadDataEx(
@@ -2039,7 +2039,7 @@ export function WinHttpReadDataEx(
   cbProperty: number /* u32 */,
   pvProperty: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libWINHTTP.WinHttpReadDataEx(util.toPointer(hRequest), util.toPointer(lpBuffer), dwNumberOfBytesToRead, util.toPointer(lpdwNumberOfBytesRead), ullFlags, cbProperty, util.toPointer(pvProperty));
+  return libWINHTTP_dll.WinHttpReadDataEx(util.toPointer(hRequest), util.toPointer(lpBuffer), dwNumberOfBytesToRead, util.toPointer(lpdwNumberOfBytesRead), ullFlags, cbProperty, util.toPointer(pvProperty));
 }
 
 export function WinHttpWriteData(
@@ -2048,14 +2048,14 @@ export function WinHttpWriteData(
   dwNumberOfBytesToWrite: number /* u32 */,
   lpdwNumberOfBytesWritten: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWINHTTP.WinHttpWriteData(util.toPointer(hRequest), util.toPointer(lpBuffer), dwNumberOfBytesToWrite, util.toPointer(lpdwNumberOfBytesWritten)));
+  return util.boolFromFfi(libWINHTTP_dll.WinHttpWriteData(util.toPointer(hRequest), util.toPointer(lpBuffer), dwNumberOfBytesToWrite, util.toPointer(lpdwNumberOfBytesWritten)));
 }
 
 export function WinHttpQueryDataAvailable(
   hRequest: Deno.PointerValue | Uint8Array | null /* ptr */,
   lpdwNumberOfBytesAvailable: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWINHTTP.WinHttpQueryDataAvailable(util.toPointer(hRequest), util.toPointer(lpdwNumberOfBytesAvailable)));
+  return util.boolFromFfi(libWINHTTP_dll.WinHttpQueryDataAvailable(util.toPointer(hRequest), util.toPointer(lpdwNumberOfBytesAvailable)));
 }
 
 export function WinHttpQueryOption(
@@ -2064,7 +2064,7 @@ export function WinHttpQueryOption(
   lpBuffer: Deno.PointerValue | Uint8Array | null /* ptr */,
   lpdwBufferLength: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWINHTTP.WinHttpQueryOption(util.toPointer(hInternet), dwOption, util.toPointer(lpBuffer), util.toPointer(lpdwBufferLength)));
+  return util.boolFromFfi(libWINHTTP_dll.WinHttpQueryOption(util.toPointer(hInternet), dwOption, util.toPointer(lpBuffer), util.toPointer(lpdwBufferLength)));
 }
 
 export function WinHttpSetOption(
@@ -2073,7 +2073,7 @@ export function WinHttpSetOption(
   lpBuffer: Deno.PointerValue | Uint8Array | null /* ptr */,
   dwBufferLength: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWINHTTP.WinHttpSetOption(util.toPointer(hInternet), dwOption, util.toPointer(lpBuffer), dwBufferLength));
+  return util.boolFromFfi(libWINHTTP_dll.WinHttpSetOption(util.toPointer(hInternet), dwOption, util.toPointer(lpBuffer), dwBufferLength));
 }
 
 export function WinHttpSetTimeouts(
@@ -2083,7 +2083,7 @@ export function WinHttpSetTimeouts(
   nSendTimeout: number /* i32 */,
   nReceiveTimeout: number /* i32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWINHTTP.WinHttpSetTimeouts(util.toPointer(hInternet), nResolveTimeout, nConnectTimeout, nSendTimeout, nReceiveTimeout));
+  return util.boolFromFfi(libWINHTTP_dll.WinHttpSetTimeouts(util.toPointer(hInternet), nResolveTimeout, nConnectTimeout, nSendTimeout, nReceiveTimeout));
 }
 
 export function WinHttpOpenRequest(
@@ -2095,7 +2095,7 @@ export function WinHttpOpenRequest(
   ppwszAcceptTypes: Deno.PointerValue | Uint8Array | null /* ptr */,
   dwFlags: WINHTTP_OPEN_REQUEST_FLAGS /* Windows.Win32.Networking.WinHttp.WINHTTP_OPEN_REQUEST_FLAGS */,
 ): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libWINHTTP.WinHttpOpenRequest(util.toPointer(hConnect), util.pwstrToFfi(pwszVerb), util.pwstrToFfi(pwszObjectName), util.pwstrToFfi(pwszVersion), util.pwstrToFfi(pwszReferrer), util.toPointer(ppwszAcceptTypes), dwFlags));
+  return util.pointerFromFfi(libWINHTTP_dll.WinHttpOpenRequest(util.toPointer(hConnect), util.pwstrToFfi(pwszVerb), util.pwstrToFfi(pwszObjectName), util.pwstrToFfi(pwszVersion), util.pwstrToFfi(pwszReferrer), util.toPointer(ppwszAcceptTypes), dwFlags));
 }
 
 export function WinHttpAddRequestHeaders(
@@ -2104,7 +2104,7 @@ export function WinHttpAddRequestHeaders(
   dwHeadersLength: number /* u32 */,
   dwModifiers: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWINHTTP.WinHttpAddRequestHeaders(util.toPointer(hRequest), util.pwstrToFfi(lpszHeaders), dwHeadersLength, dwModifiers));
+  return util.boolFromFfi(libWINHTTP_dll.WinHttpAddRequestHeaders(util.toPointer(hRequest), util.pwstrToFfi(lpszHeaders), dwHeadersLength, dwModifiers));
 }
 
 export function WinHttpAddRequestHeadersEx(
@@ -2115,7 +2115,7 @@ export function WinHttpAddRequestHeadersEx(
   cHeaders: number /* u32 */,
   pHeaders: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libWINHTTP.WinHttpAddRequestHeadersEx(util.toPointer(hRequest), dwModifiers, ullFlags, ullExtra, cHeaders, util.toPointer(pHeaders));
+  return libWINHTTP_dll.WinHttpAddRequestHeadersEx(util.toPointer(hRequest), dwModifiers, ullFlags, ullExtra, cHeaders, util.toPointer(pHeaders));
 }
 
 export function WinHttpSendRequest(
@@ -2127,7 +2127,7 @@ export function WinHttpSendRequest(
   dwTotalLength: number /* u32 */,
   dwContext: Deno.PointerValue /* usize */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWINHTTP.WinHttpSendRequest(util.toPointer(hRequest), util.pwstrToFfi(lpszHeaders), dwHeadersLength, util.toPointer(lpOptional), dwOptionalLength, dwTotalLength, dwContext));
+  return util.boolFromFfi(libWINHTTP_dll.WinHttpSendRequest(util.toPointer(hRequest), util.pwstrToFfi(lpszHeaders), dwHeadersLength, util.toPointer(lpOptional), dwOptionalLength, dwTotalLength, dwContext));
 }
 
 export function WinHttpSetCredentials(
@@ -2138,7 +2138,7 @@ export function WinHttpSetCredentials(
   pwszPassword: string | null /* Windows.Win32.Foundation.PWSTR */,
   pAuthParams: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWINHTTP.WinHttpSetCredentials(util.toPointer(hRequest), AuthTargets, AuthScheme, util.pwstrToFfi(pwszUserName), util.pwstrToFfi(pwszPassword), util.toPointer(pAuthParams)));
+  return util.boolFromFfi(libWINHTTP_dll.WinHttpSetCredentials(util.toPointer(hRequest), AuthTargets, AuthScheme, util.pwstrToFfi(pwszUserName), util.pwstrToFfi(pwszPassword), util.toPointer(pAuthParams)));
 }
 
 export function WinHttpQueryAuthSchemes(
@@ -2147,14 +2147,14 @@ export function WinHttpQueryAuthSchemes(
   lpdwFirstScheme: Deno.PointerValue | Uint8Array | null /* ptr */,
   pdwAuthTarget: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWINHTTP.WinHttpQueryAuthSchemes(util.toPointer(hRequest), util.toPointer(lpdwSupportedSchemes), util.toPointer(lpdwFirstScheme), util.toPointer(pdwAuthTarget)));
+  return util.boolFromFfi(libWINHTTP_dll.WinHttpQueryAuthSchemes(util.toPointer(hRequest), util.toPointer(lpdwSupportedSchemes), util.toPointer(lpdwFirstScheme), util.toPointer(pdwAuthTarget)));
 }
 
 export function WinHttpReceiveResponse(
   hRequest: Deno.PointerValue | Uint8Array | null /* ptr */,
   lpReserved: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWINHTTP.WinHttpReceiveResponse(util.toPointer(hRequest), util.toPointer(lpReserved)));
+  return util.boolFromFfi(libWINHTTP_dll.WinHttpReceiveResponse(util.toPointer(hRequest), util.toPointer(lpReserved)));
 }
 
 export function WinHttpQueryHeaders(
@@ -2165,7 +2165,7 @@ export function WinHttpQueryHeaders(
   lpdwBufferLength: Deno.PointerValue | Uint8Array | null /* ptr */,
   lpdwIndex: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWINHTTP.WinHttpQueryHeaders(util.toPointer(hRequest), dwInfoLevel, util.pwstrToFfi(pwszName), util.toPointer(lpBuffer), util.toPointer(lpdwBufferLength), util.toPointer(lpdwIndex)));
+  return util.boolFromFfi(libWINHTTP_dll.WinHttpQueryHeaders(util.toPointer(hRequest), dwInfoLevel, util.pwstrToFfi(pwszName), util.toPointer(lpBuffer), util.toPointer(lpdwBufferLength), util.toPointer(lpdwIndex)));
 }
 
 export function WinHttpQueryHeadersEx(
@@ -2180,7 +2180,7 @@ export function WinHttpQueryHeadersEx(
   ppHeaders: Deno.PointerValue | Uint8Array | null /* ptr */,
   pdwHeadersCount: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libWINHTTP.WinHttpQueryHeadersEx(util.toPointer(hRequest), dwInfoLevel, ullFlags, uiCodePage, util.toPointer(pdwIndex), util.toPointer(pHeaderName), util.toPointer(pBuffer), util.toPointer(pdwBufferLength), util.toPointer(ppHeaders), util.toPointer(pdwHeadersCount));
+  return libWINHTTP_dll.WinHttpQueryHeadersEx(util.toPointer(hRequest), dwInfoLevel, ullFlags, uiCodePage, util.toPointer(pdwIndex), util.toPointer(pHeaderName), util.toPointer(pBuffer), util.toPointer(pdwBufferLength), util.toPointer(ppHeaders), util.toPointer(pdwHeadersCount));
 }
 
 export function WinHttpQueryConnectionGroup(
@@ -2189,20 +2189,20 @@ export function WinHttpQueryConnectionGroup(
   ullFlags: Deno.PointerValue /* u64 */,
   ppResult: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libWINHTTP.WinHttpQueryConnectionGroup(util.toPointer(hInternet), util.toPointer(pGuidConnection), ullFlags, util.toPointer(ppResult));
+  return libWINHTTP_dll.WinHttpQueryConnectionGroup(util.toPointer(hInternet), util.toPointer(pGuidConnection), ullFlags, util.toPointer(ppResult));
 }
 
 export function WinHttpFreeQueryConnectionGroupResult(
   pResult: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): void /* void */ {
-  return libWINHTTP.WinHttpFreeQueryConnectionGroupResult(util.toPointer(pResult));
+  return libWINHTTP_dll.WinHttpFreeQueryConnectionGroupResult(util.toPointer(pResult));
 }
 
 export function WinHttpDetectAutoProxyConfigUrl(
   dwAutoDetectFlags: number /* u32 */,
   ppwstrAutoConfigUrl: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWINHTTP.WinHttpDetectAutoProxyConfigUrl(dwAutoDetectFlags, util.toPointer(ppwstrAutoConfigUrl)));
+  return util.boolFromFfi(libWINHTTP_dll.WinHttpDetectAutoProxyConfigUrl(dwAutoDetectFlags, util.toPointer(ppwstrAutoConfigUrl)));
 }
 
 export function WinHttpGetProxyForUrl(
@@ -2211,14 +2211,14 @@ export function WinHttpGetProxyForUrl(
   pAutoProxyOptions: Deno.PointerValue | Uint8Array | null /* ptr */,
   pProxyInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWINHTTP.WinHttpGetProxyForUrl(util.toPointer(hSession), util.pwstrToFfi(lpcwszUrl), util.toPointer(pAutoProxyOptions), util.toPointer(pProxyInfo)));
+  return util.boolFromFfi(libWINHTTP_dll.WinHttpGetProxyForUrl(util.toPointer(hSession), util.pwstrToFfi(lpcwszUrl), util.toPointer(pAutoProxyOptions), util.toPointer(pProxyInfo)));
 }
 
 export function WinHttpCreateProxyResolver(
   hSession: Deno.PointerValue | Uint8Array | null /* ptr */,
   phResolver: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libWINHTTP.WinHttpCreateProxyResolver(util.toPointer(hSession), util.toPointer(phResolver));
+  return libWINHTTP_dll.WinHttpCreateProxyResolver(util.toPointer(hSession), util.toPointer(phResolver));
 }
 
 export function WinHttpGetProxyForUrlEx(
@@ -2227,7 +2227,7 @@ export function WinHttpGetProxyForUrlEx(
   pAutoProxyOptions: Deno.PointerValue | Uint8Array | null /* ptr */,
   pContext: Deno.PointerValue /* usize */,
 ): number /* u32 */ {
-  return libWINHTTP.WinHttpGetProxyForUrlEx(util.toPointer(hResolver), util.pwstrToFfi(pcwszUrl), util.toPointer(pAutoProxyOptions), pContext);
+  return libWINHTTP_dll.WinHttpGetProxyForUrlEx(util.toPointer(hResolver), util.pwstrToFfi(pcwszUrl), util.toPointer(pAutoProxyOptions), pContext);
 }
 
 export function WinHttpGetProxyForUrlEx2(
@@ -2238,46 +2238,46 @@ export function WinHttpGetProxyForUrlEx2(
   pInterfaceSelectionContext: Deno.PointerValue | Uint8Array | null /* ptr */,
   pContext: Deno.PointerValue /* usize */,
 ): number /* u32 */ {
-  return libWINHTTP.WinHttpGetProxyForUrlEx2(util.toPointer(hResolver), util.pwstrToFfi(pcwszUrl), util.toPointer(pAutoProxyOptions), cbInterfaceSelectionContext, util.toPointer(pInterfaceSelectionContext), pContext);
+  return libWINHTTP_dll.WinHttpGetProxyForUrlEx2(util.toPointer(hResolver), util.pwstrToFfi(pcwszUrl), util.toPointer(pAutoProxyOptions), cbInterfaceSelectionContext, util.toPointer(pInterfaceSelectionContext), pContext);
 }
 
 export function WinHttpGetProxyResult(
   hResolver: Deno.PointerValue | Uint8Array | null /* ptr */,
   pProxyResult: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libWINHTTP.WinHttpGetProxyResult(util.toPointer(hResolver), util.toPointer(pProxyResult));
+  return libWINHTTP_dll.WinHttpGetProxyResult(util.toPointer(hResolver), util.toPointer(pProxyResult));
 }
 
 export function WinHttpGetProxyResultEx(
   hResolver: Deno.PointerValue | Uint8Array | null /* ptr */,
   pProxyResultEx: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libWINHTTP.WinHttpGetProxyResultEx(util.toPointer(hResolver), util.toPointer(pProxyResultEx));
+  return libWINHTTP_dll.WinHttpGetProxyResultEx(util.toPointer(hResolver), util.toPointer(pProxyResultEx));
 }
 
 export function WinHttpFreeProxyResult(
   pProxyResult: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): void /* void */ {
-  return libWINHTTP.WinHttpFreeProxyResult(util.toPointer(pProxyResult));
+  return libWINHTTP_dll.WinHttpFreeProxyResult(util.toPointer(pProxyResult));
 }
 
 export function WinHttpFreeProxyResultEx(
   pProxyResultEx: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): void /* void */ {
-  return libWINHTTP.WinHttpFreeProxyResultEx(util.toPointer(pProxyResultEx));
+  return libWINHTTP_dll.WinHttpFreeProxyResultEx(util.toPointer(pProxyResultEx));
 }
 
 export function WinHttpResetAutoProxy(
   hSession: Deno.PointerValue | Uint8Array | null /* ptr */,
   dwFlags: number /* u32 */,
 ): number /* u32 */ {
-  return libWINHTTP.WinHttpResetAutoProxy(util.toPointer(hSession), dwFlags);
+  return libWINHTTP_dll.WinHttpResetAutoProxy(util.toPointer(hSession), dwFlags);
 }
 
 export function WinHttpGetIEProxyConfigForCurrentUser(
   pProxyConfig: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWINHTTP.WinHttpGetIEProxyConfigForCurrentUser(util.toPointer(pProxyConfig)));
+  return util.boolFromFfi(libWINHTTP_dll.WinHttpGetIEProxyConfigForCurrentUser(util.toPointer(pProxyConfig)));
 }
 
 export function WinHttpWriteProxySettings(
@@ -2285,7 +2285,7 @@ export function WinHttpWriteProxySettings(
   fForceUpdate: boolean /* Windows.Win32.Foundation.BOOL */,
   pWinHttpProxySettings: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libWINHTTP.WinHttpWriteProxySettings(util.toPointer(hSession), util.boolToFfi(fForceUpdate), util.toPointer(pWinHttpProxySettings));
+  return libWINHTTP_dll.WinHttpWriteProxySettings(util.toPointer(hSession), util.boolToFfi(fForceUpdate), util.toPointer(pWinHttpProxySettings));
 }
 
 export function WinHttpReadProxySettings(
@@ -2297,33 +2297,33 @@ export function WinHttpReadProxySettings(
   pfDefaultSettingsAreReturned: Deno.PointerValue | Uint8Array | null /* ptr */,
   pWinHttpProxySettings: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libWINHTTP.WinHttpReadProxySettings(util.toPointer(hSession), util.pwstrToFfi(pcwszConnectionName), util.boolToFfi(fFallBackToDefaultSettings), util.boolToFfi(fSetAutoDiscoverForDefaultSettings), util.toPointer(pdwSettingsVersion), util.toPointer(pfDefaultSettingsAreReturned), util.toPointer(pWinHttpProxySettings));
+  return libWINHTTP_dll.WinHttpReadProxySettings(util.toPointer(hSession), util.pwstrToFfi(pcwszConnectionName), util.boolToFfi(fFallBackToDefaultSettings), util.boolToFfi(fSetAutoDiscoverForDefaultSettings), util.toPointer(pdwSettingsVersion), util.toPointer(pfDefaultSettingsAreReturned), util.toPointer(pWinHttpProxySettings));
 }
 
 export function WinHttpFreeProxySettings(
   pWinHttpProxySettings: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): void /* void */ {
-  return libWINHTTP.WinHttpFreeProxySettings(util.toPointer(pWinHttpProxySettings));
+  return libWINHTTP_dll.WinHttpFreeProxySettings(util.toPointer(pWinHttpProxySettings));
 }
 
 export function WinHttpGetProxySettingsVersion(
   hSession: Deno.PointerValue | Uint8Array | null /* ptr */,
   pdwProxySettingsVersion: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libWINHTTP.WinHttpGetProxySettingsVersion(util.toPointer(hSession), util.toPointer(pdwProxySettingsVersion));
+  return libWINHTTP_dll.WinHttpGetProxySettingsVersion(util.toPointer(hSession), util.toPointer(pdwProxySettingsVersion));
 }
 
 export function WinHttpSetProxySettingsPerUser(
   fProxySettingsPerUser: boolean /* Windows.Win32.Foundation.BOOL */,
 ): number /* u32 */ {
-  return libWINHTTP.WinHttpSetProxySettingsPerUser(util.boolToFfi(fProxySettingsPerUser));
+  return libWINHTTP_dll.WinHttpSetProxySettingsPerUser(util.boolToFfi(fProxySettingsPerUser));
 }
 
 export function WinHttpWebSocketCompleteUpgrade(
   hRequest: Deno.PointerValue | Uint8Array | null /* ptr */,
   pContext: Deno.PointerValue /* usize */,
 ): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libWINHTTP.WinHttpWebSocketCompleteUpgrade(util.toPointer(hRequest), pContext));
+  return util.pointerFromFfi(libWINHTTP_dll.WinHttpWebSocketCompleteUpgrade(util.toPointer(hRequest), pContext));
 }
 
 export function WinHttpWebSocketSend(
@@ -2332,7 +2332,7 @@ export function WinHttpWebSocketSend(
   pvBuffer: Deno.PointerValue | Uint8Array | null /* ptr */,
   dwBufferLength: number /* u32 */,
 ): number /* u32 */ {
-  return libWINHTTP.WinHttpWebSocketSend(util.toPointer(hWebSocket), eBufferType, util.toPointer(pvBuffer), dwBufferLength);
+  return libWINHTTP_dll.WinHttpWebSocketSend(util.toPointer(hWebSocket), eBufferType, util.toPointer(pvBuffer), dwBufferLength);
 }
 
 export function WinHttpWebSocketReceive(
@@ -2342,7 +2342,7 @@ export function WinHttpWebSocketReceive(
   pdwBytesRead: Deno.PointerValue | Uint8Array | null /* ptr */,
   peBufferType: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libWINHTTP.WinHttpWebSocketReceive(util.toPointer(hWebSocket), util.toPointer(pvBuffer), dwBufferLength, util.toPointer(pdwBytesRead), util.toPointer(peBufferType));
+  return libWINHTTP_dll.WinHttpWebSocketReceive(util.toPointer(hWebSocket), util.toPointer(pvBuffer), dwBufferLength, util.toPointer(pdwBytesRead), util.toPointer(peBufferType));
 }
 
 export function WinHttpWebSocketShutdown(
@@ -2351,7 +2351,7 @@ export function WinHttpWebSocketShutdown(
   pvReason: Deno.PointerValue | Uint8Array | null /* ptr */,
   dwReasonLength: number /* u32 */,
 ): number /* u32 */ {
-  return libWINHTTP.WinHttpWebSocketShutdown(util.toPointer(hWebSocket), usStatus, util.toPointer(pvReason), dwReasonLength);
+  return libWINHTTP_dll.WinHttpWebSocketShutdown(util.toPointer(hWebSocket), usStatus, util.toPointer(pvReason), dwReasonLength);
 }
 
 export function WinHttpWebSocketClose(
@@ -2360,7 +2360,7 @@ export function WinHttpWebSocketClose(
   pvReason: Deno.PointerValue | Uint8Array | null /* ptr */,
   dwReasonLength: number /* u32 */,
 ): number /* u32 */ {
-  return libWINHTTP.WinHttpWebSocketClose(util.toPointer(hWebSocket), usStatus, util.toPointer(pvReason), dwReasonLength);
+  return libWINHTTP_dll.WinHttpWebSocketClose(util.toPointer(hWebSocket), usStatus, util.toPointer(pvReason), dwReasonLength);
 }
 
 export function WinHttpWebSocketQueryCloseStatus(
@@ -2370,6 +2370,6 @@ export function WinHttpWebSocketQueryCloseStatus(
   dwReasonLength: number /* u32 */,
   pdwReasonLengthConsumed: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libWINHTTP.WinHttpWebSocketQueryCloseStatus(util.toPointer(hWebSocket), util.toPointer(pusStatus), util.toPointer(pvReason), dwReasonLength, util.toPointer(pdwReasonLengthConsumed));
+  return libWINHTTP_dll.WinHttpWebSocketQueryCloseStatus(util.toPointer(hWebSocket), util.toPointer(pusStatus), util.toPointer(pvReason), dwReasonLength, util.toPointer(pdwReasonLengthConsumed));
 }
 

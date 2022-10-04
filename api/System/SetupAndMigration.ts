@@ -9,7 +9,7 @@ export type BOOL = number;
 // Native Libraries
 
 try {
-  var libKERNEL32 = Deno.dlopen("KERNEL32", {
+  var libKERNEL32_dll = Deno.dlopen("KERNEL32.dll", {
     OOBEComplete: {
       parameters: ["pointer"],
       result: "i32",
@@ -30,7 +30,7 @@ try {
 export function OOBEComplete(
   isOOBEComplete: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32.OOBEComplete(util.toPointer(isOOBEComplete)));
+  return util.boolFromFfi(libKERNEL32_dll.OOBEComplete(util.toPointer(isOOBEComplete)));
 }
 
 export function RegisterWaitUntilOOBECompleted(
@@ -38,12 +38,12 @@ export function RegisterWaitUntilOOBECompleted(
   CallbackContext: Deno.PointerValue | Uint8Array | null /* ptr */,
   WaitHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32.RegisterWaitUntilOOBECompleted(util.toPointer(OOBECompletedCallback), util.toPointer(CallbackContext), util.toPointer(WaitHandle)));
+  return util.boolFromFfi(libKERNEL32_dll.RegisterWaitUntilOOBECompleted(util.toPointer(OOBECompletedCallback), util.toPointer(CallbackContext), util.toPointer(WaitHandle)));
 }
 
 export function UnregisterWaitUntilOOBECompleted(
   WaitHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32.UnregisterWaitUntilOOBECompleted(util.toPointer(WaitHandle)));
+  return util.boolFromFfi(libKERNEL32_dll.UnregisterWaitUntilOOBECompleted(util.toPointer(WaitHandle)));
 }
 

@@ -8,7 +8,7 @@ export type WSB_OB_STATUS_ENTRY_PAIR_TYPE = number;
 // Constants
 export const WSB_MAX_OB_STATUS_VALUE_TYPE_PAIR = 5;
 export const WSB_MAX_OB_STATUS_ENTRY = 5;
-export const WSBAPP_ASYNC_IN_PROGRESS = 2449958214477414404n;
+export const WSBAPP_ASYNC_IN_PROGRESS = 7277946800340336644n;
 export const WSB_OB_ET_UNDEFINED = 0;
 export const WSB_OB_ET_STRING = 1;
 export const WSB_OB_ET_NUMBER = 2;

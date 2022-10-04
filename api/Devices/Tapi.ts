@@ -882,29 +882,29 @@ export const STRINGFORMAT_UNICODE = 3;
 export const STRINGFORMAT_BINARY = 4;
 export const TAPI_REPLY = 1123;
 export const TAPIERR_CONNECTED = 0;
-export const TAPIERR_DROPPED = "-1";
-export const TAPIERR_NOREQUESTRECIPIENT = "-2";
-export const TAPIERR_REQUESTQUEUEFULL = "-3";
-export const TAPIERR_INVALDESTADDRESS = "-4";
-export const TAPIERR_INVALWINDOWHANDLE = "-5";
-export const TAPIERR_INVALDEVICECLASS = "-6";
-export const TAPIERR_INVALDEVICEID = "-7";
-export const TAPIERR_DEVICECLASSUNAVAIL = "-8";
-export const TAPIERR_DEVICEIDUNAVAIL = "-9";
-export const TAPIERR_DEVICEINUSE = "-10";
-export const TAPIERR_DESTBUSY = "-11";
-export const TAPIERR_DESTNOANSWER = "-12";
-export const TAPIERR_DESTUNAVAIL = "-13";
-export const TAPIERR_UNKNOWNWINHANDLE = "-14";
-export const TAPIERR_UNKNOWNREQUESTID = "-15";
-export const TAPIERR_REQUESTFAILED = "-16";
-export const TAPIERR_REQUESTCANCELLED = "-17";
-export const TAPIERR_INVALPOINTER = "-18";
-export const TAPIERR_NOTADMIN = "-19";
-export const TAPIERR_MMCWRITELOCKED = "-20";
-export const TAPIERR_PROVIDERALREADYINSTALLED = "-21";
-export const TAPIERR_SCP_ALREADY_EXISTS = "-22";
-export const TAPIERR_SCP_DOES_NOT_EXIST = "-23";
+export const TAPIERR_DROPPED = `-1`;
+export const TAPIERR_NOREQUESTRECIPIENT = `-2`;
+export const TAPIERR_REQUESTQUEUEFULL = `-3`;
+export const TAPIERR_INVALDESTADDRESS = `-4`;
+export const TAPIERR_INVALWINDOWHANDLE = `-5`;
+export const TAPIERR_INVALDEVICECLASS = `-6`;
+export const TAPIERR_INVALDEVICEID = `-7`;
+export const TAPIERR_DEVICECLASSUNAVAIL = `-8`;
+export const TAPIERR_DEVICEIDUNAVAIL = `-9`;
+export const TAPIERR_DEVICEINUSE = `-10`;
+export const TAPIERR_DESTBUSY = `-11`;
+export const TAPIERR_DESTNOANSWER = `-12`;
+export const TAPIERR_DESTUNAVAIL = `-13`;
+export const TAPIERR_UNKNOWNWINHANDLE = `-14`;
+export const TAPIERR_UNKNOWNREQUESTID = `-15`;
+export const TAPIERR_REQUESTFAILED = `-16`;
+export const TAPIERR_REQUESTCANCELLED = `-17`;
+export const TAPIERR_INVALPOINTER = `-18`;
+export const TAPIERR_NOTADMIN = `-19`;
+export const TAPIERR_MMCWRITELOCKED = `-20`;
+export const TAPIERR_PROVIDERALREADYINSTALLED = `-21`;
+export const TAPIERR_SCP_ALREADY_EXISTS = `-22`;
+export const TAPIERR_SCP_DOES_NOT_EXIST = `-23`;
 export const TAPIMAXDESTADDRESSSIZE = 80;
 export const TAPIMAXAPPNAMESIZE = 40;
 export const TAPIMAXCALLEDPARTYSIZE = 40;
@@ -1173,7 +1173,18 @@ export const TAPI_E_NOFORMAT = 288326052990943318n;
 export const TAPI_E_INVALIDSTREAMSTATE = 288327152502571095n;
 export const TAPI_E_WRONG_STATE = 288328252014198872n;
 export const TAPI_E_NOT_INITIALIZED = 288329351525826649n;
-export const TAPI_E_SERVICE_NOT_RUNNING = 577305209446072410n;
+export const TAPI_E_SERVICE_NOT_RUNNING = 8070537516073353306n;
+export const OPENTNEFSTREAM = `OpenTnefStream`;
+export const OPENTNEFSTREAMEX = `OpenTnefStreamEx`;
+export const GETTNEFSTREAMCODEPAGE = `GetTnefStreamCodePage`;
+export const cbDisplayName = 41;
+export const cbEmailName = 11;
+export const cbSeverName = 12;
+export const cbTYPE = 16;
+export const cbMaxIdData = 200;
+export const prioLow = 3;
+export const prioNorm = 2;
+export const prioHigh = 1;
 export const atypNull = 0;
 export const atypFile = 1;
 export const atypOle = 2;
@@ -4641,9 +4652,9 @@ export function allocLINEREQMAKECALL(data?: Partial<LINEREQMAKECALL>): Uint8Arra
 }
 
 /**
- * Windows.Win32.Devices.Tapi.linereqmakecallW_tag (size: 32)
+ * Windows.Win32.Devices.Tapi.LINEREQMAKECALLW (size: 32)
  */
-export interface linereqmakecallW_tag {
+export interface LINEREQMAKECALLW {
   /** array */
   szDestAddress: Deno.PointerValue | null;
   /** array */
@@ -4654,10 +4665,10 @@ export interface linereqmakecallW_tag {
   szComment: Deno.PointerValue | null;
 }
 
-export const sizeofLinereqmakecallW_tag = 32;
+export const sizeofLINEREQMAKECALLW = 32;
 
-export function allocLinereqmakecallW_tag(data?: Partial<linereqmakecallW_tag>): Uint8Array {
-  const buf = new Uint8Array(sizeofLinereqmakecallW_tag);
+export function allocLINEREQMAKECALLW(data?: Partial<LINEREQMAKECALLW>): Uint8Array {
+  const buf = new Uint8Array(sizeofLINEREQMAKECALLW);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
   if (data?.szDestAddress !== undefined) view.setBigUint64(0, data.szDestAddress === null ? 0n : BigInt(util.toPointer(data.szDestAddress)), true);
@@ -4729,9 +4740,9 @@ export function allocLINEREQMEDIACALL(data?: Partial<LINEREQMEDIACALL>): Uint8Ar
 }
 
 /**
- * Windows.Win32.Devices.Tapi.linereqmediacallW_tag (size: 72)
+ * Windows.Win32.Devices.Tapi.LINEREQMEDIACALLW (size: 72)
  */
-export interface linereqmediacallW_tag {
+export interface LINEREQMEDIACALLW {
   /** Windows.Win32.Foundation.HWND */
   hWnd: Deno.PointerValue | null;
   /** Windows.Win32.Foundation.WPARAM */
@@ -4754,10 +4765,10 @@ export interface linereqmediacallW_tag {
   szComment: Deno.PointerValue | null;
 }
 
-export const sizeofLinereqmediacallW_tag = 72;
+export const sizeofLINEREQMEDIACALLW = 72;
 
-export function allocLinereqmediacallW_tag(data?: Partial<linereqmediacallW_tag>): Uint8Array {
-  const buf = new Uint8Array(sizeofLinereqmediacallW_tag);
+export function allocLINEREQMEDIACALLW(data?: Partial<LINEREQMEDIACALLW>): Uint8Array {
+  const buf = new Uint8Array(sizeofLINEREQMEDIACALLW);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
   if (data?.hWnd !== undefined) view.setBigUint64(0, data.hWnd === null ? 0n : BigInt(util.toPointer(data.hWnd)), true);
@@ -5804,9 +5815,9 @@ export function allocSTnefProblemArray(data?: Partial<STnefProblemArray>): Uint8
 }
 
 /**
- * Windows.Win32.Devices.Tapi._renddata (size: 16)
+ * Windows.Win32.Devices.Tapi.RENDDATA (size: 16)
  */
-export interface _renddata {
+export interface RENDDATA {
   /** u16 */
   atyp: number;
   /** u32 */
@@ -5819,10 +5830,10 @@ export interface _renddata {
   dwFlags: number;
 }
 
-export const sizeof_renddata = 16;
+export const sizeofRENDDATA = 16;
 
-export function alloc_renddata(data?: Partial<_renddata>): Uint8Array {
-  const buf = new Uint8Array(sizeof_renddata);
+export function allocRENDDATA(data?: Partial<RENDDATA>): Uint8Array {
+  const buf = new Uint8Array(sizeofRENDDATA);
   const view = new DataView(buf.buffer);
   // 0x00: u16
   if (data?.atyp !== undefined) view.setUint16(0, Number(data.atyp), true);
@@ -5839,9 +5850,9 @@ export function alloc_renddata(data?: Partial<_renddata>): Uint8Array {
 }
 
 /**
- * Windows.Win32.Devices.Tapi._dtr (size: 16)
+ * Windows.Win32.Devices.Tapi.DTR (size: 16)
  */
-export interface _dtr {
+export interface DTR {
   /** u16 */
   wYear: number;
   /** u16 */
@@ -5858,10 +5869,10 @@ export interface _dtr {
   wDayOfWeek: number;
 }
 
-export const sizeof_dtr = 16;
+export const sizeofDTR = 16;
 
-export function alloc_dtr(data?: Partial<_dtr>): Uint8Array {
-  const buf = new Uint8Array(sizeof_dtr);
+export function allocDTR(data?: Partial<DTR>): Uint8Array {
+  const buf = new Uint8Array(sizeofDTR);
   const view = new DataView(buf.buffer);
   // 0x00: u16
   if (data?.wYear !== undefined) view.setUint16(0, Number(data.wYear), true);
@@ -5882,9 +5893,9 @@ export function alloc_dtr(data?: Partial<_dtr>): Uint8Array {
 }
 
 /**
- * Windows.Win32.Devices.Tapi._trp (size: 8)
+ * Windows.Win32.Devices.Tapi.TRP (size: 8)
  */
-export interface _trp {
+export interface TRP {
   /** u16 */
   trpid: number;
   /** u16 */
@@ -5895,10 +5906,10 @@ export interface _trp {
   cbRgb: number;
 }
 
-export const sizeof_trp = 8;
+export const sizeofTRP = 8;
 
-export function alloc_trp(data?: Partial<_trp>): Uint8Array {
-  const buf = new Uint8Array(sizeof_trp);
+export function allocTRP(data?: Partial<TRP>): Uint8Array {
+  const buf = new Uint8Array(sizeofTRP);
   const view = new DataView(buf.buffer);
   // 0x00: u16
   if (data?.trpid !== undefined) view.setUint16(0, Number(data.trpid), true);
@@ -5912,9 +5923,9 @@ export function alloc_trp(data?: Partial<_trp>): Uint8Array {
 }
 
 /**
- * Windows.Win32.Devices.Tapi._ADDR_ALIAS (size: 32)
+ * Windows.Win32.Devices.Tapi.ADDRALIAS (size: 32)
  */
-export interface _ADDR_ALIAS {
+export interface ADDRALIAS {
   /** array */
   rgchName: Deno.PointerValue | null;
   /** array */
@@ -5927,10 +5938,10 @@ export interface _ADDR_ALIAS {
   type: number;
 }
 
-export const sizeof_ADDR_ALIAS = 32;
+export const sizeofADDRALIAS = 32;
 
-export function alloc_ADDR_ALIAS(data?: Partial<_ADDR_ALIAS>): Uint8Array {
-  const buf = new Uint8Array(sizeof_ADDR_ALIAS);
+export function allocADDRALIAS(data?: Partial<ADDRALIAS>): Uint8Array {
+  const buf = new Uint8Array(sizeofADDRALIAS);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
   if (data?.rgchName !== undefined) view.setBigUint64(0, data.rgchName === null ? 0n : BigInt(util.toPointer(data.rgchName)), true);
@@ -5950,7 +5961,7 @@ export function alloc_ADDR_ALIAS(data?: Partial<_ADDR_ALIAS>): Uint8Array {
  * _address_e__Union (size: 16)
  */
 export interface _address_e__Union {
-  /** Windows.Win32.Devices.Tapi._ADDR_ALIAS */
+  /** Windows.Win32.Devices.Tapi.ADDRALIAS */
   alias: Uint8Array | Deno.PointerValue | null;
   /** array */
   rgchInterNet: Deno.PointerValue | null;
@@ -6012,7 +6023,7 @@ export type HRESULT = number;
 // Native Libraries
 
 try {
-  var libTAPI32 = Deno.dlopen("TAPI32", {
+  var libTAPI32_dll = Deno.dlopen("TAPI32.dll", {
     lineAccept: {
       parameters: ["u32", "buffer", "u32"],
       result: "i32",
@@ -7013,7 +7024,7 @@ try {
 } catch(e) { /* ignore */ }
 
 try {
-  var libMAPI32 = Deno.dlopen("MAPI32", {
+  var libMAPI32_dll = Deno.dlopen("MAPI32.dll", {
     OpenTnefStream: {
       parameters: ["pointer", "pointer", "pointer", "u32", "pointer", "u16", "pointer"],
       result: "pointer",
@@ -7036,7 +7047,7 @@ export function lineAccept(
   lpsUserUserInfo: string | null /* Windows.Win32.Foundation.PSTR */,
   dwSize: number /* u32 */,
 ): number /* i32 */ {
-  return libTAPI32.lineAccept(hCall, util.pstrToFfi(lpsUserUserInfo), dwSize);
+  return libTAPI32_dll.lineAccept(hCall, util.pstrToFfi(lpsUserUserInfo), dwSize);
 }
 
 export function lineAddProvider(
@@ -7044,7 +7055,7 @@ export function lineAddProvider(
   hwndOwner: Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */,
   lpdwPermanentProviderID: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
-  return libTAPI32.lineAddProvider(util.pstrToFfi(lpszProviderFilename), util.hwndToFfi(hwndOwner), util.toPointer(lpdwPermanentProviderID));
+  return libTAPI32_dll.lineAddProvider(util.pstrToFfi(lpszProviderFilename), util.hwndToFfi(hwndOwner), util.toPointer(lpdwPermanentProviderID));
 }
 
 export function lineAddProviderA(
@@ -7052,7 +7063,7 @@ export function lineAddProviderA(
   hwndOwner: Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */,
   lpdwPermanentProviderID: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
-  return libTAPI32.lineAddProviderA(util.pstrToFfi(lpszProviderFilename), util.hwndToFfi(hwndOwner), util.toPointer(lpdwPermanentProviderID));
+  return libTAPI32_dll.lineAddProviderA(util.pstrToFfi(lpszProviderFilename), util.hwndToFfi(hwndOwner), util.toPointer(lpdwPermanentProviderID));
 }
 
 export function lineAddProviderW(
@@ -7060,14 +7071,14 @@ export function lineAddProviderW(
   hwndOwner: Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */,
   lpdwPermanentProviderID: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
-  return libTAPI32.lineAddProviderW(util.pwstrToFfi(lpszProviderFilename), util.hwndToFfi(hwndOwner), util.toPointer(lpdwPermanentProviderID));
+  return libTAPI32_dll.lineAddProviderW(util.pwstrToFfi(lpszProviderFilename), util.hwndToFfi(hwndOwner), util.toPointer(lpdwPermanentProviderID));
 }
 
 export function lineAddToConference(
   hConfCall: number /* u32 */,
   hConsultCall: number /* u32 */,
 ): number /* i32 */ {
-  return libTAPI32.lineAddToConference(hConfCall, hConsultCall);
+  return libTAPI32_dll.lineAddToConference(hConfCall, hConsultCall);
 }
 
 export function lineAgentSpecific(
@@ -7077,7 +7088,7 @@ export function lineAgentSpecific(
   lpParams: Deno.PointerValue | Uint8Array | null /* ptr */,
   dwSize: number /* u32 */,
 ): number /* i32 */ {
-  return libTAPI32.lineAgentSpecific(hLine, dwAddressID, dwAgentExtensionIDIndex, util.toPointer(lpParams), dwSize);
+  return libTAPI32_dll.lineAgentSpecific(hLine, dwAddressID, dwAgentExtensionIDIndex, util.toPointer(lpParams), dwSize);
 }
 
 export function lineAnswer(
@@ -7085,7 +7096,7 @@ export function lineAnswer(
   lpsUserUserInfo: string | null /* Windows.Win32.Foundation.PSTR */,
   dwSize: number /* u32 */,
 ): number /* i32 */ {
-  return libTAPI32.lineAnswer(hCall, util.pstrToFfi(lpsUserUserInfo), dwSize);
+  return libTAPI32_dll.lineAnswer(hCall, util.pstrToFfi(lpsUserUserInfo), dwSize);
 }
 
 export function lineBlindTransfer(
@@ -7093,7 +7104,7 @@ export function lineBlindTransfer(
   lpszDestAddress: string | null /* Windows.Win32.Foundation.PSTR */,
   dwCountryCode: number /* u32 */,
 ): number /* i32 */ {
-  return libTAPI32.lineBlindTransfer(hCall, util.pstrToFfi(lpszDestAddress), dwCountryCode);
+  return libTAPI32_dll.lineBlindTransfer(hCall, util.pstrToFfi(lpszDestAddress), dwCountryCode);
 }
 
 export function lineBlindTransferA(
@@ -7101,7 +7112,7 @@ export function lineBlindTransferA(
   lpszDestAddress: string | null /* Windows.Win32.Foundation.PSTR */,
   dwCountryCode: number /* u32 */,
 ): number /* i32 */ {
-  return libTAPI32.lineBlindTransferA(hCall, util.pstrToFfi(lpszDestAddress), dwCountryCode);
+  return libTAPI32_dll.lineBlindTransferA(hCall, util.pstrToFfi(lpszDestAddress), dwCountryCode);
 }
 
 export function lineBlindTransferW(
@@ -7109,13 +7120,13 @@ export function lineBlindTransferW(
   lpszDestAddressW: string | null /* Windows.Win32.Foundation.PWSTR */,
   dwCountryCode: number /* u32 */,
 ): number /* i32 */ {
-  return libTAPI32.lineBlindTransferW(hCall, util.pwstrToFfi(lpszDestAddressW), dwCountryCode);
+  return libTAPI32_dll.lineBlindTransferW(hCall, util.pwstrToFfi(lpszDestAddressW), dwCountryCode);
 }
 
 export function lineClose(
   hLine: number /* u32 */,
 ): number /* i32 */ {
-  return libTAPI32.lineClose(hLine);
+  return libTAPI32_dll.lineClose(hLine);
 }
 
 export function lineCompleteCall(
@@ -7124,7 +7135,7 @@ export function lineCompleteCall(
   dwCompletionMode: number /* u32 */,
   dwMessageID: number /* u32 */,
 ): number /* i32 */ {
-  return libTAPI32.lineCompleteCall(hCall, util.toPointer(lpdwCompletionID), dwCompletionMode, dwMessageID);
+  return libTAPI32_dll.lineCompleteCall(hCall, util.toPointer(lpdwCompletionID), dwCompletionMode, dwMessageID);
 }
 
 export function lineCompleteTransfer(
@@ -7133,7 +7144,7 @@ export function lineCompleteTransfer(
   lphConfCall: Deno.PointerValue | Uint8Array | null /* ptr */,
   dwTransferMode: number /* u32 */,
 ): number /* i32 */ {
-  return libTAPI32.lineCompleteTransfer(hCall, hConsultCall, util.toPointer(lphConfCall), dwTransferMode);
+  return libTAPI32_dll.lineCompleteTransfer(hCall, hConsultCall, util.toPointer(lphConfCall), dwTransferMode);
 }
 
 export function lineConfigDialog(
@@ -7141,7 +7152,7 @@ export function lineConfigDialog(
   hwndOwner: Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */,
   lpszDeviceClass: string | null /* Windows.Win32.Foundation.PSTR */,
 ): number /* i32 */ {
-  return libTAPI32.lineConfigDialog(dwDeviceID, util.hwndToFfi(hwndOwner), util.pstrToFfi(lpszDeviceClass));
+  return libTAPI32_dll.lineConfigDialog(dwDeviceID, util.hwndToFfi(hwndOwner), util.pstrToFfi(lpszDeviceClass));
 }
 
 export function lineConfigDialogA(
@@ -7149,7 +7160,7 @@ export function lineConfigDialogA(
   hwndOwner: Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */,
   lpszDeviceClass: string | null /* Windows.Win32.Foundation.PSTR */,
 ): number /* i32 */ {
-  return libTAPI32.lineConfigDialogA(dwDeviceID, util.hwndToFfi(hwndOwner), util.pstrToFfi(lpszDeviceClass));
+  return libTAPI32_dll.lineConfigDialogA(dwDeviceID, util.hwndToFfi(hwndOwner), util.pstrToFfi(lpszDeviceClass));
 }
 
 export function lineConfigDialogW(
@@ -7157,7 +7168,7 @@ export function lineConfigDialogW(
   hwndOwner: Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */,
   lpszDeviceClass: string | null /* Windows.Win32.Foundation.PWSTR */,
 ): number /* i32 */ {
-  return libTAPI32.lineConfigDialogW(dwDeviceID, util.hwndToFfi(hwndOwner), util.pwstrToFfi(lpszDeviceClass));
+  return libTAPI32_dll.lineConfigDialogW(dwDeviceID, util.hwndToFfi(hwndOwner), util.pwstrToFfi(lpszDeviceClass));
 }
 
 export function lineConfigDialogEdit(
@@ -7168,7 +7179,7 @@ export function lineConfigDialogEdit(
   dwSize: number /* u32 */,
   lpDeviceConfigOut: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
-  return libTAPI32.lineConfigDialogEdit(dwDeviceID, util.hwndToFfi(hwndOwner), util.pstrToFfi(lpszDeviceClass), util.toPointer(lpDeviceConfigIn), dwSize, util.toPointer(lpDeviceConfigOut));
+  return libTAPI32_dll.lineConfigDialogEdit(dwDeviceID, util.hwndToFfi(hwndOwner), util.pstrToFfi(lpszDeviceClass), util.toPointer(lpDeviceConfigIn), dwSize, util.toPointer(lpDeviceConfigOut));
 }
 
 export function lineConfigDialogEditA(
@@ -7179,7 +7190,7 @@ export function lineConfigDialogEditA(
   dwSize: number /* u32 */,
   lpDeviceConfigOut: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
-  return libTAPI32.lineConfigDialogEditA(dwDeviceID, util.hwndToFfi(hwndOwner), util.pstrToFfi(lpszDeviceClass), util.toPointer(lpDeviceConfigIn), dwSize, util.toPointer(lpDeviceConfigOut));
+  return libTAPI32_dll.lineConfigDialogEditA(dwDeviceID, util.hwndToFfi(hwndOwner), util.pstrToFfi(lpszDeviceClass), util.toPointer(lpDeviceConfigIn), dwSize, util.toPointer(lpDeviceConfigOut));
 }
 
 export function lineConfigDialogEditW(
@@ -7190,14 +7201,14 @@ export function lineConfigDialogEditW(
   dwSize: number /* u32 */,
   lpDeviceConfigOut: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
-  return libTAPI32.lineConfigDialogEditW(dwDeviceID, util.hwndToFfi(hwndOwner), util.pwstrToFfi(lpszDeviceClass), util.toPointer(lpDeviceConfigIn), dwSize, util.toPointer(lpDeviceConfigOut));
+  return libTAPI32_dll.lineConfigDialogEditW(dwDeviceID, util.hwndToFfi(hwndOwner), util.pwstrToFfi(lpszDeviceClass), util.toPointer(lpDeviceConfigIn), dwSize, util.toPointer(lpDeviceConfigOut));
 }
 
 export function lineConfigProvider(
   hwndOwner: Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */,
   dwPermanentProviderID: number /* u32 */,
 ): number /* i32 */ {
-  return libTAPI32.lineConfigProvider(util.hwndToFfi(hwndOwner), dwPermanentProviderID);
+  return libTAPI32_dll.lineConfigProvider(util.hwndToFfi(hwndOwner), dwPermanentProviderID);
 }
 
 export function lineCreateAgentW(
@@ -7206,7 +7217,7 @@ export function lineCreateAgentW(
   lpszAgentPIN: string | null /* Windows.Win32.Foundation.PWSTR */,
   lphAgent: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
-  return libTAPI32.lineCreateAgentW(hLine, util.pwstrToFfi(lpszAgentID), util.pwstrToFfi(lpszAgentPIN), util.toPointer(lphAgent));
+  return libTAPI32_dll.lineCreateAgentW(hLine, util.pwstrToFfi(lpszAgentID), util.pwstrToFfi(lpszAgentPIN), util.toPointer(lphAgent));
 }
 
 export function lineCreateAgentA(
@@ -7215,7 +7226,7 @@ export function lineCreateAgentA(
   lpszAgentPIN: string | null /* Windows.Win32.Foundation.PSTR */,
   lphAgent: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
-  return libTAPI32.lineCreateAgentA(hLine, util.pstrToFfi(lpszAgentID), util.pstrToFfi(lpszAgentPIN), util.toPointer(lphAgent));
+  return libTAPI32_dll.lineCreateAgentA(hLine, util.pstrToFfi(lpszAgentID), util.pstrToFfi(lpszAgentPIN), util.toPointer(lphAgent));
 }
 
 export function lineCreateAgentSessionW(
@@ -7226,7 +7237,7 @@ export function lineCreateAgentSessionW(
   lpGroupID: Deno.PointerValue | Uint8Array | null /* ptr */,
   lphAgentSession: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
-  return libTAPI32.lineCreateAgentSessionW(hLine, hAgent, util.pwstrToFfi(lpszAgentPIN), dwWorkingAddressID, util.toPointer(lpGroupID), util.toPointer(lphAgentSession));
+  return libTAPI32_dll.lineCreateAgentSessionW(hLine, hAgent, util.pwstrToFfi(lpszAgentPIN), dwWorkingAddressID, util.toPointer(lpGroupID), util.toPointer(lphAgentSession));
 }
 
 export function lineCreateAgentSessionA(
@@ -7237,13 +7248,13 @@ export function lineCreateAgentSessionA(
   lpGroupID: Deno.PointerValue | Uint8Array | null /* ptr */,
   lphAgentSession: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
-  return libTAPI32.lineCreateAgentSessionA(hLine, hAgent, util.pstrToFfi(lpszAgentPIN), dwWorkingAddressID, util.toPointer(lpGroupID), util.toPointer(lphAgentSession));
+  return libTAPI32_dll.lineCreateAgentSessionA(hLine, hAgent, util.pstrToFfi(lpszAgentPIN), dwWorkingAddressID, util.toPointer(lpGroupID), util.toPointer(lphAgentSession));
 }
 
 export function lineDeallocateCall(
   hCall: number /* u32 */,
 ): number /* i32 */ {
-  return libTAPI32.lineDeallocateCall(hCall);
+  return libTAPI32_dll.lineDeallocateCall(hCall);
 }
 
 export function lineDevSpecific(
@@ -7253,7 +7264,7 @@ export function lineDevSpecific(
   lpParams: Deno.PointerValue | Uint8Array | null /* ptr */,
   dwSize: number /* u32 */,
 ): number /* i32 */ {
-  return libTAPI32.lineDevSpecific(hLine, dwAddressID, hCall, util.toPointer(lpParams), dwSize);
+  return libTAPI32_dll.lineDevSpecific(hLine, dwAddressID, hCall, util.toPointer(lpParams), dwSize);
 }
 
 export function lineDevSpecificFeature(
@@ -7262,7 +7273,7 @@ export function lineDevSpecificFeature(
   lpParams: Deno.PointerValue | Uint8Array | null /* ptr */,
   dwSize: number /* u32 */,
 ): number /* i32 */ {
-  return libTAPI32.lineDevSpecificFeature(hLine, dwFeature, util.toPointer(lpParams), dwSize);
+  return libTAPI32_dll.lineDevSpecificFeature(hLine, dwFeature, util.toPointer(lpParams), dwSize);
 }
 
 export function lineDial(
@@ -7270,7 +7281,7 @@ export function lineDial(
   lpszDestAddress: string | null /* Windows.Win32.Foundation.PSTR */,
   dwCountryCode: number /* u32 */,
 ): number /* i32 */ {
-  return libTAPI32.lineDial(hCall, util.pstrToFfi(lpszDestAddress), dwCountryCode);
+  return libTAPI32_dll.lineDial(hCall, util.pstrToFfi(lpszDestAddress), dwCountryCode);
 }
 
 export function lineDialA(
@@ -7278,7 +7289,7 @@ export function lineDialA(
   lpszDestAddress: string | null /* Windows.Win32.Foundation.PSTR */,
   dwCountryCode: number /* u32 */,
 ): number /* i32 */ {
-  return libTAPI32.lineDialA(hCall, util.pstrToFfi(lpszDestAddress), dwCountryCode);
+  return libTAPI32_dll.lineDialA(hCall, util.pstrToFfi(lpszDestAddress), dwCountryCode);
 }
 
 export function lineDialW(
@@ -7286,7 +7297,7 @@ export function lineDialW(
   lpszDestAddress: string | null /* Windows.Win32.Foundation.PWSTR */,
   dwCountryCode: number /* u32 */,
 ): number /* i32 */ {
-  return libTAPI32.lineDialW(hCall, util.pwstrToFfi(lpszDestAddress), dwCountryCode);
+  return libTAPI32_dll.lineDialW(hCall, util.pwstrToFfi(lpszDestAddress), dwCountryCode);
 }
 
 export function lineDrop(
@@ -7294,7 +7305,7 @@ export function lineDrop(
   lpsUserUserInfo: string | null /* Windows.Win32.Foundation.PSTR */,
   dwSize: number /* u32 */,
 ): number /* i32 */ {
-  return libTAPI32.lineDrop(hCall, util.pstrToFfi(lpsUserUserInfo), dwSize);
+  return libTAPI32_dll.lineDrop(hCall, util.pstrToFfi(lpsUserUserInfo), dwSize);
 }
 
 export function lineForward(
@@ -7306,7 +7317,7 @@ export function lineForward(
   lphConsultCall: Deno.PointerValue | Uint8Array | null /* ptr */,
   lpCallParams: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
-  return libTAPI32.lineForward(hLine, bAllAddresses, dwAddressID, util.toPointer(lpForwardList), dwNumRingsNoAnswer, util.toPointer(lphConsultCall), util.toPointer(lpCallParams));
+  return libTAPI32_dll.lineForward(hLine, bAllAddresses, dwAddressID, util.toPointer(lpForwardList), dwNumRingsNoAnswer, util.toPointer(lphConsultCall), util.toPointer(lpCallParams));
 }
 
 export function lineForwardA(
@@ -7318,7 +7329,7 @@ export function lineForwardA(
   lphConsultCall: Deno.PointerValue | Uint8Array | null /* ptr */,
   lpCallParams: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
-  return libTAPI32.lineForwardA(hLine, bAllAddresses, dwAddressID, util.toPointer(lpForwardList), dwNumRingsNoAnswer, util.toPointer(lphConsultCall), util.toPointer(lpCallParams));
+  return libTAPI32_dll.lineForwardA(hLine, bAllAddresses, dwAddressID, util.toPointer(lpForwardList), dwNumRingsNoAnswer, util.toPointer(lphConsultCall), util.toPointer(lpCallParams));
 }
 
 export function lineForwardW(
@@ -7330,7 +7341,7 @@ export function lineForwardW(
   lphConsultCall: Deno.PointerValue | Uint8Array | null /* ptr */,
   lpCallParams: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
-  return libTAPI32.lineForwardW(hLine, bAllAddresses, dwAddressID, util.toPointer(lpForwardList), dwNumRingsNoAnswer, util.toPointer(lphConsultCall), util.toPointer(lpCallParams));
+  return libTAPI32_dll.lineForwardW(hLine, bAllAddresses, dwAddressID, util.toPointer(lpForwardList), dwNumRingsNoAnswer, util.toPointer(lphConsultCall), util.toPointer(lpCallParams));
 }
 
 export function lineGatherDigits(
@@ -7342,7 +7353,7 @@ export function lineGatherDigits(
   dwFirstDigitTimeout: number /* u32 */,
   dwInterDigitTimeout: number /* u32 */,
 ): number /* i32 */ {
-  return libTAPI32.lineGatherDigits(hCall, dwDigitModes, util.pstrToFfi(lpsDigits), dwNumDigits, util.pstrToFfi(lpszTerminationDigits), dwFirstDigitTimeout, dwInterDigitTimeout);
+  return libTAPI32_dll.lineGatherDigits(hCall, dwDigitModes, util.pstrToFfi(lpsDigits), dwNumDigits, util.pstrToFfi(lpszTerminationDigits), dwFirstDigitTimeout, dwInterDigitTimeout);
 }
 
 export function lineGatherDigitsA(
@@ -7354,7 +7365,7 @@ export function lineGatherDigitsA(
   dwFirstDigitTimeout: number /* u32 */,
   dwInterDigitTimeout: number /* u32 */,
 ): number /* i32 */ {
-  return libTAPI32.lineGatherDigitsA(hCall, dwDigitModes, util.pstrToFfi(lpsDigits), dwNumDigits, util.pstrToFfi(lpszTerminationDigits), dwFirstDigitTimeout, dwInterDigitTimeout);
+  return libTAPI32_dll.lineGatherDigitsA(hCall, dwDigitModes, util.pstrToFfi(lpsDigits), dwNumDigits, util.pstrToFfi(lpszTerminationDigits), dwFirstDigitTimeout, dwInterDigitTimeout);
 }
 
 export function lineGatherDigitsW(
@@ -7366,7 +7377,7 @@ export function lineGatherDigitsW(
   dwFirstDigitTimeout: number /* u32 */,
   dwInterDigitTimeout: number /* u32 */,
 ): number /* i32 */ {
-  return libTAPI32.lineGatherDigitsW(hCall, dwDigitModes, util.pwstrToFfi(lpsDigits), dwNumDigits, util.pwstrToFfi(lpszTerminationDigits), dwFirstDigitTimeout, dwInterDigitTimeout);
+  return libTAPI32_dll.lineGatherDigitsW(hCall, dwDigitModes, util.pwstrToFfi(lpsDigits), dwNumDigits, util.pwstrToFfi(lpszTerminationDigits), dwFirstDigitTimeout, dwInterDigitTimeout);
 }
 
 export function lineGenerateDigits(
@@ -7375,7 +7386,7 @@ export function lineGenerateDigits(
   lpszDigits: string | null /* Windows.Win32.Foundation.PSTR */,
   dwDuration: number /* u32 */,
 ): number /* i32 */ {
-  return libTAPI32.lineGenerateDigits(hCall, dwDigitMode, util.pstrToFfi(lpszDigits), dwDuration);
+  return libTAPI32_dll.lineGenerateDigits(hCall, dwDigitMode, util.pstrToFfi(lpszDigits), dwDuration);
 }
 
 export function lineGenerateDigitsA(
@@ -7384,7 +7395,7 @@ export function lineGenerateDigitsA(
   lpszDigits: string | null /* Windows.Win32.Foundation.PSTR */,
   dwDuration: number /* u32 */,
 ): number /* i32 */ {
-  return libTAPI32.lineGenerateDigitsA(hCall, dwDigitMode, util.pstrToFfi(lpszDigits), dwDuration);
+  return libTAPI32_dll.lineGenerateDigitsA(hCall, dwDigitMode, util.pstrToFfi(lpszDigits), dwDuration);
 }
 
 export function lineGenerateDigitsW(
@@ -7393,7 +7404,7 @@ export function lineGenerateDigitsW(
   lpszDigits: string | null /* Windows.Win32.Foundation.PWSTR */,
   dwDuration: number /* u32 */,
 ): number /* i32 */ {
-  return libTAPI32.lineGenerateDigitsW(hCall, dwDigitMode, util.pwstrToFfi(lpszDigits), dwDuration);
+  return libTAPI32_dll.lineGenerateDigitsW(hCall, dwDigitMode, util.pwstrToFfi(lpszDigits), dwDuration);
 }
 
 export function lineGenerateTone(
@@ -7403,7 +7414,7 @@ export function lineGenerateTone(
   dwNumTones: number /* u32 */,
   lpTones: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
-  return libTAPI32.lineGenerateTone(hCall, dwToneMode, dwDuration, dwNumTones, util.toPointer(lpTones));
+  return libTAPI32_dll.lineGenerateTone(hCall, dwToneMode, dwDuration, dwNumTones, util.toPointer(lpTones));
 }
 
 export function lineGetAddressCaps(
@@ -7414,7 +7425,7 @@ export function lineGetAddressCaps(
   dwExtVersion: number /* u32 */,
   lpAddressCaps: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
-  return libTAPI32.lineGetAddressCaps(hLineApp, dwDeviceID, dwAddressID, dwAPIVersion, dwExtVersion, util.toPointer(lpAddressCaps));
+  return libTAPI32_dll.lineGetAddressCaps(hLineApp, dwDeviceID, dwAddressID, dwAPIVersion, dwExtVersion, util.toPointer(lpAddressCaps));
 }
 
 export function lineGetAddressCapsA(
@@ -7425,7 +7436,7 @@ export function lineGetAddressCapsA(
   dwExtVersion: number /* u32 */,
   lpAddressCaps: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
-  return libTAPI32.lineGetAddressCapsA(hLineApp, dwDeviceID, dwAddressID, dwAPIVersion, dwExtVersion, util.toPointer(lpAddressCaps));
+  return libTAPI32_dll.lineGetAddressCapsA(hLineApp, dwDeviceID, dwAddressID, dwAPIVersion, dwExtVersion, util.toPointer(lpAddressCaps));
 }
 
 export function lineGetAddressCapsW(
@@ -7436,7 +7447,7 @@ export function lineGetAddressCapsW(
   dwExtVersion: number /* u32 */,
   lpAddressCaps: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
-  return libTAPI32.lineGetAddressCapsW(hLineApp, dwDeviceID, dwAddressID, dwAPIVersion, dwExtVersion, util.toPointer(lpAddressCaps));
+  return libTAPI32_dll.lineGetAddressCapsW(hLineApp, dwDeviceID, dwAddressID, dwAPIVersion, dwExtVersion, util.toPointer(lpAddressCaps));
 }
 
 export function lineGetAddressID(
@@ -7446,7 +7457,7 @@ export function lineGetAddressID(
   lpsAddress: string | null /* Windows.Win32.Foundation.PSTR */,
   dwSize: number /* u32 */,
 ): number /* i32 */ {
-  return libTAPI32.lineGetAddressID(hLine, util.toPointer(lpdwAddressID), dwAddressMode, util.pstrToFfi(lpsAddress), dwSize);
+  return libTAPI32_dll.lineGetAddressID(hLine, util.toPointer(lpdwAddressID), dwAddressMode, util.pstrToFfi(lpsAddress), dwSize);
 }
 
 export function lineGetAddressIDA(
@@ -7456,7 +7467,7 @@ export function lineGetAddressIDA(
   lpsAddress: string | null /* Windows.Win32.Foundation.PSTR */,
   dwSize: number /* u32 */,
 ): number /* i32 */ {
-  return libTAPI32.lineGetAddressIDA(hLine, util.toPointer(lpdwAddressID), dwAddressMode, util.pstrToFfi(lpsAddress), dwSize);
+  return libTAPI32_dll.lineGetAddressIDA(hLine, util.toPointer(lpdwAddressID), dwAddressMode, util.pstrToFfi(lpsAddress), dwSize);
 }
 
 export function lineGetAddressIDW(
@@ -7466,7 +7477,7 @@ export function lineGetAddressIDW(
   lpsAddress: string | null /* Windows.Win32.Foundation.PWSTR */,
   dwSize: number /* u32 */,
 ): number /* i32 */ {
-  return libTAPI32.lineGetAddressIDW(hLine, util.toPointer(lpdwAddressID), dwAddressMode, util.pwstrToFfi(lpsAddress), dwSize);
+  return libTAPI32_dll.lineGetAddressIDW(hLine, util.toPointer(lpdwAddressID), dwAddressMode, util.pwstrToFfi(lpsAddress), dwSize);
 }
 
 export function lineGetAddressStatus(
@@ -7474,7 +7485,7 @@ export function lineGetAddressStatus(
   dwAddressID: number /* u32 */,
   lpAddressStatus: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
-  return libTAPI32.lineGetAddressStatus(hLine, dwAddressID, util.toPointer(lpAddressStatus));
+  return libTAPI32_dll.lineGetAddressStatus(hLine, dwAddressID, util.toPointer(lpAddressStatus));
 }
 
 export function lineGetAddressStatusA(
@@ -7482,7 +7493,7 @@ export function lineGetAddressStatusA(
   dwAddressID: number /* u32 */,
   lpAddressStatus: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
-  return libTAPI32.lineGetAddressStatusA(hLine, dwAddressID, util.toPointer(lpAddressStatus));
+  return libTAPI32_dll.lineGetAddressStatusA(hLine, dwAddressID, util.toPointer(lpAddressStatus));
 }
 
 export function lineGetAddressStatusW(
@@ -7490,7 +7501,7 @@ export function lineGetAddressStatusW(
   dwAddressID: number /* u32 */,
   lpAddressStatus: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
-  return libTAPI32.lineGetAddressStatusW(hLine, dwAddressID, util.toPointer(lpAddressStatus));
+  return libTAPI32_dll.lineGetAddressStatusW(hLine, dwAddressID, util.toPointer(lpAddressStatus));
 }
 
 export function lineGetAgentActivityListA(
@@ -7498,7 +7509,7 @@ export function lineGetAgentActivityListA(
   dwAddressID: number /* u32 */,
   lpAgentActivityList: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
-  return libTAPI32.lineGetAgentActivityListA(hLine, dwAddressID, util.toPointer(lpAgentActivityList));
+  return libTAPI32_dll.lineGetAgentActivityListA(hLine, dwAddressID, util.toPointer(lpAgentActivityList));
 }
 
 export function lineGetAgentActivityListW(
@@ -7506,7 +7517,7 @@ export function lineGetAgentActivityListW(
   dwAddressID: number /* u32 */,
   lpAgentActivityList: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
-  return libTAPI32.lineGetAgentActivityListW(hLine, dwAddressID, util.toPointer(lpAgentActivityList));
+  return libTAPI32_dll.lineGetAgentActivityListW(hLine, dwAddressID, util.toPointer(lpAgentActivityList));
 }
 
 export function lineGetAgentCapsA(
@@ -7516,7 +7527,7 @@ export function lineGetAgentCapsA(
   dwAppAPIVersion: number /* u32 */,
   lpAgentCaps: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
-  return libTAPI32.lineGetAgentCapsA(hLineApp, dwDeviceID, dwAddressID, dwAppAPIVersion, util.toPointer(lpAgentCaps));
+  return libTAPI32_dll.lineGetAgentCapsA(hLineApp, dwDeviceID, dwAddressID, dwAppAPIVersion, util.toPointer(lpAgentCaps));
 }
 
 export function lineGetAgentCapsW(
@@ -7526,7 +7537,7 @@ export function lineGetAgentCapsW(
   dwAppAPIVersion: number /* u32 */,
   lpAgentCaps: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
-  return libTAPI32.lineGetAgentCapsW(hLineApp, dwDeviceID, dwAddressID, dwAppAPIVersion, util.toPointer(lpAgentCaps));
+  return libTAPI32_dll.lineGetAgentCapsW(hLineApp, dwDeviceID, dwAddressID, dwAppAPIVersion, util.toPointer(lpAgentCaps));
 }
 
 export function lineGetAgentGroupListA(
@@ -7534,7 +7545,7 @@ export function lineGetAgentGroupListA(
   dwAddressID: number /* u32 */,
   lpAgentGroupList: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
-  return libTAPI32.lineGetAgentGroupListA(hLine, dwAddressID, util.toPointer(lpAgentGroupList));
+  return libTAPI32_dll.lineGetAgentGroupListA(hLine, dwAddressID, util.toPointer(lpAgentGroupList));
 }
 
 export function lineGetAgentGroupListW(
@@ -7542,7 +7553,7 @@ export function lineGetAgentGroupListW(
   dwAddressID: number /* u32 */,
   lpAgentGroupList: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
-  return libTAPI32.lineGetAgentGroupListW(hLine, dwAddressID, util.toPointer(lpAgentGroupList));
+  return libTAPI32_dll.lineGetAgentGroupListW(hLine, dwAddressID, util.toPointer(lpAgentGroupList));
 }
 
 export function lineGetAgentInfo(
@@ -7550,7 +7561,7 @@ export function lineGetAgentInfo(
   hAgent: number /* u32 */,
   lpAgentInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
-  return libTAPI32.lineGetAgentInfo(hLine, hAgent, util.toPointer(lpAgentInfo));
+  return libTAPI32_dll.lineGetAgentInfo(hLine, hAgent, util.toPointer(lpAgentInfo));
 }
 
 export function lineGetAgentSessionInfo(
@@ -7558,7 +7569,7 @@ export function lineGetAgentSessionInfo(
   hAgentSession: number /* u32 */,
   lpAgentSessionInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
-  return libTAPI32.lineGetAgentSessionInfo(hLine, hAgentSession, util.toPointer(lpAgentSessionInfo));
+  return libTAPI32_dll.lineGetAgentSessionInfo(hLine, hAgentSession, util.toPointer(lpAgentSessionInfo));
 }
 
 export function lineGetAgentSessionList(
@@ -7566,7 +7577,7 @@ export function lineGetAgentSessionList(
   hAgent: number /* u32 */,
   lpAgentSessionList: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
-  return libTAPI32.lineGetAgentSessionList(hLine, hAgent, util.toPointer(lpAgentSessionList));
+  return libTAPI32_dll.lineGetAgentSessionList(hLine, hAgent, util.toPointer(lpAgentSessionList));
 }
 
 export function lineGetAgentStatusA(
@@ -7574,7 +7585,7 @@ export function lineGetAgentStatusA(
   dwAddressID: number /* u32 */,
   lpAgentStatus: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
-  return libTAPI32.lineGetAgentStatusA(hLine, dwAddressID, util.toPointer(lpAgentStatus));
+  return libTAPI32_dll.lineGetAgentStatusA(hLine, dwAddressID, util.toPointer(lpAgentStatus));
 }
 
 export function lineGetAgentStatusW(
@@ -7582,7 +7593,7 @@ export function lineGetAgentStatusW(
   dwAddressID: number /* u32 */,
   lpAgentStatus: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
-  return libTAPI32.lineGetAgentStatusW(hLine, dwAddressID, util.toPointer(lpAgentStatus));
+  return libTAPI32_dll.lineGetAgentStatusW(hLine, dwAddressID, util.toPointer(lpAgentStatus));
 }
 
 export function lineGetAppPriority(
@@ -7593,7 +7604,7 @@ export function lineGetAppPriority(
   lpExtensionName: Deno.PointerValue | Uint8Array | null /* ptr */,
   lpdwPriority: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
-  return libTAPI32.lineGetAppPriority(util.pstrToFfi(lpszAppFilename), dwMediaMode, util.toPointer(lpExtensionID), dwRequestMode, util.toPointer(lpExtensionName), util.toPointer(lpdwPriority));
+  return libTAPI32_dll.lineGetAppPriority(util.pstrToFfi(lpszAppFilename), dwMediaMode, util.toPointer(lpExtensionID), dwRequestMode, util.toPointer(lpExtensionName), util.toPointer(lpdwPriority));
 }
 
 export function lineGetAppPriorityA(
@@ -7604,7 +7615,7 @@ export function lineGetAppPriorityA(
   lpExtensionName: Deno.PointerValue | Uint8Array | null /* ptr */,
   lpdwPriority: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
-  return libTAPI32.lineGetAppPriorityA(util.pstrToFfi(lpszAppFilename), dwMediaMode, util.toPointer(lpExtensionID), dwRequestMode, util.toPointer(lpExtensionName), util.toPointer(lpdwPriority));
+  return libTAPI32_dll.lineGetAppPriorityA(util.pstrToFfi(lpszAppFilename), dwMediaMode, util.toPointer(lpExtensionID), dwRequestMode, util.toPointer(lpExtensionName), util.toPointer(lpdwPriority));
 }
 
 export function lineGetAppPriorityW(
@@ -7615,42 +7626,42 @@ export function lineGetAppPriorityW(
   lpExtensionName: Deno.PointerValue | Uint8Array | null /* ptr */,
   lpdwPriority: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
-  return libTAPI32.lineGetAppPriorityW(util.pwstrToFfi(lpszAppFilename), dwMediaMode, util.toPointer(lpExtensionID), dwRequestMode, util.toPointer(lpExtensionName), util.toPointer(lpdwPriority));
+  return libTAPI32_dll.lineGetAppPriorityW(util.pwstrToFfi(lpszAppFilename), dwMediaMode, util.toPointer(lpExtensionID), dwRequestMode, util.toPointer(lpExtensionName), util.toPointer(lpdwPriority));
 }
 
 export function lineGetCallInfo(
   hCall: number /* u32 */,
   lpCallInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
-  return libTAPI32.lineGetCallInfo(hCall, util.toPointer(lpCallInfo));
+  return libTAPI32_dll.lineGetCallInfo(hCall, util.toPointer(lpCallInfo));
 }
 
 export function lineGetCallInfoA(
   hCall: number /* u32 */,
   lpCallInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
-  return libTAPI32.lineGetCallInfoA(hCall, util.toPointer(lpCallInfo));
+  return libTAPI32_dll.lineGetCallInfoA(hCall, util.toPointer(lpCallInfo));
 }
 
 export function lineGetCallInfoW(
   hCall: number /* u32 */,
   lpCallInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
-  return libTAPI32.lineGetCallInfoW(hCall, util.toPointer(lpCallInfo));
+  return libTAPI32_dll.lineGetCallInfoW(hCall, util.toPointer(lpCallInfo));
 }
 
 export function lineGetCallStatus(
   hCall: number /* u32 */,
   lpCallStatus: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
-  return libTAPI32.lineGetCallStatus(hCall, util.toPointer(lpCallStatus));
+  return libTAPI32_dll.lineGetCallStatus(hCall, util.toPointer(lpCallStatus));
 }
 
 export function lineGetConfRelatedCalls(
   hCall: number /* u32 */,
   lpCallList: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
-  return libTAPI32.lineGetConfRelatedCalls(hCall, util.toPointer(lpCallList));
+  return libTAPI32_dll.lineGetConfRelatedCalls(hCall, util.toPointer(lpCallList));
 }
 
 export function lineGetCountry(
@@ -7658,7 +7669,7 @@ export function lineGetCountry(
   dwAPIVersion: number /* u32 */,
   lpLineCountryList: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
-  return libTAPI32.lineGetCountry(dwCountryID, dwAPIVersion, util.toPointer(lpLineCountryList));
+  return libTAPI32_dll.lineGetCountry(dwCountryID, dwAPIVersion, util.toPointer(lpLineCountryList));
 }
 
 export function lineGetCountryA(
@@ -7666,7 +7677,7 @@ export function lineGetCountryA(
   dwAPIVersion: number /* u32 */,
   lpLineCountryList: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
-  return libTAPI32.lineGetCountryA(dwCountryID, dwAPIVersion, util.toPointer(lpLineCountryList));
+  return libTAPI32_dll.lineGetCountryA(dwCountryID, dwAPIVersion, util.toPointer(lpLineCountryList));
 }
 
 export function lineGetCountryW(
@@ -7674,7 +7685,7 @@ export function lineGetCountryW(
   dwAPIVersion: number /* u32 */,
   lpLineCountryList: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
-  return libTAPI32.lineGetCountryW(dwCountryID, dwAPIVersion, util.toPointer(lpLineCountryList));
+  return libTAPI32_dll.lineGetCountryW(dwCountryID, dwAPIVersion, util.toPointer(lpLineCountryList));
 }
 
 export function lineGetDevCaps(
@@ -7684,7 +7695,7 @@ export function lineGetDevCaps(
   dwExtVersion: number /* u32 */,
   lpLineDevCaps: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
-  return libTAPI32.lineGetDevCaps(hLineApp, dwDeviceID, dwAPIVersion, dwExtVersion, util.toPointer(lpLineDevCaps));
+  return libTAPI32_dll.lineGetDevCaps(hLineApp, dwDeviceID, dwAPIVersion, dwExtVersion, util.toPointer(lpLineDevCaps));
 }
 
 export function lineGetDevCapsA(
@@ -7694,7 +7705,7 @@ export function lineGetDevCapsA(
   dwExtVersion: number /* u32 */,
   lpLineDevCaps: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
-  return libTAPI32.lineGetDevCapsA(hLineApp, dwDeviceID, dwAPIVersion, dwExtVersion, util.toPointer(lpLineDevCaps));
+  return libTAPI32_dll.lineGetDevCapsA(hLineApp, dwDeviceID, dwAPIVersion, dwExtVersion, util.toPointer(lpLineDevCaps));
 }
 
 export function lineGetDevCapsW(
@@ -7704,7 +7715,7 @@ export function lineGetDevCapsW(
   dwExtVersion: number /* u32 */,
   lpLineDevCaps: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
-  return libTAPI32.lineGetDevCapsW(hLineApp, dwDeviceID, dwAPIVersion, dwExtVersion, util.toPointer(lpLineDevCaps));
+  return libTAPI32_dll.lineGetDevCapsW(hLineApp, dwDeviceID, dwAPIVersion, dwExtVersion, util.toPointer(lpLineDevCaps));
 }
 
 export function lineGetDevConfig(
@@ -7712,7 +7723,7 @@ export function lineGetDevConfig(
   lpDeviceConfig: Deno.PointerValue | Uint8Array | null /* ptr */,
   lpszDeviceClass: string | null /* Windows.Win32.Foundation.PSTR */,
 ): number /* i32 */ {
-  return libTAPI32.lineGetDevConfig(dwDeviceID, util.toPointer(lpDeviceConfig), util.pstrToFfi(lpszDeviceClass));
+  return libTAPI32_dll.lineGetDevConfig(dwDeviceID, util.toPointer(lpDeviceConfig), util.pstrToFfi(lpszDeviceClass));
 }
 
 export function lineGetDevConfigA(
@@ -7720,7 +7731,7 @@ export function lineGetDevConfigA(
   lpDeviceConfig: Deno.PointerValue | Uint8Array | null /* ptr */,
   lpszDeviceClass: string | null /* Windows.Win32.Foundation.PSTR */,
 ): number /* i32 */ {
-  return libTAPI32.lineGetDevConfigA(dwDeviceID, util.toPointer(lpDeviceConfig), util.pstrToFfi(lpszDeviceClass));
+  return libTAPI32_dll.lineGetDevConfigA(dwDeviceID, util.toPointer(lpDeviceConfig), util.pstrToFfi(lpszDeviceClass));
 }
 
 export function lineGetDevConfigW(
@@ -7728,21 +7739,21 @@ export function lineGetDevConfigW(
   lpDeviceConfig: Deno.PointerValue | Uint8Array | null /* ptr */,
   lpszDeviceClass: string | null /* Windows.Win32.Foundation.PWSTR */,
 ): number /* i32 */ {
-  return libTAPI32.lineGetDevConfigW(dwDeviceID, util.toPointer(lpDeviceConfig), util.pwstrToFfi(lpszDeviceClass));
+  return libTAPI32_dll.lineGetDevConfigW(dwDeviceID, util.toPointer(lpDeviceConfig), util.pwstrToFfi(lpszDeviceClass));
 }
 
 export function lineGetGroupListA(
   hLine: number /* u32 */,
   lpGroupList: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
-  return libTAPI32.lineGetGroupListA(hLine, util.toPointer(lpGroupList));
+  return libTAPI32_dll.lineGetGroupListA(hLine, util.toPointer(lpGroupList));
 }
 
 export function lineGetGroupListW(
   hLine: number /* u32 */,
   lpGroupList: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
-  return libTAPI32.lineGetGroupListW(hLine, util.toPointer(lpGroupList));
+  return libTAPI32_dll.lineGetGroupListW(hLine, util.toPointer(lpGroupList));
 }
 
 export function lineGetIcon(
@@ -7750,7 +7761,7 @@ export function lineGetIcon(
   lpszDeviceClass: string | null /* Windows.Win32.Foundation.PSTR */,
   lphIcon: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
-  return libTAPI32.lineGetIcon(dwDeviceID, util.pstrToFfi(lpszDeviceClass), util.toPointer(lphIcon));
+  return libTAPI32_dll.lineGetIcon(dwDeviceID, util.pstrToFfi(lpszDeviceClass), util.toPointer(lphIcon));
 }
 
 export function lineGetIconA(
@@ -7758,7 +7769,7 @@ export function lineGetIconA(
   lpszDeviceClass: string | null /* Windows.Win32.Foundation.PSTR */,
   lphIcon: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
-  return libTAPI32.lineGetIconA(dwDeviceID, util.pstrToFfi(lpszDeviceClass), util.toPointer(lphIcon));
+  return libTAPI32_dll.lineGetIconA(dwDeviceID, util.pstrToFfi(lpszDeviceClass), util.toPointer(lphIcon));
 }
 
 export function lineGetIconW(
@@ -7766,7 +7777,7 @@ export function lineGetIconW(
   lpszDeviceClass: string | null /* Windows.Win32.Foundation.PWSTR */,
   lphIcon: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
-  return libTAPI32.lineGetIconW(dwDeviceID, util.pwstrToFfi(lpszDeviceClass), util.toPointer(lphIcon));
+  return libTAPI32_dll.lineGetIconW(dwDeviceID, util.pwstrToFfi(lpszDeviceClass), util.toPointer(lphIcon));
 }
 
 export function lineGetID(
@@ -7777,7 +7788,7 @@ export function lineGetID(
   lpDeviceID: Deno.PointerValue | Uint8Array | null /* ptr */,
   lpszDeviceClass: string | null /* Windows.Win32.Foundation.PSTR */,
 ): number /* i32 */ {
-  return libTAPI32.lineGetID(hLine, dwAddressID, hCall, dwSelect, util.toPointer(lpDeviceID), util.pstrToFfi(lpszDeviceClass));
+  return libTAPI32_dll.lineGetID(hLine, dwAddressID, hCall, dwSelect, util.toPointer(lpDeviceID), util.pstrToFfi(lpszDeviceClass));
 }
 
 export function lineGetIDA(
@@ -7788,7 +7799,7 @@ export function lineGetIDA(
   lpDeviceID: Deno.PointerValue | Uint8Array | null /* ptr */,
   lpszDeviceClass: string | null /* Windows.Win32.Foundation.PSTR */,
 ): number /* i32 */ {
-  return libTAPI32.lineGetIDA(hLine, dwAddressID, hCall, dwSelect, util.toPointer(lpDeviceID), util.pstrToFfi(lpszDeviceClass));
+  return libTAPI32_dll.lineGetIDA(hLine, dwAddressID, hCall, dwSelect, util.toPointer(lpDeviceID), util.pstrToFfi(lpszDeviceClass));
 }
 
 export function lineGetIDW(
@@ -7799,28 +7810,28 @@ export function lineGetIDW(
   lpDeviceID: Deno.PointerValue | Uint8Array | null /* ptr */,
   lpszDeviceClass: string | null /* Windows.Win32.Foundation.PWSTR */,
 ): number /* i32 */ {
-  return libTAPI32.lineGetIDW(hLine, dwAddressID, hCall, dwSelect, util.toPointer(lpDeviceID), util.pwstrToFfi(lpszDeviceClass));
+  return libTAPI32_dll.lineGetIDW(hLine, dwAddressID, hCall, dwSelect, util.toPointer(lpDeviceID), util.pwstrToFfi(lpszDeviceClass));
 }
 
 export function lineGetLineDevStatus(
   hLine: number /* u32 */,
   lpLineDevStatus: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
-  return libTAPI32.lineGetLineDevStatus(hLine, util.toPointer(lpLineDevStatus));
+  return libTAPI32_dll.lineGetLineDevStatus(hLine, util.toPointer(lpLineDevStatus));
 }
 
 export function lineGetLineDevStatusA(
   hLine: number /* u32 */,
   lpLineDevStatus: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
-  return libTAPI32.lineGetLineDevStatusA(hLine, util.toPointer(lpLineDevStatus));
+  return libTAPI32_dll.lineGetLineDevStatusA(hLine, util.toPointer(lpLineDevStatus));
 }
 
 export function lineGetLineDevStatusW(
   hLine: number /* u32 */,
   lpLineDevStatus: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
-  return libTAPI32.lineGetLineDevStatusW(hLine, util.toPointer(lpLineDevStatus));
+  return libTAPI32_dll.lineGetLineDevStatusW(hLine, util.toPointer(lpLineDevStatus));
 }
 
 export function lineGetMessage(
@@ -7828,7 +7839,7 @@ export function lineGetMessage(
   lpMessage: Deno.PointerValue | Uint8Array | null /* ptr */,
   dwTimeout: number /* u32 */,
 ): number /* i32 */ {
-  return libTAPI32.lineGetMessage(hLineApp, util.toPointer(lpMessage), dwTimeout);
+  return libTAPI32_dll.lineGetMessage(hLineApp, util.toPointer(lpMessage), dwTimeout);
 }
 
 export function lineGetNewCalls(
@@ -7837,7 +7848,7 @@ export function lineGetNewCalls(
   dwSelect: number /* u32 */,
   lpCallList: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
-  return libTAPI32.lineGetNewCalls(hLine, dwAddressID, dwSelect, util.toPointer(lpCallList));
+  return libTAPI32_dll.lineGetNewCalls(hLine, dwAddressID, dwSelect, util.toPointer(lpCallList));
 }
 
 export function lineGetNumRings(
@@ -7845,28 +7856,28 @@ export function lineGetNumRings(
   dwAddressID: number /* u32 */,
   lpdwNumRings: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
-  return libTAPI32.lineGetNumRings(hLine, dwAddressID, util.toPointer(lpdwNumRings));
+  return libTAPI32_dll.lineGetNumRings(hLine, dwAddressID, util.toPointer(lpdwNumRings));
 }
 
 export function lineGetProviderList(
   dwAPIVersion: number /* u32 */,
   lpProviderList: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
-  return libTAPI32.lineGetProviderList(dwAPIVersion, util.toPointer(lpProviderList));
+  return libTAPI32_dll.lineGetProviderList(dwAPIVersion, util.toPointer(lpProviderList));
 }
 
 export function lineGetProviderListA(
   dwAPIVersion: number /* u32 */,
   lpProviderList: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
-  return libTAPI32.lineGetProviderListA(dwAPIVersion, util.toPointer(lpProviderList));
+  return libTAPI32_dll.lineGetProviderListA(dwAPIVersion, util.toPointer(lpProviderList));
 }
 
 export function lineGetProviderListW(
   dwAPIVersion: number /* u32 */,
   lpProviderList: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
-  return libTAPI32.lineGetProviderListW(dwAPIVersion, util.toPointer(lpProviderList));
+  return libTAPI32_dll.lineGetProviderListW(dwAPIVersion, util.toPointer(lpProviderList));
 }
 
 export function lineGetProxyStatus(
@@ -7875,7 +7886,7 @@ export function lineGetProxyStatus(
   dwAppAPIVersion: number /* u32 */,
   lpLineProxyReqestList: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
-  return libTAPI32.lineGetProxyStatus(hLineApp, dwDeviceID, dwAppAPIVersion, util.toPointer(lpLineProxyReqestList));
+  return libTAPI32_dll.lineGetProxyStatus(hLineApp, dwDeviceID, dwAppAPIVersion, util.toPointer(lpLineProxyReqestList));
 }
 
 export function lineGetQueueInfo(
@@ -7883,7 +7894,7 @@ export function lineGetQueueInfo(
   dwQueueID: number /* u32 */,
   lpLineQueueInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
-  return libTAPI32.lineGetQueueInfo(hLine, dwQueueID, util.toPointer(lpLineQueueInfo));
+  return libTAPI32_dll.lineGetQueueInfo(hLine, dwQueueID, util.toPointer(lpLineQueueInfo));
 }
 
 export function lineGetQueueListA(
@@ -7891,7 +7902,7 @@ export function lineGetQueueListA(
   lpGroupID: Deno.PointerValue | Uint8Array | null /* ptr */,
   lpQueueList: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
-  return libTAPI32.lineGetQueueListA(hLine, util.toPointer(lpGroupID), util.toPointer(lpQueueList));
+  return libTAPI32_dll.lineGetQueueListA(hLine, util.toPointer(lpGroupID), util.toPointer(lpQueueList));
 }
 
 export function lineGetQueueListW(
@@ -7899,7 +7910,7 @@ export function lineGetQueueListW(
   lpGroupID: Deno.PointerValue | Uint8Array | null /* ptr */,
   lpQueueList: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
-  return libTAPI32.lineGetQueueListW(hLine, util.toPointer(lpGroupID), util.toPointer(lpQueueList));
+  return libTAPI32_dll.lineGetQueueListW(hLine, util.toPointer(lpGroupID), util.toPointer(lpQueueList));
 }
 
 export function lineGetRequest(
@@ -7907,7 +7918,7 @@ export function lineGetRequest(
   dwRequestMode: number /* u32 */,
   lpRequestBuffer: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
-  return libTAPI32.lineGetRequest(hLineApp, dwRequestMode, util.toPointer(lpRequestBuffer));
+  return libTAPI32_dll.lineGetRequest(hLineApp, dwRequestMode, util.toPointer(lpRequestBuffer));
 }
 
 export function lineGetRequestA(
@@ -7915,7 +7926,7 @@ export function lineGetRequestA(
   dwRequestMode: number /* u32 */,
   lpRequestBuffer: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
-  return libTAPI32.lineGetRequestA(hLineApp, dwRequestMode, util.toPointer(lpRequestBuffer));
+  return libTAPI32_dll.lineGetRequestA(hLineApp, dwRequestMode, util.toPointer(lpRequestBuffer));
 }
 
 export function lineGetRequestW(
@@ -7923,7 +7934,7 @@ export function lineGetRequestW(
   dwRequestMode: number /* u32 */,
   lpRequestBuffer: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
-  return libTAPI32.lineGetRequestW(hLineApp, dwRequestMode, util.toPointer(lpRequestBuffer));
+  return libTAPI32_dll.lineGetRequestW(hLineApp, dwRequestMode, util.toPointer(lpRequestBuffer));
 }
 
 export function lineGetStatusMessages(
@@ -7931,7 +7942,7 @@ export function lineGetStatusMessages(
   lpdwLineStates: Deno.PointerValue | Uint8Array | null /* ptr */,
   lpdwAddressStates: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
-  return libTAPI32.lineGetStatusMessages(hLine, util.toPointer(lpdwLineStates), util.toPointer(lpdwAddressStates));
+  return libTAPI32_dll.lineGetStatusMessages(hLine, util.toPointer(lpdwLineStates), util.toPointer(lpdwAddressStates));
 }
 
 export function lineGetTranslateCaps(
@@ -7939,7 +7950,7 @@ export function lineGetTranslateCaps(
   dwAPIVersion: number /* u32 */,
   lpTranslateCaps: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
-  return libTAPI32.lineGetTranslateCaps(hLineApp, dwAPIVersion, util.toPointer(lpTranslateCaps));
+  return libTAPI32_dll.lineGetTranslateCaps(hLineApp, dwAPIVersion, util.toPointer(lpTranslateCaps));
 }
 
 export function lineGetTranslateCapsA(
@@ -7947,7 +7958,7 @@ export function lineGetTranslateCapsA(
   dwAPIVersion: number /* u32 */,
   lpTranslateCaps: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
-  return libTAPI32.lineGetTranslateCapsA(hLineApp, dwAPIVersion, util.toPointer(lpTranslateCaps));
+  return libTAPI32_dll.lineGetTranslateCapsA(hLineApp, dwAPIVersion, util.toPointer(lpTranslateCaps));
 }
 
 export function lineGetTranslateCapsW(
@@ -7955,7 +7966,7 @@ export function lineGetTranslateCapsW(
   dwAPIVersion: number /* u32 */,
   lpTranslateCaps: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
-  return libTAPI32.lineGetTranslateCapsW(hLineApp, dwAPIVersion, util.toPointer(lpTranslateCaps));
+  return libTAPI32_dll.lineGetTranslateCapsW(hLineApp, dwAPIVersion, util.toPointer(lpTranslateCaps));
 }
 
 export function lineHandoff(
@@ -7963,7 +7974,7 @@ export function lineHandoff(
   lpszFileName: string | null /* Windows.Win32.Foundation.PSTR */,
   dwMediaMode: number /* u32 */,
 ): number /* i32 */ {
-  return libTAPI32.lineHandoff(hCall, util.pstrToFfi(lpszFileName), dwMediaMode);
+  return libTAPI32_dll.lineHandoff(hCall, util.pstrToFfi(lpszFileName), dwMediaMode);
 }
 
 export function lineHandoffA(
@@ -7971,7 +7982,7 @@ export function lineHandoffA(
   lpszFileName: string | null /* Windows.Win32.Foundation.PSTR */,
   dwMediaMode: number /* u32 */,
 ): number /* i32 */ {
-  return libTAPI32.lineHandoffA(hCall, util.pstrToFfi(lpszFileName), dwMediaMode);
+  return libTAPI32_dll.lineHandoffA(hCall, util.pstrToFfi(lpszFileName), dwMediaMode);
 }
 
 export function lineHandoffW(
@@ -7979,13 +7990,13 @@ export function lineHandoffW(
   lpszFileName: string | null /* Windows.Win32.Foundation.PWSTR */,
   dwMediaMode: number /* u32 */,
 ): number /* i32 */ {
-  return libTAPI32.lineHandoffW(hCall, util.pwstrToFfi(lpszFileName), dwMediaMode);
+  return libTAPI32_dll.lineHandoffW(hCall, util.pwstrToFfi(lpszFileName), dwMediaMode);
 }
 
 export function lineHold(
   hCall: number /* u32 */,
 ): number /* i32 */ {
-  return libTAPI32.lineHold(hCall);
+  return libTAPI32_dll.lineHold(hCall);
 }
 
 export function lineInitialize(
@@ -7995,7 +8006,7 @@ export function lineInitialize(
   lpszAppName: string | null /* Windows.Win32.Foundation.PSTR */,
   lpdwNumDevs: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
-  return libTAPI32.lineInitialize(util.toPointer(lphLineApp), util.toPointer(hInstance), util.toPointer(lpfnCallback), util.pstrToFfi(lpszAppName), util.toPointer(lpdwNumDevs));
+  return libTAPI32_dll.lineInitialize(util.toPointer(lphLineApp), util.toPointer(hInstance), util.toPointer(lpfnCallback), util.pstrToFfi(lpszAppName), util.toPointer(lpdwNumDevs));
 }
 
 export function lineInitializeExA(
@@ -8007,7 +8018,7 @@ export function lineInitializeExA(
   lpdwAPIVersion: Deno.PointerValue | Uint8Array | null /* ptr */,
   lpLineInitializeExParams: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
-  return libTAPI32.lineInitializeExA(util.toPointer(lphLineApp), util.toPointer(hInstance), util.toPointer(lpfnCallback), util.pstrToFfi(lpszFriendlyAppName), util.toPointer(lpdwNumDevs), util.toPointer(lpdwAPIVersion), util.toPointer(lpLineInitializeExParams));
+  return libTAPI32_dll.lineInitializeExA(util.toPointer(lphLineApp), util.toPointer(hInstance), util.toPointer(lpfnCallback), util.pstrToFfi(lpszFriendlyAppName), util.toPointer(lpdwNumDevs), util.toPointer(lpdwAPIVersion), util.toPointer(lpLineInitializeExParams));
 }
 
 export function lineInitializeExW(
@@ -8019,7 +8030,7 @@ export function lineInitializeExW(
   lpdwAPIVersion: Deno.PointerValue | Uint8Array | null /* ptr */,
   lpLineInitializeExParams: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
-  return libTAPI32.lineInitializeExW(util.toPointer(lphLineApp), util.toPointer(hInstance), util.toPointer(lpfnCallback), util.pwstrToFfi(lpszFriendlyAppName), util.toPointer(lpdwNumDevs), util.toPointer(lpdwAPIVersion), util.toPointer(lpLineInitializeExParams));
+  return libTAPI32_dll.lineInitializeExW(util.toPointer(lphLineApp), util.toPointer(hInstance), util.toPointer(lpfnCallback), util.pwstrToFfi(lpszFriendlyAppName), util.toPointer(lpdwNumDevs), util.toPointer(lpdwAPIVersion), util.toPointer(lpLineInitializeExParams));
 }
 
 export function lineMakeCall(
@@ -8029,7 +8040,7 @@ export function lineMakeCall(
   dwCountryCode: number /* u32 */,
   lpCallParams: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
-  return libTAPI32.lineMakeCall(hLine, util.toPointer(lphCall), util.pstrToFfi(lpszDestAddress), dwCountryCode, util.toPointer(lpCallParams));
+  return libTAPI32_dll.lineMakeCall(hLine, util.toPointer(lphCall), util.pstrToFfi(lpszDestAddress), dwCountryCode, util.toPointer(lpCallParams));
 }
 
 export function lineMakeCallA(
@@ -8039,7 +8050,7 @@ export function lineMakeCallA(
   dwCountryCode: number /* u32 */,
   lpCallParams: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
-  return libTAPI32.lineMakeCallA(hLine, util.toPointer(lphCall), util.pstrToFfi(lpszDestAddress), dwCountryCode, util.toPointer(lpCallParams));
+  return libTAPI32_dll.lineMakeCallA(hLine, util.toPointer(lphCall), util.pstrToFfi(lpszDestAddress), dwCountryCode, util.toPointer(lpCallParams));
 }
 
 export function lineMakeCallW(
@@ -8049,21 +8060,21 @@ export function lineMakeCallW(
   dwCountryCode: number /* u32 */,
   lpCallParams: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
-  return libTAPI32.lineMakeCallW(hLine, util.toPointer(lphCall), util.pwstrToFfi(lpszDestAddress), dwCountryCode, util.toPointer(lpCallParams));
+  return libTAPI32_dll.lineMakeCallW(hLine, util.toPointer(lphCall), util.pwstrToFfi(lpszDestAddress), dwCountryCode, util.toPointer(lpCallParams));
 }
 
 export function lineMonitorDigits(
   hCall: number /* u32 */,
   dwDigitModes: number /* u32 */,
 ): number /* i32 */ {
-  return libTAPI32.lineMonitorDigits(hCall, dwDigitModes);
+  return libTAPI32_dll.lineMonitorDigits(hCall, dwDigitModes);
 }
 
 export function lineMonitorMedia(
   hCall: number /* u32 */,
   dwMediaModes: number /* u32 */,
 ): number /* i32 */ {
-  return libTAPI32.lineMonitorMedia(hCall, dwMediaModes);
+  return libTAPI32_dll.lineMonitorMedia(hCall, dwMediaModes);
 }
 
 export function lineMonitorTones(
@@ -8071,7 +8082,7 @@ export function lineMonitorTones(
   lpToneList: Deno.PointerValue | Uint8Array | null /* ptr */,
   dwNumEntries: number /* u32 */,
 ): number /* i32 */ {
-  return libTAPI32.lineMonitorTones(hCall, util.toPointer(lpToneList), dwNumEntries);
+  return libTAPI32_dll.lineMonitorTones(hCall, util.toPointer(lpToneList), dwNumEntries);
 }
 
 export function lineNegotiateAPIVersion(
@@ -8082,7 +8093,7 @@ export function lineNegotiateAPIVersion(
   lpdwAPIVersion: Deno.PointerValue | Uint8Array | null /* ptr */,
   lpExtensionID: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
-  return libTAPI32.lineNegotiateAPIVersion(hLineApp, dwDeviceID, dwAPILowVersion, dwAPIHighVersion, util.toPointer(lpdwAPIVersion), util.toPointer(lpExtensionID));
+  return libTAPI32_dll.lineNegotiateAPIVersion(hLineApp, dwDeviceID, dwAPILowVersion, dwAPIHighVersion, util.toPointer(lpdwAPIVersion), util.toPointer(lpExtensionID));
 }
 
 export function lineNegotiateExtVersion(
@@ -8093,7 +8104,7 @@ export function lineNegotiateExtVersion(
   dwExtHighVersion: number /* u32 */,
   lpdwExtVersion: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
-  return libTAPI32.lineNegotiateExtVersion(hLineApp, dwDeviceID, dwAPIVersion, dwExtLowVersion, dwExtHighVersion, util.toPointer(lpdwExtVersion));
+  return libTAPI32_dll.lineNegotiateExtVersion(hLineApp, dwDeviceID, dwAPIVersion, dwExtLowVersion, dwExtHighVersion, util.toPointer(lpdwExtVersion));
 }
 
 export function lineOpen(
@@ -8107,7 +8118,7 @@ export function lineOpen(
   dwMediaModes: number /* u32 */,
   lpCallParams: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
-  return libTAPI32.lineOpen(hLineApp, dwDeviceID, util.toPointer(lphLine), dwAPIVersion, dwExtVersion, dwCallbackInstance, dwPrivileges, dwMediaModes, util.toPointer(lpCallParams));
+  return libTAPI32_dll.lineOpen(hLineApp, dwDeviceID, util.toPointer(lphLine), dwAPIVersion, dwExtVersion, dwCallbackInstance, dwPrivileges, dwMediaModes, util.toPointer(lpCallParams));
 }
 
 export function lineOpenA(
@@ -8121,7 +8132,7 @@ export function lineOpenA(
   dwMediaModes: number /* u32 */,
   lpCallParams: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
-  return libTAPI32.lineOpenA(hLineApp, dwDeviceID, util.toPointer(lphLine), dwAPIVersion, dwExtVersion, dwCallbackInstance, dwPrivileges, dwMediaModes, util.toPointer(lpCallParams));
+  return libTAPI32_dll.lineOpenA(hLineApp, dwDeviceID, util.toPointer(lphLine), dwAPIVersion, dwExtVersion, dwCallbackInstance, dwPrivileges, dwMediaModes, util.toPointer(lpCallParams));
 }
 
 export function lineOpenW(
@@ -8135,7 +8146,7 @@ export function lineOpenW(
   dwMediaModes: number /* u32 */,
   lpCallParams: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
-  return libTAPI32.lineOpenW(hLineApp, dwDeviceID, util.toPointer(lphLine), dwAPIVersion, dwExtVersion, dwCallbackInstance, dwPrivileges, dwMediaModes, util.toPointer(lpCallParams));
+  return libTAPI32_dll.lineOpenW(hLineApp, dwDeviceID, util.toPointer(lphLine), dwAPIVersion, dwExtVersion, dwCallbackInstance, dwPrivileges, dwMediaModes, util.toPointer(lpCallParams));
 }
 
 export function linePark(
@@ -8144,7 +8155,7 @@ export function linePark(
   lpszDirAddress: string | null /* Windows.Win32.Foundation.PSTR */,
   lpNonDirAddress: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
-  return libTAPI32.linePark(hCall, dwParkMode, util.pstrToFfi(lpszDirAddress), util.toPointer(lpNonDirAddress));
+  return libTAPI32_dll.linePark(hCall, dwParkMode, util.pstrToFfi(lpszDirAddress), util.toPointer(lpNonDirAddress));
 }
 
 export function lineParkA(
@@ -8153,7 +8164,7 @@ export function lineParkA(
   lpszDirAddress: string | null /* Windows.Win32.Foundation.PSTR */,
   lpNonDirAddress: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
-  return libTAPI32.lineParkA(hCall, dwParkMode, util.pstrToFfi(lpszDirAddress), util.toPointer(lpNonDirAddress));
+  return libTAPI32_dll.lineParkA(hCall, dwParkMode, util.pstrToFfi(lpszDirAddress), util.toPointer(lpNonDirAddress));
 }
 
 export function lineParkW(
@@ -8162,7 +8173,7 @@ export function lineParkW(
   lpszDirAddress: string | null /* Windows.Win32.Foundation.PWSTR */,
   lpNonDirAddress: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
-  return libTAPI32.lineParkW(hCall, dwParkMode, util.pwstrToFfi(lpszDirAddress), util.toPointer(lpNonDirAddress));
+  return libTAPI32_dll.lineParkW(hCall, dwParkMode, util.pwstrToFfi(lpszDirAddress), util.toPointer(lpNonDirAddress));
 }
 
 export function linePickup(
@@ -8172,7 +8183,7 @@ export function linePickup(
   lpszDestAddress: string | null /* Windows.Win32.Foundation.PSTR */,
   lpszGroupID: string | null /* Windows.Win32.Foundation.PSTR */,
 ): number /* i32 */ {
-  return libTAPI32.linePickup(hLine, dwAddressID, util.toPointer(lphCall), util.pstrToFfi(lpszDestAddress), util.pstrToFfi(lpszGroupID));
+  return libTAPI32_dll.linePickup(hLine, dwAddressID, util.toPointer(lphCall), util.pstrToFfi(lpszDestAddress), util.pstrToFfi(lpszGroupID));
 }
 
 export function linePickupA(
@@ -8182,7 +8193,7 @@ export function linePickupA(
   lpszDestAddress: string | null /* Windows.Win32.Foundation.PSTR */,
   lpszGroupID: string | null /* Windows.Win32.Foundation.PSTR */,
 ): number /* i32 */ {
-  return libTAPI32.linePickupA(hLine, dwAddressID, util.toPointer(lphCall), util.pstrToFfi(lpszDestAddress), util.pstrToFfi(lpszGroupID));
+  return libTAPI32_dll.linePickupA(hLine, dwAddressID, util.toPointer(lphCall), util.pstrToFfi(lpszDestAddress), util.pstrToFfi(lpszGroupID));
 }
 
 export function linePickupW(
@@ -8192,7 +8203,7 @@ export function linePickupW(
   lpszDestAddress: string | null /* Windows.Win32.Foundation.PWSTR */,
   lpszGroupID: string | null /* Windows.Win32.Foundation.PWSTR */,
 ): number /* i32 */ {
-  return libTAPI32.linePickupW(hLine, dwAddressID, util.toPointer(lphCall), util.pwstrToFfi(lpszDestAddress), util.pwstrToFfi(lpszGroupID));
+  return libTAPI32_dll.linePickupW(hLine, dwAddressID, util.toPointer(lphCall), util.pwstrToFfi(lpszDestAddress), util.pwstrToFfi(lpszGroupID));
 }
 
 export function linePrepareAddToConference(
@@ -8200,7 +8211,7 @@ export function linePrepareAddToConference(
   lphConsultCall: Deno.PointerValue | Uint8Array | null /* ptr */,
   lpCallParams: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
-  return libTAPI32.linePrepareAddToConference(hConfCall, util.toPointer(lphConsultCall), util.toPointer(lpCallParams));
+  return libTAPI32_dll.linePrepareAddToConference(hConfCall, util.toPointer(lphConsultCall), util.toPointer(lpCallParams));
 }
 
 export function linePrepareAddToConferenceA(
@@ -8208,7 +8219,7 @@ export function linePrepareAddToConferenceA(
   lphConsultCall: Deno.PointerValue | Uint8Array | null /* ptr */,
   lpCallParams: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
-  return libTAPI32.linePrepareAddToConferenceA(hConfCall, util.toPointer(lphConsultCall), util.toPointer(lpCallParams));
+  return libTAPI32_dll.linePrepareAddToConferenceA(hConfCall, util.toPointer(lphConsultCall), util.toPointer(lpCallParams));
 }
 
 export function linePrepareAddToConferenceW(
@@ -8216,7 +8227,7 @@ export function linePrepareAddToConferenceW(
   lphConsultCall: Deno.PointerValue | Uint8Array | null /* ptr */,
   lpCallParams: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
-  return libTAPI32.linePrepareAddToConferenceW(hConfCall, util.toPointer(lphConsultCall), util.toPointer(lpCallParams));
+  return libTAPI32_dll.linePrepareAddToConferenceW(hConfCall, util.toPointer(lphConsultCall), util.toPointer(lpCallParams));
 }
 
 export function lineProxyMessage(
@@ -8227,7 +8238,7 @@ export function lineProxyMessage(
   dwParam2: number /* u32 */,
   dwParam3: number /* u32 */,
 ): number /* i32 */ {
-  return libTAPI32.lineProxyMessage(hLine, hCall, dwMsg, dwParam1, dwParam2, dwParam3);
+  return libTAPI32_dll.lineProxyMessage(hLine, hCall, dwMsg, dwParam1, dwParam2, dwParam3);
 }
 
 export function lineProxyResponse(
@@ -8235,7 +8246,7 @@ export function lineProxyResponse(
   lpProxyRequest: Deno.PointerValue | Uint8Array | null /* ptr */,
   dwResult: number /* u32 */,
 ): number /* i32 */ {
-  return libTAPI32.lineProxyResponse(hLine, util.toPointer(lpProxyRequest), dwResult);
+  return libTAPI32_dll.lineProxyResponse(hLine, util.toPointer(lpProxyRequest), dwResult);
 }
 
 export function lineRedirect(
@@ -8243,7 +8254,7 @@ export function lineRedirect(
   lpszDestAddress: string | null /* Windows.Win32.Foundation.PSTR */,
   dwCountryCode: number /* u32 */,
 ): number /* i32 */ {
-  return libTAPI32.lineRedirect(hCall, util.pstrToFfi(lpszDestAddress), dwCountryCode);
+  return libTAPI32_dll.lineRedirect(hCall, util.pstrToFfi(lpszDestAddress), dwCountryCode);
 }
 
 export function lineRedirectA(
@@ -8251,7 +8262,7 @@ export function lineRedirectA(
   lpszDestAddress: string | null /* Windows.Win32.Foundation.PSTR */,
   dwCountryCode: number /* u32 */,
 ): number /* i32 */ {
-  return libTAPI32.lineRedirectA(hCall, util.pstrToFfi(lpszDestAddress), dwCountryCode);
+  return libTAPI32_dll.lineRedirectA(hCall, util.pstrToFfi(lpszDestAddress), dwCountryCode);
 }
 
 export function lineRedirectW(
@@ -8259,7 +8270,7 @@ export function lineRedirectW(
   lpszDestAddress: string | null /* Windows.Win32.Foundation.PWSTR */,
   dwCountryCode: number /* u32 */,
 ): number /* i32 */ {
-  return libTAPI32.lineRedirectW(hCall, util.pwstrToFfi(lpszDestAddress), dwCountryCode);
+  return libTAPI32_dll.lineRedirectW(hCall, util.pwstrToFfi(lpszDestAddress), dwCountryCode);
 }
 
 export function lineRegisterRequestRecipient(
@@ -8268,32 +8279,32 @@ export function lineRegisterRequestRecipient(
   dwRequestMode: number /* u32 */,
   bEnable: number /* u32 */,
 ): number /* i32 */ {
-  return libTAPI32.lineRegisterRequestRecipient(hLineApp, dwRegistrationInstance, dwRequestMode, bEnable);
+  return libTAPI32_dll.lineRegisterRequestRecipient(hLineApp, dwRegistrationInstance, dwRequestMode, bEnable);
 }
 
 export function lineReleaseUserUserInfo(
   hCall: number /* u32 */,
 ): number /* i32 */ {
-  return libTAPI32.lineReleaseUserUserInfo(hCall);
+  return libTAPI32_dll.lineReleaseUserUserInfo(hCall);
 }
 
 export function lineRemoveFromConference(
   hCall: number /* u32 */,
 ): number /* i32 */ {
-  return libTAPI32.lineRemoveFromConference(hCall);
+  return libTAPI32_dll.lineRemoveFromConference(hCall);
 }
 
 export function lineRemoveProvider(
   dwPermanentProviderID: number /* u32 */,
   hwndOwner: Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */,
 ): number /* i32 */ {
-  return libTAPI32.lineRemoveProvider(dwPermanentProviderID, util.hwndToFfi(hwndOwner));
+  return libTAPI32_dll.lineRemoveProvider(dwPermanentProviderID, util.hwndToFfi(hwndOwner));
 }
 
 export function lineSecureCall(
   hCall: number /* u32 */,
 ): number /* i32 */ {
-  return libTAPI32.lineSecureCall(hCall);
+  return libTAPI32_dll.lineSecureCall(hCall);
 }
 
 export function lineSendUserUserInfo(
@@ -8301,7 +8312,7 @@ export function lineSendUserUserInfo(
   lpsUserUserInfo: string | null /* Windows.Win32.Foundation.PSTR */,
   dwSize: number /* u32 */,
 ): number /* i32 */ {
-  return libTAPI32.lineSendUserUserInfo(hCall, util.pstrToFfi(lpsUserUserInfo), dwSize);
+  return libTAPI32_dll.lineSendUserUserInfo(hCall, util.pstrToFfi(lpsUserUserInfo), dwSize);
 }
 
 export function lineSetAgentActivity(
@@ -8309,7 +8320,7 @@ export function lineSetAgentActivity(
   dwAddressID: number /* u32 */,
   dwActivityID: number /* u32 */,
 ): number /* i32 */ {
-  return libTAPI32.lineSetAgentActivity(hLine, dwAddressID, dwActivityID);
+  return libTAPI32_dll.lineSetAgentActivity(hLine, dwAddressID, dwActivityID);
 }
 
 export function lineSetAgentGroup(
@@ -8317,7 +8328,7 @@ export function lineSetAgentGroup(
   dwAddressID: number /* u32 */,
   lpAgentGroupList: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
-  return libTAPI32.lineSetAgentGroup(hLine, dwAddressID, util.toPointer(lpAgentGroupList));
+  return libTAPI32_dll.lineSetAgentGroup(hLine, dwAddressID, util.toPointer(lpAgentGroupList));
 }
 
 export function lineSetAgentMeasurementPeriod(
@@ -8325,7 +8336,7 @@ export function lineSetAgentMeasurementPeriod(
   hAgent: number /* u32 */,
   dwMeasurementPeriod: number /* u32 */,
 ): number /* i32 */ {
-  return libTAPI32.lineSetAgentMeasurementPeriod(hLine, hAgent, dwMeasurementPeriod);
+  return libTAPI32_dll.lineSetAgentMeasurementPeriod(hLine, hAgent, dwMeasurementPeriod);
 }
 
 export function lineSetAgentSessionState(
@@ -8334,7 +8345,7 @@ export function lineSetAgentSessionState(
   dwAgentSessionState: number /* u32 */,
   dwNextAgentSessionState: number /* u32 */,
 ): number /* i32 */ {
-  return libTAPI32.lineSetAgentSessionState(hLine, hAgentSession, dwAgentSessionState, dwNextAgentSessionState);
+  return libTAPI32_dll.lineSetAgentSessionState(hLine, hAgentSession, dwAgentSessionState, dwNextAgentSessionState);
 }
 
 export function lineSetAgentStateEx(
@@ -8343,7 +8354,7 @@ export function lineSetAgentStateEx(
   dwAgentState: number /* u32 */,
   dwNextAgentState: number /* u32 */,
 ): number /* i32 */ {
-  return libTAPI32.lineSetAgentStateEx(hLine, hAgent, dwAgentState, dwNextAgentState);
+  return libTAPI32_dll.lineSetAgentStateEx(hLine, hAgent, dwAgentState, dwNextAgentState);
 }
 
 export function lineSetAgentState(
@@ -8352,7 +8363,7 @@ export function lineSetAgentState(
   dwAgentState: number /* u32 */,
   dwNextAgentState: number /* u32 */,
 ): number /* i32 */ {
-  return libTAPI32.lineSetAgentState(hLine, dwAddressID, dwAgentState, dwNextAgentState);
+  return libTAPI32_dll.lineSetAgentState(hLine, dwAddressID, dwAgentState, dwNextAgentState);
 }
 
 export function lineSetAppPriority(
@@ -8363,7 +8374,7 @@ export function lineSetAppPriority(
   lpszExtensionName: string | null /* Windows.Win32.Foundation.PSTR */,
   dwPriority: number /* u32 */,
 ): number /* i32 */ {
-  return libTAPI32.lineSetAppPriority(util.pstrToFfi(lpszAppFilename), dwMediaMode, util.toPointer(lpExtensionID), dwRequestMode, util.pstrToFfi(lpszExtensionName), dwPriority);
+  return libTAPI32_dll.lineSetAppPriority(util.pstrToFfi(lpszAppFilename), dwMediaMode, util.toPointer(lpExtensionID), dwRequestMode, util.pstrToFfi(lpszExtensionName), dwPriority);
 }
 
 export function lineSetAppPriorityA(
@@ -8374,7 +8385,7 @@ export function lineSetAppPriorityA(
   lpszExtensionName: string | null /* Windows.Win32.Foundation.PSTR */,
   dwPriority: number /* u32 */,
 ): number /* i32 */ {
-  return libTAPI32.lineSetAppPriorityA(util.pstrToFfi(lpszAppFilename), dwMediaMode, util.toPointer(lpExtensionID), dwRequestMode, util.pstrToFfi(lpszExtensionName), dwPriority);
+  return libTAPI32_dll.lineSetAppPriorityA(util.pstrToFfi(lpszAppFilename), dwMediaMode, util.toPointer(lpExtensionID), dwRequestMode, util.pstrToFfi(lpszExtensionName), dwPriority);
 }
 
 export function lineSetAppPriorityW(
@@ -8385,14 +8396,14 @@ export function lineSetAppPriorityW(
   lpszExtensionName: string | null /* Windows.Win32.Foundation.PWSTR */,
   dwPriority: number /* u32 */,
 ): number /* i32 */ {
-  return libTAPI32.lineSetAppPriorityW(util.pwstrToFfi(lpszAppFilename), dwMediaMode, util.toPointer(lpExtensionID), dwRequestMode, util.pwstrToFfi(lpszExtensionName), dwPriority);
+  return libTAPI32_dll.lineSetAppPriorityW(util.pwstrToFfi(lpszAppFilename), dwMediaMode, util.toPointer(lpExtensionID), dwRequestMode, util.pwstrToFfi(lpszExtensionName), dwPriority);
 }
 
 export function lineSetAppSpecific(
   hCall: number /* u32 */,
   dwAppSpecific: number /* u32 */,
 ): number /* i32 */ {
-  return libTAPI32.lineSetAppSpecific(hCall, dwAppSpecific);
+  return libTAPI32_dll.lineSetAppSpecific(hCall, dwAppSpecific);
 }
 
 export function lineSetCallData(
@@ -8400,7 +8411,7 @@ export function lineSetCallData(
   lpCallData: Deno.PointerValue | Uint8Array | null /* ptr */,
   dwSize: number /* u32 */,
 ): number /* i32 */ {
-  return libTAPI32.lineSetCallData(hCall, util.toPointer(lpCallData), dwSize);
+  return libTAPI32_dll.lineSetCallData(hCall, util.toPointer(lpCallData), dwSize);
 }
 
 export function lineSetCallParams(
@@ -8410,14 +8421,14 @@ export function lineSetCallParams(
   dwMaxRate: number /* u32 */,
   lpDialParams: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
-  return libTAPI32.lineSetCallParams(hCall, dwBearerMode, dwMinRate, dwMaxRate, util.toPointer(lpDialParams));
+  return libTAPI32_dll.lineSetCallParams(hCall, dwBearerMode, dwMinRate, dwMaxRate, util.toPointer(lpDialParams));
 }
 
 export function lineSetCallPrivilege(
   hCall: number /* u32 */,
   dwCallPrivilege: number /* u32 */,
 ): number /* i32 */ {
-  return libTAPI32.lineSetCallPrivilege(hCall, dwCallPrivilege);
+  return libTAPI32_dll.lineSetCallPrivilege(hCall, dwCallPrivilege);
 }
 
 export function lineSetCallQualityOfService(
@@ -8427,21 +8438,21 @@ export function lineSetCallQualityOfService(
   lpReceivingFlowspec: Deno.PointerValue | Uint8Array | null /* ptr */,
   dwReceivingFlowspecSize: number /* u32 */,
 ): number /* i32 */ {
-  return libTAPI32.lineSetCallQualityOfService(hCall, util.toPointer(lpSendingFlowspec), dwSendingFlowspecSize, util.toPointer(lpReceivingFlowspec), dwReceivingFlowspecSize);
+  return libTAPI32_dll.lineSetCallQualityOfService(hCall, util.toPointer(lpSendingFlowspec), dwSendingFlowspecSize, util.toPointer(lpReceivingFlowspec), dwReceivingFlowspecSize);
 }
 
 export function lineSetCallTreatment(
   hCall: number /* u32 */,
   dwTreatment: number /* u32 */,
 ): number /* i32 */ {
-  return libTAPI32.lineSetCallTreatment(hCall, dwTreatment);
+  return libTAPI32_dll.lineSetCallTreatment(hCall, dwTreatment);
 }
 
 export function lineSetCurrentLocation(
   hLineApp: number /* u32 */,
   dwLocation: number /* u32 */,
 ): number /* i32 */ {
-  return libTAPI32.lineSetCurrentLocation(hLineApp, dwLocation);
+  return libTAPI32_dll.lineSetCurrentLocation(hLineApp, dwLocation);
 }
 
 export function lineSetDevConfig(
@@ -8450,7 +8461,7 @@ export function lineSetDevConfig(
   dwSize: number /* u32 */,
   lpszDeviceClass: string | null /* Windows.Win32.Foundation.PSTR */,
 ): number /* i32 */ {
-  return libTAPI32.lineSetDevConfig(dwDeviceID, util.toPointer(lpDeviceConfig), dwSize, util.pstrToFfi(lpszDeviceClass));
+  return libTAPI32_dll.lineSetDevConfig(dwDeviceID, util.toPointer(lpDeviceConfig), dwSize, util.pstrToFfi(lpszDeviceClass));
 }
 
 export function lineSetDevConfigA(
@@ -8459,7 +8470,7 @@ export function lineSetDevConfigA(
   dwSize: number /* u32 */,
   lpszDeviceClass: string | null /* Windows.Win32.Foundation.PSTR */,
 ): number /* i32 */ {
-  return libTAPI32.lineSetDevConfigA(dwDeviceID, util.toPointer(lpDeviceConfig), dwSize, util.pstrToFfi(lpszDeviceClass));
+  return libTAPI32_dll.lineSetDevConfigA(dwDeviceID, util.toPointer(lpDeviceConfig), dwSize, util.pstrToFfi(lpszDeviceClass));
 }
 
 export function lineSetDevConfigW(
@@ -8468,7 +8479,7 @@ export function lineSetDevConfigW(
   dwSize: number /* u32 */,
   lpszDeviceClass: string | null /* Windows.Win32.Foundation.PWSTR */,
 ): number /* i32 */ {
-  return libTAPI32.lineSetDevConfigW(dwDeviceID, util.toPointer(lpDeviceConfig), dwSize, util.pwstrToFfi(lpszDeviceClass));
+  return libTAPI32_dll.lineSetDevConfigW(dwDeviceID, util.toPointer(lpDeviceConfig), dwSize, util.pwstrToFfi(lpszDeviceClass));
 }
 
 export function lineSetLineDevStatus(
@@ -8476,7 +8487,7 @@ export function lineSetLineDevStatus(
   dwStatusToChange: number /* u32 */,
   fStatus: number /* u32 */,
 ): number /* i32 */ {
-  return libTAPI32.lineSetLineDevStatus(hLine, dwStatusToChange, fStatus);
+  return libTAPI32_dll.lineSetLineDevStatus(hLine, dwStatusToChange, fStatus);
 }
 
 export function lineSetMediaControl(
@@ -8493,14 +8504,14 @@ export function lineSetMediaControl(
   lpCallStateList: Deno.PointerValue | Uint8Array | null /* ptr */,
   dwCallStateNumEntries: number /* u32 */,
 ): number /* i32 */ {
-  return libTAPI32.lineSetMediaControl(hLine, dwAddressID, hCall, dwSelect, util.toPointer(lpDigitList), dwDigitNumEntries, util.toPointer(lpMediaList), dwMediaNumEntries, util.toPointer(lpToneList), dwToneNumEntries, util.toPointer(lpCallStateList), dwCallStateNumEntries);
+  return libTAPI32_dll.lineSetMediaControl(hLine, dwAddressID, hCall, dwSelect, util.toPointer(lpDigitList), dwDigitNumEntries, util.toPointer(lpMediaList), dwMediaNumEntries, util.toPointer(lpToneList), dwToneNumEntries, util.toPointer(lpCallStateList), dwCallStateNumEntries);
 }
 
 export function lineSetMediaMode(
   hCall: number /* u32 */,
   dwMediaModes: number /* u32 */,
 ): number /* i32 */ {
-  return libTAPI32.lineSetMediaMode(hCall, dwMediaModes);
+  return libTAPI32_dll.lineSetMediaMode(hCall, dwMediaModes);
 }
 
 export function lineSetQueueMeasurementPeriod(
@@ -8508,7 +8519,7 @@ export function lineSetQueueMeasurementPeriod(
   dwQueueID: number /* u32 */,
   dwMeasurementPeriod: number /* u32 */,
 ): number /* i32 */ {
-  return libTAPI32.lineSetQueueMeasurementPeriod(hLine, dwQueueID, dwMeasurementPeriod);
+  return libTAPI32_dll.lineSetQueueMeasurementPeriod(hLine, dwQueueID, dwMeasurementPeriod);
 }
 
 export function lineSetNumRings(
@@ -8516,7 +8527,7 @@ export function lineSetNumRings(
   dwAddressID: number /* u32 */,
   dwNumRings: number /* u32 */,
 ): number /* i32 */ {
-  return libTAPI32.lineSetNumRings(hLine, dwAddressID, dwNumRings);
+  return libTAPI32_dll.lineSetNumRings(hLine, dwAddressID, dwNumRings);
 }
 
 export function lineSetStatusMessages(
@@ -8524,7 +8535,7 @@ export function lineSetStatusMessages(
   dwLineStates: number /* u32 */,
   dwAddressStates: number /* u32 */,
 ): number /* i32 */ {
-  return libTAPI32.lineSetStatusMessages(hLine, dwLineStates, dwAddressStates);
+  return libTAPI32_dll.lineSetStatusMessages(hLine, dwLineStates, dwAddressStates);
 }
 
 export function lineSetTerminal(
@@ -8536,7 +8547,7 @@ export function lineSetTerminal(
   dwTerminalID: number /* u32 */,
   bEnable: number /* u32 */,
 ): number /* i32 */ {
-  return libTAPI32.lineSetTerminal(hLine, dwAddressID, hCall, dwSelect, dwTerminalModes, dwTerminalID, bEnable);
+  return libTAPI32_dll.lineSetTerminal(hLine, dwAddressID, hCall, dwSelect, dwTerminalModes, dwTerminalID, bEnable);
 }
 
 export function lineSetTollList(
@@ -8545,7 +8556,7 @@ export function lineSetTollList(
   lpszAddressIn: string | null /* Windows.Win32.Foundation.PSTR */,
   dwTollListOption: number /* u32 */,
 ): number /* i32 */ {
-  return libTAPI32.lineSetTollList(hLineApp, dwDeviceID, util.pstrToFfi(lpszAddressIn), dwTollListOption);
+  return libTAPI32_dll.lineSetTollList(hLineApp, dwDeviceID, util.pstrToFfi(lpszAddressIn), dwTollListOption);
 }
 
 export function lineSetTollListA(
@@ -8554,7 +8565,7 @@ export function lineSetTollListA(
   lpszAddressIn: string | null /* Windows.Win32.Foundation.PSTR */,
   dwTollListOption: number /* u32 */,
 ): number /* i32 */ {
-  return libTAPI32.lineSetTollListA(hLineApp, dwDeviceID, util.pstrToFfi(lpszAddressIn), dwTollListOption);
+  return libTAPI32_dll.lineSetTollListA(hLineApp, dwDeviceID, util.pstrToFfi(lpszAddressIn), dwTollListOption);
 }
 
 export function lineSetTollListW(
@@ -8563,7 +8574,7 @@ export function lineSetTollListW(
   lpszAddressInW: string | null /* Windows.Win32.Foundation.PWSTR */,
   dwTollListOption: number /* u32 */,
 ): number /* i32 */ {
-  return libTAPI32.lineSetTollListW(hLineApp, dwDeviceID, util.pwstrToFfi(lpszAddressInW), dwTollListOption);
+  return libTAPI32_dll.lineSetTollListW(hLineApp, dwDeviceID, util.pwstrToFfi(lpszAddressInW), dwTollListOption);
 }
 
 export function lineSetupConference(
@@ -8574,7 +8585,7 @@ export function lineSetupConference(
   dwNumParties: number /* u32 */,
   lpCallParams: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
-  return libTAPI32.lineSetupConference(hCall, hLine, util.toPointer(lphConfCall), util.toPointer(lphConsultCall), dwNumParties, util.toPointer(lpCallParams));
+  return libTAPI32_dll.lineSetupConference(hCall, hLine, util.toPointer(lphConfCall), util.toPointer(lphConsultCall), dwNumParties, util.toPointer(lpCallParams));
 }
 
 export function lineSetupConferenceA(
@@ -8585,7 +8596,7 @@ export function lineSetupConferenceA(
   dwNumParties: number /* u32 */,
   lpCallParams: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
-  return libTAPI32.lineSetupConferenceA(hCall, hLine, util.toPointer(lphConfCall), util.toPointer(lphConsultCall), dwNumParties, util.toPointer(lpCallParams));
+  return libTAPI32_dll.lineSetupConferenceA(hCall, hLine, util.toPointer(lphConfCall), util.toPointer(lphConsultCall), dwNumParties, util.toPointer(lpCallParams));
 }
 
 export function lineSetupConferenceW(
@@ -8596,7 +8607,7 @@ export function lineSetupConferenceW(
   dwNumParties: number /* u32 */,
   lpCallParams: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
-  return libTAPI32.lineSetupConferenceW(hCall, hLine, util.toPointer(lphConfCall), util.toPointer(lphConsultCall), dwNumParties, util.toPointer(lpCallParams));
+  return libTAPI32_dll.lineSetupConferenceW(hCall, hLine, util.toPointer(lphConfCall), util.toPointer(lphConsultCall), dwNumParties, util.toPointer(lpCallParams));
 }
 
 export function lineSetupTransfer(
@@ -8604,7 +8615,7 @@ export function lineSetupTransfer(
   lphConsultCall: Deno.PointerValue | Uint8Array | null /* ptr */,
   lpCallParams: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
-  return libTAPI32.lineSetupTransfer(hCall, util.toPointer(lphConsultCall), util.toPointer(lpCallParams));
+  return libTAPI32_dll.lineSetupTransfer(hCall, util.toPointer(lphConsultCall), util.toPointer(lpCallParams));
 }
 
 export function lineSetupTransferA(
@@ -8612,7 +8623,7 @@ export function lineSetupTransferA(
   lphConsultCall: Deno.PointerValue | Uint8Array | null /* ptr */,
   lpCallParams: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
-  return libTAPI32.lineSetupTransferA(hCall, util.toPointer(lphConsultCall), util.toPointer(lpCallParams));
+  return libTAPI32_dll.lineSetupTransferA(hCall, util.toPointer(lphConsultCall), util.toPointer(lpCallParams));
 }
 
 export function lineSetupTransferW(
@@ -8620,20 +8631,20 @@ export function lineSetupTransferW(
   lphConsultCall: Deno.PointerValue | Uint8Array | null /* ptr */,
   lpCallParams: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
-  return libTAPI32.lineSetupTransferW(hCall, util.toPointer(lphConsultCall), util.toPointer(lpCallParams));
+  return libTAPI32_dll.lineSetupTransferW(hCall, util.toPointer(lphConsultCall), util.toPointer(lpCallParams));
 }
 
 export function lineShutdown(
   hLineApp: number /* u32 */,
 ): number /* i32 */ {
-  return libTAPI32.lineShutdown(hLineApp);
+  return libTAPI32_dll.lineShutdown(hLineApp);
 }
 
 export function lineSwapHold(
   hActiveCall: number /* u32 */,
   hHeldCall: number /* u32 */,
 ): number /* i32 */ {
-  return libTAPI32.lineSwapHold(hActiveCall, hHeldCall);
+  return libTAPI32_dll.lineSwapHold(hActiveCall, hHeldCall);
 }
 
 export function lineTranslateAddress(
@@ -8645,7 +8656,7 @@ export function lineTranslateAddress(
   dwTranslateOptions: number /* u32 */,
   lpTranslateOutput: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
-  return libTAPI32.lineTranslateAddress(hLineApp, dwDeviceID, dwAPIVersion, util.pstrToFfi(lpszAddressIn), dwCard, dwTranslateOptions, util.toPointer(lpTranslateOutput));
+  return libTAPI32_dll.lineTranslateAddress(hLineApp, dwDeviceID, dwAPIVersion, util.pstrToFfi(lpszAddressIn), dwCard, dwTranslateOptions, util.toPointer(lpTranslateOutput));
 }
 
 export function lineTranslateAddressA(
@@ -8657,7 +8668,7 @@ export function lineTranslateAddressA(
   dwTranslateOptions: number /* u32 */,
   lpTranslateOutput: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
-  return libTAPI32.lineTranslateAddressA(hLineApp, dwDeviceID, dwAPIVersion, util.pstrToFfi(lpszAddressIn), dwCard, dwTranslateOptions, util.toPointer(lpTranslateOutput));
+  return libTAPI32_dll.lineTranslateAddressA(hLineApp, dwDeviceID, dwAPIVersion, util.pstrToFfi(lpszAddressIn), dwCard, dwTranslateOptions, util.toPointer(lpTranslateOutput));
 }
 
 export function lineTranslateAddressW(
@@ -8669,7 +8680,7 @@ export function lineTranslateAddressW(
   dwTranslateOptions: number /* u32 */,
   lpTranslateOutput: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
-  return libTAPI32.lineTranslateAddressW(hLineApp, dwDeviceID, dwAPIVersion, util.pwstrToFfi(lpszAddressIn), dwCard, dwTranslateOptions, util.toPointer(lpTranslateOutput));
+  return libTAPI32_dll.lineTranslateAddressW(hLineApp, dwDeviceID, dwAPIVersion, util.pwstrToFfi(lpszAddressIn), dwCard, dwTranslateOptions, util.toPointer(lpTranslateOutput));
 }
 
 export function lineTranslateDialog(
@@ -8679,7 +8690,7 @@ export function lineTranslateDialog(
   hwndOwner: Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */,
   lpszAddressIn: string | null /* Windows.Win32.Foundation.PSTR */,
 ): number /* i32 */ {
-  return libTAPI32.lineTranslateDialog(hLineApp, dwDeviceID, dwAPIVersion, util.hwndToFfi(hwndOwner), util.pstrToFfi(lpszAddressIn));
+  return libTAPI32_dll.lineTranslateDialog(hLineApp, dwDeviceID, dwAPIVersion, util.hwndToFfi(hwndOwner), util.pstrToFfi(lpszAddressIn));
 }
 
 export function lineTranslateDialogA(
@@ -8689,7 +8700,7 @@ export function lineTranslateDialogA(
   hwndOwner: Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */,
   lpszAddressIn: string | null /* Windows.Win32.Foundation.PSTR */,
 ): number /* i32 */ {
-  return libTAPI32.lineTranslateDialogA(hLineApp, dwDeviceID, dwAPIVersion, util.hwndToFfi(hwndOwner), util.pstrToFfi(lpszAddressIn));
+  return libTAPI32_dll.lineTranslateDialogA(hLineApp, dwDeviceID, dwAPIVersion, util.hwndToFfi(hwndOwner), util.pstrToFfi(lpszAddressIn));
 }
 
 export function lineTranslateDialogW(
@@ -8699,20 +8710,20 @@ export function lineTranslateDialogW(
   hwndOwner: Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */,
   lpszAddressIn: string | null /* Windows.Win32.Foundation.PWSTR */,
 ): number /* i32 */ {
-  return libTAPI32.lineTranslateDialogW(hLineApp, dwDeviceID, dwAPIVersion, util.hwndToFfi(hwndOwner), util.pwstrToFfi(lpszAddressIn));
+  return libTAPI32_dll.lineTranslateDialogW(hLineApp, dwDeviceID, dwAPIVersion, util.hwndToFfi(hwndOwner), util.pwstrToFfi(lpszAddressIn));
 }
 
 export function lineUncompleteCall(
   hLine: number /* u32 */,
   dwCompletionID: number /* u32 */,
 ): number /* i32 */ {
-  return libTAPI32.lineUncompleteCall(hLine, dwCompletionID);
+  return libTAPI32_dll.lineUncompleteCall(hLine, dwCompletionID);
 }
 
 export function lineUnhold(
   hCall: number /* u32 */,
 ): number /* i32 */ {
-  return libTAPI32.lineUnhold(hCall);
+  return libTAPI32_dll.lineUnhold(hCall);
 }
 
 export function lineUnpark(
@@ -8721,7 +8732,7 @@ export function lineUnpark(
   lphCall: Deno.PointerValue | Uint8Array | null /* ptr */,
   lpszDestAddress: string | null /* Windows.Win32.Foundation.PSTR */,
 ): number /* i32 */ {
-  return libTAPI32.lineUnpark(hLine, dwAddressID, util.toPointer(lphCall), util.pstrToFfi(lpszDestAddress));
+  return libTAPI32_dll.lineUnpark(hLine, dwAddressID, util.toPointer(lphCall), util.pstrToFfi(lpszDestAddress));
 }
 
 export function lineUnparkA(
@@ -8730,7 +8741,7 @@ export function lineUnparkA(
   lphCall: Deno.PointerValue | Uint8Array | null /* ptr */,
   lpszDestAddress: string | null /* Windows.Win32.Foundation.PSTR */,
 ): number /* i32 */ {
-  return libTAPI32.lineUnparkA(hLine, dwAddressID, util.toPointer(lphCall), util.pstrToFfi(lpszDestAddress));
+  return libTAPI32_dll.lineUnparkA(hLine, dwAddressID, util.toPointer(lphCall), util.pstrToFfi(lpszDestAddress));
 }
 
 export function lineUnparkW(
@@ -8739,13 +8750,13 @@ export function lineUnparkW(
   lphCall: Deno.PointerValue | Uint8Array | null /* ptr */,
   lpszDestAddress: string | null /* Windows.Win32.Foundation.PWSTR */,
 ): number /* i32 */ {
-  return libTAPI32.lineUnparkW(hLine, dwAddressID, util.toPointer(lphCall), util.pwstrToFfi(lpszDestAddress));
+  return libTAPI32_dll.lineUnparkW(hLine, dwAddressID, util.toPointer(lphCall), util.pwstrToFfi(lpszDestAddress));
 }
 
 export function phoneClose(
   hPhone: number /* u32 */,
 ): number /* i32 */ {
-  return libTAPI32.phoneClose(hPhone);
+  return libTAPI32_dll.phoneClose(hPhone);
 }
 
 export function phoneConfigDialog(
@@ -8753,7 +8764,7 @@ export function phoneConfigDialog(
   hwndOwner: Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */,
   lpszDeviceClass: string | null /* Windows.Win32.Foundation.PSTR */,
 ): number /* i32 */ {
-  return libTAPI32.phoneConfigDialog(dwDeviceID, util.hwndToFfi(hwndOwner), util.pstrToFfi(lpszDeviceClass));
+  return libTAPI32_dll.phoneConfigDialog(dwDeviceID, util.hwndToFfi(hwndOwner), util.pstrToFfi(lpszDeviceClass));
 }
 
 export function phoneConfigDialogA(
@@ -8761,7 +8772,7 @@ export function phoneConfigDialogA(
   hwndOwner: Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */,
   lpszDeviceClass: string | null /* Windows.Win32.Foundation.PSTR */,
 ): number /* i32 */ {
-  return libTAPI32.phoneConfigDialogA(dwDeviceID, util.hwndToFfi(hwndOwner), util.pstrToFfi(lpszDeviceClass));
+  return libTAPI32_dll.phoneConfigDialogA(dwDeviceID, util.hwndToFfi(hwndOwner), util.pstrToFfi(lpszDeviceClass));
 }
 
 export function phoneConfigDialogW(
@@ -8769,7 +8780,7 @@ export function phoneConfigDialogW(
   hwndOwner: Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */,
   lpszDeviceClass: string | null /* Windows.Win32.Foundation.PWSTR */,
 ): number /* i32 */ {
-  return libTAPI32.phoneConfigDialogW(dwDeviceID, util.hwndToFfi(hwndOwner), util.pwstrToFfi(lpszDeviceClass));
+  return libTAPI32_dll.phoneConfigDialogW(dwDeviceID, util.hwndToFfi(hwndOwner), util.pwstrToFfi(lpszDeviceClass));
 }
 
 export function phoneDevSpecific(
@@ -8777,7 +8788,7 @@ export function phoneDevSpecific(
   lpParams: Deno.PointerValue | Uint8Array | null /* ptr */,
   dwSize: number /* u32 */,
 ): number /* i32 */ {
-  return libTAPI32.phoneDevSpecific(hPhone, util.toPointer(lpParams), dwSize);
+  return libTAPI32_dll.phoneDevSpecific(hPhone, util.toPointer(lpParams), dwSize);
 }
 
 export function phoneGetButtonInfo(
@@ -8785,7 +8796,7 @@ export function phoneGetButtonInfo(
   dwButtonLampID: number /* u32 */,
   lpButtonInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
-  return libTAPI32.phoneGetButtonInfo(hPhone, dwButtonLampID, util.toPointer(lpButtonInfo));
+  return libTAPI32_dll.phoneGetButtonInfo(hPhone, dwButtonLampID, util.toPointer(lpButtonInfo));
 }
 
 export function phoneGetButtonInfoA(
@@ -8793,7 +8804,7 @@ export function phoneGetButtonInfoA(
   dwButtonLampID: number /* u32 */,
   lpButtonInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
-  return libTAPI32.phoneGetButtonInfoA(hPhone, dwButtonLampID, util.toPointer(lpButtonInfo));
+  return libTAPI32_dll.phoneGetButtonInfoA(hPhone, dwButtonLampID, util.toPointer(lpButtonInfo));
 }
 
 export function phoneGetButtonInfoW(
@@ -8801,7 +8812,7 @@ export function phoneGetButtonInfoW(
   dwButtonLampID: number /* u32 */,
   lpButtonInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
-  return libTAPI32.phoneGetButtonInfoW(hPhone, dwButtonLampID, util.toPointer(lpButtonInfo));
+  return libTAPI32_dll.phoneGetButtonInfoW(hPhone, dwButtonLampID, util.toPointer(lpButtonInfo));
 }
 
 export function phoneGetData(
@@ -8810,7 +8821,7 @@ export function phoneGetData(
   lpData: Deno.PointerValue | Uint8Array | null /* ptr */,
   dwSize: number /* u32 */,
 ): number /* i32 */ {
-  return libTAPI32.phoneGetData(hPhone, dwDataID, util.toPointer(lpData), dwSize);
+  return libTAPI32_dll.phoneGetData(hPhone, dwDataID, util.toPointer(lpData), dwSize);
 }
 
 export function phoneGetDevCaps(
@@ -8820,7 +8831,7 @@ export function phoneGetDevCaps(
   dwExtVersion: number /* u32 */,
   lpPhoneCaps: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
-  return libTAPI32.phoneGetDevCaps(hPhoneApp, dwDeviceID, dwAPIVersion, dwExtVersion, util.toPointer(lpPhoneCaps));
+  return libTAPI32_dll.phoneGetDevCaps(hPhoneApp, dwDeviceID, dwAPIVersion, dwExtVersion, util.toPointer(lpPhoneCaps));
 }
 
 export function phoneGetDevCapsA(
@@ -8830,7 +8841,7 @@ export function phoneGetDevCapsA(
   dwExtVersion: number /* u32 */,
   lpPhoneCaps: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
-  return libTAPI32.phoneGetDevCapsA(hPhoneApp, dwDeviceID, dwAPIVersion, dwExtVersion, util.toPointer(lpPhoneCaps));
+  return libTAPI32_dll.phoneGetDevCapsA(hPhoneApp, dwDeviceID, dwAPIVersion, dwExtVersion, util.toPointer(lpPhoneCaps));
 }
 
 export function phoneGetDevCapsW(
@@ -8840,14 +8851,14 @@ export function phoneGetDevCapsW(
   dwExtVersion: number /* u32 */,
   lpPhoneCaps: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
-  return libTAPI32.phoneGetDevCapsW(hPhoneApp, dwDeviceID, dwAPIVersion, dwExtVersion, util.toPointer(lpPhoneCaps));
+  return libTAPI32_dll.phoneGetDevCapsW(hPhoneApp, dwDeviceID, dwAPIVersion, dwExtVersion, util.toPointer(lpPhoneCaps));
 }
 
 export function phoneGetDisplay(
   hPhone: number /* u32 */,
   lpDisplay: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
-  return libTAPI32.phoneGetDisplay(hPhone, util.toPointer(lpDisplay));
+  return libTAPI32_dll.phoneGetDisplay(hPhone, util.toPointer(lpDisplay));
 }
 
 export function phoneGetGain(
@@ -8855,14 +8866,14 @@ export function phoneGetGain(
   dwHookSwitchDev: number /* u32 */,
   lpdwGain: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
-  return libTAPI32.phoneGetGain(hPhone, dwHookSwitchDev, util.toPointer(lpdwGain));
+  return libTAPI32_dll.phoneGetGain(hPhone, dwHookSwitchDev, util.toPointer(lpdwGain));
 }
 
 export function phoneGetHookSwitch(
   hPhone: number /* u32 */,
   lpdwHookSwitchDevs: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
-  return libTAPI32.phoneGetHookSwitch(hPhone, util.toPointer(lpdwHookSwitchDevs));
+  return libTAPI32_dll.phoneGetHookSwitch(hPhone, util.toPointer(lpdwHookSwitchDevs));
 }
 
 export function phoneGetIcon(
@@ -8870,7 +8881,7 @@ export function phoneGetIcon(
   lpszDeviceClass: string | null /* Windows.Win32.Foundation.PSTR */,
   lphIcon: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
-  return libTAPI32.phoneGetIcon(dwDeviceID, util.pstrToFfi(lpszDeviceClass), util.toPointer(lphIcon));
+  return libTAPI32_dll.phoneGetIcon(dwDeviceID, util.pstrToFfi(lpszDeviceClass), util.toPointer(lphIcon));
 }
 
 export function phoneGetIconA(
@@ -8878,7 +8889,7 @@ export function phoneGetIconA(
   lpszDeviceClass: string | null /* Windows.Win32.Foundation.PSTR */,
   lphIcon: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
-  return libTAPI32.phoneGetIconA(dwDeviceID, util.pstrToFfi(lpszDeviceClass), util.toPointer(lphIcon));
+  return libTAPI32_dll.phoneGetIconA(dwDeviceID, util.pstrToFfi(lpszDeviceClass), util.toPointer(lphIcon));
 }
 
 export function phoneGetIconW(
@@ -8886,7 +8897,7 @@ export function phoneGetIconW(
   lpszDeviceClass: string | null /* Windows.Win32.Foundation.PWSTR */,
   lphIcon: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
-  return libTAPI32.phoneGetIconW(dwDeviceID, util.pwstrToFfi(lpszDeviceClass), util.toPointer(lphIcon));
+  return libTAPI32_dll.phoneGetIconW(dwDeviceID, util.pwstrToFfi(lpszDeviceClass), util.toPointer(lphIcon));
 }
 
 export function phoneGetID(
@@ -8894,7 +8905,7 @@ export function phoneGetID(
   lpDeviceID: Deno.PointerValue | Uint8Array | null /* ptr */,
   lpszDeviceClass: string | null /* Windows.Win32.Foundation.PSTR */,
 ): number /* i32 */ {
-  return libTAPI32.phoneGetID(hPhone, util.toPointer(lpDeviceID), util.pstrToFfi(lpszDeviceClass));
+  return libTAPI32_dll.phoneGetID(hPhone, util.toPointer(lpDeviceID), util.pstrToFfi(lpszDeviceClass));
 }
 
 export function phoneGetIDA(
@@ -8902,7 +8913,7 @@ export function phoneGetIDA(
   lpDeviceID: Deno.PointerValue | Uint8Array | null /* ptr */,
   lpszDeviceClass: string | null /* Windows.Win32.Foundation.PSTR */,
 ): number /* i32 */ {
-  return libTAPI32.phoneGetIDA(hPhone, util.toPointer(lpDeviceID), util.pstrToFfi(lpszDeviceClass));
+  return libTAPI32_dll.phoneGetIDA(hPhone, util.toPointer(lpDeviceID), util.pstrToFfi(lpszDeviceClass));
 }
 
 export function phoneGetIDW(
@@ -8910,7 +8921,7 @@ export function phoneGetIDW(
   lpDeviceID: Deno.PointerValue | Uint8Array | null /* ptr */,
   lpszDeviceClass: string | null /* Windows.Win32.Foundation.PWSTR */,
 ): number /* i32 */ {
-  return libTAPI32.phoneGetIDW(hPhone, util.toPointer(lpDeviceID), util.pwstrToFfi(lpszDeviceClass));
+  return libTAPI32_dll.phoneGetIDW(hPhone, util.toPointer(lpDeviceID), util.pwstrToFfi(lpszDeviceClass));
 }
 
 export function phoneGetLamp(
@@ -8918,7 +8929,7 @@ export function phoneGetLamp(
   dwButtonLampID: number /* u32 */,
   lpdwLampMode: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
-  return libTAPI32.phoneGetLamp(hPhone, dwButtonLampID, util.toPointer(lpdwLampMode));
+  return libTAPI32_dll.phoneGetLamp(hPhone, dwButtonLampID, util.toPointer(lpdwLampMode));
 }
 
 export function phoneGetMessage(
@@ -8926,7 +8937,7 @@ export function phoneGetMessage(
   lpMessage: Deno.PointerValue | Uint8Array | null /* ptr */,
   dwTimeout: number /* u32 */,
 ): number /* i32 */ {
-  return libTAPI32.phoneGetMessage(hPhoneApp, util.toPointer(lpMessage), dwTimeout);
+  return libTAPI32_dll.phoneGetMessage(hPhoneApp, util.toPointer(lpMessage), dwTimeout);
 }
 
 export function phoneGetRing(
@@ -8934,28 +8945,28 @@ export function phoneGetRing(
   lpdwRingMode: Deno.PointerValue | Uint8Array | null /* ptr */,
   lpdwVolume: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
-  return libTAPI32.phoneGetRing(hPhone, util.toPointer(lpdwRingMode), util.toPointer(lpdwVolume));
+  return libTAPI32_dll.phoneGetRing(hPhone, util.toPointer(lpdwRingMode), util.toPointer(lpdwVolume));
 }
 
 export function phoneGetStatus(
   hPhone: number /* u32 */,
   lpPhoneStatus: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
-  return libTAPI32.phoneGetStatus(hPhone, util.toPointer(lpPhoneStatus));
+  return libTAPI32_dll.phoneGetStatus(hPhone, util.toPointer(lpPhoneStatus));
 }
 
 export function phoneGetStatusA(
   hPhone: number /* u32 */,
   lpPhoneStatus: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
-  return libTAPI32.phoneGetStatusA(hPhone, util.toPointer(lpPhoneStatus));
+  return libTAPI32_dll.phoneGetStatusA(hPhone, util.toPointer(lpPhoneStatus));
 }
 
 export function phoneGetStatusW(
   hPhone: number /* u32 */,
   lpPhoneStatus: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
-  return libTAPI32.phoneGetStatusW(hPhone, util.toPointer(lpPhoneStatus));
+  return libTAPI32_dll.phoneGetStatusW(hPhone, util.toPointer(lpPhoneStatus));
 }
 
 export function phoneGetStatusMessages(
@@ -8964,7 +8975,7 @@ export function phoneGetStatusMessages(
   lpdwButtonModes: Deno.PointerValue | Uint8Array | null /* ptr */,
   lpdwButtonStates: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
-  return libTAPI32.phoneGetStatusMessages(hPhone, util.toPointer(lpdwPhoneStates), util.toPointer(lpdwButtonModes), util.toPointer(lpdwButtonStates));
+  return libTAPI32_dll.phoneGetStatusMessages(hPhone, util.toPointer(lpdwPhoneStates), util.toPointer(lpdwButtonModes), util.toPointer(lpdwButtonStates));
 }
 
 export function phoneGetVolume(
@@ -8972,7 +8983,7 @@ export function phoneGetVolume(
   dwHookSwitchDev: number /* u32 */,
   lpdwVolume: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
-  return libTAPI32.phoneGetVolume(hPhone, dwHookSwitchDev, util.toPointer(lpdwVolume));
+  return libTAPI32_dll.phoneGetVolume(hPhone, dwHookSwitchDev, util.toPointer(lpdwVolume));
 }
 
 export function phoneInitialize(
@@ -8982,7 +8993,7 @@ export function phoneInitialize(
   lpszAppName: string | null /* Windows.Win32.Foundation.PSTR */,
   lpdwNumDevs: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
-  return libTAPI32.phoneInitialize(util.toPointer(lphPhoneApp), util.toPointer(hInstance), util.toPointer(lpfnCallback), util.pstrToFfi(lpszAppName), util.toPointer(lpdwNumDevs));
+  return libTAPI32_dll.phoneInitialize(util.toPointer(lphPhoneApp), util.toPointer(hInstance), util.toPointer(lpfnCallback), util.pstrToFfi(lpszAppName), util.toPointer(lpdwNumDevs));
 }
 
 export function phoneInitializeExA(
@@ -8994,7 +9005,7 @@ export function phoneInitializeExA(
   lpdwAPIVersion: Deno.PointerValue | Uint8Array | null /* ptr */,
   lpPhoneInitializeExParams: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
-  return libTAPI32.phoneInitializeExA(util.toPointer(lphPhoneApp), util.toPointer(hInstance), util.toPointer(lpfnCallback), util.pstrToFfi(lpszFriendlyAppName), util.toPointer(lpdwNumDevs), util.toPointer(lpdwAPIVersion), util.toPointer(lpPhoneInitializeExParams));
+  return libTAPI32_dll.phoneInitializeExA(util.toPointer(lphPhoneApp), util.toPointer(hInstance), util.toPointer(lpfnCallback), util.pstrToFfi(lpszFriendlyAppName), util.toPointer(lpdwNumDevs), util.toPointer(lpdwAPIVersion), util.toPointer(lpPhoneInitializeExParams));
 }
 
 export function phoneInitializeExW(
@@ -9006,7 +9017,7 @@ export function phoneInitializeExW(
   lpdwAPIVersion: Deno.PointerValue | Uint8Array | null /* ptr */,
   lpPhoneInitializeExParams: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
-  return libTAPI32.phoneInitializeExW(util.toPointer(lphPhoneApp), util.toPointer(hInstance), util.toPointer(lpfnCallback), util.pwstrToFfi(lpszFriendlyAppName), util.toPointer(lpdwNumDevs), util.toPointer(lpdwAPIVersion), util.toPointer(lpPhoneInitializeExParams));
+  return libTAPI32_dll.phoneInitializeExW(util.toPointer(lphPhoneApp), util.toPointer(hInstance), util.toPointer(lpfnCallback), util.pwstrToFfi(lpszFriendlyAppName), util.toPointer(lpdwNumDevs), util.toPointer(lpdwAPIVersion), util.toPointer(lpPhoneInitializeExParams));
 }
 
 export function phoneNegotiateAPIVersion(
@@ -9017,7 +9028,7 @@ export function phoneNegotiateAPIVersion(
   lpdwAPIVersion: Deno.PointerValue | Uint8Array | null /* ptr */,
   lpExtensionID: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
-  return libTAPI32.phoneNegotiateAPIVersion(hPhoneApp, dwDeviceID, dwAPILowVersion, dwAPIHighVersion, util.toPointer(lpdwAPIVersion), util.toPointer(lpExtensionID));
+  return libTAPI32_dll.phoneNegotiateAPIVersion(hPhoneApp, dwDeviceID, dwAPILowVersion, dwAPIHighVersion, util.toPointer(lpdwAPIVersion), util.toPointer(lpExtensionID));
 }
 
 export function phoneNegotiateExtVersion(
@@ -9028,7 +9039,7 @@ export function phoneNegotiateExtVersion(
   dwExtHighVersion: number /* u32 */,
   lpdwExtVersion: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
-  return libTAPI32.phoneNegotiateExtVersion(hPhoneApp, dwDeviceID, dwAPIVersion, dwExtLowVersion, dwExtHighVersion, util.toPointer(lpdwExtVersion));
+  return libTAPI32_dll.phoneNegotiateExtVersion(hPhoneApp, dwDeviceID, dwAPIVersion, dwExtLowVersion, dwExtHighVersion, util.toPointer(lpdwExtVersion));
 }
 
 export function phoneOpen(
@@ -9040,7 +9051,7 @@ export function phoneOpen(
   dwCallbackInstance: Deno.PointerValue /* usize */,
   dwPrivilege: number /* u32 */,
 ): number /* i32 */ {
-  return libTAPI32.phoneOpen(hPhoneApp, dwDeviceID, util.toPointer(lphPhone), dwAPIVersion, dwExtVersion, dwCallbackInstance, dwPrivilege);
+  return libTAPI32_dll.phoneOpen(hPhoneApp, dwDeviceID, util.toPointer(lphPhone), dwAPIVersion, dwExtVersion, dwCallbackInstance, dwPrivilege);
 }
 
 export function phoneSetButtonInfo(
@@ -9048,7 +9059,7 @@ export function phoneSetButtonInfo(
   dwButtonLampID: number /* u32 */,
   lpButtonInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
-  return libTAPI32.phoneSetButtonInfo(hPhone, dwButtonLampID, util.toPointer(lpButtonInfo));
+  return libTAPI32_dll.phoneSetButtonInfo(hPhone, dwButtonLampID, util.toPointer(lpButtonInfo));
 }
 
 export function phoneSetButtonInfoA(
@@ -9056,7 +9067,7 @@ export function phoneSetButtonInfoA(
   dwButtonLampID: number /* u32 */,
   lpButtonInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
-  return libTAPI32.phoneSetButtonInfoA(hPhone, dwButtonLampID, util.toPointer(lpButtonInfo));
+  return libTAPI32_dll.phoneSetButtonInfoA(hPhone, dwButtonLampID, util.toPointer(lpButtonInfo));
 }
 
 export function phoneSetButtonInfoW(
@@ -9064,7 +9075,7 @@ export function phoneSetButtonInfoW(
   dwButtonLampID: number /* u32 */,
   lpButtonInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
-  return libTAPI32.phoneSetButtonInfoW(hPhone, dwButtonLampID, util.toPointer(lpButtonInfo));
+  return libTAPI32_dll.phoneSetButtonInfoW(hPhone, dwButtonLampID, util.toPointer(lpButtonInfo));
 }
 
 export function phoneSetData(
@@ -9073,7 +9084,7 @@ export function phoneSetData(
   lpData: Deno.PointerValue | Uint8Array | null /* ptr */,
   dwSize: number /* u32 */,
 ): number /* i32 */ {
-  return libTAPI32.phoneSetData(hPhone, dwDataID, util.toPointer(lpData), dwSize);
+  return libTAPI32_dll.phoneSetData(hPhone, dwDataID, util.toPointer(lpData), dwSize);
 }
 
 export function phoneSetDisplay(
@@ -9083,7 +9094,7 @@ export function phoneSetDisplay(
   lpsDisplay: string | null /* Windows.Win32.Foundation.PSTR */,
   dwSize: number /* u32 */,
 ): number /* i32 */ {
-  return libTAPI32.phoneSetDisplay(hPhone, dwRow, dwColumn, util.pstrToFfi(lpsDisplay), dwSize);
+  return libTAPI32_dll.phoneSetDisplay(hPhone, dwRow, dwColumn, util.pstrToFfi(lpsDisplay), dwSize);
 }
 
 export function phoneSetGain(
@@ -9091,7 +9102,7 @@ export function phoneSetGain(
   dwHookSwitchDev: number /* u32 */,
   dwGain: number /* u32 */,
 ): number /* i32 */ {
-  return libTAPI32.phoneSetGain(hPhone, dwHookSwitchDev, dwGain);
+  return libTAPI32_dll.phoneSetGain(hPhone, dwHookSwitchDev, dwGain);
 }
 
 export function phoneSetHookSwitch(
@@ -9099,7 +9110,7 @@ export function phoneSetHookSwitch(
   dwHookSwitchDevs: number /* u32 */,
   dwHookSwitchMode: number /* u32 */,
 ): number /* i32 */ {
-  return libTAPI32.phoneSetHookSwitch(hPhone, dwHookSwitchDevs, dwHookSwitchMode);
+  return libTAPI32_dll.phoneSetHookSwitch(hPhone, dwHookSwitchDevs, dwHookSwitchMode);
 }
 
 export function phoneSetLamp(
@@ -9107,7 +9118,7 @@ export function phoneSetLamp(
   dwButtonLampID: number /* u32 */,
   dwLampMode: number /* u32 */,
 ): number /* i32 */ {
-  return libTAPI32.phoneSetLamp(hPhone, dwButtonLampID, dwLampMode);
+  return libTAPI32_dll.phoneSetLamp(hPhone, dwButtonLampID, dwLampMode);
 }
 
 export function phoneSetRing(
@@ -9115,7 +9126,7 @@ export function phoneSetRing(
   dwRingMode: number /* u32 */,
   dwVolume: number /* u32 */,
 ): number /* i32 */ {
-  return libTAPI32.phoneSetRing(hPhone, dwRingMode, dwVolume);
+  return libTAPI32_dll.phoneSetRing(hPhone, dwRingMode, dwVolume);
 }
 
 export function phoneSetStatusMessages(
@@ -9124,7 +9135,7 @@ export function phoneSetStatusMessages(
   dwButtonModes: number /* u32 */,
   dwButtonStates: number /* u32 */,
 ): number /* i32 */ {
-  return libTAPI32.phoneSetStatusMessages(hPhone, dwPhoneStates, dwButtonModes, dwButtonStates);
+  return libTAPI32_dll.phoneSetStatusMessages(hPhone, dwPhoneStates, dwButtonModes, dwButtonStates);
 }
 
 export function phoneSetVolume(
@@ -9132,41 +9143,41 @@ export function phoneSetVolume(
   dwHookSwitchDev: number /* u32 */,
   dwVolume: number /* u32 */,
 ): number /* i32 */ {
-  return libTAPI32.phoneSetVolume(hPhone, dwHookSwitchDev, dwVolume);
+  return libTAPI32_dll.phoneSetVolume(hPhone, dwHookSwitchDev, dwVolume);
 }
 
 export function phoneShutdown(
   hPhoneApp: number /* u32 */,
 ): number /* i32 */ {
-  return libTAPI32.phoneShutdown(hPhoneApp);
+  return libTAPI32_dll.phoneShutdown(hPhoneApp);
 }
 
 export function tapiGetLocationInfo(
   lpszCountryCode: string | null /* Windows.Win32.Foundation.PSTR */,
   lpszCityCode: string | null /* Windows.Win32.Foundation.PSTR */,
 ): number /* i32 */ {
-  return libTAPI32.tapiGetLocationInfo(util.pstrToFfi(lpszCountryCode), util.pstrToFfi(lpszCityCode));
+  return libTAPI32_dll.tapiGetLocationInfo(util.pstrToFfi(lpszCountryCode), util.pstrToFfi(lpszCityCode));
 }
 
 export function tapiGetLocationInfoA(
   lpszCountryCode: string | null /* Windows.Win32.Foundation.PSTR */,
   lpszCityCode: string | null /* Windows.Win32.Foundation.PSTR */,
 ): number /* i32 */ {
-  return libTAPI32.tapiGetLocationInfoA(util.pstrToFfi(lpszCountryCode), util.pstrToFfi(lpszCityCode));
+  return libTAPI32_dll.tapiGetLocationInfoA(util.pstrToFfi(lpszCountryCode), util.pstrToFfi(lpszCityCode));
 }
 
 export function tapiGetLocationInfoW(
   lpszCountryCodeW: string | null /* Windows.Win32.Foundation.PWSTR */,
   lpszCityCodeW: string | null /* Windows.Win32.Foundation.PWSTR */,
 ): number /* i32 */ {
-  return libTAPI32.tapiGetLocationInfoW(util.pwstrToFfi(lpszCountryCodeW), util.pwstrToFfi(lpszCityCodeW));
+  return libTAPI32_dll.tapiGetLocationInfoW(util.pwstrToFfi(lpszCountryCodeW), util.pwstrToFfi(lpszCityCodeW));
 }
 
 export function tapiRequestDrop(
   hwnd: Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */,
   wRequestID: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.WPARAM */,
 ): number /* i32 */ {
-  return libTAPI32.tapiRequestDrop(util.hwndToFfi(hwnd), util.toPointer(wRequestID));
+  return libTAPI32_dll.tapiRequestDrop(util.hwndToFfi(hwnd), util.toPointer(wRequestID));
 }
 
 export function tapiRequestMakeCall(
@@ -9175,7 +9186,7 @@ export function tapiRequestMakeCall(
   lpszCalledParty: string | null /* Windows.Win32.Foundation.PSTR */,
   lpszComment: string | null /* Windows.Win32.Foundation.PSTR */,
 ): number /* i32 */ {
-  return libTAPI32.tapiRequestMakeCall(util.pstrToFfi(lpszDestAddress), util.pstrToFfi(lpszAppName), util.pstrToFfi(lpszCalledParty), util.pstrToFfi(lpszComment));
+  return libTAPI32_dll.tapiRequestMakeCall(util.pstrToFfi(lpszDestAddress), util.pstrToFfi(lpszAppName), util.pstrToFfi(lpszCalledParty), util.pstrToFfi(lpszComment));
 }
 
 export function tapiRequestMakeCallA(
@@ -9184,7 +9195,7 @@ export function tapiRequestMakeCallA(
   lpszCalledParty: string | null /* Windows.Win32.Foundation.PSTR */,
   lpszComment: string | null /* Windows.Win32.Foundation.PSTR */,
 ): number /* i32 */ {
-  return libTAPI32.tapiRequestMakeCallA(util.pstrToFfi(lpszDestAddress), util.pstrToFfi(lpszAppName), util.pstrToFfi(lpszCalledParty), util.pstrToFfi(lpszComment));
+  return libTAPI32_dll.tapiRequestMakeCallA(util.pstrToFfi(lpszDestAddress), util.pstrToFfi(lpszAppName), util.pstrToFfi(lpszCalledParty), util.pstrToFfi(lpszComment));
 }
 
 export function tapiRequestMakeCallW(
@@ -9193,7 +9204,7 @@ export function tapiRequestMakeCallW(
   lpszCalledParty: string | null /* Windows.Win32.Foundation.PWSTR */,
   lpszComment: string | null /* Windows.Win32.Foundation.PWSTR */,
 ): number /* i32 */ {
-  return libTAPI32.tapiRequestMakeCallW(util.pwstrToFfi(lpszDestAddress), util.pwstrToFfi(lpszAppName), util.pwstrToFfi(lpszCalledParty), util.pwstrToFfi(lpszComment));
+  return libTAPI32_dll.tapiRequestMakeCallW(util.pwstrToFfi(lpszDestAddress), util.pwstrToFfi(lpszAppName), util.pwstrToFfi(lpszCalledParty), util.pwstrToFfi(lpszComment));
 }
 
 export function tapiRequestMediaCall(
@@ -9208,7 +9219,7 @@ export function tapiRequestMediaCall(
   lpszCalledParty: string | null /* Windows.Win32.Foundation.PSTR */,
   lpszComment: string | null /* Windows.Win32.Foundation.PSTR */,
 ): number /* i32 */ {
-  return libTAPI32.tapiRequestMediaCall(util.hwndToFfi(hwnd), util.toPointer(wRequestID), util.pstrToFfi(lpszDeviceClass), util.pstrToFfi(lpDeviceID), dwSize, dwSecure, util.pstrToFfi(lpszDestAddress), util.pstrToFfi(lpszAppName), util.pstrToFfi(lpszCalledParty), util.pstrToFfi(lpszComment));
+  return libTAPI32_dll.tapiRequestMediaCall(util.hwndToFfi(hwnd), util.toPointer(wRequestID), util.pstrToFfi(lpszDeviceClass), util.pstrToFfi(lpDeviceID), dwSize, dwSecure, util.pstrToFfi(lpszDestAddress), util.pstrToFfi(lpszAppName), util.pstrToFfi(lpszCalledParty), util.pstrToFfi(lpszComment));
 }
 
 export function tapiRequestMediaCallA(
@@ -9223,7 +9234,7 @@ export function tapiRequestMediaCallA(
   lpszCalledParty: string | null /* Windows.Win32.Foundation.PSTR */,
   lpszComment: string | null /* Windows.Win32.Foundation.PSTR */,
 ): number /* i32 */ {
-  return libTAPI32.tapiRequestMediaCallA(util.hwndToFfi(hwnd), util.toPointer(wRequestID), util.pstrToFfi(lpszDeviceClass), util.pstrToFfi(lpDeviceID), dwSize, dwSecure, util.pstrToFfi(lpszDestAddress), util.pstrToFfi(lpszAppName), util.pstrToFfi(lpszCalledParty), util.pstrToFfi(lpszComment));
+  return libTAPI32_dll.tapiRequestMediaCallA(util.hwndToFfi(hwnd), util.toPointer(wRequestID), util.pstrToFfi(lpszDeviceClass), util.pstrToFfi(lpDeviceID), dwSize, dwSecure, util.pstrToFfi(lpszDestAddress), util.pstrToFfi(lpszAppName), util.pstrToFfi(lpszCalledParty), util.pstrToFfi(lpszComment));
 }
 
 export function tapiRequestMediaCallW(
@@ -9238,7 +9249,7 @@ export function tapiRequestMediaCallW(
   lpszCalledParty: string | null /* Windows.Win32.Foundation.PWSTR */,
   lpszComment: string | null /* Windows.Win32.Foundation.PWSTR */,
 ): number /* i32 */ {
-  return libTAPI32.tapiRequestMediaCallW(util.hwndToFfi(hwnd), util.toPointer(wRequestID), util.pwstrToFfi(lpszDeviceClass), util.pwstrToFfi(lpDeviceID), dwSize, dwSecure, util.pwstrToFfi(lpszDestAddress), util.pwstrToFfi(lpszAppName), util.pwstrToFfi(lpszCalledParty), util.pwstrToFfi(lpszComment));
+  return libTAPI32_dll.tapiRequestMediaCallW(util.hwndToFfi(hwnd), util.toPointer(wRequestID), util.pwstrToFfi(lpszDeviceClass), util.pwstrToFfi(lpDeviceID), dwSize, dwSecure, util.pwstrToFfi(lpszDestAddress), util.pwstrToFfi(lpszAppName), util.pwstrToFfi(lpszCalledParty), util.pwstrToFfi(lpszComment));
 }
 
 export function OpenTnefStream(
@@ -9250,7 +9261,7 @@ export function OpenTnefStream(
   wKeyVal: number /* u16 */,
   lppTNEF: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libMAPI32.OpenTnefStream(util.toPointer(lpvSupport), util.toPointer(lpStream), util.toPointer(lpszStreamName), ulFlags, util.toPointer(lpMessage), wKeyVal, util.toPointer(lppTNEF)));
+  return util.pointerFromFfi(libMAPI32_dll.OpenTnefStream(util.toPointer(lpvSupport), util.toPointer(lpStream), util.toPointer(lpszStreamName), ulFlags, util.toPointer(lpMessage), wKeyVal, util.toPointer(lppTNEF)));
 }
 
 export function OpenTnefStreamEx(
@@ -9263,7 +9274,7 @@ export function OpenTnefStreamEx(
   lpAdressBook: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.AddressBook.IAddrBook */,
   lppTNEF: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libMAPI32.OpenTnefStreamEx(util.toPointer(lpvSupport), util.toPointer(lpStream), util.toPointer(lpszStreamName), ulFlags, util.toPointer(lpMessage), wKeyVal, util.toPointer(lpAdressBook), util.toPointer(lppTNEF)));
+  return util.pointerFromFfi(libMAPI32_dll.OpenTnefStreamEx(util.toPointer(lpvSupport), util.toPointer(lpStream), util.toPointer(lpszStreamName), ulFlags, util.toPointer(lpMessage), wKeyVal, util.toPointer(lpAdressBook), util.toPointer(lppTNEF)));
 }
 
 export function GetTnefStreamCodepage(
@@ -9271,6 +9282,6 @@ export function GetTnefStreamCodepage(
   lpulCodepage: Deno.PointerValue | Uint8Array | null /* ptr */,
   lpulSubCodepage: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libMAPI32.GetTnefStreamCodepage(util.toPointer(lpStream), util.toPointer(lpulCodepage), util.toPointer(lpulSubCodepage)));
+  return util.pointerFromFfi(libMAPI32_dll.GetTnefStreamCodepage(util.toPointer(lpStream), util.toPointer(lpulCodepage), util.toPointer(lpulSubCodepage)));
 }
 

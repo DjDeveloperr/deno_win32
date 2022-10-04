@@ -38,13 +38,41 @@ export const TC_NONCONF_BORROW = 0;
 export const TC_NONCONF_SHAPE = 1;
 export const TC_NONCONF_DISCARD = 2;
 export const TC_NONCONF_BORROW_PLUS = 3;
+export const class_NULL = 0;
+export const class_SESSION = 1;
+export const class_SESSION_GROUP = 2;
+export const class_RSVP_HOP = 3;
+export const class_INTEGRITY = 4;
+export const class_TIME_VALUES = 5;
+export const class_ERROR_SPEC = 6;
+export const class_SCOPE = 7;
+export const class_STYLE = 8;
+export const class_FLOWSPEC = 9;
+export const class_IS_FLOWSPEC = 9;
+export const class_FILTER_SPEC = 10;
+export const class_SENDER_TEMPLATE = 11;
+export const class_SENDER_TSPEC = 12;
+export const class_ADSPEC = 13;
+export const class_POLICY_DATA = 14;
+export const class_CONFIRM = 15;
+export const class_MAX = 15;
+export const ctype_SESSION_ipv4 = 1;
+export const ctype_SESSION_ipv4GPI = 3;
 export const SESSFLG_E_Police = 1;
+export const ctype_RSVP_HOP_ipv4 = 1;
 export const Opt_Share_mask = 24;
 export const Opt_Distinct = 8;
 export const Opt_Shared = 16;
 export const Opt_SndSel_mask = 7;
 export const Opt_Wildcard = 1;
 export const Opt_Explicit = 2;
+export const ctype_STYLE = 1;
+export const ctype_FILTER_SPEC_ipv4 = 1;
+export const ctype_FILTER_SPEC_ipv4GPI = 4;
+export const ctype_SENDER_TEMPLATE_ipv4 = 1;
+export const ctype_SENDER_TEMPLATE_ipv4GPI = 4;
+export const ctype_SCOPE_list_ipv4 = 1;
+export const ctype_ERROR_SPEC_ipv4 = 1;
 export const ERROR_SPECF_InPlace = 1;
 export const ERROR_SPECF_NotGuilty = 2;
 export const ERR_FORWARD_OK = 32768;
@@ -52,6 +80,7 @@ export const ERR_Usage_globl = 0;
 export const ERR_Usage_local = 16;
 export const ERR_Usage_serv = 17;
 export const ERR_global_mask = 4095;
+export const ctype_POLICY_DATA = 1;
 export const GENERAL_INFO = 1;
 export const GUARANTEED_SERV = 2;
 export const PREDICTIVE_SERV = 3;
@@ -62,6 +91,9 @@ export const INTSERV_VERS_MASK = 240;
 export const INTSERV_VERSION0 = 0;
 export const ISSH_BREAK_BIT = 128;
 export const ISPH_FLG_INV = 128;
+export const ctype_SENDER_TSPEC = 2;
+export const ctype_FLOWSPEC_Intserv0 = 2;
+export const ctype_ADSPEC_INTSERV = 2;
 export const RSVP_PATH = 1;
 export const RSVP_RESV = 2;
 export const RSVP_PATH_ERR = 3;
@@ -211,6 +243,11 @@ export const RSVP_WILDCARD_STYLE = 1;
 export const RSVP_FIXED_FILTER_STYLE = 2;
 export const RSVP_SHARED_EXPLICIT_STYLE = 3;
 export const AD_FLAG_BREAK_BIT = 1;
+export const mIOC_IN = 2147483648;
+export const mIOC_OUT = 1073741824;
+export const mIOC_VENDOR = 67108864;
+export const mCOMPANY = 402653184;
+export const ioctl_code = 1;
 export const QOSSPBASE = 50000;
 export const ALLOWED_TO_SEND_DATA = 50001;
 export const ABLE_TO_RECV_RSVP = 50002;
@@ -269,6 +306,7 @@ export const ERROR_INVALID_SHAPE_RATE = 7519;
 export const ERROR_INVALID_DS_CLASS = 7520;
 export const ERROR_TOO_MANY_CLIENTS = 7521;
 export const FSCTL_TCP_BASE = 18;
+export const DD_TCP_DEVICE_NAME = `\Device\Tcp`;
 export const IF_MIB_STATS_ID = 1;
 export const IP_MIB_STATS_ID = 1;
 export const IP_MIB_ADDRTABLE_ENTRY_ID = 258;
@@ -523,52 +561,6 @@ export const FILTERSPEC_END = 6;
 export type LPM_HANDLE = Deno.PointerValue;
 
 export type RHANDLE = Deno.PointerValue;
-
-/**
- * Windows.Win32.NetworkManagement.QoS.FLOWSPEC (size: 32)
- */
-export interface FLOWSPEC {
-  /** u32 */
-  TokenRate: number;
-  /** u32 */
-  TokenBucketSize: number;
-  /** u32 */
-  PeakBandwidth: number;
-  /** u32 */
-  Latency: number;
-  /** u32 */
-  DelayVariation: number;
-  /** u32 */
-  ServiceType: number;
-  /** u32 */
-  MaxSduSize: number;
-  /** u32 */
-  MinimumPolicedSize: number;
-}
-
-export const sizeofFLOWSPEC = 32;
-
-export function allocFLOWSPEC(data?: Partial<FLOWSPEC>): Uint8Array {
-  const buf = new Uint8Array(sizeofFLOWSPEC);
-  const view = new DataView(buf.buffer);
-  // 0x00: u32
-  if (data?.TokenRate !== undefined) view.setUint32(0, Number(data.TokenRate), true);
-  // 0x04: u32
-  if (data?.TokenBucketSize !== undefined) view.setUint32(4, Number(data.TokenBucketSize), true);
-  // 0x08: u32
-  if (data?.PeakBandwidth !== undefined) view.setUint32(8, Number(data.PeakBandwidth), true);
-  // 0x0c: u32
-  if (data?.Latency !== undefined) view.setUint32(12, Number(data.Latency), true);
-  // 0x10: u32
-  if (data?.DelayVariation !== undefined) view.setUint32(16, Number(data.DelayVariation), true);
-  // 0x14: u32
-  if (data?.ServiceType !== undefined) view.setUint32(20, Number(data.ServiceType), true);
-  // 0x18: u32
-  if (data?.MaxSduSize !== undefined) view.setUint32(24, Number(data.MaxSduSize), true);
-  // 0x1c: u32
-  if (data?.MinimumPolicedSize !== undefined) view.setUint32(28, Number(data.MinimumPolicedSize), true);
-  return buf;
-}
 
 /**
  * Windows.Win32.NetworkManagement.QoS.QOS_OBJECT_HDR (size: 8)
@@ -1670,19 +1662,19 @@ export function alloc_u2_e__Union(data?: Partial<_u2_e__Union>): Uint8Array {
 }
 
 /**
- * Windows.Win32.NetworkManagement.QoS.flow_desc (size: 16)
+ * Windows.Win32.NetworkManagement.QoS.FLOW_DESC (size: 16)
  */
-export interface flow_desc {
+export interface FLOW_DESC {
   /** _u1_e__Union */
   u1: Uint8Array | Deno.PointerValue | null;
   /** _u2_e__Union */
   u2: Uint8Array | Deno.PointerValue | null;
 }
 
-export const sizeofFlow_desc = 16;
+export const sizeofFLOW_DESC = 16;
 
-export function allocFlow_desc(data?: Partial<flow_desc>): Uint8Array {
-  const buf = new Uint8Array(sizeofFlow_desc);
+export function allocFLOW_DESC(data?: Partial<FLOW_DESC>): Uint8Array {
+  const buf = new Uint8Array(sizeofFLOW_DESC);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
   if (data?.u1 !== undefined) view.setBigUint64(0, data.u1 === null ? 0n : BigInt(util.toPointer(data.u1)), true);
@@ -1947,9 +1939,9 @@ export function allocRSVP_MSG_OBJS(data?: Partial<RSVP_MSG_OBJS>): Uint8Array {
 }
 
 /**
- * Windows.Win32.NetworkManagement.QoS.policy_decision (size: 8)
+ * Windows.Win32.NetworkManagement.QoS.POLICY_DECISION (size: 8)
  */
-export interface policy_decision {
+export interface POLICY_DECISION {
   /** u32 */
   lpvResult: number;
   /** u16 */
@@ -1958,10 +1950,10 @@ export interface policy_decision {
   wPolicyErrValue: number;
 }
 
-export const sizeofPolicy_decision = 8;
+export const sizeofPOLICY_DECISION = 8;
 
-export function allocPolicy_decision(data?: Partial<policy_decision>): Uint8Array {
-  const buf = new Uint8Array(sizeofPolicy_decision);
+export function allocPOLICY_DECISION(data?: Partial<POLICY_DECISION>): Uint8Array {
+  const buf = new Uint8Array(sizeofPOLICY_DECISION);
   const view = new DataView(buf.buffer);
   // 0x00: u32
   if (data?.lpvResult !== undefined) view.setUint32(0, Number(data.lpvResult), true);
@@ -2016,9 +2008,9 @@ export function allocLPM_INIT_INFO(data?: Partial<LPM_INIT_INFO>): Uint8Array {
 }
 
 /**
- * Windows.Win32.NetworkManagement.QoS.lpmiptable (size: 24)
+ * Windows.Win32.NetworkManagement.QoS.LPMIPTABLE (size: 24)
  */
-export interface lpmiptable {
+export interface LPMIPTABLE {
   /** u32 */
   ulIfIndex: number;
   /** u32 */
@@ -2029,10 +2021,10 @@ export interface lpmiptable {
   IfNetMask: Uint8Array | Deno.PointerValue | null;
 }
 
-export const sizeofLpmiptable = 24;
+export const sizeofLPMIPTABLE = 24;
 
-export function allocLpmiptable(data?: Partial<lpmiptable>): Uint8Array {
-  const buf = new Uint8Array(sizeofLpmiptable);
+export function allocLPMIPTABLE(data?: Partial<LPMIPTABLE>): Uint8Array {
+  const buf = new Uint8Array(sizeofLPMIPTABLE);
   const view = new DataView(buf.buffer);
   // 0x00: u32
   if (data?.ulIfIndex !== undefined) view.setUint32(0, Number(data.ulIfIndex), true);
@@ -2496,12 +2488,58 @@ export function allocTC_GEN_FILTER(data?: Partial<TC_GEN_FILTER>): Uint8Array {
 }
 
 /**
+ * Windows.Win32.Networking.WinSock.FLOWSPEC (size: 32)
+ */
+export interface FLOWSPEC {
+  /** u32 */
+  TokenRate: number;
+  /** u32 */
+  TokenBucketSize: number;
+  /** u32 */
+  PeakBandwidth: number;
+  /** u32 */
+  Latency: number;
+  /** u32 */
+  DelayVariation: number;
+  /** u32 */
+  ServiceType: number;
+  /** u32 */
+  MaxSduSize: number;
+  /** u32 */
+  MinimumPolicedSize: number;
+}
+
+export const sizeofFLOWSPEC = 32;
+
+export function allocFLOWSPEC(data?: Partial<FLOWSPEC>): Uint8Array {
+  const buf = new Uint8Array(sizeofFLOWSPEC);
+  const view = new DataView(buf.buffer);
+  // 0x00: u32
+  if (data?.TokenRate !== undefined) view.setUint32(0, Number(data.TokenRate), true);
+  // 0x04: u32
+  if (data?.TokenBucketSize !== undefined) view.setUint32(4, Number(data.TokenBucketSize), true);
+  // 0x08: u32
+  if (data?.PeakBandwidth !== undefined) view.setUint32(8, Number(data.PeakBandwidth), true);
+  // 0x0c: u32
+  if (data?.Latency !== undefined) view.setUint32(12, Number(data.Latency), true);
+  // 0x10: u32
+  if (data?.DelayVariation !== undefined) view.setUint32(16, Number(data.DelayVariation), true);
+  // 0x14: u32
+  if (data?.ServiceType !== undefined) view.setUint32(20, Number(data.ServiceType), true);
+  // 0x18: u32
+  if (data?.MaxSduSize !== undefined) view.setUint32(24, Number(data.MaxSduSize), true);
+  // 0x1c: u32
+  if (data?.MinimumPolicedSize !== undefined) view.setUint32(28, Number(data.MinimumPolicedSize), true);
+  return buf;
+}
+
+/**
  * Windows.Win32.NetworkManagement.QoS.TC_GEN_FLOW (size: 32)
  */
 export interface TC_GEN_FLOW {
-  /** Windows.Win32.NetworkManagement.QoS.FLOWSPEC */
+  /** Windows.Win32.Networking.WinSock.FLOWSPEC */
   SendingFlowspec: Uint8Array | Deno.PointerValue | null;
-  /** Windows.Win32.NetworkManagement.QoS.FLOWSPEC */
+  /** Windows.Win32.Networking.WinSock.FLOWSPEC */
   ReceivingFlowspec: Uint8Array | Deno.PointerValue | null;
   /** u32 */
   TcObjectsLength: number;
@@ -2902,7 +2940,7 @@ export function allocRSVP_FILTERSPEC(data?: Partial<RSVP_FILTERSPEC>): Uint8Arra
  * Windows.Win32.NetworkManagement.QoS.FLOWDESCRIPTOR (size: 24)
  */
 export interface FLOWDESCRIPTOR {
-  /** Windows.Win32.NetworkManagement.QoS.FLOWSPEC */
+  /** Windows.Win32.Networking.WinSock.FLOWSPEC */
   FlowSpec: Uint8Array | Deno.PointerValue | null;
   /** u32 */
   NumFilters: number;
@@ -3408,9 +3446,9 @@ export function allocWBCL_LogHdr(data?: Partial<WBCL_LogHdr>): Uint8Array {
 }
 
 /**
- * Windows.Win32.NetworkManagement.QoS.tag_SIPAEVENT_VSM_IDK_RSA_INFO (size: 24)
+ * Windows.Win32.NetworkManagement.QoS.SIPAEVENT_VSM_IDK_RSA_INFO (size: 24)
  */
-export interface tag_SIPAEVENT_VSM_IDK_RSA_INFO {
+export interface SIPAEVENT_VSM_IDK_RSA_INFO {
   /** u32 */
   KeyBitLength: number;
   /** u32 */
@@ -3421,10 +3459,10 @@ export interface tag_SIPAEVENT_VSM_IDK_RSA_INFO {
   PublicKeyData: Deno.PointerValue | null;
 }
 
-export const sizeofTag_SIPAEVENT_VSM_IDK_RSA_INFO = 24;
+export const sizeofSIPAEVENT_VSM_IDK_RSA_INFO = 24;
 
-export function allocTag_SIPAEVENT_VSM_IDK_RSA_INFO(data?: Partial<tag_SIPAEVENT_VSM_IDK_RSA_INFO>): Uint8Array {
-  const buf = new Uint8Array(sizeofTag_SIPAEVENT_VSM_IDK_RSA_INFO);
+export function allocSIPAEVENT_VSM_IDK_RSA_INFO(data?: Partial<SIPAEVENT_VSM_IDK_RSA_INFO>): Uint8Array {
+  const buf = new Uint8Array(sizeofSIPAEVENT_VSM_IDK_RSA_INFO);
   const view = new DataView(buf.buffer);
   // 0x00: u32
   if (data?.KeyBitLength !== undefined) view.setUint32(0, Number(data.KeyBitLength), true);
@@ -3439,19 +3477,19 @@ export function allocTag_SIPAEVENT_VSM_IDK_RSA_INFO(data?: Partial<tag_SIPAEVENT
 }
 
 /**
- * Windows.Win32.NetworkManagement.QoS.tag_SIPAEVENT_VSM_IDK_INFO_PAYLOAD (size: 16)
+ * Windows.Win32.NetworkManagement.QoS.SIPAEVENT_VSM_IDK_INFO_PAYLOAD (size: 16)
  */
-export interface tag_SIPAEVENT_VSM_IDK_INFO_PAYLOAD {
+export interface SIPAEVENT_VSM_IDK_INFO_PAYLOAD {
   /** u32 */
   KeyAlgID: number;
   /** _Anonymous_e__Union */
   Anonymous: Uint8Array | Deno.PointerValue | null;
 }
 
-export const sizeofTag_SIPAEVENT_VSM_IDK_INFO_PAYLOAD = 16;
+export const sizeofSIPAEVENT_VSM_IDK_INFO_PAYLOAD = 16;
 
-export function allocTag_SIPAEVENT_VSM_IDK_INFO_PAYLOAD(data?: Partial<tag_SIPAEVENT_VSM_IDK_INFO_PAYLOAD>): Uint8Array {
-  const buf = new Uint8Array(sizeofTag_SIPAEVENT_VSM_IDK_INFO_PAYLOAD);
+export function allocSIPAEVENT_VSM_IDK_INFO_PAYLOAD(data?: Partial<SIPAEVENT_VSM_IDK_INFO_PAYLOAD>): Uint8Array {
+  const buf = new Uint8Array(sizeofSIPAEVENT_VSM_IDK_INFO_PAYLOAD);
   const view = new DataView(buf.buffer);
   // 0x00: u32
   if (data?.KeyAlgID !== undefined) view.setUint32(0, Number(data.KeyAlgID), true);
@@ -3462,9 +3500,9 @@ export function allocTag_SIPAEVENT_VSM_IDK_INFO_PAYLOAD(data?: Partial<tag_SIPAE
 }
 
 /**
- * Windows.Win32.NetworkManagement.QoS.tag_SIPAEVENT_SI_POLICY_PAYLOAD (size: 24)
+ * Windows.Win32.NetworkManagement.QoS.SIPAEVENT_SI_POLICY_PAYLOAD (size: 24)
  */
-export interface tag_SIPAEVENT_SI_POLICY_PAYLOAD {
+export interface SIPAEVENT_SI_POLICY_PAYLOAD {
   /** u64 */
   PolicyVersion: Deno.PointerValue;
   /** u16 */
@@ -3477,10 +3515,10 @@ export interface tag_SIPAEVENT_SI_POLICY_PAYLOAD {
   VarLengthData: Deno.PointerValue | null;
 }
 
-export const sizeofTag_SIPAEVENT_SI_POLICY_PAYLOAD = 24;
+export const sizeofSIPAEVENT_SI_POLICY_PAYLOAD = 24;
 
-export function allocTag_SIPAEVENT_SI_POLICY_PAYLOAD(data?: Partial<tag_SIPAEVENT_SI_POLICY_PAYLOAD>): Uint8Array {
-  const buf = new Uint8Array(sizeofTag_SIPAEVENT_SI_POLICY_PAYLOAD);
+export function allocSIPAEVENT_SI_POLICY_PAYLOAD(data?: Partial<SIPAEVENT_SI_POLICY_PAYLOAD>): Uint8Array {
+  const buf = new Uint8Array(sizeofSIPAEVENT_SI_POLICY_PAYLOAD);
   const view = new DataView(buf.buffer);
   // 0x00: u64
   if (data?.PolicyVersion !== undefined) view.setBigUint64(0, BigInt(data.PolicyVersion), true);
@@ -3496,9 +3534,9 @@ export function allocTag_SIPAEVENT_SI_POLICY_PAYLOAD(data?: Partial<tag_SIPAEVEN
 }
 
 /**
- * Windows.Win32.NetworkManagement.QoS.tag_SIPAEVENT_REVOCATION_LIST_PAYLOAD (size: 24)
+ * Windows.Win32.NetworkManagement.QoS.SIPAEVENT_REVOCATION_LIST_PAYLOAD (size: 24)
  */
-export interface tag_SIPAEVENT_REVOCATION_LIST_PAYLOAD {
+export interface SIPAEVENT_REVOCATION_LIST_PAYLOAD {
   /** i64 */
   CreationTime: Deno.PointerValue;
   /** u32 */
@@ -3509,10 +3547,10 @@ export interface tag_SIPAEVENT_REVOCATION_LIST_PAYLOAD {
   Digest: Deno.PointerValue | null;
 }
 
-export const sizeofTag_SIPAEVENT_REVOCATION_LIST_PAYLOAD = 24;
+export const sizeofSIPAEVENT_REVOCATION_LIST_PAYLOAD = 24;
 
-export function allocTag_SIPAEVENT_REVOCATION_LIST_PAYLOAD(data?: Partial<tag_SIPAEVENT_REVOCATION_LIST_PAYLOAD>): Uint8Array {
-  const buf = new Uint8Array(sizeofTag_SIPAEVENT_REVOCATION_LIST_PAYLOAD);
+export function allocSIPAEVENT_REVOCATION_LIST_PAYLOAD(data?: Partial<SIPAEVENT_REVOCATION_LIST_PAYLOAD>): Uint8Array {
+  const buf = new Uint8Array(sizeofSIPAEVENT_REVOCATION_LIST_PAYLOAD);
   const view = new DataView(buf.buffer);
   // 0x00: i64
   if (data?.CreationTime !== undefined) view.setBigInt64(0, BigInt(data.CreationTime), true);
@@ -3527,9 +3565,9 @@ export function allocTag_SIPAEVENT_REVOCATION_LIST_PAYLOAD(data?: Partial<tag_SI
 }
 
 /**
- * Windows.Win32.NetworkManagement.QoS.tag_SIPAEVENT_KSR_SIGNATURE_PAYLOAD (size: 16)
+ * Windows.Win32.NetworkManagement.QoS.SIPAEVENT_KSR_SIGNATURE_PAYLOAD (size: 16)
  */
-export interface tag_SIPAEVENT_KSR_SIGNATURE_PAYLOAD {
+export interface SIPAEVENT_KSR_SIGNATURE_PAYLOAD {
   /** u32 */
   SignAlgID: number;
   /** u32 */
@@ -3538,10 +3576,10 @@ export interface tag_SIPAEVENT_KSR_SIGNATURE_PAYLOAD {
   Signature: Deno.PointerValue | null;
 }
 
-export const sizeofTag_SIPAEVENT_KSR_SIGNATURE_PAYLOAD = 16;
+export const sizeofSIPAEVENT_KSR_SIGNATURE_PAYLOAD = 16;
 
-export function allocTag_SIPAEVENT_KSR_SIGNATURE_PAYLOAD(data?: Partial<tag_SIPAEVENT_KSR_SIGNATURE_PAYLOAD>): Uint8Array {
-  const buf = new Uint8Array(sizeofTag_SIPAEVENT_KSR_SIGNATURE_PAYLOAD);
+export function allocSIPAEVENT_KSR_SIGNATURE_PAYLOAD(data?: Partial<SIPAEVENT_KSR_SIGNATURE_PAYLOAD>): Uint8Array {
+  const buf = new Uint8Array(sizeofSIPAEVENT_KSR_SIGNATURE_PAYLOAD);
   const view = new DataView(buf.buffer);
   // 0x00: u32
   if (data?.SignAlgID !== undefined) view.setUint32(0, Number(data.SignAlgID), true);
@@ -3553,9 +3591,9 @@ export function allocTag_SIPAEVENT_KSR_SIGNATURE_PAYLOAD(data?: Partial<tag_SIPA
 }
 
 /**
- * Windows.Win32.NetworkManagement.QoS.tag_SIPAEVENT_SBCP_INFO_PAYLOAD_V1 (size: 32)
+ * Windows.Win32.NetworkManagement.QoS.SIPAEVENT_SBCP_INFO_PAYLOAD_V1 (size: 32)
  */
-export interface tag_SIPAEVENT_SBCP_INFO_PAYLOAD_V1 {
+export interface SIPAEVENT_SBCP_INFO_PAYLOAD_V1 {
   /** u32 */
   PayloadVersion: number;
   /** u32 */
@@ -3572,10 +3610,10 @@ export interface tag_SIPAEVENT_SBCP_INFO_PAYLOAD_V1 {
   VarData: Deno.PointerValue | null;
 }
 
-export const sizeofTag_SIPAEVENT_SBCP_INFO_PAYLOAD_V1 = 32;
+export const sizeofSIPAEVENT_SBCP_INFO_PAYLOAD_V1 = 32;
 
-export function allocTag_SIPAEVENT_SBCP_INFO_PAYLOAD_V1(data?: Partial<tag_SIPAEVENT_SBCP_INFO_PAYLOAD_V1>): Uint8Array {
-  const buf = new Uint8Array(sizeofTag_SIPAEVENT_SBCP_INFO_PAYLOAD_V1);
+export function allocSIPAEVENT_SBCP_INFO_PAYLOAD_V1(data?: Partial<SIPAEVENT_SBCP_INFO_PAYLOAD_V1>): Uint8Array {
+  const buf = new Uint8Array(sizeofSIPAEVENT_SBCP_INFO_PAYLOAD_V1);
   const view = new DataView(buf.buffer);
   // 0x00: u32
   if (data?.PayloadVersion !== undefined) view.setUint32(0, Number(data.PayloadVersion), true);
@@ -3595,70 +3633,18 @@ export function allocTag_SIPAEVENT_SBCP_INFO_PAYLOAD_V1(data?: Partial<tag_SIPAE
   return buf;
 }
 
-export type PSTR = Deno.PointerValue | Uint8Array | null;
-
-/**
- * Windows.Win32.Networking.WinSock.WSABUF (size: 16)
- */
-export interface WSABUF {
-  /** u32 */
-  len: number;
-  /** Windows.Win32.Foundation.PSTR */
-  buf: string | null;
-}
-
-export const sizeofWSABUF = 16;
-
-export function allocWSABUF(data?: Partial<WSABUF>): Uint8Array {
-  const buf = new Uint8Array(sizeofWSABUF);
-  const view = new DataView(buf.buffer);
-  // 0x00: u32
-  if (data?.len !== undefined) view.setUint32(0, Number(data.len), true);
-  // 0x04: pad4
-  // 0x08: buffer
-  if (data?.buf !== undefined) {
-    (buf as any)._f8 = util.pstrToFfi(data.buf);
-    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f8)), true);
-  }
-  return buf;
-}
-
-/**
- * Windows.Win32.NetworkManagement.QoS.QOS (size: 24)
- */
-export interface QOS {
-  /** Windows.Win32.NetworkManagement.QoS.FLOWSPEC */
-  SendingFlowspec: Uint8Array | Deno.PointerValue | null;
-  /** Windows.Win32.NetworkManagement.QoS.FLOWSPEC */
-  ReceivingFlowspec: Uint8Array | Deno.PointerValue | null;
-  /** Windows.Win32.Networking.WinSock.WSABUF */
-  ProviderSpecific: Uint8Array | Deno.PointerValue | null;
-}
-
-export const sizeofQOS = 24;
-
-export function allocQOS(data?: Partial<QOS>): Uint8Array {
-  const buf = new Uint8Array(sizeofQOS);
-  const view = new DataView(buf.buffer);
-  // 0x00: pointer
-  if (data?.SendingFlowspec !== undefined) view.setBigUint64(0, data.SendingFlowspec === null ? 0n : BigInt(util.toPointer(data.SendingFlowspec)), true);
-  // 0x08: pointer
-  if (data?.ReceivingFlowspec !== undefined) view.setBigUint64(8, data.ReceivingFlowspec === null ? 0n : BigInt(util.toPointer(data.ReceivingFlowspec)), true);
-  // 0x10: pointer
-  if (data?.ProviderSpecific !== undefined) view.setBigUint64(16, data.ProviderSpecific === null ? 0n : BigInt(util.toPointer(data.ProviderSpecific)), true);
-  return buf;
-}
-
 export type HANDLE = Deno.PointerValue;
 
 export type SOCKET = Deno.PointerValue;
+
+export type PSTR = Deno.PointerValue | Uint8Array | null;
 
 export type BOOLEAN = number;
 
 // Native Libraries
 
 try {
-  var libqwave = Deno.dlopen("qwave", {
+  var libqwave_dll = Deno.dlopen("qwave.dll", {
     QOSCreateHandle: {
       parameters: ["pointer", "pointer"],
       result: "i32",
@@ -3707,7 +3693,7 @@ try {
 } catch(e) { /* ignore */ }
 
 try {
-  var libTRAFFIC = Deno.dlopen("TRAFFIC", {
+  var libTRAFFIC_dll = Deno.dlopen("TRAFFIC.dll", {
     TcRegisterClient: {
       parameters: ["u32", "pointer", "pointer", "pointer"],
       result: "u32",
@@ -3797,13 +3783,13 @@ export function QOSCreateHandle(
   Version: Deno.PointerValue | Uint8Array | null /* ptr */,
   QOSHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libqwave.QOSCreateHandle(util.toPointer(Version), util.toPointer(QOSHandle)));
+  return util.boolFromFfi(libqwave_dll.QOSCreateHandle(util.toPointer(Version), util.toPointer(QOSHandle)));
 }
 
 export function QOSCloseHandle(
   QOSHandle: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libqwave.QOSCloseHandle(util.toPointer(QOSHandle)));
+  return util.boolFromFfi(libqwave_dll.QOSCloseHandle(util.toPointer(QOSHandle)));
 }
 
 export function QOSStartTrackingClient(
@@ -3811,7 +3797,7 @@ export function QOSStartTrackingClient(
   DestAddr: Deno.PointerValue | Uint8Array | null /* ptr */,
   Flags: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libqwave.QOSStartTrackingClient(util.toPointer(QOSHandle), util.toPointer(DestAddr), Flags));
+  return util.boolFromFfi(libqwave_dll.QOSStartTrackingClient(util.toPointer(QOSHandle), util.toPointer(DestAddr), Flags));
 }
 
 export function QOSStopTrackingClient(
@@ -3819,7 +3805,7 @@ export function QOSStopTrackingClient(
   DestAddr: Deno.PointerValue | Uint8Array | null /* ptr */,
   Flags: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libqwave.QOSStopTrackingClient(util.toPointer(QOSHandle), util.toPointer(DestAddr), Flags));
+  return util.boolFromFfi(libqwave_dll.QOSStopTrackingClient(util.toPointer(QOSHandle), util.toPointer(DestAddr), Flags));
 }
 
 export function QOSEnumerateFlows(
@@ -3827,7 +3813,7 @@ export function QOSEnumerateFlows(
   Size: Deno.PointerValue | Uint8Array | null /* ptr */,
   Buffer: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libqwave.QOSEnumerateFlows(util.toPointer(QOSHandle), util.toPointer(Size), util.toPointer(Buffer)));
+  return util.boolFromFfi(libqwave_dll.QOSEnumerateFlows(util.toPointer(QOSHandle), util.toPointer(Size), util.toPointer(Buffer)));
 }
 
 export function QOSAddSocketToFlow(
@@ -3838,7 +3824,7 @@ export function QOSAddSocketToFlow(
   Flags: number /* u32 */,
   FlowId: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libqwave.QOSAddSocketToFlow(util.toPointer(QOSHandle), util.toPointer(Socket), util.toPointer(DestAddr), TrafficType, Flags, util.toPointer(FlowId)));
+  return util.boolFromFfi(libqwave_dll.QOSAddSocketToFlow(util.toPointer(QOSHandle), util.toPointer(Socket), util.toPointer(DestAddr), TrafficType, Flags, util.toPointer(FlowId)));
 }
 
 export function QOSRemoveSocketFromFlow(
@@ -3847,7 +3833,7 @@ export function QOSRemoveSocketFromFlow(
   FlowId: number /* u32 */,
   Flags: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libqwave.QOSRemoveSocketFromFlow(util.toPointer(QOSHandle), util.toPointer(Socket), FlowId, Flags));
+  return util.boolFromFfi(libqwave_dll.QOSRemoveSocketFromFlow(util.toPointer(QOSHandle), util.toPointer(Socket), FlowId, Flags));
 }
 
 export function QOSSetFlow(
@@ -3859,7 +3845,7 @@ export function QOSSetFlow(
   Flags: number /* u32 */,
   Overlapped: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libqwave.QOSSetFlow(util.toPointer(QOSHandle), FlowId, Operation, Size, util.toPointer(Buffer), Flags, util.toPointer(Overlapped)));
+  return util.boolFromFfi(libqwave_dll.QOSSetFlow(util.toPointer(QOSHandle), FlowId, Operation, Size, util.toPointer(Buffer), Flags, util.toPointer(Overlapped)));
 }
 
 export function QOSQueryFlow(
@@ -3871,7 +3857,7 @@ export function QOSQueryFlow(
   Flags: number /* u32 */,
   Overlapped: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libqwave.QOSQueryFlow(util.toPointer(QOSHandle), FlowId, Operation, util.toPointer(Size), util.toPointer(Buffer), Flags, util.toPointer(Overlapped)));
+  return util.boolFromFfi(libqwave_dll.QOSQueryFlow(util.toPointer(QOSHandle), FlowId, Operation, util.toPointer(Size), util.toPointer(Buffer), Flags, util.toPointer(Overlapped)));
 }
 
 export function QOSNotifyFlow(
@@ -3883,14 +3869,14 @@ export function QOSNotifyFlow(
   Flags: number /* u32 */,
   Overlapped: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libqwave.QOSNotifyFlow(util.toPointer(QOSHandle), FlowId, Operation, util.toPointer(Size), util.toPointer(Buffer), Flags, util.toPointer(Overlapped)));
+  return util.boolFromFfi(libqwave_dll.QOSNotifyFlow(util.toPointer(QOSHandle), FlowId, Operation, util.toPointer(Size), util.toPointer(Buffer), Flags, util.toPointer(Overlapped)));
 }
 
 export function QOSCancel(
   QOSHandle: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
   Overlapped: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libqwave.QOSCancel(util.toPointer(QOSHandle), util.toPointer(Overlapped)));
+  return util.boolFromFfi(libqwave_dll.QOSCancel(util.toPointer(QOSHandle), util.toPointer(Overlapped)));
 }
 
 export function TcRegisterClient(
@@ -3899,7 +3885,7 @@ export function TcRegisterClient(
   ClientHandlerList: Deno.PointerValue | Uint8Array | null /* ptr */,
   pClientHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libTRAFFIC.TcRegisterClient(TciVersion, util.toPointer(ClRegCtx), util.toPointer(ClientHandlerList), util.toPointer(pClientHandle));
+  return libTRAFFIC_dll.TcRegisterClient(TciVersion, util.toPointer(ClRegCtx), util.toPointer(ClientHandlerList), util.toPointer(pClientHandle));
 }
 
 export function TcEnumerateInterfaces(
@@ -3907,7 +3893,7 @@ export function TcEnumerateInterfaces(
   pBufferSize: Deno.PointerValue | Uint8Array | null /* ptr */,
   InterfaceBuffer: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libTRAFFIC.TcEnumerateInterfaces(util.toPointer(ClientHandle), util.toPointer(pBufferSize), util.toPointer(InterfaceBuffer));
+  return libTRAFFIC_dll.TcEnumerateInterfaces(util.toPointer(ClientHandle), util.toPointer(pBufferSize), util.toPointer(InterfaceBuffer));
 }
 
 export function TcOpenInterfaceA(
@@ -3916,7 +3902,7 @@ export function TcOpenInterfaceA(
   ClIfcCtx: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
   pIfcHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libTRAFFIC.TcOpenInterfaceA(util.pstrToFfi(pInterfaceName), util.toPointer(ClientHandle), util.toPointer(ClIfcCtx), util.toPointer(pIfcHandle));
+  return libTRAFFIC_dll.TcOpenInterfaceA(util.pstrToFfi(pInterfaceName), util.toPointer(ClientHandle), util.toPointer(ClIfcCtx), util.toPointer(pIfcHandle));
 }
 
 export function TcOpenInterfaceW(
@@ -3925,13 +3911,13 @@ export function TcOpenInterfaceW(
   ClIfcCtx: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
   pIfcHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libTRAFFIC.TcOpenInterfaceW(util.pwstrToFfi(pInterfaceName), util.toPointer(ClientHandle), util.toPointer(ClIfcCtx), util.toPointer(pIfcHandle));
+  return libTRAFFIC_dll.TcOpenInterfaceW(util.pwstrToFfi(pInterfaceName), util.toPointer(ClientHandle), util.toPointer(ClIfcCtx), util.toPointer(pIfcHandle));
 }
 
 export function TcCloseInterface(
   IfcHandle: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
 ): number /* u32 */ {
-  return libTRAFFIC.TcCloseInterface(util.toPointer(IfcHandle));
+  return libTRAFFIC_dll.TcCloseInterface(util.toPointer(IfcHandle));
 }
 
 export function TcQueryInterface(
@@ -3941,7 +3927,7 @@ export function TcQueryInterface(
   pBufferSize: Deno.PointerValue | Uint8Array | null /* ptr */,
   Buffer: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libTRAFFIC.TcQueryInterface(util.toPointer(IfcHandle), util.toPointer(pGuidParam), util.toPointer(NotifyChange), util.toPointer(pBufferSize), util.toPointer(Buffer));
+  return libTRAFFIC_dll.TcQueryInterface(util.toPointer(IfcHandle), util.toPointer(pGuidParam), util.toPointer(NotifyChange), util.toPointer(pBufferSize), util.toPointer(Buffer));
 }
 
 export function TcSetInterface(
@@ -3950,7 +3936,7 @@ export function TcSetInterface(
   BufferSize: number /* u32 */,
   Buffer: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libTRAFFIC.TcSetInterface(util.toPointer(IfcHandle), util.toPointer(pGuidParam), BufferSize, util.toPointer(Buffer));
+  return libTRAFFIC_dll.TcSetInterface(util.toPointer(IfcHandle), util.toPointer(pGuidParam), BufferSize, util.toPointer(Buffer));
 }
 
 export function TcQueryFlowA(
@@ -3959,7 +3945,7 @@ export function TcQueryFlowA(
   pBufferSize: Deno.PointerValue | Uint8Array | null /* ptr */,
   Buffer: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libTRAFFIC.TcQueryFlowA(util.pstrToFfi(pFlowName), util.toPointer(pGuidParam), util.toPointer(pBufferSize), util.toPointer(Buffer));
+  return libTRAFFIC_dll.TcQueryFlowA(util.pstrToFfi(pFlowName), util.toPointer(pGuidParam), util.toPointer(pBufferSize), util.toPointer(Buffer));
 }
 
 export function TcQueryFlowW(
@@ -3968,7 +3954,7 @@ export function TcQueryFlowW(
   pBufferSize: Deno.PointerValue | Uint8Array | null /* ptr */,
   Buffer: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libTRAFFIC.TcQueryFlowW(util.pwstrToFfi(pFlowName), util.toPointer(pGuidParam), util.toPointer(pBufferSize), util.toPointer(Buffer));
+  return libTRAFFIC_dll.TcQueryFlowW(util.pwstrToFfi(pFlowName), util.toPointer(pGuidParam), util.toPointer(pBufferSize), util.toPointer(Buffer));
 }
 
 export function TcSetFlowA(
@@ -3977,7 +3963,7 @@ export function TcSetFlowA(
   BufferSize: number /* u32 */,
   Buffer: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libTRAFFIC.TcSetFlowA(util.pstrToFfi(pFlowName), util.toPointer(pGuidParam), BufferSize, util.toPointer(Buffer));
+  return libTRAFFIC_dll.TcSetFlowA(util.pstrToFfi(pFlowName), util.toPointer(pGuidParam), BufferSize, util.toPointer(Buffer));
 }
 
 export function TcSetFlowW(
@@ -3986,7 +3972,7 @@ export function TcSetFlowW(
   BufferSize: number /* u32 */,
   Buffer: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libTRAFFIC.TcSetFlowW(util.pwstrToFfi(pFlowName), util.toPointer(pGuidParam), BufferSize, util.toPointer(Buffer));
+  return libTRAFFIC_dll.TcSetFlowW(util.pwstrToFfi(pFlowName), util.toPointer(pGuidParam), BufferSize, util.toPointer(Buffer));
 }
 
 export function TcAddFlow(
@@ -3996,7 +3982,7 @@ export function TcAddFlow(
   pGenericFlow: Deno.PointerValue | Uint8Array | null /* ptr */,
   pFlowHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libTRAFFIC.TcAddFlow(util.toPointer(IfcHandle), util.toPointer(ClFlowCtx), Flags, util.toPointer(pGenericFlow), util.toPointer(pFlowHandle));
+  return libTRAFFIC_dll.TcAddFlow(util.toPointer(IfcHandle), util.toPointer(ClFlowCtx), Flags, util.toPointer(pGenericFlow), util.toPointer(pFlowHandle));
 }
 
 export function TcGetFlowNameA(
@@ -4004,7 +3990,7 @@ export function TcGetFlowNameA(
   StrSize: number /* u32 */,
   pFlowName: string | null /* Windows.Win32.Foundation.PSTR */,
 ): number /* u32 */ {
-  return libTRAFFIC.TcGetFlowNameA(util.toPointer(FlowHandle), StrSize, util.pstrToFfi(pFlowName));
+  return libTRAFFIC_dll.TcGetFlowNameA(util.toPointer(FlowHandle), StrSize, util.pstrToFfi(pFlowName));
 }
 
 export function TcGetFlowNameW(
@@ -4012,14 +3998,14 @@ export function TcGetFlowNameW(
   StrSize: number /* u32 */,
   pFlowName: string | null /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
-  return libTRAFFIC.TcGetFlowNameW(util.toPointer(FlowHandle), StrSize, util.pwstrToFfi(pFlowName));
+  return libTRAFFIC_dll.TcGetFlowNameW(util.toPointer(FlowHandle), StrSize, util.pwstrToFfi(pFlowName));
 }
 
 export function TcModifyFlow(
   FlowHandle: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
   pGenericFlow: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libTRAFFIC.TcModifyFlow(util.toPointer(FlowHandle), util.toPointer(pGenericFlow));
+  return libTRAFFIC_dll.TcModifyFlow(util.toPointer(FlowHandle), util.toPointer(pGenericFlow));
 }
 
 export function TcAddFilter(
@@ -4027,25 +4013,25 @@ export function TcAddFilter(
   pGenericFilter: Deno.PointerValue | Uint8Array | null /* ptr */,
   pFilterHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libTRAFFIC.TcAddFilter(util.toPointer(FlowHandle), util.toPointer(pGenericFilter), util.toPointer(pFilterHandle));
+  return libTRAFFIC_dll.TcAddFilter(util.toPointer(FlowHandle), util.toPointer(pGenericFilter), util.toPointer(pFilterHandle));
 }
 
 export function TcDeregisterClient(
   ClientHandle: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
 ): number /* u32 */ {
-  return libTRAFFIC.TcDeregisterClient(util.toPointer(ClientHandle));
+  return libTRAFFIC_dll.TcDeregisterClient(util.toPointer(ClientHandle));
 }
 
 export function TcDeleteFlow(
   FlowHandle: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
 ): number /* u32 */ {
-  return libTRAFFIC.TcDeleteFlow(util.toPointer(FlowHandle));
+  return libTRAFFIC_dll.TcDeleteFlow(util.toPointer(FlowHandle));
 }
 
 export function TcDeleteFilter(
   FilterHandle: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
 ): number /* u32 */ {
-  return libTRAFFIC.TcDeleteFilter(util.toPointer(FilterHandle));
+  return libTRAFFIC_dll.TcDeleteFilter(util.toPointer(FilterHandle));
 }
 
 export function TcEnumerateFlows(
@@ -4055,6 +4041,6 @@ export function TcEnumerateFlows(
   pBufSize: Deno.PointerValue | Uint8Array | null /* ptr */,
   Buffer: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libTRAFFIC.TcEnumerateFlows(util.toPointer(IfcHandle), util.toPointer(pEnumHandle), util.toPointer(pFlowCount), util.toPointer(pBufSize), util.toPointer(Buffer));
+  return libTRAFFIC_dll.TcEnumerateFlows(util.toPointer(IfcHandle), util.toPointer(pEnumHandle), util.toPointer(pFlowCount), util.toPointer(pBufSize), util.toPointer(Buffer));
 }
 

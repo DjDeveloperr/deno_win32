@@ -49,7 +49,7 @@ export type WRITE_CACHE_TYPE = number;
 export type WRITE_CACHE_ENABLE = number;
 export type WRITE_CACHE_CHANGE = number;
 export type WRITE_THROUGH = number;
-export type _DEVICEDUMP_COLLECTION_TYPE = number;
+export type DEVICEDUMP_COLLECTION_TYPEIDE_NOTIFICATION_TYPE = number;
 export type STORAGE_POWERUP_REASON_TYPE = number;
 export type STORAGE_DEVICE_POWER_CAP_UNITS = number;
 export type STORAGE_RPMB_COMMAND_TYPE = number;
@@ -239,6 +239,8 @@ export const ERROR_HISTORY_DIRECTORY_ENTRY_DEFAULT_COUNT = 8;
 export const DEVICEDUMP_STRUCTURE_VERSION_V1 = 1;
 export const DEVICEDUMP_MAX_IDSTRING = 32;
 export const MAX_FW_BUCKET_ID_LENGTH = 132;
+export const STORAGE_CRASH_TELEMETRY_REGKEY = `\Registry\Machine\System\CurrentControlSet\Control\CrashControl\StorageTelemetry`;
+export const STORAGE_DEVICE_TELEMETRY_REGKEY = `\Registry\Machine\System\CurrentControlSet\Control\Storage\StorageTelemetry`;
 export const DDUMP_FLAG_DATA_READ_FROM_DEVICE = 1;
 export const FW_ISSUEID_NO_ISSUE = 0;
 export const FW_ISSUEID_UNKNOWN = 4294967295;
@@ -246,6 +248,8 @@ export const TC_PUBLIC_DEVICEDUMP_CONTENT_SMART = 1;
 export const TC_PUBLIC_DEVICEDUMP_CONTENT_GPLOG = 2;
 export const TC_PUBLIC_DEVICEDUMP_CONTENT_GPLOG_MAX = 16;
 export const TC_DEVICEDUMP_SUBSECTION_DESC_LENGTH = 16;
+export const TC_PUBLIC_DATA_TYPE_ATAGP = `ATAGPLogPages`;
+export const TC_PUBLIC_DATA_TYPE_ATASMART = `ATASMARTPages`;
 export const CDB_SIZE = 16;
 export const TELEMETRY_COMMAND_SIZE = 16;
 export const DEVICEDUMP_CAP_PRIVATE_SECTION = 1;
@@ -1006,7 +1010,7 @@ export const STREAM_LAYOUT_ENTRY_NO_CLUSTERS_ALLOCATED = 8;
 export const STREAM_LAYOUT_ENTRY_HAS_INFORMATION = 16;
 export const STREAM_EXTENT_ENTRY_AS_RETRIEVAL_POINTERS = 1;
 export const STREAM_EXTENT_ENTRY_ALL_EXTENTS = 2;
-export const CHECKSUM_TYPE_UNCHANGED = "-1";
+export const CHECKSUM_TYPE_UNCHANGED = `-1`;
 export const CHECKSUM_TYPE_NONE = 0;
 export const CHECKSUM_TYPE_CRC32 = 1;
 export const CHECKSUM_TYPE_CRC64 = 2;
@@ -1727,25 +1731,251 @@ export const FSBPIO_OUTFL_COMPATIBLE_STORAGE_DRIVER = 8;
 // Structs
 
 /**
- * Windows.Win32.UI.Shell.PropertiesSystem.PROPERTYKEY (size: 16)
+ * Windows.Win32.Devices.Properties.DEVPROPKEY (size: 16)
  */
-export interface PROPERTYKEY {
+export interface DEVPROPKEY {
   /** System.Guid */
   fmtid: Uint8Array | Deno.PointerValue | null;
   /** u32 */
   pid: number;
 }
 
-export const sizeofPROPERTYKEY = 16;
+export const sizeofDEVPROPKEY = 16;
 
-export function allocPROPERTYKEY(data?: Partial<PROPERTYKEY>): Uint8Array {
-  const buf = new Uint8Array(sizeofPROPERTYKEY);
+export function allocDEVPROPKEY(data?: Partial<DEVPROPKEY>): Uint8Array {
+  const buf = new Uint8Array(sizeofDEVPROPKEY);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
   if (data?.fmtid !== undefined) view.setBigUint64(0, data.fmtid === null ? 0n : BigInt(util.toPointer(data.fmtid)), true);
   // 0x08: u32
   if (data?.pid !== undefined) view.setUint32(8, Number(data.pid), true);
   // 0x0c: pad4
+  return buf;
+}
+
+/**
+ * _Anonymous_e__Struct (size: 16)
+ */
+export interface _Anonymous_e__Struct {
+  /** u64 */
+  Alignment: Deno.PointerValue;
+  /** u64 */
+  Region: Deno.PointerValue;
+}
+
+export const sizeof_Anonymous_e__Struct = 16;
+
+export function alloc_Anonymous_e__Struct(data?: Partial<_Anonymous_e__Struct>): Uint8Array {
+  const buf = new Uint8Array(sizeof_Anonymous_e__Struct);
+  const view = new DataView(buf.buffer);
+  // 0x00: u64
+  if (data?.Alignment !== undefined) view.setBigUint64(0, BigInt(data.Alignment), true);
+  // 0x08: u64
+  if (data?.Region !== undefined) view.setBigUint64(8, BigInt(data.Region), true);
+  return buf;
+}
+
+export type PWSTR = Deno.PointerValue | Uint8Array | null;
+
+/**
+ * _u_e__Struct (size: 16)
+ */
+export interface _u_e__Struct {
+  /** u32 */
+  dwValue: number;
+  /** Windows.Win32.Foundation.PWSTR */
+  pwszName: string | null;
+}
+
+export const sizeof_u_e__Struct = 16;
+
+export function alloc_u_e__Struct(data?: Partial<_u_e__Struct>): Uint8Array {
+  const buf = new Uint8Array(sizeof_u_e__Struct);
+  const view = new DataView(buf.buffer);
+  // 0x00: u32
+  if (data?.dwValue !== undefined) view.setUint32(0, Number(data.dwValue), true);
+  // 0x04: pad4
+  // 0x08: buffer
+  if (data?.pwszName !== undefined) {
+    (buf as any)._f8 = util.pwstrToFfi(data.pwszName);
+    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f8)), true);
+  }
+  return buf;
+}
+
+/**
+ * Windows.Win32.Foundation.LARGE_INTEGER (size: 24)
+ */
+export interface LARGE_INTEGER {
+  /** _Anonymous_e__Struct */
+  Anonymous: Uint8Array | Deno.PointerValue | null;
+  /** _u_e__Struct */
+  u: Uint8Array | Deno.PointerValue | null;
+  /** i64 */
+  QuadPart: Deno.PointerValue;
+}
+
+export const sizeofLARGE_INTEGER = 24;
+
+export function allocLARGE_INTEGER(data?: Partial<LARGE_INTEGER>): Uint8Array {
+  const buf = new Uint8Array(sizeofLARGE_INTEGER);
+  const view = new DataView(buf.buffer);
+  // 0x00: pointer
+  if (data?.Anonymous !== undefined) view.setBigUint64(0, data.Anonymous === null ? 0n : BigInt(util.toPointer(data.Anonymous)), true);
+  // 0x08: pointer
+  if (data?.u !== undefined) view.setBigUint64(8, data.u === null ? 0n : BigInt(util.toPointer(data.u)), true);
+  // 0x10: i64
+  if (data?.QuadPart !== undefined) view.setBigInt64(16, BigInt(data.QuadPart), true);
+  return buf;
+}
+
+/**
+ * Windows.Win32.System.Ioctl.MOVE_FILE_DATA32 (size: 32)
+ */
+export interface MOVE_FILE_DATA32 {
+  /** u32 */
+  FileHandle: number;
+  /** Windows.Win32.Foundation.LARGE_INTEGER */
+  StartingVcn: Uint8Array | Deno.PointerValue | null;
+  /** Windows.Win32.Foundation.LARGE_INTEGER */
+  StartingLcn: Uint8Array | Deno.PointerValue | null;
+  /** u32 */
+  ClusterCount: number;
+}
+
+export const sizeofMOVE_FILE_DATA32 = 32;
+
+export function allocMOVE_FILE_DATA32(data?: Partial<MOVE_FILE_DATA32>): Uint8Array {
+  const buf = new Uint8Array(sizeofMOVE_FILE_DATA32);
+  const view = new DataView(buf.buffer);
+  // 0x00: u32
+  if (data?.FileHandle !== undefined) view.setUint32(0, Number(data.FileHandle), true);
+  // 0x04: pad4
+  // 0x08: pointer
+  if (data?.StartingVcn !== undefined) view.setBigUint64(8, data.StartingVcn === null ? 0n : BigInt(util.toPointer(data.StartingVcn)), true);
+  // 0x10: pointer
+  if (data?.StartingLcn !== undefined) view.setBigUint64(16, data.StartingLcn === null ? 0n : BigInt(util.toPointer(data.StartingLcn)), true);
+  // 0x18: u32
+  if (data?.ClusterCount !== undefined) view.setUint32(24, Number(data.ClusterCount), true);
+  // 0x1c: pad4
+  return buf;
+}
+
+/**
+ * _Anonymous_e__Union (size: 16)
+ */
+export interface _Anonymous_e__Union {
+  /** _Anonymous_e__Struct */
+  Anonymous: Uint8Array | Deno.PointerValue | null;
+  /** array */
+  X: Deno.PointerValue | null;
+}
+
+export const sizeof_Anonymous_e__Union = 16;
+
+export function alloc_Anonymous_e__Union(data?: Partial<_Anonymous_e__Union>): Uint8Array {
+  const buf = new Uint8Array(sizeof_Anonymous_e__Union);
+  const view = new DataView(buf.buffer);
+  // 0x00: pointer
+  if (data?.Anonymous !== undefined) view.setBigUint64(0, data.Anonymous === null ? 0n : BigInt(util.toPointer(data.Anonymous)), true);
+  // 0x08: pointer
+  if (data?.X !== undefined) view.setBigUint64(8, data.X === null ? 0n : BigInt(util.toPointer(data.X)), true);
+  return buf;
+}
+
+/**
+ * Windows.Win32.System.Ioctl.MARK_HANDLE_INFO32 (size: 16)
+ */
+export interface MARK_HANDLE_INFO32 {
+  /** _Anonymous_e__Union */
+  Anonymous: Uint8Array | Deno.PointerValue | null;
+  /** u32 */
+  VolumeHandle: number;
+  /** u32 */
+  HandleInfo: number;
+}
+
+export const sizeofMARK_HANDLE_INFO32 = 16;
+
+export function allocMARK_HANDLE_INFO32(data?: Partial<MARK_HANDLE_INFO32>): Uint8Array {
+  const buf = new Uint8Array(sizeofMARK_HANDLE_INFO32);
+  const view = new DataView(buf.buffer);
+  // 0x00: pointer
+  if (data?.Anonymous !== undefined) view.setBigUint64(0, data.Anonymous === null ? 0n : BigInt(util.toPointer(data.Anonymous)), true);
+  // 0x08: u32
+  if (data?.VolumeHandle !== undefined) view.setUint32(8, Number(data.VolumeHandle), true);
+  // 0x0c: u32
+  if (data?.HandleInfo !== undefined) view.setUint32(12, Number(data.HandleInfo), true);
+  return buf;
+}
+
+/**
+ * Windows.Win32.System.Ioctl.DUPLICATE_EXTENTS_DATA32 (size: 32)
+ */
+export interface DUPLICATE_EXTENTS_DATA32 {
+  /** u32 */
+  FileHandle: number;
+  /** Windows.Win32.Foundation.LARGE_INTEGER */
+  SourceFileOffset: Uint8Array | Deno.PointerValue | null;
+  /** Windows.Win32.Foundation.LARGE_INTEGER */
+  TargetFileOffset: Uint8Array | Deno.PointerValue | null;
+  /** Windows.Win32.Foundation.LARGE_INTEGER */
+  ByteCount: Uint8Array | Deno.PointerValue | null;
+}
+
+export const sizeofDUPLICATE_EXTENTS_DATA32 = 32;
+
+export function allocDUPLICATE_EXTENTS_DATA32(data?: Partial<DUPLICATE_EXTENTS_DATA32>): Uint8Array {
+  const buf = new Uint8Array(sizeofDUPLICATE_EXTENTS_DATA32);
+  const view = new DataView(buf.buffer);
+  // 0x00: u32
+  if (data?.FileHandle !== undefined) view.setUint32(0, Number(data.FileHandle), true);
+  // 0x04: pad4
+  // 0x08: pointer
+  if (data?.SourceFileOffset !== undefined) view.setBigUint64(8, data.SourceFileOffset === null ? 0n : BigInt(util.toPointer(data.SourceFileOffset)), true);
+  // 0x10: pointer
+  if (data?.TargetFileOffset !== undefined) view.setBigUint64(16, data.TargetFileOffset === null ? 0n : BigInt(util.toPointer(data.TargetFileOffset)), true);
+  // 0x18: pointer
+  if (data?.ByteCount !== undefined) view.setBigUint64(24, data.ByteCount === null ? 0n : BigInt(util.toPointer(data.ByteCount)), true);
+  return buf;
+}
+
+/**
+ * Windows.Win32.System.Ioctl.DUPLICATE_EXTENTS_DATA_EX32 (size: 40)
+ */
+export interface DUPLICATE_EXTENTS_DATA_EX32 {
+  /** u32 */
+  Size: number;
+  /** u32 */
+  FileHandle: number;
+  /** Windows.Win32.Foundation.LARGE_INTEGER */
+  SourceFileOffset: Uint8Array | Deno.PointerValue | null;
+  /** Windows.Win32.Foundation.LARGE_INTEGER */
+  TargetFileOffset: Uint8Array | Deno.PointerValue | null;
+  /** Windows.Win32.Foundation.LARGE_INTEGER */
+  ByteCount: Uint8Array | Deno.PointerValue | null;
+  /** u32 */
+  Flags: number;
+}
+
+export const sizeofDUPLICATE_EXTENTS_DATA_EX32 = 40;
+
+export function allocDUPLICATE_EXTENTS_DATA_EX32(data?: Partial<DUPLICATE_EXTENTS_DATA_EX32>): Uint8Array {
+  const buf = new Uint8Array(sizeofDUPLICATE_EXTENTS_DATA_EX32);
+  const view = new DataView(buf.buffer);
+  // 0x00: u32
+  if (data?.Size !== undefined) view.setUint32(0, Number(data.Size), true);
+  // 0x04: u32
+  if (data?.FileHandle !== undefined) view.setUint32(4, Number(data.FileHandle), true);
+  // 0x08: pointer
+  if (data?.SourceFileOffset !== undefined) view.setBigUint64(8, data.SourceFileOffset === null ? 0n : BigInt(util.toPointer(data.SourceFileOffset)), true);
+  // 0x10: pointer
+  if (data?.TargetFileOffset !== undefined) view.setBigUint64(16, data.TargetFileOffset === null ? 0n : BigInt(util.toPointer(data.TargetFileOffset)), true);
+  // 0x18: pointer
+  if (data?.ByteCount !== undefined) view.setBigUint64(24, data.ByteCount === null ? 0n : BigInt(util.toPointer(data.ByteCount)), true);
+  // 0x20: u32
+  if (data?.Flags !== undefined) view.setUint32(32, Number(data.Flags), true);
+  // 0x24: pad4
   return buf;
 }
 
@@ -1978,82 +2208,6 @@ export function allocCLASS_MEDIA_CHANGE_CONTEXT(data?: Partial<CLASS_MEDIA_CHANG
   if (data?.MediaChangeCount !== undefined) view.setUint32(0, Number(data.MediaChangeCount), true);
   // 0x04: u32
   if (data?.NewState !== undefined) view.setUint32(4, Number(data.NewState), true);
-  return buf;
-}
-
-/**
- * _Anonymous_e__Struct (size: 16)
- */
-export interface _Anonymous_e__Struct {
-  /** u64 */
-  Alignment: Deno.PointerValue;
-  /** u64 */
-  Region: Deno.PointerValue;
-}
-
-export const sizeof_Anonymous_e__Struct = 16;
-
-export function alloc_Anonymous_e__Struct(data?: Partial<_Anonymous_e__Struct>): Uint8Array {
-  const buf = new Uint8Array(sizeof_Anonymous_e__Struct);
-  const view = new DataView(buf.buffer);
-  // 0x00: u64
-  if (data?.Alignment !== undefined) view.setBigUint64(0, BigInt(data.Alignment), true);
-  // 0x08: u64
-  if (data?.Region !== undefined) view.setBigUint64(8, BigInt(data.Region), true);
-  return buf;
-}
-
-export type PWSTR = Deno.PointerValue | Uint8Array | null;
-
-/**
- * _u_e__Struct (size: 16)
- */
-export interface _u_e__Struct {
-  /** u32 */
-  dwValue: number;
-  /** Windows.Win32.Foundation.PWSTR */
-  pwszName: string | null;
-}
-
-export const sizeof_u_e__Struct = 16;
-
-export function alloc_u_e__Struct(data?: Partial<_u_e__Struct>): Uint8Array {
-  const buf = new Uint8Array(sizeof_u_e__Struct);
-  const view = new DataView(buf.buffer);
-  // 0x00: u32
-  if (data?.dwValue !== undefined) view.setUint32(0, Number(data.dwValue), true);
-  // 0x04: pad4
-  // 0x08: buffer
-  if (data?.pwszName !== undefined) {
-    (buf as any)._f8 = util.pwstrToFfi(data.pwszName);
-    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f8)), true);
-  }
-  return buf;
-}
-
-/**
- * Windows.Win32.Foundation.LARGE_INTEGER (size: 24)
- */
-export interface LARGE_INTEGER {
-  /** _Anonymous_e__Struct */
-  Anonymous: Uint8Array | Deno.PointerValue | null;
-  /** _u_e__Struct */
-  u: Uint8Array | Deno.PointerValue | null;
-  /** i64 */
-  QuadPart: Deno.PointerValue;
-}
-
-export const sizeofLARGE_INTEGER = 24;
-
-export function allocLARGE_INTEGER(data?: Partial<LARGE_INTEGER>): Uint8Array {
-  const buf = new Uint8Array(sizeofLARGE_INTEGER);
-  const view = new DataView(buf.buffer);
-  // 0x00: pointer
-  if (data?.Anonymous !== undefined) view.setBigUint64(0, data.Anonymous === null ? 0n : BigInt(util.toPointer(data.Anonymous)), true);
-  // 0x08: pointer
-  if (data?.u !== undefined) view.setBigUint64(8, data.u === null ? 0n : BigInt(util.toPointer(data.u)), true);
-  // 0x10: i64
-  if (data?.QuadPart !== undefined) view.setBigInt64(16, BigInt(data.QuadPart), true);
   return buf;
 }
 
@@ -4333,28 +4487,6 @@ export function allocSTORAGE_ZONED_DEVICE_DESCRIPTOR(data?: Partial<STORAGE_ZONE
   // 0x1c: pad4
   // 0x20: pointer
   if (data?.ZoneGroup !== undefined) view.setBigUint64(32, data.ZoneGroup === null ? 0n : BigInt(util.toPointer(data.ZoneGroup)), true);
-  return buf;
-}
-
-/**
- * _Anonymous_e__Union (size: 16)
- */
-export interface _Anonymous_e__Union {
-  /** _Anonymous_e__Struct */
-  Anonymous: Uint8Array | Deno.PointerValue | null;
-  /** array */
-  X: Deno.PointerValue | null;
-}
-
-export const sizeof_Anonymous_e__Union = 16;
-
-export function alloc_Anonymous_e__Union(data?: Partial<_Anonymous_e__Union>): Uint8Array {
-  const buf = new Uint8Array(sizeof_Anonymous_e__Union);
-  const view = new DataView(buf.buffer);
-  // 0x00: pointer
-  if (data?.Anonymous !== undefined) view.setBigUint64(0, data.Anonymous === null ? 0n : BigInt(util.toPointer(data.Anonymous)), true);
-  // 0x08: pointer
-  if (data?.X !== undefined) view.setBigUint64(8, data.X === null ? 0n : BigInt(util.toPointer(data.X)), true);
   return buf;
 }
 
@@ -6901,59 +7033,25 @@ export function allocSTORAGE_EVENT_NOTIFICATION(data?: Partial<STORAGE_EVENT_NOT
 }
 
 /**
- * _AccountSid_e__Struct (size: 16)
- */
-export interface _AccountSid_e__Struct {
-  /** u32 */
-  Size: number;
-  /** array */
-  Data: Deno.PointerValue | null;
-}
-
-export const sizeof_AccountSid_e__Struct = 16;
-
-export function alloc_AccountSid_e__Struct(data?: Partial<_AccountSid_e__Struct>): Uint8Array {
-  const buf = new Uint8Array(sizeof_AccountSid_e__Struct);
-  const view = new DataView(buf.buffer);
-  // 0x00: u32
-  if (data?.Size !== undefined) view.setUint32(0, Number(data.Size), true);
-  // 0x04: pad4
-  // 0x08: pointer
-  if (data?.Data !== undefined) view.setBigUint64(8, data.Data === null ? 0n : BigInt(util.toPointer(data.Data)), true);
-  return buf;
-}
-
-/**
- * _Value_e__Union (size: 32)
+ * _Value_e__Union (size: 16)
  */
 export interface _Value_e__Union {
-  /** u32 */
-  Null: number;
-  /** u32 */
-  Wildcard: number;
+  /** u16 */
+  ShortUuid: number;
   /** System.Guid */
-  TemplateGuid: Uint8Array | Deno.PointerValue | null;
-  /** _AccountSid_e__Struct */
-  AccountSid: Uint8Array | Deno.PointerValue | null;
-  /** array */
-  SecureId: Deno.PointerValue | null;
+  LongUuid: Uint8Array | Deno.PointerValue | null;
 }
 
-export const sizeof_Value_e__Union = 32;
+export const sizeof_Value_e__Union = 16;
 
 export function alloc_Value_e__Union(data?: Partial<_Value_e__Union>): Uint8Array {
   const buf = new Uint8Array(sizeof_Value_e__Union);
   const view = new DataView(buf.buffer);
-  // 0x00: u32
-  if (data?.Null !== undefined) view.setUint32(0, Number(data.Null), true);
-  // 0x04: u32
-  if (data?.Wildcard !== undefined) view.setUint32(4, Number(data.Wildcard), true);
+  // 0x00: u16
+  if (data?.ShortUuid !== undefined) view.setUint16(0, Number(data.ShortUuid), true);
+  // 0x02: pad6
   // 0x08: pointer
-  if (data?.TemplateGuid !== undefined) view.setBigUint64(8, data.TemplateGuid === null ? 0n : BigInt(util.toPointer(data.TemplateGuid)), true);
-  // 0x10: pointer
-  if (data?.AccountSid !== undefined) view.setBigUint64(16, data.AccountSid === null ? 0n : BigInt(util.toPointer(data.AccountSid)), true);
-  // 0x18: pointer
-  if (data?.SecureId !== undefined) view.setBigUint64(24, data.SecureId === null ? 0n : BigInt(util.toPointer(data.SecureId)), true);
+  if (data?.LongUuid !== undefined) view.setBigUint64(8, data.LongUuid === null ? 0n : BigInt(util.toPointer(data.LongUuid)), true);
   return buf;
 }
 
@@ -11113,38 +11211,6 @@ export function allocMOVE_FILE_RECORD_DATA(data?: Partial<MOVE_FILE_RECORD_DATA>
   return buf;
 }
 
-/**
- * Windows.Win32.System.Ioctl.MOVE_FILE_DATA32 (size: 32)
- */
-export interface MOVE_FILE_DATA32 {
-  /** u32 */
-  FileHandle: number;
-  /** Windows.Win32.Foundation.LARGE_INTEGER */
-  StartingVcn: Uint8Array | Deno.PointerValue | null;
-  /** Windows.Win32.Foundation.LARGE_INTEGER */
-  StartingLcn: Uint8Array | Deno.PointerValue | null;
-  /** u32 */
-  ClusterCount: number;
-}
-
-export const sizeofMOVE_FILE_DATA32 = 32;
-
-export function allocMOVE_FILE_DATA32(data?: Partial<MOVE_FILE_DATA32>): Uint8Array {
-  const buf = new Uint8Array(sizeofMOVE_FILE_DATA32);
-  const view = new DataView(buf.buffer);
-  // 0x00: u32
-  if (data?.FileHandle !== undefined) view.setUint32(0, Number(data.FileHandle), true);
-  // 0x04: pad4
-  // 0x08: pointer
-  if (data?.StartingVcn !== undefined) view.setBigUint64(8, data.StartingVcn === null ? 0n : BigInt(util.toPointer(data.StartingVcn)), true);
-  // 0x10: pointer
-  if (data?.StartingLcn !== undefined) view.setBigUint64(16, data.StartingLcn === null ? 0n : BigInt(util.toPointer(data.StartingLcn)), true);
-  // 0x18: u32
-  if (data?.ClusterCount !== undefined) view.setUint32(24, Number(data.ClusterCount), true);
-  // 0x1c: pad4
-  return buf;
-}
-
 export type SID_IDENTIFIER_AUTHORITY = Deno.PointerValue | null;
 
 /**
@@ -11965,32 +12031,6 @@ export function allocMARK_HANDLE_INFO(data?: Partial<MARK_HANDLE_INFO>): Uint8Ar
   // 0x10: u32
   if (data?.HandleInfo !== undefined) view.setUint32(16, Number(data.HandleInfo), true);
   // 0x14: pad4
-  return buf;
-}
-
-/**
- * Windows.Win32.System.Ioctl.MARK_HANDLE_INFO32 (size: 16)
- */
-export interface MARK_HANDLE_INFO32 {
-  /** _Anonymous_e__Union */
-  Anonymous: Uint8Array | Deno.PointerValue | null;
-  /** u32 */
-  VolumeHandle: number;
-  /** u32 */
-  HandleInfo: number;
-}
-
-export const sizeofMARK_HANDLE_INFO32 = 16;
-
-export function allocMARK_HANDLE_INFO32(data?: Partial<MARK_HANDLE_INFO32>): Uint8Array {
-  const buf = new Uint8Array(sizeofMARK_HANDLE_INFO32);
-  const view = new DataView(buf.buffer);
-  // 0x00: pointer
-  if (data?.Anonymous !== undefined) view.setBigUint64(0, data.Anonymous === null ? 0n : BigInt(util.toPointer(data.Anonymous)), true);
-  // 0x08: u32
-  if (data?.VolumeHandle !== undefined) view.setUint32(8, Number(data.VolumeHandle), true);
-  // 0x0c: u32
-  if (data?.HandleInfo !== undefined) view.setUint32(12, Number(data.HandleInfo), true);
   return buf;
 }
 
@@ -16010,8 +16050,8 @@ export interface FILE_STORAGE_TIER {
   Name: Deno.PointerValue | null;
   /** array */
   Description: Deno.PointerValue | null;
-  /** Windows.Win32.System.Ioctl.FILE_STORAGE_TIER_FLAGS */
-  Flags: FILE_STORAGE_TIER_FLAGS;
+  /** u64 */
+  Flags: Deno.PointerValue;
   /** u64 */
   ProvisionedCapacity: Deno.PointerValue;
   /** Windows.Win32.System.Ioctl.FILE_STORAGE_TIER_MEDIA_TYPE */
@@ -16031,9 +16071,8 @@ export function allocFILE_STORAGE_TIER(data?: Partial<FILE_STORAGE_TIER>): Uint8
   if (data?.Name !== undefined) view.setBigUint64(8, data.Name === null ? 0n : BigInt(util.toPointer(data.Name)), true);
   // 0x10: pointer
   if (data?.Description !== undefined) view.setBigUint64(16, data.Description === null ? 0n : BigInt(util.toPointer(data.Description)), true);
-  // 0x18: u32
-  if (data?.Flags !== undefined) view.setUint32(24, Number(data.Flags), true);
-  // 0x1c: pad4
+  // 0x18: u64
+  if (data?.Flags !== undefined) view.setBigUint64(24, BigInt(data.Flags), true);
   // 0x20: u64
   if (data?.ProvisionedCapacity !== undefined) view.setBigUint64(32, BigInt(data.ProvisionedCapacity), true);
   // 0x28: i32
@@ -16411,37 +16450,6 @@ export function allocDUPLICATE_EXTENTS_DATA(data?: Partial<DUPLICATE_EXTENTS_DAT
 }
 
 /**
- * Windows.Win32.System.Ioctl.DUPLICATE_EXTENTS_DATA32 (size: 32)
- */
-export interface DUPLICATE_EXTENTS_DATA32 {
-  /** u32 */
-  FileHandle: number;
-  /** Windows.Win32.Foundation.LARGE_INTEGER */
-  SourceFileOffset: Uint8Array | Deno.PointerValue | null;
-  /** Windows.Win32.Foundation.LARGE_INTEGER */
-  TargetFileOffset: Uint8Array | Deno.PointerValue | null;
-  /** Windows.Win32.Foundation.LARGE_INTEGER */
-  ByteCount: Uint8Array | Deno.PointerValue | null;
-}
-
-export const sizeofDUPLICATE_EXTENTS_DATA32 = 32;
-
-export function allocDUPLICATE_EXTENTS_DATA32(data?: Partial<DUPLICATE_EXTENTS_DATA32>): Uint8Array {
-  const buf = new Uint8Array(sizeofDUPLICATE_EXTENTS_DATA32);
-  const view = new DataView(buf.buffer);
-  // 0x00: u32
-  if (data?.FileHandle !== undefined) view.setUint32(0, Number(data.FileHandle), true);
-  // 0x04: pad4
-  // 0x08: pointer
-  if (data?.SourceFileOffset !== undefined) view.setBigUint64(8, data.SourceFileOffset === null ? 0n : BigInt(util.toPointer(data.SourceFileOffset)), true);
-  // 0x10: pointer
-  if (data?.TargetFileOffset !== undefined) view.setBigUint64(16, data.TargetFileOffset === null ? 0n : BigInt(util.toPointer(data.TargetFileOffset)), true);
-  // 0x18: pointer
-  if (data?.ByteCount !== undefined) view.setBigUint64(24, data.ByteCount === null ? 0n : BigInt(util.toPointer(data.ByteCount)), true);
-  return buf;
-}
-
-/**
  * Windows.Win32.System.Ioctl.DUPLICATE_EXTENTS_DATA_EX (size: 48)
  */
 export interface DUPLICATE_EXTENTS_DATA_EX {
@@ -16477,45 +16485,6 @@ export function allocDUPLICATE_EXTENTS_DATA_EX(data?: Partial<DUPLICATE_EXTENTS_
   // 0x28: u32
   if (data?.Flags !== undefined) view.setUint32(40, Number(data.Flags), true);
   // 0x2c: pad4
-  return buf;
-}
-
-/**
- * Windows.Win32.System.Ioctl.DUPLICATE_EXTENTS_DATA_EX32 (size: 40)
- */
-export interface DUPLICATE_EXTENTS_DATA_EX32 {
-  /** u32 */
-  Size: number;
-  /** u32 */
-  FileHandle: number;
-  /** Windows.Win32.Foundation.LARGE_INTEGER */
-  SourceFileOffset: Uint8Array | Deno.PointerValue | null;
-  /** Windows.Win32.Foundation.LARGE_INTEGER */
-  TargetFileOffset: Uint8Array | Deno.PointerValue | null;
-  /** Windows.Win32.Foundation.LARGE_INTEGER */
-  ByteCount: Uint8Array | Deno.PointerValue | null;
-  /** u32 */
-  Flags: number;
-}
-
-export const sizeofDUPLICATE_EXTENTS_DATA_EX32 = 40;
-
-export function allocDUPLICATE_EXTENTS_DATA_EX32(data?: Partial<DUPLICATE_EXTENTS_DATA_EX32>): Uint8Array {
-  const buf = new Uint8Array(sizeofDUPLICATE_EXTENTS_DATA_EX32);
-  const view = new DataView(buf.buffer);
-  // 0x00: u32
-  if (data?.Size !== undefined) view.setUint32(0, Number(data.Size), true);
-  // 0x04: u32
-  if (data?.FileHandle !== undefined) view.setUint32(4, Number(data.FileHandle), true);
-  // 0x08: pointer
-  if (data?.SourceFileOffset !== undefined) view.setBigUint64(8, data.SourceFileOffset === null ? 0n : BigInt(util.toPointer(data.SourceFileOffset)), true);
-  // 0x10: pointer
-  if (data?.TargetFileOffset !== undefined) view.setBigUint64(16, data.TargetFileOffset === null ? 0n : BigInt(util.toPointer(data.TargetFileOffset)), true);
-  // 0x18: pointer
-  if (data?.ByteCount !== undefined) view.setBigUint64(24, data.ByteCount === null ? 0n : BigInt(util.toPointer(data.ByteCount)), true);
-  // 0x20: u32
-  if (data?.Flags !== undefined) view.setUint32(32, Number(data.Flags), true);
-  // 0x24: pad4
   return buf;
 }
 

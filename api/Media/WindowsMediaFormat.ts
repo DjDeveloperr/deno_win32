@@ -33,6 +33,7 @@ export type WMT_TIMECODE_FRAMERATE = number;
 export type WMT_CREDENTIAL_FLAGS = number;
 export type WM_AETYPE = number;
 export type WMT_RIGHTS = number;
+export type BI_COMPRESSION = number;
 export type NETSOURCE_URLCREDPOLICY_SETTINGS = number;
 
 // Constants
@@ -81,230 +82,230 @@ export const WM_MAX_STREAMS = 63;
 export const WMDRM_IMPORT_INIT_STRUCT_DEFINED = 1;
 export const DRM_OPL_TYPES = 1;
 export const g_dwWMSpecialAttributes = 20;
-export const g_wszWMDuration = "Duration";
-export const g_wszWMBitrate = "Bitrate";
-export const g_wszWMSeekable = "Seekable";
-export const g_wszWMStridable = "Stridable";
-export const g_wszWMBroadcast = "Broadcast";
-export const g_wszWMProtected = "Is_Protected";
-export const g_wszWMTrusted = "Is_Trusted";
-export const g_wszWMSignature_Name = "Signature_Name";
-export const g_wszWMHasAudio = "HasAudio";
-export const g_wszWMHasImage = "HasImage";
-export const g_wszWMHasScript = "HasScript";
-export const g_wszWMHasVideo = "HasVideo";
-export const g_wszWMCurrentBitrate = "CurrentBitrate";
-export const g_wszWMOptimalBitrate = "OptimalBitrate";
-export const g_wszWMHasAttachedImages = "HasAttachedImages";
-export const g_wszWMSkipBackward = "Can_Skip_Backward";
-export const g_wszWMSkipForward = "Can_Skip_Forward";
-export const g_wszWMNumberOfFrames = "NumberOfFrames";
-export const g_wszWMFileSize = "FileSize";
-export const g_wszWMHasArbitraryDataStream = "HasArbitraryDataStream";
-export const g_wszWMHasFileTransferStream = "HasFileTransferStream";
-export const g_wszWMContainerFormat = "WM/ContainerFormat";
+export const g_wszWMDuration = `Duration`;
+export const g_wszWMBitrate = `Bitrate`;
+export const g_wszWMSeekable = `Seekable`;
+export const g_wszWMStridable = `Stridable`;
+export const g_wszWMBroadcast = `Broadcast`;
+export const g_wszWMProtected = `Is_Protected`;
+export const g_wszWMTrusted = `Is_Trusted`;
+export const g_wszWMSignature_Name = `Signature_Name`;
+export const g_wszWMHasAudio = `HasAudio`;
+export const g_wszWMHasImage = `HasImage`;
+export const g_wszWMHasScript = `HasScript`;
+export const g_wszWMHasVideo = `HasVideo`;
+export const g_wszWMCurrentBitrate = `CurrentBitrate`;
+export const g_wszWMOptimalBitrate = `OptimalBitrate`;
+export const g_wszWMHasAttachedImages = `HasAttachedImages`;
+export const g_wszWMSkipBackward = `Can_Skip_Backward`;
+export const g_wszWMSkipForward = `Can_Skip_Forward`;
+export const g_wszWMNumberOfFrames = `NumberOfFrames`;
+export const g_wszWMFileSize = `FileSize`;
+export const g_wszWMHasArbitraryDataStream = `HasArbitraryDataStream`;
+export const g_wszWMHasFileTransferStream = `HasFileTransferStream`;
+export const g_wszWMContainerFormat = `WM/ContainerFormat`;
 export const g_dwWMContentAttributes = 5;
-export const g_wszWMTitle = "Title";
-export const g_wszWMTitleSort = "TitleSort";
-export const g_wszWMAuthor = "Author";
-export const g_wszWMAuthorSort = "AuthorSort";
-export const g_wszWMDescription = "Description";
-export const g_wszWMRating = "Rating";
-export const g_wszWMCopyright = "Copyright";
-export const g_wszWMUse_DRM = "Use_DRM";
-export const g_wszWMDRM_Flags = "DRM_Flags";
-export const g_wszWMDRM_Level = "DRM_Level";
-export const g_wszWMUse_Advanced_DRM = "Use_Advanced_DRM";
-export const g_wszWMDRM_KeySeed = "DRM_KeySeed";
-export const g_wszWMDRM_KeyID = "DRM_KeyID";
-export const g_wszWMDRM_ContentID = "DRM_ContentID";
-export const g_wszWMDRM_SourceID = "DRM_SourceID";
-export const g_wszWMDRM_IndividualizedVersion = "DRM_IndividualizedVersion";
-export const g_wszWMDRM_LicenseAcqURL = "DRM_LicenseAcqURL";
-export const g_wszWMDRM_V1LicenseAcqURL = "DRM_V1LicenseAcqURL";
-export const g_wszWMDRM_HeaderSignPrivKey = "DRM_HeaderSignPrivKey";
-export const g_wszWMDRM_LASignaturePrivKey = "DRM_LASignaturePrivKey";
-export const g_wszWMDRM_LASignatureCert = "DRM_LASignatureCert";
-export const g_wszWMDRM_LASignatureLicSrvCert = "DRM_LASignatureLicSrvCert";
-export const g_wszWMDRM_LASignatureRootCert = "DRM_LASignatureRootCert";
-export const g_wszWMAlbumTitle = "WM/AlbumTitle";
-export const g_wszWMAlbumTitleSort = "WM/AlbumTitleSort";
-export const g_wszWMTrack = "WM/Track";
-export const g_wszWMPromotionURL = "WM/PromotionURL";
-export const g_wszWMAlbumCoverURL = "WM/AlbumCoverURL";
-export const g_wszWMGenre = "WM/Genre";
-export const g_wszWMYear = "WM/Year";
-export const g_wszWMGenreID = "WM/GenreID";
-export const g_wszWMMCDI = "WM/MCDI";
-export const g_wszWMComposer = "WM/Composer";
-export const g_wszWMComposerSort = "WM/ComposerSort";
-export const g_wszWMLyrics = "WM/Lyrics";
-export const g_wszWMTrackNumber = "WM/TrackNumber";
-export const g_wszWMToolName = "WM/ToolName";
-export const g_wszWMToolVersion = "WM/ToolVersion";
-export const g_wszWMIsVBR = "IsVBR";
-export const g_wszWMAlbumArtist = "WM/AlbumArtist";
-export const g_wszWMAlbumArtistSort = "WM/AlbumArtistSort";
-export const g_wszWMBannerImageType = "BannerImageType";
-export const g_wszWMBannerImageData = "BannerImageData";
-export const g_wszWMBannerImageURL = "BannerImageURL";
-export const g_wszWMCopyrightURL = "CopyrightURL";
-export const g_wszWMAspectRatioX = "AspectRatioX";
-export const g_wszWMAspectRatioY = "AspectRatioY";
-export const g_wszASFLeakyBucketPairs = "ASFLeakyBucketPairs";
+export const g_wszWMTitle = `Title`;
+export const g_wszWMTitleSort = `TitleSort`;
+export const g_wszWMAuthor = `Author`;
+export const g_wszWMAuthorSort = `AuthorSort`;
+export const g_wszWMDescription = `Description`;
+export const g_wszWMRating = `Rating`;
+export const g_wszWMCopyright = `Copyright`;
+export const g_wszWMUse_DRM = `Use_DRM`;
+export const g_wszWMDRM_Flags = `DRM_Flags`;
+export const g_wszWMDRM_Level = `DRM_Level`;
+export const g_wszWMUse_Advanced_DRM = `Use_Advanced_DRM`;
+export const g_wszWMDRM_KeySeed = `DRM_KeySeed`;
+export const g_wszWMDRM_KeyID = `DRM_KeyID`;
+export const g_wszWMDRM_ContentID = `DRM_ContentID`;
+export const g_wszWMDRM_SourceID = `DRM_SourceID`;
+export const g_wszWMDRM_IndividualizedVersion = `DRM_IndividualizedVersion`;
+export const g_wszWMDRM_LicenseAcqURL = `DRM_LicenseAcqURL`;
+export const g_wszWMDRM_V1LicenseAcqURL = `DRM_V1LicenseAcqURL`;
+export const g_wszWMDRM_HeaderSignPrivKey = `DRM_HeaderSignPrivKey`;
+export const g_wszWMDRM_LASignaturePrivKey = `DRM_LASignaturePrivKey`;
+export const g_wszWMDRM_LASignatureCert = `DRM_LASignatureCert`;
+export const g_wszWMDRM_LASignatureLicSrvCert = `DRM_LASignatureLicSrvCert`;
+export const g_wszWMDRM_LASignatureRootCert = `DRM_LASignatureRootCert`;
+export const g_wszWMAlbumTitle = `WM/AlbumTitle`;
+export const g_wszWMAlbumTitleSort = `WM/AlbumTitleSort`;
+export const g_wszWMTrack = `WM/Track`;
+export const g_wszWMPromotionURL = `WM/PromotionURL`;
+export const g_wszWMAlbumCoverURL = `WM/AlbumCoverURL`;
+export const g_wszWMGenre = `WM/Genre`;
+export const g_wszWMYear = `WM/Year`;
+export const g_wszWMGenreID = `WM/GenreID`;
+export const g_wszWMMCDI = `WM/MCDI`;
+export const g_wszWMComposer = `WM/Composer`;
+export const g_wszWMComposerSort = `WM/ComposerSort`;
+export const g_wszWMLyrics = `WM/Lyrics`;
+export const g_wszWMTrackNumber = `WM/TrackNumber`;
+export const g_wszWMToolName = `WM/ToolName`;
+export const g_wszWMToolVersion = `WM/ToolVersion`;
+export const g_wszWMIsVBR = `IsVBR`;
+export const g_wszWMAlbumArtist = `WM/AlbumArtist`;
+export const g_wszWMAlbumArtistSort = `WM/AlbumArtistSort`;
+export const g_wszWMBannerImageType = `BannerImageType`;
+export const g_wszWMBannerImageData = `BannerImageData`;
+export const g_wszWMBannerImageURL = `BannerImageURL`;
+export const g_wszWMCopyrightURL = `CopyrightURL`;
+export const g_wszWMAspectRatioX = `AspectRatioX`;
+export const g_wszWMAspectRatioY = `AspectRatioY`;
+export const g_wszASFLeakyBucketPairs = `ASFLeakyBucketPairs`;
 export const g_dwWMNSCAttributes = 5;
-export const g_wszWMNSCName = "NSC_Name";
-export const g_wszWMNSCAddress = "NSC_Address";
-export const g_wszWMNSCPhone = "NSC_Phone";
-export const g_wszWMNSCEmail = "NSC_Email";
-export const g_wszWMNSCDescription = "NSC_Description";
-export const g_wszWMWriter = "WM/Writer";
-export const g_wszWMConductor = "WM/Conductor";
-export const g_wszWMProducer = "WM/Producer";
-export const g_wszWMDirector = "WM/Director";
-export const g_wszWMContentGroupDescription = "WM/ContentGroupDescription";
-export const g_wszWMSubTitle = "WM/SubTitle";
-export const g_wszWMPartOfSet = "WM/PartOfSet";
-export const g_wszWMProtectionType = "WM/ProtectionType";
-export const g_wszWMVideoHeight = "WM/VideoHeight";
-export const g_wszWMVideoWidth = "WM/VideoWidth";
-export const g_wszWMVideoFrameRate = "WM/VideoFrameRate";
-export const g_wszWMMediaClassPrimaryID = "WM/MediaClassPrimaryID";
-export const g_wszWMMediaClassSecondaryID = "WM/MediaClassSecondaryID";
-export const g_wszWMPeriod = "WM/Period";
-export const g_wszWMCategory = "WM/Category";
-export const g_wszWMPicture = "WM/Picture";
-export const g_wszWMLyrics_Synchronised = "WM/Lyrics_Synchronised";
-export const g_wszWMOriginalLyricist = "WM/OriginalLyricist";
-export const g_wszWMOriginalArtist = "WM/OriginalArtist";
-export const g_wszWMOriginalAlbumTitle = "WM/OriginalAlbumTitle";
-export const g_wszWMOriginalReleaseYear = "WM/OriginalReleaseYear";
-export const g_wszWMOriginalFilename = "WM/OriginalFilename";
-export const g_wszWMPublisher = "WM/Publisher";
-export const g_wszWMEncodedBy = "WM/EncodedBy";
-export const g_wszWMEncodingSettings = "WM/EncodingSettings";
-export const g_wszWMEncodingTime = "WM/EncodingTime";
-export const g_wszWMAuthorURL = "WM/AuthorURL";
-export const g_wszWMUserWebURL = "WM/UserWebURL";
-export const g_wszWMAudioFileURL = "WM/AudioFileURL";
-export const g_wszWMAudioSourceURL = "WM/AudioSourceURL";
-export const g_wszWMLanguage = "WM/Language";
-export const g_wszWMParentalRating = "WM/ParentalRating";
-export const g_wszWMBeatsPerMinute = "WM/BeatsPerMinute";
-export const g_wszWMInitialKey = "WM/InitialKey";
-export const g_wszWMMood = "WM/Mood";
-export const g_wszWMText = "WM/Text";
-export const g_wszWMDVDID = "WM/DVDID";
-export const g_wszWMWMContentID = "WM/WMContentID";
-export const g_wszWMWMCollectionID = "WM/WMCollectionID";
-export const g_wszWMWMCollectionGroupID = "WM/WMCollectionGroupID";
-export const g_wszWMUniqueFileIdentifier = "WM/UniqueFileIdentifier";
-export const g_wszWMModifiedBy = "WM/ModifiedBy";
-export const g_wszWMRadioStationName = "WM/RadioStationName";
-export const g_wszWMRadioStationOwner = "WM/RadioStationOwner";
-export const g_wszWMPlaylistDelay = "WM/PlaylistDelay";
-export const g_wszWMCodec = "WM/Codec";
-export const g_wszWMDRM = "WM/DRM";
-export const g_wszWMISRC = "WM/ISRC";
-export const g_wszWMProvider = "WM/Provider";
-export const g_wszWMProviderRating = "WM/ProviderRating";
-export const g_wszWMProviderStyle = "WM/ProviderStyle";
-export const g_wszWMContentDistributor = "WM/ContentDistributor";
-export const g_wszWMSubscriptionContentID = "WM/SubscriptionContentID";
-export const g_wszWMWMADRCPeakReference = "WM/WMADRCPeakReference";
-export const g_wszWMWMADRCPeakTarget = "WM/WMADRCPeakTarget";
-export const g_wszWMWMADRCAverageReference = "WM/WMADRCAverageReference";
-export const g_wszWMWMADRCAverageTarget = "WM/WMADRCAverageTarget";
-export const g_wszWMStreamTypeInfo = "WM/StreamTypeInfo";
-export const g_wszWMPeakBitrate = "WM/PeakBitrate";
-export const g_wszWMASFPacketCount = "WM/ASFPacketCount";
-export const g_wszWMASFSecurityObjectsSize = "WM/ASFSecurityObjectsSize";
-export const g_wszWMSharedUserRating = "WM/SharedUserRating";
-export const g_wszWMSubTitleDescription = "WM/SubTitleDescription";
-export const g_wszWMMediaCredits = "WM/MediaCredits";
-export const g_wszWMParentalRatingReason = "WM/ParentalRatingReason";
-export const g_wszWMOriginalReleaseTime = "WM/OriginalReleaseTime";
-export const g_wszWMMediaStationCallSign = "WM/MediaStationCallSign";
-export const g_wszWMMediaStationName = "WM/MediaStationName";
-export const g_wszWMMediaNetworkAffiliation = "WM/MediaNetworkAffiliation";
-export const g_wszWMMediaOriginalChannel = "WM/MediaOriginalChannel";
-export const g_wszWMMediaOriginalBroadcastDateTime = "WM/MediaOriginalBroadcastDateTime";
-export const g_wszWMMediaIsStereo = "WM/MediaIsStereo";
-export const g_wszWMVideoClosedCaptioning = "WM/VideoClosedCaptioning";
-export const g_wszWMMediaIsRepeat = "WM/MediaIsRepeat";
-export const g_wszWMMediaIsLive = "WM/MediaIsLive";
-export const g_wszWMMediaIsTape = "WM/MediaIsTape";
-export const g_wszWMMediaIsDelay = "WM/MediaIsDelay";
-export const g_wszWMMediaIsSubtitled = "WM/MediaIsSubtitled";
-export const g_wszWMMediaIsPremiere = "WM/MediaIsPremiere";
-export const g_wszWMMediaIsFinale = "WM/MediaIsFinale";
-export const g_wszWMMediaIsSAP = "WM/MediaIsSAP";
-export const g_wszWMProviderCopyright = "WM/ProviderCopyright";
-export const g_wszWMISAN = "WM/ISAN";
-export const g_wszWMADID = "WM/ADID";
-export const g_wszWMWMShadowFileSourceFileType = "WM/WMShadowFileSourceFileType";
-export const g_wszWMWMShadowFileSourceDRMType = "WM/WMShadowFileSourceDRMType";
-export const g_wszWMWMCPDistributor = "WM/WMCPDistributor";
-export const g_wszWMWMCPDistributorID = "WM/WMCPDistributorID";
-export const g_wszWMSeasonNumber = "WM/SeasonNumber";
-export const g_wszWMEpisodeNumber = "WM/EpisodeNumber";
-export const g_wszEarlyDataDelivery = "EarlyDataDelivery";
-export const g_wszJustInTimeDecode = "JustInTimeDecode";
-export const g_wszSingleOutputBuffer = "SingleOutputBuffer";
-export const g_wszSoftwareScaling = "SoftwareScaling";
-export const g_wszDeliverOnReceive = "DeliverOnReceive";
-export const g_wszScrambledAudio = "ScrambledAudio";
-export const g_wszDedicatedDeliveryThread = "DedicatedDeliveryThread";
-export const g_wszEnableDiscreteOutput = "EnableDiscreteOutput";
-export const g_wszSpeakerConfig = "SpeakerConfig";
-export const g_wszDynamicRangeControl = "DynamicRangeControl";
-export const g_wszAllowInterlacedOutput = "AllowInterlacedOutput";
-export const g_wszVideoSampleDurations = "VideoSampleDurations";
-export const g_wszStreamLanguage = "StreamLanguage";
-export const g_wszEnableWMAProSPDIFOutput = "EnableWMAProSPDIFOutput";
-export const g_wszDeinterlaceMode = "DeinterlaceMode";
-export const g_wszInitialPatternForInverseTelecine = "InitialPatternForInverseTelecine";
-export const g_wszJPEGCompressionQuality = "JPEGCompressionQuality";
-export const g_wszWatermarkCLSID = "WatermarkCLSID";
-export const g_wszWatermarkConfig = "WatermarkConfig";
-export const g_wszInterlacedCoding = "InterlacedCoding";
-export const g_wszFixedFrameRate = "FixedFrameRate";
-export const g_wszOriginalSourceFormatTag = "_SOURCEFORMATTAG";
-export const g_wszOriginalWaveFormat = "_ORIGINALWAVEFORMAT";
-export const g_wszEDL = "_EDL";
-export const g_wszComplexity = "_COMPLEXITYEX";
-export const g_wszDecoderComplexityRequested = "_DECODERCOMPLEXITYPROFILE";
-export const g_wszReloadIndexOnSeek = "ReloadIndexOnSeek";
-export const g_wszStreamNumIndexObjects = "StreamNumIndexObjects";
-export const g_wszFailSeekOnError = "FailSeekOnError";
-export const g_wszPermitSeeksBeyondEndOfStream = "PermitSeeksBeyondEndOfStream";
-export const g_wszUsePacketAtSeekPoint = "UsePacketAtSeekPoint";
-export const g_wszSourceBufferTime = "SourceBufferTime";
-export const g_wszSourceMaxBytesAtOnce = "SourceMaxBytesAtOnce";
-export const g_wszVBREnabled = "_VBRENABLED";
-export const g_wszVBRQuality = "_VBRQUALITY";
-export const g_wszVBRBitrateMax = "_RMAX";
-export const g_wszVBRBufferWindowMax = "_BMAX";
-export const g_wszVBRPeak = "VBR Peak";
-export const g_wszBufferAverage = "Buffer Average";
-export const g_wszComplexityMax = "_COMPLEXITYEXMAX";
-export const g_wszComplexityOffline = "_COMPLEXITYEXOFFLINE";
-export const g_wszComplexityLive = "_COMPLEXITYEXLIVE";
-export const g_wszIsVBRSupported = "_ISVBRSUPPORTED";
-export const g_wszNumPasses = "_PASSESUSED";
-export const g_wszMusicSpeechClassMode = "MusicSpeechClassMode";
-export const g_wszMusicClassMode = "MusicClassMode";
-export const g_wszSpeechClassMode = "SpeechClassMode";
-export const g_wszMixedClassMode = "MixedClassMode";
-export const g_wszSpeechCaps = "SpeechFormatCap";
-export const g_wszPeakValue = "PeakValue";
-export const g_wszAverageLevel = "AverageLevel";
-export const g_wszFold6To2Channels3 = "Fold6To2Channels3";
-export const g_wszFoldToChannelsTemplate = "Fold%luTo%luChannels%lu";
-export const g_wszDeviceConformanceTemplate = "DeviceConformanceTemplate";
-export const g_wszEnableFrameInterpolation = "EnableFrameInterpolation";
-export const g_wszNeedsPreviousSample = "NeedsPreviousSample";
-export const g_wszWMIsCompilation = "WM/IsCompilation";
+export const g_wszWMNSCName = `NSC_Name`;
+export const g_wszWMNSCAddress = `NSC_Address`;
+export const g_wszWMNSCPhone = `NSC_Phone`;
+export const g_wszWMNSCEmail = `NSC_Email`;
+export const g_wszWMNSCDescription = `NSC_Description`;
+export const g_wszWMWriter = `WM/Writer`;
+export const g_wszWMConductor = `WM/Conductor`;
+export const g_wszWMProducer = `WM/Producer`;
+export const g_wszWMDirector = `WM/Director`;
+export const g_wszWMContentGroupDescription = `WM/ContentGroupDescription`;
+export const g_wszWMSubTitle = `WM/SubTitle`;
+export const g_wszWMPartOfSet = `WM/PartOfSet`;
+export const g_wszWMProtectionType = `WM/ProtectionType`;
+export const g_wszWMVideoHeight = `WM/VideoHeight`;
+export const g_wszWMVideoWidth = `WM/VideoWidth`;
+export const g_wszWMVideoFrameRate = `WM/VideoFrameRate`;
+export const g_wszWMMediaClassPrimaryID = `WM/MediaClassPrimaryID`;
+export const g_wszWMMediaClassSecondaryID = `WM/MediaClassSecondaryID`;
+export const g_wszWMPeriod = `WM/Period`;
+export const g_wszWMCategory = `WM/Category`;
+export const g_wszWMPicture = `WM/Picture`;
+export const g_wszWMLyrics_Synchronised = `WM/Lyrics_Synchronised`;
+export const g_wszWMOriginalLyricist = `WM/OriginalLyricist`;
+export const g_wszWMOriginalArtist = `WM/OriginalArtist`;
+export const g_wszWMOriginalAlbumTitle = `WM/OriginalAlbumTitle`;
+export const g_wszWMOriginalReleaseYear = `WM/OriginalReleaseYear`;
+export const g_wszWMOriginalFilename = `WM/OriginalFilename`;
+export const g_wszWMPublisher = `WM/Publisher`;
+export const g_wszWMEncodedBy = `WM/EncodedBy`;
+export const g_wszWMEncodingSettings = `WM/EncodingSettings`;
+export const g_wszWMEncodingTime = `WM/EncodingTime`;
+export const g_wszWMAuthorURL = `WM/AuthorURL`;
+export const g_wszWMUserWebURL = `WM/UserWebURL`;
+export const g_wszWMAudioFileURL = `WM/AudioFileURL`;
+export const g_wszWMAudioSourceURL = `WM/AudioSourceURL`;
+export const g_wszWMLanguage = `WM/Language`;
+export const g_wszWMParentalRating = `WM/ParentalRating`;
+export const g_wszWMBeatsPerMinute = `WM/BeatsPerMinute`;
+export const g_wszWMInitialKey = `WM/InitialKey`;
+export const g_wszWMMood = `WM/Mood`;
+export const g_wszWMText = `WM/Text`;
+export const g_wszWMDVDID = `WM/DVDID`;
+export const g_wszWMWMContentID = `WM/WMContentID`;
+export const g_wszWMWMCollectionID = `WM/WMCollectionID`;
+export const g_wszWMWMCollectionGroupID = `WM/WMCollectionGroupID`;
+export const g_wszWMUniqueFileIdentifier = `WM/UniqueFileIdentifier`;
+export const g_wszWMModifiedBy = `WM/ModifiedBy`;
+export const g_wszWMRadioStationName = `WM/RadioStationName`;
+export const g_wszWMRadioStationOwner = `WM/RadioStationOwner`;
+export const g_wszWMPlaylistDelay = `WM/PlaylistDelay`;
+export const g_wszWMCodec = `WM/Codec`;
+export const g_wszWMDRM = `WM/DRM`;
+export const g_wszWMISRC = `WM/ISRC`;
+export const g_wszWMProvider = `WM/Provider`;
+export const g_wszWMProviderRating = `WM/ProviderRating`;
+export const g_wszWMProviderStyle = `WM/ProviderStyle`;
+export const g_wszWMContentDistributor = `WM/ContentDistributor`;
+export const g_wszWMSubscriptionContentID = `WM/SubscriptionContentID`;
+export const g_wszWMWMADRCPeakReference = `WM/WMADRCPeakReference`;
+export const g_wszWMWMADRCPeakTarget = `WM/WMADRCPeakTarget`;
+export const g_wszWMWMADRCAverageReference = `WM/WMADRCAverageReference`;
+export const g_wszWMWMADRCAverageTarget = `WM/WMADRCAverageTarget`;
+export const g_wszWMStreamTypeInfo = `WM/StreamTypeInfo`;
+export const g_wszWMPeakBitrate = `WM/PeakBitrate`;
+export const g_wszWMASFPacketCount = `WM/ASFPacketCount`;
+export const g_wszWMASFSecurityObjectsSize = `WM/ASFSecurityObjectsSize`;
+export const g_wszWMSharedUserRating = `WM/SharedUserRating`;
+export const g_wszWMSubTitleDescription = `WM/SubTitleDescription`;
+export const g_wszWMMediaCredits = `WM/MediaCredits`;
+export const g_wszWMParentalRatingReason = `WM/ParentalRatingReason`;
+export const g_wszWMOriginalReleaseTime = `WM/OriginalReleaseTime`;
+export const g_wszWMMediaStationCallSign = `WM/MediaStationCallSign`;
+export const g_wszWMMediaStationName = `WM/MediaStationName`;
+export const g_wszWMMediaNetworkAffiliation = `WM/MediaNetworkAffiliation`;
+export const g_wszWMMediaOriginalChannel = `WM/MediaOriginalChannel`;
+export const g_wszWMMediaOriginalBroadcastDateTime = `WM/MediaOriginalBroadcastDateTime`;
+export const g_wszWMMediaIsStereo = `WM/MediaIsStereo`;
+export const g_wszWMVideoClosedCaptioning = `WM/VideoClosedCaptioning`;
+export const g_wszWMMediaIsRepeat = `WM/MediaIsRepeat`;
+export const g_wszWMMediaIsLive = `WM/MediaIsLive`;
+export const g_wszWMMediaIsTape = `WM/MediaIsTape`;
+export const g_wszWMMediaIsDelay = `WM/MediaIsDelay`;
+export const g_wszWMMediaIsSubtitled = `WM/MediaIsSubtitled`;
+export const g_wszWMMediaIsPremiere = `WM/MediaIsPremiere`;
+export const g_wszWMMediaIsFinale = `WM/MediaIsFinale`;
+export const g_wszWMMediaIsSAP = `WM/MediaIsSAP`;
+export const g_wszWMProviderCopyright = `WM/ProviderCopyright`;
+export const g_wszWMISAN = `WM/ISAN`;
+export const g_wszWMADID = `WM/ADID`;
+export const g_wszWMWMShadowFileSourceFileType = `WM/WMShadowFileSourceFileType`;
+export const g_wszWMWMShadowFileSourceDRMType = `WM/WMShadowFileSourceDRMType`;
+export const g_wszWMWMCPDistributor = `WM/WMCPDistributor`;
+export const g_wszWMWMCPDistributorID = `WM/WMCPDistributorID`;
+export const g_wszWMSeasonNumber = `WM/SeasonNumber`;
+export const g_wszWMEpisodeNumber = `WM/EpisodeNumber`;
+export const g_wszEarlyDataDelivery = `EarlyDataDelivery`;
+export const g_wszJustInTimeDecode = `JustInTimeDecode`;
+export const g_wszSingleOutputBuffer = `SingleOutputBuffer`;
+export const g_wszSoftwareScaling = `SoftwareScaling`;
+export const g_wszDeliverOnReceive = `DeliverOnReceive`;
+export const g_wszScrambledAudio = `ScrambledAudio`;
+export const g_wszDedicatedDeliveryThread = `DedicatedDeliveryThread`;
+export const g_wszEnableDiscreteOutput = `EnableDiscreteOutput`;
+export const g_wszSpeakerConfig = `SpeakerConfig`;
+export const g_wszDynamicRangeControl = `DynamicRangeControl`;
+export const g_wszAllowInterlacedOutput = `AllowInterlacedOutput`;
+export const g_wszVideoSampleDurations = `VideoSampleDurations`;
+export const g_wszStreamLanguage = `StreamLanguage`;
+export const g_wszEnableWMAProSPDIFOutput = `EnableWMAProSPDIFOutput`;
+export const g_wszDeinterlaceMode = `DeinterlaceMode`;
+export const g_wszInitialPatternForInverseTelecine = `InitialPatternForInverseTelecine`;
+export const g_wszJPEGCompressionQuality = `JPEGCompressionQuality`;
+export const g_wszWatermarkCLSID = `WatermarkCLSID`;
+export const g_wszWatermarkConfig = `WatermarkConfig`;
+export const g_wszInterlacedCoding = `InterlacedCoding`;
+export const g_wszFixedFrameRate = `FixedFrameRate`;
+export const g_wszOriginalSourceFormatTag = `_SOURCEFORMATTAG`;
+export const g_wszOriginalWaveFormat = `_ORIGINALWAVEFORMAT`;
+export const g_wszEDL = `_EDL`;
+export const g_wszComplexity = `_COMPLEXITYEX`;
+export const g_wszDecoderComplexityRequested = `_DECODERCOMPLEXITYPROFILE`;
+export const g_wszReloadIndexOnSeek = `ReloadIndexOnSeek`;
+export const g_wszStreamNumIndexObjects = `StreamNumIndexObjects`;
+export const g_wszFailSeekOnError = `FailSeekOnError`;
+export const g_wszPermitSeeksBeyondEndOfStream = `PermitSeeksBeyondEndOfStream`;
+export const g_wszUsePacketAtSeekPoint = `UsePacketAtSeekPoint`;
+export const g_wszSourceBufferTime = `SourceBufferTime`;
+export const g_wszSourceMaxBytesAtOnce = `SourceMaxBytesAtOnce`;
+export const g_wszVBREnabled = `_VBRENABLED`;
+export const g_wszVBRQuality = `_VBRQUALITY`;
+export const g_wszVBRBitrateMax = `_RMAX`;
+export const g_wszVBRBufferWindowMax = `_BMAX`;
+export const g_wszVBRPeak = `VBR Peak`;
+export const g_wszBufferAverage = `Buffer Average`;
+export const g_wszComplexityMax = `_COMPLEXITYEXMAX`;
+export const g_wszComplexityOffline = `_COMPLEXITYEXOFFLINE`;
+export const g_wszComplexityLive = `_COMPLEXITYEXLIVE`;
+export const g_wszIsVBRSupported = `_ISVBRSUPPORTED`;
+export const g_wszNumPasses = `_PASSESUSED`;
+export const g_wszMusicSpeechClassMode = `MusicSpeechClassMode`;
+export const g_wszMusicClassMode = `MusicClassMode`;
+export const g_wszSpeechClassMode = `SpeechClassMode`;
+export const g_wszMixedClassMode = `MixedClassMode`;
+export const g_wszSpeechCaps = `SpeechFormatCap`;
+export const g_wszPeakValue = `PeakValue`;
+export const g_wszAverageLevel = `AverageLevel`;
+export const g_wszFold6To2Channels3 = `Fold6To2Channels3`;
+export const g_wszFoldToChannelsTemplate = `Fold%luTo%luChannels%lu`;
+export const g_wszDeviceConformanceTemplate = `DeviceConformanceTemplate`;
+export const g_wszEnableFrameInterpolation = `EnableFrameInterpolation`;
+export const g_wszNeedsPreviousSample = `NeedsPreviousSample`;
+export const g_wszWMIsCompilation = `WM/IsCompilation`;
 export const AM_CONFIGASFWRITER_PARAM_AUTOINDEX = 1;
 export const AM_CONFIGASFWRITER_PARAM_MULTIPASS = 2;
 export const AM_CONFIGASFWRITER_PARAM_DONTCOMPRESS = 3;
@@ -408,7 +409,7 @@ export const WMT_PROXY_SETTING_BROWSER = 3;
 export const WMT_PROXY_SETTING_MAX = 4;
 export const WMT_CODECINFO_AUDIO = 0;
 export const WMT_CODECINFO_VIDEO = 1;
-export const WMT_CODECINFO_UNKNOWN = "-1";
+export const WMT_CODECINFO_UNKNOWN = `-1`;
 export const WM_DM_NOTINTERLACED = 0;
 export const WM_DM_DEINTERLACE_NORMAL = 1;
 export const WM_DM_DEINTERLACE_HALFSIZE = 2;
@@ -469,6 +470,12 @@ export const WMT_RIGHT_COPY = 128;
 export const WMT_RIGHT_COLLABORATIVE_PLAY = 256;
 export const WMT_RIGHT_SDMI_TRIGGER = 65536;
 export const WMT_RIGHT_SDMI_NOMORECOPIES = 131072;
+export const BI_RGB = 0;
+export const BI_RLE8 = 1;
+export const BI_RLE4 = 2;
+export const BI_BITFIELDS = 3;
+export const BI_JPEG = 4;
+export const BI_PNG = 5;
 export const NETSOURCE_URLCREDPOLICY_SETTING_SILENTLOGONOK = 0;
 export const NETSOURCE_URLCREDPOLICY_SETTING_MUSTPROMPTUSER = 1;
 export const NETSOURCE_URLCREDPOLICY_SETTING_ANONYMOUSONLY = 2;
@@ -1519,8 +1526,8 @@ export interface BITMAPINFOHEADER {
   biPlanes: number;
   /** u16 */
   biBitCount: number;
-  /** u32 */
-  biCompression: number;
+  /** Windows.Win32.Graphics.Gdi.BI_COMPRESSION */
+  biCompression: BI_COMPRESSION;
   /** u32 */
   biSizeImage: number;
   /** i32 */
@@ -1548,8 +1555,8 @@ export function allocBITMAPINFOHEADER(data?: Partial<BITMAPINFOHEADER>): Uint8Ar
   if (data?.biPlanes !== undefined) view.setUint16(12, Number(data.biPlanes), true);
   // 0x0e: u16
   if (data?.biBitCount !== undefined) view.setUint16(14, Number(data.biBitCount), true);
-  // 0x10: u32
-  if (data?.biCompression !== undefined) view.setUint32(16, Number(data.biCompression), true);
+  // 0x10: i32
+  if (data?.biCompression !== undefined) view.setInt32(16, Number(data.biCompression), true);
   // 0x14: u32
   if (data?.biSizeImage !== undefined) view.setUint32(20, Number(data.biSizeImage), true);
   // 0x18: i32
@@ -1995,7 +2002,7 @@ export function allocDRM_COPY_OPL(data?: Partial<DRM_COPY_OPL>): Uint8Array {
 // Native Libraries
 
 try {
-  var libWMVCore = Deno.dlopen("WMVCore", {
+  var libWMVCore_dll = Deno.dlopen("WMVCore.dll", {
     WMIsContentProtected: {
       parameters: ["buffer", "pointer"],
       result: "pointer",
@@ -2049,14 +2056,14 @@ export function WMIsContentProtected(
   pwszFileName: string | null /* Windows.Win32.Foundation.PWSTR */,
   pfIsProtected: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libWMVCore.WMIsContentProtected(util.pwstrToFfi(pwszFileName), util.toPointer(pfIsProtected)));
+  return util.pointerFromFfi(libWMVCore_dll.WMIsContentProtected(util.pwstrToFfi(pwszFileName), util.toPointer(pfIsProtected)));
 }
 
 export function WMCreateWriter(
   pUnkCert: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Com.IUnknown */,
   ppWriter: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libWMVCore.WMCreateWriter(util.toPointer(pUnkCert), util.toPointer(ppWriter)));
+  return util.pointerFromFfi(libWMVCore_dll.WMCreateWriter(util.toPointer(pUnkCert), util.toPointer(ppWriter)));
 }
 
 export function WMCreateReader(
@@ -2064,7 +2071,7 @@ export function WMCreateReader(
   dwRights: number /* u32 */,
   ppReader: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libWMVCore.WMCreateReader(util.toPointer(pUnkCert), dwRights, util.toPointer(ppReader)));
+  return util.pointerFromFfi(libWMVCore_dll.WMCreateReader(util.toPointer(pUnkCert), dwRights, util.toPointer(ppReader)));
 }
 
 export function WMCreateSyncReader(
@@ -2072,49 +2079,49 @@ export function WMCreateSyncReader(
   dwRights: number /* u32 */,
   ppSyncReader: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libWMVCore.WMCreateSyncReader(util.toPointer(pUnkCert), dwRights, util.toPointer(ppSyncReader)));
+  return util.pointerFromFfi(libWMVCore_dll.WMCreateSyncReader(util.toPointer(pUnkCert), dwRights, util.toPointer(ppSyncReader)));
 }
 
 export function WMCreateEditor(
   ppEditor: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libWMVCore.WMCreateEditor(util.toPointer(ppEditor)));
+  return util.pointerFromFfi(libWMVCore_dll.WMCreateEditor(util.toPointer(ppEditor)));
 }
 
 export function WMCreateIndexer(
   ppIndexer: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libWMVCore.WMCreateIndexer(util.toPointer(ppIndexer)));
+  return util.pointerFromFfi(libWMVCore_dll.WMCreateIndexer(util.toPointer(ppIndexer)));
 }
 
 export function WMCreateBackupRestorer(
   pCallback: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Com.IUnknown */,
   ppBackup: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libWMVCore.WMCreateBackupRestorer(util.toPointer(pCallback), util.toPointer(ppBackup)));
+  return util.pointerFromFfi(libWMVCore_dll.WMCreateBackupRestorer(util.toPointer(pCallback), util.toPointer(ppBackup)));
 }
 
 export function WMCreateProfileManager(
   ppProfileManager: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libWMVCore.WMCreateProfileManager(util.toPointer(ppProfileManager)));
+  return util.pointerFromFfi(libWMVCore_dll.WMCreateProfileManager(util.toPointer(ppProfileManager)));
 }
 
 export function WMCreateWriterFileSink(
   ppSink: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libWMVCore.WMCreateWriterFileSink(util.toPointer(ppSink)));
+  return util.pointerFromFfi(libWMVCore_dll.WMCreateWriterFileSink(util.toPointer(ppSink)));
 }
 
 export function WMCreateWriterNetworkSink(
   ppSink: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libWMVCore.WMCreateWriterNetworkSink(util.toPointer(ppSink)));
+  return util.pointerFromFfi(libWMVCore_dll.WMCreateWriterNetworkSink(util.toPointer(ppSink)));
 }
 
 export function WMCreateWriterPushSink(
   ppSink: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libWMVCore.WMCreateWriterPushSink(util.toPointer(ppSink)));
+  return util.pointerFromFfi(libWMVCore_dll.WMCreateWriterPushSink(util.toPointer(ppSink)));
 }
 

@@ -15,15 +15,15 @@ export type XACTSTAT = number;
 export type AUTHENTICATION_LEVEL = number;
 export type APPLICATIONTYPE = number;
 export type XACT_DTC_CONSTANTS = number;
-export type _DtcLu_LocalRecovery_Work = number;
-export type _DtcLu_Xln = number;
-export type _DtcLu_Xln_Confirmation = number;
-export type _DtcLu_Xln_Response = number;
-export type _DtcLu_Xln_Error = number;
-export type _DtcLu_CompareState = number;
-export type _DtcLu_CompareStates_Confirmation = number;
-export type _DtcLu_CompareStates_Error = number;
-export type _DtcLu_CompareStates_Response = number;
+export type DTCINITIATEDRECOVERYWORK = number;
+export type DTCLUXLN = number;
+export type DTCLUXLNCONFIRMATION = number;
+export type DTCLUXLNRESPONSE = number;
+export type DTCLUXLNERROR = number;
+export type DTCLUCOMPARESTATE = number;
+export type DTCLUCOMPARESTATESCONFIRMATION = number;
+export type DTCLUCOMPARESTATESERROR = number;
+export type DTCLUCOMPARESTATESRESPONSE = number;
 
 // Constants
 export const DTCINSTALL_E_CLIENT_ALREADY_INSTALLED = 384;
@@ -40,7 +40,7 @@ export const TMNOFLAGS = 0;
 export const TMREGISTER = 1;
 export const TMNOMIGRATE = 2;
 export const TMUSEASYNC = 4;
-export const TMASYNC = "-2147483648";
+export const TMASYNC = `-2147483648`;
 export const TMONEPHASE = 1073741824;
 export const TMFAIL = 536870912;
 export const TMNOWAIT = 268435456;
@@ -55,9 +55,9 @@ export const TMMIGRATE = 1048576;
 export const TM_JOIN = 2;
 export const TM_RESUME = 1;
 export const TM_OK = 0;
-export const TMER_TMERR = "-1";
-export const TMER_INVAL = "-2";
-export const TMER_PROTO = "-3";
+export const TMER_TMERR = `-1`;
+export const TMER_INVAL = `-2`;
+export const TMER_PROTO = `-3`;
 export const XA_RBBASE = 100;
 export const XA_RBROLLBACK = 100;
 export const XA_RBCOMMFAIL = 101;
@@ -76,14 +76,14 @@ export const XA_HEURMIX = 5;
 export const XA_RETRY = 4;
 export const XA_RDONLY = 3;
 export const XA_OK = 0;
-export const XAER_ASYNC = "-2";
-export const XAER_RMERR = "-3";
-export const XAER_NOTA = "-4";
-export const XAER_INVAL = "-5";
-export const XAER_PROTO = "-6";
-export const XAER_RMFAIL = "-7";
-export const XAER_DUPID = "-8";
-export const XAER_OUTSIDE = "-9";
+export const XAER_ASYNC = `-2`;
+export const XAER_RMERR = `-3`;
+export const XAER_NOTA = `-4`;
+export const XAER_INVAL = `-5`;
+export const XAER_PROTO = `-6`;
+export const XAER_RMFAIL = `-7`;
+export const XAER_DUPID = `-8`;
+export const XAER_OUTSIDE = `-9`;
 export const DTC_INSTALL_OVERWRITE_CLIENT = 1;
 export const DTC_INSTALL_OVERWRITE_SERVER = 2;
 export const OLE_TM_CONFIG_VERSION_1 = 1;
@@ -104,7 +104,7 @@ export const DTC_STATUS_STOPPED = 7;
 export const DTC_STATUS_E_CANTCONTROL = 8;
 export const DTC_STATUS_FAILED = 9;
 export const MAX_TRAN_DESC = 40;
-export const ISOLATIONLEVEL_UNSPECIFIED = "-1";
+export const ISOLATIONLEVEL_UNSPECIFIED = `-1`;
 export const ISOLATIONLEVEL_CHAOS = 16;
 export const ISOLATIONLEVEL_READUNCOMMITTED = 256;
 export const ISOLATIONLEVEL_BROWSE = 256;
@@ -165,26 +165,26 @@ export const INCOMING_AUTHENTICATION_REQUIRED = 1;
 export const MUTUAL_AUTHENTICATION_REQUIRED = 2;
 export const LOCAL_APPLICATIONTYPE = 0;
 export const CLUSTERRESOURCE_APPLICATIONTYPE = 1;
-export const XACT_E_CONNECTION_REQUEST_DENIED = "-2147168000";
-export const XACT_E_TOOMANY_ENLISTMENTS = "-2147167999";
-export const XACT_E_DUPLICATE_GUID = "-2147167998";
-export const XACT_E_NOTSINGLEPHASE = "-2147167997";
-export const XACT_E_RECOVERYALREADYDONE = "-2147167996";
-export const XACT_E_PROTOCOL = "-2147167995";
-export const XACT_E_RM_FAILURE = "-2147167994";
-export const XACT_E_RECOVERY_FAILED = "-2147167993";
-export const XACT_E_LU_NOT_FOUND = "-2147167992";
-export const XACT_E_DUPLICATE_LU = "-2147167991";
-export const XACT_E_LU_NOT_CONNECTED = "-2147167990";
-export const XACT_E_DUPLICATE_TRANSID = "-2147167989";
-export const XACT_E_LU_BUSY = "-2147167988";
-export const XACT_E_LU_NO_RECOVERY_PROCESS = "-2147167987";
-export const XACT_E_LU_DOWN = "-2147167986";
-export const XACT_E_LU_RECOVERING = "-2147167985";
-export const XACT_E_LU_RECOVERY_MISMATCH = "-2147167984";
-export const XACT_E_RM_UNAVAILABLE = "-2147167983";
-export const XACT_E_LRMRECOVERYALREADYDONE = "-2147167982";
-export const XACT_E_NOLASTRESOURCEINTERFACE = "-2147167981";
+export const XACT_E_CONNECTION_REQUEST_DENIED = `-2147168000`;
+export const XACT_E_TOOMANY_ENLISTMENTS = `-2147167999`;
+export const XACT_E_DUPLICATE_GUID = `-2147167998`;
+export const XACT_E_NOTSINGLEPHASE = `-2147167997`;
+export const XACT_E_RECOVERYALREADYDONE = `-2147167996`;
+export const XACT_E_PROTOCOL = `-2147167995`;
+export const XACT_E_RM_FAILURE = `-2147167994`;
+export const XACT_E_RECOVERY_FAILED = `-2147167993`;
+export const XACT_E_LU_NOT_FOUND = `-2147167992`;
+export const XACT_E_DUPLICATE_LU = `-2147167991`;
+export const XACT_E_LU_NOT_CONNECTED = `-2147167990`;
+export const XACT_E_DUPLICATE_TRANSID = `-2147167989`;
+export const XACT_E_LU_BUSY = `-2147167988`;
+export const XACT_E_LU_NO_RECOVERY_PROCESS = `-2147167987`;
+export const XACT_E_LU_DOWN = `-2147167986`;
+export const XACT_E_LU_RECOVERING = `-2147167985`;
+export const XACT_E_LU_RECOVERY_MISMATCH = `-2147167984`;
+export const XACT_E_RM_UNAVAILABLE = `-2147167983`;
+export const XACT_E_LRMRECOVERYALREADYDONE = `-2147167982`;
+export const XACT_E_NOLASTRESOURCEINTERFACE = `-2147167981`;
 export const XACT_S_NONOTIFY = 315648;
 export const XACT_OK_NONOTIFY = 315649;
 export const dwUSER_MS_SQLSERVER = 65535;
@@ -371,9 +371,9 @@ export function allocXACTOPT(data?: Partial<XACTOPT>): Uint8Array {
 }
 
 /**
- * Windows.Win32.System.DistributedTransactionCoordinator.xid_t (size: 24)
+ * Windows.Win32.System.DistributedTransactionCoordinator.XID (size: 24)
  */
-export interface xid_t {
+export interface XID {
   /** i32 */
   formatID: number;
   /** i32 */
@@ -384,10 +384,10 @@ export interface xid_t {
   data: Deno.PointerValue | null;
 }
 
-export const sizeofXid_t = 24;
+export const sizeofXID = 24;
 
-export function allocXid_t(data?: Partial<xid_t>): Uint8Array {
-  const buf = new Uint8Array(sizeofXid_t);
+export function allocXID(data?: Partial<XID>): Uint8Array {
+  const buf = new Uint8Array(sizeofXID);
   const view = new DataView(buf.buffer);
   // 0x00: i32
   if (data?.formatID !== undefined) view.setInt32(0, Number(data.formatID), true);
@@ -521,17 +521,17 @@ export function allocOLE_TM_CONFIG_PARAMS_V2(data?: Partial<OLE_TM_CONFIG_PARAMS
 }
 
 /**
- * Windows.Win32.System.DistributedTransactionCoordinator._ProxyConfigParams (size: 8)
+ * Windows.Win32.System.DistributedTransactionCoordinator.PROXY_CONFIG_PARAMS (size: 8)
  */
-export interface _ProxyConfigParams {
+export interface PROXY_CONFIG_PARAMS {
   /** u16 */
   wcThreadsMax: number;
 }
 
-export const sizeof_ProxyConfigParams = 8;
+export const sizeofPROXY_CONFIG_PARAMS = 8;
 
-export function alloc_ProxyConfigParams(data?: Partial<_ProxyConfigParams>): Uint8Array {
-  const buf = new Uint8Array(sizeof_ProxyConfigParams);
+export function allocPROXY_CONFIG_PARAMS(data?: Partial<PROXY_CONFIG_PARAMS>): Uint8Array {
+  const buf = new Uint8Array(sizeofPROXY_CONFIG_PARAMS);
   const view = new DataView(buf.buffer);
   // 0x00: u16
   if (data?.wcThreadsMax !== undefined) view.setUint16(0, Number(data.wcThreadsMax), true);
@@ -548,7 +548,7 @@ export type PWSTR = Deno.PointerValue | Uint8Array | null;
 // Native Libraries
 
 try {
-  var libXOLEHLP = Deno.dlopen("XOLEHLP", {
+  var libXOLEHLP_dll = Deno.dlopen("XOLEHLP.dll", {
     DtcGetTransactionManager: {
       parameters: ["buffer", "buffer", "pointer", "u32", "u16", "pointer", "pointer"],
       result: "pointer",
@@ -579,7 +579,7 @@ export function DtcGetTransactionManager(
   i_pvReserved2: Deno.PointerValue | Uint8Array | null /* ptr */,
   o_ppvObject: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libXOLEHLP.DtcGetTransactionManager(util.pstrToFfi(i_pszHost), util.pstrToFfi(i_pszTmName), util.toPointer(i_riid), i_dwReserved1, i_wcbReserved2, util.toPointer(i_pvReserved2), util.toPointer(o_ppvObject)));
+  return util.pointerFromFfi(libXOLEHLP_dll.DtcGetTransactionManager(util.pstrToFfi(i_pszHost), util.pstrToFfi(i_pszTmName), util.toPointer(i_riid), i_dwReserved1, i_wcbReserved2, util.toPointer(i_pvReserved2), util.toPointer(o_ppvObject)));
 }
 
 export function DtcGetTransactionManagerC(
@@ -591,7 +591,7 @@ export function DtcGetTransactionManagerC(
   i_pvReserved2: Deno.PointerValue | Uint8Array | null /* ptr */,
   o_ppvObject: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libXOLEHLP.DtcGetTransactionManagerC(util.pstrToFfi(i_pszHost), util.pstrToFfi(i_pszTmName), util.toPointer(i_riid), i_dwReserved1, i_wcbReserved2, util.toPointer(i_pvReserved2), util.toPointer(o_ppvObject)));
+  return util.pointerFromFfi(libXOLEHLP_dll.DtcGetTransactionManagerC(util.pstrToFfi(i_pszHost), util.pstrToFfi(i_pszTmName), util.toPointer(i_riid), i_dwReserved1, i_wcbReserved2, util.toPointer(i_pvReserved2), util.toPointer(o_ppvObject)));
 }
 
 export function DtcGetTransactionManagerExA(
@@ -602,7 +602,7 @@ export function DtcGetTransactionManagerExA(
   i_pvConfigParams: Deno.PointerValue | Uint8Array | null /* ptr */,
   o_ppvObject: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libXOLEHLP.DtcGetTransactionManagerExA(util.pstrToFfi(i_pszHost), util.pstrToFfi(i_pszTmName), util.toPointer(i_riid), i_grfOptions, util.toPointer(i_pvConfigParams), util.toPointer(o_ppvObject)));
+  return util.pointerFromFfi(libXOLEHLP_dll.DtcGetTransactionManagerExA(util.pstrToFfi(i_pszHost), util.pstrToFfi(i_pszTmName), util.toPointer(i_riid), i_grfOptions, util.toPointer(i_pvConfigParams), util.toPointer(o_ppvObject)));
 }
 
 export function DtcGetTransactionManagerExW(
@@ -613,6 +613,6 @@ export function DtcGetTransactionManagerExW(
   i_pvConfigParams: Deno.PointerValue | Uint8Array | null /* ptr */,
   o_ppvObject: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libXOLEHLP.DtcGetTransactionManagerExW(util.pwstrToFfi(i_pwszHost), util.pwstrToFfi(i_pwszTmName), util.toPointer(i_riid), i_grfOptions, util.toPointer(i_pvConfigParams), util.toPointer(o_ppvObject)));
+  return util.pointerFromFfi(libXOLEHLP_dll.DtcGetTransactionManagerExW(util.pwstrToFfi(i_pwszHost), util.pwstrToFfi(i_pwszTmName), util.toPointer(i_riid), i_grfOptions, util.toPointer(i_pvConfigParams), util.toPointer(o_ppvObject)));
 }
 

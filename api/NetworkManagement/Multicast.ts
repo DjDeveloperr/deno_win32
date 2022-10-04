@@ -232,7 +232,7 @@ export type BOOL = number;
 // Native Libraries
 
 try {
-  var libdhcpcsvc = Deno.dlopen("dhcpcsvc", {
+  var libdhcpcsvc_dll = Deno.dlopen("dhcpcsvc.dll", {
     McastApiStartup: {
       parameters: ["pointer"],
       result: "u32",
@@ -269,17 +269,17 @@ try {
 export function McastApiStartup(
   Version: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libdhcpcsvc.McastApiStartup(util.toPointer(Version));
+  return libdhcpcsvc_dll.McastApiStartup(util.toPointer(Version));
 }
 
 export function McastApiCleanup(): void /* void */ {
-  return libdhcpcsvc.McastApiCleanup();
+  return libdhcpcsvc_dll.McastApiCleanup();
 }
 
 export function McastGenUID(
   pRequestID: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libdhcpcsvc.McastGenUID(util.toPointer(pRequestID));
+  return libdhcpcsvc_dll.McastGenUID(util.toPointer(pRequestID));
 }
 
 export function McastEnumerateScopes(
@@ -289,7 +289,7 @@ export function McastEnumerateScopes(
   pScopeLen: Deno.PointerValue | Uint8Array | null /* ptr */,
   pScopeCount: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libdhcpcsvc.McastEnumerateScopes(AddrFamily, util.boolToFfi(ReQuery), util.toPointer(pScopeList), util.toPointer(pScopeLen), util.toPointer(pScopeCount));
+  return libdhcpcsvc_dll.McastEnumerateScopes(AddrFamily, util.boolToFfi(ReQuery), util.toPointer(pScopeList), util.toPointer(pScopeLen), util.toPointer(pScopeCount));
 }
 
 export function McastRequestAddress(
@@ -299,7 +299,7 @@ export function McastRequestAddress(
   pAddrRequest: Deno.PointerValue | Uint8Array | null /* ptr */,
   pAddrResponse: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libdhcpcsvc.McastRequestAddress(AddrFamily, util.toPointer(pRequestID), util.toPointer(pScopeCtx), util.toPointer(pAddrRequest), util.toPointer(pAddrResponse));
+  return libdhcpcsvc_dll.McastRequestAddress(AddrFamily, util.toPointer(pRequestID), util.toPointer(pScopeCtx), util.toPointer(pAddrRequest), util.toPointer(pAddrResponse));
 }
 
 export function McastRenewAddress(
@@ -308,7 +308,7 @@ export function McastRenewAddress(
   pRenewRequest: Deno.PointerValue | Uint8Array | null /* ptr */,
   pRenewResponse: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libdhcpcsvc.McastRenewAddress(AddrFamily, util.toPointer(pRequestID), util.toPointer(pRenewRequest), util.toPointer(pRenewResponse));
+  return libdhcpcsvc_dll.McastRenewAddress(AddrFamily, util.toPointer(pRequestID), util.toPointer(pRenewRequest), util.toPointer(pRenewResponse));
 }
 
 export function McastReleaseAddress(
@@ -316,6 +316,6 @@ export function McastReleaseAddress(
   pRequestID: Deno.PointerValue | Uint8Array | null /* ptr */,
   pReleaseRequest: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libdhcpcsvc.McastReleaseAddress(AddrFamily, util.toPointer(pRequestID), util.toPointer(pReleaseRequest));
+  return libdhcpcsvc_dll.McastReleaseAddress(AddrFamily, util.toPointer(pRequestID), util.toPointer(pReleaseRequest));
 }
 

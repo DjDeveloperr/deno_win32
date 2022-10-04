@@ -4,6 +4,7 @@ import * as util from "../../util.ts";
 
 // Enums
 export type COMMON_DLG_ERRORS = number;
+export type CHOOSECOLOR_FLAGS = number;
 export type OPEN_FILENAME_FLAGS = number;
 export type OPEN_FILENAME_FLAGS_EX = number;
 export type PAGESETUPDLG_FLAGS = number;
@@ -12,6 +13,7 @@ export type FINDREPLACE_FLAGS = number;
 export type PRINTDLGEX_FLAGS = number;
 export type CHOOSEFONT_FONT_TYPE = number;
 export type THEME_PROPERTY_SYMBOL_ID = number;
+export type SET_THEME_APP_PROPERTIES_FLAGS = number;
 export type DRAGLISTINFO_NOTIFICATION_FLAGS = number;
 export type WORD_BREAK_ACTION = number;
 export type DPAMM_MESSAGE = number;
@@ -42,8 +44,9 @@ export type NMCUSTOMDRAW_DRAW_STAGE = number;
 export type MCGRIDINFO_PART = number;
 export type LVITEMA_GROUP_ID = number;
 export type NMTBHOTITEM_FLAGS = number;
-export type TTTOOLINFO_FLAGS = number;
+export type TOOLTIP_FLAGS = number;
 export type LVTILEVIEWINFO_FLAGS = number;
+export type LVTILEVIEWINFO_MASK = number;
 export type NMPGSCROLL_DIR = number;
 export type LVCOLUMNW_MASK = number;
 export type LVFINDINFOW_FLAGS = number;
@@ -55,7 +58,6 @@ export type BP_PAINTPARAMS_FLAGS = number;
 export type TVHITTESTINFO_FLAGS = number;
 export type DRAWITEMSTRUCT_CTL_TYPE = number;
 export type NMPGCALCSIZE_FLAGS = number;
-export type NMLVCUSTOMDRAW_ALIGN = number;
 export type MCGRIDINFO_FLAGS = number;
 export type LVHITTESTINFO_FLAGS = number;
 export type INITCOMMONCONTROLSEX_ICC = number;
@@ -64,6 +66,32 @@ export type NMTBDISPINFOW_MASK = number;
 export type NMLVEMPTYMARKUP_FLAGS = number;
 export type LVFOOTERITEM_MASK = number;
 export type IMAGELIST_CREATION_FLAGS = number;
+export type DTTOPTS_FLAGS = number;
+export type NMLVGETINFOTIP_FLAGS = number;
+export type LIST_VIEW_ITEM_STATE_FLAGS = number;
+export type NM_TREEVIEW_ACTION = number;
+export type MONTH_CALDENDAR_MESSAGES_VIEW = number;
+export type TAB_CONTROL_ITEM_STATE = number;
+export type TREE_VIEW_ITEM_STATE_FLAGS = number;
+export type HEADER_CONTROL_FORMAT_FLAGS = number;
+export type HEADER_CONTROL_FORMAT_TYPE = number;
+export type HEADER_CONTROL_FORMAT_STATE = number;
+export type HEADER_HITTEST_INFO_FLAGS = number;
+export type IMAGE_LIST_WRITE_STREAM_FLAGS = number;
+export type LIST_ITEM_FLAGS = number;
+export type LIST_ITEM_STATE_FLAGS = number;
+export type LIST_VIEW_BACKGROUND_IMAGE_FLAGS = number;
+export type LIST_VIEW_GROUP_STATE_FLAGS = number;
+export type LIST_VIEW_GROUP_ALIGN_FLAGS = number;
+export type LIST_VIEW_INSERT_MARK_FLAGS = number;
+export type LIST_VIEW_ITEM_COLUMN_FORMAT_FLAGS = number;
+export type MCHITTESTINFO_HIT_FLAGS = number;
+export type NMCUSTOMDRAW_DRAW_STATE_FLAGS = number;
+export type NMDATETIMECHANGE_FLAGS = number;
+export type LIST_VIEW_ITEM_FLAGS = number;
+export type ODA_FLAGS = number;
+export type ODS_FLAGS = number;
+export type HIT_TEST_BACKGROUND_OPTIONS = number;
 export type CFM_MASK = number;
 export type CFE_EFFECTS = number;
 export type PARAFORMAT_MASK = number;
@@ -78,20 +106,7 @@ export type GETTEXTLENGTHEX_FLAGS = number;
 export type REOBJECT_FLAGS = number;
 export type PARAFORMAT_NUMBERING_STYLE = number;
 export type PARAFORMAT_ALIGNMENT = number;
-export type TEXTMODE = number;
-export type TEXT_ALIGN_OPTIONS = number;
-export type DVASPECT = number;
-export type UNDONAMEID = number;
-export type KHYPH = number;
-export type TXTBACKSTYLE = number;
-export type TXTHITRESULT = number;
-export type TXTNATURALSIZE = number;
-export type TXTVIEW = number;
-export type CHANGETYPE = number;
-export type CARET_FLAGS = number;
-export type tomConstants = number;
-export type OBJECTTYPE = number;
-export type MANCODE = number;
+export type PARAFORMAT_NUMBERING = number;
 export type TVITEMPART = number;
 export type EC_ENDOFLINE = number;
 export type EC_SEARCHWEB_ENTRYPOINT = number;
@@ -112,6 +127,191 @@ export type PROPERTYORIGIN = number;
 export type WINDOWTHEMEATTRIBUTETYPE = number;
 export type BP_BUFFERFORMAT = number;
 export type BP_ANIMATIONSTYLE = number;
+export type AEROWIZARDPARTS = number;
+export type TITLEBARSTATES = number;
+export type HEADERAREASTATES = number;
+export type CONTENTAREASTATES = number;
+export type BUTTONPARTS = number;
+export type PUSHBUTTONSTATES = number;
+export type RADIOBUTTONSTATES = number;
+export type CHECKBOXSTATES = number;
+export type GROUPBOXSTATES = number;
+export type COMMANDLINKSTATES = number;
+export type COMMANDLINKGLYPHSTATES = number;
+export type PUSHBUTTONDROPDOWNSTATES = number;
+export type COMBOBOXPARTS = number;
+export type COMBOBOXSTYLESTATES = number;
+export type DROPDOWNBUTTONRIGHTSTATES = number;
+export type DROPDOWNBUTTONLEFTSTATES = number;
+export type TRANSPARENTBACKGROUNDSTATES = number;
+export type BORDERSTATES = number;
+export type READONLYSTATES = number;
+export type CUEBANNERSTATES = number;
+export type DROPDOWNITEMSTATES = number;
+export type COMMUNICATIONSPARTS = number;
+export type TABSTATES = number;
+export type CONTROLPANELPARTS = number;
+export type HELPLINKSTATES = number;
+export type TASKLINKSTATES = number;
+export type CONTENTLINKSTATES = number;
+export type SECTIONTITLELINKSTATES = number;
+export type DATEPICKERPARTS = number;
+export type DATETEXTSTATES = number;
+export type DATEBORDERSTATES = number;
+export type SHOWCALENDARBUTTONRIGHTSTATES = number;
+export type DRAGDROPPARTS = number;
+export type COPYSTATES = number;
+export type MOVESTATES = number;
+export type UPDATEMETADATASTATES = number;
+export type CREATELINKSTATES = number;
+export type WARNINGSTATES = number;
+export type NONESTATES = number;
+export type EDITPARTS = number;
+export type EDITTEXTSTATES = number;
+export type BACKGROUNDSTATES = number;
+export type BACKGROUNDWITHBORDERSTATES = number;
+export type EDITBORDER_NOSCROLLSTATES = number;
+export type EDITBORDER_HSCROLLSTATES = number;
+export type EDITBORDER_VSCROLLSTATES = number;
+export type EDITBORDER_HVSCROLLSTATES = number;
+export type EXPLORERBARPARTS = number;
+export type HEADERCLOSESTATES = number;
+export type HEADERPINSTATES = number;
+export type IEBARMENUSTATES = number;
+export type NORMALGROUPCOLLAPSESTATES = number;
+export type NORMALGROUPEXPANDSTATES = number;
+export type SPECIALGROUPCOLLAPSESTATES = number;
+export type SPECIALGROUPEXPANDSTATES = number;
+export type FLYOUTPARTS = number;
+export type LABELSTATES = number;
+export type LINKSTATES = number;
+export type BODYSTATES = number;
+export type LINKHEADERSTATES = number;
+export type HEADERPARTS = number;
+export type HEADERSTYLESTATES = number;
+export type HEADERITEMSTATES = number;
+export type HEADERITEMLEFTSTATES = number;
+export type HEADERITEMRIGHTSTATES = number;
+export type HEADERSORTARROWSTATES = number;
+export type HEADERDROPDOWNSTATES = number;
+export type HEADERDROPDOWNFILTERSTATES = number;
+export type HEADEROVERFLOWSTATES = number;
+export type LISTBOXPARTS = number;
+export type BORDER_HSCROLLSTATES = number;
+export type BORDER_HVSCROLLSTATES = number;
+export type BORDER_NOSCROLLSTATES = number;
+export type BORDER_VSCROLLSTATES = number;
+export type ITEMSTATES = number;
+export type LISTVIEWPARTS = number;
+export type LISTITEMSTATES = number;
+export type GROUPHEADERSTATES = number;
+export type GROUPHEADERLINESTATES = number;
+export type EXPANDBUTTONSTATES = number;
+export type COLLAPSEBUTTONSTATES = number;
+export type MENUPARTS = number;
+export type BARBACKGROUNDSTATES = number;
+export type BARITEMSTATES = number;
+export type POPUPCHECKSTATES = number;
+export type POPUPCHECKBACKGROUNDSTATES = number;
+export type POPUPITEMSTATES = number;
+export type POPUPSUBMENUSTATES = number;
+export type SYSTEMCLOSESTATES = number;
+export type SYSTEMMAXIMIZESTATES = number;
+export type SYSTEMMINIMIZESTATES = number;
+export type SYSTEMRESTORESTATES = number;
+export type NAVIGATIONPARTS = number;
+export type NAV_BACKBUTTONSTATES = number;
+export type NAV_FORWARDBUTTONSTATES = number;
+export type NAV_MENUBUTTONSTATES = number;
+export type PROGRESSPARTS = number;
+export type TRANSPARENTBARSTATES = number;
+export type TRANSPARENTBARVERTSTATES = number;
+export type FILLSTATES = number;
+export type FILLVERTSTATES = number;
+export type REBARPARTS = number;
+export type CHEVRONSTATES = number;
+export type CHEVRONVERTSTATES = number;
+export type SPLITTERSTATES = number;
+export type SPLITTERVERTSTATES = number;
+export type SCROLLBARPARTS = number;
+export type ARROWBTNSTATES = number;
+export type SCROLLBARSTYLESTATES = number;
+export type SIZEBOXSTATES = number;
+export type SPINPARTS = number;
+export type UPSTATES = number;
+export type DOWNSTATES = number;
+export type UPHORZSTATES = number;
+export type DOWNHORZSTATES = number;
+export type STATUSPARTS = number;
+export type TABPARTS = number;
+export type TABITEMSTATES = number;
+export type TABITEMLEFTEDGESTATES = number;
+export type TABITEMRIGHTEDGESTATES = number;
+export type TABITEMBOTHEDGESTATES = number;
+export type TOPTABITEMSTATES = number;
+export type TOPTABITEMLEFTEDGESTATES = number;
+export type TOPTABITEMRIGHTEDGESTATES = number;
+export type TOPTABITEMBOTHEDGESTATES = number;
+export type TASKDIALOGPARTS = number;
+export type CONTENTPANESTATES = number;
+export type EXPANDOBUTTONSTATES = number;
+export type TEXTSTYLEPARTS = number;
+export type HYPERLINKTEXTSTATES = number;
+export type CONTROLLABELSTATES = number;
+export type TOOLBARPARTS = number;
+export type TOOLBARSTYLESTATES = number;
+export type TOOLTIPPARTS = number;
+export type CLOSESTATES = number;
+export type STANDARDSTATES = number;
+export type BALLOONSTATES = number;
+export type BALLOONSTEMSTATES = number;
+export type WRENCHSTATES = number;
+export type TRACKBARPARTS = number;
+export type TRACKBARSTYLESTATES = number;
+export type TRACKSTATES = number;
+export type TRACKVERTSTATES = number;
+export type THUMBSTATES = number;
+export type THUMBBOTTOMSTATES = number;
+export type THUMBTOPSTATES = number;
+export type THUMBVERTSTATES = number;
+export type THUMBLEFTSTATES = number;
+export type THUMBRIGHTSTATES = number;
+export type TICSSTATES = number;
+export type TICSVERTSTATES = number;
+export type TREEVIEWPARTS = number;
+export type TREEITEMSTATES = number;
+export type GLYPHSTATES = number;
+export type HOTGLYPHSTATES = number;
+export type USERTILEPARTS = number;
+export type HOVERBACKGROUNDSTATES = number;
+export type TEXTSELECTIONGRIPPERPARTS = number;
+export type GRIPPERSTATES = number;
+export type WINDOWPARTS = number;
+export type FRAMESTATES = number;
+export type CAPTIONSTATES = number;
+export type MAXCAPTIONSTATES = number;
+export type MINCAPTIONSTATES = number;
+export type HORZSCROLLSTATES = number;
+export type HORZTHUMBSTATES = number;
+export type VERTSCROLLSTATES = number;
+export type VERTTHUMBSTATES = number;
+export type SYSBUTTONSTATES = number;
+export type MINBUTTONSTATES = number;
+export type MAXBUTTONSTATES = number;
+export type RESTOREBUTTONSTATES = number;
+export type HELPBUTTONSTATES = number;
+export type CLOSEBUTTONSTATES = number;
+export type SMALLCLOSEBUTTONSTATES = number;
+export type FRAMEBOTTOMSTATES = number;
+export type FRAMELEFTSTATES = number;
+export type FRAMERIGHTSTATES = number;
+export type SMALLCAPTIONSTATES = number;
+export type SMALLFRAMEBOTTOMSTATES = number;
+export type SMALLFRAMELEFTSTATES = number;
+export type SMALLFRAMERIGHTSTATES = number;
+export type MDICLOSEBUTTONSTATES = number;
+export type MDIMINBUTTONSTATES = number;
+export type MDIRESTOREBUTTONSTATES = number;
 export type BGTYPE = number;
 export type IMAGELAYOUT = number;
 export type BORDERTYPE = number;
@@ -155,6 +355,21 @@ export type MOREPROGRAMSARROWBACKSTATES = number;
 export type LOGOFFBUTTONSSTATES = number;
 export type MENUBANDPARTS = number;
 export type MENUBANDSTATES = number;
+export type TEXTMODE = number;
+export type TEXT_ALIGN_OPTIONS = number;
+export type EMBED_FONT_CHARSET = number;
+export type DVASPECT = number;
+export type UNDONAMEID = number;
+export type KHYPH = number;
+export type TXTBACKSTYLE = number;
+export type TXTHITRESULT = number;
+export type TXTNATURALSIZE = number;
+export type TXTVIEW = number;
+export type CHANGETYPE = number;
+export type CARET_FLAGS = number;
+export type tomConstants = number;
+export type OBJECTTYPE = number;
+export type MANCODE = number;
 export type POINTER_FEEDBACK_MODE = number;
 export type POINTER_INPUT_TYPE = number;
 export type FEEDBACK_TYPE = number;
@@ -162,6 +377,9 @@ export type POINTER_DEVICE_TYPE = number;
 export type POINTER_DEVICE_CURSOR_TYPE = number;
 export type IMAGE_FLAGS = number;
 export type SCROLLBAR_CONSTANTS = number;
+export type DRAW_TEXT_FORMAT = number;
+export type DRAWEDGE_FLAGS = number;
+export type DRAW_EDGE_FLAGS = number;
 
 // Constants
 export const TVI_ROOT = 18374687600658022400n;
@@ -174,208 +392,7 @@ export const EM_SETLIMITTEXT = 197;
 export const EM_GETLIMITTEXT = 213;
 export const EM_POSFROMCHAR = 214;
 export const EM_CHARFROMPOS = 215;
-export const FILEOPENORD = 1536;
-export const MULTIFILEOPENORD = 1537;
-export const PRINTDLGORD = 1538;
-export const PRNSETUPDLGORD = 1539;
-export const FINDDLGORD = 1540;
-export const REPLACEDLGORD = 1541;
-export const FONTDLGORD = 1542;
-export const FORMATDLGORD31 = 1543;
-export const FORMATDLGORD30 = 1544;
-export const RUNDLGORD = 1545;
-export const PAGESETUPDLGORD = 1546;
-export const NEWFILEOPENORD = 1547;
-export const PRINTDLGEXORD = 1549;
-export const PAGESETUPDLGORDMOTIF = 1550;
-export const COLORMGMTDLGORD = 1551;
-export const NEWFILEOPENV2ORD = 1552;
-export const NEWFILEOPENV3ORD = 1553;
-export const NEWFORMATDLGWITHLINK = 1591;
-export const IDC_MANAGE_LINK = 1592;
 export const WM_CTLCOLOR = 25;
-export const ILDRF_IMAGELOWQUALITY = 1;
-export const ILDRF_OVERLAYLOWQUALITY = 16;
-export const ILR_DEFAULT = 0;
-export const ILR_HORIZONTAL_LEFT = 0;
-export const ILR_HORIZONTAL_CENTER = 1;
-export const ILR_HORIZONTAL_RIGHT = 2;
-export const ILR_VERTICAL_TOP = 0;
-export const ILR_VERTICAL_CENTER = 16;
-export const ILR_VERTICAL_BOTTOM = 32;
-export const ILR_SCALE_CLIP = 0;
-export const ILR_SCALE_ASPECTRATIO = 256;
-export const ILGOS_ALWAYS = 0;
-export const ILGOS_FROMSTANDBY = 1;
-export const ILFIP_ALWAYS = 0;
-export const ILFIP_FROMSTANDBY = 1;
-export const ILDI_PURGE = 1;
-export const ILDI_STANDBY = 2;
-export const ILDI_RESETACCESS = 4;
-export const ILDI_QUERYACCESS = 8;
-export const MAXPROPPAGES = 100;
-export const PSP_DEFAULT = 0;
-export const PSP_DLGINDIRECT = 1;
-export const PSP_USEHICON = 2;
-export const PSP_USEICONID = 4;
-export const PSP_USETITLE = 8;
-export const PSP_RTLREADING = 16;
-export const PSP_HASHELP = 32;
-export const PSP_USEREFPARENT = 64;
-export const PSP_USECALLBACK = 128;
-export const PSP_PREMATURE = 1024;
-export const PSP_HIDEHEADER = 2048;
-export const PSP_USEHEADERTITLE = 4096;
-export const PSP_USEHEADERSUBTITLE = 8192;
-export const PSP_USEFUSIONCONTEXT = 16384;
-export const PSH_DEFAULT = 0;
-export const PSH_PROPTITLE = 1;
-export const PSH_USEHICON = 2;
-export const PSH_USEICONID = 4;
-export const PSH_PROPSHEETPAGE = 8;
-export const PSH_WIZARDHASFINISH = 16;
-export const PSH_WIZARD = 32;
-export const PSH_USEPSTARTPAGE = 64;
-export const PSH_NOAPPLYNOW = 128;
-export const PSH_USECALLBACK = 256;
-export const PSH_HASHELP = 512;
-export const PSH_MODELESS = 1024;
-export const PSH_RTLREADING = 2048;
-export const PSH_WIZARDCONTEXTHELP = 4096;
-export const PSH_WIZARD97 = 8192;
-export const PSH_WATERMARK = 32768;
-export const PSH_USEHBMWATERMARK = 65536;
-export const PSH_USEHPLWATERMARK = 131072;
-export const PSH_STRETCHWATERMARK = 262144;
-export const PSH_HEADER = 524288;
-export const PSH_USEHBMHEADER = 1048576;
-export const PSH_USEPAGELANG = 2097152;
-export const PSH_WIZARD_LITE = 4194304;
-export const PSH_NOCONTEXTHELP = 33554432;
-export const PSH_AEROWIZARD = 16384;
-export const PSH_RESIZABLE = 67108864;
-export const PSH_HEADERBITMAP = 134217728;
-export const PSH_NOMARGIN = 268435456;
-export const PSCB_INITIALIZED = 1;
-export const PSCB_PRECREATE = 2;
-export const PSCB_BUTTONPRESSED = 3;
-export const PSNRET_NOERROR = 0;
-export const PSNRET_INVALID = 1;
-export const PSNRET_INVALID_NOCHANGEPAGE = 2;
-export const PSNRET_MESSAGEHANDLED = 3;
-export const PSM_SETCURSEL = 1125;
-export const PSM_REMOVEPAGE = 1126;
-export const PSM_ADDPAGE = 1127;
-export const PSM_CHANGED = 1128;
-export const PSM_RESTARTWINDOWS = 1129;
-export const PSM_REBOOTSYSTEM = 1130;
-export const PSM_CANCELTOCLOSE = 1131;
-export const PSM_QUERYSIBLINGS = 1132;
-export const PSM_UNCHANGED = 1133;
-export const PSM_APPLY = 1134;
-export const PSM_SETTITLEA = 1135;
-export const PSM_SETTITLEW = 1144;
-export const PSM_SETTITLE = 1144;
-export const PSM_SETWIZBUTTONS = 1136;
-export const PSWIZB_BACK = 1;
-export const PSWIZB_NEXT = 2;
-export const PSWIZB_FINISH = 4;
-export const PSWIZB_DISABLEDFINISH = 8;
-export const PSWIZBF_ELEVATIONREQUIRED = 1;
-export const PSWIZB_CANCEL = 16;
-export const PSM_PRESSBUTTON = 1137;
-export const PSBTN_BACK = 0;
-export const PSBTN_NEXT = 1;
-export const PSBTN_FINISH = 2;
-export const PSBTN_OK = 3;
-export const PSBTN_APPLYNOW = 4;
-export const PSBTN_CANCEL = 5;
-export const PSBTN_HELP = 6;
-export const PSBTN_MAX = 6;
-export const PSM_SETCURSELID = 1138;
-export const PSM_SETFINISHTEXTA = 1139;
-export const PSM_SETFINISHTEXTW = 1145;
-export const PSM_SETFINISHTEXT = 1145;
-export const PSM_GETTABCONTROL = 1140;
-export const PSM_ISDIALOGMESSAGE = 1141;
-export const PSM_GETCURRENTPAGEHWND = 1142;
-export const PSM_INSERTPAGE = 1143;
-export const PSM_SETHEADERTITLEA = 1149;
-export const PSM_SETHEADERTITLEW = 1150;
-export const PSM_SETHEADERTITLE = 1150;
-export const PSM_SETHEADERSUBTITLEA = 1151;
-export const PSM_SETHEADERSUBTITLEW = 1152;
-export const PSM_SETHEADERSUBTITLE = 1152;
-export const PSM_HWNDTOINDEX = 1153;
-export const PSM_INDEXTOHWND = 1154;
-export const PSM_PAGETOINDEX = 1155;
-export const PSM_INDEXTOPAGE = 1156;
-export const PSM_IDTOINDEX = 1157;
-export const PSM_INDEXTOID = 1158;
-export const PSM_GETRESULT = 1159;
-export const PSM_RECALCPAGESIZES = 1160;
-export const PSM_SETNEXTTEXTW = 1161;
-export const PSM_SETNEXTTEXT = 1161;
-export const PSWIZB_SHOW = 0;
-export const PSWIZB_RESTORE = 1;
-export const PSM_SHOWWIZBUTTONS = 1162;
-export const PSM_ENABLEWIZBUTTONS = 1163;
-export const PSM_SETBUTTONTEXTW = 1164;
-export const PSM_SETBUTTONTEXT = 1164;
-export const ID_PSRESTARTWINDOWS = 2;
-export const WIZ_CXDLG = 276;
-export const WIZ_CYDLG = 140;
-export const WIZ_CXBMP = 80;
-export const WIZ_BODYX = 92;
-export const WIZ_BODYCX = 184;
-export const PROP_SM_CXDLG = 212;
-export const PROP_SM_CYDLG = 188;
-export const PROP_MED_CXDLG = 227;
-export const PROP_MED_CYDLG = 215;
-export const PROP_LG_CXDLG = 252;
-export const PROP_LG_CYDLG = 218;
-export const DA_LAST = 2147483647;
-export const DA_ERR = "-1";
-export const DSA_APPEND = 2147483647;
-export const DSA_ERR = "-1";
-export const DPAM_SORTED = 1;
-export const DPAM_NORMAL = 2;
-export const DPAM_UNION = 4;
-export const DPAM_INTERSECT = 8;
-export const DPAS_SORTED = 1;
-export const DPAS_INSERTBEFORE = 2;
-export const DPAS_INSERTAFTER = 4;
-export const DPA_APPEND = 2147483647;
-export const DPA_ERR = "-1";
-export const MAX_THEMECOLOR = 64;
-export const MAX_THEMESIZE = 64;
-export const DTBG_CLIPRECT = 1;
-export const DTBG_DRAWSOLID = 2;
-export const DTBG_OMITBORDER = 4;
-export const DTBG_OMITCONTENT = 8;
-export const DTBG_COMPUTINGREGION = 16;
-export const DTBG_MIRRORDC = 32;
-export const DTBG_NOMIRROR = 64;
-export const DTT_GRAYED = 1;
-export const DTT_FLAGS2VALIDBITS = 1;
-export const HTTB_BACKGROUNDSEG = 0;
-export const HTTB_FIXEDBORDER = 2;
-export const HTTB_CAPTION = 4;
-export const HTTB_RESIZINGBORDER_LEFT = 16;
-export const HTTB_RESIZINGBORDER_TOP = 32;
-export const HTTB_RESIZINGBORDER_RIGHT = 64;
-export const HTTB_RESIZINGBORDER_BOTTOM = 128;
-export const HTTB_SIZINGTEMPLATE = 256;
-export const HTTB_SYSTEMSIZINGMARGINS = 512;
-export const MAX_INTLIST_COUNT = 402;
-export const ETDT_DISABLE = 1;
-export const ETDT_ENABLE = 2;
-export const ETDT_USETABTEXTURE = 4;
-export const ETDT_USEAEROWIZARDTABTEXTURE = 8;
-export const WTNCA_NODRAWCAPTION = 1;
-export const WTNCA_NODRAWICON = 2;
-export const WTNCA_NOSYSMENU = 4;
-export const WTNCA_NOMIRRORHELP = 8;
 export const ODT_HEADER = 100;
 export const LVM_FIRST = 4096;
 export const TV_FIRST = 4352;
@@ -415,22 +432,9 @@ export const CDRF_NOTIFYSUBITEMDRAW = 32;
 export const CDRF_NOTIFYPOSTERASE = 64;
 export const CDDS_POSTERASE = 4;
 export const CDDS_ITEM = 65536;
-export const CDIS_SELECTED = 1;
-export const CDIS_GRAYED = 2;
-export const CDIS_DISABLED = 4;
-export const CDIS_CHECKED = 8;
-export const CDIS_FOCUS = 16;
-export const CDIS_DEFAULT = 32;
-export const CDIS_HOT = 64;
-export const CDIS_MARKED = 128;
-export const CDIS_INDETERMINATE = 256;
-export const CDIS_SHOWKEYBOARDCUES = 512;
-export const CDIS_NEARHOT = 1024;
-export const CDIS_OTHERSIDEHOT = 2048;
-export const CDIS_DROPHILITED = 4096;
 export const NM_GETCUSTOMSPLITRECT = 4294966049;
-export const CLR_NONE = "-1";
-export const CLR_DEFAULT = "-16777216";
+export const CLR_NONE = `-1`;
+export const CLR_DEFAULT = `-16777216`;
 export const ILD_TRANSPARENT = 1;
 export const ILD_IMAGE = 32;
 export const ILD_ROP = 64;
@@ -440,7 +444,7 @@ export const ILD_PRESERVEALPHA = 4096;
 export const ILD_SCALE = 8192;
 export const ILD_DPISCALE = 16384;
 export const ILD_ASYNC = 32768;
-export const CLR_HILIGHT = "-16777216";
+export const CLR_HILIGHT = `-16777216`;
 export const ILS_NORMAL = 0;
 export const ILS_GLOW = 1;
 export const ILS_SHADOW = 2;
@@ -448,8 +452,9 @@ export const ILS_SATURATE = 4;
 export const ILS_ALPHA = 8;
 export const ILGT_NORMAL = 0;
 export const ILGT_ASYNC = 1;
-export const ILP_NORMAL = 0;
-export const ILP_DOWNLEVEL = 1;
+export const WC_HEADERA = `SysHeader32`;
+export const WC_HEADERW = `SysHeader32`;
+export const WC_HEADER = `SysHeader32`;
 export const HDS_HORZ = 0;
 export const HDS_BUTTONS = 2;
 export const HDS_HOTTRACK = 4;
@@ -461,27 +466,6 @@ export const HDS_FLAT = 512;
 export const HDS_CHECKBOXES = 1024;
 export const HDS_NOSIZING = 2048;
 export const HDS_OVERFLOW = 4096;
-export const HDFT_ISSTRING = 0;
-export const HDFT_ISNUMBER = 1;
-export const HDFT_ISDATE = 2;
-export const HDFT_HASNOVALUE = 32768;
-export const HDF_LEFT = 0;
-export const HDF_RIGHT = 1;
-export const HDF_CENTER = 2;
-export const HDF_JUSTIFYMASK = 3;
-export const HDF_RTLREADING = 4;
-export const HDF_BITMAP = 8192;
-export const HDF_STRING = 16384;
-export const HDF_OWNERDRAW = 32768;
-export const HDF_IMAGE = 2048;
-export const HDF_BITMAP_ON_RIGHT = 4096;
-export const HDF_SORTUP = 1024;
-export const HDF_SORTDOWN = 512;
-export const HDF_CHECKBOX = 64;
-export const HDF_CHECKED = 128;
-export const HDF_FIXEDWIDTH = 256;
-export const HDF_SPLITBUTTON = 16777216;
-export const HDIS_FOCUSED = 1;
 export const HDM_GETITEMCOUNT = 4608;
 export const HDM_INSERTITEMA = 4609;
 export const HDM_INSERTITEMW = 4618;
@@ -494,19 +478,6 @@ export const HDM_SETITEMA = 4612;
 export const HDM_SETITEMW = 4620;
 export const HDM_SETITEM = 4620;
 export const HDM_LAYOUT = 4613;
-export const HHT_NOWHERE = 1;
-export const HHT_ONHEADER = 2;
-export const HHT_ONDIVIDER = 4;
-export const HHT_ONDIVOPEN = 8;
-export const HHT_ONFILTER = 16;
-export const HHT_ONFILTERBUTTON = 32;
-export const HHT_ABOVE = 256;
-export const HHT_BELOW = 512;
-export const HHT_TORIGHT = 1024;
-export const HHT_TOLEFT = 2048;
-export const HHT_ONITEMSTATEICON = 4096;
-export const HHT_ONDROPDOWN = 8192;
-export const HHT_ONOVERFLOW = 16384;
 export const HDSIL_NORMAL = 0;
 export const HDSIL_STATE = 1;
 export const HDM_HITTEST = 4614;
@@ -529,6 +500,9 @@ export const HDM_GETITEMDROPDOWNRECT = 4633;
 export const HDM_GETOVERFLOWRECT = 4634;
 export const HDM_GETFOCUSEDITEM = 4635;
 export const HDM_SETFOCUSEDITEM = 4636;
+export const TOOLBARCLASSNAMEW = `ToolbarWindow32`;
+export const TOOLBARCLASSNAMEA = `ToolbarWindow32`;
+export const TOOLBARCLASSNAME = `ToolbarWindow32`;
 export const CMB_MASKED = 2;
 export const TBSTATE_CHECKED = 1;
 export const TBSTATE_PRESSED = 2;
@@ -739,6 +713,9 @@ export const TBNRF_ENDCUSTOMIZE = 2;
 export const TBDDRET_DEFAULT = 0;
 export const TBDDRET_NODEFAULT = 1;
 export const TBDDRET_TREATPRESSED = 2;
+export const REBARCLASSNAMEW = `ReBarWindow32`;
+export const REBARCLASSNAMEA = `ReBarWindow32`;
+export const REBARCLASSNAME = `ReBarWindow32`;
 export const RBIM_IMAGELIST = 1;
 export const RBS_TOOLTIPS = 256;
 export const RBS_VARHEIGHT = 512;
@@ -831,6 +808,9 @@ export const RBHT_CLIENT = 3;
 export const RBHT_GRABBER = 4;
 export const RBHT_CHEVRON = 8;
 export const RBHT_SPLITTER = 16;
+export const TOOLTIPS_CLASSW = `tooltips_class32`;
+export const TOOLTIPS_CLASSA = `tooltips_class32`;
+export const TOOLTIPS_CLASS = `tooltips_class32`;
 export const TTS_ALWAYSTIP = 1;
 export const TTS_NOPREFIX = 2;
 export const TTS_NOANIMATE = 16;
@@ -838,7 +818,6 @@ export const TTS_NOFADE = 32;
 export const TTS_BALLOON = 64;
 export const TTS_CLOSE = 128;
 export const TTS_USEVISUALSTYLE = 256;
-export const TTF_DI_SETITEM = 32768;
 export const TTDT_AUTOMATIC = 0;
 export const TTDT_RESHOW = 1;
 export const TTDT_AUTOPOP = 2;
@@ -902,6 +881,9 @@ export const TTM_SETWINDOWTHEME = 8203;
 export const SBARS_SIZEGRIP = 256;
 export const SBARS_TOOLTIPS = 2048;
 export const SBT_TOOLTIPS = 2048;
+export const STATUSCLASSNAMEW = `msctls_statusbar32`;
+export const STATUSCLASSNAMEA = `msctls_statusbar32`;
+export const STATUSCLASSNAME = `msctls_statusbar32`;
 export const SB_SETTEXTA = 1025;
 export const SB_SETTEXTW = 1035;
 export const SB_GETTEXTA = 1026;
@@ -933,6 +915,9 @@ export const SBT_RTLREADING = 1024;
 export const SBT_NOTABPARSING = 2048;
 export const SB_SETBKCOLOR = 8193;
 export const SB_SIMPLEID = 255;
+export const TRACKBAR_CLASSA = `msctls_trackbar32`;
+export const TRACKBAR_CLASSW = `msctls_trackbar32`;
+export const TRACKBAR_CLASS = `msctls_trackbar32`;
 export const TBS_AUTOTICKS = 1;
 export const TBS_VERT = 2;
 export const TBS_HORZ = 0;
@@ -1005,6 +990,10 @@ export const DL_CURSORSET = 0;
 export const DL_STOPCURSOR = 1;
 export const DL_COPYCURSOR = 2;
 export const DL_MOVECURSOR = 3;
+export const DRAGLISTMSGSTRING = `commctrl_DragListMsg`;
+export const UPDOWN_CLASSA = `msctls_updown32`;
+export const UPDOWN_CLASSW = `msctls_updown32`;
+export const UPDOWN_CLASS = `msctls_updown32`;
 export const UD_MAXVAL = 32767;
 export const UDS_WRAP = 1;
 export const UDS_SETBUDDYINT = 2;
@@ -1031,6 +1020,9 @@ export const UDM_SETUNICODEFORMAT = 8197;
 export const UDM_GETUNICODEFORMAT = 8198;
 export const UDM_SETPOS32 = 1137;
 export const UDM_GETPOS32 = 1138;
+export const PROGRESS_CLASSA = `msctls_progress32`;
+export const PROGRESS_CLASSW = `msctls_progress32`;
+export const PROGRESS_CLASS = `msctls_progress32`;
 export const PBS_SMOOTH = 1;
 export const PBS_VERTICAL = 4;
 export const PBM_SETRANGE = 1025;
@@ -1069,6 +1061,9 @@ export const HKCOMB_SCA = 128;
 export const HKM_SETHOTKEY = 1025;
 export const HKM_GETHOTKEY = 1026;
 export const HKM_SETRULES = 1027;
+export const HOTKEY_CLASSA = `msctls_hotkey32`;
+export const HOTKEY_CLASSW = `msctls_hotkey32`;
+export const HOTKEY_CLASS = `msctls_hotkey32`;
 export const CCS_TOP = 1;
 export const CCS_NOMOVEY = 2;
 export const CCS_BOTTOM = 3;
@@ -1077,28 +1072,23 @@ export const CCS_NOPARENTALIGN = 8;
 export const CCS_ADJUSTABLE = 32;
 export const CCS_NODIVIDER = 64;
 export const CCS_VERT = 128;
-export const INVALID_LINK_INDEX = "-1";
+export const INVALID_LINK_INDEX = `-1`;
 export const MAX_LINKID_TEXT = 48;
+export const WC_LINK = `SysLink`;
 export const LWS_TRANSPARENT = 1;
 export const LWS_IGNORERETURN = 2;
 export const LWS_NOPREFIX = 4;
 export const LWS_USEVISUALSTYLE = 8;
 export const LWS_USECUSTOMTEXT = 16;
 export const LWS_RIGHT = 32;
-export const LIF_ITEMINDEX = 1;
-export const LIF_STATE = 2;
-export const LIF_ITEMID = 4;
-export const LIF_URL = 8;
-export const LIS_FOCUSED = 1;
-export const LIS_ENABLED = 2;
-export const LIS_VISITED = 4;
-export const LIS_HOTTRACK = 8;
-export const LIS_DEFAULTCOLORS = 16;
 export const LM_HITTEST = 1792;
 export const LM_GETIDEALHEIGHT = 1793;
 export const LM_SETITEM = 1794;
 export const LM_GETITEM = 1795;
 export const LM_GETIDEALSIZE = 1793;
+export const WC_LISTVIEWA = `SysListView32`;
+export const WC_LISTVIEWW = `SysListView32`;
+export const WC_LISTVIEW = `SysListView32`;
 export const LVS_ICON = 0;
 export const LVS_REPORT = 1;
 export const LVS_SMALLICON = 2;
@@ -1132,26 +1122,9 @@ export const LVSIL_STATE = 2;
 export const LVSIL_GROUPHEADER = 3;
 export const LVM_SETIMAGELIST = 4099;
 export const LVM_GETITEMCOUNT = 4100;
-export const LVIF_TEXT = 1;
-export const LVIF_IMAGE = 2;
-export const LVIF_PARAM = 4;
-export const LVIF_STATE = 8;
-export const LVIF_INDENT = 16;
-export const LVIF_NORECOMPUTE = 2048;
-export const LVIF_GROUPID = 256;
-export const LVIF_COLUMNS = 512;
-export const LVIF_COLFMT = 65536;
-export const LVIS_FOCUSED = 1;
-export const LVIS_SELECTED = 2;
-export const LVIS_CUT = 4;
-export const LVIS_DROPHILITED = 8;
-export const LVIS_GLOW = 16;
-export const LVIS_ACTIVATING = 32;
-export const LVIS_OVERLAYMASK = 3840;
-export const LVIS_STATEIMAGEMASK = 61440;
-export const I_INDENTCALLBACK = "-1";
-export const I_IMAGECALLBACK = "-1";
-export const I_IMAGENONE = "-2";
+export const I_INDENTCALLBACK = `-1`;
+export const I_IMAGECALLBACK = `-1`;
+export const I_IMAGENONE = `-2`;
 export const LVM_GETITEMA = 4101;
 export const LVM_GETITEMW = 4171;
 export const LVM_GETITEM = 4171;
@@ -1205,10 +1178,6 @@ export const LVM_EDITLABELA = 4119;
 export const LVM_EDITLABELW = 4214;
 export const LVM_EDITLABEL = 4214;
 export const LVM_GETEDITCONTROL = 4120;
-export const LVCFMT_LINE_BREAK = 1048576;
-export const LVCFMT_FILL = 2097152;
-export const LVCFMT_WRAP = 4194304;
-export const LVCFMT_NO_TITLE = 8388608;
 export const LVM_GETCOLUMNA = 4121;
 export const LVM_GETCOLUMNW = 4191;
 export const LVM_GETCOLUMN = 4191;
@@ -1220,8 +1189,8 @@ export const LVM_INSERTCOLUMNW = 4193;
 export const LVM_INSERTCOLUMN = 4193;
 export const LVM_DELETECOLUMN = 4124;
 export const LVM_GETCOLUMNWIDTH = 4125;
-export const LVSCW_AUTOSIZE = "-1";
-export const LVSCW_AUTOSIZE_USEHEADER = "-2";
+export const LVSCW_AUTOSIZE = `-1`;
+export const LVSCW_AUTOSIZE_USEHEADER = `-2`;
 export const LVM_SETCOLUMNWIDTH = 4126;
 export const LVM_GETHEADER = 4127;
 export const LVM_CREATEDRAGIMAGE = 4129;
@@ -1305,16 +1274,6 @@ export const LVM_GETHOVERTIME = 4168;
 export const LVM_SETTOOLTIPS = 4170;
 export const LVM_GETTOOLTIPS = 4174;
 export const LVM_SORTITEMSEX = 4177;
-export const LVBKIF_SOURCE_NONE = 0;
-export const LVBKIF_SOURCE_HBITMAP = 1;
-export const LVBKIF_SOURCE_URL = 2;
-export const LVBKIF_SOURCE_MASK = 3;
-export const LVBKIF_STYLE_NORMAL = 0;
-export const LVBKIF_STYLE_TILE = 16;
-export const LVBKIF_STYLE_MASK = 16;
-export const LVBKIF_FLAG_TILEOFFSET = 256;
-export const LVBKIF_TYPE_WATERMARK = 268435456;
-export const LVBKIF_FLAG_ALPHABLEND = 536870912;
 export const LVM_SETBKIMAGEA = 4164;
 export const LVM_SETBKIMAGEW = 4234;
 export const LVM_GETBKIMAGEA = 4165;
@@ -1339,18 +1298,6 @@ export const LVGF_EXTENDEDIMAGE = 8192;
 export const LVGF_ITEMS = 16384;
 export const LVGF_SUBSET = 32768;
 export const LVGF_SUBSETITEMS = 65536;
-export const LVGS_NORMAL = 0;
-export const LVGS_COLLAPSED = 1;
-export const LVGS_HIDDEN = 2;
-export const LVGS_NOHEADER = 4;
-export const LVGS_COLLAPSIBLE = 8;
-export const LVGS_FOCUSED = 16;
-export const LVGS_SELECTED = 32;
-export const LVGS_SUBSETED = 64;
-export const LVGS_SUBSETLINKFOCUSED = 128;
-export const LVGA_FOOTER_LEFT = 8;
-export const LVGA_FOOTER_CENTER = 16;
-export const LVGA_FOOTER_RIGHT = 32;
 export const LVM_INSERTGROUP = 4241;
 export const LVM_SETGROUPINFO = 4243;
 export const LVM_GETGROUPINFO = 4245;
@@ -1377,18 +1324,11 @@ export const LVM_REMOVEALLGROUPS = 4256;
 export const LVM_HASGROUP = 4257;
 export const LVM_GETGROUPSTATE = 4188;
 export const LVM_GETFOCUSEDGROUP = 4189;
-export const LVTVIF_AUTOSIZE = 0;
-export const LVTVIF_FIXEDWIDTH = 1;
-export const LVTVIF_FIXEDHEIGHT = 2;
-export const LVTVIF_FIXEDSIZE = 3;
-export const LVTVIM_TILESIZE = 1;
-export const LVTVIM_COLUMNS = 2;
-export const LVTVIM_LABELMARGIN = 4;
+export const LVTVIF_EXTENDED = 4;
 export const LVM_SETTILEVIEWINFO = 4258;
 export const LVM_GETTILEVIEWINFO = 4259;
 export const LVM_SETTILEINFO = 4260;
 export const LVM_GETTILEINFO = 4261;
-export const LVIM_AFTER = 1;
 export const LVM_SETINSERTMARK = 4262;
 export const LVM_GETINSERTMARK = 4263;
 export const LVM_INSERTMARKHITTEST = 4264;
@@ -1421,11 +1361,12 @@ export const LVKF_CONTROL = 2;
 export const LVKF_SHIFT = 4;
 export const LVCDRF_NOSELECT = 65536;
 export const LVCDRF_NOGROUPFRAME = 131072;
-export const LVIF_DI_SETITEM = 4096;
-export const LVGIT_UNFOLDED = 1;
-export const LVNSCH_DEFAULT = "-1";
-export const LVNSCH_ERROR = "-2";
-export const LVNSCH_IGNORE = "-3";
+export const LVNSCH_DEFAULT = `-1`;
+export const LVNSCH_ERROR = `-2`;
+export const LVNSCH_IGNORE = `-3`;
+export const WC_TREEVIEWA = `SysTreeView32`;
+export const WC_TREEVIEWW = `SysTreeView32`;
+export const WC_TREEVIEW = `SysTreeView32`;
 export const TVS_HASBUTTONS = 1;
 export const TVS_HASLINES = 2;
 export const TVS_LINESATROOT = 4;
@@ -1453,29 +1394,11 @@ export const TVS_EX_PARTIALCHECKBOXES = 128;
 export const TVS_EX_EXCLUSIONCHECKBOXES = 256;
 export const TVS_EX_DIMMEDCHECKBOXES = 512;
 export const TVS_EX_DRAWIMAGEASYNC = 1024;
-export const TVIS_SELECTED = 2;
-export const TVIS_CUT = 4;
-export const TVIS_DROPHILITED = 8;
-export const TVIS_BOLD = 16;
-export const TVIS_EXPANDED = 32;
-export const TVIS_EXPANDEDONCE = 64;
-export const TVIS_EXPANDPARTIAL = 128;
-export const TVIS_OVERLAYMASK = 3840;
-export const TVIS_STATEIMAGEMASK = 61440;
-export const TVIS_USERMASK = 61440;
-export const TVIS_EX_FLAT = 1;
-export const TVIS_EX_DISABLED = 2;
-export const TVIS_EX_ALL = 2;
 export const TVM_INSERTITEMA = 4352;
 export const TVM_INSERTITEMW = 4402;
 export const TVM_INSERTITEM = 4402;
 export const TVM_DELETEITEM = 4353;
 export const TVM_EXPAND = 4354;
-export const TVE_COLLAPSE = 1;
-export const TVE_EXPAND = 2;
-export const TVE_TOGGLE = 3;
-export const TVE_EXPANDPARTIAL = 16384;
-export const TVE_COLLAPSERESET = 32768;
 export const TVM_GETITEMRECT = 4356;
 export const TVM_GETCOUNT = 4357;
 export const TVM_GETINDENT = 4358;
@@ -1549,13 +1472,13 @@ export const TVM_SETHOT = 4410;
 export const TVM_GETSELECTEDCOUNT = 4422;
 export const TVM_SHOWINFOTIP = 4423;
 export const TVM_GETITEMPARTRECT = 4424;
-export const TVC_UNKNOWN = 0;
-export const TVC_BYMOUSE = 1;
-export const TVC_BYKEYBOARD = 2;
 export const TVNRET_DEFAULT = 0;
 export const TVNRET_SKIPOLD = 1;
 export const TVNRET_SKIPNEW = 2;
 export const TVCDRF_NOIMAGES = 65536;
+export const WC_COMBOBOXEXW = `ComboBoxEx32`;
+export const WC_COMBOBOXEXA = `ComboBoxEx32`;
+export const WC_COMBOBOXEX = `ComboBoxEx32`;
 export const CBEM_INSERTITEMA = 1025;
 export const CBEM_SETIMAGELIST = 1026;
 export const CBEM_GETIMAGELIST = 1027;
@@ -1588,6 +1511,9 @@ export const CBENF_RETURN = 2;
 export const CBENF_ESCAPE = 3;
 export const CBENF_DROPDOWN = 4;
 export const CBEMAXSTRLEN = 260;
+export const WC_TABCONTROLA = `SysTabControl32`;
+export const WC_TABCONTROLW = `SysTabControl32`;
+export const WC_TABCONTROL = `SysTabControl32`;
 export const TCS_SCROLLOPPOSITE = 1;
 export const TCS_BOTTOM = 2;
 export const TCS_RIGHT = 2;
@@ -1613,8 +1539,6 @@ export const TCS_EX_REGISTERDROP = 2;
 export const TCM_GETIMAGELIST = 4866;
 export const TCM_SETIMAGELIST = 4867;
 export const TCM_GETITEMCOUNT = 4868;
-export const TCIS_BUTTONPRESSED = 1;
-export const TCIS_HIGHLIGHTED = 2;
 export const TCM_GETITEMA = 4869;
 export const TCM_GETITEMW = 4924;
 export const TCM_GETITEM = 4924;
@@ -1647,6 +1571,9 @@ export const TCM_SETEXTENDEDSTYLE = 4916;
 export const TCM_GETEXTENDEDSTYLE = 4917;
 export const TCM_SETUNICODEFORMAT = 8197;
 export const TCM_GETUNICODEFORMAT = 8198;
+export const ANIMATE_CLASSW = `SysAnimate32`;
+export const ANIMATE_CLASSA = `SysAnimate32`;
+export const ANIMATE_CLASS = `SysAnimate32`;
 export const ACS_CENTER = 1;
 export const ACS_TRANSPARENT = 2;
 export const ACS_AUTOPLAY = 4;
@@ -1659,6 +1586,9 @@ export const ACM_STOP = 1126;
 export const ACM_ISPLAYING = 1128;
 export const ACN_START = 1;
 export const ACN_STOP = 2;
+export const MONTHCAL_CLASSW = `SysMonthCal32`;
+export const MONTHCAL_CLASSA = `SysMonthCal32`;
+export const MONTHCAL_CLASS = `SysMonthCal32`;
 export const MCM_FIRST = 4096;
 export const MCM_GETCURSEL = 4097;
 export const MCM_SETCURSEL = 4098;
@@ -1680,15 +1610,6 @@ export const MCSC_TRAILINGTEXT = 5;
 export const MCM_SETTODAY = 4108;
 export const MCM_GETTODAY = 4109;
 export const MCM_HITTEST = 4110;
-export const MCHT_TITLE = 65536;
-export const MCHT_CALENDAR = 131072;
-export const MCHT_TODAYLINK = 196608;
-export const MCHT_CALENDARCONTROL = 1048576;
-export const MCHT_NEXT = 16777216;
-export const MCHT_PREV = 33554432;
-export const MCHT_NOWHERE = 0;
-export const MCHT_TITLEBK = 65536;
-export const MCHT_CALENDARBK = 131072;
 export const MCM_SETFIRSTDAYOFWEEK = 4111;
 export const MCM_GETFIRSTDAYOFWEEK = 4112;
 export const MCM_GETRANGE = 4113;
@@ -1698,11 +1619,6 @@ export const MCM_SETMONTHDELTA = 4116;
 export const MCM_GETMAXTODAYWIDTH = 4117;
 export const MCM_SETUNICODEFORMAT = 8197;
 export const MCM_GETUNICODEFORMAT = 8198;
-export const MCMV_MONTH = 0;
-export const MCMV_YEAR = 1;
-export const MCMV_DECADE = 2;
-export const MCMV_CENTURY = 3;
-export const MCMV_MAX = 3;
 export const MCM_GETCURRENTVIEW = 4118;
 export const MCM_GETCALENDARCOUNT = 4119;
 export const MCM_GETCALENDARGRIDINFO = 4120;
@@ -1722,6 +1638,9 @@ export const MCS_SHORTDAYSOFWEEK = 128;
 export const MCS_NOSELCHANGEONNAV = 256;
 export const GMR_VISIBLE = 0;
 export const GMR_DAYSTATE = 1;
+export const DATETIMEPICK_CLASSW = `SysDateTimePick32`;
+export const DATETIMEPICK_CLASSA = `SysDateTimePick32`;
+export const DATETIMEPICK_CLASS = `SysDateTimePick32`;
 export const DTM_FIRST = 4096;
 export const DTM_GETSYSTEMTIME = 4097;
 export const DTM_SETSYSTEMTIME = 4098;
@@ -1750,15 +1669,19 @@ export const DTS_APPCANPARSE = 16;
 export const DTS_RIGHTALIGN = 32;
 export const GDTR_MIN = 1;
 export const GDTR_MAX = 2;
-export const GDT_ERROR = "-1";
-export const GDT_VALID = 0;
-export const GDT_NONE = 1;
+export const GDT_ERROR = `-1`;
 export const IPM_CLEARADDRESS = 1124;
 export const IPM_SETADDRESS = 1125;
 export const IPM_GETADDRESS = 1126;
 export const IPM_SETRANGE = 1127;
 export const IPM_SETFOCUS = 1128;
 export const IPM_ISBLANK = 1129;
+export const WC_IPADDRESSW = `SysIPAddress32`;
+export const WC_IPADDRESSA = `SysIPAddress32`;
+export const WC_IPADDRESS = `SysIPAddress32`;
+export const WC_PAGESCROLLERW = `SysPager`;
+export const WC_PAGESCROLLERA = `SysPager`;
+export const WC_PAGESCROLLER = `SysPager`;
 export const PGS_VERT = 0;
 export const PGS_HORZ = 1;
 export const PGS_AUTOSCROLL = 2;
@@ -1784,12 +1707,18 @@ export const PGM_GETBUTTONSIZE = 5131;
 export const PGM_GETBUTTONSTATE = 5132;
 export const PGM_GETDROPTARGET = 8196;
 export const PGM_SETSCROLLINFO = 5133;
+export const WC_NATIVEFONTCTLW = `NativeFontCtl`;
+export const WC_NATIVEFONTCTLA = `NativeFontCtl`;
+export const WC_NATIVEFONTCTL = `NativeFontCtl`;
 export const NFS_EDIT = 1;
 export const NFS_STATIC = 2;
 export const NFS_LISTCOMBO = 4;
 export const NFS_BUTTON = 8;
 export const NFS_ALL = 16;
 export const NFS_USEFONTASSOC = 32;
+export const WC_BUTTONA = `Button`;
+export const WC_BUTTONW = `Button`;
+export const WC_BUTTON = `Button`;
 export const BCM_GETIDEALSIZE = 5633;
 export const BCM_SETIMAGELIST = 5634;
 export const BCM_GETIMAGELIST = 5635;
@@ -1818,6 +1747,12 @@ export const BCM_GETNOTE = 5642;
 export const BCM_GETNOTELENGTH = 5643;
 export const BCM_SETSHIELD = 5644;
 export const BCN_DROPDOWN = 4294966048;
+export const WC_STATICA = `Static`;
+export const WC_STATICW = `Static`;
+export const WC_STATIC = `Static`;
+export const WC_EDITA = `Edit`;
+export const WC_EDITW = `Edit`;
+export const WC_EDIT = `Edit`;
 export const ES_EX_ALLOWEOL_CR = 1;
 export const ES_EX_ALLOWEOL_LF = 2;
 export const ES_EX_CONVERT_EOL_ON_PASTE = 4;
@@ -1843,10 +1778,23 @@ export const EM_FILELINEINDEX = 5396;
 export const EM_FILELINELENGTH = 5397;
 export const EM_GETFILELINE = 5398;
 export const EM_GETFILELINECOUNT = 5399;
+export const WC_LISTBOXA = `ListBox`;
+export const WC_LISTBOXW = `ListBox`;
+export const WC_LISTBOX = `ListBox`;
+export const WC_COMBOBOXA = `ComboBox`;
+export const WC_COMBOBOXW = `ComboBox`;
+export const WC_COMBOBOX = `ComboBox`;
 export const CB_SETMINVISIBLE = 5889;
 export const CB_GETMINVISIBLE = 5890;
 export const CB_SETCUEBANNER = 5891;
 export const CB_GETCUEBANNER = 5892;
+export const WC_SCROLLBARA = `ScrollBar`;
+export const WC_SCROLLBARW = `ScrollBar`;
+export const WC_SCROLLBAR = `ScrollBar`;
+export const TD_WARNING_ICON = 1120986464255;
+export const TD_ERROR_ICON = 1127020893306878;
+export const TD_INFORMATION_ICON = 8719060254018502653n;
+export const TD_SHIELD_ICON = 739992800329724;
 export const WM_MOUSEHOVER = 673;
 export const WM_MOUSELEAVE = 675;
 export const HOVER_DEFAULT = 4294967295;
@@ -1854,10 +1802,431 @@ export const WSB_PROP_MASK = 4095;
 export const FSB_FLAT_MODE = 2;
 export const FSB_ENCARTA_MODE = 1;
 export const FSB_REGULAR_MODE = 0;
+export const ILDRF_IMAGELOWQUALITY = 1;
+export const ILDRF_OVERLAYLOWQUALITY = 16;
+export const ILR_DEFAULT = 0;
+export const ILR_HORIZONTAL_LEFT = 0;
+export const ILR_HORIZONTAL_CENTER = 1;
+export const ILR_HORIZONTAL_RIGHT = 2;
+export const ILR_VERTICAL_TOP = 0;
+export const ILR_VERTICAL_CENTER = 16;
+export const ILR_VERTICAL_BOTTOM = 32;
+export const ILR_SCALE_CLIP = 0;
+export const ILR_SCALE_ASPECTRATIO = 256;
+export const ILGOS_ALWAYS = 0;
+export const ILGOS_FROMSTANDBY = 1;
+export const ILFIP_ALWAYS = 0;
+export const ILFIP_FROMSTANDBY = 1;
+export const ILDI_PURGE = 1;
+export const ILDI_STANDBY = 2;
+export const ILDI_RESETACCESS = 4;
+export const ILDI_QUERYACCESS = 8;
 export const CCHCCCLASS = 32;
 export const CCHCCDESC = 32;
 export const CCHCCTEXT = 256;
 export const CCF_NOTEXT = 1;
+export const ctlFirst = 1024;
+export const ctlLast = 1279;
+export const psh1 = 1024;
+export const psh2 = 1025;
+export const psh3 = 1026;
+export const psh4 = 1027;
+export const psh5 = 1028;
+export const psh6 = 1029;
+export const psh7 = 1030;
+export const psh8 = 1031;
+export const psh9 = 1032;
+export const psh10 = 1033;
+export const psh11 = 1034;
+export const psh12 = 1035;
+export const psh13 = 1036;
+export const psh14 = 1037;
+export const psh15 = 1038;
+export const pshHelp = 1038;
+export const psh16 = 1039;
+export const chx1 = 1040;
+export const chx2 = 1041;
+export const chx3 = 1042;
+export const chx4 = 1043;
+export const chx5 = 1044;
+export const chx6 = 1045;
+export const chx7 = 1046;
+export const chx8 = 1047;
+export const chx9 = 1048;
+export const chx10 = 1049;
+export const chx11 = 1050;
+export const chx12 = 1051;
+export const chx13 = 1052;
+export const chx14 = 1053;
+export const chx15 = 1054;
+export const chx16 = 1055;
+export const rad1 = 1056;
+export const rad2 = 1057;
+export const rad3 = 1058;
+export const rad4 = 1059;
+export const rad5 = 1060;
+export const rad6 = 1061;
+export const rad7 = 1062;
+export const rad8 = 1063;
+export const rad9 = 1064;
+export const rad10 = 1065;
+export const rad11 = 1066;
+export const rad12 = 1067;
+export const rad13 = 1068;
+export const rad14 = 1069;
+export const rad15 = 1070;
+export const rad16 = 1071;
+export const grp1 = 1072;
+export const grp2 = 1073;
+export const grp3 = 1074;
+export const grp4 = 1075;
+export const frm1 = 1076;
+export const frm2 = 1077;
+export const frm3 = 1078;
+export const frm4 = 1079;
+export const rct1 = 1080;
+export const rct2 = 1081;
+export const rct3 = 1082;
+export const rct4 = 1083;
+export const ico1 = 1084;
+export const ico2 = 1085;
+export const ico3 = 1086;
+export const ico4 = 1087;
+export const stc1 = 1088;
+export const stc2 = 1089;
+export const stc3 = 1090;
+export const stc4 = 1091;
+export const stc5 = 1092;
+export const stc6 = 1093;
+export const stc7 = 1094;
+export const stc8 = 1095;
+export const stc9 = 1096;
+export const stc10 = 1097;
+export const stc11 = 1098;
+export const stc12 = 1099;
+export const stc13 = 1100;
+export const stc14 = 1101;
+export const stc15 = 1102;
+export const stc16 = 1103;
+export const stc17 = 1104;
+export const stc18 = 1105;
+export const stc19 = 1106;
+export const stc20 = 1107;
+export const stc21 = 1108;
+export const stc22 = 1109;
+export const stc23 = 1110;
+export const stc24 = 1111;
+export const stc25 = 1112;
+export const stc26 = 1113;
+export const stc27 = 1114;
+export const stc28 = 1115;
+export const stc29 = 1116;
+export const stc30 = 1117;
+export const stc31 = 1118;
+export const stc32 = 1119;
+export const lst1 = 1120;
+export const lst2 = 1121;
+export const lst3 = 1122;
+export const lst4 = 1123;
+export const lst5 = 1124;
+export const lst6 = 1125;
+export const lst7 = 1126;
+export const lst8 = 1127;
+export const lst9 = 1128;
+export const lst10 = 1129;
+export const lst11 = 1130;
+export const lst12 = 1131;
+export const lst13 = 1132;
+export const lst14 = 1133;
+export const lst15 = 1134;
+export const lst16 = 1135;
+export const cmb1 = 1136;
+export const cmb2 = 1137;
+export const cmb3 = 1138;
+export const cmb4 = 1139;
+export const cmb5 = 1140;
+export const cmb6 = 1141;
+export const cmb7 = 1142;
+export const cmb8 = 1143;
+export const cmb9 = 1144;
+export const cmb10 = 1145;
+export const cmb11 = 1146;
+export const cmb12 = 1147;
+export const cmb13 = 1148;
+export const cmb14 = 1149;
+export const cmb15 = 1150;
+export const cmb16 = 1151;
+export const edt1 = 1152;
+export const edt2 = 1153;
+export const edt3 = 1154;
+export const edt4 = 1155;
+export const edt5 = 1156;
+export const edt6 = 1157;
+export const edt7 = 1158;
+export const edt8 = 1159;
+export const edt9 = 1160;
+export const edt10 = 1161;
+export const edt11 = 1162;
+export const edt12 = 1163;
+export const edt13 = 1164;
+export const edt14 = 1165;
+export const edt15 = 1166;
+export const edt16 = 1167;
+export const scr1 = 1168;
+export const scr2 = 1169;
+export const scr3 = 1170;
+export const scr4 = 1171;
+export const scr5 = 1172;
+export const scr6 = 1173;
+export const scr7 = 1174;
+export const scr8 = 1175;
+export const ctl1 = 1184;
+export const FILEOPENORD = 1536;
+export const MULTIFILEOPENORD = 1537;
+export const PRINTDLGORD = 1538;
+export const PRNSETUPDLGORD = 1539;
+export const FINDDLGORD = 1540;
+export const REPLACEDLGORD = 1541;
+export const FONTDLGORD = 1542;
+export const FORMATDLGORD31 = 1543;
+export const FORMATDLGORD30 = 1544;
+export const RUNDLGORD = 1545;
+export const PAGESETUPDLGORD = 1546;
+export const NEWFILEOPENORD = 1547;
+export const PRINTDLGEXORD = 1549;
+export const PAGESETUPDLGORDMOTIF = 1550;
+export const COLORMGMTDLGORD = 1551;
+export const NEWFILEOPENV2ORD = 1552;
+export const NEWFILEOPENV3ORD = 1553;
+export const NEWFORMATDLGWITHLINK = 1591;
+export const IDC_MANAGE_LINK = 1592;
+export const DA_LAST = 2147483647;
+export const DA_ERR = `-1`;
+export const DSA_APPEND = 2147483647;
+export const DSA_ERR = `-1`;
+export const DPAM_SORTED = 1;
+export const DPAM_NORMAL = 2;
+export const DPAM_UNION = 4;
+export const DPAM_INTERSECT = 8;
+export const DPAS_SORTED = 1;
+export const DPAS_INSERTBEFORE = 2;
+export const DPAS_INSERTAFTER = 4;
+export const DPA_APPEND = 2147483647;
+export const DPA_ERR = `-1`;
+export const MAXPROPPAGES = 100;
+export const PSP_DEFAULT = 0;
+export const PSP_DLGINDIRECT = 1;
+export const PSP_USEHICON = 2;
+export const PSP_USEICONID = 4;
+export const PSP_USETITLE = 8;
+export const PSP_RTLREADING = 16;
+export const PSP_HASHELP = 32;
+export const PSP_USEREFPARENT = 64;
+export const PSP_USECALLBACK = 128;
+export const PSP_PREMATURE = 1024;
+export const PSP_HIDEHEADER = 2048;
+export const PSP_USEHEADERTITLE = 4096;
+export const PSP_USEHEADERSUBTITLE = 8192;
+export const PSP_USEFUSIONCONTEXT = 16384;
+export const PSH_DEFAULT = 0;
+export const PSH_PROPTITLE = 1;
+export const PSH_USEHICON = 2;
+export const PSH_USEICONID = 4;
+export const PSH_PROPSHEETPAGE = 8;
+export const PSH_WIZARDHASFINISH = 16;
+export const PSH_WIZARD = 32;
+export const PSH_USEPSTARTPAGE = 64;
+export const PSH_NOAPPLYNOW = 128;
+export const PSH_USECALLBACK = 256;
+export const PSH_HASHELP = 512;
+export const PSH_MODELESS = 1024;
+export const PSH_RTLREADING = 2048;
+export const PSH_WIZARDCONTEXTHELP = 4096;
+export const PSH_WIZARD97 = 8192;
+export const PSH_WATERMARK = 32768;
+export const PSH_USEHBMWATERMARK = 65536;
+export const PSH_USEHPLWATERMARK = 131072;
+export const PSH_STRETCHWATERMARK = 262144;
+export const PSH_HEADER = 524288;
+export const PSH_USEHBMHEADER = 1048576;
+export const PSH_USEPAGELANG = 2097152;
+export const PSH_WIZARD_LITE = 4194304;
+export const PSH_NOCONTEXTHELP = 33554432;
+export const PSH_AEROWIZARD = 16384;
+export const PSH_RESIZABLE = 67108864;
+export const PSH_HEADERBITMAP = 134217728;
+export const PSH_NOMARGIN = 268435456;
+export const PSCB_INITIALIZED = 1;
+export const PSCB_PRECREATE = 2;
+export const PSCB_BUTTONPRESSED = 3;
+export const PSNRET_NOERROR = 0;
+export const PSNRET_INVALID = 1;
+export const PSNRET_INVALID_NOCHANGEPAGE = 2;
+export const PSNRET_MESSAGEHANDLED = 3;
+export const PSM_SETCURSEL = 1125;
+export const PSM_REMOVEPAGE = 1126;
+export const PSM_ADDPAGE = 1127;
+export const PSM_CHANGED = 1128;
+export const PSM_RESTARTWINDOWS = 1129;
+export const PSM_REBOOTSYSTEM = 1130;
+export const PSM_CANCELTOCLOSE = 1131;
+export const PSM_QUERYSIBLINGS = 1132;
+export const PSM_UNCHANGED = 1133;
+export const PSM_APPLY = 1134;
+export const PSM_SETTITLEA = 1135;
+export const PSM_SETTITLEW = 1144;
+export const PSM_SETTITLE = 1144;
+export const PSM_SETWIZBUTTONS = 1136;
+export const PSWIZB_BACK = 1;
+export const PSWIZB_NEXT = 2;
+export const PSWIZB_FINISH = 4;
+export const PSWIZB_DISABLEDFINISH = 8;
+export const PSWIZBF_ELEVATIONREQUIRED = 1;
+export const PSWIZB_CANCEL = 16;
+export const PSM_PRESSBUTTON = 1137;
+export const PSBTN_BACK = 0;
+export const PSBTN_NEXT = 1;
+export const PSBTN_FINISH = 2;
+export const PSBTN_OK = 3;
+export const PSBTN_APPLYNOW = 4;
+export const PSBTN_CANCEL = 5;
+export const PSBTN_HELP = 6;
+export const PSBTN_MAX = 6;
+export const PSM_SETCURSELID = 1138;
+export const PSM_SETFINISHTEXTA = 1139;
+export const PSM_SETFINISHTEXTW = 1145;
+export const PSM_SETFINISHTEXT = 1145;
+export const PSM_GETTABCONTROL = 1140;
+export const PSM_ISDIALOGMESSAGE = 1141;
+export const PSM_GETCURRENTPAGEHWND = 1142;
+export const PSM_INSERTPAGE = 1143;
+export const PSM_SETHEADERTITLEA = 1149;
+export const PSM_SETHEADERTITLEW = 1150;
+export const PSM_SETHEADERTITLE = 1150;
+export const PSM_SETHEADERSUBTITLEA = 1151;
+export const PSM_SETHEADERSUBTITLEW = 1152;
+export const PSM_SETHEADERSUBTITLE = 1152;
+export const PSM_HWNDTOINDEX = 1153;
+export const PSM_INDEXTOHWND = 1154;
+export const PSM_PAGETOINDEX = 1155;
+export const PSM_INDEXTOPAGE = 1156;
+export const PSM_IDTOINDEX = 1157;
+export const PSM_INDEXTOID = 1158;
+export const PSM_GETRESULT = 1159;
+export const PSM_RECALCPAGESIZES = 1160;
+export const PSM_SETNEXTTEXTW = 1161;
+export const PSM_SETNEXTTEXT = 1161;
+export const PSWIZB_SHOW = 0;
+export const PSWIZB_RESTORE = 1;
+export const PSM_SHOWWIZBUTTONS = 1162;
+export const PSM_ENABLEWIZBUTTONS = 1163;
+export const PSM_SETBUTTONTEXTW = 1164;
+export const PSM_SETBUTTONTEXT = 1164;
+export const ID_PSRESTARTWINDOWS = 2;
+export const WIZ_CXDLG = 276;
+export const WIZ_CYDLG = 140;
+export const WIZ_CXBMP = 80;
+export const WIZ_BODYX = 92;
+export const WIZ_BODYCX = 184;
+export const PROP_SM_CXDLG = 212;
+export const PROP_SM_CYDLG = 188;
+export const PROP_MED_CXDLG = 227;
+export const PROP_MED_CYDLG = 215;
+export const PROP_LG_CXDLG = 252;
+export const PROP_LG_CYDLG = 218;
+export const MAX_THEMECOLOR = 64;
+export const MAX_THEMESIZE = 64;
+export const DTBG_CLIPRECT = 1;
+export const DTBG_DRAWSOLID = 2;
+export const DTBG_OMITBORDER = 4;
+export const DTBG_OMITCONTENT = 8;
+export const DTBG_COMPUTINGREGION = 16;
+export const DTBG_MIRRORDC = 32;
+export const DTBG_NOMIRROR = 64;
+export const DTT_GRAYED = 1;
+export const DTT_FLAGS2VALIDBITS = 1;
+export const MAX_INTLIST_COUNT = 402;
+export const ETDT_DISABLE = 1;
+export const ETDT_ENABLE = 2;
+export const ETDT_USETABTEXTURE = 4;
+export const ETDT_USEAEROWIZARDTABTEXTURE = 8;
+export const SZ_THDOCPROP_DISPLAYNAME = `DisplayName`;
+export const SZ_THDOCPROP_CANONICALNAME = `ThemeName`;
+export const SZ_THDOCPROP_TOOLTIP = `ToolTip`;
+export const SZ_THDOCPROP_AUTHOR = `author`;
+export const WTNCA_NODRAWCAPTION = 1;
+export const WTNCA_NODRAWICON = 2;
+export const WTNCA_NOSYSMENU = 4;
+export const WTNCA_NOMIRRORHELP = 8;
+export const TMTVS_RESERVEDLOW = 100000;
+export const TMTVS_RESERVEDHIGH = 19999;
+export const VSCLASS_AEROWIZARDSTYLE = `AEROWIZARDSTYLE`;
+export const VSCLASS_AEROWIZARD = `AEROWIZARD`;
+export const VSCLASS_BUTTONSTYLE = `BUTTONSTYLE`;
+export const VSCLASS_BUTTON = `BUTTON`;
+export const VSCLASS_COMBOBOXSTYLE = `COMBOBOXSTYLE`;
+export const VSCLASS_COMBOBOX = `COMBOBOX`;
+export const VSCLASS_COMMUNICATIONSSTYLE = `COMMUNICATIONSSTYLE`;
+export const VSCLASS_COMMUNICATIONS = `COMMUNICATIONS`;
+export const VSCLASS_CONTROLPANELSTYLE = `CONTROLPANELSTYLE`;
+export const VSCLASS_CONTROLPANEL = `CONTROLPANEL`;
+export const VSCLASS_DATEPICKERSTYLE = `DATEPICKERSTYLE`;
+export const VSCLASS_DATEPICKER = `DATEPICKER`;
+export const VSCLASS_DRAGDROPSTYLE = `DRAGDROPSTYLE`;
+export const VSCLASS_DRAGDROP = `DRAGDROP`;
+export const VSCLASS_EDITSTYLE = `EDITSTYLE`;
+export const VSCLASS_EDIT = `EDIT`;
+export const VSCLASS_EXPLORERBARSTYLE = `EXPLORERBARSTYLE`;
+export const VSCLASS_EXPLORERBAR = `EXPLORERBAR`;
+export const VSCLASS_FLYOUTSTYLE = `FLYOUTSTYLE`;
+export const VSCLASS_FLYOUT = `FLYOUT`;
+export const VSCLASS_HEADERSTYLE = `HEADERSTYLE`;
+export const VSCLASS_HEADER = `HEADER`;
+export const VSCLASS_LISTBOXSTYLE = `LISTBOXSTYLE`;
+export const VSCLASS_LISTBOX = `LISTBOX`;
+export const VSCLASS_LISTVIEWSTYLE = `LISTVIEWSTYLE`;
+export const VSCLASS_LISTVIEW = `LISTVIEW`;
+export const VSCLASS_MENUSTYLE = `MENUSTYLE`;
+export const VSCLASS_MENU = `MENU`;
+export const VSCLASS_NAVIGATION = `NAVIGATION`;
+export const VSCLASS_PROGRESSSTYLE = `PROGRESSSTYLE`;
+export const VSCLASS_PROGRESS = `PROGRESS`;
+export const VSCLASS_REBARSTYLE = `REBARSTYLE`;
+export const VSCLASS_REBAR = `REBAR`;
+export const VSCLASS_SCROLLBARSTYLE = `SCROLLBARSTYLE`;
+export const VSCLASS_SCROLLBAR = `SCROLLBAR`;
+export const VSCLASS_SPINSTYLE = `SPINSTYLE`;
+export const VSCLASS_SPIN = `SPIN`;
+export const VSCLASS_STATUSSTYLE = `STATUSSTYLE`;
+export const VSCLASS_STATUS = `STATUS`;
+export const VSCLASS_TABSTYLE = `TABSTYLE`;
+export const VSCLASS_TAB = `TAB`;
+export const VSCLASS_TASKDIALOGSTYLE = `TASKDIALOGSTYLE`;
+export const VSCLASS_TASKDIALOG = `TASKDIALOG`;
+export const VSCLASS_TEXTSTYLE = `TEXTSTYLE`;
+export const VSCLASS_TOOLBARSTYLE = `TOOLBARSTYLE`;
+export const VSCLASS_TOOLBAR = `TOOLBAR`;
+export const VSCLASS_TOOLTIPSTYLE = `TOOLTIPSTYLE`;
+export const VSCLASS_TOOLTIP = `TOOLTIP`;
+export const VSCLASS_TRACKBARSTYLE = `TRACKBARSTYLE`;
+export const VSCLASS_TRACKBAR = `TRACKBAR`;
+export const VSCLASS_TREEVIEWSTYLE = `TREEVIEWSTYLE`;
+export const VSCLASS_TREEVIEW = `TREEVIEW`;
+export const VSCLASS_USERTILE = `USERTILE`;
+export const VSCLASS_TEXTSELECTIONGRIPPER = `TEXTSELECTIONGRIPPER`;
+export const VSCLASS_WINDOWSTYLE = `WINDOWSTYLE`;
+export const VSCLASS_WINDOW = `WINDOW`;
+export const VSCLASS_LINK = `LINK`;
+export const VSCLASS_EMPTYMARKUP = `EMPTYMARKUP`;
+export const VSCLASS_STATIC = `STATIC`;
+export const VSCLASS_PAGE = `PAGE`;
+export const VSCLASS_MONTHCAL = `MONTHCAL`;
+export const VSCLASS_CLOCK = `CLOCK`;
+export const VSCLASS_TRAYNOTIFY = `TRAYNOTIFY`;
+export const VSCLASS_TASKBAR = `TASKBAR`;
+export const VSCLASS_TASKBAND = `TASKBAND`;
+export const VSCLASS_STARTPANEL = `STARTPANEL`;
+export const VSCLASS_MENUBAND = `MENUBAND`;
 export const EM_GETSEL = 176;
 export const EM_SETSEL = 177;
 export const EM_GETRECT = 178;
@@ -1930,6 +2299,15 @@ export const FNERR_BUFFERTOOSMALL = 12291;
 export const FRERR_FINDREPLACECODES = 16384;
 export const FRERR_BUFFERLENGTHZERO = 16385;
 export const CCERR_CHOOSECOLORCODES = 20480;
+export const CC_RGBINIT = 1;
+export const CC_FULLOPEN = 2;
+export const CC_PREVENTFULLOPEN = 4;
+export const CC_SHOWHELP = 8;
+export const CC_ENABLEHOOK = 16;
+export const CC_ENABLETEMPLATE = 32;
+export const CC_ENABLETEMPLATEHANDLE = 64;
+export const CC_SOLIDCOLOR = 128;
+export const CC_ANYCOLOR = 256;
 export const OFN_READONLY = 1;
 export const OFN_OVERWRITEPROMPT = 2;
 export const OFN_HIDEREADONLY = 4;
@@ -2314,6 +2692,10 @@ export const TMT_SCALEDBACKGROUND = 7001;
 export const TMT_ATLASIMAGE = 8000;
 export const TMT_ATLASINPUTIMAGE = 8001;
 export const TMT_ATLASRECT = 8002;
+export const ALLOW_NONCLIENT = 1;
+export const ALLOW_CONTROLS = 2;
+export const ALLOW_WEBCONTENT = 4;
+export const VALIDBITS = 7;
 export const DL_BEGINDRAG = 1157;
 export const DL_CANCELDRAG = 1160;
 export const DL_DRAGGING = 1158;
@@ -2431,8 +2813,8 @@ export const CBEIF_SELECTEDIMAGE = 4;
 export const CBEIF_TEXT = 1;
 export const I_ZERO = 0;
 export const I_ONE_OR_MORE = 1;
-export const I_CHILDRENCALLBACK = "-1";
-export const I_CHILDRENAUTO = "-2";
+export const I_CHILDRENCALLBACK = `-1`;
+export const I_CHILDRENAUTO = `-2`;
 export const TVIF_CHILDREN = 64;
 export const TVIF_DI_SETITEM = 4096;
 export const TVIF_HANDLE = 16;
@@ -2475,8 +2857,8 @@ export const MCGIP_CALENDARHEADER = 5;
 export const MCGIP_CALENDARBODY = 6;
 export const MCGIP_CALENDARROW = 7;
 export const MCGIP_CALENDARCELL = 8;
-export const I_GROUPIDCALLBACK = "-1";
-export const I_GROUPIDNONE = "-2";
+export const I_GROUPIDCALLBACK = `-1`;
+export const I_GROUPIDNONE = `-2`;
 export const HICF_ACCELERATOR = 4;
 export const HICF_ARROWKEYS = 2;
 export const HICF_DUPACCEL = 8;
@@ -2487,15 +2869,22 @@ export const HICF_MOUSE = 1;
 export const HICF_OTHER = 0;
 export const HICF_RESELECT = 64;
 export const HICF_TOGGLEDROPDOWN = 256;
-export const TTF_ABSOLUTE = 128;
-export const TTF_CENTERTIP = 2;
 export const TTF_IDISHWND = 1;
-export const TTF_PARSELINKS = 4096;
+export const TTF_CENTERTIP = 2;
 export const TTF_RTLREADING = 4;
 export const TTF_SUBCLASS = 16;
 export const TTF_TRACK = 32;
+export const TTF_ABSOLUTE = 128;
 export const TTF_TRANSPARENT = 256;
-export const LVTVIF_EXTENDED = 4;
+export const TTF_PARSELINKS = 4096;
+export const TTF_DI_SETITEM = 32768;
+export const LVTVIF_AUTOSIZE = 0;
+export const LVTVIF_FIXEDWIDTH = 1;
+export const LVTVIF_FIXEDHEIGHT = 2;
+export const LVTVIF_FIXEDSIZE = 3;
+export const LVTVIM_TILESIZE = 1;
+export const LVTVIM_COLUMNS = 2;
+export const LVTVIM_LABELMARGIN = 4;
 export const PGF_SCROLLDOWN = 2;
 export const PGF_SCROLLLEFT = 4;
 export const PGF_SCROLLRIGHT = 8;
@@ -2559,9 +2948,6 @@ export const ODT_STATIC = 5;
 export const ODT_TAB = 101;
 export const PGF_CALCHEIGHT = 2;
 export const PGF_CALCWIDTH = 1;
-export const LVGA_HEADER_CENTER = 2;
-export const LVGA_HEADER_LEFT = 1;
-export const LVGA_HEADER_RIGHT = 4;
 export const MCGIF_DATE = 1;
 export const MCGIF_RECT = 2;
 export const MCGIF_NAME = 4;
@@ -2621,6 +3007,204 @@ export const ILC_MIRROR = 8192;
 export const ILC_PERITEMMIRROR = 32768;
 export const ILC_ORIGINALSIZE = 65536;
 export const ILC_HIGHQUALITYSCALE = 131072;
+export const DTT_TEXTCOLOR = 1;
+export const DTT_BORDERCOLOR = 2;
+export const DTT_SHADOWCOLOR = 4;
+export const DTT_SHADOWTYPE = 8;
+export const DTT_SHADOWOFFSET = 16;
+export const DTT_BORDERSIZE = 32;
+export const DTT_FONTPROP = 64;
+export const DTT_COLORPROP = 128;
+export const DTT_STATEID = 256;
+export const DTT_CALCRECT = 512;
+export const DTT_APPLYOVERLAY = 1024;
+export const DTT_GLOWSIZE = 2048;
+export const DTT_CALLBACK = 4096;
+export const DTT_COMPOSITED = 8192;
+export const DTT_VALIDBITS = 12287;
+export const LVGIT_UNFOLDED = 1;
+export const LVGIT_ZERO = 0;
+export const LVIS_FOCUSED = 1;
+export const LVIS_SELECTED = 2;
+export const LVIS_CUT = 4;
+export const LVIS_DROPHILITED = 8;
+export const LVIS_GLOW = 16;
+export const LVIS_ACTIVATING = 32;
+export const LVIS_OVERLAYMASK = 3840;
+export const LVIS_STATEIMAGEMASK = 61440;
+export const TVE_COLLAPSE = 1;
+export const TVE_EXPAND = 2;
+export const TVE_TOGGLE = 3;
+export const TVE_EXPANDPARTIAL = 16384;
+export const TVE_COLLAPSERESET = 32768;
+export const TVC_UNKNOWN = 0;
+export const TVC_BYMOUSE = 1;
+export const TVC_BYKEYBOARD = 2;
+export const MCMV_MONTH = 0;
+export const MCMV_YEAR = 1;
+export const MCMV_DECADE = 2;
+export const MCMV_CENTURY = 3;
+export const MCMV_MAX = 3;
+export const TCIS_BUTTONPRESSED = 1;
+export const TCIS_HIGHLIGHTED = 2;
+export const TVIS_SELECTED = 2;
+export const TVIS_CUT = 4;
+export const TVIS_DROPHILITED = 8;
+export const TVIS_BOLD = 16;
+export const TVIS_EXPANDED = 32;
+export const TVIS_EXPANDEDONCE = 64;
+export const TVIS_EXPANDPARTIAL = 128;
+export const TVIS_OVERLAYMASK = 3840;
+export const TVIS_STATEIMAGEMASK = 61440;
+export const TVIS_USERMASK = 61440;
+export const TVIS_EX_FLAT = 1;
+export const TVIS_EX_DISABLED = 2;
+export const TVIS_EX_ALL = 2;
+export const HDF_LEFT = 0;
+export const HDF_RIGHT = 1;
+export const HDF_CENTER = 2;
+export const HDF_JUSTIFYMASK = 3;
+export const HDF_RTLREADING = 4;
+export const HDF_BITMAP = 8192;
+export const HDF_STRING = 16384;
+export const HDF_OWNERDRAW = 32768;
+export const HDF_IMAGE = 2048;
+export const HDF_BITMAP_ON_RIGHT = 4096;
+export const HDF_SORTUP = 1024;
+export const HDF_SORTDOWN = 512;
+export const HDF_CHECKBOX = 64;
+export const HDF_CHECKED = 128;
+export const HDF_FIXEDWIDTH = 256;
+export const HDF_SPLITBUTTON = 16777216;
+export const HDFT_ISSTRING = 0;
+export const HDFT_ISNUMBER = 1;
+export const HDFT_ISDATE = 2;
+export const HDFT_HASNOVALUE = 32768;
+export const HDIS_FOCUSED = 1;
+export const HHT_NOWHERE = 1;
+export const HHT_ONHEADER = 2;
+export const HHT_ONDIVIDER = 4;
+export const HHT_ONDIVOPEN = 8;
+export const HHT_ONFILTER = 16;
+export const HHT_ONFILTERBUTTON = 32;
+export const HHT_ABOVE = 256;
+export const HHT_BELOW = 512;
+export const HHT_TORIGHT = 1024;
+export const HHT_TOLEFT = 2048;
+export const HHT_ONITEMSTATEICON = 4096;
+export const HHT_ONDROPDOWN = 8192;
+export const HHT_ONOVERFLOW = 16384;
+export const ILP_NORMAL = 0;
+export const ILP_DOWNLEVEL = 1;
+export const LIF_ITEMINDEX = 1;
+export const LIF_STATE = 2;
+export const LIF_ITEMID = 4;
+export const LIF_URL = 8;
+export const LIS_FOCUSED = 1;
+export const LIS_ENABLED = 2;
+export const LIS_VISITED = 4;
+export const LIS_HOTTRACK = 8;
+export const LIS_DEFAULTCOLORS = 16;
+export const LVBKIF_SOURCE_NONE = 0;
+export const LVBKIF_SOURCE_HBITMAP = 1;
+export const LVBKIF_SOURCE_URL = 2;
+export const LVBKIF_SOURCE_MASK = 3;
+export const LVBKIF_STYLE_NORMAL = 0;
+export const LVBKIF_STYLE_TILE = 16;
+export const LVBKIF_STYLE_MASK = 16;
+export const LVBKIF_FLAG_TILEOFFSET = 256;
+export const LVBKIF_TYPE_WATERMARK = 268435456;
+export const LVBKIF_FLAG_ALPHABLEND = 536870912;
+export const LVGS_NORMAL = 0;
+export const LVGS_COLLAPSED = 1;
+export const LVGS_HIDDEN = 2;
+export const LVGS_NOHEADER = 4;
+export const LVGS_COLLAPSIBLE = 8;
+export const LVGS_FOCUSED = 16;
+export const LVGS_SELECTED = 32;
+export const LVGS_SUBSETED = 64;
+export const LVGS_SUBSETLINKFOCUSED = 128;
+export const LVGA_HEADER_LEFT = 1;
+export const LVGA_HEADER_CENTER = 2;
+export const LVGA_HEADER_RIGHT = 4;
+export const LVGA_FOOTER_LEFT = 8;
+export const LVGA_FOOTER_CENTER = 16;
+export const LVGA_FOOTER_RIGHT = 32;
+export const LVIM_AFTER = 1;
+export const LVCFMT_LINE_BREAK = 1048576;
+export const LVCFMT_FILL = 2097152;
+export const LVCFMT_WRAP = 4194304;
+export const LVCFMT_NO_TITLE = 8388608;
+export const LVCFMT_TILE_PLACEMENTMASK = 3145728;
+export const MCHT_TITLE = 65536;
+export const MCHT_CALENDAR = 131072;
+export const MCHT_TODAYLINK = 196608;
+export const MCHT_CALENDARCONTROL = 1048576;
+export const MCHT_NEXT = 16777216;
+export const MCHT_PREV = 33554432;
+export const MCHT_NOWHERE = 0;
+export const MCHT_TITLEBK = 65536;
+export const MCHT_TITLEMONTH = 65537;
+export const MCHT_TITLEYEAR = 65538;
+export const MCHT_TITLEBTNNEXT = 16842755;
+export const MCHT_TITLEBTNPREV = 33619971;
+export const MCHT_CALENDARBK = 131072;
+export const MCHT_CALENDARDATE = 131073;
+export const MCHT_CALENDARDATENEXT = 16908289;
+export const MCHT_CALENDARDATEPREV = 33685505;
+export const MCHT_CALENDARDAY = 131074;
+export const MCHT_CALENDARWEEKNUM = 131075;
+export const MCHT_CALENDARDATEMIN = 131076;
+export const MCHT_CALENDARDATEMAX = 131077;
+export const CDIS_SELECTED = 1;
+export const CDIS_GRAYED = 2;
+export const CDIS_DISABLED = 4;
+export const CDIS_CHECKED = 8;
+export const CDIS_FOCUS = 16;
+export const CDIS_DEFAULT = 32;
+export const CDIS_HOT = 64;
+export const CDIS_MARKED = 128;
+export const CDIS_INDETERMINATE = 256;
+export const CDIS_SHOWKEYBOARDCUES = 512;
+export const CDIS_NEARHOT = 1024;
+export const CDIS_OTHERSIDEHOT = 2048;
+export const CDIS_DROPHILITED = 4096;
+export const GDT_NONE = 1;
+export const GDT_VALID = 0;
+export const LVIF_TEXT = 1;
+export const LVIF_IMAGE = 2;
+export const LVIF_PARAM = 4;
+export const LVIF_STATE = 8;
+export const LVIF_INDENT = 16;
+export const LVIF_NORECOMPUTE = 2048;
+export const LVIF_GROUPID = 256;
+export const LVIF_COLUMNS = 512;
+export const LVIF_COLFMT = 65536;
+export const LVIF_DI_SETITEM = 4096;
+export const ODA_DRAWENTIRE = 1;
+export const ODA_SELECT = 2;
+export const ODA_FOCUS = 4;
+export const ODS_SELECTED = 1;
+export const ODS_GRAYED = 2;
+export const ODS_DISABLED = 4;
+export const ODS_CHECKED = 8;
+export const ODS_FOCUS = 16;
+export const ODS_DEFAULT = 32;
+export const ODS_COMBOBOXEDIT = 4096;
+export const ODS_HOTLIGHT = 64;
+export const ODS_INACTIVE = 128;
+export const ODS_NOACCEL = 256;
+export const ODS_NOFOCUSRECT = 512;
+export const HTTB_BACKGROUNDSEG = 0;
+export const HTTB_FIXEDBORDER = 2;
+export const HTTB_CAPTION = 4;
+export const HTTB_RESIZINGBORDER_LEFT = 16;
+export const HTTB_RESIZINGBORDER_TOP = 32;
+export const HTTB_RESIZINGBORDER_RIGHT = 64;
+export const HTTB_RESIZINGBORDER_BOTTOM = 128;
+export const HTTB_RESIZINGBORDER = 240;
+export const HTTB_SIZINGTEMPLATE = 256;
+export const HTTB_SYSTEMSIZINGMARGINS = 512;
 export const CFM_SUBSCRIPT = 196608;
 export const CFM_SUPERSCRIPT = 196608;
 export const CFM_EFFECTS = 1073741887;
@@ -2770,6 +3354,12 @@ export const PFNS_NEWNUMBER = 32768;
 export const PFA_CENTER = 3;
 export const PFA_LEFT = 1;
 export const PFA_RIGHT = 2;
+export const PFN_BULLET = 1;
+export const PFN_ARABIC = 2;
+export const PFN_LCLETTER = 3;
+export const PFN_UCLETTER = 4;
+export const PFN_LCROMAN = 5;
+export const PFN_UCROMAN = 6;
 export const OFN_SHAREFALLTHROUGH = 2;
 export const OFN_SHARENOWARN = 1;
 export const OFN_SHAREWARN = 0;
@@ -2797,7 +3387,28 @@ export const SYMBOL_FONTTYPE = 524288;
 export const WM_CHOOSEFONT_GETLOGFONT = 1025;
 export const WM_CHOOSEFONT_SETLOGFONT = 1125;
 export const WM_CHOOSEFONT_SETFLAGS = 1126;
-export const CD_LBSELNOITEMS = "-1";
+export const LBSELCHSTRINGA = `commdlg_LBSelChangedNotify`;
+export const SHAREVISTRINGA = `commdlg_ShareViolation`;
+export const FILEOKSTRINGA = `commdlg_FileNameOK`;
+export const COLOROKSTRINGA = `commdlg_ColorOK`;
+export const SETRGBSTRINGA = `commdlg_SetRGBColor`;
+export const HELPMSGSTRINGA = `commdlg_help`;
+export const FINDMSGSTRINGA = `commdlg_FindReplace`;
+export const LBSELCHSTRINGW = `commdlg_LBSelChangedNotify`;
+export const SHAREVISTRINGW = `commdlg_ShareViolation`;
+export const FILEOKSTRINGW = `commdlg_FileNameOK`;
+export const COLOROKSTRINGW = `commdlg_ColorOK`;
+export const SETRGBSTRINGW = `commdlg_SetRGBColor`;
+export const HELPMSGSTRINGW = `commdlg_help`;
+export const FINDMSGSTRINGW = `commdlg_FindReplace`;
+export const LBSELCHSTRING = `commdlg_LBSelChangedNotify`;
+export const SHAREVISTRING = `commdlg_ShareViolation`;
+export const FILEOKSTRING = `commdlg_FileNameOK`;
+export const COLOROKSTRING = `commdlg_ColorOK`;
+export const SETRGBSTRING = `commdlg_SetRGBColor`;
+export const HELPMSGSTRING = `commdlg_help`;
+export const FINDMSGSTRING = `commdlg_FindReplace`;
+export const CD_LBSELNOITEMS = `-1`;
 export const CD_LBSELCHANGE = 0;
 export const CD_LBSELSUB = 1;
 export const CD_LBSELADD = 2;
@@ -2845,9 +3456,14 @@ export const COLOR_SOLID_LEFT = 730;
 export const COLOR_SOLID_RIGHT = 731;
 export const NUM_BASIC_COLORS = 48;
 export const NUM_CUSTOM_COLORS = 16;
-export const WM_CONTEXTMENU = 123;
-export const WM_UNICHAR = 265;
-export const WM_PRINTCLIENT = 792;
+export const cchTextLimitDefault = 32767;
+export const MSFTEDIT_CLASS = `RICHEDIT50W`;
+export const CERICHEDIT_CLASSA = `RichEditCEA`;
+export const CERICHEDIT_CLASSW = `RichEditCEW`;
+export const RICHEDIT_CLASSA = `RichEdit20A`;
+export const RICHEDIT_CLASS10A = `RICHEDIT`;
+export const RICHEDIT_CLASSW = `RichEdit20W`;
+export const RICHEDIT_CLASS = `RichEdit20W`;
 export const EM_CANPASTE = 1074;
 export const EM_DISPLAYBAND = 1075;
 export const EM_EXGETSEL = 1076;
@@ -3163,6 +3779,7 @@ export const IMF_FORCEACTIVE = 64;
 export const IMF_FORCEINACTIVE = 128;
 export const IMF_FORCEREMEMBER = 256;
 export const IMF_MULTIPLEEDIT = 1024;
+export const yHeightCharPtsMost = 1638;
 export const SCF_SELECTION = 1;
 export const SCF_WORD = 2;
 export const SCF_DEFAULT = 0;
@@ -3190,6 +3807,7 @@ export const SFF_KEEPDOCINFO = 4096;
 export const SFF_PWD = 2048;
 export const SF_RTFVAL = 1792;
 export const MAX_TAB_STOPS = 32;
+export const lDefaultTab = 720;
 export const MAX_TABLE_CELLS = 63;
 export const PFM_SPACEBEFORE = 64;
 export const PFM_SPACEAFTER = 128;
@@ -3214,20 +3832,16 @@ export const PFM_RESERVED2 = 134217728;
 export const PFM_TABLEROWDELIMITER = 268435456;
 export const PFM_TEXTWRAPPINGBREAK = 536870912;
 export const PFM_TABLE = 1073741824;
-export const PFN_BULLET = 1;
-export const PFN_ARABIC = 2;
-export const PFN_LCLETTER = 3;
-export const PFN_UCLETTER = 4;
-export const PFN_LCROMAN = 5;
-export const PFN_UCROMAN = 6;
 export const PFA_JUSTIFY = 4;
 export const PFA_FULL_INTERWORD = 4;
-export const WM_NOTIFY = 78;
 export const GCMF_GRIPPER = 1;
 export const GCMF_SPELLING = 2;
 export const GCMF_TOUCHMENU = 16384;
 export const GCMF_MOUSEMENU = 8192;
 export const OLEOP_DOVERB = 1;
+export const CF_RTF = `Rich Text Format`;
+export const CF_RTFNOOBJS = `Rich Text Format Without Objects`;
+export const CF_RETEXTOBJ = `RichEdit Text and Objects`;
 export const ST_DEFAULT = 0;
 export const ST_KEEPUNDO = 1;
 export const ST_SELECTION = 2;
@@ -3251,6 +3865,7 @@ export const BOE_UNICODEBIDI = 128;
 export const FR_MATCHDIAC = 536870912;
 export const FR_MATCHKASHIDA = 1073741824;
 export const FR_MATCHALEFHAMZA = 2147483648;
+export const RICHEDIT60_CLASS = `RICHEDIT60W`;
 export const PFA_FULL_NEWSPAPER = 5;
 export const PFA_FULL_INTERLETTER = 6;
 export const PFA_FULL_SCALED = 7;
@@ -3292,11 +3907,1187 @@ export const TXTBIT_ADVANCEDINPUT = 536870912;
 export const TXES_ISDIALOG = 1;
 export const REO_NULL = 0;
 export const REO_READWRITEMASK = 2047;
-export const RECO_PASTE = 0;
-export const RECO_DROP = 1;
-export const RECO_COPY = 2;
-export const RECO_CUT = 3;
-export const RECO_DRAG = 4;
+export const TVGIPR_BUTTON = 1;
+export const EC_ENDOFLINE_DETECTFROMCONTENT = 0;
+export const EC_ENDOFLINE_CRLF = 1;
+export const EC_ENDOFLINE_CR = 2;
+export const EC_ENDOFLINE_LF = 3;
+export const EC_SEARCHWEB_ENTRYPOINT_EXTERNAL = 0;
+export const EC_SEARCHWEB_ENTRYPOINT_CONTEXTMENU = 1;
+export const TDF_ENABLE_HYPERLINKS = 1;
+export const TDF_USE_HICON_MAIN = 2;
+export const TDF_USE_HICON_FOOTER = 4;
+export const TDF_ALLOW_DIALOG_CANCELLATION = 8;
+export const TDF_USE_COMMAND_LINKS = 16;
+export const TDF_USE_COMMAND_LINKS_NO_ICON = 32;
+export const TDF_EXPAND_FOOTER_AREA = 64;
+export const TDF_EXPANDED_BY_DEFAULT = 128;
+export const TDF_VERIFICATION_FLAG_CHECKED = 256;
+export const TDF_SHOW_PROGRESS_BAR = 512;
+export const TDF_SHOW_MARQUEE_PROGRESS_BAR = 1024;
+export const TDF_CALLBACK_TIMER = 2048;
+export const TDF_POSITION_RELATIVE_TO_WINDOW = 4096;
+export const TDF_RTL_LAYOUT = 8192;
+export const TDF_NO_DEFAULT_RADIO_BUTTON = 16384;
+export const TDF_CAN_BE_MINIMIZED = 32768;
+export const TDF_NO_SET_FOREGROUND = 65536;
+export const TDF_SIZE_TO_CONTENT = 16777216;
+export const TDM_NAVIGATE_PAGE = 1125;
+export const TDM_CLICK_BUTTON = 1126;
+export const TDM_SET_MARQUEE_PROGRESS_BAR = 1127;
+export const TDM_SET_PROGRESS_BAR_STATE = 1128;
+export const TDM_SET_PROGRESS_BAR_RANGE = 1129;
+export const TDM_SET_PROGRESS_BAR_POS = 1130;
+export const TDM_SET_PROGRESS_BAR_MARQUEE = 1131;
+export const TDM_SET_ELEMENT_TEXT = 1132;
+export const TDM_CLICK_RADIO_BUTTON = 1134;
+export const TDM_ENABLE_BUTTON = 1135;
+export const TDM_ENABLE_RADIO_BUTTON = 1136;
+export const TDM_CLICK_VERIFICATION = 1137;
+export const TDM_UPDATE_ELEMENT_TEXT = 1138;
+export const TDM_SET_BUTTON_ELEVATION_REQUIRED_STATE = 1139;
+export const TDM_UPDATE_ICON = 1140;
+export const TDN_CREATED = 0;
+export const TDN_NAVIGATED = 1;
+export const TDN_BUTTON_CLICKED = 2;
+export const TDN_HYPERLINK_CLICKED = 3;
+export const TDN_TIMER = 4;
+export const TDN_DESTROYED = 5;
+export const TDN_RADIO_BUTTON_CLICKED = 6;
+export const TDN_DIALOG_CONSTRUCTED = 7;
+export const TDN_VERIFICATION_CLICKED = 8;
+export const TDN_HELP = 9;
+export const TDN_EXPANDO_BUTTON_CLICKED = 10;
+export const TDE_CONTENT = 0;
+export const TDE_EXPANDED_INFORMATION = 1;
+export const TDE_FOOTER = 2;
+export const TDE_MAIN_INSTRUCTION = 3;
+export const TDIE_ICON_MAIN = 0;
+export const TDIE_ICON_FOOTER = 1;
+export const TDCBF_OK_BUTTON = 1;
+export const TDCBF_YES_BUTTON = 2;
+export const TDCBF_NO_BUTTON = 4;
+export const TDCBF_CANCEL_BUTTON = 8;
+export const TDCBF_RETRY_BUTTON = 16;
+export const TDCBF_CLOSE_BUTTON = 32;
+export const LIM_SMALL = 0;
+export const LIM_LARGE = 1;
+export const TAP_FLAGS = 0;
+export const TAP_TRANSFORMCOUNT = 1;
+export const TAP_STAGGERDELAY = 2;
+export const TAP_STAGGERDELAYCAP = 3;
+export const TAP_STAGGERDELAYFACTOR = 4;
+export const TAP_ZORDER = 5;
+export const TAPF_NONE = 0;
+export const TAPF_HASSTAGGER = 1;
+export const TAPF_ISRTLAWARE = 2;
+export const TAPF_ALLOWCOLLECTION = 4;
+export const TAPF_HASBACKGROUND = 8;
+export const TAPF_HASPERSPECTIVE = 16;
+export const TATT_TRANSLATE_2D = 0;
+export const TATT_SCALE_2D = 1;
+export const TATT_OPACITY = 2;
+export const TATT_CLIP = 3;
+export const TATF_NONE = 0;
+export const TATF_TARGETVALUES_USER = 1;
+export const TATF_HASINITIALVALUES = 2;
+export const TATF_HASORIGINVALUES = 4;
+export const TTFT_UNDEFINED = 0;
+export const TTFT_CUBIC_BEZIER = 1;
+export const TS_MIN = 0;
+export const TS_TRUE = 1;
+export const TS_DRAW = 2;
+export const PO_STATE = 0;
+export const PO_PART = 1;
+export const PO_CLASS = 2;
+export const PO_GLOBAL = 3;
+export const PO_NOTFOUND = 4;
+export const WTA_NONCLIENT = 1;
+export const BPBF_COMPATIBLEBITMAP = 0;
+export const BPBF_DIB = 1;
+export const BPBF_TOPDOWNDIB = 2;
+export const BPBF_TOPDOWNMONODIB = 3;
+export const BPAS_NONE = 0;
+export const BPAS_LINEAR = 1;
+export const BPAS_CUBIC = 2;
+export const BPAS_SINE = 3;
+export const AW_TITLEBAR = 1;
+export const AW_HEADERAREA = 2;
+export const AW_CONTENTAREA = 3;
+export const AW_COMMANDAREA = 4;
+export const AW_BUTTON = 5;
+export const AW_S_TITLEBAR_ACTIVE = 1;
+export const AW_S_TITLEBAR_INACTIVE = 2;
+export const AW_S_HEADERAREA_NOMARGIN = 1;
+export const AW_S_CONTENTAREA_NOMARGIN = 1;
+export const BP_PUSHBUTTON = 1;
+export const BP_RADIOBUTTON = 2;
+export const BP_CHECKBOX = 3;
+export const BP_GROUPBOX = 4;
+export const BP_USERBUTTON = 5;
+export const BP_COMMANDLINK = 6;
+export const BP_COMMANDLINKGLYPH = 7;
+export const BP_RADIOBUTTON_HCDISABLED = 8;
+export const BP_CHECKBOX_HCDISABLED = 9;
+export const BP_GROUPBOX_HCDISABLED = 10;
+export const BP_PUSHBUTTONDROPDOWN = 11;
+export const PBS_NORMAL = 1;
+export const PBS_HOT = 2;
+export const PBS_PRESSED = 3;
+export const PBS_DISABLED = 4;
+export const PBS_DEFAULTED = 5;
+export const PBS_DEFAULTED_ANIMATING = 6;
+export const RBS_UNCHECKEDNORMAL = 1;
+export const RBS_UNCHECKEDHOT = 2;
+export const RBS_UNCHECKEDPRESSED = 3;
+export const RBS_UNCHECKEDDISABLED = 4;
+export const RBS_CHECKEDNORMAL = 5;
+export const RBS_CHECKEDHOT = 6;
+export const RBS_CHECKEDPRESSED = 7;
+export const RBS_CHECKEDDISABLED = 8;
+export const CBS_UNCHECKEDNORMAL = 1;
+export const CBS_UNCHECKEDHOT = 2;
+export const CBS_UNCHECKEDPRESSED = 3;
+export const CBS_UNCHECKEDDISABLED = 4;
+export const CBS_CHECKEDNORMAL = 5;
+export const CBS_CHECKEDHOT = 6;
+export const CBS_CHECKEDPRESSED = 7;
+export const CBS_CHECKEDDISABLED = 8;
+export const CBS_MIXEDNORMAL = 9;
+export const CBS_MIXEDHOT = 10;
+export const CBS_MIXEDPRESSED = 11;
+export const CBS_MIXEDDISABLED = 12;
+export const CBS_IMPLICITNORMAL = 13;
+export const CBS_IMPLICITHOT = 14;
+export const CBS_IMPLICITPRESSED = 15;
+export const CBS_IMPLICITDISABLED = 16;
+export const CBS_EXCLUDEDNORMAL = 17;
+export const CBS_EXCLUDEDHOT = 18;
+export const CBS_EXCLUDEDPRESSED = 19;
+export const CBS_EXCLUDEDDISABLED = 20;
+export const GBS_NORMAL = 1;
+export const GBS_DISABLED = 2;
+export const CMDLS_NORMAL = 1;
+export const CMDLS_HOT = 2;
+export const CMDLS_PRESSED = 3;
+export const CMDLS_DISABLED = 4;
+export const CMDLS_DEFAULTED = 5;
+export const CMDLS_DEFAULTED_ANIMATING = 6;
+export const CMDLGS_NORMAL = 1;
+export const CMDLGS_HOT = 2;
+export const CMDLGS_PRESSED = 3;
+export const CMDLGS_DISABLED = 4;
+export const CMDLGS_DEFAULTED = 5;
+export const PBDDS_NORMAL = 1;
+export const PBDDS_DISABLED = 2;
+export const CP_DROPDOWNBUTTON = 1;
+export const CP_BACKGROUND = 2;
+export const CP_TRANSPARENTBACKGROUND = 3;
+export const CP_BORDER = 4;
+export const CP_READONLY = 5;
+export const CP_DROPDOWNBUTTONRIGHT = 6;
+export const CP_DROPDOWNBUTTONLEFT = 7;
+export const CP_CUEBANNER = 8;
+export const CP_DROPDOWNITEM = 9;
+export const CBXS_NORMAL = 1;
+export const CBXS_HOT = 2;
+export const CBXS_PRESSED = 3;
+export const CBXS_DISABLED = 4;
+export const CBXSR_NORMAL = 1;
+export const CBXSR_HOT = 2;
+export const CBXSR_PRESSED = 3;
+export const CBXSR_DISABLED = 4;
+export const CBXSL_NORMAL = 1;
+export const CBXSL_HOT = 2;
+export const CBXSL_PRESSED = 3;
+export const CBXSL_DISABLED = 4;
+export const CBTBS_NORMAL = 1;
+export const CBTBS_HOT = 2;
+export const CBTBS_DISABLED = 3;
+export const CBTBS_FOCUSED = 4;
+export const CBB_NORMAL = 1;
+export const CBB_HOT = 2;
+export const CBB_FOCUSED = 3;
+export const CBB_DISABLED = 4;
+export const CBRO_NORMAL = 1;
+export const CBRO_HOT = 2;
+export const CBRO_PRESSED = 3;
+export const CBRO_DISABLED = 4;
+export const CBCB_NORMAL = 1;
+export const CBCB_HOT = 2;
+export const CBCB_PRESSED = 3;
+export const CBCB_DISABLED = 4;
+export const CBDI_NORMAL = 1;
+export const CBDI_HIGHLIGHTED = 2;
+export const CSST_TAB = 1;
+export const CSTB_NORMAL = 1;
+export const CSTB_HOT = 2;
+export const CSTB_SELECTED = 3;
+export const CPANEL_NAVIGATIONPANE = 1;
+export const CPANEL_CONTENTPANE = 2;
+export const CPANEL_NAVIGATIONPANELABEL = 3;
+export const CPANEL_CONTENTPANELABEL = 4;
+export const CPANEL_TITLE = 5;
+export const CPANEL_BODYTEXT = 6;
+export const CPANEL_HELPLINK = 7;
+export const CPANEL_TASKLINK = 8;
+export const CPANEL_GROUPTEXT = 9;
+export const CPANEL_CONTENTLINK = 10;
+export const CPANEL_SECTIONTITLELINK = 11;
+export const CPANEL_LARGECOMMANDAREA = 12;
+export const CPANEL_SMALLCOMMANDAREA = 13;
+export const CPANEL_BUTTON = 14;
+export const CPANEL_MESSAGETEXT = 15;
+export const CPANEL_NAVIGATIONPANELINE = 16;
+export const CPANEL_CONTENTPANELINE = 17;
+export const CPANEL_BANNERAREA = 18;
+export const CPANEL_BODYTITLE = 19;
+export const CPHL_NORMAL = 1;
+export const CPHL_HOT = 2;
+export const CPHL_PRESSED = 3;
+export const CPHL_DISABLED = 4;
+export const CPTL_NORMAL = 1;
+export const CPTL_HOT = 2;
+export const CPTL_PRESSED = 3;
+export const CPTL_DISABLED = 4;
+export const CPTL_PAGE = 5;
+export const CPCL_NORMAL = 1;
+export const CPCL_HOT = 2;
+export const CPCL_PRESSED = 3;
+export const CPCL_DISABLED = 4;
+export const CPSTL_NORMAL = 1;
+export const CPSTL_HOT = 2;
+export const DP_DATETEXT = 1;
+export const DP_DATEBORDER = 2;
+export const DP_SHOWCALENDARBUTTONRIGHT = 3;
+export const DPDT_NORMAL = 1;
+export const DPDT_DISABLED = 2;
+export const DPDT_SELECTED = 3;
+export const DPDB_NORMAL = 1;
+export const DPDB_HOT = 2;
+export const DPDB_FOCUSED = 3;
+export const DPDB_DISABLED = 4;
+export const DPSCBR_NORMAL = 1;
+export const DPSCBR_HOT = 2;
+export const DPSCBR_PRESSED = 3;
+export const DPSCBR_DISABLED = 4;
+export const DD_COPY = 1;
+export const DD_MOVE = 2;
+export const DD_UPDATEMETADATA = 3;
+export const DD_CREATELINK = 4;
+export const DD_WARNING = 5;
+export const DD_NONE = 6;
+export const DD_IMAGEBG = 7;
+export const DD_TEXTBG = 8;
+export const DDCOPY_HIGHLIGHT = 1;
+export const DDCOPY_NOHIGHLIGHT = 2;
+export const DDMOVE_HIGHLIGHT = 1;
+export const DDMOVE_NOHIGHLIGHT = 2;
+export const DDUPDATEMETADATA_HIGHLIGHT = 1;
+export const DDUPDATEMETADATA_NOHIGHLIGHT = 2;
+export const DDCREATELINK_HIGHLIGHT = 1;
+export const DDCREATELINK_NOHIGHLIGHT = 2;
+export const DDWARNING_HIGHLIGHT = 1;
+export const DDWARNING_NOHIGHLIGHT = 2;
+export const DDNONE_HIGHLIGHT = 1;
+export const DDNONE_NOHIGHLIGHT = 2;
+export const EP_EDITTEXT = 1;
+export const EP_CARET = 2;
+export const EP_BACKGROUND = 3;
+export const EP_PASSWORD = 4;
+export const EP_BACKGROUNDWITHBORDER = 5;
+export const EP_EDITBORDER_NOSCROLL = 6;
+export const EP_EDITBORDER_HSCROLL = 7;
+export const EP_EDITBORDER_VSCROLL = 8;
+export const EP_EDITBORDER_HVSCROLL = 9;
+export const ETS_NORMAL = 1;
+export const ETS_HOT = 2;
+export const ETS_SELECTED = 3;
+export const ETS_DISABLED = 4;
+export const ETS_FOCUSED = 5;
+export const ETS_READONLY = 6;
+export const ETS_ASSIST = 7;
+export const ETS_CUEBANNER = 8;
+export const EBS_NORMAL = 1;
+export const EBS_HOT = 2;
+export const EBS_DISABLED = 3;
+export const EBS_FOCUSED = 4;
+export const EBS_READONLY = 5;
+export const EBS_ASSIST = 6;
+export const EBWBS_NORMAL = 1;
+export const EBWBS_HOT = 2;
+export const EBWBS_DISABLED = 3;
+export const EBWBS_FOCUSED = 4;
+export const EPSN_NORMAL = 1;
+export const EPSN_HOT = 2;
+export const EPSN_FOCUSED = 3;
+export const EPSN_DISABLED = 4;
+export const EPSH_NORMAL = 1;
+export const EPSH_HOT = 2;
+export const EPSH_FOCUSED = 3;
+export const EPSH_DISABLED = 4;
+export const EPSV_NORMAL = 1;
+export const EPSV_HOT = 2;
+export const EPSV_FOCUSED = 3;
+export const EPSV_DISABLED = 4;
+export const EPSHV_NORMAL = 1;
+export const EPSHV_HOT = 2;
+export const EPSHV_FOCUSED = 3;
+export const EPSHV_DISABLED = 4;
+export const EBP_HEADERBACKGROUND = 1;
+export const EBP_HEADERCLOSE = 2;
+export const EBP_HEADERPIN = 3;
+export const EBP_IEBARMENU = 4;
+export const EBP_NORMALGROUPBACKGROUND = 5;
+export const EBP_NORMALGROUPCOLLAPSE = 6;
+export const EBP_NORMALGROUPEXPAND = 7;
+export const EBP_NORMALGROUPHEAD = 8;
+export const EBP_SPECIALGROUPBACKGROUND = 9;
+export const EBP_SPECIALGROUPCOLLAPSE = 10;
+export const EBP_SPECIALGROUPEXPAND = 11;
+export const EBP_SPECIALGROUPHEAD = 12;
+export const EBHC_NORMAL = 1;
+export const EBHC_HOT = 2;
+export const EBHC_PRESSED = 3;
+export const EBHP_NORMAL = 1;
+export const EBHP_HOT = 2;
+export const EBHP_PRESSED = 3;
+export const EBHP_SELECTEDNORMAL = 4;
+export const EBHP_SELECTEDHOT = 5;
+export const EBHP_SELECTEDPRESSED = 6;
+export const EBM_NORMAL = 1;
+export const EBM_HOT = 2;
+export const EBM_PRESSED = 3;
+export const EBNGC_NORMAL = 1;
+export const EBNGC_HOT = 2;
+export const EBNGC_PRESSED = 3;
+export const EBNGE_NORMAL = 1;
+export const EBNGE_HOT = 2;
+export const EBNGE_PRESSED = 3;
+export const EBSGC_NORMAL = 1;
+export const EBSGC_HOT = 2;
+export const EBSGC_PRESSED = 3;
+export const EBSGE_NORMAL = 1;
+export const EBSGE_HOT = 2;
+export const EBSGE_PRESSED = 3;
+export const FLYOUT_HEADER = 1;
+export const FLYOUT_BODY = 2;
+export const FLYOUT_LABEL = 3;
+export const FLYOUT_LINK = 4;
+export const FLYOUT_DIVIDER = 5;
+export const FLYOUT_WINDOW = 6;
+export const FLYOUT_LINKAREA = 7;
+export const FLYOUT_LINKHEADER = 8;
+export const FLS_NORMAL = 1;
+export const FLS_SELECTED = 2;
+export const FLS_EMPHASIZED = 3;
+export const FLS_DISABLED = 4;
+export const FLYOUTLINK_NORMAL = 1;
+export const FLYOUTLINK_HOVER = 2;
+export const FBS_NORMAL = 1;
+export const FBS_EMPHASIZED = 2;
+export const FLH_NORMAL = 1;
+export const FLH_HOVER = 2;
+export const HP_HEADERITEM = 1;
+export const HP_HEADERITEMLEFT = 2;
+export const HP_HEADERITEMRIGHT = 3;
+export const HP_HEADERSORTARROW = 4;
+export const HP_HEADERDROPDOWN = 5;
+export const HP_HEADERDROPDOWNFILTER = 6;
+export const HP_HEADEROVERFLOW = 7;
+export const HBG_DETAILS = 1;
+export const HBG_ICON = 2;
+export const HIS_NORMAL = 1;
+export const HIS_HOT = 2;
+export const HIS_PRESSED = 3;
+export const HIS_SORTEDNORMAL = 4;
+export const HIS_SORTEDHOT = 5;
+export const HIS_SORTEDPRESSED = 6;
+export const HIS_ICONNORMAL = 7;
+export const HIS_ICONHOT = 8;
+export const HIS_ICONPRESSED = 9;
+export const HIS_ICONSORTEDNORMAL = 10;
+export const HIS_ICONSORTEDHOT = 11;
+export const HIS_ICONSORTEDPRESSED = 12;
+export const HILS_NORMAL = 1;
+export const HILS_HOT = 2;
+export const HILS_PRESSED = 3;
+export const HIRS_NORMAL = 1;
+export const HIRS_HOT = 2;
+export const HIRS_PRESSED = 3;
+export const HSAS_SORTEDUP = 1;
+export const HSAS_SORTEDDOWN = 2;
+export const HDDS_NORMAL = 1;
+export const HDDS_SOFTHOT = 2;
+export const HDDS_HOT = 3;
+export const HDDFS_NORMAL = 1;
+export const HDDFS_SOFTHOT = 2;
+export const HDDFS_HOT = 3;
+export const HOFS_NORMAL = 1;
+export const HOFS_HOT = 2;
+export const LBCP_BORDER_HSCROLL = 1;
+export const LBCP_BORDER_HVSCROLL = 2;
+export const LBCP_BORDER_NOSCROLL = 3;
+export const LBCP_BORDER_VSCROLL = 4;
+export const LBCP_ITEM = 5;
+export const LBPSH_NORMAL = 1;
+export const LBPSH_FOCUSED = 2;
+export const LBPSH_HOT = 3;
+export const LBPSH_DISABLED = 4;
+export const LBPSHV_NORMAL = 1;
+export const LBPSHV_FOCUSED = 2;
+export const LBPSHV_HOT = 3;
+export const LBPSHV_DISABLED = 4;
+export const LBPSN_NORMAL = 1;
+export const LBPSN_FOCUSED = 2;
+export const LBPSN_HOT = 3;
+export const LBPSN_DISABLED = 4;
+export const LBPSV_NORMAL = 1;
+export const LBPSV_FOCUSED = 2;
+export const LBPSV_HOT = 3;
+export const LBPSV_DISABLED = 4;
+export const LBPSI_HOT = 1;
+export const LBPSI_HOTSELECTED = 2;
+export const LBPSI_SELECTED = 3;
+export const LBPSI_SELECTEDNOTFOCUS = 4;
+export const LVP_LISTITEM = 1;
+export const LVP_LISTGROUP = 2;
+export const LVP_LISTDETAIL = 3;
+export const LVP_LISTSORTEDDETAIL = 4;
+export const LVP_EMPTYTEXT = 5;
+export const LVP_GROUPHEADER = 6;
+export const LVP_GROUPHEADERLINE = 7;
+export const LVP_EXPANDBUTTON = 8;
+export const LVP_COLLAPSEBUTTON = 9;
+export const LVP_COLUMNDETAIL = 10;
+export const LISS_NORMAL = 1;
+export const LISS_HOT = 2;
+export const LISS_SELECTED = 3;
+export const LISS_DISABLED = 4;
+export const LISS_SELECTEDNOTFOCUS = 5;
+export const LISS_HOTSELECTED = 6;
+export const LVGH_OPEN = 1;
+export const LVGH_OPENHOT = 2;
+export const LVGH_OPENSELECTED = 3;
+export const LVGH_OPENSELECTEDHOT = 4;
+export const LVGH_OPENSELECTEDNOTFOCUSED = 5;
+export const LVGH_OPENSELECTEDNOTFOCUSEDHOT = 6;
+export const LVGH_OPENMIXEDSELECTION = 7;
+export const LVGH_OPENMIXEDSELECTIONHOT = 8;
+export const LVGH_CLOSE = 9;
+export const LVGH_CLOSEHOT = 10;
+export const LVGH_CLOSESELECTED = 11;
+export const LVGH_CLOSESELECTEDHOT = 12;
+export const LVGH_CLOSESELECTEDNOTFOCUSED = 13;
+export const LVGH_CLOSESELECTEDNOTFOCUSEDHOT = 14;
+export const LVGH_CLOSEMIXEDSELECTION = 15;
+export const LVGH_CLOSEMIXEDSELECTIONHOT = 16;
+export const LVGHL_OPEN = 1;
+export const LVGHL_OPENHOT = 2;
+export const LVGHL_OPENSELECTED = 3;
+export const LVGHL_OPENSELECTEDHOT = 4;
+export const LVGHL_OPENSELECTEDNOTFOCUSED = 5;
+export const LVGHL_OPENSELECTEDNOTFOCUSEDHOT = 6;
+export const LVGHL_OPENMIXEDSELECTION = 7;
+export const LVGHL_OPENMIXEDSELECTIONHOT = 8;
+export const LVGHL_CLOSE = 9;
+export const LVGHL_CLOSEHOT = 10;
+export const LVGHL_CLOSESELECTED = 11;
+export const LVGHL_CLOSESELECTEDHOT = 12;
+export const LVGHL_CLOSESELECTEDNOTFOCUSED = 13;
+export const LVGHL_CLOSESELECTEDNOTFOCUSEDHOT = 14;
+export const LVGHL_CLOSEMIXEDSELECTION = 15;
+export const LVGHL_CLOSEMIXEDSELECTIONHOT = 16;
+export const LVEB_NORMAL = 1;
+export const LVEB_HOVER = 2;
+export const LVEB_PUSHED = 3;
+export const LVCB_NORMAL = 1;
+export const LVCB_HOVER = 2;
+export const LVCB_PUSHED = 3;
+export const MENU_MENUITEM_TMSCHEMA = 1;
+export const MENU_MENUDROPDOWN_TMSCHEMA = 2;
+export const MENU_MENUBARITEM_TMSCHEMA = 3;
+export const MENU_MENUBARDROPDOWN_TMSCHEMA = 4;
+export const MENU_CHEVRON_TMSCHEMA = 5;
+export const MENU_SEPARATOR_TMSCHEMA = 6;
+export const MENU_BARBACKGROUND = 7;
+export const MENU_BARITEM = 8;
+export const MENU_POPUPBACKGROUND = 9;
+export const MENU_POPUPBORDERS = 10;
+export const MENU_POPUPCHECK = 11;
+export const MENU_POPUPCHECKBACKGROUND = 12;
+export const MENU_POPUPGUTTER = 13;
+export const MENU_POPUPITEM = 14;
+export const MENU_POPUPSEPARATOR = 15;
+export const MENU_POPUPSUBMENU = 16;
+export const MENU_SYSTEMCLOSE = 17;
+export const MENU_SYSTEMMAXIMIZE = 18;
+export const MENU_SYSTEMMINIMIZE = 19;
+export const MENU_SYSTEMRESTORE = 20;
+export const MB_ACTIVE = 1;
+export const MB_INACTIVE = 2;
+export const MBI_NORMAL = 1;
+export const MBI_HOT = 2;
+export const MBI_PUSHED = 3;
+export const MBI_DISABLED = 4;
+export const MBI_DISABLEDHOT = 5;
+export const MBI_DISABLEDPUSHED = 6;
+export const MC_CHECKMARKNORMAL = 1;
+export const MC_CHECKMARKDISABLED = 2;
+export const MC_BULLETNORMAL = 3;
+export const MC_BULLETDISABLED = 4;
+export const MCB_DISABLED = 1;
+export const MCB_NORMAL = 2;
+export const MCB_BITMAP = 3;
+export const MPI_NORMAL = 1;
+export const MPI_HOT = 2;
+export const MPI_DISABLED = 3;
+export const MPI_DISABLEDHOT = 4;
+export const MSM_NORMAL = 1;
+export const MSM_DISABLED = 2;
+export const MSYSC_NORMAL = 1;
+export const MSYSC_DISABLED = 2;
+export const MSYSMX_NORMAL = 1;
+export const MSYSMX_DISABLED = 2;
+export const MSYSMN_NORMAL = 1;
+export const MSYSMN_DISABLED = 2;
+export const MSYSR_NORMAL = 1;
+export const MSYSR_DISABLED = 2;
+export const NAV_BACKBUTTON = 1;
+export const NAV_FORWARDBUTTON = 2;
+export const NAV_MENUBUTTON = 3;
+export const NAV_BB_NORMAL = 1;
+export const NAV_BB_HOT = 2;
+export const NAV_BB_PRESSED = 3;
+export const NAV_BB_DISABLED = 4;
+export const NAV_FB_NORMAL = 1;
+export const NAV_FB_HOT = 2;
+export const NAV_FB_PRESSED = 3;
+export const NAV_FB_DISABLED = 4;
+export const NAV_MB_NORMAL = 1;
+export const NAV_MB_HOT = 2;
+export const NAV_MB_PRESSED = 3;
+export const NAV_MB_DISABLED = 4;
+export const PP_BAR = 1;
+export const PP_BARVERT = 2;
+export const PP_CHUNK = 3;
+export const PP_CHUNKVERT = 4;
+export const PP_FILL = 5;
+export const PP_FILLVERT = 6;
+export const PP_PULSEOVERLAY = 7;
+export const PP_MOVEOVERLAY = 8;
+export const PP_PULSEOVERLAYVERT = 9;
+export const PP_MOVEOVERLAYVERT = 10;
+export const PP_TRANSPARENTBAR = 11;
+export const PP_TRANSPARENTBARVERT = 12;
+export const PBBS_NORMAL = 1;
+export const PBBS_PARTIAL = 2;
+export const PBBVS_NORMAL = 1;
+export const PBBVS_PARTIAL = 2;
+export const PBFS_NORMAL = 1;
+export const PBFS_ERROR = 2;
+export const PBFS_PAUSED = 3;
+export const PBFS_PARTIAL = 4;
+export const PBFVS_NORMAL = 1;
+export const PBFVS_ERROR = 2;
+export const PBFVS_PAUSED = 3;
+export const PBFVS_PARTIAL = 4;
+export const RP_GRIPPER = 1;
+export const RP_GRIPPERVERT = 2;
+export const RP_BAND = 3;
+export const RP_CHEVRON = 4;
+export const RP_CHEVRONVERT = 5;
+export const RP_BACKGROUND = 6;
+export const RP_SPLITTER = 7;
+export const RP_SPLITTERVERT = 8;
+export const CHEVS_NORMAL = 1;
+export const CHEVS_HOT = 2;
+export const CHEVS_PRESSED = 3;
+export const CHEVSV_NORMAL = 1;
+export const CHEVSV_HOT = 2;
+export const CHEVSV_PRESSED = 3;
+export const SPLITS_NORMAL = 1;
+export const SPLITS_HOT = 2;
+export const SPLITS_PRESSED = 3;
+export const SPLITSV_NORMAL = 1;
+export const SPLITSV_HOT = 2;
+export const SPLITSV_PRESSED = 3;
+export const SBP_ARROWBTN = 1;
+export const SBP_THUMBBTNHORZ = 2;
+export const SBP_THUMBBTNVERT = 3;
+export const SBP_LOWERTRACKHORZ = 4;
+export const SBP_UPPERTRACKHORZ = 5;
+export const SBP_LOWERTRACKVERT = 6;
+export const SBP_UPPERTRACKVERT = 7;
+export const SBP_GRIPPERHORZ = 8;
+export const SBP_GRIPPERVERT = 9;
+export const SBP_SIZEBOX = 10;
+export const SBP_SIZEBOXBKGND = 11;
+export const ABS_UPNORMAL = 1;
+export const ABS_UPHOT = 2;
+export const ABS_UPPRESSED = 3;
+export const ABS_UPDISABLED = 4;
+export const ABS_DOWNNORMAL = 5;
+export const ABS_DOWNHOT = 6;
+export const ABS_DOWNPRESSED = 7;
+export const ABS_DOWNDISABLED = 8;
+export const ABS_LEFTNORMAL = 9;
+export const ABS_LEFTHOT = 10;
+export const ABS_LEFTPRESSED = 11;
+export const ABS_LEFTDISABLED = 12;
+export const ABS_RIGHTNORMAL = 13;
+export const ABS_RIGHTHOT = 14;
+export const ABS_RIGHTPRESSED = 15;
+export const ABS_RIGHTDISABLED = 16;
+export const ABS_UPHOVER = 17;
+export const ABS_DOWNHOVER = 18;
+export const ABS_LEFTHOVER = 19;
+export const ABS_RIGHTHOVER = 20;
+export const SCRBS_NORMAL = 1;
+export const SCRBS_HOT = 2;
+export const SCRBS_PRESSED = 3;
+export const SCRBS_DISABLED = 4;
+export const SCRBS_HOVER = 5;
+export const SZB_RIGHTALIGN = 1;
+export const SZB_LEFTALIGN = 2;
+export const SZB_TOPRIGHTALIGN = 3;
+export const SZB_TOPLEFTALIGN = 4;
+export const SZB_HALFBOTTOMRIGHTALIGN = 5;
+export const SZB_HALFBOTTOMLEFTALIGN = 6;
+export const SZB_HALFTOPRIGHTALIGN = 7;
+export const SZB_HALFTOPLEFTALIGN = 8;
+export const SPNP_UP = 1;
+export const SPNP_DOWN = 2;
+export const SPNP_UPHORZ = 3;
+export const SPNP_DOWNHORZ = 4;
+export const UPS_NORMAL = 1;
+export const UPS_HOT = 2;
+export const UPS_PRESSED = 3;
+export const UPS_DISABLED = 4;
+export const DNS_NORMAL = 1;
+export const DNS_HOT = 2;
+export const DNS_PRESSED = 3;
+export const DNS_DISABLED = 4;
+export const UPHZS_NORMAL = 1;
+export const UPHZS_HOT = 2;
+export const UPHZS_PRESSED = 3;
+export const UPHZS_DISABLED = 4;
+export const DNHZS_NORMAL = 1;
+export const DNHZS_HOT = 2;
+export const DNHZS_PRESSED = 3;
+export const DNHZS_DISABLED = 4;
+export const SP_PANE = 1;
+export const SP_GRIPPERPANE = 2;
+export const SP_GRIPPER = 3;
+export const TABP_TABITEM = 1;
+export const TABP_TABITEMLEFTEDGE = 2;
+export const TABP_TABITEMRIGHTEDGE = 3;
+export const TABP_TABITEMBOTHEDGE = 4;
+export const TABP_TOPTABITEM = 5;
+export const TABP_TOPTABITEMLEFTEDGE = 6;
+export const TABP_TOPTABITEMRIGHTEDGE = 7;
+export const TABP_TOPTABITEMBOTHEDGE = 8;
+export const TABP_PANE = 9;
+export const TABP_BODY = 10;
+export const TABP_AEROWIZARDBODY = 11;
+export const TIS_NORMAL = 1;
+export const TIS_HOT = 2;
+export const TIS_SELECTED = 3;
+export const TIS_DISABLED = 4;
+export const TIS_FOCUSED = 5;
+export const TILES_NORMAL = 1;
+export const TILES_HOT = 2;
+export const TILES_SELECTED = 3;
+export const TILES_DISABLED = 4;
+export const TILES_FOCUSED = 5;
+export const TIRES_NORMAL = 1;
+export const TIRES_HOT = 2;
+export const TIRES_SELECTED = 3;
+export const TIRES_DISABLED = 4;
+export const TIRES_FOCUSED = 5;
+export const TIBES_NORMAL = 1;
+export const TIBES_HOT = 2;
+export const TIBES_SELECTED = 3;
+export const TIBES_DISABLED = 4;
+export const TIBES_FOCUSED = 5;
+export const TTIS_NORMAL = 1;
+export const TTIS_HOT = 2;
+export const TTIS_SELECTED = 3;
+export const TTIS_DISABLED = 4;
+export const TTIS_FOCUSED = 5;
+export const TTILES_NORMAL = 1;
+export const TTILES_HOT = 2;
+export const TTILES_SELECTED = 3;
+export const TTILES_DISABLED = 4;
+export const TTILES_FOCUSED = 5;
+export const TTIRES_NORMAL = 1;
+export const TTIRES_HOT = 2;
+export const TTIRES_SELECTED = 3;
+export const TTIRES_DISABLED = 4;
+export const TTIRES_FOCUSED = 5;
+export const TTIBES_NORMAL = 1;
+export const TTIBES_HOT = 2;
+export const TTIBES_SELECTED = 3;
+export const TTIBES_DISABLED = 4;
+export const TTIBES_FOCUSED = 5;
+export const TDLG_PRIMARYPANEL = 1;
+export const TDLG_MAININSTRUCTIONPANE = 2;
+export const TDLG_MAINICON = 3;
+export const TDLG_CONTENTPANE = 4;
+export const TDLG_CONTENTICON = 5;
+export const TDLG_EXPANDEDCONTENT = 6;
+export const TDLG_COMMANDLINKPANE = 7;
+export const TDLG_SECONDARYPANEL = 8;
+export const TDLG_CONTROLPANE = 9;
+export const TDLG_BUTTONSECTION = 10;
+export const TDLG_BUTTONWRAPPER = 11;
+export const TDLG_EXPANDOTEXT = 12;
+export const TDLG_EXPANDOBUTTON = 13;
+export const TDLG_VERIFICATIONTEXT = 14;
+export const TDLG_FOOTNOTEPANE = 15;
+export const TDLG_FOOTNOTEAREA = 16;
+export const TDLG_FOOTNOTESEPARATOR = 17;
+export const TDLG_EXPANDEDFOOTERAREA = 18;
+export const TDLG_PROGRESSBAR = 19;
+export const TDLG_IMAGEALIGNMENT = 20;
+export const TDLG_RADIOBUTTONPANE = 21;
+export const TDLGCPS_STANDALONE = 1;
+export const TDLGEBS_NORMAL = 1;
+export const TDLGEBS_HOVER = 2;
+export const TDLGEBS_PRESSED = 3;
+export const TDLGEBS_EXPANDEDNORMAL = 4;
+export const TDLGEBS_EXPANDEDHOVER = 5;
+export const TDLGEBS_EXPANDEDPRESSED = 6;
+export const TDLGEBS_NORMALDISABLED = 7;
+export const TDLGEBS_EXPANDEDDISABLED = 8;
+export const TEXT_MAININSTRUCTION = 1;
+export const TEXT_INSTRUCTION = 2;
+export const TEXT_BODYTITLE = 3;
+export const TEXT_BODYTEXT = 4;
+export const TEXT_SECONDARYTEXT = 5;
+export const TEXT_HYPERLINKTEXT = 6;
+export const TEXT_EXPANDED = 7;
+export const TEXT_LABEL = 8;
+export const TEXT_CONTROLLABEL = 9;
+export const TS_HYPERLINK_NORMAL = 1;
+export const TS_HYPERLINK_HOT = 2;
+export const TS_HYPERLINK_PRESSED = 3;
+export const TS_HYPERLINK_DISABLED = 4;
+export const TS_CONTROLLABEL_NORMAL = 1;
+export const TS_CONTROLLABEL_DISABLED = 2;
+export const TP_BUTTON = 1;
+export const TP_DROPDOWNBUTTON = 2;
+export const TP_SPLITBUTTON = 3;
+export const TP_SPLITBUTTONDROPDOWN = 4;
+export const TP_SEPARATOR = 5;
+export const TP_SEPARATORVERT = 6;
+export const TP_DROPDOWNBUTTONGLYPH = 7;
+export const TS_NORMAL = 1;
+export const TS_HOT = 2;
+export const TS_PRESSED = 3;
+export const TS_DISABLED = 4;
+export const TS_CHECKED = 5;
+export const TS_HOTCHECKED = 6;
+export const TS_NEARHOT = 7;
+export const TS_OTHERSIDEHOT = 8;
+export const TTP_STANDARD = 1;
+export const TTP_STANDARDTITLE = 2;
+export const TTP_BALLOON = 3;
+export const TTP_BALLOONTITLE = 4;
+export const TTP_CLOSE = 5;
+export const TTP_BALLOONSTEM = 6;
+export const TTP_WRENCH = 7;
+export const TTCS_NORMAL = 1;
+export const TTCS_HOT = 2;
+export const TTCS_PRESSED = 3;
+export const TTSS_NORMAL = 1;
+export const TTSS_LINK = 2;
+export const TTBS_NORMAL = 1;
+export const TTBS_LINK = 2;
+export const TTBSS_POINTINGUPLEFTWALL = 1;
+export const TTBSS_POINTINGUPCENTERED = 2;
+export const TTBSS_POINTINGUPRIGHTWALL = 3;
+export const TTBSS_POINTINGDOWNRIGHTWALL = 4;
+export const TTBSS_POINTINGDOWNCENTERED = 5;
+export const TTBSS_POINTINGDOWNLEFTWALL = 6;
+export const TTWS_NORMAL = 1;
+export const TTWS_HOT = 2;
+export const TTWS_PRESSED = 3;
+export const TKP_TRACK = 1;
+export const TKP_TRACKVERT = 2;
+export const TKP_THUMB = 3;
+export const TKP_THUMBBOTTOM = 4;
+export const TKP_THUMBTOP = 5;
+export const TKP_THUMBVERT = 6;
+export const TKP_THUMBLEFT = 7;
+export const TKP_THUMBRIGHT = 8;
+export const TKP_TICS = 9;
+export const TKP_TICSVERT = 10;
+export const TKS_NORMAL = 1;
+export const TRS_NORMAL = 1;
+export const TRVS_NORMAL = 1;
+export const TUS_NORMAL = 1;
+export const TUS_HOT = 2;
+export const TUS_PRESSED = 3;
+export const TUS_FOCUSED = 4;
+export const TUS_DISABLED = 5;
+export const TUBS_NORMAL = 1;
+export const TUBS_HOT = 2;
+export const TUBS_PRESSED = 3;
+export const TUBS_FOCUSED = 4;
+export const TUBS_DISABLED = 5;
+export const TUTS_NORMAL = 1;
+export const TUTS_HOT = 2;
+export const TUTS_PRESSED = 3;
+export const TUTS_FOCUSED = 4;
+export const TUTS_DISABLED = 5;
+export const TUVS_NORMAL = 1;
+export const TUVS_HOT = 2;
+export const TUVS_PRESSED = 3;
+export const TUVS_FOCUSED = 4;
+export const TUVS_DISABLED = 5;
+export const TUVLS_NORMAL = 1;
+export const TUVLS_HOT = 2;
+export const TUVLS_PRESSED = 3;
+export const TUVLS_FOCUSED = 4;
+export const TUVLS_DISABLED = 5;
+export const TUVRS_NORMAL = 1;
+export const TUVRS_HOT = 2;
+export const TUVRS_PRESSED = 3;
+export const TUVRS_FOCUSED = 4;
+export const TUVRS_DISABLED = 5;
+export const TSS_NORMAL = 1;
+export const TSVS_NORMAL = 1;
+export const TVP_TREEITEM = 1;
+export const TVP_GLYPH = 2;
+export const TVP_BRANCH = 3;
+export const TVP_HOTGLYPH = 4;
+export const TREIS_NORMAL = 1;
+export const TREIS_HOT = 2;
+export const TREIS_SELECTED = 3;
+export const TREIS_DISABLED = 4;
+export const TREIS_SELECTEDNOTFOCUS = 5;
+export const TREIS_HOTSELECTED = 6;
+export const GLPS_CLOSED = 1;
+export const GLPS_OPENED = 2;
+export const HGLPS_CLOSED = 1;
+export const HGLPS_OPENED = 2;
+export const UTP_STROKEBACKGROUND = 1;
+export const UTP_HOVERBACKGROUND = 2;
+export const UTS_NORMAL = 1;
+export const UTS_HOT = 2;
+export const UTS_PRESSED = 3;
+export const TSGP_GRIPPER = 1;
+export const TSGS_NORMAL = 1;
+export const TSGS_CENTERED = 2;
+export const WP_CAPTION = 1;
+export const WP_SMALLCAPTION = 2;
+export const WP_MINCAPTION = 3;
+export const WP_SMALLMINCAPTION = 4;
+export const WP_MAXCAPTION = 5;
+export const WP_SMALLMAXCAPTION = 6;
+export const WP_FRAMELEFT = 7;
+export const WP_FRAMERIGHT = 8;
+export const WP_FRAMEBOTTOM = 9;
+export const WP_SMALLFRAMELEFT = 10;
+export const WP_SMALLFRAMERIGHT = 11;
+export const WP_SMALLFRAMEBOTTOM = 12;
+export const WP_SYSBUTTON = 13;
+export const WP_MDISYSBUTTON = 14;
+export const WP_MINBUTTON = 15;
+export const WP_MDIMINBUTTON = 16;
+export const WP_MAXBUTTON = 17;
+export const WP_CLOSEBUTTON = 18;
+export const WP_SMALLCLOSEBUTTON = 19;
+export const WP_MDICLOSEBUTTON = 20;
+export const WP_RESTOREBUTTON = 21;
+export const WP_MDIRESTOREBUTTON = 22;
+export const WP_HELPBUTTON = 23;
+export const WP_MDIHELPBUTTON = 24;
+export const WP_HORZSCROLL = 25;
+export const WP_HORZTHUMB = 26;
+export const WP_VERTSCROLL = 27;
+export const WP_VERTTHUMB = 28;
+export const WP_DIALOG = 29;
+export const WP_CAPTIONSIZINGTEMPLATE = 30;
+export const WP_SMALLCAPTIONSIZINGTEMPLATE = 31;
+export const WP_FRAMELEFTSIZINGTEMPLATE = 32;
+export const WP_SMALLFRAMELEFTSIZINGTEMPLATE = 33;
+export const WP_FRAMERIGHTSIZINGTEMPLATE = 34;
+export const WP_SMALLFRAMERIGHTSIZINGTEMPLATE = 35;
+export const WP_FRAMEBOTTOMSIZINGTEMPLATE = 36;
+export const WP_SMALLFRAMEBOTTOMSIZINGTEMPLATE = 37;
+export const WP_FRAME = 38;
+export const WP_BORDER = 39;
+export const FS_ACTIVE = 1;
+export const FS_INACTIVE = 2;
+export const CS_ACTIVE = 1;
+export const CS_INACTIVE = 2;
+export const CS_DISABLED = 3;
+export const MXCS_ACTIVE = 1;
+export const MXCS_INACTIVE = 2;
+export const MXCS_DISABLED = 3;
+export const MNCS_ACTIVE = 1;
+export const MNCS_INACTIVE = 2;
+export const MNCS_DISABLED = 3;
+export const HSS_NORMAL = 1;
+export const HSS_HOT = 2;
+export const HSS_PUSHED = 3;
+export const HSS_DISABLED = 4;
+export const HTS_NORMAL = 1;
+export const HTS_HOT = 2;
+export const HTS_PUSHED = 3;
+export const HTS_DISABLED = 4;
+export const VSS_NORMAL = 1;
+export const VSS_HOT = 2;
+export const VSS_PUSHED = 3;
+export const VSS_DISABLED = 4;
+export const VTS_NORMAL = 1;
+export const VTS_HOT = 2;
+export const VTS_PUSHED = 3;
+export const VTS_DISABLED = 4;
+export const SBS_NORMAL = 1;
+export const SBS_HOT = 2;
+export const SBS_PUSHED = 3;
+export const SBS_DISABLED = 4;
+export const MINBS_NORMAL = 1;
+export const MINBS_HOT = 2;
+export const MINBS_PUSHED = 3;
+export const MINBS_DISABLED = 4;
+export const MAXBS_NORMAL = 1;
+export const MAXBS_HOT = 2;
+export const MAXBS_PUSHED = 3;
+export const MAXBS_DISABLED = 4;
+export const RBS_NORMAL = 1;
+export const RBS_HOT = 2;
+export const RBS_PUSHED = 3;
+export const RBS_DISABLED = 4;
+export const HBS_NORMAL = 1;
+export const HBS_HOT = 2;
+export const HBS_PUSHED = 3;
+export const HBS_DISABLED = 4;
+export const CBS_NORMAL = 1;
+export const CBS_HOT = 2;
+export const CBS_PUSHED = 3;
+export const CBS_DISABLED = 4;
+export const SCBS_NORMAL = 1;
+export const SCBS_HOT = 2;
+export const SCBS_PUSHED = 3;
+export const SCBS_DISABLED = 4;
+export const FRB_ACTIVE = 1;
+export const FRB_INACTIVE = 2;
+export const FRL_ACTIVE = 1;
+export const FRL_INACTIVE = 2;
+export const FRR_ACTIVE = 1;
+export const FRR_INACTIVE = 2;
+export const SCS_ACTIVE = 1;
+export const SCS_INACTIVE = 2;
+export const SCS_DISABLED = 3;
+export const SFRB_ACTIVE = 1;
+export const SFRB_INACTIVE = 2;
+export const SFRL_ACTIVE = 1;
+export const SFRL_INACTIVE = 2;
+export const SFRR_ACTIVE = 1;
+export const SFRR_INACTIVE = 2;
+export const MDCL_NORMAL = 1;
+export const MDCL_HOT = 2;
+export const MDCL_PUSHED = 3;
+export const MDCL_DISABLED = 4;
+export const MDMI_NORMAL = 1;
+export const MDMI_HOT = 2;
+export const MDMI_PUSHED = 3;
+export const MDMI_DISABLED = 4;
+export const MDRE_NORMAL = 1;
+export const MDRE_HOT = 2;
+export const MDRE_PUSHED = 3;
+export const MDRE_DISABLED = 4;
+export const BT_IMAGEFILE = 0;
+export const BT_BORDERFILL = 1;
+export const BT_NONE = 2;
+export const IL_VERTICAL = 0;
+export const IL_HORIZONTAL = 1;
+export const BT_RECT = 0;
+export const BT_ROUNDRECT = 1;
+export const BT_ELLIPSE = 2;
+export const FT_SOLID = 0;
+export const FT_VERTGRADIENT = 1;
+export const FT_HORZGRADIENT = 2;
+export const FT_RADIALGRADIENT = 3;
+export const FT_TILEIMAGE = 4;
+export const ST_TRUESIZE = 0;
+export const ST_STRETCH = 1;
+export const ST_TILE = 2;
+export const HA_LEFT = 0;
+export const HA_CENTER = 1;
+export const HA_RIGHT = 2;
+export const CA_LEFT = 0;
+export const CA_CENTER = 1;
+export const CA_RIGHT = 2;
+export const VA_TOP = 0;
+export const VA_CENTER = 1;
+export const VA_BOTTOM = 2;
+export const OT_TOPLEFT = 0;
+export const OT_TOPRIGHT = 1;
+export const OT_TOPMIDDLE = 2;
+export const OT_BOTTOMLEFT = 3;
+export const OT_BOTTOMRIGHT = 4;
+export const OT_BOTTOMMIDDLE = 5;
+export const OT_MIDDLELEFT = 6;
+export const OT_MIDDLERIGHT = 7;
+export const OT_LEFTOFCAPTION = 8;
+export const OT_RIGHTOFCAPTION = 9;
+export const OT_LEFTOFLASTBUTTON = 10;
+export const OT_RIGHTOFLASTBUTTON = 11;
+export const OT_ABOVELASTBUTTON = 12;
+export const OT_BELOWLASTBUTTON = 13;
+export const ICE_NONE = 0;
+export const ICE_GLOW = 1;
+export const ICE_SHADOW = 2;
+export const ICE_PULSE = 3;
+export const ICE_ALPHA = 4;
+export const TST_NONE = 0;
+export const TST_SINGLE = 1;
+export const TST_CONTINUOUS = 2;
+export const GT_NONE = 0;
+export const GT_IMAGEGLYPH = 1;
+export const GT_FONTGLYPH = 2;
+export const IST_NONE = 0;
+export const IST_SIZE = 1;
+export const IST_DPI = 2;
+export const TSST_NONE = 0;
+export const TSST_SIZE = 1;
+export const TSST_DPI = 2;
+export const GFST_NONE = 0;
+export const GFST_SIZE = 1;
+export const GFST_DPI = 2;
+export const LP_HYPERLINK = 1;
+export const HLS_NORMALTEXT = 1;
+export const HLS_LINKTEXT = 2;
+export const EMP_MARKUPTEXT = 1;
+export const EMT_NORMALTEXT = 1;
+export const EMT_LINKTEXT = 2;
+export const STAT_TEXT = 1;
+export const PGRP_UP = 1;
+export const PGRP_DOWN = 2;
+export const PGRP_UPHORZ = 3;
+export const PGRP_DOWNHORZ = 4;
+export const MC_BACKGROUND = 1;
+export const MC_BORDERS = 2;
+export const MC_GRIDBACKGROUND = 3;
+export const MC_COLHEADERSPLITTER = 4;
+export const MC_GRIDCELLBACKGROUND = 5;
+export const MC_GRIDCELL = 6;
+export const MC_GRIDCELLUPPER = 7;
+export const MC_TRAILINGGRIDCELL = 8;
+export const MC_TRAILINGGRIDCELLUPPER = 9;
+export const MC_NAVNEXT = 10;
+export const MC_NAVPREV = 11;
+export const MCGCB_SELECTED = 1;
+export const MCGCB_HOT = 2;
+export const MCGCB_SELECTEDHOT = 3;
+export const MCGCB_SELECTEDNOTFOCUSED = 4;
+export const MCGCB_TODAY = 5;
+export const MCGCB_TODAYSELECTED = 6;
+export const MCGC_HOT = 1;
+export const MCGC_HASSTATE = 2;
+export const MCGC_HASSTATEHOT = 3;
+export const MCGC_TODAY = 4;
+export const MCGC_TODAYSELECTED = 5;
+export const MCGC_SELECTED = 6;
+export const MCGC_SELECTEDHOT = 7;
+export const MCGCU_HOT = 1;
+export const MCGCU_HASSTATE = 2;
+export const MCGCU_HASSTATEHOT = 3;
+export const MCGCU_SELECTED = 4;
+export const MCGCU_SELECTEDHOT = 5;
+export const MCTGC_HOT = 1;
+export const MCTGC_HASSTATE = 2;
+export const MCTGC_HASSTATEHOT = 3;
+export const MCTGC_TODAY = 4;
+export const MCTGC_TODAYSELECTED = 5;
+export const MCTGC_SELECTED = 6;
+export const MCTGC_SELECTEDHOT = 7;
+export const MCTGCU_HOT = 1;
+export const MCTGCU_HASSTATE = 2;
+export const MCTGCU_HASSTATEHOT = 3;
+export const MCTGCU_SELECTED = 4;
+export const MCTGCU_SELECTEDHOT = 5;
+export const MCNN_NORMAL = 1;
+export const MCNN_HOT = 2;
+export const MCNN_PRESSED = 3;
+export const MCNN_DISABLED = 4;
+export const MCNP_NORMAL = 1;
+export const MCNP_HOT = 2;
+export const MCNP_PRESSED = 3;
+export const MCNP_DISABLED = 4;
+export const CLP_TIME = 1;
+export const CLS_NORMAL = 1;
+export const CLS_HOT = 2;
+export const CLS_PRESSED = 3;
+export const TNP_BACKGROUND = 1;
+export const TNP_ANIMBACKGROUND = 2;
+export const TBP_BACKGROUNDBOTTOM = 1;
+export const TBP_BACKGROUNDRIGHT = 2;
+export const TBP_BACKGROUNDTOP = 3;
+export const TBP_BACKGROUNDLEFT = 4;
+export const TBP_SIZINGBARBOTTOM = 5;
+export const TBP_SIZINGBARRIGHT = 6;
+export const TBP_SIZINGBARTOP = 7;
+export const TBP_SIZINGBARLEFT = 8;
+export const TDP_GROUPCOUNT = 1;
+export const TDP_FLASHBUTTON = 2;
+export const TDP_FLASHBUTTONGROUPMENU = 3;
+export const SPP_USERPANE = 1;
+export const SPP_MOREPROGRAMS = 2;
+export const SPP_MOREPROGRAMSARROW = 3;
+export const SPP_PROGLIST = 4;
+export const SPP_PROGLISTSEPARATOR = 5;
+export const SPP_PLACESLIST = 6;
+export const SPP_PLACESLISTSEPARATOR = 7;
+export const SPP_LOGOFF = 8;
+export const SPP_LOGOFFBUTTONS = 9;
+export const SPP_USERPICTURE = 10;
+export const SPP_PREVIEW = 11;
+export const SPP_MOREPROGRAMSTAB = 12;
+export const SPP_NSCHOST = 13;
+export const SPP_SOFTWAREEXPLORER = 14;
+export const SPP_OPENBOX = 15;
+export const SPP_SEARCHVIEW = 16;
+export const SPP_MOREPROGRAMSARROWBACK = 17;
+export const SPP_TOPMATCH = 18;
+export const SPP_LOGOFFSPLITBUTTONDROPDOWN = 19;
+export const SPMPT_NORMAL = 1;
+export const SPMPT_HOT = 2;
+export const SPMPT_SELECTED = 3;
+export const SPMPT_DISABLED = 4;
+export const SPMPT_FOCUSED = 5;
+export const SPSE_NORMAL = 1;
+export const SPSE_HOT = 2;
+export const SPSE_SELECTED = 3;
+export const SPSE_DISABLED = 4;
+export const SPSE_FOCUSED = 5;
+export const SPOB_NORMAL = 1;
+export const SPOB_HOT = 2;
+export const SPOB_SELECTED = 3;
+export const SPOB_DISABLED = 4;
+export const SPOB_FOCUSED = 5;
+export const SPS_NORMAL = 1;
+export const SPS_HOT = 2;
+export const SPS_PRESSED = 3;
+export const SPSB_NORMAL = 1;
+export const SPSB_HOT = 2;
+export const SPSB_PRESSED = 3;
+export const SPLS_NORMAL = 1;
+export const SPLS_HOT = 2;
+export const SPLS_PRESSED = 3;
+export const MDP_NEWAPPBUTTON = 1;
+export const MDP_SEPERATOR = 2;
+export const MDS_NORMAL = 1;
+export const MDS_HOT = 2;
+export const MDS_PRESSED = 3;
+export const MDS_DISABLED = 4;
+export const MDS_CHECKED = 5;
+export const MDS_HOTCHECKED = 6;
 export const TM_PLAINTEXT = 1;
 export const TM_RICHTEXT = 2;
 export const TM_SINGLELEVELUNDO = 4;
@@ -3319,10 +5110,14 @@ export const VTA_RIGHT = 0;
 export const VTA_CENTER = 6;
 export const VTA_BOTTOM = 2;
 export const VTA_TOP = 0;
+export const CHARSET_UNICODE = 1;
+export const CHARSET_SYMBOL = 2;
 export const DVASPECT_CONTENT = 1;
 export const DVASPECT_THUMBNAIL = 2;
 export const DVASPECT_ICON = 4;
 export const DVASPECT_DOCPRINT = 8;
+export const DVASPECT_OPAQUE = 16;
+export const DVASPECT_TRANSPARENT = 32;
 export const UID_UNKNOWN = 0;
 export const UID_TYPING = 1;
 export const UID_DELETE = 2;
@@ -3349,9 +5144,9 @@ export const TXTNS_ROUNDTOLINE = 2;
 export const TXTNS_FITTOCONTENT3 = 3;
 export const TXTNS_FITTOCONTENTWSP = 4;
 export const TXTNS_INCLUDELASTLINE = 1073741824;
-export const TXTNS_EMU = "-2147483648";
+export const TXTNS_EMU = `-2147483648`;
 export const TXTVIEW_ACTIVE = 0;
-export const TXTVIEW_INACTIVE = "-1";
+export const TXTVIEW_INACTIVE = `-1`;
 export const CN_GENERIC = 0;
 export const CN_TEXTCHANGED = 1;
 export const CN_NEWUNDO = 2;
@@ -3363,13 +5158,13 @@ export const CARET_ITALIC = 32;
 export const CARET_NULL = 64;
 export const CARET_ROTATE90 = 128;
 export const tomFalse = 0;
-export const tomTrue = "-1";
-export const tomUndefined = "-9999999";
-export const tomToggle = "-9999998";
-export const tomAutoColor = "-9999997";
-export const tomDefault = "-9999996";
-export const tomSuspend = "-9999995";
-export const tomResume = "-9999994";
+export const tomTrue = `-1`;
+export const tomUndefined = `-9999999`;
+export const tomToggle = `-9999998`;
+export const tomAutoColor = `-9999997`;
+export const tomDefault = `-9999996`;
+export const tomSuspend = `-9999995`;
+export const tomResume = `-9999994`;
 export const tomApplyNow = 0;
 export const tomApplyLater = 1;
 export const tomTrackParms = 2;
@@ -3379,7 +5174,7 @@ export const tomDisableSmartFont = 8;
 export const tomEnableSmartFont = 9;
 export const tomUsePoints = 10;
 export const tomUseTwips = 11;
-export const tomBackward = "-1073741823";
+export const tomBackward = `-1073741823`;
 export const tomForward = 1073741823;
 export const tomMove = 0;
 export const tomExtend = 1;
@@ -3449,9 +5244,9 @@ export const tomDashes = 2;
 export const tomLines = 3;
 export const tomThickLines = 4;
 export const tomEquals = 5;
-export const tomTabBack = "-3";
-export const tomTabNext = "-2";
-export const tomTabHere = "-1";
+export const tomTabBack = `-3`;
+export const tomTabNext = `-2`;
+export const tomTabHere = `-1`;
 export const tomListNone = 0;
 export const tomListBullet = 1;
 export const tomListNumberAsArabic = 2;
@@ -3482,16 +5277,16 @@ export const tomListPlain = 196608;
 export const tomListNoNumber = 262144;
 export const tomListMinus = 524288;
 export const tomIgnoreNumberStyle = 16777216;
-export const tomParaStyleNormal = "-1";
-export const tomParaStyleHeading1 = "-2";
-export const tomParaStyleHeading2 = "-3";
-export const tomParaStyleHeading3 = "-4";
-export const tomParaStyleHeading4 = "-5";
-export const tomParaStyleHeading5 = "-6";
-export const tomParaStyleHeading6 = "-7";
-export const tomParaStyleHeading7 = "-8";
-export const tomParaStyleHeading8 = "-9";
-export const tomParaStyleHeading9 = "-10";
+export const tomParaStyleNormal = `-1`;
+export const tomParaStyleHeading1 = `-2`;
+export const tomParaStyleHeading2 = `-3`;
+export const tomParaStyleHeading3 = `-4`;
+export const tomParaStyleHeading4 = `-5`;
+export const tomParaStyleHeading5 = `-6`;
+export const tomParaStyleHeading6 = `-7`;
+export const tomParaStyleHeading7 = `-8`;
+export const tomParaStyleHeading8 = `-9`;
+export const tomParaStyleHeading9 = `-10`;
 export const tomCharacter = 1;
 export const tomWord = 2;
 export const tomSentence = 3;
@@ -3567,32 +5362,32 @@ export const tomRTF = 1;
 export const tomText = 2;
 export const tomHTML = 3;
 export const tomWordDocument = 4;
-export const tomBold = "-2147483647";
-export const tomItalic = "-2147483646";
-export const tomUnderline = "-2147483644";
-export const tomStrikeout = "-2147483640";
-export const tomProtected = "-2147483632";
-export const tomLink = "-2147483616";
-export const tomSmallCaps = "-2147483584";
-export const tomAllCaps = "-2147483520";
-export const tomHidden = "-2147483392";
-export const tomOutline = "-2147483136";
-export const tomShadow = "-2147482624";
-export const tomEmboss = "-2147481600";
-export const tomImprint = "-2147479552";
-export const tomDisabled = "-2147475456";
-export const tomRevised = "-2147467264";
-export const tomSubscriptCF = "-2147418112";
-export const tomSuperscriptCF = "-2147352576";
-export const tomFontBound = "-2146435072";
-export const tomLinkProtected = "-2139095040";
-export const tomInlineObjectStart = "-2130706432";
-export const tomExtendedChar = "-2113929216";
-export const tomAutoBackColor = "-2080374784";
-export const tomMathZoneNoBuildUp = "-2013265920";
-export const tomMathZone = "-1879048192";
-export const tomMathZoneOrdinary = "-1610612736";
-export const tomAutoTextColor = "-1073741824";
+export const tomBold = `-2147483647`;
+export const tomItalic = `-2147483646`;
+export const tomUnderline = `-2147483644`;
+export const tomStrikeout = `-2147483640`;
+export const tomProtected = `-2147483632`;
+export const tomLink = `-2147483616`;
+export const tomSmallCaps = `-2147483584`;
+export const tomAllCaps = `-2147483520`;
+export const tomHidden = `-2147483392`;
+export const tomOutline = `-2147483136`;
+export const tomShadow = `-2147482624`;
+export const tomEmboss = `-2147481600`;
+export const tomImprint = `-2147479552`;
+export const tomDisabled = `-2147475456`;
+export const tomRevised = `-2147467264`;
+export const tomSubscriptCF = `-2147418112`;
+export const tomSuperscriptCF = `-2147352576`;
+export const tomFontBound = `-2146435072`;
+export const tomLinkProtected = `-2139095040`;
+export const tomInlineObjectStart = `-2130706432`;
+export const tomExtendedChar = `-2113929216`;
+export const tomAutoBackColor = `-2080374784`;
+export const tomMathZoneNoBuildUp = `-2013265920`;
+export const tomMathZone = `-1879048192`;
+export const tomMathZoneOrdinary = `-1610612736`;
+export const tomAutoTextColor = `-1073741824`;
 export const tomMathZoneDisplay = 262144;
 export const tomParaEffectRTL = 1;
 export const tomParaEffectKeep = 2;
@@ -3630,7 +5425,7 @@ export const tomMatchFontSignature = 2;
 export const tomMatchAscii = 4;
 export const tomGetHeightOnly = 8;
 export const tomMatchMathFont = 16;
-export const tomCharset = "-2147483648";
+export const tomCharset = `-2147483648`;
 export const tomCharRepFromLcid = 1073741824;
 export const tomAnsi = 0;
 export const tomEastEurope = 1;
@@ -3993,297 +5788,6 @@ export const MTAIL = 9;
 export const MSTRCH = 10;
 export const MLOOP = 11;
 export const MOPENA = 12;
-export const TVGIPR_BUTTON = 1;
-export const EC_ENDOFLINE_DETECTFROMCONTENT = 0;
-export const EC_ENDOFLINE_CRLF = 1;
-export const EC_ENDOFLINE_CR = 2;
-export const EC_ENDOFLINE_LF = 3;
-export const EC_SEARCHWEB_ENTRYPOINT_EXTERNAL = 0;
-export const EC_SEARCHWEB_ENTRYPOINT_CONTEXTMENU = 1;
-export const TDF_ENABLE_HYPERLINKS = 1;
-export const TDF_USE_HICON_MAIN = 2;
-export const TDF_USE_HICON_FOOTER = 4;
-export const TDF_ALLOW_DIALOG_CANCELLATION = 8;
-export const TDF_USE_COMMAND_LINKS = 16;
-export const TDF_USE_COMMAND_LINKS_NO_ICON = 32;
-export const TDF_EXPAND_FOOTER_AREA = 64;
-export const TDF_EXPANDED_BY_DEFAULT = 128;
-export const TDF_VERIFICATION_FLAG_CHECKED = 256;
-export const TDF_SHOW_PROGRESS_BAR = 512;
-export const TDF_SHOW_MARQUEE_PROGRESS_BAR = 1024;
-export const TDF_CALLBACK_TIMER = 2048;
-export const TDF_POSITION_RELATIVE_TO_WINDOW = 4096;
-export const TDF_RTL_LAYOUT = 8192;
-export const TDF_NO_DEFAULT_RADIO_BUTTON = 16384;
-export const TDF_CAN_BE_MINIMIZED = 32768;
-export const TDF_NO_SET_FOREGROUND = 65536;
-export const TDF_SIZE_TO_CONTENT = 16777216;
-export const TDM_NAVIGATE_PAGE = 1125;
-export const TDM_CLICK_BUTTON = 1126;
-export const TDM_SET_MARQUEE_PROGRESS_BAR = 1127;
-export const TDM_SET_PROGRESS_BAR_STATE = 1128;
-export const TDM_SET_PROGRESS_BAR_RANGE = 1129;
-export const TDM_SET_PROGRESS_BAR_POS = 1130;
-export const TDM_SET_PROGRESS_BAR_MARQUEE = 1131;
-export const TDM_SET_ELEMENT_TEXT = 1132;
-export const TDM_CLICK_RADIO_BUTTON = 1134;
-export const TDM_ENABLE_BUTTON = 1135;
-export const TDM_ENABLE_RADIO_BUTTON = 1136;
-export const TDM_CLICK_VERIFICATION = 1137;
-export const TDM_UPDATE_ELEMENT_TEXT = 1138;
-export const TDM_SET_BUTTON_ELEVATION_REQUIRED_STATE = 1139;
-export const TDM_UPDATE_ICON = 1140;
-export const TDN_CREATED = 0;
-export const TDN_NAVIGATED = 1;
-export const TDN_BUTTON_CLICKED = 2;
-export const TDN_HYPERLINK_CLICKED = 3;
-export const TDN_TIMER = 4;
-export const TDN_DESTROYED = 5;
-export const TDN_RADIO_BUTTON_CLICKED = 6;
-export const TDN_DIALOG_CONSTRUCTED = 7;
-export const TDN_VERIFICATION_CLICKED = 8;
-export const TDN_HELP = 9;
-export const TDN_EXPANDO_BUTTON_CLICKED = 10;
-export const TDE_CONTENT = 0;
-export const TDE_EXPANDED_INFORMATION = 1;
-export const TDE_FOOTER = 2;
-export const TDE_MAIN_INSTRUCTION = 3;
-export const TDIE_ICON_MAIN = 0;
-export const TDIE_ICON_FOOTER = 1;
-export const TDCBF_OK_BUTTON = 1;
-export const TDCBF_YES_BUTTON = 2;
-export const TDCBF_NO_BUTTON = 4;
-export const TDCBF_CANCEL_BUTTON = 8;
-export const TDCBF_RETRY_BUTTON = 16;
-export const TDCBF_CLOSE_BUTTON = 32;
-export const LIM_SMALL = 0;
-export const LIM_LARGE = 1;
-export const TAP_FLAGS = 0;
-export const TAP_TRANSFORMCOUNT = 1;
-export const TAP_STAGGERDELAY = 2;
-export const TAP_STAGGERDELAYCAP = 3;
-export const TAP_STAGGERDELAYFACTOR = 4;
-export const TAP_ZORDER = 5;
-export const TAPF_NONE = 0;
-export const TAPF_HASSTAGGER = 1;
-export const TAPF_ISRTLAWARE = 2;
-export const TAPF_ALLOWCOLLECTION = 4;
-export const TAPF_HASBACKGROUND = 8;
-export const TAPF_HASPERSPECTIVE = 16;
-export const TATT_TRANSLATE_2D = 0;
-export const TATT_SCALE_2D = 1;
-export const TATT_OPACITY = 2;
-export const TATT_CLIP = 3;
-export const TATF_NONE = 0;
-export const TATF_TARGETVALUES_USER = 1;
-export const TATF_HASINITIALVALUES = 2;
-export const TATF_HASORIGINVALUES = 4;
-export const TTFT_UNDEFINED = 0;
-export const TTFT_CUBIC_BEZIER = 1;
-export const TS_MIN = 0;
-export const TS_TRUE = 1;
-export const TS_DRAW = 2;
-export const PO_STATE = 0;
-export const PO_PART = 1;
-export const PO_CLASS = 2;
-export const PO_GLOBAL = 3;
-export const PO_NOTFOUND = 4;
-export const WTA_NONCLIENT = 1;
-export const BPBF_COMPATIBLEBITMAP = 0;
-export const BPBF_DIB = 1;
-export const BPBF_TOPDOWNDIB = 2;
-export const BPBF_TOPDOWNMONODIB = 3;
-export const BPAS_NONE = 0;
-export const BPAS_LINEAR = 1;
-export const BPAS_CUBIC = 2;
-export const BPAS_SINE = 3;
-export const BT_IMAGEFILE = 0;
-export const BT_BORDERFILL = 1;
-export const BT_NONE = 2;
-export const IL_VERTICAL = 0;
-export const IL_HORIZONTAL = 1;
-export const BT_RECT = 0;
-export const BT_ROUNDRECT = 1;
-export const BT_ELLIPSE = 2;
-export const FT_SOLID = 0;
-export const FT_VERTGRADIENT = 1;
-export const FT_HORZGRADIENT = 2;
-export const FT_RADIALGRADIENT = 3;
-export const FT_TILEIMAGE = 4;
-export const ST_TRUESIZE = 0;
-export const ST_STRETCH = 1;
-export const ST_TILE = 2;
-export const HA_LEFT = 0;
-export const HA_CENTER = 1;
-export const HA_RIGHT = 2;
-export const CA_LEFT = 0;
-export const CA_CENTER = 1;
-export const CA_RIGHT = 2;
-export const VA_TOP = 0;
-export const VA_CENTER = 1;
-export const VA_BOTTOM = 2;
-export const OT_TOPLEFT = 0;
-export const OT_TOPRIGHT = 1;
-export const OT_TOPMIDDLE = 2;
-export const OT_BOTTOMLEFT = 3;
-export const OT_BOTTOMRIGHT = 4;
-export const OT_BOTTOMMIDDLE = 5;
-export const OT_MIDDLELEFT = 6;
-export const OT_MIDDLERIGHT = 7;
-export const OT_LEFTOFCAPTION = 8;
-export const OT_RIGHTOFCAPTION = 9;
-export const OT_LEFTOFLASTBUTTON = 10;
-export const OT_RIGHTOFLASTBUTTON = 11;
-export const OT_ABOVELASTBUTTON = 12;
-export const OT_BELOWLASTBUTTON = 13;
-export const ICE_NONE = 0;
-export const ICE_GLOW = 1;
-export const ICE_SHADOW = 2;
-export const ICE_PULSE = 3;
-export const ICE_ALPHA = 4;
-export const TST_NONE = 0;
-export const TST_SINGLE = 1;
-export const TST_CONTINUOUS = 2;
-export const GT_NONE = 0;
-export const GT_IMAGEGLYPH = 1;
-export const GT_FONTGLYPH = 2;
-export const IST_NONE = 0;
-export const IST_SIZE = 1;
-export const IST_DPI = 2;
-export const TSST_NONE = 0;
-export const TSST_SIZE = 1;
-export const TSST_DPI = 2;
-export const GFST_NONE = 0;
-export const GFST_SIZE = 1;
-export const GFST_DPI = 2;
-export const LP_HYPERLINK = 1;
-export const HLS_NORMALTEXT = 1;
-export const HLS_LINKTEXT = 2;
-export const EMP_MARKUPTEXT = 1;
-export const EMT_NORMALTEXT = 1;
-export const EMT_LINKTEXT = 2;
-export const STAT_TEXT = 1;
-export const PGRP_UP = 1;
-export const PGRP_DOWN = 2;
-export const PGRP_UPHORZ = 3;
-export const PGRP_DOWNHORZ = 4;
-export const MC_BACKGROUND = 1;
-export const MC_BORDERS = 2;
-export const MC_GRIDBACKGROUND = 3;
-export const MC_COLHEADERSPLITTER = 4;
-export const MC_GRIDCELLBACKGROUND = 5;
-export const MC_GRIDCELL = 6;
-export const MC_GRIDCELLUPPER = 7;
-export const MC_TRAILINGGRIDCELL = 8;
-export const MC_TRAILINGGRIDCELLUPPER = 9;
-export const MC_NAVNEXT = 10;
-export const MC_NAVPREV = 11;
-export const MCGCB_SELECTED = 1;
-export const MCGCB_HOT = 2;
-export const MCGCB_SELECTEDHOT = 3;
-export const MCGCB_SELECTEDNOTFOCUSED = 4;
-export const MCGCB_TODAY = 5;
-export const MCGCB_TODAYSELECTED = 6;
-export const MCGC_HOT = 1;
-export const MCGC_HASSTATE = 2;
-export const MCGC_HASSTATEHOT = 3;
-export const MCGC_TODAY = 4;
-export const MCGC_TODAYSELECTED = 5;
-export const MCGC_SELECTED = 6;
-export const MCGC_SELECTEDHOT = 7;
-export const MCGCU_HOT = 1;
-export const MCGCU_HASSTATE = 2;
-export const MCGCU_HASSTATEHOT = 3;
-export const MCGCU_SELECTED = 4;
-export const MCGCU_SELECTEDHOT = 5;
-export const MCTGC_HOT = 1;
-export const MCTGC_HASSTATE = 2;
-export const MCTGC_HASSTATEHOT = 3;
-export const MCTGC_TODAY = 4;
-export const MCTGC_TODAYSELECTED = 5;
-export const MCTGC_SELECTED = 6;
-export const MCTGC_SELECTEDHOT = 7;
-export const MCTGCU_HOT = 1;
-export const MCTGCU_HASSTATE = 2;
-export const MCTGCU_HASSTATEHOT = 3;
-export const MCTGCU_SELECTED = 4;
-export const MCTGCU_SELECTEDHOT = 5;
-export const MCNN_NORMAL = 1;
-export const MCNN_HOT = 2;
-export const MCNN_PRESSED = 3;
-export const MCNN_DISABLED = 4;
-export const MCNP_NORMAL = 1;
-export const MCNP_HOT = 2;
-export const MCNP_PRESSED = 3;
-export const MCNP_DISABLED = 4;
-export const CLP_TIME = 1;
-export const CLS_NORMAL = 1;
-export const CLS_HOT = 2;
-export const CLS_PRESSED = 3;
-export const TNP_BACKGROUND = 1;
-export const TNP_ANIMBACKGROUND = 2;
-export const TBP_BACKGROUNDBOTTOM = 1;
-export const TBP_BACKGROUNDRIGHT = 2;
-export const TBP_BACKGROUNDTOP = 3;
-export const TBP_BACKGROUNDLEFT = 4;
-export const TBP_SIZINGBARBOTTOM = 5;
-export const TBP_SIZINGBARRIGHT = 6;
-export const TBP_SIZINGBARTOP = 7;
-export const TBP_SIZINGBARLEFT = 8;
-export const TDP_GROUPCOUNT = 1;
-export const TDP_FLASHBUTTON = 2;
-export const TDP_FLASHBUTTONGROUPMENU = 3;
-export const SPP_USERPANE = 1;
-export const SPP_MOREPROGRAMS = 2;
-export const SPP_MOREPROGRAMSARROW = 3;
-export const SPP_PROGLIST = 4;
-export const SPP_PROGLISTSEPARATOR = 5;
-export const SPP_PLACESLIST = 6;
-export const SPP_PLACESLISTSEPARATOR = 7;
-export const SPP_LOGOFF = 8;
-export const SPP_LOGOFFBUTTONS = 9;
-export const SPP_USERPICTURE = 10;
-export const SPP_PREVIEW = 11;
-export const SPP_MOREPROGRAMSTAB = 12;
-export const SPP_NSCHOST = 13;
-export const SPP_SOFTWAREEXPLORER = 14;
-export const SPP_OPENBOX = 15;
-export const SPP_SEARCHVIEW = 16;
-export const SPP_MOREPROGRAMSARROWBACK = 17;
-export const SPP_TOPMATCH = 18;
-export const SPP_LOGOFFSPLITBUTTONDROPDOWN = 19;
-export const SPMPT_NORMAL = 1;
-export const SPMPT_HOT = 2;
-export const SPMPT_SELECTED = 3;
-export const SPMPT_DISABLED = 4;
-export const SPMPT_FOCUSED = 5;
-export const SPSE_NORMAL = 1;
-export const SPSE_HOT = 2;
-export const SPSE_SELECTED = 3;
-export const SPSE_DISABLED = 4;
-export const SPSE_FOCUSED = 5;
-export const SPOB_NORMAL = 1;
-export const SPOB_HOT = 2;
-export const SPOB_SELECTED = 3;
-export const SPOB_DISABLED = 4;
-export const SPOB_FOCUSED = 5;
-export const SPS_NORMAL = 1;
-export const SPS_HOT = 2;
-export const SPS_PRESSED = 3;
-export const SPSB_NORMAL = 1;
-export const SPSB_HOT = 2;
-export const SPSB_PRESSED = 3;
-export const SPLS_NORMAL = 1;
-export const SPLS_HOT = 2;
-export const SPLS_PRESSED = 3;
-export const MDP_NEWAPPBUTTON = 1;
-export const MDP_SEPERATOR = 2;
-export const MDS_NORMAL = 1;
-export const MDS_HOT = 2;
-export const MDS_PRESSED = 3;
-export const MDS_DISABLED = 4;
-export const MDS_CHECKED = 5;
-export const MDS_HOTCHECKED = 6;
 export const POINTER_FEEDBACK_DEFAULT = 1;
 export const POINTER_FEEDBACK_INDIRECT = 2;
 export const POINTER_FEEDBACK_NONE = 3;
@@ -4303,16 +5807,16 @@ export const FEEDBACK_TOUCH_DOUBLETAP = 8;
 export const FEEDBACK_TOUCH_PRESSANDHOLD = 9;
 export const FEEDBACK_TOUCH_RIGHTTAP = 10;
 export const FEEDBACK_GESTURE_PRESSANDTAP = 11;
-export const FEEDBACK_MAX = "-1";
+export const FEEDBACK_MAX = `-1`;
 export const POINTER_DEVICE_TYPE_INTEGRATED_PEN = 1;
 export const POINTER_DEVICE_TYPE_EXTERNAL_PEN = 2;
 export const POINTER_DEVICE_TYPE_TOUCH = 3;
 export const POINTER_DEVICE_TYPE_TOUCH_PAD = 4;
-export const POINTER_DEVICE_TYPE_MAX = "-1";
+export const POINTER_DEVICE_TYPE_MAX = `-1`;
 export const POINTER_DEVICE_CURSOR_TYPE_UNKNOWN = 0;
 export const POINTER_DEVICE_CURSOR_TYPE_TIP = 1;
 export const POINTER_DEVICE_CURSOR_TYPE_ERASER = 2;
-export const POINTER_DEVICE_CURSOR_TYPE_MAX = "-1";
+export const POINTER_DEVICE_CURSOR_TYPE_MAX = `-1`;
 export const LR_CREATEDIBSECTION = 8192;
 export const LR_DEFAULTCOLOR = 0;
 export const LR_DEFAULTSIZE = 64;
@@ -4329,6 +5833,61 @@ export const SB_CTL = 2;
 export const SB_HORZ = 0;
 export const SB_VERT = 1;
 export const SB_BOTH = 3;
+export const DT_BOTTOM = 8;
+export const DT_CALCRECT = 1024;
+export const DT_CENTER = 1;
+export const DT_EDITCONTROL = 8192;
+export const DT_END_ELLIPSIS = 32768;
+export const DT_EXPANDTABS = 64;
+export const DT_EXTERNALLEADING = 512;
+export const DT_HIDEPREFIX = 1048576;
+export const DT_INTERNAL = 4096;
+export const DT_LEFT = 0;
+export const DT_MODIFYSTRING = 65536;
+export const DT_NOCLIP = 256;
+export const DT_NOFULLWIDTHCHARBREAK = 524288;
+export const DT_NOPREFIX = 2048;
+export const DT_PATH_ELLIPSIS = 16384;
+export const DT_PREFIXONLY = 2097152;
+export const DT_RIGHT = 2;
+export const DT_RTLREADING = 131072;
+export const DT_SINGLELINE = 32;
+export const DT_TABSTOP = 128;
+export const DT_TOP = 0;
+export const DT_VCENTER = 4;
+export const DT_WORDBREAK = 16;
+export const DT_WORD_ELLIPSIS = 262144;
+export const BDR_RAISEDOUTER = 1;
+export const BDR_SUNKENOUTER = 2;
+export const BDR_RAISEDINNER = 4;
+export const BDR_SUNKENINNER = 8;
+export const BDR_OUTER = 3;
+export const BDR_INNER = 12;
+export const BDR_RAISED = 5;
+export const BDR_SUNKEN = 10;
+export const EDGE_RAISED = 5;
+export const EDGE_SUNKEN = 10;
+export const EDGE_ETCHED = 6;
+export const EDGE_BUMP = 9;
+export const BF_ADJUST = 8192;
+export const BF_BOTTOM = 8;
+export const BF_BOTTOMLEFT = 9;
+export const BF_BOTTOMRIGHT = 12;
+export const BF_DIAGONAL = 16;
+export const BF_DIAGONAL_ENDBOTTOMLEFT = 25;
+export const BF_DIAGONAL_ENDBOTTOMRIGHT = 28;
+export const BF_DIAGONAL_ENDTOPLEFT = 19;
+export const BF_DIAGONAL_ENDTOPRIGHT = 22;
+export const BF_FLAT = 16384;
+export const BF_LEFT = 1;
+export const BF_MIDDLE = 2048;
+export const BF_MONO = 32768;
+export const BF_RECT = 15;
+export const BF_RIGHT = 4;
+export const BF_SOFT = 4096;
+export const BF_TOP = 2;
+export const BF_TOPLEFT = 3;
+export const BF_TOPRIGHT = 6;
 
 // Structs
 
@@ -4345,196 +5904,565 @@ export type HDSA = Deno.PointerValue;
 export type HDPA = Deno.PointerValue;
 
 /**
- * Windows.Win32.UI.Controls.RichEdit.IMECOMPTEXT (size: 8)
+ * Windows.Win32.UI.Controls.TBBUTTON (size: 40)
  */
-export interface IMECOMPTEXT {
+export interface TBBUTTON {
   /** i32 */
-  cb: number;
-  /** Windows.Win32.UI.Controls.RichEdit.IMECOMPTEXT_FLAGS */
-  flags: IMECOMPTEXT_FLAGS;
+  iBitmap: number;
+  /** i32 */
+  idCommand: number;
+  /** u8 */
+  fsState: number;
+  /** u8 */
+  fsStyle: number;
+  /** array */
+  bReserved: Deno.PointerValue | null;
+  /** usize */
+  dwData: Deno.PointerValue;
+  /** isize */
+  iString: Deno.PointerValue;
 }
 
-export const sizeofIMECOMPTEXT = 8;
+export const sizeofTBBUTTON = 40;
 
-export function allocIMECOMPTEXT(data?: Partial<IMECOMPTEXT>): Uint8Array {
-  const buf = new Uint8Array(sizeofIMECOMPTEXT);
+export function allocTBBUTTON(data?: Partial<TBBUTTON>): Uint8Array {
+  const buf = new Uint8Array(sizeofTBBUTTON);
   const view = new DataView(buf.buffer);
   // 0x00: i32
-  if (data?.cb !== undefined) view.setInt32(0, Number(data.cb), true);
-  // 0x04: u32
-  if (data?.flags !== undefined) view.setUint32(4, Number(data.flags), true);
-  return buf;
-}
-
-/**
- * Windows.Win32.UI.Controls.RichEdit.TABLEROWPARMS (size: 32)
- */
-export interface TABLEROWPARMS {
-  /** u8 */
-  cbRow: number;
-  /** u8 */
-  cbCell: number;
-  /** u8 */
-  cCell: number;
-  /** u8 */
-  cRow: number;
-  /** i32 */
-  dxCellMargin: number;
-  /** i32 */
-  dxIndent: number;
-  /** i32 */
-  dyHeight: number;
-  /** u32 */
-  _bitfield: number;
-  /** i32 */
-  cpStartRow: number;
-  /** u8 */
-  bTableLevel: number;
-  /** u8 */
-  iCell: number;
-}
-
-export const sizeofTABLEROWPARMS = 32;
-
-export function allocTABLEROWPARMS(data?: Partial<TABLEROWPARMS>): Uint8Array {
-  const buf = new Uint8Array(sizeofTABLEROWPARMS);
-  const view = new DataView(buf.buffer);
-  // 0x00: u8
-  if (data?.cbRow !== undefined) view.setUint8(0, Number(data.cbRow));
-  // 0x01: u8
-  if (data?.cbCell !== undefined) view.setUint8(1, Number(data.cbCell));
-  // 0x02: u8
-  if (data?.cCell !== undefined) view.setUint8(2, Number(data.cCell));
-  // 0x03: u8
-  if (data?.cRow !== undefined) view.setUint8(3, Number(data.cRow));
+  if (data?.iBitmap !== undefined) view.setInt32(0, Number(data.iBitmap), true);
   // 0x04: i32
-  if (data?.dxCellMargin !== undefined) view.setInt32(4, Number(data.dxCellMargin), true);
-  // 0x08: i32
-  if (data?.dxIndent !== undefined) view.setInt32(8, Number(data.dxIndent), true);
-  // 0x0c: i32
-  if (data?.dyHeight !== undefined) view.setInt32(12, Number(data.dyHeight), true);
-  // 0x10: u32
-  if (data?._bitfield !== undefined) view.setUint32(16, Number(data._bitfield), true);
-  // 0x14: i32
-  if (data?.cpStartRow !== undefined) view.setInt32(20, Number(data.cpStartRow), true);
-  // 0x18: u8
-  if (data?.bTableLevel !== undefined) view.setUint8(24, Number(data.bTableLevel));
-  // 0x19: u8
-  if (data?.iCell !== undefined) view.setUint8(25, Number(data.iCell));
-  // 0x1a: pad6
+  if (data?.idCommand !== undefined) view.setInt32(4, Number(data.idCommand), true);
+  // 0x08: u8
+  if (data?.fsState !== undefined) view.setUint8(8, Number(data.fsState));
+  // 0x09: u8
+  if (data?.fsStyle !== undefined) view.setUint8(9, Number(data.fsStyle));
+  // 0x0a: pad6
+  // 0x10: pointer
+  if (data?.bReserved !== undefined) view.setBigUint64(16, data.bReserved === null ? 0n : BigInt(util.toPointer(data.bReserved)), true);
+  // 0x18: usize
+  if (data?.dwData !== undefined) view.setBigUint64(24, BigInt(data.dwData), true);
+  // 0x20: isize
+  if (data?.iString !== undefined) view.setBigInt64(32, BigInt(data.iString), true);
   return buf;
 }
 
+export type HWND = Deno.PointerValue;
+
+export type HINSTANCE = Deno.PointerValue;
+
+export type PSTR = Deno.PointerValue | Uint8Array | null;
+
+export type LPARAM = Deno.PointerValue;
+
 /**
- * Windows.Win32.UI.Controls.RichEdit.TABLECELLPARMS (size: 40)
+ * Windows.Win32.UI.Controls.Dialogs.OPENFILENAME_NT4A (size: 136)
  */
-export interface TABLECELLPARMS {
-  /** i32 */
-  dxWidth: number;
+export interface OPENFILENAME_NT4A {
+  /** u32 */
+  lStructSize: number;
+  /** Windows.Win32.Foundation.HWND */
+  hwndOwner: Deno.PointerValue | null;
+  /** Windows.Win32.Foundation.HINSTANCE */
+  hInstance: Uint8Array | Deno.PointerValue | null;
+  /** Windows.Win32.Foundation.PSTR */
+  lpstrFilter: string | null;
+  /** Windows.Win32.Foundation.PSTR */
+  lpstrCustomFilter: string | null;
+  /** u32 */
+  nMaxCustFilter: number;
+  /** u32 */
+  nFilterIndex: number;
+  /** Windows.Win32.Foundation.PSTR */
+  lpstrFile: string | null;
+  /** u32 */
+  nMaxFile: number;
+  /** Windows.Win32.Foundation.PSTR */
+  lpstrFileTitle: string | null;
+  /** u32 */
+  nMaxFileTitle: number;
+  /** Windows.Win32.Foundation.PSTR */
+  lpstrInitialDir: string | null;
+  /** Windows.Win32.Foundation.PSTR */
+  lpstrTitle: string | null;
+  /** u32 */
+  Flags: number;
   /** u16 */
-  _bitfield: number;
+  nFileOffset: number;
   /** u16 */
-  wShading: number;
-  /** i16 */
-  dxBrdrLeft: number;
-  /** i16 */
-  dyBrdrTop: number;
-  /** i16 */
-  dxBrdrRight: number;
-  /** i16 */
-  dyBrdrBottom: number;
-  /** u32 */
-  crBrdrLeft: number;
-  /** u32 */
-  crBrdrTop: number;
-  /** u32 */
-  crBrdrRight: number;
-  /** u32 */
-  crBrdrBottom: number;
-  /** u32 */
-  crBackPat: number;
-  /** u32 */
-  crForePat: number;
+  nFileExtension: number;
+  /** Windows.Win32.Foundation.PSTR */
+  lpstrDefExt: string | null;
+  /** Windows.Win32.Foundation.LPARAM */
+  lCustData: Uint8Array | Deno.PointerValue | null;
+  /** Windows.Win32.UI.Controls.Dialogs.LPOFNHOOKPROC */
+  lpfnHook: Uint8Array | Deno.PointerValue | null;
+  /** Windows.Win32.Foundation.PSTR */
+  lpTemplateName: string | null;
 }
 
-export const sizeofTABLECELLPARMS = 40;
+export const sizeofOPENFILENAME_NT4A = 136;
 
-export function allocTABLECELLPARMS(data?: Partial<TABLECELLPARMS>): Uint8Array {
-  const buf = new Uint8Array(sizeofTABLECELLPARMS);
+export function allocOPENFILENAME_NT4A(data?: Partial<OPENFILENAME_NT4A>): Uint8Array {
+  const buf = new Uint8Array(sizeofOPENFILENAME_NT4A);
   const view = new DataView(buf.buffer);
-  // 0x00: i32
-  if (data?.dxWidth !== undefined) view.setInt32(0, Number(data.dxWidth), true);
-  // 0x04: u16
-  if (data?._bitfield !== undefined) view.setUint16(4, Number(data._bitfield), true);
-  // 0x06: u16
-  if (data?.wShading !== undefined) view.setUint16(6, Number(data.wShading), true);
-  // 0x08: i16
-  if (data?.dxBrdrLeft !== undefined) view.setInt16(8, Number(data.dxBrdrLeft), true);
-  // 0x0a: i16
-  if (data?.dyBrdrTop !== undefined) view.setInt16(10, Number(data.dyBrdrTop), true);
-  // 0x0c: i16
-  if (data?.dxBrdrRight !== undefined) view.setInt16(12, Number(data.dxBrdrRight), true);
-  // 0x0e: i16
-  if (data?.dyBrdrBottom !== undefined) view.setInt16(14, Number(data.dyBrdrBottom), true);
-  // 0x10: u32
-  if (data?.crBrdrLeft !== undefined) view.setUint32(16, Number(data.crBrdrLeft), true);
-  // 0x14: u32
-  if (data?.crBrdrTop !== undefined) view.setUint32(20, Number(data.crBrdrTop), true);
-  // 0x18: u32
-  if (data?.crBrdrRight !== undefined) view.setUint32(24, Number(data.crBrdrRight), true);
-  // 0x1c: u32
-  if (data?.crBrdrBottom !== undefined) view.setUint32(28, Number(data.crBrdrBottom), true);
-  // 0x20: u32
-  if (data?.crBackPat !== undefined) view.setUint32(32, Number(data.crBackPat), true);
-  // 0x24: u32
-  if (data?.crForePat !== undefined) view.setUint32(36, Number(data.crForePat), true);
+  // 0x00: u32
+  if (data?.lStructSize !== undefined) view.setUint32(0, Number(data.lStructSize), true);
+  // 0x04: pad4
+  // 0x08: pointer
+  if (data?.hwndOwner !== undefined) view.setBigUint64(8, data.hwndOwner === null ? 0n : BigInt(util.toPointer(data.hwndOwner)), true);
+  // 0x10: pointer
+  if (data?.hInstance !== undefined) view.setBigUint64(16, data.hInstance === null ? 0n : BigInt(util.toPointer(data.hInstance)), true);
+  // 0x18: buffer
+  if (data?.lpstrFilter !== undefined) {
+    (buf as any)._f24 = util.pstrToFfi(data.lpstrFilter);
+    view.setBigUint64(24, (buf as any)._f24 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f24)), true);
+  }
+  // 0x20: buffer
+  if (data?.lpstrCustomFilter !== undefined) {
+    (buf as any)._f32 = util.pstrToFfi(data.lpstrCustomFilter);
+    view.setBigUint64(32, (buf as any)._f32 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f32)), true);
+  }
+  // 0x28: u32
+  if (data?.nMaxCustFilter !== undefined) view.setUint32(40, Number(data.nMaxCustFilter), true);
+  // 0x2c: u32
+  if (data?.nFilterIndex !== undefined) view.setUint32(44, Number(data.nFilterIndex), true);
+  // 0x30: buffer
+  if (data?.lpstrFile !== undefined) {
+    (buf as any)._f48 = util.pstrToFfi(data.lpstrFile);
+    view.setBigUint64(48, (buf as any)._f48 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f48)), true);
+  }
+  // 0x38: u32
+  if (data?.nMaxFile !== undefined) view.setUint32(56, Number(data.nMaxFile), true);
+  // 0x3c: pad4
+  // 0x40: buffer
+  if (data?.lpstrFileTitle !== undefined) {
+    (buf as any)._f64 = util.pstrToFfi(data.lpstrFileTitle);
+    view.setBigUint64(64, (buf as any)._f64 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f64)), true);
+  }
+  // 0x48: u32
+  if (data?.nMaxFileTitle !== undefined) view.setUint32(72, Number(data.nMaxFileTitle), true);
+  // 0x4c: pad4
+  // 0x50: buffer
+  if (data?.lpstrInitialDir !== undefined) {
+    (buf as any)._f80 = util.pstrToFfi(data.lpstrInitialDir);
+    view.setBigUint64(80, (buf as any)._f80 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f80)), true);
+  }
+  // 0x58: buffer
+  if (data?.lpstrTitle !== undefined) {
+    (buf as any)._f88 = util.pstrToFfi(data.lpstrTitle);
+    view.setBigUint64(88, (buf as any)._f88 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f88)), true);
+  }
+  // 0x60: u32
+  if (data?.Flags !== undefined) view.setUint32(96, Number(data.Flags), true);
+  // 0x64: u16
+  if (data?.nFileOffset !== undefined) view.setUint16(100, Number(data.nFileOffset), true);
+  // 0x66: u16
+  if (data?.nFileExtension !== undefined) view.setUint16(102, Number(data.nFileExtension), true);
+  // 0x68: buffer
+  if (data?.lpstrDefExt !== undefined) {
+    (buf as any)._f104 = util.pstrToFfi(data.lpstrDefExt);
+    view.setBigUint64(104, (buf as any)._f104 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f104)), true);
+  }
+  // 0x70: pointer
+  if (data?.lCustData !== undefined) view.setBigUint64(112, data.lCustData === null ? 0n : BigInt(util.toPointer(data.lCustData)), true);
+  // 0x78: pointer
+  if (data?.lpfnHook !== undefined) view.setBigUint64(120, data.lpfnHook === null ? 0n : BigInt(util.toPointer(data.lpfnHook)), true);
+  // 0x80: buffer
+  if (data?.lpTemplateName !== undefined) {
+    (buf as any)._f128 = util.pstrToFfi(data.lpTemplateName);
+    view.setBigUint64(128, (buf as any)._f128 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f128)), true);
+  }
   return buf;
 }
 
 export type PWSTR = Deno.PointerValue | Uint8Array | null;
 
 /**
- * Windows.Win32.UI.Controls.RichEdit.RICHEDIT_IMAGE_PARAMETERS (size: 32)
+ * Windows.Win32.UI.Controls.Dialogs.OPENFILENAME_NT4W (size: 136)
  */
-export interface RICHEDIT_IMAGE_PARAMETERS {
-  /** i32 */
-  xWidth: number;
-  /** i32 */
-  yHeight: number;
-  /** i32 */
-  Ascent: number;
-  /** Windows.Win32.Graphics.Gdi.TEXT_ALIGN_OPTIONS */
-  Type: TEXT_ALIGN_OPTIONS;
+export interface OPENFILENAME_NT4W {
+  /** u32 */
+  lStructSize: number;
+  /** Windows.Win32.Foundation.HWND */
+  hwndOwner: Deno.PointerValue | null;
+  /** Windows.Win32.Foundation.HINSTANCE */
+  hInstance: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.Foundation.PWSTR */
-  pwszAlternateText: string | null;
-  /** Windows.Win32.System.Com.IStream */
-  pIStream: Uint8Array | Deno.PointerValue | null;
+  lpstrFilter: string | null;
+  /** Windows.Win32.Foundation.PWSTR */
+  lpstrCustomFilter: string | null;
+  /** u32 */
+  nMaxCustFilter: number;
+  /** u32 */
+  nFilterIndex: number;
+  /** Windows.Win32.Foundation.PWSTR */
+  lpstrFile: string | null;
+  /** u32 */
+  nMaxFile: number;
+  /** Windows.Win32.Foundation.PWSTR */
+  lpstrFileTitle: string | null;
+  /** u32 */
+  nMaxFileTitle: number;
+  /** Windows.Win32.Foundation.PWSTR */
+  lpstrInitialDir: string | null;
+  /** Windows.Win32.Foundation.PWSTR */
+  lpstrTitle: string | null;
+  /** u32 */
+  Flags: number;
+  /** u16 */
+  nFileOffset: number;
+  /** u16 */
+  nFileExtension: number;
+  /** Windows.Win32.Foundation.PWSTR */
+  lpstrDefExt: string | null;
+  /** Windows.Win32.Foundation.LPARAM */
+  lCustData: Uint8Array | Deno.PointerValue | null;
+  /** Windows.Win32.UI.Controls.Dialogs.LPOFNHOOKPROC */
+  lpfnHook: Uint8Array | Deno.PointerValue | null;
+  /** Windows.Win32.Foundation.PWSTR */
+  lpTemplateName: string | null;
 }
 
-export const sizeofRICHEDIT_IMAGE_PARAMETERS = 32;
+export const sizeofOPENFILENAME_NT4W = 136;
 
-export function allocRICHEDIT_IMAGE_PARAMETERS(data?: Partial<RICHEDIT_IMAGE_PARAMETERS>): Uint8Array {
-  const buf = new Uint8Array(sizeofRICHEDIT_IMAGE_PARAMETERS);
+export function allocOPENFILENAME_NT4W(data?: Partial<OPENFILENAME_NT4W>): Uint8Array {
+  const buf = new Uint8Array(sizeofOPENFILENAME_NT4W);
   const view = new DataView(buf.buffer);
-  // 0x00: i32
-  if (data?.xWidth !== undefined) view.setInt32(0, Number(data.xWidth), true);
-  // 0x04: i32
-  if (data?.yHeight !== undefined) view.setInt32(4, Number(data.yHeight), true);
-  // 0x08: i32
-  if (data?.Ascent !== undefined) view.setInt32(8, Number(data.Ascent), true);
-  // 0x0c: u32
-  if (data?.Type !== undefined) view.setUint32(12, Number(data.Type), true);
-  // 0x10: buffer
-  if (data?.pwszAlternateText !== undefined) {
-    (buf as any)._f16 = util.pwstrToFfi(data.pwszAlternateText);
-    view.setBigUint64(16, (buf as any)._f16 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f16)), true);
+  // 0x00: u32
+  if (data?.lStructSize !== undefined) view.setUint32(0, Number(data.lStructSize), true);
+  // 0x04: pad4
+  // 0x08: pointer
+  if (data?.hwndOwner !== undefined) view.setBigUint64(8, data.hwndOwner === null ? 0n : BigInt(util.toPointer(data.hwndOwner)), true);
+  // 0x10: pointer
+  if (data?.hInstance !== undefined) view.setBigUint64(16, data.hInstance === null ? 0n : BigInt(util.toPointer(data.hInstance)), true);
+  // 0x18: buffer
+  if (data?.lpstrFilter !== undefined) {
+    (buf as any)._f24 = util.pwstrToFfi(data.lpstrFilter);
+    view.setBigUint64(24, (buf as any)._f24 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f24)), true);
   }
-  // 0x18: pointer
-  if (data?.pIStream !== undefined) view.setBigUint64(24, data.pIStream === null ? 0n : BigInt(util.toPointer(data.pIStream)), true);
+  // 0x20: buffer
+  if (data?.lpstrCustomFilter !== undefined) {
+    (buf as any)._f32 = util.pwstrToFfi(data.lpstrCustomFilter);
+    view.setBigUint64(32, (buf as any)._f32 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f32)), true);
+  }
+  // 0x28: u32
+  if (data?.nMaxCustFilter !== undefined) view.setUint32(40, Number(data.nMaxCustFilter), true);
+  // 0x2c: u32
+  if (data?.nFilterIndex !== undefined) view.setUint32(44, Number(data.nFilterIndex), true);
+  // 0x30: buffer
+  if (data?.lpstrFile !== undefined) {
+    (buf as any)._f48 = util.pwstrToFfi(data.lpstrFile);
+    view.setBigUint64(48, (buf as any)._f48 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f48)), true);
+  }
+  // 0x38: u32
+  if (data?.nMaxFile !== undefined) view.setUint32(56, Number(data.nMaxFile), true);
+  // 0x3c: pad4
+  // 0x40: buffer
+  if (data?.lpstrFileTitle !== undefined) {
+    (buf as any)._f64 = util.pwstrToFfi(data.lpstrFileTitle);
+    view.setBigUint64(64, (buf as any)._f64 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f64)), true);
+  }
+  // 0x48: u32
+  if (data?.nMaxFileTitle !== undefined) view.setUint32(72, Number(data.nMaxFileTitle), true);
+  // 0x4c: pad4
+  // 0x50: buffer
+  if (data?.lpstrInitialDir !== undefined) {
+    (buf as any)._f80 = util.pwstrToFfi(data.lpstrInitialDir);
+    view.setBigUint64(80, (buf as any)._f80 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f80)), true);
+  }
+  // 0x58: buffer
+  if (data?.lpstrTitle !== undefined) {
+    (buf as any)._f88 = util.pwstrToFfi(data.lpstrTitle);
+    view.setBigUint64(88, (buf as any)._f88 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f88)), true);
+  }
+  // 0x60: u32
+  if (data?.Flags !== undefined) view.setUint32(96, Number(data.Flags), true);
+  // 0x64: u16
+  if (data?.nFileOffset !== undefined) view.setUint16(100, Number(data.nFileOffset), true);
+  // 0x66: u16
+  if (data?.nFileExtension !== undefined) view.setUint16(102, Number(data.nFileExtension), true);
+  // 0x68: buffer
+  if (data?.lpstrDefExt !== undefined) {
+    (buf as any)._f104 = util.pwstrToFfi(data.lpstrDefExt);
+    view.setBigUint64(104, (buf as any)._f104 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f104)), true);
+  }
+  // 0x70: pointer
+  if (data?.lCustData !== undefined) view.setBigUint64(112, data.lCustData === null ? 0n : BigInt(util.toPointer(data.lCustData)), true);
+  // 0x78: pointer
+  if (data?.lpfnHook !== undefined) view.setBigUint64(120, data.lpfnHook === null ? 0n : BigInt(util.toPointer(data.lpfnHook)), true);
+  // 0x80: buffer
+  if (data?.lpTemplateName !== undefined) {
+    (buf as any)._f128 = util.pwstrToFfi(data.lpTemplateName);
+    view.setBigUint64(128, (buf as any)._f128 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f128)), true);
+  }
   return buf;
 }
 
-export type HWND = Deno.PointerValue;
+/**
+ * Windows.Win32.UI.Controls.Dialogs.OPENFILENAMEA (size: 152)
+ */
+export interface OPENFILENAMEA {
+  /** u32 */
+  lStructSize: number;
+  /** Windows.Win32.Foundation.HWND */
+  hwndOwner: Deno.PointerValue | null;
+  /** Windows.Win32.Foundation.HINSTANCE */
+  hInstance: Uint8Array | Deno.PointerValue | null;
+  /** Windows.Win32.Foundation.PSTR */
+  lpstrFilter: string | null;
+  /** Windows.Win32.Foundation.PSTR */
+  lpstrCustomFilter: string | null;
+  /** u32 */
+  nMaxCustFilter: number;
+  /** u32 */
+  nFilterIndex: number;
+  /** Windows.Win32.Foundation.PSTR */
+  lpstrFile: string | null;
+  /** u32 */
+  nMaxFile: number;
+  /** Windows.Win32.Foundation.PSTR */
+  lpstrFileTitle: string | null;
+  /** u32 */
+  nMaxFileTitle: number;
+  /** Windows.Win32.Foundation.PSTR */
+  lpstrInitialDir: string | null;
+  /** Windows.Win32.Foundation.PSTR */
+  lpstrTitle: string | null;
+  /** Windows.Win32.UI.Controls.Dialogs.OPEN_FILENAME_FLAGS */
+  Flags: OPEN_FILENAME_FLAGS;
+  /** u16 */
+  nFileOffset: number;
+  /** u16 */
+  nFileExtension: number;
+  /** Windows.Win32.Foundation.PSTR */
+  lpstrDefExt: string | null;
+  /** Windows.Win32.Foundation.LPARAM */
+  lCustData: Uint8Array | Deno.PointerValue | null;
+  /** Windows.Win32.UI.Controls.Dialogs.LPOFNHOOKPROC */
+  lpfnHook: Uint8Array | Deno.PointerValue | null;
+  /** Windows.Win32.Foundation.PSTR */
+  lpTemplateName: string | null;
+  /** ptr */
+  pvReserved: Deno.PointerValue | Uint8Array | null;
+  /** u32 */
+  dwReserved: number;
+  /** Windows.Win32.UI.Controls.Dialogs.OPEN_FILENAME_FLAGS_EX */
+  FlagsEx: OPEN_FILENAME_FLAGS_EX;
+}
+
+export const sizeofOPENFILENAMEA = 152;
+
+export function allocOPENFILENAMEA(data?: Partial<OPENFILENAMEA>): Uint8Array {
+  const buf = new Uint8Array(sizeofOPENFILENAMEA);
+  const view = new DataView(buf.buffer);
+  // 0x00: u32
+  if (data?.lStructSize !== undefined) view.setUint32(0, Number(data.lStructSize), true);
+  // 0x04: pad4
+  // 0x08: pointer
+  if (data?.hwndOwner !== undefined) view.setBigUint64(8, data.hwndOwner === null ? 0n : BigInt(util.toPointer(data.hwndOwner)), true);
+  // 0x10: pointer
+  if (data?.hInstance !== undefined) view.setBigUint64(16, data.hInstance === null ? 0n : BigInt(util.toPointer(data.hInstance)), true);
+  // 0x18: buffer
+  if (data?.lpstrFilter !== undefined) {
+    (buf as any)._f24 = util.pstrToFfi(data.lpstrFilter);
+    view.setBigUint64(24, (buf as any)._f24 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f24)), true);
+  }
+  // 0x20: buffer
+  if (data?.lpstrCustomFilter !== undefined) {
+    (buf as any)._f32 = util.pstrToFfi(data.lpstrCustomFilter);
+    view.setBigUint64(32, (buf as any)._f32 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f32)), true);
+  }
+  // 0x28: u32
+  if (data?.nMaxCustFilter !== undefined) view.setUint32(40, Number(data.nMaxCustFilter), true);
+  // 0x2c: u32
+  if (data?.nFilterIndex !== undefined) view.setUint32(44, Number(data.nFilterIndex), true);
+  // 0x30: buffer
+  if (data?.lpstrFile !== undefined) {
+    (buf as any)._f48 = util.pstrToFfi(data.lpstrFile);
+    view.setBigUint64(48, (buf as any)._f48 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f48)), true);
+  }
+  // 0x38: u32
+  if (data?.nMaxFile !== undefined) view.setUint32(56, Number(data.nMaxFile), true);
+  // 0x3c: pad4
+  // 0x40: buffer
+  if (data?.lpstrFileTitle !== undefined) {
+    (buf as any)._f64 = util.pstrToFfi(data.lpstrFileTitle);
+    view.setBigUint64(64, (buf as any)._f64 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f64)), true);
+  }
+  // 0x48: u32
+  if (data?.nMaxFileTitle !== undefined) view.setUint32(72, Number(data.nMaxFileTitle), true);
+  // 0x4c: pad4
+  // 0x50: buffer
+  if (data?.lpstrInitialDir !== undefined) {
+    (buf as any)._f80 = util.pstrToFfi(data.lpstrInitialDir);
+    view.setBigUint64(80, (buf as any)._f80 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f80)), true);
+  }
+  // 0x58: buffer
+  if (data?.lpstrTitle !== undefined) {
+    (buf as any)._f88 = util.pstrToFfi(data.lpstrTitle);
+    view.setBigUint64(88, (buf as any)._f88 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f88)), true);
+  }
+  // 0x60: u32
+  if (data?.Flags !== undefined) view.setUint32(96, Number(data.Flags), true);
+  // 0x64: u16
+  if (data?.nFileOffset !== undefined) view.setUint16(100, Number(data.nFileOffset), true);
+  // 0x66: u16
+  if (data?.nFileExtension !== undefined) view.setUint16(102, Number(data.nFileExtension), true);
+  // 0x68: buffer
+  if (data?.lpstrDefExt !== undefined) {
+    (buf as any)._f104 = util.pstrToFfi(data.lpstrDefExt);
+    view.setBigUint64(104, (buf as any)._f104 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f104)), true);
+  }
+  // 0x70: pointer
+  if (data?.lCustData !== undefined) view.setBigUint64(112, data.lCustData === null ? 0n : BigInt(util.toPointer(data.lCustData)), true);
+  // 0x78: pointer
+  if (data?.lpfnHook !== undefined) view.setBigUint64(120, data.lpfnHook === null ? 0n : BigInt(util.toPointer(data.lpfnHook)), true);
+  // 0x80: buffer
+  if (data?.lpTemplateName !== undefined) {
+    (buf as any)._f128 = util.pstrToFfi(data.lpTemplateName);
+    view.setBigUint64(128, (buf as any)._f128 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f128)), true);
+  }
+  // 0x88: pointer
+  if (data?.pvReserved !== undefined) view.setBigUint64(136, data.pvReserved === null ? 0n : BigInt(util.toPointer(data.pvReserved)), true);
+  // 0x90: u32
+  if (data?.dwReserved !== undefined) view.setUint32(144, Number(data.dwReserved), true);
+  // 0x94: u32
+  if (data?.FlagsEx !== undefined) view.setUint32(148, Number(data.FlagsEx), true);
+  return buf;
+}
+
+/**
+ * Windows.Win32.UI.Controls.Dialogs.OPENFILENAMEW (size: 152)
+ */
+export interface OPENFILENAMEW {
+  /** u32 */
+  lStructSize: number;
+  /** Windows.Win32.Foundation.HWND */
+  hwndOwner: Deno.PointerValue | null;
+  /** Windows.Win32.Foundation.HINSTANCE */
+  hInstance: Uint8Array | Deno.PointerValue | null;
+  /** Windows.Win32.Foundation.PWSTR */
+  lpstrFilter: string | null;
+  /** Windows.Win32.Foundation.PWSTR */
+  lpstrCustomFilter: string | null;
+  /** u32 */
+  nMaxCustFilter: number;
+  /** u32 */
+  nFilterIndex: number;
+  /** Windows.Win32.Foundation.PWSTR */
+  lpstrFile: string | null;
+  /** u32 */
+  nMaxFile: number;
+  /** Windows.Win32.Foundation.PWSTR */
+  lpstrFileTitle: string | null;
+  /** u32 */
+  nMaxFileTitle: number;
+  /** Windows.Win32.Foundation.PWSTR */
+  lpstrInitialDir: string | null;
+  /** Windows.Win32.Foundation.PWSTR */
+  lpstrTitle: string | null;
+  /** Windows.Win32.UI.Controls.Dialogs.OPEN_FILENAME_FLAGS */
+  Flags: OPEN_FILENAME_FLAGS;
+  /** u16 */
+  nFileOffset: number;
+  /** u16 */
+  nFileExtension: number;
+  /** Windows.Win32.Foundation.PWSTR */
+  lpstrDefExt: string | null;
+  /** Windows.Win32.Foundation.LPARAM */
+  lCustData: Uint8Array | Deno.PointerValue | null;
+  /** Windows.Win32.UI.Controls.Dialogs.LPOFNHOOKPROC */
+  lpfnHook: Uint8Array | Deno.PointerValue | null;
+  /** Windows.Win32.Foundation.PWSTR */
+  lpTemplateName: string | null;
+  /** ptr */
+  pvReserved: Deno.PointerValue | Uint8Array | null;
+  /** u32 */
+  dwReserved: number;
+  /** Windows.Win32.UI.Controls.Dialogs.OPEN_FILENAME_FLAGS_EX */
+  FlagsEx: OPEN_FILENAME_FLAGS_EX;
+}
+
+export const sizeofOPENFILENAMEW = 152;
+
+export function allocOPENFILENAMEW(data?: Partial<OPENFILENAMEW>): Uint8Array {
+  const buf = new Uint8Array(sizeofOPENFILENAMEW);
+  const view = new DataView(buf.buffer);
+  // 0x00: u32
+  if (data?.lStructSize !== undefined) view.setUint32(0, Number(data.lStructSize), true);
+  // 0x04: pad4
+  // 0x08: pointer
+  if (data?.hwndOwner !== undefined) view.setBigUint64(8, data.hwndOwner === null ? 0n : BigInt(util.toPointer(data.hwndOwner)), true);
+  // 0x10: pointer
+  if (data?.hInstance !== undefined) view.setBigUint64(16, data.hInstance === null ? 0n : BigInt(util.toPointer(data.hInstance)), true);
+  // 0x18: buffer
+  if (data?.lpstrFilter !== undefined) {
+    (buf as any)._f24 = util.pwstrToFfi(data.lpstrFilter);
+    view.setBigUint64(24, (buf as any)._f24 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f24)), true);
+  }
+  // 0x20: buffer
+  if (data?.lpstrCustomFilter !== undefined) {
+    (buf as any)._f32 = util.pwstrToFfi(data.lpstrCustomFilter);
+    view.setBigUint64(32, (buf as any)._f32 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f32)), true);
+  }
+  // 0x28: u32
+  if (data?.nMaxCustFilter !== undefined) view.setUint32(40, Number(data.nMaxCustFilter), true);
+  // 0x2c: u32
+  if (data?.nFilterIndex !== undefined) view.setUint32(44, Number(data.nFilterIndex), true);
+  // 0x30: buffer
+  if (data?.lpstrFile !== undefined) {
+    (buf as any)._f48 = util.pwstrToFfi(data.lpstrFile);
+    view.setBigUint64(48, (buf as any)._f48 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f48)), true);
+  }
+  // 0x38: u32
+  if (data?.nMaxFile !== undefined) view.setUint32(56, Number(data.nMaxFile), true);
+  // 0x3c: pad4
+  // 0x40: buffer
+  if (data?.lpstrFileTitle !== undefined) {
+    (buf as any)._f64 = util.pwstrToFfi(data.lpstrFileTitle);
+    view.setBigUint64(64, (buf as any)._f64 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f64)), true);
+  }
+  // 0x48: u32
+  if (data?.nMaxFileTitle !== undefined) view.setUint32(72, Number(data.nMaxFileTitle), true);
+  // 0x4c: pad4
+  // 0x50: buffer
+  if (data?.lpstrInitialDir !== undefined) {
+    (buf as any)._f80 = util.pwstrToFfi(data.lpstrInitialDir);
+    view.setBigUint64(80, (buf as any)._f80 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f80)), true);
+  }
+  // 0x58: buffer
+  if (data?.lpstrTitle !== undefined) {
+    (buf as any)._f88 = util.pwstrToFfi(data.lpstrTitle);
+    view.setBigUint64(88, (buf as any)._f88 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f88)), true);
+  }
+  // 0x60: u32
+  if (data?.Flags !== undefined) view.setUint32(96, Number(data.Flags), true);
+  // 0x64: u16
+  if (data?.nFileOffset !== undefined) view.setUint16(100, Number(data.nFileOffset), true);
+  // 0x66: u16
+  if (data?.nFileExtension !== undefined) view.setUint16(102, Number(data.nFileExtension), true);
+  // 0x68: buffer
+  if (data?.lpstrDefExt !== undefined) {
+    (buf as any)._f104 = util.pwstrToFfi(data.lpstrDefExt);
+    view.setBigUint64(104, (buf as any)._f104 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f104)), true);
+  }
+  // 0x70: pointer
+  if (data?.lCustData !== undefined) view.setBigUint64(112, data.lCustData === null ? 0n : BigInt(util.toPointer(data.lCustData)), true);
+  // 0x78: pointer
+  if (data?.lpfnHook !== undefined) view.setBigUint64(120, data.lpfnHook === null ? 0n : BigInt(util.toPointer(data.lpfnHook)), true);
+  // 0x80: buffer
+  if (data?.lpTemplateName !== undefined) {
+    (buf as any)._f128 = util.pwstrToFfi(data.lpTemplateName);
+    view.setBigUint64(128, (buf as any)._f128 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f128)), true);
+  }
+  // 0x88: pointer
+  if (data?.pvReserved !== undefined) view.setBigUint64(136, data.pvReserved === null ? 0n : BigInt(util.toPointer(data.pvReserved)), true);
+  // 0x90: u32
+  if (data?.dwReserved !== undefined) view.setUint32(144, Number(data.dwReserved), true);
+  // 0x94: u32
+  if (data?.FlagsEx !== undefined) view.setUint32(148, Number(data.FlagsEx), true);
+  return buf;
+}
 
 /**
  * Windows.Win32.UI.Controls.NMHDR (size: 24)
@@ -4564,510 +6492,1028 @@ export function allocNMHDR(data?: Partial<NMHDR>): Uint8Array {
 }
 
 /**
- * Windows.Win32.UI.Controls.RichEdit.ENDCOMPOSITIONNOTIFY (size: 16)
+ * Windows.Win32.UI.Controls.Dialogs.OFNOTIFYA (size: 24)
  */
-export interface ENDCOMPOSITIONNOTIFY {
+export interface OFNOTIFYA {
   /** Windows.Win32.UI.Controls.NMHDR */
-  nmhdr: Uint8Array | Deno.PointerValue | null;
-  /** Windows.Win32.UI.Controls.RichEdit.ENDCOMPOSITIONNOTIFY_CODE */
-  dwCode: ENDCOMPOSITIONNOTIFY_CODE;
+  hdr: Uint8Array | Deno.PointerValue | null;
+  /** ptr */
+  lpOFN: Deno.PointerValue | Uint8Array | null;
+  /** Windows.Win32.Foundation.PSTR */
+  pszFile: string | null;
 }
 
-export const sizeofENDCOMPOSITIONNOTIFY = 16;
+export const sizeofOFNOTIFYA = 24;
 
-export function allocENDCOMPOSITIONNOTIFY(data?: Partial<ENDCOMPOSITIONNOTIFY>): Uint8Array {
-  const buf = new Uint8Array(sizeofENDCOMPOSITIONNOTIFY);
+export function allocOFNOTIFYA(data?: Partial<OFNOTIFYA>): Uint8Array {
+  const buf = new Uint8Array(sizeofOFNOTIFYA);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.nmhdr !== undefined) view.setBigUint64(0, data.nmhdr === null ? 0n : BigInt(util.toPointer(data.nmhdr)), true);
-  // 0x08: u32
-  if (data?.dwCode !== undefined) view.setUint32(8, Number(data.dwCode), true);
-  // 0x0c: pad4
-  return buf;
-}
-
-/**
- * Windows.Win32.UI.Controls.RichEdit.CHARFORMATA (size: 40)
- */
-export interface CHARFORMATA {
-  /** u32 */
-  cbSize: number;
-  /** Windows.Win32.UI.Controls.RichEdit.CFM_MASK */
-  dwMask: CFM_MASK;
-  /** Windows.Win32.UI.Controls.RichEdit.CFE_EFFECTS */
-  dwEffects: CFE_EFFECTS;
-  /** i32 */
-  yHeight: number;
-  /** i32 */
-  yOffset: number;
-  /** u32 */
-  crTextColor: number;
-  /** u8 */
-  bCharSet: number;
-  /** u8 */
-  bPitchAndFamily: number;
-  /** array */
-  szFaceName: Deno.PointerValue | null;
-}
-
-export const sizeofCHARFORMATA = 40;
-
-export function allocCHARFORMATA(data?: Partial<CHARFORMATA>): Uint8Array {
-  const buf = new Uint8Array(sizeofCHARFORMATA);
-  const view = new DataView(buf.buffer);
-  // 0x00: u32
-  if (data?.cbSize !== undefined) view.setUint32(0, Number(data.cbSize), true);
-  // 0x04: u32
-  if (data?.dwMask !== undefined) view.setUint32(4, Number(data.dwMask), true);
-  // 0x08: u32
-  if (data?.dwEffects !== undefined) view.setUint32(8, Number(data.dwEffects), true);
-  // 0x0c: i32
-  if (data?.yHeight !== undefined) view.setInt32(12, Number(data.yHeight), true);
-  // 0x10: i32
-  if (data?.yOffset !== undefined) view.setInt32(16, Number(data.yOffset), true);
-  // 0x14: u32
-  if (data?.crTextColor !== undefined) view.setUint32(20, Number(data.crTextColor), true);
-  // 0x18: u8
-  if (data?.bCharSet !== undefined) view.setUint8(24, Number(data.bCharSet));
-  // 0x19: u8
-  if (data?.bPitchAndFamily !== undefined) view.setUint8(25, Number(data.bPitchAndFamily));
-  // 0x1a: pad6
-  // 0x20: pointer
-  if (data?.szFaceName !== undefined) view.setBigUint64(32, data.szFaceName === null ? 0n : BigInt(util.toPointer(data.szFaceName)), true);
-  return buf;
-}
-
-/**
- * Windows.Win32.UI.Controls.RichEdit.CHARFORMATW (size: 40)
- */
-export interface CHARFORMATW {
-  /** u32 */
-  cbSize: number;
-  /** Windows.Win32.UI.Controls.RichEdit.CFM_MASK */
-  dwMask: CFM_MASK;
-  /** Windows.Win32.UI.Controls.RichEdit.CFE_EFFECTS */
-  dwEffects: CFE_EFFECTS;
-  /** i32 */
-  yHeight: number;
-  /** i32 */
-  yOffset: number;
-  /** u32 */
-  crTextColor: number;
-  /** u8 */
-  bCharSet: number;
-  /** u8 */
-  bPitchAndFamily: number;
-  /** array */
-  szFaceName: Deno.PointerValue | null;
-}
-
-export const sizeofCHARFORMATW = 40;
-
-export function allocCHARFORMATW(data?: Partial<CHARFORMATW>): Uint8Array {
-  const buf = new Uint8Array(sizeofCHARFORMATW);
-  const view = new DataView(buf.buffer);
-  // 0x00: u32
-  if (data?.cbSize !== undefined) view.setUint32(0, Number(data.cbSize), true);
-  // 0x04: u32
-  if (data?.dwMask !== undefined) view.setUint32(4, Number(data.dwMask), true);
-  // 0x08: u32
-  if (data?.dwEffects !== undefined) view.setUint32(8, Number(data.dwEffects), true);
-  // 0x0c: i32
-  if (data?.yHeight !== undefined) view.setInt32(12, Number(data.yHeight), true);
-  // 0x10: i32
-  if (data?.yOffset !== undefined) view.setInt32(16, Number(data.yOffset), true);
-  // 0x14: u32
-  if (data?.crTextColor !== undefined) view.setUint32(20, Number(data.crTextColor), true);
-  // 0x18: u8
-  if (data?.bCharSet !== undefined) view.setUint8(24, Number(data.bCharSet));
-  // 0x19: u8
-  if (data?.bPitchAndFamily !== undefined) view.setUint8(25, Number(data.bPitchAndFamily));
-  // 0x1a: pad6
-  // 0x20: pointer
-  if (data?.szFaceName !== undefined) view.setBigUint64(32, data.szFaceName === null ? 0n : BigInt(util.toPointer(data.szFaceName)), true);
-  return buf;
-}
-
-/**
- * _Anonymous_e__Struct (size: 16)
- */
-export interface _Anonymous_e__Struct {
-  /** u64 */
-  Alignment: Deno.PointerValue;
-  /** u64 */
-  Region: Deno.PointerValue;
-}
-
-export const sizeof_Anonymous_e__Struct = 16;
-
-export function alloc_Anonymous_e__Struct(data?: Partial<_Anonymous_e__Struct>): Uint8Array {
-  const buf = new Uint8Array(sizeof_Anonymous_e__Struct);
-  const view = new DataView(buf.buffer);
-  // 0x00: u64
-  if (data?.Alignment !== undefined) view.setBigUint64(0, BigInt(data.Alignment), true);
-  // 0x08: u64
-  if (data?.Region !== undefined) view.setBigUint64(8, BigInt(data.Region), true);
-  return buf;
-}
-
-/**
- * _Anonymous_e__Union (size: 16)
- */
-export interface _Anonymous_e__Union {
-  /** _Anonymous_e__Struct */
-  Anonymous: Uint8Array | Deno.PointerValue | null;
-  /** array */
-  X: Deno.PointerValue | null;
-}
-
-export const sizeof_Anonymous_e__Union = 16;
-
-export function alloc_Anonymous_e__Union(data?: Partial<_Anonymous_e__Union>): Uint8Array {
-  const buf = new Uint8Array(sizeof_Anonymous_e__Union);
-  const view = new DataView(buf.buffer);
-  // 0x00: pointer
-  if (data?.Anonymous !== undefined) view.setBigUint64(0, data.Anonymous === null ? 0n : BigInt(util.toPointer(data.Anonymous)), true);
+  if (data?.hdr !== undefined) view.setBigUint64(0, data.hdr === null ? 0n : BigInt(util.toPointer(data.hdr)), true);
   // 0x08: pointer
-  if (data?.X !== undefined) view.setBigUint64(8, data.X === null ? 0n : BigInt(util.toPointer(data.X)), true);
+  if (data?.lpOFN !== undefined) view.setBigUint64(8, data.lpOFN === null ? 0n : BigInt(util.toPointer(data.lpOFN)), true);
+  // 0x10: buffer
+  if (data?.pszFile !== undefined) {
+    (buf as any)._f16 = util.pstrToFfi(data.pszFile);
+    view.setBigUint64(16, (buf as any)._f16 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f16)), true);
+  }
   return buf;
 }
 
 /**
- * Windows.Win32.UI.Controls.RichEdit.CHARFORMAT2W (size: 40)
+ * Windows.Win32.UI.Controls.Dialogs.OFNOTIFYW (size: 24)
  */
-export interface CHARFORMAT2W {
-  /** Windows.Win32.UI.Controls.RichEdit.CHARFORMATW */
-  __AnonymousBase_richedit_L711_C23: Uint8Array | Deno.PointerValue | null;
-  /** u16 */
-  wWeight: number;
-  /** i16 */
-  sSpacing: number;
-  /** u32 */
-  crBackColor: number;
-  /** u32 */
-  lcid: number;
-  /** _Anonymous_e__Union */
-  Anonymous: Uint8Array | Deno.PointerValue | null;
-  /** i16 */
-  sStyle: number;
-  /** u16 */
-  wKerning: number;
-  /** u8 */
-  bUnderlineType: number;
-  /** u8 */
-  bAnimation: number;
-  /** u8 */
-  bRevAuthor: number;
-  /** u8 */
-  bUnderlineColor: number;
+export interface OFNOTIFYW {
+  /** Windows.Win32.UI.Controls.NMHDR */
+  hdr: Uint8Array | Deno.PointerValue | null;
+  /** ptr */
+  lpOFN: Deno.PointerValue | Uint8Array | null;
+  /** Windows.Win32.Foundation.PWSTR */
+  pszFile: string | null;
 }
 
-export const sizeofCHARFORMAT2W = 40;
+export const sizeofOFNOTIFYW = 24;
 
-export function allocCHARFORMAT2W(data?: Partial<CHARFORMAT2W>): Uint8Array {
-  const buf = new Uint8Array(sizeofCHARFORMAT2W);
+export function allocOFNOTIFYW(data?: Partial<OFNOTIFYW>): Uint8Array {
+  const buf = new Uint8Array(sizeofOFNOTIFYW);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.__AnonymousBase_richedit_L711_C23 !== undefined) view.setBigUint64(0, data.__AnonymousBase_richedit_L711_C23 === null ? 0n : BigInt(util.toPointer(data.__AnonymousBase_richedit_L711_C23)), true);
-  // 0x08: u16
-  if (data?.wWeight !== undefined) view.setUint16(8, Number(data.wWeight), true);
-  // 0x0a: i16
-  if (data?.sSpacing !== undefined) view.setInt16(10, Number(data.sSpacing), true);
-  // 0x0c: u32
-  if (data?.crBackColor !== undefined) view.setUint32(12, Number(data.crBackColor), true);
-  // 0x10: u32
-  if (data?.lcid !== undefined) view.setUint32(16, Number(data.lcid), true);
-  // 0x14: pad4
+  if (data?.hdr !== undefined) view.setBigUint64(0, data.hdr === null ? 0n : BigInt(util.toPointer(data.hdr)), true);
+  // 0x08: pointer
+  if (data?.lpOFN !== undefined) view.setBigUint64(8, data.lpOFN === null ? 0n : BigInt(util.toPointer(data.lpOFN)), true);
+  // 0x10: buffer
+  if (data?.pszFile !== undefined) {
+    (buf as any)._f16 = util.pwstrToFfi(data.pszFile);
+    view.setBigUint64(16, (buf as any)._f16 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f16)), true);
+  }
+  return buf;
+}
+
+/**
+ * Windows.Win32.UI.Controls.Dialogs.OFNOTIFYEXA (size: 32)
+ */
+export interface OFNOTIFYEXA {
+  /** Windows.Win32.UI.Controls.NMHDR */
+  hdr: Uint8Array | Deno.PointerValue | null;
+  /** ptr */
+  lpOFN: Deno.PointerValue | Uint8Array | null;
+  /** ptr */
+  psf: Deno.PointerValue | Uint8Array | null;
+  /** ptr */
+  pidl: Deno.PointerValue | Uint8Array | null;
+}
+
+export const sizeofOFNOTIFYEXA = 32;
+
+export function allocOFNOTIFYEXA(data?: Partial<OFNOTIFYEXA>): Uint8Array {
+  const buf = new Uint8Array(sizeofOFNOTIFYEXA);
+  const view = new DataView(buf.buffer);
+  // 0x00: pointer
+  if (data?.hdr !== undefined) view.setBigUint64(0, data.hdr === null ? 0n : BigInt(util.toPointer(data.hdr)), true);
+  // 0x08: pointer
+  if (data?.lpOFN !== undefined) view.setBigUint64(8, data.lpOFN === null ? 0n : BigInt(util.toPointer(data.lpOFN)), true);
+  // 0x10: pointer
+  if (data?.psf !== undefined) view.setBigUint64(16, data.psf === null ? 0n : BigInt(util.toPointer(data.psf)), true);
   // 0x18: pointer
-  if (data?.Anonymous !== undefined) view.setBigUint64(24, data.Anonymous === null ? 0n : BigInt(util.toPointer(data.Anonymous)), true);
-  // 0x20: i16
-  if (data?.sStyle !== undefined) view.setInt16(32, Number(data.sStyle), true);
-  // 0x22: u16
-  if (data?.wKerning !== undefined) view.setUint16(34, Number(data.wKerning), true);
-  // 0x24: u8
-  if (data?.bUnderlineType !== undefined) view.setUint8(36, Number(data.bUnderlineType));
-  // 0x25: u8
-  if (data?.bAnimation !== undefined) view.setUint8(37, Number(data.bAnimation));
-  // 0x26: u8
-  if (data?.bRevAuthor !== undefined) view.setUint8(38, Number(data.bRevAuthor));
-  // 0x27: u8
-  if (data?.bUnderlineColor !== undefined) view.setUint8(39, Number(data.bUnderlineColor));
+  if (data?.pidl !== undefined) view.setBigUint64(24, data.pidl === null ? 0n : BigInt(util.toPointer(data.pidl)), true);
   return buf;
 }
 
 /**
- * Windows.Win32.UI.Controls.RichEdit.CHARFORMAT2A (size: 40)
+ * Windows.Win32.UI.Controls.Dialogs.OFNOTIFYEXW (size: 32)
  */
-export interface CHARFORMAT2A {
-  /** Windows.Win32.UI.Controls.RichEdit.CHARFORMATA */
-  __AnonymousBase_richedit_L736_C23: Uint8Array | Deno.PointerValue | null;
-  /** u16 */
-  wWeight: number;
-  /** i16 */
-  sSpacing: number;
-  /** u32 */
-  crBackColor: number;
-  /** u32 */
-  lcid: number;
-  /** _Anonymous_e__Union */
-  Anonymous: Uint8Array | Deno.PointerValue | null;
-  /** i16 */
-  sStyle: number;
-  /** u16 */
-  wKerning: number;
-  /** u8 */
-  bUnderlineType: number;
-  /** u8 */
-  bAnimation: number;
-  /** u8 */
-  bRevAuthor: number;
-  /** u8 */
-  bUnderlineColor: number;
+export interface OFNOTIFYEXW {
+  /** Windows.Win32.UI.Controls.NMHDR */
+  hdr: Uint8Array | Deno.PointerValue | null;
+  /** ptr */
+  lpOFN: Deno.PointerValue | Uint8Array | null;
+  /** ptr */
+  psf: Deno.PointerValue | Uint8Array | null;
+  /** ptr */
+  pidl: Deno.PointerValue | Uint8Array | null;
 }
 
-export const sizeofCHARFORMAT2A = 40;
+export const sizeofOFNOTIFYEXW = 32;
 
-export function allocCHARFORMAT2A(data?: Partial<CHARFORMAT2A>): Uint8Array {
-  const buf = new Uint8Array(sizeofCHARFORMAT2A);
+export function allocOFNOTIFYEXW(data?: Partial<OFNOTIFYEXW>): Uint8Array {
+  const buf = new Uint8Array(sizeofOFNOTIFYEXW);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.__AnonymousBase_richedit_L736_C23 !== undefined) view.setBigUint64(0, data.__AnonymousBase_richedit_L736_C23 === null ? 0n : BigInt(util.toPointer(data.__AnonymousBase_richedit_L736_C23)), true);
-  // 0x08: u16
-  if (data?.wWeight !== undefined) view.setUint16(8, Number(data.wWeight), true);
-  // 0x0a: i16
-  if (data?.sSpacing !== undefined) view.setInt16(10, Number(data.sSpacing), true);
-  // 0x0c: u32
-  if (data?.crBackColor !== undefined) view.setUint32(12, Number(data.crBackColor), true);
-  // 0x10: u32
-  if (data?.lcid !== undefined) view.setUint32(16, Number(data.lcid), true);
-  // 0x14: pad4
+  if (data?.hdr !== undefined) view.setBigUint64(0, data.hdr === null ? 0n : BigInt(util.toPointer(data.hdr)), true);
+  // 0x08: pointer
+  if (data?.lpOFN !== undefined) view.setBigUint64(8, data.lpOFN === null ? 0n : BigInt(util.toPointer(data.lpOFN)), true);
+  // 0x10: pointer
+  if (data?.psf !== undefined) view.setBigUint64(16, data.psf === null ? 0n : BigInt(util.toPointer(data.psf)), true);
   // 0x18: pointer
-  if (data?.Anonymous !== undefined) view.setBigUint64(24, data.Anonymous === null ? 0n : BigInt(util.toPointer(data.Anonymous)), true);
-  // 0x20: i16
-  if (data?.sStyle !== undefined) view.setInt16(32, Number(data.sStyle), true);
-  // 0x22: u16
-  if (data?.wKerning !== undefined) view.setUint16(34, Number(data.wKerning), true);
-  // 0x24: u8
-  if (data?.bUnderlineType !== undefined) view.setUint8(36, Number(data.bUnderlineType));
-  // 0x25: u8
-  if (data?.bAnimation !== undefined) view.setUint8(37, Number(data.bAnimation));
-  // 0x26: u8
-  if (data?.bRevAuthor !== undefined) view.setUint8(38, Number(data.bRevAuthor));
-  // 0x27: u8
-  if (data?.bUnderlineColor !== undefined) view.setUint8(39, Number(data.bUnderlineColor));
+  if (data?.pidl !== undefined) view.setBigUint64(24, data.pidl === null ? 0n : BigInt(util.toPointer(data.pidl)), true);
   return buf;
 }
 
-/**
- * Windows.Win32.UI.Controls.RichEdit.CHARRANGE (size: 8)
- */
-export interface CHARRANGE {
-  /** i32 */
-  cpMin: number;
-  /** i32 */
-  cpMax: number;
-}
-
-export const sizeofCHARRANGE = 8;
-
-export function allocCHARRANGE(data?: Partial<CHARRANGE>): Uint8Array {
-  const buf = new Uint8Array(sizeofCHARRANGE);
-  const view = new DataView(buf.buffer);
-  // 0x00: i32
-  if (data?.cpMin !== undefined) view.setInt32(0, Number(data.cpMin), true);
-  // 0x04: i32
-  if (data?.cpMax !== undefined) view.setInt32(4, Number(data.cpMax), true);
-  return buf;
-}
-
-export type PSTR = Deno.PointerValue | Uint8Array | null;
+export type COLORREF = number;
 
 /**
- * Windows.Win32.UI.Controls.RichEdit.TEXTRANGEA (size: 16)
+ * Windows.Win32.UI.Controls.Dialogs.CHOOSECOLORA (size: 72)
  */
-export interface TEXTRANGEA {
-  /** Windows.Win32.UI.Controls.RichEdit.CHARRANGE */
-  chrg: Uint8Array | Deno.PointerValue | null;
-  /** Windows.Win32.Foundation.PSTR */
-  lpstrText: string | null;
-}
-
-export const sizeofTEXTRANGEA = 16;
-
-export function allocTEXTRANGEA(data?: Partial<TEXTRANGEA>): Uint8Array {
-  const buf = new Uint8Array(sizeofTEXTRANGEA);
-  const view = new DataView(buf.buffer);
-  // 0x00: pointer
-  if (data?.chrg !== undefined) view.setBigUint64(0, data.chrg === null ? 0n : BigInt(util.toPointer(data.chrg)), true);
-  // 0x08: buffer
-  if (data?.lpstrText !== undefined) {
-    (buf as any)._f8 = util.pstrToFfi(data.lpstrText);
-    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f8)), true);
-  }
-  return buf;
-}
-
-/**
- * Windows.Win32.UI.Controls.RichEdit.TEXTRANGEW (size: 16)
- */
-export interface TEXTRANGEW {
-  /** Windows.Win32.UI.Controls.RichEdit.CHARRANGE */
-  chrg: Uint8Array | Deno.PointerValue | null;
-  /** Windows.Win32.Foundation.PWSTR */
-  lpstrText: string | null;
-}
-
-export const sizeofTEXTRANGEW = 16;
-
-export function allocTEXTRANGEW(data?: Partial<TEXTRANGEW>): Uint8Array {
-  const buf = new Uint8Array(sizeofTEXTRANGEW);
-  const view = new DataView(buf.buffer);
-  // 0x00: pointer
-  if (data?.chrg !== undefined) view.setBigUint64(0, data.chrg === null ? 0n : BigInt(util.toPointer(data.chrg)), true);
-  // 0x08: buffer
-  if (data?.lpstrText !== undefined) {
-    (buf as any)._f8 = util.pwstrToFfi(data.lpstrText);
-    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f8)), true);
-  }
-  return buf;
-}
-
-/**
- * Windows.Win32.UI.Controls.RichEdit.EDITSTREAM (size: 24)
- */
-export interface EDITSTREAM {
-  /** usize */
-  dwCookie: Deno.PointerValue;
+export interface CHOOSECOLORA {
   /** u32 */
-  dwError: number;
-  /** Windows.Win32.UI.Controls.RichEdit.EDITSTREAMCALLBACK */
-  pfnCallback: Uint8Array | Deno.PointerValue | null;
-}
-
-export const sizeofEDITSTREAM = 24;
-
-export function allocEDITSTREAM(data?: Partial<EDITSTREAM>): Uint8Array {
-  const buf = new Uint8Array(sizeofEDITSTREAM);
-  const view = new DataView(buf.buffer);
-  // 0x00: usize
-  if (data?.dwCookie !== undefined) view.setBigUint64(0, BigInt(data.dwCookie), true);
-  // 0x08: u32
-  if (data?.dwError !== undefined) view.setUint32(8, Number(data.dwError), true);
-  // 0x0c: pad4
-  // 0x10: pointer
-  if (data?.pfnCallback !== undefined) view.setBigUint64(16, data.pfnCallback === null ? 0n : BigInt(util.toPointer(data.pfnCallback)), true);
-  return buf;
-}
-
-/**
- * Windows.Win32.UI.Controls.RichEdit.FINDTEXTA (size: 16)
- */
-export interface FINDTEXTA {
-  /** Windows.Win32.UI.Controls.RichEdit.CHARRANGE */
-  chrg: Uint8Array | Deno.PointerValue | null;
+  lStructSize: number;
+  /** Windows.Win32.Foundation.HWND */
+  hwndOwner: Deno.PointerValue | null;
+  /** Windows.Win32.Foundation.HWND */
+  hInstance: Deno.PointerValue | null;
+  /** Windows.Win32.Foundation.COLORREF */
+  rgbResult: Uint8Array | Deno.PointerValue | null;
+  /** ptr */
+  lpCustColors: Deno.PointerValue | Uint8Array | null;
+  /** Windows.Win32.UI.Controls.Dialogs.CHOOSECOLOR_FLAGS */
+  Flags: CHOOSECOLOR_FLAGS;
+  /** Windows.Win32.Foundation.LPARAM */
+  lCustData: Uint8Array | Deno.PointerValue | null;
+  /** Windows.Win32.UI.Controls.Dialogs.LPCCHOOKPROC */
+  lpfnHook: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.Foundation.PSTR */
-  lpstrText: string | null;
+  lpTemplateName: string | null;
 }
 
-export const sizeofFINDTEXTA = 16;
+export const sizeofCHOOSECOLORA = 72;
 
-export function allocFINDTEXTA(data?: Partial<FINDTEXTA>): Uint8Array {
-  const buf = new Uint8Array(sizeofFINDTEXTA);
+export function allocCHOOSECOLORA(data?: Partial<CHOOSECOLORA>): Uint8Array {
+  const buf = new Uint8Array(sizeofCHOOSECOLORA);
   const view = new DataView(buf.buffer);
-  // 0x00: pointer
-  if (data?.chrg !== undefined) view.setBigUint64(0, data.chrg === null ? 0n : BigInt(util.toPointer(data.chrg)), true);
-  // 0x08: buffer
-  if (data?.lpstrText !== undefined) {
-    (buf as any)._f8 = util.pstrToFfi(data.lpstrText);
-    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f8)), true);
+  // 0x00: u32
+  if (data?.lStructSize !== undefined) view.setUint32(0, Number(data.lStructSize), true);
+  // 0x04: pad4
+  // 0x08: pointer
+  if (data?.hwndOwner !== undefined) view.setBigUint64(8, data.hwndOwner === null ? 0n : BigInt(util.toPointer(data.hwndOwner)), true);
+  // 0x10: pointer
+  if (data?.hInstance !== undefined) view.setBigUint64(16, data.hInstance === null ? 0n : BigInt(util.toPointer(data.hInstance)), true);
+  // 0x18: pointer
+  if (data?.rgbResult !== undefined) view.setBigUint64(24, data.rgbResult === null ? 0n : BigInt(util.toPointer(data.rgbResult)), true);
+  // 0x20: pointer
+  if (data?.lpCustColors !== undefined) view.setBigUint64(32, data.lpCustColors === null ? 0n : BigInt(util.toPointer(data.lpCustColors)), true);
+  // 0x28: u32
+  if (data?.Flags !== undefined) view.setUint32(40, Number(data.Flags), true);
+  // 0x2c: pad4
+  // 0x30: pointer
+  if (data?.lCustData !== undefined) view.setBigUint64(48, data.lCustData === null ? 0n : BigInt(util.toPointer(data.lCustData)), true);
+  // 0x38: pointer
+  if (data?.lpfnHook !== undefined) view.setBigUint64(56, data.lpfnHook === null ? 0n : BigInt(util.toPointer(data.lpfnHook)), true);
+  // 0x40: buffer
+  if (data?.lpTemplateName !== undefined) {
+    (buf as any)._f64 = util.pstrToFfi(data.lpTemplateName);
+    view.setBigUint64(64, (buf as any)._f64 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f64)), true);
   }
   return buf;
 }
 
 /**
- * Windows.Win32.UI.Controls.RichEdit.FINDTEXTW (size: 16)
+ * Windows.Win32.UI.Controls.Dialogs.CHOOSECOLORW (size: 72)
  */
-export interface FINDTEXTW {
-  /** Windows.Win32.UI.Controls.RichEdit.CHARRANGE */
-  chrg: Uint8Array | Deno.PointerValue | null;
+export interface CHOOSECOLORW {
+  /** u32 */
+  lStructSize: number;
+  /** Windows.Win32.Foundation.HWND */
+  hwndOwner: Deno.PointerValue | null;
+  /** Windows.Win32.Foundation.HWND */
+  hInstance: Deno.PointerValue | null;
+  /** Windows.Win32.Foundation.COLORREF */
+  rgbResult: Uint8Array | Deno.PointerValue | null;
+  /** ptr */
+  lpCustColors: Deno.PointerValue | Uint8Array | null;
+  /** Windows.Win32.UI.Controls.Dialogs.CHOOSECOLOR_FLAGS */
+  Flags: CHOOSECOLOR_FLAGS;
+  /** Windows.Win32.Foundation.LPARAM */
+  lCustData: Uint8Array | Deno.PointerValue | null;
+  /** Windows.Win32.UI.Controls.Dialogs.LPCCHOOKPROC */
+  lpfnHook: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.Foundation.PWSTR */
-  lpstrText: string | null;
+  lpTemplateName: string | null;
 }
 
-export const sizeofFINDTEXTW = 16;
+export const sizeofCHOOSECOLORW = 72;
 
-export function allocFINDTEXTW(data?: Partial<FINDTEXTW>): Uint8Array {
-  const buf = new Uint8Array(sizeofFINDTEXTW);
+export function allocCHOOSECOLORW(data?: Partial<CHOOSECOLORW>): Uint8Array {
+  const buf = new Uint8Array(sizeofCHOOSECOLORW);
   const view = new DataView(buf.buffer);
-  // 0x00: pointer
-  if (data?.chrg !== undefined) view.setBigUint64(0, data.chrg === null ? 0n : BigInt(util.toPointer(data.chrg)), true);
-  // 0x08: buffer
-  if (data?.lpstrText !== undefined) {
-    (buf as any)._f8 = util.pwstrToFfi(data.lpstrText);
-    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f8)), true);
+  // 0x00: u32
+  if (data?.lStructSize !== undefined) view.setUint32(0, Number(data.lStructSize), true);
+  // 0x04: pad4
+  // 0x08: pointer
+  if (data?.hwndOwner !== undefined) view.setBigUint64(8, data.hwndOwner === null ? 0n : BigInt(util.toPointer(data.hwndOwner)), true);
+  // 0x10: pointer
+  if (data?.hInstance !== undefined) view.setBigUint64(16, data.hInstance === null ? 0n : BigInt(util.toPointer(data.hInstance)), true);
+  // 0x18: pointer
+  if (data?.rgbResult !== undefined) view.setBigUint64(24, data.rgbResult === null ? 0n : BigInt(util.toPointer(data.rgbResult)), true);
+  // 0x20: pointer
+  if (data?.lpCustColors !== undefined) view.setBigUint64(32, data.lpCustColors === null ? 0n : BigInt(util.toPointer(data.lpCustColors)), true);
+  // 0x28: u32
+  if (data?.Flags !== undefined) view.setUint32(40, Number(data.Flags), true);
+  // 0x2c: pad4
+  // 0x30: pointer
+  if (data?.lCustData !== undefined) view.setBigUint64(48, data.lCustData === null ? 0n : BigInt(util.toPointer(data.lCustData)), true);
+  // 0x38: pointer
+  if (data?.lpfnHook !== undefined) view.setBigUint64(56, data.lpfnHook === null ? 0n : BigInt(util.toPointer(data.lpfnHook)), true);
+  // 0x40: buffer
+  if (data?.lpTemplateName !== undefined) {
+    (buf as any)._f64 = util.pwstrToFfi(data.lpTemplateName);
+    view.setBigUint64(64, (buf as any)._f64 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f64)), true);
   }
   return buf;
 }
 
 /**
- * Windows.Win32.UI.Controls.RichEdit.FINDTEXTEXA (size: 24)
+ * Windows.Win32.UI.Controls.Dialogs.FINDREPLACEA (size: 80)
  */
-export interface FINDTEXTEXA {
-  /** Windows.Win32.UI.Controls.RichEdit.CHARRANGE */
-  chrg: Uint8Array | Deno.PointerValue | null;
+export interface FINDREPLACEA {
+  /** u32 */
+  lStructSize: number;
+  /** Windows.Win32.Foundation.HWND */
+  hwndOwner: Deno.PointerValue | null;
+  /** Windows.Win32.Foundation.HINSTANCE */
+  hInstance: Uint8Array | Deno.PointerValue | null;
+  /** Windows.Win32.UI.Controls.Dialogs.FINDREPLACE_FLAGS */
+  Flags: FINDREPLACE_FLAGS;
   /** Windows.Win32.Foundation.PSTR */
-  lpstrText: string | null;
-  /** Windows.Win32.UI.Controls.RichEdit.CHARRANGE */
-  chrgText: Uint8Array | Deno.PointerValue | null;
+  lpstrFindWhat: string | null;
+  /** Windows.Win32.Foundation.PSTR */
+  lpstrReplaceWith: string | null;
+  /** u16 */
+  wFindWhatLen: number;
+  /** u16 */
+  wReplaceWithLen: number;
+  /** Windows.Win32.Foundation.LPARAM */
+  lCustData: Uint8Array | Deno.PointerValue | null;
+  /** Windows.Win32.UI.Controls.Dialogs.LPFRHOOKPROC */
+  lpfnHook: Uint8Array | Deno.PointerValue | null;
+  /** Windows.Win32.Foundation.PSTR */
+  lpTemplateName: string | null;
 }
 
-export const sizeofFINDTEXTEXA = 24;
+export const sizeofFINDREPLACEA = 80;
 
-export function allocFINDTEXTEXA(data?: Partial<FINDTEXTEXA>): Uint8Array {
-  const buf = new Uint8Array(sizeofFINDTEXTEXA);
+export function allocFINDREPLACEA(data?: Partial<FINDREPLACEA>): Uint8Array {
+  const buf = new Uint8Array(sizeofFINDREPLACEA);
   const view = new DataView(buf.buffer);
-  // 0x00: pointer
-  if (data?.chrg !== undefined) view.setBigUint64(0, data.chrg === null ? 0n : BigInt(util.toPointer(data.chrg)), true);
-  // 0x08: buffer
-  if (data?.lpstrText !== undefined) {
-    (buf as any)._f8 = util.pstrToFfi(data.lpstrText);
-    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f8)), true);
-  }
+  // 0x00: u32
+  if (data?.lStructSize !== undefined) view.setUint32(0, Number(data.lStructSize), true);
+  // 0x04: pad4
+  // 0x08: pointer
+  if (data?.hwndOwner !== undefined) view.setBigUint64(8, data.hwndOwner === null ? 0n : BigInt(util.toPointer(data.hwndOwner)), true);
   // 0x10: pointer
-  if (data?.chrgText !== undefined) view.setBigUint64(16, data.chrgText === null ? 0n : BigInt(util.toPointer(data.chrgText)), true);
+  if (data?.hInstance !== undefined) view.setBigUint64(16, data.hInstance === null ? 0n : BigInt(util.toPointer(data.hInstance)), true);
+  // 0x18: u32
+  if (data?.Flags !== undefined) view.setUint32(24, Number(data.Flags), true);
+  // 0x1c: pad4
+  // 0x20: buffer
+  if (data?.lpstrFindWhat !== undefined) {
+    (buf as any)._f32 = util.pstrToFfi(data.lpstrFindWhat);
+    view.setBigUint64(32, (buf as any)._f32 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f32)), true);
+  }
+  // 0x28: buffer
+  if (data?.lpstrReplaceWith !== undefined) {
+    (buf as any)._f40 = util.pstrToFfi(data.lpstrReplaceWith);
+    view.setBigUint64(40, (buf as any)._f40 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f40)), true);
+  }
+  // 0x30: u16
+  if (data?.wFindWhatLen !== undefined) view.setUint16(48, Number(data.wFindWhatLen), true);
+  // 0x32: u16
+  if (data?.wReplaceWithLen !== undefined) view.setUint16(50, Number(data.wReplaceWithLen), true);
+  // 0x34: pad4
+  // 0x38: pointer
+  if (data?.lCustData !== undefined) view.setBigUint64(56, data.lCustData === null ? 0n : BigInt(util.toPointer(data.lCustData)), true);
+  // 0x40: pointer
+  if (data?.lpfnHook !== undefined) view.setBigUint64(64, data.lpfnHook === null ? 0n : BigInt(util.toPointer(data.lpfnHook)), true);
+  // 0x48: buffer
+  if (data?.lpTemplateName !== undefined) {
+    (buf as any)._f72 = util.pstrToFfi(data.lpTemplateName);
+    view.setBigUint64(72, (buf as any)._f72 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f72)), true);
+  }
   return buf;
 }
 
 /**
- * Windows.Win32.UI.Controls.RichEdit.FINDTEXTEXW (size: 24)
+ * Windows.Win32.UI.Controls.Dialogs.FINDREPLACEW (size: 80)
  */
-export interface FINDTEXTEXW {
-  /** Windows.Win32.UI.Controls.RichEdit.CHARRANGE */
-  chrg: Uint8Array | Deno.PointerValue | null;
+export interface FINDREPLACEW {
+  /** u32 */
+  lStructSize: number;
+  /** Windows.Win32.Foundation.HWND */
+  hwndOwner: Deno.PointerValue | null;
+  /** Windows.Win32.Foundation.HINSTANCE */
+  hInstance: Uint8Array | Deno.PointerValue | null;
+  /** Windows.Win32.UI.Controls.Dialogs.FINDREPLACE_FLAGS */
+  Flags: FINDREPLACE_FLAGS;
   /** Windows.Win32.Foundation.PWSTR */
-  lpstrText: string | null;
-  /** Windows.Win32.UI.Controls.RichEdit.CHARRANGE */
-  chrgText: Uint8Array | Deno.PointerValue | null;
+  lpstrFindWhat: string | null;
+  /** Windows.Win32.Foundation.PWSTR */
+  lpstrReplaceWith: string | null;
+  /** u16 */
+  wFindWhatLen: number;
+  /** u16 */
+  wReplaceWithLen: number;
+  /** Windows.Win32.Foundation.LPARAM */
+  lCustData: Uint8Array | Deno.PointerValue | null;
+  /** Windows.Win32.UI.Controls.Dialogs.LPFRHOOKPROC */
+  lpfnHook: Uint8Array | Deno.PointerValue | null;
+  /** Windows.Win32.Foundation.PWSTR */
+  lpTemplateName: string | null;
 }
 
-export const sizeofFINDTEXTEXW = 24;
+export const sizeofFINDREPLACEW = 80;
 
-export function allocFINDTEXTEXW(data?: Partial<FINDTEXTEXW>): Uint8Array {
-  const buf = new Uint8Array(sizeofFINDTEXTEXW);
+export function allocFINDREPLACEW(data?: Partial<FINDREPLACEW>): Uint8Array {
+  const buf = new Uint8Array(sizeofFINDREPLACEW);
   const view = new DataView(buf.buffer);
-  // 0x00: pointer
-  if (data?.chrg !== undefined) view.setBigUint64(0, data.chrg === null ? 0n : BigInt(util.toPointer(data.chrg)), true);
-  // 0x08: buffer
-  if (data?.lpstrText !== undefined) {
-    (buf as any)._f8 = util.pwstrToFfi(data.lpstrText);
-    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f8)), true);
-  }
+  // 0x00: u32
+  if (data?.lStructSize !== undefined) view.setUint32(0, Number(data.lStructSize), true);
+  // 0x04: pad4
+  // 0x08: pointer
+  if (data?.hwndOwner !== undefined) view.setBigUint64(8, data.hwndOwner === null ? 0n : BigInt(util.toPointer(data.hwndOwner)), true);
   // 0x10: pointer
-  if (data?.chrgText !== undefined) view.setBigUint64(16, data.chrgText === null ? 0n : BigInt(util.toPointer(data.chrgText)), true);
+  if (data?.hInstance !== undefined) view.setBigUint64(16, data.hInstance === null ? 0n : BigInt(util.toPointer(data.hInstance)), true);
+  // 0x18: u32
+  if (data?.Flags !== undefined) view.setUint32(24, Number(data.Flags), true);
+  // 0x1c: pad4
+  // 0x20: buffer
+  if (data?.lpstrFindWhat !== undefined) {
+    (buf as any)._f32 = util.pwstrToFfi(data.lpstrFindWhat);
+    view.setBigUint64(32, (buf as any)._f32 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f32)), true);
+  }
+  // 0x28: buffer
+  if (data?.lpstrReplaceWith !== undefined) {
+    (buf as any)._f40 = util.pwstrToFfi(data.lpstrReplaceWith);
+    view.setBigUint64(40, (buf as any)._f40 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f40)), true);
+  }
+  // 0x30: u16
+  if (data?.wFindWhatLen !== undefined) view.setUint16(48, Number(data.wFindWhatLen), true);
+  // 0x32: u16
+  if (data?.wReplaceWithLen !== undefined) view.setUint16(50, Number(data.wReplaceWithLen), true);
+  // 0x34: pad4
+  // 0x38: pointer
+  if (data?.lCustData !== undefined) view.setBigUint64(56, data.lCustData === null ? 0n : BigInt(util.toPointer(data.lCustData)), true);
+  // 0x40: pointer
+  if (data?.lpfnHook !== undefined) view.setBigUint64(64, data.lpfnHook === null ? 0n : BigInt(util.toPointer(data.lpfnHook)), true);
+  // 0x48: buffer
+  if (data?.lpTemplateName !== undefined) {
+    (buf as any)._f72 = util.pwstrToFfi(data.lpTemplateName);
+    view.setBigUint64(72, (buf as any)._f72 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f72)), true);
+  }
   return buf;
 }
 
 export type HDC = Deno.PointerValue;
+
+/**
+ * Windows.Win32.UI.Controls.Dialogs.CHOOSEFONTA (size: 104)
+ */
+export interface CHOOSEFONTA {
+  /** u32 */
+  lStructSize: number;
+  /** Windows.Win32.Foundation.HWND */
+  hwndOwner: Deno.PointerValue | null;
+  /** Windows.Win32.Graphics.Gdi.HDC */
+  hDC: Uint8Array | Deno.PointerValue | null;
+  /** ptr */
+  lpLogFont: Deno.PointerValue | Uint8Array | null;
+  /** i32 */
+  iPointSize: number;
+  /** Windows.Win32.UI.Controls.Dialogs.CHOOSEFONT_FLAGS */
+  Flags: CHOOSEFONT_FLAGS;
+  /** Windows.Win32.Foundation.COLORREF */
+  rgbColors: Uint8Array | Deno.PointerValue | null;
+  /** Windows.Win32.Foundation.LPARAM */
+  lCustData: Uint8Array | Deno.PointerValue | null;
+  /** Windows.Win32.UI.Controls.Dialogs.LPCFHOOKPROC */
+  lpfnHook: Uint8Array | Deno.PointerValue | null;
+  /** Windows.Win32.Foundation.PSTR */
+  lpTemplateName: string | null;
+  /** Windows.Win32.Foundation.HINSTANCE */
+  hInstance: Uint8Array | Deno.PointerValue | null;
+  /** Windows.Win32.Foundation.PSTR */
+  lpszStyle: string | null;
+  /** Windows.Win32.UI.Controls.Dialogs.CHOOSEFONT_FONT_TYPE */
+  nFontType: CHOOSEFONT_FONT_TYPE;
+  /** u16 */
+  ___MISSING_ALIGNMENT__: number;
+  /** i32 */
+  nSizeMin: number;
+  /** i32 */
+  nSizeMax: number;
+}
+
+export const sizeofCHOOSEFONTA = 104;
+
+export function allocCHOOSEFONTA(data?: Partial<CHOOSEFONTA>): Uint8Array {
+  const buf = new Uint8Array(sizeofCHOOSEFONTA);
+  const view = new DataView(buf.buffer);
+  // 0x00: u32
+  if (data?.lStructSize !== undefined) view.setUint32(0, Number(data.lStructSize), true);
+  // 0x04: pad4
+  // 0x08: pointer
+  if (data?.hwndOwner !== undefined) view.setBigUint64(8, data.hwndOwner === null ? 0n : BigInt(util.toPointer(data.hwndOwner)), true);
+  // 0x10: pointer
+  if (data?.hDC !== undefined) view.setBigUint64(16, data.hDC === null ? 0n : BigInt(util.toPointer(data.hDC)), true);
+  // 0x18: pointer
+  if (data?.lpLogFont !== undefined) view.setBigUint64(24, data.lpLogFont === null ? 0n : BigInt(util.toPointer(data.lpLogFont)), true);
+  // 0x20: i32
+  if (data?.iPointSize !== undefined) view.setInt32(32, Number(data.iPointSize), true);
+  // 0x24: u32
+  if (data?.Flags !== undefined) view.setUint32(36, Number(data.Flags), true);
+  // 0x28: pointer
+  if (data?.rgbColors !== undefined) view.setBigUint64(40, data.rgbColors === null ? 0n : BigInt(util.toPointer(data.rgbColors)), true);
+  // 0x30: pointer
+  if (data?.lCustData !== undefined) view.setBigUint64(48, data.lCustData === null ? 0n : BigInt(util.toPointer(data.lCustData)), true);
+  // 0x38: pointer
+  if (data?.lpfnHook !== undefined) view.setBigUint64(56, data.lpfnHook === null ? 0n : BigInt(util.toPointer(data.lpfnHook)), true);
+  // 0x40: buffer
+  if (data?.lpTemplateName !== undefined) {
+    (buf as any)._f64 = util.pstrToFfi(data.lpTemplateName);
+    view.setBigUint64(64, (buf as any)._f64 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f64)), true);
+  }
+  // 0x48: pointer
+  if (data?.hInstance !== undefined) view.setBigUint64(72, data.hInstance === null ? 0n : BigInt(util.toPointer(data.hInstance)), true);
+  // 0x50: buffer
+  if (data?.lpszStyle !== undefined) {
+    (buf as any)._f80 = util.pstrToFfi(data.lpszStyle);
+    view.setBigUint64(80, (buf as any)._f80 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f80)), true);
+  }
+  // 0x58: u16
+  if (data?.nFontType !== undefined) view.setUint16(88, Number(data.nFontType), true);
+  // 0x5a: u16
+  if (data?.___MISSING_ALIGNMENT__ !== undefined) view.setUint16(90, Number(data.___MISSING_ALIGNMENT__), true);
+  // 0x5c: i32
+  if (data?.nSizeMin !== undefined) view.setInt32(92, Number(data.nSizeMin), true);
+  // 0x60: i32
+  if (data?.nSizeMax !== undefined) view.setInt32(96, Number(data.nSizeMax), true);
+  // 0x64: pad4
+  return buf;
+}
+
+/**
+ * Windows.Win32.UI.Controls.Dialogs.CHOOSEFONTW (size: 104)
+ */
+export interface CHOOSEFONTW {
+  /** u32 */
+  lStructSize: number;
+  /** Windows.Win32.Foundation.HWND */
+  hwndOwner: Deno.PointerValue | null;
+  /** Windows.Win32.Graphics.Gdi.HDC */
+  hDC: Uint8Array | Deno.PointerValue | null;
+  /** ptr */
+  lpLogFont: Deno.PointerValue | Uint8Array | null;
+  /** i32 */
+  iPointSize: number;
+  /** Windows.Win32.UI.Controls.Dialogs.CHOOSEFONT_FLAGS */
+  Flags: CHOOSEFONT_FLAGS;
+  /** Windows.Win32.Foundation.COLORREF */
+  rgbColors: Uint8Array | Deno.PointerValue | null;
+  /** Windows.Win32.Foundation.LPARAM */
+  lCustData: Uint8Array | Deno.PointerValue | null;
+  /** Windows.Win32.UI.Controls.Dialogs.LPCFHOOKPROC */
+  lpfnHook: Uint8Array | Deno.PointerValue | null;
+  /** Windows.Win32.Foundation.PWSTR */
+  lpTemplateName: string | null;
+  /** Windows.Win32.Foundation.HINSTANCE */
+  hInstance: Uint8Array | Deno.PointerValue | null;
+  /** Windows.Win32.Foundation.PWSTR */
+  lpszStyle: string | null;
+  /** Windows.Win32.UI.Controls.Dialogs.CHOOSEFONT_FONT_TYPE */
+  nFontType: CHOOSEFONT_FONT_TYPE;
+  /** u16 */
+  ___MISSING_ALIGNMENT__: number;
+  /** i32 */
+  nSizeMin: number;
+  /** i32 */
+  nSizeMax: number;
+}
+
+export const sizeofCHOOSEFONTW = 104;
+
+export function allocCHOOSEFONTW(data?: Partial<CHOOSEFONTW>): Uint8Array {
+  const buf = new Uint8Array(sizeofCHOOSEFONTW);
+  const view = new DataView(buf.buffer);
+  // 0x00: u32
+  if (data?.lStructSize !== undefined) view.setUint32(0, Number(data.lStructSize), true);
+  // 0x04: pad4
+  // 0x08: pointer
+  if (data?.hwndOwner !== undefined) view.setBigUint64(8, data.hwndOwner === null ? 0n : BigInt(util.toPointer(data.hwndOwner)), true);
+  // 0x10: pointer
+  if (data?.hDC !== undefined) view.setBigUint64(16, data.hDC === null ? 0n : BigInt(util.toPointer(data.hDC)), true);
+  // 0x18: pointer
+  if (data?.lpLogFont !== undefined) view.setBigUint64(24, data.lpLogFont === null ? 0n : BigInt(util.toPointer(data.lpLogFont)), true);
+  // 0x20: i32
+  if (data?.iPointSize !== undefined) view.setInt32(32, Number(data.iPointSize), true);
+  // 0x24: u32
+  if (data?.Flags !== undefined) view.setUint32(36, Number(data.Flags), true);
+  // 0x28: pointer
+  if (data?.rgbColors !== undefined) view.setBigUint64(40, data.rgbColors === null ? 0n : BigInt(util.toPointer(data.rgbColors)), true);
+  // 0x30: pointer
+  if (data?.lCustData !== undefined) view.setBigUint64(48, data.lCustData === null ? 0n : BigInt(util.toPointer(data.lCustData)), true);
+  // 0x38: pointer
+  if (data?.lpfnHook !== undefined) view.setBigUint64(56, data.lpfnHook === null ? 0n : BigInt(util.toPointer(data.lpfnHook)), true);
+  // 0x40: buffer
+  if (data?.lpTemplateName !== undefined) {
+    (buf as any)._f64 = util.pwstrToFfi(data.lpTemplateName);
+    view.setBigUint64(64, (buf as any)._f64 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f64)), true);
+  }
+  // 0x48: pointer
+  if (data?.hInstance !== undefined) view.setBigUint64(72, data.hInstance === null ? 0n : BigInt(util.toPointer(data.hInstance)), true);
+  // 0x50: buffer
+  if (data?.lpszStyle !== undefined) {
+    (buf as any)._f80 = util.pwstrToFfi(data.lpszStyle);
+    view.setBigUint64(80, (buf as any)._f80 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f80)), true);
+  }
+  // 0x58: u16
+  if (data?.nFontType !== undefined) view.setUint16(88, Number(data.nFontType), true);
+  // 0x5a: u16
+  if (data?.___MISSING_ALIGNMENT__ !== undefined) view.setUint16(90, Number(data.___MISSING_ALIGNMENT__), true);
+  // 0x5c: i32
+  if (data?.nSizeMin !== undefined) view.setInt32(92, Number(data.nSizeMin), true);
+  // 0x60: i32
+  if (data?.nSizeMax !== undefined) view.setInt32(96, Number(data.nSizeMax), true);
+  // 0x64: pad4
+  return buf;
+}
+
+/**
+ * Windows.Win32.UI.Controls.Dialogs.PRINTDLGA (size: 120)
+ */
+export interface PRINTDLGA {
+  /** u32 */
+  lStructSize: number;
+  /** Windows.Win32.Foundation.HWND */
+  hwndOwner: Deno.PointerValue | null;
+  /** isize */
+  hDevMode: Deno.PointerValue;
+  /** isize */
+  hDevNames: Deno.PointerValue;
+  /** Windows.Win32.Graphics.Gdi.HDC */
+  hDC: Uint8Array | Deno.PointerValue | null;
+  /** Windows.Win32.UI.Controls.Dialogs.PRINTDLGEX_FLAGS */
+  Flags: PRINTDLGEX_FLAGS;
+  /** u16 */
+  nFromPage: number;
+  /** u16 */
+  nToPage: number;
+  /** u16 */
+  nMinPage: number;
+  /** u16 */
+  nMaxPage: number;
+  /** u16 */
+  nCopies: number;
+  /** Windows.Win32.Foundation.HINSTANCE */
+  hInstance: Uint8Array | Deno.PointerValue | null;
+  /** Windows.Win32.Foundation.LPARAM */
+  lCustData: Uint8Array | Deno.PointerValue | null;
+  /** Windows.Win32.UI.Controls.Dialogs.LPPRINTHOOKPROC */
+  lpfnPrintHook: Uint8Array | Deno.PointerValue | null;
+  /** Windows.Win32.UI.Controls.Dialogs.LPSETUPHOOKPROC */
+  lpfnSetupHook: Uint8Array | Deno.PointerValue | null;
+  /** Windows.Win32.Foundation.PSTR */
+  lpPrintTemplateName: string | null;
+  /** Windows.Win32.Foundation.PSTR */
+  lpSetupTemplateName: string | null;
+  /** isize */
+  hPrintTemplate: Deno.PointerValue;
+  /** isize */
+  hSetupTemplate: Deno.PointerValue;
+}
+
+export const sizeofPRINTDLGA = 120;
+
+export function allocPRINTDLGA(data?: Partial<PRINTDLGA>): Uint8Array {
+  const buf = new Uint8Array(sizeofPRINTDLGA);
+  const view = new DataView(buf.buffer);
+  // 0x00: u32
+  if (data?.lStructSize !== undefined) view.setUint32(0, Number(data.lStructSize), true);
+  // 0x04: pad4
+  // 0x08: pointer
+  if (data?.hwndOwner !== undefined) view.setBigUint64(8, data.hwndOwner === null ? 0n : BigInt(util.toPointer(data.hwndOwner)), true);
+  // 0x10: isize
+  if (data?.hDevMode !== undefined) view.setBigInt64(16, BigInt(data.hDevMode), true);
+  // 0x18: isize
+  if (data?.hDevNames !== undefined) view.setBigInt64(24, BigInt(data.hDevNames), true);
+  // 0x20: pointer
+  if (data?.hDC !== undefined) view.setBigUint64(32, data.hDC === null ? 0n : BigInt(util.toPointer(data.hDC)), true);
+  // 0x28: u32
+  if (data?.Flags !== undefined) view.setUint32(40, Number(data.Flags), true);
+  // 0x2c: u16
+  if (data?.nFromPage !== undefined) view.setUint16(44, Number(data.nFromPage), true);
+  // 0x2e: u16
+  if (data?.nToPage !== undefined) view.setUint16(46, Number(data.nToPage), true);
+  // 0x30: u16
+  if (data?.nMinPage !== undefined) view.setUint16(48, Number(data.nMinPage), true);
+  // 0x32: u16
+  if (data?.nMaxPage !== undefined) view.setUint16(50, Number(data.nMaxPage), true);
+  // 0x34: u16
+  if (data?.nCopies !== undefined) view.setUint16(52, Number(data.nCopies), true);
+  // 0x36: pad2
+  // 0x38: pointer
+  if (data?.hInstance !== undefined) view.setBigUint64(56, data.hInstance === null ? 0n : BigInt(util.toPointer(data.hInstance)), true);
+  // 0x40: pointer
+  if (data?.lCustData !== undefined) view.setBigUint64(64, data.lCustData === null ? 0n : BigInt(util.toPointer(data.lCustData)), true);
+  // 0x48: pointer
+  if (data?.lpfnPrintHook !== undefined) view.setBigUint64(72, data.lpfnPrintHook === null ? 0n : BigInt(util.toPointer(data.lpfnPrintHook)), true);
+  // 0x50: pointer
+  if (data?.lpfnSetupHook !== undefined) view.setBigUint64(80, data.lpfnSetupHook === null ? 0n : BigInt(util.toPointer(data.lpfnSetupHook)), true);
+  // 0x58: buffer
+  if (data?.lpPrintTemplateName !== undefined) {
+    (buf as any)._f88 = util.pstrToFfi(data.lpPrintTemplateName);
+    view.setBigUint64(88, (buf as any)._f88 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f88)), true);
+  }
+  // 0x60: buffer
+  if (data?.lpSetupTemplateName !== undefined) {
+    (buf as any)._f96 = util.pstrToFfi(data.lpSetupTemplateName);
+    view.setBigUint64(96, (buf as any)._f96 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f96)), true);
+  }
+  // 0x68: isize
+  if (data?.hPrintTemplate !== undefined) view.setBigInt64(104, BigInt(data.hPrintTemplate), true);
+  // 0x70: isize
+  if (data?.hSetupTemplate !== undefined) view.setBigInt64(112, BigInt(data.hSetupTemplate), true);
+  return buf;
+}
+
+/**
+ * Windows.Win32.UI.Controls.Dialogs.PRINTDLGW (size: 120)
+ */
+export interface PRINTDLGW {
+  /** u32 */
+  lStructSize: number;
+  /** Windows.Win32.Foundation.HWND */
+  hwndOwner: Deno.PointerValue | null;
+  /** isize */
+  hDevMode: Deno.PointerValue;
+  /** isize */
+  hDevNames: Deno.PointerValue;
+  /** Windows.Win32.Graphics.Gdi.HDC */
+  hDC: Uint8Array | Deno.PointerValue | null;
+  /** Windows.Win32.UI.Controls.Dialogs.PRINTDLGEX_FLAGS */
+  Flags: PRINTDLGEX_FLAGS;
+  /** u16 */
+  nFromPage: number;
+  /** u16 */
+  nToPage: number;
+  /** u16 */
+  nMinPage: number;
+  /** u16 */
+  nMaxPage: number;
+  /** u16 */
+  nCopies: number;
+  /** Windows.Win32.Foundation.HINSTANCE */
+  hInstance: Uint8Array | Deno.PointerValue | null;
+  /** Windows.Win32.Foundation.LPARAM */
+  lCustData: Uint8Array | Deno.PointerValue | null;
+  /** Windows.Win32.UI.Controls.Dialogs.LPPRINTHOOKPROC */
+  lpfnPrintHook: Uint8Array | Deno.PointerValue | null;
+  /** Windows.Win32.UI.Controls.Dialogs.LPSETUPHOOKPROC */
+  lpfnSetupHook: Uint8Array | Deno.PointerValue | null;
+  /** Windows.Win32.Foundation.PWSTR */
+  lpPrintTemplateName: string | null;
+  /** Windows.Win32.Foundation.PWSTR */
+  lpSetupTemplateName: string | null;
+  /** isize */
+  hPrintTemplate: Deno.PointerValue;
+  /** isize */
+  hSetupTemplate: Deno.PointerValue;
+}
+
+export const sizeofPRINTDLGW = 120;
+
+export function allocPRINTDLGW(data?: Partial<PRINTDLGW>): Uint8Array {
+  const buf = new Uint8Array(sizeofPRINTDLGW);
+  const view = new DataView(buf.buffer);
+  // 0x00: u32
+  if (data?.lStructSize !== undefined) view.setUint32(0, Number(data.lStructSize), true);
+  // 0x04: pad4
+  // 0x08: pointer
+  if (data?.hwndOwner !== undefined) view.setBigUint64(8, data.hwndOwner === null ? 0n : BigInt(util.toPointer(data.hwndOwner)), true);
+  // 0x10: isize
+  if (data?.hDevMode !== undefined) view.setBigInt64(16, BigInt(data.hDevMode), true);
+  // 0x18: isize
+  if (data?.hDevNames !== undefined) view.setBigInt64(24, BigInt(data.hDevNames), true);
+  // 0x20: pointer
+  if (data?.hDC !== undefined) view.setBigUint64(32, data.hDC === null ? 0n : BigInt(util.toPointer(data.hDC)), true);
+  // 0x28: u32
+  if (data?.Flags !== undefined) view.setUint32(40, Number(data.Flags), true);
+  // 0x2c: u16
+  if (data?.nFromPage !== undefined) view.setUint16(44, Number(data.nFromPage), true);
+  // 0x2e: u16
+  if (data?.nToPage !== undefined) view.setUint16(46, Number(data.nToPage), true);
+  // 0x30: u16
+  if (data?.nMinPage !== undefined) view.setUint16(48, Number(data.nMinPage), true);
+  // 0x32: u16
+  if (data?.nMaxPage !== undefined) view.setUint16(50, Number(data.nMaxPage), true);
+  // 0x34: u16
+  if (data?.nCopies !== undefined) view.setUint16(52, Number(data.nCopies), true);
+  // 0x36: pad2
+  // 0x38: pointer
+  if (data?.hInstance !== undefined) view.setBigUint64(56, data.hInstance === null ? 0n : BigInt(util.toPointer(data.hInstance)), true);
+  // 0x40: pointer
+  if (data?.lCustData !== undefined) view.setBigUint64(64, data.lCustData === null ? 0n : BigInt(util.toPointer(data.lCustData)), true);
+  // 0x48: pointer
+  if (data?.lpfnPrintHook !== undefined) view.setBigUint64(72, data.lpfnPrintHook === null ? 0n : BigInt(util.toPointer(data.lpfnPrintHook)), true);
+  // 0x50: pointer
+  if (data?.lpfnSetupHook !== undefined) view.setBigUint64(80, data.lpfnSetupHook === null ? 0n : BigInt(util.toPointer(data.lpfnSetupHook)), true);
+  // 0x58: buffer
+  if (data?.lpPrintTemplateName !== undefined) {
+    (buf as any)._f88 = util.pwstrToFfi(data.lpPrintTemplateName);
+    view.setBigUint64(88, (buf as any)._f88 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f88)), true);
+  }
+  // 0x60: buffer
+  if (data?.lpSetupTemplateName !== undefined) {
+    (buf as any)._f96 = util.pwstrToFfi(data.lpSetupTemplateName);
+    view.setBigUint64(96, (buf as any)._f96 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f96)), true);
+  }
+  // 0x68: isize
+  if (data?.hPrintTemplate !== undefined) view.setBigInt64(104, BigInt(data.hPrintTemplate), true);
+  // 0x70: isize
+  if (data?.hSetupTemplate !== undefined) view.setBigInt64(112, BigInt(data.hSetupTemplate), true);
+  return buf;
+}
+
+/**
+ * Windows.Win32.UI.Controls.Dialogs.PRINTPAGERANGE (size: 8)
+ */
+export interface PRINTPAGERANGE {
+  /** u32 */
+  nFromPage: number;
+  /** u32 */
+  nToPage: number;
+}
+
+export const sizeofPRINTPAGERANGE = 8;
+
+export function allocPRINTPAGERANGE(data?: Partial<PRINTPAGERANGE>): Uint8Array {
+  const buf = new Uint8Array(sizeofPRINTPAGERANGE);
+  const view = new DataView(buf.buffer);
+  // 0x00: u32
+  if (data?.nFromPage !== undefined) view.setUint32(0, Number(data.nFromPage), true);
+  // 0x04: u32
+  if (data?.nToPage !== undefined) view.setUint32(4, Number(data.nToPage), true);
+  return buf;
+}
+
+/**
+ * Windows.Win32.UI.Controls.Dialogs.PRINTDLGEXA (size: 136)
+ */
+export interface PRINTDLGEXA {
+  /** u32 */
+  lStructSize: number;
+  /** Windows.Win32.Foundation.HWND */
+  hwndOwner: Deno.PointerValue | null;
+  /** isize */
+  hDevMode: Deno.PointerValue;
+  /** isize */
+  hDevNames: Deno.PointerValue;
+  /** Windows.Win32.Graphics.Gdi.HDC */
+  hDC: Uint8Array | Deno.PointerValue | null;
+  /** Windows.Win32.UI.Controls.Dialogs.PRINTDLGEX_FLAGS */
+  Flags: PRINTDLGEX_FLAGS;
+  /** u32 */
+  Flags2: number;
+  /** u32 */
+  ExclusionFlags: number;
+  /** u32 */
+  nPageRanges: number;
+  /** u32 */
+  nMaxPageRanges: number;
+  /** ptr */
+  lpPageRanges: Deno.PointerValue | Uint8Array | null;
+  /** u32 */
+  nMinPage: number;
+  /** u32 */
+  nMaxPage: number;
+  /** u32 */
+  nCopies: number;
+  /** Windows.Win32.Foundation.HINSTANCE */
+  hInstance: Uint8Array | Deno.PointerValue | null;
+  /** Windows.Win32.Foundation.PSTR */
+  lpPrintTemplateName: string | null;
+  /** Windows.Win32.System.Com.IUnknown */
+  lpCallback: Uint8Array | Deno.PointerValue | null;
+  /** u32 */
+  nPropertyPages: number;
+  /** ptr */
+  lphPropertyPages: Deno.PointerValue | Uint8Array | null;
+  /** u32 */
+  nStartPage: number;
+  /** u32 */
+  dwResultAction: number;
+}
+
+export const sizeofPRINTDLGEXA = 136;
+
+export function allocPRINTDLGEXA(data?: Partial<PRINTDLGEXA>): Uint8Array {
+  const buf = new Uint8Array(sizeofPRINTDLGEXA);
+  const view = new DataView(buf.buffer);
+  // 0x00: u32
+  if (data?.lStructSize !== undefined) view.setUint32(0, Number(data.lStructSize), true);
+  // 0x04: pad4
+  // 0x08: pointer
+  if (data?.hwndOwner !== undefined) view.setBigUint64(8, data.hwndOwner === null ? 0n : BigInt(util.toPointer(data.hwndOwner)), true);
+  // 0x10: isize
+  if (data?.hDevMode !== undefined) view.setBigInt64(16, BigInt(data.hDevMode), true);
+  // 0x18: isize
+  if (data?.hDevNames !== undefined) view.setBigInt64(24, BigInt(data.hDevNames), true);
+  // 0x20: pointer
+  if (data?.hDC !== undefined) view.setBigUint64(32, data.hDC === null ? 0n : BigInt(util.toPointer(data.hDC)), true);
+  // 0x28: u32
+  if (data?.Flags !== undefined) view.setUint32(40, Number(data.Flags), true);
+  // 0x2c: u32
+  if (data?.Flags2 !== undefined) view.setUint32(44, Number(data.Flags2), true);
+  // 0x30: u32
+  if (data?.ExclusionFlags !== undefined) view.setUint32(48, Number(data.ExclusionFlags), true);
+  // 0x34: u32
+  if (data?.nPageRanges !== undefined) view.setUint32(52, Number(data.nPageRanges), true);
+  // 0x38: u32
+  if (data?.nMaxPageRanges !== undefined) view.setUint32(56, Number(data.nMaxPageRanges), true);
+  // 0x3c: pad4
+  // 0x40: pointer
+  if (data?.lpPageRanges !== undefined) view.setBigUint64(64, data.lpPageRanges === null ? 0n : BigInt(util.toPointer(data.lpPageRanges)), true);
+  // 0x48: u32
+  if (data?.nMinPage !== undefined) view.setUint32(72, Number(data.nMinPage), true);
+  // 0x4c: u32
+  if (data?.nMaxPage !== undefined) view.setUint32(76, Number(data.nMaxPage), true);
+  // 0x50: u32
+  if (data?.nCopies !== undefined) view.setUint32(80, Number(data.nCopies), true);
+  // 0x54: pad4
+  // 0x58: pointer
+  if (data?.hInstance !== undefined) view.setBigUint64(88, data.hInstance === null ? 0n : BigInt(util.toPointer(data.hInstance)), true);
+  // 0x60: buffer
+  if (data?.lpPrintTemplateName !== undefined) {
+    (buf as any)._f96 = util.pstrToFfi(data.lpPrintTemplateName);
+    view.setBigUint64(96, (buf as any)._f96 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f96)), true);
+  }
+  // 0x68: pointer
+  if (data?.lpCallback !== undefined) view.setBigUint64(104, data.lpCallback === null ? 0n : BigInt(util.toPointer(data.lpCallback)), true);
+  // 0x70: u32
+  if (data?.nPropertyPages !== undefined) view.setUint32(112, Number(data.nPropertyPages), true);
+  // 0x74: pad4
+  // 0x78: pointer
+  if (data?.lphPropertyPages !== undefined) view.setBigUint64(120, data.lphPropertyPages === null ? 0n : BigInt(util.toPointer(data.lphPropertyPages)), true);
+  // 0x80: u32
+  if (data?.nStartPage !== undefined) view.setUint32(128, Number(data.nStartPage), true);
+  // 0x84: u32
+  if (data?.dwResultAction !== undefined) view.setUint32(132, Number(data.dwResultAction), true);
+  return buf;
+}
+
+/**
+ * Windows.Win32.UI.Controls.Dialogs.PRINTDLGEXW (size: 136)
+ */
+export interface PRINTDLGEXW {
+  /** u32 */
+  lStructSize: number;
+  /** Windows.Win32.Foundation.HWND */
+  hwndOwner: Deno.PointerValue | null;
+  /** isize */
+  hDevMode: Deno.PointerValue;
+  /** isize */
+  hDevNames: Deno.PointerValue;
+  /** Windows.Win32.Graphics.Gdi.HDC */
+  hDC: Uint8Array | Deno.PointerValue | null;
+  /** Windows.Win32.UI.Controls.Dialogs.PRINTDLGEX_FLAGS */
+  Flags: PRINTDLGEX_FLAGS;
+  /** u32 */
+  Flags2: number;
+  /** u32 */
+  ExclusionFlags: number;
+  /** u32 */
+  nPageRanges: number;
+  /** u32 */
+  nMaxPageRanges: number;
+  /** ptr */
+  lpPageRanges: Deno.PointerValue | Uint8Array | null;
+  /** u32 */
+  nMinPage: number;
+  /** u32 */
+  nMaxPage: number;
+  /** u32 */
+  nCopies: number;
+  /** Windows.Win32.Foundation.HINSTANCE */
+  hInstance: Uint8Array | Deno.PointerValue | null;
+  /** Windows.Win32.Foundation.PWSTR */
+  lpPrintTemplateName: string | null;
+  /** Windows.Win32.System.Com.IUnknown */
+  lpCallback: Uint8Array | Deno.PointerValue | null;
+  /** u32 */
+  nPropertyPages: number;
+  /** ptr */
+  lphPropertyPages: Deno.PointerValue | Uint8Array | null;
+  /** u32 */
+  nStartPage: number;
+  /** u32 */
+  dwResultAction: number;
+}
+
+export const sizeofPRINTDLGEXW = 136;
+
+export function allocPRINTDLGEXW(data?: Partial<PRINTDLGEXW>): Uint8Array {
+  const buf = new Uint8Array(sizeofPRINTDLGEXW);
+  const view = new DataView(buf.buffer);
+  // 0x00: u32
+  if (data?.lStructSize !== undefined) view.setUint32(0, Number(data.lStructSize), true);
+  // 0x04: pad4
+  // 0x08: pointer
+  if (data?.hwndOwner !== undefined) view.setBigUint64(8, data.hwndOwner === null ? 0n : BigInt(util.toPointer(data.hwndOwner)), true);
+  // 0x10: isize
+  if (data?.hDevMode !== undefined) view.setBigInt64(16, BigInt(data.hDevMode), true);
+  // 0x18: isize
+  if (data?.hDevNames !== undefined) view.setBigInt64(24, BigInt(data.hDevNames), true);
+  // 0x20: pointer
+  if (data?.hDC !== undefined) view.setBigUint64(32, data.hDC === null ? 0n : BigInt(util.toPointer(data.hDC)), true);
+  // 0x28: u32
+  if (data?.Flags !== undefined) view.setUint32(40, Number(data.Flags), true);
+  // 0x2c: u32
+  if (data?.Flags2 !== undefined) view.setUint32(44, Number(data.Flags2), true);
+  // 0x30: u32
+  if (data?.ExclusionFlags !== undefined) view.setUint32(48, Number(data.ExclusionFlags), true);
+  // 0x34: u32
+  if (data?.nPageRanges !== undefined) view.setUint32(52, Number(data.nPageRanges), true);
+  // 0x38: u32
+  if (data?.nMaxPageRanges !== undefined) view.setUint32(56, Number(data.nMaxPageRanges), true);
+  // 0x3c: pad4
+  // 0x40: pointer
+  if (data?.lpPageRanges !== undefined) view.setBigUint64(64, data.lpPageRanges === null ? 0n : BigInt(util.toPointer(data.lpPageRanges)), true);
+  // 0x48: u32
+  if (data?.nMinPage !== undefined) view.setUint32(72, Number(data.nMinPage), true);
+  // 0x4c: u32
+  if (data?.nMaxPage !== undefined) view.setUint32(76, Number(data.nMaxPage), true);
+  // 0x50: u32
+  if (data?.nCopies !== undefined) view.setUint32(80, Number(data.nCopies), true);
+  // 0x54: pad4
+  // 0x58: pointer
+  if (data?.hInstance !== undefined) view.setBigUint64(88, data.hInstance === null ? 0n : BigInt(util.toPointer(data.hInstance)), true);
+  // 0x60: buffer
+  if (data?.lpPrintTemplateName !== undefined) {
+    (buf as any)._f96 = util.pwstrToFfi(data.lpPrintTemplateName);
+    view.setBigUint64(96, (buf as any)._f96 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f96)), true);
+  }
+  // 0x68: pointer
+  if (data?.lpCallback !== undefined) view.setBigUint64(104, data.lpCallback === null ? 0n : BigInt(util.toPointer(data.lpCallback)), true);
+  // 0x70: u32
+  if (data?.nPropertyPages !== undefined) view.setUint32(112, Number(data.nPropertyPages), true);
+  // 0x74: pad4
+  // 0x78: pointer
+  if (data?.lphPropertyPages !== undefined) view.setBigUint64(120, data.lphPropertyPages === null ? 0n : BigInt(util.toPointer(data.lphPropertyPages)), true);
+  // 0x80: u32
+  if (data?.nStartPage !== undefined) view.setUint32(128, Number(data.nStartPage), true);
+  // 0x84: u32
+  if (data?.dwResultAction !== undefined) view.setUint32(132, Number(data.dwResultAction), true);
+  return buf;
+}
+
+/**
+ * Windows.Win32.UI.Controls.Dialogs.DEVNAMES (size: 8)
+ */
+export interface DEVNAMES {
+  /** u16 */
+  wDriverOffset: number;
+  /** u16 */
+  wDeviceOffset: number;
+  /** u16 */
+  wOutputOffset: number;
+  /** u16 */
+  wDefault: number;
+}
+
+export const sizeofDEVNAMES = 8;
+
+export function allocDEVNAMES(data?: Partial<DEVNAMES>): Uint8Array {
+  const buf = new Uint8Array(sizeofDEVNAMES);
+  const view = new DataView(buf.buffer);
+  // 0x00: u16
+  if (data?.wDriverOffset !== undefined) view.setUint16(0, Number(data.wDriverOffset), true);
+  // 0x02: u16
+  if (data?.wDeviceOffset !== undefined) view.setUint16(2, Number(data.wDeviceOffset), true);
+  // 0x04: u16
+  if (data?.wOutputOffset !== undefined) view.setUint16(4, Number(data.wOutputOffset), true);
+  // 0x06: u16
+  if (data?.wDefault !== undefined) view.setUint16(6, Number(data.wDefault), true);
+  return buf;
+}
+
+/**
+ * Windows.Win32.Foundation.POINT (size: 8)
+ */
+export interface POINT {
+  /** i32 */
+  x: number;
+  /** i32 */
+  y: number;
+}
+
+export const sizeofPOINT = 8;
+
+export function allocPOINT(data?: Partial<POINT>): Uint8Array {
+  const buf = new Uint8Array(sizeofPOINT);
+  const view = new DataView(buf.buffer);
+  // 0x00: i32
+  if (data?.x !== undefined) view.setInt32(0, Number(data.x), true);
+  // 0x04: i32
+  if (data?.y !== undefined) view.setInt32(4, Number(data.y), true);
+  return buf;
+}
 
 /**
  * Windows.Win32.Foundation.RECT (size: 16)
@@ -5100,955 +7546,154 @@ export function allocRECT(data?: Partial<RECT>): Uint8Array {
 }
 
 /**
- * Windows.Win32.UI.Controls.RichEdit.FORMATRANGE (size: 40)
+ * Windows.Win32.UI.Controls.Dialogs.PAGESETUPDLGA (size: 112)
  */
-export interface FORMATRANGE {
-  /** Windows.Win32.Graphics.Gdi.HDC */
-  hdc: Uint8Array | Deno.PointerValue | null;
-  /** Windows.Win32.Graphics.Gdi.HDC */
-  hdcTarget: Uint8Array | Deno.PointerValue | null;
-  /** Windows.Win32.Foundation.RECT */
-  rc: Uint8Array | Deno.PointerValue | null;
-  /** Windows.Win32.Foundation.RECT */
-  rcPage: Uint8Array | Deno.PointerValue | null;
-  /** Windows.Win32.UI.Controls.RichEdit.CHARRANGE */
-  chrg: Uint8Array | Deno.PointerValue | null;
-}
-
-export const sizeofFORMATRANGE = 40;
-
-export function allocFORMATRANGE(data?: Partial<FORMATRANGE>): Uint8Array {
-  const buf = new Uint8Array(sizeofFORMATRANGE);
-  const view = new DataView(buf.buffer);
-  // 0x00: pointer
-  if (data?.hdc !== undefined) view.setBigUint64(0, data.hdc === null ? 0n : BigInt(util.toPointer(data.hdc)), true);
-  // 0x08: pointer
-  if (data?.hdcTarget !== undefined) view.setBigUint64(8, data.hdcTarget === null ? 0n : BigInt(util.toPointer(data.hdcTarget)), true);
-  // 0x10: pointer
-  if (data?.rc !== undefined) view.setBigUint64(16, data.rc === null ? 0n : BigInt(util.toPointer(data.rc)), true);
-  // 0x18: pointer
-  if (data?.rcPage !== undefined) view.setBigUint64(24, data.rcPage === null ? 0n : BigInt(util.toPointer(data.rcPage)), true);
-  // 0x20: pointer
-  if (data?.chrg !== undefined) view.setBigUint64(32, data.chrg === null ? 0n : BigInt(util.toPointer(data.chrg)), true);
-  return buf;
-}
-
-/**
- * Windows.Win32.UI.Controls.RichEdit.PARAFORMAT (size: 48)
- */
-export interface PARAFORMAT {
+export interface PAGESETUPDLGA {
   /** u32 */
-  cbSize: number;
-  /** Windows.Win32.UI.Controls.RichEdit.PARAFORMAT_MASK */
-  dwMask: PARAFORMAT_MASK;
-  /** u16 */
-  wNumbering: number;
-  /** _Anonymous_e__Union */
-  Anonymous: Uint8Array | Deno.PointerValue | null;
-  /** i32 */
-  dxStartIndent: number;
-  /** i32 */
-  dxRightIndent: number;
-  /** i32 */
-  dxOffset: number;
-  /** Windows.Win32.UI.Controls.RichEdit.PARAFORMAT_ALIGNMENT */
-  wAlignment: PARAFORMAT_ALIGNMENT;
-  /** i16 */
-  cTabCount: number;
-  /** array */
-  rgxTabs: Deno.PointerValue | null;
-}
-
-export const sizeofPARAFORMAT = 48;
-
-export function allocPARAFORMAT(data?: Partial<PARAFORMAT>): Uint8Array {
-  const buf = new Uint8Array(sizeofPARAFORMAT);
-  const view = new DataView(buf.buffer);
-  // 0x00: u32
-  if (data?.cbSize !== undefined) view.setUint32(0, Number(data.cbSize), true);
-  // 0x04: u32
-  if (data?.dwMask !== undefined) view.setUint32(4, Number(data.dwMask), true);
-  // 0x08: u16
-  if (data?.wNumbering !== undefined) view.setUint16(8, Number(data.wNumbering), true);
-  // 0x0a: pad6
-  // 0x10: pointer
-  if (data?.Anonymous !== undefined) view.setBigUint64(16, data.Anonymous === null ? 0n : BigInt(util.toPointer(data.Anonymous)), true);
-  // 0x18: i32
-  if (data?.dxStartIndent !== undefined) view.setInt32(24, Number(data.dxStartIndent), true);
-  // 0x1c: i32
-  if (data?.dxRightIndent !== undefined) view.setInt32(28, Number(data.dxRightIndent), true);
-  // 0x20: i32
-  if (data?.dxOffset !== undefined) view.setInt32(32, Number(data.dxOffset), true);
-  // 0x24: u16
-  if (data?.wAlignment !== undefined) view.setUint16(36, Number(data.wAlignment), true);
-  // 0x26: i16
-  if (data?.cTabCount !== undefined) view.setInt16(38, Number(data.cTabCount), true);
-  // 0x28: pointer
-  if (data?.rgxTabs !== undefined) view.setBigUint64(40, data.rgxTabs === null ? 0n : BigInt(util.toPointer(data.rgxTabs)), true);
-  return buf;
-}
-
-/**
- * Windows.Win32.UI.Controls.RichEdit.PARAFORMAT2 (size: 40)
- */
-export interface PARAFORMAT2 {
-  /** Windows.Win32.UI.Controls.RichEdit.PARAFORMAT */
-  __AnonymousBase_richedit_L1149_C22: Uint8Array | Deno.PointerValue | null;
-  /** i32 */
-  dySpaceBefore: number;
-  /** i32 */
-  dySpaceAfter: number;
-  /** i32 */
-  dyLineSpacing: number;
-  /** i16 */
-  sStyle: number;
-  /** u8 */
-  bLineSpacingRule: number;
-  /** u8 */
-  bOutlineLevel: number;
-  /** u16 */
-  wShadingWeight: number;
-  /** Windows.Win32.UI.Controls.RichEdit.PARAFORMAT_SHADING_STYLE */
-  wShadingStyle: PARAFORMAT_SHADING_STYLE;
-  /** u16 */
-  wNumberingStart: number;
-  /** Windows.Win32.UI.Controls.RichEdit.PARAFORMAT_NUMBERING_STYLE */
-  wNumberingStyle: PARAFORMAT_NUMBERING_STYLE;
-  /** u16 */
-  wNumberingTab: number;
-  /** u16 */
-  wBorderSpace: number;
-  /** u16 */
-  wBorderWidth: number;
-  /** Windows.Win32.UI.Controls.RichEdit.PARAFORMAT_BORDERS */
-  wBorders: PARAFORMAT_BORDERS;
-}
-
-export const sizeofPARAFORMAT2 = 40;
-
-export function allocPARAFORMAT2(data?: Partial<PARAFORMAT2>): Uint8Array {
-  const buf = new Uint8Array(sizeofPARAFORMAT2);
-  const view = new DataView(buf.buffer);
-  // 0x00: pointer
-  if (data?.__AnonymousBase_richedit_L1149_C22 !== undefined) view.setBigUint64(0, data.__AnonymousBase_richedit_L1149_C22 === null ? 0n : BigInt(util.toPointer(data.__AnonymousBase_richedit_L1149_C22)), true);
-  // 0x08: i32
-  if (data?.dySpaceBefore !== undefined) view.setInt32(8, Number(data.dySpaceBefore), true);
-  // 0x0c: i32
-  if (data?.dySpaceAfter !== undefined) view.setInt32(12, Number(data.dySpaceAfter), true);
-  // 0x10: i32
-  if (data?.dyLineSpacing !== undefined) view.setInt32(16, Number(data.dyLineSpacing), true);
-  // 0x14: i16
-  if (data?.sStyle !== undefined) view.setInt16(20, Number(data.sStyle), true);
-  // 0x16: u8
-  if (data?.bLineSpacingRule !== undefined) view.setUint8(22, Number(data.bLineSpacingRule));
-  // 0x17: u8
-  if (data?.bOutlineLevel !== undefined) view.setUint8(23, Number(data.bOutlineLevel));
-  // 0x18: u16
-  if (data?.wShadingWeight !== undefined) view.setUint16(24, Number(data.wShadingWeight), true);
-  // 0x1a: u16
-  if (data?.wShadingStyle !== undefined) view.setUint16(26, Number(data.wShadingStyle), true);
-  // 0x1c: u16
-  if (data?.wNumberingStart !== undefined) view.setUint16(28, Number(data.wNumberingStart), true);
-  // 0x1e: u16
-  if (data?.wNumberingStyle !== undefined) view.setUint16(30, Number(data.wNumberingStyle), true);
-  // 0x20: u16
-  if (data?.wNumberingTab !== undefined) view.setUint16(32, Number(data.wNumberingTab), true);
-  // 0x22: u16
-  if (data?.wBorderSpace !== undefined) view.setUint16(34, Number(data.wBorderSpace), true);
-  // 0x24: u16
-  if (data?.wBorderWidth !== undefined) view.setUint16(36, Number(data.wBorderWidth), true);
-  // 0x26: u16
-  if (data?.wBorders !== undefined) view.setUint16(38, Number(data.wBorders), true);
-  return buf;
-}
-
-export type WPARAM = Deno.PointerValue;
-
-export type LPARAM = Deno.PointerValue;
-
-/**
- * Windows.Win32.UI.Controls.RichEdit.MSGFILTER (size: 32)
- */
-export interface MSGFILTER {
-  /** Windows.Win32.UI.Controls.NMHDR */
-  nmhdr: Uint8Array | Deno.PointerValue | null;
-  /** u32 */
-  msg: number;
-  /** Windows.Win32.Foundation.WPARAM */
-  wParam: Uint8Array | Deno.PointerValue | null;
-  /** Windows.Win32.Foundation.LPARAM */
-  lParam: Uint8Array | Deno.PointerValue | null;
-}
-
-export const sizeofMSGFILTER = 32;
-
-export function allocMSGFILTER(data?: Partial<MSGFILTER>): Uint8Array {
-  const buf = new Uint8Array(sizeofMSGFILTER);
-  const view = new DataView(buf.buffer);
-  // 0x00: pointer
-  if (data?.nmhdr !== undefined) view.setBigUint64(0, data.nmhdr === null ? 0n : BigInt(util.toPointer(data.nmhdr)), true);
-  // 0x08: u32
-  if (data?.msg !== undefined) view.setUint32(8, Number(data.msg), true);
-  // 0x0c: pad4
-  // 0x10: pointer
-  if (data?.wParam !== undefined) view.setBigUint64(16, data.wParam === null ? 0n : BigInt(util.toPointer(data.wParam)), true);
-  // 0x18: pointer
-  if (data?.lParam !== undefined) view.setBigUint64(24, data.lParam === null ? 0n : BigInt(util.toPointer(data.lParam)), true);
-  return buf;
-}
-
-/**
- * Windows.Win32.UI.Controls.RichEdit.REQRESIZE (size: 16)
- */
-export interface REQRESIZE {
-  /** Windows.Win32.UI.Controls.NMHDR */
-  nmhdr: Uint8Array | Deno.PointerValue | null;
-  /** Windows.Win32.Foundation.RECT */
-  rc: Uint8Array | Deno.PointerValue | null;
-}
-
-export const sizeofREQRESIZE = 16;
-
-export function allocREQRESIZE(data?: Partial<REQRESIZE>): Uint8Array {
-  const buf = new Uint8Array(sizeofREQRESIZE);
-  const view = new DataView(buf.buffer);
-  // 0x00: pointer
-  if (data?.nmhdr !== undefined) view.setBigUint64(0, data.nmhdr === null ? 0n : BigInt(util.toPointer(data.nmhdr)), true);
-  // 0x08: pointer
-  if (data?.rc !== undefined) view.setBigUint64(8, data.rc === null ? 0n : BigInt(util.toPointer(data.rc)), true);
-  return buf;
-}
-
-/**
- * Windows.Win32.UI.Controls.RichEdit.SELCHANGE (size: 24)
- */
-export interface SELCHANGE {
-  /** Windows.Win32.UI.Controls.NMHDR */
-  nmhdr: Uint8Array | Deno.PointerValue | null;
-  /** Windows.Win32.UI.Controls.RichEdit.CHARRANGE */
-  chrg: Uint8Array | Deno.PointerValue | null;
-  /** Windows.Win32.UI.Controls.RichEdit.RICH_EDIT_GET_CONTEXT_MENU_SEL_TYPE */
-  seltyp: RICH_EDIT_GET_CONTEXT_MENU_SEL_TYPE;
-}
-
-export const sizeofSELCHANGE = 24;
-
-export function allocSELCHANGE(data?: Partial<SELCHANGE>): Uint8Array {
-  const buf = new Uint8Array(sizeofSELCHANGE);
-  const view = new DataView(buf.buffer);
-  // 0x00: pointer
-  if (data?.nmhdr !== undefined) view.setBigUint64(0, data.nmhdr === null ? 0n : BigInt(util.toPointer(data.nmhdr)), true);
-  // 0x08: pointer
-  if (data?.chrg !== undefined) view.setBigUint64(8, data.chrg === null ? 0n : BigInt(util.toPointer(data.chrg)), true);
-  // 0x10: u16
-  if (data?.seltyp !== undefined) view.setUint16(16, Number(data.seltyp), true);
-  // 0x12: pad6
-  return buf;
-}
-
-export type BOOL = number;
-
-/**
- * Windows.Win32.UI.Controls.RichEdit._grouptypingchange (size: 16)
- */
-export interface _grouptypingchange {
-  /** Windows.Win32.UI.Controls.NMHDR */
-  nmhdr: Uint8Array | Deno.PointerValue | null;
-  /** Windows.Win32.Foundation.BOOL */
-  fGroupTyping: boolean;
-}
-
-export const sizeof_grouptypingchange = 16;
-
-export function alloc_grouptypingchange(data?: Partial<_grouptypingchange>): Uint8Array {
-  const buf = new Uint8Array(sizeof_grouptypingchange);
-  const view = new DataView(buf.buffer);
-  // 0x00: pointer
-  if (data?.nmhdr !== undefined) view.setBigUint64(0, data.nmhdr === null ? 0n : BigInt(util.toPointer(data.nmhdr)), true);
-  // 0x08: i32
-  if (data?.fGroupTyping !== undefined) view.setInt32(8, Number(data.fGroupTyping), true);
-  // 0x0c: pad4
-  return buf;
-}
-
-/**
- * Windows.Win32.UI.Controls.RichEdit.CLIPBOARDFORMAT (size: 16)
- */
-export interface CLIPBOARDFORMAT {
-  /** Windows.Win32.UI.Controls.NMHDR */
-  nmhdr: Uint8Array | Deno.PointerValue | null;
-  /** u16 */
-  cf: number;
-}
-
-export const sizeofCLIPBOARDFORMAT = 16;
-
-export function allocCLIPBOARDFORMAT(data?: Partial<CLIPBOARDFORMAT>): Uint8Array {
-  const buf = new Uint8Array(sizeofCLIPBOARDFORMAT);
-  const view = new DataView(buf.buffer);
-  // 0x00: pointer
-  if (data?.nmhdr !== undefined) view.setBigUint64(0, data.nmhdr === null ? 0n : BigInt(util.toPointer(data.nmhdr)), true);
-  // 0x08: u16
-  if (data?.cf !== undefined) view.setUint16(8, Number(data.cf), true);
-  // 0x0a: pad6
-  return buf;
-}
-
-/**
- * Windows.Win32.Foundation.POINT (size: 8)
- */
-export interface POINT {
-  /** i32 */
-  x: number;
-  /** i32 */
-  y: number;
-}
-
-export const sizeofPOINT = 8;
-
-export function allocPOINT(data?: Partial<POINT>): Uint8Array {
-  const buf = new Uint8Array(sizeofPOINT);
-  const view = new DataView(buf.buffer);
-  // 0x00: i32
-  if (data?.x !== undefined) view.setInt32(0, Number(data.x), true);
-  // 0x04: i32
-  if (data?.y !== undefined) view.setInt32(4, Number(data.y), true);
-  return buf;
-}
-
-/**
- * Windows.Win32.UI.Controls.RichEdit.GETCONTEXTMENUEX (size: 32)
- */
-export interface GETCONTEXTMENUEX {
-  /** Windows.Win32.UI.Controls.RichEdit.CHARRANGE */
-  chrg: Uint8Array | Deno.PointerValue | null;
-  /** u32 */
-  dwFlags: number;
-  /** Windows.Win32.Foundation.POINT */
-  pt: Uint8Array | Deno.PointerValue | null;
-  /** ptr */
-  pvReserved: Deno.PointerValue | Uint8Array | null;
-}
-
-export const sizeofGETCONTEXTMENUEX = 32;
-
-export function allocGETCONTEXTMENUEX(data?: Partial<GETCONTEXTMENUEX>): Uint8Array {
-  const buf = new Uint8Array(sizeofGETCONTEXTMENUEX);
-  const view = new DataView(buf.buffer);
-  // 0x00: pointer
-  if (data?.chrg !== undefined) view.setBigUint64(0, data.chrg === null ? 0n : BigInt(util.toPointer(data.chrg)), true);
-  // 0x08: u32
-  if (data?.dwFlags !== undefined) view.setUint32(8, Number(data.dwFlags), true);
-  // 0x0c: pad4
-  // 0x10: pointer
-  if (data?.pt !== undefined) view.setBigUint64(16, data.pt === null ? 0n : BigInt(util.toPointer(data.pt)), true);
-  // 0x18: pointer
-  if (data?.pvReserved !== undefined) view.setBigUint64(24, data.pvReserved === null ? 0n : BigInt(util.toPointer(data.pvReserved)), true);
-  return buf;
-}
-
-export type HANDLE = Deno.PointerValue;
-
-/**
- * Windows.Win32.UI.Controls.RichEdit.ENDROPFILES (size: 24)
- */
-export interface ENDROPFILES {
-  /** Windows.Win32.UI.Controls.NMHDR */
-  nmhdr: Uint8Array | Deno.PointerValue | null;
-  /** Windows.Win32.Foundation.HANDLE */
-  hDrop: Uint8Array | Deno.PointerValue | null;
-  /** i32 */
-  cp: number;
-  /** Windows.Win32.Foundation.BOOL */
-  fProtected: boolean;
-}
-
-export const sizeofENDROPFILES = 24;
-
-export function allocENDROPFILES(data?: Partial<ENDROPFILES>): Uint8Array {
-  const buf = new Uint8Array(sizeofENDROPFILES);
-  const view = new DataView(buf.buffer);
-  // 0x00: pointer
-  if (data?.nmhdr !== undefined) view.setBigUint64(0, data.nmhdr === null ? 0n : BigInt(util.toPointer(data.nmhdr)), true);
-  // 0x08: pointer
-  if (data?.hDrop !== undefined) view.setBigUint64(8, data.hDrop === null ? 0n : BigInt(util.toPointer(data.hDrop)), true);
-  // 0x10: i32
-  if (data?.cp !== undefined) view.setInt32(16, Number(data.cp), true);
-  // 0x14: i32
-  if (data?.fProtected !== undefined) view.setInt32(20, Number(data.fProtected), true);
-  return buf;
-}
-
-/**
- * Windows.Win32.UI.Controls.RichEdit.ENPROTECTED (size: 40)
- */
-export interface ENPROTECTED {
-  /** Windows.Win32.UI.Controls.NMHDR */
-  nmhdr: Uint8Array | Deno.PointerValue | null;
-  /** u32 */
-  msg: number;
-  /** Windows.Win32.Foundation.WPARAM */
-  wParam: Uint8Array | Deno.PointerValue | null;
-  /** Windows.Win32.Foundation.LPARAM */
-  lParam: Uint8Array | Deno.PointerValue | null;
-  /** Windows.Win32.UI.Controls.RichEdit.CHARRANGE */
-  chrg: Uint8Array | Deno.PointerValue | null;
-}
-
-export const sizeofENPROTECTED = 40;
-
-export function allocENPROTECTED(data?: Partial<ENPROTECTED>): Uint8Array {
-  const buf = new Uint8Array(sizeofENPROTECTED);
-  const view = new DataView(buf.buffer);
-  // 0x00: pointer
-  if (data?.nmhdr !== undefined) view.setBigUint64(0, data.nmhdr === null ? 0n : BigInt(util.toPointer(data.nmhdr)), true);
-  // 0x08: u32
-  if (data?.msg !== undefined) view.setUint32(8, Number(data.msg), true);
-  // 0x0c: pad4
-  // 0x10: pointer
-  if (data?.wParam !== undefined) view.setBigUint64(16, data.wParam === null ? 0n : BigInt(util.toPointer(data.wParam)), true);
-  // 0x18: pointer
-  if (data?.lParam !== undefined) view.setBigUint64(24, data.lParam === null ? 0n : BigInt(util.toPointer(data.lParam)), true);
-  // 0x20: pointer
-  if (data?.chrg !== undefined) view.setBigUint64(32, data.chrg === null ? 0n : BigInt(util.toPointer(data.chrg)), true);
-  return buf;
-}
-
-/**
- * Windows.Win32.UI.Controls.RichEdit.ENSAVECLIPBOARD (size: 16)
- */
-export interface ENSAVECLIPBOARD {
-  /** Windows.Win32.UI.Controls.NMHDR */
-  nmhdr: Uint8Array | Deno.PointerValue | null;
-  /** i32 */
-  cObjectCount: number;
-  /** i32 */
-  cch: number;
-}
-
-export const sizeofENSAVECLIPBOARD = 16;
-
-export function allocENSAVECLIPBOARD(data?: Partial<ENSAVECLIPBOARD>): Uint8Array {
-  const buf = new Uint8Array(sizeofENSAVECLIPBOARD);
-  const view = new DataView(buf.buffer);
-  // 0x00: pointer
-  if (data?.nmhdr !== undefined) view.setBigUint64(0, data.nmhdr === null ? 0n : BigInt(util.toPointer(data.nmhdr)), true);
-  // 0x08: i32
-  if (data?.cObjectCount !== undefined) view.setInt32(8, Number(data.cObjectCount), true);
-  // 0x0c: i32
-  if (data?.cch !== undefined) view.setInt32(12, Number(data.cch), true);
-  return buf;
-}
-
-export type HRESULT = number;
-
-/**
- * Windows.Win32.UI.Controls.RichEdit.ENOLEOPFAILED (size: 24)
- */
-export interface ENOLEOPFAILED {
-  /** Windows.Win32.UI.Controls.NMHDR */
-  nmhdr: Uint8Array | Deno.PointerValue | null;
-  /** i32 */
-  iob: number;
-  /** i32 */
-  lOper: number;
-  /** Windows.Win32.Foundation.HRESULT */
-  hr: Uint8Array | Deno.PointerValue | null;
-}
-
-export const sizeofENOLEOPFAILED = 24;
-
-export function allocENOLEOPFAILED(data?: Partial<ENOLEOPFAILED>): Uint8Array {
-  const buf = new Uint8Array(sizeofENOLEOPFAILED);
-  const view = new DataView(buf.buffer);
-  // 0x00: pointer
-  if (data?.nmhdr !== undefined) view.setBigUint64(0, data.nmhdr === null ? 0n : BigInt(util.toPointer(data.nmhdr)), true);
-  // 0x08: i32
-  if (data?.iob !== undefined) view.setInt32(8, Number(data.iob), true);
-  // 0x0c: i32
-  if (data?.lOper !== undefined) view.setInt32(12, Number(data.lOper), true);
-  // 0x10: pointer
-  if (data?.hr !== undefined) view.setBigUint64(16, data.hr === null ? 0n : BigInt(util.toPointer(data.hr)), true);
-  return buf;
-}
-
-/**
- * Windows.Win32.UI.Controls.RichEdit.OBJECTPOSITIONS (size: 24)
- */
-export interface OBJECTPOSITIONS {
-  /** Windows.Win32.UI.Controls.NMHDR */
-  nmhdr: Uint8Array | Deno.PointerValue | null;
-  /** i32 */
-  cObjectCount: number;
-  /** ptr */
-  pcpPositions: Deno.PointerValue | Uint8Array | null;
-}
-
-export const sizeofOBJECTPOSITIONS = 24;
-
-export function allocOBJECTPOSITIONS(data?: Partial<OBJECTPOSITIONS>): Uint8Array {
-  const buf = new Uint8Array(sizeofOBJECTPOSITIONS);
-  const view = new DataView(buf.buffer);
-  // 0x00: pointer
-  if (data?.nmhdr !== undefined) view.setBigUint64(0, data.nmhdr === null ? 0n : BigInt(util.toPointer(data.nmhdr)), true);
-  // 0x08: i32
-  if (data?.cObjectCount !== undefined) view.setInt32(8, Number(data.cObjectCount), true);
-  // 0x0c: pad4
-  // 0x10: pointer
-  if (data?.pcpPositions !== undefined) view.setBigUint64(16, data.pcpPositions === null ? 0n : BigInt(util.toPointer(data.pcpPositions)), true);
-  return buf;
-}
-
-/**
- * Windows.Win32.UI.Controls.RichEdit.ENLINK (size: 40)
- */
-export interface ENLINK {
-  /** Windows.Win32.UI.Controls.NMHDR */
-  nmhdr: Uint8Array | Deno.PointerValue | null;
-  /** u32 */
-  msg: number;
-  /** Windows.Win32.Foundation.WPARAM */
-  wParam: Uint8Array | Deno.PointerValue | null;
-  /** Windows.Win32.Foundation.LPARAM */
-  lParam: Uint8Array | Deno.PointerValue | null;
-  /** Windows.Win32.UI.Controls.RichEdit.CHARRANGE */
-  chrg: Uint8Array | Deno.PointerValue | null;
-}
-
-export const sizeofENLINK = 40;
-
-export function allocENLINK(data?: Partial<ENLINK>): Uint8Array {
-  const buf = new Uint8Array(sizeofENLINK);
-  const view = new DataView(buf.buffer);
-  // 0x00: pointer
-  if (data?.nmhdr !== undefined) view.setBigUint64(0, data.nmhdr === null ? 0n : BigInt(util.toPointer(data.nmhdr)), true);
-  // 0x08: u32
-  if (data?.msg !== undefined) view.setUint32(8, Number(data.msg), true);
-  // 0x0c: pad4
-  // 0x10: pointer
-  if (data?.wParam !== undefined) view.setBigUint64(16, data.wParam === null ? 0n : BigInt(util.toPointer(data.wParam)), true);
-  // 0x18: pointer
-  if (data?.lParam !== undefined) view.setBigUint64(24, data.lParam === null ? 0n : BigInt(util.toPointer(data.lParam)), true);
-  // 0x20: pointer
-  if (data?.chrg !== undefined) view.setBigUint64(32, data.chrg === null ? 0n : BigInt(util.toPointer(data.chrg)), true);
-  return buf;
-}
-
-/**
- * Windows.Win32.UI.Controls.RichEdit.ENLOWFIRTF (size: 16)
- */
-export interface ENLOWFIRTF {
-  /** Windows.Win32.UI.Controls.NMHDR */
-  nmhdr: Uint8Array | Deno.PointerValue | null;
-  /** Windows.Win32.Foundation.PSTR */
-  szControl: string | null;
-}
-
-export const sizeofENLOWFIRTF = 16;
-
-export function allocENLOWFIRTF(data?: Partial<ENLOWFIRTF>): Uint8Array {
-  const buf = new Uint8Array(sizeofENLOWFIRTF);
-  const view = new DataView(buf.buffer);
-  // 0x00: pointer
-  if (data?.nmhdr !== undefined) view.setBigUint64(0, data.nmhdr === null ? 0n : BigInt(util.toPointer(data.nmhdr)), true);
-  // 0x08: buffer
-  if (data?.szControl !== undefined) {
-    (buf as any)._f8 = util.pstrToFfi(data.szControl);
-    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f8)), true);
-  }
-  return buf;
-}
-
-/**
- * Windows.Win32.UI.Controls.RichEdit.ENCORRECTTEXT (size: 24)
- */
-export interface ENCORRECTTEXT {
-  /** Windows.Win32.UI.Controls.NMHDR */
-  nmhdr: Uint8Array | Deno.PointerValue | null;
-  /** Windows.Win32.UI.Controls.RichEdit.CHARRANGE */
-  chrg: Uint8Array | Deno.PointerValue | null;
-  /** Windows.Win32.UI.Controls.RichEdit.RICH_EDIT_GET_CONTEXT_MENU_SEL_TYPE */
-  seltyp: RICH_EDIT_GET_CONTEXT_MENU_SEL_TYPE;
-}
-
-export const sizeofENCORRECTTEXT = 24;
-
-export function allocENCORRECTTEXT(data?: Partial<ENCORRECTTEXT>): Uint8Array {
-  const buf = new Uint8Array(sizeofENCORRECTTEXT);
-  const view = new DataView(buf.buffer);
-  // 0x00: pointer
-  if (data?.nmhdr !== undefined) view.setBigUint64(0, data.nmhdr === null ? 0n : BigInt(util.toPointer(data.nmhdr)), true);
-  // 0x08: pointer
-  if (data?.chrg !== undefined) view.setBigUint64(8, data.chrg === null ? 0n : BigInt(util.toPointer(data.chrg)), true);
-  // 0x10: u16
-  if (data?.seltyp !== undefined) view.setUint16(16, Number(data.seltyp), true);
-  // 0x12: pad6
-  return buf;
-}
-
-/**
- * Windows.Win32.UI.Controls.RichEdit.PUNCTUATION (size: 16)
- */
-export interface PUNCTUATION {
-  /** u32 */
-  iSize: number;
-  /** Windows.Win32.Foundation.PSTR */
-  szPunctuation: string | null;
-}
-
-export const sizeofPUNCTUATION = 16;
-
-export function allocPUNCTUATION(data?: Partial<PUNCTUATION>): Uint8Array {
-  const buf = new Uint8Array(sizeofPUNCTUATION);
-  const view = new DataView(buf.buffer);
-  // 0x00: u32
-  if (data?.iSize !== undefined) view.setUint32(0, Number(data.iSize), true);
-  // 0x04: pad4
-  // 0x08: buffer
-  if (data?.szPunctuation !== undefined) {
-    (buf as any)._f8 = util.pstrToFfi(data.szPunctuation);
-    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f8)), true);
-  }
-  return buf;
-}
-
-/**
- * Windows.Win32.UI.Controls.RichEdit.COMPCOLOR (size: 16)
- */
-export interface COMPCOLOR {
-  /** u32 */
-  crText: number;
-  /** u32 */
-  crBackground: number;
-  /** u32 */
-  dwEffects: number;
-}
-
-export const sizeofCOMPCOLOR = 16;
-
-export function allocCOMPCOLOR(data?: Partial<COMPCOLOR>): Uint8Array {
-  const buf = new Uint8Array(sizeofCOMPCOLOR);
-  const view = new DataView(buf.buffer);
-  // 0x00: u32
-  if (data?.crText !== undefined) view.setUint32(0, Number(data.crText), true);
-  // 0x04: u32
-  if (data?.crBackground !== undefined) view.setUint32(4, Number(data.crBackground), true);
-  // 0x08: u32
-  if (data?.dwEffects !== undefined) view.setUint32(8, Number(data.dwEffects), true);
-  // 0x0c: pad4
-  return buf;
-}
-
-/**
- * Windows.Win32.UI.Controls.RichEdit.REPASTESPECIAL (size: 16)
- */
-export interface REPASTESPECIAL {
-  /** Windows.Win32.System.Com.DVASPECT */
-  dwAspect: DVASPECT;
-  /** usize */
-  dwParam: Deno.PointerValue;
-}
-
-export const sizeofREPASTESPECIAL = 16;
-
-export function allocREPASTESPECIAL(data?: Partial<REPASTESPECIAL>): Uint8Array {
-  const buf = new Uint8Array(sizeofREPASTESPECIAL);
-  const view = new DataView(buf.buffer);
-  // 0x00: i32
-  if (data?.dwAspect !== undefined) view.setInt32(0, Number(data.dwAspect), true);
-  // 0x04: pad4
-  // 0x08: usize
-  if (data?.dwParam !== undefined) view.setBigUint64(8, BigInt(data.dwParam), true);
-  return buf;
-}
-
-/**
- * Windows.Win32.UI.Controls.RichEdit.SETTEXTEX (size: 8)
- */
-export interface SETTEXTEX {
-  /** u32 */
-  flags: number;
-  /** u32 */
-  codepage: number;
-}
-
-export const sizeofSETTEXTEX = 8;
-
-export function allocSETTEXTEX(data?: Partial<SETTEXTEX>): Uint8Array {
-  const buf = new Uint8Array(sizeofSETTEXTEX);
-  const view = new DataView(buf.buffer);
-  // 0x00: u32
-  if (data?.flags !== undefined) view.setUint32(0, Number(data.flags), true);
-  // 0x04: u32
-  if (data?.codepage !== undefined) view.setUint32(4, Number(data.codepage), true);
-  return buf;
-}
-
-/**
- * Windows.Win32.UI.Controls.RichEdit.GETTEXTEX (size: 32)
- */
-export interface GETTEXTEX {
-  /** u32 */
-  cb: number;
-  /** Windows.Win32.UI.Controls.RichEdit.GETTEXTEX_FLAGS */
-  flags: GETTEXTEX_FLAGS;
-  /** u32 */
-  codepage: number;
-  /** Windows.Win32.Foundation.PSTR */
-  lpDefaultChar: string | null;
-  /** ptr */
-  lpUsedDefChar: Deno.PointerValue | Uint8Array | null;
-}
-
-export const sizeofGETTEXTEX = 32;
-
-export function allocGETTEXTEX(data?: Partial<GETTEXTEX>): Uint8Array {
-  const buf = new Uint8Array(sizeofGETTEXTEX);
-  const view = new DataView(buf.buffer);
-  // 0x00: u32
-  if (data?.cb !== undefined) view.setUint32(0, Number(data.cb), true);
-  // 0x04: u32
-  if (data?.flags !== undefined) view.setUint32(4, Number(data.flags), true);
-  // 0x08: u32
-  if (data?.codepage !== undefined) view.setUint32(8, Number(data.codepage), true);
-  // 0x0c: pad4
-  // 0x10: buffer
-  if (data?.lpDefaultChar !== undefined) {
-    (buf as any)._f16 = util.pstrToFfi(data.lpDefaultChar);
-    view.setBigUint64(16, (buf as any)._f16 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f16)), true);
-  }
-  // 0x18: pointer
-  if (data?.lpUsedDefChar !== undefined) view.setBigUint64(24, data.lpUsedDefChar === null ? 0n : BigInt(util.toPointer(data.lpUsedDefChar)), true);
-  return buf;
-}
-
-/**
- * Windows.Win32.UI.Controls.RichEdit.GETTEXTLENGTHEX (size: 8)
- */
-export interface GETTEXTLENGTHEX {
-  /** Windows.Win32.UI.Controls.RichEdit.GETTEXTLENGTHEX_FLAGS */
-  flags: GETTEXTLENGTHEX_FLAGS;
-  /** u32 */
-  codepage: number;
-}
-
-export const sizeofGETTEXTLENGTHEX = 8;
-
-export function allocGETTEXTLENGTHEX(data?: Partial<GETTEXTLENGTHEX>): Uint8Array {
-  const buf = new Uint8Array(sizeofGETTEXTLENGTHEX);
-  const view = new DataView(buf.buffer);
-  // 0x00: u32
-  if (data?.flags !== undefined) view.setUint32(0, Number(data.flags), true);
-  // 0x04: u32
-  if (data?.codepage !== undefined) view.setUint32(4, Number(data.codepage), true);
-  return buf;
-}
-
-/**
- * Windows.Win32.UI.Controls.RichEdit.BIDIOPTIONS (size: 8)
- */
-export interface BIDIOPTIONS {
-  /** u32 */
-  cbSize: number;
-  /** u16 */
-  wMask: number;
-  /** u16 */
-  wEffects: number;
-}
-
-export const sizeofBIDIOPTIONS = 8;
-
-export function allocBIDIOPTIONS(data?: Partial<BIDIOPTIONS>): Uint8Array {
-  const buf = new Uint8Array(sizeofBIDIOPTIONS);
-  const view = new DataView(buf.buffer);
-  // 0x00: u32
-  if (data?.cbSize !== undefined) view.setUint32(0, Number(data.cbSize), true);
-  // 0x04: u16
-  if (data?.wMask !== undefined) view.setUint16(4, Number(data.wMask), true);
-  // 0x06: u16
-  if (data?.wEffects !== undefined) view.setUint16(6, Number(data.wEffects), true);
-  return buf;
-}
-
-/**
- * Windows.Win32.UI.Controls.RichEdit.hyphresult (size: 16)
- */
-export interface hyphresult {
-  /** Windows.Win32.UI.Controls.RichEdit.KHYPH */
-  khyph: KHYPH;
-  /** i32 */
-  ichHyph: number;
-  /** char */
-  chHyph: Uint8Array | Deno.PointerValue | null;
-}
-
-export const sizeofHyphresult = 16;
-
-export function allocHyphresult(data?: Partial<hyphresult>): Uint8Array {
-  const buf = new Uint8Array(sizeofHyphresult);
-  const view = new DataView(buf.buffer);
-  // 0x00: i32
-  if (data?.khyph !== undefined) view.setInt32(0, Number(data.khyph), true);
-  // 0x04: i32
-  if (data?.ichHyph !== undefined) view.setInt32(4, Number(data.ichHyph), true);
-  // 0x08: pointer
-  if (data?.chHyph !== undefined) view.setBigUint64(8, data.chHyph === null ? 0n : BigInt(util.toPointer(data.chHyph)), true);
-  return buf;
-}
-
-/**
- * Windows.Win32.UI.Controls.RichEdit.HYPHENATEINFO (size: 16)
- */
-export interface HYPHENATEINFO {
-  /** i16 */
-  cbSize: number;
-  /** i16 */
-  dxHyphenateZone: number;
+  lStructSize: number;
+  /** Windows.Win32.Foundation.HWND */
+  hwndOwner: Deno.PointerValue | null;
   /** isize */
-  pfnHyphenate: Deno.PointerValue;
+  hDevMode: Deno.PointerValue;
+  /** isize */
+  hDevNames: Deno.PointerValue;
+  /** Windows.Win32.UI.Controls.Dialogs.PAGESETUPDLG_FLAGS */
+  Flags: PAGESETUPDLG_FLAGS;
+  /** Windows.Win32.Foundation.POINT */
+  ptPaperSize: Uint8Array | Deno.PointerValue | null;
+  /** Windows.Win32.Foundation.RECT */
+  rtMinMargin: Uint8Array | Deno.PointerValue | null;
+  /** Windows.Win32.Foundation.RECT */
+  rtMargin: Uint8Array | Deno.PointerValue | null;
+  /** Windows.Win32.Foundation.HINSTANCE */
+  hInstance: Uint8Array | Deno.PointerValue | null;
+  /** Windows.Win32.Foundation.LPARAM */
+  lCustData: Uint8Array | Deno.PointerValue | null;
+  /** Windows.Win32.UI.Controls.Dialogs.LPPAGESETUPHOOK */
+  lpfnPageSetupHook: Uint8Array | Deno.PointerValue | null;
+  /** Windows.Win32.UI.Controls.Dialogs.LPPAGEPAINTHOOK */
+  lpfnPagePaintHook: Uint8Array | Deno.PointerValue | null;
+  /** Windows.Win32.Foundation.PSTR */
+  lpPageSetupTemplateName: string | null;
+  /** isize */
+  hPageSetupTemplate: Deno.PointerValue;
 }
 
-export const sizeofHYPHENATEINFO = 16;
+export const sizeofPAGESETUPDLGA = 112;
 
-export function allocHYPHENATEINFO(data?: Partial<HYPHENATEINFO>): Uint8Array {
-  const buf = new Uint8Array(sizeofHYPHENATEINFO);
-  const view = new DataView(buf.buffer);
-  // 0x00: i16
-  if (data?.cbSize !== undefined) view.setInt16(0, Number(data.cbSize), true);
-  // 0x02: i16
-  if (data?.dxHyphenateZone !== undefined) view.setInt16(2, Number(data.dxHyphenateZone), true);
-  // 0x04: pad4
-  // 0x08: isize
-  if (data?.pfnHyphenate !== undefined) view.setBigInt64(8, BigInt(data.pfnHyphenate), true);
-  return buf;
-}
-
-/**
- * Windows.Win32.UI.Controls.RichEdit.CHANGENOTIFY (size: 16)
- */
-export interface CHANGENOTIFY {
-  /** Windows.Win32.UI.Controls.RichEdit.CHANGETYPE */
-  dwChangeType: CHANGETYPE;
-  /** ptr */
-  pvCookieData: Deno.PointerValue | Uint8Array | null;
-}
-
-export const sizeofCHANGENOTIFY = 16;
-
-export function allocCHANGENOTIFY(data?: Partial<CHANGENOTIFY>): Uint8Array {
-  const buf = new Uint8Array(sizeofCHANGENOTIFY);
-  const view = new DataView(buf.buffer);
-  // 0x00: i32
-  if (data?.dwChangeType !== undefined) view.setInt32(0, Number(data.dwChangeType), true);
-  // 0x04: pad4
-  // 0x08: pointer
-  if (data?.pvCookieData !== undefined) view.setBigUint64(8, data.pvCookieData === null ? 0n : BigInt(util.toPointer(data.pvCookieData)), true);
-  return buf;
-}
-
-export type HBITMAP = Deno.PointerValue;
-
-/**
- * Windows.Win32.UI.Controls.RichEdit.CARET_INFO (size: 16)
- */
-export interface CARET_INFO {
-  /** Windows.Win32.Graphics.Gdi.HBITMAP */
-  hbitmap: Uint8Array | Deno.PointerValue | null;
-  /** Windows.Win32.UI.Controls.RichEdit.CARET_FLAGS */
-  caretFlags: CARET_FLAGS;
-}
-
-export const sizeofCARET_INFO = 16;
-
-export function allocCARET_INFO(data?: Partial<CARET_INFO>): Uint8Array {
-  const buf = new Uint8Array(sizeofCARET_INFO);
-  const view = new DataView(buf.buffer);
-  // 0x00: pointer
-  if (data?.hbitmap !== undefined) view.setBigUint64(0, data.hbitmap === null ? 0n : BigInt(util.toPointer(data.hbitmap)), true);
-  // 0x08: i32
-  if (data?.caretFlags !== undefined) view.setInt32(8, Number(data.caretFlags), true);
-  // 0x0c: pad4
-  return buf;
-}
-
-/**
- * Windows.Win32.Foundation.SIZE (size: 8)
- */
-export interface SIZE {
-  /** i32 */
-  cx: number;
-  /** i32 */
-  cy: number;
-}
-
-export const sizeofSIZE = 8;
-
-export function allocSIZE(data?: Partial<SIZE>): Uint8Array {
-  const buf = new Uint8Array(sizeofSIZE);
-  const view = new DataView(buf.buffer);
-  // 0x00: i32
-  if (data?.cx !== undefined) view.setInt32(0, Number(data.cx), true);
-  // 0x04: i32
-  if (data?.cy !== undefined) view.setInt32(4, Number(data.cy), true);
-  return buf;
-}
-
-/**
- * Windows.Win32.UI.Controls.RichEdit.REOBJECT (size: 64)
- */
-export interface REOBJECT {
-  /** u32 */
-  cbStruct: number;
-  /** i32 */
-  cp: number;
-  /** System.Guid */
-  clsid: Uint8Array | Deno.PointerValue | null;
-  /** Windows.Win32.System.Ole.IOleObject */
-  poleobj: Uint8Array | Deno.PointerValue | null;
-  /** Windows.Win32.System.Com.StructuredStorage.IStorage */
-  pstg: Uint8Array | Deno.PointerValue | null;
-  /** Windows.Win32.System.Ole.IOleClientSite */
-  polesite: Uint8Array | Deno.PointerValue | null;
-  /** Windows.Win32.Foundation.SIZE */
-  sizel: Uint8Array | Deno.PointerValue | null;
-  /** u32 */
-  dvaspect: number;
-  /** Windows.Win32.UI.Controls.RichEdit.REOBJECT_FLAGS */
-  dwFlags: REOBJECT_FLAGS;
-  /** u32 */
-  dwUser: number;
-}
-
-export const sizeofREOBJECT = 64;
-
-export function allocREOBJECT(data?: Partial<REOBJECT>): Uint8Array {
-  const buf = new Uint8Array(sizeofREOBJECT);
+export function allocPAGESETUPDLGA(data?: Partial<PAGESETUPDLGA>): Uint8Array {
+  const buf = new Uint8Array(sizeofPAGESETUPDLGA);
   const view = new DataView(buf.buffer);
   // 0x00: u32
-  if (data?.cbStruct !== undefined) view.setUint32(0, Number(data.cbStruct), true);
-  // 0x04: i32
-  if (data?.cp !== undefined) view.setInt32(4, Number(data.cp), true);
+  if (data?.lStructSize !== undefined) view.setUint32(0, Number(data.lStructSize), true);
+  // 0x04: pad4
   // 0x08: pointer
-  if (data?.clsid !== undefined) view.setBigUint64(8, data.clsid === null ? 0n : BigInt(util.toPointer(data.clsid)), true);
-  // 0x10: pointer
-  if (data?.poleobj !== undefined) view.setBigUint64(16, data.poleobj === null ? 0n : BigInt(util.toPointer(data.poleobj)), true);
-  // 0x18: pointer
-  if (data?.pstg !== undefined) view.setBigUint64(24, data.pstg === null ? 0n : BigInt(util.toPointer(data.pstg)), true);
-  // 0x20: pointer
-  if (data?.polesite !== undefined) view.setBigUint64(32, data.polesite === null ? 0n : BigInt(util.toPointer(data.polesite)), true);
+  if (data?.hwndOwner !== undefined) view.setBigUint64(8, data.hwndOwner === null ? 0n : BigInt(util.toPointer(data.hwndOwner)), true);
+  // 0x10: isize
+  if (data?.hDevMode !== undefined) view.setBigInt64(16, BigInt(data.hDevMode), true);
+  // 0x18: isize
+  if (data?.hDevNames !== undefined) view.setBigInt64(24, BigInt(data.hDevNames), true);
+  // 0x20: u32
+  if (data?.Flags !== undefined) view.setUint32(32, Number(data.Flags), true);
+  // 0x24: pad4
   // 0x28: pointer
-  if (data?.sizel !== undefined) view.setBigUint64(40, data.sizel === null ? 0n : BigInt(util.toPointer(data.sizel)), true);
-  // 0x30: u32
-  if (data?.dvaspect !== undefined) view.setUint32(48, Number(data.dvaspect), true);
-  // 0x34: u32
-  if (data?.dwFlags !== undefined) view.setUint32(52, Number(data.dwFlags), true);
-  // 0x38: u32
-  if (data?.dwUser !== undefined) view.setUint32(56, Number(data.dwUser), true);
-  // 0x3c: pad4
+  if (data?.ptPaperSize !== undefined) view.setBigUint64(40, data.ptPaperSize === null ? 0n : BigInt(util.toPointer(data.ptPaperSize)), true);
+  // 0x30: pointer
+  if (data?.rtMinMargin !== undefined) view.setBigUint64(48, data.rtMinMargin === null ? 0n : BigInt(util.toPointer(data.rtMinMargin)), true);
+  // 0x38: pointer
+  if (data?.rtMargin !== undefined) view.setBigUint64(56, data.rtMargin === null ? 0n : BigInt(util.toPointer(data.rtMargin)), true);
+  // 0x40: pointer
+  if (data?.hInstance !== undefined) view.setBigUint64(64, data.hInstance === null ? 0n : BigInt(util.toPointer(data.hInstance)), true);
+  // 0x48: pointer
+  if (data?.lCustData !== undefined) view.setBigUint64(72, data.lCustData === null ? 0n : BigInt(util.toPointer(data.lCustData)), true);
+  // 0x50: pointer
+  if (data?.lpfnPageSetupHook !== undefined) view.setBigUint64(80, data.lpfnPageSetupHook === null ? 0n : BigInt(util.toPointer(data.lpfnPageSetupHook)), true);
+  // 0x58: pointer
+  if (data?.lpfnPagePaintHook !== undefined) view.setBigUint64(88, data.lpfnPagePaintHook === null ? 0n : BigInt(util.toPointer(data.lpfnPagePaintHook)), true);
+  // 0x60: buffer
+  if (data?.lpPageSetupTemplateName !== undefined) {
+    (buf as any)._f96 = util.pstrToFfi(data.lpPageSetupTemplateName);
+    view.setBigUint64(96, (buf as any)._f96 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f96)), true);
+  }
+  // 0x68: isize
+  if (data?.hPageSetupTemplate !== undefined) view.setBigInt64(104, BigInt(data.hPageSetupTemplate), true);
   return buf;
 }
 
-export type HINSTANCE = Deno.PointerValue;
+/**
+ * Windows.Win32.UI.Controls.Dialogs.PAGESETUPDLGW (size: 112)
+ */
+export interface PAGESETUPDLGW {
+  /** u32 */
+  lStructSize: number;
+  /** Windows.Win32.Foundation.HWND */
+  hwndOwner: Deno.PointerValue | null;
+  /** isize */
+  hDevMode: Deno.PointerValue;
+  /** isize */
+  hDevNames: Deno.PointerValue;
+  /** Windows.Win32.UI.Controls.Dialogs.PAGESETUPDLG_FLAGS */
+  Flags: PAGESETUPDLG_FLAGS;
+  /** Windows.Win32.Foundation.POINT */
+  ptPaperSize: Uint8Array | Deno.PointerValue | null;
+  /** Windows.Win32.Foundation.RECT */
+  rtMinMargin: Uint8Array | Deno.PointerValue | null;
+  /** Windows.Win32.Foundation.RECT */
+  rtMargin: Uint8Array | Deno.PointerValue | null;
+  /** Windows.Win32.Foundation.HINSTANCE */
+  hInstance: Uint8Array | Deno.PointerValue | null;
+  /** Windows.Win32.Foundation.LPARAM */
+  lCustData: Uint8Array | Deno.PointerValue | null;
+  /** Windows.Win32.UI.Controls.Dialogs.LPPAGESETUPHOOK */
+  lpfnPageSetupHook: Uint8Array | Deno.PointerValue | null;
+  /** Windows.Win32.UI.Controls.Dialogs.LPPAGEPAINTHOOK */
+  lpfnPagePaintHook: Uint8Array | Deno.PointerValue | null;
+  /** Windows.Win32.Foundation.PWSTR */
+  lpPageSetupTemplateName: string | null;
+  /** isize */
+  hPageSetupTemplate: Deno.PointerValue;
+}
+
+export const sizeofPAGESETUPDLGW = 112;
+
+export function allocPAGESETUPDLGW(data?: Partial<PAGESETUPDLGW>): Uint8Array {
+  const buf = new Uint8Array(sizeofPAGESETUPDLGW);
+  const view = new DataView(buf.buffer);
+  // 0x00: u32
+  if (data?.lStructSize !== undefined) view.setUint32(0, Number(data.lStructSize), true);
+  // 0x04: pad4
+  // 0x08: pointer
+  if (data?.hwndOwner !== undefined) view.setBigUint64(8, data.hwndOwner === null ? 0n : BigInt(util.toPointer(data.hwndOwner)), true);
+  // 0x10: isize
+  if (data?.hDevMode !== undefined) view.setBigInt64(16, BigInt(data.hDevMode), true);
+  // 0x18: isize
+  if (data?.hDevNames !== undefined) view.setBigInt64(24, BigInt(data.hDevNames), true);
+  // 0x20: u32
+  if (data?.Flags !== undefined) view.setUint32(32, Number(data.Flags), true);
+  // 0x24: pad4
+  // 0x28: pointer
+  if (data?.ptPaperSize !== undefined) view.setBigUint64(40, data.ptPaperSize === null ? 0n : BigInt(util.toPointer(data.ptPaperSize)), true);
+  // 0x30: pointer
+  if (data?.rtMinMargin !== undefined) view.setBigUint64(48, data.rtMinMargin === null ? 0n : BigInt(util.toPointer(data.rtMinMargin)), true);
+  // 0x38: pointer
+  if (data?.rtMargin !== undefined) view.setBigUint64(56, data.rtMargin === null ? 0n : BigInt(util.toPointer(data.rtMargin)), true);
+  // 0x40: pointer
+  if (data?.hInstance !== undefined) view.setBigUint64(64, data.hInstance === null ? 0n : BigInt(util.toPointer(data.hInstance)), true);
+  // 0x48: pointer
+  if (data?.lCustData !== undefined) view.setBigUint64(72, data.lCustData === null ? 0n : BigInt(util.toPointer(data.lCustData)), true);
+  // 0x50: pointer
+  if (data?.lpfnPageSetupHook !== undefined) view.setBigUint64(80, data.lpfnPageSetupHook === null ? 0n : BigInt(util.toPointer(data.lpfnPageSetupHook)), true);
+  // 0x58: pointer
+  if (data?.lpfnPagePaintHook !== undefined) view.setBigUint64(88, data.lpfnPagePaintHook === null ? 0n : BigInt(util.toPointer(data.lpfnPagePaintHook)), true);
+  // 0x60: buffer
+  if (data?.lpPageSetupTemplateName !== undefined) {
+    (buf as any)._f96 = util.pwstrToFfi(data.lpPageSetupTemplateName);
+    view.setBigUint64(96, (buf as any)._f96 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f96)), true);
+  }
+  // 0x68: isize
+  if (data?.hPageSetupTemplate !== undefined) view.setBigInt64(104, BigInt(data.hPageSetupTemplate), true);
+  return buf;
+}
 
 /**
  * _Anonymous1_e__Union (size: 64)
@@ -6250,6 +7895,8 @@ export function allocPROPSHEETPAGEA_V2(data?: Partial<PROPSHEETPAGEA_V2>): Uint8
   }
   return buf;
 }
+
+export type HANDLE = Deno.PointerValue;
 
 /**
  * Windows.Win32.UI.Controls.PROPSHEETPAGEA_V3 (size: 96)
@@ -7067,29 +8714,29 @@ export function allocINITCOMMONCONTROLSEX(data?: Partial<INITCOMMONCONTROLSEX>):
 }
 
 /**
- * Windows.Win32.UI.Controls.COLORSCHEME (size: 16)
+ * Windows.Win32.UI.Controls.COLORSCHEME (size: 24)
  */
 export interface COLORSCHEME {
   /** u32 */
   dwSize: number;
-  /** u32 */
-  clrBtnHighlight: number;
-  /** u32 */
-  clrBtnShadow: number;
+  /** Windows.Win32.Foundation.COLORREF */
+  clrBtnHighlight: Uint8Array | Deno.PointerValue | null;
+  /** Windows.Win32.Foundation.COLORREF */
+  clrBtnShadow: Uint8Array | Deno.PointerValue | null;
 }
 
-export const sizeofCOLORSCHEME = 16;
+export const sizeofCOLORSCHEME = 24;
 
 export function allocCOLORSCHEME(data?: Partial<COLORSCHEME>): Uint8Array {
   const buf = new Uint8Array(sizeofCOLORSCHEME);
   const view = new DataView(buf.buffer);
   // 0x00: u32
   if (data?.dwSize !== undefined) view.setUint32(0, Number(data.dwSize), true);
-  // 0x04: u32
-  if (data?.clrBtnHighlight !== undefined) view.setUint32(4, Number(data.clrBtnHighlight), true);
-  // 0x08: u32
-  if (data?.clrBtnShadow !== undefined) view.setUint32(8, Number(data.clrBtnShadow), true);
-  // 0x0c: pad4
+  // 0x04: pad4
+  // 0x08: pointer
+  if (data?.clrBtnHighlight !== undefined) view.setBigUint64(8, data.clrBtnHighlight === null ? 0n : BigInt(util.toPointer(data.clrBtnHighlight)), true);
+  // 0x10: pointer
+  if (data?.clrBtnShadow !== undefined) view.setBigUint64(16, data.clrBtnShadow === null ? 0n : BigInt(util.toPointer(data.clrBtnShadow)), true);
   return buf;
 }
 
@@ -7148,6 +8795,8 @@ export function allocNMMOUSE(data?: Partial<NMMOUSE>): Uint8Array {
   if (data?.dwHitInfo !== undefined) view.setBigUint64(32, data.dwHitInfo === null ? 0n : BigInt(util.toPointer(data.dwHitInfo)), true);
   return buf;
 }
+
+export type HRESULT = number;
 
 /**
  * Windows.Win32.UI.Controls.NMOBJECTNOTIFY (size: 48)
@@ -7246,6 +8895,8 @@ export function allocNMCHAR(data?: Partial<NMCHAR>): Uint8Array {
   return buf;
 }
 
+export type BOOL = number;
+
 /**
  * Windows.Win32.UI.Controls.NMCUSTOMTEXT (size: 48)
  */
@@ -7306,8 +8957,8 @@ export interface NMCUSTOMDRAW {
   rc: Uint8Array | Deno.PointerValue | null;
   /** usize */
   dwItemSpec: Deno.PointerValue;
-  /** u32 */
-  uItemState: number;
+  /** Windows.Win32.UI.Controls.NMCUSTOMDRAW_DRAW_STATE_FLAGS */
+  uItemState: NMCUSTOMDRAW_DRAW_STATE_FLAGS;
   /** Windows.Win32.Foundation.LPARAM */
   lItemlParam: Uint8Array | Deno.PointerValue | null;
 }
@@ -7390,7 +9041,7 @@ export function allocNMCUSTOMSPLITRECTINFO(data?: Partial<NMCUSTOMSPLITRECTINFO>
 }
 
 /**
- * Windows.Win32.UI.Controls.IMAGELISTDRAWPARAMS (size: 88)
+ * Windows.Win32.UI.Controls.IMAGELISTDRAWPARAMS (size: 96)
  */
 export interface IMAGELISTDRAWPARAMS {
   /** u32 */
@@ -7413,10 +9064,10 @@ export interface IMAGELISTDRAWPARAMS {
   xBitmap: number;
   /** i32 */
   yBitmap: number;
-  /** u32 */
-  rgbBk: number;
-  /** u32 */
-  rgbFg: number;
+  /** Windows.Win32.Foundation.COLORREF */
+  rgbBk: Uint8Array | Deno.PointerValue | null;
+  /** Windows.Win32.Foundation.COLORREF */
+  rgbFg: Uint8Array | Deno.PointerValue | null;
   /** u32 */
   fStyle: number;
   /** u32 */
@@ -7425,11 +9076,11 @@ export interface IMAGELISTDRAWPARAMS {
   fState: number;
   /** u32 */
   Frame: number;
-  /** u32 */
-  crEffect: number;
+  /** Windows.Win32.Foundation.COLORREF */
+  crEffect: Uint8Array | Deno.PointerValue | null;
 }
 
-export const sizeofIMAGELISTDRAWPARAMS = 88;
+export const sizeofIMAGELISTDRAWPARAMS = 96;
 
 export function allocIMAGELISTDRAWPARAMS(data?: Partial<IMAGELISTDRAWPARAMS>): Uint8Array {
   const buf = new Uint8Array(sizeofIMAGELISTDRAWPARAMS);
@@ -7456,23 +9107,24 @@ export function allocIMAGELISTDRAWPARAMS(data?: Partial<IMAGELISTDRAWPARAMS>): U
   if (data?.xBitmap !== undefined) view.setInt32(48, Number(data.xBitmap), true);
   // 0x34: i32
   if (data?.yBitmap !== undefined) view.setInt32(52, Number(data.yBitmap), true);
-  // 0x38: u32
-  if (data?.rgbBk !== undefined) view.setUint32(56, Number(data.rgbBk), true);
-  // 0x3c: u32
-  if (data?.rgbFg !== undefined) view.setUint32(60, Number(data.rgbFg), true);
-  // 0x40: u32
-  if (data?.fStyle !== undefined) view.setUint32(64, Number(data.fStyle), true);
-  // 0x44: u32
-  if (data?.dwRop !== undefined) view.setUint32(68, Number(data.dwRop), true);
+  // 0x38: pointer
+  if (data?.rgbBk !== undefined) view.setBigUint64(56, data.rgbBk === null ? 0n : BigInt(util.toPointer(data.rgbBk)), true);
+  // 0x40: pointer
+  if (data?.rgbFg !== undefined) view.setBigUint64(64, data.rgbFg === null ? 0n : BigInt(util.toPointer(data.rgbFg)), true);
   // 0x48: u32
-  if (data?.fState !== undefined) view.setUint32(72, Number(data.fState), true);
+  if (data?.fStyle !== undefined) view.setUint32(72, Number(data.fStyle), true);
   // 0x4c: u32
-  if (data?.Frame !== undefined) view.setUint32(76, Number(data.Frame), true);
+  if (data?.dwRop !== undefined) view.setUint32(76, Number(data.dwRop), true);
   // 0x50: u32
-  if (data?.crEffect !== undefined) view.setUint32(80, Number(data.crEffect), true);
-  // 0x54: pad4
+  if (data?.fState !== undefined) view.setUint32(80, Number(data.fState), true);
+  // 0x54: u32
+  if (data?.Frame !== undefined) view.setUint32(84, Number(data.Frame), true);
+  // 0x58: pointer
+  if (data?.crEffect !== undefined) view.setBigUint64(88, data.crEffect === null ? 0n : BigInt(util.toPointer(data.crEffect)), true);
   return buf;
 }
+
+export type HBITMAP = Deno.PointerValue;
 
 /**
  * Windows.Win32.UI.Controls.IMAGEINFO (size: 32)
@@ -7574,20 +9226,20 @@ export interface HDITEMA {
   hbm: Uint8Array | Deno.PointerValue | null;
   /** i32 */
   cchTextMax: number;
-  /** i32 */
-  fmt: number;
+  /** Windows.Win32.UI.Controls.HEADER_CONTROL_FORMAT_FLAGS */
+  fmt: HEADER_CONTROL_FORMAT_FLAGS;
   /** Windows.Win32.Foundation.LPARAM */
   lParam: Uint8Array | Deno.PointerValue | null;
   /** i32 */
   iImage: number;
   /** i32 */
   iOrder: number;
-  /** u32 */
-  type: number;
+  /** Windows.Win32.UI.Controls.HEADER_CONTROL_FORMAT_TYPE */
+  type: HEADER_CONTROL_FORMAT_TYPE;
   /** ptr */
   pvFilter: Deno.PointerValue | Uint8Array | null;
-  /** u32 */
-  state: number;
+  /** Windows.Win32.UI.Controls.HEADER_CONTROL_FORMAT_STATE */
+  state: HEADER_CONTROL_FORMAT_STATE;
 }
 
 export const sizeofHDITEMA = 72;
@@ -7641,20 +9293,20 @@ export interface HDITEMW {
   hbm: Uint8Array | Deno.PointerValue | null;
   /** i32 */
   cchTextMax: number;
-  /** i32 */
-  fmt: number;
+  /** Windows.Win32.UI.Controls.HEADER_CONTROL_FORMAT_FLAGS */
+  fmt: HEADER_CONTROL_FORMAT_FLAGS;
   /** Windows.Win32.Foundation.LPARAM */
   lParam: Uint8Array | Deno.PointerValue | null;
   /** i32 */
   iImage: number;
   /** i32 */
   iOrder: number;
-  /** u32 */
-  type: number;
+  /** Windows.Win32.UI.Controls.HEADER_CONTROL_FORMAT_TYPE */
+  type: HEADER_CONTROL_FORMAT_TYPE;
   /** ptr */
   pvFilter: Deno.PointerValue | Uint8Array | null;
-  /** u32 */
-  state: number;
+  /** Windows.Win32.UI.Controls.HEADER_CONTROL_FORMAT_STATE */
+  state: HEADER_CONTROL_FORMAT_STATE;
 }
 
 export const sizeofHDITEMW = 72;
@@ -7722,8 +9374,8 @@ export function allocHDLAYOUT(data?: Partial<HDLAYOUT>): Uint8Array {
 export interface HDHITTESTINFO {
   /** Windows.Win32.Foundation.POINT */
   pt: Uint8Array | Deno.PointerValue | null;
-  /** u32 */
-  flags: number;
+  /** Windows.Win32.UI.Controls.HEADER_HITTEST_INFO_FLAGS */
+  flags: HEADER_HITTEST_INFO_FLAGS;
   /** i32 */
   iItem: number;
 }
@@ -7920,67 +9572,24 @@ export function allocNMHDFILTERBTNCLICK(data?: Partial<NMHDFILTERBTNCLICK>): Uin
 }
 
 /**
- * Windows.Win32.UI.Controls.TBBUTTON (size: 40)
- */
-export interface TBBUTTON {
-  /** i32 */
-  iBitmap: number;
-  /** i32 */
-  idCommand: number;
-  /** u8 */
-  fsState: number;
-  /** u8 */
-  fsStyle: number;
-  /** array */
-  bReserved: Deno.PointerValue | null;
-  /** usize */
-  dwData: Deno.PointerValue;
-  /** isize */
-  iString: Deno.PointerValue;
-}
-
-export const sizeofTBBUTTON = 40;
-
-export function allocTBBUTTON(data?: Partial<TBBUTTON>): Uint8Array {
-  const buf = new Uint8Array(sizeofTBBUTTON);
-  const view = new DataView(buf.buffer);
-  // 0x00: i32
-  if (data?.iBitmap !== undefined) view.setInt32(0, Number(data.iBitmap), true);
-  // 0x04: i32
-  if (data?.idCommand !== undefined) view.setInt32(4, Number(data.idCommand), true);
-  // 0x08: u8
-  if (data?.fsState !== undefined) view.setUint8(8, Number(data.fsState));
-  // 0x09: u8
-  if (data?.fsStyle !== undefined) view.setUint8(9, Number(data.fsStyle));
-  // 0x0a: pad6
-  // 0x10: pointer
-  if (data?.bReserved !== undefined) view.setBigUint64(16, data.bReserved === null ? 0n : BigInt(util.toPointer(data.bReserved)), true);
-  // 0x18: usize
-  if (data?.dwData !== undefined) view.setBigUint64(24, BigInt(data.dwData), true);
-  // 0x20: isize
-  if (data?.iString !== undefined) view.setBigInt64(32, BigInt(data.iString), true);
-  return buf;
-}
-
-/**
- * Windows.Win32.UI.Controls.COLORMAP (size: 8)
+ * Windows.Win32.UI.Controls.COLORMAP (size: 16)
  */
 export interface COLORMAP {
-  /** u32 */
-  from: number;
-  /** u32 */
-  to: number;
+  /** Windows.Win32.Foundation.COLORREF */
+  from: Uint8Array | Deno.PointerValue | null;
+  /** Windows.Win32.Foundation.COLORREF */
+  to: Uint8Array | Deno.PointerValue | null;
 }
 
-export const sizeofCOLORMAP = 8;
+export const sizeofCOLORMAP = 16;
 
 export function allocCOLORMAP(data?: Partial<COLORMAP>): Uint8Array {
   const buf = new Uint8Array(sizeofCOLORMAP);
   const view = new DataView(buf.buffer);
-  // 0x00: u32
-  if (data?.from !== undefined) view.setUint32(0, Number(data.from), true);
-  // 0x04: u32
-  if (data?.to !== undefined) view.setUint32(4, Number(data.to), true);
+  // 0x00: pointer
+  if (data?.from !== undefined) view.setBigUint64(0, data.from === null ? 0n : BigInt(util.toPointer(data.from)), true);
+  // 0x08: pointer
+  if (data?.to !== undefined) view.setBigUint64(8, data.to === null ? 0n : BigInt(util.toPointer(data.to)), true);
   return buf;
 }
 
@@ -7989,7 +9598,7 @@ export type HBRUSH = Deno.PointerValue;
 export type HPEN = Deno.PointerValue;
 
 /**
- * Windows.Win32.UI.Controls.NMTBCUSTOMDRAW (size: 80)
+ * Windows.Win32.UI.Controls.NMTBCUSTOMDRAW (size: 104)
  */
 export interface NMTBCUSTOMDRAW {
   /** Windows.Win32.UI.Controls.NMCUSTOMDRAW */
@@ -8000,18 +9609,18 @@ export interface NMTBCUSTOMDRAW {
   hbrLines: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.Graphics.Gdi.HPEN */
   hpenLines: Uint8Array | Deno.PointerValue | null;
-  /** u32 */
-  clrText: number;
-  /** u32 */
-  clrMark: number;
-  /** u32 */
-  clrTextHighlight: number;
-  /** u32 */
-  clrBtnFace: number;
-  /** u32 */
-  clrBtnHighlight: number;
-  /** u32 */
-  clrHighlightHotTrack: number;
+  /** Windows.Win32.Foundation.COLORREF */
+  clrText: Uint8Array | Deno.PointerValue | null;
+  /** Windows.Win32.Foundation.COLORREF */
+  clrMark: Uint8Array | Deno.PointerValue | null;
+  /** Windows.Win32.Foundation.COLORREF */
+  clrTextHighlight: Uint8Array | Deno.PointerValue | null;
+  /** Windows.Win32.Foundation.COLORREF */
+  clrBtnFace: Uint8Array | Deno.PointerValue | null;
+  /** Windows.Win32.Foundation.COLORREF */
+  clrBtnHighlight: Uint8Array | Deno.PointerValue | null;
+  /** Windows.Win32.Foundation.COLORREF */
+  clrHighlightHotTrack: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.Foundation.RECT */
   rcText: Uint8Array | Deno.PointerValue | null;
   /** i32 */
@@ -8022,7 +9631,7 @@ export interface NMTBCUSTOMDRAW {
   iListGap: number;
 }
 
-export const sizeofNMTBCUSTOMDRAW = 80;
+export const sizeofNMTBCUSTOMDRAW = 104;
 
 export function allocNMTBCUSTOMDRAW(data?: Partial<NMTBCUSTOMDRAW>): Uint8Array {
   const buf = new Uint8Array(sizeofNMTBCUSTOMDRAW);
@@ -8035,27 +9644,27 @@ export function allocNMTBCUSTOMDRAW(data?: Partial<NMTBCUSTOMDRAW>): Uint8Array 
   if (data?.hbrLines !== undefined) view.setBigUint64(16, data.hbrLines === null ? 0n : BigInt(util.toPointer(data.hbrLines)), true);
   // 0x18: pointer
   if (data?.hpenLines !== undefined) view.setBigUint64(24, data.hpenLines === null ? 0n : BigInt(util.toPointer(data.hpenLines)), true);
-  // 0x20: u32
-  if (data?.clrText !== undefined) view.setUint32(32, Number(data.clrText), true);
-  // 0x24: u32
-  if (data?.clrMark !== undefined) view.setUint32(36, Number(data.clrMark), true);
-  // 0x28: u32
-  if (data?.clrTextHighlight !== undefined) view.setUint32(40, Number(data.clrTextHighlight), true);
-  // 0x2c: u32
-  if (data?.clrBtnFace !== undefined) view.setUint32(44, Number(data.clrBtnFace), true);
-  // 0x30: u32
-  if (data?.clrBtnHighlight !== undefined) view.setUint32(48, Number(data.clrBtnHighlight), true);
-  // 0x34: u32
-  if (data?.clrHighlightHotTrack !== undefined) view.setUint32(52, Number(data.clrHighlightHotTrack), true);
+  // 0x20: pointer
+  if (data?.clrText !== undefined) view.setBigUint64(32, data.clrText === null ? 0n : BigInt(util.toPointer(data.clrText)), true);
+  // 0x28: pointer
+  if (data?.clrMark !== undefined) view.setBigUint64(40, data.clrMark === null ? 0n : BigInt(util.toPointer(data.clrMark)), true);
+  // 0x30: pointer
+  if (data?.clrTextHighlight !== undefined) view.setBigUint64(48, data.clrTextHighlight === null ? 0n : BigInt(util.toPointer(data.clrTextHighlight)), true);
   // 0x38: pointer
-  if (data?.rcText !== undefined) view.setBigUint64(56, data.rcText === null ? 0n : BigInt(util.toPointer(data.rcText)), true);
-  // 0x40: i32
-  if (data?.nStringBkMode !== undefined) view.setInt32(64, Number(data.nStringBkMode), true);
-  // 0x44: i32
-  if (data?.nHLStringBkMode !== undefined) view.setInt32(68, Number(data.nHLStringBkMode), true);
-  // 0x48: i32
-  if (data?.iListGap !== undefined) view.setInt32(72, Number(data.iListGap), true);
-  // 0x4c: pad4
+  if (data?.clrBtnFace !== undefined) view.setBigUint64(56, data.clrBtnFace === null ? 0n : BigInt(util.toPointer(data.clrBtnFace)), true);
+  // 0x40: pointer
+  if (data?.clrBtnHighlight !== undefined) view.setBigUint64(64, data.clrBtnHighlight === null ? 0n : BigInt(util.toPointer(data.clrBtnHighlight)), true);
+  // 0x48: pointer
+  if (data?.clrHighlightHotTrack !== undefined) view.setBigUint64(72, data.clrHighlightHotTrack === null ? 0n : BigInt(util.toPointer(data.clrHighlightHotTrack)), true);
+  // 0x50: pointer
+  if (data?.rcText !== undefined) view.setBigUint64(80, data.rcText === null ? 0n : BigInt(util.toPointer(data.rcText)), true);
+  // 0x58: i32
+  if (data?.nStringBkMode !== undefined) view.setInt32(88, Number(data.nStringBkMode), true);
+  // 0x5c: i32
+  if (data?.nHLStringBkMode !== undefined) view.setInt32(92, Number(data.nHLStringBkMode), true);
+  // 0x60: i32
+  if (data?.iListGap !== undefined) view.setInt32(96, Number(data.iListGap), true);
+  // 0x64: pad4
   return buf;
 }
 
@@ -8769,7 +10378,7 @@ export function allocREBARINFO(data?: Partial<REBARINFO>): Uint8Array {
 }
 
 /**
- * Windows.Win32.UI.Controls.REBARBANDINFOA (size: 128)
+ * Windows.Win32.UI.Controls.REBARBANDINFOA (size: 136)
  */
 export interface REBARBANDINFOA {
   /** u32 */
@@ -8778,10 +10387,10 @@ export interface REBARBANDINFOA {
   fMask: number;
   /** u32 */
   fStyle: number;
-  /** u32 */
-  clrFore: number;
-  /** u32 */
-  clrBack: number;
+  /** Windows.Win32.Foundation.COLORREF */
+  clrFore: Uint8Array | Deno.PointerValue | null;
+  /** Windows.Win32.Foundation.COLORREF */
+  clrBack: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.Foundation.PSTR */
   lpText: string | null;
   /** u32 */
@@ -8818,7 +10427,7 @@ export interface REBARBANDINFOA {
   uChevronState: number;
 }
 
-export const sizeofREBARBANDINFOA = 128;
+export const sizeofREBARBANDINFOA = 136;
 
 export function allocREBARBANDINFOA(data?: Partial<REBARBANDINFOA>): Uint8Array {
   const buf = new Uint8Array(sizeofREBARBANDINFOA);
@@ -8829,57 +10438,57 @@ export function allocREBARBANDINFOA(data?: Partial<REBARBANDINFOA>): Uint8Array 
   if (data?.fMask !== undefined) view.setUint32(4, Number(data.fMask), true);
   // 0x08: u32
   if (data?.fStyle !== undefined) view.setUint32(8, Number(data.fStyle), true);
-  // 0x0c: u32
-  if (data?.clrFore !== undefined) view.setUint32(12, Number(data.clrFore), true);
-  // 0x10: u32
-  if (data?.clrBack !== undefined) view.setUint32(16, Number(data.clrBack), true);
-  // 0x14: pad4
-  // 0x18: buffer
+  // 0x0c: pad4
+  // 0x10: pointer
+  if (data?.clrFore !== undefined) view.setBigUint64(16, data.clrFore === null ? 0n : BigInt(util.toPointer(data.clrFore)), true);
+  // 0x18: pointer
+  if (data?.clrBack !== undefined) view.setBigUint64(24, data.clrBack === null ? 0n : BigInt(util.toPointer(data.clrBack)), true);
+  // 0x20: buffer
   if (data?.lpText !== undefined) {
-    (buf as any)._f24 = util.pstrToFfi(data.lpText);
-    view.setBigUint64(24, (buf as any)._f24 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f24)), true);
+    (buf as any)._f32 = util.pstrToFfi(data.lpText);
+    view.setBigUint64(32, (buf as any)._f32 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f32)), true);
   }
-  // 0x20: u32
-  if (data?.cch !== undefined) view.setUint32(32, Number(data.cch), true);
-  // 0x24: i32
-  if (data?.iImage !== undefined) view.setInt32(36, Number(data.iImage), true);
-  // 0x28: pointer
-  if (data?.hwndChild !== undefined) view.setBigUint64(40, data.hwndChild === null ? 0n : BigInt(util.toPointer(data.hwndChild)), true);
-  // 0x30: u32
-  if (data?.cxMinChild !== undefined) view.setUint32(48, Number(data.cxMinChild), true);
-  // 0x34: u32
-  if (data?.cyMinChild !== undefined) view.setUint32(52, Number(data.cyMinChild), true);
+  // 0x28: u32
+  if (data?.cch !== undefined) view.setUint32(40, Number(data.cch), true);
+  // 0x2c: i32
+  if (data?.iImage !== undefined) view.setInt32(44, Number(data.iImage), true);
+  // 0x30: pointer
+  if (data?.hwndChild !== undefined) view.setBigUint64(48, data.hwndChild === null ? 0n : BigInt(util.toPointer(data.hwndChild)), true);
   // 0x38: u32
-  if (data?.cx !== undefined) view.setUint32(56, Number(data.cx), true);
-  // 0x3c: pad4
-  // 0x40: pointer
-  if (data?.hbmBack !== undefined) view.setBigUint64(64, data.hbmBack === null ? 0n : BigInt(util.toPointer(data.hbmBack)), true);
-  // 0x48: u32
-  if (data?.wID !== undefined) view.setUint32(72, Number(data.wID), true);
-  // 0x4c: u32
-  if (data?.cyChild !== undefined) view.setUint32(76, Number(data.cyChild), true);
+  if (data?.cxMinChild !== undefined) view.setUint32(56, Number(data.cxMinChild), true);
+  // 0x3c: u32
+  if (data?.cyMinChild !== undefined) view.setUint32(60, Number(data.cyMinChild), true);
+  // 0x40: u32
+  if (data?.cx !== undefined) view.setUint32(64, Number(data.cx), true);
+  // 0x44: pad4
+  // 0x48: pointer
+  if (data?.hbmBack !== undefined) view.setBigUint64(72, data.hbmBack === null ? 0n : BigInt(util.toPointer(data.hbmBack)), true);
   // 0x50: u32
-  if (data?.cyMaxChild !== undefined) view.setUint32(80, Number(data.cyMaxChild), true);
+  if (data?.wID !== undefined) view.setUint32(80, Number(data.wID), true);
   // 0x54: u32
-  if (data?.cyIntegral !== undefined) view.setUint32(84, Number(data.cyIntegral), true);
+  if (data?.cyChild !== undefined) view.setUint32(84, Number(data.cyChild), true);
   // 0x58: u32
-  if (data?.cxIdeal !== undefined) view.setUint32(88, Number(data.cxIdeal), true);
-  // 0x5c: pad4
-  // 0x60: pointer
-  if (data?.lParam !== undefined) view.setBigUint64(96, data.lParam === null ? 0n : BigInt(util.toPointer(data.lParam)), true);
-  // 0x68: u32
-  if (data?.cxHeader !== undefined) view.setUint32(104, Number(data.cxHeader), true);
-  // 0x6c: pad4
-  // 0x70: pointer
-  if (data?.rcChevronLocation !== undefined) view.setBigUint64(112, data.rcChevronLocation === null ? 0n : BigInt(util.toPointer(data.rcChevronLocation)), true);
-  // 0x78: u32
-  if (data?.uChevronState !== undefined) view.setUint32(120, Number(data.uChevronState), true);
-  // 0x7c: pad4
+  if (data?.cyMaxChild !== undefined) view.setUint32(88, Number(data.cyMaxChild), true);
+  // 0x5c: u32
+  if (data?.cyIntegral !== undefined) view.setUint32(92, Number(data.cyIntegral), true);
+  // 0x60: u32
+  if (data?.cxIdeal !== undefined) view.setUint32(96, Number(data.cxIdeal), true);
+  // 0x64: pad4
+  // 0x68: pointer
+  if (data?.lParam !== undefined) view.setBigUint64(104, data.lParam === null ? 0n : BigInt(util.toPointer(data.lParam)), true);
+  // 0x70: u32
+  if (data?.cxHeader !== undefined) view.setUint32(112, Number(data.cxHeader), true);
+  // 0x74: pad4
+  // 0x78: pointer
+  if (data?.rcChevronLocation !== undefined) view.setBigUint64(120, data.rcChevronLocation === null ? 0n : BigInt(util.toPointer(data.rcChevronLocation)), true);
+  // 0x80: u32
+  if (data?.uChevronState !== undefined) view.setUint32(128, Number(data.uChevronState), true);
+  // 0x84: pad4
   return buf;
 }
 
 /**
- * Windows.Win32.UI.Controls.REBARBANDINFOW (size: 128)
+ * Windows.Win32.UI.Controls.REBARBANDINFOW (size: 136)
  */
 export interface REBARBANDINFOW {
   /** u32 */
@@ -8888,10 +10497,10 @@ export interface REBARBANDINFOW {
   fMask: number;
   /** u32 */
   fStyle: number;
-  /** u32 */
-  clrFore: number;
-  /** u32 */
-  clrBack: number;
+  /** Windows.Win32.Foundation.COLORREF */
+  clrFore: Uint8Array | Deno.PointerValue | null;
+  /** Windows.Win32.Foundation.COLORREF */
+  clrBack: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.Foundation.PWSTR */
   lpText: string | null;
   /** u32 */
@@ -8928,7 +10537,7 @@ export interface REBARBANDINFOW {
   uChevronState: number;
 }
 
-export const sizeofREBARBANDINFOW = 128;
+export const sizeofREBARBANDINFOW = 136;
 
 export function allocREBARBANDINFOW(data?: Partial<REBARBANDINFOW>): Uint8Array {
   const buf = new Uint8Array(sizeofREBARBANDINFOW);
@@ -8939,52 +10548,52 @@ export function allocREBARBANDINFOW(data?: Partial<REBARBANDINFOW>): Uint8Array 
   if (data?.fMask !== undefined) view.setUint32(4, Number(data.fMask), true);
   // 0x08: u32
   if (data?.fStyle !== undefined) view.setUint32(8, Number(data.fStyle), true);
-  // 0x0c: u32
-  if (data?.clrFore !== undefined) view.setUint32(12, Number(data.clrFore), true);
-  // 0x10: u32
-  if (data?.clrBack !== undefined) view.setUint32(16, Number(data.clrBack), true);
-  // 0x14: pad4
-  // 0x18: buffer
+  // 0x0c: pad4
+  // 0x10: pointer
+  if (data?.clrFore !== undefined) view.setBigUint64(16, data.clrFore === null ? 0n : BigInt(util.toPointer(data.clrFore)), true);
+  // 0x18: pointer
+  if (data?.clrBack !== undefined) view.setBigUint64(24, data.clrBack === null ? 0n : BigInt(util.toPointer(data.clrBack)), true);
+  // 0x20: buffer
   if (data?.lpText !== undefined) {
-    (buf as any)._f24 = util.pwstrToFfi(data.lpText);
-    view.setBigUint64(24, (buf as any)._f24 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f24)), true);
+    (buf as any)._f32 = util.pwstrToFfi(data.lpText);
+    view.setBigUint64(32, (buf as any)._f32 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f32)), true);
   }
-  // 0x20: u32
-  if (data?.cch !== undefined) view.setUint32(32, Number(data.cch), true);
-  // 0x24: i32
-  if (data?.iImage !== undefined) view.setInt32(36, Number(data.iImage), true);
-  // 0x28: pointer
-  if (data?.hwndChild !== undefined) view.setBigUint64(40, data.hwndChild === null ? 0n : BigInt(util.toPointer(data.hwndChild)), true);
-  // 0x30: u32
-  if (data?.cxMinChild !== undefined) view.setUint32(48, Number(data.cxMinChild), true);
-  // 0x34: u32
-  if (data?.cyMinChild !== undefined) view.setUint32(52, Number(data.cyMinChild), true);
+  // 0x28: u32
+  if (data?.cch !== undefined) view.setUint32(40, Number(data.cch), true);
+  // 0x2c: i32
+  if (data?.iImage !== undefined) view.setInt32(44, Number(data.iImage), true);
+  // 0x30: pointer
+  if (data?.hwndChild !== undefined) view.setBigUint64(48, data.hwndChild === null ? 0n : BigInt(util.toPointer(data.hwndChild)), true);
   // 0x38: u32
-  if (data?.cx !== undefined) view.setUint32(56, Number(data.cx), true);
-  // 0x3c: pad4
-  // 0x40: pointer
-  if (data?.hbmBack !== undefined) view.setBigUint64(64, data.hbmBack === null ? 0n : BigInt(util.toPointer(data.hbmBack)), true);
-  // 0x48: u32
-  if (data?.wID !== undefined) view.setUint32(72, Number(data.wID), true);
-  // 0x4c: u32
-  if (data?.cyChild !== undefined) view.setUint32(76, Number(data.cyChild), true);
+  if (data?.cxMinChild !== undefined) view.setUint32(56, Number(data.cxMinChild), true);
+  // 0x3c: u32
+  if (data?.cyMinChild !== undefined) view.setUint32(60, Number(data.cyMinChild), true);
+  // 0x40: u32
+  if (data?.cx !== undefined) view.setUint32(64, Number(data.cx), true);
+  // 0x44: pad4
+  // 0x48: pointer
+  if (data?.hbmBack !== undefined) view.setBigUint64(72, data.hbmBack === null ? 0n : BigInt(util.toPointer(data.hbmBack)), true);
   // 0x50: u32
-  if (data?.cyMaxChild !== undefined) view.setUint32(80, Number(data.cyMaxChild), true);
+  if (data?.wID !== undefined) view.setUint32(80, Number(data.wID), true);
   // 0x54: u32
-  if (data?.cyIntegral !== undefined) view.setUint32(84, Number(data.cyIntegral), true);
+  if (data?.cyChild !== undefined) view.setUint32(84, Number(data.cyChild), true);
   // 0x58: u32
-  if (data?.cxIdeal !== undefined) view.setUint32(88, Number(data.cxIdeal), true);
-  // 0x5c: pad4
-  // 0x60: pointer
-  if (data?.lParam !== undefined) view.setBigUint64(96, data.lParam === null ? 0n : BigInt(util.toPointer(data.lParam)), true);
-  // 0x68: u32
-  if (data?.cxHeader !== undefined) view.setUint32(104, Number(data.cxHeader), true);
-  // 0x6c: pad4
-  // 0x70: pointer
-  if (data?.rcChevronLocation !== undefined) view.setBigUint64(112, data.rcChevronLocation === null ? 0n : BigInt(util.toPointer(data.rcChevronLocation)), true);
-  // 0x78: u32
-  if (data?.uChevronState !== undefined) view.setUint32(120, Number(data.uChevronState), true);
-  // 0x7c: pad4
+  if (data?.cyMaxChild !== undefined) view.setUint32(88, Number(data.cyMaxChild), true);
+  // 0x5c: u32
+  if (data?.cyIntegral !== undefined) view.setUint32(92, Number(data.cyIntegral), true);
+  // 0x60: u32
+  if (data?.cxIdeal !== undefined) view.setUint32(96, Number(data.cxIdeal), true);
+  // 0x64: pad4
+  // 0x68: pointer
+  if (data?.lParam !== undefined) view.setBigUint64(104, data.lParam === null ? 0n : BigInt(util.toPointer(data.lParam)), true);
+  // 0x70: u32
+  if (data?.cxHeader !== undefined) view.setUint32(112, Number(data.cxHeader), true);
+  // 0x74: pad4
+  // 0x78: pointer
+  if (data?.rcChevronLocation !== undefined) view.setBigUint64(120, data.rcChevronLocation === null ? 0n : BigInt(util.toPointer(data.rcChevronLocation)), true);
+  // 0x80: u32
+  if (data?.uChevronState !== undefined) view.setUint32(128, Number(data.uChevronState), true);
+  // 0x84: pad4
   return buf;
 }
 
@@ -9226,8 +10835,8 @@ export function allocRBHITTESTINFO(data?: Partial<RBHITTESTINFO>): Uint8Array {
 export interface TTTOOLINFOA {
   /** u32 */
   cbSize: number;
-  /** Windows.Win32.UI.Controls.TTTOOLINFO_FLAGS */
-  uFlags: TTTOOLINFO_FLAGS;
+  /** Windows.Win32.UI.Controls.TOOLTIP_FLAGS */
+  uFlags: TOOLTIP_FLAGS;
   /** Windows.Win32.Foundation.HWND */
   hwnd: Deno.PointerValue | null;
   /** usize */
@@ -9279,8 +10888,8 @@ export function allocTTTOOLINFOA(data?: Partial<TTTOOLINFOA>): Uint8Array {
 export interface TTTOOLINFOW {
   /** u32 */
   cbSize: number;
-  /** Windows.Win32.UI.Controls.TTTOOLINFO_FLAGS */
-  uFlags: TTTOOLINFO_FLAGS;
+  /** Windows.Win32.UI.Controls.TOOLTIP_FLAGS */
+  uFlags: TOOLTIP_FLAGS;
   /** Windows.Win32.Foundation.HWND */
   hwnd: Deno.PointerValue | null;
   /** usize */
@@ -9424,8 +11033,8 @@ export interface NMTTDISPINFOA {
   szText: Deno.PointerValue | null;
   /** Windows.Win32.Foundation.HINSTANCE */
   hinst: Uint8Array | Deno.PointerValue | null;
-  /** u32 */
-  uFlags: number;
+  /** Windows.Win32.UI.Controls.TOOLTIP_FLAGS */
+  uFlags: TOOLTIP_FLAGS;
   /** Windows.Win32.Foundation.LPARAM */
   lParam: Uint8Array | Deno.PointerValue | null;
 }
@@ -9466,8 +11075,8 @@ export interface NMTTDISPINFOW {
   szText: Deno.PointerValue | null;
   /** Windows.Win32.Foundation.HINSTANCE */
   hinst: Uint8Array | Deno.PointerValue | null;
-  /** u32 */
-  uFlags: number;
+  /** Windows.Win32.UI.Controls.TOOLTIP_FLAGS */
+  uFlags: TOOLTIP_FLAGS;
   /** Windows.Win32.Foundation.LPARAM */
   lParam: Uint8Array | Deno.PointerValue | null;
 }
@@ -9623,14 +11232,14 @@ export function allocPBRANGE(data?: Partial<PBRANGE>): Uint8Array {
  * Windows.Win32.UI.Controls.LITEM (size: 32)
  */
 export interface LITEM {
-  /** u32 */
-  mask: number;
+  /** Windows.Win32.UI.Controls.LIST_ITEM_FLAGS */
+  mask: LIST_ITEM_FLAGS;
   /** i32 */
   iLink: number;
-  /** u32 */
-  state: number;
-  /** u32 */
-  stateMask: number;
+  /** Windows.Win32.UI.Controls.LIST_ITEM_STATE_FLAGS */
+  state: LIST_ITEM_STATE_FLAGS;
+  /** Windows.Win32.UI.Controls.LIST_ITEM_STATE_FLAGS */
+  stateMask: LIST_ITEM_STATE_FLAGS;
   /** array */
   szID: Deno.PointerValue | null;
   /** array */
@@ -9705,16 +11314,16 @@ export function allocNMLINK(data?: Partial<NMLINK>): Uint8Array {
  * Windows.Win32.UI.Controls.LVITEMA (size: 88)
  */
 export interface LVITEMA {
-  /** u32 */
-  mask: number;
+  /** Windows.Win32.UI.Controls.LIST_VIEW_ITEM_FLAGS */
+  mask: LIST_VIEW_ITEM_FLAGS;
   /** i32 */
   iItem: number;
   /** i32 */
   iSubItem: number;
-  /** u32 */
-  state: number;
-  /** u32 */
-  stateMask: number;
+  /** Windows.Win32.UI.Controls.LIST_VIEW_ITEM_STATE_FLAGS */
+  state: LIST_VIEW_ITEM_STATE_FLAGS;
+  /** Windows.Win32.UI.Controls.LIST_VIEW_ITEM_STATE_FLAGS */
+  stateMask: LIST_VIEW_ITEM_STATE_FLAGS;
   /** Windows.Win32.Foundation.PSTR */
   pszText: string | null;
   /** i32 */
@@ -9785,16 +11394,16 @@ export function allocLVITEMA(data?: Partial<LVITEMA>): Uint8Array {
  * Windows.Win32.UI.Controls.LVITEMW (size: 88)
  */
 export interface LVITEMW {
-  /** u32 */
-  mask: number;
+  /** Windows.Win32.UI.Controls.LIST_VIEW_ITEM_FLAGS */
+  mask: LIST_VIEW_ITEM_FLAGS;
   /** i32 */
   iItem: number;
   /** i32 */
   iSubItem: number;
-  /** u32 */
-  state: number;
-  /** u32 */
-  stateMask: number;
+  /** Windows.Win32.UI.Controls.LIST_VIEW_ITEM_STATE_FLAGS */
+  state: LIST_VIEW_ITEM_STATE_FLAGS;
+  /** Windows.Win32.UI.Controls.LIST_VIEW_ITEM_STATE_FLAGS */
+  stateMask: LIST_VIEW_ITEM_STATE_FLAGS;
   /** Windows.Win32.Foundation.PWSTR */
   pszText: string | null;
   /** i32 */
@@ -10103,8 +11712,8 @@ export function allocLVCOLUMNW(data?: Partial<LVCOLUMNW>): Uint8Array {
  * Windows.Win32.UI.Controls.LVBKIMAGEA (size: 40)
  */
 export interface LVBKIMAGEA {
-  /** u32 */
-  ulFlags: number;
+  /** Windows.Win32.UI.Controls.LIST_VIEW_BACKGROUND_IMAGE_FLAGS */
+  ulFlags: LIST_VIEW_BACKGROUND_IMAGE_FLAGS;
   /** Windows.Win32.Graphics.Gdi.HBITMAP */
   hbm: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.Foundation.PSTR */
@@ -10146,8 +11755,8 @@ export function allocLVBKIMAGEA(data?: Partial<LVBKIMAGEA>): Uint8Array {
  * Windows.Win32.UI.Controls.LVBKIMAGEW (size: 40)
  */
 export interface LVBKIMAGEW {
-  /** u32 */
-  ulFlags: number;
+  /** Windows.Win32.UI.Controls.LIST_VIEW_BACKGROUND_IMAGE_FLAGS */
+  ulFlags: LIST_VIEW_BACKGROUND_IMAGE_FLAGS;
   /** Windows.Win32.Graphics.Gdi.HBITMAP */
   hbm: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.Foundation.PWSTR */
@@ -10203,12 +11812,12 @@ export interface LVGROUP {
   cchFooter: number;
   /** i32 */
   iGroupId: number;
-  /** u32 */
-  stateMask: number;
-  /** u32 */
-  state: number;
-  /** u32 */
-  uAlign: number;
+  /** Windows.Win32.UI.Controls.LIST_VIEW_GROUP_STATE_FLAGS */
+  stateMask: LIST_VIEW_GROUP_STATE_FLAGS;
+  /** Windows.Win32.UI.Controls.LIST_VIEW_GROUP_STATE_FLAGS */
+  state: LIST_VIEW_GROUP_STATE_FLAGS;
+  /** Windows.Win32.UI.Controls.LIST_VIEW_GROUP_ALIGN_FLAGS */
+  uAlign: LIST_VIEW_GROUP_ALIGN_FLAGS;
   /** Windows.Win32.Foundation.PWSTR */
   pszSubtitle: string | null;
   /** u32 */
@@ -10324,7 +11933,7 @@ export function allocLVGROUP(data?: Partial<LVGROUP>): Uint8Array {
 }
 
 /**
- * Windows.Win32.UI.Controls.LVGROUPMETRICS (size: 48)
+ * Windows.Win32.UI.Controls.LVGROUPMETRICS (size: 72)
  */
 export interface LVGROUPMETRICS {
   /** u32 */
@@ -10339,21 +11948,21 @@ export interface LVGROUPMETRICS {
   Right: number;
   /** u32 */
   Bottom: number;
-  /** u32 */
-  crLeft: number;
-  /** u32 */
-  crTop: number;
-  /** u32 */
-  crRight: number;
-  /** u32 */
-  crBottom: number;
-  /** u32 */
-  crHeader: number;
-  /** u32 */
-  crFooter: number;
+  /** Windows.Win32.Foundation.COLORREF */
+  crLeft: Uint8Array | Deno.PointerValue | null;
+  /** Windows.Win32.Foundation.COLORREF */
+  crTop: Uint8Array | Deno.PointerValue | null;
+  /** Windows.Win32.Foundation.COLORREF */
+  crRight: Uint8Array | Deno.PointerValue | null;
+  /** Windows.Win32.Foundation.COLORREF */
+  crBottom: Uint8Array | Deno.PointerValue | null;
+  /** Windows.Win32.Foundation.COLORREF */
+  crHeader: Uint8Array | Deno.PointerValue | null;
+  /** Windows.Win32.Foundation.COLORREF */
+  crFooter: Uint8Array | Deno.PointerValue | null;
 }
 
-export const sizeofLVGROUPMETRICS = 48;
+export const sizeofLVGROUPMETRICS = 72;
 
 export function allocLVGROUPMETRICS(data?: Partial<LVGROUPMETRICS>): Uint8Array {
   const buf = new Uint8Array(sizeofLVGROUPMETRICS);
@@ -10370,18 +11979,18 @@ export function allocLVGROUPMETRICS(data?: Partial<LVGROUPMETRICS>): Uint8Array 
   if (data?.Right !== undefined) view.setUint32(16, Number(data.Right), true);
   // 0x14: u32
   if (data?.Bottom !== undefined) view.setUint32(20, Number(data.Bottom), true);
-  // 0x18: u32
-  if (data?.crLeft !== undefined) view.setUint32(24, Number(data.crLeft), true);
-  // 0x1c: u32
-  if (data?.crTop !== undefined) view.setUint32(28, Number(data.crTop), true);
-  // 0x20: u32
-  if (data?.crRight !== undefined) view.setUint32(32, Number(data.crRight), true);
-  // 0x24: u32
-  if (data?.crBottom !== undefined) view.setUint32(36, Number(data.crBottom), true);
-  // 0x28: u32
-  if (data?.crHeader !== undefined) view.setUint32(40, Number(data.crHeader), true);
-  // 0x2c: u32
-  if (data?.crFooter !== undefined) view.setUint32(44, Number(data.crFooter), true);
+  // 0x18: pointer
+  if (data?.crLeft !== undefined) view.setBigUint64(24, data.crLeft === null ? 0n : BigInt(util.toPointer(data.crLeft)), true);
+  // 0x20: pointer
+  if (data?.crTop !== undefined) view.setBigUint64(32, data.crTop === null ? 0n : BigInt(util.toPointer(data.crTop)), true);
+  // 0x28: pointer
+  if (data?.crRight !== undefined) view.setBigUint64(40, data.crRight === null ? 0n : BigInt(util.toPointer(data.crRight)), true);
+  // 0x30: pointer
+  if (data?.crBottom !== undefined) view.setBigUint64(48, data.crBottom === null ? 0n : BigInt(util.toPointer(data.crBottom)), true);
+  // 0x38: pointer
+  if (data?.crHeader !== undefined) view.setBigUint64(56, data.crHeader === null ? 0n : BigInt(util.toPointer(data.crHeader)), true);
+  // 0x40: pointer
+  if (data?.crFooter !== undefined) view.setBigUint64(64, data.crFooter === null ? 0n : BigInt(util.toPointer(data.crFooter)), true);
   return buf;
 }
 
@@ -10412,13 +12021,35 @@ export function allocLVINSERTGROUPSORTED(data?: Partial<LVINSERTGROUPSORTED>): U
 }
 
 /**
+ * Windows.Win32.Foundation.SIZE (size: 8)
+ */
+export interface SIZE {
+  /** i32 */
+  cx: number;
+  /** i32 */
+  cy: number;
+}
+
+export const sizeofSIZE = 8;
+
+export function allocSIZE(data?: Partial<SIZE>): Uint8Array {
+  const buf = new Uint8Array(sizeofSIZE);
+  const view = new DataView(buf.buffer);
+  // 0x00: i32
+  if (data?.cx !== undefined) view.setInt32(0, Number(data.cx), true);
+  // 0x04: i32
+  if (data?.cy !== undefined) view.setInt32(4, Number(data.cy), true);
+  return buf;
+}
+
+/**
  * Windows.Win32.UI.Controls.LVTILEVIEWINFO (size: 40)
  */
 export interface LVTILEVIEWINFO {
   /** u32 */
   cbSize: number;
-  /** u32 */
-  dwMask: number;
+  /** Windows.Win32.UI.Controls.LVTILEVIEWINFO_MASK */
+  dwMask: LVTILEVIEWINFO_MASK;
   /** Windows.Win32.UI.Controls.LVTILEVIEWINFO_FLAGS */
   dwFlags: LVTILEVIEWINFO_FLAGS;
   /** Windows.Win32.Foundation.SIZE */
@@ -10492,8 +12123,8 @@ export function allocLVTILEINFO(data?: Partial<LVTILEINFO>): Uint8Array {
 export interface LVINSERTMARK {
   /** u32 */
   cbSize: number;
-  /** u32 */
-  dwFlags: number;
+  /** Windows.Win32.UI.Controls.LIST_VIEW_INSERT_MARK_FLAGS */
+  dwFlags: LIST_VIEW_INSERT_MARK_FLAGS;
   /** i32 */
   iItem: number;
   /** u32 */
@@ -10665,8 +12296,8 @@ export interface NMLISTVIEW {
   uNewState: number;
   /** u32 */
   uOldState: number;
-  /** u32 */
-  uChanged: number;
+  /** Windows.Win32.UI.Controls.LIST_VIEW_ITEM_FLAGS */
+  uChanged: LIST_VIEW_ITEM_FLAGS;
   /** Windows.Win32.Foundation.POINT */
   ptAction: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.Foundation.LPARAM */
@@ -10751,21 +12382,21 @@ export function allocNMITEMACTIVATE(data?: Partial<NMITEMACTIVATE>): Uint8Array 
 }
 
 /**
- * Windows.Win32.UI.Controls.NMLVCUSTOMDRAW (size: 64)
+ * Windows.Win32.UI.Controls.NMLVCUSTOMDRAW (size: 72)
  */
 export interface NMLVCUSTOMDRAW {
   /** Windows.Win32.UI.Controls.NMCUSTOMDRAW */
   nmcd: Uint8Array | Deno.PointerValue | null;
-  /** u32 */
-  clrText: number;
-  /** u32 */
-  clrTextBk: number;
+  /** Windows.Win32.Foundation.COLORREF */
+  clrText: Uint8Array | Deno.PointerValue | null;
+  /** Windows.Win32.Foundation.COLORREF */
+  clrTextBk: Uint8Array | Deno.PointerValue | null;
   /** i32 */
   iSubItem: number;
   /** Windows.Win32.UI.Controls.NMLVCUSTOMDRAW_ITEM_TYPE */
   dwItemType: NMLVCUSTOMDRAW_ITEM_TYPE;
-  /** u32 */
-  clrFace: number;
+  /** Windows.Win32.Foundation.COLORREF */
+  clrFace: Uint8Array | Deno.PointerValue | null;
   /** i32 */
   iIconEffect: number;
   /** i32 */
@@ -10776,41 +12407,40 @@ export interface NMLVCUSTOMDRAW {
   iStateId: number;
   /** Windows.Win32.Foundation.RECT */
   rcText: Uint8Array | Deno.PointerValue | null;
-  /** Windows.Win32.UI.Controls.NMLVCUSTOMDRAW_ALIGN */
-  uAlign: NMLVCUSTOMDRAW_ALIGN;
+  /** Windows.Win32.UI.Controls.LIST_VIEW_GROUP_ALIGN_FLAGS */
+  uAlign: LIST_VIEW_GROUP_ALIGN_FLAGS;
 }
 
-export const sizeofNMLVCUSTOMDRAW = 64;
+export const sizeofNMLVCUSTOMDRAW = 72;
 
 export function allocNMLVCUSTOMDRAW(data?: Partial<NMLVCUSTOMDRAW>): Uint8Array {
   const buf = new Uint8Array(sizeofNMLVCUSTOMDRAW);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
   if (data?.nmcd !== undefined) view.setBigUint64(0, data.nmcd === null ? 0n : BigInt(util.toPointer(data.nmcd)), true);
-  // 0x08: u32
-  if (data?.clrText !== undefined) view.setUint32(8, Number(data.clrText), true);
-  // 0x0c: u32
-  if (data?.clrTextBk !== undefined) view.setUint32(12, Number(data.clrTextBk), true);
-  // 0x10: i32
-  if (data?.iSubItem !== undefined) view.setInt32(16, Number(data.iSubItem), true);
-  // 0x14: u32
-  if (data?.dwItemType !== undefined) view.setUint32(20, Number(data.dwItemType), true);
-  // 0x18: u32
-  if (data?.clrFace !== undefined) view.setUint32(24, Number(data.clrFace), true);
-  // 0x1c: i32
-  if (data?.iIconEffect !== undefined) view.setInt32(28, Number(data.iIconEffect), true);
-  // 0x20: i32
-  if (data?.iIconPhase !== undefined) view.setInt32(32, Number(data.iIconPhase), true);
-  // 0x24: i32
-  if (data?.iPartId !== undefined) view.setInt32(36, Number(data.iPartId), true);
+  // 0x08: pointer
+  if (data?.clrText !== undefined) view.setBigUint64(8, data.clrText === null ? 0n : BigInt(util.toPointer(data.clrText)), true);
+  // 0x10: pointer
+  if (data?.clrTextBk !== undefined) view.setBigUint64(16, data.clrTextBk === null ? 0n : BigInt(util.toPointer(data.clrTextBk)), true);
+  // 0x18: i32
+  if (data?.iSubItem !== undefined) view.setInt32(24, Number(data.iSubItem), true);
+  // 0x1c: u32
+  if (data?.dwItemType !== undefined) view.setUint32(28, Number(data.dwItemType), true);
+  // 0x20: pointer
+  if (data?.clrFace !== undefined) view.setBigUint64(32, data.clrFace === null ? 0n : BigInt(util.toPointer(data.clrFace)), true);
   // 0x28: i32
-  if (data?.iStateId !== undefined) view.setInt32(40, Number(data.iStateId), true);
-  // 0x2c: pad4
-  // 0x30: pointer
-  if (data?.rcText !== undefined) view.setBigUint64(48, data.rcText === null ? 0n : BigInt(util.toPointer(data.rcText)), true);
-  // 0x38: u32
-  if (data?.uAlign !== undefined) view.setUint32(56, Number(data.uAlign), true);
-  // 0x3c: pad4
+  if (data?.iIconEffect !== undefined) view.setInt32(40, Number(data.iIconEffect), true);
+  // 0x2c: i32
+  if (data?.iIconPhase !== undefined) view.setInt32(44, Number(data.iIconPhase), true);
+  // 0x30: i32
+  if (data?.iPartId !== undefined) view.setInt32(48, Number(data.iPartId), true);
+  // 0x34: i32
+  if (data?.iStateId !== undefined) view.setInt32(52, Number(data.iStateId), true);
+  // 0x38: pointer
+  if (data?.rcText !== undefined) view.setBigUint64(56, data.rcText === null ? 0n : BigInt(util.toPointer(data.rcText)), true);
+  // 0x40: u32
+  if (data?.uAlign !== undefined) view.setUint32(64, Number(data.uAlign), true);
+  // 0x44: pad4
   return buf;
 }
 
@@ -10904,10 +12534,10 @@ export interface NMLVODSTATECHANGE {
   iFrom: number;
   /** i32 */
   iTo: number;
-  /** u32 */
-  uNewState: number;
-  /** u32 */
-  uOldState: number;
+  /** Windows.Win32.UI.Controls.LIST_VIEW_ITEM_STATE_FLAGS */
+  uNewState: LIST_VIEW_ITEM_STATE_FLAGS;
+  /** Windows.Win32.UI.Controls.LIST_VIEW_ITEM_STATE_FLAGS */
+  uOldState: LIST_VIEW_ITEM_STATE_FLAGS;
 }
 
 export const sizeofNMLVODSTATECHANGE = 24;
@@ -11035,8 +12665,8 @@ export function allocNMLVLINK(data?: Partial<NMLVLINK>): Uint8Array {
 export interface NMLVGETINFOTIPA {
   /** Windows.Win32.UI.Controls.NMHDR */
   hdr: Uint8Array | Deno.PointerValue | null;
-  /** u32 */
-  dwFlags: number;
+  /** Windows.Win32.UI.Controls.NMLVGETINFOTIP_FLAGS */
+  dwFlags: NMLVGETINFOTIP_FLAGS;
   /** Windows.Win32.Foundation.PSTR */
   pszText: string | null;
   /** i32 */
@@ -11082,8 +12712,8 @@ export function allocNMLVGETINFOTIPA(data?: Partial<NMLVGETINFOTIPA>): Uint8Arra
 export interface NMLVGETINFOTIPW {
   /** Windows.Win32.UI.Controls.NMHDR */
   hdr: Uint8Array | Deno.PointerValue | null;
-  /** u32 */
-  dwFlags: number;
+  /** Windows.Win32.UI.Controls.NMLVGETINFOTIP_FLAGS */
+  dwFlags: NMLVGETINFOTIP_FLAGS;
   /** Windows.Win32.Foundation.PWSTR */
   pszText: string | null;
   /** i32 */
@@ -11214,10 +12844,10 @@ export interface TVITEMA {
   mask: TVITEM_MASK;
   /** Windows.Win32.UI.Controls.HTREEITEM */
   hItem: Uint8Array | Deno.PointerValue | null;
-  /** u32 */
-  state: number;
-  /** u32 */
-  stateMask: number;
+  /** Windows.Win32.UI.Controls.TREE_VIEW_ITEM_STATE_FLAGS */
+  state: TREE_VIEW_ITEM_STATE_FLAGS;
+  /** Windows.Win32.UI.Controls.TREE_VIEW_ITEM_STATE_FLAGS */
+  stateMask: TREE_VIEW_ITEM_STATE_FLAGS;
   /** Windows.Win32.Foundation.PSTR */
   pszText: string | null;
   /** i32 */
@@ -11272,10 +12902,10 @@ export interface TVITEMW {
   mask: TVITEM_MASK;
   /** Windows.Win32.UI.Controls.HTREEITEM */
   hItem: Uint8Array | Deno.PointerValue | null;
-  /** u32 */
-  state: number;
-  /** u32 */
-  stateMask: number;
+  /** Windows.Win32.UI.Controls.TREE_VIEW_ITEM_STATE_FLAGS */
+  state: TREE_VIEW_ITEM_STATE_FLAGS;
+  /** Windows.Win32.UI.Controls.TREE_VIEW_ITEM_STATE_FLAGS */
+  stateMask: TREE_VIEW_ITEM_STATE_FLAGS;
   /** Windows.Win32.Foundation.PWSTR */
   pszText: string | null;
   /** i32 */
@@ -11479,6 +13109,50 @@ export function allocTVITEMEXW(data?: Partial<TVITEMEXW>): Uint8Array {
 }
 
 /**
+ * _Anonymous_e__Struct (size: 16)
+ */
+export interface _Anonymous_e__Struct {
+  /** u64 */
+  Alignment: Deno.PointerValue;
+  /** u64 */
+  Region: Deno.PointerValue;
+}
+
+export const sizeof_Anonymous_e__Struct = 16;
+
+export function alloc_Anonymous_e__Struct(data?: Partial<_Anonymous_e__Struct>): Uint8Array {
+  const buf = new Uint8Array(sizeof_Anonymous_e__Struct);
+  const view = new DataView(buf.buffer);
+  // 0x00: u64
+  if (data?.Alignment !== undefined) view.setBigUint64(0, BigInt(data.Alignment), true);
+  // 0x08: u64
+  if (data?.Region !== undefined) view.setBigUint64(8, BigInt(data.Region), true);
+  return buf;
+}
+
+/**
+ * _Anonymous_e__Union (size: 16)
+ */
+export interface _Anonymous_e__Union {
+  /** _Anonymous_e__Struct */
+  Anonymous: Uint8Array | Deno.PointerValue | null;
+  /** array */
+  X: Deno.PointerValue | null;
+}
+
+export const sizeof_Anonymous_e__Union = 16;
+
+export function alloc_Anonymous_e__Union(data?: Partial<_Anonymous_e__Union>): Uint8Array {
+  const buf = new Uint8Array(sizeof_Anonymous_e__Union);
+  const view = new DataView(buf.buffer);
+  // 0x00: pointer
+  if (data?.Anonymous !== undefined) view.setBigUint64(0, data.Anonymous === null ? 0n : BigInt(util.toPointer(data.Anonymous)), true);
+  // 0x08: pointer
+  if (data?.X !== undefined) view.setBigUint64(8, data.X === null ? 0n : BigInt(util.toPointer(data.X)), true);
+  return buf;
+}
+
+/**
  * Windows.Win32.UI.Controls.TVINSERTSTRUCTA (size: 24)
  */
 export interface TVINSERTSTRUCTA {
@@ -11616,8 +13290,8 @@ export function allocTVSORTCB(data?: Partial<TVSORTCB>): Uint8Array {
 export interface NMTREEVIEWA {
   /** Windows.Win32.UI.Controls.NMHDR */
   hdr: Uint8Array | Deno.PointerValue | null;
-  /** u32 */
-  action: number;
+  /** Windows.Win32.UI.Controls.NM_TREEVIEW_ACTION */
+  action: NM_TREEVIEW_ACTION;
   /** Windows.Win32.UI.Controls.TVITEMA */
   itemOld: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.UI.Controls.TVITEMA */
@@ -11651,8 +13325,8 @@ export function allocNMTREEVIEWA(data?: Partial<NMTREEVIEWA>): Uint8Array {
 export interface NMTREEVIEWW {
   /** Windows.Win32.UI.Controls.NMHDR */
   hdr: Uint8Array | Deno.PointerValue | null;
-  /** u32 */
-  action: number;
+  /** Windows.Win32.UI.Controls.NM_TREEVIEW_ACTION */
+  action: NM_TREEVIEW_ACTION;
   /** Windows.Win32.UI.Controls.TVITEMW */
   itemOld: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.UI.Controls.TVITEMW */
@@ -11796,33 +13470,33 @@ export function allocNMTVKEYDOWN(data?: Partial<NMTVKEYDOWN>): Uint8Array {
 }
 
 /**
- * Windows.Win32.UI.Controls.NMTVCUSTOMDRAW (size: 24)
+ * Windows.Win32.UI.Controls.NMTVCUSTOMDRAW (size: 32)
  */
 export interface NMTVCUSTOMDRAW {
   /** Windows.Win32.UI.Controls.NMCUSTOMDRAW */
   nmcd: Uint8Array | Deno.PointerValue | null;
-  /** u32 */
-  clrText: number;
-  /** u32 */
-  clrTextBk: number;
+  /** Windows.Win32.Foundation.COLORREF */
+  clrText: Uint8Array | Deno.PointerValue | null;
+  /** Windows.Win32.Foundation.COLORREF */
+  clrTextBk: Uint8Array | Deno.PointerValue | null;
   /** i32 */
   iLevel: number;
 }
 
-export const sizeofNMTVCUSTOMDRAW = 24;
+export const sizeofNMTVCUSTOMDRAW = 32;
 
 export function allocNMTVCUSTOMDRAW(data?: Partial<NMTVCUSTOMDRAW>): Uint8Array {
   const buf = new Uint8Array(sizeofNMTVCUSTOMDRAW);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
   if (data?.nmcd !== undefined) view.setBigUint64(0, data.nmcd === null ? 0n : BigInt(util.toPointer(data.nmcd)), true);
-  // 0x08: u32
-  if (data?.clrText !== undefined) view.setUint32(8, Number(data.clrText), true);
-  // 0x0c: u32
-  if (data?.clrTextBk !== undefined) view.setUint32(12, Number(data.clrTextBk), true);
-  // 0x10: i32
-  if (data?.iLevel !== undefined) view.setInt32(16, Number(data.iLevel), true);
-  // 0x14: pad4
+  // 0x08: pointer
+  if (data?.clrText !== undefined) view.setBigUint64(8, data.clrText === null ? 0n : BigInt(util.toPointer(data.clrText)), true);
+  // 0x10: pointer
+  if (data?.clrTextBk !== undefined) view.setBigUint64(16, data.clrTextBk === null ? 0n : BigInt(util.toPointer(data.clrTextBk)), true);
+  // 0x18: i32
+  if (data?.iLevel !== undefined) view.setInt32(24, Number(data.iLevel), true);
+  // 0x1c: pad4
   return buf;
 }
 
@@ -12351,10 +14025,10 @@ export function allocTCITEMHEADERW(data?: Partial<TCITEMHEADERW>): Uint8Array {
 export interface TCITEMA {
   /** Windows.Win32.UI.Controls.TCITEMHEADERA_MASK */
   mask: TCITEMHEADERA_MASK;
-  /** u32 */
-  dwState: number;
-  /** u32 */
-  dwStateMask: number;
+  /** Windows.Win32.UI.Controls.TAB_CONTROL_ITEM_STATE */
+  dwState: TAB_CONTROL_ITEM_STATE;
+  /** Windows.Win32.UI.Controls.TAB_CONTROL_ITEM_STATE */
+  dwStateMask: TAB_CONTROL_ITEM_STATE;
   /** Windows.Win32.Foundation.PSTR */
   pszText: string | null;
   /** i32 */
@@ -12397,10 +14071,10 @@ export function allocTCITEMA(data?: Partial<TCITEMA>): Uint8Array {
 export interface TCITEMW {
   /** Windows.Win32.UI.Controls.TCITEMHEADERA_MASK */
   mask: TCITEMHEADERA_MASK;
-  /** u32 */
-  dwState: number;
-  /** u32 */
-  dwStateMask: number;
+  /** Windows.Win32.UI.Controls.TAB_CONTROL_ITEM_STATE */
+  dwState: TAB_CONTROL_ITEM_STATE;
+  /** Windows.Win32.UI.Controls.TAB_CONTROL_ITEM_STATE */
+  dwStateMask: TAB_CONTROL_ITEM_STATE;
   /** Windows.Win32.Foundation.PWSTR */
   pszText: string | null;
   /** i32 */
@@ -12541,8 +14215,8 @@ export interface MCHITTESTINFO {
   cbSize: number;
   /** Windows.Win32.Foundation.POINT */
   pt: Uint8Array | Deno.PointerValue | null;
-  /** u32 */
-  uHit: number;
+  /** Windows.Win32.UI.Controls.MCHITTESTINFO_HIT_FLAGS */
+  uHit: MCHITTESTINFO_HIT_FLAGS;
   /** Windows.Win32.Foundation.SYSTEMTIME */
   st: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.Foundation.RECT */
@@ -12711,10 +14385,10 @@ export function allocNMDAYSTATE(data?: Partial<NMDAYSTATE>): Uint8Array {
 export interface NMVIEWCHANGE {
   /** Windows.Win32.UI.Controls.NMHDR */
   nmhdr: Uint8Array | Deno.PointerValue | null;
-  /** u32 */
-  dwOldView: number;
-  /** u32 */
-  dwNewView: number;
+  /** Windows.Win32.UI.Controls.MONTH_CALDENDAR_MESSAGES_VIEW */
+  dwOldView: MONTH_CALDENDAR_MESSAGES_VIEW;
+  /** Windows.Win32.UI.Controls.MONTH_CALDENDAR_MESSAGES_VIEW */
+  dwNewView: MONTH_CALDENDAR_MESSAGES_VIEW;
 }
 
 export const sizeofNMVIEWCHANGE = 16;
@@ -12786,8 +14460,8 @@ export function allocDATETIMEPICKERINFO(data?: Partial<DATETIMEPICKERINFO>): Uin
 export interface NMDATETIMECHANGE {
   /** Windows.Win32.UI.Controls.NMHDR */
   nmhdr: Uint8Array | Deno.PointerValue | null;
-  /** u32 */
-  dwFlags: number;
+  /** Windows.Win32.UI.Controls.NMDATETIMECHANGE_FLAGS */
+  dwFlags: NMDATETIMECHANGE_FLAGS;
   /** Windows.Win32.Foundation.SYSTEMTIME */
   st: Uint8Array | Deno.PointerValue | null;
 }
@@ -13910,19 +15584,19 @@ export function allocWTA_OPTIONS(data?: Partial<WTA_OPTIONS>): Uint8Array {
 }
 
 /**
- * Windows.Win32.UI.Controls.DTTOPTS (size: 72)
+ * Windows.Win32.UI.Controls.DTTOPTS (size: 88)
  */
 export interface DTTOPTS {
   /** u32 */
   dwSize: number;
-  /** u32 */
-  dwFlags: number;
-  /** u32 */
-  crText: number;
-  /** u32 */
-  crBorder: number;
-  /** u32 */
-  crShadow: number;
+  /** Windows.Win32.UI.Controls.DTTOPTS_FLAGS */
+  dwFlags: DTTOPTS_FLAGS;
+  /** Windows.Win32.Foundation.COLORREF */
+  crText: Uint8Array | Deno.PointerValue | null;
+  /** Windows.Win32.Foundation.COLORREF */
+  crBorder: Uint8Array | Deno.PointerValue | null;
+  /** Windows.Win32.Foundation.COLORREF */
+  crShadow: Uint8Array | Deno.PointerValue | null;
   /** i32 */
   iTextShadowType: number;
   /** Windows.Win32.Foundation.POINT */
@@ -13945,7 +15619,7 @@ export interface DTTOPTS {
   lParam: Uint8Array | Deno.PointerValue | null;
 }
 
-export const sizeofDTTOPTS = 72;
+export const sizeofDTTOPTS = 88;
 
 export function allocDTTOPTS(data?: Partial<DTTOPTS>): Uint8Array {
   const buf = new Uint8Array(sizeofDTTOPTS);
@@ -13954,32 +15628,33 @@ export function allocDTTOPTS(data?: Partial<DTTOPTS>): Uint8Array {
   if (data?.dwSize !== undefined) view.setUint32(0, Number(data.dwSize), true);
   // 0x04: u32
   if (data?.dwFlags !== undefined) view.setUint32(4, Number(data.dwFlags), true);
-  // 0x08: u32
-  if (data?.crText !== undefined) view.setUint32(8, Number(data.crText), true);
-  // 0x0c: u32
-  if (data?.crBorder !== undefined) view.setUint32(12, Number(data.crBorder), true);
-  // 0x10: u32
-  if (data?.crShadow !== undefined) view.setUint32(16, Number(data.crShadow), true);
-  // 0x14: i32
-  if (data?.iTextShadowType !== undefined) view.setInt32(20, Number(data.iTextShadowType), true);
+  // 0x08: pointer
+  if (data?.crText !== undefined) view.setBigUint64(8, data.crText === null ? 0n : BigInt(util.toPointer(data.crText)), true);
+  // 0x10: pointer
+  if (data?.crBorder !== undefined) view.setBigUint64(16, data.crBorder === null ? 0n : BigInt(util.toPointer(data.crBorder)), true);
   // 0x18: pointer
-  if (data?.ptShadowOffset !== undefined) view.setBigUint64(24, data.ptShadowOffset === null ? 0n : BigInt(util.toPointer(data.ptShadowOffset)), true);
+  if (data?.crShadow !== undefined) view.setBigUint64(24, data.crShadow === null ? 0n : BigInt(util.toPointer(data.crShadow)), true);
   // 0x20: i32
-  if (data?.iBorderSize !== undefined) view.setInt32(32, Number(data.iBorderSize), true);
-  // 0x24: i32
-  if (data?.iFontPropId !== undefined) view.setInt32(36, Number(data.iFontPropId), true);
-  // 0x28: i32
-  if (data?.iColorPropId !== undefined) view.setInt32(40, Number(data.iColorPropId), true);
-  // 0x2c: i32
-  if (data?.iStateId !== undefined) view.setInt32(44, Number(data.iStateId), true);
+  if (data?.iTextShadowType !== undefined) view.setInt32(32, Number(data.iTextShadowType), true);
+  // 0x24: pad4
+  // 0x28: pointer
+  if (data?.ptShadowOffset !== undefined) view.setBigUint64(40, data.ptShadowOffset === null ? 0n : BigInt(util.toPointer(data.ptShadowOffset)), true);
   // 0x30: i32
-  if (data?.fApplyOverlay !== undefined) view.setInt32(48, Number(data.fApplyOverlay), true);
+  if (data?.iBorderSize !== undefined) view.setInt32(48, Number(data.iBorderSize), true);
   // 0x34: i32
-  if (data?.iGlowSize !== undefined) view.setInt32(52, Number(data.iGlowSize), true);
-  // 0x38: pointer
-  if (data?.pfnDrawTextCallback !== undefined) view.setBigUint64(56, data.pfnDrawTextCallback === null ? 0n : BigInt(util.toPointer(data.pfnDrawTextCallback)), true);
-  // 0x40: pointer
-  if (data?.lParam !== undefined) view.setBigUint64(64, data.lParam === null ? 0n : BigInt(util.toPointer(data.lParam)), true);
+  if (data?.iFontPropId !== undefined) view.setInt32(52, Number(data.iFontPropId), true);
+  // 0x38: i32
+  if (data?.iColorPropId !== undefined) view.setInt32(56, Number(data.iColorPropId), true);
+  // 0x3c: i32
+  if (data?.iStateId !== undefined) view.setInt32(60, Number(data.iStateId), true);
+  // 0x40: i32
+  if (data?.fApplyOverlay !== undefined) view.setInt32(64, Number(data.fApplyOverlay), true);
+  // 0x44: i32
+  if (data?.iGlowSize !== undefined) view.setInt32(68, Number(data.iGlowSize), true);
+  // 0x48: pointer
+  if (data?.pfnDrawTextCallback !== undefined) view.setBigUint64(72, data.pfnDrawTextCallback === null ? 0n : BigInt(util.toPointer(data.pfnDrawTextCallback)), true);
+  // 0x50: pointer
+  if (data?.lParam !== undefined) view.setBigUint64(80, data.lParam === null ? 0n : BigInt(util.toPointer(data.lParam)), true);
   return buf;
 }
 
@@ -14324,1662 +15999,1547 @@ export function allocCCINFOW(data?: Partial<CCINFOW>): Uint8Array {
 }
 
 /**
- * Windows.Win32.UI.Controls.Dialogs.OPENFILENAME_NT4A (size: 136)
+ * Windows.Win32.UI.Controls.RichEdit.IMECOMPTEXT (size: 8)
  */
-export interface OPENFILENAME_NT4A {
-  /** u32 */
-  lStructSize: number;
-  /** Windows.Win32.Foundation.HWND */
-  hwndOwner: Deno.PointerValue | null;
-  /** Windows.Win32.Foundation.HINSTANCE */
-  hInstance: Uint8Array | Deno.PointerValue | null;
-  /** Windows.Win32.Foundation.PSTR */
-  lpstrFilter: string | null;
-  /** Windows.Win32.Foundation.PSTR */
-  lpstrCustomFilter: string | null;
-  /** u32 */
-  nMaxCustFilter: number;
-  /** u32 */
-  nFilterIndex: number;
-  /** Windows.Win32.Foundation.PSTR */
-  lpstrFile: string | null;
-  /** u32 */
-  nMaxFile: number;
-  /** Windows.Win32.Foundation.PSTR */
-  lpstrFileTitle: string | null;
-  /** u32 */
-  nMaxFileTitle: number;
-  /** Windows.Win32.Foundation.PSTR */
-  lpstrInitialDir: string | null;
-  /** Windows.Win32.Foundation.PSTR */
-  lpstrTitle: string | null;
-  /** u32 */
-  Flags: number;
-  /** u16 */
-  nFileOffset: number;
-  /** u16 */
-  nFileExtension: number;
-  /** Windows.Win32.Foundation.PSTR */
-  lpstrDefExt: string | null;
-  /** Windows.Win32.Foundation.LPARAM */
-  lCustData: Uint8Array | Deno.PointerValue | null;
-  /** Windows.Win32.UI.Controls.Dialogs.LPOFNHOOKPROC */
-  lpfnHook: Uint8Array | Deno.PointerValue | null;
-  /** Windows.Win32.Foundation.PSTR */
-  lpTemplateName: string | null;
-}
-
-export const sizeofOPENFILENAME_NT4A = 136;
-
-export function allocOPENFILENAME_NT4A(data?: Partial<OPENFILENAME_NT4A>): Uint8Array {
-  const buf = new Uint8Array(sizeofOPENFILENAME_NT4A);
-  const view = new DataView(buf.buffer);
-  // 0x00: u32
-  if (data?.lStructSize !== undefined) view.setUint32(0, Number(data.lStructSize), true);
-  // 0x04: pad4
-  // 0x08: pointer
-  if (data?.hwndOwner !== undefined) view.setBigUint64(8, data.hwndOwner === null ? 0n : BigInt(util.toPointer(data.hwndOwner)), true);
-  // 0x10: pointer
-  if (data?.hInstance !== undefined) view.setBigUint64(16, data.hInstance === null ? 0n : BigInt(util.toPointer(data.hInstance)), true);
-  // 0x18: buffer
-  if (data?.lpstrFilter !== undefined) {
-    (buf as any)._f24 = util.pstrToFfi(data.lpstrFilter);
-    view.setBigUint64(24, (buf as any)._f24 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f24)), true);
-  }
-  // 0x20: buffer
-  if (data?.lpstrCustomFilter !== undefined) {
-    (buf as any)._f32 = util.pstrToFfi(data.lpstrCustomFilter);
-    view.setBigUint64(32, (buf as any)._f32 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f32)), true);
-  }
-  // 0x28: u32
-  if (data?.nMaxCustFilter !== undefined) view.setUint32(40, Number(data.nMaxCustFilter), true);
-  // 0x2c: u32
-  if (data?.nFilterIndex !== undefined) view.setUint32(44, Number(data.nFilterIndex), true);
-  // 0x30: buffer
-  if (data?.lpstrFile !== undefined) {
-    (buf as any)._f48 = util.pstrToFfi(data.lpstrFile);
-    view.setBigUint64(48, (buf as any)._f48 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f48)), true);
-  }
-  // 0x38: u32
-  if (data?.nMaxFile !== undefined) view.setUint32(56, Number(data.nMaxFile), true);
-  // 0x3c: pad4
-  // 0x40: buffer
-  if (data?.lpstrFileTitle !== undefined) {
-    (buf as any)._f64 = util.pstrToFfi(data.lpstrFileTitle);
-    view.setBigUint64(64, (buf as any)._f64 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f64)), true);
-  }
-  // 0x48: u32
-  if (data?.nMaxFileTitle !== undefined) view.setUint32(72, Number(data.nMaxFileTitle), true);
-  // 0x4c: pad4
-  // 0x50: buffer
-  if (data?.lpstrInitialDir !== undefined) {
-    (buf as any)._f80 = util.pstrToFfi(data.lpstrInitialDir);
-    view.setBigUint64(80, (buf as any)._f80 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f80)), true);
-  }
-  // 0x58: buffer
-  if (data?.lpstrTitle !== undefined) {
-    (buf as any)._f88 = util.pstrToFfi(data.lpstrTitle);
-    view.setBigUint64(88, (buf as any)._f88 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f88)), true);
-  }
-  // 0x60: u32
-  if (data?.Flags !== undefined) view.setUint32(96, Number(data.Flags), true);
-  // 0x64: u16
-  if (data?.nFileOffset !== undefined) view.setUint16(100, Number(data.nFileOffset), true);
-  // 0x66: u16
-  if (data?.nFileExtension !== undefined) view.setUint16(102, Number(data.nFileExtension), true);
-  // 0x68: buffer
-  if (data?.lpstrDefExt !== undefined) {
-    (buf as any)._f104 = util.pstrToFfi(data.lpstrDefExt);
-    view.setBigUint64(104, (buf as any)._f104 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f104)), true);
-  }
-  // 0x70: pointer
-  if (data?.lCustData !== undefined) view.setBigUint64(112, data.lCustData === null ? 0n : BigInt(util.toPointer(data.lCustData)), true);
-  // 0x78: pointer
-  if (data?.lpfnHook !== undefined) view.setBigUint64(120, data.lpfnHook === null ? 0n : BigInt(util.toPointer(data.lpfnHook)), true);
-  // 0x80: buffer
-  if (data?.lpTemplateName !== undefined) {
-    (buf as any)._f128 = util.pstrToFfi(data.lpTemplateName);
-    view.setBigUint64(128, (buf as any)._f128 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f128)), true);
-  }
-  return buf;
-}
-
-/**
- * Windows.Win32.UI.Controls.Dialogs.OPENFILENAME_NT4W (size: 136)
- */
-export interface OPENFILENAME_NT4W {
-  /** u32 */
-  lStructSize: number;
-  /** Windows.Win32.Foundation.HWND */
-  hwndOwner: Deno.PointerValue | null;
-  /** Windows.Win32.Foundation.HINSTANCE */
-  hInstance: Uint8Array | Deno.PointerValue | null;
-  /** Windows.Win32.Foundation.PWSTR */
-  lpstrFilter: string | null;
-  /** Windows.Win32.Foundation.PWSTR */
-  lpstrCustomFilter: string | null;
-  /** u32 */
-  nMaxCustFilter: number;
-  /** u32 */
-  nFilterIndex: number;
-  /** Windows.Win32.Foundation.PWSTR */
-  lpstrFile: string | null;
-  /** u32 */
-  nMaxFile: number;
-  /** Windows.Win32.Foundation.PWSTR */
-  lpstrFileTitle: string | null;
-  /** u32 */
-  nMaxFileTitle: number;
-  /** Windows.Win32.Foundation.PWSTR */
-  lpstrInitialDir: string | null;
-  /** Windows.Win32.Foundation.PWSTR */
-  lpstrTitle: string | null;
-  /** u32 */
-  Flags: number;
-  /** u16 */
-  nFileOffset: number;
-  /** u16 */
-  nFileExtension: number;
-  /** Windows.Win32.Foundation.PWSTR */
-  lpstrDefExt: string | null;
-  /** Windows.Win32.Foundation.LPARAM */
-  lCustData: Uint8Array | Deno.PointerValue | null;
-  /** Windows.Win32.UI.Controls.Dialogs.LPOFNHOOKPROC */
-  lpfnHook: Uint8Array | Deno.PointerValue | null;
-  /** Windows.Win32.Foundation.PWSTR */
-  lpTemplateName: string | null;
-}
-
-export const sizeofOPENFILENAME_NT4W = 136;
-
-export function allocOPENFILENAME_NT4W(data?: Partial<OPENFILENAME_NT4W>): Uint8Array {
-  const buf = new Uint8Array(sizeofOPENFILENAME_NT4W);
-  const view = new DataView(buf.buffer);
-  // 0x00: u32
-  if (data?.lStructSize !== undefined) view.setUint32(0, Number(data.lStructSize), true);
-  // 0x04: pad4
-  // 0x08: pointer
-  if (data?.hwndOwner !== undefined) view.setBigUint64(8, data.hwndOwner === null ? 0n : BigInt(util.toPointer(data.hwndOwner)), true);
-  // 0x10: pointer
-  if (data?.hInstance !== undefined) view.setBigUint64(16, data.hInstance === null ? 0n : BigInt(util.toPointer(data.hInstance)), true);
-  // 0x18: buffer
-  if (data?.lpstrFilter !== undefined) {
-    (buf as any)._f24 = util.pwstrToFfi(data.lpstrFilter);
-    view.setBigUint64(24, (buf as any)._f24 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f24)), true);
-  }
-  // 0x20: buffer
-  if (data?.lpstrCustomFilter !== undefined) {
-    (buf as any)._f32 = util.pwstrToFfi(data.lpstrCustomFilter);
-    view.setBigUint64(32, (buf as any)._f32 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f32)), true);
-  }
-  // 0x28: u32
-  if (data?.nMaxCustFilter !== undefined) view.setUint32(40, Number(data.nMaxCustFilter), true);
-  // 0x2c: u32
-  if (data?.nFilterIndex !== undefined) view.setUint32(44, Number(data.nFilterIndex), true);
-  // 0x30: buffer
-  if (data?.lpstrFile !== undefined) {
-    (buf as any)._f48 = util.pwstrToFfi(data.lpstrFile);
-    view.setBigUint64(48, (buf as any)._f48 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f48)), true);
-  }
-  // 0x38: u32
-  if (data?.nMaxFile !== undefined) view.setUint32(56, Number(data.nMaxFile), true);
-  // 0x3c: pad4
-  // 0x40: buffer
-  if (data?.lpstrFileTitle !== undefined) {
-    (buf as any)._f64 = util.pwstrToFfi(data.lpstrFileTitle);
-    view.setBigUint64(64, (buf as any)._f64 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f64)), true);
-  }
-  // 0x48: u32
-  if (data?.nMaxFileTitle !== undefined) view.setUint32(72, Number(data.nMaxFileTitle), true);
-  // 0x4c: pad4
-  // 0x50: buffer
-  if (data?.lpstrInitialDir !== undefined) {
-    (buf as any)._f80 = util.pwstrToFfi(data.lpstrInitialDir);
-    view.setBigUint64(80, (buf as any)._f80 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f80)), true);
-  }
-  // 0x58: buffer
-  if (data?.lpstrTitle !== undefined) {
-    (buf as any)._f88 = util.pwstrToFfi(data.lpstrTitle);
-    view.setBigUint64(88, (buf as any)._f88 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f88)), true);
-  }
-  // 0x60: u32
-  if (data?.Flags !== undefined) view.setUint32(96, Number(data.Flags), true);
-  // 0x64: u16
-  if (data?.nFileOffset !== undefined) view.setUint16(100, Number(data.nFileOffset), true);
-  // 0x66: u16
-  if (data?.nFileExtension !== undefined) view.setUint16(102, Number(data.nFileExtension), true);
-  // 0x68: buffer
-  if (data?.lpstrDefExt !== undefined) {
-    (buf as any)._f104 = util.pwstrToFfi(data.lpstrDefExt);
-    view.setBigUint64(104, (buf as any)._f104 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f104)), true);
-  }
-  // 0x70: pointer
-  if (data?.lCustData !== undefined) view.setBigUint64(112, data.lCustData === null ? 0n : BigInt(util.toPointer(data.lCustData)), true);
-  // 0x78: pointer
-  if (data?.lpfnHook !== undefined) view.setBigUint64(120, data.lpfnHook === null ? 0n : BigInt(util.toPointer(data.lpfnHook)), true);
-  // 0x80: buffer
-  if (data?.lpTemplateName !== undefined) {
-    (buf as any)._f128 = util.pwstrToFfi(data.lpTemplateName);
-    view.setBigUint64(128, (buf as any)._f128 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f128)), true);
-  }
-  return buf;
-}
-
-/**
- * Windows.Win32.UI.Controls.Dialogs.OPENFILENAMEA (size: 152)
- */
-export interface OPENFILENAMEA {
-  /** u32 */
-  lStructSize: number;
-  /** Windows.Win32.Foundation.HWND */
-  hwndOwner: Deno.PointerValue | null;
-  /** Windows.Win32.Foundation.HINSTANCE */
-  hInstance: Uint8Array | Deno.PointerValue | null;
-  /** Windows.Win32.Foundation.PSTR */
-  lpstrFilter: string | null;
-  /** Windows.Win32.Foundation.PSTR */
-  lpstrCustomFilter: string | null;
-  /** u32 */
-  nMaxCustFilter: number;
-  /** u32 */
-  nFilterIndex: number;
-  /** Windows.Win32.Foundation.PSTR */
-  lpstrFile: string | null;
-  /** u32 */
-  nMaxFile: number;
-  /** Windows.Win32.Foundation.PSTR */
-  lpstrFileTitle: string | null;
-  /** u32 */
-  nMaxFileTitle: number;
-  /** Windows.Win32.Foundation.PSTR */
-  lpstrInitialDir: string | null;
-  /** Windows.Win32.Foundation.PSTR */
-  lpstrTitle: string | null;
-  /** Windows.Win32.UI.Controls.Dialogs.OPEN_FILENAME_FLAGS */
-  Flags: OPEN_FILENAME_FLAGS;
-  /** u16 */
-  nFileOffset: number;
-  /** u16 */
-  nFileExtension: number;
-  /** Windows.Win32.Foundation.PSTR */
-  lpstrDefExt: string | null;
-  /** Windows.Win32.Foundation.LPARAM */
-  lCustData: Uint8Array | Deno.PointerValue | null;
-  /** Windows.Win32.UI.Controls.Dialogs.LPOFNHOOKPROC */
-  lpfnHook: Uint8Array | Deno.PointerValue | null;
-  /** Windows.Win32.Foundation.PSTR */
-  lpTemplateName: string | null;
-  /** ptr */
-  pvReserved: Deno.PointerValue | Uint8Array | null;
-  /** u32 */
-  dwReserved: number;
-  /** Windows.Win32.UI.Controls.Dialogs.OPEN_FILENAME_FLAGS_EX */
-  FlagsEx: OPEN_FILENAME_FLAGS_EX;
-}
-
-export const sizeofOPENFILENAMEA = 152;
-
-export function allocOPENFILENAMEA(data?: Partial<OPENFILENAMEA>): Uint8Array {
-  const buf = new Uint8Array(sizeofOPENFILENAMEA);
-  const view = new DataView(buf.buffer);
-  // 0x00: u32
-  if (data?.lStructSize !== undefined) view.setUint32(0, Number(data.lStructSize), true);
-  // 0x04: pad4
-  // 0x08: pointer
-  if (data?.hwndOwner !== undefined) view.setBigUint64(8, data.hwndOwner === null ? 0n : BigInt(util.toPointer(data.hwndOwner)), true);
-  // 0x10: pointer
-  if (data?.hInstance !== undefined) view.setBigUint64(16, data.hInstance === null ? 0n : BigInt(util.toPointer(data.hInstance)), true);
-  // 0x18: buffer
-  if (data?.lpstrFilter !== undefined) {
-    (buf as any)._f24 = util.pstrToFfi(data.lpstrFilter);
-    view.setBigUint64(24, (buf as any)._f24 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f24)), true);
-  }
-  // 0x20: buffer
-  if (data?.lpstrCustomFilter !== undefined) {
-    (buf as any)._f32 = util.pstrToFfi(data.lpstrCustomFilter);
-    view.setBigUint64(32, (buf as any)._f32 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f32)), true);
-  }
-  // 0x28: u32
-  if (data?.nMaxCustFilter !== undefined) view.setUint32(40, Number(data.nMaxCustFilter), true);
-  // 0x2c: u32
-  if (data?.nFilterIndex !== undefined) view.setUint32(44, Number(data.nFilterIndex), true);
-  // 0x30: buffer
-  if (data?.lpstrFile !== undefined) {
-    (buf as any)._f48 = util.pstrToFfi(data.lpstrFile);
-    view.setBigUint64(48, (buf as any)._f48 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f48)), true);
-  }
-  // 0x38: u32
-  if (data?.nMaxFile !== undefined) view.setUint32(56, Number(data.nMaxFile), true);
-  // 0x3c: pad4
-  // 0x40: buffer
-  if (data?.lpstrFileTitle !== undefined) {
-    (buf as any)._f64 = util.pstrToFfi(data.lpstrFileTitle);
-    view.setBigUint64(64, (buf as any)._f64 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f64)), true);
-  }
-  // 0x48: u32
-  if (data?.nMaxFileTitle !== undefined) view.setUint32(72, Number(data.nMaxFileTitle), true);
-  // 0x4c: pad4
-  // 0x50: buffer
-  if (data?.lpstrInitialDir !== undefined) {
-    (buf as any)._f80 = util.pstrToFfi(data.lpstrInitialDir);
-    view.setBigUint64(80, (buf as any)._f80 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f80)), true);
-  }
-  // 0x58: buffer
-  if (data?.lpstrTitle !== undefined) {
-    (buf as any)._f88 = util.pstrToFfi(data.lpstrTitle);
-    view.setBigUint64(88, (buf as any)._f88 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f88)), true);
-  }
-  // 0x60: u32
-  if (data?.Flags !== undefined) view.setUint32(96, Number(data.Flags), true);
-  // 0x64: u16
-  if (data?.nFileOffset !== undefined) view.setUint16(100, Number(data.nFileOffset), true);
-  // 0x66: u16
-  if (data?.nFileExtension !== undefined) view.setUint16(102, Number(data.nFileExtension), true);
-  // 0x68: buffer
-  if (data?.lpstrDefExt !== undefined) {
-    (buf as any)._f104 = util.pstrToFfi(data.lpstrDefExt);
-    view.setBigUint64(104, (buf as any)._f104 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f104)), true);
-  }
-  // 0x70: pointer
-  if (data?.lCustData !== undefined) view.setBigUint64(112, data.lCustData === null ? 0n : BigInt(util.toPointer(data.lCustData)), true);
-  // 0x78: pointer
-  if (data?.lpfnHook !== undefined) view.setBigUint64(120, data.lpfnHook === null ? 0n : BigInt(util.toPointer(data.lpfnHook)), true);
-  // 0x80: buffer
-  if (data?.lpTemplateName !== undefined) {
-    (buf as any)._f128 = util.pstrToFfi(data.lpTemplateName);
-    view.setBigUint64(128, (buf as any)._f128 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f128)), true);
-  }
-  // 0x88: pointer
-  if (data?.pvReserved !== undefined) view.setBigUint64(136, data.pvReserved === null ? 0n : BigInt(util.toPointer(data.pvReserved)), true);
-  // 0x90: u32
-  if (data?.dwReserved !== undefined) view.setUint32(144, Number(data.dwReserved), true);
-  // 0x94: u32
-  if (data?.FlagsEx !== undefined) view.setUint32(148, Number(data.FlagsEx), true);
-  return buf;
-}
-
-/**
- * Windows.Win32.UI.Controls.Dialogs.OPENFILENAMEW (size: 152)
- */
-export interface OPENFILENAMEW {
-  /** u32 */
-  lStructSize: number;
-  /** Windows.Win32.Foundation.HWND */
-  hwndOwner: Deno.PointerValue | null;
-  /** Windows.Win32.Foundation.HINSTANCE */
-  hInstance: Uint8Array | Deno.PointerValue | null;
-  /** Windows.Win32.Foundation.PWSTR */
-  lpstrFilter: string | null;
-  /** Windows.Win32.Foundation.PWSTR */
-  lpstrCustomFilter: string | null;
-  /** u32 */
-  nMaxCustFilter: number;
-  /** u32 */
-  nFilterIndex: number;
-  /** Windows.Win32.Foundation.PWSTR */
-  lpstrFile: string | null;
-  /** u32 */
-  nMaxFile: number;
-  /** Windows.Win32.Foundation.PWSTR */
-  lpstrFileTitle: string | null;
-  /** u32 */
-  nMaxFileTitle: number;
-  /** Windows.Win32.Foundation.PWSTR */
-  lpstrInitialDir: string | null;
-  /** Windows.Win32.Foundation.PWSTR */
-  lpstrTitle: string | null;
-  /** Windows.Win32.UI.Controls.Dialogs.OPEN_FILENAME_FLAGS */
-  Flags: OPEN_FILENAME_FLAGS;
-  /** u16 */
-  nFileOffset: number;
-  /** u16 */
-  nFileExtension: number;
-  /** Windows.Win32.Foundation.PWSTR */
-  lpstrDefExt: string | null;
-  /** Windows.Win32.Foundation.LPARAM */
-  lCustData: Uint8Array | Deno.PointerValue | null;
-  /** Windows.Win32.UI.Controls.Dialogs.LPOFNHOOKPROC */
-  lpfnHook: Uint8Array | Deno.PointerValue | null;
-  /** Windows.Win32.Foundation.PWSTR */
-  lpTemplateName: string | null;
-  /** ptr */
-  pvReserved: Deno.PointerValue | Uint8Array | null;
-  /** u32 */
-  dwReserved: number;
-  /** Windows.Win32.UI.Controls.Dialogs.OPEN_FILENAME_FLAGS_EX */
-  FlagsEx: OPEN_FILENAME_FLAGS_EX;
-}
-
-export const sizeofOPENFILENAMEW = 152;
-
-export function allocOPENFILENAMEW(data?: Partial<OPENFILENAMEW>): Uint8Array {
-  const buf = new Uint8Array(sizeofOPENFILENAMEW);
-  const view = new DataView(buf.buffer);
-  // 0x00: u32
-  if (data?.lStructSize !== undefined) view.setUint32(0, Number(data.lStructSize), true);
-  // 0x04: pad4
-  // 0x08: pointer
-  if (data?.hwndOwner !== undefined) view.setBigUint64(8, data.hwndOwner === null ? 0n : BigInt(util.toPointer(data.hwndOwner)), true);
-  // 0x10: pointer
-  if (data?.hInstance !== undefined) view.setBigUint64(16, data.hInstance === null ? 0n : BigInt(util.toPointer(data.hInstance)), true);
-  // 0x18: buffer
-  if (data?.lpstrFilter !== undefined) {
-    (buf as any)._f24 = util.pwstrToFfi(data.lpstrFilter);
-    view.setBigUint64(24, (buf as any)._f24 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f24)), true);
-  }
-  // 0x20: buffer
-  if (data?.lpstrCustomFilter !== undefined) {
-    (buf as any)._f32 = util.pwstrToFfi(data.lpstrCustomFilter);
-    view.setBigUint64(32, (buf as any)._f32 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f32)), true);
-  }
-  // 0x28: u32
-  if (data?.nMaxCustFilter !== undefined) view.setUint32(40, Number(data.nMaxCustFilter), true);
-  // 0x2c: u32
-  if (data?.nFilterIndex !== undefined) view.setUint32(44, Number(data.nFilterIndex), true);
-  // 0x30: buffer
-  if (data?.lpstrFile !== undefined) {
-    (buf as any)._f48 = util.pwstrToFfi(data.lpstrFile);
-    view.setBigUint64(48, (buf as any)._f48 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f48)), true);
-  }
-  // 0x38: u32
-  if (data?.nMaxFile !== undefined) view.setUint32(56, Number(data.nMaxFile), true);
-  // 0x3c: pad4
-  // 0x40: buffer
-  if (data?.lpstrFileTitle !== undefined) {
-    (buf as any)._f64 = util.pwstrToFfi(data.lpstrFileTitle);
-    view.setBigUint64(64, (buf as any)._f64 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f64)), true);
-  }
-  // 0x48: u32
-  if (data?.nMaxFileTitle !== undefined) view.setUint32(72, Number(data.nMaxFileTitle), true);
-  // 0x4c: pad4
-  // 0x50: buffer
-  if (data?.lpstrInitialDir !== undefined) {
-    (buf as any)._f80 = util.pwstrToFfi(data.lpstrInitialDir);
-    view.setBigUint64(80, (buf as any)._f80 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f80)), true);
-  }
-  // 0x58: buffer
-  if (data?.lpstrTitle !== undefined) {
-    (buf as any)._f88 = util.pwstrToFfi(data.lpstrTitle);
-    view.setBigUint64(88, (buf as any)._f88 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f88)), true);
-  }
-  // 0x60: u32
-  if (data?.Flags !== undefined) view.setUint32(96, Number(data.Flags), true);
-  // 0x64: u16
-  if (data?.nFileOffset !== undefined) view.setUint16(100, Number(data.nFileOffset), true);
-  // 0x66: u16
-  if (data?.nFileExtension !== undefined) view.setUint16(102, Number(data.nFileExtension), true);
-  // 0x68: buffer
-  if (data?.lpstrDefExt !== undefined) {
-    (buf as any)._f104 = util.pwstrToFfi(data.lpstrDefExt);
-    view.setBigUint64(104, (buf as any)._f104 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f104)), true);
-  }
-  // 0x70: pointer
-  if (data?.lCustData !== undefined) view.setBigUint64(112, data.lCustData === null ? 0n : BigInt(util.toPointer(data.lCustData)), true);
-  // 0x78: pointer
-  if (data?.lpfnHook !== undefined) view.setBigUint64(120, data.lpfnHook === null ? 0n : BigInt(util.toPointer(data.lpfnHook)), true);
-  // 0x80: buffer
-  if (data?.lpTemplateName !== undefined) {
-    (buf as any)._f128 = util.pwstrToFfi(data.lpTemplateName);
-    view.setBigUint64(128, (buf as any)._f128 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f128)), true);
-  }
-  // 0x88: pointer
-  if (data?.pvReserved !== undefined) view.setBigUint64(136, data.pvReserved === null ? 0n : BigInt(util.toPointer(data.pvReserved)), true);
-  // 0x90: u32
-  if (data?.dwReserved !== undefined) view.setUint32(144, Number(data.dwReserved), true);
-  // 0x94: u32
-  if (data?.FlagsEx !== undefined) view.setUint32(148, Number(data.FlagsEx), true);
-  return buf;
-}
-
-/**
- * Windows.Win32.UI.Controls.Dialogs.OFNOTIFYA (size: 24)
- */
-export interface OFNOTIFYA {
-  /** Windows.Win32.UI.Controls.NMHDR */
-  hdr: Uint8Array | Deno.PointerValue | null;
-  /** ptr */
-  lpOFN: Deno.PointerValue | Uint8Array | null;
-  /** Windows.Win32.Foundation.PSTR */
-  pszFile: string | null;
-}
-
-export const sizeofOFNOTIFYA = 24;
-
-export function allocOFNOTIFYA(data?: Partial<OFNOTIFYA>): Uint8Array {
-  const buf = new Uint8Array(sizeofOFNOTIFYA);
-  const view = new DataView(buf.buffer);
-  // 0x00: pointer
-  if (data?.hdr !== undefined) view.setBigUint64(0, data.hdr === null ? 0n : BigInt(util.toPointer(data.hdr)), true);
-  // 0x08: pointer
-  if (data?.lpOFN !== undefined) view.setBigUint64(8, data.lpOFN === null ? 0n : BigInt(util.toPointer(data.lpOFN)), true);
-  // 0x10: buffer
-  if (data?.pszFile !== undefined) {
-    (buf as any)._f16 = util.pstrToFfi(data.pszFile);
-    view.setBigUint64(16, (buf as any)._f16 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f16)), true);
-  }
-  return buf;
-}
-
-/**
- * Windows.Win32.UI.Controls.Dialogs.OFNOTIFYW (size: 24)
- */
-export interface OFNOTIFYW {
-  /** Windows.Win32.UI.Controls.NMHDR */
-  hdr: Uint8Array | Deno.PointerValue | null;
-  /** ptr */
-  lpOFN: Deno.PointerValue | Uint8Array | null;
-  /** Windows.Win32.Foundation.PWSTR */
-  pszFile: string | null;
-}
-
-export const sizeofOFNOTIFYW = 24;
-
-export function allocOFNOTIFYW(data?: Partial<OFNOTIFYW>): Uint8Array {
-  const buf = new Uint8Array(sizeofOFNOTIFYW);
-  const view = new DataView(buf.buffer);
-  // 0x00: pointer
-  if (data?.hdr !== undefined) view.setBigUint64(0, data.hdr === null ? 0n : BigInt(util.toPointer(data.hdr)), true);
-  // 0x08: pointer
-  if (data?.lpOFN !== undefined) view.setBigUint64(8, data.lpOFN === null ? 0n : BigInt(util.toPointer(data.lpOFN)), true);
-  // 0x10: buffer
-  if (data?.pszFile !== undefined) {
-    (buf as any)._f16 = util.pwstrToFfi(data.pszFile);
-    view.setBigUint64(16, (buf as any)._f16 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f16)), true);
-  }
-  return buf;
-}
-
-/**
- * Windows.Win32.UI.Controls.Dialogs.OFNOTIFYEXA (size: 32)
- */
-export interface OFNOTIFYEXA {
-  /** Windows.Win32.UI.Controls.NMHDR */
-  hdr: Uint8Array | Deno.PointerValue | null;
-  /** ptr */
-  lpOFN: Deno.PointerValue | Uint8Array | null;
-  /** ptr */
-  psf: Deno.PointerValue | Uint8Array | null;
-  /** ptr */
-  pidl: Deno.PointerValue | Uint8Array | null;
-}
-
-export const sizeofOFNOTIFYEXA = 32;
-
-export function allocOFNOTIFYEXA(data?: Partial<OFNOTIFYEXA>): Uint8Array {
-  const buf = new Uint8Array(sizeofOFNOTIFYEXA);
-  const view = new DataView(buf.buffer);
-  // 0x00: pointer
-  if (data?.hdr !== undefined) view.setBigUint64(0, data.hdr === null ? 0n : BigInt(util.toPointer(data.hdr)), true);
-  // 0x08: pointer
-  if (data?.lpOFN !== undefined) view.setBigUint64(8, data.lpOFN === null ? 0n : BigInt(util.toPointer(data.lpOFN)), true);
-  // 0x10: pointer
-  if (data?.psf !== undefined) view.setBigUint64(16, data.psf === null ? 0n : BigInt(util.toPointer(data.psf)), true);
-  // 0x18: pointer
-  if (data?.pidl !== undefined) view.setBigUint64(24, data.pidl === null ? 0n : BigInt(util.toPointer(data.pidl)), true);
-  return buf;
-}
-
-/**
- * Windows.Win32.UI.Controls.Dialogs.OFNOTIFYEXW (size: 32)
- */
-export interface OFNOTIFYEXW {
-  /** Windows.Win32.UI.Controls.NMHDR */
-  hdr: Uint8Array | Deno.PointerValue | null;
-  /** ptr */
-  lpOFN: Deno.PointerValue | Uint8Array | null;
-  /** ptr */
-  psf: Deno.PointerValue | Uint8Array | null;
-  /** ptr */
-  pidl: Deno.PointerValue | Uint8Array | null;
-}
-
-export const sizeofOFNOTIFYEXW = 32;
-
-export function allocOFNOTIFYEXW(data?: Partial<OFNOTIFYEXW>): Uint8Array {
-  const buf = new Uint8Array(sizeofOFNOTIFYEXW);
-  const view = new DataView(buf.buffer);
-  // 0x00: pointer
-  if (data?.hdr !== undefined) view.setBigUint64(0, data.hdr === null ? 0n : BigInt(util.toPointer(data.hdr)), true);
-  // 0x08: pointer
-  if (data?.lpOFN !== undefined) view.setBigUint64(8, data.lpOFN === null ? 0n : BigInt(util.toPointer(data.lpOFN)), true);
-  // 0x10: pointer
-  if (data?.psf !== undefined) view.setBigUint64(16, data.psf === null ? 0n : BigInt(util.toPointer(data.psf)), true);
-  // 0x18: pointer
-  if (data?.pidl !== undefined) view.setBigUint64(24, data.pidl === null ? 0n : BigInt(util.toPointer(data.pidl)), true);
-  return buf;
-}
-
-/**
- * Windows.Win32.UI.Controls.Dialogs.CHOOSECOLORA (size: 72)
- */
-export interface CHOOSECOLORA {
-  /** u32 */
-  lStructSize: number;
-  /** Windows.Win32.Foundation.HWND */
-  hwndOwner: Deno.PointerValue | null;
-  /** Windows.Win32.Foundation.HWND */
-  hInstance: Deno.PointerValue | null;
-  /** u32 */
-  rgbResult: number;
-  /** ptr */
-  lpCustColors: Deno.PointerValue | Uint8Array | null;
-  /** u32 */
-  Flags: number;
-  /** Windows.Win32.Foundation.LPARAM */
-  lCustData: Uint8Array | Deno.PointerValue | null;
-  /** Windows.Win32.UI.Controls.Dialogs.LPCCHOOKPROC */
-  lpfnHook: Uint8Array | Deno.PointerValue | null;
-  /** Windows.Win32.Foundation.PSTR */
-  lpTemplateName: string | null;
-}
-
-export const sizeofCHOOSECOLORA = 72;
-
-export function allocCHOOSECOLORA(data?: Partial<CHOOSECOLORA>): Uint8Array {
-  const buf = new Uint8Array(sizeofCHOOSECOLORA);
-  const view = new DataView(buf.buffer);
-  // 0x00: u32
-  if (data?.lStructSize !== undefined) view.setUint32(0, Number(data.lStructSize), true);
-  // 0x04: pad4
-  // 0x08: pointer
-  if (data?.hwndOwner !== undefined) view.setBigUint64(8, data.hwndOwner === null ? 0n : BigInt(util.toPointer(data.hwndOwner)), true);
-  // 0x10: pointer
-  if (data?.hInstance !== undefined) view.setBigUint64(16, data.hInstance === null ? 0n : BigInt(util.toPointer(data.hInstance)), true);
-  // 0x18: u32
-  if (data?.rgbResult !== undefined) view.setUint32(24, Number(data.rgbResult), true);
-  // 0x1c: pad4
-  // 0x20: pointer
-  if (data?.lpCustColors !== undefined) view.setBigUint64(32, data.lpCustColors === null ? 0n : BigInt(util.toPointer(data.lpCustColors)), true);
-  // 0x28: u32
-  if (data?.Flags !== undefined) view.setUint32(40, Number(data.Flags), true);
-  // 0x2c: pad4
-  // 0x30: pointer
-  if (data?.lCustData !== undefined) view.setBigUint64(48, data.lCustData === null ? 0n : BigInt(util.toPointer(data.lCustData)), true);
-  // 0x38: pointer
-  if (data?.lpfnHook !== undefined) view.setBigUint64(56, data.lpfnHook === null ? 0n : BigInt(util.toPointer(data.lpfnHook)), true);
-  // 0x40: buffer
-  if (data?.lpTemplateName !== undefined) {
-    (buf as any)._f64 = util.pstrToFfi(data.lpTemplateName);
-    view.setBigUint64(64, (buf as any)._f64 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f64)), true);
-  }
-  return buf;
-}
-
-/**
- * Windows.Win32.UI.Controls.Dialogs.CHOOSECOLORW (size: 72)
- */
-export interface CHOOSECOLORW {
-  /** u32 */
-  lStructSize: number;
-  /** Windows.Win32.Foundation.HWND */
-  hwndOwner: Deno.PointerValue | null;
-  /** Windows.Win32.Foundation.HWND */
-  hInstance: Deno.PointerValue | null;
-  /** u32 */
-  rgbResult: number;
-  /** ptr */
-  lpCustColors: Deno.PointerValue | Uint8Array | null;
-  /** u32 */
-  Flags: number;
-  /** Windows.Win32.Foundation.LPARAM */
-  lCustData: Uint8Array | Deno.PointerValue | null;
-  /** Windows.Win32.UI.Controls.Dialogs.LPCCHOOKPROC */
-  lpfnHook: Uint8Array | Deno.PointerValue | null;
-  /** Windows.Win32.Foundation.PWSTR */
-  lpTemplateName: string | null;
-}
-
-export const sizeofCHOOSECOLORW = 72;
-
-export function allocCHOOSECOLORW(data?: Partial<CHOOSECOLORW>): Uint8Array {
-  const buf = new Uint8Array(sizeofCHOOSECOLORW);
-  const view = new DataView(buf.buffer);
-  // 0x00: u32
-  if (data?.lStructSize !== undefined) view.setUint32(0, Number(data.lStructSize), true);
-  // 0x04: pad4
-  // 0x08: pointer
-  if (data?.hwndOwner !== undefined) view.setBigUint64(8, data.hwndOwner === null ? 0n : BigInt(util.toPointer(data.hwndOwner)), true);
-  // 0x10: pointer
-  if (data?.hInstance !== undefined) view.setBigUint64(16, data.hInstance === null ? 0n : BigInt(util.toPointer(data.hInstance)), true);
-  // 0x18: u32
-  if (data?.rgbResult !== undefined) view.setUint32(24, Number(data.rgbResult), true);
-  // 0x1c: pad4
-  // 0x20: pointer
-  if (data?.lpCustColors !== undefined) view.setBigUint64(32, data.lpCustColors === null ? 0n : BigInt(util.toPointer(data.lpCustColors)), true);
-  // 0x28: u32
-  if (data?.Flags !== undefined) view.setUint32(40, Number(data.Flags), true);
-  // 0x2c: pad4
-  // 0x30: pointer
-  if (data?.lCustData !== undefined) view.setBigUint64(48, data.lCustData === null ? 0n : BigInt(util.toPointer(data.lCustData)), true);
-  // 0x38: pointer
-  if (data?.lpfnHook !== undefined) view.setBigUint64(56, data.lpfnHook === null ? 0n : BigInt(util.toPointer(data.lpfnHook)), true);
-  // 0x40: buffer
-  if (data?.lpTemplateName !== undefined) {
-    (buf as any)._f64 = util.pwstrToFfi(data.lpTemplateName);
-    view.setBigUint64(64, (buf as any)._f64 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f64)), true);
-  }
-  return buf;
-}
-
-/**
- * Windows.Win32.UI.Controls.Dialogs.FINDREPLACEA (size: 80)
- */
-export interface FINDREPLACEA {
-  /** u32 */
-  lStructSize: number;
-  /** Windows.Win32.Foundation.HWND */
-  hwndOwner: Deno.PointerValue | null;
-  /** Windows.Win32.Foundation.HINSTANCE */
-  hInstance: Uint8Array | Deno.PointerValue | null;
-  /** Windows.Win32.UI.Controls.Dialogs.FINDREPLACE_FLAGS */
-  Flags: FINDREPLACE_FLAGS;
-  /** Windows.Win32.Foundation.PSTR */
-  lpstrFindWhat: string | null;
-  /** Windows.Win32.Foundation.PSTR */
-  lpstrReplaceWith: string | null;
-  /** u16 */
-  wFindWhatLen: number;
-  /** u16 */
-  wReplaceWithLen: number;
-  /** Windows.Win32.Foundation.LPARAM */
-  lCustData: Uint8Array | Deno.PointerValue | null;
-  /** Windows.Win32.UI.Controls.Dialogs.LPFRHOOKPROC */
-  lpfnHook: Uint8Array | Deno.PointerValue | null;
-  /** Windows.Win32.Foundation.PSTR */
-  lpTemplateName: string | null;
-}
-
-export const sizeofFINDREPLACEA = 80;
-
-export function allocFINDREPLACEA(data?: Partial<FINDREPLACEA>): Uint8Array {
-  const buf = new Uint8Array(sizeofFINDREPLACEA);
-  const view = new DataView(buf.buffer);
-  // 0x00: u32
-  if (data?.lStructSize !== undefined) view.setUint32(0, Number(data.lStructSize), true);
-  // 0x04: pad4
-  // 0x08: pointer
-  if (data?.hwndOwner !== undefined) view.setBigUint64(8, data.hwndOwner === null ? 0n : BigInt(util.toPointer(data.hwndOwner)), true);
-  // 0x10: pointer
-  if (data?.hInstance !== undefined) view.setBigUint64(16, data.hInstance === null ? 0n : BigInt(util.toPointer(data.hInstance)), true);
-  // 0x18: u32
-  if (data?.Flags !== undefined) view.setUint32(24, Number(data.Flags), true);
-  // 0x1c: pad4
-  // 0x20: buffer
-  if (data?.lpstrFindWhat !== undefined) {
-    (buf as any)._f32 = util.pstrToFfi(data.lpstrFindWhat);
-    view.setBigUint64(32, (buf as any)._f32 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f32)), true);
-  }
-  // 0x28: buffer
-  if (data?.lpstrReplaceWith !== undefined) {
-    (buf as any)._f40 = util.pstrToFfi(data.lpstrReplaceWith);
-    view.setBigUint64(40, (buf as any)._f40 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f40)), true);
-  }
-  // 0x30: u16
-  if (data?.wFindWhatLen !== undefined) view.setUint16(48, Number(data.wFindWhatLen), true);
-  // 0x32: u16
-  if (data?.wReplaceWithLen !== undefined) view.setUint16(50, Number(data.wReplaceWithLen), true);
-  // 0x34: pad4
-  // 0x38: pointer
-  if (data?.lCustData !== undefined) view.setBigUint64(56, data.lCustData === null ? 0n : BigInt(util.toPointer(data.lCustData)), true);
-  // 0x40: pointer
-  if (data?.lpfnHook !== undefined) view.setBigUint64(64, data.lpfnHook === null ? 0n : BigInt(util.toPointer(data.lpfnHook)), true);
-  // 0x48: buffer
-  if (data?.lpTemplateName !== undefined) {
-    (buf as any)._f72 = util.pstrToFfi(data.lpTemplateName);
-    view.setBigUint64(72, (buf as any)._f72 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f72)), true);
-  }
-  return buf;
-}
-
-/**
- * Windows.Win32.UI.Controls.Dialogs.FINDREPLACEW (size: 80)
- */
-export interface FINDREPLACEW {
-  /** u32 */
-  lStructSize: number;
-  /** Windows.Win32.Foundation.HWND */
-  hwndOwner: Deno.PointerValue | null;
-  /** Windows.Win32.Foundation.HINSTANCE */
-  hInstance: Uint8Array | Deno.PointerValue | null;
-  /** Windows.Win32.UI.Controls.Dialogs.FINDREPLACE_FLAGS */
-  Flags: FINDREPLACE_FLAGS;
-  /** Windows.Win32.Foundation.PWSTR */
-  lpstrFindWhat: string | null;
-  /** Windows.Win32.Foundation.PWSTR */
-  lpstrReplaceWith: string | null;
-  /** u16 */
-  wFindWhatLen: number;
-  /** u16 */
-  wReplaceWithLen: number;
-  /** Windows.Win32.Foundation.LPARAM */
-  lCustData: Uint8Array | Deno.PointerValue | null;
-  /** Windows.Win32.UI.Controls.Dialogs.LPFRHOOKPROC */
-  lpfnHook: Uint8Array | Deno.PointerValue | null;
-  /** Windows.Win32.Foundation.PWSTR */
-  lpTemplateName: string | null;
-}
-
-export const sizeofFINDREPLACEW = 80;
-
-export function allocFINDREPLACEW(data?: Partial<FINDREPLACEW>): Uint8Array {
-  const buf = new Uint8Array(sizeofFINDREPLACEW);
-  const view = new DataView(buf.buffer);
-  // 0x00: u32
-  if (data?.lStructSize !== undefined) view.setUint32(0, Number(data.lStructSize), true);
-  // 0x04: pad4
-  // 0x08: pointer
-  if (data?.hwndOwner !== undefined) view.setBigUint64(8, data.hwndOwner === null ? 0n : BigInt(util.toPointer(data.hwndOwner)), true);
-  // 0x10: pointer
-  if (data?.hInstance !== undefined) view.setBigUint64(16, data.hInstance === null ? 0n : BigInt(util.toPointer(data.hInstance)), true);
-  // 0x18: u32
-  if (data?.Flags !== undefined) view.setUint32(24, Number(data.Flags), true);
-  // 0x1c: pad4
-  // 0x20: buffer
-  if (data?.lpstrFindWhat !== undefined) {
-    (buf as any)._f32 = util.pwstrToFfi(data.lpstrFindWhat);
-    view.setBigUint64(32, (buf as any)._f32 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f32)), true);
-  }
-  // 0x28: buffer
-  if (data?.lpstrReplaceWith !== undefined) {
-    (buf as any)._f40 = util.pwstrToFfi(data.lpstrReplaceWith);
-    view.setBigUint64(40, (buf as any)._f40 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f40)), true);
-  }
-  // 0x30: u16
-  if (data?.wFindWhatLen !== undefined) view.setUint16(48, Number(data.wFindWhatLen), true);
-  // 0x32: u16
-  if (data?.wReplaceWithLen !== undefined) view.setUint16(50, Number(data.wReplaceWithLen), true);
-  // 0x34: pad4
-  // 0x38: pointer
-  if (data?.lCustData !== undefined) view.setBigUint64(56, data.lCustData === null ? 0n : BigInt(util.toPointer(data.lCustData)), true);
-  // 0x40: pointer
-  if (data?.lpfnHook !== undefined) view.setBigUint64(64, data.lpfnHook === null ? 0n : BigInt(util.toPointer(data.lpfnHook)), true);
-  // 0x48: buffer
-  if (data?.lpTemplateName !== undefined) {
-    (buf as any)._f72 = util.pwstrToFfi(data.lpTemplateName);
-    view.setBigUint64(72, (buf as any)._f72 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f72)), true);
-  }
-  return buf;
-}
-
-/**
- * Windows.Win32.UI.Controls.Dialogs.CHOOSEFONTA (size: 104)
- */
-export interface CHOOSEFONTA {
-  /** u32 */
-  lStructSize: number;
-  /** Windows.Win32.Foundation.HWND */
-  hwndOwner: Deno.PointerValue | null;
-  /** Windows.Win32.Graphics.Gdi.HDC */
-  hDC: Uint8Array | Deno.PointerValue | null;
-  /** ptr */
-  lpLogFont: Deno.PointerValue | Uint8Array | null;
+export interface IMECOMPTEXT {
   /** i32 */
-  iPointSize: number;
-  /** Windows.Win32.UI.Controls.Dialogs.CHOOSEFONT_FLAGS */
-  Flags: CHOOSEFONT_FLAGS;
-  /** u32 */
-  rgbColors: number;
-  /** Windows.Win32.Foundation.LPARAM */
-  lCustData: Uint8Array | Deno.PointerValue | null;
-  /** Windows.Win32.UI.Controls.Dialogs.LPCFHOOKPROC */
-  lpfnHook: Uint8Array | Deno.PointerValue | null;
-  /** Windows.Win32.Foundation.PSTR */
-  lpTemplateName: string | null;
-  /** Windows.Win32.Foundation.HINSTANCE */
-  hInstance: Uint8Array | Deno.PointerValue | null;
-  /** Windows.Win32.Foundation.PSTR */
-  lpszStyle: string | null;
-  /** Windows.Win32.UI.Controls.Dialogs.CHOOSEFONT_FONT_TYPE */
-  nFontType: CHOOSEFONT_FONT_TYPE;
-  /** u16 */
-  ___MISSING_ALIGNMENT__: number;
-  /** i32 */
-  nSizeMin: number;
-  /** i32 */
-  nSizeMax: number;
+  cb: number;
+  /** Windows.Win32.UI.Controls.RichEdit.IMECOMPTEXT_FLAGS */
+  flags: IMECOMPTEXT_FLAGS;
 }
 
-export const sizeofCHOOSEFONTA = 104;
+export const sizeofIMECOMPTEXT = 8;
 
-export function allocCHOOSEFONTA(data?: Partial<CHOOSEFONTA>): Uint8Array {
-  const buf = new Uint8Array(sizeofCHOOSEFONTA);
+export function allocIMECOMPTEXT(data?: Partial<IMECOMPTEXT>): Uint8Array {
+  const buf = new Uint8Array(sizeofIMECOMPTEXT);
   const view = new DataView(buf.buffer);
-  // 0x00: u32
-  if (data?.lStructSize !== undefined) view.setUint32(0, Number(data.lStructSize), true);
-  // 0x04: pad4
-  // 0x08: pointer
-  if (data?.hwndOwner !== undefined) view.setBigUint64(8, data.hwndOwner === null ? 0n : BigInt(util.toPointer(data.hwndOwner)), true);
-  // 0x10: pointer
-  if (data?.hDC !== undefined) view.setBigUint64(16, data.hDC === null ? 0n : BigInt(util.toPointer(data.hDC)), true);
-  // 0x18: pointer
-  if (data?.lpLogFont !== undefined) view.setBigUint64(24, data.lpLogFont === null ? 0n : BigInt(util.toPointer(data.lpLogFont)), true);
-  // 0x20: i32
-  if (data?.iPointSize !== undefined) view.setInt32(32, Number(data.iPointSize), true);
-  // 0x24: u32
-  if (data?.Flags !== undefined) view.setUint32(36, Number(data.Flags), true);
-  // 0x28: u32
-  if (data?.rgbColors !== undefined) view.setUint32(40, Number(data.rgbColors), true);
-  // 0x2c: pad4
-  // 0x30: pointer
-  if (data?.lCustData !== undefined) view.setBigUint64(48, data.lCustData === null ? 0n : BigInt(util.toPointer(data.lCustData)), true);
-  // 0x38: pointer
-  if (data?.lpfnHook !== undefined) view.setBigUint64(56, data.lpfnHook === null ? 0n : BigInt(util.toPointer(data.lpfnHook)), true);
-  // 0x40: buffer
-  if (data?.lpTemplateName !== undefined) {
-    (buf as any)._f64 = util.pstrToFfi(data.lpTemplateName);
-    view.setBigUint64(64, (buf as any)._f64 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f64)), true);
-  }
-  // 0x48: pointer
-  if (data?.hInstance !== undefined) view.setBigUint64(72, data.hInstance === null ? 0n : BigInt(util.toPointer(data.hInstance)), true);
-  // 0x50: buffer
-  if (data?.lpszStyle !== undefined) {
-    (buf as any)._f80 = util.pstrToFfi(data.lpszStyle);
-    view.setBigUint64(80, (buf as any)._f80 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f80)), true);
-  }
-  // 0x58: u16
-  if (data?.nFontType !== undefined) view.setUint16(88, Number(data.nFontType), true);
-  // 0x5a: u16
-  if (data?.___MISSING_ALIGNMENT__ !== undefined) view.setUint16(90, Number(data.___MISSING_ALIGNMENT__), true);
-  // 0x5c: i32
-  if (data?.nSizeMin !== undefined) view.setInt32(92, Number(data.nSizeMin), true);
-  // 0x60: i32
-  if (data?.nSizeMax !== undefined) view.setInt32(96, Number(data.nSizeMax), true);
-  // 0x64: pad4
-  return buf;
-}
-
-/**
- * Windows.Win32.UI.Controls.Dialogs.CHOOSEFONTW (size: 104)
- */
-export interface CHOOSEFONTW {
-  /** u32 */
-  lStructSize: number;
-  /** Windows.Win32.Foundation.HWND */
-  hwndOwner: Deno.PointerValue | null;
-  /** Windows.Win32.Graphics.Gdi.HDC */
-  hDC: Uint8Array | Deno.PointerValue | null;
-  /** ptr */
-  lpLogFont: Deno.PointerValue | Uint8Array | null;
-  /** i32 */
-  iPointSize: number;
-  /** Windows.Win32.UI.Controls.Dialogs.CHOOSEFONT_FLAGS */
-  Flags: CHOOSEFONT_FLAGS;
-  /** u32 */
-  rgbColors: number;
-  /** Windows.Win32.Foundation.LPARAM */
-  lCustData: Uint8Array | Deno.PointerValue | null;
-  /** Windows.Win32.UI.Controls.Dialogs.LPCFHOOKPROC */
-  lpfnHook: Uint8Array | Deno.PointerValue | null;
-  /** Windows.Win32.Foundation.PWSTR */
-  lpTemplateName: string | null;
-  /** Windows.Win32.Foundation.HINSTANCE */
-  hInstance: Uint8Array | Deno.PointerValue | null;
-  /** Windows.Win32.Foundation.PWSTR */
-  lpszStyle: string | null;
-  /** Windows.Win32.UI.Controls.Dialogs.CHOOSEFONT_FONT_TYPE */
-  nFontType: CHOOSEFONT_FONT_TYPE;
-  /** u16 */
-  ___MISSING_ALIGNMENT__: number;
-  /** i32 */
-  nSizeMin: number;
-  /** i32 */
-  nSizeMax: number;
-}
-
-export const sizeofCHOOSEFONTW = 104;
-
-export function allocCHOOSEFONTW(data?: Partial<CHOOSEFONTW>): Uint8Array {
-  const buf = new Uint8Array(sizeofCHOOSEFONTW);
-  const view = new DataView(buf.buffer);
-  // 0x00: u32
-  if (data?.lStructSize !== undefined) view.setUint32(0, Number(data.lStructSize), true);
-  // 0x04: pad4
-  // 0x08: pointer
-  if (data?.hwndOwner !== undefined) view.setBigUint64(8, data.hwndOwner === null ? 0n : BigInt(util.toPointer(data.hwndOwner)), true);
-  // 0x10: pointer
-  if (data?.hDC !== undefined) view.setBigUint64(16, data.hDC === null ? 0n : BigInt(util.toPointer(data.hDC)), true);
-  // 0x18: pointer
-  if (data?.lpLogFont !== undefined) view.setBigUint64(24, data.lpLogFont === null ? 0n : BigInt(util.toPointer(data.lpLogFont)), true);
-  // 0x20: i32
-  if (data?.iPointSize !== undefined) view.setInt32(32, Number(data.iPointSize), true);
-  // 0x24: u32
-  if (data?.Flags !== undefined) view.setUint32(36, Number(data.Flags), true);
-  // 0x28: u32
-  if (data?.rgbColors !== undefined) view.setUint32(40, Number(data.rgbColors), true);
-  // 0x2c: pad4
-  // 0x30: pointer
-  if (data?.lCustData !== undefined) view.setBigUint64(48, data.lCustData === null ? 0n : BigInt(util.toPointer(data.lCustData)), true);
-  // 0x38: pointer
-  if (data?.lpfnHook !== undefined) view.setBigUint64(56, data.lpfnHook === null ? 0n : BigInt(util.toPointer(data.lpfnHook)), true);
-  // 0x40: buffer
-  if (data?.lpTemplateName !== undefined) {
-    (buf as any)._f64 = util.pwstrToFfi(data.lpTemplateName);
-    view.setBigUint64(64, (buf as any)._f64 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f64)), true);
-  }
-  // 0x48: pointer
-  if (data?.hInstance !== undefined) view.setBigUint64(72, data.hInstance === null ? 0n : BigInt(util.toPointer(data.hInstance)), true);
-  // 0x50: buffer
-  if (data?.lpszStyle !== undefined) {
-    (buf as any)._f80 = util.pwstrToFfi(data.lpszStyle);
-    view.setBigUint64(80, (buf as any)._f80 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f80)), true);
-  }
-  // 0x58: u16
-  if (data?.nFontType !== undefined) view.setUint16(88, Number(data.nFontType), true);
-  // 0x5a: u16
-  if (data?.___MISSING_ALIGNMENT__ !== undefined) view.setUint16(90, Number(data.___MISSING_ALIGNMENT__), true);
-  // 0x5c: i32
-  if (data?.nSizeMin !== undefined) view.setInt32(92, Number(data.nSizeMin), true);
-  // 0x60: i32
-  if (data?.nSizeMax !== undefined) view.setInt32(96, Number(data.nSizeMax), true);
-  // 0x64: pad4
-  return buf;
-}
-
-/**
- * Windows.Win32.UI.Controls.Dialogs.PRINTDLGA (size: 120)
- */
-export interface PRINTDLGA {
-  /** u32 */
-  lStructSize: number;
-  /** Windows.Win32.Foundation.HWND */
-  hwndOwner: Deno.PointerValue | null;
-  /** isize */
-  hDevMode: Deno.PointerValue;
-  /** isize */
-  hDevNames: Deno.PointerValue;
-  /** Windows.Win32.Graphics.Gdi.HDC */
-  hDC: Uint8Array | Deno.PointerValue | null;
-  /** Windows.Win32.UI.Controls.Dialogs.PRINTDLGEX_FLAGS */
-  Flags: PRINTDLGEX_FLAGS;
-  /** u16 */
-  nFromPage: number;
-  /** u16 */
-  nToPage: number;
-  /** u16 */
-  nMinPage: number;
-  /** u16 */
-  nMaxPage: number;
-  /** u16 */
-  nCopies: number;
-  /** Windows.Win32.Foundation.HINSTANCE */
-  hInstance: Uint8Array | Deno.PointerValue | null;
-  /** Windows.Win32.Foundation.LPARAM */
-  lCustData: Uint8Array | Deno.PointerValue | null;
-  /** Windows.Win32.UI.Controls.Dialogs.LPPRINTHOOKPROC */
-  lpfnPrintHook: Uint8Array | Deno.PointerValue | null;
-  /** Windows.Win32.UI.Controls.Dialogs.LPSETUPHOOKPROC */
-  lpfnSetupHook: Uint8Array | Deno.PointerValue | null;
-  /** Windows.Win32.Foundation.PSTR */
-  lpPrintTemplateName: string | null;
-  /** Windows.Win32.Foundation.PSTR */
-  lpSetupTemplateName: string | null;
-  /** isize */
-  hPrintTemplate: Deno.PointerValue;
-  /** isize */
-  hSetupTemplate: Deno.PointerValue;
-}
-
-export const sizeofPRINTDLGA = 120;
-
-export function allocPRINTDLGA(data?: Partial<PRINTDLGA>): Uint8Array {
-  const buf = new Uint8Array(sizeofPRINTDLGA);
-  const view = new DataView(buf.buffer);
-  // 0x00: u32
-  if (data?.lStructSize !== undefined) view.setUint32(0, Number(data.lStructSize), true);
-  // 0x04: pad4
-  // 0x08: pointer
-  if (data?.hwndOwner !== undefined) view.setBigUint64(8, data.hwndOwner === null ? 0n : BigInt(util.toPointer(data.hwndOwner)), true);
-  // 0x10: isize
-  if (data?.hDevMode !== undefined) view.setBigInt64(16, BigInt(data.hDevMode), true);
-  // 0x18: isize
-  if (data?.hDevNames !== undefined) view.setBigInt64(24, BigInt(data.hDevNames), true);
-  // 0x20: pointer
-  if (data?.hDC !== undefined) view.setBigUint64(32, data.hDC === null ? 0n : BigInt(util.toPointer(data.hDC)), true);
-  // 0x28: u32
-  if (data?.Flags !== undefined) view.setUint32(40, Number(data.Flags), true);
-  // 0x2c: u16
-  if (data?.nFromPage !== undefined) view.setUint16(44, Number(data.nFromPage), true);
-  // 0x2e: u16
-  if (data?.nToPage !== undefined) view.setUint16(46, Number(data.nToPage), true);
-  // 0x30: u16
-  if (data?.nMinPage !== undefined) view.setUint16(48, Number(data.nMinPage), true);
-  // 0x32: u16
-  if (data?.nMaxPage !== undefined) view.setUint16(50, Number(data.nMaxPage), true);
-  // 0x34: u16
-  if (data?.nCopies !== undefined) view.setUint16(52, Number(data.nCopies), true);
-  // 0x36: pad2
-  // 0x38: pointer
-  if (data?.hInstance !== undefined) view.setBigUint64(56, data.hInstance === null ? 0n : BigInt(util.toPointer(data.hInstance)), true);
-  // 0x40: pointer
-  if (data?.lCustData !== undefined) view.setBigUint64(64, data.lCustData === null ? 0n : BigInt(util.toPointer(data.lCustData)), true);
-  // 0x48: pointer
-  if (data?.lpfnPrintHook !== undefined) view.setBigUint64(72, data.lpfnPrintHook === null ? 0n : BigInt(util.toPointer(data.lpfnPrintHook)), true);
-  // 0x50: pointer
-  if (data?.lpfnSetupHook !== undefined) view.setBigUint64(80, data.lpfnSetupHook === null ? 0n : BigInt(util.toPointer(data.lpfnSetupHook)), true);
-  // 0x58: buffer
-  if (data?.lpPrintTemplateName !== undefined) {
-    (buf as any)._f88 = util.pstrToFfi(data.lpPrintTemplateName);
-    view.setBigUint64(88, (buf as any)._f88 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f88)), true);
-  }
-  // 0x60: buffer
-  if (data?.lpSetupTemplateName !== undefined) {
-    (buf as any)._f96 = util.pstrToFfi(data.lpSetupTemplateName);
-    view.setBigUint64(96, (buf as any)._f96 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f96)), true);
-  }
-  // 0x68: isize
-  if (data?.hPrintTemplate !== undefined) view.setBigInt64(104, BigInt(data.hPrintTemplate), true);
-  // 0x70: isize
-  if (data?.hSetupTemplate !== undefined) view.setBigInt64(112, BigInt(data.hSetupTemplate), true);
-  return buf;
-}
-
-/**
- * Windows.Win32.UI.Controls.Dialogs.PRINTDLGW (size: 120)
- */
-export interface PRINTDLGW {
-  /** u32 */
-  lStructSize: number;
-  /** Windows.Win32.Foundation.HWND */
-  hwndOwner: Deno.PointerValue | null;
-  /** isize */
-  hDevMode: Deno.PointerValue;
-  /** isize */
-  hDevNames: Deno.PointerValue;
-  /** Windows.Win32.Graphics.Gdi.HDC */
-  hDC: Uint8Array | Deno.PointerValue | null;
-  /** Windows.Win32.UI.Controls.Dialogs.PRINTDLGEX_FLAGS */
-  Flags: PRINTDLGEX_FLAGS;
-  /** u16 */
-  nFromPage: number;
-  /** u16 */
-  nToPage: number;
-  /** u16 */
-  nMinPage: number;
-  /** u16 */
-  nMaxPage: number;
-  /** u16 */
-  nCopies: number;
-  /** Windows.Win32.Foundation.HINSTANCE */
-  hInstance: Uint8Array | Deno.PointerValue | null;
-  /** Windows.Win32.Foundation.LPARAM */
-  lCustData: Uint8Array | Deno.PointerValue | null;
-  /** Windows.Win32.UI.Controls.Dialogs.LPPRINTHOOKPROC */
-  lpfnPrintHook: Uint8Array | Deno.PointerValue | null;
-  /** Windows.Win32.UI.Controls.Dialogs.LPSETUPHOOKPROC */
-  lpfnSetupHook: Uint8Array | Deno.PointerValue | null;
-  /** Windows.Win32.Foundation.PWSTR */
-  lpPrintTemplateName: string | null;
-  /** Windows.Win32.Foundation.PWSTR */
-  lpSetupTemplateName: string | null;
-  /** isize */
-  hPrintTemplate: Deno.PointerValue;
-  /** isize */
-  hSetupTemplate: Deno.PointerValue;
-}
-
-export const sizeofPRINTDLGW = 120;
-
-export function allocPRINTDLGW(data?: Partial<PRINTDLGW>): Uint8Array {
-  const buf = new Uint8Array(sizeofPRINTDLGW);
-  const view = new DataView(buf.buffer);
-  // 0x00: u32
-  if (data?.lStructSize !== undefined) view.setUint32(0, Number(data.lStructSize), true);
-  // 0x04: pad4
-  // 0x08: pointer
-  if (data?.hwndOwner !== undefined) view.setBigUint64(8, data.hwndOwner === null ? 0n : BigInt(util.toPointer(data.hwndOwner)), true);
-  // 0x10: isize
-  if (data?.hDevMode !== undefined) view.setBigInt64(16, BigInt(data.hDevMode), true);
-  // 0x18: isize
-  if (data?.hDevNames !== undefined) view.setBigInt64(24, BigInt(data.hDevNames), true);
-  // 0x20: pointer
-  if (data?.hDC !== undefined) view.setBigUint64(32, data.hDC === null ? 0n : BigInt(util.toPointer(data.hDC)), true);
-  // 0x28: u32
-  if (data?.Flags !== undefined) view.setUint32(40, Number(data.Flags), true);
-  // 0x2c: u16
-  if (data?.nFromPage !== undefined) view.setUint16(44, Number(data.nFromPage), true);
-  // 0x2e: u16
-  if (data?.nToPage !== undefined) view.setUint16(46, Number(data.nToPage), true);
-  // 0x30: u16
-  if (data?.nMinPage !== undefined) view.setUint16(48, Number(data.nMinPage), true);
-  // 0x32: u16
-  if (data?.nMaxPage !== undefined) view.setUint16(50, Number(data.nMaxPage), true);
-  // 0x34: u16
-  if (data?.nCopies !== undefined) view.setUint16(52, Number(data.nCopies), true);
-  // 0x36: pad2
-  // 0x38: pointer
-  if (data?.hInstance !== undefined) view.setBigUint64(56, data.hInstance === null ? 0n : BigInt(util.toPointer(data.hInstance)), true);
-  // 0x40: pointer
-  if (data?.lCustData !== undefined) view.setBigUint64(64, data.lCustData === null ? 0n : BigInt(util.toPointer(data.lCustData)), true);
-  // 0x48: pointer
-  if (data?.lpfnPrintHook !== undefined) view.setBigUint64(72, data.lpfnPrintHook === null ? 0n : BigInt(util.toPointer(data.lpfnPrintHook)), true);
-  // 0x50: pointer
-  if (data?.lpfnSetupHook !== undefined) view.setBigUint64(80, data.lpfnSetupHook === null ? 0n : BigInt(util.toPointer(data.lpfnSetupHook)), true);
-  // 0x58: buffer
-  if (data?.lpPrintTemplateName !== undefined) {
-    (buf as any)._f88 = util.pwstrToFfi(data.lpPrintTemplateName);
-    view.setBigUint64(88, (buf as any)._f88 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f88)), true);
-  }
-  // 0x60: buffer
-  if (data?.lpSetupTemplateName !== undefined) {
-    (buf as any)._f96 = util.pwstrToFfi(data.lpSetupTemplateName);
-    view.setBigUint64(96, (buf as any)._f96 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f96)), true);
-  }
-  // 0x68: isize
-  if (data?.hPrintTemplate !== undefined) view.setBigInt64(104, BigInt(data.hPrintTemplate), true);
-  // 0x70: isize
-  if (data?.hSetupTemplate !== undefined) view.setBigInt64(112, BigInt(data.hSetupTemplate), true);
-  return buf;
-}
-
-/**
- * Windows.Win32.UI.Controls.Dialogs.PRINTPAGERANGE (size: 8)
- */
-export interface PRINTPAGERANGE {
-  /** u32 */
-  nFromPage: number;
-  /** u32 */
-  nToPage: number;
-}
-
-export const sizeofPRINTPAGERANGE = 8;
-
-export function allocPRINTPAGERANGE(data?: Partial<PRINTPAGERANGE>): Uint8Array {
-  const buf = new Uint8Array(sizeofPRINTPAGERANGE);
-  const view = new DataView(buf.buffer);
-  // 0x00: u32
-  if (data?.nFromPage !== undefined) view.setUint32(0, Number(data.nFromPage), true);
+  // 0x00: i32
+  if (data?.cb !== undefined) view.setInt32(0, Number(data.cb), true);
   // 0x04: u32
-  if (data?.nToPage !== undefined) view.setUint32(4, Number(data.nToPage), true);
+  if (data?.flags !== undefined) view.setUint32(4, Number(data.flags), true);
   return buf;
 }
 
 /**
- * Windows.Win32.UI.Controls.Dialogs.PRINTDLGEXA (size: 136)
+ * Windows.Win32.UI.Controls.RichEdit.TABLEROWPARMS (size: 32)
  */
-export interface PRINTDLGEXA {
+export interface TABLEROWPARMS {
+  /** u8 */
+  cbRow: number;
+  /** u8 */
+  cbCell: number;
+  /** u8 */
+  cCell: number;
+  /** u8 */
+  cRow: number;
+  /** i32 */
+  dxCellMargin: number;
+  /** i32 */
+  dxIndent: number;
+  /** i32 */
+  dyHeight: number;
   /** u32 */
-  lStructSize: number;
-  /** Windows.Win32.Foundation.HWND */
-  hwndOwner: Deno.PointerValue | null;
-  /** isize */
-  hDevMode: Deno.PointerValue;
-  /** isize */
-  hDevNames: Deno.PointerValue;
-  /** Windows.Win32.Graphics.Gdi.HDC */
-  hDC: Uint8Array | Deno.PointerValue | null;
-  /** Windows.Win32.UI.Controls.Dialogs.PRINTDLGEX_FLAGS */
-  Flags: PRINTDLGEX_FLAGS;
-  /** u32 */
-  Flags2: number;
-  /** u32 */
-  ExclusionFlags: number;
-  /** u32 */
-  nPageRanges: number;
-  /** u32 */
-  nMaxPageRanges: number;
-  /** ptr */
-  lpPageRanges: Deno.PointerValue | Uint8Array | null;
-  /** u32 */
-  nMinPage: number;
-  /** u32 */
-  nMaxPage: number;
-  /** u32 */
-  nCopies: number;
-  /** Windows.Win32.Foundation.HINSTANCE */
-  hInstance: Uint8Array | Deno.PointerValue | null;
-  /** Windows.Win32.Foundation.PSTR */
-  lpPrintTemplateName: string | null;
-  /** Windows.Win32.System.Com.IUnknown */
-  lpCallback: Uint8Array | Deno.PointerValue | null;
-  /** u32 */
-  nPropertyPages: number;
-  /** ptr */
-  lphPropertyPages: Deno.PointerValue | Uint8Array | null;
-  /** u32 */
-  nStartPage: number;
-  /** u32 */
-  dwResultAction: number;
+  _bitfield: number;
+  /** i32 */
+  cpStartRow: number;
+  /** u8 */
+  bTableLevel: number;
+  /** u8 */
+  iCell: number;
 }
 
-export const sizeofPRINTDLGEXA = 136;
+export const sizeofTABLEROWPARMS = 32;
 
-export function allocPRINTDLGEXA(data?: Partial<PRINTDLGEXA>): Uint8Array {
-  const buf = new Uint8Array(sizeofPRINTDLGEXA);
+export function allocTABLEROWPARMS(data?: Partial<TABLEROWPARMS>): Uint8Array {
+  const buf = new Uint8Array(sizeofTABLEROWPARMS);
   const view = new DataView(buf.buffer);
-  // 0x00: u32
-  if (data?.lStructSize !== undefined) view.setUint32(0, Number(data.lStructSize), true);
-  // 0x04: pad4
-  // 0x08: pointer
-  if (data?.hwndOwner !== undefined) view.setBigUint64(8, data.hwndOwner === null ? 0n : BigInt(util.toPointer(data.hwndOwner)), true);
-  // 0x10: isize
-  if (data?.hDevMode !== undefined) view.setBigInt64(16, BigInt(data.hDevMode), true);
-  // 0x18: isize
-  if (data?.hDevNames !== undefined) view.setBigInt64(24, BigInt(data.hDevNames), true);
-  // 0x20: pointer
-  if (data?.hDC !== undefined) view.setBigUint64(32, data.hDC === null ? 0n : BigInt(util.toPointer(data.hDC)), true);
-  // 0x28: u32
-  if (data?.Flags !== undefined) view.setUint32(40, Number(data.Flags), true);
-  // 0x2c: u32
-  if (data?.Flags2 !== undefined) view.setUint32(44, Number(data.Flags2), true);
-  // 0x30: u32
-  if (data?.ExclusionFlags !== undefined) view.setUint32(48, Number(data.ExclusionFlags), true);
-  // 0x34: u32
-  if (data?.nPageRanges !== undefined) view.setUint32(52, Number(data.nPageRanges), true);
-  // 0x38: u32
-  if (data?.nMaxPageRanges !== undefined) view.setUint32(56, Number(data.nMaxPageRanges), true);
-  // 0x3c: pad4
-  // 0x40: pointer
-  if (data?.lpPageRanges !== undefined) view.setBigUint64(64, data.lpPageRanges === null ? 0n : BigInt(util.toPointer(data.lpPageRanges)), true);
-  // 0x48: u32
-  if (data?.nMinPage !== undefined) view.setUint32(72, Number(data.nMinPage), true);
-  // 0x4c: u32
-  if (data?.nMaxPage !== undefined) view.setUint32(76, Number(data.nMaxPage), true);
-  // 0x50: u32
-  if (data?.nCopies !== undefined) view.setUint32(80, Number(data.nCopies), true);
-  // 0x54: pad4
-  // 0x58: pointer
-  if (data?.hInstance !== undefined) view.setBigUint64(88, data.hInstance === null ? 0n : BigInt(util.toPointer(data.hInstance)), true);
-  // 0x60: buffer
-  if (data?.lpPrintTemplateName !== undefined) {
-    (buf as any)._f96 = util.pstrToFfi(data.lpPrintTemplateName);
-    view.setBigUint64(96, (buf as any)._f96 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f96)), true);
-  }
-  // 0x68: pointer
-  if (data?.lpCallback !== undefined) view.setBigUint64(104, data.lpCallback === null ? 0n : BigInt(util.toPointer(data.lpCallback)), true);
-  // 0x70: u32
-  if (data?.nPropertyPages !== undefined) view.setUint32(112, Number(data.nPropertyPages), true);
-  // 0x74: pad4
-  // 0x78: pointer
-  if (data?.lphPropertyPages !== undefined) view.setBigUint64(120, data.lphPropertyPages === null ? 0n : BigInt(util.toPointer(data.lphPropertyPages)), true);
-  // 0x80: u32
-  if (data?.nStartPage !== undefined) view.setUint32(128, Number(data.nStartPage), true);
-  // 0x84: u32
-  if (data?.dwResultAction !== undefined) view.setUint32(132, Number(data.dwResultAction), true);
+  // 0x00: u8
+  if (data?.cbRow !== undefined) view.setUint8(0, Number(data.cbRow));
+  // 0x01: u8
+  if (data?.cbCell !== undefined) view.setUint8(1, Number(data.cbCell));
+  // 0x02: u8
+  if (data?.cCell !== undefined) view.setUint8(2, Number(data.cCell));
+  // 0x03: u8
+  if (data?.cRow !== undefined) view.setUint8(3, Number(data.cRow));
+  // 0x04: i32
+  if (data?.dxCellMargin !== undefined) view.setInt32(4, Number(data.dxCellMargin), true);
+  // 0x08: i32
+  if (data?.dxIndent !== undefined) view.setInt32(8, Number(data.dxIndent), true);
+  // 0x0c: i32
+  if (data?.dyHeight !== undefined) view.setInt32(12, Number(data.dyHeight), true);
+  // 0x10: u32
+  if (data?._bitfield !== undefined) view.setUint32(16, Number(data._bitfield), true);
+  // 0x14: i32
+  if (data?.cpStartRow !== undefined) view.setInt32(20, Number(data.cpStartRow), true);
+  // 0x18: u8
+  if (data?.bTableLevel !== undefined) view.setUint8(24, Number(data.bTableLevel));
+  // 0x19: u8
+  if (data?.iCell !== undefined) view.setUint8(25, Number(data.iCell));
+  // 0x1a: pad6
   return buf;
 }
 
 /**
- * Windows.Win32.UI.Controls.Dialogs.PRINTDLGEXW (size: 136)
+ * Windows.Win32.UI.Controls.RichEdit.TABLECELLPARMS (size: 64)
  */
-export interface PRINTDLGEXW {
-  /** u32 */
-  lStructSize: number;
-  /** Windows.Win32.Foundation.HWND */
-  hwndOwner: Deno.PointerValue | null;
-  /** isize */
-  hDevMode: Deno.PointerValue;
-  /** isize */
-  hDevNames: Deno.PointerValue;
-  /** Windows.Win32.Graphics.Gdi.HDC */
-  hDC: Uint8Array | Deno.PointerValue | null;
-  /** Windows.Win32.UI.Controls.Dialogs.PRINTDLGEX_FLAGS */
-  Flags: PRINTDLGEX_FLAGS;
-  /** u32 */
-  Flags2: number;
-  /** u32 */
-  ExclusionFlags: number;
-  /** u32 */
-  nPageRanges: number;
-  /** u32 */
-  nMaxPageRanges: number;
-  /** ptr */
-  lpPageRanges: Deno.PointerValue | Uint8Array | null;
-  /** u32 */
-  nMinPage: number;
-  /** u32 */
-  nMaxPage: number;
-  /** u32 */
-  nCopies: number;
-  /** Windows.Win32.Foundation.HINSTANCE */
-  hInstance: Uint8Array | Deno.PointerValue | null;
-  /** Windows.Win32.Foundation.PWSTR */
-  lpPrintTemplateName: string | null;
-  /** Windows.Win32.System.Com.IUnknown */
-  lpCallback: Uint8Array | Deno.PointerValue | null;
-  /** u32 */
-  nPropertyPages: number;
-  /** ptr */
-  lphPropertyPages: Deno.PointerValue | Uint8Array | null;
-  /** u32 */
-  nStartPage: number;
-  /** u32 */
-  dwResultAction: number;
+export interface TABLECELLPARMS {
+  /** i32 */
+  dxWidth: number;
+  /** u16 */
+  _bitfield: number;
+  /** u16 */
+  wShading: number;
+  /** i16 */
+  dxBrdrLeft: number;
+  /** i16 */
+  dyBrdrTop: number;
+  /** i16 */
+  dxBrdrRight: number;
+  /** i16 */
+  dyBrdrBottom: number;
+  /** Windows.Win32.Foundation.COLORREF */
+  crBrdrLeft: Uint8Array | Deno.PointerValue | null;
+  /** Windows.Win32.Foundation.COLORREF */
+  crBrdrTop: Uint8Array | Deno.PointerValue | null;
+  /** Windows.Win32.Foundation.COLORREF */
+  crBrdrRight: Uint8Array | Deno.PointerValue | null;
+  /** Windows.Win32.Foundation.COLORREF */
+  crBrdrBottom: Uint8Array | Deno.PointerValue | null;
+  /** Windows.Win32.Foundation.COLORREF */
+  crBackPat: Uint8Array | Deno.PointerValue | null;
+  /** Windows.Win32.Foundation.COLORREF */
+  crForePat: Uint8Array | Deno.PointerValue | null;
 }
 
-export const sizeofPRINTDLGEXW = 136;
+export const sizeofTABLECELLPARMS = 64;
 
-export function allocPRINTDLGEXW(data?: Partial<PRINTDLGEXW>): Uint8Array {
-  const buf = new Uint8Array(sizeofPRINTDLGEXW);
+export function allocTABLECELLPARMS(data?: Partial<TABLECELLPARMS>): Uint8Array {
+  const buf = new Uint8Array(sizeofTABLECELLPARMS);
   const view = new DataView(buf.buffer);
-  // 0x00: u32
-  if (data?.lStructSize !== undefined) view.setUint32(0, Number(data.lStructSize), true);
-  // 0x04: pad4
-  // 0x08: pointer
-  if (data?.hwndOwner !== undefined) view.setBigUint64(8, data.hwndOwner === null ? 0n : BigInt(util.toPointer(data.hwndOwner)), true);
-  // 0x10: isize
-  if (data?.hDevMode !== undefined) view.setBigInt64(16, BigInt(data.hDevMode), true);
-  // 0x18: isize
-  if (data?.hDevNames !== undefined) view.setBigInt64(24, BigInt(data.hDevNames), true);
-  // 0x20: pointer
-  if (data?.hDC !== undefined) view.setBigUint64(32, data.hDC === null ? 0n : BigInt(util.toPointer(data.hDC)), true);
-  // 0x28: u32
-  if (data?.Flags !== undefined) view.setUint32(40, Number(data.Flags), true);
-  // 0x2c: u32
-  if (data?.Flags2 !== undefined) view.setUint32(44, Number(data.Flags2), true);
-  // 0x30: u32
-  if (data?.ExclusionFlags !== undefined) view.setUint32(48, Number(data.ExclusionFlags), true);
-  // 0x34: u32
-  if (data?.nPageRanges !== undefined) view.setUint32(52, Number(data.nPageRanges), true);
-  // 0x38: u32
-  if (data?.nMaxPageRanges !== undefined) view.setUint32(56, Number(data.nMaxPageRanges), true);
-  // 0x3c: pad4
-  // 0x40: pointer
-  if (data?.lpPageRanges !== undefined) view.setBigUint64(64, data.lpPageRanges === null ? 0n : BigInt(util.toPointer(data.lpPageRanges)), true);
-  // 0x48: u32
-  if (data?.nMinPage !== undefined) view.setUint32(72, Number(data.nMinPage), true);
-  // 0x4c: u32
-  if (data?.nMaxPage !== undefined) view.setUint32(76, Number(data.nMaxPage), true);
-  // 0x50: u32
-  if (data?.nCopies !== undefined) view.setUint32(80, Number(data.nCopies), true);
-  // 0x54: pad4
-  // 0x58: pointer
-  if (data?.hInstance !== undefined) view.setBigUint64(88, data.hInstance === null ? 0n : BigInt(util.toPointer(data.hInstance)), true);
-  // 0x60: buffer
-  if (data?.lpPrintTemplateName !== undefined) {
-    (buf as any)._f96 = util.pwstrToFfi(data.lpPrintTemplateName);
-    view.setBigUint64(96, (buf as any)._f96 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f96)), true);
-  }
-  // 0x68: pointer
-  if (data?.lpCallback !== undefined) view.setBigUint64(104, data.lpCallback === null ? 0n : BigInt(util.toPointer(data.lpCallback)), true);
-  // 0x70: u32
-  if (data?.nPropertyPages !== undefined) view.setUint32(112, Number(data.nPropertyPages), true);
-  // 0x74: pad4
-  // 0x78: pointer
-  if (data?.lphPropertyPages !== undefined) view.setBigUint64(120, data.lphPropertyPages === null ? 0n : BigInt(util.toPointer(data.lphPropertyPages)), true);
-  // 0x80: u32
-  if (data?.nStartPage !== undefined) view.setUint32(128, Number(data.nStartPage), true);
-  // 0x84: u32
-  if (data?.dwResultAction !== undefined) view.setUint32(132, Number(data.dwResultAction), true);
-  return buf;
-}
-
-/**
- * Windows.Win32.UI.Controls.Dialogs.DEVNAMES (size: 8)
- */
-export interface DEVNAMES {
-  /** u16 */
-  wDriverOffset: number;
-  /** u16 */
-  wDeviceOffset: number;
-  /** u16 */
-  wOutputOffset: number;
-  /** u16 */
-  wDefault: number;
-}
-
-export const sizeofDEVNAMES = 8;
-
-export function allocDEVNAMES(data?: Partial<DEVNAMES>): Uint8Array {
-  const buf = new Uint8Array(sizeofDEVNAMES);
-  const view = new DataView(buf.buffer);
-  // 0x00: u16
-  if (data?.wDriverOffset !== undefined) view.setUint16(0, Number(data.wDriverOffset), true);
-  // 0x02: u16
-  if (data?.wDeviceOffset !== undefined) view.setUint16(2, Number(data.wDeviceOffset), true);
+  // 0x00: i32
+  if (data?.dxWidth !== undefined) view.setInt32(0, Number(data.dxWidth), true);
   // 0x04: u16
-  if (data?.wOutputOffset !== undefined) view.setUint16(4, Number(data.wOutputOffset), true);
+  if (data?._bitfield !== undefined) view.setUint16(4, Number(data._bitfield), true);
   // 0x06: u16
-  if (data?.wDefault !== undefined) view.setUint16(6, Number(data.wDefault), true);
-  return buf;
-}
-
-/**
- * Windows.Win32.UI.Controls.Dialogs.PAGESETUPDLGA (size: 112)
- */
-export interface PAGESETUPDLGA {
-  /** u32 */
-  lStructSize: number;
-  /** Windows.Win32.Foundation.HWND */
-  hwndOwner: Deno.PointerValue | null;
-  /** isize */
-  hDevMode: Deno.PointerValue;
-  /** isize */
-  hDevNames: Deno.PointerValue;
-  /** Windows.Win32.UI.Controls.Dialogs.PAGESETUPDLG_FLAGS */
-  Flags: PAGESETUPDLG_FLAGS;
-  /** Windows.Win32.Foundation.POINT */
-  ptPaperSize: Uint8Array | Deno.PointerValue | null;
-  /** Windows.Win32.Foundation.RECT */
-  rtMinMargin: Uint8Array | Deno.PointerValue | null;
-  /** Windows.Win32.Foundation.RECT */
-  rtMargin: Uint8Array | Deno.PointerValue | null;
-  /** Windows.Win32.Foundation.HINSTANCE */
-  hInstance: Uint8Array | Deno.PointerValue | null;
-  /** Windows.Win32.Foundation.LPARAM */
-  lCustData: Uint8Array | Deno.PointerValue | null;
-  /** Windows.Win32.UI.Controls.Dialogs.LPPAGESETUPHOOK */
-  lpfnPageSetupHook: Uint8Array | Deno.PointerValue | null;
-  /** Windows.Win32.UI.Controls.Dialogs.LPPAGEPAINTHOOK */
-  lpfnPagePaintHook: Uint8Array | Deno.PointerValue | null;
-  /** Windows.Win32.Foundation.PSTR */
-  lpPageSetupTemplateName: string | null;
-  /** isize */
-  hPageSetupTemplate: Deno.PointerValue;
-}
-
-export const sizeofPAGESETUPDLGA = 112;
-
-export function allocPAGESETUPDLGA(data?: Partial<PAGESETUPDLGA>): Uint8Array {
-  const buf = new Uint8Array(sizeofPAGESETUPDLGA);
-  const view = new DataView(buf.buffer);
-  // 0x00: u32
-  if (data?.lStructSize !== undefined) view.setUint32(0, Number(data.lStructSize), true);
-  // 0x04: pad4
-  // 0x08: pointer
-  if (data?.hwndOwner !== undefined) view.setBigUint64(8, data.hwndOwner === null ? 0n : BigInt(util.toPointer(data.hwndOwner)), true);
-  // 0x10: isize
-  if (data?.hDevMode !== undefined) view.setBigInt64(16, BigInt(data.hDevMode), true);
-  // 0x18: isize
-  if (data?.hDevNames !== undefined) view.setBigInt64(24, BigInt(data.hDevNames), true);
-  // 0x20: u32
-  if (data?.Flags !== undefined) view.setUint32(32, Number(data.Flags), true);
-  // 0x24: pad4
+  if (data?.wShading !== undefined) view.setUint16(6, Number(data.wShading), true);
+  // 0x08: i16
+  if (data?.dxBrdrLeft !== undefined) view.setInt16(8, Number(data.dxBrdrLeft), true);
+  // 0x0a: i16
+  if (data?.dyBrdrTop !== undefined) view.setInt16(10, Number(data.dyBrdrTop), true);
+  // 0x0c: i16
+  if (data?.dxBrdrRight !== undefined) view.setInt16(12, Number(data.dxBrdrRight), true);
+  // 0x0e: i16
+  if (data?.dyBrdrBottom !== undefined) view.setInt16(14, Number(data.dyBrdrBottom), true);
+  // 0x10: pointer
+  if (data?.crBrdrLeft !== undefined) view.setBigUint64(16, data.crBrdrLeft === null ? 0n : BigInt(util.toPointer(data.crBrdrLeft)), true);
+  // 0x18: pointer
+  if (data?.crBrdrTop !== undefined) view.setBigUint64(24, data.crBrdrTop === null ? 0n : BigInt(util.toPointer(data.crBrdrTop)), true);
+  // 0x20: pointer
+  if (data?.crBrdrRight !== undefined) view.setBigUint64(32, data.crBrdrRight === null ? 0n : BigInt(util.toPointer(data.crBrdrRight)), true);
   // 0x28: pointer
-  if (data?.ptPaperSize !== undefined) view.setBigUint64(40, data.ptPaperSize === null ? 0n : BigInt(util.toPointer(data.ptPaperSize)), true);
+  if (data?.crBrdrBottom !== undefined) view.setBigUint64(40, data.crBrdrBottom === null ? 0n : BigInt(util.toPointer(data.crBrdrBottom)), true);
   // 0x30: pointer
-  if (data?.rtMinMargin !== undefined) view.setBigUint64(48, data.rtMinMargin === null ? 0n : BigInt(util.toPointer(data.rtMinMargin)), true);
+  if (data?.crBackPat !== undefined) view.setBigUint64(48, data.crBackPat === null ? 0n : BigInt(util.toPointer(data.crBackPat)), true);
   // 0x38: pointer
-  if (data?.rtMargin !== undefined) view.setBigUint64(56, data.rtMargin === null ? 0n : BigInt(util.toPointer(data.rtMargin)), true);
-  // 0x40: pointer
-  if (data?.hInstance !== undefined) view.setBigUint64(64, data.hInstance === null ? 0n : BigInt(util.toPointer(data.hInstance)), true);
-  // 0x48: pointer
-  if (data?.lCustData !== undefined) view.setBigUint64(72, data.lCustData === null ? 0n : BigInt(util.toPointer(data.lCustData)), true);
-  // 0x50: pointer
-  if (data?.lpfnPageSetupHook !== undefined) view.setBigUint64(80, data.lpfnPageSetupHook === null ? 0n : BigInt(util.toPointer(data.lpfnPageSetupHook)), true);
-  // 0x58: pointer
-  if (data?.lpfnPagePaintHook !== undefined) view.setBigUint64(88, data.lpfnPagePaintHook === null ? 0n : BigInt(util.toPointer(data.lpfnPagePaintHook)), true);
-  // 0x60: buffer
-  if (data?.lpPageSetupTemplateName !== undefined) {
-    (buf as any)._f96 = util.pstrToFfi(data.lpPageSetupTemplateName);
-    view.setBigUint64(96, (buf as any)._f96 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f96)), true);
-  }
-  // 0x68: isize
-  if (data?.hPageSetupTemplate !== undefined) view.setBigInt64(104, BigInt(data.hPageSetupTemplate), true);
+  if (data?.crForePat !== undefined) view.setBigUint64(56, data.crForePat === null ? 0n : BigInt(util.toPointer(data.crForePat)), true);
   return buf;
 }
 
 /**
- * Windows.Win32.UI.Controls.Dialogs.PAGESETUPDLGW (size: 112)
+ * Windows.Win32.UI.Controls.RichEdit.RICHEDIT_IMAGE_PARAMETERS (size: 32)
  */
-export interface PAGESETUPDLGW {
-  /** u32 */
-  lStructSize: number;
-  /** Windows.Win32.Foundation.HWND */
-  hwndOwner: Deno.PointerValue | null;
-  /** isize */
-  hDevMode: Deno.PointerValue;
-  /** isize */
-  hDevNames: Deno.PointerValue;
-  /** Windows.Win32.UI.Controls.Dialogs.PAGESETUPDLG_FLAGS */
-  Flags: PAGESETUPDLG_FLAGS;
-  /** Windows.Win32.Foundation.POINT */
-  ptPaperSize: Uint8Array | Deno.PointerValue | null;
-  /** Windows.Win32.Foundation.RECT */
-  rtMinMargin: Uint8Array | Deno.PointerValue | null;
-  /** Windows.Win32.Foundation.RECT */
-  rtMargin: Uint8Array | Deno.PointerValue | null;
-  /** Windows.Win32.Foundation.HINSTANCE */
-  hInstance: Uint8Array | Deno.PointerValue | null;
-  /** Windows.Win32.Foundation.LPARAM */
-  lCustData: Uint8Array | Deno.PointerValue | null;
-  /** Windows.Win32.UI.Controls.Dialogs.LPPAGESETUPHOOK */
-  lpfnPageSetupHook: Uint8Array | Deno.PointerValue | null;
-  /** Windows.Win32.UI.Controls.Dialogs.LPPAGEPAINTHOOK */
-  lpfnPagePaintHook: Uint8Array | Deno.PointerValue | null;
+export interface RICHEDIT_IMAGE_PARAMETERS {
+  /** i32 */
+  xWidth: number;
+  /** i32 */
+  yHeight: number;
+  /** i32 */
+  Ascent: number;
+  /** Windows.Win32.Graphics.Gdi.TEXT_ALIGN_OPTIONS */
+  Type: TEXT_ALIGN_OPTIONS;
   /** Windows.Win32.Foundation.PWSTR */
-  lpPageSetupTemplateName: string | null;
-  /** isize */
-  hPageSetupTemplate: Deno.PointerValue;
+  pwszAlternateText: string | null;
+  /** Windows.Win32.System.Com.IStream */
+  pIStream: Uint8Array | Deno.PointerValue | null;
 }
 
-export const sizeofPAGESETUPDLGW = 112;
+export const sizeofRICHEDIT_IMAGE_PARAMETERS = 32;
 
-export function allocPAGESETUPDLGW(data?: Partial<PAGESETUPDLGW>): Uint8Array {
-  const buf = new Uint8Array(sizeofPAGESETUPDLGW);
+export function allocRICHEDIT_IMAGE_PARAMETERS(data?: Partial<RICHEDIT_IMAGE_PARAMETERS>): Uint8Array {
+  const buf = new Uint8Array(sizeofRICHEDIT_IMAGE_PARAMETERS);
+  const view = new DataView(buf.buffer);
+  // 0x00: i32
+  if (data?.xWidth !== undefined) view.setInt32(0, Number(data.xWidth), true);
+  // 0x04: i32
+  if (data?.yHeight !== undefined) view.setInt32(4, Number(data.yHeight), true);
+  // 0x08: i32
+  if (data?.Ascent !== undefined) view.setInt32(8, Number(data.Ascent), true);
+  // 0x0c: u32
+  if (data?.Type !== undefined) view.setUint32(12, Number(data.Type), true);
+  // 0x10: buffer
+  if (data?.pwszAlternateText !== undefined) {
+    (buf as any)._f16 = util.pwstrToFfi(data.pwszAlternateText);
+    view.setBigUint64(16, (buf as any)._f16 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f16)), true);
+  }
+  // 0x18: pointer
+  if (data?.pIStream !== undefined) view.setBigUint64(24, data.pIStream === null ? 0n : BigInt(util.toPointer(data.pIStream)), true);
+  return buf;
+}
+
+/**
+ * Windows.Win32.UI.Controls.RichEdit.ENDCOMPOSITIONNOTIFY (size: 16)
+ */
+export interface ENDCOMPOSITIONNOTIFY {
+  /** Windows.Win32.UI.Controls.NMHDR */
+  nmhdr: Uint8Array | Deno.PointerValue | null;
+  /** Windows.Win32.UI.Controls.RichEdit.ENDCOMPOSITIONNOTIFY_CODE */
+  dwCode: ENDCOMPOSITIONNOTIFY_CODE;
+}
+
+export const sizeofENDCOMPOSITIONNOTIFY = 16;
+
+export function allocENDCOMPOSITIONNOTIFY(data?: Partial<ENDCOMPOSITIONNOTIFY>): Uint8Array {
+  const buf = new Uint8Array(sizeofENDCOMPOSITIONNOTIFY);
+  const view = new DataView(buf.buffer);
+  // 0x00: pointer
+  if (data?.nmhdr !== undefined) view.setBigUint64(0, data.nmhdr === null ? 0n : BigInt(util.toPointer(data.nmhdr)), true);
+  // 0x08: u32
+  if (data?.dwCode !== undefined) view.setUint32(8, Number(data.dwCode), true);
+  // 0x0c: pad4
+  return buf;
+}
+
+/**
+ * Windows.Win32.UI.Controls.RichEdit.CHARFORMATA (size: 48)
+ */
+export interface CHARFORMATA {
+  /** u32 */
+  cbSize: number;
+  /** Windows.Win32.UI.Controls.RichEdit.CFM_MASK */
+  dwMask: CFM_MASK;
+  /** Windows.Win32.UI.Controls.RichEdit.CFE_EFFECTS */
+  dwEffects: CFE_EFFECTS;
+  /** i32 */
+  yHeight: number;
+  /** i32 */
+  yOffset: number;
+  /** Windows.Win32.Foundation.COLORREF */
+  crTextColor: Uint8Array | Deno.PointerValue | null;
+  /** Windows.Win32.Graphics.Gdi.EMBED_FONT_CHARSET */
+  bCharSet: EMBED_FONT_CHARSET;
+  /** u8 */
+  bPitchAndFamily: number;
+  /** array */
+  szFaceName: Deno.PointerValue | null;
+}
+
+export const sizeofCHARFORMATA = 48;
+
+export function allocCHARFORMATA(data?: Partial<CHARFORMATA>): Uint8Array {
+  const buf = new Uint8Array(sizeofCHARFORMATA);
   const view = new DataView(buf.buffer);
   // 0x00: u32
-  if (data?.lStructSize !== undefined) view.setUint32(0, Number(data.lStructSize), true);
+  if (data?.cbSize !== undefined) view.setUint32(0, Number(data.cbSize), true);
+  // 0x04: u32
+  if (data?.dwMask !== undefined) view.setUint32(4, Number(data.dwMask), true);
+  // 0x08: u32
+  if (data?.dwEffects !== undefined) view.setUint32(8, Number(data.dwEffects), true);
+  // 0x0c: i32
+  if (data?.yHeight !== undefined) view.setInt32(12, Number(data.yHeight), true);
+  // 0x10: i32
+  if (data?.yOffset !== undefined) view.setInt32(16, Number(data.yOffset), true);
+  // 0x14: pad4
+  // 0x18: pointer
+  if (data?.crTextColor !== undefined) view.setBigUint64(24, data.crTextColor === null ? 0n : BigInt(util.toPointer(data.crTextColor)), true);
+  // 0x20: u32
+  if (data?.bCharSet !== undefined) view.setUint32(32, Number(data.bCharSet), true);
+  // 0x24: u8
+  if (data?.bPitchAndFamily !== undefined) view.setUint8(36, Number(data.bPitchAndFamily));
+  // 0x25: pad3
+  // 0x28: pointer
+  if (data?.szFaceName !== undefined) view.setBigUint64(40, data.szFaceName === null ? 0n : BigInt(util.toPointer(data.szFaceName)), true);
+  return buf;
+}
+
+/**
+ * Windows.Win32.UI.Controls.RichEdit.CHARFORMATW (size: 48)
+ */
+export interface CHARFORMATW {
+  /** u32 */
+  cbSize: number;
+  /** Windows.Win32.UI.Controls.RichEdit.CFM_MASK */
+  dwMask: CFM_MASK;
+  /** Windows.Win32.UI.Controls.RichEdit.CFE_EFFECTS */
+  dwEffects: CFE_EFFECTS;
+  /** i32 */
+  yHeight: number;
+  /** i32 */
+  yOffset: number;
+  /** Windows.Win32.Foundation.COLORREF */
+  crTextColor: Uint8Array | Deno.PointerValue | null;
+  /** Windows.Win32.Graphics.Gdi.EMBED_FONT_CHARSET */
+  bCharSet: EMBED_FONT_CHARSET;
+  /** u8 */
+  bPitchAndFamily: number;
+  /** array */
+  szFaceName: Deno.PointerValue | null;
+}
+
+export const sizeofCHARFORMATW = 48;
+
+export function allocCHARFORMATW(data?: Partial<CHARFORMATW>): Uint8Array {
+  const buf = new Uint8Array(sizeofCHARFORMATW);
+  const view = new DataView(buf.buffer);
+  // 0x00: u32
+  if (data?.cbSize !== undefined) view.setUint32(0, Number(data.cbSize), true);
+  // 0x04: u32
+  if (data?.dwMask !== undefined) view.setUint32(4, Number(data.dwMask), true);
+  // 0x08: u32
+  if (data?.dwEffects !== undefined) view.setUint32(8, Number(data.dwEffects), true);
+  // 0x0c: i32
+  if (data?.yHeight !== undefined) view.setInt32(12, Number(data.yHeight), true);
+  // 0x10: i32
+  if (data?.yOffset !== undefined) view.setInt32(16, Number(data.yOffset), true);
+  // 0x14: pad4
+  // 0x18: pointer
+  if (data?.crTextColor !== undefined) view.setBigUint64(24, data.crTextColor === null ? 0n : BigInt(util.toPointer(data.crTextColor)), true);
+  // 0x20: u32
+  if (data?.bCharSet !== undefined) view.setUint32(32, Number(data.bCharSet), true);
+  // 0x24: u8
+  if (data?.bPitchAndFamily !== undefined) view.setUint8(36, Number(data.bPitchAndFamily));
+  // 0x25: pad3
+  // 0x28: pointer
+  if (data?.szFaceName !== undefined) view.setBigUint64(40, data.szFaceName === null ? 0n : BigInt(util.toPointer(data.szFaceName)), true);
+  return buf;
+}
+
+/**
+ * Windows.Win32.UI.Controls.RichEdit.CHARFORMAT2W (size: 48)
+ */
+export interface CHARFORMAT2W {
+  /** Windows.Win32.UI.Controls.RichEdit.CHARFORMATW */
+  Base: Uint8Array | Deno.PointerValue | null;
+  /** u16 */
+  wWeight: number;
+  /** i16 */
+  sSpacing: number;
+  /** Windows.Win32.Foundation.COLORREF */
+  crBackColor: Uint8Array | Deno.PointerValue | null;
+  /** u32 */
+  lcid: number;
+  /** _Anonymous_e__Union */
+  Anonymous: Uint8Array | Deno.PointerValue | null;
+  /** i16 */
+  sStyle: number;
+  /** u16 */
+  wKerning: number;
+  /** u8 */
+  bUnderlineType: number;
+  /** u8 */
+  bAnimation: number;
+  /** u8 */
+  bRevAuthor: number;
+  /** u8 */
+  bUnderlineColor: number;
+}
+
+export const sizeofCHARFORMAT2W = 48;
+
+export function allocCHARFORMAT2W(data?: Partial<CHARFORMAT2W>): Uint8Array {
+  const buf = new Uint8Array(sizeofCHARFORMAT2W);
+  const view = new DataView(buf.buffer);
+  // 0x00: pointer
+  if (data?.Base !== undefined) view.setBigUint64(0, data.Base === null ? 0n : BigInt(util.toPointer(data.Base)), true);
+  // 0x08: u16
+  if (data?.wWeight !== undefined) view.setUint16(8, Number(data.wWeight), true);
+  // 0x0a: i16
+  if (data?.sSpacing !== undefined) view.setInt16(10, Number(data.sSpacing), true);
+  // 0x0c: pad4
+  // 0x10: pointer
+  if (data?.crBackColor !== undefined) view.setBigUint64(16, data.crBackColor === null ? 0n : BigInt(util.toPointer(data.crBackColor)), true);
+  // 0x18: u32
+  if (data?.lcid !== undefined) view.setUint32(24, Number(data.lcid), true);
+  // 0x1c: pad4
+  // 0x20: pointer
+  if (data?.Anonymous !== undefined) view.setBigUint64(32, data.Anonymous === null ? 0n : BigInt(util.toPointer(data.Anonymous)), true);
+  // 0x28: i16
+  if (data?.sStyle !== undefined) view.setInt16(40, Number(data.sStyle), true);
+  // 0x2a: u16
+  if (data?.wKerning !== undefined) view.setUint16(42, Number(data.wKerning), true);
+  // 0x2c: u8
+  if (data?.bUnderlineType !== undefined) view.setUint8(44, Number(data.bUnderlineType));
+  // 0x2d: u8
+  if (data?.bAnimation !== undefined) view.setUint8(45, Number(data.bAnimation));
+  // 0x2e: u8
+  if (data?.bRevAuthor !== undefined) view.setUint8(46, Number(data.bRevAuthor));
+  // 0x2f: u8
+  if (data?.bUnderlineColor !== undefined) view.setUint8(47, Number(data.bUnderlineColor));
+  return buf;
+}
+
+/**
+ * Windows.Win32.UI.Controls.RichEdit.CHARFORMAT2A (size: 48)
+ */
+export interface CHARFORMAT2A {
+  /** Windows.Win32.UI.Controls.RichEdit.CHARFORMATA */
+  Base: Uint8Array | Deno.PointerValue | null;
+  /** u16 */
+  wWeight: number;
+  /** i16 */
+  sSpacing: number;
+  /** Windows.Win32.Foundation.COLORREF */
+  crBackColor: Uint8Array | Deno.PointerValue | null;
+  /** u32 */
+  lcid: number;
+  /** _Anonymous_e__Union */
+  Anonymous: Uint8Array | Deno.PointerValue | null;
+  /** i16 */
+  sStyle: number;
+  /** u16 */
+  wKerning: number;
+  /** u8 */
+  bUnderlineType: number;
+  /** u8 */
+  bAnimation: number;
+  /** u8 */
+  bRevAuthor: number;
+  /** u8 */
+  bUnderlineColor: number;
+}
+
+export const sizeofCHARFORMAT2A = 48;
+
+export function allocCHARFORMAT2A(data?: Partial<CHARFORMAT2A>): Uint8Array {
+  const buf = new Uint8Array(sizeofCHARFORMAT2A);
+  const view = new DataView(buf.buffer);
+  // 0x00: pointer
+  if (data?.Base !== undefined) view.setBigUint64(0, data.Base === null ? 0n : BigInt(util.toPointer(data.Base)), true);
+  // 0x08: u16
+  if (data?.wWeight !== undefined) view.setUint16(8, Number(data.wWeight), true);
+  // 0x0a: i16
+  if (data?.sSpacing !== undefined) view.setInt16(10, Number(data.sSpacing), true);
+  // 0x0c: pad4
+  // 0x10: pointer
+  if (data?.crBackColor !== undefined) view.setBigUint64(16, data.crBackColor === null ? 0n : BigInt(util.toPointer(data.crBackColor)), true);
+  // 0x18: u32
+  if (data?.lcid !== undefined) view.setUint32(24, Number(data.lcid), true);
+  // 0x1c: pad4
+  // 0x20: pointer
+  if (data?.Anonymous !== undefined) view.setBigUint64(32, data.Anonymous === null ? 0n : BigInt(util.toPointer(data.Anonymous)), true);
+  // 0x28: i16
+  if (data?.sStyle !== undefined) view.setInt16(40, Number(data.sStyle), true);
+  // 0x2a: u16
+  if (data?.wKerning !== undefined) view.setUint16(42, Number(data.wKerning), true);
+  // 0x2c: u8
+  if (data?.bUnderlineType !== undefined) view.setUint8(44, Number(data.bUnderlineType));
+  // 0x2d: u8
+  if (data?.bAnimation !== undefined) view.setUint8(45, Number(data.bAnimation));
+  // 0x2e: u8
+  if (data?.bRevAuthor !== undefined) view.setUint8(46, Number(data.bRevAuthor));
+  // 0x2f: u8
+  if (data?.bUnderlineColor !== undefined) view.setUint8(47, Number(data.bUnderlineColor));
+  return buf;
+}
+
+/**
+ * Windows.Win32.UI.Controls.RichEdit.CHARRANGE (size: 8)
+ */
+export interface CHARRANGE {
+  /** i32 */
+  cpMin: number;
+  /** i32 */
+  cpMax: number;
+}
+
+export const sizeofCHARRANGE = 8;
+
+export function allocCHARRANGE(data?: Partial<CHARRANGE>): Uint8Array {
+  const buf = new Uint8Array(sizeofCHARRANGE);
+  const view = new DataView(buf.buffer);
+  // 0x00: i32
+  if (data?.cpMin !== undefined) view.setInt32(0, Number(data.cpMin), true);
+  // 0x04: i32
+  if (data?.cpMax !== undefined) view.setInt32(4, Number(data.cpMax), true);
+  return buf;
+}
+
+/**
+ * Windows.Win32.UI.Controls.RichEdit.TEXTRANGEA (size: 16)
+ */
+export interface TEXTRANGEA {
+  /** Windows.Win32.UI.Controls.RichEdit.CHARRANGE */
+  chrg: Uint8Array | Deno.PointerValue | null;
+  /** Windows.Win32.Foundation.PSTR */
+  lpstrText: string | null;
+}
+
+export const sizeofTEXTRANGEA = 16;
+
+export function allocTEXTRANGEA(data?: Partial<TEXTRANGEA>): Uint8Array {
+  const buf = new Uint8Array(sizeofTEXTRANGEA);
+  const view = new DataView(buf.buffer);
+  // 0x00: pointer
+  if (data?.chrg !== undefined) view.setBigUint64(0, data.chrg === null ? 0n : BigInt(util.toPointer(data.chrg)), true);
+  // 0x08: buffer
+  if (data?.lpstrText !== undefined) {
+    (buf as any)._f8 = util.pstrToFfi(data.lpstrText);
+    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f8)), true);
+  }
+  return buf;
+}
+
+/**
+ * Windows.Win32.UI.Controls.RichEdit.TEXTRANGEW (size: 16)
+ */
+export interface TEXTRANGEW {
+  /** Windows.Win32.UI.Controls.RichEdit.CHARRANGE */
+  chrg: Uint8Array | Deno.PointerValue | null;
+  /** Windows.Win32.Foundation.PWSTR */
+  lpstrText: string | null;
+}
+
+export const sizeofTEXTRANGEW = 16;
+
+export function allocTEXTRANGEW(data?: Partial<TEXTRANGEW>): Uint8Array {
+  const buf = new Uint8Array(sizeofTEXTRANGEW);
+  const view = new DataView(buf.buffer);
+  // 0x00: pointer
+  if (data?.chrg !== undefined) view.setBigUint64(0, data.chrg === null ? 0n : BigInt(util.toPointer(data.chrg)), true);
+  // 0x08: buffer
+  if (data?.lpstrText !== undefined) {
+    (buf as any)._f8 = util.pwstrToFfi(data.lpstrText);
+    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f8)), true);
+  }
+  return buf;
+}
+
+/**
+ * Windows.Win32.UI.Controls.RichEdit.EDITSTREAM (size: 24)
+ */
+export interface EDITSTREAM {
+  /** usize */
+  dwCookie: Deno.PointerValue;
+  /** u32 */
+  dwError: number;
+  /** Windows.Win32.UI.Controls.RichEdit.EDITSTREAMCALLBACK */
+  pfnCallback: Uint8Array | Deno.PointerValue | null;
+}
+
+export const sizeofEDITSTREAM = 24;
+
+export function allocEDITSTREAM(data?: Partial<EDITSTREAM>): Uint8Array {
+  const buf = new Uint8Array(sizeofEDITSTREAM);
+  const view = new DataView(buf.buffer);
+  // 0x00: usize
+  if (data?.dwCookie !== undefined) view.setBigUint64(0, BigInt(data.dwCookie), true);
+  // 0x08: u32
+  if (data?.dwError !== undefined) view.setUint32(8, Number(data.dwError), true);
+  // 0x0c: pad4
+  // 0x10: pointer
+  if (data?.pfnCallback !== undefined) view.setBigUint64(16, data.pfnCallback === null ? 0n : BigInt(util.toPointer(data.pfnCallback)), true);
+  return buf;
+}
+
+/**
+ * Windows.Win32.UI.Controls.RichEdit.FINDTEXTA (size: 16)
+ */
+export interface FINDTEXTA {
+  /** Windows.Win32.UI.Controls.RichEdit.CHARRANGE */
+  chrg: Uint8Array | Deno.PointerValue | null;
+  /** Windows.Win32.Foundation.PSTR */
+  lpstrText: string | null;
+}
+
+export const sizeofFINDTEXTA = 16;
+
+export function allocFINDTEXTA(data?: Partial<FINDTEXTA>): Uint8Array {
+  const buf = new Uint8Array(sizeofFINDTEXTA);
+  const view = new DataView(buf.buffer);
+  // 0x00: pointer
+  if (data?.chrg !== undefined) view.setBigUint64(0, data.chrg === null ? 0n : BigInt(util.toPointer(data.chrg)), true);
+  // 0x08: buffer
+  if (data?.lpstrText !== undefined) {
+    (buf as any)._f8 = util.pstrToFfi(data.lpstrText);
+    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f8)), true);
+  }
+  return buf;
+}
+
+/**
+ * Windows.Win32.UI.Controls.RichEdit.FINDTEXTW (size: 16)
+ */
+export interface FINDTEXTW {
+  /** Windows.Win32.UI.Controls.RichEdit.CHARRANGE */
+  chrg: Uint8Array | Deno.PointerValue | null;
+  /** Windows.Win32.Foundation.PWSTR */
+  lpstrText: string | null;
+}
+
+export const sizeofFINDTEXTW = 16;
+
+export function allocFINDTEXTW(data?: Partial<FINDTEXTW>): Uint8Array {
+  const buf = new Uint8Array(sizeofFINDTEXTW);
+  const view = new DataView(buf.buffer);
+  // 0x00: pointer
+  if (data?.chrg !== undefined) view.setBigUint64(0, data.chrg === null ? 0n : BigInt(util.toPointer(data.chrg)), true);
+  // 0x08: buffer
+  if (data?.lpstrText !== undefined) {
+    (buf as any)._f8 = util.pwstrToFfi(data.lpstrText);
+    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f8)), true);
+  }
+  return buf;
+}
+
+/**
+ * Windows.Win32.UI.Controls.RichEdit.FINDTEXTEXA (size: 24)
+ */
+export interface FINDTEXTEXA {
+  /** Windows.Win32.UI.Controls.RichEdit.CHARRANGE */
+  chrg: Uint8Array | Deno.PointerValue | null;
+  /** Windows.Win32.Foundation.PSTR */
+  lpstrText: string | null;
+  /** Windows.Win32.UI.Controls.RichEdit.CHARRANGE */
+  chrgText: Uint8Array | Deno.PointerValue | null;
+}
+
+export const sizeofFINDTEXTEXA = 24;
+
+export function allocFINDTEXTEXA(data?: Partial<FINDTEXTEXA>): Uint8Array {
+  const buf = new Uint8Array(sizeofFINDTEXTEXA);
+  const view = new DataView(buf.buffer);
+  // 0x00: pointer
+  if (data?.chrg !== undefined) view.setBigUint64(0, data.chrg === null ? 0n : BigInt(util.toPointer(data.chrg)), true);
+  // 0x08: buffer
+  if (data?.lpstrText !== undefined) {
+    (buf as any)._f8 = util.pstrToFfi(data.lpstrText);
+    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f8)), true);
+  }
+  // 0x10: pointer
+  if (data?.chrgText !== undefined) view.setBigUint64(16, data.chrgText === null ? 0n : BigInt(util.toPointer(data.chrgText)), true);
+  return buf;
+}
+
+/**
+ * Windows.Win32.UI.Controls.RichEdit.FINDTEXTEXW (size: 24)
+ */
+export interface FINDTEXTEXW {
+  /** Windows.Win32.UI.Controls.RichEdit.CHARRANGE */
+  chrg: Uint8Array | Deno.PointerValue | null;
+  /** Windows.Win32.Foundation.PWSTR */
+  lpstrText: string | null;
+  /** Windows.Win32.UI.Controls.RichEdit.CHARRANGE */
+  chrgText: Uint8Array | Deno.PointerValue | null;
+}
+
+export const sizeofFINDTEXTEXW = 24;
+
+export function allocFINDTEXTEXW(data?: Partial<FINDTEXTEXW>): Uint8Array {
+  const buf = new Uint8Array(sizeofFINDTEXTEXW);
+  const view = new DataView(buf.buffer);
+  // 0x00: pointer
+  if (data?.chrg !== undefined) view.setBigUint64(0, data.chrg === null ? 0n : BigInt(util.toPointer(data.chrg)), true);
+  // 0x08: buffer
+  if (data?.lpstrText !== undefined) {
+    (buf as any)._f8 = util.pwstrToFfi(data.lpstrText);
+    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f8)), true);
+  }
+  // 0x10: pointer
+  if (data?.chrgText !== undefined) view.setBigUint64(16, data.chrgText === null ? 0n : BigInt(util.toPointer(data.chrgText)), true);
+  return buf;
+}
+
+/**
+ * Windows.Win32.UI.Controls.RichEdit.FORMATRANGE (size: 40)
+ */
+export interface FORMATRANGE {
+  /** Windows.Win32.Graphics.Gdi.HDC */
+  hdc: Uint8Array | Deno.PointerValue | null;
+  /** Windows.Win32.Graphics.Gdi.HDC */
+  hdcTarget: Uint8Array | Deno.PointerValue | null;
+  /** Windows.Win32.Foundation.RECT */
+  rc: Uint8Array | Deno.PointerValue | null;
+  /** Windows.Win32.Foundation.RECT */
+  rcPage: Uint8Array | Deno.PointerValue | null;
+  /** Windows.Win32.UI.Controls.RichEdit.CHARRANGE */
+  chrg: Uint8Array | Deno.PointerValue | null;
+}
+
+export const sizeofFORMATRANGE = 40;
+
+export function allocFORMATRANGE(data?: Partial<FORMATRANGE>): Uint8Array {
+  const buf = new Uint8Array(sizeofFORMATRANGE);
+  const view = new DataView(buf.buffer);
+  // 0x00: pointer
+  if (data?.hdc !== undefined) view.setBigUint64(0, data.hdc === null ? 0n : BigInt(util.toPointer(data.hdc)), true);
+  // 0x08: pointer
+  if (data?.hdcTarget !== undefined) view.setBigUint64(8, data.hdcTarget === null ? 0n : BigInt(util.toPointer(data.hdcTarget)), true);
+  // 0x10: pointer
+  if (data?.rc !== undefined) view.setBigUint64(16, data.rc === null ? 0n : BigInt(util.toPointer(data.rc)), true);
+  // 0x18: pointer
+  if (data?.rcPage !== undefined) view.setBigUint64(24, data.rcPage === null ? 0n : BigInt(util.toPointer(data.rcPage)), true);
+  // 0x20: pointer
+  if (data?.chrg !== undefined) view.setBigUint64(32, data.chrg === null ? 0n : BigInt(util.toPointer(data.chrg)), true);
+  return buf;
+}
+
+/**
+ * Windows.Win32.UI.Controls.RichEdit.PARAFORMAT (size: 48)
+ */
+export interface PARAFORMAT {
+  /** u32 */
+  cbSize: number;
+  /** Windows.Win32.UI.Controls.RichEdit.PARAFORMAT_MASK */
+  dwMask: PARAFORMAT_MASK;
+  /** Windows.Win32.UI.Controls.RichEdit.PARAFORMAT_NUMBERING */
+  wNumbering: PARAFORMAT_NUMBERING;
+  /** _Anonymous_e__Union */
+  Anonymous: Uint8Array | Deno.PointerValue | null;
+  /** i32 */
+  dxStartIndent: number;
+  /** i32 */
+  dxRightIndent: number;
+  /** i32 */
+  dxOffset: number;
+  /** Windows.Win32.UI.Controls.RichEdit.PARAFORMAT_ALIGNMENT */
+  wAlignment: PARAFORMAT_ALIGNMENT;
+  /** i16 */
+  cTabCount: number;
+  /** array */
+  rgxTabs: Deno.PointerValue | null;
+}
+
+export const sizeofPARAFORMAT = 48;
+
+export function allocPARAFORMAT(data?: Partial<PARAFORMAT>): Uint8Array {
+  const buf = new Uint8Array(sizeofPARAFORMAT);
+  const view = new DataView(buf.buffer);
+  // 0x00: u32
+  if (data?.cbSize !== undefined) view.setUint32(0, Number(data.cbSize), true);
+  // 0x04: u32
+  if (data?.dwMask !== undefined) view.setUint32(4, Number(data.dwMask), true);
+  // 0x08: u16
+  if (data?.wNumbering !== undefined) view.setUint16(8, Number(data.wNumbering), true);
+  // 0x0a: pad6
+  // 0x10: pointer
+  if (data?.Anonymous !== undefined) view.setBigUint64(16, data.Anonymous === null ? 0n : BigInt(util.toPointer(data.Anonymous)), true);
+  // 0x18: i32
+  if (data?.dxStartIndent !== undefined) view.setInt32(24, Number(data.dxStartIndent), true);
+  // 0x1c: i32
+  if (data?.dxRightIndent !== undefined) view.setInt32(28, Number(data.dxRightIndent), true);
+  // 0x20: i32
+  if (data?.dxOffset !== undefined) view.setInt32(32, Number(data.dxOffset), true);
+  // 0x24: u16
+  if (data?.wAlignment !== undefined) view.setUint16(36, Number(data.wAlignment), true);
+  // 0x26: i16
+  if (data?.cTabCount !== undefined) view.setInt16(38, Number(data.cTabCount), true);
+  // 0x28: pointer
+  if (data?.rgxTabs !== undefined) view.setBigUint64(40, data.rgxTabs === null ? 0n : BigInt(util.toPointer(data.rgxTabs)), true);
+  return buf;
+}
+
+/**
+ * Windows.Win32.UI.Controls.RichEdit.PARAFORMAT2 (size: 40)
+ */
+export interface PARAFORMAT2 {
+  /** Windows.Win32.UI.Controls.RichEdit.PARAFORMAT */
+  Base: Uint8Array | Deno.PointerValue | null;
+  /** i32 */
+  dySpaceBefore: number;
+  /** i32 */
+  dySpaceAfter: number;
+  /** i32 */
+  dyLineSpacing: number;
+  /** i16 */
+  sStyle: number;
+  /** u8 */
+  bLineSpacingRule: number;
+  /** u8 */
+  bOutlineLevel: number;
+  /** u16 */
+  wShadingWeight: number;
+  /** Windows.Win32.UI.Controls.RichEdit.PARAFORMAT_SHADING_STYLE */
+  wShadingStyle: PARAFORMAT_SHADING_STYLE;
+  /** u16 */
+  wNumberingStart: number;
+  /** Windows.Win32.UI.Controls.RichEdit.PARAFORMAT_NUMBERING_STYLE */
+  wNumberingStyle: PARAFORMAT_NUMBERING_STYLE;
+  /** u16 */
+  wNumberingTab: number;
+  /** u16 */
+  wBorderSpace: number;
+  /** u16 */
+  wBorderWidth: number;
+  /** Windows.Win32.UI.Controls.RichEdit.PARAFORMAT_BORDERS */
+  wBorders: PARAFORMAT_BORDERS;
+}
+
+export const sizeofPARAFORMAT2 = 40;
+
+export function allocPARAFORMAT2(data?: Partial<PARAFORMAT2>): Uint8Array {
+  const buf = new Uint8Array(sizeofPARAFORMAT2);
+  const view = new DataView(buf.buffer);
+  // 0x00: pointer
+  if (data?.Base !== undefined) view.setBigUint64(0, data.Base === null ? 0n : BigInt(util.toPointer(data.Base)), true);
+  // 0x08: i32
+  if (data?.dySpaceBefore !== undefined) view.setInt32(8, Number(data.dySpaceBefore), true);
+  // 0x0c: i32
+  if (data?.dySpaceAfter !== undefined) view.setInt32(12, Number(data.dySpaceAfter), true);
+  // 0x10: i32
+  if (data?.dyLineSpacing !== undefined) view.setInt32(16, Number(data.dyLineSpacing), true);
+  // 0x14: i16
+  if (data?.sStyle !== undefined) view.setInt16(20, Number(data.sStyle), true);
+  // 0x16: u8
+  if (data?.bLineSpacingRule !== undefined) view.setUint8(22, Number(data.bLineSpacingRule));
+  // 0x17: u8
+  if (data?.bOutlineLevel !== undefined) view.setUint8(23, Number(data.bOutlineLevel));
+  // 0x18: u16
+  if (data?.wShadingWeight !== undefined) view.setUint16(24, Number(data.wShadingWeight), true);
+  // 0x1a: u16
+  if (data?.wShadingStyle !== undefined) view.setUint16(26, Number(data.wShadingStyle), true);
+  // 0x1c: u16
+  if (data?.wNumberingStart !== undefined) view.setUint16(28, Number(data.wNumberingStart), true);
+  // 0x1e: u16
+  if (data?.wNumberingStyle !== undefined) view.setUint16(30, Number(data.wNumberingStyle), true);
+  // 0x20: u16
+  if (data?.wNumberingTab !== undefined) view.setUint16(32, Number(data.wNumberingTab), true);
+  // 0x22: u16
+  if (data?.wBorderSpace !== undefined) view.setUint16(34, Number(data.wBorderSpace), true);
+  // 0x24: u16
+  if (data?.wBorderWidth !== undefined) view.setUint16(36, Number(data.wBorderWidth), true);
+  // 0x26: u16
+  if (data?.wBorders !== undefined) view.setUint16(38, Number(data.wBorders), true);
+  return buf;
+}
+
+export type WPARAM = Deno.PointerValue;
+
+/**
+ * Windows.Win32.UI.Controls.RichEdit.MSGFILTER (size: 32)
+ */
+export interface MSGFILTER {
+  /** Windows.Win32.UI.Controls.NMHDR */
+  nmhdr: Uint8Array | Deno.PointerValue | null;
+  /** u32 */
+  msg: number;
+  /** Windows.Win32.Foundation.WPARAM */
+  wParam: Uint8Array | Deno.PointerValue | null;
+  /** Windows.Win32.Foundation.LPARAM */
+  lParam: Uint8Array | Deno.PointerValue | null;
+}
+
+export const sizeofMSGFILTER = 32;
+
+export function allocMSGFILTER(data?: Partial<MSGFILTER>): Uint8Array {
+  const buf = new Uint8Array(sizeofMSGFILTER);
+  const view = new DataView(buf.buffer);
+  // 0x00: pointer
+  if (data?.nmhdr !== undefined) view.setBigUint64(0, data.nmhdr === null ? 0n : BigInt(util.toPointer(data.nmhdr)), true);
+  // 0x08: u32
+  if (data?.msg !== undefined) view.setUint32(8, Number(data.msg), true);
+  // 0x0c: pad4
+  // 0x10: pointer
+  if (data?.wParam !== undefined) view.setBigUint64(16, data.wParam === null ? 0n : BigInt(util.toPointer(data.wParam)), true);
+  // 0x18: pointer
+  if (data?.lParam !== undefined) view.setBigUint64(24, data.lParam === null ? 0n : BigInt(util.toPointer(data.lParam)), true);
+  return buf;
+}
+
+/**
+ * Windows.Win32.UI.Controls.RichEdit.REQRESIZE (size: 16)
+ */
+export interface REQRESIZE {
+  /** Windows.Win32.UI.Controls.NMHDR */
+  nmhdr: Uint8Array | Deno.PointerValue | null;
+  /** Windows.Win32.Foundation.RECT */
+  rc: Uint8Array | Deno.PointerValue | null;
+}
+
+export const sizeofREQRESIZE = 16;
+
+export function allocREQRESIZE(data?: Partial<REQRESIZE>): Uint8Array {
+  const buf = new Uint8Array(sizeofREQRESIZE);
+  const view = new DataView(buf.buffer);
+  // 0x00: pointer
+  if (data?.nmhdr !== undefined) view.setBigUint64(0, data.nmhdr === null ? 0n : BigInt(util.toPointer(data.nmhdr)), true);
+  // 0x08: pointer
+  if (data?.rc !== undefined) view.setBigUint64(8, data.rc === null ? 0n : BigInt(util.toPointer(data.rc)), true);
+  return buf;
+}
+
+/**
+ * Windows.Win32.UI.Controls.RichEdit.SELCHANGE (size: 24)
+ */
+export interface SELCHANGE {
+  /** Windows.Win32.UI.Controls.NMHDR */
+  nmhdr: Uint8Array | Deno.PointerValue | null;
+  /** Windows.Win32.UI.Controls.RichEdit.CHARRANGE */
+  chrg: Uint8Array | Deno.PointerValue | null;
+  /** Windows.Win32.UI.Controls.RichEdit.RICH_EDIT_GET_CONTEXT_MENU_SEL_TYPE */
+  seltyp: RICH_EDIT_GET_CONTEXT_MENU_SEL_TYPE;
+}
+
+export const sizeofSELCHANGE = 24;
+
+export function allocSELCHANGE(data?: Partial<SELCHANGE>): Uint8Array {
+  const buf = new Uint8Array(sizeofSELCHANGE);
+  const view = new DataView(buf.buffer);
+  // 0x00: pointer
+  if (data?.nmhdr !== undefined) view.setBigUint64(0, data.nmhdr === null ? 0n : BigInt(util.toPointer(data.nmhdr)), true);
+  // 0x08: pointer
+  if (data?.chrg !== undefined) view.setBigUint64(8, data.chrg === null ? 0n : BigInt(util.toPointer(data.chrg)), true);
+  // 0x10: u16
+  if (data?.seltyp !== undefined) view.setUint16(16, Number(data.seltyp), true);
+  // 0x12: pad6
+  return buf;
+}
+
+/**
+ * Windows.Win32.UI.Controls.RichEdit.GROUPTYPINGCHANGE (size: 16)
+ */
+export interface GROUPTYPINGCHANGE {
+  /** Windows.Win32.UI.Controls.NMHDR */
+  nmhdr: Uint8Array | Deno.PointerValue | null;
+  /** Windows.Win32.Foundation.BOOL */
+  fGroupTyping: boolean;
+}
+
+export const sizeofGROUPTYPINGCHANGE = 16;
+
+export function allocGROUPTYPINGCHANGE(data?: Partial<GROUPTYPINGCHANGE>): Uint8Array {
+  const buf = new Uint8Array(sizeofGROUPTYPINGCHANGE);
+  const view = new DataView(buf.buffer);
+  // 0x00: pointer
+  if (data?.nmhdr !== undefined) view.setBigUint64(0, data.nmhdr === null ? 0n : BigInt(util.toPointer(data.nmhdr)), true);
+  // 0x08: i32
+  if (data?.fGroupTyping !== undefined) view.setInt32(8, Number(data.fGroupTyping), true);
+  // 0x0c: pad4
+  return buf;
+}
+
+/**
+ * Windows.Win32.UI.Controls.RichEdit.CLIPBOARDFORMAT (size: 16)
+ */
+export interface CLIPBOARDFORMAT {
+  /** Windows.Win32.UI.Controls.NMHDR */
+  nmhdr: Uint8Array | Deno.PointerValue | null;
+  /** u16 */
+  cf: number;
+}
+
+export const sizeofCLIPBOARDFORMAT = 16;
+
+export function allocCLIPBOARDFORMAT(data?: Partial<CLIPBOARDFORMAT>): Uint8Array {
+  const buf = new Uint8Array(sizeofCLIPBOARDFORMAT);
+  const view = new DataView(buf.buffer);
+  // 0x00: pointer
+  if (data?.nmhdr !== undefined) view.setBigUint64(0, data.nmhdr === null ? 0n : BigInt(util.toPointer(data.nmhdr)), true);
+  // 0x08: u16
+  if (data?.cf !== undefined) view.setUint16(8, Number(data.cf), true);
+  // 0x0a: pad6
+  return buf;
+}
+
+/**
+ * Windows.Win32.UI.Controls.RichEdit.GETCONTEXTMENUEX (size: 32)
+ */
+export interface GETCONTEXTMENUEX {
+  /** Windows.Win32.UI.Controls.RichEdit.CHARRANGE */
+  chrg: Uint8Array | Deno.PointerValue | null;
+  /** u32 */
+  dwFlags: number;
+  /** Windows.Win32.Foundation.POINT */
+  pt: Uint8Array | Deno.PointerValue | null;
+  /** ptr */
+  pvReserved: Deno.PointerValue | Uint8Array | null;
+}
+
+export const sizeofGETCONTEXTMENUEX = 32;
+
+export function allocGETCONTEXTMENUEX(data?: Partial<GETCONTEXTMENUEX>): Uint8Array {
+  const buf = new Uint8Array(sizeofGETCONTEXTMENUEX);
+  const view = new DataView(buf.buffer);
+  // 0x00: pointer
+  if (data?.chrg !== undefined) view.setBigUint64(0, data.chrg === null ? 0n : BigInt(util.toPointer(data.chrg)), true);
+  // 0x08: u32
+  if (data?.dwFlags !== undefined) view.setUint32(8, Number(data.dwFlags), true);
+  // 0x0c: pad4
+  // 0x10: pointer
+  if (data?.pt !== undefined) view.setBigUint64(16, data.pt === null ? 0n : BigInt(util.toPointer(data.pt)), true);
+  // 0x18: pointer
+  if (data?.pvReserved !== undefined) view.setBigUint64(24, data.pvReserved === null ? 0n : BigInt(util.toPointer(data.pvReserved)), true);
+  return buf;
+}
+
+/**
+ * Windows.Win32.UI.Controls.RichEdit.ENDROPFILES (size: 24)
+ */
+export interface ENDROPFILES {
+  /** Windows.Win32.UI.Controls.NMHDR */
+  nmhdr: Uint8Array | Deno.PointerValue | null;
+  /** Windows.Win32.Foundation.HANDLE */
+  hDrop: Uint8Array | Deno.PointerValue | null;
+  /** i32 */
+  cp: number;
+  /** Windows.Win32.Foundation.BOOL */
+  fProtected: boolean;
+}
+
+export const sizeofENDROPFILES = 24;
+
+export function allocENDROPFILES(data?: Partial<ENDROPFILES>): Uint8Array {
+  const buf = new Uint8Array(sizeofENDROPFILES);
+  const view = new DataView(buf.buffer);
+  // 0x00: pointer
+  if (data?.nmhdr !== undefined) view.setBigUint64(0, data.nmhdr === null ? 0n : BigInt(util.toPointer(data.nmhdr)), true);
+  // 0x08: pointer
+  if (data?.hDrop !== undefined) view.setBigUint64(8, data.hDrop === null ? 0n : BigInt(util.toPointer(data.hDrop)), true);
+  // 0x10: i32
+  if (data?.cp !== undefined) view.setInt32(16, Number(data.cp), true);
+  // 0x14: i32
+  if (data?.fProtected !== undefined) view.setInt32(20, Number(data.fProtected), true);
+  return buf;
+}
+
+/**
+ * Windows.Win32.UI.Controls.RichEdit.ENPROTECTED (size: 40)
+ */
+export interface ENPROTECTED {
+  /** Windows.Win32.UI.Controls.NMHDR */
+  nmhdr: Uint8Array | Deno.PointerValue | null;
+  /** u32 */
+  msg: number;
+  /** Windows.Win32.Foundation.WPARAM */
+  wParam: Uint8Array | Deno.PointerValue | null;
+  /** Windows.Win32.Foundation.LPARAM */
+  lParam: Uint8Array | Deno.PointerValue | null;
+  /** Windows.Win32.UI.Controls.RichEdit.CHARRANGE */
+  chrg: Uint8Array | Deno.PointerValue | null;
+}
+
+export const sizeofENPROTECTED = 40;
+
+export function allocENPROTECTED(data?: Partial<ENPROTECTED>): Uint8Array {
+  const buf = new Uint8Array(sizeofENPROTECTED);
+  const view = new DataView(buf.buffer);
+  // 0x00: pointer
+  if (data?.nmhdr !== undefined) view.setBigUint64(0, data.nmhdr === null ? 0n : BigInt(util.toPointer(data.nmhdr)), true);
+  // 0x08: u32
+  if (data?.msg !== undefined) view.setUint32(8, Number(data.msg), true);
+  // 0x0c: pad4
+  // 0x10: pointer
+  if (data?.wParam !== undefined) view.setBigUint64(16, data.wParam === null ? 0n : BigInt(util.toPointer(data.wParam)), true);
+  // 0x18: pointer
+  if (data?.lParam !== undefined) view.setBigUint64(24, data.lParam === null ? 0n : BigInt(util.toPointer(data.lParam)), true);
+  // 0x20: pointer
+  if (data?.chrg !== undefined) view.setBigUint64(32, data.chrg === null ? 0n : BigInt(util.toPointer(data.chrg)), true);
+  return buf;
+}
+
+/**
+ * Windows.Win32.UI.Controls.RichEdit.ENSAVECLIPBOARD (size: 16)
+ */
+export interface ENSAVECLIPBOARD {
+  /** Windows.Win32.UI.Controls.NMHDR */
+  nmhdr: Uint8Array | Deno.PointerValue | null;
+  /** i32 */
+  cObjectCount: number;
+  /** i32 */
+  cch: number;
+}
+
+export const sizeofENSAVECLIPBOARD = 16;
+
+export function allocENSAVECLIPBOARD(data?: Partial<ENSAVECLIPBOARD>): Uint8Array {
+  const buf = new Uint8Array(sizeofENSAVECLIPBOARD);
+  const view = new DataView(buf.buffer);
+  // 0x00: pointer
+  if (data?.nmhdr !== undefined) view.setBigUint64(0, data.nmhdr === null ? 0n : BigInt(util.toPointer(data.nmhdr)), true);
+  // 0x08: i32
+  if (data?.cObjectCount !== undefined) view.setInt32(8, Number(data.cObjectCount), true);
+  // 0x0c: i32
+  if (data?.cch !== undefined) view.setInt32(12, Number(data.cch), true);
+  return buf;
+}
+
+/**
+ * Windows.Win32.UI.Controls.RichEdit.ENOLEOPFAILED (size: 24)
+ */
+export interface ENOLEOPFAILED {
+  /** Windows.Win32.UI.Controls.NMHDR */
+  nmhdr: Uint8Array | Deno.PointerValue | null;
+  /** i32 */
+  iob: number;
+  /** i32 */
+  lOper: number;
+  /** Windows.Win32.Foundation.HRESULT */
+  hr: Uint8Array | Deno.PointerValue | null;
+}
+
+export const sizeofENOLEOPFAILED = 24;
+
+export function allocENOLEOPFAILED(data?: Partial<ENOLEOPFAILED>): Uint8Array {
+  const buf = new Uint8Array(sizeofENOLEOPFAILED);
+  const view = new DataView(buf.buffer);
+  // 0x00: pointer
+  if (data?.nmhdr !== undefined) view.setBigUint64(0, data.nmhdr === null ? 0n : BigInt(util.toPointer(data.nmhdr)), true);
+  // 0x08: i32
+  if (data?.iob !== undefined) view.setInt32(8, Number(data.iob), true);
+  // 0x0c: i32
+  if (data?.lOper !== undefined) view.setInt32(12, Number(data.lOper), true);
+  // 0x10: pointer
+  if (data?.hr !== undefined) view.setBigUint64(16, data.hr === null ? 0n : BigInt(util.toPointer(data.hr)), true);
+  return buf;
+}
+
+/**
+ * Windows.Win32.UI.Controls.RichEdit.OBJECTPOSITIONS (size: 24)
+ */
+export interface OBJECTPOSITIONS {
+  /** Windows.Win32.UI.Controls.NMHDR */
+  nmhdr: Uint8Array | Deno.PointerValue | null;
+  /** i32 */
+  cObjectCount: number;
+  /** ptr */
+  pcpPositions: Deno.PointerValue | Uint8Array | null;
+}
+
+export const sizeofOBJECTPOSITIONS = 24;
+
+export function allocOBJECTPOSITIONS(data?: Partial<OBJECTPOSITIONS>): Uint8Array {
+  const buf = new Uint8Array(sizeofOBJECTPOSITIONS);
+  const view = new DataView(buf.buffer);
+  // 0x00: pointer
+  if (data?.nmhdr !== undefined) view.setBigUint64(0, data.nmhdr === null ? 0n : BigInt(util.toPointer(data.nmhdr)), true);
+  // 0x08: i32
+  if (data?.cObjectCount !== undefined) view.setInt32(8, Number(data.cObjectCount), true);
+  // 0x0c: pad4
+  // 0x10: pointer
+  if (data?.pcpPositions !== undefined) view.setBigUint64(16, data.pcpPositions === null ? 0n : BigInt(util.toPointer(data.pcpPositions)), true);
+  return buf;
+}
+
+/**
+ * Windows.Win32.UI.Controls.RichEdit.ENLINK (size: 40)
+ */
+export interface ENLINK {
+  /** Windows.Win32.UI.Controls.NMHDR */
+  nmhdr: Uint8Array | Deno.PointerValue | null;
+  /** u32 */
+  msg: number;
+  /** Windows.Win32.Foundation.WPARAM */
+  wParam: Uint8Array | Deno.PointerValue | null;
+  /** Windows.Win32.Foundation.LPARAM */
+  lParam: Uint8Array | Deno.PointerValue | null;
+  /** Windows.Win32.UI.Controls.RichEdit.CHARRANGE */
+  chrg: Uint8Array | Deno.PointerValue | null;
+}
+
+export const sizeofENLINK = 40;
+
+export function allocENLINK(data?: Partial<ENLINK>): Uint8Array {
+  const buf = new Uint8Array(sizeofENLINK);
+  const view = new DataView(buf.buffer);
+  // 0x00: pointer
+  if (data?.nmhdr !== undefined) view.setBigUint64(0, data.nmhdr === null ? 0n : BigInt(util.toPointer(data.nmhdr)), true);
+  // 0x08: u32
+  if (data?.msg !== undefined) view.setUint32(8, Number(data.msg), true);
+  // 0x0c: pad4
+  // 0x10: pointer
+  if (data?.wParam !== undefined) view.setBigUint64(16, data.wParam === null ? 0n : BigInt(util.toPointer(data.wParam)), true);
+  // 0x18: pointer
+  if (data?.lParam !== undefined) view.setBigUint64(24, data.lParam === null ? 0n : BigInt(util.toPointer(data.lParam)), true);
+  // 0x20: pointer
+  if (data?.chrg !== undefined) view.setBigUint64(32, data.chrg === null ? 0n : BigInt(util.toPointer(data.chrg)), true);
+  return buf;
+}
+
+/**
+ * Windows.Win32.UI.Controls.RichEdit.ENLOWFIRTF (size: 16)
+ */
+export interface ENLOWFIRTF {
+  /** Windows.Win32.UI.Controls.NMHDR */
+  nmhdr: Uint8Array | Deno.PointerValue | null;
+  /** Windows.Win32.Foundation.PSTR */
+  szControl: string | null;
+}
+
+export const sizeofENLOWFIRTF = 16;
+
+export function allocENLOWFIRTF(data?: Partial<ENLOWFIRTF>): Uint8Array {
+  const buf = new Uint8Array(sizeofENLOWFIRTF);
+  const view = new DataView(buf.buffer);
+  // 0x00: pointer
+  if (data?.nmhdr !== undefined) view.setBigUint64(0, data.nmhdr === null ? 0n : BigInt(util.toPointer(data.nmhdr)), true);
+  // 0x08: buffer
+  if (data?.szControl !== undefined) {
+    (buf as any)._f8 = util.pstrToFfi(data.szControl);
+    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f8)), true);
+  }
+  return buf;
+}
+
+/**
+ * Windows.Win32.UI.Controls.RichEdit.ENCORRECTTEXT (size: 24)
+ */
+export interface ENCORRECTTEXT {
+  /** Windows.Win32.UI.Controls.NMHDR */
+  nmhdr: Uint8Array | Deno.PointerValue | null;
+  /** Windows.Win32.UI.Controls.RichEdit.CHARRANGE */
+  chrg: Uint8Array | Deno.PointerValue | null;
+  /** Windows.Win32.UI.Controls.RichEdit.RICH_EDIT_GET_CONTEXT_MENU_SEL_TYPE */
+  seltyp: RICH_EDIT_GET_CONTEXT_MENU_SEL_TYPE;
+}
+
+export const sizeofENCORRECTTEXT = 24;
+
+export function allocENCORRECTTEXT(data?: Partial<ENCORRECTTEXT>): Uint8Array {
+  const buf = new Uint8Array(sizeofENCORRECTTEXT);
+  const view = new DataView(buf.buffer);
+  // 0x00: pointer
+  if (data?.nmhdr !== undefined) view.setBigUint64(0, data.nmhdr === null ? 0n : BigInt(util.toPointer(data.nmhdr)), true);
+  // 0x08: pointer
+  if (data?.chrg !== undefined) view.setBigUint64(8, data.chrg === null ? 0n : BigInt(util.toPointer(data.chrg)), true);
+  // 0x10: u16
+  if (data?.seltyp !== undefined) view.setUint16(16, Number(data.seltyp), true);
+  // 0x12: pad6
+  return buf;
+}
+
+/**
+ * Windows.Win32.UI.Controls.RichEdit.PUNCTUATION (size: 16)
+ */
+export interface PUNCTUATION {
+  /** u32 */
+  iSize: number;
+  /** Windows.Win32.Foundation.PSTR */
+  szPunctuation: string | null;
+}
+
+export const sizeofPUNCTUATION = 16;
+
+export function allocPUNCTUATION(data?: Partial<PUNCTUATION>): Uint8Array {
+  const buf = new Uint8Array(sizeofPUNCTUATION);
+  const view = new DataView(buf.buffer);
+  // 0x00: u32
+  if (data?.iSize !== undefined) view.setUint32(0, Number(data.iSize), true);
+  // 0x04: pad4
+  // 0x08: buffer
+  if (data?.szPunctuation !== undefined) {
+    (buf as any)._f8 = util.pstrToFfi(data.szPunctuation);
+    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f8)), true);
+  }
+  return buf;
+}
+
+/**
+ * Windows.Win32.UI.Controls.RichEdit.COMPCOLOR (size: 24)
+ */
+export interface COMPCOLOR {
+  /** Windows.Win32.Foundation.COLORREF */
+  crText: Uint8Array | Deno.PointerValue | null;
+  /** Windows.Win32.Foundation.COLORREF */
+  crBackground: Uint8Array | Deno.PointerValue | null;
+  /** u32 */
+  dwEffects: number;
+}
+
+export const sizeofCOMPCOLOR = 24;
+
+export function allocCOMPCOLOR(data?: Partial<COMPCOLOR>): Uint8Array {
+  const buf = new Uint8Array(sizeofCOMPCOLOR);
+  const view = new DataView(buf.buffer);
+  // 0x00: pointer
+  if (data?.crText !== undefined) view.setBigUint64(0, data.crText === null ? 0n : BigInt(util.toPointer(data.crText)), true);
+  // 0x08: pointer
+  if (data?.crBackground !== undefined) view.setBigUint64(8, data.crBackground === null ? 0n : BigInt(util.toPointer(data.crBackground)), true);
+  // 0x10: u32
+  if (data?.dwEffects !== undefined) view.setUint32(16, Number(data.dwEffects), true);
+  // 0x14: pad4
+  return buf;
+}
+
+/**
+ * Windows.Win32.UI.Controls.RichEdit.REPASTESPECIAL (size: 16)
+ */
+export interface REPASTESPECIAL {
+  /** Windows.Win32.System.Com.DVASPECT */
+  dwAspect: DVASPECT;
+  /** usize */
+  dwParam: Deno.PointerValue;
+}
+
+export const sizeofREPASTESPECIAL = 16;
+
+export function allocREPASTESPECIAL(data?: Partial<REPASTESPECIAL>): Uint8Array {
+  const buf = new Uint8Array(sizeofREPASTESPECIAL);
+  const view = new DataView(buf.buffer);
+  // 0x00: u32
+  if (data?.dwAspect !== undefined) view.setUint32(0, Number(data.dwAspect), true);
+  // 0x04: pad4
+  // 0x08: usize
+  if (data?.dwParam !== undefined) view.setBigUint64(8, BigInt(data.dwParam), true);
+  return buf;
+}
+
+/**
+ * Windows.Win32.UI.Controls.RichEdit.SETTEXTEX (size: 8)
+ */
+export interface SETTEXTEX {
+  /** u32 */
+  flags: number;
+  /** u32 */
+  codepage: number;
+}
+
+export const sizeofSETTEXTEX = 8;
+
+export function allocSETTEXTEX(data?: Partial<SETTEXTEX>): Uint8Array {
+  const buf = new Uint8Array(sizeofSETTEXTEX);
+  const view = new DataView(buf.buffer);
+  // 0x00: u32
+  if (data?.flags !== undefined) view.setUint32(0, Number(data.flags), true);
+  // 0x04: u32
+  if (data?.codepage !== undefined) view.setUint32(4, Number(data.codepage), true);
+  return buf;
+}
+
+/**
+ * Windows.Win32.UI.Controls.RichEdit.GETTEXTEX (size: 32)
+ */
+export interface GETTEXTEX {
+  /** u32 */
+  cb: number;
+  /** Windows.Win32.UI.Controls.RichEdit.GETTEXTEX_FLAGS */
+  flags: GETTEXTEX_FLAGS;
+  /** u32 */
+  codepage: number;
+  /** Windows.Win32.Foundation.PSTR */
+  lpDefaultChar: string | null;
+  /** ptr */
+  lpUsedDefChar: Deno.PointerValue | Uint8Array | null;
+}
+
+export const sizeofGETTEXTEX = 32;
+
+export function allocGETTEXTEX(data?: Partial<GETTEXTEX>): Uint8Array {
+  const buf = new Uint8Array(sizeofGETTEXTEX);
+  const view = new DataView(buf.buffer);
+  // 0x00: u32
+  if (data?.cb !== undefined) view.setUint32(0, Number(data.cb), true);
+  // 0x04: u32
+  if (data?.flags !== undefined) view.setUint32(4, Number(data.flags), true);
+  // 0x08: u32
+  if (data?.codepage !== undefined) view.setUint32(8, Number(data.codepage), true);
+  // 0x0c: pad4
+  // 0x10: buffer
+  if (data?.lpDefaultChar !== undefined) {
+    (buf as any)._f16 = util.pstrToFfi(data.lpDefaultChar);
+    view.setBigUint64(16, (buf as any)._f16 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f16)), true);
+  }
+  // 0x18: pointer
+  if (data?.lpUsedDefChar !== undefined) view.setBigUint64(24, data.lpUsedDefChar === null ? 0n : BigInt(util.toPointer(data.lpUsedDefChar)), true);
+  return buf;
+}
+
+/**
+ * Windows.Win32.UI.Controls.RichEdit.GETTEXTLENGTHEX (size: 8)
+ */
+export interface GETTEXTLENGTHEX {
+  /** Windows.Win32.UI.Controls.RichEdit.GETTEXTLENGTHEX_FLAGS */
+  flags: GETTEXTLENGTHEX_FLAGS;
+  /** u32 */
+  codepage: number;
+}
+
+export const sizeofGETTEXTLENGTHEX = 8;
+
+export function allocGETTEXTLENGTHEX(data?: Partial<GETTEXTLENGTHEX>): Uint8Array {
+  const buf = new Uint8Array(sizeofGETTEXTLENGTHEX);
+  const view = new DataView(buf.buffer);
+  // 0x00: u32
+  if (data?.flags !== undefined) view.setUint32(0, Number(data.flags), true);
+  // 0x04: u32
+  if (data?.codepage !== undefined) view.setUint32(4, Number(data.codepage), true);
+  return buf;
+}
+
+/**
+ * Windows.Win32.UI.Controls.RichEdit.BIDIOPTIONS (size: 8)
+ */
+export interface BIDIOPTIONS {
+  /** u32 */
+  cbSize: number;
+  /** u16 */
+  wMask: number;
+  /** u16 */
+  wEffects: number;
+}
+
+export const sizeofBIDIOPTIONS = 8;
+
+export function allocBIDIOPTIONS(data?: Partial<BIDIOPTIONS>): Uint8Array {
+  const buf = new Uint8Array(sizeofBIDIOPTIONS);
+  const view = new DataView(buf.buffer);
+  // 0x00: u32
+  if (data?.cbSize !== undefined) view.setUint32(0, Number(data.cbSize), true);
+  // 0x04: u16
+  if (data?.wMask !== undefined) view.setUint16(4, Number(data.wMask), true);
+  // 0x06: u16
+  if (data?.wEffects !== undefined) view.setUint16(6, Number(data.wEffects), true);
+  return buf;
+}
+
+/**
+ * Windows.Win32.UI.Controls.RichEdit.HYPHRESULT (size: 16)
+ */
+export interface HYPHRESULT {
+  /** Windows.Win32.UI.Controls.RichEdit.KHYPH */
+  khyph: KHYPH;
+  /** i32 */
+  ichHyph: number;
+  /** char */
+  chHyph: Uint8Array | Deno.PointerValue | null;
+}
+
+export const sizeofHYPHRESULT = 16;
+
+export function allocHYPHRESULT(data?: Partial<HYPHRESULT>): Uint8Array {
+  const buf = new Uint8Array(sizeofHYPHRESULT);
+  const view = new DataView(buf.buffer);
+  // 0x00: i32
+  if (data?.khyph !== undefined) view.setInt32(0, Number(data.khyph), true);
+  // 0x04: i32
+  if (data?.ichHyph !== undefined) view.setInt32(4, Number(data.ichHyph), true);
+  // 0x08: pointer
+  if (data?.chHyph !== undefined) view.setBigUint64(8, data.chHyph === null ? 0n : BigInt(util.toPointer(data.chHyph)), true);
+  return buf;
+}
+
+/**
+ * Windows.Win32.UI.Controls.RichEdit.HYPHENATEINFO (size: 16)
+ */
+export interface HYPHENATEINFO {
+  /** i16 */
+  cbSize: number;
+  /** i16 */
+  dxHyphenateZone: number;
+  /** isize */
+  pfnHyphenate: Deno.PointerValue;
+}
+
+export const sizeofHYPHENATEINFO = 16;
+
+export function allocHYPHENATEINFO(data?: Partial<HYPHENATEINFO>): Uint8Array {
+  const buf = new Uint8Array(sizeofHYPHENATEINFO);
+  const view = new DataView(buf.buffer);
+  // 0x00: i16
+  if (data?.cbSize !== undefined) view.setInt16(0, Number(data.cbSize), true);
+  // 0x02: i16
+  if (data?.dxHyphenateZone !== undefined) view.setInt16(2, Number(data.dxHyphenateZone), true);
+  // 0x04: pad4
+  // 0x08: isize
+  if (data?.pfnHyphenate !== undefined) view.setBigInt64(8, BigInt(data.pfnHyphenate), true);
+  return buf;
+}
+
+/**
+ * Windows.Win32.UI.Controls.RichEdit.CHANGENOTIFY (size: 16)
+ */
+export interface CHANGENOTIFY {
+  /** Windows.Win32.UI.Controls.RichEdit.CHANGETYPE */
+  dwChangeType: CHANGETYPE;
+  /** ptr */
+  pvCookieData: Deno.PointerValue | Uint8Array | null;
+}
+
+export const sizeofCHANGENOTIFY = 16;
+
+export function allocCHANGENOTIFY(data?: Partial<CHANGENOTIFY>): Uint8Array {
+  const buf = new Uint8Array(sizeofCHANGENOTIFY);
+  const view = new DataView(buf.buffer);
+  // 0x00: i32
+  if (data?.dwChangeType !== undefined) view.setInt32(0, Number(data.dwChangeType), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.hwndOwner !== undefined) view.setBigUint64(8, data.hwndOwner === null ? 0n : BigInt(util.toPointer(data.hwndOwner)), true);
-  // 0x10: isize
-  if (data?.hDevMode !== undefined) view.setBigInt64(16, BigInt(data.hDevMode), true);
-  // 0x18: isize
-  if (data?.hDevNames !== undefined) view.setBigInt64(24, BigInt(data.hDevNames), true);
-  // 0x20: u32
-  if (data?.Flags !== undefined) view.setUint32(32, Number(data.Flags), true);
-  // 0x24: pad4
+  if (data?.pvCookieData !== undefined) view.setBigUint64(8, data.pvCookieData === null ? 0n : BigInt(util.toPointer(data.pvCookieData)), true);
+  return buf;
+}
+
+/**
+ * Windows.Win32.UI.Controls.RichEdit.CARET_INFO (size: 16)
+ */
+export interface CARET_INFO {
+  /** Windows.Win32.Graphics.Gdi.HBITMAP */
+  hbitmap: Uint8Array | Deno.PointerValue | null;
+  /** Windows.Win32.UI.Controls.RichEdit.CARET_FLAGS */
+  caretFlags: CARET_FLAGS;
+}
+
+export const sizeofCARET_INFO = 16;
+
+export function allocCARET_INFO(data?: Partial<CARET_INFO>): Uint8Array {
+  const buf = new Uint8Array(sizeofCARET_INFO);
+  const view = new DataView(buf.buffer);
+  // 0x00: pointer
+  if (data?.hbitmap !== undefined) view.setBigUint64(0, data.hbitmap === null ? 0n : BigInt(util.toPointer(data.hbitmap)), true);
+  // 0x08: i32
+  if (data?.caretFlags !== undefined) view.setInt32(8, Number(data.caretFlags), true);
+  // 0x0c: pad4
+  return buf;
+}
+
+/**
+ * Windows.Win32.UI.Controls.RichEdit.REOBJECT (size: 64)
+ */
+export interface REOBJECT {
+  /** u32 */
+  cbStruct: number;
+  /** i32 */
+  cp: number;
+  /** System.Guid */
+  clsid: Uint8Array | Deno.PointerValue | null;
+  /** Windows.Win32.System.Ole.IOleObject */
+  poleobj: Uint8Array | Deno.PointerValue | null;
+  /** Windows.Win32.System.Com.StructuredStorage.IStorage */
+  pstg: Uint8Array | Deno.PointerValue | null;
+  /** Windows.Win32.System.Ole.IOleClientSite */
+  polesite: Uint8Array | Deno.PointerValue | null;
+  /** Windows.Win32.Foundation.SIZE */
+  sizel: Uint8Array | Deno.PointerValue | null;
+  /** u32 */
+  dvaspect: number;
+  /** Windows.Win32.UI.Controls.RichEdit.REOBJECT_FLAGS */
+  dwFlags: REOBJECT_FLAGS;
+  /** u32 */
+  dwUser: number;
+}
+
+export const sizeofREOBJECT = 64;
+
+export function allocREOBJECT(data?: Partial<REOBJECT>): Uint8Array {
+  const buf = new Uint8Array(sizeofREOBJECT);
+  const view = new DataView(buf.buffer);
+  // 0x00: u32
+  if (data?.cbStruct !== undefined) view.setUint32(0, Number(data.cbStruct), true);
+  // 0x04: i32
+  if (data?.cp !== undefined) view.setInt32(4, Number(data.cp), true);
+  // 0x08: pointer
+  if (data?.clsid !== undefined) view.setBigUint64(8, data.clsid === null ? 0n : BigInt(util.toPointer(data.clsid)), true);
+  // 0x10: pointer
+  if (data?.poleobj !== undefined) view.setBigUint64(16, data.poleobj === null ? 0n : BigInt(util.toPointer(data.poleobj)), true);
+  // 0x18: pointer
+  if (data?.pstg !== undefined) view.setBigUint64(24, data.pstg === null ? 0n : BigInt(util.toPointer(data.pstg)), true);
+  // 0x20: pointer
+  if (data?.polesite !== undefined) view.setBigUint64(32, data.polesite === null ? 0n : BigInt(util.toPointer(data.polesite)), true);
   // 0x28: pointer
-  if (data?.ptPaperSize !== undefined) view.setBigUint64(40, data.ptPaperSize === null ? 0n : BigInt(util.toPointer(data.ptPaperSize)), true);
-  // 0x30: pointer
-  if (data?.rtMinMargin !== undefined) view.setBigUint64(48, data.rtMinMargin === null ? 0n : BigInt(util.toPointer(data.rtMinMargin)), true);
-  // 0x38: pointer
-  if (data?.rtMargin !== undefined) view.setBigUint64(56, data.rtMargin === null ? 0n : BigInt(util.toPointer(data.rtMargin)), true);
-  // 0x40: pointer
-  if (data?.hInstance !== undefined) view.setBigUint64(64, data.hInstance === null ? 0n : BigInt(util.toPointer(data.hInstance)), true);
-  // 0x48: pointer
-  if (data?.lCustData !== undefined) view.setBigUint64(72, data.lCustData === null ? 0n : BigInt(util.toPointer(data.lCustData)), true);
-  // 0x50: pointer
-  if (data?.lpfnPageSetupHook !== undefined) view.setBigUint64(80, data.lpfnPageSetupHook === null ? 0n : BigInt(util.toPointer(data.lpfnPageSetupHook)), true);
-  // 0x58: pointer
-  if (data?.lpfnPagePaintHook !== undefined) view.setBigUint64(88, data.lpfnPagePaintHook === null ? 0n : BigInt(util.toPointer(data.lpfnPagePaintHook)), true);
-  // 0x60: buffer
-  if (data?.lpPageSetupTemplateName !== undefined) {
-    (buf as any)._f96 = util.pwstrToFfi(data.lpPageSetupTemplateName);
-    view.setBigUint64(96, (buf as any)._f96 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f96)), true);
-  }
-  // 0x68: isize
-  if (data?.hPageSetupTemplate !== undefined) view.setBigInt64(104, BigInt(data.hPageSetupTemplate), true);
+  if (data?.sizel !== undefined) view.setBigUint64(40, data.sizel === null ? 0n : BigInt(util.toPointer(data.sizel)), true);
+  // 0x30: u32
+  if (data?.dvaspect !== undefined) view.setUint32(48, Number(data.dvaspect), true);
+  // 0x34: u32
+  if (data?.dwFlags !== undefined) view.setUint32(52, Number(data.dwFlags), true);
+  // 0x38: u32
+  if (data?.dwUser !== undefined) view.setUint32(56, Number(data.dwUser), true);
+  // 0x3c: pad4
   return buf;
 }
 
@@ -15987,8 +17547,8 @@ export function allocPAGESETUPDLGW(data?: Partial<PAGESETUPDLGW>): Uint8Array {
  * Windows.Win32.UI.Controls.MEASUREITEMSTRUCT (size: 32)
  */
 export interface MEASUREITEMSTRUCT {
-  /** u32 */
-  CtlType: number;
+  /** Windows.Win32.UI.Controls.DRAWITEMSTRUCT_CTL_TYPE */
+  CtlType: DRAWITEMSTRUCT_CTL_TYPE;
   /** u32 */
   CtlID: number;
   /** u32 */
@@ -16032,10 +17592,10 @@ export interface DRAWITEMSTRUCT {
   CtlID: number;
   /** u32 */
   itemID: number;
-  /** u32 */
-  itemAction: number;
-  /** u32 */
-  itemState: number;
+  /** Windows.Win32.UI.Controls.ODA_FLAGS */
+  itemAction: ODA_FLAGS;
+  /** Windows.Win32.UI.Controls.ODS_FLAGS */
+  itemState: ODS_FLAGS;
   /** Windows.Win32.Foundation.HWND */
   hwndItem: Deno.PointerValue | null;
   /** Windows.Win32.Graphics.Gdi.HDC */
@@ -16112,8 +17672,8 @@ export function allocDELETEITEMSTRUCT(data?: Partial<DELETEITEMSTRUCT>): Uint8Ar
  * Windows.Win32.UI.Controls.COMPAREITEMSTRUCT (size: 56)
  */
 export interface COMPAREITEMSTRUCT {
-  /** u32 */
-  CtlType: number;
+  /** Windows.Win32.UI.Controls.DRAWITEMSTRUCT_CTL_TYPE */
+  CtlType: DRAWITEMSTRUCT_CTL_TYPE;
   /** u32 */
   CtlID: number;
   /** Windows.Win32.Foundation.HWND */
@@ -16465,7 +18025,7 @@ export type LRESULT = Deno.PointerValue;
 // Native Libraries
 
 try {
-  var libCOMCTL32 = Deno.dlopen("COMCTL32", {
+  var libCOMCTL32_dll = Deno.dlopen("COMCTL32.dll", {
     CreatePropertySheetPageA: {
       parameters: ["pointer"],
       result: "pointer",
@@ -16519,12 +18079,12 @@ try {
       result: "i32",
     },
     ImageList_SetBkColor: {
-      parameters: ["pointer", "u32"],
-      result: "u32",
+      parameters: ["pointer", "pointer"],
+      result: "pointer",
     },
     ImageList_GetBkColor: {
       parameters: ["pointer"],
-      result: "u32",
+      result: "pointer",
     },
     ImageList_SetOverlayImage: {
       parameters: ["pointer", "i32", "i32"],
@@ -16539,11 +18099,11 @@ try {
       result: "i32",
     },
     ImageList_AddMasked: {
-      parameters: ["pointer", "pointer", "u32"],
+      parameters: ["pointer", "pointer", "pointer"],
       result: "i32",
     },
     ImageList_DrawEx: {
-      parameters: ["pointer", "i32", "pointer", "i32", "i32", "i32", "i32", "u32", "u32", "u32"],
+      parameters: ["pointer", "i32", "pointer", "i32", "i32", "i32", "i32", "pointer", "pointer", "u32"],
       result: "i32",
     },
     ImageList_DrawIndirect: {
@@ -16559,11 +18119,11 @@ try {
       result: "pointer",
     },
     ImageList_LoadImageA: {
-      parameters: ["pointer", "buffer", "i32", "i32", "u32", "u32", "u32"],
+      parameters: ["pointer", "buffer", "i32", "i32", "pointer", "u32", "u32"],
       result: "pointer",
     },
     ImageList_LoadImageW: {
-      parameters: ["pointer", "buffer", "i32", "i32", "u32", "u32", "u32"],
+      parameters: ["pointer", "buffer", "i32", "i32", "pointer", "u32", "u32"],
       result: "pointer",
     },
     ImageList_Copy: {
@@ -16899,7 +18459,7 @@ try {
       result: "pointer",
     },
     DrawShadowText: {
-      parameters: ["pointer", "buffer", "u32", "pointer", "u32", "u32", "u32", "i32", "i32"],
+      parameters: ["pointer", "buffer", "u32", "pointer", "u32", "pointer", "pointer", "i32", "i32"],
       result: "i32",
     },
     ImageList_CoCreateInstance: {
@@ -16910,7 +18470,7 @@ try {
 } catch(e) { /* ignore */ }
 
 try {
-  var libUxTheme = Deno.dlopen("UxTheme", {
+  var libUxTheme_dll = Deno.dlopen("UxTheme.dll", {
     BeginPanningFeedback: {
       parameters: ["pointer"],
       result: "i32",
@@ -16964,7 +18524,7 @@ try {
       result: "pointer",
     },
     GetThemeIntList: {
-      parameters: ["isize", "i32", "i32", "i32", "pointer"],
+      parameters: ["isize", "i32", "i32", "u32", "pointer"],
       result: "pointer",
     },
     GetThemePropertyOrigin: {
@@ -16972,19 +18532,19 @@ try {
       result: "pointer",
     },
     GetThemeFilename: {
-      parameters: ["isize", "i32", "i32", "i32", "buffer", "i32"],
+      parameters: ["isize", "i32", "i32", "u32", "buffer", "i32"],
       result: "pointer",
     },
     GetThemeSysColor: {
       parameters: ["isize", "i32"],
-      result: "u32",
+      result: "pointer",
     },
     GetThemeSysColorBrush: {
       parameters: ["isize", "u32"],
       result: "pointer",
     },
     GetThemeSysBool: {
-      parameters: ["isize", "i32"],
+      parameters: ["isize", "u32"],
       result: "i32",
     },
     GetThemeSysSize: {
@@ -17000,7 +18560,7 @@ try {
       result: "pointer",
     },
     GetThemeSysInt: {
-      parameters: ["isize", "i32", "pointer"],
+      parameters: ["isize", "u32", "pointer"],
       result: "pointer",
     },
     EnableThemeDialogTexture: {
@@ -17063,7 +18623,7 @@ try {
 } catch(e) { /* ignore */ }
 
 try {
-  var libUXTHEME = Deno.dlopen("UXTHEME", {
+  var libUXTHEME_dll = Deno.dlopen("UXTHEME.dll", {
     GetThemeAnimationProperty: {
       parameters: ["isize", "i32", "i32", "i32", "pointer", "u32", "pointer"],
       result: "pointer",
@@ -17113,7 +18673,7 @@ try {
       result: "i32",
     },
     GetThemeColor: {
-      parameters: ["isize", "i32", "i32", "i32", "pointer"],
+      parameters: ["isize", "i32", "i32", "u32", "pointer"],
       result: "pointer",
     },
     GetThemeMetric: {
@@ -17121,15 +18681,15 @@ try {
       result: "pointer",
     },
     GetThemeInt: {
-      parameters: ["isize", "i32", "i32", "i32", "pointer"],
+      parameters: ["isize", "i32", "i32", "u32", "pointer"],
       result: "pointer",
     },
     GetThemeEnumValue: {
-      parameters: ["isize", "i32", "i32", "i32", "pointer"],
+      parameters: ["isize", "i32", "i32", "u32", "pointer"],
       result: "pointer",
     },
     GetThemePosition: {
-      parameters: ["isize", "i32", "i32", "i32", "pointer"],
+      parameters: ["isize", "i32", "i32", "u32", "pointer"],
       result: "pointer",
     },
     GetThemeFont: {
@@ -17141,7 +18701,7 @@ try {
       result: "pointer",
     },
     GetThemeMargins: {
-      parameters: ["isize", "pointer", "i32", "i32", "i32", "pointer", "pointer"],
+      parameters: ["isize", "pointer", "i32", "i32", "u32", "pointer", "pointer"],
       result: "pointer",
     },
     SetWindowTheme: {
@@ -17224,7 +18784,7 @@ try {
 } catch(e) { /* ignore */ }
 
 try {
-  var libUSER32 = Deno.dlopen("USER32", {
+  var libUSER32_dll = Deno.dlopen("USER32.dll", {
     CheckDlgButton: {
       parameters: ["pointer", "i32", "u32"],
       result: "i32",
@@ -17345,41 +18905,41 @@ try {
 export function CreatePropertySheetPageA(
   constPropSheetPagePointer: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.UI.Controls.HPROPSHEETPAGE */ {
-  return util.pointerFromFfi(libCOMCTL32.CreatePropertySheetPageA(util.toPointer(constPropSheetPagePointer)));
+  return util.pointerFromFfi(libCOMCTL32_dll.CreatePropertySheetPageA(util.toPointer(constPropSheetPagePointer)));
 }
 
 export function CreatePropertySheetPageW(
   constPropSheetPagePointer: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.UI.Controls.HPROPSHEETPAGE */ {
-  return util.pointerFromFfi(libCOMCTL32.CreatePropertySheetPageW(util.toPointer(constPropSheetPagePointer)));
+  return util.pointerFromFfi(libCOMCTL32_dll.CreatePropertySheetPageW(util.toPointer(constPropSheetPagePointer)));
 }
 
 export function DestroyPropertySheetPage(
   param0: Uint8Array | Deno.PointerValue | null /* Windows.Win32.UI.Controls.HPROPSHEETPAGE */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libCOMCTL32.DestroyPropertySheetPage(util.toPointer(param0)));
+  return util.boolFromFfi(libCOMCTL32_dll.DestroyPropertySheetPage(util.toPointer(param0)));
 }
 
 export function PropertySheetA(
   param0: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue /* isize */ {
-  return libCOMCTL32.PropertySheetA(util.toPointer(param0));
+  return libCOMCTL32_dll.PropertySheetA(util.toPointer(param0));
 }
 
 export function PropertySheetW(
   param0: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue /* isize */ {
-  return libCOMCTL32.PropertySheetW(util.toPointer(param0));
+  return libCOMCTL32_dll.PropertySheetW(util.toPointer(param0));
 }
 
 export function InitCommonControls(): void /* void */ {
-  return libCOMCTL32.InitCommonControls();
+  return libCOMCTL32_dll.InitCommonControls();
 }
 
 export function InitCommonControlsEx(
   picce: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libCOMCTL32.InitCommonControlsEx(util.toPointer(picce)));
+  return util.boolFromFfi(libCOMCTL32_dll.InitCommonControlsEx(util.toPointer(picce)));
 }
 
 export function ImageList_Create(
@@ -17389,26 +18949,26 @@ export function ImageList_Create(
   cInitial: number /* i32 */,
   cGrow: number /* i32 */,
 ): Deno.PointerValue | null /* Windows.Win32.UI.Controls.HIMAGELIST */ {
-  return util.pointerFromFfi(libCOMCTL32.ImageList_Create(cx, cy, flags, cInitial, cGrow));
+  return util.pointerFromFfi(libCOMCTL32_dll.ImageList_Create(cx, cy, flags, cInitial, cGrow));
 }
 
 export function ImageList_Destroy(
   himl: Uint8Array | Deno.PointerValue | null /* Windows.Win32.UI.Controls.HIMAGELIST */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libCOMCTL32.ImageList_Destroy(util.toPointer(himl)));
+  return util.boolFromFfi(libCOMCTL32_dll.ImageList_Destroy(util.toPointer(himl)));
 }
 
 export function ImageList_GetImageCount(
   himl: Uint8Array | Deno.PointerValue | null /* Windows.Win32.UI.Controls.HIMAGELIST */,
 ): number /* i32 */ {
-  return libCOMCTL32.ImageList_GetImageCount(util.toPointer(himl));
+  return libCOMCTL32_dll.ImageList_GetImageCount(util.toPointer(himl));
 }
 
 export function ImageList_SetImageCount(
   himl: Uint8Array | Deno.PointerValue | null /* Windows.Win32.UI.Controls.HIMAGELIST */,
   uNewCount: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libCOMCTL32.ImageList_SetImageCount(util.toPointer(himl), uNewCount));
+  return util.boolFromFfi(libCOMCTL32_dll.ImageList_SetImageCount(util.toPointer(himl), uNewCount));
 }
 
 export function ImageList_Add(
@@ -17416,7 +18976,7 @@ export function ImageList_Add(
   hbmImage: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Graphics.Gdi.HBITMAP */,
   hbmMask: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Graphics.Gdi.HBITMAP */,
 ): number /* i32 */ {
-  return libCOMCTL32.ImageList_Add(util.toPointer(himl), util.toPointer(hbmImage), util.toPointer(hbmMask));
+  return libCOMCTL32_dll.ImageList_Add(util.toPointer(himl), util.toPointer(hbmImage), util.toPointer(hbmMask));
 }
 
 export function ImageList_ReplaceIcon(
@@ -17424,20 +18984,20 @@ export function ImageList_ReplaceIcon(
   i: number /* i32 */,
   hicon: Uint8Array | Deno.PointerValue | null /* Windows.Win32.UI.WindowsAndMessaging.HICON */,
 ): number /* i32 */ {
-  return libCOMCTL32.ImageList_ReplaceIcon(util.toPointer(himl), i, util.toPointer(hicon));
+  return libCOMCTL32_dll.ImageList_ReplaceIcon(util.toPointer(himl), i, util.toPointer(hicon));
 }
 
 export function ImageList_SetBkColor(
   himl: Uint8Array | Deno.PointerValue | null /* Windows.Win32.UI.Controls.HIMAGELIST */,
-  clrBk: number /* u32 */,
-): number /* u32 */ {
-  return libCOMCTL32.ImageList_SetBkColor(util.toPointer(himl), clrBk);
+  clrBk: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.COLORREF */,
+): Deno.PointerValue | null /* Windows.Win32.Foundation.COLORREF */ {
+  return util.pointerFromFfi(libCOMCTL32_dll.ImageList_SetBkColor(util.toPointer(himl), util.toPointer(clrBk)));
 }
 
 export function ImageList_GetBkColor(
   himl: Uint8Array | Deno.PointerValue | null /* Windows.Win32.UI.Controls.HIMAGELIST */,
-): number /* u32 */ {
-  return libCOMCTL32.ImageList_GetBkColor(util.toPointer(himl));
+): Deno.PointerValue | null /* Windows.Win32.Foundation.COLORREF */ {
+  return util.pointerFromFfi(libCOMCTL32_dll.ImageList_GetBkColor(util.toPointer(himl)));
 }
 
 export function ImageList_SetOverlayImage(
@@ -17445,7 +19005,7 @@ export function ImageList_SetOverlayImage(
   iImage: number /* i32 */,
   iOverlay: number /* i32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libCOMCTL32.ImageList_SetOverlayImage(util.toPointer(himl), iImage, iOverlay));
+  return util.boolFromFfi(libCOMCTL32_dll.ImageList_SetOverlayImage(util.toPointer(himl), iImage, iOverlay));
 }
 
 export function ImageList_Draw(
@@ -17456,7 +19016,7 @@ export function ImageList_Draw(
   y: number /* i32 */,
   fStyle: IMAGE_LIST_DRAW_STYLE /* Windows.Win32.UI.Controls.IMAGE_LIST_DRAW_STYLE */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libCOMCTL32.ImageList_Draw(util.toPointer(himl), i, util.toPointer(hdcDst), x, y, fStyle));
+  return util.boolFromFfi(libCOMCTL32_dll.ImageList_Draw(util.toPointer(himl), i, util.toPointer(hdcDst), x, y, fStyle));
 }
 
 export function ImageList_Replace(
@@ -17465,15 +19025,15 @@ export function ImageList_Replace(
   hbmImage: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Graphics.Gdi.HBITMAP */,
   hbmMask: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Graphics.Gdi.HBITMAP */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libCOMCTL32.ImageList_Replace(util.toPointer(himl), i, util.toPointer(hbmImage), util.toPointer(hbmMask)));
+  return util.boolFromFfi(libCOMCTL32_dll.ImageList_Replace(util.toPointer(himl), i, util.toPointer(hbmImage), util.toPointer(hbmMask)));
 }
 
 export function ImageList_AddMasked(
   himl: Uint8Array | Deno.PointerValue | null /* Windows.Win32.UI.Controls.HIMAGELIST */,
   hbmImage: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Graphics.Gdi.HBITMAP */,
-  crMask: number /* u32 */,
+  crMask: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.COLORREF */,
 ): number /* i32 */ {
-  return libCOMCTL32.ImageList_AddMasked(util.toPointer(himl), util.toPointer(hbmImage), crMask);
+  return libCOMCTL32_dll.ImageList_AddMasked(util.toPointer(himl), util.toPointer(hbmImage), util.toPointer(crMask));
 }
 
 export function ImageList_DrawEx(
@@ -17484,24 +19044,24 @@ export function ImageList_DrawEx(
   y: number /* i32 */,
   dx: number /* i32 */,
   dy: number /* i32 */,
-  rgbBk: number /* u32 */,
-  rgbFg: number /* u32 */,
+  rgbBk: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.COLORREF */,
+  rgbFg: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.COLORREF */,
   fStyle: IMAGE_LIST_DRAW_STYLE /* Windows.Win32.UI.Controls.IMAGE_LIST_DRAW_STYLE */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libCOMCTL32.ImageList_DrawEx(util.toPointer(himl), i, util.toPointer(hdcDst), x, y, dx, dy, rgbBk, rgbFg, fStyle));
+  return util.boolFromFfi(libCOMCTL32_dll.ImageList_DrawEx(util.toPointer(himl), i, util.toPointer(hdcDst), x, y, dx, dy, util.toPointer(rgbBk), util.toPointer(rgbFg), fStyle));
 }
 
 export function ImageList_DrawIndirect(
   pimldp: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libCOMCTL32.ImageList_DrawIndirect(util.toPointer(pimldp)));
+  return util.boolFromFfi(libCOMCTL32_dll.ImageList_DrawIndirect(util.toPointer(pimldp)));
 }
 
 export function ImageList_Remove(
   himl: Uint8Array | Deno.PointerValue | null /* Windows.Win32.UI.Controls.HIMAGELIST */,
   i: number /* i32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libCOMCTL32.ImageList_Remove(util.toPointer(himl), i));
+  return util.boolFromFfi(libCOMCTL32_dll.ImageList_Remove(util.toPointer(himl), i));
 }
 
 export function ImageList_GetIcon(
@@ -17509,7 +19069,7 @@ export function ImageList_GetIcon(
   i: number /* i32 */,
   flags: number /* u32 */,
 ): Deno.PointerValue | null /* Windows.Win32.UI.WindowsAndMessaging.HICON */ {
-  return util.pointerFromFfi(libCOMCTL32.ImageList_GetIcon(util.toPointer(himl), i, flags));
+  return util.pointerFromFfi(libCOMCTL32_dll.ImageList_GetIcon(util.toPointer(himl), i, flags));
 }
 
 export function ImageList_LoadImageA(
@@ -17517,11 +19077,11 @@ export function ImageList_LoadImageA(
   lpbmp: string | null /* Windows.Win32.Foundation.PSTR */,
   cx: number /* i32 */,
   cGrow: number /* i32 */,
-  crMask: number /* u32 */,
+  crMask: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.COLORREF */,
   uType: number /* u32 */,
   uFlags: IMAGE_FLAGS /* Windows.Win32.UI.WindowsAndMessaging.IMAGE_FLAGS */,
 ): Deno.PointerValue | null /* Windows.Win32.UI.Controls.HIMAGELIST */ {
-  return util.pointerFromFfi(libCOMCTL32.ImageList_LoadImageA(util.toPointer(hi), util.pstrToFfi(lpbmp), cx, cGrow, crMask, uType, uFlags));
+  return util.pointerFromFfi(libCOMCTL32_dll.ImageList_LoadImageA(util.toPointer(hi), util.pstrToFfi(lpbmp), cx, cGrow, util.toPointer(crMask), uType, uFlags));
 }
 
 export function ImageList_LoadImageW(
@@ -17529,11 +19089,11 @@ export function ImageList_LoadImageW(
   lpbmp: string | null /* Windows.Win32.Foundation.PWSTR */,
   cx: number /* i32 */,
   cGrow: number /* i32 */,
-  crMask: number /* u32 */,
+  crMask: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.COLORREF */,
   uType: number /* u32 */,
   uFlags: IMAGE_FLAGS /* Windows.Win32.UI.WindowsAndMessaging.IMAGE_FLAGS */,
 ): Deno.PointerValue | null /* Windows.Win32.UI.Controls.HIMAGELIST */ {
-  return util.pointerFromFfi(libCOMCTL32.ImageList_LoadImageW(util.toPointer(hi), util.pwstrToFfi(lpbmp), cx, cGrow, crMask, uType, uFlags));
+  return util.pointerFromFfi(libCOMCTL32_dll.ImageList_LoadImageW(util.toPointer(hi), util.pwstrToFfi(lpbmp), cx, cGrow, util.toPointer(crMask), uType, uFlags));
 }
 
 export function ImageList_Copy(
@@ -17543,7 +19103,7 @@ export function ImageList_Copy(
   iSrc: number /* i32 */,
   uFlags: IMAGE_LIST_COPY_FLAGS /* Windows.Win32.UI.Controls.IMAGE_LIST_COPY_FLAGS */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libCOMCTL32.ImageList_Copy(util.toPointer(himlDst), iDst, util.toPointer(himlSrc), iSrc, uFlags));
+  return util.boolFromFfi(libCOMCTL32_dll.ImageList_Copy(util.toPointer(himlDst), iDst, util.toPointer(himlSrc), iSrc, uFlags));
 }
 
 export function ImageList_BeginDrag(
@@ -17552,11 +19112,11 @@ export function ImageList_BeginDrag(
   dxHotspot: number /* i32 */,
   dyHotspot: number /* i32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libCOMCTL32.ImageList_BeginDrag(util.toPointer(himlTrack), iTrack, dxHotspot, dyHotspot));
+  return util.boolFromFfi(libCOMCTL32_dll.ImageList_BeginDrag(util.toPointer(himlTrack), iTrack, dxHotspot, dyHotspot));
 }
 
 export function ImageList_EndDrag(): void /* void */ {
-  return libCOMCTL32.ImageList_EndDrag();
+  return libCOMCTL32_dll.ImageList_EndDrag();
 }
 
 export function ImageList_DragEnter(
@@ -17564,20 +19124,20 @@ export function ImageList_DragEnter(
   x: number /* i32 */,
   y: number /* i32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libCOMCTL32.ImageList_DragEnter(util.hwndToFfi(hwndLock), x, y));
+  return util.boolFromFfi(libCOMCTL32_dll.ImageList_DragEnter(util.hwndToFfi(hwndLock), x, y));
 }
 
 export function ImageList_DragLeave(
   hwndLock: Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libCOMCTL32.ImageList_DragLeave(util.hwndToFfi(hwndLock)));
+  return util.boolFromFfi(libCOMCTL32_dll.ImageList_DragLeave(util.hwndToFfi(hwndLock)));
 }
 
 export function ImageList_DragMove(
   x: number /* i32 */,
   y: number /* i32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libCOMCTL32.ImageList_DragMove(x, y));
+  return util.boolFromFfi(libCOMCTL32_dll.ImageList_DragMove(x, y));
 }
 
 export function ImageList_SetDragCursorImage(
@@ -17586,33 +19146,33 @@ export function ImageList_SetDragCursorImage(
   dxHotspot: number /* i32 */,
   dyHotspot: number /* i32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libCOMCTL32.ImageList_SetDragCursorImage(util.toPointer(himlDrag), iDrag, dxHotspot, dyHotspot));
+  return util.boolFromFfi(libCOMCTL32_dll.ImageList_SetDragCursorImage(util.toPointer(himlDrag), iDrag, dxHotspot, dyHotspot));
 }
 
 export function ImageList_DragShowNolock(
   fShow: boolean /* Windows.Win32.Foundation.BOOL */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libCOMCTL32.ImageList_DragShowNolock(util.boolToFfi(fShow)));
+  return util.boolFromFfi(libCOMCTL32_dll.ImageList_DragShowNolock(util.boolToFfi(fShow)));
 }
 
 export function ImageList_GetDragImage(
   ppt: Deno.PointerValue | Uint8Array | null /* ptr */,
   pptHotspot: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.UI.Controls.HIMAGELIST */ {
-  return util.pointerFromFfi(libCOMCTL32.ImageList_GetDragImage(util.toPointer(ppt), util.toPointer(pptHotspot)));
+  return util.pointerFromFfi(libCOMCTL32_dll.ImageList_GetDragImage(util.toPointer(ppt), util.toPointer(pptHotspot)));
 }
 
 export function ImageList_Read(
   pstm: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Com.IStream */,
 ): Deno.PointerValue | null /* Windows.Win32.UI.Controls.HIMAGELIST */ {
-  return util.pointerFromFfi(libCOMCTL32.ImageList_Read(util.toPointer(pstm)));
+  return util.pointerFromFfi(libCOMCTL32_dll.ImageList_Read(util.toPointer(pstm)));
 }
 
 export function ImageList_Write(
   himl: Uint8Array | Deno.PointerValue | null /* Windows.Win32.UI.Controls.HIMAGELIST */,
   pstm: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Com.IStream */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libCOMCTL32.ImageList_Write(util.toPointer(himl), util.toPointer(pstm)));
+  return util.boolFromFfi(libCOMCTL32_dll.ImageList_Write(util.toPointer(himl), util.toPointer(pstm)));
 }
 
 export function ImageList_ReadEx(
@@ -17621,15 +19181,15 @@ export function ImageList_ReadEx(
   riid: Deno.PointerValue | Uint8Array | null /* ptr */,
   ppv: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libCOMCTL32.ImageList_ReadEx(dwFlags, util.toPointer(pstm), util.toPointer(riid), util.toPointer(ppv)));
+  return util.pointerFromFfi(libCOMCTL32_dll.ImageList_ReadEx(dwFlags, util.toPointer(pstm), util.toPointer(riid), util.toPointer(ppv)));
 }
 
 export function ImageList_WriteEx(
   himl: Uint8Array | Deno.PointerValue | null /* Windows.Win32.UI.Controls.HIMAGELIST */,
-  dwFlags: number /* u32 */,
+  dwFlags: IMAGE_LIST_WRITE_STREAM_FLAGS /* Windows.Win32.UI.Controls.IMAGE_LIST_WRITE_STREAM_FLAGS */,
   pstm: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Com.IStream */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libCOMCTL32.ImageList_WriteEx(util.toPointer(himl), dwFlags, util.toPointer(pstm)));
+  return util.pointerFromFfi(libCOMCTL32_dll.ImageList_WriteEx(util.toPointer(himl), dwFlags, util.toPointer(pstm)));
 }
 
 export function ImageList_GetIconSize(
@@ -17637,7 +19197,7 @@ export function ImageList_GetIconSize(
   cx: Deno.PointerValue | Uint8Array | null /* ptr */,
   cy: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libCOMCTL32.ImageList_GetIconSize(util.toPointer(himl), util.toPointer(cx), util.toPointer(cy)));
+  return util.boolFromFfi(libCOMCTL32_dll.ImageList_GetIconSize(util.toPointer(himl), util.toPointer(cx), util.toPointer(cy)));
 }
 
 export function ImageList_SetIconSize(
@@ -17645,7 +19205,7 @@ export function ImageList_SetIconSize(
   cx: number /* i32 */,
   cy: number /* i32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libCOMCTL32.ImageList_SetIconSize(util.toPointer(himl), cx, cy));
+  return util.boolFromFfi(libCOMCTL32_dll.ImageList_SetIconSize(util.toPointer(himl), cx, cy));
 }
 
 export function ImageList_GetImageInfo(
@@ -17653,7 +19213,7 @@ export function ImageList_GetImageInfo(
   i: number /* i32 */,
   pImageInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libCOMCTL32.ImageList_GetImageInfo(util.toPointer(himl), i, util.toPointer(pImageInfo)));
+  return util.boolFromFfi(libCOMCTL32_dll.ImageList_GetImageInfo(util.toPointer(himl), i, util.toPointer(pImageInfo)));
 }
 
 export function ImageList_Merge(
@@ -17664,13 +19224,13 @@ export function ImageList_Merge(
   dx: number /* i32 */,
   dy: number /* i32 */,
 ): Deno.PointerValue | null /* Windows.Win32.UI.Controls.HIMAGELIST */ {
-  return util.pointerFromFfi(libCOMCTL32.ImageList_Merge(util.toPointer(himl1), i1, util.toPointer(himl2), i2, dx, dy));
+  return util.pointerFromFfi(libCOMCTL32_dll.ImageList_Merge(util.toPointer(himl1), i1, util.toPointer(himl2), i2, dx, dy));
 }
 
 export function ImageList_Duplicate(
   himl: Uint8Array | Deno.PointerValue | null /* Windows.Win32.UI.Controls.HIMAGELIST */,
 ): Deno.PointerValue | null /* Windows.Win32.UI.Controls.HIMAGELIST */ {
-  return util.pointerFromFfi(libCOMCTL32.ImageList_Duplicate(util.toPointer(himl)));
+  return util.pointerFromFfi(libCOMCTL32_dll.ImageList_Duplicate(util.toPointer(himl)));
 }
 
 export function HIMAGELIST_QueryInterface(
@@ -17678,7 +19238,7 @@ export function HIMAGELIST_QueryInterface(
   riid: Deno.PointerValue | Uint8Array | null /* ptr */,
   ppv: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libCOMCTL32.HIMAGELIST_QueryInterface(util.toPointer(himl), util.toPointer(riid), util.toPointer(ppv)));
+  return util.pointerFromFfi(libCOMCTL32_dll.HIMAGELIST_QueryInterface(util.toPointer(himl), util.toPointer(riid), util.toPointer(ppv)));
 }
 
 export function CreateToolbarEx(
@@ -17696,7 +19256,7 @@ export function CreateToolbarEx(
   dyBitmap: number /* i32 */,
   uStructSize: number /* u32 */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */ {
-  return util.hwndFromFfi(libCOMCTL32.CreateToolbarEx(util.hwndToFfi(hwnd), ws, wID, nBitmaps, util.toPointer(hBMInst), wBMID, util.toPointer(lpButtons), iNumButtons, dxButton, dyButton, dxBitmap, dyBitmap, uStructSize));
+  return util.hwndFromFfi(libCOMCTL32_dll.CreateToolbarEx(util.hwndToFfi(hwnd), ws, wID, nBitmaps, util.toPointer(hBMInst), wBMID, util.toPointer(lpButtons), iNumButtons, dxButton, dyButton, dxBitmap, dyBitmap, uStructSize));
 }
 
 export function CreateMappedBitmap(
@@ -17706,7 +19266,7 @@ export function CreateMappedBitmap(
   lpColorMap: Deno.PointerValue | Uint8Array | null /* ptr */,
   iNumMaps: number /* i32 */,
 ): Deno.PointerValue | null /* Windows.Win32.Graphics.Gdi.HBITMAP */ {
-  return util.pointerFromFfi(libCOMCTL32.CreateMappedBitmap(util.toPointer(hInstance), idBitmap, wFlags, util.toPointer(lpColorMap), iNumMaps));
+  return util.pointerFromFfi(libCOMCTL32_dll.CreateMappedBitmap(util.toPointer(hInstance), idBitmap, wFlags, util.toPointer(lpColorMap), iNumMaps));
 }
 
 export function DrawStatusTextA(
@@ -17715,7 +19275,7 @@ export function DrawStatusTextA(
   pszText: string | null /* Windows.Win32.Foundation.PSTR */,
   uFlags: number /* u32 */,
 ): void /* void */ {
-  return libCOMCTL32.DrawStatusTextA(util.toPointer(hDC), util.toPointer(lprc), util.pstrToFfi(pszText), uFlags);
+  return libCOMCTL32_dll.DrawStatusTextA(util.toPointer(hDC), util.toPointer(lprc), util.pstrToFfi(pszText), uFlags);
 }
 
 export function DrawStatusTextW(
@@ -17724,7 +19284,7 @@ export function DrawStatusTextW(
   pszText: string | null /* Windows.Win32.Foundation.PWSTR */,
   uFlags: number /* u32 */,
 ): void /* void */ {
-  return libCOMCTL32.DrawStatusTextW(util.toPointer(hDC), util.toPointer(lprc), util.pwstrToFfi(pszText), uFlags);
+  return libCOMCTL32_dll.DrawStatusTextW(util.toPointer(hDC), util.toPointer(lprc), util.pwstrToFfi(pszText), uFlags);
 }
 
 export function CreateStatusWindowA(
@@ -17733,7 +19293,7 @@ export function CreateStatusWindowA(
   hwndParent: Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */,
   wID: number /* u32 */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */ {
-  return util.hwndFromFfi(libCOMCTL32.CreateStatusWindowA(style, util.pstrToFfi(lpszText), util.hwndToFfi(hwndParent), wID));
+  return util.hwndFromFfi(libCOMCTL32_dll.CreateStatusWindowA(style, util.pstrToFfi(lpszText), util.hwndToFfi(hwndParent), wID));
 }
 
 export function CreateStatusWindowW(
@@ -17742,7 +19302,7 @@ export function CreateStatusWindowW(
   hwndParent: Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */,
   wID: number /* u32 */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */ {
-  return util.hwndFromFfi(libCOMCTL32.CreateStatusWindowW(style, util.pwstrToFfi(lpszText), util.hwndToFfi(hwndParent), wID));
+  return util.hwndFromFfi(libCOMCTL32_dll.CreateStatusWindowW(style, util.pwstrToFfi(lpszText), util.hwndToFfi(hwndParent), wID));
 }
 
 export function MenuHelp(
@@ -17754,7 +19314,7 @@ export function MenuHelp(
   hwndStatus: Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */,
   lpwIDs: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): void /* void */ {
-  return libCOMCTL32.MenuHelp(uMsg, util.toPointer(wParam), util.toPointer(lParam), util.toPointer(hMainMenu), util.toPointer(hInst), util.hwndToFfi(hwndStatus), util.toPointer(lpwIDs));
+  return libCOMCTL32_dll.MenuHelp(uMsg, util.toPointer(wParam), util.toPointer(lParam), util.toPointer(hMainMenu), util.toPointer(hInst), util.hwndToFfi(hwndStatus), util.toPointer(lpwIDs));
 }
 
 export function ShowHideMenuCtl(
@@ -17762,7 +19322,7 @@ export function ShowHideMenuCtl(
   uFlags: Deno.PointerValue /* usize */,
   lpInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libCOMCTL32.ShowHideMenuCtl(util.hwndToFfi(hWnd), uFlags, util.toPointer(lpInfo)));
+  return util.boolFromFfi(libCOMCTL32_dll.ShowHideMenuCtl(util.hwndToFfi(hWnd), uFlags, util.toPointer(lpInfo)));
 }
 
 export function GetEffectiveClientRect(
@@ -17770,13 +19330,13 @@ export function GetEffectiveClientRect(
   lprc: Deno.PointerValue | Uint8Array | null /* ptr */,
   lpInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): void /* void */ {
-  return libCOMCTL32.GetEffectiveClientRect(util.hwndToFfi(hWnd), util.toPointer(lprc), util.toPointer(lpInfo));
+  return libCOMCTL32_dll.GetEffectiveClientRect(util.hwndToFfi(hWnd), util.toPointer(lprc), util.toPointer(lpInfo));
 }
 
 export function MakeDragList(
   hLB: Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libCOMCTL32.MakeDragList(util.hwndToFfi(hLB)));
+  return util.boolFromFfi(libCOMCTL32_dll.MakeDragList(util.hwndToFfi(hLB)));
 }
 
 export function DrawInsert(
@@ -17784,7 +19344,7 @@ export function DrawInsert(
   hLB: Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */,
   nItem: number /* i32 */,
 ): void /* void */ {
-  return libCOMCTL32.DrawInsert(util.hwndToFfi(handParent), util.hwndToFfi(hLB), nItem);
+  return libCOMCTL32_dll.DrawInsert(util.hwndToFfi(handParent), util.hwndToFfi(hLB), nItem);
 }
 
 export function LBItemFromPt(
@@ -17792,7 +19352,7 @@ export function LBItemFromPt(
   pt: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.POINT */,
   bAutoScroll: boolean /* Windows.Win32.Foundation.BOOL */,
 ): number /* i32 */ {
-  return libCOMCTL32.LBItemFromPt(util.hwndToFfi(hLB), util.toPointer(pt), util.boolToFfi(bAutoScroll));
+  return libCOMCTL32_dll.LBItemFromPt(util.hwndToFfi(hLB), util.toPointer(pt), util.boolToFfi(bAutoScroll));
 }
 
 export function CreateUpDownControl(
@@ -17809,7 +19369,7 @@ export function CreateUpDownControl(
   nLower: number /* i32 */,
   nPos: number /* i32 */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */ {
-  return util.hwndFromFfi(libCOMCTL32.CreateUpDownControl(dwStyle, x, y, cx, cy, util.hwndToFfi(hParent), nID, util.toPointer(hInst), util.hwndToFfi(hBuddy), nUpper, nLower, nPos));
+  return util.hwndFromFfi(libCOMCTL32_dll.CreateUpDownControl(dwStyle, x, y, cx, cy, util.hwndToFfi(hParent), nID, util.toPointer(hInst), util.hwndToFfi(hBuddy), nUpper, nLower, nPos));
 }
 
 export function TaskDialogIndirect(
@@ -17818,7 +19378,7 @@ export function TaskDialogIndirect(
   pnRadioButton: Deno.PointerValue | Uint8Array | null /* ptr */,
   pfVerificationFlagChecked: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libCOMCTL32.TaskDialogIndirect(util.toPointer(pTaskConfig), util.toPointer(pnButton), util.toPointer(pnRadioButton), util.toPointer(pfVerificationFlagChecked)));
+  return util.pointerFromFfi(libCOMCTL32_dll.TaskDialogIndirect(util.toPointer(pTaskConfig), util.toPointer(pnButton), util.toPointer(pnRadioButton), util.toPointer(pfVerificationFlagChecked)));
 }
 
 export function TaskDialog(
@@ -17831,30 +19391,30 @@ export function TaskDialog(
   pszIcon: string | null /* Windows.Win32.Foundation.PWSTR */,
   pnButton: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libCOMCTL32.TaskDialog(util.hwndToFfi(hwndOwner), util.toPointer(hInstance), util.pwstrToFfi(pszWindowTitle), util.pwstrToFfi(pszMainInstruction), util.pwstrToFfi(pszContent), dwCommonButtons, util.pwstrToFfi(pszIcon), util.toPointer(pnButton)));
+  return util.pointerFromFfi(libCOMCTL32_dll.TaskDialog(util.hwndToFfi(hwndOwner), util.toPointer(hInstance), util.pwstrToFfi(pszWindowTitle), util.pwstrToFfi(pszMainInstruction), util.pwstrToFfi(pszContent), dwCommonButtons, util.pwstrToFfi(pszIcon), util.toPointer(pnButton)));
 }
 
 export function InitMUILanguage(
   uiLang: number /* u16 */,
 ): void /* void */ {
-  return libCOMCTL32.InitMUILanguage(uiLang);
+  return libCOMCTL32_dll.InitMUILanguage(uiLang);
 }
 
 export function GetMUILanguage(): number /* u16 */ {
-  return libCOMCTL32.GetMUILanguage();
+  return libCOMCTL32_dll.GetMUILanguage();
 }
 
 export function DSA_Create(
   cbItem: number /* i32 */,
   cItemGrow: number /* i32 */,
 ): Deno.PointerValue | null /* Windows.Win32.UI.Controls.HDSA */ {
-  return util.pointerFromFfi(libCOMCTL32.DSA_Create(cbItem, cItemGrow));
+  return util.pointerFromFfi(libCOMCTL32_dll.DSA_Create(cbItem, cItemGrow));
 }
 
 export function DSA_Destroy(
   hdsa: Uint8Array | Deno.PointerValue | null /* Windows.Win32.UI.Controls.HDSA */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libCOMCTL32.DSA_Destroy(util.toPointer(hdsa)));
+  return util.boolFromFfi(libCOMCTL32_dll.DSA_Destroy(util.toPointer(hdsa)));
 }
 
 export function DSA_DestroyCallback(
@@ -17862,20 +19422,20 @@ export function DSA_DestroyCallback(
   pfnCB: Uint8Array | Deno.PointerValue | null /* Windows.Win32.UI.Controls.PFNDAENUMCALLBACK */,
   pData: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): void /* void */ {
-  return libCOMCTL32.DSA_DestroyCallback(util.toPointer(hdsa), util.toPointer(pfnCB), util.toPointer(pData));
+  return libCOMCTL32_dll.DSA_DestroyCallback(util.toPointer(hdsa), util.toPointer(pfnCB), util.toPointer(pData));
 }
 
 export function DSA_DeleteItem(
   hdsa: Uint8Array | Deno.PointerValue | null /* Windows.Win32.UI.Controls.HDSA */,
   i: number /* i32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libCOMCTL32.DSA_DeleteItem(util.toPointer(hdsa), i));
+  return util.boolFromFfi(libCOMCTL32_dll.DSA_DeleteItem(util.toPointer(hdsa), i));
 }
 
 export function DSA_DeleteAllItems(
   hdsa: Uint8Array | Deno.PointerValue | null /* Windows.Win32.UI.Controls.HDSA */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libCOMCTL32.DSA_DeleteAllItems(util.toPointer(hdsa)));
+  return util.boolFromFfi(libCOMCTL32_dll.DSA_DeleteAllItems(util.toPointer(hdsa)));
 }
 
 export function DSA_EnumCallback(
@@ -17883,7 +19443,7 @@ export function DSA_EnumCallback(
   pfnCB: Uint8Array | Deno.PointerValue | null /* Windows.Win32.UI.Controls.PFNDAENUMCALLBACK */,
   pData: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): void /* void */ {
-  return libCOMCTL32.DSA_EnumCallback(util.toPointer(hdsa), util.toPointer(pfnCB), util.toPointer(pData));
+  return libCOMCTL32_dll.DSA_EnumCallback(util.toPointer(hdsa), util.toPointer(pfnCB), util.toPointer(pData));
 }
 
 export function DSA_InsertItem(
@@ -17891,14 +19451,14 @@ export function DSA_InsertItem(
   i: number /* i32 */,
   pitem: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
-  return libCOMCTL32.DSA_InsertItem(util.toPointer(hdsa), i, util.toPointer(pitem));
+  return libCOMCTL32_dll.DSA_InsertItem(util.toPointer(hdsa), i, util.toPointer(pitem));
 }
 
 export function DSA_GetItemPtr(
   hdsa: Uint8Array | Deno.PointerValue | null /* Windows.Win32.UI.Controls.HDSA */,
   i: number /* i32 */,
 ): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libCOMCTL32.DSA_GetItemPtr(util.toPointer(hdsa), i));
+  return util.pointerFromFfi(libCOMCTL32_dll.DSA_GetItemPtr(util.toPointer(hdsa), i));
 }
 
 export function DSA_GetItem(
@@ -17906,7 +19466,7 @@ export function DSA_GetItem(
   i: number /* i32 */,
   pitem: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libCOMCTL32.DSA_GetItem(util.toPointer(hdsa), i, util.toPointer(pitem)));
+  return util.boolFromFfi(libCOMCTL32_dll.DSA_GetItem(util.toPointer(hdsa), i, util.toPointer(pitem)));
 }
 
 export function DSA_SetItem(
@@ -17914,19 +19474,19 @@ export function DSA_SetItem(
   i: number /* i32 */,
   pitem: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libCOMCTL32.DSA_SetItem(util.toPointer(hdsa), i, util.toPointer(pitem)));
+  return util.boolFromFfi(libCOMCTL32_dll.DSA_SetItem(util.toPointer(hdsa), i, util.toPointer(pitem)));
 }
 
 export function DSA_Clone(
   hdsa: Uint8Array | Deno.PointerValue | null /* Windows.Win32.UI.Controls.HDSA */,
 ): Deno.PointerValue | null /* Windows.Win32.UI.Controls.HDSA */ {
-  return util.pointerFromFfi(libCOMCTL32.DSA_Clone(util.toPointer(hdsa)));
+  return util.pointerFromFfi(libCOMCTL32_dll.DSA_Clone(util.toPointer(hdsa)));
 }
 
 export function DSA_GetSize(
   hdsa: Uint8Array | Deno.PointerValue | null /* Windows.Win32.UI.Controls.HDSA */,
 ): Deno.PointerValue /* u64 */ {
-  return libCOMCTL32.DSA_GetSize(util.toPointer(hdsa));
+  return libCOMCTL32_dll.DSA_GetSize(util.toPointer(hdsa));
 }
 
 export function DSA_Sort(
@@ -17934,33 +19494,33 @@ export function DSA_Sort(
   pfnCompare: Uint8Array | Deno.PointerValue | null /* Windows.Win32.UI.Controls.PFNDACOMPARE */,
   lParam: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.LPARAM */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libCOMCTL32.DSA_Sort(util.toPointer(pdsa), util.toPointer(pfnCompare), util.toPointer(lParam)));
+  return util.boolFromFfi(libCOMCTL32_dll.DSA_Sort(util.toPointer(pdsa), util.toPointer(pfnCompare), util.toPointer(lParam)));
 }
 
 export function DPA_Create(
   cItemGrow: number /* i32 */,
 ): Deno.PointerValue | null /* Windows.Win32.UI.Controls.HDPA */ {
-  return util.pointerFromFfi(libCOMCTL32.DPA_Create(cItemGrow));
+  return util.pointerFromFfi(libCOMCTL32_dll.DPA_Create(cItemGrow));
 }
 
 export function DPA_CreateEx(
   cpGrow: number /* i32 */,
   hheap: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
 ): Deno.PointerValue | null /* Windows.Win32.UI.Controls.HDPA */ {
-  return util.pointerFromFfi(libCOMCTL32.DPA_CreateEx(cpGrow, util.toPointer(hheap)));
+  return util.pointerFromFfi(libCOMCTL32_dll.DPA_CreateEx(cpGrow, util.toPointer(hheap)));
 }
 
 export function DPA_Clone(
   hdpa: Uint8Array | Deno.PointerValue | null /* Windows.Win32.UI.Controls.HDPA */,
   hdpaNew: Uint8Array | Deno.PointerValue | null /* Windows.Win32.UI.Controls.HDPA */,
 ): Deno.PointerValue | null /* Windows.Win32.UI.Controls.HDPA */ {
-  return util.pointerFromFfi(libCOMCTL32.DPA_Clone(util.toPointer(hdpa), util.toPointer(hdpaNew)));
+  return util.pointerFromFfi(libCOMCTL32_dll.DPA_Clone(util.toPointer(hdpa), util.toPointer(hdpaNew)));
 }
 
 export function DPA_Destroy(
   hdpa: Uint8Array | Deno.PointerValue | null /* Windows.Win32.UI.Controls.HDPA */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libCOMCTL32.DPA_Destroy(util.toPointer(hdpa)));
+  return util.boolFromFfi(libCOMCTL32_dll.DPA_Destroy(util.toPointer(hdpa)));
 }
 
 export function DPA_DestroyCallback(
@@ -17968,20 +19528,20 @@ export function DPA_DestroyCallback(
   pfnCB: Uint8Array | Deno.PointerValue | null /* Windows.Win32.UI.Controls.PFNDAENUMCALLBACK */,
   pData: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): void /* void */ {
-  return libCOMCTL32.DPA_DestroyCallback(util.toPointer(hdpa), util.toPointer(pfnCB), util.toPointer(pData));
+  return libCOMCTL32_dll.DPA_DestroyCallback(util.toPointer(hdpa), util.toPointer(pfnCB), util.toPointer(pData));
 }
 
 export function DPA_DeletePtr(
   hdpa: Uint8Array | Deno.PointerValue | null /* Windows.Win32.UI.Controls.HDPA */,
   i: number /* i32 */,
 ): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libCOMCTL32.DPA_DeletePtr(util.toPointer(hdpa), i));
+  return util.pointerFromFfi(libCOMCTL32_dll.DPA_DeletePtr(util.toPointer(hdpa), i));
 }
 
 export function DPA_DeleteAllPtrs(
   hdpa: Uint8Array | Deno.PointerValue | null /* Windows.Win32.UI.Controls.HDPA */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libCOMCTL32.DPA_DeleteAllPtrs(util.toPointer(hdpa)));
+  return util.boolFromFfi(libCOMCTL32_dll.DPA_DeleteAllPtrs(util.toPointer(hdpa)));
 }
 
 export function DPA_EnumCallback(
@@ -17989,14 +19549,14 @@ export function DPA_EnumCallback(
   pfnCB: Uint8Array | Deno.PointerValue | null /* Windows.Win32.UI.Controls.PFNDAENUMCALLBACK */,
   pData: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): void /* void */ {
-  return libCOMCTL32.DPA_EnumCallback(util.toPointer(hdpa), util.toPointer(pfnCB), util.toPointer(pData));
+  return libCOMCTL32_dll.DPA_EnumCallback(util.toPointer(hdpa), util.toPointer(pfnCB), util.toPointer(pData));
 }
 
 export function DPA_Grow(
   pdpa: Uint8Array | Deno.PointerValue | null /* Windows.Win32.UI.Controls.HDPA */,
   cp: number /* i32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libCOMCTL32.DPA_Grow(util.toPointer(pdpa), cp));
+  return util.boolFromFfi(libCOMCTL32_dll.DPA_Grow(util.toPointer(pdpa), cp));
 }
 
 export function DPA_InsertPtr(
@@ -18004,7 +19564,7 @@ export function DPA_InsertPtr(
   i: number /* i32 */,
   p: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
-  return libCOMCTL32.DPA_InsertPtr(util.toPointer(hdpa), i, util.toPointer(p));
+  return libCOMCTL32_dll.DPA_InsertPtr(util.toPointer(hdpa), i, util.toPointer(p));
 }
 
 export function DPA_SetPtr(
@@ -18012,27 +19572,27 @@ export function DPA_SetPtr(
   i: number /* i32 */,
   p: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libCOMCTL32.DPA_SetPtr(util.toPointer(hdpa), i, util.toPointer(p)));
+  return util.boolFromFfi(libCOMCTL32_dll.DPA_SetPtr(util.toPointer(hdpa), i, util.toPointer(p)));
 }
 
 export function DPA_GetPtr(
   hdpa: Uint8Array | Deno.PointerValue | null /* Windows.Win32.UI.Controls.HDPA */,
   i: Deno.PointerValue /* isize */,
 ): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libCOMCTL32.DPA_GetPtr(util.toPointer(hdpa), i));
+  return util.pointerFromFfi(libCOMCTL32_dll.DPA_GetPtr(util.toPointer(hdpa), i));
 }
 
 export function DPA_GetPtrIndex(
   hdpa: Uint8Array | Deno.PointerValue | null /* Windows.Win32.UI.Controls.HDPA */,
   p: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
-  return libCOMCTL32.DPA_GetPtrIndex(util.toPointer(hdpa), util.toPointer(p));
+  return libCOMCTL32_dll.DPA_GetPtrIndex(util.toPointer(hdpa), util.toPointer(p));
 }
 
 export function DPA_GetSize(
   hdpa: Uint8Array | Deno.PointerValue | null /* Windows.Win32.UI.Controls.HDPA */,
 ): Deno.PointerValue /* u64 */ {
-  return libCOMCTL32.DPA_GetSize(util.toPointer(hdpa));
+  return libCOMCTL32_dll.DPA_GetSize(util.toPointer(hdpa));
 }
 
 export function DPA_Sort(
@@ -18040,7 +19600,7 @@ export function DPA_Sort(
   pfnCompare: Uint8Array | Deno.PointerValue | null /* Windows.Win32.UI.Controls.PFNDACOMPARE */,
   lParam: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.LPARAM */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libCOMCTL32.DPA_Sort(util.toPointer(hdpa), util.toPointer(pfnCompare), util.toPointer(lParam)));
+  return util.boolFromFfi(libCOMCTL32_dll.DPA_Sort(util.toPointer(hdpa), util.toPointer(pfnCompare), util.toPointer(lParam)));
 }
 
 export function DPA_LoadStream(
@@ -18049,7 +19609,7 @@ export function DPA_LoadStream(
   pstream: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Com.IStream */,
   pvInstData: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libCOMCTL32.DPA_LoadStream(util.toPointer(phdpa), util.toPointer(pfn), util.toPointer(pstream), util.toPointer(pvInstData)));
+  return util.pointerFromFfi(libCOMCTL32_dll.DPA_LoadStream(util.toPointer(phdpa), util.toPointer(pfn), util.toPointer(pstream), util.toPointer(pvInstData)));
 }
 
 export function DPA_SaveStream(
@@ -18058,7 +19618,7 @@ export function DPA_SaveStream(
   pstream: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Com.IStream */,
   pvInstData: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libCOMCTL32.DPA_SaveStream(util.toPointer(hdpa), util.toPointer(pfn), util.toPointer(pstream), util.toPointer(pvInstData)));
+  return util.pointerFromFfi(libCOMCTL32_dll.DPA_SaveStream(util.toPointer(hdpa), util.toPointer(pfn), util.toPointer(pstream), util.toPointer(pvInstData)));
 }
 
 export function DPA_Merge(
@@ -18069,7 +19629,7 @@ export function DPA_Merge(
   pfnMerge: Uint8Array | Deno.PointerValue | null /* Windows.Win32.UI.Controls.PFNDPAMERGE */,
   lParam: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.LPARAM */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libCOMCTL32.DPA_Merge(util.toPointer(hdpaDest), util.toPointer(hdpaSrc), dwFlags, util.toPointer(pfnCompare), util.toPointer(pfnMerge), util.toPointer(lParam)));
+  return util.boolFromFfi(libCOMCTL32_dll.DPA_Merge(util.toPointer(hdpaDest), util.toPointer(hdpaSrc), dwFlags, util.toPointer(pfnCompare), util.toPointer(pfnMerge), util.toPointer(lParam)));
 }
 
 export function DPA_Search(
@@ -18080,14 +19640,14 @@ export function DPA_Search(
   lParam: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.LPARAM */,
   options: number /* u32 */,
 ): number /* i32 */ {
-  return libCOMCTL32.DPA_Search(util.toPointer(hdpa), util.toPointer(pFind), iStart, util.toPointer(pfnCompare), util.toPointer(lParam), options);
+  return libCOMCTL32_dll.DPA_Search(util.toPointer(hdpa), util.toPointer(pFind), iStart, util.toPointer(pfnCompare), util.toPointer(lParam), options);
 }
 
 export function Str_SetPtrW(
   ppsz: Deno.PointerValue | Uint8Array | null /* ptr */,
   psz: string | null /* Windows.Win32.Foundation.PWSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libCOMCTL32.Str_SetPtrW(util.toPointer(ppsz), util.pwstrToFfi(psz)));
+  return util.boolFromFfi(libCOMCTL32_dll.Str_SetPtrW(util.toPointer(ppsz), util.pwstrToFfi(psz)));
 }
 
 export function FlatSB_EnableScrollBar(
@@ -18095,7 +19655,7 @@ export function FlatSB_EnableScrollBar(
   param1: number /* i32 */,
   param2: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libCOMCTL32.FlatSB_EnableScrollBar(util.hwndToFfi(param0), param1, param2));
+  return util.boolFromFfi(libCOMCTL32_dll.FlatSB_EnableScrollBar(util.hwndToFfi(param0), param1, param2));
 }
 
 export function FlatSB_ShowScrollBar(
@@ -18103,7 +19663,7 @@ export function FlatSB_ShowScrollBar(
   code: SCROLLBAR_CONSTANTS /* Windows.Win32.UI.WindowsAndMessaging.SCROLLBAR_CONSTANTS */,
   param2: boolean /* Windows.Win32.Foundation.BOOL */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libCOMCTL32.FlatSB_ShowScrollBar(util.hwndToFfi(param0), code, util.boolToFfi(param2)));
+  return util.boolFromFfi(libCOMCTL32_dll.FlatSB_ShowScrollBar(util.hwndToFfi(param0), code, util.boolToFfi(param2)));
 }
 
 export function FlatSB_GetScrollRange(
@@ -18112,7 +19672,7 @@ export function FlatSB_GetScrollRange(
   param2: Deno.PointerValue | Uint8Array | null /* ptr */,
   param3: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libCOMCTL32.FlatSB_GetScrollRange(util.hwndToFfi(param0), code, util.toPointer(param2), util.toPointer(param3)));
+  return util.boolFromFfi(libCOMCTL32_dll.FlatSB_GetScrollRange(util.hwndToFfi(param0), code, util.toPointer(param2), util.toPointer(param3)));
 }
 
 export function FlatSB_GetScrollInfo(
@@ -18120,14 +19680,14 @@ export function FlatSB_GetScrollInfo(
   code: SCROLLBAR_CONSTANTS /* Windows.Win32.UI.WindowsAndMessaging.SCROLLBAR_CONSTANTS */,
   param2: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libCOMCTL32.FlatSB_GetScrollInfo(util.hwndToFfi(param0), code, util.toPointer(param2)));
+  return util.boolFromFfi(libCOMCTL32_dll.FlatSB_GetScrollInfo(util.hwndToFfi(param0), code, util.toPointer(param2)));
 }
 
 export function FlatSB_GetScrollPos(
   param0: Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */,
   code: SCROLLBAR_CONSTANTS /* Windows.Win32.UI.WindowsAndMessaging.SCROLLBAR_CONSTANTS */,
 ): number /* i32 */ {
-  return libCOMCTL32.FlatSB_GetScrollPos(util.hwndToFfi(param0), code);
+  return libCOMCTL32_dll.FlatSB_GetScrollPos(util.hwndToFfi(param0), code);
 }
 
 export function FlatSB_GetScrollProp(
@@ -18135,7 +19695,7 @@ export function FlatSB_GetScrollProp(
   propIndex: WSB_PROP /* Windows.Win32.UI.Controls.WSB_PROP */,
   param2: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libCOMCTL32.FlatSB_GetScrollProp(util.hwndToFfi(param0), propIndex, util.toPointer(param2)));
+  return util.boolFromFfi(libCOMCTL32_dll.FlatSB_GetScrollProp(util.hwndToFfi(param0), propIndex, util.toPointer(param2)));
 }
 
 export function FlatSB_SetScrollPos(
@@ -18144,7 +19704,7 @@ export function FlatSB_SetScrollPos(
   pos: number /* i32 */,
   fRedraw: boolean /* Windows.Win32.Foundation.BOOL */,
 ): number /* i32 */ {
-  return libCOMCTL32.FlatSB_SetScrollPos(util.hwndToFfi(param0), code, pos, util.boolToFfi(fRedraw));
+  return libCOMCTL32_dll.FlatSB_SetScrollPos(util.hwndToFfi(param0), code, pos, util.boolToFfi(fRedraw));
 }
 
 export function FlatSB_SetScrollInfo(
@@ -18153,7 +19713,7 @@ export function FlatSB_SetScrollInfo(
   psi: Deno.PointerValue | Uint8Array | null /* ptr */,
   fRedraw: boolean /* Windows.Win32.Foundation.BOOL */,
 ): number /* i32 */ {
-  return libCOMCTL32.FlatSB_SetScrollInfo(util.hwndToFfi(param0), code, util.toPointer(psi), util.boolToFfi(fRedraw));
+  return libCOMCTL32_dll.FlatSB_SetScrollInfo(util.hwndToFfi(param0), code, util.toPointer(psi), util.boolToFfi(fRedraw));
 }
 
 export function FlatSB_SetScrollRange(
@@ -18163,7 +19723,7 @@ export function FlatSB_SetScrollRange(
   max: number /* i32 */,
   fRedraw: boolean /* Windows.Win32.Foundation.BOOL */,
 ): number /* i32 */ {
-  return libCOMCTL32.FlatSB_SetScrollRange(util.hwndToFfi(param0), code, min, max, util.boolToFfi(fRedraw));
+  return libCOMCTL32_dll.FlatSB_SetScrollRange(util.hwndToFfi(param0), code, min, max, util.boolToFfi(fRedraw));
 }
 
 export function FlatSB_SetScrollProp(
@@ -18172,19 +19732,19 @@ export function FlatSB_SetScrollProp(
   newValue: Deno.PointerValue /* isize */,
   param3: boolean /* Windows.Win32.Foundation.BOOL */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libCOMCTL32.FlatSB_SetScrollProp(util.hwndToFfi(param0), index, newValue, util.boolToFfi(param3)));
+  return util.boolFromFfi(libCOMCTL32_dll.FlatSB_SetScrollProp(util.hwndToFfi(param0), index, newValue, util.boolToFfi(param3)));
 }
 
 export function InitializeFlatSB(
   param0: Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libCOMCTL32.InitializeFlatSB(util.hwndToFfi(param0)));
+  return util.boolFromFfi(libCOMCTL32_dll.InitializeFlatSB(util.hwndToFfi(param0)));
 }
 
 export function UninitializeFlatSB(
   param0: Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libCOMCTL32.UninitializeFlatSB(util.hwndToFfi(param0)));
+  return util.pointerFromFfi(libCOMCTL32_dll.UninitializeFlatSB(util.hwndToFfi(param0)));
 }
 
 export function LoadIconMetric(
@@ -18193,7 +19753,7 @@ export function LoadIconMetric(
   lims: _LI_METRIC /* Windows.Win32.UI.Controls._LI_METRIC */,
   phico: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libCOMCTL32.LoadIconMetric(util.toPointer(hinst), util.pwstrToFfi(pszName), lims, util.toPointer(phico)));
+  return util.pointerFromFfi(libCOMCTL32_dll.LoadIconMetric(util.toPointer(hinst), util.pwstrToFfi(pszName), lims, util.toPointer(phico)));
 }
 
 export function LoadIconWithScaleDown(
@@ -18203,7 +19763,7 @@ export function LoadIconWithScaleDown(
   cy: number /* i32 */,
   phico: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libCOMCTL32.LoadIconWithScaleDown(util.toPointer(hinst), util.pwstrToFfi(pszName), cx, cy, util.toPointer(phico)));
+  return util.pointerFromFfi(libCOMCTL32_dll.LoadIconWithScaleDown(util.toPointer(hinst), util.pwstrToFfi(pszName), cx, cy, util.toPointer(phico)));
 }
 
 export function DrawShadowText(
@@ -18212,12 +19772,12 @@ export function DrawShadowText(
   cch: number /* u32 */,
   prc: Deno.PointerValue | Uint8Array | null /* ptr */,
   dwFlags: number /* u32 */,
-  crText: number /* u32 */,
-  crShadow: number /* u32 */,
+  crText: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.COLORREF */,
+  crShadow: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.COLORREF */,
   ixOffset: number /* i32 */,
   iyOffset: number /* i32 */,
 ): number /* i32 */ {
-  return libCOMCTL32.DrawShadowText(util.toPointer(hdc), util.pwstrToFfi(pszText), cch, util.toPointer(prc), dwFlags, crText, crShadow, ixOffset, iyOffset);
+  return libCOMCTL32_dll.DrawShadowText(util.toPointer(hdc), util.pwstrToFfi(pszText), cch, util.toPointer(prc), dwFlags, util.toPointer(crText), util.toPointer(crShadow), ixOffset, iyOffset);
 }
 
 export function ImageList_CoCreateInstance(
@@ -18226,13 +19786,13 @@ export function ImageList_CoCreateInstance(
   riid: Deno.PointerValue | Uint8Array | null /* ptr */,
   ppv: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libCOMCTL32.ImageList_CoCreateInstance(util.toPointer(rclsid), util.toPointer(punkOuter), util.toPointer(riid), util.toPointer(ppv)));
+  return util.pointerFromFfi(libCOMCTL32_dll.ImageList_CoCreateInstance(util.toPointer(rclsid), util.toPointer(punkOuter), util.toPointer(riid), util.toPointer(ppv)));
 }
 
 export function BeginPanningFeedback(
   hwnd: Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUxTheme.BeginPanningFeedback(util.hwndToFfi(hwnd)));
+  return util.boolFromFfi(libUxTheme_dll.BeginPanningFeedback(util.hwndToFfi(hwnd)));
 }
 
 export function UpdatePanningFeedback(
@@ -18241,14 +19801,14 @@ export function UpdatePanningFeedback(
   lTotalOverpanOffsetY: number /* i32 */,
   fInInertia: boolean /* Windows.Win32.Foundation.BOOL */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUxTheme.UpdatePanningFeedback(util.hwndToFfi(hwnd), lTotalOverpanOffsetX, lTotalOverpanOffsetY, util.boolToFfi(fInInertia)));
+  return util.boolFromFfi(libUxTheme_dll.UpdatePanningFeedback(util.hwndToFfi(hwnd), lTotalOverpanOffsetX, lTotalOverpanOffsetY, util.boolToFfi(fInInertia)));
 }
 
 export function EndPanningFeedback(
   hwnd: Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */,
   fAnimateBack: boolean /* Windows.Win32.Foundation.BOOL */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUxTheme.EndPanningFeedback(util.hwndToFfi(hwnd), util.boolToFfi(fAnimateBack)));
+  return util.boolFromFfi(libUxTheme_dll.EndPanningFeedback(util.hwndToFfi(hwnd), util.boolToFfi(fAnimateBack)));
 }
 
 export function GetThemeAnimationProperty(
@@ -18260,7 +19820,7 @@ export function GetThemeAnimationProperty(
   cbSize: number /* u32 */,
   pcbSizeOut: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libUXTHEME.GetThemeAnimationProperty(hTheme, iStoryboardId, iTargetId, eProperty, util.toPointer(pvProperty), cbSize, util.toPointer(pcbSizeOut)));
+  return util.pointerFromFfi(libUXTHEME_dll.GetThemeAnimationProperty(hTheme, iStoryboardId, iTargetId, eProperty, util.toPointer(pvProperty), cbSize, util.toPointer(pcbSizeOut)));
 }
 
 export function GetThemeAnimationTransform(
@@ -18272,7 +19832,7 @@ export function GetThemeAnimationTransform(
   cbSize: number /* u32 */,
   pcbSizeOut: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libUXTHEME.GetThemeAnimationTransform(hTheme, iStoryboardId, iTargetId, dwTransformIndex, util.toPointer(pTransform), cbSize, util.toPointer(pcbSizeOut)));
+  return util.pointerFromFfi(libUXTHEME_dll.GetThemeAnimationTransform(hTheme, iStoryboardId, iTargetId, dwTransformIndex, util.toPointer(pTransform), cbSize, util.toPointer(pcbSizeOut)));
 }
 
 export function GetThemeTimingFunction(
@@ -18282,14 +19842,14 @@ export function GetThemeTimingFunction(
   cbSize: number /* u32 */,
   pcbSizeOut: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libUXTHEME.GetThemeTimingFunction(hTheme, iTimingFunctionId, util.toPointer(pTimingFunction), cbSize, util.toPointer(pcbSizeOut)));
+  return util.pointerFromFfi(libUXTHEME_dll.GetThemeTimingFunction(hTheme, iTimingFunctionId, util.toPointer(pTimingFunction), cbSize, util.toPointer(pcbSizeOut)));
 }
 
 export function OpenThemeData(
   hwnd: Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */,
   pszClassList: string | null /* Windows.Win32.Foundation.PWSTR */,
 ): Deno.PointerValue /* isize */ {
-  return libUXTHEME.OpenThemeData(util.hwndToFfi(hwnd), util.pwstrToFfi(pszClassList));
+  return libUXTHEME_dll.OpenThemeData(util.hwndToFfi(hwnd), util.pwstrToFfi(pszClassList));
 }
 
 export function OpenThemeDataEx(
@@ -18297,13 +19857,13 @@ export function OpenThemeDataEx(
   pszClassList: string | null /* Windows.Win32.Foundation.PWSTR */,
   dwFlags: OPEN_THEME_DATA_FLAGS /* Windows.Win32.UI.Controls.OPEN_THEME_DATA_FLAGS */,
 ): Deno.PointerValue /* isize */ {
-  return libUXTHEME.OpenThemeDataEx(util.hwndToFfi(hwnd), util.pwstrToFfi(pszClassList), dwFlags);
+  return libUXTHEME_dll.OpenThemeDataEx(util.hwndToFfi(hwnd), util.pwstrToFfi(pszClassList), dwFlags);
 }
 
 export function CloseThemeData(
   hTheme: Deno.PointerValue /* isize */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libUXTHEME.CloseThemeData(hTheme));
+  return util.pointerFromFfi(libUXTHEME_dll.CloseThemeData(hTheme));
 }
 
 export function DrawThemeBackground(
@@ -18314,7 +19874,7 @@ export function DrawThemeBackground(
   pRect: Deno.PointerValue | Uint8Array | null /* ptr */,
   pClipRect: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libUXTHEME.DrawThemeBackground(hTheme, util.toPointer(hdc), iPartId, iStateId, util.toPointer(pRect), util.toPointer(pClipRect)));
+  return util.pointerFromFfi(libUXTHEME_dll.DrawThemeBackground(hTheme, util.toPointer(hdc), iPartId, iStateId, util.toPointer(pRect), util.toPointer(pClipRect)));
 }
 
 export function DrawThemeBackgroundEx(
@@ -18325,7 +19885,7 @@ export function DrawThemeBackgroundEx(
   pRect: Deno.PointerValue | Uint8Array | null /* ptr */,
   pOptions: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libUXTHEME.DrawThemeBackgroundEx(hTheme, util.toPointer(hdc), iPartId, iStateId, util.toPointer(pRect), util.toPointer(pOptions)));
+  return util.pointerFromFfi(libUXTHEME_dll.DrawThemeBackgroundEx(hTheme, util.toPointer(hdc), iPartId, iStateId, util.toPointer(pRect), util.toPointer(pOptions)));
 }
 
 export function DrawThemeText(
@@ -18335,11 +19895,11 @@ export function DrawThemeText(
   iStateId: number /* i32 */,
   pszText: string | null /* Windows.Win32.Foundation.PWSTR */,
   cchText: number /* i32 */,
-  dwTextFlags: number /* u32 */,
+  dwTextFlags: DRAW_TEXT_FORMAT /* Windows.Win32.Graphics.Gdi.DRAW_TEXT_FORMAT */,
   dwTextFlags2: number /* u32 */,
   pRect: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libUxTheme.DrawThemeText(hTheme, util.toPointer(hdc), iPartId, iStateId, util.pwstrToFfi(pszText), cchText, dwTextFlags, dwTextFlags2, util.toPointer(pRect)));
+  return util.pointerFromFfi(libUxTheme_dll.DrawThemeText(hTheme, util.toPointer(hdc), iPartId, iStateId, util.pwstrToFfi(pszText), cchText, dwTextFlags, dwTextFlags2, util.toPointer(pRect)));
 }
 
 export function GetThemeBackgroundContentRect(
@@ -18350,7 +19910,7 @@ export function GetThemeBackgroundContentRect(
   pBoundingRect: Deno.PointerValue | Uint8Array | null /* ptr */,
   pContentRect: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libUXTHEME.GetThemeBackgroundContentRect(hTheme, util.toPointer(hdc), iPartId, iStateId, util.toPointer(pBoundingRect), util.toPointer(pContentRect)));
+  return util.pointerFromFfi(libUXTHEME_dll.GetThemeBackgroundContentRect(hTheme, util.toPointer(hdc), iPartId, iStateId, util.toPointer(pBoundingRect), util.toPointer(pContentRect)));
 }
 
 export function GetThemeBackgroundExtent(
@@ -18361,7 +19921,7 @@ export function GetThemeBackgroundExtent(
   pContentRect: Deno.PointerValue | Uint8Array | null /* ptr */,
   pExtentRect: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libUXTHEME.GetThemeBackgroundExtent(hTheme, util.toPointer(hdc), iPartId, iStateId, util.toPointer(pContentRect), util.toPointer(pExtentRect)));
+  return util.pointerFromFfi(libUXTHEME_dll.GetThemeBackgroundExtent(hTheme, util.toPointer(hdc), iPartId, iStateId, util.toPointer(pContentRect), util.toPointer(pExtentRect)));
 }
 
 export function GetThemeBackgroundRegion(
@@ -18372,7 +19932,7 @@ export function GetThemeBackgroundRegion(
   pRect: Deno.PointerValue | Uint8Array | null /* ptr */,
   pRegion: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libUxTheme.GetThemeBackgroundRegion(hTheme, util.toPointer(hdc), iPartId, iStateId, util.toPointer(pRect), util.toPointer(pRegion)));
+  return util.pointerFromFfi(libUxTheme_dll.GetThemeBackgroundRegion(hTheme, util.toPointer(hdc), iPartId, iStateId, util.toPointer(pRect), util.toPointer(pRegion)));
 }
 
 export function GetThemePartSize(
@@ -18384,7 +19944,7 @@ export function GetThemePartSize(
   eSize: THEMESIZE /* Windows.Win32.UI.Controls.THEMESIZE */,
   psz: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libUXTHEME.GetThemePartSize(hTheme, util.toPointer(hdc), iPartId, iStateId, util.toPointer(prc), eSize, util.toPointer(psz)));
+  return util.pointerFromFfi(libUXTHEME_dll.GetThemePartSize(hTheme, util.toPointer(hdc), iPartId, iStateId, util.toPointer(prc), eSize, util.toPointer(psz)));
 }
 
 export function GetThemeTextExtent(
@@ -18394,11 +19954,11 @@ export function GetThemeTextExtent(
   iStateId: number /* i32 */,
   pszText: string | null /* Windows.Win32.Foundation.PWSTR */,
   cchCharCount: number /* i32 */,
-  dwTextFlags: number /* u32 */,
+  dwTextFlags: DRAW_TEXT_FORMAT /* Windows.Win32.Graphics.Gdi.DRAW_TEXT_FORMAT */,
   pBoundingRect: Deno.PointerValue | Uint8Array | null /* ptr */,
   pExtentRect: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libUxTheme.GetThemeTextExtent(hTheme, util.toPointer(hdc), iPartId, iStateId, util.pwstrToFfi(pszText), cchCharCount, dwTextFlags, util.toPointer(pBoundingRect), util.toPointer(pExtentRect)));
+  return util.pointerFromFfi(libUxTheme_dll.GetThemeTextExtent(hTheme, util.toPointer(hdc), iPartId, iStateId, util.pwstrToFfi(pszText), cchCharCount, dwTextFlags, util.toPointer(pBoundingRect), util.toPointer(pExtentRect)));
 }
 
 export function GetThemeTextMetrics(
@@ -18408,7 +19968,7 @@ export function GetThemeTextMetrics(
   iStateId: number /* i32 */,
   ptm: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libUxTheme.GetThemeTextMetrics(hTheme, util.toPointer(hdc), iPartId, iStateId, util.toPointer(ptm)));
+  return util.pointerFromFfi(libUxTheme_dll.GetThemeTextMetrics(hTheme, util.toPointer(hdc), iPartId, iStateId, util.toPointer(ptm)));
 }
 
 export function HitTestThemeBackground(
@@ -18416,13 +19976,13 @@ export function HitTestThemeBackground(
   hdc: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Graphics.Gdi.HDC */,
   iPartId: number /* i32 */,
   iStateId: number /* i32 */,
-  dwOptions: number /* u32 */,
+  dwOptions: HIT_TEST_BACKGROUND_OPTIONS /* Windows.Win32.UI.Controls.HIT_TEST_BACKGROUND_OPTIONS */,
   pRect: Deno.PointerValue | Uint8Array | null /* ptr */,
   hrgn: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Graphics.Gdi.HRGN */,
   ptTest: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.POINT */,
   pwHitTestCode: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libUxTheme.HitTestThemeBackground(hTheme, util.toPointer(hdc), iPartId, iStateId, dwOptions, util.toPointer(pRect), util.toPointer(hrgn), util.toPointer(ptTest), util.toPointer(pwHitTestCode)));
+  return util.pointerFromFfi(libUxTheme_dll.HitTestThemeBackground(hTheme, util.toPointer(hdc), iPartId, iStateId, dwOptions, util.toPointer(pRect), util.toPointer(hrgn), util.toPointer(ptTest), util.toPointer(pwHitTestCode)));
 }
 
 export function DrawThemeEdge(
@@ -18431,11 +19991,11 @@ export function DrawThemeEdge(
   iPartId: number /* i32 */,
   iStateId: number /* i32 */,
   pDestRect: Deno.PointerValue | Uint8Array | null /* ptr */,
-  uEdge: number /* u32 */,
-  uFlags: number /* u32 */,
+  uEdge: DRAWEDGE_FLAGS /* Windows.Win32.Graphics.Gdi.DRAWEDGE_FLAGS */,
+  uFlags: DRAW_EDGE_FLAGS /* Windows.Win32.Graphics.Gdi.DRAW_EDGE_FLAGS */,
   pContentRect: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libUxTheme.DrawThemeEdge(hTheme, util.toPointer(hdc), iPartId, iStateId, util.toPointer(pDestRect), uEdge, uFlags, util.toPointer(pContentRect)));
+  return util.pointerFromFfi(libUxTheme_dll.DrawThemeEdge(hTheme, util.toPointer(hdc), iPartId, iStateId, util.toPointer(pDestRect), uEdge, uFlags, util.toPointer(pContentRect)));
 }
 
 export function DrawThemeIcon(
@@ -18447,7 +20007,7 @@ export function DrawThemeIcon(
   himl: Uint8Array | Deno.PointerValue | null /* Windows.Win32.UI.Controls.HIMAGELIST */,
   iImageIndex: number /* i32 */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libUxTheme.DrawThemeIcon(hTheme, util.toPointer(hdc), iPartId, iStateId, util.toPointer(pRect), util.toPointer(himl), iImageIndex));
+  return util.pointerFromFfi(libUxTheme_dll.DrawThemeIcon(hTheme, util.toPointer(hdc), iPartId, iStateId, util.toPointer(pRect), util.toPointer(himl), iImageIndex));
 }
 
 export function IsThemePartDefined(
@@ -18455,7 +20015,7 @@ export function IsThemePartDefined(
   iPartId: number /* i32 */,
   iStateId: number /* i32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUXTHEME.IsThemePartDefined(hTheme, iPartId, iStateId));
+  return util.boolFromFfi(libUXTHEME_dll.IsThemePartDefined(hTheme, iPartId, iStateId));
 }
 
 export function IsThemeBackgroundPartiallyTransparent(
@@ -18463,17 +20023,17 @@ export function IsThemeBackgroundPartiallyTransparent(
   iPartId: number /* i32 */,
   iStateId: number /* i32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUxTheme.IsThemeBackgroundPartiallyTransparent(hTheme, iPartId, iStateId));
+  return util.boolFromFfi(libUxTheme_dll.IsThemeBackgroundPartiallyTransparent(hTheme, iPartId, iStateId));
 }
 
 export function GetThemeColor(
   hTheme: Deno.PointerValue /* isize */,
   iPartId: number /* i32 */,
   iStateId: number /* i32 */,
-  iPropId: number /* i32 */,
+  iPropId: THEME_PROPERTY_SYMBOL_ID /* Windows.Win32.UI.Controls.THEME_PROPERTY_SYMBOL_ID */,
   pColor: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libUXTHEME.GetThemeColor(hTheme, iPartId, iStateId, iPropId, util.toPointer(pColor)));
+  return util.pointerFromFfi(libUXTHEME_dll.GetThemeColor(hTheme, iPartId, iStateId, iPropId, util.toPointer(pColor)));
 }
 
 export function GetThemeMetric(
@@ -18484,7 +20044,7 @@ export function GetThemeMetric(
   iPropId: THEME_PROPERTY_SYMBOL_ID /* Windows.Win32.UI.Controls.THEME_PROPERTY_SYMBOL_ID */,
   piVal: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libUXTHEME.GetThemeMetric(hTheme, util.toPointer(hdc), iPartId, iStateId, iPropId, util.toPointer(piVal)));
+  return util.pointerFromFfi(libUXTHEME_dll.GetThemeMetric(hTheme, util.toPointer(hdc), iPartId, iStateId, iPropId, util.toPointer(piVal)));
 }
 
 export function GetThemeString(
@@ -18495,7 +20055,7 @@ export function GetThemeString(
   pszBuff: string | null /* Windows.Win32.Foundation.PWSTR */,
   cchMaxBuffChars: number /* i32 */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libUxTheme.GetThemeString(hTheme, iPartId, iStateId, iPropId, util.pwstrToFfi(pszBuff), cchMaxBuffChars));
+  return util.pointerFromFfi(libUxTheme_dll.GetThemeString(hTheme, iPartId, iStateId, iPropId, util.pwstrToFfi(pszBuff), cchMaxBuffChars));
 }
 
 export function GetThemeBool(
@@ -18505,37 +20065,37 @@ export function GetThemeBool(
   iPropId: THEME_PROPERTY_SYMBOL_ID /* Windows.Win32.UI.Controls.THEME_PROPERTY_SYMBOL_ID */,
   pfVal: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libUxTheme.GetThemeBool(hTheme, iPartId, iStateId, iPropId, util.toPointer(pfVal)));
+  return util.pointerFromFfi(libUxTheme_dll.GetThemeBool(hTheme, iPartId, iStateId, iPropId, util.toPointer(pfVal)));
 }
 
 export function GetThemeInt(
   hTheme: Deno.PointerValue /* isize */,
   iPartId: number /* i32 */,
   iStateId: number /* i32 */,
-  iPropId: number /* i32 */,
+  iPropId: THEME_PROPERTY_SYMBOL_ID /* Windows.Win32.UI.Controls.THEME_PROPERTY_SYMBOL_ID */,
   piVal: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libUXTHEME.GetThemeInt(hTheme, iPartId, iStateId, iPropId, util.toPointer(piVal)));
+  return util.pointerFromFfi(libUXTHEME_dll.GetThemeInt(hTheme, iPartId, iStateId, iPropId, util.toPointer(piVal)));
 }
 
 export function GetThemeEnumValue(
   hTheme: Deno.PointerValue /* isize */,
   iPartId: number /* i32 */,
   iStateId: number /* i32 */,
-  iPropId: number /* i32 */,
+  iPropId: THEME_PROPERTY_SYMBOL_ID /* Windows.Win32.UI.Controls.THEME_PROPERTY_SYMBOL_ID */,
   piVal: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libUXTHEME.GetThemeEnumValue(hTheme, iPartId, iStateId, iPropId, util.toPointer(piVal)));
+  return util.pointerFromFfi(libUXTHEME_dll.GetThemeEnumValue(hTheme, iPartId, iStateId, iPropId, util.toPointer(piVal)));
 }
 
 export function GetThemePosition(
   hTheme: Deno.PointerValue /* isize */,
   iPartId: number /* i32 */,
   iStateId: number /* i32 */,
-  iPropId: number /* i32 */,
+  iPropId: THEME_PROPERTY_SYMBOL_ID /* Windows.Win32.UI.Controls.THEME_PROPERTY_SYMBOL_ID */,
   pPoint: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libUXTHEME.GetThemePosition(hTheme, iPartId, iStateId, iPropId, util.toPointer(pPoint)));
+  return util.pointerFromFfi(libUXTHEME_dll.GetThemePosition(hTheme, iPartId, iStateId, iPropId, util.toPointer(pPoint)));
 }
 
 export function GetThemeFont(
@@ -18546,7 +20106,7 @@ export function GetThemeFont(
   iPropId: number /* i32 */,
   pFont: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libUXTHEME.GetThemeFont(hTheme, util.toPointer(hdc), iPartId, iStateId, iPropId, util.toPointer(pFont)));
+  return util.pointerFromFfi(libUXTHEME_dll.GetThemeFont(hTheme, util.toPointer(hdc), iPartId, iStateId, iPropId, util.toPointer(pFont)));
 }
 
 export function GetThemeRect(
@@ -18556,7 +20116,7 @@ export function GetThemeRect(
   iPropId: number /* i32 */,
   pRect: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libUXTHEME.GetThemeRect(hTheme, iPartId, iStateId, iPropId, util.toPointer(pRect)));
+  return util.pointerFromFfi(libUXTHEME_dll.GetThemeRect(hTheme, iPartId, iStateId, iPropId, util.toPointer(pRect)));
 }
 
 export function GetThemeMargins(
@@ -18564,21 +20124,21 @@ export function GetThemeMargins(
   hdc: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Graphics.Gdi.HDC */,
   iPartId: number /* i32 */,
   iStateId: number /* i32 */,
-  iPropId: number /* i32 */,
+  iPropId: THEME_PROPERTY_SYMBOL_ID /* Windows.Win32.UI.Controls.THEME_PROPERTY_SYMBOL_ID */,
   prc: Deno.PointerValue | Uint8Array | null /* ptr */,
   pMargins: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libUXTHEME.GetThemeMargins(hTheme, util.toPointer(hdc), iPartId, iStateId, iPropId, util.toPointer(prc), util.toPointer(pMargins)));
+  return util.pointerFromFfi(libUXTHEME_dll.GetThemeMargins(hTheme, util.toPointer(hdc), iPartId, iStateId, iPropId, util.toPointer(prc), util.toPointer(pMargins)));
 }
 
 export function GetThemeIntList(
   hTheme: Deno.PointerValue /* isize */,
   iPartId: number /* i32 */,
   iStateId: number /* i32 */,
-  iPropId: number /* i32 */,
+  iPropId: THEME_PROPERTY_SYMBOL_ID /* Windows.Win32.UI.Controls.THEME_PROPERTY_SYMBOL_ID */,
   pIntList: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libUxTheme.GetThemeIntList(hTheme, iPartId, iStateId, iPropId, util.toPointer(pIntList)));
+  return util.pointerFromFfi(libUxTheme_dll.GetThemeIntList(hTheme, iPartId, iStateId, iPropId, util.toPointer(pIntList)));
 }
 
 export function GetThemePropertyOrigin(
@@ -18588,7 +20148,7 @@ export function GetThemePropertyOrigin(
   iPropId: number /* i32 */,
   pOrigin: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libUxTheme.GetThemePropertyOrigin(hTheme, iPartId, iStateId, iPropId, util.toPointer(pOrigin)));
+  return util.pointerFromFfi(libUxTheme_dll.GetThemePropertyOrigin(hTheme, iPartId, iStateId, iPropId, util.toPointer(pOrigin)));
 }
 
 export function SetWindowTheme(
@@ -18596,46 +20156,46 @@ export function SetWindowTheme(
   pszSubAppName: string | null /* Windows.Win32.Foundation.PWSTR */,
   pszSubIdList: string | null /* Windows.Win32.Foundation.PWSTR */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libUXTHEME.SetWindowTheme(util.hwndToFfi(hwnd), util.pwstrToFfi(pszSubAppName), util.pwstrToFfi(pszSubIdList)));
+  return util.pointerFromFfi(libUXTHEME_dll.SetWindowTheme(util.hwndToFfi(hwnd), util.pwstrToFfi(pszSubAppName), util.pwstrToFfi(pszSubIdList)));
 }
 
 export function GetThemeFilename(
   hTheme: Deno.PointerValue /* isize */,
   iPartId: number /* i32 */,
   iStateId: number /* i32 */,
-  iPropId: number /* i32 */,
+  iPropId: THEME_PROPERTY_SYMBOL_ID /* Windows.Win32.UI.Controls.THEME_PROPERTY_SYMBOL_ID */,
   pszThemeFileName: string | null /* Windows.Win32.Foundation.PWSTR */,
   cchMaxBuffChars: number /* i32 */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libUxTheme.GetThemeFilename(hTheme, iPartId, iStateId, iPropId, util.pwstrToFfi(pszThemeFileName), cchMaxBuffChars));
+  return util.pointerFromFfi(libUxTheme_dll.GetThemeFilename(hTheme, iPartId, iStateId, iPropId, util.pwstrToFfi(pszThemeFileName), cchMaxBuffChars));
 }
 
 export function GetThemeSysColor(
   hTheme: Deno.PointerValue /* isize */,
   iColorId: number /* i32 */,
-): number /* u32 */ {
-  return libUxTheme.GetThemeSysColor(hTheme, iColorId);
+): Deno.PointerValue | null /* Windows.Win32.Foundation.COLORREF */ {
+  return util.pointerFromFfi(libUxTheme_dll.GetThemeSysColor(hTheme, iColorId));
 }
 
 export function GetThemeSysColorBrush(
   hTheme: Deno.PointerValue /* isize */,
   iColorId: THEME_PROPERTY_SYMBOL_ID /* Windows.Win32.UI.Controls.THEME_PROPERTY_SYMBOL_ID */,
 ): Deno.PointerValue | null /* Windows.Win32.Graphics.Gdi.HBRUSH */ {
-  return util.pointerFromFfi(libUxTheme.GetThemeSysColorBrush(hTheme, iColorId));
+  return util.pointerFromFfi(libUxTheme_dll.GetThemeSysColorBrush(hTheme, iColorId));
 }
 
 export function GetThemeSysBool(
   hTheme: Deno.PointerValue /* isize */,
-  iBoolId: number /* i32 */,
+  iBoolId: THEME_PROPERTY_SYMBOL_ID /* Windows.Win32.UI.Controls.THEME_PROPERTY_SYMBOL_ID */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUxTheme.GetThemeSysBool(hTheme, iBoolId));
+  return util.boolFromFfi(libUxTheme_dll.GetThemeSysBool(hTheme, iBoolId));
 }
 
 export function GetThemeSysSize(
   hTheme: Deno.PointerValue /* isize */,
   iSizeId: number /* i32 */,
 ): number /* i32 */ {
-  return libUxTheme.GetThemeSysSize(hTheme, iSizeId);
+  return libUxTheme_dll.GetThemeSysSize(hTheme, iSizeId);
 }
 
 export function GetThemeSysFont(
@@ -18643,7 +20203,7 @@ export function GetThemeSysFont(
   iFontId: THEME_PROPERTY_SYMBOL_ID /* Windows.Win32.UI.Controls.THEME_PROPERTY_SYMBOL_ID */,
   plf: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libUxTheme.GetThemeSysFont(hTheme, iFontId, util.toPointer(plf)));
+  return util.pointerFromFfi(libUxTheme_dll.GetThemeSysFont(hTheme, iFontId, util.toPointer(plf)));
 }
 
 export function GetThemeSysString(
@@ -18652,52 +20212,52 @@ export function GetThemeSysString(
   pszStringBuff: string | null /* Windows.Win32.Foundation.PWSTR */,
   cchMaxStringChars: number /* i32 */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libUxTheme.GetThemeSysString(hTheme, iStringId, util.pwstrToFfi(pszStringBuff), cchMaxStringChars));
+  return util.pointerFromFfi(libUxTheme_dll.GetThemeSysString(hTheme, iStringId, util.pwstrToFfi(pszStringBuff), cchMaxStringChars));
 }
 
 export function GetThemeSysInt(
   hTheme: Deno.PointerValue /* isize */,
-  iIntId: number /* i32 */,
+  iIntId: THEME_PROPERTY_SYMBOL_ID /* Windows.Win32.UI.Controls.THEME_PROPERTY_SYMBOL_ID */,
   piValue: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libUxTheme.GetThemeSysInt(hTheme, iIntId, util.toPointer(piValue)));
+  return util.pointerFromFfi(libUxTheme_dll.GetThemeSysInt(hTheme, iIntId, util.toPointer(piValue)));
 }
 
 export function IsThemeActive(): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUXTHEME.IsThemeActive());
+  return util.boolFromFfi(libUXTHEME_dll.IsThemeActive());
 }
 
 export function IsAppThemed(): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUXTHEME.IsAppThemed());
+  return util.boolFromFfi(libUXTHEME_dll.IsAppThemed());
 }
 
 export function GetWindowTheme(
   hwnd: Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */,
 ): Deno.PointerValue /* isize */ {
-  return libUXTHEME.GetWindowTheme(util.hwndToFfi(hwnd));
+  return libUXTHEME_dll.GetWindowTheme(util.hwndToFfi(hwnd));
 }
 
 export function EnableThemeDialogTexture(
   hwnd: Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */,
   dwFlags: number /* u32 */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libUxTheme.EnableThemeDialogTexture(util.hwndToFfi(hwnd), dwFlags));
+  return util.pointerFromFfi(libUxTheme_dll.EnableThemeDialogTexture(util.hwndToFfi(hwnd), dwFlags));
 }
 
 export function IsThemeDialogTextureEnabled(
   hwnd: Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUxTheme.IsThemeDialogTextureEnabled(util.hwndToFfi(hwnd)));
+  return util.boolFromFfi(libUxTheme_dll.IsThemeDialogTextureEnabled(util.hwndToFfi(hwnd)));
 }
 
-export function GetThemeAppProperties(): number /* u32 */ {
-  return libUXTHEME.GetThemeAppProperties();
+export function GetThemeAppProperties(): SET_THEME_APP_PROPERTIES_FLAGS /* Windows.Win32.UI.Controls.SET_THEME_APP_PROPERTIES_FLAGS */ {
+  return libUXTHEME_dll.GetThemeAppProperties();
 }
 
 export function SetThemeAppProperties(
-  dwFlags: number /* u32 */,
+  dwFlags: SET_THEME_APP_PROPERTIES_FLAGS /* Windows.Win32.UI.Controls.SET_THEME_APP_PROPERTIES_FLAGS */,
 ): void /* void */ {
-  return libUxTheme.SetThemeAppProperties(dwFlags);
+  return libUxTheme_dll.SetThemeAppProperties(dwFlags);
 }
 
 export function GetCurrentThemeName(
@@ -18708,7 +20268,7 @@ export function GetCurrentThemeName(
   pszSizeBuff: string | null /* Windows.Win32.Foundation.PWSTR */,
   cchMaxSizeChars: number /* i32 */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libUXTHEME.GetCurrentThemeName(util.pwstrToFfi(pszThemeFileName), cchMaxNameChars, util.pwstrToFfi(pszColorBuff), cchMaxColorChars, util.pwstrToFfi(pszSizeBuff), cchMaxSizeChars));
+  return util.pointerFromFfi(libUXTHEME_dll.GetCurrentThemeName(util.pwstrToFfi(pszThemeFileName), cchMaxNameChars, util.pwstrToFfi(pszColorBuff), cchMaxColorChars, util.pwstrToFfi(pszSizeBuff), cchMaxSizeChars));
 }
 
 export function GetThemeDocumentationProperty(
@@ -18717,7 +20277,7 @@ export function GetThemeDocumentationProperty(
   pszValueBuff: string | null /* Windows.Win32.Foundation.PWSTR */,
   cchMaxValChars: number /* i32 */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libUxTheme.GetThemeDocumentationProperty(util.pwstrToFfi(pszThemeName), util.pwstrToFfi(pszPropertyName), util.pwstrToFfi(pszValueBuff), cchMaxValChars));
+  return util.pointerFromFfi(libUxTheme_dll.GetThemeDocumentationProperty(util.pwstrToFfi(pszThemeName), util.pwstrToFfi(pszPropertyName), util.pwstrToFfi(pszValueBuff), cchMaxValChars));
 }
 
 export function DrawThemeParentBackground(
@@ -18725,13 +20285,13 @@ export function DrawThemeParentBackground(
   hdc: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Graphics.Gdi.HDC */,
   prc: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libUXTHEME.DrawThemeParentBackground(util.hwndToFfi(hwnd), util.toPointer(hdc), util.toPointer(prc)));
+  return util.pointerFromFfi(libUXTHEME_dll.DrawThemeParentBackground(util.hwndToFfi(hwnd), util.toPointer(hdc), util.toPointer(prc)));
 }
 
 export function EnableTheming(
   fEnable: boolean /* Windows.Win32.Foundation.BOOL */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libUxTheme.EnableTheming(util.boolToFfi(fEnable)));
+  return util.pointerFromFfi(libUxTheme_dll.EnableTheming(util.boolToFfi(fEnable)));
 }
 
 export function DrawThemeParentBackgroundEx(
@@ -18740,7 +20300,7 @@ export function DrawThemeParentBackgroundEx(
   dwFlags: DRAW_THEME_PARENT_BACKGROUND_FLAGS /* Windows.Win32.UI.Controls.DRAW_THEME_PARENT_BACKGROUND_FLAGS */,
   prc: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libUxTheme.DrawThemeParentBackgroundEx(util.hwndToFfi(hwnd), util.toPointer(hdc), dwFlags, util.toPointer(prc)));
+  return util.pointerFromFfi(libUxTheme_dll.DrawThemeParentBackgroundEx(util.hwndToFfi(hwnd), util.toPointer(hdc), dwFlags, util.toPointer(prc)));
 }
 
 export function SetWindowThemeAttribute(
@@ -18749,7 +20309,7 @@ export function SetWindowThemeAttribute(
   pvAttribute: Deno.PointerValue | Uint8Array | null /* ptr */,
   cbAttribute: number /* u32 */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libUXTHEME.SetWindowThemeAttribute(util.hwndToFfi(hwnd), eAttribute, util.toPointer(pvAttribute), cbAttribute));
+  return util.pointerFromFfi(libUXTHEME_dll.SetWindowThemeAttribute(util.hwndToFfi(hwnd), eAttribute, util.toPointer(pvAttribute), cbAttribute));
 }
 
 export function DrawThemeTextEx(
@@ -18759,11 +20319,11 @@ export function DrawThemeTextEx(
   iStateId: number /* i32 */,
   pszText: string | null /* Windows.Win32.Foundation.PWSTR */,
   cchText: number /* i32 */,
-  dwTextFlags: number /* u32 */,
+  dwTextFlags: DRAW_TEXT_FORMAT /* Windows.Win32.Graphics.Gdi.DRAW_TEXT_FORMAT */,
   pRect: Deno.PointerValue | Uint8Array | null /* ptr */,
   pOptions: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libUXTHEME.DrawThemeTextEx(hTheme, util.toPointer(hdc), iPartId, iStateId, util.pwstrToFfi(pszText), cchText, dwTextFlags, util.toPointer(pRect), util.toPointer(pOptions)));
+  return util.pointerFromFfi(libUXTHEME_dll.DrawThemeTextEx(hTheme, util.toPointer(hdc), iPartId, iStateId, util.pwstrToFfi(pszText), cchText, dwTextFlags, util.toPointer(pRect), util.toPointer(pOptions)));
 }
 
 export function GetThemeBitmap(
@@ -18774,7 +20334,7 @@ export function GetThemeBitmap(
   dwFlags: GET_THEME_BITMAP_FLAGS /* Windows.Win32.UI.Controls.GET_THEME_BITMAP_FLAGS */,
   phBitmap: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libUXTHEME.GetThemeBitmap(hTheme, iPartId, iStateId, iPropId, dwFlags, util.toPointer(phBitmap)));
+  return util.pointerFromFfi(libUXTHEME_dll.GetThemeBitmap(hTheme, iPartId, iStateId, iPropId, dwFlags, util.toPointer(phBitmap)));
 }
 
 export function GetThemeStream(
@@ -18786,15 +20346,15 @@ export function GetThemeStream(
   pcbStream: Deno.PointerValue | Uint8Array | null /* ptr */,
   hInst: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HINSTANCE */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libUXTHEME.GetThemeStream(hTheme, iPartId, iStateId, iPropId, util.toPointer(ppvStream), util.toPointer(pcbStream), util.toPointer(hInst)));
+  return util.pointerFromFfi(libUXTHEME_dll.GetThemeStream(hTheme, iPartId, iStateId, iPropId, util.toPointer(ppvStream), util.toPointer(pcbStream), util.toPointer(hInst)));
 }
 
 export function BufferedPaintInit(): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libUXTHEME.BufferedPaintInit());
+  return util.pointerFromFfi(libUXTHEME_dll.BufferedPaintInit());
 }
 
 export function BufferedPaintUnInit(): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libUXTHEME.BufferedPaintUnInit());
+  return util.pointerFromFfi(libUXTHEME_dll.BufferedPaintUnInit());
 }
 
 export function BeginBufferedPaint(
@@ -18804,33 +20364,33 @@ export function BeginBufferedPaint(
   pPaintParams: Deno.PointerValue | Uint8Array | null /* ptr */,
   phdc: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue /* isize */ {
-  return libUXTHEME.BeginBufferedPaint(util.toPointer(hdcTarget), util.toPointer(prcTarget), dwFormat, util.toPointer(pPaintParams), util.toPointer(phdc));
+  return libUXTHEME_dll.BeginBufferedPaint(util.toPointer(hdcTarget), util.toPointer(prcTarget), dwFormat, util.toPointer(pPaintParams), util.toPointer(phdc));
 }
 
 export function EndBufferedPaint(
   hBufferedPaint: Deno.PointerValue /* isize */,
   fUpdateTarget: boolean /* Windows.Win32.Foundation.BOOL */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libUXTHEME.EndBufferedPaint(hBufferedPaint, util.boolToFfi(fUpdateTarget)));
+  return util.pointerFromFfi(libUXTHEME_dll.EndBufferedPaint(hBufferedPaint, util.boolToFfi(fUpdateTarget)));
 }
 
 export function GetBufferedPaintTargetRect(
   hBufferedPaint: Deno.PointerValue /* isize */,
   prc: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libUxTheme.GetBufferedPaintTargetRect(hBufferedPaint, util.toPointer(prc)));
+  return util.pointerFromFfi(libUxTheme_dll.GetBufferedPaintTargetRect(hBufferedPaint, util.toPointer(prc)));
 }
 
 export function GetBufferedPaintTargetDC(
   hBufferedPaint: Deno.PointerValue /* isize */,
 ): Deno.PointerValue | null /* Windows.Win32.Graphics.Gdi.HDC */ {
-  return util.pointerFromFfi(libUxTheme.GetBufferedPaintTargetDC(hBufferedPaint));
+  return util.pointerFromFfi(libUxTheme_dll.GetBufferedPaintTargetDC(hBufferedPaint));
 }
 
 export function GetBufferedPaintDC(
   hBufferedPaint: Deno.PointerValue /* isize */,
 ): Deno.PointerValue | null /* Windows.Win32.Graphics.Gdi.HDC */ {
-  return util.pointerFromFfi(libUxTheme.GetBufferedPaintDC(hBufferedPaint));
+  return util.pointerFromFfi(libUxTheme_dll.GetBufferedPaintDC(hBufferedPaint));
 }
 
 export function GetBufferedPaintBits(
@@ -18838,14 +20398,14 @@ export function GetBufferedPaintBits(
   ppbBuffer: Deno.PointerValue | Uint8Array | null /* ptr */,
   pcxRow: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libUXTHEME.GetBufferedPaintBits(hBufferedPaint, util.toPointer(ppbBuffer), util.toPointer(pcxRow)));
+  return util.pointerFromFfi(libUXTHEME_dll.GetBufferedPaintBits(hBufferedPaint, util.toPointer(ppbBuffer), util.toPointer(pcxRow)));
 }
 
 export function BufferedPaintClear(
   hBufferedPaint: Deno.PointerValue /* isize */,
   prc: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libUXTHEME.BufferedPaintClear(hBufferedPaint, util.toPointer(prc)));
+  return util.pointerFromFfi(libUXTHEME_dll.BufferedPaintClear(hBufferedPaint, util.toPointer(prc)));
 }
 
 export function BufferedPaintSetAlpha(
@@ -18853,13 +20413,13 @@ export function BufferedPaintSetAlpha(
   prc: Deno.PointerValue | Uint8Array | null /* ptr */,
   alpha: number /* u8 */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libUxTheme.BufferedPaintSetAlpha(hBufferedPaint, util.toPointer(prc), alpha));
+  return util.pointerFromFfi(libUxTheme_dll.BufferedPaintSetAlpha(hBufferedPaint, util.toPointer(prc), alpha));
 }
 
 export function BufferedPaintStopAllAnimations(
   hwnd: Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libUXTHEME.BufferedPaintStopAllAnimations(util.hwndToFfi(hwnd)));
+  return util.pointerFromFfi(libUXTHEME_dll.BufferedPaintStopAllAnimations(util.hwndToFfi(hwnd)));
 }
 
 export function BeginBufferedAnimation(
@@ -18872,25 +20432,25 @@ export function BeginBufferedAnimation(
   phdcFrom: Deno.PointerValue | Uint8Array | null /* ptr */,
   phdcTo: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue /* isize */ {
-  return libUxTheme.BeginBufferedAnimation(util.hwndToFfi(hwnd), util.toPointer(hdcTarget), util.toPointer(prcTarget), dwFormat, util.toPointer(pPaintParams), util.toPointer(pAnimationParams), util.toPointer(phdcFrom), util.toPointer(phdcTo));
+  return libUxTheme_dll.BeginBufferedAnimation(util.hwndToFfi(hwnd), util.toPointer(hdcTarget), util.toPointer(prcTarget), dwFormat, util.toPointer(pPaintParams), util.toPointer(pAnimationParams), util.toPointer(phdcFrom), util.toPointer(phdcTo));
 }
 
 export function EndBufferedAnimation(
   hbpAnimation: Deno.PointerValue /* isize */,
   fUpdateTarget: boolean /* Windows.Win32.Foundation.BOOL */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libUxTheme.EndBufferedAnimation(hbpAnimation, util.boolToFfi(fUpdateTarget)));
+  return util.pointerFromFfi(libUxTheme_dll.EndBufferedAnimation(hbpAnimation, util.boolToFfi(fUpdateTarget)));
 }
 
 export function BufferedPaintRenderAnimation(
   hwnd: Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */,
   hdcTarget: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Graphics.Gdi.HDC */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUxTheme.BufferedPaintRenderAnimation(util.hwndToFfi(hwnd), util.toPointer(hdcTarget)));
+  return util.boolFromFfi(libUxTheme_dll.BufferedPaintRenderAnimation(util.hwndToFfi(hwnd), util.toPointer(hdcTarget)));
 }
 
 export function IsCompositionActive(): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUXTHEME.IsCompositionActive());
+  return util.boolFromFfi(libUXTHEME_dll.IsCompositionActive());
 }
 
 export function GetThemeTransitionDuration(
@@ -18901,7 +20461,7 @@ export function GetThemeTransitionDuration(
   iPropId: number /* i32 */,
   pdwDuration: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libUxTheme.GetThemeTransitionDuration(hTheme, iPartId, iStateIdFrom, iStateIdTo, iPropId, util.toPointer(pdwDuration)));
+  return util.pointerFromFfi(libUxTheme_dll.GetThemeTransitionDuration(hTheme, iPartId, iStateIdFrom, iStateIdTo, iPropId, util.toPointer(pdwDuration)));
 }
 
 export function CheckDlgButton(
@@ -18909,7 +20469,7 @@ export function CheckDlgButton(
   nIDButton: number /* i32 */,
   uCheck: DLG_BUTTON_CHECK_STATE /* Windows.Win32.UI.Controls.DLG_BUTTON_CHECK_STATE */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSER32.CheckDlgButton(util.hwndToFfi(hDlg), nIDButton, uCheck));
+  return util.boolFromFfi(libUSER32_dll.CheckDlgButton(util.hwndToFfi(hDlg), nIDButton, uCheck));
 }
 
 export function CheckRadioButton(
@@ -18918,20 +20478,20 @@ export function CheckRadioButton(
   nIDLastButton: number /* i32 */,
   nIDCheckButton: number /* i32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSER32.CheckRadioButton(util.hwndToFfi(hDlg), nIDFirstButton, nIDLastButton, nIDCheckButton));
+  return util.boolFromFfi(libUSER32_dll.CheckRadioButton(util.hwndToFfi(hDlg), nIDFirstButton, nIDLastButton, nIDCheckButton));
 }
 
 export function IsDlgButtonChecked(
   hDlg: Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */,
   nIDButton: number /* i32 */,
 ): number /* u32 */ {
-  return libUSER32.IsDlgButtonChecked(util.hwndToFfi(hDlg), nIDButton);
+  return libUSER32_dll.IsDlgButtonChecked(util.hwndToFfi(hDlg), nIDButton);
 }
 
 export function IsCharLowerW(
   ch: Uint8Array | Deno.PointerValue | null /* char */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSER32.IsCharLowerW(util.toPointer(ch)));
+  return util.boolFromFfi(libUSER32_dll.IsCharLowerW(util.toPointer(ch)));
 }
 
 export function CreateSyntheticPointerDevice(
@@ -18939,20 +20499,20 @@ export function CreateSyntheticPointerDevice(
   maxCount: number /* u32 */,
   mode: POINTER_FEEDBACK_MODE /* Windows.Win32.UI.Controls.POINTER_FEEDBACK_MODE */,
 ): Deno.PointerValue | null /* Windows.Win32.UI.Controls.HSYNTHETICPOINTERDEVICE */ {
-  return util.pointerFromFfi(libUSER32.CreateSyntheticPointerDevice(pointerType, maxCount, mode));
+  return util.pointerFromFfi(libUSER32_dll.CreateSyntheticPointerDevice(pointerType, maxCount, mode));
 }
 
 export function DestroySyntheticPointerDevice(
   device: Uint8Array | Deno.PointerValue | null /* Windows.Win32.UI.Controls.HSYNTHETICPOINTERDEVICE */,
 ): void /* void */ {
-  return libUSER32.DestroySyntheticPointerDevice(util.toPointer(device));
+  return libUSER32_dll.DestroySyntheticPointerDevice(util.toPointer(device));
 }
 
 export function RegisterTouchHitTestingWindow(
   hwnd: Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */,
   value: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSER32.RegisterTouchHitTestingWindow(util.hwndToFfi(hwnd), value));
+  return util.boolFromFfi(libUSER32_dll.RegisterTouchHitTestingWindow(util.hwndToFfi(hwnd), value));
 }
 
 export function EvaluateProximityToRect(
@@ -18960,7 +20520,7 @@ export function EvaluateProximityToRect(
   pHitTestingInput: Deno.PointerValue | Uint8Array | null /* ptr */,
   pProximityEval: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSER32.EvaluateProximityToRect(util.toPointer(controlBoundingBox), util.toPointer(pHitTestingInput), util.toPointer(pProximityEval)));
+  return util.boolFromFfi(libUSER32_dll.EvaluateProximityToRect(util.toPointer(controlBoundingBox), util.toPointer(pHitTestingInput), util.toPointer(pProximityEval)));
 }
 
 export function EvaluateProximityToPolygon(
@@ -18969,14 +20529,14 @@ export function EvaluateProximityToPolygon(
   pHitTestingInput: Deno.PointerValue | Uint8Array | null /* ptr */,
   pProximityEval: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSER32.EvaluateProximityToPolygon(numVertices, util.toPointer(controlPolygon), util.toPointer(pHitTestingInput), util.toPointer(pProximityEval)));
+  return util.boolFromFfi(libUSER32_dll.EvaluateProximityToPolygon(numVertices, util.toPointer(controlPolygon), util.toPointer(pHitTestingInput), util.toPointer(pProximityEval)));
 }
 
 export function PackTouchHitTestingProximityEvaluation(
   pHitTestingInput: Deno.PointerValue | Uint8Array | null /* ptr */,
   pProximityEval: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.LRESULT */ {
-  return util.pointerFromFfi(libUSER32.PackTouchHitTestingProximityEvaluation(util.toPointer(pHitTestingInput), util.toPointer(pProximityEval)));
+  return util.pointerFromFfi(libUSER32_dll.PackTouchHitTestingProximityEvaluation(util.toPointer(pHitTestingInput), util.toPointer(pProximityEval)));
 }
 
 export function GetWindowFeedbackSetting(
@@ -18986,7 +20546,7 @@ export function GetWindowFeedbackSetting(
   pSize: Deno.PointerValue | Uint8Array | null /* ptr */,
   config: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSER32.GetWindowFeedbackSetting(util.hwndToFfi(hwnd), feedback, dwFlags, util.toPointer(pSize), util.toPointer(config)));
+  return util.boolFromFfi(libUSER32_dll.GetWindowFeedbackSetting(util.hwndToFfi(hwnd), feedback, dwFlags, util.toPointer(pSize), util.toPointer(config)));
 }
 
 export function SetWindowFeedbackSetting(
@@ -18996,7 +20556,7 @@ export function SetWindowFeedbackSetting(
   size: number /* u32 */,
   configuration: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSER32.SetWindowFeedbackSetting(util.hwndToFfi(hwnd), feedback, dwFlags, size, util.toPointer(configuration)));
+  return util.boolFromFfi(libUSER32_dll.SetWindowFeedbackSetting(util.hwndToFfi(hwnd), feedback, dwFlags, size, util.toPointer(configuration)));
 }
 
 export function SetScrollPos(
@@ -19005,7 +20565,7 @@ export function SetScrollPos(
   nPos: number /* i32 */,
   bRedraw: boolean /* Windows.Win32.Foundation.BOOL */,
 ): number /* i32 */ {
-  return libUSER32.SetScrollPos(util.hwndToFfi(hWnd), nBar, nPos, util.boolToFfi(bRedraw));
+  return libUSER32_dll.SetScrollPos(util.hwndToFfi(hWnd), nBar, nPos, util.boolToFfi(bRedraw));
 }
 
 export function SetScrollRange(
@@ -19015,7 +20575,7 @@ export function SetScrollRange(
   nMaxPos: number /* i32 */,
   bRedraw: boolean /* Windows.Win32.Foundation.BOOL */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSER32.SetScrollRange(util.hwndToFfi(hWnd), nBar, nMinPos, nMaxPos, util.boolToFfi(bRedraw)));
+  return util.boolFromFfi(libUSER32_dll.SetScrollRange(util.hwndToFfi(hWnd), nBar, nMinPos, nMaxPos, util.boolToFfi(bRedraw)));
 }
 
 export function ShowScrollBar(
@@ -19023,7 +20583,7 @@ export function ShowScrollBar(
   wBar: SCROLLBAR_CONSTANTS /* Windows.Win32.UI.WindowsAndMessaging.SCROLLBAR_CONSTANTS */,
   bShow: boolean /* Windows.Win32.Foundation.BOOL */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSER32.ShowScrollBar(util.hwndToFfi(hWnd), wBar, util.boolToFfi(bShow)));
+  return util.boolFromFfi(libUSER32_dll.ShowScrollBar(util.hwndToFfi(hWnd), wBar, util.boolToFfi(bShow)));
 }
 
 export function EnableScrollBar(
@@ -19031,7 +20591,7 @@ export function EnableScrollBar(
   wSBflags: SCROLLBAR_CONSTANTS /* Windows.Win32.UI.WindowsAndMessaging.SCROLLBAR_CONSTANTS */,
   wArrows: ENABLE_SCROLL_BAR_ARROWS /* Windows.Win32.UI.Controls.ENABLE_SCROLL_BAR_ARROWS */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSER32.EnableScrollBar(util.hwndToFfi(hWnd), wSBflags, wArrows));
+  return util.boolFromFfi(libUSER32_dll.EnableScrollBar(util.hwndToFfi(hWnd), wSBflags, wArrows));
 }
 
 export function DlgDirListA(
@@ -19041,7 +20601,7 @@ export function DlgDirListA(
   nIDStaticPath: number /* i32 */,
   uFileType: DLG_DIR_LIST_FILE_TYPE /* Windows.Win32.UI.Controls.DLG_DIR_LIST_FILE_TYPE */,
 ): number /* i32 */ {
-  return libUSER32.DlgDirListA(util.hwndToFfi(hDlg), util.pstrToFfi(lpPathSpec), nIDListBox, nIDStaticPath, uFileType);
+  return libUSER32_dll.DlgDirListA(util.hwndToFfi(hDlg), util.pstrToFfi(lpPathSpec), nIDListBox, nIDStaticPath, uFileType);
 }
 
 export function DlgDirListW(
@@ -19051,7 +20611,7 @@ export function DlgDirListW(
   nIDStaticPath: number /* i32 */,
   uFileType: DLG_DIR_LIST_FILE_TYPE /* Windows.Win32.UI.Controls.DLG_DIR_LIST_FILE_TYPE */,
 ): number /* i32 */ {
-  return libUSER32.DlgDirListW(util.hwndToFfi(hDlg), util.pwstrToFfi(lpPathSpec), nIDListBox, nIDStaticPath, uFileType);
+  return libUSER32_dll.DlgDirListW(util.hwndToFfi(hDlg), util.pwstrToFfi(lpPathSpec), nIDListBox, nIDStaticPath, uFileType);
 }
 
 export function DlgDirSelectExA(
@@ -19060,7 +20620,7 @@ export function DlgDirSelectExA(
   chCount: number /* i32 */,
   idListBox: number /* i32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSER32.DlgDirSelectExA(util.hwndToFfi(hwndDlg), util.pstrToFfi(lpString), chCount, idListBox));
+  return util.boolFromFfi(libUSER32_dll.DlgDirSelectExA(util.hwndToFfi(hwndDlg), util.pstrToFfi(lpString), chCount, idListBox));
 }
 
 export function DlgDirSelectExW(
@@ -19069,7 +20629,7 @@ export function DlgDirSelectExW(
   chCount: number /* i32 */,
   idListBox: number /* i32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSER32.DlgDirSelectExW(util.hwndToFfi(hwndDlg), util.pwstrToFfi(lpString), chCount, idListBox));
+  return util.boolFromFfi(libUSER32_dll.DlgDirSelectExW(util.hwndToFfi(hwndDlg), util.pwstrToFfi(lpString), chCount, idListBox));
 }
 
 export function DlgDirListComboBoxA(
@@ -19079,7 +20639,7 @@ export function DlgDirListComboBoxA(
   nIDStaticPath: number /* i32 */,
   uFiletype: DLG_DIR_LIST_FILE_TYPE /* Windows.Win32.UI.Controls.DLG_DIR_LIST_FILE_TYPE */,
 ): number /* i32 */ {
-  return libUSER32.DlgDirListComboBoxA(util.hwndToFfi(hDlg), util.pstrToFfi(lpPathSpec), nIDComboBox, nIDStaticPath, uFiletype);
+  return libUSER32_dll.DlgDirListComboBoxA(util.hwndToFfi(hDlg), util.pstrToFfi(lpPathSpec), nIDComboBox, nIDStaticPath, uFiletype);
 }
 
 export function DlgDirListComboBoxW(
@@ -19089,7 +20649,7 @@ export function DlgDirListComboBoxW(
   nIDStaticPath: number /* i32 */,
   uFiletype: DLG_DIR_LIST_FILE_TYPE /* Windows.Win32.UI.Controls.DLG_DIR_LIST_FILE_TYPE */,
 ): number /* i32 */ {
-  return libUSER32.DlgDirListComboBoxW(util.hwndToFfi(hDlg), util.pwstrToFfi(lpPathSpec), nIDComboBox, nIDStaticPath, uFiletype);
+  return libUSER32_dll.DlgDirListComboBoxW(util.hwndToFfi(hDlg), util.pwstrToFfi(lpPathSpec), nIDComboBox, nIDStaticPath, uFiletype);
 }
 
 export function DlgDirSelectComboBoxExA(
@@ -19098,7 +20658,7 @@ export function DlgDirSelectComboBoxExA(
   cchOut: number /* i32 */,
   idComboBox: number /* i32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSER32.DlgDirSelectComboBoxExA(util.hwndToFfi(hwndDlg), util.pstrToFfi(lpString), cchOut, idComboBox));
+  return util.boolFromFfi(libUSER32_dll.DlgDirSelectComboBoxExA(util.hwndToFfi(hwndDlg), util.pstrToFfi(lpString), cchOut, idComboBox));
 }
 
 export function DlgDirSelectComboBoxExW(
@@ -19107,7 +20667,7 @@ export function DlgDirSelectComboBoxExW(
   cchOut: number /* i32 */,
   idComboBox: number /* i32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSER32.DlgDirSelectComboBoxExW(util.hwndToFfi(hwndDlg), util.pwstrToFfi(lpString), cchOut, idComboBox));
+  return util.boolFromFfi(libUSER32_dll.DlgDirSelectComboBoxExW(util.hwndToFfi(hwndDlg), util.pwstrToFfi(lpString), cchOut, idComboBox));
 }
 
 export function SetScrollInfo(
@@ -19116,26 +20676,26 @@ export function SetScrollInfo(
   lpsi: Deno.PointerValue | Uint8Array | null /* ptr */,
   redraw: boolean /* Windows.Win32.Foundation.BOOL */,
 ): number /* i32 */ {
-  return libUSER32.SetScrollInfo(util.hwndToFfi(hwnd), nBar, util.toPointer(lpsi), util.boolToFfi(redraw));
+  return libUSER32_dll.SetScrollInfo(util.hwndToFfi(hwnd), nBar, util.toPointer(lpsi), util.boolToFfi(redraw));
 }
 
 export function GetComboBoxInfo(
   hwndCombo: Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */,
   pcbi: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSER32.GetComboBoxInfo(util.hwndToFfi(hwndCombo), util.toPointer(pcbi)));
+  return util.boolFromFfi(libUSER32_dll.GetComboBoxInfo(util.hwndToFfi(hwndCombo), util.toPointer(pcbi)));
 }
 
 export function GetListBoxInfo(
   hwnd: Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */,
 ): number /* u32 */ {
-  return libUSER32.GetListBoxInfo(util.hwndToFfi(hwnd));
+  return libUSER32_dll.GetListBoxInfo(util.hwndToFfi(hwnd));
 }
 
 export function RegisterPointerDeviceNotifications(
   window: Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */,
   notifyRange: boolean /* Windows.Win32.Foundation.BOOL */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSER32.RegisterPointerDeviceNotifications(util.hwndToFfi(window), util.boolToFfi(notifyRange)));
+  return util.boolFromFfi(libUSER32_dll.RegisterPointerDeviceNotifications(util.hwndToFfi(window), util.boolToFfi(notifyRange)));
 }
 

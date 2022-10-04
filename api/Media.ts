@@ -4,12 +4,13 @@ import * as util from "../util.ts";
 
 // Enums
 export type MIDI_WAVE_OPEN_TYPE = number;
+export type SND_FLAGS = number;
 export type MIXERLINE_COMPONENTTYPE = number;
 export type OA_BOOL = number;
-export type MPEG2VIDEOINFO_FLAGS = number;
 export type MPEGLAYER3WAVEFORMAT_FLAGS = number;
 export type TIMECODE_SAMPLE_FLAGS = number;
 export type MEDIA_EVENT_GENERATOR_GET_EVENT_FLAGS = number;
+export type MPEG2VIDEOINFO_FLAGS = number;
 export type MF_Plugin_Type = number;
 export type APO_BUFFER_FLAGS = number;
 export type APO_CONNECTION_BUFFER_TYPE = number;
@@ -19,7 +20,7 @@ export type EAudioConstriction = number;
 export type AUDIO_SYSTEMEFFECT_STATE = number;
 export type APO_LOG_LEVEL = number;
 export type APO_NOTIFICATION_TYPE = number;
-export type __MIDL___MIDL_itf_mmdeviceapi_0000_0008_0002 = number;
+export type AUDIO_SYSTEMEFFECTS_PROPERTYSTORE_TYPE = number;
 export type DMUS_CLOCKTYPE = number;
 export type DSPROPERTY_DIRECTSOUNDDEVICE = number;
 export type DIRECTSOUNDDEVICE_TYPE = number;
@@ -31,7 +32,7 @@ export type AMVP_MODE = number;
 export type PIN_DIRECTION = number;
 export type FILTER_STATE = number;
 export type AM_SAMPLE_PROPERTY_FLAGS = number;
-export type AM_SEEKING_SeekingFlags = number;
+export type AM_SEEKING_SEEKING_FLAGS = number;
 export type AM_SEEKING_SEEKING_CAPABILITIES = number;
 export type AM_MEDIAEVENT_FLAGS = number;
 export type IFILTERMAPPER_MERIT = number;
@@ -180,6 +181,7 @@ export type AMMSF_MMS_INIT_FLAGS = number;
 export type AMMSF_MS_FLAGS = number;
 export type AMMSF_RENDER_FLAGS = number;
 export type OUTPUT_STATE = number;
+export type BI_COMPRESSION = number;
 export type AM_PROPERTY_FRAMESTEP = number;
 export type AM_ASPECT_RATIO_MODE = number;
 export type VMR9PresentationFlags = number;
@@ -342,7 +344,7 @@ export type SPVFEATURE = number;
 export type SPVISEMES = number;
 export type SPFILEMODE = number;
 export type SPAUDIOSTATE = number;
-export type SPDISPLYATTRIBUTES = number;
+export type SPDISPLAYATTRIBUTES = number;
 export type SPPHRASEPROPERTYUNIONTYPE = number;
 export type SPSEMANTICFORMAT = number;
 export type SPVALUETYPE = number;
@@ -374,7 +376,7 @@ export type SPAUDIOOPTIONS = number;
 export type SPGRAMMAROPTIONS = number;
 export type SPADAPTATIONSETTINGS = number;
 export type SPADAPTATIONRELEVANCE = number;
-export type SPWAVEFORMATTYPE = number;
+export type SPSTREAMFORMATTYPE = number;
 export type SPRECOSTATE = number;
 export type DISPID_SpeechDataKey = number;
 export type DISPID_SpeechObjectToken = number;
@@ -655,7 +657,7 @@ export type KSPROPERTY_TUNER = number;
 export type KSPROPERTY_TUNER_MODES = number;
 export type KS_TUNER_TUNING_FLAGS = number;
 export type KS_TUNER_STRATEGY = number;
-export type _TunerDecoderLockType = number;
+export type TunerLockType = number;
 export type KSEVENT_TUNER = number;
 export type KSPROPERTY_VIDCAP_VIDEOENCODER = number;
 export type KSPROPERTY_VIDCAP_VIDEODECODER = number;
@@ -922,7 +924,7 @@ export type OPM_TYPE = number;
 export type OPM_VIDEO_OUTPUT_SEMANTICS = number;
 export type OPM_HDCP_FLAGS = number;
 export type OPM_STATUS = number;
-export type PM_CONNECTOR_TYPE = number;
+export type OPM_CONNECTOR_TYPE = number;
 export type OPM_DVI_CHARACTERISTIC = number;
 export type OPM_OUTPUT_HARDWARE_PROTECTION = number;
 export type OPM_BUS_TYPE = number;
@@ -1044,7 +1046,7 @@ export type MF_MT_D3D_RESOURCE_VERSION_ENUM = number;
 export type MFASYNC_WORKQUEUE_TYPE = number;
 export type MF_TOPOSTATUS = number;
 export type MFSampleEncryptionProtectionScheme = number;
-export type _MFT_ENUM_FLAG = number;
+export type MFT_ENUM_FLAG = number;
 export type MFFrameSourceTypes = number;
 export type MFVideo3DFormat = number;
 export type MFVideo3DSampleFormat = number;
@@ -1115,9 +1117,9 @@ export type MF_SHARING_ENGINE_EVENT = number;
 export type MF_MEDIA_SHARING_ENGINE_EVENT = number;
 export type PLAYTO_SOURCE_CREATEFLAGS = number;
 export type MFVideoAlphaBitmapFlags = number;
-export type __MIDL___MIDL_itf_mfvirtualcamera_0000_0000_0001 = number;
-export type __MIDL___MIDL_itf_mfvirtualcamera_0000_0000_0002 = number;
-export type __MIDL___MIDL_itf_mfvirtualcamera_0000_0000_0003 = number;
+export type MFVirtualCameraType = number;
+export type MFVirtualCameraLifetime = number;
+export type MFVirtualCameraAccess = number;
 export type OPM_HDCP_TYPE = number;
 export type OPM_HDCP_STATUS = number;
 export type COPP_HDCP_Protection_Level = number;
@@ -1269,7 +1271,8 @@ export const SPTLAUD_MD_CLNT_E_NO_ITEMS_WRITTEN = 9872490736015442465n;
 export const SPTLAUD_MD_CLNT_E_COMMAND_ALREADY_WRITTEN = 9872491835527070242n;
 export const SPTLAUD_MD_CLNT_E_FORMAT_MISMATCH = 9872492935038698019n;
 export const SPTLAUD_MD_CLNT_E_BUFFER_STILL_ATTACHED = 9872494034550325796n;
-export const SPTLAUD_MD_CLNT_E_ITEMS_LOCKED_FOR_WRITING = 35203842638373;
+export const SPTLAUD_MD_CLNT_E_ITEMS_LOCKED_FOR_WRITING = 2886251019141448229n;
+export const VIRTUAL_AUDIO_DEVICE_PROCESS_LOOPBACK = `VAD\Process_Loopback`;
 export const WAVERR_BADFORMAT = 32;
 export const WAVERR_STILLPLAYING = 33;
 export const WAVERR_UNPREPARED = 34;
@@ -1342,10 +1345,10 @@ export const MHDR_PREPARED = 2;
 export const MHDR_INQUEUE = 4;
 export const MHDR_ISSTRM = 8;
 export const MEVT_F_SHORT = 0;
-export const MEVT_F_LONG = "-2147483648";
+export const MEVT_F_LONG = `-2147483648`;
 export const MEVT_F_CALLBACK = 1073741824;
-export const MIDISTRM_ERROR = "-2";
-export const MIDIPROP_SET = "-2147483648";
+export const MIDISTRM_ERROR = `-2`;
+export const MIDIPROP_SET = `-2147483648`;
 export const MIDIPROP_GET = 1073741824;
 export const MIDIPROP_TIMEDIV = 1;
 export const MIDIPROP_TEMPO = 2;
@@ -1359,7 +1362,7 @@ export const MIXERR_INVALLINE = 1024;
 export const MIXERR_INVALCONTROL = 1025;
 export const MIXERR_INVALVALUE = 1026;
 export const MIXERR_LASTERROR = 1026;
-export const MIXER_OBJECTF_HANDLE = "-2147483648";
+export const MIXER_OBJECTF_HANDLE = `-2147483648`;
 export const MIXER_OBJECTF_MIXER = 0;
 export const MIXER_OBJECTF_WAVEOUT = 268435456;
 export const MIXER_OBJECTF_WAVEIN = 536870912;
@@ -1368,7 +1371,7 @@ export const MIXER_OBJECTF_MIDIIN = 1073741824;
 export const MIXER_OBJECTF_AUX = 1342177280;
 export const MIXERLINE_LINEF_ACTIVE = 1;
 export const MIXERLINE_LINEF_DISCONNECTED = 32768;
-export const MIXERLINE_LINEF_SOURCE = "-2147483648";
+export const MIXERLINE_LINEF_SOURCE = `-2147483648`;
 export const MIXERLINE_COMPONENTTYPE_DST_FIRST = 0;
 export const MIXERLINE_COMPONENTTYPE_DST_LAST = 8;
 export const MIXERLINE_COMPONENTTYPE_SRC_FIRST = 4096;
@@ -1387,8 +1390,8 @@ export const MIXER_GETLINEINFOF_TARGETTYPE = 4;
 export const MIXER_GETLINEINFOF_QUERYMASK = 15;
 export const MIXERCONTROL_CONTROLF_UNIFORM = 1;
 export const MIXERCONTROL_CONTROLF_MULTIPLE = 2;
-export const MIXERCONTROL_CONTROLF_DISABLED = "-2147483648";
-export const MIXERCONTROL_CT_CLASS_MASK = "-268435456";
+export const MIXERCONTROL_CONTROLF_DISABLED = `-2147483648`;
+export const MIXERCONTROL_CT_CLASS_MASK = `-268435456`;
 export const MIXERCONTROL_CT_CLASS_CUSTOM = 0;
 export const MIXERCONTROL_CT_CLASS_METER = 268435456;
 export const MIXERCONTROL_CT_CLASS_SWITCH = 536870912;
@@ -1457,7 +1460,7 @@ export const ACM_METRIC_MAX_SIZE_FILTER = 51;
 export const ACM_METRIC_DRIVER_SUPPORT = 100;
 export const ACM_METRIC_DRIVER_PRIORITY = 101;
 export const ACM_DRIVERENUMF_NOLOCAL = 1073741824;
-export const ACM_DRIVERENUMF_DISABLED = "-2147483648";
+export const ACM_DRIVERENUMF_DISABLED = `-2147483648`;
 export const ACM_DRIVERADDF_NAME = 1;
 export const ACM_DRIVERADDF_FUNCTION = 3;
 export const ACM_DRIVERADDF_NOTIFYHWND = 4;
@@ -1485,7 +1488,7 @@ export const ACMDRIVERDETAILS_SUPPORTF_FILTER = 4;
 export const ACMDRIVERDETAILS_SUPPORTF_HARDWARE = 8;
 export const ACMDRIVERDETAILS_SUPPORTF_ASYNC = 16;
 export const ACMDRIVERDETAILS_SUPPORTF_LOCAL = 1073741824;
-export const ACMDRIVERDETAILS_SUPPORTF_DISABLED = "-2147483648";
+export const ACMDRIVERDETAILS_SUPPORTF_DISABLED = `-2147483648`;
 export const ACMFORMATTAGDETAILS_FORMATTAG_CHARS = 48;
 export const ACM_FORMATTAGDETAILSF_INDEX = 0;
 export const ACM_FORMATTAGDETAILSF_FORMATTAG = 1;
@@ -1509,6 +1512,15 @@ export const ACM_FORMATSUGGESTF_NCHANNELS = 131072;
 export const ACM_FORMATSUGGESTF_NSAMPLESPERSEC = 262144;
 export const ACM_FORMATSUGGESTF_WBITSPERSAMPLE = 524288;
 export const ACM_FORMATSUGGESTF_TYPEMASK = 16711680;
+export const ACMHELPMSGSTRINGA = `acmchoose_help`;
+export const ACMHELPMSGSTRINGW = `acmchoose_help`;
+export const ACMHELPMSGCONTEXTMENUA = `acmchoose_contextmenu`;
+export const ACMHELPMSGCONTEXTMENUW = `acmchoose_contextmenu`;
+export const ACMHELPMSGCONTEXTHELPA = `acmchoose_contexthelp`;
+export const ACMHELPMSGCONTEXTHELPW = `acmchoose_contexthelp`;
+export const ACMHELPMSGSTRING = `acmchoose_help`;
+export const ACMHELPMSGCONTEXTMENU = `acmchoose_contextmenu`;
+export const ACMHELPMSGCONTEXTHELP = `acmchoose_contexthelp`;
 export const MM_ACM_FORMATCHOOSE = 32768;
 export const FORMATCHOOSE_MESSAGE = 0;
 export const FORMATCHOOSE_FORMATTAG_VERIFY = 0;
@@ -1553,22 +1565,7 @@ export const ACM_STREAMSIZEF_QUERYMASK = 15;
 export const ACM_STREAMCONVERTF_BLOCKALIGN = 4;
 export const ACM_STREAMCONVERTF_START = 16;
 export const ACM_STREAMCONVERTF_END = 32;
-export const SND_SYNC = 0;
-export const SND_ASYNC = 1;
-export const SND_NODEFAULT = 2;
-export const SND_MEMORY = 4;
-export const SND_LOOP = 8;
-export const SND_NOSTOP = 16;
-export const SND_NOWAIT = 8192;
-export const SND_ALIAS = 65536;
-export const SND_ALIAS_ID = 1114112;
-export const SND_FILENAME = 131072;
-export const SND_RESOURCE = 262148;
-export const SND_PURGE = 64;
-export const SND_APPLICATION = 128;
-export const SND_SENTRY = 524288;
 export const SND_RING = 1048576;
-export const SND_SYSTEM = 2097152;
 export const SND_ALIAS_START = 0;
 export const ACMDM_DRIVER_NOTIFY = 24577;
 export const ACMDM_DRIVER_DETAILS = 24586;
@@ -1601,6 +1598,21 @@ export const WAVE_FORMAT_DIRECT = 8;
 export const WAVE_FORMAT_DIRECT_QUERY = 9;
 export const WAVE_MAPPED_DEFAULT_COMMUNICATION_DEVICE = 16;
 export const MIDI_IO_STATUS = 32;
+export const SND_APPLICATION = 128;
+export const SND_ALIAS = 65536;
+export const SND_ALIAS_ID = 1114112;
+export const SND_FILENAME = 131072;
+export const SND_RESOURCE = 262148;
+export const SND_ASYNC = 1;
+export const SND_NODEFAULT = 2;
+export const SND_LOOP = 8;
+export const SND_MEMORY = 4;
+export const SND_NOSTOP = 16;
+export const SND_NOWAIT = 8192;
+export const SND_PURGE = 64;
+export const SND_SENTRY = 524288;
+export const SND_SYNC = 0;
+export const SND_SYSTEM = 2097152;
 export const MIXERLINE_COMPONENTTYPE_DST_DIGITAL = 1;
 export const MIXERLINE_COMPONENTTYPE_DST_HEADPHONES = 5;
 export const MIXERLINE_COMPONENTTYPE_DST_LINE = 2;
@@ -1621,8 +1633,16 @@ export const MIXERLINE_COMPONENTTYPE_SRC_SYNTHESIZER = 4100;
 export const MIXERLINE_COMPONENTTYPE_SRC_TELEPHONE = 4102;
 export const MIXERLINE_COMPONENTTYPE_SRC_UNDEFINED = 4096;
 export const MIXERLINE_COMPONENTTYPE_SRC_WAVEOUT = 4104;
-export const OATRUE = "-1";
+export const OATRUE = `-1`;
 export const OAFALSE = 0;
+export const MPEGLAYER3_FLAG_PADDING_ISO = 0;
+export const MPEGLAYER3_FLAG_PADDING_ON = 1;
+export const MPEGLAYER3_FLAG_PADDING_OFF = 2;
+export const ED_DEVCAP_TIMECODE_READ = 4121;
+export const ED_DEVCAP_ATN_READ = 5047;
+export const ED_DEVCAP_RTC_READ = 5050;
+export const MF_EVENT_FLAG_NONE = 0;
+export const MF_EVENT_FLAG_NO_WAIT = 1;
 export const AMMPEG2_DoPanScan = 1;
 export const AMMPEG2_DVDLine21Field1 = 2;
 export const AMMPEG2_DVDLine21Field2 = 4;
@@ -1633,18 +1653,10 @@ export const AMMPEG2_DSS_UserData = 64;
 export const AMMPEG2_DVB_UserData = 128;
 export const AMMPEG2_27MhzTimebase = 256;
 export const AMMPEG2_WidescreenAnalogOut = 512;
-export const MPEGLAYER3_FLAG_PADDING_ISO = 0;
-export const MPEGLAYER3_FLAG_PADDING_ON = 1;
-export const MPEGLAYER3_FLAG_PADDING_OFF = 2;
-export const ED_DEVCAP_TIMECODE_READ = 4121;
-export const ED_DEVCAP_ATN_READ = 5047;
-export const ED_DEVCAP_RTC_READ = 5050;
-export const MF_EVENT_FLAG_NONE = 0;
-export const MF_EVENT_FLAG_NO_WAIT = 1;
 export const MF_Plugin_Type_MFT = 0;
 export const MF_Plugin_Type_MediaSource = 1;
 export const MF_Plugin_Type_MFT_MatchOutputType = 2;
-export const MF_Plugin_Type_Other = "-1";
+export const MF_Plugin_Type_Other = `-1`;
 export const WM_CAP_START = 1024;
 export const MODM_USER = 16384;
 export const MIDM_USER = 16384;
@@ -3860,20 +3872,20 @@ export const ICERR_DONTDRAW = 1;
 export const ICERR_NEWPALETTE = 2;
 export const ICERR_GOTOKEYFRAME = 3;
 export const ICERR_STOPDRAWING = 4;
-export const ICERR_UNSUPPORTED = "-1";
-export const ICERR_BADFORMAT = "-2";
-export const ICERR_MEMORY = "-3";
-export const ICERR_INTERNAL = "-4";
-export const ICERR_BADFLAGS = "-5";
-export const ICERR_BADPARAM = "-6";
-export const ICERR_BADSIZE = "-7";
-export const ICERR_BADHANDLE = "-8";
-export const ICERR_CANTUPDATE = "-9";
-export const ICERR_ABORT = "-10";
-export const ICERR_ERROR = "-100";
-export const ICERR_BADBITDEPTH = "-200";
-export const ICERR_BADIMAGESIZE = "-201";
-export const ICERR_CUSTOM = "-400";
+export const ICERR_UNSUPPORTED = `-1`;
+export const ICERR_BADFORMAT = `-2`;
+export const ICERR_MEMORY = `-3`;
+export const ICERR_INTERNAL = `-4`;
+export const ICERR_BADFLAGS = `-5`;
+export const ICERR_BADPARAM = `-6`;
+export const ICERR_BADSIZE = `-7`;
+export const ICERR_BADHANDLE = `-8`;
+export const ICERR_CANTUPDATE = `-9`;
+export const ICERR_ABORT = `-10`;
+export const ICERR_ERROR = `-100`;
+export const ICERR_BADBITDEPTH = `-200`;
+export const ICERR_BADIMAGESIZE = `-201`;
+export const ICERR_CUSTOM = `-400`;
 export const ICMODE_COMPRESS = 1;
 export const ICMODE_DECOMPRESS = 2;
 export const ICMODE_FASTDECOMPRESS = 3;
@@ -3885,7 +3897,7 @@ export const ICMODE_INTERNALF_MASK = 32768;
 export const AVIIF_TWOCC = 2;
 export const ICQUALITY_LOW = 0;
 export const ICQUALITY_HIGH = 10000;
-export const ICQUALITY_DEFAULT = "-1";
+export const ICQUALITY_DEFAULT = `-1`;
 export const ICM_USER = 16384;
 export const ICM_RESERVED_LOW = 20480;
 export const ICM_RESERVED_HIGH = 24576;
@@ -3958,7 +3970,7 @@ export const ICSTATUS_STATUS = 1;
 export const ICSTATUS_END = 2;
 export const ICSTATUS_ERROR = 3;
 export const ICSTATUS_YIELD = 4;
-export const ICDECOMPRESS_HURRYUP = "-2147483648";
+export const ICDECOMPRESS_HURRYUP = `-2147483648`;
 export const ICDECOMPRESS_UPDATE = 1073741824;
 export const ICDECOMPRESS_PREROLL = 536870912;
 export const ICDECOMPRESS_NULLFRAME = 268435456;
@@ -3972,7 +3984,7 @@ export const ICDRAW_MEMORYDC = 32;
 export const ICDRAW_UPDATING = 64;
 export const ICDRAW_RENDER = 128;
 export const ICDRAW_BUFFER = 256;
-export const ICDRAW_HURRYUP = "-2147483648";
+export const ICDRAW_HURRYUP = `-2147483648`;
 export const ICDRAW_UPDATE = 1073741824;
 export const ICDRAW_PREROLL = 536870912;
 export const ICDRAW_NULLFRAME = 268435456;
@@ -4030,7 +4042,7 @@ export const AVICOMPRESSF_VALID = 8;
 export const AVIFILEHANDLER_CANREAD = 1;
 export const AVIFILEHANDLER_CANWRITE = 2;
 export const AVIFILEHANDLER_CANACCEPTNONRGB = 4;
-export const AVISTREAMREAD_CONVENIENT = "-1";
+export const AVISTREAMREAD_CONVENIENT = `-1`;
 export const FIND_DIR = 15;
 export const FIND_NEXT = 1;
 export const FIND_PREV = 4;
@@ -4051,6 +4063,7 @@ export const SEARCH_FORWARD = 1;
 export const SEARCH_KEY = 16;
 export const SEARCH_ANY = 32;
 export const AVIERR_OK = 0;
+export const MCIWND_WINDOW_CLASS = `MCIWndClass`;
 export const MCIWNDOPENF_NEW = 1;
 export const MCIWNDF_NOAUTOSIZEWINDOW = 1;
 export const MCIWNDF_NOPLAYBAR = 2;
@@ -4151,8 +4164,8 @@ export const MCIWNDM_NOTIFYPOS = 1225;
 export const MCIWNDM_NOTIFYSIZE = 1226;
 export const MCIWNDM_NOTIFYMEDIA = 1227;
 export const MCIWNDM_NOTIFYERROR = 1229;
-export const MCIWND_START = "-1";
-export const MCIWND_END = "-2";
+export const MCIWND_START = `-1`;
+export const MCIWND_END = `-2`;
 export const MCI_OPEN = 2051;
 export const MCI_CLOSE = 2052;
 export const MCI_PLAY = 2054;
@@ -4422,7 +4435,7 @@ export const JOY_BUTTON28 = 134217728;
 export const JOY_BUTTON29 = 268435456;
 export const JOY_BUTTON30 = 536870912;
 export const JOY_BUTTON31 = 1073741824;
-export const JOY_BUTTON32 = "-2147483648";
+export const JOY_BUTTON32 = `-2147483648`;
 export const JOY_POVFORWARD = 0;
 export const JOY_POVRIGHT = 9000;
 export const JOY_POVBACKWARD = 18000;
@@ -4472,6 +4485,8 @@ export const DRV_INSTALL = 9;
 export const DRV_REMOVE = 10;
 export const DRV_RESERVED = 2048;
 export const DRV_USER = 16384;
+export const DRIVERS_SECTION = `DRIVERS32`;
+export const MCI_SECTION = `MCI32`;
 export const DCB_NOSWITCH = 8;
 export const DCB_TYPEMASK = 7;
 export const DCB_NULL = 0;
@@ -4505,7 +4520,7 @@ export const DRVM_ADD_THRU = 257;
 export const DRVM_REMOVE_THRU = 258;
 export const DRVM_IOCTL_LAST = 261;
 export const DRVM_IOCTL_CMD_USER = 0;
-export const DRVM_IOCTL_CMD_SYSTEM = "-2147483648";
+export const DRVM_IOCTL_CMD_SYSTEM = `-2147483648`;
 export const VADMAD_Device_ID = 1092;
 export const WODM_INIT = 100;
 export const WIDM_INIT = 100;
@@ -4600,6 +4615,7 @@ export const TDD_GETSYSTEMTIME = 2056;
 export const TDD_GETDEVCAPS = 2060;
 export const TDD_BEGINMINPERIOD = 2064;
 export const TDD_ENDMINPERIOD = 2068;
+export const JOY_CONFIGCHANGED_MSGSTRING = `MSJSTICK_VJOYD_MSGSTR`;
 export const JDD_GETNUMDEVS = 2049;
 export const JDD_GETDEVCAPS = 2050;
 export const JDD_GETPOS = 2305;
@@ -5961,7 +5977,7 @@ export const NS_E_METADATA_NOT_AVAILABLE = 951063284777038554n;
 export const NS_E_METADATA_CACHE_DATA_NOT_AVAILABLE = 951064384288666331n;
 export const NS_E_METADATA_INVALID_DOCUMENT_TYPE = 951065483800294108n;
 export const NS_E_METADATA_IDENTIFIER_NOT_AVAILABLE = 951066583311921885n;
-export const NS_E_METADATA_CANNOT_RETRIEVE_FROM_OFFLINE_CACHE = 357361680986846;
+export const NS_E_METADATA_CANNOT_RETRIEVE_FROM_OFFLINE_CACHE = 6989679190036263646n;
 export const VFW_HIDE_SETTINGS_PAGE = 1;
 export const VFW_HIDE_VIDEOSRC_PAGE = 2;
 export const VFW_HIDE_CAMERACONTROL_PAGE = 4;
@@ -5969,6 +5985,8 @@ export const VFW_OEM_ADD_PAGE = 2147483648;
 export const VFW_USE_DEVICE_HANDLE = 1;
 export const VFW_USE_STREAM_HANDLE = 2;
 export const VFW_QUERY_DEV_CHANGED = 256;
+export const TARGET_DEVICE_FRIENDLY_NAME = `TargetDeviceFriendlyName`;
+export const TARGET_DEVICE_OPEN_EXCLUSIVELY = `TargetDeviceOpenExclusively`;
 export const MCIERR_INVALID_DEVICE_ID = 257;
 export const MCIERR_UNRECOGNIZED_KEYWORD = 259;
 export const MCIERR_UNRECOGNIZED_COMMAND = 261;
@@ -6395,7 +6413,7 @@ export const DAUD_CHAN14_VOICE_PRIORITY_OFFSET = 2;
 export const DAUD_CHAN15_VOICE_PRIORITY_OFFSET = 1;
 export const DAUD_CHAN16_VOICE_PRIORITY_OFFSET = 0;
 export const DMUS_VOLUME_MAX = 2000;
-export const DMUS_VOLUME_MIN = "-20000";
+export const DMUS_VOLUME_MIN = `-20000`;
 export const DMUS_EVENT_STRUCTURED = 1;
 export const DMUS_DOWNLOADINFO_INSTRUMENT = 1;
 export const DMUS_DOWNLOADINFO_WAVE = 2;
@@ -6438,7 +6456,7 @@ export const F_RGN_OPTION_SELFNONEXCLUSIVE = 1;
 export const WAVELINK_CHANNEL_LEFT = 1;
 export const WAVELINK_CHANNEL_RIGHT = 2;
 export const F_WAVELINK_PHASE_MASTER = 1;
-export const POOL_CUE_NULL = "-1";
+export const POOL_CUE_NULL = `-1`;
 export const F_WSMP_NO_TRUNCATION = 1;
 export const F_WSMP_NO_COMPRESSION = 2;
 export const WLOOP_TYPE_FORWARD = 0;
@@ -6489,6 +6507,7 @@ export const DLS_CDL_QUERY = 17;
 export const DLS_CDL_QUERYSUPPORTED = 18;
 export const WLOOP_TYPE_RELEASE = 2;
 export const F_WAVELINK_MULTICHANNEL = 2;
+export const REGSTR_PATH_SOFTWARESYNTHS = `Software\Microsoft\DirectMusic\SoftwareSynths`;
 export const REFRESH_F_LASTBUFFER = 1;
 export const DV_DVSD_NTSC_FRAMESIZE = 120000;
 export const DV_DVSD_PAL_FRAMESIZE = 144000;
@@ -6526,7 +6545,7 @@ export const DSFXCHORUS_WETDRYMIX_MIN = 0;
 export const DSFXCHORUS_WETDRYMIX_MAX = 100;
 export const DSFXCHORUS_DEPTH_MIN = 0;
 export const DSFXCHORUS_DEPTH_MAX = 100;
-export const DSFXCHORUS_FEEDBACK_MIN = "-99";
+export const DSFXCHORUS_FEEDBACK_MIN = `-99`;
 export const DSFXCHORUS_FEEDBACK_MAX = 99;
 export const DSFXCHORUS_FREQUENCY_MIN = 0;
 export const DSFXCHORUS_FREQUENCY_MAX = 10;
@@ -6549,7 +6568,7 @@ export const DSFXFLANGER_DEPTH_MIN = 0;
 export const DSFXFLANGER_DEPTH_MAX = 100;
 export const DSFXFLANGER_PHASE_MIN = 0;
 export const DSFXFLANGER_PHASE_MAX = 4;
-export const DSFXFLANGER_FEEDBACK_MIN = "-99";
+export const DSFXFLANGER_FEEDBACK_MIN = `-99`;
 export const DSFXFLANGER_FEEDBACK_MAX = 99;
 export const DSFXFLANGER_DELAY_MIN = 0;
 export const DSFXFLANGER_DELAY_MAX = 4;
@@ -6568,7 +6587,7 @@ export const DSFXECHO_RIGHTDELAY_MIN = 1;
 export const DSFXECHO_RIGHTDELAY_MAX = 2000;
 export const DSFXECHO_PANDELAY_MIN = 0;
 export const DSFXECHO_PANDELAY_MAX = 1;
-export const DSFXDISTORTION_GAIN_MIN = "-60";
+export const DSFXDISTORTION_GAIN_MIN = `-60`;
 export const DSFXDISTORTION_GAIN_MAX = 0;
 export const DSFXDISTORTION_EDGE_MIN = 0;
 export const DSFXDISTORTION_EDGE_MAX = 100;
@@ -6578,13 +6597,13 @@ export const DSFXDISTORTION_POSTEQBANDWIDTH_MIN = 100;
 export const DSFXDISTORTION_POSTEQBANDWIDTH_MAX = 8000;
 export const DSFXDISTORTION_PRELOWPASSCUTOFF_MIN = 100;
 export const DSFXDISTORTION_PRELOWPASSCUTOFF_MAX = 8000;
-export const DSFXCOMPRESSOR_GAIN_MIN = "-60";
+export const DSFXCOMPRESSOR_GAIN_MIN = `-60`;
 export const DSFXCOMPRESSOR_GAIN_MAX = 60;
-export const DSFXCOMPRESSOR_ATTACK_MIN = "0.009999999776482582";
+export const DSFXCOMPRESSOR_ATTACK_MIN = `0.009999999776482582`;
 export const DSFXCOMPRESSOR_ATTACK_MAX = 500;
 export const DSFXCOMPRESSOR_RELEASE_MIN = 50;
 export const DSFXCOMPRESSOR_RELEASE_MAX = 3000;
-export const DSFXCOMPRESSOR_THRESHOLD_MIN = "-60";
+export const DSFXCOMPRESSOR_THRESHOLD_MIN = `-60`;
 export const DSFXCOMPRESSOR_THRESHOLD_MAX = 0;
 export const DSFXCOMPRESSOR_RATIO_MIN = 1;
 export const DSFXCOMPRESSOR_RATIO_MAX = 100;
@@ -6594,35 +6613,35 @@ export const DSFXPARAMEQ_CENTER_MIN = 80;
 export const DSFXPARAMEQ_CENTER_MAX = 16000;
 export const DSFXPARAMEQ_BANDWIDTH_MIN = 1;
 export const DSFXPARAMEQ_BANDWIDTH_MAX = 36;
-export const DSFXPARAMEQ_GAIN_MIN = "-15";
+export const DSFXPARAMEQ_GAIN_MIN = `-15`;
 export const DSFXPARAMEQ_GAIN_MAX = 15;
-export const DSFX_I3DL2REVERB_ROOM_MIN = "-10000";
+export const DSFX_I3DL2REVERB_ROOM_MIN = `-10000`;
 export const DSFX_I3DL2REVERB_ROOM_MAX = 0;
-export const DSFX_I3DL2REVERB_ROOM_DEFAULT = "-1000";
-export const DSFX_I3DL2REVERB_ROOMHF_MIN = "-10000";
+export const DSFX_I3DL2REVERB_ROOM_DEFAULT = `-1000`;
+export const DSFX_I3DL2REVERB_ROOMHF_MIN = `-10000`;
 export const DSFX_I3DL2REVERB_ROOMHF_MAX = 0;
-export const DSFX_I3DL2REVERB_ROOMHF_DEFAULT = "-100";
+export const DSFX_I3DL2REVERB_ROOMHF_DEFAULT = `-100`;
 export const DSFX_I3DL2REVERB_ROOMROLLOFFFACTOR_MIN = 0;
 export const DSFX_I3DL2REVERB_ROOMROLLOFFFACTOR_MAX = 10;
 export const DSFX_I3DL2REVERB_ROOMROLLOFFFACTOR_DEFAULT = 0;
-export const DSFX_I3DL2REVERB_DECAYTIME_MIN = "0.10000000149011612";
+export const DSFX_I3DL2REVERB_DECAYTIME_MIN = `0.10000000149011612`;
 export const DSFX_I3DL2REVERB_DECAYTIME_MAX = 20;
-export const DSFX_I3DL2REVERB_DECAYTIME_DEFAULT = "1.4900000095367432";
-export const DSFX_I3DL2REVERB_DECAYHFRATIO_MIN = "0.10000000149011612";
+export const DSFX_I3DL2REVERB_DECAYTIME_DEFAULT = `1.4900000095367432`;
+export const DSFX_I3DL2REVERB_DECAYHFRATIO_MIN = `0.10000000149011612`;
 export const DSFX_I3DL2REVERB_DECAYHFRATIO_MAX = 2;
-export const DSFX_I3DL2REVERB_DECAYHFRATIO_DEFAULT = "0.8299999833106995";
-export const DSFX_I3DL2REVERB_REFLECTIONS_MIN = "-10000";
+export const DSFX_I3DL2REVERB_DECAYHFRATIO_DEFAULT = `0.8299999833106995`;
+export const DSFX_I3DL2REVERB_REFLECTIONS_MIN = `-10000`;
 export const DSFX_I3DL2REVERB_REFLECTIONS_MAX = 1000;
-export const DSFX_I3DL2REVERB_REFLECTIONS_DEFAULT = "-2602";
+export const DSFX_I3DL2REVERB_REFLECTIONS_DEFAULT = `-2602`;
 export const DSFX_I3DL2REVERB_REFLECTIONSDELAY_MIN = 0;
-export const DSFX_I3DL2REVERB_REFLECTIONSDELAY_MAX = "0.30000001192092896";
-export const DSFX_I3DL2REVERB_REFLECTIONSDELAY_DEFAULT = "0.007000000216066837";
-export const DSFX_I3DL2REVERB_REVERB_MIN = "-10000";
+export const DSFX_I3DL2REVERB_REFLECTIONSDELAY_MAX = `0.30000001192092896`;
+export const DSFX_I3DL2REVERB_REFLECTIONSDELAY_DEFAULT = `0.007000000216066837`;
+export const DSFX_I3DL2REVERB_REVERB_MIN = `-10000`;
 export const DSFX_I3DL2REVERB_REVERB_MAX = 2000;
 export const DSFX_I3DL2REVERB_REVERB_DEFAULT = 200;
 export const DSFX_I3DL2REVERB_REVERBDELAY_MIN = 0;
-export const DSFX_I3DL2REVERB_REVERBDELAY_MAX = "0.10000000149011612";
-export const DSFX_I3DL2REVERB_REVERBDELAY_DEFAULT = "0.010999999940395355";
+export const DSFX_I3DL2REVERB_REVERBDELAY_MAX = `0.10000000149011612`;
+export const DSFX_I3DL2REVERB_REVERBDELAY_DEFAULT = `0.010999999940395355`;
 export const DSFX_I3DL2REVERB_DIFFUSION_MIN = 0;
 export const DSFX_I3DL2REVERB_DIFFUSION_MAX = 100;
 export const DSFX_I3DL2REVERB_DIFFUSION_DEFAULT = 100;
@@ -6635,18 +6654,18 @@ export const DSFX_I3DL2REVERB_HFREFERENCE_DEFAULT = 5000;
 export const DSFX_I3DL2REVERB_QUALITY_MIN = 0;
 export const DSFX_I3DL2REVERB_QUALITY_MAX = 3;
 export const DSFX_I3DL2REVERB_QUALITY_DEFAULT = 2;
-export const DSFX_WAVESREVERB_INGAIN_MIN = "-96";
+export const DSFX_WAVESREVERB_INGAIN_MIN = `-96`;
 export const DSFX_WAVESREVERB_INGAIN_MAX = 0;
 export const DSFX_WAVESREVERB_INGAIN_DEFAULT = 0;
-export const DSFX_WAVESREVERB_REVERBMIX_MIN = "-96";
+export const DSFX_WAVESREVERB_REVERBMIX_MIN = `-96`;
 export const DSFX_WAVESREVERB_REVERBMIX_MAX = 0;
 export const DSFX_WAVESREVERB_REVERBMIX_DEFAULT = 0;
-export const DSFX_WAVESREVERB_REVERBTIME_MIN = "0.0010000000474974513";
+export const DSFX_WAVESREVERB_REVERBTIME_MIN = `0.0010000000474974513`;
 export const DSFX_WAVESREVERB_REVERBTIME_MAX = 3000;
 export const DSFX_WAVESREVERB_REVERBTIME_DEFAULT = 1000;
-export const DSFX_WAVESREVERB_HIGHFREQRTRATIO_MIN = "0.0010000000474974513";
-export const DSFX_WAVESREVERB_HIGHFREQRTRATIO_MAX = "0.9990000128746033";
-export const DSFX_WAVESREVERB_HIGHFREQRTRATIO_DEFAULT = "0.0010000000474974513";
+export const DSFX_WAVESREVERB_HIGHFREQRTRATIO_MIN = `0.0010000000474974513`;
+export const DSFX_WAVESREVERB_HIGHFREQRTRATIO_MAX = `0.9990000128746033`;
+export const DSFX_WAVESREVERB_HIGHFREQRTRATIO_DEFAULT = `0.0010000000474974513`;
 export const DSCFX_AEC_MODE_PASS_THROUGH = 0;
 export const DSCFX_AEC_MODE_HALF_DUPLEX = 1;
 export const DSCFX_AEC_MODE_FULL_DUPLEX = 2;
@@ -6719,10 +6738,10 @@ export const DSBLOCK_ENTIREBUFFER = 2;
 export const DSBFREQUENCY_ORIGINAL = 0;
 export const DSBFREQUENCY_MIN = 100;
 export const DSBFREQUENCY_MAX = 200000;
-export const DSBPAN_LEFT = "-10000";
+export const DSBPAN_LEFT = `-10000`;
 export const DSBPAN_CENTER = 0;
 export const DSBPAN_RIGHT = 10000;
-export const DSBVOLUME_MIN = "-10000";
+export const DSBVOLUME_MIN = `-10000`;
 export const DSBVOLUME_MAX = 0;
 export const DSBSIZE_MIN = 4;
 export const DSBSIZE_MAX = 268435455;
@@ -6811,10 +6830,10 @@ export const FXEQ_DEFAULT_FREQUENCY_CENTER_0 = 100;
 export const FXEQ_DEFAULT_FREQUENCY_CENTER_1 = 800;
 export const FXEQ_DEFAULT_FREQUENCY_CENTER_2 = 2000;
 export const FXEQ_DEFAULT_FREQUENCY_CENTER_3 = 10000;
-export const FXEQ_MIN_GAIN = "0.12600000202655792";
-export const FXEQ_MAX_GAIN = "7.940000057220459";
+export const FXEQ_MIN_GAIN = `0.12600000202655792`;
+export const FXEQ_MAX_GAIN = `7.940000057220459`;
 export const FXEQ_DEFAULT_GAIN = 1;
-export const FXEQ_MIN_BANDWIDTH = "0.10000000149011612";
+export const FXEQ_MIN_BANDWIDTH = `0.10000000149011612`;
 export const FXEQ_MAX_BANDWIDTH = 2;
 export const FXEQ_DEFAULT_BANDWIDTH = 1;
 export const FXMASTERINGLIMITER_MIN_RELEASE = 1;
@@ -6825,21 +6844,27 @@ export const FXMASTERINGLIMITER_MAX_LOUDNESS = 1800;
 export const FXMASTERINGLIMITER_DEFAULT_LOUDNESS = 1000;
 export const FXREVERB_MIN_DIFFUSION = 0;
 export const FXREVERB_MAX_DIFFUSION = 1;
-export const FXREVERB_DEFAULT_DIFFUSION = "0.8999999761581421";
-export const FXREVERB_MIN_ROOMSIZE = "0.00009999999747378752";
+export const FXREVERB_DEFAULT_DIFFUSION = `0.8999999761581421`;
+export const FXREVERB_MIN_ROOMSIZE = `0.00009999999747378752`;
 export const FXREVERB_MAX_ROOMSIZE = 1;
-export const FXREVERB_DEFAULT_ROOMSIZE = "0.6000000238418579";
+export const FXREVERB_DEFAULT_ROOMSIZE = `0.6000000238418579`;
 export const FXLOUDNESS_DEFAULT_MOMENTARY_MS = 400;
 export const FXLOUDNESS_DEFAULT_SHORTTERM_MS = 3000;
 export const FXECHO_MIN_WETDRYMIX = 0;
 export const FXECHO_MAX_WETDRYMIX = 1;
-export const FXECHO_DEFAULT_WETDRYMIX = "0.5";
+export const FXECHO_DEFAULT_WETDRYMIX = `0.5`;
 export const FXECHO_MIN_FEEDBACK = 0;
 export const FXECHO_MAX_FEEDBACK = 1;
-export const FXECHO_DEFAULT_FEEDBACK = "0.5";
+export const FXECHO_DEFAULT_FEEDBACK = `0.5`;
 export const FXECHO_MIN_DELAY = 1;
 export const FXECHO_MAX_DELAY = 2000;
 export const FXECHO_DEFAULT_DELAY = 500;
+export const XAUDIO2_DLL_A = `xaudio2_9.dll`;
+export const XAUDIO2_DLL_W = `xaudio2_9.dll`;
+export const XAUDIO2D_DLL_A = `xaudio2_9d.dll`;
+export const XAUDIO2D_DLL_W = `xaudio2_9d.dll`;
+export const XAUDIO2_DLL = `xaudio2_9.dll`;
+export const XAUDIO2D_DLL = `xaudio2_9d.dll`;
 export const XAUDIO2_MAX_BUFFER_BYTES = 2147483648;
 export const XAUDIO2_MAX_QUEUED_BUFFERS = 64;
 export const XAUDIO2_MAX_BUFFERS_SYSTEM = 2;
@@ -6849,7 +6874,7 @@ export const XAUDIO2_MAX_SAMPLE_RATE = 200000;
 export const XAUDIO2_MAX_VOLUME_LEVEL = 16777216;
 export const XAUDIO2_MAX_FREQ_RATIO = 1024;
 export const XAUDIO2_DEFAULT_FREQ_RATIO = 2;
-export const XAUDIO2_MAX_FILTER_ONEOVERQ = "1.5";
+export const XAUDIO2_MAX_FILTER_ONEOVERQ = `1.5`;
 export const XAUDIO2_MAX_FILTER_FREQUENCY = 1;
 export const XAUDIO2_MAX_LOOP_COUNT = 254;
 export const XAUDIO2_MAX_INSTANCES = 8;
@@ -6941,11 +6966,11 @@ export const XAUDIO2FX_REVERB_MIN_LOW_EQ_CUTOFF = 0;
 export const XAUDIO2FX_REVERB_MIN_HIGH_EQ_GAIN = 0;
 export const XAUDIO2FX_REVERB_MIN_HIGH_EQ_CUTOFF = 0;
 export const XAUDIO2FX_REVERB_MIN_ROOM_FILTER_FREQ = 20;
-export const XAUDIO2FX_REVERB_MIN_ROOM_FILTER_MAIN = "-100";
-export const XAUDIO2FX_REVERB_MIN_ROOM_FILTER_HF = "-100";
-export const XAUDIO2FX_REVERB_MIN_REFLECTIONS_GAIN = "-100";
-export const XAUDIO2FX_REVERB_MIN_REVERB_GAIN = "-100";
-export const XAUDIO2FX_REVERB_MIN_DECAY_TIME = "0.10000000149011612";
+export const XAUDIO2FX_REVERB_MIN_ROOM_FILTER_MAIN = `-100`;
+export const XAUDIO2FX_REVERB_MIN_ROOM_FILTER_HF = `-100`;
+export const XAUDIO2FX_REVERB_MIN_REFLECTIONS_GAIN = `-100`;
+export const XAUDIO2FX_REVERB_MIN_REVERB_GAIN = `-100`;
+export const XAUDIO2FX_REVERB_MIN_DECAY_TIME = `0.10000000149011612`;
 export const XAUDIO2FX_REVERB_MIN_DENSITY = 0;
 export const XAUDIO2FX_REVERB_MIN_ROOM_SIZE = 0;
 export const XAUDIO2FX_REVERB_MAX_WET_DRY_MIX = 100;
@@ -6991,8 +7016,8 @@ export const XAUDIO2FX_REVERB_DEFAULT_DENSITY = 100;
 export const XAUDIO2FX_REVERB_DEFAULT_ROOM_SIZE = 100;
 export const XAUDIO2FX_REVERB_DEFAULT_DISABLE_LATE_FIELD = 0;
 export const HRTF_MAX_GAIN_LIMIT = 12;
-export const HRTF_MIN_GAIN_LIMIT = "-96";
-export const HRTF_MIN_UNITY_GAIN_DISTANCE = "0.05000000074505806";
+export const HRTF_MIN_GAIN_LIMIT = `-96`;
+export const HRTF_MIN_UNITY_GAIN_DISTANCE = `0.05000000074505806`;
 export const HRTF_DEFAULT_UNITY_GAIN_DISTANCE = 1;
 export const FACILITY_XAPO = 2199;
 export const XAPO_E_FORMAT_UNSUPPORTED = 5264667301937348609n;
@@ -7009,9 +7034,9 @@ export const XAPO_FLAG_INPLACE_REQUIRED = 32;
 export const XAPO_FLAG_INPLACE_SUPPORTED = 16;
 export const SPEAKER_MONO = 4;
 export const X3DAUDIO_HANDLE_BYTESIZE = 20;
-export const X3DAUDIO_PI = "3.1415927410125732";
-export const X3DAUDIO_2PI = "6.2831854820251465";
-export const X3DAUDIO_SPEED_OF_SOUND = "343.5";
+export const X3DAUDIO_PI = `3.1415927410125732`;
+export const X3DAUDIO_2PI = `6.2831854820251465`;
+export const X3DAUDIO_SPEED_OF_SOUND = `343.5`;
 export const X3DAUDIO_CALCULATE_MATRIX = 1;
 export const X3DAUDIO_CALCULATE_DELAY = 2;
 export const X3DAUDIO_CALCULATE_LPF_DIRECT = 4;
@@ -7136,27 +7161,27 @@ export const WMDMID_LENGTH = 128;
 export const WMDM_MAC_LENGTH = 8;
 export const WMDM_S_NOT_ALL_PROPERTIES_APPLIED = 282625;
 export const WMDM_S_NOT_ALL_PROPERTIES_RETRIEVED = 282626;
-export const WMDM_E_BUSY = "-2147201024";
-export const WMDM_E_INTERFACEDEAD = "-2147201023";
-export const WMDM_E_INVALIDTYPE = "-2147201022";
-export const WMDM_E_PROCESSFAILED = "-2147201021";
-export const WMDM_E_NOTSUPPORTED = "-2147201020";
-export const WMDM_E_NOTCERTIFIED = "-2147201019";
-export const WMDM_E_NORIGHTS = "-2147201018";
-export const WMDM_E_CALL_OUT_OF_SEQUENCE = "-2147201017";
-export const WMDM_E_BUFFERTOOSMALL = "-2147201016";
-export const WMDM_E_MOREDATA = "-2147201015";
-export const WMDM_E_MAC_CHECK_FAILED = "-2147201014";
-export const WMDM_E_USER_CANCELLED = "-2147201013";
-export const WMDM_E_SDMI_TRIGGER = "-2147201012";
-export const WMDM_E_SDMI_NOMORECOPIES = "-2147201011";
-export const WMDM_E_REVOKED = "-2147201010";
-export const WMDM_E_LICENSE_NOTEXIST = "-2147201009";
-export const WMDM_E_INCORRECT_APPSEC = "-2147201008";
-export const WMDM_E_INCORRECT_RIGHTS = "-2147201007";
-export const WMDM_E_LICENSE_EXPIRED = "-2147201006";
-export const WMDM_E_CANTOPEN_PMSN_SERVICE_PIPE = "-2147201005";
-export const WMDM_E_TOO_MANY_SESSIONS = "-2147201005";
+export const WMDM_E_BUSY = `-2147201024`;
+export const WMDM_E_INTERFACEDEAD = `-2147201023`;
+export const WMDM_E_INVALIDTYPE = `-2147201022`;
+export const WMDM_E_PROCESSFAILED = `-2147201021`;
+export const WMDM_E_NOTSUPPORTED = `-2147201020`;
+export const WMDM_E_NOTCERTIFIED = `-2147201019`;
+export const WMDM_E_NORIGHTS = `-2147201018`;
+export const WMDM_E_CALL_OUT_OF_SEQUENCE = `-2147201017`;
+export const WMDM_E_BUFFERTOOSMALL = `-2147201016`;
+export const WMDM_E_MOREDATA = `-2147201015`;
+export const WMDM_E_MAC_CHECK_FAILED = `-2147201014`;
+export const WMDM_E_USER_CANCELLED = `-2147201013`;
+export const WMDM_E_SDMI_TRIGGER = `-2147201012`;
+export const WMDM_E_SDMI_NOMORECOPIES = `-2147201011`;
+export const WMDM_E_REVOKED = `-2147201010`;
+export const WMDM_E_LICENSE_NOTEXIST = `-2147201009`;
+export const WMDM_E_INCORRECT_APPSEC = `-2147201008`;
+export const WMDM_E_INCORRECT_RIGHTS = `-2147201007`;
+export const WMDM_E_LICENSE_EXPIRED = `-2147201006`;
+export const WMDM_E_CANTOPEN_PMSN_SERVICE_PIPE = `-2147201005`;
+export const WMDM_E_TOO_MANY_SESSIONS = `-2147201005`;
 export const WMDM_WMDM_REVOKED = 1;
 export const WMDM_APP_REVOKED = 2;
 export const WMDM_SP_REVOKED = 4;
@@ -7291,102 +7316,102 @@ export const WMDM_LOG_SEV_INFO = 1;
 export const WMDM_LOG_SEV_WARN = 2;
 export const WMDM_LOG_SEV_ERROR = 4;
 export const WMDM_LOG_NOTIMESTAMP = 16;
-export const g_wszWMDMFileName = "WMDM/FileName";
-export const g_wszWMDMFormatCode = "WMDM/FormatCode";
-export const g_wszWMDMLastModifiedDate = "WMDM/LastModifiedDate";
-export const g_wszWMDMFileCreationDate = "WMDM/FileCreationDate";
-export const g_wszWMDMFileSize = "WMDM/FileSize";
-export const g_wszWMDMFileAttributes = "WMDM/FileAttributes";
-export const g_wszAudioWAVECodec = "WMDM/AudioWAVECodec";
-export const g_wszVideoFourCCCodec = "WMDM/VideoFourCCCodec";
-export const g_wszWMDMTitle = "WMDM/Title";
-export const g_wszWMDMAuthor = "WMDM/Author";
-export const g_wszWMDMDescription = "WMDM/Description";
-export const g_wszWMDMIsProtected = "WMDM/IsProtected";
-export const g_wszWMDMAlbumTitle = "WMDM/AlbumTitle";
-export const g_wszWMDMAlbumArtist = "WMDM/AlbumArtist";
-export const g_wszWMDMTrack = "WMDM/Track";
-export const g_wszWMDMGenre = "WMDM/Genre";
-export const g_wszWMDMTrackMood = "WMDM/TrackMood";
-export const g_wszWMDMAlbumCoverFormat = "WMDM/AlbumCoverFormat";
-export const g_wszWMDMAlbumCoverSize = "WMDM/AlbumCoverSize";
-export const g_wszWMDMAlbumCoverHeight = "WMDM/AlbumCoverHeight";
-export const g_wszWMDMAlbumCoverWidth = "WMDM/AlbumCoverWidth";
-export const g_wszWMDMAlbumCoverDuration = "WMDM/AlbumCoverDuration";
-export const g_wszWMDMAlbumCoverData = "WMDM/AlbumCoverData";
-export const g_wszWMDMYear = "WMDM/Year";
-export const g_wszWMDMComposer = "WMDM/Composer";
-export const g_wszWMDMCodec = "WMDM/Codec";
-export const g_wszWMDMDRMId = "WMDM/DRMId";
-export const g_wszWMDMBitrate = "WMDM/Bitrate";
-export const g_wszWMDMBitRateType = "WMDM/BitRateType";
-export const g_wszWMDMSampleRate = "WMDM/SampleRate";
-export const g_wszWMDMNumChannels = "WMDM/NumChannels";
-export const g_wszWMDMBlockAlignment = "WMDM/BlockAlignment";
-export const g_wszWMDMAudioBitDepth = "WMDM/AudioBitDepth";
-export const g_wszWMDMTotalBitrate = "WMDM/TotalBitrate";
-export const g_wszWMDMVideoBitrate = "WMDM/VideoBitrate";
-export const g_wszWMDMFrameRate = "WMDM/FrameRate";
-export const g_wszWMDMScanType = "WMDM/ScanType";
-export const g_wszWMDMKeyFrameDistance = "WMDM/KeyFrameDistance";
-export const g_wszWMDMBufferSize = "WMDM/BufferSize";
-export const g_wszWMDMQualitySetting = "WMDM/QualitySetting";
-export const g_wszWMDMEncodingProfile = "WMDM/EncodingProfile";
-export const g_wszWMDMDuration = "WMDM/Duration";
-export const g_wszWMDMAlbumArt = "WMDM/AlbumArt";
-export const g_wszWMDMBuyNow = "WMDM/BuyNow";
-export const g_wszWMDMNonConsumable = "WMDM/NonConsumable";
-export const g_wszWMDMediaClassPrimaryID = "WMDM/MediaClassPrimaryID";
-export const g_wszWMDMMediaClassSecondaryID = "WMDM/MediaClassSecondaryID";
-export const g_wszWMDMUserEffectiveRating = "WMDM/UserEffectiveRating";
-export const g_wszWMDMUserRating = "WMDM/UserRating";
-export const g_wszWMDMUserRatingOnDevice = "WMDM/UserRatingOnDevice";
-export const g_wszWMDMPlayCount = "WMDM/PlayCount";
-export const g_wszWMDMDevicePlayCount = "WMDM/DevicePlayCount";
-export const g_wszWMDMAuthorDate = "WMDM/AuthorDate";
-export const g_wszWMDMUserLastPlayTime = "WMDM/UserLastPlayTime";
-export const g_wszWMDMSubTitle = "WMDM/SubTitle";
-export const g_wszWMDMSubTitleDescription = "WMDM/SubTitleDescription";
-export const g_wszWMDMMediaCredits = "WMDM/MediaCredits";
-export const g_wszWMDMMediaStationName = "WMDM/MediaStationName";
-export const g_wszWMDMMediaOriginalChannel = "WMDM/MediaOriginalChannel";
-export const g_wszWMDMMediaOriginalBroadcastDateTime = "WMDM/MediaOriginalBroadcastDateTime";
-export const g_wszWMDMProviderCopyright = "WMDM/ProviderCopyright";
-export const g_wszWMDMSyncID = "WMDM/SyncID";
-export const g_wszWMDMPersistentUniqueID = "WMDM/PersistentUniqueID";
-export const g_wszWMDMWidth = "WMDM/Width";
-export const g_wszWMDMHeight = "WMDM/Height";
-export const g_wszWMDMSyncTime = "WMDM/SyncTime";
-export const g_wszWMDMParentalRating = "WMDM/ParentalRating";
-export const g_wszWMDMMetaGenre = "WMDM/MetaGenre";
-export const g_wszWMDMIsRepeat = "WMDM/IsRepeat";
-export const g_wszWMDMSupportedDeviceProperties = "WMDM/SupportedDeviceProperties";
-export const g_wszWMDMDeviceFriendlyName = "WMDM/DeviceFriendlyName";
-export const g_wszWMDMFormatsSupported = "WMDM/FormatsSupported";
-export const g_wszWMDMFormatsSupportedAreOrdered = "WMDM/FormatsSupportedAreOrdered";
-export const g_wszWMDMSyncRelationshipID = "WMDM/SyncRelationshipID";
-export const g_wszWMDMDeviceModelName = "WMDM/DeviceModelName";
-export const g_wszWMDMDeviceFirmwareVersion = "WMDM/DeviceFirmwareVersion";
-export const g_wszWMDMDeviceVendorExtension = "WMDM/DeviceVendorExtension";
-export const g_wszWMDMDeviceProtocol = "WMDM/DeviceProtocol";
-export const g_wszWMDMDeviceServiceProviderVendor = "WMDM/DeviceServiceProviderVendor";
-export const g_wszWMDMDeviceRevocationInfo = "WMDM/DeviceRevocationInfo";
-export const g_wszWMDMCollectionID = "WMDM/CollectionID";
-export const g_wszWMDMOwner = "WMDM/Owner";
-export const g_wszWMDMEditor = "WMDM/Editor";
-export const g_wszWMDMWebmaster = "WMDM/Webmaster";
-export const g_wszWMDMSourceURL = "WMDM/SourceURL";
-export const g_wszWMDMDestinationURL = "WMDM/DestinationURL";
-export const g_wszWMDMCategory = "WMDM/Category";
-export const g_wszWMDMTimeBookmark = "WMDM/TimeBookmark";
-export const g_wszWMDMObjectBookmark = "WMDM/ObjectBookmark";
-export const g_wszWMDMByteBookmark = "WMDM/ByteBookmark";
-export const g_wszWMDMDataOffset = "WMDM/DataOffset";
-export const g_wszWMDMDataLength = "WMDM/DataLength";
-export const g_wszWMDMDataUnits = "WMDM/DataUnits";
-export const g_wszWMDMTimeToLive = "WMDM/TimeToLive";
-export const g_wszWMDMMediaGuid = "WMDM/MediaGuid";
-export const g_wszWPDPassthroughPropertyValues = "WPD/PassthroughPropertyValues";
+export const g_wszWMDMFileName = `WMDM/FileName`;
+export const g_wszWMDMFormatCode = `WMDM/FormatCode`;
+export const g_wszWMDMLastModifiedDate = `WMDM/LastModifiedDate`;
+export const g_wszWMDMFileCreationDate = `WMDM/FileCreationDate`;
+export const g_wszWMDMFileSize = `WMDM/FileSize`;
+export const g_wszWMDMFileAttributes = `WMDM/FileAttributes`;
+export const g_wszAudioWAVECodec = `WMDM/AudioWAVECodec`;
+export const g_wszVideoFourCCCodec = `WMDM/VideoFourCCCodec`;
+export const g_wszWMDMTitle = `WMDM/Title`;
+export const g_wszWMDMAuthor = `WMDM/Author`;
+export const g_wszWMDMDescription = `WMDM/Description`;
+export const g_wszWMDMIsProtected = `WMDM/IsProtected`;
+export const g_wszWMDMAlbumTitle = `WMDM/AlbumTitle`;
+export const g_wszWMDMAlbumArtist = `WMDM/AlbumArtist`;
+export const g_wszWMDMTrack = `WMDM/Track`;
+export const g_wszWMDMGenre = `WMDM/Genre`;
+export const g_wszWMDMTrackMood = `WMDM/TrackMood`;
+export const g_wszWMDMAlbumCoverFormat = `WMDM/AlbumCoverFormat`;
+export const g_wszWMDMAlbumCoverSize = `WMDM/AlbumCoverSize`;
+export const g_wszWMDMAlbumCoverHeight = `WMDM/AlbumCoverHeight`;
+export const g_wszWMDMAlbumCoverWidth = `WMDM/AlbumCoverWidth`;
+export const g_wszWMDMAlbumCoverDuration = `WMDM/AlbumCoverDuration`;
+export const g_wszWMDMAlbumCoverData = `WMDM/AlbumCoverData`;
+export const g_wszWMDMYear = `WMDM/Year`;
+export const g_wszWMDMComposer = `WMDM/Composer`;
+export const g_wszWMDMCodec = `WMDM/Codec`;
+export const g_wszWMDMDRMId = `WMDM/DRMId`;
+export const g_wszWMDMBitrate = `WMDM/Bitrate`;
+export const g_wszWMDMBitRateType = `WMDM/BitRateType`;
+export const g_wszWMDMSampleRate = `WMDM/SampleRate`;
+export const g_wszWMDMNumChannels = `WMDM/NumChannels`;
+export const g_wszWMDMBlockAlignment = `WMDM/BlockAlignment`;
+export const g_wszWMDMAudioBitDepth = `WMDM/AudioBitDepth`;
+export const g_wszWMDMTotalBitrate = `WMDM/TotalBitrate`;
+export const g_wszWMDMVideoBitrate = `WMDM/VideoBitrate`;
+export const g_wszWMDMFrameRate = `WMDM/FrameRate`;
+export const g_wszWMDMScanType = `WMDM/ScanType`;
+export const g_wszWMDMKeyFrameDistance = `WMDM/KeyFrameDistance`;
+export const g_wszWMDMBufferSize = `WMDM/BufferSize`;
+export const g_wszWMDMQualitySetting = `WMDM/QualitySetting`;
+export const g_wszWMDMEncodingProfile = `WMDM/EncodingProfile`;
+export const g_wszWMDMDuration = `WMDM/Duration`;
+export const g_wszWMDMAlbumArt = `WMDM/AlbumArt`;
+export const g_wszWMDMBuyNow = `WMDM/BuyNow`;
+export const g_wszWMDMNonConsumable = `WMDM/NonConsumable`;
+export const g_wszWMDMediaClassPrimaryID = `WMDM/MediaClassPrimaryID`;
+export const g_wszWMDMMediaClassSecondaryID = `WMDM/MediaClassSecondaryID`;
+export const g_wszWMDMUserEffectiveRating = `WMDM/UserEffectiveRating`;
+export const g_wszWMDMUserRating = `WMDM/UserRating`;
+export const g_wszWMDMUserRatingOnDevice = `WMDM/UserRatingOnDevice`;
+export const g_wszWMDMPlayCount = `WMDM/PlayCount`;
+export const g_wszWMDMDevicePlayCount = `WMDM/DevicePlayCount`;
+export const g_wszWMDMAuthorDate = `WMDM/AuthorDate`;
+export const g_wszWMDMUserLastPlayTime = `WMDM/UserLastPlayTime`;
+export const g_wszWMDMSubTitle = `WMDM/SubTitle`;
+export const g_wszWMDMSubTitleDescription = `WMDM/SubTitleDescription`;
+export const g_wszWMDMMediaCredits = `WMDM/MediaCredits`;
+export const g_wszWMDMMediaStationName = `WMDM/MediaStationName`;
+export const g_wszWMDMMediaOriginalChannel = `WMDM/MediaOriginalChannel`;
+export const g_wszWMDMMediaOriginalBroadcastDateTime = `WMDM/MediaOriginalBroadcastDateTime`;
+export const g_wszWMDMProviderCopyright = `WMDM/ProviderCopyright`;
+export const g_wszWMDMSyncID = `WMDM/SyncID`;
+export const g_wszWMDMPersistentUniqueID = `WMDM/PersistentUniqueID`;
+export const g_wszWMDMWidth = `WMDM/Width`;
+export const g_wszWMDMHeight = `WMDM/Height`;
+export const g_wszWMDMSyncTime = `WMDM/SyncTime`;
+export const g_wszWMDMParentalRating = `WMDM/ParentalRating`;
+export const g_wszWMDMMetaGenre = `WMDM/MetaGenre`;
+export const g_wszWMDMIsRepeat = `WMDM/IsRepeat`;
+export const g_wszWMDMSupportedDeviceProperties = `WMDM/SupportedDeviceProperties`;
+export const g_wszWMDMDeviceFriendlyName = `WMDM/DeviceFriendlyName`;
+export const g_wszWMDMFormatsSupported = `WMDM/FormatsSupported`;
+export const g_wszWMDMFormatsSupportedAreOrdered = `WMDM/FormatsSupportedAreOrdered`;
+export const g_wszWMDMSyncRelationshipID = `WMDM/SyncRelationshipID`;
+export const g_wszWMDMDeviceModelName = `WMDM/DeviceModelName`;
+export const g_wszWMDMDeviceFirmwareVersion = `WMDM/DeviceFirmwareVersion`;
+export const g_wszWMDMDeviceVendorExtension = `WMDM/DeviceVendorExtension`;
+export const g_wszWMDMDeviceProtocol = `WMDM/DeviceProtocol`;
+export const g_wszWMDMDeviceServiceProviderVendor = `WMDM/DeviceServiceProviderVendor`;
+export const g_wszWMDMDeviceRevocationInfo = `WMDM/DeviceRevocationInfo`;
+export const g_wszWMDMCollectionID = `WMDM/CollectionID`;
+export const g_wszWMDMOwner = `WMDM/Owner`;
+export const g_wszWMDMEditor = `WMDM/Editor`;
+export const g_wszWMDMWebmaster = `WMDM/Webmaster`;
+export const g_wszWMDMSourceURL = `WMDM/SourceURL`;
+export const g_wszWMDMDestinationURL = `WMDM/DestinationURL`;
+export const g_wszWMDMCategory = `WMDM/Category`;
+export const g_wszWMDMTimeBookmark = `WMDM/TimeBookmark`;
+export const g_wszWMDMObjectBookmark = `WMDM/ObjectBookmark`;
+export const g_wszWMDMByteBookmark = `WMDM/ByteBookmark`;
+export const g_wszWMDMDataOffset = `WMDM/DataOffset`;
+export const g_wszWMDMDataLength = `WMDM/DataLength`;
+export const g_wszWMDMDataUnits = `WMDM/DataUnits`;
+export const g_wszWMDMTimeToLive = `WMDM/TimeToLive`;
+export const g_wszWMDMMediaGuid = `WMDM/MediaGuid`;
+export const g_wszWPDPassthroughPropertyValues = `WPD/PassthroughPropertyValues`;
 export const MTP_COMMAND_MAX_PARAMS = 5;
 export const MTP_RESPONSE_MAX_PARAMS = 5;
 export const MTP_RESPONSE_OK = 8193;
@@ -7595,7 +7620,7 @@ export const AVISTDINDEX_DELTAFRAME = 2147483648;
 export const AMVA_TYPEINDEX_OUTPUTFRAME = 4294967295;
 export const AMVA_QUERYRENDERSTATUSF_READ = 1;
 export const MIN_DIMENSION = 1;
-export const BDA_PLP_ID_NOT_SET = "-1";
+export const BDA_PLP_ID_NOT_SET = `-1`;
 export const CDEF_CLASS_DEFAULT = 1;
 export const CDEF_BYPASS_CLASS_MANAGER = 2;
 export const CDEF_MERIT_ABOVE_DO_NOT_USE = 8;
@@ -7611,7 +7636,7 @@ export const AM_GBF_PREVFRAMESKIPPED = 1;
 export const AM_GBF_NOTASYNCPOINT = 2;
 export const AM_GBF_NOWAIT = 4;
 export const AM_GBF_NODDSURFACELOCK = 8;
-export const AMF_AUTOMATICGAIN = "-1";
+export const AMF_AUTOMATICGAIN = `-1`;
 export const AnalogVideo_NTSC_Mask = 7;
 export const AnalogVideo_PAL_Mask = 1052656;
 export const AnalogVideo_SECAM_Mask = 1044480;
@@ -7669,6 +7694,15 @@ export const AMDDS_RGBFLP = 64;
 export const AMDDS_YUVFLP = 128;
 export const AMDDS_ALL = 255;
 export const AMDDS_DEFAULT = 255;
+export const iPALETTE_COLORS = 256;
+export const iEGA_COLORS = 16;
+export const iMASK_COLORS = 3;
+export const iTRUECOLOR = 16;
+export const iRED = 0;
+export const iGREEN = 1;
+export const iBLUE = 2;
+export const iPALETTE = 8;
+export const iMAXBITS = 8;
 export const MAX_SIZE_MPEG1_SEQUENCE_INFO = 140;
 export const AM_MPEG_AUDIO_DUAL_MERGE = 0;
 export const AM_MPEG_AUDIO_DUAL_LEFT = 1;
@@ -7677,7 +7711,7 @@ export const VFW_FIRST_CODE = 512;
 export const MAX_ERROR_TEXT_LEN = 160;
 export const MPBOOL_TRUE = 1;
 export const MPBOOL_FALSE = 0;
-export const DWORD_ALLPARAMS = "-1";
+export const DWORD_ALLPARAMS = `-1`;
 export const MPF_ENVLP_STANDARD = 0;
 export const MPF_ENVLP_BEGIN_CURRENTVAL = 1;
 export const MPF_ENVLP_BEGIN_NEUTRALVAL = 2;
@@ -7838,7 +7872,8 @@ export const VFW_E_CODECAPI_ENUMERATED = 289095711130387217n;
 export const VFW_E_CODECAPI_NO_DEFAULT = 289096810642014995n;
 export const VFW_E_CODECAPI_NO_CURRENT_VALUE = 289097910153642772n;
 export const VFW_E_DVD_CHAPTER_DOES_NOT_EXIST = 289110004781548309n;
-export const VFW_S_DVD_RENDER_STATUS = 1185411236640;
+export const VFW_S_DVD_RENDER_STATUS = 7566142163910918944n;
+export const CFSTR_VFW_FILTERLIST = `Video for Windows 4 Filters`;
 export const DXVA_RESTRICTED_MODE_UNRESTRICTED = 65535;
 export const DXVA_RESTRICTED_MODE_H261_A = 1;
 export const DXVA_RESTRICTED_MODE_H261_B = 2;
@@ -7982,7 +8017,7 @@ export const DXVA_COPPGetCertificateLengthFnCode = 1;
 export const DXVA_COPPKeyExchangeFnCode = 2;
 export const DXVA_COPPSequenceStartFnCode = 3;
 export const DXVA_COPPCommandFnCode = 4;
-export const COPP_NoProtectionLevelAvailable = "-1";
+export const COPP_NoProtectionLevelAvailable = `-1`;
 export const COPP_DefaultProtectionLevel = 0;
 export const COPP_ImageAspectRatio_EN300294_Mask = 7;
 export const DXVA_COPPQueryStatusFnCode = 5;
@@ -8005,7 +8040,7 @@ export const AudioType_Dialogue = 4;
 export const AudioType_Commentary = 5;
 export const AudioType_Emergency = 6;
 export const AudioType_Voiceover = 7;
-export const AudioType_Reserved = "-1";
+export const AudioType_Reserved = `-1`;
 export const MAX_COUNTRY_CODE_STRING = 3;
 export const PARENTAL_CONTROL_TIME_RANGE = 1;
 export const REQUIRED_PARENTAL_CONTROL_TIME_RANGE = 2;
@@ -8105,7 +8140,7 @@ export const COMPONENT_TAG_CAPTION_MAX = 55;
 export const COMPONENT_TAG_SUPERIMPOSE_MIN = 56;
 export const COMPONENT_TAG_SUPERIMPOSE_MAX = 63;
 export const DVBS_SCAN_TABLE_MAX_SIZE = 400;
-export const g_wszExcludeScriptStreamDeliverySynchronization = "ExcludeScriptStreamDeliverySynchronization";
+export const g_wszExcludeScriptStreamDeliverySynchronization = `ExcludeScriptStreamDeliverySynchronization`;
 export const MPEG2_BASE = 512;
 export const MPEG2_S_MORE_DATA_AVAILABLE = 288827428145725952n;
 export const MPEG2_S_NO_MORE_DATA_AVAILABLE = 288796641820148225n;
@@ -8192,61 +8227,61 @@ export const BDA_E_WMDRM_INVALID_VERSION = 355789888521826308n;
 export const BDA_E_WMDRM_INVALID_DATE = 355790988033454085n;
 export const BDA_E_WMDRM_INVALID_PROXIMITY = 355793187056709638n;
 export const BDA_E_WMDRM_KEY_ID_NOT_FOUND = 10520409918170001416n;
-export const g_wszStreamBufferRecordingDuration = "Duration";
-export const g_wszStreamBufferRecordingBitrate = "Bitrate";
-export const g_wszStreamBufferRecordingSeekable = "Seekable";
-export const g_wszStreamBufferRecordingStridable = "Stridable";
-export const g_wszStreamBufferRecordingBroadcast = "Broadcast";
-export const g_wszStreamBufferRecordingProtected = "Is_Protected";
-export const g_wszStreamBufferRecordingTrusted = "Is_Trusted";
-export const g_wszStreamBufferRecordingSignature_Name = "Signature_Name";
-export const g_wszStreamBufferRecordingHasAudio = "HasAudio";
-export const g_wszStreamBufferRecordingHasImage = "HasImage";
-export const g_wszStreamBufferRecordingHasScript = "HasScript";
-export const g_wszStreamBufferRecordingHasVideo = "HasVideo";
-export const g_wszStreamBufferRecordingCurrentBitrate = "CurrentBitrate";
-export const g_wszStreamBufferRecordingOptimalBitrate = "OptimalBitrate";
-export const g_wszStreamBufferRecordingHasAttachedImages = "HasAttachedImages";
-export const g_wszStreamBufferRecordingSkipBackward = "Can_Skip_Backward";
-export const g_wszStreamBufferRecordingSkipForward = "Can_Skip_Forward";
-export const g_wszStreamBufferRecordingNumberOfFrames = "NumberOfFrames";
-export const g_wszStreamBufferRecordingFileSize = "FileSize";
-export const g_wszStreamBufferRecordingHasArbitraryDataStream = "HasArbitraryDataStream";
-export const g_wszStreamBufferRecordingHasFileTransferStream = "HasFileTransferStream";
-export const g_wszStreamBufferRecordingTitle = "Title";
-export const g_wszStreamBufferRecordingAuthor = "Author";
-export const g_wszStreamBufferRecordingDescription = "Description";
-export const g_wszStreamBufferRecordingRating = "Rating";
-export const g_wszStreamBufferRecordingCopyright = "Copyright";
-export const g_wszStreamBufferRecordingUse_DRM = "Use_DRM";
-export const g_wszStreamBufferRecordingDRM_Flags = "DRM_Flags";
-export const g_wszStreamBufferRecordingDRM_Level = "DRM_Level";
-export const g_wszStreamBufferRecordingAlbumTitle = "WM/AlbumTitle";
-export const g_wszStreamBufferRecordingTrack = "WM/Track";
-export const g_wszStreamBufferRecordingPromotionURL = "WM/PromotionURL";
-export const g_wszStreamBufferRecordingAlbumCoverURL = "WM/AlbumCoverURL";
-export const g_wszStreamBufferRecordingGenre = "WM/Genre";
-export const g_wszStreamBufferRecordingYear = "WM/Year";
-export const g_wszStreamBufferRecordingGenreID = "WM/GenreID";
-export const g_wszStreamBufferRecordingMCDI = "WM/MCDI";
-export const g_wszStreamBufferRecordingComposer = "WM/Composer";
-export const g_wszStreamBufferRecordingLyrics = "WM/Lyrics";
-export const g_wszStreamBufferRecordingTrackNumber = "WM/TrackNumber";
-export const g_wszStreamBufferRecordingToolName = "WM/ToolName";
-export const g_wszStreamBufferRecordingToolVersion = "WM/ToolVersion";
-export const g_wszStreamBufferRecordingIsVBR = "IsVBR";
-export const g_wszStreamBufferRecordingAlbumArtist = "WM/AlbumArtist";
-export const g_wszStreamBufferRecordingBannerImageType = "BannerImageType";
-export const g_wszStreamBufferRecordingBannerImageData = "BannerImageData";
-export const g_wszStreamBufferRecordingBannerImageURL = "BannerImageURL";
-export const g_wszStreamBufferRecordingCopyrightURL = "CopyrightURL";
-export const g_wszStreamBufferRecordingAspectRatioX = "AspectRatioX";
-export const g_wszStreamBufferRecordingAspectRatioY = "AspectRatioY";
-export const g_wszStreamBufferRecordingNSCName = "NSC_Name";
-export const g_wszStreamBufferRecordingNSCAddress = "NSC_Address";
-export const g_wszStreamBufferRecordingNSCPhone = "NSC_Phone";
-export const g_wszStreamBufferRecordingNSCEmail = "NSC_Email";
-export const g_wszStreamBufferRecordingNSCDescription = "NSC_Description";
+export const g_wszStreamBufferRecordingDuration = `Duration`;
+export const g_wszStreamBufferRecordingBitrate = `Bitrate`;
+export const g_wszStreamBufferRecordingSeekable = `Seekable`;
+export const g_wszStreamBufferRecordingStridable = `Stridable`;
+export const g_wszStreamBufferRecordingBroadcast = `Broadcast`;
+export const g_wszStreamBufferRecordingProtected = `Is_Protected`;
+export const g_wszStreamBufferRecordingTrusted = `Is_Trusted`;
+export const g_wszStreamBufferRecordingSignature_Name = `Signature_Name`;
+export const g_wszStreamBufferRecordingHasAudio = `HasAudio`;
+export const g_wszStreamBufferRecordingHasImage = `HasImage`;
+export const g_wszStreamBufferRecordingHasScript = `HasScript`;
+export const g_wszStreamBufferRecordingHasVideo = `HasVideo`;
+export const g_wszStreamBufferRecordingCurrentBitrate = `CurrentBitrate`;
+export const g_wszStreamBufferRecordingOptimalBitrate = `OptimalBitrate`;
+export const g_wszStreamBufferRecordingHasAttachedImages = `HasAttachedImages`;
+export const g_wszStreamBufferRecordingSkipBackward = `Can_Skip_Backward`;
+export const g_wszStreamBufferRecordingSkipForward = `Can_Skip_Forward`;
+export const g_wszStreamBufferRecordingNumberOfFrames = `NumberOfFrames`;
+export const g_wszStreamBufferRecordingFileSize = `FileSize`;
+export const g_wszStreamBufferRecordingHasArbitraryDataStream = `HasArbitraryDataStream`;
+export const g_wszStreamBufferRecordingHasFileTransferStream = `HasFileTransferStream`;
+export const g_wszStreamBufferRecordingTitle = `Title`;
+export const g_wszStreamBufferRecordingAuthor = `Author`;
+export const g_wszStreamBufferRecordingDescription = `Description`;
+export const g_wszStreamBufferRecordingRating = `Rating`;
+export const g_wszStreamBufferRecordingCopyright = `Copyright`;
+export const g_wszStreamBufferRecordingUse_DRM = `Use_DRM`;
+export const g_wszStreamBufferRecordingDRM_Flags = `DRM_Flags`;
+export const g_wszStreamBufferRecordingDRM_Level = `DRM_Level`;
+export const g_wszStreamBufferRecordingAlbumTitle = `WM/AlbumTitle`;
+export const g_wszStreamBufferRecordingTrack = `WM/Track`;
+export const g_wszStreamBufferRecordingPromotionURL = `WM/PromotionURL`;
+export const g_wszStreamBufferRecordingAlbumCoverURL = `WM/AlbumCoverURL`;
+export const g_wszStreamBufferRecordingGenre = `WM/Genre`;
+export const g_wszStreamBufferRecordingYear = `WM/Year`;
+export const g_wszStreamBufferRecordingGenreID = `WM/GenreID`;
+export const g_wszStreamBufferRecordingMCDI = `WM/MCDI`;
+export const g_wszStreamBufferRecordingComposer = `WM/Composer`;
+export const g_wszStreamBufferRecordingLyrics = `WM/Lyrics`;
+export const g_wszStreamBufferRecordingTrackNumber = `WM/TrackNumber`;
+export const g_wszStreamBufferRecordingToolName = `WM/ToolName`;
+export const g_wszStreamBufferRecordingToolVersion = `WM/ToolVersion`;
+export const g_wszStreamBufferRecordingIsVBR = `IsVBR`;
+export const g_wszStreamBufferRecordingAlbumArtist = `WM/AlbumArtist`;
+export const g_wszStreamBufferRecordingBannerImageType = `BannerImageType`;
+export const g_wszStreamBufferRecordingBannerImageData = `BannerImageData`;
+export const g_wszStreamBufferRecordingBannerImageURL = `BannerImageURL`;
+export const g_wszStreamBufferRecordingCopyrightURL = `CopyrightURL`;
+export const g_wszStreamBufferRecordingAspectRatioX = `AspectRatioX`;
+export const g_wszStreamBufferRecordingAspectRatioY = `AspectRatioY`;
+export const g_wszStreamBufferRecordingNSCName = `NSC_Name`;
+export const g_wszStreamBufferRecordingNSCAddress = `NSC_Address`;
+export const g_wszStreamBufferRecordingNSCPhone = `NSC_Phone`;
+export const g_wszStreamBufferRecordingNSCEmail = `NSC_Email`;
+export const g_wszStreamBufferRecordingNSCDescription = `NSC_Description`;
 export const STREAMBUFFER_EC_TIMEHOLE = 806;
 export const STREAMBUFFER_EC_STALE_DATA_READ = 807;
 export const STREAMBUFFER_EC_STALE_FILE_DELETED = 808;
@@ -8331,6 +8366,12 @@ export const KSDATAFORMAT_BIT_ATTRIBUTES = 1;
 export const KSDATARANGE_BIT_ATTRIBUTES = 1;
 export const KSDATARANGE_BIT_REQUIRED_ATTRIBUTES = 2;
 export const KSATTRIBUTE_REQUIRED = 1;
+export const KSSTRING_Filter = `{9B365890-165F-11D0-A195-0020AFD156E4}`;
+export const KSSTRING_Pin = `{146F1A80-4791-11D0-A5D6-28DB04C10000}`;
+export const KSSTRING_Clock = `{53172480-4791-11D0-A5D6-28DB04C10000}`;
+export const KSSTRING_Allocator = `{642F5D00-4791-11D0-A5D6-28DB04C10000}`;
+export const KSSTRING_AllocatorEx = `{091BB63B-603F-11D1-B067-00A0C9062802}`;
+export const KSSTRING_TopologyNode = `{0621061A-EE75-11D0-B915-00A0C9223196}`;
 export const KSALLOCATOR_REQUIREMENTF_INPLACE_MODIFIER = 1;
 export const KSALLOCATOR_REQUIREMENTF_SYSTEM_MEMORY = 2;
 export const KSALLOCATOR_REQUIREMENTF_FRAME_INTEGRITY = 4;
@@ -8444,7 +8485,7 @@ export const KSDSOUND_BUFFER_CTRL_FREQUENCY = 2;
 export const KSDSOUND_BUFFER_CTRL_PAN = 4;
 export const KSDSOUND_BUFFER_CTRL_VOLUME = 8;
 export const KSDSOUND_BUFFER_CTRL_POSITIONNOTIFY = 16;
-export const KSAUDIO_STEREO_SPEAKER_GEOMETRY_HEADPHONE = "-1";
+export const KSAUDIO_STEREO_SPEAKER_GEOMETRY_HEADPHONE = `-1`;
 export const KSAUDIO_STEREO_SPEAKER_GEOMETRY_MIN = 5;
 export const KSAUDIO_STEREO_SPEAKER_GEOMETRY_NARROW = 10;
 export const KSAUDIO_STEREO_SPEAKER_GEOMETRY_WIDE = 20;
@@ -8683,7 +8724,7 @@ export const KSPROPERTY_CAMERACONTROL_VIDEOSTABILIZATION_MODE_FLAGS_AUTO = 1;
 export const KSPROPERTY_CAMERACONTROL_VIDEOSTABILIZATION_MODE_FLAGS_MANUAL = 2;
 export const KSPROPERTY_CAMERACONTROL_REGION_OF_INTEREST_FLAGS_AUTO = 1;
 export const KSPROPERTY_CAMERACONTROL_REGION_OF_INTEREST_FLAGS_MANUAL = 2;
-export const KSPROPERTY_CAMERACONTROL_REGION_OF_INTEREST_FLAGS_ASYNC = "-2147483648";
+export const KSPROPERTY_CAMERACONTROL_REGION_OF_INTEREST_FLAGS_ASYNC = `-2147483648`;
 export const KSPROPERTY_CAMERACONTROL_REGION_OF_INTEREST_CONFIG_FOCUS = 256;
 export const KSPROPERTY_CAMERACONTROL_REGION_OF_INTEREST_CONFIG_EXPOSURE = 512;
 export const KSPROPERTY_CAMERACONTROL_REGION_OF_INTEREST_CONFIG_WB = 1024;
@@ -9407,19 +9448,19 @@ export const MF_INVALID_ACCESS_ERR = 2154823695;
 export const MF_QUOTA_EXCEEDED_ERR = 2154823702;
 export const MF_PARSE_ERR = 2154823761;
 export const MF_TYPE_ERR = 2154840069;
-export const g_wszSpeechFormatCaps = "SpeechFormatCap";
-export const g_wszWMCPCodecName = "_CODECNAME";
-export const g_wszWMCPSupportedVBRModes = "_SUPPORTEDVBRMODES";
-export const g_wszWMCPAudioVBRSupported = "_VBRENABLED";
-export const g_wszWMCPAudioVBRQuality = "_VBRQUALITY";
-export const g_wszWMCPMaxPasses = "_PASSESRECOMMENDED";
-export const g_wszWMCPDefaultCrisp = "_DEFAULTCRISP";
-export const COPP_ProtectionType_Unknown = "-2147483648";
+export const g_wszSpeechFormatCaps = `SpeechFormatCap`;
+export const g_wszWMCPCodecName = `_CODECNAME`;
+export const g_wszWMCPSupportedVBRModes = `_SUPPORTEDVBRMODES`;
+export const g_wszWMCPAudioVBRSupported = `_VBRENABLED`;
+export const g_wszWMCPAudioVBRQuality = `_VBRQUALITY`;
+export const g_wszWMCPMaxPasses = `_PASSESRECOMMENDED`;
+export const g_wszWMCPDefaultCrisp = `_DEFAULTCRISP`;
+export const COPP_ProtectionType_Unknown = `-2147483648`;
 export const COPP_ProtectionType_None = 0;
 export const COPP_ProtectionType_HDCP = 1;
 export const COPP_ProtectionType_ACP = 2;
 export const COPP_ProtectionType_CGMSA = 4;
-export const COPP_ProtectionType_Mask = "-2147483641";
+export const COPP_ProtectionType_Mask = `-2147483641`;
 export const COPP_ProtectionType_Reserved = 2147483640;
 export const WMPGC_FLAGS_ALLOW_PREROLL = 1;
 export const WMPGC_FLAGS_SUPPRESS_DIALOGS = 2;
@@ -9437,6 +9478,11 @@ export const EFFECT_VARIABLEFREQSTEP = 4;
 export const EFFECT_WINDOWEDONLY = 8;
 export const EFFECT2_FULLSCREENEXCLUSIVE = 16;
 export const SA_BUFFER_SIZE = 1024;
+export const PLUGIN_INSTALLREGKEY = `Software\Microsoft\MediaPlayer\UIPlugins`;
+export const PLUGIN_INSTALLREGKEY_FRIENDLYNAME = `FriendlyName`;
+export const PLUGIN_INSTALLREGKEY_DESCRIPTION = `Description`;
+export const PLUGIN_INSTALLREGKEY_CAPABILITIES = `Capabilities`;
+export const PLUGIN_INSTALLREGKEY_UNINSTALL = `UninstallPath`;
 export const PLUGIN_TYPE_BACKGROUND = 1;
 export const PLUGIN_TYPE_SEPARATEWINDOW = 2;
 export const PLUGIN_TYPE_DISPLAYAREA = 3;
@@ -9449,6 +9495,19 @@ export const PLUGIN_FLAGS_ACCEPTSMEDIA = 268435456;
 export const PLUGIN_FLAGS_ACCEPTSPLAYLISTS = 134217728;
 export const PLUGIN_FLAGS_HASPRESETS = 67108864;
 export const PLUGIN_FLAGS_HIDDEN = 33554432;
+export const PLUGIN_MISC_PRESETCOUNT = `PresetCount`;
+export const PLUGIN_MISC_PRESETNAMES = `PresetNames`;
+export const PLUGIN_MISC_CURRENTPRESET = `CurrentPreset`;
+export const PLUGIN_SEPARATEWINDOW_RESIZABLE = `Resizable`;
+export const PLUGIN_SEPARATEWINDOW_DEFAULTWIDTH = `DefaultWidth`;
+export const PLUGIN_SEPARATEWINDOW_DEFAULTHEIGHT = `DefaultHeight`;
+export const PLUGIN_SEPARATEWINDOW_MINWIDTH = `MinWidth`;
+export const PLUGIN_SEPARATEWINDOW_MINHEIGHT = `MinHeight`;
+export const PLUGIN_SEPARATEWINDOW_MAXWIDTH = `MaxWidth`;
+export const PLUGIN_SEPARATEWINDOW_MAXHEIGHT = `MaxHeight`;
+export const PLUGIN_MISC_QUERYDESTROY = `QueryDestroy`;
+export const PLUGIN_ALL_MEDIASENDTO = `MediaSendTo`;
+export const PLUGIN_ALL_PLAYLISTSENDTO = `PlaylistSendTo`;
 export const SUBSCRIPTION_CAP_DEVICEAVAILABLE = 16;
 export const SUBSCRIPTION_CAP_BACKGROUNDPROCESSING = 8;
 export const SUBSCRIPTION_CAP_IS_CONTENTPARTNER = 64;
@@ -9459,6 +9518,8 @@ export const SUBSCRIPTION_CAP_ALLOWPDATRANSFER = 4;
 export const SUBSCRIPTION_CAP_PREPAREFORSYNC = 32;
 export const SUBSCRIPTION_V1_CAPS = 15;
 export const SUBSCRIPTION_CAP_UILESSMODE_ALLOWPLAY = 256;
+export const WMP_SUBSCR_DL_TYPE_BACKGROUND = `background`;
+export const WMP_SUBSCR_DL_TYPE_REALTIME = `real time`;
 export const DISPID_FEEDS_RootFolder = 4096;
 export const DISPID_FEEDS_IsSubscribed = 4097;
 export const DISPID_FEEDS_ExistsFeed = 4098;
@@ -9944,83 +10005,83 @@ export const DISPID_WMPMEDIACOLLECTION2_BASE = 1400;
 export const DISPID_WMPSTRINGCOLLECTION2_BASE = 1450;
 export const kfltTimedLevelMaximumFrequency = 22050;
 export const kfltTimedLevelMinimumFrequency = 20;
-export const g_szContentPartnerInfo_LoginState = "LoginState";
-export const g_szContentPartnerInfo_MediaPlayerAccountType = "MediaPlayerAccountType";
-export const g_szContentPartnerInfo_AccountType = "AccountType";
-export const g_szContentPartnerInfo_HasCachedCredentials = "HasCachedCredentials";
-export const g_szContentPartnerInfo_LicenseRefreshAdvanceWarning = "LicenseRefreshAdvanceWarning";
-export const g_szContentPartnerInfo_PurchasedTrackRequiresReDownload = "PurchasedTrackRequiresReDownload";
-export const g_szContentPartnerInfo_MaximumTrackPurchasePerPurchase = "MaximumNumberOfTracksPerPurchase";
-export const g_szContentPartnerInfo_AccountBalance = "AccountBalance";
-export const g_szContentPartnerInfo_UserName = "UserName";
-export const g_szMediaPlayerTask_Burn = "Burn";
-export const g_szMediaPlayerTask_Browse = "Browse";
-export const g_szMediaPlayerTask_Sync = "Sync";
-export const g_szItemInfo_PopupURL = "Popup";
-export const g_szItemInfo_AuthenticationSuccessURL = "AuthenticationSuccessURL";
-export const g_szItemInfo_LoginFailureURL = "LoginFailureURL";
-export const g_szItemInfo_HTMLViewURL = "HTMLViewURL";
-export const g_szItemInfo_PopupCaption = "PopupCaption";
-export const g_szItemInfo_ALTLoginURL = "ALTLoginURL";
-export const g_szItemInfo_ALTLoginCaption = "ALTLoginCaption";
-export const g_szItemInfo_ForgetPasswordURL = "ForgotPassword";
-export const g_szItemInfo_CreateAccountURL = "CreateAccount";
-export const g_szItemInfo_ArtistArtURL = "ArtistArt";
-export const g_szItemInfo_AlbumArtURL = "AlbumArt";
-export const g_szItemInfo_ListArtURL = "ListArt";
-export const g_szItemInfo_GenreArtURL = "GenreArt";
-export const g_szItemInfo_SubGenreArtURL = "SubGenreArt";
-export const g_szItemInfo_RadioArtURL = "RadioArt";
-export const g_szItemInfo_TreeListIconURL = "CPListIDIcon";
-export const g_szItemInfo_ErrorDescription = "CPErrorDescription";
-export const g_szItemInfo_ErrorURL = "CPErrorURL";
-export const g_szItemInfo_ErrorURLLinkText = "CPErrorURLLinkText";
-export const g_szUnknownLocation = "UnknownLocation";
-export const g_szRootLocation = "RootLocation";
-export const g_szFlyoutMenu = "FlyoutMenu";
-export const g_szOnlineStore = "OnlineStore";
-export const g_szVideoRecent = "VideoRecent";
-export const g_szVideoRoot = "VideoRoot";
-export const g_szCPListID = "CPListID";
-export const g_szAllCPListIDs = "AllCPListIDs";
-export const g_szCPTrackID = "CPTrackID";
-export const g_szAllCPTrackIDs = "AllCPTrackIDs";
-export const g_szCPArtistID = "CPArtistID";
-export const g_szAllCPArtistIDs = "AllCPArtistIDs";
-export const g_szCPAlbumID = "CPAlbumID";
-export const g_szAllCPAlbumIDs = "AllCPAlbumIDs";
-export const g_szCPGenreID = "CPGenreID";
-export const g_szAllCPGenreIDs = "AllCPGenreIDs";
-export const g_szCPAlbumSubGenreID = "CPAlbumSubGenreID";
-export const g_szAllCPAlbumSubGenreIDs = "AllCPAlbumSubGenreIDs";
-export const g_szReleaseDateYear = "ReleaseDateYear";
-export const g_szAllReleaseDateYears = "AllReleaseDateYears";
-export const g_szCPRadioID = "CPRadioID";
-export const g_szAllCPRadioIDs = "AllCPRadioIDs";
-export const g_szAuthor = "Author";
-export const g_szAllAuthors = "AllAuthors";
-export const g_szWMParentalRating = "WMParentalRating";
-export const g_szAllWMParentalRatings = "AllWMParentalRatings";
-export const g_szAllUserEffectiveRatingStarss = "AllUserEffectiveRatingStarss";
-export const g_szUserEffectiveRatingStars = "UserEffectiveRatingStars";
-export const g_szUserPlaylist = "UserPlaylist";
-export const g_szViewMode_Report = "ViewModeReport";
-export const g_szViewMode_Details = "ViewModeDetails";
-export const g_szViewMode_Icon = "ViewModeIcon";
-export const g_szViewMode_Tile = "ViewModeTile";
-export const g_szViewMode_OrderedList = "ViewModeOrderedList";
-export const g_szContentPrice_Unknown = "PriceUnknown";
-export const g_szContentPrice_CannotBuy = "PriceCannotBuy";
-export const g_szContentPrice_Free = "PriceFree";
-export const g_szRefreshLicensePlay = "RefreshForPlay";
-export const g_szRefreshLicenseBurn = "RefreshForBurn";
-export const g_szRefreshLicenseSync = "RefreshForSync";
-export const g_szVerifyPermissionSync = "VerifyPermissionSync";
-export const g_szStationEvent_Started = "TrackStarted";
-export const g_szStationEvent_Complete = "TrackComplete";
-export const g_szStationEvent_Skipped = "TrackSkipped";
-export const PROGRESS_INDETERMINATE = "-1";
-export const PHOTOACQ_ERROR_RESTART_REQUIRED = 5351949833341280257n;
+export const g_szContentPartnerInfo_LoginState = `LoginState`;
+export const g_szContentPartnerInfo_MediaPlayerAccountType = `MediaPlayerAccountType`;
+export const g_szContentPartnerInfo_AccountType = `AccountType`;
+export const g_szContentPartnerInfo_HasCachedCredentials = `HasCachedCredentials`;
+export const g_szContentPartnerInfo_LicenseRefreshAdvanceWarning = `LicenseRefreshAdvanceWarning`;
+export const g_szContentPartnerInfo_PurchasedTrackRequiresReDownload = `PurchasedTrackRequiresReDownload`;
+export const g_szContentPartnerInfo_MaximumTrackPurchasePerPurchase = `MaximumNumberOfTracksPerPurchase`;
+export const g_szContentPartnerInfo_AccountBalance = `AccountBalance`;
+export const g_szContentPartnerInfo_UserName = `UserName`;
+export const g_szMediaPlayerTask_Burn = `Burn`;
+export const g_szMediaPlayerTask_Browse = `Browse`;
+export const g_szMediaPlayerTask_Sync = `Sync`;
+export const g_szItemInfo_PopupURL = `Popup`;
+export const g_szItemInfo_AuthenticationSuccessURL = `AuthenticationSuccessURL`;
+export const g_szItemInfo_LoginFailureURL = `LoginFailureURL`;
+export const g_szItemInfo_HTMLViewURL = `HTMLViewURL`;
+export const g_szItemInfo_PopupCaption = `PopupCaption`;
+export const g_szItemInfo_ALTLoginURL = `ALTLoginURL`;
+export const g_szItemInfo_ALTLoginCaption = `ALTLoginCaption`;
+export const g_szItemInfo_ForgetPasswordURL = `ForgotPassword`;
+export const g_szItemInfo_CreateAccountURL = `CreateAccount`;
+export const g_szItemInfo_ArtistArtURL = `ArtistArt`;
+export const g_szItemInfo_AlbumArtURL = `AlbumArt`;
+export const g_szItemInfo_ListArtURL = `ListArt`;
+export const g_szItemInfo_GenreArtURL = `GenreArt`;
+export const g_szItemInfo_SubGenreArtURL = `SubGenreArt`;
+export const g_szItemInfo_RadioArtURL = `RadioArt`;
+export const g_szItemInfo_TreeListIconURL = `CPListIDIcon`;
+export const g_szItemInfo_ErrorDescription = `CPErrorDescription`;
+export const g_szItemInfo_ErrorURL = `CPErrorURL`;
+export const g_szItemInfo_ErrorURLLinkText = `CPErrorURLLinkText`;
+export const g_szUnknownLocation = `UnknownLocation`;
+export const g_szRootLocation = `RootLocation`;
+export const g_szFlyoutMenu = `FlyoutMenu`;
+export const g_szOnlineStore = `OnlineStore`;
+export const g_szVideoRecent = `VideoRecent`;
+export const g_szVideoRoot = `VideoRoot`;
+export const g_szCPListID = `CPListID`;
+export const g_szAllCPListIDs = `AllCPListIDs`;
+export const g_szCPTrackID = `CPTrackID`;
+export const g_szAllCPTrackIDs = `AllCPTrackIDs`;
+export const g_szCPArtistID = `CPArtistID`;
+export const g_szAllCPArtistIDs = `AllCPArtistIDs`;
+export const g_szCPAlbumID = `CPAlbumID`;
+export const g_szAllCPAlbumIDs = `AllCPAlbumIDs`;
+export const g_szCPGenreID = `CPGenreID`;
+export const g_szAllCPGenreIDs = `AllCPGenreIDs`;
+export const g_szCPAlbumSubGenreID = `CPAlbumSubGenreID`;
+export const g_szAllCPAlbumSubGenreIDs = `AllCPAlbumSubGenreIDs`;
+export const g_szReleaseDateYear = `ReleaseDateYear`;
+export const g_szAllReleaseDateYears = `AllReleaseDateYears`;
+export const g_szCPRadioID = `CPRadioID`;
+export const g_szAllCPRadioIDs = `AllCPRadioIDs`;
+export const g_szAuthor = `Author`;
+export const g_szAllAuthors = `AllAuthors`;
+export const g_szWMParentalRating = `WMParentalRating`;
+export const g_szAllWMParentalRatings = `AllWMParentalRatings`;
+export const g_szAllUserEffectiveRatingStarss = `AllUserEffectiveRatingStarss`;
+export const g_szUserEffectiveRatingStars = `UserEffectiveRatingStars`;
+export const g_szUserPlaylist = `UserPlaylist`;
+export const g_szViewMode_Report = `ViewModeReport`;
+export const g_szViewMode_Details = `ViewModeDetails`;
+export const g_szViewMode_Icon = `ViewModeIcon`;
+export const g_szViewMode_Tile = `ViewModeTile`;
+export const g_szViewMode_OrderedList = `ViewModeOrderedList`;
+export const g_szContentPrice_Unknown = `PriceUnknown`;
+export const g_szContentPrice_CannotBuy = `PriceCannotBuy`;
+export const g_szContentPrice_Free = `PriceFree`;
+export const g_szRefreshLicensePlay = `RefreshForPlay`;
+export const g_szRefreshLicenseBurn = `RefreshForBurn`;
+export const g_szRefreshLicenseSync = `RefreshForSync`;
+export const g_szVerifyPermissionSync = `VerifyPermissionSync`;
+export const g_szStationEvent_Started = `TrackStarted`;
+export const g_szStationEvent_Complete = `TrackComplete`;
+export const g_szStationEvent_Skipped = `TrackSkipped`;
+export const PROGRESS_INDETERMINATE = `-1`;
+export const PHOTOACQ_ERROR_RESTART_REQUIRED = 7926411350061129729n;
 export const PHOTOACQ_RUN_DEFAULT = 0;
 export const PHOTOACQ_NO_GALLERY_LAUNCH = 1;
 export const PHOTOACQ_DISABLE_AUTO_ROTATE = 2;
@@ -10048,23 +10109,74 @@ export const DSF_SHOW_OFFLINE = 131072;
 export const PAPS_PRESAVE = 0;
 export const PAPS_POSTSAVE = 1;
 export const PAPS_CLEANUP = 2;
-export const SP_LOW_CONFIDENCE = "-1";
+export const SPDUI_EngineProperties = `EngineProperties`;
+export const SPDUI_AddRemoveWord = `AddRemoveWord`;
+export const SPDUI_UserTraining = `UserTraining`;
+export const SPDUI_MicTraining = `MicTraining`;
+export const SPDUI_RecoProfileProperties = `RecoProfileProperties`;
+export const SPDUI_AudioProperties = `AudioProperties`;
+export const SPDUI_AudioVolume = `AudioVolume`;
+export const SPDUI_UserEnrollment = `UserEnrollment`;
+export const SPDUI_ShareData = `ShareData`;
+export const SPDUI_Tutorial = `Tutorial`;
+export const SPREG_USER_ROOT = `HKEY_CURRENT_USER\SOFTWARE\Microsoft\Speech`;
+export const SPREG_LOCAL_MACHINE_ROOT = `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Speech`;
+export const SPCAT_AUDIOOUT = `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Speech\AudioOutput`;
+export const SPCAT_AUDIOIN = `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Speech\AudioInput`;
+export const SPCAT_VOICES = `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Speech\Voices`;
+export const SPCAT_RECOGNIZERS = `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Speech\Recognizers`;
+export const SPCAT_APPLEXICONS = `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Speech\AppLexicons`;
+export const SPCAT_PHONECONVERTERS = `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Speech\PhoneConverters`;
+export const SPCAT_TEXTNORMALIZERS = `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Speech\TextNormalizers`;
+export const SPCAT_RECOPROFILES = `HKEY_CURRENT_USER\SOFTWARE\Microsoft\Speech\RecoProfiles`;
+export const SPMMSYS_AUDIO_IN_TOKEN_ID = `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Speech\AudioInput\TokenEnums\MMAudioIn\`;
+export const SPMMSYS_AUDIO_OUT_TOKEN_ID = `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Speech\AudioOutput\TokenEnums\MMAudioOut\`;
+export const SPCURRENT_USER_LEXICON_TOKEN_ID = `HKEY_CURRENT_USER\SOFTWARE\Microsoft\Speech\CurrentUserLexicon`;
+export const SPCURRENT_USER_SHORTCUT_TOKEN_ID = `HKEY_CURRENT_USER\SOFTWARE\Microsoft\Speech\CurrentUserShortcut`;
+export const SPTOKENVALUE_CLSID = `CLSID`;
+export const SPTOKENKEY_FILES = `Files`;
+export const SPTOKENKEY_UI = `UI`;
+export const SPTOKENKEY_ATTRIBUTES = `Attributes`;
+export const SPTOKENKEY_RETAINEDAUDIO = `SecondsPerRetainedAudioEvent`;
+export const SPTOKENKEY_AUDIO_LATENCY_WARNING = `LatencyWarningThreshold`;
+export const SPTOKENKEY_AUDIO_LATENCY_TRUNCATE = `LatencyTruncateThreshold`;
+export const SPTOKENKEY_AUDIO_LATENCY_UPDATE_INTERVAL = `LatencyUpdateInterval`;
+export const SPVOICECATEGORY_TTSRATE = `DefaultTTSRate`;
+export const SPPROP_RESOURCE_USAGE = `ResourceUsage`;
+export const SPPROP_HIGH_CONFIDENCE_THRESHOLD = `HighConfidenceThreshold`;
+export const SPPROP_NORMAL_CONFIDENCE_THRESHOLD = `NormalConfidenceThreshold`;
+export const SPPROP_LOW_CONFIDENCE_THRESHOLD = `LowConfidenceThreshold`;
+export const SPPROP_RESPONSE_SPEED = `ResponseSpeed`;
+export const SPPROP_COMPLEX_RESPONSE_SPEED = `ComplexResponseSpeed`;
+export const SPPROP_ADAPTATION_ON = `AdaptationOn`;
+export const SPPROP_PERSISTED_BACKGROUND_ADAPTATION = `PersistedBackgroundAdaptation`;
+export const SPPROP_PERSISTED_LANGUAGE_MODEL_ADAPTATION = `PersistedLanguageModelAdaptation`;
+export const SPPROP_UX_IS_LISTENING = `UXIsListening`;
+export const SPTOPIC_SPELLING = `Spelling`;
+export const SPWILDCARD = `...`;
+export const SPDICTATION = `*`;
+export const SPINFDICTATION = `*+`;
+export const SPREG_SAFE_USER_TOKENS = `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Speech\UserTokens`;
+export const SP_LOW_CONFIDENCE = `-1`;
 export const SP_NORMAL_CONFIDENCE = 0;
 export const DEFAULT_WEIGHT = 1;
 export const SP_MAX_WORD_LENGTH = 128;
 export const SP_MAX_PRON_LENGTH = 384;
 export const SP_EMULATE_RESULT = 1073741824;
 export const SP_STREAMPOS_ASAP = 0;
-export const SP_STREAMPOS_REALTIME = "-1";
+export const SP_STREAMPOS_REALTIME = `-1`;
 export const SPRP_NORMAL = 0;
 export const SP_MAX_LANGIDS = 20;
+export const SPRECOEXTENSION = `RecoExtension`;
+export const SPALTERNATESCLSID = `AlternatesCLSID`;
+export const SR_LOCALIZED_DESCRIPTION = `Description`;
 export const SAPI_ERROR_BASE = 20480;
 export const Speech_Default_Weight = 1;
 export const Speech_Max_Word_Length = 128;
 export const Speech_Max_Pron_Length = 384;
 export const Speech_StreamPos_Asap = 0;
-export const Speech_StreamPos_RealTime = "-1";
-export const SpeechAllElements = "-1";
+export const Speech_StreamPos_RealTime = `-1`;
+export const SpeechAllElements = `-1`;
 export const WMT_VIDEOIMAGE_SAMPLE_INPUT_FRAME = 1;
 export const WMT_VIDEOIMAGE_SAMPLE_OUTPUT_FRAME = 2;
 export const WMT_VIDEOIMAGE_SAMPLE_USES_CURRENT_INPUT_FRAME = 4;
@@ -10110,230 +10222,230 @@ export const WM_MAX_STREAMS = 63;
 export const WMDRM_IMPORT_INIT_STRUCT_DEFINED = 1;
 export const DRM_OPL_TYPES = 1;
 export const g_dwWMSpecialAttributes = 20;
-export const g_wszWMDuration = "Duration";
-export const g_wszWMBitrate = "Bitrate";
-export const g_wszWMSeekable = "Seekable";
-export const g_wszWMStridable = "Stridable";
-export const g_wszWMBroadcast = "Broadcast";
-export const g_wszWMProtected = "Is_Protected";
-export const g_wszWMTrusted = "Is_Trusted";
-export const g_wszWMSignature_Name = "Signature_Name";
-export const g_wszWMHasAudio = "HasAudio";
-export const g_wszWMHasImage = "HasImage";
-export const g_wszWMHasScript = "HasScript";
-export const g_wszWMHasVideo = "HasVideo";
-export const g_wszWMCurrentBitrate = "CurrentBitrate";
-export const g_wszWMOptimalBitrate = "OptimalBitrate";
-export const g_wszWMHasAttachedImages = "HasAttachedImages";
-export const g_wszWMSkipBackward = "Can_Skip_Backward";
-export const g_wszWMSkipForward = "Can_Skip_Forward";
-export const g_wszWMNumberOfFrames = "NumberOfFrames";
-export const g_wszWMFileSize = "FileSize";
-export const g_wszWMHasArbitraryDataStream = "HasArbitraryDataStream";
-export const g_wszWMHasFileTransferStream = "HasFileTransferStream";
-export const g_wszWMContainerFormat = "WM/ContainerFormat";
+export const g_wszWMDuration = `Duration`;
+export const g_wszWMBitrate = `Bitrate`;
+export const g_wszWMSeekable = `Seekable`;
+export const g_wszWMStridable = `Stridable`;
+export const g_wszWMBroadcast = `Broadcast`;
+export const g_wszWMProtected = `Is_Protected`;
+export const g_wszWMTrusted = `Is_Trusted`;
+export const g_wszWMSignature_Name = `Signature_Name`;
+export const g_wszWMHasAudio = `HasAudio`;
+export const g_wszWMHasImage = `HasImage`;
+export const g_wszWMHasScript = `HasScript`;
+export const g_wszWMHasVideo = `HasVideo`;
+export const g_wszWMCurrentBitrate = `CurrentBitrate`;
+export const g_wszWMOptimalBitrate = `OptimalBitrate`;
+export const g_wszWMHasAttachedImages = `HasAttachedImages`;
+export const g_wszWMSkipBackward = `Can_Skip_Backward`;
+export const g_wszWMSkipForward = `Can_Skip_Forward`;
+export const g_wszWMNumberOfFrames = `NumberOfFrames`;
+export const g_wszWMFileSize = `FileSize`;
+export const g_wszWMHasArbitraryDataStream = `HasArbitraryDataStream`;
+export const g_wszWMHasFileTransferStream = `HasFileTransferStream`;
+export const g_wszWMContainerFormat = `WM/ContainerFormat`;
 export const g_dwWMContentAttributes = 5;
-export const g_wszWMTitle = "Title";
-export const g_wszWMTitleSort = "TitleSort";
-export const g_wszWMAuthor = "Author";
-export const g_wszWMAuthorSort = "AuthorSort";
-export const g_wszWMDescription = "Description";
-export const g_wszWMRating = "Rating";
-export const g_wszWMCopyright = "Copyright";
-export const g_wszWMUse_DRM = "Use_DRM";
-export const g_wszWMDRM_Flags = "DRM_Flags";
-export const g_wszWMDRM_Level = "DRM_Level";
-export const g_wszWMUse_Advanced_DRM = "Use_Advanced_DRM";
-export const g_wszWMDRM_KeySeed = "DRM_KeySeed";
-export const g_wszWMDRM_KeyID = "DRM_KeyID";
-export const g_wszWMDRM_ContentID = "DRM_ContentID";
-export const g_wszWMDRM_SourceID = "DRM_SourceID";
-export const g_wszWMDRM_IndividualizedVersion = "DRM_IndividualizedVersion";
-export const g_wszWMDRM_LicenseAcqURL = "DRM_LicenseAcqURL";
-export const g_wszWMDRM_V1LicenseAcqURL = "DRM_V1LicenseAcqURL";
-export const g_wszWMDRM_HeaderSignPrivKey = "DRM_HeaderSignPrivKey";
-export const g_wszWMDRM_LASignaturePrivKey = "DRM_LASignaturePrivKey";
-export const g_wszWMDRM_LASignatureCert = "DRM_LASignatureCert";
-export const g_wszWMDRM_LASignatureLicSrvCert = "DRM_LASignatureLicSrvCert";
-export const g_wszWMDRM_LASignatureRootCert = "DRM_LASignatureRootCert";
-export const g_wszWMAlbumTitle = "WM/AlbumTitle";
-export const g_wszWMAlbumTitleSort = "WM/AlbumTitleSort";
-export const g_wszWMTrack = "WM/Track";
-export const g_wszWMPromotionURL = "WM/PromotionURL";
-export const g_wszWMAlbumCoverURL = "WM/AlbumCoverURL";
-export const g_wszWMGenre = "WM/Genre";
-export const g_wszWMYear = "WM/Year";
-export const g_wszWMGenreID = "WM/GenreID";
-export const g_wszWMMCDI = "WM/MCDI";
-export const g_wszWMComposer = "WM/Composer";
-export const g_wszWMComposerSort = "WM/ComposerSort";
-export const g_wszWMLyrics = "WM/Lyrics";
-export const g_wszWMTrackNumber = "WM/TrackNumber";
-export const g_wszWMToolName = "WM/ToolName";
-export const g_wszWMToolVersion = "WM/ToolVersion";
-export const g_wszWMIsVBR = "IsVBR";
-export const g_wszWMAlbumArtist = "WM/AlbumArtist";
-export const g_wszWMAlbumArtistSort = "WM/AlbumArtistSort";
-export const g_wszWMBannerImageType = "BannerImageType";
-export const g_wszWMBannerImageData = "BannerImageData";
-export const g_wszWMBannerImageURL = "BannerImageURL";
-export const g_wszWMCopyrightURL = "CopyrightURL";
-export const g_wszWMAspectRatioX = "AspectRatioX";
-export const g_wszWMAspectRatioY = "AspectRatioY";
-export const g_wszASFLeakyBucketPairs = "ASFLeakyBucketPairs";
+export const g_wszWMTitle = `Title`;
+export const g_wszWMTitleSort = `TitleSort`;
+export const g_wszWMAuthor = `Author`;
+export const g_wszWMAuthorSort = `AuthorSort`;
+export const g_wszWMDescription = `Description`;
+export const g_wszWMRating = `Rating`;
+export const g_wszWMCopyright = `Copyright`;
+export const g_wszWMUse_DRM = `Use_DRM`;
+export const g_wszWMDRM_Flags = `DRM_Flags`;
+export const g_wszWMDRM_Level = `DRM_Level`;
+export const g_wszWMUse_Advanced_DRM = `Use_Advanced_DRM`;
+export const g_wszWMDRM_KeySeed = `DRM_KeySeed`;
+export const g_wszWMDRM_KeyID = `DRM_KeyID`;
+export const g_wszWMDRM_ContentID = `DRM_ContentID`;
+export const g_wszWMDRM_SourceID = `DRM_SourceID`;
+export const g_wszWMDRM_IndividualizedVersion = `DRM_IndividualizedVersion`;
+export const g_wszWMDRM_LicenseAcqURL = `DRM_LicenseAcqURL`;
+export const g_wszWMDRM_V1LicenseAcqURL = `DRM_V1LicenseAcqURL`;
+export const g_wszWMDRM_HeaderSignPrivKey = `DRM_HeaderSignPrivKey`;
+export const g_wszWMDRM_LASignaturePrivKey = `DRM_LASignaturePrivKey`;
+export const g_wszWMDRM_LASignatureCert = `DRM_LASignatureCert`;
+export const g_wszWMDRM_LASignatureLicSrvCert = `DRM_LASignatureLicSrvCert`;
+export const g_wszWMDRM_LASignatureRootCert = `DRM_LASignatureRootCert`;
+export const g_wszWMAlbumTitle = `WM/AlbumTitle`;
+export const g_wszWMAlbumTitleSort = `WM/AlbumTitleSort`;
+export const g_wszWMTrack = `WM/Track`;
+export const g_wszWMPromotionURL = `WM/PromotionURL`;
+export const g_wszWMAlbumCoverURL = `WM/AlbumCoverURL`;
+export const g_wszWMGenre = `WM/Genre`;
+export const g_wszWMYear = `WM/Year`;
+export const g_wszWMGenreID = `WM/GenreID`;
+export const g_wszWMMCDI = `WM/MCDI`;
+export const g_wszWMComposer = `WM/Composer`;
+export const g_wszWMComposerSort = `WM/ComposerSort`;
+export const g_wszWMLyrics = `WM/Lyrics`;
+export const g_wszWMTrackNumber = `WM/TrackNumber`;
+export const g_wszWMToolName = `WM/ToolName`;
+export const g_wszWMToolVersion = `WM/ToolVersion`;
+export const g_wszWMIsVBR = `IsVBR`;
+export const g_wszWMAlbumArtist = `WM/AlbumArtist`;
+export const g_wszWMAlbumArtistSort = `WM/AlbumArtistSort`;
+export const g_wszWMBannerImageType = `BannerImageType`;
+export const g_wszWMBannerImageData = `BannerImageData`;
+export const g_wszWMBannerImageURL = `BannerImageURL`;
+export const g_wszWMCopyrightURL = `CopyrightURL`;
+export const g_wszWMAspectRatioX = `AspectRatioX`;
+export const g_wszWMAspectRatioY = `AspectRatioY`;
+export const g_wszASFLeakyBucketPairs = `ASFLeakyBucketPairs`;
 export const g_dwWMNSCAttributes = 5;
-export const g_wszWMNSCName = "NSC_Name";
-export const g_wszWMNSCAddress = "NSC_Address";
-export const g_wszWMNSCPhone = "NSC_Phone";
-export const g_wszWMNSCEmail = "NSC_Email";
-export const g_wszWMNSCDescription = "NSC_Description";
-export const g_wszWMWriter = "WM/Writer";
-export const g_wszWMConductor = "WM/Conductor";
-export const g_wszWMProducer = "WM/Producer";
-export const g_wszWMDirector = "WM/Director";
-export const g_wszWMContentGroupDescription = "WM/ContentGroupDescription";
-export const g_wszWMSubTitle = "WM/SubTitle";
-export const g_wszWMPartOfSet = "WM/PartOfSet";
-export const g_wszWMProtectionType = "WM/ProtectionType";
-export const g_wszWMVideoHeight = "WM/VideoHeight";
-export const g_wszWMVideoWidth = "WM/VideoWidth";
-export const g_wszWMVideoFrameRate = "WM/VideoFrameRate";
-export const g_wszWMMediaClassPrimaryID = "WM/MediaClassPrimaryID";
-export const g_wszWMMediaClassSecondaryID = "WM/MediaClassSecondaryID";
-export const g_wszWMPeriod = "WM/Period";
-export const g_wszWMCategory = "WM/Category";
-export const g_wszWMPicture = "WM/Picture";
-export const g_wszWMLyrics_Synchronised = "WM/Lyrics_Synchronised";
-export const g_wszWMOriginalLyricist = "WM/OriginalLyricist";
-export const g_wszWMOriginalArtist = "WM/OriginalArtist";
-export const g_wszWMOriginalAlbumTitle = "WM/OriginalAlbumTitle";
-export const g_wszWMOriginalReleaseYear = "WM/OriginalReleaseYear";
-export const g_wszWMOriginalFilename = "WM/OriginalFilename";
-export const g_wszWMPublisher = "WM/Publisher";
-export const g_wszWMEncodedBy = "WM/EncodedBy";
-export const g_wszWMEncodingSettings = "WM/EncodingSettings";
-export const g_wszWMEncodingTime = "WM/EncodingTime";
-export const g_wszWMAuthorURL = "WM/AuthorURL";
-export const g_wszWMUserWebURL = "WM/UserWebURL";
-export const g_wszWMAudioFileURL = "WM/AudioFileURL";
-export const g_wszWMAudioSourceURL = "WM/AudioSourceURL";
-export const g_wszWMLanguage = "WM/Language";
-export const g_wszWMParentalRating = "WM/ParentalRating";
-export const g_wszWMBeatsPerMinute = "WM/BeatsPerMinute";
-export const g_wszWMInitialKey = "WM/InitialKey";
-export const g_wszWMMood = "WM/Mood";
-export const g_wszWMText = "WM/Text";
-export const g_wszWMDVDID = "WM/DVDID";
-export const g_wszWMWMContentID = "WM/WMContentID";
-export const g_wszWMWMCollectionID = "WM/WMCollectionID";
-export const g_wszWMWMCollectionGroupID = "WM/WMCollectionGroupID";
-export const g_wszWMUniqueFileIdentifier = "WM/UniqueFileIdentifier";
-export const g_wszWMModifiedBy = "WM/ModifiedBy";
-export const g_wszWMRadioStationName = "WM/RadioStationName";
-export const g_wszWMRadioStationOwner = "WM/RadioStationOwner";
-export const g_wszWMPlaylistDelay = "WM/PlaylistDelay";
-export const g_wszWMCodec = "WM/Codec";
-export const g_wszWMDRM = "WM/DRM";
-export const g_wszWMISRC = "WM/ISRC";
-export const g_wszWMProvider = "WM/Provider";
-export const g_wszWMProviderRating = "WM/ProviderRating";
-export const g_wszWMProviderStyle = "WM/ProviderStyle";
-export const g_wszWMContentDistributor = "WM/ContentDistributor";
-export const g_wszWMSubscriptionContentID = "WM/SubscriptionContentID";
-export const g_wszWMWMADRCPeakReference = "WM/WMADRCPeakReference";
-export const g_wszWMWMADRCPeakTarget = "WM/WMADRCPeakTarget";
-export const g_wszWMWMADRCAverageReference = "WM/WMADRCAverageReference";
-export const g_wszWMWMADRCAverageTarget = "WM/WMADRCAverageTarget";
-export const g_wszWMStreamTypeInfo = "WM/StreamTypeInfo";
-export const g_wszWMPeakBitrate = "WM/PeakBitrate";
-export const g_wszWMASFPacketCount = "WM/ASFPacketCount";
-export const g_wszWMASFSecurityObjectsSize = "WM/ASFSecurityObjectsSize";
-export const g_wszWMSharedUserRating = "WM/SharedUserRating";
-export const g_wszWMSubTitleDescription = "WM/SubTitleDescription";
-export const g_wszWMMediaCredits = "WM/MediaCredits";
-export const g_wszWMParentalRatingReason = "WM/ParentalRatingReason";
-export const g_wszWMOriginalReleaseTime = "WM/OriginalReleaseTime";
-export const g_wszWMMediaStationCallSign = "WM/MediaStationCallSign";
-export const g_wszWMMediaStationName = "WM/MediaStationName";
-export const g_wszWMMediaNetworkAffiliation = "WM/MediaNetworkAffiliation";
-export const g_wszWMMediaOriginalChannel = "WM/MediaOriginalChannel";
-export const g_wszWMMediaOriginalBroadcastDateTime = "WM/MediaOriginalBroadcastDateTime";
-export const g_wszWMMediaIsStereo = "WM/MediaIsStereo";
-export const g_wszWMVideoClosedCaptioning = "WM/VideoClosedCaptioning";
-export const g_wszWMMediaIsRepeat = "WM/MediaIsRepeat";
-export const g_wszWMMediaIsLive = "WM/MediaIsLive";
-export const g_wszWMMediaIsTape = "WM/MediaIsTape";
-export const g_wszWMMediaIsDelay = "WM/MediaIsDelay";
-export const g_wszWMMediaIsSubtitled = "WM/MediaIsSubtitled";
-export const g_wszWMMediaIsPremiere = "WM/MediaIsPremiere";
-export const g_wszWMMediaIsFinale = "WM/MediaIsFinale";
-export const g_wszWMMediaIsSAP = "WM/MediaIsSAP";
-export const g_wszWMProviderCopyright = "WM/ProviderCopyright";
-export const g_wszWMISAN = "WM/ISAN";
-export const g_wszWMADID = "WM/ADID";
-export const g_wszWMWMShadowFileSourceFileType = "WM/WMShadowFileSourceFileType";
-export const g_wszWMWMShadowFileSourceDRMType = "WM/WMShadowFileSourceDRMType";
-export const g_wszWMWMCPDistributor = "WM/WMCPDistributor";
-export const g_wszWMWMCPDistributorID = "WM/WMCPDistributorID";
-export const g_wszWMSeasonNumber = "WM/SeasonNumber";
-export const g_wszWMEpisodeNumber = "WM/EpisodeNumber";
-export const g_wszEarlyDataDelivery = "EarlyDataDelivery";
-export const g_wszJustInTimeDecode = "JustInTimeDecode";
-export const g_wszSingleOutputBuffer = "SingleOutputBuffer";
-export const g_wszSoftwareScaling = "SoftwareScaling";
-export const g_wszDeliverOnReceive = "DeliverOnReceive";
-export const g_wszScrambledAudio = "ScrambledAudio";
-export const g_wszDedicatedDeliveryThread = "DedicatedDeliveryThread";
-export const g_wszEnableDiscreteOutput = "EnableDiscreteOutput";
-export const g_wszSpeakerConfig = "SpeakerConfig";
-export const g_wszDynamicRangeControl = "DynamicRangeControl";
-export const g_wszAllowInterlacedOutput = "AllowInterlacedOutput";
-export const g_wszVideoSampleDurations = "VideoSampleDurations";
-export const g_wszStreamLanguage = "StreamLanguage";
-export const g_wszEnableWMAProSPDIFOutput = "EnableWMAProSPDIFOutput";
-export const g_wszDeinterlaceMode = "DeinterlaceMode";
-export const g_wszInitialPatternForInverseTelecine = "InitialPatternForInverseTelecine";
-export const g_wszJPEGCompressionQuality = "JPEGCompressionQuality";
-export const g_wszWatermarkCLSID = "WatermarkCLSID";
-export const g_wszWatermarkConfig = "WatermarkConfig";
-export const g_wszInterlacedCoding = "InterlacedCoding";
-export const g_wszFixedFrameRate = "FixedFrameRate";
-export const g_wszOriginalSourceFormatTag = "_SOURCEFORMATTAG";
-export const g_wszOriginalWaveFormat = "_ORIGINALWAVEFORMAT";
-export const g_wszEDL = "_EDL";
-export const g_wszComplexity = "_COMPLEXITYEX";
-export const g_wszDecoderComplexityRequested = "_DECODERCOMPLEXITYPROFILE";
-export const g_wszReloadIndexOnSeek = "ReloadIndexOnSeek";
-export const g_wszStreamNumIndexObjects = "StreamNumIndexObjects";
-export const g_wszFailSeekOnError = "FailSeekOnError";
-export const g_wszPermitSeeksBeyondEndOfStream = "PermitSeeksBeyondEndOfStream";
-export const g_wszUsePacketAtSeekPoint = "UsePacketAtSeekPoint";
-export const g_wszSourceBufferTime = "SourceBufferTime";
-export const g_wszSourceMaxBytesAtOnce = "SourceMaxBytesAtOnce";
-export const g_wszVBREnabled = "_VBRENABLED";
-export const g_wszVBRQuality = "_VBRQUALITY";
-export const g_wszVBRBitrateMax = "_RMAX";
-export const g_wszVBRBufferWindowMax = "_BMAX";
-export const g_wszVBRPeak = "VBR Peak";
-export const g_wszBufferAverage = "Buffer Average";
-export const g_wszComplexityMax = "_COMPLEXITYEXMAX";
-export const g_wszComplexityOffline = "_COMPLEXITYEXOFFLINE";
-export const g_wszComplexityLive = "_COMPLEXITYEXLIVE";
-export const g_wszIsVBRSupported = "_ISVBRSUPPORTED";
-export const g_wszNumPasses = "_PASSESUSED";
-export const g_wszMusicSpeechClassMode = "MusicSpeechClassMode";
-export const g_wszMusicClassMode = "MusicClassMode";
-export const g_wszSpeechClassMode = "SpeechClassMode";
-export const g_wszMixedClassMode = "MixedClassMode";
-export const g_wszSpeechCaps = "SpeechFormatCap";
-export const g_wszPeakValue = "PeakValue";
-export const g_wszAverageLevel = "AverageLevel";
-export const g_wszFold6To2Channels3 = "Fold6To2Channels3";
-export const g_wszFoldToChannelsTemplate = "Fold%luTo%luChannels%lu";
-export const g_wszDeviceConformanceTemplate = "DeviceConformanceTemplate";
-export const g_wszEnableFrameInterpolation = "EnableFrameInterpolation";
-export const g_wszNeedsPreviousSample = "NeedsPreviousSample";
-export const g_wszWMIsCompilation = "WM/IsCompilation";
+export const g_wszWMNSCName = `NSC_Name`;
+export const g_wszWMNSCAddress = `NSC_Address`;
+export const g_wszWMNSCPhone = `NSC_Phone`;
+export const g_wszWMNSCEmail = `NSC_Email`;
+export const g_wszWMNSCDescription = `NSC_Description`;
+export const g_wszWMWriter = `WM/Writer`;
+export const g_wszWMConductor = `WM/Conductor`;
+export const g_wszWMProducer = `WM/Producer`;
+export const g_wszWMDirector = `WM/Director`;
+export const g_wszWMContentGroupDescription = `WM/ContentGroupDescription`;
+export const g_wszWMSubTitle = `WM/SubTitle`;
+export const g_wszWMPartOfSet = `WM/PartOfSet`;
+export const g_wszWMProtectionType = `WM/ProtectionType`;
+export const g_wszWMVideoHeight = `WM/VideoHeight`;
+export const g_wszWMVideoWidth = `WM/VideoWidth`;
+export const g_wszWMVideoFrameRate = `WM/VideoFrameRate`;
+export const g_wszWMMediaClassPrimaryID = `WM/MediaClassPrimaryID`;
+export const g_wszWMMediaClassSecondaryID = `WM/MediaClassSecondaryID`;
+export const g_wszWMPeriod = `WM/Period`;
+export const g_wszWMCategory = `WM/Category`;
+export const g_wszWMPicture = `WM/Picture`;
+export const g_wszWMLyrics_Synchronised = `WM/Lyrics_Synchronised`;
+export const g_wszWMOriginalLyricist = `WM/OriginalLyricist`;
+export const g_wszWMOriginalArtist = `WM/OriginalArtist`;
+export const g_wszWMOriginalAlbumTitle = `WM/OriginalAlbumTitle`;
+export const g_wszWMOriginalReleaseYear = `WM/OriginalReleaseYear`;
+export const g_wszWMOriginalFilename = `WM/OriginalFilename`;
+export const g_wszWMPublisher = `WM/Publisher`;
+export const g_wszWMEncodedBy = `WM/EncodedBy`;
+export const g_wszWMEncodingSettings = `WM/EncodingSettings`;
+export const g_wszWMEncodingTime = `WM/EncodingTime`;
+export const g_wszWMAuthorURL = `WM/AuthorURL`;
+export const g_wszWMUserWebURL = `WM/UserWebURL`;
+export const g_wszWMAudioFileURL = `WM/AudioFileURL`;
+export const g_wszWMAudioSourceURL = `WM/AudioSourceURL`;
+export const g_wszWMLanguage = `WM/Language`;
+export const g_wszWMParentalRating = `WM/ParentalRating`;
+export const g_wszWMBeatsPerMinute = `WM/BeatsPerMinute`;
+export const g_wszWMInitialKey = `WM/InitialKey`;
+export const g_wszWMMood = `WM/Mood`;
+export const g_wszWMText = `WM/Text`;
+export const g_wszWMDVDID = `WM/DVDID`;
+export const g_wszWMWMContentID = `WM/WMContentID`;
+export const g_wszWMWMCollectionID = `WM/WMCollectionID`;
+export const g_wszWMWMCollectionGroupID = `WM/WMCollectionGroupID`;
+export const g_wszWMUniqueFileIdentifier = `WM/UniqueFileIdentifier`;
+export const g_wszWMModifiedBy = `WM/ModifiedBy`;
+export const g_wszWMRadioStationName = `WM/RadioStationName`;
+export const g_wszWMRadioStationOwner = `WM/RadioStationOwner`;
+export const g_wszWMPlaylistDelay = `WM/PlaylistDelay`;
+export const g_wszWMCodec = `WM/Codec`;
+export const g_wszWMDRM = `WM/DRM`;
+export const g_wszWMISRC = `WM/ISRC`;
+export const g_wszWMProvider = `WM/Provider`;
+export const g_wszWMProviderRating = `WM/ProviderRating`;
+export const g_wszWMProviderStyle = `WM/ProviderStyle`;
+export const g_wszWMContentDistributor = `WM/ContentDistributor`;
+export const g_wszWMSubscriptionContentID = `WM/SubscriptionContentID`;
+export const g_wszWMWMADRCPeakReference = `WM/WMADRCPeakReference`;
+export const g_wszWMWMADRCPeakTarget = `WM/WMADRCPeakTarget`;
+export const g_wszWMWMADRCAverageReference = `WM/WMADRCAverageReference`;
+export const g_wszWMWMADRCAverageTarget = `WM/WMADRCAverageTarget`;
+export const g_wszWMStreamTypeInfo = `WM/StreamTypeInfo`;
+export const g_wszWMPeakBitrate = `WM/PeakBitrate`;
+export const g_wszWMASFPacketCount = `WM/ASFPacketCount`;
+export const g_wszWMASFSecurityObjectsSize = `WM/ASFSecurityObjectsSize`;
+export const g_wszWMSharedUserRating = `WM/SharedUserRating`;
+export const g_wszWMSubTitleDescription = `WM/SubTitleDescription`;
+export const g_wszWMMediaCredits = `WM/MediaCredits`;
+export const g_wszWMParentalRatingReason = `WM/ParentalRatingReason`;
+export const g_wszWMOriginalReleaseTime = `WM/OriginalReleaseTime`;
+export const g_wszWMMediaStationCallSign = `WM/MediaStationCallSign`;
+export const g_wszWMMediaStationName = `WM/MediaStationName`;
+export const g_wszWMMediaNetworkAffiliation = `WM/MediaNetworkAffiliation`;
+export const g_wszWMMediaOriginalChannel = `WM/MediaOriginalChannel`;
+export const g_wszWMMediaOriginalBroadcastDateTime = `WM/MediaOriginalBroadcastDateTime`;
+export const g_wszWMMediaIsStereo = `WM/MediaIsStereo`;
+export const g_wszWMVideoClosedCaptioning = `WM/VideoClosedCaptioning`;
+export const g_wszWMMediaIsRepeat = `WM/MediaIsRepeat`;
+export const g_wszWMMediaIsLive = `WM/MediaIsLive`;
+export const g_wszWMMediaIsTape = `WM/MediaIsTape`;
+export const g_wszWMMediaIsDelay = `WM/MediaIsDelay`;
+export const g_wszWMMediaIsSubtitled = `WM/MediaIsSubtitled`;
+export const g_wszWMMediaIsPremiere = `WM/MediaIsPremiere`;
+export const g_wszWMMediaIsFinale = `WM/MediaIsFinale`;
+export const g_wszWMMediaIsSAP = `WM/MediaIsSAP`;
+export const g_wszWMProviderCopyright = `WM/ProviderCopyright`;
+export const g_wszWMISAN = `WM/ISAN`;
+export const g_wszWMADID = `WM/ADID`;
+export const g_wszWMWMShadowFileSourceFileType = `WM/WMShadowFileSourceFileType`;
+export const g_wszWMWMShadowFileSourceDRMType = `WM/WMShadowFileSourceDRMType`;
+export const g_wszWMWMCPDistributor = `WM/WMCPDistributor`;
+export const g_wszWMWMCPDistributorID = `WM/WMCPDistributorID`;
+export const g_wszWMSeasonNumber = `WM/SeasonNumber`;
+export const g_wszWMEpisodeNumber = `WM/EpisodeNumber`;
+export const g_wszEarlyDataDelivery = `EarlyDataDelivery`;
+export const g_wszJustInTimeDecode = `JustInTimeDecode`;
+export const g_wszSingleOutputBuffer = `SingleOutputBuffer`;
+export const g_wszSoftwareScaling = `SoftwareScaling`;
+export const g_wszDeliverOnReceive = `DeliverOnReceive`;
+export const g_wszScrambledAudio = `ScrambledAudio`;
+export const g_wszDedicatedDeliveryThread = `DedicatedDeliveryThread`;
+export const g_wszEnableDiscreteOutput = `EnableDiscreteOutput`;
+export const g_wszSpeakerConfig = `SpeakerConfig`;
+export const g_wszDynamicRangeControl = `DynamicRangeControl`;
+export const g_wszAllowInterlacedOutput = `AllowInterlacedOutput`;
+export const g_wszVideoSampleDurations = `VideoSampleDurations`;
+export const g_wszStreamLanguage = `StreamLanguage`;
+export const g_wszEnableWMAProSPDIFOutput = `EnableWMAProSPDIFOutput`;
+export const g_wszDeinterlaceMode = `DeinterlaceMode`;
+export const g_wszInitialPatternForInverseTelecine = `InitialPatternForInverseTelecine`;
+export const g_wszJPEGCompressionQuality = `JPEGCompressionQuality`;
+export const g_wszWatermarkCLSID = `WatermarkCLSID`;
+export const g_wszWatermarkConfig = `WatermarkConfig`;
+export const g_wszInterlacedCoding = `InterlacedCoding`;
+export const g_wszFixedFrameRate = `FixedFrameRate`;
+export const g_wszOriginalSourceFormatTag = `_SOURCEFORMATTAG`;
+export const g_wszOriginalWaveFormat = `_ORIGINALWAVEFORMAT`;
+export const g_wszEDL = `_EDL`;
+export const g_wszComplexity = `_COMPLEXITYEX`;
+export const g_wszDecoderComplexityRequested = `_DECODERCOMPLEXITYPROFILE`;
+export const g_wszReloadIndexOnSeek = `ReloadIndexOnSeek`;
+export const g_wszStreamNumIndexObjects = `StreamNumIndexObjects`;
+export const g_wszFailSeekOnError = `FailSeekOnError`;
+export const g_wszPermitSeeksBeyondEndOfStream = `PermitSeeksBeyondEndOfStream`;
+export const g_wszUsePacketAtSeekPoint = `UsePacketAtSeekPoint`;
+export const g_wszSourceBufferTime = `SourceBufferTime`;
+export const g_wszSourceMaxBytesAtOnce = `SourceMaxBytesAtOnce`;
+export const g_wszVBREnabled = `_VBRENABLED`;
+export const g_wszVBRQuality = `_VBRQUALITY`;
+export const g_wszVBRBitrateMax = `_RMAX`;
+export const g_wszVBRBufferWindowMax = `_BMAX`;
+export const g_wszVBRPeak = `VBR Peak`;
+export const g_wszBufferAverage = `Buffer Average`;
+export const g_wszComplexityMax = `_COMPLEXITYEXMAX`;
+export const g_wszComplexityOffline = `_COMPLEXITYEXOFFLINE`;
+export const g_wszComplexityLive = `_COMPLEXITYEXLIVE`;
+export const g_wszIsVBRSupported = `_ISVBRSUPPORTED`;
+export const g_wszNumPasses = `_PASSESUSED`;
+export const g_wszMusicSpeechClassMode = `MusicSpeechClassMode`;
+export const g_wszMusicClassMode = `MusicClassMode`;
+export const g_wszSpeechClassMode = `SpeechClassMode`;
+export const g_wszMixedClassMode = `MixedClassMode`;
+export const g_wszSpeechCaps = `SpeechFormatCap`;
+export const g_wszPeakValue = `PeakValue`;
+export const g_wszAverageLevel = `AverageLevel`;
+export const g_wszFold6To2Channels3 = `Fold6To2Channels3`;
+export const g_wszFoldToChannelsTemplate = `Fold%luTo%luChannels%lu`;
+export const g_wszDeviceConformanceTemplate = `DeviceConformanceTemplate`;
+export const g_wszEnableFrameInterpolation = `EnableFrameInterpolation`;
+export const g_wszNeedsPreviousSample = `NeedsPreviousSample`;
+export const g_wszWMIsCompilation = `WM/IsCompilation`;
 export const BUFFER_INVALID = 0;
 export const BUFFER_VALID = 1;
 export const BUFFER_SILENT = 2;
@@ -10557,9 +10669,9 @@ export const VideoControlFlag_FlipHorizontal = 1;
 export const VideoControlFlag_FlipVertical = 2;
 export const VideoControlFlag_ExternalTriggerEnable = 4;
 export const VideoControlFlag_Trigger = 8;
-export const AMTUNER_SUBCHAN_NO_TUNE = "-2";
-export const AMTUNER_SUBCHAN_DEFAULT = "-1";
-export const AMTUNER_HASNOSIGNALSTRENGTH = "-1";
+export const AMTUNER_SUBCHAN_NO_TUNE = `-2`;
+export const AMTUNER_SUBCHAN_DEFAULT = `-1`;
+export const AMTUNER_HASNOSIGNALSTRENGTH = `-1`;
 export const AMTUNER_NOSIGNAL = 0;
 export const AMTUNER_SIGNALPRESENT = 1;
 export const AMTUNER_MODE_DEFAULT = 0;
@@ -10946,7 +11058,7 @@ export const MEDIA_MPEG2_PSI = 2;
 export const MEDIA_TRANSPORT_PAYLOAD = 3;
 export const ISDBCAS_REQUEST_ID_EMG = 56;
 export const ISDBCAS_REQUEST_ID_EMD = 58;
-export const PID_OTHER = "-1";
+export const PID_OTHER = `-1`;
 export const PID_ELEMENTARY_STREAM = 0;
 export const PID_MPEG2_SECTION_PSI_SI = 1;
 export const DVB_Cable = 0;
@@ -10954,8 +11066,8 @@ export const DVB_Terrestrial = 1;
 export const DVB_Satellite = 2;
 export const ISDB_Terrestrial = 3;
 export const ISDB_Satellite = 4;
-export const BDA_UNDEFINED_CHANNEL = "-1";
-export const CategoryNotSet = "-1";
+export const BDA_UNDEFINED_CHANNEL = `-1`;
+export const CategoryNotSet = `-1`;
 export const CategoryOther = 0;
 export const CategoryVideo = 1;
 export const CategoryAudio = 2;
@@ -10968,7 +11080,7 @@ export const CATEGORY_COUNT = 8;
 export const StatusActive = 0;
 export const StatusInactive = 1;
 export const StatusUnavailable = 2;
-export const BDA_UNITIALIZED_MPEG2STREAMTYPE = "-1";
+export const BDA_UNITIALIZED_MPEG2STREAMTYPE = `-1`;
 export const Reserved1 = 0;
 export const ISO_IEC_11172_2_VIDEO = 1;
 export const ISO_IEC_13818_2_VIDEO = 2;
@@ -11005,7 +11117,7 @@ export const ISO_IEC_USER_PRIVATE = 128;
 export const DOLBY_AC3_AUDIO = 129;
 export const DOLBY_DIGITAL_PLUS_AUDIO_ATSC = 135;
 export const ATSCCT_AC3 = 1;
-export const BDA_BCC_RATE_NOT_SET = "-1";
+export const BDA_BCC_RATE_NOT_SET = `-1`;
 export const BDA_BCC_RATE_NOT_DEFINED = 0;
 export const BDA_BCC_RATE_1_2 = 1;
 export const BDA_BCC_RATE_2_3 = 2;
@@ -11022,7 +11134,7 @@ export const BDA_BCC_RATE_6_7 = 12;
 export const BDA_BCC_RATE_8_9 = 13;
 export const BDA_BCC_RATE_9_10 = 14;
 export const BDA_BCC_RATE_MAX = 15;
-export const BDA_FEC_METHOD_NOT_SET = "-1";
+export const BDA_FEC_METHOD_NOT_SET = `-1`;
 export const BDA_FEC_METHOD_NOT_DEFINED = 0;
 export const BDA_FEC_VITERBI = 1;
 export const BDA_FEC_RS_204_188 = 2;
@@ -11030,7 +11142,7 @@ export const BDA_FEC_LDPC = 3;
 export const BDA_FEC_BCH = 4;
 export const BDA_FEC_RS_147_130 = 5;
 export const BDA_FEC_MAX = 6;
-export const BDA_MOD_NOT_SET = "-1";
+export const BDA_MOD_NOT_SET = `-1`;
 export const BDA_MOD_NOT_DEFINED = 0;
 export const BDA_MOD_16QAM = 1;
 export const BDA_MOD_32QAM = 2;
@@ -11099,31 +11211,31 @@ export const BDA_SCAN_MOD_RF = 134217728;
 export const ScanModulationTypesMask_MCE_DigitalCable = 11;
 export const ScanModulationTypesMask_MCE_TerrestrialATSC = 23;
 export const ScanModulationTypesMask_MCE_AnalogTv = 28;
-export const ScanModulationTypesMask_MCE_All_TV = "-1";
+export const ScanModulationTypesMask_MCE_All_TV = `-1`;
 export const ScanModulationTypesMask_DVBC = 75;
 export const BDA_SCAN_MOD_16APSK = 268435456;
 export const BDA_SCAN_MOD_32APSK = 536870912;
-export const BDA_SPECTRAL_INVERSION_NOT_SET = "-1";
+export const BDA_SPECTRAL_INVERSION_NOT_SET = `-1`;
 export const BDA_SPECTRAL_INVERSION_NOT_DEFINED = 0;
 export const BDA_SPECTRAL_INVERSION_AUTOMATIC = 1;
 export const BDA_SPECTRAL_INVERSION_NORMAL = 2;
 export const BDA_SPECTRAL_INVERSION_INVERTED = 3;
 export const BDA_SPECTRAL_INVERSION_MAX = 4;
-export const BDA_POLARISATION_NOT_SET = "-1";
+export const BDA_POLARISATION_NOT_SET = `-1`;
 export const BDA_POLARISATION_NOT_DEFINED = 0;
 export const BDA_POLARISATION_LINEAR_H = 1;
 export const BDA_POLARISATION_LINEAR_V = 2;
 export const BDA_POLARISATION_CIRCULAR_L = 3;
 export const BDA_POLARISATION_CIRCULAR_R = 4;
 export const BDA_POLARISATION_MAX = 5;
-export const BDA_LNB_SOURCE_NOT_SET = "-1";
+export const BDA_LNB_SOURCE_NOT_SET = `-1`;
 export const BDA_LNB_SOURCE_NOT_DEFINED = 0;
 export const BDA_LNB_SOURCE_A = 1;
 export const BDA_LNB_SOURCE_B = 2;
 export const BDA_LNB_SOURCE_C = 3;
 export const BDA_LNB_SOURCE_D = 4;
 export const BDA_LNB_SOURCE_MAX = 5;
-export const BDA_GUARD_NOT_SET = "-1";
+export const BDA_GUARD_NOT_SET = `-1`;
 export const BDA_GUARD_NOT_DEFINED = 0;
 export const BDA_GUARD_1_32 = 1;
 export const BDA_GUARD_1_16 = 2;
@@ -11133,13 +11245,13 @@ export const BDA_GUARD_1_128 = 5;
 export const BDA_GUARD_19_128 = 6;
 export const BDA_GUARD_19_256 = 7;
 export const BDA_GUARD_MAX = 8;
-export const BDA_HALPHA_NOT_SET = "-1";
+export const BDA_HALPHA_NOT_SET = `-1`;
 export const BDA_HALPHA_NOT_DEFINED = 0;
 export const BDA_HALPHA_1 = 1;
 export const BDA_HALPHA_2 = 2;
 export const BDA_HALPHA_4 = 3;
 export const BDA_HALPHA_MAX = 4;
-export const BDA_XMIT_MODE_NOT_SET = "-1";
+export const BDA_XMIT_MODE_NOT_SET = `-1`;
 export const BDA_XMIT_MODE_NOT_DEFINED = 0;
 export const BDA_XMIT_MODE_2K = 1;
 export const BDA_XMIT_MODE_8K = 2;
@@ -11150,24 +11262,24 @@ export const BDA_XMIT_MODE_1K = 6;
 export const BDA_XMIT_MODE_16K = 7;
 export const BDA_XMIT_MODE_32K = 8;
 export const BDA_XMIT_MODE_MAX = 9;
-export const BDA_ROLL_OFF_NOT_SET = "-1";
+export const BDA_ROLL_OFF_NOT_SET = `-1`;
 export const BDA_ROLL_OFF_NOT_DEFINED = 0;
 export const BDA_ROLL_OFF_20 = 1;
 export const BDA_ROLL_OFF_25 = 2;
 export const BDA_ROLL_OFF_35 = 3;
 export const BDA_ROLL_OFF_MAX = 4;
-export const BDA_PILOT_NOT_SET = "-1";
+export const BDA_PILOT_NOT_SET = `-1`;
 export const BDA_PILOT_NOT_DEFINED = 0;
 export const BDA_PILOT_OFF = 1;
 export const BDA_PILOT_ON = 2;
 export const BDA_PILOT_MAX = 3;
-export const BDA_FREQUENCY_NOT_SET = "-1";
+export const BDA_FREQUENCY_NOT_SET = `-1`;
 export const BDA_FREQUENCY_NOT_DEFINED = 0;
-export const BDA_RANGE_NOT_SET = "-1";
+export const BDA_RANGE_NOT_SET = `-1`;
 export const BDA_RANGE_NOT_DEFINED = 0;
-export const BDA_CHAN_BANDWITH_NOT_SET = "-1";
+export const BDA_CHAN_BANDWITH_NOT_SET = `-1`;
 export const BDA_CHAN_BANDWITH_NOT_DEFINED = 0;
-export const BDA_FREQUENCY_MULTIPLIER_NOT_SET = "-1";
+export const BDA_FREQUENCY_MULTIPLIER_NOT_SET = `-1`;
 export const BDA_FREQUENCY_MULTIPLIER_NOT_DEFINED = 0;
 export const BDACOMP_NOT_DEFINED = 0;
 export const BDACOMP_EXCLUDE_TS_FROM_TR = 1;
@@ -11292,6 +11404,12 @@ export const AMMSF_RUN = 8;
 export const Disabled = 0;
 export const ReadData = 1;
 export const RenderData = 2;
+export const BI_RGB = 0;
+export const BI_RLE8 = 1;
+export const BI_RLE4 = 2;
+export const BI_BITFIELDS = 3;
+export const BI_JPEG = 4;
+export const BI_PNG = 5;
 export const AM_PROPERTY_FRAMESTEP_STEP = 1;
 export const AM_PROPERTY_FRAMESTEP_CANCEL = 2;
 export const AM_PROPERTY_FRAMESTEP_CANSTEP = 3;
@@ -11567,7 +11685,7 @@ export const DXVA2_SampleFlag_PlanarAlpha_Changed = 16;
 export const DXVA2_SampleFlag_RFF = 65536;
 export const DXVA2_SampleFlag_TFF = 131072;
 export const DXVA2_SampleFlag_RFF_TFF_Present = 262144;
-export const DXVA2_SampleFlagsMask = "-65505";
+export const DXVA2_SampleFlagsMask = `-65505`;
 export const DXVA2_DestinationFlag_Background_Changed = 1;
 export const DXVA2_DestinationFlag_TargetRect_Changed = 2;
 export const DXVA2_DestinationFlag_ColorData_Changed = 4;
@@ -11575,7 +11693,7 @@ export const DXVA2_DestinationFlag_Alpha_Changed = 8;
 export const DXVA2_DestinationFlag_RFF = 65536;
 export const DXVA2_DestinationFlag_TFF = 131072;
 export const DXVA2_DestinationFlag_RFF_TFF_Present = 262144;
-export const DXVA2_DestinationFlagMask = "-65521";
+export const DXVA2_DestinationFlagMask = `-65521`;
 export const AMPLAYLISTITEM_CANSKIP = 1;
 export const AMPLAYLISTITEM_CANBIND = 2;
 export const AMPLAYLIST_STARTINSCANMODE = 1;
@@ -11763,7 +11881,7 @@ export const TvRat_19 = 19;
 export const TvRat_20 = 20;
 export const TvRat_21 = 21;
 export const TvRat_kLevels = 22;
-export const TvRat_Unblock = "-1";
+export const TvRat_Unblock = `-1`;
 export const TvRat_LevelDontKnow = 255;
 export const MPAA_NotApplicable = 0;
 export const MPAA_G = 1;
@@ -11863,7 +11981,7 @@ export const REVOKED_MAX_TYPES = 4;
 export const EnTag_Remove = 0;
 export const EnTag_Once = 1;
 export const EnTag_Repeat = 2;
-export const COPP_Unknown = "-1";
+export const COPP_Unknown = `-1`;
 export const COPP_BadDriver = 0;
 export const COPP_NoCardHDCPSupport = 1;
 export const COPP_NoMonitorHDCPSupport = 2;
@@ -12194,8 +12312,8 @@ export const dvdMenu_Subpicture = 4;
 export const dvdMenu_Audio = 5;
 export const dvdMenu_Angle = 6;
 export const dvdMenu_Chapter = 7;
-export const dvdState_Undefined = "-2";
-export const dvdState_Unitialized = "-1";
+export const dvdState_Undefined = `-2`;
+export const dvdState_Unitialized = `-1`;
 export const dvdState_Stopped = 0;
 export const dvdState_Paused = 1;
 export const dvdState_Running = 2;
@@ -12282,7 +12400,7 @@ export const dslFullScreen = 3;
 export const dslHalfScreen = 4;
 export const dslQuarterScreen = 5;
 export const dslSixteenthScreen = 6;
-export const STATE_UNBUILT = "-1";
+export const STATE_UNBUILT = `-1`;
 export const STATE_STOP = 0;
 export const STATE_PAUSE = 1;
 export const STATE_PLAY = 2;
@@ -12369,7 +12487,7 @@ export const ChannelTypeSubtitles = 16;
 export const ChannelTypeCaptions = 32;
 export const ChannelTypeSuperimpose = 64;
 export const ChannelTypeData = 128;
-export const SignalAndServiceStatusSpanningEvent_None = "-1";
+export const SignalAndServiceStatusSpanningEvent_None = `-1`;
 export const SignalAndServiceStatusSpanningEvent_Clear = 0;
 export const SignalAndServiceStatusSpanningEvent_NoTVSignal = 1;
 export const SignalAndServiceStatusSpanningEvent_ServiceOffAir = 2;
@@ -12562,7 +12680,7 @@ export const SPDKL_DefaultLocation = 0;
 export const SPDKL_CurrentUser = 1;
 export const SPDKL_LocalMachine = 2;
 export const SPDKL_CurrentConfig = 5;
-export const SPSF_Default = "-1";
+export const SPSF_Default = `-1`;
 export const SPSF_NoAssignedFormat = 0;
 export const SPSF_Text = 1;
 export const SPSF_NonStandardFormat = 2;
@@ -12746,7 +12864,7 @@ export const SPDF_PRONUNCIATION = 32;
 export const SPDF_AUDIO = 64;
 export const SPDF_ALTERNATES = 128;
 export const SPDF_ALL = 255;
-export const SPPR_ALL_ELEMENTS = "-1";
+export const SPPR_ALL_ELEMENTS = `-1`;
 export const SPREF_AutoPause = 1;
 export const SPREF_Emulated = 2;
 export const SPREF_SMLTimeout = 4;
@@ -12754,7 +12872,7 @@ export const SPREF_ExtendableParse = 8;
 export const SPREF_ReSent = 16;
 export const SPREF_Hypothesis = 32;
 export const SPREF_FalseRecognition = 64;
-export const SPPS_NotOverriden = "-1";
+export const SPPS_NotOverriden = `-1`;
 export const SPPS_Unknown = 0;
 export const SPPS_Noun = 4096;
 export const SPPS_Verb = 8192;
@@ -12795,11 +12913,11 @@ export const eLEXTYPE_PRIVATE16 = 134217728;
 export const eLEXTYPE_PRIVATE17 = 268435456;
 export const eLEXTYPE_PRIVATE18 = 536870912;
 export const eLEXTYPE_PRIVATE19 = 1073741824;
-export const eLEXTYPE_PRIVATE20 = "-2147483648";
+export const eLEXTYPE_PRIVATE20 = `-2147483648`;
 export const eWORDTYPE_ADDED = 1;
 export const eWORDTYPE_DELETED = 2;
 export const ePRONFLAG_USED = 1;
-export const SPSHT_NotOverriden = "-1";
+export const SPSHT_NotOverriden = `-1`;
 export const SPSHT_Unknown = 0;
 export const SPSHT_EMAIL = 4096;
 export const SPSHT_OTHER = 8192;
@@ -12818,7 +12936,7 @@ export const SPRS_DONE = 1;
 export const SPRS_IS_SPEAKING = 2;
 export const SPMIN_VOLUME = 0;
 export const SPMAX_VOLUME = 100;
-export const SPMIN_RATE = "-10";
+export const SPMIN_RATE = `-10`;
 export const SPMAX_RATE = 10;
 export const SPVPRI_NORMAL = 0;
 export const SPVPRI_ALERT = 1;
@@ -12837,7 +12955,7 @@ export const SPF_PARSE_AUTODETECT = 0;
 export const SPF_NLP_MASK = 64;
 export const SPF_PARSE_MASK = 384;
 export const SPF_VOICE_MASK = 511;
-export const SPF_UNUSED_FLAGS = "-512";
+export const SPF_UNUSED_FLAGS = `-512`;
 export const SPXRO_SML = 0;
 export const SPXRO_Alternates_SML = 1;
 export const SPCF_NONE = 0;
@@ -12954,13 +13072,13 @@ export const STSF_CommonAppData = 35;
 export const STSF_FlagCreate = 32768;
 export const DISPID_SOTsCount = 1;
 export const DISPID_SOTsItem = 0;
-export const DISPID_SOTs_NewEnum = "-4";
+export const DISPID_SOTs_NewEnum = `-4`;
 export const DISPID_SOTCId = 1;
 export const DISPID_SOTCDefault = 2;
 export const DISPID_SOTCSetId = 3;
 export const DISPID_SOTCGetDataKey = 4;
 export const DISPID_SOTCEnumerateTokens = 5;
-export const SAFTDefault = "-1";
+export const SAFTDefault = `-1`;
 export const SAFTNoAssignedFormat = 0;
 export const SAFTText = 1;
 export const SAFTNonStandardFormat = 2;
@@ -13118,7 +13236,7 @@ export const SVSFParseAutodetect = 0;
 export const SVSFNLPMask = 64;
 export const SVSFParseMask = 384;
 export const SVSFVoiceMask = 511;
-export const SVSFUnusedFlags = "-512";
+export const SVSFUnusedFlags = `-512`;
 export const SVEStartInputStream = 2;
 export const SVEEndInputStream = 4;
 export const SVEVoiceChange = 8;
@@ -13350,7 +13468,7 @@ export const DISPID_SGRsCommit = 4;
 export const DISPID_SGRsCommitAndSave = 5;
 export const DISPID_SGRsFindRule = 6;
 export const DISPID_SGRsItem = 0;
-export const DISPID_SGRs_NewEnum = "-4";
+export const DISPID_SGRs_NewEnum = `-4`;
 export const DISPID_SGRSRule = 1;
 export const DISPID_SGRSTransitions = 2;
 export const DISPID_SGRSAddWordTransition = 3;
@@ -13361,7 +13479,7 @@ export const SSTTDictation = 2;
 export const SSTTTextBuffer = 3;
 export const DISPID_SGRSTsCount = 1;
 export const DISPID_SGRSTsItem = 0;
-export const DISPID_SGRSTs_NewEnum = "-4";
+export const DISPID_SGRSTs_NewEnum = `-4`;
 export const DISPID_SGRSTType = 1;
 export const DISPID_SGRSTText = 2;
 export const DISPID_SGRSTRule = 3;
@@ -13413,7 +13531,7 @@ export const DISPID_SPAPhraseInfo = 4;
 export const DISPID_SPACommit = 5;
 export const DISPID_SPAsCount = 1;
 export const DISPID_SPAsItem = 0;
-export const DISPID_SPAs_NewEnum = "-4";
+export const DISPID_SPAs_NewEnum = `-4`;
 export const DISPID_SPILanguageId = 1;
 export const DISPID_SPIGrammarId = 2;
 export const DISPID_SPIStartTime = 3;
@@ -13443,19 +13561,19 @@ export const DISPID_SPEDisplayAttributes = 10;
 export const DISPID_SPERequiredConfidence = 11;
 export const DISPID_SPEActualConfidence = 12;
 export const DISPID_SPEEngineConfidence = 13;
-export const SECLowConfidence = "-1";
+export const SECLowConfidence = `-1`;
 export const SECNormalConfidence = 0;
 export const SECHighConfidence = 1;
 export const DISPID_SPEsCount = 1;
 export const DISPID_SPEsItem = 0;
-export const DISPID_SPEs_NewEnum = "-4";
+export const DISPID_SPEs_NewEnum = `-4`;
 export const DISPID_SPRDisplayAttributes = 1;
 export const DISPID_SPRText = 2;
 export const DISPID_SPRFirstElement = 3;
 export const DISPID_SPRNumberOfElements = 4;
 export const DISPID_SPRsCount = 1;
 export const DISPID_SPRsItem = 0;
-export const DISPID_SPRs_NewEnum = "-4";
+export const DISPID_SPRs_NewEnum = `-4`;
 export const DISPID_SPPName = 1;
 export const DISPID_SPPId = 2;
 export const DISPID_SPPValue = 3;
@@ -13467,7 +13585,7 @@ export const DISPID_SPPParent = 8;
 export const DISPID_SPPChildren = 9;
 export const DISPID_SPPsCount = 1;
 export const DISPID_SPPsItem = 0;
-export const DISPID_SPPs_NewEnum = "-4";
+export const DISPID_SPPs_NewEnum = `-4`;
 export const DISPID_SPRuleName = 1;
 export const DISPID_SPRuleId = 2;
 export const DISPID_SPRuleFirstElement = 3;
@@ -13478,7 +13596,7 @@ export const DISPID_SPRuleConfidence = 7;
 export const DISPID_SPRuleEngineConfidence = 8;
 export const DISPID_SPRulesCount = 1;
 export const DISPID_SPRulesItem = 0;
-export const DISPID_SPRules_NewEnum = "-4";
+export const DISPID_SPRules_NewEnum = `-4`;
 export const DISPID_SLGenerationId = 1;
 export const DISPID_SLGetWords = 2;
 export const DISPID_SLAddPronunciation = 3;
@@ -13489,7 +13607,7 @@ export const DISPID_SLGetPronunciations = 7;
 export const DISPID_SLGetGenerationChange = 8;
 export const SLTUser = 1;
 export const SLTApp = 2;
-export const SPSNotOverriden = "-1";
+export const SPSNotOverriden = `-1`;
 export const SPSUnknown = 0;
 export const SPSNoun = 4096;
 export const SPSVerb = 8192;
@@ -13500,7 +13618,7 @@ export const SPSLMA = 28672;
 export const SPSSuppressWord = 61440;
 export const DISPID_SLWsCount = 1;
 export const DISPID_SLWsItem = 0;
-export const DISPID_SLWs_NewEnum = "-4";
+export const DISPID_SLWs_NewEnum = `-4`;
 export const SWTAdded = 1;
 export const SWTDeleted = 2;
 export const DISPID_SLWLangId = 1;
@@ -13509,7 +13627,7 @@ export const DISPID_SLWWord = 3;
 export const DISPID_SLWPronunciations = 4;
 export const DISPID_SLPsCount = 1;
 export const DISPID_SLPsItem = 0;
-export const DISPID_SLPs_NewEnum = "-4";
+export const DISPID_SLPs_NewEnum = `-4`;
 export const DISPID_SLPType = 1;
 export const DISPID_SLPLangId = 2;
 export const DISPID_SLPPartOfSpeech = 3;
@@ -13535,7 +13653,7 @@ export const ENUM_MODE_RAW = 0;
 export const ENUM_MODE_USE_DEVICE_PREF = 1;
 export const ENUM_MODE_METADATA_VIEWS = 2;
 export const WMDM_FORMATCODE_NOTUSED = 0;
-export const WMDM_FORMATCODE_ALLIMAGES = "-1";
+export const WMDM_FORMATCODE_ALLIMAGES = `-1`;
 export const WMDM_FORMATCODE_UNDEFINED = 12288;
 export const WMDM_FORMATCODE_ASSOCIATION = 12289;
 export const WMDM_FORMATCODE_SCRIPT = 12290;
@@ -13738,7 +13856,7 @@ export const WMT_PROXY_SETTING_BROWSER = 3;
 export const WMT_PROXY_SETTING_MAX = 4;
 export const WMT_CODECINFO_AUDIO = 0;
 export const WMT_CODECINFO_VIDEO = 1;
-export const WMT_CODECINFO_UNKNOWN = "-1";
+export const WMT_CODECINFO_UNKNOWN = `-1`;
 export const WM_DM_NOTINTERLACED = 0;
 export const WM_DM_DEINTERLACE_NORMAL = 1;
 export const WM_DM_DEINTERLACE_HALFSIZE = 2;
@@ -13948,9 +14066,9 @@ export const FDE_AUTH_FAILED = 14;
 export const FDE_INVALID_AUTH = 15;
 export const FEICF_READ_ITEM_COUNT_CHANGED = 1;
 export const FEICF_UNREAD_ITEM_COUNT_CHANGED = 2;
-export const FEC_E_ERRORBASE = "-1073479168";
-export const FEC_E_INVALIDMSXMLPROPERTY = "-1073479168";
-export const FEC_E_DOWNLOADSIZELIMITEXCEEDED = "-1073479167";
+export const FEC_E_ERRORBASE = `-1073479168`;
+export const FEC_E_INVALIDMSXMLPROPERTY = `-1073479168`;
+export const FEC_E_DOWNLOADSIZELIMITEXCEEDED = `-1073479167`;
 export const stop_state = 0;
 export const pause_state = 1;
 export const play_state = 2;
@@ -14703,7 +14821,7 @@ export const MetadataId_FrameIllumination = 6;
 export const MetadataId_DigitalWindow = 7;
 export const MetadataId_BackgroundSegmentationMask = 8;
 export const MetadataId_Standard_End = 8;
-export const MetadataId_Custom_Start = "-2147483648";
+export const MetadataId_Custom_Start = `-2147483648`;
 export const KSCAMERA_EXTENDEDPROP_FOCUSSTATE_UNINITIALIZED = 0;
 export const KSCAMERA_EXTENDEDPROP_FOCUSSTATE_LOST = 1;
 export const KSCAMERA_EXTENDEDPROP_FOCUSSTATE_SEARCHING = 2;
@@ -14723,7 +14841,7 @@ export const KSCAMERA_PERFRAMESETTING_ITEM_PHOTOCONFIRMATION = 6;
 export const KSCAMERA_PERFRAMESETTING_ITEM_CUSTOM = 7;
 export const KSPROPERTY_NETWORKCAMERACONTROL_NTPINFO_TYPE_DISABLE = 0;
 export const KSPROPERTY_NETWORKCAMERACONTROL_NTPINFO_TYPE_HOSTNTP = 1;
-export const KSPROPERYT_NETWORKCAMERACONTROL_NTPINFO_TYPE_CUSTOM = 2;
+export const KSPROPERTY_NETWORKCAMERACONTROL_NTPINFO_TYPE_CUSTOM = 2;
 export const KSPROPERTY_NETWORKCAMERACONTROL_NTP = 0;
 export const KSPROPERTY_NETWORKCAMERACONTROL_URI = 1;
 export const KSPROPERTY_NETWORKCAMERACONTROL_METADATA = 2;
@@ -15117,7 +15235,7 @@ export const DXGI_COLOR_SPACE_RGB_STUDIO_G24_NONE_P2020 = 21;
 export const DXGI_COLOR_SPACE_YCBCR_STUDIO_G24_LEFT_P709 = 22;
 export const DXGI_COLOR_SPACE_YCBCR_STUDIO_G24_LEFT_P2020 = 23;
 export const DXGI_COLOR_SPACE_YCBCR_STUDIO_G24_TOPLEFT_P2020 = 24;
-export const DXGI_COLOR_SPACE_CUSTOM = "-1";
+export const DXGI_COLOR_SPACE_CUSTOM = `-1`;
 export const D3D12_VIDEO_FRAME_CODED_INTERLACE_TYPE_NONE = 0;
 export const D3D12_VIDEO_FRAME_CODED_INTERLACE_TYPE_FIELD_BASED = 1;
 export const D3D12_FEATURE_VIDEO_DECODE_SUPPORT = 0;
@@ -15513,7 +15631,7 @@ export const DXVA_SampleFieldSingleEven = 5;
 export const DXVA_SampleFieldSingleOdd = 6;
 export const DXVA_SampleSubStream = 7;
 export const DXVA_VideoTransFuncShift = 27;
-export const DXVA_VideoTransFuncMask = "-134217728";
+export const DXVA_VideoTransFuncMask = `-134217728`;
 export const DXVA_VideoTransFunc_Unknown = 0;
 export const DXVA_VideoTransFunc_10 = 1;
 export const DXVA_VideoTransFunc_18 = 2;
@@ -15988,7 +16106,7 @@ export const DXVAHD_ITELECINE_CAPS_55 = 32;
 export const DXVAHD_ITELECINE_CAPS_64 = 64;
 export const DXVAHD_ITELECINE_CAPS_87 = 128;
 export const DXVAHD_ITELECINE_CAPS_222222222223 = 256;
-export const DXVAHD_ITELECINE_CAPS_OTHER = "-2147483648";
+export const DXVAHD_ITELECINE_CAPS_OTHER = `-2147483648`;
 export const DXVAHD_FILTER_BRIGHTNESS = 0;
 export const DXVAHD_FILTER_CONTRAST = 1;
 export const DXVAHD_FILTER_HUE = 2;
@@ -16189,7 +16307,7 @@ export const OPM_STATUS_LINK_LOST = 1;
 export const OPM_STATUS_RENEGOTIATION_REQUIRED = 2;
 export const OPM_STATUS_TAMPERING_DETECTED = 4;
 export const OPM_STATUS_REVOKED_HDCP_DEVICE_ATTACHED = 8;
-export const OPM_CONNECTOR_TYPE_OTHER = "-1";
+export const OPM_CONNECTOR_TYPE_OTHER = `-1`;
 export const OPM_CONNECTOR_TYPE_VGA = 0;
 export const OPM_CONNECTOR_TYPE_SVIDEO = 1;
 export const OPM_CONNECTOR_TYPE_COMPOSITE_VIDEO = 2;
@@ -16207,7 +16325,7 @@ export const OPM_CONNECTOR_TYPE_RESERVED = 14;
 export const OPM_CONNECTOR_TYPE_MIRACAST = 15;
 export const OPM_CONNECTOR_TYPE_TRANSPORT_AGNOSTIC_DIGITAL_MODE_A = 16;
 export const OPM_CONNECTOR_TYPE_TRANSPORT_AGNOSTIC_DIGITAL_MODE_B = 17;
-export const OPM_COPP_COMPATIBLE_CONNECTOR_TYPE_INTERNAL = "-2147483648";
+export const OPM_COPP_COMPATIBLE_CONNECTOR_TYPE_INTERNAL = `-2147483648`;
 export const OPM_DVI_CHARACTERISTIC_1_0 = 1;
 export const OPM_DVI_CHARACTERISTIC_1_1_OR_ABOVE = 2;
 export const OPM_OUTPUT_HARDWARE_PROTECTION_NOT_SUPPORTED = 0;
@@ -16222,8 +16340,8 @@ export const OPM_BUS_IMPLEMENTATION_MODIFIER_TRACKS_ON_MOTHER_BOARD_TO_CHIP = 13
 export const OPM_BUS_IMPLEMENTATION_MODIFIER_TRACKS_ON_MOTHER_BOARD_TO_SOCKET = 196608;
 export const OPM_BUS_IMPLEMENTATION_MODIFIER_DAUGHTER_BOARD_CONNECTOR = 262144;
 export const OPM_BUS_IMPLEMENTATION_MODIFIER_DAUGHTER_BOARD_CONNECTOR_INSIDE_OF_NUAE = 327680;
-export const OPM_BUS_IMPLEMENTATION_MODIFIER_NON_STANDARD = "-2147483648";
-export const OPM_COPP_COMPATIBLE_BUS_TYPE_INTEGRATED = "-2147483648";
+export const OPM_BUS_IMPLEMENTATION_MODIFIER_NON_STANDARD = `-2147483648`;
+export const OPM_COPP_COMPATIBLE_BUS_TYPE_INTEGRATED = `-2147483648`;
 export const OPM_DPCP_OFF = 0;
 export const OPM_DPCP_ON = 1;
 export const OPM_DPCP_FORCE_ULONG = 2147483647;
@@ -16245,7 +16363,7 @@ export const OPM_ACP_LEVEL_ONE = 1;
 export const OPM_ACP_LEVEL_TWO = 2;
 export const OPM_ACP_LEVEL_THREE = 3;
 export const OPM_ACP_FORCE_ULONG = 2147483647;
-export const OPM_PROTECTION_TYPE_OTHER = "-2147483648";
+export const OPM_PROTECTION_TYPE_OTHER = `-2147483648`;
 export const OPM_PROTECTION_TYPE_NONE = 0;
 export const OPM_PROTECTION_TYPE_COPP_COMPATIBLE_HDCP = 1;
 export const OPM_PROTECTION_TYPE_ACP = 2;
@@ -16549,7 +16667,7 @@ export const MF_PLUGIN_CONTROL_POLICY_USE_WEB_PLUGINS_EDGEMODE = 3;
 export const MF_STREAM_STATE_STOPPED = 0;
 export const MF_STREAM_STATE_PAUSED = 1;
 export const MF_STREAM_STATE_RUNNING = 2;
-export const MFT_INPUT_DATA_BUFFER_PLACEHOLDER = "-1";
+export const MFT_INPUT_DATA_BUFFER_PLACEHOLDER = `-1`;
 export const MFT_OUTPUT_DATA_BUFFER_INCOMPLETE = 16777216;
 export const MFT_OUTPUT_DATA_BUFFER_FORMAT_CHANGE = 256;
 export const MFT_OUTPUT_DATA_BUFFER_STREAM_END = 512;
@@ -16668,7 +16786,7 @@ export const MF_TOPOLOGY_OUTPUT_NODE = 0;
 export const MF_TOPOLOGY_SOURCESTREAM_NODE = 1;
 export const MF_TOPOLOGY_TRANSFORM_NODE = 2;
 export const MF_TOPOLOGY_TEE_NODE = 3;
-export const MF_TOPOLOGY_MAX = "-1";
+export const MF_TOPOLOGY_MAX = `-1`;
 export const MF_TOPONODE_FLUSH_ALWAYS = 0;
 export const MF_TOPONODE_FLUSH_SEEK = 1;
 export const MF_TOPONODE_FLUSH_NEVER = 2;
@@ -17137,13 +17255,13 @@ export const MF_SOURCE_READERF_CURRENTMEDIATYPECHANGED = 32;
 export const MF_SOURCE_READERF_STREAMTICK = 256;
 export const MF_SOURCE_READERF_ALLEFFECTSREMOVED = 512;
 export const MF_SOURCE_READER_CONTROLF_DRAIN = 1;
-export const MF_SOURCE_READER_INVALID_STREAM_INDEX = "-1";
-export const MF_SOURCE_READER_ALL_STREAMS = "-2";
-export const MF_SOURCE_READER_ANY_STREAM = "-2";
-export const MF_SOURCE_READER_FIRST_AUDIO_STREAM = "-3";
-export const MF_SOURCE_READER_FIRST_VIDEO_STREAM = "-4";
-export const MF_SOURCE_READER_MEDIASOURCE = "-1";
-export const MF_SOURCE_READER_CURRENT_TYPE_INDEX = "-1";
+export const MF_SOURCE_READER_INVALID_STREAM_INDEX = `-1`;
+export const MF_SOURCE_READER_ALL_STREAMS = `-2`;
+export const MF_SOURCE_READER_ANY_STREAM = `-2`;
+export const MF_SOURCE_READER_FIRST_AUDIO_STREAM = `-3`;
+export const MF_SOURCE_READER_FIRST_VIDEO_STREAM = `-4`;
+export const MF_SOURCE_READER_MEDIASOURCE = `-1`;
+export const MF_SOURCE_READER_CURRENT_TYPE_INDEX = `-1`;
 export const MF_SINK_WRITER_INVALID_STREAM_INDEX = 4294967295;
 export const MF_SINK_WRITER_ALL_STREAMS = 4294967294;
 export const MF_SINK_WRITER_MEDIASINK = 4294967295;
@@ -17264,7 +17382,7 @@ export const COPP_ACP_Level2 = 2;
 export const COPP_ACP_Level3 = 3;
 export const COPP_ACP_LevelMax = 3;
 export const COPP_ACP_ForceDWORD = 2147483647;
-export const COPP_ProtectionStandard_Unknown = "-2147483648";
+export const COPP_ProtectionStandard_Unknown = `-2147483648`;
 export const COPP_ProtectionStandard_None = 0;
 export const COPP_ProtectionStandard_IEC61880_525i = 1;
 export const COPP_ProtectionStandard_IEC61880_2_525i = 2;
@@ -17281,7 +17399,7 @@ export const COPP_ProtectionStandard_ARIBTRB15_525i = 2048;
 export const COPP_ProtectionStandard_ARIBTRB15_525p = 4096;
 export const COPP_ProtectionStandard_ARIBTRB15_750p = 8192;
 export const COPP_ProtectionStandard_ARIBTRB15_1125i = 16384;
-export const COPP_ProtectionStandard_Mask = "-2147450881";
+export const COPP_ProtectionStandard_Mask = `-2147450881`;
 export const COPP_ProtectionStandard_Reserved = 2147450880;
 export const COPP_AspectRatio_EN300294_FullFormat4by3 = 0;
 export const COPP_AspectRatio_EN300294_Box14by9Center = 1;
@@ -17295,10 +17413,10 @@ export const COPP_AspectRatio_ForceDWORD = 2147483647;
 export const COPP_StatusNormal = 0;
 export const COPP_LinkLost = 1;
 export const COPP_RenegotiationRequired = 2;
-export const COPP_StatusFlagsReserved = "-4";
+export const COPP_StatusFlagsReserved = `-4`;
 export const COPP_HDCPRepeater = 1;
-export const COPP_HDCPFlagsReserved = "-2";
-export const COPP_ConnectorType_Unknown = "-1";
+export const COPP_HDCPFlagsReserved = `-2`;
+export const COPP_ConnectorType_Unknown = `-1`;
 export const COPP_ConnectorType_VGA = 0;
 export const COPP_ConnectorType_SVideo = 1;
 export const COPP_ConnectorType_CompositeVideo = 2;
@@ -17308,14 +17426,14 @@ export const COPP_ConnectorType_HDMI = 5;
 export const COPP_ConnectorType_LVDS = 6;
 export const COPP_ConnectorType_TMDS = 7;
 export const COPP_ConnectorType_D_JPN = 8;
-export const COPP_ConnectorType_Internal = "-2147483648";
+export const COPP_ConnectorType_Internal = `-2147483648`;
 export const COPP_ConnectorType_ForceDWORD = 2147483647;
 export const COPP_BusType_Unknown = 0;
 export const COPP_BusType_PCI = 1;
 export const COPP_BusType_PCIX = 2;
 export const COPP_BusType_PCIExpress = 3;
 export const COPP_BusType_AGP = 4;
-export const COPP_BusType_Integrated = "-2147483648";
+export const COPP_BusType_Integrated = `-2147483648`;
 export const COPP_BusType_ForceDWORD = 2147483647;
 export const MF_TRANSFER_VIDEO_FRAME_DEFAULT = 0;
 export const MF_TRANSFER_VIDEO_FRAME_STRETCH = 1;
@@ -17339,6 +17457,29 @@ export const sizeofPROPERTYKEY = 16;
 
 export function allocPROPERTYKEY(data?: Partial<PROPERTYKEY>): Uint8Array {
   const buf = new Uint8Array(sizeofPROPERTYKEY);
+  const view = new DataView(buf.buffer);
+  // 0x00: pointer
+  if (data?.fmtid !== undefined) view.setBigUint64(0, data.fmtid === null ? 0n : BigInt(util.toPointer(data.fmtid)), true);
+  // 0x08: u32
+  if (data?.pid !== undefined) view.setUint32(8, Number(data.pid), true);
+  // 0x0c: pad4
+  return buf;
+}
+
+/**
+ * Windows.Win32.Devices.Properties.DEVPROPKEY (size: 16)
+ */
+export interface DEVPROPKEY {
+  /** System.Guid */
+  fmtid: Uint8Array | Deno.PointerValue | null;
+  /** u32 */
+  pid: number;
+}
+
+export const sizeofDEVPROPKEY = 16;
+
+export function allocDEVPROPKEY(data?: Partial<DEVPROPKEY>): Uint8Array {
+  const buf = new Uint8Array(sizeofDEVPROPKEY);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
   if (data?.fmtid !== undefined) view.setBigUint64(0, data.fmtid === null ? 0n : BigInt(util.toPointer(data.fmtid)), true);
@@ -17816,8 +17957,8 @@ export interface AUDIO_SYSTEMEFFECTS_PROPERTY_CHANGE_NOTIFICATION {
   endpoint: Uint8Array | Deno.PointerValue | null;
   /** System.Guid */
   propertyStoreContext: Uint8Array | Deno.PointerValue | null;
-  /** Windows.Win32.Media.Audio.__MIDL___MIDL_itf_mmdeviceapi_0000_0008_0002 */
-  propertyStoreType: __MIDL___MIDL_itf_mmdeviceapi_0000_0008_0002;
+  /** Windows.Win32.Media.Audio.AUDIO_SYSTEMEFFECTS_PROPERTYSTORE_TYPE */
+  propertyStoreType: AUDIO_SYSTEMEFFECTS_PROPERTYSTORE_TYPE;
   /** Windows.Win32.UI.Shell.PropertiesSystem.IPropertyStore */
   propertyStore: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.UI.Shell.PropertiesSystem.PROPERTYKEY */
@@ -18291,9 +18432,9 @@ export function allocPOOLTABLE(data?: Partial<POOLTABLE>): Uint8Array {
 }
 
 /**
- * Windows.Win32.Media.Audio.DirectMusic._rwsmp (size: 24)
+ * Windows.Win32.Media.Audio.DirectMusic.WSMPL (size: 24)
  */
-export interface _rwsmp {
+export interface WSMPL {
   /** u32 */
   cbSize: number;
   /** u16 */
@@ -18308,10 +18449,10 @@ export interface _rwsmp {
   cSampleLoops: number;
 }
 
-export const sizeof_rwsmp = 24;
+export const sizeofWSMPL = 24;
 
-export function alloc_rwsmp(data?: Partial<_rwsmp>): Uint8Array {
-  const buf = new Uint8Array(sizeof_rwsmp);
+export function allocWSMPL(data?: Partial<WSMPL>): Uint8Array {
+  const buf = new Uint8Array(sizeofWSMPL);
   const view = new DataView(buf.buffer);
   // 0x00: u32
   if (data?.cbSize !== undefined) view.setUint32(0, Number(data.cbSize), true);
@@ -18330,9 +18471,9 @@ export function alloc_rwsmp(data?: Partial<_rwsmp>): Uint8Array {
 }
 
 /**
- * Windows.Win32.Media.Audio.DirectMusic._rloop (size: 16)
+ * Windows.Win32.Media.Audio.DirectMusic.WLOOP (size: 16)
  */
-export interface _rloop {
+export interface WLOOP {
   /** u32 */
   cbSize: number;
   /** u32 */
@@ -18343,10 +18484,10 @@ export interface _rloop {
   ulLength: number;
 }
 
-export const sizeof_rloop = 16;
+export const sizeofWLOOP = 16;
 
-export function alloc_rloop(data?: Partial<_rloop>): Uint8Array {
-  const buf = new Uint8Array(sizeof_rloop);
+export function allocWLOOP(data?: Partial<WLOOP>): Uint8Array {
+  const buf = new Uint8Array(sizeofWLOOP);
   const view = new DataView(buf.buffer);
   // 0x00: u32
   if (data?.cbSize !== undefined) view.setUint32(0, Number(data.cbSize), true);
@@ -18465,7 +18606,7 @@ export interface DMUS_REGION {
   ulFirstExtCkIdx: number;
   /** Windows.Win32.Media.Audio.DirectMusic.WAVELINK */
   WaveLink: Uint8Array | Deno.PointerValue | null;
-  /** Windows.Win32.Media.Audio.DirectMusic._rwsmp */
+  /** Windows.Win32.Media.Audio.DirectMusic.WSMPL */
   WSMP: Uint8Array | Deno.PointerValue | null;
   /** array */
   WLOOP: Deno.PointerValue | null;
@@ -19065,9 +19206,9 @@ export function allocDMUS_PORTCAPS(data?: Partial<DMUS_PORTCAPS>): Uint8Array {
 }
 
 /**
- * Windows.Win32.Media.Audio.DirectMusic._DMUS_PORTPARAMS (size: 32)
+ * Windows.Win32.Media.Audio.DirectMusic.DMUS_PORTPARAMS7 (size: 32)
  */
-export interface _DMUS_PORTPARAMS {
+export interface DMUS_PORTPARAMS7 {
   /** u32 */
   dwSize: number;
   /** u32 */
@@ -19086,10 +19227,10 @@ export interface _DMUS_PORTPARAMS {
   fShare: boolean;
 }
 
-export const sizeof_DMUS_PORTPARAMS = 32;
+export const sizeofDMUS_PORTPARAMS7 = 32;
 
-export function alloc_DMUS_PORTPARAMS(data?: Partial<_DMUS_PORTPARAMS>): Uint8Array {
-  const buf = new Uint8Array(sizeof_DMUS_PORTPARAMS);
+export function allocDMUS_PORTPARAMS7(data?: Partial<DMUS_PORTPARAMS7>): Uint8Array {
+  const buf = new Uint8Array(sizeofDMUS_PORTPARAMS7);
   const view = new DataView(buf.buffer);
   // 0x00: u32
   if (data?.dwSize !== undefined) view.setUint32(0, Number(data.dwSize), true);
@@ -19659,9 +19800,9 @@ export function allocDSPROPERTY_DIRECTSOUNDDEVICE_ENUMERATE_W_DATA(data?: Partia
 }
 
 /**
- * Windows.Win32.Media.Audio.DirectMusic.Tag_DVAudInfo (size: 40)
+ * Windows.Win32.Media.Audio.DirectMusic.DVAudInfo (size: 40)
  */
-export interface Tag_DVAudInfo {
+export interface DVAudInfo {
   /** array */
   bAudStyle: Deno.PointerValue | null;
   /** array */
@@ -19678,10 +19819,10 @@ export interface Tag_DVAudInfo {
   wBlkDiv: number;
 }
 
-export const sizeofTag_DVAudInfo = 40;
+export const sizeofDVAudInfo = 40;
 
-export function allocTag_DVAudInfo(data?: Partial<Tag_DVAudInfo>): Uint8Array {
-  const buf = new Uint8Array(sizeofTag_DVAudInfo);
+export function allocDVAudInfo(data?: Partial<DVAudInfo>): Uint8Array {
+  const buf = new Uint8Array(sizeofDVAudInfo);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
   if (data?.bAudStyle !== undefined) view.setBigUint64(0, data.bAudStyle === null ? 0n : BigInt(util.toPointer(data.bAudStyle)), true);
@@ -21307,58 +21448,6 @@ export function allocAMVPDATAINFO(data?: Partial<AMVPDATAINFO>): Uint8Array {
 }
 
 /**
- * Windows.Win32.Media.DirectShow.AM_MEDIA_TYPE (size: 64)
- */
-export interface AM_MEDIA_TYPE {
-  /** System.Guid */
-  majortype: Uint8Array | Deno.PointerValue | null;
-  /** System.Guid */
-  subtype: Uint8Array | Deno.PointerValue | null;
-  /** Windows.Win32.Foundation.BOOL */
-  bFixedSizeSamples: boolean;
-  /** Windows.Win32.Foundation.BOOL */
-  bTemporalCompression: boolean;
-  /** u32 */
-  lSampleSize: number;
-  /** System.Guid */
-  formattype: Uint8Array | Deno.PointerValue | null;
-  /** Windows.Win32.System.Com.IUnknown */
-  pUnk: Uint8Array | Deno.PointerValue | null;
-  /** u32 */
-  cbFormat: number;
-  /** ptr */
-  pbFormat: Deno.PointerValue | Uint8Array | null;
-}
-
-export const sizeofAM_MEDIA_TYPE = 64;
-
-export function allocAM_MEDIA_TYPE(data?: Partial<AM_MEDIA_TYPE>): Uint8Array {
-  const buf = new Uint8Array(sizeofAM_MEDIA_TYPE);
-  const view = new DataView(buf.buffer);
-  // 0x00: pointer
-  if (data?.majortype !== undefined) view.setBigUint64(0, data.majortype === null ? 0n : BigInt(util.toPointer(data.majortype)), true);
-  // 0x08: pointer
-  if (data?.subtype !== undefined) view.setBigUint64(8, data.subtype === null ? 0n : BigInt(util.toPointer(data.subtype)), true);
-  // 0x10: i32
-  if (data?.bFixedSizeSamples !== undefined) view.setInt32(16, Number(data.bFixedSizeSamples), true);
-  // 0x14: i32
-  if (data?.bTemporalCompression !== undefined) view.setInt32(20, Number(data.bTemporalCompression), true);
-  // 0x18: u32
-  if (data?.lSampleSize !== undefined) view.setUint32(24, Number(data.lSampleSize), true);
-  // 0x1c: pad4
-  // 0x20: pointer
-  if (data?.formattype !== undefined) view.setBigUint64(32, data.formattype === null ? 0n : BigInt(util.toPointer(data.formattype)), true);
-  // 0x28: pointer
-  if (data?.pUnk !== undefined) view.setBigUint64(40, data.pUnk === null ? 0n : BigInt(util.toPointer(data.pUnk)), true);
-  // 0x30: u32
-  if (data?.cbFormat !== undefined) view.setUint32(48, Number(data.cbFormat), true);
-  // 0x34: pad4
-  // 0x38: pointer
-  if (data?.pbFormat !== undefined) view.setBigUint64(56, data.pbFormat === null ? 0n : BigInt(util.toPointer(data.pbFormat)), true);
-  return buf;
-}
-
-/**
  * Windows.Win32.Media.DirectShow.ALLOCATOR_PROPERTIES (size: 16)
  */
 export interface ALLOCATOR_PROPERTIES {
@@ -21723,21 +21812,23 @@ export function allocQuality(data?: Partial<Quality>): Uint8Array {
   return buf;
 }
 
+export type COLORREF = number;
+
 /**
- * Windows.Win32.Media.DirectShow.COLORKEY (size: 16)
+ * Windows.Win32.Media.DirectShow.COLORKEY (size: 24)
  */
 export interface COLORKEY {
   /** u32 */
   KeyType: number;
   /** u32 */
   PaletteIndex: number;
-  /** u32 */
-  LowColorValue: number;
-  /** u32 */
-  HighColorValue: number;
+  /** Windows.Win32.Foundation.COLORREF */
+  LowColorValue: Uint8Array | Deno.PointerValue | null;
+  /** Windows.Win32.Foundation.COLORREF */
+  HighColorValue: Uint8Array | Deno.PointerValue | null;
 }
 
-export const sizeofCOLORKEY = 16;
+export const sizeofCOLORKEY = 24;
 
 export function allocCOLORKEY(data?: Partial<COLORKEY>): Uint8Array {
   const buf = new Uint8Array(sizeofCOLORKEY);
@@ -21746,10 +21837,10 @@ export function allocCOLORKEY(data?: Partial<COLORKEY>): Uint8Array {
   if (data?.KeyType !== undefined) view.setUint32(0, Number(data.KeyType), true);
   // 0x04: u32
   if (data?.PaletteIndex !== undefined) view.setUint32(4, Number(data.PaletteIndex), true);
-  // 0x08: u32
-  if (data?.LowColorValue !== undefined) view.setUint32(8, Number(data.LowColorValue), true);
-  // 0x0c: u32
-  if (data?.HighColorValue !== undefined) view.setUint32(12, Number(data.HighColorValue), true);
+  // 0x08: pointer
+  if (data?.LowColorValue !== undefined) view.setBigUint64(8, data.LowColorValue === null ? 0n : BigInt(util.toPointer(data.LowColorValue)), true);
+  // 0x10: pointer
+  if (data?.HighColorValue !== undefined) view.setBigUint64(16, data.HighColorValue === null ? 0n : BigInt(util.toPointer(data.HighColorValue)), true);
   return buf;
 }
 
@@ -22516,7 +22607,7 @@ export function allocVMRDeinterlaceCaps(data?: Partial<VMRDeinterlaceCaps>): Uin
 export type HDC = Deno.PointerValue;
 
 /**
- * Windows.Win32.Media.DirectShow.VMRALPHABITMAP (size: 48)
+ * Windows.Win32.Media.DirectShow.VMRALPHABITMAP (size: 56)
  */
 export interface VMRALPHABITMAP {
   /** u32 */
@@ -22531,11 +22622,11 @@ export interface VMRALPHABITMAP {
   rDest: Uint8Array | Deno.PointerValue | null;
   /** f32 */
   fAlpha: number;
-  /** u32 */
-  clrSrcKey: number;
+  /** Windows.Win32.Foundation.COLORREF */
+  clrSrcKey: Uint8Array | Deno.PointerValue | null;
 }
 
-export const sizeofVMRALPHABITMAP = 48;
+export const sizeofVMRALPHABITMAP = 56;
 
 export function allocVMRALPHABITMAP(data?: Partial<VMRALPHABITMAP>): Uint8Array {
   const buf = new Uint8Array(sizeofVMRALPHABITMAP);
@@ -22553,8 +22644,9 @@ export function allocVMRALPHABITMAP(data?: Partial<VMRALPHABITMAP>): Uint8Array 
   if (data?.rDest !== undefined) view.setBigUint64(32, data.rDest === null ? 0n : BigInt(util.toPointer(data.rDest)), true);
   // 0x28: f32
   if (data?.fAlpha !== undefined) view.setFloat32(40, Number(data.fAlpha), true);
-  // 0x2c: u32
-  if (data?.clrSrcKey !== undefined) view.setUint32(44, Number(data.clrSrcKey), true);
+  // 0x2c: pad4
+  // 0x30: pointer
+  if (data?.clrSrcKey !== undefined) view.setBigUint64(48, data.clrSrcKey === null ? 0n : BigInt(util.toPointer(data.clrSrcKey)), true);
   return buf;
 }
 
@@ -25155,8 +25247,8 @@ export interface BITMAPINFOHEADER {
   biPlanes: number;
   /** u16 */
   biBitCount: number;
-  /** u32 */
-  biCompression: number;
+  /** Windows.Win32.Graphics.Gdi.BI_COMPRESSION */
+  biCompression: BI_COMPRESSION;
   /** u32 */
   biSizeImage: number;
   /** i32 */
@@ -25184,8 +25276,8 @@ export function allocBITMAPINFOHEADER(data?: Partial<BITMAPINFOHEADER>): Uint8Ar
   if (data?.biPlanes !== undefined) view.setUint16(12, Number(data.biPlanes), true);
   // 0x0e: u16
   if (data?.biBitCount !== undefined) view.setUint16(14, Number(data.biBitCount), true);
-  // 0x10: u32
-  if (data?.biCompression !== undefined) view.setUint32(16, Number(data.biCompression), true);
+  // 0x10: i32
+  if (data?.biCompression !== undefined) view.setInt32(16, Number(data.biCompression), true);
   // 0x14: u32
   if (data?.biSizeImage !== undefined) view.setUint32(20, Number(data.biSizeImage), true);
   // 0x18: i32
@@ -25196,44 +25288,6 @@ export function allocBITMAPINFOHEADER(data?: Partial<BITMAPINFOHEADER>): Uint8Ar
   if (data?.biClrUsed !== undefined) view.setUint32(32, Number(data.biClrUsed), true);
   // 0x24: u32
   if (data?.biClrImportant !== undefined) view.setUint32(36, Number(data.biClrImportant), true);
-  return buf;
-}
-
-/**
- * Windows.Win32.Media.DirectShow.VIDEOINFOHEADER (size: 40)
- */
-export interface VIDEOINFOHEADER {
-  /** Windows.Win32.Foundation.RECT */
-  rcSource: Uint8Array | Deno.PointerValue | null;
-  /** Windows.Win32.Foundation.RECT */
-  rcTarget: Uint8Array | Deno.PointerValue | null;
-  /** u32 */
-  dwBitRate: number;
-  /** u32 */
-  dwBitErrorRate: number;
-  /** i64 */
-  AvgTimePerFrame: Deno.PointerValue;
-  /** Windows.Win32.Graphics.Gdi.BITMAPINFOHEADER */
-  bmiHeader: Uint8Array | Deno.PointerValue | null;
-}
-
-export const sizeofVIDEOINFOHEADER = 40;
-
-export function allocVIDEOINFOHEADER(data?: Partial<VIDEOINFOHEADER>): Uint8Array {
-  const buf = new Uint8Array(sizeofVIDEOINFOHEADER);
-  const view = new DataView(buf.buffer);
-  // 0x00: pointer
-  if (data?.rcSource !== undefined) view.setBigUint64(0, data.rcSource === null ? 0n : BigInt(util.toPointer(data.rcSource)), true);
-  // 0x08: pointer
-  if (data?.rcTarget !== undefined) view.setBigUint64(8, data.rcTarget === null ? 0n : BigInt(util.toPointer(data.rcTarget)), true);
-  // 0x10: u32
-  if (data?.dwBitRate !== undefined) view.setUint32(16, Number(data.dwBitRate), true);
-  // 0x14: u32
-  if (data?.dwBitErrorRate !== undefined) view.setUint32(20, Number(data.dwBitErrorRate), true);
-  // 0x18: i64
-  if (data?.AvgTimePerFrame !== undefined) view.setBigInt64(24, BigInt(data.AvgTimePerFrame), true);
-  // 0x20: pointer
-  if (data?.bmiHeader !== undefined) view.setBigUint64(32, data.bmiHeader === null ? 0n : BigInt(util.toPointer(data.bmiHeader)), true);
   return buf;
 }
 
@@ -25276,36 +25330,6 @@ export function allocVIDEOINFO(data?: Partial<VIDEOINFO>): Uint8Array {
   if (data?.bmiHeader !== undefined) view.setBigUint64(32, data.bmiHeader === null ? 0n : BigInt(util.toPointer(data.bmiHeader)), true);
   // 0x28: pointer
   if (data?.Anonymous !== undefined) view.setBigUint64(40, data.Anonymous === null ? 0n : BigInt(util.toPointer(data.Anonymous)), true);
-  return buf;
-}
-
-/**
- * Windows.Win32.Media.DirectShow.MPEG1VIDEOINFO (size: 24)
- */
-export interface MPEG1VIDEOINFO {
-  /** Windows.Win32.Media.DirectShow.VIDEOINFOHEADER */
-  hdr: Uint8Array | Deno.PointerValue | null;
-  /** u32 */
-  dwStartTimeCode: number;
-  /** u32 */
-  cbSequenceHeader: number;
-  /** array */
-  bSequenceHeader: Deno.PointerValue | null;
-}
-
-export const sizeofMPEG1VIDEOINFO = 24;
-
-export function allocMPEG1VIDEOINFO(data?: Partial<MPEG1VIDEOINFO>): Uint8Array {
-  const buf = new Uint8Array(sizeofMPEG1VIDEOINFO);
-  const view = new DataView(buf.buffer);
-  // 0x00: pointer
-  if (data?.hdr !== undefined) view.setBigUint64(0, data.hdr === null ? 0n : BigInt(util.toPointer(data.hdr)), true);
-  // 0x08: u32
-  if (data?.dwStartTimeCode !== undefined) view.setUint32(8, Number(data.dwStartTimeCode), true);
-  // 0x0c: u32
-  if (data?.cbSequenceHeader !== undefined) view.setUint32(12, Number(data.cbSequenceHeader), true);
-  // 0x10: pointer
-  if (data?.bSequenceHeader !== undefined) view.setBigUint64(16, data.bSequenceHeader === null ? 0n : BigInt(util.toPointer(data.bSequenceHeader)), true);
   return buf;
 }
 
@@ -25363,6 +25387,58 @@ export function allocAM_FRAMESTEP_STEP(data?: Partial<AM_FRAMESTEP_STEP>): Uint8
 }
 
 /**
+ * Windows.Win32.Media.MediaFoundation.AM_MEDIA_TYPE (size: 64)
+ */
+export interface AM_MEDIA_TYPE {
+  /** System.Guid */
+  majortype: Uint8Array | Deno.PointerValue | null;
+  /** System.Guid */
+  subtype: Uint8Array | Deno.PointerValue | null;
+  /** Windows.Win32.Foundation.BOOL */
+  bFixedSizeSamples: boolean;
+  /** Windows.Win32.Foundation.BOOL */
+  bTemporalCompression: boolean;
+  /** u32 */
+  lSampleSize: number;
+  /** System.Guid */
+  formattype: Uint8Array | Deno.PointerValue | null;
+  /** Windows.Win32.System.Com.IUnknown */
+  pUnk: Uint8Array | Deno.PointerValue | null;
+  /** u32 */
+  cbFormat: number;
+  /** ptr */
+  pbFormat: Deno.PointerValue | Uint8Array | null;
+}
+
+export const sizeofAM_MEDIA_TYPE = 64;
+
+export function allocAM_MEDIA_TYPE(data?: Partial<AM_MEDIA_TYPE>): Uint8Array {
+  const buf = new Uint8Array(sizeofAM_MEDIA_TYPE);
+  const view = new DataView(buf.buffer);
+  // 0x00: pointer
+  if (data?.majortype !== undefined) view.setBigUint64(0, data.majortype === null ? 0n : BigInt(util.toPointer(data.majortype)), true);
+  // 0x08: pointer
+  if (data?.subtype !== undefined) view.setBigUint64(8, data.subtype === null ? 0n : BigInt(util.toPointer(data.subtype)), true);
+  // 0x10: i32
+  if (data?.bFixedSizeSamples !== undefined) view.setInt32(16, Number(data.bFixedSizeSamples), true);
+  // 0x14: i32
+  if (data?.bTemporalCompression !== undefined) view.setInt32(20, Number(data.bTemporalCompression), true);
+  // 0x18: u32
+  if (data?.lSampleSize !== undefined) view.setUint32(24, Number(data.lSampleSize), true);
+  // 0x1c: pad4
+  // 0x20: pointer
+  if (data?.formattype !== undefined) view.setBigUint64(32, data.formattype === null ? 0n : BigInt(util.toPointer(data.formattype)), true);
+  // 0x28: pointer
+  if (data?.pUnk !== undefined) view.setBigUint64(40, data.pUnk === null ? 0n : BigInt(util.toPointer(data.pUnk)), true);
+  // 0x30: u32
+  if (data?.cbFormat !== undefined) view.setUint32(48, Number(data.cbFormat), true);
+  // 0x34: pad4
+  // 0x38: pointer
+  if (data?.pbFormat !== undefined) view.setBigUint64(56, data.pbFormat === null ? 0n : BigInt(util.toPointer(data.pbFormat)), true);
+  return buf;
+}
+
+/**
  * Windows.Win32.Media.DirectShow.AM_MPEGSTREAMTYPE (size: 24)
  */
 export interface AM_MPEGSTREAMTYPE {
@@ -25370,7 +25446,7 @@ export interface AM_MPEGSTREAMTYPE {
   dwStreamId: number;
   /** u32 */
   dwReserved: number;
-  /** Windows.Win32.Media.DirectShow.AM_MEDIA_TYPE */
+  /** Windows.Win32.Media.MediaFoundation.AM_MEDIA_TYPE */
   mt: Uint8Array | Deno.PointerValue | null;
   /** array */
   bFormat: Deno.PointerValue | null;
@@ -25622,7 +25698,7 @@ export function allocVMR9ProcAmpControlRange(data?: Partial<VMR9ProcAmpControlRa
 }
 
 /**
- * Windows.Win32.Media.DirectShow.VMR9AlphaBitmap (size: 56)
+ * Windows.Win32.Media.DirectShow.VMR9AlphaBitmap (size: 64)
  */
 export interface VMR9AlphaBitmap {
   /** u32 */
@@ -25637,13 +25713,13 @@ export interface VMR9AlphaBitmap {
   rDest: Uint8Array | Deno.PointerValue | null;
   /** f32 */
   fAlpha: number;
-  /** u32 */
-  clrSrcKey: number;
+  /** Windows.Win32.Foundation.COLORREF */
+  clrSrcKey: Uint8Array | Deno.PointerValue | null;
   /** u32 */
   dwFilterMode: number;
 }
 
-export const sizeofVMR9AlphaBitmap = 56;
+export const sizeofVMR9AlphaBitmap = 64;
 
 export function allocVMR9AlphaBitmap(data?: Partial<VMR9AlphaBitmap>): Uint8Array {
   const buf = new Uint8Array(sizeofVMR9AlphaBitmap);
@@ -25661,11 +25737,12 @@ export function allocVMR9AlphaBitmap(data?: Partial<VMR9AlphaBitmap>): Uint8Arra
   if (data?.rDest !== undefined) view.setBigUint64(32, data.rDest === null ? 0n : BigInt(util.toPointer(data.rDest)), true);
   // 0x28: f32
   if (data?.fAlpha !== undefined) view.setFloat32(40, Number(data.fAlpha), true);
-  // 0x2c: u32
-  if (data?.clrSrcKey !== undefined) view.setUint32(44, Number(data.clrSrcKey), true);
-  // 0x30: u32
-  if (data?.dwFilterMode !== undefined) view.setUint32(48, Number(data.dwFilterMode), true);
-  // 0x34: pad4
+  // 0x2c: pad4
+  // 0x30: pointer
+  if (data?.clrSrcKey !== undefined) view.setBigUint64(48, data.clrSrcKey === null ? 0n : BigInt(util.toPointer(data.clrSrcKey)), true);
+  // 0x38: u32
+  if (data?.dwFilterMode !== undefined) view.setUint32(56, Number(data.dwFilterMode), true);
+  // 0x3c: pad4
   return buf;
 }
 
@@ -26416,9 +26493,9 @@ export function allocAVITIMEDINDEX_ENTRY(data?: Partial<AVITIMEDINDEX_ENTRY>): U
 }
 
 /**
- * Windows.Win32.Media.DirectShow._avitimedindex (size: 56)
+ * Windows.Win32.Media.DirectShow.AVITIMEDINDEX (size: 56)
  */
-export interface _avitimedindex {
+export interface AVITIMEDINDEX {
   /** u32 */
   fcc: number;
   /** u32 */
@@ -26443,10 +26520,10 @@ export interface _avitimedindex {
   adwTrailingFill: Deno.PointerValue | null;
 }
 
-export const sizeof_avitimedindex = 56;
+export const sizeofAVITIMEDINDEX = 56;
 
-export function alloc_avitimedindex(data?: Partial<_avitimedindex>): Uint8Array {
-  const buf = new Uint8Array(sizeof_avitimedindex);
+export function allocAVITIMEDINDEX(data?: Partial<AVITIMEDINDEX>): Uint8Array {
+  const buf = new Uint8Array(sizeofAVITIMEDINDEX);
   const view = new DataView(buf.buffer);
   // 0x00: u32
   if (data?.fcc !== undefined) view.setUint32(0, Number(data.fcc), true);
@@ -26562,9 +26639,9 @@ export function allocAVITCDLINDEX_ENTRY(data?: Partial<AVITCDLINDEX_ENTRY>): Uin
 }
 
 /**
- * Windows.Win32.Media.DirectShow._avitcdlindex (size: 48)
+ * Windows.Win32.Media.DirectShow.AVITCDLINDEX (size: 48)
  */
-export interface _avitcdlindex {
+export interface AVITCDLINDEX {
   /** u32 */
   fcc: number;
   /** u32 */
@@ -26587,10 +26664,10 @@ export interface _avitcdlindex {
   adwTrailingFill: Deno.PointerValue | null;
 }
 
-export const sizeof_avitcdlindex = 48;
+export const sizeofAVITCDLINDEX = 48;
 
-export function alloc_avitcdlindex(data?: Partial<_avitcdlindex>): Uint8Array {
-  const buf = new Uint8Array(sizeof_avitcdlindex);
+export function allocAVITCDLINDEX(data?: Partial<AVITCDLINDEX>): Uint8Array {
+  const buf = new Uint8Array(sizeofAVITCDLINDEX);
   const view = new DataView(buf.buffer);
   // 0x00: u32
   if (data?.fcc !== undefined) view.setUint32(0, Number(data.fcc), true);
@@ -27274,112 +27351,6 @@ export function allocDVD_REGION(data?: Partial<DVD_REGION>): Uint8Array {
   // 0x03: u8
   if (data?.ResetCount !== undefined) view.setUint8(3, Number(data.ResetCount));
   // 0x04: pad4
-  return buf;
-}
-
-/**
- * Windows.Win32.Media.DirectShow.VIDEOINFOHEADER2 (size: 72)
- */
-export interface VIDEOINFOHEADER2 {
-  /** Windows.Win32.Foundation.RECT */
-  rcSource: Uint8Array | Deno.PointerValue | null;
-  /** Windows.Win32.Foundation.RECT */
-  rcTarget: Uint8Array | Deno.PointerValue | null;
-  /** u32 */
-  dwBitRate: number;
-  /** u32 */
-  dwBitErrorRate: number;
-  /** i64 */
-  AvgTimePerFrame: Deno.PointerValue;
-  /** u32 */
-  dwInterlaceFlags: number;
-  /** u32 */
-  dwCopyProtectFlags: number;
-  /** u32 */
-  dwPictAspectRatioX: number;
-  /** u32 */
-  dwPictAspectRatioY: number;
-  /** _Anonymous_e__Union */
-  Anonymous: Uint8Array | Deno.PointerValue | null;
-  /** u32 */
-  dwReserved2: number;
-  /** Windows.Win32.Graphics.Gdi.BITMAPINFOHEADER */
-  bmiHeader: Uint8Array | Deno.PointerValue | null;
-}
-
-export const sizeofVIDEOINFOHEADER2 = 72;
-
-export function allocVIDEOINFOHEADER2(data?: Partial<VIDEOINFOHEADER2>): Uint8Array {
-  const buf = new Uint8Array(sizeofVIDEOINFOHEADER2);
-  const view = new DataView(buf.buffer);
-  // 0x00: pointer
-  if (data?.rcSource !== undefined) view.setBigUint64(0, data.rcSource === null ? 0n : BigInt(util.toPointer(data.rcSource)), true);
-  // 0x08: pointer
-  if (data?.rcTarget !== undefined) view.setBigUint64(8, data.rcTarget === null ? 0n : BigInt(util.toPointer(data.rcTarget)), true);
-  // 0x10: u32
-  if (data?.dwBitRate !== undefined) view.setUint32(16, Number(data.dwBitRate), true);
-  // 0x14: u32
-  if (data?.dwBitErrorRate !== undefined) view.setUint32(20, Number(data.dwBitErrorRate), true);
-  // 0x18: i64
-  if (data?.AvgTimePerFrame !== undefined) view.setBigInt64(24, BigInt(data.AvgTimePerFrame), true);
-  // 0x20: u32
-  if (data?.dwInterlaceFlags !== undefined) view.setUint32(32, Number(data.dwInterlaceFlags), true);
-  // 0x24: u32
-  if (data?.dwCopyProtectFlags !== undefined) view.setUint32(36, Number(data.dwCopyProtectFlags), true);
-  // 0x28: u32
-  if (data?.dwPictAspectRatioX !== undefined) view.setUint32(40, Number(data.dwPictAspectRatioX), true);
-  // 0x2c: u32
-  if (data?.dwPictAspectRatioY !== undefined) view.setUint32(44, Number(data.dwPictAspectRatioY), true);
-  // 0x30: pointer
-  if (data?.Anonymous !== undefined) view.setBigUint64(48, data.Anonymous === null ? 0n : BigInt(util.toPointer(data.Anonymous)), true);
-  // 0x38: u32
-  if (data?.dwReserved2 !== undefined) view.setUint32(56, Number(data.dwReserved2), true);
-  // 0x3c: pad4
-  // 0x40: pointer
-  if (data?.bmiHeader !== undefined) view.setBigUint64(64, data.bmiHeader === null ? 0n : BigInt(util.toPointer(data.bmiHeader)), true);
-  return buf;
-}
-
-/**
- * Windows.Win32.Media.DirectShow.MPEG2VIDEOINFO (size: 40)
- */
-export interface MPEG2VIDEOINFO {
-  /** Windows.Win32.Media.DirectShow.VIDEOINFOHEADER2 */
-  hdr: Uint8Array | Deno.PointerValue | null;
-  /** u32 */
-  dwStartTimeCode: number;
-  /** u32 */
-  cbSequenceHeader: number;
-  /** u32 */
-  dwProfile: number;
-  /** u32 */
-  dwLevel: number;
-  /** Windows.Win32.Media.DirectShow.MPEG2VIDEOINFO_FLAGS */
-  dwFlags: MPEG2VIDEOINFO_FLAGS;
-  /** array */
-  dwSequenceHeader: Deno.PointerValue | null;
-}
-
-export const sizeofMPEG2VIDEOINFO = 40;
-
-export function allocMPEG2VIDEOINFO(data?: Partial<MPEG2VIDEOINFO>): Uint8Array {
-  const buf = new Uint8Array(sizeofMPEG2VIDEOINFO);
-  const view = new DataView(buf.buffer);
-  // 0x00: pointer
-  if (data?.hdr !== undefined) view.setBigUint64(0, data.hdr === null ? 0n : BigInt(util.toPointer(data.hdr)), true);
-  // 0x08: u32
-  if (data?.dwStartTimeCode !== undefined) view.setUint32(8, Number(data.dwStartTimeCode), true);
-  // 0x0c: u32
-  if (data?.cbSequenceHeader !== undefined) view.setUint32(12, Number(data.cbSequenceHeader), true);
-  // 0x10: u32
-  if (data?.dwProfile !== undefined) view.setUint32(16, Number(data.dwProfile), true);
-  // 0x14: u32
-  if (data?.dwLevel !== undefined) view.setUint32(20, Number(data.dwLevel), true);
-  // 0x18: u32
-  if (data?.dwFlags !== undefined) view.setUint32(24, Number(data.dwFlags), true);
-  // 0x1c: pad4
-  // 0x20: pointer
-  if (data?.dwSequenceHeader !== undefined) view.setBigUint64(32, data.dwSequenceHeader === null ? 0n : BigInt(util.toPointer(data.dwSequenceHeader)), true);
   return buf;
 }
 
@@ -28243,6 +28214,180 @@ export function allocCodecAPIEventData(data?: Partial<CodecAPIEventData>): Uint8
 }
 
 /**
+ * Windows.Win32.Media.MediaFoundation.VIDEOINFOHEADER (size: 40)
+ */
+export interface VIDEOINFOHEADER {
+  /** Windows.Win32.Foundation.RECT */
+  rcSource: Uint8Array | Deno.PointerValue | null;
+  /** Windows.Win32.Foundation.RECT */
+  rcTarget: Uint8Array | Deno.PointerValue | null;
+  /** u32 */
+  dwBitRate: number;
+  /** u32 */
+  dwBitErrorRate: number;
+  /** i64 */
+  AvgTimePerFrame: Deno.PointerValue;
+  /** Windows.Win32.Graphics.Gdi.BITMAPINFOHEADER */
+  bmiHeader: Uint8Array | Deno.PointerValue | null;
+}
+
+export const sizeofVIDEOINFOHEADER = 40;
+
+export function allocVIDEOINFOHEADER(data?: Partial<VIDEOINFOHEADER>): Uint8Array {
+  const buf = new Uint8Array(sizeofVIDEOINFOHEADER);
+  const view = new DataView(buf.buffer);
+  // 0x00: pointer
+  if (data?.rcSource !== undefined) view.setBigUint64(0, data.rcSource === null ? 0n : BigInt(util.toPointer(data.rcSource)), true);
+  // 0x08: pointer
+  if (data?.rcTarget !== undefined) view.setBigUint64(8, data.rcTarget === null ? 0n : BigInt(util.toPointer(data.rcTarget)), true);
+  // 0x10: u32
+  if (data?.dwBitRate !== undefined) view.setUint32(16, Number(data.dwBitRate), true);
+  // 0x14: u32
+  if (data?.dwBitErrorRate !== undefined) view.setUint32(20, Number(data.dwBitErrorRate), true);
+  // 0x18: i64
+  if (data?.AvgTimePerFrame !== undefined) view.setBigInt64(24, BigInt(data.AvgTimePerFrame), true);
+  // 0x20: pointer
+  if (data?.bmiHeader !== undefined) view.setBigUint64(32, data.bmiHeader === null ? 0n : BigInt(util.toPointer(data.bmiHeader)), true);
+  return buf;
+}
+
+/**
+ * Windows.Win32.Media.MediaFoundation.MPEG1VIDEOINFO (size: 24)
+ */
+export interface MPEG1VIDEOINFO {
+  /** Windows.Win32.Media.MediaFoundation.VIDEOINFOHEADER */
+  hdr: Uint8Array | Deno.PointerValue | null;
+  /** u32 */
+  dwStartTimeCode: number;
+  /** u32 */
+  cbSequenceHeader: number;
+  /** array */
+  bSequenceHeader: Deno.PointerValue | null;
+}
+
+export const sizeofMPEG1VIDEOINFO = 24;
+
+export function allocMPEG1VIDEOINFO(data?: Partial<MPEG1VIDEOINFO>): Uint8Array {
+  const buf = new Uint8Array(sizeofMPEG1VIDEOINFO);
+  const view = new DataView(buf.buffer);
+  // 0x00: pointer
+  if (data?.hdr !== undefined) view.setBigUint64(0, data.hdr === null ? 0n : BigInt(util.toPointer(data.hdr)), true);
+  // 0x08: u32
+  if (data?.dwStartTimeCode !== undefined) view.setUint32(8, Number(data.dwStartTimeCode), true);
+  // 0x0c: u32
+  if (data?.cbSequenceHeader !== undefined) view.setUint32(12, Number(data.cbSequenceHeader), true);
+  // 0x10: pointer
+  if (data?.bSequenceHeader !== undefined) view.setBigUint64(16, data.bSequenceHeader === null ? 0n : BigInt(util.toPointer(data.bSequenceHeader)), true);
+  return buf;
+}
+
+/**
+ * Windows.Win32.Media.MediaFoundation.VIDEOINFOHEADER2 (size: 72)
+ */
+export interface VIDEOINFOHEADER2 {
+  /** Windows.Win32.Foundation.RECT */
+  rcSource: Uint8Array | Deno.PointerValue | null;
+  /** Windows.Win32.Foundation.RECT */
+  rcTarget: Uint8Array | Deno.PointerValue | null;
+  /** u32 */
+  dwBitRate: number;
+  /** u32 */
+  dwBitErrorRate: number;
+  /** i64 */
+  AvgTimePerFrame: Deno.PointerValue;
+  /** u32 */
+  dwInterlaceFlags: number;
+  /** u32 */
+  dwCopyProtectFlags: number;
+  /** u32 */
+  dwPictAspectRatioX: number;
+  /** u32 */
+  dwPictAspectRatioY: number;
+  /** _Anonymous_e__Union */
+  Anonymous: Uint8Array | Deno.PointerValue | null;
+  /** u32 */
+  dwReserved2: number;
+  /** Windows.Win32.Graphics.Gdi.BITMAPINFOHEADER */
+  bmiHeader: Uint8Array | Deno.PointerValue | null;
+}
+
+export const sizeofVIDEOINFOHEADER2 = 72;
+
+export function allocVIDEOINFOHEADER2(data?: Partial<VIDEOINFOHEADER2>): Uint8Array {
+  const buf = new Uint8Array(sizeofVIDEOINFOHEADER2);
+  const view = new DataView(buf.buffer);
+  // 0x00: pointer
+  if (data?.rcSource !== undefined) view.setBigUint64(0, data.rcSource === null ? 0n : BigInt(util.toPointer(data.rcSource)), true);
+  // 0x08: pointer
+  if (data?.rcTarget !== undefined) view.setBigUint64(8, data.rcTarget === null ? 0n : BigInt(util.toPointer(data.rcTarget)), true);
+  // 0x10: u32
+  if (data?.dwBitRate !== undefined) view.setUint32(16, Number(data.dwBitRate), true);
+  // 0x14: u32
+  if (data?.dwBitErrorRate !== undefined) view.setUint32(20, Number(data.dwBitErrorRate), true);
+  // 0x18: i64
+  if (data?.AvgTimePerFrame !== undefined) view.setBigInt64(24, BigInt(data.AvgTimePerFrame), true);
+  // 0x20: u32
+  if (data?.dwInterlaceFlags !== undefined) view.setUint32(32, Number(data.dwInterlaceFlags), true);
+  // 0x24: u32
+  if (data?.dwCopyProtectFlags !== undefined) view.setUint32(36, Number(data.dwCopyProtectFlags), true);
+  // 0x28: u32
+  if (data?.dwPictAspectRatioX !== undefined) view.setUint32(40, Number(data.dwPictAspectRatioX), true);
+  // 0x2c: u32
+  if (data?.dwPictAspectRatioY !== undefined) view.setUint32(44, Number(data.dwPictAspectRatioY), true);
+  // 0x30: pointer
+  if (data?.Anonymous !== undefined) view.setBigUint64(48, data.Anonymous === null ? 0n : BigInt(util.toPointer(data.Anonymous)), true);
+  // 0x38: u32
+  if (data?.dwReserved2 !== undefined) view.setUint32(56, Number(data.dwReserved2), true);
+  // 0x3c: pad4
+  // 0x40: pointer
+  if (data?.bmiHeader !== undefined) view.setBigUint64(64, data.bmiHeader === null ? 0n : BigInt(util.toPointer(data.bmiHeader)), true);
+  return buf;
+}
+
+/**
+ * Windows.Win32.Media.MediaFoundation.MPEG2VIDEOINFO (size: 40)
+ */
+export interface MPEG2VIDEOINFO {
+  /** Windows.Win32.Media.MediaFoundation.VIDEOINFOHEADER2 */
+  hdr: Uint8Array | Deno.PointerValue | null;
+  /** u32 */
+  dwStartTimeCode: number;
+  /** u32 */
+  cbSequenceHeader: number;
+  /** u32 */
+  dwProfile: number;
+  /** u32 */
+  dwLevel: number;
+  /** Windows.Win32.Media.MediaFoundation.MPEG2VIDEOINFO_FLAGS */
+  dwFlags: MPEG2VIDEOINFO_FLAGS;
+  /** array */
+  dwSequenceHeader: Deno.PointerValue | null;
+}
+
+export const sizeofMPEG2VIDEOINFO = 40;
+
+export function allocMPEG2VIDEOINFO(data?: Partial<MPEG2VIDEOINFO>): Uint8Array {
+  const buf = new Uint8Array(sizeofMPEG2VIDEOINFO);
+  const view = new DataView(buf.buffer);
+  // 0x00: pointer
+  if (data?.hdr !== undefined) view.setBigUint64(0, data.hdr === null ? 0n : BigInt(util.toPointer(data.hdr)), true);
+  // 0x08: u32
+  if (data?.dwStartTimeCode !== undefined) view.setUint32(8, Number(data.dwStartTimeCode), true);
+  // 0x0c: u32
+  if (data?.cbSequenceHeader !== undefined) view.setUint32(12, Number(data.cbSequenceHeader), true);
+  // 0x10: u32
+  if (data?.dwProfile !== undefined) view.setUint32(16, Number(data.dwProfile), true);
+  // 0x14: u32
+  if (data?.dwLevel !== undefined) view.setUint32(20, Number(data.dwLevel), true);
+  // 0x18: u32
+  if (data?.dwFlags !== undefined) view.setUint32(24, Number(data.dwFlags), true);
+  // 0x1c: pad4
+  // 0x20: pointer
+  if (data?.dwSequenceHeader !== undefined) view.setBigUint64(32, data.dwSequenceHeader === null ? 0n : BigInt(util.toPointer(data.dwSequenceHeader)), true);
+  return buf;
+}
+
+/**
  * Windows.Win32.Media.WindowsMediaFormat.AM_WMT_EVENT_DATA (size: 16)
  */
 export interface AM_WMT_EVENT_DATA {
@@ -28535,7 +28680,7 @@ export interface DVR_STREAM_DESC {
   guidSubMediaType: Uint8Array | Deno.PointerValue | null;
   /** System.Guid */
   guidFormatType: Uint8Array | Deno.PointerValue | null;
-  /** Windows.Win32.Media.DirectShow.AM_MEDIA_TYPE */
+  /** Windows.Win32.Media.MediaFoundation.AM_MEDIA_TYPE */
   MediaType: Uint8Array | Deno.PointerValue | null;
 }
 
@@ -38676,7 +38821,7 @@ export function allocSPPHRASE_50(data?: Partial<SPPHRASE_50>): Uint8Array {
  */
 export interface SPPHRASE {
   /** Windows.Win32.Media.Speech.SPPHRASE_50 */
-  __AnonymousBase_sapi53_L5821_C34: Uint8Array | Deno.PointerValue | null;
+  Base: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.Foundation.PWSTR */
   pSML: string | null;
   /** ptr */
@@ -38689,7 +38834,7 @@ export function allocSPPHRASE(data?: Partial<SPPHRASE>): Uint8Array {
   const buf = new Uint8Array(sizeofSPPHRASE);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.__AnonymousBase_sapi53_L5821_C34 !== undefined) view.setBigUint64(0, data.__AnonymousBase_sapi53_L5821_C34 === null ? 0n : BigInt(util.toPointer(data.__AnonymousBase_sapi53_L5821_C34)), true);
+  if (data?.Base !== undefined) view.setBigUint64(0, data.Base === null ? 0n : BigInt(util.toPointer(data.Base)), true);
   // 0x08: buffer
   if (data?.pSML !== undefined) {
     (buf as any)._f8 = util.pwstrToFfi(data.pSML);
@@ -39470,164 +39615,25 @@ export function allocSPDISPLAYPHRASE(data?: Partial<SPDISPLAYPHRASE>): Uint8Arra
 }
 
 /**
- * Windows.Win32.Media.DeviceManager.__MACINFO (size: 16)
+ * Windows.Win32.Media.DeviceManager.MACINFO (size: 16)
  */
-export interface __MACINFO {
+export interface MACINFO {
   /** Windows.Win32.Foundation.BOOL */
   fUsed: boolean;
   /** array */
   abMacState: Deno.PointerValue | null;
 }
 
-export const sizeof__MACINFO = 16;
+export const sizeofMACINFO = 16;
 
-export function alloc__MACINFO(data?: Partial<__MACINFO>): Uint8Array {
-  const buf = new Uint8Array(sizeof__MACINFO);
+export function allocMACINFO(data?: Partial<MACINFO>): Uint8Array {
+  const buf = new Uint8Array(sizeofMACINFO);
   const view = new DataView(buf.buffer);
   // 0x00: i32
   if (data?.fUsed !== undefined) view.setInt32(0, Number(data.fUsed), true);
   // 0x04: pad4
   // 0x08: pointer
   if (data?.abMacState !== undefined) view.setBigUint64(8, data.abMacState === null ? 0n : BigInt(util.toPointer(data.abMacState)), true);
-  return buf;
-}
-
-/**
- * Windows.Win32.Media.DeviceManager._WAVEFORMATEX (size: 24)
- */
-export interface _WAVEFORMATEX {
-  /** u16 */
-  wFormatTag: number;
-  /** u16 */
-  nChannels: number;
-  /** u32 */
-  nSamplesPerSec: number;
-  /** u32 */
-  nAvgBytesPerSec: number;
-  /** u16 */
-  nBlockAlign: number;
-  /** u16 */
-  wBitsPerSample: number;
-  /** u16 */
-  cbSize: number;
-}
-
-export const sizeof_WAVEFORMATEX = 24;
-
-export function alloc_WAVEFORMATEX(data?: Partial<_WAVEFORMATEX>): Uint8Array {
-  const buf = new Uint8Array(sizeof_WAVEFORMATEX);
-  const view = new DataView(buf.buffer);
-  // 0x00: u16
-  if (data?.wFormatTag !== undefined) view.setUint16(0, Number(data.wFormatTag), true);
-  // 0x02: u16
-  if (data?.nChannels !== undefined) view.setUint16(2, Number(data.nChannels), true);
-  // 0x04: u32
-  if (data?.nSamplesPerSec !== undefined) view.setUint32(4, Number(data.nSamplesPerSec), true);
-  // 0x08: u32
-  if (data?.nAvgBytesPerSec !== undefined) view.setUint32(8, Number(data.nAvgBytesPerSec), true);
-  // 0x0c: u16
-  if (data?.nBlockAlign !== undefined) view.setUint16(12, Number(data.nBlockAlign), true);
-  // 0x0e: u16
-  if (data?.wBitsPerSample !== undefined) view.setUint16(14, Number(data.wBitsPerSample), true);
-  // 0x10: u16
-  if (data?.cbSize !== undefined) view.setUint16(16, Number(data.cbSize), true);
-  // 0x12: pad6
-  return buf;
-}
-
-/**
- * Windows.Win32.Media.DeviceManager._BITMAPINFOHEADER (size: 40)
- */
-export interface _BITMAPINFOHEADER {
-  /** u32 */
-  biSize: number;
-  /** i32 */
-  biWidth: number;
-  /** i32 */
-  biHeight: number;
-  /** u16 */
-  biPlanes: number;
-  /** u16 */
-  biBitCount: number;
-  /** u32 */
-  biCompression: number;
-  /** u32 */
-  biSizeImage: number;
-  /** i32 */
-  biXPelsPerMeter: number;
-  /** i32 */
-  biYPelsPerMeter: number;
-  /** u32 */
-  biClrUsed: number;
-  /** u32 */
-  biClrImportant: number;
-}
-
-export const sizeof_BITMAPINFOHEADER = 40;
-
-export function alloc_BITMAPINFOHEADER(data?: Partial<_BITMAPINFOHEADER>): Uint8Array {
-  const buf = new Uint8Array(sizeof_BITMAPINFOHEADER);
-  const view = new DataView(buf.buffer);
-  // 0x00: u32
-  if (data?.biSize !== undefined) view.setUint32(0, Number(data.biSize), true);
-  // 0x04: i32
-  if (data?.biWidth !== undefined) view.setInt32(4, Number(data.biWidth), true);
-  // 0x08: i32
-  if (data?.biHeight !== undefined) view.setInt32(8, Number(data.biHeight), true);
-  // 0x0c: u16
-  if (data?.biPlanes !== undefined) view.setUint16(12, Number(data.biPlanes), true);
-  // 0x0e: u16
-  if (data?.biBitCount !== undefined) view.setUint16(14, Number(data.biBitCount), true);
-  // 0x10: u32
-  if (data?.biCompression !== undefined) view.setUint32(16, Number(data.biCompression), true);
-  // 0x14: u32
-  if (data?.biSizeImage !== undefined) view.setUint32(20, Number(data.biSizeImage), true);
-  // 0x18: i32
-  if (data?.biXPelsPerMeter !== undefined) view.setInt32(24, Number(data.biXPelsPerMeter), true);
-  // 0x1c: i32
-  if (data?.biYPelsPerMeter !== undefined) view.setInt32(28, Number(data.biYPelsPerMeter), true);
-  // 0x20: u32
-  if (data?.biClrUsed !== undefined) view.setUint32(32, Number(data.biClrUsed), true);
-  // 0x24: u32
-  if (data?.biClrImportant !== undefined) view.setUint32(36, Number(data.biClrImportant), true);
-  return buf;
-}
-
-/**
- * Windows.Win32.Media.DeviceManager._VIDEOINFOHEADER (size: 40)
- */
-export interface _VIDEOINFOHEADER {
-  /** Windows.Win32.Foundation.RECT */
-  rcSource: Uint8Array | Deno.PointerValue | null;
-  /** Windows.Win32.Foundation.RECT */
-  rcTarget: Uint8Array | Deno.PointerValue | null;
-  /** u32 */
-  dwBitRate: number;
-  /** u32 */
-  dwBitErrorRate: number;
-  /** i64 */
-  AvgTimePerFrame: Deno.PointerValue;
-  /** Windows.Win32.Media.DeviceManager._BITMAPINFOHEADER */
-  bmiHeader: Uint8Array | Deno.PointerValue | null;
-}
-
-export const sizeof_VIDEOINFOHEADER = 40;
-
-export function alloc_VIDEOINFOHEADER(data?: Partial<_VIDEOINFOHEADER>): Uint8Array {
-  const buf = new Uint8Array(sizeof_VIDEOINFOHEADER);
-  const view = new DataView(buf.buffer);
-  // 0x00: pointer
-  if (data?.rcSource !== undefined) view.setBigUint64(0, data.rcSource === null ? 0n : BigInt(util.toPointer(data.rcSource)), true);
-  // 0x08: pointer
-  if (data?.rcTarget !== undefined) view.setBigUint64(8, data.rcTarget === null ? 0n : BigInt(util.toPointer(data.rcTarget)), true);
-  // 0x10: u32
-  if (data?.dwBitRate !== undefined) view.setUint32(16, Number(data.dwBitRate), true);
-  // 0x14: u32
-  if (data?.dwBitErrorRate !== undefined) view.setUint32(20, Number(data.dwBitErrorRate), true);
-  // 0x18: i64
-  if (data?.AvgTimePerFrame !== undefined) view.setBigInt64(24, BigInt(data.AvgTimePerFrame), true);
-  // 0x20: pointer
-  if (data?.bmiHeader !== undefined) view.setBigUint64(32, data.bmiHeader === null ? 0n : BigInt(util.toPointer(data.bmiHeader)), true);
   return buf;
 }
 
@@ -42927,6 +42933,437 @@ export function allocHrtfApoInit(data?: Partial<HrtfApoInit>): Uint8Array {
   if (data?.distanceDecay !== undefined) view.setBigUint64(0, data.distanceDecay === null ? 0n : BigInt(util.toPointer(data.distanceDecay)), true);
   // 0x08: pointer
   if (data?.directivity !== undefined) view.setBigUint64(8, data.directivity === null ? 0n : BigInt(util.toPointer(data.directivity)), true);
+  return buf;
+}
+
+/**
+ * Windows.Win32.Media.Audio.ACMSTREAMHEADER (size: 72)
+ */
+export interface ACMSTREAMHEADER {
+  /** u32 */
+  cbStruct: number;
+  /** u32 */
+  fdwStatus: number;
+  /** usize */
+  dwUser: Deno.PointerValue;
+  /** ptr */
+  pbSrc: Deno.PointerValue | Uint8Array | null;
+  /** u32 */
+  cbSrcLength: number;
+  /** u32 */
+  cbSrcLengthUsed: number;
+  /** usize */
+  dwSrcUser: Deno.PointerValue;
+  /** ptr */
+  pbDst: Deno.PointerValue | Uint8Array | null;
+  /** u32 */
+  cbDstLength: number;
+  /** u32 */
+  cbDstLengthUsed: number;
+  /** usize */
+  dwDstUser: Deno.PointerValue;
+  /** array */
+  dwReservedDriver: Deno.PointerValue | null;
+}
+
+export const sizeofACMSTREAMHEADER = 72;
+
+export function allocACMSTREAMHEADER(data?: Partial<ACMSTREAMHEADER>): Uint8Array {
+  const buf = new Uint8Array(sizeofACMSTREAMHEADER);
+  const view = new DataView(buf.buffer);
+  // 0x00: u32
+  if (data?.cbStruct !== undefined) view.setUint32(0, Number(data.cbStruct), true);
+  // 0x04: u32
+  if (data?.fdwStatus !== undefined) view.setUint32(4, Number(data.fdwStatus), true);
+  // 0x08: usize
+  if (data?.dwUser !== undefined) view.setBigUint64(8, BigInt(data.dwUser), true);
+  // 0x10: pointer
+  if (data?.pbSrc !== undefined) view.setBigUint64(16, data.pbSrc === null ? 0n : BigInt(util.toPointer(data.pbSrc)), true);
+  // 0x18: u32
+  if (data?.cbSrcLength !== undefined) view.setUint32(24, Number(data.cbSrcLength), true);
+  // 0x1c: u32
+  if (data?.cbSrcLengthUsed !== undefined) view.setUint32(28, Number(data.cbSrcLengthUsed), true);
+  // 0x20: usize
+  if (data?.dwSrcUser !== undefined) view.setBigUint64(32, BigInt(data.dwSrcUser), true);
+  // 0x28: pointer
+  if (data?.pbDst !== undefined) view.setBigUint64(40, data.pbDst === null ? 0n : BigInt(util.toPointer(data.pbDst)), true);
+  // 0x30: u32
+  if (data?.cbDstLength !== undefined) view.setUint32(48, Number(data.cbDstLength), true);
+  // 0x34: u32
+  if (data?.cbDstLengthUsed !== undefined) view.setUint32(52, Number(data.cbDstLengthUsed), true);
+  // 0x38: usize
+  if (data?.dwDstUser !== undefined) view.setBigUint64(56, BigInt(data.dwDstUser), true);
+  // 0x40: pointer
+  if (data?.dwReservedDriver !== undefined) view.setBigUint64(64, data.dwReservedDriver === null ? 0n : BigInt(util.toPointer(data.dwReservedDriver)), true);
+  return buf;
+}
+
+/**
+ * Windows.Win32.Media.MediaFoundation.D3DCONTENTPROTECTIONCAPS (size: 32)
+ */
+export interface D3DCONTENTPROTECTIONCAPS {
+  /** u32 */
+  Caps: number;
+  /** System.Guid */
+  KeyExchangeType: Uint8Array | Deno.PointerValue | null;
+  /** u32 */
+  BufferAlignmentStart: number;
+  /** u32 */
+  BlockAlignmentSize: number;
+  /** u64 */
+  ProtectedMemorySize: Deno.PointerValue;
+}
+
+export const sizeofD3DCONTENTPROTECTIONCAPS = 32;
+
+export function allocD3DCONTENTPROTECTIONCAPS(data?: Partial<D3DCONTENTPROTECTIONCAPS>): Uint8Array {
+  const buf = new Uint8Array(sizeofD3DCONTENTPROTECTIONCAPS);
+  const view = new DataView(buf.buffer);
+  // 0x00: u32
+  if (data?.Caps !== undefined) view.setUint32(0, Number(data.Caps), true);
+  // 0x04: pad4
+  // 0x08: pointer
+  if (data?.KeyExchangeType !== undefined) view.setBigUint64(8, data.KeyExchangeType === null ? 0n : BigInt(util.toPointer(data.KeyExchangeType)), true);
+  // 0x10: u32
+  if (data?.BufferAlignmentStart !== undefined) view.setUint32(16, Number(data.BufferAlignmentStart), true);
+  // 0x14: u32
+  if (data?.BlockAlignmentSize !== undefined) view.setUint32(20, Number(data.BlockAlignmentSize), true);
+  // 0x18: u64
+  if (data?.ProtectedMemorySize !== undefined) view.setBigUint64(24, BigInt(data.ProtectedMemorySize), true);
+  return buf;
+}
+
+/**
+ * Windows.Win32.Media.KernelStreaming.KSTIME (size: 16)
+ */
+export interface KSTIME {
+  /** i64 */
+  Time: Deno.PointerValue;
+  /** u32 */
+  Numerator: number;
+  /** u32 */
+  Denominator: number;
+}
+
+export const sizeofKSTIME = 16;
+
+export function allocKSTIME(data?: Partial<KSTIME>): Uint8Array {
+  const buf = new Uint8Array(sizeofKSTIME);
+  const view = new DataView(buf.buffer);
+  // 0x00: i64
+  if (data?.Time !== undefined) view.setBigInt64(0, BigInt(data.Time), true);
+  // 0x08: u32
+  if (data?.Numerator !== undefined) view.setUint32(8, Number(data.Numerator), true);
+  // 0x0c: u32
+  if (data?.Denominator !== undefined) view.setUint32(12, Number(data.Denominator), true);
+  return buf;
+}
+
+/**
+ * Windows.Win32.Media.KernelStreaming.KSSTREAM_HEADER (size: 48)
+ */
+export interface KSSTREAM_HEADER {
+  /** u32 */
+  Size: number;
+  /** u32 */
+  TypeSpecificFlags: number;
+  /** Windows.Win32.Media.KernelStreaming.KSTIME */
+  PresentationTime: Uint8Array | Deno.PointerValue | null;
+  /** i64 */
+  Duration: Deno.PointerValue;
+  /** u32 */
+  FrameExtent: number;
+  /** u32 */
+  DataUsed: number;
+  /** ptr */
+  Data: Deno.PointerValue | Uint8Array | null;
+  /** u32 */
+  OptionsFlags: number;
+  /** u32 */
+  Reserved: number;
+}
+
+export const sizeofKSSTREAM_HEADER = 48;
+
+export function allocKSSTREAM_HEADER(data?: Partial<KSSTREAM_HEADER>): Uint8Array {
+  const buf = new Uint8Array(sizeofKSSTREAM_HEADER);
+  const view = new DataView(buf.buffer);
+  // 0x00: u32
+  if (data?.Size !== undefined) view.setUint32(0, Number(data.Size), true);
+  // 0x04: u32
+  if (data?.TypeSpecificFlags !== undefined) view.setUint32(4, Number(data.TypeSpecificFlags), true);
+  // 0x08: pointer
+  if (data?.PresentationTime !== undefined) view.setBigUint64(8, data.PresentationTime === null ? 0n : BigInt(util.toPointer(data.PresentationTime)), true);
+  // 0x10: i64
+  if (data?.Duration !== undefined) view.setBigInt64(16, BigInt(data.Duration), true);
+  // 0x18: u32
+  if (data?.FrameExtent !== undefined) view.setUint32(24, Number(data.FrameExtent), true);
+  // 0x1c: u32
+  if (data?.DataUsed !== undefined) view.setUint32(28, Number(data.DataUsed), true);
+  // 0x20: pointer
+  if (data?.Data !== undefined) view.setBigUint64(32, data.Data === null ? 0n : BigInt(util.toPointer(data.Data)), true);
+  // 0x28: u32
+  if (data?.OptionsFlags !== undefined) view.setUint32(40, Number(data.OptionsFlags), true);
+  // 0x2c: u32
+  if (data?.Reserved !== undefined) view.setUint32(44, Number(data.Reserved), true);
+  return buf;
+}
+
+/**
+ * Windows.Win32.Media.KernelStreaming.KSNODEPROPERTY (size: 16)
+ */
+export interface KSNODEPROPERTY {
+  /** Windows.Win32.Media.KernelStreaming.KSIDENTIFIER */
+  Property: Uint8Array | Deno.PointerValue | null;
+  /** u32 */
+  NodeId: number;
+  /** u32 */
+  Reserved: number;
+}
+
+export const sizeofKSNODEPROPERTY = 16;
+
+export function allocKSNODEPROPERTY(data?: Partial<KSNODEPROPERTY>): Uint8Array {
+  const buf = new Uint8Array(sizeofKSNODEPROPERTY);
+  const view = new DataView(buf.buffer);
+  // 0x00: pointer
+  if (data?.Property !== undefined) view.setBigUint64(0, data.Property === null ? 0n : BigInt(util.toPointer(data.Property)), true);
+  // 0x08: u32
+  if (data?.NodeId !== undefined) view.setUint32(8, Number(data.NodeId), true);
+  // 0x0c: u32
+  if (data?.Reserved !== undefined) view.setUint32(12, Number(data.Reserved), true);
+  return buf;
+}
+
+/**
+ * Windows.Win32.Media.KernelStreaming.KSNODEPROPERTY_AUDIO_3D_LISTENER (size: 16)
+ */
+export interface KSNODEPROPERTY_AUDIO_3D_LISTENER {
+  /** Windows.Win32.Media.KernelStreaming.KSNODEPROPERTY */
+  NodeProperty: Uint8Array | Deno.PointerValue | null;
+  /** ptr */
+  ListenerId: Deno.PointerValue | Uint8Array | null;
+}
+
+export const sizeofKSNODEPROPERTY_AUDIO_3D_LISTENER = 16;
+
+export function allocKSNODEPROPERTY_AUDIO_3D_LISTENER(data?: Partial<KSNODEPROPERTY_AUDIO_3D_LISTENER>): Uint8Array {
+  const buf = new Uint8Array(sizeofKSNODEPROPERTY_AUDIO_3D_LISTENER);
+  const view = new DataView(buf.buffer);
+  // 0x00: pointer
+  if (data?.NodeProperty !== undefined) view.setBigUint64(0, data.NodeProperty === null ? 0n : BigInt(util.toPointer(data.NodeProperty)), true);
+  // 0x08: pointer
+  if (data?.ListenerId !== undefined) view.setBigUint64(8, data.ListenerId === null ? 0n : BigInt(util.toPointer(data.ListenerId)), true);
+  return buf;
+}
+
+/**
+ * Windows.Win32.Media.KernelStreaming.KSNODEPROPERTY_AUDIO_PROPERTY (size: 24)
+ */
+export interface KSNODEPROPERTY_AUDIO_PROPERTY {
+  /** Windows.Win32.Media.KernelStreaming.KSNODEPROPERTY */
+  NodeProperty: Uint8Array | Deno.PointerValue | null;
+  /** ptr */
+  AppContext: Deno.PointerValue | Uint8Array | null;
+  /** u32 */
+  Length: number;
+}
+
+export const sizeofKSNODEPROPERTY_AUDIO_PROPERTY = 24;
+
+export function allocKSNODEPROPERTY_AUDIO_PROPERTY(data?: Partial<KSNODEPROPERTY_AUDIO_PROPERTY>): Uint8Array {
+  const buf = new Uint8Array(sizeofKSNODEPROPERTY_AUDIO_PROPERTY);
+  const view = new DataView(buf.buffer);
+  // 0x00: pointer
+  if (data?.NodeProperty !== undefined) view.setBigUint64(0, data.NodeProperty === null ? 0n : BigInt(util.toPointer(data.NodeProperty)), true);
+  // 0x08: pointer
+  if (data?.AppContext !== undefined) view.setBigUint64(8, data.AppContext === null ? 0n : BigInt(util.toPointer(data.AppContext)), true);
+  // 0x10: u32
+  if (data?.Length !== undefined) view.setUint32(16, Number(data.Length), true);
+  // 0x14: pad4
+  return buf;
+}
+
+/**
+ * Windows.Win32.Media.MediaFoundation.DXVA_VideoSample2 (size: 64)
+ */
+export interface DXVA_VideoSample2 {
+  /** u32 */
+  Size: number;
+  /** u32 */
+  Reserved: number;
+  /** i64 */
+  rtStart: Deno.PointerValue;
+  /** i64 */
+  rtEnd: Deno.PointerValue;
+  /** u32 */
+  SampleFormat: number;
+  /** u32 */
+  SampleFlags: number;
+  /** ptr */
+  lpDDSSrcSurface: Deno.PointerValue | Uint8Array | null;
+  /** Windows.Win32.Foundation.RECT */
+  rcSrc: Uint8Array | Deno.PointerValue | null;
+  /** Windows.Win32.Foundation.RECT */
+  rcDst: Uint8Array | Deno.PointerValue | null;
+  /** array */
+  Palette: Deno.PointerValue | null;
+}
+
+export const sizeofDXVA_VideoSample2 = 64;
+
+export function allocDXVA_VideoSample2(data?: Partial<DXVA_VideoSample2>): Uint8Array {
+  const buf = new Uint8Array(sizeofDXVA_VideoSample2);
+  const view = new DataView(buf.buffer);
+  // 0x00: u32
+  if (data?.Size !== undefined) view.setUint32(0, Number(data.Size), true);
+  // 0x04: u32
+  if (data?.Reserved !== undefined) view.setUint32(4, Number(data.Reserved), true);
+  // 0x08: i64
+  if (data?.rtStart !== undefined) view.setBigInt64(8, BigInt(data.rtStart), true);
+  // 0x10: i64
+  if (data?.rtEnd !== undefined) view.setBigInt64(16, BigInt(data.rtEnd), true);
+  // 0x18: u32
+  if (data?.SampleFormat !== undefined) view.setUint32(24, Number(data.SampleFormat), true);
+  // 0x1c: u32
+  if (data?.SampleFlags !== undefined) view.setUint32(28, Number(data.SampleFlags), true);
+  // 0x20: pointer
+  if (data?.lpDDSSrcSurface !== undefined) view.setBigUint64(32, data.lpDDSSrcSurface === null ? 0n : BigInt(util.toPointer(data.lpDDSSrcSurface)), true);
+  // 0x28: pointer
+  if (data?.rcSrc !== undefined) view.setBigUint64(40, data.rcSrc === null ? 0n : BigInt(util.toPointer(data.rcSrc)), true);
+  // 0x30: pointer
+  if (data?.rcDst !== undefined) view.setBigUint64(48, data.rcDst === null ? 0n : BigInt(util.toPointer(data.rcDst)), true);
+  // 0x38: pointer
+  if (data?.Palette !== undefined) view.setBigUint64(56, data.Palette === null ? 0n : BigInt(util.toPointer(data.Palette)), true);
+  return buf;
+}
+
+/**
+ * Windows.Win32.Media.MediaFoundation.DXVA_VideoSample32 (size: 56)
+ */
+export interface DXVA_VideoSample32 {
+  /** i64 */
+  rtStart: Deno.PointerValue;
+  /** i64 */
+  rtEnd: Deno.PointerValue;
+  /** u32 */
+  SampleFormat: number;
+  /** u32 */
+  SampleFlags: number;
+  /** u32 */
+  lpDDSSrcSurface: number;
+  /** Windows.Win32.Foundation.RECT */
+  rcSrc: Uint8Array | Deno.PointerValue | null;
+  /** Windows.Win32.Foundation.RECT */
+  rcDst: Uint8Array | Deno.PointerValue | null;
+  /** array */
+  Palette: Deno.PointerValue | null;
+}
+
+export const sizeofDXVA_VideoSample32 = 56;
+
+export function allocDXVA_VideoSample32(data?: Partial<DXVA_VideoSample32>): Uint8Array {
+  const buf = new Uint8Array(sizeofDXVA_VideoSample32);
+  const view = new DataView(buf.buffer);
+  // 0x00: i64
+  if (data?.rtStart !== undefined) view.setBigInt64(0, BigInt(data.rtStart), true);
+  // 0x08: i64
+  if (data?.rtEnd !== undefined) view.setBigInt64(8, BigInt(data.rtEnd), true);
+  // 0x10: u32
+  if (data?.SampleFormat !== undefined) view.setUint32(16, Number(data.SampleFormat), true);
+  // 0x14: u32
+  if (data?.SampleFlags !== undefined) view.setUint32(20, Number(data.SampleFlags), true);
+  // 0x18: u32
+  if (data?.lpDDSSrcSurface !== undefined) view.setUint32(24, Number(data.lpDDSSrcSurface), true);
+  // 0x1c: pad4
+  // 0x20: pointer
+  if (data?.rcSrc !== undefined) view.setBigUint64(32, data.rcSrc === null ? 0n : BigInt(util.toPointer(data.rcSrc)), true);
+  // 0x28: pointer
+  if (data?.rcDst !== undefined) view.setBigUint64(40, data.rcDst === null ? 0n : BigInt(util.toPointer(data.rcDst)), true);
+  // 0x30: pointer
+  if (data?.Palette !== undefined) view.setBigUint64(48, data.Palette === null ? 0n : BigInt(util.toPointer(data.Palette)), true);
+  return buf;
+}
+
+/**
+ * Windows.Win32.Media.MediaFoundation.DXVA_AYUVsample2 (size: 8)
+ */
+export interface DXVA_AYUVsample2 {
+  /** u8 */
+  bCrValue: number;
+  /** u8 */
+  bCbValue: number;
+  /** u8 */
+  bY_Value: number;
+  /** u8 */
+  bSampleAlpha8: number;
+}
+
+export const sizeofDXVA_AYUVsample2 = 8;
+
+export function allocDXVA_AYUVsample2(data?: Partial<DXVA_AYUVsample2>): Uint8Array {
+  const buf = new Uint8Array(sizeofDXVA_AYUVsample2);
+  const view = new DataView(buf.buffer);
+  // 0x00: u8
+  if (data?.bCrValue !== undefined) view.setUint8(0, Number(data.bCrValue));
+  // 0x01: u8
+  if (data?.bCbValue !== undefined) view.setUint8(1, Number(data.bCbValue));
+  // 0x02: u8
+  if (data?.bY_Value !== undefined) view.setUint8(2, Number(data.bY_Value));
+  // 0x03: u8
+  if (data?.bSampleAlpha8 !== undefined) view.setUint8(3, Number(data.bSampleAlpha8));
+  // 0x04: pad4
+  return buf;
+}
+
+/**
+ * Windows.Win32.Media.MediaFoundation.DXVA_DeinterlaceBltEx32 (size: 56)
+ */
+export interface DXVA_DeinterlaceBltEx32 {
+  /** u32 */
+  Size: number;
+  /** Windows.Win32.Media.MediaFoundation.DXVA_AYUVsample2 */
+  BackgroundColor: Uint8Array | Deno.PointerValue | null;
+  /** Windows.Win32.Foundation.RECT */
+  rcTarget: Uint8Array | Deno.PointerValue | null;
+  /** i64 */
+  rtTarget: Deno.PointerValue;
+  /** u32 */
+  NumSourceSurfaces: number;
+  /** f32 */
+  Alpha: number;
+  /** array */
+  Source: Deno.PointerValue | null;
+  /** u32 */
+  DestinationFormat: number;
+  /** u32 */
+  DestinationFlags: number;
+}
+
+export const sizeofDXVA_DeinterlaceBltEx32 = 56;
+
+export function allocDXVA_DeinterlaceBltEx32(data?: Partial<DXVA_DeinterlaceBltEx32>): Uint8Array {
+  const buf = new Uint8Array(sizeofDXVA_DeinterlaceBltEx32);
+  const view = new DataView(buf.buffer);
+  // 0x00: u32
+  if (data?.Size !== undefined) view.setUint32(0, Number(data.Size), true);
+  // 0x04: pad4
+  // 0x08: pointer
+  if (data?.BackgroundColor !== undefined) view.setBigUint64(8, data.BackgroundColor === null ? 0n : BigInt(util.toPointer(data.BackgroundColor)), true);
+  // 0x10: pointer
+  if (data?.rcTarget !== undefined) view.setBigUint64(16, data.rcTarget === null ? 0n : BigInt(util.toPointer(data.rcTarget)), true);
+  // 0x18: i64
+  if (data?.rtTarget !== undefined) view.setBigInt64(24, BigInt(data.rtTarget), true);
+  // 0x20: u32
+  if (data?.NumSourceSurfaces !== undefined) view.setUint32(32, Number(data.NumSourceSurfaces), true);
+  // 0x24: f32
+  if (data?.Alpha !== undefined) view.setFloat32(36, Number(data.Alpha), true);
+  // 0x28: pointer
+  if (data?.Source !== undefined) view.setBigUint64(40, data.Source === null ? 0n : BigInt(util.toPointer(data.Source)), true);
+  // 0x30: u32
+  if (data?.DestinationFormat !== undefined) view.setUint32(48, Number(data.DestinationFormat), true);
+  // 0x34: u32
+  if (data?.DestinationFlags !== undefined) view.setUint32(52, Number(data.DestinationFlags), true);
   return buf;
 }
 
@@ -46590,71 +47027,9 @@ export function allocACMFILTERCHOOSEW(data?: Partial<ACMFILTERCHOOSEW>): Uint8Ar
 }
 
 /**
- * Windows.Win32.Media.Audio.ACMSTREAMHEADER (size: 72)
+ * Windows.Win32.Media.Audio.ACMDRVOPENDESCA (size: 48)
  */
-export interface ACMSTREAMHEADER {
-  /** u32 */
-  cbStruct: number;
-  /** u32 */
-  fdwStatus: number;
-  /** usize */
-  dwUser: Deno.PointerValue;
-  /** ptr */
-  pbSrc: Deno.PointerValue | Uint8Array | null;
-  /** u32 */
-  cbSrcLength: number;
-  /** u32 */
-  cbSrcLengthUsed: number;
-  /** usize */
-  dwSrcUser: Deno.PointerValue;
-  /** ptr */
-  pbDst: Deno.PointerValue | Uint8Array | null;
-  /** u32 */
-  cbDstLength: number;
-  /** u32 */
-  cbDstLengthUsed: number;
-  /** usize */
-  dwDstUser: Deno.PointerValue;
-  /** array */
-  dwReservedDriver: Deno.PointerValue | null;
-}
-
-export const sizeofACMSTREAMHEADER = 72;
-
-export function allocACMSTREAMHEADER(data?: Partial<ACMSTREAMHEADER>): Uint8Array {
-  const buf = new Uint8Array(sizeofACMSTREAMHEADER);
-  const view = new DataView(buf.buffer);
-  // 0x00: u32
-  if (data?.cbStruct !== undefined) view.setUint32(0, Number(data.cbStruct), true);
-  // 0x04: u32
-  if (data?.fdwStatus !== undefined) view.setUint32(4, Number(data.fdwStatus), true);
-  // 0x08: usize
-  if (data?.dwUser !== undefined) view.setBigUint64(8, BigInt(data.dwUser), true);
-  // 0x10: pointer
-  if (data?.pbSrc !== undefined) view.setBigUint64(16, data.pbSrc === null ? 0n : BigInt(util.toPointer(data.pbSrc)), true);
-  // 0x18: u32
-  if (data?.cbSrcLength !== undefined) view.setUint32(24, Number(data.cbSrcLength), true);
-  // 0x1c: u32
-  if (data?.cbSrcLengthUsed !== undefined) view.setUint32(28, Number(data.cbSrcLengthUsed), true);
-  // 0x20: usize
-  if (data?.dwSrcUser !== undefined) view.setBigUint64(32, BigInt(data.dwSrcUser), true);
-  // 0x28: pointer
-  if (data?.pbDst !== undefined) view.setBigUint64(40, data.pbDst === null ? 0n : BigInt(util.toPointer(data.pbDst)), true);
-  // 0x30: u32
-  if (data?.cbDstLength !== undefined) view.setUint32(48, Number(data.cbDstLength), true);
-  // 0x34: u32
-  if (data?.cbDstLengthUsed !== undefined) view.setUint32(52, Number(data.cbDstLengthUsed), true);
-  // 0x38: usize
-  if (data?.dwDstUser !== undefined) view.setBigUint64(56, BigInt(data.dwDstUser), true);
-  // 0x40: pointer
-  if (data?.dwReservedDriver !== undefined) view.setBigUint64(64, data.dwReservedDriver === null ? 0n : BigInt(util.toPointer(data.dwReservedDriver)), true);
-  return buf;
-}
-
-/**
- * Windows.Win32.Media.Audio.tACMDRVOPENDESCA (size: 48)
- */
-export interface tACMDRVOPENDESCA {
+export interface ACMDRVOPENDESCA {
   /** u32 */
   cbStruct: number;
   /** u32 */
@@ -46675,10 +47050,10 @@ export interface tACMDRVOPENDESCA {
   dnDevNode: number;
 }
 
-export const sizeofTACMDRVOPENDESCA = 48;
+export const sizeofACMDRVOPENDESCA = 48;
 
-export function allocTACMDRVOPENDESCA(data?: Partial<tACMDRVOPENDESCA>): Uint8Array {
-  const buf = new Uint8Array(sizeofTACMDRVOPENDESCA);
+export function allocACMDRVOPENDESCA(data?: Partial<ACMDRVOPENDESCA>): Uint8Array {
+  const buf = new Uint8Array(sizeofACMDRVOPENDESCA);
   const view = new DataView(buf.buffer);
   // 0x00: u32
   if (data?.cbStruct !== undefined) view.setUint32(0, Number(data.cbStruct), true);
@@ -46709,9 +47084,9 @@ export function allocTACMDRVOPENDESCA(data?: Partial<tACMDRVOPENDESCA>): Uint8Ar
 }
 
 /**
- * Windows.Win32.Media.Audio.tACMDRVOPENDESCW (size: 48)
+ * Windows.Win32.Media.Audio.ACMDRVOPENDESCW (size: 48)
  */
-export interface tACMDRVOPENDESCW {
+export interface ACMDRVOPENDESCW {
   /** u32 */
   cbStruct: number;
   /** u32 */
@@ -46732,10 +47107,10 @@ export interface tACMDRVOPENDESCW {
   dnDevNode: number;
 }
 
-export const sizeofTACMDRVOPENDESCW = 48;
+export const sizeofACMDRVOPENDESCW = 48;
 
-export function allocTACMDRVOPENDESCW(data?: Partial<tACMDRVOPENDESCW>): Uint8Array {
-  const buf = new Uint8Array(sizeofTACMDRVOPENDESCW);
+export function allocACMDRVOPENDESCW(data?: Partial<ACMDRVOPENDESCW>): Uint8Array {
+  const buf = new Uint8Array(sizeofACMDRVOPENDESCW);
   const view = new DataView(buf.buffer);
   // 0x00: u32
   if (data?.cbStruct !== undefined) view.setUint32(0, Number(data.cbStruct), true);
@@ -47017,41 +47392,6 @@ export function allocD3DOVERLAYCAPS(data?: Partial<D3DOVERLAYCAPS>): Uint8Array 
   // 0x08: u32
   if (data?.MaxOverlayDisplayHeight !== undefined) view.setUint32(8, Number(data.MaxOverlayDisplayHeight), true);
   // 0x0c: pad4
-  return buf;
-}
-
-/**
- * Windows.Win32.Media.MediaFoundation.D3DCONTENTPROTECTIONCAPS (size: 32)
- */
-export interface D3DCONTENTPROTECTIONCAPS {
-  /** u32 */
-  Caps: number;
-  /** System.Guid */
-  KeyExchangeType: Uint8Array | Deno.PointerValue | null;
-  /** u32 */
-  BufferAlignmentStart: number;
-  /** u32 */
-  BlockAlignmentSize: number;
-  /** u64 */
-  ProtectedMemorySize: Deno.PointerValue;
-}
-
-export const sizeofD3DCONTENTPROTECTIONCAPS = 32;
-
-export function allocD3DCONTENTPROTECTIONCAPS(data?: Partial<D3DCONTENTPROTECTIONCAPS>): Uint8Array {
-  const buf = new Uint8Array(sizeofD3DCONTENTPROTECTIONCAPS);
-  const view = new DataView(buf.buffer);
-  // 0x00: u32
-  if (data?.Caps !== undefined) view.setUint32(0, Number(data.Caps), true);
-  // 0x04: pad4
-  // 0x08: pointer
-  if (data?.KeyExchangeType !== undefined) view.setBigUint64(8, data.KeyExchangeType === null ? 0n : BigInt(util.toPointer(data.KeyExchangeType)), true);
-  // 0x10: u32
-  if (data?.BufferAlignmentStart !== undefined) view.setUint32(16, Number(data.BufferAlignmentStart), true);
-  // 0x14: u32
-  if (data?.BlockAlignmentSize !== undefined) view.setUint32(20, Number(data.BlockAlignmentSize), true);
-  // 0x18: u64
-  if (data?.ProtectedMemorySize !== undefined) view.setBigUint64(24, BigInt(data.ProtectedMemorySize), true);
   return buf;
 }
 
@@ -48062,82 +48402,6 @@ export function allocKSSTREAMALLOCATOR_STATUS_EX(data?: Partial<KSSTREAMALLOCATO
 }
 
 /**
- * Windows.Win32.Media.KernelStreaming.KSTIME (size: 16)
- */
-export interface KSTIME {
-  /** i64 */
-  Time: Deno.PointerValue;
-  /** u32 */
-  Numerator: number;
-  /** u32 */
-  Denominator: number;
-}
-
-export const sizeofKSTIME = 16;
-
-export function allocKSTIME(data?: Partial<KSTIME>): Uint8Array {
-  const buf = new Uint8Array(sizeofKSTIME);
-  const view = new DataView(buf.buffer);
-  // 0x00: i64
-  if (data?.Time !== undefined) view.setBigInt64(0, BigInt(data.Time), true);
-  // 0x08: u32
-  if (data?.Numerator !== undefined) view.setUint32(8, Number(data.Numerator), true);
-  // 0x0c: u32
-  if (data?.Denominator !== undefined) view.setUint32(12, Number(data.Denominator), true);
-  return buf;
-}
-
-/**
- * Windows.Win32.Media.KernelStreaming.KSSTREAM_HEADER (size: 48)
- */
-export interface KSSTREAM_HEADER {
-  /** u32 */
-  Size: number;
-  /** u32 */
-  TypeSpecificFlags: number;
-  /** Windows.Win32.Media.KernelStreaming.KSTIME */
-  PresentationTime: Uint8Array | Deno.PointerValue | null;
-  /** i64 */
-  Duration: Deno.PointerValue;
-  /** u32 */
-  FrameExtent: number;
-  /** u32 */
-  DataUsed: number;
-  /** ptr */
-  Data: Deno.PointerValue | Uint8Array | null;
-  /** u32 */
-  OptionsFlags: number;
-  /** u32 */
-  Reserved: number;
-}
-
-export const sizeofKSSTREAM_HEADER = 48;
-
-export function allocKSSTREAM_HEADER(data?: Partial<KSSTREAM_HEADER>): Uint8Array {
-  const buf = new Uint8Array(sizeofKSSTREAM_HEADER);
-  const view = new DataView(buf.buffer);
-  // 0x00: u32
-  if (data?.Size !== undefined) view.setUint32(0, Number(data.Size), true);
-  // 0x04: u32
-  if (data?.TypeSpecificFlags !== undefined) view.setUint32(4, Number(data.TypeSpecificFlags), true);
-  // 0x08: pointer
-  if (data?.PresentationTime !== undefined) view.setBigUint64(8, data.PresentationTime === null ? 0n : BigInt(util.toPointer(data.PresentationTime)), true);
-  // 0x10: i64
-  if (data?.Duration !== undefined) view.setBigInt64(16, BigInt(data.Duration), true);
-  // 0x18: u32
-  if (data?.FrameExtent !== undefined) view.setUint32(24, Number(data.FrameExtent), true);
-  // 0x1c: u32
-  if (data?.DataUsed !== undefined) view.setUint32(28, Number(data.DataUsed), true);
-  // 0x20: pointer
-  if (data?.Data !== undefined) view.setBigUint64(32, data.Data === null ? 0n : BigInt(util.toPointer(data.Data)), true);
-  // 0x28: u32
-  if (data?.OptionsFlags !== undefined) view.setUint32(40, Number(data.OptionsFlags), true);
-  // 0x2c: u32
-  if (data?.Reserved !== undefined) view.setUint32(44, Number(data.Reserved), true);
-  return buf;
-}
-
-/**
  * Windows.Win32.Media.KernelStreaming.KSSTREAM_METADATA_INFO (size: 32)
  */
 export interface KSSTREAM_METADATA_INFO {
@@ -48658,9 +48922,9 @@ export function allocKSAUDIO_PRESENTATION_POSITION(data?: Partial<KSAUDIO_PRESEN
 }
 
 /**
- * Windows.Win32.Media.KernelStreaming._KSAUDIO_PACKETSIZE_SIGNALPROCESSINGMODE_CONSTRAINT (size: 16)
+ * Windows.Win32.Media.KernelStreaming.KSAUDIO_PACKETSIZE_PROCESSINGMODE_CONSTRAINT (size: 16)
  */
-export interface _KSAUDIO_PACKETSIZE_SIGNALPROCESSINGMODE_CONSTRAINT {
+export interface KSAUDIO_PACKETSIZE_PROCESSINGMODE_CONSTRAINT {
   /** System.Guid */
   ProcessingMode: Uint8Array | Deno.PointerValue | null;
   /** u32 */
@@ -48669,10 +48933,10 @@ export interface _KSAUDIO_PACKETSIZE_SIGNALPROCESSINGMODE_CONSTRAINT {
   ProcessingPacketDurationInHns: number;
 }
 
-export const sizeof_KSAUDIO_PACKETSIZE_SIGNALPROCESSINGMODE_CONSTRAINT = 16;
+export const sizeofKSAUDIO_PACKETSIZE_PROCESSINGMODE_CONSTRAINT = 16;
 
-export function alloc_KSAUDIO_PACKETSIZE_SIGNALPROCESSINGMODE_CONSTRAINT(data?: Partial<_KSAUDIO_PACKETSIZE_SIGNALPROCESSINGMODE_CONSTRAINT>): Uint8Array {
-  const buf = new Uint8Array(sizeof_KSAUDIO_PACKETSIZE_SIGNALPROCESSINGMODE_CONSTRAINT);
+export function allocKSAUDIO_PACKETSIZE_PROCESSINGMODE_CONSTRAINT(data?: Partial<KSAUDIO_PACKETSIZE_PROCESSINGMODE_CONSTRAINT>): Uint8Array {
+  const buf = new Uint8Array(sizeofKSAUDIO_PACKETSIZE_PROCESSINGMODE_CONSTRAINT);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
   if (data?.ProcessingMode !== undefined) view.setBigUint64(0, data.ProcessingMode === null ? 0n : BigInt(util.toPointer(data.ProcessingMode)), true);
@@ -50363,32 +50627,6 @@ export function allocLOOPEDSTREAMING_POSITION_EVENT_DATA(data?: Partial<LOOPEDST
 }
 
 /**
- * Windows.Win32.Media.KernelStreaming.KSNODEPROPERTY (size: 16)
- */
-export interface KSNODEPROPERTY {
-  /** Windows.Win32.Media.KernelStreaming.KSIDENTIFIER */
-  Property: Uint8Array | Deno.PointerValue | null;
-  /** u32 */
-  NodeId: number;
-  /** u32 */
-  Reserved: number;
-}
-
-export const sizeofKSNODEPROPERTY = 16;
-
-export function allocKSNODEPROPERTY(data?: Partial<KSNODEPROPERTY>): Uint8Array {
-  const buf = new Uint8Array(sizeofKSNODEPROPERTY);
-  const view = new DataView(buf.buffer);
-  // 0x00: pointer
-  if (data?.Property !== undefined) view.setBigUint64(0, data.Property === null ? 0n : BigInt(util.toPointer(data.Property)), true);
-  // 0x08: u32
-  if (data?.NodeId !== undefined) view.setUint32(8, Number(data.NodeId), true);
-  // 0x0c: u32
-  if (data?.Reserved !== undefined) view.setUint32(12, Number(data.Reserved), true);
-  return buf;
-}
-
-/**
  * Windows.Win32.Media.KernelStreaming.KSNODEPROPERTY_AUDIO_CHANNEL (size: 16)
  */
 export interface KSNODEPROPERTY_AUDIO_CHANNEL {
@@ -50439,55 +50677,6 @@ export function allocKSNODEPROPERTY_AUDIO_DEV_SPECIFIC(data?: Partial<KSNODEPROP
   if (data?.DevSpecificId !== undefined) view.setUint32(8, Number(data.DevSpecificId), true);
   // 0x0c: u32
   if (data?.DeviceInfo !== undefined) view.setUint32(12, Number(data.DeviceInfo), true);
-  // 0x10: u32
-  if (data?.Length !== undefined) view.setUint32(16, Number(data.Length), true);
-  // 0x14: pad4
-  return buf;
-}
-
-/**
- * Windows.Win32.Media.KernelStreaming.KSNODEPROPERTY_AUDIO_3D_LISTENER (size: 16)
- */
-export interface KSNODEPROPERTY_AUDIO_3D_LISTENER {
-  /** Windows.Win32.Media.KernelStreaming.KSNODEPROPERTY */
-  NodeProperty: Uint8Array | Deno.PointerValue | null;
-  /** ptr */
-  ListenerId: Deno.PointerValue | Uint8Array | null;
-}
-
-export const sizeofKSNODEPROPERTY_AUDIO_3D_LISTENER = 16;
-
-export function allocKSNODEPROPERTY_AUDIO_3D_LISTENER(data?: Partial<KSNODEPROPERTY_AUDIO_3D_LISTENER>): Uint8Array {
-  const buf = new Uint8Array(sizeofKSNODEPROPERTY_AUDIO_3D_LISTENER);
-  const view = new DataView(buf.buffer);
-  // 0x00: pointer
-  if (data?.NodeProperty !== undefined) view.setBigUint64(0, data.NodeProperty === null ? 0n : BigInt(util.toPointer(data.NodeProperty)), true);
-  // 0x08: pointer
-  if (data?.ListenerId !== undefined) view.setBigUint64(8, data.ListenerId === null ? 0n : BigInt(util.toPointer(data.ListenerId)), true);
-  return buf;
-}
-
-/**
- * Windows.Win32.Media.KernelStreaming.KSNODEPROPERTY_AUDIO_PROPERTY (size: 24)
- */
-export interface KSNODEPROPERTY_AUDIO_PROPERTY {
-  /** Windows.Win32.Media.KernelStreaming.KSNODEPROPERTY */
-  NodeProperty: Uint8Array | Deno.PointerValue | null;
-  /** ptr */
-  AppContext: Deno.PointerValue | Uint8Array | null;
-  /** u32 */
-  Length: number;
-}
-
-export const sizeofKSNODEPROPERTY_AUDIO_PROPERTY = 24;
-
-export function allocKSNODEPROPERTY_AUDIO_PROPERTY(data?: Partial<KSNODEPROPERTY_AUDIO_PROPERTY>): Uint8Array {
-  const buf = new Uint8Array(sizeofKSNODEPROPERTY_AUDIO_PROPERTY);
-  const view = new DataView(buf.buffer);
-  // 0x00: pointer
-  if (data?.NodeProperty !== undefined) view.setBigUint64(0, data.NodeProperty === null ? 0n : BigInt(util.toPointer(data.NodeProperty)), true);
-  // 0x08: pointer
-  if (data?.AppContext !== undefined) view.setBigUint64(8, data.AppContext === null ? 0n : BigInt(util.toPointer(data.AppContext)), true);
   // 0x10: u32
   if (data?.Length !== undefined) view.setUint32(16, Number(data.Length), true);
   // 0x14: pad4
@@ -51240,9 +51429,9 @@ export function allocKS_VBIINFOHEADER(data?: Partial<KS_VBIINFOHEADER>): Uint8Ar
 }
 
 /**
- * Windows.Win32.Media.KernelStreaming.KS_AnalogVideoInfo (size: 32)
+ * Windows.Win32.Media.KernelStreaming.KS_ANALOGVIDEOINFO (size: 32)
  */
-export interface KS_AnalogVideoInfo {
+export interface KS_ANALOGVIDEOINFO {
   /** Windows.Win32.Foundation.RECT */
   rcSource: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.Foundation.RECT */
@@ -51255,10 +51444,10 @@ export interface KS_AnalogVideoInfo {
   AvgTimePerFrame: Deno.PointerValue;
 }
 
-export const sizeofKS_AnalogVideoInfo = 32;
+export const sizeofKS_ANALOGVIDEOINFO = 32;
 
-export function allocKS_AnalogVideoInfo(data?: Partial<KS_AnalogVideoInfo>): Uint8Array {
-  const buf = new Uint8Array(sizeofKS_AnalogVideoInfo);
+export function allocKS_ANALOGVIDEOINFO(data?: Partial<KS_ANALOGVIDEOINFO>): Uint8Array {
+  const buf = new Uint8Array(sizeofKS_ANALOGVIDEOINFO);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
   if (data?.rcSource !== undefined) view.setBigUint64(0, data.rcSource === null ? 0n : BigInt(util.toPointer(data.rcSource)), true);
@@ -51607,9 +51796,9 @@ export function allocKS_H264VIDEOINFO(data?: Partial<KS_H264VIDEOINFO>): Uint8Ar
 }
 
 /**
- * Windows.Win32.Media.KernelStreaming.KS_MPEAUDIOINFO (size: 16)
+ * Windows.Win32.Media.KernelStreaming.KS_MPEGAUDIOINFO (size: 16)
  */
-export interface KS_MPEAUDIOINFO {
+export interface KS_MPEGAUDIOINFO {
   /** u32 */
   dwFlags: number;
   /** u32 */
@@ -51620,10 +51809,10 @@ export interface KS_MPEAUDIOINFO {
   dwReserved3: number;
 }
 
-export const sizeofKS_MPEAUDIOINFO = 16;
+export const sizeofKS_MPEGAUDIOINFO = 16;
 
-export function allocKS_MPEAUDIOINFO(data?: Partial<KS_MPEAUDIOINFO>): Uint8Array {
-  const buf = new Uint8Array(sizeofKS_MPEAUDIOINFO);
+export function allocKS_MPEGAUDIOINFO(data?: Partial<KS_MPEGAUDIOINFO>): Uint8Array {
+  const buf = new Uint8Array(sizeofKS_MPEGAUDIOINFO);
   const view = new DataView(buf.buffer);
   // 0x00: u32
   if (data?.dwFlags !== undefined) view.setUint32(0, Number(data.dwFlags), true);
@@ -52215,7 +52404,7 @@ export function allocKS_DATARANGE_VIDEO_VBI(data?: Partial<KS_DATARANGE_VIDEO_VB
 export interface KS_DATARANGE_ANALOGVIDEO {
   /** Windows.Win32.Media.KernelStreaming.KSDATAFORMAT */
   DataRange: Uint8Array | Deno.PointerValue | null;
-  /** Windows.Win32.Media.KernelStreaming.KS_AnalogVideoInfo */
+  /** Windows.Win32.Media.KernelStreaming.KS_ANALOGVIDEOINFO */
   AnalogVideoInfo: Uint8Array | Deno.PointerValue | null;
 }
 
@@ -53788,8 +53977,8 @@ export function allocKSPROPERTY_TUNER_NETWORKTYPE_SCAN_CAPS_S(data?: Partial<KSP
 export interface KSPROPERTY_TUNER_SCAN_STATUS_S {
   /** Windows.Win32.Media.KernelStreaming.KSIDENTIFIER */
   Property: Uint8Array | Deno.PointerValue | null;
-  /** Windows.Win32.Media.KernelStreaming._TunerDecoderLockType */
-  LockStatus: _TunerDecoderLockType;
+  /** Windows.Win32.Media.KernelStreaming.TunerLockType */
+  LockStatus: TunerLockType;
   /** u32 */
   CurrentFrequency: number;
 }
@@ -54346,59 +54535,25 @@ export function allocKSCAMERA_EXTENDEDPROP_HEADER(data?: Partial<KSCAMERA_EXTEND
 }
 
 /**
- * _AccountSid_e__Struct (size: 16)
- */
-export interface _AccountSid_e__Struct {
-  /** u32 */
-  Size: number;
-  /** array */
-  Data: Deno.PointerValue | null;
-}
-
-export const sizeof_AccountSid_e__Struct = 16;
-
-export function alloc_AccountSid_e__Struct(data?: Partial<_AccountSid_e__Struct>): Uint8Array {
-  const buf = new Uint8Array(sizeof_AccountSid_e__Struct);
-  const view = new DataView(buf.buffer);
-  // 0x00: u32
-  if (data?.Size !== undefined) view.setUint32(0, Number(data.Size), true);
-  // 0x04: pad4
-  // 0x08: pointer
-  if (data?.Data !== undefined) view.setBigUint64(8, data.Data === null ? 0n : BigInt(util.toPointer(data.Data)), true);
-  return buf;
-}
-
-/**
- * _Value_e__Union (size: 32)
+ * _Value_e__Union (size: 16)
  */
 export interface _Value_e__Union {
-  /** u32 */
-  Null: number;
-  /** u32 */
-  Wildcard: number;
+  /** u16 */
+  ShortUuid: number;
   /** System.Guid */
-  TemplateGuid: Uint8Array | Deno.PointerValue | null;
-  /** _AccountSid_e__Struct */
-  AccountSid: Uint8Array | Deno.PointerValue | null;
-  /** array */
-  SecureId: Deno.PointerValue | null;
+  LongUuid: Uint8Array | Deno.PointerValue | null;
 }
 
-export const sizeof_Value_e__Union = 32;
+export const sizeof_Value_e__Union = 16;
 
 export function alloc_Value_e__Union(data?: Partial<_Value_e__Union>): Uint8Array {
   const buf = new Uint8Array(sizeof_Value_e__Union);
   const view = new DataView(buf.buffer);
-  // 0x00: u32
-  if (data?.Null !== undefined) view.setUint32(0, Number(data.Null), true);
-  // 0x04: u32
-  if (data?.Wildcard !== undefined) view.setUint32(4, Number(data.Wildcard), true);
+  // 0x00: u16
+  if (data?.ShortUuid !== undefined) view.setUint16(0, Number(data.ShortUuid), true);
+  // 0x02: pad6
   // 0x08: pointer
-  if (data?.TemplateGuid !== undefined) view.setBigUint64(8, data.TemplateGuid === null ? 0n : BigInt(util.toPointer(data.TemplateGuid)), true);
-  // 0x10: pointer
-  if (data?.AccountSid !== undefined) view.setBigUint64(16, data.AccountSid === null ? 0n : BigInt(util.toPointer(data.AccountSid)), true);
-  // 0x18: pointer
-  if (data?.SecureId !== undefined) view.setBigUint64(24, data.SecureId === null ? 0n : BigInt(util.toPointer(data.SecureId)), true);
+  if (data?.LongUuid !== undefined) view.setBigUint64(8, data.LongUuid === null ? 0n : BigInt(util.toPointer(data.LongUuid)), true);
   return buf;
 }
 
@@ -61976,37 +62131,6 @@ export function allocTOC_ENTRY_DESCRIPTOR(data?: Partial<TOC_ENTRY_DESCRIPTOR>):
 }
 
 /**
- * Windows.Win32.Media.MediaFoundation.DXVA_AYUVsample2 (size: 8)
- */
-export interface DXVA_AYUVsample2 {
-  /** u8 */
-  bCrValue: number;
-  /** u8 */
-  bCbValue: number;
-  /** u8 */
-  bY_Value: number;
-  /** u8 */
-  bSampleAlpha8: number;
-}
-
-export const sizeofDXVA_AYUVsample2 = 8;
-
-export function allocDXVA_AYUVsample2(data?: Partial<DXVA_AYUVsample2>): Uint8Array {
-  const buf = new Uint8Array(sizeofDXVA_AYUVsample2);
-  const view = new DataView(buf.buffer);
-  // 0x00: u8
-  if (data?.bCrValue !== undefined) view.setUint8(0, Number(data.bCrValue));
-  // 0x01: u8
-  if (data?.bCbValue !== undefined) view.setUint8(1, Number(data.bCbValue));
-  // 0x02: u8
-  if (data?.bY_Value !== undefined) view.setUint8(2, Number(data.bY_Value));
-  // 0x03: u8
-  if (data?.bSampleAlpha8 !== undefined) view.setUint8(3, Number(data.bSampleAlpha8));
-  // 0x04: pad4
-  return buf;
-}
-
-/**
  * Windows.Win32.Media.MediaFoundation.DXVA_BufferDescription (size: 40)
  */
 export interface DXVA_BufferDescription {
@@ -62515,60 +62639,6 @@ export function allocDXVA_VideoSample(data?: Partial<DXVA_VideoSample>): Uint8Ar
 }
 
 /**
- * Windows.Win32.Media.MediaFoundation.DXVA_VideoSample2 (size: 64)
- */
-export interface DXVA_VideoSample2 {
-  /** u32 */
-  Size: number;
-  /** u32 */
-  Reserved: number;
-  /** i64 */
-  rtStart: Deno.PointerValue;
-  /** i64 */
-  rtEnd: Deno.PointerValue;
-  /** u32 */
-  SampleFormat: number;
-  /** u32 */
-  SampleFlags: number;
-  /** ptr */
-  lpDDSSrcSurface: Deno.PointerValue | Uint8Array | null;
-  /** Windows.Win32.Foundation.RECT */
-  rcSrc: Uint8Array | Deno.PointerValue | null;
-  /** Windows.Win32.Foundation.RECT */
-  rcDst: Uint8Array | Deno.PointerValue | null;
-  /** array */
-  Palette: Deno.PointerValue | null;
-}
-
-export const sizeofDXVA_VideoSample2 = 64;
-
-export function allocDXVA_VideoSample2(data?: Partial<DXVA_VideoSample2>): Uint8Array {
-  const buf = new Uint8Array(sizeofDXVA_VideoSample2);
-  const view = new DataView(buf.buffer);
-  // 0x00: u32
-  if (data?.Size !== undefined) view.setUint32(0, Number(data.Size), true);
-  // 0x04: u32
-  if (data?.Reserved !== undefined) view.setUint32(4, Number(data.Reserved), true);
-  // 0x08: i64
-  if (data?.rtStart !== undefined) view.setBigInt64(8, BigInt(data.rtStart), true);
-  // 0x10: i64
-  if (data?.rtEnd !== undefined) view.setBigInt64(16, BigInt(data.rtEnd), true);
-  // 0x18: u32
-  if (data?.SampleFormat !== undefined) view.setUint32(24, Number(data.SampleFormat), true);
-  // 0x1c: u32
-  if (data?.SampleFlags !== undefined) view.setUint32(28, Number(data.SampleFlags), true);
-  // 0x20: pointer
-  if (data?.lpDDSSrcSurface !== undefined) view.setBigUint64(32, data.lpDDSSrcSurface === null ? 0n : BigInt(util.toPointer(data.lpDDSSrcSurface)), true);
-  // 0x28: pointer
-  if (data?.rcSrc !== undefined) view.setBigUint64(40, data.rcSrc === null ? 0n : BigInt(util.toPointer(data.rcSrc)), true);
-  // 0x30: pointer
-  if (data?.rcDst !== undefined) view.setBigUint64(48, data.rcDst === null ? 0n : BigInt(util.toPointer(data.rcDst)), true);
-  // 0x38: pointer
-  if (data?.Palette !== undefined) view.setBigUint64(56, data.Palette === null ? 0n : BigInt(util.toPointer(data.Palette)), true);
-  return buf;
-}
-
-/**
  * Windows.Win32.Media.MediaFoundation.DXVA_DeinterlaceCaps (size: 32)
  */
 export interface DXVA_DeinterlaceCaps {
@@ -62611,104 +62681,6 @@ export function allocDXVA_DeinterlaceCaps(data?: Partial<DXVA_DeinterlaceCaps>):
   if (data?.VideoProcessingCaps !== undefined) view.setInt32(24, Number(data.VideoProcessingCaps), true);
   // 0x1c: i32
   if (data?.DeinterlaceTechnology !== undefined) view.setInt32(28, Number(data.DeinterlaceTechnology), true);
-  return buf;
-}
-
-/**
- * Windows.Win32.Media.MediaFoundation.DXVA_VideoSample32 (size: 56)
- */
-export interface DXVA_VideoSample32 {
-  /** i64 */
-  rtStart: Deno.PointerValue;
-  /** i64 */
-  rtEnd: Deno.PointerValue;
-  /** u32 */
-  SampleFormat: number;
-  /** u32 */
-  SampleFlags: number;
-  /** u32 */
-  lpDDSSrcSurface: number;
-  /** Windows.Win32.Foundation.RECT */
-  rcSrc: Uint8Array | Deno.PointerValue | null;
-  /** Windows.Win32.Foundation.RECT */
-  rcDst: Uint8Array | Deno.PointerValue | null;
-  /** array */
-  Palette: Deno.PointerValue | null;
-}
-
-export const sizeofDXVA_VideoSample32 = 56;
-
-export function allocDXVA_VideoSample32(data?: Partial<DXVA_VideoSample32>): Uint8Array {
-  const buf = new Uint8Array(sizeofDXVA_VideoSample32);
-  const view = new DataView(buf.buffer);
-  // 0x00: i64
-  if (data?.rtStart !== undefined) view.setBigInt64(0, BigInt(data.rtStart), true);
-  // 0x08: i64
-  if (data?.rtEnd !== undefined) view.setBigInt64(8, BigInt(data.rtEnd), true);
-  // 0x10: u32
-  if (data?.SampleFormat !== undefined) view.setUint32(16, Number(data.SampleFormat), true);
-  // 0x14: u32
-  if (data?.SampleFlags !== undefined) view.setUint32(20, Number(data.SampleFlags), true);
-  // 0x18: u32
-  if (data?.lpDDSSrcSurface !== undefined) view.setUint32(24, Number(data.lpDDSSrcSurface), true);
-  // 0x1c: pad4
-  // 0x20: pointer
-  if (data?.rcSrc !== undefined) view.setBigUint64(32, data.rcSrc === null ? 0n : BigInt(util.toPointer(data.rcSrc)), true);
-  // 0x28: pointer
-  if (data?.rcDst !== undefined) view.setBigUint64(40, data.rcDst === null ? 0n : BigInt(util.toPointer(data.rcDst)), true);
-  // 0x30: pointer
-  if (data?.Palette !== undefined) view.setBigUint64(48, data.Palette === null ? 0n : BigInt(util.toPointer(data.Palette)), true);
-  return buf;
-}
-
-/**
- * Windows.Win32.Media.MediaFoundation.DXVA_DeinterlaceBltEx32 (size: 56)
- */
-export interface DXVA_DeinterlaceBltEx32 {
-  /** u32 */
-  Size: number;
-  /** Windows.Win32.Media.MediaFoundation.DXVA_AYUVsample2 */
-  BackgroundColor: Uint8Array | Deno.PointerValue | null;
-  /** Windows.Win32.Foundation.RECT */
-  rcTarget: Uint8Array | Deno.PointerValue | null;
-  /** i64 */
-  rtTarget: Deno.PointerValue;
-  /** u32 */
-  NumSourceSurfaces: number;
-  /** f32 */
-  Alpha: number;
-  /** array */
-  Source: Deno.PointerValue | null;
-  /** u32 */
-  DestinationFormat: number;
-  /** u32 */
-  DestinationFlags: number;
-}
-
-export const sizeofDXVA_DeinterlaceBltEx32 = 56;
-
-export function allocDXVA_DeinterlaceBltEx32(data?: Partial<DXVA_DeinterlaceBltEx32>): Uint8Array {
-  const buf = new Uint8Array(sizeofDXVA_DeinterlaceBltEx32);
-  const view = new DataView(buf.buffer);
-  // 0x00: u32
-  if (data?.Size !== undefined) view.setUint32(0, Number(data.Size), true);
-  // 0x04: pad4
-  // 0x08: pointer
-  if (data?.BackgroundColor !== undefined) view.setBigUint64(8, data.BackgroundColor === null ? 0n : BigInt(util.toPointer(data.BackgroundColor)), true);
-  // 0x10: pointer
-  if (data?.rcTarget !== undefined) view.setBigUint64(16, data.rcTarget === null ? 0n : BigInt(util.toPointer(data.rcTarget)), true);
-  // 0x18: i64
-  if (data?.rtTarget !== undefined) view.setBigInt64(24, BigInt(data.rtTarget), true);
-  // 0x20: u32
-  if (data?.NumSourceSurfaces !== undefined) view.setUint32(32, Number(data.NumSourceSurfaces), true);
-  // 0x24: f32
-  if (data?.Alpha !== undefined) view.setFloat32(36, Number(data.Alpha), true);
-  // 0x28: pointer
-  if (data?.Source !== undefined) view.setBigUint64(40, data.Source === null ? 0n : BigInt(util.toPointer(data.Source)), true);
-  // 0x30: u32
-  if (data?.DestinationFormat !== undefined) view.setUint32(48, Number(data.DestinationFormat), true);
-  // 0x34: u32
-  if (data?.DestinationFlags !== undefined) view.setUint32(52, Number(data.DestinationFlags), true);
   return buf;
 }
 
@@ -67808,13 +67780,13 @@ export function allocDEVICE_INFO(data?: Partial<DEVICE_INFO>): Uint8Array {
 }
 
 /**
- * Windows.Win32.Media.MediaFoundation.MFVideoAlphaBitmapParams (size: 32)
+ * Windows.Win32.Media.MediaFoundation.MFVideoAlphaBitmapParams (size: 40)
  */
 export interface MFVideoAlphaBitmapParams {
   /** u32 */
   dwFlags: number;
-  /** u32 */
-  clrSrcKey: number;
+  /** Windows.Win32.Foundation.COLORREF */
+  clrSrcKey: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.Foundation.RECT */
   rcSrc: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.Media.MediaFoundation.MFVideoNormalizedRect */
@@ -67825,23 +67797,24 @@ export interface MFVideoAlphaBitmapParams {
   dwFilterMode: number;
 }
 
-export const sizeofMFVideoAlphaBitmapParams = 32;
+export const sizeofMFVideoAlphaBitmapParams = 40;
 
 export function allocMFVideoAlphaBitmapParams(data?: Partial<MFVideoAlphaBitmapParams>): Uint8Array {
   const buf = new Uint8Array(sizeofMFVideoAlphaBitmapParams);
   const view = new DataView(buf.buffer);
   // 0x00: u32
   if (data?.dwFlags !== undefined) view.setUint32(0, Number(data.dwFlags), true);
-  // 0x04: u32
-  if (data?.clrSrcKey !== undefined) view.setUint32(4, Number(data.clrSrcKey), true);
+  // 0x04: pad4
   // 0x08: pointer
-  if (data?.rcSrc !== undefined) view.setBigUint64(8, data.rcSrc === null ? 0n : BigInt(util.toPointer(data.rcSrc)), true);
+  if (data?.clrSrcKey !== undefined) view.setBigUint64(8, data.clrSrcKey === null ? 0n : BigInt(util.toPointer(data.clrSrcKey)), true);
   // 0x10: pointer
-  if (data?.nrcDest !== undefined) view.setBigUint64(16, data.nrcDest === null ? 0n : BigInt(util.toPointer(data.nrcDest)), true);
-  // 0x18: f32
-  if (data?.fAlpha !== undefined) view.setFloat32(24, Number(data.fAlpha), true);
-  // 0x1c: u32
-  if (data?.dwFilterMode !== undefined) view.setUint32(28, Number(data.dwFilterMode), true);
+  if (data?.rcSrc !== undefined) view.setBigUint64(16, data.rcSrc === null ? 0n : BigInt(util.toPointer(data.rcSrc)), true);
+  // 0x18: pointer
+  if (data?.nrcDest !== undefined) view.setBigUint64(24, data.nrcDest === null ? 0n : BigInt(util.toPointer(data.nrcDest)), true);
+  // 0x20: f32
+  if (data?.fAlpha !== undefined) view.setFloat32(32, Number(data.fAlpha), true);
+  // 0x24: u32
+  if (data?.dwFilterMode !== undefined) view.setUint32(36, Number(data.dwFilterMode), true);
   return buf;
 }
 
@@ -68473,7 +68446,7 @@ export function allocHistogramDataHeader(data?: Partial<HistogramDataHeader>): U
 // Native Libraries
 
 try {
-  var libWINMM = Deno.dlopen("WINMM", {
+  var libWINMM_dll = Deno.dlopen("WINMM.dll", {
     timeGetSystemTime: {
       parameters: ["pointer", "u32"],
       result: "u32",
@@ -68511,30 +68484,30 @@ export function timeGetSystemTime(
   pmmt: Deno.PointerValue | Uint8Array | null /* ptr */,
   cbmmt: number /* u32 */,
 ): number /* u32 */ {
-  return libWINMM.timeGetSystemTime(util.toPointer(pmmt), cbmmt);
+  return libWINMM_dll.timeGetSystemTime(util.toPointer(pmmt), cbmmt);
 }
 
 export function timeGetTime(): number /* u32 */ {
-  return libWINMM.timeGetTime();
+  return libWINMM_dll.timeGetTime();
 }
 
 export function timeGetDevCaps(
   ptc: Deno.PointerValue | Uint8Array | null /* ptr */,
   cbtc: number /* u32 */,
 ): number /* u32 */ {
-  return libWINMM.timeGetDevCaps(util.toPointer(ptc), cbtc);
+  return libWINMM_dll.timeGetDevCaps(util.toPointer(ptc), cbtc);
 }
 
 export function timeBeginPeriod(
   uPeriod: number /* u32 */,
 ): number /* u32 */ {
-  return libWINMM.timeBeginPeriod(uPeriod);
+  return libWINMM_dll.timeBeginPeriod(uPeriod);
 }
 
 export function timeEndPeriod(
   uPeriod: number /* u32 */,
 ): number /* u32 */ {
-  return libWINMM.timeEndPeriod(uPeriod);
+  return libWINMM_dll.timeEndPeriod(uPeriod);
 }
 
 export function timeSetEvent(
@@ -68544,12 +68517,12 @@ export function timeSetEvent(
   dwUser: Deno.PointerValue /* usize */,
   fuEvent: number /* u32 */,
 ): number /* u32 */ {
-  return libWINMM.timeSetEvent(uDelay, uResolution, util.toPointer(fptc), dwUser, fuEvent);
+  return libWINMM_dll.timeSetEvent(uDelay, uResolution, util.toPointer(fptc), dwUser, fuEvent);
 }
 
 export function timeKillEvent(
   uTimerID: number /* u32 */,
 ): number /* u32 */ {
-  return libWINMM.timeKillEvent(uTimerID);
+  return libWINMM_dll.timeKillEvent(uTimerID);
 }
 

@@ -21,7 +21,7 @@ export type HRESULT = number;
 // Native Libraries
 
 try {
-  var liblicenseprotection = Deno.dlopen("licenseprotection", {
+  var liblicenseprotection_dll = Deno.dlopen("licenseprotection.dll", {
     RegisterLicenseKeyWithExpiration: {
       parameters: ["buffer", "u32", "pointer"],
       result: "pointer",
@@ -40,7 +40,7 @@ export function RegisterLicenseKeyWithExpiration(
   validityInDays: number /* u32 */,
   status: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(liblicenseprotection.RegisterLicenseKeyWithExpiration(util.pwstrToFfi(licenseKey), validityInDays, util.toPointer(status)));
+  return util.pointerFromFfi(liblicenseprotection_dll.RegisterLicenseKeyWithExpiration(util.pwstrToFfi(licenseKey), validityInDays, util.toPointer(status)));
 }
 
 export function ValidateLicenseKeyProtection(
@@ -49,6 +49,6 @@ export function ValidateLicenseKeyProtection(
   notValidAfter: Deno.PointerValue | Uint8Array | null /* ptr */,
   status: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(liblicenseprotection.ValidateLicenseKeyProtection(util.pwstrToFfi(licenseKey), util.toPointer(notValidBefore), util.toPointer(notValidAfter), util.toPointer(status)));
+  return util.pointerFromFfi(liblicenseprotection_dll.ValidateLicenseKeyProtection(util.pwstrToFfi(licenseKey), util.toPointer(notValidBefore), util.toPointer(notValidAfter), util.toPointer(status)));
 }
 

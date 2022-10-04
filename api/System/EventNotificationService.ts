@@ -85,7 +85,7 @@ export type PWSTR = Deno.PointerValue | Uint8Array | null;
 // Native Libraries
 
 try {
-  var libSensApi = Deno.dlopen("SensApi", {
+  var libSensApi_dll = Deno.dlopen("SensApi.dll", {
     IsDestinationReachableA: {
       parameters: ["buffer", "pointer"],
       result: "i32",
@@ -107,19 +107,19 @@ export function IsDestinationReachableA(
   lpszDestination: string | null /* Windows.Win32.Foundation.PSTR */,
   lpQOCInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSensApi.IsDestinationReachableA(util.pstrToFfi(lpszDestination), util.toPointer(lpQOCInfo)));
+  return util.boolFromFfi(libSensApi_dll.IsDestinationReachableA(util.pstrToFfi(lpszDestination), util.toPointer(lpQOCInfo)));
 }
 
 export function IsDestinationReachableW(
   lpszDestination: string | null /* Windows.Win32.Foundation.PWSTR */,
   lpQOCInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSensApi.IsDestinationReachableW(util.pwstrToFfi(lpszDestination), util.toPointer(lpQOCInfo)));
+  return util.boolFromFfi(libSensApi_dll.IsDestinationReachableW(util.pwstrToFfi(lpszDestination), util.toPointer(lpQOCInfo)));
 }
 
 export function IsNetworkAlive(
   lpdwFlags: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSensApi.IsNetworkAlive(util.toPointer(lpdwFlags)));
+  return util.boolFromFfi(libSensApi_dll.IsNetworkAlive(util.toPointer(lpdwFlags)));
 }
 

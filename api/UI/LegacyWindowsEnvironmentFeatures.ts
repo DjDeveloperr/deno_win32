@@ -3,7 +3,8 @@
 import * as util from "../../util.ts";
 
 // Enums
-export type _reconcilef = number;
+export type EMPTY_VOLUME_CACHE_FLAGS = number;
+export type RECONCILEF = number;
 
 // Constants
 export const EVCF_HASSETTINGS = 1;
@@ -24,7 +25,7 @@ export const REC_E_ABORTED = 297239793757327360n;
 export const REC_E_NOCALLBACK = 292736194129956865n;
 export const REC_E_NORESIDUES = 2810247286318436354n;
 export const REC_E_TOODIFFERENT = 4323456829834399747n;
-export const REC_E_INEEDTODOTHEUPDATES = 1225542093695619076n;
+export const REC_E_INEEDTODOTHEUPDATES = 6989671363531509764n;
 export const RECONCILEF_MAYBOTHERUSER = 1;
 export const RECONCILEF_FEEDBACKWINDOWVALID = 2;
 export const RECONCILEF_NORESIDUESOK = 4;

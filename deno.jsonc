@@ -1,6 +1,6 @@
 {
   "tasks": {
-    "gen": "deno run -A --unstable gen.ts",
+    "gen": "deno run -A --unstable generator/gen.ts",
     "check": "deno check --unstable api/UI/mod.ts"
   },
   "fmt": {

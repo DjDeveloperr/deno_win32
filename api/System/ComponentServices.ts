@@ -47,6 +47,8 @@ export type CRMREGFLAGS = number;
 export type APTTYPE = number;
 
 // Constants
+export const TRACKER_STARTSTOP_EVENT = `Global\COM+ Tracker Push Event`;
+export const TRACKER_INIT_EVENT = `Global\COM+ Tracker Init Event`;
 export const GUID_STRING_SIZE = 40;
 export const DATA_NOT_AVAILABLE = 4294967295;
 export const MTXDM_E_ENLISTRESOURCEFAILED = 2147803392;
@@ -186,101 +188,101 @@ export const COMAdminCompFlagProxyFound = 4;
 export const COMAdminCompFlagInterfacesFound = 8;
 export const COMAdminCompFlagAlreadyInstalled = 16;
 export const COMAdminCompFlagNotInApplication = 32;
-export const COMAdminErrObjectErrors = "-2146368511";
-export const COMAdminErrObjectInvalid = "-2146368510";
-export const COMAdminErrKeyMissing = "-2146368509";
-export const COMAdminErrAlreadyInstalled = "-2146368508";
-export const COMAdminErrAppFileWriteFail = "-2146368505";
-export const COMAdminErrAppFileReadFail = "-2146368504";
-export const COMAdminErrAppFileVersion = "-2146368503";
-export const COMAdminErrBadPath = "-2146368502";
-export const COMAdminErrApplicationExists = "-2146368501";
-export const COMAdminErrRoleExists = "-2146368500";
-export const COMAdminErrCantCopyFile = "-2146368499";
-export const COMAdminErrNoUser = "-2146368497";
-export const COMAdminErrInvalidUserids = "-2146368496";
-export const COMAdminErrNoRegistryCLSID = "-2146368495";
-export const COMAdminErrBadRegistryProgID = "-2146368494";
-export const COMAdminErrAuthenticationLevel = "-2146368493";
-export const COMAdminErrUserPasswdNotValid = "-2146368492";
-export const COMAdminErrCLSIDOrIIDMismatch = "-2146368488";
-export const COMAdminErrRemoteInterface = "-2146368487";
-export const COMAdminErrDllRegisterServer = "-2146368486";
-export const COMAdminErrNoServerShare = "-2146368485";
-export const COMAdminErrDllLoadFailed = "-2146368483";
-export const COMAdminErrBadRegistryLibID = "-2146368482";
-export const COMAdminErrAppDirNotFound = "-2146368481";
-export const COMAdminErrRegistrarFailed = "-2146368477";
-export const COMAdminErrCompFileDoesNotExist = "-2146368476";
-export const COMAdminErrCompFileLoadDLLFail = "-2146368475";
-export const COMAdminErrCompFileGetClassObj = "-2146368474";
-export const COMAdminErrCompFileClassNotAvail = "-2146368473";
-export const COMAdminErrCompFileBadTLB = "-2146368472";
-export const COMAdminErrCompFileNotInstallable = "-2146368471";
-export const COMAdminErrNotChangeable = "-2146368470";
-export const COMAdminErrNotDeletable = "-2146368469";
-export const COMAdminErrSession = "-2146368468";
-export const COMAdminErrCompMoveLocked = "-2146368467";
-export const COMAdminErrCompMoveBadDest = "-2146368466";
-export const COMAdminErrRegisterTLB = "-2146368464";
-export const COMAdminErrSystemApp = "-2146368461";
-export const COMAdminErrCompFileNoRegistrar = "-2146368460";
-export const COMAdminErrCoReqCompInstalled = "-2146368459";
-export const COMAdminErrServiceNotInstalled = "-2146368458";
-export const COMAdminErrPropertySaveFailed = "-2146368457";
-export const COMAdminErrObjectExists = "-2146368456";
-export const COMAdminErrComponentExists = "-2146368455";
-export const COMAdminErrRegFileCorrupt = "-2146368453";
-export const COMAdminErrPropertyOverflow = "-2146368452";
-export const COMAdminErrNotInRegistry = "-2146368450";
-export const COMAdminErrObjectNotPoolable = "-2146368449";
-export const COMAdminErrApplidMatchesClsid = "-2146368442";
-export const COMAdminErrRoleDoesNotExist = "-2146368441";
-export const COMAdminErrStartAppNeedsComponents = "-2146368440";
-export const COMAdminErrRequiresDifferentPlatform = "-2146368439";
-export const COMAdminErrQueuingServiceNotAvailable = "-2146367998";
-export const COMAdminErrObjectParentMissing = "-2146367480";
-export const COMAdminErrObjectDoesNotExist = "-2146367479";
-export const COMAdminErrCanNotExportAppProxy = "-2146368438";
-export const COMAdminErrCanNotStartApp = "-2146368437";
-export const COMAdminErrCanNotExportSystemApp = "-2146368436";
-export const COMAdminErrCanNotSubscribeToComponent = "-2146368435";
-export const COMAdminErrAppNotRunning = "-2146367478";
-export const COMAdminErrEventClassCannotBeSubscriber = "-2146368434";
-export const COMAdminErrLibAppProxyIncompatible = "-2146368433";
-export const COMAdminErrBasePartitionOnly = "-2146368432";
-export const COMAdminErrDuplicatePartitionName = "-2146368425";
-export const COMAdminErrPartitionInUse = "-2146368423";
-export const COMAdminErrImportedComponentsNotAllowed = "-2146368421";
-export const COMAdminErrRegdbNotInitialized = "-2146368398";
-export const COMAdminErrRegdbNotOpen = "-2146368397";
-export const COMAdminErrRegdbSystemErr = "-2146368396";
-export const COMAdminErrRegdbAlreadyRunning = "-2146368395";
-export const COMAdminErrMigVersionNotSupported = "-2146368384";
-export const COMAdminErrMigSchemaNotFound = "-2146368383";
-export const COMAdminErrCatBitnessMismatch = "-2146368382";
-export const COMAdminErrCatUnacceptableBitness = "-2146368381";
-export const COMAdminErrCatWrongAppBitnessBitness = "-2146368380";
-export const COMAdminErrCatPauseResumeNotSupported = "-2146368379";
-export const COMAdminErrCatServerFault = "-2146368378";
-export const COMAdminErrCantRecycleLibraryApps = "-2146367473";
-export const COMAdminErrCantRecycleServiceApps = "-2146367471";
-export const COMAdminErrProcessAlreadyRecycled = "-2146367470";
-export const COMAdminErrPausedProcessMayNotBeRecycled = "-2146367469";
-export const COMAdminErrInvalidPartition = "-2146367477";
-export const COMAdminErrPartitionMsiOnly = "-2146367463";
-export const COMAdminErrStartAppDisabled = "-2146368431";
-export const COMAdminErrCompMoveSource = "-2146367460";
-export const COMAdminErrCompMoveDest = "-2146367459";
-export const COMAdminErrCompMovePrivate = "-2146367458";
-export const COMAdminErrCannotCopyEventClass = "-2146367456";
+export const COMAdminErrObjectErrors = `-2146368511`;
+export const COMAdminErrObjectInvalid = `-2146368510`;
+export const COMAdminErrKeyMissing = `-2146368509`;
+export const COMAdminErrAlreadyInstalled = `-2146368508`;
+export const COMAdminErrAppFileWriteFail = `-2146368505`;
+export const COMAdminErrAppFileReadFail = `-2146368504`;
+export const COMAdminErrAppFileVersion = `-2146368503`;
+export const COMAdminErrBadPath = `-2146368502`;
+export const COMAdminErrApplicationExists = `-2146368501`;
+export const COMAdminErrRoleExists = `-2146368500`;
+export const COMAdminErrCantCopyFile = `-2146368499`;
+export const COMAdminErrNoUser = `-2146368497`;
+export const COMAdminErrInvalidUserids = `-2146368496`;
+export const COMAdminErrNoRegistryCLSID = `-2146368495`;
+export const COMAdminErrBadRegistryProgID = `-2146368494`;
+export const COMAdminErrAuthenticationLevel = `-2146368493`;
+export const COMAdminErrUserPasswdNotValid = `-2146368492`;
+export const COMAdminErrCLSIDOrIIDMismatch = `-2146368488`;
+export const COMAdminErrRemoteInterface = `-2146368487`;
+export const COMAdminErrDllRegisterServer = `-2146368486`;
+export const COMAdminErrNoServerShare = `-2146368485`;
+export const COMAdminErrDllLoadFailed = `-2146368483`;
+export const COMAdminErrBadRegistryLibID = `-2146368482`;
+export const COMAdminErrAppDirNotFound = `-2146368481`;
+export const COMAdminErrRegistrarFailed = `-2146368477`;
+export const COMAdminErrCompFileDoesNotExist = `-2146368476`;
+export const COMAdminErrCompFileLoadDLLFail = `-2146368475`;
+export const COMAdminErrCompFileGetClassObj = `-2146368474`;
+export const COMAdminErrCompFileClassNotAvail = `-2146368473`;
+export const COMAdminErrCompFileBadTLB = `-2146368472`;
+export const COMAdminErrCompFileNotInstallable = `-2146368471`;
+export const COMAdminErrNotChangeable = `-2146368470`;
+export const COMAdminErrNotDeletable = `-2146368469`;
+export const COMAdminErrSession = `-2146368468`;
+export const COMAdminErrCompMoveLocked = `-2146368467`;
+export const COMAdminErrCompMoveBadDest = `-2146368466`;
+export const COMAdminErrRegisterTLB = `-2146368464`;
+export const COMAdminErrSystemApp = `-2146368461`;
+export const COMAdminErrCompFileNoRegistrar = `-2146368460`;
+export const COMAdminErrCoReqCompInstalled = `-2146368459`;
+export const COMAdminErrServiceNotInstalled = `-2146368458`;
+export const COMAdminErrPropertySaveFailed = `-2146368457`;
+export const COMAdminErrObjectExists = `-2146368456`;
+export const COMAdminErrComponentExists = `-2146368455`;
+export const COMAdminErrRegFileCorrupt = `-2146368453`;
+export const COMAdminErrPropertyOverflow = `-2146368452`;
+export const COMAdminErrNotInRegistry = `-2146368450`;
+export const COMAdminErrObjectNotPoolable = `-2146368449`;
+export const COMAdminErrApplidMatchesClsid = `-2146368442`;
+export const COMAdminErrRoleDoesNotExist = `-2146368441`;
+export const COMAdminErrStartAppNeedsComponents = `-2146368440`;
+export const COMAdminErrRequiresDifferentPlatform = `-2146368439`;
+export const COMAdminErrQueuingServiceNotAvailable = `-2146367998`;
+export const COMAdminErrObjectParentMissing = `-2146367480`;
+export const COMAdminErrObjectDoesNotExist = `-2146367479`;
+export const COMAdminErrCanNotExportAppProxy = `-2146368438`;
+export const COMAdminErrCanNotStartApp = `-2146368437`;
+export const COMAdminErrCanNotExportSystemApp = `-2146368436`;
+export const COMAdminErrCanNotSubscribeToComponent = `-2146368435`;
+export const COMAdminErrAppNotRunning = `-2146367478`;
+export const COMAdminErrEventClassCannotBeSubscriber = `-2146368434`;
+export const COMAdminErrLibAppProxyIncompatible = `-2146368433`;
+export const COMAdminErrBasePartitionOnly = `-2146368432`;
+export const COMAdminErrDuplicatePartitionName = `-2146368425`;
+export const COMAdminErrPartitionInUse = `-2146368423`;
+export const COMAdminErrImportedComponentsNotAllowed = `-2146368421`;
+export const COMAdminErrRegdbNotInitialized = `-2146368398`;
+export const COMAdminErrRegdbNotOpen = `-2146368397`;
+export const COMAdminErrRegdbSystemErr = `-2146368396`;
+export const COMAdminErrRegdbAlreadyRunning = `-2146368395`;
+export const COMAdminErrMigVersionNotSupported = `-2146368384`;
+export const COMAdminErrMigSchemaNotFound = `-2146368383`;
+export const COMAdminErrCatBitnessMismatch = `-2146368382`;
+export const COMAdminErrCatUnacceptableBitness = `-2146368381`;
+export const COMAdminErrCatWrongAppBitnessBitness = `-2146368380`;
+export const COMAdminErrCatPauseResumeNotSupported = `-2146368379`;
+export const COMAdminErrCatServerFault = `-2146368378`;
+export const COMAdminErrCantRecycleLibraryApps = `-2146367473`;
+export const COMAdminErrCantRecycleServiceApps = `-2146367471`;
+export const COMAdminErrProcessAlreadyRecycled = `-2146367470`;
+export const COMAdminErrPausedProcessMayNotBeRecycled = `-2146367469`;
+export const COMAdminErrInvalidPartition = `-2146367477`;
+export const COMAdminErrPartitionMsiOnly = `-2146367463`;
+export const COMAdminErrStartAppDisabled = `-2146368431`;
+export const COMAdminErrCompMoveSource = `-2146367460`;
+export const COMAdminErrCompMoveDest = `-2146367459`;
+export const COMAdminErrCompMovePrivate = `-2146367458`;
+export const COMAdminErrCannotCopyEventClass = `-2146367456`;
 export const TRKCOLL_PROCESSES = 0;
 export const TRKCOLL_APPLICATIONS = 1;
 export const TRKCOLL_COMPONENTS = 2;
 export const DUMPTYPE_FULL = 0;
 export const DUMPTYPE_MINI = 1;
 export const DUMPTYPE_NONE = 2;
-export const APPTYPE_UNKNOWN = "-1";
+export const APPTYPE_UNKNOWN = `-1`;
 export const APPTYPE_SERVER = 1;
 export const APPTYPE_LIBRARY = 0;
 export const APPTYPE_SWC = 2;
@@ -365,7 +367,7 @@ export const CRMREGFLAG_COMMITPHASE = 2;
 export const CRMREGFLAG_ABORTPHASE = 4;
 export const CRMREGFLAG_ALLPHASES = 7;
 export const CRMREGFLAG_FAILIFINDOUBTSREMAIN = 16;
-export const APTTYPE_CURRENT = "-1";
+export const APTTYPE_CURRENT = `-1`;
 export const APTTYPE_STA = 0;
 export const APTTYPE_MTA = 1;
 export const APTTYPE_NA = 2;
@@ -497,9 +499,9 @@ export function allocHANG_INFO(data?: Partial<HANG_INFO>): Uint8Array {
 }
 
 /**
- * Windows.Win32.System.ComponentServices.CAppStatistics (size: 16)
+ * Windows.Win32.System.ComponentServices.APPSTATISTICS (size: 16)
  */
-export interface CAppStatistics {
+export interface APPSTATISTICS {
   /** u32 */
   m_cTotalCalls: number;
   /** u32 */
@@ -510,10 +512,10 @@ export interface CAppStatistics {
   m_cCallsPerSecond: number;
 }
 
-export const sizeofCAppStatistics = 16;
+export const sizeofAPPSTATISTICS = 16;
 
-export function allocCAppStatistics(data?: Partial<CAppStatistics>): Uint8Array {
-  const buf = new Uint8Array(sizeofCAppStatistics);
+export function allocAPPSTATISTICS(data?: Partial<APPSTATISTICS>): Uint8Array {
+  const buf = new Uint8Array(sizeofAPPSTATISTICS);
   const view = new DataView(buf.buffer);
   // 0x00: u32
   if (data?.m_cTotalCalls !== undefined) view.setUint32(0, Number(data.m_cTotalCalls), true);
@@ -527,23 +529,23 @@ export function allocCAppStatistics(data?: Partial<CAppStatistics>): Uint8Array 
 }
 
 /**
- * Windows.Win32.System.ComponentServices.CAppData (size: 32)
+ * Windows.Win32.System.ComponentServices.APPDATA (size: 32)
  */
-export interface CAppData {
+export interface APPDATA {
   /** u32 */
   m_idApp: number;
   /** array */
   m_szAppGuid: Deno.PointerValue | null;
   /** u32 */
   m_dwAppProcessId: number;
-  /** Windows.Win32.System.ComponentServices.CAppStatistics */
+  /** Windows.Win32.System.ComponentServices.APPSTATISTICS */
   m_AppStatistics: Uint8Array | Deno.PointerValue | null;
 }
 
-export const sizeofCAppData = 32;
+export const sizeofAPPDATA = 32;
 
-export function allocCAppData(data?: Partial<CAppData>): Uint8Array {
-  const buf = new Uint8Array(sizeofCAppData);
+export function allocAPPDATA(data?: Partial<APPDATA>): Uint8Array {
+  const buf = new Uint8Array(sizeofAPPDATA);
   const view = new DataView(buf.buffer);
   // 0x00: u32
   if (data?.m_idApp !== undefined) view.setUint32(0, Number(data.m_idApp), true);
@@ -559,9 +561,9 @@ export function allocCAppData(data?: Partial<CAppData>): Uint8Array {
 }
 
 /**
- * Windows.Win32.System.ComponentServices.CCLSIDData (size: 40)
+ * Windows.Win32.System.ComponentServices.CLSIDDATA (size: 40)
  */
-export interface CCLSIDData {
+export interface CLSIDDATA {
   /** System.Guid */
   m_clsid: Uint8Array | Deno.PointerValue | null;
   /** u32 */
@@ -580,10 +582,10 @@ export interface CCLSIDData {
   m_cCallsFailed: number;
 }
 
-export const sizeofCCLSIDData = 40;
+export const sizeofCLSIDDATA = 40;
 
-export function allocCCLSIDData(data?: Partial<CCLSIDData>): Uint8Array {
-  const buf = new Uint8Array(sizeofCCLSIDData);
+export function allocCLSIDDATA(data?: Partial<CLSIDDATA>): Uint8Array {
+  const buf = new Uint8Array(sizeofCLSIDDATA);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
   if (data?.m_clsid !== undefined) view.setBigUint64(0, data.m_clsid === null ? 0n : BigInt(util.toPointer(data.m_clsid)), true);
@@ -606,9 +608,9 @@ export function allocCCLSIDData(data?: Partial<CCLSIDData>): Uint8Array {
 }
 
 /**
- * Windows.Win32.System.ComponentServices.CCLSIDData2 (size: 72)
+ * Windows.Win32.System.ComponentServices.CLSIDDATA2 (size: 72)
  */
-export interface CCLSIDData2 {
+export interface CLSIDDATA2 {
   /** System.Guid */
   m_clsid: Uint8Array | Deno.PointerValue | null;
   /** System.Guid */
@@ -637,10 +639,10 @@ export interface CCLSIDData2 {
   m_cCallsFailed: number;
 }
 
-export const sizeofCCLSIDData2 = 72;
+export const sizeofCLSIDDATA2 = 72;
 
-export function allocCCLSIDData2(data?: Partial<CCLSIDData2>): Uint8Array {
-  const buf = new Uint8Array(sizeofCCLSIDData2);
+export function allocCLSIDDATA2(data?: Partial<CLSIDDATA2>): Uint8Array {
+  const buf = new Uint8Array(sizeofCLSIDDATA2);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
   if (data?.m_clsid !== undefined) view.setBigUint64(0, data.m_clsid === null ? 0n : BigInt(util.toPointer(data.m_clsid)), true);
@@ -1108,7 +1110,7 @@ export type HRESULT = number;
 // Native Libraries
 
 try {
-  var libOLE32 = Deno.dlopen("OLE32", {
+  var libOLE32_dll = Deno.dlopen("OLE32.dll", {
     CoGetDefaultContext: {
       parameters: ["i32", "pointer", "pointer"],
       result: "pointer",
@@ -1117,7 +1119,7 @@ try {
 } catch(e) { /* ignore */ }
 
 try {
-  var libcomsvcs = Deno.dlopen("comsvcs", {
+  var libcomsvcs_dll = Deno.dlopen("comsvcs.dll", {
     CoCreateActivity: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "pointer",
@@ -1150,7 +1152,7 @@ try {
 } catch(e) { /* ignore */ }
 
 try {
-  var libMTxDM = Deno.dlopen("MTxDM", {
+  var libMTxDM_dll = Deno.dlopen("MTxDM.dll", {
     GetDispenserManager: {
       parameters: ["pointer"],
       result: "pointer",
@@ -1165,7 +1167,7 @@ export function CoGetDefaultContext(
   riid: Deno.PointerValue | Uint8Array | null /* ptr */,
   ppv: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libOLE32.CoGetDefaultContext(aptType, util.toPointer(riid), util.toPointer(ppv)));
+  return util.pointerFromFfi(libOLE32_dll.CoGetDefaultContext(aptType, util.toPointer(riid), util.toPointer(ppv)));
 }
 
 export function CoCreateActivity(
@@ -1173,50 +1175,50 @@ export function CoCreateActivity(
   riid: Deno.PointerValue | Uint8Array | null /* ptr */,
   ppObj: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libcomsvcs.CoCreateActivity(util.toPointer(pIUnknown), util.toPointer(riid), util.toPointer(ppObj)));
+  return util.pointerFromFfi(libcomsvcs_dll.CoCreateActivity(util.toPointer(pIUnknown), util.toPointer(riid), util.toPointer(ppObj)));
 }
 
 export function CoEnterServiceDomain(
   pConfigObject: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Com.IUnknown */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libcomsvcs.CoEnterServiceDomain(util.toPointer(pConfigObject)));
+  return util.pointerFromFfi(libcomsvcs_dll.CoEnterServiceDomain(util.toPointer(pConfigObject)));
 }
 
 export function CoLeaveServiceDomain(
   pUnkStatus: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Com.IUnknown */,
 ): void /* void */ {
-  return libcomsvcs.CoLeaveServiceDomain(util.toPointer(pUnkStatus));
+  return libcomsvcs_dll.CoLeaveServiceDomain(util.toPointer(pUnkStatus));
 }
 
 export function GetManagedExtensions(
   dwExts: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libcomsvcs.GetManagedExtensions(util.toPointer(dwExts)));
+  return util.pointerFromFfi(libcomsvcs_dll.GetManagedExtensions(util.toPointer(dwExts)));
 }
 
 export function SafeRef(
   rid: Deno.PointerValue | Uint8Array | null /* ptr */,
   pUnk: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Com.IUnknown */,
 ): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libcomsvcs.SafeRef(util.toPointer(rid), util.toPointer(pUnk)));
+  return util.pointerFromFfi(libcomsvcs_dll.SafeRef(util.toPointer(rid), util.toPointer(pUnk)));
 }
 
 export function RecycleSurrogate(
   lReasonCode: number /* i32 */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libcomsvcs.RecycleSurrogate(lReasonCode));
+  return util.pointerFromFfi(libcomsvcs_dll.RecycleSurrogate(lReasonCode));
 }
 
 export function MTSCreateActivity(
   riid: Deno.PointerValue | Uint8Array | null /* ptr */,
   ppobj: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libcomsvcs.MTSCreateActivity(util.toPointer(riid), util.toPointer(ppobj)));
+  return util.pointerFromFfi(libcomsvcs_dll.MTSCreateActivity(util.toPointer(riid), util.toPointer(ppobj)));
 }
 
 export function GetDispenserManager(
   param0: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libMTxDM.GetDispenserManager(util.toPointer(param0)));
+  return util.pointerFromFfi(libMTxDM_dll.GetDispenserManager(util.toPointer(param0)));
 }
 

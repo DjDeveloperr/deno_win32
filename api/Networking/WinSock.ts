@@ -4,8 +4,9 @@ import * as util from "../../util.ts";
 
 // Enums
 export type WSA_ERROR = number;
+export type ADDRESS_FAMILY = number;
 export type SET_SERVICE_OPERATION = number;
-export type SEND_FLAGS = number;
+export type SEND_RECV_FLAGS = number;
 export type RESOURCE_DISPLAY_TYPE = number;
 export type IPPROTO = number;
 export type SCOPE_LEVEL = number;
@@ -47,6 +48,20 @@ export type NLA_CONNECTIVITY_TYPE = number;
 export type NLA_INTERNET = number;
 export type RIO_NOTIFICATION_COMPLETION_TYPE = number;
 export type WSC_PROVIDER_INFO_TYPE = number;
+export type IPV4_OPTION_TYPE = number;
+export type IP_OPTION_TIMESTAMP_FLAGS = number;
+export type ICMP4_UNREACH_CODE = number;
+export type ICMP4_TIME_EXCEED_CODE = number;
+export type ARP_OPCODE = number;
+export type ARP_HARDWARE_TYPE = number;
+export type IGMP_MAX_RESP_CODE_TYPE = number;
+export type IPV6_OPTION_TYPE = number;
+export type ND_OPTION_TYPE = number;
+export type MLD_MAX_RESP_CODE_TYPE = number;
+export type COMPARTMENT_ID = number;
+export type TUNNEL_SUB_TYPE = number;
+export type NPI_MODULEID_TYPE = number;
+export type FALLBACK_INDEX = number;
 
 // Constants
 export const WSA_IO_PENDING = 997;
@@ -55,6 +70,8 @@ export const WSA_INVALID_HANDLE = 6;
 export const WSA_INVALID_PARAMETER = 87;
 export const WSA_NOT_ENOUGH_MEMORY = 8;
 export const WSA_OPERATION_ABORTED = 995;
+export const WSA_WAIT_EVENT_0 = 0;
+export const WSA_WAIT_IO_COMPLETION = 192;
 export const WSABASEERR = 10000;
 export const WSAEINTR = 10004;
 export const WSAEBADF = 10009;
@@ -147,13 +164,19 @@ export const WSA_QOS_ESHAPERATEOBJ = 11030;
 export const WSA_QOS_RESERVED_PETYPE = 11031;
 export const WSA_SECURE_HOST_NOT_FOUND = 11032;
 export const WSA_IPSEC_NAME_POLICY_ERROR = 11033;
+export const AF_INET = 2;
+export const AF_INET6 = 23;
+export const AF_UNSPEC = 0;
 export const SERVICE_REGISTER = 1;
 export const SERVICE_DEREGISTER = 2;
 export const SERVICE_FLUSH = 3;
 export const SERVICE_ADD_TYPE = 4;
 export const SERVICE_DELETE_TYPE = 5;
-export const MSG_DONTROUTE = 4;
 export const MSG_OOB = 1;
+export const MSG_PEEK = 2;
+export const MSG_DONTROUTE = 4;
+export const MSG_WAITALL = 8;
+export const MSG_PUSH_IMMEDIATE = 32;
 export const RESOURCEDISPLAYTYPE_DOMAIN = 1;
 export const RESOURCEDISPLAYTYPE_FILE = 4;
 export const RESOURCEDISPLAYTYPE_GENERIC = 0;
@@ -161,12 +184,48 @@ export const RESOURCEDISPLAYTYPE_GROUP = 5;
 export const RESOURCEDISPLAYTYPE_SERVER = 2;
 export const RESOURCEDISPLAYTYPE_SHARE = 3;
 export const RESOURCEDISPLAYTYPE_TREE = 10;
+export const SIO_RCVALL = 2550136833;
+export const SIO_RCVALL_MCAST = 2550136834;
+export const SIO_RCVALL_IGMPMCAST = 2550136835;
+export const SIO_KEEPALIVE_VALS = 2550136836;
+export const SIO_ABSORB_RTRALERT = 2550136837;
+export const SIO_UCAST_IF = 2550136838;
+export const SIO_LIMIT_BROADCASTS = 2550136839;
+export const SIO_INDEX_BIND = 2550136840;
+export const SIO_INDEX_MCASTIF = 2550136841;
+export const SIO_INDEX_ADD_MCAST = 2550136842;
+export const SIO_INDEX_DEL_MCAST = 2550136843;
+export const SIO_RCVALL_MCAST_IF = 2550136845;
+export const SIO_RCVALL_IF = 2550136846;
+export const SIO_LOOPBACK_FAST_PATH = 2550136848;
+export const SIO_TCP_INITIAL_RTO = 2550136849;
+export const SIO_APPLY_TRANSPORT_SETTING = 2550136851;
+export const SIO_QUERY_TRANSPORT_SETTING = 2550136852;
+export const SIO_TCP_SET_ICW = 2550136854;
+export const SIO_TCP_SET_ACK_FREQUENCY = 2550136855;
+export const SIO_SET_PRIORITY_HINT = 2550136856;
+export const SIO_PRIORITY_HINT = 2550136856;
+export const SIO_TCP_INFO = 3623878695;
+export const SIO_CPU_AFFINITY = 2550136853;
+export const SIO_TIMESTAMPING = 2550137067;
 export const TIMESTAMPING_FLAG_RX = 1;
 export const TIMESTAMPING_FLAG_TX = 2;
 export const SO_TIMESTAMP = 12298;
 export const SO_TIMESTAMP_ID = 12299;
+export const SIO_GET_TX_TIMESTAMP = 2550137066;
 export const TCP_INITIAL_RTO_DEFAULT_RTT = 0;
 export const TCP_INITIAL_RTO_DEFAULT_MAX_SYN_RETRANSMISSIONS = 0;
+export const SIO_ACQUIRE_PORT_RESERVATION = 2550136932;
+export const SIO_RELEASE_PORT_RESERVATION = 2550136933;
+export const SIO_ASSOCIATE_PORT_RESERVATION = 2550136934;
+export const SIO_SET_SECURITY = 2550137032;
+export const SIO_QUERY_SECURITY = 3623878857;
+export const SIO_SET_PEER_TARGET_NAME = 2550137034;
+export const SIO_DELETE_PEER_TARGET_NAME = 2550137035;
+export const SIO_QUERY_WFP_CONNECTION_REDIRECT_RECORDS = 2550137052;
+export const SIO_QUERY_WFP_CONNECTION_REDIRECT_CONTEXT = 2550137053;
+export const SIO_SET_WFP_CONNECTION_REDIRECT_RECORDS = 2550137054;
+export const SIO_SOCKET_USAGE_NOTIFICATION = 2550137036;
 export const SOCKET_SETTINGS_GUARANTEE_ENCRYPTION = 1;
 export const SOCKET_SETTINGS_ALLOW_INSECURE = 2;
 export const SOCKET_SETTINGS_IPSEC_SKIP_FILTER_INSTANTIATION = 1;
@@ -179,10 +238,13 @@ export const SOCKET_QUERY_IPSEC2_FIELD_MASK_QM_SA_ID = 2;
 export const SOCKET_INFO_CONNECTION_SECURED = 1;
 export const SOCKET_INFO_CONNECTION_ENCRYPTED = 2;
 export const SOCKET_INFO_CONNECTION_IMPERSONATED = 4;
+export const SIO_QUERY_WFP_ALE_ENDPOINT_HANDLE = 1476395213;
+export const SIO_QUERY_RSS_SCALABILITY_INFO = 1476395218;
 export const IN4ADDR_LOOPBACK = 16777343;
 export const IN4ADDR_LOOPBACKPREFIX_LENGTH = 8;
 export const IN4ADDR_LINKLOCALPREFIX_LENGTH = 16;
 export const IN4ADDR_MULTICASTPREFIX_LENGTH = 4;
+export const SIO_SET_COMPATIBILITY_MODE = 2550137132;
 export const RIO_MSG_DONT_NOTIFY = 1;
 export const RIO_MSG_DEFER = 2;
 export const RIO_MSG_WAITALL = 4;
@@ -265,6 +327,29 @@ export const IOC_UNIX = 0;
 export const IOC_WS2 = 134217728;
 export const IOC_PROTOCOL = 268435456;
 export const IOC_VENDOR = 402653184;
+export const SIO_ASSOCIATE_HANDLE = 2281701377;
+export const SIO_ENABLE_CIRCULAR_QUEUEING = 671088642;
+export const SIO_FIND_ROUTE = 1207959555;
+export const SIO_FLUSH = 671088644;
+export const SIO_GET_BROADCAST_ADDRESS = 1207959557;
+export const SIO_GET_EXTENSION_FUNCTION_POINTER = 3355443206;
+export const SIO_GET_QOS = 3355443207;
+export const SIO_GET_GROUP_QOS = 3355443208;
+export const SIO_MULTIPOINT_LOOPBACK = 2281701385;
+export const SIO_MULTICAST_SCOPE = 2281701386;
+export const SIO_SET_QOS = 2281701387;
+export const SIO_SET_GROUP_QOS = 2281701388;
+export const SIO_TRANSLATE_HANDLE = 3355443213;
+export const SIO_ROUTING_INTERFACE_QUERY = 3355443220;
+export const SIO_ROUTING_INTERFACE_CHANGE = 2281701397;
+export const SIO_ADDRESS_LIST_QUERY = 1207959574;
+export const SIO_ADDRESS_LIST_CHANGE = 671088663;
+export const SIO_QUERY_TARGET_PNP_HANDLE = 1207959576;
+export const SIO_QUERY_RSS_PROCESSOR_INFO = 1207959589;
+export const SIO_ADDRESS_LIST_SORT = 3355443225;
+export const SIO_RESERVED_1 = 2281701402;
+export const SIO_RESERVED_2 = 2281701409;
+export const SIO_GET_MULTIPLE_EXTENSION_FUNCTION_POINTER = 3355443236;
 export const IPPROTO_IP = 0;
 export const IPPORT_TCPMUX = 1;
 export const IPPORT_ECHO = 7;
@@ -446,7 +531,7 @@ export const IP_MTU = 73;
 export const IP_NRT_INTERFACE = 74;
 export const IP_RECVERR = 75;
 export const IP_USER_MTU = 76;
-export const IP_UNSPECIFIED_TYPE_OF_SERVICE = "-1";
+export const IP_UNSPECIFIED_TYPE_OF_SERVICE = `-1`;
 export const IP_UNSPECIFIED_USER_MTU = 4294967295;
 export const IN6ADDR_LINKLOCALPREFIX_LENGTH = 64;
 export const IN6ADDR_MULTICASTPREFIX_LENGTH = 8;
@@ -497,7 +582,7 @@ export const IPV6_MTU = 72;
 export const IPV6_NRT_INTERFACE = 74;
 export const IPV6_RECVERR = 75;
 export const IPV6_USER_MTU = 76;
-export const IP_UNSPECIFIED_HOP_LIMIT = "-1";
+export const IP_UNSPECIFIED_HOP_LIMIT = `-1`;
 export const IP_PROTECTION_LEVEL = 23;
 export const PROTECTION_LEVEL_UNRESTRICTED = 10;
 export const PROTECTION_LEVEL_EDGERESTRICTED = 20;
@@ -596,6 +681,9 @@ export const SO_UPDATE_ACCEPT_CONTEXT = 28683;
 export const SO_CONNECT_TIME = 28684;
 export const SO_UPDATE_CONNECT_CONTEXT = 28688;
 export const TCP_BSDURGENT = 28672;
+export const SIO_UDP_CONNRESET = 2550136844;
+export const SIO_SOCKET_CLOSE_NOTIFY = 2550136845;
+export const SIO_UDP_NETRESET = 2550136847;
 export const TF_DISCONNECT = 1;
 export const TF_REUSE_SOCKET = 2;
 export const TF_WRITE_BEHIND = 4;
@@ -613,6 +701,13 @@ export const TP_USE_KERNEL_APC = 32;
 export const DE_REUSE_SOCKET = 2;
 export const NLA_ALLUSERS_NETWORK = 1;
 export const NLA_FRIENDLY_NAME = 2;
+export const SIO_BSP_HANDLE = 1207959579;
+export const SIO_BSP_HANDLE_SELECT = 1207959580;
+export const SIO_BSP_HANDLE_POLL = 1207959581;
+export const SIO_BASE_HANDLE = 1207959586;
+export const SIO_EXT_SELECT = 3355443230;
+export const SIO_EXT_POLL = 3355443231;
+export const SIO_EXT_SENDMSG = 3355443232;
 export const SERVICE_RESOURCE = 1;
 export const SERVICE_SERVICE = 2;
 export const SERVICE_LOCAL = 4;
@@ -653,6 +748,18 @@ export const XP_ENCRYPTS = 8192;
 export const RES_SOFT_SEARCH = 1;
 export const RES_FIND_MULTIPLE = 2;
 export const RES_SERVICE = 4;
+export const SERVICE_TYPE_VALUE_SAPIDA = `SapId`;
+export const SERVICE_TYPE_VALUE_SAPIDW = `SapId`;
+export const SERVICE_TYPE_VALUE_CONNA = `ConnectionOriented`;
+export const SERVICE_TYPE_VALUE_CONNW = `ConnectionOriented`;
+export const SERVICE_TYPE_VALUE_TCPPORTA = `TcpPort`;
+export const SERVICE_TYPE_VALUE_TCPPORTW = `TcpPort`;
+export const SERVICE_TYPE_VALUE_UDPPORTA = `UdpPort`;
+export const SERVICE_TYPE_VALUE_UDPPORTW = `UdpPort`;
+export const SERVICE_TYPE_VALUE_SAPID = `SapId`;
+export const SERVICE_TYPE_VALUE_CONN = `ConnectionOriented`;
+export const SERVICE_TYPE_VALUE_TCPPORT = `TcpPort`;
+export const SERVICE_TYPE_VALUE_UDPPORT = `UdpPort`;
 export const SET_SERVICE_PARTIAL_SUCCESS = 1;
 export const FD_SETSIZE = 64;
 export const IMPLINK_IP = 155;
@@ -663,7 +770,7 @@ export const WSASYS_STATUS_LEN = 128;
 export const IP_DEFAULT_MULTICAST_TTL = 1;
 export const IP_DEFAULT_MULTICAST_LOOP = 1;
 export const IP_MAX_MEMBERSHIPS = 20;
-export const SOCKET_ERROR = "-1";
+export const SOCKET_ERROR = `-1`;
 export const PF_UNIX = 1;
 export const PF_IMPLINK = 3;
 export const PF_PUP = 4;
@@ -687,7 +794,6 @@ export const PF_UNKNOWN1 = 20;
 export const PF_BAN = 21;
 export const PF_MAX = 29;
 export const SOMAXCONN = 5;
-export const MSG_PEEK = 2;
 export const MSG_MAXIOVLEN = 16;
 export const MSG_PARTIAL = 32768;
 export const MAXGETHOSTSTRUCT = 1024;
@@ -699,14 +805,12 @@ export const FD_CONNECT = 16;
 export const FD_CLOSE = 32;
 export const INCL_WINSOCK_API_PROTOTYPES = 1;
 export const INCL_WINSOCK_API_TYPEDEFS = 0;
-export const FROM_PROTOCOL_INFO = "-1";
+export const FROM_PROTOCOL_INFO = `-1`;
 export const SO_PROTOCOL_INFOA = 8196;
 export const SO_PROTOCOL_INFOW = 8197;
 export const SO_PROTOCOL_INFO = 8197;
 export const PVD_CONFIG = 12289;
 export const PF_ATM = 22;
-export const MSG_WAITALL = 8;
-export const MSG_PUSH_IMMEDIATE = 32;
 export const MSG_INTERRUPT = 16;
 export const FD_READ_BIT = 0;
 export const FD_WRITE_BIT = 1;
@@ -720,8 +824,6 @@ export const FD_ROUTING_INTERFACE_CHANGE_BIT = 8;
 export const FD_ADDRESS_LIST_CHANGE_BIT = 9;
 export const FD_MAX_EVENTS = 10;
 export const WSA_MAXIMUM_WAIT_EVENTS = 64;
-export const WSA_WAIT_EVENT_0 = 0;
-export const WSA_WAIT_IO_COMPLETION = 192;
 export const WSA_WAIT_FAILED = 4294967295;
 export const CF_ACCEPT = 0;
 export const CF_REJECT = 1;
@@ -774,12 +876,18 @@ export const WSA_FLAG_MULTIPOINT_D_LEAF = 16;
 export const WSA_FLAG_ACCESS_SYSTEM_SECURITY = 64;
 export const WSA_FLAG_NO_HANDLE_INHERIT = 128;
 export const WSA_FLAG_REGISTERED_IO = 256;
+export const SIO_NSP_NOTIFY_CHANGE = 2281701401;
 export const TH_NETDEV = 1;
 export const TH_TAPI = 2;
 export const SERVICE_MULTIPLE = 1;
 export const NS_LOCALNAME = 19;
 export const RES_UNUSED_1 = 1;
 export const RES_FLUSH_CACHE = 2;
+export const SERVICE_TYPE_VALUE_IPXPORTA = `IpxSocket`;
+export const SERVICE_TYPE_VALUE_IPXPORTW = `IpxSocket`;
+export const SERVICE_TYPE_VALUE_OBJECTIDA = `ObjectId`;
+export const SERVICE_TYPE_VALUE_OBJECTIDW = `ObjectId`;
+export const SERVICE_TYPE_VALUE_OBJECTID = `ObjectId`;
 export const LUP_DEEP = 1;
 export const LUP_CONTAINERS = 2;
 export const LUP_NOCONTAINERS = 4;
@@ -1047,6 +1155,9 @@ export const SENDER_MAX_LATE_JOINER_PERCENTAGE = 75;
 export const BITS_PER_BYTE = 8;
 export const LOG2_BITS_PER_BYTE = 3;
 export const UNIX_PATH_MAX = 108;
+export const SIO_AF_UNIX_GETPEERPID = 1476395264;
+export const SIO_AF_UNIX_SETBINDPARENTPATH = 2550137089;
+export const SIO_AF_UNIX_SETCONNPARENTPATH = 2550137090;
 export const ISOPROTO_TP0 = 25;
 export const ISOPROTO_TP1 = 26;
 export const ISOPROTO_TP2 = 27;
@@ -1075,17 +1186,117 @@ export const NETBIOS_TYPE_QUICK_GROUP = 3;
 export const VNSPROTO_IPC = 1;
 export const VNSPROTO_RELIABLE_IPC = 2;
 export const VNSPROTO_SPP = 3;
+export const _LITTLE_ENDIAN = 1234;
+export const _BIG_ENDIAN = 4321;
+export const _PDP_ENDIAN = 3412;
+export const BYTE_ORDER = 1234;
+export const DL_ADDRESS_LENGTH_MAXIMUM = 32;
+export const DL_HEADER_LENGTH_MAXIMUM = 64;
+export const SNAP_DSAP = 170;
+export const SNAP_SSAP = 170;
+export const SNAP_CONTROL = 3;
+export const SNAP_OUI = 0;
+export const ETH_LENGTH_OF_HEADER = 14;
+export const ETH_LENGTH_OF_VLAN_HEADER = 4;
+export const ETH_LENGTH_OF_SNAP_HEADER = 8;
+export const ETHERNET_TYPE_MINIMUM = 1536;
+export const ETHERNET_TYPE_IPV4 = 2048;
+export const ETHERNET_TYPE_ARP = 2054;
+export const ETHERNET_TYPE_IPV6 = 34525;
+export const ETHERNET_TYPE_802_1Q = 33024;
+export const ETHERNET_TYPE_802_1AD = 34984;
+export const IP_VER_MASK = 240;
+export const IPV4_VERSION = 4;
+export const MAX_IPV4_PACKET = 65535;
+export const MAX_IPV4_HLEN = 60;
+export const IPV4_MINIMUM_MTU = 576;
+export const IPV4_MIN_MINIMUM_MTU = 352;
+export const IPV4_MAX_MINIMUM_MTU = 576;
+export const SIZEOF_IP_OPT_ROUTING_HEADER = 3;
+export const SIZEOF_IP_OPT_TIMESTAMP_HEADER = 4;
+export const SIZEOF_IP_OPT_SECURITY = 11;
+export const SIZEOF_IP_OPT_STREAMIDENTIFIER = 4;
+export const SIZEOF_IP_OPT_ROUTERALERT = 4;
+export const IP4_OFF_MASK = 65311;
+export const ICMPV4_INVALID_PREFERENCE_LEVEL = 2147483648;
+export const IGMP_QUERY_TYPE = 17;
+export const IGMP_VERSION1_REPORT_TYPE = 18;
+export const IGMP_VERSION2_REPORT_TYPE = 22;
+export const IGMP_LEAVE_GROUP_TYPE = 23;
+export const IGMP_VERSION3_REPORT_TYPE = 34;
+export const IPV6_VERSION = 96;
+export const IPV6_TRAFFIC_CLASS_MASK = 49167;
+export const IPV6_FULL_TRAFFIC_CLASS_MASK = 61455;
+export const IPV6_ECN_MASK = 12288;
+export const IPV6_FLOW_LABEL_MASK = 4294905600;
+export const MAX_IPV6_PAYLOAD = 65535;
+export const IPV6_ECN_SHIFT = 12;
+export const IPV6_MINIMUM_MTU = 1280;
+export const IP6F_OFF_MASK = 63743;
+export const IP6F_RESERVED_MASK = 1536;
+export const IP6F_MORE_FRAG = 256;
+export const EXT_LEN_UNIT = 8;
+export const IP6OPT_TYPE_SKIP = 0;
+export const IP6OPT_TYPE_DISCARD = 64;
+export const IP6OPT_TYPE_FORCEICMP = 128;
+export const IP6OPT_TYPE_ICMP = 192;
+export const IP6OPT_MUTABLE = 32;
+export const ICMP6_DST_UNREACH_NOROUTE = 0;
+export const ICMP6_DST_UNREACH_ADMIN = 1;
+export const ICMP6_DST_UNREACH_BEYONDSCOPE = 2;
+export const ICMP6_DST_UNREACH_ADDR = 3;
+export const ICMP6_DST_UNREACH_NOPORT = 4;
+export const ICMP6_TIME_EXCEED_TRANSIT = 0;
+export const ICMP6_TIME_EXCEED_REASSEMBLY = 1;
+export const ICMP6_PARAMPROB_HEADER = 0;
+export const ICMP6_PARAMPROB_NEXTHEADER = 1;
+export const ICMP6_PARAMPROB_OPTION = 2;
+export const ICMPV6_ECHO_REQUEST_FLAG_REVERSE = 1;
+export const ND_RA_FLAG_MANAGED = 128;
+export const ND_RA_FLAG_OTHER = 64;
+export const ND_RA_FLAG_HOME_AGENT = 32;
+export const ND_RA_FLAG_PREFERENCE = 24;
+export const ND_NA_FLAG_ROUTER = 2147483648;
+export const ND_NA_FLAG_SOLICITED = 1073741824;
+export const ND_NA_FLAG_OVERRIDE = 536870912;
+export const ND_OPT_PI_FLAG_ONLINK = 128;
+export const ND_OPT_PI_FLAG_AUTO = 64;
+export const ND_OPT_PI_FLAG_ROUTER_ADDR = 32;
+export const ND_OPT_PI_FLAG_SITE_PREFIX = 16;
+export const ND_OPT_PI_FLAG_ROUTE = 1;
+export const ND_OPT_RI_FLAG_PREFERENCE = 24;
+export const ND_OPT_RDNSS_MIN_LEN = 24;
+export const ND_OPT_DNSSL_MIN_LEN = 16;
+export const IN6_EMBEDDEDV4_UOCTET_POSITION = 8;
+export const IN6_EMBEDDEDV4_BITS_IN_BYTE = 8;
+export const TH_FIN = 1;
+export const TH_SYN = 2;
+export const TH_RST = 4;
+export const TH_PSH = 8;
+export const TH_ACK = 16;
+export const TH_URG = 32;
+export const TH_ECE = 64;
+export const TH_CWR = 128;
+export const TH_OPT_EOL = 0;
+export const TH_OPT_NOP = 1;
+export const TH_OPT_MSS = 2;
+export const TH_OPT_WS = 3;
+export const TH_OPT_SACK_PERMITTED = 4;
+export const TH_OPT_SACK = 5;
+export const TH_OPT_TS = 8;
+export const TH_OPT_FASTOPEN = 34;
 export const INVALID_SOCKET = 1120986464255;
 export const WSA_INFINITE = 4294967295;
 export const IOC_INOUT = 3221225472;
 export const FIONREAD = 1074030207;
-export const FIONBIO = "-2147195266";
-export const FIOASYNC = "-2147195267";
-export const SIOCSHIWAT = "-2147192064";
+export const FIONBIO = `-2147195266`;
+export const FIOASYNC = `-2147195267`;
+export const SIOCSHIWAT = `-2147192064`;
 export const SIOCGHIWAT = 1074033409;
-export const SIOCSLOWAT = "-2147192062";
+export const SIOCSLOWAT = `-2147192062`;
 export const SIOCGLOWAT = 1074033411;
 export const SIOCATMARK = 1074033415;
+export const POLLIN = 768;
 export const LM_HB_Extension = 128;
 export const LM_HB1_PnP = 1;
 export const LM_HB1_PDA_Palmtop = 2;
@@ -1275,19 +1486,19 @@ export const NlnsMaximum = 7;
 export const LinkLocalAlwaysOff = 0;
 export const LinkLocalDelayed = 1;
 export const LinkLocalAlwaysOn = 2;
-export const LinkLocalUnchanged = "-1";
+export const LinkLocalUnchanged = `-1`;
 export const RouterDiscoveryDisabled = 0;
 export const RouterDiscoveryEnabled = 1;
 export const RouterDiscoveryDhcp = 2;
-export const RouterDiscoveryUnchanged = "-1";
+export const RouterDiscoveryUnchanged = `-1`;
 export const NlbwDisabled = 0;
 export const NlbwEnabled = 1;
-export const NlbwUnchanged = "-1";
+export const NlbwUnchanged = `-1`;
 export const NetworkCategoryPublic = 0;
 export const NetworkCategoryPrivate = 1;
 export const NetworkCategoryDomainAuthenticated = 2;
-export const NetworkCategoryUnchanged = "-1";
-export const NetworkCategoryUnknown = "-1";
+export const NetworkCategoryUnchanged = `-1`;
+export const NetworkCategoryUnknown = `-1`;
 export const NlincCategoryUnknown = 0;
 export const NlincPublic = 1;
 export const NlincPrivate = 2;
@@ -1380,12 +1591,208 @@ export const RIO_EVENT_COMPLETION = 1;
 export const RIO_IOCP_COMPLETION = 2;
 export const ProviderInfoLspCategories = 0;
 export const ProviderInfoAudit = 1;
+export const IP_OPT_EOL = 0;
+export const IP_OPT_NOP = 1;
+export const IP_OPT_SECURITY = 130;
+export const IP_OPT_LSRR = 131;
+export const IP_OPT_TS = 68;
+export const IP_OPT_RR = 7;
+export const IP_OPT_SSRR = 137;
+export const IP_OPT_SID = 136;
+export const IP_OPT_ROUTER_ALERT = 148;
+export const IP_OPT_MULTIDEST = 149;
+export const IP_OPTION_TIMESTAMP_ONLY = 0;
+export const IP_OPTION_TIMESTAMP_ADDRESS = 1;
+export const IP_OPTION_TIMESTAMP_SPECIFIC_ADDRESS = 3;
+export const ICMP4_UNREACH_NET = 0;
+export const ICMP4_UNREACH_HOST = 1;
+export const ICMP4_UNREACH_PROTOCOL = 2;
+export const ICMP4_UNREACH_PORT = 3;
+export const ICMP4_UNREACH_FRAG_NEEDED = 4;
+export const ICMP4_UNREACH_SOURCEROUTE_FAILED = 5;
+export const ICMP4_UNREACH_NET_UNKNOWN = 6;
+export const ICMP4_UNREACH_HOST_UNKNOWN = 7;
+export const ICMP4_UNREACH_ISOLATED = 8;
+export const ICMP4_UNREACH_NET_ADMIN = 9;
+export const ICMP4_UNREACH_HOST_ADMIN = 10;
+export const ICMP4_UNREACH_NET_TOS = 11;
+export const ICMP4_UNREACH_HOST_TOS = 12;
+export const ICMP4_UNREACH_ADMIN = 13;
+export const ICMP4_TIME_EXCEED_TRANSIT = 0;
+export const ICMP4_TIME_EXCEED_REASSEMBLY = 1;
+export const ARP_REQUEST = 1;
+export const ARP_RESPONSE = 2;
+export const ARP_HW_ENET = 1;
+export const ARP_HW_802 = 6;
+export const IGMP_MAX_RESP_CODE_TYPE_NORMAL = 0;
+export const IGMP_MAX_RESP_CODE_TYPE_FLOAT = 1;
+export const IP6OPT_PAD1 = 0;
+export const IP6OPT_PADN = 1;
+export const IP6OPT_TUNNEL_LIMIT = 4;
+export const IP6OPT_ROUTER_ALERT = 5;
+export const IP6OPT_JUMBO = 194;
+export const IP6OPT_NSAP_ADDR = 195;
+export const ND_OPT_SOURCE_LINKADDR = 1;
+export const ND_OPT_TARGET_LINKADDR = 2;
+export const ND_OPT_PREFIX_INFORMATION = 3;
+export const ND_OPT_REDIRECTED_HEADER = 4;
+export const ND_OPT_MTU = 5;
+export const ND_OPT_NBMA_SHORTCUT_LIMIT = 6;
+export const ND_OPT_ADVERTISEMENT_INTERVAL = 7;
+export const ND_OPT_HOME_AGENT_INFORMATION = 8;
+export const ND_OPT_SOURCE_ADDR_LIST = 9;
+export const ND_OPT_TARGET_ADDR_LIST = 10;
+export const ND_OPT_ROUTE_INFO = 24;
+export const ND_OPT_RDNSS = 25;
+export const ND_OPT_DNSSL = 31;
+export const MLD_MAX_RESP_CODE_TYPE_NORMAL = 0;
+export const MLD_MAX_RESP_CODE_TYPE_FLOAT = 1;
+export const UNSPECIFIED_COMPARTMENT_ID = 0;
+export const DEFAULT_COMPARTMENT_ID = 1;
+export const TUNNEL_SUB_TYPE_NONE = 0;
+export const TUNNEL_SUB_TYPE_CP = 1;
+export const TUNNEL_SUB_TYPE_IPTLS = 2;
+export const TUNNEL_SUB_TYPE_HA = 3;
+export const MIT_GUID = 1;
+export const MIT_IF_LUID = 2;
+export const FallbackIndexTcpFastopen = 0;
+export const FallbackIndexMax = 1;
 
 // Structs
 
 export type HWSAEVENT = Deno.PointerValue;
 
 export type SOCKET = Deno.PointerValue;
+
+/**
+ * Windows.Win32.Networking.WinSock.FLOWSPEC (size: 32)
+ */
+export interface FLOWSPEC {
+  /** u32 */
+  TokenRate: number;
+  /** u32 */
+  TokenBucketSize: number;
+  /** u32 */
+  PeakBandwidth: number;
+  /** u32 */
+  Latency: number;
+  /** u32 */
+  DelayVariation: number;
+  /** u32 */
+  ServiceType: number;
+  /** u32 */
+  MaxSduSize: number;
+  /** u32 */
+  MinimumPolicedSize: number;
+}
+
+export const sizeofFLOWSPEC = 32;
+
+export function allocFLOWSPEC(data?: Partial<FLOWSPEC>): Uint8Array {
+  const buf = new Uint8Array(sizeofFLOWSPEC);
+  const view = new DataView(buf.buffer);
+  // 0x00: u32
+  if (data?.TokenRate !== undefined) view.setUint32(0, Number(data.TokenRate), true);
+  // 0x04: u32
+  if (data?.TokenBucketSize !== undefined) view.setUint32(4, Number(data.TokenBucketSize), true);
+  // 0x08: u32
+  if (data?.PeakBandwidth !== undefined) view.setUint32(8, Number(data.PeakBandwidth), true);
+  // 0x0c: u32
+  if (data?.Latency !== undefined) view.setUint32(12, Number(data.Latency), true);
+  // 0x10: u32
+  if (data?.DelayVariation !== undefined) view.setUint32(16, Number(data.DelayVariation), true);
+  // 0x14: u32
+  if (data?.ServiceType !== undefined) view.setUint32(20, Number(data.ServiceType), true);
+  // 0x18: u32
+  if (data?.MaxSduSize !== undefined) view.setUint32(24, Number(data.MaxSduSize), true);
+  // 0x1c: u32
+  if (data?.MinimumPolicedSize !== undefined) view.setUint32(28, Number(data.MinimumPolicedSize), true);
+  return buf;
+}
+
+export type PSTR = Deno.PointerValue | Uint8Array | null;
+
+/**
+ * Windows.Win32.Networking.WinSock.SERVENT (size: 32)
+ */
+export interface SERVENT {
+  /** Windows.Win32.Foundation.PSTR */
+  s_name: string | null;
+  /** ptr */
+  s_aliases: Deno.PointerValue | Uint8Array | null;
+  /** Windows.Win32.Foundation.PSTR */
+  s_proto: string | null;
+  /** i16 */
+  s_port: number;
+}
+
+export const sizeofSERVENT = 32;
+
+export function allocSERVENT(data?: Partial<SERVENT>): Uint8Array {
+  const buf = new Uint8Array(sizeofSERVENT);
+  const view = new DataView(buf.buffer);
+  // 0x00: buffer
+  if (data?.s_name !== undefined) {
+    (buf as any)._f0 = util.pstrToFfi(data.s_name);
+    view.setBigUint64(0, (buf as any)._f0 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f0)), true);
+  }
+  // 0x08: pointer
+  if (data?.s_aliases !== undefined) view.setBigUint64(8, data.s_aliases === null ? 0n : BigInt(util.toPointer(data.s_aliases)), true);
+  // 0x10: buffer
+  if (data?.s_proto !== undefined) {
+    (buf as any)._f16 = util.pstrToFfi(data.s_proto);
+    view.setBigUint64(16, (buf as any)._f16 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f16)), true);
+  }
+  // 0x18: i16
+  if (data?.s_port !== undefined) view.setInt16(24, Number(data.s_port), true);
+  // 0x1a: pad6
+  return buf;
+}
+
+/**
+ * Windows.Win32.Networking.WinSock.WSADATA (size: 32)
+ */
+export interface WSADATA {
+  /** u16 */
+  wVersion: number;
+  /** u16 */
+  wHighVersion: number;
+  /** u16 */
+  iMaxSockets: number;
+  /** u16 */
+  iMaxUdpDg: number;
+  /** Windows.Win32.Foundation.PSTR */
+  lpVendorInfo: string | null;
+  /** array */
+  szDescription: Deno.PointerValue | null;
+  /** array */
+  szSystemStatus: Deno.PointerValue | null;
+}
+
+export const sizeofWSADATA = 32;
+
+export function allocWSADATA(data?: Partial<WSADATA>): Uint8Array {
+  const buf = new Uint8Array(sizeofWSADATA);
+  const view = new DataView(buf.buffer);
+  // 0x00: u16
+  if (data?.wVersion !== undefined) view.setUint16(0, Number(data.wVersion), true);
+  // 0x02: u16
+  if (data?.wHighVersion !== undefined) view.setUint16(2, Number(data.wHighVersion), true);
+  // 0x04: u16
+  if (data?.iMaxSockets !== undefined) view.setUint16(4, Number(data.iMaxSockets), true);
+  // 0x06: u16
+  if (data?.iMaxUdpDg !== undefined) view.setUint16(6, Number(data.iMaxUdpDg), true);
+  // 0x08: buffer
+  if (data?.lpVendorInfo !== undefined) {
+    (buf as any)._f8 = util.pstrToFfi(data.lpVendorInfo);
+    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f8)), true);
+  }
+  // 0x10: pointer
+  if (data?.szDescription !== undefined) view.setBigUint64(16, data.szDescription === null ? 0n : BigInt(util.toPointer(data.szDescription)), true);
+  // 0x18: pointer
+  if (data?.szSystemStatus !== undefined) view.setBigUint64(24, data.szSystemStatus === null ? 0n : BigInt(util.toPointer(data.szSystemStatus)), true);
+  return buf;
+}
 
 /**
  * _S_un_ports_e__Struct (size: 8)
@@ -1817,8 +2224,6 @@ export function allocSOCKADDR_DL(data?: Partial<SOCKADDR_DL>): Uint8Array {
   return buf;
 }
 
-export type PSTR = Deno.PointerValue | Uint8Array | null;
-
 /**
  * Windows.Win32.Networking.WinSock.WSABUF (size: 16)
  */
@@ -1887,9 +2292,9 @@ export function allocWSAMSG(data?: Partial<WSAMSG>): Uint8Array {
 }
 
 /**
- * Windows.Win32.Networking.WinSock.cmsghdr (size: 16)
+ * Windows.Win32.Networking.WinSock.CMSGHDR (size: 16)
  */
-export interface cmsghdr {
+export interface CMSGHDR {
   /** usize */
   cmsg_len: Deno.PointerValue;
   /** i32 */
@@ -1898,10 +2303,10 @@ export interface cmsghdr {
   cmsg_type: number;
 }
 
-export const sizeofCmsghdr = 16;
+export const sizeofCMSGHDR = 16;
 
-export function allocCmsghdr(data?: Partial<cmsghdr>): Uint8Array {
-  const buf = new Uint8Array(sizeofCmsghdr);
+export function allocCMSGHDR(data?: Partial<CMSGHDR>): Uint8Array {
+  const buf = new Uint8Array(sizeofCMSGHDR);
   const view = new DataView(buf.buffer);
   // 0x00: usize
   if (data?.cmsg_len !== undefined) view.setBigUint64(0, BigInt(data.cmsg_len), true);
@@ -1964,9 +2369,9 @@ export function allocADDRINFOA(data?: Partial<ADDRINFOA>): Uint8Array {
 export type PWSTR = Deno.PointerValue | Uint8Array | null;
 
 /**
- * Windows.Win32.Networking.WinSock.addrinfoW (size: 48)
+ * Windows.Win32.Networking.WinSock.ADDRINFOW (size: 48)
  */
-export interface addrinfoW {
+export interface ADDRINFOW {
   /** i32 */
   ai_flags: number;
   /** i32 */
@@ -1985,10 +2390,10 @@ export interface addrinfoW {
   ai_next: Deno.PointerValue | Uint8Array | null;
 }
 
-export const sizeofAddrinfoW = 48;
+export const sizeofADDRINFOW = 48;
 
-export function allocAddrinfoW(data?: Partial<addrinfoW>): Uint8Array {
-  const buf = new Uint8Array(sizeofAddrinfoW);
+export function allocADDRINFOW(data?: Partial<ADDRINFOW>): Uint8Array {
+  const buf = new Uint8Array(sizeofADDRINFOW);
   const view = new DataView(buf.buffer);
   // 0x00: i32
   if (data?.ai_flags !== undefined) view.setInt32(0, Number(data.ai_flags), true);
@@ -2013,9 +2418,9 @@ export function allocAddrinfoW(data?: Partial<addrinfoW>): Uint8Array {
 }
 
 /**
- * Windows.Win32.Networking.WinSock.addrinfoexA (size: 72)
+ * Windows.Win32.Networking.WinSock.ADDRINFOEXA (size: 72)
  */
-export interface addrinfoexA {
+export interface ADDRINFOEXA {
   /** i32 */
   ai_flags: number;
   /** i32 */
@@ -2040,10 +2445,10 @@ export interface addrinfoexA {
   ai_next: Deno.PointerValue | Uint8Array | null;
 }
 
-export const sizeofAddrinfoexA = 72;
+export const sizeofADDRINFOEXA = 72;
 
-export function allocAddrinfoexA(data?: Partial<addrinfoexA>): Uint8Array {
-  const buf = new Uint8Array(sizeofAddrinfoexA);
+export function allocADDRINFOEXA(data?: Partial<ADDRINFOEXA>): Uint8Array {
+  const buf = new Uint8Array(sizeofADDRINFOEXA);
   const view = new DataView(buf.buffer);
   // 0x00: i32
   if (data?.ai_flags !== undefined) view.setInt32(0, Number(data.ai_flags), true);
@@ -2074,9 +2479,9 @@ export function allocAddrinfoexA(data?: Partial<addrinfoexA>): Uint8Array {
 }
 
 /**
- * Windows.Win32.Networking.WinSock.addrinfoexW (size: 72)
+ * Windows.Win32.Networking.WinSock.ADDRINFOEXW (size: 72)
  */
-export interface addrinfoexW {
+export interface ADDRINFOEXW {
   /** i32 */
   ai_flags: number;
   /** i32 */
@@ -2101,10 +2506,10 @@ export interface addrinfoexW {
   ai_next: Deno.PointerValue | Uint8Array | null;
 }
 
-export const sizeofAddrinfoexW = 72;
+export const sizeofADDRINFOEXW = 72;
 
-export function allocAddrinfoexW(data?: Partial<addrinfoexW>): Uint8Array {
-  const buf = new Uint8Array(sizeofAddrinfoexW);
+export function allocADDRINFOEXW(data?: Partial<ADDRINFOEXW>): Uint8Array {
+  const buf = new Uint8Array(sizeofADDRINFOEXW);
   const view = new DataView(buf.buffer);
   // 0x00: i32
   if (data?.ai_flags !== undefined) view.setInt32(0, Number(data.ai_flags), true);
@@ -2135,9 +2540,9 @@ export function allocAddrinfoexW(data?: Partial<addrinfoexW>): Uint8Array {
 }
 
 /**
- * Windows.Win32.Networking.WinSock.addrinfoex2A (size: 88)
+ * Windows.Win32.Networking.WinSock.ADDRINFOEX2A (size: 88)
  */
-export interface addrinfoex2A {
+export interface ADDRINFOEX2A {
   /** i32 */
   ai_flags: number;
   /** i32 */
@@ -2166,10 +2571,10 @@ export interface addrinfoex2A {
   ai_fqdn: string | null;
 }
 
-export const sizeofAddrinfoex2A = 88;
+export const sizeofADDRINFOEX2A = 88;
 
-export function allocAddrinfoex2A(data?: Partial<addrinfoex2A>): Uint8Array {
-  const buf = new Uint8Array(sizeofAddrinfoex2A);
+export function allocADDRINFOEX2A(data?: Partial<ADDRINFOEX2A>): Uint8Array {
+  const buf = new Uint8Array(sizeofADDRINFOEX2A);
   const view = new DataView(buf.buffer);
   // 0x00: i32
   if (data?.ai_flags !== undefined) view.setInt32(0, Number(data.ai_flags), true);
@@ -2208,9 +2613,9 @@ export function allocAddrinfoex2A(data?: Partial<addrinfoex2A>): Uint8Array {
 }
 
 /**
- * Windows.Win32.Networking.WinSock.addrinfoex2W (size: 88)
+ * Windows.Win32.Networking.WinSock.ADDRINFOEX2W (size: 88)
  */
-export interface addrinfoex2W {
+export interface ADDRINFOEX2W {
   /** i32 */
   ai_flags: number;
   /** i32 */
@@ -2239,10 +2644,10 @@ export interface addrinfoex2W {
   ai_fqdn: string | null;
 }
 
-export const sizeofAddrinfoex2W = 88;
+export const sizeofADDRINFOEX2W = 88;
 
-export function allocAddrinfoex2W(data?: Partial<addrinfoex2W>): Uint8Array {
-  const buf = new Uint8Array(sizeofAddrinfoex2W);
+export function allocADDRINFOEX2W(data?: Partial<ADDRINFOEX2W>): Uint8Array {
+  const buf = new Uint8Array(sizeofADDRINFOEX2W);
   const view = new DataView(buf.buffer);
   // 0x00: i32
   if (data?.ai_flags !== undefined) view.setInt32(0, Number(data.ai_flags), true);
@@ -2281,9 +2686,9 @@ export function allocAddrinfoex2W(data?: Partial<addrinfoex2W>): Uint8Array {
 }
 
 /**
- * Windows.Win32.Networking.WinSock.addrinfoex3 (size: 96)
+ * Windows.Win32.Networking.WinSock.ADDRINFOEX3 (size: 96)
  */
-export interface addrinfoex3 {
+export interface ADDRINFOEX3 {
   /** i32 */
   ai_flags: number;
   /** i32 */
@@ -2314,10 +2719,10 @@ export interface addrinfoex3 {
   ai_interfaceindex: number;
 }
 
-export const sizeofAddrinfoex3 = 96;
+export const sizeofADDRINFOEX3 = 96;
 
-export function allocAddrinfoex3(data?: Partial<addrinfoex3>): Uint8Array {
-  const buf = new Uint8Array(sizeofAddrinfoex3);
+export function allocADDRINFOEX3(data?: Partial<ADDRINFOEX3>): Uint8Array {
+  const buf = new Uint8Array(sizeofADDRINFOEX3);
   const view = new DataView(buf.buffer);
   // 0x00: i32
   if (data?.ai_flags !== undefined) view.setInt32(0, Number(data.ai_flags), true);
@@ -2361,9 +2766,9 @@ export function allocAddrinfoex3(data?: Partial<addrinfoex3>): Uint8Array {
 export type HANDLE = Deno.PointerValue;
 
 /**
- * Windows.Win32.Networking.WinSock.addrinfoex4 (size: 104)
+ * Windows.Win32.Networking.WinSock.ADDRINFOEX4 (size: 104)
  */
-export interface addrinfoex4 {
+export interface ADDRINFOEX4 {
   /** i32 */
   ai_flags: number;
   /** i32 */
@@ -2396,10 +2801,10 @@ export interface addrinfoex4 {
   ai_resolutionhandle: Uint8Array | Deno.PointerValue | null;
 }
 
-export const sizeofAddrinfoex4 = 104;
+export const sizeofADDRINFOEX4 = 104;
 
-export function allocAddrinfoex4(data?: Partial<addrinfoex4>): Uint8Array {
-  const buf = new Uint8Array(sizeofAddrinfoex4);
+export function allocADDRINFOEX4(data?: Partial<ADDRINFOEX4>): Uint8Array {
+  const buf = new Uint8Array(sizeofADDRINFOEX4);
   const view = new DataView(buf.buffer);
   // 0x00: i32
   if (data?.ai_flags !== undefined) view.setInt32(0, Number(data.ai_flags), true);
@@ -2443,9 +2848,9 @@ export function allocAddrinfoex4(data?: Partial<addrinfoex4>): Uint8Array {
 }
 
 /**
- * Windows.Win32.Networking.WinSock.addrinfoex5 (size: 112)
+ * Windows.Win32.Networking.WinSock.ADDRINFOEX5 (size: 112)
  */
-export interface addrinfoex5 {
+export interface ADDRINFOEX5 {
   /** i32 */
   ai_flags: number;
   /** i32 */
@@ -2480,10 +2885,10 @@ export interface addrinfoex5 {
   ai_ttl: number;
 }
 
-export const sizeofAddrinfoex5 = 112;
+export const sizeofADDRINFOEX5 = 112;
 
-export function allocAddrinfoex5(data?: Partial<addrinfoex5>): Uint8Array {
-  const buf = new Uint8Array(sizeofAddrinfoex5);
+export function allocADDRINFOEX5(data?: Partial<ADDRINFOEX5>): Uint8Array {
+  const buf = new Uint8Array(sizeofADDRINFOEX5);
   const view = new DataView(buf.buffer);
   // 0x00: i32
   if (data?.ai_flags !== undefined) view.setInt32(0, Number(data.ai_flags), true);
@@ -2530,9 +2935,9 @@ export function allocAddrinfoex5(data?: Partial<addrinfoex5>): Uint8Array {
 }
 
 /**
- * Windows.Win32.Networking.WinSock.addrinfo_dns_server (size: 40)
+ * Windows.Win32.Networking.WinSock.ADDRINFO_DNS_SERVER (size: 40)
  */
-export interface addrinfo_dns_server {
+export interface ADDRINFO_DNS_SERVER {
   /** u32 */
   ai_servertype: number;
   /** u64 */
@@ -2545,10 +2950,10 @@ export interface addrinfo_dns_server {
   Anonymous: Uint8Array | Deno.PointerValue | null;
 }
 
-export const sizeofAddrinfo_dns_server = 40;
+export const sizeofADDRINFO_DNS_SERVER = 40;
 
-export function allocAddrinfo_dns_server(data?: Partial<addrinfo_dns_server>): Uint8Array {
-  const buf = new Uint8Array(sizeofAddrinfo_dns_server);
+export function allocADDRINFO_DNS_SERVER(data?: Partial<ADDRINFO_DNS_SERVER>): Uint8Array {
+  const buf = new Uint8Array(sizeofADDRINFO_DNS_SERVER);
   const view = new DataView(buf.buffer);
   // 0x00: u32
   if (data?.ai_servertype !== undefined) view.setUint32(0, Number(data.ai_servertype), true);
@@ -2566,9 +2971,9 @@ export function allocAddrinfo_dns_server(data?: Partial<addrinfo_dns_server>): U
 }
 
 /**
- * Windows.Win32.Networking.WinSock.addrinfoex6 (size: 128)
+ * Windows.Win32.Networking.WinSock.ADDRINFOEX6 (size: 128)
  */
-export interface addrinfoex6 {
+export interface ADDRINFOEX6 {
   /** i32 */
   ai_flags: number;
   /** i32 */
@@ -2609,10 +3014,10 @@ export interface addrinfoex6 {
   ai_responseflags: Deno.PointerValue;
 }
 
-export const sizeofAddrinfoex6 = 128;
+export const sizeofADDRINFOEX6 = 128;
 
-export function allocAddrinfoex6(data?: Partial<addrinfoex6>): Uint8Array {
-  const buf = new Uint8Array(sizeofAddrinfoex6);
+export function allocADDRINFOEX6(data?: Partial<ADDRINFOEX6>): Uint8Array {
+  const buf = new Uint8Array(sizeofADDRINFOEX6);
   const view = new DataView(buf.buffer);
   // 0x00: i32
   if (data?.ai_flags !== undefined) view.setInt32(0, Number(data.ai_flags), true);
@@ -2664,19 +3069,19 @@ export function allocAddrinfoex6(data?: Partial<addrinfoex6>): Uint8Array {
 }
 
 /**
- * Windows.Win32.Networking.WinSock.fd_set (size: 16)
+ * Windows.Win32.Networking.WinSock.FD_SET (size: 16)
  */
-export interface fd_set {
+export interface FD_SET {
   /** u32 */
   fd_count: number;
   /** array */
   fd_array: Deno.PointerValue | null;
 }
 
-export const sizeofFd_set = 16;
+export const sizeofFD_SET = 16;
 
-export function allocFd_set(data?: Partial<fd_set>): Uint8Array {
-  const buf = new Uint8Array(sizeofFd_set);
+export function allocFD_SET(data?: Partial<FD_SET>): Uint8Array {
+  const buf = new Uint8Array(sizeofFD_SET);
   const view = new DataView(buf.buffer);
   // 0x00: u32
   if (data?.fd_count !== undefined) view.setUint32(0, Number(data.fd_count), true);
@@ -2687,19 +3092,19 @@ export function allocFd_set(data?: Partial<fd_set>): Uint8Array {
 }
 
 /**
- * Windows.Win32.Networking.WinSock.timeval (size: 8)
+ * Windows.Win32.Networking.WinSock.TIMEVAL (size: 8)
  */
-export interface timeval {
+export interface TIMEVAL {
   /** i32 */
   tv_sec: number;
   /** i32 */
   tv_usec: number;
 }
 
-export const sizeofTimeval = 8;
+export const sizeofTIMEVAL = 8;
 
-export function allocTimeval(data?: Partial<timeval>): Uint8Array {
-  const buf = new Uint8Array(sizeofTimeval);
+export function allocTIMEVAL(data?: Partial<TIMEVAL>): Uint8Array {
+  const buf = new Uint8Array(sizeofTIMEVAL);
   const view = new DataView(buf.buffer);
   // 0x00: i32
   if (data?.tv_sec !== undefined) view.setInt32(0, Number(data.tv_sec), true);
@@ -2709,9 +3114,9 @@ export function allocTimeval(data?: Partial<timeval>): Uint8Array {
 }
 
 /**
- * Windows.Win32.Networking.WinSock.hostent (size: 32)
+ * Windows.Win32.Networking.WinSock.HOSTENT (size: 32)
  */
-export interface hostent {
+export interface HOSTENT {
   /** Windows.Win32.Foundation.PSTR */
   h_name: string | null;
   /** ptr */
@@ -2724,10 +3129,10 @@ export interface hostent {
   h_addr_list: Deno.PointerValue | Uint8Array | null;
 }
 
-export const sizeofHostent = 32;
+export const sizeofHOSTENT = 32;
 
-export function allocHostent(data?: Partial<hostent>): Uint8Array {
-  const buf = new Uint8Array(sizeofHostent);
+export function allocHOSTENT(data?: Partial<HOSTENT>): Uint8Array {
+  const buf = new Uint8Array(sizeofHOSTENT);
   const view = new DataView(buf.buffer);
   // 0x00: buffer
   if (data?.h_name !== undefined) {
@@ -2781,46 +3186,9 @@ export function allocNetent(data?: Partial<netent>): Uint8Array {
 }
 
 /**
- * Windows.Win32.Networking.WinSock.servent (size: 32)
+ * Windows.Win32.Networking.WinSock.PROTOENT (size: 24)
  */
-export interface servent {
-  /** Windows.Win32.Foundation.PSTR */
-  s_name: string | null;
-  /** ptr */
-  s_aliases: Deno.PointerValue | Uint8Array | null;
-  /** Windows.Win32.Foundation.PSTR */
-  s_proto: string | null;
-  /** i16 */
-  s_port: number;
-}
-
-export const sizeofServent = 32;
-
-export function allocServent(data?: Partial<servent>): Uint8Array {
-  const buf = new Uint8Array(sizeofServent);
-  const view = new DataView(buf.buffer);
-  // 0x00: buffer
-  if (data?.s_name !== undefined) {
-    (buf as any)._f0 = util.pstrToFfi(data.s_name);
-    view.setBigUint64(0, (buf as any)._f0 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f0)), true);
-  }
-  // 0x08: pointer
-  if (data?.s_aliases !== undefined) view.setBigUint64(8, data.s_aliases === null ? 0n : BigInt(util.toPointer(data.s_aliases)), true);
-  // 0x10: buffer
-  if (data?.s_proto !== undefined) {
-    (buf as any)._f16 = util.pstrToFfi(data.s_proto);
-    view.setBigUint64(16, (buf as any)._f16 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f16)), true);
-  }
-  // 0x18: i16
-  if (data?.s_port !== undefined) view.setInt16(24, Number(data.s_port), true);
-  // 0x1a: pad6
-  return buf;
-}
-
-/**
- * Windows.Win32.Networking.WinSock.protoent (size: 24)
- */
-export interface protoent {
+export interface PROTOENT {
   /** Windows.Win32.Foundation.PSTR */
   p_name: string | null;
   /** ptr */
@@ -2829,10 +3197,10 @@ export interface protoent {
   p_proto: number;
 }
 
-export const sizeofProtoent = 24;
+export const sizeofPROTOENT = 24;
 
-export function allocProtoent(data?: Partial<protoent>): Uint8Array {
-  const buf = new Uint8Array(sizeofProtoent);
+export function allocPROTOENT(data?: Partial<PROTOENT>): Uint8Array {
+  const buf = new Uint8Array(sizeofPROTOENT);
   const view = new DataView(buf.buffer);
   // 0x00: buffer
   if (data?.p_name !== undefined) {
@@ -2844,51 +3212,6 @@ export function allocProtoent(data?: Partial<protoent>): Uint8Array {
   // 0x10: i16
   if (data?.p_proto !== undefined) view.setInt16(16, Number(data.p_proto), true);
   // 0x12: pad6
-  return buf;
-}
-
-/**
- * Windows.Win32.Networking.WinSock.WSAData (size: 32)
- */
-export interface WSAData {
-  /** u16 */
-  wVersion: number;
-  /** u16 */
-  wHighVersion: number;
-  /** u16 */
-  iMaxSockets: number;
-  /** u16 */
-  iMaxUdpDg: number;
-  /** Windows.Win32.Foundation.PSTR */
-  lpVendorInfo: string | null;
-  /** array */
-  szDescription: Deno.PointerValue | null;
-  /** array */
-  szSystemStatus: Deno.PointerValue | null;
-}
-
-export const sizeofWSAData = 32;
-
-export function allocWSAData(data?: Partial<WSAData>): Uint8Array {
-  const buf = new Uint8Array(sizeofWSAData);
-  const view = new DataView(buf.buffer);
-  // 0x00: u16
-  if (data?.wVersion !== undefined) view.setUint16(0, Number(data.wVersion), true);
-  // 0x02: u16
-  if (data?.wHighVersion !== undefined) view.setUint16(2, Number(data.wHighVersion), true);
-  // 0x04: u16
-  if (data?.iMaxSockets !== undefined) view.setUint16(4, Number(data.iMaxSockets), true);
-  // 0x06: u16
-  if (data?.iMaxUdpDg !== undefined) view.setUint16(6, Number(data.iMaxUdpDg), true);
-  // 0x08: buffer
-  if (data?.lpVendorInfo !== undefined) {
-    (buf as any)._f8 = util.pstrToFfi(data.lpVendorInfo);
-    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f8)), true);
-  }
-  // 0x10: pointer
-  if (data?.szDescription !== undefined) view.setBigUint64(16, data.szDescription === null ? 0n : BigInt(util.toPointer(data.szDescription)), true);
-  // 0x18: pointer
-  if (data?.szSystemStatus !== undefined) view.setBigUint64(24, data.szSystemStatus === null ? 0n : BigInt(util.toPointer(data.szSystemStatus)), true);
   return buf;
 }
 
@@ -2916,25 +3239,51 @@ export function allocSockproto(data?: Partial<sockproto>): Uint8Array {
 }
 
 /**
- * Windows.Win32.Networking.WinSock.linger (size: 8)
+ * Windows.Win32.Networking.WinSock.LINGER (size: 8)
  */
-export interface linger {
+export interface LINGER {
   /** u16 */
   l_onoff: number;
   /** u16 */
   l_linger: number;
 }
 
-export const sizeofLinger = 8;
+export const sizeofLINGER = 8;
 
-export function allocLinger(data?: Partial<linger>): Uint8Array {
-  const buf = new Uint8Array(sizeofLinger);
+export function allocLINGER(data?: Partial<LINGER>): Uint8Array {
+  const buf = new Uint8Array(sizeofLINGER);
   const view = new DataView(buf.buffer);
   // 0x00: u16
   if (data?.l_onoff !== undefined) view.setUint16(0, Number(data.l_onoff), true);
   // 0x02: u16
   if (data?.l_linger !== undefined) view.setUint16(2, Number(data.l_linger), true);
   // 0x04: pad4
+  return buf;
+}
+
+/**
+ * Windows.Win32.Networking.WinSock.QOS (size: 24)
+ */
+export interface QOS {
+  /** Windows.Win32.Networking.WinSock.FLOWSPEC */
+  SendingFlowspec: Uint8Array | Deno.PointerValue | null;
+  /** Windows.Win32.Networking.WinSock.FLOWSPEC */
+  ReceivingFlowspec: Uint8Array | Deno.PointerValue | null;
+  /** Windows.Win32.Networking.WinSock.WSABUF */
+  ProviderSpecific: Uint8Array | Deno.PointerValue | null;
+}
+
+export const sizeofQOS = 24;
+
+export function allocQOS(data?: Partial<QOS>): Uint8Array {
+  const buf = new Uint8Array(sizeofQOS);
+  const view = new DataView(buf.buffer);
+  // 0x00: pointer
+  if (data?.SendingFlowspec !== undefined) view.setBigUint64(0, data.SendingFlowspec === null ? 0n : BigInt(util.toPointer(data.SendingFlowspec)), true);
+  // 0x08: pointer
+  if (data?.ReceivingFlowspec !== undefined) view.setBigUint64(8, data.ReceivingFlowspec === null ? 0n : BigInt(util.toPointer(data.ReceivingFlowspec)), true);
+  // 0x10: pointer
+  if (data?.ProviderSpecific !== undefined) view.setBigUint64(16, data.ProviderSpecific === null ? 0n : BigInt(util.toPointer(data.ProviderSpecific)), true);
   return buf;
 }
 
@@ -3201,59 +3550,25 @@ export function alloc_Unclaimed_e__Struct(data?: Partial<_Unclaimed_e__Struct>):
 }
 
 /**
- * _AccountSid_e__Struct (size: 16)
- */
-export interface _AccountSid_e__Struct {
-  /** u32 */
-  Size: number;
-  /** array */
-  Data: Deno.PointerValue | null;
-}
-
-export const sizeof_AccountSid_e__Struct = 16;
-
-export function alloc_AccountSid_e__Struct(data?: Partial<_AccountSid_e__Struct>): Uint8Array {
-  const buf = new Uint8Array(sizeof_AccountSid_e__Struct);
-  const view = new DataView(buf.buffer);
-  // 0x00: u32
-  if (data?.Size !== undefined) view.setUint32(0, Number(data.Size), true);
-  // 0x04: pad4
-  // 0x08: pointer
-  if (data?.Data !== undefined) view.setBigUint64(8, data.Data === null ? 0n : BigInt(util.toPointer(data.Data)), true);
-  return buf;
-}
-
-/**
- * _Value_e__Union (size: 32)
+ * _Value_e__Union (size: 16)
  */
 export interface _Value_e__Union {
-  /** u32 */
-  Null: number;
-  /** u32 */
-  Wildcard: number;
+  /** u16 */
+  ShortUuid: number;
   /** System.Guid */
-  TemplateGuid: Uint8Array | Deno.PointerValue | null;
-  /** _AccountSid_e__Struct */
-  AccountSid: Uint8Array | Deno.PointerValue | null;
-  /** array */
-  SecureId: Deno.PointerValue | null;
+  LongUuid: Uint8Array | Deno.PointerValue | null;
 }
 
-export const sizeof_Value_e__Union = 32;
+export const sizeof_Value_e__Union = 16;
 
 export function alloc_Value_e__Union(data?: Partial<_Value_e__Union>): Uint8Array {
   const buf = new Uint8Array(sizeof_Value_e__Union);
   const view = new DataView(buf.buffer);
-  // 0x00: u32
-  if (data?.Null !== undefined) view.setUint32(0, Number(data.Null), true);
-  // 0x04: u32
-  if (data?.Wildcard !== undefined) view.setUint32(4, Number(data.Wildcard), true);
+  // 0x00: u16
+  if (data?.ShortUuid !== undefined) view.setUint16(0, Number(data.ShortUuid), true);
+  // 0x02: pad6
   // 0x08: pointer
-  if (data?.TemplateGuid !== undefined) view.setBigUint64(8, data.TemplateGuid === null ? 0n : BigInt(util.toPointer(data.TemplateGuid)), true);
-  // 0x10: pointer
-  if (data?.AccountSid !== undefined) view.setBigUint64(16, data.AccountSid === null ? 0n : BigInt(util.toPointer(data.AccountSid)), true);
-  // 0x18: pointer
-  if (data?.SecureId !== undefined) view.setBigUint64(24, data.SecureId === null ? 0n : BigInt(util.toPointer(data.SecureId)), true);
+  if (data?.LongUuid !== undefined) view.setBigUint64(8, data.LongUuid === null ? 0n : BigInt(util.toPointer(data.LongUuid)), true);
   return buf;
 }
 
@@ -5031,19 +5346,19 @@ export function allocIN_PKTINFO_EX(data?: Partial<IN_PKTINFO_EX>): Uint8Array {
 }
 
 /**
- * Windows.Win32.Networking.WinSock.in6_pktinfo_ex (size: 16)
+ * Windows.Win32.Networking.WinSock.IN6_PKTINFO_EX (size: 16)
  */
-export interface in6_pktinfo_ex {
+export interface IN6_PKTINFO_EX {
   /** Windows.Win32.Networking.WinSock.IN6_PKTINFO */
   pkt_info: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.Networking.WinSock.SCOPE_ID */
   scope_id: Uint8Array | Deno.PointerValue | null;
 }
 
-export const sizeofIn6_pktinfo_ex = 16;
+export const sizeofIN6_PKTINFO_EX = 16;
 
-export function allocIn6_pktinfo_ex(data?: Partial<in6_pktinfo_ex>): Uint8Array {
-  const buf = new Uint8Array(sizeofIn6_pktinfo_ex);
+export function allocIN6_PKTINFO_EX(data?: Partial<IN6_PKTINFO_EX>): Uint8Array {
+  const buf = new Uint8Array(sizeofIN6_PKTINFO_EX);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
   if (data?.pkt_info !== undefined) view.setBigUint64(0, data.pkt_info === null ? 0n : BigInt(util.toPointer(data.pkt_info)), true);
@@ -6945,9 +7260,9 @@ export function allocATM_BHLI(data?: Partial<ATM_BHLI>): Uint8Array {
 }
 
 /**
- * Windows.Win32.Networking.WinSock.sockaddr_atm (size: 32)
+ * Windows.Win32.Networking.WinSock.SOCKADDR_ATM (size: 32)
  */
-export interface sockaddr_atm {
+export interface SOCKADDR_ATM {
   /** u16 */
   satm_family: number;
   /** Windows.Win32.Networking.WinSock.ATM_ADDRESS */
@@ -6958,10 +7273,10 @@ export interface sockaddr_atm {
   satm_bhli: Uint8Array | Deno.PointerValue | null;
 }
 
-export const sizeofSockaddr_atm = 32;
+export const sizeofSOCKADDR_ATM = 32;
 
-export function allocSockaddr_atm(data?: Partial<sockaddr_atm>): Uint8Array {
-  const buf = new Uint8Array(sizeofSockaddr_atm);
+export function allocSOCKADDR_ATM(data?: Partial<SOCKADDR_ATM>): Uint8Array {
+  const buf = new Uint8Array(sizeofSOCKADDR_ATM);
   const view = new DataView(buf.buffer);
   // 0x00: u16
   if (data?.satm_family !== undefined) view.setUint16(0, Number(data.satm_family), true);
@@ -7400,84 +7715,12 @@ export function allocATM_CONNECTION_ID(data?: Partial<ATM_CONNECTION_ID>): Uint8
 }
 
 /**
- * Windows.Win32.NetworkManagement.QoS.FLOWSPEC (size: 32)
- */
-export interface FLOWSPEC {
-  /** u32 */
-  TokenRate: number;
-  /** u32 */
-  TokenBucketSize: number;
-  /** u32 */
-  PeakBandwidth: number;
-  /** u32 */
-  Latency: number;
-  /** u32 */
-  DelayVariation: number;
-  /** u32 */
-  ServiceType: number;
-  /** u32 */
-  MaxSduSize: number;
-  /** u32 */
-  MinimumPolicedSize: number;
-}
-
-export const sizeofFLOWSPEC = 32;
-
-export function allocFLOWSPEC(data?: Partial<FLOWSPEC>): Uint8Array {
-  const buf = new Uint8Array(sizeofFLOWSPEC);
-  const view = new DataView(buf.buffer);
-  // 0x00: u32
-  if (data?.TokenRate !== undefined) view.setUint32(0, Number(data.TokenRate), true);
-  // 0x04: u32
-  if (data?.TokenBucketSize !== undefined) view.setUint32(4, Number(data.TokenBucketSize), true);
-  // 0x08: u32
-  if (data?.PeakBandwidth !== undefined) view.setUint32(8, Number(data.PeakBandwidth), true);
-  // 0x0c: u32
-  if (data?.Latency !== undefined) view.setUint32(12, Number(data.Latency), true);
-  // 0x10: u32
-  if (data?.DelayVariation !== undefined) view.setUint32(16, Number(data.DelayVariation), true);
-  // 0x14: u32
-  if (data?.ServiceType !== undefined) view.setUint32(20, Number(data.ServiceType), true);
-  // 0x18: u32
-  if (data?.MaxSduSize !== undefined) view.setUint32(24, Number(data.MaxSduSize), true);
-  // 0x1c: u32
-  if (data?.MinimumPolicedSize !== undefined) view.setUint32(28, Number(data.MinimumPolicedSize), true);
-  return buf;
-}
-
-/**
- * Windows.Win32.NetworkManagement.QoS.QOS (size: 24)
- */
-export interface QOS {
-  /** Windows.Win32.NetworkManagement.QoS.FLOWSPEC */
-  SendingFlowspec: Uint8Array | Deno.PointerValue | null;
-  /** Windows.Win32.NetworkManagement.QoS.FLOWSPEC */
-  ReceivingFlowspec: Uint8Array | Deno.PointerValue | null;
-  /** Windows.Win32.Networking.WinSock.WSABUF */
-  ProviderSpecific: Uint8Array | Deno.PointerValue | null;
-}
-
-export const sizeofQOS = 24;
-
-export function allocQOS(data?: Partial<QOS>): Uint8Array {
-  const buf = new Uint8Array(sizeofQOS);
-  const view = new DataView(buf.buffer);
-  // 0x00: pointer
-  if (data?.SendingFlowspec !== undefined) view.setBigUint64(0, data.SendingFlowspec === null ? 0n : BigInt(util.toPointer(data.SendingFlowspec)), true);
-  // 0x08: pointer
-  if (data?.ReceivingFlowspec !== undefined) view.setBigUint64(8, data.ReceivingFlowspec === null ? 0n : BigInt(util.toPointer(data.ReceivingFlowspec)), true);
-  // 0x10: pointer
-  if (data?.ProviderSpecific !== undefined) view.setBigUint64(16, data.ProviderSpecific === null ? 0n : BigInt(util.toPointer(data.ProviderSpecific)), true);
-  return buf;
-}
-
-/**
  * Windows.Win32.Networking.WinSock.ATM_PVC_PARAMS (size: 16)
  */
 export interface ATM_PVC_PARAMS {
   /** Windows.Win32.Networking.WinSock.ATM_CONNECTION_ID */
   PvcConnectionId: Uint8Array | Deno.PointerValue | null;
-  /** Windows.Win32.NetworkManagement.QoS.QOS */
+  /** Windows.Win32.Networking.WinSock.QOS */
   PvcQos: Uint8Array | Deno.PointerValue | null;
 }
 
@@ -8052,9 +8295,9 @@ export function allocRIO_EXTENSION_FUNCTION_TABLE(data?: Partial<RIO_EXTENSION_F
 }
 
 /**
- * Windows.Win32.Networking.WinSock.WSPData (size: 16)
+ * Windows.Win32.Networking.WinSock.WSPDATA (size: 16)
  */
-export interface WSPData {
+export interface WSPDATA {
   /** u16 */
   wVersion: number;
   /** u16 */
@@ -8063,10 +8306,10 @@ export interface WSPData {
   szDescription: Deno.PointerValue | null;
 }
 
-export const sizeofWSPData = 16;
+export const sizeofWSPDATA = 16;
 
-export function allocWSPData(data?: Partial<WSPData>): Uint8Array {
-  const buf = new Uint8Array(sizeofWSPData);
+export function allocWSPDATA(data?: Partial<WSPDATA>): Uint8Array {
+  const buf = new Uint8Array(sizeofWSPDATA);
   const view = new DataView(buf.buffer);
   // 0x00: u16
   if (data?.wVersion !== undefined) view.setUint16(0, Number(data.wVersion), true);
@@ -9210,19 +9453,19 @@ export function allocSERVICE_ASYNC_INFO(data?: Partial<SERVICE_ASYNC_INFO>): Uin
 }
 
 /**
- * Windows.Win32.Networking.WinSock.sockaddr_un (size: 16)
+ * Windows.Win32.Networking.WinSock.SOCKADDR_UN (size: 16)
  */
-export interface sockaddr_un {
+export interface SOCKADDR_UN {
   /** u16 */
   sun_family: number;
   /** array */
   sun_path: Deno.PointerValue | null;
 }
 
-export const sizeofSockaddr_un = 16;
+export const sizeofSOCKADDR_UN = 16;
 
-export function allocSockaddr_un(data?: Partial<sockaddr_un>): Uint8Array {
-  const buf = new Uint8Array(sizeofSockaddr_un);
+export function allocSOCKADDR_UN(data?: Partial<SOCKADDR_UN>): Uint8Array {
+  const buf = new Uint8Array(sizeofSOCKADDR_UN);
   const view = new DataView(buf.buffer);
   // 0x00: u16
   if (data?.sun_family !== undefined) view.setUint16(0, Number(data.sun_family), true);
@@ -9233,9 +9476,9 @@ export function allocSockaddr_un(data?: Partial<sockaddr_un>): Uint8Array {
 }
 
 /**
- * Windows.Win32.Networking.WinSock.sockaddr_ipx (size: 32)
+ * Windows.Win32.Networking.WinSock.SOCKADDR_IPX (size: 32)
  */
-export interface sockaddr_ipx {
+export interface SOCKADDR_IPX {
   /** i16 */
   sa_family: number;
   /** array */
@@ -9246,10 +9489,10 @@ export interface sockaddr_ipx {
   sa_socket: number;
 }
 
-export const sizeofSockaddr_ipx = 32;
+export const sizeofSOCKADDR_IPX = 32;
 
-export function allocSockaddr_ipx(data?: Partial<sockaddr_ipx>): Uint8Array {
-  const buf = new Uint8Array(sizeofSockaddr_ipx);
+export function allocSOCKADDR_IPX(data?: Partial<SOCKADDR_IPX>): Uint8Array {
+  const buf = new Uint8Array(sizeofSOCKADDR_IPX);
   const view = new DataView(buf.buffer);
   // 0x00: i16
   if (data?.sa_family !== undefined) view.setInt16(0, Number(data.sa_family), true);
@@ -9265,9 +9508,9 @@ export function allocSockaddr_ipx(data?: Partial<sockaddr_ipx>): Uint8Array {
 }
 
 /**
- * Windows.Win32.Networking.WinSock.sockaddr_tp (size: 16)
+ * Windows.Win32.Networking.WinSock.SOCKADDR_TP (size: 16)
  */
-export interface sockaddr_tp {
+export interface SOCKADDR_TP {
   /** u16 */
   tp_family: number;
   /** u16 */
@@ -9280,10 +9523,10 @@ export interface sockaddr_tp {
   tp_addr: Deno.PointerValue | null;
 }
 
-export const sizeofSockaddr_tp = 16;
+export const sizeofSOCKADDR_TP = 16;
 
-export function allocSockaddr_tp(data?: Partial<sockaddr_tp>): Uint8Array {
-  const buf = new Uint8Array(sizeofSockaddr_tp);
+export function allocSOCKADDR_TP(data?: Partial<SOCKADDR_TP>): Uint8Array {
+  const buf = new Uint8Array(sizeofSOCKADDR_TP);
   const view = new DataView(buf.buffer);
   // 0x00: u16
   if (data?.tp_family !== undefined) view.setUint16(0, Number(data.tp_family), true);
@@ -9299,9 +9542,9 @@ export function allocSockaddr_tp(data?: Partial<sockaddr_tp>): Uint8Array {
 }
 
 /**
- * Windows.Win32.Networking.WinSock.sockaddr_nb (size: 16)
+ * Windows.Win32.Networking.WinSock.SOCKADDR_NB (size: 16)
  */
-export interface sockaddr_nb {
+export interface SOCKADDR_NB {
   /** i16 */
   snb_family: number;
   /** u16 */
@@ -9310,10 +9553,10 @@ export interface sockaddr_nb {
   snb_name: Deno.PointerValue | null;
 }
 
-export const sizeofSockaddr_nb = 16;
+export const sizeofSOCKADDR_NB = 16;
 
-export function allocSockaddr_nb(data?: Partial<sockaddr_nb>): Uint8Array {
-  const buf = new Uint8Array(sizeofSockaddr_nb);
+export function allocSOCKADDR_NB(data?: Partial<SOCKADDR_NB>): Uint8Array {
+  const buf = new Uint8Array(sizeofSOCKADDR_NB);
   const view = new DataView(buf.buffer);
   // 0x00: i16
   if (data?.snb_family !== undefined) view.setInt16(0, Number(data.snb_family), true);
@@ -9326,9 +9569,9 @@ export function allocSockaddr_nb(data?: Partial<sockaddr_nb>): Uint8Array {
 }
 
 /**
- * Windows.Win32.Networking.WinSock.sockaddr_vns (size: 48)
+ * Windows.Win32.Networking.WinSock.SOCKADDR_VNS (size: 48)
  */
-export interface sockaddr_vns {
+export interface SOCKADDR_VNS {
   /** u16 */
   sin_family: number;
   /** array */
@@ -9343,10 +9586,10 @@ export interface sockaddr_vns {
   filler: Deno.PointerValue | null;
 }
 
-export const sizeofSockaddr_vns = 48;
+export const sizeofSOCKADDR_VNS = 48;
 
-export function allocSockaddr_vns(data?: Partial<sockaddr_vns>): Uint8Array {
-  const buf = new Uint8Array(sizeofSockaddr_vns);
+export function allocSOCKADDR_VNS(data?: Partial<SOCKADDR_VNS>): Uint8Array {
+  const buf = new Uint8Array(sizeofSOCKADDR_VNS);
   const view = new DataView(buf.buffer);
   // 0x00: u16
   if (data?.sin_family !== undefined) view.setUint16(0, Number(data.sin_family), true);
@@ -9365,12 +9608,2017 @@ export function allocSockaddr_vns(data?: Partial<sockaddr_vns>): Uint8Array {
   return buf;
 }
 
+/**
+ * Windows.Win32.Networking.WinSock.DL_OUI (size: 16)
+ */
+export interface DL_OUI {
+  /** array */
+  Byte: Deno.PointerValue | null;
+  /** _Anonymous_e__Struct */
+  Anonymous: Uint8Array | Deno.PointerValue | null;
+}
+
+export const sizeofDL_OUI = 16;
+
+export function allocDL_OUI(data?: Partial<DL_OUI>): Uint8Array {
+  const buf = new Uint8Array(sizeofDL_OUI);
+  const view = new DataView(buf.buffer);
+  // 0x00: pointer
+  if (data?.Byte !== undefined) view.setBigUint64(0, data.Byte === null ? 0n : BigInt(util.toPointer(data.Byte)), true);
+  // 0x08: pointer
+  if (data?.Anonymous !== undefined) view.setBigUint64(8, data.Anonymous === null ? 0n : BigInt(util.toPointer(data.Anonymous)), true);
+  return buf;
+}
+
+/**
+ * Windows.Win32.Networking.WinSock.DL_EI48 (size: 8)
+ */
+export interface DL_EI48 {
+  /** array */
+  Byte: Deno.PointerValue | null;
+}
+
+export const sizeofDL_EI48 = 8;
+
+export function allocDL_EI48(data?: Partial<DL_EI48>): Uint8Array {
+  const buf = new Uint8Array(sizeofDL_EI48);
+  const view = new DataView(buf.buffer);
+  // 0x00: pointer
+  if (data?.Byte !== undefined) view.setBigUint64(0, data.Byte === null ? 0n : BigInt(util.toPointer(data.Byte)), true);
+  return buf;
+}
+
+/**
+ * Windows.Win32.Networking.WinSock.DL_EUI48 (size: 16)
+ */
+export interface DL_EUI48 {
+  /** array */
+  Byte: Deno.PointerValue | null;
+  /** _Anonymous_e__Struct */
+  Anonymous: Uint8Array | Deno.PointerValue | null;
+}
+
+export const sizeofDL_EUI48 = 16;
+
+export function allocDL_EUI48(data?: Partial<DL_EUI48>): Uint8Array {
+  const buf = new Uint8Array(sizeofDL_EUI48);
+  const view = new DataView(buf.buffer);
+  // 0x00: pointer
+  if (data?.Byte !== undefined) view.setBigUint64(0, data.Byte === null ? 0n : BigInt(util.toPointer(data.Byte)), true);
+  // 0x08: pointer
+  if (data?.Anonymous !== undefined) view.setBigUint64(8, data.Anonymous === null ? 0n : BigInt(util.toPointer(data.Anonymous)), true);
+  return buf;
+}
+
+/**
+ * Windows.Win32.Networking.WinSock.DL_EI64 (size: 8)
+ */
+export interface DL_EI64 {
+  /** array */
+  Byte: Deno.PointerValue | null;
+}
+
+export const sizeofDL_EI64 = 8;
+
+export function allocDL_EI64(data?: Partial<DL_EI64>): Uint8Array {
+  const buf = new Uint8Array(sizeofDL_EI64);
+  const view = new DataView(buf.buffer);
+  // 0x00: pointer
+  if (data?.Byte !== undefined) view.setBigUint64(0, data.Byte === null ? 0n : BigInt(util.toPointer(data.Byte)), true);
+  return buf;
+}
+
+/**
+ * Windows.Win32.Networking.WinSock.DL_EUI64 (size: 24)
+ */
+export interface DL_EUI64 {
+  /** array */
+  Byte: Deno.PointerValue | null;
+  /** u64 */
+  Value: Deno.PointerValue;
+  /** _Anonymous_e__Struct */
+  Anonymous: Uint8Array | Deno.PointerValue | null;
+}
+
+export const sizeofDL_EUI64 = 24;
+
+export function allocDL_EUI64(data?: Partial<DL_EUI64>): Uint8Array {
+  const buf = new Uint8Array(sizeofDL_EUI64);
+  const view = new DataView(buf.buffer);
+  // 0x00: pointer
+  if (data?.Byte !== undefined) view.setBigUint64(0, data.Byte === null ? 0n : BigInt(util.toPointer(data.Byte)), true);
+  // 0x08: u64
+  if (data?.Value !== undefined) view.setBigUint64(8, BigInt(data.Value), true);
+  // 0x10: pointer
+  if (data?.Anonymous !== undefined) view.setBigUint64(16, data.Anonymous === null ? 0n : BigInt(util.toPointer(data.Anonymous)), true);
+  return buf;
+}
+
+/**
+ * Windows.Win32.Networking.WinSock.SNAP_HEADER (size: 24)
+ */
+export interface SNAP_HEADER {
+  /** u8 */
+  Dsap: number;
+  /** u8 */
+  Ssap: number;
+  /** u8 */
+  Control: number;
+  /** array */
+  Oui: Deno.PointerValue | null;
+  /** u16 */
+  Type: number;
+}
+
+export const sizeofSNAP_HEADER = 24;
+
+export function allocSNAP_HEADER(data?: Partial<SNAP_HEADER>): Uint8Array {
+  const buf = new Uint8Array(sizeofSNAP_HEADER);
+  const view = new DataView(buf.buffer);
+  // 0x00: u8
+  if (data?.Dsap !== undefined) view.setUint8(0, Number(data.Dsap));
+  // 0x01: u8
+  if (data?.Ssap !== undefined) view.setUint8(1, Number(data.Ssap));
+  // 0x02: u8
+  if (data?.Control !== undefined) view.setUint8(2, Number(data.Control));
+  // 0x03: pad5
+  // 0x08: pointer
+  if (data?.Oui !== undefined) view.setBigUint64(8, data.Oui === null ? 0n : BigInt(util.toPointer(data.Oui)), true);
+  // 0x10: u16
+  if (data?.Type !== undefined) view.setUint16(16, Number(data.Type), true);
+  // 0x12: pad6
+  return buf;
+}
+
+/**
+ * Windows.Win32.Networking.WinSock.ETHERNET_HEADER (size: 24)
+ */
+export interface ETHERNET_HEADER {
+  /** Windows.Win32.Networking.WinSock.DL_EUI48 */
+  Destination: Uint8Array | Deno.PointerValue | null;
+  /** Windows.Win32.Networking.WinSock.DL_EUI48 */
+  Source: Uint8Array | Deno.PointerValue | null;
+  /** _Anonymous_e__Union */
+  Anonymous: Uint8Array | Deno.PointerValue | null;
+}
+
+export const sizeofETHERNET_HEADER = 24;
+
+export function allocETHERNET_HEADER(data?: Partial<ETHERNET_HEADER>): Uint8Array {
+  const buf = new Uint8Array(sizeofETHERNET_HEADER);
+  const view = new DataView(buf.buffer);
+  // 0x00: pointer
+  if (data?.Destination !== undefined) view.setBigUint64(0, data.Destination === null ? 0n : BigInt(util.toPointer(data.Destination)), true);
+  // 0x08: pointer
+  if (data?.Source !== undefined) view.setBigUint64(8, data.Source === null ? 0n : BigInt(util.toPointer(data.Source)), true);
+  // 0x10: pointer
+  if (data?.Anonymous !== undefined) view.setBigUint64(16, data.Anonymous === null ? 0n : BigInt(util.toPointer(data.Anonymous)), true);
+  return buf;
+}
+
+/**
+ * Windows.Win32.Networking.WinSock.VLAN_TAG (size: 16)
+ */
+export interface VLAN_TAG {
+  /** _Anonymous_e__Union */
+  Anonymous: Uint8Array | Deno.PointerValue | null;
+  /** u16 */
+  Type: number;
+}
+
+export const sizeofVLAN_TAG = 16;
+
+export function allocVLAN_TAG(data?: Partial<VLAN_TAG>): Uint8Array {
+  const buf = new Uint8Array(sizeofVLAN_TAG);
+  const view = new DataView(buf.buffer);
+  // 0x00: pointer
+  if (data?.Anonymous !== undefined) view.setBigUint64(0, data.Anonymous === null ? 0n : BigInt(util.toPointer(data.Anonymous)), true);
+  // 0x08: u16
+  if (data?.Type !== undefined) view.setUint16(8, Number(data.Type), true);
+  // 0x0a: pad6
+  return buf;
+}
+
+/**
+ * Windows.Win32.Networking.WinSock.ICMP_HEADER (size: 8)
+ */
+export interface ICMP_HEADER {
+  /** u8 */
+  Type: number;
+  /** u8 */
+  Code: number;
+  /** u16 */
+  Checksum: number;
+}
+
+export const sizeofICMP_HEADER = 8;
+
+export function allocICMP_HEADER(data?: Partial<ICMP_HEADER>): Uint8Array {
+  const buf = new Uint8Array(sizeofICMP_HEADER);
+  const view = new DataView(buf.buffer);
+  // 0x00: u8
+  if (data?.Type !== undefined) view.setUint8(0, Number(data.Type));
+  // 0x01: u8
+  if (data?.Code !== undefined) view.setUint8(1, Number(data.Code));
+  // 0x02: u16
+  if (data?.Checksum !== undefined) view.setUint16(2, Number(data.Checksum), true);
+  // 0x04: pad4
+  return buf;
+}
+
+/**
+ * Windows.Win32.Devices.Bluetooth.RFCOMM_MSC_DATA (size: 8)
+ */
+export interface RFCOMM_MSC_DATA {
+  /** u8 */
+  Signals: number;
+  /** u8 */
+  Break: number;
+}
+
+export const sizeofRFCOMM_MSC_DATA = 8;
+
+export function allocRFCOMM_MSC_DATA(data?: Partial<RFCOMM_MSC_DATA>): Uint8Array {
+  const buf = new Uint8Array(sizeofRFCOMM_MSC_DATA);
+  const view = new DataView(buf.buffer);
+  // 0x00: u8
+  if (data?.Signals !== undefined) view.setUint8(0, Number(data.Signals));
+  // 0x01: u8
+  if (data?.Break !== undefined) view.setUint8(1, Number(data.Break));
+  // 0x02: pad6
+  return buf;
+}
+
+/**
+ * Windows.Win32.Devices.Bluetooth.RFCOMM_RLS_DATA (size: 8)
+ */
+export interface RFCOMM_RLS_DATA {
+  /** u8 */
+  LineStatus: number;
+}
+
+export const sizeofRFCOMM_RLS_DATA = 8;
+
+export function allocRFCOMM_RLS_DATA(data?: Partial<RFCOMM_RLS_DATA>): Uint8Array {
+  const buf = new Uint8Array(sizeofRFCOMM_RLS_DATA);
+  const view = new DataView(buf.buffer);
+  // 0x00: u8
+  if (data?.LineStatus !== undefined) view.setUint8(0, Number(data.LineStatus));
+  // 0x01: pad7
+  return buf;
+}
+
+/**
+ * Windows.Win32.Devices.Bluetooth.RFCOMM_RPN_DATA (size: 8)
+ */
+export interface RFCOMM_RPN_DATA {
+  /** u8 */
+  Baud: number;
+  /** u8 */
+  Data: number;
+  /** u8 */
+  FlowControl: number;
+  /** u8 */
+  XonChar: number;
+  /** u8 */
+  XoffChar: number;
+  /** u8 */
+  ParameterMask1: number;
+  /** u8 */
+  ParameterMask2: number;
+}
+
+export const sizeofRFCOMM_RPN_DATA = 8;
+
+export function allocRFCOMM_RPN_DATA(data?: Partial<RFCOMM_RPN_DATA>): Uint8Array {
+  const buf = new Uint8Array(sizeofRFCOMM_RPN_DATA);
+  const view = new DataView(buf.buffer);
+  // 0x00: u8
+  if (data?.Baud !== undefined) view.setUint8(0, Number(data.Baud));
+  // 0x01: u8
+  if (data?.Data !== undefined) view.setUint8(1, Number(data.Data));
+  // 0x02: u8
+  if (data?.FlowControl !== undefined) view.setUint8(2, Number(data.FlowControl));
+  // 0x03: u8
+  if (data?.XonChar !== undefined) view.setUint8(3, Number(data.XonChar));
+  // 0x04: u8
+  if (data?.XoffChar !== undefined) view.setUint8(4, Number(data.XoffChar));
+  // 0x05: u8
+  if (data?.ParameterMask1 !== undefined) view.setUint8(5, Number(data.ParameterMask1));
+  // 0x06: u8
+  if (data?.ParameterMask2 !== undefined) view.setUint8(6, Number(data.ParameterMask2));
+  // 0x07: pad1
+  return buf;
+}
+
+/**
+ * _Data_e__Union (size: 24)
+ */
+export interface _Data_e__Union {
+  /** Windows.Win32.Devices.Bluetooth.RFCOMM_MSC_DATA */
+  MSC: Uint8Array | Deno.PointerValue | null;
+  /** Windows.Win32.Devices.Bluetooth.RFCOMM_RLS_DATA */
+  RLS: Uint8Array | Deno.PointerValue | null;
+  /** Windows.Win32.Devices.Bluetooth.RFCOMM_RPN_DATA */
+  RPN: Uint8Array | Deno.PointerValue | null;
+}
+
+export const sizeof_Data_e__Union = 24;
+
+export function alloc_Data_e__Union(data?: Partial<_Data_e__Union>): Uint8Array {
+  const buf = new Uint8Array(sizeof_Data_e__Union);
+  const view = new DataView(buf.buffer);
+  // 0x00: pointer
+  if (data?.MSC !== undefined) view.setBigUint64(0, data.MSC === null ? 0n : BigInt(util.toPointer(data.MSC)), true);
+  // 0x08: pointer
+  if (data?.RLS !== undefined) view.setBigUint64(8, data.RLS === null ? 0n : BigInt(util.toPointer(data.RLS)), true);
+  // 0x10: pointer
+  if (data?.RPN !== undefined) view.setBigUint64(16, data.RPN === null ? 0n : BigInt(util.toPointer(data.RPN)), true);
+  return buf;
+}
+
+/**
+ * Windows.Win32.Networking.WinSock.ICMP_MESSAGE (size: 16)
+ */
+export interface ICMP_MESSAGE {
+  /** Windows.Win32.Networking.WinSock.ICMP_HEADER */
+  Header: Uint8Array | Deno.PointerValue | null;
+  /** _Data_e__Union */
+  Data: Uint8Array | Deno.PointerValue | null;
+}
+
+export const sizeofICMP_MESSAGE = 16;
+
+export function allocICMP_MESSAGE(data?: Partial<ICMP_MESSAGE>): Uint8Array {
+  const buf = new Uint8Array(sizeofICMP_MESSAGE);
+  const view = new DataView(buf.buffer);
+  // 0x00: pointer
+  if (data?.Header !== undefined) view.setBigUint64(0, data.Header === null ? 0n : BigInt(util.toPointer(data.Header)), true);
+  // 0x08: pointer
+  if (data?.Data !== undefined) view.setBigUint64(8, data.Data === null ? 0n : BigInt(util.toPointer(data.Data)), true);
+  return buf;
+}
+
+/**
+ * _Anonymous1_e__Union (size: 64)
+ */
+export interface _Anonymous1_e__Union {
+  /** usize */
+  Data0: Deno.PointerValue;
+  /** Windows.Win32.Foundation.PWSTR */
+  String: string | null;
+  /** usize */
+  u: Deno.PointerValue;
+  /** ptr */
+  psid: Deno.PointerValue | Uint8Array | null;
+  /** ptr */
+  pguid: Deno.PointerValue | Uint8Array | null;
+  /** u32 */
+  LogonId_LowPart: number;
+  /** ptr */
+  pObjectTypes: Deno.PointerValue | Uint8Array | null;
+  /** ptr */
+  pIpAddress: Deno.PointerValue | Uint8Array | null;
+}
+
+export const sizeof_Anonymous1_e__Union = 64;
+
+export function alloc_Anonymous1_e__Union(data?: Partial<_Anonymous1_e__Union>): Uint8Array {
+  const buf = new Uint8Array(sizeof_Anonymous1_e__Union);
+  const view = new DataView(buf.buffer);
+  // 0x00: usize
+  if (data?.Data0 !== undefined) view.setBigUint64(0, BigInt(data.Data0), true);
+  // 0x08: buffer
+  if (data?.String !== undefined) {
+    (buf as any)._f8 = util.pwstrToFfi(data.String);
+    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f8)), true);
+  }
+  // 0x10: usize
+  if (data?.u !== undefined) view.setBigUint64(16, BigInt(data.u), true);
+  // 0x18: pointer
+  if (data?.psid !== undefined) view.setBigUint64(24, data.psid === null ? 0n : BigInt(util.toPointer(data.psid)), true);
+  // 0x20: pointer
+  if (data?.pguid !== undefined) view.setBigUint64(32, data.pguid === null ? 0n : BigInt(util.toPointer(data.pguid)), true);
+  // 0x28: u32
+  if (data?.LogonId_LowPart !== undefined) view.setUint32(40, Number(data.LogonId_LowPart), true);
+  // 0x2c: pad4
+  // 0x30: pointer
+  if (data?.pObjectTypes !== undefined) view.setBigUint64(48, data.pObjectTypes === null ? 0n : BigInt(util.toPointer(data.pObjectTypes)), true);
+  // 0x38: pointer
+  if (data?.pIpAddress !== undefined) view.setBigUint64(56, data.pIpAddress === null ? 0n : BigInt(util.toPointer(data.pIpAddress)), true);
+  return buf;
+}
+
+/**
+ * _Anonymous2_e__Union (size: 16)
+ */
+export interface _Anonymous2_e__Union {
+  /** usize */
+  Data1: Deno.PointerValue;
+  /** i32 */
+  LogonId_HighPart: number;
+}
+
+export const sizeof_Anonymous2_e__Union = 16;
+
+export function alloc_Anonymous2_e__Union(data?: Partial<_Anonymous2_e__Union>): Uint8Array {
+  const buf = new Uint8Array(sizeof_Anonymous2_e__Union);
+  const view = new DataView(buf.buffer);
+  // 0x00: usize
+  if (data?.Data1 !== undefined) view.setBigUint64(0, BigInt(data.Data1), true);
+  // 0x08: i32
+  if (data?.LogonId_HighPart !== undefined) view.setInt32(8, Number(data.LogonId_HighPart), true);
+  // 0x0c: pad4
+  return buf;
+}
+
+/**
+ * _Anonymous3_e__Union (size: 16)
+ */
+export interface _Anonymous3_e__Union {
+  /** u32 */
+  dwAlphaDestConst: number;
+  /** Windows.Win32.Graphics.DirectDraw.IDirectDrawSurface */
+  lpDDSAlphaDest: Uint8Array | Deno.PointerValue | null;
+}
+
+export const sizeof_Anonymous3_e__Union = 16;
+
+export function alloc_Anonymous3_e__Union(data?: Partial<_Anonymous3_e__Union>): Uint8Array {
+  const buf = new Uint8Array(sizeof_Anonymous3_e__Union);
+  const view = new DataView(buf.buffer);
+  // 0x00: u32
+  if (data?.dwAlphaDestConst !== undefined) view.setUint32(0, Number(data.dwAlphaDestConst), true);
+  // 0x04: pad4
+  // 0x08: pointer
+  if (data?.lpDDSAlphaDest !== undefined) view.setBigUint64(8, data.lpDDSAlphaDest === null ? 0n : BigInt(util.toPointer(data.lpDDSAlphaDest)), true);
+  return buf;
+}
+
+/**
+ * Windows.Win32.Networking.WinSock.IPV4_HEADER (size: 56)
+ */
+export interface IPV4_HEADER {
+  /** _Anonymous1_e__Union */
+  Anonymous1: Uint8Array | Deno.PointerValue | null;
+  /** _Anonymous2_e__Union */
+  Anonymous2: Uint8Array | Deno.PointerValue | null;
+  /** u16 */
+  TotalLength: number;
+  /** u16 */
+  Identification: number;
+  /** _Anonymous3_e__Union */
+  Anonymous3: Uint8Array | Deno.PointerValue | null;
+  /** u8 */
+  TimeToLive: number;
+  /** u8 */
+  Protocol: number;
+  /** u16 */
+  HeaderChecksum: number;
+  /** Windows.Win32.Networking.WinSock.IN_ADDR */
+  SourceAddress: Uint8Array | Deno.PointerValue | null;
+  /** Windows.Win32.Networking.WinSock.IN_ADDR */
+  DestinationAddress: Uint8Array | Deno.PointerValue | null;
+}
+
+export const sizeofIPV4_HEADER = 56;
+
+export function allocIPV4_HEADER(data?: Partial<IPV4_HEADER>): Uint8Array {
+  const buf = new Uint8Array(sizeofIPV4_HEADER);
+  const view = new DataView(buf.buffer);
+  // 0x00: pointer
+  if (data?.Anonymous1 !== undefined) view.setBigUint64(0, data.Anonymous1 === null ? 0n : BigInt(util.toPointer(data.Anonymous1)), true);
+  // 0x08: pointer
+  if (data?.Anonymous2 !== undefined) view.setBigUint64(8, data.Anonymous2 === null ? 0n : BigInt(util.toPointer(data.Anonymous2)), true);
+  // 0x10: u16
+  if (data?.TotalLength !== undefined) view.setUint16(16, Number(data.TotalLength), true);
+  // 0x12: u16
+  if (data?.Identification !== undefined) view.setUint16(18, Number(data.Identification), true);
+  // 0x14: pad4
+  // 0x18: pointer
+  if (data?.Anonymous3 !== undefined) view.setBigUint64(24, data.Anonymous3 === null ? 0n : BigInt(util.toPointer(data.Anonymous3)), true);
+  // 0x20: u8
+  if (data?.TimeToLive !== undefined) view.setUint8(32, Number(data.TimeToLive));
+  // 0x21: u8
+  if (data?.Protocol !== undefined) view.setUint8(33, Number(data.Protocol));
+  // 0x22: u16
+  if (data?.HeaderChecksum !== undefined) view.setUint16(34, Number(data.HeaderChecksum), true);
+  // 0x24: pad4
+  // 0x28: pointer
+  if (data?.SourceAddress !== undefined) view.setBigUint64(40, data.SourceAddress === null ? 0n : BigInt(util.toPointer(data.SourceAddress)), true);
+  // 0x30: pointer
+  if (data?.DestinationAddress !== undefined) view.setBigUint64(48, data.DestinationAddress === null ? 0n : BigInt(util.toPointer(data.DestinationAddress)), true);
+  return buf;
+}
+
+/**
+ * Windows.Win32.Networking.WinSock.IPV4_OPTION_HEADER (size: 16)
+ */
+export interface IPV4_OPTION_HEADER {
+  /** _Anonymous_e__Union */
+  Anonymous: Uint8Array | Deno.PointerValue | null;
+  /** u8 */
+  OptionLength: number;
+}
+
+export const sizeofIPV4_OPTION_HEADER = 16;
+
+export function allocIPV4_OPTION_HEADER(data?: Partial<IPV4_OPTION_HEADER>): Uint8Array {
+  const buf = new Uint8Array(sizeofIPV4_OPTION_HEADER);
+  const view = new DataView(buf.buffer);
+  // 0x00: pointer
+  if (data?.Anonymous !== undefined) view.setBigUint64(0, data.Anonymous === null ? 0n : BigInt(util.toPointer(data.Anonymous)), true);
+  // 0x08: u8
+  if (data?.OptionLength !== undefined) view.setUint8(8, Number(data.OptionLength));
+  // 0x09: pad7
+  return buf;
+}
+
+/**
+ * Windows.Win32.Networking.WinSock.IPV4_TIMESTAMP_OPTION (size: 24)
+ */
+export interface IPV4_TIMESTAMP_OPTION {
+  /** Windows.Win32.Networking.WinSock.IPV4_OPTION_HEADER */
+  OptionHeader: Uint8Array | Deno.PointerValue | null;
+  /** u8 */
+  Pointer: number;
+  /** _Anonymous_e__Union */
+  Anonymous: Uint8Array | Deno.PointerValue | null;
+}
+
+export const sizeofIPV4_TIMESTAMP_OPTION = 24;
+
+export function allocIPV4_TIMESTAMP_OPTION(data?: Partial<IPV4_TIMESTAMP_OPTION>): Uint8Array {
+  const buf = new Uint8Array(sizeofIPV4_TIMESTAMP_OPTION);
+  const view = new DataView(buf.buffer);
+  // 0x00: pointer
+  if (data?.OptionHeader !== undefined) view.setBigUint64(0, data.OptionHeader === null ? 0n : BigInt(util.toPointer(data.OptionHeader)), true);
+  // 0x08: u8
+  if (data?.Pointer !== undefined) view.setUint8(8, Number(data.Pointer));
+  // 0x09: pad7
+  // 0x10: pointer
+  if (data?.Anonymous !== undefined) view.setBigUint64(16, data.Anonymous === null ? 0n : BigInt(util.toPointer(data.Anonymous)), true);
+  return buf;
+}
+
+/**
+ * Windows.Win32.Networking.WinSock.IPV4_ROUTING_HEADER (size: 16)
+ */
+export interface IPV4_ROUTING_HEADER {
+  /** Windows.Win32.Networking.WinSock.IPV4_OPTION_HEADER */
+  OptionHeader: Uint8Array | Deno.PointerValue | null;
+  /** u8 */
+  Pointer: number;
+}
+
+export const sizeofIPV4_ROUTING_HEADER = 16;
+
+export function allocIPV4_ROUTING_HEADER(data?: Partial<IPV4_ROUTING_HEADER>): Uint8Array {
+  const buf = new Uint8Array(sizeofIPV4_ROUTING_HEADER);
+  const view = new DataView(buf.buffer);
+  // 0x00: pointer
+  if (data?.OptionHeader !== undefined) view.setBigUint64(0, data.OptionHeader === null ? 0n : BigInt(util.toPointer(data.OptionHeader)), true);
+  // 0x08: u8
+  if (data?.Pointer !== undefined) view.setUint8(8, Number(data.Pointer));
+  // 0x09: pad7
+  return buf;
+}
+
+/**
+ * Windows.Win32.Networking.WinSock.ICMPV4_ROUTER_SOLICIT (size: 8)
+ */
+export interface ICMPV4_ROUTER_SOLICIT {
+  /** Windows.Win32.Networking.WinSock.ICMP_MESSAGE */
+  RsHeader: Uint8Array | Deno.PointerValue | null;
+}
+
+export const sizeofICMPV4_ROUTER_SOLICIT = 8;
+
+export function allocICMPV4_ROUTER_SOLICIT(data?: Partial<ICMPV4_ROUTER_SOLICIT>): Uint8Array {
+  const buf = new Uint8Array(sizeofICMPV4_ROUTER_SOLICIT);
+  const view = new DataView(buf.buffer);
+  // 0x00: pointer
+  if (data?.RsHeader !== undefined) view.setBigUint64(0, data.RsHeader === null ? 0n : BigInt(util.toPointer(data.RsHeader)), true);
+  return buf;
+}
+
+/**
+ * Windows.Win32.Networking.WinSock.ICMPV4_ROUTER_ADVERT_HEADER (size: 8)
+ */
+export interface ICMPV4_ROUTER_ADVERT_HEADER {
+  /** Windows.Win32.Networking.WinSock.ICMP_MESSAGE */
+  RaHeader: Uint8Array | Deno.PointerValue | null;
+}
+
+export const sizeofICMPV4_ROUTER_ADVERT_HEADER = 8;
+
+export function allocICMPV4_ROUTER_ADVERT_HEADER(data?: Partial<ICMPV4_ROUTER_ADVERT_HEADER>): Uint8Array {
+  const buf = new Uint8Array(sizeofICMPV4_ROUTER_ADVERT_HEADER);
+  const view = new DataView(buf.buffer);
+  // 0x00: pointer
+  if (data?.RaHeader !== undefined) view.setBigUint64(0, data.RaHeader === null ? 0n : BigInt(util.toPointer(data.RaHeader)), true);
+  return buf;
+}
+
+/**
+ * Windows.Win32.Networking.WinSock.ICMPV4_ROUTER_ADVERT_ENTRY (size: 16)
+ */
+export interface ICMPV4_ROUTER_ADVERT_ENTRY {
+  /** Windows.Win32.Networking.WinSock.IN_ADDR */
+  RouterAdvertAddr: Uint8Array | Deno.PointerValue | null;
+  /** i32 */
+  PreferenceLevel: number;
+}
+
+export const sizeofICMPV4_ROUTER_ADVERT_ENTRY = 16;
+
+export function allocICMPV4_ROUTER_ADVERT_ENTRY(data?: Partial<ICMPV4_ROUTER_ADVERT_ENTRY>): Uint8Array {
+  const buf = new Uint8Array(sizeofICMPV4_ROUTER_ADVERT_ENTRY);
+  const view = new DataView(buf.buffer);
+  // 0x00: pointer
+  if (data?.RouterAdvertAddr !== undefined) view.setBigUint64(0, data.RouterAdvertAddr === null ? 0n : BigInt(util.toPointer(data.RouterAdvertAddr)), true);
+  // 0x08: i32
+  if (data?.PreferenceLevel !== undefined) view.setInt32(8, Number(data.PreferenceLevel), true);
+  // 0x0c: pad4
+  return buf;
+}
+
+/**
+ * Windows.Win32.Networking.WinSock.ICMPV4_TIMESTAMP_MESSAGE (size: 24)
+ */
+export interface ICMPV4_TIMESTAMP_MESSAGE {
+  /** Windows.Win32.Networking.WinSock.ICMP_MESSAGE */
+  Header: Uint8Array | Deno.PointerValue | null;
+  /** u32 */
+  OriginateTimestamp: number;
+  /** u32 */
+  ReceiveTimestamp: number;
+  /** u32 */
+  TransmitTimestamp: number;
+}
+
+export const sizeofICMPV4_TIMESTAMP_MESSAGE = 24;
+
+export function allocICMPV4_TIMESTAMP_MESSAGE(data?: Partial<ICMPV4_TIMESTAMP_MESSAGE>): Uint8Array {
+  const buf = new Uint8Array(sizeofICMPV4_TIMESTAMP_MESSAGE);
+  const view = new DataView(buf.buffer);
+  // 0x00: pointer
+  if (data?.Header !== undefined) view.setBigUint64(0, data.Header === null ? 0n : BigInt(util.toPointer(data.Header)), true);
+  // 0x08: u32
+  if (data?.OriginateTimestamp !== undefined) view.setUint32(8, Number(data.OriginateTimestamp), true);
+  // 0x0c: u32
+  if (data?.ReceiveTimestamp !== undefined) view.setUint32(12, Number(data.ReceiveTimestamp), true);
+  // 0x10: u32
+  if (data?.TransmitTimestamp !== undefined) view.setUint32(16, Number(data.TransmitTimestamp), true);
+  // 0x14: pad4
+  return buf;
+}
+
+/**
+ * Windows.Win32.Networking.WinSock.ICMPV4_ADDRESS_MASK_MESSAGE (size: 16)
+ */
+export interface ICMPV4_ADDRESS_MASK_MESSAGE {
+  /** Windows.Win32.Networking.WinSock.ICMP_MESSAGE */
+  Header: Uint8Array | Deno.PointerValue | null;
+  /** u32 */
+  AddressMask: number;
+}
+
+export const sizeofICMPV4_ADDRESS_MASK_MESSAGE = 16;
+
+export function allocICMPV4_ADDRESS_MASK_MESSAGE(data?: Partial<ICMPV4_ADDRESS_MASK_MESSAGE>): Uint8Array {
+  const buf = new Uint8Array(sizeofICMPV4_ADDRESS_MASK_MESSAGE);
+  const view = new DataView(buf.buffer);
+  // 0x00: pointer
+  if (data?.Header !== undefined) view.setBigUint64(0, data.Header === null ? 0n : BigInt(util.toPointer(data.Header)), true);
+  // 0x08: u32
+  if (data?.AddressMask !== undefined) view.setUint32(8, Number(data.AddressMask), true);
+  // 0x0c: pad4
+  return buf;
+}
+
+/**
+ * Windows.Win32.Networking.WinSock.ARP_HEADER (size: 16)
+ */
+export interface ARP_HEADER {
+  /** u16 */
+  HardwareAddressSpace: number;
+  /** u16 */
+  ProtocolAddressSpace: number;
+  /** u8 */
+  HardwareAddressLength: number;
+  /** u8 */
+  ProtocolAddressLength: number;
+  /** u16 */
+  Opcode: number;
+  /** array */
+  SenderHardwareAddress: Deno.PointerValue | null;
+}
+
+export const sizeofARP_HEADER = 16;
+
+export function allocARP_HEADER(data?: Partial<ARP_HEADER>): Uint8Array {
+  const buf = new Uint8Array(sizeofARP_HEADER);
+  const view = new DataView(buf.buffer);
+  // 0x00: u16
+  if (data?.HardwareAddressSpace !== undefined) view.setUint16(0, Number(data.HardwareAddressSpace), true);
+  // 0x02: u16
+  if (data?.ProtocolAddressSpace !== undefined) view.setUint16(2, Number(data.ProtocolAddressSpace), true);
+  // 0x04: u8
+  if (data?.HardwareAddressLength !== undefined) view.setUint8(4, Number(data.HardwareAddressLength));
+  // 0x05: u8
+  if (data?.ProtocolAddressLength !== undefined) view.setUint8(5, Number(data.ProtocolAddressLength));
+  // 0x06: u16
+  if (data?.Opcode !== undefined) view.setUint16(6, Number(data.Opcode), true);
+  // 0x08: pointer
+  if (data?.SenderHardwareAddress !== undefined) view.setBigUint64(8, data.SenderHardwareAddress === null ? 0n : BigInt(util.toPointer(data.SenderHardwareAddress)), true);
+  return buf;
+}
+
+/**
+ * Windows.Win32.Networking.WinSock.IGMP_HEADER (size: 32)
+ */
+export interface IGMP_HEADER {
+  /** _Anonymous1_e__Union */
+  Anonymous1: Uint8Array | Deno.PointerValue | null;
+  /** _Anonymous2_e__Union */
+  Anonymous2: Uint8Array | Deno.PointerValue | null;
+  /** u16 */
+  Checksum: number;
+  /** Windows.Win32.Networking.WinSock.IN_ADDR */
+  MulticastAddress: Uint8Array | Deno.PointerValue | null;
+}
+
+export const sizeofIGMP_HEADER = 32;
+
+export function allocIGMP_HEADER(data?: Partial<IGMP_HEADER>): Uint8Array {
+  const buf = new Uint8Array(sizeofIGMP_HEADER);
+  const view = new DataView(buf.buffer);
+  // 0x00: pointer
+  if (data?.Anonymous1 !== undefined) view.setBigUint64(0, data.Anonymous1 === null ? 0n : BigInt(util.toPointer(data.Anonymous1)), true);
+  // 0x08: pointer
+  if (data?.Anonymous2 !== undefined) view.setBigUint64(8, data.Anonymous2 === null ? 0n : BigInt(util.toPointer(data.Anonymous2)), true);
+  // 0x10: u16
+  if (data?.Checksum !== undefined) view.setUint16(16, Number(data.Checksum), true);
+  // 0x12: pad6
+  // 0x18: pointer
+  if (data?.MulticastAddress !== undefined) view.setBigUint64(24, data.MulticastAddress === null ? 0n : BigInt(util.toPointer(data.MulticastAddress)), true);
+  return buf;
+}
+
+/**
+ * Windows.Win32.Networking.WinSock.IGMPV3_QUERY_HEADER (size: 56)
+ */
+export interface IGMPV3_QUERY_HEADER {
+  /** u8 */
+  Type: number;
+  /** _Anonymous1_e__Union */
+  Anonymous1: Uint8Array | Deno.PointerValue | null;
+  /** u16 */
+  Checksum: number;
+  /** Windows.Win32.Networking.WinSock.IN_ADDR */
+  MulticastAddress: Uint8Array | Deno.PointerValue | null;
+  /** u8 */
+  _bitfield: number;
+  /** _Anonymous2_e__Union */
+  Anonymous2: Uint8Array | Deno.PointerValue | null;
+  /** u16 */
+  SourceCount: number;
+}
+
+export const sizeofIGMPV3_QUERY_HEADER = 56;
+
+export function allocIGMPV3_QUERY_HEADER(data?: Partial<IGMPV3_QUERY_HEADER>): Uint8Array {
+  const buf = new Uint8Array(sizeofIGMPV3_QUERY_HEADER);
+  const view = new DataView(buf.buffer);
+  // 0x00: u8
+  if (data?.Type !== undefined) view.setUint8(0, Number(data.Type));
+  // 0x01: pad7
+  // 0x08: pointer
+  if (data?.Anonymous1 !== undefined) view.setBigUint64(8, data.Anonymous1 === null ? 0n : BigInt(util.toPointer(data.Anonymous1)), true);
+  // 0x10: u16
+  if (data?.Checksum !== undefined) view.setUint16(16, Number(data.Checksum), true);
+  // 0x12: pad6
+  // 0x18: pointer
+  if (data?.MulticastAddress !== undefined) view.setBigUint64(24, data.MulticastAddress === null ? 0n : BigInt(util.toPointer(data.MulticastAddress)), true);
+  // 0x20: u8
+  if (data?._bitfield !== undefined) view.setUint8(32, Number(data._bitfield));
+  // 0x21: pad7
+  // 0x28: pointer
+  if (data?.Anonymous2 !== undefined) view.setBigUint64(40, data.Anonymous2 === null ? 0n : BigInt(util.toPointer(data.Anonymous2)), true);
+  // 0x30: u16
+  if (data?.SourceCount !== undefined) view.setUint16(48, Number(data.SourceCount), true);
+  // 0x32: pad6
+  return buf;
+}
+
+/**
+ * Windows.Win32.Networking.WinSock.IGMPV3_REPORT_RECORD_HEADER (size: 16)
+ */
+export interface IGMPV3_REPORT_RECORD_HEADER {
+  /** u8 */
+  Type: number;
+  /** u8 */
+  AuxillaryDataLength: number;
+  /** u16 */
+  SourceCount: number;
+  /** Windows.Win32.Networking.WinSock.IN_ADDR */
+  MulticastAddress: Uint8Array | Deno.PointerValue | null;
+}
+
+export const sizeofIGMPV3_REPORT_RECORD_HEADER = 16;
+
+export function allocIGMPV3_REPORT_RECORD_HEADER(data?: Partial<IGMPV3_REPORT_RECORD_HEADER>): Uint8Array {
+  const buf = new Uint8Array(sizeofIGMPV3_REPORT_RECORD_HEADER);
+  const view = new DataView(buf.buffer);
+  // 0x00: u8
+  if (data?.Type !== undefined) view.setUint8(0, Number(data.Type));
+  // 0x01: u8
+  if (data?.AuxillaryDataLength !== undefined) view.setUint8(1, Number(data.AuxillaryDataLength));
+  // 0x02: u16
+  if (data?.SourceCount !== undefined) view.setUint16(2, Number(data.SourceCount), true);
+  // 0x04: pad4
+  // 0x08: pointer
+  if (data?.MulticastAddress !== undefined) view.setBigUint64(8, data.MulticastAddress === null ? 0n : BigInt(util.toPointer(data.MulticastAddress)), true);
+  return buf;
+}
+
+/**
+ * Windows.Win32.Networking.WinSock.IGMPV3_REPORT_HEADER (size: 8)
+ */
+export interface IGMPV3_REPORT_HEADER {
+  /** u8 */
+  Type: number;
+  /** u8 */
+  Reserved: number;
+  /** u16 */
+  Checksum: number;
+  /** u16 */
+  Reserved2: number;
+  /** u16 */
+  RecordCount: number;
+}
+
+export const sizeofIGMPV3_REPORT_HEADER = 8;
+
+export function allocIGMPV3_REPORT_HEADER(data?: Partial<IGMPV3_REPORT_HEADER>): Uint8Array {
+  const buf = new Uint8Array(sizeofIGMPV3_REPORT_HEADER);
+  const view = new DataView(buf.buffer);
+  // 0x00: u8
+  if (data?.Type !== undefined) view.setUint8(0, Number(data.Type));
+  // 0x01: u8
+  if (data?.Reserved !== undefined) view.setUint8(1, Number(data.Reserved));
+  // 0x02: u16
+  if (data?.Checksum !== undefined) view.setUint16(2, Number(data.Checksum), true);
+  // 0x04: u16
+  if (data?.Reserved2 !== undefined) view.setUint16(4, Number(data.Reserved2), true);
+  // 0x06: u16
+  if (data?.RecordCount !== undefined) view.setUint16(6, Number(data.RecordCount), true);
+  return buf;
+}
+
+/**
+ * Windows.Win32.Networking.WinSock.IPV6_HEADER (size: 32)
+ */
+export interface IPV6_HEADER {
+  /** _Anonymous_e__Union */
+  Anonymous: Uint8Array | Deno.PointerValue | null;
+  /** u16 */
+  PayloadLength: number;
+  /** u8 */
+  NextHeader: number;
+  /** u8 */
+  HopLimit: number;
+  /** Windows.Win32.Networking.WinSock.IN6_ADDR */
+  SourceAddress: Uint8Array | Deno.PointerValue | null;
+  /** Windows.Win32.Networking.WinSock.IN6_ADDR */
+  DestinationAddress: Uint8Array | Deno.PointerValue | null;
+}
+
+export const sizeofIPV6_HEADER = 32;
+
+export function allocIPV6_HEADER(data?: Partial<IPV6_HEADER>): Uint8Array {
+  const buf = new Uint8Array(sizeofIPV6_HEADER);
+  const view = new DataView(buf.buffer);
+  // 0x00: pointer
+  if (data?.Anonymous !== undefined) view.setBigUint64(0, data.Anonymous === null ? 0n : BigInt(util.toPointer(data.Anonymous)), true);
+  // 0x08: u16
+  if (data?.PayloadLength !== undefined) view.setUint16(8, Number(data.PayloadLength), true);
+  // 0x0a: u8
+  if (data?.NextHeader !== undefined) view.setUint8(10, Number(data.NextHeader));
+  // 0x0b: u8
+  if (data?.HopLimit !== undefined) view.setUint8(11, Number(data.HopLimit));
+  // 0x0c: pad4
+  // 0x10: pointer
+  if (data?.SourceAddress !== undefined) view.setBigUint64(16, data.SourceAddress === null ? 0n : BigInt(util.toPointer(data.SourceAddress)), true);
+  // 0x18: pointer
+  if (data?.DestinationAddress !== undefined) view.setBigUint64(24, data.DestinationAddress === null ? 0n : BigInt(util.toPointer(data.DestinationAddress)), true);
+  return buf;
+}
+
+/**
+ * Windows.Win32.Networking.WinSock.IPV6_FRAGMENT_HEADER (size: 24)
+ */
+export interface IPV6_FRAGMENT_HEADER {
+  /** u8 */
+  NextHeader: number;
+  /** u8 */
+  Reserved: number;
+  /** _Anonymous_e__Union */
+  Anonymous: Uint8Array | Deno.PointerValue | null;
+  /** u32 */
+  Id: number;
+}
+
+export const sizeofIPV6_FRAGMENT_HEADER = 24;
+
+export function allocIPV6_FRAGMENT_HEADER(data?: Partial<IPV6_FRAGMENT_HEADER>): Uint8Array {
+  const buf = new Uint8Array(sizeofIPV6_FRAGMENT_HEADER);
+  const view = new DataView(buf.buffer);
+  // 0x00: u8
+  if (data?.NextHeader !== undefined) view.setUint8(0, Number(data.NextHeader));
+  // 0x01: u8
+  if (data?.Reserved !== undefined) view.setUint8(1, Number(data.Reserved));
+  // 0x02: pad6
+  // 0x08: pointer
+  if (data?.Anonymous !== undefined) view.setBigUint64(8, data.Anonymous === null ? 0n : BigInt(util.toPointer(data.Anonymous)), true);
+  // 0x10: u32
+  if (data?.Id !== undefined) view.setUint32(16, Number(data.Id), true);
+  // 0x14: pad4
+  return buf;
+}
+
+/**
+ * Windows.Win32.Networking.WinSock.IPV6_EXTENSION_HEADER (size: 8)
+ */
+export interface IPV6_EXTENSION_HEADER {
+  /** u8 */
+  NextHeader: number;
+  /** u8 */
+  Length: number;
+}
+
+export const sizeofIPV6_EXTENSION_HEADER = 8;
+
+export function allocIPV6_EXTENSION_HEADER(data?: Partial<IPV6_EXTENSION_HEADER>): Uint8Array {
+  const buf = new Uint8Array(sizeofIPV6_EXTENSION_HEADER);
+  const view = new DataView(buf.buffer);
+  // 0x00: u8
+  if (data?.NextHeader !== undefined) view.setUint8(0, Number(data.NextHeader));
+  // 0x01: u8
+  if (data?.Length !== undefined) view.setUint8(1, Number(data.Length));
+  // 0x02: pad6
+  return buf;
+}
+
+/**
+ * Windows.Win32.Networking.WinSock.IPV6_OPTION_HEADER (size: 8)
+ */
+export interface IPV6_OPTION_HEADER {
+  /** u8 */
+  Type: number;
+  /** u8 */
+  DataLength: number;
+}
+
+export const sizeofIPV6_OPTION_HEADER = 8;
+
+export function allocIPV6_OPTION_HEADER(data?: Partial<IPV6_OPTION_HEADER>): Uint8Array {
+  const buf = new Uint8Array(sizeofIPV6_OPTION_HEADER);
+  const view = new DataView(buf.buffer);
+  // 0x00: u8
+  if (data?.Type !== undefined) view.setUint8(0, Number(data.Type));
+  // 0x01: u8
+  if (data?.DataLength !== undefined) view.setUint8(1, Number(data.DataLength));
+  // 0x02: pad6
+  return buf;
+}
+
+/**
+ * Windows.Win32.Networking.WinSock.IPV6_OPTION_JUMBOGRAM (size: 16)
+ */
+export interface IPV6_OPTION_JUMBOGRAM {
+  /** Windows.Win32.Networking.WinSock.IPV6_OPTION_HEADER */
+  Header: Uint8Array | Deno.PointerValue | null;
+  /** array */
+  JumbogramLength: Deno.PointerValue | null;
+}
+
+export const sizeofIPV6_OPTION_JUMBOGRAM = 16;
+
+export function allocIPV6_OPTION_JUMBOGRAM(data?: Partial<IPV6_OPTION_JUMBOGRAM>): Uint8Array {
+  const buf = new Uint8Array(sizeofIPV6_OPTION_JUMBOGRAM);
+  const view = new DataView(buf.buffer);
+  // 0x00: pointer
+  if (data?.Header !== undefined) view.setBigUint64(0, data.Header === null ? 0n : BigInt(util.toPointer(data.Header)), true);
+  // 0x08: pointer
+  if (data?.JumbogramLength !== undefined) view.setBigUint64(8, data.JumbogramLength === null ? 0n : BigInt(util.toPointer(data.JumbogramLength)), true);
+  return buf;
+}
+
+/**
+ * Windows.Win32.Networking.WinSock.IPV6_OPTION_ROUTER_ALERT (size: 16)
+ */
+export interface IPV6_OPTION_ROUTER_ALERT {
+  /** Windows.Win32.Networking.WinSock.IPV6_OPTION_HEADER */
+  Header: Uint8Array | Deno.PointerValue | null;
+  /** array */
+  Value: Deno.PointerValue | null;
+}
+
+export const sizeofIPV6_OPTION_ROUTER_ALERT = 16;
+
+export function allocIPV6_OPTION_ROUTER_ALERT(data?: Partial<IPV6_OPTION_ROUTER_ALERT>): Uint8Array {
+  const buf = new Uint8Array(sizeofIPV6_OPTION_ROUTER_ALERT);
+  const view = new DataView(buf.buffer);
+  // 0x00: pointer
+  if (data?.Header !== undefined) view.setBigUint64(0, data.Header === null ? 0n : BigInt(util.toPointer(data.Header)), true);
+  // 0x08: pointer
+  if (data?.Value !== undefined) view.setBigUint64(8, data.Value === null ? 0n : BigInt(util.toPointer(data.Value)), true);
+  return buf;
+}
+
+/**
+ * Windows.Win32.Networking.WinSock.IPV6_ROUTING_HEADER (size: 16)
+ */
+export interface IPV6_ROUTING_HEADER {
+  /** u8 */
+  NextHeader: number;
+  /** u8 */
+  Length: number;
+  /** u8 */
+  RoutingType: number;
+  /** u8 */
+  SegmentsLeft: number;
+  /** array */
+  Reserved: Deno.PointerValue | null;
+}
+
+export const sizeofIPV6_ROUTING_HEADER = 16;
+
+export function allocIPV6_ROUTING_HEADER(data?: Partial<IPV6_ROUTING_HEADER>): Uint8Array {
+  const buf = new Uint8Array(sizeofIPV6_ROUTING_HEADER);
+  const view = new DataView(buf.buffer);
+  // 0x00: u8
+  if (data?.NextHeader !== undefined) view.setUint8(0, Number(data.NextHeader));
+  // 0x01: u8
+  if (data?.Length !== undefined) view.setUint8(1, Number(data.Length));
+  // 0x02: u8
+  if (data?.RoutingType !== undefined) view.setUint8(2, Number(data.RoutingType));
+  // 0x03: u8
+  if (data?.SegmentsLeft !== undefined) view.setUint8(3, Number(data.SegmentsLeft));
+  // 0x04: pad4
+  // 0x08: pointer
+  if (data?.Reserved !== undefined) view.setBigUint64(8, data.Reserved === null ? 0n : BigInt(util.toPointer(data.Reserved)), true);
+  return buf;
+}
+
+/**
+ * Windows.Win32.Networking.WinSock.ND_ROUTER_SOLICIT_HEADER (size: 8)
+ */
+export interface ND_ROUTER_SOLICIT_HEADER {
+  /** Windows.Win32.Networking.WinSock.ICMP_MESSAGE */
+  nd_rs_hdr: Uint8Array | Deno.PointerValue | null;
+}
+
+export const sizeofND_ROUTER_SOLICIT_HEADER = 8;
+
+export function allocND_ROUTER_SOLICIT_HEADER(data?: Partial<ND_ROUTER_SOLICIT_HEADER>): Uint8Array {
+  const buf = new Uint8Array(sizeofND_ROUTER_SOLICIT_HEADER);
+  const view = new DataView(buf.buffer);
+  // 0x00: pointer
+  if (data?.nd_rs_hdr !== undefined) view.setBigUint64(0, data.nd_rs_hdr === null ? 0n : BigInt(util.toPointer(data.nd_rs_hdr)), true);
+  return buf;
+}
+
+/**
+ * Windows.Win32.Networking.WinSock.ND_ROUTER_ADVERT_HEADER (size: 16)
+ */
+export interface ND_ROUTER_ADVERT_HEADER {
+  /** Windows.Win32.Networking.WinSock.ICMP_MESSAGE */
+  nd_ra_hdr: Uint8Array | Deno.PointerValue | null;
+  /** u32 */
+  nd_ra_reachable: number;
+  /** u32 */
+  nd_ra_retransmit: number;
+}
+
+export const sizeofND_ROUTER_ADVERT_HEADER = 16;
+
+export function allocND_ROUTER_ADVERT_HEADER(data?: Partial<ND_ROUTER_ADVERT_HEADER>): Uint8Array {
+  const buf = new Uint8Array(sizeofND_ROUTER_ADVERT_HEADER);
+  const view = new DataView(buf.buffer);
+  // 0x00: pointer
+  if (data?.nd_ra_hdr !== undefined) view.setBigUint64(0, data.nd_ra_hdr === null ? 0n : BigInt(util.toPointer(data.nd_ra_hdr)), true);
+  // 0x08: u32
+  if (data?.nd_ra_reachable !== undefined) view.setUint32(8, Number(data.nd_ra_reachable), true);
+  // 0x0c: u32
+  if (data?.nd_ra_retransmit !== undefined) view.setUint32(12, Number(data.nd_ra_retransmit), true);
+  return buf;
+}
+
+/**
+ * Windows.Win32.Networking.WinSock.IPV6_ROUTER_ADVERTISEMENT_FLAGS (size: 16)
+ */
+export interface IPV6_ROUTER_ADVERTISEMENT_FLAGS {
+  /** _Anonymous_e__Struct */
+  Anonymous: Uint8Array | Deno.PointerValue | null;
+  /** u8 */
+  Value: number;
+}
+
+export const sizeofIPV6_ROUTER_ADVERTISEMENT_FLAGS = 16;
+
+export function allocIPV6_ROUTER_ADVERTISEMENT_FLAGS(data?: Partial<IPV6_ROUTER_ADVERTISEMENT_FLAGS>): Uint8Array {
+  const buf = new Uint8Array(sizeofIPV6_ROUTER_ADVERTISEMENT_FLAGS);
+  const view = new DataView(buf.buffer);
+  // 0x00: pointer
+  if (data?.Anonymous !== undefined) view.setBigUint64(0, data.Anonymous === null ? 0n : BigInt(util.toPointer(data.Anonymous)), true);
+  // 0x08: u8
+  if (data?.Value !== undefined) view.setUint8(8, Number(data.Value));
+  // 0x09: pad7
+  return buf;
+}
+
+/**
+ * Windows.Win32.Networking.WinSock.ND_NEIGHBOR_SOLICIT_HEADER (size: 16)
+ */
+export interface ND_NEIGHBOR_SOLICIT_HEADER {
+  /** Windows.Win32.Networking.WinSock.ICMP_MESSAGE */
+  nd_ns_hdr: Uint8Array | Deno.PointerValue | null;
+  /** Windows.Win32.Networking.WinSock.IN6_ADDR */
+  nd_ns_target: Uint8Array | Deno.PointerValue | null;
+}
+
+export const sizeofND_NEIGHBOR_SOLICIT_HEADER = 16;
+
+export function allocND_NEIGHBOR_SOLICIT_HEADER(data?: Partial<ND_NEIGHBOR_SOLICIT_HEADER>): Uint8Array {
+  const buf = new Uint8Array(sizeofND_NEIGHBOR_SOLICIT_HEADER);
+  const view = new DataView(buf.buffer);
+  // 0x00: pointer
+  if (data?.nd_ns_hdr !== undefined) view.setBigUint64(0, data.nd_ns_hdr === null ? 0n : BigInt(util.toPointer(data.nd_ns_hdr)), true);
+  // 0x08: pointer
+  if (data?.nd_ns_target !== undefined) view.setBigUint64(8, data.nd_ns_target === null ? 0n : BigInt(util.toPointer(data.nd_ns_target)), true);
+  return buf;
+}
+
+/**
+ * Windows.Win32.Networking.WinSock.ND_NEIGHBOR_ADVERT_HEADER (size: 16)
+ */
+export interface ND_NEIGHBOR_ADVERT_HEADER {
+  /** Windows.Win32.Networking.WinSock.ICMP_MESSAGE */
+  nd_na_hdr: Uint8Array | Deno.PointerValue | null;
+  /** Windows.Win32.Networking.WinSock.IN6_ADDR */
+  nd_na_target: Uint8Array | Deno.PointerValue | null;
+}
+
+export const sizeofND_NEIGHBOR_ADVERT_HEADER = 16;
+
+export function allocND_NEIGHBOR_ADVERT_HEADER(data?: Partial<ND_NEIGHBOR_ADVERT_HEADER>): Uint8Array {
+  const buf = new Uint8Array(sizeofND_NEIGHBOR_ADVERT_HEADER);
+  const view = new DataView(buf.buffer);
+  // 0x00: pointer
+  if (data?.nd_na_hdr !== undefined) view.setBigUint64(0, data.nd_na_hdr === null ? 0n : BigInt(util.toPointer(data.nd_na_hdr)), true);
+  // 0x08: pointer
+  if (data?.nd_na_target !== undefined) view.setBigUint64(8, data.nd_na_target === null ? 0n : BigInt(util.toPointer(data.nd_na_target)), true);
+  return buf;
+}
+
+/**
+ * Windows.Win32.Networking.WinSock.IPV6_NEIGHBOR_ADVERTISEMENT_FLAGS (size: 16)
+ */
+export interface IPV6_NEIGHBOR_ADVERTISEMENT_FLAGS {
+  /** _Anonymous_e__Struct */
+  Anonymous: Uint8Array | Deno.PointerValue | null;
+  /** u32 */
+  Value: number;
+}
+
+export const sizeofIPV6_NEIGHBOR_ADVERTISEMENT_FLAGS = 16;
+
+export function allocIPV6_NEIGHBOR_ADVERTISEMENT_FLAGS(data?: Partial<IPV6_NEIGHBOR_ADVERTISEMENT_FLAGS>): Uint8Array {
+  const buf = new Uint8Array(sizeofIPV6_NEIGHBOR_ADVERTISEMENT_FLAGS);
+  const view = new DataView(buf.buffer);
+  // 0x00: pointer
+  if (data?.Anonymous !== undefined) view.setBigUint64(0, data.Anonymous === null ? 0n : BigInt(util.toPointer(data.Anonymous)), true);
+  // 0x08: u32
+  if (data?.Value !== undefined) view.setUint32(8, Number(data.Value), true);
+  // 0x0c: pad4
+  return buf;
+}
+
+/**
+ * Windows.Win32.Networking.WinSock.ND_REDIRECT_HEADER (size: 24)
+ */
+export interface ND_REDIRECT_HEADER {
+  /** Windows.Win32.Networking.WinSock.ICMP_MESSAGE */
+  nd_rd_hdr: Uint8Array | Deno.PointerValue | null;
+  /** Windows.Win32.Networking.WinSock.IN6_ADDR */
+  nd_rd_target: Uint8Array | Deno.PointerValue | null;
+  /** Windows.Win32.Networking.WinSock.IN6_ADDR */
+  nd_rd_dst: Uint8Array | Deno.PointerValue | null;
+}
+
+export const sizeofND_REDIRECT_HEADER = 24;
+
+export function allocND_REDIRECT_HEADER(data?: Partial<ND_REDIRECT_HEADER>): Uint8Array {
+  const buf = new Uint8Array(sizeofND_REDIRECT_HEADER);
+  const view = new DataView(buf.buffer);
+  // 0x00: pointer
+  if (data?.nd_rd_hdr !== undefined) view.setBigUint64(0, data.nd_rd_hdr === null ? 0n : BigInt(util.toPointer(data.nd_rd_hdr)), true);
+  // 0x08: pointer
+  if (data?.nd_rd_target !== undefined) view.setBigUint64(8, data.nd_rd_target === null ? 0n : BigInt(util.toPointer(data.nd_rd_target)), true);
+  // 0x10: pointer
+  if (data?.nd_rd_dst !== undefined) view.setBigUint64(16, data.nd_rd_dst === null ? 0n : BigInt(util.toPointer(data.nd_rd_dst)), true);
+  return buf;
+}
+
+/**
+ * Windows.Win32.Networking.WinSock.ND_OPTION_HDR (size: 8)
+ */
+export interface ND_OPTION_HDR {
+  /** u8 */
+  nd_opt_type: number;
+  /** u8 */
+  nd_opt_len: number;
+}
+
+export const sizeofND_OPTION_HDR = 8;
+
+export function allocND_OPTION_HDR(data?: Partial<ND_OPTION_HDR>): Uint8Array {
+  const buf = new Uint8Array(sizeofND_OPTION_HDR);
+  const view = new DataView(buf.buffer);
+  // 0x00: u8
+  if (data?.nd_opt_type !== undefined) view.setUint8(0, Number(data.nd_opt_type));
+  // 0x01: u8
+  if (data?.nd_opt_len !== undefined) view.setUint8(1, Number(data.nd_opt_len));
+  // 0x02: pad6
+  return buf;
+}
+
+/**
+ * Windows.Win32.Networking.WinSock.ND_OPTION_PREFIX_INFO (size: 40)
+ */
+export interface ND_OPTION_PREFIX_INFO {
+  /** u8 */
+  nd_opt_pi_type: number;
+  /** u8 */
+  nd_opt_pi_len: number;
+  /** u8 */
+  nd_opt_pi_prefix_len: number;
+  /** _Anonymous1_e__Union */
+  Anonymous1: Uint8Array | Deno.PointerValue | null;
+  /** u32 */
+  nd_opt_pi_valid_time: number;
+  /** u32 */
+  nd_opt_pi_preferred_time: number;
+  /** _Anonymous2_e__Union */
+  Anonymous2: Uint8Array | Deno.PointerValue | null;
+  /** Windows.Win32.Networking.WinSock.IN6_ADDR */
+  nd_opt_pi_prefix: Uint8Array | Deno.PointerValue | null;
+}
+
+export const sizeofND_OPTION_PREFIX_INFO = 40;
+
+export function allocND_OPTION_PREFIX_INFO(data?: Partial<ND_OPTION_PREFIX_INFO>): Uint8Array {
+  const buf = new Uint8Array(sizeofND_OPTION_PREFIX_INFO);
+  const view = new DataView(buf.buffer);
+  // 0x00: u8
+  if (data?.nd_opt_pi_type !== undefined) view.setUint8(0, Number(data.nd_opt_pi_type));
+  // 0x01: u8
+  if (data?.nd_opt_pi_len !== undefined) view.setUint8(1, Number(data.nd_opt_pi_len));
+  // 0x02: u8
+  if (data?.nd_opt_pi_prefix_len !== undefined) view.setUint8(2, Number(data.nd_opt_pi_prefix_len));
+  // 0x03: pad5
+  // 0x08: pointer
+  if (data?.Anonymous1 !== undefined) view.setBigUint64(8, data.Anonymous1 === null ? 0n : BigInt(util.toPointer(data.Anonymous1)), true);
+  // 0x10: u32
+  if (data?.nd_opt_pi_valid_time !== undefined) view.setUint32(16, Number(data.nd_opt_pi_valid_time), true);
+  // 0x14: u32
+  if (data?.nd_opt_pi_preferred_time !== undefined) view.setUint32(20, Number(data.nd_opt_pi_preferred_time), true);
+  // 0x18: pointer
+  if (data?.Anonymous2 !== undefined) view.setBigUint64(24, data.Anonymous2 === null ? 0n : BigInt(util.toPointer(data.Anonymous2)), true);
+  // 0x20: pointer
+  if (data?.nd_opt_pi_prefix !== undefined) view.setBigUint64(32, data.nd_opt_pi_prefix === null ? 0n : BigInt(util.toPointer(data.nd_opt_pi_prefix)), true);
+  return buf;
+}
+
+/**
+ * Windows.Win32.Networking.WinSock.ND_OPTION_RD_HDR (size: 8)
+ */
+export interface ND_OPTION_RD_HDR {
+  /** u8 */
+  nd_opt_rh_type: number;
+  /** u8 */
+  nd_opt_rh_len: number;
+  /** u16 */
+  nd_opt_rh_reserved1: number;
+  /** u32 */
+  nd_opt_rh_reserved2: number;
+}
+
+export const sizeofND_OPTION_RD_HDR = 8;
+
+export function allocND_OPTION_RD_HDR(data?: Partial<ND_OPTION_RD_HDR>): Uint8Array {
+  const buf = new Uint8Array(sizeofND_OPTION_RD_HDR);
+  const view = new DataView(buf.buffer);
+  // 0x00: u8
+  if (data?.nd_opt_rh_type !== undefined) view.setUint8(0, Number(data.nd_opt_rh_type));
+  // 0x01: u8
+  if (data?.nd_opt_rh_len !== undefined) view.setUint8(1, Number(data.nd_opt_rh_len));
+  // 0x02: u16
+  if (data?.nd_opt_rh_reserved1 !== undefined) view.setUint16(2, Number(data.nd_opt_rh_reserved1), true);
+  // 0x04: u32
+  if (data?.nd_opt_rh_reserved2 !== undefined) view.setUint32(4, Number(data.nd_opt_rh_reserved2), true);
+  return buf;
+}
+
+/**
+ * Windows.Win32.Networking.WinSock.ND_OPTION_MTU (size: 8)
+ */
+export interface ND_OPTION_MTU {
+  /** u8 */
+  nd_opt_mtu_type: number;
+  /** u8 */
+  nd_opt_mtu_len: number;
+  /** u16 */
+  nd_opt_mtu_reserved: number;
+  /** u32 */
+  nd_opt_mtu_mtu: number;
+}
+
+export const sizeofND_OPTION_MTU = 8;
+
+export function allocND_OPTION_MTU(data?: Partial<ND_OPTION_MTU>): Uint8Array {
+  const buf = new Uint8Array(sizeofND_OPTION_MTU);
+  const view = new DataView(buf.buffer);
+  // 0x00: u8
+  if (data?.nd_opt_mtu_type !== undefined) view.setUint8(0, Number(data.nd_opt_mtu_type));
+  // 0x01: u8
+  if (data?.nd_opt_mtu_len !== undefined) view.setUint8(1, Number(data.nd_opt_mtu_len));
+  // 0x02: u16
+  if (data?.nd_opt_mtu_reserved !== undefined) view.setUint16(2, Number(data.nd_opt_mtu_reserved), true);
+  // 0x04: u32
+  if (data?.nd_opt_mtu_mtu !== undefined) view.setUint32(4, Number(data.nd_opt_mtu_mtu), true);
+  return buf;
+}
+
+/**
+ * Windows.Win32.Networking.WinSock.ND_OPTION_ROUTE_INFO (size: 32)
+ */
+export interface ND_OPTION_ROUTE_INFO {
+  /** u8 */
+  nd_opt_ri_type: number;
+  /** u8 */
+  nd_opt_ri_len: number;
+  /** u8 */
+  nd_opt_ri_prefix_len: number;
+  /** _Anonymous_e__Union */
+  Anonymous: Uint8Array | Deno.PointerValue | null;
+  /** u32 */
+  nd_opt_ri_route_lifetime: number;
+  /** Windows.Win32.Networking.WinSock.IN6_ADDR */
+  nd_opt_ri_prefix: Uint8Array | Deno.PointerValue | null;
+}
+
+export const sizeofND_OPTION_ROUTE_INFO = 32;
+
+export function allocND_OPTION_ROUTE_INFO(data?: Partial<ND_OPTION_ROUTE_INFO>): Uint8Array {
+  const buf = new Uint8Array(sizeofND_OPTION_ROUTE_INFO);
+  const view = new DataView(buf.buffer);
+  // 0x00: u8
+  if (data?.nd_opt_ri_type !== undefined) view.setUint8(0, Number(data.nd_opt_ri_type));
+  // 0x01: u8
+  if (data?.nd_opt_ri_len !== undefined) view.setUint8(1, Number(data.nd_opt_ri_len));
+  // 0x02: u8
+  if (data?.nd_opt_ri_prefix_len !== undefined) view.setUint8(2, Number(data.nd_opt_ri_prefix_len));
+  // 0x03: pad5
+  // 0x08: pointer
+  if (data?.Anonymous !== undefined) view.setBigUint64(8, data.Anonymous === null ? 0n : BigInt(util.toPointer(data.Anonymous)), true);
+  // 0x10: u32
+  if (data?.nd_opt_ri_route_lifetime !== undefined) view.setUint32(16, Number(data.nd_opt_ri_route_lifetime), true);
+  // 0x14: pad4
+  // 0x18: pointer
+  if (data?.nd_opt_ri_prefix !== undefined) view.setBigUint64(24, data.nd_opt_ri_prefix === null ? 0n : BigInt(util.toPointer(data.nd_opt_ri_prefix)), true);
+  return buf;
+}
+
+/**
+ * Windows.Win32.Networking.WinSock.ND_OPTION_RDNSS (size: 8)
+ */
+export interface ND_OPTION_RDNSS {
+  /** u8 */
+  nd_opt_rdnss_type: number;
+  /** u8 */
+  nd_opt_rdnss_len: number;
+  /** u16 */
+  nd_opt_rdnss_reserved: number;
+  /** u32 */
+  nd_opt_rdnss_lifetime: number;
+}
+
+export const sizeofND_OPTION_RDNSS = 8;
+
+export function allocND_OPTION_RDNSS(data?: Partial<ND_OPTION_RDNSS>): Uint8Array {
+  const buf = new Uint8Array(sizeofND_OPTION_RDNSS);
+  const view = new DataView(buf.buffer);
+  // 0x00: u8
+  if (data?.nd_opt_rdnss_type !== undefined) view.setUint8(0, Number(data.nd_opt_rdnss_type));
+  // 0x01: u8
+  if (data?.nd_opt_rdnss_len !== undefined) view.setUint8(1, Number(data.nd_opt_rdnss_len));
+  // 0x02: u16
+  if (data?.nd_opt_rdnss_reserved !== undefined) view.setUint16(2, Number(data.nd_opt_rdnss_reserved), true);
+  // 0x04: u32
+  if (data?.nd_opt_rdnss_lifetime !== undefined) view.setUint32(4, Number(data.nd_opt_rdnss_lifetime), true);
+  return buf;
+}
+
+/**
+ * Windows.Win32.Networking.WinSock.ND_OPTION_DNSSL (size: 8)
+ */
+export interface ND_OPTION_DNSSL {
+  /** u8 */
+  nd_opt_dnssl_type: number;
+  /** u8 */
+  nd_opt_dnssl_len: number;
+  /** u16 */
+  nd_opt_dnssl_reserved: number;
+  /** u32 */
+  nd_opt_dnssl_lifetime: number;
+}
+
+export const sizeofND_OPTION_DNSSL = 8;
+
+export function allocND_OPTION_DNSSL(data?: Partial<ND_OPTION_DNSSL>): Uint8Array {
+  const buf = new Uint8Array(sizeofND_OPTION_DNSSL);
+  const view = new DataView(buf.buffer);
+  // 0x00: u8
+  if (data?.nd_opt_dnssl_type !== undefined) view.setUint8(0, Number(data.nd_opt_dnssl_type));
+  // 0x01: u8
+  if (data?.nd_opt_dnssl_len !== undefined) view.setUint8(1, Number(data.nd_opt_dnssl_len));
+  // 0x02: u16
+  if (data?.nd_opt_dnssl_reserved !== undefined) view.setUint16(2, Number(data.nd_opt_dnssl_reserved), true);
+  // 0x04: u32
+  if (data?.nd_opt_dnssl_lifetime !== undefined) view.setUint32(4, Number(data.nd_opt_dnssl_lifetime), true);
+  return buf;
+}
+
+/**
+ * Windows.Win32.Networking.WinSock.MLD_HEADER (size: 24)
+ */
+export interface MLD_HEADER {
+  /** Windows.Win32.Networking.WinSock.ICMP_HEADER */
+  IcmpHeader: Uint8Array | Deno.PointerValue | null;
+  /** u16 */
+  MaxRespTime: number;
+  /** u16 */
+  Reserved: number;
+  /** Windows.Win32.Networking.WinSock.IN6_ADDR */
+  MulticastAddress: Uint8Array | Deno.PointerValue | null;
+}
+
+export const sizeofMLD_HEADER = 24;
+
+export function allocMLD_HEADER(data?: Partial<MLD_HEADER>): Uint8Array {
+  const buf = new Uint8Array(sizeofMLD_HEADER);
+  const view = new DataView(buf.buffer);
+  // 0x00: pointer
+  if (data?.IcmpHeader !== undefined) view.setBigUint64(0, data.IcmpHeader === null ? 0n : BigInt(util.toPointer(data.IcmpHeader)), true);
+  // 0x08: u16
+  if (data?.MaxRespTime !== undefined) view.setUint16(8, Number(data.MaxRespTime), true);
+  // 0x0a: u16
+  if (data?.Reserved !== undefined) view.setUint16(10, Number(data.Reserved), true);
+  // 0x0c: pad4
+  // 0x10: pointer
+  if (data?.MulticastAddress !== undefined) view.setBigUint64(16, data.MulticastAddress === null ? 0n : BigInt(util.toPointer(data.MulticastAddress)), true);
+  return buf;
+}
+
+/**
+ * Windows.Win32.Networking.WinSock.MLDV2_QUERY_HEADER (size: 56)
+ */
+export interface MLDV2_QUERY_HEADER {
+  /** Windows.Win32.Networking.WinSock.ICMP_HEADER */
+  IcmpHeader: Uint8Array | Deno.PointerValue | null;
+  /** _Anonymous1_e__Union */
+  Anonymous1: Uint8Array | Deno.PointerValue | null;
+  /** u16 */
+  Reserved: number;
+  /** Windows.Win32.Networking.WinSock.IN6_ADDR */
+  MulticastAddress: Uint8Array | Deno.PointerValue | null;
+  /** u8 */
+  _bitfield: number;
+  /** _Anonymous2_e__Union */
+  Anonymous2: Uint8Array | Deno.PointerValue | null;
+  /** u16 */
+  SourceCount: number;
+}
+
+export const sizeofMLDV2_QUERY_HEADER = 56;
+
+export function allocMLDV2_QUERY_HEADER(data?: Partial<MLDV2_QUERY_HEADER>): Uint8Array {
+  const buf = new Uint8Array(sizeofMLDV2_QUERY_HEADER);
+  const view = new DataView(buf.buffer);
+  // 0x00: pointer
+  if (data?.IcmpHeader !== undefined) view.setBigUint64(0, data.IcmpHeader === null ? 0n : BigInt(util.toPointer(data.IcmpHeader)), true);
+  // 0x08: pointer
+  if (data?.Anonymous1 !== undefined) view.setBigUint64(8, data.Anonymous1 === null ? 0n : BigInt(util.toPointer(data.Anonymous1)), true);
+  // 0x10: u16
+  if (data?.Reserved !== undefined) view.setUint16(16, Number(data.Reserved), true);
+  // 0x12: pad6
+  // 0x18: pointer
+  if (data?.MulticastAddress !== undefined) view.setBigUint64(24, data.MulticastAddress === null ? 0n : BigInt(util.toPointer(data.MulticastAddress)), true);
+  // 0x20: u8
+  if (data?._bitfield !== undefined) view.setUint8(32, Number(data._bitfield));
+  // 0x21: pad7
+  // 0x28: pointer
+  if (data?.Anonymous2 !== undefined) view.setBigUint64(40, data.Anonymous2 === null ? 0n : BigInt(util.toPointer(data.Anonymous2)), true);
+  // 0x30: u16
+  if (data?.SourceCount !== undefined) view.setUint16(48, Number(data.SourceCount), true);
+  // 0x32: pad6
+  return buf;
+}
+
+/**
+ * Windows.Win32.Networking.WinSock.MLDV2_REPORT_RECORD_HEADER (size: 16)
+ */
+export interface MLDV2_REPORT_RECORD_HEADER {
+  /** u8 */
+  Type: number;
+  /** u8 */
+  AuxillaryDataLength: number;
+  /** u16 */
+  SourceCount: number;
+  /** Windows.Win32.Networking.WinSock.IN6_ADDR */
+  MulticastAddress: Uint8Array | Deno.PointerValue | null;
+}
+
+export const sizeofMLDV2_REPORT_RECORD_HEADER = 16;
+
+export function allocMLDV2_REPORT_RECORD_HEADER(data?: Partial<MLDV2_REPORT_RECORD_HEADER>): Uint8Array {
+  const buf = new Uint8Array(sizeofMLDV2_REPORT_RECORD_HEADER);
+  const view = new DataView(buf.buffer);
+  // 0x00: u8
+  if (data?.Type !== undefined) view.setUint8(0, Number(data.Type));
+  // 0x01: u8
+  if (data?.AuxillaryDataLength !== undefined) view.setUint8(1, Number(data.AuxillaryDataLength));
+  // 0x02: u16
+  if (data?.SourceCount !== undefined) view.setUint16(2, Number(data.SourceCount), true);
+  // 0x04: pad4
+  // 0x08: pointer
+  if (data?.MulticastAddress !== undefined) view.setBigUint64(8, data.MulticastAddress === null ? 0n : BigInt(util.toPointer(data.MulticastAddress)), true);
+  return buf;
+}
+
+/**
+ * Windows.Win32.Networking.WinSock.MLDV2_REPORT_HEADER (size: 16)
+ */
+export interface MLDV2_REPORT_HEADER {
+  /** Windows.Win32.Networking.WinSock.ICMP_HEADER */
+  IcmpHeader: Uint8Array | Deno.PointerValue | null;
+  /** u16 */
+  Reserved: number;
+  /** u16 */
+  RecordCount: number;
+}
+
+export const sizeofMLDV2_REPORT_HEADER = 16;
+
+export function allocMLDV2_REPORT_HEADER(data?: Partial<MLDV2_REPORT_HEADER>): Uint8Array {
+  const buf = new Uint8Array(sizeofMLDV2_REPORT_HEADER);
+  const view = new DataView(buf.buffer);
+  // 0x00: pointer
+  if (data?.IcmpHeader !== undefined) view.setBigUint64(0, data.IcmpHeader === null ? 0n : BigInt(util.toPointer(data.IcmpHeader)), true);
+  // 0x08: u16
+  if (data?.Reserved !== undefined) view.setUint16(8, Number(data.Reserved), true);
+  // 0x0a: u16
+  if (data?.RecordCount !== undefined) view.setUint16(10, Number(data.RecordCount), true);
+  // 0x0c: pad4
+  return buf;
+}
+
+/**
+ * Windows.Win32.Networking.WinSock.TCP_HDR (size: 24)
+ */
+export interface TCP_HDR {
+  /** u16 */
+  th_sport: number;
+  /** u16 */
+  th_dport: number;
+  /** u32 */
+  th_seq: number;
+  /** u32 */
+  th_ack: number;
+  /** u8 */
+  _bitfield: number;
+  /** u8 */
+  th_flags: number;
+  /** u16 */
+  th_win: number;
+  /** u16 */
+  th_sum: number;
+  /** u16 */
+  th_urp: number;
+}
+
+export const sizeofTCP_HDR = 24;
+
+export function allocTCP_HDR(data?: Partial<TCP_HDR>): Uint8Array {
+  const buf = new Uint8Array(sizeofTCP_HDR);
+  const view = new DataView(buf.buffer);
+  // 0x00: u16
+  if (data?.th_sport !== undefined) view.setUint16(0, Number(data.th_sport), true);
+  // 0x02: u16
+  if (data?.th_dport !== undefined) view.setUint16(2, Number(data.th_dport), true);
+  // 0x04: u32
+  if (data?.th_seq !== undefined) view.setUint32(4, Number(data.th_seq), true);
+  // 0x08: u32
+  if (data?.th_ack !== undefined) view.setUint32(8, Number(data.th_ack), true);
+  // 0x0c: u8
+  if (data?._bitfield !== undefined) view.setUint8(12, Number(data._bitfield));
+  // 0x0d: u8
+  if (data?.th_flags !== undefined) view.setUint8(13, Number(data.th_flags));
+  // 0x0e: u16
+  if (data?.th_win !== undefined) view.setUint16(14, Number(data.th_win), true);
+  // 0x10: u16
+  if (data?.th_sum !== undefined) view.setUint16(16, Number(data.th_sum), true);
+  // 0x12: u16
+  if (data?.th_urp !== undefined) view.setUint16(18, Number(data.th_urp), true);
+  // 0x14: pad4
+  return buf;
+}
+
+/**
+ * Windows.Win32.Networking.WinSock.TCP_OPT_MSS (size: 8)
+ */
+export interface TCP_OPT_MSS {
+  /** u8 */
+  Kind: number;
+  /** u8 */
+  Length: number;
+  /** u16 */
+  Mss: number;
+}
+
+export const sizeofTCP_OPT_MSS = 8;
+
+export function allocTCP_OPT_MSS(data?: Partial<TCP_OPT_MSS>): Uint8Array {
+  const buf = new Uint8Array(sizeofTCP_OPT_MSS);
+  const view = new DataView(buf.buffer);
+  // 0x00: u8
+  if (data?.Kind !== undefined) view.setUint8(0, Number(data.Kind));
+  // 0x01: u8
+  if (data?.Length !== undefined) view.setUint8(1, Number(data.Length));
+  // 0x02: u16
+  if (data?.Mss !== undefined) view.setUint16(2, Number(data.Mss), true);
+  // 0x04: pad4
+  return buf;
+}
+
+/**
+ * Windows.Win32.Networking.WinSock.TCP_OPT_WS (size: 8)
+ */
+export interface TCP_OPT_WS {
+  /** u8 */
+  Kind: number;
+  /** u8 */
+  Length: number;
+  /** u8 */
+  ShiftCnt: number;
+}
+
+export const sizeofTCP_OPT_WS = 8;
+
+export function allocTCP_OPT_WS(data?: Partial<TCP_OPT_WS>): Uint8Array {
+  const buf = new Uint8Array(sizeofTCP_OPT_WS);
+  const view = new DataView(buf.buffer);
+  // 0x00: u8
+  if (data?.Kind !== undefined) view.setUint8(0, Number(data.Kind));
+  // 0x01: u8
+  if (data?.Length !== undefined) view.setUint8(1, Number(data.Length));
+  // 0x02: u8
+  if (data?.ShiftCnt !== undefined) view.setUint8(2, Number(data.ShiftCnt));
+  // 0x03: pad5
+  return buf;
+}
+
+/**
+ * Windows.Win32.Networking.WinSock.TCP_OPT_SACK_PERMITTED (size: 8)
+ */
+export interface TCP_OPT_SACK_PERMITTED {
+  /** u8 */
+  Kind: number;
+  /** u8 */
+  Length: number;
+}
+
+export const sizeofTCP_OPT_SACK_PERMITTED = 8;
+
+export function allocTCP_OPT_SACK_PERMITTED(data?: Partial<TCP_OPT_SACK_PERMITTED>): Uint8Array {
+  const buf = new Uint8Array(sizeofTCP_OPT_SACK_PERMITTED);
+  const view = new DataView(buf.buffer);
+  // 0x00: u8
+  if (data?.Kind !== undefined) view.setUint8(0, Number(data.Kind));
+  // 0x01: u8
+  if (data?.Length !== undefined) view.setUint8(1, Number(data.Length));
+  // 0x02: pad6
+  return buf;
+}
+
+/**
+ * Windows.Win32.Networking.WinSock.TCP_OPT_SACK (size: 16)
+ */
+export interface TCP_OPT_SACK {
+  /** u8 */
+  Kind: number;
+  /** u8 */
+  Length: number;
+  /** array */
+  Block: Deno.PointerValue | null;
+}
+
+export const sizeofTCP_OPT_SACK = 16;
+
+export function allocTCP_OPT_SACK(data?: Partial<TCP_OPT_SACK>): Uint8Array {
+  const buf = new Uint8Array(sizeofTCP_OPT_SACK);
+  const view = new DataView(buf.buffer);
+  // 0x00: u8
+  if (data?.Kind !== undefined) view.setUint8(0, Number(data.Kind));
+  // 0x01: u8
+  if (data?.Length !== undefined) view.setUint8(1, Number(data.Length));
+  // 0x02: pad6
+  // 0x08: pointer
+  if (data?.Block !== undefined) view.setBigUint64(8, data.Block === null ? 0n : BigInt(util.toPointer(data.Block)), true);
+  return buf;
+}
+
+/**
+ * Windows.Win32.Networking.WinSock.TCP_OPT_TS (size: 16)
+ */
+export interface TCP_OPT_TS {
+  /** u8 */
+  Kind: number;
+  /** u8 */
+  Length: number;
+  /** u32 */
+  Val: number;
+  /** u32 */
+  EcR: number;
+}
+
+export const sizeofTCP_OPT_TS = 16;
+
+export function allocTCP_OPT_TS(data?: Partial<TCP_OPT_TS>): Uint8Array {
+  const buf = new Uint8Array(sizeofTCP_OPT_TS);
+  const view = new DataView(buf.buffer);
+  // 0x00: u8
+  if (data?.Kind !== undefined) view.setUint8(0, Number(data.Kind));
+  // 0x01: u8
+  if (data?.Length !== undefined) view.setUint8(1, Number(data.Length));
+  // 0x02: u32
+  if (data?.Val !== undefined) view.setUint32(2, Number(data.Val), true);
+  // 0x06: u32
+  if (data?.EcR !== undefined) view.setUint32(6, Number(data.EcR), true);
+  // 0x0a: pad6
+  return buf;
+}
+
+/**
+ * Windows.Win32.Networking.WinSock.TCP_OPT_UNKNOWN (size: 8)
+ */
+export interface TCP_OPT_UNKNOWN {
+  /** u8 */
+  Kind: number;
+  /** u8 */
+  Length: number;
+}
+
+export const sizeofTCP_OPT_UNKNOWN = 8;
+
+export function allocTCP_OPT_UNKNOWN(data?: Partial<TCP_OPT_UNKNOWN>): Uint8Array {
+  const buf = new Uint8Array(sizeofTCP_OPT_UNKNOWN);
+  const view = new DataView(buf.buffer);
+  // 0x00: u8
+  if (data?.Kind !== undefined) view.setUint8(0, Number(data.Kind));
+  // 0x01: u8
+  if (data?.Length !== undefined) view.setUint8(1, Number(data.Length));
+  // 0x02: pad6
+  return buf;
+}
+
+/**
+ * Windows.Win32.Networking.WinSock.TCP_OPT_FASTOPEN (size: 16)
+ */
+export interface TCP_OPT_FASTOPEN {
+  /** u8 */
+  Kind: number;
+  /** u8 */
+  Length: number;
+  /** array */
+  Cookie: Deno.PointerValue | null;
+}
+
+export const sizeofTCP_OPT_FASTOPEN = 16;
+
+export function allocTCP_OPT_FASTOPEN(data?: Partial<TCP_OPT_FASTOPEN>): Uint8Array {
+  const buf = new Uint8Array(sizeofTCP_OPT_FASTOPEN);
+  const view = new DataView(buf.buffer);
+  // 0x00: u8
+  if (data?.Kind !== undefined) view.setUint8(0, Number(data.Kind));
+  // 0x01: u8
+  if (data?.Length !== undefined) view.setUint8(1, Number(data.Length));
+  // 0x02: pad6
+  // 0x08: pointer
+  if (data?.Cookie !== undefined) view.setBigUint64(8, data.Cookie === null ? 0n : BigInt(util.toPointer(data.Cookie)), true);
+  return buf;
+}
+
+/**
+ * Windows.Win32.Networking.WinSock.DL_TUNNEL_ADDRESS (size: 24)
+ */
+export interface DL_TUNNEL_ADDRESS {
+  /** Windows.Win32.System.Kernel.COMPARTMENT_ID */
+  CompartmentId: COMPARTMENT_ID;
+  /** Windows.Win32.Networking.WinSock.SCOPE_ID */
+  ScopeId: Uint8Array | Deno.PointerValue | null;
+  /** array */
+  IpAddress: Deno.PointerValue | null;
+}
+
+export const sizeofDL_TUNNEL_ADDRESS = 24;
+
+export function allocDL_TUNNEL_ADDRESS(data?: Partial<DL_TUNNEL_ADDRESS>): Uint8Array {
+  const buf = new Uint8Array(sizeofDL_TUNNEL_ADDRESS);
+  const view = new DataView(buf.buffer);
+  // 0x00: i32
+  if (data?.CompartmentId !== undefined) view.setInt32(0, Number(data.CompartmentId), true);
+  // 0x04: pad4
+  // 0x08: pointer
+  if (data?.ScopeId !== undefined) view.setBigUint64(8, data.ScopeId === null ? 0n : BigInt(util.toPointer(data.ScopeId)), true);
+  // 0x10: pointer
+  if (data?.IpAddress !== undefined) view.setBigUint64(16, data.IpAddress === null ? 0n : BigInt(util.toPointer(data.IpAddress)), true);
+  return buf;
+}
+
+/**
+ * Windows.Win32.Networking.WinSock.DL_TEREDO_ADDRESS (size: 16)
+ */
+export interface DL_TEREDO_ADDRESS {
+  /** array */
+  Reserved: Deno.PointerValue | null;
+  /** _Anonymous_e__Union */
+  Anonymous: Uint8Array | Deno.PointerValue | null;
+}
+
+export const sizeofDL_TEREDO_ADDRESS = 16;
+
+export function allocDL_TEREDO_ADDRESS(data?: Partial<DL_TEREDO_ADDRESS>): Uint8Array {
+  const buf = new Uint8Array(sizeofDL_TEREDO_ADDRESS);
+  const view = new DataView(buf.buffer);
+  // 0x00: pointer
+  if (data?.Reserved !== undefined) view.setBigUint64(0, data.Reserved === null ? 0n : BigInt(util.toPointer(data.Reserved)), true);
+  // 0x08: pointer
+  if (data?.Anonymous !== undefined) view.setBigUint64(8, data.Anonymous === null ? 0n : BigInt(util.toPointer(data.Anonymous)), true);
+  return buf;
+}
+
+/**
+ * Windows.Win32.Networking.WinSock.DL_TEREDO_ADDRESS_PRV (size: 16)
+ */
+export interface DL_TEREDO_ADDRESS_PRV {
+  /** array */
+  Reserved: Deno.PointerValue | null;
+  /** _Anonymous_e__Union */
+  Anonymous: Uint8Array | Deno.PointerValue | null;
+}
+
+export const sizeofDL_TEREDO_ADDRESS_PRV = 16;
+
+export function allocDL_TEREDO_ADDRESS_PRV(data?: Partial<DL_TEREDO_ADDRESS_PRV>): Uint8Array {
+  const buf = new Uint8Array(sizeofDL_TEREDO_ADDRESS_PRV);
+  const view = new DataView(buf.buffer);
+  // 0x00: pointer
+  if (data?.Reserved !== undefined) view.setBigUint64(0, data.Reserved === null ? 0n : BigInt(util.toPointer(data.Reserved)), true);
+  // 0x08: pointer
+  if (data?.Anonymous !== undefined) view.setBigUint64(8, data.Anonymous === null ? 0n : BigInt(util.toPointer(data.Anonymous)), true);
+  return buf;
+}
+
+/**
+ * Windows.Win32.Networking.WinSock.IPTLS_METADATA (size: 8)
+ */
+export interface IPTLS_METADATA {
+  /** u64 */
+  SequenceNumber: Deno.PointerValue;
+}
+
+export const sizeofIPTLS_METADATA = 8;
+
+export function allocIPTLS_METADATA(data?: Partial<IPTLS_METADATA>): Uint8Array {
+  const buf = new Uint8Array(sizeofIPTLS_METADATA);
+  const view = new DataView(buf.buffer);
+  // 0x00: u64
+  if (data?.SequenceNumber !== undefined) view.setBigUint64(0, BigInt(data.SequenceNumber), true);
+  return buf;
+}
+
+/**
+ * Windows.Win32.Networking.WinSock.NPI_MODULEID (size: 16)
+ */
+export interface NPI_MODULEID {
+  /** u16 */
+  Length: number;
+  /** Windows.Win32.Networking.WinSock.NPI_MODULEID_TYPE */
+  Type: NPI_MODULEID_TYPE;
+  /** _Anonymous_e__Union */
+  Anonymous: Uint8Array | Deno.PointerValue | null;
+}
+
+export const sizeofNPI_MODULEID = 16;
+
+export function allocNPI_MODULEID(data?: Partial<NPI_MODULEID>): Uint8Array {
+  const buf = new Uint8Array(sizeofNPI_MODULEID);
+  const view = new DataView(buf.buffer);
+  // 0x00: u16
+  if (data?.Length !== undefined) view.setUint16(0, Number(data.Length), true);
+  // 0x02: i32
+  if (data?.Type !== undefined) view.setInt32(2, Number(data.Type), true);
+  // 0x06: pad2
+  // 0x08: pointer
+  if (data?.Anonymous !== undefined) view.setBigUint64(8, data.Anonymous === null ? 0n : BigInt(util.toPointer(data.Anonymous)), true);
+  return buf;
+}
+
 export type HWND = Deno.PointerValue;
 
 // Native Libraries
 
 try {
-  var libWS2_32 = Deno.dlopen("WS2_32", {
+  var libWS2_32_dll = Deno.dlopen("WS2_32.dll", {
+    WSCEnumProtocols32: {
+      parameters: ["pointer", "pointer", "pointer", "pointer"],
+      result: "i32",
+    },
+    WSCDeinstallProvider32: {
+      parameters: ["pointer", "pointer"],
+      result: "i32",
+    },
+    WSCInstallProvider64_32: {
+      parameters: ["pointer", "buffer", "pointer", "u32", "pointer"],
+      result: "i32",
+    },
+    WSCGetProviderPath32: {
+      parameters: ["pointer", "buffer", "pointer", "pointer"],
+      result: "i32",
+    },
+    WSCUpdateProvider32: {
+      parameters: ["pointer", "buffer", "pointer", "u32", "pointer"],
+      result: "i32",
+    },
+    WSCSetProviderInfo32: {
+      parameters: ["pointer", "i32", "pointer", "usize", "u32", "pointer"],
+      result: "i32",
+    },
+    WSCGetProviderInfo32: {
+      parameters: ["pointer", "i32", "pointer", "pointer", "u32", "pointer"],
+      result: "i32",
+    },
+    WSCEnumNameSpaceProviders32: {
+      parameters: ["pointer", "pointer"],
+      result: "i32",
+    },
+    WSCEnumNameSpaceProvidersEx32: {
+      parameters: ["pointer", "pointer"],
+      result: "i32",
+    },
+    WSCInstallNameSpace32: {
+      parameters: ["buffer", "buffer", "u32", "u32", "pointer"],
+      result: "i32",
+    },
+    WSCInstallNameSpaceEx32: {
+      parameters: ["buffer", "buffer", "u32", "u32", "pointer", "pointer"],
+      result: "i32",
+    },
+    WSCUnInstallNameSpace32: {
+      parameters: ["pointer"],
+      result: "i32",
+    },
+    WSCEnableNSProvider32: {
+      parameters: ["pointer", "i32"],
+      result: "i32",
+    },
+    WSCInstallProviderAndChains64_32: {
+      parameters: ["pointer", "buffer", "buffer", "buffer", "u32", "pointer", "u32", "pointer", "pointer"],
+      result: "i32",
+    },
+    WSCWriteProviderOrder32: {
+      parameters: ["pointer", "u32"],
+      result: "i32",
+    },
+    WSCWriteNameSpaceOrder32: {
+      parameters: ["pointer", "u32"],
+      result: "i32",
+    },
     __WSAFDIsSet: {
       parameters: ["pointer", "pointer"],
       result: "i32",
@@ -9448,7 +11696,7 @@ try {
       result: "i32",
     },
     send: {
-      parameters: ["pointer", "buffer", "i32", "u32"],
+      parameters: ["pointer", "buffer", "i32", "i32"],
       result: "i32",
     },
     sendto: {
@@ -9803,15 +12051,7 @@ try {
       parameters: ["pointer", "pointer", "pointer", "pointer"],
       result: "i32",
     },
-    WSCEnumProtocols32: {
-      parameters: ["pointer", "pointer", "pointer", "pointer"],
-      result: "i32",
-    },
     WSCDeinstallProvider: {
-      parameters: ["pointer", "pointer"],
-      result: "i32",
-    },
-    WSCDeinstallProvider32: {
       parameters: ["pointer", "pointer"],
       result: "i32",
     },
@@ -9819,23 +12059,11 @@ try {
       parameters: ["pointer", "buffer", "pointer", "u32", "pointer"],
       result: "i32",
     },
-    WSCInstallProvider64_32: {
-      parameters: ["pointer", "buffer", "pointer", "u32", "pointer"],
-      result: "i32",
-    },
     WSCGetProviderPath: {
       parameters: ["pointer", "buffer", "pointer", "pointer"],
       result: "i32",
     },
-    WSCGetProviderPath32: {
-      parameters: ["pointer", "buffer", "pointer", "pointer"],
-      result: "i32",
-    },
     WSCUpdateProvider: {
-      parameters: ["pointer", "buffer", "pointer", "u32", "pointer"],
-      result: "i32",
-    },
-    WSCUpdateProvider32: {
       parameters: ["pointer", "buffer", "pointer", "u32", "pointer"],
       result: "i32",
     },
@@ -9844,14 +12072,6 @@ try {
       result: "i32",
     },
     WSCGetProviderInfo: {
-      parameters: ["pointer", "i32", "pointer", "pointer", "u32", "pointer"],
-      result: "i32",
-    },
-    WSCSetProviderInfo32: {
-      parameters: ["pointer", "i32", "pointer", "usize", "u32", "pointer"],
-      result: "i32",
-    },
-    WSCGetProviderInfo32: {
       parameters: ["pointer", "i32", "pointer", "pointer", "u32", "pointer"],
       result: "i32",
     },
@@ -9867,19 +12087,7 @@ try {
       parameters: ["pointer", "pointer", "u32", "u32", "pointer"],
       result: "i32",
     },
-    WSCEnumNameSpaceProviders32: {
-      parameters: ["pointer", "pointer"],
-      result: "i32",
-    },
-    WSCEnumNameSpaceProvidersEx32: {
-      parameters: ["pointer", "pointer"],
-      result: "i32",
-    },
     WSCInstallNameSpace: {
-      parameters: ["buffer", "buffer", "u32", "u32", "pointer"],
-      result: "i32",
-    },
-    WSCInstallNameSpace32: {
       parameters: ["buffer", "buffer", "u32", "u32", "pointer"],
       result: "i32",
     },
@@ -9891,24 +12099,8 @@ try {
       parameters: ["buffer", "buffer", "u32", "u32", "pointer", "pointer"],
       result: "i32",
     },
-    WSCInstallNameSpaceEx32: {
-      parameters: ["buffer", "buffer", "u32", "u32", "pointer", "pointer"],
-      result: "i32",
-    },
-    WSCUnInstallNameSpace32: {
-      parameters: ["pointer"],
-      result: "i32",
-    },
     WSCEnableNSProvider: {
       parameters: ["pointer", "i32"],
-      result: "i32",
-    },
-    WSCEnableNSProvider32: {
-      parameters: ["pointer", "i32"],
-      result: "i32",
-    },
-    WSCInstallProviderAndChains64_32: {
-      parameters: ["pointer", "buffer", "buffer", "buffer", "u32", "pointer", "u32", "pointer", "pointer"],
       result: "i32",
     },
     WSAAdvertiseProvider: {
@@ -9999,15 +12191,7 @@ try {
       parameters: ["pointer", "u32"],
       result: "i32",
     },
-    WSCWriteProviderOrder32: {
-      parameters: ["pointer", "u32"],
-      result: "i32",
-    },
     WSCWriteNameSpaceOrder: {
-      parameters: ["pointer", "u32"],
-      result: "i32",
-    },
-    WSCWriteNameSpaceOrder32: {
       parameters: ["pointer", "u32"],
       result: "i32",
     },
@@ -10015,7 +12199,7 @@ try {
 } catch(e) { /* ignore */ }
 
 try {
-  var libntdll = Deno.dlopen("ntdll", {
+  var libntdll_dll = Deno.dlopen("ntdll.dll", {
     RtlIpv4AddressToStringA: {
       parameters: ["pointer", "buffer"],
       result: "buffer",
@@ -10100,7 +12284,7 @@ try {
 } catch(e) { /* ignore */ }
 
 try {
-  var libMSWSOCK = Deno.dlopen("MSWSOCK", {
+  var libMSWSOCK_dll = Deno.dlopen("MSWSOCK.dll", {
     WSARecvEx: {
       parameters: ["pointer", "buffer", "i32", "pointer"],
       result: "i32",
@@ -10169,7 +12353,7 @@ try {
 } catch(e) { /* ignore */ }
 
 try {
-  var libfwpuclnt = Deno.dlopen("fwpuclnt", {
+  var libfwpuclnt_dll = Deno.dlopen("fwpuclnt.dll", {
     WSASetSocketSecurity: {
       parameters: ["pointer", "pointer", "u32", "pointer", "pointer"],
       result: "i32",
@@ -10198,7 +12382,7 @@ try {
 } catch(e) { /* ignore */ }
 
 try {
-  var libWindows_Networking = Deno.dlopen("Windows.Networking", {
+  var libWindows_Networking_dll = Deno.dlopen("Windows.Networking.dll", {
     SetSocketMediaStreamingMode: {
       parameters: ["i32"],
       result: "pointer",
@@ -10208,1156 +12392,20 @@ try {
 
 // Symbols
 
-export function __WSAFDIsSet(
-  fd: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Networking.WinSock.SOCKET */,
-  param1: Deno.PointerValue | Uint8Array | null /* ptr */,
-): number /* i32 */ {
-  return libWS2_32.__WSAFDIsSet(util.toPointer(fd), util.toPointer(param1));
-}
-
-export function accept(
-  s: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Networking.WinSock.SOCKET */,
-  addr: Deno.PointerValue | Uint8Array | null /* ptr */,
-  addrlen: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Networking.WinSock.SOCKET */ {
-  return util.pointerFromFfi(libWS2_32.accept(util.toPointer(s), util.toPointer(addr), util.toPointer(addrlen)));
-}
-
-export function bind(
-  s: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Networking.WinSock.SOCKET */,
-  name: Deno.PointerValue | Uint8Array | null /* ptr */,
-  namelen: number /* i32 */,
-): number /* i32 */ {
-  return libWS2_32.bind(util.toPointer(s), util.toPointer(name), namelen);
-}
-
-export function closesocket(
-  s: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Networking.WinSock.SOCKET */,
-): number /* i32 */ {
-  return libWS2_32.closesocket(util.toPointer(s));
-}
-
-export function connect(
-  s: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Networking.WinSock.SOCKET */,
-  name: Deno.PointerValue | Uint8Array | null /* ptr */,
-  namelen: number /* i32 */,
-): number /* i32 */ {
-  return libWS2_32.connect(util.toPointer(s), util.toPointer(name), namelen);
-}
-
-export function ioctlsocket(
-  s: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Networking.WinSock.SOCKET */,
-  cmd: number /* i32 */,
-  argp: Deno.PointerValue | Uint8Array | null /* ptr */,
-): number /* i32 */ {
-  return libWS2_32.ioctlsocket(util.toPointer(s), cmd, util.toPointer(argp));
-}
-
-export function getpeername(
-  s: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Networking.WinSock.SOCKET */,
-  name: Deno.PointerValue | Uint8Array | null /* ptr */,
-  namelen: Deno.PointerValue | Uint8Array | null /* ptr */,
-): number /* i32 */ {
-  return libWS2_32.getpeername(util.toPointer(s), util.toPointer(name), util.toPointer(namelen));
-}
-
-export function getsockname(
-  s: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Networking.WinSock.SOCKET */,
-  name: Deno.PointerValue | Uint8Array | null /* ptr */,
-  namelen: Deno.PointerValue | Uint8Array | null /* ptr */,
-): number /* i32 */ {
-  return libWS2_32.getsockname(util.toPointer(s), util.toPointer(name), util.toPointer(namelen));
-}
-
-export function getsockopt(
-  s: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Networking.WinSock.SOCKET */,
-  level: number /* i32 */,
-  optname: number /* i32 */,
-  optval: string | null /* Windows.Win32.Foundation.PSTR */,
-  optlen: Deno.PointerValue | Uint8Array | null /* ptr */,
-): number /* i32 */ {
-  return libWS2_32.getsockopt(util.toPointer(s), level, optname, util.pstrToFfi(optval), util.toPointer(optlen));
-}
-
-export function htonl(
-  hostlong: number /* u32 */,
-): number /* u32 */ {
-  return libWS2_32.htonl(hostlong);
-}
-
-export function htons(
-  hostshort: number /* u16 */,
-): number /* u16 */ {
-  return libWS2_32.htons(hostshort);
-}
-
-export function inet_addr(
-  cp: string | null /* Windows.Win32.Foundation.PSTR */,
-): number /* u32 */ {
-  return libWS2_32.inet_addr(util.pstrToFfi(cp));
-}
-
-export function inet_ntoa(
-  in__: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Networking.WinSock.IN_ADDR */,
-): string | null /* Windows.Win32.Foundation.PSTR */ {
-  return util.pstrFromFfi(libWS2_32.inet_ntoa(util.toPointer(in__)));
-}
-
-export function listen(
-  s: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Networking.WinSock.SOCKET */,
-  backlog: number /* i32 */,
-): number /* i32 */ {
-  return libWS2_32.listen(util.toPointer(s), backlog);
-}
-
-export function ntohl(
-  netlong: number /* u32 */,
-): number /* u32 */ {
-  return libWS2_32.ntohl(netlong);
-}
-
-export function ntohs(
-  netshort: number /* u16 */,
-): number /* u16 */ {
-  return libWS2_32.ntohs(netshort);
-}
-
-export function recv(
-  s: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Networking.WinSock.SOCKET */,
-  buf: string | null /* Windows.Win32.Foundation.PSTR */,
-  len: number /* i32 */,
-  flags: number /* i32 */,
-): number /* i32 */ {
-  return libWS2_32.recv(util.toPointer(s), util.pstrToFfi(buf), len, flags);
-}
-
-export function recvfrom(
-  s: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Networking.WinSock.SOCKET */,
-  buf: string | null /* Windows.Win32.Foundation.PSTR */,
-  len: number /* i32 */,
-  flags: number /* i32 */,
-  from: Deno.PointerValue | Uint8Array | null /* ptr */,
-  fromlen: Deno.PointerValue | Uint8Array | null /* ptr */,
-): number /* i32 */ {
-  return libWS2_32.recvfrom(util.toPointer(s), util.pstrToFfi(buf), len, flags, util.toPointer(from), util.toPointer(fromlen));
-}
-
-export function select(
-  nfds: number /* i32 */,
-  readfds: Deno.PointerValue | Uint8Array | null /* ptr */,
-  writefds: Deno.PointerValue | Uint8Array | null /* ptr */,
-  exceptfds: Deno.PointerValue | Uint8Array | null /* ptr */,
-  timeout: Deno.PointerValue | Uint8Array | null /* ptr */,
-): number /* i32 */ {
-  return libWS2_32.select(nfds, util.toPointer(readfds), util.toPointer(writefds), util.toPointer(exceptfds), util.toPointer(timeout));
-}
-
-export function send(
-  s: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Networking.WinSock.SOCKET */,
-  buf: string | null /* Windows.Win32.Foundation.PSTR */,
-  len: number /* i32 */,
-  flags: SEND_FLAGS /* Windows.Win32.Networking.WinSock.SEND_FLAGS */,
-): number /* i32 */ {
-  return libWS2_32.send(util.toPointer(s), util.pstrToFfi(buf), len, flags);
-}
-
-export function sendto(
-  s: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Networking.WinSock.SOCKET */,
-  buf: string | null /* Windows.Win32.Foundation.PSTR */,
-  len: number /* i32 */,
-  flags: number /* i32 */,
-  to: Deno.PointerValue | Uint8Array | null /* ptr */,
-  tolen: number /* i32 */,
-): number /* i32 */ {
-  return libWS2_32.sendto(util.toPointer(s), util.pstrToFfi(buf), len, flags, util.toPointer(to), tolen);
-}
-
-export function setsockopt(
-  s: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Networking.WinSock.SOCKET */,
-  level: number /* i32 */,
-  optname: number /* i32 */,
-  optval: string | null /* Windows.Win32.Foundation.PSTR */,
-  optlen: number /* i32 */,
-): number /* i32 */ {
-  return libWS2_32.setsockopt(util.toPointer(s), level, optname, util.pstrToFfi(optval), optlen);
-}
-
-export function shutdown(
-  s: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Networking.WinSock.SOCKET */,
-  how: number /* i32 */,
-): number /* i32 */ {
-  return libWS2_32.shutdown(util.toPointer(s), how);
-}
-
-export function socket(
-  af: number /* i32 */,
-  type: number /* i32 */,
-  protocol: number /* i32 */,
-): Deno.PointerValue | null /* Windows.Win32.Networking.WinSock.SOCKET */ {
-  return util.pointerFromFfi(libWS2_32.socket(af, type, protocol));
-}
-
-export function gethostbyaddr(
-  addr: string | null /* Windows.Win32.Foundation.PSTR */,
-  len: number /* i32 */,
-  type: number /* i32 */,
-): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libWS2_32.gethostbyaddr(util.pstrToFfi(addr), len, type));
-}
-
-export function gethostbyname(
-  name: string | null /* Windows.Win32.Foundation.PSTR */,
-): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libWS2_32.gethostbyname(util.pstrToFfi(name)));
-}
-
-export function gethostname(
-  name: string | null /* Windows.Win32.Foundation.PSTR */,
-  namelen: number /* i32 */,
-): number /* i32 */ {
-  return libWS2_32.gethostname(util.pstrToFfi(name), namelen);
-}
-
-export function GetHostNameW(
-  name: string | null /* Windows.Win32.Foundation.PWSTR */,
-  namelen: number /* i32 */,
-): number /* i32 */ {
-  return libWS2_32.GetHostNameW(util.pwstrToFfi(name), namelen);
-}
-
-export function getservbyport(
-  port: number /* i32 */,
-  proto: string | null /* Windows.Win32.Foundation.PSTR */,
-): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libWS2_32.getservbyport(port, util.pstrToFfi(proto)));
-}
-
-export function getservbyname(
-  name: string | null /* Windows.Win32.Foundation.PSTR */,
-  proto: string | null /* Windows.Win32.Foundation.PSTR */,
-): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libWS2_32.getservbyname(util.pstrToFfi(name), util.pstrToFfi(proto)));
-}
-
-export function getprotobynumber(
-  number: number /* i32 */,
-): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libWS2_32.getprotobynumber(number));
-}
-
-export function getprotobyname(
-  name: string | null /* Windows.Win32.Foundation.PSTR */,
-): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libWS2_32.getprotobyname(util.pstrToFfi(name)));
-}
-
-export function WSAStartup(
-  wVersionRequested: number /* u16 */,
-  lpWSAData: Deno.PointerValue | Uint8Array | null /* ptr */,
-): number /* i32 */ {
-  return libWS2_32.WSAStartup(wVersionRequested, util.toPointer(lpWSAData));
-}
-
-export function WSACleanup(): number /* i32 */ {
-  return libWS2_32.WSACleanup();
-}
-
-export function WSASetLastError(
-  iError: number /* i32 */,
-): void /* void */ {
-  return libWS2_32.WSASetLastError(iError);
-}
-
-export function WSAGetLastError(): WSA_ERROR /* Windows.Win32.Networking.WinSock.WSA_ERROR */ {
-  return libWS2_32.WSAGetLastError();
-}
-
-export function WSAIsBlocking(): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWS2_32.WSAIsBlocking());
-}
-
-export function WSAUnhookBlockingHook(): number /* i32 */ {
-  return libWS2_32.WSAUnhookBlockingHook();
-}
-
-export function WSASetBlockingHook(
-  lpBlockFunc: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.FARPROC */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.FARPROC */ {
-  return util.pointerFromFfi(libWS2_32.WSASetBlockingHook(util.toPointer(lpBlockFunc)));
-}
-
-export function WSACancelBlockingCall(): number /* i32 */ {
-  return libWS2_32.WSACancelBlockingCall();
-}
-
-export function WSAAsyncGetServByName(
-  hWnd: Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */,
-  wMsg: number /* u32 */,
-  name: string | null /* Windows.Win32.Foundation.PSTR */,
-  proto: string | null /* Windows.Win32.Foundation.PSTR */,
-  buf: string | null /* Windows.Win32.Foundation.PSTR */,
-  buflen: number /* i32 */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */ {
-  return util.pointerFromFfi(libWS2_32.WSAAsyncGetServByName(util.hwndToFfi(hWnd), wMsg, util.pstrToFfi(name), util.pstrToFfi(proto), util.pstrToFfi(buf), buflen));
-}
-
-export function WSAAsyncGetServByPort(
-  hWnd: Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */,
-  wMsg: number /* u32 */,
-  port: number /* i32 */,
-  proto: string | null /* Windows.Win32.Foundation.PSTR */,
-  buf: string | null /* Windows.Win32.Foundation.PSTR */,
-  buflen: number /* i32 */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */ {
-  return util.pointerFromFfi(libWS2_32.WSAAsyncGetServByPort(util.hwndToFfi(hWnd), wMsg, port, util.pstrToFfi(proto), util.pstrToFfi(buf), buflen));
-}
-
-export function WSAAsyncGetProtoByName(
-  hWnd: Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */,
-  wMsg: number /* u32 */,
-  name: string | null /* Windows.Win32.Foundation.PSTR */,
-  buf: string | null /* Windows.Win32.Foundation.PSTR */,
-  buflen: number /* i32 */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */ {
-  return util.pointerFromFfi(libWS2_32.WSAAsyncGetProtoByName(util.hwndToFfi(hWnd), wMsg, util.pstrToFfi(name), util.pstrToFfi(buf), buflen));
-}
-
-export function WSAAsyncGetProtoByNumber(
-  hWnd: Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */,
-  wMsg: number /* u32 */,
-  number: number /* i32 */,
-  buf: string | null /* Windows.Win32.Foundation.PSTR */,
-  buflen: number /* i32 */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */ {
-  return util.pointerFromFfi(libWS2_32.WSAAsyncGetProtoByNumber(util.hwndToFfi(hWnd), wMsg, number, util.pstrToFfi(buf), buflen));
-}
-
-export function WSAAsyncGetHostByName(
-  hWnd: Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */,
-  wMsg: number /* u32 */,
-  name: string | null /* Windows.Win32.Foundation.PSTR */,
-  buf: string | null /* Windows.Win32.Foundation.PSTR */,
-  buflen: number /* i32 */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */ {
-  return util.pointerFromFfi(libWS2_32.WSAAsyncGetHostByName(util.hwndToFfi(hWnd), wMsg, util.pstrToFfi(name), util.pstrToFfi(buf), buflen));
-}
-
-export function WSAAsyncGetHostByAddr(
-  hWnd: Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */,
-  wMsg: number /* u32 */,
-  addr: string | null /* Windows.Win32.Foundation.PSTR */,
-  len: number /* i32 */,
-  type: number /* i32 */,
-  buf: string | null /* Windows.Win32.Foundation.PSTR */,
-  buflen: number /* i32 */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */ {
-  return util.pointerFromFfi(libWS2_32.WSAAsyncGetHostByAddr(util.hwndToFfi(hWnd), wMsg, util.pstrToFfi(addr), len, type, util.pstrToFfi(buf), buflen));
-}
-
-export function WSACancelAsyncRequest(
-  hAsyncTaskHandle: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-): number /* i32 */ {
-  return libWS2_32.WSACancelAsyncRequest(util.toPointer(hAsyncTaskHandle));
-}
-
-export function WSAAsyncSelect(
-  s: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Networking.WinSock.SOCKET */,
-  hWnd: Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */,
-  wMsg: number /* u32 */,
-  lEvent: number /* i32 */,
-): number /* i32 */ {
-  return libWS2_32.WSAAsyncSelect(util.toPointer(s), util.hwndToFfi(hWnd), wMsg, lEvent);
-}
-
-export function WSAAccept(
-  s: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Networking.WinSock.SOCKET */,
-  addr: Deno.PointerValue | Uint8Array | null /* ptr */,
-  addrlen: Deno.PointerValue | Uint8Array | null /* ptr */,
-  lpfnCondition: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Networking.WinSock.LPCONDITIONPROC */,
-  dwCallbackData: Deno.PointerValue /* usize */,
-): Deno.PointerValue | null /* Windows.Win32.Networking.WinSock.SOCKET */ {
-  return util.pointerFromFfi(libWS2_32.WSAAccept(util.toPointer(s), util.toPointer(addr), util.toPointer(addrlen), util.toPointer(lpfnCondition), dwCallbackData));
-}
-
-export function WSACloseEvent(
-  hEvent: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWS2_32.WSACloseEvent(util.toPointer(hEvent)));
-}
-
-export function WSAConnect(
-  s: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Networking.WinSock.SOCKET */,
-  name: Deno.PointerValue | Uint8Array | null /* ptr */,
-  namelen: number /* i32 */,
-  lpCallerData: Deno.PointerValue | Uint8Array | null /* ptr */,
-  lpCalleeData: Deno.PointerValue | Uint8Array | null /* ptr */,
-  lpSQOS: Deno.PointerValue | Uint8Array | null /* ptr */,
-  lpGQOS: Deno.PointerValue | Uint8Array | null /* ptr */,
-): number /* i32 */ {
-  return libWS2_32.WSAConnect(util.toPointer(s), util.toPointer(name), namelen, util.toPointer(lpCallerData), util.toPointer(lpCalleeData), util.toPointer(lpSQOS), util.toPointer(lpGQOS));
-}
-
-export function WSAConnectByNameW(
-  s: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Networking.WinSock.SOCKET */,
-  nodename: string | null /* Windows.Win32.Foundation.PWSTR */,
-  servicename: string | null /* Windows.Win32.Foundation.PWSTR */,
-  LocalAddressLength: Deno.PointerValue | Uint8Array | null /* ptr */,
-  LocalAddress: Deno.PointerValue | Uint8Array | null /* ptr */,
-  RemoteAddressLength: Deno.PointerValue | Uint8Array | null /* ptr */,
-  RemoteAddress: Deno.PointerValue | Uint8Array | null /* ptr */,
-  timeout: Deno.PointerValue | Uint8Array | null /* ptr */,
-  Reserved: Deno.PointerValue | Uint8Array | null /* ptr */,
-): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWS2_32.WSAConnectByNameW(util.toPointer(s), util.pwstrToFfi(nodename), util.pwstrToFfi(servicename), util.toPointer(LocalAddressLength), util.toPointer(LocalAddress), util.toPointer(RemoteAddressLength), util.toPointer(RemoteAddress), util.toPointer(timeout), util.toPointer(Reserved)));
-}
-
-export function WSAConnectByNameA(
-  s: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Networking.WinSock.SOCKET */,
-  nodename: string | null /* Windows.Win32.Foundation.PSTR */,
-  servicename: string | null /* Windows.Win32.Foundation.PSTR */,
-  LocalAddressLength: Deno.PointerValue | Uint8Array | null /* ptr */,
-  LocalAddress: Deno.PointerValue | Uint8Array | null /* ptr */,
-  RemoteAddressLength: Deno.PointerValue | Uint8Array | null /* ptr */,
-  RemoteAddress: Deno.PointerValue | Uint8Array | null /* ptr */,
-  timeout: Deno.PointerValue | Uint8Array | null /* ptr */,
-  Reserved: Deno.PointerValue | Uint8Array | null /* ptr */,
-): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWS2_32.WSAConnectByNameA(util.toPointer(s), util.pstrToFfi(nodename), util.pstrToFfi(servicename), util.toPointer(LocalAddressLength), util.toPointer(LocalAddress), util.toPointer(RemoteAddressLength), util.toPointer(RemoteAddress), util.toPointer(timeout), util.toPointer(Reserved)));
-}
-
-export function WSAConnectByList(
-  s: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Networking.WinSock.SOCKET */,
-  SocketAddress: Deno.PointerValue | Uint8Array | null /* ptr */,
-  LocalAddressLength: Deno.PointerValue | Uint8Array | null /* ptr */,
-  LocalAddress: Deno.PointerValue | Uint8Array | null /* ptr */,
-  RemoteAddressLength: Deno.PointerValue | Uint8Array | null /* ptr */,
-  RemoteAddress: Deno.PointerValue | Uint8Array | null /* ptr */,
-  timeout: Deno.PointerValue | Uint8Array | null /* ptr */,
-  Reserved: Deno.PointerValue | Uint8Array | null /* ptr */,
-): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWS2_32.WSAConnectByList(util.toPointer(s), util.toPointer(SocketAddress), util.toPointer(LocalAddressLength), util.toPointer(LocalAddress), util.toPointer(RemoteAddressLength), util.toPointer(RemoteAddress), util.toPointer(timeout), util.toPointer(Reserved)));
-}
-
-export function WSACreateEvent(): Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */ {
-  return util.pointerFromFfi(libWS2_32.WSACreateEvent());
-}
-
-export function WSADuplicateSocketA(
-  s: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Networking.WinSock.SOCKET */,
-  dwProcessId: number /* u32 */,
-  lpProtocolInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
-): number /* i32 */ {
-  return libWS2_32.WSADuplicateSocketA(util.toPointer(s), dwProcessId, util.toPointer(lpProtocolInfo));
-}
-
-export function WSADuplicateSocketW(
-  s: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Networking.WinSock.SOCKET */,
-  dwProcessId: number /* u32 */,
-  lpProtocolInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
-): number /* i32 */ {
-  return libWS2_32.WSADuplicateSocketW(util.toPointer(s), dwProcessId, util.toPointer(lpProtocolInfo));
-}
-
-export function WSAEnumNetworkEvents(
-  s: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Networking.WinSock.SOCKET */,
-  hEventObject: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  lpNetworkEvents: Deno.PointerValue | Uint8Array | null /* ptr */,
-): number /* i32 */ {
-  return libWS2_32.WSAEnumNetworkEvents(util.toPointer(s), util.toPointer(hEventObject), util.toPointer(lpNetworkEvents));
-}
-
-export function WSAEnumProtocolsA(
-  lpiProtocols: Deno.PointerValue | Uint8Array | null /* ptr */,
-  lpProtocolBuffer: Deno.PointerValue | Uint8Array | null /* ptr */,
-  lpdwBufferLength: Deno.PointerValue | Uint8Array | null /* ptr */,
-): number /* i32 */ {
-  return libWS2_32.WSAEnumProtocolsA(util.toPointer(lpiProtocols), util.toPointer(lpProtocolBuffer), util.toPointer(lpdwBufferLength));
-}
-
-export function WSAEnumProtocolsW(
-  lpiProtocols: Deno.PointerValue | Uint8Array | null /* ptr */,
-  lpProtocolBuffer: Deno.PointerValue | Uint8Array | null /* ptr */,
-  lpdwBufferLength: Deno.PointerValue | Uint8Array | null /* ptr */,
-): number /* i32 */ {
-  return libWS2_32.WSAEnumProtocolsW(util.toPointer(lpiProtocols), util.toPointer(lpProtocolBuffer), util.toPointer(lpdwBufferLength));
-}
-
-export function WSAEventSelect(
-  s: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Networking.WinSock.SOCKET */,
-  hEventObject: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  lNetworkEvents: number /* i32 */,
-): number /* i32 */ {
-  return libWS2_32.WSAEventSelect(util.toPointer(s), util.toPointer(hEventObject), lNetworkEvents);
-}
-
-export function WSAGetOverlappedResult(
-  s: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Networking.WinSock.SOCKET */,
-  lpOverlapped: Deno.PointerValue | Uint8Array | null /* ptr */,
-  lpcbTransfer: Deno.PointerValue | Uint8Array | null /* ptr */,
-  fWait: boolean /* Windows.Win32.Foundation.BOOL */,
-  lpdwFlags: Deno.PointerValue | Uint8Array | null /* ptr */,
-): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWS2_32.WSAGetOverlappedResult(util.toPointer(s), util.toPointer(lpOverlapped), util.toPointer(lpcbTransfer), util.boolToFfi(fWait), util.toPointer(lpdwFlags)));
-}
-
-export function WSAGetQOSByName(
-  s: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Networking.WinSock.SOCKET */,
-  lpQOSName: Deno.PointerValue | Uint8Array | null /* ptr */,
-  lpQOS: Deno.PointerValue | Uint8Array | null /* ptr */,
-): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWS2_32.WSAGetQOSByName(util.toPointer(s), util.toPointer(lpQOSName), util.toPointer(lpQOS)));
-}
-
-export function WSAHtonl(
-  s: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Networking.WinSock.SOCKET */,
-  hostlong: number /* u32 */,
-  lpnetlong: Deno.PointerValue | Uint8Array | null /* ptr */,
-): number /* i32 */ {
-  return libWS2_32.WSAHtonl(util.toPointer(s), hostlong, util.toPointer(lpnetlong));
-}
-
-export function WSAHtons(
-  s: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Networking.WinSock.SOCKET */,
-  hostshort: number /* u16 */,
-  lpnetshort: Deno.PointerValue | Uint8Array | null /* ptr */,
-): number /* i32 */ {
-  return libWS2_32.WSAHtons(util.toPointer(s), hostshort, util.toPointer(lpnetshort));
-}
-
-export function WSAIoctl(
-  s: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Networking.WinSock.SOCKET */,
-  dwIoControlCode: number /* u32 */,
-  lpvInBuffer: Deno.PointerValue | Uint8Array | null /* ptr */,
-  cbInBuffer: number /* u32 */,
-  lpvOutBuffer: Deno.PointerValue | Uint8Array | null /* ptr */,
-  cbOutBuffer: number /* u32 */,
-  lpcbBytesReturned: Deno.PointerValue | Uint8Array | null /* ptr */,
-  lpOverlapped: Deno.PointerValue | Uint8Array | null /* ptr */,
-  lpCompletionRoutine: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Networking.WinSock.LPWSAOVERLAPPED_COMPLETION_ROUTINE */,
-): number /* i32 */ {
-  return libWS2_32.WSAIoctl(util.toPointer(s), dwIoControlCode, util.toPointer(lpvInBuffer), cbInBuffer, util.toPointer(lpvOutBuffer), cbOutBuffer, util.toPointer(lpcbBytesReturned), util.toPointer(lpOverlapped), util.toPointer(lpCompletionRoutine));
-}
-
-export function WSAJoinLeaf(
-  s: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Networking.WinSock.SOCKET */,
-  name: Deno.PointerValue | Uint8Array | null /* ptr */,
-  namelen: number /* i32 */,
-  lpCallerData: Deno.PointerValue | Uint8Array | null /* ptr */,
-  lpCalleeData: Deno.PointerValue | Uint8Array | null /* ptr */,
-  lpSQOS: Deno.PointerValue | Uint8Array | null /* ptr */,
-  lpGQOS: Deno.PointerValue | Uint8Array | null /* ptr */,
-  dwFlags: number /* u32 */,
-): Deno.PointerValue | null /* Windows.Win32.Networking.WinSock.SOCKET */ {
-  return util.pointerFromFfi(libWS2_32.WSAJoinLeaf(util.toPointer(s), util.toPointer(name), namelen, util.toPointer(lpCallerData), util.toPointer(lpCalleeData), util.toPointer(lpSQOS), util.toPointer(lpGQOS), dwFlags));
-}
-
-export function WSANtohl(
-  s: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Networking.WinSock.SOCKET */,
-  netlong: number /* u32 */,
-  lphostlong: Deno.PointerValue | Uint8Array | null /* ptr */,
-): number /* i32 */ {
-  return libWS2_32.WSANtohl(util.toPointer(s), netlong, util.toPointer(lphostlong));
-}
-
-export function WSANtohs(
-  s: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Networking.WinSock.SOCKET */,
-  netshort: number /* u16 */,
-  lphostshort: Deno.PointerValue | Uint8Array | null /* ptr */,
-): number /* i32 */ {
-  return libWS2_32.WSANtohs(util.toPointer(s), netshort, util.toPointer(lphostshort));
-}
-
-export function WSARecv(
-  s: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Networking.WinSock.SOCKET */,
-  lpBuffers: Deno.PointerValue | Uint8Array | null /* ptr */,
-  dwBufferCount: number /* u32 */,
-  lpNumberOfBytesRecvd: Deno.PointerValue | Uint8Array | null /* ptr */,
-  lpFlags: Deno.PointerValue | Uint8Array | null /* ptr */,
-  lpOverlapped: Deno.PointerValue | Uint8Array | null /* ptr */,
-  lpCompletionRoutine: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Networking.WinSock.LPWSAOVERLAPPED_COMPLETION_ROUTINE */,
-): number /* i32 */ {
-  return libWS2_32.WSARecv(util.toPointer(s), util.toPointer(lpBuffers), dwBufferCount, util.toPointer(lpNumberOfBytesRecvd), util.toPointer(lpFlags), util.toPointer(lpOverlapped), util.toPointer(lpCompletionRoutine));
-}
-
-export function WSARecvDisconnect(
-  s: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Networking.WinSock.SOCKET */,
-  lpInboundDisconnectData: Deno.PointerValue | Uint8Array | null /* ptr */,
-): number /* i32 */ {
-  return libWS2_32.WSARecvDisconnect(util.toPointer(s), util.toPointer(lpInboundDisconnectData));
-}
-
-export function WSARecvFrom(
-  s: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Networking.WinSock.SOCKET */,
-  lpBuffers: Deno.PointerValue | Uint8Array | null /* ptr */,
-  dwBufferCount: number /* u32 */,
-  lpNumberOfBytesRecvd: Deno.PointerValue | Uint8Array | null /* ptr */,
-  lpFlags: Deno.PointerValue | Uint8Array | null /* ptr */,
-  lpFrom: Deno.PointerValue | Uint8Array | null /* ptr */,
-  lpFromlen: Deno.PointerValue | Uint8Array | null /* ptr */,
-  lpOverlapped: Deno.PointerValue | Uint8Array | null /* ptr */,
-  lpCompletionRoutine: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Networking.WinSock.LPWSAOVERLAPPED_COMPLETION_ROUTINE */,
-): number /* i32 */ {
-  return libWS2_32.WSARecvFrom(util.toPointer(s), util.toPointer(lpBuffers), dwBufferCount, util.toPointer(lpNumberOfBytesRecvd), util.toPointer(lpFlags), util.toPointer(lpFrom), util.toPointer(lpFromlen), util.toPointer(lpOverlapped), util.toPointer(lpCompletionRoutine));
-}
-
-export function WSAResetEvent(
-  hEvent: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWS2_32.WSAResetEvent(util.toPointer(hEvent)));
-}
-
-export function WSASend(
-  s: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Networking.WinSock.SOCKET */,
-  lpBuffers: Deno.PointerValue | Uint8Array | null /* ptr */,
-  dwBufferCount: number /* u32 */,
-  lpNumberOfBytesSent: Deno.PointerValue | Uint8Array | null /* ptr */,
-  dwFlags: number /* u32 */,
-  lpOverlapped: Deno.PointerValue | Uint8Array | null /* ptr */,
-  lpCompletionRoutine: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Networking.WinSock.LPWSAOVERLAPPED_COMPLETION_ROUTINE */,
-): number /* i32 */ {
-  return libWS2_32.WSASend(util.toPointer(s), util.toPointer(lpBuffers), dwBufferCount, util.toPointer(lpNumberOfBytesSent), dwFlags, util.toPointer(lpOverlapped), util.toPointer(lpCompletionRoutine));
-}
-
-export function WSASendMsg(
-  Handle: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Networking.WinSock.SOCKET */,
-  lpMsg: Deno.PointerValue | Uint8Array | null /* ptr */,
-  dwFlags: number /* u32 */,
-  lpNumberOfBytesSent: Deno.PointerValue | Uint8Array | null /* ptr */,
-  lpOverlapped: Deno.PointerValue | Uint8Array | null /* ptr */,
-  lpCompletionRoutine: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Networking.WinSock.LPWSAOVERLAPPED_COMPLETION_ROUTINE */,
-): number /* i32 */ {
-  return libWS2_32.WSASendMsg(util.toPointer(Handle), util.toPointer(lpMsg), dwFlags, util.toPointer(lpNumberOfBytesSent), util.toPointer(lpOverlapped), util.toPointer(lpCompletionRoutine));
-}
-
-export function WSASendDisconnect(
-  s: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Networking.WinSock.SOCKET */,
-  lpOutboundDisconnectData: Deno.PointerValue | Uint8Array | null /* ptr */,
-): number /* i32 */ {
-  return libWS2_32.WSASendDisconnect(util.toPointer(s), util.toPointer(lpOutboundDisconnectData));
-}
-
-export function WSASendTo(
-  s: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Networking.WinSock.SOCKET */,
-  lpBuffers: Deno.PointerValue | Uint8Array | null /* ptr */,
-  dwBufferCount: number /* u32 */,
-  lpNumberOfBytesSent: Deno.PointerValue | Uint8Array | null /* ptr */,
-  dwFlags: number /* u32 */,
-  lpTo: Deno.PointerValue | Uint8Array | null /* ptr */,
-  iTolen: number /* i32 */,
-  lpOverlapped: Deno.PointerValue | Uint8Array | null /* ptr */,
-  lpCompletionRoutine: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Networking.WinSock.LPWSAOVERLAPPED_COMPLETION_ROUTINE */,
-): number /* i32 */ {
-  return libWS2_32.WSASendTo(util.toPointer(s), util.toPointer(lpBuffers), dwBufferCount, util.toPointer(lpNumberOfBytesSent), dwFlags, util.toPointer(lpTo), iTolen, util.toPointer(lpOverlapped), util.toPointer(lpCompletionRoutine));
-}
-
-export function WSASetEvent(
-  hEvent: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWS2_32.WSASetEvent(util.toPointer(hEvent)));
-}
-
-export function WSASocketA(
-  af: number /* i32 */,
-  type: number /* i32 */,
-  protocol: number /* i32 */,
-  lpProtocolInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
-  g: number /* u32 */,
-  dwFlags: number /* u32 */,
-): Deno.PointerValue | null /* Windows.Win32.Networking.WinSock.SOCKET */ {
-  return util.pointerFromFfi(libWS2_32.WSASocketA(af, type, protocol, util.toPointer(lpProtocolInfo), g, dwFlags));
-}
-
-export function WSASocketW(
-  af: number /* i32 */,
-  type: number /* i32 */,
-  protocol: number /* i32 */,
-  lpProtocolInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
-  g: number /* u32 */,
-  dwFlags: number /* u32 */,
-): Deno.PointerValue | null /* Windows.Win32.Networking.WinSock.SOCKET */ {
-  return util.pointerFromFfi(libWS2_32.WSASocketW(af, type, protocol, util.toPointer(lpProtocolInfo), g, dwFlags));
-}
-
-export function WSAWaitForMultipleEvents(
-  cEvents: number /* u32 */,
-  lphEvents: Deno.PointerValue | Uint8Array | null /* ptr */,
-  fWaitAll: boolean /* Windows.Win32.Foundation.BOOL */,
-  dwTimeout: number /* u32 */,
-  fAlertable: boolean /* Windows.Win32.Foundation.BOOL */,
-): number /* u32 */ {
-  return libWS2_32.WSAWaitForMultipleEvents(cEvents, util.toPointer(lphEvents), util.boolToFfi(fWaitAll), dwTimeout, util.boolToFfi(fAlertable));
-}
-
-export function WSAAddressToStringA(
-  lpsaAddress: Deno.PointerValue | Uint8Array | null /* ptr */,
-  dwAddressLength: number /* u32 */,
-  lpProtocolInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
-  lpszAddressString: string | null /* Windows.Win32.Foundation.PSTR */,
-  lpdwAddressStringLength: Deno.PointerValue | Uint8Array | null /* ptr */,
-): number /* i32 */ {
-  return libWS2_32.WSAAddressToStringA(util.toPointer(lpsaAddress), dwAddressLength, util.toPointer(lpProtocolInfo), util.pstrToFfi(lpszAddressString), util.toPointer(lpdwAddressStringLength));
-}
-
-export function WSAAddressToStringW(
-  lpsaAddress: Deno.PointerValue | Uint8Array | null /* ptr */,
-  dwAddressLength: number /* u32 */,
-  lpProtocolInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
-  lpszAddressString: string | null /* Windows.Win32.Foundation.PWSTR */,
-  lpdwAddressStringLength: Deno.PointerValue | Uint8Array | null /* ptr */,
-): number /* i32 */ {
-  return libWS2_32.WSAAddressToStringW(util.toPointer(lpsaAddress), dwAddressLength, util.toPointer(lpProtocolInfo), util.pwstrToFfi(lpszAddressString), util.toPointer(lpdwAddressStringLength));
-}
-
-export function WSAStringToAddressA(
-  AddressString: string | null /* Windows.Win32.Foundation.PSTR */,
-  AddressFamily: number /* i32 */,
-  lpProtocolInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
-  lpAddress: Deno.PointerValue | Uint8Array | null /* ptr */,
-  lpAddressLength: Deno.PointerValue | Uint8Array | null /* ptr */,
-): number /* i32 */ {
-  return libWS2_32.WSAStringToAddressA(util.pstrToFfi(AddressString), AddressFamily, util.toPointer(lpProtocolInfo), util.toPointer(lpAddress), util.toPointer(lpAddressLength));
-}
-
-export function WSAStringToAddressW(
-  AddressString: string | null /* Windows.Win32.Foundation.PWSTR */,
-  AddressFamily: number /* i32 */,
-  lpProtocolInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
-  lpAddress: Deno.PointerValue | Uint8Array | null /* ptr */,
-  lpAddressLength: Deno.PointerValue | Uint8Array | null /* ptr */,
-): number /* i32 */ {
-  return libWS2_32.WSAStringToAddressW(util.pwstrToFfi(AddressString), AddressFamily, util.toPointer(lpProtocolInfo), util.toPointer(lpAddress), util.toPointer(lpAddressLength));
-}
-
-export function WSALookupServiceBeginA(
-  lpqsRestrictions: Deno.PointerValue | Uint8Array | null /* ptr */,
-  dwControlFlags: number /* u32 */,
-  lphLookup: Deno.PointerValue | Uint8Array | null /* ptr */,
-): number /* i32 */ {
-  return libWS2_32.WSALookupServiceBeginA(util.toPointer(lpqsRestrictions), dwControlFlags, util.toPointer(lphLookup));
-}
-
-export function WSALookupServiceBeginW(
-  lpqsRestrictions: Deno.PointerValue | Uint8Array | null /* ptr */,
-  dwControlFlags: number /* u32 */,
-  lphLookup: Deno.PointerValue | Uint8Array | null /* ptr */,
-): number /* i32 */ {
-  return libWS2_32.WSALookupServiceBeginW(util.toPointer(lpqsRestrictions), dwControlFlags, util.toPointer(lphLookup));
-}
-
-export function WSALookupServiceNextA(
-  hLookup: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  dwControlFlags: number /* u32 */,
-  lpdwBufferLength: Deno.PointerValue | Uint8Array | null /* ptr */,
-  lpqsResults: Deno.PointerValue | Uint8Array | null /* ptr */,
-): number /* i32 */ {
-  return libWS2_32.WSALookupServiceNextA(util.toPointer(hLookup), dwControlFlags, util.toPointer(lpdwBufferLength), util.toPointer(lpqsResults));
-}
-
-export function WSALookupServiceNextW(
-  hLookup: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  dwControlFlags: number /* u32 */,
-  lpdwBufferLength: Deno.PointerValue | Uint8Array | null /* ptr */,
-  lpqsResults: Deno.PointerValue | Uint8Array | null /* ptr */,
-): number /* i32 */ {
-  return libWS2_32.WSALookupServiceNextW(util.toPointer(hLookup), dwControlFlags, util.toPointer(lpdwBufferLength), util.toPointer(lpqsResults));
-}
-
-export function WSANSPIoctl(
-  hLookup: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  dwControlCode: number /* u32 */,
-  lpvInBuffer: Deno.PointerValue | Uint8Array | null /* ptr */,
-  cbInBuffer: number /* u32 */,
-  lpvOutBuffer: Deno.PointerValue | Uint8Array | null /* ptr */,
-  cbOutBuffer: number /* u32 */,
-  lpcbBytesReturned: Deno.PointerValue | Uint8Array | null /* ptr */,
-  lpCompletion: Deno.PointerValue | Uint8Array | null /* ptr */,
-): number /* i32 */ {
-  return libWS2_32.WSANSPIoctl(util.toPointer(hLookup), dwControlCode, util.toPointer(lpvInBuffer), cbInBuffer, util.toPointer(lpvOutBuffer), cbOutBuffer, util.toPointer(lpcbBytesReturned), util.toPointer(lpCompletion));
-}
-
-export function WSALookupServiceEnd(
-  hLookup: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-): number /* i32 */ {
-  return libWS2_32.WSALookupServiceEnd(util.toPointer(hLookup));
-}
-
-export function WSAInstallServiceClassA(
-  lpServiceClassInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
-): number /* i32 */ {
-  return libWS2_32.WSAInstallServiceClassA(util.toPointer(lpServiceClassInfo));
-}
-
-export function WSAInstallServiceClassW(
-  lpServiceClassInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
-): number /* i32 */ {
-  return libWS2_32.WSAInstallServiceClassW(util.toPointer(lpServiceClassInfo));
-}
-
-export function WSARemoveServiceClass(
-  lpServiceClassId: Deno.PointerValue | Uint8Array | null /* ptr */,
-): number /* i32 */ {
-  return libWS2_32.WSARemoveServiceClass(util.toPointer(lpServiceClassId));
-}
-
-export function WSAGetServiceClassInfoA(
-  lpProviderId: Deno.PointerValue | Uint8Array | null /* ptr */,
-  lpServiceClassId: Deno.PointerValue | Uint8Array | null /* ptr */,
-  lpdwBufSize: Deno.PointerValue | Uint8Array | null /* ptr */,
-  lpServiceClassInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
-): number /* i32 */ {
-  return libWS2_32.WSAGetServiceClassInfoA(util.toPointer(lpProviderId), util.toPointer(lpServiceClassId), util.toPointer(lpdwBufSize), util.toPointer(lpServiceClassInfo));
-}
-
-export function WSAGetServiceClassInfoW(
-  lpProviderId: Deno.PointerValue | Uint8Array | null /* ptr */,
-  lpServiceClassId: Deno.PointerValue | Uint8Array | null /* ptr */,
-  lpdwBufSize: Deno.PointerValue | Uint8Array | null /* ptr */,
-  lpServiceClassInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
-): number /* i32 */ {
-  return libWS2_32.WSAGetServiceClassInfoW(util.toPointer(lpProviderId), util.toPointer(lpServiceClassId), util.toPointer(lpdwBufSize), util.toPointer(lpServiceClassInfo));
-}
-
-export function WSAEnumNameSpaceProvidersA(
-  lpdwBufferLength: Deno.PointerValue | Uint8Array | null /* ptr */,
-  lpnspBuffer: Deno.PointerValue | Uint8Array | null /* ptr */,
-): number /* i32 */ {
-  return libWS2_32.WSAEnumNameSpaceProvidersA(util.toPointer(lpdwBufferLength), util.toPointer(lpnspBuffer));
-}
-
-export function WSAEnumNameSpaceProvidersW(
-  lpdwBufferLength: Deno.PointerValue | Uint8Array | null /* ptr */,
-  lpnspBuffer: Deno.PointerValue | Uint8Array | null /* ptr */,
-): number /* i32 */ {
-  return libWS2_32.WSAEnumNameSpaceProvidersW(util.toPointer(lpdwBufferLength), util.toPointer(lpnspBuffer));
-}
-
-export function WSAEnumNameSpaceProvidersExA(
-  lpdwBufferLength: Deno.PointerValue | Uint8Array | null /* ptr */,
-  lpnspBuffer: Deno.PointerValue | Uint8Array | null /* ptr */,
-): number /* i32 */ {
-  return libWS2_32.WSAEnumNameSpaceProvidersExA(util.toPointer(lpdwBufferLength), util.toPointer(lpnspBuffer));
-}
-
-export function WSAEnumNameSpaceProvidersExW(
-  lpdwBufferLength: Deno.PointerValue | Uint8Array | null /* ptr */,
-  lpnspBuffer: Deno.PointerValue | Uint8Array | null /* ptr */,
-): number /* i32 */ {
-  return libWS2_32.WSAEnumNameSpaceProvidersExW(util.toPointer(lpdwBufferLength), util.toPointer(lpnspBuffer));
-}
-
-export function WSAGetServiceClassNameByClassIdA(
-  lpServiceClassId: Deno.PointerValue | Uint8Array | null /* ptr */,
-  lpszServiceClassName: string | null /* Windows.Win32.Foundation.PSTR */,
-  lpdwBufferLength: Deno.PointerValue | Uint8Array | null /* ptr */,
-): number /* i32 */ {
-  return libWS2_32.WSAGetServiceClassNameByClassIdA(util.toPointer(lpServiceClassId), util.pstrToFfi(lpszServiceClassName), util.toPointer(lpdwBufferLength));
-}
-
-export function WSAGetServiceClassNameByClassIdW(
-  lpServiceClassId: Deno.PointerValue | Uint8Array | null /* ptr */,
-  lpszServiceClassName: string | null /* Windows.Win32.Foundation.PWSTR */,
-  lpdwBufferLength: Deno.PointerValue | Uint8Array | null /* ptr */,
-): number /* i32 */ {
-  return libWS2_32.WSAGetServiceClassNameByClassIdW(util.toPointer(lpServiceClassId), util.pwstrToFfi(lpszServiceClassName), util.toPointer(lpdwBufferLength));
-}
-
-export function WSASetServiceA(
-  lpqsRegInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
-  essoperation: WSAESETSERVICEOP /* Windows.Win32.Networking.WinSock.WSAESETSERVICEOP */,
-  dwControlFlags: number /* u32 */,
-): number /* i32 */ {
-  return libWS2_32.WSASetServiceA(util.toPointer(lpqsRegInfo), essoperation, dwControlFlags);
-}
-
-export function WSASetServiceW(
-  lpqsRegInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
-  essoperation: WSAESETSERVICEOP /* Windows.Win32.Networking.WinSock.WSAESETSERVICEOP */,
-  dwControlFlags: number /* u32 */,
-): number /* i32 */ {
-  return libWS2_32.WSASetServiceW(util.toPointer(lpqsRegInfo), essoperation, dwControlFlags);
-}
-
-export function WSAProviderConfigChange(
-  lpNotificationHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
-  lpOverlapped: Deno.PointerValue | Uint8Array | null /* ptr */,
-  lpCompletionRoutine: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Networking.WinSock.LPWSAOVERLAPPED_COMPLETION_ROUTINE */,
-): number /* i32 */ {
-  return libWS2_32.WSAProviderConfigChange(util.toPointer(lpNotificationHandle), util.toPointer(lpOverlapped), util.toPointer(lpCompletionRoutine));
-}
-
-export function WSAPoll(
-  fdArray: Deno.PointerValue | Uint8Array | null /* ptr */,
-  fds: number /* u32 */,
-  timeout: number /* i32 */,
-): number /* i32 */ {
-  return libWS2_32.WSAPoll(util.toPointer(fdArray), fds, timeout);
-}
-
-export function ProcessSocketNotifications(
-  completionPort: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  registrationCount: number /* u32 */,
-  registrationInfos: Deno.PointerValue | Uint8Array | null /* ptr */,
-  timeoutMs: number /* u32 */,
-  completionCount: number /* u32 */,
-  completionPortEntries: Deno.PointerValue | Uint8Array | null /* ptr */,
-  receivedEntryCount: Deno.PointerValue | Uint8Array | null /* ptr */,
-): number /* u32 */ {
-  return libWS2_32.ProcessSocketNotifications(util.toPointer(completionPort), registrationCount, util.toPointer(registrationInfos), timeoutMs, completionCount, util.toPointer(completionPortEntries), util.toPointer(receivedEntryCount));
-}
-
-export function RtlIpv4AddressToStringA(
-  Addr: Deno.PointerValue | Uint8Array | null /* ptr */,
-  S: string | null /* Windows.Win32.Foundation.PSTR */,
-): string | null /* Windows.Win32.Foundation.PSTR */ {
-  return util.pstrFromFfi(libntdll.RtlIpv4AddressToStringA(util.toPointer(Addr), util.pstrToFfi(S)));
-}
-
-export function RtlIpv4AddressToStringExA(
-  Address: Deno.PointerValue | Uint8Array | null /* ptr */,
-  Port: number /* u16 */,
-  AddressString: string | null /* Windows.Win32.Foundation.PSTR */,
-  AddressStringLength: Deno.PointerValue | Uint8Array | null /* ptr */,
-): number /* i32 */ {
-  return libntdll.RtlIpv4AddressToStringExA(util.toPointer(Address), Port, util.pstrToFfi(AddressString), util.toPointer(AddressStringLength));
-}
-
-export function RtlIpv4AddressToStringW(
-  Addr: Deno.PointerValue | Uint8Array | null /* ptr */,
-  S: string | null /* Windows.Win32.Foundation.PWSTR */,
-): string | null /* Windows.Win32.Foundation.PWSTR */ {
-  return util.pwstrFromFfi(libntdll.RtlIpv4AddressToStringW(util.toPointer(Addr), util.pwstrToFfi(S)));
-}
-
-export function RtlIpv4AddressToStringExW(
-  Address: Deno.PointerValue | Uint8Array | null /* ptr */,
-  Port: number /* u16 */,
-  AddressString: string | null /* Windows.Win32.Foundation.PWSTR */,
-  AddressStringLength: Deno.PointerValue | Uint8Array | null /* ptr */,
-): number /* i32 */ {
-  return libntdll.RtlIpv4AddressToStringExW(util.toPointer(Address), Port, util.pwstrToFfi(AddressString), util.toPointer(AddressStringLength));
-}
-
-export function RtlIpv4StringToAddressA(
-  S: string | null /* Windows.Win32.Foundation.PSTR */,
-  Strict: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.BOOLEAN */,
-  Terminator: Deno.PointerValue | Uint8Array | null /* ptr */,
-  Addr: Deno.PointerValue | Uint8Array | null /* ptr */,
-): number /* i32 */ {
-  return libntdll.RtlIpv4StringToAddressA(util.pstrToFfi(S), util.toPointer(Strict), util.toPointer(Terminator), util.toPointer(Addr));
-}
-
-export function RtlIpv4StringToAddressExA(
-  AddressString: string | null /* Windows.Win32.Foundation.PSTR */,
-  Strict: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.BOOLEAN */,
-  Address: Deno.PointerValue | Uint8Array | null /* ptr */,
-  Port: Deno.PointerValue | Uint8Array | null /* ptr */,
-): number /* i32 */ {
-  return libntdll.RtlIpv4StringToAddressExA(util.pstrToFfi(AddressString), util.toPointer(Strict), util.toPointer(Address), util.toPointer(Port));
-}
-
-export function RtlIpv4StringToAddressW(
-  S: string | null /* Windows.Win32.Foundation.PWSTR */,
-  Strict: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.BOOLEAN */,
-  Terminator: Deno.PointerValue | Uint8Array | null /* ptr */,
-  Addr: Deno.PointerValue | Uint8Array | null /* ptr */,
-): number /* i32 */ {
-  return libntdll.RtlIpv4StringToAddressW(util.pwstrToFfi(S), util.toPointer(Strict), util.toPointer(Terminator), util.toPointer(Addr));
-}
-
-export function RtlIpv4StringToAddressExW(
-  AddressString: string | null /* Windows.Win32.Foundation.PWSTR */,
-  Strict: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.BOOLEAN */,
-  Address: Deno.PointerValue | Uint8Array | null /* ptr */,
-  Port: Deno.PointerValue | Uint8Array | null /* ptr */,
-): number /* i32 */ {
-  return libntdll.RtlIpv4StringToAddressExW(util.pwstrToFfi(AddressString), util.toPointer(Strict), util.toPointer(Address), util.toPointer(Port));
-}
-
-export function RtlIpv6AddressToStringA(
-  Addr: Deno.PointerValue | Uint8Array | null /* ptr */,
-  S: string | null /* Windows.Win32.Foundation.PSTR */,
-): string | null /* Windows.Win32.Foundation.PSTR */ {
-  return util.pstrFromFfi(libntdll.RtlIpv6AddressToStringA(util.toPointer(Addr), util.pstrToFfi(S)));
-}
-
-export function RtlIpv6AddressToStringExA(
-  Address: Deno.PointerValue | Uint8Array | null /* ptr */,
-  ScopeId: number /* u32 */,
-  Port: number /* u16 */,
-  AddressString: string | null /* Windows.Win32.Foundation.PSTR */,
-  AddressStringLength: Deno.PointerValue | Uint8Array | null /* ptr */,
-): number /* i32 */ {
-  return libntdll.RtlIpv6AddressToStringExA(util.toPointer(Address), ScopeId, Port, util.pstrToFfi(AddressString), util.toPointer(AddressStringLength));
-}
-
-export function RtlIpv6AddressToStringW(
-  Addr: Deno.PointerValue | Uint8Array | null /* ptr */,
-  S: string | null /* Windows.Win32.Foundation.PWSTR */,
-): string | null /* Windows.Win32.Foundation.PWSTR */ {
-  return util.pwstrFromFfi(libntdll.RtlIpv6AddressToStringW(util.toPointer(Addr), util.pwstrToFfi(S)));
-}
-
-export function RtlIpv6AddressToStringExW(
-  Address: Deno.PointerValue | Uint8Array | null /* ptr */,
-  ScopeId: number /* u32 */,
-  Port: number /* u16 */,
-  AddressString: string | null /* Windows.Win32.Foundation.PWSTR */,
-  AddressStringLength: Deno.PointerValue | Uint8Array | null /* ptr */,
-): number /* i32 */ {
-  return libntdll.RtlIpv6AddressToStringExW(util.toPointer(Address), ScopeId, Port, util.pwstrToFfi(AddressString), util.toPointer(AddressStringLength));
-}
-
-export function RtlIpv6StringToAddressA(
-  S: string | null /* Windows.Win32.Foundation.PSTR */,
-  Terminator: Deno.PointerValue | Uint8Array | null /* ptr */,
-  Addr: Deno.PointerValue | Uint8Array | null /* ptr */,
-): number /* i32 */ {
-  return libntdll.RtlIpv6StringToAddressA(util.pstrToFfi(S), util.toPointer(Terminator), util.toPointer(Addr));
-}
-
-export function RtlIpv6StringToAddressExA(
-  AddressString: string | null /* Windows.Win32.Foundation.PSTR */,
-  Address: Deno.PointerValue | Uint8Array | null /* ptr */,
-  ScopeId: Deno.PointerValue | Uint8Array | null /* ptr */,
-  Port: Deno.PointerValue | Uint8Array | null /* ptr */,
-): number /* i32 */ {
-  return libntdll.RtlIpv6StringToAddressExA(util.pstrToFfi(AddressString), util.toPointer(Address), util.toPointer(ScopeId), util.toPointer(Port));
-}
-
-export function RtlIpv6StringToAddressW(
-  S: string | null /* Windows.Win32.Foundation.PWSTR */,
-  Terminator: Deno.PointerValue | Uint8Array | null /* ptr */,
-  Addr: Deno.PointerValue | Uint8Array | null /* ptr */,
-): number /* i32 */ {
-  return libntdll.RtlIpv6StringToAddressW(util.pwstrToFfi(S), util.toPointer(Terminator), util.toPointer(Addr));
-}
-
-export function RtlIpv6StringToAddressExW(
-  AddressString: string | null /* Windows.Win32.Foundation.PWSTR */,
-  Address: Deno.PointerValue | Uint8Array | null /* ptr */,
-  ScopeId: Deno.PointerValue | Uint8Array | null /* ptr */,
-  Port: Deno.PointerValue | Uint8Array | null /* ptr */,
-): number /* i32 */ {
-  return libntdll.RtlIpv6StringToAddressExW(util.pwstrToFfi(AddressString), util.toPointer(Address), util.toPointer(ScopeId), util.toPointer(Port));
-}
-
-export function RtlEthernetAddressToStringA(
-  Addr: Deno.PointerValue | Uint8Array | null /* ptr */,
-  S: string | null /* Windows.Win32.Foundation.PSTR */,
-): string | null /* Windows.Win32.Foundation.PSTR */ {
-  return util.pstrFromFfi(libntdll.RtlEthernetAddressToStringA(util.toPointer(Addr), util.pstrToFfi(S)));
-}
-
-export function RtlEthernetAddressToStringW(
-  Addr: Deno.PointerValue | Uint8Array | null /* ptr */,
-  S: string | null /* Windows.Win32.Foundation.PWSTR */,
-): string | null /* Windows.Win32.Foundation.PWSTR */ {
-  return util.pwstrFromFfi(libntdll.RtlEthernetAddressToStringW(util.toPointer(Addr), util.pwstrToFfi(S)));
-}
-
-export function RtlEthernetStringToAddressA(
-  S: string | null /* Windows.Win32.Foundation.PSTR */,
-  Terminator: Deno.PointerValue | Uint8Array | null /* ptr */,
-  Addr: Deno.PointerValue | Uint8Array | null /* ptr */,
-): number /* i32 */ {
-  return libntdll.RtlEthernetStringToAddressA(util.pstrToFfi(S), util.toPointer(Terminator), util.toPointer(Addr));
-}
-
-export function RtlEthernetStringToAddressW(
-  S: string | null /* Windows.Win32.Foundation.PWSTR */,
-  Terminator: Deno.PointerValue | Uint8Array | null /* ptr */,
-  Addr: Deno.PointerValue | Uint8Array | null /* ptr */,
-): number /* i32 */ {
-  return libntdll.RtlEthernetStringToAddressW(util.pwstrToFfi(S), util.toPointer(Terminator), util.toPointer(Addr));
-}
-
-export function WSARecvEx(
-  s: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Networking.WinSock.SOCKET */,
-  buf: string | null /* Windows.Win32.Foundation.PSTR */,
-  len: number /* i32 */,
-  flags: Deno.PointerValue | Uint8Array | null /* ptr */,
-): number /* i32 */ {
-  return libMSWSOCK.WSARecvEx(util.toPointer(s), util.pstrToFfi(buf), len, util.toPointer(flags));
-}
-
-export function TransmitFile(
-  hSocket: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Networking.WinSock.SOCKET */,
-  hFile: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  nNumberOfBytesToWrite: number /* u32 */,
-  nNumberOfBytesPerSend: number /* u32 */,
-  lpOverlapped: Deno.PointerValue | Uint8Array | null /* ptr */,
-  lpTransmitBuffers: Deno.PointerValue | Uint8Array | null /* ptr */,
-  dwReserved: number /* u32 */,
-): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libMSWSOCK.TransmitFile(util.toPointer(hSocket), util.toPointer(hFile), nNumberOfBytesToWrite, nNumberOfBytesPerSend, util.toPointer(lpOverlapped), util.toPointer(lpTransmitBuffers), dwReserved));
-}
-
-export function AcceptEx(
-  sListenSocket: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Networking.WinSock.SOCKET */,
-  sAcceptSocket: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Networking.WinSock.SOCKET */,
-  lpOutputBuffer: Deno.PointerValue | Uint8Array | null /* ptr */,
-  dwReceiveDataLength: number /* u32 */,
-  dwLocalAddressLength: number /* u32 */,
-  dwRemoteAddressLength: number /* u32 */,
-  lpdwBytesReceived: Deno.PointerValue | Uint8Array | null /* ptr */,
-  lpOverlapped: Deno.PointerValue | Uint8Array | null /* ptr */,
-): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libMSWSOCK.AcceptEx(util.toPointer(sListenSocket), util.toPointer(sAcceptSocket), util.toPointer(lpOutputBuffer), dwReceiveDataLength, dwLocalAddressLength, dwRemoteAddressLength, util.toPointer(lpdwBytesReceived), util.toPointer(lpOverlapped)));
-}
-
-export function GetAcceptExSockaddrs(
-  lpOutputBuffer: Deno.PointerValue | Uint8Array | null /* ptr */,
-  dwReceiveDataLength: number /* u32 */,
-  dwLocalAddressLength: number /* u32 */,
-  dwRemoteAddressLength: number /* u32 */,
-  LocalSockaddr: Deno.PointerValue | Uint8Array | null /* ptr */,
-  LocalSockaddrLength: Deno.PointerValue | Uint8Array | null /* ptr */,
-  RemoteSockaddr: Deno.PointerValue | Uint8Array | null /* ptr */,
-  RemoteSockaddrLength: Deno.PointerValue | Uint8Array | null /* ptr */,
-): void /* void */ {
-  return libMSWSOCK.GetAcceptExSockaddrs(util.toPointer(lpOutputBuffer), dwReceiveDataLength, dwLocalAddressLength, dwRemoteAddressLength, util.toPointer(LocalSockaddr), util.toPointer(LocalSockaddrLength), util.toPointer(RemoteSockaddr), util.toPointer(RemoteSockaddrLength));
-}
-
-export function WSCEnumProtocols(
-  lpiProtocols: Deno.PointerValue | Uint8Array | null /* ptr */,
-  lpProtocolBuffer: Deno.PointerValue | Uint8Array | null /* ptr */,
-  lpdwBufferLength: Deno.PointerValue | Uint8Array | null /* ptr */,
-  lpErrno: Deno.PointerValue | Uint8Array | null /* ptr */,
-): number /* i32 */ {
-  return libWS2_32.WSCEnumProtocols(util.toPointer(lpiProtocols), util.toPointer(lpProtocolBuffer), util.toPointer(lpdwBufferLength), util.toPointer(lpErrno));
-}
-
 export function WSCEnumProtocols32(
   lpiProtocols: Deno.PointerValue | Uint8Array | null /* ptr */,
   lpProtocolBuffer: Deno.PointerValue | Uint8Array | null /* ptr */,
   lpdwBufferLength: Deno.PointerValue | Uint8Array | null /* ptr */,
   lpErrno: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
-  return libWS2_32.WSCEnumProtocols32(util.toPointer(lpiProtocols), util.toPointer(lpProtocolBuffer), util.toPointer(lpdwBufferLength), util.toPointer(lpErrno));
-}
-
-export function WSCDeinstallProvider(
-  lpProviderId: Deno.PointerValue | Uint8Array | null /* ptr */,
-  lpErrno: Deno.PointerValue | Uint8Array | null /* ptr */,
-): number /* i32 */ {
-  return libWS2_32.WSCDeinstallProvider(util.toPointer(lpProviderId), util.toPointer(lpErrno));
+  return libWS2_32_dll.WSCEnumProtocols32(util.toPointer(lpiProtocols), util.toPointer(lpProtocolBuffer), util.toPointer(lpdwBufferLength), util.toPointer(lpErrno));
 }
 
 export function WSCDeinstallProvider32(
   lpProviderId: Deno.PointerValue | Uint8Array | null /* ptr */,
   lpErrno: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
-  return libWS2_32.WSCDeinstallProvider32(util.toPointer(lpProviderId), util.toPointer(lpErrno));
-}
-
-export function WSCInstallProvider(
-  lpProviderId: Deno.PointerValue | Uint8Array | null /* ptr */,
-  lpszProviderDllPath: string | null /* Windows.Win32.Foundation.PWSTR */,
-  lpProtocolInfoList: Deno.PointerValue | Uint8Array | null /* ptr */,
-  dwNumberOfEntries: number /* u32 */,
-  lpErrno: Deno.PointerValue | Uint8Array | null /* ptr */,
-): number /* i32 */ {
-  return libWS2_32.WSCInstallProvider(util.toPointer(lpProviderId), util.pwstrToFfi(lpszProviderDllPath), util.toPointer(lpProtocolInfoList), dwNumberOfEntries, util.toPointer(lpErrno));
+  return libWS2_32_dll.WSCDeinstallProvider32(util.toPointer(lpProviderId), util.toPointer(lpErrno));
 }
 
 export function WSCInstallProvider64_32(
@@ -11367,16 +12415,7 @@ export function WSCInstallProvider64_32(
   dwNumberOfEntries: number /* u32 */,
   lpErrno: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
-  return libWS2_32.WSCInstallProvider64_32(util.toPointer(lpProviderId), util.pwstrToFfi(lpszProviderDllPath), util.toPointer(lpProtocolInfoList), dwNumberOfEntries, util.toPointer(lpErrno));
-}
-
-export function WSCGetProviderPath(
-  lpProviderId: Deno.PointerValue | Uint8Array | null /* ptr */,
-  lpszProviderDllPath: string | null /* Windows.Win32.Foundation.PWSTR */,
-  lpProviderDllPathLen: Deno.PointerValue | Uint8Array | null /* ptr */,
-  lpErrno: Deno.PointerValue | Uint8Array | null /* ptr */,
-): number /* i32 */ {
-  return libWS2_32.WSCGetProviderPath(util.toPointer(lpProviderId), util.pwstrToFfi(lpszProviderDllPath), util.toPointer(lpProviderDllPathLen), util.toPointer(lpErrno));
+  return libWS2_32_dll.WSCInstallProvider64_32(util.toPointer(lpProviderId), util.pwstrToFfi(lpszProviderDllPath), util.toPointer(lpProtocolInfoList), dwNumberOfEntries, util.toPointer(lpErrno));
 }
 
 export function WSCGetProviderPath32(
@@ -11385,17 +12424,7 @@ export function WSCGetProviderPath32(
   lpProviderDllPathLen: Deno.PointerValue | Uint8Array | null /* ptr */,
   lpErrno: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
-  return libWS2_32.WSCGetProviderPath32(util.toPointer(lpProviderId), util.pwstrToFfi(lpszProviderDllPath), util.toPointer(lpProviderDllPathLen), util.toPointer(lpErrno));
-}
-
-export function WSCUpdateProvider(
-  lpProviderId: Deno.PointerValue | Uint8Array | null /* ptr */,
-  lpszProviderDllPath: string | null /* Windows.Win32.Foundation.PWSTR */,
-  lpProtocolInfoList: Deno.PointerValue | Uint8Array | null /* ptr */,
-  dwNumberOfEntries: number /* u32 */,
-  lpErrno: Deno.PointerValue | Uint8Array | null /* ptr */,
-): number /* i32 */ {
-  return libWS2_32.WSCUpdateProvider(util.toPointer(lpProviderId), util.pwstrToFfi(lpszProviderDllPath), util.toPointer(lpProtocolInfoList), dwNumberOfEntries, util.toPointer(lpErrno));
+  return libWS2_32_dll.WSCGetProviderPath32(util.toPointer(lpProviderId), util.pwstrToFfi(lpszProviderDllPath), util.toPointer(lpProviderDllPathLen), util.toPointer(lpErrno));
 }
 
 export function WSCUpdateProvider32(
@@ -11405,29 +12434,7 @@ export function WSCUpdateProvider32(
   dwNumberOfEntries: number /* u32 */,
   lpErrno: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
-  return libWS2_32.WSCUpdateProvider32(util.toPointer(lpProviderId), util.pwstrToFfi(lpszProviderDllPath), util.toPointer(lpProtocolInfoList), dwNumberOfEntries, util.toPointer(lpErrno));
-}
-
-export function WSCSetProviderInfo(
-  lpProviderId: Deno.PointerValue | Uint8Array | null /* ptr */,
-  InfoType: WSC_PROVIDER_INFO_TYPE /* Windows.Win32.Networking.WinSock.WSC_PROVIDER_INFO_TYPE */,
-  Info: Deno.PointerValue | Uint8Array | null /* ptr */,
-  InfoSize: Deno.PointerValue /* usize */,
-  Flags: number /* u32 */,
-  lpErrno: Deno.PointerValue | Uint8Array | null /* ptr */,
-): number /* i32 */ {
-  return libWS2_32.WSCSetProviderInfo(util.toPointer(lpProviderId), InfoType, util.toPointer(Info), InfoSize, Flags, util.toPointer(lpErrno));
-}
-
-export function WSCGetProviderInfo(
-  lpProviderId: Deno.PointerValue | Uint8Array | null /* ptr */,
-  InfoType: WSC_PROVIDER_INFO_TYPE /* Windows.Win32.Networking.WinSock.WSC_PROVIDER_INFO_TYPE */,
-  Info: Deno.PointerValue | Uint8Array | null /* ptr */,
-  InfoSize: Deno.PointerValue | Uint8Array | null /* ptr */,
-  Flags: number /* u32 */,
-  lpErrno: Deno.PointerValue | Uint8Array | null /* ptr */,
-): number /* i32 */ {
-  return libWS2_32.WSCGetProviderInfo(util.toPointer(lpProviderId), InfoType, util.toPointer(Info), util.toPointer(InfoSize), Flags, util.toPointer(lpErrno));
+  return libWS2_32_dll.WSCUpdateProvider32(util.toPointer(lpProviderId), util.pwstrToFfi(lpszProviderDllPath), util.toPointer(lpProtocolInfoList), dwNumberOfEntries, util.toPointer(lpErrno));
 }
 
 export function WSCSetProviderInfo32(
@@ -11438,7 +12445,7 @@ export function WSCSetProviderInfo32(
   Flags: number /* u32 */,
   lpErrno: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
-  return libWS2_32.WSCSetProviderInfo32(util.toPointer(lpProviderId), InfoType, util.toPointer(Info), InfoSize, Flags, util.toPointer(lpErrno));
+  return libWS2_32_dll.WSCSetProviderInfo32(util.toPointer(lpProviderId), InfoType, util.toPointer(Info), InfoSize, Flags, util.toPointer(lpErrno));
 }
 
 export function WSCGetProviderInfo32(
@@ -11449,64 +12456,21 @@ export function WSCGetProviderInfo32(
   Flags: number /* u32 */,
   lpErrno: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
-  return libWS2_32.WSCGetProviderInfo32(util.toPointer(lpProviderId), InfoType, util.toPointer(Info), util.toPointer(InfoSize), Flags, util.toPointer(lpErrno));
-}
-
-export function WSCSetApplicationCategory(
-  Path: string | null /* Windows.Win32.Foundation.PWSTR */,
-  PathLength: number /* u32 */,
-  Extra: string | null /* Windows.Win32.Foundation.PWSTR */,
-  ExtraLength: number /* u32 */,
-  PermittedLspCategories: number /* u32 */,
-  pPrevPermLspCat: Deno.PointerValue | Uint8Array | null /* ptr */,
-  lpErrno: Deno.PointerValue | Uint8Array | null /* ptr */,
-): number /* i32 */ {
-  return libWS2_32.WSCSetApplicationCategory(util.pwstrToFfi(Path), PathLength, util.pwstrToFfi(Extra), ExtraLength, PermittedLspCategories, util.toPointer(pPrevPermLspCat), util.toPointer(lpErrno));
-}
-
-export function WSCGetApplicationCategory(
-  Path: string | null /* Windows.Win32.Foundation.PWSTR */,
-  PathLength: number /* u32 */,
-  Extra: string | null /* Windows.Win32.Foundation.PWSTR */,
-  ExtraLength: number /* u32 */,
-  pPermittedLspCategories: Deno.PointerValue | Uint8Array | null /* ptr */,
-  lpErrno: Deno.PointerValue | Uint8Array | null /* ptr */,
-): number /* i32 */ {
-  return libWS2_32.WSCGetApplicationCategory(util.pwstrToFfi(Path), PathLength, util.pwstrToFfi(Extra), ExtraLength, util.toPointer(pPermittedLspCategories), util.toPointer(lpErrno));
-}
-
-export function WPUCompleteOverlappedRequest(
-  s: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Networking.WinSock.SOCKET */,
-  lpOverlapped: Deno.PointerValue | Uint8Array | null /* ptr */,
-  dwError: number /* u32 */,
-  cbTransferred: number /* u32 */,
-  lpErrno: Deno.PointerValue | Uint8Array | null /* ptr */,
-): number /* i32 */ {
-  return libWS2_32.WPUCompleteOverlappedRequest(util.toPointer(s), util.toPointer(lpOverlapped), dwError, cbTransferred, util.toPointer(lpErrno));
+  return libWS2_32_dll.WSCGetProviderInfo32(util.toPointer(lpProviderId), InfoType, util.toPointer(Info), util.toPointer(InfoSize), Flags, util.toPointer(lpErrno));
 }
 
 export function WSCEnumNameSpaceProviders32(
   lpdwBufferLength: Deno.PointerValue | Uint8Array | null /* ptr */,
   lpnspBuffer: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
-  return libWS2_32.WSCEnumNameSpaceProviders32(util.toPointer(lpdwBufferLength), util.toPointer(lpnspBuffer));
+  return libWS2_32_dll.WSCEnumNameSpaceProviders32(util.toPointer(lpdwBufferLength), util.toPointer(lpnspBuffer));
 }
 
 export function WSCEnumNameSpaceProvidersEx32(
   lpdwBufferLength: Deno.PointerValue | Uint8Array | null /* ptr */,
   lpnspBuffer: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
-  return libWS2_32.WSCEnumNameSpaceProvidersEx32(util.toPointer(lpdwBufferLength), util.toPointer(lpnspBuffer));
-}
-
-export function WSCInstallNameSpace(
-  lpszIdentifier: string | null /* Windows.Win32.Foundation.PWSTR */,
-  lpszPathName: string | null /* Windows.Win32.Foundation.PWSTR */,
-  dwNameSpace: number /* u32 */,
-  dwVersion: number /* u32 */,
-  lpProviderId: Deno.PointerValue | Uint8Array | null /* ptr */,
-): number /* i32 */ {
-  return libWS2_32.WSCInstallNameSpace(util.pwstrToFfi(lpszIdentifier), util.pwstrToFfi(lpszPathName), dwNameSpace, dwVersion, util.toPointer(lpProviderId));
+  return libWS2_32_dll.WSCEnumNameSpaceProvidersEx32(util.toPointer(lpdwBufferLength), util.toPointer(lpnspBuffer));
 }
 
 export function WSCInstallNameSpace32(
@@ -11516,24 +12480,7 @@ export function WSCInstallNameSpace32(
   dwVersion: number /* u32 */,
   lpProviderId: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
-  return libWS2_32.WSCInstallNameSpace32(util.pwstrToFfi(lpszIdentifier), util.pwstrToFfi(lpszPathName), dwNameSpace, dwVersion, util.toPointer(lpProviderId));
-}
-
-export function WSCUnInstallNameSpace(
-  lpProviderId: Deno.PointerValue | Uint8Array | null /* ptr */,
-): number /* i32 */ {
-  return libWS2_32.WSCUnInstallNameSpace(util.toPointer(lpProviderId));
-}
-
-export function WSCInstallNameSpaceEx(
-  lpszIdentifier: string | null /* Windows.Win32.Foundation.PWSTR */,
-  lpszPathName: string | null /* Windows.Win32.Foundation.PWSTR */,
-  dwNameSpace: number /* u32 */,
-  dwVersion: number /* u32 */,
-  lpProviderId: Deno.PointerValue | Uint8Array | null /* ptr */,
-  lpProviderSpecific: Deno.PointerValue | Uint8Array | null /* ptr */,
-): number /* i32 */ {
-  return libWS2_32.WSCInstallNameSpaceEx(util.pwstrToFfi(lpszIdentifier), util.pwstrToFfi(lpszPathName), dwNameSpace, dwVersion, util.toPointer(lpProviderId), util.toPointer(lpProviderSpecific));
+  return libWS2_32_dll.WSCInstallNameSpace32(util.pwstrToFfi(lpszIdentifier), util.pwstrToFfi(lpszPathName), dwNameSpace, dwVersion, util.toPointer(lpProviderId));
 }
 
 export function WSCInstallNameSpaceEx32(
@@ -11544,27 +12491,20 @@ export function WSCInstallNameSpaceEx32(
   lpProviderId: Deno.PointerValue | Uint8Array | null /* ptr */,
   lpProviderSpecific: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
-  return libWS2_32.WSCInstallNameSpaceEx32(util.pwstrToFfi(lpszIdentifier), util.pwstrToFfi(lpszPathName), dwNameSpace, dwVersion, util.toPointer(lpProviderId), util.toPointer(lpProviderSpecific));
+  return libWS2_32_dll.WSCInstallNameSpaceEx32(util.pwstrToFfi(lpszIdentifier), util.pwstrToFfi(lpszPathName), dwNameSpace, dwVersion, util.toPointer(lpProviderId), util.toPointer(lpProviderSpecific));
 }
 
 export function WSCUnInstallNameSpace32(
   lpProviderId: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
-  return libWS2_32.WSCUnInstallNameSpace32(util.toPointer(lpProviderId));
-}
-
-export function WSCEnableNSProvider(
-  lpProviderId: Deno.PointerValue | Uint8Array | null /* ptr */,
-  fEnable: boolean /* Windows.Win32.Foundation.BOOL */,
-): number /* i32 */ {
-  return libWS2_32.WSCEnableNSProvider(util.toPointer(lpProviderId), util.boolToFfi(fEnable));
+  return libWS2_32_dll.WSCUnInstallNameSpace32(util.toPointer(lpProviderId));
 }
 
 export function WSCEnableNSProvider32(
   lpProviderId: Deno.PointerValue | Uint8Array | null /* ptr */,
   fEnable: boolean /* Windows.Win32.Foundation.BOOL */,
 ): number /* i32 */ {
-  return libWS2_32.WSCEnableNSProvider32(util.toPointer(lpProviderId), util.boolToFfi(fEnable));
+  return libWS2_32_dll.WSCEnableNSProvider32(util.toPointer(lpProviderId), util.boolToFfi(fEnable));
 }
 
 export function WSCInstallProviderAndChains64_32(
@@ -11578,27 +12518,1285 @@ export function WSCInstallProviderAndChains64_32(
   lpdwCatalogEntryId: Deno.PointerValue | Uint8Array | null /* ptr */,
   lpErrno: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
-  return libWS2_32.WSCInstallProviderAndChains64_32(util.toPointer(lpProviderId), util.pwstrToFfi(lpszProviderDllPath), util.pwstrToFfi(lpszProviderDllPath32), util.pwstrToFfi(lpszLspName), dwServiceFlags, util.toPointer(lpProtocolInfoList), dwNumberOfEntries, util.toPointer(lpdwCatalogEntryId), util.toPointer(lpErrno));
+  return libWS2_32_dll.WSCInstallProviderAndChains64_32(util.toPointer(lpProviderId), util.pwstrToFfi(lpszProviderDllPath), util.pwstrToFfi(lpszProviderDllPath32), util.pwstrToFfi(lpszLspName), dwServiceFlags, util.toPointer(lpProtocolInfoList), dwNumberOfEntries, util.toPointer(lpdwCatalogEntryId), util.toPointer(lpErrno));
+}
+
+export function WSCWriteProviderOrder32(
+  lpwdCatalogEntryId: Deno.PointerValue | Uint8Array | null /* ptr */,
+  dwNumberOfEntries: number /* u32 */,
+): number /* i32 */ {
+  return libWS2_32_dll.WSCWriteProviderOrder32(util.toPointer(lpwdCatalogEntryId), dwNumberOfEntries);
+}
+
+export function WSCWriteNameSpaceOrder32(
+  lpProviderId: Deno.PointerValue | Uint8Array | null /* ptr */,
+  dwNumberOfEntries: number /* u32 */,
+): number /* i32 */ {
+  return libWS2_32_dll.WSCWriteNameSpaceOrder32(util.toPointer(lpProviderId), dwNumberOfEntries);
+}
+
+export function __WSAFDIsSet(
+  fd: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Networking.WinSock.SOCKET */,
+  param1: Deno.PointerValue | Uint8Array | null /* ptr */,
+): number /* i32 */ {
+  return libWS2_32_dll.__WSAFDIsSet(util.toPointer(fd), util.toPointer(param1));
+}
+
+export function accept(
+  s: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Networking.WinSock.SOCKET */,
+  addr: Deno.PointerValue | Uint8Array | null /* ptr */,
+  addrlen: Deno.PointerValue | Uint8Array | null /* ptr */,
+): Deno.PointerValue | null /* Windows.Win32.Networking.WinSock.SOCKET */ {
+  return util.pointerFromFfi(libWS2_32_dll.accept(util.toPointer(s), util.toPointer(addr), util.toPointer(addrlen)));
+}
+
+export function bind(
+  s: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Networking.WinSock.SOCKET */,
+  name: Deno.PointerValue | Uint8Array | null /* ptr */,
+  namelen: number /* i32 */,
+): number /* i32 */ {
+  return libWS2_32_dll.bind(util.toPointer(s), util.toPointer(name), namelen);
+}
+
+export function closesocket(
+  s: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Networking.WinSock.SOCKET */,
+): number /* i32 */ {
+  return libWS2_32_dll.closesocket(util.toPointer(s));
+}
+
+export function connect(
+  s: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Networking.WinSock.SOCKET */,
+  name: Deno.PointerValue | Uint8Array | null /* ptr */,
+  namelen: number /* i32 */,
+): number /* i32 */ {
+  return libWS2_32_dll.connect(util.toPointer(s), util.toPointer(name), namelen);
+}
+
+export function ioctlsocket(
+  s: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Networking.WinSock.SOCKET */,
+  cmd: number /* i32 */,
+  argp: Deno.PointerValue | Uint8Array | null /* ptr */,
+): number /* i32 */ {
+  return libWS2_32_dll.ioctlsocket(util.toPointer(s), cmd, util.toPointer(argp));
+}
+
+export function getpeername(
+  s: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Networking.WinSock.SOCKET */,
+  name: Deno.PointerValue | Uint8Array | null /* ptr */,
+  namelen: Deno.PointerValue | Uint8Array | null /* ptr */,
+): number /* i32 */ {
+  return libWS2_32_dll.getpeername(util.toPointer(s), util.toPointer(name), util.toPointer(namelen));
+}
+
+export function getsockname(
+  s: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Networking.WinSock.SOCKET */,
+  name: Deno.PointerValue | Uint8Array | null /* ptr */,
+  namelen: Deno.PointerValue | Uint8Array | null /* ptr */,
+): number /* i32 */ {
+  return libWS2_32_dll.getsockname(util.toPointer(s), util.toPointer(name), util.toPointer(namelen));
+}
+
+export function getsockopt(
+  s: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Networking.WinSock.SOCKET */,
+  level: number /* i32 */,
+  optname: number /* i32 */,
+  optval: string | null /* Windows.Win32.Foundation.PSTR */,
+  optlen: Deno.PointerValue | Uint8Array | null /* ptr */,
+): number /* i32 */ {
+  return libWS2_32_dll.getsockopt(util.toPointer(s), level, optname, util.pstrToFfi(optval), util.toPointer(optlen));
+}
+
+export function htonl(
+  hostlong: number /* u32 */,
+): number /* u32 */ {
+  return libWS2_32_dll.htonl(hostlong);
+}
+
+export function htons(
+  hostshort: number /* u16 */,
+): number /* u16 */ {
+  return libWS2_32_dll.htons(hostshort);
+}
+
+export function inet_addr(
+  cp: string | null /* Windows.Win32.Foundation.PSTR */,
+): number /* u32 */ {
+  return libWS2_32_dll.inet_addr(util.pstrToFfi(cp));
+}
+
+export function inet_ntoa(
+  in__: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Networking.WinSock.IN_ADDR */,
+): string | null /* Windows.Win32.Foundation.PSTR */ {
+  return util.pstrFromFfi(libWS2_32_dll.inet_ntoa(util.toPointer(in__)));
+}
+
+export function listen(
+  s: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Networking.WinSock.SOCKET */,
+  backlog: number /* i32 */,
+): number /* i32 */ {
+  return libWS2_32_dll.listen(util.toPointer(s), backlog);
+}
+
+export function ntohl(
+  netlong: number /* u32 */,
+): number /* u32 */ {
+  return libWS2_32_dll.ntohl(netlong);
+}
+
+export function ntohs(
+  netshort: number /* u16 */,
+): number /* u16 */ {
+  return libWS2_32_dll.ntohs(netshort);
+}
+
+export function recv(
+  s: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Networking.WinSock.SOCKET */,
+  buf: string | null /* Windows.Win32.Foundation.PSTR */,
+  len: number /* i32 */,
+  flags: SEND_RECV_FLAGS /* Windows.Win32.Networking.WinSock.SEND_RECV_FLAGS */,
+): number /* i32 */ {
+  return libWS2_32_dll.recv(util.toPointer(s), util.pstrToFfi(buf), len, flags);
+}
+
+export function recvfrom(
+  s: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Networking.WinSock.SOCKET */,
+  buf: string | null /* Windows.Win32.Foundation.PSTR */,
+  len: number /* i32 */,
+  flags: number /* i32 */,
+  from: Deno.PointerValue | Uint8Array | null /* ptr */,
+  fromlen: Deno.PointerValue | Uint8Array | null /* ptr */,
+): number /* i32 */ {
+  return libWS2_32_dll.recvfrom(util.toPointer(s), util.pstrToFfi(buf), len, flags, util.toPointer(from), util.toPointer(fromlen));
+}
+
+export function select(
+  nfds: number /* i32 */,
+  readfds: Deno.PointerValue | Uint8Array | null /* ptr */,
+  writefds: Deno.PointerValue | Uint8Array | null /* ptr */,
+  exceptfds: Deno.PointerValue | Uint8Array | null /* ptr */,
+  timeout: Deno.PointerValue | Uint8Array | null /* ptr */,
+): number /* i32 */ {
+  return libWS2_32_dll.select(nfds, util.toPointer(readfds), util.toPointer(writefds), util.toPointer(exceptfds), util.toPointer(timeout));
+}
+
+export function send(
+  s: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Networking.WinSock.SOCKET */,
+  buf: string | null /* Windows.Win32.Foundation.PSTR */,
+  len: number /* i32 */,
+  flags: SEND_RECV_FLAGS /* Windows.Win32.Networking.WinSock.SEND_RECV_FLAGS */,
+): number /* i32 */ {
+  return libWS2_32_dll.send(util.toPointer(s), util.pstrToFfi(buf), len, flags);
+}
+
+export function sendto(
+  s: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Networking.WinSock.SOCKET */,
+  buf: string | null /* Windows.Win32.Foundation.PSTR */,
+  len: number /* i32 */,
+  flags: number /* i32 */,
+  to: Deno.PointerValue | Uint8Array | null /* ptr */,
+  tolen: number /* i32 */,
+): number /* i32 */ {
+  return libWS2_32_dll.sendto(util.toPointer(s), util.pstrToFfi(buf), len, flags, util.toPointer(to), tolen);
+}
+
+export function setsockopt(
+  s: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Networking.WinSock.SOCKET */,
+  level: number /* i32 */,
+  optname: number /* i32 */,
+  optval: string | null /* Windows.Win32.Foundation.PSTR */,
+  optlen: number /* i32 */,
+): number /* i32 */ {
+  return libWS2_32_dll.setsockopt(util.toPointer(s), level, optname, util.pstrToFfi(optval), optlen);
+}
+
+export function shutdown(
+  s: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Networking.WinSock.SOCKET */,
+  how: number /* i32 */,
+): number /* i32 */ {
+  return libWS2_32_dll.shutdown(util.toPointer(s), how);
+}
+
+export function socket(
+  af: number /* i32 */,
+  type: number /* i32 */,
+  protocol: number /* i32 */,
+): Deno.PointerValue | null /* Windows.Win32.Networking.WinSock.SOCKET */ {
+  return util.pointerFromFfi(libWS2_32_dll.socket(af, type, protocol));
+}
+
+export function gethostbyaddr(
+  addr: string | null /* Windows.Win32.Foundation.PSTR */,
+  len: number /* i32 */,
+  type: number /* i32 */,
+): Deno.PointerValue | null /* ptr */ {
+  return util.pointerFromFfi(libWS2_32_dll.gethostbyaddr(util.pstrToFfi(addr), len, type));
+}
+
+export function gethostbyname(
+  name: string | null /* Windows.Win32.Foundation.PSTR */,
+): Deno.PointerValue | null /* ptr */ {
+  return util.pointerFromFfi(libWS2_32_dll.gethostbyname(util.pstrToFfi(name)));
+}
+
+export function gethostname(
+  name: string | null /* Windows.Win32.Foundation.PSTR */,
+  namelen: number /* i32 */,
+): number /* i32 */ {
+  return libWS2_32_dll.gethostname(util.pstrToFfi(name), namelen);
+}
+
+export function GetHostNameW(
+  name: string | null /* Windows.Win32.Foundation.PWSTR */,
+  namelen: number /* i32 */,
+): number /* i32 */ {
+  return libWS2_32_dll.GetHostNameW(util.pwstrToFfi(name), namelen);
+}
+
+export function getservbyport(
+  port: number /* i32 */,
+  proto: string | null /* Windows.Win32.Foundation.PSTR */,
+): Deno.PointerValue | null /* ptr */ {
+  return util.pointerFromFfi(libWS2_32_dll.getservbyport(port, util.pstrToFfi(proto)));
+}
+
+export function getservbyname(
+  name: string | null /* Windows.Win32.Foundation.PSTR */,
+  proto: string | null /* Windows.Win32.Foundation.PSTR */,
+): Deno.PointerValue | null /* ptr */ {
+  return util.pointerFromFfi(libWS2_32_dll.getservbyname(util.pstrToFfi(name), util.pstrToFfi(proto)));
+}
+
+export function getprotobynumber(
+  number: number /* i32 */,
+): Deno.PointerValue | null /* ptr */ {
+  return util.pointerFromFfi(libWS2_32_dll.getprotobynumber(number));
+}
+
+export function getprotobyname(
+  name: string | null /* Windows.Win32.Foundation.PSTR */,
+): Deno.PointerValue | null /* ptr */ {
+  return util.pointerFromFfi(libWS2_32_dll.getprotobyname(util.pstrToFfi(name)));
+}
+
+export function WSAStartup(
+  wVersionRequested: number /* u16 */,
+  lpWSAData: Deno.PointerValue | Uint8Array | null /* ptr */,
+): number /* i32 */ {
+  return libWS2_32_dll.WSAStartup(wVersionRequested, util.toPointer(lpWSAData));
+}
+
+export function WSACleanup(): number /* i32 */ {
+  return libWS2_32_dll.WSACleanup();
+}
+
+export function WSASetLastError(
+  iError: number /* i32 */,
+): void /* void */ {
+  return libWS2_32_dll.WSASetLastError(iError);
+}
+
+export function WSAGetLastError(): WSA_ERROR /* Windows.Win32.Networking.WinSock.WSA_ERROR */ {
+  return libWS2_32_dll.WSAGetLastError();
+}
+
+export function WSAIsBlocking(): boolean /* Windows.Win32.Foundation.BOOL */ {
+  return util.boolFromFfi(libWS2_32_dll.WSAIsBlocking());
+}
+
+export function WSAUnhookBlockingHook(): number /* i32 */ {
+  return libWS2_32_dll.WSAUnhookBlockingHook();
+}
+
+export function WSASetBlockingHook(
+  lpBlockFunc: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.FARPROC */,
+): Deno.PointerValue | null /* Windows.Win32.Foundation.FARPROC */ {
+  return util.pointerFromFfi(libWS2_32_dll.WSASetBlockingHook(util.toPointer(lpBlockFunc)));
+}
+
+export function WSACancelBlockingCall(): number /* i32 */ {
+  return libWS2_32_dll.WSACancelBlockingCall();
+}
+
+export function WSAAsyncGetServByName(
+  hWnd: Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */,
+  wMsg: number /* u32 */,
+  name: string | null /* Windows.Win32.Foundation.PSTR */,
+  proto: string | null /* Windows.Win32.Foundation.PSTR */,
+  buf: string | null /* Windows.Win32.Foundation.PSTR */,
+  buflen: number /* i32 */,
+): Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */ {
+  return util.pointerFromFfi(libWS2_32_dll.WSAAsyncGetServByName(util.hwndToFfi(hWnd), wMsg, util.pstrToFfi(name), util.pstrToFfi(proto), util.pstrToFfi(buf), buflen));
+}
+
+export function WSAAsyncGetServByPort(
+  hWnd: Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */,
+  wMsg: number /* u32 */,
+  port: number /* i32 */,
+  proto: string | null /* Windows.Win32.Foundation.PSTR */,
+  buf: string | null /* Windows.Win32.Foundation.PSTR */,
+  buflen: number /* i32 */,
+): Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */ {
+  return util.pointerFromFfi(libWS2_32_dll.WSAAsyncGetServByPort(util.hwndToFfi(hWnd), wMsg, port, util.pstrToFfi(proto), util.pstrToFfi(buf), buflen));
+}
+
+export function WSAAsyncGetProtoByName(
+  hWnd: Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */,
+  wMsg: number /* u32 */,
+  name: string | null /* Windows.Win32.Foundation.PSTR */,
+  buf: string | null /* Windows.Win32.Foundation.PSTR */,
+  buflen: number /* i32 */,
+): Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */ {
+  return util.pointerFromFfi(libWS2_32_dll.WSAAsyncGetProtoByName(util.hwndToFfi(hWnd), wMsg, util.pstrToFfi(name), util.pstrToFfi(buf), buflen));
+}
+
+export function WSAAsyncGetProtoByNumber(
+  hWnd: Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */,
+  wMsg: number /* u32 */,
+  number: number /* i32 */,
+  buf: string | null /* Windows.Win32.Foundation.PSTR */,
+  buflen: number /* i32 */,
+): Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */ {
+  return util.pointerFromFfi(libWS2_32_dll.WSAAsyncGetProtoByNumber(util.hwndToFfi(hWnd), wMsg, number, util.pstrToFfi(buf), buflen));
+}
+
+export function WSAAsyncGetHostByName(
+  hWnd: Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */,
+  wMsg: number /* u32 */,
+  name: string | null /* Windows.Win32.Foundation.PSTR */,
+  buf: string | null /* Windows.Win32.Foundation.PSTR */,
+  buflen: number /* i32 */,
+): Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */ {
+  return util.pointerFromFfi(libWS2_32_dll.WSAAsyncGetHostByName(util.hwndToFfi(hWnd), wMsg, util.pstrToFfi(name), util.pstrToFfi(buf), buflen));
+}
+
+export function WSAAsyncGetHostByAddr(
+  hWnd: Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */,
+  wMsg: number /* u32 */,
+  addr: string | null /* Windows.Win32.Foundation.PSTR */,
+  len: number /* i32 */,
+  type: number /* i32 */,
+  buf: string | null /* Windows.Win32.Foundation.PSTR */,
+  buflen: number /* i32 */,
+): Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */ {
+  return util.pointerFromFfi(libWS2_32_dll.WSAAsyncGetHostByAddr(util.hwndToFfi(hWnd), wMsg, util.pstrToFfi(addr), len, type, util.pstrToFfi(buf), buflen));
+}
+
+export function WSACancelAsyncRequest(
+  hAsyncTaskHandle: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
+): number /* i32 */ {
+  return libWS2_32_dll.WSACancelAsyncRequest(util.toPointer(hAsyncTaskHandle));
+}
+
+export function WSAAsyncSelect(
+  s: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Networking.WinSock.SOCKET */,
+  hWnd: Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */,
+  wMsg: number /* u32 */,
+  lEvent: number /* i32 */,
+): number /* i32 */ {
+  return libWS2_32_dll.WSAAsyncSelect(util.toPointer(s), util.hwndToFfi(hWnd), wMsg, lEvent);
+}
+
+export function WSAAccept(
+  s: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Networking.WinSock.SOCKET */,
+  addr: Deno.PointerValue | Uint8Array | null /* ptr */,
+  addrlen: Deno.PointerValue | Uint8Array | null /* ptr */,
+  lpfnCondition: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Networking.WinSock.LPCONDITIONPROC */,
+  dwCallbackData: Deno.PointerValue /* usize */,
+): Deno.PointerValue | null /* Windows.Win32.Networking.WinSock.SOCKET */ {
+  return util.pointerFromFfi(libWS2_32_dll.WSAAccept(util.toPointer(s), util.toPointer(addr), util.toPointer(addrlen), util.toPointer(lpfnCondition), dwCallbackData));
+}
+
+export function WSACloseEvent(
+  hEvent: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
+): boolean /* Windows.Win32.Foundation.BOOL */ {
+  return util.boolFromFfi(libWS2_32_dll.WSACloseEvent(util.toPointer(hEvent)));
+}
+
+export function WSAConnect(
+  s: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Networking.WinSock.SOCKET */,
+  name: Deno.PointerValue | Uint8Array | null /* ptr */,
+  namelen: number /* i32 */,
+  lpCallerData: Deno.PointerValue | Uint8Array | null /* ptr */,
+  lpCalleeData: Deno.PointerValue | Uint8Array | null /* ptr */,
+  lpSQOS: Deno.PointerValue | Uint8Array | null /* ptr */,
+  lpGQOS: Deno.PointerValue | Uint8Array | null /* ptr */,
+): number /* i32 */ {
+  return libWS2_32_dll.WSAConnect(util.toPointer(s), util.toPointer(name), namelen, util.toPointer(lpCallerData), util.toPointer(lpCalleeData), util.toPointer(lpSQOS), util.toPointer(lpGQOS));
+}
+
+export function WSAConnectByNameW(
+  s: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Networking.WinSock.SOCKET */,
+  nodename: string | null /* Windows.Win32.Foundation.PWSTR */,
+  servicename: string | null /* Windows.Win32.Foundation.PWSTR */,
+  LocalAddressLength: Deno.PointerValue | Uint8Array | null /* ptr */,
+  LocalAddress: Deno.PointerValue | Uint8Array | null /* ptr */,
+  RemoteAddressLength: Deno.PointerValue | Uint8Array | null /* ptr */,
+  RemoteAddress: Deno.PointerValue | Uint8Array | null /* ptr */,
+  timeout: Deno.PointerValue | Uint8Array | null /* ptr */,
+  Reserved: Deno.PointerValue | Uint8Array | null /* ptr */,
+): boolean /* Windows.Win32.Foundation.BOOL */ {
+  return util.boolFromFfi(libWS2_32_dll.WSAConnectByNameW(util.toPointer(s), util.pwstrToFfi(nodename), util.pwstrToFfi(servicename), util.toPointer(LocalAddressLength), util.toPointer(LocalAddress), util.toPointer(RemoteAddressLength), util.toPointer(RemoteAddress), util.toPointer(timeout), util.toPointer(Reserved)));
+}
+
+export function WSAConnectByNameA(
+  s: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Networking.WinSock.SOCKET */,
+  nodename: string | null /* Windows.Win32.Foundation.PSTR */,
+  servicename: string | null /* Windows.Win32.Foundation.PSTR */,
+  LocalAddressLength: Deno.PointerValue | Uint8Array | null /* ptr */,
+  LocalAddress: Deno.PointerValue | Uint8Array | null /* ptr */,
+  RemoteAddressLength: Deno.PointerValue | Uint8Array | null /* ptr */,
+  RemoteAddress: Deno.PointerValue | Uint8Array | null /* ptr */,
+  timeout: Deno.PointerValue | Uint8Array | null /* ptr */,
+  Reserved: Deno.PointerValue | Uint8Array | null /* ptr */,
+): boolean /* Windows.Win32.Foundation.BOOL */ {
+  return util.boolFromFfi(libWS2_32_dll.WSAConnectByNameA(util.toPointer(s), util.pstrToFfi(nodename), util.pstrToFfi(servicename), util.toPointer(LocalAddressLength), util.toPointer(LocalAddress), util.toPointer(RemoteAddressLength), util.toPointer(RemoteAddress), util.toPointer(timeout), util.toPointer(Reserved)));
+}
+
+export function WSAConnectByList(
+  s: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Networking.WinSock.SOCKET */,
+  SocketAddress: Deno.PointerValue | Uint8Array | null /* ptr */,
+  LocalAddressLength: Deno.PointerValue | Uint8Array | null /* ptr */,
+  LocalAddress: Deno.PointerValue | Uint8Array | null /* ptr */,
+  RemoteAddressLength: Deno.PointerValue | Uint8Array | null /* ptr */,
+  RemoteAddress: Deno.PointerValue | Uint8Array | null /* ptr */,
+  timeout: Deno.PointerValue | Uint8Array | null /* ptr */,
+  Reserved: Deno.PointerValue | Uint8Array | null /* ptr */,
+): boolean /* Windows.Win32.Foundation.BOOL */ {
+  return util.boolFromFfi(libWS2_32_dll.WSAConnectByList(util.toPointer(s), util.toPointer(SocketAddress), util.toPointer(LocalAddressLength), util.toPointer(LocalAddress), util.toPointer(RemoteAddressLength), util.toPointer(RemoteAddress), util.toPointer(timeout), util.toPointer(Reserved)));
+}
+
+export function WSACreateEvent(): Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */ {
+  return util.pointerFromFfi(libWS2_32_dll.WSACreateEvent());
+}
+
+export function WSADuplicateSocketA(
+  s: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Networking.WinSock.SOCKET */,
+  dwProcessId: number /* u32 */,
+  lpProtocolInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
+): number /* i32 */ {
+  return libWS2_32_dll.WSADuplicateSocketA(util.toPointer(s), dwProcessId, util.toPointer(lpProtocolInfo));
+}
+
+export function WSADuplicateSocketW(
+  s: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Networking.WinSock.SOCKET */,
+  dwProcessId: number /* u32 */,
+  lpProtocolInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
+): number /* i32 */ {
+  return libWS2_32_dll.WSADuplicateSocketW(util.toPointer(s), dwProcessId, util.toPointer(lpProtocolInfo));
+}
+
+export function WSAEnumNetworkEvents(
+  s: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Networking.WinSock.SOCKET */,
+  hEventObject: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
+  lpNetworkEvents: Deno.PointerValue | Uint8Array | null /* ptr */,
+): number /* i32 */ {
+  return libWS2_32_dll.WSAEnumNetworkEvents(util.toPointer(s), util.toPointer(hEventObject), util.toPointer(lpNetworkEvents));
+}
+
+export function WSAEnumProtocolsA(
+  lpiProtocols: Deno.PointerValue | Uint8Array | null /* ptr */,
+  lpProtocolBuffer: Deno.PointerValue | Uint8Array | null /* ptr */,
+  lpdwBufferLength: Deno.PointerValue | Uint8Array | null /* ptr */,
+): number /* i32 */ {
+  return libWS2_32_dll.WSAEnumProtocolsA(util.toPointer(lpiProtocols), util.toPointer(lpProtocolBuffer), util.toPointer(lpdwBufferLength));
+}
+
+export function WSAEnumProtocolsW(
+  lpiProtocols: Deno.PointerValue | Uint8Array | null /* ptr */,
+  lpProtocolBuffer: Deno.PointerValue | Uint8Array | null /* ptr */,
+  lpdwBufferLength: Deno.PointerValue | Uint8Array | null /* ptr */,
+): number /* i32 */ {
+  return libWS2_32_dll.WSAEnumProtocolsW(util.toPointer(lpiProtocols), util.toPointer(lpProtocolBuffer), util.toPointer(lpdwBufferLength));
+}
+
+export function WSAEventSelect(
+  s: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Networking.WinSock.SOCKET */,
+  hEventObject: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
+  lNetworkEvents: number /* i32 */,
+): number /* i32 */ {
+  return libWS2_32_dll.WSAEventSelect(util.toPointer(s), util.toPointer(hEventObject), lNetworkEvents);
+}
+
+export function WSAGetOverlappedResult(
+  s: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Networking.WinSock.SOCKET */,
+  lpOverlapped: Deno.PointerValue | Uint8Array | null /* ptr */,
+  lpcbTransfer: Deno.PointerValue | Uint8Array | null /* ptr */,
+  fWait: boolean /* Windows.Win32.Foundation.BOOL */,
+  lpdwFlags: Deno.PointerValue | Uint8Array | null /* ptr */,
+): boolean /* Windows.Win32.Foundation.BOOL */ {
+  return util.boolFromFfi(libWS2_32_dll.WSAGetOverlappedResult(util.toPointer(s), util.toPointer(lpOverlapped), util.toPointer(lpcbTransfer), util.boolToFfi(fWait), util.toPointer(lpdwFlags)));
+}
+
+export function WSAGetQOSByName(
+  s: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Networking.WinSock.SOCKET */,
+  lpQOSName: Deno.PointerValue | Uint8Array | null /* ptr */,
+  lpQOS: Deno.PointerValue | Uint8Array | null /* ptr */,
+): boolean /* Windows.Win32.Foundation.BOOL */ {
+  return util.boolFromFfi(libWS2_32_dll.WSAGetQOSByName(util.toPointer(s), util.toPointer(lpQOSName), util.toPointer(lpQOS)));
+}
+
+export function WSAHtonl(
+  s: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Networking.WinSock.SOCKET */,
+  hostlong: number /* u32 */,
+  lpnetlong: Deno.PointerValue | Uint8Array | null /* ptr */,
+): number /* i32 */ {
+  return libWS2_32_dll.WSAHtonl(util.toPointer(s), hostlong, util.toPointer(lpnetlong));
+}
+
+export function WSAHtons(
+  s: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Networking.WinSock.SOCKET */,
+  hostshort: number /* u16 */,
+  lpnetshort: Deno.PointerValue | Uint8Array | null /* ptr */,
+): number /* i32 */ {
+  return libWS2_32_dll.WSAHtons(util.toPointer(s), hostshort, util.toPointer(lpnetshort));
+}
+
+export function WSAIoctl(
+  s: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Networking.WinSock.SOCKET */,
+  dwIoControlCode: number /* u32 */,
+  lpvInBuffer: Deno.PointerValue | Uint8Array | null /* ptr */,
+  cbInBuffer: number /* u32 */,
+  lpvOutBuffer: Deno.PointerValue | Uint8Array | null /* ptr */,
+  cbOutBuffer: number /* u32 */,
+  lpcbBytesReturned: Deno.PointerValue | Uint8Array | null /* ptr */,
+  lpOverlapped: Deno.PointerValue | Uint8Array | null /* ptr */,
+  lpCompletionRoutine: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Networking.WinSock.LPWSAOVERLAPPED_COMPLETION_ROUTINE */,
+): number /* i32 */ {
+  return libWS2_32_dll.WSAIoctl(util.toPointer(s), dwIoControlCode, util.toPointer(lpvInBuffer), cbInBuffer, util.toPointer(lpvOutBuffer), cbOutBuffer, util.toPointer(lpcbBytesReturned), util.toPointer(lpOverlapped), util.toPointer(lpCompletionRoutine));
+}
+
+export function WSAJoinLeaf(
+  s: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Networking.WinSock.SOCKET */,
+  name: Deno.PointerValue | Uint8Array | null /* ptr */,
+  namelen: number /* i32 */,
+  lpCallerData: Deno.PointerValue | Uint8Array | null /* ptr */,
+  lpCalleeData: Deno.PointerValue | Uint8Array | null /* ptr */,
+  lpSQOS: Deno.PointerValue | Uint8Array | null /* ptr */,
+  lpGQOS: Deno.PointerValue | Uint8Array | null /* ptr */,
+  dwFlags: number /* u32 */,
+): Deno.PointerValue | null /* Windows.Win32.Networking.WinSock.SOCKET */ {
+  return util.pointerFromFfi(libWS2_32_dll.WSAJoinLeaf(util.toPointer(s), util.toPointer(name), namelen, util.toPointer(lpCallerData), util.toPointer(lpCalleeData), util.toPointer(lpSQOS), util.toPointer(lpGQOS), dwFlags));
+}
+
+export function WSANtohl(
+  s: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Networking.WinSock.SOCKET */,
+  netlong: number /* u32 */,
+  lphostlong: Deno.PointerValue | Uint8Array | null /* ptr */,
+): number /* i32 */ {
+  return libWS2_32_dll.WSANtohl(util.toPointer(s), netlong, util.toPointer(lphostlong));
+}
+
+export function WSANtohs(
+  s: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Networking.WinSock.SOCKET */,
+  netshort: number /* u16 */,
+  lphostshort: Deno.PointerValue | Uint8Array | null /* ptr */,
+): number /* i32 */ {
+  return libWS2_32_dll.WSANtohs(util.toPointer(s), netshort, util.toPointer(lphostshort));
+}
+
+export function WSARecv(
+  s: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Networking.WinSock.SOCKET */,
+  lpBuffers: Deno.PointerValue | Uint8Array | null /* ptr */,
+  dwBufferCount: number /* u32 */,
+  lpNumberOfBytesRecvd: Deno.PointerValue | Uint8Array | null /* ptr */,
+  lpFlags: Deno.PointerValue | Uint8Array | null /* ptr */,
+  lpOverlapped: Deno.PointerValue | Uint8Array | null /* ptr */,
+  lpCompletionRoutine: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Networking.WinSock.LPWSAOVERLAPPED_COMPLETION_ROUTINE */,
+): number /* i32 */ {
+  return libWS2_32_dll.WSARecv(util.toPointer(s), util.toPointer(lpBuffers), dwBufferCount, util.toPointer(lpNumberOfBytesRecvd), util.toPointer(lpFlags), util.toPointer(lpOverlapped), util.toPointer(lpCompletionRoutine));
+}
+
+export function WSARecvDisconnect(
+  s: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Networking.WinSock.SOCKET */,
+  lpInboundDisconnectData: Deno.PointerValue | Uint8Array | null /* ptr */,
+): number /* i32 */ {
+  return libWS2_32_dll.WSARecvDisconnect(util.toPointer(s), util.toPointer(lpInboundDisconnectData));
+}
+
+export function WSARecvFrom(
+  s: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Networking.WinSock.SOCKET */,
+  lpBuffers: Deno.PointerValue | Uint8Array | null /* ptr */,
+  dwBufferCount: number /* u32 */,
+  lpNumberOfBytesRecvd: Deno.PointerValue | Uint8Array | null /* ptr */,
+  lpFlags: Deno.PointerValue | Uint8Array | null /* ptr */,
+  lpFrom: Deno.PointerValue | Uint8Array | null /* ptr */,
+  lpFromlen: Deno.PointerValue | Uint8Array | null /* ptr */,
+  lpOverlapped: Deno.PointerValue | Uint8Array | null /* ptr */,
+  lpCompletionRoutine: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Networking.WinSock.LPWSAOVERLAPPED_COMPLETION_ROUTINE */,
+): number /* i32 */ {
+  return libWS2_32_dll.WSARecvFrom(util.toPointer(s), util.toPointer(lpBuffers), dwBufferCount, util.toPointer(lpNumberOfBytesRecvd), util.toPointer(lpFlags), util.toPointer(lpFrom), util.toPointer(lpFromlen), util.toPointer(lpOverlapped), util.toPointer(lpCompletionRoutine));
+}
+
+export function WSAResetEvent(
+  hEvent: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
+): boolean /* Windows.Win32.Foundation.BOOL */ {
+  return util.boolFromFfi(libWS2_32_dll.WSAResetEvent(util.toPointer(hEvent)));
+}
+
+export function WSASend(
+  s: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Networking.WinSock.SOCKET */,
+  lpBuffers: Deno.PointerValue | Uint8Array | null /* ptr */,
+  dwBufferCount: number /* u32 */,
+  lpNumberOfBytesSent: Deno.PointerValue | Uint8Array | null /* ptr */,
+  dwFlags: number /* u32 */,
+  lpOverlapped: Deno.PointerValue | Uint8Array | null /* ptr */,
+  lpCompletionRoutine: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Networking.WinSock.LPWSAOVERLAPPED_COMPLETION_ROUTINE */,
+): number /* i32 */ {
+  return libWS2_32_dll.WSASend(util.toPointer(s), util.toPointer(lpBuffers), dwBufferCount, util.toPointer(lpNumberOfBytesSent), dwFlags, util.toPointer(lpOverlapped), util.toPointer(lpCompletionRoutine));
+}
+
+export function WSASendMsg(
+  Handle: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Networking.WinSock.SOCKET */,
+  lpMsg: Deno.PointerValue | Uint8Array | null /* ptr */,
+  dwFlags: number /* u32 */,
+  lpNumberOfBytesSent: Deno.PointerValue | Uint8Array | null /* ptr */,
+  lpOverlapped: Deno.PointerValue | Uint8Array | null /* ptr */,
+  lpCompletionRoutine: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Networking.WinSock.LPWSAOVERLAPPED_COMPLETION_ROUTINE */,
+): number /* i32 */ {
+  return libWS2_32_dll.WSASendMsg(util.toPointer(Handle), util.toPointer(lpMsg), dwFlags, util.toPointer(lpNumberOfBytesSent), util.toPointer(lpOverlapped), util.toPointer(lpCompletionRoutine));
+}
+
+export function WSASendDisconnect(
+  s: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Networking.WinSock.SOCKET */,
+  lpOutboundDisconnectData: Deno.PointerValue | Uint8Array | null /* ptr */,
+): number /* i32 */ {
+  return libWS2_32_dll.WSASendDisconnect(util.toPointer(s), util.toPointer(lpOutboundDisconnectData));
+}
+
+export function WSASendTo(
+  s: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Networking.WinSock.SOCKET */,
+  lpBuffers: Deno.PointerValue | Uint8Array | null /* ptr */,
+  dwBufferCount: number /* u32 */,
+  lpNumberOfBytesSent: Deno.PointerValue | Uint8Array | null /* ptr */,
+  dwFlags: number /* u32 */,
+  lpTo: Deno.PointerValue | Uint8Array | null /* ptr */,
+  iTolen: number /* i32 */,
+  lpOverlapped: Deno.PointerValue | Uint8Array | null /* ptr */,
+  lpCompletionRoutine: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Networking.WinSock.LPWSAOVERLAPPED_COMPLETION_ROUTINE */,
+): number /* i32 */ {
+  return libWS2_32_dll.WSASendTo(util.toPointer(s), util.toPointer(lpBuffers), dwBufferCount, util.toPointer(lpNumberOfBytesSent), dwFlags, util.toPointer(lpTo), iTolen, util.toPointer(lpOverlapped), util.toPointer(lpCompletionRoutine));
+}
+
+export function WSASetEvent(
+  hEvent: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
+): boolean /* Windows.Win32.Foundation.BOOL */ {
+  return util.boolFromFfi(libWS2_32_dll.WSASetEvent(util.toPointer(hEvent)));
+}
+
+export function WSASocketA(
+  af: number /* i32 */,
+  type: number /* i32 */,
+  protocol: number /* i32 */,
+  lpProtocolInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
+  g: number /* u32 */,
+  dwFlags: number /* u32 */,
+): Deno.PointerValue | null /* Windows.Win32.Networking.WinSock.SOCKET */ {
+  return util.pointerFromFfi(libWS2_32_dll.WSASocketA(af, type, protocol, util.toPointer(lpProtocolInfo), g, dwFlags));
+}
+
+export function WSASocketW(
+  af: number /* i32 */,
+  type: number /* i32 */,
+  protocol: number /* i32 */,
+  lpProtocolInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
+  g: number /* u32 */,
+  dwFlags: number /* u32 */,
+): Deno.PointerValue | null /* Windows.Win32.Networking.WinSock.SOCKET */ {
+  return util.pointerFromFfi(libWS2_32_dll.WSASocketW(af, type, protocol, util.toPointer(lpProtocolInfo), g, dwFlags));
+}
+
+export function WSAWaitForMultipleEvents(
+  cEvents: number /* u32 */,
+  lphEvents: Deno.PointerValue | Uint8Array | null /* ptr */,
+  fWaitAll: boolean /* Windows.Win32.Foundation.BOOL */,
+  dwTimeout: number /* u32 */,
+  fAlertable: boolean /* Windows.Win32.Foundation.BOOL */,
+): number /* u32 */ {
+  return libWS2_32_dll.WSAWaitForMultipleEvents(cEvents, util.toPointer(lphEvents), util.boolToFfi(fWaitAll), dwTimeout, util.boolToFfi(fAlertable));
+}
+
+export function WSAAddressToStringA(
+  lpsaAddress: Deno.PointerValue | Uint8Array | null /* ptr */,
+  dwAddressLength: number /* u32 */,
+  lpProtocolInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
+  lpszAddressString: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpdwAddressStringLength: Deno.PointerValue | Uint8Array | null /* ptr */,
+): number /* i32 */ {
+  return libWS2_32_dll.WSAAddressToStringA(util.toPointer(lpsaAddress), dwAddressLength, util.toPointer(lpProtocolInfo), util.pstrToFfi(lpszAddressString), util.toPointer(lpdwAddressStringLength));
+}
+
+export function WSAAddressToStringW(
+  lpsaAddress: Deno.PointerValue | Uint8Array | null /* ptr */,
+  dwAddressLength: number /* u32 */,
+  lpProtocolInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
+  lpszAddressString: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpdwAddressStringLength: Deno.PointerValue | Uint8Array | null /* ptr */,
+): number /* i32 */ {
+  return libWS2_32_dll.WSAAddressToStringW(util.toPointer(lpsaAddress), dwAddressLength, util.toPointer(lpProtocolInfo), util.pwstrToFfi(lpszAddressString), util.toPointer(lpdwAddressStringLength));
+}
+
+export function WSAStringToAddressA(
+  AddressString: string | null /* Windows.Win32.Foundation.PSTR */,
+  AddressFamily: number /* i32 */,
+  lpProtocolInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
+  lpAddress: Deno.PointerValue | Uint8Array | null /* ptr */,
+  lpAddressLength: Deno.PointerValue | Uint8Array | null /* ptr */,
+): number /* i32 */ {
+  return libWS2_32_dll.WSAStringToAddressA(util.pstrToFfi(AddressString), AddressFamily, util.toPointer(lpProtocolInfo), util.toPointer(lpAddress), util.toPointer(lpAddressLength));
+}
+
+export function WSAStringToAddressW(
+  AddressString: string | null /* Windows.Win32.Foundation.PWSTR */,
+  AddressFamily: number /* i32 */,
+  lpProtocolInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
+  lpAddress: Deno.PointerValue | Uint8Array | null /* ptr */,
+  lpAddressLength: Deno.PointerValue | Uint8Array | null /* ptr */,
+): number /* i32 */ {
+  return libWS2_32_dll.WSAStringToAddressW(util.pwstrToFfi(AddressString), AddressFamily, util.toPointer(lpProtocolInfo), util.toPointer(lpAddress), util.toPointer(lpAddressLength));
+}
+
+export function WSALookupServiceBeginA(
+  lpqsRestrictions: Deno.PointerValue | Uint8Array | null /* ptr */,
+  dwControlFlags: number /* u32 */,
+  lphLookup: Deno.PointerValue | Uint8Array | null /* ptr */,
+): number /* i32 */ {
+  return libWS2_32_dll.WSALookupServiceBeginA(util.toPointer(lpqsRestrictions), dwControlFlags, util.toPointer(lphLookup));
+}
+
+export function WSALookupServiceBeginW(
+  lpqsRestrictions: Deno.PointerValue | Uint8Array | null /* ptr */,
+  dwControlFlags: number /* u32 */,
+  lphLookup: Deno.PointerValue | Uint8Array | null /* ptr */,
+): number /* i32 */ {
+  return libWS2_32_dll.WSALookupServiceBeginW(util.toPointer(lpqsRestrictions), dwControlFlags, util.toPointer(lphLookup));
+}
+
+export function WSALookupServiceNextA(
+  hLookup: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
+  dwControlFlags: number /* u32 */,
+  lpdwBufferLength: Deno.PointerValue | Uint8Array | null /* ptr */,
+  lpqsResults: Deno.PointerValue | Uint8Array | null /* ptr */,
+): number /* i32 */ {
+  return libWS2_32_dll.WSALookupServiceNextA(util.toPointer(hLookup), dwControlFlags, util.toPointer(lpdwBufferLength), util.toPointer(lpqsResults));
+}
+
+export function WSALookupServiceNextW(
+  hLookup: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
+  dwControlFlags: number /* u32 */,
+  lpdwBufferLength: Deno.PointerValue | Uint8Array | null /* ptr */,
+  lpqsResults: Deno.PointerValue | Uint8Array | null /* ptr */,
+): number /* i32 */ {
+  return libWS2_32_dll.WSALookupServiceNextW(util.toPointer(hLookup), dwControlFlags, util.toPointer(lpdwBufferLength), util.toPointer(lpqsResults));
+}
+
+export function WSANSPIoctl(
+  hLookup: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
+  dwControlCode: number /* u32 */,
+  lpvInBuffer: Deno.PointerValue | Uint8Array | null /* ptr */,
+  cbInBuffer: number /* u32 */,
+  lpvOutBuffer: Deno.PointerValue | Uint8Array | null /* ptr */,
+  cbOutBuffer: number /* u32 */,
+  lpcbBytesReturned: Deno.PointerValue | Uint8Array | null /* ptr */,
+  lpCompletion: Deno.PointerValue | Uint8Array | null /* ptr */,
+): number /* i32 */ {
+  return libWS2_32_dll.WSANSPIoctl(util.toPointer(hLookup), dwControlCode, util.toPointer(lpvInBuffer), cbInBuffer, util.toPointer(lpvOutBuffer), cbOutBuffer, util.toPointer(lpcbBytesReturned), util.toPointer(lpCompletion));
+}
+
+export function WSALookupServiceEnd(
+  hLookup: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
+): number /* i32 */ {
+  return libWS2_32_dll.WSALookupServiceEnd(util.toPointer(hLookup));
+}
+
+export function WSAInstallServiceClassA(
+  lpServiceClassInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
+): number /* i32 */ {
+  return libWS2_32_dll.WSAInstallServiceClassA(util.toPointer(lpServiceClassInfo));
+}
+
+export function WSAInstallServiceClassW(
+  lpServiceClassInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
+): number /* i32 */ {
+  return libWS2_32_dll.WSAInstallServiceClassW(util.toPointer(lpServiceClassInfo));
+}
+
+export function WSARemoveServiceClass(
+  lpServiceClassId: Deno.PointerValue | Uint8Array | null /* ptr */,
+): number /* i32 */ {
+  return libWS2_32_dll.WSARemoveServiceClass(util.toPointer(lpServiceClassId));
+}
+
+export function WSAGetServiceClassInfoA(
+  lpProviderId: Deno.PointerValue | Uint8Array | null /* ptr */,
+  lpServiceClassId: Deno.PointerValue | Uint8Array | null /* ptr */,
+  lpdwBufSize: Deno.PointerValue | Uint8Array | null /* ptr */,
+  lpServiceClassInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
+): number /* i32 */ {
+  return libWS2_32_dll.WSAGetServiceClassInfoA(util.toPointer(lpProviderId), util.toPointer(lpServiceClassId), util.toPointer(lpdwBufSize), util.toPointer(lpServiceClassInfo));
+}
+
+export function WSAGetServiceClassInfoW(
+  lpProviderId: Deno.PointerValue | Uint8Array | null /* ptr */,
+  lpServiceClassId: Deno.PointerValue | Uint8Array | null /* ptr */,
+  lpdwBufSize: Deno.PointerValue | Uint8Array | null /* ptr */,
+  lpServiceClassInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
+): number /* i32 */ {
+  return libWS2_32_dll.WSAGetServiceClassInfoW(util.toPointer(lpProviderId), util.toPointer(lpServiceClassId), util.toPointer(lpdwBufSize), util.toPointer(lpServiceClassInfo));
+}
+
+export function WSAEnumNameSpaceProvidersA(
+  lpdwBufferLength: Deno.PointerValue | Uint8Array | null /* ptr */,
+  lpnspBuffer: Deno.PointerValue | Uint8Array | null /* ptr */,
+): number /* i32 */ {
+  return libWS2_32_dll.WSAEnumNameSpaceProvidersA(util.toPointer(lpdwBufferLength), util.toPointer(lpnspBuffer));
+}
+
+export function WSAEnumNameSpaceProvidersW(
+  lpdwBufferLength: Deno.PointerValue | Uint8Array | null /* ptr */,
+  lpnspBuffer: Deno.PointerValue | Uint8Array | null /* ptr */,
+): number /* i32 */ {
+  return libWS2_32_dll.WSAEnumNameSpaceProvidersW(util.toPointer(lpdwBufferLength), util.toPointer(lpnspBuffer));
+}
+
+export function WSAEnumNameSpaceProvidersExA(
+  lpdwBufferLength: Deno.PointerValue | Uint8Array | null /* ptr */,
+  lpnspBuffer: Deno.PointerValue | Uint8Array | null /* ptr */,
+): number /* i32 */ {
+  return libWS2_32_dll.WSAEnumNameSpaceProvidersExA(util.toPointer(lpdwBufferLength), util.toPointer(lpnspBuffer));
+}
+
+export function WSAEnumNameSpaceProvidersExW(
+  lpdwBufferLength: Deno.PointerValue | Uint8Array | null /* ptr */,
+  lpnspBuffer: Deno.PointerValue | Uint8Array | null /* ptr */,
+): number /* i32 */ {
+  return libWS2_32_dll.WSAEnumNameSpaceProvidersExW(util.toPointer(lpdwBufferLength), util.toPointer(lpnspBuffer));
+}
+
+export function WSAGetServiceClassNameByClassIdA(
+  lpServiceClassId: Deno.PointerValue | Uint8Array | null /* ptr */,
+  lpszServiceClassName: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpdwBufferLength: Deno.PointerValue | Uint8Array | null /* ptr */,
+): number /* i32 */ {
+  return libWS2_32_dll.WSAGetServiceClassNameByClassIdA(util.toPointer(lpServiceClassId), util.pstrToFfi(lpszServiceClassName), util.toPointer(lpdwBufferLength));
+}
+
+export function WSAGetServiceClassNameByClassIdW(
+  lpServiceClassId: Deno.PointerValue | Uint8Array | null /* ptr */,
+  lpszServiceClassName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpdwBufferLength: Deno.PointerValue | Uint8Array | null /* ptr */,
+): number /* i32 */ {
+  return libWS2_32_dll.WSAGetServiceClassNameByClassIdW(util.toPointer(lpServiceClassId), util.pwstrToFfi(lpszServiceClassName), util.toPointer(lpdwBufferLength));
+}
+
+export function WSASetServiceA(
+  lpqsRegInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
+  essoperation: WSAESETSERVICEOP /* Windows.Win32.Networking.WinSock.WSAESETSERVICEOP */,
+  dwControlFlags: number /* u32 */,
+): number /* i32 */ {
+  return libWS2_32_dll.WSASetServiceA(util.toPointer(lpqsRegInfo), essoperation, dwControlFlags);
+}
+
+export function WSASetServiceW(
+  lpqsRegInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
+  essoperation: WSAESETSERVICEOP /* Windows.Win32.Networking.WinSock.WSAESETSERVICEOP */,
+  dwControlFlags: number /* u32 */,
+): number /* i32 */ {
+  return libWS2_32_dll.WSASetServiceW(util.toPointer(lpqsRegInfo), essoperation, dwControlFlags);
+}
+
+export function WSAProviderConfigChange(
+  lpNotificationHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
+  lpOverlapped: Deno.PointerValue | Uint8Array | null /* ptr */,
+  lpCompletionRoutine: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Networking.WinSock.LPWSAOVERLAPPED_COMPLETION_ROUTINE */,
+): number /* i32 */ {
+  return libWS2_32_dll.WSAProviderConfigChange(util.toPointer(lpNotificationHandle), util.toPointer(lpOverlapped), util.toPointer(lpCompletionRoutine));
+}
+
+export function WSAPoll(
+  fdArray: Deno.PointerValue | Uint8Array | null /* ptr */,
+  fds: number /* u32 */,
+  timeout: number /* i32 */,
+): number /* i32 */ {
+  return libWS2_32_dll.WSAPoll(util.toPointer(fdArray), fds, timeout);
+}
+
+export function ProcessSocketNotifications(
+  completionPort: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
+  registrationCount: number /* u32 */,
+  registrationInfos: Deno.PointerValue | Uint8Array | null /* ptr */,
+  timeoutMs: number /* u32 */,
+  completionCount: number /* u32 */,
+  completionPortEntries: Deno.PointerValue | Uint8Array | null /* ptr */,
+  receivedEntryCount: Deno.PointerValue | Uint8Array | null /* ptr */,
+): number /* u32 */ {
+  return libWS2_32_dll.ProcessSocketNotifications(util.toPointer(completionPort), registrationCount, util.toPointer(registrationInfos), timeoutMs, completionCount, util.toPointer(completionPortEntries), util.toPointer(receivedEntryCount));
+}
+
+export function RtlIpv4AddressToStringA(
+  Addr: Deno.PointerValue | Uint8Array | null /* ptr */,
+  S: string | null /* Windows.Win32.Foundation.PSTR */,
+): string | null /* Windows.Win32.Foundation.PSTR */ {
+  return util.pstrFromFfi(libntdll_dll.RtlIpv4AddressToStringA(util.toPointer(Addr), util.pstrToFfi(S)));
+}
+
+export function RtlIpv4AddressToStringExA(
+  Address: Deno.PointerValue | Uint8Array | null /* ptr */,
+  Port: number /* u16 */,
+  AddressString: string | null /* Windows.Win32.Foundation.PSTR */,
+  AddressStringLength: Deno.PointerValue | Uint8Array | null /* ptr */,
+): number /* i32 */ {
+  return libntdll_dll.RtlIpv4AddressToStringExA(util.toPointer(Address), Port, util.pstrToFfi(AddressString), util.toPointer(AddressStringLength));
+}
+
+export function RtlIpv4AddressToStringW(
+  Addr: Deno.PointerValue | Uint8Array | null /* ptr */,
+  S: string | null /* Windows.Win32.Foundation.PWSTR */,
+): string | null /* Windows.Win32.Foundation.PWSTR */ {
+  return util.pwstrFromFfi(libntdll_dll.RtlIpv4AddressToStringW(util.toPointer(Addr), util.pwstrToFfi(S)));
+}
+
+export function RtlIpv4AddressToStringExW(
+  Address: Deno.PointerValue | Uint8Array | null /* ptr */,
+  Port: number /* u16 */,
+  AddressString: string | null /* Windows.Win32.Foundation.PWSTR */,
+  AddressStringLength: Deno.PointerValue | Uint8Array | null /* ptr */,
+): number /* i32 */ {
+  return libntdll_dll.RtlIpv4AddressToStringExW(util.toPointer(Address), Port, util.pwstrToFfi(AddressString), util.toPointer(AddressStringLength));
+}
+
+export function RtlIpv4StringToAddressA(
+  S: string | null /* Windows.Win32.Foundation.PSTR */,
+  Strict: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.BOOLEAN */,
+  Terminator: Deno.PointerValue | Uint8Array | null /* ptr */,
+  Addr: Deno.PointerValue | Uint8Array | null /* ptr */,
+): number /* i32 */ {
+  return libntdll_dll.RtlIpv4StringToAddressA(util.pstrToFfi(S), util.toPointer(Strict), util.toPointer(Terminator), util.toPointer(Addr));
+}
+
+export function RtlIpv4StringToAddressExA(
+  AddressString: string | null /* Windows.Win32.Foundation.PSTR */,
+  Strict: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.BOOLEAN */,
+  Address: Deno.PointerValue | Uint8Array | null /* ptr */,
+  Port: Deno.PointerValue | Uint8Array | null /* ptr */,
+): number /* i32 */ {
+  return libntdll_dll.RtlIpv4StringToAddressExA(util.pstrToFfi(AddressString), util.toPointer(Strict), util.toPointer(Address), util.toPointer(Port));
+}
+
+export function RtlIpv4StringToAddressW(
+  S: string | null /* Windows.Win32.Foundation.PWSTR */,
+  Strict: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.BOOLEAN */,
+  Terminator: Deno.PointerValue | Uint8Array | null /* ptr */,
+  Addr: Deno.PointerValue | Uint8Array | null /* ptr */,
+): number /* i32 */ {
+  return libntdll_dll.RtlIpv4StringToAddressW(util.pwstrToFfi(S), util.toPointer(Strict), util.toPointer(Terminator), util.toPointer(Addr));
+}
+
+export function RtlIpv4StringToAddressExW(
+  AddressString: string | null /* Windows.Win32.Foundation.PWSTR */,
+  Strict: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.BOOLEAN */,
+  Address: Deno.PointerValue | Uint8Array | null /* ptr */,
+  Port: Deno.PointerValue | Uint8Array | null /* ptr */,
+): number /* i32 */ {
+  return libntdll_dll.RtlIpv4StringToAddressExW(util.pwstrToFfi(AddressString), util.toPointer(Strict), util.toPointer(Address), util.toPointer(Port));
+}
+
+export function RtlIpv6AddressToStringA(
+  Addr: Deno.PointerValue | Uint8Array | null /* ptr */,
+  S: string | null /* Windows.Win32.Foundation.PSTR */,
+): string | null /* Windows.Win32.Foundation.PSTR */ {
+  return util.pstrFromFfi(libntdll_dll.RtlIpv6AddressToStringA(util.toPointer(Addr), util.pstrToFfi(S)));
+}
+
+export function RtlIpv6AddressToStringExA(
+  Address: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ScopeId: number /* u32 */,
+  Port: number /* u16 */,
+  AddressString: string | null /* Windows.Win32.Foundation.PSTR */,
+  AddressStringLength: Deno.PointerValue | Uint8Array | null /* ptr */,
+): number /* i32 */ {
+  return libntdll_dll.RtlIpv6AddressToStringExA(util.toPointer(Address), ScopeId, Port, util.pstrToFfi(AddressString), util.toPointer(AddressStringLength));
+}
+
+export function RtlIpv6AddressToStringW(
+  Addr: Deno.PointerValue | Uint8Array | null /* ptr */,
+  S: string | null /* Windows.Win32.Foundation.PWSTR */,
+): string | null /* Windows.Win32.Foundation.PWSTR */ {
+  return util.pwstrFromFfi(libntdll_dll.RtlIpv6AddressToStringW(util.toPointer(Addr), util.pwstrToFfi(S)));
+}
+
+export function RtlIpv6AddressToStringExW(
+  Address: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ScopeId: number /* u32 */,
+  Port: number /* u16 */,
+  AddressString: string | null /* Windows.Win32.Foundation.PWSTR */,
+  AddressStringLength: Deno.PointerValue | Uint8Array | null /* ptr */,
+): number /* i32 */ {
+  return libntdll_dll.RtlIpv6AddressToStringExW(util.toPointer(Address), ScopeId, Port, util.pwstrToFfi(AddressString), util.toPointer(AddressStringLength));
+}
+
+export function RtlIpv6StringToAddressA(
+  S: string | null /* Windows.Win32.Foundation.PSTR */,
+  Terminator: Deno.PointerValue | Uint8Array | null /* ptr */,
+  Addr: Deno.PointerValue | Uint8Array | null /* ptr */,
+): number /* i32 */ {
+  return libntdll_dll.RtlIpv6StringToAddressA(util.pstrToFfi(S), util.toPointer(Terminator), util.toPointer(Addr));
+}
+
+export function RtlIpv6StringToAddressExA(
+  AddressString: string | null /* Windows.Win32.Foundation.PSTR */,
+  Address: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ScopeId: Deno.PointerValue | Uint8Array | null /* ptr */,
+  Port: Deno.PointerValue | Uint8Array | null /* ptr */,
+): number /* i32 */ {
+  return libntdll_dll.RtlIpv6StringToAddressExA(util.pstrToFfi(AddressString), util.toPointer(Address), util.toPointer(ScopeId), util.toPointer(Port));
+}
+
+export function RtlIpv6StringToAddressW(
+  S: string | null /* Windows.Win32.Foundation.PWSTR */,
+  Terminator: Deno.PointerValue | Uint8Array | null /* ptr */,
+  Addr: Deno.PointerValue | Uint8Array | null /* ptr */,
+): number /* i32 */ {
+  return libntdll_dll.RtlIpv6StringToAddressW(util.pwstrToFfi(S), util.toPointer(Terminator), util.toPointer(Addr));
+}
+
+export function RtlIpv6StringToAddressExW(
+  AddressString: string | null /* Windows.Win32.Foundation.PWSTR */,
+  Address: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ScopeId: Deno.PointerValue | Uint8Array | null /* ptr */,
+  Port: Deno.PointerValue | Uint8Array | null /* ptr */,
+): number /* i32 */ {
+  return libntdll_dll.RtlIpv6StringToAddressExW(util.pwstrToFfi(AddressString), util.toPointer(Address), util.toPointer(ScopeId), util.toPointer(Port));
+}
+
+export function RtlEthernetAddressToStringA(
+  Addr: Deno.PointerValue | Uint8Array | null /* ptr */,
+  S: string | null /* Windows.Win32.Foundation.PSTR */,
+): string | null /* Windows.Win32.Foundation.PSTR */ {
+  return util.pstrFromFfi(libntdll_dll.RtlEthernetAddressToStringA(util.toPointer(Addr), util.pstrToFfi(S)));
+}
+
+export function RtlEthernetAddressToStringW(
+  Addr: Deno.PointerValue | Uint8Array | null /* ptr */,
+  S: string | null /* Windows.Win32.Foundation.PWSTR */,
+): string | null /* Windows.Win32.Foundation.PWSTR */ {
+  return util.pwstrFromFfi(libntdll_dll.RtlEthernetAddressToStringW(util.toPointer(Addr), util.pwstrToFfi(S)));
+}
+
+export function RtlEthernetStringToAddressA(
+  S: string | null /* Windows.Win32.Foundation.PSTR */,
+  Terminator: Deno.PointerValue | Uint8Array | null /* ptr */,
+  Addr: Deno.PointerValue | Uint8Array | null /* ptr */,
+): number /* i32 */ {
+  return libntdll_dll.RtlEthernetStringToAddressA(util.pstrToFfi(S), util.toPointer(Terminator), util.toPointer(Addr));
+}
+
+export function RtlEthernetStringToAddressW(
+  S: string | null /* Windows.Win32.Foundation.PWSTR */,
+  Terminator: Deno.PointerValue | Uint8Array | null /* ptr */,
+  Addr: Deno.PointerValue | Uint8Array | null /* ptr */,
+): number /* i32 */ {
+  return libntdll_dll.RtlEthernetStringToAddressW(util.pwstrToFfi(S), util.toPointer(Terminator), util.toPointer(Addr));
+}
+
+export function WSARecvEx(
+  s: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Networking.WinSock.SOCKET */,
+  buf: string | null /* Windows.Win32.Foundation.PSTR */,
+  len: number /* i32 */,
+  flags: Deno.PointerValue | Uint8Array | null /* ptr */,
+): number /* i32 */ {
+  return libMSWSOCK_dll.WSARecvEx(util.toPointer(s), util.pstrToFfi(buf), len, util.toPointer(flags));
+}
+
+export function TransmitFile(
+  hSocket: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Networking.WinSock.SOCKET */,
+  hFile: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
+  nNumberOfBytesToWrite: number /* u32 */,
+  nNumberOfBytesPerSend: number /* u32 */,
+  lpOverlapped: Deno.PointerValue | Uint8Array | null /* ptr */,
+  lpTransmitBuffers: Deno.PointerValue | Uint8Array | null /* ptr */,
+  dwReserved: number /* u32 */,
+): boolean /* Windows.Win32.Foundation.BOOL */ {
+  return util.boolFromFfi(libMSWSOCK_dll.TransmitFile(util.toPointer(hSocket), util.toPointer(hFile), nNumberOfBytesToWrite, nNumberOfBytesPerSend, util.toPointer(lpOverlapped), util.toPointer(lpTransmitBuffers), dwReserved));
+}
+
+export function AcceptEx(
+  sListenSocket: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Networking.WinSock.SOCKET */,
+  sAcceptSocket: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Networking.WinSock.SOCKET */,
+  lpOutputBuffer: Deno.PointerValue | Uint8Array | null /* ptr */,
+  dwReceiveDataLength: number /* u32 */,
+  dwLocalAddressLength: number /* u32 */,
+  dwRemoteAddressLength: number /* u32 */,
+  lpdwBytesReceived: Deno.PointerValue | Uint8Array | null /* ptr */,
+  lpOverlapped: Deno.PointerValue | Uint8Array | null /* ptr */,
+): boolean /* Windows.Win32.Foundation.BOOL */ {
+  return util.boolFromFfi(libMSWSOCK_dll.AcceptEx(util.toPointer(sListenSocket), util.toPointer(sAcceptSocket), util.toPointer(lpOutputBuffer), dwReceiveDataLength, dwLocalAddressLength, dwRemoteAddressLength, util.toPointer(lpdwBytesReceived), util.toPointer(lpOverlapped)));
+}
+
+export function GetAcceptExSockaddrs(
+  lpOutputBuffer: Deno.PointerValue | Uint8Array | null /* ptr */,
+  dwReceiveDataLength: number /* u32 */,
+  dwLocalAddressLength: number /* u32 */,
+  dwRemoteAddressLength: number /* u32 */,
+  LocalSockaddr: Deno.PointerValue | Uint8Array | null /* ptr */,
+  LocalSockaddrLength: Deno.PointerValue | Uint8Array | null /* ptr */,
+  RemoteSockaddr: Deno.PointerValue | Uint8Array | null /* ptr */,
+  RemoteSockaddrLength: Deno.PointerValue | Uint8Array | null /* ptr */,
+): void /* void */ {
+  return libMSWSOCK_dll.GetAcceptExSockaddrs(util.toPointer(lpOutputBuffer), dwReceiveDataLength, dwLocalAddressLength, dwRemoteAddressLength, util.toPointer(LocalSockaddr), util.toPointer(LocalSockaddrLength), util.toPointer(RemoteSockaddr), util.toPointer(RemoteSockaddrLength));
+}
+
+export function WSCEnumProtocols(
+  lpiProtocols: Deno.PointerValue | Uint8Array | null /* ptr */,
+  lpProtocolBuffer: Deno.PointerValue | Uint8Array | null /* ptr */,
+  lpdwBufferLength: Deno.PointerValue | Uint8Array | null /* ptr */,
+  lpErrno: Deno.PointerValue | Uint8Array | null /* ptr */,
+): number /* i32 */ {
+  return libWS2_32_dll.WSCEnumProtocols(util.toPointer(lpiProtocols), util.toPointer(lpProtocolBuffer), util.toPointer(lpdwBufferLength), util.toPointer(lpErrno));
+}
+
+export function WSCDeinstallProvider(
+  lpProviderId: Deno.PointerValue | Uint8Array | null /* ptr */,
+  lpErrno: Deno.PointerValue | Uint8Array | null /* ptr */,
+): number /* i32 */ {
+  return libWS2_32_dll.WSCDeinstallProvider(util.toPointer(lpProviderId), util.toPointer(lpErrno));
+}
+
+export function WSCInstallProvider(
+  lpProviderId: Deno.PointerValue | Uint8Array | null /* ptr */,
+  lpszProviderDllPath: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpProtocolInfoList: Deno.PointerValue | Uint8Array | null /* ptr */,
+  dwNumberOfEntries: number /* u32 */,
+  lpErrno: Deno.PointerValue | Uint8Array | null /* ptr */,
+): number /* i32 */ {
+  return libWS2_32_dll.WSCInstallProvider(util.toPointer(lpProviderId), util.pwstrToFfi(lpszProviderDllPath), util.toPointer(lpProtocolInfoList), dwNumberOfEntries, util.toPointer(lpErrno));
+}
+
+export function WSCGetProviderPath(
+  lpProviderId: Deno.PointerValue | Uint8Array | null /* ptr */,
+  lpszProviderDllPath: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpProviderDllPathLen: Deno.PointerValue | Uint8Array | null /* ptr */,
+  lpErrno: Deno.PointerValue | Uint8Array | null /* ptr */,
+): number /* i32 */ {
+  return libWS2_32_dll.WSCGetProviderPath(util.toPointer(lpProviderId), util.pwstrToFfi(lpszProviderDllPath), util.toPointer(lpProviderDllPathLen), util.toPointer(lpErrno));
+}
+
+export function WSCUpdateProvider(
+  lpProviderId: Deno.PointerValue | Uint8Array | null /* ptr */,
+  lpszProviderDllPath: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpProtocolInfoList: Deno.PointerValue | Uint8Array | null /* ptr */,
+  dwNumberOfEntries: number /* u32 */,
+  lpErrno: Deno.PointerValue | Uint8Array | null /* ptr */,
+): number /* i32 */ {
+  return libWS2_32_dll.WSCUpdateProvider(util.toPointer(lpProviderId), util.pwstrToFfi(lpszProviderDllPath), util.toPointer(lpProtocolInfoList), dwNumberOfEntries, util.toPointer(lpErrno));
+}
+
+export function WSCSetProviderInfo(
+  lpProviderId: Deno.PointerValue | Uint8Array | null /* ptr */,
+  InfoType: WSC_PROVIDER_INFO_TYPE /* Windows.Win32.Networking.WinSock.WSC_PROVIDER_INFO_TYPE */,
+  Info: Deno.PointerValue | Uint8Array | null /* ptr */,
+  InfoSize: Deno.PointerValue /* usize */,
+  Flags: number /* u32 */,
+  lpErrno: Deno.PointerValue | Uint8Array | null /* ptr */,
+): number /* i32 */ {
+  return libWS2_32_dll.WSCSetProviderInfo(util.toPointer(lpProviderId), InfoType, util.toPointer(Info), InfoSize, Flags, util.toPointer(lpErrno));
+}
+
+export function WSCGetProviderInfo(
+  lpProviderId: Deno.PointerValue | Uint8Array | null /* ptr */,
+  InfoType: WSC_PROVIDER_INFO_TYPE /* Windows.Win32.Networking.WinSock.WSC_PROVIDER_INFO_TYPE */,
+  Info: Deno.PointerValue | Uint8Array | null /* ptr */,
+  InfoSize: Deno.PointerValue | Uint8Array | null /* ptr */,
+  Flags: number /* u32 */,
+  lpErrno: Deno.PointerValue | Uint8Array | null /* ptr */,
+): number /* i32 */ {
+  return libWS2_32_dll.WSCGetProviderInfo(util.toPointer(lpProviderId), InfoType, util.toPointer(Info), util.toPointer(InfoSize), Flags, util.toPointer(lpErrno));
+}
+
+export function WSCSetApplicationCategory(
+  Path: string | null /* Windows.Win32.Foundation.PWSTR */,
+  PathLength: number /* u32 */,
+  Extra: string | null /* Windows.Win32.Foundation.PWSTR */,
+  ExtraLength: number /* u32 */,
+  PermittedLspCategories: number /* u32 */,
+  pPrevPermLspCat: Deno.PointerValue | Uint8Array | null /* ptr */,
+  lpErrno: Deno.PointerValue | Uint8Array | null /* ptr */,
+): number /* i32 */ {
+  return libWS2_32_dll.WSCSetApplicationCategory(util.pwstrToFfi(Path), PathLength, util.pwstrToFfi(Extra), ExtraLength, PermittedLspCategories, util.toPointer(pPrevPermLspCat), util.toPointer(lpErrno));
+}
+
+export function WSCGetApplicationCategory(
+  Path: string | null /* Windows.Win32.Foundation.PWSTR */,
+  PathLength: number /* u32 */,
+  Extra: string | null /* Windows.Win32.Foundation.PWSTR */,
+  ExtraLength: number /* u32 */,
+  pPermittedLspCategories: Deno.PointerValue | Uint8Array | null /* ptr */,
+  lpErrno: Deno.PointerValue | Uint8Array | null /* ptr */,
+): number /* i32 */ {
+  return libWS2_32_dll.WSCGetApplicationCategory(util.pwstrToFfi(Path), PathLength, util.pwstrToFfi(Extra), ExtraLength, util.toPointer(pPermittedLspCategories), util.toPointer(lpErrno));
+}
+
+export function WPUCompleteOverlappedRequest(
+  s: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Networking.WinSock.SOCKET */,
+  lpOverlapped: Deno.PointerValue | Uint8Array | null /* ptr */,
+  dwError: number /* u32 */,
+  cbTransferred: number /* u32 */,
+  lpErrno: Deno.PointerValue | Uint8Array | null /* ptr */,
+): number /* i32 */ {
+  return libWS2_32_dll.WPUCompleteOverlappedRequest(util.toPointer(s), util.toPointer(lpOverlapped), dwError, cbTransferred, util.toPointer(lpErrno));
+}
+
+export function WSCInstallNameSpace(
+  lpszIdentifier: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpszPathName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  dwNameSpace: number /* u32 */,
+  dwVersion: number /* u32 */,
+  lpProviderId: Deno.PointerValue | Uint8Array | null /* ptr */,
+): number /* i32 */ {
+  return libWS2_32_dll.WSCInstallNameSpace(util.pwstrToFfi(lpszIdentifier), util.pwstrToFfi(lpszPathName), dwNameSpace, dwVersion, util.toPointer(lpProviderId));
+}
+
+export function WSCUnInstallNameSpace(
+  lpProviderId: Deno.PointerValue | Uint8Array | null /* ptr */,
+): number /* i32 */ {
+  return libWS2_32_dll.WSCUnInstallNameSpace(util.toPointer(lpProviderId));
+}
+
+export function WSCInstallNameSpaceEx(
+  lpszIdentifier: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpszPathName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  dwNameSpace: number /* u32 */,
+  dwVersion: number /* u32 */,
+  lpProviderId: Deno.PointerValue | Uint8Array | null /* ptr */,
+  lpProviderSpecific: Deno.PointerValue | Uint8Array | null /* ptr */,
+): number /* i32 */ {
+  return libWS2_32_dll.WSCInstallNameSpaceEx(util.pwstrToFfi(lpszIdentifier), util.pwstrToFfi(lpszPathName), dwNameSpace, dwVersion, util.toPointer(lpProviderId), util.toPointer(lpProviderSpecific));
+}
+
+export function WSCEnableNSProvider(
+  lpProviderId: Deno.PointerValue | Uint8Array | null /* ptr */,
+  fEnable: boolean /* Windows.Win32.Foundation.BOOL */,
+): number /* i32 */ {
+  return libWS2_32_dll.WSCEnableNSProvider(util.toPointer(lpProviderId), util.boolToFfi(fEnable));
 }
 
 export function WSAAdvertiseProvider(
   puuidProviderId: Deno.PointerValue | Uint8Array | null /* ptr */,
   pNSPv2Routine: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
-  return libWS2_32.WSAAdvertiseProvider(util.toPointer(puuidProviderId), util.toPointer(pNSPv2Routine));
+  return libWS2_32_dll.WSAAdvertiseProvider(util.toPointer(puuidProviderId), util.toPointer(pNSPv2Routine));
 }
 
 export function WSAUnadvertiseProvider(
   puuidProviderId: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
-  return libWS2_32.WSAUnadvertiseProvider(util.toPointer(puuidProviderId));
+  return libWS2_32_dll.WSAUnadvertiseProvider(util.toPointer(puuidProviderId));
 }
 
 export function WSAProviderCompleteAsyncCall(
   hAsyncCall: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
   iRetCode: number /* i32 */,
 ): number /* i32 */ {
-  return libWS2_32.WSAProviderCompleteAsyncCall(util.toPointer(hAsyncCall), iRetCode);
+  return libWS2_32_dll.WSAProviderCompleteAsyncCall(util.toPointer(hAsyncCall), iRetCode);
 }
 
 export function EnumProtocolsA(
@@ -11606,7 +13804,7 @@ export function EnumProtocolsA(
   lpProtocolBuffer: Deno.PointerValue | Uint8Array | null /* ptr */,
   lpdwBufferLength: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
-  return libMSWSOCK.EnumProtocolsA(util.toPointer(lpiProtocols), util.toPointer(lpProtocolBuffer), util.toPointer(lpdwBufferLength));
+  return libMSWSOCK_dll.EnumProtocolsA(util.toPointer(lpiProtocols), util.toPointer(lpProtocolBuffer), util.toPointer(lpdwBufferLength));
 }
 
 export function EnumProtocolsW(
@@ -11614,7 +13812,7 @@ export function EnumProtocolsW(
   lpProtocolBuffer: Deno.PointerValue | Uint8Array | null /* ptr */,
   lpdwBufferLength: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
-  return libMSWSOCK.EnumProtocolsW(util.toPointer(lpiProtocols), util.toPointer(lpProtocolBuffer), util.toPointer(lpdwBufferLength));
+  return libMSWSOCK_dll.EnumProtocolsW(util.toPointer(lpiProtocols), util.toPointer(lpProtocolBuffer), util.toPointer(lpdwBufferLength));
 }
 
 export function GetAddressByNameA(
@@ -11629,7 +13827,7 @@ export function GetAddressByNameA(
   lpAliasBuffer: string | null /* Windows.Win32.Foundation.PSTR */,
   lpdwAliasBufferLength: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
-  return libMSWSOCK.GetAddressByNameA(dwNameSpace, util.toPointer(lpServiceType), util.pstrToFfi(lpServiceName), util.toPointer(lpiProtocols), dwResolution, util.toPointer(lpServiceAsyncInfo), util.toPointer(lpCsaddrBuffer), util.toPointer(lpdwBufferLength), util.pstrToFfi(lpAliasBuffer), util.toPointer(lpdwAliasBufferLength));
+  return libMSWSOCK_dll.GetAddressByNameA(dwNameSpace, util.toPointer(lpServiceType), util.pstrToFfi(lpServiceName), util.toPointer(lpiProtocols), dwResolution, util.toPointer(lpServiceAsyncInfo), util.toPointer(lpCsaddrBuffer), util.toPointer(lpdwBufferLength), util.pstrToFfi(lpAliasBuffer), util.toPointer(lpdwAliasBufferLength));
 }
 
 export function GetAddressByNameW(
@@ -11644,21 +13842,21 @@ export function GetAddressByNameW(
   lpAliasBuffer: string | null /* Windows.Win32.Foundation.PWSTR */,
   lpdwAliasBufferLength: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
-  return libMSWSOCK.GetAddressByNameW(dwNameSpace, util.toPointer(lpServiceType), util.pwstrToFfi(lpServiceName), util.toPointer(lpiProtocols), dwResolution, util.toPointer(lpServiceAsyncInfo), util.toPointer(lpCsaddrBuffer), util.toPointer(lpdwBufferLength), util.pwstrToFfi(lpAliasBuffer), util.toPointer(lpdwAliasBufferLength));
+  return libMSWSOCK_dll.GetAddressByNameW(dwNameSpace, util.toPointer(lpServiceType), util.pwstrToFfi(lpServiceName), util.toPointer(lpiProtocols), dwResolution, util.toPointer(lpServiceAsyncInfo), util.toPointer(lpCsaddrBuffer), util.toPointer(lpdwBufferLength), util.pwstrToFfi(lpAliasBuffer), util.toPointer(lpdwAliasBufferLength));
 }
 
 export function GetTypeByNameA(
   lpServiceName: string | null /* Windows.Win32.Foundation.PSTR */,
   lpServiceType: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
-  return libMSWSOCK.GetTypeByNameA(util.pstrToFfi(lpServiceName), util.toPointer(lpServiceType));
+  return libMSWSOCK_dll.GetTypeByNameA(util.pstrToFfi(lpServiceName), util.toPointer(lpServiceType));
 }
 
 export function GetTypeByNameW(
   lpServiceName: string | null /* Windows.Win32.Foundation.PWSTR */,
   lpServiceType: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
-  return libMSWSOCK.GetTypeByNameW(util.pwstrToFfi(lpServiceName), util.toPointer(lpServiceType));
+  return libMSWSOCK_dll.GetTypeByNameW(util.pwstrToFfi(lpServiceName), util.toPointer(lpServiceType));
 }
 
 export function GetNameByTypeA(
@@ -11666,7 +13864,7 @@ export function GetNameByTypeA(
   lpServiceName: string | null /* Windows.Win32.Foundation.PSTR */,
   dwNameLength: number /* u32 */,
 ): number /* i32 */ {
-  return libMSWSOCK.GetNameByTypeA(util.toPointer(lpServiceType), util.pstrToFfi(lpServiceName), dwNameLength);
+  return libMSWSOCK_dll.GetNameByTypeA(util.toPointer(lpServiceType), util.pstrToFfi(lpServiceName), dwNameLength);
 }
 
 export function GetNameByTypeW(
@@ -11674,7 +13872,7 @@ export function GetNameByTypeW(
   lpServiceName: string | null /* Windows.Win32.Foundation.PWSTR */,
   dwNameLength: number /* u32 */,
 ): number /* i32 */ {
-  return libMSWSOCK.GetNameByTypeW(util.toPointer(lpServiceType), util.pwstrToFfi(lpServiceName), dwNameLength);
+  return libMSWSOCK_dll.GetNameByTypeW(util.toPointer(lpServiceType), util.pwstrToFfi(lpServiceName), dwNameLength);
 }
 
 export function SetServiceA(
@@ -11685,7 +13883,7 @@ export function SetServiceA(
   lpServiceAsyncInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
   lpdwStatusFlags: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
-  return libMSWSOCK.SetServiceA(dwNameSpace, dwOperation, dwFlags, util.toPointer(lpServiceInfo), util.toPointer(lpServiceAsyncInfo), util.toPointer(lpdwStatusFlags));
+  return libMSWSOCK_dll.SetServiceA(dwNameSpace, dwOperation, dwFlags, util.toPointer(lpServiceInfo), util.toPointer(lpServiceAsyncInfo), util.toPointer(lpdwStatusFlags));
 }
 
 export function SetServiceW(
@@ -11696,7 +13894,7 @@ export function SetServiceW(
   lpServiceAsyncInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
   lpdwStatusFlags: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
-  return libMSWSOCK.SetServiceW(dwNameSpace, dwOperation, dwFlags, util.toPointer(lpServiceInfo), util.toPointer(lpServiceAsyncInfo), util.toPointer(lpdwStatusFlags));
+  return libMSWSOCK_dll.SetServiceW(dwNameSpace, dwOperation, dwFlags, util.toPointer(lpServiceInfo), util.toPointer(lpServiceAsyncInfo), util.toPointer(lpdwStatusFlags));
 }
 
 export function GetServiceA(
@@ -11708,7 +13906,7 @@ export function GetServiceA(
   lpdwBufferSize: Deno.PointerValue | Uint8Array | null /* ptr */,
   lpServiceAsyncInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
-  return libMSWSOCK.GetServiceA(dwNameSpace, util.toPointer(lpGuid), util.pstrToFfi(lpServiceName), dwProperties, util.toPointer(lpBuffer), util.toPointer(lpdwBufferSize), util.toPointer(lpServiceAsyncInfo));
+  return libMSWSOCK_dll.GetServiceA(dwNameSpace, util.toPointer(lpGuid), util.pstrToFfi(lpServiceName), dwProperties, util.toPointer(lpBuffer), util.toPointer(lpdwBufferSize), util.toPointer(lpServiceAsyncInfo));
 }
 
 export function GetServiceW(
@@ -11720,7 +13918,7 @@ export function GetServiceW(
   lpdwBufferSize: Deno.PointerValue | Uint8Array | null /* ptr */,
   lpServiceAsyncInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
-  return libMSWSOCK.GetServiceW(dwNameSpace, util.toPointer(lpGuid), util.pwstrToFfi(lpServiceName), dwProperties, util.toPointer(lpBuffer), util.toPointer(lpdwBufferSize), util.toPointer(lpServiceAsyncInfo));
+  return libMSWSOCK_dll.GetServiceW(dwNameSpace, util.toPointer(lpGuid), util.pwstrToFfi(lpServiceName), dwProperties, util.toPointer(lpBuffer), util.toPointer(lpdwBufferSize), util.toPointer(lpServiceAsyncInfo));
 }
 
 export function getaddrinfo(
@@ -11729,7 +13927,7 @@ export function getaddrinfo(
   pHints: Deno.PointerValue | Uint8Array | null /* ptr */,
   ppResult: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
-  return libWS2_32.getaddrinfo(util.pstrToFfi(pNodeName), util.pstrToFfi(pServiceName), util.toPointer(pHints), util.toPointer(ppResult));
+  return libWS2_32_dll.getaddrinfo(util.pstrToFfi(pNodeName), util.pstrToFfi(pServiceName), util.toPointer(pHints), util.toPointer(ppResult));
 }
 
 export function GetAddrInfoW(
@@ -11738,7 +13936,7 @@ export function GetAddrInfoW(
   pHints: Deno.PointerValue | Uint8Array | null /* ptr */,
   ppResult: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
-  return libWS2_32.GetAddrInfoW(util.pwstrToFfi(pNodeName), util.pwstrToFfi(pServiceName), util.toPointer(pHints), util.toPointer(ppResult));
+  return libWS2_32_dll.GetAddrInfoW(util.pwstrToFfi(pNodeName), util.pwstrToFfi(pServiceName), util.toPointer(pHints), util.toPointer(ppResult));
 }
 
 export function GetAddrInfoExA(
@@ -11753,7 +13951,7 @@ export function GetAddrInfoExA(
   lpCompletionRoutine: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Networking.WinSock.LPLOOKUPSERVICE_COMPLETION_ROUTINE */,
   lpNameHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
-  return libWS2_32.GetAddrInfoExA(util.pstrToFfi(pName), util.pstrToFfi(pServiceName), dwNameSpace, util.toPointer(lpNspId), util.toPointer(hints), util.toPointer(ppResult), util.toPointer(timeout), util.toPointer(lpOverlapped), util.toPointer(lpCompletionRoutine), util.toPointer(lpNameHandle));
+  return libWS2_32_dll.GetAddrInfoExA(util.pstrToFfi(pName), util.pstrToFfi(pServiceName), dwNameSpace, util.toPointer(lpNspId), util.toPointer(hints), util.toPointer(ppResult), util.toPointer(timeout), util.toPointer(lpOverlapped), util.toPointer(lpCompletionRoutine), util.toPointer(lpNameHandle));
 }
 
 export function GetAddrInfoExW(
@@ -11768,19 +13966,19 @@ export function GetAddrInfoExW(
   lpCompletionRoutine: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Networking.WinSock.LPLOOKUPSERVICE_COMPLETION_ROUTINE */,
   lpHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
-  return libWS2_32.GetAddrInfoExW(util.pwstrToFfi(pName), util.pwstrToFfi(pServiceName), dwNameSpace, util.toPointer(lpNspId), util.toPointer(hints), util.toPointer(ppResult), util.toPointer(timeout), util.toPointer(lpOverlapped), util.toPointer(lpCompletionRoutine), util.toPointer(lpHandle));
+  return libWS2_32_dll.GetAddrInfoExW(util.pwstrToFfi(pName), util.pwstrToFfi(pServiceName), dwNameSpace, util.toPointer(lpNspId), util.toPointer(hints), util.toPointer(ppResult), util.toPointer(timeout), util.toPointer(lpOverlapped), util.toPointer(lpCompletionRoutine), util.toPointer(lpHandle));
 }
 
 export function GetAddrInfoExCancel(
   lpHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
-  return libWS2_32.GetAddrInfoExCancel(util.toPointer(lpHandle));
+  return libWS2_32_dll.GetAddrInfoExCancel(util.toPointer(lpHandle));
 }
 
 export function GetAddrInfoExOverlappedResult(
   lpOverlapped: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
-  return libWS2_32.GetAddrInfoExOverlappedResult(util.toPointer(lpOverlapped));
+  return libWS2_32_dll.GetAddrInfoExOverlappedResult(util.toPointer(lpOverlapped));
 }
 
 export function SetAddrInfoExA(
@@ -11797,7 +13995,7 @@ export function SetAddrInfoExA(
   lpCompletionRoutine: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Networking.WinSock.LPLOOKUPSERVICE_COMPLETION_ROUTINE */,
   lpNameHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
-  return libWS2_32.SetAddrInfoExA(util.pstrToFfi(pName), util.pstrToFfi(pServiceName), util.toPointer(pAddresses), dwAddressCount, util.toPointer(lpBlob), dwFlags, dwNameSpace, util.toPointer(lpNspId), util.toPointer(timeout), util.toPointer(lpOverlapped), util.toPointer(lpCompletionRoutine), util.toPointer(lpNameHandle));
+  return libWS2_32_dll.SetAddrInfoExA(util.pstrToFfi(pName), util.pstrToFfi(pServiceName), util.toPointer(pAddresses), dwAddressCount, util.toPointer(lpBlob), dwFlags, dwNameSpace, util.toPointer(lpNspId), util.toPointer(timeout), util.toPointer(lpOverlapped), util.toPointer(lpCompletionRoutine), util.toPointer(lpNameHandle));
 }
 
 export function SetAddrInfoExW(
@@ -11814,31 +14012,31 @@ export function SetAddrInfoExW(
   lpCompletionRoutine: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Networking.WinSock.LPLOOKUPSERVICE_COMPLETION_ROUTINE */,
   lpNameHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
-  return libWS2_32.SetAddrInfoExW(util.pwstrToFfi(pName), util.pwstrToFfi(pServiceName), util.toPointer(pAddresses), dwAddressCount, util.toPointer(lpBlob), dwFlags, dwNameSpace, util.toPointer(lpNspId), util.toPointer(timeout), util.toPointer(lpOverlapped), util.toPointer(lpCompletionRoutine), util.toPointer(lpNameHandle));
+  return libWS2_32_dll.SetAddrInfoExW(util.pwstrToFfi(pName), util.pwstrToFfi(pServiceName), util.toPointer(pAddresses), dwAddressCount, util.toPointer(lpBlob), dwFlags, dwNameSpace, util.toPointer(lpNspId), util.toPointer(timeout), util.toPointer(lpOverlapped), util.toPointer(lpCompletionRoutine), util.toPointer(lpNameHandle));
 }
 
 export function freeaddrinfo(
   pAddrInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): void /* void */ {
-  return libWS2_32.freeaddrinfo(util.toPointer(pAddrInfo));
+  return libWS2_32_dll.freeaddrinfo(util.toPointer(pAddrInfo));
 }
 
 export function FreeAddrInfoW(
   pAddrInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): void /* void */ {
-  return libWS2_32.FreeAddrInfoW(util.toPointer(pAddrInfo));
+  return libWS2_32_dll.FreeAddrInfoW(util.toPointer(pAddrInfo));
 }
 
 export function FreeAddrInfoEx(
   pAddrInfoEx: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): void /* void */ {
-  return libWS2_32.FreeAddrInfoEx(util.toPointer(pAddrInfoEx));
+  return libWS2_32_dll.FreeAddrInfoEx(util.toPointer(pAddrInfoEx));
 }
 
 export function FreeAddrInfoExW(
   pAddrInfoEx: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): void /* void */ {
-  return libWS2_32.FreeAddrInfoExW(util.toPointer(pAddrInfoEx));
+  return libWS2_32_dll.FreeAddrInfoExW(util.toPointer(pAddrInfoEx));
 }
 
 export function getnameinfo(
@@ -11850,7 +14048,7 @@ export function getnameinfo(
   ServiceBufferSize: number /* u32 */,
   Flags: number /* i32 */,
 ): number /* i32 */ {
-  return libWS2_32.getnameinfo(util.toPointer(pSockaddr), SockaddrLength, util.pstrToFfi(pNodeBuffer), NodeBufferSize, util.pstrToFfi(pServiceBuffer), ServiceBufferSize, Flags);
+  return libWS2_32_dll.getnameinfo(util.toPointer(pSockaddr), SockaddrLength, util.pstrToFfi(pNodeBuffer), NodeBufferSize, util.pstrToFfi(pServiceBuffer), ServiceBufferSize, Flags);
 }
 
 export function GetNameInfoW(
@@ -11862,7 +14060,7 @@ export function GetNameInfoW(
   ServiceBufferSize: number /* u32 */,
   Flags: number /* i32 */,
 ): number /* i32 */ {
-  return libWS2_32.GetNameInfoW(util.toPointer(pSockaddr), SockaddrLength, util.pwstrToFfi(pNodeBuffer), NodeBufferSize, util.pwstrToFfi(pServiceBuffer), ServiceBufferSize, Flags);
+  return libWS2_32_dll.GetNameInfoW(util.toPointer(pSockaddr), SockaddrLength, util.pwstrToFfi(pNodeBuffer), NodeBufferSize, util.pwstrToFfi(pServiceBuffer), ServiceBufferSize, Flags);
 }
 
 export function inet_pton(
@@ -11870,7 +14068,7 @@ export function inet_pton(
   pszAddrString: string | null /* Windows.Win32.Foundation.PSTR */,
   pAddrBuf: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
-  return libWS2_32.inet_pton(Family, util.pstrToFfi(pszAddrString), util.toPointer(pAddrBuf));
+  return libWS2_32_dll.inet_pton(Family, util.pstrToFfi(pszAddrString), util.toPointer(pAddrBuf));
 }
 
 export function InetPtonW(
@@ -11878,7 +14076,7 @@ export function InetPtonW(
   pszAddrString: string | null /* Windows.Win32.Foundation.PWSTR */,
   pAddrBuf: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
-  return libWS2_32.InetPtonW(Family, util.pwstrToFfi(pszAddrString), util.toPointer(pAddrBuf));
+  return libWS2_32_dll.InetPtonW(Family, util.pwstrToFfi(pszAddrString), util.toPointer(pAddrBuf));
 }
 
 export function inet_ntop(
@@ -11887,7 +14085,7 @@ export function inet_ntop(
   pStringBuf: string | null /* Windows.Win32.Foundation.PSTR */,
   StringBufSize: Deno.PointerValue /* usize */,
 ): string | null /* Windows.Win32.Foundation.PSTR */ {
-  return util.pstrFromFfi(libWS2_32.inet_ntop(Family, util.toPointer(pAddr), util.pstrToFfi(pStringBuf), StringBufSize));
+  return util.pstrFromFfi(libWS2_32_dll.inet_ntop(Family, util.toPointer(pAddr), util.pstrToFfi(pStringBuf), StringBufSize));
 }
 
 export function InetNtopW(
@@ -11896,7 +14094,7 @@ export function InetNtopW(
   pStringBuf: string | null /* Windows.Win32.Foundation.PWSTR */,
   StringBufSize: Deno.PointerValue /* usize */,
 ): string | null /* Windows.Win32.Foundation.PWSTR */ {
-  return util.pwstrFromFfi(libWS2_32.InetNtopW(Family, util.toPointer(pAddr), util.pwstrToFfi(pStringBuf), StringBufSize));
+  return util.pwstrFromFfi(libWS2_32_dll.InetNtopW(Family, util.toPointer(pAddr), util.pwstrToFfi(pStringBuf), StringBufSize));
 }
 
 export function WSASetSocketSecurity(
@@ -11906,7 +14104,7 @@ export function WSASetSocketSecurity(
   Overlapped: Deno.PointerValue | Uint8Array | null /* ptr */,
   CompletionRoutine: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Networking.WinSock.LPWSAOVERLAPPED_COMPLETION_ROUTINE */,
 ): number /* i32 */ {
-  return libfwpuclnt.WSASetSocketSecurity(util.toPointer(Socket), util.toPointer(SecuritySettings), SecuritySettingsLen, util.toPointer(Overlapped), util.toPointer(CompletionRoutine));
+  return libfwpuclnt_dll.WSASetSocketSecurity(util.toPointer(Socket), util.toPointer(SecuritySettings), SecuritySettingsLen, util.toPointer(Overlapped), util.toPointer(CompletionRoutine));
 }
 
 export function WSAQuerySocketSecurity(
@@ -11918,7 +14116,7 @@ export function WSAQuerySocketSecurity(
   Overlapped: Deno.PointerValue | Uint8Array | null /* ptr */,
   CompletionRoutine: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Networking.WinSock.LPWSAOVERLAPPED_COMPLETION_ROUTINE */,
 ): number /* i32 */ {
-  return libfwpuclnt.WSAQuerySocketSecurity(util.toPointer(Socket), util.toPointer(SecurityQueryTemplate), SecurityQueryTemplateLen, util.toPointer(SecurityQueryInfo), util.toPointer(SecurityQueryInfoLen), util.toPointer(Overlapped), util.toPointer(CompletionRoutine));
+  return libfwpuclnt_dll.WSAQuerySocketSecurity(util.toPointer(Socket), util.toPointer(SecurityQueryTemplate), SecurityQueryTemplateLen, util.toPointer(SecurityQueryInfo), util.toPointer(SecurityQueryInfoLen), util.toPointer(Overlapped), util.toPointer(CompletionRoutine));
 }
 
 export function WSASetSocketPeerTargetName(
@@ -11928,7 +14126,7 @@ export function WSASetSocketPeerTargetName(
   Overlapped: Deno.PointerValue | Uint8Array | null /* ptr */,
   CompletionRoutine: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Networking.WinSock.LPWSAOVERLAPPED_COMPLETION_ROUTINE */,
 ): number /* i32 */ {
-  return libfwpuclnt.WSASetSocketPeerTargetName(util.toPointer(Socket), util.toPointer(PeerTargetName), PeerTargetNameLen, util.toPointer(Overlapped), util.toPointer(CompletionRoutine));
+  return libfwpuclnt_dll.WSASetSocketPeerTargetName(util.toPointer(Socket), util.toPointer(PeerTargetName), PeerTargetNameLen, util.toPointer(Overlapped), util.toPointer(CompletionRoutine));
 }
 
 export function WSADeleteSocketPeerTargetName(
@@ -11938,7 +14136,7 @@ export function WSADeleteSocketPeerTargetName(
   Overlapped: Deno.PointerValue | Uint8Array | null /* ptr */,
   CompletionRoutine: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Networking.WinSock.LPWSAOVERLAPPED_COMPLETION_ROUTINE */,
 ): number /* i32 */ {
-  return libfwpuclnt.WSADeleteSocketPeerTargetName(util.toPointer(Socket), util.toPointer(PeerAddr), PeerAddrLen, util.toPointer(Overlapped), util.toPointer(CompletionRoutine));
+  return libfwpuclnt_dll.WSADeleteSocketPeerTargetName(util.toPointer(Socket), util.toPointer(PeerAddr), PeerAddrLen, util.toPointer(Overlapped), util.toPointer(CompletionRoutine));
 }
 
 export function WSAImpersonateSocketPeer(
@@ -11946,44 +14144,30 @@ export function WSAImpersonateSocketPeer(
   PeerAddr: Deno.PointerValue | Uint8Array | null /* ptr */,
   PeerAddrLen: number /* u32 */,
 ): number /* i32 */ {
-  return libfwpuclnt.WSAImpersonateSocketPeer(util.toPointer(Socket), util.toPointer(PeerAddr), PeerAddrLen);
+  return libfwpuclnt_dll.WSAImpersonateSocketPeer(util.toPointer(Socket), util.toPointer(PeerAddr), PeerAddrLen);
 }
 
 export function WSARevertImpersonation(): number /* i32 */ {
-  return libfwpuclnt.WSARevertImpersonation();
+  return libfwpuclnt_dll.WSARevertImpersonation();
 }
 
 export function SetSocketMediaStreamingMode(
   value: boolean /* Windows.Win32.Foundation.BOOL */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libWindows_Networking.SetSocketMediaStreamingMode(util.boolToFfi(value)));
+  return util.pointerFromFfi(libWindows_Networking_dll.SetSocketMediaStreamingMode(util.boolToFfi(value)));
 }
 
 export function WSCWriteProviderOrder(
   lpwdCatalogEntryId: Deno.PointerValue | Uint8Array | null /* ptr */,
   dwNumberOfEntries: number /* u32 */,
 ): number /* i32 */ {
-  return libWS2_32.WSCWriteProviderOrder(util.toPointer(lpwdCatalogEntryId), dwNumberOfEntries);
-}
-
-export function WSCWriteProviderOrder32(
-  lpwdCatalogEntryId: Deno.PointerValue | Uint8Array | null /* ptr */,
-  dwNumberOfEntries: number /* u32 */,
-): number /* i32 */ {
-  return libWS2_32.WSCWriteProviderOrder32(util.toPointer(lpwdCatalogEntryId), dwNumberOfEntries);
+  return libWS2_32_dll.WSCWriteProviderOrder(util.toPointer(lpwdCatalogEntryId), dwNumberOfEntries);
 }
 
 export function WSCWriteNameSpaceOrder(
   lpProviderId: Deno.PointerValue | Uint8Array | null /* ptr */,
   dwNumberOfEntries: number /* u32 */,
 ): number /* i32 */ {
-  return libWS2_32.WSCWriteNameSpaceOrder(util.toPointer(lpProviderId), dwNumberOfEntries);
-}
-
-export function WSCWriteNameSpaceOrder32(
-  lpProviderId: Deno.PointerValue | Uint8Array | null /* ptr */,
-  dwNumberOfEntries: number /* u32 */,
-): number /* i32 */ {
-  return libWS2_32.WSCWriteNameSpaceOrder32(util.toPointer(lpProviderId), dwNumberOfEntries);
+  return libWS2_32_dll.WSCWriteNameSpaceOrder(util.toPointer(lpProviderId), dwNumberOfEntries);
 }
 

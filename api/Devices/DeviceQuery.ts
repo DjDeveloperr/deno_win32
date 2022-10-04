@@ -326,7 +326,7 @@ export type HRESULT = number;
 // Native Libraries
 
 try {
-  var libapi_ms_win_devices_query_l1_1_0 = Deno.dlopen("api-ms-win-devices-query-l1-1-0", {
+  var libapi_ms_win_devices_query_l1_1_0_dll = Deno.dlopen("api-ms-win-devices-query-l1-1-0.dll", {
     DevCreateObjectQuery: {
       parameters: ["i32", "u32", "u32", "pointer", "u32", "pointer", "pointer", "pointer", "pointer"],
       result: "pointer",
@@ -367,7 +367,7 @@ try {
 } catch(e) { /* ignore */ }
 
 try {
-  var libapi_ms_win_devices_query_l1_1_1 = Deno.dlopen("api-ms-win-devices-query-l1-1-1", {
+  var libapi_ms_win_devices_query_l1_1_1_dll = Deno.dlopen("api-ms-win-devices-query-l1-1-1.dll", {
     DevCreateObjectQueryEx: {
       parameters: ["i32", "u32", "u32", "pointer", "u32", "pointer", "u32", "pointer", "pointer", "pointer", "pointer"],
       result: "pointer",
@@ -404,7 +404,7 @@ export function DevCreateObjectQuery(
   pContext: Deno.PointerValue | Uint8Array | null /* ptr */,
   phDevQuery: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libapi_ms_win_devices_query_l1_1_0.DevCreateObjectQuery(ObjectType, QueryFlags, cRequestedProperties, util.toPointer(pRequestedProperties), cFilterExpressionCount, util.toPointer(pFilter), util.toPointer(pCallback), util.toPointer(pContext), util.toPointer(phDevQuery)));
+  return util.pointerFromFfi(libapi_ms_win_devices_query_l1_1_0_dll.DevCreateObjectQuery(ObjectType, QueryFlags, cRequestedProperties, util.toPointer(pRequestedProperties), cFilterExpressionCount, util.toPointer(pFilter), util.toPointer(pCallback), util.toPointer(pContext), util.toPointer(phDevQuery)));
 }
 
 export function DevCreateObjectQueryEx(
@@ -420,7 +420,7 @@ export function DevCreateObjectQueryEx(
   pContext: Deno.PointerValue | Uint8Array | null /* ptr */,
   phDevQuery: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libapi_ms_win_devices_query_l1_1_1.DevCreateObjectQueryEx(ObjectType, QueryFlags, cRequestedProperties, util.toPointer(pRequestedProperties), cFilterExpressionCount, util.toPointer(pFilter), cExtendedParameterCount, util.toPointer(pExtendedParameters), util.toPointer(pCallback), util.toPointer(pContext), util.toPointer(phDevQuery)));
+  return util.pointerFromFfi(libapi_ms_win_devices_query_l1_1_1_dll.DevCreateObjectQueryEx(ObjectType, QueryFlags, cRequestedProperties, util.toPointer(pRequestedProperties), cFilterExpressionCount, util.toPointer(pFilter), cExtendedParameterCount, util.toPointer(pExtendedParameters), util.toPointer(pCallback), util.toPointer(pContext), util.toPointer(phDevQuery)));
 }
 
 export function DevCreateObjectQueryFromId(
@@ -435,7 +435,7 @@ export function DevCreateObjectQueryFromId(
   pContext: Deno.PointerValue | Uint8Array | null /* ptr */,
   phDevQuery: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libapi_ms_win_devices_query_l1_1_0.DevCreateObjectQueryFromId(ObjectType, util.pwstrToFfi(pszObjectId), QueryFlags, cRequestedProperties, util.toPointer(pRequestedProperties), cFilterExpressionCount, util.toPointer(pFilter), util.toPointer(pCallback), util.toPointer(pContext), util.toPointer(phDevQuery)));
+  return util.pointerFromFfi(libapi_ms_win_devices_query_l1_1_0_dll.DevCreateObjectQueryFromId(ObjectType, util.pwstrToFfi(pszObjectId), QueryFlags, cRequestedProperties, util.toPointer(pRequestedProperties), cFilterExpressionCount, util.toPointer(pFilter), util.toPointer(pCallback), util.toPointer(pContext), util.toPointer(phDevQuery)));
 }
 
 export function DevCreateObjectQueryFromIdEx(
@@ -452,7 +452,7 @@ export function DevCreateObjectQueryFromIdEx(
   pContext: Deno.PointerValue | Uint8Array | null /* ptr */,
   phDevQuery: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libapi_ms_win_devices_query_l1_1_1.DevCreateObjectQueryFromIdEx(ObjectType, util.pwstrToFfi(pszObjectId), QueryFlags, cRequestedProperties, util.toPointer(pRequestedProperties), cFilterExpressionCount, util.toPointer(pFilter), cExtendedParameterCount, util.toPointer(pExtendedParameters), util.toPointer(pCallback), util.toPointer(pContext), util.toPointer(phDevQuery)));
+  return util.pointerFromFfi(libapi_ms_win_devices_query_l1_1_1_dll.DevCreateObjectQueryFromIdEx(ObjectType, util.pwstrToFfi(pszObjectId), QueryFlags, cRequestedProperties, util.toPointer(pRequestedProperties), cFilterExpressionCount, util.toPointer(pFilter), cExtendedParameterCount, util.toPointer(pExtendedParameters), util.toPointer(pCallback), util.toPointer(pContext), util.toPointer(phDevQuery)));
 }
 
 export function DevCreateObjectQueryFromIds(
@@ -467,7 +467,7 @@ export function DevCreateObjectQueryFromIds(
   pContext: Deno.PointerValue | Uint8Array | null /* ptr */,
   phDevQuery: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libapi_ms_win_devices_query_l1_1_0.DevCreateObjectQueryFromIds(ObjectType, util.pwstrToFfi(pszzObjectIds), QueryFlags, cRequestedProperties, util.toPointer(pRequestedProperties), cFilterExpressionCount, util.toPointer(pFilter), util.toPointer(pCallback), util.toPointer(pContext), util.toPointer(phDevQuery)));
+  return util.pointerFromFfi(libapi_ms_win_devices_query_l1_1_0_dll.DevCreateObjectQueryFromIds(ObjectType, util.pwstrToFfi(pszzObjectIds), QueryFlags, cRequestedProperties, util.toPointer(pRequestedProperties), cFilterExpressionCount, util.toPointer(pFilter), util.toPointer(pCallback), util.toPointer(pContext), util.toPointer(phDevQuery)));
 }
 
 export function DevCreateObjectQueryFromIdsEx(
@@ -484,13 +484,13 @@ export function DevCreateObjectQueryFromIdsEx(
   pContext: Deno.PointerValue | Uint8Array | null /* ptr */,
   phDevQuery: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libapi_ms_win_devices_query_l1_1_1.DevCreateObjectQueryFromIdsEx(ObjectType, util.pwstrToFfi(pszzObjectIds), QueryFlags, cRequestedProperties, util.toPointer(pRequestedProperties), cFilterExpressionCount, util.toPointer(pFilter), cExtendedParameterCount, util.toPointer(pExtendedParameters), util.toPointer(pCallback), util.toPointer(pContext), util.toPointer(phDevQuery)));
+  return util.pointerFromFfi(libapi_ms_win_devices_query_l1_1_1_dll.DevCreateObjectQueryFromIdsEx(ObjectType, util.pwstrToFfi(pszzObjectIds), QueryFlags, cRequestedProperties, util.toPointer(pRequestedProperties), cFilterExpressionCount, util.toPointer(pFilter), cExtendedParameterCount, util.toPointer(pExtendedParameters), util.toPointer(pCallback), util.toPointer(pContext), util.toPointer(phDevQuery)));
 }
 
 export function DevCloseObjectQuery(
   hDevQuery: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): void /* void */ {
-  return libapi_ms_win_devices_query_l1_1_0.DevCloseObjectQuery(util.toPointer(hDevQuery));
+  return libapi_ms_win_devices_query_l1_1_0_dll.DevCloseObjectQuery(util.toPointer(hDevQuery));
 }
 
 export function DevGetObjects(
@@ -503,7 +503,7 @@ export function DevGetObjects(
   pcObjectCount: Deno.PointerValue | Uint8Array | null /* ptr */,
   ppObjects: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libapi_ms_win_devices_query_l1_1_0.DevGetObjects(ObjectType, QueryFlags, cRequestedProperties, util.toPointer(pRequestedProperties), cFilterExpressionCount, util.toPointer(pFilter), util.toPointer(pcObjectCount), util.toPointer(ppObjects)));
+  return util.pointerFromFfi(libapi_ms_win_devices_query_l1_1_0_dll.DevGetObjects(ObjectType, QueryFlags, cRequestedProperties, util.toPointer(pRequestedProperties), cFilterExpressionCount, util.toPointer(pFilter), util.toPointer(pcObjectCount), util.toPointer(ppObjects)));
 }
 
 export function DevGetObjectsEx(
@@ -518,14 +518,14 @@ export function DevGetObjectsEx(
   pcObjectCount: Deno.PointerValue | Uint8Array | null /* ptr */,
   ppObjects: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libapi_ms_win_devices_query_l1_1_1.DevGetObjectsEx(ObjectType, QueryFlags, cRequestedProperties, util.toPointer(pRequestedProperties), cFilterExpressionCount, util.toPointer(pFilter), cExtendedParameterCount, util.toPointer(pExtendedParameters), util.toPointer(pcObjectCount), util.toPointer(ppObjects)));
+  return util.pointerFromFfi(libapi_ms_win_devices_query_l1_1_1_dll.DevGetObjectsEx(ObjectType, QueryFlags, cRequestedProperties, util.toPointer(pRequestedProperties), cFilterExpressionCount, util.toPointer(pFilter), cExtendedParameterCount, util.toPointer(pExtendedParameters), util.toPointer(pcObjectCount), util.toPointer(ppObjects)));
 }
 
 export function DevFreeObjects(
   cObjectCount: number /* u32 */,
   pObjects: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): void /* void */ {
-  return libapi_ms_win_devices_query_l1_1_0.DevFreeObjects(cObjectCount, util.toPointer(pObjects));
+  return libapi_ms_win_devices_query_l1_1_0_dll.DevFreeObjects(cObjectCount, util.toPointer(pObjects));
 }
 
 export function DevGetObjectProperties(
@@ -537,7 +537,7 @@ export function DevGetObjectProperties(
   pcPropertyCount: Deno.PointerValue | Uint8Array | null /* ptr */,
   ppProperties: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libapi_ms_win_devices_query_l1_1_0.DevGetObjectProperties(ObjectType, util.pwstrToFfi(pszObjectId), QueryFlags, cRequestedProperties, util.toPointer(pRequestedProperties), util.toPointer(pcPropertyCount), util.toPointer(ppProperties)));
+  return util.pointerFromFfi(libapi_ms_win_devices_query_l1_1_0_dll.DevGetObjectProperties(ObjectType, util.pwstrToFfi(pszObjectId), QueryFlags, cRequestedProperties, util.toPointer(pRequestedProperties), util.toPointer(pcPropertyCount), util.toPointer(ppProperties)));
 }
 
 export function DevGetObjectPropertiesEx(
@@ -551,14 +551,14 @@ export function DevGetObjectPropertiesEx(
   pcPropertyCount: Deno.PointerValue | Uint8Array | null /* ptr */,
   ppProperties: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libapi_ms_win_devices_query_l1_1_1.DevGetObjectPropertiesEx(ObjectType, util.pwstrToFfi(pszObjectId), QueryFlags, cRequestedProperties, util.toPointer(pRequestedProperties), cExtendedParameterCount, util.toPointer(pExtendedParameters), util.toPointer(pcPropertyCount), util.toPointer(ppProperties)));
+  return util.pointerFromFfi(libapi_ms_win_devices_query_l1_1_1_dll.DevGetObjectPropertiesEx(ObjectType, util.pwstrToFfi(pszObjectId), QueryFlags, cRequestedProperties, util.toPointer(pRequestedProperties), cExtendedParameterCount, util.toPointer(pExtendedParameters), util.toPointer(pcPropertyCount), util.toPointer(ppProperties)));
 }
 
 export function DevFreeObjectProperties(
   cPropertyCount: number /* u32 */,
   pProperties: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): void /* void */ {
-  return libapi_ms_win_devices_query_l1_1_0.DevFreeObjectProperties(cPropertyCount, util.toPointer(pProperties));
+  return libapi_ms_win_devices_query_l1_1_0_dll.DevFreeObjectProperties(cPropertyCount, util.toPointer(pProperties));
 }
 
 export function DevFindProperty(
@@ -568,6 +568,6 @@ export function DevFindProperty(
   cProperties: number /* u32 */,
   pProperties: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libapi_ms_win_devices_query_l1_1_0.DevFindProperty(util.toPointer(pKey), Store, util.pwstrToFfi(pszLocaleName), cProperties, util.toPointer(pProperties)));
+  return util.pointerFromFfi(libapi_ms_win_devices_query_l1_1_0_dll.DevFindProperty(util.toPointer(pKey), Store, util.pwstrToFfi(pszLocaleName), cProperties, util.toPointer(pProperties)));
 }
 

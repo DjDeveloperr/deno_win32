@@ -120,6 +120,14 @@ export const XTYP_MASK = 240;
 export const XTYP_SHIFT = 4;
 export const TIMEOUT_ASYNC = 4294967295;
 export const QID_SYNC = 4294967295;
+export const SZDDESYS_TOPIC = `System`;
+export const SZDDESYS_ITEM_TOPICS = `Topics`;
+export const SZDDESYS_ITEM_SYSITEMS = `SysItems`;
+export const SZDDESYS_ITEM_RTNMSG = `ReturnMessage`;
+export const SZDDESYS_ITEM_STATUS = `Status`;
+export const SZDDESYS_ITEM_FORMATS = `Formats`;
+export const SZDDESYS_ITEM_HELP = `Help`;
+export const SZDDE_ITEM_ITEMLIST = `TopicItemList`;
 export const APPCMD_MASK = 4080;
 export const APPCLASS_MASK = 15;
 export const HDATA_APPOWNED = 1;
@@ -943,7 +951,7 @@ export type HENHMETAFILE = Deno.PointerValue;
 // Native Libraries
 
 try {
-  var libUSER32 = Deno.dlopen("USER32", {
+  var libUSER32_dll = Deno.dlopen("USER32.dll", {
     DdeSetQualityOfService: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "i32",
@@ -1184,7 +1192,7 @@ try {
 } catch(e) { /* ignore */ }
 
 try {
-  var libGDI32 = Deno.dlopen("GDI32", {
+  var libGDI32_dll = Deno.dlopen("GDI32.dll", {
     SetWinMetaFileBits: {
       parameters: ["u32", "pointer", "pointer", "pointer"],
       result: "pointer",
@@ -1193,7 +1201,7 @@ try {
 } catch(e) { /* ignore */ }
 
 try {
-  var libKERNEL32 = Deno.dlopen("KERNEL32", {
+  var libKERNEL32_dll = Deno.dlopen("KERNEL32.dll", {
     GlobalDeleteAtom: {
       parameters: ["u16"],
       result: "u16",
@@ -1272,14 +1280,14 @@ export function DdeSetQualityOfService(
   pqosNew: Deno.PointerValue | Uint8Array | null /* ptr */,
   pqosPrev: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSER32.DdeSetQualityOfService(util.hwndToFfi(hwndClient), util.toPointer(pqosNew), util.toPointer(pqosPrev)));
+  return util.boolFromFfi(libUSER32_dll.DdeSetQualityOfService(util.hwndToFfi(hwndClient), util.toPointer(pqosNew), util.toPointer(pqosPrev)));
 }
 
 export function ImpersonateDdeClientWindow(
   hWndClient: Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */,
   hWndServer: Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSER32.ImpersonateDdeClientWindow(util.hwndToFfi(hWndClient), util.hwndToFfi(hWndServer)));
+  return util.boolFromFfi(libUSER32_dll.ImpersonateDdeClientWindow(util.hwndToFfi(hWndClient), util.hwndToFfi(hWndServer)));
 }
 
 export function PackDDElParam(
@@ -1287,7 +1295,7 @@ export function PackDDElParam(
   uiLo: Deno.PointerValue /* usize */,
   uiHi: Deno.PointerValue /* usize */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.LPARAM */ {
-  return util.pointerFromFfi(libUSER32.PackDDElParam(msg, uiLo, uiHi));
+  return util.pointerFromFfi(libUSER32_dll.PackDDElParam(msg, uiLo, uiHi));
 }
 
 export function UnpackDDElParam(
@@ -1296,14 +1304,14 @@ export function UnpackDDElParam(
   puiLo: Deno.PointerValue | Uint8Array | null /* ptr */,
   puiHi: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSER32.UnpackDDElParam(msg, util.toPointer(lParam), util.toPointer(puiLo), util.toPointer(puiHi)));
+  return util.boolFromFfi(libUSER32_dll.UnpackDDElParam(msg, util.toPointer(lParam), util.toPointer(puiLo), util.toPointer(puiHi)));
 }
 
 export function FreeDDElParam(
   msg: number /* u32 */,
   lParam: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.LPARAM */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSER32.FreeDDElParam(msg, util.toPointer(lParam)));
+  return util.boolFromFfi(libUSER32_dll.FreeDDElParam(msg, util.toPointer(lParam)));
 }
 
 export function ReuseDDElParam(
@@ -1313,7 +1321,7 @@ export function ReuseDDElParam(
   uiLo: Deno.PointerValue /* usize */,
   uiHi: Deno.PointerValue /* usize */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.LPARAM */ {
-  return util.pointerFromFfi(libUSER32.ReuseDDElParam(util.toPointer(lParam), msgIn, msgOut, uiLo, uiHi));
+  return util.pointerFromFfi(libUSER32_dll.ReuseDDElParam(util.toPointer(lParam), msgIn, msgOut, uiLo, uiHi));
 }
 
 export function DdeInitializeA(
@@ -1322,7 +1330,7 @@ export function DdeInitializeA(
   afCmd: DDE_INITIALIZE_COMMAND /* Windows.Win32.System.DataExchange.DDE_INITIALIZE_COMMAND */,
   ulRes: number /* u32 */,
 ): number /* u32 */ {
-  return libUSER32.DdeInitializeA(util.toPointer(pidInst), util.toPointer(pfnCallback), afCmd, ulRes);
+  return libUSER32_dll.DdeInitializeA(util.toPointer(pidInst), util.toPointer(pfnCallback), afCmd, ulRes);
 }
 
 export function DdeInitializeW(
@@ -1331,13 +1339,13 @@ export function DdeInitializeW(
   afCmd: DDE_INITIALIZE_COMMAND /* Windows.Win32.System.DataExchange.DDE_INITIALIZE_COMMAND */,
   ulRes: number /* u32 */,
 ): number /* u32 */ {
-  return libUSER32.DdeInitializeW(util.toPointer(pidInst), util.toPointer(pfnCallback), afCmd, ulRes);
+  return libUSER32_dll.DdeInitializeW(util.toPointer(pidInst), util.toPointer(pfnCallback), afCmd, ulRes);
 }
 
 export function DdeUninitialize(
   idInst: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSER32.DdeUninitialize(idInst));
+  return util.boolFromFfi(libUSER32_dll.DdeUninitialize(idInst));
 }
 
 export function DdeConnectList(
@@ -1347,20 +1355,20 @@ export function DdeConnectList(
   hConvList: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.DataExchange.HCONVLIST */,
   pCC: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.System.DataExchange.HCONVLIST */ {
-  return util.pointerFromFfi(libUSER32.DdeConnectList(idInst, util.toPointer(hszService), util.toPointer(hszTopic), util.toPointer(hConvList), util.toPointer(pCC)));
+  return util.pointerFromFfi(libUSER32_dll.DdeConnectList(idInst, util.toPointer(hszService), util.toPointer(hszTopic), util.toPointer(hConvList), util.toPointer(pCC)));
 }
 
 export function DdeQueryNextServer(
   hConvList: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.DataExchange.HCONVLIST */,
   hConvPrev: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.DataExchange.HCONV */,
 ): Deno.PointerValue | null /* Windows.Win32.System.DataExchange.HCONV */ {
-  return util.pointerFromFfi(libUSER32.DdeQueryNextServer(util.toPointer(hConvList), util.toPointer(hConvPrev)));
+  return util.pointerFromFfi(libUSER32_dll.DdeQueryNextServer(util.toPointer(hConvList), util.toPointer(hConvPrev)));
 }
 
 export function DdeDisconnectList(
   hConvList: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.DataExchange.HCONVLIST */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSER32.DdeDisconnectList(util.toPointer(hConvList)));
+  return util.boolFromFfi(libUSER32_dll.DdeDisconnectList(util.toPointer(hConvList)));
 }
 
 export function DdeConnect(
@@ -1369,19 +1377,19 @@ export function DdeConnect(
   hszTopic: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.DataExchange.HSZ */,
   pCC: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.System.DataExchange.HCONV */ {
-  return util.pointerFromFfi(libUSER32.DdeConnect(idInst, util.toPointer(hszService), util.toPointer(hszTopic), util.toPointer(pCC)));
+  return util.pointerFromFfi(libUSER32_dll.DdeConnect(idInst, util.toPointer(hszService), util.toPointer(hszTopic), util.toPointer(pCC)));
 }
 
 export function DdeDisconnect(
   hConv: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.DataExchange.HCONV */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSER32.DdeDisconnect(util.toPointer(hConv)));
+  return util.boolFromFfi(libUSER32_dll.DdeDisconnect(util.toPointer(hConv)));
 }
 
 export function DdeReconnect(
   hConv: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.DataExchange.HCONV */,
 ): Deno.PointerValue | null /* Windows.Win32.System.DataExchange.HCONV */ {
-  return util.pointerFromFfi(libUSER32.DdeReconnect(util.toPointer(hConv)));
+  return util.pointerFromFfi(libUSER32_dll.DdeReconnect(util.toPointer(hConv)));
 }
 
 export function DdeQueryConvInfo(
@@ -1389,7 +1397,7 @@ export function DdeQueryConvInfo(
   idTransaction: number /* u32 */,
   pConvInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libUSER32.DdeQueryConvInfo(util.toPointer(hConv), idTransaction, util.toPointer(pConvInfo));
+  return libUSER32_dll.DdeQueryConvInfo(util.toPointer(hConv), idTransaction, util.toPointer(pConvInfo));
 }
 
 export function DdeSetUserHandle(
@@ -1397,7 +1405,7 @@ export function DdeSetUserHandle(
   id: number /* u32 */,
   hUser: Deno.PointerValue /* usize */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSER32.DdeSetUserHandle(util.toPointer(hConv), id, hUser));
+  return util.boolFromFfi(libUSER32_dll.DdeSetUserHandle(util.toPointer(hConv), id, hUser));
 }
 
 export function DdeAbandonTransaction(
@@ -1405,7 +1413,7 @@ export function DdeAbandonTransaction(
   hConv: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.DataExchange.HCONV */,
   idTransaction: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSER32.DdeAbandonTransaction(idInst, util.toPointer(hConv), idTransaction));
+  return util.boolFromFfi(libUSER32_dll.DdeAbandonTransaction(idInst, util.toPointer(hConv), idTransaction));
 }
 
 export function DdePostAdvise(
@@ -1413,7 +1421,7 @@ export function DdePostAdvise(
   hszTopic: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.DataExchange.HSZ */,
   hszItem: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.DataExchange.HSZ */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSER32.DdePostAdvise(idInst, util.toPointer(hszTopic), util.toPointer(hszItem)));
+  return util.boolFromFfi(libUSER32_dll.DdePostAdvise(idInst, util.toPointer(hszTopic), util.toPointer(hszItem)));
 }
 
 export function DdeEnableCallback(
@@ -1421,13 +1429,13 @@ export function DdeEnableCallback(
   hConv: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.DataExchange.HCONV */,
   wCmd: DDE_ENABLE_CALLBACK_CMD /* Windows.Win32.System.DataExchange.DDE_ENABLE_CALLBACK_CMD */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSER32.DdeEnableCallback(idInst, util.toPointer(hConv), wCmd));
+  return util.boolFromFfi(libUSER32_dll.DdeEnableCallback(idInst, util.toPointer(hConv), wCmd));
 }
 
 export function DdeImpersonateClient(
   hConv: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.DataExchange.HCONV */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSER32.DdeImpersonateClient(util.toPointer(hConv)));
+  return util.boolFromFfi(libUSER32_dll.DdeImpersonateClient(util.toPointer(hConv)));
 }
 
 export function DdeNameService(
@@ -1436,7 +1444,7 @@ export function DdeNameService(
   hsz2: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.DataExchange.HSZ */,
   afCmd: DDE_NAME_SERVICE_CMD /* Windows.Win32.System.DataExchange.DDE_NAME_SERVICE_CMD */,
 ): Deno.PointerValue | null /* Windows.Win32.System.DataExchange.HDDEDATA */ {
-  return util.pointerFromFfi(libUSER32.DdeNameService(idInst, util.toPointer(hsz1), util.toPointer(hsz2), afCmd));
+  return util.pointerFromFfi(libUSER32_dll.DdeNameService(idInst, util.toPointer(hsz1), util.toPointer(hsz2), afCmd));
 }
 
 export function DdeClientTransaction(
@@ -1449,7 +1457,7 @@ export function DdeClientTransaction(
   dwTimeout: number /* u32 */,
   pdwResult: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.System.DataExchange.HDDEDATA */ {
-  return util.pointerFromFfi(libUSER32.DdeClientTransaction(util.toPointer(pData), cbData, util.toPointer(hConv), util.toPointer(hszItem), wFmt, wType, dwTimeout, util.toPointer(pdwResult)));
+  return util.pointerFromFfi(libUSER32_dll.DdeClientTransaction(util.toPointer(pData), cbData, util.toPointer(hConv), util.toPointer(hszItem), wFmt, wType, dwTimeout, util.toPointer(pdwResult)));
 }
 
 export function DdeCreateDataHandle(
@@ -1461,7 +1469,7 @@ export function DdeCreateDataHandle(
   wFmt: number /* u32 */,
   afCmd: number /* u32 */,
 ): Deno.PointerValue | null /* Windows.Win32.System.DataExchange.HDDEDATA */ {
-  return util.pointerFromFfi(libUSER32.DdeCreateDataHandle(idInst, util.toPointer(pSrc), cb, cbOff, util.toPointer(hszItem), wFmt, afCmd));
+  return util.pointerFromFfi(libUSER32_dll.DdeCreateDataHandle(idInst, util.toPointer(pSrc), cb, cbOff, util.toPointer(hszItem), wFmt, afCmd));
 }
 
 export function DdeAddData(
@@ -1470,7 +1478,7 @@ export function DdeAddData(
   cb: number /* u32 */,
   cbOff: number /* u32 */,
 ): Deno.PointerValue | null /* Windows.Win32.System.DataExchange.HDDEDATA */ {
-  return util.pointerFromFfi(libUSER32.DdeAddData(util.toPointer(hData), util.toPointer(pSrc), cb, cbOff));
+  return util.pointerFromFfi(libUSER32_dll.DdeAddData(util.toPointer(hData), util.toPointer(pSrc), cb, cbOff));
 }
 
 export function DdeGetData(
@@ -1479,32 +1487,32 @@ export function DdeGetData(
   cbMax: number /* u32 */,
   cbOff: number /* u32 */,
 ): number /* u32 */ {
-  return libUSER32.DdeGetData(util.toPointer(hData), util.toPointer(pDst), cbMax, cbOff);
+  return libUSER32_dll.DdeGetData(util.toPointer(hData), util.toPointer(pDst), cbMax, cbOff);
 }
 
 export function DdeAccessData(
   hData: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.DataExchange.HDDEDATA */,
   pcbDataSize: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libUSER32.DdeAccessData(util.toPointer(hData), util.toPointer(pcbDataSize)));
+  return util.pointerFromFfi(libUSER32_dll.DdeAccessData(util.toPointer(hData), util.toPointer(pcbDataSize)));
 }
 
 export function DdeUnaccessData(
   hData: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.DataExchange.HDDEDATA */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSER32.DdeUnaccessData(util.toPointer(hData)));
+  return util.boolFromFfi(libUSER32_dll.DdeUnaccessData(util.toPointer(hData)));
 }
 
 export function DdeFreeDataHandle(
   hData: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.DataExchange.HDDEDATA */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSER32.DdeFreeDataHandle(util.toPointer(hData)));
+  return util.boolFromFfi(libUSER32_dll.DdeFreeDataHandle(util.toPointer(hData)));
 }
 
 export function DdeGetLastError(
   idInst: number /* u32 */,
 ): number /* u32 */ {
-  return libUSER32.DdeGetLastError(idInst);
+  return libUSER32_dll.DdeGetLastError(idInst);
 }
 
 export function DdeCreateStringHandleA(
@@ -1512,7 +1520,7 @@ export function DdeCreateStringHandleA(
   psz: string | null /* Windows.Win32.Foundation.PSTR */,
   iCodePage: number /* i32 */,
 ): Deno.PointerValue | null /* Windows.Win32.System.DataExchange.HSZ */ {
-  return util.pointerFromFfi(libUSER32.DdeCreateStringHandleA(idInst, util.pstrToFfi(psz), iCodePage));
+  return util.pointerFromFfi(libUSER32_dll.DdeCreateStringHandleA(idInst, util.pstrToFfi(psz), iCodePage));
 }
 
 export function DdeCreateStringHandleW(
@@ -1520,7 +1528,7 @@ export function DdeCreateStringHandleW(
   psz: string | null /* Windows.Win32.Foundation.PWSTR */,
   iCodePage: number /* i32 */,
 ): Deno.PointerValue | null /* Windows.Win32.System.DataExchange.HSZ */ {
-  return util.pointerFromFfi(libUSER32.DdeCreateStringHandleW(idInst, util.pwstrToFfi(psz), iCodePage));
+  return util.pointerFromFfi(libUSER32_dll.DdeCreateStringHandleW(idInst, util.pwstrToFfi(psz), iCodePage));
 }
 
 export function DdeQueryStringA(
@@ -1530,7 +1538,7 @@ export function DdeQueryStringA(
   cchMax: number /* u32 */,
   iCodePage: number /* i32 */,
 ): number /* u32 */ {
-  return libUSER32.DdeQueryStringA(idInst, util.toPointer(hsz), util.pstrToFfi(psz), cchMax, iCodePage);
+  return libUSER32_dll.DdeQueryStringA(idInst, util.toPointer(hsz), util.pstrToFfi(psz), cchMax, iCodePage);
 }
 
 export function DdeQueryStringW(
@@ -1540,28 +1548,28 @@ export function DdeQueryStringW(
   cchMax: number /* u32 */,
   iCodePage: number /* i32 */,
 ): number /* u32 */ {
-  return libUSER32.DdeQueryStringW(idInst, util.toPointer(hsz), util.pwstrToFfi(psz), cchMax, iCodePage);
+  return libUSER32_dll.DdeQueryStringW(idInst, util.toPointer(hsz), util.pwstrToFfi(psz), cchMax, iCodePage);
 }
 
 export function DdeFreeStringHandle(
   idInst: number /* u32 */,
   hsz: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.DataExchange.HSZ */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSER32.DdeFreeStringHandle(idInst, util.toPointer(hsz)));
+  return util.boolFromFfi(libUSER32_dll.DdeFreeStringHandle(idInst, util.toPointer(hsz)));
 }
 
 export function DdeKeepStringHandle(
   idInst: number /* u32 */,
   hsz: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.DataExchange.HSZ */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSER32.DdeKeepStringHandle(idInst, util.toPointer(hsz)));
+  return util.boolFromFfi(libUSER32_dll.DdeKeepStringHandle(idInst, util.toPointer(hsz)));
 }
 
 export function DdeCmpStringHandles(
   hsz1: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.DataExchange.HSZ */,
   hsz2: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.DataExchange.HSZ */,
 ): number /* i32 */ {
-  return libUSER32.DdeCmpStringHandles(util.toPointer(hsz1), util.toPointer(hsz2));
+  return libUSER32_dll.DdeCmpStringHandles(util.toPointer(hsz1), util.toPointer(hsz2));
 }
 
 export function SetWinMetaFileBits(
@@ -1570,77 +1578,77 @@ export function SetWinMetaFileBits(
   hdcRef: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Graphics.Gdi.HDC */,
   lpMFP: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Graphics.Gdi.HENHMETAFILE */ {
-  return util.pointerFromFfi(libGDI32.SetWinMetaFileBits(nSize, util.toPointer(lpMeta16Data), util.toPointer(hdcRef), util.toPointer(lpMFP)));
+  return util.pointerFromFfi(libGDI32_dll.SetWinMetaFileBits(nSize, util.toPointer(lpMeta16Data), util.toPointer(hdcRef), util.toPointer(lpMFP)));
 }
 
 export function OpenClipboard(
   hWndNewOwner: Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSER32.OpenClipboard(util.hwndToFfi(hWndNewOwner)));
+  return util.boolFromFfi(libUSER32_dll.OpenClipboard(util.hwndToFfi(hWndNewOwner)));
 }
 
 export function CloseClipboard(): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSER32.CloseClipboard());
+  return util.boolFromFfi(libUSER32_dll.CloseClipboard());
 }
 
 export function GetClipboardSequenceNumber(): number /* u32 */ {
-  return libUSER32.GetClipboardSequenceNumber();
+  return libUSER32_dll.GetClipboardSequenceNumber();
 }
 
 export function GetClipboardOwner(): Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */ {
-  return util.hwndFromFfi(libUSER32.GetClipboardOwner());
+  return util.hwndFromFfi(libUSER32_dll.GetClipboardOwner());
 }
 
 export function SetClipboardViewer(
   hWndNewViewer: Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */ {
-  return util.hwndFromFfi(libUSER32.SetClipboardViewer(util.hwndToFfi(hWndNewViewer)));
+  return util.hwndFromFfi(libUSER32_dll.SetClipboardViewer(util.hwndToFfi(hWndNewViewer)));
 }
 
 export function GetClipboardViewer(): Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */ {
-  return util.hwndFromFfi(libUSER32.GetClipboardViewer());
+  return util.hwndFromFfi(libUSER32_dll.GetClipboardViewer());
 }
 
 export function ChangeClipboardChain(
   hWndRemove: Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */,
   hWndNewNext: Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSER32.ChangeClipboardChain(util.hwndToFfi(hWndRemove), util.hwndToFfi(hWndNewNext)));
+  return util.boolFromFfi(libUSER32_dll.ChangeClipboardChain(util.hwndToFfi(hWndRemove), util.hwndToFfi(hWndNewNext)));
 }
 
 export function SetClipboardData(
   uFormat: number /* u32 */,
   hMem: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */ {
-  return util.pointerFromFfi(libUSER32.SetClipboardData(uFormat, util.toPointer(hMem)));
+  return util.pointerFromFfi(libUSER32_dll.SetClipboardData(uFormat, util.toPointer(hMem)));
 }
 
 export function GetClipboardData(
   uFormat: number /* u32 */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */ {
-  return util.pointerFromFfi(libUSER32.GetClipboardData(uFormat));
+  return util.pointerFromFfi(libUSER32_dll.GetClipboardData(uFormat));
 }
 
 export function RegisterClipboardFormatA(
   lpszFormat: string | null /* Windows.Win32.Foundation.PSTR */,
 ): number /* u32 */ {
-  return libUSER32.RegisterClipboardFormatA(util.pstrToFfi(lpszFormat));
+  return libUSER32_dll.RegisterClipboardFormatA(util.pstrToFfi(lpszFormat));
 }
 
 export function RegisterClipboardFormatW(
   lpszFormat: string | null /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
-  return libUSER32.RegisterClipboardFormatW(util.pwstrToFfi(lpszFormat));
+  return libUSER32_dll.RegisterClipboardFormatW(util.pwstrToFfi(lpszFormat));
 }
 
 export function CountClipboardFormats(): number /* i32 */ {
-  return libUSER32.CountClipboardFormats();
+  return libUSER32_dll.CountClipboardFormats();
 }
 
 export function EnumClipboardFormats(
   format: number /* u32 */,
 ): number /* u32 */ {
-  return libUSER32.EnumClipboardFormats(format);
+  return libUSER32_dll.EnumClipboardFormats(format);
 }
 
 export function GetClipboardFormatNameA(
@@ -1648,7 +1656,7 @@ export function GetClipboardFormatNameA(
   lpszFormatName: string | null /* Windows.Win32.Foundation.PSTR */,
   cchMaxCount: number /* i32 */,
 ): number /* i32 */ {
-  return libUSER32.GetClipboardFormatNameA(format, util.pstrToFfi(lpszFormatName), cchMaxCount);
+  return libUSER32_dll.GetClipboardFormatNameA(format, util.pstrToFfi(lpszFormatName), cchMaxCount);
 }
 
 export function GetClipboardFormatNameW(
@@ -1656,40 +1664,40 @@ export function GetClipboardFormatNameW(
   lpszFormatName: string | null /* Windows.Win32.Foundation.PWSTR */,
   cchMaxCount: number /* i32 */,
 ): number /* i32 */ {
-  return libUSER32.GetClipboardFormatNameW(format, util.pwstrToFfi(lpszFormatName), cchMaxCount);
+  return libUSER32_dll.GetClipboardFormatNameW(format, util.pwstrToFfi(lpszFormatName), cchMaxCount);
 }
 
 export function EmptyClipboard(): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSER32.EmptyClipboard());
+  return util.boolFromFfi(libUSER32_dll.EmptyClipboard());
 }
 
 export function IsClipboardFormatAvailable(
   format: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSER32.IsClipboardFormatAvailable(format));
+  return util.boolFromFfi(libUSER32_dll.IsClipboardFormatAvailable(format));
 }
 
 export function GetPriorityClipboardFormat(
   paFormatPriorityList: Deno.PointerValue | Uint8Array | null /* ptr */,
   cFormats: number /* i32 */,
 ): number /* i32 */ {
-  return libUSER32.GetPriorityClipboardFormat(util.toPointer(paFormatPriorityList), cFormats);
+  return libUSER32_dll.GetPriorityClipboardFormat(util.toPointer(paFormatPriorityList), cFormats);
 }
 
 export function GetOpenClipboardWindow(): Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */ {
-  return util.hwndFromFfi(libUSER32.GetOpenClipboardWindow());
+  return util.hwndFromFfi(libUSER32_dll.GetOpenClipboardWindow());
 }
 
 export function AddClipboardFormatListener(
   hwnd: Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSER32.AddClipboardFormatListener(util.hwndToFfi(hwnd)));
+  return util.boolFromFfi(libUSER32_dll.AddClipboardFormatListener(util.hwndToFfi(hwnd)));
 }
 
 export function RemoveClipboardFormatListener(
   hwnd: Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSER32.RemoveClipboardFormatListener(util.hwndToFfi(hwnd)));
+  return util.boolFromFfi(libUSER32_dll.RemoveClipboardFormatListener(util.hwndToFfi(hwnd)));
 }
 
 export function GetUpdatedClipboardFormats(
@@ -1697,63 +1705,63 @@ export function GetUpdatedClipboardFormats(
   cFormats: number /* u32 */,
   pcFormatsOut: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSER32.GetUpdatedClipboardFormats(util.toPointer(lpuiFormats), cFormats, util.toPointer(pcFormatsOut)));
+  return util.boolFromFfi(libUSER32_dll.GetUpdatedClipboardFormats(util.toPointer(lpuiFormats), cFormats, util.toPointer(pcFormatsOut)));
 }
 
 export function GlobalDeleteAtom(
   nAtom: number /* u16 */,
 ): number /* u16 */ {
-  return libKERNEL32.GlobalDeleteAtom(nAtom);
+  return libKERNEL32_dll.GlobalDeleteAtom(nAtom);
 }
 
 export function InitAtomTable(
   nSize: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32.InitAtomTable(nSize));
+  return util.boolFromFfi(libKERNEL32_dll.InitAtomTable(nSize));
 }
 
 export function DeleteAtom(
   nAtom: number /* u16 */,
 ): number /* u16 */ {
-  return libKERNEL32.DeleteAtom(nAtom);
+  return libKERNEL32_dll.DeleteAtom(nAtom);
 }
 
 export function GlobalAddAtomA(
   lpString: string | null /* Windows.Win32.Foundation.PSTR */,
 ): number /* u16 */ {
-  return libKERNEL32.GlobalAddAtomA(util.pstrToFfi(lpString));
+  return libKERNEL32_dll.GlobalAddAtomA(util.pstrToFfi(lpString));
 }
 
 export function GlobalAddAtomW(
   lpString: string | null /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u16 */ {
-  return libKERNEL32.GlobalAddAtomW(util.pwstrToFfi(lpString));
+  return libKERNEL32_dll.GlobalAddAtomW(util.pwstrToFfi(lpString));
 }
 
 export function GlobalAddAtomExA(
   lpString: string | null /* Windows.Win32.Foundation.PSTR */,
   Flags: number /* u32 */,
 ): number /* u16 */ {
-  return libKERNEL32.GlobalAddAtomExA(util.pstrToFfi(lpString), Flags);
+  return libKERNEL32_dll.GlobalAddAtomExA(util.pstrToFfi(lpString), Flags);
 }
 
 export function GlobalAddAtomExW(
   lpString: string | null /* Windows.Win32.Foundation.PWSTR */,
   Flags: number /* u32 */,
 ): number /* u16 */ {
-  return libKERNEL32.GlobalAddAtomExW(util.pwstrToFfi(lpString), Flags);
+  return libKERNEL32_dll.GlobalAddAtomExW(util.pwstrToFfi(lpString), Flags);
 }
 
 export function GlobalFindAtomA(
   lpString: string | null /* Windows.Win32.Foundation.PSTR */,
 ): number /* u16 */ {
-  return libKERNEL32.GlobalFindAtomA(util.pstrToFfi(lpString));
+  return libKERNEL32_dll.GlobalFindAtomA(util.pstrToFfi(lpString));
 }
 
 export function GlobalFindAtomW(
   lpString: string | null /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u16 */ {
-  return libKERNEL32.GlobalFindAtomW(util.pwstrToFfi(lpString));
+  return libKERNEL32_dll.GlobalFindAtomW(util.pwstrToFfi(lpString));
 }
 
 export function GlobalGetAtomNameA(
@@ -1761,7 +1769,7 @@ export function GlobalGetAtomNameA(
   lpBuffer: string | null /* Windows.Win32.Foundation.PSTR */,
   nSize: number /* i32 */,
 ): number /* u32 */ {
-  return libKERNEL32.GlobalGetAtomNameA(nAtom, util.pstrToFfi(lpBuffer), nSize);
+  return libKERNEL32_dll.GlobalGetAtomNameA(nAtom, util.pstrToFfi(lpBuffer), nSize);
 }
 
 export function GlobalGetAtomNameW(
@@ -1769,31 +1777,31 @@ export function GlobalGetAtomNameW(
   lpBuffer: string | null /* Windows.Win32.Foundation.PWSTR */,
   nSize: number /* i32 */,
 ): number /* u32 */ {
-  return libKERNEL32.GlobalGetAtomNameW(nAtom, util.pwstrToFfi(lpBuffer), nSize);
+  return libKERNEL32_dll.GlobalGetAtomNameW(nAtom, util.pwstrToFfi(lpBuffer), nSize);
 }
 
 export function AddAtomA(
   lpString: string | null /* Windows.Win32.Foundation.PSTR */,
 ): number /* u16 */ {
-  return libKERNEL32.AddAtomA(util.pstrToFfi(lpString));
+  return libKERNEL32_dll.AddAtomA(util.pstrToFfi(lpString));
 }
 
 export function AddAtomW(
   lpString: string | null /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u16 */ {
-  return libKERNEL32.AddAtomW(util.pwstrToFfi(lpString));
+  return libKERNEL32_dll.AddAtomW(util.pwstrToFfi(lpString));
 }
 
 export function FindAtomA(
   lpString: string | null /* Windows.Win32.Foundation.PSTR */,
 ): number /* u16 */ {
-  return libKERNEL32.FindAtomA(util.pstrToFfi(lpString));
+  return libKERNEL32_dll.FindAtomA(util.pstrToFfi(lpString));
 }
 
 export function FindAtomW(
   lpString: string | null /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u16 */ {
-  return libKERNEL32.FindAtomW(util.pwstrToFfi(lpString));
+  return libKERNEL32_dll.FindAtomW(util.pwstrToFfi(lpString));
 }
 
 export function GetAtomNameA(
@@ -1801,7 +1809,7 @@ export function GetAtomNameA(
   lpBuffer: string | null /* Windows.Win32.Foundation.PSTR */,
   nSize: number /* i32 */,
 ): number /* u32 */ {
-  return libKERNEL32.GetAtomNameA(nAtom, util.pstrToFfi(lpBuffer), nSize);
+  return libKERNEL32_dll.GetAtomNameA(nAtom, util.pstrToFfi(lpBuffer), nSize);
 }
 
 export function GetAtomNameW(
@@ -1809,6 +1817,6 @@ export function GetAtomNameW(
   lpBuffer: string | null /* Windows.Win32.Foundation.PWSTR */,
   nSize: number /* i32 */,
 ): number /* u32 */ {
-  return libKERNEL32.GetAtomNameW(nAtom, util.pwstrToFfi(lpBuffer), nSize);
+  return libKERNEL32_dll.GetAtomNameW(nAtom, util.pwstrToFfi(lpBuffer), nSize);
 }
 

@@ -38,7 +38,7 @@ export function allocCORRELATION_VECTOR(data?: Partial<CORRELATION_VECTOR>): Uin
 // Native Libraries
 
 try {
-  var libntdll = Deno.dlopen("ntdll", {
+  var libntdll_dll = Deno.dlopen("ntdll.dll", {
     RtlInitializeCorrelationVector: {
       parameters: ["pointer", "i32", "pointer"],
       result: "u32",
@@ -65,24 +65,24 @@ export function RtlInitializeCorrelationVector(
   Version: number /* i32 */,
   Guid: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libntdll.RtlInitializeCorrelationVector(util.toPointer(CorrelationVector), Version, util.toPointer(Guid));
+  return libntdll_dll.RtlInitializeCorrelationVector(util.toPointer(CorrelationVector), Version, util.toPointer(Guid));
 }
 
 export function RtlIncrementCorrelationVector(
   CorrelationVector: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libntdll.RtlIncrementCorrelationVector(util.toPointer(CorrelationVector));
+  return libntdll_dll.RtlIncrementCorrelationVector(util.toPointer(CorrelationVector));
 }
 
 export function RtlExtendCorrelationVector(
   CorrelationVector: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libntdll.RtlExtendCorrelationVector(util.toPointer(CorrelationVector));
+  return libntdll_dll.RtlExtendCorrelationVector(util.toPointer(CorrelationVector));
 }
 
 export function RtlValidateCorrelationVector(
   Vector: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libntdll.RtlValidateCorrelationVector(util.toPointer(Vector));
+  return libntdll_dll.RtlValidateCorrelationVector(util.toPointer(Vector));
 }
 

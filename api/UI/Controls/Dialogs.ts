@@ -4,6 +4,7 @@ import * as util from "../../../util.ts";
 
 // Enums
 export type COMMON_DLG_ERRORS = number;
+export type CHOOSECOLOR_FLAGS = number;
 export type OPEN_FILENAME_FLAGS = number;
 export type OPEN_FILENAME_FLAGS_EX = number;
 export type PAGESETUPDLG_FLAGS = number;
@@ -50,6 +51,15 @@ export const FNERR_BUFFERTOOSMALL = 12291;
 export const FRERR_FINDREPLACECODES = 16384;
 export const FRERR_BUFFERLENGTHZERO = 16385;
 export const CCERR_CHOOSECOLORCODES = 20480;
+export const CC_RGBINIT = 1;
+export const CC_FULLOPEN = 2;
+export const CC_PREVENTFULLOPEN = 4;
+export const CC_SHOWHELP = 8;
+export const CC_ENABLEHOOK = 16;
+export const CC_ENABLETEMPLATE = 32;
+export const CC_ENABLETEMPLATEHANDLE = 64;
+export const CC_SOLIDCOLOR = 128;
+export const CC_ANYCOLOR = 256;
 export const OFN_READONLY = 1;
 export const OFN_OVERWRITEPROMPT = 2;
 export const OFN_HIDEREADONLY = 4;
@@ -204,7 +214,28 @@ export const SYMBOL_FONTTYPE = 524288;
 export const WM_CHOOSEFONT_GETLOGFONT = 1025;
 export const WM_CHOOSEFONT_SETLOGFONT = 1125;
 export const WM_CHOOSEFONT_SETFLAGS = 1126;
-export const CD_LBSELNOITEMS = "-1";
+export const LBSELCHSTRINGA = `commdlg_LBSelChangedNotify`;
+export const SHAREVISTRINGA = `commdlg_ShareViolation`;
+export const FILEOKSTRINGA = `commdlg_FileNameOK`;
+export const COLOROKSTRINGA = `commdlg_ColorOK`;
+export const SETRGBSTRINGA = `commdlg_SetRGBColor`;
+export const HELPMSGSTRINGA = `commdlg_help`;
+export const FINDMSGSTRINGA = `commdlg_FindReplace`;
+export const LBSELCHSTRINGW = `commdlg_LBSelChangedNotify`;
+export const SHAREVISTRINGW = `commdlg_ShareViolation`;
+export const FILEOKSTRINGW = `commdlg_FileNameOK`;
+export const COLOROKSTRINGW = `commdlg_ColorOK`;
+export const SETRGBSTRINGW = `commdlg_SetRGBColor`;
+export const HELPMSGSTRINGW = `commdlg_help`;
+export const FINDMSGSTRINGW = `commdlg_FindReplace`;
+export const LBSELCHSTRING = `commdlg_LBSelChangedNotify`;
+export const SHAREVISTRING = `commdlg_ShareViolation`;
+export const FILEOKSTRING = `commdlg_FileNameOK`;
+export const COLOROKSTRING = `commdlg_ColorOK`;
+export const SETRGBSTRING = `commdlg_SetRGBColor`;
+export const HELPMSGSTRING = `commdlg_help`;
+export const FINDMSGSTRING = `commdlg_FindReplace`;
+export const CD_LBSELNOITEMS = `-1`;
 export const CD_LBSELCHANGE = 0;
 export const CD_LBSELSUB = 1;
 export const CD_LBSELADD = 2;
@@ -918,6 +949,8 @@ export function allocOFNOTIFYEXW(data?: Partial<OFNOTIFYEXW>): Uint8Array {
   return buf;
 }
 
+export type COLORREF = number;
+
 /**
  * Windows.Win32.UI.Controls.Dialogs.CHOOSECOLORA (size: 72)
  */
@@ -928,12 +961,12 @@ export interface CHOOSECOLORA {
   hwndOwner: Deno.PointerValue | null;
   /** Windows.Win32.Foundation.HWND */
   hInstance: Deno.PointerValue | null;
-  /** u32 */
-  rgbResult: number;
+  /** Windows.Win32.Foundation.COLORREF */
+  rgbResult: Uint8Array | Deno.PointerValue | null;
   /** ptr */
   lpCustColors: Deno.PointerValue | Uint8Array | null;
-  /** u32 */
-  Flags: number;
+  /** Windows.Win32.UI.Controls.Dialogs.CHOOSECOLOR_FLAGS */
+  Flags: CHOOSECOLOR_FLAGS;
   /** Windows.Win32.Foundation.LPARAM */
   lCustData: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.UI.Controls.Dialogs.LPCCHOOKPROC */
@@ -954,9 +987,8 @@ export function allocCHOOSECOLORA(data?: Partial<CHOOSECOLORA>): Uint8Array {
   if (data?.hwndOwner !== undefined) view.setBigUint64(8, data.hwndOwner === null ? 0n : BigInt(util.toPointer(data.hwndOwner)), true);
   // 0x10: pointer
   if (data?.hInstance !== undefined) view.setBigUint64(16, data.hInstance === null ? 0n : BigInt(util.toPointer(data.hInstance)), true);
-  // 0x18: u32
-  if (data?.rgbResult !== undefined) view.setUint32(24, Number(data.rgbResult), true);
-  // 0x1c: pad4
+  // 0x18: pointer
+  if (data?.rgbResult !== undefined) view.setBigUint64(24, data.rgbResult === null ? 0n : BigInt(util.toPointer(data.rgbResult)), true);
   // 0x20: pointer
   if (data?.lpCustColors !== undefined) view.setBigUint64(32, data.lpCustColors === null ? 0n : BigInt(util.toPointer(data.lpCustColors)), true);
   // 0x28: u32
@@ -984,12 +1016,12 @@ export interface CHOOSECOLORW {
   hwndOwner: Deno.PointerValue | null;
   /** Windows.Win32.Foundation.HWND */
   hInstance: Deno.PointerValue | null;
-  /** u32 */
-  rgbResult: number;
+  /** Windows.Win32.Foundation.COLORREF */
+  rgbResult: Uint8Array | Deno.PointerValue | null;
   /** ptr */
   lpCustColors: Deno.PointerValue | Uint8Array | null;
-  /** u32 */
-  Flags: number;
+  /** Windows.Win32.UI.Controls.Dialogs.CHOOSECOLOR_FLAGS */
+  Flags: CHOOSECOLOR_FLAGS;
   /** Windows.Win32.Foundation.LPARAM */
   lCustData: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.UI.Controls.Dialogs.LPCCHOOKPROC */
@@ -1010,9 +1042,8 @@ export function allocCHOOSECOLORW(data?: Partial<CHOOSECOLORW>): Uint8Array {
   if (data?.hwndOwner !== undefined) view.setBigUint64(8, data.hwndOwner === null ? 0n : BigInt(util.toPointer(data.hwndOwner)), true);
   // 0x10: pointer
   if (data?.hInstance !== undefined) view.setBigUint64(16, data.hInstance === null ? 0n : BigInt(util.toPointer(data.hInstance)), true);
-  // 0x18: u32
-  if (data?.rgbResult !== undefined) view.setUint32(24, Number(data.rgbResult), true);
-  // 0x1c: pad4
+  // 0x18: pointer
+  if (data?.rgbResult !== undefined) view.setBigUint64(24, data.rgbResult === null ? 0n : BigInt(util.toPointer(data.rgbResult)), true);
   // 0x20: pointer
   if (data?.lpCustColors !== undefined) view.setBigUint64(32, data.lpCustColors === null ? 0n : BigInt(util.toPointer(data.lpCustColors)), true);
   // 0x28: u32
@@ -1188,8 +1219,8 @@ export interface CHOOSEFONTA {
   iPointSize: number;
   /** Windows.Win32.UI.Controls.Dialogs.CHOOSEFONT_FLAGS */
   Flags: CHOOSEFONT_FLAGS;
-  /** u32 */
-  rgbColors: number;
+  /** Windows.Win32.Foundation.COLORREF */
+  rgbColors: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.Foundation.LPARAM */
   lCustData: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.UI.Controls.Dialogs.LPCFHOOKPROC */
@@ -1228,9 +1259,8 @@ export function allocCHOOSEFONTA(data?: Partial<CHOOSEFONTA>): Uint8Array {
   if (data?.iPointSize !== undefined) view.setInt32(32, Number(data.iPointSize), true);
   // 0x24: u32
   if (data?.Flags !== undefined) view.setUint32(36, Number(data.Flags), true);
-  // 0x28: u32
-  if (data?.rgbColors !== undefined) view.setUint32(40, Number(data.rgbColors), true);
-  // 0x2c: pad4
+  // 0x28: pointer
+  if (data?.rgbColors !== undefined) view.setBigUint64(40, data.rgbColors === null ? 0n : BigInt(util.toPointer(data.rgbColors)), true);
   // 0x30: pointer
   if (data?.lCustData !== undefined) view.setBigUint64(48, data.lCustData === null ? 0n : BigInt(util.toPointer(data.lCustData)), true);
   // 0x38: pointer
@@ -1275,8 +1305,8 @@ export interface CHOOSEFONTW {
   iPointSize: number;
   /** Windows.Win32.UI.Controls.Dialogs.CHOOSEFONT_FLAGS */
   Flags: CHOOSEFONT_FLAGS;
-  /** u32 */
-  rgbColors: number;
+  /** Windows.Win32.Foundation.COLORREF */
+  rgbColors: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.Foundation.LPARAM */
   lCustData: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.UI.Controls.Dialogs.LPCFHOOKPROC */
@@ -1315,9 +1345,8 @@ export function allocCHOOSEFONTW(data?: Partial<CHOOSEFONTW>): Uint8Array {
   if (data?.iPointSize !== undefined) view.setInt32(32, Number(data.iPointSize), true);
   // 0x24: u32
   if (data?.Flags !== undefined) view.setUint32(36, Number(data.Flags), true);
-  // 0x28: u32
-  if (data?.rgbColors !== undefined) view.setUint32(40, Number(data.rgbColors), true);
-  // 0x2c: pad4
+  // 0x28: pointer
+  if (data?.rgbColors !== undefined) view.setBigUint64(40, data.rgbColors === null ? 0n : BigInt(util.toPointer(data.rgbColors)), true);
   // 0x30: pointer
   if (data?.lCustData !== undefined) view.setBigUint64(48, data.lCustData === null ? 0n : BigInt(util.toPointer(data.lCustData)), true);
   // 0x38: pointer
@@ -2013,7 +2042,7 @@ export type HRESULT = number;
 // Native Libraries
 
 try {
-  var libCOMDLG32 = Deno.dlopen("COMDLG32", {
+  var libCOMDLG32_dll = Deno.dlopen("COMDLG32.dll", {
     GetOpenFileNameA: {
       parameters: ["pointer"],
       result: "i32",
@@ -2106,25 +2135,25 @@ try {
 export function GetOpenFileNameA(
   param0: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libCOMDLG32.GetOpenFileNameA(util.toPointer(param0)));
+  return util.boolFromFfi(libCOMDLG32_dll.GetOpenFileNameA(util.toPointer(param0)));
 }
 
 export function GetOpenFileNameW(
   param0: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libCOMDLG32.GetOpenFileNameW(util.toPointer(param0)));
+  return util.boolFromFfi(libCOMDLG32_dll.GetOpenFileNameW(util.toPointer(param0)));
 }
 
 export function GetSaveFileNameA(
   param0: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libCOMDLG32.GetSaveFileNameA(util.toPointer(param0)));
+  return util.boolFromFfi(libCOMDLG32_dll.GetSaveFileNameA(util.toPointer(param0)));
 }
 
 export function GetSaveFileNameW(
   param0: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libCOMDLG32.GetSaveFileNameW(util.toPointer(param0)));
+  return util.boolFromFfi(libCOMDLG32_dll.GetSaveFileNameW(util.toPointer(param0)));
 }
 
 export function GetFileTitleA(
@@ -2132,7 +2161,7 @@ export function GetFileTitleA(
   Buf: string | null /* Windows.Win32.Foundation.PSTR */,
   cchSize: number /* u16 */,
 ): number /* i16 */ {
-  return libCOMDLG32.GetFileTitleA(util.pstrToFfi(param0), util.pstrToFfi(Buf), cchSize);
+  return libCOMDLG32_dll.GetFileTitleA(util.pstrToFfi(param0), util.pstrToFfi(Buf), cchSize);
 }
 
 export function GetFileTitleW(
@@ -2140,94 +2169,94 @@ export function GetFileTitleW(
   Buf: string | null /* Windows.Win32.Foundation.PWSTR */,
   cchSize: number /* u16 */,
 ): number /* i16 */ {
-  return libCOMDLG32.GetFileTitleW(util.pwstrToFfi(param0), util.pwstrToFfi(Buf), cchSize);
+  return libCOMDLG32_dll.GetFileTitleW(util.pwstrToFfi(param0), util.pwstrToFfi(Buf), cchSize);
 }
 
 export function ChooseColorA(
   param0: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libCOMDLG32.ChooseColorA(util.toPointer(param0)));
+  return util.boolFromFfi(libCOMDLG32_dll.ChooseColorA(util.toPointer(param0)));
 }
 
 export function ChooseColorW(
   param0: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libCOMDLG32.ChooseColorW(util.toPointer(param0)));
+  return util.boolFromFfi(libCOMDLG32_dll.ChooseColorW(util.toPointer(param0)));
 }
 
 export function FindTextA(
   param0: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */ {
-  return util.hwndFromFfi(libCOMDLG32.FindTextA(util.toPointer(param0)));
+  return util.hwndFromFfi(libCOMDLG32_dll.FindTextA(util.toPointer(param0)));
 }
 
 export function FindTextW(
   param0: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */ {
-  return util.hwndFromFfi(libCOMDLG32.FindTextW(util.toPointer(param0)));
+  return util.hwndFromFfi(libCOMDLG32_dll.FindTextW(util.toPointer(param0)));
 }
 
 export function ReplaceTextA(
   param0: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */ {
-  return util.hwndFromFfi(libCOMDLG32.ReplaceTextA(util.toPointer(param0)));
+  return util.hwndFromFfi(libCOMDLG32_dll.ReplaceTextA(util.toPointer(param0)));
 }
 
 export function ReplaceTextW(
   param0: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */ {
-  return util.hwndFromFfi(libCOMDLG32.ReplaceTextW(util.toPointer(param0)));
+  return util.hwndFromFfi(libCOMDLG32_dll.ReplaceTextW(util.toPointer(param0)));
 }
 
 export function ChooseFontA(
   param0: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libCOMDLG32.ChooseFontA(util.toPointer(param0)));
+  return util.boolFromFfi(libCOMDLG32_dll.ChooseFontA(util.toPointer(param0)));
 }
 
 export function ChooseFontW(
   param0: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libCOMDLG32.ChooseFontW(util.toPointer(param0)));
+  return util.boolFromFfi(libCOMDLG32_dll.ChooseFontW(util.toPointer(param0)));
 }
 
 export function PrintDlgA(
   pPD: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libCOMDLG32.PrintDlgA(util.toPointer(pPD)));
+  return util.boolFromFfi(libCOMDLG32_dll.PrintDlgA(util.toPointer(pPD)));
 }
 
 export function PrintDlgW(
   pPD: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libCOMDLG32.PrintDlgW(util.toPointer(pPD)));
+  return util.boolFromFfi(libCOMDLG32_dll.PrintDlgW(util.toPointer(pPD)));
 }
 
 export function PrintDlgExA(
   pPD: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libCOMDLG32.PrintDlgExA(util.toPointer(pPD)));
+  return util.pointerFromFfi(libCOMDLG32_dll.PrintDlgExA(util.toPointer(pPD)));
 }
 
 export function PrintDlgExW(
   pPD: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libCOMDLG32.PrintDlgExW(util.toPointer(pPD)));
+  return util.pointerFromFfi(libCOMDLG32_dll.PrintDlgExW(util.toPointer(pPD)));
 }
 
 export function CommDlgExtendedError(): COMMON_DLG_ERRORS /* Windows.Win32.UI.Controls.Dialogs.COMMON_DLG_ERRORS */ {
-  return libCOMDLG32.CommDlgExtendedError();
+  return libCOMDLG32_dll.CommDlgExtendedError();
 }
 
 export function PageSetupDlgA(
   param0: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libCOMDLG32.PageSetupDlgA(util.toPointer(param0)));
+  return util.boolFromFfi(libCOMDLG32_dll.PageSetupDlgA(util.toPointer(param0)));
 }
 
 export function PageSetupDlgW(
   param0: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libCOMDLG32.PageSetupDlgW(util.toPointer(param0)));
+  return util.boolFromFfi(libCOMDLG32_dll.PageSetupDlgW(util.toPointer(param0)));
 }
 

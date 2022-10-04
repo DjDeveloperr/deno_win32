@@ -134,7 +134,7 @@ export const WINBIO_POLICY_DEFAULT = 1;
 export const WINBIO_POLICY_LOCAL = 2;
 export const WINBIO_POLICY_ADMIN = 3;
 export const WINBIO_CREDENTIAL_PASSWORD = 1;
-export const WINBIO_CREDENTIAL_ALL = "-1";
+export const WINBIO_CREDENTIAL_ALL = `-1`;
 export const WINBIO_PASSWORD_GENERIC = 1;
 export const WINBIO_PASSWORD_PACKED = 2;
 export const WINBIO_PASSWORD_PROTECTED = 3;
@@ -170,59 +170,25 @@ export function allocWINBIO_VERSION(data?: Partial<WINBIO_VERSION>): Uint8Array 
 }
 
 /**
- * _AccountSid_e__Struct (size: 16)
- */
-export interface _AccountSid_e__Struct {
-  /** u32 */
-  Size: number;
-  /** array */
-  Data: Deno.PointerValue | null;
-}
-
-export const sizeof_AccountSid_e__Struct = 16;
-
-export function alloc_AccountSid_e__Struct(data?: Partial<_AccountSid_e__Struct>): Uint8Array {
-  const buf = new Uint8Array(sizeof_AccountSid_e__Struct);
-  const view = new DataView(buf.buffer);
-  // 0x00: u32
-  if (data?.Size !== undefined) view.setUint32(0, Number(data.Size), true);
-  // 0x04: pad4
-  // 0x08: pointer
-  if (data?.Data !== undefined) view.setBigUint64(8, data.Data === null ? 0n : BigInt(util.toPointer(data.Data)), true);
-  return buf;
-}
-
-/**
- * _Value_e__Union (size: 32)
+ * _Value_e__Union (size: 16)
  */
 export interface _Value_e__Union {
-  /** u32 */
-  Null: number;
-  /** u32 */
-  Wildcard: number;
+  /** u16 */
+  ShortUuid: number;
   /** System.Guid */
-  TemplateGuid: Uint8Array | Deno.PointerValue | null;
-  /** _AccountSid_e__Struct */
-  AccountSid: Uint8Array | Deno.PointerValue | null;
-  /** array */
-  SecureId: Deno.PointerValue | null;
+  LongUuid: Uint8Array | Deno.PointerValue | null;
 }
 
-export const sizeof_Value_e__Union = 32;
+export const sizeof_Value_e__Union = 16;
 
 export function alloc_Value_e__Union(data?: Partial<_Value_e__Union>): Uint8Array {
   const buf = new Uint8Array(sizeof_Value_e__Union);
   const view = new DataView(buf.buffer);
-  // 0x00: u32
-  if (data?.Null !== undefined) view.setUint32(0, Number(data.Null), true);
-  // 0x04: u32
-  if (data?.Wildcard !== undefined) view.setUint32(4, Number(data.Wildcard), true);
+  // 0x00: u16
+  if (data?.ShortUuid !== undefined) view.setUint16(0, Number(data.ShortUuid), true);
+  // 0x02: pad6
   // 0x08: pointer
-  if (data?.TemplateGuid !== undefined) view.setBigUint64(8, data.TemplateGuid === null ? 0n : BigInt(util.toPointer(data.TemplateGuid)), true);
-  // 0x10: pointer
-  if (data?.AccountSid !== undefined) view.setBigUint64(16, data.AccountSid === null ? 0n : BigInt(util.toPointer(data.AccountSid)), true);
-  // 0x18: pointer
-  if (data?.SecureId !== undefined) view.setBigUint64(24, data.SecureId === null ? 0n : BigInt(util.toPointer(data.SecureId)), true);
+  if (data?.LongUuid !== undefined) view.setBigUint64(8, data.LongUuid === null ? 0n : BigInt(util.toPointer(data.LongUuid)), true);
   return buf;
 }
 
@@ -2899,7 +2865,7 @@ export type HWND = Deno.PointerValue;
 // Native Libraries
 
 try {
-  var libwinbio = Deno.dlopen("winbio", {
+  var libwinbio_dll = Deno.dlopen("winbio.dll", {
     WinBioEnumServiceProviders: {
       parameters: ["u32", "pointer", "pointer"],
       result: "pointer",
@@ -3126,7 +3092,7 @@ export function WinBioEnumServiceProviders(
   BspSchemaArray: Deno.PointerValue | Uint8Array | null /* ptr */,
   BspCount: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libwinbio.WinBioEnumServiceProviders(Factor, util.toPointer(BspSchemaArray), util.toPointer(BspCount)));
+  return util.pointerFromFfi(libwinbio_dll.WinBioEnumServiceProviders(Factor, util.toPointer(BspSchemaArray), util.toPointer(BspCount)));
 }
 
 export function WinBioEnumBiometricUnits(
@@ -3134,7 +3100,7 @@ export function WinBioEnumBiometricUnits(
   UnitSchemaArray: Deno.PointerValue | Uint8Array | null /* ptr */,
   UnitCount: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libwinbio.WinBioEnumBiometricUnits(Factor, util.toPointer(UnitSchemaArray), util.toPointer(UnitCount)));
+  return util.pointerFromFfi(libwinbio_dll.WinBioEnumBiometricUnits(Factor, util.toPointer(UnitSchemaArray), util.toPointer(UnitCount)));
 }
 
 export function WinBioEnumDatabases(
@@ -3142,7 +3108,7 @@ export function WinBioEnumDatabases(
   StorageSchemaArray: Deno.PointerValue | Uint8Array | null /* ptr */,
   StorageCount: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libwinbio.WinBioEnumDatabases(Factor, util.toPointer(StorageSchemaArray), util.toPointer(StorageCount)));
+  return util.pointerFromFfi(libwinbio_dll.WinBioEnumDatabases(Factor, util.toPointer(StorageSchemaArray), util.toPointer(StorageCount)));
 }
 
 export function WinBioAsyncOpenFramework(
@@ -3154,41 +3120,41 @@ export function WinBioAsyncOpenFramework(
   AsynchronousOpen: boolean /* Windows.Win32.Foundation.BOOL */,
   FrameworkHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libwinbio.WinBioAsyncOpenFramework(NotificationMethod, util.hwndToFfi(TargetWindow), MessageCode, util.toPointer(CallbackRoutine), util.toPointer(UserData), util.boolToFfi(AsynchronousOpen), util.toPointer(FrameworkHandle)));
+  return util.pointerFromFfi(libwinbio_dll.WinBioAsyncOpenFramework(NotificationMethod, util.hwndToFfi(TargetWindow), MessageCode, util.toPointer(CallbackRoutine), util.toPointer(UserData), util.boolToFfi(AsynchronousOpen), util.toPointer(FrameworkHandle)));
 }
 
 export function WinBioCloseFramework(
   FrameworkHandle: number /* u32 */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libwinbio.WinBioCloseFramework(FrameworkHandle));
+  return util.pointerFromFfi(libwinbio_dll.WinBioCloseFramework(FrameworkHandle));
 }
 
 export function WinBioAsyncEnumServiceProviders(
   FrameworkHandle: number /* u32 */,
   Factor: number /* u32 */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libwinbio.WinBioAsyncEnumServiceProviders(FrameworkHandle, Factor));
+  return util.pointerFromFfi(libwinbio_dll.WinBioAsyncEnumServiceProviders(FrameworkHandle, Factor));
 }
 
 export function WinBioAsyncEnumBiometricUnits(
   FrameworkHandle: number /* u32 */,
   Factor: number /* u32 */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libwinbio.WinBioAsyncEnumBiometricUnits(FrameworkHandle, Factor));
+  return util.pointerFromFfi(libwinbio_dll.WinBioAsyncEnumBiometricUnits(FrameworkHandle, Factor));
 }
 
 export function WinBioAsyncEnumDatabases(
   FrameworkHandle: number /* u32 */,
   Factor: number /* u32 */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libwinbio.WinBioAsyncEnumDatabases(FrameworkHandle, Factor));
+  return util.pointerFromFfi(libwinbio_dll.WinBioAsyncEnumDatabases(FrameworkHandle, Factor));
 }
 
 export function WinBioAsyncMonitorFrameworkChanges(
   FrameworkHandle: number /* u32 */,
   ChangeTypes: number /* u32 */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libwinbio.WinBioAsyncMonitorFrameworkChanges(FrameworkHandle, ChangeTypes));
+  return util.pointerFromFfi(libwinbio_dll.WinBioAsyncMonitorFrameworkChanges(FrameworkHandle, ChangeTypes));
 }
 
 export function WinBioOpenSession(
@@ -3200,7 +3166,7 @@ export function WinBioOpenSession(
   DatabaseId: Deno.PointerValue | Uint8Array | null /* ptr */,
   SessionHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libwinbio.WinBioOpenSession(Factor, PoolType, Flags, util.toPointer(UnitArray), UnitCount, util.toPointer(DatabaseId), util.toPointer(SessionHandle)));
+  return util.pointerFromFfi(libwinbio_dll.WinBioOpenSession(Factor, PoolType, Flags, util.toPointer(UnitArray), UnitCount, util.toPointer(DatabaseId), util.toPointer(SessionHandle)));
 }
 
 export function WinBioAsyncOpenSession(
@@ -3218,13 +3184,13 @@ export function WinBioAsyncOpenSession(
   AsynchronousOpen: boolean /* Windows.Win32.Foundation.BOOL */,
   SessionHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libwinbio.WinBioAsyncOpenSession(Factor, PoolType, Flags, util.toPointer(UnitArray), UnitCount, util.toPointer(DatabaseId), NotificationMethod, util.hwndToFfi(TargetWindow), MessageCode, util.toPointer(CallbackRoutine), util.toPointer(UserData), util.boolToFfi(AsynchronousOpen), util.toPointer(SessionHandle)));
+  return util.pointerFromFfi(libwinbio_dll.WinBioAsyncOpenSession(Factor, PoolType, Flags, util.toPointer(UnitArray), UnitCount, util.toPointer(DatabaseId), NotificationMethod, util.hwndToFfi(TargetWindow), MessageCode, util.toPointer(CallbackRoutine), util.toPointer(UserData), util.boolToFfi(AsynchronousOpen), util.toPointer(SessionHandle)));
 }
 
 export function WinBioCloseSession(
   SessionHandle: number /* u32 */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libwinbio.WinBioCloseSession(SessionHandle));
+  return util.pointerFromFfi(libwinbio_dll.WinBioCloseSession(SessionHandle));
 }
 
 export function WinBioVerify(
@@ -3235,7 +3201,7 @@ export function WinBioVerify(
   Match: Deno.PointerValue | Uint8Array | null /* ptr */,
   RejectDetail: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libwinbio.WinBioVerify(SessionHandle, util.toPointer(Identity), SubFactor, util.toPointer(UnitId), util.toPointer(Match), util.toPointer(RejectDetail)));
+  return util.pointerFromFfi(libwinbio_dll.WinBioVerify(SessionHandle, util.toPointer(Identity), SubFactor, util.toPointer(UnitId), util.toPointer(Match), util.toPointer(RejectDetail)));
 }
 
 export function WinBioVerifyWithCallback(
@@ -3245,7 +3211,7 @@ export function WinBioVerifyWithCallback(
   VerifyCallback: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.BiometricFramework.PWINBIO_VERIFY_CALLBACK */,
   VerifyCallbackContext: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libwinbio.WinBioVerifyWithCallback(SessionHandle, util.toPointer(Identity), SubFactor, util.toPointer(VerifyCallback), util.toPointer(VerifyCallbackContext)));
+  return util.pointerFromFfi(libwinbio_dll.WinBioVerifyWithCallback(SessionHandle, util.toPointer(Identity), SubFactor, util.toPointer(VerifyCallback), util.toPointer(VerifyCallbackContext)));
 }
 
 export function WinBioIdentify(
@@ -3255,7 +3221,7 @@ export function WinBioIdentify(
   SubFactor: Deno.PointerValue | Uint8Array | null /* ptr */,
   RejectDetail: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libwinbio.WinBioIdentify(SessionHandle, util.toPointer(UnitId), util.toPointer(Identity), util.toPointer(SubFactor), util.toPointer(RejectDetail)));
+  return util.pointerFromFfi(libwinbio_dll.WinBioIdentify(SessionHandle, util.toPointer(UnitId), util.toPointer(Identity), util.toPointer(SubFactor), util.toPointer(RejectDetail)));
 }
 
 export function WinBioIdentifyWithCallback(
@@ -3263,26 +3229,26 @@ export function WinBioIdentifyWithCallback(
   IdentifyCallback: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.BiometricFramework.PWINBIO_IDENTIFY_CALLBACK */,
   IdentifyCallbackContext: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libwinbio.WinBioIdentifyWithCallback(SessionHandle, util.toPointer(IdentifyCallback), util.toPointer(IdentifyCallbackContext)));
+  return util.pointerFromFfi(libwinbio_dll.WinBioIdentifyWithCallback(SessionHandle, util.toPointer(IdentifyCallback), util.toPointer(IdentifyCallbackContext)));
 }
 
 export function WinBioWait(
   SessionHandle: number /* u32 */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libwinbio.WinBioWait(SessionHandle));
+  return util.pointerFromFfi(libwinbio_dll.WinBioWait(SessionHandle));
 }
 
 export function WinBioCancel(
   SessionHandle: number /* u32 */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libwinbio.WinBioCancel(SessionHandle));
+  return util.pointerFromFfi(libwinbio_dll.WinBioCancel(SessionHandle));
 }
 
 export function WinBioLocateSensor(
   SessionHandle: number /* u32 */,
   UnitId: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libwinbio.WinBioLocateSensor(SessionHandle, util.toPointer(UnitId)));
+  return util.pointerFromFfi(libwinbio_dll.WinBioLocateSensor(SessionHandle, util.toPointer(UnitId)));
 }
 
 export function WinBioLocateSensorWithCallback(
@@ -3290,7 +3256,7 @@ export function WinBioLocateSensorWithCallback(
   LocateCallback: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.BiometricFramework.PWINBIO_LOCATE_SENSOR_CALLBACK */,
   LocateCallbackContext: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libwinbio.WinBioLocateSensorWithCallback(SessionHandle, util.toPointer(LocateCallback), util.toPointer(LocateCallbackContext)));
+  return util.pointerFromFfi(libwinbio_dll.WinBioLocateSensorWithCallback(SessionHandle, util.toPointer(LocateCallback), util.toPointer(LocateCallbackContext)));
 }
 
 export function WinBioEnrollBegin(
@@ -3298,21 +3264,21 @@ export function WinBioEnrollBegin(
   SubFactor: number /* u8 */,
   UnitId: number /* u32 */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libwinbio.WinBioEnrollBegin(SessionHandle, SubFactor, UnitId));
+  return util.pointerFromFfi(libwinbio_dll.WinBioEnrollBegin(SessionHandle, SubFactor, UnitId));
 }
 
 export function WinBioEnrollSelect(
   SessionHandle: number /* u32 */,
   SelectorValue: Deno.PointerValue /* u64 */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libwinbio.WinBioEnrollSelect(SessionHandle, SelectorValue));
+  return util.pointerFromFfi(libwinbio_dll.WinBioEnrollSelect(SessionHandle, SelectorValue));
 }
 
 export function WinBioEnrollCapture(
   SessionHandle: number /* u32 */,
   RejectDetail: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libwinbio.WinBioEnrollCapture(SessionHandle, util.toPointer(RejectDetail)));
+  return util.pointerFromFfi(libwinbio_dll.WinBioEnrollCapture(SessionHandle, util.toPointer(RejectDetail)));
 }
 
 export function WinBioEnrollCaptureWithCallback(
@@ -3320,7 +3286,7 @@ export function WinBioEnrollCaptureWithCallback(
   EnrollCallback: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.BiometricFramework.PWINBIO_ENROLL_CAPTURE_CALLBACK */,
   EnrollCallbackContext: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libwinbio.WinBioEnrollCaptureWithCallback(SessionHandle, util.toPointer(EnrollCallback), util.toPointer(EnrollCallbackContext)));
+  return util.pointerFromFfi(libwinbio_dll.WinBioEnrollCaptureWithCallback(SessionHandle, util.toPointer(EnrollCallback), util.toPointer(EnrollCallbackContext)));
 }
 
 export function WinBioEnrollCommit(
@@ -3328,13 +3294,13 @@ export function WinBioEnrollCommit(
   Identity: Deno.PointerValue | Uint8Array | null /* ptr */,
   IsNewTemplate: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libwinbio.WinBioEnrollCommit(SessionHandle, util.toPointer(Identity), util.toPointer(IsNewTemplate)));
+  return util.pointerFromFfi(libwinbio_dll.WinBioEnrollCommit(SessionHandle, util.toPointer(Identity), util.toPointer(IsNewTemplate)));
 }
 
 export function WinBioEnrollDiscard(
   SessionHandle: number /* u32 */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libwinbio.WinBioEnrollDiscard(SessionHandle));
+  return util.pointerFromFfi(libwinbio_dll.WinBioEnrollDiscard(SessionHandle));
 }
 
 export function WinBioEnumEnrollments(
@@ -3344,20 +3310,20 @@ export function WinBioEnumEnrollments(
   SubFactorArray: Deno.PointerValue | Uint8Array | null /* ptr */,
   SubFactorCount: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libwinbio.WinBioEnumEnrollments(SessionHandle, UnitId, util.toPointer(Identity), util.toPointer(SubFactorArray), util.toPointer(SubFactorCount)));
+  return util.pointerFromFfi(libwinbio_dll.WinBioEnumEnrollments(SessionHandle, UnitId, util.toPointer(Identity), util.toPointer(SubFactorArray), util.toPointer(SubFactorCount)));
 }
 
 export function WinBioImproveBegin(
   SessionHandle: number /* u32 */,
   UnitId: number /* u32 */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libwinbio.WinBioImproveBegin(SessionHandle, UnitId));
+  return util.pointerFromFfi(libwinbio_dll.WinBioImproveBegin(SessionHandle, UnitId));
 }
 
 export function WinBioImproveEnd(
   SessionHandle: number /* u32 */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libwinbio.WinBioImproveEnd(SessionHandle));
+  return util.pointerFromFfi(libwinbio_dll.WinBioImproveEnd(SessionHandle));
 }
 
 export function WinBioRegisterEventMonitor(
@@ -3366,20 +3332,20 @@ export function WinBioRegisterEventMonitor(
   EventCallback: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.BiometricFramework.PWINBIO_EVENT_CALLBACK */,
   EventCallbackContext: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libwinbio.WinBioRegisterEventMonitor(SessionHandle, EventMask, util.toPointer(EventCallback), util.toPointer(EventCallbackContext)));
+  return util.pointerFromFfi(libwinbio_dll.WinBioRegisterEventMonitor(SessionHandle, EventMask, util.toPointer(EventCallback), util.toPointer(EventCallbackContext)));
 }
 
 export function WinBioUnregisterEventMonitor(
   SessionHandle: number /* u32 */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libwinbio.WinBioUnregisterEventMonitor(SessionHandle));
+  return util.pointerFromFfi(libwinbio_dll.WinBioUnregisterEventMonitor(SessionHandle));
 }
 
 export function WinBioMonitorPresence(
   SessionHandle: number /* u32 */,
   UnitId: number /* u32 */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libwinbio.WinBioMonitorPresence(SessionHandle, UnitId));
+  return util.pointerFromFfi(libwinbio_dll.WinBioMonitorPresence(SessionHandle, UnitId));
 }
 
 export function WinBioCaptureSample(
@@ -3391,7 +3357,7 @@ export function WinBioCaptureSample(
   SampleSize: Deno.PointerValue | Uint8Array | null /* ptr */,
   RejectDetail: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libwinbio.WinBioCaptureSample(SessionHandle, Purpose, Flags, util.toPointer(UnitId), util.toPointer(Sample), util.toPointer(SampleSize), util.toPointer(RejectDetail)));
+  return util.pointerFromFfi(libwinbio_dll.WinBioCaptureSample(SessionHandle, Purpose, Flags, util.toPointer(UnitId), util.toPointer(Sample), util.toPointer(SampleSize), util.toPointer(RejectDetail)));
 }
 
 export function WinBioCaptureSampleWithCallback(
@@ -3401,7 +3367,7 @@ export function WinBioCaptureSampleWithCallback(
   CaptureCallback: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.BiometricFramework.PWINBIO_CAPTURE_CALLBACK */,
   CaptureCallbackContext: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libwinbio.WinBioCaptureSampleWithCallback(SessionHandle, Purpose, Flags, util.toPointer(CaptureCallback), util.toPointer(CaptureCallbackContext)));
+  return util.pointerFromFfi(libwinbio_dll.WinBioCaptureSampleWithCallback(SessionHandle, Purpose, Flags, util.toPointer(CaptureCallback), util.toPointer(CaptureCallbackContext)));
 }
 
 export function WinBioDeleteTemplate(
@@ -3410,21 +3376,21 @@ export function WinBioDeleteTemplate(
   Identity: Deno.PointerValue | Uint8Array | null /* ptr */,
   SubFactor: number /* u8 */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libwinbio.WinBioDeleteTemplate(SessionHandle, UnitId, util.toPointer(Identity), SubFactor));
+  return util.pointerFromFfi(libwinbio_dll.WinBioDeleteTemplate(SessionHandle, UnitId, util.toPointer(Identity), SubFactor));
 }
 
 export function WinBioLockUnit(
   SessionHandle: number /* u32 */,
   UnitId: number /* u32 */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libwinbio.WinBioLockUnit(SessionHandle, UnitId));
+  return util.pointerFromFfi(libwinbio_dll.WinBioLockUnit(SessionHandle, UnitId));
 }
 
 export function WinBioUnlockUnit(
   SessionHandle: number /* u32 */,
   UnitId: number /* u32 */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libwinbio.WinBioUnlockUnit(SessionHandle, UnitId));
+  return util.pointerFromFfi(libwinbio_dll.WinBioUnlockUnit(SessionHandle, UnitId));
 }
 
 export function WinBioControlUnit(
@@ -3439,7 +3405,7 @@ export function WinBioControlUnit(
   ReceiveDataSize: Deno.PointerValue | Uint8Array | null /* ptr */,
   OperationStatus: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libwinbio.WinBioControlUnit(SessionHandle, UnitId, Component, ControlCode, util.toPointer(SendBuffer), SendBufferSize, util.toPointer(ReceiveBuffer), ReceiveBufferSize, util.toPointer(ReceiveDataSize), util.toPointer(OperationStatus)));
+  return util.pointerFromFfi(libwinbio_dll.WinBioControlUnit(SessionHandle, UnitId, Component, ControlCode, util.toPointer(SendBuffer), SendBufferSize, util.toPointer(ReceiveBuffer), ReceiveBufferSize, util.toPointer(ReceiveDataSize), util.toPointer(OperationStatus)));
 }
 
 export function WinBioControlUnitPrivileged(
@@ -3454,7 +3420,7 @@ export function WinBioControlUnitPrivileged(
   ReceiveDataSize: Deno.PointerValue | Uint8Array | null /* ptr */,
   OperationStatus: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libwinbio.WinBioControlUnitPrivileged(SessionHandle, UnitId, Component, ControlCode, util.toPointer(SendBuffer), SendBufferSize, util.toPointer(ReceiveBuffer), ReceiveBufferSize, util.toPointer(ReceiveDataSize), util.toPointer(OperationStatus)));
+  return util.pointerFromFfi(libwinbio_dll.WinBioControlUnitPrivileged(SessionHandle, UnitId, Component, ControlCode, util.toPointer(SendBuffer), SendBufferSize, util.toPointer(ReceiveBuffer), ReceiveBufferSize, util.toPointer(ReceiveDataSize), util.toPointer(OperationStatus)));
 }
 
 export function WinBioGetProperty(
@@ -3467,7 +3433,7 @@ export function WinBioGetProperty(
   PropertyBuffer: Deno.PointerValue | Uint8Array | null /* ptr */,
   PropertyBufferSize: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libwinbio.WinBioGetProperty(SessionHandle, PropertyType, PropertyId, UnitId, util.toPointer(Identity), SubFactor, util.toPointer(PropertyBuffer), util.toPointer(PropertyBufferSize)));
+  return util.pointerFromFfi(libwinbio_dll.WinBioGetProperty(SessionHandle, PropertyType, PropertyId, UnitId, util.toPointer(Identity), SubFactor, util.toPointer(PropertyBuffer), util.toPointer(PropertyBufferSize)));
 }
 
 export function WinBioSetProperty(
@@ -3480,13 +3446,13 @@ export function WinBioSetProperty(
   PropertyBuffer: Deno.PointerValue | Uint8Array | null /* ptr */,
   PropertyBufferSize: Deno.PointerValue /* usize */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libwinbio.WinBioSetProperty(SessionHandle, PropertyType, PropertyId, UnitId, util.toPointer(Identity), SubFactor, util.toPointer(PropertyBuffer), PropertyBufferSize));
+  return util.pointerFromFfi(libwinbio_dll.WinBioSetProperty(SessionHandle, PropertyType, PropertyId, UnitId, util.toPointer(Identity), SubFactor, util.toPointer(PropertyBuffer), PropertyBufferSize));
 }
 
 export function WinBioFree(
   Address: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libwinbio.WinBioFree(util.toPointer(Address)));
+  return util.pointerFromFfi(libwinbio_dll.WinBioFree(util.toPointer(Address)));
 }
 
 export function WinBioSetCredential(
@@ -3495,22 +3461,22 @@ export function WinBioSetCredential(
   CredentialSize: Deno.PointerValue /* usize */,
   Format: WINBIO_CREDENTIAL_FORMAT /* Windows.Win32.Devices.BiometricFramework.WINBIO_CREDENTIAL_FORMAT */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libwinbio.WinBioSetCredential(Type, util.toPointer(Credential), CredentialSize, Format));
+  return util.pointerFromFfi(libwinbio_dll.WinBioSetCredential(Type, util.toPointer(Credential), CredentialSize, Format));
 }
 
 export function WinBioRemoveCredential(
   Identity: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.BiometricFramework.WINBIO_IDENTITY */,
   Type: WINBIO_CREDENTIAL_TYPE /* Windows.Win32.Devices.BiometricFramework.WINBIO_CREDENTIAL_TYPE */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libwinbio.WinBioRemoveCredential(util.toPointer(Identity), Type));
+  return util.pointerFromFfi(libwinbio_dll.WinBioRemoveCredential(util.toPointer(Identity), Type));
 }
 
 export function WinBioRemoveAllCredentials(): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libwinbio.WinBioRemoveAllCredentials());
+  return util.pointerFromFfi(libwinbio_dll.WinBioRemoveAllCredentials());
 }
 
 export function WinBioRemoveAllDomainCredentials(): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libwinbio.WinBioRemoveAllDomainCredentials());
+  return util.pointerFromFfi(libwinbio_dll.WinBioRemoveAllDomainCredentials());
 }
 
 export function WinBioGetCredentialState(
@@ -3518,48 +3484,48 @@ export function WinBioGetCredentialState(
   Type: WINBIO_CREDENTIAL_TYPE /* Windows.Win32.Devices.BiometricFramework.WINBIO_CREDENTIAL_TYPE */,
   CredentialState: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libwinbio.WinBioGetCredentialState(util.toPointer(Identity), Type, util.toPointer(CredentialState)));
+  return util.pointerFromFfi(libwinbio_dll.WinBioGetCredentialState(util.toPointer(Identity), Type, util.toPointer(CredentialState)));
 }
 
 export function WinBioLogonIdentifiedUser(
   SessionHandle: number /* u32 */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libwinbio.WinBioLogonIdentifiedUser(SessionHandle));
+  return util.pointerFromFfi(libwinbio_dll.WinBioLogonIdentifiedUser(SessionHandle));
 }
 
 export function WinBioGetEnrolledFactors(
   AccountOwner: Deno.PointerValue | Uint8Array | null /* ptr */,
   EnrolledFactors: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libwinbio.WinBioGetEnrolledFactors(util.toPointer(AccountOwner), util.toPointer(EnrolledFactors)));
+  return util.pointerFromFfi(libwinbio_dll.WinBioGetEnrolledFactors(util.toPointer(AccountOwner), util.toPointer(EnrolledFactors)));
 }
 
 export function WinBioGetEnabledSetting(
   Value: Deno.PointerValue | Uint8Array | null /* ptr */,
   Source: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): void /* void */ {
-  return libwinbio.WinBioGetEnabledSetting(util.toPointer(Value), util.toPointer(Source));
+  return libwinbio_dll.WinBioGetEnabledSetting(util.toPointer(Value), util.toPointer(Source));
 }
 
 export function WinBioGetLogonSetting(
   Value: Deno.PointerValue | Uint8Array | null /* ptr */,
   Source: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): void /* void */ {
-  return libwinbio.WinBioGetLogonSetting(util.toPointer(Value), util.toPointer(Source));
+  return libwinbio_dll.WinBioGetLogonSetting(util.toPointer(Value), util.toPointer(Source));
 }
 
 export function WinBioGetDomainLogonSetting(
   Value: Deno.PointerValue | Uint8Array | null /* ptr */,
   Source: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): void /* void */ {
-  return libwinbio.WinBioGetDomainLogonSetting(util.toPointer(Value), util.toPointer(Source));
+  return libwinbio_dll.WinBioGetDomainLogonSetting(util.toPointer(Value), util.toPointer(Source));
 }
 
 export function WinBioAcquireFocus(): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libwinbio.WinBioAcquireFocus());
+  return util.pointerFromFfi(libwinbio_dll.WinBioAcquireFocus());
 }
 
 export function WinBioReleaseFocus(): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libwinbio.WinBioReleaseFocus());
+  return util.pointerFromFfi(libwinbio_dll.WinBioReleaseFocus());
 }
 

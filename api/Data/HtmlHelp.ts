@@ -131,7 +131,7 @@ export const IDTB_ZOOM = 222;
 export const IDTB_TOC_NEXT = 223;
 export const IDTB_TOC_PREV = 224;
 export const HH_MAX_TABS = 19;
-export const HH_FTS_DEFAULT_PROXIMITY = "-1";
+export const HH_FTS_DEFAULT_PROXIMITY = `-1`;
 export const PROP_ADD = 0;
 export const PROP_DELETE = 1;
 export const PROP_UPDATE = 2;
@@ -154,11 +154,14 @@ export const STDPROP_INDEX_TERM = 210;
 export const STDPROP_INDEX_TERM_RAW_LENGTH = 211;
 export const STDPROP_USERPROP_BASE = 65536;
 export const STDPROP_USERPROP_MAX = 2147483647;
+export const SZ_WWDEST_GLOBAL = `GLOBAL`;
+export const SZ_WWDEST_KEY = `KEY`;
+export const SZ_WWDEST_OCC = `OCC`;
 export const ITWW_OPEN_NOCONNECT = 1;
 export const ITWW_CBKEY_MAX = 1024;
 export const IITWBC_BREAK_ACCEPT_WILDCARDS = 1;
 export const IITWBC_BREAK_AND_STEM = 2;
-export const E_NOTEXIST = 72057613365284864n;
+export const E_NOTEXIST = 9007218582097920n;
 export const E_DUPLICATE = 4505817977982977;
 export const E_BADVERSION = 4506917489610754;
 export const E_BADFILE = 4508017001238531;
@@ -357,6 +360,8 @@ export function allocPOINT(data?: Partial<POINT>): Uint8Array {
   return buf;
 }
 
+export type COLORREF = number;
+
 /**
  * Windows.Win32.Foundation.RECT (size: 16)
  */
@@ -388,7 +393,7 @@ export function allocRECT(data?: Partial<RECT>): Uint8Array {
 }
 
 /**
- * Windows.Win32.Data.HtmlHelp.HH_POPUP (size: 64)
+ * Windows.Win32.Data.HtmlHelp.HH_POPUP (size: 72)
  */
 export interface HH_POPUP {
   /** i32 */
@@ -401,17 +406,17 @@ export interface HH_POPUP {
   pszText: Deno.PointerValue | Uint8Array | null;
   /** Windows.Win32.Foundation.POINT */
   pt: Uint8Array | Deno.PointerValue | null;
-  /** u32 */
-  clrForeground: number;
-  /** u32 */
-  clrBackground: number;
+  /** Windows.Win32.Foundation.COLORREF */
+  clrForeground: Uint8Array | Deno.PointerValue | null;
+  /** Windows.Win32.Foundation.COLORREF */
+  clrBackground: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.Foundation.RECT */
   rcMargins: Uint8Array | Deno.PointerValue | null;
   /** ptr */
   pszFont: Deno.PointerValue | Uint8Array | null;
 }
 
-export const sizeofHH_POPUP = 64;
+export const sizeofHH_POPUP = 72;
 
 export function allocHH_POPUP(data?: Partial<HH_POPUP>): Uint8Array {
   const buf = new Uint8Array(sizeofHH_POPUP);
@@ -428,14 +433,14 @@ export function allocHH_POPUP(data?: Partial<HH_POPUP>): Uint8Array {
   if (data?.pszText !== undefined) view.setBigUint64(24, data.pszText === null ? 0n : BigInt(util.toPointer(data.pszText)), true);
   // 0x20: pointer
   if (data?.pt !== undefined) view.setBigUint64(32, data.pt === null ? 0n : BigInt(util.toPointer(data.pt)), true);
-  // 0x28: u32
-  if (data?.clrForeground !== undefined) view.setUint32(40, Number(data.clrForeground), true);
-  // 0x2c: u32
-  if (data?.clrBackground !== undefined) view.setUint32(44, Number(data.clrBackground), true);
+  // 0x28: pointer
+  if (data?.clrForeground !== undefined) view.setBigUint64(40, data.clrForeground === null ? 0n : BigInt(util.toPointer(data.clrForeground)), true);
   // 0x30: pointer
-  if (data?.rcMargins !== undefined) view.setBigUint64(48, data.rcMargins === null ? 0n : BigInt(util.toPointer(data.rcMargins)), true);
+  if (data?.clrBackground !== undefined) view.setBigUint64(48, data.clrBackground === null ? 0n : BigInt(util.toPointer(data.clrBackground)), true);
   // 0x38: pointer
-  if (data?.pszFont !== undefined) view.setBigUint64(56, data.pszFont === null ? 0n : BigInt(util.toPointer(data.pszFont)), true);
+  if (data?.rcMargins !== undefined) view.setBigUint64(56, data.rcMargins === null ? 0n : BigInt(util.toPointer(data.rcMargins)), true);
+  // 0x40: pointer
+  if (data?.pszFont !== undefined) view.setBigUint64(64, data.pszFont === null ? 0n : BigInt(util.toPointer(data.pszFont)), true);
   return buf;
 }
 

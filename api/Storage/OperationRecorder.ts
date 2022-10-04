@@ -71,7 +71,7 @@ export type BOOL = number;
 // Native Libraries
 
 try {
-  var libADVAPI32 = Deno.dlopen("ADVAPI32", {
+  var libADVAPI32_dll = Deno.dlopen("ADVAPI32.dll", {
     OperationStart: {
       parameters: ["pointer"],
       result: "i32",
@@ -88,12 +88,12 @@ try {
 export function OperationStart(
   OperationStartParams: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32.OperationStart(util.toPointer(OperationStartParams)));
+  return util.boolFromFfi(libADVAPI32_dll.OperationStart(util.toPointer(OperationStartParams)));
 }
 
 export function OperationEnd(
   OperationEndParams: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32.OperationEnd(util.toPointer(OperationEndParams)));
+  return util.boolFromFfi(libADVAPI32_dll.OperationEnd(util.toPointer(OperationEndParams)));
 }
 

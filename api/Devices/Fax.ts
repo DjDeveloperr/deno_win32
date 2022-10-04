@@ -35,6 +35,7 @@ export type SendToMode = number;
 export type STI_DEVICE_MJ_TYPE = number;
 
 // Constants
+export const prv_DEFAULT_PREFETCH_SIZE = 100;
 export const FS_INITIALIZING = 536870912;
 export const FS_DIALING = 536870913;
 export const FS_TRANSMITTING = 536870914;
@@ -55,6 +56,9 @@ export const FS_USER_ABORT = 538968064;
 export const FS_ANSWERED = 545259520;
 export const FAXDEVRECEIVE_SIZE = 4096;
 export const FAXDEVREPORTSTATUS_SIZE = 4096;
+export const MS_FAXROUTE_PRINTING_GUID = `{aec1b37c-9af2-11d0-abf7-00c04fd91a4e}`;
+export const MS_FAXROUTE_FOLDER_GUID = `{92041a90-9af2-11d0-abf7-00c04fd91a4e}`;
+export const MS_FAXROUTE_EMAIL_GUID = `{6bbf7bfe-9af2-11d0-abf7-00c04fd91a4e}`;
 export const FAX_ERR_START = 7001;
 export const FAX_ERR_SRV_OUTOFMEMORY = 7001;
 export const FAX_ERR_GROUP_NOT_FOUND = 7002;
@@ -156,6 +160,11 @@ export const FAX_CONFIG_SET = 8;
 export const FAX_PORT_QUERY = 16;
 export const FAX_PORT_SET = 32;
 export const FAX_JOB_MANAGE = 64;
+export const CF_MSFAXSRV_DEVICE_ID = `FAXSRV_DeviceID`;
+export const CF_MSFAXSRV_FSP_GUID = `FAXSRV_FSPGuid`;
+export const CF_MSFAXSRV_SERVER_NAME = `FAXSRV_ServerName`;
+export const CF_MSFAXSRV_ROUTEEXT_NAME = `FAXSRV_RoutingExtName`;
+export const CF_MSFAXSRV_ROUTING_METHOD_GUID = `FAXSRV_RoutingMethodGuid`;
 export const STI_UNICODE = 1;
 export const STI_VERSION_FLAG_MASK = 4278190080;
 export const STI_VERSION_FLAG_UNICODE = 16777216;
@@ -201,6 +210,10 @@ export const STI_TRACE_ERROR = 4;
 export const STI_SUBSCRIBE_FLAG_WINDOW = 1;
 export const STI_SUBSCRIBE_FLAG_EVENT = 2;
 export const MAX_NOTIFICATION_DATA = 64;
+export const STI_ADD_DEVICE_BROADCAST_ACTION = `Arrival`;
+export const STI_REMOVE_DEVICE_BROADCAST_ACTION = `Removal`;
+export const STI_ADD_DEVICE_BROADCAST_STRING = `STI\`;
+export const STI_REMOVE_DEVICE_BROADCAST_STRING = `STI\`;
 export const STI_DEVICE_CREATE_STATUS = 1;
 export const STI_DEVICE_CREATE_DATA = 2;
 export const STI_DEVICE_CREATE_BOTH = 3;
@@ -215,27 +228,63 @@ export const STI_CHANGENOEFFECT = 1;
 export const STIERR_OLD_VERSION = 505670914500134014n;
 export const STIERR_BETA_VERSION = 504534019477013633n;
 export const STIERR_BADDRIVER = 504405376616562807n;
-export const STIERR_DEVICENOTREG = "-2147221164";
+export const STIERR_DEVICENOTREG = `-2147221164`;
 export const STIERR_OBJECTNOTFOUND = 504426267337490434n;
-export const STIERR_INVALID_PARAM = "-2147024809";
-export const STIERR_NOINTERFACE = "-2147467262";
-export const STIERR_GENERIC = "-2147467259";
-export const STIERR_OUTOFMEMORY = "-2147024882";
-export const STIERR_UNSUPPORTED = "-2147467263";
+export const STIERR_INVALID_PARAM = `-2147024809`;
+export const STIERR_NOINTERFACE = `-2147467262`;
+export const STIERR_GENERIC = `-2147467259`;
+export const STIERR_OUTOFMEMORY = `-2147024882`;
+export const STIERR_UNSUPPORTED = `-2147467263`;
 export const STIERR_NOT_INITIALIZED = 505774268593143829n;
 export const STIERR_ALREADY_INITIALIZED = 504439461477024991n;
 export const STIERR_DEVICE_LOCKED = 504576900430495777n;
-export const STIERR_READONLY = "-2147024891";
-export const STIERR_NOTINITIALIZED = "-2147024891";
+export const STIERR_READONLY = `-2147024891`;
+export const STIERR_NOTINITIALIZED = `-2147024891`;
 export const STIERR_NEEDS_LOCK = 504438361965396126n;
 export const STIERR_SHARING_VIOLATION = 504604388221190176n;
 export const STIERR_HANDLEEXISTS = 504538417523523767n;
 export const STIERR_INVALID_DEVICE_NAME = 504417471244468347n;
 export const STIERR_INVALID_HW_TYPE = 504687951104901133n;
-export const STIERR_NOEVENTS = 14267404824248516867n;
+export const STIERR_NOEVENTS = 7277911609518260483n;
 export const STIERR_DEVICE_NOTREADY = 505774268593143829n;
+export const REGSTR_VAL_TYPE_W = `Type`;
+export const REGSTR_VAL_VENDOR_NAME_W = `Vendor`;
+export const REGSTR_VAL_DEVICETYPE_W = `DeviceType`;
+export const REGSTR_VAL_DEVICESUBTYPE_W = `DeviceSubType`;
+export const REGSTR_VAL_DEV_NAME_W = `DeviceName`;
+export const REGSTR_VAL_DRIVER_DESC_W = `DriverDesc`;
+export const REGSTR_VAL_FRIENDLY_NAME_W = `FriendlyName`;
+export const REGSTR_VAL_GENERIC_CAPS_W = `Capabilities`;
+export const REGSTR_VAL_HARDWARE_W = `HardwareConfig`;
+export const REGSTR_VAL_HARDWARE = `HardwareConfig`;
+export const REGSTR_VAL_DEVICE_NAME_W = `DriverDesc`;
+export const REGSTR_VAL_DATA_W = `DeviceData`;
+export const REGSTR_VAL_GUID_W = `GUID`;
+export const REGSTR_VAL_GUID = `GUID`;
+export const REGSTR_VAL_LAUNCH_APPS_W = `LaunchApplications`;
+export const REGSTR_VAL_LAUNCH_APPS = `LaunchApplications`;
+export const REGSTR_VAL_LAUNCHABLE_W = `Launchable`;
+export const REGSTR_VAL_LAUNCHABLE = `Launchable`;
+export const REGSTR_VAL_SHUTDOWNDELAY_W = `ShutdownIfUnusedDelay`;
+export const REGSTR_VAL_SHUTDOWNDELAY = `ShutdownIfUnusedDelay`;
+export const IS_DIGITAL_CAMERA_STR = `IsDigitalCamera`;
 export const IS_DIGITAL_CAMERA_VAL = 1;
+export const SUPPORTS_MSCPLUS_STR = `SupportsMSCPlus`;
 export const SUPPORTS_MSCPLUS_VAL = 1;
+export const STI_DEVICE_VALUE_TWAIN_NAME = `TwainDS`;
+export const STI_DEVICE_VALUE_ISIS_NAME = `ISISDriverName`;
+export const STI_DEVICE_VALUE_ICM_PROFILE = `ICMProfile`;
+export const STI_DEVICE_VALUE_DEFAULT_LAUNCHAPP = `DefaultLaunchApp`;
+export const STI_DEVICE_VALUE_TIMEOUT = `PollTimeout`;
+export const STI_DEVICE_VALUE_DISABLE_NOTIFICATIONS = `DisableNotifications`;
+export const REGSTR_VAL_BAUDRATE = `BaudRate`;
+export const STI_DEVICE_VALUE_TWAIN_NAME_A = `TwainDS`;
+export const STI_DEVICE_VALUE_ISIS_NAME_A = `ISISDriverName`;
+export const STI_DEVICE_VALUE_ICM_PROFILE_A = `ICMProfile`;
+export const STI_DEVICE_VALUE_DEFAULT_LAUNCHAPP_A = `DefaultLaunchApp`;
+export const STI_DEVICE_VALUE_TIMEOUT_A = `PollTimeout`;
+export const STI_DEVICE_VALUE_DISABLE_NOTIFICATIONS_A = `DisableNotifications`;
+export const REGSTR_VAL_BAUDRATE_A = `BaudRate`;
 export const STI_USD_GENCAP_NATIVE_PUSHSUPPORT = 1;
 export const STI_DEVICE_CREATE_FOR_MONITOR = 16777216;
 export const lDEFAULT_PREFETCH_SIZE = 100;
@@ -383,7 +432,7 @@ export const far2QUERY_ARCHIVES = 128;
 export const far2MANAGE_ARCHIVES = 256;
 export const far2MANAGE_RECEIVE_FOLDER = 512;
 export const frrcANY_CODE = 0;
-export const QUERY_STATUS = "-1";
+export const QUERY_STATUS = `-1`;
 export const STATUS_DISABLE = 0;
 export const STATUS_ENABLE = 1;
 export const DEV_ID_SRC_FAX = 0;
@@ -397,19 +446,19 @@ export const StiDeviceTypeStreamingVideo = 3;
 // Structs
 
 /**
- * Windows.Win32.UI.Shell.PropertiesSystem.PROPERTYKEY (size: 16)
+ * Windows.Win32.Devices.Properties.DEVPROPKEY (size: 16)
  */
-export interface PROPERTYKEY {
+export interface DEVPROPKEY {
   /** System.Guid */
   fmtid: Uint8Array | Deno.PointerValue | null;
   /** u32 */
   pid: number;
 }
 
-export const sizeofPROPERTYKEY = 16;
+export const sizeofDEVPROPKEY = 16;
 
-export function allocPROPERTYKEY(data?: Partial<PROPERTYKEY>): Uint8Array {
-  const buf = new Uint8Array(sizeofPROPERTYKEY);
+export function allocDEVPROPKEY(data?: Partial<DEVPROPKEY>): Uint8Array {
+  const buf = new Uint8Array(sizeofDEVPROPKEY);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
   if (data?.fmtid !== undefined) view.setBigUint64(0, data.fmtid === null ? 0n : BigInt(util.toPointer(data.fmtid)), true);
@@ -3223,7 +3272,7 @@ export type HRESULT = number;
 // Native Libraries
 
 try {
-  var libWINFAX = Deno.dlopen("WINFAX", {
+  var libWINFAX_dll = Deno.dlopen("WINFAX.dll", {
     FaxConnectFaxServerA: {
       parameters: ["buffer", "pointer"],
       result: "i32",
@@ -3452,7 +3501,7 @@ try {
 } catch(e) { /* ignore */ }
 
 try {
-  var libfxsutility = Deno.dlopen("fxsutility", {
+  var libfxsutility_dll = Deno.dlopen("fxsutility.dll", {
     CanSendToFaxRecipient: {
       parameters: [],
       result: "i32",
@@ -3465,7 +3514,7 @@ try {
 } catch(e) { /* ignore */ }
 
 try {
-  var libSTI = Deno.dlopen("STI", {
+  var libSTI_dll = Deno.dlopen("STI.dll", {
     StiCreateInstanceW: {
       parameters: ["pointer", "u32", "pointer", "pointer"],
       result: "pointer",
@@ -3479,20 +3528,20 @@ export function FaxConnectFaxServerA(
   MachineName: string | null /* Windows.Win32.Foundation.PSTR */,
   FaxHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWINFAX.FaxConnectFaxServerA(util.pstrToFfi(MachineName), util.toPointer(FaxHandle)));
+  return util.boolFromFfi(libWINFAX_dll.FaxConnectFaxServerA(util.pstrToFfi(MachineName), util.toPointer(FaxHandle)));
 }
 
 export function FaxConnectFaxServerW(
   MachineName: string | null /* Windows.Win32.Foundation.PWSTR */,
   FaxHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWINFAX.FaxConnectFaxServerW(util.pwstrToFfi(MachineName), util.toPointer(FaxHandle)));
+  return util.boolFromFfi(libWINFAX_dll.FaxConnectFaxServerW(util.pwstrToFfi(MachineName), util.toPointer(FaxHandle)));
 }
 
 export function FaxClose(
   FaxHandle: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWINFAX.FaxClose(util.toPointer(FaxHandle)));
+  return util.boolFromFfi(libWINFAX_dll.FaxClose(util.toPointer(FaxHandle)));
 }
 
 export function FaxOpenPort(
@@ -3501,21 +3550,21 @@ export function FaxOpenPort(
   Flags: number /* u32 */,
   FaxPortHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWINFAX.FaxOpenPort(util.toPointer(FaxHandle), DeviceId, Flags, util.toPointer(FaxPortHandle)));
+  return util.boolFromFfi(libWINFAX_dll.FaxOpenPort(util.toPointer(FaxHandle), DeviceId, Flags, util.toPointer(FaxPortHandle)));
 }
 
 export function FaxCompleteJobParamsA(
   JobParams: Deno.PointerValue | Uint8Array | null /* ptr */,
   CoverpageInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWINFAX.FaxCompleteJobParamsA(util.toPointer(JobParams), util.toPointer(CoverpageInfo)));
+  return util.boolFromFfi(libWINFAX_dll.FaxCompleteJobParamsA(util.toPointer(JobParams), util.toPointer(CoverpageInfo)));
 }
 
 export function FaxCompleteJobParamsW(
   JobParams: Deno.PointerValue | Uint8Array | null /* ptr */,
   CoverpageInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWINFAX.FaxCompleteJobParamsW(util.toPointer(JobParams), util.toPointer(CoverpageInfo)));
+  return util.boolFromFfi(libWINFAX_dll.FaxCompleteJobParamsW(util.toPointer(JobParams), util.toPointer(CoverpageInfo)));
 }
 
 export function FaxSendDocumentA(
@@ -3525,7 +3574,7 @@ export function FaxSendDocumentA(
   CoverpageInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
   FaxJobId: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWINFAX.FaxSendDocumentA(util.toPointer(FaxHandle), util.pstrToFfi(FileName), util.toPointer(JobParams), util.toPointer(CoverpageInfo), util.toPointer(FaxJobId)));
+  return util.boolFromFfi(libWINFAX_dll.FaxSendDocumentA(util.toPointer(FaxHandle), util.pstrToFfi(FileName), util.toPointer(JobParams), util.toPointer(CoverpageInfo), util.toPointer(FaxJobId)));
 }
 
 export function FaxSendDocumentW(
@@ -3535,7 +3584,7 @@ export function FaxSendDocumentW(
   CoverpageInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
   FaxJobId: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWINFAX.FaxSendDocumentW(util.toPointer(FaxHandle), util.pwstrToFfi(FileName), util.toPointer(JobParams), util.toPointer(CoverpageInfo), util.toPointer(FaxJobId)));
+  return util.boolFromFfi(libWINFAX_dll.FaxSendDocumentW(util.toPointer(FaxHandle), util.pwstrToFfi(FileName), util.toPointer(JobParams), util.toPointer(CoverpageInfo), util.toPointer(FaxJobId)));
 }
 
 export function FaxSendDocumentForBroadcastA(
@@ -3545,7 +3594,7 @@ export function FaxSendDocumentForBroadcastA(
   FaxRecipientCallback: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.Fax.PFAX_RECIPIENT_CALLBACKA */,
   Context: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWINFAX.FaxSendDocumentForBroadcastA(util.toPointer(FaxHandle), util.pstrToFfi(FileName), util.toPointer(FaxJobId), util.toPointer(FaxRecipientCallback), util.toPointer(Context)));
+  return util.boolFromFfi(libWINFAX_dll.FaxSendDocumentForBroadcastA(util.toPointer(FaxHandle), util.pstrToFfi(FileName), util.toPointer(FaxJobId), util.toPointer(FaxRecipientCallback), util.toPointer(Context)));
 }
 
 export function FaxSendDocumentForBroadcastW(
@@ -3555,7 +3604,7 @@ export function FaxSendDocumentForBroadcastW(
   FaxRecipientCallback: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.Fax.PFAX_RECIPIENT_CALLBACKW */,
   Context: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWINFAX.FaxSendDocumentForBroadcastW(util.toPointer(FaxHandle), util.pwstrToFfi(FileName), util.toPointer(FaxJobId), util.toPointer(FaxRecipientCallback), util.toPointer(Context)));
+  return util.boolFromFfi(libWINFAX_dll.FaxSendDocumentForBroadcastW(util.toPointer(FaxHandle), util.pwstrToFfi(FileName), util.toPointer(FaxJobId), util.toPointer(FaxRecipientCallback), util.toPointer(Context)));
 }
 
 export function FaxEnumJobsA(
@@ -3563,7 +3612,7 @@ export function FaxEnumJobsA(
   JobEntry: Deno.PointerValue | Uint8Array | null /* ptr */,
   JobsReturned: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWINFAX.FaxEnumJobsA(util.toPointer(FaxHandle), util.toPointer(JobEntry), util.toPointer(JobsReturned)));
+  return util.boolFromFfi(libWINFAX_dll.FaxEnumJobsA(util.toPointer(FaxHandle), util.toPointer(JobEntry), util.toPointer(JobsReturned)));
 }
 
 export function FaxEnumJobsW(
@@ -3571,7 +3620,7 @@ export function FaxEnumJobsW(
   JobEntry: Deno.PointerValue | Uint8Array | null /* ptr */,
   JobsReturned: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWINFAX.FaxEnumJobsW(util.toPointer(FaxHandle), util.toPointer(JobEntry), util.toPointer(JobsReturned)));
+  return util.boolFromFfi(libWINFAX_dll.FaxEnumJobsW(util.toPointer(FaxHandle), util.toPointer(JobEntry), util.toPointer(JobsReturned)));
 }
 
 export function FaxGetJobA(
@@ -3579,7 +3628,7 @@ export function FaxGetJobA(
   JobId: number /* u32 */,
   JobEntry: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWINFAX.FaxGetJobA(util.toPointer(FaxHandle), JobId, util.toPointer(JobEntry)));
+  return util.boolFromFfi(libWINFAX_dll.FaxGetJobA(util.toPointer(FaxHandle), JobId, util.toPointer(JobEntry)));
 }
 
 export function FaxGetJobW(
@@ -3587,7 +3636,7 @@ export function FaxGetJobW(
   JobId: number /* u32 */,
   JobEntry: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWINFAX.FaxGetJobW(util.toPointer(FaxHandle), JobId, util.toPointer(JobEntry)));
+  return util.boolFromFfi(libWINFAX_dll.FaxGetJobW(util.toPointer(FaxHandle), JobId, util.toPointer(JobEntry)));
 }
 
 export function FaxSetJobA(
@@ -3596,7 +3645,7 @@ export function FaxSetJobA(
   Command: number /* u32 */,
   JobEntry: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWINFAX.FaxSetJobA(util.toPointer(FaxHandle), JobId, Command, util.toPointer(JobEntry)));
+  return util.boolFromFfi(libWINFAX_dll.FaxSetJobA(util.toPointer(FaxHandle), JobId, Command, util.toPointer(JobEntry)));
 }
 
 export function FaxSetJobW(
@@ -3605,7 +3654,7 @@ export function FaxSetJobW(
   Command: number /* u32 */,
   JobEntry: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWINFAX.FaxSetJobW(util.toPointer(FaxHandle), JobId, Command, util.toPointer(JobEntry)));
+  return util.boolFromFfi(libWINFAX_dll.FaxSetJobW(util.toPointer(FaxHandle), JobId, Command, util.toPointer(JobEntry)));
 }
 
 export function FaxGetPageData(
@@ -3616,56 +3665,56 @@ export function FaxGetPageData(
   ImageWidth: Deno.PointerValue | Uint8Array | null /* ptr */,
   ImageHeight: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWINFAX.FaxGetPageData(util.toPointer(FaxHandle), JobId, util.toPointer(Buffer), util.toPointer(BufferSize), util.toPointer(ImageWidth), util.toPointer(ImageHeight)));
+  return util.boolFromFfi(libWINFAX_dll.FaxGetPageData(util.toPointer(FaxHandle), JobId, util.toPointer(Buffer), util.toPointer(BufferSize), util.toPointer(ImageWidth), util.toPointer(ImageHeight)));
 }
 
 export function FaxGetDeviceStatusA(
   FaxPortHandle: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
   DeviceStatus: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWINFAX.FaxGetDeviceStatusA(util.toPointer(FaxPortHandle), util.toPointer(DeviceStatus)));
+  return util.boolFromFfi(libWINFAX_dll.FaxGetDeviceStatusA(util.toPointer(FaxPortHandle), util.toPointer(DeviceStatus)));
 }
 
 export function FaxGetDeviceStatusW(
   FaxPortHandle: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
   DeviceStatus: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWINFAX.FaxGetDeviceStatusW(util.toPointer(FaxPortHandle), util.toPointer(DeviceStatus)));
+  return util.boolFromFfi(libWINFAX_dll.FaxGetDeviceStatusW(util.toPointer(FaxPortHandle), util.toPointer(DeviceStatus)));
 }
 
 export function FaxAbort(
   FaxHandle: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
   JobId: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWINFAX.FaxAbort(util.toPointer(FaxHandle), JobId));
+  return util.boolFromFfi(libWINFAX_dll.FaxAbort(util.toPointer(FaxHandle), JobId));
 }
 
 export function FaxGetConfigurationA(
   FaxHandle: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
   FaxConfig: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWINFAX.FaxGetConfigurationA(util.toPointer(FaxHandle), util.toPointer(FaxConfig)));
+  return util.boolFromFfi(libWINFAX_dll.FaxGetConfigurationA(util.toPointer(FaxHandle), util.toPointer(FaxConfig)));
 }
 
 export function FaxGetConfigurationW(
   FaxHandle: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
   FaxConfig: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWINFAX.FaxGetConfigurationW(util.toPointer(FaxHandle), util.toPointer(FaxConfig)));
+  return util.boolFromFfi(libWINFAX_dll.FaxGetConfigurationW(util.toPointer(FaxHandle), util.toPointer(FaxConfig)));
 }
 
 export function FaxSetConfigurationA(
   FaxHandle: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
   FaxConfig: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWINFAX.FaxSetConfigurationA(util.toPointer(FaxHandle), util.toPointer(FaxConfig)));
+  return util.boolFromFfi(libWINFAX_dll.FaxSetConfigurationA(util.toPointer(FaxHandle), util.toPointer(FaxConfig)));
 }
 
 export function FaxSetConfigurationW(
   FaxHandle: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
   FaxConfig: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWINFAX.FaxSetConfigurationW(util.toPointer(FaxHandle), util.toPointer(FaxConfig)));
+  return util.boolFromFfi(libWINFAX_dll.FaxSetConfigurationW(util.toPointer(FaxHandle), util.toPointer(FaxConfig)));
 }
 
 export function FaxGetLoggingCategoriesA(
@@ -3673,7 +3722,7 @@ export function FaxGetLoggingCategoriesA(
   Categories: Deno.PointerValue | Uint8Array | null /* ptr */,
   NumberCategories: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWINFAX.FaxGetLoggingCategoriesA(util.toPointer(FaxHandle), util.toPointer(Categories), util.toPointer(NumberCategories)));
+  return util.boolFromFfi(libWINFAX_dll.FaxGetLoggingCategoriesA(util.toPointer(FaxHandle), util.toPointer(Categories), util.toPointer(NumberCategories)));
 }
 
 export function FaxGetLoggingCategoriesW(
@@ -3681,7 +3730,7 @@ export function FaxGetLoggingCategoriesW(
   Categories: Deno.PointerValue | Uint8Array | null /* ptr */,
   NumberCategories: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWINFAX.FaxGetLoggingCategoriesW(util.toPointer(FaxHandle), util.toPointer(Categories), util.toPointer(NumberCategories)));
+  return util.boolFromFfi(libWINFAX_dll.FaxGetLoggingCategoriesW(util.toPointer(FaxHandle), util.toPointer(Categories), util.toPointer(NumberCategories)));
 }
 
 export function FaxSetLoggingCategoriesA(
@@ -3689,7 +3738,7 @@ export function FaxSetLoggingCategoriesA(
   Categories: Deno.PointerValue | Uint8Array | null /* ptr */,
   NumberCategories: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWINFAX.FaxSetLoggingCategoriesA(util.toPointer(FaxHandle), util.toPointer(Categories), NumberCategories));
+  return util.boolFromFfi(libWINFAX_dll.FaxSetLoggingCategoriesA(util.toPointer(FaxHandle), util.toPointer(Categories), NumberCategories));
 }
 
 export function FaxSetLoggingCategoriesW(
@@ -3697,7 +3746,7 @@ export function FaxSetLoggingCategoriesW(
   Categories: Deno.PointerValue | Uint8Array | null /* ptr */,
   NumberCategories: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWINFAX.FaxSetLoggingCategoriesW(util.toPointer(FaxHandle), util.toPointer(Categories), NumberCategories));
+  return util.boolFromFfi(libWINFAX_dll.FaxSetLoggingCategoriesW(util.toPointer(FaxHandle), util.toPointer(Categories), NumberCategories));
 }
 
 export function FaxEnumPortsA(
@@ -3705,7 +3754,7 @@ export function FaxEnumPortsA(
   PortInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
   PortsReturned: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWINFAX.FaxEnumPortsA(util.toPointer(FaxHandle), util.toPointer(PortInfo), util.toPointer(PortsReturned)));
+  return util.boolFromFfi(libWINFAX_dll.FaxEnumPortsA(util.toPointer(FaxHandle), util.toPointer(PortInfo), util.toPointer(PortsReturned)));
 }
 
 export function FaxEnumPortsW(
@@ -3713,35 +3762,35 @@ export function FaxEnumPortsW(
   PortInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
   PortsReturned: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWINFAX.FaxEnumPortsW(util.toPointer(FaxHandle), util.toPointer(PortInfo), util.toPointer(PortsReturned)));
+  return util.boolFromFfi(libWINFAX_dll.FaxEnumPortsW(util.toPointer(FaxHandle), util.toPointer(PortInfo), util.toPointer(PortsReturned)));
 }
 
 export function FaxGetPortA(
   FaxPortHandle: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
   PortInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWINFAX.FaxGetPortA(util.toPointer(FaxPortHandle), util.toPointer(PortInfo)));
+  return util.boolFromFfi(libWINFAX_dll.FaxGetPortA(util.toPointer(FaxPortHandle), util.toPointer(PortInfo)));
 }
 
 export function FaxGetPortW(
   FaxPortHandle: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
   PortInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWINFAX.FaxGetPortW(util.toPointer(FaxPortHandle), util.toPointer(PortInfo)));
+  return util.boolFromFfi(libWINFAX_dll.FaxGetPortW(util.toPointer(FaxPortHandle), util.toPointer(PortInfo)));
 }
 
 export function FaxSetPortA(
   FaxPortHandle: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
   PortInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWINFAX.FaxSetPortA(util.toPointer(FaxPortHandle), util.toPointer(PortInfo)));
+  return util.boolFromFfi(libWINFAX_dll.FaxSetPortA(util.toPointer(FaxPortHandle), util.toPointer(PortInfo)));
 }
 
 export function FaxSetPortW(
   FaxPortHandle: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
   PortInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWINFAX.FaxSetPortW(util.toPointer(FaxPortHandle), util.toPointer(PortInfo)));
+  return util.boolFromFfi(libWINFAX_dll.FaxSetPortW(util.toPointer(FaxPortHandle), util.toPointer(PortInfo)));
 }
 
 export function FaxEnumRoutingMethodsA(
@@ -3749,7 +3798,7 @@ export function FaxEnumRoutingMethodsA(
   RoutingMethod: Deno.PointerValue | Uint8Array | null /* ptr */,
   MethodsReturned: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWINFAX.FaxEnumRoutingMethodsA(util.toPointer(FaxPortHandle), util.toPointer(RoutingMethod), util.toPointer(MethodsReturned)));
+  return util.boolFromFfi(libWINFAX_dll.FaxEnumRoutingMethodsA(util.toPointer(FaxPortHandle), util.toPointer(RoutingMethod), util.toPointer(MethodsReturned)));
 }
 
 export function FaxEnumRoutingMethodsW(
@@ -3757,7 +3806,7 @@ export function FaxEnumRoutingMethodsW(
   RoutingMethod: Deno.PointerValue | Uint8Array | null /* ptr */,
   MethodsReturned: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWINFAX.FaxEnumRoutingMethodsW(util.toPointer(FaxPortHandle), util.toPointer(RoutingMethod), util.toPointer(MethodsReturned)));
+  return util.boolFromFfi(libWINFAX_dll.FaxEnumRoutingMethodsW(util.toPointer(FaxPortHandle), util.toPointer(RoutingMethod), util.toPointer(MethodsReturned)));
 }
 
 export function FaxEnableRoutingMethodA(
@@ -3765,7 +3814,7 @@ export function FaxEnableRoutingMethodA(
   RoutingGuid: string | null /* Windows.Win32.Foundation.PSTR */,
   Enabled: boolean /* Windows.Win32.Foundation.BOOL */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWINFAX.FaxEnableRoutingMethodA(util.toPointer(FaxPortHandle), util.pstrToFfi(RoutingGuid), util.boolToFfi(Enabled)));
+  return util.boolFromFfi(libWINFAX_dll.FaxEnableRoutingMethodA(util.toPointer(FaxPortHandle), util.pstrToFfi(RoutingGuid), util.boolToFfi(Enabled)));
 }
 
 export function FaxEnableRoutingMethodW(
@@ -3773,7 +3822,7 @@ export function FaxEnableRoutingMethodW(
   RoutingGuid: string | null /* Windows.Win32.Foundation.PWSTR */,
   Enabled: boolean /* Windows.Win32.Foundation.BOOL */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWINFAX.FaxEnableRoutingMethodW(util.toPointer(FaxPortHandle), util.pwstrToFfi(RoutingGuid), util.boolToFfi(Enabled)));
+  return util.boolFromFfi(libWINFAX_dll.FaxEnableRoutingMethodW(util.toPointer(FaxPortHandle), util.pwstrToFfi(RoutingGuid), util.boolToFfi(Enabled)));
 }
 
 export function FaxEnumGlobalRoutingInfoA(
@@ -3781,7 +3830,7 @@ export function FaxEnumGlobalRoutingInfoA(
   RoutingInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
   MethodsReturned: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWINFAX.FaxEnumGlobalRoutingInfoA(util.toPointer(FaxHandle), util.toPointer(RoutingInfo), util.toPointer(MethodsReturned)));
+  return util.boolFromFfi(libWINFAX_dll.FaxEnumGlobalRoutingInfoA(util.toPointer(FaxHandle), util.toPointer(RoutingInfo), util.toPointer(MethodsReturned)));
 }
 
 export function FaxEnumGlobalRoutingInfoW(
@@ -3789,21 +3838,21 @@ export function FaxEnumGlobalRoutingInfoW(
   RoutingInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
   MethodsReturned: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWINFAX.FaxEnumGlobalRoutingInfoW(util.toPointer(FaxHandle), util.toPointer(RoutingInfo), util.toPointer(MethodsReturned)));
+  return util.boolFromFfi(libWINFAX_dll.FaxEnumGlobalRoutingInfoW(util.toPointer(FaxHandle), util.toPointer(RoutingInfo), util.toPointer(MethodsReturned)));
 }
 
 export function FaxSetGlobalRoutingInfoA(
   FaxHandle: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
   RoutingInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWINFAX.FaxSetGlobalRoutingInfoA(util.toPointer(FaxHandle), util.toPointer(RoutingInfo)));
+  return util.boolFromFfi(libWINFAX_dll.FaxSetGlobalRoutingInfoA(util.toPointer(FaxHandle), util.toPointer(RoutingInfo)));
 }
 
 export function FaxSetGlobalRoutingInfoW(
   FaxHandle: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
   RoutingInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWINFAX.FaxSetGlobalRoutingInfoW(util.toPointer(FaxHandle), util.toPointer(RoutingInfo)));
+  return util.boolFromFfi(libWINFAX_dll.FaxSetGlobalRoutingInfoW(util.toPointer(FaxHandle), util.toPointer(RoutingInfo)));
 }
 
 export function FaxGetRoutingInfoA(
@@ -3812,7 +3861,7 @@ export function FaxGetRoutingInfoA(
   RoutingInfoBuffer: Deno.PointerValue | Uint8Array | null /* ptr */,
   RoutingInfoBufferSize: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWINFAX.FaxGetRoutingInfoA(util.toPointer(FaxPortHandle), util.pstrToFfi(RoutingGuid), util.toPointer(RoutingInfoBuffer), util.toPointer(RoutingInfoBufferSize)));
+  return util.boolFromFfi(libWINFAX_dll.FaxGetRoutingInfoA(util.toPointer(FaxPortHandle), util.pstrToFfi(RoutingGuid), util.toPointer(RoutingInfoBuffer), util.toPointer(RoutingInfoBufferSize)));
 }
 
 export function FaxGetRoutingInfoW(
@@ -3821,7 +3870,7 @@ export function FaxGetRoutingInfoW(
   RoutingInfoBuffer: Deno.PointerValue | Uint8Array | null /* ptr */,
   RoutingInfoBufferSize: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWINFAX.FaxGetRoutingInfoW(util.toPointer(FaxPortHandle), util.pwstrToFfi(RoutingGuid), util.toPointer(RoutingInfoBuffer), util.toPointer(RoutingInfoBufferSize)));
+  return util.boolFromFfi(libWINFAX_dll.FaxGetRoutingInfoW(util.toPointer(FaxPortHandle), util.pwstrToFfi(RoutingGuid), util.toPointer(RoutingInfoBuffer), util.toPointer(RoutingInfoBufferSize)));
 }
 
 export function FaxSetRoutingInfoA(
@@ -3830,7 +3879,7 @@ export function FaxSetRoutingInfoA(
   RoutingInfoBuffer: Deno.PointerValue | Uint8Array | null /* ptr */,
   RoutingInfoBufferSize: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWINFAX.FaxSetRoutingInfoA(util.toPointer(FaxPortHandle), util.pstrToFfi(RoutingGuid), util.toPointer(RoutingInfoBuffer), RoutingInfoBufferSize));
+  return util.boolFromFfi(libWINFAX_dll.FaxSetRoutingInfoA(util.toPointer(FaxPortHandle), util.pstrToFfi(RoutingGuid), util.toPointer(RoutingInfoBuffer), RoutingInfoBufferSize));
 }
 
 export function FaxSetRoutingInfoW(
@@ -3839,7 +3888,7 @@ export function FaxSetRoutingInfoW(
   RoutingInfoBuffer: Deno.PointerValue | Uint8Array | null /* ptr */,
   RoutingInfoBufferSize: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWINFAX.FaxSetRoutingInfoW(util.toPointer(FaxPortHandle), util.pwstrToFfi(RoutingGuid), util.toPointer(RoutingInfoBuffer), RoutingInfoBufferSize));
+  return util.boolFromFfi(libWINFAX_dll.FaxSetRoutingInfoW(util.toPointer(FaxPortHandle), util.pwstrToFfi(RoutingGuid), util.toPointer(RoutingInfoBuffer), RoutingInfoBufferSize));
 }
 
 export function FaxInitializeEventQueue(
@@ -3849,13 +3898,13 @@ export function FaxInitializeEventQueue(
   hWnd: Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */,
   MessageStart: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWINFAX.FaxInitializeEventQueue(util.toPointer(FaxHandle), util.toPointer(CompletionPort), CompletionKey, util.hwndToFfi(hWnd), MessageStart));
+  return util.boolFromFfi(libWINFAX_dll.FaxInitializeEventQueue(util.toPointer(FaxHandle), util.toPointer(CompletionPort), CompletionKey, util.hwndToFfi(hWnd), MessageStart));
 }
 
 export function FaxFreeBuffer(
   Buffer: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): void /* void */ {
-  return libWINFAX.FaxFreeBuffer(util.toPointer(Buffer));
+  return libWINFAX_dll.FaxFreeBuffer(util.toPointer(Buffer));
 }
 
 export function FaxStartPrintJobA(
@@ -3864,7 +3913,7 @@ export function FaxStartPrintJobA(
   FaxJobId: Deno.PointerValue | Uint8Array | null /* ptr */,
   FaxContextInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWINFAX.FaxStartPrintJobA(util.pstrToFfi(PrinterName), util.toPointer(PrintInfo), util.toPointer(FaxJobId), util.toPointer(FaxContextInfo)));
+  return util.boolFromFfi(libWINFAX_dll.FaxStartPrintJobA(util.pstrToFfi(PrinterName), util.toPointer(PrintInfo), util.toPointer(FaxJobId), util.toPointer(FaxContextInfo)));
 }
 
 export function FaxStartPrintJobW(
@@ -3873,21 +3922,21 @@ export function FaxStartPrintJobW(
   FaxJobId: Deno.PointerValue | Uint8Array | null /* ptr */,
   FaxContextInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWINFAX.FaxStartPrintJobW(util.pwstrToFfi(PrinterName), util.toPointer(PrintInfo), util.toPointer(FaxJobId), util.toPointer(FaxContextInfo)));
+  return util.boolFromFfi(libWINFAX_dll.FaxStartPrintJobW(util.pwstrToFfi(PrinterName), util.toPointer(PrintInfo), util.toPointer(FaxJobId), util.toPointer(FaxContextInfo)));
 }
 
 export function FaxPrintCoverPageA(
   FaxContextInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
   CoverPageInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWINFAX.FaxPrintCoverPageA(util.toPointer(FaxContextInfo), util.toPointer(CoverPageInfo)));
+  return util.boolFromFfi(libWINFAX_dll.FaxPrintCoverPageA(util.toPointer(FaxContextInfo), util.toPointer(CoverPageInfo)));
 }
 
 export function FaxPrintCoverPageW(
   FaxContextInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
   CoverPageInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWINFAX.FaxPrintCoverPageW(util.toPointer(FaxContextInfo), util.toPointer(CoverPageInfo)));
+  return util.boolFromFfi(libWINFAX_dll.FaxPrintCoverPageW(util.toPointer(FaxContextInfo), util.toPointer(CoverPageInfo)));
 }
 
 export function FaxRegisterServiceProviderW(
@@ -3896,13 +3945,13 @@ export function FaxRegisterServiceProviderW(
   ImageName: string | null /* Windows.Win32.Foundation.PWSTR */,
   TspName: string | null /* Windows.Win32.Foundation.PWSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWINFAX.FaxRegisterServiceProviderW(util.pwstrToFfi(DeviceProvider), util.pwstrToFfi(FriendlyName), util.pwstrToFfi(ImageName), util.pwstrToFfi(TspName)));
+  return util.boolFromFfi(libWINFAX_dll.FaxRegisterServiceProviderW(util.pwstrToFfi(DeviceProvider), util.pwstrToFfi(FriendlyName), util.pwstrToFfi(ImageName), util.pwstrToFfi(TspName)));
 }
 
 export function FaxUnregisterServiceProviderW(
   DeviceProvider: string | null /* Windows.Win32.Foundation.PWSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWINFAX.FaxUnregisterServiceProviderW(util.pwstrToFfi(DeviceProvider)));
+  return util.boolFromFfi(libWINFAX_dll.FaxUnregisterServiceProviderW(util.pwstrToFfi(DeviceProvider)));
 }
 
 export function FaxRegisterRoutingExtensionW(
@@ -3913,25 +3962,25 @@ export function FaxRegisterRoutingExtensionW(
   CallBack: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.Fax.PFAX_ROUTING_INSTALLATION_CALLBACKW */,
   Context: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWINFAX.FaxRegisterRoutingExtensionW(util.toPointer(FaxHandle), util.pwstrToFfi(ExtensionName), util.pwstrToFfi(FriendlyName), util.pwstrToFfi(ImageName), util.toPointer(CallBack), util.toPointer(Context)));
+  return util.boolFromFfi(libWINFAX_dll.FaxRegisterRoutingExtensionW(util.toPointer(FaxHandle), util.pwstrToFfi(ExtensionName), util.pwstrToFfi(FriendlyName), util.pwstrToFfi(ImageName), util.toPointer(CallBack), util.toPointer(Context)));
 }
 
 export function FaxAccessCheck(
   FaxHandle: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
   AccessMask: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWINFAX.FaxAccessCheck(util.toPointer(FaxHandle), AccessMask));
+  return util.boolFromFfi(libWINFAX_dll.FaxAccessCheck(util.toPointer(FaxHandle), AccessMask));
 }
 
 export function CanSendToFaxRecipient(): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libfxsutility.CanSendToFaxRecipient());
+  return util.boolFromFfi(libfxsutility_dll.CanSendToFaxRecipient());
 }
 
 export function SendToFaxRecipient(
   sndMode: SendToMode /* Windows.Win32.Devices.Fax.SendToMode */,
   lpFileName: string | null /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
-  return libfxsutility.SendToFaxRecipient(sndMode, util.pwstrToFfi(lpFileName));
+  return libfxsutility_dll.SendToFaxRecipient(sndMode, util.pwstrToFfi(lpFileName));
 }
 
 export function StiCreateInstanceW(
@@ -3940,6 +3989,6 @@ export function StiCreateInstanceW(
   ppSti: Deno.PointerValue | Uint8Array | null /* ptr */,
   punkOuter: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Com.IUnknown */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libSTI.StiCreateInstanceW(util.toPointer(hinst), dwVer, util.toPointer(ppSti), util.toPointer(punkOuter)));
+  return util.pointerFromFfi(libSTI_dll.StiCreateInstanceW(util.toPointer(hinst), dwVer, util.toPointer(ppSti), util.toPointer(punkOuter)));
 }
 

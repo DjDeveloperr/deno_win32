@@ -6,6 +6,7 @@ import * as util from "../../util.ts";
 export type PWM_POLARITY = number;
 
 // Constants
+export const GUID_DEVINTERFACE_PWM_CONTROLLER_WSZ = `{60824B4C-EED1-4C9C-B49C-1B961461A819}`;
 export const IOCTL_PWM_CONTROLLER_GET_INFO = 262144;
 export const IOCTL_PWM_CONTROLLER_GET_ACTUAL_PERIOD = 262148;
 export const IOCTL_PWM_CONTROLLER_SET_DESIRED_PERIOD = 294920;

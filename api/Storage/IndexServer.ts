@@ -15,6 +15,8 @@ export type DBKINDENUM = number;
 export const CI_VERSION_WDS30 = 258;
 export const CI_VERSION_WDS40 = 265;
 export const CI_VERSION_WIN70 = 1792;
+export const CINULLCATALOG = `::_noindex_::`;
+export const CIADMIN = `::_nodocstore_::`;
 export const LIFF_LOAD_DEFINED_FILTER = 1;
 export const LIFF_IMPLEMENT_TEXT_FILTER_FALLBACK_POLICY = 2;
 export const LIFF_FORCE_TEXT_FILTER_FALLBACK = 3;
@@ -507,7 +509,7 @@ export type HRESULT = number;
 // Native Libraries
 
 try {
-  var libquery = Deno.dlopen("query", {
+  var libquery_dll = Deno.dlopen("query.dll", {
     LoadIFilter: {
       parameters: ["buffer", "pointer", "pointer"],
       result: "pointer",
@@ -534,7 +536,7 @@ export function LoadIFilter(
   pUnkOuter: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Com.IUnknown */,
   ppIUnk: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libquery.LoadIFilter(util.pwstrToFfi(pwcsPath), util.toPointer(pUnkOuter), util.toPointer(ppIUnk)));
+  return util.pointerFromFfi(libquery_dll.LoadIFilter(util.pwstrToFfi(pwcsPath), util.toPointer(pUnkOuter), util.toPointer(ppIUnk)));
 }
 
 export function LoadIFilterEx(
@@ -543,7 +545,7 @@ export function LoadIFilterEx(
   riid: Deno.PointerValue | Uint8Array | null /* ptr */,
   ppIUnk: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libquery.LoadIFilterEx(util.pwstrToFfi(pwcsPath), dwFlags, util.toPointer(riid), util.toPointer(ppIUnk)));
+  return util.pointerFromFfi(libquery_dll.LoadIFilterEx(util.pwstrToFfi(pwcsPath), dwFlags, util.toPointer(riid), util.toPointer(ppIUnk)));
 }
 
 export function BindIFilterFromStorage(
@@ -551,7 +553,7 @@ export function BindIFilterFromStorage(
   pUnkOuter: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Com.IUnknown */,
   ppIUnk: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libquery.BindIFilterFromStorage(util.toPointer(pStg), util.toPointer(pUnkOuter), util.toPointer(ppIUnk)));
+  return util.pointerFromFfi(libquery_dll.BindIFilterFromStorage(util.toPointer(pStg), util.toPointer(pUnkOuter), util.toPointer(ppIUnk)));
 }
 
 export function BindIFilterFromStream(
@@ -559,6 +561,6 @@ export function BindIFilterFromStream(
   pUnkOuter: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Com.IUnknown */,
   ppIUnk: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libquery.BindIFilterFromStream(util.toPointer(pStm), util.toPointer(pUnkOuter), util.toPointer(ppIUnk)));
+  return util.pointerFromFfi(libquery_dll.BindIFilterFromStream(util.toPointer(pStm), util.toPointer(pUnkOuter), util.toPointer(ppIUnk)));
 }
 

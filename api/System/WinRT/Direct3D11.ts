@@ -9,7 +9,7 @@ export type HRESULT = number;
 // Native Libraries
 
 try {
-  var libd3d11 = Deno.dlopen("d3d11", {
+  var libd3d11_dll = Deno.dlopen("d3d11.dll", {
     CreateDirect3D11DeviceFromDXGIDevice: {
       parameters: ["pointer", "pointer"],
       result: "pointer",
@@ -27,13 +27,13 @@ export function CreateDirect3D11DeviceFromDXGIDevice(
   dxgiDevice: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Graphics.Dxgi.IDXGIDevice */,
   graphicsDevice: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libd3d11.CreateDirect3D11DeviceFromDXGIDevice(util.toPointer(dxgiDevice), util.toPointer(graphicsDevice)));
+  return util.pointerFromFfi(libd3d11_dll.CreateDirect3D11DeviceFromDXGIDevice(util.toPointer(dxgiDevice), util.toPointer(graphicsDevice)));
 }
 
 export function CreateDirect3D11SurfaceFromDXGISurface(
   dgxiSurface: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Graphics.Dxgi.IDXGISurface */,
   graphicsSurface: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libd3d11.CreateDirect3D11SurfaceFromDXGISurface(util.toPointer(dgxiSurface), util.toPointer(graphicsSurface)));
+  return util.pointerFromFfi(libd3d11_dll.CreateDirect3D11SurfaceFromDXGISurface(util.toPointer(dgxiSurface), util.toPointer(graphicsSurface)));
 }
 

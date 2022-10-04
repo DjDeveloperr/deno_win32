@@ -50,6 +50,7 @@ export const DOBJ_RES_ROOT = 2;
 export const DOBJ_VOL_NTACLS = 4;
 export const DOBJ_COND_NTACLS = 8;
 export const DOBJ_RIBBON_LAUNCH = 16;
+export const CFSTR_ACLUI_SID_INFO_LIST = `CFSTR_ACLUI_SID_INFO_LIST`;
 export const SECURITY_OBJECT_ID_OBJECT_SD = 1;
 export const SECURITY_OBJECT_ID_SHARE = 2;
 export const SECURITY_OBJECT_ID_CENTRAL_POLICY = 3;
@@ -67,7 +68,6 @@ export const SUB_OBJECTS_ONLY_INHERIT = 1;
 export const INHERIT_NO_PROPAGATE = 4;
 export const INHERIT_ONLY = 8;
 export const NO_INHERITANCE = 0;
-export const INHERIT_ONLY_ACE_ = 8;
 export const SI_PAGE_PERM = 0;
 export const SI_PAGE_ADVPERM = 1;
 export const SI_PAGE_AUDIT = 2;
@@ -202,7 +202,7 @@ export function allocSI_INHERIT_TYPE(data?: Partial<SI_INHERIT_TYPE>): Uint8Arra
   return buf;
 }
 
-export type PSID = Deno.PointerValue;
+export type PSID = Deno.PointerValue | Uint8Array | null;
 
 /**
  * Windows.Win32.Security.Authorization.UI.SID_INFO (size: 32)
@@ -356,7 +356,7 @@ export type HRESULT = number;
 // Native Libraries
 
 try {
-  var libACLUI = Deno.dlopen("ACLUI", {
+  var libACLUI_dll = Deno.dlopen("ACLUI.dll", {
     CreateSecurityPage: {
       parameters: ["pointer"],
       result: "pointer",
@@ -377,14 +377,14 @@ try {
 export function CreateSecurityPage(
   psi: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Security.Authorization.UI.ISecurityInformation */,
 ): Deno.PointerValue | null /* Windows.Win32.UI.Controls.HPROPSHEETPAGE */ {
-  return util.pointerFromFfi(libACLUI.CreateSecurityPage(util.toPointer(psi)));
+  return util.pointerFromFfi(libACLUI_dll.CreateSecurityPage(util.toPointer(psi)));
 }
 
 export function EditSecurity(
   hwndOwner: Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */,
   psi: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Security.Authorization.UI.ISecurityInformation */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libACLUI.EditSecurity(util.hwndToFfi(hwndOwner), util.toPointer(psi)));
+  return util.boolFromFfi(libACLUI_dll.EditSecurity(util.hwndToFfi(hwndOwner), util.toPointer(psi)));
 }
 
 export function EditSecurityAdvanced(
@@ -392,6 +392,6 @@ export function EditSecurityAdvanced(
   psi: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Security.Authorization.UI.ISecurityInformation */,
   uSIPage: SI_PAGE_TYPE /* Windows.Win32.Security.Authorization.UI.SI_PAGE_TYPE */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libACLUI.EditSecurityAdvanced(util.hwndToFfi(hwndOwner), util.toPointer(psi), uSIPage));
+  return util.pointerFromFfi(libACLUI_dll.EditSecurityAdvanced(util.hwndToFfi(hwndOwner), util.toPointer(psi), uSIPage));
 }
 

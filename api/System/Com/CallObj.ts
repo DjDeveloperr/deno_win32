@@ -165,7 +165,7 @@ export type HRESULT = number;
 // Native Libraries
 
 try {
-  var libole32 = Deno.dlopen("ole32", {
+  var libole32_dll = Deno.dlopen("ole32.dll", {
     CoGetInterceptor: {
       parameters: ["pointer", "pointer", "pointer", "pointer"],
       result: "pointer",
@@ -185,7 +185,7 @@ export function CoGetInterceptor(
   iid: Deno.PointerValue | Uint8Array | null /* ptr */,
   ppv: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libole32.CoGetInterceptor(util.toPointer(iidIntercepted), util.toPointer(punkOuter), util.toPointer(iid), util.toPointer(ppv)));
+  return util.pointerFromFfi(libole32_dll.CoGetInterceptor(util.toPointer(iidIntercepted), util.toPointer(punkOuter), util.toPointer(iid), util.toPointer(ppv)));
 }
 
 export function CoGetInterceptorFromTypeInfo(
@@ -195,6 +195,6 @@ export function CoGetInterceptorFromTypeInfo(
   iid: Deno.PointerValue | Uint8Array | null /* ptr */,
   ppv: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libole32.CoGetInterceptorFromTypeInfo(util.toPointer(iidIntercepted), util.toPointer(punkOuter), util.toPointer(typeInfo), util.toPointer(iid), util.toPointer(ppv)));
+  return util.pointerFromFfi(libole32_dll.CoGetInterceptorFromTypeInfo(util.toPointer(iidIntercepted), util.toPointer(punkOuter), util.toPointer(typeInfo), util.toPointer(iid), util.toPointer(ppv)));
 }
 

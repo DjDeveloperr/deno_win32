@@ -14,8 +14,8 @@ export type RM_FILTER_ACTION = number;
 export const CCH_RM_SESSION_KEY = 32;
 export const CCH_RM_MAX_APP_NAME = 255;
 export const CCH_RM_MAX_SVC_NAME = 63;
-export const RM_INVALID_TS_SESSION = "-1";
-export const RM_INVALID_PROCESS = "-1";
+export const RM_INVALID_TS_SESSION = `-1`;
+export const RM_INVALID_PROCESS = `-1`;
 export const RmUnknownApp = 0;
 export const RmMainWindow = 1;
 export const RmOtherWindow = 2;
@@ -219,7 +219,7 @@ export type PWSTR = Deno.PointerValue | Uint8Array | null;
 // Native Libraries
 
 try {
-  var librstrtmgr = Deno.dlopen("rstrtmgr", {
+  var librstrtmgr_dll = Deno.dlopen("rstrtmgr.dll", {
     RmStartSession: {
       parameters: ["pointer", "u32", "buffer"],
       result: "u32",
@@ -248,7 +248,7 @@ try {
 } catch(e) { /* ignore */ }
 
 try {
-  var libRstrtMgr = Deno.dlopen("RstrtMgr", {
+  var libRstrtMgr_dll = Deno.dlopen("RstrtMgr.dll", {
     RmJoinSession: {
       parameters: ["pointer", "buffer"],
       result: "u32",
@@ -279,20 +279,20 @@ export function RmStartSession(
   dwSessionFlags: number /* u32 */,
   strSessionKey: string | null /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
-  return librstrtmgr.RmStartSession(util.toPointer(pSessionHandle), dwSessionFlags, util.pwstrToFfi(strSessionKey));
+  return librstrtmgr_dll.RmStartSession(util.toPointer(pSessionHandle), dwSessionFlags, util.pwstrToFfi(strSessionKey));
 }
 
 export function RmJoinSession(
   pSessionHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
   strSessionKey: string | null /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
-  return libRstrtMgr.RmJoinSession(util.toPointer(pSessionHandle), util.pwstrToFfi(strSessionKey));
+  return libRstrtMgr_dll.RmJoinSession(util.toPointer(pSessionHandle), util.pwstrToFfi(strSessionKey));
 }
 
 export function RmEndSession(
   dwSessionHandle: number /* u32 */,
 ): number /* u32 */ {
-  return librstrtmgr.RmEndSession(dwSessionHandle);
+  return librstrtmgr_dll.RmEndSession(dwSessionHandle);
 }
 
 export function RmRegisterResources(
@@ -304,7 +304,7 @@ export function RmRegisterResources(
   nServices: number /* u32 */,
   rgsServiceNames: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return librstrtmgr.RmRegisterResources(dwSessionHandle, nFiles, util.toPointer(rgsFileNames), nApplications, util.toPointer(rgApplications), nServices, util.toPointer(rgsServiceNames));
+  return librstrtmgr_dll.RmRegisterResources(dwSessionHandle, nFiles, util.toPointer(rgsFileNames), nApplications, util.toPointer(rgApplications), nServices, util.toPointer(rgsServiceNames));
 }
 
 export function RmGetList(
@@ -314,7 +314,7 @@ export function RmGetList(
   rgAffectedApps: Deno.PointerValue | Uint8Array | null /* ptr */,
   lpdwRebootReasons: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return librstrtmgr.RmGetList(dwSessionHandle, util.toPointer(pnProcInfoNeeded), util.toPointer(pnProcInfo), util.toPointer(rgAffectedApps), util.toPointer(lpdwRebootReasons));
+  return librstrtmgr_dll.RmGetList(dwSessionHandle, util.toPointer(pnProcInfoNeeded), util.toPointer(pnProcInfo), util.toPointer(rgAffectedApps), util.toPointer(lpdwRebootReasons));
 }
 
 export function RmShutdown(
@@ -322,7 +322,7 @@ export function RmShutdown(
   lActionFlags: number /* u32 */,
   fnStatus: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.RestartManager.RM_WRITE_STATUS_CALLBACK */,
 ): number /* u32 */ {
-  return librstrtmgr.RmShutdown(dwSessionHandle, lActionFlags, util.toPointer(fnStatus));
+  return librstrtmgr_dll.RmShutdown(dwSessionHandle, lActionFlags, util.toPointer(fnStatus));
 }
 
 export function RmRestart(
@@ -330,13 +330,13 @@ export function RmRestart(
   dwRestartFlags: number /* u32 */,
   fnStatus: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.RestartManager.RM_WRITE_STATUS_CALLBACK */,
 ): number /* u32 */ {
-  return librstrtmgr.RmRestart(dwSessionHandle, dwRestartFlags, util.toPointer(fnStatus));
+  return librstrtmgr_dll.RmRestart(dwSessionHandle, dwRestartFlags, util.toPointer(fnStatus));
 }
 
 export function RmCancelCurrentTask(
   dwSessionHandle: number /* u32 */,
 ): number /* u32 */ {
-  return libRstrtMgr.RmCancelCurrentTask(dwSessionHandle);
+  return libRstrtMgr_dll.RmCancelCurrentTask(dwSessionHandle);
 }
 
 export function RmAddFilter(
@@ -346,7 +346,7 @@ export function RmAddFilter(
   strServiceShortName: string | null /* Windows.Win32.Foundation.PWSTR */,
   FilterAction: RM_FILTER_ACTION /* Windows.Win32.System.RestartManager.RM_FILTER_ACTION */,
 ): number /* u32 */ {
-  return libRstrtMgr.RmAddFilter(dwSessionHandle, util.pwstrToFfi(strModuleName), util.toPointer(pProcess), util.pwstrToFfi(strServiceShortName), FilterAction);
+  return libRstrtMgr_dll.RmAddFilter(dwSessionHandle, util.pwstrToFfi(strModuleName), util.toPointer(pProcess), util.pwstrToFfi(strServiceShortName), FilterAction);
 }
 
 export function RmRemoveFilter(
@@ -355,7 +355,7 @@ export function RmRemoveFilter(
   pProcess: Deno.PointerValue | Uint8Array | null /* ptr */,
   strServiceShortName: string | null /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
-  return libRstrtMgr.RmRemoveFilter(dwSessionHandle, util.pwstrToFfi(strModuleName), util.toPointer(pProcess), util.pwstrToFfi(strServiceShortName));
+  return libRstrtMgr_dll.RmRemoveFilter(dwSessionHandle, util.pwstrToFfi(strModuleName), util.toPointer(pProcess), util.pwstrToFfi(strServiceShortName));
 }
 
 export function RmGetFilterList(
@@ -364,6 +364,6 @@ export function RmGetFilterList(
   cbFilterBuf: number /* u32 */,
   cbFilterBufNeeded: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libRstrtMgr.RmGetFilterList(dwSessionHandle, util.toPointer(pbFilterBuf), cbFilterBuf, util.toPointer(cbFilterBufNeeded));
+  return libRstrtMgr_dll.RmGetFilterList(dwSessionHandle, util.toPointer(pbFilterBuf), cbFilterBuf, util.toPointer(cbFilterBufNeeded));
 }
 

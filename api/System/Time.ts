@@ -3,6 +3,12 @@
 import * as util from "../../util.ts";
 
 // Constants
+export const wszW32TimeRegKeyTimeProviders = `System\CurrentControlSet\Services\W32Time\TimeProviders`;
+export const wszW32TimeRegKeyPolicyTimeProviders = `Software\Policies\Microsoft\W32Time\TimeProviders`;
+export const wszW32TimeRegValueEnabled = `Enabled`;
+export const wszW32TimeRegValueDllName = `DllName`;
+export const wszW32TimeRegValueInputProvider = `InputProvider`;
+export const wszW32TimeRegValueMetaDataProvider = `MetaDataProvider`;
 export const TSF_Hardware = 1;
 export const TSF_Authenticated = 2;
 export const TSF_IPv6 = 4;
@@ -161,7 +167,7 @@ export type BOOL = number;
 // Native Libraries
 
 try {
-  var libKERNEL32 = Deno.dlopen("KERNEL32", {
+  var libKERNEL32_dll = Deno.dlopen("KERNEL32.dll", {
     SystemTimeToTzSpecificLocalTime: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "i32",
@@ -218,7 +224,7 @@ try {
 } catch(e) { /* ignore */ }
 
 try {
-  var libADVAPI32 = Deno.dlopen("ADVAPI32", {
+  var libADVAPI32_dll = Deno.dlopen("ADVAPI32.dll", {
     EnumDynamicTimeZoneInformation: {
       parameters: ["u32", "pointer"],
       result: "u32",
@@ -237,7 +243,7 @@ export function SystemTimeToTzSpecificLocalTime(
   lpUniversalTime: Deno.PointerValue | Uint8Array | null /* ptr */,
   lpLocalTime: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32.SystemTimeToTzSpecificLocalTime(util.toPointer(lpTimeZoneInformation), util.toPointer(lpUniversalTime), util.toPointer(lpLocalTime)));
+  return util.boolFromFfi(libKERNEL32_dll.SystemTimeToTzSpecificLocalTime(util.toPointer(lpTimeZoneInformation), util.toPointer(lpUniversalTime), util.toPointer(lpLocalTime)));
 }
 
 export function TzSpecificLocalTimeToSystemTime(
@@ -245,45 +251,45 @@ export function TzSpecificLocalTimeToSystemTime(
   lpLocalTime: Deno.PointerValue | Uint8Array | null /* ptr */,
   lpUniversalTime: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32.TzSpecificLocalTimeToSystemTime(util.toPointer(lpTimeZoneInformation), util.toPointer(lpLocalTime), util.toPointer(lpUniversalTime)));
+  return util.boolFromFfi(libKERNEL32_dll.TzSpecificLocalTimeToSystemTime(util.toPointer(lpTimeZoneInformation), util.toPointer(lpLocalTime), util.toPointer(lpUniversalTime)));
 }
 
 export function FileTimeToSystemTime(
   lpFileTime: Deno.PointerValue | Uint8Array | null /* ptr */,
   lpSystemTime: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32.FileTimeToSystemTime(util.toPointer(lpFileTime), util.toPointer(lpSystemTime)));
+  return util.boolFromFfi(libKERNEL32_dll.FileTimeToSystemTime(util.toPointer(lpFileTime), util.toPointer(lpSystemTime)));
 }
 
 export function SystemTimeToFileTime(
   lpSystemTime: Deno.PointerValue | Uint8Array | null /* ptr */,
   lpFileTime: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32.SystemTimeToFileTime(util.toPointer(lpSystemTime), util.toPointer(lpFileTime)));
+  return util.boolFromFfi(libKERNEL32_dll.SystemTimeToFileTime(util.toPointer(lpSystemTime), util.toPointer(lpFileTime)));
 }
 
 export function GetTimeZoneInformation(
   lpTimeZoneInformation: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libKERNEL32.GetTimeZoneInformation(util.toPointer(lpTimeZoneInformation));
+  return libKERNEL32_dll.GetTimeZoneInformation(util.toPointer(lpTimeZoneInformation));
 }
 
 export function SetTimeZoneInformation(
   lpTimeZoneInformation: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32.SetTimeZoneInformation(util.toPointer(lpTimeZoneInformation)));
+  return util.boolFromFfi(libKERNEL32_dll.SetTimeZoneInformation(util.toPointer(lpTimeZoneInformation)));
 }
 
 export function SetDynamicTimeZoneInformation(
   lpTimeZoneInformation: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32.SetDynamicTimeZoneInformation(util.toPointer(lpTimeZoneInformation)));
+  return util.boolFromFfi(libKERNEL32_dll.SetDynamicTimeZoneInformation(util.toPointer(lpTimeZoneInformation)));
 }
 
 export function GetDynamicTimeZoneInformation(
   pTimeZoneInformation: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libKERNEL32.GetDynamicTimeZoneInformation(util.toPointer(pTimeZoneInformation));
+  return libKERNEL32_dll.GetDynamicTimeZoneInformation(util.toPointer(pTimeZoneInformation));
 }
 
 export function GetTimeZoneInformationForYear(
@@ -291,14 +297,14 @@ export function GetTimeZoneInformationForYear(
   pdtzi: Deno.PointerValue | Uint8Array | null /* ptr */,
   ptzi: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32.GetTimeZoneInformationForYear(wYear, util.toPointer(pdtzi), util.toPointer(ptzi)));
+  return util.boolFromFfi(libKERNEL32_dll.GetTimeZoneInformationForYear(wYear, util.toPointer(pdtzi), util.toPointer(ptzi)));
 }
 
 export function EnumDynamicTimeZoneInformation(
   dwIndex: number /* u32 */,
   lpTimeZoneInformation: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libADVAPI32.EnumDynamicTimeZoneInformation(dwIndex, util.toPointer(lpTimeZoneInformation));
+  return libADVAPI32_dll.EnumDynamicTimeZoneInformation(dwIndex, util.toPointer(lpTimeZoneInformation));
 }
 
 export function GetDynamicTimeZoneInformationEffectiveYears(
@@ -306,7 +312,7 @@ export function GetDynamicTimeZoneInformationEffectiveYears(
   FirstYear: Deno.PointerValue | Uint8Array | null /* ptr */,
   LastYear: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libADVAPI32.GetDynamicTimeZoneInformationEffectiveYears(util.toPointer(lpTimeZoneInformation), util.toPointer(FirstYear), util.toPointer(LastYear));
+  return libADVAPI32_dll.GetDynamicTimeZoneInformationEffectiveYears(util.toPointer(lpTimeZoneInformation), util.toPointer(FirstYear), util.toPointer(LastYear));
 }
 
 export function SystemTimeToTzSpecificLocalTimeEx(
@@ -314,7 +320,7 @@ export function SystemTimeToTzSpecificLocalTimeEx(
   lpUniversalTime: Deno.PointerValue | Uint8Array | null /* ptr */,
   lpLocalTime: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32.SystemTimeToTzSpecificLocalTimeEx(util.toPointer(lpTimeZoneInformation), util.toPointer(lpUniversalTime), util.toPointer(lpLocalTime)));
+  return util.boolFromFfi(libKERNEL32_dll.SystemTimeToTzSpecificLocalTimeEx(util.toPointer(lpTimeZoneInformation), util.toPointer(lpUniversalTime), util.toPointer(lpLocalTime)));
 }
 
 export function TzSpecificLocalTimeToSystemTimeEx(
@@ -322,7 +328,7 @@ export function TzSpecificLocalTimeToSystemTimeEx(
   lpLocalTime: Deno.PointerValue | Uint8Array | null /* ptr */,
   lpUniversalTime: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32.TzSpecificLocalTimeToSystemTimeEx(util.toPointer(lpTimeZoneInformation), util.toPointer(lpLocalTime), util.toPointer(lpUniversalTime)));
+  return util.boolFromFfi(libKERNEL32_dll.TzSpecificLocalTimeToSystemTimeEx(util.toPointer(lpTimeZoneInformation), util.toPointer(lpLocalTime), util.toPointer(lpUniversalTime)));
 }
 
 export function LocalFileTimeToLocalSystemTime(
@@ -330,7 +336,7 @@ export function LocalFileTimeToLocalSystemTime(
   localFileTime: Deno.PointerValue | Uint8Array | null /* ptr */,
   localSystemTime: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32.LocalFileTimeToLocalSystemTime(util.toPointer(timeZoneInformation), util.toPointer(localFileTime), util.toPointer(localSystemTime)));
+  return util.boolFromFfi(libKERNEL32_dll.LocalFileTimeToLocalSystemTime(util.toPointer(timeZoneInformation), util.toPointer(localFileTime), util.toPointer(localSystemTime)));
 }
 
 export function LocalSystemTimeToLocalFileTime(
@@ -338,6 +344,6 @@ export function LocalSystemTimeToLocalFileTime(
   localSystemTime: Deno.PointerValue | Uint8Array | null /* ptr */,
   localFileTime: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32.LocalSystemTimeToLocalFileTime(util.toPointer(timeZoneInformation), util.toPointer(localSystemTime), util.toPointer(localFileTime)));
+  return util.boolFromFfi(libKERNEL32_dll.LocalSystemTimeToLocalFileTime(util.toPointer(timeZoneInformation), util.toPointer(localSystemTime), util.toPointer(localFileTime)));
 }
 

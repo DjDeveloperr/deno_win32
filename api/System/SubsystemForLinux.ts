@@ -24,7 +24,7 @@ export type HANDLE = Deno.PointerValue;
 // Native Libraries
 
 try {
-  var libApi_ms_win_wsl_api_l1_1_0 = Deno.dlopen("Api-ms-win-wsl-api-l1-1-0", {
+  var libApi_ms_win_wsl_api_l1_1_0_dll = Deno.dlopen("Api-ms-win-wsl-api-l1-1-0.dll", {
     WslIsDistributionRegistered: {
       parameters: ["buffer"],
       result: "i32",
@@ -61,20 +61,20 @@ try {
 export function WslIsDistributionRegistered(
   distributionName: string | null /* Windows.Win32.Foundation.PWSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libApi_ms_win_wsl_api_l1_1_0.WslIsDistributionRegistered(util.pwstrToFfi(distributionName)));
+  return util.boolFromFfi(libApi_ms_win_wsl_api_l1_1_0_dll.WslIsDistributionRegistered(util.pwstrToFfi(distributionName)));
 }
 
 export function WslRegisterDistribution(
   distributionName: string | null /* Windows.Win32.Foundation.PWSTR */,
   tarGzFilename: string | null /* Windows.Win32.Foundation.PWSTR */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libApi_ms_win_wsl_api_l1_1_0.WslRegisterDistribution(util.pwstrToFfi(distributionName), util.pwstrToFfi(tarGzFilename)));
+  return util.pointerFromFfi(libApi_ms_win_wsl_api_l1_1_0_dll.WslRegisterDistribution(util.pwstrToFfi(distributionName), util.pwstrToFfi(tarGzFilename)));
 }
 
 export function WslUnregisterDistribution(
   distributionName: string | null /* Windows.Win32.Foundation.PWSTR */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libApi_ms_win_wsl_api_l1_1_0.WslUnregisterDistribution(util.pwstrToFfi(distributionName)));
+  return util.pointerFromFfi(libApi_ms_win_wsl_api_l1_1_0_dll.WslUnregisterDistribution(util.pwstrToFfi(distributionName)));
 }
 
 export function WslConfigureDistribution(
@@ -82,7 +82,7 @@ export function WslConfigureDistribution(
   defaultUID: number /* u32 */,
   wslDistributionFlags: WSL_DISTRIBUTION_FLAGS /* Windows.Win32.System.SubsystemForLinux.WSL_DISTRIBUTION_FLAGS */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libApi_ms_win_wsl_api_l1_1_0.WslConfigureDistribution(util.pwstrToFfi(distributionName), defaultUID, wslDistributionFlags));
+  return util.pointerFromFfi(libApi_ms_win_wsl_api_l1_1_0_dll.WslConfigureDistribution(util.pwstrToFfi(distributionName), defaultUID, wslDistributionFlags));
 }
 
 export function WslGetDistributionConfiguration(
@@ -93,7 +93,7 @@ export function WslGetDistributionConfiguration(
   defaultEnvironmentVariables: Deno.PointerValue | Uint8Array | null /* ptr */,
   defaultEnvironmentVariableCount: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libApi_ms_win_wsl_api_l1_1_0.WslGetDistributionConfiguration(util.pwstrToFfi(distributionName), util.toPointer(distributionVersion), util.toPointer(defaultUID), util.toPointer(wslDistributionFlags), util.toPointer(defaultEnvironmentVariables), util.toPointer(defaultEnvironmentVariableCount)));
+  return util.pointerFromFfi(libApi_ms_win_wsl_api_l1_1_0_dll.WslGetDistributionConfiguration(util.pwstrToFfi(distributionName), util.toPointer(distributionVersion), util.toPointer(defaultUID), util.toPointer(wslDistributionFlags), util.toPointer(defaultEnvironmentVariables), util.toPointer(defaultEnvironmentVariableCount)));
 }
 
 export function WslLaunchInteractive(
@@ -102,7 +102,7 @@ export function WslLaunchInteractive(
   useCurrentWorkingDirectory: boolean /* Windows.Win32.Foundation.BOOL */,
   exitCode: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libApi_ms_win_wsl_api_l1_1_0.WslLaunchInteractive(util.pwstrToFfi(distributionName), util.pwstrToFfi(command), util.boolToFfi(useCurrentWorkingDirectory), util.toPointer(exitCode)));
+  return util.pointerFromFfi(libApi_ms_win_wsl_api_l1_1_0_dll.WslLaunchInteractive(util.pwstrToFfi(distributionName), util.pwstrToFfi(command), util.boolToFfi(useCurrentWorkingDirectory), util.toPointer(exitCode)));
 }
 
 export function WslLaunch(
@@ -114,6 +114,6 @@ export function WslLaunch(
   stdErr: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
   process: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libApi_ms_win_wsl_api_l1_1_0.WslLaunch(util.pwstrToFfi(distributionName), util.pwstrToFfi(command), util.boolToFfi(useCurrentWorkingDirectory), util.toPointer(stdIn), util.toPointer(stdOut), util.toPointer(stdErr), util.toPointer(process)));
+  return util.pointerFromFfi(libApi_ms_win_wsl_api_l1_1_0_dll.WslLaunch(util.pwstrToFfi(distributionName), util.pwstrToFfi(command), util.boolToFfi(useCurrentWorkingDirectory), util.toPointer(stdIn), util.toPointer(stdOut), util.toPointer(stdErr), util.toPointer(process)));
 }
 

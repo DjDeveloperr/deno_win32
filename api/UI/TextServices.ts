@@ -98,7 +98,7 @@ export const TF_E_INVALIDVIEW = 289644367432647941n;
 export const TF_E_ALREADY_EXISTS = 289645466944275718n;
 export const TF_E_RANGE_NOT_COVERED = 289646566455903495n;
 export const TF_E_COMPOSITION_REJECTED = 289647665967531272n;
-export const TF_E_EMPTYCONTEXT = 144116375634576649n;
+export const TF_E_EMPTYCONTEXT = 4827963410912380169n;
 export const TF_E_INVALIDPOS = 288827430293209600n;
 export const TF_E_NOLOCK = 288795544456004097n;
 export const TF_E_NOOBJECT = 1187558720002;
@@ -149,6 +149,8 @@ export const TF_US_HIDETIPUI = 1;
 export const TF_DISABLE_SPEECH = 1;
 export const TF_DISABLE_DICTATION = 2;
 export const TF_DISABLE_COMMANDING = 4;
+export const TF_PROCESS_ATOM = `_CTF_PROCESS_ATOM_`;
+export const TF_ENABLE_PROCESS_ATOM = `_CTF_ENABLE_PROCESS_ATOM_`;
 export const TF_CLUIE_DOCUMENTMGR = 1;
 export const TF_CLUIE_COUNT = 2;
 export const TF_CLUIE_SELECTION = 4;
@@ -242,6 +244,9 @@ export const TKBL_OPT_JAPANESE_ABC = 1041;
 export const TKBL_OPT_KOREAN_HANGUL_2_BULSIK = 1042;
 export const TKBL_OPT_SIMPLIFIED_CHINESE_PINYIN = 2052;
 export const TKBL_OPT_TRADITIONAL_CHINESE_PHONETIC = 1028;
+export const TF_FLOATINGLANGBAR_WNDTITLEW = `TF_FloatingLangBar_WndTitle`;
+export const TF_FLOATINGLANGBAR_WNDTITLEA = `TF_FloatingLangBar_WndTitle`;
+export const TF_FLOATINGLANGBAR_WNDTITLE = `TF_FloatingLangBar_WndTitle`;
 export const TF_LBI_ICON = 1;
 export const TF_LBI_TEXT = 2;
 export const TF_LBI_TOOLTIP = 4;
@@ -352,7 +357,7 @@ export const TF_ATTR_CONVERTED = 2;
 export const TF_ATTR_TARGET_NOTCONVERTED = 3;
 export const TF_ATTR_INPUT_ERROR = 4;
 export const TF_ATTR_FIXEDCONVERTED = 5;
-export const TF_ATTR_OTHER = "-1";
+export const TF_ATTR_OTHER = `-1`;
 export const CAND_FINALIZED = 0;
 export const CAND_SELECTED = 1;
 export const CAND_CANCELED = 2;
@@ -436,11 +441,11 @@ export const IS_ALPHANUMERIC_PIN = 65;
 export const IS_ALPHANUMERIC_PIN_SET = 66;
 export const IS_FORMULA_NUMBER = 67;
 export const IS_CHAT_WITHOUT_EMOJI = 68;
-export const IS_PHRASELIST = "-1";
-export const IS_REGULAREXPRESSION = "-2";
-export const IS_SRGS = "-3";
-export const IS_XML = "-4";
-export const IS_ENUMSTRING = "-5";
+export const IS_PHRASELIST = `-1`;
+export const IS_REGULAREXPRESSION = `-2`;
+export const IS_SRGS = `-3`;
+export const IS_XML = `-4`;
+export const IS_ENUMSTRING = `-5`;
 
 // Structs
 
@@ -1086,7 +1091,7 @@ export type HRESULT = number;
 // Native Libraries
 
 try {
-  var libMsCtfMonitor = Deno.dlopen("MsCtfMonitor", {
+  var libMsCtfMonitor_dll = Deno.dlopen("MsCtfMonitor.dll", {
     DoMsCtfMonitor: {
       parameters: ["u32", "pointer"],
       result: "i32",
@@ -1108,16 +1113,16 @@ export function DoMsCtfMonitor(
   dwFlags: number /* u32 */,
   hEventForServiceStop: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libMsCtfMonitor.DoMsCtfMonitor(dwFlags, util.toPointer(hEventForServiceStop)));
+  return util.boolFromFfi(libMsCtfMonitor_dll.DoMsCtfMonitor(dwFlags, util.toPointer(hEventForServiceStop)));
 }
 
 export function InitLocalMsCtfMonitor(
   dwFlags: number /* u32 */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libMsCtfMonitor.InitLocalMsCtfMonitor(dwFlags));
+  return util.pointerFromFfi(libMsCtfMonitor_dll.InitLocalMsCtfMonitor(dwFlags));
 }
 
 export function UninitLocalMsCtfMonitor(): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libMsCtfMonitor.UninitLocalMsCtfMonitor());
+  return util.pointerFromFfi(libMsCtfMonitor_dll.UninitLocalMsCtfMonitor());
 }
 

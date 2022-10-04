@@ -4,6 +4,15 @@ import * as util from "../../../util.ts";
 
 // Enums
 export type XINPUT_VIRTUAL_KEY = number;
+export type BATTERY_TYPE = number;
+export type BATTERY_LEVEL = number;
+export type BATTERY_DEVTYPE = number;
+export type XINPUT_DEVTYPE = number;
+export type XINPUT_DEVSUBTYPE = number;
+export type XINPUT_CAPABILITIES_FLAGS = number;
+export type XINPUT_GAMEPAD_BUTTON_FLAGS = number;
+export type XINPUT_KEYSTROKE_FLAGS = number;
+export type XINPUT_FLAG = number;
 
 // Constants
 export const VK_PAD_A = 22528;
@@ -38,6 +47,17 @@ export const VK_PAD_RTHUMB_UPLEFT = 22580;
 export const VK_PAD_RTHUMB_UPRIGHT = 22581;
 export const VK_PAD_RTHUMB_DOWNRIGHT = 22582;
 export const VK_PAD_RTHUMB_DOWNLEFT = 22583;
+export const BATTERY_TYPE_DISCONNECTED = 0;
+export const BATTERY_TYPE_WIRED = 1;
+export const BATTERY_TYPE_ALKALINE = 2;
+export const BATTERY_TYPE_NIMH = 3;
+export const BATTERY_TYPE_UNKNOWN = 255;
+export const BATTERY_LEVEL_EMPTY = 0;
+export const BATTERY_LEVEL_LOW = 1;
+export const BATTERY_LEVEL_MEDIUM = 2;
+export const BATTERY_LEVEL_FULL = 3;
+export const BATTERY_DEVTYPE_GAMEPAD = 0;
+export const BATTERY_DEVTYPE_HEADSET = 1;
 export const XINPUT_DEVTYPE_GAMEPAD = 1;
 export const XINPUT_DEVSUBTYPE_GAMEPAD = 1;
 export const XINPUT_DEVSUBTYPE_UNKNOWN = 0;
@@ -72,23 +92,16 @@ export const XINPUT_GAMEPAD_Y = 32768;
 export const XINPUT_GAMEPAD_LEFT_THUMB_DEADZONE = 7849;
 export const XINPUT_GAMEPAD_RIGHT_THUMB_DEADZONE = 8689;
 export const XINPUT_GAMEPAD_TRIGGER_THRESHOLD = 30;
-export const XINPUT_FLAG_GAMEPAD = 1;
-export const BATTERY_DEVTYPE_GAMEPAD = 0;
-export const BATTERY_DEVTYPE_HEADSET = 1;
-export const BATTERY_TYPE_DISCONNECTED = 0;
-export const BATTERY_TYPE_WIRED = 1;
-export const BATTERY_TYPE_ALKALINE = 2;
-export const BATTERY_TYPE_NIMH = 3;
-export const BATTERY_TYPE_UNKNOWN = 255;
-export const BATTERY_LEVEL_EMPTY = 0;
-export const BATTERY_LEVEL_LOW = 1;
-export const BATTERY_LEVEL_MEDIUM = 2;
-export const BATTERY_LEVEL_FULL = 3;
-export const XUSER_MAX_COUNT = 4;
-export const XUSER_INDEX_ANY = 255;
 export const XINPUT_KEYSTROKE_KEYDOWN = 1;
 export const XINPUT_KEYSTROKE_KEYUP = 2;
 export const XINPUT_KEYSTROKE_REPEAT = 4;
+export const XINPUT_FLAG_ALL = 0;
+export const XINPUT_FLAG_GAMEPAD = 1;
+export const XINPUT_DLL_A = `xinput1_4.dll`;
+export const XINPUT_DLL_W = `xinput1_4.dll`;
+export const XINPUT_DLL = `xinput1_4.dll`;
+export const XUSER_MAX_COUNT = 4;
+export const XUSER_INDEX_ANY = 255;
 
 // Structs
 
@@ -96,8 +109,8 @@ export const XINPUT_KEYSTROKE_REPEAT = 4;
  * Windows.Win32.UI.Input.XboxController.XINPUT_GAMEPAD (size: 16)
  */
 export interface XINPUT_GAMEPAD {
-  /** u16 */
-  wButtons: number;
+  /** Windows.Win32.UI.Input.XboxController.XINPUT_GAMEPAD_BUTTON_FLAGS */
+  wButtons: XINPUT_GAMEPAD_BUTTON_FLAGS;
   /** u8 */
   bLeftTrigger: number;
   /** u8 */
@@ -182,37 +195,37 @@ export function allocXINPUT_VIBRATION(data?: Partial<XINPUT_VIBRATION>): Uint8Ar
 }
 
 /**
- * Windows.Win32.UI.Input.XboxController.XINPUT_CAPABILITIES (size: 24)
+ * Windows.Win32.UI.Input.XboxController.XINPUT_CAPABILITIES (size: 32)
  */
 export interface XINPUT_CAPABILITIES {
-  /** u8 */
-  Type: number;
-  /** u8 */
-  SubType: number;
-  /** u16 */
-  Flags: number;
+  /** Windows.Win32.UI.Input.XboxController.XINPUT_DEVTYPE */
+  Type: XINPUT_DEVTYPE;
+  /** Windows.Win32.UI.Input.XboxController.XINPUT_DEVSUBTYPE */
+  SubType: XINPUT_DEVSUBTYPE;
+  /** Windows.Win32.UI.Input.XboxController.XINPUT_CAPABILITIES_FLAGS */
+  Flags: XINPUT_CAPABILITIES_FLAGS;
   /** Windows.Win32.UI.Input.XboxController.XINPUT_GAMEPAD */
   Gamepad: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.UI.Input.XboxController.XINPUT_VIBRATION */
   Vibration: Uint8Array | Deno.PointerValue | null;
 }
 
-export const sizeofXINPUT_CAPABILITIES = 24;
+export const sizeofXINPUT_CAPABILITIES = 32;
 
 export function allocXINPUT_CAPABILITIES(data?: Partial<XINPUT_CAPABILITIES>): Uint8Array {
   const buf = new Uint8Array(sizeofXINPUT_CAPABILITIES);
   const view = new DataView(buf.buffer);
-  // 0x00: u8
-  if (data?.Type !== undefined) view.setUint8(0, Number(data.Type));
-  // 0x01: u8
-  if (data?.SubType !== undefined) view.setUint8(1, Number(data.SubType));
-  // 0x02: u16
-  if (data?.Flags !== undefined) view.setUint16(2, Number(data.Flags), true);
-  // 0x04: pad4
-  // 0x08: pointer
-  if (data?.Gamepad !== undefined) view.setBigUint64(8, data.Gamepad === null ? 0n : BigInt(util.toPointer(data.Gamepad)), true);
+  // 0x00: u32
+  if (data?.Type !== undefined) view.setUint32(0, Number(data.Type), true);
+  // 0x04: u32
+  if (data?.SubType !== undefined) view.setUint32(4, Number(data.SubType), true);
+  // 0x08: u16
+  if (data?.Flags !== undefined) view.setUint16(8, Number(data.Flags), true);
+  // 0x0a: pad6
   // 0x10: pointer
-  if (data?.Vibration !== undefined) view.setBigUint64(16, data.Vibration === null ? 0n : BigInt(util.toPointer(data.Vibration)), true);
+  if (data?.Gamepad !== undefined) view.setBigUint64(16, data.Gamepad === null ? 0n : BigInt(util.toPointer(data.Gamepad)), true);
+  // 0x18: pointer
+  if (data?.Vibration !== undefined) view.setBigUint64(24, data.Vibration === null ? 0n : BigInt(util.toPointer(data.Vibration)), true);
   return buf;
 }
 
@@ -220,10 +233,10 @@ export function allocXINPUT_CAPABILITIES(data?: Partial<XINPUT_CAPABILITIES>): U
  * Windows.Win32.UI.Input.XboxController.XINPUT_BATTERY_INFORMATION (size: 8)
  */
 export interface XINPUT_BATTERY_INFORMATION {
-  /** u8 */
-  BatteryType: number;
-  /** u8 */
-  BatteryLevel: number;
+  /** Windows.Win32.UI.Input.XboxController.BATTERY_TYPE */
+  BatteryType: BATTERY_TYPE;
+  /** Windows.Win32.UI.Input.XboxController.BATTERY_LEVEL */
+  BatteryLevel: BATTERY_LEVEL;
 }
 
 export const sizeofXINPUT_BATTERY_INFORMATION = 8;
@@ -231,11 +244,10 @@ export const sizeofXINPUT_BATTERY_INFORMATION = 8;
 export function allocXINPUT_BATTERY_INFORMATION(data?: Partial<XINPUT_BATTERY_INFORMATION>): Uint8Array {
   const buf = new Uint8Array(sizeofXINPUT_BATTERY_INFORMATION);
   const view = new DataView(buf.buffer);
-  // 0x00: u8
-  if (data?.BatteryType !== undefined) view.setUint8(0, Number(data.BatteryType));
-  // 0x01: u8
-  if (data?.BatteryLevel !== undefined) view.setUint8(1, Number(data.BatteryLevel));
-  // 0x02: pad6
+  // 0x00: u32
+  if (data?.BatteryType !== undefined) view.setUint32(0, Number(data.BatteryType), true);
+  // 0x04: u32
+  if (data?.BatteryLevel !== undefined) view.setUint32(4, Number(data.BatteryLevel), true);
   return buf;
 }
 
@@ -247,8 +259,8 @@ export interface XINPUT_KEYSTROKE {
   VirtualKey: XINPUT_VIRTUAL_KEY;
   /** char */
   Unicode: Uint8Array | Deno.PointerValue | null;
-  /** u16 */
-  Flags: number;
+  /** Windows.Win32.UI.Input.XboxController.XINPUT_KEYSTROKE_FLAGS */
+  Flags: XINPUT_KEYSTROKE_FLAGS;
   /** u8 */
   UserIndex: number;
   /** u8 */
@@ -282,7 +294,7 @@ export type PWSTR = Deno.PointerValue | Uint8Array | null;
 // Native Libraries
 
 try {
-  var libXINPUTUAP = Deno.dlopen("XINPUTUAP", {
+  var libxinput1_4_dll = Deno.dlopen("xinput1_4.dll", {
     XInputGetState: {
       parameters: ["u32", "pointer"],
       result: "u32",
@@ -304,7 +316,7 @@ try {
       result: "u32",
     },
     XInputGetBatteryInformation: {
-      parameters: ["u32", "u8", "pointer"],
+      parameters: ["u32", "u32", "pointer"],
       result: "u32",
     },
     XInputGetKeystroke: {
@@ -320,28 +332,28 @@ export function XInputGetState(
   dwUserIndex: number /* u32 */,
   pState: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libXINPUTUAP.XInputGetState(dwUserIndex, util.toPointer(pState));
+  return libxinput1_4_dll.XInputGetState(dwUserIndex, util.toPointer(pState));
 }
 
 export function XInputSetState(
   dwUserIndex: number /* u32 */,
   pVibration: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libXINPUTUAP.XInputSetState(dwUserIndex, util.toPointer(pVibration));
+  return libxinput1_4_dll.XInputSetState(dwUserIndex, util.toPointer(pVibration));
 }
 
 export function XInputGetCapabilities(
   dwUserIndex: number /* u32 */,
-  dwFlags: number /* u32 */,
+  dwFlags: XINPUT_FLAG /* Windows.Win32.UI.Input.XboxController.XINPUT_FLAG */,
   pCapabilities: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libXINPUTUAP.XInputGetCapabilities(dwUserIndex, dwFlags, util.toPointer(pCapabilities));
+  return libxinput1_4_dll.XInputGetCapabilities(dwUserIndex, dwFlags, util.toPointer(pCapabilities));
 }
 
 export function XInputEnable(
   enable: boolean /* Windows.Win32.Foundation.BOOL */,
 ): void /* void */ {
-  return libXINPUTUAP.XInputEnable(util.boolToFfi(enable));
+  return libxinput1_4_dll.XInputEnable(util.boolToFfi(enable));
 }
 
 export function XInputGetAudioDeviceIds(
@@ -351,15 +363,15 @@ export function XInputGetAudioDeviceIds(
   pCaptureDeviceId: string | null /* Windows.Win32.Foundation.PWSTR */,
   pCaptureCount: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libXINPUTUAP.XInputGetAudioDeviceIds(dwUserIndex, util.pwstrToFfi(pRenderDeviceId), util.toPointer(pRenderCount), util.pwstrToFfi(pCaptureDeviceId), util.toPointer(pCaptureCount));
+  return libxinput1_4_dll.XInputGetAudioDeviceIds(dwUserIndex, util.pwstrToFfi(pRenderDeviceId), util.toPointer(pRenderCount), util.pwstrToFfi(pCaptureDeviceId), util.toPointer(pCaptureCount));
 }
 
 export function XInputGetBatteryInformation(
   dwUserIndex: number /* u32 */,
-  devType: number /* u8 */,
+  devType: BATTERY_DEVTYPE /* Windows.Win32.UI.Input.XboxController.BATTERY_DEVTYPE */,
   pBatteryInformation: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libXINPUTUAP.XInputGetBatteryInformation(dwUserIndex, devType, util.toPointer(pBatteryInformation));
+  return libxinput1_4_dll.XInputGetBatteryInformation(dwUserIndex, devType, util.toPointer(pBatteryInformation));
 }
 
 export function XInputGetKeystroke(
@@ -367,6 +379,6 @@ export function XInputGetKeystroke(
   dwReserved: number /* u32 */,
   pKeystroke: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libXINPUTUAP.XInputGetKeystroke(dwUserIndex, dwReserved, util.toPointer(pKeystroke));
+  return libxinput1_4_dll.XInputGetKeystroke(dwUserIndex, dwReserved, util.toPointer(pKeystroke));
 }
 

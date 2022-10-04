@@ -18,24 +18,24 @@ export const DCOMPOSITION_MAX_WAITFORCOMPOSITORCLOCK_OBJECTS = 32;
 export const COMPOSITION_STATS_MAX_TARGETS = 256;
 export const DCOMPOSITION_BITMAP_INTERPOLATION_MODE_NEAREST_NEIGHBOR = 0;
 export const DCOMPOSITION_BITMAP_INTERPOLATION_MODE_LINEAR = 1;
-export const DCOMPOSITION_BITMAP_INTERPOLATION_MODE_INHERIT = "-1";
+export const DCOMPOSITION_BITMAP_INTERPOLATION_MODE_INHERIT = `-1`;
 export const DCOMPOSITION_BORDER_MODE_SOFT = 0;
 export const DCOMPOSITION_BORDER_MODE_HARD = 1;
-export const DCOMPOSITION_BORDER_MODE_INHERIT = "-1";
+export const DCOMPOSITION_BORDER_MODE_INHERIT = `-1`;
 export const DCOMPOSITION_COMPOSITE_MODE_SOURCE_OVER = 0;
 export const DCOMPOSITION_COMPOSITE_MODE_DESTINATION_INVERT = 1;
 export const DCOMPOSITION_COMPOSITE_MODE_MIN_BLEND = 2;
-export const DCOMPOSITION_COMPOSITE_MODE_INHERIT = "-1";
+export const DCOMPOSITION_COMPOSITE_MODE_INHERIT = `-1`;
 export const DCOMPOSITION_BACKFACE_VISIBILITY_VISIBLE = 0;
 export const DCOMPOSITION_BACKFACE_VISIBILITY_HIDDEN = 1;
-export const DCOMPOSITION_BACKFACE_VISIBILITY_INHERIT = "-1";
+export const DCOMPOSITION_BACKFACE_VISIBILITY_INHERIT = `-1`;
 export const DCOMPOSITION_OPACITY_MODE_LAYER = 0;
 export const DCOMPOSITION_OPACITY_MODE_MULTIPLY = 1;
-export const DCOMPOSITION_OPACITY_MODE_INHERIT = "-1";
+export const DCOMPOSITION_OPACITY_MODE_INHERIT = `-1`;
 export const DCOMPOSITION_DEPTH_MODE_TREE = 0;
 export const DCOMPOSITION_DEPTH_MODE_SPATIAL = 1;
 export const DCOMPOSITION_DEPTH_MODE_SORTED = 3;
-export const DCOMPOSITION_DEPTH_MODE_INHERIT = "-1";
+export const DCOMPOSITION_DEPTH_MODE_INHERIT = `-1`;
 export const COMPOSITION_FRAME_ID_CREATED = 0;
 export const COMPOSITION_FRAME_ID_CONFIRMED = 1;
 export const COMPOSITION_FRAME_ID_COMPLETED = 2;
@@ -359,7 +359,7 @@ export type BOOL = number;
 // Native Libraries
 
 try {
-  var libdcomp = Deno.dlopen("dcomp", {
+  var libdcomp_dll = Deno.dlopen("dcomp.dll", {
     DCompositionCreateDevice: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "pointer",
@@ -414,7 +414,7 @@ export function DCompositionCreateDevice(
   iid: Deno.PointerValue | Uint8Array | null /* ptr */,
   dcompositionDevice: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libdcomp.DCompositionCreateDevice(util.toPointer(dxgiDevice), util.toPointer(iid), util.toPointer(dcompositionDevice)));
+  return util.pointerFromFfi(libdcomp_dll.DCompositionCreateDevice(util.toPointer(dxgiDevice), util.toPointer(iid), util.toPointer(dcompositionDevice)));
 }
 
 export function DCompositionCreateDevice2(
@@ -422,7 +422,7 @@ export function DCompositionCreateDevice2(
   iid: Deno.PointerValue | Uint8Array | null /* ptr */,
   dcompositionDevice: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libdcomp.DCompositionCreateDevice2(util.toPointer(renderingDevice), util.toPointer(iid), util.toPointer(dcompositionDevice)));
+  return util.pointerFromFfi(libdcomp_dll.DCompositionCreateDevice2(util.toPointer(renderingDevice), util.toPointer(iid), util.toPointer(dcompositionDevice)));
 }
 
 export function DCompositionCreateDevice3(
@@ -430,7 +430,7 @@ export function DCompositionCreateDevice3(
   iid: Deno.PointerValue | Uint8Array | null /* ptr */,
   dcompositionDevice: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libdcomp.DCompositionCreateDevice3(util.toPointer(renderingDevice), util.toPointer(iid), util.toPointer(dcompositionDevice)));
+  return util.pointerFromFfi(libdcomp_dll.DCompositionCreateDevice3(util.toPointer(renderingDevice), util.toPointer(iid), util.toPointer(dcompositionDevice)));
 }
 
 export function DCompositionCreateSurfaceHandle(
@@ -438,7 +438,7 @@ export function DCompositionCreateSurfaceHandle(
   securityAttributes: Deno.PointerValue | Uint8Array | null /* ptr */,
   surfaceHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libdcomp.DCompositionCreateSurfaceHandle(desiredAccess, util.toPointer(securityAttributes), util.toPointer(surfaceHandle)));
+  return util.pointerFromFfi(libdcomp_dll.DCompositionCreateSurfaceHandle(desiredAccess, util.toPointer(securityAttributes), util.toPointer(surfaceHandle)));
 }
 
 export function DCompositionAttachMouseWheelToHwnd(
@@ -446,7 +446,7 @@ export function DCompositionAttachMouseWheelToHwnd(
   hwnd: Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */,
   enable: boolean /* Windows.Win32.Foundation.BOOL */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libdcomp.DCompositionAttachMouseWheelToHwnd(util.toPointer(visual), util.hwndToFfi(hwnd), util.boolToFfi(enable)));
+  return util.pointerFromFfi(libdcomp_dll.DCompositionAttachMouseWheelToHwnd(util.toPointer(visual), util.hwndToFfi(hwnd), util.boolToFfi(enable)));
 }
 
 export function DCompositionAttachMouseDragToHwnd(
@@ -454,14 +454,14 @@ export function DCompositionAttachMouseDragToHwnd(
   hwnd: Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */,
   enable: boolean /* Windows.Win32.Foundation.BOOL */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libdcomp.DCompositionAttachMouseDragToHwnd(util.toPointer(visual), util.hwndToFfi(hwnd), util.boolToFfi(enable)));
+  return util.pointerFromFfi(libdcomp_dll.DCompositionAttachMouseDragToHwnd(util.toPointer(visual), util.hwndToFfi(hwnd), util.boolToFfi(enable)));
 }
 
 export function DCompositionGetFrameId(
   frameIdType: COMPOSITION_FRAME_ID_TYPE /* Windows.Win32.Graphics.DirectComposition.COMPOSITION_FRAME_ID_TYPE */,
   frameId: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libdcomp.DCompositionGetFrameId(frameIdType, util.toPointer(frameId)));
+  return util.pointerFromFfi(libdcomp_dll.DCompositionGetFrameId(frameIdType, util.toPointer(frameId)));
 }
 
 export function DCompositionGetStatistics(
@@ -471,7 +471,7 @@ export function DCompositionGetStatistics(
   targetIds: Deno.PointerValue | Uint8Array | null /* ptr */,
   actualTargetIdCount: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libdcomp.DCompositionGetStatistics(frameId, util.toPointer(frameStats), targetIdCount, util.toPointer(targetIds), util.toPointer(actualTargetIdCount)));
+  return util.pointerFromFfi(libdcomp_dll.DCompositionGetStatistics(frameId, util.toPointer(frameStats), targetIdCount, util.toPointer(targetIds), util.toPointer(actualTargetIdCount)));
 }
 
 export function DCompositionGetTargetStatistics(
@@ -479,13 +479,13 @@ export function DCompositionGetTargetStatistics(
   targetId: Deno.PointerValue | Uint8Array | null /* ptr */,
   targetStats: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libdcomp.DCompositionGetTargetStatistics(frameId, util.toPointer(targetId), util.toPointer(targetStats)));
+  return util.pointerFromFfi(libdcomp_dll.DCompositionGetTargetStatistics(frameId, util.toPointer(targetId), util.toPointer(targetStats)));
 }
 
 export function DCompositionBoostCompositorClock(
   enable: boolean /* Windows.Win32.Foundation.BOOL */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libdcomp.DCompositionBoostCompositorClock(util.boolToFfi(enable)));
+  return util.pointerFromFfi(libdcomp_dll.DCompositionBoostCompositorClock(util.boolToFfi(enable)));
 }
 
 export function DCompositionWaitForCompositorClock(
@@ -493,6 +493,6 @@ export function DCompositionWaitForCompositorClock(
   handles: Deno.PointerValue | Uint8Array | null /* ptr */,
   timeoutInMs: number /* u32 */,
 ): number /* u32 */ {
-  return libdcomp.DCompositionWaitForCompositorClock(count, util.toPointer(handles), timeoutInMs);
+  return libdcomp_dll.DCompositionWaitForCompositorClock(count, util.toPointer(handles), timeoutInMs);
 }
 

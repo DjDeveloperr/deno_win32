@@ -10,6 +10,10 @@ export type HANDLE_FLAGS = number;
 
 // Constants
 export const NO_ERROR = 0;
+export const WAIT_OBJECT_0 = 0;
+export const WAIT_ABANDONED = 128;
+export const WAIT_ABANDONED_0 = 128;
+export const WAIT_IO_COMPLETION = 192;
 export const WAIT_TIMEOUT = 258;
 export const WAIT_FAILED = 4294967295;
 export const ERROR_SUCCESS = 0;
@@ -3265,12 +3269,12 @@ export const DUPLICATE_SAME_ACCESS = 2;
 export const HANDLE_FLAG_INHERIT = 1;
 export const HANDLE_FLAG_PROTECT_FROM_CLOSE = 2;
 export const INVALID_HANDLE_VALUE = 1120986464255;
-export const CO_E_NOTINITIALIZED = 9444336509970022896n;
-export const STILL_ACTIVE = 1080863927748788483n;
-export const EXCEPTION_ACCESS_VIOLATION = 2219424350213;
-export const EXCEPTION_DATATYPE_MISALIGNMENT = 3317862236162;
-export const EXCEPTION_BREAKPOINT = 4417373863939;
-export const EXCEPTION_SINGLE_STEP = 153950955241476;
+export const CO_E_NOTINITIALIZED = 9372278915932094960n;
+export const STILL_ACTIVE = 17179869443;
+export const EXCEPTION_ACCESS_VIOLATION = 3318935977989;
+export const EXCEPTION_DATATYPE_MISALIGNMENT = 4417373863938;
+export const EXCEPTION_BREAKPOINT = 153950955241475;
+export const EXCEPTION_SINGLE_STEP = 8815420375044;
 export const EXCEPTION_ARRAY_BOUNDS_EXCEEDED = 155051540611212;
 export const EXCEPTION_FLT_DENORMAL_OPERAND = 156151052238989;
 export const EXCEPTION_FLT_DIVIDE_BY_ZERO = 157250563866766;
@@ -3286,11 +3290,12 @@ export const EXCEPTION_IN_PAGE_ERROR = 31906238300166;
 export const EXCEPTION_ILLEGAL_INSTRUCTION = 40702331322397;
 export const EXCEPTION_NONCONTINUABLE_EXCEPTION = 278196842922021;
 export const EXCEPTION_STACK_OVERFLOW = 41801842950397;
-export const EXCEPTION_INVALID_DISPOSITION = 1119912722470;
-export const EXCEPTION_GUARD_PAGE = 8815420375041;
+export const EXCEPTION_INVALID_DISPOSITION = 8816494116902;
+export const EXCEPTION_GUARD_PAGE = 2218350608385;
 export const EXCEPTION_INVALID_HANDLE = 444223098716168;
 export const EXCEPTION_POSSIBLE_DEADLOCK = 345267052216724;
-export const CONTROL_C_EXIT = 18015518422204730n;
+export const CONTROL_C_EXIT = 37403796439354;
+export const STATUS_ACCESS_DENIED = 18015518422204450n;
 export const E_NOTIMPL = 504418570755653633n;
 export const E_OUTOFMEMORY = 504498835104923662n;
 export const E_INVALIDARG = 18019915395432535n;
@@ -3308,12 +3313,12 @@ export const STATUS_ABANDONED = 281492156579968;
 export const STATUS_ABANDONED_WAIT_0 = 281492156579968;
 export const STATUS_ABANDONED_WAIT_63 = 222118528680127;
 export const STATUS_USER_APC = 214421947285696;
-export const STATUS_ALREADY_COMPLETE = 36027714687205631n;
+export const STATUS_ALREADY_COMPLETE = 8286743307158028543n;
 export const STATUS_KERNEL_APC = 562967133290752;
 export const STATUS_ALERTED = 283691179835649;
 export const STATUS_TIMEOUT = 284790691463426;
-export const STATUS_PENDING = 1080863927748788483n;
-export const STATUS_REPARSE = 5350240760627460;
+export const STATUS_PENDING = 17179869443;
+export const STATUS_REPARSE = 8719060266903404804n;
 export const STATUS_MORE_ENTRIES = 288089226346757;
 export const STATUS_NOT_ALL_ASSIGNED = 289188737974534;
 export const STATUS_SOME_NOT_MAPPED = 290288249602311;
@@ -3433,10 +3438,10 @@ export const DBG_CONTROL_BREAK = 72067507896254472n;
 export const DBG_COMMAND_EXCEPTION = 72068607407882249n;
 export const DBG_PRINTEXCEPTION_WIDE_C = 1801440968713502730n;
 export const STATUS_HEURISTIC_DAMAGE_POSSIBLE = 5515813388289;
-export const STATUS_GUARD_PAGE_VIOLATION = 8815420375041;
-export const STATUS_DATATYPE_MISALIGNMENT = 3317862236162;
-export const STATUS_BREAKPOINT = 4417373863939;
-export const STATUS_SINGLE_STEP = 153950955241476;
+export const STATUS_GUARD_PAGE_VIOLATION = 2218350608385;
+export const STATUS_DATATYPE_MISALIGNMENT = 4417373863938;
+export const STATUS_BREAKPOINT = 153950955241475;
+export const STATUS_SINGLE_STEP = 8815420375044;
 export const STATUS_BUFFER_OVERFLOW = 6616397119493;
 export const STATUS_NO_MORE_FILES = 7715908747270;
 export const STATUS_WAKE_SYSTEM_DEBUGGER = 11014443630599;
@@ -3445,8 +3450,8 @@ export const STATUS_NO_INHERITANCE = 13213466886155;
 export const STATUS_GUID_SUBSTITUTION_MADE = 14312978513932;
 export const STATUS_PARTIAL_COPY = 15412490141709;
 export const STATUS_DEVICE_PAPER_EMPTY = 16512001769486;
-export const STATUS_DEVICE_POWERED_OFF = 17611513397263;
-export const STATUS_DEVICE_OFF_LINE = 18711025025040;
+export const STATUS_DEVICE_POWERED_OFF = 18711025025039;
+export const STATUS_DEVICE_OFF_LINE = 35203699441680;
 export const STATUS_DEVICE_BUSY = 19810536652817;
 export const STATUS_NO_MORE_EAS = 20910048280594;
 export const STATUS_INVALID_EA_NAME = 22009559908371;
@@ -3459,9 +3464,9 @@ export const STATUS_NO_MORE_ENTRIES = 29706141302810;
 export const STATUS_FILEMARK_DETECTED = 30805652930587;
 export const STATUS_MEDIA_CHANGED = 31905164558364;
 export const STATUS_BUS_RESET = 33004676186141;
-export const STATUS_END_OF_MEDIA = 35203699441694;
+export const STATUS_END_OF_MEDIA = 36303211069470;
 export const STATUS_BEGINNING_OF_MEDIA = 2381561513115679;
-export const STATUS_MEDIA_CHECK = 36303211069472;
+export const STATUS_MEDIA_CHECK = 281494304063520;
 export const STATUS_SETMARK_DETECTED = 37402722697249;
 export const STATUS_NO_DATA_DETECTED = 38502234325026;
 export const STATUS_REDIRECTOR_HAS_OPEN_HANDLES = 39601745952803;
@@ -3496,7 +3501,7 @@ export const STATUS_UNSUCCESSFUL = 2219424350209;
 export const STATUS_NOT_IMPLEMENTED = 3318935977986;
 export const STATUS_INVALID_INFO_CLASS = 4418447605763;
 export const STATUS_INFO_LENGTH_MISMATCH = 7716982489092;
-export const STATUS_ACCESS_VIOLATION = 2219424350213;
+export const STATUS_ACCESS_VIOLATION = 3318935977989;
 export const STATUS_IN_PAGE_ERROR = 31906238300166;
 export const STATUS_PAGEFILE_QUOTA = 9916005744647;
 export const STATUS_INVALID_HANDLE = 444223098716168;
@@ -3528,7 +3533,7 @@ export const STATUS_ALREADY_COMMITTED = 38503308066849;
 export const STATUS_BUFFER_TOO_SMALL = 39602819694627;
 export const STATUS_OBJECT_TYPE_MISMATCH = 42901354577956;
 export const STATUS_NONCONTINUABLE_EXCEPTION = 278196842922021;
-export const STATUS_INVALID_DISPOSITION = 1119912722470;
+export const STATUS_INVALID_DISPOSITION = 8816494116902;
 export const STATUS_UNWIND = 44000866205735;
 export const STATUS_BAD_STACK = 45100377833512;
 export const STATUS_INVALID_UNWIND_TARGET = 46199889461289;
@@ -3797,7 +3802,7 @@ export const STATUS_OPEN_FAILED = 341968517333302;
 export const STATUS_IO_PRIVILEGE_FAILED = 343068028961079;
 export const STATUS_ORDINAL_NOT_FOUND = 344167540588856;
 export const STATUS_ENTRYPOINT_NOT_FOUND = 346366563844409;
-export const STATUS_CONTROL_C_EXIT = 18015518422204730n;
+export const STATUS_CONTROL_C_EXIT = 37403796439354;
 export const STATUS_LOCAL_DISCONNECT = 347466075472187;
 export const STATUS_REMOTE_DISCONNECT = 348565587099964;
 export const STATUS_REMOTE_RESOURCES = 349665098727741;
@@ -4816,7 +4821,7 @@ export const STATUS_FLT_NO_HANDLER_DEFINED = 2017614852488167425n;
 export const STATUS_FLT_CONTEXT_ALREADY_DEFINED = 2017615951999795202n;
 export const STATUS_FLT_INVALID_ASYNCHRONOUS_REQUEST = 2017617051511422979n;
 export const STATUS_FLT_DISALLOW_FAST_IO = 2017618151023050756n;
-export const STATUS_FLT_DISALLOW_FSFILTER_IO = "-1071906812";
+export const STATUS_FLT_DISALLOW_FSFILTER_IO = `-1071906812`;
 export const STATUS_FLT_INVALID_NAME_REQUEST = 2017619250534678533n;
 export const STATUS_FLT_NOT_SAFE_TO_POST_OPERATION = 2017620350046306310n;
 export const STATUS_FLT_NOT_INITIALIZED = 2017621449557934087n;
@@ -5915,7 +5920,7 @@ export const STATUS_VHD_MISSING_CHANGE_TRACKING_INFORMATION = 417934157411634385
 export const STATUS_VHD_RESIZE_WOULD_TRUNCATE_DATA = 4179395450186104881n;
 export const STATUS_VHD_COULD_NOT_COMPUTE_MINIMUM_VIRTUAL_SIZE = 4179396549697732658n;
 export const STATUS_VHD_ALREADY_AT_OR_BELOW_MINIMUM_VIRTUAL_SIZE = 4539629544305983539n;
-export const STATUS_QUERY_STORAGE_ERROR = 9444336509973561345n;
+export const STATUS_QUERY_STORAGE_ERROR = 9660509292087345153n;
 export const STATUS_GDI_HANDLE_LEAK = 4611687137270497281n;
 export const STATUS_RKF_KEY_NOT_FOUND = 4611688237855932417n;
 export const STATUS_RKF_DUPLICATE_KEY = 4611689337367560194n;
@@ -6087,14 +6092,6 @@ export const STATUS_IORING_SUBMIT_IN_PROGRESS = 5044039299642032134n;
 export const STATUS_IORING_CORRUPT = 1948355010101255;
 export const WINVER = 1280;
 export const APP_LOCAL_DEVICE_ID_SIZE = 32;
-export const DM_UPDATE = 1;
-export const DM_COPY = 2;
-export const DM_PROMPT = 4;
-export const DM_MODIFY = 8;
-export const DM_IN_BUFFER = 8;
-export const DM_IN_PROMPT = 4;
-export const DM_OUT_BUFFER = 2;
-export const DM_OUT_DEFAULT = 1;
 export const SEC_E_OK = 72057611217797120n;
 export const RPC_X_NO_MORE_ENTRIES = 1772;
 export const RPC_X_SS_CHAR_TRANS_OPEN_FAIL = 1773;
@@ -6191,8 +6188,8 @@ export const E_BOUNDS = 13213466886155;
 export const E_CHANGED_STATE = 14312978513932;
 export const E_ILLEGAL_STATE_CHANGE = 15412490141709;
 export const E_ILLEGAL_METHOD_CALL = 16512001769486;
-export const RO_E_METADATA_NAME_NOT_FOUND = 17611513397263;
-export const RO_E_METADATA_NAME_IS_NAMESPACE = 18711025025040;
+export const RO_E_METADATA_NAME_NOT_FOUND = 18711025025039;
+export const RO_E_METADATA_NAME_IS_NAMESPACE = 35203699441680;
 export const RO_E_METADATA_INVALID_TYPE_FORMAT = 19810536652817;
 export const RO_E_INVALID_METADATA_FILE = 20910048280594;
 export const RO_E_CLOSED = 22009559908371;
@@ -6206,9 +6203,9 @@ export const E_APPLICATION_EXITING = 29706141302810;
 export const E_APPLICATION_VIEW_EXITING = 30805652930587;
 export const RO_E_MUST_BE_AGILE = 31905164558364;
 export const RO_E_UNSUPPORTED_FROM_MTA = 33004676186141;
-export const RO_E_COMMITTED = 35203699441694;
+export const RO_E_COMMITTED = 36303211069470;
 export const RO_E_BLOCKED_CROSS_ASTA_CALL = 2381561513115679;
-export const RO_E_CANNOT_ACTIVATE_FULL_TRUST_SERVER = 36303211069472;
+export const RO_E_CANNOT_ACTIVATE_FULL_TRUST_SERVER = 281494304063520;
 export const RO_E_CANNOT_ACTIVATE_UNIVERSAL_APPLICATION_SERVER = 37402722697249;
 export const CO_E_INIT_TLS = 18022114418245638n;
 export const CO_E_INIT_SHARED_ALLOCATOR = 18023213929873415n;
@@ -6289,36 +6286,36 @@ export const DV_E_CLIPFORMAT = 288348043223498858n;
 export const DV_E_DVASPECT = 288349142735126635n;
 export const DV_E_DVTARGETDEVICE_SIZE = 288350242246754412n;
 export const DV_E_NOIVIEWOBJECT = 288511870456037485n;
-export const DRAGDROP_E_FIRST = "-2147221248";
-export const DRAGDROP_E_LAST = "-2147221233";
+export const DRAGDROP_E_FIRST = `-2147221248`;
+export const DRAGDROP_E_LAST = `-2147221233`;
 export const DRAGDROP_S_FIRST = 262400;
 export const DRAGDROP_S_LAST = 262415;
 export const DRAGDROP_E_NOTREGISTERED = 288528363130454272n;
 export const DRAGDROP_E_ALREADYREGISTERED = 288514069479293185n;
 export const DRAGDROP_E_INVALIDHWND = 288515168990920962n;
 export const DRAGDROP_E_CONCURRENT_DRAG_ATTEMPTED = 288529462642082051n;
-export const CLASSFACTORY_E_FIRST = "-2147221232";
-export const CLASSFACTORY_E_LAST = "-2147221217";
+export const CLASSFACTORY_E_FIRST = `-2147221232`;
+export const CLASSFACTORY_E_LAST = `-2147221217`;
 export const CLASSFACTORY_S_FIRST = 262416;
 export const CLASSFACTORY_S_LAST = 262431;
 export const CLASS_E_NOAGGREGATION = 288545955316498704n;
 export const CLASS_E_CLASSNOTAVAILABLE = 288531661665337617n;
 export const CLASS_E_NOTLICENSED = 288547054828126482n;
-export const MARSHAL_E_FIRST = "-2147221216";
-export const MARSHAL_E_LAST = "-2147221201";
+export const MARSHAL_E_FIRST = `-2147221216`;
+export const MARSHAL_E_LAST = `-2147221201`;
 export const MARSHAL_S_FIRST = 262432;
 export const MARSHAL_S_LAST = 262447;
-export const DATA_E_FIRST = "-2147221200";
-export const DATA_E_LAST = "-2147221185";
+export const DATA_E_FIRST = `-2147221200`;
+export const DATA_E_LAST = `-2147221185`;
 export const DATA_S_FIRST = 262448;
 export const DATA_S_LAST = 262463;
-export const VIEW_E_FIRST = "-2147221184";
-export const VIEW_E_LAST = "-2147221169";
+export const VIEW_E_FIRST = `-2147221184`;
+export const VIEW_E_LAST = `-2147221169`;
 export const VIEW_S_FIRST = 262464;
 export const VIEW_S_LAST = 262479;
 export const VIEW_E_DRAW = 288598731874632000n;
-export const REGDB_E_FIRST = "-2147221168";
-export const REGDB_E_LAST = "-2147221153";
+export const REGDB_E_FIRST = `-2147221168`;
+export const REGDB_E_LAST = `-2147221153`;
 export const REGDB_S_FIRST = 262480;
 export const REGDB_S_LAST = 262495;
 export const REGDB_E_READREGDB = 288616324060676432n;
@@ -6329,12 +6326,12 @@ export const REGDB_E_CLASSNOTREG = 288605328944398676n;
 export const REGDB_E_IIDNOTREG = 288606428456026453n;
 export const REGDB_E_BADTHREADINGMODEL = 288607527967654230n;
 export const REGDB_E_PACKAGEPOLICYVIOLATION = 288617423572304215n;
-export const CAT_E_FIRST = "-2147221152";
-export const CAT_E_LAST = "-2147221151";
+export const CAT_E_FIRST = `-2147221152`;
+export const CAT_E_LAST = `-2147221151`;
 export const CAT_E_CATIDNOEXIST = 288618523083932000n;
 export const CAT_E_NODESCRIPTION = 288621821618815329n;
-export const CS_E_FIRST = "-2147221148";
-export const CS_E_LAST = "-2147221137";
+export const CS_E_FIRST = `-2147221148`;
+export const CS_E_LAST = `-2147221137`;
 export const CS_E_PACKAGE_NOTFOUND = 288633916246720868n;
 export const CS_E_NOT_DELETABLE = 288624020642070885n;
 export const CS_E_CLASS_NOTFOUND = 288625120153698662n;
@@ -6347,33 +6344,33 @@ export const CS_E_NETWORK_ERROR = 288631717223465324n;
 export const CS_E_ADMIN_LIMIT_EXCEEDED = 288632816735093101n;
 export const CS_E_SCHEMA_MISMATCH = 288635015758348654n;
 export const CS_E_INTERNAL_ERROR = 288622921130443119n;
-export const CACHE_E_FIRST = "-2147221136";
-export const CACHE_E_LAST = "-2147221121";
+export const CACHE_E_FIRST = `-2147221136`;
+export const CACHE_E_LAST = `-2147221121`;
 export const CACHE_S_FIRST = 262512;
 export const CACHE_S_LAST = 262527;
 export const CACHE_E_NOCACHE_UPDATED = 288651508432765296n;
-export const OLEOBJ_E_FIRST = "-2147221120";
-export const OLEOBJ_E_LAST = "-2147221105";
+export const OLEOBJ_E_FIRST = `-2147221120`;
+export const OLEOBJ_E_LAST = `-2147221105`;
 export const OLEOBJ_S_FIRST = 262528;
 export const OLEOBJ_S_LAST = 262543;
 export const OLEOBJ_E_NOVERBS = 288669100618809728n;
 export const OLEOBJ_E_INVALIDVERB = 288670200130437505n;
-export const CLIENTSITE_E_FIRST = "-2147221104";
-export const CLIENTSITE_E_LAST = "-2147221089";
+export const CLIENTSITE_E_FIRST = `-2147221104`;
+export const CLIENTSITE_E_LAST = `-2147221089`;
 export const CLIENTSITE_S_FIRST = 262544;
 export const CLIENTSITE_S_LAST = 262559;
 export const INPLACE_E_NOTUNDOABLE = 288688891828109728n;
 export const INPLACE_E_NOTOOLSPACE = 288704284990898593n;
-export const INPLACE_E_FIRST = "-2147221088";
-export const INPLACE_E_LAST = "-2147221073";
+export const INPLACE_E_FIRST = `-2147221088`;
+export const INPLACE_E_LAST = `-2147221073`;
 export const INPLACE_S_FIRST = 262560;
 export const INPLACE_S_LAST = 262575;
-export const ENUM_E_FIRST = "-2147221072";
-export const ENUM_E_LAST = "-2147221057";
+export const ENUM_E_FIRST = `-2147221072`;
+export const ENUM_E_LAST = `-2147221057`;
 export const ENUM_S_FIRST = 262576;
 export const ENUM_S_LAST = 262591;
-export const CONVERT10_E_FIRST = "-2147221056";
-export const CONVERT10_E_LAST = "-2147221041";
+export const CONVERT10_E_FIRST = `-2147221056`;
+export const CONVERT10_E_LAST = `-2147221041`;
 export const CONVERT10_S_FIRST = 262592;
 export const CONVERT10_S_LAST = 262607;
 export const CONVERT10_E_OLESTREAM_GET = 288739469362987456n;
@@ -6383,8 +6380,8 @@ export const CONVERT10_E_OLESTREAM_BITMAP_TO_DIB = 288727374735081923n;
 export const CONVERT10_E_STG_FMT = 288728474246709700n;
 export const CONVERT10_E_STG_NO_STD_STREAM = 288729573758337477n;
 export const CONVERT10_E_STG_DIB_TO_BITMAP = 288740568874615238n;
-export const CLIPBRD_E_FIRST = "-2147221040";
-export const CLIPBRD_E_LAST = "-2147221025";
+export const CLIPBRD_E_FIRST = `-2147221040`;
+export const CLIPBRD_E_LAST = `-2147221025`;
 export const CLIPBRD_S_FIRST = 262608;
 export const CLIPBRD_S_LAST = 262623;
 export const CLIPBRD_E_CANT_OPEN = 288757061549031888n;
@@ -6392,8 +6389,8 @@ export const CLIPBRD_E_CANT_EMPTY = 288742767897870801n;
 export const CLIPBRD_E_CANT_SET = 288743867409498578n;
 export const CLIPBRD_E_BAD_DATA = 288744966921126355n;
 export const CLIPBRD_E_CANT_CLOSE = 288758161060659668n;
-export const MK_E_FIRST = "-2147221024";
-export const MK_E_LAST = "-2147221009";
+export const MK_E_FIRST = `-2147221024`;
+export const MK_E_LAST = `-2147221009`;
 export const MK_S_FIRST = 262624;
 export const MK_S_LAST = 262639;
 export const MK_E_CONNECTMANUALLY = 288774653735076320n;
@@ -6412,8 +6409,8 @@ export const MK_E_NOINVERSE = 288772454711820780n;
 export const MK_E_NOSTORAGE = 288773554223448557n;
 export const MK_E_NOPREFIX = 288792245921120750n;
 export const MK_E_ENUMERATION_FAILED = 288758161060659695n;
-export const CO_E_FIRST = "-2147221008";
-export const CO_E_LAST = "-2147220993";
+export const CO_E_FIRST = `-2147221008`;
+export const CO_E_LAST = `-2147220993`;
 export const CO_S_FIRST = 262640;
 export const CO_S_LAST = 262655;
 export const CO_E_ALREADYINITIALIZED = 288777952269959665n;
@@ -6431,8 +6428,8 @@ export const CO_E_OBJISREG = 288790046897865212n;
 export const CO_E_OBJNOTCONNECTED = 288791146409492989n;
 export const CO_E_APPDIDNTREG = 288793345432748542n;
 export const CO_E_RELEASED = 288775753246704127n;
-export const EVENT_E_FIRST = "-2147220992";
-export const EVENT_E_LAST = "-2147220961";
+export const EVENT_E_FIRST = `-2147220992`;
+export const EVENT_E_LAST = `-2147220961`;
 export const EVENT_S_FIRST = 262656;
 export const EVENT_S_LAST = 262687;
 export const EVENT_S_SOME_SUBSCRIBERS_FAILED = 288827428145725952n;
@@ -6536,8 +6533,8 @@ export const XACT_S_ABORTING = 292747187098800136n;
 export const XACT_S_SINGLEPHASE = 346788183603990537n;
 export const XACT_S_LOCALLY_OK = 351280788115083274n;
 export const XACT_S_LASTRESOURCEMANAGER = 346778287999340560n;
-export const CONTEXT_E_FIRST = "-2147164160";
-export const CONTEXT_E_LAST = "-2147164113";
+export const CONTEXT_E_FIRST = `-2147164160`;
+export const CONTEXT_E_LAST = `-2147164113`;
 export const CONTEXT_S_FIRST = 319488;
 export const CONTEXT_S_LAST = 319535;
 export const CONTEXT_E_ABORTED = 351284088797454338n;
@@ -7007,8 +7004,8 @@ export const SEC_I_ASYNC_CALL_PENDING = 649478237172859752n;
 export const SEC_E_INVALID_UPN_NAME = 649479338831971177n;
 export const SEC_E_EXT_BUFFER_TOO_SMALL = 649480438343598954n;
 export const SEC_E_INSUFFICIENT_BUFFERS = 653023064808293227n;
-export const SEC_E_NO_SPM = "-2146893052";
-export const SEC_E_NOT_SUPPORTED = "-2146893054";
+export const SEC_E_NO_SPM = `-2146893052`;
+export const SEC_E_NOT_SUPPORTED = `-2146893054`;
 export const CRYPT_E_MSG_ERROR = 653024164319924225n;
 export const CRYPT_E_UNKNOWN_ALGO = 653025263831552002n;
 export const CRYPT_E_OID_FORMAT = 653026363343179779n;
@@ -8607,18 +8604,18 @@ export const HCN_E_ENDPOINT_NOT_ATTACHED = 4251456341685239860n;
 export const HCN_E_ENDPOINT_NOT_LOCAL = 4251457441196867637n;
 export const HCN_INTERFACEPARAMETERS_ALREADY_APPLIED = 4251458540708495414n;
 export const HCN_E_VFP_NOT_ALLOWED = 4323737136583606327n;
-export const SDIAG_E_CANCELLED = "-2143551232";
-export const SDIAG_E_SCRIPT = "-2143551231";
-export const SDIAG_E_POWERSHELL = "-2143551230";
-export const SDIAG_E_MANAGEDHOST = "-2143551229";
-export const SDIAG_E_NOVERIFIER = "-2143551228";
+export const SDIAG_E_CANCELLED = `-2143551232`;
+export const SDIAG_E_SCRIPT = `-2143551231`;
+export const SDIAG_E_POWERSHELL = `-2143551230`;
+export const SDIAG_E_MANAGEDHOST = `-2143551229`;
+export const SDIAG_E_NOVERIFIER = `-2143551228`;
 export const SDIAG_S_CANNOTRUN = 3932421;
-export const SDIAG_E_DISABLED = "-2143551226";
-export const SDIAG_E_TRUST = "-2143551225";
-export const SDIAG_E_CANNOTRUN = "-2143551224";
-export const SDIAG_E_VERSION = "-2143551223";
-export const SDIAG_E_RESOURCE = "-2143551222";
-export const SDIAG_E_ROOTCAUSE = "-2143551221";
+export const SDIAG_E_DISABLED = `-2143551226`;
+export const SDIAG_E_TRUST = `-2143551225`;
+export const SDIAG_E_CANNOTRUN = `-2143551224`;
+export const SDIAG_E_VERSION = `-2143551223`;
+export const SDIAG_E_RESOURCE = `-2143551222`;
+export const SDIAG_E_ROOTCAUSE = `-2143551221`;
 export const WPN_E_CHANNEL_CLOSED = 4467853424171286784n;
 export const WPN_E_CHANNEL_REQUEST_NOT_COMPLETE = 4467854523682914561n;
 export const WPN_E_INVALID_APP = 4467855623194542338n;
@@ -9812,13 +9809,15 @@ export type LRESULT = Deno.PointerValue;
 
 export type NTSTATUS = number;
 
-export type PSID = Deno.PointerValue;
+export type PSID = Deno.PointerValue | Uint8Array | null;
 
 export type PSTR = Deno.PointerValue | Uint8Array | null;
 
 export type PWSTR = Deno.PointerValue | Uint8Array | null;
 
 export type WPARAM = Deno.PointerValue;
+
+export type COLORREF = number;
 
 export type HRSRC = Deno.PointerValue;
 
@@ -10421,7 +10420,7 @@ export function allocLUID(data?: Partial<LUID>): Uint8Array {
 // Native Libraries
 
 try {
-  var libOLEAUT32 = Deno.dlopen("OLEAUT32", {
+  var libOLEAUT32_dll = Deno.dlopen("OLEAUT32.dll", {
     SysAllocString: {
       parameters: ["buffer"],
       result: "pointer",
@@ -10466,7 +10465,7 @@ try {
 } catch(e) { /* ignore */ }
 
 try {
-  var libKERNEL32 = Deno.dlopen("KERNEL32", {
+  var libKERNEL32_dll = Deno.dlopen("KERNEL32.dll", {
     CloseHandle: {
       parameters: ["pointer"],
       result: "i32",
@@ -10495,7 +10494,7 @@ try {
 } catch(e) { /* ignore */ }
 
 try {
-  var libapi_ms_win_core_handle_l1_1_0 = Deno.dlopen("api-ms-win-core-handle-l1-1-0", {
+  var libapi_ms_win_core_handle_l1_1_0_dll = Deno.dlopen("api-ms-win-core-handle-l1-1-0.dll", {
     CompareObjectHandles: {
       parameters: ["pointer", "pointer"],
       result: "i32",
@@ -10504,7 +10503,7 @@ try {
 } catch(e) { /* ignore */ }
 
 try {
-  var libUSER32 = Deno.dlopen("USER32", {
+  var libUSER32_dll = Deno.dlopen("USER32.dll", {
     SetLastErrorEx: {
       parameters: ["u32", "u32"],
       result: "void",
@@ -10513,7 +10512,7 @@ try {
 } catch(e) { /* ignore */ }
 
 try {
-  var libntdll = Deno.dlopen("ntdll", {
+  var libntdll_dll = Deno.dlopen("ntdll.dll", {
     RtlNtStatusToDosError: {
       parameters: ["pointer"],
       result: "u32",
@@ -10526,21 +10525,21 @@ try {
 export function SysAllocString(
   psz: string | null /* Windows.Win32.Foundation.PWSTR */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.BSTR */ {
-  return util.pointerFromFfi(libOLEAUT32.SysAllocString(util.pwstrToFfi(psz)));
+  return util.pointerFromFfi(libOLEAUT32_dll.SysAllocString(util.pwstrToFfi(psz)));
 }
 
 export function SysReAllocString(
   pbstr: Deno.PointerValue | Uint8Array | null /* ptr */,
   psz: string | null /* Windows.Win32.Foundation.PWSTR */,
 ): number /* i32 */ {
-  return libOLEAUT32.SysReAllocString(util.toPointer(pbstr), util.pwstrToFfi(psz));
+  return libOLEAUT32_dll.SysReAllocString(util.toPointer(pbstr), util.pwstrToFfi(psz));
 }
 
 export function SysAllocStringLen(
   strIn: string | null /* Windows.Win32.Foundation.PWSTR */,
   ui: number /* u32 */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.BSTR */ {
-  return util.pointerFromFfi(libOLEAUT32.SysAllocStringLen(util.pwstrToFfi(strIn), ui));
+  return util.pointerFromFfi(libOLEAUT32_dll.SysAllocStringLen(util.pwstrToFfi(strIn), ui));
 }
 
 export function SysReAllocStringLen(
@@ -10548,50 +10547,50 @@ export function SysReAllocStringLen(
   psz: string | null /* Windows.Win32.Foundation.PWSTR */,
   len: number /* u32 */,
 ): number /* i32 */ {
-  return libOLEAUT32.SysReAllocStringLen(util.toPointer(pbstr), util.pwstrToFfi(psz), len);
+  return libOLEAUT32_dll.SysReAllocStringLen(util.toPointer(pbstr), util.pwstrToFfi(psz), len);
 }
 
 export function SysAddRefString(
   bstrString: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.BSTR */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libOLEAUT32.SysAddRefString(util.toPointer(bstrString)));
+  return util.pointerFromFfi(libOLEAUT32_dll.SysAddRefString(util.toPointer(bstrString)));
 }
 
 export function SysReleaseString(
   bstrString: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.BSTR */,
 ): void /* void */ {
-  return libOLEAUT32.SysReleaseString(util.toPointer(bstrString));
+  return libOLEAUT32_dll.SysReleaseString(util.toPointer(bstrString));
 }
 
 export function SysFreeString(
   bstrString: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.BSTR */,
 ): void /* void */ {
-  return libOLEAUT32.SysFreeString(util.toPointer(bstrString));
+  return libOLEAUT32_dll.SysFreeString(util.toPointer(bstrString));
 }
 
 export function SysStringLen(
   pbstr: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.BSTR */,
 ): number /* u32 */ {
-  return libOLEAUT32.SysStringLen(util.toPointer(pbstr));
+  return libOLEAUT32_dll.SysStringLen(util.toPointer(pbstr));
 }
 
 export function SysStringByteLen(
   bstr: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.BSTR */,
 ): number /* u32 */ {
-  return libOLEAUT32.SysStringByteLen(util.toPointer(bstr));
+  return libOLEAUT32_dll.SysStringByteLen(util.toPointer(bstr));
 }
 
 export function SysAllocStringByteLen(
   psz: string | null /* Windows.Win32.Foundation.PSTR */,
   len: number /* u32 */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.BSTR */ {
-  return util.pointerFromFfi(libOLEAUT32.SysAllocStringByteLen(util.pstrToFfi(psz), len));
+  return util.pointerFromFfi(libOLEAUT32_dll.SysAllocStringByteLen(util.pstrToFfi(psz), len));
 }
 
 export function CloseHandle(
   hObject: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32.CloseHandle(util.toPointer(hObject)));
+  return util.boolFromFfi(libKERNEL32_dll.CloseHandle(util.toPointer(hObject)));
 }
 
 export function DuplicateHandle(
@@ -10603,21 +10602,21 @@ export function DuplicateHandle(
   bInheritHandle: boolean /* Windows.Win32.Foundation.BOOL */,
   dwOptions: DUPLICATE_HANDLE_OPTIONS /* Windows.Win32.Foundation.DUPLICATE_HANDLE_OPTIONS */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32.DuplicateHandle(util.toPointer(hSourceProcessHandle), util.toPointer(hSourceHandle), util.toPointer(hTargetProcessHandle), util.toPointer(lpTargetHandle), dwDesiredAccess, util.boolToFfi(bInheritHandle), dwOptions));
+  return util.boolFromFfi(libKERNEL32_dll.DuplicateHandle(util.toPointer(hSourceProcessHandle), util.toPointer(hSourceHandle), util.toPointer(hTargetProcessHandle), util.toPointer(lpTargetHandle), dwDesiredAccess, util.boolToFfi(bInheritHandle), dwOptions));
 }
 
 export function CompareObjectHandles(
   hFirstObjectHandle: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
   hSecondObjectHandle: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libapi_ms_win_core_handle_l1_1_0.CompareObjectHandles(util.toPointer(hFirstObjectHandle), util.toPointer(hSecondObjectHandle)));
+  return util.boolFromFfi(libapi_ms_win_core_handle_l1_1_0_dll.CompareObjectHandles(util.toPointer(hFirstObjectHandle), util.toPointer(hSecondObjectHandle)));
 }
 
 export function GetHandleInformation(
   hObject: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
   lpdwFlags: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32.GetHandleInformation(util.toPointer(hObject), util.toPointer(lpdwFlags)));
+  return util.boolFromFfi(libKERNEL32_dll.GetHandleInformation(util.toPointer(hObject), util.toPointer(lpdwFlags)));
 }
 
 export function SetHandleInformation(
@@ -10625,29 +10624,29 @@ export function SetHandleInformation(
   dwMask: number /* u32 */,
   dwFlags: HANDLE_FLAGS /* Windows.Win32.Foundation.HANDLE_FLAGS */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32.SetHandleInformation(util.toPointer(hObject), dwMask, dwFlags));
+  return util.boolFromFfi(libKERNEL32_dll.SetHandleInformation(util.toPointer(hObject), dwMask, dwFlags));
 }
 
 export function GetLastError(): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
-  return libKERNEL32.GetLastError();
+  return libKERNEL32_dll.GetLastError();
 }
 
 export function SetLastError(
   dwErrCode: WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */,
 ): void /* void */ {
-  return libKERNEL32.SetLastError(dwErrCode);
+  return libKERNEL32_dll.SetLastError(dwErrCode);
 }
 
 export function SetLastErrorEx(
   dwErrCode: WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */,
   dwType: number /* u32 */,
 ): void /* void */ {
-  return libUSER32.SetLastErrorEx(dwErrCode, dwType);
+  return libUSER32_dll.SetLastErrorEx(dwErrCode, dwType);
 }
 
 export function RtlNtStatusToDosError(
   Status: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.NTSTATUS */,
 ): number /* u32 */ {
-  return libntdll.RtlNtStatusToDosError(util.toPointer(Status));
+  return libntdll_dll.RtlNtStatusToDosError(util.toPointer(Status));
 }
 

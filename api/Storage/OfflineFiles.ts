@@ -65,6 +65,7 @@ export const OFFLINEFILES_ENUM_FLAT = 1;
 export const OFFLINEFILES_ENUM_FLAT_FILESONLY = 2;
 export const OFFLINEFILES_SETTING_SCOPE_USER = 1;
 export const OFFLINEFILES_SETTING_SCOPE_COMPUTER = 2;
+export const OFFLINEFILES_SETTING_PinLinkTargets = `LinkTargetCaching`;
 export const OFFLINEFILES_PINLINKTARGETS_NEVER = 0;
 export const OFFLINEFILES_PINLINKTARGETS_EXPLICIT = 1;
 export const OFFLINEFILES_PINLINKTARGETS_ALWAYS = 2;
@@ -282,7 +283,7 @@ export type BOOL = number;
 // Native Libraries
 
 try {
-  var libCSCAPI = Deno.dlopen("CSCAPI", {
+  var libCSCAPI_dll = Deno.dlopen("CSCAPI.dll", {
     OfflineFilesEnable: {
       parameters: ["i32", "pointer"],
       result: "u32",
@@ -308,18 +309,18 @@ export function OfflineFilesEnable(
   bEnable: boolean /* Windows.Win32.Foundation.BOOL */,
   pbRebootRequired: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libCSCAPI.OfflineFilesEnable(util.boolToFfi(bEnable), util.toPointer(pbRebootRequired));
+  return libCSCAPI_dll.OfflineFilesEnable(util.boolToFfi(bEnable), util.toPointer(pbRebootRequired));
 }
 
 export function OfflineFilesStart(): number /* u32 */ {
-  return libCSCAPI.OfflineFilesStart();
+  return libCSCAPI_dll.OfflineFilesStart();
 }
 
 export function OfflineFilesQueryStatus(
   pbActive: Deno.PointerValue | Uint8Array | null /* ptr */,
   pbEnabled: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libCSCAPI.OfflineFilesQueryStatus(util.toPointer(pbActive), util.toPointer(pbEnabled));
+  return libCSCAPI_dll.OfflineFilesQueryStatus(util.toPointer(pbActive), util.toPointer(pbEnabled));
 }
 
 export function OfflineFilesQueryStatusEx(
@@ -327,6 +328,6 @@ export function OfflineFilesQueryStatusEx(
   pbEnabled: Deno.PointerValue | Uint8Array | null /* ptr */,
   pbAvailable: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libCSCAPI.OfflineFilesQueryStatusEx(util.toPointer(pbActive), util.toPointer(pbEnabled), util.toPointer(pbAvailable));
+  return libCSCAPI_dll.OfflineFilesQueryStatusEx(util.toPointer(pbActive), util.toPointer(pbEnabled), util.toPointer(pbAvailable));
 }
 

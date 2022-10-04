@@ -3,6 +3,7 @@
 import * as util from "../../util.ts";
 
 // Enums
+export type CLUSTER_SHARED_VOLUME_RENAME_INPUT_TYPE = number;
 export type CLUSTER_QUORUM_TYPE = number;
 export type NODE_CLUSTER_STATE = number;
 export type CLUSTER_RESOURCE_STATE_CHANGE_REASON = number;
@@ -72,7 +73,6 @@ export type CLUSPROP_PIFLAGS = number;
 export type CLUSTER_CSV_VOLUME_FAULT_STATE = number;
 export type CLUSTER_SHARED_VOLUME_BACKUP_STATE = number;
 export type CLUSTER_SHARED_VOLUME_STATE = number;
-export type CLUSTER_SHARED_VOLUME_RENAME_INPUT_TYPE = number;
 export type MAINTENANCE_MODE_TYPE_ENUM = number;
 export type CLUSPROP_IPADDR_ENABLENETBIOS = number;
 export type FILESHARE_CHANGE_ENUM = number;
@@ -101,6 +101,11 @@ export type CLUSTER_ROLE_STATE = number;
 export type CLUADMEX_OBJECT_TYPE = number;
 
 // Constants
+export const ClusterSharedVolumeRenameInputTypeNone = 0;
+export const ClusterSharedVolumeRenameInputTypeVolumeOffset = 1;
+export const ClusterSharedVolumeRenameInputTypeVolumeId = 2;
+export const ClusterSharedVolumeRenameInputTypeVolumeName = 3;
+export const ClusterSharedVolumeRenameInputTypeVolumeGuid = 4;
 export const CLUSTER_VERSION_FLAG_MIXED_MODE = 1;
 export const CLUSTER_VERSION_UNKNOWN = 4294967295;
 export const NT4_MAJOR_VERSION = 1;
@@ -127,6 +132,7 @@ export const MN_UPGRADE_VERSION = 3;
 export const FE_UPGRADE_VERSION = 4;
 export const CA_UPGRADE_VERSION = 1;
 export const HCI_UPGRADE_BIT = 32768;
+export const CLUSREG_NAME_MIXED_MODE = `MixedMode`;
 export const CLUSAPI_VERSION_SERVER2008 = 1536;
 export const CLUSAPI_VERSION_SERVER2008R2 = 1792;
 export const CLUSAPI_VERSION_WINDOWS8 = 1793;
@@ -273,15 +279,401 @@ export const MAX_CREATINGDC_LENGTH = 256;
 export const DNS_LENGTH = 64;
 export const MAINTENANCE_MODE_V2_SIG = 2881155087;
 export const NNLEN = 80;
+export const CLUS_RESTYPE_NAME_GENAPP = `Generic Application`;
+export const CLUS_RESTYPE_NAME_GENSVC = `Generic Service`;
+export const CLUS_RESTYPE_NAME_GENSCRIPT = `Generic Script`;
+export const CLUS_RESTYPE_NAME_IPADDR = `IP Address`;
+export const CLUS_RESTYPE_NAME_NETNAME = `Network Name`;
+export const CLUS_RESTYPE_NAME_DNN = `Distributed Network Name`;
+export const CLUS_RESTYPE_NAME_FILESHR = `File Share`;
+export const CLUS_RESTYPE_NAME_PRTSPLR = `Print Spooler`;
+export const CLUS_RESTYPE_NAME_IPV6_NATIVE = `IPv6 Address`;
+export const CLUS_RESTYPE_NAME_IPV6_TUNNEL = `IPv6 Tunnel Address`;
+export const CLUS_RESTYPE_NAME_VSSTASK = `Volume Shadow Copy Service Task`;
+export const CLUS_RESTYPE_NAME_WINS = `WINS Service`;
+export const CLUS_RESTYPE_NAME_DHCP = `DHCP Service`;
+export const CLUS_RESTYPE_NAME_MSMQ = `Microsoft Message Queue Server`;
+export const CLUS_RESTYPE_NAME_NEW_MSMQ = `MSMQ`;
+export const CLUS_RESTYPE_NAME_MSMQ_TRIGGER = `MSMQTriggers`;
+export const CLUS_RESTYPE_NAME_MSDTC = `Distributed Transaction Coordinator`;
+export const CLUS_RESTYPE_NAME_NFS = `NFS Share`;
+export const CLUS_RESTYPE_NAME_NETWORK_FILE_SYSTEM = `Network File System`;
+export const CLUS_RESTYPE_NAME_ISNS = `Microsoft iSNS`;
+export const CLUS_RESTYPE_NAME_HARDDISK = `Physical Disk`;
+export const CLUS_RESTYPE_NAME_PHYS_DISK = `Physical Disk`;
+export const CLUS_RESTYPE_NAME_FSWITNESS = `File Share Witness`;
+export const CLUS_RESTYPE_NAME_FILESERVER = `File Server`;
+export const CLUS_RESTYPE_NAME_SODAFILESERVER = `Scale Out File Server`;
+export const CLUS_RESTYPE_NAME_DFS = `Distributed File System`;
+export const CLUS_RESTYPE_NAME_DFSR = `DFS Replicated Folder`;
+export const CLUS_RESTYPE_NAME_VM = `Virtual Machine`;
+export const CLUS_RESTYPE_NAME_VM_CONFIG = `Virtual Machine Configuration`;
+export const CLUS_RESTYPE_NAME_ISCSITARGET = `iSCSI Target Server`;
+export const CLUS_RESTYPE_NAME_STORAGE_POOL = `Storage Pool`;
+export const CLUS_RESTYPE_NAME_TASKSCHEDULER = `Task Scheduler`;
+export const CLUS_RESTYPE_NAME_VMREPLICA_BROKER = `Virtual Machine Replication Broker`;
+export const CLUS_RESTYPE_NAME_VMREPLICA_COORDINATOR = `Virtual Machine Replication Coordinator`;
+export const CLUS_RESTYPE_NAME_NFS_V2 = `Network File System`;
+export const CLUS_RESTYPE_NAME_NFS_MSNS = `NFS Multi Server Namespace`;
+export const CLUS_RESTYPE_NAME_CAU = `ClusterAwareUpdatingResource`;
+export const CLUS_RESTYPE_NAME_NV_PROVIDER_ADDRESS = `Provider Address`;
+export const CLUS_RESTYPE_NAME_NAT = `Nat`;
+export const CLUS_RESTYPE_NAME_STORAGE_POLICIES = `Storage Policies`;
+export const CLUS_RESTYPE_NAME_STORQOS = `Storage QoS Policy Manager`;
+export const CLUS_RESTYPE_NAME_HEALTH_SERVICE = `Health Service`;
+export const CLUS_RESTYPE_NAME_VM_WMI = `Virtual Machine Cluster WMI`;
+export const CLUS_RESTYPE_NAME_SDDC_MANAGEMENT = `SDDC Management`;
+export const CLUS_RESTYPE_NAME_HCSVM = `HCS Virtual Machine`;
+export const CLUS_RESTYPE_NAME_VIRTUAL_IPV4 = `Disjoint IPv4 Address`;
+export const CLUS_RESTYPE_NAME_VIRTUAL_IPV6 = `Disjoint IPv6 Address`;
+export const CLUS_RESTYPE_NAME_CLOUD_WITNESS = `Cloud Witness`;
+export const CLUS_RESTYPE_NAME_STORAGE_REPLICA = `Storage Replica`;
+export const CLUS_RESTYPE_NAME_CROSS_CLUSTER = `Cross Cluster Dependency Orchestrator`;
+export const CLUS_RESTYPE_NAME_SCALEOUT_MASTER = `Scaleout Master`;
+export const CLUS_RESTYPE_NAME_SCALEOUT_WORKER = `Scaleout Worker`;
+export const CLUS_RESTYPE_NAME_CONTAINER = `Container`;
+export const CLUS_RES_NAME_SCALEOUT_MASTER = `Scaleout Master`;
+export const CLUS_RES_NAME_SCALEOUT_WORKER = `Scaleout Worker`;
+export const CLUSREG_NAME_CLUS_DESC = `Description`;
+export const CLUSREG_NAME_CLUS_SD = `Security Descriptor`;
+export const CLUSREG_NAME_CLUS_DEFAULT_NETWORK_ROLE = `DefaultNetworkRole`;
+export const CLUSREG_NAME_QUORUM_ARBITRATION_TIMEOUT = `QuorumArbitrationTimeMax`;
+export const CLUSTER_HANG_TIMEOUT_KEYNAME = `ClusSvcHangTimeout`;
+export const CLUSTER_HANG_RECOVERY_ACTION_KEYNAME = `HangRecoveryAction`;
+export const CLUSTER_CSA_VSS_STATE = `BackupInProgress`;
+export const CLUSTER_REQUEST_REPLY_TIMEOUT = `RequestReplyTimeout`;
+export const CLUSTER_WITNESS_FAILED_RESTART_INTERVAL = `WitnessRestartInterval`;
+export const CLUSTER_WITNESS_DATABASE_WRITE_TIMEOUT = `WitnessDatabaseWriteTimeout`;
+export const CLUSTER_ADD_EVICT_DELAY = `AddEvictDelay`;
+export const CLUSREG_NAME_FIXQUORUM = `FixQuorum`;
+export const CLUSREG_NAME_PREVENTQUORUM = `PreventQuorum`;
+export const CLUSREG_NAME_IGNORE_PERSISTENT_STATE = `IgnorePersistentStateOnStartup`;
+export const CLUSTER_SHARED_VOLUMES_ROOT = `SharedVolumesRoot`;
+export const ENABLE_CLUSTER_SHARED_VOLUMES = `EnableSharedVolumes`;
+export const CLUSTER_SHARED_VOLUME_VSS_WRITER_OPERATION_TIMEOUT = `SharedVolumeVssWriterOperationTimeout`;
+export const USE_CLIENT_ACCESS_NETWORKS_FOR_CSV = `UseClientAccessNetworksForSharedVolumes`;
+export const CLUSTER_CSV_COMPATIBLE_FILTERS = `SharedVolumeCompatibleFilters`;
+export const CLUSTER_CSV_INCOMPATIBLE_FILTERS = `SharedVolumeIncompatibleFilters`;
+export const CLUSTER_GROUP_WAIT_DELAY = `ClusterGroupWaitDelay`;
+export const MINIMUM_PREEMPTOR_PRIORITY = `MinimumPreemptorPriority`;
+export const MINIMUM_NEVER_PREEMPT_PRIORITY = `MinimumNeverPreemptPriority`;
+export const CLUSTER_ENFORCED_ANTIAFFINITY = `ClusterEnforcedAntiaffinity`;
+export const CLUSREG_NAME_SHUTDOWN_TIMEOUT_MINUTES = `ShutdownTimeoutInMinutes`;
+export const CLUSREG_NAME_CSV_MDS_SD = `SharedVolumeSecurityDescriptor`;
+export const CLUSREG_NAME_FAILOVER_MOVE_MIGRATION_TYPE = `FailoverMoveMigrationType`;
+export const CLUSREG_NAME_CSV_BLOCK_CACHE = `BlockCacheSize`;
+export const CLUSREG_NAME_ROUTE_HISTORY_LENGTH = `RouteHistoryLength`;
+export const CLUSREG_NAME_LAST_RECENT_EVENTS_RESET_TIME = `RecentEventsResetTime`;
+export const CLUSREG_NAME_DRAIN_ON_SHUTDOWN = `DrainOnShutdown`;
+export const CLUSREG_NAME_NETFT_IPSEC_ENABLED = `NetftIPSecEnabled`;
+export const CLUSREG_NAME_WITNESS_DYNAMIC_WEIGHT = `WitnessDynamicWeight`;
+export const CLUSREG_NAME_MESSAGE_BUFFER_LENGTH = `MessageBufferLength`;
+export const CLUSREG_NAME_DATABASE_READ_WRITE_MODE = `DatabaseReadWriteMode`;
+export const CLUSREG_NAME_FUNCTIONAL_LEVEL = `ClusterFunctionalLevel`;
+export const CLUSREG_NAME_UPGRADE_VERSION = `ClusterUpgradeVersion`;
+export const CLUSREG_NAME_RESILIENCY_LEVEL = `ResiliencyLevel`;
+export const CLUSREG_NAME_RESILIENCY_DEFAULT_SECONDS = `ResiliencyDefaultPeriod`;
+export const CLUSREG_NAME_QUARANTINE_THRESHOLD = `QuarantineThreshold`;
+export const CLUSREG_NAME_QUARANTINE_DURATION = `QuarantineDuration`;
+export const CLUSTER_S2D_ENABLED = `S2DEnabled`;
+export const CLUSTER_S2D_BUS_TYPES = `S2DBusTypes`;
+export const CLUSTER_S2D_CACHE_PAGE_SIZE_KBYTES = `S2DCachePageSizeKBytes`;
+export const CLUSTER_S2D_OPTIMIZATIONS = `S2DOptimizations`;
+export const CLUSTER_S2D_IO_LATENCY_THRESHOLD = `S2DIOLatencyThreshold`;
+export const CLUSTER_S2D_CACHE_DESIRED_STATE = `S2DCacheDesiredState`;
+export const CLUSTER_S2D_CACHE_METADATA_RESERVE = `S2DCacheMetadataReserveBytes`;
+export const CLUSTER_S2D_CACHE_FLASH_RESERVE_PERCENT = `S2DCacheFlashReservePercent`;
+export const CLUSTER_S2D_CACHE_BEHAVIOR_FLAGS = `S2DCacheBehavior`;
+export const CLUSTER_NAME_PREFERRED_SITE = `PreferredSite`;
+export const CLUSTER_NAME_AUTO_BALANCER_MODE = `AutoBalancerMode`;
+export const CLUSTER_NAME_AUTO_BALANCER_LEVEL = `AutoBalancerLevel`;
+export const CLUSREG_NAME_GROUP_DEPENDENCY_TIMEOUT = `GroupDependencyTimeout`;
+export const CLUSREG_NAME_PLACEMENT_OPTIONS = `PlacementOptions`;
+export const CLUSREG_NAME_ENABLED_EVENT_LOGS = `EnabledEventLogs`;
+export const CLUSREG_NAME_SAME_SUBNET_DELAY = `SameSubnetDelay`;
+export const CLUSREG_NAME_CROSS_SUBNET_DELAY = `CrossSubnetDelay`;
+export const CLUSREG_NAME_CROSS_SITE_DELAY = `CrossSiteDelay`;
+export const CLUSREG_NAME_SAME_SUBNET_THRESHOLD = `SameSubnetThreshold`;
+export const CLUSREG_NAME_CROSS_SUBNET_THRESHOLD = `CrossSubnetThreshold`;
+export const CLUSREG_NAME_CROSS_SITE_THRESHOLD = `CrossSiteThreshold`;
+export const CLUSREG_NAME_PLUMB_ALL_CROSS_SUBNET_ROUTES = `PlumbAllCrossSubnetRoutes`;
+export const CLUSREG_NAME_NODE_NAME = `NodeName`;
+export const CLUSREG_NAME_NODE_HIGHEST_VERSION = `NodeHighestVersion`;
+export const CLUSREG_NAME_NODE_LOWEST_VERSION = `NodeLowestVersion`;
+export const CLUSREG_NAME_NODE_DESC = `Description`;
+export const CLUSREG_NAME_NODE_MAJOR_VERSION = `MajorVersion`;
+export const CLUSREG_NAME_NODE_MINOR_VERSION = `MinorVersion`;
+export const CLUSREG_NAME_NODE_BUILD_NUMBER = `BuildNumber`;
+export const CLUSREG_NAME_NODE_CSDVERSION = `CSDVersion`;
+export const CLUSREG_NAME_NODE_WEIGHT = `NodeWeight`;
+export const CLUSREG_NAME_NODE_DYNAMIC_WEIGHT = `DynamicWeight`;
+export const CLUSREG_NAME_NODE_IS_PRIMARY = `IsPrimary`;
+export const CLUSREG_NAME_NODE_DRAIN_STATUS = `NodeDrainStatus`;
+export const CLUSREG_NAME_NODE_DRAIN_TARGET = `NodeDrainTarget`;
+export const CLUSREG_NAME_NODE_NEEDS_PQ = `NeedsPreventQuorum`;
+export const CLUSREG_NAME_NODE_FDID = `FaultDomainId`;
+export const CLUSREG_NAME_NODE_STATUS_INFO = `StatusInformation`;
+export const CLUSREG_NAME_NODE_FAULT_DOMAIN = `FaultDomain`;
+export const CLUSREG_NAME_NODE_MODEL = `Model`;
+export const CLUSREG_NAME_NODE_SERIALNUMBER = `SerialNumber`;
+export const CLUSREG_NAME_NODE_MANUFACTURER = `Manufacturer`;
+export const CLUSREG_NAME_GRP_NAME = `Name`;
+export const CLUSREG_NAME_GRP_TYPE = `GroupType`;
+export const CLUSREG_NAME_GRP_DESC = `Description`;
+export const CLUSREG_NAME_GRP_PERSISTENT_STATE = `PersistentState`;
+export const CLUSREG_NAME_GRP_FAILBACK_TYPE = `AutoFailbackType`;
+export const CLUSREG_NAME_GRP_FAILBACK_WIN_START = `FailbackWindowStart`;
+export const CLUSREG_NAME_GRP_FAILBACK_WIN_END = `FailbackWindowEnd`;
+export const CLUSREG_NAME_GRP_FAILOVER_THRESHOLD = `FailoverThreshold`;
+export const CLUSREG_NAME_GRP_FAILOVER_PERIOD = `FailoverPeriod`;
+export const CLUSREG_NAME_GRP_PRIORITY = `Priority`;
+export const CLUSREG_NAME_GRP_DEFAULT_OWNER = `DefaultOwner`;
+export const CLUSREG_NAME_GRP_STATUS_INFORMATION = `StatusInformation`;
+export const CLUSREG_NAME_GRP_ANTI_AFFINITY_CLASS_NAME = `AntiAffinityClassNames`;
+export const CLUSREG_NAME_GRP_START_DELAY = `GroupStartDelay`;
+export const CLUSREG_NAME_GRP_CCF_EPOCH = `CCFEpoch`;
+export const CLUSREG_NAME_GRP_CCF_EPOCH_HIGH = `CCFEpochHigh`;
+export const CLUSREG_NAME_GRP_RESILIENCY_PERIOD = `ResiliencyPeriod`;
+export const CLUSREG_NAME_GRP_PREFERRED_SITE = `PreferredSite`;
+export const CLUSREG_NAME_GRP_COLD_START_SETTING = `ColdStartSetting`;
+export const CLUSREG_NAME_GRP_FAULT_DOMAIN = `FaultDomain`;
+export const CLUSREG_NAME_GRP_UPDATE_DOMAIN = `UpdateDomain`;
+export const CLUSREG_NAME_GRP_PLACEMENT_OPTIONS = `PlacementOptions`;
+export const CLUSREG_NAME_GRP_LOCK_MOVE = `LockedFromMoving`;
+export const CLUSREG_NAME_RES_NAME = `Name`;
+export const CLUSREG_NAME_RES_TYPE = `Type`;
+export const CLUSREG_NAME_RES_DESC = `Description`;
+export const CLUSREG_NAME_RES_SEPARATE_MONITOR = `SeparateMonitor`;
+export const CLUSREG_NAME_RES_PERSISTENT_STATE = `PersistentState`;
+export const CLUSREG_NAME_RES_LOOKS_ALIVE = `LooksAlivePollInterval`;
+export const CLUSREG_NAME_RES_IS_ALIVE = `IsAlivePollInterval`;
+export const CLUSREG_NAME_RES_RESTART_ACTION = `RestartAction`;
+export const CLUSREG_NAME_RES_RESTART_THRESHOLD = `RestartThreshold`;
+export const CLUSREG_NAME_RES_RESTART_PERIOD = `RestartPeriod`;
+export const CLUSREG_NAME_RES_RESTART_DELAY = `RestartDelay`;
+export const CLUSREG_NAME_RES_RETRY_PERIOD_ON_FAILURE = `RetryPeriodOnFailure`;
+export const CLUSREG_NAME_RES_EMBEDDED_FAILURE_ACTION = `EmbeddedFailureAction`;
+export const CLUSREG_NAME_RES_PENDING_TIMEOUT = `PendingTimeout`;
+export const CLUSREG_NAME_RES_DEADLOCK_TIMEOUT = `DeadlockTimeout`;
+export const CLUSREG_NAME_RES_MONITOR_PID = `MonitorProcessId`;
+export const CLUSREG_NAME_RES_STATUS_INFORMATION = `StatusInformation`;
+export const CLUSREG_NAME_RES_LAST_OPERATION_STATUS_CODE = `LastOperationStatusCode`;
+export const CLUSREG_NAME_RES_DATA1 = `ResourceSpecificData1`;
+export const CLUSREG_NAME_RES_DATA2 = `ResourceSpecificData2`;
+export const CLUSREG_NAME_RES_STATUS = `ResourceSpecificStatus`;
+export const CLUSREG_NAME_RESTYPE_NAME = `Name`;
+export const CLUSREG_NAME_RESTYPE_DESC = `Description`;
+export const CLUSREG_NAME_RESTYPE_DLL_NAME = `DllName`;
+export const CLUSREG_NAME_RESTYPE_ADMIN_EXTENSIONS = `AdminExtensions`;
+export const CLUSREG_NAME_RESTYPE_LOOKS_ALIVE = `LooksAlivePollInterval`;
+export const CLUSREG_NAME_RESTYPE_IS_ALIVE = `IsAlivePollInterval`;
+export const CLUSREG_NAME_RESTYPE_PENDING_TIMEOUT = `PendingTimeout`;
+export const CLUSREG_NAME_RESTYPE_DEADLOCK_TIMEOUT = `DeadlockTimeout`;
+export const CLUSREG_NAME_RESTYPE_DUMP_POLICY = `DumpPolicy`;
+export const CLUSREG_NAME_RESTYPE_DUMP_LOG_QUERY = `DumpLogQuery`;
+export const CLUSREG_NAME_RESTYPE_DUMP_SERVICES = `DumpServices`;
+export const CLUSREG_NAME_RESTYPE_ENABLED_EVENT_LOGS = `EnabledEventLogs`;
+export const CLUSREG_NAME_RESTYPE_MAX_MONITORS = `MaximumMonitors`;
+export const CLUSREG_NAME_RESTYPE_WPR_START_AFTER = `WprStartAfter`;
+export const CLUSREG_NAME_RESTYPE_WPR_PROFILES = `WprProfiles`;
+export const CLUSREG_NAME_NET_NAME = `Name`;
+export const CLUSREG_NAME_NET_IPV6_ADDRESSES = `IPv6Addresses`;
+export const CLUSREG_NAME_NET_IPV6_PREFIXLENGTHS = `IPv6PrefixLengths`;
+export const CLUSREG_NAME_NET_IPV4_ADDRESSES = `IPv4Addresses`;
+export const CLUSREG_NAME_NET_IPV4_PREFIXLENGTHS = `IPv4PrefixLengths`;
+export const CLUSREG_NAME_NET_ADDRESS = `Address`;
+export const CLUSREG_NAME_NET_ADDRESS_MASK = `AddressMask`;
+export const CLUSREG_NAME_NET_DESC = `Description`;
+export const CLUSREG_NAME_NET_ROLE = `Role`;
+export const CLUSREG_NAME_NET_SPEED = `LinkSpeed`;
+export const CLUSREG_NAME_NET_RDMA_CAPABLE = `RdmaCapable`;
+export const CLUSREG_NAME_NET_RSS_CAPABLE = `RssCapable`;
+export const CLUSREG_NAME_NET_METRIC = `Metric`;
+export const CLUSREG_NAME_NET_AUTOMETRIC = `AutoMetric`;
+export const CLUSREG_NAME_NETIFACE_NAME = `Name`;
+export const CLUSREG_NAME_NETIFACE_NODE = `Node`;
+export const CLUSREG_NAME_NETIFACE_NETWORK = `Network`;
+export const CLUSREG_NAME_NETIFACE_ADAPTER_NAME = `Adapter`;
+export const CLUSREG_NAME_NETIFACE_ADAPTER_ID = `AdapterId`;
+export const CLUSREG_NAME_NETIFACE_DHCP_ENABLED = `DhcpEnabled`;
+export const CLUSREG_NAME_NETIFACE_IPV6_ADDRESSES = `IPv6Addresses`;
+export const CLUSREG_NAME_NETIFACE_IPV4_ADDRESSES = `IPv4Addresses`;
+export const CLUSREG_NAME_NETIFACE_ADDRESS = `Address`;
+export const CLUSREG_NAME_NETIFACE_DESC = `Description`;
+export const CLUSREG_NAME_GROUPSET_NAME = `Name`;
+export const CLUSREG_NAME_GROUPSET_STARTUP_SETTING = `StartupSetting`;
+export const CLUSREG_NAME_GROUPSET_STARTUP_COUNT = `StartupCount`;
+export const CLUSREG_NAME_GROUPSET_STARTUP_DELAY = `StartupDelay`;
+export const CLUSREG_NAME_GROUPSET_IS_GLOBAL = `IsGlobal`;
+export const CLUSREG_NAME_GROUPSET_STATUS_INFORMATION = `StatusInformation`;
+export const CLUSREG_NAME_GROUPSET_IS_AVAILABILITY_SET = `IsAvailabilitySet`;
+export const CLUSREG_NAME_GROUPSET_UPDATE_DOMAINS = `UpdateDomains`;
+export const CLUSREG_NAME_GROUPSET_FAULT_DOMAINS = `FaultDomains`;
+export const CLUSREG_NAME_GROUPSET_RESERVE_NODE = `ReserveSpareNode`;
+export const CLUSREG_NAME_GROUPSET_AVAILABILITY_SET_INDEX_TO_NODE_MAPPING = `NodeDomainInfo`;
+export const CLUSREG_NAME_AFFINITYRULE_NAME = `Name`;
+export const CLUSREG_NAME_AFFINITYRULE_TYPE = `RuleType`;
+export const CLUSREG_NAME_AFFINITYRULE_GROUPS = `Groups`;
+export const CLUSREG_NAME_AFFINITYRULE_ENABLED = `Enabled`;
+export const CLUSREG_NAME_START_MEMORY = `StartMemory`;
+export const CLUSREG_NAME_VIRTUAL_NUMA_COUNT = `VirtualNumaCount`;
+export const CLUSREG_NAME_DDA_DEVICE_ALLOCATIONS = `DdaDeviceAllocations`;
+export const CLUSREG_NAME_GPUP_DEVICE_ALLOCATIONS = `GpupDeviceAllocations`;
+export const CLUSREG_NAME_PHYSDISK_DISKIDTYPE = `DiskIdType`;
+export const CLUSREG_NAME_PHYSDISK_DISKSIGNATURE = `DiskSignature`;
+export const CLUSREG_NAME_PHYSDISK_DISKIDGUID = `DiskIdGuid`;
+export const CLUSREG_NAME_PHYSDISK_DISKRUNCHKDSK = `DiskRunChkDsk`;
+export const CLUSREG_NAME_PHYSDISK_DISKUNIQUEIDS = `DiskUniqueIds`;
+export const CLUSREG_NAME_PHYSDISK_DISKVOLUMEINFO = `DiskVolumeInfo`;
+export const CLUSREG_NAME_PHYSDISK_DISKARBTYPE = `DiskArbType`;
+export const CLUSREG_NAME_PHYSDISK_DISKARBINTERVAL = `DiskArbInterval`;
+export const CLUSREG_NAME_PHYSDISK_DISKPATH = `DiskPath`;
+export const CLUSREG_NAME_PHYSDISK_DISKRELOAD = `DiskReload`;
+export const CLUSREG_NAME_PHYSDISK_MAINTMODE = `MaintenanceMode`;
+export const CLUSREG_NAME_PHYSDISK_DISKIODELAY = `MaxIoLatency`;
+export const CLUSREG_NAME_PHYSDISK_MIGRATEFIXUP = `MigrateDriveLetters`;
+export const CLUSREG_NAME_PHYSDISK_CSVWRITETHROUGH = `CsvEnforceWriteThrough`;
+export const CLUSREG_NAME_PHYSDISK_CSVBLOCKCACHE = `EnableBlockCache`;
+export const CLUSREG_NAME_PHYSDISK_FASTONLINEARBITRATE = `FastOnlineArbitrate`;
+export const CLUSREG_NAME_PHYSDISK_SPACEIDGUID = `VirtualDiskId`;
+export const CLUSREG_NAME_STORAGESPACE_POOLIDGUID = `PoolId`;
+export const CLUSREG_NAME_PHYSDISK_CSVSNAPSHOTDIFFAREASIZE = `SnapshotDiffSize`;
+export const CLUSREG_NAME_PHYSDISK_CSVSNAPSHOTAGELIMIT = `SnapshotAgeLimit`;
+export const CLUSREG_NAME_PHYSDISK_DISKGUID = `DiskGuid`;
+export const CLUSREG_NAME_PHYSDISK_VOLSNAPACTIVATETIMEOUT = `VolsnapActivateTimeout`;
+export const CLUSREG_NAME_PHYSDISK_DISKRECOVERYACTION = `DiskRecoveryAction`;
+export const CLUSREG_NAME_STORAGESPACE_NAME = `VirtualDiskName`;
+export const CLUSREG_NAME_STORAGESPACE_DESCRIPTION = `VirtualDiskDescription`;
+export const CLUSREG_NAME_STORAGESPACE_HEALTH = `VirtualDiskHealth`;
+export const CLUSREG_NAME_STORAGESPACE_STATE = `VirtualDiskState`;
+export const CLUSREG_NAME_STORAGESPACE_PROVISIONING = `VirtualDiskProvisioning`;
+export const CLUSREG_NAME_STORAGESPACE_RESILIENCYTYPE = `VirtualDiskResiliencyType`;
+export const CLUSREG_NAME_STORAGESPACE_RESILIENCYCOLUMNS = `VirtualDiskResiliencyColumns`;
+export const CLUSREG_NAME_STORAGESPACE_RESILIENCYINTERLEAVE = `VirtualDiskResiliencyInterleave`;
+export const CLUSREG_NAME_GENAPP_COMMAND_LINE = `CommandLine`;
+export const CLUSREG_NAME_GENAPP_CURRENT_DIRECTORY = `CurrentDirectory`;
+export const CLUSREG_NAME_GENAPP_USE_NETWORK_NAME = `UseNetworkName`;
+export const CLUSREG_NAME_GENSCRIPT_SCRIPT_FILEPATH = `ScriptFilepath`;
+export const CLUSREG_NAME_GENSVC_SERVICE_NAME = `ServiceName`;
+export const CLUSREG_NAME_GENSVC_STARTUP_PARAMS = `StartupParameters`;
+export const CLUSREG_NAME_GENSVC_USE_NETWORK_NAME = `UseNetworkName`;
+export const CLUSREG_NAME_IPADDR_NETWORK = `Network`;
+export const CLUSREG_NAME_IPADDR_ADDRESS = `Address`;
+export const CLUSREG_NAME_IPADDR_SUBNET_MASK = `SubnetMask`;
+export const CLUSREG_NAME_IPADDR_ENABLE_NETBIOS = `EnableNetBIOS`;
+export const CLUSREG_NAME_IPADDR_OVERRIDE_ADDRMATCH = `OverrideAddressMatch`;
+export const CLUSREG_NAME_IPADDR_ENABLE_DHCP = `EnableDhcp`;
+export const CLUSREG_NAME_IPADDR_LEASE_OBTAINED_TIME = `LeaseObtainedTime`;
+export const CLUSREG_NAME_IPADDR_LEASE_TERMINATES_TIME = `LeaseExpiresTime`;
+export const CLUSREG_NAME_IPADDR_T1 = `T1`;
+export const CLUSREG_NAME_IPADDR_T2 = `T2`;
+export const CLUSREG_NAME_IPADDR_DHCP_SERVER = `DhcpServer`;
+export const CLUSREG_NAME_IPADDR_DHCP_ADDRESS = `DhcpAddress`;
+export const CLUSREG_NAME_IPADDR_DHCP_SUBNET_MASK = `DhcpSubnetMask`;
+export const CLUSREG_NAME_IPADDR_SHARED_NETNAME = `SharedNetname`;
+export const CLUSREG_NAME_IPADDR_PROBE_PORT = `ProbePort`;
+export const CLUSREG_NAME_IPADDR_PROBE_FAILURE_THRESHOLD = `ProbeFailureThreshold`;
+export const CLUSREG_NAME_IPV6_NATIVE_NETWORK = `Network`;
+export const CLUSREG_NAME_IPV6_NATIVE_ADDRESS = `Address`;
+export const CLUSREG_NAME_IPV6_NATIVE_PREFIX_LENGTH = `PrefixLength`;
+export const CLUSREG_NAME_IPV6_TUNNEL_ADDRESS = `Address`;
+export const CLUSREG_NAME_IPV6_TUNNEL_TUNNELTYPE = `TunnelType`;
+export const CLUSREG_NAME_NETNAME_NAME = `Name`;
+export const CLUSREG_NAME_NETNAME_CREATING_DC = `CreatingDC`;
+export const CLUSREG_NAME_NETNAME_OBJECT_ID = `ObjectGUID`;
+export const CLUSREG_NAME_NETNAME_DNS_NAME = `DnsName`;
+export const CLUSREG_NAME_NETNAME_REMAP_PIPE_NAMES = `RemapPipeNames`;
+export const CLUSREG_NAME_NETNAME_RESOURCE_DATA = `ResourceData`;
+export const CLUSREG_NAME_NETNAME_STATUS_NETBIOS = `StatusNetBIOS`;
+export const CLUSREG_NAME_NETNAME_STATUS_DNS = `StatusDNS`;
+export const CLUSREG_NAME_NETNAME_STATUS_KERBEROS = `StatusKerberos`;
+export const CLUSREG_NAME_NETNAME_VCO_CONTAINER = `VcoContainer`;
+export const CLUSREG_NAME_NETNAME_LAST_DNS_UPDATE = `LastDNSUpdateTime`;
+export const CLUSREG_NAME_NETNAME_CONTAINERGUID = `CryptoContainerGUID`;
+export const CLUSREG_NAME_NETNAME_HOST_TTL = `HostRecordTTL`;
+export const CLUSREG_NAME_NETNAME_PUBLISH_PTR = `PublishPTRRecords`;
+export const CLUSREG_NAME_NETNAME_REMOVEVCO_ONDELETE = `DeleteVcoOnResCleanup`;
+export const CLUSREG_NAME_NETNAME_REGISTER_ALL_IP = `RegisterAllProvidersIP`;
+export const CLUSREG_KEYNAME_OBJECTGUIDS = `ObjectGUIDs`;
+export const CLUSREG_NAME_NETNAME_EXCLUDE_NETWORKS = `ExcludeNetworks`;
+export const CLUSREG_NAME_NETNAME_ALIASES = `Aliases`;
+export const CLUSREG_NAME_NETNAME_IN_USE_NETWORKS = `InUseNetworks`;
+export const CLUSREG_NAME_NETNAME_DNS_SUFFIX = `DnsSuffix`;
+export const CLUSREG_NAME_NETNAME_AD_AWARE = `ADAware`;
+export const CLUSREG_NAME_NETNAME_DNN_DISABLE_CLONES = `DisableClones`;
+export const CLUSREG_NAME_PRTSPOOL_DEFAULT_SPOOL_DIR = `DefaultSpoolDirectory`;
+export const CLUSREG_NAME_PRTSPOOL_TIMEOUT = `JobCompletionTimeout`;
+export const CLUSREG_NAME_FILESHR_SERVER_NAME = `ServerName`;
+export const CLUSREG_NAME_FILESHR_SHARE_NAME = `ShareName`;
+export const CLUSREG_NAME_FILESHR_PATH = `Path`;
+export const CLUSREG_NAME_FILESHR_REMARK = `Remark`;
+export const CLUSREG_NAME_FILESHR_MAX_USERS = `MaxUsers`;
+export const CLUSREG_NAME_FILESHR_SD = `Security Descriptor`;
+export const CLUSREG_NAME_FILESHR_SHARE_SUBDIRS = `ShareSubDirs`;
+export const CLUSREG_NAME_FILESHR_HIDE_SUBDIR_SHARES = `HideSubDirShares`;
+export const CLUSREG_NAME_FILESHR_IS_DFS_ROOT = `IsDfsRoot`;
+export const CLUSREG_NAME_FILESHR_SHARE_FLAGS = `ShareFlags`;
+export const CLUSREG_NAME_FILESHR_CA_TIMEOUT = `CATimeout`;
+export const CLUSREG_NAME_DHCP_DATABASE_PATH = `DatabasePath`;
+export const CLUSREG_NAME_DHCP_BACKUP_PATH = `BackupPath`;
+export const CLUSREG_NAME_LOG_FILE_PATH = `LogFilePath`;
+export const CLUSREG_NAME_WINS_DATABASE_PATH = `DatabasePath`;
+export const CLUSREG_NAME_WINS_BACKUP_PATH = `BackupPath`;
+export const CLUSREG_NAME_VSSTASK_CURRENTDIRECTORY = `CurrentDirectory`;
+export const CLUSREG_NAME_VSSTASK_APPNAME = `ApplicationName`;
+export const CLUSREG_NAME_VSSTASK_APPPARAMS = `ApplicationParams`;
+export const CLUSREG_NAME_VSSTASK_TRIGGERARRAY = `TriggerArray`;
+export const CLUSREG_NAME_FSWITNESS_SHARE_PATH = `SharePath`;
+export const CLUSREG_NAME_FSWITNESS_ARB_DELAY = `ArbitrationDelay`;
+export const CLUSREG_NAME_FSWITNESS_IMPERSONATE_CNO = `ImpersonateCNO`;
+export const CLUSREG_NAME_STORAGESPACE_POOLNAME = `Name`;
+export const CLUSREG_NAME_STORAGESPACE_POOLDESC = `Description`;
+export const CLUSREG_NAME_STORAGESPACE_POOLDRIVEIDS = `DriveIds`;
+export const CLUSREG_NAME_STORAGESPACE_POOLHEALTH = `Health`;
+export const CLUSREG_NAME_STORAGESPACE_POOLSTATE = `State`;
+export const CLUSREG_NAME_STORAGESPACE_POOLTOTALCAPACITY = `TotalCapacity`;
+export const CLUSREG_NAME_STORAGESPACE_POOLCONSUMEDCAPACITY = `ConsumedCapacity`;
+export const CLUSREG_NAME_STORAGESPACE_POOLARBITRATE = `Arbitrate`;
+export const CLUSREG_NAME_STORAGESPACE_POOLREEVALTIMEOUT = `ReEvaluatePlacementTimeout`;
+export const CLUSREG_NAME_STORAGESPACE_POOLQUORUMSHARE = `PoolQuorumShare`;
+export const CLUSREG_NAME_STORAGESPACE_POOLQUORUMUSERACCOUNT = `PoolQuorumUserAccount`;
+export const CLUSREG_NAME_SOFS_SMBASYMMETRYMODE = `SmbAsymmetryMode`;
+export const CLUSREG_NAME_VIP_PREFIX_LENGTH = `PrefixLength`;
+export const CLUSREG_NAME_VIP_ADAPTER_NAME = `AdapterName`;
+export const CLUSREG_NAME_VIP_ADDRESS = `Address`;
+export const CLUSREG_NAME_VIP_VSID = `VSID`;
+export const CLUSREG_NAME_VIP_RDID = `RDID`;
+export const CLUSREG_NAME_CLOUDWITNESS_PRIMARY_TOKEN = `PrimaryToken`;
+export const CLUSREG_NAME_CLOUDWITNESS_PRIMARY_KEY = `PrimaryKey`;
+export const CLUSREG_NAME_CLOUDWITNESS_ACCOUNT_NAME = `AccountName`;
+export const CLUSREG_NAME_CLOUDWITNESS_ENDPOINT_INFO = `EndpointInfo`;
+export const CLUSREG_NAME_CLOUDWITNESS_CONTAINER_NAME = `ContainerName`;
+export const CLOUD_WITNESS_CONTAINER_NAME = `msft-cloud-witness`;
+export const CLUS_NAME_RES_TYPE_SOURCE_RESID = `SourceResourceId`;
+export const CLUS_NAME_RES_TYPE_TARGET_RESID = `TargetResourceId`;
+export const CLUS_NAME_RES_TYPE_SOURCE_VOLUMES = `SourceVolumes`;
+export const CLUS_NAME_RES_TYPE_TARGET_VOLUMES = `TargetVolumes`;
+export const CLUS_NAME_RES_TYPE_DATA_RESID = `DataResourceId`;
+export const CLUS_NAME_RES_TYPE_LOG_RESID = `LogResourceId`;
+export const CLUS_NAME_RES_TYPE_LOG_VOLUME = `LogVolume`;
+export const CLUS_NAME_RES_TYPE_REPLICATION_GROUPID = `ReplicationGroupId`;
+export const CLUS_NAME_RES_TYPE_CLUSTER_GROUPID = `ClusterGroupId`;
+export const CLUS_NAME_RES_TYPE_REPLICATION_GROUP_TYPE = `ReplicationClusterGroupType`;
+export const CLUS_NAME_RES_TYPE_MINIMUM_LOG_SIZE = `MinimumLogSizeInBytes`;
+export const CLUS_NAME_RES_TYPE_UNIT_LOG_SIZE_CHANGE = `UnitOfLogSizeChangeInBytes`;
+export const CLUS_NAME_RES_TYPE_LOG_MULTIPLE = `LogSizeMultiple`;
 export const SR_REPLICATED_PARTITION_DISALLOW_MULTINODE_IO = 1;
 export const CLUSCTL_RESOURCE_TYPE_STORAGE_GET_AVAILABLE_DISKS_EX2_FLAG_ADD_VOLUME_INFO = 1;
 export const CLUSCTL_RESOURCE_TYPE_STORAGE_GET_AVAILABLE_DISKS_EX2_FLAG_FILTER_BY_POOL = 2;
 export const CLUSCTL_RESOURCE_TYPE_STORAGE_GET_AVAILABLE_DISKS_EX2_FLAG_INCLUDE_NON_SHARED_DISKS = 4;
+export const STARTUP_ROUTINE = `Startup`;
 export const CLRES_VERSION_V1_00 = 256;
+export const STARTUP_EX_ROUTINE = `StartupEx`;
 export const CLRES_VERSION_V2_00 = 512;
 export const CLRES_VERSION_V3_00 = 768;
 export const CLRES_VERSION_V4_00 = 1024;
 export const CLUSCTL_GET_OPERATION_CONTEXT_PARAMS_VERSION_1 = 1;
+export const CLUSRES_NAME_GET_OPERATION_CONTEXT_FLAGS = `Flags`;
 export const CLUSRESDLL_STATUS_OFFLINE_BUSY = 1;
 export const CLUSRESDLL_STATUS_OFFLINE_SOURCE_THROTTLED = 2;
 export const CLUSRESDLL_STATUS_OFFLINE_DESTINATION_THROTTLED = 4;
@@ -314,6 +706,7 @@ export const RESUTIL_PROPITEM_REQUIRED = 2;
 export const RESUTIL_PROPITEM_SIGNED = 4;
 export const RESUTIL_PROPITEM_IN_MEMORY = 8;
 export const LOCKED_MODE_FLAGS_DONT_REMOVE_FROM_MOVE_QUEUE = 1;
+export const CLUSTER_HEALTH_FAULT_PROPERTY_NAME = `ClusterHealth`;
 export const CLUSTER_HEALTH_FAULT_ARGS = 7;
 export const CLUSTER_HEALTH_FAULT_ID = 0;
 export const CLUSTER_HEALTH_FAULT_ERRORTYPE = 1;
@@ -322,6 +715,13 @@ export const CLUSTER_HEALTH_FAULT_DESCRIPTION = 3;
 export const CLUSTER_HEALTH_FAULT_PROVIDER = 4;
 export const CLUSTER_HEALTH_FAULT_FLAGS = 5;
 export const CLUSTER_HEALTH_FAULT_RESERVED = 6;
+export const CLUSTER_HEALTH_FAULT_ID_LABEL = `Id`;
+export const CLUSTER_HEALTH_FAULT_ERRORTYPE_LABEL = `ErrorType`;
+export const CLUSTER_HEALTH_FAULT_ERRORCODE_LABEL = `ErrorCode`;
+export const CLUSTER_HEALTH_FAULT_DESCRIPTION_LABEL = `Description`;
+export const CLUSTER_HEALTH_FAULT_PROVIDER_LABEL = `Provider`;
+export const CLUSTER_HEALTH_FAULT_FLAGS_LABEL = `Flags`;
+export const CLUSTER_HEALTH_FAULT_RESERVED_LABEL = `Reserved`;
 export const CLUS_CREATE_CRYPT_CONTAINER_NOT_FOUND = 1;
 export const SET_APPINSTANCE_CSV_FLAGS_VALID_ONLY_IF_CSV_COORDINATOR = 1;
 export const OperationalQuorum = 0;
@@ -396,7 +796,7 @@ export const CLUSTER_MGMT_POINT_RESTYPE_DNN = 2;
 export const CLUSTER_CLOUD_TYPE_NONE = 0;
 export const CLUSTER_CLOUD_TYPE_AZURE = 1;
 export const CLUSTER_CLOUD_TYPE_MIXED = 128;
-export const CLUSTER_CLOUD_TYPE_UNKNOWN = "-1";
+export const CLUSTER_CLOUD_TYPE_UNKNOWN = `-1`;
 export const CLUS_GROUP_START_ALWAYS = 0;
 export const CLUS_GROUP_DO_NOT_START = 1;
 export const CLUS_GROUP_START_ALLOWED = 2;
@@ -445,8 +845,8 @@ export const CLUSTER_CHANGE_NETINTERFACE_PROPERTY = 134217728;
 export const CLUSTER_CHANGE_QUORUM_STATE = 268435456;
 export const CLUSTER_CHANGE_CLUSTER_STATE = 536870912;
 export const CLUSTER_CHANGE_CLUSTER_PROPERTY = 1073741824;
-export const CLUSTER_CHANGE_HANDLE_CLOSE = "-2147483648";
-export const CLUSTER_CHANGE_ALL = "-1";
+export const CLUSTER_CHANGE_HANDLE_CLOSE = `-2147483648`;
+export const CLUSTER_CHANGE_ALL = `-1`;
 export const CLUSTER_NOTIFICATIONS_V1 = 1;
 export const CLUSTER_NOTIFICATIONS_V2 = 2;
 export const CLUSTER_CHANGE_CLUSTER_RECONNECT_V2 = 1;
@@ -566,13 +966,13 @@ export const CLUSTER_ENUM_NETWORK = 16;
 export const CLUSTER_ENUM_NETINTERFACE = 32;
 export const CLUSTER_ENUM_SHARED_VOLUME_GROUP = 536870912;
 export const CLUSTER_ENUM_SHARED_VOLUME_RESOURCE = 1073741824;
-export const CLUSTER_ENUM_INTERNAL_NETWORK = "-2147483648";
+export const CLUSTER_ENUM_INTERNAL_NETWORK = `-2147483648`;
 export const CLUSTER_ENUM_ALL = 63;
 export const CLUSTER_NODE_ENUM_NETINTERFACES = 1;
 export const CLUSTER_NODE_ENUM_GROUPS = 2;
 export const CLUSTER_NODE_ENUM_PREFERRED_GROUPS = 4;
 export const CLUSTER_NODE_ENUM_ALL = 3;
-export const ClusterNodeStateUnknown = "-1";
+export const ClusterNodeStateUnknown = `-1`;
 export const ClusterNodeUp = 0;
 export const ClusterNodeDown = 1;
 export const ClusterNodePaused = 2;
@@ -599,7 +999,7 @@ export const NodeStatusMax = 51;
 export const CLUSTER_GROUP_ENUM_CONTAINS = 1;
 export const CLUSTER_GROUP_ENUM_NODES = 2;
 export const CLUSTER_GROUP_ENUM_ALL = 3;
-export const ClusterGroupStateUnknown = "-1";
+export const ClusterGroupStateUnknown = `-1`;
 export const ClusterGroupOnline = 0;
 export const ClusterGroupOffline = 1;
 export const ClusterGroupFailed = 2;
@@ -616,7 +1016,7 @@ export const DoNotFailbackGroups = 0;
 export const FailbackGroupsImmediately = 1;
 export const FailbackGroupsPerPolicy = 2;
 export const ClusterNodeResumeFailbackTypeCount = 3;
-export const ClusterResourceStateUnknown = "-1";
+export const ClusterResourceStateUnknown = `-1`;
 export const ClusterResourceInherited = 0;
 export const ClusterResourceInitializing = 1;
 export const ClusterResourceOnline = 2;
@@ -639,7 +1039,7 @@ export const ClusterSharedVolumeSnapshotStateUnknown = 0;
 export const ClusterSharedVolumePrepareForHWSnapshot = 1;
 export const ClusterSharedVolumeHWSnapshotCompleted = 2;
 export const ClusterSharedVolumePrepareForFreeze = 3;
-export const CLUSPROP_TYPE_UNKNOWN = "-1";
+export const CLUSPROP_TYPE_UNKNOWN = `-1`;
 export const CLUSPROP_TYPE_ENDMARK = 0;
 export const CLUSPROP_TYPE_LIST_VALUE = 1;
 export const CLUSPROP_TYPE_RESCLASS = 2;
@@ -1216,11 +1616,11 @@ export const CLUS_RESCLASS_UNKNOWN = 0;
 export const CLUS_RESCLASS_STORAGE = 1;
 export const CLUS_RESCLASS_NETWORK = 2;
 export const CLUS_RESCLASS_USER = 32768;
-export const CLUS_RESSUBCLASS_SHARED = "-2147483648";
-export const CLUS_RESSUBCLASS_STORAGE_SHARED_BUS = "-2147483648";
+export const CLUS_RESSUBCLASS_SHARED = `-2147483648`;
+export const CLUS_RESSUBCLASS_STORAGE_SHARED_BUS = `-2147483648`;
 export const CLUS_RESSUBCLASS_STORAGE_DISK = 1073741824;
 export const CLUS_RESSUBCLASS_STORAGE_REPLICATION = 268435456;
-export const CLUS_RESSUBCLASS_NETWORK_INTERNET_PROTOCOL = "-2147483648";
+export const CLUS_RESSUBCLASS_NETWORK_INTERNET_PROTOCOL = `-2147483648`;
 export const CLUS_CHAR_UNKNOWN = 0;
 export const CLUS_CHAR_QUORUM = 1;
 export const CLUS_CHAR_DELETE_REQUIRES_ALL_NODES = 2;
@@ -1250,7 +1650,7 @@ export const CLUSPROP_PIFLAG_DEFAULT_QUORUM = 8;
 export const CLUSPROP_PIFLAG_USABLE_FOR_CSV = 16;
 export const CLUSPROP_PIFLAG_ENCRYPTION_ENABLED = 32;
 export const CLUSPROP_PIFLAG_RAW = 64;
-export const CLUSPROP_PIFLAG_UNKNOWN = "-2147483648";
+export const CLUSPROP_PIFLAG_UNKNOWN = `-2147483648`;
 export const VolumeStateNoFaults = 0;
 export const VolumeStateNoDirectIO = 1;
 export const VolumeStateNoAccess = 2;
@@ -1263,11 +1663,6 @@ export const SharedVolumeStatePaused = 1;
 export const SharedVolumeStateActive = 2;
 export const SharedVolumeStateActiveRedirected = 3;
 export const SharedVolumeStateActiveVolumeRedirected = 4;
-export const ClusterSharedVolumeRenameInputTypeNone = 0;
-export const ClusterSharedVolumeRenameInputTypeVolumeOffset = 1;
-export const ClusterSharedVolumeRenameInputTypeVolumeId = 2;
-export const ClusterSharedVolumeRenameInputTypeVolumeName = 3;
-export const ClusterSharedVolumeRenameInputTypeVolumeGuid = 4;
 export const MaintenanceModeTypeDisableIsAliveCheck = 1;
 export const MaintenanceModeTypeOfflineResource = 2;
 export const MaintenanceModeTypeUnclusterResource = 3;
@@ -1287,7 +1682,7 @@ export const CLUSTER_RESOURCE_TYPE_ENUM_RESOURCES = 2;
 export const CLUSTER_RESOURCE_TYPE_ENUM_ALL = 3;
 export const CLUSTER_NETWORK_ENUM_NETINTERFACES = 1;
 export const CLUSTER_NETWORK_ENUM_ALL = 1;
-export const ClusterNetworkStateUnknown = "-1";
+export const ClusterNetworkStateUnknown = `-1`;
 export const ClusterNetworkUnavailable = 0;
 export const ClusterNetworkDown = 1;
 export const ClusterNetworkPartitioned = 2;
@@ -1296,7 +1691,7 @@ export const ClusterNetworkRoleNone = 0;
 export const ClusterNetworkRoleInternalUse = 1;
 export const ClusterNetworkRoleClientAccess = 2;
 export const ClusterNetworkRoleInternalAndClient = 3;
-export const ClusterNetInterfaceStateUnknown = "-1";
+export const ClusterNetInterfaceStateUnknown = `-1`;
 export const ClusterNetInterfaceUnavailable = 0;
 export const ClusterNetInterfaceFailed = 1;
 export const ClusterNetInterfaceUnreachable = 2;
@@ -1446,7 +1841,7 @@ export const ClusterRoleStoragePool = 28;
 export const ClusterRoleVirtualMachine = 29;
 export const ClusterRoleVirtualMachineConfiguration = 30;
 export const ClusterRoleVirtualMachineReplicaBroker = 31;
-export const ClusterRoleUnknown = "-1";
+export const ClusterRoleUnknown = `-1`;
 export const ClusterRoleClustered = 0;
 export const ClusterRoleUnclustered = 1;
 export const CLUADMEX_OT_NONE = 0;
@@ -1459,6 +1854,582 @@ export const CLUADMEX_OT_NETWORK = 6;
 export const CLUADMEX_OT_NETINTERFACE = 7;
 
 // Structs
+
+/**
+ * _Anonymous_e__Struct (size: 16)
+ */
+export interface _Anonymous_e__Struct {
+  /** u64 */
+  Alignment: Deno.PointerValue;
+  /** u64 */
+  Region: Deno.PointerValue;
+}
+
+export const sizeof_Anonymous_e__Struct = 16;
+
+export function alloc_Anonymous_e__Struct(data?: Partial<_Anonymous_e__Struct>): Uint8Array {
+  const buf = new Uint8Array(sizeof_Anonymous_e__Struct);
+  const view = new DataView(buf.buffer);
+  // 0x00: u64
+  if (data?.Alignment !== undefined) view.setBigUint64(0, BigInt(data.Alignment), true);
+  // 0x08: u64
+  if (data?.Region !== undefined) view.setBigUint64(8, BigInt(data.Region), true);
+  return buf;
+}
+
+/**
+ * Windows.Win32.Networking.Clustering.CLUSPROP_SYNTAX (size: 16)
+ */
+export interface CLUSPROP_SYNTAX {
+  /** u32 */
+  dw: number;
+  /** _Anonymous_e__Struct */
+  Anonymous: Uint8Array | Deno.PointerValue | null;
+}
+
+export const sizeofCLUSPROP_SYNTAX = 16;
+
+export function allocCLUSPROP_SYNTAX(data?: Partial<CLUSPROP_SYNTAX>): Uint8Array {
+  const buf = new Uint8Array(sizeofCLUSPROP_SYNTAX);
+  const view = new DataView(buf.buffer);
+  // 0x00: u32
+  if (data?.dw !== undefined) view.setUint32(0, Number(data.dw), true);
+  // 0x04: pad4
+  // 0x08: pointer
+  if (data?.Anonymous !== undefined) view.setBigUint64(8, data.Anonymous === null ? 0n : BigInt(util.toPointer(data.Anonymous)), true);
+  return buf;
+}
+
+/**
+ * Windows.Win32.Networking.Clustering.CLUSPROP_VALUE (size: 16)
+ */
+export interface CLUSPROP_VALUE {
+  /** Windows.Win32.Networking.Clustering.CLUSPROP_SYNTAX */
+  Syntax: Uint8Array | Deno.PointerValue | null;
+  /** u32 */
+  cbLength: number;
+}
+
+export const sizeofCLUSPROP_VALUE = 16;
+
+export function allocCLUSPROP_VALUE(data?: Partial<CLUSPROP_VALUE>): Uint8Array {
+  const buf = new Uint8Array(sizeofCLUSPROP_VALUE);
+  const view = new DataView(buf.buffer);
+  // 0x00: pointer
+  if (data?.Syntax !== undefined) view.setBigUint64(0, data.Syntax === null ? 0n : BigInt(util.toPointer(data.Syntax)), true);
+  // 0x08: u32
+  if (data?.cbLength !== undefined) view.setUint32(8, Number(data.cbLength), true);
+  // 0x0c: pad4
+  return buf;
+}
+
+/**
+ * _Anonymous_e__Union (size: 16)
+ */
+export interface _Anonymous_e__Union {
+  /** _Anonymous_e__Struct */
+  Anonymous: Uint8Array | Deno.PointerValue | null;
+  /** array */
+  X: Deno.PointerValue | null;
+}
+
+export const sizeof_Anonymous_e__Union = 16;
+
+export function alloc_Anonymous_e__Union(data?: Partial<_Anonymous_e__Union>): Uint8Array {
+  const buf = new Uint8Array(sizeof_Anonymous_e__Union);
+  const view = new DataView(buf.buffer);
+  // 0x00: pointer
+  if (data?.Anonymous !== undefined) view.setBigUint64(0, data.Anonymous === null ? 0n : BigInt(util.toPointer(data.Anonymous)), true);
+  // 0x08: pointer
+  if (data?.X !== undefined) view.setBigUint64(8, data.X === null ? 0n : BigInt(util.toPointer(data.X)), true);
+  return buf;
+}
+
+/**
+ * Windows.Win32.Networking.Clustering.CLUS_RESOURCE_CLASS_INFO (size: 8)
+ */
+export interface CLUS_RESOURCE_CLASS_INFO {
+  /** _Anonymous_e__Union */
+  Anonymous: Uint8Array | Deno.PointerValue | null;
+}
+
+export const sizeofCLUS_RESOURCE_CLASS_INFO = 8;
+
+export function allocCLUS_RESOURCE_CLASS_INFO(data?: Partial<CLUS_RESOURCE_CLASS_INFO>): Uint8Array {
+  const buf = new Uint8Array(sizeofCLUS_RESOURCE_CLASS_INFO);
+  const view = new DataView(buf.buffer);
+  // 0x00: pointer
+  if (data?.Anonymous !== undefined) view.setBigUint64(0, data.Anonymous === null ? 0n : BigInt(util.toPointer(data.Anonymous)), true);
+  return buf;
+}
+
+/**
+ * Windows.Win32.Networking.Clustering.CLUSPROP_RESOURCE_CLASS_INFO (size: 16)
+ */
+export interface CLUSPROP_RESOURCE_CLASS_INFO {
+  /** Windows.Win32.Networking.Clustering.CLUSPROP_VALUE */
+  Base: Uint8Array | Deno.PointerValue | null;
+  /** Windows.Win32.Networking.Clustering.CLUS_RESOURCE_CLASS_INFO */
+  Base2: Uint8Array | Deno.PointerValue | null;
+}
+
+export const sizeofCLUSPROP_RESOURCE_CLASS_INFO = 16;
+
+export function allocCLUSPROP_RESOURCE_CLASS_INFO(data?: Partial<CLUSPROP_RESOURCE_CLASS_INFO>): Uint8Array {
+  const buf = new Uint8Array(sizeofCLUSPROP_RESOURCE_CLASS_INFO);
+  const view = new DataView(buf.buffer);
+  // 0x00: pointer
+  if (data?.Base !== undefined) view.setBigUint64(0, data.Base === null ? 0n : BigInt(util.toPointer(data.Base)), true);
+  // 0x08: pointer
+  if (data?.Base2 !== undefined) view.setBigUint64(8, data.Base2 === null ? 0n : BigInt(util.toPointer(data.Base2)), true);
+  return buf;
+}
+
+/**
+ * Windows.Win32.Networking.Clustering.CLUSTER_SHARED_VOLUME_RENAME_INPUT_VOLUME (size: 16)
+ */
+export interface CLUSTER_SHARED_VOLUME_RENAME_INPUT_VOLUME {
+  /** Windows.Win32.Networking.Clustering.CLUSTER_SHARED_VOLUME_RENAME_INPUT_TYPE */
+  InputType: CLUSTER_SHARED_VOLUME_RENAME_INPUT_TYPE;
+  /** _Anonymous_e__Union */
+  Anonymous: Uint8Array | Deno.PointerValue | null;
+}
+
+export const sizeofCLUSTER_SHARED_VOLUME_RENAME_INPUT_VOLUME = 16;
+
+export function allocCLUSTER_SHARED_VOLUME_RENAME_INPUT_VOLUME(data?: Partial<CLUSTER_SHARED_VOLUME_RENAME_INPUT_VOLUME>): Uint8Array {
+  const buf = new Uint8Array(sizeofCLUSTER_SHARED_VOLUME_RENAME_INPUT_VOLUME);
+  const view = new DataView(buf.buffer);
+  // 0x00: i32
+  if (data?.InputType !== undefined) view.setInt32(0, Number(data.InputType), true);
+  // 0x04: pad4
+  // 0x08: pointer
+  if (data?.Anonymous !== undefined) view.setBigUint64(8, data.Anonymous === null ? 0n : BigInt(util.toPointer(data.Anonymous)), true);
+  return buf;
+}
+
+/**
+ * Windows.Win32.Networking.Clustering.CLUSTER_SHARED_VOLUME_RENAME_INPUT_NAME (size: 8)
+ */
+export interface CLUSTER_SHARED_VOLUME_RENAME_INPUT_NAME {
+  /** array */
+  NewVolumeName: Deno.PointerValue | null;
+}
+
+export const sizeofCLUSTER_SHARED_VOLUME_RENAME_INPUT_NAME = 8;
+
+export function allocCLUSTER_SHARED_VOLUME_RENAME_INPUT_NAME(data?: Partial<CLUSTER_SHARED_VOLUME_RENAME_INPUT_NAME>): Uint8Array {
+  const buf = new Uint8Array(sizeofCLUSTER_SHARED_VOLUME_RENAME_INPUT_NAME);
+  const view = new DataView(buf.buffer);
+  // 0x00: pointer
+  if (data?.NewVolumeName !== undefined) view.setBigUint64(0, data.NewVolumeName === null ? 0n : BigInt(util.toPointer(data.NewVolumeName)), true);
+  return buf;
+}
+
+/**
+ * Windows.Win32.Networking.Clustering.CLUSTER_SHARED_VOLUME_RENAME_INPUT (size: 16)
+ */
+export interface CLUSTER_SHARED_VOLUME_RENAME_INPUT {
+  /** Windows.Win32.Networking.Clustering.CLUSTER_SHARED_VOLUME_RENAME_INPUT_VOLUME */
+  Base: Uint8Array | Deno.PointerValue | null;
+  /** Windows.Win32.Networking.Clustering.CLUSTER_SHARED_VOLUME_RENAME_INPUT_NAME */
+  Base2: Uint8Array | Deno.PointerValue | null;
+}
+
+export const sizeofCLUSTER_SHARED_VOLUME_RENAME_INPUT = 16;
+
+export function allocCLUSTER_SHARED_VOLUME_RENAME_INPUT(data?: Partial<CLUSTER_SHARED_VOLUME_RENAME_INPUT>): Uint8Array {
+  const buf = new Uint8Array(sizeofCLUSTER_SHARED_VOLUME_RENAME_INPUT);
+  const view = new DataView(buf.buffer);
+  // 0x00: pointer
+  if (data?.Base !== undefined) view.setBigUint64(0, data.Base === null ? 0n : BigInt(util.toPointer(data.Base)), true);
+  // 0x08: pointer
+  if (data?.Base2 !== undefined) view.setBigUint64(8, data.Base2 === null ? 0n : BigInt(util.toPointer(data.Base2)), true);
+  return buf;
+}
+
+/**
+ * Windows.Win32.Networking.Clustering.CLUSTER_SHARED_VOLUME_RENAME_INPUT_GUID_NAME (size: 16)
+ */
+export interface CLUSTER_SHARED_VOLUME_RENAME_INPUT_GUID_NAME {
+  /** array */
+  NewVolumeName: Deno.PointerValue | null;
+  /** array */
+  NewVolumeGuid: Deno.PointerValue | null;
+}
+
+export const sizeofCLUSTER_SHARED_VOLUME_RENAME_INPUT_GUID_NAME = 16;
+
+export function allocCLUSTER_SHARED_VOLUME_RENAME_INPUT_GUID_NAME(data?: Partial<CLUSTER_SHARED_VOLUME_RENAME_INPUT_GUID_NAME>): Uint8Array {
+  const buf = new Uint8Array(sizeofCLUSTER_SHARED_VOLUME_RENAME_INPUT_GUID_NAME);
+  const view = new DataView(buf.buffer);
+  // 0x00: pointer
+  if (data?.NewVolumeName !== undefined) view.setBigUint64(0, data.NewVolumeName === null ? 0n : BigInt(util.toPointer(data.NewVolumeName)), true);
+  // 0x08: pointer
+  if (data?.NewVolumeGuid !== undefined) view.setBigUint64(8, data.NewVolumeGuid === null ? 0n : BigInt(util.toPointer(data.NewVolumeGuid)), true);
+  return buf;
+}
+
+/**
+ * Windows.Win32.Networking.Clustering.CLUSTER_SHARED_VOLUME_RENAME_GUID_INPUT (size: 16)
+ */
+export interface CLUSTER_SHARED_VOLUME_RENAME_GUID_INPUT {
+  /** Windows.Win32.Networking.Clustering.CLUSTER_SHARED_VOLUME_RENAME_INPUT_VOLUME */
+  Base: Uint8Array | Deno.PointerValue | null;
+  /** Windows.Win32.Networking.Clustering.CLUSTER_SHARED_VOLUME_RENAME_INPUT_GUID_NAME */
+  Base2: Uint8Array | Deno.PointerValue | null;
+}
+
+export const sizeofCLUSTER_SHARED_VOLUME_RENAME_GUID_INPUT = 16;
+
+export function allocCLUSTER_SHARED_VOLUME_RENAME_GUID_INPUT(data?: Partial<CLUSTER_SHARED_VOLUME_RENAME_GUID_INPUT>): Uint8Array {
+  const buf = new Uint8Array(sizeofCLUSTER_SHARED_VOLUME_RENAME_GUID_INPUT);
+  const view = new DataView(buf.buffer);
+  // 0x00: pointer
+  if (data?.Base !== undefined) view.setBigUint64(0, data.Base === null ? 0n : BigInt(util.toPointer(data.Base)), true);
+  // 0x08: pointer
+  if (data?.Base2 !== undefined) view.setBigUint64(8, data.Base2 === null ? 0n : BigInt(util.toPointer(data.Base2)), true);
+  return buf;
+}
+
+/**
+ * Windows.Win32.Networking.Clustering.CLUS_PARTITION_INFO (size: 48)
+ */
+export interface CLUS_PARTITION_INFO {
+  /** u32 */
+  dwFlags: number;
+  /** array */
+  szDeviceName: Deno.PointerValue | null;
+  /** array */
+  szVolumeLabel: Deno.PointerValue | null;
+  /** u32 */
+  dwSerialNumber: number;
+  /** u32 */
+  rgdwMaximumComponentLength: number;
+  /** u32 */
+  dwFileSystemFlags: number;
+  /** array */
+  szFileSystem: Deno.PointerValue | null;
+}
+
+export const sizeofCLUS_PARTITION_INFO = 48;
+
+export function allocCLUS_PARTITION_INFO(data?: Partial<CLUS_PARTITION_INFO>): Uint8Array {
+  const buf = new Uint8Array(sizeofCLUS_PARTITION_INFO);
+  const view = new DataView(buf.buffer);
+  // 0x00: u32
+  if (data?.dwFlags !== undefined) view.setUint32(0, Number(data.dwFlags), true);
+  // 0x04: pad4
+  // 0x08: pointer
+  if (data?.szDeviceName !== undefined) view.setBigUint64(8, data.szDeviceName === null ? 0n : BigInt(util.toPointer(data.szDeviceName)), true);
+  // 0x10: pointer
+  if (data?.szVolumeLabel !== undefined) view.setBigUint64(16, data.szVolumeLabel === null ? 0n : BigInt(util.toPointer(data.szVolumeLabel)), true);
+  // 0x18: u32
+  if (data?.dwSerialNumber !== undefined) view.setUint32(24, Number(data.dwSerialNumber), true);
+  // 0x1c: u32
+  if (data?.rgdwMaximumComponentLength !== undefined) view.setUint32(28, Number(data.rgdwMaximumComponentLength), true);
+  // 0x20: u32
+  if (data?.dwFileSystemFlags !== undefined) view.setUint32(32, Number(data.dwFileSystemFlags), true);
+  // 0x24: pad4
+  // 0x28: pointer
+  if (data?.szFileSystem !== undefined) view.setBigUint64(40, data.szFileSystem === null ? 0n : BigInt(util.toPointer(data.szFileSystem)), true);
+  return buf;
+}
+
+/**
+ * Windows.Win32.Networking.Clustering.CLUSPROP_PARTITION_INFO (size: 16)
+ */
+export interface CLUSPROP_PARTITION_INFO {
+  /** Windows.Win32.Networking.Clustering.CLUSPROP_VALUE */
+  Base: Uint8Array | Deno.PointerValue | null;
+  /** Windows.Win32.Networking.Clustering.CLUS_PARTITION_INFO */
+  Base2: Uint8Array | Deno.PointerValue | null;
+}
+
+export const sizeofCLUSPROP_PARTITION_INFO = 16;
+
+export function allocCLUSPROP_PARTITION_INFO(data?: Partial<CLUSPROP_PARTITION_INFO>): Uint8Array {
+  const buf = new Uint8Array(sizeofCLUSPROP_PARTITION_INFO);
+  const view = new DataView(buf.buffer);
+  // 0x00: pointer
+  if (data?.Base !== undefined) view.setBigUint64(0, data.Base === null ? 0n : BigInt(util.toPointer(data.Base)), true);
+  // 0x08: pointer
+  if (data?.Base2 !== undefined) view.setBigUint64(8, data.Base2 === null ? 0n : BigInt(util.toPointer(data.Base2)), true);
+  return buf;
+}
+
+export type PWSTR = Deno.PointerValue | Uint8Array | null;
+
+/**
+ * _u_e__Struct (size: 16)
+ */
+export interface _u_e__Struct {
+  /** u32 */
+  dwValue: number;
+  /** Windows.Win32.Foundation.PWSTR */
+  pwszName: string | null;
+}
+
+export const sizeof_u_e__Struct = 16;
+
+export function alloc_u_e__Struct(data?: Partial<_u_e__Struct>): Uint8Array {
+  const buf = new Uint8Array(sizeof_u_e__Struct);
+  const view = new DataView(buf.buffer);
+  // 0x00: u32
+  if (data?.dwValue !== undefined) view.setUint32(0, Number(data.dwValue), true);
+  // 0x04: pad4
+  // 0x08: buffer
+  if (data?.pwszName !== undefined) {
+    (buf as any)._f8 = util.pwstrToFfi(data.pwszName);
+    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f8)), true);
+  }
+  return buf;
+}
+
+/**
+ * Windows.Win32.Foundation.ULARGE_INTEGER (size: 24)
+ */
+export interface ULARGE_INTEGER {
+  /** _Anonymous_e__Struct */
+  Anonymous: Uint8Array | Deno.PointerValue | null;
+  /** _u_e__Struct */
+  u: Uint8Array | Deno.PointerValue | null;
+  /** u64 */
+  QuadPart: Deno.PointerValue;
+}
+
+export const sizeofULARGE_INTEGER = 24;
+
+export function allocULARGE_INTEGER(data?: Partial<ULARGE_INTEGER>): Uint8Array {
+  const buf = new Uint8Array(sizeofULARGE_INTEGER);
+  const view = new DataView(buf.buffer);
+  // 0x00: pointer
+  if (data?.Anonymous !== undefined) view.setBigUint64(0, data.Anonymous === null ? 0n : BigInt(util.toPointer(data.Anonymous)), true);
+  // 0x08: pointer
+  if (data?.u !== undefined) view.setBigUint64(8, data.u === null ? 0n : BigInt(util.toPointer(data.u)), true);
+  // 0x10: u64
+  if (data?.QuadPart !== undefined) view.setBigUint64(16, BigInt(data.QuadPart), true);
+  return buf;
+}
+
+/**
+ * Windows.Win32.Networking.Clustering.CLUS_PARTITION_INFO_EX (size: 80)
+ */
+export interface CLUS_PARTITION_INFO_EX {
+  /** u32 */
+  dwFlags: number;
+  /** array */
+  szDeviceName: Deno.PointerValue | null;
+  /** array */
+  szVolumeLabel: Deno.PointerValue | null;
+  /** u32 */
+  dwSerialNumber: number;
+  /** u32 */
+  rgdwMaximumComponentLength: number;
+  /** u32 */
+  dwFileSystemFlags: number;
+  /** array */
+  szFileSystem: Deno.PointerValue | null;
+  /** Windows.Win32.Foundation.ULARGE_INTEGER */
+  TotalSizeInBytes: Uint8Array | Deno.PointerValue | null;
+  /** Windows.Win32.Foundation.ULARGE_INTEGER */
+  FreeSizeInBytes: Uint8Array | Deno.PointerValue | null;
+  /** u32 */
+  DeviceNumber: number;
+  /** u32 */
+  PartitionNumber: number;
+  /** System.Guid */
+  VolumeGuid: Uint8Array | Deno.PointerValue | null;
+}
+
+export const sizeofCLUS_PARTITION_INFO_EX = 80;
+
+export function allocCLUS_PARTITION_INFO_EX(data?: Partial<CLUS_PARTITION_INFO_EX>): Uint8Array {
+  const buf = new Uint8Array(sizeofCLUS_PARTITION_INFO_EX);
+  const view = new DataView(buf.buffer);
+  // 0x00: u32
+  if (data?.dwFlags !== undefined) view.setUint32(0, Number(data.dwFlags), true);
+  // 0x04: pad4
+  // 0x08: pointer
+  if (data?.szDeviceName !== undefined) view.setBigUint64(8, data.szDeviceName === null ? 0n : BigInt(util.toPointer(data.szDeviceName)), true);
+  // 0x10: pointer
+  if (data?.szVolumeLabel !== undefined) view.setBigUint64(16, data.szVolumeLabel === null ? 0n : BigInt(util.toPointer(data.szVolumeLabel)), true);
+  // 0x18: u32
+  if (data?.dwSerialNumber !== undefined) view.setUint32(24, Number(data.dwSerialNumber), true);
+  // 0x1c: u32
+  if (data?.rgdwMaximumComponentLength !== undefined) view.setUint32(28, Number(data.rgdwMaximumComponentLength), true);
+  // 0x20: u32
+  if (data?.dwFileSystemFlags !== undefined) view.setUint32(32, Number(data.dwFileSystemFlags), true);
+  // 0x24: pad4
+  // 0x28: pointer
+  if (data?.szFileSystem !== undefined) view.setBigUint64(40, data.szFileSystem === null ? 0n : BigInt(util.toPointer(data.szFileSystem)), true);
+  // 0x30: pointer
+  if (data?.TotalSizeInBytes !== undefined) view.setBigUint64(48, data.TotalSizeInBytes === null ? 0n : BigInt(util.toPointer(data.TotalSizeInBytes)), true);
+  // 0x38: pointer
+  if (data?.FreeSizeInBytes !== undefined) view.setBigUint64(56, data.FreeSizeInBytes === null ? 0n : BigInt(util.toPointer(data.FreeSizeInBytes)), true);
+  // 0x40: u32
+  if (data?.DeviceNumber !== undefined) view.setUint32(64, Number(data.DeviceNumber), true);
+  // 0x44: u32
+  if (data?.PartitionNumber !== undefined) view.setUint32(68, Number(data.PartitionNumber), true);
+  // 0x48: pointer
+  if (data?.VolumeGuid !== undefined) view.setBigUint64(72, data.VolumeGuid === null ? 0n : BigInt(util.toPointer(data.VolumeGuid)), true);
+  return buf;
+}
+
+/**
+ * Windows.Win32.Networking.Clustering.CLUSPROP_PARTITION_INFO_EX (size: 16)
+ */
+export interface CLUSPROP_PARTITION_INFO_EX {
+  /** Windows.Win32.Networking.Clustering.CLUSPROP_VALUE */
+  Base: Uint8Array | Deno.PointerValue | null;
+  /** Windows.Win32.Networking.Clustering.CLUS_PARTITION_INFO_EX */
+  Base2: Uint8Array | Deno.PointerValue | null;
+}
+
+export const sizeofCLUSPROP_PARTITION_INFO_EX = 16;
+
+export function allocCLUSPROP_PARTITION_INFO_EX(data?: Partial<CLUSPROP_PARTITION_INFO_EX>): Uint8Array {
+  const buf = new Uint8Array(sizeofCLUSPROP_PARTITION_INFO_EX);
+  const view = new DataView(buf.buffer);
+  // 0x00: pointer
+  if (data?.Base !== undefined) view.setBigUint64(0, data.Base === null ? 0n : BigInt(util.toPointer(data.Base)), true);
+  // 0x08: pointer
+  if (data?.Base2 !== undefined) view.setBigUint64(8, data.Base2 === null ? 0n : BigInt(util.toPointer(data.Base2)), true);
+  return buf;
+}
+
+/**
+ * Windows.Win32.Networking.Clustering.CLUS_PARTITION_INFO_EX2 (size: 24)
+ */
+export interface CLUS_PARTITION_INFO_EX2 {
+  /** System.Guid */
+  GptPartitionId: Uint8Array | Deno.PointerValue | null;
+  /** array */
+  szPartitionName: Deno.PointerValue | null;
+  /** u32 */
+  EncryptionFlags: number;
+}
+
+export const sizeofCLUS_PARTITION_INFO_EX2 = 24;
+
+export function allocCLUS_PARTITION_INFO_EX2(data?: Partial<CLUS_PARTITION_INFO_EX2>): Uint8Array {
+  const buf = new Uint8Array(sizeofCLUS_PARTITION_INFO_EX2);
+  const view = new DataView(buf.buffer);
+  // 0x00: pointer
+  if (data?.GptPartitionId !== undefined) view.setBigUint64(0, data.GptPartitionId === null ? 0n : BigInt(util.toPointer(data.GptPartitionId)), true);
+  // 0x08: pointer
+  if (data?.szPartitionName !== undefined) view.setBigUint64(8, data.szPartitionName === null ? 0n : BigInt(util.toPointer(data.szPartitionName)), true);
+  // 0x10: u32
+  if (data?.EncryptionFlags !== undefined) view.setUint32(16, Number(data.EncryptionFlags), true);
+  // 0x14: pad4
+  return buf;
+}
+
+/**
+ * Windows.Win32.Networking.Clustering.CLUSPROP_PARTITION_INFO_EX2 (size: 16)
+ */
+export interface CLUSPROP_PARTITION_INFO_EX2 {
+  /** Windows.Win32.Networking.Clustering.CLUSPROP_PARTITION_INFO_EX */
+  Base: Uint8Array | Deno.PointerValue | null;
+  /** Windows.Win32.Networking.Clustering.CLUS_PARTITION_INFO_EX2 */
+  Base2: Uint8Array | Deno.PointerValue | null;
+}
+
+export const sizeofCLUSPROP_PARTITION_INFO_EX2 = 16;
+
+export function allocCLUSPROP_PARTITION_INFO_EX2(data?: Partial<CLUSPROP_PARTITION_INFO_EX2>): Uint8Array {
+  const buf = new Uint8Array(sizeofCLUSPROP_PARTITION_INFO_EX2);
+  const view = new DataView(buf.buffer);
+  // 0x00: pointer
+  if (data?.Base !== undefined) view.setBigUint64(0, data.Base === null ? 0n : BigInt(util.toPointer(data.Base)), true);
+  // 0x08: pointer
+  if (data?.Base2 !== undefined) view.setBigUint64(8, data.Base2 === null ? 0n : BigInt(util.toPointer(data.Base2)), true);
+  return buf;
+}
+
+/**
+ * Windows.Win32.Networking.Clustering.CLUS_FTSET_INFO (size: 8)
+ */
+export interface CLUS_FTSET_INFO {
+  /** u32 */
+  dwRootSignature: number;
+  /** u32 */
+  dwFtType: number;
+}
+
+export const sizeofCLUS_FTSET_INFO = 8;
+
+export function allocCLUS_FTSET_INFO(data?: Partial<CLUS_FTSET_INFO>): Uint8Array {
+  const buf = new Uint8Array(sizeofCLUS_FTSET_INFO);
+  const view = new DataView(buf.buffer);
+  // 0x00: u32
+  if (data?.dwRootSignature !== undefined) view.setUint32(0, Number(data.dwRootSignature), true);
+  // 0x04: u32
+  if (data?.dwFtType !== undefined) view.setUint32(4, Number(data.dwFtType), true);
+  return buf;
+}
+
+/**
+ * Windows.Win32.Networking.Clustering.CLUSPROP_FTSET_INFO (size: 16)
+ */
+export interface CLUSPROP_FTSET_INFO {
+  /** Windows.Win32.Networking.Clustering.CLUSPROP_VALUE */
+  Base: Uint8Array | Deno.PointerValue | null;
+  /** Windows.Win32.Networking.Clustering.CLUS_FTSET_INFO */
+  Base2: Uint8Array | Deno.PointerValue | null;
+}
+
+export const sizeofCLUSPROP_FTSET_INFO = 16;
+
+export function allocCLUSPROP_FTSET_INFO(data?: Partial<CLUSPROP_FTSET_INFO>): Uint8Array {
+  const buf = new Uint8Array(sizeofCLUSPROP_FTSET_INFO);
+  const view = new DataView(buf.buffer);
+  // 0x00: pointer
+  if (data?.Base !== undefined) view.setBigUint64(0, data.Base === null ? 0n : BigInt(util.toPointer(data.Base)), true);
+  // 0x08: pointer
+  if (data?.Base2 !== undefined) view.setBigUint64(8, data.Base2 === null ? 0n : BigInt(util.toPointer(data.Base2)), true);
+  return buf;
+}
+
+/**
+ * Windows.Win32.Networking.Clustering.CLUS_SCSI_ADDRESS (size: 8)
+ */
+export interface CLUS_SCSI_ADDRESS {
+  /** _Anonymous_e__Union */
+  Anonymous: Uint8Array | Deno.PointerValue | null;
+}
+
+export const sizeofCLUS_SCSI_ADDRESS = 8;
+
+export function allocCLUS_SCSI_ADDRESS(data?: Partial<CLUS_SCSI_ADDRESS>): Uint8Array {
+  const buf = new Uint8Array(sizeofCLUS_SCSI_ADDRESS);
+  const view = new DataView(buf.buffer);
+  // 0x00: pointer
+  if (data?.Anonymous !== undefined) view.setBigUint64(0, data.Anonymous === null ? 0n : BigInt(util.toPointer(data.Anonymous)), true);
+  return buf;
+}
+
+/**
+ * Windows.Win32.Networking.Clustering.CLUSPROP_SCSI_ADDRESS (size: 16)
+ */
+export interface CLUSPROP_SCSI_ADDRESS {
+  /** Windows.Win32.Networking.Clustering.CLUSPROP_VALUE */
+  Base: Uint8Array | Deno.PointerValue | null;
+  /** Windows.Win32.Networking.Clustering.CLUS_SCSI_ADDRESS */
+  Base2: Uint8Array | Deno.PointerValue | null;
+}
+
+export const sizeofCLUSPROP_SCSI_ADDRESS = 16;
+
+export function allocCLUSPROP_SCSI_ADDRESS(data?: Partial<CLUSPROP_SCSI_ADDRESS>): Uint8Array {
+  const buf = new Uint8Array(sizeofCLUSPROP_SCSI_ADDRESS);
+  const view = new DataView(buf.buffer);
+  // 0x00: pointer
+  if (data?.Base !== undefined) view.setBigUint64(0, data.Base === null ? 0n : BigInt(util.toPointer(data.Base)), true);
+  // 0x08: pointer
+  if (data?.Base2 !== undefined) view.setBigUint64(8, data.Base2 === null ? 0n : BigInt(util.toPointer(data.Base2)), true);
+  return buf;
+}
 
 /**
  * Windows.Win32.Networking.Clustering.CLUSTERVERSIONINFO_NT4 (size: 32)
@@ -1609,8 +2580,6 @@ export function allocCLUSCTL_RESOURCE_STATE_CHANGE_REASON_STRUCT(data?: Partial<
   // 0x0c: pad4
   return buf;
 }
-
-export type PWSTR = Deno.PointerValue | Uint8Array | null;
 
 /**
  * Windows.Win32.Networking.Clustering.CLUSTER_BATCH_COMMAND (size: 32)
@@ -2363,79 +3332,11 @@ export function allocRESOURCE_TERMINAL_FAILURE_INFO_BUFFER(data?: Partial<RESOUR
 }
 
 /**
- * _Anonymous_e__Struct (size: 16)
- */
-export interface _Anonymous_e__Struct {
-  /** u64 */
-  Alignment: Deno.PointerValue;
-  /** u64 */
-  Region: Deno.PointerValue;
-}
-
-export const sizeof_Anonymous_e__Struct = 16;
-
-export function alloc_Anonymous_e__Struct(data?: Partial<_Anonymous_e__Struct>): Uint8Array {
-  const buf = new Uint8Array(sizeof_Anonymous_e__Struct);
-  const view = new DataView(buf.buffer);
-  // 0x00: u64
-  if (data?.Alignment !== undefined) view.setBigUint64(0, BigInt(data.Alignment), true);
-  // 0x08: u64
-  if (data?.Region !== undefined) view.setBigUint64(8, BigInt(data.Region), true);
-  return buf;
-}
-
-/**
- * Windows.Win32.Networking.Clustering.CLUSPROP_SYNTAX (size: 16)
- */
-export interface CLUSPROP_SYNTAX {
-  /** u32 */
-  dw: number;
-  /** _Anonymous_e__Struct */
-  Anonymous: Uint8Array | Deno.PointerValue | null;
-}
-
-export const sizeofCLUSPROP_SYNTAX = 16;
-
-export function allocCLUSPROP_SYNTAX(data?: Partial<CLUSPROP_SYNTAX>): Uint8Array {
-  const buf = new Uint8Array(sizeofCLUSPROP_SYNTAX);
-  const view = new DataView(buf.buffer);
-  // 0x00: u32
-  if (data?.dw !== undefined) view.setUint32(0, Number(data.dw), true);
-  // 0x04: pad4
-  // 0x08: pointer
-  if (data?.Anonymous !== undefined) view.setBigUint64(8, data.Anonymous === null ? 0n : BigInt(util.toPointer(data.Anonymous)), true);
-  return buf;
-}
-
-/**
- * Windows.Win32.Networking.Clustering.CLUSPROP_VALUE (size: 16)
- */
-export interface CLUSPROP_VALUE {
-  /** Windows.Win32.Networking.Clustering.CLUSPROP_SYNTAX */
-  Syntax: Uint8Array | Deno.PointerValue | null;
-  /** u32 */
-  cbLength: number;
-}
-
-export const sizeofCLUSPROP_VALUE = 16;
-
-export function allocCLUSPROP_VALUE(data?: Partial<CLUSPROP_VALUE>): Uint8Array {
-  const buf = new Uint8Array(sizeofCLUSPROP_VALUE);
-  const view = new DataView(buf.buffer);
-  // 0x00: pointer
-  if (data?.Syntax !== undefined) view.setBigUint64(0, data.Syntax === null ? 0n : BigInt(util.toPointer(data.Syntax)), true);
-  // 0x08: u32
-  if (data?.cbLength !== undefined) view.setUint32(8, Number(data.cbLength), true);
-  // 0x0c: pad4
-  return buf;
-}
-
-/**
  * Windows.Win32.Networking.Clustering.CLUSPROP_BINARY (size: 16)
  */
 export interface CLUSPROP_BINARY {
   /** Windows.Win32.Networking.Clustering.CLUSPROP_VALUE */
-  __AnonymousBase_clusapi_L5129_C41: Uint8Array | Deno.PointerValue | null;
+  Base: Uint8Array | Deno.PointerValue | null;
   /** array */
   rgb: Deno.PointerValue | null;
 }
@@ -2446,7 +3347,7 @@ export function allocCLUSPROP_BINARY(data?: Partial<CLUSPROP_BINARY>): Uint8Arra
   const buf = new Uint8Array(sizeofCLUSPROP_BINARY);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.__AnonymousBase_clusapi_L5129_C41 !== undefined) view.setBigUint64(0, data.__AnonymousBase_clusapi_L5129_C41 === null ? 0n : BigInt(util.toPointer(data.__AnonymousBase_clusapi_L5129_C41)), true);
+  if (data?.Base !== undefined) view.setBigUint64(0, data.Base === null ? 0n : BigInt(util.toPointer(data.Base)), true);
   // 0x08: pointer
   if (data?.rgb !== undefined) view.setBigUint64(8, data.rgb === null ? 0n : BigInt(util.toPointer(data.rgb)), true);
   return buf;
@@ -2457,7 +3358,7 @@ export function allocCLUSPROP_BINARY(data?: Partial<CLUSPROP_BINARY>): Uint8Arra
  */
 export interface CLUSPROP_WORD {
   /** Windows.Win32.Networking.Clustering.CLUSPROP_VALUE */
-  __AnonymousBase_clusapi_L5139_C39: Uint8Array | Deno.PointerValue | null;
+  Base: Uint8Array | Deno.PointerValue | null;
   /** u16 */
   w: number;
 }
@@ -2468,7 +3369,7 @@ export function allocCLUSPROP_WORD(data?: Partial<CLUSPROP_WORD>): Uint8Array {
   const buf = new Uint8Array(sizeofCLUSPROP_WORD);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.__AnonymousBase_clusapi_L5139_C39 !== undefined) view.setBigUint64(0, data.__AnonymousBase_clusapi_L5139_C39 === null ? 0n : BigInt(util.toPointer(data.__AnonymousBase_clusapi_L5139_C39)), true);
+  if (data?.Base !== undefined) view.setBigUint64(0, data.Base === null ? 0n : BigInt(util.toPointer(data.Base)), true);
   // 0x08: u16
   if (data?.w !== undefined) view.setUint16(8, Number(data.w), true);
   // 0x0a: pad6
@@ -2480,7 +3381,7 @@ export function allocCLUSPROP_WORD(data?: Partial<CLUSPROP_WORD>): Uint8Array {
  */
 export interface CLUSPROP_DWORD {
   /** Windows.Win32.Networking.Clustering.CLUSPROP_VALUE */
-  __AnonymousBase_clusapi_L5149_C40: Uint8Array | Deno.PointerValue | null;
+  Base: Uint8Array | Deno.PointerValue | null;
   /** u32 */
   dw: number;
 }
@@ -2491,7 +3392,7 @@ export function allocCLUSPROP_DWORD(data?: Partial<CLUSPROP_DWORD>): Uint8Array 
   const buf = new Uint8Array(sizeofCLUSPROP_DWORD);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.__AnonymousBase_clusapi_L5149_C40 !== undefined) view.setBigUint64(0, data.__AnonymousBase_clusapi_L5149_C40 === null ? 0n : BigInt(util.toPointer(data.__AnonymousBase_clusapi_L5149_C40)), true);
+  if (data?.Base !== undefined) view.setBigUint64(0, data.Base === null ? 0n : BigInt(util.toPointer(data.Base)), true);
   // 0x08: u32
   if (data?.dw !== undefined) view.setUint32(8, Number(data.dw), true);
   // 0x0c: pad4
@@ -2503,7 +3404,7 @@ export function allocCLUSPROP_DWORD(data?: Partial<CLUSPROP_DWORD>): Uint8Array 
  */
 export interface CLUSPROP_LONG {
   /** Windows.Win32.Networking.Clustering.CLUSPROP_VALUE */
-  __AnonymousBase_clusapi_L5159_C39: Uint8Array | Deno.PointerValue | null;
+  Base: Uint8Array | Deno.PointerValue | null;
   /** i32 */
   l: number;
 }
@@ -2514,7 +3415,7 @@ export function allocCLUSPROP_LONG(data?: Partial<CLUSPROP_LONG>): Uint8Array {
   const buf = new Uint8Array(sizeofCLUSPROP_LONG);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.__AnonymousBase_clusapi_L5159_C39 !== undefined) view.setBigUint64(0, data.__AnonymousBase_clusapi_L5159_C39 === null ? 0n : BigInt(util.toPointer(data.__AnonymousBase_clusapi_L5159_C39)), true);
+  if (data?.Base !== undefined) view.setBigUint64(0, data.Base === null ? 0n : BigInt(util.toPointer(data.Base)), true);
   // 0x08: i32
   if (data?.l !== undefined) view.setInt32(8, Number(data.l), true);
   // 0x0c: pad4
@@ -2526,7 +3427,7 @@ export function allocCLUSPROP_LONG(data?: Partial<CLUSPROP_LONG>): Uint8Array {
  */
 export interface CLUSPROP_SZ {
   /** Windows.Win32.Networking.Clustering.CLUSPROP_VALUE */
-  __AnonymousBase_clusapi_L5169_C37: Uint8Array | Deno.PointerValue | null;
+  Base: Uint8Array | Deno.PointerValue | null;
   /** array */
   sz: Deno.PointerValue | null;
 }
@@ -2537,61 +3438,9 @@ export function allocCLUSPROP_SZ(data?: Partial<CLUSPROP_SZ>): Uint8Array {
   const buf = new Uint8Array(sizeofCLUSPROP_SZ);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.__AnonymousBase_clusapi_L5169_C37 !== undefined) view.setBigUint64(0, data.__AnonymousBase_clusapi_L5169_C37 === null ? 0n : BigInt(util.toPointer(data.__AnonymousBase_clusapi_L5169_C37)), true);
+  if (data?.Base !== undefined) view.setBigUint64(0, data.Base === null ? 0n : BigInt(util.toPointer(data.Base)), true);
   // 0x08: pointer
   if (data?.sz !== undefined) view.setBigUint64(8, data.sz === null ? 0n : BigInt(util.toPointer(data.sz)), true);
-  return buf;
-}
-
-/**
- * _u_e__Struct (size: 16)
- */
-export interface _u_e__Struct {
-  /** u32 */
-  dwValue: number;
-  /** Windows.Win32.Foundation.PWSTR */
-  pwszName: string | null;
-}
-
-export const sizeof_u_e__Struct = 16;
-
-export function alloc_u_e__Struct(data?: Partial<_u_e__Struct>): Uint8Array {
-  const buf = new Uint8Array(sizeof_u_e__Struct);
-  const view = new DataView(buf.buffer);
-  // 0x00: u32
-  if (data?.dwValue !== undefined) view.setUint32(0, Number(data.dwValue), true);
-  // 0x04: pad4
-  // 0x08: buffer
-  if (data?.pwszName !== undefined) {
-    (buf as any)._f8 = util.pwstrToFfi(data.pwszName);
-    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f8)), true);
-  }
-  return buf;
-}
-
-/**
- * Windows.Win32.Foundation.ULARGE_INTEGER (size: 24)
- */
-export interface ULARGE_INTEGER {
-  /** _Anonymous_e__Struct */
-  Anonymous: Uint8Array | Deno.PointerValue | null;
-  /** _u_e__Struct */
-  u: Uint8Array | Deno.PointerValue | null;
-  /** u64 */
-  QuadPart: Deno.PointerValue;
-}
-
-export const sizeofULARGE_INTEGER = 24;
-
-export function allocULARGE_INTEGER(data?: Partial<ULARGE_INTEGER>): Uint8Array {
-  const buf = new Uint8Array(sizeofULARGE_INTEGER);
-  const view = new DataView(buf.buffer);
-  // 0x00: pointer
-  if (data?.Anonymous !== undefined) view.setBigUint64(0, data.Anonymous === null ? 0n : BigInt(util.toPointer(data.Anonymous)), true);
-  // 0x08: pointer
-  if (data?.u !== undefined) view.setBigUint64(8, data.u === null ? 0n : BigInt(util.toPointer(data.u)), true);
-  // 0x10: u64
-  if (data?.QuadPart !== undefined) view.setBigUint64(16, BigInt(data.QuadPart), true);
   return buf;
 }
 
@@ -2600,7 +3449,7 @@ export function allocULARGE_INTEGER(data?: Partial<ULARGE_INTEGER>): Uint8Array 
  */
 export interface CLUSPROP_ULARGE_INTEGER {
   /** Windows.Win32.Networking.Clustering.CLUSPROP_VALUE */
-  __AnonymousBase_clusapi_L5186_C14: Uint8Array | Deno.PointerValue | null;
+  Base: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.Foundation.ULARGE_INTEGER */
   li: Uint8Array | Deno.PointerValue | null;
 }
@@ -2611,7 +3460,7 @@ export function allocCLUSPROP_ULARGE_INTEGER(data?: Partial<CLUSPROP_ULARGE_INTE
   const buf = new Uint8Array(sizeofCLUSPROP_ULARGE_INTEGER);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.__AnonymousBase_clusapi_L5186_C14 !== undefined) view.setBigUint64(0, data.__AnonymousBase_clusapi_L5186_C14 === null ? 0n : BigInt(util.toPointer(data.__AnonymousBase_clusapi_L5186_C14)), true);
+  if (data?.Base !== undefined) view.setBigUint64(0, data.Base === null ? 0n : BigInt(util.toPointer(data.Base)), true);
   // 0x08: pointer
   if (data?.li !== undefined) view.setBigUint64(8, data.li === null ? 0n : BigInt(util.toPointer(data.li)), true);
   return buf;
@@ -2648,7 +3497,7 @@ export function allocLARGE_INTEGER(data?: Partial<LARGE_INTEGER>): Uint8Array {
  */
 export interface CLUSPROP_LARGE_INTEGER {
   /** Windows.Win32.Networking.Clustering.CLUSPROP_VALUE */
-  __AnonymousBase_clusapi_L5199_C14: Uint8Array | Deno.PointerValue | null;
+  Base: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.Foundation.LARGE_INTEGER */
   li: Uint8Array | Deno.PointerValue | null;
 }
@@ -2659,31 +3508,9 @@ export function allocCLUSPROP_LARGE_INTEGER(data?: Partial<CLUSPROP_LARGE_INTEGE
   const buf = new Uint8Array(sizeofCLUSPROP_LARGE_INTEGER);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.__AnonymousBase_clusapi_L5199_C14 !== undefined) view.setBigUint64(0, data.__AnonymousBase_clusapi_L5199_C14 === null ? 0n : BigInt(util.toPointer(data.__AnonymousBase_clusapi_L5199_C14)), true);
+  if (data?.Base !== undefined) view.setBigUint64(0, data.Base === null ? 0n : BigInt(util.toPointer(data.Base)), true);
   // 0x08: pointer
   if (data?.li !== undefined) view.setBigUint64(8, data.li === null ? 0n : BigInt(util.toPointer(data.li)), true);
-  return buf;
-}
-
-/**
- * _Anonymous_e__Union (size: 16)
- */
-export interface _Anonymous_e__Union {
-  /** _Anonymous_e__Struct */
-  Anonymous: Uint8Array | Deno.PointerValue | null;
-  /** array */
-  X: Deno.PointerValue | null;
-}
-
-export const sizeof_Anonymous_e__Union = 16;
-
-export function alloc_Anonymous_e__Union(data?: Partial<_Anonymous_e__Union>): Uint8Array {
-  const buf = new Uint8Array(sizeof_Anonymous_e__Union);
-  const view = new DataView(buf.buffer);
-  // 0x00: pointer
-  if (data?.Anonymous !== undefined) view.setBigUint64(0, data.Anonymous === null ? 0n : BigInt(util.toPointer(data.Anonymous)), true);
-  // 0x08: pointer
-  if (data?.X !== undefined) view.setBigUint64(8, data.X === null ? 0n : BigInt(util.toPointer(data.X)), true);
   return buf;
 }
 
@@ -2692,7 +3519,7 @@ export function alloc_Anonymous_e__Union(data?: Partial<_Anonymous_e__Union>): U
  */
 export interface CLUSPROP_SECURITY_DESCRIPTOR {
   /** Windows.Win32.Networking.Clustering.CLUSPROP_VALUE */
-  __AnonymousBase_clusapi_L5211_C54: Uint8Array | Deno.PointerValue | null;
+  Base: Uint8Array | Deno.PointerValue | null;
   /** _Anonymous_e__Union */
   Anonymous: Uint8Array | Deno.PointerValue | null;
 }
@@ -2703,7 +3530,7 @@ export function allocCLUSPROP_SECURITY_DESCRIPTOR(data?: Partial<CLUSPROP_SECURI
   const buf = new Uint8Array(sizeofCLUSPROP_SECURITY_DESCRIPTOR);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.__AnonymousBase_clusapi_L5211_C54 !== undefined) view.setBigUint64(0, data.__AnonymousBase_clusapi_L5211_C54 === null ? 0n : BigInt(util.toPointer(data.__AnonymousBase_clusapi_L5211_C54)), true);
+  if (data?.Base !== undefined) view.setBigUint64(0, data.Base === null ? 0n : BigInt(util.toPointer(data.Base)), true);
   // 0x08: pointer
   if (data?.Anonymous !== undefined) view.setBigUint64(8, data.Anonymous === null ? 0n : BigInt(util.toPointer(data.Anonymous)), true);
   return buf;
@@ -2736,7 +3563,7 @@ export function allocFILETIME(data?: Partial<FILETIME>): Uint8Array {
  */
 export interface CLUSPROP_FILETIME {
   /** Windows.Win32.Networking.Clustering.CLUSPROP_VALUE */
-  __AnonymousBase_clusapi_L5225_C14: Uint8Array | Deno.PointerValue | null;
+  Base: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.Foundation.FILETIME */
   ft: Uint8Array | Deno.PointerValue | null;
 }
@@ -2747,27 +3574,9 @@ export function allocCLUSPROP_FILETIME(data?: Partial<CLUSPROP_FILETIME>): Uint8
   const buf = new Uint8Array(sizeofCLUSPROP_FILETIME);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.__AnonymousBase_clusapi_L5225_C14 !== undefined) view.setBigUint64(0, data.__AnonymousBase_clusapi_L5225_C14 === null ? 0n : BigInt(util.toPointer(data.__AnonymousBase_clusapi_L5225_C14)), true);
+  if (data?.Base !== undefined) view.setBigUint64(0, data.Base === null ? 0n : BigInt(util.toPointer(data.Base)), true);
   // 0x08: pointer
   if (data?.ft !== undefined) view.setBigUint64(8, data.ft === null ? 0n : BigInt(util.toPointer(data.ft)), true);
-  return buf;
-}
-
-/**
- * Windows.Win32.Networking.Clustering.CLUS_RESOURCE_CLASS_INFO (size: 8)
- */
-export interface CLUS_RESOURCE_CLASS_INFO {
-  /** _Anonymous_e__Union */
-  Anonymous: Uint8Array | Deno.PointerValue | null;
-}
-
-export const sizeofCLUS_RESOURCE_CLASS_INFO = 8;
-
-export function allocCLUS_RESOURCE_CLASS_INFO(data?: Partial<CLUS_RESOURCE_CLASS_INFO>): Uint8Array {
-  const buf = new Uint8Array(sizeofCLUS_RESOURCE_CLASS_INFO);
-  const view = new DataView(buf.buffer);
-  // 0x00: pointer
-  if (data?.Anonymous !== undefined) view.setBigUint64(0, data.Anonymous === null ? 0n : BigInt(util.toPointer(data.Anonymous)), true);
   return buf;
 }
 
@@ -2776,7 +3585,7 @@ export function allocCLUS_RESOURCE_CLASS_INFO(data?: Partial<CLUS_RESOURCE_CLASS
  */
 export interface CLUSPROP_RESOURCE_CLASS {
   /** Windows.Win32.Networking.Clustering.CLUSPROP_VALUE */
-  __AnonymousBase_clusapi_L5250_C14: Uint8Array | Deno.PointerValue | null;
+  Base: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.Networking.Clustering.CLUSTER_RESOURCE_CLASS */
   rc: CLUSTER_RESOURCE_CLASS;
 }
@@ -2787,32 +3596,10 @@ export function allocCLUSPROP_RESOURCE_CLASS(data?: Partial<CLUSPROP_RESOURCE_CL
   const buf = new Uint8Array(sizeofCLUSPROP_RESOURCE_CLASS);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.__AnonymousBase_clusapi_L5250_C14 !== undefined) view.setBigUint64(0, data.__AnonymousBase_clusapi_L5250_C14 === null ? 0n : BigInt(util.toPointer(data.__AnonymousBase_clusapi_L5250_C14)), true);
+  if (data?.Base !== undefined) view.setBigUint64(0, data.Base === null ? 0n : BigInt(util.toPointer(data.Base)), true);
   // 0x08: i32
   if (data?.rc !== undefined) view.setInt32(8, Number(data.rc), true);
   // 0x0c: pad4
-  return buf;
-}
-
-/**
- * Windows.Win32.Networking.Clustering.CLUSPROP_RESOURCE_CLASS_INFO (size: 16)
- */
-export interface CLUSPROP_RESOURCE_CLASS_INFO {
-  /** Windows.Win32.Networking.Clustering.CLUSPROP_VALUE */
-  __AnonymousBase_clusapi_L5261_C14: Uint8Array | Deno.PointerValue | null;
-  /** Windows.Win32.Networking.Clustering.CLUS_RESOURCE_CLASS_INFO */
-  __AnonymousBase_clusapi_L5262_C14: Uint8Array | Deno.PointerValue | null;
-}
-
-export const sizeofCLUSPROP_RESOURCE_CLASS_INFO = 16;
-
-export function allocCLUSPROP_RESOURCE_CLASS_INFO(data?: Partial<CLUSPROP_RESOURCE_CLASS_INFO>): Uint8Array {
-  const buf = new Uint8Array(sizeofCLUSPROP_RESOURCE_CLASS_INFO);
-  const view = new DataView(buf.buffer);
-  // 0x00: pointer
-  if (data?.__AnonymousBase_clusapi_L5261_C14 !== undefined) view.setBigUint64(0, data.__AnonymousBase_clusapi_L5261_C14 === null ? 0n : BigInt(util.toPointer(data.__AnonymousBase_clusapi_L5261_C14)), true);
-  // 0x08: pointer
-  if (data?.__AnonymousBase_clusapi_L5262_C14 !== undefined) view.setBigUint64(8, data.__AnonymousBase_clusapi_L5262_C14 === null ? 0n : BigInt(util.toPointer(data.__AnonymousBase_clusapi_L5262_C14)), true);
   return buf;
 }
 
@@ -2870,141 +3657,6 @@ export function allocCLUS_FORCE_QUORUM_INFO(data?: Partial<CLUS_FORCE_QUORUM_INF
   // 0x0c: pad4
   // 0x10: pointer
   if (data?.multiszNodeList !== undefined) view.setBigUint64(16, data.multiszNodeList === null ? 0n : BigInt(util.toPointer(data.multiszNodeList)), true);
-  return buf;
-}
-
-/**
- * Windows.Win32.Networking.Clustering.CLUS_PARTITION_INFO (size: 48)
- */
-export interface CLUS_PARTITION_INFO {
-  /** u32 */
-  dwFlags: number;
-  /** array */
-  szDeviceName: Deno.PointerValue | null;
-  /** array */
-  szVolumeLabel: Deno.PointerValue | null;
-  /** u32 */
-  dwSerialNumber: number;
-  /** u32 */
-  rgdwMaximumComponentLength: number;
-  /** u32 */
-  dwFileSystemFlags: number;
-  /** array */
-  szFileSystem: Deno.PointerValue | null;
-}
-
-export const sizeofCLUS_PARTITION_INFO = 48;
-
-export function allocCLUS_PARTITION_INFO(data?: Partial<CLUS_PARTITION_INFO>): Uint8Array {
-  const buf = new Uint8Array(sizeofCLUS_PARTITION_INFO);
-  const view = new DataView(buf.buffer);
-  // 0x00: u32
-  if (data?.dwFlags !== undefined) view.setUint32(0, Number(data.dwFlags), true);
-  // 0x04: pad4
-  // 0x08: pointer
-  if (data?.szDeviceName !== undefined) view.setBigUint64(8, data.szDeviceName === null ? 0n : BigInt(util.toPointer(data.szDeviceName)), true);
-  // 0x10: pointer
-  if (data?.szVolumeLabel !== undefined) view.setBigUint64(16, data.szVolumeLabel === null ? 0n : BigInt(util.toPointer(data.szVolumeLabel)), true);
-  // 0x18: u32
-  if (data?.dwSerialNumber !== undefined) view.setUint32(24, Number(data.dwSerialNumber), true);
-  // 0x1c: u32
-  if (data?.rgdwMaximumComponentLength !== undefined) view.setUint32(28, Number(data.rgdwMaximumComponentLength), true);
-  // 0x20: u32
-  if (data?.dwFileSystemFlags !== undefined) view.setUint32(32, Number(data.dwFileSystemFlags), true);
-  // 0x24: pad4
-  // 0x28: pointer
-  if (data?.szFileSystem !== undefined) view.setBigUint64(40, data.szFileSystem === null ? 0n : BigInt(util.toPointer(data.szFileSystem)), true);
-  return buf;
-}
-
-/**
- * Windows.Win32.Networking.Clustering.CLUS_PARTITION_INFO_EX (size: 80)
- */
-export interface CLUS_PARTITION_INFO_EX {
-  /** u32 */
-  dwFlags: number;
-  /** array */
-  szDeviceName: Deno.PointerValue | null;
-  /** array */
-  szVolumeLabel: Deno.PointerValue | null;
-  /** u32 */
-  dwSerialNumber: number;
-  /** u32 */
-  rgdwMaximumComponentLength: number;
-  /** u32 */
-  dwFileSystemFlags: number;
-  /** array */
-  szFileSystem: Deno.PointerValue | null;
-  /** Windows.Win32.Foundation.ULARGE_INTEGER */
-  TotalSizeInBytes: Uint8Array | Deno.PointerValue | null;
-  /** Windows.Win32.Foundation.ULARGE_INTEGER */
-  FreeSizeInBytes: Uint8Array | Deno.PointerValue | null;
-  /** u32 */
-  DeviceNumber: number;
-  /** u32 */
-  PartitionNumber: number;
-  /** System.Guid */
-  VolumeGuid: Uint8Array | Deno.PointerValue | null;
-}
-
-export const sizeofCLUS_PARTITION_INFO_EX = 80;
-
-export function allocCLUS_PARTITION_INFO_EX(data?: Partial<CLUS_PARTITION_INFO_EX>): Uint8Array {
-  const buf = new Uint8Array(sizeofCLUS_PARTITION_INFO_EX);
-  const view = new DataView(buf.buffer);
-  // 0x00: u32
-  if (data?.dwFlags !== undefined) view.setUint32(0, Number(data.dwFlags), true);
-  // 0x04: pad4
-  // 0x08: pointer
-  if (data?.szDeviceName !== undefined) view.setBigUint64(8, data.szDeviceName === null ? 0n : BigInt(util.toPointer(data.szDeviceName)), true);
-  // 0x10: pointer
-  if (data?.szVolumeLabel !== undefined) view.setBigUint64(16, data.szVolumeLabel === null ? 0n : BigInt(util.toPointer(data.szVolumeLabel)), true);
-  // 0x18: u32
-  if (data?.dwSerialNumber !== undefined) view.setUint32(24, Number(data.dwSerialNumber), true);
-  // 0x1c: u32
-  if (data?.rgdwMaximumComponentLength !== undefined) view.setUint32(28, Number(data.rgdwMaximumComponentLength), true);
-  // 0x20: u32
-  if (data?.dwFileSystemFlags !== undefined) view.setUint32(32, Number(data.dwFileSystemFlags), true);
-  // 0x24: pad4
-  // 0x28: pointer
-  if (data?.szFileSystem !== undefined) view.setBigUint64(40, data.szFileSystem === null ? 0n : BigInt(util.toPointer(data.szFileSystem)), true);
-  // 0x30: pointer
-  if (data?.TotalSizeInBytes !== undefined) view.setBigUint64(48, data.TotalSizeInBytes === null ? 0n : BigInt(util.toPointer(data.TotalSizeInBytes)), true);
-  // 0x38: pointer
-  if (data?.FreeSizeInBytes !== undefined) view.setBigUint64(56, data.FreeSizeInBytes === null ? 0n : BigInt(util.toPointer(data.FreeSizeInBytes)), true);
-  // 0x40: u32
-  if (data?.DeviceNumber !== undefined) view.setUint32(64, Number(data.DeviceNumber), true);
-  // 0x44: u32
-  if (data?.PartitionNumber !== undefined) view.setUint32(68, Number(data.PartitionNumber), true);
-  // 0x48: pointer
-  if (data?.VolumeGuid !== undefined) view.setBigUint64(72, data.VolumeGuid === null ? 0n : BigInt(util.toPointer(data.VolumeGuid)), true);
-  return buf;
-}
-
-/**
- * Windows.Win32.Networking.Clustering.CLUS_PARTITION_INFO_EX2 (size: 24)
- */
-export interface CLUS_PARTITION_INFO_EX2 {
-  /** System.Guid */
-  GptPartitionId: Uint8Array | Deno.PointerValue | null;
-  /** array */
-  szPartitionName: Deno.PointerValue | null;
-  /** u32 */
-  EncryptionFlags: number;
-}
-
-export const sizeofCLUS_PARTITION_INFO_EX2 = 24;
-
-export function allocCLUS_PARTITION_INFO_EX2(data?: Partial<CLUS_PARTITION_INFO_EX2>): Uint8Array {
-  const buf = new Uint8Array(sizeofCLUS_PARTITION_INFO_EX2);
-  const view = new DataView(buf.buffer);
-  // 0x00: pointer
-  if (data?.GptPartitionId !== undefined) view.setBigUint64(0, data.GptPartitionId === null ? 0n : BigInt(util.toPointer(data.GptPartitionId)), true);
-  // 0x08: pointer
-  if (data?.szPartitionName !== undefined) view.setBigUint64(8, data.szPartitionName === null ? 0n : BigInt(util.toPointer(data.szPartitionName)), true);
-  // 0x10: u32
-  if (data?.EncryptionFlags !== undefined) view.setUint32(16, Number(data.EncryptionFlags), true);
-  // 0x14: pad4
   return buf;
 }
 
@@ -3140,113 +3792,6 @@ export function allocCLUSTER_SHARED_VOLUME_STATE_INFO_EX(data?: Partial<CLUSTER_
 }
 
 /**
- * Windows.Win32.Networking.Clustering.CLUSTER_SHARED_VOLUME_RENAME_INPUT_VOLUME (size: 16)
- */
-export interface CLUSTER_SHARED_VOLUME_RENAME_INPUT_VOLUME {
-  /** Windows.Win32.Networking.Clustering.CLUSTER_SHARED_VOLUME_RENAME_INPUT_TYPE */
-  InputType: CLUSTER_SHARED_VOLUME_RENAME_INPUT_TYPE;
-  /** _Anonymous_e__Union */
-  Anonymous: Uint8Array | Deno.PointerValue | null;
-}
-
-export const sizeofCLUSTER_SHARED_VOLUME_RENAME_INPUT_VOLUME = 16;
-
-export function allocCLUSTER_SHARED_VOLUME_RENAME_INPUT_VOLUME(data?: Partial<CLUSTER_SHARED_VOLUME_RENAME_INPUT_VOLUME>): Uint8Array {
-  const buf = new Uint8Array(sizeofCLUSTER_SHARED_VOLUME_RENAME_INPUT_VOLUME);
-  const view = new DataView(buf.buffer);
-  // 0x00: i32
-  if (data?.InputType !== undefined) view.setInt32(0, Number(data.InputType), true);
-  // 0x04: pad4
-  // 0x08: pointer
-  if (data?.Anonymous !== undefined) view.setBigUint64(8, data.Anonymous === null ? 0n : BigInt(util.toPointer(data.Anonymous)), true);
-  return buf;
-}
-
-/**
- * Windows.Win32.Networking.Clustering.CLUSTER_SHARED_VOLUME_RENAME_INPUT_NAME (size: 8)
- */
-export interface CLUSTER_SHARED_VOLUME_RENAME_INPUT_NAME {
-  /** array */
-  NewVolumeName: Deno.PointerValue | null;
-}
-
-export const sizeofCLUSTER_SHARED_VOLUME_RENAME_INPUT_NAME = 8;
-
-export function allocCLUSTER_SHARED_VOLUME_RENAME_INPUT_NAME(data?: Partial<CLUSTER_SHARED_VOLUME_RENAME_INPUT_NAME>): Uint8Array {
-  const buf = new Uint8Array(sizeofCLUSTER_SHARED_VOLUME_RENAME_INPUT_NAME);
-  const view = new DataView(buf.buffer);
-  // 0x00: pointer
-  if (data?.NewVolumeName !== undefined) view.setBigUint64(0, data.NewVolumeName === null ? 0n : BigInt(util.toPointer(data.NewVolumeName)), true);
-  return buf;
-}
-
-/**
- * Windows.Win32.Networking.Clustering.CLUSTER_SHARED_VOLUME_RENAME_INPUT_GUID_NAME (size: 16)
- */
-export interface CLUSTER_SHARED_VOLUME_RENAME_INPUT_GUID_NAME {
-  /** array */
-  NewVolumeName: Deno.PointerValue | null;
-  /** array */
-  NewVolumeGuid: Deno.PointerValue | null;
-}
-
-export const sizeofCLUSTER_SHARED_VOLUME_RENAME_INPUT_GUID_NAME = 16;
-
-export function allocCLUSTER_SHARED_VOLUME_RENAME_INPUT_GUID_NAME(data?: Partial<CLUSTER_SHARED_VOLUME_RENAME_INPUT_GUID_NAME>): Uint8Array {
-  const buf = new Uint8Array(sizeofCLUSTER_SHARED_VOLUME_RENAME_INPUT_GUID_NAME);
-  const view = new DataView(buf.buffer);
-  // 0x00: pointer
-  if (data?.NewVolumeName !== undefined) view.setBigUint64(0, data.NewVolumeName === null ? 0n : BigInt(util.toPointer(data.NewVolumeName)), true);
-  // 0x08: pointer
-  if (data?.NewVolumeGuid !== undefined) view.setBigUint64(8, data.NewVolumeGuid === null ? 0n : BigInt(util.toPointer(data.NewVolumeGuid)), true);
-  return buf;
-}
-
-/**
- * Windows.Win32.Networking.Clustering.CLUSTER_SHARED_VOLUME_RENAME_INPUT (size: 16)
- */
-export interface CLUSTER_SHARED_VOLUME_RENAME_INPUT {
-  /** Windows.Win32.Networking.Clustering.CLUSTER_SHARED_VOLUME_RENAME_INPUT_VOLUME */
-  __AnonymousBase_clusapi_L5464_C14: Uint8Array | Deno.PointerValue | null;
-  /** Windows.Win32.Networking.Clustering.CLUSTER_SHARED_VOLUME_RENAME_INPUT_NAME */
-  __AnonymousBase_clusapi_L5465_C14: Uint8Array | Deno.PointerValue | null;
-}
-
-export const sizeofCLUSTER_SHARED_VOLUME_RENAME_INPUT = 16;
-
-export function allocCLUSTER_SHARED_VOLUME_RENAME_INPUT(data?: Partial<CLUSTER_SHARED_VOLUME_RENAME_INPUT>): Uint8Array {
-  const buf = new Uint8Array(sizeofCLUSTER_SHARED_VOLUME_RENAME_INPUT);
-  const view = new DataView(buf.buffer);
-  // 0x00: pointer
-  if (data?.__AnonymousBase_clusapi_L5464_C14 !== undefined) view.setBigUint64(0, data.__AnonymousBase_clusapi_L5464_C14 === null ? 0n : BigInt(util.toPointer(data.__AnonymousBase_clusapi_L5464_C14)), true);
-  // 0x08: pointer
-  if (data?.__AnonymousBase_clusapi_L5465_C14 !== undefined) view.setBigUint64(8, data.__AnonymousBase_clusapi_L5465_C14 === null ? 0n : BigInt(util.toPointer(data.__AnonymousBase_clusapi_L5465_C14)), true);
-  return buf;
-}
-
-/**
- * Windows.Win32.Networking.Clustering.CLUSTER_SHARED_VOLUME_RENAME_GUID_INPUT (size: 16)
- */
-export interface CLUSTER_SHARED_VOLUME_RENAME_GUID_INPUT {
-  /** Windows.Win32.Networking.Clustering.CLUSTER_SHARED_VOLUME_RENAME_INPUT_VOLUME */
-  __AnonymousBase_clusapi_L5475_C14: Uint8Array | Deno.PointerValue | null;
-  /** Windows.Win32.Networking.Clustering.CLUSTER_SHARED_VOLUME_RENAME_INPUT_GUID_NAME */
-  __AnonymousBase_clusapi_L5476_C14: Uint8Array | Deno.PointerValue | null;
-}
-
-export const sizeofCLUSTER_SHARED_VOLUME_RENAME_GUID_INPUT = 16;
-
-export function allocCLUSTER_SHARED_VOLUME_RENAME_GUID_INPUT(data?: Partial<CLUSTER_SHARED_VOLUME_RENAME_GUID_INPUT>): Uint8Array {
-  const buf = new Uint8Array(sizeofCLUSTER_SHARED_VOLUME_RENAME_GUID_INPUT);
-  const view = new DataView(buf.buffer);
-  // 0x00: pointer
-  if (data?.__AnonymousBase_clusapi_L5475_C14 !== undefined) view.setBigUint64(0, data.__AnonymousBase_clusapi_L5475_C14 === null ? 0n : BigInt(util.toPointer(data.__AnonymousBase_clusapi_L5475_C14)), true);
-  // 0x08: pointer
-  if (data?.__AnonymousBase_clusapi_L5476_C14 !== undefined) view.setBigUint64(8, data.__AnonymousBase_clusapi_L5476_C14 === null ? 0n : BigInt(util.toPointer(data.__AnonymousBase_clusapi_L5476_C14)), true);
-  return buf;
-}
-
-/**
  * Windows.Win32.Networking.Clustering.CLUS_CHKDSK_INFO (size: 24)
  */
 export interface CLUS_CHKDSK_INFO {
@@ -3322,156 +3867,6 @@ export function allocCLUS_SHARED_VOLUME_BACKUP_MODE(data?: Partial<CLUS_SHARED_V
   if (data?.DelayTimerInSecs !== undefined) view.setUint32(4, Number(data.DelayTimerInSecs), true);
   // 0x08: pointer
   if (data?.VolumeName !== undefined) view.setBigUint64(8, data.VolumeName === null ? 0n : BigInt(util.toPointer(data.VolumeName)), true);
-  return buf;
-}
-
-/**
- * Windows.Win32.Networking.Clustering.CLUSPROP_PARTITION_INFO (size: 16)
- */
-export interface CLUSPROP_PARTITION_INFO {
-  /** Windows.Win32.Networking.Clustering.CLUSPROP_VALUE */
-  __AnonymousBase_clusapi_L5507_C14: Uint8Array | Deno.PointerValue | null;
-  /** Windows.Win32.Networking.Clustering.CLUS_PARTITION_INFO */
-  __AnonymousBase_clusapi_L5508_C14: Uint8Array | Deno.PointerValue | null;
-}
-
-export const sizeofCLUSPROP_PARTITION_INFO = 16;
-
-export function allocCLUSPROP_PARTITION_INFO(data?: Partial<CLUSPROP_PARTITION_INFO>): Uint8Array {
-  const buf = new Uint8Array(sizeofCLUSPROP_PARTITION_INFO);
-  const view = new DataView(buf.buffer);
-  // 0x00: pointer
-  if (data?.__AnonymousBase_clusapi_L5507_C14 !== undefined) view.setBigUint64(0, data.__AnonymousBase_clusapi_L5507_C14 === null ? 0n : BigInt(util.toPointer(data.__AnonymousBase_clusapi_L5507_C14)), true);
-  // 0x08: pointer
-  if (data?.__AnonymousBase_clusapi_L5508_C14 !== undefined) view.setBigUint64(8, data.__AnonymousBase_clusapi_L5508_C14 === null ? 0n : BigInt(util.toPointer(data.__AnonymousBase_clusapi_L5508_C14)), true);
-  return buf;
-}
-
-/**
- * Windows.Win32.Networking.Clustering.CLUSPROP_PARTITION_INFO_EX (size: 16)
- */
-export interface CLUSPROP_PARTITION_INFO_EX {
-  /** Windows.Win32.Networking.Clustering.CLUSPROP_VALUE */
-  __AnonymousBase_clusapi_L5519_C14: Uint8Array | Deno.PointerValue | null;
-  /** Windows.Win32.Networking.Clustering.CLUS_PARTITION_INFO_EX */
-  __AnonymousBase_clusapi_L5520_C14: Uint8Array | Deno.PointerValue | null;
-}
-
-export const sizeofCLUSPROP_PARTITION_INFO_EX = 16;
-
-export function allocCLUSPROP_PARTITION_INFO_EX(data?: Partial<CLUSPROP_PARTITION_INFO_EX>): Uint8Array {
-  const buf = new Uint8Array(sizeofCLUSPROP_PARTITION_INFO_EX);
-  const view = new DataView(buf.buffer);
-  // 0x00: pointer
-  if (data?.__AnonymousBase_clusapi_L5519_C14 !== undefined) view.setBigUint64(0, data.__AnonymousBase_clusapi_L5519_C14 === null ? 0n : BigInt(util.toPointer(data.__AnonymousBase_clusapi_L5519_C14)), true);
-  // 0x08: pointer
-  if (data?.__AnonymousBase_clusapi_L5520_C14 !== undefined) view.setBigUint64(8, data.__AnonymousBase_clusapi_L5520_C14 === null ? 0n : BigInt(util.toPointer(data.__AnonymousBase_clusapi_L5520_C14)), true);
-  return buf;
-}
-
-/**
- * Windows.Win32.Networking.Clustering.CLUSPROP_PARTITION_INFO_EX2 (size: 16)
- */
-export interface CLUSPROP_PARTITION_INFO_EX2 {
-  /** Windows.Win32.Networking.Clustering.CLUSPROP_PARTITION_INFO_EX */
-  __AnonymousBase_clusapi_L5533_C14: Uint8Array | Deno.PointerValue | null;
-  /** Windows.Win32.Networking.Clustering.CLUS_PARTITION_INFO_EX2 */
-  __AnonymousBase_clusapi_L5534_C14: Uint8Array | Deno.PointerValue | null;
-}
-
-export const sizeofCLUSPROP_PARTITION_INFO_EX2 = 16;
-
-export function allocCLUSPROP_PARTITION_INFO_EX2(data?: Partial<CLUSPROP_PARTITION_INFO_EX2>): Uint8Array {
-  const buf = new Uint8Array(sizeofCLUSPROP_PARTITION_INFO_EX2);
-  const view = new DataView(buf.buffer);
-  // 0x00: pointer
-  if (data?.__AnonymousBase_clusapi_L5533_C14 !== undefined) view.setBigUint64(0, data.__AnonymousBase_clusapi_L5533_C14 === null ? 0n : BigInt(util.toPointer(data.__AnonymousBase_clusapi_L5533_C14)), true);
-  // 0x08: pointer
-  if (data?.__AnonymousBase_clusapi_L5534_C14 !== undefined) view.setBigUint64(8, data.__AnonymousBase_clusapi_L5534_C14 === null ? 0n : BigInt(util.toPointer(data.__AnonymousBase_clusapi_L5534_C14)), true);
-  return buf;
-}
-
-/**
- * Windows.Win32.Networking.Clustering.CLUS_FTSET_INFO (size: 8)
- */
-export interface CLUS_FTSET_INFO {
-  /** u32 */
-  dwRootSignature: number;
-  /** u32 */
-  dwFtType: number;
-}
-
-export const sizeofCLUS_FTSET_INFO = 8;
-
-export function allocCLUS_FTSET_INFO(data?: Partial<CLUS_FTSET_INFO>): Uint8Array {
-  const buf = new Uint8Array(sizeofCLUS_FTSET_INFO);
-  const view = new DataView(buf.buffer);
-  // 0x00: u32
-  if (data?.dwRootSignature !== undefined) view.setUint32(0, Number(data.dwRootSignature), true);
-  // 0x04: u32
-  if (data?.dwFtType !== undefined) view.setUint32(4, Number(data.dwFtType), true);
-  return buf;
-}
-
-/**
- * Windows.Win32.Networking.Clustering.CLUSPROP_FTSET_INFO (size: 16)
- */
-export interface CLUSPROP_FTSET_INFO {
-  /** Windows.Win32.Networking.Clustering.CLUSPROP_VALUE */
-  __AnonymousBase_clusapi_L5555_C14: Uint8Array | Deno.PointerValue | null;
-  /** Windows.Win32.Networking.Clustering.CLUS_FTSET_INFO */
-  __AnonymousBase_clusapi_L5556_C14: Uint8Array | Deno.PointerValue | null;
-}
-
-export const sizeofCLUSPROP_FTSET_INFO = 16;
-
-export function allocCLUSPROP_FTSET_INFO(data?: Partial<CLUSPROP_FTSET_INFO>): Uint8Array {
-  const buf = new Uint8Array(sizeofCLUSPROP_FTSET_INFO);
-  const view = new DataView(buf.buffer);
-  // 0x00: pointer
-  if (data?.__AnonymousBase_clusapi_L5555_C14 !== undefined) view.setBigUint64(0, data.__AnonymousBase_clusapi_L5555_C14 === null ? 0n : BigInt(util.toPointer(data.__AnonymousBase_clusapi_L5555_C14)), true);
-  // 0x08: pointer
-  if (data?.__AnonymousBase_clusapi_L5556_C14 !== undefined) view.setBigUint64(8, data.__AnonymousBase_clusapi_L5556_C14 === null ? 0n : BigInt(util.toPointer(data.__AnonymousBase_clusapi_L5556_C14)), true);
-  return buf;
-}
-
-/**
- * Windows.Win32.Networking.Clustering.CLUS_SCSI_ADDRESS (size: 8)
- */
-export interface CLUS_SCSI_ADDRESS {
-  /** _Anonymous_e__Union */
-  Anonymous: Uint8Array | Deno.PointerValue | null;
-}
-
-export const sizeofCLUS_SCSI_ADDRESS = 8;
-
-export function allocCLUS_SCSI_ADDRESS(data?: Partial<CLUS_SCSI_ADDRESS>): Uint8Array {
-  const buf = new Uint8Array(sizeofCLUS_SCSI_ADDRESS);
-  const view = new DataView(buf.buffer);
-  // 0x00: pointer
-  if (data?.Anonymous !== undefined) view.setBigUint64(0, data.Anonymous === null ? 0n : BigInt(util.toPointer(data.Anonymous)), true);
-  return buf;
-}
-
-/**
- * Windows.Win32.Networking.Clustering.CLUSPROP_SCSI_ADDRESS (size: 16)
- */
-export interface CLUSPROP_SCSI_ADDRESS {
-  /** Windows.Win32.Networking.Clustering.CLUSPROP_VALUE */
-  __AnonymousBase_clusapi_L5583_C14: Uint8Array | Deno.PointerValue | null;
-  /** Windows.Win32.Networking.Clustering.CLUS_SCSI_ADDRESS */
-  __AnonymousBase_clusapi_L5584_C14: Uint8Array | Deno.PointerValue | null;
-}
-
-export const sizeofCLUSPROP_SCSI_ADDRESS = 16;
-
-export function allocCLUSPROP_SCSI_ADDRESS(data?: Partial<CLUSPROP_SCSI_ADDRESS>): Uint8Array {
-  const buf = new Uint8Array(sizeofCLUSPROP_SCSI_ADDRESS);
-  const view = new DataView(buf.buffer);
-  // 0x00: pointer
-  if (data?.__AnonymousBase_clusapi_L5583_C14 !== undefined) view.setBigUint64(0, data.__AnonymousBase_clusapi_L5583_C14 === null ? 0n : BigInt(util.toPointer(data.__AnonymousBase_clusapi_L5583_C14)), true);
-  // 0x08: pointer
-  if (data?.__AnonymousBase_clusapi_L5584_C14 !== undefined) view.setBigUint64(8, data.__AnonymousBase_clusapi_L5584_C14 === null ? 0n : BigInt(util.toPointer(data.__AnonymousBase_clusapi_L5584_C14)), true);
   return buf;
 }
 
@@ -5400,12 +5795,14 @@ export function allocWitnessTagHelper(data?: Partial<WitnessTagHelper>): Uint8Ar
 
 export type HKEY = Deno.PointerValue;
 
+export type PSECURITY_DESCRIPTOR = Deno.PointerValue | Uint8Array | null;
+
 export type SC_HANDLE = Deno.PointerValue;
 
 // Native Libraries
 
 try {
-  var libCLUSAPI = Deno.dlopen("CLUSAPI", {
+  var libCLUSAPI_dll = Deno.dlopen("CLUSAPI.dll", {
     GetNodeClusterState: {
       parameters: ["buffer", "pointer"],
       result: "u32",
@@ -6314,7 +6711,7 @@ try {
 } catch(e) { /* ignore */ }
 
 try {
-  var libRESUTILS = Deno.dlopen("RESUTILS", {
+  var libRESUTILS_dll = Deno.dlopen("RESUTILS.dll", {
     InitializeClusterHealthFault: {
       parameters: ["pointer"],
       result: "u32",
@@ -6799,7 +7196,7 @@ try {
 } catch(e) { /* ignore */ }
 
 try {
-  var libNTLANMAN = Deno.dlopen("NTLANMAN", {
+  var libNTLANMAN_dll = Deno.dlopen("NTLANMAN.dll", {
     RegisterAppInstance: {
       parameters: ["pointer", "pointer", "i32"],
       result: "u32",
@@ -6829,13 +7226,13 @@ export function GetNodeClusterState(
   lpszNodeName: string | null /* Windows.Win32.Foundation.PWSTR */,
   pdwClusterState: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libCLUSAPI.GetNodeClusterState(util.pwstrToFfi(lpszNodeName), util.toPointer(pdwClusterState));
+  return libCLUSAPI_dll.GetNodeClusterState(util.pwstrToFfi(lpszNodeName), util.toPointer(pdwClusterState));
 }
 
 export function OpenCluster(
   lpszClusterName: string | null /* Windows.Win32.Foundation.PWSTR */,
 ): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libCLUSAPI.OpenCluster(util.pwstrToFfi(lpszClusterName)));
+  return util.pointerFromFfi(libCLUSAPI_dll.OpenCluster(util.pwstrToFfi(lpszClusterName)));
 }
 
 export function OpenClusterEx(
@@ -6843,20 +7240,20 @@ export function OpenClusterEx(
   DesiredAccess: number /* u32 */,
   GrantedAccess: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libCLUSAPI.OpenClusterEx(util.pwstrToFfi(lpszClusterName), DesiredAccess, util.toPointer(GrantedAccess)));
+  return util.pointerFromFfi(libCLUSAPI_dll.OpenClusterEx(util.pwstrToFfi(lpszClusterName), DesiredAccess, util.toPointer(GrantedAccess)));
 }
 
 export function CloseCluster(
   hCluster: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libCLUSAPI.CloseCluster(util.toPointer(hCluster)));
+  return util.boolFromFfi(libCLUSAPI_dll.CloseCluster(util.toPointer(hCluster)));
 }
 
 export function SetClusterName(
   hCluster: Deno.PointerValue | Uint8Array | null /* ptr */,
   lpszNewClusterName: string | null /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
-  return libCLUSAPI.SetClusterName(util.toPointer(hCluster), util.pwstrToFfi(lpszNewClusterName));
+  return libCLUSAPI_dll.SetClusterName(util.toPointer(hCluster), util.pwstrToFfi(lpszNewClusterName));
 }
 
 export function GetClusterInformation(
@@ -6865,7 +7262,7 @@ export function GetClusterInformation(
   lpcchClusterName: Deno.PointerValue | Uint8Array | null /* ptr */,
   lpClusterInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libCLUSAPI.GetClusterInformation(util.toPointer(hCluster), util.pwstrToFfi(lpszClusterName), util.toPointer(lpcchClusterName), util.toPointer(lpClusterInfo));
+  return libCLUSAPI_dll.GetClusterInformation(util.toPointer(hCluster), util.pwstrToFfi(lpszClusterName), util.toPointer(lpcchClusterName), util.toPointer(lpClusterInfo));
 }
 
 export function GetClusterQuorumResource(
@@ -6876,7 +7273,7 @@ export function GetClusterQuorumResource(
   lpcchDeviceName: Deno.PointerValue | Uint8Array | null /* ptr */,
   lpdwMaxQuorumLogSize: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libCLUSAPI.GetClusterQuorumResource(util.toPointer(hCluster), util.pwstrToFfi(lpszResourceName), util.toPointer(lpcchResourceName), util.pwstrToFfi(lpszDeviceName), util.toPointer(lpcchDeviceName), util.toPointer(lpdwMaxQuorumLogSize));
+  return libCLUSAPI_dll.GetClusterQuorumResource(util.toPointer(hCluster), util.pwstrToFfi(lpszResourceName), util.toPointer(lpcchResourceName), util.pwstrToFfi(lpszDeviceName), util.toPointer(lpcchDeviceName), util.toPointer(lpdwMaxQuorumLogSize));
 }
 
 export function SetClusterQuorumResource(
@@ -6884,14 +7281,14 @@ export function SetClusterQuorumResource(
   lpszDeviceName: string | null /* Windows.Win32.Foundation.PWSTR */,
   dwMaxQuoLogSize: number /* u32 */,
 ): number /* u32 */ {
-  return libCLUSAPI.SetClusterQuorumResource(util.toPointer(hResource), util.pwstrToFfi(lpszDeviceName), dwMaxQuoLogSize);
+  return libCLUSAPI_dll.SetClusterQuorumResource(util.toPointer(hResource), util.pwstrToFfi(lpszDeviceName), dwMaxQuoLogSize);
 }
 
 export function BackupClusterDatabase(
   hCluster: Deno.PointerValue | Uint8Array | null /* ptr */,
   lpszPathName: string | null /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
-  return libCLUSAPI.BackupClusterDatabase(util.toPointer(hCluster), util.pwstrToFfi(lpszPathName));
+  return libCLUSAPI_dll.BackupClusterDatabase(util.toPointer(hCluster), util.pwstrToFfi(lpszPathName));
 }
 
 export function RestoreClusterDatabase(
@@ -6899,7 +7296,7 @@ export function RestoreClusterDatabase(
   bForce: boolean /* Windows.Win32.Foundation.BOOL */,
   lpszQuorumDriveLetter: string | null /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
-  return libCLUSAPI.RestoreClusterDatabase(util.pwstrToFfi(lpszPathName), util.boolToFfi(bForce), util.pwstrToFfi(lpszQuorumDriveLetter));
+  return libCLUSAPI_dll.RestoreClusterDatabase(util.pwstrToFfi(lpszPathName), util.boolToFfi(bForce), util.pwstrToFfi(lpszQuorumDriveLetter));
 }
 
 export function SetClusterNetworkPriorityOrder(
@@ -6907,7 +7304,7 @@ export function SetClusterNetworkPriorityOrder(
   NetworkCount: number /* u32 */,
   NetworkList: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libCLUSAPI.SetClusterNetworkPriorityOrder(util.toPointer(hCluster), NetworkCount, util.toPointer(NetworkList));
+  return libCLUSAPI_dll.SetClusterNetworkPriorityOrder(util.toPointer(hCluster), NetworkCount, util.toPointer(NetworkList));
 }
 
 export function SetClusterServiceAccountPassword(
@@ -6917,7 +7314,7 @@ export function SetClusterServiceAccountPassword(
   lpReturnStatusBuffer: Deno.PointerValue | Uint8Array | null /* ptr */,
   lpcbReturnStatusBufferSize: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libCLUSAPI.SetClusterServiceAccountPassword(util.pwstrToFfi(lpszClusterName), util.pwstrToFfi(lpszNewPassword), dwFlags, util.toPointer(lpReturnStatusBuffer), util.toPointer(lpcbReturnStatusBufferSize));
+  return libCLUSAPI_dll.SetClusterServiceAccountPassword(util.pwstrToFfi(lpszClusterName), util.pwstrToFfi(lpszNewPassword), dwFlags, util.toPointer(lpReturnStatusBuffer), util.toPointer(lpcbReturnStatusBufferSize));
 }
 
 export function ClusterControl(
@@ -6930,7 +7327,7 @@ export function ClusterControl(
   nOutBufferSize: number /* u32 */,
   lpBytesReturned: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libCLUSAPI.ClusterControl(util.toPointer(hCluster), util.toPointer(hHostNode), dwControlCode, util.toPointer(lpInBuffer), nInBufferSize, util.toPointer(lpOutBuffer), nOutBufferSize, util.toPointer(lpBytesReturned));
+  return libCLUSAPI_dll.ClusterControl(util.toPointer(hCluster), util.toPointer(hHostNode), dwControlCode, util.toPointer(lpInBuffer), nInBufferSize, util.toPointer(lpOutBuffer), nOutBufferSize, util.toPointer(lpBytesReturned));
 }
 
 export function ClusterUpgradeFunctionalLevel(
@@ -6939,7 +7336,7 @@ export function ClusterUpgradeFunctionalLevel(
   pfnProgressCallback: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Networking.Clustering.PCLUSTER_UPGRADE_PROGRESS_CALLBACK */,
   pvCallbackArg: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libCLUSAPI.ClusterUpgradeFunctionalLevel(util.toPointer(hCluster), util.boolToFfi(perform), util.toPointer(pfnProgressCallback), util.toPointer(pvCallbackArg));
+  return libCLUSAPI_dll.ClusterUpgradeFunctionalLevel(util.toPointer(hCluster), util.boolToFfi(perform), util.toPointer(pfnProgressCallback), util.toPointer(pvCallbackArg));
 }
 
 export function CreateClusterNotifyPortV2(
@@ -6949,7 +7346,7 @@ export function CreateClusterNotifyPortV2(
   dwFilterCount: number /* u32 */,
   dwNotifyKey: Deno.PointerValue /* usize */,
 ): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libCLUSAPI.CreateClusterNotifyPortV2(util.toPointer(hChange), util.toPointer(hCluster), util.toPointer(Filters), dwFilterCount, dwNotifyKey));
+  return util.pointerFromFfi(libCLUSAPI_dll.CreateClusterNotifyPortV2(util.toPointer(hChange), util.toPointer(hCluster), util.toPointer(Filters), dwFilterCount, dwNotifyKey));
 }
 
 export function RegisterClusterNotifyV2(
@@ -6958,14 +7355,14 @@ export function RegisterClusterNotifyV2(
   hObject: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
   dwNotifyKey: Deno.PointerValue /* usize */,
 ): number /* u32 */ {
-  return libCLUSAPI.RegisterClusterNotifyV2(util.toPointer(hChange), util.toPointer(Filter), util.toPointer(hObject), dwNotifyKey);
+  return libCLUSAPI_dll.RegisterClusterNotifyV2(util.toPointer(hChange), util.toPointer(Filter), util.toPointer(hObject), dwNotifyKey);
 }
 
 export function GetNotifyEventHandle(
   hChange: Deno.PointerValue | Uint8Array | null /* ptr */,
   lphTargetEvent: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libCLUSAPI.GetNotifyEventHandle(util.toPointer(hChange), util.toPointer(lphTargetEvent));
+  return libCLUSAPI_dll.GetNotifyEventHandle(util.toPointer(hChange), util.toPointer(lphTargetEvent));
 }
 
 export function GetClusterNotifyV2(
@@ -6984,7 +7381,7 @@ export function GetClusterNotifyV2(
   lpcchType: Deno.PointerValue | Uint8Array | null /* ptr */,
   dwMilliseconds: number /* u32 */,
 ): number /* u32 */ {
-  return libCLUSAPI.GetClusterNotifyV2(util.toPointer(hChange), util.toPointer(lpdwNotifyKey), util.toPointer(pFilterAndType), util.toPointer(buffer), util.toPointer(lpbBufferSize), util.pwstrToFfi(lpszObjectId), util.toPointer(lpcchObjectId), util.pwstrToFfi(lpszParentId), util.toPointer(lpcchParentId), util.pwstrToFfi(lpszName), util.toPointer(lpcchName), util.pwstrToFfi(lpszType), util.toPointer(lpcchType), dwMilliseconds);
+  return libCLUSAPI_dll.GetClusterNotifyV2(util.toPointer(hChange), util.toPointer(lpdwNotifyKey), util.toPointer(pFilterAndType), util.toPointer(buffer), util.toPointer(lpbBufferSize), util.pwstrToFfi(lpszObjectId), util.toPointer(lpcchObjectId), util.pwstrToFfi(lpszParentId), util.toPointer(lpcchParentId), util.pwstrToFfi(lpszName), util.toPointer(lpcchName), util.pwstrToFfi(lpszType), util.toPointer(lpcchType), dwMilliseconds);
 }
 
 export function CreateClusterNotifyPort(
@@ -6993,7 +7390,7 @@ export function CreateClusterNotifyPort(
   dwFilter: number /* u32 */,
   dwNotifyKey: Deno.PointerValue /* usize */,
 ): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libCLUSAPI.CreateClusterNotifyPort(util.toPointer(hChange), util.toPointer(hCluster), dwFilter, dwNotifyKey));
+  return util.pointerFromFfi(libCLUSAPI_dll.CreateClusterNotifyPort(util.toPointer(hChange), util.toPointer(hCluster), dwFilter, dwNotifyKey));
 }
 
 export function RegisterClusterNotify(
@@ -7002,7 +7399,7 @@ export function RegisterClusterNotify(
   hObject: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
   dwNotifyKey: Deno.PointerValue /* usize */,
 ): number /* u32 */ {
-  return libCLUSAPI.RegisterClusterNotify(util.toPointer(hChange), dwFilterType, util.toPointer(hObject), dwNotifyKey);
+  return libCLUSAPI_dll.RegisterClusterNotify(util.toPointer(hChange), dwFilterType, util.toPointer(hObject), dwNotifyKey);
 }
 
 export function GetClusterNotify(
@@ -7013,26 +7410,26 @@ export function GetClusterNotify(
   lpcchName: Deno.PointerValue | Uint8Array | null /* ptr */,
   dwMilliseconds: number /* u32 */,
 ): number /* u32 */ {
-  return libCLUSAPI.GetClusterNotify(util.toPointer(hChange), util.toPointer(lpdwNotifyKey), util.toPointer(lpdwFilterType), util.pwstrToFfi(lpszName), util.toPointer(lpcchName), dwMilliseconds);
+  return libCLUSAPI_dll.GetClusterNotify(util.toPointer(hChange), util.toPointer(lpdwNotifyKey), util.toPointer(lpdwFilterType), util.pwstrToFfi(lpszName), util.toPointer(lpcchName), dwMilliseconds);
 }
 
 export function CloseClusterNotifyPort(
   hChange: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libCLUSAPI.CloseClusterNotifyPort(util.toPointer(hChange)));
+  return util.boolFromFfi(libCLUSAPI_dll.CloseClusterNotifyPort(util.toPointer(hChange)));
 }
 
 export function ClusterOpenEnum(
   hCluster: Deno.PointerValue | Uint8Array | null /* ptr */,
   dwType: number /* u32 */,
 ): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libCLUSAPI.ClusterOpenEnum(util.toPointer(hCluster), dwType));
+  return util.pointerFromFfi(libCLUSAPI_dll.ClusterOpenEnum(util.toPointer(hCluster), dwType));
 }
 
 export function ClusterGetEnumCount(
   hEnum: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libCLUSAPI.ClusterGetEnumCount(util.toPointer(hEnum));
+  return libCLUSAPI_dll.ClusterGetEnumCount(util.toPointer(hEnum));
 }
 
 export function ClusterEnum(
@@ -7042,13 +7439,13 @@ export function ClusterEnum(
   lpszName: string | null /* Windows.Win32.Foundation.PWSTR */,
   lpcchName: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libCLUSAPI.ClusterEnum(util.toPointer(hEnum), dwIndex, util.toPointer(lpdwType), util.pwstrToFfi(lpszName), util.toPointer(lpcchName));
+  return libCLUSAPI_dll.ClusterEnum(util.toPointer(hEnum), dwIndex, util.toPointer(lpdwType), util.pwstrToFfi(lpszName), util.toPointer(lpcchName));
 }
 
 export function ClusterCloseEnum(
   hEnum: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libCLUSAPI.ClusterCloseEnum(util.toPointer(hEnum));
+  return libCLUSAPI_dll.ClusterCloseEnum(util.toPointer(hEnum));
 }
 
 export function ClusterOpenEnumEx(
@@ -7056,13 +7453,13 @@ export function ClusterOpenEnumEx(
   dwType: number /* u32 */,
   pOptions: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libCLUSAPI.ClusterOpenEnumEx(util.toPointer(hCluster), dwType, util.toPointer(pOptions)));
+  return util.pointerFromFfi(libCLUSAPI_dll.ClusterOpenEnumEx(util.toPointer(hCluster), dwType, util.toPointer(pOptions)));
 }
 
 export function ClusterGetEnumCountEx(
   hClusterEnum: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libCLUSAPI.ClusterGetEnumCountEx(util.toPointer(hClusterEnum));
+  return libCLUSAPI_dll.ClusterGetEnumCountEx(util.toPointer(hClusterEnum));
 }
 
 export function ClusterEnumEx(
@@ -7071,46 +7468,46 @@ export function ClusterEnumEx(
   pItem: Deno.PointerValue | Uint8Array | null /* ptr */,
   cbItem: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libCLUSAPI.ClusterEnumEx(util.toPointer(hClusterEnum), dwIndex, util.toPointer(pItem), util.toPointer(cbItem));
+  return libCLUSAPI_dll.ClusterEnumEx(util.toPointer(hClusterEnum), dwIndex, util.toPointer(pItem), util.toPointer(cbItem));
 }
 
 export function ClusterCloseEnumEx(
   hClusterEnum: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libCLUSAPI.ClusterCloseEnumEx(util.toPointer(hClusterEnum));
+  return libCLUSAPI_dll.ClusterCloseEnumEx(util.toPointer(hClusterEnum));
 }
 
 export function CreateClusterGroupSet(
   hCluster: Deno.PointerValue | Uint8Array | null /* ptr */,
   groupSetName: string | null /* Windows.Win32.Foundation.PWSTR */,
 ): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libCLUSAPI.CreateClusterGroupSet(util.toPointer(hCluster), util.pwstrToFfi(groupSetName)));
+  return util.pointerFromFfi(libCLUSAPI_dll.CreateClusterGroupSet(util.toPointer(hCluster), util.pwstrToFfi(groupSetName)));
 }
 
 export function OpenClusterGroupSet(
   hCluster: Deno.PointerValue | Uint8Array | null /* ptr */,
   lpszGroupSetName: string | null /* Windows.Win32.Foundation.PWSTR */,
 ): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libCLUSAPI.OpenClusterGroupSet(util.toPointer(hCluster), util.pwstrToFfi(lpszGroupSetName)));
+  return util.pointerFromFfi(libCLUSAPI_dll.OpenClusterGroupSet(util.toPointer(hCluster), util.pwstrToFfi(lpszGroupSetName)));
 }
 
 export function CloseClusterGroupSet(
   hGroupSet: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libCLUSAPI.CloseClusterGroupSet(util.toPointer(hGroupSet)));
+  return util.boolFromFfi(libCLUSAPI_dll.CloseClusterGroupSet(util.toPointer(hGroupSet)));
 }
 
 export function DeleteClusterGroupSet(
   hGroupSet: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libCLUSAPI.DeleteClusterGroupSet(util.toPointer(hGroupSet));
+  return libCLUSAPI_dll.DeleteClusterGroupSet(util.toPointer(hGroupSet));
 }
 
 export function ClusterAddGroupToGroupSet(
   hGroupSet: Deno.PointerValue | Uint8Array | null /* ptr */,
   hGroup: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libCLUSAPI.ClusterAddGroupToGroupSet(util.toPointer(hGroupSet), util.toPointer(hGroup));
+  return libCLUSAPI_dll.ClusterAddGroupToGroupSet(util.toPointer(hGroupSet), util.toPointer(hGroup));
 }
 
 export function ClusterAddGroupToGroupSetWithDomains(
@@ -7119,13 +7516,13 @@ export function ClusterAddGroupToGroupSetWithDomains(
   faultDomain: number /* u32 */,
   updateDomain: number /* u32 */,
 ): number /* u32 */ {
-  return libCLUSAPI.ClusterAddGroupToGroupSetWithDomains(util.toPointer(hGroupSet), util.toPointer(hGroup), faultDomain, updateDomain);
+  return libCLUSAPI_dll.ClusterAddGroupToGroupSetWithDomains(util.toPointer(hGroupSet), util.toPointer(hGroup), faultDomain, updateDomain);
 }
 
 export function ClusterRemoveGroupFromGroupSet(
   hGroup: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libCLUSAPI.ClusterRemoveGroupFromGroupSet(util.toPointer(hGroup));
+  return libCLUSAPI_dll.ClusterRemoveGroupFromGroupSet(util.toPointer(hGroup));
 }
 
 export function ClusterGroupSetControl(
@@ -7138,75 +7535,75 @@ export function ClusterGroupSetControl(
   cbOutBufferSize: number /* u32 */,
   lpBytesReturned: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libCLUSAPI.ClusterGroupSetControl(util.toPointer(hGroupSet), util.toPointer(hHostNode), dwControlCode, util.toPointer(lpInBuffer), cbInBufferSize, util.toPointer(lpOutBuffer), cbOutBufferSize, util.toPointer(lpBytesReturned));
+  return libCLUSAPI_dll.ClusterGroupSetControl(util.toPointer(hGroupSet), util.toPointer(hHostNode), dwControlCode, util.toPointer(lpInBuffer), cbInBufferSize, util.toPointer(lpOutBuffer), cbOutBufferSize, util.toPointer(lpBytesReturned));
 }
 
 export function AddClusterGroupDependency(
   hDependentGroup: Deno.PointerValue | Uint8Array | null /* ptr */,
   hProviderGroup: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libCLUSAPI.AddClusterGroupDependency(util.toPointer(hDependentGroup), util.toPointer(hProviderGroup));
+  return libCLUSAPI_dll.AddClusterGroupDependency(util.toPointer(hDependentGroup), util.toPointer(hProviderGroup));
 }
 
 export function SetGroupDependencyExpression(
   hGroup: Deno.PointerValue | Uint8Array | null /* ptr */,
   lpszDependencyExpression: string | null /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
-  return libCLUSAPI.SetGroupDependencyExpression(util.toPointer(hGroup), util.pwstrToFfi(lpszDependencyExpression));
+  return libCLUSAPI_dll.SetGroupDependencyExpression(util.toPointer(hGroup), util.pwstrToFfi(lpszDependencyExpression));
 }
 
 export function RemoveClusterGroupDependency(
   hGroup: Deno.PointerValue | Uint8Array | null /* ptr */,
   hDependsOn: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libCLUSAPI.RemoveClusterGroupDependency(util.toPointer(hGroup), util.toPointer(hDependsOn));
+  return libCLUSAPI_dll.RemoveClusterGroupDependency(util.toPointer(hGroup), util.toPointer(hDependsOn));
 }
 
 export function AddClusterGroupSetDependency(
   hDependentGroupSet: Deno.PointerValue | Uint8Array | null /* ptr */,
   hProviderGroupSet: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libCLUSAPI.AddClusterGroupSetDependency(util.toPointer(hDependentGroupSet), util.toPointer(hProviderGroupSet));
+  return libCLUSAPI_dll.AddClusterGroupSetDependency(util.toPointer(hDependentGroupSet), util.toPointer(hProviderGroupSet));
 }
 
 export function SetClusterGroupSetDependencyExpression(
   hGroupSet: Deno.PointerValue | Uint8Array | null /* ptr */,
   lpszDependencyExprssion: string | null /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
-  return libCLUSAPI.SetClusterGroupSetDependencyExpression(util.toPointer(hGroupSet), util.pwstrToFfi(lpszDependencyExprssion));
+  return libCLUSAPI_dll.SetClusterGroupSetDependencyExpression(util.toPointer(hGroupSet), util.pwstrToFfi(lpszDependencyExprssion));
 }
 
 export function RemoveClusterGroupSetDependency(
   hGroupSet: Deno.PointerValue | Uint8Array | null /* ptr */,
   hDependsOn: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libCLUSAPI.RemoveClusterGroupSetDependency(util.toPointer(hGroupSet), util.toPointer(hDependsOn));
+  return libCLUSAPI_dll.RemoveClusterGroupSetDependency(util.toPointer(hGroupSet), util.toPointer(hDependsOn));
 }
 
 export function AddClusterGroupToGroupSetDependency(
   hDependentGroup: Deno.PointerValue | Uint8Array | null /* ptr */,
   hProviderGroupSet: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libCLUSAPI.AddClusterGroupToGroupSetDependency(util.toPointer(hDependentGroup), util.toPointer(hProviderGroupSet));
+  return libCLUSAPI_dll.AddClusterGroupToGroupSetDependency(util.toPointer(hDependentGroup), util.toPointer(hProviderGroupSet));
 }
 
 export function RemoveClusterGroupToGroupSetDependency(
   hGroup: Deno.PointerValue | Uint8Array | null /* ptr */,
   hDependsOn: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libCLUSAPI.RemoveClusterGroupToGroupSetDependency(util.toPointer(hGroup), util.toPointer(hDependsOn));
+  return libCLUSAPI_dll.RemoveClusterGroupToGroupSetDependency(util.toPointer(hGroup), util.toPointer(hDependsOn));
 }
 
 export function ClusterGroupSetOpenEnum(
   hCluster: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libCLUSAPI.ClusterGroupSetOpenEnum(util.toPointer(hCluster)));
+  return util.pointerFromFfi(libCLUSAPI_dll.ClusterGroupSetOpenEnum(util.toPointer(hCluster)));
 }
 
 export function ClusterGroupSetGetEnumCount(
   hGroupSetEnum: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libCLUSAPI.ClusterGroupSetGetEnumCount(util.toPointer(hGroupSetEnum));
+  return libCLUSAPI_dll.ClusterGroupSetGetEnumCount(util.toPointer(hGroupSetEnum));
 }
 
 export function ClusterGroupSetEnum(
@@ -7215,13 +7612,13 @@ export function ClusterGroupSetEnum(
   lpszName: string | null /* Windows.Win32.Foundation.PWSTR */,
   lpcchName: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libCLUSAPI.ClusterGroupSetEnum(util.toPointer(hGroupSetEnum), dwIndex, util.pwstrToFfi(lpszName), util.toPointer(lpcchName));
+  return libCLUSAPI_dll.ClusterGroupSetEnum(util.toPointer(hGroupSetEnum), dwIndex, util.pwstrToFfi(lpszName), util.toPointer(lpcchName));
 }
 
 export function ClusterGroupSetCloseEnum(
   hGroupSetEnum: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libCLUSAPI.ClusterGroupSetCloseEnum(util.toPointer(hGroupSetEnum));
+  return libCLUSAPI_dll.ClusterGroupSetCloseEnum(util.toPointer(hGroupSetEnum));
 }
 
 export function AddCrossClusterGroupSetDependency(
@@ -7229,7 +7626,7 @@ export function AddCrossClusterGroupSetDependency(
   lpRemoteClusterName: string | null /* Windows.Win32.Foundation.PWSTR */,
   lpRemoteGroupSetName: string | null /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
-  return libCLUSAPI.AddCrossClusterGroupSetDependency(util.toPointer(hDependentGroupSet), util.pwstrToFfi(lpRemoteClusterName), util.pwstrToFfi(lpRemoteGroupSetName));
+  return libCLUSAPI_dll.AddCrossClusterGroupSetDependency(util.toPointer(hDependentGroupSet), util.pwstrToFfi(lpRemoteClusterName), util.pwstrToFfi(lpRemoteGroupSetName));
 }
 
 export function RemoveCrossClusterGroupSetDependency(
@@ -7237,7 +7634,7 @@ export function RemoveCrossClusterGroupSetDependency(
   lpRemoteClusterName: string | null /* Windows.Win32.Foundation.PWSTR */,
   lpRemoteGroupSetName: string | null /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
-  return libCLUSAPI.RemoveCrossClusterGroupSetDependency(util.toPointer(hDependentGroupSet), util.pwstrToFfi(lpRemoteClusterName), util.pwstrToFfi(lpRemoteGroupSetName));
+  return libCLUSAPI_dll.RemoveCrossClusterGroupSetDependency(util.toPointer(hDependentGroupSet), util.pwstrToFfi(lpRemoteClusterName), util.pwstrToFfi(lpRemoteGroupSetName));
 }
 
 export function CreateClusterAvailabilitySet(
@@ -7245,7 +7642,7 @@ export function CreateClusterAvailabilitySet(
   lpAvailabilitySetName: string | null /* Windows.Win32.Foundation.PWSTR */,
   pAvailabilitySetConfig: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libCLUSAPI.CreateClusterAvailabilitySet(util.toPointer(hCluster), util.pwstrToFfi(lpAvailabilitySetName), util.toPointer(pAvailabilitySetConfig)));
+  return util.pointerFromFfi(libCLUSAPI_dll.CreateClusterAvailabilitySet(util.toPointer(hCluster), util.pwstrToFfi(lpAvailabilitySetName), util.toPointer(pAvailabilitySetConfig)));
 }
 
 export function ClusterNodeReplacement(
@@ -7253,7 +7650,7 @@ export function ClusterNodeReplacement(
   lpszNodeNameCurrent: string | null /* Windows.Win32.Foundation.PWSTR */,
   lpszNodeNameNew: string | null /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
-  return libCLUSAPI.ClusterNodeReplacement(util.toPointer(hCluster), util.pwstrToFfi(lpszNodeNameCurrent), util.pwstrToFfi(lpszNodeNameNew));
+  return libCLUSAPI_dll.ClusterNodeReplacement(util.toPointer(hCluster), util.pwstrToFfi(lpszNodeNameCurrent), util.pwstrToFfi(lpszNodeNameNew));
 }
 
 export function ClusterCreateAffinityRule(
@@ -7261,14 +7658,14 @@ export function ClusterCreateAffinityRule(
   ruleName: string | null /* Windows.Win32.Foundation.PWSTR */,
   ruleType: CLUS_AFFINITY_RULE_TYPE /* Windows.Win32.Networking.Clustering.CLUS_AFFINITY_RULE_TYPE */,
 ): number /* u32 */ {
-  return libCLUSAPI.ClusterCreateAffinityRule(util.toPointer(hCluster), util.pwstrToFfi(ruleName), ruleType);
+  return libCLUSAPI_dll.ClusterCreateAffinityRule(util.toPointer(hCluster), util.pwstrToFfi(ruleName), ruleType);
 }
 
 export function ClusterRemoveAffinityRule(
   hCluster: Deno.PointerValue | Uint8Array | null /* ptr */,
   ruleName: string | null /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
-  return libCLUSAPI.ClusterRemoveAffinityRule(util.toPointer(hCluster), util.pwstrToFfi(ruleName));
+  return libCLUSAPI_dll.ClusterRemoveAffinityRule(util.toPointer(hCluster), util.pwstrToFfi(ruleName));
 }
 
 export function ClusterAddGroupToAffinityRule(
@@ -7276,7 +7673,7 @@ export function ClusterAddGroupToAffinityRule(
   ruleName: string | null /* Windows.Win32.Foundation.PWSTR */,
   hGroup: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libCLUSAPI.ClusterAddGroupToAffinityRule(util.toPointer(hCluster), util.pwstrToFfi(ruleName), util.toPointer(hGroup));
+  return libCLUSAPI_dll.ClusterAddGroupToAffinityRule(util.toPointer(hCluster), util.pwstrToFfi(ruleName), util.toPointer(hGroup));
 }
 
 export function ClusterRemoveGroupFromAffinityRule(
@@ -7284,7 +7681,7 @@ export function ClusterRemoveGroupFromAffinityRule(
   ruleName: string | null /* Windows.Win32.Foundation.PWSTR */,
   hGroup: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libCLUSAPI.ClusterRemoveGroupFromAffinityRule(util.toPointer(hCluster), util.pwstrToFfi(ruleName), util.toPointer(hGroup));
+  return libCLUSAPI_dll.ClusterRemoveGroupFromAffinityRule(util.toPointer(hCluster), util.pwstrToFfi(ruleName), util.toPointer(hGroup));
 }
 
 export function ClusterAffinityRuleControl(
@@ -7298,14 +7695,14 @@ export function ClusterAffinityRuleControl(
   cbOutBufferSize: number /* u32 */,
   lpBytesReturned: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libCLUSAPI.ClusterAffinityRuleControl(util.toPointer(hCluster), util.pwstrToFfi(affinityRuleName), util.toPointer(hHostNode), dwControlCode, util.toPointer(lpInBuffer), cbInBufferSize, util.toPointer(lpOutBuffer), cbOutBufferSize, util.toPointer(lpBytesReturned));
+  return libCLUSAPI_dll.ClusterAffinityRuleControl(util.toPointer(hCluster), util.pwstrToFfi(affinityRuleName), util.toPointer(hHostNode), dwControlCode, util.toPointer(lpInBuffer), cbInBufferSize, util.toPointer(lpOutBuffer), cbOutBufferSize, util.toPointer(lpBytesReturned));
 }
 
 export function OpenClusterNode(
   hCluster: Deno.PointerValue | Uint8Array | null /* ptr */,
   lpszNodeName: string | null /* Windows.Win32.Foundation.PWSTR */,
 ): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libCLUSAPI.OpenClusterNode(util.toPointer(hCluster), util.pwstrToFfi(lpszNodeName)));
+  return util.pointerFromFfi(libCLUSAPI_dll.OpenClusterNode(util.toPointer(hCluster), util.pwstrToFfi(lpszNodeName)));
 }
 
 export function OpenClusterNodeEx(
@@ -7314,26 +7711,26 @@ export function OpenClusterNodeEx(
   dwDesiredAccess: number /* u32 */,
   lpdwGrantedAccess: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libCLUSAPI.OpenClusterNodeEx(util.toPointer(hCluster), util.pwstrToFfi(lpszNodeName), dwDesiredAccess, util.toPointer(lpdwGrantedAccess)));
+  return util.pointerFromFfi(libCLUSAPI_dll.OpenClusterNodeEx(util.toPointer(hCluster), util.pwstrToFfi(lpszNodeName), dwDesiredAccess, util.toPointer(lpdwGrantedAccess)));
 }
 
 export function OpenClusterNodeById(
   hCluster: Deno.PointerValue | Uint8Array | null /* ptr */,
   nodeId: number /* u32 */,
 ): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libCLUSAPI.OpenClusterNodeById(util.toPointer(hCluster), nodeId));
+  return util.pointerFromFfi(libCLUSAPI_dll.OpenClusterNodeById(util.toPointer(hCluster), nodeId));
 }
 
 export function CloseClusterNode(
   hNode: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libCLUSAPI.CloseClusterNode(util.toPointer(hNode)));
+  return util.boolFromFfi(libCLUSAPI_dll.CloseClusterNode(util.toPointer(hNode)));
 }
 
 export function GetClusterNodeState(
   hNode: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): CLUSTER_NODE_STATE /* Windows.Win32.Networking.Clustering.CLUSTER_NODE_STATE */ {
-  return libCLUSAPI.GetClusterNodeState(util.toPointer(hNode));
+  return libCLUSAPI_dll.GetClusterNodeState(util.toPointer(hNode));
 }
 
 export function GetClusterNodeId(
@@ -7341,31 +7738,31 @@ export function GetClusterNodeId(
   lpszNodeId: string | null /* Windows.Win32.Foundation.PWSTR */,
   lpcchName: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libCLUSAPI.GetClusterNodeId(util.toPointer(hNode), util.pwstrToFfi(lpszNodeId), util.toPointer(lpcchName));
+  return libCLUSAPI_dll.GetClusterNodeId(util.toPointer(hNode), util.pwstrToFfi(lpszNodeId), util.toPointer(lpcchName));
 }
 
 export function GetClusterFromNode(
   hNode: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libCLUSAPI.GetClusterFromNode(util.toPointer(hNode)));
+  return util.pointerFromFfi(libCLUSAPI_dll.GetClusterFromNode(util.toPointer(hNode)));
 }
 
 export function PauseClusterNode(
   hNode: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libCLUSAPI.PauseClusterNode(util.toPointer(hNode));
+  return libCLUSAPI_dll.PauseClusterNode(util.toPointer(hNode));
 }
 
 export function ResumeClusterNode(
   hNode: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libCLUSAPI.ResumeClusterNode(util.toPointer(hNode));
+  return libCLUSAPI_dll.ResumeClusterNode(util.toPointer(hNode));
 }
 
 export function EvictClusterNode(
   hNode: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libCLUSAPI.EvictClusterNode(util.toPointer(hNode));
+  return libCLUSAPI_dll.EvictClusterNode(util.toPointer(hNode));
 }
 
 export function ClusterNetInterfaceOpenEnum(
@@ -7373,7 +7770,7 @@ export function ClusterNetInterfaceOpenEnum(
   lpszNodeName: string | null /* Windows.Win32.Foundation.PWSTR */,
   lpszNetworkName: string | null /* Windows.Win32.Foundation.PWSTR */,
 ): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libCLUSAPI.ClusterNetInterfaceOpenEnum(util.toPointer(hCluster), util.pwstrToFfi(lpszNodeName), util.pwstrToFfi(lpszNetworkName)));
+  return util.pointerFromFfi(libCLUSAPI_dll.ClusterNetInterfaceOpenEnum(util.toPointer(hCluster), util.pwstrToFfi(lpszNodeName), util.pwstrToFfi(lpszNetworkName)));
 }
 
 export function ClusterNetInterfaceEnum(
@@ -7382,20 +7779,20 @@ export function ClusterNetInterfaceEnum(
   lpszName: string | null /* Windows.Win32.Foundation.PWSTR */,
   lpcchName: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libCLUSAPI.ClusterNetInterfaceEnum(util.toPointer(hNetInterfaceEnum), dwIndex, util.pwstrToFfi(lpszName), util.toPointer(lpcchName));
+  return libCLUSAPI_dll.ClusterNetInterfaceEnum(util.toPointer(hNetInterfaceEnum), dwIndex, util.pwstrToFfi(lpszName), util.toPointer(lpcchName));
 }
 
 export function ClusterNetInterfaceCloseEnum(
   hNetInterfaceEnum: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libCLUSAPI.ClusterNetInterfaceCloseEnum(util.toPointer(hNetInterfaceEnum));
+  return libCLUSAPI_dll.ClusterNetInterfaceCloseEnum(util.toPointer(hNetInterfaceEnum));
 }
 
 export function ClusterNodeOpenEnum(
   hNode: Deno.PointerValue | Uint8Array | null /* ptr */,
   dwType: number /* u32 */,
 ): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libCLUSAPI.ClusterNodeOpenEnum(util.toPointer(hNode), dwType));
+  return util.pointerFromFfi(libCLUSAPI_dll.ClusterNodeOpenEnum(util.toPointer(hNode), dwType));
 }
 
 export function ClusterNodeOpenEnumEx(
@@ -7403,13 +7800,13 @@ export function ClusterNodeOpenEnumEx(
   dwType: number /* u32 */,
   pOptions: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libCLUSAPI.ClusterNodeOpenEnumEx(util.toPointer(hNode), dwType, util.toPointer(pOptions)));
+  return util.pointerFromFfi(libCLUSAPI_dll.ClusterNodeOpenEnumEx(util.toPointer(hNode), dwType, util.toPointer(pOptions)));
 }
 
 export function ClusterNodeGetEnumCountEx(
   hNodeEnum: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libCLUSAPI.ClusterNodeGetEnumCountEx(util.toPointer(hNodeEnum));
+  return libCLUSAPI_dll.ClusterNodeGetEnumCountEx(util.toPointer(hNodeEnum));
 }
 
 export function ClusterNodeEnumEx(
@@ -7418,25 +7815,25 @@ export function ClusterNodeEnumEx(
   pItem: Deno.PointerValue | Uint8Array | null /* ptr */,
   cbItem: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libCLUSAPI.ClusterNodeEnumEx(util.toPointer(hNodeEnum), dwIndex, util.toPointer(pItem), util.toPointer(cbItem));
+  return libCLUSAPI_dll.ClusterNodeEnumEx(util.toPointer(hNodeEnum), dwIndex, util.toPointer(pItem), util.toPointer(cbItem));
 }
 
 export function ClusterNodeCloseEnumEx(
   hNodeEnum: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libCLUSAPI.ClusterNodeCloseEnumEx(util.toPointer(hNodeEnum));
+  return libCLUSAPI_dll.ClusterNodeCloseEnumEx(util.toPointer(hNodeEnum));
 }
 
 export function ClusterNodeGetEnumCount(
   hNodeEnum: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libCLUSAPI.ClusterNodeGetEnumCount(util.toPointer(hNodeEnum));
+  return libCLUSAPI_dll.ClusterNodeGetEnumCount(util.toPointer(hNodeEnum));
 }
 
 export function ClusterNodeCloseEnum(
   hNodeEnum: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libCLUSAPI.ClusterNodeCloseEnum(util.toPointer(hNodeEnum));
+  return libCLUSAPI_dll.ClusterNodeCloseEnum(util.toPointer(hNodeEnum));
 }
 
 export function ClusterNodeEnum(
@@ -7446,7 +7843,7 @@ export function ClusterNodeEnum(
   lpszName: string | null /* Windows.Win32.Foundation.PWSTR */,
   lpcchName: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libCLUSAPI.ClusterNodeEnum(util.toPointer(hNodeEnum), dwIndex, util.toPointer(lpdwType), util.pwstrToFfi(lpszName), util.toPointer(lpcchName));
+  return libCLUSAPI_dll.ClusterNodeEnum(util.toPointer(hNodeEnum), dwIndex, util.toPointer(lpdwType), util.pwstrToFfi(lpszName), util.toPointer(lpcchName));
 }
 
 export function EvictClusterNodeEx(
@@ -7454,7 +7851,7 @@ export function EvictClusterNodeEx(
   dwTimeOut: number /* u32 */,
   phrCleanupStatus: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libCLUSAPI.EvictClusterNodeEx(util.toPointer(hNode), dwTimeOut, util.toPointer(phrCleanupStatus));
+  return libCLUSAPI_dll.EvictClusterNodeEx(util.toPointer(hNode), dwTimeOut, util.toPointer(phrCleanupStatus));
 }
 
 export function GetClusterResourceTypeKey(
@@ -7462,21 +7859,21 @@ export function GetClusterResourceTypeKey(
   lpszTypeName: string | null /* Windows.Win32.Foundation.PWSTR */,
   samDesired: number /* u32 */,
 ): Deno.PointerValue | null /* Windows.Win32.System.Registry.HKEY */ {
-  return util.pointerFromFfi(libCLUSAPI.GetClusterResourceTypeKey(util.toPointer(hCluster), util.pwstrToFfi(lpszTypeName), samDesired));
+  return util.pointerFromFfi(libCLUSAPI_dll.GetClusterResourceTypeKey(util.toPointer(hCluster), util.pwstrToFfi(lpszTypeName), samDesired));
 }
 
 export function CreateClusterGroup(
   hCluster: Deno.PointerValue | Uint8Array | null /* ptr */,
   lpszGroupName: string | null /* Windows.Win32.Foundation.PWSTR */,
 ): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libCLUSAPI.CreateClusterGroup(util.toPointer(hCluster), util.pwstrToFfi(lpszGroupName)));
+  return util.pointerFromFfi(libCLUSAPI_dll.CreateClusterGroup(util.toPointer(hCluster), util.pwstrToFfi(lpszGroupName)));
 }
 
 export function OpenClusterGroup(
   hCluster: Deno.PointerValue | Uint8Array | null /* ptr */,
   lpszGroupName: string | null /* Windows.Win32.Foundation.PWSTR */,
 ): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libCLUSAPI.OpenClusterGroup(util.toPointer(hCluster), util.pwstrToFfi(lpszGroupName)));
+  return util.pointerFromFfi(libCLUSAPI_dll.OpenClusterGroup(util.toPointer(hCluster), util.pwstrToFfi(lpszGroupName)));
 }
 
 export function OpenClusterGroupEx(
@@ -7485,7 +7882,7 @@ export function OpenClusterGroupEx(
   dwDesiredAccess: number /* u32 */,
   lpdwGrantedAccess: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libCLUSAPI.OpenClusterGroupEx(util.toPointer(hCluster), util.pwstrToFfi(lpszGroupName), dwDesiredAccess, util.toPointer(lpdwGrantedAccess)));
+  return util.pointerFromFfi(libCLUSAPI_dll.OpenClusterGroupEx(util.toPointer(hCluster), util.pwstrToFfi(lpszGroupName), dwDesiredAccess, util.toPointer(lpdwGrantedAccess)));
 }
 
 export function PauseClusterNodeEx(
@@ -7494,7 +7891,7 @@ export function PauseClusterNodeEx(
   dwPauseFlags: number /* u32 */,
   hNodeDrainTarget: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libCLUSAPI.PauseClusterNodeEx(util.toPointer(hNode), util.boolToFfi(bDrainNode), dwPauseFlags, util.toPointer(hNodeDrainTarget));
+  return libCLUSAPI_dll.PauseClusterNodeEx(util.toPointer(hNode), util.boolToFfi(bDrainNode), dwPauseFlags, util.toPointer(hNodeDrainTarget));
 }
 
 export function ResumeClusterNodeEx(
@@ -7502,7 +7899,7 @@ export function ResumeClusterNodeEx(
   eResumeFailbackType: CLUSTER_NODE_RESUME_FAILBACK_TYPE /* Windows.Win32.Networking.Clustering.CLUSTER_NODE_RESUME_FAILBACK_TYPE */,
   dwResumeFlagsReserved: number /* u32 */,
 ): number /* u32 */ {
-  return libCLUSAPI.ResumeClusterNodeEx(util.toPointer(hNode), eResumeFailbackType, dwResumeFlagsReserved);
+  return libCLUSAPI_dll.ResumeClusterNodeEx(util.toPointer(hNode), eResumeFailbackType, dwResumeFlagsReserved);
 }
 
 export function CreateClusterGroupEx(
@@ -7510,7 +7907,7 @@ export function CreateClusterGroupEx(
   lpszGroupName: string | null /* Windows.Win32.Foundation.PWSTR */,
   pGroupInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libCLUSAPI.CreateClusterGroupEx(util.toPointer(hCluster), util.pwstrToFfi(lpszGroupName), util.toPointer(pGroupInfo)));
+  return util.pointerFromFfi(libCLUSAPI_dll.CreateClusterGroupEx(util.toPointer(hCluster), util.pwstrToFfi(lpszGroupName), util.toPointer(pGroupInfo)));
 }
 
 export function ClusterGroupOpenEnumEx(
@@ -7521,13 +7918,13 @@ export function ClusterGroupOpenEnumEx(
   cbRoProperties: number /* u32 */,
   dwFlags: number /* u32 */,
 ): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libCLUSAPI.ClusterGroupOpenEnumEx(util.toPointer(hCluster), util.pwstrToFfi(lpszProperties), cbProperties, util.pwstrToFfi(lpszRoProperties), cbRoProperties, dwFlags));
+  return util.pointerFromFfi(libCLUSAPI_dll.ClusterGroupOpenEnumEx(util.toPointer(hCluster), util.pwstrToFfi(lpszProperties), cbProperties, util.pwstrToFfi(lpszRoProperties), cbRoProperties, dwFlags));
 }
 
 export function ClusterGroupGetEnumCountEx(
   hGroupEnumEx: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libCLUSAPI.ClusterGroupGetEnumCountEx(util.toPointer(hGroupEnumEx));
+  return libCLUSAPI_dll.ClusterGroupGetEnumCountEx(util.toPointer(hGroupEnumEx));
 }
 
 export function ClusterGroupEnumEx(
@@ -7536,13 +7933,13 @@ export function ClusterGroupEnumEx(
   pItem: Deno.PointerValue | Uint8Array | null /* ptr */,
   cbItem: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libCLUSAPI.ClusterGroupEnumEx(util.toPointer(hGroupEnumEx), dwIndex, util.toPointer(pItem), util.toPointer(cbItem));
+  return libCLUSAPI_dll.ClusterGroupEnumEx(util.toPointer(hGroupEnumEx), dwIndex, util.toPointer(pItem), util.toPointer(cbItem));
 }
 
 export function ClusterGroupCloseEnumEx(
   hGroupEnumEx: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libCLUSAPI.ClusterGroupCloseEnumEx(util.toPointer(hGroupEnumEx));
+  return libCLUSAPI_dll.ClusterGroupCloseEnumEx(util.toPointer(hGroupEnumEx));
 }
 
 export function ClusterResourceOpenEnumEx(
@@ -7553,13 +7950,13 @@ export function ClusterResourceOpenEnumEx(
   cbRoProperties: number /* u32 */,
   dwFlags: number /* u32 */,
 ): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libCLUSAPI.ClusterResourceOpenEnumEx(util.toPointer(hCluster), util.pwstrToFfi(lpszProperties), cbProperties, util.pwstrToFfi(lpszRoProperties), cbRoProperties, dwFlags));
+  return util.pointerFromFfi(libCLUSAPI_dll.ClusterResourceOpenEnumEx(util.toPointer(hCluster), util.pwstrToFfi(lpszProperties), cbProperties, util.pwstrToFfi(lpszRoProperties), cbRoProperties, dwFlags));
 }
 
 export function ClusterResourceGetEnumCountEx(
   hResourceEnumEx: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libCLUSAPI.ClusterResourceGetEnumCountEx(util.toPointer(hResourceEnumEx));
+  return libCLUSAPI_dll.ClusterResourceGetEnumCountEx(util.toPointer(hResourceEnumEx));
 }
 
 export function ClusterResourceEnumEx(
@@ -7568,13 +7965,13 @@ export function ClusterResourceEnumEx(
   pItem: Deno.PointerValue | Uint8Array | null /* ptr */,
   cbItem: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libCLUSAPI.ClusterResourceEnumEx(util.toPointer(hResourceEnumEx), dwIndex, util.toPointer(pItem), util.toPointer(cbItem));
+  return libCLUSAPI_dll.ClusterResourceEnumEx(util.toPointer(hResourceEnumEx), dwIndex, util.toPointer(pItem), util.toPointer(cbItem));
 }
 
 export function ClusterResourceCloseEnumEx(
   hResourceEnumEx: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libCLUSAPI.ClusterResourceCloseEnumEx(util.toPointer(hResourceEnumEx));
+  return libCLUSAPI_dll.ClusterResourceCloseEnumEx(util.toPointer(hResourceEnumEx));
 }
 
 export function OnlineClusterGroupEx(
@@ -7584,7 +7981,7 @@ export function OnlineClusterGroupEx(
   lpInBuffer: Deno.PointerValue | Uint8Array | null /* ptr */,
   cbInBufferSize: number /* u32 */,
 ): number /* u32 */ {
-  return libCLUSAPI.OnlineClusterGroupEx(util.toPointer(hGroup), util.toPointer(hDestinationNode), dwOnlineFlags, util.toPointer(lpInBuffer), cbInBufferSize);
+  return libCLUSAPI_dll.OnlineClusterGroupEx(util.toPointer(hGroup), util.toPointer(hDestinationNode), dwOnlineFlags, util.toPointer(lpInBuffer), cbInBufferSize);
 }
 
 export function OfflineClusterGroupEx(
@@ -7593,7 +7990,7 @@ export function OfflineClusterGroupEx(
   lpInBuffer: Deno.PointerValue | Uint8Array | null /* ptr */,
   cbInBufferSize: number /* u32 */,
 ): number /* u32 */ {
-  return libCLUSAPI.OfflineClusterGroupEx(util.toPointer(hGroup), dwOfflineFlags, util.toPointer(lpInBuffer), cbInBufferSize);
+  return libCLUSAPI_dll.OfflineClusterGroupEx(util.toPointer(hGroup), dwOfflineFlags, util.toPointer(lpInBuffer), cbInBufferSize);
 }
 
 export function OnlineClusterResourceEx(
@@ -7602,7 +7999,7 @@ export function OnlineClusterResourceEx(
   lpInBuffer: Deno.PointerValue | Uint8Array | null /* ptr */,
   cbInBufferSize: number /* u32 */,
 ): number /* u32 */ {
-  return libCLUSAPI.OnlineClusterResourceEx(util.toPointer(hResource), dwOnlineFlags, util.toPointer(lpInBuffer), cbInBufferSize);
+  return libCLUSAPI_dll.OnlineClusterResourceEx(util.toPointer(hResource), dwOnlineFlags, util.toPointer(lpInBuffer), cbInBufferSize);
 }
 
 export function OfflineClusterResourceEx(
@@ -7611,7 +8008,7 @@ export function OfflineClusterResourceEx(
   lpInBuffer: Deno.PointerValue | Uint8Array | null /* ptr */,
   cbInBufferSize: number /* u32 */,
 ): number /* u32 */ {
-  return libCLUSAPI.OfflineClusterResourceEx(util.toPointer(hResource), dwOfflineFlags, util.toPointer(lpInBuffer), cbInBufferSize);
+  return libCLUSAPI_dll.OfflineClusterResourceEx(util.toPointer(hResource), dwOfflineFlags, util.toPointer(lpInBuffer), cbInBufferSize);
 }
 
 export function MoveClusterGroupEx(
@@ -7621,33 +8018,33 @@ export function MoveClusterGroupEx(
   lpInBuffer: Deno.PointerValue | Uint8Array | null /* ptr */,
   cbInBufferSize: number /* u32 */,
 ): number /* u32 */ {
-  return libCLUSAPI.MoveClusterGroupEx(util.toPointer(hGroup), util.toPointer(hDestinationNode), dwMoveFlags, util.toPointer(lpInBuffer), cbInBufferSize);
+  return libCLUSAPI_dll.MoveClusterGroupEx(util.toPointer(hGroup), util.toPointer(hDestinationNode), dwMoveFlags, util.toPointer(lpInBuffer), cbInBufferSize);
 }
 
 export function CancelClusterGroupOperation(
   hGroup: Deno.PointerValue | Uint8Array | null /* ptr */,
   dwCancelFlags_RESERVED: number /* u32 */,
 ): number /* u32 */ {
-  return libCLUSAPI.CancelClusterGroupOperation(util.toPointer(hGroup), dwCancelFlags_RESERVED);
+  return libCLUSAPI_dll.CancelClusterGroupOperation(util.toPointer(hGroup), dwCancelFlags_RESERVED);
 }
 
 export function RestartClusterResource(
   hResource: Deno.PointerValue | Uint8Array | null /* ptr */,
   dwFlags: number /* u32 */,
 ): number /* u32 */ {
-  return libCLUSAPI.RestartClusterResource(util.toPointer(hResource), dwFlags);
+  return libCLUSAPI_dll.RestartClusterResource(util.toPointer(hResource), dwFlags);
 }
 
 export function CloseClusterGroup(
   hGroup: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libCLUSAPI.CloseClusterGroup(util.toPointer(hGroup)));
+  return util.boolFromFfi(libCLUSAPI_dll.CloseClusterGroup(util.toPointer(hGroup)));
 }
 
 export function GetClusterFromGroup(
   hGroup: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libCLUSAPI.GetClusterFromGroup(util.toPointer(hGroup)));
+  return util.pointerFromFfi(libCLUSAPI_dll.GetClusterFromGroup(util.toPointer(hGroup)));
 }
 
 export function GetClusterGroupState(
@@ -7655,14 +8052,14 @@ export function GetClusterGroupState(
   lpszNodeName: string | null /* Windows.Win32.Foundation.PWSTR */,
   lpcchNodeName: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): CLUSTER_GROUP_STATE /* Windows.Win32.Networking.Clustering.CLUSTER_GROUP_STATE */ {
-  return libCLUSAPI.GetClusterGroupState(util.toPointer(hGroup), util.pwstrToFfi(lpszNodeName), util.toPointer(lpcchNodeName));
+  return libCLUSAPI_dll.GetClusterGroupState(util.toPointer(hGroup), util.pwstrToFfi(lpszNodeName), util.toPointer(lpcchNodeName));
 }
 
 export function SetClusterGroupName(
   hGroup: Deno.PointerValue | Uint8Array | null /* ptr */,
   lpszGroupName: string | null /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
-  return libCLUSAPI.SetClusterGroupName(util.toPointer(hGroup), util.pwstrToFfi(lpszGroupName));
+  return libCLUSAPI_dll.SetClusterGroupName(util.toPointer(hGroup), util.pwstrToFfi(lpszGroupName));
 }
 
 export function SetClusterGroupNodeList(
@@ -7670,52 +8067,52 @@ export function SetClusterGroupNodeList(
   NodeCount: number /* u32 */,
   NodeList: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libCLUSAPI.SetClusterGroupNodeList(util.toPointer(hGroup), NodeCount, util.toPointer(NodeList));
+  return libCLUSAPI_dll.SetClusterGroupNodeList(util.toPointer(hGroup), NodeCount, util.toPointer(NodeList));
 }
 
 export function OnlineClusterGroup(
   hGroup: Deno.PointerValue | Uint8Array | null /* ptr */,
   hDestinationNode: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libCLUSAPI.OnlineClusterGroup(util.toPointer(hGroup), util.toPointer(hDestinationNode));
+  return libCLUSAPI_dll.OnlineClusterGroup(util.toPointer(hGroup), util.toPointer(hDestinationNode));
 }
 
 export function MoveClusterGroup(
   hGroup: Deno.PointerValue | Uint8Array | null /* ptr */,
   hDestinationNode: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libCLUSAPI.MoveClusterGroup(util.toPointer(hGroup), util.toPointer(hDestinationNode));
+  return libCLUSAPI_dll.MoveClusterGroup(util.toPointer(hGroup), util.toPointer(hDestinationNode));
 }
 
 export function OfflineClusterGroup(
   hGroup: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libCLUSAPI.OfflineClusterGroup(util.toPointer(hGroup));
+  return libCLUSAPI_dll.OfflineClusterGroup(util.toPointer(hGroup));
 }
 
 export function DeleteClusterGroup(
   hGroup: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libCLUSAPI.DeleteClusterGroup(util.toPointer(hGroup));
+  return libCLUSAPI_dll.DeleteClusterGroup(util.toPointer(hGroup));
 }
 
 export function DestroyClusterGroup(
   hGroup: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libCLUSAPI.DestroyClusterGroup(util.toPointer(hGroup));
+  return libCLUSAPI_dll.DestroyClusterGroup(util.toPointer(hGroup));
 }
 
 export function ClusterGroupOpenEnum(
   hGroup: Deno.PointerValue | Uint8Array | null /* ptr */,
   dwType: number /* u32 */,
 ): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libCLUSAPI.ClusterGroupOpenEnum(util.toPointer(hGroup), dwType));
+  return util.pointerFromFfi(libCLUSAPI_dll.ClusterGroupOpenEnum(util.toPointer(hGroup), dwType));
 }
 
 export function ClusterGroupGetEnumCount(
   hGroupEnum: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libCLUSAPI.ClusterGroupGetEnumCount(util.toPointer(hGroupEnum));
+  return libCLUSAPI_dll.ClusterGroupGetEnumCount(util.toPointer(hGroupEnum));
 }
 
 export function ClusterGroupEnum(
@@ -7725,13 +8122,13 @@ export function ClusterGroupEnum(
   lpszResourceName: string | null /* Windows.Win32.Foundation.PWSTR */,
   lpcchName: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libCLUSAPI.ClusterGroupEnum(util.toPointer(hGroupEnum), dwIndex, util.toPointer(lpdwType), util.pwstrToFfi(lpszResourceName), util.toPointer(lpcchName));
+  return libCLUSAPI_dll.ClusterGroupEnum(util.toPointer(hGroupEnum), dwIndex, util.toPointer(lpdwType), util.pwstrToFfi(lpszResourceName), util.toPointer(lpcchName));
 }
 
 export function ClusterGroupCloseEnum(
   hGroupEnum: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libCLUSAPI.ClusterGroupCloseEnum(util.toPointer(hGroupEnum));
+  return libCLUSAPI_dll.ClusterGroupCloseEnum(util.toPointer(hGroupEnum));
 }
 
 export function CreateClusterResource(
@@ -7740,14 +8137,14 @@ export function CreateClusterResource(
   lpszResourceType: string | null /* Windows.Win32.Foundation.PWSTR */,
   dwFlags: number /* u32 */,
 ): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libCLUSAPI.CreateClusterResource(util.toPointer(hGroup), util.pwstrToFfi(lpszResourceName), util.pwstrToFfi(lpszResourceType), dwFlags));
+  return util.pointerFromFfi(libCLUSAPI_dll.CreateClusterResource(util.toPointer(hGroup), util.pwstrToFfi(lpszResourceName), util.pwstrToFfi(lpszResourceType), dwFlags));
 }
 
 export function OpenClusterResource(
   hCluster: Deno.PointerValue | Uint8Array | null /* ptr */,
   lpszResourceName: string | null /* Windows.Win32.Foundation.PWSTR */,
 ): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libCLUSAPI.OpenClusterResource(util.toPointer(hCluster), util.pwstrToFfi(lpszResourceName)));
+  return util.pointerFromFfi(libCLUSAPI_dll.OpenClusterResource(util.toPointer(hCluster), util.pwstrToFfi(lpszResourceName)));
 }
 
 export function OpenClusterResourceEx(
@@ -7756,25 +8153,25 @@ export function OpenClusterResourceEx(
   dwDesiredAccess: number /* u32 */,
   lpdwGrantedAccess: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libCLUSAPI.OpenClusterResourceEx(util.toPointer(hCluster), util.pwstrToFfi(lpszResourceName), dwDesiredAccess, util.toPointer(lpdwGrantedAccess)));
+  return util.pointerFromFfi(libCLUSAPI_dll.OpenClusterResourceEx(util.toPointer(hCluster), util.pwstrToFfi(lpszResourceName), dwDesiredAccess, util.toPointer(lpdwGrantedAccess)));
 }
 
 export function CloseClusterResource(
   hResource: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libCLUSAPI.CloseClusterResource(util.toPointer(hResource)));
+  return util.boolFromFfi(libCLUSAPI_dll.CloseClusterResource(util.toPointer(hResource)));
 }
 
 export function GetClusterFromResource(
   hResource: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libCLUSAPI.GetClusterFromResource(util.toPointer(hResource)));
+  return util.pointerFromFfi(libCLUSAPI_dll.GetClusterFromResource(util.toPointer(hResource)));
 }
 
 export function DeleteClusterResource(
   hResource: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libCLUSAPI.DeleteClusterResource(util.toPointer(hResource));
+  return libCLUSAPI_dll.DeleteClusterResource(util.toPointer(hResource));
 }
 
 export function GetClusterResourceState(
@@ -7784,39 +8181,39 @@ export function GetClusterResourceState(
   lpszGroupName: string | null /* Windows.Win32.Foundation.PWSTR */,
   lpcchGroupName: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): CLUSTER_RESOURCE_STATE /* Windows.Win32.Networking.Clustering.CLUSTER_RESOURCE_STATE */ {
-  return libCLUSAPI.GetClusterResourceState(util.toPointer(hResource), util.pwstrToFfi(lpszNodeName), util.toPointer(lpcchNodeName), util.pwstrToFfi(lpszGroupName), util.toPointer(lpcchGroupName));
+  return libCLUSAPI_dll.GetClusterResourceState(util.toPointer(hResource), util.pwstrToFfi(lpszNodeName), util.toPointer(lpcchNodeName), util.pwstrToFfi(lpszGroupName), util.toPointer(lpcchGroupName));
 }
 
 export function SetClusterResourceName(
   hResource: Deno.PointerValue | Uint8Array | null /* ptr */,
   lpszResourceName: string | null /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
-  return libCLUSAPI.SetClusterResourceName(util.toPointer(hResource), util.pwstrToFfi(lpszResourceName));
+  return libCLUSAPI_dll.SetClusterResourceName(util.toPointer(hResource), util.pwstrToFfi(lpszResourceName));
 }
 
 export function FailClusterResource(
   hResource: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libCLUSAPI.FailClusterResource(util.toPointer(hResource));
+  return libCLUSAPI_dll.FailClusterResource(util.toPointer(hResource));
 }
 
 export function OnlineClusterResource(
   hResource: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libCLUSAPI.OnlineClusterResource(util.toPointer(hResource));
+  return libCLUSAPI_dll.OnlineClusterResource(util.toPointer(hResource));
 }
 
 export function OfflineClusterResource(
   hResource: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libCLUSAPI.OfflineClusterResource(util.toPointer(hResource));
+  return libCLUSAPI_dll.OfflineClusterResource(util.toPointer(hResource));
 }
 
 export function ChangeClusterResourceGroup(
   hResource: Deno.PointerValue | Uint8Array | null /* ptr */,
   hGroup: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libCLUSAPI.ChangeClusterResourceGroup(util.toPointer(hResource), util.toPointer(hGroup));
+  return libCLUSAPI_dll.ChangeClusterResourceGroup(util.toPointer(hResource), util.toPointer(hGroup));
 }
 
 export function ChangeClusterResourceGroupEx(
@@ -7824,42 +8221,42 @@ export function ChangeClusterResourceGroupEx(
   hGroup: Deno.PointerValue | Uint8Array | null /* ptr */,
   Flags: Deno.PointerValue /* u64 */,
 ): number /* u32 */ {
-  return libCLUSAPI.ChangeClusterResourceGroupEx(util.toPointer(hResource), util.toPointer(hGroup), Flags);
+  return libCLUSAPI_dll.ChangeClusterResourceGroupEx(util.toPointer(hResource), util.toPointer(hGroup), Flags);
 }
 
 export function AddClusterResourceNode(
   hResource: Deno.PointerValue | Uint8Array | null /* ptr */,
   hNode: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libCLUSAPI.AddClusterResourceNode(util.toPointer(hResource), util.toPointer(hNode));
+  return libCLUSAPI_dll.AddClusterResourceNode(util.toPointer(hResource), util.toPointer(hNode));
 }
 
 export function RemoveClusterResourceNode(
   hResource: Deno.PointerValue | Uint8Array | null /* ptr */,
   hNode: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libCLUSAPI.RemoveClusterResourceNode(util.toPointer(hResource), util.toPointer(hNode));
+  return libCLUSAPI_dll.RemoveClusterResourceNode(util.toPointer(hResource), util.toPointer(hNode));
 }
 
 export function AddClusterResourceDependency(
   hResource: Deno.PointerValue | Uint8Array | null /* ptr */,
   hDependsOn: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libCLUSAPI.AddClusterResourceDependency(util.toPointer(hResource), util.toPointer(hDependsOn));
+  return libCLUSAPI_dll.AddClusterResourceDependency(util.toPointer(hResource), util.toPointer(hDependsOn));
 }
 
 export function RemoveClusterResourceDependency(
   hResource: Deno.PointerValue | Uint8Array | null /* ptr */,
   hDependsOn: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libCLUSAPI.RemoveClusterResourceDependency(util.toPointer(hResource), util.toPointer(hDependsOn));
+  return libCLUSAPI_dll.RemoveClusterResourceDependency(util.toPointer(hResource), util.toPointer(hDependsOn));
 }
 
 export function SetClusterResourceDependencyExpression(
   hResource: Deno.PointerValue | Uint8Array | null /* ptr */,
   lpszDependencyExpression: string | null /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
-  return libCLUSAPI.SetClusterResourceDependencyExpression(util.toPointer(hResource), util.pwstrToFfi(lpszDependencyExpression));
+  return libCLUSAPI_dll.SetClusterResourceDependencyExpression(util.toPointer(hResource), util.pwstrToFfi(lpszDependencyExpression));
 }
 
 export function GetClusterResourceDependencyExpression(
@@ -7867,26 +8264,26 @@ export function GetClusterResourceDependencyExpression(
   lpszDependencyExpression: string | null /* Windows.Win32.Foundation.PWSTR */,
   lpcchDependencyExpression: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libCLUSAPI.GetClusterResourceDependencyExpression(util.toPointer(hResource), util.pwstrToFfi(lpszDependencyExpression), util.toPointer(lpcchDependencyExpression));
+  return libCLUSAPI_dll.GetClusterResourceDependencyExpression(util.toPointer(hResource), util.pwstrToFfi(lpszDependencyExpression), util.toPointer(lpcchDependencyExpression));
 }
 
 export function AddResourceToClusterSharedVolumes(
   hResource: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libCLUSAPI.AddResourceToClusterSharedVolumes(util.toPointer(hResource));
+  return libCLUSAPI_dll.AddResourceToClusterSharedVolumes(util.toPointer(hResource));
 }
 
 export function RemoveResourceFromClusterSharedVolumes(
   hResource: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libCLUSAPI.RemoveResourceFromClusterSharedVolumes(util.toPointer(hResource));
+  return libCLUSAPI_dll.RemoveResourceFromClusterSharedVolumes(util.toPointer(hResource));
 }
 
 export function IsFileOnClusterSharedVolume(
   lpszPathName: string | null /* Windows.Win32.Foundation.PWSTR */,
   pbFileIsOnSharedVolume: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libCLUSAPI.IsFileOnClusterSharedVolume(util.pwstrToFfi(lpszPathName), util.toPointer(pbFileIsOnSharedVolume));
+  return libCLUSAPI_dll.IsFileOnClusterSharedVolume(util.pwstrToFfi(lpszPathName), util.toPointer(pbFileIsOnSharedVolume));
 }
 
 export function ClusterSharedVolumeSetSnapshotState(
@@ -7894,14 +8291,14 @@ export function ClusterSharedVolumeSetSnapshotState(
   lpszVolumeName: string | null /* Windows.Win32.Foundation.PWSTR */,
   state: CLUSTER_SHARED_VOLUME_SNAPSHOT_STATE /* Windows.Win32.Networking.Clustering.CLUSTER_SHARED_VOLUME_SNAPSHOT_STATE */,
 ): number /* u32 */ {
-  return libCLUSAPI.ClusterSharedVolumeSetSnapshotState(util.toPointer(guidSnapshotSet), util.pwstrToFfi(lpszVolumeName), state);
+  return libCLUSAPI_dll.ClusterSharedVolumeSetSnapshotState(util.toPointer(guidSnapshotSet), util.pwstrToFfi(lpszVolumeName), state);
 }
 
 export function CanResourceBeDependent(
   hResource: Deno.PointerValue | Uint8Array | null /* ptr */,
   hResourceDependent: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libCLUSAPI.CanResourceBeDependent(util.toPointer(hResource), util.toPointer(hResourceDependent)));
+  return util.boolFromFfi(libCLUSAPI_dll.CanResourceBeDependent(util.toPointer(hResource), util.toPointer(hResourceDependent)));
 }
 
 export function ClusterResourceControl(
@@ -7914,7 +8311,7 @@ export function ClusterResourceControl(
   cbOutBufferSize: number /* u32 */,
   lpBytesReturned: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libCLUSAPI.ClusterResourceControl(util.toPointer(hResource), util.toPointer(hHostNode), dwControlCode, util.toPointer(lpInBuffer), cbInBufferSize, util.toPointer(lpOutBuffer), cbOutBufferSize, util.toPointer(lpBytesReturned));
+  return libCLUSAPI_dll.ClusterResourceControl(util.toPointer(hResource), util.toPointer(hHostNode), dwControlCode, util.toPointer(lpInBuffer), cbInBufferSize, util.toPointer(lpOutBuffer), cbOutBufferSize, util.toPointer(lpBytesReturned));
 }
 
 export function ClusterResourceControlAsUser(
@@ -7927,7 +8324,7 @@ export function ClusterResourceControlAsUser(
   cbOutBufferSize: number /* u32 */,
   lpBytesReturned: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libCLUSAPI.ClusterResourceControlAsUser(util.toPointer(hResource), util.toPointer(hHostNode), dwControlCode, util.toPointer(lpInBuffer), cbInBufferSize, util.toPointer(lpOutBuffer), cbOutBufferSize, util.toPointer(lpBytesReturned));
+  return libCLUSAPI_dll.ClusterResourceControlAsUser(util.toPointer(hResource), util.toPointer(hHostNode), dwControlCode, util.toPointer(lpInBuffer), cbInBufferSize, util.toPointer(lpOutBuffer), cbOutBufferSize, util.toPointer(lpBytesReturned));
 }
 
 export function ClusterResourceTypeControl(
@@ -7941,7 +8338,7 @@ export function ClusterResourceTypeControl(
   nOutBufferSize: number /* u32 */,
   lpBytesReturned: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libCLUSAPI.ClusterResourceTypeControl(util.toPointer(hCluster), util.pwstrToFfi(lpszResourceTypeName), util.toPointer(hHostNode), dwControlCode, util.toPointer(lpInBuffer), nInBufferSize, util.toPointer(lpOutBuffer), nOutBufferSize, util.toPointer(lpBytesReturned));
+  return libCLUSAPI_dll.ClusterResourceTypeControl(util.toPointer(hCluster), util.pwstrToFfi(lpszResourceTypeName), util.toPointer(hHostNode), dwControlCode, util.toPointer(lpInBuffer), nInBufferSize, util.toPointer(lpOutBuffer), nOutBufferSize, util.toPointer(lpBytesReturned));
 }
 
 export function ClusterResourceTypeControlAsUser(
@@ -7955,7 +8352,7 @@ export function ClusterResourceTypeControlAsUser(
   nOutBufferSize: number /* u32 */,
   lpBytesReturned: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libCLUSAPI.ClusterResourceTypeControlAsUser(util.toPointer(hCluster), util.pwstrToFfi(lpszResourceTypeName), util.toPointer(hHostNode), dwControlCode, util.toPointer(lpInBuffer), nInBufferSize, util.toPointer(lpOutBuffer), nOutBufferSize, util.toPointer(lpBytesReturned));
+  return libCLUSAPI_dll.ClusterResourceTypeControlAsUser(util.toPointer(hCluster), util.pwstrToFfi(lpszResourceTypeName), util.toPointer(hHostNode), dwControlCode, util.toPointer(lpInBuffer), nInBufferSize, util.toPointer(lpOutBuffer), nOutBufferSize, util.toPointer(lpBytesReturned));
 }
 
 export function ClusterGroupControl(
@@ -7968,7 +8365,7 @@ export function ClusterGroupControl(
   nOutBufferSize: number /* u32 */,
   lpBytesReturned: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libCLUSAPI.ClusterGroupControl(util.toPointer(hGroup), util.toPointer(hHostNode), dwControlCode, util.toPointer(lpInBuffer), nInBufferSize, util.toPointer(lpOutBuffer), nOutBufferSize, util.toPointer(lpBytesReturned));
+  return libCLUSAPI_dll.ClusterGroupControl(util.toPointer(hGroup), util.toPointer(hHostNode), dwControlCode, util.toPointer(lpInBuffer), nInBufferSize, util.toPointer(lpOutBuffer), nOutBufferSize, util.toPointer(lpBytesReturned));
 }
 
 export function ClusterNodeControl(
@@ -7981,7 +8378,7 @@ export function ClusterNodeControl(
   nOutBufferSize: number /* u32 */,
   lpBytesReturned: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libCLUSAPI.ClusterNodeControl(util.toPointer(hNode), util.toPointer(hHostNode), dwControlCode, util.toPointer(lpInBuffer), nInBufferSize, util.toPointer(lpOutBuffer), nOutBufferSize, util.toPointer(lpBytesReturned));
+  return libCLUSAPI_dll.ClusterNodeControl(util.toPointer(hNode), util.toPointer(hHostNode), dwControlCode, util.toPointer(lpInBuffer), nInBufferSize, util.toPointer(lpOutBuffer), nOutBufferSize, util.toPointer(lpBytesReturned));
 }
 
 export function GetClusterResourceNetworkName(
@@ -7989,20 +8386,20 @@ export function GetClusterResourceNetworkName(
   lpBuffer: string | null /* Windows.Win32.Foundation.PWSTR */,
   nSize: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libCLUSAPI.GetClusterResourceNetworkName(util.toPointer(hResource), util.pwstrToFfi(lpBuffer), util.toPointer(nSize)));
+  return util.boolFromFfi(libCLUSAPI_dll.GetClusterResourceNetworkName(util.toPointer(hResource), util.pwstrToFfi(lpBuffer), util.toPointer(nSize)));
 }
 
 export function ClusterResourceOpenEnum(
   hResource: Deno.PointerValue | Uint8Array | null /* ptr */,
   dwType: number /* u32 */,
 ): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libCLUSAPI.ClusterResourceOpenEnum(util.toPointer(hResource), dwType));
+  return util.pointerFromFfi(libCLUSAPI_dll.ClusterResourceOpenEnum(util.toPointer(hResource), dwType));
 }
 
 export function ClusterResourceGetEnumCount(
   hResEnum: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libCLUSAPI.ClusterResourceGetEnumCount(util.toPointer(hResEnum));
+  return libCLUSAPI_dll.ClusterResourceGetEnumCount(util.toPointer(hResEnum));
 }
 
 export function ClusterResourceEnum(
@@ -8012,13 +8409,13 @@ export function ClusterResourceEnum(
   lpszName: string | null /* Windows.Win32.Foundation.PWSTR */,
   lpcchName: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libCLUSAPI.ClusterResourceEnum(util.toPointer(hResEnum), dwIndex, util.toPointer(lpdwType), util.pwstrToFfi(lpszName), util.toPointer(lpcchName));
+  return libCLUSAPI_dll.ClusterResourceEnum(util.toPointer(hResEnum), dwIndex, util.toPointer(lpdwType), util.pwstrToFfi(lpszName), util.toPointer(lpcchName));
 }
 
 export function ClusterResourceCloseEnum(
   hResEnum: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libCLUSAPI.ClusterResourceCloseEnum(util.toPointer(hResEnum));
+  return libCLUSAPI_dll.ClusterResourceCloseEnum(util.toPointer(hResEnum));
 }
 
 export function CreateClusterResourceType(
@@ -8029,14 +8426,14 @@ export function CreateClusterResourceType(
   dwLooksAlivePollInterval: number /* u32 */,
   dwIsAlivePollInterval: number /* u32 */,
 ): number /* u32 */ {
-  return libCLUSAPI.CreateClusterResourceType(util.toPointer(hCluster), util.pwstrToFfi(lpszResourceTypeName), util.pwstrToFfi(lpszDisplayName), util.pwstrToFfi(lpszResourceTypeDll), dwLooksAlivePollInterval, dwIsAlivePollInterval);
+  return libCLUSAPI_dll.CreateClusterResourceType(util.toPointer(hCluster), util.pwstrToFfi(lpszResourceTypeName), util.pwstrToFfi(lpszDisplayName), util.pwstrToFfi(lpszResourceTypeDll), dwLooksAlivePollInterval, dwIsAlivePollInterval);
 }
 
 export function DeleteClusterResourceType(
   hCluster: Deno.PointerValue | Uint8Array | null /* ptr */,
   lpszResourceTypeName: string | null /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
-  return libCLUSAPI.DeleteClusterResourceType(util.toPointer(hCluster), util.pwstrToFfi(lpszResourceTypeName));
+  return libCLUSAPI_dll.DeleteClusterResourceType(util.toPointer(hCluster), util.pwstrToFfi(lpszResourceTypeName));
 }
 
 export function ClusterResourceTypeOpenEnum(
@@ -8044,13 +8441,13 @@ export function ClusterResourceTypeOpenEnum(
   lpszResourceTypeName: string | null /* Windows.Win32.Foundation.PWSTR */,
   dwType: number /* u32 */,
 ): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libCLUSAPI.ClusterResourceTypeOpenEnum(util.toPointer(hCluster), util.pwstrToFfi(lpszResourceTypeName), dwType));
+  return util.pointerFromFfi(libCLUSAPI_dll.ClusterResourceTypeOpenEnum(util.toPointer(hCluster), util.pwstrToFfi(lpszResourceTypeName), dwType));
 }
 
 export function ClusterResourceTypeGetEnumCount(
   hResTypeEnum: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libCLUSAPI.ClusterResourceTypeGetEnumCount(util.toPointer(hResTypeEnum));
+  return libCLUSAPI_dll.ClusterResourceTypeGetEnumCount(util.toPointer(hResTypeEnum));
 }
 
 export function ClusterResourceTypeEnum(
@@ -8060,20 +8457,20 @@ export function ClusterResourceTypeEnum(
   lpszName: string | null /* Windows.Win32.Foundation.PWSTR */,
   lpcchName: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libCLUSAPI.ClusterResourceTypeEnum(util.toPointer(hResTypeEnum), dwIndex, util.toPointer(lpdwType), util.pwstrToFfi(lpszName), util.toPointer(lpcchName));
+  return libCLUSAPI_dll.ClusterResourceTypeEnum(util.toPointer(hResTypeEnum), dwIndex, util.toPointer(lpdwType), util.pwstrToFfi(lpszName), util.toPointer(lpcchName));
 }
 
 export function ClusterResourceTypeCloseEnum(
   hResTypeEnum: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libCLUSAPI.ClusterResourceTypeCloseEnum(util.toPointer(hResTypeEnum));
+  return libCLUSAPI_dll.ClusterResourceTypeCloseEnum(util.toPointer(hResTypeEnum));
 }
 
 export function OpenClusterNetwork(
   hCluster: Deno.PointerValue | Uint8Array | null /* ptr */,
   lpszNetworkName: string | null /* Windows.Win32.Foundation.PWSTR */,
 ): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libCLUSAPI.OpenClusterNetwork(util.toPointer(hCluster), util.pwstrToFfi(lpszNetworkName)));
+  return util.pointerFromFfi(libCLUSAPI_dll.OpenClusterNetwork(util.toPointer(hCluster), util.pwstrToFfi(lpszNetworkName)));
 }
 
 export function OpenClusterNetworkEx(
@@ -8082,32 +8479,32 @@ export function OpenClusterNetworkEx(
   dwDesiredAccess: number /* u32 */,
   lpdwGrantedAccess: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libCLUSAPI.OpenClusterNetworkEx(util.toPointer(hCluster), util.pwstrToFfi(lpszNetworkName), dwDesiredAccess, util.toPointer(lpdwGrantedAccess)));
+  return util.pointerFromFfi(libCLUSAPI_dll.OpenClusterNetworkEx(util.toPointer(hCluster), util.pwstrToFfi(lpszNetworkName), dwDesiredAccess, util.toPointer(lpdwGrantedAccess)));
 }
 
 export function CloseClusterNetwork(
   hNetwork: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libCLUSAPI.CloseClusterNetwork(util.toPointer(hNetwork)));
+  return util.boolFromFfi(libCLUSAPI_dll.CloseClusterNetwork(util.toPointer(hNetwork)));
 }
 
 export function GetClusterFromNetwork(
   hNetwork: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libCLUSAPI.GetClusterFromNetwork(util.toPointer(hNetwork)));
+  return util.pointerFromFfi(libCLUSAPI_dll.GetClusterFromNetwork(util.toPointer(hNetwork)));
 }
 
 export function ClusterNetworkOpenEnum(
   hNetwork: Deno.PointerValue | Uint8Array | null /* ptr */,
   dwType: number /* u32 */,
 ): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libCLUSAPI.ClusterNetworkOpenEnum(util.toPointer(hNetwork), dwType));
+  return util.pointerFromFfi(libCLUSAPI_dll.ClusterNetworkOpenEnum(util.toPointer(hNetwork), dwType));
 }
 
 export function ClusterNetworkGetEnumCount(
   hNetworkEnum: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libCLUSAPI.ClusterNetworkGetEnumCount(util.toPointer(hNetworkEnum));
+  return libCLUSAPI_dll.ClusterNetworkGetEnumCount(util.toPointer(hNetworkEnum));
 }
 
 export function ClusterNetworkEnum(
@@ -8117,26 +8514,26 @@ export function ClusterNetworkEnum(
   lpszName: string | null /* Windows.Win32.Foundation.PWSTR */,
   lpcchName: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libCLUSAPI.ClusterNetworkEnum(util.toPointer(hNetworkEnum), dwIndex, util.toPointer(lpdwType), util.pwstrToFfi(lpszName), util.toPointer(lpcchName));
+  return libCLUSAPI_dll.ClusterNetworkEnum(util.toPointer(hNetworkEnum), dwIndex, util.toPointer(lpdwType), util.pwstrToFfi(lpszName), util.toPointer(lpcchName));
 }
 
 export function ClusterNetworkCloseEnum(
   hNetworkEnum: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libCLUSAPI.ClusterNetworkCloseEnum(util.toPointer(hNetworkEnum));
+  return libCLUSAPI_dll.ClusterNetworkCloseEnum(util.toPointer(hNetworkEnum));
 }
 
 export function GetClusterNetworkState(
   hNetwork: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): CLUSTER_NETWORK_STATE /* Windows.Win32.Networking.Clustering.CLUSTER_NETWORK_STATE */ {
-  return libCLUSAPI.GetClusterNetworkState(util.toPointer(hNetwork));
+  return libCLUSAPI_dll.GetClusterNetworkState(util.toPointer(hNetwork));
 }
 
 export function SetClusterNetworkName(
   hNetwork: Deno.PointerValue | Uint8Array | null /* ptr */,
   lpszName: string | null /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
-  return libCLUSAPI.SetClusterNetworkName(util.toPointer(hNetwork), util.pwstrToFfi(lpszName));
+  return libCLUSAPI_dll.SetClusterNetworkName(util.toPointer(hNetwork), util.pwstrToFfi(lpszName));
 }
 
 export function GetClusterNetworkId(
@@ -8144,7 +8541,7 @@ export function GetClusterNetworkId(
   lpszNetworkId: string | null /* Windows.Win32.Foundation.PWSTR */,
   lpcchName: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libCLUSAPI.GetClusterNetworkId(util.toPointer(hNetwork), util.pwstrToFfi(lpszNetworkId), util.toPointer(lpcchName));
+  return libCLUSAPI_dll.GetClusterNetworkId(util.toPointer(hNetwork), util.pwstrToFfi(lpszNetworkId), util.toPointer(lpcchName));
 }
 
 export function ClusterNetworkControl(
@@ -8157,14 +8554,14 @@ export function ClusterNetworkControl(
   nOutBufferSize: number /* u32 */,
   lpBytesReturned: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libCLUSAPI.ClusterNetworkControl(util.toPointer(hNetwork), util.toPointer(hHostNode), dwControlCode, util.toPointer(lpInBuffer), nInBufferSize, util.toPointer(lpOutBuffer), nOutBufferSize, util.toPointer(lpBytesReturned));
+  return libCLUSAPI_dll.ClusterNetworkControl(util.toPointer(hNetwork), util.toPointer(hHostNode), dwControlCode, util.toPointer(lpInBuffer), nInBufferSize, util.toPointer(lpOutBuffer), nOutBufferSize, util.toPointer(lpBytesReturned));
 }
 
 export function OpenClusterNetInterface(
   hCluster: Deno.PointerValue | Uint8Array | null /* ptr */,
   lpszInterfaceName: string | null /* Windows.Win32.Foundation.PWSTR */,
 ): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libCLUSAPI.OpenClusterNetInterface(util.toPointer(hCluster), util.pwstrToFfi(lpszInterfaceName)));
+  return util.pointerFromFfi(libCLUSAPI_dll.OpenClusterNetInterface(util.toPointer(hCluster), util.pwstrToFfi(lpszInterfaceName)));
 }
 
 export function OpenClusterNetInterfaceEx(
@@ -8173,7 +8570,7 @@ export function OpenClusterNetInterfaceEx(
   dwDesiredAccess: number /* u32 */,
   lpdwGrantedAccess: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libCLUSAPI.OpenClusterNetInterfaceEx(util.toPointer(hCluster), util.pwstrToFfi(lpszInterfaceName), dwDesiredAccess, util.toPointer(lpdwGrantedAccess)));
+  return util.pointerFromFfi(libCLUSAPI_dll.OpenClusterNetInterfaceEx(util.toPointer(hCluster), util.pwstrToFfi(lpszInterfaceName), dwDesiredAccess, util.toPointer(lpdwGrantedAccess)));
 }
 
 export function GetClusterNetInterface(
@@ -8183,25 +8580,25 @@ export function GetClusterNetInterface(
   lpszInterfaceName: string | null /* Windows.Win32.Foundation.PWSTR */,
   lpcchInterfaceName: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libCLUSAPI.GetClusterNetInterface(util.toPointer(hCluster), util.pwstrToFfi(lpszNodeName), util.pwstrToFfi(lpszNetworkName), util.pwstrToFfi(lpszInterfaceName), util.toPointer(lpcchInterfaceName));
+  return libCLUSAPI_dll.GetClusterNetInterface(util.toPointer(hCluster), util.pwstrToFfi(lpszNodeName), util.pwstrToFfi(lpszNetworkName), util.pwstrToFfi(lpszInterfaceName), util.toPointer(lpcchInterfaceName));
 }
 
 export function CloseClusterNetInterface(
   hNetInterface: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libCLUSAPI.CloseClusterNetInterface(util.toPointer(hNetInterface)));
+  return util.boolFromFfi(libCLUSAPI_dll.CloseClusterNetInterface(util.toPointer(hNetInterface)));
 }
 
 export function GetClusterFromNetInterface(
   hNetInterface: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libCLUSAPI.GetClusterFromNetInterface(util.toPointer(hNetInterface)));
+  return util.pointerFromFfi(libCLUSAPI_dll.GetClusterFromNetInterface(util.toPointer(hNetInterface)));
 }
 
 export function GetClusterNetInterfaceState(
   hNetInterface: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): CLUSTER_NETINTERFACE_STATE /* Windows.Win32.Networking.Clustering.CLUSTER_NETINTERFACE_STATE */ {
-  return libCLUSAPI.GetClusterNetInterfaceState(util.toPointer(hNetInterface));
+  return libCLUSAPI_dll.GetClusterNetInterfaceState(util.toPointer(hNetInterface));
 }
 
 export function ClusterNetInterfaceControl(
@@ -8214,49 +8611,49 @@ export function ClusterNetInterfaceControl(
   nOutBufferSize: number /* u32 */,
   lpBytesReturned: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libCLUSAPI.ClusterNetInterfaceControl(util.toPointer(hNetInterface), util.toPointer(hHostNode), dwControlCode, util.toPointer(lpInBuffer), nInBufferSize, util.toPointer(lpOutBuffer), nOutBufferSize, util.toPointer(lpBytesReturned));
+  return libCLUSAPI_dll.ClusterNetInterfaceControl(util.toPointer(hNetInterface), util.toPointer(hHostNode), dwControlCode, util.toPointer(lpInBuffer), nInBufferSize, util.toPointer(lpOutBuffer), nOutBufferSize, util.toPointer(lpBytesReturned));
 }
 
 export function GetClusterKey(
   hCluster: Deno.PointerValue | Uint8Array | null /* ptr */,
   samDesired: number /* u32 */,
 ): Deno.PointerValue | null /* Windows.Win32.System.Registry.HKEY */ {
-  return util.pointerFromFfi(libCLUSAPI.GetClusterKey(util.toPointer(hCluster), samDesired));
+  return util.pointerFromFfi(libCLUSAPI_dll.GetClusterKey(util.toPointer(hCluster), samDesired));
 }
 
 export function GetClusterGroupKey(
   hGroup: Deno.PointerValue | Uint8Array | null /* ptr */,
   samDesired: number /* u32 */,
 ): Deno.PointerValue | null /* Windows.Win32.System.Registry.HKEY */ {
-  return util.pointerFromFfi(libCLUSAPI.GetClusterGroupKey(util.toPointer(hGroup), samDesired));
+  return util.pointerFromFfi(libCLUSAPI_dll.GetClusterGroupKey(util.toPointer(hGroup), samDesired));
 }
 
 export function GetClusterResourceKey(
   hResource: Deno.PointerValue | Uint8Array | null /* ptr */,
   samDesired: number /* u32 */,
 ): Deno.PointerValue | null /* Windows.Win32.System.Registry.HKEY */ {
-  return util.pointerFromFfi(libCLUSAPI.GetClusterResourceKey(util.toPointer(hResource), samDesired));
+  return util.pointerFromFfi(libCLUSAPI_dll.GetClusterResourceKey(util.toPointer(hResource), samDesired));
 }
 
 export function GetClusterNodeKey(
   hNode: Deno.PointerValue | Uint8Array | null /* ptr */,
   samDesired: number /* u32 */,
 ): Deno.PointerValue | null /* Windows.Win32.System.Registry.HKEY */ {
-  return util.pointerFromFfi(libCLUSAPI.GetClusterNodeKey(util.toPointer(hNode), samDesired));
+  return util.pointerFromFfi(libCLUSAPI_dll.GetClusterNodeKey(util.toPointer(hNode), samDesired));
 }
 
 export function GetClusterNetworkKey(
   hNetwork: Deno.PointerValue | Uint8Array | null /* ptr */,
   samDesired: number /* u32 */,
 ): Deno.PointerValue | null /* Windows.Win32.System.Registry.HKEY */ {
-  return util.pointerFromFfi(libCLUSAPI.GetClusterNetworkKey(util.toPointer(hNetwork), samDesired));
+  return util.pointerFromFfi(libCLUSAPI_dll.GetClusterNetworkKey(util.toPointer(hNetwork), samDesired));
 }
 
 export function GetClusterNetInterfaceKey(
   hNetInterface: Deno.PointerValue | Uint8Array | null /* ptr */,
   samDesired: number /* u32 */,
 ): Deno.PointerValue | null /* Windows.Win32.System.Registry.HKEY */ {
-  return util.pointerFromFfi(libCLUSAPI.GetClusterNetInterfaceKey(util.toPointer(hNetInterface), samDesired));
+  return util.pointerFromFfi(libCLUSAPI_dll.GetClusterNetInterfaceKey(util.toPointer(hNetInterface), samDesired));
 }
 
 export function ClusterRegCreateKey(
@@ -8268,7 +8665,7 @@ export function ClusterRegCreateKey(
   phkResult: Deno.PointerValue | Uint8Array | null /* ptr */,
   lpdwDisposition: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
-  return libCLUSAPI.ClusterRegCreateKey(util.toPointer(hKey), util.pwstrToFfi(lpszSubKey), dwOptions, samDesired, util.toPointer(lpSecurityAttributes), util.toPointer(phkResult), util.toPointer(lpdwDisposition));
+  return libCLUSAPI_dll.ClusterRegCreateKey(util.toPointer(hKey), util.pwstrToFfi(lpszSubKey), dwOptions, samDesired, util.toPointer(lpSecurityAttributes), util.toPointer(phkResult), util.toPointer(lpdwDisposition));
 }
 
 export function ClusterRegOpenKey(
@@ -8277,20 +8674,20 @@ export function ClusterRegOpenKey(
   samDesired: number /* u32 */,
   phkResult: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
-  return libCLUSAPI.ClusterRegOpenKey(util.toPointer(hKey), util.pwstrToFfi(lpszSubKey), samDesired, util.toPointer(phkResult));
+  return libCLUSAPI_dll.ClusterRegOpenKey(util.toPointer(hKey), util.pwstrToFfi(lpszSubKey), samDesired, util.toPointer(phkResult));
 }
 
 export function ClusterRegDeleteKey(
   hKey: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Registry.HKEY */,
   lpszSubKey: string | null /* Windows.Win32.Foundation.PWSTR */,
 ): number /* i32 */ {
-  return libCLUSAPI.ClusterRegDeleteKey(util.toPointer(hKey), util.pwstrToFfi(lpszSubKey));
+  return libCLUSAPI_dll.ClusterRegDeleteKey(util.toPointer(hKey), util.pwstrToFfi(lpszSubKey));
 }
 
 export function ClusterRegCloseKey(
   hKey: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Registry.HKEY */,
 ): number /* i32 */ {
-  return libCLUSAPI.ClusterRegCloseKey(util.toPointer(hKey));
+  return libCLUSAPI_dll.ClusterRegCloseKey(util.toPointer(hKey));
 }
 
 export function ClusterRegEnumKey(
@@ -8300,7 +8697,7 @@ export function ClusterRegEnumKey(
   lpcchName: Deno.PointerValue | Uint8Array | null /* ptr */,
   lpftLastWriteTime: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
-  return libCLUSAPI.ClusterRegEnumKey(util.toPointer(hKey), dwIndex, util.pwstrToFfi(lpszName), util.toPointer(lpcchName), util.toPointer(lpftLastWriteTime));
+  return libCLUSAPI_dll.ClusterRegEnumKey(util.toPointer(hKey), dwIndex, util.pwstrToFfi(lpszName), util.toPointer(lpcchName), util.toPointer(lpftLastWriteTime));
 }
 
 export function ClusterRegSetValue(
@@ -8310,14 +8707,14 @@ export function ClusterRegSetValue(
   lpData: Deno.PointerValue | Uint8Array | null /* ptr */,
   cbData: number /* u32 */,
 ): number /* u32 */ {
-  return libCLUSAPI.ClusterRegSetValue(util.toPointer(hKey), util.pwstrToFfi(lpszValueName), dwType, util.toPointer(lpData), cbData);
+  return libCLUSAPI_dll.ClusterRegSetValue(util.toPointer(hKey), util.pwstrToFfi(lpszValueName), dwType, util.toPointer(lpData), cbData);
 }
 
 export function ClusterRegDeleteValue(
   hKey: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Registry.HKEY */,
   lpszValueName: string | null /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
-  return libCLUSAPI.ClusterRegDeleteValue(util.toPointer(hKey), util.pwstrToFfi(lpszValueName));
+  return libCLUSAPI_dll.ClusterRegDeleteValue(util.toPointer(hKey), util.pwstrToFfi(lpszValueName));
 }
 
 export function ClusterRegQueryValue(
@@ -8327,7 +8724,7 @@ export function ClusterRegQueryValue(
   lpData: Deno.PointerValue | Uint8Array | null /* ptr */,
   lpcbData: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
-  return libCLUSAPI.ClusterRegQueryValue(util.toPointer(hKey), util.pwstrToFfi(lpszValueName), util.toPointer(lpdwValueType), util.toPointer(lpData), util.toPointer(lpcbData));
+  return libCLUSAPI_dll.ClusterRegQueryValue(util.toPointer(hKey), util.pwstrToFfi(lpszValueName), util.toPointer(lpdwValueType), util.toPointer(lpData), util.toPointer(lpcbData));
 }
 
 export function ClusterRegEnumValue(
@@ -8339,7 +8736,7 @@ export function ClusterRegEnumValue(
   lpData: Deno.PointerValue | Uint8Array | null /* ptr */,
   lpcbData: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libCLUSAPI.ClusterRegEnumValue(util.toPointer(hKey), dwIndex, util.pwstrToFfi(lpszValueName), util.toPointer(lpcchValueName), util.toPointer(lpdwType), util.toPointer(lpData), util.toPointer(lpcbData));
+  return libCLUSAPI_dll.ClusterRegEnumValue(util.toPointer(hKey), dwIndex, util.pwstrToFfi(lpszValueName), util.toPointer(lpcchValueName), util.toPointer(lpdwType), util.toPointer(lpData), util.toPointer(lpcbData));
 }
 
 export function ClusterRegQueryInfoKey(
@@ -8352,38 +8749,38 @@ export function ClusterRegQueryInfoKey(
   lpcbSecurityDescriptor: Deno.PointerValue | Uint8Array | null /* ptr */,
   lpftLastWriteTime: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
-  return libCLUSAPI.ClusterRegQueryInfoKey(util.toPointer(hKey), util.toPointer(lpcSubKeys), util.toPointer(lpcchMaxSubKeyLen), util.toPointer(lpcValues), util.toPointer(lpcchMaxValueNameLen), util.toPointer(lpcbMaxValueLen), util.toPointer(lpcbSecurityDescriptor), util.toPointer(lpftLastWriteTime));
+  return libCLUSAPI_dll.ClusterRegQueryInfoKey(util.toPointer(hKey), util.toPointer(lpcSubKeys), util.toPointer(lpcchMaxSubKeyLen), util.toPointer(lpcValues), util.toPointer(lpcchMaxValueNameLen), util.toPointer(lpcbMaxValueLen), util.toPointer(lpcbSecurityDescriptor), util.toPointer(lpftLastWriteTime));
 }
 
 export function ClusterRegGetKeySecurity(
   hKey: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Registry.HKEY */,
   RequestedInformation: number /* u32 */,
-  pSecurityDescriptor: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pSecurityDescriptor: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Security.PSECURITY_DESCRIPTOR */,
   lpcbSecurityDescriptor: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
-  return libCLUSAPI.ClusterRegGetKeySecurity(util.toPointer(hKey), RequestedInformation, util.toPointer(pSecurityDescriptor), util.toPointer(lpcbSecurityDescriptor));
+  return libCLUSAPI_dll.ClusterRegGetKeySecurity(util.toPointer(hKey), RequestedInformation, util.toPointer(pSecurityDescriptor), util.toPointer(lpcbSecurityDescriptor));
 }
 
 export function ClusterRegSetKeySecurity(
   hKey: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Registry.HKEY */,
   SecurityInformation: number /* u32 */,
-  pSecurityDescriptor: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pSecurityDescriptor: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Security.PSECURITY_DESCRIPTOR */,
 ): number /* i32 */ {
-  return libCLUSAPI.ClusterRegSetKeySecurity(util.toPointer(hKey), SecurityInformation, util.toPointer(pSecurityDescriptor));
+  return libCLUSAPI_dll.ClusterRegSetKeySecurity(util.toPointer(hKey), SecurityInformation, util.toPointer(pSecurityDescriptor));
 }
 
 export function ClusterRegSyncDatabase(
   hCluster: Deno.PointerValue | Uint8Array | null /* ptr */,
   flags: number /* u32 */,
 ): number /* i32 */ {
-  return libCLUSAPI.ClusterRegSyncDatabase(util.toPointer(hCluster), flags);
+  return libCLUSAPI_dll.ClusterRegSyncDatabase(util.toPointer(hCluster), flags);
 }
 
 export function ClusterRegCreateBatch(
   hKey: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Registry.HKEY */,
   pHREGBATCH: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
-  return libCLUSAPI.ClusterRegCreateBatch(util.toPointer(hKey), util.toPointer(pHREGBATCH));
+  return libCLUSAPI_dll.ClusterRegCreateBatch(util.toPointer(hKey), util.toPointer(pHREGBATCH));
 }
 
 export function ClusterRegBatchAddCommand(
@@ -8394,7 +8791,7 @@ export function ClusterRegBatchAddCommand(
   lpData: Deno.PointerValue | Uint8Array | null /* ptr */,
   cbData: number /* u32 */,
 ): number /* i32 */ {
-  return libCLUSAPI.ClusterRegBatchAddCommand(util.toPointer(hRegBatch), dwCommand, util.pwstrToFfi(wzName), dwOptions, util.toPointer(lpData), cbData);
+  return libCLUSAPI_dll.ClusterRegBatchAddCommand(util.toPointer(hRegBatch), dwCommand, util.pwstrToFfi(wzName), dwOptions, util.toPointer(lpData), cbData);
 }
 
 export function ClusterRegCloseBatch(
@@ -8402,7 +8799,7 @@ export function ClusterRegCloseBatch(
   bCommit: boolean /* Windows.Win32.Foundation.BOOL */,
   failedCommandNumber: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
-  return libCLUSAPI.ClusterRegCloseBatch(util.toPointer(hRegBatch), util.boolToFfi(bCommit), util.toPointer(failedCommandNumber));
+  return libCLUSAPI_dll.ClusterRegCloseBatch(util.toPointer(hRegBatch), util.boolToFfi(bCommit), util.toPointer(failedCommandNumber));
 }
 
 export function ClusterRegCloseBatchEx(
@@ -8410,47 +8807,47 @@ export function ClusterRegCloseBatchEx(
   flags: number /* u32 */,
   failedCommandNumber: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
-  return libCLUSAPI.ClusterRegCloseBatchEx(util.toPointer(hRegBatch), flags, util.toPointer(failedCommandNumber));
+  return libCLUSAPI_dll.ClusterRegCloseBatchEx(util.toPointer(hRegBatch), flags, util.toPointer(failedCommandNumber));
 }
 
 export function ClusterRegBatchReadCommand(
   hBatchNotification: Deno.PointerValue | Uint8Array | null /* ptr */,
   pBatchCommand: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
-  return libCLUSAPI.ClusterRegBatchReadCommand(util.toPointer(hBatchNotification), util.toPointer(pBatchCommand));
+  return libCLUSAPI_dll.ClusterRegBatchReadCommand(util.toPointer(hBatchNotification), util.toPointer(pBatchCommand));
 }
 
 export function ClusterRegBatchCloseNotification(
   hBatchNotification: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
-  return libCLUSAPI.ClusterRegBatchCloseNotification(util.toPointer(hBatchNotification));
+  return libCLUSAPI_dll.ClusterRegBatchCloseNotification(util.toPointer(hBatchNotification));
 }
 
 export function ClusterRegCreateBatchNotifyPort(
   hKey: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Registry.HKEY */,
   phBatchNotifyPort: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
-  return libCLUSAPI.ClusterRegCreateBatchNotifyPort(util.toPointer(hKey), util.toPointer(phBatchNotifyPort));
+  return libCLUSAPI_dll.ClusterRegCreateBatchNotifyPort(util.toPointer(hKey), util.toPointer(phBatchNotifyPort));
 }
 
 export function ClusterRegCloseBatchNotifyPort(
   hBatchNotifyPort: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
-  return libCLUSAPI.ClusterRegCloseBatchNotifyPort(util.toPointer(hBatchNotifyPort));
+  return libCLUSAPI_dll.ClusterRegCloseBatchNotifyPort(util.toPointer(hBatchNotifyPort));
 }
 
 export function ClusterRegGetBatchNotification(
   hBatchNotify: Deno.PointerValue | Uint8Array | null /* ptr */,
   phBatchNotification: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
-  return libCLUSAPI.ClusterRegGetBatchNotification(util.toPointer(hBatchNotify), util.toPointer(phBatchNotification));
+  return libCLUSAPI_dll.ClusterRegGetBatchNotification(util.toPointer(hBatchNotify), util.toPointer(phBatchNotification));
 }
 
 export function ClusterRegCreateReadBatch(
   hKey: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Registry.HKEY */,
   phRegReadBatch: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
-  return libCLUSAPI.ClusterRegCreateReadBatch(util.toPointer(hKey), util.toPointer(phRegReadBatch));
+  return libCLUSAPI_dll.ClusterRegCreateReadBatch(util.toPointer(hKey), util.toPointer(phRegReadBatch));
 }
 
 export function ClusterRegReadBatchAddCommand(
@@ -8458,14 +8855,14 @@ export function ClusterRegReadBatchAddCommand(
   wzSubkeyName: string | null /* Windows.Win32.Foundation.PWSTR */,
   wzValueName: string | null /* Windows.Win32.Foundation.PWSTR */,
 ): number /* i32 */ {
-  return libCLUSAPI.ClusterRegReadBatchAddCommand(util.toPointer(hRegReadBatch), util.pwstrToFfi(wzSubkeyName), util.pwstrToFfi(wzValueName));
+  return libCLUSAPI_dll.ClusterRegReadBatchAddCommand(util.toPointer(hRegReadBatch), util.pwstrToFfi(wzSubkeyName), util.pwstrToFfi(wzValueName));
 }
 
 export function ClusterRegCloseReadBatch(
   hRegReadBatch: Deno.PointerValue | Uint8Array | null /* ptr */,
   phRegReadBatchReply: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
-  return libCLUSAPI.ClusterRegCloseReadBatch(util.toPointer(hRegReadBatch), util.toPointer(phRegReadBatchReply));
+  return libCLUSAPI_dll.ClusterRegCloseReadBatch(util.toPointer(hRegReadBatch), util.toPointer(phRegReadBatchReply));
 }
 
 export function ClusterRegCloseReadBatchEx(
@@ -8473,20 +8870,20 @@ export function ClusterRegCloseReadBatchEx(
   flags: number /* u32 */,
   phRegReadBatchReply: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
-  return libCLUSAPI.ClusterRegCloseReadBatchEx(util.toPointer(hRegReadBatch), flags, util.toPointer(phRegReadBatchReply));
+  return libCLUSAPI_dll.ClusterRegCloseReadBatchEx(util.toPointer(hRegReadBatch), flags, util.toPointer(phRegReadBatchReply));
 }
 
 export function ClusterRegReadBatchReplyNextCommand(
   hRegReadBatchReply: Deno.PointerValue | Uint8Array | null /* ptr */,
   pBatchCommand: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
-  return libCLUSAPI.ClusterRegReadBatchReplyNextCommand(util.toPointer(hRegReadBatchReply), util.toPointer(pBatchCommand));
+  return libCLUSAPI_dll.ClusterRegReadBatchReplyNextCommand(util.toPointer(hRegReadBatchReply), util.toPointer(pBatchCommand));
 }
 
 export function ClusterRegCloseReadBatchReply(
   hRegReadBatchReply: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
-  return libCLUSAPI.ClusterRegCloseReadBatchReply(util.toPointer(hRegReadBatchReply));
+  return libCLUSAPI_dll.ClusterRegCloseReadBatchReply(util.toPointer(hRegReadBatchReply));
 }
 
 export function ClusterSetAccountAccess(
@@ -8495,7 +8892,7 @@ export function ClusterSetAccountAccess(
   dwAccess: number /* u32 */,
   dwControlType: number /* u32 */,
 ): number /* u32 */ {
-  return libCLUSAPI.ClusterSetAccountAccess(util.toPointer(hCluster), util.pwstrToFfi(szAccountSID), dwAccess, dwControlType);
+  return libCLUSAPI_dll.ClusterSetAccountAccess(util.toPointer(hCluster), util.pwstrToFfi(szAccountSID), dwAccess, dwControlType);
 }
 
 export function CreateCluster(
@@ -8503,7 +8900,7 @@ export function CreateCluster(
   pfnProgressCallback: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Networking.Clustering.PCLUSTER_SETUP_PROGRESS_CALLBACK */,
   pvCallbackArg: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libCLUSAPI.CreateCluster(util.toPointer(pConfig), util.toPointer(pfnProgressCallback), util.toPointer(pvCallbackArg)));
+  return util.pointerFromFfi(libCLUSAPI_dll.CreateCluster(util.toPointer(pConfig), util.toPointer(pfnProgressCallback), util.toPointer(pvCallbackArg)));
 }
 
 export function CreateClusterNameAccount(
@@ -8512,14 +8909,14 @@ export function CreateClusterNameAccount(
   pfnProgressCallback: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Networking.Clustering.PCLUSTER_SETUP_PROGRESS_CALLBACK */,
   pvCallbackArg: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libCLUSAPI.CreateClusterNameAccount(util.toPointer(hCluster), util.toPointer(pConfig), util.toPointer(pfnProgressCallback), util.toPointer(pvCallbackArg));
+  return libCLUSAPI_dll.CreateClusterNameAccount(util.toPointer(hCluster), util.toPointer(pConfig), util.toPointer(pfnProgressCallback), util.toPointer(pvCallbackArg));
 }
 
 export function RemoveClusterNameAccount(
   hCluster: Deno.PointerValue | Uint8Array | null /* ptr */,
   bDeleteComputerObjects: boolean /* Windows.Win32.Foundation.BOOL */,
 ): number /* u32 */ {
-  return libCLUSAPI.RemoveClusterNameAccount(util.toPointer(hCluster), util.boolToFfi(bDeleteComputerObjects));
+  return libCLUSAPI_dll.RemoveClusterNameAccount(util.toPointer(hCluster), util.boolToFfi(bDeleteComputerObjects));
 }
 
 export function DetermineCNOResTypeFromNodelist(
@@ -8527,14 +8924,14 @@ export function DetermineCNOResTypeFromNodelist(
   ppszNodeNames: Deno.PointerValue | Uint8Array | null /* ptr */,
   pCNOResType: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libCLUSAPI.DetermineCNOResTypeFromNodelist(cNodes, util.toPointer(ppszNodeNames), util.toPointer(pCNOResType));
+  return libCLUSAPI_dll.DetermineCNOResTypeFromNodelist(cNodes, util.toPointer(ppszNodeNames), util.toPointer(pCNOResType));
 }
 
 export function DetermineCNOResTypeFromCluster(
   hCluster: Deno.PointerValue | Uint8Array | null /* ptr */,
   pCNOResType: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libCLUSAPI.DetermineCNOResTypeFromCluster(util.toPointer(hCluster), util.toPointer(pCNOResType));
+  return libCLUSAPI_dll.DetermineCNOResTypeFromCluster(util.toPointer(hCluster), util.toPointer(pCNOResType));
 }
 
 export function DetermineClusterCloudTypeFromNodelist(
@@ -8542,21 +8939,21 @@ export function DetermineClusterCloudTypeFromNodelist(
   ppszNodeNames: Deno.PointerValue | Uint8Array | null /* ptr */,
   pCloudType: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libCLUSAPI.DetermineClusterCloudTypeFromNodelist(cNodes, util.toPointer(ppszNodeNames), util.toPointer(pCloudType));
+  return libCLUSAPI_dll.DetermineClusterCloudTypeFromNodelist(cNodes, util.toPointer(ppszNodeNames), util.toPointer(pCloudType));
 }
 
 export function DetermineClusterCloudTypeFromCluster(
   hCluster: Deno.PointerValue | Uint8Array | null /* ptr */,
   pCloudType: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libCLUSAPI.DetermineClusterCloudTypeFromCluster(util.toPointer(hCluster), util.toPointer(pCloudType));
+  return libCLUSAPI_dll.DetermineClusterCloudTypeFromCluster(util.toPointer(hCluster), util.toPointer(pCloudType));
 }
 
 export function GetNodeCloudTypeDW(
   ppszNodeName: string | null /* Windows.Win32.Foundation.PWSTR */,
   NodeCloudType: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libCLUSAPI.GetNodeCloudTypeDW(util.pwstrToFfi(ppszNodeName), util.toPointer(NodeCloudType));
+  return libCLUSAPI_dll.GetNodeCloudTypeDW(util.pwstrToFfi(ppszNodeName), util.toPointer(NodeCloudType));
 }
 
 export function RegisterClusterResourceTypeNotifyV2(
@@ -8566,7 +8963,7 @@ export function RegisterClusterResourceTypeNotifyV2(
   resTypeName: string | null /* Windows.Win32.Foundation.PWSTR */,
   dwNotifyKey: Deno.PointerValue /* usize */,
 ): number /* u32 */ {
-  return libCLUSAPI.RegisterClusterResourceTypeNotifyV2(util.toPointer(hChange), util.toPointer(hCluster), Flags, util.pwstrToFfi(resTypeName), dwNotifyKey);
+  return libCLUSAPI_dll.RegisterClusterResourceTypeNotifyV2(util.toPointer(hChange), util.toPointer(hCluster), Flags, util.pwstrToFfi(resTypeName), dwNotifyKey);
 }
 
 export function AddClusterNode(
@@ -8575,7 +8972,7 @@ export function AddClusterNode(
   pfnProgressCallback: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Networking.Clustering.PCLUSTER_SETUP_PROGRESS_CALLBACK */,
   pvCallbackArg: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libCLUSAPI.AddClusterNode(util.toPointer(hCluster), util.pwstrToFfi(lpszNodeName), util.toPointer(pfnProgressCallback), util.toPointer(pvCallbackArg)));
+  return util.pointerFromFfi(libCLUSAPI_dll.AddClusterNode(util.toPointer(hCluster), util.pwstrToFfi(lpszNodeName), util.toPointer(pfnProgressCallback), util.toPointer(pvCallbackArg)));
 }
 
 export function AddClusterStorageNode(
@@ -8586,7 +8983,7 @@ export function AddClusterStorageNode(
   lpszClusterStorageNodeDescription: string | null /* Windows.Win32.Foundation.PWSTR */,
   lpszClusterStorageNodeLocation: string | null /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
-  return libCLUSAPI.AddClusterStorageNode(util.toPointer(hCluster), util.pwstrToFfi(lpszNodeName), util.toPointer(pfnProgressCallback), util.toPointer(pvCallbackArg), util.pwstrToFfi(lpszClusterStorageNodeDescription), util.pwstrToFfi(lpszClusterStorageNodeLocation));
+  return libCLUSAPI_dll.AddClusterStorageNode(util.toPointer(hCluster), util.pwstrToFfi(lpszNodeName), util.toPointer(pfnProgressCallback), util.toPointer(pvCallbackArg), util.pwstrToFfi(lpszClusterStorageNodeDescription), util.pwstrToFfi(lpszClusterStorageNodeLocation));
 }
 
 export function AddClusterNodeEx(
@@ -8596,7 +8993,7 @@ export function AddClusterNodeEx(
   pfnProgressCallback: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Networking.Clustering.PCLUSTER_SETUP_PROGRESS_CALLBACK */,
   pvCallbackArg: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libCLUSAPI.AddClusterNodeEx(util.toPointer(hCluster), util.pwstrToFfi(lpszNodeName), dwFlags, util.toPointer(pfnProgressCallback), util.toPointer(pvCallbackArg)));
+  return util.pointerFromFfi(libCLUSAPI_dll.AddClusterNodeEx(util.toPointer(hCluster), util.pwstrToFfi(lpszNodeName), dwFlags, util.toPointer(pfnProgressCallback), util.toPointer(pvCallbackArg)));
 }
 
 export function RemoveClusterStorageNode(
@@ -8605,7 +9002,7 @@ export function RemoveClusterStorageNode(
   dwTimeout: number /* u32 */,
   dwFlags: number /* u32 */,
 ): number /* u32 */ {
-  return libCLUSAPI.RemoveClusterStorageNode(util.toPointer(hCluster), util.pwstrToFfi(lpszClusterStorageEnclosureName), dwTimeout, dwFlags);
+  return libCLUSAPI_dll.RemoveClusterStorageNode(util.toPointer(hCluster), util.pwstrToFfi(lpszClusterStorageEnclosureName), dwTimeout, dwFlags);
 }
 
 export function DestroyCluster(
@@ -8614,31 +9011,31 @@ export function DestroyCluster(
   pvCallbackArg: Deno.PointerValue | Uint8Array | null /* ptr */,
   fdeleteVirtualComputerObjects: boolean /* Windows.Win32.Foundation.BOOL */,
 ): number /* u32 */ {
-  return libCLUSAPI.DestroyCluster(util.toPointer(hCluster), util.toPointer(pfnProgressCallback), util.toPointer(pvCallbackArg), util.boolToFfi(fdeleteVirtualComputerObjects));
+  return libCLUSAPI_dll.DestroyCluster(util.toPointer(hCluster), util.toPointer(pfnProgressCallback), util.toPointer(pvCallbackArg), util.boolToFfi(fdeleteVirtualComputerObjects));
 }
 
 export function InitializeClusterHealthFault(
   clusterHealthFault: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libRESUTILS.InitializeClusterHealthFault(util.toPointer(clusterHealthFault));
+  return libRESUTILS_dll.InitializeClusterHealthFault(util.toPointer(clusterHealthFault));
 }
 
 export function InitializeClusterHealthFaultArray(
   clusterHealthFaultArray: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libRESUTILS.InitializeClusterHealthFaultArray(util.toPointer(clusterHealthFaultArray));
+  return libRESUTILS_dll.InitializeClusterHealthFaultArray(util.toPointer(clusterHealthFaultArray));
 }
 
 export function FreeClusterHealthFault(
   clusterHealthFault: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libRESUTILS.FreeClusterHealthFault(util.toPointer(clusterHealthFault));
+  return libRESUTILS_dll.FreeClusterHealthFault(util.toPointer(clusterHealthFault));
 }
 
 export function FreeClusterHealthFaultArray(
   clusterHealthFaultArray: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libRESUTILS.FreeClusterHealthFaultArray(util.toPointer(clusterHealthFaultArray));
+  return libRESUTILS_dll.FreeClusterHealthFaultArray(util.toPointer(clusterHealthFaultArray));
 }
 
 export function ClusGetClusterHealthFaults(
@@ -8646,7 +9043,7 @@ export function ClusGetClusterHealthFaults(
   objects: Deno.PointerValue | Uint8Array | null /* ptr */,
   flags: number /* u32 */,
 ): number /* u32 */ {
-  return libRESUTILS.ClusGetClusterHealthFaults(util.toPointer(hCluster), util.toPointer(objects), flags);
+  return libRESUTILS_dll.ClusGetClusterHealthFaults(util.toPointer(hCluster), util.toPointer(objects), flags);
 }
 
 export function ClusRemoveClusterHealthFault(
@@ -8654,7 +9051,7 @@ export function ClusRemoveClusterHealthFault(
   id: string | null /* Windows.Win32.Foundation.PWSTR */,
   flags: number /* u32 */,
 ): number /* u32 */ {
-  return libRESUTILS.ClusRemoveClusterHealthFault(util.toPointer(hCluster), util.pwstrToFfi(id), flags);
+  return libRESUTILS_dll.ClusRemoveClusterHealthFault(util.toPointer(hCluster), util.pwstrToFfi(id), flags);
 }
 
 export function ClusAddClusterHealthFault(
@@ -8662,50 +9059,50 @@ export function ClusAddClusterHealthFault(
   failure: Deno.PointerValue | Uint8Array | null /* ptr */,
   param2: number /* u32 */,
 ): number /* u32 */ {
-  return libRESUTILS.ClusAddClusterHealthFault(util.toPointer(hCluster), util.toPointer(failure), param2);
+  return libRESUTILS_dll.ClusAddClusterHealthFault(util.toPointer(hCluster), util.toPointer(failure), param2);
 }
 
 export function ResUtilStartResourceService(
   pszServiceName: string | null /* Windows.Win32.Foundation.PWSTR */,
   phServiceHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libRESUTILS.ResUtilStartResourceService(util.pwstrToFfi(pszServiceName), util.toPointer(phServiceHandle));
+  return libRESUTILS_dll.ResUtilStartResourceService(util.pwstrToFfi(pszServiceName), util.toPointer(phServiceHandle));
 }
 
 export function ResUtilVerifyResourceService(
   pszServiceName: string | null /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
-  return libRESUTILS.ResUtilVerifyResourceService(util.pwstrToFfi(pszServiceName));
+  return libRESUTILS_dll.ResUtilVerifyResourceService(util.pwstrToFfi(pszServiceName));
 }
 
 export function ResUtilStopResourceService(
   pszServiceName: string | null /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
-  return libRESUTILS.ResUtilStopResourceService(util.pwstrToFfi(pszServiceName));
+  return libRESUTILS_dll.ResUtilStopResourceService(util.pwstrToFfi(pszServiceName));
 }
 
 export function ResUtilVerifyService(
   hServiceHandle: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Security.SC_HANDLE */,
 ): number /* u32 */ {
-  return libRESUTILS.ResUtilVerifyService(util.toPointer(hServiceHandle));
+  return libRESUTILS_dll.ResUtilVerifyService(util.toPointer(hServiceHandle));
 }
 
 export function ResUtilStopService(
   hServiceHandle: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Security.SC_HANDLE */,
 ): number /* u32 */ {
-  return libRESUTILS.ResUtilStopService(util.toPointer(hServiceHandle));
+  return libRESUTILS_dll.ResUtilStopService(util.toPointer(hServiceHandle));
 }
 
 export function ResUtilCreateDirectoryTree(
   pszPath: string | null /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
-  return libRESUTILS.ResUtilCreateDirectoryTree(util.pwstrToFfi(pszPath));
+  return libRESUTILS_dll.ResUtilCreateDirectoryTree(util.pwstrToFfi(pszPath));
 }
 
 export function ResUtilIsPathValid(
   pszPath: string | null /* Windows.Win32.Foundation.PWSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libRESUTILS.ResUtilIsPathValid(util.pwstrToFfi(pszPath)));
+  return util.boolFromFfi(libRESUTILS_dll.ResUtilIsPathValid(util.pwstrToFfi(pszPath)));
 }
 
 export function ResUtilEnumProperties(
@@ -8715,7 +9112,7 @@ export function ResUtilEnumProperties(
   pcbBytesReturned: Deno.PointerValue | Uint8Array | null /* ptr */,
   pcbRequired: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libRESUTILS.ResUtilEnumProperties(util.toPointer(pPropertyTable), util.pwstrToFfi(pszOutProperties), cbOutPropertiesSize, util.toPointer(pcbBytesReturned), util.toPointer(pcbRequired));
+  return libRESUTILS_dll.ResUtilEnumProperties(util.toPointer(pPropertyTable), util.pwstrToFfi(pszOutProperties), cbOutPropertiesSize, util.toPointer(pcbBytesReturned), util.toPointer(pcbRequired));
 }
 
 export function ResUtilEnumPrivateProperties(
@@ -8725,7 +9122,7 @@ export function ResUtilEnumPrivateProperties(
   pcbBytesReturned: Deno.PointerValue | Uint8Array | null /* ptr */,
   pcbRequired: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libRESUTILS.ResUtilEnumPrivateProperties(util.toPointer(hkeyClusterKey), util.pwstrToFfi(pszOutProperties), cbOutPropertiesSize, util.toPointer(pcbBytesReturned), util.toPointer(pcbRequired));
+  return libRESUTILS_dll.ResUtilEnumPrivateProperties(util.toPointer(hkeyClusterKey), util.pwstrToFfi(pszOutProperties), cbOutPropertiesSize, util.toPointer(pcbBytesReturned), util.toPointer(pcbRequired));
 }
 
 export function ResUtilGetProperties(
@@ -8736,7 +9133,7 @@ export function ResUtilGetProperties(
   pcbBytesReturned: Deno.PointerValue | Uint8Array | null /* ptr */,
   pcbRequired: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libRESUTILS.ResUtilGetProperties(util.toPointer(hkeyClusterKey), util.toPointer(pPropertyTable), util.toPointer(pOutPropertyList), cbOutPropertyListSize, util.toPointer(pcbBytesReturned), util.toPointer(pcbRequired));
+  return libRESUTILS_dll.ResUtilGetProperties(util.toPointer(hkeyClusterKey), util.toPointer(pPropertyTable), util.toPointer(pOutPropertyList), cbOutPropertyListSize, util.toPointer(pcbBytesReturned), util.toPointer(pcbRequired));
 }
 
 export function ResUtilGetAllProperties(
@@ -8747,7 +9144,7 @@ export function ResUtilGetAllProperties(
   pcbBytesReturned: Deno.PointerValue | Uint8Array | null /* ptr */,
   pcbRequired: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libRESUTILS.ResUtilGetAllProperties(util.toPointer(hkeyClusterKey), util.toPointer(pPropertyTable), util.toPointer(pOutPropertyList), cbOutPropertyListSize, util.toPointer(pcbBytesReturned), util.toPointer(pcbRequired));
+  return libRESUTILS_dll.ResUtilGetAllProperties(util.toPointer(hkeyClusterKey), util.toPointer(pPropertyTable), util.toPointer(pOutPropertyList), cbOutPropertyListSize, util.toPointer(pcbBytesReturned), util.toPointer(pcbRequired));
 }
 
 export function ResUtilGetPrivateProperties(
@@ -8757,7 +9154,7 @@ export function ResUtilGetPrivateProperties(
   pcbBytesReturned: Deno.PointerValue | Uint8Array | null /* ptr */,
   pcbRequired: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libRESUTILS.ResUtilGetPrivateProperties(util.toPointer(hkeyClusterKey), util.toPointer(pOutPropertyList), cbOutPropertyListSize, util.toPointer(pcbBytesReturned), util.toPointer(pcbRequired));
+  return libRESUTILS_dll.ResUtilGetPrivateProperties(util.toPointer(hkeyClusterKey), util.toPointer(pOutPropertyList), cbOutPropertyListSize, util.toPointer(pcbBytesReturned), util.toPointer(pcbRequired));
 }
 
 export function ResUtilGetPropertySize(
@@ -8766,7 +9163,7 @@ export function ResUtilGetPropertySize(
   pcbOutPropertyListSize: Deno.PointerValue | Uint8Array | null /* ptr */,
   pnPropertyCount: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libRESUTILS.ResUtilGetPropertySize(util.toPointer(hkeyClusterKey), util.toPointer(pPropertyTableItem), util.toPointer(pcbOutPropertyListSize), util.toPointer(pnPropertyCount));
+  return libRESUTILS_dll.ResUtilGetPropertySize(util.toPointer(hkeyClusterKey), util.toPointer(pPropertyTableItem), util.toPointer(pcbOutPropertyListSize), util.toPointer(pnPropertyCount));
 }
 
 export function ResUtilGetProperty(
@@ -8775,7 +9172,7 @@ export function ResUtilGetProperty(
   pOutPropertyItem: Deno.PointerValue | Uint8Array | null /* ptr */,
   pcbOutPropertyItemSize: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libRESUTILS.ResUtilGetProperty(util.toPointer(hkeyClusterKey), util.toPointer(pPropertyTableItem), util.toPointer(pOutPropertyItem), util.toPointer(pcbOutPropertyItemSize));
+  return libRESUTILS_dll.ResUtilGetProperty(util.toPointer(hkeyClusterKey), util.toPointer(pPropertyTableItem), util.toPointer(pOutPropertyItem), util.toPointer(pcbOutPropertyItemSize));
 }
 
 export function ResUtilVerifyPropertyTable(
@@ -8786,7 +9183,7 @@ export function ResUtilVerifyPropertyTable(
   cbInPropertyListSize: number /* u32 */,
   pOutParams: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libRESUTILS.ResUtilVerifyPropertyTable(util.toPointer(pPropertyTable), util.toPointer(Reserved), util.boolToFfi(bAllowUnknownProperties), util.toPointer(pInPropertyList), cbInPropertyListSize, util.toPointer(pOutParams));
+  return libRESUTILS_dll.ResUtilVerifyPropertyTable(util.toPointer(pPropertyTable), util.toPointer(Reserved), util.boolToFfi(bAllowUnknownProperties), util.toPointer(pInPropertyList), cbInPropertyListSize, util.toPointer(pOutParams));
 }
 
 export function ResUtilSetPropertyTable(
@@ -8798,7 +9195,7 @@ export function ResUtilSetPropertyTable(
   cbInPropertyListSize: number /* u32 */,
   pOutParams: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libRESUTILS.ResUtilSetPropertyTable(util.toPointer(hkeyClusterKey), util.toPointer(pPropertyTable), util.toPointer(Reserved), util.boolToFfi(bAllowUnknownProperties), util.toPointer(pInPropertyList), cbInPropertyListSize, util.toPointer(pOutParams));
+  return libRESUTILS_dll.ResUtilSetPropertyTable(util.toPointer(hkeyClusterKey), util.toPointer(pPropertyTable), util.toPointer(Reserved), util.boolToFfi(bAllowUnknownProperties), util.toPointer(pInPropertyList), cbInPropertyListSize, util.toPointer(pOutParams));
 }
 
 export function ResUtilSetPropertyTableEx(
@@ -8811,7 +9208,7 @@ export function ResUtilSetPropertyTableEx(
   bForceWrite: boolean /* Windows.Win32.Foundation.BOOL */,
   pOutParams: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libRESUTILS.ResUtilSetPropertyTableEx(util.toPointer(hkeyClusterKey), util.toPointer(pPropertyTable), util.toPointer(Reserved), util.boolToFfi(bAllowUnknownProperties), util.toPointer(pInPropertyList), cbInPropertyListSize, util.boolToFfi(bForceWrite), util.toPointer(pOutParams));
+  return libRESUTILS_dll.ResUtilSetPropertyTableEx(util.toPointer(hkeyClusterKey), util.toPointer(pPropertyTable), util.toPointer(Reserved), util.boolToFfi(bAllowUnknownProperties), util.toPointer(pInPropertyList), cbInPropertyListSize, util.boolToFfi(bForceWrite), util.toPointer(pOutParams));
 }
 
 export function ResUtilSetPropertyParameterBlock(
@@ -8823,7 +9220,7 @@ export function ResUtilSetPropertyParameterBlock(
   cbInPropertyListSize: number /* u32 */,
   pOutParams: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libRESUTILS.ResUtilSetPropertyParameterBlock(util.toPointer(hkeyClusterKey), util.toPointer(pPropertyTable), util.toPointer(Reserved), util.toPointer(pInParams), util.toPointer(pInPropertyList), cbInPropertyListSize, util.toPointer(pOutParams));
+  return libRESUTILS_dll.ResUtilSetPropertyParameterBlock(util.toPointer(hkeyClusterKey), util.toPointer(pPropertyTable), util.toPointer(Reserved), util.toPointer(pInParams), util.toPointer(pInPropertyList), cbInPropertyListSize, util.toPointer(pOutParams));
 }
 
 export function ResUtilSetPropertyParameterBlockEx(
@@ -8836,7 +9233,7 @@ export function ResUtilSetPropertyParameterBlockEx(
   bForceWrite: boolean /* Windows.Win32.Foundation.BOOL */,
   pOutParams: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libRESUTILS.ResUtilSetPropertyParameterBlockEx(util.toPointer(hkeyClusterKey), util.toPointer(pPropertyTable), util.toPointer(Reserved), util.toPointer(pInParams), util.toPointer(pInPropertyList), cbInPropertyListSize, util.boolToFfi(bForceWrite), util.toPointer(pOutParams));
+  return libRESUTILS_dll.ResUtilSetPropertyParameterBlockEx(util.toPointer(hkeyClusterKey), util.toPointer(pPropertyTable), util.toPointer(Reserved), util.toPointer(pInParams), util.toPointer(pInPropertyList), cbInPropertyListSize, util.boolToFfi(bForceWrite), util.toPointer(pOutParams));
 }
 
 export function ResUtilSetUnknownProperties(
@@ -8845,7 +9242,7 @@ export function ResUtilSetUnknownProperties(
   pInPropertyList: Deno.PointerValue | Uint8Array | null /* ptr */,
   cbInPropertyListSize: number /* u32 */,
 ): number /* u32 */ {
-  return libRESUTILS.ResUtilSetUnknownProperties(util.toPointer(hkeyClusterKey), util.toPointer(pPropertyTable), util.toPointer(pInPropertyList), cbInPropertyListSize);
+  return libRESUTILS_dll.ResUtilSetUnknownProperties(util.toPointer(hkeyClusterKey), util.toPointer(pPropertyTable), util.toPointer(pInPropertyList), cbInPropertyListSize);
 }
 
 export function ResUtilGetPropertiesToParameterBlock(
@@ -8855,7 +9252,7 @@ export function ResUtilGetPropertiesToParameterBlock(
   bCheckForRequiredProperties: boolean /* Windows.Win32.Foundation.BOOL */,
   pszNameOfPropInError: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libRESUTILS.ResUtilGetPropertiesToParameterBlock(util.toPointer(hkeyClusterKey), util.toPointer(pPropertyTable), util.toPointer(pOutParams), util.boolToFfi(bCheckForRequiredProperties), util.toPointer(pszNameOfPropInError));
+  return libRESUTILS_dll.ResUtilGetPropertiesToParameterBlock(util.toPointer(hkeyClusterKey), util.toPointer(pPropertyTable), util.toPointer(pOutParams), util.boolToFfi(bCheckForRequiredProperties), util.toPointer(pszNameOfPropInError));
 }
 
 export function ResUtilPropertyListFromParameterBlock(
@@ -8866,7 +9263,7 @@ export function ResUtilPropertyListFromParameterBlock(
   pcbBytesReturned: Deno.PointerValue | Uint8Array | null /* ptr */,
   pcbRequired: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libRESUTILS.ResUtilPropertyListFromParameterBlock(util.toPointer(pPropertyTable), util.toPointer(pOutPropertyList), util.toPointer(pcbOutPropertyListSize), util.toPointer(pInParams), util.toPointer(pcbBytesReturned), util.toPointer(pcbRequired));
+  return libRESUTILS_dll.ResUtilPropertyListFromParameterBlock(util.toPointer(pPropertyTable), util.toPointer(pOutPropertyList), util.toPointer(pcbOutPropertyListSize), util.toPointer(pInParams), util.toPointer(pcbBytesReturned), util.toPointer(pcbRequired));
 }
 
 export function ResUtilDupParameterBlock(
@@ -8874,7 +9271,7 @@ export function ResUtilDupParameterBlock(
   pInParams: Deno.PointerValue | Uint8Array | null /* ptr */,
   pPropertyTable: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libRESUTILS.ResUtilDupParameterBlock(util.toPointer(pOutParams), util.toPointer(pInParams), util.toPointer(pPropertyTable));
+  return libRESUTILS_dll.ResUtilDupParameterBlock(util.toPointer(pOutParams), util.toPointer(pInParams), util.toPointer(pPropertyTable));
 }
 
 export function ResUtilFreeParameterBlock(
@@ -8882,7 +9279,7 @@ export function ResUtilFreeParameterBlock(
   pInParams: Deno.PointerValue | Uint8Array | null /* ptr */,
   pPropertyTable: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): void /* void */ {
-  return libRESUTILS.ResUtilFreeParameterBlock(util.toPointer(pOutParams), util.toPointer(pInParams), util.toPointer(pPropertyTable));
+  return libRESUTILS_dll.ResUtilFreeParameterBlock(util.toPointer(pOutParams), util.toPointer(pInParams), util.toPointer(pPropertyTable));
 }
 
 export function ResUtilAddUnknownProperties(
@@ -8893,7 +9290,7 @@ export function ResUtilAddUnknownProperties(
   pcbBytesReturned: Deno.PointerValue | Uint8Array | null /* ptr */,
   pcbRequired: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libRESUTILS.ResUtilAddUnknownProperties(util.toPointer(hkeyClusterKey), util.toPointer(pPropertyTable), util.toPointer(pOutPropertyList), pcbOutPropertyListSize, util.toPointer(pcbBytesReturned), util.toPointer(pcbRequired));
+  return libRESUTILS_dll.ResUtilAddUnknownProperties(util.toPointer(hkeyClusterKey), util.toPointer(pPropertyTable), util.toPointer(pOutPropertyList), pcbOutPropertyListSize, util.toPointer(pcbBytesReturned), util.toPointer(pcbRequired));
 }
 
 export function ResUtilSetPrivatePropertyList(
@@ -8901,20 +9298,20 @@ export function ResUtilSetPrivatePropertyList(
   pInPropertyList: Deno.PointerValue | Uint8Array | null /* ptr */,
   cbInPropertyListSize: number /* u32 */,
 ): number /* u32 */ {
-  return libRESUTILS.ResUtilSetPrivatePropertyList(util.toPointer(hkeyClusterKey), util.toPointer(pInPropertyList), cbInPropertyListSize);
+  return libRESUTILS_dll.ResUtilSetPrivatePropertyList(util.toPointer(hkeyClusterKey), util.toPointer(pInPropertyList), cbInPropertyListSize);
 }
 
 export function ResUtilVerifyPrivatePropertyList(
   pInPropertyList: Deno.PointerValue | Uint8Array | null /* ptr */,
   cbInPropertyListSize: number /* u32 */,
 ): number /* u32 */ {
-  return libRESUTILS.ResUtilVerifyPrivatePropertyList(util.toPointer(pInPropertyList), cbInPropertyListSize);
+  return libRESUTILS_dll.ResUtilVerifyPrivatePropertyList(util.toPointer(pInPropertyList), cbInPropertyListSize);
 }
 
 export function ResUtilDupString(
   pszInString: string | null /* Windows.Win32.Foundation.PWSTR */,
 ): string | null /* Windows.Win32.Foundation.PWSTR */ {
-  return util.pwstrFromFfi(libRESUTILS.ResUtilDupString(util.pwstrToFfi(pszInString)));
+  return util.pwstrFromFfi(libRESUTILS_dll.ResUtilDupString(util.pwstrToFfi(pszInString)));
 }
 
 export function ResUtilGetBinaryValue(
@@ -8923,14 +9320,14 @@ export function ResUtilGetBinaryValue(
   ppbOutValue: Deno.PointerValue | Uint8Array | null /* ptr */,
   pcbOutValueSize: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libRESUTILS.ResUtilGetBinaryValue(util.toPointer(hkeyClusterKey), util.pwstrToFfi(pszValueName), util.toPointer(ppbOutValue), util.toPointer(pcbOutValueSize));
+  return libRESUTILS_dll.ResUtilGetBinaryValue(util.toPointer(hkeyClusterKey), util.pwstrToFfi(pszValueName), util.toPointer(ppbOutValue), util.toPointer(pcbOutValueSize));
 }
 
 export function ResUtilGetSzValue(
   hkeyClusterKey: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Registry.HKEY */,
   pszValueName: string | null /* Windows.Win32.Foundation.PWSTR */,
 ): string | null /* Windows.Win32.Foundation.PWSTR */ {
-  return util.pwstrFromFfi(libRESUTILS.ResUtilGetSzValue(util.toPointer(hkeyClusterKey), util.pwstrToFfi(pszValueName)));
+  return util.pwstrFromFfi(libRESUTILS_dll.ResUtilGetSzValue(util.toPointer(hkeyClusterKey), util.pwstrToFfi(pszValueName)));
 }
 
 export function ResUtilGetDwordValue(
@@ -8939,7 +9336,7 @@ export function ResUtilGetDwordValue(
   pdwOutValue: Deno.PointerValue | Uint8Array | null /* ptr */,
   dwDefaultValue: number /* u32 */,
 ): number /* u32 */ {
-  return libRESUTILS.ResUtilGetDwordValue(util.toPointer(hkeyClusterKey), util.pwstrToFfi(pszValueName), util.toPointer(pdwOutValue), dwDefaultValue);
+  return libRESUTILS_dll.ResUtilGetDwordValue(util.toPointer(hkeyClusterKey), util.pwstrToFfi(pszValueName), util.toPointer(pdwOutValue), dwDefaultValue);
 }
 
 export function ResUtilGetQwordValue(
@@ -8948,7 +9345,7 @@ export function ResUtilGetQwordValue(
   pqwOutValue: Deno.PointerValue | Uint8Array | null /* ptr */,
   qwDefaultValue: Deno.PointerValue /* u64 */,
 ): number /* u32 */ {
-  return libRESUTILS.ResUtilGetQwordValue(util.toPointer(hkeyClusterKey), util.pwstrToFfi(pszValueName), util.toPointer(pqwOutValue), qwDefaultValue);
+  return libRESUTILS_dll.ResUtilGetQwordValue(util.toPointer(hkeyClusterKey), util.pwstrToFfi(pszValueName), util.toPointer(pqwOutValue), qwDefaultValue);
 }
 
 export function ResUtilSetBinaryValue(
@@ -8959,7 +9356,7 @@ export function ResUtilSetBinaryValue(
   ppbOutValue: Deno.PointerValue | Uint8Array | null /* ptr */,
   pcbOutValueSize: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libRESUTILS.ResUtilSetBinaryValue(util.toPointer(hkeyClusterKey), util.pwstrToFfi(pszValueName), util.toPointer(pbNewValue), cbNewValueSize, util.toPointer(ppbOutValue), util.toPointer(pcbOutValueSize));
+  return libRESUTILS_dll.ResUtilSetBinaryValue(util.toPointer(hkeyClusterKey), util.pwstrToFfi(pszValueName), util.toPointer(pbNewValue), cbNewValueSize, util.toPointer(ppbOutValue), util.toPointer(pcbOutValueSize));
 }
 
 export function ResUtilSetSzValue(
@@ -8968,7 +9365,7 @@ export function ResUtilSetSzValue(
   pszNewValue: string | null /* Windows.Win32.Foundation.PWSTR */,
   ppszOutString: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libRESUTILS.ResUtilSetSzValue(util.toPointer(hkeyClusterKey), util.pwstrToFfi(pszValueName), util.pwstrToFfi(pszNewValue), util.toPointer(ppszOutString));
+  return libRESUTILS_dll.ResUtilSetSzValue(util.toPointer(hkeyClusterKey), util.pwstrToFfi(pszValueName), util.pwstrToFfi(pszNewValue), util.toPointer(ppszOutString));
 }
 
 export function ResUtilSetExpandSzValue(
@@ -8977,7 +9374,7 @@ export function ResUtilSetExpandSzValue(
   pszNewValue: string | null /* Windows.Win32.Foundation.PWSTR */,
   ppszOutString: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libRESUTILS.ResUtilSetExpandSzValue(util.toPointer(hkeyClusterKey), util.pwstrToFfi(pszValueName), util.pwstrToFfi(pszNewValue), util.toPointer(ppszOutString));
+  return libRESUTILS_dll.ResUtilSetExpandSzValue(util.toPointer(hkeyClusterKey), util.pwstrToFfi(pszValueName), util.pwstrToFfi(pszNewValue), util.toPointer(ppszOutString));
 }
 
 export function ResUtilSetMultiSzValue(
@@ -8988,7 +9385,7 @@ export function ResUtilSetMultiSzValue(
   ppszOutValue: Deno.PointerValue | Uint8Array | null /* ptr */,
   pcbOutValueSize: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libRESUTILS.ResUtilSetMultiSzValue(util.toPointer(hkeyClusterKey), util.pwstrToFfi(pszValueName), util.pwstrToFfi(pszNewValue), cbNewValueSize, util.toPointer(ppszOutValue), util.toPointer(pcbOutValueSize));
+  return libRESUTILS_dll.ResUtilSetMultiSzValue(util.toPointer(hkeyClusterKey), util.pwstrToFfi(pszValueName), util.pwstrToFfi(pszNewValue), cbNewValueSize, util.toPointer(ppszOutValue), util.toPointer(pcbOutValueSize));
 }
 
 export function ResUtilSetDwordValue(
@@ -8997,7 +9394,7 @@ export function ResUtilSetDwordValue(
   dwNewValue: number /* u32 */,
   pdwOutValue: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libRESUTILS.ResUtilSetDwordValue(util.toPointer(hkeyClusterKey), util.pwstrToFfi(pszValueName), dwNewValue, util.toPointer(pdwOutValue));
+  return libRESUTILS_dll.ResUtilSetDwordValue(util.toPointer(hkeyClusterKey), util.pwstrToFfi(pszValueName), dwNewValue, util.toPointer(pdwOutValue));
 }
 
 export function ResUtilSetQwordValue(
@@ -9006,7 +9403,7 @@ export function ResUtilSetQwordValue(
   qwNewValue: Deno.PointerValue /* u64 */,
   pqwOutValue: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libRESUTILS.ResUtilSetQwordValue(util.toPointer(hkeyClusterKey), util.pwstrToFfi(pszValueName), qwNewValue, util.toPointer(pqwOutValue));
+  return libRESUTILS_dll.ResUtilSetQwordValue(util.toPointer(hkeyClusterKey), util.pwstrToFfi(pszValueName), qwNewValue, util.toPointer(pqwOutValue));
 }
 
 export function ResUtilSetValueEx(
@@ -9017,7 +9414,7 @@ export function ResUtilSetValueEx(
   valueSize: number /* u32 */,
   flags: number /* u32 */,
 ): number /* u32 */ {
-  return libRESUTILS.ResUtilSetValueEx(util.toPointer(hkeyClusterKey), util.pwstrToFfi(valueName), valueType, util.toPointer(valueData), valueSize, flags);
+  return libRESUTILS_dll.ResUtilSetValueEx(util.toPointer(hkeyClusterKey), util.pwstrToFfi(valueName), valueType, util.toPointer(valueData), valueSize, flags);
 }
 
 export function ResUtilGetBinaryProperty(
@@ -9029,7 +9426,7 @@ export function ResUtilGetBinaryProperty(
   ppPropertyList: Deno.PointerValue | Uint8Array | null /* ptr */,
   pcbPropertyListSize: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libRESUTILS.ResUtilGetBinaryProperty(util.toPointer(ppbOutValue), util.toPointer(pcbOutValueSize), util.toPointer(pValueStruct), util.toPointer(pbOldValue), cbOldValueSize, util.toPointer(ppPropertyList), util.toPointer(pcbPropertyListSize));
+  return libRESUTILS_dll.ResUtilGetBinaryProperty(util.toPointer(ppbOutValue), util.toPointer(pcbOutValueSize), util.toPointer(pValueStruct), util.toPointer(pbOldValue), cbOldValueSize, util.toPointer(ppPropertyList), util.toPointer(pcbPropertyListSize));
 }
 
 export function ResUtilGetSzProperty(
@@ -9039,7 +9436,7 @@ export function ResUtilGetSzProperty(
   ppPropertyList: Deno.PointerValue | Uint8Array | null /* ptr */,
   pcbPropertyListSize: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libRESUTILS.ResUtilGetSzProperty(util.toPointer(ppszOutValue), util.toPointer(pValueStruct), util.pwstrToFfi(pszOldValue), util.toPointer(ppPropertyList), util.toPointer(pcbPropertyListSize));
+  return libRESUTILS_dll.ResUtilGetSzProperty(util.toPointer(ppszOutValue), util.toPointer(pValueStruct), util.pwstrToFfi(pszOldValue), util.toPointer(ppPropertyList), util.toPointer(pcbPropertyListSize));
 }
 
 export function ResUtilGetMultiSzProperty(
@@ -9051,7 +9448,7 @@ export function ResUtilGetMultiSzProperty(
   ppPropertyList: Deno.PointerValue | Uint8Array | null /* ptr */,
   pcbPropertyListSize: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libRESUTILS.ResUtilGetMultiSzProperty(util.toPointer(ppszOutValue), util.toPointer(pcbOutValueSize), util.toPointer(pValueStruct), util.pwstrToFfi(pszOldValue), cbOldValueSize, util.toPointer(ppPropertyList), util.toPointer(pcbPropertyListSize));
+  return libRESUTILS_dll.ResUtilGetMultiSzProperty(util.toPointer(ppszOutValue), util.toPointer(pcbOutValueSize), util.toPointer(pValueStruct), util.pwstrToFfi(pszOldValue), cbOldValueSize, util.toPointer(ppPropertyList), util.toPointer(pcbPropertyListSize));
 }
 
 export function ResUtilGetDwordProperty(
@@ -9063,7 +9460,7 @@ export function ResUtilGetDwordProperty(
   ppPropertyList: Deno.PointerValue | Uint8Array | null /* ptr */,
   pcbPropertyListSize: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libRESUTILS.ResUtilGetDwordProperty(util.toPointer(pdwOutValue), util.toPointer(pValueStruct), dwOldValue, dwMinimum, dwMaximum, util.toPointer(ppPropertyList), util.toPointer(pcbPropertyListSize));
+  return libRESUTILS_dll.ResUtilGetDwordProperty(util.toPointer(pdwOutValue), util.toPointer(pValueStruct), dwOldValue, dwMinimum, dwMaximum, util.toPointer(ppPropertyList), util.toPointer(pcbPropertyListSize));
 }
 
 export function ResUtilGetLongProperty(
@@ -9075,7 +9472,7 @@ export function ResUtilGetLongProperty(
   ppPropertyList: Deno.PointerValue | Uint8Array | null /* ptr */,
   pcbPropertyListSize: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libRESUTILS.ResUtilGetLongProperty(util.toPointer(plOutValue), util.toPointer(pValueStruct), lOldValue, lMinimum, lMaximum, util.toPointer(ppPropertyList), util.toPointer(pcbPropertyListSize));
+  return libRESUTILS_dll.ResUtilGetLongProperty(util.toPointer(plOutValue), util.toPointer(pValueStruct), lOldValue, lMinimum, lMaximum, util.toPointer(ppPropertyList), util.toPointer(pcbPropertyListSize));
 }
 
 export function ResUtilGetFileTimeProperty(
@@ -9087,25 +9484,25 @@ export function ResUtilGetFileTimeProperty(
   ppPropertyList: Deno.PointerValue | Uint8Array | null /* ptr */,
   pcbPropertyListSize: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libRESUTILS.ResUtilGetFileTimeProperty(util.toPointer(pftOutValue), util.toPointer(pValueStruct), util.toPointer(ftOldValue), util.toPointer(ftMinimum), util.toPointer(ftMaximum), util.toPointer(ppPropertyList), util.toPointer(pcbPropertyListSize));
+  return libRESUTILS_dll.ResUtilGetFileTimeProperty(util.toPointer(pftOutValue), util.toPointer(pValueStruct), util.toPointer(ftOldValue), util.toPointer(ftMinimum), util.toPointer(ftMaximum), util.toPointer(ppPropertyList), util.toPointer(pcbPropertyListSize));
 }
 
 export function ResUtilGetEnvironmentWithNetName(
   hResource: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libRESUTILS.ResUtilGetEnvironmentWithNetName(util.toPointer(hResource)));
+  return util.pointerFromFfi(libRESUTILS_dll.ResUtilGetEnvironmentWithNetName(util.toPointer(hResource)));
 }
 
 export function ResUtilFreeEnvironment(
   lpEnvironment: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libRESUTILS.ResUtilFreeEnvironment(util.toPointer(lpEnvironment));
+  return libRESUTILS_dll.ResUtilFreeEnvironment(util.toPointer(lpEnvironment));
 }
 
 export function ResUtilExpandEnvironmentStrings(
   pszSrc: string | null /* Windows.Win32.Foundation.PWSTR */,
 ): string | null /* Windows.Win32.Foundation.PWSTR */ {
-  return util.pwstrFromFfi(libRESUTILS.ResUtilExpandEnvironmentStrings(util.pwstrToFfi(pszSrc)));
+  return util.pwstrFromFfi(libRESUTILS_dll.ResUtilExpandEnvironmentStrings(util.pwstrToFfi(pszSrc)));
 }
 
 export function ResUtilSetResourceServiceEnvironment(
@@ -9114,7 +9511,7 @@ export function ResUtilSetResourceServiceEnvironment(
   pfnLogEvent: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Networking.Clustering.PLOG_EVENT_ROUTINE */,
   hResourceHandle: Deno.PointerValue /* isize */,
 ): number /* u32 */ {
-  return libRESUTILS.ResUtilSetResourceServiceEnvironment(util.pwstrToFfi(pszServiceName), util.toPointer(hResource), util.toPointer(pfnLogEvent), hResourceHandle);
+  return libRESUTILS_dll.ResUtilSetResourceServiceEnvironment(util.pwstrToFfi(pszServiceName), util.toPointer(hResource), util.toPointer(pfnLogEvent), hResourceHandle);
 }
 
 export function ResUtilRemoveResourceServiceEnvironment(
@@ -9122,7 +9519,7 @@ export function ResUtilRemoveResourceServiceEnvironment(
   pfnLogEvent: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Networking.Clustering.PLOG_EVENT_ROUTINE */,
   hResourceHandle: Deno.PointerValue /* isize */,
 ): number /* u32 */ {
-  return libRESUTILS.ResUtilRemoveResourceServiceEnvironment(util.pwstrToFfi(pszServiceName), util.toPointer(pfnLogEvent), hResourceHandle);
+  return libRESUTILS_dll.ResUtilRemoveResourceServiceEnvironment(util.pwstrToFfi(pszServiceName), util.toPointer(pfnLogEvent), hResourceHandle);
 }
 
 export function ResUtilSetResourceServiceStartParameters(
@@ -9132,7 +9529,7 @@ export function ResUtilSetResourceServiceStartParameters(
   pfnLogEvent: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Networking.Clustering.PLOG_EVENT_ROUTINE */,
   hResourceHandle: Deno.PointerValue /* isize */,
 ): number /* u32 */ {
-  return libRESUTILS.ResUtilSetResourceServiceStartParameters(util.pwstrToFfi(pszServiceName), util.toPointer(schSCMHandle), util.toPointer(phService), util.toPointer(pfnLogEvent), hResourceHandle);
+  return libRESUTILS_dll.ResUtilSetResourceServiceStartParameters(util.pwstrToFfi(pszServiceName), util.toPointer(schSCMHandle), util.toPointer(phService), util.toPointer(pfnLogEvent), hResourceHandle);
 }
 
 export function ResUtilFindSzProperty(
@@ -9141,7 +9538,7 @@ export function ResUtilFindSzProperty(
   pszPropertyName: string | null /* Windows.Win32.Foundation.PWSTR */,
   pszPropertyValue: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libRESUTILS.ResUtilFindSzProperty(util.toPointer(pPropertyList), cbPropertyListSize, util.pwstrToFfi(pszPropertyName), util.toPointer(pszPropertyValue));
+  return libRESUTILS_dll.ResUtilFindSzProperty(util.toPointer(pPropertyList), cbPropertyListSize, util.pwstrToFfi(pszPropertyName), util.toPointer(pszPropertyValue));
 }
 
 export function ResUtilFindExpandSzProperty(
@@ -9150,7 +9547,7 @@ export function ResUtilFindExpandSzProperty(
   pszPropertyName: string | null /* Windows.Win32.Foundation.PWSTR */,
   pszPropertyValue: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libRESUTILS.ResUtilFindExpandSzProperty(util.toPointer(pPropertyList), cbPropertyListSize, util.pwstrToFfi(pszPropertyName), util.toPointer(pszPropertyValue));
+  return libRESUTILS_dll.ResUtilFindExpandSzProperty(util.toPointer(pPropertyList), cbPropertyListSize, util.pwstrToFfi(pszPropertyName), util.toPointer(pszPropertyValue));
 }
 
 export function ResUtilFindExpandedSzProperty(
@@ -9159,7 +9556,7 @@ export function ResUtilFindExpandedSzProperty(
   pszPropertyName: string | null /* Windows.Win32.Foundation.PWSTR */,
   pszPropertyValue: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libRESUTILS.ResUtilFindExpandedSzProperty(util.toPointer(pPropertyList), cbPropertyListSize, util.pwstrToFfi(pszPropertyName), util.toPointer(pszPropertyValue));
+  return libRESUTILS_dll.ResUtilFindExpandedSzProperty(util.toPointer(pPropertyList), cbPropertyListSize, util.pwstrToFfi(pszPropertyName), util.toPointer(pszPropertyValue));
 }
 
 export function ResUtilFindDwordProperty(
@@ -9168,7 +9565,7 @@ export function ResUtilFindDwordProperty(
   pszPropertyName: string | null /* Windows.Win32.Foundation.PWSTR */,
   pdwPropertyValue: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libRESUTILS.ResUtilFindDwordProperty(util.toPointer(pPropertyList), cbPropertyListSize, util.pwstrToFfi(pszPropertyName), util.toPointer(pdwPropertyValue));
+  return libRESUTILS_dll.ResUtilFindDwordProperty(util.toPointer(pPropertyList), cbPropertyListSize, util.pwstrToFfi(pszPropertyName), util.toPointer(pdwPropertyValue));
 }
 
 export function ResUtilFindBinaryProperty(
@@ -9178,7 +9575,7 @@ export function ResUtilFindBinaryProperty(
   pbPropertyValue: Deno.PointerValue | Uint8Array | null /* ptr */,
   pcbPropertyValueSize: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libRESUTILS.ResUtilFindBinaryProperty(util.toPointer(pPropertyList), cbPropertyListSize, util.pwstrToFfi(pszPropertyName), util.toPointer(pbPropertyValue), util.toPointer(pcbPropertyValueSize));
+  return libRESUTILS_dll.ResUtilFindBinaryProperty(util.toPointer(pPropertyList), cbPropertyListSize, util.pwstrToFfi(pszPropertyName), util.toPointer(pbPropertyValue), util.toPointer(pcbPropertyValueSize));
 }
 
 export function ResUtilFindMultiSzProperty(
@@ -9188,7 +9585,7 @@ export function ResUtilFindMultiSzProperty(
   pszPropertyValue: Deno.PointerValue | Uint8Array | null /* ptr */,
   pcbPropertyValueSize: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libRESUTILS.ResUtilFindMultiSzProperty(util.toPointer(pPropertyList), cbPropertyListSize, util.pwstrToFfi(pszPropertyName), util.toPointer(pszPropertyValue), util.toPointer(pcbPropertyValueSize));
+  return libRESUTILS_dll.ResUtilFindMultiSzProperty(util.toPointer(pPropertyList), cbPropertyListSize, util.pwstrToFfi(pszPropertyName), util.toPointer(pszPropertyValue), util.toPointer(pcbPropertyValueSize));
 }
 
 export function ResUtilFindLongProperty(
@@ -9197,7 +9594,7 @@ export function ResUtilFindLongProperty(
   pszPropertyName: string | null /* Windows.Win32.Foundation.PWSTR */,
   plPropertyValue: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libRESUTILS.ResUtilFindLongProperty(util.toPointer(pPropertyList), cbPropertyListSize, util.pwstrToFfi(pszPropertyName), util.toPointer(plPropertyValue));
+  return libRESUTILS_dll.ResUtilFindLongProperty(util.toPointer(pPropertyList), cbPropertyListSize, util.pwstrToFfi(pszPropertyName), util.toPointer(plPropertyValue));
 }
 
 export function ResUtilFindULargeIntegerProperty(
@@ -9206,7 +9603,7 @@ export function ResUtilFindULargeIntegerProperty(
   pszPropertyName: string | null /* Windows.Win32.Foundation.PWSTR */,
   plPropertyValue: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libRESUTILS.ResUtilFindULargeIntegerProperty(util.toPointer(pPropertyList), cbPropertyListSize, util.pwstrToFfi(pszPropertyName), util.toPointer(plPropertyValue));
+  return libRESUTILS_dll.ResUtilFindULargeIntegerProperty(util.toPointer(pPropertyList), cbPropertyListSize, util.pwstrToFfi(pszPropertyName), util.toPointer(plPropertyValue));
 }
 
 export function ResUtilFindFileTimeProperty(
@@ -9215,7 +9612,7 @@ export function ResUtilFindFileTimeProperty(
   pszPropertyName: string | null /* Windows.Win32.Foundation.PWSTR */,
   pftPropertyValue: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libRESUTILS.ResUtilFindFileTimeProperty(util.toPointer(pPropertyList), cbPropertyListSize, util.pwstrToFfi(pszPropertyName), util.toPointer(pftPropertyValue));
+  return libRESUTILS_dll.ResUtilFindFileTimeProperty(util.toPointer(pPropertyList), cbPropertyListSize, util.pwstrToFfi(pszPropertyName), util.toPointer(pftPropertyValue));
 }
 
 export function ClusWorkerCreate(
@@ -9223,19 +9620,19 @@ export function ClusWorkerCreate(
   lpStartAddress: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Networking.Clustering.PWORKER_START_ROUTINE */,
   lpParameter: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libRESUTILS.ClusWorkerCreate(util.toPointer(lpWorker), util.toPointer(lpStartAddress), util.toPointer(lpParameter));
+  return libRESUTILS_dll.ClusWorkerCreate(util.toPointer(lpWorker), util.toPointer(lpStartAddress), util.toPointer(lpParameter));
 }
 
 export function ClusWorkerCheckTerminate(
   lpWorker: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libRESUTILS.ClusWorkerCheckTerminate(util.toPointer(lpWorker)));
+  return util.boolFromFfi(libRESUTILS_dll.ClusWorkerCheckTerminate(util.toPointer(lpWorker)));
 }
 
 export function ClusWorkerTerminate(
   lpWorker: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): void /* void */ {
-  return libRESUTILS.ClusWorkerTerminate(util.toPointer(lpWorker));
+  return libRESUTILS_dll.ClusWorkerTerminate(util.toPointer(lpWorker));
 }
 
 export function ClusWorkerTerminateEx(
@@ -9243,7 +9640,7 @@ export function ClusWorkerTerminateEx(
   TimeoutInMilliseconds: number /* u32 */,
   WaitOnly: boolean /* Windows.Win32.Foundation.BOOL */,
 ): number /* u32 */ {
-  return libRESUTILS.ClusWorkerTerminateEx(util.toPointer(ClusWorker), TimeoutInMilliseconds, util.boolToFfi(WaitOnly));
+  return libRESUTILS_dll.ClusWorkerTerminateEx(util.toPointer(ClusWorker), TimeoutInMilliseconds, util.boolToFfi(WaitOnly));
 }
 
 export function ClusWorkersTerminate(
@@ -9252,28 +9649,28 @@ export function ClusWorkersTerminate(
   TimeoutInMilliseconds: number /* u32 */,
   WaitOnly: boolean /* Windows.Win32.Foundation.BOOL */,
 ): number /* u32 */ {
-  return libRESUTILS.ClusWorkersTerminate(util.toPointer(ClusWorkers), ClusWorkersCount, TimeoutInMilliseconds, util.boolToFfi(WaitOnly));
+  return libRESUTILS_dll.ClusWorkersTerminate(util.toPointer(ClusWorkers), ClusWorkersCount, TimeoutInMilliseconds, util.boolToFfi(WaitOnly));
 }
 
 export function ResUtilResourcesEqual(
   hSelf: Deno.PointerValue | Uint8Array | null /* ptr */,
   hResource: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libRESUTILS.ResUtilResourcesEqual(util.toPointer(hSelf), util.toPointer(hResource)));
+  return util.boolFromFfi(libRESUTILS_dll.ResUtilResourcesEqual(util.toPointer(hSelf), util.toPointer(hResource)));
 }
 
 export function ResUtilResourceTypesEqual(
   lpszResourceTypeName: string | null /* Windows.Win32.Foundation.PWSTR */,
   hResource: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libRESUTILS.ResUtilResourceTypesEqual(util.pwstrToFfi(lpszResourceTypeName), util.toPointer(hResource)));
+  return util.boolFromFfi(libRESUTILS_dll.ResUtilResourceTypesEqual(util.pwstrToFfi(lpszResourceTypeName), util.toPointer(hResource)));
 }
 
 export function ResUtilIsResourceClassEqual(
   prci: Deno.PointerValue | Uint8Array | null /* ptr */,
   hResource: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libRESUTILS.ResUtilIsResourceClassEqual(util.toPointer(prci), util.toPointer(hResource)));
+  return util.boolFromFfi(libRESUTILS_dll.ResUtilIsResourceClassEqual(util.toPointer(prci), util.toPointer(hResource)));
 }
 
 export function ResUtilEnumResources(
@@ -9282,7 +9679,7 @@ export function ResUtilEnumResources(
   pResCallBack: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Networking.Clustering.LPRESOURCE_CALLBACK */,
   pParameter: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libRESUTILS.ResUtilEnumResources(util.toPointer(hSelf), util.pwstrToFfi(lpszResTypeName), util.toPointer(pResCallBack), util.toPointer(pParameter));
+  return libRESUTILS_dll.ResUtilEnumResources(util.toPointer(hSelf), util.pwstrToFfi(lpszResTypeName), util.toPointer(pResCallBack), util.toPointer(pParameter));
 }
 
 export function ResUtilEnumResourcesEx(
@@ -9292,14 +9689,14 @@ export function ResUtilEnumResourcesEx(
   pResCallBack: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Networking.Clustering.LPRESOURCE_CALLBACK_EX */,
   pParameter: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libRESUTILS.ResUtilEnumResourcesEx(util.toPointer(hCluster), util.toPointer(hSelf), util.pwstrToFfi(lpszResTypeName), util.toPointer(pResCallBack), util.toPointer(pParameter));
+  return libRESUTILS_dll.ResUtilEnumResourcesEx(util.toPointer(hCluster), util.toPointer(hSelf), util.pwstrToFfi(lpszResTypeName), util.toPointer(pResCallBack), util.toPointer(pParameter));
 }
 
 export function ResUtilGetResourceDependency(
   hSelf: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
   lpszResourceType: string | null /* Windows.Win32.Foundation.PWSTR */,
 ): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libRESUTILS.ResUtilGetResourceDependency(util.toPointer(hSelf), util.pwstrToFfi(lpszResourceType)));
+  return util.pointerFromFfi(libRESUTILS_dll.ResUtilGetResourceDependency(util.toPointer(hSelf), util.pwstrToFfi(lpszResourceType)));
 }
 
 export function ResUtilGetResourceDependencyByName(
@@ -9308,7 +9705,7 @@ export function ResUtilGetResourceDependencyByName(
   lpszResourceType: string | null /* Windows.Win32.Foundation.PWSTR */,
   bRecurse: boolean /* Windows.Win32.Foundation.BOOL */,
 ): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libRESUTILS.ResUtilGetResourceDependencyByName(util.toPointer(hCluster), util.toPointer(hSelf), util.pwstrToFfi(lpszResourceType), util.boolToFfi(bRecurse)));
+  return util.pointerFromFfi(libRESUTILS_dll.ResUtilGetResourceDependencyByName(util.toPointer(hCluster), util.toPointer(hSelf), util.pwstrToFfi(lpszResourceType), util.boolToFfi(bRecurse)));
 }
 
 export function ResUtilGetResourceDependencyByClass(
@@ -9317,14 +9714,14 @@ export function ResUtilGetResourceDependencyByClass(
   prci: Deno.PointerValue | Uint8Array | null /* ptr */,
   bRecurse: boolean /* Windows.Win32.Foundation.BOOL */,
 ): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libRESUTILS.ResUtilGetResourceDependencyByClass(util.toPointer(hCluster), util.toPointer(hSelf), util.toPointer(prci), util.boolToFfi(bRecurse)));
+  return util.pointerFromFfi(libRESUTILS_dll.ResUtilGetResourceDependencyByClass(util.toPointer(hCluster), util.toPointer(hSelf), util.toPointer(prci), util.boolToFfi(bRecurse)));
 }
 
 export function ResUtilGetResourceNameDependency(
   lpszResourceName: string | null /* Windows.Win32.Foundation.PWSTR */,
   lpszResourceType: string | null /* Windows.Win32.Foundation.PWSTR */,
 ): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libRESUTILS.ResUtilGetResourceNameDependency(util.pwstrToFfi(lpszResourceName), util.pwstrToFfi(lpszResourceType)));
+  return util.pointerFromFfi(libRESUTILS_dll.ResUtilGetResourceNameDependency(util.pwstrToFfi(lpszResourceName), util.pwstrToFfi(lpszResourceType)));
 }
 
 export function ResUtilGetResourceDependentIPAddressProps(
@@ -9336,7 +9733,7 @@ export function ResUtilGetResourceDependentIPAddressProps(
   pszNetwork: string | null /* Windows.Win32.Foundation.PWSTR */,
   pcchNetwork: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libRESUTILS.ResUtilGetResourceDependentIPAddressProps(util.toPointer(hResource), util.pwstrToFfi(pszAddress), util.toPointer(pcchAddress), util.pwstrToFfi(pszSubnetMask), util.toPointer(pcchSubnetMask), util.pwstrToFfi(pszNetwork), util.toPointer(pcchNetwork));
+  return libRESUTILS_dll.ResUtilGetResourceDependentIPAddressProps(util.toPointer(hResource), util.pwstrToFfi(pszAddress), util.toPointer(pcchAddress), util.pwstrToFfi(pszSubnetMask), util.toPointer(pcchSubnetMask), util.pwstrToFfi(pszNetwork), util.toPointer(pcchNetwork));
 }
 
 export function ResUtilFindDependentDiskResourceDriveLetter(
@@ -9345,7 +9742,7 @@ export function ResUtilFindDependentDiskResourceDriveLetter(
   pszDriveLetter: string | null /* Windows.Win32.Foundation.PWSTR */,
   pcchDriveLetter: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libRESUTILS.ResUtilFindDependentDiskResourceDriveLetter(util.toPointer(hCluster), util.toPointer(hResource), util.pwstrToFfi(pszDriveLetter), util.toPointer(pcchDriveLetter));
+  return libRESUTILS_dll.ResUtilFindDependentDiskResourceDriveLetter(util.toPointer(hCluster), util.toPointer(hResource), util.pwstrToFfi(pszDriveLetter), util.toPointer(pcchDriveLetter));
 }
 
 export function ResUtilTerminateServiceProcessFromResDll(
@@ -9355,7 +9752,7 @@ export function ResUtilTerminateServiceProcessFromResDll(
   pfnLogEvent: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Networking.Clustering.PLOG_EVENT_ROUTINE */,
   hResourceHandle: Deno.PointerValue /* isize */,
 ): number /* u32 */ {
-  return libRESUTILS.ResUtilTerminateServiceProcessFromResDll(dwServicePid, util.boolToFfi(bOffline), util.toPointer(pdwResourceState), util.toPointer(pfnLogEvent), hResourceHandle);
+  return libRESUTILS_dll.ResUtilTerminateServiceProcessFromResDll(dwServicePid, util.boolToFfi(bOffline), util.toPointer(pdwResourceState), util.toPointer(pfnLogEvent), hResourceHandle);
 }
 
 export function ResUtilGetPropertyFormats(
@@ -9365,7 +9762,7 @@ export function ResUtilGetPropertyFormats(
   pcbBytesReturned: Deno.PointerValue | Uint8Array | null /* ptr */,
   pcbRequired: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libRESUTILS.ResUtilGetPropertyFormats(util.toPointer(pPropertyTable), util.toPointer(pOutPropertyFormatList), cbPropertyFormatListSize, util.toPointer(pcbBytesReturned), util.toPointer(pcbRequired));
+  return libRESUTILS_dll.ResUtilGetPropertyFormats(util.toPointer(pPropertyTable), util.toPointer(pOutPropertyFormatList), cbPropertyFormatListSize, util.toPointer(pcbBytesReturned), util.toPointer(pcbRequired));
 }
 
 export function ResUtilGetCoreClusterResources(
@@ -9374,7 +9771,7 @@ export function ResUtilGetCoreClusterResources(
   phClusterIPAddressResource: Deno.PointerValue | Uint8Array | null /* ptr */,
   phClusterQuorumResource: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libRESUTILS.ResUtilGetCoreClusterResources(util.toPointer(hCluster), util.toPointer(phClusterNameResource), util.toPointer(phClusterIPAddressResource), util.toPointer(phClusterQuorumResource));
+  return libRESUTILS_dll.ResUtilGetCoreClusterResources(util.toPointer(hCluster), util.toPointer(phClusterNameResource), util.toPointer(phClusterIPAddressResource), util.toPointer(phClusterQuorumResource));
 }
 
 export function ResUtilGetResourceName(
@@ -9382,20 +9779,20 @@ export function ResUtilGetResourceName(
   pszResourceName: string | null /* Windows.Win32.Foundation.PWSTR */,
   pcchResourceNameInOut: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libRESUTILS.ResUtilGetResourceName(util.toPointer(hResource), util.pwstrToFfi(pszResourceName), util.toPointer(pcchResourceNameInOut));
+  return libRESUTILS_dll.ResUtilGetResourceName(util.toPointer(hResource), util.pwstrToFfi(pszResourceName), util.toPointer(pcchResourceNameInOut));
 }
 
 export function ResUtilGetClusterRoleState(
   hCluster: Deno.PointerValue | Uint8Array | null /* ptr */,
   eClusterRole: CLUSTER_ROLE /* Windows.Win32.Networking.Clustering.CLUSTER_ROLE */,
 ): CLUSTER_ROLE_STATE /* Windows.Win32.Networking.Clustering.CLUSTER_ROLE_STATE */ {
-  return libRESUTILS.ResUtilGetClusterRoleState(util.toPointer(hCluster), eClusterRole);
+  return libRESUTILS_dll.ResUtilGetClusterRoleState(util.toPointer(hCluster), eClusterRole);
 }
 
 export function ClusterIsPathOnSharedVolume(
   lpszPathName: string | null /* Windows.Win32.Foundation.PWSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libRESUTILS.ClusterIsPathOnSharedVolume(util.pwstrToFfi(lpszPathName)));
+  return util.boolFromFfi(libRESUTILS_dll.ClusterIsPathOnSharedVolume(util.pwstrToFfi(lpszPathName)));
 }
 
 export function ClusterGetVolumePathName(
@@ -9403,7 +9800,7 @@ export function ClusterGetVolumePathName(
   lpszVolumePathName: string | null /* Windows.Win32.Foundation.PWSTR */,
   cchBufferLength: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libRESUTILS.ClusterGetVolumePathName(util.pwstrToFfi(lpszFileName), util.pwstrToFfi(lpszVolumePathName), cchBufferLength));
+  return util.boolFromFfi(libRESUTILS_dll.ClusterGetVolumePathName(util.pwstrToFfi(lpszFileName), util.pwstrToFfi(lpszVolumePathName), cchBufferLength));
 }
 
 export function ClusterGetVolumeNameForVolumeMountPoint(
@@ -9411,7 +9808,7 @@ export function ClusterGetVolumeNameForVolumeMountPoint(
   lpszVolumeName: string | null /* Windows.Win32.Foundation.PWSTR */,
   cchBufferLength: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libRESUTILS.ClusterGetVolumeNameForVolumeMountPoint(util.pwstrToFfi(lpszVolumeMountPoint), util.pwstrToFfi(lpszVolumeName), cchBufferLength));
+  return util.boolFromFfi(libRESUTILS_dll.ClusterGetVolumeNameForVolumeMountPoint(util.pwstrToFfi(lpszVolumeMountPoint), util.pwstrToFfi(lpszVolumeName), cchBufferLength));
 }
 
 export function ClusterPrepareSharedVolumeForBackup(
@@ -9421,13 +9818,13 @@ export function ClusterPrepareSharedVolumeForBackup(
   lpszVolumeName: string | null /* Windows.Win32.Foundation.PWSTR */,
   lpcchVolumeName: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libRESUTILS.ClusterPrepareSharedVolumeForBackup(util.pwstrToFfi(lpszFileName), util.pwstrToFfi(lpszVolumePathName), util.toPointer(lpcchVolumePathName), util.pwstrToFfi(lpszVolumeName), util.toPointer(lpcchVolumeName));
+  return libRESUTILS_dll.ClusterPrepareSharedVolumeForBackup(util.pwstrToFfi(lpszFileName), util.pwstrToFfi(lpszVolumePathName), util.toPointer(lpcchVolumePathName), util.pwstrToFfi(lpszVolumeName), util.toPointer(lpcchVolumeName));
 }
 
 export function ClusterClearBackupStateForSharedVolume(
   lpszVolumePathName: string | null /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
-  return libRESUTILS.ClusterClearBackupStateForSharedVolume(util.pwstrToFfi(lpszVolumePathName));
+  return libRESUTILS_dll.ClusterClearBackupStateForSharedVolume(util.pwstrToFfi(lpszVolumePathName));
 }
 
 export function ResUtilSetResourceServiceStartParametersEx(
@@ -9438,7 +9835,7 @@ export function ResUtilSetResourceServiceStartParametersEx(
   pfnLogEvent: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Networking.Clustering.PLOG_EVENT_ROUTINE */,
   hResourceHandle: Deno.PointerValue /* isize */,
 ): number /* u32 */ {
-  return libRESUTILS.ResUtilSetResourceServiceStartParametersEx(util.pwstrToFfi(pszServiceName), util.toPointer(schSCMHandle), util.toPointer(phService), dwDesiredAccess, util.toPointer(pfnLogEvent), hResourceHandle);
+  return libRESUTILS_dll.ResUtilSetResourceServiceStartParametersEx(util.pwstrToFfi(pszServiceName), util.toPointer(schSCMHandle), util.toPointer(phService), dwDesiredAccess, util.toPointer(pfnLogEvent), hResourceHandle);
 }
 
 export function ResUtilEnumResourcesEx2(
@@ -9449,7 +9846,7 @@ export function ResUtilEnumResourcesEx2(
   pParameter: Deno.PointerValue | Uint8Array | null /* ptr */,
   dwDesiredAccess: number /* u32 */,
 ): number /* u32 */ {
-  return libRESUTILS.ResUtilEnumResourcesEx2(util.toPointer(hCluster), util.toPointer(hSelf), util.pwstrToFfi(lpszResTypeName), util.toPointer(pResCallBack), util.toPointer(pParameter), dwDesiredAccess);
+  return libRESUTILS_dll.ResUtilEnumResourcesEx2(util.toPointer(hCluster), util.toPointer(hSelf), util.pwstrToFfi(lpszResTypeName), util.toPointer(pResCallBack), util.toPointer(pParameter), dwDesiredAccess);
 }
 
 export function ResUtilGetResourceDependencyEx(
@@ -9457,7 +9854,7 @@ export function ResUtilGetResourceDependencyEx(
   lpszResourceType: string | null /* Windows.Win32.Foundation.PWSTR */,
   dwDesiredAccess: number /* u32 */,
 ): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libRESUTILS.ResUtilGetResourceDependencyEx(util.toPointer(hSelf), util.pwstrToFfi(lpszResourceType), dwDesiredAccess));
+  return util.pointerFromFfi(libRESUTILS_dll.ResUtilGetResourceDependencyEx(util.toPointer(hSelf), util.pwstrToFfi(lpszResourceType), dwDesiredAccess));
 }
 
 export function ResUtilGetResourceDependencyByNameEx(
@@ -9467,7 +9864,7 @@ export function ResUtilGetResourceDependencyByNameEx(
   bRecurse: boolean /* Windows.Win32.Foundation.BOOL */,
   dwDesiredAccess: number /* u32 */,
 ): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libRESUTILS.ResUtilGetResourceDependencyByNameEx(util.toPointer(hCluster), util.toPointer(hSelf), util.pwstrToFfi(lpszResourceType), util.boolToFfi(bRecurse), dwDesiredAccess));
+  return util.pointerFromFfi(libRESUTILS_dll.ResUtilGetResourceDependencyByNameEx(util.toPointer(hCluster), util.toPointer(hSelf), util.pwstrToFfi(lpszResourceType), util.boolToFfi(bRecurse), dwDesiredAccess));
 }
 
 export function ResUtilGetResourceDependencyByClassEx(
@@ -9477,7 +9874,7 @@ export function ResUtilGetResourceDependencyByClassEx(
   bRecurse: boolean /* Windows.Win32.Foundation.BOOL */,
   dwDesiredAccess: number /* u32 */,
 ): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libRESUTILS.ResUtilGetResourceDependencyByClassEx(util.toPointer(hCluster), util.toPointer(hSelf), util.toPointer(prci), util.boolToFfi(bRecurse), dwDesiredAccess));
+  return util.pointerFromFfi(libRESUTILS_dll.ResUtilGetResourceDependencyByClassEx(util.toPointer(hCluster), util.toPointer(hSelf), util.toPointer(prci), util.boolToFfi(bRecurse), dwDesiredAccess));
 }
 
 export function ResUtilGetResourceNameDependencyEx(
@@ -9485,7 +9882,7 @@ export function ResUtilGetResourceNameDependencyEx(
   lpszResourceType: string | null /* Windows.Win32.Foundation.PWSTR */,
   dwDesiredAccess: number /* u32 */,
 ): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libRESUTILS.ResUtilGetResourceNameDependencyEx(util.pwstrToFfi(lpszResourceName), util.pwstrToFfi(lpszResourceType), dwDesiredAccess));
+  return util.pointerFromFfi(libRESUTILS_dll.ResUtilGetResourceNameDependencyEx(util.pwstrToFfi(lpszResourceName), util.pwstrToFfi(lpszResourceType), dwDesiredAccess));
 }
 
 export function ResUtilGetCoreClusterResourcesEx(
@@ -9494,7 +9891,7 @@ export function ResUtilGetCoreClusterResourcesEx(
   phClusterQuorumResourceOut: Deno.PointerValue | Uint8Array | null /* ptr */,
   dwDesiredAccess: number /* u32 */,
 ): number /* u32 */ {
-  return libRESUTILS.ResUtilGetCoreClusterResourcesEx(util.toPointer(hClusterIn), util.toPointer(phClusterNameResourceOut), util.toPointer(phClusterQuorumResourceOut), dwDesiredAccess);
+  return libRESUTILS_dll.ResUtilGetCoreClusterResourcesEx(util.toPointer(hClusterIn), util.toPointer(phClusterNameResourceOut), util.toPointer(phClusterQuorumResourceOut), dwDesiredAccess);
 }
 
 export function OpenClusterCryptProvider(
@@ -9503,7 +9900,7 @@ export function OpenClusterCryptProvider(
   dwType: number /* u32 */,
   dwFlags: number /* u32 */,
 ): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libRESUTILS.OpenClusterCryptProvider(util.pwstrToFfi(lpszResource), util.toPointer(lpszProvider), dwType, dwFlags));
+  return util.pointerFromFfi(libRESUTILS_dll.OpenClusterCryptProvider(util.pwstrToFfi(lpszResource), util.toPointer(lpszProvider), dwType, dwFlags));
 }
 
 export function OpenClusterCryptProviderEx(
@@ -9513,13 +9910,13 @@ export function OpenClusterCryptProviderEx(
   dwType: number /* u32 */,
   dwFlags: number /* u32 */,
 ): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libRESUTILS.OpenClusterCryptProviderEx(util.pwstrToFfi(lpszResource), util.pwstrToFfi(lpszKeyname), util.toPointer(lpszProvider), dwType, dwFlags));
+  return util.pointerFromFfi(libRESUTILS_dll.OpenClusterCryptProviderEx(util.pwstrToFfi(lpszResource), util.pwstrToFfi(lpszKeyname), util.toPointer(lpszProvider), dwType, dwFlags));
 }
 
 export function CloseClusterCryptProvider(
   hClusCryptProvider: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libRESUTILS.CloseClusterCryptProvider(util.toPointer(hClusCryptProvider));
+  return libRESUTILS_dll.CloseClusterCryptProvider(util.toPointer(hClusCryptProvider));
 }
 
 export function ClusterEncrypt(
@@ -9529,7 +9926,7 @@ export function ClusterEncrypt(
   ppData: Deno.PointerValue | Uint8Array | null /* ptr */,
   pcbData: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libRESUTILS.ClusterEncrypt(util.toPointer(hClusCryptProvider), util.toPointer(pData), cbData, util.toPointer(ppData), util.toPointer(pcbData));
+  return libRESUTILS_dll.ClusterEncrypt(util.toPointer(hClusCryptProvider), util.toPointer(pData), cbData, util.toPointer(ppData), util.toPointer(pcbData));
 }
 
 export function ClusterDecrypt(
@@ -9539,13 +9936,13 @@ export function ClusterDecrypt(
   ppCryptOutput: Deno.PointerValue | Uint8Array | null /* ptr */,
   pcbCryptOutput: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libRESUTILS.ClusterDecrypt(util.toPointer(hClusCryptProvider), util.toPointer(pCryptInput), cbCryptInput, util.toPointer(ppCryptOutput), util.toPointer(pcbCryptOutput));
+  return libRESUTILS_dll.ClusterDecrypt(util.toPointer(hClusCryptProvider), util.toPointer(pCryptInput), cbCryptInput, util.toPointer(ppCryptOutput), util.toPointer(pcbCryptOutput));
 }
 
 export function FreeClusterCrypt(
   pCryptInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libRESUTILS.FreeClusterCrypt(util.toPointer(pCryptInfo));
+  return libRESUTILS_dll.FreeClusterCrypt(util.toPointer(pCryptInfo));
 }
 
 export function ResUtilVerifyShutdownSafe(
@@ -9553,21 +9950,21 @@ export function ResUtilVerifyShutdownSafe(
   reason: number /* u32 */,
   pResult: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libRESUTILS.ResUtilVerifyShutdownSafe(flags, reason, util.toPointer(pResult));
+  return libRESUTILS_dll.ResUtilVerifyShutdownSafe(flags, reason, util.toPointer(pResult));
 }
 
 export function ResUtilPaxosComparer(
   left: Deno.PointerValue | Uint8Array | null /* ptr */,
   right: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libRESUTILS.ResUtilPaxosComparer(util.toPointer(left), util.toPointer(right)));
+  return util.boolFromFfi(libRESUTILS_dll.ResUtilPaxosComparer(util.toPointer(left), util.toPointer(right)));
 }
 
 export function ResUtilLeftPaxosIsLessThanRight(
   left: Deno.PointerValue | Uint8Array | null /* ptr */,
   right: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libRESUTILS.ResUtilLeftPaxosIsLessThanRight(util.toPointer(left), util.toPointer(right)));
+  return util.boolFromFfi(libRESUTILS_dll.ResUtilLeftPaxosIsLessThanRight(util.toPointer(left), util.toPointer(right)));
 }
 
 export function ResUtilsDeleteKeyTree(
@@ -9575,7 +9972,7 @@ export function ResUtilsDeleteKeyTree(
   keyName: string | null /* Windows.Win32.Foundation.PWSTR */,
   treatNoKeyAsError: boolean /* Windows.Win32.Foundation.BOOL */,
 ): number /* u32 */ {
-  return libRESUTILS.ResUtilsDeleteKeyTree(util.toPointer(key), util.pwstrToFfi(keyName), util.boolToFfi(treatNoKeyAsError));
+  return libRESUTILS_dll.ResUtilsDeleteKeyTree(util.toPointer(key), util.pwstrToFfi(keyName), util.boolToFfi(treatNoKeyAsError));
 }
 
 export function ResUtilGroupsEqual(
@@ -9583,7 +9980,7 @@ export function ResUtilGroupsEqual(
   hGroup: Deno.PointerValue | Uint8Array | null /* ptr */,
   pEqual: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libRESUTILS.ResUtilGroupsEqual(util.toPointer(hSelf), util.toPointer(hGroup), util.toPointer(pEqual));
+  return libRESUTILS_dll.ResUtilGroupsEqual(util.toPointer(hSelf), util.toPointer(hGroup), util.toPointer(pEqual));
 }
 
 export function ResUtilEnumGroups(
@@ -9592,7 +9989,7 @@ export function ResUtilEnumGroups(
   pResCallBack: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Networking.Clustering.LPGROUP_CALLBACK_EX */,
   pParameter: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libRESUTILS.ResUtilEnumGroups(util.toPointer(hCluster), util.toPointer(hSelf), util.toPointer(pResCallBack), util.toPointer(pParameter));
+  return libRESUTILS_dll.ResUtilEnumGroups(util.toPointer(hCluster), util.toPointer(hSelf), util.toPointer(pResCallBack), util.toPointer(pParameter));
 }
 
 export function ResUtilEnumGroupsEx(
@@ -9602,27 +9999,27 @@ export function ResUtilEnumGroupsEx(
   pResCallBack: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Networking.Clustering.LPGROUP_CALLBACK_EX */,
   pParameter: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libRESUTILS.ResUtilEnumGroupsEx(util.toPointer(hCluster), util.toPointer(hSelf), groupType, util.toPointer(pResCallBack), util.toPointer(pParameter));
+  return libRESUTILS_dll.ResUtilEnumGroupsEx(util.toPointer(hCluster), util.toPointer(hSelf), groupType, util.toPointer(pResCallBack), util.toPointer(pParameter));
 }
 
 export function ResUtilDupGroup(
   group: Deno.PointerValue | Uint8Array | null /* ptr */,
   copy: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libRESUTILS.ResUtilDupGroup(util.toPointer(group), util.toPointer(copy));
+  return libRESUTILS_dll.ResUtilDupGroup(util.toPointer(group), util.toPointer(copy));
 }
 
 export function ResUtilGetClusterGroupType(
   hGroup: Deno.PointerValue | Uint8Array | null /* ptr */,
   groupType: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libRESUTILS.ResUtilGetClusterGroupType(util.toPointer(hGroup), util.toPointer(groupType));
+  return libRESUTILS_dll.ResUtilGetClusterGroupType(util.toPointer(hGroup), util.toPointer(groupType));
 }
 
 export function ResUtilGetCoreGroup(
   hCluster: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libRESUTILS.ResUtilGetCoreGroup(util.toPointer(hCluster)));
+  return util.pointerFromFfi(libRESUTILS_dll.ResUtilGetCoreGroup(util.toPointer(hCluster)));
 }
 
 export function ResUtilResourceDepEnum(
@@ -9631,21 +10028,21 @@ export function ResUtilResourceDepEnum(
   pResCallBack: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Networking.Clustering.LPRESOURCE_CALLBACK_EX */,
   pParameter: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libRESUTILS.ResUtilResourceDepEnum(util.toPointer(hSelf), enumType, util.toPointer(pResCallBack), util.toPointer(pParameter));
+  return libRESUTILS_dll.ResUtilResourceDepEnum(util.toPointer(hSelf), enumType, util.toPointer(pResCallBack), util.toPointer(pParameter));
 }
 
 export function ResUtilDupResource(
   group: Deno.PointerValue | Uint8Array | null /* ptr */,
   copy: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libRESUTILS.ResUtilDupResource(util.toPointer(group), util.toPointer(copy));
+  return libRESUTILS_dll.ResUtilDupResource(util.toPointer(group), util.toPointer(copy));
 }
 
 export function ResUtilGetClusterId(
   hCluster: Deno.PointerValue | Uint8Array | null /* ptr */,
   guid: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libRESUTILS.ResUtilGetClusterId(util.toPointer(hCluster), util.toPointer(guid));
+  return libRESUTILS_dll.ResUtilGetClusterId(util.toPointer(hCluster), util.toPointer(guid));
 }
 
 export function ResUtilNodeEnum(
@@ -9653,7 +10050,7 @@ export function ResUtilNodeEnum(
   pNodeCallBack: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Networking.Clustering.LPNODE_CALLBACK */,
   pParameter: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libRESUTILS.ResUtilNodeEnum(util.toPointer(hCluster), util.toPointer(pNodeCallBack), util.toPointer(pParameter));
+  return libRESUTILS_dll.ResUtilNodeEnum(util.toPointer(hCluster), util.toPointer(pNodeCallBack), util.toPointer(pParameter));
 }
 
 export function RegisterAppInstance(
@@ -9661,7 +10058,7 @@ export function RegisterAppInstance(
   AppInstanceId: Deno.PointerValue | Uint8Array | null /* ptr */,
   ChildrenInheritAppInstance: boolean /* Windows.Win32.Foundation.BOOL */,
 ): number /* u32 */ {
-  return libNTLANMAN.RegisterAppInstance(util.toPointer(ProcessHandle), util.toPointer(AppInstanceId), util.boolToFfi(ChildrenInheritAppInstance));
+  return libNTLANMAN_dll.RegisterAppInstance(util.toPointer(ProcessHandle), util.toPointer(AppInstanceId), util.boolToFfi(ChildrenInheritAppInstance));
 }
 
 export function RegisterAppInstanceVersion(
@@ -9669,7 +10066,7 @@ export function RegisterAppInstanceVersion(
   InstanceVersionHigh: Deno.PointerValue /* u64 */,
   InstanceVersionLow: Deno.PointerValue /* u64 */,
 ): number /* u32 */ {
-  return libNTLANMAN.RegisterAppInstanceVersion(util.toPointer(AppInstanceId), InstanceVersionHigh, InstanceVersionLow);
+  return libNTLANMAN_dll.RegisterAppInstanceVersion(util.toPointer(AppInstanceId), InstanceVersionHigh, InstanceVersionLow);
 }
 
 export function QueryAppInstanceVersion(
@@ -9678,11 +10075,11 @@ export function QueryAppInstanceVersion(
   InstanceVersionLow: Deno.PointerValue | Uint8Array | null /* ptr */,
   VersionStatus: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libNTLANMAN.QueryAppInstanceVersion(util.toPointer(AppInstanceId), util.toPointer(InstanceVersionHigh), util.toPointer(InstanceVersionLow), util.toPointer(VersionStatus));
+  return libNTLANMAN_dll.QueryAppInstanceVersion(util.toPointer(AppInstanceId), util.toPointer(InstanceVersionHigh), util.toPointer(InstanceVersionLow), util.toPointer(VersionStatus));
 }
 
 export function ResetAllAppInstanceVersions(): number /* u32 */ {
-  return libNTLANMAN.ResetAllAppInstanceVersions();
+  return libNTLANMAN_dll.ResetAllAppInstanceVersions();
 }
 
 export function SetAppInstanceCsvFlags(
@@ -9690,6 +10087,6 @@ export function SetAppInstanceCsvFlags(
   Mask: number /* u32 */,
   Flags: number /* u32 */,
 ): number /* u32 */ {
-  return libNTLANMAN.SetAppInstanceCsvFlags(util.toPointer(ProcessHandle), Mask, Flags);
+  return libNTLANMAN_dll.SetAppInstanceCsvFlags(util.toPointer(ProcessHandle), Mask, Flags);
 }
 

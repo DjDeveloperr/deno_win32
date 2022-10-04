@@ -17,6 +17,7 @@ export type TARGET_INFORMATION_CLASS = number;
 // Constants
 export const IOCTL_SCSI_BASE = 4;
 export const FILE_DEVICE_SCSI = 27;
+export const DD_SCSI_DEVICE_NAME = `\Device\ScsiPort`;
 export const IOCTL_SCSI_PASS_THROUGH = 315396;
 export const IOCTL_SCSI_MINIPORT = 315400;
 export const IOCTL_SCSI_GET_INQUIRY_DATA = 266252;
@@ -43,6 +44,17 @@ export const ATA_FLAGS_DATA_OUT = 4;
 export const ATA_FLAGS_48BIT_COMMAND = 8;
 export const ATA_FLAGS_USE_DMA = 16;
 export const ATA_FLAGS_NO_MULTIPLE = 32;
+export const IOCTL_MINIPORT_SIGNATURE_SCSIDISK = `SCSIDISK`;
+export const IOCTL_MINIPORT_SIGNATURE_HYBRDISK = `HYBRDISK`;
+export const IOCTL_MINIPORT_SIGNATURE_DSM_NOTIFICATION = `MPDSM   `;
+export const IOCTL_MINIPORT_SIGNATURE_DSM_GENERAL = `MPDSMGEN`;
+export const IOCTL_MINIPORT_SIGNATURE_FIRMWARE = `FIRMWARE`;
+export const IOCTL_MINIPORT_SIGNATURE_QUERY_PROTOCOL = `PROTOCOL`;
+export const IOCTL_MINIPORT_SIGNATURE_SET_PROTOCOL = `SETPROTO`;
+export const IOCTL_MINIPORT_SIGNATURE_QUERY_TEMPERATURE = `TEMPERAT`;
+export const IOCTL_MINIPORT_SIGNATURE_SET_TEMPERATURE_THRESHOLD = `SETTEMPT`;
+export const IOCTL_MINIPORT_SIGNATURE_QUERY_PHYSICAL_TOPOLOGY = `TOPOLOGY`;
+export const IOCTL_MINIPORT_SIGNATURE_ENDURANCE_INFO = `ENDURINF`;
 export const NRB_FUNCTION_NVCACHE_INFO = 236;
 export const NRB_FUNCTION_SPINDLE_STATUS = 229;
 export const NRB_FUNCTION_NVCACHE_POWER_MODE_SET = 0;
@@ -154,34 +166,34 @@ export const MAX_ISCSI_TEXT_ADDRESS_LEN = 256;
 export const MAX_ISCSI_PORTAL_ADDRESS_LEN = 256;
 export const MAX_ISCSI_DISCOVERY_DOMAIN_LEN = 256;
 export const MAX_RADIUS_ADDRESS_LEN = 41;
-export const ISCSI_SECURITY_FLAG_TUNNEL_MODE_PREFERRED = 64;
-export const ISCSI_SECURITY_FLAG_TRANSPORT_MODE_PREFERRED = 32;
-export const ISCSI_SECURITY_FLAG_PFS_ENABLED = 16;
-export const ISCSI_SECURITY_FLAG_AGGRESSIVE_MODE_ENABLED = 8;
-export const ISCSI_SECURITY_FLAG_MAIN_MODE_ENABLED = 4;
-export const ISCSI_SECURITY_FLAG_IKE_IPSEC_ENABLED = 2;
-export const ISCSI_SECURITY_FLAG_VALID = 1;
+export const ISCSI_SECURITY_FLAG_TUNNEL_MODE_PREFERRED = `0x00000040`;
+export const ISCSI_SECURITY_FLAG_TRANSPORT_MODE_PREFERRED = `0x00000020`;
+export const ISCSI_SECURITY_FLAG_PFS_ENABLED = `0x00000010`;
+export const ISCSI_SECURITY_FLAG_AGGRESSIVE_MODE_ENABLED = `0x00000008`;
+export const ISCSI_SECURITY_FLAG_MAIN_MODE_ENABLED = `0x00000004`;
+export const ISCSI_SECURITY_FLAG_IKE_IPSEC_ENABLED = `0x00000002`;
+export const ISCSI_SECURITY_FLAG_VALID = `0x00000001`;
+export const ISCSI_LOGIN_OPTIONS_HEADER_DIGEST = `0x00000001`;
+export const ISCSI_LOGIN_OPTIONS_DATA_DIGEST = `0x00000002`;
+export const ISCSI_LOGIN_OPTIONS_MAXIMUM_CONNECTIONS = `0x00000004`;
+export const ISCSI_LOGIN_OPTIONS_DEFAULT_TIME_2_WAIT = `0x00000008`;
+export const ISCSI_LOGIN_OPTIONS_DEFAULT_TIME_2_RETAIN = `0x00000010`;
+export const ISCSI_LOGIN_OPTIONS_USERNAME = `0x00000020`;
+export const ISCSI_LOGIN_OPTIONS_PASSWORD = `0x00000040`;
+export const ISCSI_LOGIN_OPTIONS_AUTH_TYPE = `0x00000080`;
+export const ID_IPV4_ADDR = 1;
+export const ID_FQDN = 2;
+export const ID_USER_FQDN = 3;
+export const ID_IPV6_ADDR = 5;
 export const ISCSI_LOGIN_FLAG_REQUIRE_IPSEC = 1;
 export const ISCSI_LOGIN_FLAG_MULTIPATH_ENABLED = 2;
 export const ISCSI_LOGIN_FLAG_RESERVED1 = 4;
 export const ISCSI_LOGIN_FLAG_ALLOW_PORTAL_HOPPING = 8;
 export const ISCSI_LOGIN_FLAG_USE_RADIUS_RESPONSE = 16;
 export const ISCSI_LOGIN_FLAG_USE_RADIUS_VERIFICATION = 32;
-export const ISCSI_LOGIN_OPTIONS_HEADER_DIGEST = 1;
-export const ISCSI_LOGIN_OPTIONS_DATA_DIGEST = 2;
-export const ISCSI_LOGIN_OPTIONS_MAXIMUM_CONNECTIONS = 4;
-export const ISCSI_LOGIN_OPTIONS_DEFAULT_TIME_2_WAIT = 8;
-export const ISCSI_LOGIN_OPTIONS_DEFAULT_TIME_2_RETAIN = 16;
-export const ISCSI_LOGIN_OPTIONS_USERNAME = 32;
-export const ISCSI_LOGIN_OPTIONS_PASSWORD = 64;
-export const ISCSI_LOGIN_OPTIONS_AUTH_TYPE = 128;
 export const ISCSI_LOGIN_OPTIONS_VERSION = 0;
 export const ISCSI_TARGET_FLAG_HIDE_STATIC_TARGET = 2;
 export const ISCSI_TARGET_FLAG_MERGE_TARGET_INFORMATION = 4;
-export const ID_IPV4_ADDR = 1;
-export const ID_FQDN = 2;
-export const ID_USER_FQDN = 3;
-export const ID_IPV6_ADDR = 5;
 export const NVSEPWriteCacheTypeUnknown = 0;
 export const NVSEPWriteCacheTypeNone = 1;
 export const NVSEPWriteCacheTypeWriteBack = 2;
@@ -217,6 +229,576 @@ export const TargetFlags = 6;
 export const LoginOptions = 7;
 
 // Structs
+
+/**
+ * Windows.Win32.Storage.IscsiDisc.SCSI_PASS_THROUGH32 (size: 40)
+ */
+export interface SCSI_PASS_THROUGH32 {
+  /** u16 */
+  Length: number;
+  /** u8 */
+  ScsiStatus: number;
+  /** u8 */
+  PathId: number;
+  /** u8 */
+  TargetId: number;
+  /** u8 */
+  Lun: number;
+  /** u8 */
+  CdbLength: number;
+  /** u8 */
+  SenseInfoLength: number;
+  /** u8 */
+  DataIn: number;
+  /** u32 */
+  DataTransferLength: number;
+  /** u32 */
+  TimeOutValue: number;
+  /** u32 */
+  DataBufferOffset: number;
+  /** u32 */
+  SenseInfoOffset: number;
+  /** array */
+  Cdb: Deno.PointerValue | null;
+}
+
+export const sizeofSCSI_PASS_THROUGH32 = 40;
+
+export function allocSCSI_PASS_THROUGH32(data?: Partial<SCSI_PASS_THROUGH32>): Uint8Array {
+  const buf = new Uint8Array(sizeofSCSI_PASS_THROUGH32);
+  const view = new DataView(buf.buffer);
+  // 0x00: u16
+  if (data?.Length !== undefined) view.setUint16(0, Number(data.Length), true);
+  // 0x02: u8
+  if (data?.ScsiStatus !== undefined) view.setUint8(2, Number(data.ScsiStatus));
+  // 0x03: u8
+  if (data?.PathId !== undefined) view.setUint8(3, Number(data.PathId));
+  // 0x04: u8
+  if (data?.TargetId !== undefined) view.setUint8(4, Number(data.TargetId));
+  // 0x05: u8
+  if (data?.Lun !== undefined) view.setUint8(5, Number(data.Lun));
+  // 0x06: u8
+  if (data?.CdbLength !== undefined) view.setUint8(6, Number(data.CdbLength));
+  // 0x07: u8
+  if (data?.SenseInfoLength !== undefined) view.setUint8(7, Number(data.SenseInfoLength));
+  // 0x08: u8
+  if (data?.DataIn !== undefined) view.setUint8(8, Number(data.DataIn));
+  // 0x09: u32
+  if (data?.DataTransferLength !== undefined) view.setUint32(9, Number(data.DataTransferLength), true);
+  // 0x0d: u32
+  if (data?.TimeOutValue !== undefined) view.setUint32(13, Number(data.TimeOutValue), true);
+  // 0x11: u32
+  if (data?.DataBufferOffset !== undefined) view.setUint32(17, Number(data.DataBufferOffset), true);
+  // 0x15: u32
+  if (data?.SenseInfoOffset !== undefined) view.setUint32(21, Number(data.SenseInfoOffset), true);
+  // 0x19: pad7
+  // 0x20: pointer
+  if (data?.Cdb !== undefined) view.setBigUint64(32, data.Cdb === null ? 0n : BigInt(util.toPointer(data.Cdb)), true);
+  return buf;
+}
+
+/**
+ * Windows.Win32.Storage.IscsiDisc.SCSI_PASS_THROUGH_DIRECT32 (size: 48)
+ */
+export interface SCSI_PASS_THROUGH_DIRECT32 {
+  /** u16 */
+  Length: number;
+  /** u8 */
+  ScsiStatus: number;
+  /** u8 */
+  PathId: number;
+  /** u8 */
+  TargetId: number;
+  /** u8 */
+  Lun: number;
+  /** u8 */
+  CdbLength: number;
+  /** u8 */
+  SenseInfoLength: number;
+  /** u8 */
+  DataIn: number;
+  /** u32 */
+  DataTransferLength: number;
+  /** u32 */
+  TimeOutValue: number;
+  /** ptr */
+  DataBuffer: Deno.PointerValue | Uint8Array | null;
+  /** u32 */
+  SenseInfoOffset: number;
+  /** array */
+  Cdb: Deno.PointerValue | null;
+}
+
+export const sizeofSCSI_PASS_THROUGH_DIRECT32 = 48;
+
+export function allocSCSI_PASS_THROUGH_DIRECT32(data?: Partial<SCSI_PASS_THROUGH_DIRECT32>): Uint8Array {
+  const buf = new Uint8Array(sizeofSCSI_PASS_THROUGH_DIRECT32);
+  const view = new DataView(buf.buffer);
+  // 0x00: u16
+  if (data?.Length !== undefined) view.setUint16(0, Number(data.Length), true);
+  // 0x02: u8
+  if (data?.ScsiStatus !== undefined) view.setUint8(2, Number(data.ScsiStatus));
+  // 0x03: u8
+  if (data?.PathId !== undefined) view.setUint8(3, Number(data.PathId));
+  // 0x04: u8
+  if (data?.TargetId !== undefined) view.setUint8(4, Number(data.TargetId));
+  // 0x05: u8
+  if (data?.Lun !== undefined) view.setUint8(5, Number(data.Lun));
+  // 0x06: u8
+  if (data?.CdbLength !== undefined) view.setUint8(6, Number(data.CdbLength));
+  // 0x07: u8
+  if (data?.SenseInfoLength !== undefined) view.setUint8(7, Number(data.SenseInfoLength));
+  // 0x08: u8
+  if (data?.DataIn !== undefined) view.setUint8(8, Number(data.DataIn));
+  // 0x09: u32
+  if (data?.DataTransferLength !== undefined) view.setUint32(9, Number(data.DataTransferLength), true);
+  // 0x0d: u32
+  if (data?.TimeOutValue !== undefined) view.setUint32(13, Number(data.TimeOutValue), true);
+  // 0x11: pad7
+  // 0x18: pointer
+  if (data?.DataBuffer !== undefined) view.setBigUint64(24, data.DataBuffer === null ? 0n : BigInt(util.toPointer(data.DataBuffer)), true);
+  // 0x20: u32
+  if (data?.SenseInfoOffset !== undefined) view.setUint32(32, Number(data.SenseInfoOffset), true);
+  // 0x24: pad4
+  // 0x28: pointer
+  if (data?.Cdb !== undefined) view.setBigUint64(40, data.Cdb === null ? 0n : BigInt(util.toPointer(data.Cdb)), true);
+  return buf;
+}
+
+/**
+ * Windows.Win32.Storage.IscsiDisc.SCSI_PASS_THROUGH32_EX (size: 56)
+ */
+export interface SCSI_PASS_THROUGH32_EX {
+  /** u32 */
+  Version: number;
+  /** u32 */
+  Length: number;
+  /** u32 */
+  CdbLength: number;
+  /** u32 */
+  StorAddressLength: number;
+  /** u8 */
+  ScsiStatus: number;
+  /** u8 */
+  SenseInfoLength: number;
+  /** u8 */
+  DataDirection: number;
+  /** u8 */
+  Reserved: number;
+  /** u32 */
+  TimeOutValue: number;
+  /** u32 */
+  StorAddressOffset: number;
+  /** u32 */
+  SenseInfoOffset: number;
+  /** u32 */
+  DataOutTransferLength: number;
+  /** u32 */
+  DataInTransferLength: number;
+  /** u32 */
+  DataOutBufferOffset: number;
+  /** u32 */
+  DataInBufferOffset: number;
+  /** array */
+  Cdb: Deno.PointerValue | null;
+}
+
+export const sizeofSCSI_PASS_THROUGH32_EX = 56;
+
+export function allocSCSI_PASS_THROUGH32_EX(data?: Partial<SCSI_PASS_THROUGH32_EX>): Uint8Array {
+  const buf = new Uint8Array(sizeofSCSI_PASS_THROUGH32_EX);
+  const view = new DataView(buf.buffer);
+  // 0x00: u32
+  if (data?.Version !== undefined) view.setUint32(0, Number(data.Version), true);
+  // 0x04: u32
+  if (data?.Length !== undefined) view.setUint32(4, Number(data.Length), true);
+  // 0x08: u32
+  if (data?.CdbLength !== undefined) view.setUint32(8, Number(data.CdbLength), true);
+  // 0x0c: u32
+  if (data?.StorAddressLength !== undefined) view.setUint32(12, Number(data.StorAddressLength), true);
+  // 0x10: u8
+  if (data?.ScsiStatus !== undefined) view.setUint8(16, Number(data.ScsiStatus));
+  // 0x11: u8
+  if (data?.SenseInfoLength !== undefined) view.setUint8(17, Number(data.SenseInfoLength));
+  // 0x12: u8
+  if (data?.DataDirection !== undefined) view.setUint8(18, Number(data.DataDirection));
+  // 0x13: u8
+  if (data?.Reserved !== undefined) view.setUint8(19, Number(data.Reserved));
+  // 0x14: u32
+  if (data?.TimeOutValue !== undefined) view.setUint32(20, Number(data.TimeOutValue), true);
+  // 0x18: u32
+  if (data?.StorAddressOffset !== undefined) view.setUint32(24, Number(data.StorAddressOffset), true);
+  // 0x1c: u32
+  if (data?.SenseInfoOffset !== undefined) view.setUint32(28, Number(data.SenseInfoOffset), true);
+  // 0x20: u32
+  if (data?.DataOutTransferLength !== undefined) view.setUint32(32, Number(data.DataOutTransferLength), true);
+  // 0x24: u32
+  if (data?.DataInTransferLength !== undefined) view.setUint32(36, Number(data.DataInTransferLength), true);
+  // 0x28: u32
+  if (data?.DataOutBufferOffset !== undefined) view.setUint32(40, Number(data.DataOutBufferOffset), true);
+  // 0x2c: u32
+  if (data?.DataInBufferOffset !== undefined) view.setUint32(44, Number(data.DataInBufferOffset), true);
+  // 0x30: pointer
+  if (data?.Cdb !== undefined) view.setBigUint64(48, data.Cdb === null ? 0n : BigInt(util.toPointer(data.Cdb)), true);
+  return buf;
+}
+
+/**
+ * Windows.Win32.Storage.IscsiDisc.SCSI_PASS_THROUGH_DIRECT32_EX (size: 64)
+ */
+export interface SCSI_PASS_THROUGH_DIRECT32_EX {
+  /** u32 */
+  Version: number;
+  /** u32 */
+  Length: number;
+  /** u32 */
+  CdbLength: number;
+  /** u32 */
+  StorAddressLength: number;
+  /** u8 */
+  ScsiStatus: number;
+  /** u8 */
+  SenseInfoLength: number;
+  /** u8 */
+  DataDirection: number;
+  /** u8 */
+  Reserved: number;
+  /** u32 */
+  TimeOutValue: number;
+  /** u32 */
+  StorAddressOffset: number;
+  /** u32 */
+  SenseInfoOffset: number;
+  /** u32 */
+  DataOutTransferLength: number;
+  /** u32 */
+  DataInTransferLength: number;
+  /** ptr */
+  DataOutBuffer: Deno.PointerValue | Uint8Array | null;
+  /** ptr */
+  DataInBuffer: Deno.PointerValue | Uint8Array | null;
+  /** array */
+  Cdb: Deno.PointerValue | null;
+}
+
+export const sizeofSCSI_PASS_THROUGH_DIRECT32_EX = 64;
+
+export function allocSCSI_PASS_THROUGH_DIRECT32_EX(data?: Partial<SCSI_PASS_THROUGH_DIRECT32_EX>): Uint8Array {
+  const buf = new Uint8Array(sizeofSCSI_PASS_THROUGH_DIRECT32_EX);
+  const view = new DataView(buf.buffer);
+  // 0x00: u32
+  if (data?.Version !== undefined) view.setUint32(0, Number(data.Version), true);
+  // 0x04: u32
+  if (data?.Length !== undefined) view.setUint32(4, Number(data.Length), true);
+  // 0x08: u32
+  if (data?.CdbLength !== undefined) view.setUint32(8, Number(data.CdbLength), true);
+  // 0x0c: u32
+  if (data?.StorAddressLength !== undefined) view.setUint32(12, Number(data.StorAddressLength), true);
+  // 0x10: u8
+  if (data?.ScsiStatus !== undefined) view.setUint8(16, Number(data.ScsiStatus));
+  // 0x11: u8
+  if (data?.SenseInfoLength !== undefined) view.setUint8(17, Number(data.SenseInfoLength));
+  // 0x12: u8
+  if (data?.DataDirection !== undefined) view.setUint8(18, Number(data.DataDirection));
+  // 0x13: u8
+  if (data?.Reserved !== undefined) view.setUint8(19, Number(data.Reserved));
+  // 0x14: u32
+  if (data?.TimeOutValue !== undefined) view.setUint32(20, Number(data.TimeOutValue), true);
+  // 0x18: u32
+  if (data?.StorAddressOffset !== undefined) view.setUint32(24, Number(data.StorAddressOffset), true);
+  // 0x1c: u32
+  if (data?.SenseInfoOffset !== undefined) view.setUint32(28, Number(data.SenseInfoOffset), true);
+  // 0x20: u32
+  if (data?.DataOutTransferLength !== undefined) view.setUint32(32, Number(data.DataOutTransferLength), true);
+  // 0x24: u32
+  if (data?.DataInTransferLength !== undefined) view.setUint32(36, Number(data.DataInTransferLength), true);
+  // 0x28: pointer
+  if (data?.DataOutBuffer !== undefined) view.setBigUint64(40, data.DataOutBuffer === null ? 0n : BigInt(util.toPointer(data.DataOutBuffer)), true);
+  // 0x30: pointer
+  if (data?.DataInBuffer !== undefined) view.setBigUint64(48, data.DataInBuffer === null ? 0n : BigInt(util.toPointer(data.DataInBuffer)), true);
+  // 0x38: pointer
+  if (data?.Cdb !== undefined) view.setBigUint64(56, data.Cdb === null ? 0n : BigInt(util.toPointer(data.Cdb)), true);
+  return buf;
+}
+
+/**
+ * Windows.Win32.Storage.IscsiDisc.ATA_PASS_THROUGH_EX32 (size: 40)
+ */
+export interface ATA_PASS_THROUGH_EX32 {
+  /** u16 */
+  Length: number;
+  /** u16 */
+  AtaFlags: number;
+  /** u8 */
+  PathId: number;
+  /** u8 */
+  TargetId: number;
+  /** u8 */
+  Lun: number;
+  /** u8 */
+  ReservedAsUchar: number;
+  /** u32 */
+  DataTransferLength: number;
+  /** u32 */
+  TimeOutValue: number;
+  /** u32 */
+  ReservedAsUlong: number;
+  /** u32 */
+  DataBufferOffset: number;
+  /** array */
+  PreviousTaskFile: Deno.PointerValue | null;
+  /** array */
+  CurrentTaskFile: Deno.PointerValue | null;
+}
+
+export const sizeofATA_PASS_THROUGH_EX32 = 40;
+
+export function allocATA_PASS_THROUGH_EX32(data?: Partial<ATA_PASS_THROUGH_EX32>): Uint8Array {
+  const buf = new Uint8Array(sizeofATA_PASS_THROUGH_EX32);
+  const view = new DataView(buf.buffer);
+  // 0x00: u16
+  if (data?.Length !== undefined) view.setUint16(0, Number(data.Length), true);
+  // 0x02: u16
+  if (data?.AtaFlags !== undefined) view.setUint16(2, Number(data.AtaFlags), true);
+  // 0x04: u8
+  if (data?.PathId !== undefined) view.setUint8(4, Number(data.PathId));
+  // 0x05: u8
+  if (data?.TargetId !== undefined) view.setUint8(5, Number(data.TargetId));
+  // 0x06: u8
+  if (data?.Lun !== undefined) view.setUint8(6, Number(data.Lun));
+  // 0x07: u8
+  if (data?.ReservedAsUchar !== undefined) view.setUint8(7, Number(data.ReservedAsUchar));
+  // 0x08: u32
+  if (data?.DataTransferLength !== undefined) view.setUint32(8, Number(data.DataTransferLength), true);
+  // 0x0c: u32
+  if (data?.TimeOutValue !== undefined) view.setUint32(12, Number(data.TimeOutValue), true);
+  // 0x10: u32
+  if (data?.ReservedAsUlong !== undefined) view.setUint32(16, Number(data.ReservedAsUlong), true);
+  // 0x14: u32
+  if (data?.DataBufferOffset !== undefined) view.setUint32(20, Number(data.DataBufferOffset), true);
+  // 0x18: pointer
+  if (data?.PreviousTaskFile !== undefined) view.setBigUint64(24, data.PreviousTaskFile === null ? 0n : BigInt(util.toPointer(data.PreviousTaskFile)), true);
+  // 0x20: pointer
+  if (data?.CurrentTaskFile !== undefined) view.setBigUint64(32, data.CurrentTaskFile === null ? 0n : BigInt(util.toPointer(data.CurrentTaskFile)), true);
+  return buf;
+}
+
+/**
+ * Windows.Win32.Storage.IscsiDisc.ATA_PASS_THROUGH_DIRECT32 (size: 48)
+ */
+export interface ATA_PASS_THROUGH_DIRECT32 {
+  /** u16 */
+  Length: number;
+  /** u16 */
+  AtaFlags: number;
+  /** u8 */
+  PathId: number;
+  /** u8 */
+  TargetId: number;
+  /** u8 */
+  Lun: number;
+  /** u8 */
+  ReservedAsUchar: number;
+  /** u32 */
+  DataTransferLength: number;
+  /** u32 */
+  TimeOutValue: number;
+  /** u32 */
+  ReservedAsUlong: number;
+  /** ptr */
+  DataBuffer: Deno.PointerValue | Uint8Array | null;
+  /** array */
+  PreviousTaskFile: Deno.PointerValue | null;
+  /** array */
+  CurrentTaskFile: Deno.PointerValue | null;
+}
+
+export const sizeofATA_PASS_THROUGH_DIRECT32 = 48;
+
+export function allocATA_PASS_THROUGH_DIRECT32(data?: Partial<ATA_PASS_THROUGH_DIRECT32>): Uint8Array {
+  const buf = new Uint8Array(sizeofATA_PASS_THROUGH_DIRECT32);
+  const view = new DataView(buf.buffer);
+  // 0x00: u16
+  if (data?.Length !== undefined) view.setUint16(0, Number(data.Length), true);
+  // 0x02: u16
+  if (data?.AtaFlags !== undefined) view.setUint16(2, Number(data.AtaFlags), true);
+  // 0x04: u8
+  if (data?.PathId !== undefined) view.setUint8(4, Number(data.PathId));
+  // 0x05: u8
+  if (data?.TargetId !== undefined) view.setUint8(5, Number(data.TargetId));
+  // 0x06: u8
+  if (data?.Lun !== undefined) view.setUint8(6, Number(data.Lun));
+  // 0x07: u8
+  if (data?.ReservedAsUchar !== undefined) view.setUint8(7, Number(data.ReservedAsUchar));
+  // 0x08: u32
+  if (data?.DataTransferLength !== undefined) view.setUint32(8, Number(data.DataTransferLength), true);
+  // 0x0c: u32
+  if (data?.TimeOutValue !== undefined) view.setUint32(12, Number(data.TimeOutValue), true);
+  // 0x10: u32
+  if (data?.ReservedAsUlong !== undefined) view.setUint32(16, Number(data.ReservedAsUlong), true);
+  // 0x14: pad4
+  // 0x18: pointer
+  if (data?.DataBuffer !== undefined) view.setBigUint64(24, data.DataBuffer === null ? 0n : BigInt(util.toPointer(data.DataBuffer)), true);
+  // 0x20: pointer
+  if (data?.PreviousTaskFile !== undefined) view.setBigUint64(32, data.PreviousTaskFile === null ? 0n : BigInt(util.toPointer(data.PreviousTaskFile)), true);
+  // 0x28: pointer
+  if (data?.CurrentTaskFile !== undefined) view.setBigUint64(40, data.CurrentTaskFile === null ? 0n : BigInt(util.toPointer(data.CurrentTaskFile)), true);
+  return buf;
+}
+
+/**
+ * Windows.Win32.Storage.IscsiDisc.MPIO_PASS_THROUGH_PATH32 (size: 24)
+ */
+export interface MPIO_PASS_THROUGH_PATH32 {
+  /** Windows.Win32.Storage.IscsiDisc.SCSI_PASS_THROUGH32 */
+  PassThrough: Uint8Array | Deno.PointerValue | null;
+  /** u32 */
+  Version: number;
+  /** u16 */
+  Length: number;
+  /** u8 */
+  Flags: number;
+  /** u8 */
+  PortNumber: number;
+  /** u64 */
+  MpioPathId: Deno.PointerValue;
+}
+
+export const sizeofMPIO_PASS_THROUGH_PATH32 = 24;
+
+export function allocMPIO_PASS_THROUGH_PATH32(data?: Partial<MPIO_PASS_THROUGH_PATH32>): Uint8Array {
+  const buf = new Uint8Array(sizeofMPIO_PASS_THROUGH_PATH32);
+  const view = new DataView(buf.buffer);
+  // 0x00: pointer
+  if (data?.PassThrough !== undefined) view.setBigUint64(0, data.PassThrough === null ? 0n : BigInt(util.toPointer(data.PassThrough)), true);
+  // 0x08: u32
+  if (data?.Version !== undefined) view.setUint32(8, Number(data.Version), true);
+  // 0x0c: u16
+  if (data?.Length !== undefined) view.setUint16(12, Number(data.Length), true);
+  // 0x0e: u8
+  if (data?.Flags !== undefined) view.setUint8(14, Number(data.Flags));
+  // 0x0f: u8
+  if (data?.PortNumber !== undefined) view.setUint8(15, Number(data.PortNumber));
+  // 0x10: u64
+  if (data?.MpioPathId !== undefined) view.setBigUint64(16, BigInt(data.MpioPathId), true);
+  return buf;
+}
+
+/**
+ * Windows.Win32.Storage.IscsiDisc.MPIO_PASS_THROUGH_PATH_DIRECT32 (size: 24)
+ */
+export interface MPIO_PASS_THROUGH_PATH_DIRECT32 {
+  /** Windows.Win32.Storage.IscsiDisc.SCSI_PASS_THROUGH_DIRECT32 */
+  PassThrough: Uint8Array | Deno.PointerValue | null;
+  /** u32 */
+  Version: number;
+  /** u16 */
+  Length: number;
+  /** u8 */
+  Flags: number;
+  /** u8 */
+  PortNumber: number;
+  /** u64 */
+  MpioPathId: Deno.PointerValue;
+}
+
+export const sizeofMPIO_PASS_THROUGH_PATH_DIRECT32 = 24;
+
+export function allocMPIO_PASS_THROUGH_PATH_DIRECT32(data?: Partial<MPIO_PASS_THROUGH_PATH_DIRECT32>): Uint8Array {
+  const buf = new Uint8Array(sizeofMPIO_PASS_THROUGH_PATH_DIRECT32);
+  const view = new DataView(buf.buffer);
+  // 0x00: pointer
+  if (data?.PassThrough !== undefined) view.setBigUint64(0, data.PassThrough === null ? 0n : BigInt(util.toPointer(data.PassThrough)), true);
+  // 0x08: u32
+  if (data?.Version !== undefined) view.setUint32(8, Number(data.Version), true);
+  // 0x0c: u16
+  if (data?.Length !== undefined) view.setUint16(12, Number(data.Length), true);
+  // 0x0e: u8
+  if (data?.Flags !== undefined) view.setUint8(14, Number(data.Flags));
+  // 0x0f: u8
+  if (data?.PortNumber !== undefined) view.setUint8(15, Number(data.PortNumber));
+  // 0x10: u64
+  if (data?.MpioPathId !== undefined) view.setBigUint64(16, BigInt(data.MpioPathId), true);
+  return buf;
+}
+
+/**
+ * Windows.Win32.Storage.IscsiDisc.MPIO_PASS_THROUGH_PATH32_EX (size: 24)
+ */
+export interface MPIO_PASS_THROUGH_PATH32_EX {
+  /** u32 */
+  PassThroughOffset: number;
+  /** u32 */
+  Version: number;
+  /** u16 */
+  Length: number;
+  /** u8 */
+  Flags: number;
+  /** u8 */
+  PortNumber: number;
+  /** u64 */
+  MpioPathId: Deno.PointerValue;
+}
+
+export const sizeofMPIO_PASS_THROUGH_PATH32_EX = 24;
+
+export function allocMPIO_PASS_THROUGH_PATH32_EX(data?: Partial<MPIO_PASS_THROUGH_PATH32_EX>): Uint8Array {
+  const buf = new Uint8Array(sizeofMPIO_PASS_THROUGH_PATH32_EX);
+  const view = new DataView(buf.buffer);
+  // 0x00: u32
+  if (data?.PassThroughOffset !== undefined) view.setUint32(0, Number(data.PassThroughOffset), true);
+  // 0x04: u32
+  if (data?.Version !== undefined) view.setUint32(4, Number(data.Version), true);
+  // 0x08: u16
+  if (data?.Length !== undefined) view.setUint16(8, Number(data.Length), true);
+  // 0x0a: u8
+  if (data?.Flags !== undefined) view.setUint8(10, Number(data.Flags));
+  // 0x0b: u8
+  if (data?.PortNumber !== undefined) view.setUint8(11, Number(data.PortNumber));
+  // 0x0c: pad4
+  // 0x10: u64
+  if (data?.MpioPathId !== undefined) view.setBigUint64(16, BigInt(data.MpioPathId), true);
+  return buf;
+}
+
+/**
+ * Windows.Win32.Storage.IscsiDisc.MPIO_PASS_THROUGH_PATH_DIRECT32_EX (size: 24)
+ */
+export interface MPIO_PASS_THROUGH_PATH_DIRECT32_EX {
+  /** u32 */
+  PassThroughOffset: number;
+  /** u32 */
+  Version: number;
+  /** u16 */
+  Length: number;
+  /** u8 */
+  Flags: number;
+  /** u8 */
+  PortNumber: number;
+  /** u64 */
+  MpioPathId: Deno.PointerValue;
+}
+
+export const sizeofMPIO_PASS_THROUGH_PATH_DIRECT32_EX = 24;
+
+export function allocMPIO_PASS_THROUGH_PATH_DIRECT32_EX(data?: Partial<MPIO_PASS_THROUGH_PATH_DIRECT32_EX>): Uint8Array {
+  const buf = new Uint8Array(sizeofMPIO_PASS_THROUGH_PATH_DIRECT32_EX);
+  const view = new DataView(buf.buffer);
+  // 0x00: u32
+  if (data?.PassThroughOffset !== undefined) view.setUint32(0, Number(data.PassThroughOffset), true);
+  // 0x04: u32
+  if (data?.Version !== undefined) view.setUint32(4, Number(data.Version), true);
+  // 0x08: u16
+  if (data?.Length !== undefined) view.setUint16(8, Number(data.Length), true);
+  // 0x0a: u8
+  if (data?.Flags !== undefined) view.setUint8(10, Number(data.Flags));
+  // 0x0b: u8
+  if (data?.PortNumber !== undefined) view.setUint8(11, Number(data.PortNumber));
+  // 0x0c: pad4
+  // 0x10: u64
+  if (data?.MpioPathId !== undefined) view.setBigUint64(16, BigInt(data.MpioPathId), true);
+  return buf;
+}
 
 /**
  * Windows.Win32.Storage.IscsiDisc.SCSI_PASS_THROUGH (size: 48)
@@ -322,141 +904,6 @@ export const sizeofSCSI_PASS_THROUGH_DIRECT = 48;
 
 export function allocSCSI_PASS_THROUGH_DIRECT(data?: Partial<SCSI_PASS_THROUGH_DIRECT>): Uint8Array {
   const buf = new Uint8Array(sizeofSCSI_PASS_THROUGH_DIRECT);
-  const view = new DataView(buf.buffer);
-  // 0x00: u16
-  if (data?.Length !== undefined) view.setUint16(0, Number(data.Length), true);
-  // 0x02: u8
-  if (data?.ScsiStatus !== undefined) view.setUint8(2, Number(data.ScsiStatus));
-  // 0x03: u8
-  if (data?.PathId !== undefined) view.setUint8(3, Number(data.PathId));
-  // 0x04: u8
-  if (data?.TargetId !== undefined) view.setUint8(4, Number(data.TargetId));
-  // 0x05: u8
-  if (data?.Lun !== undefined) view.setUint8(5, Number(data.Lun));
-  // 0x06: u8
-  if (data?.CdbLength !== undefined) view.setUint8(6, Number(data.CdbLength));
-  // 0x07: u8
-  if (data?.SenseInfoLength !== undefined) view.setUint8(7, Number(data.SenseInfoLength));
-  // 0x08: u8
-  if (data?.DataIn !== undefined) view.setUint8(8, Number(data.DataIn));
-  // 0x09: u32
-  if (data?.DataTransferLength !== undefined) view.setUint32(9, Number(data.DataTransferLength), true);
-  // 0x0d: u32
-  if (data?.TimeOutValue !== undefined) view.setUint32(13, Number(data.TimeOutValue), true);
-  // 0x11: pad7
-  // 0x18: pointer
-  if (data?.DataBuffer !== undefined) view.setBigUint64(24, data.DataBuffer === null ? 0n : BigInt(util.toPointer(data.DataBuffer)), true);
-  // 0x20: u32
-  if (data?.SenseInfoOffset !== undefined) view.setUint32(32, Number(data.SenseInfoOffset), true);
-  // 0x24: pad4
-  // 0x28: pointer
-  if (data?.Cdb !== undefined) view.setBigUint64(40, data.Cdb === null ? 0n : BigInt(util.toPointer(data.Cdb)), true);
-  return buf;
-}
-
-/**
- * Windows.Win32.Storage.IscsiDisc.SCSI_PASS_THROUGH32 (size: 40)
- */
-export interface SCSI_PASS_THROUGH32 {
-  /** u16 */
-  Length: number;
-  /** u8 */
-  ScsiStatus: number;
-  /** u8 */
-  PathId: number;
-  /** u8 */
-  TargetId: number;
-  /** u8 */
-  Lun: number;
-  /** u8 */
-  CdbLength: number;
-  /** u8 */
-  SenseInfoLength: number;
-  /** u8 */
-  DataIn: number;
-  /** u32 */
-  DataTransferLength: number;
-  /** u32 */
-  TimeOutValue: number;
-  /** u32 */
-  DataBufferOffset: number;
-  /** u32 */
-  SenseInfoOffset: number;
-  /** array */
-  Cdb: Deno.PointerValue | null;
-}
-
-export const sizeofSCSI_PASS_THROUGH32 = 40;
-
-export function allocSCSI_PASS_THROUGH32(data?: Partial<SCSI_PASS_THROUGH32>): Uint8Array {
-  const buf = new Uint8Array(sizeofSCSI_PASS_THROUGH32);
-  const view = new DataView(buf.buffer);
-  // 0x00: u16
-  if (data?.Length !== undefined) view.setUint16(0, Number(data.Length), true);
-  // 0x02: u8
-  if (data?.ScsiStatus !== undefined) view.setUint8(2, Number(data.ScsiStatus));
-  // 0x03: u8
-  if (data?.PathId !== undefined) view.setUint8(3, Number(data.PathId));
-  // 0x04: u8
-  if (data?.TargetId !== undefined) view.setUint8(4, Number(data.TargetId));
-  // 0x05: u8
-  if (data?.Lun !== undefined) view.setUint8(5, Number(data.Lun));
-  // 0x06: u8
-  if (data?.CdbLength !== undefined) view.setUint8(6, Number(data.CdbLength));
-  // 0x07: u8
-  if (data?.SenseInfoLength !== undefined) view.setUint8(7, Number(data.SenseInfoLength));
-  // 0x08: u8
-  if (data?.DataIn !== undefined) view.setUint8(8, Number(data.DataIn));
-  // 0x09: u32
-  if (data?.DataTransferLength !== undefined) view.setUint32(9, Number(data.DataTransferLength), true);
-  // 0x0d: u32
-  if (data?.TimeOutValue !== undefined) view.setUint32(13, Number(data.TimeOutValue), true);
-  // 0x11: u32
-  if (data?.DataBufferOffset !== undefined) view.setUint32(17, Number(data.DataBufferOffset), true);
-  // 0x15: u32
-  if (data?.SenseInfoOffset !== undefined) view.setUint32(21, Number(data.SenseInfoOffset), true);
-  // 0x19: pad7
-  // 0x20: pointer
-  if (data?.Cdb !== undefined) view.setBigUint64(32, data.Cdb === null ? 0n : BigInt(util.toPointer(data.Cdb)), true);
-  return buf;
-}
-
-/**
- * Windows.Win32.Storage.IscsiDisc.SCSI_PASS_THROUGH_DIRECT32 (size: 48)
- */
-export interface SCSI_PASS_THROUGH_DIRECT32 {
-  /** u16 */
-  Length: number;
-  /** u8 */
-  ScsiStatus: number;
-  /** u8 */
-  PathId: number;
-  /** u8 */
-  TargetId: number;
-  /** u8 */
-  Lun: number;
-  /** u8 */
-  CdbLength: number;
-  /** u8 */
-  SenseInfoLength: number;
-  /** u8 */
-  DataIn: number;
-  /** u32 */
-  DataTransferLength: number;
-  /** u32 */
-  TimeOutValue: number;
-  /** ptr */
-  DataBuffer: Deno.PointerValue | Uint8Array | null;
-  /** u32 */
-  SenseInfoOffset: number;
-  /** array */
-  Cdb: Deno.PointerValue | null;
-}
-
-export const sizeofSCSI_PASS_THROUGH_DIRECT32 = 48;
-
-export function allocSCSI_PASS_THROUGH_DIRECT32(data?: Partial<SCSI_PASS_THROUGH_DIRECT32>): Uint8Array {
-  const buf = new Uint8Array(sizeofSCSI_PASS_THROUGH_DIRECT32);
   const view = new DataView(buf.buffer);
   // 0x00: u16
   if (data?.Length !== undefined) view.setUint16(0, Number(data.Length), true);
@@ -646,162 +1093,6 @@ export function allocSCSI_PASS_THROUGH_DIRECT_EX(data?: Partial<SCSI_PASS_THROUG
 }
 
 /**
- * Windows.Win32.Storage.IscsiDisc.SCSI_PASS_THROUGH32_EX (size: 56)
- */
-export interface SCSI_PASS_THROUGH32_EX {
-  /** u32 */
-  Version: number;
-  /** u32 */
-  Length: number;
-  /** u32 */
-  CdbLength: number;
-  /** u32 */
-  StorAddressLength: number;
-  /** u8 */
-  ScsiStatus: number;
-  /** u8 */
-  SenseInfoLength: number;
-  /** u8 */
-  DataDirection: number;
-  /** u8 */
-  Reserved: number;
-  /** u32 */
-  TimeOutValue: number;
-  /** u32 */
-  StorAddressOffset: number;
-  /** u32 */
-  SenseInfoOffset: number;
-  /** u32 */
-  DataOutTransferLength: number;
-  /** u32 */
-  DataInTransferLength: number;
-  /** u32 */
-  DataOutBufferOffset: number;
-  /** u32 */
-  DataInBufferOffset: number;
-  /** array */
-  Cdb: Deno.PointerValue | null;
-}
-
-export const sizeofSCSI_PASS_THROUGH32_EX = 56;
-
-export function allocSCSI_PASS_THROUGH32_EX(data?: Partial<SCSI_PASS_THROUGH32_EX>): Uint8Array {
-  const buf = new Uint8Array(sizeofSCSI_PASS_THROUGH32_EX);
-  const view = new DataView(buf.buffer);
-  // 0x00: u32
-  if (data?.Version !== undefined) view.setUint32(0, Number(data.Version), true);
-  // 0x04: u32
-  if (data?.Length !== undefined) view.setUint32(4, Number(data.Length), true);
-  // 0x08: u32
-  if (data?.CdbLength !== undefined) view.setUint32(8, Number(data.CdbLength), true);
-  // 0x0c: u32
-  if (data?.StorAddressLength !== undefined) view.setUint32(12, Number(data.StorAddressLength), true);
-  // 0x10: u8
-  if (data?.ScsiStatus !== undefined) view.setUint8(16, Number(data.ScsiStatus));
-  // 0x11: u8
-  if (data?.SenseInfoLength !== undefined) view.setUint8(17, Number(data.SenseInfoLength));
-  // 0x12: u8
-  if (data?.DataDirection !== undefined) view.setUint8(18, Number(data.DataDirection));
-  // 0x13: u8
-  if (data?.Reserved !== undefined) view.setUint8(19, Number(data.Reserved));
-  // 0x14: u32
-  if (data?.TimeOutValue !== undefined) view.setUint32(20, Number(data.TimeOutValue), true);
-  // 0x18: u32
-  if (data?.StorAddressOffset !== undefined) view.setUint32(24, Number(data.StorAddressOffset), true);
-  // 0x1c: u32
-  if (data?.SenseInfoOffset !== undefined) view.setUint32(28, Number(data.SenseInfoOffset), true);
-  // 0x20: u32
-  if (data?.DataOutTransferLength !== undefined) view.setUint32(32, Number(data.DataOutTransferLength), true);
-  // 0x24: u32
-  if (data?.DataInTransferLength !== undefined) view.setUint32(36, Number(data.DataInTransferLength), true);
-  // 0x28: u32
-  if (data?.DataOutBufferOffset !== undefined) view.setUint32(40, Number(data.DataOutBufferOffset), true);
-  // 0x2c: u32
-  if (data?.DataInBufferOffset !== undefined) view.setUint32(44, Number(data.DataInBufferOffset), true);
-  // 0x30: pointer
-  if (data?.Cdb !== undefined) view.setBigUint64(48, data.Cdb === null ? 0n : BigInt(util.toPointer(data.Cdb)), true);
-  return buf;
-}
-
-/**
- * Windows.Win32.Storage.IscsiDisc.SCSI_PASS_THROUGH_DIRECT32_EX (size: 64)
- */
-export interface SCSI_PASS_THROUGH_DIRECT32_EX {
-  /** u32 */
-  Version: number;
-  /** u32 */
-  Length: number;
-  /** u32 */
-  CdbLength: number;
-  /** u32 */
-  StorAddressLength: number;
-  /** u8 */
-  ScsiStatus: number;
-  /** u8 */
-  SenseInfoLength: number;
-  /** u8 */
-  DataDirection: number;
-  /** u8 */
-  Reserved: number;
-  /** u32 */
-  TimeOutValue: number;
-  /** u32 */
-  StorAddressOffset: number;
-  /** u32 */
-  SenseInfoOffset: number;
-  /** u32 */
-  DataOutTransferLength: number;
-  /** u32 */
-  DataInTransferLength: number;
-  /** ptr */
-  DataOutBuffer: Deno.PointerValue | Uint8Array | null;
-  /** ptr */
-  DataInBuffer: Deno.PointerValue | Uint8Array | null;
-  /** array */
-  Cdb: Deno.PointerValue | null;
-}
-
-export const sizeofSCSI_PASS_THROUGH_DIRECT32_EX = 64;
-
-export function allocSCSI_PASS_THROUGH_DIRECT32_EX(data?: Partial<SCSI_PASS_THROUGH_DIRECT32_EX>): Uint8Array {
-  const buf = new Uint8Array(sizeofSCSI_PASS_THROUGH_DIRECT32_EX);
-  const view = new DataView(buf.buffer);
-  // 0x00: u32
-  if (data?.Version !== undefined) view.setUint32(0, Number(data.Version), true);
-  // 0x04: u32
-  if (data?.Length !== undefined) view.setUint32(4, Number(data.Length), true);
-  // 0x08: u32
-  if (data?.CdbLength !== undefined) view.setUint32(8, Number(data.CdbLength), true);
-  // 0x0c: u32
-  if (data?.StorAddressLength !== undefined) view.setUint32(12, Number(data.StorAddressLength), true);
-  // 0x10: u8
-  if (data?.ScsiStatus !== undefined) view.setUint8(16, Number(data.ScsiStatus));
-  // 0x11: u8
-  if (data?.SenseInfoLength !== undefined) view.setUint8(17, Number(data.SenseInfoLength));
-  // 0x12: u8
-  if (data?.DataDirection !== undefined) view.setUint8(18, Number(data.DataDirection));
-  // 0x13: u8
-  if (data?.Reserved !== undefined) view.setUint8(19, Number(data.Reserved));
-  // 0x14: u32
-  if (data?.TimeOutValue !== undefined) view.setUint32(20, Number(data.TimeOutValue), true);
-  // 0x18: u32
-  if (data?.StorAddressOffset !== undefined) view.setUint32(24, Number(data.StorAddressOffset), true);
-  // 0x1c: u32
-  if (data?.SenseInfoOffset !== undefined) view.setUint32(28, Number(data.SenseInfoOffset), true);
-  // 0x20: u32
-  if (data?.DataOutTransferLength !== undefined) view.setUint32(32, Number(data.DataOutTransferLength), true);
-  // 0x24: u32
-  if (data?.DataInTransferLength !== undefined) view.setUint32(36, Number(data.DataInTransferLength), true);
-  // 0x28: pointer
-  if (data?.DataOutBuffer !== undefined) view.setBigUint64(40, data.DataOutBuffer === null ? 0n : BigInt(util.toPointer(data.DataOutBuffer)), true);
-  // 0x30: pointer
-  if (data?.DataInBuffer !== undefined) view.setBigUint64(48, data.DataInBuffer === null ? 0n : BigInt(util.toPointer(data.DataInBuffer)), true);
-  // 0x38: pointer
-  if (data?.Cdb !== undefined) view.setBigUint64(56, data.Cdb === null ? 0n : BigInt(util.toPointer(data.Cdb)), true);
-  return buf;
-}
-
-/**
  * Windows.Win32.Storage.IscsiDisc.ATA_PASS_THROUGH_EX (size: 48)
  */
 export interface ATA_PASS_THROUGH_EX {
@@ -898,131 +1189,6 @@ export const sizeofATA_PASS_THROUGH_DIRECT = 48;
 
 export function allocATA_PASS_THROUGH_DIRECT(data?: Partial<ATA_PASS_THROUGH_DIRECT>): Uint8Array {
   const buf = new Uint8Array(sizeofATA_PASS_THROUGH_DIRECT);
-  const view = new DataView(buf.buffer);
-  // 0x00: u16
-  if (data?.Length !== undefined) view.setUint16(0, Number(data.Length), true);
-  // 0x02: u16
-  if (data?.AtaFlags !== undefined) view.setUint16(2, Number(data.AtaFlags), true);
-  // 0x04: u8
-  if (data?.PathId !== undefined) view.setUint8(4, Number(data.PathId));
-  // 0x05: u8
-  if (data?.TargetId !== undefined) view.setUint8(5, Number(data.TargetId));
-  // 0x06: u8
-  if (data?.Lun !== undefined) view.setUint8(6, Number(data.Lun));
-  // 0x07: u8
-  if (data?.ReservedAsUchar !== undefined) view.setUint8(7, Number(data.ReservedAsUchar));
-  // 0x08: u32
-  if (data?.DataTransferLength !== undefined) view.setUint32(8, Number(data.DataTransferLength), true);
-  // 0x0c: u32
-  if (data?.TimeOutValue !== undefined) view.setUint32(12, Number(data.TimeOutValue), true);
-  // 0x10: u32
-  if (data?.ReservedAsUlong !== undefined) view.setUint32(16, Number(data.ReservedAsUlong), true);
-  // 0x14: pad4
-  // 0x18: pointer
-  if (data?.DataBuffer !== undefined) view.setBigUint64(24, data.DataBuffer === null ? 0n : BigInt(util.toPointer(data.DataBuffer)), true);
-  // 0x20: pointer
-  if (data?.PreviousTaskFile !== undefined) view.setBigUint64(32, data.PreviousTaskFile === null ? 0n : BigInt(util.toPointer(data.PreviousTaskFile)), true);
-  // 0x28: pointer
-  if (data?.CurrentTaskFile !== undefined) view.setBigUint64(40, data.CurrentTaskFile === null ? 0n : BigInt(util.toPointer(data.CurrentTaskFile)), true);
-  return buf;
-}
-
-/**
- * Windows.Win32.Storage.IscsiDisc.ATA_PASS_THROUGH_EX32 (size: 40)
- */
-export interface ATA_PASS_THROUGH_EX32 {
-  /** u16 */
-  Length: number;
-  /** u16 */
-  AtaFlags: number;
-  /** u8 */
-  PathId: number;
-  /** u8 */
-  TargetId: number;
-  /** u8 */
-  Lun: number;
-  /** u8 */
-  ReservedAsUchar: number;
-  /** u32 */
-  DataTransferLength: number;
-  /** u32 */
-  TimeOutValue: number;
-  /** u32 */
-  ReservedAsUlong: number;
-  /** u32 */
-  DataBufferOffset: number;
-  /** array */
-  PreviousTaskFile: Deno.PointerValue | null;
-  /** array */
-  CurrentTaskFile: Deno.PointerValue | null;
-}
-
-export const sizeofATA_PASS_THROUGH_EX32 = 40;
-
-export function allocATA_PASS_THROUGH_EX32(data?: Partial<ATA_PASS_THROUGH_EX32>): Uint8Array {
-  const buf = new Uint8Array(sizeofATA_PASS_THROUGH_EX32);
-  const view = new DataView(buf.buffer);
-  // 0x00: u16
-  if (data?.Length !== undefined) view.setUint16(0, Number(data.Length), true);
-  // 0x02: u16
-  if (data?.AtaFlags !== undefined) view.setUint16(2, Number(data.AtaFlags), true);
-  // 0x04: u8
-  if (data?.PathId !== undefined) view.setUint8(4, Number(data.PathId));
-  // 0x05: u8
-  if (data?.TargetId !== undefined) view.setUint8(5, Number(data.TargetId));
-  // 0x06: u8
-  if (data?.Lun !== undefined) view.setUint8(6, Number(data.Lun));
-  // 0x07: u8
-  if (data?.ReservedAsUchar !== undefined) view.setUint8(7, Number(data.ReservedAsUchar));
-  // 0x08: u32
-  if (data?.DataTransferLength !== undefined) view.setUint32(8, Number(data.DataTransferLength), true);
-  // 0x0c: u32
-  if (data?.TimeOutValue !== undefined) view.setUint32(12, Number(data.TimeOutValue), true);
-  // 0x10: u32
-  if (data?.ReservedAsUlong !== undefined) view.setUint32(16, Number(data.ReservedAsUlong), true);
-  // 0x14: u32
-  if (data?.DataBufferOffset !== undefined) view.setUint32(20, Number(data.DataBufferOffset), true);
-  // 0x18: pointer
-  if (data?.PreviousTaskFile !== undefined) view.setBigUint64(24, data.PreviousTaskFile === null ? 0n : BigInt(util.toPointer(data.PreviousTaskFile)), true);
-  // 0x20: pointer
-  if (data?.CurrentTaskFile !== undefined) view.setBigUint64(32, data.CurrentTaskFile === null ? 0n : BigInt(util.toPointer(data.CurrentTaskFile)), true);
-  return buf;
-}
-
-/**
- * Windows.Win32.Storage.IscsiDisc.ATA_PASS_THROUGH_DIRECT32 (size: 48)
- */
-export interface ATA_PASS_THROUGH_DIRECT32 {
-  /** u16 */
-  Length: number;
-  /** u16 */
-  AtaFlags: number;
-  /** u8 */
-  PathId: number;
-  /** u8 */
-  TargetId: number;
-  /** u8 */
-  Lun: number;
-  /** u8 */
-  ReservedAsUchar: number;
-  /** u32 */
-  DataTransferLength: number;
-  /** u32 */
-  TimeOutValue: number;
-  /** u32 */
-  ReservedAsUlong: number;
-  /** ptr */
-  DataBuffer: Deno.PointerValue | Uint8Array | null;
-  /** array */
-  PreviousTaskFile: Deno.PointerValue | null;
-  /** array */
-  CurrentTaskFile: Deno.PointerValue | null;
-}
-
-export const sizeofATA_PASS_THROUGH_DIRECT32 = 48;
-
-export function allocATA_PASS_THROUGH_DIRECT32(data?: Partial<ATA_PASS_THROUGH_DIRECT32>): Uint8Array {
-  const buf = new Uint8Array(sizeofATA_PASS_THROUGH_DIRECT32);
   const view = new DataView(buf.buffer);
   // 0x00: u16
   if (data?.Length !== undefined) view.setUint16(0, Number(data.Length), true);
@@ -1228,160 +1394,6 @@ export const sizeofMPIO_PASS_THROUGH_PATH_DIRECT_EX = 24;
 
 export function allocMPIO_PASS_THROUGH_PATH_DIRECT_EX(data?: Partial<MPIO_PASS_THROUGH_PATH_DIRECT_EX>): Uint8Array {
   const buf = new Uint8Array(sizeofMPIO_PASS_THROUGH_PATH_DIRECT_EX);
-  const view = new DataView(buf.buffer);
-  // 0x00: u32
-  if (data?.PassThroughOffset !== undefined) view.setUint32(0, Number(data.PassThroughOffset), true);
-  // 0x04: u32
-  if (data?.Version !== undefined) view.setUint32(4, Number(data.Version), true);
-  // 0x08: u16
-  if (data?.Length !== undefined) view.setUint16(8, Number(data.Length), true);
-  // 0x0a: u8
-  if (data?.Flags !== undefined) view.setUint8(10, Number(data.Flags));
-  // 0x0b: u8
-  if (data?.PortNumber !== undefined) view.setUint8(11, Number(data.PortNumber));
-  // 0x0c: pad4
-  // 0x10: u64
-  if (data?.MpioPathId !== undefined) view.setBigUint64(16, BigInt(data.MpioPathId), true);
-  return buf;
-}
-
-/**
- * Windows.Win32.Storage.IscsiDisc.MPIO_PASS_THROUGH_PATH32 (size: 24)
- */
-export interface MPIO_PASS_THROUGH_PATH32 {
-  /** Windows.Win32.Storage.IscsiDisc.SCSI_PASS_THROUGH32 */
-  PassThrough: Uint8Array | Deno.PointerValue | null;
-  /** u32 */
-  Version: number;
-  /** u16 */
-  Length: number;
-  /** u8 */
-  Flags: number;
-  /** u8 */
-  PortNumber: number;
-  /** u64 */
-  MpioPathId: Deno.PointerValue;
-}
-
-export const sizeofMPIO_PASS_THROUGH_PATH32 = 24;
-
-export function allocMPIO_PASS_THROUGH_PATH32(data?: Partial<MPIO_PASS_THROUGH_PATH32>): Uint8Array {
-  const buf = new Uint8Array(sizeofMPIO_PASS_THROUGH_PATH32);
-  const view = new DataView(buf.buffer);
-  // 0x00: pointer
-  if (data?.PassThrough !== undefined) view.setBigUint64(0, data.PassThrough === null ? 0n : BigInt(util.toPointer(data.PassThrough)), true);
-  // 0x08: u32
-  if (data?.Version !== undefined) view.setUint32(8, Number(data.Version), true);
-  // 0x0c: u16
-  if (data?.Length !== undefined) view.setUint16(12, Number(data.Length), true);
-  // 0x0e: u8
-  if (data?.Flags !== undefined) view.setUint8(14, Number(data.Flags));
-  // 0x0f: u8
-  if (data?.PortNumber !== undefined) view.setUint8(15, Number(data.PortNumber));
-  // 0x10: u64
-  if (data?.MpioPathId !== undefined) view.setBigUint64(16, BigInt(data.MpioPathId), true);
-  return buf;
-}
-
-/**
- * Windows.Win32.Storage.IscsiDisc.MPIO_PASS_THROUGH_PATH_DIRECT32 (size: 24)
- */
-export interface MPIO_PASS_THROUGH_PATH_DIRECT32 {
-  /** Windows.Win32.Storage.IscsiDisc.SCSI_PASS_THROUGH_DIRECT32 */
-  PassThrough: Uint8Array | Deno.PointerValue | null;
-  /** u32 */
-  Version: number;
-  /** u16 */
-  Length: number;
-  /** u8 */
-  Flags: number;
-  /** u8 */
-  PortNumber: number;
-  /** u64 */
-  MpioPathId: Deno.PointerValue;
-}
-
-export const sizeofMPIO_PASS_THROUGH_PATH_DIRECT32 = 24;
-
-export function allocMPIO_PASS_THROUGH_PATH_DIRECT32(data?: Partial<MPIO_PASS_THROUGH_PATH_DIRECT32>): Uint8Array {
-  const buf = new Uint8Array(sizeofMPIO_PASS_THROUGH_PATH_DIRECT32);
-  const view = new DataView(buf.buffer);
-  // 0x00: pointer
-  if (data?.PassThrough !== undefined) view.setBigUint64(0, data.PassThrough === null ? 0n : BigInt(util.toPointer(data.PassThrough)), true);
-  // 0x08: u32
-  if (data?.Version !== undefined) view.setUint32(8, Number(data.Version), true);
-  // 0x0c: u16
-  if (data?.Length !== undefined) view.setUint16(12, Number(data.Length), true);
-  // 0x0e: u8
-  if (data?.Flags !== undefined) view.setUint8(14, Number(data.Flags));
-  // 0x0f: u8
-  if (data?.PortNumber !== undefined) view.setUint8(15, Number(data.PortNumber));
-  // 0x10: u64
-  if (data?.MpioPathId !== undefined) view.setBigUint64(16, BigInt(data.MpioPathId), true);
-  return buf;
-}
-
-/**
- * Windows.Win32.Storage.IscsiDisc.MPIO_PASS_THROUGH_PATH32_EX (size: 24)
- */
-export interface MPIO_PASS_THROUGH_PATH32_EX {
-  /** u32 */
-  PassThroughOffset: number;
-  /** u32 */
-  Version: number;
-  /** u16 */
-  Length: number;
-  /** u8 */
-  Flags: number;
-  /** u8 */
-  PortNumber: number;
-  /** u64 */
-  MpioPathId: Deno.PointerValue;
-}
-
-export const sizeofMPIO_PASS_THROUGH_PATH32_EX = 24;
-
-export function allocMPIO_PASS_THROUGH_PATH32_EX(data?: Partial<MPIO_PASS_THROUGH_PATH32_EX>): Uint8Array {
-  const buf = new Uint8Array(sizeofMPIO_PASS_THROUGH_PATH32_EX);
-  const view = new DataView(buf.buffer);
-  // 0x00: u32
-  if (data?.PassThroughOffset !== undefined) view.setUint32(0, Number(data.PassThroughOffset), true);
-  // 0x04: u32
-  if (data?.Version !== undefined) view.setUint32(4, Number(data.Version), true);
-  // 0x08: u16
-  if (data?.Length !== undefined) view.setUint16(8, Number(data.Length), true);
-  // 0x0a: u8
-  if (data?.Flags !== undefined) view.setUint8(10, Number(data.Flags));
-  // 0x0b: u8
-  if (data?.PortNumber !== undefined) view.setUint8(11, Number(data.PortNumber));
-  // 0x0c: pad4
-  // 0x10: u64
-  if (data?.MpioPathId !== undefined) view.setBigUint64(16, BigInt(data.MpioPathId), true);
-  return buf;
-}
-
-/**
- * Windows.Win32.Storage.IscsiDisc.MPIO_PASS_THROUGH_PATH_DIRECT32_EX (size: 24)
- */
-export interface MPIO_PASS_THROUGH_PATH_DIRECT32_EX {
-  /** u32 */
-  PassThroughOffset: number;
-  /** u32 */
-  Version: number;
-  /** u16 */
-  Length: number;
-  /** u8 */
-  Flags: number;
-  /** u8 */
-  PortNumber: number;
-  /** u64 */
-  MpioPathId: Deno.PointerValue;
-}
-
-export const sizeofMPIO_PASS_THROUGH_PATH_DIRECT32_EX = 24;
-
-export function allocMPIO_PASS_THROUGH_PATH_DIRECT32_EX(data?: Partial<MPIO_PASS_THROUGH_PATH_DIRECT32_EX>): Uint8Array {
-  const buf = new Uint8Array(sizeofMPIO_PASS_THROUGH_PATH_DIRECT32_EX);
   const view = new DataView(buf.buffer);
   // 0x00: u32
   if (data?.PassThroughOffset !== undefined) view.setUint32(0, Number(data.PassThroughOffset), true);
@@ -4128,7 +4140,7 @@ export function allocISCSI_VERSION_INFO(data?: Partial<ISCSI_VERSION_INFO>): Uin
 // Native Libraries
 
 try {
-  var libISCSIDSC = Deno.dlopen("ISCSIDSC", {
+  var libISCSIDSC_dll = Deno.dlopen("ISCSIDSC.dll", {
     GetIScsiVersionInformation: {
       parameters: ["pointer"],
       result: "u32",
@@ -4453,7 +4465,7 @@ try {
 export function GetIScsiVersionInformation(
   VersionInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libISCSIDSC.GetIScsiVersionInformation(util.toPointer(VersionInfo));
+  return libISCSIDSC_dll.GetIScsiVersionInformation(util.toPointer(VersionInfo));
 }
 
 export function GetIScsiTargetInformationW(
@@ -4463,7 +4475,7 @@ export function GetIScsiTargetInformationW(
   BufferSize: Deno.PointerValue | Uint8Array | null /* ptr */,
   Buffer: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libISCSIDSC.GetIScsiTargetInformationW(util.pwstrToFfi(TargetName), util.pwstrToFfi(DiscoveryMechanism), InfoClass, util.toPointer(BufferSize), util.toPointer(Buffer));
+  return libISCSIDSC_dll.GetIScsiTargetInformationW(util.pwstrToFfi(TargetName), util.pwstrToFfi(DiscoveryMechanism), InfoClass, util.toPointer(BufferSize), util.toPointer(Buffer));
 }
 
 export function GetIScsiTargetInformationA(
@@ -4473,7 +4485,7 @@ export function GetIScsiTargetInformationA(
   BufferSize: Deno.PointerValue | Uint8Array | null /* ptr */,
   Buffer: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libISCSIDSC.GetIScsiTargetInformationA(util.pstrToFfi(TargetName), util.pstrToFfi(DiscoveryMechanism), InfoClass, util.toPointer(BufferSize), util.toPointer(Buffer));
+  return libISCSIDSC_dll.GetIScsiTargetInformationA(util.pstrToFfi(TargetName), util.pstrToFfi(DiscoveryMechanism), InfoClass, util.toPointer(BufferSize), util.toPointer(Buffer));
 }
 
 export function AddIScsiConnectionW(
@@ -4487,7 +4499,7 @@ export function AddIScsiConnectionW(
   Key: string | null /* Windows.Win32.Foundation.PSTR */,
   ConnectionId: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libISCSIDSC.AddIScsiConnectionW(util.toPointer(UniqueSessionId), util.toPointer(Reserved), InitiatorPortNumber, util.toPointer(TargetPortal), SecurityFlags, util.toPointer(LoginOptions), KeySize, util.pstrToFfi(Key), util.toPointer(ConnectionId));
+  return libISCSIDSC_dll.AddIScsiConnectionW(util.toPointer(UniqueSessionId), util.toPointer(Reserved), InitiatorPortNumber, util.toPointer(TargetPortal), SecurityFlags, util.toPointer(LoginOptions), KeySize, util.pstrToFfi(Key), util.toPointer(ConnectionId));
 }
 
 export function AddIScsiConnectionA(
@@ -4501,14 +4513,14 @@ export function AddIScsiConnectionA(
   Key: string | null /* Windows.Win32.Foundation.PSTR */,
   ConnectionId: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libISCSIDSC.AddIScsiConnectionA(util.toPointer(UniqueSessionId), util.toPointer(Reserved), InitiatorPortNumber, util.toPointer(TargetPortal), SecurityFlags, util.toPointer(LoginOptions), KeySize, util.pstrToFfi(Key), util.toPointer(ConnectionId));
+  return libISCSIDSC_dll.AddIScsiConnectionA(util.toPointer(UniqueSessionId), util.toPointer(Reserved), InitiatorPortNumber, util.toPointer(TargetPortal), SecurityFlags, util.toPointer(LoginOptions), KeySize, util.pstrToFfi(Key), util.toPointer(ConnectionId));
 }
 
 export function RemoveIScsiConnection(
   UniqueSessionId: Deno.PointerValue | Uint8Array | null /* ptr */,
   ConnectionId: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libISCSIDSC.RemoveIScsiConnection(util.toPointer(UniqueSessionId), util.toPointer(ConnectionId));
+  return libISCSIDSC_dll.RemoveIScsiConnection(util.toPointer(UniqueSessionId), util.toPointer(ConnectionId));
 }
 
 export function ReportIScsiTargetsW(
@@ -4516,7 +4528,7 @@ export function ReportIScsiTargetsW(
   BufferSize: Deno.PointerValue | Uint8Array | null /* ptr */,
   Buffer: string | null /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
-  return libISCSIDSC.ReportIScsiTargetsW(util.toPointer(ForceUpdate), util.toPointer(BufferSize), util.pwstrToFfi(Buffer));
+  return libISCSIDSC_dll.ReportIScsiTargetsW(util.toPointer(ForceUpdate), util.toPointer(BufferSize), util.pwstrToFfi(Buffer));
 }
 
 export function ReportIScsiTargetsA(
@@ -4524,7 +4536,7 @@ export function ReportIScsiTargetsA(
   BufferSize: Deno.PointerValue | Uint8Array | null /* ptr */,
   Buffer: string | null /* Windows.Win32.Foundation.PSTR */,
 ): number /* u32 */ {
-  return libISCSIDSC.ReportIScsiTargetsA(util.toPointer(ForceUpdate), util.toPointer(BufferSize), util.pstrToFfi(Buffer));
+  return libISCSIDSC_dll.ReportIScsiTargetsA(util.toPointer(ForceUpdate), util.toPointer(BufferSize), util.pstrToFfi(Buffer));
 }
 
 export function AddIScsiStaticTargetW(
@@ -4536,7 +4548,7 @@ export function AddIScsiStaticTargetW(
   LoginOptions: Deno.PointerValue | Uint8Array | null /* ptr */,
   PortalGroup: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libISCSIDSC.AddIScsiStaticTargetW(util.pwstrToFfi(TargetName), util.pwstrToFfi(TargetAlias), TargetFlags, util.toPointer(Persist), util.toPointer(Mappings), util.toPointer(LoginOptions), util.toPointer(PortalGroup));
+  return libISCSIDSC_dll.AddIScsiStaticTargetW(util.pwstrToFfi(TargetName), util.pwstrToFfi(TargetAlias), TargetFlags, util.toPointer(Persist), util.toPointer(Mappings), util.toPointer(LoginOptions), util.toPointer(PortalGroup));
 }
 
 export function AddIScsiStaticTargetA(
@@ -4548,19 +4560,19 @@ export function AddIScsiStaticTargetA(
   LoginOptions: Deno.PointerValue | Uint8Array | null /* ptr */,
   PortalGroup: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libISCSIDSC.AddIScsiStaticTargetA(util.pstrToFfi(TargetName), util.pstrToFfi(TargetAlias), TargetFlags, util.toPointer(Persist), util.toPointer(Mappings), util.toPointer(LoginOptions), util.toPointer(PortalGroup));
+  return libISCSIDSC_dll.AddIScsiStaticTargetA(util.pstrToFfi(TargetName), util.pstrToFfi(TargetAlias), TargetFlags, util.toPointer(Persist), util.toPointer(Mappings), util.toPointer(LoginOptions), util.toPointer(PortalGroup));
 }
 
 export function RemoveIScsiStaticTargetW(
   TargetName: string | null /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
-  return libISCSIDSC.RemoveIScsiStaticTargetW(util.pwstrToFfi(TargetName));
+  return libISCSIDSC_dll.RemoveIScsiStaticTargetW(util.pwstrToFfi(TargetName));
 }
 
 export function RemoveIScsiStaticTargetA(
   TargetName: string | null /* Windows.Win32.Foundation.PSTR */,
 ): number /* u32 */ {
-  return libISCSIDSC.RemoveIScsiStaticTargetA(util.pstrToFfi(TargetName));
+  return libISCSIDSC_dll.RemoveIScsiStaticTargetA(util.pstrToFfi(TargetName));
 }
 
 export function AddIScsiSendTargetPortalW(
@@ -4570,7 +4582,7 @@ export function AddIScsiSendTargetPortalW(
   SecurityFlags: Deno.PointerValue /* u64 */,
   Portal: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libISCSIDSC.AddIScsiSendTargetPortalW(util.pwstrToFfi(InitiatorInstance), InitiatorPortNumber, util.toPointer(LoginOptions), SecurityFlags, util.toPointer(Portal));
+  return libISCSIDSC_dll.AddIScsiSendTargetPortalW(util.pwstrToFfi(InitiatorInstance), InitiatorPortNumber, util.toPointer(LoginOptions), SecurityFlags, util.toPointer(Portal));
 }
 
 export function AddIScsiSendTargetPortalA(
@@ -4580,7 +4592,7 @@ export function AddIScsiSendTargetPortalA(
   SecurityFlags: Deno.PointerValue /* u64 */,
   Portal: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libISCSIDSC.AddIScsiSendTargetPortalA(util.pstrToFfi(InitiatorInstance), InitiatorPortNumber, util.toPointer(LoginOptions), SecurityFlags, util.toPointer(Portal));
+  return libISCSIDSC_dll.AddIScsiSendTargetPortalA(util.pstrToFfi(InitiatorInstance), InitiatorPortNumber, util.toPointer(LoginOptions), SecurityFlags, util.toPointer(Portal));
 }
 
 export function RemoveIScsiSendTargetPortalW(
@@ -4588,7 +4600,7 @@ export function RemoveIScsiSendTargetPortalW(
   InitiatorPortNumber: number /* u32 */,
   Portal: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libISCSIDSC.RemoveIScsiSendTargetPortalW(util.pwstrToFfi(InitiatorInstance), InitiatorPortNumber, util.toPointer(Portal));
+  return libISCSIDSC_dll.RemoveIScsiSendTargetPortalW(util.pwstrToFfi(InitiatorInstance), InitiatorPortNumber, util.toPointer(Portal));
 }
 
 export function RemoveIScsiSendTargetPortalA(
@@ -4596,7 +4608,7 @@ export function RemoveIScsiSendTargetPortalA(
   InitiatorPortNumber: number /* u32 */,
   Portal: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libISCSIDSC.RemoveIScsiSendTargetPortalA(util.pstrToFfi(InitiatorInstance), InitiatorPortNumber, util.toPointer(Portal));
+  return libISCSIDSC_dll.RemoveIScsiSendTargetPortalA(util.pstrToFfi(InitiatorInstance), InitiatorPortNumber, util.toPointer(Portal));
 }
 
 export function RefreshIScsiSendTargetPortalW(
@@ -4604,7 +4616,7 @@ export function RefreshIScsiSendTargetPortalW(
   InitiatorPortNumber: number /* u32 */,
   Portal: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libISCSIDSC.RefreshIScsiSendTargetPortalW(util.pwstrToFfi(InitiatorInstance), InitiatorPortNumber, util.toPointer(Portal));
+  return libISCSIDSC_dll.RefreshIScsiSendTargetPortalW(util.pwstrToFfi(InitiatorInstance), InitiatorPortNumber, util.toPointer(Portal));
 }
 
 export function RefreshIScsiSendTargetPortalA(
@@ -4612,21 +4624,21 @@ export function RefreshIScsiSendTargetPortalA(
   InitiatorPortNumber: number /* u32 */,
   Portal: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libISCSIDSC.RefreshIScsiSendTargetPortalA(util.pstrToFfi(InitiatorInstance), InitiatorPortNumber, util.toPointer(Portal));
+  return libISCSIDSC_dll.RefreshIScsiSendTargetPortalA(util.pstrToFfi(InitiatorInstance), InitiatorPortNumber, util.toPointer(Portal));
 }
 
 export function ReportIScsiSendTargetPortalsW(
   PortalCount: Deno.PointerValue | Uint8Array | null /* ptr */,
   PortalInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libISCSIDSC.ReportIScsiSendTargetPortalsW(util.toPointer(PortalCount), util.toPointer(PortalInfo));
+  return libISCSIDSC_dll.ReportIScsiSendTargetPortalsW(util.toPointer(PortalCount), util.toPointer(PortalInfo));
 }
 
 export function ReportIScsiSendTargetPortalsA(
   PortalCount: Deno.PointerValue | Uint8Array | null /* ptr */,
   PortalInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libISCSIDSC.ReportIScsiSendTargetPortalsA(util.toPointer(PortalCount), util.toPointer(PortalInfo));
+  return libISCSIDSC_dll.ReportIScsiSendTargetPortalsA(util.toPointer(PortalCount), util.toPointer(PortalInfo));
 }
 
 export function ReportIScsiSendTargetPortalsExW(
@@ -4634,7 +4646,7 @@ export function ReportIScsiSendTargetPortalsExW(
   PortalInfoSize: Deno.PointerValue | Uint8Array | null /* ptr */,
   PortalInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libISCSIDSC.ReportIScsiSendTargetPortalsExW(util.toPointer(PortalCount), util.toPointer(PortalInfoSize), util.toPointer(PortalInfo));
+  return libISCSIDSC_dll.ReportIScsiSendTargetPortalsExW(util.toPointer(PortalCount), util.toPointer(PortalInfoSize), util.toPointer(PortalInfo));
 }
 
 export function ReportIScsiSendTargetPortalsExA(
@@ -4642,7 +4654,7 @@ export function ReportIScsiSendTargetPortalsExA(
   PortalInfoSize: Deno.PointerValue | Uint8Array | null /* ptr */,
   PortalInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libISCSIDSC.ReportIScsiSendTargetPortalsExA(util.toPointer(PortalCount), util.toPointer(PortalInfoSize), util.toPointer(PortalInfo));
+  return libISCSIDSC_dll.ReportIScsiSendTargetPortalsExA(util.toPointer(PortalCount), util.toPointer(PortalInfoSize), util.toPointer(PortalInfo));
 }
 
 export function LoginIScsiTargetW(
@@ -4660,7 +4672,7 @@ export function LoginIScsiTargetW(
   UniqueSessionId: Deno.PointerValue | Uint8Array | null /* ptr */,
   UniqueConnectionId: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libISCSIDSC.LoginIScsiTargetW(util.pwstrToFfi(TargetName), util.toPointer(IsInformationalSession), util.pwstrToFfi(InitiatorInstance), InitiatorPortNumber, util.toPointer(TargetPortal), SecurityFlags, util.toPointer(Mappings), util.toPointer(LoginOptions), KeySize, util.pstrToFfi(Key), util.toPointer(IsPersistent), util.toPointer(UniqueSessionId), util.toPointer(UniqueConnectionId));
+  return libISCSIDSC_dll.LoginIScsiTargetW(util.pwstrToFfi(TargetName), util.toPointer(IsInformationalSession), util.pwstrToFfi(InitiatorInstance), InitiatorPortNumber, util.toPointer(TargetPortal), SecurityFlags, util.toPointer(Mappings), util.toPointer(LoginOptions), KeySize, util.pstrToFfi(Key), util.toPointer(IsPersistent), util.toPointer(UniqueSessionId), util.toPointer(UniqueConnectionId));
 }
 
 export function LoginIScsiTargetA(
@@ -4678,7 +4690,7 @@ export function LoginIScsiTargetA(
   UniqueSessionId: Deno.PointerValue | Uint8Array | null /* ptr */,
   UniqueConnectionId: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libISCSIDSC.LoginIScsiTargetA(util.pstrToFfi(TargetName), util.toPointer(IsInformationalSession), util.pstrToFfi(InitiatorInstance), InitiatorPortNumber, util.toPointer(TargetPortal), SecurityFlags, util.toPointer(Mappings), util.toPointer(LoginOptions), KeySize, util.pstrToFfi(Key), util.toPointer(IsPersistent), util.toPointer(UniqueSessionId), util.toPointer(UniqueConnectionId));
+  return libISCSIDSC_dll.LoginIScsiTargetA(util.pstrToFfi(TargetName), util.toPointer(IsInformationalSession), util.pstrToFfi(InitiatorInstance), InitiatorPortNumber, util.toPointer(TargetPortal), SecurityFlags, util.toPointer(Mappings), util.toPointer(LoginOptions), KeySize, util.pstrToFfi(Key), util.toPointer(IsPersistent), util.toPointer(UniqueSessionId), util.toPointer(UniqueConnectionId));
 }
 
 export function ReportIScsiPersistentLoginsW(
@@ -4686,7 +4698,7 @@ export function ReportIScsiPersistentLoginsW(
   PersistentLoginInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
   BufferSizeInBytes: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libISCSIDSC.ReportIScsiPersistentLoginsW(util.toPointer(Count), util.toPointer(PersistentLoginInfo), util.toPointer(BufferSizeInBytes));
+  return libISCSIDSC_dll.ReportIScsiPersistentLoginsW(util.toPointer(Count), util.toPointer(PersistentLoginInfo), util.toPointer(BufferSizeInBytes));
 }
 
 export function ReportIScsiPersistentLoginsA(
@@ -4694,13 +4706,13 @@ export function ReportIScsiPersistentLoginsA(
   PersistentLoginInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
   BufferSizeInBytes: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libISCSIDSC.ReportIScsiPersistentLoginsA(util.toPointer(Count), util.toPointer(PersistentLoginInfo), util.toPointer(BufferSizeInBytes));
+  return libISCSIDSC_dll.ReportIScsiPersistentLoginsA(util.toPointer(Count), util.toPointer(PersistentLoginInfo), util.toPointer(BufferSizeInBytes));
 }
 
 export function LogoutIScsiTarget(
   UniqueSessionId: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libISCSIDSC.LogoutIScsiTarget(util.toPointer(UniqueSessionId));
+  return libISCSIDSC_dll.LogoutIScsiTarget(util.toPointer(UniqueSessionId));
 }
 
 export function RemoveIScsiPersistentTargetW(
@@ -4709,7 +4721,7 @@ export function RemoveIScsiPersistentTargetW(
   TargetName: string | null /* Windows.Win32.Foundation.PWSTR */,
   Portal: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libISCSIDSC.RemoveIScsiPersistentTargetW(util.pwstrToFfi(InitiatorInstance), InitiatorPortNumber, util.pwstrToFfi(TargetName), util.toPointer(Portal));
+  return libISCSIDSC_dll.RemoveIScsiPersistentTargetW(util.pwstrToFfi(InitiatorInstance), InitiatorPortNumber, util.pwstrToFfi(TargetName), util.toPointer(Portal));
 }
 
 export function RemoveIScsiPersistentTargetA(
@@ -4718,7 +4730,7 @@ export function RemoveIScsiPersistentTargetA(
   TargetName: string | null /* Windows.Win32.Foundation.PSTR */,
   Portal: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libISCSIDSC.RemoveIScsiPersistentTargetA(util.pstrToFfi(InitiatorInstance), InitiatorPortNumber, util.pstrToFfi(TargetName), util.toPointer(Portal));
+  return libISCSIDSC_dll.RemoveIScsiPersistentTargetA(util.pstrToFfi(InitiatorInstance), InitiatorPortNumber, util.pstrToFfi(TargetName), util.toPointer(Portal));
 }
 
 export function SendScsiInquiry(
@@ -4732,7 +4744,7 @@ export function SendScsiInquiry(
   SenseSize: Deno.PointerValue | Uint8Array | null /* ptr */,
   SenseBuffer: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libISCSIDSC.SendScsiInquiry(util.toPointer(UniqueSessionId), Lun, EvpdCmddt, PageCode, util.toPointer(ScsiStatus), util.toPointer(ResponseSize), util.toPointer(ResponseBuffer), util.toPointer(SenseSize), util.toPointer(SenseBuffer));
+  return libISCSIDSC_dll.SendScsiInquiry(util.toPointer(UniqueSessionId), Lun, EvpdCmddt, PageCode, util.toPointer(ScsiStatus), util.toPointer(ResponseSize), util.toPointer(ResponseBuffer), util.toPointer(SenseSize), util.toPointer(SenseBuffer));
 }
 
 export function SendScsiReadCapacity(
@@ -4744,7 +4756,7 @@ export function SendScsiReadCapacity(
   SenseSize: Deno.PointerValue | Uint8Array | null /* ptr */,
   SenseBuffer: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libISCSIDSC.SendScsiReadCapacity(util.toPointer(UniqueSessionId), Lun, util.toPointer(ScsiStatus), util.toPointer(ResponseSize), util.toPointer(ResponseBuffer), util.toPointer(SenseSize), util.toPointer(SenseBuffer));
+  return libISCSIDSC_dll.SendScsiReadCapacity(util.toPointer(UniqueSessionId), Lun, util.toPointer(ScsiStatus), util.toPointer(ResponseSize), util.toPointer(ResponseBuffer), util.toPointer(SenseSize), util.toPointer(SenseBuffer));
 }
 
 export function SendScsiReportLuns(
@@ -4755,21 +4767,21 @@ export function SendScsiReportLuns(
   SenseSize: Deno.PointerValue | Uint8Array | null /* ptr */,
   SenseBuffer: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libISCSIDSC.SendScsiReportLuns(util.toPointer(UniqueSessionId), util.toPointer(ScsiStatus), util.toPointer(ResponseSize), util.toPointer(ResponseBuffer), util.toPointer(SenseSize), util.toPointer(SenseBuffer));
+  return libISCSIDSC_dll.SendScsiReportLuns(util.toPointer(UniqueSessionId), util.toPointer(ScsiStatus), util.toPointer(ResponseSize), util.toPointer(ResponseBuffer), util.toPointer(SenseSize), util.toPointer(SenseBuffer));
 }
 
 export function ReportIScsiInitiatorListW(
   BufferSize: Deno.PointerValue | Uint8Array | null /* ptr */,
   Buffer: string | null /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
-  return libISCSIDSC.ReportIScsiInitiatorListW(util.toPointer(BufferSize), util.pwstrToFfi(Buffer));
+  return libISCSIDSC_dll.ReportIScsiInitiatorListW(util.toPointer(BufferSize), util.pwstrToFfi(Buffer));
 }
 
 export function ReportIScsiInitiatorListA(
   BufferSize: Deno.PointerValue | Uint8Array | null /* ptr */,
   Buffer: string | null /* Windows.Win32.Foundation.PSTR */,
 ): number /* u32 */ {
-  return libISCSIDSC.ReportIScsiInitiatorListA(util.toPointer(BufferSize), util.pstrToFfi(Buffer));
+  return libISCSIDSC_dll.ReportIScsiInitiatorListA(util.toPointer(BufferSize), util.pstrToFfi(Buffer));
 }
 
 export function ReportActiveIScsiTargetMappingsW(
@@ -4777,7 +4789,7 @@ export function ReportActiveIScsiTargetMappingsW(
   MappingCount: Deno.PointerValue | Uint8Array | null /* ptr */,
   Mappings: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libISCSIDSC.ReportActiveIScsiTargetMappingsW(util.toPointer(BufferSize), util.toPointer(MappingCount), util.toPointer(Mappings));
+  return libISCSIDSC_dll.ReportActiveIScsiTargetMappingsW(util.toPointer(BufferSize), util.toPointer(MappingCount), util.toPointer(Mappings));
 }
 
 export function ReportActiveIScsiTargetMappingsA(
@@ -4785,7 +4797,7 @@ export function ReportActiveIScsiTargetMappingsA(
   MappingCount: Deno.PointerValue | Uint8Array | null /* ptr */,
   Mappings: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libISCSIDSC.ReportActiveIScsiTargetMappingsA(util.toPointer(BufferSize), util.toPointer(MappingCount), util.toPointer(Mappings));
+  return libISCSIDSC_dll.ReportActiveIScsiTargetMappingsA(util.toPointer(BufferSize), util.toPointer(MappingCount), util.toPointer(Mappings));
 }
 
 export function SetIScsiTunnelModeOuterAddressW(
@@ -4795,7 +4807,7 @@ export function SetIScsiTunnelModeOuterAddressW(
   OuterModeAddress: string | null /* Windows.Win32.Foundation.PWSTR */,
   Persist: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.BOOLEAN */,
 ): number /* u32 */ {
-  return libISCSIDSC.SetIScsiTunnelModeOuterAddressW(util.pwstrToFfi(InitiatorName), InitiatorPortNumber, util.pwstrToFfi(DestinationAddress), util.pwstrToFfi(OuterModeAddress), util.toPointer(Persist));
+  return libISCSIDSC_dll.SetIScsiTunnelModeOuterAddressW(util.pwstrToFfi(InitiatorName), InitiatorPortNumber, util.pwstrToFfi(DestinationAddress), util.pwstrToFfi(OuterModeAddress), util.toPointer(Persist));
 }
 
 export function SetIScsiTunnelModeOuterAddressA(
@@ -4805,7 +4817,7 @@ export function SetIScsiTunnelModeOuterAddressA(
   OuterModeAddress: string | null /* Windows.Win32.Foundation.PSTR */,
   Persist: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.BOOLEAN */,
 ): number /* u32 */ {
-  return libISCSIDSC.SetIScsiTunnelModeOuterAddressA(util.pstrToFfi(InitiatorName), InitiatorPortNumber, util.pstrToFfi(DestinationAddress), util.pstrToFfi(OuterModeAddress), util.toPointer(Persist));
+  return libISCSIDSC_dll.SetIScsiTunnelModeOuterAddressA(util.pstrToFfi(InitiatorName), InitiatorPortNumber, util.pstrToFfi(DestinationAddress), util.pstrToFfi(OuterModeAddress), util.toPointer(Persist));
 }
 
 export function SetIScsiIKEInfoW(
@@ -4814,7 +4826,7 @@ export function SetIScsiIKEInfoW(
   AuthInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
   Persist: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.BOOLEAN */,
 ): number /* u32 */ {
-  return libISCSIDSC.SetIScsiIKEInfoW(util.pwstrToFfi(InitiatorName), InitiatorPortNumber, util.toPointer(AuthInfo), util.toPointer(Persist));
+  return libISCSIDSC_dll.SetIScsiIKEInfoW(util.pwstrToFfi(InitiatorName), InitiatorPortNumber, util.toPointer(AuthInfo), util.toPointer(Persist));
 }
 
 export function SetIScsiIKEInfoA(
@@ -4823,7 +4835,7 @@ export function SetIScsiIKEInfoA(
   AuthInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
   Persist: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.BOOLEAN */,
 ): number /* u32 */ {
-  return libISCSIDSC.SetIScsiIKEInfoA(util.pstrToFfi(InitiatorName), InitiatorPortNumber, util.toPointer(AuthInfo), util.toPointer(Persist));
+  return libISCSIDSC_dll.SetIScsiIKEInfoA(util.pstrToFfi(InitiatorName), InitiatorPortNumber, util.toPointer(AuthInfo), util.toPointer(Persist));
 }
 
 export function GetIScsiIKEInfoW(
@@ -4832,7 +4844,7 @@ export function GetIScsiIKEInfoW(
   Reserved: Deno.PointerValue | Uint8Array | null /* ptr */,
   AuthInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libISCSIDSC.GetIScsiIKEInfoW(util.pwstrToFfi(InitiatorName), InitiatorPortNumber, util.toPointer(Reserved), util.toPointer(AuthInfo));
+  return libISCSIDSC_dll.GetIScsiIKEInfoW(util.pwstrToFfi(InitiatorName), InitiatorPortNumber, util.toPointer(Reserved), util.toPointer(AuthInfo));
 }
 
 export function GetIScsiIKEInfoA(
@@ -4841,7 +4853,7 @@ export function GetIScsiIKEInfoA(
   Reserved: Deno.PointerValue | Uint8Array | null /* ptr */,
   AuthInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libISCSIDSC.GetIScsiIKEInfoA(util.pstrToFfi(InitiatorName), InitiatorPortNumber, util.toPointer(Reserved), util.toPointer(AuthInfo));
+  return libISCSIDSC_dll.GetIScsiIKEInfoA(util.pstrToFfi(InitiatorName), InitiatorPortNumber, util.toPointer(Reserved), util.toPointer(AuthInfo));
 }
 
 export function SetIScsiGroupPresharedKey(
@@ -4849,95 +4861,95 @@ export function SetIScsiGroupPresharedKey(
   Key: Deno.PointerValue | Uint8Array | null /* ptr */,
   Persist: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.BOOLEAN */,
 ): number /* u32 */ {
-  return libISCSIDSC.SetIScsiGroupPresharedKey(KeyLength, util.toPointer(Key), util.toPointer(Persist));
+  return libISCSIDSC_dll.SetIScsiGroupPresharedKey(KeyLength, util.toPointer(Key), util.toPointer(Persist));
 }
 
 export function SetIScsiInitiatorCHAPSharedSecret(
   SharedSecretLength: number /* u32 */,
   SharedSecret: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libISCSIDSC.SetIScsiInitiatorCHAPSharedSecret(SharedSecretLength, util.toPointer(SharedSecret));
+  return libISCSIDSC_dll.SetIScsiInitiatorCHAPSharedSecret(SharedSecretLength, util.toPointer(SharedSecret));
 }
 
 export function SetIScsiInitiatorRADIUSSharedSecret(
   SharedSecretLength: number /* u32 */,
   SharedSecret: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libISCSIDSC.SetIScsiInitiatorRADIUSSharedSecret(SharedSecretLength, util.toPointer(SharedSecret));
+  return libISCSIDSC_dll.SetIScsiInitiatorRADIUSSharedSecret(SharedSecretLength, util.toPointer(SharedSecret));
 }
 
 export function SetIScsiInitiatorNodeNameW(
   InitiatorNodeName: string | null /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
-  return libISCSIDSC.SetIScsiInitiatorNodeNameW(util.pwstrToFfi(InitiatorNodeName));
+  return libISCSIDSC_dll.SetIScsiInitiatorNodeNameW(util.pwstrToFfi(InitiatorNodeName));
 }
 
 export function SetIScsiInitiatorNodeNameA(
   InitiatorNodeName: string | null /* Windows.Win32.Foundation.PSTR */,
 ): number /* u32 */ {
-  return libISCSIDSC.SetIScsiInitiatorNodeNameA(util.pstrToFfi(InitiatorNodeName));
+  return libISCSIDSC_dll.SetIScsiInitiatorNodeNameA(util.pstrToFfi(InitiatorNodeName));
 }
 
 export function GetIScsiInitiatorNodeNameW(
   InitiatorNodeName: string | null /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
-  return libISCSIDSC.GetIScsiInitiatorNodeNameW(util.pwstrToFfi(InitiatorNodeName));
+  return libISCSIDSC_dll.GetIScsiInitiatorNodeNameW(util.pwstrToFfi(InitiatorNodeName));
 }
 
 export function GetIScsiInitiatorNodeNameA(
   InitiatorNodeName: string | null /* Windows.Win32.Foundation.PSTR */,
 ): number /* u32 */ {
-  return libISCSIDSC.GetIScsiInitiatorNodeNameA(util.pstrToFfi(InitiatorNodeName));
+  return libISCSIDSC_dll.GetIScsiInitiatorNodeNameA(util.pstrToFfi(InitiatorNodeName));
 }
 
 export function AddISNSServerW(
   Address: string | null /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
-  return libISCSIDSC.AddISNSServerW(util.pwstrToFfi(Address));
+  return libISCSIDSC_dll.AddISNSServerW(util.pwstrToFfi(Address));
 }
 
 export function AddISNSServerA(
   Address: string | null /* Windows.Win32.Foundation.PSTR */,
 ): number /* u32 */ {
-  return libISCSIDSC.AddISNSServerA(util.pstrToFfi(Address));
+  return libISCSIDSC_dll.AddISNSServerA(util.pstrToFfi(Address));
 }
 
 export function RemoveISNSServerW(
   Address: string | null /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
-  return libISCSIDSC.RemoveISNSServerW(util.pwstrToFfi(Address));
+  return libISCSIDSC_dll.RemoveISNSServerW(util.pwstrToFfi(Address));
 }
 
 export function RemoveISNSServerA(
   Address: string | null /* Windows.Win32.Foundation.PSTR */,
 ): number /* u32 */ {
-  return libISCSIDSC.RemoveISNSServerA(util.pstrToFfi(Address));
+  return libISCSIDSC_dll.RemoveISNSServerA(util.pstrToFfi(Address));
 }
 
 export function RefreshISNSServerW(
   Address: string | null /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
-  return libISCSIDSC.RefreshISNSServerW(util.pwstrToFfi(Address));
+  return libISCSIDSC_dll.RefreshISNSServerW(util.pwstrToFfi(Address));
 }
 
 export function RefreshISNSServerA(
   Address: string | null /* Windows.Win32.Foundation.PSTR */,
 ): number /* u32 */ {
-  return libISCSIDSC.RefreshISNSServerA(util.pstrToFfi(Address));
+  return libISCSIDSC_dll.RefreshISNSServerA(util.pstrToFfi(Address));
 }
 
 export function ReportISNSServerListW(
   BufferSizeInChar: Deno.PointerValue | Uint8Array | null /* ptr */,
   Buffer: string | null /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
-  return libISCSIDSC.ReportISNSServerListW(util.toPointer(BufferSizeInChar), util.pwstrToFfi(Buffer));
+  return libISCSIDSC_dll.ReportISNSServerListW(util.toPointer(BufferSizeInChar), util.pwstrToFfi(Buffer));
 }
 
 export function ReportISNSServerListA(
   BufferSizeInChar: Deno.PointerValue | Uint8Array | null /* ptr */,
   Buffer: string | null /* Windows.Win32.Foundation.PSTR */,
 ): number /* u32 */ {
-  return libISCSIDSC.ReportISNSServerListA(util.toPointer(BufferSizeInChar), util.pstrToFfi(Buffer));
+  return libISCSIDSC_dll.ReportISNSServerListA(util.toPointer(BufferSizeInChar), util.pstrToFfi(Buffer));
 }
 
 export function GetIScsiSessionListW(
@@ -4945,7 +4957,7 @@ export function GetIScsiSessionListW(
   SessionCount: Deno.PointerValue | Uint8Array | null /* ptr */,
   SessionInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libISCSIDSC.GetIScsiSessionListW(util.toPointer(BufferSize), util.toPointer(SessionCount), util.toPointer(SessionInfo));
+  return libISCSIDSC_dll.GetIScsiSessionListW(util.toPointer(BufferSize), util.toPointer(SessionCount), util.toPointer(SessionInfo));
 }
 
 export function GetIScsiSessionListA(
@@ -4953,7 +4965,7 @@ export function GetIScsiSessionListA(
   SessionCount: Deno.PointerValue | Uint8Array | null /* ptr */,
   SessionInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libISCSIDSC.GetIScsiSessionListA(util.toPointer(BufferSize), util.toPointer(SessionCount), util.toPointer(SessionInfo));
+  return libISCSIDSC_dll.GetIScsiSessionListA(util.toPointer(BufferSize), util.toPointer(SessionCount), util.toPointer(SessionInfo));
 }
 
 export function GetIScsiSessionListEx(
@@ -4961,7 +4973,7 @@ export function GetIScsiSessionListEx(
   SessionCountPtr: Deno.PointerValue | Uint8Array | null /* ptr */,
   SessionInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libISCSIDSC.GetIScsiSessionListEx(util.toPointer(BufferSize), util.toPointer(SessionCountPtr), util.toPointer(SessionInfo));
+  return libISCSIDSC_dll.GetIScsiSessionListEx(util.toPointer(BufferSize), util.toPointer(SessionCountPtr), util.toPointer(SessionInfo));
 }
 
 export function GetDevicesForIScsiSessionW(
@@ -4969,7 +4981,7 @@ export function GetDevicesForIScsiSessionW(
   DeviceCount: Deno.PointerValue | Uint8Array | null /* ptr */,
   Devices: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libISCSIDSC.GetDevicesForIScsiSessionW(util.toPointer(UniqueSessionId), util.toPointer(DeviceCount), util.toPointer(Devices));
+  return libISCSIDSC_dll.GetDevicesForIScsiSessionW(util.toPointer(UniqueSessionId), util.toPointer(DeviceCount), util.toPointer(Devices));
 }
 
 export function GetDevicesForIScsiSessionA(
@@ -4977,57 +4989,57 @@ export function GetDevicesForIScsiSessionA(
   DeviceCount: Deno.PointerValue | Uint8Array | null /* ptr */,
   Devices: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libISCSIDSC.GetDevicesForIScsiSessionA(util.toPointer(UniqueSessionId), util.toPointer(DeviceCount), util.toPointer(Devices));
+  return libISCSIDSC_dll.GetDevicesForIScsiSessionA(util.toPointer(UniqueSessionId), util.toPointer(DeviceCount), util.toPointer(Devices));
 }
 
 export function SetupPersistentIScsiVolumes(): number /* u32 */ {
-  return libISCSIDSC.SetupPersistentIScsiVolumes();
+  return libISCSIDSC_dll.SetupPersistentIScsiVolumes();
 }
 
 export function SetupPersistentIScsiDevices(): number /* u32 */ {
-  return libISCSIDSC.SetupPersistentIScsiDevices();
+  return libISCSIDSC_dll.SetupPersistentIScsiDevices();
 }
 
 export function AddPersistentIScsiDeviceW(
   DevicePath: string | null /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
-  return libISCSIDSC.AddPersistentIScsiDeviceW(util.pwstrToFfi(DevicePath));
+  return libISCSIDSC_dll.AddPersistentIScsiDeviceW(util.pwstrToFfi(DevicePath));
 }
 
 export function AddPersistentIScsiDeviceA(
   DevicePath: string | null /* Windows.Win32.Foundation.PSTR */,
 ): number /* u32 */ {
-  return libISCSIDSC.AddPersistentIScsiDeviceA(util.pstrToFfi(DevicePath));
+  return libISCSIDSC_dll.AddPersistentIScsiDeviceA(util.pstrToFfi(DevicePath));
 }
 
 export function RemovePersistentIScsiDeviceW(
   DevicePath: string | null /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
-  return libISCSIDSC.RemovePersistentIScsiDeviceW(util.pwstrToFfi(DevicePath));
+  return libISCSIDSC_dll.RemovePersistentIScsiDeviceW(util.pwstrToFfi(DevicePath));
 }
 
 export function RemovePersistentIScsiDeviceA(
   DevicePath: string | null /* Windows.Win32.Foundation.PSTR */,
 ): number /* u32 */ {
-  return libISCSIDSC.RemovePersistentIScsiDeviceA(util.pstrToFfi(DevicePath));
+  return libISCSIDSC_dll.RemovePersistentIScsiDeviceA(util.pstrToFfi(DevicePath));
 }
 
 export function ClearPersistentIScsiDevices(): number /* u32 */ {
-  return libISCSIDSC.ClearPersistentIScsiDevices();
+  return libISCSIDSC_dll.ClearPersistentIScsiDevices();
 }
 
 export function ReportPersistentIScsiDevicesW(
   BufferSizeInChar: Deno.PointerValue | Uint8Array | null /* ptr */,
   Buffer: string | null /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
-  return libISCSIDSC.ReportPersistentIScsiDevicesW(util.toPointer(BufferSizeInChar), util.pwstrToFfi(Buffer));
+  return libISCSIDSC_dll.ReportPersistentIScsiDevicesW(util.toPointer(BufferSizeInChar), util.pwstrToFfi(Buffer));
 }
 
 export function ReportPersistentIScsiDevicesA(
   BufferSizeInChar: Deno.PointerValue | Uint8Array | null /* ptr */,
   Buffer: string | null /* Windows.Win32.Foundation.PSTR */,
 ): number /* u32 */ {
-  return libISCSIDSC.ReportPersistentIScsiDevicesA(util.toPointer(BufferSizeInChar), util.pstrToFfi(Buffer));
+  return libISCSIDSC_dll.ReportPersistentIScsiDevicesA(util.toPointer(BufferSizeInChar), util.pstrToFfi(Buffer));
 }
 
 export function ReportIScsiTargetPortalsW(
@@ -5037,7 +5049,7 @@ export function ReportIScsiTargetPortalsW(
   ElementCount: Deno.PointerValue | Uint8Array | null /* ptr */,
   Portals: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libISCSIDSC.ReportIScsiTargetPortalsW(util.pwstrToFfi(InitiatorName), util.pwstrToFfi(TargetName), util.toPointer(TargetPortalTag), util.toPointer(ElementCount), util.toPointer(Portals));
+  return libISCSIDSC_dll.ReportIScsiTargetPortalsW(util.pwstrToFfi(InitiatorName), util.pwstrToFfi(TargetName), util.toPointer(TargetPortalTag), util.toPointer(ElementCount), util.toPointer(Portals));
 }
 
 export function ReportIScsiTargetPortalsA(
@@ -5047,44 +5059,44 @@ export function ReportIScsiTargetPortalsA(
   ElementCount: Deno.PointerValue | Uint8Array | null /* ptr */,
   Portals: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libISCSIDSC.ReportIScsiTargetPortalsA(util.pstrToFfi(InitiatorName), util.pstrToFfi(TargetName), util.toPointer(TargetPortalTag), util.toPointer(ElementCount), util.toPointer(Portals));
+  return libISCSIDSC_dll.ReportIScsiTargetPortalsA(util.pstrToFfi(InitiatorName), util.pstrToFfi(TargetName), util.toPointer(TargetPortalTag), util.toPointer(ElementCount), util.toPointer(Portals));
 }
 
 export function AddRadiusServerW(
   Address: string | null /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
-  return libISCSIDSC.AddRadiusServerW(util.pwstrToFfi(Address));
+  return libISCSIDSC_dll.AddRadiusServerW(util.pwstrToFfi(Address));
 }
 
 export function AddRadiusServerA(
   Address: string | null /* Windows.Win32.Foundation.PSTR */,
 ): number /* u32 */ {
-  return libISCSIDSC.AddRadiusServerA(util.pstrToFfi(Address));
+  return libISCSIDSC_dll.AddRadiusServerA(util.pstrToFfi(Address));
 }
 
 export function RemoveRadiusServerW(
   Address: string | null /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
-  return libISCSIDSC.RemoveRadiusServerW(util.pwstrToFfi(Address));
+  return libISCSIDSC_dll.RemoveRadiusServerW(util.pwstrToFfi(Address));
 }
 
 export function RemoveRadiusServerA(
   Address: string | null /* Windows.Win32.Foundation.PSTR */,
 ): number /* u32 */ {
-  return libISCSIDSC.RemoveRadiusServerA(util.pstrToFfi(Address));
+  return libISCSIDSC_dll.RemoveRadiusServerA(util.pstrToFfi(Address));
 }
 
 export function ReportRadiusServerListW(
   BufferSizeInChar: Deno.PointerValue | Uint8Array | null /* ptr */,
   Buffer: string | null /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
-  return libISCSIDSC.ReportRadiusServerListW(util.toPointer(BufferSizeInChar), util.pwstrToFfi(Buffer));
+  return libISCSIDSC_dll.ReportRadiusServerListW(util.toPointer(BufferSizeInChar), util.pwstrToFfi(Buffer));
 }
 
 export function ReportRadiusServerListA(
   BufferSizeInChar: Deno.PointerValue | Uint8Array | null /* ptr */,
   Buffer: string | null /* Windows.Win32.Foundation.PSTR */,
 ): number /* u32 */ {
-  return libISCSIDSC.ReportRadiusServerListA(util.toPointer(BufferSizeInChar), util.pstrToFfi(Buffer));
+  return libISCSIDSC_dll.ReportRadiusServerListA(util.toPointer(BufferSizeInChar), util.pstrToFfi(Buffer));
 }
 

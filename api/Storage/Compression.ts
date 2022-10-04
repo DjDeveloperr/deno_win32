@@ -54,7 +54,7 @@ export type BOOL = number;
 // Native Libraries
 
 try {
-  var libCabinet = Deno.dlopen("Cabinet", {
+  var libCabinet_dll = Deno.dlopen("Cabinet.dll", {
     CreateCompressor: {
       parameters: ["u32", "pointer", "pointer"],
       result: "i32",
@@ -113,7 +113,7 @@ export function CreateCompressor(
   AllocationRoutines: Deno.PointerValue | Uint8Array | null /* ptr */,
   CompressorHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libCabinet.CreateCompressor(Algorithm, util.toPointer(AllocationRoutines), util.toPointer(CompressorHandle)));
+  return util.boolFromFfi(libCabinet_dll.CreateCompressor(Algorithm, util.toPointer(AllocationRoutines), util.toPointer(CompressorHandle)));
 }
 
 export function SetCompressorInformation(
@@ -122,7 +122,7 @@ export function SetCompressorInformation(
   CompressInformation: Deno.PointerValue | Uint8Array | null /* ptr */,
   CompressInformationSize: Deno.PointerValue /* usize */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libCabinet.SetCompressorInformation(util.toPointer(CompressorHandle), CompressInformationClass, util.toPointer(CompressInformation), CompressInformationSize));
+  return util.boolFromFfi(libCabinet_dll.SetCompressorInformation(util.toPointer(CompressorHandle), CompressInformationClass, util.toPointer(CompressInformation), CompressInformationSize));
 }
 
 export function QueryCompressorInformation(
@@ -131,7 +131,7 @@ export function QueryCompressorInformation(
   CompressInformation: Deno.PointerValue | Uint8Array | null /* ptr */,
   CompressInformationSize: Deno.PointerValue /* usize */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libCabinet.QueryCompressorInformation(util.toPointer(CompressorHandle), CompressInformationClass, util.toPointer(CompressInformation), CompressInformationSize));
+  return util.boolFromFfi(libCabinet_dll.QueryCompressorInformation(util.toPointer(CompressorHandle), CompressInformationClass, util.toPointer(CompressInformation), CompressInformationSize));
 }
 
 export function Compress(
@@ -142,19 +142,19 @@ export function Compress(
   CompressedBufferSize: Deno.PointerValue /* usize */,
   CompressedDataSize: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libCabinet.Compress(util.toPointer(CompressorHandle), util.toPointer(UncompressedData), UncompressedDataSize, util.toPointer(CompressedBuffer), CompressedBufferSize, util.toPointer(CompressedDataSize)));
+  return util.boolFromFfi(libCabinet_dll.Compress(util.toPointer(CompressorHandle), util.toPointer(UncompressedData), UncompressedDataSize, util.toPointer(CompressedBuffer), CompressedBufferSize, util.toPointer(CompressedDataSize)));
 }
 
 export function ResetCompressor(
   CompressorHandle: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Storage.Compression.COMPRESSOR_HANDLE */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libCabinet.ResetCompressor(util.toPointer(CompressorHandle)));
+  return util.boolFromFfi(libCabinet_dll.ResetCompressor(util.toPointer(CompressorHandle)));
 }
 
 export function CloseCompressor(
   CompressorHandle: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Storage.Compression.COMPRESSOR_HANDLE */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libCabinet.CloseCompressor(util.toPointer(CompressorHandle)));
+  return util.boolFromFfi(libCabinet_dll.CloseCompressor(util.toPointer(CompressorHandle)));
 }
 
 export function CreateDecompressor(
@@ -162,7 +162,7 @@ export function CreateDecompressor(
   AllocationRoutines: Deno.PointerValue | Uint8Array | null /* ptr */,
   DecompressorHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libCabinet.CreateDecompressor(Algorithm, util.toPointer(AllocationRoutines), util.toPointer(DecompressorHandle)));
+  return util.boolFromFfi(libCabinet_dll.CreateDecompressor(Algorithm, util.toPointer(AllocationRoutines), util.toPointer(DecompressorHandle)));
 }
 
 export function SetDecompressorInformation(
@@ -171,7 +171,7 @@ export function SetDecompressorInformation(
   CompressInformation: Deno.PointerValue | Uint8Array | null /* ptr */,
   CompressInformationSize: Deno.PointerValue /* usize */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libCabinet.SetDecompressorInformation(DecompressorHandle, CompressInformationClass, util.toPointer(CompressInformation), CompressInformationSize));
+  return util.boolFromFfi(libCabinet_dll.SetDecompressorInformation(DecompressorHandle, CompressInformationClass, util.toPointer(CompressInformation), CompressInformationSize));
 }
 
 export function QueryDecompressorInformation(
@@ -180,7 +180,7 @@ export function QueryDecompressorInformation(
   CompressInformation: Deno.PointerValue | Uint8Array | null /* ptr */,
   CompressInformationSize: Deno.PointerValue /* usize */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libCabinet.QueryDecompressorInformation(DecompressorHandle, CompressInformationClass, util.toPointer(CompressInformation), CompressInformationSize));
+  return util.boolFromFfi(libCabinet_dll.QueryDecompressorInformation(DecompressorHandle, CompressInformationClass, util.toPointer(CompressInformation), CompressInformationSize));
 }
 
 export function Decompress(
@@ -191,18 +191,18 @@ export function Decompress(
   UncompressedBufferSize: Deno.PointerValue /* usize */,
   UncompressedDataSize: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libCabinet.Decompress(DecompressorHandle, util.toPointer(CompressedData), CompressedDataSize, util.toPointer(UncompressedBuffer), UncompressedBufferSize, util.toPointer(UncompressedDataSize)));
+  return util.boolFromFfi(libCabinet_dll.Decompress(DecompressorHandle, util.toPointer(CompressedData), CompressedDataSize, util.toPointer(UncompressedBuffer), UncompressedBufferSize, util.toPointer(UncompressedDataSize)));
 }
 
 export function ResetDecompressor(
   DecompressorHandle: Deno.PointerValue /* isize */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libCabinet.ResetDecompressor(DecompressorHandle));
+  return util.boolFromFfi(libCabinet_dll.ResetDecompressor(DecompressorHandle));
 }
 
 export function CloseDecompressor(
   DecompressorHandle: Deno.PointerValue /* isize */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libCabinet.CloseDecompressor(DecompressorHandle));
+  return util.boolFromFfi(libCabinet_dll.CloseDecompressor(DecompressorHandle));
 }
 

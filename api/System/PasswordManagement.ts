@@ -83,7 +83,7 @@ export type BOOLEAN = number;
 // Native Libraries
 
 try {
-  var libADVAPI32 = Deno.dlopen("ADVAPI32", {
+  var libADVAPI32_dll = Deno.dlopen("ADVAPI32.dll", {
     MSChapSrvChangePassword: {
       parameters: ["buffer", "buffer", "pointer", "pointer", "pointer", "pointer", "pointer"],
       result: "u32",
@@ -106,7 +106,7 @@ export function MSChapSrvChangePassword(
   NtOldOwfPassword: Deno.PointerValue | Uint8Array | null /* ptr */,
   NtNewOwfPassword: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libADVAPI32.MSChapSrvChangePassword(util.pwstrToFfi(ServerName), util.pwstrToFfi(UserName), util.toPointer(LmOldPresent), util.toPointer(LmOldOwfPassword), util.toPointer(LmNewOwfPassword), util.toPointer(NtOldOwfPassword), util.toPointer(NtNewOwfPassword));
+  return libADVAPI32_dll.MSChapSrvChangePassword(util.pwstrToFfi(ServerName), util.pwstrToFfi(UserName), util.toPointer(LmOldPresent), util.toPointer(LmOldOwfPassword), util.toPointer(LmNewOwfPassword), util.toPointer(NtOldOwfPassword), util.toPointer(NtNewOwfPassword));
 }
 
 export function MSChapSrvChangePassword2(
@@ -118,6 +118,6 @@ export function MSChapSrvChangePassword2(
   NewPasswordEncryptedWithOldLm: Deno.PointerValue | Uint8Array | null /* ptr */,
   OldLmOwfPasswordEncryptedWithNewLmOrNt: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libADVAPI32.MSChapSrvChangePassword2(util.pwstrToFfi(ServerName), util.pwstrToFfi(UserName), util.toPointer(NewPasswordEncryptedWithOldNt), util.toPointer(OldNtOwfPasswordEncryptedWithNewNt), util.toPointer(LmPresent), util.toPointer(NewPasswordEncryptedWithOldLm), util.toPointer(OldLmOwfPasswordEncryptedWithNewLmOrNt));
+  return libADVAPI32_dll.MSChapSrvChangePassword2(util.pwstrToFfi(ServerName), util.pwstrToFfi(UserName), util.toPointer(NewPasswordEncryptedWithOldNt), util.toPointer(OldNtOwfPasswordEncryptedWithNewNt), util.toPointer(LmPresent), util.toPointer(NewPasswordEncryptedWithOldLm), util.toPointer(OldLmOwfPasswordEncryptedWithNewLmOrNt));
 }
 

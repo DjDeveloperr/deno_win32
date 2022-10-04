@@ -573,7 +573,7 @@ export type HWND = Deno.PointerValue;
 // Native Libraries
 
 try {
-  var libNDFAPI = Deno.dlopen("NDFAPI", {
+  var libNDFAPI_dll = Deno.dlopen("NDFAPI.dll", {
     NdfCreateIncident: {
       parameters: ["buffer", "u32", "pointer", "pointer"],
       result: "pointer",
@@ -649,7 +649,7 @@ export function NdfCreateIncident(
   attributes: Deno.PointerValue | Uint8Array | null /* ptr */,
   handle: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libNDFAPI.NdfCreateIncident(util.pwstrToFfi(helperClassName), celt, util.toPointer(attributes), util.toPointer(handle)));
+  return util.pointerFromFfi(libNDFAPI_dll.NdfCreateIncident(util.pwstrToFfi(helperClassName), celt, util.toPointer(attributes), util.toPointer(handle)));
 }
 
 export function NdfCreateWinSockIncident(
@@ -660,14 +660,14 @@ export function NdfCreateWinSockIncident(
   userId: Deno.PointerValue | Uint8Array | null /* ptr */,
   handle: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libNDFAPI.NdfCreateWinSockIncident(util.toPointer(sock), util.pwstrToFfi(host), port, util.pwstrToFfi(appId), util.toPointer(userId), util.toPointer(handle)));
+  return util.pointerFromFfi(libNDFAPI_dll.NdfCreateWinSockIncident(util.toPointer(sock), util.pwstrToFfi(host), port, util.pwstrToFfi(appId), util.toPointer(userId), util.toPointer(handle)));
 }
 
 export function NdfCreateWebIncident(
   url: string | null /* Windows.Win32.Foundation.PWSTR */,
   handle: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libNDFAPI.NdfCreateWebIncident(util.pwstrToFfi(url), util.toPointer(handle)));
+  return util.pointerFromFfi(libNDFAPI_dll.NdfCreateWebIncident(util.pwstrToFfi(url), util.toPointer(handle)));
 }
 
 export function NdfCreateWebIncidentEx(
@@ -676,14 +676,14 @@ export function NdfCreateWebIncidentEx(
   moduleName: string | null /* Windows.Win32.Foundation.PWSTR */,
   handle: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libNDFAPI.NdfCreateWebIncidentEx(util.pwstrToFfi(url), util.boolToFfi(useWinHTTP), util.pwstrToFfi(moduleName), util.toPointer(handle)));
+  return util.pointerFromFfi(libNDFAPI_dll.NdfCreateWebIncidentEx(util.pwstrToFfi(url), util.boolToFfi(useWinHTTP), util.pwstrToFfi(moduleName), util.toPointer(handle)));
 }
 
 export function NdfCreateSharingIncident(
   UNCPath: string | null /* Windows.Win32.Foundation.PWSTR */,
   handle: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libNDFAPI.NdfCreateSharingIncident(util.pwstrToFfi(UNCPath), util.toPointer(handle)));
+  return util.pointerFromFfi(libNDFAPI_dll.NdfCreateSharingIncident(util.pwstrToFfi(UNCPath), util.toPointer(handle)));
 }
 
 export function NdfCreateDNSIncident(
@@ -691,20 +691,20 @@ export function NdfCreateDNSIncident(
   queryType: number /* u16 */,
   handle: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libNDFAPI.NdfCreateDNSIncident(util.pwstrToFfi(hostname), queryType, util.toPointer(handle)));
+  return util.pointerFromFfi(libNDFAPI_dll.NdfCreateDNSIncident(util.pwstrToFfi(hostname), queryType, util.toPointer(handle)));
 }
 
 export function NdfCreateConnectivityIncident(
   handle: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libNDFAPI.NdfCreateConnectivityIncident(util.toPointer(handle)));
+  return util.pointerFromFfi(libNDFAPI_dll.NdfCreateConnectivityIncident(util.toPointer(handle)));
 }
 
 export function NdfCreateNetConnectionIncident(
   handle: Deno.PointerValue | Uint8Array | null /* ptr */,
   id: Uint8Array | Deno.PointerValue | null /* System.Guid */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libNDFAPI.NdfCreateNetConnectionIncident(util.toPointer(handle), util.toPointer(id)));
+  return util.pointerFromFfi(libNDFAPI_dll.NdfCreateNetConnectionIncident(util.toPointer(handle), util.toPointer(id)));
 }
 
 export function NdfCreatePnrpIncident(
@@ -714,7 +714,7 @@ export function NdfCreatePnrpIncident(
   appId: string | null /* Windows.Win32.Foundation.PWSTR */,
   handle: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libNDFAPI.NdfCreatePnrpIncident(util.pwstrToFfi(cloudname), util.pwstrToFfi(peername), util.boolToFfi(diagnosePublish), util.pwstrToFfi(appId), util.toPointer(handle)));
+  return util.pointerFromFfi(libNDFAPI_dll.NdfCreatePnrpIncident(util.pwstrToFfi(cloudname), util.pwstrToFfi(peername), util.boolToFfi(diagnosePublish), util.pwstrToFfi(appId), util.toPointer(handle)));
 }
 
 export function NdfCreateGroupingIncident(
@@ -726,20 +726,20 @@ export function NdfCreateGroupingIncident(
   appId: string | null /* Windows.Win32.Foundation.PWSTR */,
   handle: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libNDFAPI.NdfCreateGroupingIncident(util.pwstrToFfi(CloudName), util.pwstrToFfi(GroupName), util.pwstrToFfi(Identity), util.pwstrToFfi(Invitation), util.toPointer(Addresses), util.pwstrToFfi(appId), util.toPointer(handle)));
+  return util.pointerFromFfi(libNDFAPI_dll.NdfCreateGroupingIncident(util.pwstrToFfi(CloudName), util.pwstrToFfi(GroupName), util.pwstrToFfi(Identity), util.pwstrToFfi(Invitation), util.toPointer(Addresses), util.pwstrToFfi(appId), util.toPointer(handle)));
 }
 
 export function NdfExecuteDiagnosis(
   handle: Deno.PointerValue | Uint8Array | null /* ptr */,
   hwnd: Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libNDFAPI.NdfExecuteDiagnosis(util.toPointer(handle), util.hwndToFfi(hwnd)));
+  return util.pointerFromFfi(libNDFAPI_dll.NdfExecuteDiagnosis(util.toPointer(handle), util.hwndToFfi(hwnd)));
 }
 
 export function NdfCloseIncident(
   handle: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libNDFAPI.NdfCloseIncident(util.toPointer(handle)));
+  return util.pointerFromFfi(libNDFAPI_dll.NdfCloseIncident(util.toPointer(handle)));
 }
 
 export function NdfDiagnoseIncident(
@@ -749,7 +749,7 @@ export function NdfDiagnoseIncident(
   dwWait: number /* u32 */,
   dwFlags: number /* u32 */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libNDFAPI.NdfDiagnoseIncident(util.toPointer(Handle), util.toPointer(RootCauseCount), util.toPointer(RootCauses), dwWait, dwFlags));
+  return util.pointerFromFfi(libNDFAPI_dll.NdfDiagnoseIncident(util.toPointer(Handle), util.toPointer(RootCauseCount), util.toPointer(RootCauses), dwWait, dwFlags));
 }
 
 export function NdfRepairIncident(
@@ -757,19 +757,19 @@ export function NdfRepairIncident(
   RepairEx: Deno.PointerValue | Uint8Array | null /* ptr */,
   dwWait: number /* u32 */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libNDFAPI.NdfRepairIncident(util.toPointer(Handle), util.toPointer(RepairEx), dwWait));
+  return util.pointerFromFfi(libNDFAPI_dll.NdfRepairIncident(util.toPointer(Handle), util.toPointer(RepairEx), dwWait));
 }
 
 export function NdfCancelIncident(
   Handle: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libNDFAPI.NdfCancelIncident(util.toPointer(Handle)));
+  return util.pointerFromFfi(libNDFAPI_dll.NdfCancelIncident(util.toPointer(Handle)));
 }
 
 export function NdfGetTraceFile(
   Handle: Deno.PointerValue | Uint8Array | null /* ptr */,
   TraceFileLocation: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libNDFAPI.NdfGetTraceFile(util.toPointer(Handle), util.toPointer(TraceFileLocation)));
+  return util.pointerFromFfi(libNDFAPI_dll.NdfGetTraceFile(util.toPointer(Handle), util.toPointer(TraceFileLocation)));
 }
 

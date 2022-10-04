@@ -144,7 +144,7 @@ export const DXGI_COLOR_SPACE_RGB_STUDIO_G24_NONE_P2020 = 21;
 export const DXGI_COLOR_SPACE_YCBCR_STUDIO_G24_LEFT_P709 = 22;
 export const DXGI_COLOR_SPACE_YCBCR_STUDIO_G24_LEFT_P2020 = 23;
 export const DXGI_COLOR_SPACE_YCBCR_STUDIO_G24_TOPLEFT_P2020 = 24;
-export const DXGI_COLOR_SPACE_CUSTOM = "-1";
+export const DXGI_COLOR_SPACE_CUSTOM = `-1`;
 export const DXGI_FORMAT_UNKNOWN = 0;
 export const DXGI_FORMAT_R32G32B32A32_TYPELESS = 1;
 export const DXGI_FORMAT_R32G32B32A32_FLOAT = 2;
@@ -2265,7 +2265,7 @@ export type HRESULT = number;
 // Native Libraries
 
 try {
-  var libdxgi = Deno.dlopen("dxgi", {
+  var libdxgi_dll = Deno.dlopen("dxgi.dll", {
     CreateDXGIFactory: {
       parameters: ["pointer", "pointer"],
       result: "pointer",
@@ -2295,14 +2295,14 @@ export function CreateDXGIFactory(
   riid: Deno.PointerValue | Uint8Array | null /* ptr */,
   ppFactory: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libdxgi.CreateDXGIFactory(util.toPointer(riid), util.toPointer(ppFactory)));
+  return util.pointerFromFfi(libdxgi_dll.CreateDXGIFactory(util.toPointer(riid), util.toPointer(ppFactory)));
 }
 
 export function CreateDXGIFactory1(
   riid: Deno.PointerValue | Uint8Array | null /* ptr */,
   ppFactory: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libdxgi.CreateDXGIFactory1(util.toPointer(riid), util.toPointer(ppFactory)));
+  return util.pointerFromFfi(libdxgi_dll.CreateDXGIFactory1(util.toPointer(riid), util.toPointer(ppFactory)));
 }
 
 export function CreateDXGIFactory2(
@@ -2310,7 +2310,7 @@ export function CreateDXGIFactory2(
   riid: Deno.PointerValue | Uint8Array | null /* ptr */,
   ppFactory: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libdxgi.CreateDXGIFactory2(Flags, util.toPointer(riid), util.toPointer(ppFactory)));
+  return util.pointerFromFfi(libdxgi_dll.CreateDXGIFactory2(Flags, util.toPointer(riid), util.toPointer(ppFactory)));
 }
 
 export function DXGIGetDebugInterface1(
@@ -2318,10 +2318,10 @@ export function DXGIGetDebugInterface1(
   riid: Deno.PointerValue | Uint8Array | null /* ptr */,
   pDebug: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libdxgi.DXGIGetDebugInterface1(Flags, util.toPointer(riid), util.toPointer(pDebug)));
+  return util.pointerFromFfi(libdxgi_dll.DXGIGetDebugInterface1(Flags, util.toPointer(riid), util.toPointer(pDebug)));
 }
 
 export function DXGIDeclareAdapterRemovalSupport(): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libdxgi.DXGIDeclareAdapterRemovalSupport());
+  return util.pointerFromFfi(libdxgi_dll.DXGIDeclareAdapterRemovalSupport());
 }
 

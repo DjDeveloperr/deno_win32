@@ -168,8 +168,8 @@ export const D3D11_COMMONSHADER_TEMP_REGISTER_COUNT = 4096;
 export const D3D11_COMMONSHADER_TEMP_REGISTER_READS_PER_INST = 3;
 export const D3D11_COMMONSHADER_TEMP_REGISTER_READ_PORTS = 3;
 export const D3D11_COMMONSHADER_TEXCOORD_RANGE_REDUCTION_MAX = 10;
-export const D3D11_COMMONSHADER_TEXCOORD_RANGE_REDUCTION_MIN = "-10";
-export const D3D11_COMMONSHADER_TEXEL_OFFSET_MAX_NEGATIVE = "-8";
+export const D3D11_COMMONSHADER_TEXCOORD_RANGE_REDUCTION_MIN = `-10`;
+export const D3D11_COMMONSHADER_TEXEL_OFFSET_MAX_NEGATIVE = `-8`;
 export const D3D11_COMMONSHADER_TEXEL_OFFSET_MAX_POSITIVE = 7;
 export const D3D11_CS_4_X_BUCKET00_MAX_BYTES_TGSM_WRITABLE_PER_THREAD = 256;
 export const D3D11_CS_4_X_BUCKET00_MAX_NUM_THREADS_PER_GROUP = 64;
@@ -280,17 +280,17 @@ export const D3D11_DS_INPUT_PRIMITIVE_ID_REGISTER_READ_PORTS = 1;
 export const D3D11_DS_OUTPUT_REGISTER_COMPONENTS = 4;
 export const D3D11_DS_OUTPUT_REGISTER_COMPONENT_BIT_COUNT = 32;
 export const D3D11_DS_OUTPUT_REGISTER_COUNT = 32;
-export const D3D11_FLOAT16_FUSED_TOLERANCE_IN_ULP = "0.6";
-export const D3D11_FLOAT32_MAX = "3.4028234663852886e+38";
-export const D3D11_FLOAT32_TO_INTEGER_TOLERANCE_IN_ULP = "0.6000000238418579";
-export const D3D11_FLOAT_TO_SRGB_EXPONENT_DENOMINATOR = "2.4000000953674316";
+export const D3D11_FLOAT16_FUSED_TOLERANCE_IN_ULP = `0.6`;
+export const D3D11_FLOAT32_MAX = `3.4028234663852886e+38`;
+export const D3D11_FLOAT32_TO_INTEGER_TOLERANCE_IN_ULP = `0.6000000238418579`;
+export const D3D11_FLOAT_TO_SRGB_EXPONENT_DENOMINATOR = `2.4000000953674316`;
 export const D3D11_FLOAT_TO_SRGB_EXPONENT_NUMERATOR = 1;
-export const D3D11_FLOAT_TO_SRGB_OFFSET = "0.054999999701976776";
-export const D3D11_FLOAT_TO_SRGB_SCALE_1 = "12.920000076293945";
-export const D3D11_FLOAT_TO_SRGB_SCALE_2 = "1.0549999475479126";
-export const D3D11_FLOAT_TO_SRGB_THRESHOLD = "0.0031308000907301903";
+export const D3D11_FLOAT_TO_SRGB_OFFSET = `0.054999999701976776`;
+export const D3D11_FLOAT_TO_SRGB_SCALE_1 = `12.920000076293945`;
+export const D3D11_FLOAT_TO_SRGB_SCALE_2 = `1.0549999475479126`;
+export const D3D11_FLOAT_TO_SRGB_THRESHOLD = `0.0031308000907301903`;
 export const D3D11_FTOI_INSTRUCTION_MAX_INPUT = 2147483648;
-export const D3D11_FTOI_INSTRUCTION_MIN_INPUT = "-2147483648";
+export const D3D11_FTOI_INSTRUCTION_MIN_INPUT = `-2147483648`;
 export const D3D11_FTOU_INSTRUCTION_MAX_INPUT = 4294967296;
 export const D3D11_FTOU_INSTRUCTION_MIN_INPUT = 0;
 export const D3D11_GS_INPUT_INSTANCE_ID_READS_PER_INST = 2;
@@ -374,17 +374,17 @@ export const D3D11_MAX_BORDER_COLOR_COMPONENT = 1;
 export const D3D11_MAX_DEPTH = 1;
 export const D3D11_MAX_MAXANISOTROPY = 16;
 export const D3D11_MAX_MULTISAMPLE_SAMPLE_COUNT = 32;
-export const D3D11_MAX_POSITION_VALUE = "3.4028235832468283e+34";
+export const D3D11_MAX_POSITION_VALUE = `3.4028235832468283e+34`;
 export const D3D11_MAX_TEXTURE_DIMENSION_2_TO_EXP = 17;
 export const D3D11_MINOR_VERSION = 0;
 export const D3D11_MIN_BORDER_COLOR_COMPONENT = 0;
 export const D3D11_MIN_DEPTH = 0;
 export const D3D11_MIN_MAXANISOTROPY = 0;
-export const D3D11_MIP_LOD_BIAS_MAX = "15.989999771118164";
-export const D3D11_MIP_LOD_BIAS_MIN = "-16";
+export const D3D11_MIP_LOD_BIAS_MAX = `15.989999771118164`;
+export const D3D11_MIP_LOD_BIAS_MIN = `-16`;
 export const D3D11_MIP_LOD_FRACTIONAL_BIT_COUNT = 8;
 export const D3D11_MIP_LOD_RANGE_BIT_COUNT = 8;
-export const D3D11_MULTISAMPLE_ANTIALIAS_LINE_WIDTH = "1.399999976158142";
+export const D3D11_MULTISAMPLE_ANTIALIAS_LINE_WIDTH = `1.399999976158142`;
 export const D3D11_NONSAMPLE_FETCH_OUT_OF_RANGE_ACCESS_RESULT = 0;
 export const D3D11_PIXEL_ADDRESS_RANGE_BIT_COUNT = 15;
 export const D3D11_PRE_SCISSOR_PIXEL_ADDRESS_RANGE_BIT_COUNT = 16;
@@ -410,7 +410,7 @@ export const D3D11_PS_OUTPUT_MASK_REGISTER_COUNT = 1;
 export const D3D11_PS_OUTPUT_REGISTER_COMPONENTS = 4;
 export const D3D11_PS_OUTPUT_REGISTER_COMPONENT_BIT_COUNT = 32;
 export const D3D11_PS_OUTPUT_REGISTER_COUNT = 8;
-export const D3D11_PS_PIXEL_CENTER_FRACTIONAL_COMPONENT = "0.5";
+export const D3D11_PS_PIXEL_CENTER_FRACTIONAL_COMPONENT = `0.5`;
 export const D3D11_RAW_UAV_SRV_BYTE_ALIGNMENT = 16;
 export const D3D11_REQ_BLEND_OBJECT_COUNT_PER_DEVICE = 4096;
 export const D3D11_REQ_BUFFER_RESOURCE_TEXEL_COUNT_2_TO_EXP = 27;
@@ -427,7 +427,7 @@ export const D3D11_REQ_MULTI_ELEMENT_STRUCTURE_SIZE_IN_BYTES = 2048;
 export const D3D11_REQ_RASTERIZER_OBJECT_COUNT_PER_DEVICE = 4096;
 export const D3D11_REQ_RENDER_TO_BUFFER_WINDOW_WIDTH = 16384;
 export const D3D11_REQ_RESOURCE_SIZE_IN_MEGABYTES_EXPRESSION_A_TERM = 128;
-export const D3D11_REQ_RESOURCE_SIZE_IN_MEGABYTES_EXPRESSION_B_TERM = "0.25";
+export const D3D11_REQ_RESOURCE_SIZE_IN_MEGABYTES_EXPRESSION_B_TERM = `0.25`;
 export const D3D11_REQ_RESOURCE_SIZE_IN_MEGABYTES_EXPRESSION_C_TERM = 2048;
 export const D3D11_REQ_RESOURCE_VIEW_COUNT_PER_DEVICE_2_TO_EXP = 20;
 export const D3D11_REQ_SAMPLER_OBJECT_COUNT_PER_DEVICE = 4096;
@@ -457,14 +457,14 @@ export const D3D11_SO_STREAM_COUNT = 4;
 export const D3D11_SPEC_DATE_DAY = 16;
 export const D3D11_SPEC_DATE_MONTH = 5;
 export const D3D11_SPEC_DATE_YEAR = 2011;
-export const D3D11_SPEC_VERSION = "1.07";
-export const D3D11_SRGB_GAMMA = "2.200000047683716";
-export const D3D11_SRGB_TO_FLOAT_DENOMINATOR_1 = "12.920000076293945";
-export const D3D11_SRGB_TO_FLOAT_DENOMINATOR_2 = "1.0549999475479126";
-export const D3D11_SRGB_TO_FLOAT_EXPONENT = "2.4000000953674316";
-export const D3D11_SRGB_TO_FLOAT_OFFSET = "0.054999999701976776";
-export const D3D11_SRGB_TO_FLOAT_THRESHOLD = "0.040449999272823334";
-export const D3D11_SRGB_TO_FLOAT_TOLERANCE_IN_ULP = "0.5";
+export const D3D11_SPEC_VERSION = `1.07`;
+export const D3D11_SRGB_GAMMA = `2.200000047683716`;
+export const D3D11_SRGB_TO_FLOAT_DENOMINATOR_1 = `12.920000076293945`;
+export const D3D11_SRGB_TO_FLOAT_DENOMINATOR_2 = `1.0549999475479126`;
+export const D3D11_SRGB_TO_FLOAT_EXPONENT = `2.4000000953674316`;
+export const D3D11_SRGB_TO_FLOAT_OFFSET = `0.054999999701976776`;
+export const D3D11_SRGB_TO_FLOAT_THRESHOLD = `0.040449999272823334`;
+export const D3D11_SRGB_TO_FLOAT_TOLERANCE_IN_ULP = `0.5`;
 export const D3D11_STANDARD_COMPONENT_BIT_COUNT = 32;
 export const D3D11_STANDARD_COMPONENT_BIT_COUNT_DOUBLED = 64;
 export const D3D11_STANDARD_MAXIMUM_ELEMENT_ALIGNMENT_BYTE_MULTIPLE = 4;
@@ -487,7 +487,7 @@ export const D3D11_UNBOUND_MEMORY_ACCESS_RESULT = 0;
 export const D3D11_VIEWPORT_AND_SCISSORRECT_MAX_INDEX = 15;
 export const D3D11_VIEWPORT_AND_SCISSORRECT_OBJECT_COUNT_PER_PIPELINE = 16;
 export const D3D11_VIEWPORT_BOUNDS_MAX = 32767;
-export const D3D11_VIEWPORT_BOUNDS_MIN = "-32768";
+export const D3D11_VIEWPORT_BOUNDS_MIN = `-32768`;
 export const D3D11_VS_INPUT_REGISTER_COMPONENTS = 4;
 export const D3D11_VS_INPUT_REGISTER_COMPONENT_BIT_COUNT = 32;
 export const D3D11_VS_INPUT_REGISTER_COUNT = 32;
@@ -523,8 +523,25 @@ export const D3D11_DEBUG_FEATURE_ALWAYS_DISCARD_OFFERED_RESOURCE = 8;
 export const D3D11_DEBUG_FEATURE_NEVER_DISCARD_OFFERED_RESOURCE = 16;
 export const D3D11_DEBUG_FEATURE_AVOID_BEHAVIOR_CHANGING_DEBUG_AIDS = 64;
 export const D3D11_DEBUG_FEATURE_DISABLE_TILED_RESOURCE_MAPPING_TRACKING_AND_VALIDATION = 128;
+export const D3D11_REGKEY_PATH = `Software\Microsoft\Direct3D`;
+export const D3D11_MUTE_DEBUG_OUTPUT = `MuteDebugOutput`;
+export const D3D11_ENABLE_BREAK_ON_MESSAGE = `EnableBreakOnMessage`;
+export const D3D11_INFOQUEUE_STORAGE_FILTER_OVERRIDE = `InfoQueueStorageFilterOverride`;
+export const D3D11_MUTE_CATEGORY = `Mute_CATEGORY_%s`;
+export const D3D11_MUTE_SEVERITY = `Mute_SEVERITY_%s`;
+export const D3D11_MUTE_ID_STRING = `Mute_ID_%s`;
+export const D3D11_MUTE_ID_DECIMAL = `Mute_ID_%d`;
+export const D3D11_UNMUTE_SEVERITY_INFO = `Unmute_SEVERITY_INFO`;
+export const D3D11_BREAKON_CATEGORY = `BreakOn_CATEGORY_%s`;
+export const D3D11_BREAKON_SEVERITY = `BreakOn_SEVERITY_%s`;
+export const D3D11_BREAKON_ID_STRING = `BreakOn_ID_%s`;
+export const D3D11_BREAKON_ID_DECIMAL = `BreakOn_ID_%d`;
+export const D3D11_APPSIZE_STRING = `Size`;
+export const D3D11_APPNAME_STRING = `Name`;
+export const D3D11_FORCE_DEBUGGABLE = `ForceDebuggable`;
+export const D3D11_FORCE_SHADER_SKIP_OPTIMIZATION = `ForceShaderSkipOptimization`;
 export const D3D11_INFO_QUEUE_DEFAULT_MESSAGE_COUNT_LIMIT = 1024;
-export const D3D_RETURN_PARAMETER_INDEX = "-1";
+export const D3D_RETURN_PARAMETER_INDEX = `-1`;
 export const D3D_SHADER_REQUIRES_DOUBLES = 1;
 export const D3D_SHADER_REQUIRES_EARLY_DEPTH_STENCIL = 2;
 export const D3D_SHADER_REQUIRES_UAVS_AT_EVERY_STAGE = 4;
@@ -548,6 +565,9 @@ export const D3D11_TRACE_MISC_GS_EMIT_STREAM = 8;
 export const D3D11_TRACE_MISC_GS_CUT_STREAM = 16;
 export const D3D11_TRACE_MISC_HALT = 32;
 export const D3D11_TRACE_MISC_MESSAGE = 64;
+export const D3DCSX_DLL_W = `d3dcsx_47.dll`;
+export const D3DCSX_DLL_A = `d3dcsx_47.dll`;
+export const D3DCSX_DLL = `d3dcsx_47.dll`;
 export const D3DX11_FFT_MAX_PRECOMPUTE_BUFFERS = 4;
 export const D3DX11_FFT_MAX_TEMP_BUFFERS = 4;
 export const D3DX11_FFT_MAX_DIMENSIONS = 32;
@@ -967,8 +987,8 @@ export const D3D11_COUNTER_TYPE_FLOAT32 = 0;
 export const D3D11_COUNTER_TYPE_UINT16 = 1;
 export const D3D11_COUNTER_TYPE_UINT32 = 2;
 export const D3D11_COUNTER_TYPE_UINT64 = 3;
-export const D3D11_STANDARD_MULTISAMPLE_PATTERN = "-1";
-export const D3D11_CENTER_MULTISAMPLE_PATTERN = "-2";
+export const D3D11_STANDARD_MULTISAMPLE_PATTERN = `-1`;
+export const D3D11_CENTER_MULTISAMPLE_PATTERN = `-2`;
 export const D3D11_DEVICE_CONTEXT_IMMEDIATE = 0;
 export const D3D11_DEVICE_CONTEXT_DEFERRED = 1;
 export const D3D11_FEATURE_THREADING = 0;
@@ -1077,7 +1097,7 @@ export const D3D11_VIDEO_PROCESSOR_ITELECINE_CAPS_55 = 32;
 export const D3D11_VIDEO_PROCESSOR_ITELECINE_CAPS_64 = 64;
 export const D3D11_VIDEO_PROCESSOR_ITELECINE_CAPS_87 = 128;
 export const D3D11_VIDEO_PROCESSOR_ITELECINE_CAPS_222222222223 = 256;
-export const D3D11_VIDEO_PROCESSOR_ITELECINE_CAPS_OTHER = "-2147483648";
+export const D3D11_VIDEO_PROCESSOR_ITELECINE_CAPS_OTHER = `-2147483648`;
 export const D3D11_CONTENT_PROTECTION_CAPS_SOFTWARE = 1;
 export const D3D11_CONTENT_PROTECTION_CAPS_HARDWARE = 2;
 export const D3D11_CONTENT_PROTECTION_CAPS_PROTECTION_ALWAYS_ON = 4;
@@ -1149,7 +1169,7 @@ export const D3D11_BUS_IMPL_MODIFIER_TRACKS_ON_MOTHER_BOARD_TO_CHIP = 131072;
 export const D3D11_BUS_IMPL_MODIFIER_TRACKS_ON_MOTHER_BOARD_TO_SOCKET = 196608;
 export const D3D11_BUS_IMPL_MODIFIER_DAUGHTER_BOARD_CONNECTOR = 262144;
 export const D3D11_BUS_IMPL_MODIFIER_DAUGHTER_BOARD_CONNECTOR_INSIDE_OF_NUAE = 327680;
-export const D3D11_BUS_IMPL_MODIFIER_NON_STANDARD = "-2147483648";
+export const D3D11_BUS_IMPL_MODIFIER_NON_STANDARD = `-2147483648`;
 export const D3D11_VDOV_DIMENSION_UNKNOWN = 0;
 export const D3D11_VDOV_DIMENSION_TEXTURE2D = 1;
 export const D3D11_VPIV_DIMENSION_UNKNOWN = 0;
@@ -2600,7 +2620,7 @@ export const DXGI_COLOR_SPACE_RGB_STUDIO_G24_NONE_P2020 = 21;
 export const DXGI_COLOR_SPACE_YCBCR_STUDIO_G24_LEFT_P709 = 22;
 export const DXGI_COLOR_SPACE_YCBCR_STUDIO_G24_LEFT_P2020 = 23;
 export const DXGI_COLOR_SPACE_YCBCR_STUDIO_G24_TOPLEFT_P2020 = 24;
-export const DXGI_COLOR_SPACE_CUSTOM = "-1";
+export const DXGI_COLOR_SPACE_CUSTOM = `-1`;
 export const D3D11_TILE_MAPPING_NO_OVERWRITE = 1;
 export const D3D11_TILE_RANGE_NULL = 1;
 export const D3D11_TILE_RANGE_SKIP = 2;
@@ -3707,12 +3727,12 @@ export interface D3D11_BUFFER_DESC {
   ByteWidth: number;
   /** Windows.Win32.Graphics.Direct3D11.D3D11_USAGE */
   Usage: D3D11_USAGE;
-  /** u32 */
-  BindFlags: number;
-  /** u32 */
-  CPUAccessFlags: number;
-  /** u32 */
-  MiscFlags: number;
+  /** Windows.Win32.Graphics.Direct3D11.D3D11_BIND_FLAG */
+  BindFlags: D3D11_BIND_FLAG;
+  /** Windows.Win32.Graphics.Direct3D11.D3D11_CPU_ACCESS_FLAG */
+  CPUAccessFlags: D3D11_CPU_ACCESS_FLAG;
+  /** Windows.Win32.Graphics.Direct3D11.D3D11_RESOURCE_MISC_FLAG */
+  MiscFlags: D3D11_RESOURCE_MISC_FLAG;
   /** u32 */
   StructureByteStride: number;
 }
@@ -3751,12 +3771,12 @@ export interface D3D11_TEXTURE1D_DESC {
   Format: DXGI_FORMAT;
   /** Windows.Win32.Graphics.Direct3D11.D3D11_USAGE */
   Usage: D3D11_USAGE;
-  /** u32 */
-  BindFlags: number;
-  /** u32 */
-  CPUAccessFlags: number;
-  /** u32 */
-  MiscFlags: number;
+  /** Windows.Win32.Graphics.Direct3D11.D3D11_BIND_FLAG */
+  BindFlags: D3D11_BIND_FLAG;
+  /** Windows.Win32.Graphics.Direct3D11.D3D11_CPU_ACCESS_FLAG */
+  CPUAccessFlags: D3D11_CPU_ACCESS_FLAG;
+  /** Windows.Win32.Graphics.Direct3D11.D3D11_RESOURCE_MISC_FLAG */
+  MiscFlags: D3D11_RESOURCE_MISC_FLAG;
 }
 
 export const sizeofD3D11_TEXTURE1D_DESC = 32;
@@ -3876,12 +3896,12 @@ export interface D3D11_TEXTURE3D_DESC {
   Format: DXGI_FORMAT;
   /** Windows.Win32.Graphics.Direct3D11.D3D11_USAGE */
   Usage: D3D11_USAGE;
-  /** u32 */
-  BindFlags: number;
-  /** u32 */
-  CPUAccessFlags: number;
-  /** u32 */
-  MiscFlags: number;
+  /** Windows.Win32.Graphics.Direct3D11.D3D11_BIND_FLAG */
+  BindFlags: D3D11_BIND_FLAG;
+  /** Windows.Win32.Graphics.Direct3D11.D3D11_CPU_ACCESS_FLAG */
+  CPUAccessFlags: D3D11_CPU_ACCESS_FLAG;
+  /** Windows.Win32.Graphics.Direct3D11.D3D11_RESOURCE_MISC_FLAG */
+  MiscFlags: D3D11_RESOURCE_MISC_FLAG;
 }
 
 export const sizeofD3D11_TEXTURE3D_DESC = 40;
@@ -7948,12 +7968,12 @@ export interface D3D11_TEXTURE2D_DESC1 {
   SampleDesc: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.Graphics.Direct3D11.D3D11_USAGE */
   Usage: D3D11_USAGE;
-  /** u32 */
-  BindFlags: number;
-  /** u32 */
-  CPUAccessFlags: number;
-  /** u32 */
-  MiscFlags: number;
+  /** Windows.Win32.Graphics.Direct3D11.D3D11_BIND_FLAG */
+  BindFlags: D3D11_BIND_FLAG;
+  /** Windows.Win32.Graphics.Direct3D11.D3D11_CPU_ACCESS_FLAG */
+  CPUAccessFlags: D3D11_CPU_ACCESS_FLAG;
+  /** Windows.Win32.Graphics.Direct3D11.D3D11_RESOURCE_MISC_FLAG */
+  MiscFlags: D3D11_RESOURCE_MISC_FLAG;
   /** Windows.Win32.Graphics.Direct3D11.D3D11_TEXTURE_LAYOUT */
   TextureLayout: D3D11_TEXTURE_LAYOUT;
 }
@@ -8006,12 +8026,12 @@ export interface D3D11_TEXTURE3D_DESC1 {
   Format: DXGI_FORMAT;
   /** Windows.Win32.Graphics.Direct3D11.D3D11_USAGE */
   Usage: D3D11_USAGE;
-  /** u32 */
-  BindFlags: number;
-  /** u32 */
-  CPUAccessFlags: number;
-  /** u32 */
-  MiscFlags: number;
+  /** Windows.Win32.Graphics.Direct3D11.D3D11_BIND_FLAG */
+  BindFlags: D3D11_BIND_FLAG;
+  /** Windows.Win32.Graphics.Direct3D11.D3D11_CPU_ACCESS_FLAG */
+  CPUAccessFlags: D3D11_CPU_ACCESS_FLAG;
+  /** Windows.Win32.Graphics.Direct3D11.D3D11_RESOURCE_MISC_FLAG */
+  MiscFlags: D3D11_RESOURCE_MISC_FLAG;
   /** Windows.Win32.Graphics.Direct3D11.D3D11_TEXTURE_LAYOUT */
   TextureLayout: D3D11_TEXTURE_LAYOUT;
 }
@@ -9604,7 +9624,7 @@ export type HINSTANCE = Deno.PointerValue;
 // Native Libraries
 
 try {
-  var libd3d11 = Deno.dlopen("d3d11", {
+  var libd3d11_dll = Deno.dlopen("d3d11.dll", {
     D3D11CreateDevice: {
       parameters: ["pointer", "i32", "pointer", "u32", "pointer", "u32", "u32", "pointer", "pointer", "pointer"],
       result: "pointer",
@@ -9617,7 +9637,7 @@ try {
 } catch(e) { /* ignore */ }
 
 try {
-  var libD3DCOMPILER_47 = Deno.dlopen("D3DCOMPILER_47", {
+  var libD3DCOMPILER_47_dll = Deno.dlopen("D3DCOMPILER_47.dll", {
     D3DDisassemble11Trace: {
       parameters: ["pointer", "usize", "pointer", "u32", "u32", "u32", "pointer"],
       result: "pointer",
@@ -9626,7 +9646,7 @@ try {
 } catch(e) { /* ignore */ }
 
 try {
-  var libd3dcsx = Deno.dlopen("d3dcsx", {
+  var libd3dcsx_dll = Deno.dlopen("d3dcsx.dll", {
     D3DX11CreateScan: {
       parameters: ["pointer", "u32", "u32", "pointer"],
       result: "pointer",
@@ -9680,7 +9700,7 @@ export function D3D11CreateDevice(
   pFeatureLevel: Deno.PointerValue | Uint8Array | null /* ptr */,
   ppImmediateContext: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libd3d11.D3D11CreateDevice(util.toPointer(pAdapter), DriverType, util.toPointer(Software), Flags, util.toPointer(pFeatureLevels), FeatureLevels, SDKVersion, util.toPointer(ppDevice), util.toPointer(pFeatureLevel), util.toPointer(ppImmediateContext)));
+  return util.pointerFromFfi(libd3d11_dll.D3D11CreateDevice(util.toPointer(pAdapter), DriverType, util.toPointer(Software), Flags, util.toPointer(pFeatureLevels), FeatureLevels, SDKVersion, util.toPointer(ppDevice), util.toPointer(pFeatureLevel), util.toPointer(ppImmediateContext)));
 }
 
 export function D3D11CreateDeviceAndSwapChain(
@@ -9697,7 +9717,7 @@ export function D3D11CreateDeviceAndSwapChain(
   pFeatureLevel: Deno.PointerValue | Uint8Array | null /* ptr */,
   ppImmediateContext: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libd3d11.D3D11CreateDeviceAndSwapChain(util.toPointer(pAdapter), DriverType, util.toPointer(Software), Flags, util.toPointer(pFeatureLevels), FeatureLevels, SDKVersion, util.toPointer(pSwapChainDesc), util.toPointer(ppSwapChain), util.toPointer(ppDevice), util.toPointer(pFeatureLevel), util.toPointer(ppImmediateContext)));
+  return util.pointerFromFfi(libd3d11_dll.D3D11CreateDeviceAndSwapChain(util.toPointer(pAdapter), DriverType, util.toPointer(Software), Flags, util.toPointer(pFeatureLevels), FeatureLevels, SDKVersion, util.toPointer(pSwapChainDesc), util.toPointer(ppSwapChain), util.toPointer(ppDevice), util.toPointer(pFeatureLevel), util.toPointer(ppImmediateContext)));
 }
 
 export function D3DDisassemble11Trace(
@@ -9709,7 +9729,7 @@ export function D3DDisassemble11Trace(
   Flags: number /* u32 */,
   ppDisassembly: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libD3DCOMPILER_47.D3DDisassemble11Trace(util.toPointer(pSrcData), SrcDataSize, util.toPointer(pTrace), StartStep, NumSteps, Flags, util.toPointer(ppDisassembly)));
+  return util.pointerFromFfi(libD3DCOMPILER_47_dll.D3DDisassemble11Trace(util.toPointer(pSrcData), SrcDataSize, util.toPointer(pTrace), StartStep, NumSteps, Flags, util.toPointer(ppDisassembly)));
 }
 
 export function D3DX11CreateScan(
@@ -9718,7 +9738,7 @@ export function D3DX11CreateScan(
   MaxScanCount: number /* u32 */,
   ppScan: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libd3dcsx.D3DX11CreateScan(util.toPointer(pDeviceContext), MaxElementScanSize, MaxScanCount, util.toPointer(ppScan)));
+  return util.pointerFromFfi(libd3dcsx_dll.D3DX11CreateScan(util.toPointer(pDeviceContext), MaxElementScanSize, MaxScanCount, util.toPointer(ppScan)));
 }
 
 export function D3DX11CreateSegmentedScan(
@@ -9726,7 +9746,7 @@ export function D3DX11CreateSegmentedScan(
   MaxElementScanSize: number /* u32 */,
   ppScan: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libd3dcsx.D3DX11CreateSegmentedScan(util.toPointer(pDeviceContext), MaxElementScanSize, util.toPointer(ppScan)));
+  return util.pointerFromFfi(libd3dcsx_dll.D3DX11CreateSegmentedScan(util.toPointer(pDeviceContext), MaxElementScanSize, util.toPointer(ppScan)));
 }
 
 export function D3DX11CreateFFT(
@@ -9736,7 +9756,7 @@ export function D3DX11CreateFFT(
   pBufferInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
   ppFFT: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libd3dcsx.D3DX11CreateFFT(util.toPointer(pDeviceContext), util.toPointer(pDesc), Flags, util.toPointer(pBufferInfo), util.toPointer(ppFFT)));
+  return util.pointerFromFfi(libd3dcsx_dll.D3DX11CreateFFT(util.toPointer(pDeviceContext), util.toPointer(pDesc), Flags, util.toPointer(pBufferInfo), util.toPointer(ppFFT)));
 }
 
 export function D3DX11CreateFFT1DReal(
@@ -9746,7 +9766,7 @@ export function D3DX11CreateFFT1DReal(
   pBufferInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
   ppFFT: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libd3dcsx.D3DX11CreateFFT1DReal(util.toPointer(pDeviceContext), X, Flags, util.toPointer(pBufferInfo), util.toPointer(ppFFT)));
+  return util.pointerFromFfi(libd3dcsx_dll.D3DX11CreateFFT1DReal(util.toPointer(pDeviceContext), X, Flags, util.toPointer(pBufferInfo), util.toPointer(ppFFT)));
 }
 
 export function D3DX11CreateFFT1DComplex(
@@ -9756,7 +9776,7 @@ export function D3DX11CreateFFT1DComplex(
   pBufferInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
   ppFFT: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libd3dcsx.D3DX11CreateFFT1DComplex(util.toPointer(pDeviceContext), X, Flags, util.toPointer(pBufferInfo), util.toPointer(ppFFT)));
+  return util.pointerFromFfi(libd3dcsx_dll.D3DX11CreateFFT1DComplex(util.toPointer(pDeviceContext), X, Flags, util.toPointer(pBufferInfo), util.toPointer(ppFFT)));
 }
 
 export function D3DX11CreateFFT2DReal(
@@ -9767,7 +9787,7 @@ export function D3DX11CreateFFT2DReal(
   pBufferInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
   ppFFT: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libd3dcsx.D3DX11CreateFFT2DReal(util.toPointer(pDeviceContext), X, Y, Flags, util.toPointer(pBufferInfo), util.toPointer(ppFFT)));
+  return util.pointerFromFfi(libd3dcsx_dll.D3DX11CreateFFT2DReal(util.toPointer(pDeviceContext), X, Y, Flags, util.toPointer(pBufferInfo), util.toPointer(ppFFT)));
 }
 
 export function D3DX11CreateFFT2DComplex(
@@ -9778,7 +9798,7 @@ export function D3DX11CreateFFT2DComplex(
   pBufferInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
   ppFFT: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libd3dcsx.D3DX11CreateFFT2DComplex(util.toPointer(pDeviceContext), X, Y, Flags, util.toPointer(pBufferInfo), util.toPointer(ppFFT)));
+  return util.pointerFromFfi(libd3dcsx_dll.D3DX11CreateFFT2DComplex(util.toPointer(pDeviceContext), X, Y, Flags, util.toPointer(pBufferInfo), util.toPointer(ppFFT)));
 }
 
 export function D3DX11CreateFFT3DReal(
@@ -9790,7 +9810,7 @@ export function D3DX11CreateFFT3DReal(
   pBufferInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
   ppFFT: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libd3dcsx.D3DX11CreateFFT3DReal(util.toPointer(pDeviceContext), X, Y, Z, Flags, util.toPointer(pBufferInfo), util.toPointer(ppFFT)));
+  return util.pointerFromFfi(libd3dcsx_dll.D3DX11CreateFFT3DReal(util.toPointer(pDeviceContext), X, Y, Z, Flags, util.toPointer(pBufferInfo), util.toPointer(ppFFT)));
 }
 
 export function D3DX11CreateFFT3DComplex(
@@ -9802,6 +9822,6 @@ export function D3DX11CreateFFT3DComplex(
   pBufferInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
   ppFFT: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libd3dcsx.D3DX11CreateFFT3DComplex(util.toPointer(pDeviceContext), X, Y, Z, Flags, util.toPointer(pBufferInfo), util.toPointer(ppFFT)));
+  return util.pointerFromFfi(libd3dcsx_dll.D3DX11CreateFFT3DComplex(util.toPointer(pDeviceContext), X, Y, Z, Flags, util.toPointer(pBufferInfo), util.toPointer(ppFFT)));
 }
 

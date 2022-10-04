@@ -9,20 +9,21 @@ export type DIALOG_CONTROL_DPI_CHANGE_BEHAVIORS = number;
 export type DIALOG_DPI_CHANGE_BEHAVIORS = number;
 export type PROCESS_DPI_AWARENESS = number;
 export type MONITOR_DPI_TYPE = number;
+export type SYSTEM_METRICS_INDEX = number;
 export type WINDOW_STYLE = number;
 export type WINDOW_EX_STYLE = number;
 
 // Constants
 export const DPI_AWARENESS_CONTEXT_UNAWARE = 1120986464255;
 export const DPI_AWARENESS_CONTEXT_SYSTEM_AWARE = 1127020893306878;
-export const DPI_AWARENESS_CONTEXT_PER_MONITOR_AWARE = 4840071660306429;
-export const DPI_AWARENESS_CONTEXT_PER_MONITOR_AWARE_V2 = 18446738597626249212n;
-export const DPI_AWARENESS_CONTEXT_UNAWARE_GDISCALED = 179241870163963;
-export const DPI_AWARENESS_INVALID = "-1";
+export const DPI_AWARENESS_CONTEXT_PER_MONITOR_AWARE = 8719060254018502653n;
+export const DPI_AWARENESS_CONTEXT_PER_MONITOR_AWARE_V2 = 739992800329724;
+export const DPI_AWARENESS_CONTEXT_UNAWARE_GDISCALED = 18446737498114621435n;
+export const DPI_AWARENESS_INVALID = `-1`;
 export const DPI_AWARENESS_UNAWARE = 0;
 export const DPI_AWARENESS_SYSTEM_AWARE = 1;
 export const DPI_AWARENESS_PER_MONITOR_AWARE = 2;
-export const DPI_HOSTING_BEHAVIOR_INVALID = "-1";
+export const DPI_HOSTING_BEHAVIOR_INVALID = `-1`;
 export const DPI_HOSTING_BEHAVIOR_DEFAULT = 0;
 export const DPI_HOSTING_BEHAVIOR_MIXED = 1;
 export const DCDC_DEFAULT = 0;
@@ -39,6 +40,101 @@ export const MDT_EFFECTIVE_DPI = 0;
 export const MDT_ANGULAR_DPI = 1;
 export const MDT_RAW_DPI = 2;
 export const MDT_DEFAULT = 0;
+export const SM_ARRANGE = 56;
+export const SM_CLEANBOOT = 67;
+export const SM_CMONITORS = 80;
+export const SM_CMOUSEBUTTONS = 43;
+export const SM_CONVERTIBLESLATEMODE = 8195;
+export const SM_CXBORDER = 5;
+export const SM_CXCURSOR = 13;
+export const SM_CXDLGFRAME = 7;
+export const SM_CXDOUBLECLK = 36;
+export const SM_CXDRAG = 68;
+export const SM_CXEDGE = 45;
+export const SM_CXFIXEDFRAME = 7;
+export const SM_CXFOCUSBORDER = 83;
+export const SM_CXFRAME = 32;
+export const SM_CXFULLSCREEN = 16;
+export const SM_CXHSCROLL = 21;
+export const SM_CXHTHUMB = 10;
+export const SM_CXICON = 11;
+export const SM_CXICONSPACING = 38;
+export const SM_CXMAXIMIZED = 61;
+export const SM_CXMAXTRACK = 59;
+export const SM_CXMENUCHECK = 71;
+export const SM_CXMENUSIZE = 54;
+export const SM_CXMIN = 28;
+export const SM_CXMINIMIZED = 57;
+export const SM_CXMINSPACING = 47;
+export const SM_CXMINTRACK = 34;
+export const SM_CXPADDEDBORDER = 92;
+export const SM_CXSCREEN = 0;
+export const SM_CXSIZE = 30;
+export const SM_CXSIZEFRAME = 32;
+export const SM_CXSMICON = 49;
+export const SM_CXSMSIZE = 52;
+export const SM_CXVIRTUALSCREEN = 78;
+export const SM_CXVSCROLL = 2;
+export const SM_CYBORDER = 6;
+export const SM_CYCAPTION = 4;
+export const SM_CYCURSOR = 14;
+export const SM_CYDLGFRAME = 8;
+export const SM_CYDOUBLECLK = 37;
+export const SM_CYDRAG = 69;
+export const SM_CYEDGE = 46;
+export const SM_CYFIXEDFRAME = 8;
+export const SM_CYFOCUSBORDER = 84;
+export const SM_CYFRAME = 33;
+export const SM_CYFULLSCREEN = 17;
+export const SM_CYHSCROLL = 3;
+export const SM_CYICON = 12;
+export const SM_CYICONSPACING = 39;
+export const SM_CYKANJIWINDOW = 18;
+export const SM_CYMAXIMIZED = 62;
+export const SM_CYMAXTRACK = 60;
+export const SM_CYMENU = 15;
+export const SM_CYMENUCHECK = 72;
+export const SM_CYMENUSIZE = 55;
+export const SM_CYMIN = 29;
+export const SM_CYMINIMIZED = 58;
+export const SM_CYMINSPACING = 48;
+export const SM_CYMINTRACK = 35;
+export const SM_CYSCREEN = 1;
+export const SM_CYSIZE = 31;
+export const SM_CYSIZEFRAME = 33;
+export const SM_CYSMCAPTION = 51;
+export const SM_CYSMICON = 50;
+export const SM_CYSMSIZE = 53;
+export const SM_CYVIRTUALSCREEN = 79;
+export const SM_CYVSCROLL = 20;
+export const SM_CYVTHUMB = 9;
+export const SM_DBCSENABLED = 42;
+export const SM_DEBUG = 22;
+export const SM_DIGITIZER = 94;
+export const SM_IMMENABLED = 82;
+export const SM_MAXIMUMTOUCHES = 95;
+export const SM_MEDIACENTER = 87;
+export const SM_MENUDROPALIGNMENT = 40;
+export const SM_MIDEASTENABLED = 74;
+export const SM_MOUSEPRESENT = 19;
+export const SM_MOUSEHORIZONTALWHEELPRESENT = 91;
+export const SM_MOUSEWHEELPRESENT = 75;
+export const SM_NETWORK = 63;
+export const SM_PENWINDOWS = 41;
+export const SM_REMOTECONTROL = 8193;
+export const SM_REMOTESESSION = 4096;
+export const SM_SAMEDISPLAYFORMAT = 81;
+export const SM_SECURE = 44;
+export const SM_SERVERR2 = 89;
+export const SM_SHOWSOUNDS = 70;
+export const SM_SHUTTINGDOWN = 8192;
+export const SM_SLOWMACHINE = 73;
+export const SM_STARTER = 88;
+export const SM_SWAPBUTTON = 23;
+export const SM_SYSTEMDOCKED = 8196;
+export const SM_TABLETPC = 86;
+export const SM_XVIRTUALSCREEN = 76;
+export const SM_YVIRTUALSCREEN = 77;
 export const WS_OVERLAPPED = 0;
 export const WS_POPUP = 2147483648;
 export const WS_CHILD = 1073741824;
@@ -114,7 +210,7 @@ export type HMONITOR = Deno.PointerValue;
 // Native Libraries
 
 try {
-  var libUxTheme = Deno.dlopen("UxTheme", {
+  var libUxTheme_dll = Deno.dlopen("UxTheme.dll", {
     OpenThemeDataForDpi: {
       parameters: ["pointer", "buffer", "u32"],
       result: "isize",
@@ -123,7 +219,7 @@ try {
 } catch(e) { /* ignore */ }
 
 try {
-  var libUSER32 = Deno.dlopen("USER32", {
+  var libUSER32_dll = Deno.dlopen("USER32.dll", {
     SetDialogControlDpiChangeBehavior: {
       parameters: ["pointer", "u32", "u32"],
       result: "i32",
@@ -141,7 +237,7 @@ try {
       result: "u32",
     },
     GetSystemMetricsForDpi: {
-      parameters: ["i32", "u32"],
+      parameters: ["u32", "u32"],
       result: "i32",
     },
     AdjustWindowRectExForDpi: {
@@ -228,7 +324,7 @@ try {
 } catch(e) { /* ignore */ }
 
 try {
-  var libapi_ms_win_shcore_scaling_l1_1_1 = Deno.dlopen("api-ms-win-shcore-scaling-l1-1-1", {
+  var libapi_ms_win_shcore_scaling_l1_1_1_dll = Deno.dlopen("api-ms-win-shcore-scaling-l1-1-1.dll", {
     SetProcessDpiAwareness: {
       parameters: ["i32"],
       result: "pointer",
@@ -251,7 +347,7 @@ export function OpenThemeDataForDpi(
   pszClassList: string | null /* Windows.Win32.Foundation.PWSTR */,
   dpi: number /* u32 */,
 ): Deno.PointerValue /* isize */ {
-  return libUxTheme.OpenThemeDataForDpi(util.hwndToFfi(hwnd), util.pwstrToFfi(pszClassList), dpi);
+  return libUxTheme_dll.OpenThemeDataForDpi(util.hwndToFfi(hwnd), util.pwstrToFfi(pszClassList), dpi);
 }
 
 export function SetDialogControlDpiChangeBehavior(
@@ -259,13 +355,13 @@ export function SetDialogControlDpiChangeBehavior(
   mask: DIALOG_CONTROL_DPI_CHANGE_BEHAVIORS /* Windows.Win32.UI.HiDpi.DIALOG_CONTROL_DPI_CHANGE_BEHAVIORS */,
   values: DIALOG_CONTROL_DPI_CHANGE_BEHAVIORS /* Windows.Win32.UI.HiDpi.DIALOG_CONTROL_DPI_CHANGE_BEHAVIORS */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSER32.SetDialogControlDpiChangeBehavior(util.hwndToFfi(hWnd), mask, values));
+  return util.boolFromFfi(libUSER32_dll.SetDialogControlDpiChangeBehavior(util.hwndToFfi(hWnd), mask, values));
 }
 
 export function GetDialogControlDpiChangeBehavior(
   hWnd: Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */,
 ): DIALOG_CONTROL_DPI_CHANGE_BEHAVIORS /* Windows.Win32.UI.HiDpi.DIALOG_CONTROL_DPI_CHANGE_BEHAVIORS */ {
-  return libUSER32.GetDialogControlDpiChangeBehavior(util.hwndToFfi(hWnd));
+  return libUSER32_dll.GetDialogControlDpiChangeBehavior(util.hwndToFfi(hWnd));
 }
 
 export function SetDialogDpiChangeBehavior(
@@ -273,20 +369,20 @@ export function SetDialogDpiChangeBehavior(
   mask: DIALOG_DPI_CHANGE_BEHAVIORS /* Windows.Win32.UI.HiDpi.DIALOG_DPI_CHANGE_BEHAVIORS */,
   values: DIALOG_DPI_CHANGE_BEHAVIORS /* Windows.Win32.UI.HiDpi.DIALOG_DPI_CHANGE_BEHAVIORS */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSER32.SetDialogDpiChangeBehavior(util.hwndToFfi(hDlg), mask, values));
+  return util.boolFromFfi(libUSER32_dll.SetDialogDpiChangeBehavior(util.hwndToFfi(hDlg), mask, values));
 }
 
 export function GetDialogDpiChangeBehavior(
   hDlg: Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */,
 ): DIALOG_DPI_CHANGE_BEHAVIORS /* Windows.Win32.UI.HiDpi.DIALOG_DPI_CHANGE_BEHAVIORS */ {
-  return libUSER32.GetDialogDpiChangeBehavior(util.hwndToFfi(hDlg));
+  return libUSER32_dll.GetDialogDpiChangeBehavior(util.hwndToFfi(hDlg));
 }
 
 export function GetSystemMetricsForDpi(
-  nIndex: number /* i32 */,
+  nIndex: SYSTEM_METRICS_INDEX /* Windows.Win32.UI.WindowsAndMessaging.SYSTEM_METRICS_INDEX */,
   dpi: number /* u32 */,
 ): number /* i32 */ {
-  return libUSER32.GetSystemMetricsForDpi(nIndex, dpi);
+  return libUSER32_dll.GetSystemMetricsForDpi(nIndex, dpi);
 }
 
 export function AdjustWindowRectExForDpi(
@@ -296,21 +392,21 @@ export function AdjustWindowRectExForDpi(
   dwExStyle: WINDOW_EX_STYLE /* Windows.Win32.UI.WindowsAndMessaging.WINDOW_EX_STYLE */,
   dpi: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSER32.AdjustWindowRectExForDpi(util.toPointer(lpRect), dwStyle, util.boolToFfi(bMenu), dwExStyle, dpi));
+  return util.boolFromFfi(libUSER32_dll.AdjustWindowRectExForDpi(util.toPointer(lpRect), dwStyle, util.boolToFfi(bMenu), dwExStyle, dpi));
 }
 
 export function LogicalToPhysicalPointForPerMonitorDPI(
   hWnd: Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */,
   lpPoint: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSER32.LogicalToPhysicalPointForPerMonitorDPI(util.hwndToFfi(hWnd), util.toPointer(lpPoint)));
+  return util.boolFromFfi(libUSER32_dll.LogicalToPhysicalPointForPerMonitorDPI(util.hwndToFfi(hWnd), util.toPointer(lpPoint)));
 }
 
 export function PhysicalToLogicalPointForPerMonitorDPI(
   hWnd: Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */,
   lpPoint: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSER32.PhysicalToLogicalPointForPerMonitorDPI(util.hwndToFfi(hWnd), util.toPointer(lpPoint)));
+  return util.boolFromFfi(libUSER32_dll.PhysicalToLogicalPointForPerMonitorDPI(util.hwndToFfi(hWnd), util.toPointer(lpPoint)));
 }
 
 export function SystemParametersInfoForDpi(
@@ -320,111 +416,111 @@ export function SystemParametersInfoForDpi(
   fWinIni: number /* u32 */,
   dpi: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSER32.SystemParametersInfoForDpi(uiAction, uiParam, util.toPointer(pvParam), fWinIni, dpi));
+  return util.boolFromFfi(libUSER32_dll.SystemParametersInfoForDpi(uiAction, uiParam, util.toPointer(pvParam), fWinIni, dpi));
 }
 
 export function SetThreadDpiAwarenessContext(
   dpiContext: Uint8Array | Deno.PointerValue | null /* Windows.Win32.UI.HiDpi.DPI_AWARENESS_CONTEXT */,
 ): Deno.PointerValue | null /* Windows.Win32.UI.HiDpi.DPI_AWARENESS_CONTEXT */ {
-  return util.pointerFromFfi(libUSER32.SetThreadDpiAwarenessContext(util.toPointer(dpiContext)));
+  return util.pointerFromFfi(libUSER32_dll.SetThreadDpiAwarenessContext(util.toPointer(dpiContext)));
 }
 
 export function GetThreadDpiAwarenessContext(): Deno.PointerValue | null /* Windows.Win32.UI.HiDpi.DPI_AWARENESS_CONTEXT */ {
-  return util.pointerFromFfi(libUSER32.GetThreadDpiAwarenessContext());
+  return util.pointerFromFfi(libUSER32_dll.GetThreadDpiAwarenessContext());
 }
 
 export function GetWindowDpiAwarenessContext(
   hwnd: Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */,
 ): Deno.PointerValue | null /* Windows.Win32.UI.HiDpi.DPI_AWARENESS_CONTEXT */ {
-  return util.pointerFromFfi(libUSER32.GetWindowDpiAwarenessContext(util.hwndToFfi(hwnd)));
+  return util.pointerFromFfi(libUSER32_dll.GetWindowDpiAwarenessContext(util.hwndToFfi(hwnd)));
 }
 
 export function GetAwarenessFromDpiAwarenessContext(
   value: Uint8Array | Deno.PointerValue | null /* Windows.Win32.UI.HiDpi.DPI_AWARENESS_CONTEXT */,
 ): DPI_AWARENESS /* Windows.Win32.UI.HiDpi.DPI_AWARENESS */ {
-  return libUSER32.GetAwarenessFromDpiAwarenessContext(util.toPointer(value));
+  return libUSER32_dll.GetAwarenessFromDpiAwarenessContext(util.toPointer(value));
 }
 
 export function GetDpiFromDpiAwarenessContext(
   value: Uint8Array | Deno.PointerValue | null /* Windows.Win32.UI.HiDpi.DPI_AWARENESS_CONTEXT */,
 ): number /* u32 */ {
-  return libUSER32.GetDpiFromDpiAwarenessContext(util.toPointer(value));
+  return libUSER32_dll.GetDpiFromDpiAwarenessContext(util.toPointer(value));
 }
 
 export function AreDpiAwarenessContextsEqual(
   dpiContextA: Uint8Array | Deno.PointerValue | null /* Windows.Win32.UI.HiDpi.DPI_AWARENESS_CONTEXT */,
   dpiContextB: Uint8Array | Deno.PointerValue | null /* Windows.Win32.UI.HiDpi.DPI_AWARENESS_CONTEXT */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSER32.AreDpiAwarenessContextsEqual(util.toPointer(dpiContextA), util.toPointer(dpiContextB)));
+  return util.boolFromFfi(libUSER32_dll.AreDpiAwarenessContextsEqual(util.toPointer(dpiContextA), util.toPointer(dpiContextB)));
 }
 
 export function IsValidDpiAwarenessContext(
   value: Uint8Array | Deno.PointerValue | null /* Windows.Win32.UI.HiDpi.DPI_AWARENESS_CONTEXT */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSER32.IsValidDpiAwarenessContext(util.toPointer(value)));
+  return util.boolFromFfi(libUSER32_dll.IsValidDpiAwarenessContext(util.toPointer(value)));
 }
 
 export function GetDpiForWindow(
   hwnd: Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */,
 ): number /* u32 */ {
-  return libUSER32.GetDpiForWindow(util.hwndToFfi(hwnd));
+  return libUSER32_dll.GetDpiForWindow(util.hwndToFfi(hwnd));
 }
 
 export function GetDpiForSystem(): number /* u32 */ {
-  return libUSER32.GetDpiForSystem();
+  return libUSER32_dll.GetDpiForSystem();
 }
 
 export function GetSystemDpiForProcess(
   hProcess: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
 ): number /* u32 */ {
-  return libUSER32.GetSystemDpiForProcess(util.toPointer(hProcess));
+  return libUSER32_dll.GetSystemDpiForProcess(util.toPointer(hProcess));
 }
 
 export function EnableNonClientDpiScaling(
   hwnd: Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSER32.EnableNonClientDpiScaling(util.hwndToFfi(hwnd)));
+  return util.boolFromFfi(libUSER32_dll.EnableNonClientDpiScaling(util.hwndToFfi(hwnd)));
 }
 
 export function SetProcessDpiAwarenessContext(
   value: Uint8Array | Deno.PointerValue | null /* Windows.Win32.UI.HiDpi.DPI_AWARENESS_CONTEXT */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSER32.SetProcessDpiAwarenessContext(util.toPointer(value)));
+  return util.boolFromFfi(libUSER32_dll.SetProcessDpiAwarenessContext(util.toPointer(value)));
 }
 
 export function GetDpiAwarenessContextForProcess(
   hProcess: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
 ): Deno.PointerValue | null /* Windows.Win32.UI.HiDpi.DPI_AWARENESS_CONTEXT */ {
-  return util.pointerFromFfi(libUSER32.GetDpiAwarenessContextForProcess(util.toPointer(hProcess)));
+  return util.pointerFromFfi(libUSER32_dll.GetDpiAwarenessContextForProcess(util.toPointer(hProcess)));
 }
 
 export function SetThreadDpiHostingBehavior(
   value: DPI_HOSTING_BEHAVIOR /* Windows.Win32.UI.HiDpi.DPI_HOSTING_BEHAVIOR */,
 ): DPI_HOSTING_BEHAVIOR /* Windows.Win32.UI.HiDpi.DPI_HOSTING_BEHAVIOR */ {
-  return libUSER32.SetThreadDpiHostingBehavior(value);
+  return libUSER32_dll.SetThreadDpiHostingBehavior(value);
 }
 
 export function GetThreadDpiHostingBehavior(): DPI_HOSTING_BEHAVIOR /* Windows.Win32.UI.HiDpi.DPI_HOSTING_BEHAVIOR */ {
-  return libUSER32.GetThreadDpiHostingBehavior();
+  return libUSER32_dll.GetThreadDpiHostingBehavior();
 }
 
 export function GetWindowDpiHostingBehavior(
   hwnd: Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */,
 ): DPI_HOSTING_BEHAVIOR /* Windows.Win32.UI.HiDpi.DPI_HOSTING_BEHAVIOR */ {
-  return libUSER32.GetWindowDpiHostingBehavior(util.hwndToFfi(hwnd));
+  return libUSER32_dll.GetWindowDpiHostingBehavior(util.hwndToFfi(hwnd));
 }
 
 export function SetProcessDpiAwareness(
   value: PROCESS_DPI_AWARENESS /* Windows.Win32.UI.HiDpi.PROCESS_DPI_AWARENESS */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libapi_ms_win_shcore_scaling_l1_1_1.SetProcessDpiAwareness(value));
+  return util.pointerFromFfi(libapi_ms_win_shcore_scaling_l1_1_1_dll.SetProcessDpiAwareness(value));
 }
 
 export function GetProcessDpiAwareness(
   hprocess: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
   value: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libapi_ms_win_shcore_scaling_l1_1_1.GetProcessDpiAwareness(util.toPointer(hprocess), util.toPointer(value)));
+  return util.pointerFromFfi(libapi_ms_win_shcore_scaling_l1_1_1_dll.GetProcessDpiAwareness(util.toPointer(hprocess), util.toPointer(value)));
 }
 
 export function GetDpiForMonitor(
@@ -433,6 +529,6 @@ export function GetDpiForMonitor(
   dpiX: Deno.PointerValue | Uint8Array | null /* ptr */,
   dpiY: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libapi_ms_win_shcore_scaling_l1_1_1.GetDpiForMonitor(util.toPointer(hmonitor), dpiType, util.toPointer(dpiX), util.toPointer(dpiY)));
+  return util.pointerFromFfi(libapi_ms_win_shcore_scaling_l1_1_1_dll.GetDpiForMonitor(util.toPointer(hmonitor), dpiType, util.toPointer(dpiX), util.toPointer(dpiY)));
 }
 

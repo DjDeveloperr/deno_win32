@@ -57,21 +57,6 @@ export type FWPM_APPC_NETWORK_CAPABILITY_TYPE = number;
 export type FWPM_SYSTEM_PORT_TYPE = number;
 export type FWPM_CONNECTION_EVENT_TYPE = number;
 export type FWPM_VSWITCH_EVENT_TYPE = number;
-export type IPV4_OPTION_TYPE = number;
-export type IP_OPTION_TIMESTAMP_FLAGS = number;
-export type ICMP4_UNREACH_CODE = number;
-export type ICMP4_TIME_EXCEED_CODE = number;
-export type ARP_OPCODE = number;
-export type ARP_HARDWARE_TYPE = number;
-export type IGMP_MAX_RESP_CODE_TYPE = number;
-export type RIP_INFO_TYPE = number;
-export type IPV6_OPTION_TYPE = number;
-export type ND_OPTION_TYPE = number;
-export type MLD_MAX_RESP_CODE_TYPE = number;
-export type COMPARTMENT_ID = number;
-export type TUNNEL_SUB_TYPE = number;
-export type NPI_MODULEID_TYPE = number;
-export type FALLBACK_INDEX = number;
 
 // Constants
 export const IPSEC_SA_BUNDLE_FLAG_ND_SECURE = 1;
@@ -341,105 +326,6 @@ export const IPSEC_SA_BUNDLE_FLAG_LOW_POWER_MODE_SUPPORT = 8388608;
 export const IPSEC_DOSP_DSCP_DISABLE_VALUE = 255;
 export const IPSEC_DOSP_RATE_LIMIT_DISABLE_VALUE = 0;
 export const IPSEC_KEY_MANAGER_FLAG_DICTATE_KEY = 1;
-export const _LITTLE_ENDIAN = 1234;
-export const _BIG_ENDIAN = 4321;
-export const _PDP_ENDIAN = 3412;
-export const BYTE_ORDER = 1234;
-export const DL_ADDRESS_LENGTH_MAXIMUM = 32;
-export const DL_HEADER_LENGTH_MAXIMUM = 64;
-export const SNAP_DSAP = 170;
-export const SNAP_SSAP = 170;
-export const SNAP_CONTROL = 3;
-export const SNAP_OUI = 0;
-export const ETH_LENGTH_OF_HEADER = 14;
-export const ETH_LENGTH_OF_VLAN_HEADER = 4;
-export const ETH_LENGTH_OF_SNAP_HEADER = 8;
-export const ETHERNET_TYPE_MINIMUM = 1536;
-export const ETHERNET_TYPE_IPV4 = 2048;
-export const ETHERNET_TYPE_ARP = 2054;
-export const ETHERNET_TYPE_IPV6 = 34525;
-export const ETHERNET_TYPE_802_1Q = 33024;
-export const ETHERNET_TYPE_802_1AD = 34984;
-export const IP_VER_MASK = 240;
-export const IPV4_VERSION = 4;
-export const MAX_IPV4_PACKET = 65535;
-export const MAX_IPV4_HLEN = 60;
-export const IPV4_MINIMUM_MTU = 576;
-export const IPV4_MIN_MINIMUM_MTU = 352;
-export const IPV4_MAX_MINIMUM_MTU = 576;
-export const SIZEOF_IP_OPT_ROUTING_HEADER = 3;
-export const SIZEOF_IP_OPT_TIMESTAMP_HEADER = 4;
-export const SIZEOF_IP_OPT_SECURITY = 11;
-export const SIZEOF_IP_OPT_STREAMIDENTIFIER = 4;
-export const SIZEOF_IP_OPT_ROUTERALERT = 4;
-export const IP4_OFF_MASK = 65311;
-export const ICMPV4_INVALID_PREFERENCE_LEVEL = 2147483648;
-export const IGMP_QUERY_TYPE = 17;
-export const IGMP_VERSION1_REPORT_TYPE = 18;
-export const IGMP_VERSION2_REPORT_TYPE = 22;
-export const IGMP_LEAVE_GROUP_TYPE = 23;
-export const IGMP_VERSION3_REPORT_TYPE = 34;
-export const IPV6_VERSION = 96;
-export const IPV6_TRAFFIC_CLASS_MASK = 49167;
-export const IPV6_FULL_TRAFFIC_CLASS_MASK = 61455;
-export const IPV6_ECN_MASK = 12288;
-export const IPV6_FLOW_LABEL_MASK = 4294905600;
-export const MAX_IPV6_PAYLOAD = 65535;
-export const IPV6_ECN_SHIFT = 12;
-export const IPV6_MINIMUM_MTU = 1280;
-export const IP6F_OFF_MASK = 63743;
-export const IP6F_RESERVED_MASK = 1536;
-export const IP6F_MORE_FRAG = 256;
-export const EXT_LEN_UNIT = 8;
-export const IP6OPT_TYPE_SKIP = 0;
-export const IP6OPT_TYPE_DISCARD = 64;
-export const IP6OPT_TYPE_FORCEICMP = 128;
-export const IP6OPT_TYPE_ICMP = 192;
-export const IP6OPT_MUTABLE = 32;
-export const ICMP6_DST_UNREACH_NOROUTE = 0;
-export const ICMP6_DST_UNREACH_ADMIN = 1;
-export const ICMP6_DST_UNREACH_BEYONDSCOPE = 2;
-export const ICMP6_DST_UNREACH_ADDR = 3;
-export const ICMP6_DST_UNREACH_NOPORT = 4;
-export const ICMP6_TIME_EXCEED_TRANSIT = 0;
-export const ICMP6_TIME_EXCEED_REASSEMBLY = 1;
-export const ICMP6_PARAMPROB_HEADER = 0;
-export const ICMP6_PARAMPROB_NEXTHEADER = 1;
-export const ICMP6_PARAMPROB_OPTION = 2;
-export const ICMPV6_ECHO_REQUEST_FLAG_REVERSE = 1;
-export const ND_RA_FLAG_MANAGED = 128;
-export const ND_RA_FLAG_OTHER = 64;
-export const ND_RA_FLAG_HOME_AGENT = 32;
-export const ND_RA_FLAG_PREFERENCE = 24;
-export const ND_NA_FLAG_ROUTER = 2147483648;
-export const ND_NA_FLAG_SOLICITED = 1073741824;
-export const ND_NA_FLAG_OVERRIDE = 536870912;
-export const ND_OPT_PI_FLAG_ONLINK = 128;
-export const ND_OPT_PI_FLAG_AUTO = 64;
-export const ND_OPT_PI_FLAG_ROUTER_ADDR = 32;
-export const ND_OPT_PI_FLAG_SITE_PREFIX = 16;
-export const ND_OPT_PI_FLAG_ROUTE = 1;
-export const ND_OPT_RI_FLAG_PREFERENCE = 24;
-export const ND_OPT_RDNSS_MIN_LEN = 24;
-export const ND_OPT_DNSSL_MIN_LEN = 16;
-export const IN6_EMBEDDEDV4_UOCTET_POSITION = 8;
-export const IN6_EMBEDDEDV4_BITS_IN_BYTE = 8;
-export const TH_FIN = 1;
-export const TH_SYN = 2;
-export const TH_RST = 4;
-export const TH_PSH = 8;
-export const TH_ACK = 16;
-export const TH_URG = 32;
-export const TH_ECE = 64;
-export const TH_CWR = 128;
-export const TH_OPT_EOL = 0;
-export const TH_OPT_NOP = 1;
-export const TH_OPT_MSS = 2;
-export const TH_OPT_WS = 3;
-export const TH_OPT_SACK_PERMITTED = 4;
-export const TH_OPT_SACK = 5;
-export const TH_OPT_TS = 8;
-export const TH_OPT_FASTOPEN = 34;
 export const FWPM_AUTO_WEIGHT_BITS = 60;
 export const FWPM_WEIGHT_RANGE_IPSEC = 0;
 export const FWPM_WEIGHT_RANGE_IKE_EXEMPTIONS = 12;
@@ -756,75 +642,6 @@ export const FWPM_VSWITCH_EVENT_ENABLED_FOR_INSPECTION = 2;
 export const FWPM_VSWITCH_EVENT_DISABLED_FOR_INSPECTION = 3;
 export const FWPM_VSWITCH_EVENT_FILTER_ENGINE_REORDER = 4;
 export const FWPM_VSWITCH_EVENT_MAX = 5;
-export const IP_OPT_EOL = 0;
-export const IP_OPT_NOP = 1;
-export const IP_OPT_SECURITY = 130;
-export const IP_OPT_LSRR = 131;
-export const IP_OPT_TS = 68;
-export const IP_OPT_RR = 7;
-export const IP_OPT_SSRR = 137;
-export const IP_OPT_SID = 136;
-export const IP_OPT_ROUTER_ALERT = 148;
-export const IP_OPT_MULTIDEST = 149;
-export const IP_OPTION_TIMESTAMP_ONLY = 0;
-export const IP_OPTION_TIMESTAMP_ADDRESS = 1;
-export const IP_OPTION_TIMESTAMP_SPECIFIC_ADDRESS = 3;
-export const ICMP4_UNREACH_NET = 0;
-export const ICMP4_UNREACH_HOST = 1;
-export const ICMP4_UNREACH_PROTOCOL = 2;
-export const ICMP4_UNREACH_PORT = 3;
-export const ICMP4_UNREACH_FRAG_NEEDED = 4;
-export const ICMP4_UNREACH_SOURCEROUTE_FAILED = 5;
-export const ICMP4_UNREACH_NET_UNKNOWN = 6;
-export const ICMP4_UNREACH_HOST_UNKNOWN = 7;
-export const ICMP4_UNREACH_ISOLATED = 8;
-export const ICMP4_UNREACH_NET_ADMIN = 9;
-export const ICMP4_UNREACH_HOST_ADMIN = 10;
-export const ICMP4_UNREACH_NET_TOS = 11;
-export const ICMP4_UNREACH_HOST_TOS = 12;
-export const ICMP4_UNREACH_ADMIN = 13;
-export const ICMP4_TIME_EXCEED_TRANSIT = 0;
-export const ICMP4_TIME_EXCEED_REASSEMBLY = 1;
-export const ARP_REQUEST = 1;
-export const ARP_RESPONSE = 2;
-export const ARP_HW_ENET = 1;
-export const ARP_HW_802 = 6;
-export const IGMP_MAX_RESP_CODE_TYPE_NORMAL = 0;
-export const IGMP_MAX_RESP_CODE_TYPE_FLOAT = 1;
-export const SLE_ERROR = 1;
-export const SLE_MINORERROR = 2;
-export const SLE_WARNING = 3;
-export const IP6OPT_PAD1 = 0;
-export const IP6OPT_PADN = 1;
-export const IP6OPT_TUNNEL_LIMIT = 4;
-export const IP6OPT_ROUTER_ALERT = 5;
-export const IP6OPT_JUMBO = 194;
-export const IP6OPT_NSAP_ADDR = 195;
-export const ND_OPT_SOURCE_LINKADDR = 1;
-export const ND_OPT_TARGET_LINKADDR = 2;
-export const ND_OPT_PREFIX_INFORMATION = 3;
-export const ND_OPT_REDIRECTED_HEADER = 4;
-export const ND_OPT_MTU = 5;
-export const ND_OPT_NBMA_SHORTCUT_LIMIT = 6;
-export const ND_OPT_ADVERTISEMENT_INTERVAL = 7;
-export const ND_OPT_HOME_AGENT_INFORMATION = 8;
-export const ND_OPT_SOURCE_ADDR_LIST = 9;
-export const ND_OPT_TARGET_ADDR_LIST = 10;
-export const ND_OPT_ROUTE_INFO = 24;
-export const ND_OPT_RDNSS = 25;
-export const ND_OPT_DNSSL = 31;
-export const MLD_MAX_RESP_CODE_TYPE_NORMAL = 0;
-export const MLD_MAX_RESP_CODE_TYPE_FLOAT = 1;
-export const UNSPECIFIED_COMPARTMENT_ID = 0;
-export const DEFAULT_COMPARTMENT_ID = 1;
-export const TUNNEL_SUB_TYPE_NONE = 0;
-export const TUNNEL_SUB_TYPE_CP = 1;
-export const TUNNEL_SUB_TYPE_IPTLS = 2;
-export const TUNNEL_SUB_TYPE_HA = 3;
-export const MIT_GUID = 1;
-export const MIT_IF_LUID = 2;
-export const FallbackIndexTcpFastopen = 0;
-export const FallbackIndexMax = 1;
 
 // Structs
 
@@ -3172,9 +2989,9 @@ export function allocIPSEC_SA_IDLE_TIMEOUT0(data?: Partial<IPSEC_SA_IDLE_TIMEOUT
 }
 
 /**
- * Windows.Win32.NetworkManagement.WindowsFilteringPlatform.IPSEC_TRAFFIC_SELECTOR0_ (size: 32)
+ * Windows.Win32.NetworkManagement.WindowsFilteringPlatform.IPSEC_TRAFFIC_SELECTOR0 (size: 32)
  */
-export interface IPSEC_TRAFFIC_SELECTOR0_ {
+export interface IPSEC_TRAFFIC_SELECTOR0 {
   /** u8 */
   protocolId: number;
   /** u16 */
@@ -3189,10 +3006,10 @@ export interface IPSEC_TRAFFIC_SELECTOR0_ {
   Anonymous2: Uint8Array | Deno.PointerValue | null;
 }
 
-export const sizeofIPSEC_TRAFFIC_SELECTOR0_ = 32;
+export const sizeofIPSEC_TRAFFIC_SELECTOR0 = 32;
 
-export function allocIPSEC_TRAFFIC_SELECTOR0_(data?: Partial<IPSEC_TRAFFIC_SELECTOR0_>): Uint8Array {
-  const buf = new Uint8Array(sizeofIPSEC_TRAFFIC_SELECTOR0_);
+export function allocIPSEC_TRAFFIC_SELECTOR0(data?: Partial<IPSEC_TRAFFIC_SELECTOR0>): Uint8Array {
+  const buf = new Uint8Array(sizeofIPSEC_TRAFFIC_SELECTOR0);
   const view = new DataView(buf.buffer);
   // 0x00: u8
   if (data?.protocolId !== undefined) view.setUint8(0, Number(data.protocolId));
@@ -3211,9 +3028,9 @@ export function allocIPSEC_TRAFFIC_SELECTOR0_(data?: Partial<IPSEC_TRAFFIC_SELEC
 }
 
 /**
- * Windows.Win32.NetworkManagement.WindowsFilteringPlatform.IPSEC_TRAFFIC_SELECTOR_POLICY0_ (size: 32)
+ * Windows.Win32.NetworkManagement.WindowsFilteringPlatform.IPSEC_TRAFFIC_SELECTOR_POLICY0 (size: 32)
  */
-export interface IPSEC_TRAFFIC_SELECTOR_POLICY0_ {
+export interface IPSEC_TRAFFIC_SELECTOR_POLICY0 {
   /** u32 */
   flags: number;
   /** u32 */
@@ -3226,10 +3043,10 @@ export interface IPSEC_TRAFFIC_SELECTOR_POLICY0_ {
   remoteTrafficSelectors: Deno.PointerValue | Uint8Array | null;
 }
 
-export const sizeofIPSEC_TRAFFIC_SELECTOR_POLICY0_ = 32;
+export const sizeofIPSEC_TRAFFIC_SELECTOR_POLICY0 = 32;
 
-export function allocIPSEC_TRAFFIC_SELECTOR_POLICY0_(data?: Partial<IPSEC_TRAFFIC_SELECTOR_POLICY0_>): Uint8Array {
-  const buf = new Uint8Array(sizeofIPSEC_TRAFFIC_SELECTOR_POLICY0_);
+export function allocIPSEC_TRAFFIC_SELECTOR_POLICY0(data?: Partial<IPSEC_TRAFFIC_SELECTOR_POLICY0>): Uint8Array {
+  const buf = new Uint8Array(sizeofIPSEC_TRAFFIC_SELECTOR_POLICY0);
   const view = new DataView(buf.buffer);
   // 0x00: u32
   if (data?.flags !== undefined) view.setUint32(0, Number(data.flags), true);
@@ -3610,9 +3427,9 @@ export function allocIPSEC_TUNNEL_POLICY2(data?: Partial<IPSEC_TUNNEL_POLICY2>):
 }
 
 /**
- * Windows.Win32.NetworkManagement.WindowsFilteringPlatform.IPSEC_TUNNEL_POLICY3_ (size: 64)
+ * Windows.Win32.NetworkManagement.WindowsFilteringPlatform.IPSEC_TUNNEL_POLICY3 (size: 64)
  */
-export interface IPSEC_TUNNEL_POLICY3_ {
+export interface IPSEC_TUNNEL_POLICY3 {
   /** u32 */
   flags: number;
   /** u32 */
@@ -3635,10 +3452,10 @@ export interface IPSEC_TUNNEL_POLICY3_ {
   trafficSelectorPolicies: Deno.PointerValue | Uint8Array | null;
 }
 
-export const sizeofIPSEC_TUNNEL_POLICY3_ = 64;
+export const sizeofIPSEC_TUNNEL_POLICY3 = 64;
 
-export function allocIPSEC_TUNNEL_POLICY3_(data?: Partial<IPSEC_TUNNEL_POLICY3_>): Uint8Array {
-  const buf = new Uint8Array(sizeofIPSEC_TUNNEL_POLICY3_);
+export function allocIPSEC_TUNNEL_POLICY3(data?: Partial<IPSEC_TUNNEL_POLICY3>): Uint8Array {
+  const buf = new Uint8Array(sizeofIPSEC_TUNNEL_POLICY3);
   const view = new DataView(buf.buffer);
   // 0x00: u32
   if (data?.flags !== undefined) view.setUint32(0, Number(data.flags), true);
@@ -5538,9 +5355,9 @@ export function allocFWPM_PROVIDER_CONTEXT2(data?: Partial<FWPM_PROVIDER_CONTEXT
 }
 
 /**
- * Windows.Win32.NetworkManagement.WindowsFilteringPlatform.FWPM_PROVIDER_CONTEXT3_ (size: 64)
+ * Windows.Win32.NetworkManagement.WindowsFilteringPlatform.FWPM_PROVIDER_CONTEXT3 (size: 64)
  */
-export interface FWPM_PROVIDER_CONTEXT3_ {
+export interface FWPM_PROVIDER_CONTEXT3 {
   /** System.Guid */
   providerContextKey: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.NetworkManagement.WindowsFilteringPlatform.FWPM_DISPLAY_DATA0 */
@@ -5559,10 +5376,10 @@ export interface FWPM_PROVIDER_CONTEXT3_ {
   providerContextId: Deno.PointerValue;
 }
 
-export const sizeofFWPM_PROVIDER_CONTEXT3_ = 64;
+export const sizeofFWPM_PROVIDER_CONTEXT3 = 64;
 
-export function allocFWPM_PROVIDER_CONTEXT3_(data?: Partial<FWPM_PROVIDER_CONTEXT3_>): Uint8Array {
-  const buf = new Uint8Array(sizeofFWPM_PROVIDER_CONTEXT3_);
+export function allocFWPM_PROVIDER_CONTEXT3(data?: Partial<FWPM_PROVIDER_CONTEXT3>): Uint8Array {
+  const buf = new Uint8Array(sizeofFWPM_PROVIDER_CONTEXT3);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
   if (data?.providerContextKey !== undefined) view.setBigUint64(0, data.providerContextKey === null ? 0n : BigInt(util.toPointer(data.providerContextKey)), true);
@@ -6841,9 +6658,9 @@ export function allocFWPM_NET_EVENT_IKEEXT_MM_FAILURE1(data?: Partial<FWPM_NET_E
 }
 
 /**
- * Windows.Win32.NetworkManagement.WindowsFilteringPlatform.FWPM_NET_EVENT_IKEEXT_MM_FAILURE2_ (size: 112)
+ * Windows.Win32.NetworkManagement.WindowsFilteringPlatform.FWPM_NET_EVENT_IKEEXT_MM_FAILURE2 (size: 112)
  */
-export interface FWPM_NET_EVENT_IKEEXT_MM_FAILURE2_ {
+export interface FWPM_NET_EVENT_IKEEXT_MM_FAILURE2 {
   /** u32 */
   failureErrorCode: number;
   /** Windows.Win32.NetworkManagement.WindowsFilteringPlatform.IPSEC_FAILURE_POINT */
@@ -6880,10 +6697,10 @@ export interface FWPM_NET_EVENT_IKEEXT_MM_FAILURE2_ {
   providerContextKey: Deno.PointerValue | Uint8Array | null;
 }
 
-export const sizeofFWPM_NET_EVENT_IKEEXT_MM_FAILURE2_ = 112;
+export const sizeofFWPM_NET_EVENT_IKEEXT_MM_FAILURE2 = 112;
 
-export function allocFWPM_NET_EVENT_IKEEXT_MM_FAILURE2_(data?: Partial<FWPM_NET_EVENT_IKEEXT_MM_FAILURE2_>): Uint8Array {
-  const buf = new Uint8Array(sizeofFWPM_NET_EVENT_IKEEXT_MM_FAILURE2_);
+export function allocFWPM_NET_EVENT_IKEEXT_MM_FAILURE2(data?: Partial<FWPM_NET_EVENT_IKEEXT_MM_FAILURE2>): Uint8Array {
+  const buf = new Uint8Array(sizeofFWPM_NET_EVENT_IKEEXT_MM_FAILURE2);
   const view = new DataView(buf.buffer);
   // 0x00: u32
   if (data?.failureErrorCode !== undefined) view.setUint32(0, Number(data.failureErrorCode), true);
@@ -6982,9 +6799,9 @@ export function allocFWPM_NET_EVENT_IKEEXT_QM_FAILURE0(data?: Partial<FWPM_NET_E
 }
 
 /**
- * Windows.Win32.NetworkManagement.WindowsFilteringPlatform.FWPM_NET_EVENT_IKEEXT_QM_FAILURE1_ (size: 64)
+ * Windows.Win32.NetworkManagement.WindowsFilteringPlatform.FWPM_NET_EVENT_IKEEXT_QM_FAILURE1 (size: 64)
  */
-export interface FWPM_NET_EVENT_IKEEXT_QM_FAILURE1_ {
+export interface FWPM_NET_EVENT_IKEEXT_QM_FAILURE1 {
   /** u32 */
   failureErrorCode: number;
   /** Windows.Win32.NetworkManagement.WindowsFilteringPlatform.IPSEC_FAILURE_POINT */
@@ -7009,10 +6826,10 @@ export interface FWPM_NET_EVENT_IKEEXT_QM_FAILURE1_ {
   mmProviderContextKey: Uint8Array | Deno.PointerValue | null;
 }
 
-export const sizeofFWPM_NET_EVENT_IKEEXT_QM_FAILURE1_ = 64;
+export const sizeofFWPM_NET_EVENT_IKEEXT_QM_FAILURE1 = 64;
 
-export function allocFWPM_NET_EVENT_IKEEXT_QM_FAILURE1_(data?: Partial<FWPM_NET_EVENT_IKEEXT_QM_FAILURE1_>): Uint8Array {
-  const buf = new Uint8Array(sizeofFWPM_NET_EVENT_IKEEXT_QM_FAILURE1_);
+export function allocFWPM_NET_EVENT_IKEEXT_QM_FAILURE1(data?: Partial<FWPM_NET_EVENT_IKEEXT_QM_FAILURE1>): Uint8Array {
+  const buf = new Uint8Array(sizeofFWPM_NET_EVENT_IKEEXT_QM_FAILURE1);
   const view = new DataView(buf.buffer);
   // 0x00: u32
   if (data?.failureErrorCode !== undefined) view.setUint32(0, Number(data.failureErrorCode), true);
@@ -7560,17 +7377,17 @@ export function allocFWPM_NET_EVENT_CAPABILITY_ALLOW0(data?: Partial<FWPM_NET_EV
 }
 
 /**
- * Windows.Win32.NetworkManagement.WindowsFilteringPlatform.FWPM_NET_EVENT_LPM_PACKET_ARRIVAL0_ (size: 8)
+ * Windows.Win32.NetworkManagement.WindowsFilteringPlatform.FWPM_NET_EVENT_LPM_PACKET_ARRIVAL0 (size: 8)
  */
-export interface FWPM_NET_EVENT_LPM_PACKET_ARRIVAL0_ {
+export interface FWPM_NET_EVENT_LPM_PACKET_ARRIVAL0 {
   /** u32 */
   spi: number;
 }
 
-export const sizeofFWPM_NET_EVENT_LPM_PACKET_ARRIVAL0_ = 8;
+export const sizeofFWPM_NET_EVENT_LPM_PACKET_ARRIVAL0 = 8;
 
-export function allocFWPM_NET_EVENT_LPM_PACKET_ARRIVAL0_(data?: Partial<FWPM_NET_EVENT_LPM_PACKET_ARRIVAL0_>): Uint8Array {
-  const buf = new Uint8Array(sizeofFWPM_NET_EVENT_LPM_PACKET_ARRIVAL0_);
+export function allocFWPM_NET_EVENT_LPM_PACKET_ARRIVAL0(data?: Partial<FWPM_NET_EVENT_LPM_PACKET_ARRIVAL0>): Uint8Array {
+  const buf = new Uint8Array(sizeofFWPM_NET_EVENT_LPM_PACKET_ARRIVAL0);
   const view = new DataView(buf.buffer);
   // 0x00: u32
   if (data?.spi !== undefined) view.setUint32(0, Number(data.spi), true);
@@ -7687,9 +7504,9 @@ export function allocFWPM_NET_EVENT3(data?: Partial<FWPM_NET_EVENT3>): Uint8Arra
 }
 
 /**
- * Windows.Win32.NetworkManagement.WindowsFilteringPlatform.FWPM_NET_EVENT4_ (size: 24)
+ * Windows.Win32.NetworkManagement.WindowsFilteringPlatform.FWPM_NET_EVENT4 (size: 24)
  */
-export interface FWPM_NET_EVENT4_ {
+export interface FWPM_NET_EVENT4 {
   /** Windows.Win32.NetworkManagement.WindowsFilteringPlatform.FWPM_NET_EVENT_HEADER3 */
   header: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.NetworkManagement.WindowsFilteringPlatform.FWPM_NET_EVENT_TYPE */
@@ -7698,10 +7515,10 @@ export interface FWPM_NET_EVENT4_ {
   Anonymous: Uint8Array | Deno.PointerValue | null;
 }
 
-export const sizeofFWPM_NET_EVENT4_ = 24;
+export const sizeofFWPM_NET_EVENT4 = 24;
 
-export function allocFWPM_NET_EVENT4_(data?: Partial<FWPM_NET_EVENT4_>): Uint8Array {
-  const buf = new Uint8Array(sizeofFWPM_NET_EVENT4_);
+export function allocFWPM_NET_EVENT4(data?: Partial<FWPM_NET_EVENT4>): Uint8Array {
+  const buf = new Uint8Array(sizeofFWPM_NET_EVENT4);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
   if (data?.header !== undefined) view.setBigUint64(0, data.header === null ? 0n : BigInt(util.toPointer(data.header)), true);
@@ -7714,9 +7531,9 @@ export function allocFWPM_NET_EVENT4_(data?: Partial<FWPM_NET_EVENT4_>): Uint8Ar
 }
 
 /**
- * Windows.Win32.NetworkManagement.WindowsFilteringPlatform.FWPM_NET_EVENT5_ (size: 24)
+ * Windows.Win32.NetworkManagement.WindowsFilteringPlatform.FWPM_NET_EVENT5 (size: 24)
  */
-export interface FWPM_NET_EVENT5_ {
+export interface FWPM_NET_EVENT5 {
   /** Windows.Win32.NetworkManagement.WindowsFilteringPlatform.FWPM_NET_EVENT_HEADER3 */
   header: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.NetworkManagement.WindowsFilteringPlatform.FWPM_NET_EVENT_TYPE */
@@ -7725,10 +7542,10 @@ export interface FWPM_NET_EVENT5_ {
   Anonymous: Uint8Array | Deno.PointerValue | null;
 }
 
-export const sizeofFWPM_NET_EVENT5_ = 24;
+export const sizeofFWPM_NET_EVENT5 = 24;
 
-export function allocFWPM_NET_EVENT5_(data?: Partial<FWPM_NET_EVENT5_>): Uint8Array {
-  const buf = new Uint8Array(sizeofFWPM_NET_EVENT5_);
+export function allocFWPM_NET_EVENT5(data?: Partial<FWPM_NET_EVENT5>): Uint8Array {
+  const buf = new Uint8Array(sizeofFWPM_NET_EVENT5);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
   if (data?.header !== undefined) view.setBigUint64(0, data.header === null ? 0n : BigInt(util.toPointer(data.header)), true);
@@ -8056,2333 +7873,14 @@ export function allocIPSEC_KEY_MANAGER_CALLBACKS0(data?: Partial<IPSEC_KEY_MANAG
   return buf;
 }
 
-/**
- * Windows.Win32.NetworkManagement.WindowsFilteringPlatform.DL_OUI (size: 16)
- */
-export interface DL_OUI {
-  /** array */
-  Byte: Deno.PointerValue | null;
-  /** _Anonymous_e__Struct */
-  Anonymous: Uint8Array | Deno.PointerValue | null;
-}
-
-export const sizeofDL_OUI = 16;
-
-export function allocDL_OUI(data?: Partial<DL_OUI>): Uint8Array {
-  const buf = new Uint8Array(sizeofDL_OUI);
-  const view = new DataView(buf.buffer);
-  // 0x00: pointer
-  if (data?.Byte !== undefined) view.setBigUint64(0, data.Byte === null ? 0n : BigInt(util.toPointer(data.Byte)), true);
-  // 0x08: pointer
-  if (data?.Anonymous !== undefined) view.setBigUint64(8, data.Anonymous === null ? 0n : BigInt(util.toPointer(data.Anonymous)), true);
-  return buf;
-}
-
-/**
- * Windows.Win32.NetworkManagement.WindowsFilteringPlatform.DL_EI48 (size: 8)
- */
-export interface DL_EI48 {
-  /** array */
-  Byte: Deno.PointerValue | null;
-}
-
-export const sizeofDL_EI48 = 8;
-
-export function allocDL_EI48(data?: Partial<DL_EI48>): Uint8Array {
-  const buf = new Uint8Array(sizeofDL_EI48);
-  const view = new DataView(buf.buffer);
-  // 0x00: pointer
-  if (data?.Byte !== undefined) view.setBigUint64(0, data.Byte === null ? 0n : BigInt(util.toPointer(data.Byte)), true);
-  return buf;
-}
-
-/**
- * Windows.Win32.NetworkManagement.WindowsFilteringPlatform.DL_EUI48 (size: 16)
- */
-export interface DL_EUI48 {
-  /** array */
-  Byte: Deno.PointerValue | null;
-  /** _Anonymous_e__Struct */
-  Anonymous: Uint8Array | Deno.PointerValue | null;
-}
-
-export const sizeofDL_EUI48 = 16;
-
-export function allocDL_EUI48(data?: Partial<DL_EUI48>): Uint8Array {
-  const buf = new Uint8Array(sizeofDL_EUI48);
-  const view = new DataView(buf.buffer);
-  // 0x00: pointer
-  if (data?.Byte !== undefined) view.setBigUint64(0, data.Byte === null ? 0n : BigInt(util.toPointer(data.Byte)), true);
-  // 0x08: pointer
-  if (data?.Anonymous !== undefined) view.setBigUint64(8, data.Anonymous === null ? 0n : BigInt(util.toPointer(data.Anonymous)), true);
-  return buf;
-}
-
-/**
- * Windows.Win32.NetworkManagement.WindowsFilteringPlatform.DL_EI64 (size: 8)
- */
-export interface DL_EI64 {
-  /** array */
-  Byte: Deno.PointerValue | null;
-}
-
-export const sizeofDL_EI64 = 8;
-
-export function allocDL_EI64(data?: Partial<DL_EI64>): Uint8Array {
-  const buf = new Uint8Array(sizeofDL_EI64);
-  const view = new DataView(buf.buffer);
-  // 0x00: pointer
-  if (data?.Byte !== undefined) view.setBigUint64(0, data.Byte === null ? 0n : BigInt(util.toPointer(data.Byte)), true);
-  return buf;
-}
-
-/**
- * Windows.Win32.NetworkManagement.WindowsFilteringPlatform.DL_EUI64 (size: 24)
- */
-export interface DL_EUI64 {
-  /** array */
-  Byte: Deno.PointerValue | null;
-  /** u64 */
-  Value: Deno.PointerValue;
-  /** _Anonymous_e__Struct */
-  Anonymous: Uint8Array | Deno.PointerValue | null;
-}
-
-export const sizeofDL_EUI64 = 24;
-
-export function allocDL_EUI64(data?: Partial<DL_EUI64>): Uint8Array {
-  const buf = new Uint8Array(sizeofDL_EUI64);
-  const view = new DataView(buf.buffer);
-  // 0x00: pointer
-  if (data?.Byte !== undefined) view.setBigUint64(0, data.Byte === null ? 0n : BigInt(util.toPointer(data.Byte)), true);
-  // 0x08: u64
-  if (data?.Value !== undefined) view.setBigUint64(8, BigInt(data.Value), true);
-  // 0x10: pointer
-  if (data?.Anonymous !== undefined) view.setBigUint64(16, data.Anonymous === null ? 0n : BigInt(util.toPointer(data.Anonymous)), true);
-  return buf;
-}
-
-/**
- * Windows.Win32.NetworkManagement.WindowsFilteringPlatform.SNAP_HEADER (size: 24)
- */
-export interface SNAP_HEADER {
-  /** u8 */
-  Dsap: number;
-  /** u8 */
-  Ssap: number;
-  /** u8 */
-  Control: number;
-  /** array */
-  Oui: Deno.PointerValue | null;
-  /** u16 */
-  Type: number;
-}
-
-export const sizeofSNAP_HEADER = 24;
-
-export function allocSNAP_HEADER(data?: Partial<SNAP_HEADER>): Uint8Array {
-  const buf = new Uint8Array(sizeofSNAP_HEADER);
-  const view = new DataView(buf.buffer);
-  // 0x00: u8
-  if (data?.Dsap !== undefined) view.setUint8(0, Number(data.Dsap));
-  // 0x01: u8
-  if (data?.Ssap !== undefined) view.setUint8(1, Number(data.Ssap));
-  // 0x02: u8
-  if (data?.Control !== undefined) view.setUint8(2, Number(data.Control));
-  // 0x03: pad5
-  // 0x08: pointer
-  if (data?.Oui !== undefined) view.setBigUint64(8, data.Oui === null ? 0n : BigInt(util.toPointer(data.Oui)), true);
-  // 0x10: u16
-  if (data?.Type !== undefined) view.setUint16(16, Number(data.Type), true);
-  // 0x12: pad6
-  return buf;
-}
-
-/**
- * Windows.Win32.NetworkManagement.WindowsFilteringPlatform.ETHERNET_HEADER (size: 24)
- */
-export interface ETHERNET_HEADER {
-  /** Windows.Win32.NetworkManagement.WindowsFilteringPlatform.DL_EUI48 */
-  Destination: Uint8Array | Deno.PointerValue | null;
-  /** Windows.Win32.NetworkManagement.WindowsFilteringPlatform.DL_EUI48 */
-  Source: Uint8Array | Deno.PointerValue | null;
-  /** _Anonymous_e__Union */
-  Anonymous: Uint8Array | Deno.PointerValue | null;
-}
-
-export const sizeofETHERNET_HEADER = 24;
-
-export function allocETHERNET_HEADER(data?: Partial<ETHERNET_HEADER>): Uint8Array {
-  const buf = new Uint8Array(sizeofETHERNET_HEADER);
-  const view = new DataView(buf.buffer);
-  // 0x00: pointer
-  if (data?.Destination !== undefined) view.setBigUint64(0, data.Destination === null ? 0n : BigInt(util.toPointer(data.Destination)), true);
-  // 0x08: pointer
-  if (data?.Source !== undefined) view.setBigUint64(8, data.Source === null ? 0n : BigInt(util.toPointer(data.Source)), true);
-  // 0x10: pointer
-  if (data?.Anonymous !== undefined) view.setBigUint64(16, data.Anonymous === null ? 0n : BigInt(util.toPointer(data.Anonymous)), true);
-  return buf;
-}
-
-/**
- * Windows.Win32.NetworkManagement.WindowsFilteringPlatform.VLAN_TAG (size: 16)
- */
-export interface VLAN_TAG {
-  /** _Anonymous_e__Union */
-  Anonymous: Uint8Array | Deno.PointerValue | null;
-  /** u16 */
-  Type: number;
-}
-
-export const sizeofVLAN_TAG = 16;
-
-export function allocVLAN_TAG(data?: Partial<VLAN_TAG>): Uint8Array {
-  const buf = new Uint8Array(sizeofVLAN_TAG);
-  const view = new DataView(buf.buffer);
-  // 0x00: pointer
-  if (data?.Anonymous !== undefined) view.setBigUint64(0, data.Anonymous === null ? 0n : BigInt(util.toPointer(data.Anonymous)), true);
-  // 0x08: u16
-  if (data?.Type !== undefined) view.setUint16(8, Number(data.Type), true);
-  // 0x0a: pad6
-  return buf;
-}
-
-/**
- * Windows.Win32.NetworkManagement.WindowsFilteringPlatform.ICMP_HEADER (size: 8)
- */
-export interface ICMP_HEADER {
-  /** u8 */
-  Type: number;
-  /** u8 */
-  Code: number;
-  /** u16 */
-  Checksum: number;
-}
-
-export const sizeofICMP_HEADER = 8;
-
-export function allocICMP_HEADER(data?: Partial<ICMP_HEADER>): Uint8Array {
-  const buf = new Uint8Array(sizeofICMP_HEADER);
-  const view = new DataView(buf.buffer);
-  // 0x00: u8
-  if (data?.Type !== undefined) view.setUint8(0, Number(data.Type));
-  // 0x01: u8
-  if (data?.Code !== undefined) view.setUint8(1, Number(data.Code));
-  // 0x02: u16
-  if (data?.Checksum !== undefined) view.setUint16(2, Number(data.Checksum), true);
-  // 0x04: pad4
-  return buf;
-}
-
-/**
- * Windows.Win32.Devices.Bluetooth.RFCOMM_MSC_DATA (size: 8)
- */
-export interface RFCOMM_MSC_DATA {
-  /** u8 */
-  Signals: number;
-  /** u8 */
-  Break: number;
-}
-
-export const sizeofRFCOMM_MSC_DATA = 8;
-
-export function allocRFCOMM_MSC_DATA(data?: Partial<RFCOMM_MSC_DATA>): Uint8Array {
-  const buf = new Uint8Array(sizeofRFCOMM_MSC_DATA);
-  const view = new DataView(buf.buffer);
-  // 0x00: u8
-  if (data?.Signals !== undefined) view.setUint8(0, Number(data.Signals));
-  // 0x01: u8
-  if (data?.Break !== undefined) view.setUint8(1, Number(data.Break));
-  // 0x02: pad6
-  return buf;
-}
-
-/**
- * Windows.Win32.Devices.Bluetooth.RFCOMM_RLS_DATA (size: 8)
- */
-export interface RFCOMM_RLS_DATA {
-  /** u8 */
-  LineStatus: number;
-}
-
-export const sizeofRFCOMM_RLS_DATA = 8;
-
-export function allocRFCOMM_RLS_DATA(data?: Partial<RFCOMM_RLS_DATA>): Uint8Array {
-  const buf = new Uint8Array(sizeofRFCOMM_RLS_DATA);
-  const view = new DataView(buf.buffer);
-  // 0x00: u8
-  if (data?.LineStatus !== undefined) view.setUint8(0, Number(data.LineStatus));
-  // 0x01: pad7
-  return buf;
-}
-
-/**
- * Windows.Win32.Devices.Bluetooth.RFCOMM_RPN_DATA (size: 8)
- */
-export interface RFCOMM_RPN_DATA {
-  /** u8 */
-  Baud: number;
-  /** u8 */
-  Data: number;
-  /** u8 */
-  FlowControl: number;
-  /** u8 */
-  XonChar: number;
-  /** u8 */
-  XoffChar: number;
-  /** u8 */
-  ParameterMask1: number;
-  /** u8 */
-  ParameterMask2: number;
-}
-
-export const sizeofRFCOMM_RPN_DATA = 8;
-
-export function allocRFCOMM_RPN_DATA(data?: Partial<RFCOMM_RPN_DATA>): Uint8Array {
-  const buf = new Uint8Array(sizeofRFCOMM_RPN_DATA);
-  const view = new DataView(buf.buffer);
-  // 0x00: u8
-  if (data?.Baud !== undefined) view.setUint8(0, Number(data.Baud));
-  // 0x01: u8
-  if (data?.Data !== undefined) view.setUint8(1, Number(data.Data));
-  // 0x02: u8
-  if (data?.FlowControl !== undefined) view.setUint8(2, Number(data.FlowControl));
-  // 0x03: u8
-  if (data?.XonChar !== undefined) view.setUint8(3, Number(data.XonChar));
-  // 0x04: u8
-  if (data?.XoffChar !== undefined) view.setUint8(4, Number(data.XoffChar));
-  // 0x05: u8
-  if (data?.ParameterMask1 !== undefined) view.setUint8(5, Number(data.ParameterMask1));
-  // 0x06: u8
-  if (data?.ParameterMask2 !== undefined) view.setUint8(6, Number(data.ParameterMask2));
-  // 0x07: pad1
-  return buf;
-}
-
-/**
- * _Data_e__Union (size: 24)
- */
-export interface _Data_e__Union {
-  /** Windows.Win32.Devices.Bluetooth.RFCOMM_MSC_DATA */
-  MSC: Uint8Array | Deno.PointerValue | null;
-  /** Windows.Win32.Devices.Bluetooth.RFCOMM_RLS_DATA */
-  RLS: Uint8Array | Deno.PointerValue | null;
-  /** Windows.Win32.Devices.Bluetooth.RFCOMM_RPN_DATA */
-  RPN: Uint8Array | Deno.PointerValue | null;
-}
-
-export const sizeof_Data_e__Union = 24;
-
-export function alloc_Data_e__Union(data?: Partial<_Data_e__Union>): Uint8Array {
-  const buf = new Uint8Array(sizeof_Data_e__Union);
-  const view = new DataView(buf.buffer);
-  // 0x00: pointer
-  if (data?.MSC !== undefined) view.setBigUint64(0, data.MSC === null ? 0n : BigInt(util.toPointer(data.MSC)), true);
-  // 0x08: pointer
-  if (data?.RLS !== undefined) view.setBigUint64(8, data.RLS === null ? 0n : BigInt(util.toPointer(data.RLS)), true);
-  // 0x10: pointer
-  if (data?.RPN !== undefined) view.setBigUint64(16, data.RPN === null ? 0n : BigInt(util.toPointer(data.RPN)), true);
-  return buf;
-}
-
-/**
- * Windows.Win32.NetworkManagement.WindowsFilteringPlatform.ICMP_MESSAGE (size: 16)
- */
-export interface ICMP_MESSAGE {
-  /** Windows.Win32.NetworkManagement.WindowsFilteringPlatform.ICMP_HEADER */
-  Header: Uint8Array | Deno.PointerValue | null;
-  /** _Data_e__Union */
-  Data: Uint8Array | Deno.PointerValue | null;
-}
-
-export const sizeofICMP_MESSAGE = 16;
-
-export function allocICMP_MESSAGE(data?: Partial<ICMP_MESSAGE>): Uint8Array {
-  const buf = new Uint8Array(sizeofICMP_MESSAGE);
-  const view = new DataView(buf.buffer);
-  // 0x00: pointer
-  if (data?.Header !== undefined) view.setBigUint64(0, data.Header === null ? 0n : BigInt(util.toPointer(data.Header)), true);
-  // 0x08: pointer
-  if (data?.Data !== undefined) view.setBigUint64(8, data.Data === null ? 0n : BigInt(util.toPointer(data.Data)), true);
-  return buf;
-}
-
-/**
- * _S_un_ports_e__Struct (size: 8)
- */
-export interface _S_un_ports_e__Struct {
-  /** u16 */
-  s_srcport: number;
-  /** u16 */
-  s_dstport: number;
-}
-
-export const sizeof_S_un_ports_e__Struct = 8;
-
-export function alloc_S_un_ports_e__Struct(data?: Partial<_S_un_ports_e__Struct>): Uint8Array {
-  const buf = new Uint8Array(sizeof_S_un_ports_e__Struct);
-  const view = new DataView(buf.buffer);
-  // 0x00: u16
-  if (data?.s_srcport !== undefined) view.setUint16(0, Number(data.s_srcport), true);
-  // 0x02: u16
-  if (data?.s_dstport !== undefined) view.setUint16(2, Number(data.s_dstport), true);
-  // 0x04: pad4
-  return buf;
-}
-
-/**
- * _S_un_icmp_e__Struct (size: 8)
- */
-export interface _S_un_icmp_e__Struct {
-  /** u8 */
-  s_type: number;
-  /** u8 */
-  s_code: number;
-  /** u16 */
-  filler: number;
-}
-
-export const sizeof_S_un_icmp_e__Struct = 8;
-
-export function alloc_S_un_icmp_e__Struct(data?: Partial<_S_un_icmp_e__Struct>): Uint8Array {
-  const buf = new Uint8Array(sizeof_S_un_icmp_e__Struct);
-  const view = new DataView(buf.buffer);
-  // 0x00: u8
-  if (data?.s_type !== undefined) view.setUint8(0, Number(data.s_type));
-  // 0x01: u8
-  if (data?.s_code !== undefined) view.setUint8(1, Number(data.s_code));
-  // 0x02: u16
-  if (data?.filler !== undefined) view.setUint16(2, Number(data.filler), true);
-  // 0x04: pad4
-  return buf;
-}
-
-/**
- * _S_un_e__Union (size: 24)
- */
-export interface _S_un_e__Union {
-  /** _S_un_ports_e__Struct */
-  S_un_ports: Uint8Array | Deno.PointerValue | null;
-  /** _S_un_icmp_e__Struct */
-  S_un_icmp: Uint8Array | Deno.PointerValue | null;
-  /** u32 */
-  S_Spi: number;
-}
-
-export const sizeof_S_un_e__Union = 24;
-
-export function alloc_S_un_e__Union(data?: Partial<_S_un_e__Union>): Uint8Array {
-  const buf = new Uint8Array(sizeof_S_un_e__Union);
-  const view = new DataView(buf.buffer);
-  // 0x00: pointer
-  if (data?.S_un_ports !== undefined) view.setBigUint64(0, data.S_un_ports === null ? 0n : BigInt(util.toPointer(data.S_un_ports)), true);
-  // 0x08: pointer
-  if (data?.S_un_icmp !== undefined) view.setBigUint64(8, data.S_un_icmp === null ? 0n : BigInt(util.toPointer(data.S_un_icmp)), true);
-  // 0x10: u32
-  if (data?.S_Spi !== undefined) view.setUint32(16, Number(data.S_Spi), true);
-  // 0x14: pad4
-  return buf;
-}
-
-/**
- * Windows.Win32.Networking.WinSock.IN_ADDR (size: 8)
- */
-export interface IN_ADDR {
-  /** _S_un_e__Union */
-  S_un: Uint8Array | Deno.PointerValue | null;
-}
-
-export const sizeofIN_ADDR = 8;
-
-export function allocIN_ADDR(data?: Partial<IN_ADDR>): Uint8Array {
-  const buf = new Uint8Array(sizeofIN_ADDR);
-  const view = new DataView(buf.buffer);
-  // 0x00: pointer
-  if (data?.S_un !== undefined) view.setBigUint64(0, data.S_un === null ? 0n : BigInt(util.toPointer(data.S_un)), true);
-  return buf;
-}
-
-/**
- * Windows.Win32.NetworkManagement.WindowsFilteringPlatform.IPV4_HEADER (size: 56)
- */
-export interface IPV4_HEADER {
-  /** _Anonymous1_e__Union */
-  Anonymous1: Uint8Array | Deno.PointerValue | null;
-  /** _Anonymous2_e__Union */
-  Anonymous2: Uint8Array | Deno.PointerValue | null;
-  /** u16 */
-  TotalLength: number;
-  /** u16 */
-  Identification: number;
-  /** _Anonymous3_e__Union */
-  Anonymous3: Uint8Array | Deno.PointerValue | null;
-  /** u8 */
-  TimeToLive: number;
-  /** u8 */
-  Protocol: number;
-  /** u16 */
-  HeaderChecksum: number;
-  /** Windows.Win32.Networking.WinSock.IN_ADDR */
-  SourceAddress: Uint8Array | Deno.PointerValue | null;
-  /** Windows.Win32.Networking.WinSock.IN_ADDR */
-  DestinationAddress: Uint8Array | Deno.PointerValue | null;
-}
-
-export const sizeofIPV4_HEADER = 56;
-
-export function allocIPV4_HEADER(data?: Partial<IPV4_HEADER>): Uint8Array {
-  const buf = new Uint8Array(sizeofIPV4_HEADER);
-  const view = new DataView(buf.buffer);
-  // 0x00: pointer
-  if (data?.Anonymous1 !== undefined) view.setBigUint64(0, data.Anonymous1 === null ? 0n : BigInt(util.toPointer(data.Anonymous1)), true);
-  // 0x08: pointer
-  if (data?.Anonymous2 !== undefined) view.setBigUint64(8, data.Anonymous2 === null ? 0n : BigInt(util.toPointer(data.Anonymous2)), true);
-  // 0x10: u16
-  if (data?.TotalLength !== undefined) view.setUint16(16, Number(data.TotalLength), true);
-  // 0x12: u16
-  if (data?.Identification !== undefined) view.setUint16(18, Number(data.Identification), true);
-  // 0x14: pad4
-  // 0x18: pointer
-  if (data?.Anonymous3 !== undefined) view.setBigUint64(24, data.Anonymous3 === null ? 0n : BigInt(util.toPointer(data.Anonymous3)), true);
-  // 0x20: u8
-  if (data?.TimeToLive !== undefined) view.setUint8(32, Number(data.TimeToLive));
-  // 0x21: u8
-  if (data?.Protocol !== undefined) view.setUint8(33, Number(data.Protocol));
-  // 0x22: u16
-  if (data?.HeaderChecksum !== undefined) view.setUint16(34, Number(data.HeaderChecksum), true);
-  // 0x24: pad4
-  // 0x28: pointer
-  if (data?.SourceAddress !== undefined) view.setBigUint64(40, data.SourceAddress === null ? 0n : BigInt(util.toPointer(data.SourceAddress)), true);
-  // 0x30: pointer
-  if (data?.DestinationAddress !== undefined) view.setBigUint64(48, data.DestinationAddress === null ? 0n : BigInt(util.toPointer(data.DestinationAddress)), true);
-  return buf;
-}
-
-/**
- * Windows.Win32.NetworkManagement.WindowsFilteringPlatform.IPV4_OPTION_HEADER (size: 16)
- */
-export interface IPV4_OPTION_HEADER {
-  /** _Anonymous_e__Union */
-  Anonymous: Uint8Array | Deno.PointerValue | null;
-  /** u8 */
-  OptionLength: number;
-}
-
-export const sizeofIPV4_OPTION_HEADER = 16;
-
-export function allocIPV4_OPTION_HEADER(data?: Partial<IPV4_OPTION_HEADER>): Uint8Array {
-  const buf = new Uint8Array(sizeofIPV4_OPTION_HEADER);
-  const view = new DataView(buf.buffer);
-  // 0x00: pointer
-  if (data?.Anonymous !== undefined) view.setBigUint64(0, data.Anonymous === null ? 0n : BigInt(util.toPointer(data.Anonymous)), true);
-  // 0x08: u8
-  if (data?.OptionLength !== undefined) view.setUint8(8, Number(data.OptionLength));
-  // 0x09: pad7
-  return buf;
-}
-
-/**
- * Windows.Win32.NetworkManagement.WindowsFilteringPlatform.IPV4_TIMESTAMP_OPTION (size: 24)
- */
-export interface IPV4_TIMESTAMP_OPTION {
-  /** Windows.Win32.NetworkManagement.WindowsFilteringPlatform.IPV4_OPTION_HEADER */
-  OptionHeader: Uint8Array | Deno.PointerValue | null;
-  /** u8 */
-  Pointer: number;
-  /** _Anonymous_e__Union */
-  Anonymous: Uint8Array | Deno.PointerValue | null;
-}
-
-export const sizeofIPV4_TIMESTAMP_OPTION = 24;
-
-export function allocIPV4_TIMESTAMP_OPTION(data?: Partial<IPV4_TIMESTAMP_OPTION>): Uint8Array {
-  const buf = new Uint8Array(sizeofIPV4_TIMESTAMP_OPTION);
-  const view = new DataView(buf.buffer);
-  // 0x00: pointer
-  if (data?.OptionHeader !== undefined) view.setBigUint64(0, data.OptionHeader === null ? 0n : BigInt(util.toPointer(data.OptionHeader)), true);
-  // 0x08: u8
-  if (data?.Pointer !== undefined) view.setUint8(8, Number(data.Pointer));
-  // 0x09: pad7
-  // 0x10: pointer
-  if (data?.Anonymous !== undefined) view.setBigUint64(16, data.Anonymous === null ? 0n : BigInt(util.toPointer(data.Anonymous)), true);
-  return buf;
-}
-
-/**
- * Windows.Win32.NetworkManagement.WindowsFilteringPlatform.IPV4_ROUTING_HEADER (size: 16)
- */
-export interface IPV4_ROUTING_HEADER {
-  /** Windows.Win32.NetworkManagement.WindowsFilteringPlatform.IPV4_OPTION_HEADER */
-  OptionHeader: Uint8Array | Deno.PointerValue | null;
-  /** u8 */
-  Pointer: number;
-}
-
-export const sizeofIPV4_ROUTING_HEADER = 16;
-
-export function allocIPV4_ROUTING_HEADER(data?: Partial<IPV4_ROUTING_HEADER>): Uint8Array {
-  const buf = new Uint8Array(sizeofIPV4_ROUTING_HEADER);
-  const view = new DataView(buf.buffer);
-  // 0x00: pointer
-  if (data?.OptionHeader !== undefined) view.setBigUint64(0, data.OptionHeader === null ? 0n : BigInt(util.toPointer(data.OptionHeader)), true);
-  // 0x08: u8
-  if (data?.Pointer !== undefined) view.setUint8(8, Number(data.Pointer));
-  // 0x09: pad7
-  return buf;
-}
-
-/**
- * Windows.Win32.NetworkManagement.WindowsFilteringPlatform.ICMPV4_ROUTER_SOLICIT (size: 8)
- */
-export interface ICMPV4_ROUTER_SOLICIT {
-  /** Windows.Win32.NetworkManagement.WindowsFilteringPlatform.ICMP_MESSAGE */
-  RsHeader: Uint8Array | Deno.PointerValue | null;
-}
-
-export const sizeofICMPV4_ROUTER_SOLICIT = 8;
-
-export function allocICMPV4_ROUTER_SOLICIT(data?: Partial<ICMPV4_ROUTER_SOLICIT>): Uint8Array {
-  const buf = new Uint8Array(sizeofICMPV4_ROUTER_SOLICIT);
-  const view = new DataView(buf.buffer);
-  // 0x00: pointer
-  if (data?.RsHeader !== undefined) view.setBigUint64(0, data.RsHeader === null ? 0n : BigInt(util.toPointer(data.RsHeader)), true);
-  return buf;
-}
-
-/**
- * Windows.Win32.NetworkManagement.WindowsFilteringPlatform.ICMPV4_ROUTER_ADVERT_HEADER (size: 8)
- */
-export interface ICMPV4_ROUTER_ADVERT_HEADER {
-  /** Windows.Win32.NetworkManagement.WindowsFilteringPlatform.ICMP_MESSAGE */
-  RaHeader: Uint8Array | Deno.PointerValue | null;
-}
-
-export const sizeofICMPV4_ROUTER_ADVERT_HEADER = 8;
-
-export function allocICMPV4_ROUTER_ADVERT_HEADER(data?: Partial<ICMPV4_ROUTER_ADVERT_HEADER>): Uint8Array {
-  const buf = new Uint8Array(sizeofICMPV4_ROUTER_ADVERT_HEADER);
-  const view = new DataView(buf.buffer);
-  // 0x00: pointer
-  if (data?.RaHeader !== undefined) view.setBigUint64(0, data.RaHeader === null ? 0n : BigInt(util.toPointer(data.RaHeader)), true);
-  return buf;
-}
-
-/**
- * Windows.Win32.NetworkManagement.WindowsFilteringPlatform.ICMPV4_ROUTER_ADVERT_ENTRY (size: 16)
- */
-export interface ICMPV4_ROUTER_ADVERT_ENTRY {
-  /** Windows.Win32.Networking.WinSock.IN_ADDR */
-  RouterAdvertAddr: Uint8Array | Deno.PointerValue | null;
-  /** i32 */
-  PreferenceLevel: number;
-}
-
-export const sizeofICMPV4_ROUTER_ADVERT_ENTRY = 16;
-
-export function allocICMPV4_ROUTER_ADVERT_ENTRY(data?: Partial<ICMPV4_ROUTER_ADVERT_ENTRY>): Uint8Array {
-  const buf = new Uint8Array(sizeofICMPV4_ROUTER_ADVERT_ENTRY);
-  const view = new DataView(buf.buffer);
-  // 0x00: pointer
-  if (data?.RouterAdvertAddr !== undefined) view.setBigUint64(0, data.RouterAdvertAddr === null ? 0n : BigInt(util.toPointer(data.RouterAdvertAddr)), true);
-  // 0x08: i32
-  if (data?.PreferenceLevel !== undefined) view.setInt32(8, Number(data.PreferenceLevel), true);
-  // 0x0c: pad4
-  return buf;
-}
-
-/**
- * Windows.Win32.NetworkManagement.WindowsFilteringPlatform.ICMPV4_TIMESTAMP_MESSAGE (size: 24)
- */
-export interface ICMPV4_TIMESTAMP_MESSAGE {
-  /** Windows.Win32.NetworkManagement.WindowsFilteringPlatform.ICMP_MESSAGE */
-  Header: Uint8Array | Deno.PointerValue | null;
-  /** u32 */
-  OriginateTimestamp: number;
-  /** u32 */
-  ReceiveTimestamp: number;
-  /** u32 */
-  TransmitTimestamp: number;
-}
-
-export const sizeofICMPV4_TIMESTAMP_MESSAGE = 24;
-
-export function allocICMPV4_TIMESTAMP_MESSAGE(data?: Partial<ICMPV4_TIMESTAMP_MESSAGE>): Uint8Array {
-  const buf = new Uint8Array(sizeofICMPV4_TIMESTAMP_MESSAGE);
-  const view = new DataView(buf.buffer);
-  // 0x00: pointer
-  if (data?.Header !== undefined) view.setBigUint64(0, data.Header === null ? 0n : BigInt(util.toPointer(data.Header)), true);
-  // 0x08: u32
-  if (data?.OriginateTimestamp !== undefined) view.setUint32(8, Number(data.OriginateTimestamp), true);
-  // 0x0c: u32
-  if (data?.ReceiveTimestamp !== undefined) view.setUint32(12, Number(data.ReceiveTimestamp), true);
-  // 0x10: u32
-  if (data?.TransmitTimestamp !== undefined) view.setUint32(16, Number(data.TransmitTimestamp), true);
-  // 0x14: pad4
-  return buf;
-}
-
-/**
- * Windows.Win32.NetworkManagement.WindowsFilteringPlatform.ICMPV4_ADDRESS_MASK_MESSAGE (size: 16)
- */
-export interface ICMPV4_ADDRESS_MASK_MESSAGE {
-  /** Windows.Win32.NetworkManagement.WindowsFilteringPlatform.ICMP_MESSAGE */
-  Header: Uint8Array | Deno.PointerValue | null;
-  /** u32 */
-  AddressMask: number;
-}
-
-export const sizeofICMPV4_ADDRESS_MASK_MESSAGE = 16;
-
-export function allocICMPV4_ADDRESS_MASK_MESSAGE(data?: Partial<ICMPV4_ADDRESS_MASK_MESSAGE>): Uint8Array {
-  const buf = new Uint8Array(sizeofICMPV4_ADDRESS_MASK_MESSAGE);
-  const view = new DataView(buf.buffer);
-  // 0x00: pointer
-  if (data?.Header !== undefined) view.setBigUint64(0, data.Header === null ? 0n : BigInt(util.toPointer(data.Header)), true);
-  // 0x08: u32
-  if (data?.AddressMask !== undefined) view.setUint32(8, Number(data.AddressMask), true);
-  // 0x0c: pad4
-  return buf;
-}
-
-/**
- * Windows.Win32.NetworkManagement.WindowsFilteringPlatform.ARP_HEADER (size: 16)
- */
-export interface ARP_HEADER {
-  /** u16 */
-  HardwareAddressSpace: number;
-  /** u16 */
-  ProtocolAddressSpace: number;
-  /** u8 */
-  HardwareAddressLength: number;
-  /** u8 */
-  ProtocolAddressLength: number;
-  /** u16 */
-  Opcode: number;
-  /** array */
-  SenderHardwareAddress: Deno.PointerValue | null;
-}
-
-export const sizeofARP_HEADER = 16;
-
-export function allocARP_HEADER(data?: Partial<ARP_HEADER>): Uint8Array {
-  const buf = new Uint8Array(sizeofARP_HEADER);
-  const view = new DataView(buf.buffer);
-  // 0x00: u16
-  if (data?.HardwareAddressSpace !== undefined) view.setUint16(0, Number(data.HardwareAddressSpace), true);
-  // 0x02: u16
-  if (data?.ProtocolAddressSpace !== undefined) view.setUint16(2, Number(data.ProtocolAddressSpace), true);
-  // 0x04: u8
-  if (data?.HardwareAddressLength !== undefined) view.setUint8(4, Number(data.HardwareAddressLength));
-  // 0x05: u8
-  if (data?.ProtocolAddressLength !== undefined) view.setUint8(5, Number(data.ProtocolAddressLength));
-  // 0x06: u16
-  if (data?.Opcode !== undefined) view.setUint16(6, Number(data.Opcode), true);
-  // 0x08: pointer
-  if (data?.SenderHardwareAddress !== undefined) view.setBigUint64(8, data.SenderHardwareAddress === null ? 0n : BigInt(util.toPointer(data.SenderHardwareAddress)), true);
-  return buf;
-}
-
-/**
- * Windows.Win32.NetworkManagement.WindowsFilteringPlatform.IGMP_HEADER (size: 32)
- */
-export interface IGMP_HEADER {
-  /** _Anonymous1_e__Union */
-  Anonymous1: Uint8Array | Deno.PointerValue | null;
-  /** _Anonymous2_e__Union */
-  Anonymous2: Uint8Array | Deno.PointerValue | null;
-  /** u16 */
-  Checksum: number;
-  /** Windows.Win32.Networking.WinSock.IN_ADDR */
-  MulticastAddress: Uint8Array | Deno.PointerValue | null;
-}
-
-export const sizeofIGMP_HEADER = 32;
-
-export function allocIGMP_HEADER(data?: Partial<IGMP_HEADER>): Uint8Array {
-  const buf = new Uint8Array(sizeofIGMP_HEADER);
-  const view = new DataView(buf.buffer);
-  // 0x00: pointer
-  if (data?.Anonymous1 !== undefined) view.setBigUint64(0, data.Anonymous1 === null ? 0n : BigInt(util.toPointer(data.Anonymous1)), true);
-  // 0x08: pointer
-  if (data?.Anonymous2 !== undefined) view.setBigUint64(8, data.Anonymous2 === null ? 0n : BigInt(util.toPointer(data.Anonymous2)), true);
-  // 0x10: u16
-  if (data?.Checksum !== undefined) view.setUint16(16, Number(data.Checksum), true);
-  // 0x12: pad6
-  // 0x18: pointer
-  if (data?.MulticastAddress !== undefined) view.setBigUint64(24, data.MulticastAddress === null ? 0n : BigInt(util.toPointer(data.MulticastAddress)), true);
-  return buf;
-}
-
-/**
- * Windows.Win32.NetworkManagement.WindowsFilteringPlatform.IGMPV3_QUERY_HEADER (size: 56)
- */
-export interface IGMPV3_QUERY_HEADER {
-  /** u8 */
-  Type: number;
-  /** _Anonymous1_e__Union */
-  Anonymous1: Uint8Array | Deno.PointerValue | null;
-  /** u16 */
-  Checksum: number;
-  /** Windows.Win32.Networking.WinSock.IN_ADDR */
-  MulticastAddress: Uint8Array | Deno.PointerValue | null;
-  /** u8 */
-  _bitfield: number;
-  /** _Anonymous2_e__Union */
-  Anonymous2: Uint8Array | Deno.PointerValue | null;
-  /** u16 */
-  SourceCount: number;
-}
-
-export const sizeofIGMPV3_QUERY_HEADER = 56;
-
-export function allocIGMPV3_QUERY_HEADER(data?: Partial<IGMPV3_QUERY_HEADER>): Uint8Array {
-  const buf = new Uint8Array(sizeofIGMPV3_QUERY_HEADER);
-  const view = new DataView(buf.buffer);
-  // 0x00: u8
-  if (data?.Type !== undefined) view.setUint8(0, Number(data.Type));
-  // 0x01: pad7
-  // 0x08: pointer
-  if (data?.Anonymous1 !== undefined) view.setBigUint64(8, data.Anonymous1 === null ? 0n : BigInt(util.toPointer(data.Anonymous1)), true);
-  // 0x10: u16
-  if (data?.Checksum !== undefined) view.setUint16(16, Number(data.Checksum), true);
-  // 0x12: pad6
-  // 0x18: pointer
-  if (data?.MulticastAddress !== undefined) view.setBigUint64(24, data.MulticastAddress === null ? 0n : BigInt(util.toPointer(data.MulticastAddress)), true);
-  // 0x20: u8
-  if (data?._bitfield !== undefined) view.setUint8(32, Number(data._bitfield));
-  // 0x21: pad7
-  // 0x28: pointer
-  if (data?.Anonymous2 !== undefined) view.setBigUint64(40, data.Anonymous2 === null ? 0n : BigInt(util.toPointer(data.Anonymous2)), true);
-  // 0x30: u16
-  if (data?.SourceCount !== undefined) view.setUint16(48, Number(data.SourceCount), true);
-  // 0x32: pad6
-  return buf;
-}
-
-/**
- * Windows.Win32.NetworkManagement.WindowsFilteringPlatform.IGMPV3_REPORT_RECORD_HEADER (size: 16)
- */
-export interface IGMPV3_REPORT_RECORD_HEADER {
-  /** u8 */
-  Type: number;
-  /** u8 */
-  AuxillaryDataLength: number;
-  /** u16 */
-  SourceCount: number;
-  /** Windows.Win32.Networking.WinSock.IN_ADDR */
-  MulticastAddress: Uint8Array | Deno.PointerValue | null;
-}
-
-export const sizeofIGMPV3_REPORT_RECORD_HEADER = 16;
-
-export function allocIGMPV3_REPORT_RECORD_HEADER(data?: Partial<IGMPV3_REPORT_RECORD_HEADER>): Uint8Array {
-  const buf = new Uint8Array(sizeofIGMPV3_REPORT_RECORD_HEADER);
-  const view = new DataView(buf.buffer);
-  // 0x00: u8
-  if (data?.Type !== undefined) view.setUint8(0, Number(data.Type));
-  // 0x01: u8
-  if (data?.AuxillaryDataLength !== undefined) view.setUint8(1, Number(data.AuxillaryDataLength));
-  // 0x02: u16
-  if (data?.SourceCount !== undefined) view.setUint16(2, Number(data.SourceCount), true);
-  // 0x04: pad4
-  // 0x08: pointer
-  if (data?.MulticastAddress !== undefined) view.setBigUint64(8, data.MulticastAddress === null ? 0n : BigInt(util.toPointer(data.MulticastAddress)), true);
-  return buf;
-}
-
-/**
- * Windows.Win32.NetworkManagement.WindowsFilteringPlatform.IGMPV3_REPORT_HEADER (size: 8)
- */
-export interface IGMPV3_REPORT_HEADER {
-  /** u8 */
-  Type: number;
-  /** u8 */
-  Reserved: number;
-  /** u16 */
-  Checksum: number;
-  /** u16 */
-  Reserved2: number;
-  /** u16 */
-  RecordCount: number;
-}
-
-export const sizeofIGMPV3_REPORT_HEADER = 8;
-
-export function allocIGMPV3_REPORT_HEADER(data?: Partial<IGMPV3_REPORT_HEADER>): Uint8Array {
-  const buf = new Uint8Array(sizeofIGMPV3_REPORT_HEADER);
-  const view = new DataView(buf.buffer);
-  // 0x00: u8
-  if (data?.Type !== undefined) view.setUint8(0, Number(data.Type));
-  // 0x01: u8
-  if (data?.Reserved !== undefined) view.setUint8(1, Number(data.Reserved));
-  // 0x02: u16
-  if (data?.Checksum !== undefined) view.setUint16(2, Number(data.Checksum), true);
-  // 0x04: u16
-  if (data?.Reserved2 !== undefined) view.setUint16(4, Number(data.Reserved2), true);
-  // 0x06: u16
-  if (data?.RecordCount !== undefined) view.setUint16(6, Number(data.RecordCount), true);
-  return buf;
-}
-
-export type NTSTATUS = number;
-
-/**
- * Windows.Win32.System.Diagnostics.Debug.EXCEPTION_RECORD (size: 48)
- */
-export interface EXCEPTION_RECORD {
-  /** Windows.Win32.Foundation.NTSTATUS */
-  ExceptionCode: Uint8Array | Deno.PointerValue | null;
-  /** u32 */
-  ExceptionFlags: number;
-  /** ptr */
-  ExceptionRecord: Deno.PointerValue | Uint8Array | null;
-  /** ptr */
-  ExceptionAddress: Deno.PointerValue | Uint8Array | null;
-  /** u32 */
-  NumberParameters: number;
-  /** array */
-  ExceptionInformation: Deno.PointerValue | null;
-}
-
-export const sizeofEXCEPTION_RECORD = 48;
-
-export function allocEXCEPTION_RECORD(data?: Partial<EXCEPTION_RECORD>): Uint8Array {
-  const buf = new Uint8Array(sizeofEXCEPTION_RECORD);
-  const view = new DataView(buf.buffer);
-  // 0x00: pointer
-  if (data?.ExceptionCode !== undefined) view.setBigUint64(0, data.ExceptionCode === null ? 0n : BigInt(util.toPointer(data.ExceptionCode)), true);
-  // 0x08: u32
-  if (data?.ExceptionFlags !== undefined) view.setUint32(8, Number(data.ExceptionFlags), true);
-  // 0x0c: pad4
-  // 0x10: pointer
-  if (data?.ExceptionRecord !== undefined) view.setBigUint64(16, data.ExceptionRecord === null ? 0n : BigInt(util.toPointer(data.ExceptionRecord)), true);
-  // 0x18: pointer
-  if (data?.ExceptionAddress !== undefined) view.setBigUint64(24, data.ExceptionAddress === null ? 0n : BigInt(util.toPointer(data.ExceptionAddress)), true);
-  // 0x20: u32
-  if (data?.NumberParameters !== undefined) view.setUint32(32, Number(data.NumberParameters), true);
-  // 0x24: pad4
-  // 0x28: pointer
-  if (data?.ExceptionInformation !== undefined) view.setBigUint64(40, data.ExceptionInformation === null ? 0n : BigInt(util.toPointer(data.ExceptionInformation)), true);
-  return buf;
-}
-
-/**
- * Windows.Win32.System.Diagnostics.Debug.EXCEPTION_DEBUG_INFO (size: 16)
- */
-export interface EXCEPTION_DEBUG_INFO {
-  /** Windows.Win32.System.Diagnostics.Debug.EXCEPTION_RECORD */
-  ExceptionRecord: Uint8Array | Deno.PointerValue | null;
-  /** u32 */
-  dwFirstChance: number;
-}
-
-export const sizeofEXCEPTION_DEBUG_INFO = 16;
-
-export function allocEXCEPTION_DEBUG_INFO(data?: Partial<EXCEPTION_DEBUG_INFO>): Uint8Array {
-  const buf = new Uint8Array(sizeofEXCEPTION_DEBUG_INFO);
-  const view = new DataView(buf.buffer);
-  // 0x00: pointer
-  if (data?.ExceptionRecord !== undefined) view.setBigUint64(0, data.ExceptionRecord === null ? 0n : BigInt(util.toPointer(data.ExceptionRecord)), true);
-  // 0x08: u32
-  if (data?.dwFirstChance !== undefined) view.setUint32(8, Number(data.dwFirstChance), true);
-  // 0x0c: pad4
-  return buf;
-}
-
 export type HANDLE = Deno.PointerValue;
 
-/**
- * Windows.Win32.System.Diagnostics.Debug.CREATE_THREAD_DEBUG_INFO (size: 24)
- */
-export interface CREATE_THREAD_DEBUG_INFO {
-  /** Windows.Win32.Foundation.HANDLE */
-  hThread: Uint8Array | Deno.PointerValue | null;
-  /** ptr */
-  lpThreadLocalBase: Deno.PointerValue | Uint8Array | null;
-  /** Windows.Win32.System.Threading.LPTHREAD_START_ROUTINE */
-  lpStartAddress: Uint8Array | Deno.PointerValue | null;
-}
-
-export const sizeofCREATE_THREAD_DEBUG_INFO = 24;
-
-export function allocCREATE_THREAD_DEBUG_INFO(data?: Partial<CREATE_THREAD_DEBUG_INFO>): Uint8Array {
-  const buf = new Uint8Array(sizeofCREATE_THREAD_DEBUG_INFO);
-  const view = new DataView(buf.buffer);
-  // 0x00: pointer
-  if (data?.hThread !== undefined) view.setBigUint64(0, data.hThread === null ? 0n : BigInt(util.toPointer(data.hThread)), true);
-  // 0x08: pointer
-  if (data?.lpThreadLocalBase !== undefined) view.setBigUint64(8, data.lpThreadLocalBase === null ? 0n : BigInt(util.toPointer(data.lpThreadLocalBase)), true);
-  // 0x10: pointer
-  if (data?.lpStartAddress !== undefined) view.setBigUint64(16, data.lpStartAddress === null ? 0n : BigInt(util.toPointer(data.lpStartAddress)), true);
-  return buf;
-}
-
-/**
- * Windows.Win32.System.Diagnostics.Debug.CREATE_PROCESS_DEBUG_INFO (size: 72)
- */
-export interface CREATE_PROCESS_DEBUG_INFO {
-  /** Windows.Win32.Foundation.HANDLE */
-  hFile: Uint8Array | Deno.PointerValue | null;
-  /** Windows.Win32.Foundation.HANDLE */
-  hProcess: Uint8Array | Deno.PointerValue | null;
-  /** Windows.Win32.Foundation.HANDLE */
-  hThread: Uint8Array | Deno.PointerValue | null;
-  /** ptr */
-  lpBaseOfImage: Deno.PointerValue | Uint8Array | null;
-  /** u32 */
-  dwDebugInfoFileOffset: number;
-  /** u32 */
-  nDebugInfoSize: number;
-  /** ptr */
-  lpThreadLocalBase: Deno.PointerValue | Uint8Array | null;
-  /** Windows.Win32.System.Threading.LPTHREAD_START_ROUTINE */
-  lpStartAddress: Uint8Array | Deno.PointerValue | null;
-  /** ptr */
-  lpImageName: Deno.PointerValue | Uint8Array | null;
-  /** u16 */
-  fUnicode: number;
-}
-
-export const sizeofCREATE_PROCESS_DEBUG_INFO = 72;
-
-export function allocCREATE_PROCESS_DEBUG_INFO(data?: Partial<CREATE_PROCESS_DEBUG_INFO>): Uint8Array {
-  const buf = new Uint8Array(sizeofCREATE_PROCESS_DEBUG_INFO);
-  const view = new DataView(buf.buffer);
-  // 0x00: pointer
-  if (data?.hFile !== undefined) view.setBigUint64(0, data.hFile === null ? 0n : BigInt(util.toPointer(data.hFile)), true);
-  // 0x08: pointer
-  if (data?.hProcess !== undefined) view.setBigUint64(8, data.hProcess === null ? 0n : BigInt(util.toPointer(data.hProcess)), true);
-  // 0x10: pointer
-  if (data?.hThread !== undefined) view.setBigUint64(16, data.hThread === null ? 0n : BigInt(util.toPointer(data.hThread)), true);
-  // 0x18: pointer
-  if (data?.lpBaseOfImage !== undefined) view.setBigUint64(24, data.lpBaseOfImage === null ? 0n : BigInt(util.toPointer(data.lpBaseOfImage)), true);
-  // 0x20: u32
-  if (data?.dwDebugInfoFileOffset !== undefined) view.setUint32(32, Number(data.dwDebugInfoFileOffset), true);
-  // 0x24: u32
-  if (data?.nDebugInfoSize !== undefined) view.setUint32(36, Number(data.nDebugInfoSize), true);
-  // 0x28: pointer
-  if (data?.lpThreadLocalBase !== undefined) view.setBigUint64(40, data.lpThreadLocalBase === null ? 0n : BigInt(util.toPointer(data.lpThreadLocalBase)), true);
-  // 0x30: pointer
-  if (data?.lpStartAddress !== undefined) view.setBigUint64(48, data.lpStartAddress === null ? 0n : BigInt(util.toPointer(data.lpStartAddress)), true);
-  // 0x38: pointer
-  if (data?.lpImageName !== undefined) view.setBigUint64(56, data.lpImageName === null ? 0n : BigInt(util.toPointer(data.lpImageName)), true);
-  // 0x40: u16
-  if (data?.fUnicode !== undefined) view.setUint16(64, Number(data.fUnicode), true);
-  // 0x42: pad6
-  return buf;
-}
-
-/**
- * Windows.Win32.System.Diagnostics.Debug.EXIT_THREAD_DEBUG_INFO (size: 8)
- */
-export interface EXIT_THREAD_DEBUG_INFO {
-  /** u32 */
-  dwExitCode: number;
-}
-
-export const sizeofEXIT_THREAD_DEBUG_INFO = 8;
-
-export function allocEXIT_THREAD_DEBUG_INFO(data?: Partial<EXIT_THREAD_DEBUG_INFO>): Uint8Array {
-  const buf = new Uint8Array(sizeofEXIT_THREAD_DEBUG_INFO);
-  const view = new DataView(buf.buffer);
-  // 0x00: u32
-  if (data?.dwExitCode !== undefined) view.setUint32(0, Number(data.dwExitCode), true);
-  // 0x04: pad4
-  return buf;
-}
-
-/**
- * Windows.Win32.System.Diagnostics.Debug.EXIT_PROCESS_DEBUG_INFO (size: 8)
- */
-export interface EXIT_PROCESS_DEBUG_INFO {
-  /** u32 */
-  dwExitCode: number;
-}
-
-export const sizeofEXIT_PROCESS_DEBUG_INFO = 8;
-
-export function allocEXIT_PROCESS_DEBUG_INFO(data?: Partial<EXIT_PROCESS_DEBUG_INFO>): Uint8Array {
-  const buf = new Uint8Array(sizeofEXIT_PROCESS_DEBUG_INFO);
-  const view = new DataView(buf.buffer);
-  // 0x00: u32
-  if (data?.dwExitCode !== undefined) view.setUint32(0, Number(data.dwExitCode), true);
-  // 0x04: pad4
-  return buf;
-}
-
-/**
- * Windows.Win32.System.Diagnostics.Debug.LOAD_DLL_DEBUG_INFO (size: 40)
- */
-export interface LOAD_DLL_DEBUG_INFO {
-  /** Windows.Win32.Foundation.HANDLE */
-  hFile: Uint8Array | Deno.PointerValue | null;
-  /** ptr */
-  lpBaseOfDll: Deno.PointerValue | Uint8Array | null;
-  /** u32 */
-  dwDebugInfoFileOffset: number;
-  /** u32 */
-  nDebugInfoSize: number;
-  /** ptr */
-  lpImageName: Deno.PointerValue | Uint8Array | null;
-  /** u16 */
-  fUnicode: number;
-}
-
-export const sizeofLOAD_DLL_DEBUG_INFO = 40;
-
-export function allocLOAD_DLL_DEBUG_INFO(data?: Partial<LOAD_DLL_DEBUG_INFO>): Uint8Array {
-  const buf = new Uint8Array(sizeofLOAD_DLL_DEBUG_INFO);
-  const view = new DataView(buf.buffer);
-  // 0x00: pointer
-  if (data?.hFile !== undefined) view.setBigUint64(0, data.hFile === null ? 0n : BigInt(util.toPointer(data.hFile)), true);
-  // 0x08: pointer
-  if (data?.lpBaseOfDll !== undefined) view.setBigUint64(8, data.lpBaseOfDll === null ? 0n : BigInt(util.toPointer(data.lpBaseOfDll)), true);
-  // 0x10: u32
-  if (data?.dwDebugInfoFileOffset !== undefined) view.setUint32(16, Number(data.dwDebugInfoFileOffset), true);
-  // 0x14: u32
-  if (data?.nDebugInfoSize !== undefined) view.setUint32(20, Number(data.nDebugInfoSize), true);
-  // 0x18: pointer
-  if (data?.lpImageName !== undefined) view.setBigUint64(24, data.lpImageName === null ? 0n : BigInt(util.toPointer(data.lpImageName)), true);
-  // 0x20: u16
-  if (data?.fUnicode !== undefined) view.setUint16(32, Number(data.fUnicode), true);
-  // 0x22: pad6
-  return buf;
-}
-
-/**
- * Windows.Win32.System.Diagnostics.Debug.UNLOAD_DLL_DEBUG_INFO (size: 8)
- */
-export interface UNLOAD_DLL_DEBUG_INFO {
-  /** ptr */
-  lpBaseOfDll: Deno.PointerValue | Uint8Array | null;
-}
-
-export const sizeofUNLOAD_DLL_DEBUG_INFO = 8;
-
-export function allocUNLOAD_DLL_DEBUG_INFO(data?: Partial<UNLOAD_DLL_DEBUG_INFO>): Uint8Array {
-  const buf = new Uint8Array(sizeofUNLOAD_DLL_DEBUG_INFO);
-  const view = new DataView(buf.buffer);
-  // 0x00: pointer
-  if (data?.lpBaseOfDll !== undefined) view.setBigUint64(0, data.lpBaseOfDll === null ? 0n : BigInt(util.toPointer(data.lpBaseOfDll)), true);
-  return buf;
-}
-
-export type PSTR = Deno.PointerValue | Uint8Array | null;
-
-/**
- * Windows.Win32.System.Diagnostics.Debug.OUTPUT_DEBUG_STRING_INFO (size: 16)
- */
-export interface OUTPUT_DEBUG_STRING_INFO {
-  /** Windows.Win32.Foundation.PSTR */
-  lpDebugStringData: string | null;
-  /** u16 */
-  fUnicode: number;
-  /** u16 */
-  nDebugStringLength: number;
-}
-
-export const sizeofOUTPUT_DEBUG_STRING_INFO = 16;
-
-export function allocOUTPUT_DEBUG_STRING_INFO(data?: Partial<OUTPUT_DEBUG_STRING_INFO>): Uint8Array {
-  const buf = new Uint8Array(sizeofOUTPUT_DEBUG_STRING_INFO);
-  const view = new DataView(buf.buffer);
-  // 0x00: buffer
-  if (data?.lpDebugStringData !== undefined) {
-    (buf as any)._f0 = util.pstrToFfi(data.lpDebugStringData);
-    view.setBigUint64(0, (buf as any)._f0 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f0)), true);
-  }
-  // 0x08: u16
-  if (data?.fUnicode !== undefined) view.setUint16(8, Number(data.fUnicode), true);
-  // 0x0a: u16
-  if (data?.nDebugStringLength !== undefined) view.setUint16(10, Number(data.nDebugStringLength), true);
-  // 0x0c: pad4
-  return buf;
-}
-
-/**
- * Windows.Win32.System.Diagnostics.Debug.RIP_INFO (size: 8)
- */
-export interface RIP_INFO {
-  /** u32 */
-  dwError: number;
-  /** Windows.Win32.System.Diagnostics.Debug.RIP_INFO_TYPE */
-  dwType: RIP_INFO_TYPE;
-}
-
-export const sizeofRIP_INFO = 8;
-
-export function allocRIP_INFO(data?: Partial<RIP_INFO>): Uint8Array {
-  const buf = new Uint8Array(sizeofRIP_INFO);
-  const view = new DataView(buf.buffer);
-  // 0x00: u32
-  if (data?.dwError !== undefined) view.setUint32(0, Number(data.dwError), true);
-  // 0x04: u32
-  if (data?.dwType !== undefined) view.setUint32(4, Number(data.dwType), true);
-  return buf;
-}
-
-/**
- * _u_e__Union (size: 72)
- */
-export interface _u_e__Union {
-  /** Windows.Win32.System.Diagnostics.Debug.EXCEPTION_DEBUG_INFO */
-  Exception: Uint8Array | Deno.PointerValue | null;
-  /** Windows.Win32.System.Diagnostics.Debug.CREATE_THREAD_DEBUG_INFO */
-  CreateThread: Uint8Array | Deno.PointerValue | null;
-  /** Windows.Win32.System.Diagnostics.Debug.CREATE_PROCESS_DEBUG_INFO */
-  CreateProcessInfo: Uint8Array | Deno.PointerValue | null;
-  /** Windows.Win32.System.Diagnostics.Debug.EXIT_THREAD_DEBUG_INFO */
-  ExitThread: Uint8Array | Deno.PointerValue | null;
-  /** Windows.Win32.System.Diagnostics.Debug.EXIT_PROCESS_DEBUG_INFO */
-  ExitProcess: Uint8Array | Deno.PointerValue | null;
-  /** Windows.Win32.System.Diagnostics.Debug.LOAD_DLL_DEBUG_INFO */
-  LoadDll: Uint8Array | Deno.PointerValue | null;
-  /** Windows.Win32.System.Diagnostics.Debug.UNLOAD_DLL_DEBUG_INFO */
-  UnloadDll: Uint8Array | Deno.PointerValue | null;
-  /** Windows.Win32.System.Diagnostics.Debug.OUTPUT_DEBUG_STRING_INFO */
-  DebugString: Uint8Array | Deno.PointerValue | null;
-  /** Windows.Win32.System.Diagnostics.Debug.RIP_INFO */
-  RipInfo: Uint8Array | Deno.PointerValue | null;
-}
-
-export const sizeof_u_e__Union = 72;
-
-export function alloc_u_e__Union(data?: Partial<_u_e__Union>): Uint8Array {
-  const buf = new Uint8Array(sizeof_u_e__Union);
-  const view = new DataView(buf.buffer);
-  // 0x00: pointer
-  if (data?.Exception !== undefined) view.setBigUint64(0, data.Exception === null ? 0n : BigInt(util.toPointer(data.Exception)), true);
-  // 0x08: pointer
-  if (data?.CreateThread !== undefined) view.setBigUint64(8, data.CreateThread === null ? 0n : BigInt(util.toPointer(data.CreateThread)), true);
-  // 0x10: pointer
-  if (data?.CreateProcessInfo !== undefined) view.setBigUint64(16, data.CreateProcessInfo === null ? 0n : BigInt(util.toPointer(data.CreateProcessInfo)), true);
-  // 0x18: pointer
-  if (data?.ExitThread !== undefined) view.setBigUint64(24, data.ExitThread === null ? 0n : BigInt(util.toPointer(data.ExitThread)), true);
-  // 0x20: pointer
-  if (data?.ExitProcess !== undefined) view.setBigUint64(32, data.ExitProcess === null ? 0n : BigInt(util.toPointer(data.ExitProcess)), true);
-  // 0x28: pointer
-  if (data?.LoadDll !== undefined) view.setBigUint64(40, data.LoadDll === null ? 0n : BigInt(util.toPointer(data.LoadDll)), true);
-  // 0x30: pointer
-  if (data?.UnloadDll !== undefined) view.setBigUint64(48, data.UnloadDll === null ? 0n : BigInt(util.toPointer(data.UnloadDll)), true);
-  // 0x38: pointer
-  if (data?.DebugString !== undefined) view.setBigUint64(56, data.DebugString === null ? 0n : BigInt(util.toPointer(data.DebugString)), true);
-  // 0x40: pointer
-  if (data?.RipInfo !== undefined) view.setBigUint64(64, data.RipInfo === null ? 0n : BigInt(util.toPointer(data.RipInfo)), true);
-  return buf;
-}
-
-/**
- * Windows.Win32.Networking.WinSock.IN6_ADDR (size: 8)
- */
-export interface IN6_ADDR {
-  /** _u_e__Union */
-  u: Uint8Array | Deno.PointerValue | null;
-}
-
-export const sizeofIN6_ADDR = 8;
-
-export function allocIN6_ADDR(data?: Partial<IN6_ADDR>): Uint8Array {
-  const buf = new Uint8Array(sizeofIN6_ADDR);
-  const view = new DataView(buf.buffer);
-  // 0x00: pointer
-  if (data?.u !== undefined) view.setBigUint64(0, data.u === null ? 0n : BigInt(util.toPointer(data.u)), true);
-  return buf;
-}
-
-/**
- * Windows.Win32.NetworkManagement.WindowsFilteringPlatform.IPV6_HEADER (size: 32)
- */
-export interface IPV6_HEADER {
-  /** _Anonymous_e__Union */
-  Anonymous: Uint8Array | Deno.PointerValue | null;
-  /** u16 */
-  PayloadLength: number;
-  /** u8 */
-  NextHeader: number;
-  /** u8 */
-  HopLimit: number;
-  /** Windows.Win32.Networking.WinSock.IN6_ADDR */
-  SourceAddress: Uint8Array | Deno.PointerValue | null;
-  /** Windows.Win32.Networking.WinSock.IN6_ADDR */
-  DestinationAddress: Uint8Array | Deno.PointerValue | null;
-}
-
-export const sizeofIPV6_HEADER = 32;
-
-export function allocIPV6_HEADER(data?: Partial<IPV6_HEADER>): Uint8Array {
-  const buf = new Uint8Array(sizeofIPV6_HEADER);
-  const view = new DataView(buf.buffer);
-  // 0x00: pointer
-  if (data?.Anonymous !== undefined) view.setBigUint64(0, data.Anonymous === null ? 0n : BigInt(util.toPointer(data.Anonymous)), true);
-  // 0x08: u16
-  if (data?.PayloadLength !== undefined) view.setUint16(8, Number(data.PayloadLength), true);
-  // 0x0a: u8
-  if (data?.NextHeader !== undefined) view.setUint8(10, Number(data.NextHeader));
-  // 0x0b: u8
-  if (data?.HopLimit !== undefined) view.setUint8(11, Number(data.HopLimit));
-  // 0x0c: pad4
-  // 0x10: pointer
-  if (data?.SourceAddress !== undefined) view.setBigUint64(16, data.SourceAddress === null ? 0n : BigInt(util.toPointer(data.SourceAddress)), true);
-  // 0x18: pointer
-  if (data?.DestinationAddress !== undefined) view.setBigUint64(24, data.DestinationAddress === null ? 0n : BigInt(util.toPointer(data.DestinationAddress)), true);
-  return buf;
-}
-
-/**
- * Windows.Win32.NetworkManagement.WindowsFilteringPlatform.IPV6_FRAGMENT_HEADER (size: 24)
- */
-export interface IPV6_FRAGMENT_HEADER {
-  /** u8 */
-  NextHeader: number;
-  /** u8 */
-  Reserved: number;
-  /** _Anonymous_e__Union */
-  Anonymous: Uint8Array | Deno.PointerValue | null;
-  /** u32 */
-  Id: number;
-}
-
-export const sizeofIPV6_FRAGMENT_HEADER = 24;
-
-export function allocIPV6_FRAGMENT_HEADER(data?: Partial<IPV6_FRAGMENT_HEADER>): Uint8Array {
-  const buf = new Uint8Array(sizeofIPV6_FRAGMENT_HEADER);
-  const view = new DataView(buf.buffer);
-  // 0x00: u8
-  if (data?.NextHeader !== undefined) view.setUint8(0, Number(data.NextHeader));
-  // 0x01: u8
-  if (data?.Reserved !== undefined) view.setUint8(1, Number(data.Reserved));
-  // 0x02: pad6
-  // 0x08: pointer
-  if (data?.Anonymous !== undefined) view.setBigUint64(8, data.Anonymous === null ? 0n : BigInt(util.toPointer(data.Anonymous)), true);
-  // 0x10: u32
-  if (data?.Id !== undefined) view.setUint32(16, Number(data.Id), true);
-  // 0x14: pad4
-  return buf;
-}
-
-/**
- * Windows.Win32.NetworkManagement.WindowsFilteringPlatform.IPV6_EXTENSION_HEADER (size: 8)
- */
-export interface IPV6_EXTENSION_HEADER {
-  /** u8 */
-  NextHeader: number;
-  /** u8 */
-  Length: number;
-}
-
-export const sizeofIPV6_EXTENSION_HEADER = 8;
-
-export function allocIPV6_EXTENSION_HEADER(data?: Partial<IPV6_EXTENSION_HEADER>): Uint8Array {
-  const buf = new Uint8Array(sizeofIPV6_EXTENSION_HEADER);
-  const view = new DataView(buf.buffer);
-  // 0x00: u8
-  if (data?.NextHeader !== undefined) view.setUint8(0, Number(data.NextHeader));
-  // 0x01: u8
-  if (data?.Length !== undefined) view.setUint8(1, Number(data.Length));
-  // 0x02: pad6
-  return buf;
-}
-
-/**
- * Windows.Win32.NetworkManagement.WindowsFilteringPlatform.IPV6_OPTION_HEADER (size: 8)
- */
-export interface IPV6_OPTION_HEADER {
-  /** u8 */
-  Type: number;
-  /** u8 */
-  DataLength: number;
-}
-
-export const sizeofIPV6_OPTION_HEADER = 8;
-
-export function allocIPV6_OPTION_HEADER(data?: Partial<IPV6_OPTION_HEADER>): Uint8Array {
-  const buf = new Uint8Array(sizeofIPV6_OPTION_HEADER);
-  const view = new DataView(buf.buffer);
-  // 0x00: u8
-  if (data?.Type !== undefined) view.setUint8(0, Number(data.Type));
-  // 0x01: u8
-  if (data?.DataLength !== undefined) view.setUint8(1, Number(data.DataLength));
-  // 0x02: pad6
-  return buf;
-}
-
-/**
- * Windows.Win32.NetworkManagement.WindowsFilteringPlatform.IPV6_OPTION_JUMBOGRAM (size: 16)
- */
-export interface IPV6_OPTION_JUMBOGRAM {
-  /** Windows.Win32.NetworkManagement.WindowsFilteringPlatform.IPV6_OPTION_HEADER */
-  Header: Uint8Array | Deno.PointerValue | null;
-  /** array */
-  JumbogramLength: Deno.PointerValue | null;
-}
-
-export const sizeofIPV6_OPTION_JUMBOGRAM = 16;
-
-export function allocIPV6_OPTION_JUMBOGRAM(data?: Partial<IPV6_OPTION_JUMBOGRAM>): Uint8Array {
-  const buf = new Uint8Array(sizeofIPV6_OPTION_JUMBOGRAM);
-  const view = new DataView(buf.buffer);
-  // 0x00: pointer
-  if (data?.Header !== undefined) view.setBigUint64(0, data.Header === null ? 0n : BigInt(util.toPointer(data.Header)), true);
-  // 0x08: pointer
-  if (data?.JumbogramLength !== undefined) view.setBigUint64(8, data.JumbogramLength === null ? 0n : BigInt(util.toPointer(data.JumbogramLength)), true);
-  return buf;
-}
-
-/**
- * Windows.Win32.NetworkManagement.WindowsFilteringPlatform.IPV6_OPTION_ROUTER_ALERT (size: 16)
- */
-export interface IPV6_OPTION_ROUTER_ALERT {
-  /** Windows.Win32.NetworkManagement.WindowsFilteringPlatform.IPV6_OPTION_HEADER */
-  Header: Uint8Array | Deno.PointerValue | null;
-  /** array */
-  Value: Deno.PointerValue | null;
-}
-
-export const sizeofIPV6_OPTION_ROUTER_ALERT = 16;
-
-export function allocIPV6_OPTION_ROUTER_ALERT(data?: Partial<IPV6_OPTION_ROUTER_ALERT>): Uint8Array {
-  const buf = new Uint8Array(sizeofIPV6_OPTION_ROUTER_ALERT);
-  const view = new DataView(buf.buffer);
-  // 0x00: pointer
-  if (data?.Header !== undefined) view.setBigUint64(0, data.Header === null ? 0n : BigInt(util.toPointer(data.Header)), true);
-  // 0x08: pointer
-  if (data?.Value !== undefined) view.setBigUint64(8, data.Value === null ? 0n : BigInt(util.toPointer(data.Value)), true);
-  return buf;
-}
-
-/**
- * Windows.Win32.NetworkManagement.WindowsFilteringPlatform.IPV6_ROUTING_HEADER (size: 16)
- */
-export interface IPV6_ROUTING_HEADER {
-  /** u8 */
-  NextHeader: number;
-  /** u8 */
-  Length: number;
-  /** u8 */
-  RoutingType: number;
-  /** u8 */
-  SegmentsLeft: number;
-  /** array */
-  Reserved: Deno.PointerValue | null;
-}
-
-export const sizeofIPV6_ROUTING_HEADER = 16;
-
-export function allocIPV6_ROUTING_HEADER(data?: Partial<IPV6_ROUTING_HEADER>): Uint8Array {
-  const buf = new Uint8Array(sizeofIPV6_ROUTING_HEADER);
-  const view = new DataView(buf.buffer);
-  // 0x00: u8
-  if (data?.NextHeader !== undefined) view.setUint8(0, Number(data.NextHeader));
-  // 0x01: u8
-  if (data?.Length !== undefined) view.setUint8(1, Number(data.Length));
-  // 0x02: u8
-  if (data?.RoutingType !== undefined) view.setUint8(2, Number(data.RoutingType));
-  // 0x03: u8
-  if (data?.SegmentsLeft !== undefined) view.setUint8(3, Number(data.SegmentsLeft));
-  // 0x04: pad4
-  // 0x08: pointer
-  if (data?.Reserved !== undefined) view.setBigUint64(8, data.Reserved === null ? 0n : BigInt(util.toPointer(data.Reserved)), true);
-  return buf;
-}
-
-/**
- * Windows.Win32.NetworkManagement.WindowsFilteringPlatform.nd_router_solicit (size: 8)
- */
-export interface nd_router_solicit {
-  /** Windows.Win32.NetworkManagement.WindowsFilteringPlatform.ICMP_MESSAGE */
-  nd_rs_hdr: Uint8Array | Deno.PointerValue | null;
-}
-
-export const sizeofNd_router_solicit = 8;
-
-export function allocNd_router_solicit(data?: Partial<nd_router_solicit>): Uint8Array {
-  const buf = new Uint8Array(sizeofNd_router_solicit);
-  const view = new DataView(buf.buffer);
-  // 0x00: pointer
-  if (data?.nd_rs_hdr !== undefined) view.setBigUint64(0, data.nd_rs_hdr === null ? 0n : BigInt(util.toPointer(data.nd_rs_hdr)), true);
-  return buf;
-}
-
-/**
- * Windows.Win32.NetworkManagement.WindowsFilteringPlatform.nd_router_advert (size: 16)
- */
-export interface nd_router_advert {
-  /** Windows.Win32.NetworkManagement.WindowsFilteringPlatform.ICMP_MESSAGE */
-  nd_ra_hdr: Uint8Array | Deno.PointerValue | null;
-  /** u32 */
-  nd_ra_reachable: number;
-  /** u32 */
-  nd_ra_retransmit: number;
-}
-
-export const sizeofNd_router_advert = 16;
-
-export function allocNd_router_advert(data?: Partial<nd_router_advert>): Uint8Array {
-  const buf = new Uint8Array(sizeofNd_router_advert);
-  const view = new DataView(buf.buffer);
-  // 0x00: pointer
-  if (data?.nd_ra_hdr !== undefined) view.setBigUint64(0, data.nd_ra_hdr === null ? 0n : BigInt(util.toPointer(data.nd_ra_hdr)), true);
-  // 0x08: u32
-  if (data?.nd_ra_reachable !== undefined) view.setUint32(8, Number(data.nd_ra_reachable), true);
-  // 0x0c: u32
-  if (data?.nd_ra_retransmit !== undefined) view.setUint32(12, Number(data.nd_ra_retransmit), true);
-  return buf;
-}
-
-/**
- * Windows.Win32.NetworkManagement.WindowsFilteringPlatform.IPV6_ROUTER_ADVERTISEMENT_FLAGS (size: 16)
- */
-export interface IPV6_ROUTER_ADVERTISEMENT_FLAGS {
-  /** _Anonymous_e__Struct */
-  Anonymous: Uint8Array | Deno.PointerValue | null;
-  /** u8 */
-  Value: number;
-}
-
-export const sizeofIPV6_ROUTER_ADVERTISEMENT_FLAGS = 16;
-
-export function allocIPV6_ROUTER_ADVERTISEMENT_FLAGS(data?: Partial<IPV6_ROUTER_ADVERTISEMENT_FLAGS>): Uint8Array {
-  const buf = new Uint8Array(sizeofIPV6_ROUTER_ADVERTISEMENT_FLAGS);
-  const view = new DataView(buf.buffer);
-  // 0x00: pointer
-  if (data?.Anonymous !== undefined) view.setBigUint64(0, data.Anonymous === null ? 0n : BigInt(util.toPointer(data.Anonymous)), true);
-  // 0x08: u8
-  if (data?.Value !== undefined) view.setUint8(8, Number(data.Value));
-  // 0x09: pad7
-  return buf;
-}
-
-/**
- * Windows.Win32.NetworkManagement.WindowsFilteringPlatform.nd_neighbor_solicit (size: 16)
- */
-export interface nd_neighbor_solicit {
-  /** Windows.Win32.NetworkManagement.WindowsFilteringPlatform.ICMP_MESSAGE */
-  nd_ns_hdr: Uint8Array | Deno.PointerValue | null;
-  /** Windows.Win32.Networking.WinSock.IN6_ADDR */
-  nd_ns_target: Uint8Array | Deno.PointerValue | null;
-}
-
-export const sizeofNd_neighbor_solicit = 16;
-
-export function allocNd_neighbor_solicit(data?: Partial<nd_neighbor_solicit>): Uint8Array {
-  const buf = new Uint8Array(sizeofNd_neighbor_solicit);
-  const view = new DataView(buf.buffer);
-  // 0x00: pointer
-  if (data?.nd_ns_hdr !== undefined) view.setBigUint64(0, data.nd_ns_hdr === null ? 0n : BigInt(util.toPointer(data.nd_ns_hdr)), true);
-  // 0x08: pointer
-  if (data?.nd_ns_target !== undefined) view.setBigUint64(8, data.nd_ns_target === null ? 0n : BigInt(util.toPointer(data.nd_ns_target)), true);
-  return buf;
-}
-
-/**
- * Windows.Win32.NetworkManagement.WindowsFilteringPlatform.nd_neighbor_advert (size: 16)
- */
-export interface nd_neighbor_advert {
-  /** Windows.Win32.NetworkManagement.WindowsFilteringPlatform.ICMP_MESSAGE */
-  nd_na_hdr: Uint8Array | Deno.PointerValue | null;
-  /** Windows.Win32.Networking.WinSock.IN6_ADDR */
-  nd_na_target: Uint8Array | Deno.PointerValue | null;
-}
-
-export const sizeofNd_neighbor_advert = 16;
-
-export function allocNd_neighbor_advert(data?: Partial<nd_neighbor_advert>): Uint8Array {
-  const buf = new Uint8Array(sizeofNd_neighbor_advert);
-  const view = new DataView(buf.buffer);
-  // 0x00: pointer
-  if (data?.nd_na_hdr !== undefined) view.setBigUint64(0, data.nd_na_hdr === null ? 0n : BigInt(util.toPointer(data.nd_na_hdr)), true);
-  // 0x08: pointer
-  if (data?.nd_na_target !== undefined) view.setBigUint64(8, data.nd_na_target === null ? 0n : BigInt(util.toPointer(data.nd_na_target)), true);
-  return buf;
-}
-
-/**
- * Windows.Win32.NetworkManagement.WindowsFilteringPlatform.IPV6_NEIGHBOR_ADVERTISEMENT_FLAGS (size: 16)
- */
-export interface IPV6_NEIGHBOR_ADVERTISEMENT_FLAGS {
-  /** _Anonymous_e__Struct */
-  Anonymous: Uint8Array | Deno.PointerValue | null;
-  /** u32 */
-  Value: number;
-}
-
-export const sizeofIPV6_NEIGHBOR_ADVERTISEMENT_FLAGS = 16;
-
-export function allocIPV6_NEIGHBOR_ADVERTISEMENT_FLAGS(data?: Partial<IPV6_NEIGHBOR_ADVERTISEMENT_FLAGS>): Uint8Array {
-  const buf = new Uint8Array(sizeofIPV6_NEIGHBOR_ADVERTISEMENT_FLAGS);
-  const view = new DataView(buf.buffer);
-  // 0x00: pointer
-  if (data?.Anonymous !== undefined) view.setBigUint64(0, data.Anonymous === null ? 0n : BigInt(util.toPointer(data.Anonymous)), true);
-  // 0x08: u32
-  if (data?.Value !== undefined) view.setUint32(8, Number(data.Value), true);
-  // 0x0c: pad4
-  return buf;
-}
-
-/**
- * Windows.Win32.NetworkManagement.WindowsFilteringPlatform.nd_redirect (size: 24)
- */
-export interface nd_redirect {
-  /** Windows.Win32.NetworkManagement.WindowsFilteringPlatform.ICMP_MESSAGE */
-  nd_rd_hdr: Uint8Array | Deno.PointerValue | null;
-  /** Windows.Win32.Networking.WinSock.IN6_ADDR */
-  nd_rd_target: Uint8Array | Deno.PointerValue | null;
-  /** Windows.Win32.Networking.WinSock.IN6_ADDR */
-  nd_rd_dst: Uint8Array | Deno.PointerValue | null;
-}
-
-export const sizeofNd_redirect = 24;
-
-export function allocNd_redirect(data?: Partial<nd_redirect>): Uint8Array {
-  const buf = new Uint8Array(sizeofNd_redirect);
-  const view = new DataView(buf.buffer);
-  // 0x00: pointer
-  if (data?.nd_rd_hdr !== undefined) view.setBigUint64(0, data.nd_rd_hdr === null ? 0n : BigInt(util.toPointer(data.nd_rd_hdr)), true);
-  // 0x08: pointer
-  if (data?.nd_rd_target !== undefined) view.setBigUint64(8, data.nd_rd_target === null ? 0n : BigInt(util.toPointer(data.nd_rd_target)), true);
-  // 0x10: pointer
-  if (data?.nd_rd_dst !== undefined) view.setBigUint64(16, data.nd_rd_dst === null ? 0n : BigInt(util.toPointer(data.nd_rd_dst)), true);
-  return buf;
-}
-
-/**
- * Windows.Win32.NetworkManagement.WindowsFilteringPlatform.nd_opt_hdr (size: 8)
- */
-export interface nd_opt_hdr {
-  /** u8 */
-  nd_opt_type: number;
-  /** u8 */
-  nd_opt_len: number;
-}
-
-export const sizeofNd_opt_hdr = 8;
-
-export function allocNd_opt_hdr(data?: Partial<nd_opt_hdr>): Uint8Array {
-  const buf = new Uint8Array(sizeofNd_opt_hdr);
-  const view = new DataView(buf.buffer);
-  // 0x00: u8
-  if (data?.nd_opt_type !== undefined) view.setUint8(0, Number(data.nd_opt_type));
-  // 0x01: u8
-  if (data?.nd_opt_len !== undefined) view.setUint8(1, Number(data.nd_opt_len));
-  // 0x02: pad6
-  return buf;
-}
-
-/**
- * Windows.Win32.NetworkManagement.WindowsFilteringPlatform.nd_opt_prefix_info (size: 40)
- */
-export interface nd_opt_prefix_info {
-  /** u8 */
-  nd_opt_pi_type: number;
-  /** u8 */
-  nd_opt_pi_len: number;
-  /** u8 */
-  nd_opt_pi_prefix_len: number;
-  /** _Anonymous1_e__Union */
-  Anonymous1: Uint8Array | Deno.PointerValue | null;
-  /** u32 */
-  nd_opt_pi_valid_time: number;
-  /** u32 */
-  nd_opt_pi_preferred_time: number;
-  /** _Anonymous2_e__Union */
-  Anonymous2: Uint8Array | Deno.PointerValue | null;
-  /** Windows.Win32.Networking.WinSock.IN6_ADDR */
-  nd_opt_pi_prefix: Uint8Array | Deno.PointerValue | null;
-}
-
-export const sizeofNd_opt_prefix_info = 40;
-
-export function allocNd_opt_prefix_info(data?: Partial<nd_opt_prefix_info>): Uint8Array {
-  const buf = new Uint8Array(sizeofNd_opt_prefix_info);
-  const view = new DataView(buf.buffer);
-  // 0x00: u8
-  if (data?.nd_opt_pi_type !== undefined) view.setUint8(0, Number(data.nd_opt_pi_type));
-  // 0x01: u8
-  if (data?.nd_opt_pi_len !== undefined) view.setUint8(1, Number(data.nd_opt_pi_len));
-  // 0x02: u8
-  if (data?.nd_opt_pi_prefix_len !== undefined) view.setUint8(2, Number(data.nd_opt_pi_prefix_len));
-  // 0x03: pad5
-  // 0x08: pointer
-  if (data?.Anonymous1 !== undefined) view.setBigUint64(8, data.Anonymous1 === null ? 0n : BigInt(util.toPointer(data.Anonymous1)), true);
-  // 0x10: u32
-  if (data?.nd_opt_pi_valid_time !== undefined) view.setUint32(16, Number(data.nd_opt_pi_valid_time), true);
-  // 0x14: u32
-  if (data?.nd_opt_pi_preferred_time !== undefined) view.setUint32(20, Number(data.nd_opt_pi_preferred_time), true);
-  // 0x18: pointer
-  if (data?.Anonymous2 !== undefined) view.setBigUint64(24, data.Anonymous2 === null ? 0n : BigInt(util.toPointer(data.Anonymous2)), true);
-  // 0x20: pointer
-  if (data?.nd_opt_pi_prefix !== undefined) view.setBigUint64(32, data.nd_opt_pi_prefix === null ? 0n : BigInt(util.toPointer(data.nd_opt_pi_prefix)), true);
-  return buf;
-}
-
-/**
- * Windows.Win32.NetworkManagement.WindowsFilteringPlatform.nd_opt_rd_hdr (size: 8)
- */
-export interface nd_opt_rd_hdr {
-  /** u8 */
-  nd_opt_rh_type: number;
-  /** u8 */
-  nd_opt_rh_len: number;
-  /** u16 */
-  nd_opt_rh_reserved1: number;
-  /** u32 */
-  nd_opt_rh_reserved2: number;
-}
-
-export const sizeofNd_opt_rd_hdr = 8;
-
-export function allocNd_opt_rd_hdr(data?: Partial<nd_opt_rd_hdr>): Uint8Array {
-  const buf = new Uint8Array(sizeofNd_opt_rd_hdr);
-  const view = new DataView(buf.buffer);
-  // 0x00: u8
-  if (data?.nd_opt_rh_type !== undefined) view.setUint8(0, Number(data.nd_opt_rh_type));
-  // 0x01: u8
-  if (data?.nd_opt_rh_len !== undefined) view.setUint8(1, Number(data.nd_opt_rh_len));
-  // 0x02: u16
-  if (data?.nd_opt_rh_reserved1 !== undefined) view.setUint16(2, Number(data.nd_opt_rh_reserved1), true);
-  // 0x04: u32
-  if (data?.nd_opt_rh_reserved2 !== undefined) view.setUint32(4, Number(data.nd_opt_rh_reserved2), true);
-  return buf;
-}
-
-/**
- * Windows.Win32.NetworkManagement.WindowsFilteringPlatform.nd_opt_mtu (size: 8)
- */
-export interface nd_opt_mtu {
-  /** u8 */
-  nd_opt_mtu_type: number;
-  /** u8 */
-  nd_opt_mtu_len: number;
-  /** u16 */
-  nd_opt_mtu_reserved: number;
-  /** u32 */
-  nd_opt_mtu_mtu: number;
-}
-
-export const sizeofNd_opt_mtu = 8;
-
-export function allocNd_opt_mtu(data?: Partial<nd_opt_mtu>): Uint8Array {
-  const buf = new Uint8Array(sizeofNd_opt_mtu);
-  const view = new DataView(buf.buffer);
-  // 0x00: u8
-  if (data?.nd_opt_mtu_type !== undefined) view.setUint8(0, Number(data.nd_opt_mtu_type));
-  // 0x01: u8
-  if (data?.nd_opt_mtu_len !== undefined) view.setUint8(1, Number(data.nd_opt_mtu_len));
-  // 0x02: u16
-  if (data?.nd_opt_mtu_reserved !== undefined) view.setUint16(2, Number(data.nd_opt_mtu_reserved), true);
-  // 0x04: u32
-  if (data?.nd_opt_mtu_mtu !== undefined) view.setUint32(4, Number(data.nd_opt_mtu_mtu), true);
-  return buf;
-}
-
-/**
- * Windows.Win32.NetworkManagement.WindowsFilteringPlatform.nd_opt_route_info (size: 32)
- */
-export interface nd_opt_route_info {
-  /** u8 */
-  nd_opt_ri_type: number;
-  /** u8 */
-  nd_opt_ri_len: number;
-  /** u8 */
-  nd_opt_ri_prefix_len: number;
-  /** _Anonymous_e__Union */
-  Anonymous: Uint8Array | Deno.PointerValue | null;
-  /** u32 */
-  nd_opt_ri_route_lifetime: number;
-  /** Windows.Win32.Networking.WinSock.IN6_ADDR */
-  nd_opt_ri_prefix: Uint8Array | Deno.PointerValue | null;
-}
-
-export const sizeofNd_opt_route_info = 32;
-
-export function allocNd_opt_route_info(data?: Partial<nd_opt_route_info>): Uint8Array {
-  const buf = new Uint8Array(sizeofNd_opt_route_info);
-  const view = new DataView(buf.buffer);
-  // 0x00: u8
-  if (data?.nd_opt_ri_type !== undefined) view.setUint8(0, Number(data.nd_opt_ri_type));
-  // 0x01: u8
-  if (data?.nd_opt_ri_len !== undefined) view.setUint8(1, Number(data.nd_opt_ri_len));
-  // 0x02: u8
-  if (data?.nd_opt_ri_prefix_len !== undefined) view.setUint8(2, Number(data.nd_opt_ri_prefix_len));
-  // 0x03: pad5
-  // 0x08: pointer
-  if (data?.Anonymous !== undefined) view.setBigUint64(8, data.Anonymous === null ? 0n : BigInt(util.toPointer(data.Anonymous)), true);
-  // 0x10: u32
-  if (data?.nd_opt_ri_route_lifetime !== undefined) view.setUint32(16, Number(data.nd_opt_ri_route_lifetime), true);
-  // 0x14: pad4
-  // 0x18: pointer
-  if (data?.nd_opt_ri_prefix !== undefined) view.setBigUint64(24, data.nd_opt_ri_prefix === null ? 0n : BigInt(util.toPointer(data.nd_opt_ri_prefix)), true);
-  return buf;
-}
-
-/**
- * Windows.Win32.NetworkManagement.WindowsFilteringPlatform.nd_opt_rdnss (size: 8)
- */
-export interface nd_opt_rdnss {
-  /** u8 */
-  nd_opt_rdnss_type: number;
-  /** u8 */
-  nd_opt_rdnss_len: number;
-  /** u16 */
-  nd_opt_rdnss_reserved: number;
-  /** u32 */
-  nd_opt_rdnss_lifetime: number;
-}
-
-export const sizeofNd_opt_rdnss = 8;
-
-export function allocNd_opt_rdnss(data?: Partial<nd_opt_rdnss>): Uint8Array {
-  const buf = new Uint8Array(sizeofNd_opt_rdnss);
-  const view = new DataView(buf.buffer);
-  // 0x00: u8
-  if (data?.nd_opt_rdnss_type !== undefined) view.setUint8(0, Number(data.nd_opt_rdnss_type));
-  // 0x01: u8
-  if (data?.nd_opt_rdnss_len !== undefined) view.setUint8(1, Number(data.nd_opt_rdnss_len));
-  // 0x02: u16
-  if (data?.nd_opt_rdnss_reserved !== undefined) view.setUint16(2, Number(data.nd_opt_rdnss_reserved), true);
-  // 0x04: u32
-  if (data?.nd_opt_rdnss_lifetime !== undefined) view.setUint32(4, Number(data.nd_opt_rdnss_lifetime), true);
-  return buf;
-}
-
-/**
- * Windows.Win32.NetworkManagement.WindowsFilteringPlatform.nd_opt_dnssl (size: 8)
- */
-export interface nd_opt_dnssl {
-  /** u8 */
-  nd_opt_dnssl_type: number;
-  /** u8 */
-  nd_opt_dnssl_len: number;
-  /** u16 */
-  nd_opt_dnssl_reserved: number;
-  /** u32 */
-  nd_opt_dnssl_lifetime: number;
-}
-
-export const sizeofNd_opt_dnssl = 8;
-
-export function allocNd_opt_dnssl(data?: Partial<nd_opt_dnssl>): Uint8Array {
-  const buf = new Uint8Array(sizeofNd_opt_dnssl);
-  const view = new DataView(buf.buffer);
-  // 0x00: u8
-  if (data?.nd_opt_dnssl_type !== undefined) view.setUint8(0, Number(data.nd_opt_dnssl_type));
-  // 0x01: u8
-  if (data?.nd_opt_dnssl_len !== undefined) view.setUint8(1, Number(data.nd_opt_dnssl_len));
-  // 0x02: u16
-  if (data?.nd_opt_dnssl_reserved !== undefined) view.setUint16(2, Number(data.nd_opt_dnssl_reserved), true);
-  // 0x04: u32
-  if (data?.nd_opt_dnssl_lifetime !== undefined) view.setUint32(4, Number(data.nd_opt_dnssl_lifetime), true);
-  return buf;
-}
-
-/**
- * Windows.Win32.NetworkManagement.WindowsFilteringPlatform.MLD_HEADER (size: 24)
- */
-export interface MLD_HEADER {
-  /** Windows.Win32.NetworkManagement.WindowsFilteringPlatform.ICMP_HEADER */
-  IcmpHeader: Uint8Array | Deno.PointerValue | null;
-  /** u16 */
-  MaxRespTime: number;
-  /** u16 */
-  Reserved: number;
-  /** Windows.Win32.Networking.WinSock.IN6_ADDR */
-  MulticastAddress: Uint8Array | Deno.PointerValue | null;
-}
-
-export const sizeofMLD_HEADER = 24;
-
-export function allocMLD_HEADER(data?: Partial<MLD_HEADER>): Uint8Array {
-  const buf = new Uint8Array(sizeofMLD_HEADER);
-  const view = new DataView(buf.buffer);
-  // 0x00: pointer
-  if (data?.IcmpHeader !== undefined) view.setBigUint64(0, data.IcmpHeader === null ? 0n : BigInt(util.toPointer(data.IcmpHeader)), true);
-  // 0x08: u16
-  if (data?.MaxRespTime !== undefined) view.setUint16(8, Number(data.MaxRespTime), true);
-  // 0x0a: u16
-  if (data?.Reserved !== undefined) view.setUint16(10, Number(data.Reserved), true);
-  // 0x0c: pad4
-  // 0x10: pointer
-  if (data?.MulticastAddress !== undefined) view.setBigUint64(16, data.MulticastAddress === null ? 0n : BigInt(util.toPointer(data.MulticastAddress)), true);
-  return buf;
-}
-
-/**
- * Windows.Win32.NetworkManagement.WindowsFilteringPlatform.MLDV2_QUERY_HEADER (size: 56)
- */
-export interface MLDV2_QUERY_HEADER {
-  /** Windows.Win32.NetworkManagement.WindowsFilteringPlatform.ICMP_HEADER */
-  IcmpHeader: Uint8Array | Deno.PointerValue | null;
-  /** _Anonymous1_e__Union */
-  Anonymous1: Uint8Array | Deno.PointerValue | null;
-  /** u16 */
-  Reserved: number;
-  /** Windows.Win32.Networking.WinSock.IN6_ADDR */
-  MulticastAddress: Uint8Array | Deno.PointerValue | null;
-  /** u8 */
-  _bitfield: number;
-  /** _Anonymous2_e__Union */
-  Anonymous2: Uint8Array | Deno.PointerValue | null;
-  /** u16 */
-  SourceCount: number;
-}
-
-export const sizeofMLDV2_QUERY_HEADER = 56;
-
-export function allocMLDV2_QUERY_HEADER(data?: Partial<MLDV2_QUERY_HEADER>): Uint8Array {
-  const buf = new Uint8Array(sizeofMLDV2_QUERY_HEADER);
-  const view = new DataView(buf.buffer);
-  // 0x00: pointer
-  if (data?.IcmpHeader !== undefined) view.setBigUint64(0, data.IcmpHeader === null ? 0n : BigInt(util.toPointer(data.IcmpHeader)), true);
-  // 0x08: pointer
-  if (data?.Anonymous1 !== undefined) view.setBigUint64(8, data.Anonymous1 === null ? 0n : BigInt(util.toPointer(data.Anonymous1)), true);
-  // 0x10: u16
-  if (data?.Reserved !== undefined) view.setUint16(16, Number(data.Reserved), true);
-  // 0x12: pad6
-  // 0x18: pointer
-  if (data?.MulticastAddress !== undefined) view.setBigUint64(24, data.MulticastAddress === null ? 0n : BigInt(util.toPointer(data.MulticastAddress)), true);
-  // 0x20: u8
-  if (data?._bitfield !== undefined) view.setUint8(32, Number(data._bitfield));
-  // 0x21: pad7
-  // 0x28: pointer
-  if (data?.Anonymous2 !== undefined) view.setBigUint64(40, data.Anonymous2 === null ? 0n : BigInt(util.toPointer(data.Anonymous2)), true);
-  // 0x30: u16
-  if (data?.SourceCount !== undefined) view.setUint16(48, Number(data.SourceCount), true);
-  // 0x32: pad6
-  return buf;
-}
-
-/**
- * Windows.Win32.NetworkManagement.WindowsFilteringPlatform.MLDV2_REPORT_RECORD_HEADER (size: 16)
- */
-export interface MLDV2_REPORT_RECORD_HEADER {
-  /** u8 */
-  Type: number;
-  /** u8 */
-  AuxillaryDataLength: number;
-  /** u16 */
-  SourceCount: number;
-  /** Windows.Win32.Networking.WinSock.IN6_ADDR */
-  MulticastAddress: Uint8Array | Deno.PointerValue | null;
-}
-
-export const sizeofMLDV2_REPORT_RECORD_HEADER = 16;
-
-export function allocMLDV2_REPORT_RECORD_HEADER(data?: Partial<MLDV2_REPORT_RECORD_HEADER>): Uint8Array {
-  const buf = new Uint8Array(sizeofMLDV2_REPORT_RECORD_HEADER);
-  const view = new DataView(buf.buffer);
-  // 0x00: u8
-  if (data?.Type !== undefined) view.setUint8(0, Number(data.Type));
-  // 0x01: u8
-  if (data?.AuxillaryDataLength !== undefined) view.setUint8(1, Number(data.AuxillaryDataLength));
-  // 0x02: u16
-  if (data?.SourceCount !== undefined) view.setUint16(2, Number(data.SourceCount), true);
-  // 0x04: pad4
-  // 0x08: pointer
-  if (data?.MulticastAddress !== undefined) view.setBigUint64(8, data.MulticastAddress === null ? 0n : BigInt(util.toPointer(data.MulticastAddress)), true);
-  return buf;
-}
-
-/**
- * Windows.Win32.NetworkManagement.WindowsFilteringPlatform.MLDV2_REPORT_HEADER (size: 16)
- */
-export interface MLDV2_REPORT_HEADER {
-  /** Windows.Win32.NetworkManagement.WindowsFilteringPlatform.ICMP_HEADER */
-  IcmpHeader: Uint8Array | Deno.PointerValue | null;
-  /** u16 */
-  Reserved: number;
-  /** u16 */
-  RecordCount: number;
-}
-
-export const sizeofMLDV2_REPORT_HEADER = 16;
-
-export function allocMLDV2_REPORT_HEADER(data?: Partial<MLDV2_REPORT_HEADER>): Uint8Array {
-  const buf = new Uint8Array(sizeofMLDV2_REPORT_HEADER);
-  const view = new DataView(buf.buffer);
-  // 0x00: pointer
-  if (data?.IcmpHeader !== undefined) view.setBigUint64(0, data.IcmpHeader === null ? 0n : BigInt(util.toPointer(data.IcmpHeader)), true);
-  // 0x08: u16
-  if (data?.Reserved !== undefined) view.setUint16(8, Number(data.Reserved), true);
-  // 0x0a: u16
-  if (data?.RecordCount !== undefined) view.setUint16(10, Number(data.RecordCount), true);
-  // 0x0c: pad4
-  return buf;
-}
-
-/**
- * Windows.Win32.NetworkManagement.WindowsFilteringPlatform.tcp_hdr (size: 24)
- */
-export interface tcp_hdr {
-  /** u16 */
-  th_sport: number;
-  /** u16 */
-  th_dport: number;
-  /** u32 */
-  th_seq: number;
-  /** u32 */
-  th_ack: number;
-  /** u8 */
-  _bitfield: number;
-  /** u8 */
-  th_flags: number;
-  /** u16 */
-  th_win: number;
-  /** u16 */
-  th_sum: number;
-  /** u16 */
-  th_urp: number;
-}
-
-export const sizeofTcp_hdr = 24;
-
-export function allocTcp_hdr(data?: Partial<tcp_hdr>): Uint8Array {
-  const buf = new Uint8Array(sizeofTcp_hdr);
-  const view = new DataView(buf.buffer);
-  // 0x00: u16
-  if (data?.th_sport !== undefined) view.setUint16(0, Number(data.th_sport), true);
-  // 0x02: u16
-  if (data?.th_dport !== undefined) view.setUint16(2, Number(data.th_dport), true);
-  // 0x04: u32
-  if (data?.th_seq !== undefined) view.setUint32(4, Number(data.th_seq), true);
-  // 0x08: u32
-  if (data?.th_ack !== undefined) view.setUint32(8, Number(data.th_ack), true);
-  // 0x0c: u8
-  if (data?._bitfield !== undefined) view.setUint8(12, Number(data._bitfield));
-  // 0x0d: u8
-  if (data?.th_flags !== undefined) view.setUint8(13, Number(data.th_flags));
-  // 0x0e: u16
-  if (data?.th_win !== undefined) view.setUint16(14, Number(data.th_win), true);
-  // 0x10: u16
-  if (data?.th_sum !== undefined) view.setUint16(16, Number(data.th_sum), true);
-  // 0x12: u16
-  if (data?.th_urp !== undefined) view.setUint16(18, Number(data.th_urp), true);
-  // 0x14: pad4
-  return buf;
-}
-
-/**
- * Windows.Win32.NetworkManagement.WindowsFilteringPlatform.tcp_opt_mss (size: 8)
- */
-export interface tcp_opt_mss {
-  /** u8 */
-  Kind: number;
-  /** u8 */
-  Length: number;
-  /** u16 */
-  Mss: number;
-}
-
-export const sizeofTcp_opt_mss = 8;
-
-export function allocTcp_opt_mss(data?: Partial<tcp_opt_mss>): Uint8Array {
-  const buf = new Uint8Array(sizeofTcp_opt_mss);
-  const view = new DataView(buf.buffer);
-  // 0x00: u8
-  if (data?.Kind !== undefined) view.setUint8(0, Number(data.Kind));
-  // 0x01: u8
-  if (data?.Length !== undefined) view.setUint8(1, Number(data.Length));
-  // 0x02: u16
-  if (data?.Mss !== undefined) view.setUint16(2, Number(data.Mss), true);
-  // 0x04: pad4
-  return buf;
-}
-
-/**
- * Windows.Win32.NetworkManagement.WindowsFilteringPlatform.tcp_opt_ws (size: 8)
- */
-export interface tcp_opt_ws {
-  /** u8 */
-  Kind: number;
-  /** u8 */
-  Length: number;
-  /** u8 */
-  ShiftCnt: number;
-}
-
-export const sizeofTcp_opt_ws = 8;
-
-export function allocTcp_opt_ws(data?: Partial<tcp_opt_ws>): Uint8Array {
-  const buf = new Uint8Array(sizeofTcp_opt_ws);
-  const view = new DataView(buf.buffer);
-  // 0x00: u8
-  if (data?.Kind !== undefined) view.setUint8(0, Number(data.Kind));
-  // 0x01: u8
-  if (data?.Length !== undefined) view.setUint8(1, Number(data.Length));
-  // 0x02: u8
-  if (data?.ShiftCnt !== undefined) view.setUint8(2, Number(data.ShiftCnt));
-  // 0x03: pad5
-  return buf;
-}
-
-/**
- * Windows.Win32.NetworkManagement.WindowsFilteringPlatform.tcp_opt_sack_permitted (size: 8)
- */
-export interface tcp_opt_sack_permitted {
-  /** u8 */
-  Kind: number;
-  /** u8 */
-  Length: number;
-}
-
-export const sizeofTcp_opt_sack_permitted = 8;
-
-export function allocTcp_opt_sack_permitted(data?: Partial<tcp_opt_sack_permitted>): Uint8Array {
-  const buf = new Uint8Array(sizeofTcp_opt_sack_permitted);
-  const view = new DataView(buf.buffer);
-  // 0x00: u8
-  if (data?.Kind !== undefined) view.setUint8(0, Number(data.Kind));
-  // 0x01: u8
-  if (data?.Length !== undefined) view.setUint8(1, Number(data.Length));
-  // 0x02: pad6
-  return buf;
-}
-
-/**
- * Windows.Win32.NetworkManagement.WindowsFilteringPlatform.tcp_opt_sack (size: 16)
- */
-export interface tcp_opt_sack {
-  /** u8 */
-  Kind: number;
-  /** u8 */
-  Length: number;
-  /** array */
-  Block: Deno.PointerValue | null;
-}
-
-export const sizeofTcp_opt_sack = 16;
-
-export function allocTcp_opt_sack(data?: Partial<tcp_opt_sack>): Uint8Array {
-  const buf = new Uint8Array(sizeofTcp_opt_sack);
-  const view = new DataView(buf.buffer);
-  // 0x00: u8
-  if (data?.Kind !== undefined) view.setUint8(0, Number(data.Kind));
-  // 0x01: u8
-  if (data?.Length !== undefined) view.setUint8(1, Number(data.Length));
-  // 0x02: pad6
-  // 0x08: pointer
-  if (data?.Block !== undefined) view.setBigUint64(8, data.Block === null ? 0n : BigInt(util.toPointer(data.Block)), true);
-  return buf;
-}
-
-/**
- * Windows.Win32.NetworkManagement.WindowsFilteringPlatform.tcp_opt_ts (size: 16)
- */
-export interface tcp_opt_ts {
-  /** u8 */
-  Kind: number;
-  /** u8 */
-  Length: number;
-  /** u32 */
-  Val: number;
-  /** u32 */
-  EcR: number;
-}
-
-export const sizeofTcp_opt_ts = 16;
-
-export function allocTcp_opt_ts(data?: Partial<tcp_opt_ts>): Uint8Array {
-  const buf = new Uint8Array(sizeofTcp_opt_ts);
-  const view = new DataView(buf.buffer);
-  // 0x00: u8
-  if (data?.Kind !== undefined) view.setUint8(0, Number(data.Kind));
-  // 0x01: u8
-  if (data?.Length !== undefined) view.setUint8(1, Number(data.Length));
-  // 0x02: u32
-  if (data?.Val !== undefined) view.setUint32(2, Number(data.Val), true);
-  // 0x06: u32
-  if (data?.EcR !== undefined) view.setUint32(6, Number(data.EcR), true);
-  // 0x0a: pad6
-  return buf;
-}
-
-/**
- * Windows.Win32.NetworkManagement.WindowsFilteringPlatform.tcp_opt_unknown (size: 8)
- */
-export interface tcp_opt_unknown {
-  /** u8 */
-  Kind: number;
-  /** u8 */
-  Length: number;
-}
-
-export const sizeofTcp_opt_unknown = 8;
-
-export function allocTcp_opt_unknown(data?: Partial<tcp_opt_unknown>): Uint8Array {
-  const buf = new Uint8Array(sizeofTcp_opt_unknown);
-  const view = new DataView(buf.buffer);
-  // 0x00: u8
-  if (data?.Kind !== undefined) view.setUint8(0, Number(data.Kind));
-  // 0x01: u8
-  if (data?.Length !== undefined) view.setUint8(1, Number(data.Length));
-  // 0x02: pad6
-  return buf;
-}
-
-/**
- * Windows.Win32.NetworkManagement.WindowsFilteringPlatform.tcp_opt_fastopen (size: 16)
- */
-export interface tcp_opt_fastopen {
-  /** u8 */
-  Kind: number;
-  /** u8 */
-  Length: number;
-  /** array */
-  Cookie: Deno.PointerValue | null;
-}
-
-export const sizeofTcp_opt_fastopen = 16;
-
-export function allocTcp_opt_fastopen(data?: Partial<tcp_opt_fastopen>): Uint8Array {
-  const buf = new Uint8Array(sizeofTcp_opt_fastopen);
-  const view = new DataView(buf.buffer);
-  // 0x00: u8
-  if (data?.Kind !== undefined) view.setUint8(0, Number(data.Kind));
-  // 0x01: u8
-  if (data?.Length !== undefined) view.setUint8(1, Number(data.Length));
-  // 0x02: pad6
-  // 0x08: pointer
-  if (data?.Cookie !== undefined) view.setBigUint64(8, data.Cookie === null ? 0n : BigInt(util.toPointer(data.Cookie)), true);
-  return buf;
-}
-
-/**
- * Windows.Win32.Networking.WinSock.SCOPE_ID (size: 8)
- */
-export interface SCOPE_ID {
-  /** _Anonymous_e__Union */
-  Anonymous: Uint8Array | Deno.PointerValue | null;
-}
-
-export const sizeofSCOPE_ID = 8;
-
-export function allocSCOPE_ID(data?: Partial<SCOPE_ID>): Uint8Array {
-  const buf = new Uint8Array(sizeofSCOPE_ID);
-  const view = new DataView(buf.buffer);
-  // 0x00: pointer
-  if (data?.Anonymous !== undefined) view.setBigUint64(0, data.Anonymous === null ? 0n : BigInt(util.toPointer(data.Anonymous)), true);
-  return buf;
-}
-
-/**
- * Windows.Win32.NetworkManagement.WindowsFilteringPlatform.DL_TUNNEL_ADDRESS (size: 24)
- */
-export interface DL_TUNNEL_ADDRESS {
-  /** Windows.Win32.System.Kernel.COMPARTMENT_ID */
-  CompartmentId: COMPARTMENT_ID;
-  /** Windows.Win32.Networking.WinSock.SCOPE_ID */
-  ScopeId: Uint8Array | Deno.PointerValue | null;
-  /** array */
-  IpAddress: Deno.PointerValue | null;
-}
-
-export const sizeofDL_TUNNEL_ADDRESS = 24;
-
-export function allocDL_TUNNEL_ADDRESS(data?: Partial<DL_TUNNEL_ADDRESS>): Uint8Array {
-  const buf = new Uint8Array(sizeofDL_TUNNEL_ADDRESS);
-  const view = new DataView(buf.buffer);
-  // 0x00: i32
-  if (data?.CompartmentId !== undefined) view.setInt32(0, Number(data.CompartmentId), true);
-  // 0x04: pad4
-  // 0x08: pointer
-  if (data?.ScopeId !== undefined) view.setBigUint64(8, data.ScopeId === null ? 0n : BigInt(util.toPointer(data.ScopeId)), true);
-  // 0x10: pointer
-  if (data?.IpAddress !== undefined) view.setBigUint64(16, data.IpAddress === null ? 0n : BigInt(util.toPointer(data.IpAddress)), true);
-  return buf;
-}
-
-/**
- * Windows.Win32.NetworkManagement.WindowsFilteringPlatform.DL_TEREDO_ADDRESS (size: 16)
- */
-export interface DL_TEREDO_ADDRESS {
-  /** array */
-  Reserved: Deno.PointerValue | null;
-  /** _Anonymous_e__Union */
-  Anonymous: Uint8Array | Deno.PointerValue | null;
-}
-
-export const sizeofDL_TEREDO_ADDRESS = 16;
-
-export function allocDL_TEREDO_ADDRESS(data?: Partial<DL_TEREDO_ADDRESS>): Uint8Array {
-  const buf = new Uint8Array(sizeofDL_TEREDO_ADDRESS);
-  const view = new DataView(buf.buffer);
-  // 0x00: pointer
-  if (data?.Reserved !== undefined) view.setBigUint64(0, data.Reserved === null ? 0n : BigInt(util.toPointer(data.Reserved)), true);
-  // 0x08: pointer
-  if (data?.Anonymous !== undefined) view.setBigUint64(8, data.Anonymous === null ? 0n : BigInt(util.toPointer(data.Anonymous)), true);
-  return buf;
-}
-
-/**
- * Windows.Win32.NetworkManagement.WindowsFilteringPlatform.DL_TEREDO_ADDRESS_PRV (size: 16)
- */
-export interface DL_TEREDO_ADDRESS_PRV {
-  /** array */
-  Reserved: Deno.PointerValue | null;
-  /** _Anonymous_e__Union */
-  Anonymous: Uint8Array | Deno.PointerValue | null;
-}
-
-export const sizeofDL_TEREDO_ADDRESS_PRV = 16;
-
-export function allocDL_TEREDO_ADDRESS_PRV(data?: Partial<DL_TEREDO_ADDRESS_PRV>): Uint8Array {
-  const buf = new Uint8Array(sizeofDL_TEREDO_ADDRESS_PRV);
-  const view = new DataView(buf.buffer);
-  // 0x00: pointer
-  if (data?.Reserved !== undefined) view.setBigUint64(0, data.Reserved === null ? 0n : BigInt(util.toPointer(data.Reserved)), true);
-  // 0x08: pointer
-  if (data?.Anonymous !== undefined) view.setBigUint64(8, data.Anonymous === null ? 0n : BigInt(util.toPointer(data.Anonymous)), true);
-  return buf;
-}
-
-/**
- * Windows.Win32.NetworkManagement.WindowsFilteringPlatform.IPTLS_METADATA (size: 8)
- */
-export interface IPTLS_METADATA {
-  /** u64 */
-  SequenceNumber: Deno.PointerValue;
-}
-
-export const sizeofIPTLS_METADATA = 8;
-
-export function allocIPTLS_METADATA(data?: Partial<IPTLS_METADATA>): Uint8Array {
-  const buf = new Uint8Array(sizeofIPTLS_METADATA);
-  const view = new DataView(buf.buffer);
-  // 0x00: u64
-  if (data?.SequenceNumber !== undefined) view.setBigUint64(0, BigInt(data.SequenceNumber), true);
-  return buf;
-}
-
-/**
- * Windows.Win32.NetworkManagement.WindowsFilteringPlatform.NPI_MODULEID (size: 16)
- */
-export interface NPI_MODULEID {
-  /** u16 */
-  Length: number;
-  /** Windows.Win32.NetworkManagement.WindowsFilteringPlatform.NPI_MODULEID_TYPE */
-  Type: NPI_MODULEID_TYPE;
-  /** _Anonymous_e__Union */
-  Anonymous: Uint8Array | Deno.PointerValue | null;
-}
-
-export const sizeofNPI_MODULEID = 16;
-
-export function allocNPI_MODULEID(data?: Partial<NPI_MODULEID>): Uint8Array {
-  const buf = new Uint8Array(sizeofNPI_MODULEID);
-  const view = new DataView(buf.buffer);
-  // 0x00: u16
-  if (data?.Length !== undefined) view.setUint16(0, Number(data.Length), true);
-  // 0x02: i32
-  if (data?.Type !== undefined) view.setInt32(2, Number(data.Type), true);
-  // 0x06: pad2
-  // 0x08: pointer
-  if (data?.Anonymous !== undefined) view.setBigUint64(8, data.Anonymous === null ? 0n : BigInt(util.toPointer(data.Anonymous)), true);
-  return buf;
-}
+export type PSECURITY_DESCRIPTOR = Deno.PointerValue | Uint8Array | null;
 
 // Native Libraries
 
 try {
-  var libfwpuclnt = Deno.dlopen("fwpuclnt", {
+  var libfwpuclnt_dll = Deno.dlopen("fwpuclnt.dll", {
     FwpmFreeMemory0: {
       parameters: ["pointer"],
       result: "void",
@@ -11135,7 +8633,7 @@ try {
 export function FwpmFreeMemory0(
   p: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): void /* void */ {
-  return libfwpuclnt.FwpmFreeMemory0(util.toPointer(p));
+  return libfwpuclnt_dll.FwpmFreeMemory0(util.toPointer(p));
 }
 
 export function FwpmEngineOpen0(
@@ -11145,13 +8643,13 @@ export function FwpmEngineOpen0(
   session: Deno.PointerValue | Uint8Array | null /* ptr */,
   engineHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libfwpuclnt.FwpmEngineOpen0(util.pwstrToFfi(serverName), authnService, util.toPointer(authIdentity), util.toPointer(session), util.toPointer(engineHandle));
+  return libfwpuclnt_dll.FwpmEngineOpen0(util.pwstrToFfi(serverName), authnService, util.toPointer(authIdentity), util.toPointer(session), util.toPointer(engineHandle));
 }
 
 export function FwpmEngineClose0(
   engineHandle: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
 ): number /* u32 */ {
-  return libfwpuclnt.FwpmEngineClose0(util.toPointer(engineHandle));
+  return libfwpuclnt_dll.FwpmEngineClose0(util.toPointer(engineHandle));
 }
 
 export function FwpmEngineGetOption0(
@@ -11159,7 +8657,7 @@ export function FwpmEngineGetOption0(
   option: FWPM_ENGINE_OPTION /* Windows.Win32.NetworkManagement.WindowsFilteringPlatform.FWPM_ENGINE_OPTION */,
   value: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libfwpuclnt.FwpmEngineGetOption0(util.toPointer(engineHandle), option, util.toPointer(value));
+  return libfwpuclnt_dll.FwpmEngineGetOption0(util.toPointer(engineHandle), option, util.toPointer(value));
 }
 
 export function FwpmEngineSetOption0(
@@ -11167,7 +8665,7 @@ export function FwpmEngineSetOption0(
   option: FWPM_ENGINE_OPTION /* Windows.Win32.NetworkManagement.WindowsFilteringPlatform.FWPM_ENGINE_OPTION */,
   newValue: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libfwpuclnt.FwpmEngineSetOption0(util.toPointer(engineHandle), option, util.toPointer(newValue));
+  return libfwpuclnt_dll.FwpmEngineSetOption0(util.toPointer(engineHandle), option, util.toPointer(newValue));
 }
 
 export function FwpmEngineGetSecurityInfo0(
@@ -11179,7 +8677,7 @@ export function FwpmEngineGetSecurityInfo0(
   sacl: Deno.PointerValue | Uint8Array | null /* ptr */,
   securityDescriptor: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libfwpuclnt.FwpmEngineGetSecurityInfo0(util.toPointer(engineHandle), securityInfo, util.toPointer(sidOwner), util.toPointer(sidGroup), util.toPointer(dacl), util.toPointer(sacl), util.toPointer(securityDescriptor));
+  return libfwpuclnt_dll.FwpmEngineGetSecurityInfo0(util.toPointer(engineHandle), securityInfo, util.toPointer(sidOwner), util.toPointer(sidGroup), util.toPointer(dacl), util.toPointer(sacl), util.toPointer(securityDescriptor));
 }
 
 export function FwpmEngineSetSecurityInfo0(
@@ -11190,7 +8688,7 @@ export function FwpmEngineSetSecurityInfo0(
   dacl: Deno.PointerValue | Uint8Array | null /* ptr */,
   sacl: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libfwpuclnt.FwpmEngineSetSecurityInfo0(util.toPointer(engineHandle), securityInfo, util.toPointer(sidOwner), util.toPointer(sidGroup), util.toPointer(dacl), util.toPointer(sacl));
+  return libfwpuclnt_dll.FwpmEngineSetSecurityInfo0(util.toPointer(engineHandle), securityInfo, util.toPointer(sidOwner), util.toPointer(sidGroup), util.toPointer(dacl), util.toPointer(sacl));
 }
 
 export function FwpmSessionCreateEnumHandle0(
@@ -11198,7 +8696,7 @@ export function FwpmSessionCreateEnumHandle0(
   enumTemplate: Deno.PointerValue | Uint8Array | null /* ptr */,
   enumHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libfwpuclnt.FwpmSessionCreateEnumHandle0(util.toPointer(engineHandle), util.toPointer(enumTemplate), util.toPointer(enumHandle));
+  return libfwpuclnt_dll.FwpmSessionCreateEnumHandle0(util.toPointer(engineHandle), util.toPointer(enumTemplate), util.toPointer(enumHandle));
 }
 
 export function FwpmSessionEnum0(
@@ -11208,48 +8706,48 @@ export function FwpmSessionEnum0(
   entries: Deno.PointerValue | Uint8Array | null /* ptr */,
   numEntriesReturned: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libfwpuclnt.FwpmSessionEnum0(util.toPointer(engineHandle), util.toPointer(enumHandle), numEntriesRequested, util.toPointer(entries), util.toPointer(numEntriesReturned));
+  return libfwpuclnt_dll.FwpmSessionEnum0(util.toPointer(engineHandle), util.toPointer(enumHandle), numEntriesRequested, util.toPointer(entries), util.toPointer(numEntriesReturned));
 }
 
 export function FwpmSessionDestroyEnumHandle0(
   engineHandle: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
   enumHandle: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
 ): number /* u32 */ {
-  return libfwpuclnt.FwpmSessionDestroyEnumHandle0(util.toPointer(engineHandle), util.toPointer(enumHandle));
+  return libfwpuclnt_dll.FwpmSessionDestroyEnumHandle0(util.toPointer(engineHandle), util.toPointer(enumHandle));
 }
 
 export function FwpmTransactionBegin0(
   engineHandle: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
   flags: number /* u32 */,
 ): number /* u32 */ {
-  return libfwpuclnt.FwpmTransactionBegin0(util.toPointer(engineHandle), flags);
+  return libfwpuclnt_dll.FwpmTransactionBegin0(util.toPointer(engineHandle), flags);
 }
 
 export function FwpmTransactionCommit0(
   engineHandle: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
 ): number /* u32 */ {
-  return libfwpuclnt.FwpmTransactionCommit0(util.toPointer(engineHandle));
+  return libfwpuclnt_dll.FwpmTransactionCommit0(util.toPointer(engineHandle));
 }
 
 export function FwpmTransactionAbort0(
   engineHandle: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
 ): number /* u32 */ {
-  return libfwpuclnt.FwpmTransactionAbort0(util.toPointer(engineHandle));
+  return libfwpuclnt_dll.FwpmTransactionAbort0(util.toPointer(engineHandle));
 }
 
 export function FwpmProviderAdd0(
   engineHandle: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
   provider: Deno.PointerValue | Uint8Array | null /* ptr */,
-  sd: Deno.PointerValue | Uint8Array | null /* ptr */,
+  sd: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Security.PSECURITY_DESCRIPTOR */,
 ): number /* u32 */ {
-  return libfwpuclnt.FwpmProviderAdd0(util.toPointer(engineHandle), util.toPointer(provider), util.toPointer(sd));
+  return libfwpuclnt_dll.FwpmProviderAdd0(util.toPointer(engineHandle), util.toPointer(provider), util.toPointer(sd));
 }
 
 export function FwpmProviderDeleteByKey0(
   engineHandle: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
   key: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libfwpuclnt.FwpmProviderDeleteByKey0(util.toPointer(engineHandle), util.toPointer(key));
+  return libfwpuclnt_dll.FwpmProviderDeleteByKey0(util.toPointer(engineHandle), util.toPointer(key));
 }
 
 export function FwpmProviderGetByKey0(
@@ -11257,7 +8755,7 @@ export function FwpmProviderGetByKey0(
   key: Deno.PointerValue | Uint8Array | null /* ptr */,
   provider: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libfwpuclnt.FwpmProviderGetByKey0(util.toPointer(engineHandle), util.toPointer(key), util.toPointer(provider));
+  return libfwpuclnt_dll.FwpmProviderGetByKey0(util.toPointer(engineHandle), util.toPointer(key), util.toPointer(provider));
 }
 
 export function FwpmProviderCreateEnumHandle0(
@@ -11265,7 +8763,7 @@ export function FwpmProviderCreateEnumHandle0(
   enumTemplate: Deno.PointerValue | Uint8Array | null /* ptr */,
   enumHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libfwpuclnt.FwpmProviderCreateEnumHandle0(util.toPointer(engineHandle), util.toPointer(enumTemplate), util.toPointer(enumHandle));
+  return libfwpuclnt_dll.FwpmProviderCreateEnumHandle0(util.toPointer(engineHandle), util.toPointer(enumTemplate), util.toPointer(enumHandle));
 }
 
 export function FwpmProviderEnum0(
@@ -11275,14 +8773,14 @@ export function FwpmProviderEnum0(
   entries: Deno.PointerValue | Uint8Array | null /* ptr */,
   numEntriesReturned: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libfwpuclnt.FwpmProviderEnum0(util.toPointer(engineHandle), util.toPointer(enumHandle), numEntriesRequested, util.toPointer(entries), util.toPointer(numEntriesReturned));
+  return libfwpuclnt_dll.FwpmProviderEnum0(util.toPointer(engineHandle), util.toPointer(enumHandle), numEntriesRequested, util.toPointer(entries), util.toPointer(numEntriesReturned));
 }
 
 export function FwpmProviderDestroyEnumHandle0(
   engineHandle: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
   enumHandle: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
 ): number /* u32 */ {
-  return libfwpuclnt.FwpmProviderDestroyEnumHandle0(util.toPointer(engineHandle), util.toPointer(enumHandle));
+  return libfwpuclnt_dll.FwpmProviderDestroyEnumHandle0(util.toPointer(engineHandle), util.toPointer(enumHandle));
 }
 
 export function FwpmProviderGetSecurityInfoByKey0(
@@ -11295,7 +8793,7 @@ export function FwpmProviderGetSecurityInfoByKey0(
   sacl: Deno.PointerValue | Uint8Array | null /* ptr */,
   securityDescriptor: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libfwpuclnt.FwpmProviderGetSecurityInfoByKey0(util.toPointer(engineHandle), util.toPointer(key), securityInfo, util.toPointer(sidOwner), util.toPointer(sidGroup), util.toPointer(dacl), util.toPointer(sacl), util.toPointer(securityDescriptor));
+  return libfwpuclnt_dll.FwpmProviderGetSecurityInfoByKey0(util.toPointer(engineHandle), util.toPointer(key), securityInfo, util.toPointer(sidOwner), util.toPointer(sidGroup), util.toPointer(dacl), util.toPointer(sacl), util.toPointer(securityDescriptor));
 }
 
 export function FwpmProviderSetSecurityInfoByKey0(
@@ -11307,7 +8805,7 @@ export function FwpmProviderSetSecurityInfoByKey0(
   dacl: Deno.PointerValue | Uint8Array | null /* ptr */,
   sacl: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libfwpuclnt.FwpmProviderSetSecurityInfoByKey0(util.toPointer(engineHandle), util.toPointer(key), securityInfo, util.toPointer(sidOwner), util.toPointer(sidGroup), util.toPointer(dacl), util.toPointer(sacl));
+  return libfwpuclnt_dll.FwpmProviderSetSecurityInfoByKey0(util.toPointer(engineHandle), util.toPointer(key), securityInfo, util.toPointer(sidOwner), util.toPointer(sidGroup), util.toPointer(dacl), util.toPointer(sacl));
 }
 
 export function FwpmProviderSubscribeChanges0(
@@ -11317,14 +8815,14 @@ export function FwpmProviderSubscribeChanges0(
   context: Deno.PointerValue | Uint8Array | null /* ptr */,
   changeHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libfwpuclnt.FwpmProviderSubscribeChanges0(util.toPointer(engineHandle), util.toPointer(subscription), util.toPointer(callback), util.toPointer(context), util.toPointer(changeHandle));
+  return libfwpuclnt_dll.FwpmProviderSubscribeChanges0(util.toPointer(engineHandle), util.toPointer(subscription), util.toPointer(callback), util.toPointer(context), util.toPointer(changeHandle));
 }
 
 export function FwpmProviderUnsubscribeChanges0(
   engineHandle: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
   changeHandle: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
 ): number /* u32 */ {
-  return libfwpuclnt.FwpmProviderUnsubscribeChanges0(util.toPointer(engineHandle), util.toPointer(changeHandle));
+  return libfwpuclnt_dll.FwpmProviderUnsubscribeChanges0(util.toPointer(engineHandle), util.toPointer(changeHandle));
 }
 
 export function FwpmProviderSubscriptionsGet0(
@@ -11332,57 +8830,57 @@ export function FwpmProviderSubscriptionsGet0(
   entries: Deno.PointerValue | Uint8Array | null /* ptr */,
   numEntries: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libfwpuclnt.FwpmProviderSubscriptionsGet0(util.toPointer(engineHandle), util.toPointer(entries), util.toPointer(numEntries));
+  return libfwpuclnt_dll.FwpmProviderSubscriptionsGet0(util.toPointer(engineHandle), util.toPointer(entries), util.toPointer(numEntries));
 }
 
 export function FwpmProviderContextAdd0(
   engineHandle: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
   providerContext: Deno.PointerValue | Uint8Array | null /* ptr */,
-  sd: Deno.PointerValue | Uint8Array | null /* ptr */,
+  sd: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Security.PSECURITY_DESCRIPTOR */,
   id: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libfwpuclnt.FwpmProviderContextAdd0(util.toPointer(engineHandle), util.toPointer(providerContext), util.toPointer(sd), util.toPointer(id));
+  return libfwpuclnt_dll.FwpmProviderContextAdd0(util.toPointer(engineHandle), util.toPointer(providerContext), util.toPointer(sd), util.toPointer(id));
 }
 
 export function FwpmProviderContextAdd1(
   engineHandle: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
   providerContext: Deno.PointerValue | Uint8Array | null /* ptr */,
-  sd: Deno.PointerValue | Uint8Array | null /* ptr */,
+  sd: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Security.PSECURITY_DESCRIPTOR */,
   id: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libfwpuclnt.FwpmProviderContextAdd1(util.toPointer(engineHandle), util.toPointer(providerContext), util.toPointer(sd), util.toPointer(id));
+  return libfwpuclnt_dll.FwpmProviderContextAdd1(util.toPointer(engineHandle), util.toPointer(providerContext), util.toPointer(sd), util.toPointer(id));
 }
 
 export function FwpmProviderContextAdd2(
   engineHandle: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
   providerContext: Deno.PointerValue | Uint8Array | null /* ptr */,
-  sd: Deno.PointerValue | Uint8Array | null /* ptr */,
+  sd: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Security.PSECURITY_DESCRIPTOR */,
   id: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libfwpuclnt.FwpmProviderContextAdd2(util.toPointer(engineHandle), util.toPointer(providerContext), util.toPointer(sd), util.toPointer(id));
+  return libfwpuclnt_dll.FwpmProviderContextAdd2(util.toPointer(engineHandle), util.toPointer(providerContext), util.toPointer(sd), util.toPointer(id));
 }
 
 export function FwpmProviderContextAdd3(
   engineHandle: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
   providerContext: Deno.PointerValue | Uint8Array | null /* ptr */,
-  sd: Deno.PointerValue | Uint8Array | null /* ptr */,
+  sd: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Security.PSECURITY_DESCRIPTOR */,
   id: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libfwpuclnt.FwpmProviderContextAdd3(util.toPointer(engineHandle), util.toPointer(providerContext), util.toPointer(sd), util.toPointer(id));
+  return libfwpuclnt_dll.FwpmProviderContextAdd3(util.toPointer(engineHandle), util.toPointer(providerContext), util.toPointer(sd), util.toPointer(id));
 }
 
 export function FwpmProviderContextDeleteById0(
   engineHandle: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
   id: Deno.PointerValue /* u64 */,
 ): number /* u32 */ {
-  return libfwpuclnt.FwpmProviderContextDeleteById0(util.toPointer(engineHandle), id);
+  return libfwpuclnt_dll.FwpmProviderContextDeleteById0(util.toPointer(engineHandle), id);
 }
 
 export function FwpmProviderContextDeleteByKey0(
   engineHandle: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
   key: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libfwpuclnt.FwpmProviderContextDeleteByKey0(util.toPointer(engineHandle), util.toPointer(key));
+  return libfwpuclnt_dll.FwpmProviderContextDeleteByKey0(util.toPointer(engineHandle), util.toPointer(key));
 }
 
 export function FwpmProviderContextGetById0(
@@ -11390,7 +8888,7 @@ export function FwpmProviderContextGetById0(
   id: Deno.PointerValue /* u64 */,
   providerContext: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libfwpuclnt.FwpmProviderContextGetById0(util.toPointer(engineHandle), id, util.toPointer(providerContext));
+  return libfwpuclnt_dll.FwpmProviderContextGetById0(util.toPointer(engineHandle), id, util.toPointer(providerContext));
 }
 
 export function FwpmProviderContextGetById1(
@@ -11398,7 +8896,7 @@ export function FwpmProviderContextGetById1(
   id: Deno.PointerValue /* u64 */,
   providerContext: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libfwpuclnt.FwpmProviderContextGetById1(util.toPointer(engineHandle), id, util.toPointer(providerContext));
+  return libfwpuclnt_dll.FwpmProviderContextGetById1(util.toPointer(engineHandle), id, util.toPointer(providerContext));
 }
 
 export function FwpmProviderContextGetById2(
@@ -11406,7 +8904,7 @@ export function FwpmProviderContextGetById2(
   id: Deno.PointerValue /* u64 */,
   providerContext: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libfwpuclnt.FwpmProviderContextGetById2(util.toPointer(engineHandle), id, util.toPointer(providerContext));
+  return libfwpuclnt_dll.FwpmProviderContextGetById2(util.toPointer(engineHandle), id, util.toPointer(providerContext));
 }
 
 export function FwpmProviderContextGetById3(
@@ -11414,7 +8912,7 @@ export function FwpmProviderContextGetById3(
   id: Deno.PointerValue /* u64 */,
   providerContext: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libfwpuclnt.FwpmProviderContextGetById3(util.toPointer(engineHandle), id, util.toPointer(providerContext));
+  return libfwpuclnt_dll.FwpmProviderContextGetById3(util.toPointer(engineHandle), id, util.toPointer(providerContext));
 }
 
 export function FwpmProviderContextGetByKey0(
@@ -11422,7 +8920,7 @@ export function FwpmProviderContextGetByKey0(
   key: Deno.PointerValue | Uint8Array | null /* ptr */,
   providerContext: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libfwpuclnt.FwpmProviderContextGetByKey0(util.toPointer(engineHandle), util.toPointer(key), util.toPointer(providerContext));
+  return libfwpuclnt_dll.FwpmProviderContextGetByKey0(util.toPointer(engineHandle), util.toPointer(key), util.toPointer(providerContext));
 }
 
 export function FwpmProviderContextGetByKey1(
@@ -11430,7 +8928,7 @@ export function FwpmProviderContextGetByKey1(
   key: Deno.PointerValue | Uint8Array | null /* ptr */,
   providerContext: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libfwpuclnt.FwpmProviderContextGetByKey1(util.toPointer(engineHandle), util.toPointer(key), util.toPointer(providerContext));
+  return libfwpuclnt_dll.FwpmProviderContextGetByKey1(util.toPointer(engineHandle), util.toPointer(key), util.toPointer(providerContext));
 }
 
 export function FwpmProviderContextGetByKey2(
@@ -11438,7 +8936,7 @@ export function FwpmProviderContextGetByKey2(
   key: Deno.PointerValue | Uint8Array | null /* ptr */,
   providerContext: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libfwpuclnt.FwpmProviderContextGetByKey2(util.toPointer(engineHandle), util.toPointer(key), util.toPointer(providerContext));
+  return libfwpuclnt_dll.FwpmProviderContextGetByKey2(util.toPointer(engineHandle), util.toPointer(key), util.toPointer(providerContext));
 }
 
 export function FwpmProviderContextGetByKey3(
@@ -11446,7 +8944,7 @@ export function FwpmProviderContextGetByKey3(
   key: Deno.PointerValue | Uint8Array | null /* ptr */,
   providerContext: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libfwpuclnt.FwpmProviderContextGetByKey3(util.toPointer(engineHandle), util.toPointer(key), util.toPointer(providerContext));
+  return libfwpuclnt_dll.FwpmProviderContextGetByKey3(util.toPointer(engineHandle), util.toPointer(key), util.toPointer(providerContext));
 }
 
 export function FwpmProviderContextCreateEnumHandle0(
@@ -11454,7 +8952,7 @@ export function FwpmProviderContextCreateEnumHandle0(
   enumTemplate: Deno.PointerValue | Uint8Array | null /* ptr */,
   enumHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libfwpuclnt.FwpmProviderContextCreateEnumHandle0(util.toPointer(engineHandle), util.toPointer(enumTemplate), util.toPointer(enumHandle));
+  return libfwpuclnt_dll.FwpmProviderContextCreateEnumHandle0(util.toPointer(engineHandle), util.toPointer(enumTemplate), util.toPointer(enumHandle));
 }
 
 export function FwpmProviderContextEnum0(
@@ -11464,7 +8962,7 @@ export function FwpmProviderContextEnum0(
   entries: Deno.PointerValue | Uint8Array | null /* ptr */,
   numEntriesReturned: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libfwpuclnt.FwpmProviderContextEnum0(util.toPointer(engineHandle), util.toPointer(enumHandle), numEntriesRequested, util.toPointer(entries), util.toPointer(numEntriesReturned));
+  return libfwpuclnt_dll.FwpmProviderContextEnum0(util.toPointer(engineHandle), util.toPointer(enumHandle), numEntriesRequested, util.toPointer(entries), util.toPointer(numEntriesReturned));
 }
 
 export function FwpmProviderContextEnum1(
@@ -11474,7 +8972,7 @@ export function FwpmProviderContextEnum1(
   entries: Deno.PointerValue | Uint8Array | null /* ptr */,
   numEntriesReturned: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libfwpuclnt.FwpmProviderContextEnum1(util.toPointer(engineHandle), util.toPointer(enumHandle), numEntriesRequested, util.toPointer(entries), util.toPointer(numEntriesReturned));
+  return libfwpuclnt_dll.FwpmProviderContextEnum1(util.toPointer(engineHandle), util.toPointer(enumHandle), numEntriesRequested, util.toPointer(entries), util.toPointer(numEntriesReturned));
 }
 
 export function FwpmProviderContextEnum2(
@@ -11484,7 +8982,7 @@ export function FwpmProviderContextEnum2(
   entries: Deno.PointerValue | Uint8Array | null /* ptr */,
   numEntriesReturned: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libfwpuclnt.FwpmProviderContextEnum2(util.toPointer(engineHandle), util.toPointer(enumHandle), numEntriesRequested, util.toPointer(entries), util.toPointer(numEntriesReturned));
+  return libfwpuclnt_dll.FwpmProviderContextEnum2(util.toPointer(engineHandle), util.toPointer(enumHandle), numEntriesRequested, util.toPointer(entries), util.toPointer(numEntriesReturned));
 }
 
 export function FwpmProviderContextEnum3(
@@ -11494,14 +8992,14 @@ export function FwpmProviderContextEnum3(
   entries: Deno.PointerValue | Uint8Array | null /* ptr */,
   numEntriesReturned: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libfwpuclnt.FwpmProviderContextEnum3(util.toPointer(engineHandle), util.toPointer(enumHandle), numEntriesRequested, util.toPointer(entries), util.toPointer(numEntriesReturned));
+  return libfwpuclnt_dll.FwpmProviderContextEnum3(util.toPointer(engineHandle), util.toPointer(enumHandle), numEntriesRequested, util.toPointer(entries), util.toPointer(numEntriesReturned));
 }
 
 export function FwpmProviderContextDestroyEnumHandle0(
   engineHandle: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
   enumHandle: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
 ): number /* u32 */ {
-  return libfwpuclnt.FwpmProviderContextDestroyEnumHandle0(util.toPointer(engineHandle), util.toPointer(enumHandle));
+  return libfwpuclnt_dll.FwpmProviderContextDestroyEnumHandle0(util.toPointer(engineHandle), util.toPointer(enumHandle));
 }
 
 export function FwpmProviderContextGetSecurityInfoByKey0(
@@ -11514,7 +9012,7 @@ export function FwpmProviderContextGetSecurityInfoByKey0(
   sacl: Deno.PointerValue | Uint8Array | null /* ptr */,
   securityDescriptor: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libfwpuclnt.FwpmProviderContextGetSecurityInfoByKey0(util.toPointer(engineHandle), util.toPointer(key), securityInfo, util.toPointer(sidOwner), util.toPointer(sidGroup), util.toPointer(dacl), util.toPointer(sacl), util.toPointer(securityDescriptor));
+  return libfwpuclnt_dll.FwpmProviderContextGetSecurityInfoByKey0(util.toPointer(engineHandle), util.toPointer(key), securityInfo, util.toPointer(sidOwner), util.toPointer(sidGroup), util.toPointer(dacl), util.toPointer(sacl), util.toPointer(securityDescriptor));
 }
 
 export function FwpmProviderContextSetSecurityInfoByKey0(
@@ -11526,7 +9024,7 @@ export function FwpmProviderContextSetSecurityInfoByKey0(
   dacl: Deno.PointerValue | Uint8Array | null /* ptr */,
   sacl: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libfwpuclnt.FwpmProviderContextSetSecurityInfoByKey0(util.toPointer(engineHandle), util.toPointer(key), securityInfo, util.toPointer(sidOwner), util.toPointer(sidGroup), util.toPointer(dacl), util.toPointer(sacl));
+  return libfwpuclnt_dll.FwpmProviderContextSetSecurityInfoByKey0(util.toPointer(engineHandle), util.toPointer(key), securityInfo, util.toPointer(sidOwner), util.toPointer(sidGroup), util.toPointer(dacl), util.toPointer(sacl));
 }
 
 export function FwpmProviderContextSubscribeChanges0(
@@ -11536,14 +9034,14 @@ export function FwpmProviderContextSubscribeChanges0(
   context: Deno.PointerValue | Uint8Array | null /* ptr */,
   changeHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libfwpuclnt.FwpmProviderContextSubscribeChanges0(util.toPointer(engineHandle), util.toPointer(subscription), util.toPointer(callback), util.toPointer(context), util.toPointer(changeHandle));
+  return libfwpuclnt_dll.FwpmProviderContextSubscribeChanges0(util.toPointer(engineHandle), util.toPointer(subscription), util.toPointer(callback), util.toPointer(context), util.toPointer(changeHandle));
 }
 
 export function FwpmProviderContextUnsubscribeChanges0(
   engineHandle: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
   changeHandle: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
 ): number /* u32 */ {
-  return libfwpuclnt.FwpmProviderContextUnsubscribeChanges0(util.toPointer(engineHandle), util.toPointer(changeHandle));
+  return libfwpuclnt_dll.FwpmProviderContextUnsubscribeChanges0(util.toPointer(engineHandle), util.toPointer(changeHandle));
 }
 
 export function FwpmProviderContextSubscriptionsGet0(
@@ -11551,22 +9049,22 @@ export function FwpmProviderContextSubscriptionsGet0(
   entries: Deno.PointerValue | Uint8Array | null /* ptr */,
   numEntries: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libfwpuclnt.FwpmProviderContextSubscriptionsGet0(util.toPointer(engineHandle), util.toPointer(entries), util.toPointer(numEntries));
+  return libfwpuclnt_dll.FwpmProviderContextSubscriptionsGet0(util.toPointer(engineHandle), util.toPointer(entries), util.toPointer(numEntries));
 }
 
 export function FwpmSubLayerAdd0(
   engineHandle: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
   subLayer: Deno.PointerValue | Uint8Array | null /* ptr */,
-  sd: Deno.PointerValue | Uint8Array | null /* ptr */,
+  sd: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Security.PSECURITY_DESCRIPTOR */,
 ): number /* u32 */ {
-  return libfwpuclnt.FwpmSubLayerAdd0(util.toPointer(engineHandle), util.toPointer(subLayer), util.toPointer(sd));
+  return libfwpuclnt_dll.FwpmSubLayerAdd0(util.toPointer(engineHandle), util.toPointer(subLayer), util.toPointer(sd));
 }
 
 export function FwpmSubLayerDeleteByKey0(
   engineHandle: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
   key: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libfwpuclnt.FwpmSubLayerDeleteByKey0(util.toPointer(engineHandle), util.toPointer(key));
+  return libfwpuclnt_dll.FwpmSubLayerDeleteByKey0(util.toPointer(engineHandle), util.toPointer(key));
 }
 
 export function FwpmSubLayerGetByKey0(
@@ -11574,7 +9072,7 @@ export function FwpmSubLayerGetByKey0(
   key: Deno.PointerValue | Uint8Array | null /* ptr */,
   subLayer: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libfwpuclnt.FwpmSubLayerGetByKey0(util.toPointer(engineHandle), util.toPointer(key), util.toPointer(subLayer));
+  return libfwpuclnt_dll.FwpmSubLayerGetByKey0(util.toPointer(engineHandle), util.toPointer(key), util.toPointer(subLayer));
 }
 
 export function FwpmSubLayerCreateEnumHandle0(
@@ -11582,7 +9080,7 @@ export function FwpmSubLayerCreateEnumHandle0(
   enumTemplate: Deno.PointerValue | Uint8Array | null /* ptr */,
   enumHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libfwpuclnt.FwpmSubLayerCreateEnumHandle0(util.toPointer(engineHandle), util.toPointer(enumTemplate), util.toPointer(enumHandle));
+  return libfwpuclnt_dll.FwpmSubLayerCreateEnumHandle0(util.toPointer(engineHandle), util.toPointer(enumTemplate), util.toPointer(enumHandle));
 }
 
 export function FwpmSubLayerEnum0(
@@ -11592,14 +9090,14 @@ export function FwpmSubLayerEnum0(
   entries: Deno.PointerValue | Uint8Array | null /* ptr */,
   numEntriesReturned: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libfwpuclnt.FwpmSubLayerEnum0(util.toPointer(engineHandle), util.toPointer(enumHandle), numEntriesRequested, util.toPointer(entries), util.toPointer(numEntriesReturned));
+  return libfwpuclnt_dll.FwpmSubLayerEnum0(util.toPointer(engineHandle), util.toPointer(enumHandle), numEntriesRequested, util.toPointer(entries), util.toPointer(numEntriesReturned));
 }
 
 export function FwpmSubLayerDestroyEnumHandle0(
   engineHandle: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
   enumHandle: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
 ): number /* u32 */ {
-  return libfwpuclnt.FwpmSubLayerDestroyEnumHandle0(util.toPointer(engineHandle), util.toPointer(enumHandle));
+  return libfwpuclnt_dll.FwpmSubLayerDestroyEnumHandle0(util.toPointer(engineHandle), util.toPointer(enumHandle));
 }
 
 export function FwpmSubLayerGetSecurityInfoByKey0(
@@ -11612,7 +9110,7 @@ export function FwpmSubLayerGetSecurityInfoByKey0(
   sacl: Deno.PointerValue | Uint8Array | null /* ptr */,
   securityDescriptor: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libfwpuclnt.FwpmSubLayerGetSecurityInfoByKey0(util.toPointer(engineHandle), util.toPointer(key), securityInfo, util.toPointer(sidOwner), util.toPointer(sidGroup), util.toPointer(dacl), util.toPointer(sacl), util.toPointer(securityDescriptor));
+  return libfwpuclnt_dll.FwpmSubLayerGetSecurityInfoByKey0(util.toPointer(engineHandle), util.toPointer(key), securityInfo, util.toPointer(sidOwner), util.toPointer(sidGroup), util.toPointer(dacl), util.toPointer(sacl), util.toPointer(securityDescriptor));
 }
 
 export function FwpmSubLayerSetSecurityInfoByKey0(
@@ -11624,7 +9122,7 @@ export function FwpmSubLayerSetSecurityInfoByKey0(
   dacl: Deno.PointerValue | Uint8Array | null /* ptr */,
   sacl: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libfwpuclnt.FwpmSubLayerSetSecurityInfoByKey0(util.toPointer(engineHandle), util.toPointer(key), securityInfo, util.toPointer(sidOwner), util.toPointer(sidGroup), util.toPointer(dacl), util.toPointer(sacl));
+  return libfwpuclnt_dll.FwpmSubLayerSetSecurityInfoByKey0(util.toPointer(engineHandle), util.toPointer(key), securityInfo, util.toPointer(sidOwner), util.toPointer(sidGroup), util.toPointer(dacl), util.toPointer(sacl));
 }
 
 export function FwpmSubLayerSubscribeChanges0(
@@ -11634,14 +9132,14 @@ export function FwpmSubLayerSubscribeChanges0(
   context: Deno.PointerValue | Uint8Array | null /* ptr */,
   changeHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libfwpuclnt.FwpmSubLayerSubscribeChanges0(util.toPointer(engineHandle), util.toPointer(subscription), util.toPointer(callback), util.toPointer(context), util.toPointer(changeHandle));
+  return libfwpuclnt_dll.FwpmSubLayerSubscribeChanges0(util.toPointer(engineHandle), util.toPointer(subscription), util.toPointer(callback), util.toPointer(context), util.toPointer(changeHandle));
 }
 
 export function FwpmSubLayerUnsubscribeChanges0(
   engineHandle: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
   changeHandle: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
 ): number /* u32 */ {
-  return libfwpuclnt.FwpmSubLayerUnsubscribeChanges0(util.toPointer(engineHandle), util.toPointer(changeHandle));
+  return libfwpuclnt_dll.FwpmSubLayerUnsubscribeChanges0(util.toPointer(engineHandle), util.toPointer(changeHandle));
 }
 
 export function FwpmSubLayerSubscriptionsGet0(
@@ -11649,7 +9147,7 @@ export function FwpmSubLayerSubscriptionsGet0(
   entries: Deno.PointerValue | Uint8Array | null /* ptr */,
   numEntries: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libfwpuclnt.FwpmSubLayerSubscriptionsGet0(util.toPointer(engineHandle), util.toPointer(entries), util.toPointer(numEntries));
+  return libfwpuclnt_dll.FwpmSubLayerSubscriptionsGet0(util.toPointer(engineHandle), util.toPointer(entries), util.toPointer(numEntries));
 }
 
 export function FwpmLayerGetById0(
@@ -11657,7 +9155,7 @@ export function FwpmLayerGetById0(
   id: number /* u16 */,
   layer: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libfwpuclnt.FwpmLayerGetById0(util.toPointer(engineHandle), id, util.toPointer(layer));
+  return libfwpuclnt_dll.FwpmLayerGetById0(util.toPointer(engineHandle), id, util.toPointer(layer));
 }
 
 export function FwpmLayerGetByKey0(
@@ -11665,7 +9163,7 @@ export function FwpmLayerGetByKey0(
   key: Deno.PointerValue | Uint8Array | null /* ptr */,
   layer: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libfwpuclnt.FwpmLayerGetByKey0(util.toPointer(engineHandle), util.toPointer(key), util.toPointer(layer));
+  return libfwpuclnt_dll.FwpmLayerGetByKey0(util.toPointer(engineHandle), util.toPointer(key), util.toPointer(layer));
 }
 
 export function FwpmLayerCreateEnumHandle0(
@@ -11673,7 +9171,7 @@ export function FwpmLayerCreateEnumHandle0(
   enumTemplate: Deno.PointerValue | Uint8Array | null /* ptr */,
   enumHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libfwpuclnt.FwpmLayerCreateEnumHandle0(util.toPointer(engineHandle), util.toPointer(enumTemplate), util.toPointer(enumHandle));
+  return libfwpuclnt_dll.FwpmLayerCreateEnumHandle0(util.toPointer(engineHandle), util.toPointer(enumTemplate), util.toPointer(enumHandle));
 }
 
 export function FwpmLayerEnum0(
@@ -11683,14 +9181,14 @@ export function FwpmLayerEnum0(
   entries: Deno.PointerValue | Uint8Array | null /* ptr */,
   numEntriesReturned: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libfwpuclnt.FwpmLayerEnum0(util.toPointer(engineHandle), util.toPointer(enumHandle), numEntriesRequested, util.toPointer(entries), util.toPointer(numEntriesReturned));
+  return libfwpuclnt_dll.FwpmLayerEnum0(util.toPointer(engineHandle), util.toPointer(enumHandle), numEntriesRequested, util.toPointer(entries), util.toPointer(numEntriesReturned));
 }
 
 export function FwpmLayerDestroyEnumHandle0(
   engineHandle: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
   enumHandle: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
 ): number /* u32 */ {
-  return libfwpuclnt.FwpmLayerDestroyEnumHandle0(util.toPointer(engineHandle), util.toPointer(enumHandle));
+  return libfwpuclnt_dll.FwpmLayerDestroyEnumHandle0(util.toPointer(engineHandle), util.toPointer(enumHandle));
 }
 
 export function FwpmLayerGetSecurityInfoByKey0(
@@ -11703,7 +9201,7 @@ export function FwpmLayerGetSecurityInfoByKey0(
   sacl: Deno.PointerValue | Uint8Array | null /* ptr */,
   securityDescriptor: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libfwpuclnt.FwpmLayerGetSecurityInfoByKey0(util.toPointer(engineHandle), util.toPointer(key), securityInfo, util.toPointer(sidOwner), util.toPointer(sidGroup), util.toPointer(dacl), util.toPointer(sacl), util.toPointer(securityDescriptor));
+  return libfwpuclnt_dll.FwpmLayerGetSecurityInfoByKey0(util.toPointer(engineHandle), util.toPointer(key), securityInfo, util.toPointer(sidOwner), util.toPointer(sidGroup), util.toPointer(dacl), util.toPointer(sacl), util.toPointer(securityDescriptor));
 }
 
 export function FwpmLayerSetSecurityInfoByKey0(
@@ -11715,30 +9213,30 @@ export function FwpmLayerSetSecurityInfoByKey0(
   dacl: Deno.PointerValue | Uint8Array | null /* ptr */,
   sacl: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libfwpuclnt.FwpmLayerSetSecurityInfoByKey0(util.toPointer(engineHandle), util.toPointer(key), securityInfo, util.toPointer(sidOwner), util.toPointer(sidGroup), util.toPointer(dacl), util.toPointer(sacl));
+  return libfwpuclnt_dll.FwpmLayerSetSecurityInfoByKey0(util.toPointer(engineHandle), util.toPointer(key), securityInfo, util.toPointer(sidOwner), util.toPointer(sidGroup), util.toPointer(dacl), util.toPointer(sacl));
 }
 
 export function FwpmCalloutAdd0(
   engineHandle: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
   callout: Deno.PointerValue | Uint8Array | null /* ptr */,
-  sd: Deno.PointerValue | Uint8Array | null /* ptr */,
+  sd: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Security.PSECURITY_DESCRIPTOR */,
   id: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libfwpuclnt.FwpmCalloutAdd0(util.toPointer(engineHandle), util.toPointer(callout), util.toPointer(sd), util.toPointer(id));
+  return libfwpuclnt_dll.FwpmCalloutAdd0(util.toPointer(engineHandle), util.toPointer(callout), util.toPointer(sd), util.toPointer(id));
 }
 
 export function FwpmCalloutDeleteById0(
   engineHandle: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
   id: number /* u32 */,
 ): number /* u32 */ {
-  return libfwpuclnt.FwpmCalloutDeleteById0(util.toPointer(engineHandle), id);
+  return libfwpuclnt_dll.FwpmCalloutDeleteById0(util.toPointer(engineHandle), id);
 }
 
 export function FwpmCalloutDeleteByKey0(
   engineHandle: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
   key: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libfwpuclnt.FwpmCalloutDeleteByKey0(util.toPointer(engineHandle), util.toPointer(key));
+  return libfwpuclnt_dll.FwpmCalloutDeleteByKey0(util.toPointer(engineHandle), util.toPointer(key));
 }
 
 export function FwpmCalloutGetById0(
@@ -11746,7 +9244,7 @@ export function FwpmCalloutGetById0(
   id: number /* u32 */,
   callout: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libfwpuclnt.FwpmCalloutGetById0(util.toPointer(engineHandle), id, util.toPointer(callout));
+  return libfwpuclnt_dll.FwpmCalloutGetById0(util.toPointer(engineHandle), id, util.toPointer(callout));
 }
 
 export function FwpmCalloutGetByKey0(
@@ -11754,7 +9252,7 @@ export function FwpmCalloutGetByKey0(
   key: Deno.PointerValue | Uint8Array | null /* ptr */,
   callout: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libfwpuclnt.FwpmCalloutGetByKey0(util.toPointer(engineHandle), util.toPointer(key), util.toPointer(callout));
+  return libfwpuclnt_dll.FwpmCalloutGetByKey0(util.toPointer(engineHandle), util.toPointer(key), util.toPointer(callout));
 }
 
 export function FwpmCalloutCreateEnumHandle0(
@@ -11762,7 +9260,7 @@ export function FwpmCalloutCreateEnumHandle0(
   enumTemplate: Deno.PointerValue | Uint8Array | null /* ptr */,
   enumHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libfwpuclnt.FwpmCalloutCreateEnumHandle0(util.toPointer(engineHandle), util.toPointer(enumTemplate), util.toPointer(enumHandle));
+  return libfwpuclnt_dll.FwpmCalloutCreateEnumHandle0(util.toPointer(engineHandle), util.toPointer(enumTemplate), util.toPointer(enumHandle));
 }
 
 export function FwpmCalloutEnum0(
@@ -11772,14 +9270,14 @@ export function FwpmCalloutEnum0(
   entries: Deno.PointerValue | Uint8Array | null /* ptr */,
   numEntriesReturned: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libfwpuclnt.FwpmCalloutEnum0(util.toPointer(engineHandle), util.toPointer(enumHandle), numEntriesRequested, util.toPointer(entries), util.toPointer(numEntriesReturned));
+  return libfwpuclnt_dll.FwpmCalloutEnum0(util.toPointer(engineHandle), util.toPointer(enumHandle), numEntriesRequested, util.toPointer(entries), util.toPointer(numEntriesReturned));
 }
 
 export function FwpmCalloutDestroyEnumHandle0(
   engineHandle: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
   enumHandle: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
 ): number /* u32 */ {
-  return libfwpuclnt.FwpmCalloutDestroyEnumHandle0(util.toPointer(engineHandle), util.toPointer(enumHandle));
+  return libfwpuclnt_dll.FwpmCalloutDestroyEnumHandle0(util.toPointer(engineHandle), util.toPointer(enumHandle));
 }
 
 export function FwpmCalloutGetSecurityInfoByKey0(
@@ -11792,7 +9290,7 @@ export function FwpmCalloutGetSecurityInfoByKey0(
   sacl: Deno.PointerValue | Uint8Array | null /* ptr */,
   securityDescriptor: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libfwpuclnt.FwpmCalloutGetSecurityInfoByKey0(util.toPointer(engineHandle), util.toPointer(key), securityInfo, util.toPointer(sidOwner), util.toPointer(sidGroup), util.toPointer(dacl), util.toPointer(sacl), util.toPointer(securityDescriptor));
+  return libfwpuclnt_dll.FwpmCalloutGetSecurityInfoByKey0(util.toPointer(engineHandle), util.toPointer(key), securityInfo, util.toPointer(sidOwner), util.toPointer(sidGroup), util.toPointer(dacl), util.toPointer(sacl), util.toPointer(securityDescriptor));
 }
 
 export function FwpmCalloutSetSecurityInfoByKey0(
@@ -11804,7 +9302,7 @@ export function FwpmCalloutSetSecurityInfoByKey0(
   dacl: Deno.PointerValue | Uint8Array | null /* ptr */,
   sacl: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libfwpuclnt.FwpmCalloutSetSecurityInfoByKey0(util.toPointer(engineHandle), util.toPointer(key), securityInfo, util.toPointer(sidOwner), util.toPointer(sidGroup), util.toPointer(dacl), util.toPointer(sacl));
+  return libfwpuclnt_dll.FwpmCalloutSetSecurityInfoByKey0(util.toPointer(engineHandle), util.toPointer(key), securityInfo, util.toPointer(sidOwner), util.toPointer(sidGroup), util.toPointer(dacl), util.toPointer(sacl));
 }
 
 export function FwpmCalloutSubscribeChanges0(
@@ -11814,14 +9312,14 @@ export function FwpmCalloutSubscribeChanges0(
   context: Deno.PointerValue | Uint8Array | null /* ptr */,
   changeHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libfwpuclnt.FwpmCalloutSubscribeChanges0(util.toPointer(engineHandle), util.toPointer(subscription), util.toPointer(callback), util.toPointer(context), util.toPointer(changeHandle));
+  return libfwpuclnt_dll.FwpmCalloutSubscribeChanges0(util.toPointer(engineHandle), util.toPointer(subscription), util.toPointer(callback), util.toPointer(context), util.toPointer(changeHandle));
 }
 
 export function FwpmCalloutUnsubscribeChanges0(
   engineHandle: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
   changeHandle: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
 ): number /* u32 */ {
-  return libfwpuclnt.FwpmCalloutUnsubscribeChanges0(util.toPointer(engineHandle), util.toPointer(changeHandle));
+  return libfwpuclnt_dll.FwpmCalloutUnsubscribeChanges0(util.toPointer(engineHandle), util.toPointer(changeHandle));
 }
 
 export function FwpmCalloutSubscriptionsGet0(
@@ -11829,30 +9327,30 @@ export function FwpmCalloutSubscriptionsGet0(
   entries: Deno.PointerValue | Uint8Array | null /* ptr */,
   numEntries: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libfwpuclnt.FwpmCalloutSubscriptionsGet0(util.toPointer(engineHandle), util.toPointer(entries), util.toPointer(numEntries));
+  return libfwpuclnt_dll.FwpmCalloutSubscriptionsGet0(util.toPointer(engineHandle), util.toPointer(entries), util.toPointer(numEntries));
 }
 
 export function FwpmFilterAdd0(
   engineHandle: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
   filter: Deno.PointerValue | Uint8Array | null /* ptr */,
-  sd: Deno.PointerValue | Uint8Array | null /* ptr */,
+  sd: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Security.PSECURITY_DESCRIPTOR */,
   id: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libfwpuclnt.FwpmFilterAdd0(util.toPointer(engineHandle), util.toPointer(filter), util.toPointer(sd), util.toPointer(id));
+  return libfwpuclnt_dll.FwpmFilterAdd0(util.toPointer(engineHandle), util.toPointer(filter), util.toPointer(sd), util.toPointer(id));
 }
 
 export function FwpmFilterDeleteById0(
   engineHandle: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
   id: Deno.PointerValue /* u64 */,
 ): number /* u32 */ {
-  return libfwpuclnt.FwpmFilterDeleteById0(util.toPointer(engineHandle), id);
+  return libfwpuclnt_dll.FwpmFilterDeleteById0(util.toPointer(engineHandle), id);
 }
 
 export function FwpmFilterDeleteByKey0(
   engineHandle: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
   key: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libfwpuclnt.FwpmFilterDeleteByKey0(util.toPointer(engineHandle), util.toPointer(key));
+  return libfwpuclnt_dll.FwpmFilterDeleteByKey0(util.toPointer(engineHandle), util.toPointer(key));
 }
 
 export function FwpmFilterGetById0(
@@ -11860,7 +9358,7 @@ export function FwpmFilterGetById0(
   id: Deno.PointerValue /* u64 */,
   filter: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libfwpuclnt.FwpmFilterGetById0(util.toPointer(engineHandle), id, util.toPointer(filter));
+  return libfwpuclnt_dll.FwpmFilterGetById0(util.toPointer(engineHandle), id, util.toPointer(filter));
 }
 
 export function FwpmFilterGetByKey0(
@@ -11868,7 +9366,7 @@ export function FwpmFilterGetByKey0(
   key: Deno.PointerValue | Uint8Array | null /* ptr */,
   filter: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libfwpuclnt.FwpmFilterGetByKey0(util.toPointer(engineHandle), util.toPointer(key), util.toPointer(filter));
+  return libfwpuclnt_dll.FwpmFilterGetByKey0(util.toPointer(engineHandle), util.toPointer(key), util.toPointer(filter));
 }
 
 export function FwpmFilterCreateEnumHandle0(
@@ -11876,7 +9374,7 @@ export function FwpmFilterCreateEnumHandle0(
   enumTemplate: Deno.PointerValue | Uint8Array | null /* ptr */,
   enumHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libfwpuclnt.FwpmFilterCreateEnumHandle0(util.toPointer(engineHandle), util.toPointer(enumTemplate), util.toPointer(enumHandle));
+  return libfwpuclnt_dll.FwpmFilterCreateEnumHandle0(util.toPointer(engineHandle), util.toPointer(enumTemplate), util.toPointer(enumHandle));
 }
 
 export function FwpmFilterEnum0(
@@ -11886,14 +9384,14 @@ export function FwpmFilterEnum0(
   entries: Deno.PointerValue | Uint8Array | null /* ptr */,
   numEntriesReturned: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libfwpuclnt.FwpmFilterEnum0(util.toPointer(engineHandle), util.toPointer(enumHandle), numEntriesRequested, util.toPointer(entries), util.toPointer(numEntriesReturned));
+  return libfwpuclnt_dll.FwpmFilterEnum0(util.toPointer(engineHandle), util.toPointer(enumHandle), numEntriesRequested, util.toPointer(entries), util.toPointer(numEntriesReturned));
 }
 
 export function FwpmFilterDestroyEnumHandle0(
   engineHandle: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
   enumHandle: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
 ): number /* u32 */ {
-  return libfwpuclnt.FwpmFilterDestroyEnumHandle0(util.toPointer(engineHandle), util.toPointer(enumHandle));
+  return libfwpuclnt_dll.FwpmFilterDestroyEnumHandle0(util.toPointer(engineHandle), util.toPointer(enumHandle));
 }
 
 export function FwpmFilterGetSecurityInfoByKey0(
@@ -11906,7 +9404,7 @@ export function FwpmFilterGetSecurityInfoByKey0(
   sacl: Deno.PointerValue | Uint8Array | null /* ptr */,
   securityDescriptor: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libfwpuclnt.FwpmFilterGetSecurityInfoByKey0(util.toPointer(engineHandle), util.toPointer(key), securityInfo, util.toPointer(sidOwner), util.toPointer(sidGroup), util.toPointer(dacl), util.toPointer(sacl), util.toPointer(securityDescriptor));
+  return libfwpuclnt_dll.FwpmFilterGetSecurityInfoByKey0(util.toPointer(engineHandle), util.toPointer(key), securityInfo, util.toPointer(sidOwner), util.toPointer(sidGroup), util.toPointer(dacl), util.toPointer(sacl), util.toPointer(securityDescriptor));
 }
 
 export function FwpmFilterSetSecurityInfoByKey0(
@@ -11918,7 +9416,7 @@ export function FwpmFilterSetSecurityInfoByKey0(
   dacl: Deno.PointerValue | Uint8Array | null /* ptr */,
   sacl: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libfwpuclnt.FwpmFilterSetSecurityInfoByKey0(util.toPointer(engineHandle), util.toPointer(key), securityInfo, util.toPointer(sidOwner), util.toPointer(sidGroup), util.toPointer(dacl), util.toPointer(sacl));
+  return libfwpuclnt_dll.FwpmFilterSetSecurityInfoByKey0(util.toPointer(engineHandle), util.toPointer(key), securityInfo, util.toPointer(sidOwner), util.toPointer(sidGroup), util.toPointer(dacl), util.toPointer(sacl));
 }
 
 export function FwpmFilterSubscribeChanges0(
@@ -11928,14 +9426,14 @@ export function FwpmFilterSubscribeChanges0(
   context: Deno.PointerValue | Uint8Array | null /* ptr */,
   changeHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libfwpuclnt.FwpmFilterSubscribeChanges0(util.toPointer(engineHandle), util.toPointer(subscription), util.toPointer(callback), util.toPointer(context), util.toPointer(changeHandle));
+  return libfwpuclnt_dll.FwpmFilterSubscribeChanges0(util.toPointer(engineHandle), util.toPointer(subscription), util.toPointer(callback), util.toPointer(context), util.toPointer(changeHandle));
 }
 
 export function FwpmFilterUnsubscribeChanges0(
   engineHandle: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
   changeHandle: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
 ): number /* u32 */ {
-  return libfwpuclnt.FwpmFilterUnsubscribeChanges0(util.toPointer(engineHandle), util.toPointer(changeHandle));
+  return libfwpuclnt_dll.FwpmFilterUnsubscribeChanges0(util.toPointer(engineHandle), util.toPointer(changeHandle));
 }
 
 export function FwpmFilterSubscriptionsGet0(
@@ -11943,14 +9441,14 @@ export function FwpmFilterSubscriptionsGet0(
   entries: Deno.PointerValue | Uint8Array | null /* ptr */,
   numEntries: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libfwpuclnt.FwpmFilterSubscriptionsGet0(util.toPointer(engineHandle), util.toPointer(entries), util.toPointer(numEntries));
+  return libfwpuclnt_dll.FwpmFilterSubscriptionsGet0(util.toPointer(engineHandle), util.toPointer(entries), util.toPointer(numEntries));
 }
 
 export function FwpmGetAppIdFromFileName0(
   fileName: string | null /* Windows.Win32.Foundation.PWSTR */,
   appId: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libfwpuclnt.FwpmGetAppIdFromFileName0(util.pwstrToFfi(fileName), util.toPointer(appId));
+  return libfwpuclnt_dll.FwpmGetAppIdFromFileName0(util.pwstrToFfi(fileName), util.toPointer(appId));
 }
 
 export function FwpmIPsecTunnelAdd0(
@@ -11960,9 +9458,9 @@ export function FwpmIPsecTunnelAdd0(
   tunnelPolicy: Deno.PointerValue | Uint8Array | null /* ptr */,
   numFilterConditions: number /* u32 */,
   filterConditions: Deno.PointerValue | Uint8Array | null /* ptr */,
-  sd: Deno.PointerValue | Uint8Array | null /* ptr */,
+  sd: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Security.PSECURITY_DESCRIPTOR */,
 ): number /* u32 */ {
-  return libfwpuclnt.FwpmIPsecTunnelAdd0(util.toPointer(engineHandle), flags, util.toPointer(mainModePolicy), util.toPointer(tunnelPolicy), numFilterConditions, util.toPointer(filterConditions), util.toPointer(sd));
+  return libfwpuclnt_dll.FwpmIPsecTunnelAdd0(util.toPointer(engineHandle), flags, util.toPointer(mainModePolicy), util.toPointer(tunnelPolicy), numFilterConditions, util.toPointer(filterConditions), util.toPointer(sd));
 }
 
 export function FwpmIPsecTunnelAdd1(
@@ -11973,9 +9471,9 @@ export function FwpmIPsecTunnelAdd1(
   numFilterConditions: number /* u32 */,
   filterConditions: Deno.PointerValue | Uint8Array | null /* ptr */,
   keyModKey: Deno.PointerValue | Uint8Array | null /* ptr */,
-  sd: Deno.PointerValue | Uint8Array | null /* ptr */,
+  sd: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Security.PSECURITY_DESCRIPTOR */,
 ): number /* u32 */ {
-  return libfwpuclnt.FwpmIPsecTunnelAdd1(util.toPointer(engineHandle), flags, util.toPointer(mainModePolicy), util.toPointer(tunnelPolicy), numFilterConditions, util.toPointer(filterConditions), util.toPointer(keyModKey), util.toPointer(sd));
+  return libfwpuclnt_dll.FwpmIPsecTunnelAdd1(util.toPointer(engineHandle), flags, util.toPointer(mainModePolicy), util.toPointer(tunnelPolicy), numFilterConditions, util.toPointer(filterConditions), util.toPointer(keyModKey), util.toPointer(sd));
 }
 
 export function FwpmIPsecTunnelAdd2(
@@ -11986,9 +9484,9 @@ export function FwpmIPsecTunnelAdd2(
   numFilterConditions: number /* u32 */,
   filterConditions: Deno.PointerValue | Uint8Array | null /* ptr */,
   keyModKey: Deno.PointerValue | Uint8Array | null /* ptr */,
-  sd: Deno.PointerValue | Uint8Array | null /* ptr */,
+  sd: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Security.PSECURITY_DESCRIPTOR */,
 ): number /* u32 */ {
-  return libfwpuclnt.FwpmIPsecTunnelAdd2(util.toPointer(engineHandle), flags, util.toPointer(mainModePolicy), util.toPointer(tunnelPolicy), numFilterConditions, util.toPointer(filterConditions), util.toPointer(keyModKey), util.toPointer(sd));
+  return libfwpuclnt_dll.FwpmIPsecTunnelAdd2(util.toPointer(engineHandle), flags, util.toPointer(mainModePolicy), util.toPointer(tunnelPolicy), numFilterConditions, util.toPointer(filterConditions), util.toPointer(keyModKey), util.toPointer(sd));
 }
 
 export function FwpmIPsecTunnelAdd3(
@@ -11999,30 +9497,30 @@ export function FwpmIPsecTunnelAdd3(
   numFilterConditions: number /* u32 */,
   filterConditions: Deno.PointerValue | Uint8Array | null /* ptr */,
   keyModKey: Deno.PointerValue | Uint8Array | null /* ptr */,
-  sd: Deno.PointerValue | Uint8Array | null /* ptr */,
+  sd: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Security.PSECURITY_DESCRIPTOR */,
 ): number /* u32 */ {
-  return libfwpuclnt.FwpmIPsecTunnelAdd3(util.toPointer(engineHandle), flags, util.toPointer(mainModePolicy), util.toPointer(tunnelPolicy), numFilterConditions, util.toPointer(filterConditions), util.toPointer(keyModKey), util.toPointer(sd));
+  return libfwpuclnt_dll.FwpmIPsecTunnelAdd3(util.toPointer(engineHandle), flags, util.toPointer(mainModePolicy), util.toPointer(tunnelPolicy), numFilterConditions, util.toPointer(filterConditions), util.toPointer(keyModKey), util.toPointer(sd));
 }
 
 export function FwpmIPsecTunnelDeleteByKey0(
   engineHandle: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
   key: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libfwpuclnt.FwpmIPsecTunnelDeleteByKey0(util.toPointer(engineHandle), util.toPointer(key));
+  return libfwpuclnt_dll.FwpmIPsecTunnelDeleteByKey0(util.toPointer(engineHandle), util.toPointer(key));
 }
 
 export function IPsecGetStatistics0(
   engineHandle: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
   ipsecStatistics: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libfwpuclnt.IPsecGetStatistics0(util.toPointer(engineHandle), util.toPointer(ipsecStatistics));
+  return libfwpuclnt_dll.IPsecGetStatistics0(util.toPointer(engineHandle), util.toPointer(ipsecStatistics));
 }
 
 export function IPsecGetStatistics1(
   engineHandle: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
   ipsecStatistics: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libfwpuclnt.IPsecGetStatistics1(util.toPointer(engineHandle), util.toPointer(ipsecStatistics));
+  return libfwpuclnt_dll.IPsecGetStatistics1(util.toPointer(engineHandle), util.toPointer(ipsecStatistics));
 }
 
 export function IPsecSaContextCreate0(
@@ -12031,7 +9529,7 @@ export function IPsecSaContextCreate0(
   inboundFilterId: Deno.PointerValue | Uint8Array | null /* ptr */,
   id: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libfwpuclnt.IPsecSaContextCreate0(util.toPointer(engineHandle), util.toPointer(outboundTraffic), util.toPointer(inboundFilterId), util.toPointer(id));
+  return libfwpuclnt_dll.IPsecSaContextCreate0(util.toPointer(engineHandle), util.toPointer(outboundTraffic), util.toPointer(inboundFilterId), util.toPointer(id));
 }
 
 export function IPsecSaContextCreate1(
@@ -12041,14 +9539,14 @@ export function IPsecSaContextCreate1(
   inboundFilterId: Deno.PointerValue | Uint8Array | null /* ptr */,
   id: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libfwpuclnt.IPsecSaContextCreate1(util.toPointer(engineHandle), util.toPointer(outboundTraffic), util.toPointer(virtualIfTunnelInfo), util.toPointer(inboundFilterId), util.toPointer(id));
+  return libfwpuclnt_dll.IPsecSaContextCreate1(util.toPointer(engineHandle), util.toPointer(outboundTraffic), util.toPointer(virtualIfTunnelInfo), util.toPointer(inboundFilterId), util.toPointer(id));
 }
 
 export function IPsecSaContextDeleteById0(
   engineHandle: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
   id: Deno.PointerValue /* u64 */,
 ): number /* u32 */ {
-  return libfwpuclnt.IPsecSaContextDeleteById0(util.toPointer(engineHandle), id);
+  return libfwpuclnt_dll.IPsecSaContextDeleteById0(util.toPointer(engineHandle), id);
 }
 
 export function IPsecSaContextGetById0(
@@ -12056,7 +9554,7 @@ export function IPsecSaContextGetById0(
   id: Deno.PointerValue /* u64 */,
   saContext: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libfwpuclnt.IPsecSaContextGetById0(util.toPointer(engineHandle), id, util.toPointer(saContext));
+  return libfwpuclnt_dll.IPsecSaContextGetById0(util.toPointer(engineHandle), id, util.toPointer(saContext));
 }
 
 export function IPsecSaContextGetById1(
@@ -12064,7 +9562,7 @@ export function IPsecSaContextGetById1(
   id: Deno.PointerValue /* u64 */,
   saContext: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libfwpuclnt.IPsecSaContextGetById1(util.toPointer(engineHandle), id, util.toPointer(saContext));
+  return libfwpuclnt_dll.IPsecSaContextGetById1(util.toPointer(engineHandle), id, util.toPointer(saContext));
 }
 
 export function IPsecSaContextGetSpi0(
@@ -12073,7 +9571,7 @@ export function IPsecSaContextGetSpi0(
   getSpi: Deno.PointerValue | Uint8Array | null /* ptr */,
   inboundSpi: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libfwpuclnt.IPsecSaContextGetSpi0(util.toPointer(engineHandle), id, util.toPointer(getSpi), util.toPointer(inboundSpi));
+  return libfwpuclnt_dll.IPsecSaContextGetSpi0(util.toPointer(engineHandle), id, util.toPointer(getSpi), util.toPointer(inboundSpi));
 }
 
 export function IPsecSaContextGetSpi1(
@@ -12082,7 +9580,7 @@ export function IPsecSaContextGetSpi1(
   getSpi: Deno.PointerValue | Uint8Array | null /* ptr */,
   inboundSpi: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libfwpuclnt.IPsecSaContextGetSpi1(util.toPointer(engineHandle), id, util.toPointer(getSpi), util.toPointer(inboundSpi));
+  return libfwpuclnt_dll.IPsecSaContextGetSpi1(util.toPointer(engineHandle), id, util.toPointer(getSpi), util.toPointer(inboundSpi));
 }
 
 export function IPsecSaContextSetSpi0(
@@ -12091,7 +9589,7 @@ export function IPsecSaContextSetSpi0(
   getSpi: Deno.PointerValue | Uint8Array | null /* ptr */,
   inboundSpi: number /* u32 */,
 ): number /* u32 */ {
-  return libfwpuclnt.IPsecSaContextSetSpi0(util.toPointer(engineHandle), id, util.toPointer(getSpi), inboundSpi);
+  return libfwpuclnt_dll.IPsecSaContextSetSpi0(util.toPointer(engineHandle), id, util.toPointer(getSpi), inboundSpi);
 }
 
 export function IPsecSaContextAddInbound0(
@@ -12099,7 +9597,7 @@ export function IPsecSaContextAddInbound0(
   id: Deno.PointerValue /* u64 */,
   inboundBundle: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libfwpuclnt.IPsecSaContextAddInbound0(util.toPointer(engineHandle), id, util.toPointer(inboundBundle));
+  return libfwpuclnt_dll.IPsecSaContextAddInbound0(util.toPointer(engineHandle), id, util.toPointer(inboundBundle));
 }
 
 export function IPsecSaContextAddOutbound0(
@@ -12107,7 +9605,7 @@ export function IPsecSaContextAddOutbound0(
   id: Deno.PointerValue /* u64 */,
   outboundBundle: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libfwpuclnt.IPsecSaContextAddOutbound0(util.toPointer(engineHandle), id, util.toPointer(outboundBundle));
+  return libfwpuclnt_dll.IPsecSaContextAddOutbound0(util.toPointer(engineHandle), id, util.toPointer(outboundBundle));
 }
 
 export function IPsecSaContextAddInbound1(
@@ -12115,7 +9613,7 @@ export function IPsecSaContextAddInbound1(
   id: Deno.PointerValue /* u64 */,
   inboundBundle: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libfwpuclnt.IPsecSaContextAddInbound1(util.toPointer(engineHandle), id, util.toPointer(inboundBundle));
+  return libfwpuclnt_dll.IPsecSaContextAddInbound1(util.toPointer(engineHandle), id, util.toPointer(inboundBundle));
 }
 
 export function IPsecSaContextAddOutbound1(
@@ -12123,14 +9621,14 @@ export function IPsecSaContextAddOutbound1(
   id: Deno.PointerValue /* u64 */,
   outboundBundle: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libfwpuclnt.IPsecSaContextAddOutbound1(util.toPointer(engineHandle), id, util.toPointer(outboundBundle));
+  return libfwpuclnt_dll.IPsecSaContextAddOutbound1(util.toPointer(engineHandle), id, util.toPointer(outboundBundle));
 }
 
 export function IPsecSaContextExpire0(
   engineHandle: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
   id: Deno.PointerValue /* u64 */,
 ): number /* u32 */ {
-  return libfwpuclnt.IPsecSaContextExpire0(util.toPointer(engineHandle), id);
+  return libfwpuclnt_dll.IPsecSaContextExpire0(util.toPointer(engineHandle), id);
 }
 
 export function IPsecSaContextUpdate0(
@@ -12138,7 +9636,7 @@ export function IPsecSaContextUpdate0(
   flags: Deno.PointerValue /* u64 */,
   newValues: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libfwpuclnt.IPsecSaContextUpdate0(util.toPointer(engineHandle), flags, util.toPointer(newValues));
+  return libfwpuclnt_dll.IPsecSaContextUpdate0(util.toPointer(engineHandle), flags, util.toPointer(newValues));
 }
 
 export function IPsecSaContextCreateEnumHandle0(
@@ -12146,7 +9644,7 @@ export function IPsecSaContextCreateEnumHandle0(
   enumTemplate: Deno.PointerValue | Uint8Array | null /* ptr */,
   enumHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libfwpuclnt.IPsecSaContextCreateEnumHandle0(util.toPointer(engineHandle), util.toPointer(enumTemplate), util.toPointer(enumHandle));
+  return libfwpuclnt_dll.IPsecSaContextCreateEnumHandle0(util.toPointer(engineHandle), util.toPointer(enumTemplate), util.toPointer(enumHandle));
 }
 
 export function IPsecSaContextEnum0(
@@ -12156,7 +9654,7 @@ export function IPsecSaContextEnum0(
   entries: Deno.PointerValue | Uint8Array | null /* ptr */,
   numEntriesReturned: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libfwpuclnt.IPsecSaContextEnum0(util.toPointer(engineHandle), util.toPointer(enumHandle), numEntriesRequested, util.toPointer(entries), util.toPointer(numEntriesReturned));
+  return libfwpuclnt_dll.IPsecSaContextEnum0(util.toPointer(engineHandle), util.toPointer(enumHandle), numEntriesRequested, util.toPointer(entries), util.toPointer(numEntriesReturned));
 }
 
 export function IPsecSaContextEnum1(
@@ -12166,14 +9664,14 @@ export function IPsecSaContextEnum1(
   entries: Deno.PointerValue | Uint8Array | null /* ptr */,
   numEntriesReturned: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libfwpuclnt.IPsecSaContextEnum1(util.toPointer(engineHandle), util.toPointer(enumHandle), numEntriesRequested, util.toPointer(entries), util.toPointer(numEntriesReturned));
+  return libfwpuclnt_dll.IPsecSaContextEnum1(util.toPointer(engineHandle), util.toPointer(enumHandle), numEntriesRequested, util.toPointer(entries), util.toPointer(numEntriesReturned));
 }
 
 export function IPsecSaContextDestroyEnumHandle0(
   engineHandle: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
   enumHandle: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
 ): number /* u32 */ {
-  return libfwpuclnt.IPsecSaContextDestroyEnumHandle0(util.toPointer(engineHandle), util.toPointer(enumHandle));
+  return libfwpuclnt_dll.IPsecSaContextDestroyEnumHandle0(util.toPointer(engineHandle), util.toPointer(enumHandle));
 }
 
 export function IPsecSaContextSubscribe0(
@@ -12183,14 +9681,14 @@ export function IPsecSaContextSubscribe0(
   context: Deno.PointerValue | Uint8Array | null /* ptr */,
   eventsHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libfwpuclnt.IPsecSaContextSubscribe0(util.toPointer(engineHandle), util.toPointer(subscription), util.toPointer(callback), util.toPointer(context), util.toPointer(eventsHandle));
+  return libfwpuclnt_dll.IPsecSaContextSubscribe0(util.toPointer(engineHandle), util.toPointer(subscription), util.toPointer(callback), util.toPointer(context), util.toPointer(eventsHandle));
 }
 
 export function IPsecSaContextUnsubscribe0(
   engineHandle: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
   eventsHandle: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
 ): number /* u32 */ {
-  return libfwpuclnt.IPsecSaContextUnsubscribe0(util.toPointer(engineHandle), util.toPointer(eventsHandle));
+  return libfwpuclnt_dll.IPsecSaContextUnsubscribe0(util.toPointer(engineHandle), util.toPointer(eventsHandle));
 }
 
 export function IPsecSaContextSubscriptionsGet0(
@@ -12198,7 +9696,7 @@ export function IPsecSaContextSubscriptionsGet0(
   entries: Deno.PointerValue | Uint8Array | null /* ptr */,
   numEntries: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libfwpuclnt.IPsecSaContextSubscriptionsGet0(util.toPointer(engineHandle), util.toPointer(entries), util.toPointer(numEntries));
+  return libfwpuclnt_dll.IPsecSaContextSubscriptionsGet0(util.toPointer(engineHandle), util.toPointer(entries), util.toPointer(numEntries));
 }
 
 export function IPsecSaCreateEnumHandle0(
@@ -12206,7 +9704,7 @@ export function IPsecSaCreateEnumHandle0(
   enumTemplate: Deno.PointerValue | Uint8Array | null /* ptr */,
   enumHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libfwpuclnt.IPsecSaCreateEnumHandle0(util.toPointer(engineHandle), util.toPointer(enumTemplate), util.toPointer(enumHandle));
+  return libfwpuclnt_dll.IPsecSaCreateEnumHandle0(util.toPointer(engineHandle), util.toPointer(enumTemplate), util.toPointer(enumHandle));
 }
 
 export function IPsecSaEnum0(
@@ -12216,7 +9714,7 @@ export function IPsecSaEnum0(
   entries: Deno.PointerValue | Uint8Array | null /* ptr */,
   numEntriesReturned: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libfwpuclnt.IPsecSaEnum0(util.toPointer(engineHandle), util.toPointer(enumHandle), numEntriesRequested, util.toPointer(entries), util.toPointer(numEntriesReturned));
+  return libfwpuclnt_dll.IPsecSaEnum0(util.toPointer(engineHandle), util.toPointer(enumHandle), numEntriesRequested, util.toPointer(entries), util.toPointer(numEntriesReturned));
 }
 
 export function IPsecSaEnum1(
@@ -12226,14 +9724,14 @@ export function IPsecSaEnum1(
   entries: Deno.PointerValue | Uint8Array | null /* ptr */,
   numEntriesReturned: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libfwpuclnt.IPsecSaEnum1(util.toPointer(engineHandle), util.toPointer(enumHandle), numEntriesRequested, util.toPointer(entries), util.toPointer(numEntriesReturned));
+  return libfwpuclnt_dll.IPsecSaEnum1(util.toPointer(engineHandle), util.toPointer(enumHandle), numEntriesRequested, util.toPointer(entries), util.toPointer(numEntriesReturned));
 }
 
 export function IPsecSaDestroyEnumHandle0(
   engineHandle: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
   enumHandle: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
 ): number /* u32 */ {
-  return libfwpuclnt.IPsecSaDestroyEnumHandle0(util.toPointer(engineHandle), util.toPointer(enumHandle));
+  return libfwpuclnt_dll.IPsecSaDestroyEnumHandle0(util.toPointer(engineHandle), util.toPointer(enumHandle));
 }
 
 export function IPsecSaDbGetSecurityInfo0(
@@ -12245,7 +9743,7 @@ export function IPsecSaDbGetSecurityInfo0(
   sacl: Deno.PointerValue | Uint8Array | null /* ptr */,
   securityDescriptor: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libfwpuclnt.IPsecSaDbGetSecurityInfo0(util.toPointer(engineHandle), securityInfo, util.toPointer(sidOwner), util.toPointer(sidGroup), util.toPointer(dacl), util.toPointer(sacl), util.toPointer(securityDescriptor));
+  return libfwpuclnt_dll.IPsecSaDbGetSecurityInfo0(util.toPointer(engineHandle), securityInfo, util.toPointer(sidOwner), util.toPointer(sidGroup), util.toPointer(dacl), util.toPointer(sacl), util.toPointer(securityDescriptor));
 }
 
 export function IPsecSaDbSetSecurityInfo0(
@@ -12256,14 +9754,14 @@ export function IPsecSaDbSetSecurityInfo0(
   dacl: Deno.PointerValue | Uint8Array | null /* ptr */,
   sacl: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libfwpuclnt.IPsecSaDbSetSecurityInfo0(util.toPointer(engineHandle), securityInfo, util.toPointer(sidOwner), util.toPointer(sidGroup), util.toPointer(dacl), util.toPointer(sacl));
+  return libfwpuclnt_dll.IPsecSaDbSetSecurityInfo0(util.toPointer(engineHandle), securityInfo, util.toPointer(sidOwner), util.toPointer(sidGroup), util.toPointer(dacl), util.toPointer(sacl));
 }
 
 export function IPsecDospGetStatistics0(
   engineHandle: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
   idpStatistics: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libfwpuclnt.IPsecDospGetStatistics0(util.toPointer(engineHandle), util.toPointer(idpStatistics));
+  return libfwpuclnt_dll.IPsecDospGetStatistics0(util.toPointer(engineHandle), util.toPointer(idpStatistics));
 }
 
 export function IPsecDospStateCreateEnumHandle0(
@@ -12271,7 +9769,7 @@ export function IPsecDospStateCreateEnumHandle0(
   enumTemplate: Deno.PointerValue | Uint8Array | null /* ptr */,
   enumHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libfwpuclnt.IPsecDospStateCreateEnumHandle0(util.toPointer(engineHandle), util.toPointer(enumTemplate), util.toPointer(enumHandle));
+  return libfwpuclnt_dll.IPsecDospStateCreateEnumHandle0(util.toPointer(engineHandle), util.toPointer(enumTemplate), util.toPointer(enumHandle));
 }
 
 export function IPsecDospStateEnum0(
@@ -12281,14 +9779,14 @@ export function IPsecDospStateEnum0(
   entries: Deno.PointerValue | Uint8Array | null /* ptr */,
   numEntries: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libfwpuclnt.IPsecDospStateEnum0(util.toPointer(engineHandle), util.toPointer(enumHandle), numEntriesRequested, util.toPointer(entries), util.toPointer(numEntries));
+  return libfwpuclnt_dll.IPsecDospStateEnum0(util.toPointer(engineHandle), util.toPointer(enumHandle), numEntriesRequested, util.toPointer(entries), util.toPointer(numEntries));
 }
 
 export function IPsecDospStateDestroyEnumHandle0(
   engineHandle: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
   enumHandle: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
 ): number /* u32 */ {
-  return libfwpuclnt.IPsecDospStateDestroyEnumHandle0(util.toPointer(engineHandle), util.toPointer(enumHandle));
+  return libfwpuclnt_dll.IPsecDospStateDestroyEnumHandle0(util.toPointer(engineHandle), util.toPointer(enumHandle));
 }
 
 export function IPsecDospGetSecurityInfo0(
@@ -12300,7 +9798,7 @@ export function IPsecDospGetSecurityInfo0(
   sacl: Deno.PointerValue | Uint8Array | null /* ptr */,
   securityDescriptor: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libfwpuclnt.IPsecDospGetSecurityInfo0(util.toPointer(engineHandle), securityInfo, util.toPointer(sidOwner), util.toPointer(sidGroup), util.toPointer(dacl), util.toPointer(sacl), util.toPointer(securityDescriptor));
+  return libfwpuclnt_dll.IPsecDospGetSecurityInfo0(util.toPointer(engineHandle), securityInfo, util.toPointer(sidOwner), util.toPointer(sidGroup), util.toPointer(dacl), util.toPointer(sacl), util.toPointer(securityDescriptor));
 }
 
 export function IPsecDospSetSecurityInfo0(
@@ -12311,7 +9809,7 @@ export function IPsecDospSetSecurityInfo0(
   dacl: Deno.PointerValue | Uint8Array | null /* ptr */,
   sacl: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libfwpuclnt.IPsecDospSetSecurityInfo0(util.toPointer(engineHandle), securityInfo, util.toPointer(sidOwner), util.toPointer(sidGroup), util.toPointer(dacl), util.toPointer(sacl));
+  return libfwpuclnt_dll.IPsecDospSetSecurityInfo0(util.toPointer(engineHandle), securityInfo, util.toPointer(sidOwner), util.toPointer(sidGroup), util.toPointer(dacl), util.toPointer(sacl));
 }
 
 export function IPsecKeyManagerAddAndRegister0(
@@ -12320,14 +9818,14 @@ export function IPsecKeyManagerAddAndRegister0(
   keyManagerCallbacks: Deno.PointerValue | Uint8Array | null /* ptr */,
   keyMgmtHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libfwpuclnt.IPsecKeyManagerAddAndRegister0(util.toPointer(engineHandle), util.toPointer(keyManager), util.toPointer(keyManagerCallbacks), util.toPointer(keyMgmtHandle));
+  return libfwpuclnt_dll.IPsecKeyManagerAddAndRegister0(util.toPointer(engineHandle), util.toPointer(keyManager), util.toPointer(keyManagerCallbacks), util.toPointer(keyMgmtHandle));
 }
 
 export function IPsecKeyManagerUnregisterAndDelete0(
   engineHandle: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
   keyMgmtHandle: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
 ): number /* u32 */ {
-  return libfwpuclnt.IPsecKeyManagerUnregisterAndDelete0(util.toPointer(engineHandle), util.toPointer(keyMgmtHandle));
+  return libfwpuclnt_dll.IPsecKeyManagerUnregisterAndDelete0(util.toPointer(engineHandle), util.toPointer(keyMgmtHandle));
 }
 
 export function IPsecKeyManagersGet0(
@@ -12335,7 +9833,7 @@ export function IPsecKeyManagersGet0(
   entries: Deno.PointerValue | Uint8Array | null /* ptr */,
   numEntries: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libfwpuclnt.IPsecKeyManagersGet0(util.toPointer(engineHandle), util.toPointer(entries), util.toPointer(numEntries));
+  return libfwpuclnt_dll.IPsecKeyManagersGet0(util.toPointer(engineHandle), util.toPointer(entries), util.toPointer(numEntries));
 }
 
 export function IPsecKeyManagerGetSecurityInfoByKey0(
@@ -12348,7 +9846,7 @@ export function IPsecKeyManagerGetSecurityInfoByKey0(
   sacl: Deno.PointerValue | Uint8Array | null /* ptr */,
   securityDescriptor: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libfwpuclnt.IPsecKeyManagerGetSecurityInfoByKey0(util.toPointer(engineHandle), util.toPointer(reserved), securityInfo, util.toPointer(sidOwner), util.toPointer(sidGroup), util.toPointer(dacl), util.toPointer(sacl), util.toPointer(securityDescriptor));
+  return libfwpuclnt_dll.IPsecKeyManagerGetSecurityInfoByKey0(util.toPointer(engineHandle), util.toPointer(reserved), securityInfo, util.toPointer(sidOwner), util.toPointer(sidGroup), util.toPointer(dacl), util.toPointer(sacl), util.toPointer(securityDescriptor));
 }
 
 export function IPsecKeyManagerSetSecurityInfoByKey0(
@@ -12360,28 +9858,28 @@ export function IPsecKeyManagerSetSecurityInfoByKey0(
   dacl: Deno.PointerValue | Uint8Array | null /* ptr */,
   sacl: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libfwpuclnt.IPsecKeyManagerSetSecurityInfoByKey0(util.toPointer(engineHandle), util.toPointer(reserved), securityInfo, util.toPointer(sidOwner), util.toPointer(sidGroup), util.toPointer(dacl), util.toPointer(sacl));
+  return libfwpuclnt_dll.IPsecKeyManagerSetSecurityInfoByKey0(util.toPointer(engineHandle), util.toPointer(reserved), securityInfo, util.toPointer(sidOwner), util.toPointer(sidGroup), util.toPointer(dacl), util.toPointer(sacl));
 }
 
 export function IkeextGetStatistics0(
   engineHandle: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
   ikeextStatistics: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libfwpuclnt.IkeextGetStatistics0(util.toPointer(engineHandle), util.toPointer(ikeextStatistics));
+  return libfwpuclnt_dll.IkeextGetStatistics0(util.toPointer(engineHandle), util.toPointer(ikeextStatistics));
 }
 
 export function IkeextGetStatistics1(
   engineHandle: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
   ikeextStatistics: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libfwpuclnt.IkeextGetStatistics1(util.toPointer(engineHandle), util.toPointer(ikeextStatistics));
+  return libfwpuclnt_dll.IkeextGetStatistics1(util.toPointer(engineHandle), util.toPointer(ikeextStatistics));
 }
 
 export function IkeextSaDeleteById0(
   engineHandle: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
   id: Deno.PointerValue /* u64 */,
 ): number /* u32 */ {
-  return libfwpuclnt.IkeextSaDeleteById0(util.toPointer(engineHandle), id);
+  return libfwpuclnt_dll.IkeextSaDeleteById0(util.toPointer(engineHandle), id);
 }
 
 export function IkeextSaGetById0(
@@ -12389,7 +9887,7 @@ export function IkeextSaGetById0(
   id: Deno.PointerValue /* u64 */,
   sa: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libfwpuclnt.IkeextSaGetById0(util.toPointer(engineHandle), id, util.toPointer(sa));
+  return libfwpuclnt_dll.IkeextSaGetById0(util.toPointer(engineHandle), id, util.toPointer(sa));
 }
 
 export function IkeextSaGetById1(
@@ -12398,7 +9896,7 @@ export function IkeextSaGetById1(
   saLookupContext: Deno.PointerValue | Uint8Array | null /* ptr */,
   sa: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libfwpuclnt.IkeextSaGetById1(util.toPointer(engineHandle), id, util.toPointer(saLookupContext), util.toPointer(sa));
+  return libfwpuclnt_dll.IkeextSaGetById1(util.toPointer(engineHandle), id, util.toPointer(saLookupContext), util.toPointer(sa));
 }
 
 export function IkeextSaGetById2(
@@ -12407,7 +9905,7 @@ export function IkeextSaGetById2(
   saLookupContext: Deno.PointerValue | Uint8Array | null /* ptr */,
   sa: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libfwpuclnt.IkeextSaGetById2(util.toPointer(engineHandle), id, util.toPointer(saLookupContext), util.toPointer(sa));
+  return libfwpuclnt_dll.IkeextSaGetById2(util.toPointer(engineHandle), id, util.toPointer(saLookupContext), util.toPointer(sa));
 }
 
 export function IkeextSaCreateEnumHandle0(
@@ -12415,7 +9913,7 @@ export function IkeextSaCreateEnumHandle0(
   enumTemplate: Deno.PointerValue | Uint8Array | null /* ptr */,
   enumHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libfwpuclnt.IkeextSaCreateEnumHandle0(util.toPointer(engineHandle), util.toPointer(enumTemplate), util.toPointer(enumHandle));
+  return libfwpuclnt_dll.IkeextSaCreateEnumHandle0(util.toPointer(engineHandle), util.toPointer(enumTemplate), util.toPointer(enumHandle));
 }
 
 export function IkeextSaEnum0(
@@ -12425,7 +9923,7 @@ export function IkeextSaEnum0(
   entries: Deno.PointerValue | Uint8Array | null /* ptr */,
   numEntriesReturned: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libfwpuclnt.IkeextSaEnum0(util.toPointer(engineHandle), util.toPointer(enumHandle), numEntriesRequested, util.toPointer(entries), util.toPointer(numEntriesReturned));
+  return libfwpuclnt_dll.IkeextSaEnum0(util.toPointer(engineHandle), util.toPointer(enumHandle), numEntriesRequested, util.toPointer(entries), util.toPointer(numEntriesReturned));
 }
 
 export function IkeextSaEnum1(
@@ -12435,7 +9933,7 @@ export function IkeextSaEnum1(
   entries: Deno.PointerValue | Uint8Array | null /* ptr */,
   numEntriesReturned: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libfwpuclnt.IkeextSaEnum1(util.toPointer(engineHandle), util.toPointer(enumHandle), numEntriesRequested, util.toPointer(entries), util.toPointer(numEntriesReturned));
+  return libfwpuclnt_dll.IkeextSaEnum1(util.toPointer(engineHandle), util.toPointer(enumHandle), numEntriesRequested, util.toPointer(entries), util.toPointer(numEntriesReturned));
 }
 
 export function IkeextSaEnum2(
@@ -12445,14 +9943,14 @@ export function IkeextSaEnum2(
   entries: Deno.PointerValue | Uint8Array | null /* ptr */,
   numEntriesReturned: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libfwpuclnt.IkeextSaEnum2(util.toPointer(engineHandle), util.toPointer(enumHandle), numEntriesRequested, util.toPointer(entries), util.toPointer(numEntriesReturned));
+  return libfwpuclnt_dll.IkeextSaEnum2(util.toPointer(engineHandle), util.toPointer(enumHandle), numEntriesRequested, util.toPointer(entries), util.toPointer(numEntriesReturned));
 }
 
 export function IkeextSaDestroyEnumHandle0(
   engineHandle: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
   enumHandle: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
 ): number /* u32 */ {
-  return libfwpuclnt.IkeextSaDestroyEnumHandle0(util.toPointer(engineHandle), util.toPointer(enumHandle));
+  return libfwpuclnt_dll.IkeextSaDestroyEnumHandle0(util.toPointer(engineHandle), util.toPointer(enumHandle));
 }
 
 export function IkeextSaDbGetSecurityInfo0(
@@ -12464,7 +9962,7 @@ export function IkeextSaDbGetSecurityInfo0(
   sacl: Deno.PointerValue | Uint8Array | null /* ptr */,
   securityDescriptor: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libfwpuclnt.IkeextSaDbGetSecurityInfo0(util.toPointer(engineHandle), securityInfo, util.toPointer(sidOwner), util.toPointer(sidGroup), util.toPointer(dacl), util.toPointer(sacl), util.toPointer(securityDescriptor));
+  return libfwpuclnt_dll.IkeextSaDbGetSecurityInfo0(util.toPointer(engineHandle), securityInfo, util.toPointer(sidOwner), util.toPointer(sidGroup), util.toPointer(dacl), util.toPointer(sacl), util.toPointer(securityDescriptor));
 }
 
 export function IkeextSaDbSetSecurityInfo0(
@@ -12475,7 +9973,7 @@ export function IkeextSaDbSetSecurityInfo0(
   dacl: Deno.PointerValue | Uint8Array | null /* ptr */,
   sacl: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libfwpuclnt.IkeextSaDbSetSecurityInfo0(util.toPointer(engineHandle), securityInfo, util.toPointer(sidOwner), util.toPointer(sidGroup), util.toPointer(dacl), util.toPointer(sacl));
+  return libfwpuclnt_dll.IkeextSaDbSetSecurityInfo0(util.toPointer(engineHandle), securityInfo, util.toPointer(sidOwner), util.toPointer(sidGroup), util.toPointer(dacl), util.toPointer(sacl));
 }
 
 export function FwpmNetEventCreateEnumHandle0(
@@ -12483,7 +9981,7 @@ export function FwpmNetEventCreateEnumHandle0(
   enumTemplate: Deno.PointerValue | Uint8Array | null /* ptr */,
   enumHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libfwpuclnt.FwpmNetEventCreateEnumHandle0(util.toPointer(engineHandle), util.toPointer(enumTemplate), util.toPointer(enumHandle));
+  return libfwpuclnt_dll.FwpmNetEventCreateEnumHandle0(util.toPointer(engineHandle), util.toPointer(enumTemplate), util.toPointer(enumHandle));
 }
 
 export function FwpmNetEventEnum0(
@@ -12493,7 +9991,7 @@ export function FwpmNetEventEnum0(
   entries: Deno.PointerValue | Uint8Array | null /* ptr */,
   numEntriesReturned: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libfwpuclnt.FwpmNetEventEnum0(util.toPointer(engineHandle), util.toPointer(enumHandle), numEntriesRequested, util.toPointer(entries), util.toPointer(numEntriesReturned));
+  return libfwpuclnt_dll.FwpmNetEventEnum0(util.toPointer(engineHandle), util.toPointer(enumHandle), numEntriesRequested, util.toPointer(entries), util.toPointer(numEntriesReturned));
 }
 
 export function FwpmNetEventEnum1(
@@ -12503,7 +10001,7 @@ export function FwpmNetEventEnum1(
   entries: Deno.PointerValue | Uint8Array | null /* ptr */,
   numEntriesReturned: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libfwpuclnt.FwpmNetEventEnum1(util.toPointer(engineHandle), util.toPointer(enumHandle), numEntriesRequested, util.toPointer(entries), util.toPointer(numEntriesReturned));
+  return libfwpuclnt_dll.FwpmNetEventEnum1(util.toPointer(engineHandle), util.toPointer(enumHandle), numEntriesRequested, util.toPointer(entries), util.toPointer(numEntriesReturned));
 }
 
 export function FwpmNetEventEnum2(
@@ -12513,7 +10011,7 @@ export function FwpmNetEventEnum2(
   entries: Deno.PointerValue | Uint8Array | null /* ptr */,
   numEntriesReturned: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libfwpuclnt.FwpmNetEventEnum2(util.toPointer(engineHandle), util.toPointer(enumHandle), numEntriesRequested, util.toPointer(entries), util.toPointer(numEntriesReturned));
+  return libfwpuclnt_dll.FwpmNetEventEnum2(util.toPointer(engineHandle), util.toPointer(enumHandle), numEntriesRequested, util.toPointer(entries), util.toPointer(numEntriesReturned));
 }
 
 export function FwpmNetEventEnum3(
@@ -12523,7 +10021,7 @@ export function FwpmNetEventEnum3(
   entries: Deno.PointerValue | Uint8Array | null /* ptr */,
   numEntriesReturned: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libfwpuclnt.FwpmNetEventEnum3(util.toPointer(engineHandle), util.toPointer(enumHandle), numEntriesRequested, util.toPointer(entries), util.toPointer(numEntriesReturned));
+  return libfwpuclnt_dll.FwpmNetEventEnum3(util.toPointer(engineHandle), util.toPointer(enumHandle), numEntriesRequested, util.toPointer(entries), util.toPointer(numEntriesReturned));
 }
 
 export function FwpmNetEventEnum4(
@@ -12533,7 +10031,7 @@ export function FwpmNetEventEnum4(
   entries: Deno.PointerValue | Uint8Array | null /* ptr */,
   numEntriesReturned: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libfwpuclnt.FwpmNetEventEnum4(util.toPointer(engineHandle), util.toPointer(enumHandle), numEntriesRequested, util.toPointer(entries), util.toPointer(numEntriesReturned));
+  return libfwpuclnt_dll.FwpmNetEventEnum4(util.toPointer(engineHandle), util.toPointer(enumHandle), numEntriesRequested, util.toPointer(entries), util.toPointer(numEntriesReturned));
 }
 
 export function FwpmNetEventEnum5(
@@ -12543,14 +10041,14 @@ export function FwpmNetEventEnum5(
   entries: Deno.PointerValue | Uint8Array | null /* ptr */,
   numEntriesReturned: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libfwpuclnt.FwpmNetEventEnum5(util.toPointer(engineHandle), util.toPointer(enumHandle), numEntriesRequested, util.toPointer(entries), util.toPointer(numEntriesReturned));
+  return libfwpuclnt_dll.FwpmNetEventEnum5(util.toPointer(engineHandle), util.toPointer(enumHandle), numEntriesRequested, util.toPointer(entries), util.toPointer(numEntriesReturned));
 }
 
 export function FwpmNetEventDestroyEnumHandle0(
   engineHandle: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
   enumHandle: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
 ): number /* u32 */ {
-  return libfwpuclnt.FwpmNetEventDestroyEnumHandle0(util.toPointer(engineHandle), util.toPointer(enumHandle));
+  return libfwpuclnt_dll.FwpmNetEventDestroyEnumHandle0(util.toPointer(engineHandle), util.toPointer(enumHandle));
 }
 
 export function FwpmNetEventsGetSecurityInfo0(
@@ -12562,7 +10060,7 @@ export function FwpmNetEventsGetSecurityInfo0(
   sacl: Deno.PointerValue | Uint8Array | null /* ptr */,
   securityDescriptor: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libfwpuclnt.FwpmNetEventsGetSecurityInfo0(util.toPointer(engineHandle), securityInfo, util.toPointer(sidOwner), util.toPointer(sidGroup), util.toPointer(dacl), util.toPointer(sacl), util.toPointer(securityDescriptor));
+  return libfwpuclnt_dll.FwpmNetEventsGetSecurityInfo0(util.toPointer(engineHandle), securityInfo, util.toPointer(sidOwner), util.toPointer(sidGroup), util.toPointer(dacl), util.toPointer(sacl), util.toPointer(securityDescriptor));
 }
 
 export function FwpmNetEventsSetSecurityInfo0(
@@ -12573,7 +10071,7 @@ export function FwpmNetEventsSetSecurityInfo0(
   dacl: Deno.PointerValue | Uint8Array | null /* ptr */,
   sacl: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libfwpuclnt.FwpmNetEventsSetSecurityInfo0(util.toPointer(engineHandle), securityInfo, util.toPointer(sidOwner), util.toPointer(sidGroup), util.toPointer(dacl), util.toPointer(sacl));
+  return libfwpuclnt_dll.FwpmNetEventsSetSecurityInfo0(util.toPointer(engineHandle), securityInfo, util.toPointer(sidOwner), util.toPointer(sidGroup), util.toPointer(dacl), util.toPointer(sacl));
 }
 
 export function FwpmNetEventSubscribe0(
@@ -12583,14 +10081,14 @@ export function FwpmNetEventSubscribe0(
   context: Deno.PointerValue | Uint8Array | null /* ptr */,
   eventsHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libfwpuclnt.FwpmNetEventSubscribe0(util.toPointer(engineHandle), util.toPointer(subscription), util.toPointer(callback), util.toPointer(context), util.toPointer(eventsHandle));
+  return libfwpuclnt_dll.FwpmNetEventSubscribe0(util.toPointer(engineHandle), util.toPointer(subscription), util.toPointer(callback), util.toPointer(context), util.toPointer(eventsHandle));
 }
 
 export function FwpmNetEventUnsubscribe0(
   engineHandle: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
   eventsHandle: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
 ): number /* u32 */ {
-  return libfwpuclnt.FwpmNetEventUnsubscribe0(util.toPointer(engineHandle), util.toPointer(eventsHandle));
+  return libfwpuclnt_dll.FwpmNetEventUnsubscribe0(util.toPointer(engineHandle), util.toPointer(eventsHandle));
 }
 
 export function FwpmNetEventSubscriptionsGet0(
@@ -12598,7 +10096,7 @@ export function FwpmNetEventSubscriptionsGet0(
   entries: Deno.PointerValue | Uint8Array | null /* ptr */,
   numEntries: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libfwpuclnt.FwpmNetEventSubscriptionsGet0(util.toPointer(engineHandle), util.toPointer(entries), util.toPointer(numEntries));
+  return libfwpuclnt_dll.FwpmNetEventSubscriptionsGet0(util.toPointer(engineHandle), util.toPointer(entries), util.toPointer(numEntries));
 }
 
 export function FwpmNetEventSubscribe1(
@@ -12608,7 +10106,7 @@ export function FwpmNetEventSubscribe1(
   context: Deno.PointerValue | Uint8Array | null /* ptr */,
   eventsHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libfwpuclnt.FwpmNetEventSubscribe1(util.toPointer(engineHandle), util.toPointer(subscription), util.toPointer(callback), util.toPointer(context), util.toPointer(eventsHandle));
+  return libfwpuclnt_dll.FwpmNetEventSubscribe1(util.toPointer(engineHandle), util.toPointer(subscription), util.toPointer(callback), util.toPointer(context), util.toPointer(eventsHandle));
 }
 
 export function FwpmNetEventSubscribe2(
@@ -12618,7 +10116,7 @@ export function FwpmNetEventSubscribe2(
   context: Deno.PointerValue | Uint8Array | null /* ptr */,
   eventsHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libfwpuclnt.FwpmNetEventSubscribe2(util.toPointer(engineHandle), util.toPointer(subscription), util.toPointer(callback), util.toPointer(context), util.toPointer(eventsHandle));
+  return libfwpuclnt_dll.FwpmNetEventSubscribe2(util.toPointer(engineHandle), util.toPointer(subscription), util.toPointer(callback), util.toPointer(context), util.toPointer(eventsHandle));
 }
 
 export function FwpmNetEventSubscribe3(
@@ -12628,7 +10126,7 @@ export function FwpmNetEventSubscribe3(
   context: Deno.PointerValue | Uint8Array | null /* ptr */,
   eventsHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libfwpuclnt.FwpmNetEventSubscribe3(util.toPointer(engineHandle), util.toPointer(subscription), util.toPointer(callback), util.toPointer(context), util.toPointer(eventsHandle));
+  return libfwpuclnt_dll.FwpmNetEventSubscribe3(util.toPointer(engineHandle), util.toPointer(subscription), util.toPointer(callback), util.toPointer(context), util.toPointer(eventsHandle));
 }
 
 export function FwpmNetEventSubscribe4(
@@ -12638,7 +10136,7 @@ export function FwpmNetEventSubscribe4(
   context: Deno.PointerValue | Uint8Array | null /* ptr */,
   eventsHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libfwpuclnt.FwpmNetEventSubscribe4(util.toPointer(engineHandle), util.toPointer(subscription), util.toPointer(callback), util.toPointer(context), util.toPointer(eventsHandle));
+  return libfwpuclnt_dll.FwpmNetEventSubscribe4(util.toPointer(engineHandle), util.toPointer(subscription), util.toPointer(callback), util.toPointer(context), util.toPointer(eventsHandle));
 }
 
 export function FwpmDynamicKeywordSubscribe0(
@@ -12647,20 +10145,20 @@ export function FwpmDynamicKeywordSubscribe0(
   context: Deno.PointerValue | Uint8Array | null /* ptr */,
   subscriptionHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libfwpuclnt.FwpmDynamicKeywordSubscribe0(flags, util.toPointer(callback), util.toPointer(context), util.toPointer(subscriptionHandle));
+  return libfwpuclnt_dll.FwpmDynamicKeywordSubscribe0(flags, util.toPointer(callback), util.toPointer(context), util.toPointer(subscriptionHandle));
 }
 
 export function FwpmDynamicKeywordUnsubscribe0(
   subscriptionHandle: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
 ): number /* u32 */ {
-  return libfwpuclnt.FwpmDynamicKeywordUnsubscribe0(util.toPointer(subscriptionHandle));
+  return libfwpuclnt_dll.FwpmDynamicKeywordUnsubscribe0(util.toPointer(subscriptionHandle));
 }
 
 export function FwpmSystemPortsGet0(
   engineHandle: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
   sysPorts: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libfwpuclnt.FwpmSystemPortsGet0(util.toPointer(engineHandle), util.toPointer(sysPorts));
+  return libfwpuclnt_dll.FwpmSystemPortsGet0(util.toPointer(engineHandle), util.toPointer(sysPorts));
 }
 
 export function FwpmSystemPortsSubscribe0(
@@ -12670,14 +10168,14 @@ export function FwpmSystemPortsSubscribe0(
   context: Deno.PointerValue | Uint8Array | null /* ptr */,
   sysPortsHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libfwpuclnt.FwpmSystemPortsSubscribe0(util.toPointer(engineHandle), util.toPointer(reserved), util.toPointer(callback), util.toPointer(context), util.toPointer(sysPortsHandle));
+  return libfwpuclnt_dll.FwpmSystemPortsSubscribe0(util.toPointer(engineHandle), util.toPointer(reserved), util.toPointer(callback), util.toPointer(context), util.toPointer(sysPortsHandle));
 }
 
 export function FwpmSystemPortsUnsubscribe0(
   engineHandle: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
   sysPortsHandle: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
 ): number /* u32 */ {
-  return libfwpuclnt.FwpmSystemPortsUnsubscribe0(util.toPointer(engineHandle), util.toPointer(sysPortsHandle));
+  return libfwpuclnt_dll.FwpmSystemPortsUnsubscribe0(util.toPointer(engineHandle), util.toPointer(sysPortsHandle));
 }
 
 export function FwpmConnectionGetById0(
@@ -12685,7 +10183,7 @@ export function FwpmConnectionGetById0(
   id: Deno.PointerValue /* u64 */,
   connection: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libfwpuclnt.FwpmConnectionGetById0(util.toPointer(engineHandle), id, util.toPointer(connection));
+  return libfwpuclnt_dll.FwpmConnectionGetById0(util.toPointer(engineHandle), id, util.toPointer(connection));
 }
 
 export function FwpmConnectionEnum0(
@@ -12695,7 +10193,7 @@ export function FwpmConnectionEnum0(
   entries: Deno.PointerValue | Uint8Array | null /* ptr */,
   numEntriesReturned: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libfwpuclnt.FwpmConnectionEnum0(util.toPointer(engineHandle), util.toPointer(enumHandle), numEntriesRequested, util.toPointer(entries), util.toPointer(numEntriesReturned));
+  return libfwpuclnt_dll.FwpmConnectionEnum0(util.toPointer(engineHandle), util.toPointer(enumHandle), numEntriesRequested, util.toPointer(entries), util.toPointer(numEntriesReturned));
 }
 
 export function FwpmConnectionCreateEnumHandle0(
@@ -12703,14 +10201,14 @@ export function FwpmConnectionCreateEnumHandle0(
   enumTemplate: Deno.PointerValue | Uint8Array | null /* ptr */,
   enumHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libfwpuclnt.FwpmConnectionCreateEnumHandle0(util.toPointer(engineHandle), util.toPointer(enumTemplate), util.toPointer(enumHandle));
+  return libfwpuclnt_dll.FwpmConnectionCreateEnumHandle0(util.toPointer(engineHandle), util.toPointer(enumTemplate), util.toPointer(enumHandle));
 }
 
 export function FwpmConnectionDestroyEnumHandle0(
   engineHandle: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
   enumHandle: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
 ): number /* u32 */ {
-  return libfwpuclnt.FwpmConnectionDestroyEnumHandle0(util.toPointer(engineHandle), util.toPointer(enumHandle));
+  return libfwpuclnt_dll.FwpmConnectionDestroyEnumHandle0(util.toPointer(engineHandle), util.toPointer(enumHandle));
 }
 
 export function FwpmConnectionGetSecurityInfo0(
@@ -12722,7 +10220,7 @@ export function FwpmConnectionGetSecurityInfo0(
   sacl: Deno.PointerValue | Uint8Array | null /* ptr */,
   securityDescriptor: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libfwpuclnt.FwpmConnectionGetSecurityInfo0(util.toPointer(engineHandle), securityInfo, util.toPointer(sidOwner), util.toPointer(sidGroup), util.toPointer(dacl), util.toPointer(sacl), util.toPointer(securityDescriptor));
+  return libfwpuclnt_dll.FwpmConnectionGetSecurityInfo0(util.toPointer(engineHandle), securityInfo, util.toPointer(sidOwner), util.toPointer(sidGroup), util.toPointer(dacl), util.toPointer(sacl), util.toPointer(securityDescriptor));
 }
 
 export function FwpmConnectionSetSecurityInfo0(
@@ -12733,7 +10231,7 @@ export function FwpmConnectionSetSecurityInfo0(
   dacl: Deno.PointerValue | Uint8Array | null /* ptr */,
   sacl: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libfwpuclnt.FwpmConnectionSetSecurityInfo0(util.toPointer(engineHandle), securityInfo, util.toPointer(sidOwner), util.toPointer(sidGroup), util.toPointer(dacl), util.toPointer(sacl));
+  return libfwpuclnt_dll.FwpmConnectionSetSecurityInfo0(util.toPointer(engineHandle), securityInfo, util.toPointer(sidOwner), util.toPointer(sidGroup), util.toPointer(dacl), util.toPointer(sacl));
 }
 
 export function FwpmConnectionSubscribe0(
@@ -12743,14 +10241,14 @@ export function FwpmConnectionSubscribe0(
   context: Deno.PointerValue | Uint8Array | null /* ptr */,
   eventsHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libfwpuclnt.FwpmConnectionSubscribe0(util.toPointer(engineHandle), util.toPointer(subscription), util.toPointer(callback), util.toPointer(context), util.toPointer(eventsHandle));
+  return libfwpuclnt_dll.FwpmConnectionSubscribe0(util.toPointer(engineHandle), util.toPointer(subscription), util.toPointer(callback), util.toPointer(context), util.toPointer(eventsHandle));
 }
 
 export function FwpmConnectionUnsubscribe0(
   engineHandle: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
   eventsHandle: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
 ): number /* u32 */ {
-  return libfwpuclnt.FwpmConnectionUnsubscribe0(util.toPointer(engineHandle), util.toPointer(eventsHandle));
+  return libfwpuclnt_dll.FwpmConnectionUnsubscribe0(util.toPointer(engineHandle), util.toPointer(eventsHandle));
 }
 
 export function FwpmvSwitchEventSubscribe0(
@@ -12760,14 +10258,14 @@ export function FwpmvSwitchEventSubscribe0(
   context: Deno.PointerValue | Uint8Array | null /* ptr */,
   subscriptionHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libfwpuclnt.FwpmvSwitchEventSubscribe0(util.toPointer(engineHandle), util.toPointer(subscription), util.toPointer(callback), util.toPointer(context), util.toPointer(subscriptionHandle));
+  return libfwpuclnt_dll.FwpmvSwitchEventSubscribe0(util.toPointer(engineHandle), util.toPointer(subscription), util.toPointer(callback), util.toPointer(context), util.toPointer(subscriptionHandle));
 }
 
 export function FwpmvSwitchEventUnsubscribe0(
   engineHandle: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
   subscriptionHandle: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
 ): number /* u32 */ {
-  return libfwpuclnt.FwpmvSwitchEventUnsubscribe0(util.toPointer(engineHandle), util.toPointer(subscriptionHandle));
+  return libfwpuclnt_dll.FwpmvSwitchEventUnsubscribe0(util.toPointer(engineHandle), util.toPointer(subscriptionHandle));
 }
 
 export function FwpmvSwitchEventsGetSecurityInfo0(
@@ -12779,7 +10277,7 @@ export function FwpmvSwitchEventsGetSecurityInfo0(
   sacl: Deno.PointerValue | Uint8Array | null /* ptr */,
   securityDescriptor: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libfwpuclnt.FwpmvSwitchEventsGetSecurityInfo0(util.toPointer(engineHandle), securityInfo, util.toPointer(sidOwner), util.toPointer(sidGroup), util.toPointer(dacl), util.toPointer(sacl), util.toPointer(securityDescriptor));
+  return libfwpuclnt_dll.FwpmvSwitchEventsGetSecurityInfo0(util.toPointer(engineHandle), securityInfo, util.toPointer(sidOwner), util.toPointer(sidGroup), util.toPointer(dacl), util.toPointer(sacl), util.toPointer(securityDescriptor));
 }
 
 export function FwpmvSwitchEventsSetSecurityInfo0(
@@ -12790,6 +10288,6 @@ export function FwpmvSwitchEventsSetSecurityInfo0(
   dacl: Deno.PointerValue | Uint8Array | null /* ptr */,
   sacl: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libfwpuclnt.FwpmvSwitchEventsSetSecurityInfo0(util.toPointer(engineHandle), securityInfo, util.toPointer(sidOwner), util.toPointer(sidGroup), util.toPointer(dacl), util.toPointer(sacl));
+  return libfwpuclnt_dll.FwpmvSwitchEventsSetSecurityInfo0(util.toPointer(engineHandle), securityInfo, util.toPointer(sidOwner), util.toPointer(sidGroup), util.toPointer(dacl), util.toPointer(sacl));
 }
 

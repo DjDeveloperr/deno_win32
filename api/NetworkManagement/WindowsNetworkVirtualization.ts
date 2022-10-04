@@ -685,7 +685,7 @@ export function alloc_Anonymous_e__Struct(data?: Partial<_Anonymous_e__Struct>):
 }
 
 /**
- * Windows.Win32.NetworkManagement.WindowsFilteringPlatform.DL_EUI48 (size: 16)
+ * Windows.Win32.Networking.WinSock.DL_EUI48 (size: 16)
  */
 export interface DL_EUI48 {
   /** array */
@@ -710,7 +710,7 @@ export function allocDL_EUI48(data?: Partial<DL_EUI48>): Uint8Array {
  * Windows.Win32.NetworkManagement.WindowsNetworkVirtualization.WNV_CUSTOMER_ADDRESS_CHANGE_PARAM (size: 48)
  */
 export interface WNV_CUSTOMER_ADDRESS_CHANGE_PARAM {
-  /** Windows.Win32.NetworkManagement.WindowsFilteringPlatform.DL_EUI48 */
+  /** Windows.Win32.Networking.WinSock.DL_EUI48 */
   MACAddress: Uint8Array | Deno.PointerValue | null;
   /** u16 */
   CAFamily: number;
@@ -842,7 +842,7 @@ export function allocWNV_REDIRECT_PARAM(data?: Partial<WNV_REDIRECT_PARAM>): Uin
 // Native Libraries
 
 try {
-  var libwnvapi = Deno.dlopen("wnvapi", {
+  var libwnvapi_dll = Deno.dlopen("wnvapi.dll", {
     WnvOpen: {
       parameters: [],
       result: "pointer",
@@ -857,7 +857,7 @@ try {
 // Symbols
 
 export function WnvOpen(): Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */ {
-  return util.pointerFromFfi(libwnvapi.WnvOpen());
+  return util.pointerFromFfi(libwnvapi_dll.WnvOpen());
 }
 
 export function WnvRequestNotification(
@@ -866,6 +866,6 @@ export function WnvRequestNotification(
   Overlapped: Deno.PointerValue | Uint8Array | null /* ptr */,
   BytesTransferred: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libwnvapi.WnvRequestNotification(util.toPointer(WnvHandle), util.toPointer(NotificationParam), util.toPointer(Overlapped), util.toPointer(BytesTransferred));
+  return libwnvapi_dll.WnvRequestNotification(util.toPointer(WnvHandle), util.toPointer(NotificationParam), util.toPointer(Overlapped), util.toPointer(BytesTransferred));
 }
 

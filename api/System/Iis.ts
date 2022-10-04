@@ -12,6 +12,12 @@ export type SF_STATUS_TYPE = number;
 export type HTTP_TRACE_TYPE = number;
 
 // Constants
+export const IISADMIN_EXTENSIONS_REG_KEYA = `SOFTWARE\Microsoft\InetStp\Extensions`;
+export const IISADMIN_EXTENSIONS_REG_KEYW = `SOFTWARE\Microsoft\InetStp\Extensions`;
+export const IISADMIN_EXTENSIONS_REG_KEY = `SOFTWARE\Microsoft\InetStp\Extensions`;
+export const IISADMIN_EXTENSIONS_CLSID_MD_KEYA = `LM/IISADMIN/EXTENSIONS/DCOMCLSIDS`;
+export const IISADMIN_EXTENSIONS_CLSID_MD_KEYW = `LM/IISADMIN/EXTENSIONS/DCOMCLSIDS`;
+export const IISADMIN_EXTENSIONS_CLSID_MD_KEY = `LM/IISADMIN/EXTENSIONS/DCOMCLSIDS`;
 export const ADMINDATA_MAX_NAME_LEN = 256;
 export const IMGCHG_SIZE = 1;
 export const IMGCHG_VIEW = 2;
@@ -37,6 +43,12 @@ export const DWN_DOWNLOADONLY = 64;
 export const DWN_FORCEDITHER = 128;
 export const DWN_RAWIMAGE = 256;
 export const DWN_MIRRORIMAGE = 512;
+export const IIS_MD_LOCAL_MACHINE_PATH = `LM`;
+export const IIS_MD_INSTANCE_ROOT = `Root`;
+export const IIS_MD_ISAPI_FILTERS = `/Filters`;
+export const IIS_MD_SVC_INFO_PATH = `Info`;
+export const IIS_MD_ADSI_SCHEMA_PATH_A = `/Schema`;
+export const IIS_MD_ADSI_SCHEMA_PATH_W = `/Schema`;
 export const IIS_MD_ADSI_METAID_BEGIN = 130000;
 export const IIS_MD_UT_SERVER = 1;
 export const IIS_MD_UT_FILE = 2;
@@ -681,6 +693,46 @@ export const MD_USER_ISOLATION_NONE = 0;
 export const MD_USER_ISOLATION_BASIC = 1;
 export const MD_USER_ISOLATION_AD = 2;
 export const MD_USER_ISOLATION_LAST = 2;
+export const IIS_CLASS_COMPUTER = `IIsComputer`;
+export const IIS_CLASS_WEB_SERVICE = `IIsWebService`;
+export const IIS_CLASS_WEB_SERVER = `IIsWebServer`;
+export const IIS_CLASS_WEB_INFO = `IIsWebInfo`;
+export const IIS_CLASS_WEB_DIR = `IIsWebDirectory`;
+export const IIS_CLASS_WEB_VDIR = `IIsWebVirtualDir`;
+export const IIS_CLASS_WEB_FILE = `IIsWebFile`;
+export const IIS_CLASS_FTP_SERVICE = `IIsFtpService`;
+export const IIS_CLASS_FTP_SERVER = `IIsFtpServer`;
+export const IIS_CLASS_FTP_INFO = `IIsFtpInfo`;
+export const IIS_CLASS_FTP_VDIR = `IIsFtpVirtualDir`;
+export const IIS_CLASS_FILTERS = `IIsFilters`;
+export const IIS_CLASS_FILTER = `IIsFilter`;
+export const IIS_CLASS_LOG_MODULES = `IIsLogModules`;
+export const IIS_CLASS_LOG_MODULE = `IIsLogModule`;
+export const IIS_CLASS_MIMEMAP = `IIsMimeMap`;
+export const IIS_CLASS_CERTMAPPER = `IIsCertMapper`;
+export const IIS_CLASS_COMPRESS_SCHEMES = `IIsCompressionSchemes`;
+export const IIS_CLASS_COMPRESS_SCHEME = `IIsCompressionScheme`;
+export const IIS_CLASS_COMPUTER_W = `IIsComputer`;
+export const IIS_CLASS_WEB_SERVICE_W = `IIsWebService`;
+export const IIS_CLASS_WEB_SERVER_W = `IIsWebServer`;
+export const IIS_CLASS_WEB_INFO_W = `IIsWebInfo`;
+export const IIS_CLASS_WEB_DIR_W = `IIsWebDirectory`;
+export const IIS_CLASS_WEB_VDIR_W = `IIsWebVirtualDir`;
+export const IIS_CLASS_WEB_FILE_W = `IIsWebFile`;
+export const IIS_CLASS_FTP_SERVICE_W = `IIsFtpService`;
+export const IIS_CLASS_FTP_SERVER_W = `IIsFtpServer`;
+export const IIS_CLASS_FTP_INFO_W = `IIsFtpInfo`;
+export const IIS_CLASS_FTP_VDIR_W = `IIsFtpVirtualDir`;
+export const IIS_CLASS_FILTERS_W = `IIsFilters`;
+export const IIS_CLASS_FILTER_W = `IIsFilter`;
+export const IIS_CLASS_LOG_MODULES_W = `IIsLogModules`;
+export const IIS_CLASS_LOG_MODULE_W = `IIsLogModule`;
+export const IIS_CLASS_MIMEMAP_W = `IIsMimeMap`;
+export const IIS_CLASS_CERTMAPPER_W = `IIsCertMapper`;
+export const IIS_CLASS_COMPRESS_SCHEMES_W = `IIsCompressionSchemes`;
+export const IIS_CLASS_COMPRESS_SCHEME_W = `IIsCompressionScheme`;
+export const IIS_WEBSOCKET = `websockets`;
+export const IIS_WEBSOCKET_SERVER_VARIABLE = `IIS_WEBSOCK`;
 export const APPSTATUS_STOPPED = 0;
 export const APPSTATUS_RUNNING = 1;
 export const APPSTATUS_NOTDEFINED = 2;
@@ -705,12 +757,15 @@ export const MD_BACKUP_NEXT_VERSION = 4294967295;
 export const MD_BACKUP_HIGHEST_VERSION = 4294967294;
 export const MD_BACKUP_MAX_VERSION = 9999;
 export const MD_BACKUP_MAX_LEN = 100;
+export const MD_DEFAULT_BACKUP_LOCATION = `MDBackUp`;
 export const MD_HISTORY_LATEST = 1;
 export const MD_EXPORT_INHERITED = 1;
 export const MD_EXPORT_NODE_ONLY = 2;
 export const MD_IMPORT_INHERITED = 1;
 export const MD_IMPORT_NODE_ONLY = 2;
 export const MD_IMPORT_MERGE = 4;
+export const MD_INSERT_PATH_STRINGA = `<%INSERT_PATH%>`;
+export const MD_INSERT_PATH_STRING = `<%INSERT_PATH%>`;
 export const METADATA_MASTER_ROOT_HANDLE = 0;
 export const MD_CHANGE_TYPE_DELETE_OBJECT = 1;
 export const MD_CHANGE_TYPE_ADD_OBJECT = 2;
@@ -719,19 +774,19 @@ export const MD_CHANGE_TYPE_DELETE_DATA = 8;
 export const MD_CHANGE_TYPE_RENAME_OBJECT = 16;
 export const MD_CHANGE_TYPE_RESTORE = 32;
 export const MD_MAX_CHANGE_ENTRIES = 100;
-export const MD_ERROR_NOT_INITIALIZED = "-2146646016";
-export const MD_ERROR_DATA_NOT_FOUND = "-2146646015";
-export const MD_ERROR_INVALID_VERSION = "-2146646014";
+export const MD_ERROR_NOT_INITIALIZED = `-2146646016`;
+export const MD_ERROR_DATA_NOT_FOUND = `-2146646015`;
+export const MD_ERROR_INVALID_VERSION = `-2146646014`;
 export const MD_WARNING_PATH_NOT_FOUND = 837635;
 export const MD_WARNING_DUP_NAME = 837636;
 export const MD_WARNING_INVALID_DATA = 837637;
-export const MD_ERROR_SECURE_CHANNEL_FAILURE = "-2146646010";
+export const MD_ERROR_SECURE_CHANNEL_FAILURE = `-2146646010`;
 export const MD_WARNING_PATH_NOT_INSERTED = 837639;
-export const MD_ERROR_CANNOT_REMOVE_SECURE_ATTRIBUTE = "-2146646008";
+export const MD_ERROR_CANNOT_REMOVE_SECURE_ATTRIBUTE = `-2146646008`;
 export const MD_WARNING_SAVE_FAILED = 837641;
-export const MD_ERROR_IISAO_INVALID_SCHEMA = "-2146646000";
-export const MD_ERROR_READ_METABASE_FILE = "-2146645991";
-export const MD_ERROR_NO_SESSION_KEY = "-2146645987";
+export const MD_ERROR_IISAO_INVALID_SCHEMA = `-2146646000`;
+export const MD_ERROR_READ_METABASE_FILE = `-2146645991`;
+export const MD_ERROR_NO_SESSION_KEY = `-2146645987`;
 export const HSE_VERSION_MAJOR = 8;
 export const HSE_VERSION_MINOR = 0;
 export const HSE_LOG_BUFFER_LEN = 80;
@@ -863,6 +918,10 @@ export const DISPID_HTTPREQUEST_SETAUTOLOGONPOLICY = 18;
 export const HTTP_TRACE_EVENT_FLAG_STATIC_DESCRIPTIVE_FIELDS = 1;
 export const HTTP_TRACE_LEVEL_START = 6;
 export const HTTP_TRACE_LEVEL_END = 7;
+export const WEB_CORE_DLL_NAME = `hwebcore.dll`;
+export const WEB_CORE_ACTIVATE_DLL_ENTRY = `WebCoreActivate`;
+export const WEB_CORE_SHUTDOWN_DLL_ENTRY = `WebCoreShutdown`;
+export const WEB_CORE_SET_METADATA_DLL_ENTRY = `WebCoreSetMetadata`;
 export const FTP_ACCESS_NONE = 0;
 export const FTP_ACCESS_READ = 1;
 export const FTP_ACCESS_WRITE = 2;
@@ -2139,6 +2198,8 @@ export function allocHSE_RESPONSE_VECTOR(data?: Partial<HSE_RESPONSE_VECTOR>): U
   return buf;
 }
 
+export type HCERTSTORE = Deno.PointerValue | Uint8Array | null;
+
 /**
  * Windows.Win32.Security.Cryptography.CERT_CONTEXT (size: 40)
  */
@@ -2151,8 +2212,8 @@ export interface CERT_CONTEXT {
   cbCertEncoded: number;
   /** ptr */
   pCertInfo: Deno.PointerValue | Uint8Array | null;
-  /** ptr */
-  hCertStore: Deno.PointerValue | Uint8Array | null;
+  /** Windows.Win32.Security.Cryptography.HCERTSTORE */
+  hCertStore: Uint8Array | Deno.PointerValue | null;
 }
 
 export const sizeofCERT_CONTEXT = 40;
@@ -2809,7 +2870,7 @@ export function allocHTTP_TRACE_CONFIGURATION(data?: Partial<HTTP_TRACE_CONFIGUR
 // Native Libraries
 
 try {
-  var libRpcProxy = Deno.dlopen("RpcProxy", {
+  var libRpcProxy_dll = Deno.dlopen("RpcProxy.dll", {
     GetExtensionVersion: {
       parameters: ["pointer"],
       result: "i32",
@@ -2834,13 +2895,13 @@ try {
 export function GetExtensionVersion(
   pVer: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libRpcProxy.GetExtensionVersion(util.toPointer(pVer)));
+  return util.boolFromFfi(libRpcProxy_dll.GetExtensionVersion(util.toPointer(pVer)));
 }
 
 export function HttpExtensionProc(
   pECB: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libRpcProxy.HttpExtensionProc(util.toPointer(pECB));
+  return libRpcProxy_dll.HttpExtensionProc(util.toPointer(pECB));
 }
 
 export function HttpFilterProc(
@@ -2848,12 +2909,12 @@ export function HttpFilterProc(
   NotificationType: number /* u32 */,
   pvNotification: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libRpcProxy.HttpFilterProc(util.toPointer(pfc), NotificationType, util.toPointer(pvNotification));
+  return libRpcProxy_dll.HttpFilterProc(util.toPointer(pfc), NotificationType, util.toPointer(pvNotification));
 }
 
 export function GetFilterVersion(
   pVer: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libRpcProxy.GetFilterVersion(util.toPointer(pVer)));
+  return util.boolFromFfi(libRpcProxy_dll.GetFilterVersion(util.toPointer(pVer)));
 }
 

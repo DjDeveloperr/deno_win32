@@ -177,11 +177,12 @@ export type D2D1_FILL_MODE = number;
 export type D2D1_BORDER_MODE = number;
 export type D2D1_BLEND_MODE = number;
 export type D2D1_COLORMATRIX_ALPHA_MODE = number;
+export type D2D1_2DAFFINETRANSFORM_INTERPOLATION_MODE = number;
 export type D2D1_TURBULENCE_NOISE = number;
 export type D2D1_COMPOSITE_MODE = number;
 
 // Constants
-export const D2D1_DEFAULT_FLATTENING_TOLERANCE = "0.25";
+export const D2D1_DEFAULT_FLATTENING_TOLERANCE = `0.25`;
 export const D2D1_SCENE_REFERRED_SDR_WHITE_LEVEL = 80;
 export const D2D1_APPEND_ALIGNED_ELEMENT = 4294967295;
 export const FACILITY_D2D = 2201;
@@ -1203,6 +1204,13 @@ export const D2D1_BLEND_MODE_FORCE_DWORD = 4294967295;
 export const D2D1_COLORMATRIX_ALPHA_MODE_PREMULTIPLIED = 1;
 export const D2D1_COLORMATRIX_ALPHA_MODE_STRAIGHT = 2;
 export const D2D1_COLORMATRIX_ALPHA_MODE_FORCE_DWORD = 4294967295;
+export const D2D1_2DAFFINETRANSFORM_INTERPOLATION_MODE_NEAREST_NEIGHBOR = 0;
+export const D2D1_2DAFFINETRANSFORM_INTERPOLATION_MODE_LINEAR = 1;
+export const D2D1_2DAFFINETRANSFORM_INTERPOLATION_MODE_CUBIC = 2;
+export const D2D1_2DAFFINETRANSFORM_INTERPOLATION_MODE_MULTI_SAMPLE_LINEAR = 3;
+export const D2D1_2DAFFINETRANSFORM_INTERPOLATION_MODE_ANISOTROPIC = 4;
+export const D2D1_2DAFFINETRANSFORM_INTERPOLATION_MODE_HIGH_QUALITY_CUBIC = 5;
+export const D2D1_2DAFFINETRANSFORM_INTERPOLATION_MODE_FORCE_DWORD = 4294967295;
 export const D2D1_TURBULENCE_NOISE_FRACTAL_SUM = 0;
 export const D2D1_TURBULENCE_NOISE_TURBULENCE = 1;
 export const D2D1_TURBULENCE_NOISE_FORCE_DWORD = 4294967295;
@@ -2536,7 +2544,7 @@ export function allocD2D1_CREATION_PROPERTIES(data?: Partial<D2D1_CREATION_PROPE
  */
 export interface Matrix4x3F {
   /** Windows.Win32.Graphics.Direct2D.Common.D2D_MATRIX_4X3_F */
-  __AnonymousBase_d2d1_1helper_L45_C31: Uint8Array | Deno.PointerValue | null;
+  Base: Uint8Array | Deno.PointerValue | null;
 }
 
 export const sizeofMatrix4x3F = 8;
@@ -2545,7 +2553,7 @@ export function allocMatrix4x3F(data?: Partial<Matrix4x3F>): Uint8Array {
   const buf = new Uint8Array(sizeofMatrix4x3F);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.__AnonymousBase_d2d1_1helper_L45_C31 !== undefined) view.setBigUint64(0, data.__AnonymousBase_d2d1_1helper_L45_C31 === null ? 0n : BigInt(util.toPointer(data.__AnonymousBase_d2d1_1helper_L45_C31)), true);
+  if (data?.Base !== undefined) view.setBigUint64(0, data.Base === null ? 0n : BigInt(util.toPointer(data.Base)), true);
   return buf;
 }
 
@@ -2554,7 +2562,7 @@ export function allocMatrix4x3F(data?: Partial<Matrix4x3F>): Uint8Array {
  */
 export interface Matrix4x4F {
   /** Windows.Win32.Graphics.Direct2D.Common.D2D_MATRIX_4X4_F */
-  __AnonymousBase_d2d1_1helper_L97_C31: Uint8Array | Deno.PointerValue | null;
+  Base: Uint8Array | Deno.PointerValue | null;
 }
 
 export const sizeofMatrix4x4F = 8;
@@ -2563,7 +2571,7 @@ export function allocMatrix4x4F(data?: Partial<Matrix4x4F>): Uint8Array {
   const buf = new Uint8Array(sizeofMatrix4x4F);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.__AnonymousBase_d2d1_1helper_L97_C31 !== undefined) view.setBigUint64(0, data.__AnonymousBase_d2d1_1helper_L97_C31 === null ? 0n : BigInt(util.toPointer(data.__AnonymousBase_d2d1_1helper_L97_C31)), true);
+  if (data?.Base !== undefined) view.setBigUint64(0, data.Base === null ? 0n : BigInt(util.toPointer(data.Base)), true);
   return buf;
 }
 
@@ -2572,7 +2580,7 @@ export function allocMatrix4x4F(data?: Partial<Matrix4x4F>): Uint8Array {
  */
 export interface Matrix5x4F {
   /** Windows.Win32.Graphics.Direct2D.Common.D2D_MATRIX_5X4_F */
-  __AnonymousBase_d2d1_1helper_L472_C31: Uint8Array | Deno.PointerValue | null;
+  Base: Uint8Array | Deno.PointerValue | null;
 }
 
 export const sizeofMatrix5x4F = 8;
@@ -2581,7 +2589,7 @@ export function allocMatrix5x4F(data?: Partial<Matrix5x4F>): Uint8Array {
   const buf = new Uint8Array(sizeofMatrix5x4F);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.__AnonymousBase_d2d1_1helper_L472_C31 !== undefined) view.setBigUint64(0, data.__AnonymousBase_d2d1_1helper_L472_C31 === null ? 0n : BigInt(util.toPointer(data.__AnonymousBase_d2d1_1helper_L472_C31)), true);
+  if (data?.Base !== undefined) view.setBigUint64(0, data.Base === null ? 0n : BigInt(util.toPointer(data.Base)), true);
   return buf;
 }
 
@@ -3251,7 +3259,7 @@ export type HRESULT = number;
 // Native Libraries
 
 try {
-  var libd2d1 = Deno.dlopen("d2d1", {
+  var libd2d1_dll = Deno.dlopen("d2d1.dll", {
     D2D1CreateFactory: {
       parameters: ["u32", "pointer", "pointer", "pointer"],
       result: "pointer",
@@ -3315,7 +3323,7 @@ export function D2D1CreateFactory(
   pFactoryOptions: Deno.PointerValue | Uint8Array | null /* ptr */,
   ppIFactory: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libd2d1.D2D1CreateFactory(factoryType, util.toPointer(riid), util.toPointer(pFactoryOptions), util.toPointer(ppIFactory)));
+  return util.pointerFromFfi(libd2d1_dll.D2D1CreateFactory(factoryType, util.toPointer(riid), util.toPointer(pFactoryOptions), util.toPointer(ppIFactory)));
 }
 
 export function D2D1MakeRotateMatrix(
@@ -3323,7 +3331,7 @@ export function D2D1MakeRotateMatrix(
   center: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Graphics.Direct2D.Common.D2D_POINT_2F */,
   matrix: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): void /* void */ {
-  return libd2d1.D2D1MakeRotateMatrix(angle, util.toPointer(center), util.toPointer(matrix));
+  return libd2d1_dll.D2D1MakeRotateMatrix(angle, util.toPointer(center), util.toPointer(matrix));
 }
 
 export function D2D1MakeSkewMatrix(
@@ -3332,19 +3340,19 @@ export function D2D1MakeSkewMatrix(
   center: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Graphics.Direct2D.Common.D2D_POINT_2F */,
   matrix: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): void /* void */ {
-  return libd2d1.D2D1MakeSkewMatrix(angleX, angleY, util.toPointer(center), util.toPointer(matrix));
+  return libd2d1_dll.D2D1MakeSkewMatrix(angleX, angleY, util.toPointer(center), util.toPointer(matrix));
 }
 
 export function D2D1IsMatrixInvertible(
   matrix: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libd2d1.D2D1IsMatrixInvertible(util.toPointer(matrix)));
+  return util.boolFromFfi(libd2d1_dll.D2D1IsMatrixInvertible(util.toPointer(matrix)));
 }
 
 export function D2D1InvertMatrix(
   matrix: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libd2d1.D2D1InvertMatrix(util.toPointer(matrix)));
+  return util.boolFromFfi(libd2d1_dll.D2D1InvertMatrix(util.toPointer(matrix)));
 }
 
 export function D2D1CreateDevice(
@@ -3352,7 +3360,7 @@ export function D2D1CreateDevice(
   creationProperties: Deno.PointerValue | Uint8Array | null /* ptr */,
   d2dDevice: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libd2d1.D2D1CreateDevice(util.toPointer(dxgiDevice), util.toPointer(creationProperties), util.toPointer(d2dDevice)));
+  return util.pointerFromFfi(libd2d1_dll.D2D1CreateDevice(util.toPointer(dxgiDevice), util.toPointer(creationProperties), util.toPointer(d2dDevice)));
 }
 
 export function D2D1CreateDeviceContext(
@@ -3360,7 +3368,7 @@ export function D2D1CreateDeviceContext(
   creationProperties: Deno.PointerValue | Uint8Array | null /* ptr */,
   d2dDeviceContext: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libd2d1.D2D1CreateDeviceContext(util.toPointer(dxgiSurface), util.toPointer(creationProperties), util.toPointer(d2dDeviceContext)));
+  return util.pointerFromFfi(libd2d1_dll.D2D1CreateDeviceContext(util.toPointer(dxgiSurface), util.toPointer(creationProperties), util.toPointer(d2dDeviceContext)));
 }
 
 export function D2D1ConvertColorSpace(
@@ -3368,7 +3376,7 @@ export function D2D1ConvertColorSpace(
   destinationColorSpace: D2D1_COLOR_SPACE /* Windows.Win32.Graphics.Direct2D.D2D1_COLOR_SPACE */,
   color: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Graphics.Direct2D.Common.D2D1_COLOR_F */ {
-  return util.pointerFromFfi(libd2d1.D2D1ConvertColorSpace(sourceColorSpace, destinationColorSpace, util.toPointer(color)));
+  return util.pointerFromFfi(libd2d1_dll.D2D1ConvertColorSpace(sourceColorSpace, destinationColorSpace, util.toPointer(color)));
 }
 
 export function D2D1SinCos(
@@ -3376,13 +3384,13 @@ export function D2D1SinCos(
   s: Deno.PointerValue | Uint8Array | null /* ptr */,
   c: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): void /* void */ {
-  return libd2d1.D2D1SinCos(angle, util.toPointer(s), util.toPointer(c));
+  return libd2d1_dll.D2D1SinCos(angle, util.toPointer(s), util.toPointer(c));
 }
 
 export function D2D1Tan(
   angle: number /* f32 */,
 ): number /* f32 */ {
-  return libd2d1.D2D1Tan(angle);
+  return libd2d1_dll.D2D1Tan(angle);
 }
 
 export function D2D1Vec3Length(
@@ -3390,13 +3398,13 @@ export function D2D1Vec3Length(
   y: number /* f32 */,
   z: number /* f32 */,
 ): number /* f32 */ {
-  return libd2d1.D2D1Vec3Length(x, y, z);
+  return libd2d1_dll.D2D1Vec3Length(x, y, z);
 }
 
 export function D2D1ComputeMaximumScaleFactor(
   matrix: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* f32 */ {
-  return libd2d1.D2D1ComputeMaximumScaleFactor(util.toPointer(matrix));
+  return libd2d1_dll.D2D1ComputeMaximumScaleFactor(util.toPointer(matrix));
 }
 
 export function D2D1GetGradientMeshInteriorPointsFromCoonsPatch(
@@ -3417,6 +3425,6 @@ export function D2D1GetGradientMeshInteriorPointsFromCoonsPatch(
   pTensorPoint21: Deno.PointerValue | Uint8Array | null /* ptr */,
   pTensorPoint22: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): void /* void */ {
-  return libd2d1.D2D1GetGradientMeshInteriorPointsFromCoonsPatch(util.toPointer(pPoint0), util.toPointer(pPoint1), util.toPointer(pPoint2), util.toPointer(pPoint3), util.toPointer(pPoint4), util.toPointer(pPoint5), util.toPointer(pPoint6), util.toPointer(pPoint7), util.toPointer(pPoint8), util.toPointer(pPoint9), util.toPointer(pPoint10), util.toPointer(pPoint11), util.toPointer(pTensorPoint11), util.toPointer(pTensorPoint12), util.toPointer(pTensorPoint21), util.toPointer(pTensorPoint22));
+  return libd2d1_dll.D2D1GetGradientMeshInteriorPointsFromCoonsPatch(util.toPointer(pPoint0), util.toPointer(pPoint1), util.toPointer(pPoint2), util.toPointer(pPoint3), util.toPointer(pPoint4), util.toPointer(pPoint5), util.toPointer(pPoint6), util.toPointer(pPoint7), util.toPointer(pPoint8), util.toPointer(pPoint9), util.toPointer(pPoint10), util.toPointer(pPoint11), util.toPointer(pTensorPoint11), util.toPointer(pTensorPoint12), util.toPointer(pTensorPoint21), util.toPointer(pTensorPoint22));
 }
 

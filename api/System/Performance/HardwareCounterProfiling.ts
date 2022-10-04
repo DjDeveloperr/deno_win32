@@ -92,7 +92,7 @@ export type HANDLE = Deno.PointerValue;
 // Native Libraries
 
 try {
-  var libKERNEL32 = Deno.dlopen("KERNEL32", {
+  var libKERNEL32_dll = Deno.dlopen("KERNEL32.dll", {
     EnableThreadProfiling: {
       parameters: ["pointer", "u32", "u64", "pointer"],
       result: "u32",
@@ -120,20 +120,20 @@ export function EnableThreadProfiling(
   HardwareCounters: Deno.PointerValue /* u64 */,
   PerformanceDataHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libKERNEL32.EnableThreadProfiling(util.toPointer(ThreadHandle), Flags, HardwareCounters, util.toPointer(PerformanceDataHandle));
+  return libKERNEL32_dll.EnableThreadProfiling(util.toPointer(ThreadHandle), Flags, HardwareCounters, util.toPointer(PerformanceDataHandle));
 }
 
 export function DisableThreadProfiling(
   PerformanceDataHandle: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
 ): number /* u32 */ {
-  return libKERNEL32.DisableThreadProfiling(util.toPointer(PerformanceDataHandle));
+  return libKERNEL32_dll.DisableThreadProfiling(util.toPointer(PerformanceDataHandle));
 }
 
 export function QueryThreadProfiling(
   ThreadHandle: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
   Enabled: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libKERNEL32.QueryThreadProfiling(util.toPointer(ThreadHandle), util.toPointer(Enabled));
+  return libKERNEL32_dll.QueryThreadProfiling(util.toPointer(ThreadHandle), util.toPointer(Enabled));
 }
 
 export function ReadThreadProfilingData(
@@ -141,6 +141,6 @@ export function ReadThreadProfilingData(
   Flags: number /* u32 */,
   PerformanceData: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libKERNEL32.ReadThreadProfilingData(util.toPointer(PerformanceDataHandle), Flags, util.toPointer(PerformanceData));
+  return libKERNEL32_dll.ReadThreadProfilingData(util.toPointer(PerformanceDataHandle), Flags, util.toPointer(PerformanceData));
 }
 

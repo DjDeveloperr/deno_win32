@@ -8,6 +8,9 @@ export const _FACDD = 2166;
 export const DDENUM_ATTACHEDSECONDARYDEVICES = 1;
 export const DDENUM_DETACHEDSECONDARYDEVICES = 2;
 export const DDENUM_NONDISPLAYDEVICES = 4;
+export const REGSTR_KEY_DDHW_DESCRIPTION = `Description`;
+export const REGSTR_KEY_DDHW_DRIVERNAME = `DriverName`;
+export const REGSTR_PATH_DDHW = `Hardware\DirectDrawDrivers`;
 export const DDCREATE_HARDWAREONLY = 1;
 export const DDCREATE_EMULATIONONLY = 2;
 export const MAX_DDDEVICEID_STRING = 512;
@@ -80,7 +83,7 @@ export const DDSCAPS_VIDEOPORT = 134217728;
 export const DDSCAPS_LOCALVIDMEM = 268435456;
 export const DDSCAPS_NONLOCALVIDMEM = 536870912;
 export const DDSCAPS_STANDARDVGAMODE = 1073741824;
-export const DDSCAPS_OPTIMIZED = "-2147483648";
+export const DDSCAPS_OPTIMIZED = `-2147483648`;
 export const DDSCAPS2_RESERVED4 = 2;
 export const DDSCAPS2_HARDWAREDEINTERLACE = 0;
 export const DDSCAPS2_HINTDYNAMIC = 4;
@@ -110,7 +113,7 @@ export const DDSCAPS2_RESERVED3 = 67108864;
 export const DDSCAPS2_DISCARDBACKBUFFER = 268435456;
 export const DDSCAPS2_ENABLEALPHACHANNEL = 536870912;
 export const DDSCAPS2_EXTENDEDFORMATPRIMARY = 1073741824;
-export const DDSCAPS2_ADDITIONALPRIMARY = "-2147483648";
+export const DDSCAPS2_ADDITIONALPRIMARY = `-2147483648`;
 export const DDSCAPS3_MULTISAMPLE_MASK = 31;
 export const DDSCAPS3_MULTISAMPLE_QUALITY_MASK = 224;
 export const DDSCAPS3_MULTISAMPLE_QUALITY_SHIFT = 5;
@@ -153,7 +156,7 @@ export const DDCAPS_BANKSWITCHED = 134217728;
 export const DDCAPS_BLTDEPTHFILL = 268435456;
 export const DDCAPS_CANCLIP = 536870912;
 export const DDCAPS_CANCLIPSTRETCHED = 1073741824;
-export const DDCAPS_CANBLTSYSMEM = "-2147483648";
+export const DDCAPS_CANBLTSYSMEM = `-2147483648`;
 export const DDCAPS2_CERTIFIED = 1;
 export const DDCAPS2_NO2DDURING3DSCENE = 2;
 export const DDCAPS2_VIDEOPORT = 4;
@@ -183,7 +186,7 @@ export const DDCAPS2_RESERVED1 = 134217728;
 export const DDCAPS2_CANMANAGERESOURCE = 268435456;
 export const DDCAPS2_DYNAMICTEXTURES = 536870912;
 export const DDCAPS2_CANAUTOGENMIPMAP = 1073741824;
-export const DDCAPS2_CANSHARERESOURCE = "-2147483648";
+export const DDCAPS2_CANSHARERESOURCE = `-2147483648`;
 export const DDFXALPHACAPS_BLTALPHAEDGEBLEND = 1;
 export const DDFXALPHACAPS_BLTALPHAPIXELS = 2;
 export const DDFXALPHACAPS_BLTALPHAPIXELSNEG = 4;
@@ -432,8 +435,8 @@ export const DDEM_MODEPASSED = 1;
 export const DDEM_MODEFAILED = 2;
 export const DDENUMRET_CANCEL = 0;
 export const DDENUMRET_OK = 1;
-export const DDERR_NOTINITIALIZED = "-2147221008";
-export const OBJECT_ISROOT = "-2147483648";
+export const DDERR_NOTINITIALIZED = `-2147221008`;
+export const OBJECT_ISROOT = `-2147483648`;
 export const DDUNSUPPORTEDMODE = 4294967295;
 export const DDPF_NOVEL_TEXTURE_FORMAT = 1048576;
 export const DDPF_D3DFORMAT = 2097152;
@@ -471,6 +474,8 @@ export const DDCREATEDRIVEROBJECT = 10;
 export const DDGET32BITDRIVERNAME = 11;
 export const DDNEWCALLBACKFNS = 12;
 export const DDVERSIONINFO = 13;
+export const DDHAL_DRIVER_DLLNAME = `DDRAW16.DLL`;
+export const DDHAL_APP_DLLNAME = `DDRAW.DLL`;
 export const CCHDEVICENAME = 32;
 export const MAX_DRIVER_NAME = 32;
 export const MAX_PALETTE_SIZE = 256;
@@ -608,7 +613,7 @@ export const DDRAWISURFGBL_READONLYLOCKHELD = 65536;
 export const DDRAWISURFGBL_DX8SURFACE = 524288;
 export const DDRAWISURFGBL_DDHELDONTFREE = 1048576;
 export const DDRAWISURFGBL_NOTIFYWHENUNLOCKED = 2097152;
-export const DDRAWISURFGBL_RESERVED0 = "-2147483648";
+export const DDRAWISURFGBL_RESERVED0 = `-2147483648`;
 export const DDRAWISURF_ATTACHED = 1;
 export const DDRAWISURF_IMPLICITCREATE = 2;
 export const DDRAWISURF_ISFREE = 4;
@@ -642,7 +647,7 @@ export const DDRAWISURF_DCIBUSY = 536870912;
 export const DDRAWISURF_GETDCNULL = 1073741824;
 export const DDRAWISURF_STEREOSURFACELEFT = 536870912;
 export const DDRAWISURF_DRIVERMANAGED = 1073741824;
-export const DDRAWISURF_DCILOCK = "-2147483648";
+export const DDRAWISURF_DCILOCK = `-2147483648`;
 export const ROP_HAS_SOURCE = 1;
 export const ROP_HAS_PATTERN = 2;
 export const DDMODEINFO_PALETTIZED = 1;
@@ -714,7 +719,7 @@ export const DDHALINFO_ISPRIMARYDISPLAY = 1;
 export const DDHALINFO_MODEXILLEGAL = 2;
 export const DDHALINFO_GETDRIVERINFOSET = 4;
 export const DDHALINFO_GETDRIVERINFO2 = 8;
-export const DDWAITVB_I_TESTVB = "-2147483642";
+export const DDWAITVB_I_TESTVB = `-2147483642`;
 export const DDRAWI_VPORTSTART = 1;
 export const DDRAWI_VPORTSTOP = 2;
 export const DDRAWI_VPORTUPDATE = 3;
@@ -725,7 +730,7 @@ export const DDRAWI_SETCOLOR = 2;
 export const DDMCQUERY_READ = 1;
 export const DDSCAPS_COMMANDBUFFER = 1024;
 export const DDHAL_PLEASEALLOC_USERMEM = 4;
-export const DDHAL_CB32_MAPMEMORY = "-2147483648";
+export const DDHAL_CB32_MAPMEMORY = `-2147483648`;
 export const DDHAL_MISC2CB32_ALPHABLT = 1;
 export const DDHAL_CREATESURFACEEX_SWAPHANDLES = 1;
 export const DDHAL_NTCB32_FREEDRIVERMEMORY = 1;
@@ -740,7 +745,7 @@ export const DDHAL_D3DBUFCB32_UNLOCKD3DBUF = 16;
 export const DDHAL_PRIVATECAP_ATOMICSURFACECREATION = 1;
 export const DDHAL_PRIVATECAP_NOTIFYPRIMARYCREATION = 2;
 export const DDHAL_PRIVATECAP_RESERVED1 = 4;
-export const DDBLT_AFLAGS = "-2147483648";
+export const DDBLT_AFLAGS = `-2147483648`;
 export const DDABLT_SRCOVERDEST = 1;
 export const DDKERNELCAPS_SKIPFIELDS = 1;
 export const DDKERNELCAPS_AUTOFLIP = 2;
@@ -13979,7 +13984,7 @@ export function allocDXAPI_INTERFACE(data?: Partial<DXAPI_INTERFACE>): Uint8Arra
 // Native Libraries
 
 try {
-  var libDDRAW = Deno.dlopen("DDRAW", {
+  var libDDRAW_dll = Deno.dlopen("DDRAW.dll", {
     DirectDrawEnumerateW: {
       parameters: ["pointer", "pointer"],
       result: "pointer",
@@ -14017,14 +14022,14 @@ export function DirectDrawEnumerateW(
   lpCallback: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Graphics.DirectDraw.LPDDENUMCALLBACKW */,
   lpContext: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libDDRAW.DirectDrawEnumerateW(util.toPointer(lpCallback), util.toPointer(lpContext)));
+  return util.pointerFromFfi(libDDRAW_dll.DirectDrawEnumerateW(util.toPointer(lpCallback), util.toPointer(lpContext)));
 }
 
 export function DirectDrawEnumerateA(
   lpCallback: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Graphics.DirectDraw.LPDDENUMCALLBACKA */,
   lpContext: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libDDRAW.DirectDrawEnumerateA(util.toPointer(lpCallback), util.toPointer(lpContext)));
+  return util.pointerFromFfi(libDDRAW_dll.DirectDrawEnumerateA(util.toPointer(lpCallback), util.toPointer(lpContext)));
 }
 
 export function DirectDrawEnumerateExW(
@@ -14032,7 +14037,7 @@ export function DirectDrawEnumerateExW(
   lpContext: Deno.PointerValue | Uint8Array | null /* ptr */,
   dwFlags: number /* u32 */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libDDRAW.DirectDrawEnumerateExW(util.toPointer(lpCallback), util.toPointer(lpContext), dwFlags));
+  return util.pointerFromFfi(libDDRAW_dll.DirectDrawEnumerateExW(util.toPointer(lpCallback), util.toPointer(lpContext), dwFlags));
 }
 
 export function DirectDrawEnumerateExA(
@@ -14040,7 +14045,7 @@ export function DirectDrawEnumerateExA(
   lpContext: Deno.PointerValue | Uint8Array | null /* ptr */,
   dwFlags: number /* u32 */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libDDRAW.DirectDrawEnumerateExA(util.toPointer(lpCallback), util.toPointer(lpContext), dwFlags));
+  return util.pointerFromFfi(libDDRAW_dll.DirectDrawEnumerateExA(util.toPointer(lpCallback), util.toPointer(lpContext), dwFlags));
 }
 
 export function DirectDrawCreate(
@@ -14048,7 +14053,7 @@ export function DirectDrawCreate(
   lplpDD: Deno.PointerValue | Uint8Array | null /* ptr */,
   pUnkOuter: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Com.IUnknown */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libDDRAW.DirectDrawCreate(util.toPointer(lpGUID), util.toPointer(lplpDD), util.toPointer(pUnkOuter)));
+  return util.pointerFromFfi(libDDRAW_dll.DirectDrawCreate(util.toPointer(lpGUID), util.toPointer(lplpDD), util.toPointer(pUnkOuter)));
 }
 
 export function DirectDrawCreateEx(
@@ -14057,7 +14062,7 @@ export function DirectDrawCreateEx(
   iid: Deno.PointerValue | Uint8Array | null /* ptr */,
   pUnkOuter: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Com.IUnknown */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libDDRAW.DirectDrawCreateEx(util.toPointer(lpGuid), util.toPointer(lplpDD), util.toPointer(iid), util.toPointer(pUnkOuter)));
+  return util.pointerFromFfi(libDDRAW_dll.DirectDrawCreateEx(util.toPointer(lpGuid), util.toPointer(lplpDD), util.toPointer(iid), util.toPointer(pUnkOuter)));
 }
 
 export function DirectDrawCreateClipper(
@@ -14065,6 +14070,6 @@ export function DirectDrawCreateClipper(
   lplpDDClipper: Deno.PointerValue | Uint8Array | null /* ptr */,
   pUnkOuter: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Com.IUnknown */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libDDRAW.DirectDrawCreateClipper(dwFlags, util.toPointer(lplpDDClipper), util.toPointer(pUnkOuter)));
+  return util.pointerFromFfi(libDDRAW_dll.DirectDrawCreateClipper(dwFlags, util.toPointer(lplpDDClipper), util.toPointer(pUnkOuter)));
 }
 

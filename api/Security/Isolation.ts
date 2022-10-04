@@ -31,7 +31,7 @@ export function allocIsolatedAppLauncherTelemetryParameters(data?: Partial<Isola
 
 export type HANDLE = Deno.PointerValue;
 
-export type PSID = Deno.PointerValue;
+export type PSID = Deno.PointerValue | Uint8Array | null;
 
 export type PWSTR = Deno.PointerValue | Uint8Array | null;
 
@@ -40,7 +40,7 @@ export type HRESULT = number;
 // Native Libraries
 
 try {
-  var libKERNEL32 = Deno.dlopen("KERNEL32", {
+  var libKERNEL32_dll = Deno.dlopen("KERNEL32.dll", {
     GetAppContainerNamedObjectPath: {
       parameters: ["pointer", "pointer", "u32", "buffer", "pointer"],
       result: "i32",
@@ -49,7 +49,7 @@ try {
 } catch(e) { /* ignore */ }
 
 try {
-  var libapi_ms_win_security_isolatedcontainer_l1_1_1 = Deno.dlopen("api-ms-win-security-isolatedcontainer-l1-1-1", {
+  var libapi_ms_win_security_isolatedcontainer_l1_1_1_dll = Deno.dlopen("api-ms-win-security-isolatedcontainer-l1-1-1.dll", {
     IsProcessInWDAGContainer: {
       parameters: ["pointer", "pointer"],
       result: "pointer",
@@ -58,7 +58,7 @@ try {
 } catch(e) { /* ignore */ }
 
 try {
-  var libapi_ms_win_security_isolatedcontainer_l1_1_0 = Deno.dlopen("api-ms-win-security-isolatedcontainer-l1-1-0", {
+  var libapi_ms_win_security_isolatedcontainer_l1_1_0_dll = Deno.dlopen("api-ms-win-security-isolatedcontainer-l1-1-0.dll", {
     IsProcessInIsolatedContainer: {
       parameters: ["pointer"],
       result: "pointer",
@@ -67,7 +67,7 @@ try {
 } catch(e) { /* ignore */ }
 
 try {
-  var libIsolatedWindowsEnvironmentUtils = Deno.dlopen("IsolatedWindowsEnvironmentUtils", {
+  var libIsolatedWindowsEnvironmentUtils_dll = Deno.dlopen("IsolatedWindowsEnvironmentUtils.dll", {
     IsProcessInIsolatedWindowsEnvironment: {
       parameters: ["pointer"],
       result: "pointer",
@@ -76,7 +76,7 @@ try {
 } catch(e) { /* ignore */ }
 
 try {
-  var libUSERENV = Deno.dlopen("USERENV", {
+  var libUSERENV_dll = Deno.dlopen("USERENV.dll", {
     CreateAppContainerProfile: {
       parameters: ["buffer", "buffer", "buffer", "pointer", "u32", "pointer"],
       result: "pointer",
@@ -113,26 +113,26 @@ export function GetAppContainerNamedObjectPath(
   ObjectPath: string | null /* Windows.Win32.Foundation.PWSTR */,
   ReturnLength: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32.GetAppContainerNamedObjectPath(util.toPointer(Token), util.toPointer(AppContainerSid), ObjectPathLength, util.pwstrToFfi(ObjectPath), util.toPointer(ReturnLength)));
+  return util.boolFromFfi(libKERNEL32_dll.GetAppContainerNamedObjectPath(util.toPointer(Token), util.toPointer(AppContainerSid), ObjectPathLength, util.pwstrToFfi(ObjectPath), util.toPointer(ReturnLength)));
 }
 
 export function IsProcessInWDAGContainer(
   Reserved: Deno.PointerValue | Uint8Array | null /* ptr */,
   isProcessInWDAGContainer: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libapi_ms_win_security_isolatedcontainer_l1_1_1.IsProcessInWDAGContainer(util.toPointer(Reserved), util.toPointer(isProcessInWDAGContainer)));
+  return util.pointerFromFfi(libapi_ms_win_security_isolatedcontainer_l1_1_1_dll.IsProcessInWDAGContainer(util.toPointer(Reserved), util.toPointer(isProcessInWDAGContainer)));
 }
 
 export function IsProcessInIsolatedContainer(
   isProcessInIsolatedContainer: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libapi_ms_win_security_isolatedcontainer_l1_1_0.IsProcessInIsolatedContainer(util.toPointer(isProcessInIsolatedContainer)));
+  return util.pointerFromFfi(libapi_ms_win_security_isolatedcontainer_l1_1_0_dll.IsProcessInIsolatedContainer(util.toPointer(isProcessInIsolatedContainer)));
 }
 
 export function IsProcessInIsolatedWindowsEnvironment(
   isProcessInIsolatedWindowsEnvironment: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libIsolatedWindowsEnvironmentUtils.IsProcessInIsolatedWindowsEnvironment(util.toPointer(isProcessInIsolatedWindowsEnvironment)));
+  return util.pointerFromFfi(libIsolatedWindowsEnvironmentUtils_dll.IsProcessInIsolatedWindowsEnvironment(util.toPointer(isProcessInIsolatedWindowsEnvironment)));
 }
 
 export function CreateAppContainerProfile(
@@ -143,27 +143,27 @@ export function CreateAppContainerProfile(
   dwCapabilityCount: number /* u32 */,
   ppSidAppContainerSid: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libUSERENV.CreateAppContainerProfile(util.pwstrToFfi(pszAppContainerName), util.pwstrToFfi(pszDisplayName), util.pwstrToFfi(pszDescription), util.toPointer(pCapabilities), dwCapabilityCount, util.toPointer(ppSidAppContainerSid)));
+  return util.pointerFromFfi(libUSERENV_dll.CreateAppContainerProfile(util.pwstrToFfi(pszAppContainerName), util.pwstrToFfi(pszDisplayName), util.pwstrToFfi(pszDescription), util.toPointer(pCapabilities), dwCapabilityCount, util.toPointer(ppSidAppContainerSid)));
 }
 
 export function DeleteAppContainerProfile(
   pszAppContainerName: string | null /* Windows.Win32.Foundation.PWSTR */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libUSERENV.DeleteAppContainerProfile(util.pwstrToFfi(pszAppContainerName)));
+  return util.pointerFromFfi(libUSERENV_dll.DeleteAppContainerProfile(util.pwstrToFfi(pszAppContainerName)));
 }
 
 export function GetAppContainerRegistryLocation(
   desiredAccess: number /* u32 */,
   phAppContainerKey: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libUSERENV.GetAppContainerRegistryLocation(desiredAccess, util.toPointer(phAppContainerKey)));
+  return util.pointerFromFfi(libUSERENV_dll.GetAppContainerRegistryLocation(desiredAccess, util.toPointer(phAppContainerKey)));
 }
 
 export function GetAppContainerFolderPath(
   pszAppContainerSid: string | null /* Windows.Win32.Foundation.PWSTR */,
   ppszPath: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libUSERENV.GetAppContainerFolderPath(util.pwstrToFfi(pszAppContainerSid), util.toPointer(ppszPath)));
+  return util.pointerFromFfi(libUSERENV_dll.GetAppContainerFolderPath(util.pwstrToFfi(pszAppContainerSid), util.toPointer(ppszPath)));
 }
 
 export function DeriveRestrictedAppContainerSidFromAppContainerSidAndRestrictedName(
@@ -171,13 +171,13 @@ export function DeriveRestrictedAppContainerSidFromAppContainerSidAndRestrictedN
   pszRestrictedAppContainerName: string | null /* Windows.Win32.Foundation.PWSTR */,
   ppsidRestrictedAppContainerSid: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libUSERENV.DeriveRestrictedAppContainerSidFromAppContainerSidAndRestrictedName(util.toPointer(psidAppContainerSid), util.pwstrToFfi(pszRestrictedAppContainerName), util.toPointer(ppsidRestrictedAppContainerSid)));
+  return util.pointerFromFfi(libUSERENV_dll.DeriveRestrictedAppContainerSidFromAppContainerSidAndRestrictedName(util.toPointer(psidAppContainerSid), util.pwstrToFfi(pszRestrictedAppContainerName), util.toPointer(ppsidRestrictedAppContainerSid)));
 }
 
 export function DeriveAppContainerSidFromAppContainerName(
   pszAppContainerName: string | null /* Windows.Win32.Foundation.PWSTR */,
   ppsidAppContainerSid: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libUSERENV.DeriveAppContainerSidFromAppContainerName(util.pwstrToFfi(pszAppContainerName), util.toPointer(ppsidAppContainerSid)));
+  return util.pointerFromFfi(libUSERENV_dll.DeriveAppContainerSidFromAppContainerName(util.pwstrToFfi(pszAppContainerName), util.toPointer(ppsidAppContainerSid)));
 }
 

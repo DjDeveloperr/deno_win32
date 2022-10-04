@@ -11,7 +11,7 @@ export type HWND = Deno.PointerValue;
 // Native Libraries
 
 try {
-  var libWSClient = Deno.dlopen("WSClient", {
+  var libWSClient_dll = Deno.dlopen("WSClient.dll", {
     CheckDeveloperLicense: {
       parameters: ["pointer"],
       result: "pointer",
@@ -32,19 +32,19 @@ try {
 export function CheckDeveloperLicense(
   pExpiration: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libWSClient.CheckDeveloperLicense(util.toPointer(pExpiration)));
+  return util.pointerFromFfi(libWSClient_dll.CheckDeveloperLicense(util.toPointer(pExpiration)));
 }
 
 export function AcquireDeveloperLicense(
   hwndParent: Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */,
   pExpiration: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libWSClient.AcquireDeveloperLicense(util.hwndToFfi(hwndParent), util.toPointer(pExpiration)));
+  return util.pointerFromFfi(libWSClient_dll.AcquireDeveloperLicense(util.hwndToFfi(hwndParent), util.toPointer(pExpiration)));
 }
 
 export function RemoveDeveloperLicense(
   hwndParent: Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libWSClient.RemoveDeveloperLicense(util.hwndToFfi(hwndParent)));
+  return util.pointerFromFfi(libWSClient_dll.RemoveDeveloperLicense(util.hwndToFfi(hwndParent)));
 }
 

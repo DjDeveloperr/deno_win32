@@ -14,7 +14,7 @@ export type RDPSRAPI_APP_FLAGS = number;
 export type RDPSRAPI_MOUSE_BUTTON_TYPE = number;
 export type RDPSRAPI_KBD_CODE_TYPE = number;
 export type RDPSRAPI_KBD_SYNC_FLAG = number;
-export type __MIDL___MIDL_itf_rdpencomapi_0000_0027_0001 = number;
+export type RDPENCOMAPI_CONSTANTS = number;
 
 // Constants
 export const DISPID_RDPSRAPI_METHOD_OPEN = 100;
@@ -180,10 +180,10 @@ export const RDPSRAPI_KBD_SYNC_FLAG_KANA_LOCK = 8;
 export const CONST_MAX_CHANNEL_MESSAGE_SIZE = 1024;
 export const CONST_MAX_CHANNEL_NAME_LEN = 8;
 export const CONST_MAX_LEGACY_CHANNEL_MESSAGE_SIZE = 409600;
-export const CONST_ATTENDEE_ID_EVERYONE = "-1";
+export const CONST_ATTENDEE_ID_EVERYONE = `-1`;
 export const CONST_ATTENDEE_ID_HOST = 0;
 export const CONST_CONN_INTERVAL = 50;
-export const CONST_ATTENDEE_ID_DEFAULT = "-1";
+export const CONST_ATTENDEE_ID_DEFAULT = `-1`;
 
 // Structs
 

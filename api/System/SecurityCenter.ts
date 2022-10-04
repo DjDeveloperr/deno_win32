@@ -47,7 +47,7 @@ export type HANDLE = Deno.PointerValue;
 // Native Libraries
 
 try {
-  var libWSCAPI = Deno.dlopen("WSCAPI", {
+  var libWSCAPI_dll = Deno.dlopen("WSCAPI.dll", {
     WscRegisterForChanges: {
       parameters: ["pointer", "pointer", "pointer", "pointer"],
       result: "pointer",
@@ -83,33 +83,33 @@ export function WscRegisterForChanges(
   lpCallbackAddress: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Threading.LPTHREAD_START_ROUTINE */,
   pContext: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libWSCAPI.WscRegisterForChanges(util.toPointer(Reserved), util.toPointer(phCallbackRegistration), util.toPointer(lpCallbackAddress), util.toPointer(pContext)));
+  return util.pointerFromFfi(libWSCAPI_dll.WscRegisterForChanges(util.toPointer(Reserved), util.toPointer(phCallbackRegistration), util.toPointer(lpCallbackAddress), util.toPointer(pContext)));
 }
 
 export function WscUnRegisterChanges(
   hRegistrationHandle: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libWSCAPI.WscUnRegisterChanges(util.toPointer(hRegistrationHandle)));
+  return util.pointerFromFfi(libWSCAPI_dll.WscUnRegisterChanges(util.toPointer(hRegistrationHandle)));
 }
 
 export function WscRegisterForUserNotifications(): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libWSCAPI.WscRegisterForUserNotifications());
+  return util.pointerFromFfi(libWSCAPI_dll.WscRegisterForUserNotifications());
 }
 
 export function WscGetSecurityProviderHealth(
   Providers: number /* u32 */,
   pHealth: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libWSCAPI.WscGetSecurityProviderHealth(Providers, util.toPointer(pHealth)));
+  return util.pointerFromFfi(libWSCAPI_dll.WscGetSecurityProviderHealth(Providers, util.toPointer(pHealth)));
 }
 
 export function WscQueryAntiMalwareUri(): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libWSCAPI.WscQueryAntiMalwareUri());
+  return util.pointerFromFfi(libWSCAPI_dll.WscQueryAntiMalwareUri());
 }
 
 export function WscGetAntiMalwareUri(
   ppszUri: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libWSCAPI.WscGetAntiMalwareUri(util.toPointer(ppszUri)));
+  return util.pointerFromFfi(libWSCAPI_dll.WscGetAntiMalwareUri(util.toPointer(ppszUri)));
 }
 

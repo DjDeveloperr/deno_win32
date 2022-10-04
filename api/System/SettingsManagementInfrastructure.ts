@@ -12,6 +12,13 @@ export type WcmUserStatus = number;
 export type WcmNamespaceAccess = number;
 
 // Constants
+export const WCM_SETTINGS_ID_NAME = `name`;
+export const WCM_SETTINGS_ID_VERSION = `version`;
+export const WCM_SETTINGS_ID_LANGUAGE = `language`;
+export const WCM_SETTINGS_ID_ARCHITECTURE = `architecture`;
+export const WCM_SETTINGS_ID_TOKEN = `token`;
+export const WCM_SETTINGS_ID_URI = `uri`;
+export const WCM_SETTINGS_ID_VERSION_SCOPE = `versionScope`;
 export const WCM_SETTINGS_ID_FLAG_REFERENCE = 0;
 export const WCM_SETTINGS_ID_FLAG_DEFINITION = 1;
 export const LINK_STORE_TO_ENGINE_INSTANCE = 1;

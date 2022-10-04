@@ -12,8 +12,21 @@ export type NapNotifyType = number;
 export type RemoteConfigurationType = number;
 
 // Constants
+export const maxSoHAttributeCount = 100;
+export const maxSoHAttributeSize = 4000;
+export const minNetworkSoHSize = 12;
+export const maxNetworkSoHSize = 4000;
+export const maxStringLength = 1024;
+export const maxSystemHealthEntityCount = 20;
+export const maxEnforcerCount = 20;
+export const maxPrivateDataSize = 200;
+export const maxConnectionCountPerEnforcer = 20;
+export const freshSoHRequest = 1;
+export const shaFixup = 1;
+export const failureCategoryCount = 5;
 export const ComponentTypeEnforcementClientSoH = 1;
 export const ComponentTypeEnforcementClientRp = 2;
+export const percentageNotSupported = 101;
 export const isolationStateNotRestricted = 1;
 export const isolationStateInProbation = 2;
 export const isolationStateRestrictedAccess = 3;

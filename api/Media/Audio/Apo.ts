@@ -11,7 +11,7 @@ export type EAudioConstriction = number;
 export type AUDIO_SYSTEMEFFECT_STATE = number;
 export type APO_LOG_LEVEL = number;
 export type APO_NOTIFICATION_TYPE = number;
-export type __MIDL___MIDL_itf_mmdeviceapi_0000_0008_0002 = number;
+export type AUDIO_SYSTEMEFFECTS_PROPERTYSTORE_TYPE = number;
 
 // Constants
 export const APOERR_ALREADY_INITIALIZED = 9007201473234010113n;
@@ -565,8 +565,8 @@ export interface AUDIO_SYSTEMEFFECTS_PROPERTY_CHANGE_NOTIFICATION {
   endpoint: Uint8Array | Deno.PointerValue | null;
   /** System.Guid */
   propertyStoreContext: Uint8Array | Deno.PointerValue | null;
-  /** Windows.Win32.Media.Audio.__MIDL___MIDL_itf_mmdeviceapi_0000_0008_0002 */
-  propertyStoreType: __MIDL___MIDL_itf_mmdeviceapi_0000_0008_0002;
+  /** Windows.Win32.Media.Audio.AUDIO_SYSTEMEFFECTS_PROPERTYSTORE_TYPE */
+  propertyStoreType: AUDIO_SYSTEMEFFECTS_PROPERTYSTORE_TYPE;
   /** Windows.Win32.UI.Shell.PropertiesSystem.IPropertyStore */
   propertyStore: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.UI.Shell.PropertiesSystem.PROPERTYKEY */

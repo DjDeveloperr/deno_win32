@@ -43,6 +43,17 @@ export const SAFER_POLICY_UIFLAGS_MASK = 255;
 export const SAFER_POLICY_UIFLAGS_INFORMATION_PROMPT = 1;
 export const SAFER_POLICY_UIFLAGS_OPTION_PROMPT = 2;
 export const SAFER_POLICY_UIFLAGS_HIDDEN = 4;
+export const SRP_POLICY_EXE = `EXE`;
+export const SRP_POLICY_DLL = `DLL`;
+export const SRP_POLICY_MSI = `MSI`;
+export const SRP_POLICY_SCRIPT = `SCRIPT`;
+export const SRP_POLICY_SHELL = `SHELL`;
+export const SRP_POLICY_NOV2 = `IGNORESRPV2`;
+export const SRP_POLICY_APPX = `APPX`;
+export const SRP_POLICY_WLDPMSI = `WLDPMSI`;
+export const SRP_POLICY_WLDPSCRIPT = `WLDPSCRIPT`;
+export const SRP_POLICY_WLDPCONFIGCI = `WLDPCONFIGCI`;
+export const SRP_POLICY_MANAGEDINSTALLER = `MANAGEDINSTALLER`;
 export const SaferPolicyLevelList = 1;
 export const SaferPolicyEnableTransparentEnforcement = 2;
 export const SaferPolicyDefaultLevel = 3;
@@ -524,7 +535,7 @@ export type BOOLEAN = number;
 // Native Libraries
 
 try {
-  var libADVAPI32 = Deno.dlopen("ADVAPI32", {
+  var libADVAPI32_dll = Deno.dlopen("ADVAPI32.dll", {
     SaferGetPolicyInformation: {
       parameters: ["u32", "i32", "u32", "pointer", "pointer", "pointer"],
       result: "i32",
@@ -578,7 +589,7 @@ export function SaferGetPolicyInformation(
   InfoBufferRetSize: Deno.PointerValue | Uint8Array | null /* ptr */,
   lpReserved: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32.SaferGetPolicyInformation(dwScopeId, SaferPolicyInfoClass, InfoBufferSize, util.toPointer(InfoBuffer), util.toPointer(InfoBufferRetSize), util.toPointer(lpReserved)));
+  return util.boolFromFfi(libADVAPI32_dll.SaferGetPolicyInformation(dwScopeId, SaferPolicyInfoClass, InfoBufferSize, util.toPointer(InfoBuffer), util.toPointer(InfoBufferRetSize), util.toPointer(lpReserved)));
 }
 
 export function SaferSetPolicyInformation(
@@ -588,7 +599,7 @@ export function SaferSetPolicyInformation(
   InfoBuffer: Deno.PointerValue | Uint8Array | null /* ptr */,
   lpReserved: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32.SaferSetPolicyInformation(dwScopeId, SaferPolicyInfoClass, InfoBufferSize, util.toPointer(InfoBuffer), util.toPointer(lpReserved)));
+  return util.boolFromFfi(libADVAPI32_dll.SaferSetPolicyInformation(dwScopeId, SaferPolicyInfoClass, InfoBufferSize, util.toPointer(InfoBuffer), util.toPointer(lpReserved)));
 }
 
 export function SaferCreateLevel(
@@ -598,13 +609,13 @@ export function SaferCreateLevel(
   pLevelHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
   lpReserved: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32.SaferCreateLevel(dwScopeId, dwLevelId, OpenFlags, util.toPointer(pLevelHandle), util.toPointer(lpReserved)));
+  return util.boolFromFfi(libADVAPI32_dll.SaferCreateLevel(dwScopeId, dwLevelId, OpenFlags, util.toPointer(pLevelHandle), util.toPointer(lpReserved)));
 }
 
 export function SaferCloseLevel(
   hLevelHandle: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Security.SAFER_LEVEL_HANDLE */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32.SaferCloseLevel(util.toPointer(hLevelHandle)));
+  return util.boolFromFfi(libADVAPI32_dll.SaferCloseLevel(util.toPointer(hLevelHandle)));
 }
 
 export function SaferIdentifyLevel(
@@ -613,7 +624,7 @@ export function SaferIdentifyLevel(
   pLevelHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
   lpReserved: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32.SaferIdentifyLevel(dwNumProperties, util.toPointer(pCodeProperties), util.toPointer(pLevelHandle), util.toPointer(lpReserved)));
+  return util.boolFromFfi(libADVAPI32_dll.SaferIdentifyLevel(dwNumProperties, util.toPointer(pCodeProperties), util.toPointer(pLevelHandle), util.toPointer(lpReserved)));
 }
 
 export function SaferComputeTokenFromLevel(
@@ -623,7 +634,7 @@ export function SaferComputeTokenFromLevel(
   dwFlags: SAFER_COMPUTE_TOKEN_FROM_LEVEL_FLAGS /* Windows.Win32.Security.AppLocker.SAFER_COMPUTE_TOKEN_FROM_LEVEL_FLAGS */,
   lpReserved: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32.SaferComputeTokenFromLevel(util.toPointer(LevelHandle), util.toPointer(InAccessToken), util.toPointer(OutAccessToken), dwFlags, util.toPointer(lpReserved)));
+  return util.boolFromFfi(libADVAPI32_dll.SaferComputeTokenFromLevel(util.toPointer(LevelHandle), util.toPointer(InAccessToken), util.toPointer(OutAccessToken), dwFlags, util.toPointer(lpReserved)));
 }
 
 export function SaferGetLevelInformation(
@@ -633,7 +644,7 @@ export function SaferGetLevelInformation(
   dwInBufferSize: number /* u32 */,
   lpdwOutBufferSize: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32.SaferGetLevelInformation(util.toPointer(LevelHandle), dwInfoType, util.toPointer(lpQueryBuffer), dwInBufferSize, util.toPointer(lpdwOutBufferSize)));
+  return util.boolFromFfi(libADVAPI32_dll.SaferGetLevelInformation(util.toPointer(LevelHandle), dwInfoType, util.toPointer(lpQueryBuffer), dwInBufferSize, util.toPointer(lpdwOutBufferSize)));
 }
 
 export function SaferSetLevelInformation(
@@ -642,7 +653,7 @@ export function SaferSetLevelInformation(
   lpQueryBuffer: Deno.PointerValue | Uint8Array | null /* ptr */,
   dwInBufferSize: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32.SaferSetLevelInformation(util.toPointer(LevelHandle), dwInfoType, util.toPointer(lpQueryBuffer), dwInBufferSize));
+  return util.boolFromFfi(libADVAPI32_dll.SaferSetLevelInformation(util.toPointer(LevelHandle), dwInfoType, util.toPointer(lpQueryBuffer), dwInBufferSize));
 }
 
 export function SaferRecordEventLogEntry(
@@ -650,13 +661,13 @@ export function SaferRecordEventLogEntry(
   szTargetPath: string | null /* Windows.Win32.Foundation.PWSTR */,
   lpReserved: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32.SaferRecordEventLogEntry(util.toPointer(hLevel), util.pwstrToFfi(szTargetPath), util.toPointer(lpReserved)));
+  return util.boolFromFfi(libADVAPI32_dll.SaferRecordEventLogEntry(util.toPointer(hLevel), util.pwstrToFfi(szTargetPath), util.toPointer(lpReserved)));
 }
 
 export function SaferiIsExecutableFileType(
   szFullPathname: string | null /* Windows.Win32.Foundation.PWSTR */,
   bFromShellExecute: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.BOOLEAN */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32.SaferiIsExecutableFileType(util.pwstrToFfi(szFullPathname), util.toPointer(bFromShellExecute)));
+  return util.boolFromFfi(libADVAPI32_dll.SaferiIsExecutableFileType(util.pwstrToFfi(szFullPathname), util.toPointer(bFromShellExecute)));
 }
 

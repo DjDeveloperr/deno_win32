@@ -46,91 +46,91 @@ export const XmlReaderProperty_ReadState = 5;
 export const XmlReaderProperty_MaxElementDepth = 6;
 export const XmlReaderProperty_MaxEntityExpansion = 7;
 export const _XmlReaderProperty_Last = 7;
-export const MX_E_MX = "-1072894464";
-export const MX_E_INPUTEND = "-1072894463";
-export const MX_E_ENCODING = "-1072894462";
-export const MX_E_ENCODINGSWITCH = "-1072894461";
-export const MX_E_ENCODINGSIGNATURE = "-1072894460";
-export const WC_E_WC = "-1072894432";
-export const WC_E_WHITESPACE = "-1072894431";
-export const WC_E_SEMICOLON = "-1072894430";
-export const WC_E_GREATERTHAN = "-1072894429";
-export const WC_E_QUOTE = "-1072894428";
-export const WC_E_EQUAL = "-1072894427";
-export const WC_E_LESSTHAN = "-1072894426";
-export const WC_E_HEXDIGIT = "-1072894425";
-export const WC_E_DIGIT = "-1072894424";
-export const WC_E_LEFTBRACKET = "-1072894423";
-export const WC_E_LEFTPAREN = "-1072894422";
-export const WC_E_XMLCHARACTER = "-1072894421";
-export const WC_E_NAMECHARACTER = "-1072894420";
-export const WC_E_SYNTAX = "-1072894419";
-export const WC_E_CDSECT = "-1072894418";
-export const WC_E_COMMENT = "-1072894417";
-export const WC_E_CONDSECT = "-1072894416";
-export const WC_E_DECLATTLIST = "-1072894415";
-export const WC_E_DECLDOCTYPE = "-1072894414";
-export const WC_E_DECLELEMENT = "-1072894413";
-export const WC_E_DECLENTITY = "-1072894412";
-export const WC_E_DECLNOTATION = "-1072894411";
-export const WC_E_NDATA = "-1072894410";
-export const WC_E_PUBLIC = "-1072894409";
-export const WC_E_SYSTEM = "-1072894408";
-export const WC_E_NAME = "-1072894407";
-export const WC_E_ROOTELEMENT = "-1072894406";
-export const WC_E_ELEMENTMATCH = "-1072894405";
-export const WC_E_UNIQUEATTRIBUTE = "-1072894404";
-export const WC_E_TEXTXMLDECL = "-1072894403";
-export const WC_E_LEADINGXML = "-1072894402";
-export const WC_E_TEXTDECL = "-1072894401";
-export const WC_E_XMLDECL = "-1072894400";
-export const WC_E_ENCNAME = "-1072894399";
-export const WC_E_PUBLICID = "-1072894398";
-export const WC_E_PESINTERNALSUBSET = "-1072894397";
-export const WC_E_PESBETWEENDECLS = "-1072894396";
-export const WC_E_NORECURSION = "-1072894395";
-export const WC_E_ENTITYCONTENT = "-1072894394";
-export const WC_E_UNDECLAREDENTITY = "-1072894393";
-export const WC_E_PARSEDENTITY = "-1072894392";
-export const WC_E_NOEXTERNALENTITYREF = "-1072894391";
-export const WC_E_PI = "-1072894390";
-export const WC_E_SYSTEMID = "-1072894389";
-export const WC_E_QUESTIONMARK = "-1072894388";
-export const WC_E_CDSECTEND = "-1072894387";
-export const WC_E_MOREDATA = "-1072894386";
-export const WC_E_DTDPROHIBITED = "-1072894385";
-export const WC_E_INVALIDXMLSPACE = "-1072894384";
-export const NC_E_NC = "-1072894368";
-export const NC_E_QNAMECHARACTER = "-1072894367";
-export const NC_E_QNAMECOLON = "-1072894366";
-export const NC_E_NAMECOLON = "-1072894365";
-export const NC_E_DECLAREDPREFIX = "-1072894364";
-export const NC_E_UNDECLAREDPREFIX = "-1072894363";
-export const NC_E_EMPTYURI = "-1072894362";
-export const NC_E_XMLPREFIXRESERVED = "-1072894361";
-export const NC_E_XMLNSPREFIXRESERVED = "-1072894360";
-export const NC_E_XMLURIRESERVED = "-1072894359";
-export const NC_E_XMLNSURIRESERVED = "-1072894358";
-export const SC_E_SC = "-1072894336";
-export const SC_E_MAXELEMENTDEPTH = "-1072894335";
-export const SC_E_MAXENTITYEXPANSION = "-1072894334";
-export const WR_E_WR = "-1072894208";
-export const WR_E_NONWHITESPACE = "-1072894207";
-export const WR_E_NSPREFIXDECLARED = "-1072894206";
-export const WR_E_NSPREFIXWITHEMPTYNSURI = "-1072894205";
-export const WR_E_DUPLICATEATTRIBUTE = "-1072894204";
-export const WR_E_XMLNSPREFIXDECLARATION = "-1072894203";
-export const WR_E_XMLPREFIXDECLARATION = "-1072894202";
-export const WR_E_XMLURIDECLARATION = "-1072894201";
-export const WR_E_XMLNSURIDECLARATION = "-1072894200";
-export const WR_E_NAMESPACEUNDECLARED = "-1072894199";
-export const WR_E_INVALIDXMLSPACE = "-1072894198";
-export const WR_E_INVALIDACTION = "-1072894197";
-export const WR_E_INVALIDSURROGATEPAIR = "-1072894196";
-export const XML_E_INVALID_DECIMAL = "-1072898019";
-export const XML_E_INVALID_HEXIDECIMAL = "-1072898018";
-export const XML_E_INVALID_UNICODE = "-1072898017";
-export const XML_E_INVALIDENCODING = "-1072897938";
+export const MX_E_MX = `-1072894464`;
+export const MX_E_INPUTEND = `-1072894463`;
+export const MX_E_ENCODING = `-1072894462`;
+export const MX_E_ENCODINGSWITCH = `-1072894461`;
+export const MX_E_ENCODINGSIGNATURE = `-1072894460`;
+export const WC_E_WC = `-1072894432`;
+export const WC_E_WHITESPACE = `-1072894431`;
+export const WC_E_SEMICOLON = `-1072894430`;
+export const WC_E_GREATERTHAN = `-1072894429`;
+export const WC_E_QUOTE = `-1072894428`;
+export const WC_E_EQUAL = `-1072894427`;
+export const WC_E_LESSTHAN = `-1072894426`;
+export const WC_E_HEXDIGIT = `-1072894425`;
+export const WC_E_DIGIT = `-1072894424`;
+export const WC_E_LEFTBRACKET = `-1072894423`;
+export const WC_E_LEFTPAREN = `-1072894422`;
+export const WC_E_XMLCHARACTER = `-1072894421`;
+export const WC_E_NAMECHARACTER = `-1072894420`;
+export const WC_E_SYNTAX = `-1072894419`;
+export const WC_E_CDSECT = `-1072894418`;
+export const WC_E_COMMENT = `-1072894417`;
+export const WC_E_CONDSECT = `-1072894416`;
+export const WC_E_DECLATTLIST = `-1072894415`;
+export const WC_E_DECLDOCTYPE = `-1072894414`;
+export const WC_E_DECLELEMENT = `-1072894413`;
+export const WC_E_DECLENTITY = `-1072894412`;
+export const WC_E_DECLNOTATION = `-1072894411`;
+export const WC_E_NDATA = `-1072894410`;
+export const WC_E_PUBLIC = `-1072894409`;
+export const WC_E_SYSTEM = `-1072894408`;
+export const WC_E_NAME = `-1072894407`;
+export const WC_E_ROOTELEMENT = `-1072894406`;
+export const WC_E_ELEMENTMATCH = `-1072894405`;
+export const WC_E_UNIQUEATTRIBUTE = `-1072894404`;
+export const WC_E_TEXTXMLDECL = `-1072894403`;
+export const WC_E_LEADINGXML = `-1072894402`;
+export const WC_E_TEXTDECL = `-1072894401`;
+export const WC_E_XMLDECL = `-1072894400`;
+export const WC_E_ENCNAME = `-1072894399`;
+export const WC_E_PUBLICID = `-1072894398`;
+export const WC_E_PESINTERNALSUBSET = `-1072894397`;
+export const WC_E_PESBETWEENDECLS = `-1072894396`;
+export const WC_E_NORECURSION = `-1072894395`;
+export const WC_E_ENTITYCONTENT = `-1072894394`;
+export const WC_E_UNDECLAREDENTITY = `-1072894393`;
+export const WC_E_PARSEDENTITY = `-1072894392`;
+export const WC_E_NOEXTERNALENTITYREF = `-1072894391`;
+export const WC_E_PI = `-1072894390`;
+export const WC_E_SYSTEMID = `-1072894389`;
+export const WC_E_QUESTIONMARK = `-1072894388`;
+export const WC_E_CDSECTEND = `-1072894387`;
+export const WC_E_MOREDATA = `-1072894386`;
+export const WC_E_DTDPROHIBITED = `-1072894385`;
+export const WC_E_INVALIDXMLSPACE = `-1072894384`;
+export const NC_E_NC = `-1072894368`;
+export const NC_E_QNAMECHARACTER = `-1072894367`;
+export const NC_E_QNAMECOLON = `-1072894366`;
+export const NC_E_NAMECOLON = `-1072894365`;
+export const NC_E_DECLAREDPREFIX = `-1072894364`;
+export const NC_E_UNDECLAREDPREFIX = `-1072894363`;
+export const NC_E_EMPTYURI = `-1072894362`;
+export const NC_E_XMLPREFIXRESERVED = `-1072894361`;
+export const NC_E_XMLNSPREFIXRESERVED = `-1072894360`;
+export const NC_E_XMLURIRESERVED = `-1072894359`;
+export const NC_E_XMLNSURIRESERVED = `-1072894358`;
+export const SC_E_SC = `-1072894336`;
+export const SC_E_MAXELEMENTDEPTH = `-1072894335`;
+export const SC_E_MAXENTITYEXPANSION = `-1072894334`;
+export const WR_E_WR = `-1072894208`;
+export const WR_E_NONWHITESPACE = `-1072894207`;
+export const WR_E_NSPREFIXDECLARED = `-1072894206`;
+export const WR_E_NSPREFIXWITHEMPTYNSURI = `-1072894205`;
+export const WR_E_DUPLICATEATTRIBUTE = `-1072894204`;
+export const WR_E_XMLNSPREFIXDECLARATION = `-1072894203`;
+export const WR_E_XMLPREFIXDECLARATION = `-1072894202`;
+export const WR_E_XMLURIDECLARATION = `-1072894201`;
+export const WR_E_XMLNSURIDECLARATION = `-1072894200`;
+export const WR_E_NAMESPACEUNDECLARED = `-1072894199`;
+export const WR_E_INVALIDXMLSPACE = `-1072894198`;
+export const WR_E_INVALIDACTION = `-1072894197`;
+export const WR_E_INVALIDSURROGATEPAIR = `-1072894196`;
+export const XML_E_INVALID_DECIMAL = `-1072898019`;
+export const XML_E_INVALID_HEXIDECIMAL = `-1072898018`;
+export const XML_E_INVALID_UNICODE = `-1072898017`;
+export const XML_E_INVALIDENCODING = `-1072897938`;
 export const XmlStandalone_Omit = 0;
 export const XmlStandalone_Yes = 1;
 export const XmlStandalone_No = 2;
@@ -154,7 +154,7 @@ export type PWSTR = Deno.PointerValue | Uint8Array | null;
 // Native Libraries
 
 try {
-  var libXmlLite = Deno.dlopen("XmlLite", {
+  var libXmlLite_dll = Deno.dlopen("XmlLite.dll", {
     CreateXmlReader: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "pointer",
@@ -189,7 +189,7 @@ export function CreateXmlReader(
   ppvObject: Deno.PointerValue | Uint8Array | null /* ptr */,
   pMalloc: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Com.IMalloc */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libXmlLite.CreateXmlReader(util.toPointer(riid), util.toPointer(ppvObject), util.toPointer(pMalloc)));
+  return util.pointerFromFfi(libXmlLite_dll.CreateXmlReader(util.toPointer(riid), util.toPointer(ppvObject), util.toPointer(pMalloc)));
 }
 
 export function CreateXmlReaderInputWithEncodingCodePage(
@@ -200,7 +200,7 @@ export function CreateXmlReaderInputWithEncodingCodePage(
   pwszBaseUri: string | null /* Windows.Win32.Foundation.PWSTR */,
   ppInput: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libXmlLite.CreateXmlReaderInputWithEncodingCodePage(util.toPointer(pInputStream), util.toPointer(pMalloc), nEncodingCodePage, util.boolToFfi(fEncodingHint), util.pwstrToFfi(pwszBaseUri), util.toPointer(ppInput)));
+  return util.pointerFromFfi(libXmlLite_dll.CreateXmlReaderInputWithEncodingCodePage(util.toPointer(pInputStream), util.toPointer(pMalloc), nEncodingCodePage, util.boolToFfi(fEncodingHint), util.pwstrToFfi(pwszBaseUri), util.toPointer(ppInput)));
 }
 
 export function CreateXmlReaderInputWithEncodingName(
@@ -211,7 +211,7 @@ export function CreateXmlReaderInputWithEncodingName(
   pwszBaseUri: string | null /* Windows.Win32.Foundation.PWSTR */,
   ppInput: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libXmlLite.CreateXmlReaderInputWithEncodingName(util.toPointer(pInputStream), util.toPointer(pMalloc), util.pwstrToFfi(pwszEncodingName), util.boolToFfi(fEncodingHint), util.pwstrToFfi(pwszBaseUri), util.toPointer(ppInput)));
+  return util.pointerFromFfi(libXmlLite_dll.CreateXmlReaderInputWithEncodingName(util.toPointer(pInputStream), util.toPointer(pMalloc), util.pwstrToFfi(pwszEncodingName), util.boolToFfi(fEncodingHint), util.pwstrToFfi(pwszBaseUri), util.toPointer(ppInput)));
 }
 
 export function CreateXmlWriter(
@@ -219,7 +219,7 @@ export function CreateXmlWriter(
   ppvObject: Deno.PointerValue | Uint8Array | null /* ptr */,
   pMalloc: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Com.IMalloc */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libXmlLite.CreateXmlWriter(util.toPointer(riid), util.toPointer(ppvObject), util.toPointer(pMalloc)));
+  return util.pointerFromFfi(libXmlLite_dll.CreateXmlWriter(util.toPointer(riid), util.toPointer(ppvObject), util.toPointer(pMalloc)));
 }
 
 export function CreateXmlWriterOutputWithEncodingCodePage(
@@ -228,7 +228,7 @@ export function CreateXmlWriterOutputWithEncodingCodePage(
   nEncodingCodePage: number /* u32 */,
   ppOutput: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libXmlLite.CreateXmlWriterOutputWithEncodingCodePage(util.toPointer(pOutputStream), util.toPointer(pMalloc), nEncodingCodePage, util.toPointer(ppOutput)));
+  return util.pointerFromFfi(libXmlLite_dll.CreateXmlWriterOutputWithEncodingCodePage(util.toPointer(pOutputStream), util.toPointer(pMalloc), nEncodingCodePage, util.toPointer(ppOutput)));
 }
 
 export function CreateXmlWriterOutputWithEncodingName(
@@ -237,6 +237,6 @@ export function CreateXmlWriterOutputWithEncodingName(
   pwszEncodingName: string | null /* Windows.Win32.Foundation.PWSTR */,
   ppOutput: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libXmlLite.CreateXmlWriterOutputWithEncodingName(util.toPointer(pOutputStream), util.toPointer(pMalloc), util.pwstrToFfi(pwszEncodingName), util.toPointer(ppOutput)));
+  return util.pointerFromFfi(libXmlLite_dll.CreateXmlWriterOutputWithEncodingName(util.toPointer(pOutputStream), util.toPointer(pMalloc), util.pwstrToFfi(pwszEncodingName), util.toPointer(ppOutput)));
 }
 

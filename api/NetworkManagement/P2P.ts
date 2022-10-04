@@ -54,7 +54,11 @@ export const NS_PNRPNAME = 38;
 export const NS_PNRPCLOUD = 39;
 export const PNRPINFO_HINT = 1;
 export const PNRP_MAX_ENDPOINT_ADDRESSES = 10;
+export const WSZ_SCOPE_GLOBAL = `GLOBAL`;
+export const WSZ_SCOPE_SITELOCAL = `SITELOCAL`;
+export const WSZ_SCOPE_LINKLOCAL = `LINKLOCAL`;
 export const PNRP_MAX_EXTENDED_PAYLOAD_BYTES = 4096;
+export const PEER_PNRP_ALL_LINK_CLOUDS = `PEER_PNRP_ALL_LINKS`;
 export const WSA_PNRP_ERROR_BASE = 11500;
 export const WSA_PNRP_CLOUD_NOT_FOUND = 11501;
 export const WSA_PNRP_CLOUD_DISABLED = 11502;
@@ -3144,7 +3148,7 @@ export type HWND = Deno.PointerValue;
 // Native Libraries
 
 try {
-  var libP2PGRAPH = Deno.dlopen("P2PGRAPH", {
+  var libP2PGRAPH_dll = Deno.dlopen("P2PGRAPH.dll", {
     PeerGraphStartup: {
       parameters: ["u16", "pointer"],
       result: "pointer",
@@ -3297,7 +3301,7 @@ try {
 } catch(e) { /* ignore */ }
 
 try {
-  var libP2P = Deno.dlopen("P2P", {
+  var libP2P_dll = Deno.dlopen("P2P.dll", {
     PeerFreeData: {
       parameters: ["pointer"],
       result: "void",
@@ -3734,7 +3738,7 @@ try {
 } catch(e) { /* ignore */ }
 
 try {
-  var libdrtprov = Deno.dlopen("drtprov", {
+  var libdrtprov_dll = Deno.dlopen("drtprov.dll", {
     DrtCreatePnrpBootstrapResolver: {
       parameters: ["i32", "buffer", "buffer", "buffer", "pointer"],
       result: "pointer",
@@ -3775,7 +3779,7 @@ try {
 } catch(e) { /* ignore */ }
 
 try {
-  var libdrttransport = Deno.dlopen("drttransport", {
+  var libdrttransport_dll = Deno.dlopen("drttransport.dll", {
     DrtCreateIpv6UdpTransport: {
       parameters: ["i32", "u32", "u32", "pointer", "pointer"],
       result: "pointer",
@@ -3788,7 +3792,7 @@ try {
 } catch(e) { /* ignore */ }
 
 try {
-  var libdrt = Deno.dlopen("drt", {
+  var libdrt_dll = Deno.dlopen("drt.dll", {
     DrtOpen: {
       parameters: ["pointer", "pointer", "pointer", "pointer"],
       result: "pointer",
@@ -3857,7 +3861,7 @@ try {
 } catch(e) { /* ignore */ }
 
 try {
-  var libPeerDist = Deno.dlopen("PeerDist", {
+  var libPeerDist_dll = Deno.dlopen("PeerDist.dll", {
     PeerDistStartup: {
       parameters: ["u32", "pointer", "pointer"],
       result: "u32",
@@ -3979,24 +3983,24 @@ export function PeerGraphStartup(
   wVersionRequested: number /* u16 */,
   pVersionData: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libP2PGRAPH.PeerGraphStartup(wVersionRequested, util.toPointer(pVersionData)));
+  return util.pointerFromFfi(libP2PGRAPH_dll.PeerGraphStartup(wVersionRequested, util.toPointer(pVersionData)));
 }
 
 export function PeerGraphShutdown(): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libP2PGRAPH.PeerGraphShutdown());
+  return util.pointerFromFfi(libP2PGRAPH_dll.PeerGraphShutdown());
 }
 
 export function PeerGraphFreeData(
   pvData: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): void /* void */ {
-  return libP2PGRAPH.PeerGraphFreeData(util.toPointer(pvData));
+  return libP2PGRAPH_dll.PeerGraphFreeData(util.toPointer(pvData));
 }
 
 export function PeerGraphGetItemCount(
   hPeerEnum: Deno.PointerValue | Uint8Array | null /* ptr */,
   pCount: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libP2PGRAPH.PeerGraphGetItemCount(util.toPointer(hPeerEnum), util.toPointer(pCount)));
+  return util.pointerFromFfi(libP2PGRAPH_dll.PeerGraphGetItemCount(util.toPointer(hPeerEnum), util.toPointer(pCount)));
 }
 
 export function PeerGraphGetNextItem(
@@ -4004,13 +4008,13 @@ export function PeerGraphGetNextItem(
   pCount: Deno.PointerValue | Uint8Array | null /* ptr */,
   pppvItems: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libP2PGRAPH.PeerGraphGetNextItem(util.toPointer(hPeerEnum), util.toPointer(pCount), util.toPointer(pppvItems)));
+  return util.pointerFromFfi(libP2PGRAPH_dll.PeerGraphGetNextItem(util.toPointer(hPeerEnum), util.toPointer(pCount), util.toPointer(pppvItems)));
 }
 
 export function PeerGraphEndEnumeration(
   hPeerEnum: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libP2PGRAPH.PeerGraphEndEnumeration(util.toPointer(hPeerEnum)));
+  return util.pointerFromFfi(libP2PGRAPH_dll.PeerGraphEndEnumeration(util.toPointer(hPeerEnum)));
 }
 
 export function PeerGraphCreate(
@@ -4019,7 +4023,7 @@ export function PeerGraphCreate(
   pSecurityInterface: Deno.PointerValue | Uint8Array | null /* ptr */,
   phGraph: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libP2PGRAPH.PeerGraphCreate(util.toPointer(pGraphProperties), util.pwstrToFfi(pwzDatabaseName), util.toPointer(pSecurityInterface), util.toPointer(phGraph)));
+  return util.pointerFromFfi(libP2PGRAPH_dll.PeerGraphCreate(util.toPointer(pGraphProperties), util.pwstrToFfi(pwzDatabaseName), util.toPointer(pSecurityInterface), util.toPointer(phGraph)));
 }
 
 export function PeerGraphOpen(
@@ -4031,7 +4035,7 @@ export function PeerGraphOpen(
   pRecordTypeSyncPrecedence: Deno.PointerValue | Uint8Array | null /* ptr */,
   phGraph: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libP2PGRAPH.PeerGraphOpen(util.pwstrToFfi(pwzGraphId), util.pwstrToFfi(pwzPeerId), util.pwstrToFfi(pwzDatabaseName), util.toPointer(pSecurityInterface), cRecordTypeSyncPrecedence, util.toPointer(pRecordTypeSyncPrecedence), util.toPointer(phGraph)));
+  return util.pointerFromFfi(libP2PGRAPH_dll.PeerGraphOpen(util.pwstrToFfi(pwzGraphId), util.pwstrToFfi(pwzPeerId), util.pwstrToFfi(pwzDatabaseName), util.toPointer(pSecurityInterface), cRecordTypeSyncPrecedence, util.toPointer(pRecordTypeSyncPrecedence), util.toPointer(phGraph)));
 }
 
 export function PeerGraphListen(
@@ -4040,7 +4044,7 @@ export function PeerGraphListen(
   dwScopeId: number /* u32 */,
   wPort: number /* u16 */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libP2PGRAPH.PeerGraphListen(util.toPointer(hGraph), dwScope, dwScopeId, wPort));
+  return util.pointerFromFfi(libP2PGRAPH_dll.PeerGraphListen(util.toPointer(hGraph), dwScope, dwScopeId, wPort));
 }
 
 export function PeerGraphConnect(
@@ -4049,13 +4053,13 @@ export function PeerGraphConnect(
   pAddress: Deno.PointerValue | Uint8Array | null /* ptr */,
   pullConnectionId: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libP2PGRAPH.PeerGraphConnect(util.toPointer(hGraph), util.pwstrToFfi(pwzPeerId), util.toPointer(pAddress), util.toPointer(pullConnectionId)));
+  return util.pointerFromFfi(libP2PGRAPH_dll.PeerGraphConnect(util.toPointer(hGraph), util.pwstrToFfi(pwzPeerId), util.toPointer(pAddress), util.toPointer(pullConnectionId)));
 }
 
 export function PeerGraphClose(
   hGraph: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libP2PGRAPH.PeerGraphClose(util.toPointer(hGraph)));
+  return util.pointerFromFfi(libP2PGRAPH_dll.PeerGraphClose(util.toPointer(hGraph)));
 }
 
 export function PeerGraphDelete(
@@ -4063,28 +4067,28 @@ export function PeerGraphDelete(
   pwzPeerId: string | null /* Windows.Win32.Foundation.PWSTR */,
   pwzDatabaseName: string | null /* Windows.Win32.Foundation.PWSTR */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libP2PGRAPH.PeerGraphDelete(util.pwstrToFfi(pwzGraphId), util.pwstrToFfi(pwzPeerId), util.pwstrToFfi(pwzDatabaseName)));
+  return util.pointerFromFfi(libP2PGRAPH_dll.PeerGraphDelete(util.pwstrToFfi(pwzGraphId), util.pwstrToFfi(pwzPeerId), util.pwstrToFfi(pwzDatabaseName)));
 }
 
 export function PeerGraphGetStatus(
   hGraph: Deno.PointerValue | Uint8Array | null /* ptr */,
   pdwStatus: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libP2PGRAPH.PeerGraphGetStatus(util.toPointer(hGraph), util.toPointer(pdwStatus)));
+  return util.pointerFromFfi(libP2PGRAPH_dll.PeerGraphGetStatus(util.toPointer(hGraph), util.toPointer(pdwStatus)));
 }
 
 export function PeerGraphGetProperties(
   hGraph: Deno.PointerValue | Uint8Array | null /* ptr */,
   ppGraphProperties: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libP2PGRAPH.PeerGraphGetProperties(util.toPointer(hGraph), util.toPointer(ppGraphProperties)));
+  return util.pointerFromFfi(libP2PGRAPH_dll.PeerGraphGetProperties(util.toPointer(hGraph), util.toPointer(ppGraphProperties)));
 }
 
 export function PeerGraphSetProperties(
   hGraph: Deno.PointerValue | Uint8Array | null /* ptr */,
   pGraphProperties: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libP2PGRAPH.PeerGraphSetProperties(util.toPointer(hGraph), util.toPointer(pGraphProperties)));
+  return util.pointerFromFfi(libP2PGRAPH_dll.PeerGraphSetProperties(util.toPointer(hGraph), util.toPointer(pGraphProperties)));
 }
 
 export function PeerGraphRegisterEvent(
@@ -4094,20 +4098,20 @@ export function PeerGraphRegisterEvent(
   pEventRegistrations: Deno.PointerValue | Uint8Array | null /* ptr */,
   phPeerEvent: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libP2PGRAPH.PeerGraphRegisterEvent(util.toPointer(hGraph), util.toPointer(hEvent), cEventRegistrations, util.toPointer(pEventRegistrations), util.toPointer(phPeerEvent)));
+  return util.pointerFromFfi(libP2PGRAPH_dll.PeerGraphRegisterEvent(util.toPointer(hGraph), util.toPointer(hEvent), cEventRegistrations, util.toPointer(pEventRegistrations), util.toPointer(phPeerEvent)));
 }
 
 export function PeerGraphUnregisterEvent(
   hPeerEvent: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libP2PGRAPH.PeerGraphUnregisterEvent(util.toPointer(hPeerEvent)));
+  return util.pointerFromFfi(libP2PGRAPH_dll.PeerGraphUnregisterEvent(util.toPointer(hPeerEvent)));
 }
 
 export function PeerGraphGetEventData(
   hPeerEvent: Deno.PointerValue | Uint8Array | null /* ptr */,
   ppEventData: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libP2PGRAPH.PeerGraphGetEventData(util.toPointer(hPeerEvent), util.toPointer(ppEventData)));
+  return util.pointerFromFfi(libP2PGRAPH_dll.PeerGraphGetEventData(util.toPointer(hPeerEvent), util.toPointer(ppEventData)));
 }
 
 export function PeerGraphGetRecord(
@@ -4115,7 +4119,7 @@ export function PeerGraphGetRecord(
   pRecordId: Deno.PointerValue | Uint8Array | null /* ptr */,
   ppRecord: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libP2PGRAPH.PeerGraphGetRecord(util.toPointer(hGraph), util.toPointer(pRecordId), util.toPointer(ppRecord)));
+  return util.pointerFromFfi(libP2PGRAPH_dll.PeerGraphGetRecord(util.toPointer(hGraph), util.toPointer(pRecordId), util.toPointer(ppRecord)));
 }
 
 export function PeerGraphAddRecord(
@@ -4123,14 +4127,14 @@ export function PeerGraphAddRecord(
   pRecord: Deno.PointerValue | Uint8Array | null /* ptr */,
   pRecordId: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libP2PGRAPH.PeerGraphAddRecord(util.toPointer(hGraph), util.toPointer(pRecord), util.toPointer(pRecordId)));
+  return util.pointerFromFfi(libP2PGRAPH_dll.PeerGraphAddRecord(util.toPointer(hGraph), util.toPointer(pRecord), util.toPointer(pRecordId)));
 }
 
 export function PeerGraphUpdateRecord(
   hGraph: Deno.PointerValue | Uint8Array | null /* ptr */,
   pRecord: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libP2PGRAPH.PeerGraphUpdateRecord(util.toPointer(hGraph), util.toPointer(pRecord)));
+  return util.pointerFromFfi(libP2PGRAPH_dll.PeerGraphUpdateRecord(util.toPointer(hGraph), util.toPointer(pRecord)));
 }
 
 export function PeerGraphDeleteRecord(
@@ -4138,7 +4142,7 @@ export function PeerGraphDeleteRecord(
   pRecordId: Deno.PointerValue | Uint8Array | null /* ptr */,
   fLocal: boolean /* Windows.Win32.Foundation.BOOL */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libP2PGRAPH.PeerGraphDeleteRecord(util.toPointer(hGraph), util.toPointer(pRecordId), util.boolToFfi(fLocal)));
+  return util.pointerFromFfi(libP2PGRAPH_dll.PeerGraphDeleteRecord(util.toPointer(hGraph), util.toPointer(pRecordId), util.boolToFfi(fLocal)));
 }
 
 export function PeerGraphEnumRecords(
@@ -4147,7 +4151,7 @@ export function PeerGraphEnumRecords(
   pwzPeerId: string | null /* Windows.Win32.Foundation.PWSTR */,
   phPeerEnum: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libP2PGRAPH.PeerGraphEnumRecords(util.toPointer(hGraph), util.toPointer(pRecordType), util.pwstrToFfi(pwzPeerId), util.toPointer(phPeerEnum)));
+  return util.pointerFromFfi(libP2PGRAPH_dll.PeerGraphEnumRecords(util.toPointer(hGraph), util.toPointer(pRecordType), util.pwstrToFfi(pwzPeerId), util.toPointer(phPeerEnum)));
 }
 
 export function PeerGraphSearchRecords(
@@ -4155,21 +4159,21 @@ export function PeerGraphSearchRecords(
   pwzCriteria: string | null /* Windows.Win32.Foundation.PWSTR */,
   phPeerEnum: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libP2PGRAPH.PeerGraphSearchRecords(util.toPointer(hGraph), util.pwstrToFfi(pwzCriteria), util.toPointer(phPeerEnum)));
+  return util.pointerFromFfi(libP2PGRAPH_dll.PeerGraphSearchRecords(util.toPointer(hGraph), util.pwstrToFfi(pwzCriteria), util.toPointer(phPeerEnum)));
 }
 
 export function PeerGraphExportDatabase(
   hGraph: Deno.PointerValue | Uint8Array | null /* ptr */,
   pwzFilePath: string | null /* Windows.Win32.Foundation.PWSTR */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libP2PGRAPH.PeerGraphExportDatabase(util.toPointer(hGraph), util.pwstrToFfi(pwzFilePath)));
+  return util.pointerFromFfi(libP2PGRAPH_dll.PeerGraphExportDatabase(util.toPointer(hGraph), util.pwstrToFfi(pwzFilePath)));
 }
 
 export function PeerGraphImportDatabase(
   hGraph: Deno.PointerValue | Uint8Array | null /* ptr */,
   pwzFilePath: string | null /* Windows.Win32.Foundation.PWSTR */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libP2PGRAPH.PeerGraphImportDatabase(util.toPointer(hGraph), util.pwstrToFfi(pwzFilePath)));
+  return util.pointerFromFfi(libP2PGRAPH_dll.PeerGraphImportDatabase(util.toPointer(hGraph), util.pwstrToFfi(pwzFilePath)));
 }
 
 export function PeerGraphValidateDeferredRecords(
@@ -4177,7 +4181,7 @@ export function PeerGraphValidateDeferredRecords(
   cRecordIds: number /* u32 */,
   pRecordIds: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libP2PGRAPH.PeerGraphValidateDeferredRecords(util.toPointer(hGraph), cRecordIds, util.toPointer(pRecordIds)));
+  return util.pointerFromFfi(libP2PGRAPH_dll.PeerGraphValidateDeferredRecords(util.toPointer(hGraph), cRecordIds, util.toPointer(pRecordIds)));
 }
 
 export function PeerGraphOpenDirectConnection(
@@ -4186,7 +4190,7 @@ export function PeerGraphOpenDirectConnection(
   pAddress: Deno.PointerValue | Uint8Array | null /* ptr */,
   pullConnectionId: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libP2PGRAPH.PeerGraphOpenDirectConnection(util.toPointer(hGraph), util.pwstrToFfi(pwzPeerId), util.toPointer(pAddress), util.toPointer(pullConnectionId)));
+  return util.pointerFromFfi(libP2PGRAPH_dll.PeerGraphOpenDirectConnection(util.toPointer(hGraph), util.pwstrToFfi(pwzPeerId), util.toPointer(pAddress), util.toPointer(pullConnectionId)));
 }
 
 export function PeerGraphSendData(
@@ -4196,14 +4200,14 @@ export function PeerGraphSendData(
   cbData: number /* u32 */,
   pvData: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libP2PGRAPH.PeerGraphSendData(util.toPointer(hGraph), ullConnectionId, util.toPointer(pType), cbData, util.toPointer(pvData)));
+  return util.pointerFromFfi(libP2PGRAPH_dll.PeerGraphSendData(util.toPointer(hGraph), ullConnectionId, util.toPointer(pType), cbData, util.toPointer(pvData)));
 }
 
 export function PeerGraphCloseDirectConnection(
   hGraph: Deno.PointerValue | Uint8Array | null /* ptr */,
   ullConnectionId: Deno.PointerValue /* u64 */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libP2PGRAPH.PeerGraphCloseDirectConnection(util.toPointer(hGraph), ullConnectionId));
+  return util.pointerFromFfi(libP2PGRAPH_dll.PeerGraphCloseDirectConnection(util.toPointer(hGraph), ullConnectionId));
 }
 
 export function PeerGraphEnumConnections(
@@ -4211,7 +4215,7 @@ export function PeerGraphEnumConnections(
   dwFlags: number /* u32 */,
   phPeerEnum: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libP2PGRAPH.PeerGraphEnumConnections(util.toPointer(hGraph), dwFlags, util.toPointer(phPeerEnum)));
+  return util.pointerFromFfi(libP2PGRAPH_dll.PeerGraphEnumConnections(util.toPointer(hGraph), dwFlags, util.toPointer(phPeerEnum)));
 }
 
 export function PeerGraphEnumNodes(
@@ -4219,14 +4223,14 @@ export function PeerGraphEnumNodes(
   pwzPeerId: string | null /* Windows.Win32.Foundation.PWSTR */,
   phPeerEnum: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libP2PGRAPH.PeerGraphEnumNodes(util.toPointer(hGraph), util.pwstrToFfi(pwzPeerId), util.toPointer(phPeerEnum)));
+  return util.pointerFromFfi(libP2PGRAPH_dll.PeerGraphEnumNodes(util.toPointer(hGraph), util.pwstrToFfi(pwzPeerId), util.toPointer(phPeerEnum)));
 }
 
 export function PeerGraphSetPresence(
   hGraph: Deno.PointerValue | Uint8Array | null /* ptr */,
   fPresent: boolean /* Windows.Win32.Foundation.BOOL */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libP2PGRAPH.PeerGraphSetPresence(util.toPointer(hGraph), util.boolToFfi(fPresent)));
+  return util.pointerFromFfi(libP2PGRAPH_dll.PeerGraphSetPresence(util.toPointer(hGraph), util.boolToFfi(fPresent)));
 }
 
 export function PeerGraphGetNodeInfo(
@@ -4234,14 +4238,14 @@ export function PeerGraphGetNodeInfo(
   ullNodeId: Deno.PointerValue /* u64 */,
   ppNodeInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libP2PGRAPH.PeerGraphGetNodeInfo(util.toPointer(hGraph), ullNodeId, util.toPointer(ppNodeInfo)));
+  return util.pointerFromFfi(libP2PGRAPH_dll.PeerGraphGetNodeInfo(util.toPointer(hGraph), ullNodeId, util.toPointer(ppNodeInfo)));
 }
 
 export function PeerGraphSetNodeAttributes(
   hGraph: Deno.PointerValue | Uint8Array | null /* ptr */,
   pwzAttributes: string | null /* Windows.Win32.Foundation.PWSTR */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libP2PGRAPH.PeerGraphSetNodeAttributes(util.toPointer(hGraph), util.pwstrToFfi(pwzAttributes)));
+  return util.pointerFromFfi(libP2PGRAPH_dll.PeerGraphSetNodeAttributes(util.toPointer(hGraph), util.pwstrToFfi(pwzAttributes)));
 }
 
 export function PeerGraphPeerTimeToUniversalTime(
@@ -4249,7 +4253,7 @@ export function PeerGraphPeerTimeToUniversalTime(
   pftPeerTime: Deno.PointerValue | Uint8Array | null /* ptr */,
   pftUniversalTime: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libP2PGRAPH.PeerGraphPeerTimeToUniversalTime(util.toPointer(hGraph), util.toPointer(pftPeerTime), util.toPointer(pftUniversalTime)));
+  return util.pointerFromFfi(libP2PGRAPH_dll.PeerGraphPeerTimeToUniversalTime(util.toPointer(hGraph), util.toPointer(pftPeerTime), util.toPointer(pftUniversalTime)));
 }
 
 export function PeerGraphUniversalTimeToPeerTime(
@@ -4257,20 +4261,20 @@ export function PeerGraphUniversalTimeToPeerTime(
   pftUniversalTime: Deno.PointerValue | Uint8Array | null /* ptr */,
   pftPeerTime: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libP2PGRAPH.PeerGraphUniversalTimeToPeerTime(util.toPointer(hGraph), util.toPointer(pftUniversalTime), util.toPointer(pftPeerTime)));
+  return util.pointerFromFfi(libP2PGRAPH_dll.PeerGraphUniversalTimeToPeerTime(util.toPointer(hGraph), util.toPointer(pftUniversalTime), util.toPointer(pftPeerTime)));
 }
 
 export function PeerFreeData(
   pvData: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): void /* void */ {
-  return libP2P.PeerFreeData(util.toPointer(pvData));
+  return libP2P_dll.PeerFreeData(util.toPointer(pvData));
 }
 
 export function PeerGetItemCount(
   hPeerEnum: Deno.PointerValue | Uint8Array | null /* ptr */,
   pCount: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libP2P.PeerGetItemCount(util.toPointer(hPeerEnum), util.toPointer(pCount)));
+  return util.pointerFromFfi(libP2P_dll.PeerGetItemCount(util.toPointer(hPeerEnum), util.toPointer(pCount)));
 }
 
 export function PeerGetNextItem(
@@ -4278,31 +4282,31 @@ export function PeerGetNextItem(
   pCount: Deno.PointerValue | Uint8Array | null /* ptr */,
   pppvItems: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libP2P.PeerGetNextItem(util.toPointer(hPeerEnum), util.toPointer(pCount), util.toPointer(pppvItems)));
+  return util.pointerFromFfi(libP2P_dll.PeerGetNextItem(util.toPointer(hPeerEnum), util.toPointer(pCount), util.toPointer(pppvItems)));
 }
 
 export function PeerEndEnumeration(
   hPeerEnum: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libP2P.PeerEndEnumeration(util.toPointer(hPeerEnum)));
+  return util.pointerFromFfi(libP2P_dll.PeerEndEnumeration(util.toPointer(hPeerEnum)));
 }
 
 export function PeerGroupStartup(
   wVersionRequested: number /* u16 */,
   pVersionData: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libP2P.PeerGroupStartup(wVersionRequested, util.toPointer(pVersionData)));
+  return util.pointerFromFfi(libP2P_dll.PeerGroupStartup(wVersionRequested, util.toPointer(pVersionData)));
 }
 
 export function PeerGroupShutdown(): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libP2P.PeerGroupShutdown());
+  return util.pointerFromFfi(libP2P_dll.PeerGroupShutdown());
 }
 
 export function PeerGroupCreate(
   pProperties: Deno.PointerValue | Uint8Array | null /* ptr */,
   phGroup: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libP2P.PeerGroupCreate(util.toPointer(pProperties), util.toPointer(phGroup)));
+  return util.pointerFromFfi(libP2P_dll.PeerGroupCreate(util.toPointer(pProperties), util.toPointer(phGroup)));
 }
 
 export function PeerGroupOpen(
@@ -4311,7 +4315,7 @@ export function PeerGroupOpen(
   pwzCloud: string | null /* Windows.Win32.Foundation.PWSTR */,
   phGroup: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libP2P.PeerGroupOpen(util.pwstrToFfi(pwzIdentity), util.pwstrToFfi(pwzGroupPeerName), util.pwstrToFfi(pwzCloud), util.toPointer(phGroup)));
+  return util.pointerFromFfi(libP2P_dll.PeerGroupOpen(util.pwstrToFfi(pwzIdentity), util.pwstrToFfi(pwzGroupPeerName), util.pwstrToFfi(pwzCloud), util.toPointer(phGroup)));
 }
 
 export function PeerGroupJoin(
@@ -4320,7 +4324,7 @@ export function PeerGroupJoin(
   pwzCloud: string | null /* Windows.Win32.Foundation.PWSTR */,
   phGroup: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libP2P.PeerGroupJoin(util.pwstrToFfi(pwzIdentity), util.pwstrToFfi(pwzInvitation), util.pwstrToFfi(pwzCloud), util.toPointer(phGroup)));
+  return util.pointerFromFfi(libP2P_dll.PeerGroupJoin(util.pwstrToFfi(pwzIdentity), util.pwstrToFfi(pwzInvitation), util.pwstrToFfi(pwzCloud), util.toPointer(phGroup)));
 }
 
 export function PeerGroupPasswordJoin(
@@ -4330,13 +4334,13 @@ export function PeerGroupPasswordJoin(
   pwzCloud: string | null /* Windows.Win32.Foundation.PWSTR */,
   phGroup: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libP2P.PeerGroupPasswordJoin(util.pwstrToFfi(pwzIdentity), util.pwstrToFfi(pwzInvitation), util.pwstrToFfi(pwzPassword), util.pwstrToFfi(pwzCloud), util.toPointer(phGroup)));
+  return util.pointerFromFfi(libP2P_dll.PeerGroupPasswordJoin(util.pwstrToFfi(pwzIdentity), util.pwstrToFfi(pwzInvitation), util.pwstrToFfi(pwzPassword), util.pwstrToFfi(pwzCloud), util.toPointer(phGroup)));
 }
 
 export function PeerGroupConnect(
   hGroup: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libP2P.PeerGroupConnect(util.toPointer(hGroup)));
+  return util.pointerFromFfi(libP2P_dll.PeerGroupConnect(util.toPointer(hGroup)));
 }
 
 export function PeerGroupConnectByAddress(
@@ -4344,20 +4348,20 @@ export function PeerGroupConnectByAddress(
   cAddresses: number /* u32 */,
   pAddresses: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libP2P.PeerGroupConnectByAddress(util.toPointer(hGroup), cAddresses, util.toPointer(pAddresses)));
+  return util.pointerFromFfi(libP2P_dll.PeerGroupConnectByAddress(util.toPointer(hGroup), cAddresses, util.toPointer(pAddresses)));
 }
 
 export function PeerGroupClose(
   hGroup: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libP2P.PeerGroupClose(util.toPointer(hGroup)));
+  return util.pointerFromFfi(libP2P_dll.PeerGroupClose(util.toPointer(hGroup)));
 }
 
 export function PeerGroupDelete(
   pwzIdentity: string | null /* Windows.Win32.Foundation.PWSTR */,
   pwzGroupPeerName: string | null /* Windows.Win32.Foundation.PWSTR */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libP2P.PeerGroupDelete(util.pwstrToFfi(pwzIdentity), util.pwstrToFfi(pwzGroupPeerName)));
+  return util.pointerFromFfi(libP2P_dll.PeerGroupDelete(util.pwstrToFfi(pwzIdentity), util.pwstrToFfi(pwzGroupPeerName)));
 }
 
 export function PeerGroupCreateInvitation(
@@ -4368,42 +4372,42 @@ export function PeerGroupCreateInvitation(
   pRoles: Deno.PointerValue | Uint8Array | null /* ptr */,
   ppwzInvitation: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libP2P.PeerGroupCreateInvitation(util.toPointer(hGroup), util.pwstrToFfi(pwzIdentityInfo), util.toPointer(pftExpiration), cRoles, util.toPointer(pRoles), util.toPointer(ppwzInvitation)));
+  return util.pointerFromFfi(libP2P_dll.PeerGroupCreateInvitation(util.toPointer(hGroup), util.pwstrToFfi(pwzIdentityInfo), util.toPointer(pftExpiration), cRoles, util.toPointer(pRoles), util.toPointer(ppwzInvitation)));
 }
 
 export function PeerGroupCreatePasswordInvitation(
   hGroup: Deno.PointerValue | Uint8Array | null /* ptr */,
   ppwzInvitation: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libP2P.PeerGroupCreatePasswordInvitation(util.toPointer(hGroup), util.toPointer(ppwzInvitation)));
+  return util.pointerFromFfi(libP2P_dll.PeerGroupCreatePasswordInvitation(util.toPointer(hGroup), util.toPointer(ppwzInvitation)));
 }
 
 export function PeerGroupParseInvitation(
   pwzInvitation: string | null /* Windows.Win32.Foundation.PWSTR */,
   ppInvitationInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libP2P.PeerGroupParseInvitation(util.pwstrToFfi(pwzInvitation), util.toPointer(ppInvitationInfo)));
+  return util.pointerFromFfi(libP2P_dll.PeerGroupParseInvitation(util.pwstrToFfi(pwzInvitation), util.toPointer(ppInvitationInfo)));
 }
 
 export function PeerGroupGetStatus(
   hGroup: Deno.PointerValue | Uint8Array | null /* ptr */,
   pdwStatus: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libP2P.PeerGroupGetStatus(util.toPointer(hGroup), util.toPointer(pdwStatus)));
+  return util.pointerFromFfi(libP2P_dll.PeerGroupGetStatus(util.toPointer(hGroup), util.toPointer(pdwStatus)));
 }
 
 export function PeerGroupGetProperties(
   hGroup: Deno.PointerValue | Uint8Array | null /* ptr */,
   ppProperties: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libP2P.PeerGroupGetProperties(util.toPointer(hGroup), util.toPointer(ppProperties)));
+  return util.pointerFromFfi(libP2P_dll.PeerGroupGetProperties(util.toPointer(hGroup), util.toPointer(ppProperties)));
 }
 
 export function PeerGroupSetProperties(
   hGroup: Deno.PointerValue | Uint8Array | null /* ptr */,
   pProperties: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libP2P.PeerGroupSetProperties(util.toPointer(hGroup), util.toPointer(pProperties)));
+  return util.pointerFromFfi(libP2P_dll.PeerGroupSetProperties(util.toPointer(hGroup), util.toPointer(pProperties)));
 }
 
 export function PeerGroupEnumMembers(
@@ -4412,7 +4416,7 @@ export function PeerGroupEnumMembers(
   pwzIdentity: string | null /* Windows.Win32.Foundation.PWSTR */,
   phPeerEnum: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libP2P.PeerGroupEnumMembers(util.toPointer(hGroup), dwFlags, util.pwstrToFfi(pwzIdentity), util.toPointer(phPeerEnum)));
+  return util.pointerFromFfi(libP2P_dll.PeerGroupEnumMembers(util.toPointer(hGroup), dwFlags, util.pwstrToFfi(pwzIdentity), util.toPointer(phPeerEnum)));
 }
 
 export function PeerGroupOpenDirectConnection(
@@ -4421,14 +4425,14 @@ export function PeerGroupOpenDirectConnection(
   pAddress: Deno.PointerValue | Uint8Array | null /* ptr */,
   pullConnectionId: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libP2P.PeerGroupOpenDirectConnection(util.toPointer(hGroup), util.pwstrToFfi(pwzIdentity), util.toPointer(pAddress), util.toPointer(pullConnectionId)));
+  return util.pointerFromFfi(libP2P_dll.PeerGroupOpenDirectConnection(util.toPointer(hGroup), util.pwstrToFfi(pwzIdentity), util.toPointer(pAddress), util.toPointer(pullConnectionId)));
 }
 
 export function PeerGroupCloseDirectConnection(
   hGroup: Deno.PointerValue | Uint8Array | null /* ptr */,
   ullConnectionId: Deno.PointerValue /* u64 */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libP2P.PeerGroupCloseDirectConnection(util.toPointer(hGroup), ullConnectionId));
+  return util.pointerFromFfi(libP2P_dll.PeerGroupCloseDirectConnection(util.toPointer(hGroup), ullConnectionId));
 }
 
 export function PeerGroupEnumConnections(
@@ -4436,7 +4440,7 @@ export function PeerGroupEnumConnections(
   dwFlags: number /* u32 */,
   phPeerEnum: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libP2P.PeerGroupEnumConnections(util.toPointer(hGroup), dwFlags, util.toPointer(phPeerEnum)));
+  return util.pointerFromFfi(libP2P_dll.PeerGroupEnumConnections(util.toPointer(hGroup), dwFlags, util.toPointer(phPeerEnum)));
 }
 
 export function PeerGroupSendData(
@@ -4446,7 +4450,7 @@ export function PeerGroupSendData(
   cbData: number /* u32 */,
   pvData: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libP2P.PeerGroupSendData(util.toPointer(hGroup), ullConnectionId, util.toPointer(pType), cbData, util.toPointer(pvData)));
+  return util.pointerFromFfi(libP2P_dll.PeerGroupSendData(util.toPointer(hGroup), ullConnectionId, util.toPointer(pType), cbData, util.toPointer(pvData)));
 }
 
 export function PeerGroupRegisterEvent(
@@ -4456,20 +4460,20 @@ export function PeerGroupRegisterEvent(
   pEventRegistrations: Deno.PointerValue | Uint8Array | null /* ptr */,
   phPeerEvent: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libP2P.PeerGroupRegisterEvent(util.toPointer(hGroup), util.toPointer(hEvent), cEventRegistration, util.toPointer(pEventRegistrations), util.toPointer(phPeerEvent)));
+  return util.pointerFromFfi(libP2P_dll.PeerGroupRegisterEvent(util.toPointer(hGroup), util.toPointer(hEvent), cEventRegistration, util.toPointer(pEventRegistrations), util.toPointer(phPeerEvent)));
 }
 
 export function PeerGroupUnregisterEvent(
   hPeerEvent: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libP2P.PeerGroupUnregisterEvent(util.toPointer(hPeerEvent)));
+  return util.pointerFromFfi(libP2P_dll.PeerGroupUnregisterEvent(util.toPointer(hPeerEvent)));
 }
 
 export function PeerGroupGetEventData(
   hPeerEvent: Deno.PointerValue | Uint8Array | null /* ptr */,
   ppEventData: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libP2P.PeerGroupGetEventData(util.toPointer(hPeerEvent), util.toPointer(ppEventData)));
+  return util.pointerFromFfi(libP2P_dll.PeerGroupGetEventData(util.toPointer(hPeerEvent), util.toPointer(ppEventData)));
 }
 
 export function PeerGroupGetRecord(
@@ -4477,7 +4481,7 @@ export function PeerGroupGetRecord(
   pRecordId: Deno.PointerValue | Uint8Array | null /* ptr */,
   ppRecord: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libP2P.PeerGroupGetRecord(util.toPointer(hGroup), util.toPointer(pRecordId), util.toPointer(ppRecord)));
+  return util.pointerFromFfi(libP2P_dll.PeerGroupGetRecord(util.toPointer(hGroup), util.toPointer(pRecordId), util.toPointer(ppRecord)));
 }
 
 export function PeerGroupAddRecord(
@@ -4485,21 +4489,21 @@ export function PeerGroupAddRecord(
   pRecord: Deno.PointerValue | Uint8Array | null /* ptr */,
   pRecordId: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libP2P.PeerGroupAddRecord(util.toPointer(hGroup), util.toPointer(pRecord), util.toPointer(pRecordId)));
+  return util.pointerFromFfi(libP2P_dll.PeerGroupAddRecord(util.toPointer(hGroup), util.toPointer(pRecord), util.toPointer(pRecordId)));
 }
 
 export function PeerGroupUpdateRecord(
   hGroup: Deno.PointerValue | Uint8Array | null /* ptr */,
   pRecord: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libP2P.PeerGroupUpdateRecord(util.toPointer(hGroup), util.toPointer(pRecord)));
+  return util.pointerFromFfi(libP2P_dll.PeerGroupUpdateRecord(util.toPointer(hGroup), util.toPointer(pRecord)));
 }
 
 export function PeerGroupDeleteRecord(
   hGroup: Deno.PointerValue | Uint8Array | null /* ptr */,
   pRecordId: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libP2P.PeerGroupDeleteRecord(util.toPointer(hGroup), util.toPointer(pRecordId)));
+  return util.pointerFromFfi(libP2P_dll.PeerGroupDeleteRecord(util.toPointer(hGroup), util.toPointer(pRecordId)));
 }
 
 export function PeerGroupEnumRecords(
@@ -4507,7 +4511,7 @@ export function PeerGroupEnumRecords(
   pRecordType: Deno.PointerValue | Uint8Array | null /* ptr */,
   phPeerEnum: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libP2P.PeerGroupEnumRecords(util.toPointer(hGroup), util.toPointer(pRecordType), util.toPointer(phPeerEnum)));
+  return util.pointerFromFfi(libP2P_dll.PeerGroupEnumRecords(util.toPointer(hGroup), util.toPointer(pRecordType), util.toPointer(phPeerEnum)));
 }
 
 export function PeerGroupSearchRecords(
@@ -4515,21 +4519,21 @@ export function PeerGroupSearchRecords(
   pwzCriteria: string | null /* Windows.Win32.Foundation.PWSTR */,
   phPeerEnum: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libP2P.PeerGroupSearchRecords(util.toPointer(hGroup), util.pwstrToFfi(pwzCriteria), util.toPointer(phPeerEnum)));
+  return util.pointerFromFfi(libP2P_dll.PeerGroupSearchRecords(util.toPointer(hGroup), util.pwstrToFfi(pwzCriteria), util.toPointer(phPeerEnum)));
 }
 
 export function PeerGroupExportDatabase(
   hGroup: Deno.PointerValue | Uint8Array | null /* ptr */,
   pwzFilePath: string | null /* Windows.Win32.Foundation.PWSTR */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libP2P.PeerGroupExportDatabase(util.toPointer(hGroup), util.pwstrToFfi(pwzFilePath)));
+  return util.pointerFromFfi(libP2P_dll.PeerGroupExportDatabase(util.toPointer(hGroup), util.pwstrToFfi(pwzFilePath)));
 }
 
 export function PeerGroupImportDatabase(
   hGroup: Deno.PointerValue | Uint8Array | null /* ptr */,
   pwzFilePath: string | null /* Windows.Win32.Foundation.PWSTR */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libP2P.PeerGroupImportDatabase(util.toPointer(hGroup), util.pwstrToFfi(pwzFilePath)));
+  return util.pointerFromFfi(libP2P_dll.PeerGroupImportDatabase(util.toPointer(hGroup), util.pwstrToFfi(pwzFilePath)));
 }
 
 export function PeerGroupIssueCredentials(
@@ -4539,7 +4543,7 @@ export function PeerGroupIssueCredentials(
   dwFlags: number /* u32 */,
   ppwzInvitation: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libP2P.PeerGroupIssueCredentials(util.toPointer(hGroup), util.pwstrToFfi(pwzSubjectIdentity), util.toPointer(pCredentialInfo), dwFlags, util.toPointer(ppwzInvitation)));
+  return util.pointerFromFfi(libP2P_dll.PeerGroupIssueCredentials(util.toPointer(hGroup), util.pwstrToFfi(pwzSubjectIdentity), util.toPointer(pCredentialInfo), dwFlags, util.toPointer(ppwzInvitation)));
 }
 
 export function PeerGroupExportConfig(
@@ -4547,7 +4551,7 @@ export function PeerGroupExportConfig(
   pwzPassword: string | null /* Windows.Win32.Foundation.PWSTR */,
   ppwzXML: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libP2P.PeerGroupExportConfig(util.toPointer(hGroup), util.pwstrToFfi(pwzPassword), util.toPointer(ppwzXML)));
+  return util.pointerFromFfi(libP2P_dll.PeerGroupExportConfig(util.toPointer(hGroup), util.pwstrToFfi(pwzPassword), util.toPointer(ppwzXML)));
 }
 
 export function PeerGroupImportConfig(
@@ -4557,7 +4561,7 @@ export function PeerGroupImportConfig(
   ppwzIdentity: Deno.PointerValue | Uint8Array | null /* ptr */,
   ppwzGroup: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libP2P.PeerGroupImportConfig(util.pwstrToFfi(pwzXML), util.pwstrToFfi(pwzPassword), util.boolToFfi(fOverwrite), util.toPointer(ppwzIdentity), util.toPointer(ppwzGroup)));
+  return util.pointerFromFfi(libP2P_dll.PeerGroupImportConfig(util.pwstrToFfi(pwzXML), util.pwstrToFfi(pwzPassword), util.boolToFfi(fOverwrite), util.toPointer(ppwzIdentity), util.toPointer(ppwzGroup)));
 }
 
 export function PeerGroupPeerTimeToUniversalTime(
@@ -4565,7 +4569,7 @@ export function PeerGroupPeerTimeToUniversalTime(
   pftPeerTime: Deno.PointerValue | Uint8Array | null /* ptr */,
   pftUniversalTime: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libP2P.PeerGroupPeerTimeToUniversalTime(util.toPointer(hGroup), util.toPointer(pftPeerTime), util.toPointer(pftUniversalTime)));
+  return util.pointerFromFfi(libP2P_dll.PeerGroupPeerTimeToUniversalTime(util.toPointer(hGroup), util.toPointer(pftPeerTime), util.toPointer(pftUniversalTime)));
 }
 
 export function PeerGroupUniversalTimeToPeerTime(
@@ -4573,14 +4577,14 @@ export function PeerGroupUniversalTimeToPeerTime(
   pftUniversalTime: Deno.PointerValue | Uint8Array | null /* ptr */,
   pftPeerTime: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libP2P.PeerGroupUniversalTimeToPeerTime(util.toPointer(hGroup), util.toPointer(pftUniversalTime), util.toPointer(pftPeerTime)));
+  return util.pointerFromFfi(libP2P_dll.PeerGroupUniversalTimeToPeerTime(util.toPointer(hGroup), util.toPointer(pftUniversalTime), util.toPointer(pftPeerTime)));
 }
 
 export function PeerGroupResumePasswordAuthentication(
   hGroup: Deno.PointerValue | Uint8Array | null /* ptr */,
   hPeerEventHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libP2P.PeerGroupResumePasswordAuthentication(util.toPointer(hGroup), util.toPointer(hPeerEventHandle)));
+  return util.pointerFromFfi(libP2P_dll.PeerGroupResumePasswordAuthentication(util.toPointer(hGroup), util.toPointer(hPeerEventHandle)));
 }
 
 export function PeerIdentityCreate(
@@ -4589,47 +4593,47 @@ export function PeerIdentityCreate(
   hCryptProv: Deno.PointerValue /* usize */,
   ppwzIdentity: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libP2P.PeerIdentityCreate(util.pwstrToFfi(pwzClassifier), util.pwstrToFfi(pwzFriendlyName), hCryptProv, util.toPointer(ppwzIdentity)));
+  return util.pointerFromFfi(libP2P_dll.PeerIdentityCreate(util.pwstrToFfi(pwzClassifier), util.pwstrToFfi(pwzFriendlyName), hCryptProv, util.toPointer(ppwzIdentity)));
 }
 
 export function PeerIdentityGetFriendlyName(
   pwzIdentity: string | null /* Windows.Win32.Foundation.PWSTR */,
   ppwzFriendlyName: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libP2P.PeerIdentityGetFriendlyName(util.pwstrToFfi(pwzIdentity), util.toPointer(ppwzFriendlyName)));
+  return util.pointerFromFfi(libP2P_dll.PeerIdentityGetFriendlyName(util.pwstrToFfi(pwzIdentity), util.toPointer(ppwzFriendlyName)));
 }
 
 export function PeerIdentitySetFriendlyName(
   pwzIdentity: string | null /* Windows.Win32.Foundation.PWSTR */,
   pwzFriendlyName: string | null /* Windows.Win32.Foundation.PWSTR */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libP2P.PeerIdentitySetFriendlyName(util.pwstrToFfi(pwzIdentity), util.pwstrToFfi(pwzFriendlyName)));
+  return util.pointerFromFfi(libP2P_dll.PeerIdentitySetFriendlyName(util.pwstrToFfi(pwzIdentity), util.pwstrToFfi(pwzFriendlyName)));
 }
 
 export function PeerIdentityGetCryptKey(
   pwzIdentity: string | null /* Windows.Win32.Foundation.PWSTR */,
   phCryptProv: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libP2P.PeerIdentityGetCryptKey(util.pwstrToFfi(pwzIdentity), util.toPointer(phCryptProv)));
+  return util.pointerFromFfi(libP2P_dll.PeerIdentityGetCryptKey(util.pwstrToFfi(pwzIdentity), util.toPointer(phCryptProv)));
 }
 
 export function PeerIdentityDelete(
   pwzIdentity: string | null /* Windows.Win32.Foundation.PWSTR */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libP2P.PeerIdentityDelete(util.pwstrToFfi(pwzIdentity)));
+  return util.pointerFromFfi(libP2P_dll.PeerIdentityDelete(util.pwstrToFfi(pwzIdentity)));
 }
 
 export function PeerEnumIdentities(
   phPeerEnum: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libP2P.PeerEnumIdentities(util.toPointer(phPeerEnum)));
+  return util.pointerFromFfi(libP2P_dll.PeerEnumIdentities(util.toPointer(phPeerEnum)));
 }
 
 export function PeerEnumGroups(
   pwzIdentity: string | null /* Windows.Win32.Foundation.PWSTR */,
   phPeerEnum: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libP2P.PeerEnumGroups(util.pwstrToFfi(pwzIdentity), util.toPointer(phPeerEnum)));
+  return util.pointerFromFfi(libP2P_dll.PeerEnumGroups(util.pwstrToFfi(pwzIdentity), util.toPointer(phPeerEnum)));
 }
 
 export function PeerCreatePeerName(
@@ -4637,14 +4641,14 @@ export function PeerCreatePeerName(
   pwzClassifier: string | null /* Windows.Win32.Foundation.PWSTR */,
   ppwzPeerName: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libP2P.PeerCreatePeerName(util.pwstrToFfi(pwzIdentity), util.pwstrToFfi(pwzClassifier), util.toPointer(ppwzPeerName)));
+  return util.pointerFromFfi(libP2P_dll.PeerCreatePeerName(util.pwstrToFfi(pwzIdentity), util.pwstrToFfi(pwzClassifier), util.toPointer(ppwzPeerName)));
 }
 
 export function PeerIdentityGetXML(
   pwzIdentity: string | null /* Windows.Win32.Foundation.PWSTR */,
   ppwzIdentityXML: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libP2P.PeerIdentityGetXML(util.pwstrToFfi(pwzIdentity), util.toPointer(ppwzIdentityXML)));
+  return util.pointerFromFfi(libP2P_dll.PeerIdentityGetXML(util.pwstrToFfi(pwzIdentity), util.toPointer(ppwzIdentityXML)));
 }
 
 export function PeerIdentityExport(
@@ -4652,7 +4656,7 @@ export function PeerIdentityExport(
   pwzPassword: string | null /* Windows.Win32.Foundation.PWSTR */,
   ppwzExportXML: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libP2P.PeerIdentityExport(util.pwstrToFfi(pwzIdentity), util.pwstrToFfi(pwzPassword), util.toPointer(ppwzExportXML)));
+  return util.pointerFromFfi(libP2P_dll.PeerIdentityExport(util.pwstrToFfi(pwzIdentity), util.pwstrToFfi(pwzPassword), util.toPointer(ppwzExportXML)));
 }
 
 export function PeerIdentityImport(
@@ -4660,42 +4664,42 @@ export function PeerIdentityImport(
   pwzPassword: string | null /* Windows.Win32.Foundation.PWSTR */,
   ppwzIdentity: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libP2P.PeerIdentityImport(util.pwstrToFfi(pwzImportXML), util.pwstrToFfi(pwzPassword), util.toPointer(ppwzIdentity)));
+  return util.pointerFromFfi(libP2P_dll.PeerIdentityImport(util.pwstrToFfi(pwzImportXML), util.pwstrToFfi(pwzPassword), util.toPointer(ppwzIdentity)));
 }
 
 export function PeerIdentityGetDefault(
   ppwzPeerName: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libP2P.PeerIdentityGetDefault(util.toPointer(ppwzPeerName)));
+  return util.pointerFromFfi(libP2P_dll.PeerIdentityGetDefault(util.toPointer(ppwzPeerName)));
 }
 
 export function PeerCollabStartup(
   wVersionRequested: number /* u16 */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libP2P.PeerCollabStartup(wVersionRequested));
+  return util.pointerFromFfi(libP2P_dll.PeerCollabStartup(wVersionRequested));
 }
 
 export function PeerCollabShutdown(): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libP2P.PeerCollabShutdown());
+  return util.pointerFromFfi(libP2P_dll.PeerCollabShutdown());
 }
 
 export function PeerCollabSignin(
   hwndParent: Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */,
   dwSigninOptions: number /* u32 */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libP2P.PeerCollabSignin(util.hwndToFfi(hwndParent), dwSigninOptions));
+  return util.pointerFromFfi(libP2P_dll.PeerCollabSignin(util.hwndToFfi(hwndParent), dwSigninOptions));
 }
 
 export function PeerCollabSignout(
   dwSigninOptions: number /* u32 */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libP2P.PeerCollabSignout(dwSigninOptions));
+  return util.pointerFromFfi(libP2P_dll.PeerCollabSignout(dwSigninOptions));
 }
 
 export function PeerCollabGetSigninOptions(
   pdwSigninOptions: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libP2P.PeerCollabGetSigninOptions(util.toPointer(pdwSigninOptions)));
+  return util.pointerFromFfi(libP2P_dll.PeerCollabGetSigninOptions(util.toPointer(pdwSigninOptions)));
 }
 
 export function PeerCollabAsyncInviteContact(
@@ -4705,26 +4709,26 @@ export function PeerCollabAsyncInviteContact(
   hEvent: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
   phInvitation: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libP2P.PeerCollabAsyncInviteContact(util.toPointer(pcContact), util.toPointer(pcEndpoint), util.toPointer(pcInvitation), util.toPointer(hEvent), util.toPointer(phInvitation)));
+  return util.pointerFromFfi(libP2P_dll.PeerCollabAsyncInviteContact(util.toPointer(pcContact), util.toPointer(pcEndpoint), util.toPointer(pcInvitation), util.toPointer(hEvent), util.toPointer(phInvitation)));
 }
 
 export function PeerCollabGetInvitationResponse(
   hInvitation: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
   ppInvitationResponse: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libP2P.PeerCollabGetInvitationResponse(util.toPointer(hInvitation), util.toPointer(ppInvitationResponse)));
+  return util.pointerFromFfi(libP2P_dll.PeerCollabGetInvitationResponse(util.toPointer(hInvitation), util.toPointer(ppInvitationResponse)));
 }
 
 export function PeerCollabCancelInvitation(
   hInvitation: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libP2P.PeerCollabCancelInvitation(util.toPointer(hInvitation)));
+  return util.pointerFromFfi(libP2P_dll.PeerCollabCancelInvitation(util.toPointer(hInvitation)));
 }
 
 export function PeerCollabCloseHandle(
   hInvitation: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libP2P.PeerCollabCloseHandle(util.toPointer(hInvitation)));
+  return util.pointerFromFfi(libP2P_dll.PeerCollabCloseHandle(util.toPointer(hInvitation)));
 }
 
 export function PeerCollabInviteContact(
@@ -4733,7 +4737,7 @@ export function PeerCollabInviteContact(
   pcInvitation: Deno.PointerValue | Uint8Array | null /* ptr */,
   ppResponse: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libP2P.PeerCollabInviteContact(util.toPointer(pcContact), util.toPointer(pcEndpoint), util.toPointer(pcInvitation), util.toPointer(ppResponse)));
+  return util.pointerFromFfi(libP2P_dll.PeerCollabInviteContact(util.toPointer(pcContact), util.toPointer(pcEndpoint), util.toPointer(pcInvitation), util.toPointer(ppResponse)));
 }
 
 export function PeerCollabAsyncInviteEndpoint(
@@ -4742,7 +4746,7 @@ export function PeerCollabAsyncInviteEndpoint(
   hEvent: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
   phInvitation: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libP2P.PeerCollabAsyncInviteEndpoint(util.toPointer(pcEndpoint), util.toPointer(pcInvitation), util.toPointer(hEvent), util.toPointer(phInvitation)));
+  return util.pointerFromFfi(libP2P_dll.PeerCollabAsyncInviteEndpoint(util.toPointer(pcEndpoint), util.toPointer(pcInvitation), util.toPointer(hEvent), util.toPointer(phInvitation)));
 }
 
 export function PeerCollabInviteEndpoint(
@@ -4750,27 +4754,27 @@ export function PeerCollabInviteEndpoint(
   pcInvitation: Deno.PointerValue | Uint8Array | null /* ptr */,
   ppResponse: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libP2P.PeerCollabInviteEndpoint(util.toPointer(pcEndpoint), util.toPointer(pcInvitation), util.toPointer(ppResponse)));
+  return util.pointerFromFfi(libP2P_dll.PeerCollabInviteEndpoint(util.toPointer(pcEndpoint), util.toPointer(pcInvitation), util.toPointer(ppResponse)));
 }
 
 export function PeerCollabGetAppLaunchInfo(
   ppLaunchInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libP2P.PeerCollabGetAppLaunchInfo(util.toPointer(ppLaunchInfo)));
+  return util.pointerFromFfi(libP2P_dll.PeerCollabGetAppLaunchInfo(util.toPointer(ppLaunchInfo)));
 }
 
 export function PeerCollabRegisterApplication(
   pcApplication: Deno.PointerValue | Uint8Array | null /* ptr */,
   registrationType: PEER_APPLICATION_REGISTRATION_TYPE /* Windows.Win32.NetworkManagement.P2P.PEER_APPLICATION_REGISTRATION_TYPE */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libP2P.PeerCollabRegisterApplication(util.toPointer(pcApplication), registrationType));
+  return util.pointerFromFfi(libP2P_dll.PeerCollabRegisterApplication(util.toPointer(pcApplication), registrationType));
 }
 
 export function PeerCollabUnregisterApplication(
   pApplicationId: Deno.PointerValue | Uint8Array | null /* ptr */,
   registrationType: PEER_APPLICATION_REGISTRATION_TYPE /* Windows.Win32.NetworkManagement.P2P.PEER_APPLICATION_REGISTRATION_TYPE */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libP2P.PeerCollabUnregisterApplication(util.toPointer(pApplicationId), registrationType));
+  return util.pointerFromFfi(libP2P_dll.PeerCollabUnregisterApplication(util.toPointer(pApplicationId), registrationType));
 }
 
 export function PeerCollabGetApplicationRegistrationInfo(
@@ -4778,21 +4782,21 @@ export function PeerCollabGetApplicationRegistrationInfo(
   registrationType: PEER_APPLICATION_REGISTRATION_TYPE /* Windows.Win32.NetworkManagement.P2P.PEER_APPLICATION_REGISTRATION_TYPE */,
   ppApplication: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libP2P.PeerCollabGetApplicationRegistrationInfo(util.toPointer(pApplicationId), registrationType, util.toPointer(ppApplication)));
+  return util.pointerFromFfi(libP2P_dll.PeerCollabGetApplicationRegistrationInfo(util.toPointer(pApplicationId), registrationType, util.toPointer(ppApplication)));
 }
 
 export function PeerCollabEnumApplicationRegistrationInfo(
   registrationType: PEER_APPLICATION_REGISTRATION_TYPE /* Windows.Win32.NetworkManagement.P2P.PEER_APPLICATION_REGISTRATION_TYPE */,
   phPeerEnum: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libP2P.PeerCollabEnumApplicationRegistrationInfo(registrationType, util.toPointer(phPeerEnum)));
+  return util.pointerFromFfi(libP2P_dll.PeerCollabEnumApplicationRegistrationInfo(registrationType, util.toPointer(phPeerEnum)));
 }
 
 export function PeerCollabGetPresenceInfo(
   pcEndpoint: Deno.PointerValue | Uint8Array | null /* ptr */,
   ppPresenceInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libP2P.PeerCollabGetPresenceInfo(util.toPointer(pcEndpoint), util.toPointer(ppPresenceInfo)));
+  return util.pointerFromFfi(libP2P_dll.PeerCollabGetPresenceInfo(util.toPointer(pcEndpoint), util.toPointer(ppPresenceInfo)));
 }
 
 export function PeerCollabEnumApplications(
@@ -4800,7 +4804,7 @@ export function PeerCollabEnumApplications(
   pApplicationId: Deno.PointerValue | Uint8Array | null /* ptr */,
   phPeerEnum: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libP2P.PeerCollabEnumApplications(util.toPointer(pcEndpoint), util.toPointer(pApplicationId), util.toPointer(phPeerEnum)));
+  return util.pointerFromFfi(libP2P_dll.PeerCollabEnumApplications(util.toPointer(pcEndpoint), util.toPointer(pApplicationId), util.toPointer(phPeerEnum)));
 }
 
 export function PeerCollabEnumObjects(
@@ -4808,75 +4812,75 @@ export function PeerCollabEnumObjects(
   pObjectId: Deno.PointerValue | Uint8Array | null /* ptr */,
   phPeerEnum: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libP2P.PeerCollabEnumObjects(util.toPointer(pcEndpoint), util.toPointer(pObjectId), util.toPointer(phPeerEnum)));
+  return util.pointerFromFfi(libP2P_dll.PeerCollabEnumObjects(util.toPointer(pcEndpoint), util.toPointer(pObjectId), util.toPointer(phPeerEnum)));
 }
 
 export function PeerCollabEnumEndpoints(
   pcContact: Deno.PointerValue | Uint8Array | null /* ptr */,
   phPeerEnum: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libP2P.PeerCollabEnumEndpoints(util.toPointer(pcContact), util.toPointer(phPeerEnum)));
+  return util.pointerFromFfi(libP2P_dll.PeerCollabEnumEndpoints(util.toPointer(pcContact), util.toPointer(phPeerEnum)));
 }
 
 export function PeerCollabRefreshEndpointData(
   pcEndpoint: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libP2P.PeerCollabRefreshEndpointData(util.toPointer(pcEndpoint)));
+  return util.pointerFromFfi(libP2P_dll.PeerCollabRefreshEndpointData(util.toPointer(pcEndpoint)));
 }
 
 export function PeerCollabDeleteEndpointData(
   pcEndpoint: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libP2P.PeerCollabDeleteEndpointData(util.toPointer(pcEndpoint)));
+  return util.pointerFromFfi(libP2P_dll.PeerCollabDeleteEndpointData(util.toPointer(pcEndpoint)));
 }
 
 export function PeerCollabQueryContactData(
   pcEndpoint: Deno.PointerValue | Uint8Array | null /* ptr */,
   ppwzContactData: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libP2P.PeerCollabQueryContactData(util.toPointer(pcEndpoint), util.toPointer(ppwzContactData)));
+  return util.pointerFromFfi(libP2P_dll.PeerCollabQueryContactData(util.toPointer(pcEndpoint), util.toPointer(ppwzContactData)));
 }
 
 export function PeerCollabSubscribeEndpointData(
   pcEndpoint: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libP2P.PeerCollabSubscribeEndpointData(util.toPointer(pcEndpoint)));
+  return util.pointerFromFfi(libP2P_dll.PeerCollabSubscribeEndpointData(util.toPointer(pcEndpoint)));
 }
 
 export function PeerCollabUnsubscribeEndpointData(
   pcEndpoint: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libP2P.PeerCollabUnsubscribeEndpointData(util.toPointer(pcEndpoint)));
+  return util.pointerFromFfi(libP2P_dll.PeerCollabUnsubscribeEndpointData(util.toPointer(pcEndpoint)));
 }
 
 export function PeerCollabSetPresenceInfo(
   pcPresenceInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libP2P.PeerCollabSetPresenceInfo(util.toPointer(pcPresenceInfo)));
+  return util.pointerFromFfi(libP2P_dll.PeerCollabSetPresenceInfo(util.toPointer(pcPresenceInfo)));
 }
 
 export function PeerCollabGetEndpointName(
   ppwzEndpointName: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libP2P.PeerCollabGetEndpointName(util.toPointer(ppwzEndpointName)));
+  return util.pointerFromFfi(libP2P_dll.PeerCollabGetEndpointName(util.toPointer(ppwzEndpointName)));
 }
 
 export function PeerCollabSetEndpointName(
   pwzEndpointName: string | null /* Windows.Win32.Foundation.PWSTR */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libP2P.PeerCollabSetEndpointName(util.pwstrToFfi(pwzEndpointName)));
+  return util.pointerFromFfi(libP2P_dll.PeerCollabSetEndpointName(util.pwstrToFfi(pwzEndpointName)));
 }
 
 export function PeerCollabSetObject(
   pcObject: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libP2P.PeerCollabSetObject(util.toPointer(pcObject)));
+  return util.pointerFromFfi(libP2P_dll.PeerCollabSetObject(util.toPointer(pcObject)));
 }
 
 export function PeerCollabDeleteObject(
   pObjectId: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libP2P.PeerCollabDeleteObject(util.toPointer(pObjectId)));
+  return util.pointerFromFfi(libP2P_dll.PeerCollabDeleteObject(util.toPointer(pObjectId)));
 }
 
 export function PeerCollabRegisterEvent(
@@ -4885,96 +4889,96 @@ export function PeerCollabRegisterEvent(
   pEventRegistrations: Deno.PointerValue | Uint8Array | null /* ptr */,
   phPeerEvent: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libP2P.PeerCollabRegisterEvent(util.toPointer(hEvent), cEventRegistration, util.toPointer(pEventRegistrations), util.toPointer(phPeerEvent)));
+  return util.pointerFromFfi(libP2P_dll.PeerCollabRegisterEvent(util.toPointer(hEvent), cEventRegistration, util.toPointer(pEventRegistrations), util.toPointer(phPeerEvent)));
 }
 
 export function PeerCollabGetEventData(
   hPeerEvent: Deno.PointerValue | Uint8Array | null /* ptr */,
   ppEventData: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libP2P.PeerCollabGetEventData(util.toPointer(hPeerEvent), util.toPointer(ppEventData)));
+  return util.pointerFromFfi(libP2P_dll.PeerCollabGetEventData(util.toPointer(hPeerEvent), util.toPointer(ppEventData)));
 }
 
 export function PeerCollabUnregisterEvent(
   hPeerEvent: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libP2P.PeerCollabUnregisterEvent(util.toPointer(hPeerEvent)));
+  return util.pointerFromFfi(libP2P_dll.PeerCollabUnregisterEvent(util.toPointer(hPeerEvent)));
 }
 
 export function PeerCollabEnumPeopleNearMe(
   phPeerEnum: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libP2P.PeerCollabEnumPeopleNearMe(util.toPointer(phPeerEnum)));
+  return util.pointerFromFfi(libP2P_dll.PeerCollabEnumPeopleNearMe(util.toPointer(phPeerEnum)));
 }
 
 export function PeerCollabAddContact(
   pwzContactData: string | null /* Windows.Win32.Foundation.PWSTR */,
   ppContact: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libP2P.PeerCollabAddContact(util.pwstrToFfi(pwzContactData), util.toPointer(ppContact)));
+  return util.pointerFromFfi(libP2P_dll.PeerCollabAddContact(util.pwstrToFfi(pwzContactData), util.toPointer(ppContact)));
 }
 
 export function PeerCollabDeleteContact(
   pwzPeerName: string | null /* Windows.Win32.Foundation.PWSTR */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libP2P.PeerCollabDeleteContact(util.pwstrToFfi(pwzPeerName)));
+  return util.pointerFromFfi(libP2P_dll.PeerCollabDeleteContact(util.pwstrToFfi(pwzPeerName)));
 }
 
 export function PeerCollabGetContact(
   pwzPeerName: string | null /* Windows.Win32.Foundation.PWSTR */,
   ppContact: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libP2P.PeerCollabGetContact(util.pwstrToFfi(pwzPeerName), util.toPointer(ppContact)));
+  return util.pointerFromFfi(libP2P_dll.PeerCollabGetContact(util.pwstrToFfi(pwzPeerName), util.toPointer(ppContact)));
 }
 
 export function PeerCollabUpdateContact(
   pContact: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libP2P.PeerCollabUpdateContact(util.toPointer(pContact)));
+  return util.pointerFromFfi(libP2P_dll.PeerCollabUpdateContact(util.toPointer(pContact)));
 }
 
 export function PeerCollabEnumContacts(
   phPeerEnum: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libP2P.PeerCollabEnumContacts(util.toPointer(phPeerEnum)));
+  return util.pointerFromFfi(libP2P_dll.PeerCollabEnumContacts(util.toPointer(phPeerEnum)));
 }
 
 export function PeerCollabExportContact(
   pwzPeerName: string | null /* Windows.Win32.Foundation.PWSTR */,
   ppwzContactData: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libP2P.PeerCollabExportContact(util.pwstrToFfi(pwzPeerName), util.toPointer(ppwzContactData)));
+  return util.pointerFromFfi(libP2P_dll.PeerCollabExportContact(util.pwstrToFfi(pwzPeerName), util.toPointer(ppwzContactData)));
 }
 
 export function PeerCollabParseContact(
   pwzContactData: string | null /* Windows.Win32.Foundation.PWSTR */,
   ppContact: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libP2P.PeerCollabParseContact(util.pwstrToFfi(pwzContactData), util.toPointer(ppContact)));
+  return util.pointerFromFfi(libP2P_dll.PeerCollabParseContact(util.pwstrToFfi(pwzContactData), util.toPointer(ppContact)));
 }
 
 export function PeerNameToPeerHostName(
   pwzPeerName: string | null /* Windows.Win32.Foundation.PWSTR */,
   ppwzHostName: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libP2P.PeerNameToPeerHostName(util.pwstrToFfi(pwzPeerName), util.toPointer(ppwzHostName)));
+  return util.pointerFromFfi(libP2P_dll.PeerNameToPeerHostName(util.pwstrToFfi(pwzPeerName), util.toPointer(ppwzHostName)));
 }
 
 export function PeerHostNameToPeerName(
   pwzHostName: string | null /* Windows.Win32.Foundation.PWSTR */,
   ppwzPeerName: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libP2P.PeerHostNameToPeerName(util.pwstrToFfi(pwzHostName), util.toPointer(ppwzPeerName)));
+  return util.pointerFromFfi(libP2P_dll.PeerHostNameToPeerName(util.pwstrToFfi(pwzHostName), util.toPointer(ppwzPeerName)));
 }
 
 export function PeerPnrpStartup(
   wVersionRequested: number /* u16 */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libP2P.PeerPnrpStartup(wVersionRequested));
+  return util.pointerFromFfi(libP2P_dll.PeerPnrpStartup(wVersionRequested));
 }
 
 export function PeerPnrpShutdown(): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libP2P.PeerPnrpShutdown());
+  return util.pointerFromFfi(libP2P_dll.PeerPnrpShutdown());
 }
 
 export function PeerPnrpRegister(
@@ -4982,20 +4986,20 @@ export function PeerPnrpRegister(
   pRegistrationInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
   phRegistration: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libP2P.PeerPnrpRegister(util.pwstrToFfi(pcwzPeerName), util.toPointer(pRegistrationInfo), util.toPointer(phRegistration)));
+  return util.pointerFromFfi(libP2P_dll.PeerPnrpRegister(util.pwstrToFfi(pcwzPeerName), util.toPointer(pRegistrationInfo), util.toPointer(phRegistration)));
 }
 
 export function PeerPnrpUpdateRegistration(
   hRegistration: Deno.PointerValue | Uint8Array | null /* ptr */,
   pRegistrationInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libP2P.PeerPnrpUpdateRegistration(util.toPointer(hRegistration), util.toPointer(pRegistrationInfo)));
+  return util.pointerFromFfi(libP2P_dll.PeerPnrpUpdateRegistration(util.toPointer(hRegistration), util.toPointer(pRegistrationInfo)));
 }
 
 export function PeerPnrpUnregister(
   hRegistration: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libP2P.PeerPnrpUnregister(util.toPointer(hRegistration)));
+  return util.pointerFromFfi(libP2P_dll.PeerPnrpUnregister(util.toPointer(hRegistration)));
 }
 
 export function PeerPnrpResolve(
@@ -5004,7 +5008,7 @@ export function PeerPnrpResolve(
   pcEndpoints: Deno.PointerValue | Uint8Array | null /* ptr */,
   ppEndpoints: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libP2P.PeerPnrpResolve(util.pwstrToFfi(pcwzPeerName), util.pwstrToFfi(pcwzCloudName), util.toPointer(pcEndpoints), util.toPointer(ppEndpoints)));
+  return util.pointerFromFfi(libP2P_dll.PeerPnrpResolve(util.pwstrToFfi(pcwzPeerName), util.pwstrToFfi(pcwzCloudName), util.toPointer(pcEndpoints), util.toPointer(ppEndpoints)));
 }
 
 export function PeerPnrpStartResolve(
@@ -5014,27 +5018,27 @@ export function PeerPnrpStartResolve(
   hEvent: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
   phResolve: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libP2P.PeerPnrpStartResolve(util.pwstrToFfi(pcwzPeerName), util.pwstrToFfi(pcwzCloudName), cMaxEndpoints, util.toPointer(hEvent), util.toPointer(phResolve)));
+  return util.pointerFromFfi(libP2P_dll.PeerPnrpStartResolve(util.pwstrToFfi(pcwzPeerName), util.pwstrToFfi(pcwzCloudName), cMaxEndpoints, util.toPointer(hEvent), util.toPointer(phResolve)));
 }
 
 export function PeerPnrpGetCloudInfo(
   pcNumClouds: Deno.PointerValue | Uint8Array | null /* ptr */,
   ppCloudInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libP2P.PeerPnrpGetCloudInfo(util.toPointer(pcNumClouds), util.toPointer(ppCloudInfo)));
+  return util.pointerFromFfi(libP2P_dll.PeerPnrpGetCloudInfo(util.toPointer(pcNumClouds), util.toPointer(ppCloudInfo)));
 }
 
 export function PeerPnrpGetEndpoint(
   hResolve: Deno.PointerValue | Uint8Array | null /* ptr */,
   ppEndpoint: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libP2P.PeerPnrpGetEndpoint(util.toPointer(hResolve), util.toPointer(ppEndpoint)));
+  return util.pointerFromFfi(libP2P_dll.PeerPnrpGetEndpoint(util.toPointer(hResolve), util.toPointer(ppEndpoint)));
 }
 
 export function PeerPnrpEndResolve(
   hResolve: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libP2P.PeerPnrpEndResolve(util.toPointer(hResolve)));
+  return util.pointerFromFfi(libP2P_dll.PeerPnrpEndResolve(util.toPointer(hResolve)));
 }
 
 export function DrtCreatePnrpBootstrapResolver(
@@ -5044,13 +5048,13 @@ export function DrtCreatePnrpBootstrapResolver(
   pwzPublishingIdentity: string | null /* Windows.Win32.Foundation.PWSTR */,
   ppResolver: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libdrtprov.DrtCreatePnrpBootstrapResolver(util.boolToFfi(fPublish), util.pwstrToFfi(pwzPeerName), util.pwstrToFfi(pwzCloudName), util.pwstrToFfi(pwzPublishingIdentity), util.toPointer(ppResolver)));
+  return util.pointerFromFfi(libdrtprov_dll.DrtCreatePnrpBootstrapResolver(util.boolToFfi(fPublish), util.pwstrToFfi(pwzPeerName), util.pwstrToFfi(pwzCloudName), util.pwstrToFfi(pwzPublishingIdentity), util.toPointer(ppResolver)));
 }
 
 export function DrtDeletePnrpBootstrapResolver(
   pResolver: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): void /* void */ {
-  return libdrtprov.DrtDeletePnrpBootstrapResolver(util.toPointer(pResolver));
+  return libdrtprov_dll.DrtDeletePnrpBootstrapResolver(util.toPointer(pResolver));
 }
 
 export function DrtCreateDnsBootstrapResolver(
@@ -5058,13 +5062,13 @@ export function DrtCreateDnsBootstrapResolver(
   pwszAddress: string | null /* Windows.Win32.Foundation.PWSTR */,
   ppModule: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libdrtprov.DrtCreateDnsBootstrapResolver(port, util.pwstrToFfi(pwszAddress), util.toPointer(ppModule)));
+  return util.pointerFromFfi(libdrtprov_dll.DrtCreateDnsBootstrapResolver(port, util.pwstrToFfi(pwszAddress), util.toPointer(ppModule)));
 }
 
 export function DrtDeleteDnsBootstrapResolver(
   pResolver: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): void /* void */ {
-  return libdrtprov.DrtDeleteDnsBootstrapResolver(util.toPointer(pResolver));
+  return libdrtprov_dll.DrtDeleteDnsBootstrapResolver(util.toPointer(pResolver));
 }
 
 export function DrtCreateIpv6UdpTransport(
@@ -5074,13 +5078,13 @@ export function DrtCreateIpv6UdpTransport(
   pwPort: Deno.PointerValue | Uint8Array | null /* ptr */,
   phTransport: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libdrttransport.DrtCreateIpv6UdpTransport(scope, dwScopeId, dwLocalityThreshold, util.toPointer(pwPort), util.toPointer(phTransport)));
+  return util.pointerFromFfi(libdrttransport_dll.DrtCreateIpv6UdpTransport(scope, dwScopeId, dwLocalityThreshold, util.toPointer(pwPort), util.toPointer(phTransport)));
 }
 
 export function DrtDeleteIpv6UdpTransport(
   hTransport: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libdrttransport.DrtDeleteIpv6UdpTransport(util.toPointer(hTransport)));
+  return util.pointerFromFfi(libdrttransport_dll.DrtDeleteIpv6UdpTransport(util.toPointer(hTransport)));
 }
 
 export function DrtCreateDerivedKeySecurityProvider(
@@ -5088,32 +5092,32 @@ export function DrtCreateDerivedKeySecurityProvider(
   pLocalCert: Deno.PointerValue | Uint8Array | null /* ptr */,
   ppSecurityProvider: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libdrtprov.DrtCreateDerivedKeySecurityProvider(util.toPointer(pRootCert), util.toPointer(pLocalCert), util.toPointer(ppSecurityProvider)));
+  return util.pointerFromFfi(libdrtprov_dll.DrtCreateDerivedKeySecurityProvider(util.toPointer(pRootCert), util.toPointer(pLocalCert), util.toPointer(ppSecurityProvider)));
 }
 
 export function DrtCreateDerivedKey(
   pLocalCert: Deno.PointerValue | Uint8Array | null /* ptr */,
   pKey: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libdrtprov.DrtCreateDerivedKey(util.toPointer(pLocalCert), util.toPointer(pKey)));
+  return util.pointerFromFfi(libdrtprov_dll.DrtCreateDerivedKey(util.toPointer(pLocalCert), util.toPointer(pKey)));
 }
 
 export function DrtDeleteDerivedKeySecurityProvider(
   pSecurityProvider: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): void /* void */ {
-  return libdrtprov.DrtDeleteDerivedKeySecurityProvider(util.toPointer(pSecurityProvider));
+  return libdrtprov_dll.DrtDeleteDerivedKeySecurityProvider(util.toPointer(pSecurityProvider));
 }
 
 export function DrtCreateNullSecurityProvider(
   ppSecurityProvider: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libdrtprov.DrtCreateNullSecurityProvider(util.toPointer(ppSecurityProvider)));
+  return util.pointerFromFfi(libdrtprov_dll.DrtCreateNullSecurityProvider(util.toPointer(ppSecurityProvider)));
 }
 
 export function DrtDeleteNullSecurityProvider(
   pSecurityProvider: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): void /* void */ {
-  return libdrtprov.DrtDeleteNullSecurityProvider(util.toPointer(pSecurityProvider));
+  return libdrtprov_dll.DrtDeleteNullSecurityProvider(util.toPointer(pSecurityProvider));
 }
 
 export function DrtOpen(
@@ -5122,20 +5126,20 @@ export function DrtOpen(
   pvContext: Deno.PointerValue | Uint8Array | null /* ptr */,
   phDrt: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libdrt.DrtOpen(util.toPointer(pSettings), util.toPointer(hEvent), util.toPointer(pvContext), util.toPointer(phDrt)));
+  return util.pointerFromFfi(libdrt_dll.DrtOpen(util.toPointer(pSettings), util.toPointer(hEvent), util.toPointer(pvContext), util.toPointer(phDrt)));
 }
 
 export function DrtClose(
   hDrt: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): void /* void */ {
-  return libdrt.DrtClose(util.toPointer(hDrt));
+  return libdrt_dll.DrtClose(util.toPointer(hDrt));
 }
 
 export function DrtGetEventDataSize(
   hDrt: Deno.PointerValue | Uint8Array | null /* ptr */,
   pulEventDataLen: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libdrt.DrtGetEventDataSize(util.toPointer(hDrt), util.toPointer(pulEventDataLen)));
+  return util.pointerFromFfi(libdrt_dll.DrtGetEventDataSize(util.toPointer(hDrt), util.toPointer(pulEventDataLen)));
 }
 
 export function DrtGetEventData(
@@ -5143,7 +5147,7 @@ export function DrtGetEventData(
   ulEventDataLen: number /* u32 */,
   pEventData: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libdrt.DrtGetEventData(util.toPointer(hDrt), ulEventDataLen, util.toPointer(pEventData)));
+  return util.pointerFromFfi(libdrt_dll.DrtGetEventData(util.toPointer(hDrt), ulEventDataLen, util.toPointer(pEventData)));
 }
 
 export function DrtRegisterKey(
@@ -5152,20 +5156,20 @@ export function DrtRegisterKey(
   pvKeyContext: Deno.PointerValue | Uint8Array | null /* ptr */,
   phKeyRegistration: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libdrt.DrtRegisterKey(util.toPointer(hDrt), util.toPointer(pRegistration), util.toPointer(pvKeyContext), util.toPointer(phKeyRegistration)));
+  return util.pointerFromFfi(libdrt_dll.DrtRegisterKey(util.toPointer(hDrt), util.toPointer(pRegistration), util.toPointer(pvKeyContext), util.toPointer(phKeyRegistration)));
 }
 
 export function DrtUpdateKey(
   hKeyRegistration: Deno.PointerValue | Uint8Array | null /* ptr */,
   pAppData: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libdrt.DrtUpdateKey(util.toPointer(hKeyRegistration), util.toPointer(pAppData)));
+  return util.pointerFromFfi(libdrt_dll.DrtUpdateKey(util.toPointer(hKeyRegistration), util.toPointer(pAppData)));
 }
 
 export function DrtUnregisterKey(
   hKeyRegistration: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): void /* void */ {
-  return libdrt.DrtUnregisterKey(util.toPointer(hKeyRegistration));
+  return libdrt_dll.DrtUnregisterKey(util.toPointer(hKeyRegistration));
 }
 
 export function DrtStartSearch(
@@ -5177,20 +5181,20 @@ export function DrtStartSearch(
   pvContext: Deno.PointerValue | Uint8Array | null /* ptr */,
   hSearchContext: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libdrt.DrtStartSearch(util.toPointer(hDrt), util.toPointer(pKey), util.toPointer(pInfo), timeout, util.toPointer(hEvent), util.toPointer(pvContext), util.toPointer(hSearchContext)));
+  return util.pointerFromFfi(libdrt_dll.DrtStartSearch(util.toPointer(hDrt), util.toPointer(pKey), util.toPointer(pInfo), timeout, util.toPointer(hEvent), util.toPointer(pvContext), util.toPointer(hSearchContext)));
 }
 
 export function DrtContinueSearch(
   hSearchContext: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libdrt.DrtContinueSearch(util.toPointer(hSearchContext)));
+  return util.pointerFromFfi(libdrt_dll.DrtContinueSearch(util.toPointer(hSearchContext)));
 }
 
 export function DrtGetSearchResultSize(
   hSearchContext: Deno.PointerValue | Uint8Array | null /* ptr */,
   pulSearchResultSize: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libdrt.DrtGetSearchResultSize(util.toPointer(hSearchContext), util.toPointer(pulSearchResultSize)));
+  return util.pointerFromFfi(libdrt_dll.DrtGetSearchResultSize(util.toPointer(hSearchContext), util.toPointer(pulSearchResultSize)));
 }
 
 export function DrtGetSearchResult(
@@ -5198,14 +5202,14 @@ export function DrtGetSearchResult(
   ulSearchResultSize: number /* u32 */,
   pSearchResult: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libdrt.DrtGetSearchResult(util.toPointer(hSearchContext), ulSearchResultSize, util.toPointer(pSearchResult)));
+  return util.pointerFromFfi(libdrt_dll.DrtGetSearchResult(util.toPointer(hSearchContext), ulSearchResultSize, util.toPointer(pSearchResult)));
 }
 
 export function DrtGetSearchPathSize(
   hSearchContext: Deno.PointerValue | Uint8Array | null /* ptr */,
   pulSearchPathSize: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libdrt.DrtGetSearchPathSize(util.toPointer(hSearchContext), util.toPointer(pulSearchPathSize)));
+  return util.pointerFromFfi(libdrt_dll.DrtGetSearchPathSize(util.toPointer(hSearchContext), util.toPointer(pulSearchPathSize)));
 }
 
 export function DrtGetSearchPath(
@@ -5213,13 +5217,13 @@ export function DrtGetSearchPath(
   ulSearchPathSize: number /* u32 */,
   pSearchPath: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libdrt.DrtGetSearchPath(util.toPointer(hSearchContext), ulSearchPathSize, util.toPointer(pSearchPath)));
+  return util.pointerFromFfi(libdrt_dll.DrtGetSearchPath(util.toPointer(hSearchContext), ulSearchPathSize, util.toPointer(pSearchPath)));
 }
 
 export function DrtEndSearch(
   hSearchContext: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libdrt.DrtEndSearch(util.toPointer(hSearchContext)));
+  return util.pointerFromFfi(libdrt_dll.DrtEndSearch(util.toPointer(hSearchContext)));
 }
 
 export function DrtGetInstanceName(
@@ -5227,14 +5231,14 @@ export function DrtGetInstanceName(
   ulcbInstanceNameSize: number /* u32 */,
   pwzDrtInstanceName: string | null /* Windows.Win32.Foundation.PWSTR */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libdrt.DrtGetInstanceName(util.toPointer(hDrt), ulcbInstanceNameSize, util.pwstrToFfi(pwzDrtInstanceName)));
+  return util.pointerFromFfi(libdrt_dll.DrtGetInstanceName(util.toPointer(hDrt), ulcbInstanceNameSize, util.pwstrToFfi(pwzDrtInstanceName)));
 }
 
 export function DrtGetInstanceNameSize(
   hDrt: Deno.PointerValue | Uint8Array | null /* ptr */,
   pulcbInstanceNameSize: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libdrt.DrtGetInstanceNameSize(util.toPointer(hDrt), util.toPointer(pulcbInstanceNameSize)));
+  return util.pointerFromFfi(libdrt_dll.DrtGetInstanceNameSize(util.toPointer(hDrt), util.toPointer(pulcbInstanceNameSize)));
 }
 
 export function PeerDistStartup(
@@ -5242,20 +5246,20 @@ export function PeerDistStartup(
   phPeerDist: Deno.PointerValue | Uint8Array | null /* ptr */,
   pdwSupportedVersion: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libPeerDist.PeerDistStartup(dwVersionRequested, util.toPointer(phPeerDist), util.toPointer(pdwSupportedVersion));
+  return libPeerDist_dll.PeerDistStartup(dwVersionRequested, util.toPointer(phPeerDist), util.toPointer(pdwSupportedVersion));
 }
 
 export function PeerDistShutdown(
   hPeerDist: Deno.PointerValue /* isize */,
 ): number /* u32 */ {
-  return libPeerDist.PeerDistShutdown(hPeerDist);
+  return libPeerDist_dll.PeerDistShutdown(hPeerDist);
 }
 
 export function PeerDistGetStatus(
   hPeerDist: Deno.PointerValue /* isize */,
   pPeerDistStatus: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libPeerDist.PeerDistGetStatus(hPeerDist, util.toPointer(pPeerDistStatus));
+  return libPeerDist_dll.PeerDistGetStatus(hPeerDist, util.toPointer(pPeerDistStatus));
 }
 
 export function PeerDistRegisterForStatusChangeNotification(
@@ -5265,13 +5269,13 @@ export function PeerDistRegisterForStatusChangeNotification(
   lpOverlapped: Deno.PointerValue | Uint8Array | null /* ptr */,
   pPeerDistStatus: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libPeerDist.PeerDistRegisterForStatusChangeNotification(hPeerDist, util.toPointer(hCompletionPort), ulCompletionKey, util.toPointer(lpOverlapped), util.toPointer(pPeerDistStatus));
+  return libPeerDist_dll.PeerDistRegisterForStatusChangeNotification(hPeerDist, util.toPointer(hCompletionPort), ulCompletionKey, util.toPointer(lpOverlapped), util.toPointer(pPeerDistStatus));
 }
 
 export function PeerDistUnregisterForStatusChangeNotification(
   hPeerDist: Deno.PointerValue /* isize */,
 ): number /* u32 */ {
-  return libPeerDist.PeerDistUnregisterForStatusChangeNotification(hPeerDist);
+  return libPeerDist_dll.PeerDistUnregisterForStatusChangeNotification(hPeerDist);
 }
 
 export function PeerDistServerPublishStream(
@@ -5284,7 +5288,7 @@ export function PeerDistServerPublishStream(
   ulCompletionKey: Deno.PointerValue /* usize */,
   phStream: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libPeerDist.PeerDistServerPublishStream(hPeerDist, cbContentIdentifier, util.toPointer(pContentIdentifier), cbContentLength, util.toPointer(pPublishOptions), util.toPointer(hCompletionPort), ulCompletionKey, util.toPointer(phStream));
+  return libPeerDist_dll.PeerDistServerPublishStream(hPeerDist, cbContentIdentifier, util.toPointer(pContentIdentifier), cbContentLength, util.toPointer(pPublishOptions), util.toPointer(hCompletionPort), ulCompletionKey, util.toPointer(phStream));
 }
 
 export function PeerDistServerPublishAddToStream(
@@ -5294,7 +5298,7 @@ export function PeerDistServerPublishAddToStream(
   pBuffer: Deno.PointerValue | Uint8Array | null /* ptr */,
   lpOverlapped: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libPeerDist.PeerDistServerPublishAddToStream(hPeerDist, hStream, cbNumberOfBytes, util.toPointer(pBuffer), util.toPointer(lpOverlapped));
+  return libPeerDist_dll.PeerDistServerPublishAddToStream(hPeerDist, hStream, cbNumberOfBytes, util.toPointer(pBuffer), util.toPointer(lpOverlapped));
 }
 
 export function PeerDistServerPublishCompleteStream(
@@ -5302,14 +5306,14 @@ export function PeerDistServerPublishCompleteStream(
   hStream: Deno.PointerValue /* isize */,
   lpOverlapped: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libPeerDist.PeerDistServerPublishCompleteStream(hPeerDist, hStream, util.toPointer(lpOverlapped));
+  return libPeerDist_dll.PeerDistServerPublishCompleteStream(hPeerDist, hStream, util.toPointer(lpOverlapped));
 }
 
 export function PeerDistServerCloseStreamHandle(
   hPeerDist: Deno.PointerValue /* isize */,
   hStream: Deno.PointerValue /* isize */,
 ): number /* u32 */ {
-  return libPeerDist.PeerDistServerCloseStreamHandle(hPeerDist, hStream);
+  return libPeerDist_dll.PeerDistServerCloseStreamHandle(hPeerDist, hStream);
 }
 
 export function PeerDistServerUnpublish(
@@ -5317,7 +5321,7 @@ export function PeerDistServerUnpublish(
   cbContentIdentifier: number /* u32 */,
   pContentIdentifier: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libPeerDist.PeerDistServerUnpublish(hPeerDist, cbContentIdentifier, util.toPointer(pContentIdentifier));
+  return libPeerDist_dll.PeerDistServerUnpublish(hPeerDist, cbContentIdentifier, util.toPointer(pContentIdentifier));
 }
 
 export function PeerDistServerOpenContentInformation(
@@ -5330,7 +5334,7 @@ export function PeerDistServerOpenContentInformation(
   ulCompletionKey: Deno.PointerValue /* usize */,
   phContentInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libPeerDist.PeerDistServerOpenContentInformation(hPeerDist, cbContentIdentifier, util.toPointer(pContentIdentifier), ullContentOffset, cbContentLength, util.toPointer(hCompletionPort), ulCompletionKey, util.toPointer(phContentInfo));
+  return libPeerDist_dll.PeerDistServerOpenContentInformation(hPeerDist, cbContentIdentifier, util.toPointer(pContentIdentifier), ullContentOffset, cbContentLength, util.toPointer(hCompletionPort), ulCompletionKey, util.toPointer(phContentInfo));
 }
 
 export function PeerDistServerRetrieveContentInformation(
@@ -5340,14 +5344,14 @@ export function PeerDistServerRetrieveContentInformation(
   pBuffer: Deno.PointerValue | Uint8Array | null /* ptr */,
   lpOverlapped: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libPeerDist.PeerDistServerRetrieveContentInformation(hPeerDist, hContentInfo, cbMaxNumberOfBytes, util.toPointer(pBuffer), util.toPointer(lpOverlapped));
+  return libPeerDist_dll.PeerDistServerRetrieveContentInformation(hPeerDist, hContentInfo, cbMaxNumberOfBytes, util.toPointer(pBuffer), util.toPointer(lpOverlapped));
 }
 
 export function PeerDistServerCloseContentInformation(
   hPeerDist: Deno.PointerValue /* isize */,
   hContentInfo: Deno.PointerValue /* isize */,
 ): number /* u32 */ {
-  return libPeerDist.PeerDistServerCloseContentInformation(hPeerDist, hContentInfo);
+  return libPeerDist_dll.PeerDistServerCloseContentInformation(hPeerDist, hContentInfo);
 }
 
 export function PeerDistServerCancelAsyncOperation(
@@ -5356,7 +5360,7 @@ export function PeerDistServerCancelAsyncOperation(
   pContentIdentifier: Deno.PointerValue | Uint8Array | null /* ptr */,
   pOverlapped: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libPeerDist.PeerDistServerCancelAsyncOperation(hPeerDist, cbContentIdentifier, util.toPointer(pContentIdentifier), util.toPointer(pOverlapped));
+  return libPeerDist_dll.PeerDistServerCancelAsyncOperation(hPeerDist, cbContentIdentifier, util.toPointer(pContentIdentifier), util.toPointer(pOverlapped));
 }
 
 export function PeerDistClientOpenContent(
@@ -5366,14 +5370,14 @@ export function PeerDistClientOpenContent(
   ulCompletionKey: Deno.PointerValue /* usize */,
   phContentHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libPeerDist.PeerDistClientOpenContent(hPeerDist, util.toPointer(pContentTag), util.toPointer(hCompletionPort), ulCompletionKey, util.toPointer(phContentHandle));
+  return libPeerDist_dll.PeerDistClientOpenContent(hPeerDist, util.toPointer(pContentTag), util.toPointer(hCompletionPort), ulCompletionKey, util.toPointer(phContentHandle));
 }
 
 export function PeerDistClientCloseContent(
   hPeerDist: Deno.PointerValue /* isize */,
   hContentHandle: Deno.PointerValue /* isize */,
 ): number /* u32 */ {
-  return libPeerDist.PeerDistClientCloseContent(hPeerDist, hContentHandle);
+  return libPeerDist_dll.PeerDistClientCloseContent(hPeerDist, hContentHandle);
 }
 
 export function PeerDistClientAddContentInformation(
@@ -5383,7 +5387,7 @@ export function PeerDistClientAddContentInformation(
   pBuffer: Deno.PointerValue | Uint8Array | null /* ptr */,
   lpOverlapped: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libPeerDist.PeerDistClientAddContentInformation(hPeerDist, hContentHandle, cbNumberOfBytes, util.toPointer(pBuffer), util.toPointer(lpOverlapped));
+  return libPeerDist_dll.PeerDistClientAddContentInformation(hPeerDist, hContentHandle, cbNumberOfBytes, util.toPointer(pBuffer), util.toPointer(lpOverlapped));
 }
 
 export function PeerDistClientCompleteContentInformation(
@@ -5391,7 +5395,7 @@ export function PeerDistClientCompleteContentInformation(
   hContentHandle: Deno.PointerValue /* isize */,
   lpOverlapped: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libPeerDist.PeerDistClientCompleteContentInformation(hPeerDist, hContentHandle, util.toPointer(lpOverlapped));
+  return libPeerDist_dll.PeerDistClientCompleteContentInformation(hPeerDist, hContentHandle, util.toPointer(lpOverlapped));
 }
 
 export function PeerDistClientAddData(
@@ -5401,7 +5405,7 @@ export function PeerDistClientAddData(
   pBuffer: Deno.PointerValue | Uint8Array | null /* ptr */,
   lpOverlapped: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libPeerDist.PeerDistClientAddData(hPeerDist, hContentHandle, cbNumberOfBytes, util.toPointer(pBuffer), util.toPointer(lpOverlapped));
+  return libPeerDist_dll.PeerDistClientAddData(hPeerDist, hContentHandle, cbNumberOfBytes, util.toPointer(pBuffer), util.toPointer(lpOverlapped));
 }
 
 export function PeerDistClientBlockRead(
@@ -5412,7 +5416,7 @@ export function PeerDistClientBlockRead(
   dwTimeoutInMilliseconds: number /* u32 */,
   lpOverlapped: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libPeerDist.PeerDistClientBlockRead(hPeerDist, hContentHandle, cbMaxNumberOfBytes, util.toPointer(pBuffer), dwTimeoutInMilliseconds, util.toPointer(lpOverlapped));
+  return libPeerDist_dll.PeerDistClientBlockRead(hPeerDist, hContentHandle, cbMaxNumberOfBytes, util.toPointer(pBuffer), dwTimeoutInMilliseconds, util.toPointer(lpOverlapped));
 }
 
 export function PeerDistClientStreamRead(
@@ -5423,7 +5427,7 @@ export function PeerDistClientStreamRead(
   dwTimeoutInMilliseconds: number /* u32 */,
   lpOverlapped: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libPeerDist.PeerDistClientStreamRead(hPeerDist, hContentHandle, cbMaxNumberOfBytes, util.toPointer(pBuffer), dwTimeoutInMilliseconds, util.toPointer(lpOverlapped));
+  return libPeerDist_dll.PeerDistClientStreamRead(hPeerDist, hContentHandle, cbMaxNumberOfBytes, util.toPointer(pBuffer), dwTimeoutInMilliseconds, util.toPointer(lpOverlapped));
 }
 
 export function PeerDistClientFlushContent(
@@ -5433,7 +5437,7 @@ export function PeerDistClientFlushContent(
   ulCompletionKey: Deno.PointerValue /* usize */,
   lpOverlapped: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libPeerDist.PeerDistClientFlushContent(hPeerDist, util.toPointer(pContentTag), util.toPointer(hCompletionPort), ulCompletionKey, util.toPointer(lpOverlapped));
+  return libPeerDist_dll.PeerDistClientFlushContent(hPeerDist, util.toPointer(pContentTag), util.toPointer(hCompletionPort), ulCompletionKey, util.toPointer(lpOverlapped));
 }
 
 export function PeerDistClientCancelAsyncOperation(
@@ -5441,14 +5445,14 @@ export function PeerDistClientCancelAsyncOperation(
   hContentHandle: Deno.PointerValue /* isize */,
   pOverlapped: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libPeerDist.PeerDistClientCancelAsyncOperation(hPeerDist, hContentHandle, util.toPointer(pOverlapped));
+  return libPeerDist_dll.PeerDistClientCancelAsyncOperation(hPeerDist, hContentHandle, util.toPointer(pOverlapped));
 }
 
 export function PeerDistGetStatusEx(
   hPeerDist: Deno.PointerValue /* isize */,
   pPeerDistStatus: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libPeerDist.PeerDistGetStatusEx(hPeerDist, util.toPointer(pPeerDistStatus));
+  return libPeerDist_dll.PeerDistGetStatusEx(hPeerDist, util.toPointer(pPeerDistStatus));
 }
 
 export function PeerDistRegisterForStatusChangeNotificationEx(
@@ -5458,7 +5462,7 @@ export function PeerDistRegisterForStatusChangeNotificationEx(
   lpOverlapped: Deno.PointerValue | Uint8Array | null /* ptr */,
   pPeerDistStatus: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libPeerDist.PeerDistRegisterForStatusChangeNotificationEx(hPeerDist, util.toPointer(hCompletionPort), ulCompletionKey, util.toPointer(lpOverlapped), util.toPointer(pPeerDistStatus));
+  return libPeerDist_dll.PeerDistRegisterForStatusChangeNotificationEx(hPeerDist, util.toPointer(hCompletionPort), ulCompletionKey, util.toPointer(lpOverlapped), util.toPointer(pPeerDistStatus));
 }
 
 export function PeerDistGetOverlappedResult(
@@ -5466,7 +5470,7 @@ export function PeerDistGetOverlappedResult(
   lpNumberOfBytesTransferred: Deno.PointerValue | Uint8Array | null /* ptr */,
   bWait: boolean /* Windows.Win32.Foundation.BOOL */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libPeerDist.PeerDistGetOverlappedResult(util.toPointer(lpOverlapped), util.toPointer(lpNumberOfBytesTransferred), util.boolToFfi(bWait)));
+  return util.boolFromFfi(libPeerDist_dll.PeerDistGetOverlappedResult(util.toPointer(lpOverlapped), util.toPointer(lpNumberOfBytesTransferred), util.boolToFfi(bWait)));
 }
 
 export function PeerDistServerOpenContentInformationEx(
@@ -5480,7 +5484,7 @@ export function PeerDistServerOpenContentInformationEx(
   ulCompletionKey: Deno.PointerValue /* usize */,
   phContentInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libPeerDist.PeerDistServerOpenContentInformationEx(hPeerDist, cbContentIdentifier, util.toPointer(pContentIdentifier), ullContentOffset, cbContentLength, util.toPointer(pRetrievalOptions), util.toPointer(hCompletionPort), ulCompletionKey, util.toPointer(phContentInfo));
+  return libPeerDist_dll.PeerDistServerOpenContentInformationEx(hPeerDist, cbContentIdentifier, util.toPointer(pContentIdentifier), ullContentOffset, cbContentLength, util.toPointer(pRetrievalOptions), util.toPointer(hCompletionPort), ulCompletionKey, util.toPointer(phContentInfo));
 }
 
 export function PeerDistClientGetInformationByHandle(
@@ -5490,6 +5494,6 @@ export function PeerDistClientGetInformationByHandle(
   dwBufferSize: number /* u32 */,
   lpInformation: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libPeerDist.PeerDistClientGetInformationByHandle(hPeerDist, hContentHandle, PeerDistClientInfoClass, dwBufferSize, util.toPointer(lpInformation));
+  return libPeerDist_dll.PeerDistClientGetInformationByHandle(hPeerDist, hContentHandle, PeerDistClientInfoClass, dwBufferSize, util.toPointer(lpInformation));
 }
 

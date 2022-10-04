@@ -111,16 +111,20 @@ export const WEBAUTHN_API_CURRENT_VERSION = 3;
 export const WEBAUTHN_RP_ENTITY_INFORMATION_CURRENT_VERSION = 1;
 export const WEBAUTHN_MAX_USER_ID_LENGTH = 64;
 export const WEBAUTHN_USER_ENTITY_INFORMATION_CURRENT_VERSION = 1;
+export const WEBAUTHN_HASH_ALGORITHM_SHA_256 = `SHA-256`;
+export const WEBAUTHN_HASH_ALGORITHM_SHA_384 = `SHA-384`;
+export const WEBAUTHN_HASH_ALGORITHM_SHA_512 = `SHA-512`;
 export const WEBAUTHN_CLIENT_DATA_CURRENT_VERSION = 1;
-export const WEBAUTHN_COSE_ALGORITHM_ECDSA_P256_WITH_SHA256 = "-7";
-export const WEBAUTHN_COSE_ALGORITHM_ECDSA_P384_WITH_SHA384 = "-35";
-export const WEBAUTHN_COSE_ALGORITHM_ECDSA_P521_WITH_SHA512 = "-36";
-export const WEBAUTHN_COSE_ALGORITHM_RSASSA_PKCS1_V1_5_WITH_SHA256 = "-257";
-export const WEBAUTHN_COSE_ALGORITHM_RSASSA_PKCS1_V1_5_WITH_SHA384 = "-258";
-export const WEBAUTHN_COSE_ALGORITHM_RSASSA_PKCS1_V1_5_WITH_SHA512 = "-259";
-export const WEBAUTHN_COSE_ALGORITHM_RSA_PSS_WITH_SHA256 = "-37";
-export const WEBAUTHN_COSE_ALGORITHM_RSA_PSS_WITH_SHA384 = "-38";
-export const WEBAUTHN_COSE_ALGORITHM_RSA_PSS_WITH_SHA512 = "-39";
+export const WEBAUTHN_CREDENTIAL_TYPE_PUBLIC_KEY = `public-key`;
+export const WEBAUTHN_COSE_ALGORITHM_ECDSA_P256_WITH_SHA256 = `-7`;
+export const WEBAUTHN_COSE_ALGORITHM_ECDSA_P384_WITH_SHA384 = `-35`;
+export const WEBAUTHN_COSE_ALGORITHM_ECDSA_P521_WITH_SHA512 = `-36`;
+export const WEBAUTHN_COSE_ALGORITHM_RSASSA_PKCS1_V1_5_WITH_SHA256 = `-257`;
+export const WEBAUTHN_COSE_ALGORITHM_RSASSA_PKCS1_V1_5_WITH_SHA384 = `-258`;
+export const WEBAUTHN_COSE_ALGORITHM_RSASSA_PKCS1_V1_5_WITH_SHA512 = `-259`;
+export const WEBAUTHN_COSE_ALGORITHM_RSA_PSS_WITH_SHA256 = `-37`;
+export const WEBAUTHN_COSE_ALGORITHM_RSA_PSS_WITH_SHA384 = `-38`;
+export const WEBAUTHN_COSE_ALGORITHM_RSA_PSS_WITH_SHA512 = `-39`;
 export const WEBAUTHN_COSE_CREDENTIAL_PARAMETER_CURRENT_VERSION = 1;
 export const WEBAUTHN_CREDENTIAL_CURRENT_VERSION = 1;
 export const WEBAUTHN_CTAP_TRANSPORT_USB = 1;
@@ -130,10 +134,14 @@ export const WEBAUTHN_CTAP_TRANSPORT_TEST = 8;
 export const WEBAUTHN_CTAP_TRANSPORT_INTERNAL = 16;
 export const WEBAUTHN_CTAP_TRANSPORT_FLAGS_MASK = 31;
 export const WEBAUTHN_CREDENTIAL_EX_CURRENT_VERSION = 1;
+export const WEBAUTHN_EXTENSIONS_IDENTIFIER_HMAC_SECRET = `hmac-secret`;
 export const WEBAUTHN_USER_VERIFICATION_ANY = 0;
 export const WEBAUTHN_USER_VERIFICATION_OPTIONAL = 1;
 export const WEBAUTHN_USER_VERIFICATION_OPTIONAL_WITH_CREDENTIAL_ID_LIST = 2;
 export const WEBAUTHN_USER_VERIFICATION_REQUIRED = 3;
+export const WEBAUTHN_EXTENSIONS_IDENTIFIER_CRED_PROTECT = `credProtect`;
+export const WEBAUTHN_EXTENSIONS_IDENTIFIER_CRED_BLOB = `credBlob`;
+export const WEBAUTHN_EXTENSIONS_IDENTIFIER_MIN_PIN_LENGTH = `minPinLength`;
 export const WEBAUTHN_AUTHENTICATOR_ATTACHMENT_ANY = 0;
 export const WEBAUTHN_AUTHENTICATOR_ATTACHMENT_PLATFORM = 1;
 export const WEBAUTHN_AUTHENTICATOR_ATTACHMENT_CROSS_PLATFORM = 2;
@@ -169,7 +177,12 @@ export const WEBAUTHN_AUTHENTICATOR_GET_ASSERTION_OPTIONS_VERSION_5 = 5;
 export const WEBAUTHN_AUTHENTICATOR_GET_ASSERTION_OPTIONS_CURRENT_VERSION = 5;
 export const WEBAUTHN_ATTESTATION_DECODE_NONE = 0;
 export const WEBAUTHN_ATTESTATION_DECODE_COMMON = 1;
+export const WEBAUTHN_ATTESTATION_VER_TPM_2_0 = `2.0`;
 export const WEBAUTHN_COMMON_ATTESTATION_CURRENT_VERSION = 1;
+export const WEBAUTHN_ATTESTATION_TYPE_PACKED = `packed`;
+export const WEBAUTHN_ATTESTATION_TYPE_U2F = `fido-u2f`;
+export const WEBAUTHN_ATTESTATION_TYPE_TPM = `tpm`;
+export const WEBAUTHN_ATTESTATION_TYPE_NONE = `none`;
 export const WEBAUTHN_CREDENTIAL_ATTESTATION_VERSION_1 = 1;
 export const WEBAUTHN_CREDENTIAL_ATTESTATION_VERSION_2 = 2;
 export const WEBAUTHN_CREDENTIAL_ATTESTATION_VERSION_3 = 3;
@@ -451,8 +464,8 @@ export const WS_ENDPOINT_ADDRESS_EXTENSION_METADATA_ADDRESS = 1;
 export const WS_ERROR_PROPERTY_STRING_COUNT = 0;
 export const WS_ERROR_PROPERTY_ORIGINAL_ERROR_CODE = 1;
 export const WS_ERROR_PROPERTY_LANGID = 2;
-export const WS_EXCEPTION_CODE_USAGE_FAILURE = "-1069744128";
-export const WS_EXCEPTION_CODE_INTERNAL_FAILURE = "-1069744127";
+export const WS_EXCEPTION_CODE_USAGE_FAILURE = `-1069744128`;
+export const WS_EXCEPTION_CODE_INTERNAL_FAILURE = `-1069744127`;
 export const WS_FAULT_ERROR_PROPERTY_FAULT = 0;
 export const WS_FAULT_ERROR_PROPERTY_ACTION = 1;
 export const WS_FAULT_ERROR_PROPERTY_HEADER = 2;
@@ -814,7 +827,7 @@ export const WS_CALL_PROPERTY_CHECK_MUST_UNDERSTAND = 0;
 export const WS_CALL_PROPERTY_SEND_MESSAGE_CONTEXT = 1;
 export const WS_CALL_PROPERTY_RECEIVE_MESSAGE_CONTEXT = 2;
 export const WS_CALL_PROPERTY_CALL_ID = 3;
-export const WS_TRACE_API_NONE = "-1";
+export const WS_TRACE_API_NONE = `-1`;
 export const WS_TRACE_API_START_READER_CANONICALIZATION = 0;
 export const WS_TRACE_API_END_READER_CANONICALIZATION = 1;
 export const WS_TRACE_API_START_WRITER_CANONICALIZATION = 2;
@@ -4029,14 +4042,16 @@ export function allocWS_RAW_SYMMETRIC_SECURITY_KEY_HANDLE(data?: Partial<WS_RAW_
   return buf;
 }
 
+export type NCRYPT_KEY_HANDLE = Deno.PointerValue;
+
 /**
  * Windows.Win32.Networking.WindowsWebServices.WS_NCRYPT_ASYMMETRIC_SECURITY_KEY_HANDLE (size: 16)
  */
 export interface WS_NCRYPT_ASYMMETRIC_SECURITY_KEY_HANDLE {
   /** Windows.Win32.Networking.WindowsWebServices.WS_SECURITY_KEY_HANDLE */
   keyHandle: Uint8Array | Deno.PointerValue | null;
-  /** usize */
-  asymmetricKey: Deno.PointerValue;
+  /** Windows.Win32.Security.Cryptography.NCRYPT_KEY_HANDLE */
+  asymmetricKey: Uint8Array | Deno.PointerValue | null;
 }
 
 export const sizeofWS_NCRYPT_ASYMMETRIC_SECURITY_KEY_HANDLE = 16;
@@ -4046,8 +4061,8 @@ export function allocWS_NCRYPT_ASYMMETRIC_SECURITY_KEY_HANDLE(data?: Partial<WS_
   const view = new DataView(buf.buffer);
   // 0x00: pointer
   if (data?.keyHandle !== undefined) view.setBigUint64(0, data.keyHandle === null ? 0n : BigInt(util.toPointer(data.keyHandle)), true);
-  // 0x08: usize
-  if (data?.asymmetricKey !== undefined) view.setBigUint64(8, BigInt(data.asymmetricKey), true);
+  // 0x08: pointer
+  if (data?.asymmetricKey !== undefined) view.setBigUint64(8, data.asymmetricKey === null ? 0n : BigInt(util.toPointer(data.asymmetricKey)), true);
   return buf;
 }
 
@@ -8832,7 +8847,7 @@ export type HWND = Deno.PointerValue;
 // Native Libraries
 
 try {
-  var libwebservices = Deno.dlopen("webservices", {
+  var libwebservices_dll = Deno.dlopen("webservices.dll", {
     WsStartReaderCanonicalization: {
       parameters: ["pointer", "pointer", "pointer", "pointer", "u32", "pointer"],
       result: "pointer",
@@ -9609,7 +9624,7 @@ try {
 } catch(e) { /* ignore */ }
 
 try {
-  var libwebauthn = Deno.dlopen("webauthn", {
+  var libwebauthn_dll = Deno.dlopen("webauthn.dll", {
     WebAuthNGetApiVersionNumber: {
       parameters: [],
       result: "u32",
@@ -9663,14 +9678,14 @@ export function WsStartReaderCanonicalization(
   propertyCount: number /* u32 */,
   error: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libwebservices.WsStartReaderCanonicalization(util.toPointer(reader), util.toPointer(writeCallback), util.toPointer(writeCallbackState), util.toPointer(properties), propertyCount, util.toPointer(error)));
+  return util.pointerFromFfi(libwebservices_dll.WsStartReaderCanonicalization(util.toPointer(reader), util.toPointer(writeCallback), util.toPointer(writeCallbackState), util.toPointer(properties), propertyCount, util.toPointer(error)));
 }
 
 export function WsEndReaderCanonicalization(
   reader: Deno.PointerValue | Uint8Array | null /* ptr */,
   error: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libwebservices.WsEndReaderCanonicalization(util.toPointer(reader), util.toPointer(error)));
+  return util.pointerFromFfi(libwebservices_dll.WsEndReaderCanonicalization(util.toPointer(reader), util.toPointer(error)));
 }
 
 export function WsStartWriterCanonicalization(
@@ -9681,14 +9696,14 @@ export function WsStartWriterCanonicalization(
   propertyCount: number /* u32 */,
   error: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libwebservices.WsStartWriterCanonicalization(util.toPointer(writer), util.toPointer(writeCallback), util.toPointer(writeCallbackState), util.toPointer(properties), propertyCount, util.toPointer(error)));
+  return util.pointerFromFfi(libwebservices_dll.WsStartWriterCanonicalization(util.toPointer(writer), util.toPointer(writeCallback), util.toPointer(writeCallbackState), util.toPointer(properties), propertyCount, util.toPointer(error)));
 }
 
 export function WsEndWriterCanonicalization(
   writer: Deno.PointerValue | Uint8Array | null /* ptr */,
   error: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libwebservices.WsEndWriterCanonicalization(util.toPointer(writer), util.toPointer(error)));
+  return util.pointerFromFfi(libwebservices_dll.WsEndWriterCanonicalization(util.toPointer(writer), util.toPointer(error)));
 }
 
 export function WsCreateXmlBuffer(
@@ -9698,14 +9713,14 @@ export function WsCreateXmlBuffer(
   buffer: Deno.PointerValue | Uint8Array | null /* ptr */,
   error: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libwebservices.WsCreateXmlBuffer(util.toPointer(heap), util.toPointer(properties), propertyCount, util.toPointer(buffer), util.toPointer(error)));
+  return util.pointerFromFfi(libwebservices_dll.WsCreateXmlBuffer(util.toPointer(heap), util.toPointer(properties), propertyCount, util.toPointer(buffer), util.toPointer(error)));
 }
 
 export function WsRemoveNode(
   nodePosition: Deno.PointerValue | Uint8Array | null /* ptr */,
   error: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libwebservices.WsRemoveNode(util.toPointer(nodePosition), util.toPointer(error)));
+  return util.pointerFromFfi(libwebservices_dll.WsRemoveNode(util.toPointer(nodePosition), util.toPointer(error)));
 }
 
 export function WsCreateReader(
@@ -9714,7 +9729,7 @@ export function WsCreateReader(
   reader: Deno.PointerValue | Uint8Array | null /* ptr */,
   error: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libwebservices.WsCreateReader(util.toPointer(properties), propertyCount, util.toPointer(reader), util.toPointer(error)));
+  return util.pointerFromFfi(libwebservices_dll.WsCreateReader(util.toPointer(properties), propertyCount, util.toPointer(reader), util.toPointer(error)));
 }
 
 export function WsSetInput(
@@ -9725,7 +9740,7 @@ export function WsSetInput(
   propertyCount: number /* u32 */,
   error: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libwebservices.WsSetInput(util.toPointer(reader), util.toPointer(encoding), util.toPointer(input), util.toPointer(properties), propertyCount, util.toPointer(error)));
+  return util.pointerFromFfi(libwebservices_dll.WsSetInput(util.toPointer(reader), util.toPointer(encoding), util.toPointer(input), util.toPointer(properties), propertyCount, util.toPointer(error)));
 }
 
 export function WsSetInputToBuffer(
@@ -9735,13 +9750,13 @@ export function WsSetInputToBuffer(
   propertyCount: number /* u32 */,
   error: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libwebservices.WsSetInputToBuffer(util.toPointer(reader), util.toPointer(buffer), util.toPointer(properties), propertyCount, util.toPointer(error)));
+  return util.pointerFromFfi(libwebservices_dll.WsSetInputToBuffer(util.toPointer(reader), util.toPointer(buffer), util.toPointer(properties), propertyCount, util.toPointer(error)));
 }
 
 export function WsFreeReader(
   reader: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): void /* void */ {
-  return libwebservices.WsFreeReader(util.toPointer(reader));
+  return libwebservices_dll.WsFreeReader(util.toPointer(reader));
 }
 
 export function WsGetReaderProperty(
@@ -9751,7 +9766,7 @@ export function WsGetReaderProperty(
   valueSize: number /* u32 */,
   error: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libwebservices.WsGetReaderProperty(util.toPointer(reader), id, util.toPointer(value), valueSize, util.toPointer(error)));
+  return util.pointerFromFfi(libwebservices_dll.WsGetReaderProperty(util.toPointer(reader), id, util.toPointer(value), valueSize, util.toPointer(error)));
 }
 
 export function WsGetReaderNode(
@@ -9759,7 +9774,7 @@ export function WsGetReaderNode(
   node: Deno.PointerValue | Uint8Array | null /* ptr */,
   error: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libwebservices.WsGetReaderNode(util.toPointer(xmlReader), util.toPointer(node), util.toPointer(error)));
+  return util.pointerFromFfi(libwebservices_dll.WsGetReaderNode(util.toPointer(xmlReader), util.toPointer(node), util.toPointer(error)));
 }
 
 export function WsFillReader(
@@ -9768,14 +9783,14 @@ export function WsFillReader(
   asyncContext: Deno.PointerValue | Uint8Array | null /* ptr */,
   error: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libwebservices.WsFillReader(util.toPointer(reader), minSize, util.toPointer(asyncContext), util.toPointer(error)));
+  return util.pointerFromFfi(libwebservices_dll.WsFillReader(util.toPointer(reader), minSize, util.toPointer(asyncContext), util.toPointer(error)));
 }
 
 export function WsReadStartElement(
   reader: Deno.PointerValue | Uint8Array | null /* ptr */,
   error: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libwebservices.WsReadStartElement(util.toPointer(reader), util.toPointer(error)));
+  return util.pointerFromFfi(libwebservices_dll.WsReadStartElement(util.toPointer(reader), util.toPointer(error)));
 }
 
 export function WsReadToStartElement(
@@ -9785,7 +9800,7 @@ export function WsReadToStartElement(
   found: Deno.PointerValue | Uint8Array | null /* ptr */,
   error: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libwebservices.WsReadToStartElement(util.toPointer(reader), util.toPointer(localName), util.toPointer(ns), util.toPointer(found), util.toPointer(error)));
+  return util.pointerFromFfi(libwebservices_dll.WsReadToStartElement(util.toPointer(reader), util.toPointer(localName), util.toPointer(ns), util.toPointer(found), util.toPointer(error)));
 }
 
 export function WsReadStartAttribute(
@@ -9793,35 +9808,35 @@ export function WsReadStartAttribute(
   attributeIndex: number /* u32 */,
   error: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libwebservices.WsReadStartAttribute(util.toPointer(reader), attributeIndex, util.toPointer(error)));
+  return util.pointerFromFfi(libwebservices_dll.WsReadStartAttribute(util.toPointer(reader), attributeIndex, util.toPointer(error)));
 }
 
 export function WsReadEndAttribute(
   reader: Deno.PointerValue | Uint8Array | null /* ptr */,
   error: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libwebservices.WsReadEndAttribute(util.toPointer(reader), util.toPointer(error)));
+  return util.pointerFromFfi(libwebservices_dll.WsReadEndAttribute(util.toPointer(reader), util.toPointer(error)));
 }
 
 export function WsReadNode(
   reader: Deno.PointerValue | Uint8Array | null /* ptr */,
   error: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libwebservices.WsReadNode(util.toPointer(reader), util.toPointer(error)));
+  return util.pointerFromFfi(libwebservices_dll.WsReadNode(util.toPointer(reader), util.toPointer(error)));
 }
 
 export function WsSkipNode(
   reader: Deno.PointerValue | Uint8Array | null /* ptr */,
   error: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libwebservices.WsSkipNode(util.toPointer(reader), util.toPointer(error)));
+  return util.pointerFromFfi(libwebservices_dll.WsSkipNode(util.toPointer(reader), util.toPointer(error)));
 }
 
 export function WsReadEndElement(
   reader: Deno.PointerValue | Uint8Array | null /* ptr */,
   error: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libwebservices.WsReadEndElement(util.toPointer(reader), util.toPointer(error)));
+  return util.pointerFromFfi(libwebservices_dll.WsReadEndElement(util.toPointer(reader), util.toPointer(error)));
 }
 
 export function WsFindAttribute(
@@ -9832,7 +9847,7 @@ export function WsFindAttribute(
   attributeIndex: Deno.PointerValue | Uint8Array | null /* ptr */,
   error: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libwebservices.WsFindAttribute(util.toPointer(reader), util.toPointer(localName), util.toPointer(ns), util.boolToFfi(required), util.toPointer(attributeIndex), util.toPointer(error)));
+  return util.pointerFromFfi(libwebservices_dll.WsFindAttribute(util.toPointer(reader), util.toPointer(localName), util.toPointer(ns), util.boolToFfi(required), util.toPointer(attributeIndex), util.toPointer(error)));
 }
 
 export function WsReadValue(
@@ -9842,7 +9857,7 @@ export function WsReadValue(
   valueSize: number /* u32 */,
   error: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libwebservices.WsReadValue(util.toPointer(reader), valueType, util.toPointer(value), valueSize, util.toPointer(error)));
+  return util.pointerFromFfi(libwebservices_dll.WsReadValue(util.toPointer(reader), valueType, util.toPointer(value), valueSize, util.toPointer(error)));
 }
 
 export function WsReadChars(
@@ -9852,7 +9867,7 @@ export function WsReadChars(
   actualCharCount: Deno.PointerValue | Uint8Array | null /* ptr */,
   error: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libwebservices.WsReadChars(util.toPointer(reader), util.pwstrToFfi(chars), maxCharCount, util.toPointer(actualCharCount), util.toPointer(error)));
+  return util.pointerFromFfi(libwebservices_dll.WsReadChars(util.toPointer(reader), util.pwstrToFfi(chars), maxCharCount, util.toPointer(actualCharCount), util.toPointer(error)));
 }
 
 export function WsReadCharsUtf8(
@@ -9862,7 +9877,7 @@ export function WsReadCharsUtf8(
   actualByteCount: Deno.PointerValue | Uint8Array | null /* ptr */,
   error: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libwebservices.WsReadCharsUtf8(util.toPointer(reader), util.toPointer(bytes), maxByteCount, util.toPointer(actualByteCount), util.toPointer(error)));
+  return util.pointerFromFfi(libwebservices_dll.WsReadCharsUtf8(util.toPointer(reader), util.toPointer(bytes), maxByteCount, util.toPointer(actualByteCount), util.toPointer(error)));
 }
 
 export function WsReadBytes(
@@ -9872,7 +9887,7 @@ export function WsReadBytes(
   actualByteCount: Deno.PointerValue | Uint8Array | null /* ptr */,
   error: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libwebservices.WsReadBytes(util.toPointer(reader), util.toPointer(bytes), maxByteCount, util.toPointer(actualByteCount), util.toPointer(error)));
+  return util.pointerFromFfi(libwebservices_dll.WsReadBytes(util.toPointer(reader), util.toPointer(bytes), maxByteCount, util.toPointer(actualByteCount), util.toPointer(error)));
 }
 
 export function WsReadArray(
@@ -9887,7 +9902,7 @@ export function WsReadArray(
   actualItemCount: Deno.PointerValue | Uint8Array | null /* ptr */,
   error: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libwebservices.WsReadArray(util.toPointer(reader), util.toPointer(localName), util.toPointer(ns), valueType, util.toPointer(array), arraySize, itemOffset, itemCount, util.toPointer(actualItemCount), util.toPointer(error)));
+  return util.pointerFromFfi(libwebservices_dll.WsReadArray(util.toPointer(reader), util.toPointer(localName), util.toPointer(ns), valueType, util.toPointer(array), arraySize, itemOffset, itemCount, util.toPointer(actualItemCount), util.toPointer(error)));
 }
 
 export function WsGetReaderPosition(
@@ -9895,7 +9910,7 @@ export function WsGetReaderPosition(
   nodePosition: Deno.PointerValue | Uint8Array | null /* ptr */,
   error: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libwebservices.WsGetReaderPosition(util.toPointer(reader), util.toPointer(nodePosition), util.toPointer(error)));
+  return util.pointerFromFfi(libwebservices_dll.WsGetReaderPosition(util.toPointer(reader), util.toPointer(nodePosition), util.toPointer(error)));
 }
 
 export function WsSetReaderPosition(
@@ -9903,7 +9918,7 @@ export function WsSetReaderPosition(
   nodePosition: Deno.PointerValue | Uint8Array | null /* ptr */,
   error: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libwebservices.WsSetReaderPosition(util.toPointer(reader), util.toPointer(nodePosition), util.toPointer(error)));
+  return util.pointerFromFfi(libwebservices_dll.WsSetReaderPosition(util.toPointer(reader), util.toPointer(nodePosition), util.toPointer(error)));
 }
 
 export function WsMoveReader(
@@ -9912,7 +9927,7 @@ export function WsMoveReader(
   found: Deno.PointerValue | Uint8Array | null /* ptr */,
   error: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libwebservices.WsMoveReader(util.toPointer(reader), moveTo, util.toPointer(found), util.toPointer(error)));
+  return util.pointerFromFfi(libwebservices_dll.WsMoveReader(util.toPointer(reader), moveTo, util.toPointer(found), util.toPointer(error)));
 }
 
 export function WsCreateWriter(
@@ -9921,13 +9936,13 @@ export function WsCreateWriter(
   writer: Deno.PointerValue | Uint8Array | null /* ptr */,
   error: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libwebservices.WsCreateWriter(util.toPointer(properties), propertyCount, util.toPointer(writer), util.toPointer(error)));
+  return util.pointerFromFfi(libwebservices_dll.WsCreateWriter(util.toPointer(properties), propertyCount, util.toPointer(writer), util.toPointer(error)));
 }
 
 export function WsFreeWriter(
   writer: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): void /* void */ {
-  return libwebservices.WsFreeWriter(util.toPointer(writer));
+  return libwebservices_dll.WsFreeWriter(util.toPointer(writer));
 }
 
 export function WsSetOutput(
@@ -9938,7 +9953,7 @@ export function WsSetOutput(
   propertyCount: number /* u32 */,
   error: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libwebservices.WsSetOutput(util.toPointer(writer), util.toPointer(encoding), util.toPointer(output), util.toPointer(properties), propertyCount, util.toPointer(error)));
+  return util.pointerFromFfi(libwebservices_dll.WsSetOutput(util.toPointer(writer), util.toPointer(encoding), util.toPointer(output), util.toPointer(properties), propertyCount, util.toPointer(error)));
 }
 
 export function WsSetOutputToBuffer(
@@ -9948,7 +9963,7 @@ export function WsSetOutputToBuffer(
   propertyCount: number /* u32 */,
   error: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libwebservices.WsSetOutputToBuffer(util.toPointer(writer), util.toPointer(buffer), util.toPointer(properties), propertyCount, util.toPointer(error)));
+  return util.pointerFromFfi(libwebservices_dll.WsSetOutputToBuffer(util.toPointer(writer), util.toPointer(buffer), util.toPointer(properties), propertyCount, util.toPointer(error)));
 }
 
 export function WsGetWriterProperty(
@@ -9958,7 +9973,7 @@ export function WsGetWriterProperty(
   valueSize: number /* u32 */,
   error: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libwebservices.WsGetWriterProperty(util.toPointer(writer), id, util.toPointer(value), valueSize, util.toPointer(error)));
+  return util.pointerFromFfi(libwebservices_dll.WsGetWriterProperty(util.toPointer(writer), id, util.toPointer(value), valueSize, util.toPointer(error)));
 }
 
 export function WsFlushWriter(
@@ -9967,7 +9982,7 @@ export function WsFlushWriter(
   asyncContext: Deno.PointerValue | Uint8Array | null /* ptr */,
   error: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libwebservices.WsFlushWriter(util.toPointer(writer), minSize, util.toPointer(asyncContext), util.toPointer(error)));
+  return util.pointerFromFfi(libwebservices_dll.WsFlushWriter(util.toPointer(writer), minSize, util.toPointer(asyncContext), util.toPointer(error)));
 }
 
 export function WsWriteStartElement(
@@ -9977,14 +9992,14 @@ export function WsWriteStartElement(
   ns: Deno.PointerValue | Uint8Array | null /* ptr */,
   error: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libwebservices.WsWriteStartElement(util.toPointer(writer), util.toPointer(prefix), util.toPointer(localName), util.toPointer(ns), util.toPointer(error)));
+  return util.pointerFromFfi(libwebservices_dll.WsWriteStartElement(util.toPointer(writer), util.toPointer(prefix), util.toPointer(localName), util.toPointer(ns), util.toPointer(error)));
 }
 
 export function WsWriteEndStartElement(
   writer: Deno.PointerValue | Uint8Array | null /* ptr */,
   error: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libwebservices.WsWriteEndStartElement(util.toPointer(writer), util.toPointer(error)));
+  return util.pointerFromFfi(libwebservices_dll.WsWriteEndStartElement(util.toPointer(writer), util.toPointer(error)));
 }
 
 export function WsWriteXmlnsAttribute(
@@ -9994,7 +10009,7 @@ export function WsWriteXmlnsAttribute(
   singleQuote: boolean /* Windows.Win32.Foundation.BOOL */,
   error: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libwebservices.WsWriteXmlnsAttribute(util.toPointer(writer), util.toPointer(prefix), util.toPointer(ns), util.boolToFfi(singleQuote), util.toPointer(error)));
+  return util.pointerFromFfi(libwebservices_dll.WsWriteXmlnsAttribute(util.toPointer(writer), util.toPointer(prefix), util.toPointer(ns), util.boolToFfi(singleQuote), util.toPointer(error)));
 }
 
 export function WsWriteStartAttribute(
@@ -10005,14 +10020,14 @@ export function WsWriteStartAttribute(
   singleQuote: boolean /* Windows.Win32.Foundation.BOOL */,
   error: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libwebservices.WsWriteStartAttribute(util.toPointer(writer), util.toPointer(prefix), util.toPointer(localName), util.toPointer(ns), util.boolToFfi(singleQuote), util.toPointer(error)));
+  return util.pointerFromFfi(libwebservices_dll.WsWriteStartAttribute(util.toPointer(writer), util.toPointer(prefix), util.toPointer(localName), util.toPointer(ns), util.boolToFfi(singleQuote), util.toPointer(error)));
 }
 
 export function WsWriteEndAttribute(
   writer: Deno.PointerValue | Uint8Array | null /* ptr */,
   error: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libwebservices.WsWriteEndAttribute(util.toPointer(writer), util.toPointer(error)));
+  return util.pointerFromFfi(libwebservices_dll.WsWriteEndAttribute(util.toPointer(writer), util.toPointer(error)));
 }
 
 export function WsWriteValue(
@@ -10022,7 +10037,7 @@ export function WsWriteValue(
   valueSize: number /* u32 */,
   error: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libwebservices.WsWriteValue(util.toPointer(writer), valueType, util.toPointer(value), valueSize, util.toPointer(error)));
+  return util.pointerFromFfi(libwebservices_dll.WsWriteValue(util.toPointer(writer), valueType, util.toPointer(value), valueSize, util.toPointer(error)));
 }
 
 export function WsWriteXmlBuffer(
@@ -10030,7 +10045,7 @@ export function WsWriteXmlBuffer(
   xmlBuffer: Deno.PointerValue | Uint8Array | null /* ptr */,
   error: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libwebservices.WsWriteXmlBuffer(util.toPointer(writer), util.toPointer(xmlBuffer), util.toPointer(error)));
+  return util.pointerFromFfi(libwebservices_dll.WsWriteXmlBuffer(util.toPointer(writer), util.toPointer(xmlBuffer), util.toPointer(error)));
 }
 
 export function WsReadXmlBuffer(
@@ -10039,7 +10054,7 @@ export function WsReadXmlBuffer(
   xmlBuffer: Deno.PointerValue | Uint8Array | null /* ptr */,
   error: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libwebservices.WsReadXmlBuffer(util.toPointer(reader), util.toPointer(heap), util.toPointer(xmlBuffer), util.toPointer(error)));
+  return util.pointerFromFfi(libwebservices_dll.WsReadXmlBuffer(util.toPointer(reader), util.toPointer(heap), util.toPointer(xmlBuffer), util.toPointer(error)));
 }
 
 export function WsWriteXmlBufferToBytes(
@@ -10053,7 +10068,7 @@ export function WsWriteXmlBufferToBytes(
   byteCount: Deno.PointerValue | Uint8Array | null /* ptr */,
   error: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libwebservices.WsWriteXmlBufferToBytes(util.toPointer(writer), util.toPointer(xmlBuffer), util.toPointer(encoding), util.toPointer(properties), propertyCount, util.toPointer(heap), util.toPointer(bytes), util.toPointer(byteCount), util.toPointer(error)));
+  return util.pointerFromFfi(libwebservices_dll.WsWriteXmlBufferToBytes(util.toPointer(writer), util.toPointer(xmlBuffer), util.toPointer(encoding), util.toPointer(properties), propertyCount, util.toPointer(heap), util.toPointer(bytes), util.toPointer(byteCount), util.toPointer(error)));
 }
 
 export function WsReadXmlBufferFromBytes(
@@ -10067,7 +10082,7 @@ export function WsReadXmlBufferFromBytes(
   xmlBuffer: Deno.PointerValue | Uint8Array | null /* ptr */,
   error: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libwebservices.WsReadXmlBufferFromBytes(util.toPointer(reader), util.toPointer(encoding), util.toPointer(properties), propertyCount, util.toPointer(bytes), byteCount, util.toPointer(heap), util.toPointer(xmlBuffer), util.toPointer(error)));
+  return util.pointerFromFfi(libwebservices_dll.WsReadXmlBufferFromBytes(util.toPointer(reader), util.toPointer(encoding), util.toPointer(properties), propertyCount, util.toPointer(bytes), byteCount, util.toPointer(heap), util.toPointer(xmlBuffer), util.toPointer(error)));
 }
 
 export function WsWriteArray(
@@ -10081,7 +10096,7 @@ export function WsWriteArray(
   itemCount: number /* u32 */,
   error: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libwebservices.WsWriteArray(util.toPointer(writer), util.toPointer(localName), util.toPointer(ns), valueType, util.toPointer(array), arraySize, itemOffset, itemCount, util.toPointer(error)));
+  return util.pointerFromFfi(libwebservices_dll.WsWriteArray(util.toPointer(writer), util.toPointer(localName), util.toPointer(ns), valueType, util.toPointer(array), arraySize, itemOffset, itemCount, util.toPointer(error)));
 }
 
 export function WsWriteQualifiedName(
@@ -10091,7 +10106,7 @@ export function WsWriteQualifiedName(
   ns: Deno.PointerValue | Uint8Array | null /* ptr */,
   error: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libwebservices.WsWriteQualifiedName(util.toPointer(writer), util.toPointer(prefix), util.toPointer(localName), util.toPointer(ns), util.toPointer(error)));
+  return util.pointerFromFfi(libwebservices_dll.WsWriteQualifiedName(util.toPointer(writer), util.toPointer(prefix), util.toPointer(localName), util.toPointer(ns), util.toPointer(error)));
 }
 
 export function WsWriteChars(
@@ -10100,7 +10115,7 @@ export function WsWriteChars(
   charCount: number /* u32 */,
   error: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libwebservices.WsWriteChars(util.toPointer(writer), util.pwstrToFfi(chars), charCount, util.toPointer(error)));
+  return util.pointerFromFfi(libwebservices_dll.WsWriteChars(util.toPointer(writer), util.pwstrToFfi(chars), charCount, util.toPointer(error)));
 }
 
 export function WsWriteCharsUtf8(
@@ -10109,7 +10124,7 @@ export function WsWriteCharsUtf8(
   byteCount: number /* u32 */,
   error: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libwebservices.WsWriteCharsUtf8(util.toPointer(writer), util.toPointer(bytes), byteCount, util.toPointer(error)));
+  return util.pointerFromFfi(libwebservices_dll.WsWriteCharsUtf8(util.toPointer(writer), util.toPointer(bytes), byteCount, util.toPointer(error)));
 }
 
 export function WsWriteBytes(
@@ -10118,7 +10133,7 @@ export function WsWriteBytes(
   byteCount: number /* u32 */,
   error: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libwebservices.WsWriteBytes(util.toPointer(writer), util.toPointer(bytes), byteCount, util.toPointer(error)));
+  return util.pointerFromFfi(libwebservices_dll.WsWriteBytes(util.toPointer(writer), util.toPointer(bytes), byteCount, util.toPointer(error)));
 }
 
 export function WsPushBytes(
@@ -10127,7 +10142,7 @@ export function WsPushBytes(
   callbackState: Deno.PointerValue | Uint8Array | null /* ptr */,
   error: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libwebservices.WsPushBytes(util.toPointer(writer), util.toPointer(callback), util.toPointer(callbackState), util.toPointer(error)));
+  return util.pointerFromFfi(libwebservices_dll.WsPushBytes(util.toPointer(writer), util.toPointer(callback), util.toPointer(callbackState), util.toPointer(error)));
 }
 
 export function WsPullBytes(
@@ -10136,14 +10151,14 @@ export function WsPullBytes(
   callbackState: Deno.PointerValue | Uint8Array | null /* ptr */,
   error: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libwebservices.WsPullBytes(util.toPointer(writer), util.toPointer(callback), util.toPointer(callbackState), util.toPointer(error)));
+  return util.pointerFromFfi(libwebservices_dll.WsPullBytes(util.toPointer(writer), util.toPointer(callback), util.toPointer(callbackState), util.toPointer(error)));
 }
 
 export function WsWriteEndElement(
   writer: Deno.PointerValue | Uint8Array | null /* ptr */,
   error: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libwebservices.WsWriteEndElement(util.toPointer(writer), util.toPointer(error)));
+  return util.pointerFromFfi(libwebservices_dll.WsWriteEndElement(util.toPointer(writer), util.toPointer(error)));
 }
 
 export function WsWriteText(
@@ -10151,21 +10166,21 @@ export function WsWriteText(
   text: Deno.PointerValue | Uint8Array | null /* ptr */,
   error: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libwebservices.WsWriteText(util.toPointer(writer), util.toPointer(text), util.toPointer(error)));
+  return util.pointerFromFfi(libwebservices_dll.WsWriteText(util.toPointer(writer), util.toPointer(text), util.toPointer(error)));
 }
 
 export function WsWriteStartCData(
   writer: Deno.PointerValue | Uint8Array | null /* ptr */,
   error: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libwebservices.WsWriteStartCData(util.toPointer(writer), util.toPointer(error)));
+  return util.pointerFromFfi(libwebservices_dll.WsWriteStartCData(util.toPointer(writer), util.toPointer(error)));
 }
 
 export function WsWriteEndCData(
   writer: Deno.PointerValue | Uint8Array | null /* ptr */,
   error: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libwebservices.WsWriteEndCData(util.toPointer(writer), util.toPointer(error)));
+  return util.pointerFromFfi(libwebservices_dll.WsWriteEndCData(util.toPointer(writer), util.toPointer(error)));
 }
 
 export function WsWriteNode(
@@ -10173,7 +10188,7 @@ export function WsWriteNode(
   node: Deno.PointerValue | Uint8Array | null /* ptr */,
   error: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libwebservices.WsWriteNode(util.toPointer(writer), util.toPointer(node), util.toPointer(error)));
+  return util.pointerFromFfi(libwebservices_dll.WsWriteNode(util.toPointer(writer), util.toPointer(node), util.toPointer(error)));
 }
 
 export function WsGetPrefixFromNamespace(
@@ -10183,7 +10198,7 @@ export function WsGetPrefixFromNamespace(
   prefix: Deno.PointerValue | Uint8Array | null /* ptr */,
   error: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libwebservices.WsGetPrefixFromNamespace(util.toPointer(writer), util.toPointer(ns), util.boolToFfi(required), util.toPointer(prefix), util.toPointer(error)));
+  return util.pointerFromFfi(libwebservices_dll.WsGetPrefixFromNamespace(util.toPointer(writer), util.toPointer(ns), util.boolToFfi(required), util.toPointer(prefix), util.toPointer(error)));
 }
 
 export function WsGetWriterPosition(
@@ -10191,7 +10206,7 @@ export function WsGetWriterPosition(
   nodePosition: Deno.PointerValue | Uint8Array | null /* ptr */,
   error: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libwebservices.WsGetWriterPosition(util.toPointer(writer), util.toPointer(nodePosition), util.toPointer(error)));
+  return util.pointerFromFfi(libwebservices_dll.WsGetWriterPosition(util.toPointer(writer), util.toPointer(nodePosition), util.toPointer(error)));
 }
 
 export function WsSetWriterPosition(
@@ -10199,7 +10214,7 @@ export function WsSetWriterPosition(
   nodePosition: Deno.PointerValue | Uint8Array | null /* ptr */,
   error: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libwebservices.WsSetWriterPosition(util.toPointer(writer), util.toPointer(nodePosition), util.toPointer(error)));
+  return util.pointerFromFfi(libwebservices_dll.WsSetWriterPosition(util.toPointer(writer), util.toPointer(nodePosition), util.toPointer(error)));
 }
 
 export function WsMoveWriter(
@@ -10208,7 +10223,7 @@ export function WsMoveWriter(
   found: Deno.PointerValue | Uint8Array | null /* ptr */,
   error: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libwebservices.WsMoveWriter(util.toPointer(writer), moveTo, util.toPointer(found), util.toPointer(error)));
+  return util.pointerFromFfi(libwebservices_dll.WsMoveWriter(util.toPointer(writer), moveTo, util.toPointer(found), util.toPointer(error)));
 }
 
 export function WsTrimXmlWhitespace(
@@ -10218,7 +10233,7 @@ export function WsTrimXmlWhitespace(
   trimmedCount: Deno.PointerValue | Uint8Array | null /* ptr */,
   error: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libwebservices.WsTrimXmlWhitespace(util.pwstrToFfi(chars), charCount, util.toPointer(trimmedChars), util.toPointer(trimmedCount), util.toPointer(error)));
+  return util.pointerFromFfi(libwebservices_dll.WsTrimXmlWhitespace(util.pwstrToFfi(chars), charCount, util.toPointer(trimmedChars), util.toPointer(trimmedCount), util.toPointer(error)));
 }
 
 export function WsVerifyXmlNCName(
@@ -10226,7 +10241,7 @@ export function WsVerifyXmlNCName(
   ncNameCharCount: number /* u32 */,
   error: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libwebservices.WsVerifyXmlNCName(util.pwstrToFfi(ncNameChars), ncNameCharCount, util.toPointer(error)));
+  return util.pointerFromFfi(libwebservices_dll.WsVerifyXmlNCName(util.pwstrToFfi(ncNameChars), ncNameCharCount, util.toPointer(error)));
 }
 
 export function WsXmlStringEquals(
@@ -10234,7 +10249,7 @@ export function WsXmlStringEquals(
   string2: Deno.PointerValue | Uint8Array | null /* ptr */,
   error: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libwebservices.WsXmlStringEquals(util.toPointer(string1), util.toPointer(string2), util.toPointer(error)));
+  return util.pointerFromFfi(libwebservices_dll.WsXmlStringEquals(util.toPointer(string1), util.toPointer(string2), util.toPointer(error)));
 }
 
 export function WsGetNamespaceFromPrefix(
@@ -10244,7 +10259,7 @@ export function WsGetNamespaceFromPrefix(
   ns: Deno.PointerValue | Uint8Array | null /* ptr */,
   error: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libwebservices.WsGetNamespaceFromPrefix(util.toPointer(reader), util.toPointer(prefix), util.boolToFfi(required), util.toPointer(ns), util.toPointer(error)));
+  return util.pointerFromFfi(libwebservices_dll.WsGetNamespaceFromPrefix(util.toPointer(reader), util.toPointer(prefix), util.boolToFfi(required), util.toPointer(ns), util.toPointer(error)));
 }
 
 export function WsReadQualifiedName(
@@ -10255,7 +10270,7 @@ export function WsReadQualifiedName(
   ns: Deno.PointerValue | Uint8Array | null /* ptr */,
   error: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libwebservices.WsReadQualifiedName(util.toPointer(reader), util.toPointer(heap), util.toPointer(prefix), util.toPointer(localName), util.toPointer(ns), util.toPointer(error)));
+  return util.pointerFromFfi(libwebservices_dll.WsReadQualifiedName(util.toPointer(reader), util.toPointer(heap), util.toPointer(prefix), util.toPointer(localName), util.toPointer(ns), util.toPointer(error)));
 }
 
 export function WsGetXmlAttribute(
@@ -10266,7 +10281,7 @@ export function WsGetXmlAttribute(
   valueCharCount: Deno.PointerValue | Uint8Array | null /* ptr */,
   error: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libwebservices.WsGetXmlAttribute(util.toPointer(reader), util.toPointer(localName), util.toPointer(heap), util.toPointer(valueChars), util.toPointer(valueCharCount), util.toPointer(error)));
+  return util.pointerFromFfi(libwebservices_dll.WsGetXmlAttribute(util.toPointer(reader), util.toPointer(localName), util.toPointer(heap), util.toPointer(valueChars), util.toPointer(valueCharCount), util.toPointer(error)));
 }
 
 export function WsCopyNode(
@@ -10274,7 +10289,7 @@ export function WsCopyNode(
   reader: Deno.PointerValue | Uint8Array | null /* ptr */,
   error: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libwebservices.WsCopyNode(util.toPointer(writer), util.toPointer(reader), util.toPointer(error)));
+  return util.pointerFromFfi(libwebservices_dll.WsCopyNode(util.toPointer(writer), util.toPointer(reader), util.toPointer(error)));
 }
 
 export function WsAsyncExecute(
@@ -10285,7 +10300,7 @@ export function WsAsyncExecute(
   asyncContext: Deno.PointerValue | Uint8Array | null /* ptr */,
   error: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libwebservices.WsAsyncExecute(util.toPointer(asyncState), util.toPointer(operation), callbackModel, util.toPointer(callbackState), util.toPointer(asyncContext), util.toPointer(error)));
+  return util.pointerFromFfi(libwebservices_dll.WsAsyncExecute(util.toPointer(asyncState), util.toPointer(operation), callbackModel, util.toPointer(callbackState), util.toPointer(asyncContext), util.toPointer(error)));
 }
 
 export function WsCreateChannel(
@@ -10297,7 +10312,7 @@ export function WsCreateChannel(
   channel: Deno.PointerValue | Uint8Array | null /* ptr */,
   error: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libwebservices.WsCreateChannel(channelType, channelBinding, util.toPointer(properties), propertyCount, util.toPointer(securityDescription), util.toPointer(channel), util.toPointer(error)));
+  return util.pointerFromFfi(libwebservices_dll.WsCreateChannel(channelType, channelBinding, util.toPointer(properties), propertyCount, util.toPointer(securityDescription), util.toPointer(channel), util.toPointer(error)));
 }
 
 export function WsOpenChannel(
@@ -10306,7 +10321,7 @@ export function WsOpenChannel(
   asyncContext: Deno.PointerValue | Uint8Array | null /* ptr */,
   error: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libwebservices.WsOpenChannel(util.toPointer(channel), util.toPointer(endpointAddress), util.toPointer(asyncContext), util.toPointer(error)));
+  return util.pointerFromFfi(libwebservices_dll.WsOpenChannel(util.toPointer(channel), util.toPointer(endpointAddress), util.toPointer(asyncContext), util.toPointer(error)));
 }
 
 export function WsSendMessage(
@@ -10319,7 +10334,7 @@ export function WsSendMessage(
   asyncContext: Deno.PointerValue | Uint8Array | null /* ptr */,
   error: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libwebservices.WsSendMessage(util.toPointer(channel), util.toPointer(message), util.toPointer(messageDescription), writeOption, util.toPointer(bodyValue), bodyValueSize, util.toPointer(asyncContext), util.toPointer(error)));
+  return util.pointerFromFfi(libwebservices_dll.WsSendMessage(util.toPointer(channel), util.toPointer(message), util.toPointer(messageDescription), writeOption, util.toPointer(bodyValue), bodyValueSize, util.toPointer(asyncContext), util.toPointer(error)));
 }
 
 export function WsReceiveMessage(
@@ -10336,7 +10351,7 @@ export function WsReceiveMessage(
   asyncContext: Deno.PointerValue | Uint8Array | null /* ptr */,
   error: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libwebservices.WsReceiveMessage(util.toPointer(channel), util.toPointer(message), util.toPointer(messageDescriptions), messageDescriptionCount, receiveOption, readBodyOption, util.toPointer(heap), util.toPointer(value), valueSize, util.toPointer(index), util.toPointer(asyncContext), util.toPointer(error)));
+  return util.pointerFromFfi(libwebservices_dll.WsReceiveMessage(util.toPointer(channel), util.toPointer(message), util.toPointer(messageDescriptions), messageDescriptionCount, receiveOption, readBodyOption, util.toPointer(heap), util.toPointer(value), valueSize, util.toPointer(index), util.toPointer(asyncContext), util.toPointer(error)));
 }
 
 export function WsRequestReply(
@@ -10355,7 +10370,7 @@ export function WsRequestReply(
   asyncContext: Deno.PointerValue | Uint8Array | null /* ptr */,
   error: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libwebservices.WsRequestReply(util.toPointer(channel), util.toPointer(requestMessage), util.toPointer(requestMessageDescription), writeOption, util.toPointer(requestBodyValue), requestBodyValueSize, util.toPointer(replyMessage), util.toPointer(replyMessageDescription), readOption, util.toPointer(heap), util.toPointer(value), valueSize, util.toPointer(asyncContext), util.toPointer(error)));
+  return util.pointerFromFfi(libwebservices_dll.WsRequestReply(util.toPointer(channel), util.toPointer(requestMessage), util.toPointer(requestMessageDescription), writeOption, util.toPointer(requestBodyValue), requestBodyValueSize, util.toPointer(replyMessage), util.toPointer(replyMessageDescription), readOption, util.toPointer(heap), util.toPointer(value), valueSize, util.toPointer(asyncContext), util.toPointer(error)));
 }
 
 export function WsSendReplyMessage(
@@ -10369,7 +10384,7 @@ export function WsSendReplyMessage(
   asyncContext: Deno.PointerValue | Uint8Array | null /* ptr */,
   error: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libwebservices.WsSendReplyMessage(util.toPointer(channel), util.toPointer(replyMessage), util.toPointer(replyMessageDescription), writeOption, util.toPointer(replyBodyValue), replyBodyValueSize, util.toPointer(requestMessage), util.toPointer(asyncContext), util.toPointer(error)));
+  return util.pointerFromFfi(libwebservices_dll.WsSendReplyMessage(util.toPointer(channel), util.toPointer(replyMessage), util.toPointer(replyMessageDescription), writeOption, util.toPointer(replyBodyValue), replyBodyValueSize, util.toPointer(requestMessage), util.toPointer(asyncContext), util.toPointer(error)));
 }
 
 export function WsSendFaultMessageForError(
@@ -10382,7 +10397,7 @@ export function WsSendFaultMessageForError(
   asyncContext: Deno.PointerValue | Uint8Array | null /* ptr */,
   error: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libwebservices.WsSendFaultMessageForError(util.toPointer(channel), util.toPointer(replyMessage), util.toPointer(faultError), util.toPointer(faultErrorCode), faultDisclosure, util.toPointer(requestMessage), util.toPointer(asyncContext), util.toPointer(error)));
+  return util.pointerFromFfi(libwebservices_dll.WsSendFaultMessageForError(util.toPointer(channel), util.toPointer(replyMessage), util.toPointer(faultError), util.toPointer(faultErrorCode), faultDisclosure, util.toPointer(requestMessage), util.toPointer(asyncContext), util.toPointer(error)));
 }
 
 export function WsGetChannelProperty(
@@ -10392,7 +10407,7 @@ export function WsGetChannelProperty(
   valueSize: number /* u32 */,
   error: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libwebservices.WsGetChannelProperty(util.toPointer(channel), id, util.toPointer(value), valueSize, util.toPointer(error)));
+  return util.pointerFromFfi(libwebservices_dll.WsGetChannelProperty(util.toPointer(channel), id, util.toPointer(value), valueSize, util.toPointer(error)));
 }
 
 export function WsSetChannelProperty(
@@ -10402,7 +10417,7 @@ export function WsSetChannelProperty(
   valueSize: number /* u32 */,
   error: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libwebservices.WsSetChannelProperty(util.toPointer(channel), id, util.toPointer(value), valueSize, util.toPointer(error)));
+  return util.pointerFromFfi(libwebservices_dll.WsSetChannelProperty(util.toPointer(channel), id, util.toPointer(value), valueSize, util.toPointer(error)));
 }
 
 export function WsWriteMessageStart(
@@ -10411,7 +10426,7 @@ export function WsWriteMessageStart(
   asyncContext: Deno.PointerValue | Uint8Array | null /* ptr */,
   error: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libwebservices.WsWriteMessageStart(util.toPointer(channel), util.toPointer(message), util.toPointer(asyncContext), util.toPointer(error)));
+  return util.pointerFromFfi(libwebservices_dll.WsWriteMessageStart(util.toPointer(channel), util.toPointer(message), util.toPointer(asyncContext), util.toPointer(error)));
 }
 
 export function WsWriteMessageEnd(
@@ -10420,7 +10435,7 @@ export function WsWriteMessageEnd(
   asyncContext: Deno.PointerValue | Uint8Array | null /* ptr */,
   error: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libwebservices.WsWriteMessageEnd(util.toPointer(channel), util.toPointer(message), util.toPointer(asyncContext), util.toPointer(error)));
+  return util.pointerFromFfi(libwebservices_dll.WsWriteMessageEnd(util.toPointer(channel), util.toPointer(message), util.toPointer(asyncContext), util.toPointer(error)));
 }
 
 export function WsReadMessageStart(
@@ -10429,7 +10444,7 @@ export function WsReadMessageStart(
   asyncContext: Deno.PointerValue | Uint8Array | null /* ptr */,
   error: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libwebservices.WsReadMessageStart(util.toPointer(channel), util.toPointer(message), util.toPointer(asyncContext), util.toPointer(error)));
+  return util.pointerFromFfi(libwebservices_dll.WsReadMessageStart(util.toPointer(channel), util.toPointer(message), util.toPointer(asyncContext), util.toPointer(error)));
 }
 
 export function WsReadMessageEnd(
@@ -10438,7 +10453,7 @@ export function WsReadMessageEnd(
   asyncContext: Deno.PointerValue | Uint8Array | null /* ptr */,
   error: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libwebservices.WsReadMessageEnd(util.toPointer(channel), util.toPointer(message), util.toPointer(asyncContext), util.toPointer(error)));
+  return util.pointerFromFfi(libwebservices_dll.WsReadMessageEnd(util.toPointer(channel), util.toPointer(message), util.toPointer(asyncContext), util.toPointer(error)));
 }
 
 export function WsCloseChannel(
@@ -10446,27 +10461,27 @@ export function WsCloseChannel(
   asyncContext: Deno.PointerValue | Uint8Array | null /* ptr */,
   error: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libwebservices.WsCloseChannel(util.toPointer(channel), util.toPointer(asyncContext), util.toPointer(error)));
+  return util.pointerFromFfi(libwebservices_dll.WsCloseChannel(util.toPointer(channel), util.toPointer(asyncContext), util.toPointer(error)));
 }
 
 export function WsAbortChannel(
   channel: Deno.PointerValue | Uint8Array | null /* ptr */,
   error: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libwebservices.WsAbortChannel(util.toPointer(channel), util.toPointer(error)));
+  return util.pointerFromFfi(libwebservices_dll.WsAbortChannel(util.toPointer(channel), util.toPointer(error)));
 }
 
 export function WsFreeChannel(
   channel: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): void /* void */ {
-  return libwebservices.WsFreeChannel(util.toPointer(channel));
+  return libwebservices_dll.WsFreeChannel(util.toPointer(channel));
 }
 
 export function WsResetChannel(
   channel: Deno.PointerValue | Uint8Array | null /* ptr */,
   error: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libwebservices.WsResetChannel(util.toPointer(channel), util.toPointer(error)));
+  return util.pointerFromFfi(libwebservices_dll.WsResetChannel(util.toPointer(channel), util.toPointer(error)));
 }
 
 export function WsAbandonMessage(
@@ -10474,7 +10489,7 @@ export function WsAbandonMessage(
   message: Deno.PointerValue | Uint8Array | null /* ptr */,
   error: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libwebservices.WsAbandonMessage(util.toPointer(channel), util.toPointer(message), util.toPointer(error)));
+  return util.pointerFromFfi(libwebservices_dll.WsAbandonMessage(util.toPointer(channel), util.toPointer(message), util.toPointer(error)));
 }
 
 export function WsShutdownSessionChannel(
@@ -10482,7 +10497,7 @@ export function WsShutdownSessionChannel(
   asyncContext: Deno.PointerValue | Uint8Array | null /* ptr */,
   error: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libwebservices.WsShutdownSessionChannel(util.toPointer(channel), util.toPointer(asyncContext), util.toPointer(error)));
+  return util.pointerFromFfi(libwebservices_dll.WsShutdownSessionChannel(util.toPointer(channel), util.toPointer(asyncContext), util.toPointer(error)));
 }
 
 export function WsGetOperationContextProperty(
@@ -10492,7 +10507,7 @@ export function WsGetOperationContextProperty(
   valueSize: number /* u32 */,
   error: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libwebservices.WsGetOperationContextProperty(util.toPointer(context), id, util.toPointer(value), valueSize, util.toPointer(error)));
+  return util.pointerFromFfi(libwebservices_dll.WsGetOperationContextProperty(util.toPointer(context), id, util.toPointer(value), valueSize, util.toPointer(error)));
 }
 
 export function WsGetDictionary(
@@ -10500,7 +10515,7 @@ export function WsGetDictionary(
   dictionary: Deno.PointerValue | Uint8Array | null /* ptr */,
   error: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libwebservices.WsGetDictionary(encoding, util.toPointer(dictionary), util.toPointer(error)));
+  return util.pointerFromFfi(libwebservices_dll.WsGetDictionary(encoding, util.toPointer(dictionary), util.toPointer(error)));
 }
 
 export function WsReadEndpointAddressExtension(
@@ -10513,7 +10528,7 @@ export function WsReadEndpointAddressExtension(
   valueSize: number /* u32 */,
   error: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libwebservices.WsReadEndpointAddressExtension(util.toPointer(reader), util.toPointer(endpointAddress), extensionType, readOption, util.toPointer(heap), util.toPointer(value), valueSize, util.toPointer(error)));
+  return util.pointerFromFfi(libwebservices_dll.WsReadEndpointAddressExtension(util.toPointer(reader), util.toPointer(endpointAddress), extensionType, readOption, util.toPointer(heap), util.toPointer(value), valueSize, util.toPointer(error)));
 }
 
 export function WsCreateError(
@@ -10521,14 +10536,14 @@ export function WsCreateError(
   propertyCount: number /* u32 */,
   error: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libwebservices.WsCreateError(util.toPointer(properties), propertyCount, util.toPointer(error)));
+  return util.pointerFromFfi(libwebservices_dll.WsCreateError(util.toPointer(properties), propertyCount, util.toPointer(error)));
 }
 
 export function WsAddErrorString(
   error: Deno.PointerValue | Uint8Array | null /* ptr */,
   string: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libwebservices.WsAddErrorString(util.toPointer(error), util.toPointer(string)));
+  return util.pointerFromFfi(libwebservices_dll.WsAddErrorString(util.toPointer(error), util.toPointer(string)));
 }
 
 export function WsGetErrorString(
@@ -10536,14 +10551,14 @@ export function WsGetErrorString(
   index: number /* u32 */,
   string: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libwebservices.WsGetErrorString(util.toPointer(error), index, util.toPointer(string)));
+  return util.pointerFromFfi(libwebservices_dll.WsGetErrorString(util.toPointer(error), index, util.toPointer(string)));
 }
 
 export function WsCopyError(
   source: Deno.PointerValue | Uint8Array | null /* ptr */,
   destination: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libwebservices.WsCopyError(util.toPointer(source), util.toPointer(destination)));
+  return util.pointerFromFfi(libwebservices_dll.WsCopyError(util.toPointer(source), util.toPointer(destination)));
 }
 
 export function WsGetErrorProperty(
@@ -10552,7 +10567,7 @@ export function WsGetErrorProperty(
   buffer: Deno.PointerValue | Uint8Array | null /* ptr */,
   bufferSize: number /* u32 */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libwebservices.WsGetErrorProperty(util.toPointer(error), id, util.toPointer(buffer), bufferSize));
+  return util.pointerFromFfi(libwebservices_dll.WsGetErrorProperty(util.toPointer(error), id, util.toPointer(buffer), bufferSize));
 }
 
 export function WsSetErrorProperty(
@@ -10561,19 +10576,19 @@ export function WsSetErrorProperty(
   value: Deno.PointerValue | Uint8Array | null /* ptr */,
   valueSize: number /* u32 */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libwebservices.WsSetErrorProperty(util.toPointer(error), id, util.toPointer(value), valueSize));
+  return util.pointerFromFfi(libwebservices_dll.WsSetErrorProperty(util.toPointer(error), id, util.toPointer(value), valueSize));
 }
 
 export function WsResetError(
   error: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libwebservices.WsResetError(util.toPointer(error)));
+  return util.pointerFromFfi(libwebservices_dll.WsResetError(util.toPointer(error)));
 }
 
 export function WsFreeError(
   error: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): void /* void */ {
-  return libwebservices.WsFreeError(util.toPointer(error));
+  return libwebservices_dll.WsFreeError(util.toPointer(error));
 }
 
 export function WsGetFaultErrorProperty(
@@ -10582,7 +10597,7 @@ export function WsGetFaultErrorProperty(
   buffer: Deno.PointerValue | Uint8Array | null /* ptr */,
   bufferSize: number /* u32 */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libwebservices.WsGetFaultErrorProperty(util.toPointer(error), id, util.toPointer(buffer), bufferSize));
+  return util.pointerFromFfi(libwebservices_dll.WsGetFaultErrorProperty(util.toPointer(error), id, util.toPointer(buffer), bufferSize));
 }
 
 export function WsSetFaultErrorProperty(
@@ -10591,7 +10606,7 @@ export function WsSetFaultErrorProperty(
   value: Deno.PointerValue | Uint8Array | null /* ptr */,
   valueSize: number /* u32 */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libwebservices.WsSetFaultErrorProperty(util.toPointer(error), id, util.toPointer(value), valueSize));
+  return util.pointerFromFfi(libwebservices_dll.WsSetFaultErrorProperty(util.toPointer(error), id, util.toPointer(value), valueSize));
 }
 
 export function WsCreateFaultFromError(
@@ -10601,7 +10616,7 @@ export function WsCreateFaultFromError(
   heap: Deno.PointerValue | Uint8Array | null /* ptr */,
   fault: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libwebservices.WsCreateFaultFromError(util.toPointer(error), util.toPointer(faultErrorCode), faultDisclosure, util.toPointer(heap), util.toPointer(fault)));
+  return util.pointerFromFfi(libwebservices_dll.WsCreateFaultFromError(util.toPointer(error), util.toPointer(faultErrorCode), faultDisclosure, util.toPointer(heap), util.toPointer(fault)));
 }
 
 export function WsSetFaultErrorDetail(
@@ -10611,7 +10626,7 @@ export function WsSetFaultErrorDetail(
   value: Deno.PointerValue | Uint8Array | null /* ptr */,
   valueSize: number /* u32 */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libwebservices.WsSetFaultErrorDetail(util.toPointer(error), util.toPointer(faultDetailDescription), writeOption, util.toPointer(value), valueSize));
+  return util.pointerFromFfi(libwebservices_dll.WsSetFaultErrorDetail(util.toPointer(error), util.toPointer(faultDetailDescription), writeOption, util.toPointer(value), valueSize));
 }
 
 export function WsGetFaultErrorDetail(
@@ -10622,7 +10637,7 @@ export function WsGetFaultErrorDetail(
   value: Deno.PointerValue | Uint8Array | null /* ptr */,
   valueSize: number /* u32 */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libwebservices.WsGetFaultErrorDetail(util.toPointer(error), util.toPointer(faultDetailDescription), readOption, util.toPointer(heap), util.toPointer(value), valueSize));
+  return util.pointerFromFfi(libwebservices_dll.WsGetFaultErrorDetail(util.toPointer(error), util.toPointer(faultDetailDescription), readOption, util.toPointer(heap), util.toPointer(value), valueSize));
 }
 
 export function WsCreateHeap(
@@ -10633,7 +10648,7 @@ export function WsCreateHeap(
   heap: Deno.PointerValue | Uint8Array | null /* ptr */,
   error: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libwebservices.WsCreateHeap(maxSize, trimSize, util.toPointer(properties), propertyCount, util.toPointer(heap), util.toPointer(error)));
+  return util.pointerFromFfi(libwebservices_dll.WsCreateHeap(maxSize, trimSize, util.toPointer(properties), propertyCount, util.toPointer(heap), util.toPointer(error)));
 }
 
 export function WsAlloc(
@@ -10642,7 +10657,7 @@ export function WsAlloc(
   ptr: Deno.PointerValue | Uint8Array | null /* ptr */,
   error: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libwebservices.WsAlloc(util.toPointer(heap), size, util.toPointer(ptr), util.toPointer(error)));
+  return util.pointerFromFfi(libwebservices_dll.WsAlloc(util.toPointer(heap), size, util.toPointer(ptr), util.toPointer(error)));
 }
 
 export function WsGetHeapProperty(
@@ -10652,20 +10667,20 @@ export function WsGetHeapProperty(
   valueSize: number /* u32 */,
   error: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libwebservices.WsGetHeapProperty(util.toPointer(heap), id, util.toPointer(value), valueSize, util.toPointer(error)));
+  return util.pointerFromFfi(libwebservices_dll.WsGetHeapProperty(util.toPointer(heap), id, util.toPointer(value), valueSize, util.toPointer(error)));
 }
 
 export function WsResetHeap(
   heap: Deno.PointerValue | Uint8Array | null /* ptr */,
   error: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libwebservices.WsResetHeap(util.toPointer(heap), util.toPointer(error)));
+  return util.pointerFromFfi(libwebservices_dll.WsResetHeap(util.toPointer(heap), util.toPointer(error)));
 }
 
 export function WsFreeHeap(
   heap: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): void /* void */ {
-  return libwebservices.WsFreeHeap(util.toPointer(heap));
+  return libwebservices_dll.WsFreeHeap(util.toPointer(heap));
 }
 
 export function WsCreateListener(
@@ -10677,7 +10692,7 @@ export function WsCreateListener(
   listener: Deno.PointerValue | Uint8Array | null /* ptr */,
   error: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libwebservices.WsCreateListener(channelType, channelBinding, util.toPointer(properties), propertyCount, util.toPointer(securityDescription), util.toPointer(listener), util.toPointer(error)));
+  return util.pointerFromFfi(libwebservices_dll.WsCreateListener(channelType, channelBinding, util.toPointer(properties), propertyCount, util.toPointer(securityDescription), util.toPointer(listener), util.toPointer(error)));
 }
 
 export function WsOpenListener(
@@ -10686,7 +10701,7 @@ export function WsOpenListener(
   asyncContext: Deno.PointerValue | Uint8Array | null /* ptr */,
   error: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libwebservices.WsOpenListener(util.toPointer(listener), util.toPointer(url), util.toPointer(asyncContext), util.toPointer(error)));
+  return util.pointerFromFfi(libwebservices_dll.WsOpenListener(util.toPointer(listener), util.toPointer(url), util.toPointer(asyncContext), util.toPointer(error)));
 }
 
 export function WsAcceptChannel(
@@ -10695,7 +10710,7 @@ export function WsAcceptChannel(
   asyncContext: Deno.PointerValue | Uint8Array | null /* ptr */,
   error: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libwebservices.WsAcceptChannel(util.toPointer(listener), util.toPointer(channel), util.toPointer(asyncContext), util.toPointer(error)));
+  return util.pointerFromFfi(libwebservices_dll.WsAcceptChannel(util.toPointer(listener), util.toPointer(channel), util.toPointer(asyncContext), util.toPointer(error)));
 }
 
 export function WsCloseListener(
@@ -10703,27 +10718,27 @@ export function WsCloseListener(
   asyncContext: Deno.PointerValue | Uint8Array | null /* ptr */,
   error: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libwebservices.WsCloseListener(util.toPointer(listener), util.toPointer(asyncContext), util.toPointer(error)));
+  return util.pointerFromFfi(libwebservices_dll.WsCloseListener(util.toPointer(listener), util.toPointer(asyncContext), util.toPointer(error)));
 }
 
 export function WsAbortListener(
   listener: Deno.PointerValue | Uint8Array | null /* ptr */,
   error: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libwebservices.WsAbortListener(util.toPointer(listener), util.toPointer(error)));
+  return util.pointerFromFfi(libwebservices_dll.WsAbortListener(util.toPointer(listener), util.toPointer(error)));
 }
 
 export function WsResetListener(
   listener: Deno.PointerValue | Uint8Array | null /* ptr */,
   error: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libwebservices.WsResetListener(util.toPointer(listener), util.toPointer(error)));
+  return util.pointerFromFfi(libwebservices_dll.WsResetListener(util.toPointer(listener), util.toPointer(error)));
 }
 
 export function WsFreeListener(
   listener: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): void /* void */ {
-  return libwebservices.WsFreeListener(util.toPointer(listener));
+  return libwebservices_dll.WsFreeListener(util.toPointer(listener));
 }
 
 export function WsGetListenerProperty(
@@ -10733,7 +10748,7 @@ export function WsGetListenerProperty(
   valueSize: number /* u32 */,
   error: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libwebservices.WsGetListenerProperty(util.toPointer(listener), id, util.toPointer(value), valueSize, util.toPointer(error)));
+  return util.pointerFromFfi(libwebservices_dll.WsGetListenerProperty(util.toPointer(listener), id, util.toPointer(value), valueSize, util.toPointer(error)));
 }
 
 export function WsSetListenerProperty(
@@ -10743,7 +10758,7 @@ export function WsSetListenerProperty(
   valueSize: number /* u32 */,
   error: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libwebservices.WsSetListenerProperty(util.toPointer(listener), id, util.toPointer(value), valueSize, util.toPointer(error)));
+  return util.pointerFromFfi(libwebservices_dll.WsSetListenerProperty(util.toPointer(listener), id, util.toPointer(value), valueSize, util.toPointer(error)));
 }
 
 export function WsCreateChannelForListener(
@@ -10753,7 +10768,7 @@ export function WsCreateChannelForListener(
   channel: Deno.PointerValue | Uint8Array | null /* ptr */,
   error: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libwebservices.WsCreateChannelForListener(util.toPointer(listener), util.toPointer(properties), propertyCount, util.toPointer(channel), util.toPointer(error)));
+  return util.pointerFromFfi(libwebservices_dll.WsCreateChannelForListener(util.toPointer(listener), util.toPointer(properties), propertyCount, util.toPointer(channel), util.toPointer(error)));
 }
 
 export function WsCreateMessage(
@@ -10764,7 +10779,7 @@ export function WsCreateMessage(
   message: Deno.PointerValue | Uint8Array | null /* ptr */,
   error: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libwebservices.WsCreateMessage(envelopeVersion, addressingVersion, util.toPointer(properties), propertyCount, util.toPointer(message), util.toPointer(error)));
+  return util.pointerFromFfi(libwebservices_dll.WsCreateMessage(envelopeVersion, addressingVersion, util.toPointer(properties), propertyCount, util.toPointer(message), util.toPointer(error)));
 }
 
 export function WsCreateMessageForChannel(
@@ -10774,7 +10789,7 @@ export function WsCreateMessageForChannel(
   message: Deno.PointerValue | Uint8Array | null /* ptr */,
   error: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libwebservices.WsCreateMessageForChannel(util.toPointer(channel), util.toPointer(properties), propertyCount, util.toPointer(message), util.toPointer(error)));
+  return util.pointerFromFfi(libwebservices_dll.WsCreateMessageForChannel(util.toPointer(channel), util.toPointer(properties), propertyCount, util.toPointer(message), util.toPointer(error)));
 }
 
 export function WsInitializeMessage(
@@ -10783,20 +10798,20 @@ export function WsInitializeMessage(
   sourceMessage: Deno.PointerValue | Uint8Array | null /* ptr */,
   error: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libwebservices.WsInitializeMessage(util.toPointer(message), initialization, util.toPointer(sourceMessage), util.toPointer(error)));
+  return util.pointerFromFfi(libwebservices_dll.WsInitializeMessage(util.toPointer(message), initialization, util.toPointer(sourceMessage), util.toPointer(error)));
 }
 
 export function WsResetMessage(
   message: Deno.PointerValue | Uint8Array | null /* ptr */,
   error: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libwebservices.WsResetMessage(util.toPointer(message), util.toPointer(error)));
+  return util.pointerFromFfi(libwebservices_dll.WsResetMessage(util.toPointer(message), util.toPointer(error)));
 }
 
 export function WsFreeMessage(
   message: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): void /* void */ {
-  return libwebservices.WsFreeMessage(util.toPointer(message));
+  return libwebservices_dll.WsFreeMessage(util.toPointer(message));
 }
 
 export function WsGetHeaderAttributes(
@@ -10805,7 +10820,7 @@ export function WsGetHeaderAttributes(
   headerAttributes: Deno.PointerValue | Uint8Array | null /* ptr */,
   error: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libwebservices.WsGetHeaderAttributes(util.toPointer(message), util.toPointer(reader), util.toPointer(headerAttributes), util.toPointer(error)));
+  return util.pointerFromFfi(libwebservices_dll.WsGetHeaderAttributes(util.toPointer(message), util.toPointer(reader), util.toPointer(headerAttributes), util.toPointer(error)));
 }
 
 export function WsGetHeader(
@@ -10818,7 +10833,7 @@ export function WsGetHeader(
   valueSize: number /* u32 */,
   error: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libwebservices.WsGetHeader(util.toPointer(message), headerType, valueType, readOption, util.toPointer(heap), util.toPointer(value), valueSize, util.toPointer(error)));
+  return util.pointerFromFfi(libwebservices_dll.WsGetHeader(util.toPointer(message), headerType, valueType, readOption, util.toPointer(heap), util.toPointer(value), valueSize, util.toPointer(error)));
 }
 
 export function WsGetCustomHeader(
@@ -10833,7 +10848,7 @@ export function WsGetCustomHeader(
   headerAttributes: Deno.PointerValue | Uint8Array | null /* ptr */,
   error: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libwebservices.WsGetCustomHeader(util.toPointer(message), util.toPointer(customHeaderDescription), repeatingOption, headerIndex, readOption, util.toPointer(heap), util.toPointer(value), valueSize, util.toPointer(headerAttributes), util.toPointer(error)));
+  return util.pointerFromFfi(libwebservices_dll.WsGetCustomHeader(util.toPointer(message), util.toPointer(customHeaderDescription), repeatingOption, headerIndex, readOption, util.toPointer(heap), util.toPointer(value), valueSize, util.toPointer(headerAttributes), util.toPointer(error)));
 }
 
 export function WsRemoveHeader(
@@ -10841,7 +10856,7 @@ export function WsRemoveHeader(
   headerType: WS_HEADER_TYPE /* Windows.Win32.Networking.WindowsWebServices.WS_HEADER_TYPE */,
   error: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libwebservices.WsRemoveHeader(util.toPointer(message), headerType, util.toPointer(error)));
+  return util.pointerFromFfi(libwebservices_dll.WsRemoveHeader(util.toPointer(message), headerType, util.toPointer(error)));
 }
 
 export function WsSetHeader(
@@ -10853,7 +10868,7 @@ export function WsSetHeader(
   valueSize: number /* u32 */,
   error: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libwebservices.WsSetHeader(util.toPointer(message), headerType, valueType, writeOption, util.toPointer(value), valueSize, util.toPointer(error)));
+  return util.pointerFromFfi(libwebservices_dll.WsSetHeader(util.toPointer(message), headerType, valueType, writeOption, util.toPointer(value), valueSize, util.toPointer(error)));
 }
 
 export function WsRemoveCustomHeader(
@@ -10862,7 +10877,7 @@ export function WsRemoveCustomHeader(
   headerNs: Deno.PointerValue | Uint8Array | null /* ptr */,
   error: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libwebservices.WsRemoveCustomHeader(util.toPointer(message), util.toPointer(headerName), util.toPointer(headerNs), util.toPointer(error)));
+  return util.pointerFromFfi(libwebservices_dll.WsRemoveCustomHeader(util.toPointer(message), util.toPointer(headerName), util.toPointer(headerNs), util.toPointer(error)));
 }
 
 export function WsAddCustomHeader(
@@ -10874,7 +10889,7 @@ export function WsAddCustomHeader(
   headerAttributes: number /* u32 */,
   error: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libwebservices.WsAddCustomHeader(util.toPointer(message), util.toPointer(headerDescription), writeOption, util.toPointer(value), valueSize, headerAttributes, util.toPointer(error)));
+  return util.pointerFromFfi(libwebservices_dll.WsAddCustomHeader(util.toPointer(message), util.toPointer(headerDescription), writeOption, util.toPointer(value), valueSize, headerAttributes, util.toPointer(error)));
 }
 
 export function WsAddMappedHeader(
@@ -10886,7 +10901,7 @@ export function WsAddMappedHeader(
   valueSize: number /* u32 */,
   error: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libwebservices.WsAddMappedHeader(util.toPointer(message), util.toPointer(headerName), valueType, writeOption, util.toPointer(value), valueSize, util.toPointer(error)));
+  return util.pointerFromFfi(libwebservices_dll.WsAddMappedHeader(util.toPointer(message), util.toPointer(headerName), valueType, writeOption, util.toPointer(value), valueSize, util.toPointer(error)));
 }
 
 export function WsRemoveMappedHeader(
@@ -10894,7 +10909,7 @@ export function WsRemoveMappedHeader(
   headerName: Deno.PointerValue | Uint8Array | null /* ptr */,
   error: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libwebservices.WsRemoveMappedHeader(util.toPointer(message), util.toPointer(headerName), util.toPointer(error)));
+  return util.pointerFromFfi(libwebservices_dll.WsRemoveMappedHeader(util.toPointer(message), util.toPointer(headerName), util.toPointer(error)));
 }
 
 export function WsGetMappedHeader(
@@ -10909,7 +10924,7 @@ export function WsGetMappedHeader(
   valueSize: number /* u32 */,
   error: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libwebservices.WsGetMappedHeader(util.toPointer(message), util.toPointer(headerName), repeatingOption, headerIndex, valueType, readOption, util.toPointer(heap), util.toPointer(value), valueSize, util.toPointer(error)));
+  return util.pointerFromFfi(libwebservices_dll.WsGetMappedHeader(util.toPointer(message), util.toPointer(headerName), repeatingOption, headerIndex, valueType, readOption, util.toPointer(heap), util.toPointer(value), valueSize, util.toPointer(error)));
 }
 
 export function WsWriteBody(
@@ -10920,7 +10935,7 @@ export function WsWriteBody(
   valueSize: number /* u32 */,
   error: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libwebservices.WsWriteBody(util.toPointer(message), util.toPointer(bodyDescription), writeOption, util.toPointer(value), valueSize, util.toPointer(error)));
+  return util.pointerFromFfi(libwebservices_dll.WsWriteBody(util.toPointer(message), util.toPointer(bodyDescription), writeOption, util.toPointer(value), valueSize, util.toPointer(error)));
 }
 
 export function WsReadBody(
@@ -10932,7 +10947,7 @@ export function WsReadBody(
   valueSize: number /* u32 */,
   error: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libwebservices.WsReadBody(util.toPointer(message), util.toPointer(bodyDescription), readOption, util.toPointer(heap), util.toPointer(value), valueSize, util.toPointer(error)));
+  return util.pointerFromFfi(libwebservices_dll.WsReadBody(util.toPointer(message), util.toPointer(bodyDescription), readOption, util.toPointer(heap), util.toPointer(value), valueSize, util.toPointer(error)));
 }
 
 export function WsWriteEnvelopeStart(
@@ -10942,14 +10957,14 @@ export function WsWriteEnvelopeStart(
   doneCallbackState: Deno.PointerValue | Uint8Array | null /* ptr */,
   error: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libwebservices.WsWriteEnvelopeStart(util.toPointer(message), util.toPointer(writer), util.toPointer(doneCallback), util.toPointer(doneCallbackState), util.toPointer(error)));
+  return util.pointerFromFfi(libwebservices_dll.WsWriteEnvelopeStart(util.toPointer(message), util.toPointer(writer), util.toPointer(doneCallback), util.toPointer(doneCallbackState), util.toPointer(error)));
 }
 
 export function WsWriteEnvelopeEnd(
   message: Deno.PointerValue | Uint8Array | null /* ptr */,
   error: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libwebservices.WsWriteEnvelopeEnd(util.toPointer(message), util.toPointer(error)));
+  return util.pointerFromFfi(libwebservices_dll.WsWriteEnvelopeEnd(util.toPointer(message), util.toPointer(error)));
 }
 
 export function WsReadEnvelopeStart(
@@ -10959,14 +10974,14 @@ export function WsReadEnvelopeStart(
   doneCallbackState: Deno.PointerValue | Uint8Array | null /* ptr */,
   error: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libwebservices.WsReadEnvelopeStart(util.toPointer(message), util.toPointer(reader), util.toPointer(doneCallback), util.toPointer(doneCallbackState), util.toPointer(error)));
+  return util.pointerFromFfi(libwebservices_dll.WsReadEnvelopeStart(util.toPointer(message), util.toPointer(reader), util.toPointer(doneCallback), util.toPointer(doneCallbackState), util.toPointer(error)));
 }
 
 export function WsReadEnvelopeEnd(
   message: Deno.PointerValue | Uint8Array | null /* ptr */,
   error: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libwebservices.WsReadEnvelopeEnd(util.toPointer(message), util.toPointer(error)));
+  return util.pointerFromFfi(libwebservices_dll.WsReadEnvelopeEnd(util.toPointer(message), util.toPointer(error)));
 }
 
 export function WsGetMessageProperty(
@@ -10976,7 +10991,7 @@ export function WsGetMessageProperty(
   valueSize: number /* u32 */,
   error: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libwebservices.WsGetMessageProperty(util.toPointer(message), id, util.toPointer(value), valueSize, util.toPointer(error)));
+  return util.pointerFromFfi(libwebservices_dll.WsGetMessageProperty(util.toPointer(message), id, util.toPointer(value), valueSize, util.toPointer(error)));
 }
 
 export function WsSetMessageProperty(
@@ -10986,7 +11001,7 @@ export function WsSetMessageProperty(
   valueSize: number /* u32 */,
   error: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libwebservices.WsSetMessageProperty(util.toPointer(message), id, util.toPointer(value), valueSize, util.toPointer(error)));
+  return util.pointerFromFfi(libwebservices_dll.WsSetMessageProperty(util.toPointer(message), id, util.toPointer(value), valueSize, util.toPointer(error)));
 }
 
 export function WsAddressMessage(
@@ -10994,14 +11009,14 @@ export function WsAddressMessage(
   address: Deno.PointerValue | Uint8Array | null /* ptr */,
   error: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libwebservices.WsAddressMessage(util.toPointer(message), util.toPointer(address), util.toPointer(error)));
+  return util.pointerFromFfi(libwebservices_dll.WsAddressMessage(util.toPointer(message), util.toPointer(address), util.toPointer(error)));
 }
 
 export function WsCheckMustUnderstandHeaders(
   message: Deno.PointerValue | Uint8Array | null /* ptr */,
   error: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libwebservices.WsCheckMustUnderstandHeaders(util.toPointer(message), util.toPointer(error)));
+  return util.pointerFromFfi(libwebservices_dll.WsCheckMustUnderstandHeaders(util.toPointer(message), util.toPointer(error)));
 }
 
 export function WsMarkHeaderAsUnderstood(
@@ -11009,7 +11024,7 @@ export function WsMarkHeaderAsUnderstood(
   headerPosition: Deno.PointerValue | Uint8Array | null /* ptr */,
   error: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libwebservices.WsMarkHeaderAsUnderstood(util.toPointer(message), util.toPointer(headerPosition), util.toPointer(error)));
+  return util.pointerFromFfi(libwebservices_dll.WsMarkHeaderAsUnderstood(util.toPointer(message), util.toPointer(headerPosition), util.toPointer(error)));
 }
 
 export function WsFillBody(
@@ -11018,7 +11033,7 @@ export function WsFillBody(
   asyncContext: Deno.PointerValue | Uint8Array | null /* ptr */,
   error: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libwebservices.WsFillBody(util.toPointer(message), minSize, util.toPointer(asyncContext), util.toPointer(error)));
+  return util.pointerFromFfi(libwebservices_dll.WsFillBody(util.toPointer(message), minSize, util.toPointer(asyncContext), util.toPointer(error)));
 }
 
 export function WsFlushBody(
@@ -11027,7 +11042,7 @@ export function WsFlushBody(
   asyncContext: Deno.PointerValue | Uint8Array | null /* ptr */,
   error: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libwebservices.WsFlushBody(util.toPointer(message), minSize, util.toPointer(asyncContext), util.toPointer(error)));
+  return util.pointerFromFfi(libwebservices_dll.WsFlushBody(util.toPointer(message), minSize, util.toPointer(asyncContext), util.toPointer(error)));
 }
 
 export function WsRequestSecurityToken(
@@ -11038,7 +11053,7 @@ export function WsRequestSecurityToken(
   asyncContext: Deno.PointerValue | Uint8Array | null /* ptr */,
   error: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libwebservices.WsRequestSecurityToken(util.toPointer(channel), util.toPointer(properties), propertyCount, util.toPointer(token), util.toPointer(asyncContext), util.toPointer(error)));
+  return util.pointerFromFfi(libwebservices_dll.WsRequestSecurityToken(util.toPointer(channel), util.toPointer(properties), propertyCount, util.toPointer(token), util.toPointer(asyncContext), util.toPointer(error)));
 }
 
 export function WsGetSecurityTokenProperty(
@@ -11049,7 +11064,7 @@ export function WsGetSecurityTokenProperty(
   heap: Deno.PointerValue | Uint8Array | null /* ptr */,
   error: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libwebservices.WsGetSecurityTokenProperty(util.toPointer(securityToken), id, util.toPointer(value), valueSize, util.toPointer(heap), util.toPointer(error)));
+  return util.pointerFromFfi(libwebservices_dll.WsGetSecurityTokenProperty(util.toPointer(securityToken), id, util.toPointer(value), valueSize, util.toPointer(heap), util.toPointer(error)));
 }
 
 export function WsCreateXmlSecurityToken(
@@ -11060,20 +11075,20 @@ export function WsCreateXmlSecurityToken(
   token: Deno.PointerValue | Uint8Array | null /* ptr */,
   error: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libwebservices.WsCreateXmlSecurityToken(util.toPointer(tokenXml), util.toPointer(tokenKey), util.toPointer(properties), propertyCount, util.toPointer(token), util.toPointer(error)));
+  return util.pointerFromFfi(libwebservices_dll.WsCreateXmlSecurityToken(util.toPointer(tokenXml), util.toPointer(tokenKey), util.toPointer(properties), propertyCount, util.toPointer(token), util.toPointer(error)));
 }
 
 export function WsFreeSecurityToken(
   token: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): void /* void */ {
-  return libwebservices.WsFreeSecurityToken(util.toPointer(token));
+  return libwebservices_dll.WsFreeSecurityToken(util.toPointer(token));
 }
 
 export function WsRevokeSecurityContext(
   securityContext: Deno.PointerValue | Uint8Array | null /* ptr */,
   error: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libwebservices.WsRevokeSecurityContext(util.toPointer(securityContext), util.toPointer(error)));
+  return util.pointerFromFfi(libwebservices_dll.WsRevokeSecurityContext(util.toPointer(securityContext), util.toPointer(error)));
 }
 
 export function WsGetSecurityContextProperty(
@@ -11083,7 +11098,7 @@ export function WsGetSecurityContextProperty(
   valueSize: number /* u32 */,
   error: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libwebservices.WsGetSecurityContextProperty(util.toPointer(securityContext), id, util.toPointer(value), valueSize, util.toPointer(error)));
+  return util.pointerFromFfi(libwebservices_dll.WsGetSecurityContextProperty(util.toPointer(securityContext), id, util.toPointer(value), valueSize, util.toPointer(error)));
 }
 
 export function WsReadElement(
@@ -11095,7 +11110,7 @@ export function WsReadElement(
   valueSize: number /* u32 */,
   error: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libwebservices.WsReadElement(util.toPointer(reader), util.toPointer(elementDescription), readOption, util.toPointer(heap), util.toPointer(value), valueSize, util.toPointer(error)));
+  return util.pointerFromFfi(libwebservices_dll.WsReadElement(util.toPointer(reader), util.toPointer(elementDescription), readOption, util.toPointer(heap), util.toPointer(value), valueSize, util.toPointer(error)));
 }
 
 export function WsReadAttribute(
@@ -11107,7 +11122,7 @@ export function WsReadAttribute(
   valueSize: number /* u32 */,
   error: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libwebservices.WsReadAttribute(util.toPointer(reader), util.toPointer(attributeDescription), readOption, util.toPointer(heap), util.toPointer(value), valueSize, util.toPointer(error)));
+  return util.pointerFromFfi(libwebservices_dll.WsReadAttribute(util.toPointer(reader), util.toPointer(attributeDescription), readOption, util.toPointer(heap), util.toPointer(value), valueSize, util.toPointer(error)));
 }
 
 export function WsReadType(
@@ -11121,7 +11136,7 @@ export function WsReadType(
   valueSize: number /* u32 */,
   error: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libwebservices.WsReadType(util.toPointer(reader), typeMapping, type, util.toPointer(typeDescription), readOption, util.toPointer(heap), util.toPointer(value), valueSize, util.toPointer(error)));
+  return util.pointerFromFfi(libwebservices_dll.WsReadType(util.toPointer(reader), typeMapping, type, util.toPointer(typeDescription), readOption, util.toPointer(heap), util.toPointer(value), valueSize, util.toPointer(error)));
 }
 
 export function WsWriteElement(
@@ -11132,7 +11147,7 @@ export function WsWriteElement(
   valueSize: number /* u32 */,
   error: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libwebservices.WsWriteElement(util.toPointer(writer), util.toPointer(elementDescription), writeOption, util.toPointer(value), valueSize, util.toPointer(error)));
+  return util.pointerFromFfi(libwebservices_dll.WsWriteElement(util.toPointer(writer), util.toPointer(elementDescription), writeOption, util.toPointer(value), valueSize, util.toPointer(error)));
 }
 
 export function WsWriteAttribute(
@@ -11143,7 +11158,7 @@ export function WsWriteAttribute(
   valueSize: number /* u32 */,
   error: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libwebservices.WsWriteAttribute(util.toPointer(writer), util.toPointer(attributeDescription), writeOption, util.toPointer(value), valueSize, util.toPointer(error)));
+  return util.pointerFromFfi(libwebservices_dll.WsWriteAttribute(util.toPointer(writer), util.toPointer(attributeDescription), writeOption, util.toPointer(value), valueSize, util.toPointer(error)));
 }
 
 export function WsWriteType(
@@ -11156,7 +11171,7 @@ export function WsWriteType(
   valueSize: number /* u32 */,
   error: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libwebservices.WsWriteType(util.toPointer(writer), typeMapping, type, util.toPointer(typeDescription), writeOption, util.toPointer(value), valueSize, util.toPointer(error)));
+  return util.pointerFromFfi(libwebservices_dll.WsWriteType(util.toPointer(writer), typeMapping, type, util.toPointer(typeDescription), writeOption, util.toPointer(value), valueSize, util.toPointer(error)));
 }
 
 export function WsRegisterOperationForCancel(
@@ -11166,7 +11181,7 @@ export function WsRegisterOperationForCancel(
   userState: Deno.PointerValue | Uint8Array | null /* ptr */,
   error: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libwebservices.WsRegisterOperationForCancel(util.toPointer(context), util.toPointer(cancelCallback), util.toPointer(freestateCallback), util.toPointer(userState), util.toPointer(error)));
+  return util.pointerFromFfi(libwebservices_dll.WsRegisterOperationForCancel(util.toPointer(context), util.toPointer(cancelCallback), util.toPointer(freestateCallback), util.toPointer(userState), util.toPointer(error)));
 }
 
 export function WsGetServiceHostProperty(
@@ -11176,7 +11191,7 @@ export function WsGetServiceHostProperty(
   valueSize: number /* u32 */,
   error: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libwebservices.WsGetServiceHostProperty(util.toPointer(serviceHost), id, util.toPointer(value), valueSize, util.toPointer(error)));
+  return util.pointerFromFfi(libwebservices_dll.WsGetServiceHostProperty(util.toPointer(serviceHost), id, util.toPointer(value), valueSize, util.toPointer(error)));
 }
 
 export function WsCreateServiceHost(
@@ -11187,7 +11202,7 @@ export function WsCreateServiceHost(
   serviceHost: Deno.PointerValue | Uint8Array | null /* ptr */,
   error: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libwebservices.WsCreateServiceHost(util.toPointer(endpoints), endpointCount, util.toPointer(serviceProperties), servicePropertyCount, util.toPointer(serviceHost), util.toPointer(error)));
+  return util.pointerFromFfi(libwebservices_dll.WsCreateServiceHost(util.toPointer(endpoints), endpointCount, util.toPointer(serviceProperties), servicePropertyCount, util.toPointer(serviceHost), util.toPointer(error)));
 }
 
 export function WsOpenServiceHost(
@@ -11195,7 +11210,7 @@ export function WsOpenServiceHost(
   asyncContext: Deno.PointerValue | Uint8Array | null /* ptr */,
   error: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libwebservices.WsOpenServiceHost(util.toPointer(serviceHost), util.toPointer(asyncContext), util.toPointer(error)));
+  return util.pointerFromFfi(libwebservices_dll.WsOpenServiceHost(util.toPointer(serviceHost), util.toPointer(asyncContext), util.toPointer(error)));
 }
 
 export function WsCloseServiceHost(
@@ -11203,27 +11218,27 @@ export function WsCloseServiceHost(
   asyncContext: Deno.PointerValue | Uint8Array | null /* ptr */,
   error: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libwebservices.WsCloseServiceHost(util.toPointer(serviceHost), util.toPointer(asyncContext), util.toPointer(error)));
+  return util.pointerFromFfi(libwebservices_dll.WsCloseServiceHost(util.toPointer(serviceHost), util.toPointer(asyncContext), util.toPointer(error)));
 }
 
 export function WsAbortServiceHost(
   serviceHost: Deno.PointerValue | Uint8Array | null /* ptr */,
   error: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libwebservices.WsAbortServiceHost(util.toPointer(serviceHost), util.toPointer(error)));
+  return util.pointerFromFfi(libwebservices_dll.WsAbortServiceHost(util.toPointer(serviceHost), util.toPointer(error)));
 }
 
 export function WsFreeServiceHost(
   serviceHost: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): void /* void */ {
-  return libwebservices.WsFreeServiceHost(util.toPointer(serviceHost));
+  return libwebservices_dll.WsFreeServiceHost(util.toPointer(serviceHost));
 }
 
 export function WsResetServiceHost(
   serviceHost: Deno.PointerValue | Uint8Array | null /* ptr */,
   error: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libwebservices.WsResetServiceHost(util.toPointer(serviceHost), util.toPointer(error)));
+  return util.pointerFromFfi(libwebservices_dll.WsResetServiceHost(util.toPointer(serviceHost), util.toPointer(error)));
 }
 
 export function WsGetServiceProxyProperty(
@@ -11233,7 +11248,7 @@ export function WsGetServiceProxyProperty(
   valueSize: number /* u32 */,
   error: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libwebservices.WsGetServiceProxyProperty(util.toPointer(serviceProxy), id, util.toPointer(value), valueSize, util.toPointer(error)));
+  return util.pointerFromFfi(libwebservices_dll.WsGetServiceProxyProperty(util.toPointer(serviceProxy), id, util.toPointer(value), valueSize, util.toPointer(error)));
 }
 
 export function WsCreateServiceProxy(
@@ -11247,7 +11262,7 @@ export function WsCreateServiceProxy(
   serviceProxy: Deno.PointerValue | Uint8Array | null /* ptr */,
   error: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libwebservices.WsCreateServiceProxy(channelType, channelBinding, util.toPointer(securityDescription), util.toPointer(properties), propertyCount, util.toPointer(channelProperties), channelPropertyCount, util.toPointer(serviceProxy), util.toPointer(error)));
+  return util.pointerFromFfi(libwebservices_dll.WsCreateServiceProxy(channelType, channelBinding, util.toPointer(securityDescription), util.toPointer(properties), propertyCount, util.toPointer(channelProperties), channelPropertyCount, util.toPointer(serviceProxy), util.toPointer(error)));
 }
 
 export function WsOpenServiceProxy(
@@ -11256,7 +11271,7 @@ export function WsOpenServiceProxy(
   asyncContext: Deno.PointerValue | Uint8Array | null /* ptr */,
   error: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libwebservices.WsOpenServiceProxy(util.toPointer(serviceProxy), util.toPointer(address), util.toPointer(asyncContext), util.toPointer(error)));
+  return util.pointerFromFfi(libwebservices_dll.WsOpenServiceProxy(util.toPointer(serviceProxy), util.toPointer(address), util.toPointer(asyncContext), util.toPointer(error)));
 }
 
 export function WsCloseServiceProxy(
@@ -11264,27 +11279,27 @@ export function WsCloseServiceProxy(
   asyncContext: Deno.PointerValue | Uint8Array | null /* ptr */,
   error: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libwebservices.WsCloseServiceProxy(util.toPointer(serviceProxy), util.toPointer(asyncContext), util.toPointer(error)));
+  return util.pointerFromFfi(libwebservices_dll.WsCloseServiceProxy(util.toPointer(serviceProxy), util.toPointer(asyncContext), util.toPointer(error)));
 }
 
 export function WsAbortServiceProxy(
   serviceProxy: Deno.PointerValue | Uint8Array | null /* ptr */,
   error: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libwebservices.WsAbortServiceProxy(util.toPointer(serviceProxy), util.toPointer(error)));
+  return util.pointerFromFfi(libwebservices_dll.WsAbortServiceProxy(util.toPointer(serviceProxy), util.toPointer(error)));
 }
 
 export function WsFreeServiceProxy(
   serviceProxy: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): void /* void */ {
-  return libwebservices.WsFreeServiceProxy(util.toPointer(serviceProxy));
+  return libwebservices_dll.WsFreeServiceProxy(util.toPointer(serviceProxy));
 }
 
 export function WsResetServiceProxy(
   serviceProxy: Deno.PointerValue | Uint8Array | null /* ptr */,
   error: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libwebservices.WsResetServiceProxy(util.toPointer(serviceProxy), util.toPointer(error)));
+  return util.pointerFromFfi(libwebservices_dll.WsResetServiceProxy(util.toPointer(serviceProxy), util.toPointer(error)));
 }
 
 export function WsAbandonCall(
@@ -11292,7 +11307,7 @@ export function WsAbandonCall(
   callId: number /* u32 */,
   error: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libwebservices.WsAbandonCall(util.toPointer(serviceProxy), callId, util.toPointer(error)));
+  return util.pointerFromFfi(libwebservices_dll.WsAbandonCall(util.toPointer(serviceProxy), callId, util.toPointer(error)));
 }
 
 export function WsCall(
@@ -11305,7 +11320,7 @@ export function WsCall(
   asyncContext: Deno.PointerValue | Uint8Array | null /* ptr */,
   error: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libwebservices.WsCall(util.toPointer(serviceProxy), util.toPointer(operation), util.toPointer(arguments__), util.toPointer(heap), util.toPointer(callProperties), callPropertyCount, util.toPointer(asyncContext), util.toPointer(error)));
+  return util.pointerFromFfi(libwebservices_dll.WsCall(util.toPointer(serviceProxy), util.toPointer(operation), util.toPointer(arguments__), util.toPointer(heap), util.toPointer(callProperties), callPropertyCount, util.toPointer(asyncContext), util.toPointer(error)));
 }
 
 export function WsDecodeUrl(
@@ -11315,7 +11330,7 @@ export function WsDecodeUrl(
   outUrl: Deno.PointerValue | Uint8Array | null /* ptr */,
   error: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libwebservices.WsDecodeUrl(util.toPointer(url), flags, util.toPointer(heap), util.toPointer(outUrl), util.toPointer(error)));
+  return util.pointerFromFfi(libwebservices_dll.WsDecodeUrl(util.toPointer(url), flags, util.toPointer(heap), util.toPointer(outUrl), util.toPointer(error)));
 }
 
 export function WsEncodeUrl(
@@ -11325,7 +11340,7 @@ export function WsEncodeUrl(
   outUrl: Deno.PointerValue | Uint8Array | null /* ptr */,
   error: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libwebservices.WsEncodeUrl(util.toPointer(url), flags, util.toPointer(heap), util.toPointer(outUrl), util.toPointer(error)));
+  return util.pointerFromFfi(libwebservices_dll.WsEncodeUrl(util.toPointer(url), flags, util.toPointer(heap), util.toPointer(outUrl), util.toPointer(error)));
 }
 
 export function WsCombineUrl(
@@ -11336,7 +11351,7 @@ export function WsCombineUrl(
   resultUrl: Deno.PointerValue | Uint8Array | null /* ptr */,
   error: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libwebservices.WsCombineUrl(util.toPointer(baseUrl), util.toPointer(referenceUrl), flags, util.toPointer(heap), util.toPointer(resultUrl), util.toPointer(error)));
+  return util.pointerFromFfi(libwebservices_dll.WsCombineUrl(util.toPointer(baseUrl), util.toPointer(referenceUrl), flags, util.toPointer(heap), util.toPointer(resultUrl), util.toPointer(error)));
 }
 
 export function WsDateTimeToFileTime(
@@ -11344,7 +11359,7 @@ export function WsDateTimeToFileTime(
   fileTime: Deno.PointerValue | Uint8Array | null /* ptr */,
   error: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libwebservices.WsDateTimeToFileTime(util.toPointer(dateTime), util.toPointer(fileTime), util.toPointer(error)));
+  return util.pointerFromFfi(libwebservices_dll.WsDateTimeToFileTime(util.toPointer(dateTime), util.toPointer(fileTime), util.toPointer(error)));
 }
 
 export function WsFileTimeToDateTime(
@@ -11352,7 +11367,7 @@ export function WsFileTimeToDateTime(
   dateTime: Deno.PointerValue | Uint8Array | null /* ptr */,
   error: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libwebservices.WsFileTimeToDateTime(util.toPointer(fileTime), util.toPointer(dateTime), util.toPointer(error)));
+  return util.pointerFromFfi(libwebservices_dll.WsFileTimeToDateTime(util.toPointer(fileTime), util.toPointer(dateTime), util.toPointer(error)));
 }
 
 export function WsCreateMetadata(
@@ -11361,7 +11376,7 @@ export function WsCreateMetadata(
   metadata: Deno.PointerValue | Uint8Array | null /* ptr */,
   error: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libwebservices.WsCreateMetadata(util.toPointer(properties), propertyCount, util.toPointer(metadata), util.toPointer(error)));
+  return util.pointerFromFfi(libwebservices_dll.WsCreateMetadata(util.toPointer(properties), propertyCount, util.toPointer(metadata), util.toPointer(error)));
 }
 
 export function WsReadMetadata(
@@ -11370,20 +11385,20 @@ export function WsReadMetadata(
   url: Deno.PointerValue | Uint8Array | null /* ptr */,
   error: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libwebservices.WsReadMetadata(util.toPointer(metadata), util.toPointer(reader), util.toPointer(url), util.toPointer(error)));
+  return util.pointerFromFfi(libwebservices_dll.WsReadMetadata(util.toPointer(metadata), util.toPointer(reader), util.toPointer(url), util.toPointer(error)));
 }
 
 export function WsFreeMetadata(
   metadata: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): void /* void */ {
-  return libwebservices.WsFreeMetadata(util.toPointer(metadata));
+  return libwebservices_dll.WsFreeMetadata(util.toPointer(metadata));
 }
 
 export function WsResetMetadata(
   metadata: Deno.PointerValue | Uint8Array | null /* ptr */,
   error: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libwebservices.WsResetMetadata(util.toPointer(metadata), util.toPointer(error)));
+  return util.pointerFromFfi(libwebservices_dll.WsResetMetadata(util.toPointer(metadata), util.toPointer(error)));
 }
 
 export function WsGetMetadataProperty(
@@ -11393,7 +11408,7 @@ export function WsGetMetadataProperty(
   valueSize: number /* u32 */,
   error: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libwebservices.WsGetMetadataProperty(util.toPointer(metadata), id, util.toPointer(value), valueSize, util.toPointer(error)));
+  return util.pointerFromFfi(libwebservices_dll.WsGetMetadataProperty(util.toPointer(metadata), id, util.toPointer(value), valueSize, util.toPointer(error)));
 }
 
 export function WsGetMissingMetadataDocumentAddress(
@@ -11401,7 +11416,7 @@ export function WsGetMissingMetadataDocumentAddress(
   address: Deno.PointerValue | Uint8Array | null /* ptr */,
   error: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libwebservices.WsGetMissingMetadataDocumentAddress(util.toPointer(metadata), util.toPointer(address), util.toPointer(error)));
+  return util.pointerFromFfi(libwebservices_dll.WsGetMissingMetadataDocumentAddress(util.toPointer(metadata), util.toPointer(address), util.toPointer(error)));
 }
 
 export function WsGetMetadataEndpoints(
@@ -11409,7 +11424,7 @@ export function WsGetMetadataEndpoints(
   endpoints: Deno.PointerValue | Uint8Array | null /* ptr */,
   error: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libwebservices.WsGetMetadataEndpoints(util.toPointer(metadata), util.toPointer(endpoints), util.toPointer(error)));
+  return util.pointerFromFfi(libwebservices_dll.WsGetMetadataEndpoints(util.toPointer(metadata), util.toPointer(endpoints), util.toPointer(error)));
 }
 
 export function WsMatchPolicyAlternative(
@@ -11420,7 +11435,7 @@ export function WsMatchPolicyAlternative(
   heap: Deno.PointerValue | Uint8Array | null /* ptr */,
   error: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libwebservices.WsMatchPolicyAlternative(util.toPointer(policy), alternativeIndex, util.toPointer(policyConstraints), util.boolToFfi(matchRequired), util.toPointer(heap), util.toPointer(error)));
+  return util.pointerFromFfi(libwebservices_dll.WsMatchPolicyAlternative(util.toPointer(policy), alternativeIndex, util.toPointer(policyConstraints), util.boolToFfi(matchRequired), util.toPointer(heap), util.toPointer(error)));
 }
 
 export function WsGetPolicyProperty(
@@ -11430,7 +11445,7 @@ export function WsGetPolicyProperty(
   valueSize: number /* u32 */,
   error: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libwebservices.WsGetPolicyProperty(util.toPointer(policy), id, util.toPointer(value), valueSize, util.toPointer(error)));
+  return util.pointerFromFfi(libwebservices_dll.WsGetPolicyProperty(util.toPointer(policy), id, util.toPointer(value), valueSize, util.toPointer(error)));
 }
 
 export function WsGetPolicyAlternativeCount(
@@ -11438,7 +11453,7 @@ export function WsGetPolicyAlternativeCount(
   count: Deno.PointerValue | Uint8Array | null /* ptr */,
   error: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libwebservices.WsGetPolicyAlternativeCount(util.toPointer(policy), util.toPointer(count), util.toPointer(error)));
+  return util.pointerFromFfi(libwebservices_dll.WsGetPolicyAlternativeCount(util.toPointer(policy), util.toPointer(count), util.toPointer(error)));
 }
 
 export function WsCreateServiceProxyFromTemplate(
@@ -11453,7 +11468,7 @@ export function WsCreateServiceProxyFromTemplate(
   serviceProxy: Deno.PointerValue | Uint8Array | null /* ptr */,
   error: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libwebservices.WsCreateServiceProxyFromTemplate(channelType, util.toPointer(properties), propertyCount, templateType, util.toPointer(templateValue), templateSize, util.toPointer(templateDescription), templateDescriptionSize, util.toPointer(serviceProxy), util.toPointer(error)));
+  return util.pointerFromFfi(libwebservices_dll.WsCreateServiceProxyFromTemplate(channelType, util.toPointer(properties), propertyCount, templateType, util.toPointer(templateValue), templateSize, util.toPointer(templateDescription), templateDescriptionSize, util.toPointer(serviceProxy), util.toPointer(error)));
 }
 
 export function WsCreateServiceEndpointFromTemplate(
@@ -11472,17 +11487,17 @@ export function WsCreateServiceEndpointFromTemplate(
   serviceEndpoint: Deno.PointerValue | Uint8Array | null /* ptr */,
   error: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libwebservices.WsCreateServiceEndpointFromTemplate(channelType, util.toPointer(properties), propertyCount, util.toPointer(addressUrl), util.toPointer(contract), util.toPointer(authorizationCallback), util.toPointer(heap), templateType, util.toPointer(templateValue), templateSize, util.toPointer(templateDescription), templateDescriptionSize, util.toPointer(serviceEndpoint), util.toPointer(error)));
+  return util.pointerFromFfi(libwebservices_dll.WsCreateServiceEndpointFromTemplate(channelType, util.toPointer(properties), propertyCount, util.toPointer(addressUrl), util.toPointer(contract), util.toPointer(authorizationCallback), util.toPointer(heap), templateType, util.toPointer(templateValue), templateSize, util.toPointer(templateDescription), templateDescriptionSize, util.toPointer(serviceEndpoint), util.toPointer(error)));
 }
 
 export function WebAuthNGetApiVersionNumber(): number /* u32 */ {
-  return libwebauthn.WebAuthNGetApiVersionNumber();
+  return libwebauthn_dll.WebAuthNGetApiVersionNumber();
 }
 
 export function WebAuthNIsUserVerifyingPlatformAuthenticatorAvailable(
   pbIsUserVerifyingPlatformAuthenticatorAvailable: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libwebauthn.WebAuthNIsUserVerifyingPlatformAuthenticatorAvailable(util.toPointer(pbIsUserVerifyingPlatformAuthenticatorAvailable)));
+  return util.pointerFromFfi(libwebauthn_dll.WebAuthNIsUserVerifyingPlatformAuthenticatorAvailable(util.toPointer(pbIsUserVerifyingPlatformAuthenticatorAvailable)));
 }
 
 export function WebAuthNAuthenticatorMakeCredential(
@@ -11494,7 +11509,7 @@ export function WebAuthNAuthenticatorMakeCredential(
   pWebAuthNMakeCredentialOptions: Deno.PointerValue | Uint8Array | null /* ptr */,
   ppWebAuthNCredentialAttestation: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libwebauthn.WebAuthNAuthenticatorMakeCredential(util.hwndToFfi(hWnd), util.toPointer(pRpInformation), util.toPointer(pUserInformation), util.toPointer(pPubKeyCredParams), util.toPointer(pWebAuthNClientData), util.toPointer(pWebAuthNMakeCredentialOptions), util.toPointer(ppWebAuthNCredentialAttestation)));
+  return util.pointerFromFfi(libwebauthn_dll.WebAuthNAuthenticatorMakeCredential(util.hwndToFfi(hWnd), util.toPointer(pRpInformation), util.toPointer(pUserInformation), util.toPointer(pPubKeyCredParams), util.toPointer(pWebAuthNClientData), util.toPointer(pWebAuthNMakeCredentialOptions), util.toPointer(ppWebAuthNCredentialAttestation)));
 }
 
 export function WebAuthNAuthenticatorGetAssertion(
@@ -11504,42 +11519,42 @@ export function WebAuthNAuthenticatorGetAssertion(
   pWebAuthNGetAssertionOptions: Deno.PointerValue | Uint8Array | null /* ptr */,
   ppWebAuthNAssertion: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libwebauthn.WebAuthNAuthenticatorGetAssertion(util.hwndToFfi(hWnd), util.pwstrToFfi(pwszRpId), util.toPointer(pWebAuthNClientData), util.toPointer(pWebAuthNGetAssertionOptions), util.toPointer(ppWebAuthNAssertion)));
+  return util.pointerFromFfi(libwebauthn_dll.WebAuthNAuthenticatorGetAssertion(util.hwndToFfi(hWnd), util.pwstrToFfi(pwszRpId), util.toPointer(pWebAuthNClientData), util.toPointer(pWebAuthNGetAssertionOptions), util.toPointer(ppWebAuthNAssertion)));
 }
 
 export function WebAuthNFreeCredentialAttestation(
   pWebAuthNCredentialAttestation: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): void /* void */ {
-  return libwebauthn.WebAuthNFreeCredentialAttestation(util.toPointer(pWebAuthNCredentialAttestation));
+  return libwebauthn_dll.WebAuthNFreeCredentialAttestation(util.toPointer(pWebAuthNCredentialAttestation));
 }
 
 export function WebAuthNFreeAssertion(
   pWebAuthNAssertion: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): void /* void */ {
-  return libwebauthn.WebAuthNFreeAssertion(util.toPointer(pWebAuthNAssertion));
+  return libwebauthn_dll.WebAuthNFreeAssertion(util.toPointer(pWebAuthNAssertion));
 }
 
 export function WebAuthNGetCancellationId(
   pCancellationId: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libwebauthn.WebAuthNGetCancellationId(util.toPointer(pCancellationId)));
+  return util.pointerFromFfi(libwebauthn_dll.WebAuthNGetCancellationId(util.toPointer(pCancellationId)));
 }
 
 export function WebAuthNCancelCurrentOperation(
   pCancellationId: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libwebauthn.WebAuthNCancelCurrentOperation(util.toPointer(pCancellationId)));
+  return util.pointerFromFfi(libwebauthn_dll.WebAuthNCancelCurrentOperation(util.toPointer(pCancellationId)));
 }
 
 export function WebAuthNGetErrorName(
   hr: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */,
 ): string | null /* Windows.Win32.Foundation.PWSTR */ {
-  return util.pwstrFromFfi(libwebauthn.WebAuthNGetErrorName(util.toPointer(hr)));
+  return util.pwstrFromFfi(libwebauthn_dll.WebAuthNGetErrorName(util.toPointer(hr)));
 }
 
 export function WebAuthNGetW3CExceptionDOMError(
   hr: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libwebauthn.WebAuthNGetW3CExceptionDOMError(util.toPointer(hr)));
+  return util.pointerFromFfi(libwebauthn_dll.WebAuthNGetW3CExceptionDOMError(util.toPointer(hr)));
 }
 
