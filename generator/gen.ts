@@ -207,6 +207,8 @@ function sizeof(ty: Deno.NativeResultType) {
   }
 }
 
+const files: string[] = [];
+
 for (const api in win32) {
   if (!api.startsWith("Windows.Win32.")) {
     throw new Error(`Invalid API name: ${api}`);
@@ -533,6 +535,7 @@ for (const api in win32) {
     content += `}\n\n`;
   }
 
+  files.push(path.replaceAll("/", ".").replace(".ts", "").trim());
   await Deno.mkdir(TARGET_DIR + "/" + parts.join("/"), { recursive: true })
     .catch(() => {});
   await Deno.writeTextFile(TARGET_DIR + "/" + path, content);
@@ -563,3 +566,8 @@ function handleEntries(
 
 const entries = [...Deno.readDirSync(TARGET_DIR)];
 handleEntries(TARGET_DIR, entries);
+
+await Deno.writeTextFile(
+  TARGET_DIR + "/all.json",
+  JSON.stringify(files, null, 2),
+);
