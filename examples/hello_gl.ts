@@ -27,7 +27,6 @@ const cb = new Deno.UnsafeCallback(
   (hWnd, msg, wParam, lParam) => {
     switch (msg) {
       case Wm.WM_PAINT: {
-        display();
         Gdi.BeginPaint(hWnd, ps);
         Gdi.EndPaint(hWnd, ps);
         return 0;
@@ -61,8 +60,7 @@ const cb = new Deno.UnsafeCallback(
       }
 
       case Wm.WM_CLOSE: {
-        Wm.PostQuitMessage(0);
-        return 0;
+        Deno.exit(0);
       }
     }
     return Number(
@@ -242,12 +240,19 @@ Gfx.wglMakeCurrent(hDC, hRC);
 
 Wm.ShowWindow(hWnd, 1);
 
-while (Wm.GetMessageA(msg, null, 0, 0)) {
-  Wm.TranslateMessage(msg);
-  Wm.DispatchMessageA(msg);
-}
+addEventListener("unload", () => {
+  Gfx.wglMakeCurrent(null, null);
+  Gdi.ReleaseDC(hWnd, hDC);
+  Gfx.wglDeleteContext(hRC);
+  Wm.DestroyWindow(hWnd);
+});
 
-Gfx.wglMakeCurrent(null, null);
-Gdi.ReleaseDC(hWnd, hDC);
-Gfx.wglDeleteContext(hRC);
-Wm.DestroyWindow(hWnd);
+while (true) {
+  display();
+  Gfx.SwapBuffers(hDC);
+
+  while (Wm.PeekMessageA(msg, null, 0, 0, Wm.PM_REMOVE)) {
+    Wm.TranslateMessage(msg);
+    Wm.DispatchMessageA(msg);
+  }
+}
