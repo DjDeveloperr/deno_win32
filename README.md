@@ -1,7 +1,6 @@
 # Deno Win32
 
 [![Tags](https://img.shields.io/github/release/DjDeveloperr/deno_win32)](https://github.com/DjDeveloperr/deno_win32/releases)
-[![Doc](https://doc.deno.land/badge.svg)](https://doc.deno.land/https/deno.land/x/win@0.1.0/mod.ts)
 [![Checks](https://github.com/DjDeveloperr/deno_win32/actions/workflows/ci.yml/badge.svg)](https://github.com/DjDeveloperr/deno_win32/actions/workflows/ci.yml)
 [![License](https://img.shields.io/github/license/DjDeveloperr/deno_win32)](https://github.com/DjDeveloperr/deno_win32/blob/master/LICENSE)
 [![Sponsor](https://img.shields.io/static/v1?label=Sponsor&message=%E2%9D%A4&logo=GitHub&color=%23fe8e86)](https://github.com/sponsors/DjDeveloperr)
@@ -23,6 +22,8 @@ const result = MessageBoxA(
   MB_OKCANCEL,
 ); // 1 (OK) or 2 (Cancel)
 ```
+
+More in `examples/` such as demonstrating OpenGL API usage.
 
 ## Usage
 
