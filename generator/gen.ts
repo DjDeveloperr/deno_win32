@@ -255,7 +255,19 @@ for (const api in win32) {
     if ((value + "").match(/^[0-9]+n?$/)) {
       content += `export const ${name} = ${value};\n`;
     } else {
-      content += `export const ${name} = \`${value}\`;\n`;
+      content += `export const ${name} = \`${
+        value.toString().replaceAll("`", "\`").replaceAll("\\", "\\\\")
+          .replaceAll(
+            "\0",
+            "\\0",
+          ).replaceAll("\r", "\\r").replaceAll("\t", "\\t").replaceAll(
+            "\v",
+            "\\v",
+          ).replaceAll("\b", "\\b").replaceAll("\f", "\\f").replaceAll(
+            "\n",
+            "\\n",
+          )
+      }\`;\n`;
     }
   }
   if (hasConsts) {

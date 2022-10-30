@@ -47,8 +47,8 @@ export type CRMREGFLAGS = number;
 export type APTTYPE = number;
 
 // Constants
-export const TRACKER_STARTSTOP_EVENT = `Global\COM+ Tracker Push Event`;
-export const TRACKER_INIT_EVENT = `Global\COM+ Tracker Init Event`;
+export const TRACKER_STARTSTOP_EVENT = `Global\\COM+ Tracker Push Event`;
+export const TRACKER_INIT_EVENT = `Global\\COM+ Tracker Init Event`;
 export const GUID_STRING_SIZE = 40;
 export const DATA_NOT_AVAILABLE = 4294967295;
 export const MTXDM_E_ENLISTRESOURCEFAILED = 2147803392;

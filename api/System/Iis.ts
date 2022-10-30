@@ -12,9 +12,9 @@ export type SF_STATUS_TYPE = number;
 export type HTTP_TRACE_TYPE = number;
 
 // Constants
-export const IISADMIN_EXTENSIONS_REG_KEYA = `SOFTWARE\Microsoft\InetStp\Extensions`;
-export const IISADMIN_EXTENSIONS_REG_KEYW = `SOFTWARE\Microsoft\InetStp\Extensions`;
-export const IISADMIN_EXTENSIONS_REG_KEY = `SOFTWARE\Microsoft\InetStp\Extensions`;
+export const IISADMIN_EXTENSIONS_REG_KEYA = `SOFTWARE\\Microsoft\\InetStp\\Extensions`;
+export const IISADMIN_EXTENSIONS_REG_KEYW = `SOFTWARE\\Microsoft\\InetStp\\Extensions`;
+export const IISADMIN_EXTENSIONS_REG_KEY = `SOFTWARE\\Microsoft\\InetStp\\Extensions`;
 export const IISADMIN_EXTENSIONS_CLSID_MD_KEYA = `LM/IISADMIN/EXTENSIONS/DCOMCLSIDS`;
 export const IISADMIN_EXTENSIONS_CLSID_MD_KEYW = `LM/IISADMIN/EXTENSIONS/DCOMCLSIDS`;
 export const IISADMIN_EXTENSIONS_CLSID_MD_KEY = `LM/IISADMIN/EXTENSIONS/DCOMCLSIDS`;

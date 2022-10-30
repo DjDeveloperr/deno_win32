@@ -2081,12 +2081,9 @@ export const IMAGE_REL_BASED_MIPS_JMPADDR16 = 9;
 export const IMAGE_REL_BASED_ARM_MOV32 = 5;
 export const IMAGE_REL_BASED_THUMB_MOV32 = 7;
 export const IMAGE_ARCHIVE_START_SIZE = 8;
-export const IMAGE_ARCHIVE_START = `!<arch>
-`;
-export const IMAGE_ARCHIVE_END = ``
-`;
-export const IMAGE_ARCHIVE_PAD = `
-`;
+export const IMAGE_ARCHIVE_START = `!<arch>\n`;
+export const IMAGE_ARCHIVE_END = ``\n`;
+export const IMAGE_ARCHIVE_PAD = `\n`;
 export const IMAGE_ARCHIVE_LINKER_MEMBER = `/               `;
 export const IMAGE_ARCHIVE_LONGNAMES_MEMBER = `//              `;
 export const IMAGE_ARCHIVE_HYBRIDMAP_MEMBER = `/<HYBRIDMAP>/   `;
@@ -2307,10 +2304,10 @@ export const CREATE_BOUNDARY_DESCRIPTOR_ADD_APPCONTAINER_SID = 1;
 export const PERFORMANCE_DATA_VERSION = 1;
 export const READ_THREAD_PROFILING_FLAG_DISPATCHING = 1;
 export const READ_THREAD_PROFILING_FLAG_HARDWARE_COUNTERS = 2;
-export const UNIFIEDBUILDREVISION_KEY = `\Registry\Machine\Software\Microsoft\Windows NT\CurrentVersion`;
+export const UNIFIEDBUILDREVISION_KEY = `\\Registry\\Machine\\Software\\Microsoft\\Windows NT\\CurrentVersion`;
 export const UNIFIEDBUILDREVISION_VALUE = `UBR`;
 export const UNIFIEDBUILDREVISION_MIN = 0;
-export const DEVICEFAMILYDEVICEFORM_KEY = `\Registry\Machine\Software\Microsoft\Windows NT\CurrentVersion\OEM`;
+export const DEVICEFAMILYDEVICEFORM_KEY = `\\Registry\\Machine\\Software\\Microsoft\\Windows NT\\CurrentVersion\\OEM`;
 export const DEVICEFAMILYDEVICEFORM_VALUE = `DeviceForm`;
 export const DLL_PROCESS_ATTACH = 1;
 export const DLL_THREAD_ATTACH = 2;

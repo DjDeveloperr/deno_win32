@@ -851,7 +851,7 @@ export const U_SIZEOF_UCHAR = 2;
 export const U_CHAR16_IS_TYPEDEF = 1;
 export const U_SENTINEL = `-1`;
 export const U8_LEAD3_T1_BITS = ` 00000000000000`;
-export const U8_LEAD4_T1_BITS = `            `;
+export const U8_LEAD4_T1_BITS = `\0\0\0\0\0\0\0\0\0\0\0\0`;
 export const U8_MAX_LENGTH = 4;
 export const U16_MAX_LENGTH = 2;
 export const U_HIDE_OBSOLETE_UTF_OLD_H = 0;

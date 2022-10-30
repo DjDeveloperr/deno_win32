@@ -17,7 +17,7 @@ export type TARGET_INFORMATION_CLASS = number;
 // Constants
 export const IOCTL_SCSI_BASE = 4;
 export const FILE_DEVICE_SCSI = 27;
-export const DD_SCSI_DEVICE_NAME = `\Device\ScsiPort`;
+export const DD_SCSI_DEVICE_NAME = `\\Device\\ScsiPort`;
 export const IOCTL_SCSI_PASS_THROUGH = 315396;
 export const IOCTL_SCSI_MINIPORT = 315400;
 export const IOCTL_SCSI_GET_INQUIRY_DATA = 266252;

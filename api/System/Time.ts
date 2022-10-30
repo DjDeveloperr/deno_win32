@@ -3,8 +3,8 @@
 import * as util from "../../util.ts";
 
 // Constants
-export const wszW32TimeRegKeyTimeProviders = `System\CurrentControlSet\Services\W32Time\TimeProviders`;
-export const wszW32TimeRegKeyPolicyTimeProviders = `Software\Policies\Microsoft\W32Time\TimeProviders`;
+export const wszW32TimeRegKeyTimeProviders = `System\\CurrentControlSet\\Services\\W32Time\\TimeProviders`;
+export const wszW32TimeRegKeyPolicyTimeProviders = `Software\\Policies\\Microsoft\\W32Time\\TimeProviders`;
 export const wszW32TimeRegValueEnabled = `Enabled`;
 export const wszW32TimeRegValueDllName = `DllName`;
 export const wszW32TimeRegValueInputProvider = `InputProvider`;
