@@ -52,11 +52,11 @@ export type PWSTR = Deno.PointerValue | Uint8Array | null;
  */
 export interface DAV_CALLBACK_AUTH_UNP {
   /** Windows.Win32.Foundation.PWSTR */
-  pszUserName: string | null;
+  pszUserName: string | null | Uint8Array | Uint16Array;
   /** u32 */
   ulUserNameLength: number;
   /** Windows.Win32.Foundation.PWSTR */
-  pszPassword: string | null;
+  pszPassword: string | null | Uint8Array | Uint16Array;
   /** u32 */
   ulPasswordLength: number;
 }
@@ -179,9 +179,9 @@ try {
 
 export function DavAddConnection(
   ConnectionHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
-  RemoteName: string | null /* Windows.Win32.Foundation.PWSTR */,
-  UserName: string | null /* Windows.Win32.Foundation.PWSTR */,
-  Password: string | null /* Windows.Win32.Foundation.PWSTR */,
+  RemoteName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  UserName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  Password: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   ClientCert: Deno.PointerValue | Uint8Array | null /* ptr */,
   CertSize: number /* u32 */,
 ): number /* u32 */ {
@@ -195,24 +195,24 @@ export function DavDeleteConnection(
 }
 
 export function DavGetUNCFromHTTPPath(
-  Url: string | null /* Windows.Win32.Foundation.PWSTR */,
-  UncPath: string | null /* Windows.Win32.Foundation.PWSTR */,
+  Url: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  UncPath: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   lpSize: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
   return libNETAPI32_dll.DavGetUNCFromHTTPPath(util.pwstrToFfi(Url), util.pwstrToFfi(UncPath), util.toPointer(lpSize));
 }
 
 export function DavGetHTTPFromUNCPath(
-  UncPath: string | null /* Windows.Win32.Foundation.PWSTR */,
-  Url: string | null /* Windows.Win32.Foundation.PWSTR */,
+  UncPath: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  Url: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   lpSize: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
   return libNETAPI32_dll.DavGetHTTPFromUNCPath(util.pwstrToFfi(UncPath), util.pwstrToFfi(Url), util.toPointer(lpSize));
 }
 
 export function DavGetTheLockOwnerOfTheFile(
-  FileName: string | null /* Windows.Win32.Foundation.PWSTR */,
-  LockOwnerName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  FileName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  LockOwnerName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   LockOwnerNameLengthInBytes: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
   return libdavclnt_dll.DavGetTheLockOwnerOfTheFile(util.pwstrToFfi(FileName), util.pwstrToFfi(LockOwnerName), util.toPointer(LockOwnerNameLengthInBytes));
@@ -221,7 +221,7 @@ export function DavGetTheLockOwnerOfTheFile(
 export function DavGetExtendedError(
   hFile: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
   ExtError: Deno.PointerValue | Uint8Array | null /* ptr */,
-  ExtErrorString: string | null /* Windows.Win32.Foundation.PWSTR */,
+  ExtErrorString: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   cChSize: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
   return libNETAPI32_dll.DavGetExtendedError(util.toPointer(hFile), util.toPointer(ExtError), util.pwstrToFfi(ExtErrorString), util.toPointer(cChSize));
@@ -234,13 +234,13 @@ export function DavFlushFile(
 }
 
 export function DavInvalidateCache(
-  URLName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  URLName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
   return libdavclnt_dll.DavInvalidateCache(util.pwstrToFfi(URLName));
 }
 
 export function DavCancelConnectionsToServer(
-  lpName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   fForce: boolean /* Windows.Win32.Foundation.BOOL */,
 ): number /* u32 */ {
   return libdavclnt_dll.DavCancelConnectionsToServer(util.pwstrToFfi(lpName), util.boolToFfi(fForce));

@@ -819,31 +819,31 @@ export interface URL_COMPONENTS {
   /** u32 */
   dwStructSize: number;
   /** Windows.Win32.Foundation.PWSTR */
-  lpszScheme: string | null;
+  lpszScheme: string | null | Uint8Array | Uint16Array;
   /** u32 */
   dwSchemeLength: number;
   /** Windows.Win32.Networking.WinHttp.WINHTTP_INTERNET_SCHEME */
   nScheme: WINHTTP_INTERNET_SCHEME;
   /** Windows.Win32.Foundation.PWSTR */
-  lpszHostName: string | null;
+  lpszHostName: string | null | Uint8Array | Uint16Array;
   /** u32 */
   dwHostNameLength: number;
   /** u16 */
   nPort: number;
   /** Windows.Win32.Foundation.PWSTR */
-  lpszUserName: string | null;
+  lpszUserName: string | null | Uint8Array | Uint16Array;
   /** u32 */
   dwUserNameLength: number;
   /** Windows.Win32.Foundation.PWSTR */
-  lpszPassword: string | null;
+  lpszPassword: string | null | Uint8Array | Uint16Array;
   /** u32 */
   dwPasswordLength: number;
   /** Windows.Win32.Foundation.PWSTR */
-  lpszUrlPath: string | null;
+  lpszUrlPath: string | null | Uint8Array | Uint16Array;
   /** u32 */
   dwUrlPathLength: number;
   /** Windows.Win32.Foundation.PWSTR */
-  lpszExtraInfo: string | null;
+  lpszExtraInfo: string | null | Uint8Array | Uint16Array;
   /** u32 */
   dwExtraInfoLength: number;
 }
@@ -917,9 +917,9 @@ export interface WINHTTP_PROXY_INFO {
   /** Windows.Win32.Networking.WinHttp.WINHTTP_ACCESS_TYPE */
   dwAccessType: WINHTTP_ACCESS_TYPE;
   /** Windows.Win32.Foundation.PWSTR */
-  lpszProxy: string | null;
+  lpszProxy: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  lpszProxyBypass: string | null;
+  lpszProxyBypass: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeofWINHTTP_PROXY_INFO = 24;
@@ -954,7 +954,7 @@ export interface WINHTTP_AUTOPROXY_OPTIONS {
   /** u32 */
   dwAutoDetectFlags: number;
   /** Windows.Win32.Foundation.PWSTR */
-  lpszAutoConfigUrl: string | null;
+  lpszAutoConfigUrl: string | null | Uint8Array | Uint16Array;
   /** ptr */
   lpvReserved: Deno.PointerValue | Uint8Array | null;
   /** u32 */
@@ -997,7 +997,7 @@ export interface WINHTTP_PROXY_RESULT_ENTRY {
   /** Windows.Win32.Networking.WinHttp.WINHTTP_INTERNET_SCHEME */
   ProxyScheme: WINHTTP_INTERNET_SCHEME;
   /** Windows.Win32.Foundation.PWSTR */
-  pwszProxy: string | null;
+  pwszProxy: string | null | Uint8Array | Uint16Array;
   /** u16 */
   ProxyPort: number;
 }
@@ -1133,19 +1133,19 @@ export interface WINHTTP_PROXY_SETTINGS {
   /** u32 */
   dwCurrentSettingsVersion: number;
   /** Windows.Win32.Foundation.PWSTR */
-  pwszConnectionName: string | null;
+  pwszConnectionName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pwszProxy: string | null;
+  pwszProxy: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pwszProxyBypass: string | null;
+  pwszProxyBypass: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pwszAutoconfigUrl: string | null;
+  pwszAutoconfigUrl: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pwszAutoconfigSecondaryUrl: string | null;
+  pwszAutoconfigSecondaryUrl: string | null | Uint8Array | Uint16Array;
   /** u32 */
   dwAutoDiscoveryFlags: number;
   /** Windows.Win32.Foundation.PWSTR */
-  pwszLastKnownGoodAutoConfigUrl: string | null;
+  pwszLastKnownGoodAutoConfigUrl: string | null | Uint8Array | Uint16Array;
   /** u32 */
   dwAutoconfigReloadDelayMins: number;
   /** Windows.Win32.Foundation.FILETIME */
@@ -1232,15 +1232,15 @@ export interface WINHTTP_CERTIFICATE_INFO {
   /** Windows.Win32.Foundation.FILETIME */
   ftStart: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.Foundation.PWSTR */
-  lpszSubjectInfo: string | null;
+  lpszSubjectInfo: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  lpszIssuerInfo: string | null;
+  lpszIssuerInfo: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  lpszProtocolName: string | null;
+  lpszProtocolName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  lpszSignatureAlgName: string | null;
+  lpszSignatureAlgName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  lpszEncryptionAlgName: string | null;
+  lpszEncryptionAlgName: string | null | Uint8Array | Uint16Array;
   /** u32 */
   dwKeySize: number;
 }
@@ -1292,7 +1292,7 @@ export interface _Anonymous1_e__Union {
   /** usize */
   Data0: Deno.PointerValue;
   /** Windows.Win32.Foundation.PWSTR */
-  String: string | null;
+  String: string | null | Uint8Array | Uint16Array;
   /** usize */
   u: Deno.PointerValue;
   /** ptr */
@@ -1387,9 +1387,9 @@ export type PSTR = Deno.PointerValue | Uint8Array | null;
  */
 export interface WINHTTP_HEADER_NAME {
   /** Windows.Win32.Foundation.PWSTR */
-  pwszName: string | null;
+  pwszName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PSTR */
-  pszName: string | null;
+  pszName: string | null | Uint8Array;
 }
 
 export const sizeofWINHTTP_HEADER_NAME = 16;
@@ -1438,7 +1438,7 @@ export function allocWINHTTP_CONNECTION_GROUP(data?: Partial<WINHTTP_CONNECTION_
  */
 export interface WINHTTP_HOST_CONNECTION_GROUP {
   /** Windows.Win32.Foundation.PWSTR */
-  pwszHost: string | null;
+  pwszHost: string | null | Uint8Array | Uint16Array;
   /** u32 */
   cConnectionGroups: number;
   /** ptr */
@@ -1535,15 +1535,15 @@ export function allocWINHTTP_FAILED_CONNECTION_RETRIES(data?: Partial<WINHTTP_FA
  */
 export interface WINHTTP_CREDS {
   /** Windows.Win32.Foundation.PSTR */
-  lpszUserName: string | null;
+  lpszUserName: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  lpszPassword: string | null;
+  lpszPassword: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  lpszRealm: string | null;
+  lpszRealm: string | null | Uint8Array;
   /** Windows.Win32.Networking.WinHttp.WINHTTP_CREDS_AUTHSCHEME */
   dwAuthScheme: WINHTTP_CREDS_AUTHSCHEME;
   /** Windows.Win32.Foundation.PSTR */
-  lpszHostName: string | null;
+  lpszHostName: string | null | Uint8Array;
   /** u32 */
   dwPort: number;
 }
@@ -1587,19 +1587,19 @@ export function allocWINHTTP_CREDS(data?: Partial<WINHTTP_CREDS>): Uint8Array {
  */
 export interface WINHTTP_CREDS_EX {
   /** Windows.Win32.Foundation.PSTR */
-  lpszUserName: string | null;
+  lpszUserName: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  lpszPassword: string | null;
+  lpszPassword: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  lpszRealm: string | null;
+  lpszRealm: string | null | Uint8Array;
   /** Windows.Win32.Networking.WinHttp.WINHTTP_CREDS_AUTHSCHEME */
   dwAuthScheme: WINHTTP_CREDS_AUTHSCHEME;
   /** Windows.Win32.Foundation.PSTR */
-  lpszHostName: string | null;
+  lpszHostName: string | null | Uint8Array;
   /** u32 */
   dwPort: number;
   /** Windows.Win32.Foundation.PSTR */
-  lpszUrl: string | null;
+  lpszUrl: string | null | Uint8Array;
 }
 
 export const sizeofWINHTTP_CREDS_EX = 56;
@@ -1648,11 +1648,11 @@ export interface WINHTTP_CURRENT_USER_IE_PROXY_CONFIG {
   /** Windows.Win32.Foundation.BOOL */
   fAutoDetect: boolean;
   /** Windows.Win32.Foundation.PWSTR */
-  lpszAutoConfigUrl: string | null;
+  lpszAutoConfigUrl: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  lpszProxy: string | null;
+  lpszProxy: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  lpszProxyBypass: string | null;
+  lpszProxyBypass: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeofWINHTTP_CURRENT_USER_IE_PROXY_CONFIG = 32;
@@ -1950,20 +1950,20 @@ export function WinHttpSetStatusCallback(
 
 export function WinHttpTimeFromSystemTime(
   pst: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pwszTime: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pwszTime: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libWINHTTP_dll.WinHttpTimeFromSystemTime(util.toPointer(pst), util.pwstrToFfi(pwszTime)));
 }
 
 export function WinHttpTimeToSystemTime(
-  pwszTime: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pwszTime: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pst: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libWINHTTP_dll.WinHttpTimeToSystemTime(util.pwstrToFfi(pwszTime), util.toPointer(pst)));
 }
 
 export function WinHttpCrackUrl(
-  pwszUrl: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pwszUrl: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   dwUrlLength: number /* u32 */,
   dwFlags: number /* u32 */,
   lpUrlComponents: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -1974,7 +1974,7 @@ export function WinHttpCrackUrl(
 export function WinHttpCreateUrl(
   lpUrlComponents: Deno.PointerValue | Uint8Array | null /* ptr */,
   dwFlags: WIN_HTTP_CREATE_URL_FLAGS /* Windows.Win32.Networking.WinHttp.WIN_HTTP_CREATE_URL_FLAGS */,
-  pwszUrl: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pwszUrl: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pdwUrlLength: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libWINHTTP_dll.WinHttpCreateUrl(util.toPointer(lpUrlComponents), dwFlags, util.pwstrToFfi(pwszUrl), util.toPointer(pdwUrlLength)));
@@ -1997,10 +1997,10 @@ export function WinHttpSetDefaultProxyConfiguration(
 }
 
 export function WinHttpOpen(
-  pszAgentW: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pszAgentW: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   dwAccessType: WINHTTP_ACCESS_TYPE /* Windows.Win32.Networking.WinHttp.WINHTTP_ACCESS_TYPE */,
-  pszProxyW: string | null /* Windows.Win32.Foundation.PWSTR */,
-  pszProxyBypassW: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pszProxyW: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  pszProxyBypassW: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   dwFlags: number /* u32 */,
 ): Deno.PointerValue | null /* ptr */ {
   return util.pointerFromFfi(libWINHTTP_dll.WinHttpOpen(util.pwstrToFfi(pszAgentW), dwAccessType, util.pwstrToFfi(pszProxyW), util.pwstrToFfi(pszProxyBypassW), dwFlags));
@@ -2014,7 +2014,7 @@ export function WinHttpCloseHandle(
 
 export function WinHttpConnect(
   hSession: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pswzServerName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pswzServerName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   nServerPort: INTERNET_PORT /* Windows.Win32.Networking.WinHttp.INTERNET_PORT */,
   dwReserved: number /* u32 */,
 ): Deno.PointerValue | null /* ptr */ {
@@ -2088,10 +2088,10 @@ export function WinHttpSetTimeouts(
 
 export function WinHttpOpenRequest(
   hConnect: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pwszVerb: string | null /* Windows.Win32.Foundation.PWSTR */,
-  pwszObjectName: string | null /* Windows.Win32.Foundation.PWSTR */,
-  pwszVersion: string | null /* Windows.Win32.Foundation.PWSTR */,
-  pwszReferrer: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pwszVerb: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  pwszObjectName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  pwszVersion: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  pwszReferrer: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   ppwszAcceptTypes: Deno.PointerValue | Uint8Array | null /* ptr */,
   dwFlags: WINHTTP_OPEN_REQUEST_FLAGS /* Windows.Win32.Networking.WinHttp.WINHTTP_OPEN_REQUEST_FLAGS */,
 ): Deno.PointerValue | null /* ptr */ {
@@ -2100,7 +2100,7 @@ export function WinHttpOpenRequest(
 
 export function WinHttpAddRequestHeaders(
   hRequest: Deno.PointerValue | Uint8Array | null /* ptr */,
-  lpszHeaders: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpszHeaders: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   dwHeadersLength: number /* u32 */,
   dwModifiers: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
@@ -2120,7 +2120,7 @@ export function WinHttpAddRequestHeadersEx(
 
 export function WinHttpSendRequest(
   hRequest: Deno.PointerValue | Uint8Array | null /* ptr */,
-  lpszHeaders: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpszHeaders: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   dwHeadersLength: number /* u32 */,
   lpOptional: Deno.PointerValue | Uint8Array | null /* ptr */,
   dwOptionalLength: number /* u32 */,
@@ -2134,8 +2134,8 @@ export function WinHttpSetCredentials(
   hRequest: Deno.PointerValue | Uint8Array | null /* ptr */,
   AuthTargets: number /* u32 */,
   AuthScheme: number /* u32 */,
-  pwszUserName: string | null /* Windows.Win32.Foundation.PWSTR */,
-  pwszPassword: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pwszUserName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  pwszPassword: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pAuthParams: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libWINHTTP_dll.WinHttpSetCredentials(util.toPointer(hRequest), AuthTargets, AuthScheme, util.pwstrToFfi(pwszUserName), util.pwstrToFfi(pwszPassword), util.toPointer(pAuthParams)));
@@ -2160,7 +2160,7 @@ export function WinHttpReceiveResponse(
 export function WinHttpQueryHeaders(
   hRequest: Deno.PointerValue | Uint8Array | null /* ptr */,
   dwInfoLevel: number /* u32 */,
-  pwszName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pwszName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   lpBuffer: Deno.PointerValue | Uint8Array | null /* ptr */,
   lpdwBufferLength: Deno.PointerValue | Uint8Array | null /* ptr */,
   lpdwIndex: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -2207,7 +2207,7 @@ export function WinHttpDetectAutoProxyConfigUrl(
 
 export function WinHttpGetProxyForUrl(
   hSession: Deno.PointerValue | Uint8Array | null /* ptr */,
-  lpcwszUrl: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpcwszUrl: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pAutoProxyOptions: Deno.PointerValue | Uint8Array | null /* ptr */,
   pProxyInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
@@ -2223,7 +2223,7 @@ export function WinHttpCreateProxyResolver(
 
 export function WinHttpGetProxyForUrlEx(
   hResolver: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pcwszUrl: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pcwszUrl: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pAutoProxyOptions: Deno.PointerValue | Uint8Array | null /* ptr */,
   pContext: Deno.PointerValue /* usize */,
 ): number /* u32 */ {
@@ -2232,7 +2232,7 @@ export function WinHttpGetProxyForUrlEx(
 
 export function WinHttpGetProxyForUrlEx2(
   hResolver: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pcwszUrl: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pcwszUrl: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pAutoProxyOptions: Deno.PointerValue | Uint8Array | null /* ptr */,
   cbInterfaceSelectionContext: number /* u32 */,
   pInterfaceSelectionContext: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -2290,7 +2290,7 @@ export function WinHttpWriteProxySettings(
 
 export function WinHttpReadProxySettings(
   hSession: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pcwszConnectionName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pcwszConnectionName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   fFallBackToDefaultSettings: boolean /* Windows.Win32.Foundation.BOOL */,
   fSetAutoDiscoverForDefaultSettings: boolean /* Windows.Win32.Foundation.BOOL */,
   pdwSettingsVersion: Deno.PointerValue | Uint8Array | null /* ptr */,

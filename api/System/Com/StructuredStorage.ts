@@ -307,7 +307,7 @@ export interface CAC {
   /** u32 */
   cElems: number;
   /** Windows.Win32.Foundation.PSTR */
-  pElems: string | null;
+  pElems: string | null | Uint8Array;
 }
 
 export const sizeofCAC = 16;
@@ -901,7 +901,7 @@ export type PWSTR = Deno.PointerValue | Uint8Array | null;
  */
 export interface STATPROPSTG {
   /** Windows.Win32.Foundation.PWSTR */
-  lpwstrName: string | null;
+  lpwstrName: string | null | Uint8Array | Uint16Array;
   /** u32 */
   propid: number;
   /** Windows.Win32.System.Com.VARENUM */
@@ -1003,7 +1003,7 @@ export interface STGOPTIONS {
   /** u32 */
   ulSectorSize: number;
   /** Windows.Win32.Foundation.PWSTR */
-  pwcsTemplateFile: string | null;
+  pwcsTemplateFile: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeofSTGOPTIONS = 16;
@@ -1101,7 +1101,7 @@ export interface PROPBAG2 {
   /** u32 */
   dwHint: number;
   /** Windows.Win32.Foundation.PWSTR */
-  pstrName: string | null;
+  pstrName: string | null | Uint8Array | Uint16Array;
   /** System.Guid */
   clsid: Uint8Array | Deno.PointerValue | null;
 }
@@ -1348,7 +1348,7 @@ export function CoGetInstanceFromFile(
   punkOuter: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Com.IUnknown */,
   dwClsCtx: CLSCTX /* Windows.Win32.System.Com.CLSCTX */,
   grfMode: number /* u32 */,
-  pwszName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pwszName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   dwCount: number /* u32 */,
   pResults: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
@@ -1384,14 +1384,14 @@ export function StgGetIFillLockBytesOnILockBytes(
 }
 
 export function StgGetIFillLockBytesOnFile(
-  pwcsName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pwcsName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   ppflb: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
   return util.pointerFromFfi(libole32_dll.StgGetIFillLockBytesOnFile(util.pwstrToFfi(pwcsName), util.toPointer(ppflb)));
 }
 
 export function StgOpenLayoutDocfile(
-  pwcsDfName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pwcsDfName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   grfMode: number /* u32 */,
   reserved: number /* u32 */,
   ppstgOpen: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -1443,7 +1443,7 @@ export function FreePropVariantArray(
 }
 
 export function StgCreateDocfile(
-  pwcsName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pwcsName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   grfMode: STGM /* Windows.Win32.System.Com.STGM */,
   reserved: number /* u32 */,
   ppstgOpen: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -1461,7 +1461,7 @@ export function StgCreateDocfileOnILockBytes(
 }
 
 export function StgOpenStorage(
-  pwcsName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pwcsName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pstgPriority: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Com.StructuredStorage.IStorage */,
   grfMode: STGM /* Windows.Win32.System.Com.STGM */,
   snbExclude: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -1483,7 +1483,7 @@ export function StgOpenStorageOnILockBytes(
 }
 
 export function StgIsStorageFile(
-  pwcsName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pwcsName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
   return util.pointerFromFfi(libOLE32_dll.StgIsStorageFile(util.pwstrToFfi(pwcsName)));
 }
@@ -1495,7 +1495,7 @@ export function StgIsStorageILockBytes(
 }
 
 export function StgSetTimes(
-  lpszName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpszName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pctime: Deno.PointerValue | Uint8Array | null /* ptr */,
   patime: Deno.PointerValue | Uint8Array | null /* ptr */,
   pmtime: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -1504,7 +1504,7 @@ export function StgSetTimes(
 }
 
 export function StgCreateStorageEx(
-  pwcsName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pwcsName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   grfMode: STGM /* Windows.Win32.System.Com.STGM */,
   stgfmt: STGFMT /* Windows.Win32.System.Com.StructuredStorage.STGFMT */,
   grfAttrs: number /* u32 */,
@@ -1517,7 +1517,7 @@ export function StgCreateStorageEx(
 }
 
 export function StgOpenStorageEx(
-  pwcsName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pwcsName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   grfMode: STGM /* Windows.Win32.System.Com.STGM */,
   stgfmt: STGFMT /* Windows.Win32.System.Com.StructuredStorage.STGFMT */,
   grfAttrs: number /* u32 */,
@@ -1560,13 +1560,13 @@ export function StgCreatePropSetStg(
 
 export function FmtIdToPropStgName(
   pfmtid: Deno.PointerValue | Uint8Array | null /* ptr */,
-  oszName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  oszName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
   return util.pointerFromFfi(libOLE32_dll.FmtIdToPropStgName(util.toPointer(pfmtid), util.pwstrToFfi(oszName)));
 }
 
 export function PropStgNameToFmtId(
-  oszName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  oszName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pfmtid: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
   return util.pointerFromFfi(libOLE32_dll.PropStgNameToFmtId(util.pwstrToFfi(oszName), util.toPointer(pfmtid)));
@@ -1654,7 +1654,7 @@ export function StgPropertyLengthAsVariant(
 export function WriteFmtUserTypeStg(
   pstg: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Com.StructuredStorage.IStorage */,
   cf: number /* u16 */,
-  lpszUserType: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpszUserType: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
   return util.pointerFromFfi(libOLE32_dll.WriteFmtUserTypeStg(util.toPointer(pstg), cf, util.pwstrToFfi(lpszUserType)));
 }

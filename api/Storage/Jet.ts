@@ -1130,7 +1130,7 @@ export interface _Anonymous1_e__Union {
   /** usize */
   Data0: Deno.PointerValue;
   /** Windows.Win32.Foundation.PWSTR */
-  String: string | null;
+  String: string | null | Uint8Array | Uint16Array;
   /** usize */
   u: Deno.PointerValue;
   /** ptr */
@@ -1488,9 +1488,9 @@ export type PSTR = Deno.PointerValue | Uint8Array | null;
  */
 export interface JET_RSTMAP_A {
   /** Windows.Win32.Foundation.PSTR */
-  szDatabaseName: string | null;
+  szDatabaseName: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  szNewDatabaseName: string | null;
+  szNewDatabaseName: string | null | Uint8Array;
 }
 
 export const sizeofJET_RSTMAP_A = 16;
@@ -1516,9 +1516,9 @@ export function allocJET_RSTMAP_A(data?: Partial<JET_RSTMAP_A>): Uint8Array {
  */
 export interface JET_RSTMAP_W {
   /** Windows.Win32.Foundation.PWSTR */
-  szDatabaseName: string | null;
+  szDatabaseName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  szNewDatabaseName: string | null;
+  szNewDatabaseName: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeofJET_RSTMAP_W = 16;
@@ -1588,7 +1588,7 @@ export function alloc_Anonymous_e__Union(data?: Partial<_Anonymous_e__Union>): U
  */
 export interface JET_CONVERT_A {
   /** Windows.Win32.Foundation.PSTR */
-  szOldDll: string | null;
+  szOldDll: string | null | Uint8Array;
   /** _Anonymous_e__Union */
   Anonymous: Uint8Array | Deno.PointerValue | null;
 }
@@ -1613,7 +1613,7 @@ export function allocJET_CONVERT_A(data?: Partial<JET_CONVERT_A>): Uint8Array {
  */
 export interface JET_CONVERT_W {
   /** Windows.Win32.Foundation.PWSTR */
-  szOldDll: string | null;
+  szOldDll: string | null | Uint8Array | Uint16Array;
   /** _Anonymous_e__Union */
   Anonymous: Uint8Array | Deno.PointerValue | null;
 }
@@ -2119,7 +2119,7 @@ export interface JET_COLUMNCREATE_A {
   /** u32 */
   cbStruct: number;
   /** Windows.Win32.Foundation.PSTR */
-  szColumnName: string | null;
+  szColumnName: string | null | Uint8Array;
   /** u32 */
   coltyp: number;
   /** u32 */
@@ -2178,7 +2178,7 @@ export interface JET_COLUMNCREATE_W {
   /** u32 */
   cbStruct: number;
   /** Windows.Win32.Foundation.PWSTR */
-  szColumnName: string | null;
+  szColumnName: string | null | Uint8Array | Uint16Array;
   /** u32 */
   coltyp: number;
   /** u32 */
@@ -2235,13 +2235,13 @@ export function allocJET_COLUMNCREATE_W(data?: Partial<JET_COLUMNCREATE_W>): Uin
  */
 export interface JET_USERDEFINEDDEFAULT_A {
   /** Windows.Win32.Foundation.PSTR */
-  szCallback: string | null;
+  szCallback: string | null | Uint8Array;
   /** ptr */
   pbUserData: Deno.PointerValue | Uint8Array | null;
   /** u32 */
   cbUserData: number;
   /** Windows.Win32.Foundation.PSTR */
-  szDependantColumns: string | null;
+  szDependantColumns: string | null | Uint8Array;
 }
 
 export const sizeofJET_USERDEFINEDDEFAULT_A = 32;
@@ -2272,13 +2272,13 @@ export function allocJET_USERDEFINEDDEFAULT_A(data?: Partial<JET_USERDEFINEDDEFA
  */
 export interface JET_USERDEFINEDDEFAULT_W {
   /** Windows.Win32.Foundation.PWSTR */
-  szCallback: string | null;
+  szCallback: string | null | Uint8Array | Uint16Array;
   /** ptr */
   pbUserData: Deno.PointerValue | Uint8Array | null;
   /** u32 */
   cbUserData: number;
   /** Windows.Win32.Foundation.PWSTR */
-  szDependantColumns: string | null;
+  szDependantColumns: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeofJET_USERDEFINEDDEFAULT_W = 32;
@@ -2311,7 +2311,7 @@ export interface JET_CONDITIONALCOLUMN_A {
   /** u32 */
   cbStruct: number;
   /** Windows.Win32.Foundation.PSTR */
-  szColumnName: string | null;
+  szColumnName: string | null | Uint8Array;
   /** u32 */
   grbit: number;
 }
@@ -2342,7 +2342,7 @@ export interface JET_CONDITIONALCOLUMN_W {
   /** u32 */
   cbStruct: number;
   /** Windows.Win32.Foundation.PWSTR */
-  szColumnName: string | null;
+  szColumnName: string | null | Uint8Array | Uint16Array;
   /** u32 */
   grbit: number;
 }
@@ -2393,7 +2393,7 @@ export function allocJET_UNICODEINDEX(data?: Partial<JET_UNICODEINDEX>): Uint8Ar
  */
 export interface JET_UNICODEINDEX2 {
   /** Windows.Win32.Foundation.PWSTR */
-  szLocaleName: string | null;
+  szLocaleName: string | null | Uint8Array | Uint16Array;
   /** u32 */
   dwMapFlags: number;
 }
@@ -2502,9 +2502,9 @@ export interface JET_INDEXCREATE_A {
   /** u32 */
   cbStruct: number;
   /** Windows.Win32.Foundation.PSTR */
-  szIndexName: string | null;
+  szIndexName: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  szKey: string | null;
+  szKey: string | null | Uint8Array;
   /** u32 */
   cbKey: number;
   /** u32 */
@@ -2573,9 +2573,9 @@ export interface JET_INDEXCREATE_W {
   /** u32 */
   cbStruct: number;
   /** Windows.Win32.Foundation.PWSTR */
-  szIndexName: string | null;
+  szIndexName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  szKey: string | null;
+  szKey: string | null | Uint8Array | Uint16Array;
   /** u32 */
   cbKey: number;
   /** u32 */
@@ -2644,9 +2644,9 @@ export interface JET_INDEXCREATE2_A {
   /** u32 */
   cbStruct: number;
   /** Windows.Win32.Foundation.PSTR */
-  szIndexName: string | null;
+  szIndexName: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  szKey: string | null;
+  szKey: string | null | Uint8Array;
   /** u32 */
   cbKey: number;
   /** u32 */
@@ -2719,9 +2719,9 @@ export interface JET_INDEXCREATE2_W {
   /** u32 */
   cbStruct: number;
   /** Windows.Win32.Foundation.PWSTR */
-  szIndexName: string | null;
+  szIndexName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  szKey: string | null;
+  szKey: string | null | Uint8Array | Uint16Array;
   /** u32 */
   cbKey: number;
   /** u32 */
@@ -2794,9 +2794,9 @@ export interface JET_INDEXCREATE3_A {
   /** u32 */
   cbStruct: number;
   /** Windows.Win32.Foundation.PSTR */
-  szIndexName: string | null;
+  szIndexName: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  szKey: string | null;
+  szKey: string | null | Uint8Array;
   /** u32 */
   cbKey: number;
   /** u32 */
@@ -2869,9 +2869,9 @@ export interface JET_INDEXCREATE3_W {
   /** u32 */
   cbStruct: number;
   /** Windows.Win32.Foundation.PWSTR */
-  szIndexName: string | null;
+  szIndexName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  szKey: string | null;
+  szKey: string | null | Uint8Array | Uint16Array;
   /** u32 */
   cbKey: number;
   /** u32 */
@@ -2944,9 +2944,9 @@ export interface JET_TABLECREATE_A {
   /** u32 */
   cbStruct: number;
   /** Windows.Win32.Foundation.PSTR */
-  szTableName: string | null;
+  szTableName: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  szTemplateTableName: string | null;
+  szTemplateTableName: string | null | Uint8Array;
   /** u32 */
   ulPages: number;
   /** u32 */
@@ -3015,9 +3015,9 @@ export interface JET_TABLECREATE_W {
   /** u32 */
   cbStruct: number;
   /** Windows.Win32.Foundation.PWSTR */
-  szTableName: string | null;
+  szTableName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  szTemplateTableName: string | null;
+  szTemplateTableName: string | null | Uint8Array | Uint16Array;
   /** u32 */
   ulPages: number;
   /** u32 */
@@ -3086,9 +3086,9 @@ export interface JET_TABLECREATE2_A {
   /** u32 */
   cbStruct: number;
   /** Windows.Win32.Foundation.PSTR */
-  szTableName: string | null;
+  szTableName: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  szTemplateTableName: string | null;
+  szTemplateTableName: string | null | Uint8Array;
   /** u32 */
   ulPages: number;
   /** u32 */
@@ -3102,7 +3102,7 @@ export interface JET_TABLECREATE2_A {
   /** u32 */
   cIndexes: number;
   /** Windows.Win32.Foundation.PSTR */
-  szCallback: string | null;
+  szCallback: string | null | Uint8Array;
   /** u32 */
   cbtyp: number;
   /** u32 */
@@ -3169,9 +3169,9 @@ export interface JET_TABLECREATE2_W {
   /** u32 */
   cbStruct: number;
   /** Windows.Win32.Foundation.PWSTR */
-  szTableName: string | null;
+  szTableName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  szTemplateTableName: string | null;
+  szTemplateTableName: string | null | Uint8Array | Uint16Array;
   /** u32 */
   ulPages: number;
   /** u32 */
@@ -3185,7 +3185,7 @@ export interface JET_TABLECREATE2_W {
   /** u32 */
   cIndexes: number;
   /** Windows.Win32.Foundation.PWSTR */
-  szCallback: string | null;
+  szCallback: string | null | Uint8Array | Uint16Array;
   /** u32 */
   cbtyp: number;
   /** u32 */
@@ -3252,9 +3252,9 @@ export interface JET_TABLECREATE3_A {
   /** u32 */
   cbStruct: number;
   /** Windows.Win32.Foundation.PSTR */
-  szTableName: string | null;
+  szTableName: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  szTemplateTableName: string | null;
+  szTemplateTableName: string | null | Uint8Array;
   /** u32 */
   ulPages: number;
   /** u32 */
@@ -3268,7 +3268,7 @@ export interface JET_TABLECREATE3_A {
   /** u32 */
   cIndexes: number;
   /** Windows.Win32.Foundation.PSTR */
-  szCallback: string | null;
+  szCallback: string | null | Uint8Array;
   /** u32 */
   cbtyp: number;
   /** u32 */
@@ -3348,9 +3348,9 @@ export interface JET_TABLECREATE3_W {
   /** u32 */
   cbStruct: number;
   /** Windows.Win32.Foundation.PWSTR */
-  szTableName: string | null;
+  szTableName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  szTemplateTableName: string | null;
+  szTemplateTableName: string | null | Uint8Array | Uint16Array;
   /** u32 */
   ulPages: number;
   /** u32 */
@@ -3364,7 +3364,7 @@ export interface JET_TABLECREATE3_W {
   /** u32 */
   cIndexes: number;
   /** Windows.Win32.Foundation.PWSTR */
-  szCallback: string | null;
+  szCallback: string | null | Uint8Array | Uint16Array;
   /** u32 */
   cbtyp: number;
   /** u32 */
@@ -3444,9 +3444,9 @@ export interface JET_TABLECREATE4_A {
   /** u32 */
   cbStruct: number;
   /** Windows.Win32.Foundation.PSTR */
-  szTableName: string | null;
+  szTableName: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  szTemplateTableName: string | null;
+  szTemplateTableName: string | null | Uint8Array;
   /** u32 */
   ulPages: number;
   /** u32 */
@@ -3460,7 +3460,7 @@ export interface JET_TABLECREATE4_A {
   /** u32 */
   cIndexes: number;
   /** Windows.Win32.Foundation.PSTR */
-  szCallback: string | null;
+  szCallback: string | null | Uint8Array;
   /** u32 */
   cbtyp: number;
   /** u32 */
@@ -3540,9 +3540,9 @@ export interface JET_TABLECREATE4_W {
   /** u32 */
   cbStruct: number;
   /** Windows.Win32.Foundation.PWSTR */
-  szTableName: string | null;
+  szTableName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  szTemplateTableName: string | null;
+  szTemplateTableName: string | null | Uint8Array | Uint16Array;
   /** u32 */
   ulPages: number;
   /** u32 */
@@ -3556,7 +3556,7 @@ export interface JET_TABLECREATE4_W {
   /** u32 */
   cIndexes: number;
   /** Windows.Win32.Foundation.PWSTR */
-  szCallback: string | null;
+  szCallback: string | null | Uint8Array | Uint16Array;
   /** u32 */
   cbtyp: number;
   /** u32 */
@@ -4904,7 +4904,7 @@ export interface JET_SETSYSPARAM_A {
   /** Windows.Win32.Storage.StructuredStorage.JET_API_PTR */
   lParam: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.Foundation.PSTR */
-  sz: string | null;
+  sz: string | null | Uint8Array;
   /** i32 */
   err: number;
 }
@@ -4939,7 +4939,7 @@ export interface JET_SETSYSPARAM_W {
   /** Windows.Win32.Storage.StructuredStorage.JET_API_PTR */
   lParam: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.Foundation.PWSTR */
-  sz: string | null;
+  sz: string | null | Uint8Array | Uint16Array;
   /** i32 */
   err: number;
 }
@@ -5171,7 +5171,7 @@ export interface JET_INSTANCE_INFO_A {
   /** Windows.Win32.Storage.StructuredStorage.JET_INSTANCE */
   hInstanceId: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.Foundation.PSTR */
-  szInstanceName: string | null;
+  szInstanceName: string | null | Uint8Array;
   /** Windows.Win32.Storage.StructuredStorage.JET_API_PTR */
   cDatabases: Uint8Array | Deno.PointerValue | null;
   /** ptr */
@@ -5212,7 +5212,7 @@ export interface JET_INSTANCE_INFO_W {
   /** Windows.Win32.Storage.StructuredStorage.JET_INSTANCE */
   hInstanceId: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.Foundation.PWSTR */
-  szInstanceName: string | null;
+  szInstanceName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Storage.StructuredStorage.JET_API_PTR */
   cDatabases: Uint8Array | Deno.PointerValue | null;
   /** ptr */
@@ -6865,7 +6865,7 @@ export function JetCreateIndexA(
   tableid: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Storage.StructuredStorage.JET_TABLEID */,
   szIndexName: Deno.PointerValue | Uint8Array | null /* ptr */,
   grbit: number /* u32 */,
-  szKey: string | null /* Windows.Win32.Foundation.PSTR */,
+  szKey: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   cbKey: number /* u32 */,
   lDensity: number /* u32 */,
 ): number /* i32 */ {
@@ -6877,7 +6877,7 @@ export function JetCreateIndexW(
   tableid: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Storage.StructuredStorage.JET_TABLEID */,
   szIndexName: Deno.PointerValue | Uint8Array | null /* ptr */,
   grbit: number /* u32 */,
-  szKey: string | null /* Windows.Win32.Foundation.PWSTR */,
+  szKey: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   cbKey: number /* u32 */,
   lDensity: number /* u32 */,
 ): number /* i32 */ {
@@ -8109,7 +8109,7 @@ export function JetGetInstanceInfoW(
 }
 
 export function JetFreeBuffer(
-  pbBuf: string | null /* Windows.Win32.Foundation.PSTR */,
+  pbBuf: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): number /* i32 */ {
   return libESENT_dll.JetFreeBuffer(util.pstrToFfi(pbBuf));
 }

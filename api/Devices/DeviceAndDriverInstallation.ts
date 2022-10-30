@@ -1804,9 +1804,9 @@ export type PSTR = Deno.PointerValue | Uint8Array | null;
  */
 export interface FILEPATHS_A {
   /** Windows.Win32.Foundation.PSTR */
-  Target: string | null;
+  Target: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  Source: string | null;
+  Source: string | null | Uint8Array;
   /** u32 */
   Win32Error: number;
   /** u32 */
@@ -1842,9 +1842,9 @@ export type PWSTR = Deno.PointerValue | Uint8Array | null;
  */
 export interface FILEPATHS_W {
   /** Windows.Win32.Foundation.PWSTR */
-  Target: string | null;
+  Target: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  Source: string | null;
+  Source: string | null | Uint8Array | Uint16Array;
   /** u32 */
   Win32Error: number;
   /** u32 */
@@ -1878,19 +1878,19 @@ export function allocFILEPATHS_W(data?: Partial<FILEPATHS_W>): Uint8Array {
  */
 export interface FILEPATHS_SIGNERINFO_A {
   /** Windows.Win32.Foundation.PSTR */
-  Target: string | null;
+  Target: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  Source: string | null;
+  Source: string | null | Uint8Array;
   /** u32 */
   Win32Error: number;
   /** u32 */
   Flags: number;
   /** Windows.Win32.Foundation.PSTR */
-  DigitalSigner: string | null;
+  DigitalSigner: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  Version: string | null;
+  Version: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  CatalogFile: string | null;
+  CatalogFile: string | null | Uint8Array;
 }
 
 export const sizeofFILEPATHS_SIGNERINFO_A = 48;
@@ -1935,19 +1935,19 @@ export function allocFILEPATHS_SIGNERINFO_A(data?: Partial<FILEPATHS_SIGNERINFO_
  */
 export interface FILEPATHS_SIGNERINFO_W {
   /** Windows.Win32.Foundation.PWSTR */
-  Target: string | null;
+  Target: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  Source: string | null;
+  Source: string | null | Uint8Array | Uint16Array;
   /** u32 */
   Win32Error: number;
   /** u32 */
   Flags: number;
   /** Windows.Win32.Foundation.PWSTR */
-  DigitalSigner: string | null;
+  DigitalSigner: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  Version: string | null;
+  Version: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  CatalogFile: string | null;
+  CatalogFile: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeofFILEPATHS_SIGNERINFO_W = 48;
@@ -1992,15 +1992,15 @@ export function allocFILEPATHS_SIGNERINFO_W(data?: Partial<FILEPATHS_SIGNERINFO_
  */
 export interface SOURCE_MEDIA_A {
   /** Windows.Win32.Foundation.PSTR */
-  Reserved: string | null;
+  Reserved: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  Tagfile: string | null;
+  Tagfile: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  Description: string | null;
+  Description: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  SourcePath: string | null;
+  SourcePath: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  SourceFile: string | null;
+  SourceFile: string | null | Uint8Array;
   /** u32 */
   Flags: number;
 }
@@ -2046,15 +2046,15 @@ export function allocSOURCE_MEDIA_A(data?: Partial<SOURCE_MEDIA_A>): Uint8Array 
  */
 export interface SOURCE_MEDIA_W {
   /** Windows.Win32.Foundation.PWSTR */
-  Reserved: string | null;
+  Reserved: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  Tagfile: string | null;
+  Tagfile: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  Description: string | null;
+  Description: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  SourcePath: string | null;
+  SourcePath: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  SourceFile: string | null;
+  SourceFile: string | null | Uint8Array | Uint16Array;
   /** u32 */
   Flags: number;
 }
@@ -2100,11 +2100,11 @@ export function allocSOURCE_MEDIA_W(data?: Partial<SOURCE_MEDIA_W>): Uint8Array 
  */
 export interface CABINET_INFO_A {
   /** Windows.Win32.Foundation.PSTR */
-  CabinetPath: string | null;
+  CabinetPath: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  CabinetFile: string | null;
+  CabinetFile: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  DiskName: string | null;
+  DiskName: string | null | Uint8Array;
   /** u16 */
   SetId: number;
   /** u16 */
@@ -2144,11 +2144,11 @@ export function allocCABINET_INFO_A(data?: Partial<CABINET_INFO_A>): Uint8Array 
  */
 export interface CABINET_INFO_W {
   /** Windows.Win32.Foundation.PWSTR */
-  CabinetPath: string | null;
+  CabinetPath: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  CabinetFile: string | null;
+  CabinetFile: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  DiskName: string | null;
+  DiskName: string | null | Uint8Array | Uint16Array;
   /** u16 */
   SetId: number;
   /** u16 */
@@ -2188,7 +2188,7 @@ export function allocCABINET_INFO_W(data?: Partial<CABINET_INFO_W>): Uint8Array 
  */
 export interface FILE_IN_CABINET_INFO_A {
   /** Windows.Win32.Foundation.PSTR */
-  NameInCabinet: string | null;
+  NameInCabinet: string | null | Uint8Array;
   /** u32 */
   FileSize: number;
   /** u32 */
@@ -2234,7 +2234,7 @@ export function allocFILE_IN_CABINET_INFO_A(data?: Partial<FILE_IN_CABINET_INFO_
  */
 export interface FILE_IN_CABINET_INFO_W {
   /** Windows.Win32.Foundation.PWSTR */
-  NameInCabinet: string | null;
+  NameInCabinet: string | null | Uint8Array | Uint16Array;
   /** u32 */
   FileSize: number;
   /** u32 */
@@ -2282,7 +2282,7 @@ export interface SP_REGISTER_CONTROL_STATUSA {
   /** u32 */
   cbSize: number;
   /** Windows.Win32.Foundation.PSTR */
-  FileName: string | null;
+  FileName: string | null | Uint8Array;
   /** u32 */
   Win32Error: number;
   /** u32 */
@@ -2316,7 +2316,7 @@ export interface SP_REGISTER_CONTROL_STATUSW {
   /** u32 */
   cbSize: number;
   /** Windows.Win32.Foundation.PWSTR */
-  FileName: string | null;
+  FileName: string | null | Uint8Array | Uint16Array;
   /** u32 */
   Win32Error: number;
   /** u32 */
@@ -2352,25 +2352,25 @@ export interface SP_FILE_COPY_PARAMS_A {
   /** ptr */
   QueueHandle: Deno.PointerValue | Uint8Array | null;
   /** Windows.Win32.Foundation.PSTR */
-  SourceRootPath: string | null;
+  SourceRootPath: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  SourcePath: string | null;
+  SourcePath: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  SourceFilename: string | null;
+  SourceFilename: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  SourceDescription: string | null;
+  SourceDescription: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  SourceTagfile: string | null;
+  SourceTagfile: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  TargetDirectory: string | null;
+  TargetDirectory: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  TargetFilename: string | null;
+  TargetFilename: string | null | Uint8Array;
   /** u32 */
   CopyStyle: number;
   /** ptr */
   LayoutInf: Deno.PointerValue | Uint8Array | null;
   /** Windows.Win32.Foundation.PSTR */
-  SecurityDescriptor: string | null;
+  SecurityDescriptor: string | null | Uint8Array;
 }
 
 export const sizeofSP_FILE_COPY_PARAMS_A = 96;
@@ -2440,25 +2440,25 @@ export interface SP_FILE_COPY_PARAMS_W {
   /** ptr */
   QueueHandle: Deno.PointerValue | Uint8Array | null;
   /** Windows.Win32.Foundation.PWSTR */
-  SourceRootPath: string | null;
+  SourceRootPath: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  SourcePath: string | null;
+  SourcePath: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  SourceFilename: string | null;
+  SourceFilename: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  SourceDescription: string | null;
+  SourceDescription: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  SourceTagfile: string | null;
+  SourceTagfile: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  TargetDirectory: string | null;
+  TargetDirectory: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  TargetFilename: string | null;
+  TargetFilename: string | null | Uint8Array | Uint16Array;
   /** u32 */
   CopyStyle: number;
   /** ptr */
   LayoutInf: Deno.PointerValue | Uint8Array | null;
   /** Windows.Win32.Foundation.PWSTR */
-  SecurityDescriptor: string | null;
+  SecurityDescriptor: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeofSP_FILE_COPY_PARAMS_W = 96;
@@ -4853,7 +4853,7 @@ export interface _u_e__Struct {
   /** u32 */
   dwValue: number;
   /** Windows.Win32.Foundation.PWSTR */
-  pwszName: string | null;
+  pwszName: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeof_u_e__Struct = 16;
@@ -5261,7 +5261,7 @@ export function allocUNLOAD_DLL_DEBUG_INFO(data?: Partial<UNLOAD_DLL_DEBUG_INFO>
  */
 export interface OUTPUT_DEBUG_STRING_INFO {
   /** Windows.Win32.Foundation.PSTR */
-  lpDebugStringData: string | null;
+  lpDebugStringData: string | null | Uint8Array;
   /** u16 */
   fUnicode: number;
   /** u16 */
@@ -7798,7 +7798,7 @@ export function SetupGetInfInformationW(
 export function SetupQueryInfFileInformationA(
   InfInformation: Deno.PointerValue | Uint8Array | null /* ptr */,
   InfIndex: number /* u32 */,
-  ReturnBuffer: string | null /* Windows.Win32.Foundation.PSTR */,
+  ReturnBuffer: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   ReturnBufferSize: number /* u32 */,
   RequiredSize: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
@@ -7808,7 +7808,7 @@ export function SetupQueryInfFileInformationA(
 export function SetupQueryInfFileInformationW(
   InfInformation: Deno.PointerValue | Uint8Array | null /* ptr */,
   InfIndex: number /* u32 */,
-  ReturnBuffer: string | null /* Windows.Win32.Foundation.PWSTR */,
+  ReturnBuffer: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   ReturnBufferSize: number /* u32 */,
   RequiredSize: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
@@ -7836,8 +7836,8 @@ export function SetupQueryInfOriginalFileInformationW(
 export function SetupQueryInfVersionInformationA(
   InfInformation: Deno.PointerValue | Uint8Array | null /* ptr */,
   InfIndex: number /* u32 */,
-  Key: string | null /* Windows.Win32.Foundation.PSTR */,
-  ReturnBuffer: string | null /* Windows.Win32.Foundation.PSTR */,
+  Key: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  ReturnBuffer: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   ReturnBufferSize: number /* u32 */,
   RequiredSize: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
@@ -7847,8 +7847,8 @@ export function SetupQueryInfVersionInformationA(
 export function SetupQueryInfVersionInformationW(
   InfInformation: Deno.PointerValue | Uint8Array | null /* ptr */,
   InfIndex: number /* u32 */,
-  Key: string | null /* Windows.Win32.Foundation.PWSTR */,
-  ReturnBuffer: string | null /* Windows.Win32.Foundation.PWSTR */,
+  Key: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  ReturnBuffer: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   ReturnBufferSize: number /* u32 */,
   RequiredSize: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
@@ -7856,10 +7856,10 @@ export function SetupQueryInfVersionInformationW(
 }
 
 export function SetupGetInfDriverStoreLocationA(
-  FileName: string | null /* Windows.Win32.Foundation.PSTR */,
+  FileName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   AlternatePlatformInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
-  LocaleName: string | null /* Windows.Win32.Foundation.PSTR */,
-  ReturnBuffer: string | null /* Windows.Win32.Foundation.PSTR */,
+  LocaleName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  ReturnBuffer: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   ReturnBufferSize: number /* u32 */,
   RequiredSize: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
@@ -7867,10 +7867,10 @@ export function SetupGetInfDriverStoreLocationA(
 }
 
 export function SetupGetInfDriverStoreLocationW(
-  FileName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  FileName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   AlternatePlatformInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
-  LocaleName: string | null /* Windows.Win32.Foundation.PWSTR */,
-  ReturnBuffer: string | null /* Windows.Win32.Foundation.PWSTR */,
+  LocaleName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  ReturnBuffer: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   ReturnBufferSize: number /* u32 */,
   RequiredSize: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
@@ -7878,8 +7878,8 @@ export function SetupGetInfDriverStoreLocationW(
 }
 
 export function SetupGetInfPublishedNameA(
-  DriverStoreLocation: string | null /* Windows.Win32.Foundation.PSTR */,
-  ReturnBuffer: string | null /* Windows.Win32.Foundation.PSTR */,
+  DriverStoreLocation: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  ReturnBuffer: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   ReturnBufferSize: number /* u32 */,
   RequiredSize: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
@@ -7887,8 +7887,8 @@ export function SetupGetInfPublishedNameA(
 }
 
 export function SetupGetInfPublishedNameW(
-  DriverStoreLocation: string | null /* Windows.Win32.Foundation.PWSTR */,
-  ReturnBuffer: string | null /* Windows.Win32.Foundation.PWSTR */,
+  DriverStoreLocation: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  ReturnBuffer: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   ReturnBufferSize: number /* u32 */,
   RequiredSize: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
@@ -7896,9 +7896,9 @@ export function SetupGetInfPublishedNameW(
 }
 
 export function SetupGetInfFileListA(
-  DirectoryPath: string | null /* Windows.Win32.Foundation.PSTR */,
+  DirectoryPath: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   InfStyle: number /* u32 */,
-  ReturnBuffer: string | null /* Windows.Win32.Foundation.PSTR */,
+  ReturnBuffer: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   ReturnBufferSize: number /* u32 */,
   RequiredSize: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
@@ -7906,9 +7906,9 @@ export function SetupGetInfFileListA(
 }
 
 export function SetupGetInfFileListW(
-  DirectoryPath: string | null /* Windows.Win32.Foundation.PWSTR */,
+  DirectoryPath: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   InfStyle: number /* u32 */,
-  ReturnBuffer: string | null /* Windows.Win32.Foundation.PWSTR */,
+  ReturnBuffer: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   ReturnBufferSize: number /* u32 */,
   RequiredSize: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
@@ -7916,8 +7916,8 @@ export function SetupGetInfFileListW(
 }
 
 export function SetupOpenInfFileW(
-  FileName: string | null /* Windows.Win32.Foundation.PWSTR */,
-  InfClass: string | null /* Windows.Win32.Foundation.PWSTR */,
+  FileName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  InfClass: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   InfStyle: number /* u32 */,
   ErrorLine: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* ptr */ {
@@ -7925,8 +7925,8 @@ export function SetupOpenInfFileW(
 }
 
 export function SetupOpenInfFileA(
-  FileName: string | null /* Windows.Win32.Foundation.PSTR */,
-  InfClass: string | null /* Windows.Win32.Foundation.PSTR */,
+  FileName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  InfClass: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   InfStyle: number /* u32 */,
   ErrorLine: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* ptr */ {
@@ -7938,7 +7938,7 @@ export function SetupOpenMasterInf(): Deno.PointerValue | null /* ptr */ {
 }
 
 export function SetupOpenAppendInfFileW(
-  FileName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  FileName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   InfHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
   ErrorLine: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
@@ -7946,7 +7946,7 @@ export function SetupOpenAppendInfFileW(
 }
 
 export function SetupOpenAppendInfFileA(
-  FileName: string | null /* Windows.Win32.Foundation.PSTR */,
+  FileName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   InfHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
   ErrorLine: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
@@ -7961,8 +7961,8 @@ export function SetupCloseInfFile(
 
 export function SetupFindFirstLineA(
   InfHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
-  Section: string | null /* Windows.Win32.Foundation.PSTR */,
-  Key: string | null /* Windows.Win32.Foundation.PSTR */,
+  Section: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  Key: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   Context: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libSETUPAPI_dll.SetupFindFirstLineA(util.toPointer(InfHandle), util.pstrToFfi(Section), util.pstrToFfi(Key), util.toPointer(Context)));
@@ -7970,8 +7970,8 @@ export function SetupFindFirstLineA(
 
 export function SetupFindFirstLineW(
   InfHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
-  Section: string | null /* Windows.Win32.Foundation.PWSTR */,
-  Key: string | null /* Windows.Win32.Foundation.PWSTR */,
+  Section: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  Key: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   Context: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libSETUPAPI_dll.SetupFindFirstLineW(util.toPointer(InfHandle), util.pwstrToFfi(Section), util.pwstrToFfi(Key), util.toPointer(Context)));
@@ -7986,7 +7986,7 @@ export function SetupFindNextLine(
 
 export function SetupFindNextMatchLineA(
   ContextIn: Deno.PointerValue | Uint8Array | null /* ptr */,
-  Key: string | null /* Windows.Win32.Foundation.PSTR */,
+  Key: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   ContextOut: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libSETUPAPI_dll.SetupFindNextMatchLineA(util.toPointer(ContextIn), util.pstrToFfi(Key), util.toPointer(ContextOut)));
@@ -7994,7 +7994,7 @@ export function SetupFindNextMatchLineA(
 
 export function SetupFindNextMatchLineW(
   ContextIn: Deno.PointerValue | Uint8Array | null /* ptr */,
-  Key: string | null /* Windows.Win32.Foundation.PWSTR */,
+  Key: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   ContextOut: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libSETUPAPI_dll.SetupFindNextMatchLineW(util.toPointer(ContextIn), util.pwstrToFfi(Key), util.toPointer(ContextOut)));
@@ -8002,7 +8002,7 @@ export function SetupFindNextMatchLineW(
 
 export function SetupGetLineByIndexA(
   InfHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
-  Section: string | null /* Windows.Win32.Foundation.PSTR */,
+  Section: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   Index: number /* u32 */,
   Context: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
@@ -8011,7 +8011,7 @@ export function SetupGetLineByIndexA(
 
 export function SetupGetLineByIndexW(
   InfHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
-  Section: string | null /* Windows.Win32.Foundation.PWSTR */,
+  Section: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   Index: number /* u32 */,
   Context: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
@@ -8020,14 +8020,14 @@ export function SetupGetLineByIndexW(
 
 export function SetupGetLineCountA(
   InfHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
-  Section: string | null /* Windows.Win32.Foundation.PSTR */,
+  Section: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): number /* i32 */ {
   return libSETUPAPI_dll.SetupGetLineCountA(util.toPointer(InfHandle), util.pstrToFfi(Section));
 }
 
 export function SetupGetLineCountW(
   InfHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
-  Section: string | null /* Windows.Win32.Foundation.PWSTR */,
+  Section: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* i32 */ {
   return libSETUPAPI_dll.SetupGetLineCountW(util.toPointer(InfHandle), util.pwstrToFfi(Section));
 }
@@ -8035,9 +8035,9 @@ export function SetupGetLineCountW(
 export function SetupGetLineTextA(
   Context: Deno.PointerValue | Uint8Array | null /* ptr */,
   InfHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
-  Section: string | null /* Windows.Win32.Foundation.PSTR */,
-  Key: string | null /* Windows.Win32.Foundation.PSTR */,
-  ReturnBuffer: string | null /* Windows.Win32.Foundation.PSTR */,
+  Section: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  Key: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  ReturnBuffer: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   ReturnBufferSize: number /* u32 */,
   RequiredSize: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
@@ -8047,9 +8047,9 @@ export function SetupGetLineTextA(
 export function SetupGetLineTextW(
   Context: Deno.PointerValue | Uint8Array | null /* ptr */,
   InfHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
-  Section: string | null /* Windows.Win32.Foundation.PWSTR */,
-  Key: string | null /* Windows.Win32.Foundation.PWSTR */,
-  ReturnBuffer: string | null /* Windows.Win32.Foundation.PWSTR */,
+  Section: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  Key: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  ReturnBuffer: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   ReturnBufferSize: number /* u32 */,
   RequiredSize: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
@@ -8065,7 +8065,7 @@ export function SetupGetFieldCount(
 export function SetupGetStringFieldA(
   Context: Deno.PointerValue | Uint8Array | null /* ptr */,
   FieldIndex: number /* u32 */,
-  ReturnBuffer: string | null /* Windows.Win32.Foundation.PSTR */,
+  ReturnBuffer: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   ReturnBufferSize: number /* u32 */,
   RequiredSize: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
@@ -8075,7 +8075,7 @@ export function SetupGetStringFieldA(
 export function SetupGetStringFieldW(
   Context: Deno.PointerValue | Uint8Array | null /* ptr */,
   FieldIndex: number /* u32 */,
-  ReturnBuffer: string | null /* Windows.Win32.Foundation.PWSTR */,
+  ReturnBuffer: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   ReturnBufferSize: number /* u32 */,
   RequiredSize: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
@@ -8093,7 +8093,7 @@ export function SetupGetIntField(
 export function SetupGetMultiSzFieldA(
   Context: Deno.PointerValue | Uint8Array | null /* ptr */,
   FieldIndex: number /* u32 */,
-  ReturnBuffer: string | null /* Windows.Win32.Foundation.PSTR */,
+  ReturnBuffer: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   ReturnBufferSize: number /* u32 */,
   RequiredSize: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
@@ -8103,7 +8103,7 @@ export function SetupGetMultiSzFieldA(
 export function SetupGetMultiSzFieldW(
   Context: Deno.PointerValue | Uint8Array | null /* ptr */,
   FieldIndex: number /* u32 */,
-  ReturnBuffer: string | null /* Windows.Win32.Foundation.PWSTR */,
+  ReturnBuffer: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   ReturnBufferSize: number /* u32 */,
   RequiredSize: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
@@ -8121,7 +8121,7 @@ export function SetupGetBinaryField(
 }
 
 export function SetupGetFileCompressionInfoA(
-  SourceFileName: string | null /* Windows.Win32.Foundation.PSTR */,
+  SourceFileName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   ActualSourceFileName: Deno.PointerValue | Uint8Array | null /* ptr */,
   SourceFileSize: Deno.PointerValue | Uint8Array | null /* ptr */,
   TargetFileSize: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -8131,7 +8131,7 @@ export function SetupGetFileCompressionInfoA(
 }
 
 export function SetupGetFileCompressionInfoW(
-  SourceFileName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  SourceFileName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   ActualSourceFileName: Deno.PointerValue | Uint8Array | null /* ptr */,
   SourceFileSize: Deno.PointerValue | Uint8Array | null /* ptr */,
   TargetFileSize: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -8141,8 +8141,8 @@ export function SetupGetFileCompressionInfoW(
 }
 
 export function SetupGetFileCompressionInfoExA(
-  SourceFileName: string | null /* Windows.Win32.Foundation.PSTR */,
-  ActualSourceFileNameBuffer: string | null /* Windows.Win32.Foundation.PSTR */,
+  SourceFileName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  ActualSourceFileNameBuffer: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   ActualSourceFileNameBufferLen: number /* u32 */,
   RequiredBufferLen: Deno.PointerValue | Uint8Array | null /* ptr */,
   SourceFileSize: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -8153,8 +8153,8 @@ export function SetupGetFileCompressionInfoExA(
 }
 
 export function SetupGetFileCompressionInfoExW(
-  SourceFileName: string | null /* Windows.Win32.Foundation.PWSTR */,
-  ActualSourceFileNameBuffer: string | null /* Windows.Win32.Foundation.PWSTR */,
+  SourceFileName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  ActualSourceFileNameBuffer: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   ActualSourceFileNameBufferLen: number /* u32 */,
   RequiredBufferLen: Deno.PointerValue | Uint8Array | null /* ptr */,
   SourceFileSize: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -8165,16 +8165,16 @@ export function SetupGetFileCompressionInfoExW(
 }
 
 export function SetupDecompressOrCopyFileA(
-  SourceFileName: string | null /* Windows.Win32.Foundation.PSTR */,
-  TargetFileName: string | null /* Windows.Win32.Foundation.PSTR */,
+  SourceFileName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  TargetFileName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   CompressionType: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
   return libSETUPAPI_dll.SetupDecompressOrCopyFileA(util.pstrToFfi(SourceFileName), util.pstrToFfi(TargetFileName), util.toPointer(CompressionType));
 }
 
 export function SetupDecompressOrCopyFileW(
-  SourceFileName: string | null /* Windows.Win32.Foundation.PWSTR */,
-  TargetFileName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  SourceFileName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  TargetFileName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   CompressionType: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
   return libSETUPAPI_dll.SetupDecompressOrCopyFileW(util.pwstrToFfi(SourceFileName), util.pwstrToFfi(TargetFileName), util.toPointer(CompressionType));
@@ -8183,9 +8183,9 @@ export function SetupDecompressOrCopyFileW(
 export function SetupGetSourceFileLocationA(
   InfHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
   InfContext: Deno.PointerValue | Uint8Array | null /* ptr */,
-  FileName: string | null /* Windows.Win32.Foundation.PSTR */,
+  FileName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   SourceId: Deno.PointerValue | Uint8Array | null /* ptr */,
-  ReturnBuffer: string | null /* Windows.Win32.Foundation.PSTR */,
+  ReturnBuffer: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   ReturnBufferSize: number /* u32 */,
   RequiredSize: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
@@ -8195,9 +8195,9 @@ export function SetupGetSourceFileLocationA(
 export function SetupGetSourceFileLocationW(
   InfHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
   InfContext: Deno.PointerValue | Uint8Array | null /* ptr */,
-  FileName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  FileName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   SourceId: Deno.PointerValue | Uint8Array | null /* ptr */,
-  ReturnBuffer: string | null /* Windows.Win32.Foundation.PWSTR */,
+  ReturnBuffer: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   ReturnBufferSize: number /* u32 */,
   RequiredSize: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
@@ -8207,8 +8207,8 @@ export function SetupGetSourceFileLocationW(
 export function SetupGetSourceFileSizeA(
   InfHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
   InfContext: Deno.PointerValue | Uint8Array | null /* ptr */,
-  FileName: string | null /* Windows.Win32.Foundation.PSTR */,
-  Section: string | null /* Windows.Win32.Foundation.PSTR */,
+  FileName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  Section: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   FileSize: Deno.PointerValue | Uint8Array | null /* ptr */,
   RoundingFactor: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
@@ -8218,8 +8218,8 @@ export function SetupGetSourceFileSizeA(
 export function SetupGetSourceFileSizeW(
   InfHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
   InfContext: Deno.PointerValue | Uint8Array | null /* ptr */,
-  FileName: string | null /* Windows.Win32.Foundation.PWSTR */,
-  Section: string | null /* Windows.Win32.Foundation.PWSTR */,
+  FileName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  Section: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   FileSize: Deno.PointerValue | Uint8Array | null /* ptr */,
   RoundingFactor: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
@@ -8229,8 +8229,8 @@ export function SetupGetSourceFileSizeW(
 export function SetupGetTargetPathA(
   InfHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
   InfContext: Deno.PointerValue | Uint8Array | null /* ptr */,
-  Section: string | null /* Windows.Win32.Foundation.PSTR */,
-  ReturnBuffer: string | null /* Windows.Win32.Foundation.PSTR */,
+  Section: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  ReturnBuffer: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   ReturnBufferSize: number /* u32 */,
   RequiredSize: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
@@ -8240,8 +8240,8 @@ export function SetupGetTargetPathA(
 export function SetupGetTargetPathW(
   InfHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
   InfContext: Deno.PointerValue | Uint8Array | null /* ptr */,
-  Section: string | null /* Windows.Win32.Foundation.PWSTR */,
-  ReturnBuffer: string | null /* Windows.Win32.Foundation.PWSTR */,
+  Section: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  ReturnBuffer: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   ReturnBufferSize: number /* u32 */,
   RequiredSize: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
@@ -8270,28 +8270,28 @@ export function SetupCancelTemporarySourceList(): boolean /* Windows.Win32.Found
 
 export function SetupAddToSourceListA(
   Flags: number /* u32 */,
-  Source: string | null /* Windows.Win32.Foundation.PSTR */,
+  Source: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libSETUPAPI_dll.SetupAddToSourceListA(Flags, util.pstrToFfi(Source)));
 }
 
 export function SetupAddToSourceListW(
   Flags: number /* u32 */,
-  Source: string | null /* Windows.Win32.Foundation.PWSTR */,
+  Source: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libSETUPAPI_dll.SetupAddToSourceListW(Flags, util.pwstrToFfi(Source)));
 }
 
 export function SetupRemoveFromSourceListA(
   Flags: number /* u32 */,
-  Source: string | null /* Windows.Win32.Foundation.PSTR */,
+  Source: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libSETUPAPI_dll.SetupRemoveFromSourceListA(Flags, util.pstrToFfi(Source)));
 }
 
 export function SetupRemoveFromSourceListW(
   Flags: number /* u32 */,
-  Source: string | null /* Windows.Win32.Foundation.PWSTR */,
+  Source: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libSETUPAPI_dll.SetupRemoveFromSourceListW(Flags, util.pwstrToFfi(Source)));
 }
@@ -8328,13 +8328,13 @@ export function SetupFreeSourceListW(
 
 export function SetupPromptForDiskA(
   hwndParent: Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */,
-  DialogTitle: string | null /* Windows.Win32.Foundation.PSTR */,
-  DiskName: string | null /* Windows.Win32.Foundation.PSTR */,
-  PathToSource: string | null /* Windows.Win32.Foundation.PSTR */,
-  FileSought: string | null /* Windows.Win32.Foundation.PSTR */,
-  TagFile: string | null /* Windows.Win32.Foundation.PSTR */,
+  DialogTitle: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  DiskName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  PathToSource: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  FileSought: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  TagFile: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   DiskPromptStyle: number /* u32 */,
-  PathBuffer: string | null /* Windows.Win32.Foundation.PSTR */,
+  PathBuffer: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   PathBufferSize: number /* u32 */,
   PathRequiredSize: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
@@ -8343,13 +8343,13 @@ export function SetupPromptForDiskA(
 
 export function SetupPromptForDiskW(
   hwndParent: Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */,
-  DialogTitle: string | null /* Windows.Win32.Foundation.PWSTR */,
-  DiskName: string | null /* Windows.Win32.Foundation.PWSTR */,
-  PathToSource: string | null /* Windows.Win32.Foundation.PWSTR */,
-  FileSought: string | null /* Windows.Win32.Foundation.PWSTR */,
-  TagFile: string | null /* Windows.Win32.Foundation.PWSTR */,
+  DialogTitle: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  DiskName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  PathToSource: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  FileSought: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  TagFile: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   DiskPromptStyle: number /* u32 */,
-  PathBuffer: string | null /* Windows.Win32.Foundation.PWSTR */,
+  PathBuffer: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   PathBufferSize: number /* u32 */,
   PathRequiredSize: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
@@ -8358,14 +8358,14 @@ export function SetupPromptForDiskW(
 
 export function SetupCopyErrorA(
   hwndParent: Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */,
-  DialogTitle: string | null /* Windows.Win32.Foundation.PSTR */,
-  DiskName: string | null /* Windows.Win32.Foundation.PSTR */,
-  PathToSource: string | null /* Windows.Win32.Foundation.PSTR */,
-  SourceFile: string | null /* Windows.Win32.Foundation.PSTR */,
-  TargetPathFile: string | null /* Windows.Win32.Foundation.PSTR */,
+  DialogTitle: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  DiskName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  PathToSource: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  SourceFile: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  TargetPathFile: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   Win32ErrorCode: number /* u32 */,
   Style: number /* u32 */,
-  PathBuffer: string | null /* Windows.Win32.Foundation.PSTR */,
+  PathBuffer: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   PathBufferSize: number /* u32 */,
   PathRequiredSize: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
@@ -8374,14 +8374,14 @@ export function SetupCopyErrorA(
 
 export function SetupCopyErrorW(
   hwndParent: Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */,
-  DialogTitle: string | null /* Windows.Win32.Foundation.PWSTR */,
-  DiskName: string | null /* Windows.Win32.Foundation.PWSTR */,
-  PathToSource: string | null /* Windows.Win32.Foundation.PWSTR */,
-  SourceFile: string | null /* Windows.Win32.Foundation.PWSTR */,
-  TargetPathFile: string | null /* Windows.Win32.Foundation.PWSTR */,
+  DialogTitle: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  DiskName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  PathToSource: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  SourceFile: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  TargetPathFile: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   Win32ErrorCode: number /* u32 */,
   Style: number /* u32 */,
-  PathBuffer: string | null /* Windows.Win32.Foundation.PWSTR */,
+  PathBuffer: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   PathBufferSize: number /* u32 */,
   PathRequiredSize: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
@@ -8390,9 +8390,9 @@ export function SetupCopyErrorW(
 
 export function SetupRenameErrorA(
   hwndParent: Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */,
-  DialogTitle: string | null /* Windows.Win32.Foundation.PSTR */,
-  SourceFile: string | null /* Windows.Win32.Foundation.PSTR */,
-  TargetFile: string | null /* Windows.Win32.Foundation.PSTR */,
+  DialogTitle: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  SourceFile: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  TargetFile: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   Win32ErrorCode: number /* u32 */,
   Style: number /* u32 */,
 ): number /* u32 */ {
@@ -8401,9 +8401,9 @@ export function SetupRenameErrorA(
 
 export function SetupRenameErrorW(
   hwndParent: Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */,
-  DialogTitle: string | null /* Windows.Win32.Foundation.PWSTR */,
-  SourceFile: string | null /* Windows.Win32.Foundation.PWSTR */,
-  TargetFile: string | null /* Windows.Win32.Foundation.PWSTR */,
+  DialogTitle: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  SourceFile: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  TargetFile: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   Win32ErrorCode: number /* u32 */,
   Style: number /* u32 */,
 ): number /* u32 */ {
@@ -8412,8 +8412,8 @@ export function SetupRenameErrorW(
 
 export function SetupDeleteErrorA(
   hwndParent: Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */,
-  DialogTitle: string | null /* Windows.Win32.Foundation.PSTR */,
-  File: string | null /* Windows.Win32.Foundation.PSTR */,
+  DialogTitle: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  File: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   Win32ErrorCode: number /* u32 */,
   Style: number /* u32 */,
 ): number /* u32 */ {
@@ -8422,8 +8422,8 @@ export function SetupDeleteErrorA(
 
 export function SetupDeleteErrorW(
   hwndParent: Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */,
-  DialogTitle: string | null /* Windows.Win32.Foundation.PWSTR */,
-  File: string | null /* Windows.Win32.Foundation.PWSTR */,
+  DialogTitle: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  File: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   Win32ErrorCode: number /* u32 */,
   Style: number /* u32 */,
 ): number /* u32 */ {
@@ -8432,9 +8432,9 @@ export function SetupDeleteErrorW(
 
 export function SetupBackupErrorA(
   hwndParent: Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */,
-  DialogTitle: string | null /* Windows.Win32.Foundation.PSTR */,
-  SourceFile: string | null /* Windows.Win32.Foundation.PSTR */,
-  TargetFile: string | null /* Windows.Win32.Foundation.PSTR */,
+  DialogTitle: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  SourceFile: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  TargetFile: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   Win32ErrorCode: number /* u32 */,
   Style: number /* u32 */,
 ): number /* u32 */ {
@@ -8443,9 +8443,9 @@ export function SetupBackupErrorA(
 
 export function SetupBackupErrorW(
   hwndParent: Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */,
-  DialogTitle: string | null /* Windows.Win32.Foundation.PWSTR */,
-  SourceFile: string | null /* Windows.Win32.Foundation.PWSTR */,
-  TargetFile: string | null /* Windows.Win32.Foundation.PWSTR */,
+  DialogTitle: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  SourceFile: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  TargetFile: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   Win32ErrorCode: number /* u32 */,
   Style: number /* u32 */,
 ): number /* u32 */ {
@@ -8455,7 +8455,7 @@ export function SetupBackupErrorW(
 export function SetupSetDirectoryIdA(
   InfHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
   Id: number /* u32 */,
-  Directory: string | null /* Windows.Win32.Foundation.PSTR */,
+  Directory: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libSETUPAPI_dll.SetupSetDirectoryIdA(util.toPointer(InfHandle), Id, util.pstrToFfi(Directory)));
 }
@@ -8463,7 +8463,7 @@ export function SetupSetDirectoryIdA(
 export function SetupSetDirectoryIdW(
   InfHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
   Id: number /* u32 */,
-  Directory: string | null /* Windows.Win32.Foundation.PWSTR */,
+  Directory: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libSETUPAPI_dll.SetupSetDirectoryIdW(util.toPointer(InfHandle), Id, util.pwstrToFfi(Directory)));
 }
@@ -8471,7 +8471,7 @@ export function SetupSetDirectoryIdW(
 export function SetupSetDirectoryIdExA(
   InfHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
   Id: number /* u32 */,
-  Directory: string | null /* Windows.Win32.Foundation.PSTR */,
+  Directory: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   Flags: number /* u32 */,
   Reserved1: number /* u32 */,
   Reserved2: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -8482,7 +8482,7 @@ export function SetupSetDirectoryIdExA(
 export function SetupSetDirectoryIdExW(
   InfHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
   Id: number /* u32 */,
-  Directory: string | null /* Windows.Win32.Foundation.PWSTR */,
+  Directory: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   Flags: number /* u32 */,
   Reserved1: number /* u32 */,
   Reserved2: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -8494,7 +8494,7 @@ export function SetupGetSourceInfoA(
   InfHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
   SourceId: number /* u32 */,
   InfoDesired: number /* u32 */,
-  ReturnBuffer: string | null /* Windows.Win32.Foundation.PSTR */,
+  ReturnBuffer: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   ReturnBufferSize: number /* u32 */,
   RequiredSize: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
@@ -8505,7 +8505,7 @@ export function SetupGetSourceInfoW(
   InfHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
   SourceId: number /* u32 */,
   InfoDesired: number /* u32 */,
-  ReturnBuffer: string | null /* Windows.Win32.Foundation.PWSTR */,
+  ReturnBuffer: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   ReturnBufferSize: number /* u32 */,
   RequiredSize: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
@@ -8515,9 +8515,9 @@ export function SetupGetSourceInfoW(
 export function SetupInstallFileA(
   InfHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
   InfContext: Deno.PointerValue | Uint8Array | null /* ptr */,
-  SourceFile: string | null /* Windows.Win32.Foundation.PSTR */,
-  SourcePathRoot: string | null /* Windows.Win32.Foundation.PSTR */,
-  DestinationName: string | null /* Windows.Win32.Foundation.PSTR */,
+  SourceFile: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  SourcePathRoot: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  DestinationName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   CopyStyle: SP_COPY_STYLE /* Windows.Win32.Devices.DeviceAndDriverInstallation.SP_COPY_STYLE */,
   CopyMsgHandler: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.DeviceAndDriverInstallation.PSP_FILE_CALLBACK_A */,
   Context: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -8528,9 +8528,9 @@ export function SetupInstallFileA(
 export function SetupInstallFileW(
   InfHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
   InfContext: Deno.PointerValue | Uint8Array | null /* ptr */,
-  SourceFile: string | null /* Windows.Win32.Foundation.PWSTR */,
-  SourcePathRoot: string | null /* Windows.Win32.Foundation.PWSTR */,
-  DestinationName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  SourceFile: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  SourcePathRoot: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  DestinationName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   CopyStyle: SP_COPY_STYLE /* Windows.Win32.Devices.DeviceAndDriverInstallation.SP_COPY_STYLE */,
   CopyMsgHandler: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.DeviceAndDriverInstallation.PSP_FILE_CALLBACK_W */,
   Context: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -8541,9 +8541,9 @@ export function SetupInstallFileW(
 export function SetupInstallFileExA(
   InfHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
   InfContext: Deno.PointerValue | Uint8Array | null /* ptr */,
-  SourceFile: string | null /* Windows.Win32.Foundation.PSTR */,
-  SourcePathRoot: string | null /* Windows.Win32.Foundation.PSTR */,
-  DestinationName: string | null /* Windows.Win32.Foundation.PSTR */,
+  SourceFile: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  SourcePathRoot: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  DestinationName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   CopyStyle: SP_COPY_STYLE /* Windows.Win32.Devices.DeviceAndDriverInstallation.SP_COPY_STYLE */,
   CopyMsgHandler: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.DeviceAndDriverInstallation.PSP_FILE_CALLBACK_A */,
   Context: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -8555,9 +8555,9 @@ export function SetupInstallFileExA(
 export function SetupInstallFileExW(
   InfHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
   InfContext: Deno.PointerValue | Uint8Array | null /* ptr */,
-  SourceFile: string | null /* Windows.Win32.Foundation.PWSTR */,
-  SourcePathRoot: string | null /* Windows.Win32.Foundation.PWSTR */,
-  DestinationName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  SourceFile: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  SourcePathRoot: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  DestinationName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   CopyStyle: SP_COPY_STYLE /* Windows.Win32.Devices.DeviceAndDriverInstallation.SP_COPY_STYLE */,
   CopyMsgHandler: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.DeviceAndDriverInstallation.PSP_FILE_CALLBACK_W */,
   Context: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -8579,7 +8579,7 @@ export function SetupCloseFileQueue(
 export function SetupSetFileQueueAlternatePlatformA(
   QueueHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
   AlternatePlatformInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
-  AlternateDefaultCatalogFile: string | null /* Windows.Win32.Foundation.PSTR */,
+  AlternateDefaultCatalogFile: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libSETUPAPI_dll.SetupSetFileQueueAlternatePlatformA(util.toPointer(QueueHandle), util.toPointer(AlternatePlatformInfo), util.pstrToFfi(AlternateDefaultCatalogFile)));
 }
@@ -8587,32 +8587,32 @@ export function SetupSetFileQueueAlternatePlatformA(
 export function SetupSetFileQueueAlternatePlatformW(
   QueueHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
   AlternatePlatformInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
-  AlternateDefaultCatalogFile: string | null /* Windows.Win32.Foundation.PWSTR */,
+  AlternateDefaultCatalogFile: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libSETUPAPI_dll.SetupSetFileQueueAlternatePlatformW(util.toPointer(QueueHandle), util.toPointer(AlternatePlatformInfo), util.pwstrToFfi(AlternateDefaultCatalogFile)));
 }
 
 export function SetupSetPlatformPathOverrideA(
-  Override: string | null /* Windows.Win32.Foundation.PSTR */,
+  Override: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libSETUPAPI_dll.SetupSetPlatformPathOverrideA(util.pstrToFfi(Override)));
 }
 
 export function SetupSetPlatformPathOverrideW(
-  Override: string | null /* Windows.Win32.Foundation.PWSTR */,
+  Override: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libSETUPAPI_dll.SetupSetPlatformPathOverrideW(util.pwstrToFfi(Override)));
 }
 
 export function SetupQueueCopyA(
   QueueHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
-  SourceRootPath: string | null /* Windows.Win32.Foundation.PSTR */,
-  SourcePath: string | null /* Windows.Win32.Foundation.PSTR */,
-  SourceFilename: string | null /* Windows.Win32.Foundation.PSTR */,
-  SourceDescription: string | null /* Windows.Win32.Foundation.PSTR */,
-  SourceTagfile: string | null /* Windows.Win32.Foundation.PSTR */,
-  TargetDirectory: string | null /* Windows.Win32.Foundation.PSTR */,
-  TargetFilename: string | null /* Windows.Win32.Foundation.PSTR */,
+  SourceRootPath: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  SourcePath: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  SourceFilename: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  SourceDescription: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  SourceTagfile: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  TargetDirectory: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  TargetFilename: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   CopyStyle: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libSETUPAPI_dll.SetupQueueCopyA(util.toPointer(QueueHandle), util.pstrToFfi(SourceRootPath), util.pstrToFfi(SourcePath), util.pstrToFfi(SourceFilename), util.pstrToFfi(SourceDescription), util.pstrToFfi(SourceTagfile), util.pstrToFfi(TargetDirectory), util.pstrToFfi(TargetFilename), CopyStyle));
@@ -8620,13 +8620,13 @@ export function SetupQueueCopyA(
 
 export function SetupQueueCopyW(
   QueueHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
-  SourceRootPath: string | null /* Windows.Win32.Foundation.PWSTR */,
-  SourcePath: string | null /* Windows.Win32.Foundation.PWSTR */,
-  SourceFilename: string | null /* Windows.Win32.Foundation.PWSTR */,
-  SourceDescription: string | null /* Windows.Win32.Foundation.PWSTR */,
-  SourceTagfile: string | null /* Windows.Win32.Foundation.PWSTR */,
-  TargetDirectory: string | null /* Windows.Win32.Foundation.PWSTR */,
-  TargetFilename: string | null /* Windows.Win32.Foundation.PWSTR */,
+  SourceRootPath: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  SourcePath: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  SourceFilename: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  SourceDescription: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  SourceTagfile: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  TargetDirectory: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  TargetFilename: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   CopyStyle: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libSETUPAPI_dll.SetupQueueCopyW(util.toPointer(QueueHandle), util.pwstrToFfi(SourceRootPath), util.pwstrToFfi(SourcePath), util.pwstrToFfi(SourceFilename), util.pwstrToFfi(SourceDescription), util.pwstrToFfi(SourceTagfile), util.pwstrToFfi(TargetDirectory), util.pwstrToFfi(TargetFilename), CopyStyle));
@@ -8647,9 +8647,9 @@ export function SetupQueueCopyIndirectW(
 export function SetupQueueDefaultCopyA(
   QueueHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
   InfHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
-  SourceRootPath: string | null /* Windows.Win32.Foundation.PSTR */,
-  SourceFilename: string | null /* Windows.Win32.Foundation.PSTR */,
-  TargetFilename: string | null /* Windows.Win32.Foundation.PSTR */,
+  SourceRootPath: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  SourceFilename: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  TargetFilename: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   CopyStyle: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libSETUPAPI_dll.SetupQueueDefaultCopyA(util.toPointer(QueueHandle), util.toPointer(InfHandle), util.pstrToFfi(SourceRootPath), util.pstrToFfi(SourceFilename), util.pstrToFfi(TargetFilename), CopyStyle));
@@ -8658,9 +8658,9 @@ export function SetupQueueDefaultCopyA(
 export function SetupQueueDefaultCopyW(
   QueueHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
   InfHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
-  SourceRootPath: string | null /* Windows.Win32.Foundation.PWSTR */,
-  SourceFilename: string | null /* Windows.Win32.Foundation.PWSTR */,
-  TargetFilename: string | null /* Windows.Win32.Foundation.PWSTR */,
+  SourceRootPath: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  SourceFilename: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  TargetFilename: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   CopyStyle: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libSETUPAPI_dll.SetupQueueDefaultCopyW(util.toPointer(QueueHandle), util.toPointer(InfHandle), util.pwstrToFfi(SourceRootPath), util.pwstrToFfi(SourceFilename), util.pwstrToFfi(TargetFilename), CopyStyle));
@@ -8668,10 +8668,10 @@ export function SetupQueueDefaultCopyW(
 
 export function SetupQueueCopySectionA(
   QueueHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
-  SourceRootPath: string | null /* Windows.Win32.Foundation.PSTR */,
+  SourceRootPath: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   InfHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
   ListInfHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
-  Section: string | null /* Windows.Win32.Foundation.PSTR */,
+  Section: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   CopyStyle: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libSETUPAPI_dll.SetupQueueCopySectionA(util.toPointer(QueueHandle), util.pstrToFfi(SourceRootPath), util.toPointer(InfHandle), util.toPointer(ListInfHandle), util.pstrToFfi(Section), CopyStyle));
@@ -8679,10 +8679,10 @@ export function SetupQueueCopySectionA(
 
 export function SetupQueueCopySectionW(
   QueueHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
-  SourceRootPath: string | null /* Windows.Win32.Foundation.PWSTR */,
+  SourceRootPath: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   InfHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
   ListInfHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
-  Section: string | null /* Windows.Win32.Foundation.PWSTR */,
+  Section: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   CopyStyle: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libSETUPAPI_dll.SetupQueueCopySectionW(util.toPointer(QueueHandle), util.pwstrToFfi(SourceRootPath), util.toPointer(InfHandle), util.toPointer(ListInfHandle), util.pwstrToFfi(Section), CopyStyle));
@@ -8690,16 +8690,16 @@ export function SetupQueueCopySectionW(
 
 export function SetupQueueDeleteA(
   QueueHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
-  PathPart1: string | null /* Windows.Win32.Foundation.PSTR */,
-  PathPart2: string | null /* Windows.Win32.Foundation.PSTR */,
+  PathPart1: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  PathPart2: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libSETUPAPI_dll.SetupQueueDeleteA(util.toPointer(QueueHandle), util.pstrToFfi(PathPart1), util.pstrToFfi(PathPart2)));
 }
 
 export function SetupQueueDeleteW(
   QueueHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
-  PathPart1: string | null /* Windows.Win32.Foundation.PWSTR */,
-  PathPart2: string | null /* Windows.Win32.Foundation.PWSTR */,
+  PathPart1: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  PathPart2: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libSETUPAPI_dll.SetupQueueDeleteW(util.toPointer(QueueHandle), util.pwstrToFfi(PathPart1), util.pwstrToFfi(PathPart2)));
 }
@@ -8708,7 +8708,7 @@ export function SetupQueueDeleteSectionA(
   QueueHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
   InfHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
   ListInfHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
-  Section: string | null /* Windows.Win32.Foundation.PSTR */,
+  Section: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libSETUPAPI_dll.SetupQueueDeleteSectionA(util.toPointer(QueueHandle), util.toPointer(InfHandle), util.toPointer(ListInfHandle), util.pstrToFfi(Section)));
 }
@@ -8717,27 +8717,27 @@ export function SetupQueueDeleteSectionW(
   QueueHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
   InfHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
   ListInfHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
-  Section: string | null /* Windows.Win32.Foundation.PWSTR */,
+  Section: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libSETUPAPI_dll.SetupQueueDeleteSectionW(util.toPointer(QueueHandle), util.toPointer(InfHandle), util.toPointer(ListInfHandle), util.pwstrToFfi(Section)));
 }
 
 export function SetupQueueRenameA(
   QueueHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
-  SourcePath: string | null /* Windows.Win32.Foundation.PSTR */,
-  SourceFilename: string | null /* Windows.Win32.Foundation.PSTR */,
-  TargetPath: string | null /* Windows.Win32.Foundation.PSTR */,
-  TargetFilename: string | null /* Windows.Win32.Foundation.PSTR */,
+  SourcePath: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  SourceFilename: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  TargetPath: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  TargetFilename: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libSETUPAPI_dll.SetupQueueRenameA(util.toPointer(QueueHandle), util.pstrToFfi(SourcePath), util.pstrToFfi(SourceFilename), util.pstrToFfi(TargetPath), util.pstrToFfi(TargetFilename)));
 }
 
 export function SetupQueueRenameW(
   QueueHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
-  SourcePath: string | null /* Windows.Win32.Foundation.PWSTR */,
-  SourceFilename: string | null /* Windows.Win32.Foundation.PWSTR */,
-  TargetPath: string | null /* Windows.Win32.Foundation.PWSTR */,
-  TargetFilename: string | null /* Windows.Win32.Foundation.PWSTR */,
+  SourcePath: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  SourceFilename: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  TargetPath: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  TargetFilename: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libSETUPAPI_dll.SetupQueueRenameW(util.toPointer(QueueHandle), util.pwstrToFfi(SourcePath), util.pwstrToFfi(SourceFilename), util.pwstrToFfi(TargetPath), util.pwstrToFfi(TargetFilename)));
 }
@@ -8746,7 +8746,7 @@ export function SetupQueueRenameSectionA(
   QueueHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
   InfHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
   ListInfHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
-  Section: string | null /* Windows.Win32.Foundation.PSTR */,
+  Section: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libSETUPAPI_dll.SetupQueueRenameSectionA(util.toPointer(QueueHandle), util.toPointer(InfHandle), util.toPointer(ListInfHandle), util.pstrToFfi(Section)));
 }
@@ -8755,7 +8755,7 @@ export function SetupQueueRenameSectionW(
   QueueHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
   InfHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
   ListInfHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
-  Section: string | null /* Windows.Win32.Foundation.PWSTR */,
+  Section: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libSETUPAPI_dll.SetupQueueRenameSectionW(util.toPointer(QueueHandle), util.toPointer(InfHandle), util.toPointer(ListInfHandle), util.pwstrToFfi(Section)));
 }
@@ -8824,11 +8824,11 @@ export function SetupSetFileQueueFlags(
 }
 
 export function SetupCopyOEMInfA(
-  SourceInfFileName: string | null /* Windows.Win32.Foundation.PSTR */,
-  OEMSourceMediaLocation: string | null /* Windows.Win32.Foundation.PSTR */,
+  SourceInfFileName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  OEMSourceMediaLocation: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   OEMSourceMediaType: OEM_SOURCE_MEDIA_TYPE /* Windows.Win32.Devices.DeviceAndDriverInstallation.OEM_SOURCE_MEDIA_TYPE */,
   CopyStyle: number /* u32 */,
-  DestinationInfFileName: string | null /* Windows.Win32.Foundation.PSTR */,
+  DestinationInfFileName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   DestinationInfFileNameSize: number /* u32 */,
   RequiredSize: Deno.PointerValue | Uint8Array | null /* ptr */,
   DestinationInfFileNameComponent: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -8837,11 +8837,11 @@ export function SetupCopyOEMInfA(
 }
 
 export function SetupCopyOEMInfW(
-  SourceInfFileName: string | null /* Windows.Win32.Foundation.PWSTR */,
-  OEMSourceMediaLocation: string | null /* Windows.Win32.Foundation.PWSTR */,
+  SourceInfFileName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  OEMSourceMediaLocation: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   OEMSourceMediaType: OEM_SOURCE_MEDIA_TYPE /* Windows.Win32.Devices.DeviceAndDriverInstallation.OEM_SOURCE_MEDIA_TYPE */,
   CopyStyle: number /* u32 */,
-  DestinationInfFileName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  DestinationInfFileName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   DestinationInfFileNameSize: number /* u32 */,
   RequiredSize: Deno.PointerValue | Uint8Array | null /* ptr */,
   DestinationInfFileNameComponent: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -8850,7 +8850,7 @@ export function SetupCopyOEMInfW(
 }
 
 export function SetupUninstallOEMInfA(
-  InfFileName: string | null /* Windows.Win32.Foundation.PSTR */,
+  InfFileName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   Flags: number /* u32 */,
   Reserved: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
@@ -8858,7 +8858,7 @@ export function SetupUninstallOEMInfA(
 }
 
 export function SetupUninstallOEMInfW(
-  InfFileName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  InfFileName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   Flags: number /* u32 */,
   Reserved: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
@@ -8915,7 +8915,7 @@ export function SetupDestroyDiskSpaceList(
 
 export function SetupQueryDrivesInDiskSpaceListA(
   DiskSpace: Deno.PointerValue | Uint8Array | null /* ptr */,
-  ReturnBuffer: string | null /* Windows.Win32.Foundation.PSTR */,
+  ReturnBuffer: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   ReturnBufferSize: number /* u32 */,
   RequiredSize: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
@@ -8924,7 +8924,7 @@ export function SetupQueryDrivesInDiskSpaceListA(
 
 export function SetupQueryDrivesInDiskSpaceListW(
   DiskSpace: Deno.PointerValue | Uint8Array | null /* ptr */,
-  ReturnBuffer: string | null /* Windows.Win32.Foundation.PWSTR */,
+  ReturnBuffer: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   ReturnBufferSize: number /* u32 */,
   RequiredSize: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
@@ -8933,7 +8933,7 @@ export function SetupQueryDrivesInDiskSpaceListW(
 
 export function SetupQuerySpaceRequiredOnDriveA(
   DiskSpace: Deno.PointerValue | Uint8Array | null /* ptr */,
-  DriveSpec: string | null /* Windows.Win32.Foundation.PSTR */,
+  DriveSpec: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   SpaceRequired: Deno.PointerValue | Uint8Array | null /* ptr */,
   Reserved1: Deno.PointerValue | Uint8Array | null /* ptr */,
   Reserved2: number /* u32 */,
@@ -8943,7 +8943,7 @@ export function SetupQuerySpaceRequiredOnDriveA(
 
 export function SetupQuerySpaceRequiredOnDriveW(
   DiskSpace: Deno.PointerValue | Uint8Array | null /* ptr */,
-  DriveSpec: string | null /* Windows.Win32.Foundation.PWSTR */,
+  DriveSpec: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   SpaceRequired: Deno.PointerValue | Uint8Array | null /* ptr */,
   Reserved1: Deno.PointerValue | Uint8Array | null /* ptr */,
   Reserved2: number /* u32 */,
@@ -8953,7 +8953,7 @@ export function SetupQuerySpaceRequiredOnDriveW(
 
 export function SetupAdjustDiskSpaceListA(
   DiskSpace: Deno.PointerValue | Uint8Array | null /* ptr */,
-  DriveRoot: string | null /* Windows.Win32.Foundation.PSTR */,
+  DriveRoot: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   Amount: Deno.PointerValue /* i64 */,
   Reserved1: Deno.PointerValue | Uint8Array | null /* ptr */,
   Reserved2: number /* u32 */,
@@ -8963,7 +8963,7 @@ export function SetupAdjustDiskSpaceListA(
 
 export function SetupAdjustDiskSpaceListW(
   DiskSpace: Deno.PointerValue | Uint8Array | null /* ptr */,
-  DriveRoot: string | null /* Windows.Win32.Foundation.PWSTR */,
+  DriveRoot: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   Amount: Deno.PointerValue /* i64 */,
   Reserved1: Deno.PointerValue | Uint8Array | null /* ptr */,
   Reserved2: number /* u32 */,
@@ -8973,7 +8973,7 @@ export function SetupAdjustDiskSpaceListW(
 
 export function SetupAddToDiskSpaceListA(
   DiskSpace: Deno.PointerValue | Uint8Array | null /* ptr */,
-  TargetFilespec: string | null /* Windows.Win32.Foundation.PSTR */,
+  TargetFilespec: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   FileSize: Deno.PointerValue /* i64 */,
   Operation: SETUP_FILE_OPERATION /* Windows.Win32.Devices.DeviceAndDriverInstallation.SETUP_FILE_OPERATION */,
   Reserved1: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -8984,7 +8984,7 @@ export function SetupAddToDiskSpaceListA(
 
 export function SetupAddToDiskSpaceListW(
   DiskSpace: Deno.PointerValue | Uint8Array | null /* ptr */,
-  TargetFilespec: string | null /* Windows.Win32.Foundation.PWSTR */,
+  TargetFilespec: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   FileSize: Deno.PointerValue /* i64 */,
   Operation: SETUP_FILE_OPERATION /* Windows.Win32.Devices.DeviceAndDriverInstallation.SETUP_FILE_OPERATION */,
   Reserved1: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -8997,7 +8997,7 @@ export function SetupAddSectionToDiskSpaceListA(
   DiskSpace: Deno.PointerValue | Uint8Array | null /* ptr */,
   InfHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
   ListInfHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
-  SectionName: string | null /* Windows.Win32.Foundation.PSTR */,
+  SectionName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   Operation: SETUP_FILE_OPERATION /* Windows.Win32.Devices.DeviceAndDriverInstallation.SETUP_FILE_OPERATION */,
   Reserved1: Deno.PointerValue | Uint8Array | null /* ptr */,
   Reserved2: number /* u32 */,
@@ -9009,7 +9009,7 @@ export function SetupAddSectionToDiskSpaceListW(
   DiskSpace: Deno.PointerValue | Uint8Array | null /* ptr */,
   InfHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
   ListInfHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
-  SectionName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  SectionName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   Operation: SETUP_FILE_OPERATION /* Windows.Win32.Devices.DeviceAndDriverInstallation.SETUP_FILE_OPERATION */,
   Reserved1: Deno.PointerValue | Uint8Array | null /* ptr */,
   Reserved2: number /* u32 */,
@@ -9021,7 +9021,7 @@ export function SetupAddInstallSectionToDiskSpaceListA(
   DiskSpace: Deno.PointerValue | Uint8Array | null /* ptr */,
   InfHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
   LayoutInfHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
-  SectionName: string | null /* Windows.Win32.Foundation.PSTR */,
+  SectionName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   Reserved1: Deno.PointerValue | Uint8Array | null /* ptr */,
   Reserved2: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
@@ -9032,7 +9032,7 @@ export function SetupAddInstallSectionToDiskSpaceListW(
   DiskSpace: Deno.PointerValue | Uint8Array | null /* ptr */,
   InfHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
   LayoutInfHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
-  SectionName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  SectionName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   Reserved1: Deno.PointerValue | Uint8Array | null /* ptr */,
   Reserved2: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
@@ -9041,7 +9041,7 @@ export function SetupAddInstallSectionToDiskSpaceListW(
 
 export function SetupRemoveFromDiskSpaceListA(
   DiskSpace: Deno.PointerValue | Uint8Array | null /* ptr */,
-  TargetFilespec: string | null /* Windows.Win32.Foundation.PSTR */,
+  TargetFilespec: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   Operation: SETUP_FILE_OPERATION /* Windows.Win32.Devices.DeviceAndDriverInstallation.SETUP_FILE_OPERATION */,
   Reserved1: Deno.PointerValue | Uint8Array | null /* ptr */,
   Reserved2: number /* u32 */,
@@ -9051,7 +9051,7 @@ export function SetupRemoveFromDiskSpaceListA(
 
 export function SetupRemoveFromDiskSpaceListW(
   DiskSpace: Deno.PointerValue | Uint8Array | null /* ptr */,
-  TargetFilespec: string | null /* Windows.Win32.Foundation.PWSTR */,
+  TargetFilespec: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   Operation: SETUP_FILE_OPERATION /* Windows.Win32.Devices.DeviceAndDriverInstallation.SETUP_FILE_OPERATION */,
   Reserved1: Deno.PointerValue | Uint8Array | null /* ptr */,
   Reserved2: number /* u32 */,
@@ -9063,7 +9063,7 @@ export function SetupRemoveSectionFromDiskSpaceListA(
   DiskSpace: Deno.PointerValue | Uint8Array | null /* ptr */,
   InfHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
   ListInfHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
-  SectionName: string | null /* Windows.Win32.Foundation.PSTR */,
+  SectionName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   Operation: SETUP_FILE_OPERATION /* Windows.Win32.Devices.DeviceAndDriverInstallation.SETUP_FILE_OPERATION */,
   Reserved1: Deno.PointerValue | Uint8Array | null /* ptr */,
   Reserved2: number /* u32 */,
@@ -9075,7 +9075,7 @@ export function SetupRemoveSectionFromDiskSpaceListW(
   DiskSpace: Deno.PointerValue | Uint8Array | null /* ptr */,
   InfHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
   ListInfHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
-  SectionName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  SectionName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   Operation: SETUP_FILE_OPERATION /* Windows.Win32.Devices.DeviceAndDriverInstallation.SETUP_FILE_OPERATION */,
   Reserved1: Deno.PointerValue | Uint8Array | null /* ptr */,
   Reserved2: number /* u32 */,
@@ -9087,7 +9087,7 @@ export function SetupRemoveInstallSectionFromDiskSpaceListA(
   DiskSpace: Deno.PointerValue | Uint8Array | null /* ptr */,
   InfHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
   LayoutInfHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
-  SectionName: string | null /* Windows.Win32.Foundation.PSTR */,
+  SectionName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   Reserved1: Deno.PointerValue | Uint8Array | null /* ptr */,
   Reserved2: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
@@ -9098,7 +9098,7 @@ export function SetupRemoveInstallSectionFromDiskSpaceListW(
   DiskSpace: Deno.PointerValue | Uint8Array | null /* ptr */,
   InfHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
   LayoutInfHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
-  SectionName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  SectionName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   Reserved1: Deno.PointerValue | Uint8Array | null /* ptr */,
   Reserved2: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
@@ -9106,7 +9106,7 @@ export function SetupRemoveInstallSectionFromDiskSpaceListW(
 }
 
 export function SetupIterateCabinetA(
-  CabinetFile: string | null /* Windows.Win32.Foundation.PSTR */,
+  CabinetFile: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   Reserved: number /* u32 */,
   MsgHandler: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.DeviceAndDriverInstallation.PSP_FILE_CALLBACK_A */,
   Context: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -9115,7 +9115,7 @@ export function SetupIterateCabinetA(
 }
 
 export function SetupIterateCabinetW(
-  CabinetFile: string | null /* Windows.Win32.Foundation.PWSTR */,
+  CabinetFile: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   Reserved: number /* u32 */,
   MsgHandler: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.DeviceAndDriverInstallation.PSP_FILE_CALLBACK_W */,
   Context: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -9174,10 +9174,10 @@ export function SetupDefaultQueueCallbackW(
 export function SetupInstallFromInfSectionA(
   Owner: Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */,
   InfHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
-  SectionName: string | null /* Windows.Win32.Foundation.PSTR */,
+  SectionName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   Flags: number /* u32 */,
   RelativeKeyRoot: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Registry.HKEY */,
-  SourceRootPath: string | null /* Windows.Win32.Foundation.PSTR */,
+  SourceRootPath: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   CopyFlags: number /* u32 */,
   MsgHandler: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.DeviceAndDriverInstallation.PSP_FILE_CALLBACK_A */,
   Context: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -9190,10 +9190,10 @@ export function SetupInstallFromInfSectionA(
 export function SetupInstallFromInfSectionW(
   Owner: Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */,
   InfHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
-  SectionName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  SectionName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   Flags: number /* u32 */,
   RelativeKeyRoot: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Registry.HKEY */,
-  SourceRootPath: string | null /* Windows.Win32.Foundation.PWSTR */,
+  SourceRootPath: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   CopyFlags: number /* u32 */,
   MsgHandler: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.DeviceAndDriverInstallation.PSP_FILE_CALLBACK_W */,
   Context: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -9207,8 +9207,8 @@ export function SetupInstallFilesFromInfSectionA(
   InfHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
   LayoutInfHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
   FileQueue: Deno.PointerValue | Uint8Array | null /* ptr */,
-  SectionName: string | null /* Windows.Win32.Foundation.PSTR */,
-  SourceRootPath: string | null /* Windows.Win32.Foundation.PSTR */,
+  SectionName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  SourceRootPath: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   CopyFlags: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libSETUPAPI_dll.SetupInstallFilesFromInfSectionA(util.toPointer(InfHandle), util.toPointer(LayoutInfHandle), util.toPointer(FileQueue), util.pstrToFfi(SectionName), util.pstrToFfi(SourceRootPath), CopyFlags));
@@ -9218,8 +9218,8 @@ export function SetupInstallFilesFromInfSectionW(
   InfHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
   LayoutInfHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
   FileQueue: Deno.PointerValue | Uint8Array | null /* ptr */,
-  SectionName: string | null /* Windows.Win32.Foundation.PWSTR */,
-  SourceRootPath: string | null /* Windows.Win32.Foundation.PWSTR */,
+  SectionName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  SourceRootPath: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   CopyFlags: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libSETUPAPI_dll.SetupInstallFilesFromInfSectionW(util.toPointer(InfHandle), util.toPointer(LayoutInfHandle), util.toPointer(FileQueue), util.pwstrToFfi(SectionName), util.pwstrToFfi(SourceRootPath), CopyFlags));
@@ -9227,7 +9227,7 @@ export function SetupInstallFilesFromInfSectionW(
 
 export function SetupInstallServicesFromInfSectionA(
   InfHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
-  SectionName: string | null /* Windows.Win32.Foundation.PSTR */,
+  SectionName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   Flags: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libSETUPAPI_dll.SetupInstallServicesFromInfSectionA(util.toPointer(InfHandle), util.pstrToFfi(SectionName), Flags));
@@ -9235,7 +9235,7 @@ export function SetupInstallServicesFromInfSectionA(
 
 export function SetupInstallServicesFromInfSectionW(
   InfHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
-  SectionName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  SectionName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   Flags: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libSETUPAPI_dll.SetupInstallServicesFromInfSectionW(util.toPointer(InfHandle), util.pwstrToFfi(SectionName), Flags));
@@ -9243,7 +9243,7 @@ export function SetupInstallServicesFromInfSectionW(
 
 export function SetupInstallServicesFromInfSectionExA(
   InfHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
-  SectionName: string | null /* Windows.Win32.Foundation.PSTR */,
+  SectionName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   Flags: number /* u32 */,
   DeviceInfoSet: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.DeviceAndDriverInstallation.HDEVINFO */,
   DeviceInfoData: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -9255,7 +9255,7 @@ export function SetupInstallServicesFromInfSectionExA(
 
 export function SetupInstallServicesFromInfSectionExW(
   InfHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
-  SectionName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  SectionName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   Flags: number /* u32 */,
   DeviceInfoSet: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.DeviceAndDriverInstallation.HDEVINFO */,
   DeviceInfoData: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -9268,7 +9268,7 @@ export function SetupInstallServicesFromInfSectionExW(
 export function InstallHinfSectionA(
   Window: Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */,
   ModuleHandle: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HINSTANCE */,
-  CommandLine: string | null /* Windows.Win32.Foundation.PSTR */,
+  CommandLine: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   ShowCommand: number /* i32 */,
 ): void /* void */ {
   return libSETUPAPI_dll.InstallHinfSectionA(util.hwndToFfi(Window), util.toPointer(ModuleHandle), util.pstrToFfi(CommandLine), ShowCommand);
@@ -9277,21 +9277,21 @@ export function InstallHinfSectionA(
 export function InstallHinfSectionW(
   Window: Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */,
   ModuleHandle: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HINSTANCE */,
-  CommandLine: string | null /* Windows.Win32.Foundation.PWSTR */,
+  CommandLine: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   ShowCommand: number /* i32 */,
 ): void /* void */ {
   return libSETUPAPI_dll.InstallHinfSectionW(util.hwndToFfi(Window), util.toPointer(ModuleHandle), util.pwstrToFfi(CommandLine), ShowCommand);
 }
 
 export function SetupInitializeFileLogA(
-  LogFileName: string | null /* Windows.Win32.Foundation.PSTR */,
+  LogFileName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   Flags: number /* u32 */,
 ): Deno.PointerValue | null /* ptr */ {
   return util.pointerFromFfi(libSETUPAPI_dll.SetupInitializeFileLogA(util.pstrToFfi(LogFileName), Flags));
 }
 
 export function SetupInitializeFileLogW(
-  LogFileName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  LogFileName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   Flags: number /* u32 */,
 ): Deno.PointerValue | null /* ptr */ {
   return util.pointerFromFfi(libSETUPAPI_dll.SetupInitializeFileLogW(util.pwstrToFfi(LogFileName), Flags));
@@ -9305,13 +9305,13 @@ export function SetupTerminateFileLog(
 
 export function SetupLogFileA(
   FileLogHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
-  LogSectionName: string | null /* Windows.Win32.Foundation.PSTR */,
-  SourceFilename: string | null /* Windows.Win32.Foundation.PSTR */,
-  TargetFilename: string | null /* Windows.Win32.Foundation.PSTR */,
+  LogSectionName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  SourceFilename: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  TargetFilename: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   Checksum: number /* u32 */,
-  DiskTagfile: string | null /* Windows.Win32.Foundation.PSTR */,
-  DiskDescription: string | null /* Windows.Win32.Foundation.PSTR */,
-  OtherInfo: string | null /* Windows.Win32.Foundation.PSTR */,
+  DiskTagfile: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  DiskDescription: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  OtherInfo: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   Flags: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libSETUPAPI_dll.SetupLogFileA(util.toPointer(FileLogHandle), util.pstrToFfi(LogSectionName), util.pstrToFfi(SourceFilename), util.pstrToFfi(TargetFilename), Checksum, util.pstrToFfi(DiskTagfile), util.pstrToFfi(DiskDescription), util.pstrToFfi(OtherInfo), Flags));
@@ -9319,13 +9319,13 @@ export function SetupLogFileA(
 
 export function SetupLogFileW(
   FileLogHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
-  LogSectionName: string | null /* Windows.Win32.Foundation.PWSTR */,
-  SourceFilename: string | null /* Windows.Win32.Foundation.PWSTR */,
-  TargetFilename: string | null /* Windows.Win32.Foundation.PWSTR */,
+  LogSectionName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  SourceFilename: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  TargetFilename: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   Checksum: number /* u32 */,
-  DiskTagfile: string | null /* Windows.Win32.Foundation.PWSTR */,
-  DiskDescription: string | null /* Windows.Win32.Foundation.PWSTR */,
-  OtherInfo: string | null /* Windows.Win32.Foundation.PWSTR */,
+  DiskTagfile: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  DiskDescription: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  OtherInfo: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   Flags: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libSETUPAPI_dll.SetupLogFileW(util.toPointer(FileLogHandle), util.pwstrToFfi(LogSectionName), util.pwstrToFfi(SourceFilename), util.pwstrToFfi(TargetFilename), Checksum, util.pwstrToFfi(DiskTagfile), util.pwstrToFfi(DiskDescription), util.pwstrToFfi(OtherInfo), Flags));
@@ -9333,26 +9333,26 @@ export function SetupLogFileW(
 
 export function SetupRemoveFileLogEntryA(
   FileLogHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
-  LogSectionName: string | null /* Windows.Win32.Foundation.PSTR */,
-  TargetFilename: string | null /* Windows.Win32.Foundation.PSTR */,
+  LogSectionName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  TargetFilename: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libSETUPAPI_dll.SetupRemoveFileLogEntryA(util.toPointer(FileLogHandle), util.pstrToFfi(LogSectionName), util.pstrToFfi(TargetFilename)));
 }
 
 export function SetupRemoveFileLogEntryW(
   FileLogHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
-  LogSectionName: string | null /* Windows.Win32.Foundation.PWSTR */,
-  TargetFilename: string | null /* Windows.Win32.Foundation.PWSTR */,
+  LogSectionName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  TargetFilename: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libSETUPAPI_dll.SetupRemoveFileLogEntryW(util.toPointer(FileLogHandle), util.pwstrToFfi(LogSectionName), util.pwstrToFfi(TargetFilename)));
 }
 
 export function SetupQueryFileLogA(
   FileLogHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
-  LogSectionName: string | null /* Windows.Win32.Foundation.PSTR */,
-  TargetFilename: string | null /* Windows.Win32.Foundation.PSTR */,
+  LogSectionName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  TargetFilename: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   DesiredInfo: SetupFileLogInfo /* Windows.Win32.Devices.DeviceAndDriverInstallation.SetupFileLogInfo */,
-  DataOut: string | null /* Windows.Win32.Foundation.PSTR */,
+  DataOut: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   ReturnBufferSize: number /* u32 */,
   RequiredSize: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
@@ -9361,10 +9361,10 @@ export function SetupQueryFileLogA(
 
 export function SetupQueryFileLogW(
   FileLogHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
-  LogSectionName: string | null /* Windows.Win32.Foundation.PWSTR */,
-  TargetFilename: string | null /* Windows.Win32.Foundation.PWSTR */,
+  LogSectionName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  TargetFilename: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   DesiredInfo: SetupFileLogInfo /* Windows.Win32.Devices.DeviceAndDriverInstallation.SetupFileLogInfo */,
-  DataOut: string | null /* Windows.Win32.Foundation.PWSTR */,
+  DataOut: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   ReturnBufferSize: number /* u32 */,
   RequiredSize: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
@@ -9378,14 +9378,14 @@ export function SetupOpenLog(
 }
 
 export function SetupLogErrorA(
-  MessageString: string | null /* Windows.Win32.Foundation.PSTR */,
+  MessageString: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   Severity: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libSETUPAPI_dll.SetupLogErrorA(util.pstrToFfi(MessageString), Severity));
 }
 
 export function SetupLogErrorW(
-  MessageString: string | null /* Windows.Win32.Foundation.PWSTR */,
+  MessageString: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   Severity: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libSETUPAPI_dll.SetupLogErrorW(util.pwstrToFfi(MessageString), Severity));
@@ -9409,7 +9409,7 @@ export function SetupWriteTextLog(
   LogToken: Deno.PointerValue /* u64 */,
   Category: number /* u32 */,
   Flags: number /* u32 */,
-  MessageStr: string | null /* Windows.Win32.Foundation.PSTR */,
+  MessageStr: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): void /* void */ {
   return libSETUPAPI_dll.SetupWriteTextLog(LogToken, Category, Flags, util.pstrToFfi(MessageStr));
 }
@@ -9419,7 +9419,7 @@ export function SetupWriteTextLogError(
   Category: number /* u32 */,
   LogFlags: number /* u32 */,
   Error: number /* u32 */,
-  MessageStr: string | null /* Windows.Win32.Foundation.PSTR */,
+  MessageStr: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): void /* void */ {
   return libSETUPAPI_dll.SetupWriteTextLogError(LogToken, Category, LogFlags, Error, util.pstrToFfi(MessageStr));
 }
@@ -9449,7 +9449,7 @@ export function SetupGetBackupInformationW(
 
 export function SetupPrepareQueueForRestoreA(
   QueueHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
-  BackupPath: string | null /* Windows.Win32.Foundation.PSTR */,
+  BackupPath: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   RestoreFlags: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libSETUPAPI_dll.SetupPrepareQueueForRestoreA(util.toPointer(QueueHandle), util.pstrToFfi(BackupPath), RestoreFlags));
@@ -9457,7 +9457,7 @@ export function SetupPrepareQueueForRestoreA(
 
 export function SetupPrepareQueueForRestoreW(
   QueueHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
-  BackupPath: string | null /* Windows.Win32.Foundation.PWSTR */,
+  BackupPath: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   RestoreFlags: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libSETUPAPI_dll.SetupPrepareQueueForRestoreW(util.toPointer(QueueHandle), util.pwstrToFfi(BackupPath), RestoreFlags));
@@ -9483,7 +9483,7 @@ export function SetupDiCreateDeviceInfoList(
 export function SetupDiCreateDeviceInfoListExA(
   ClassGuid: Deno.PointerValue | Uint8Array | null /* ptr */,
   hwndParent: Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */,
-  MachineName: string | null /* Windows.Win32.Foundation.PSTR */,
+  MachineName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   Reserved: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Devices.DeviceAndDriverInstallation.HDEVINFO */ {
   return util.pointerFromFfi(libSETUPAPI_dll.SetupDiCreateDeviceInfoListExA(util.toPointer(ClassGuid), util.hwndToFfi(hwndParent), util.pstrToFfi(MachineName), util.toPointer(Reserved)));
@@ -9492,7 +9492,7 @@ export function SetupDiCreateDeviceInfoListExA(
 export function SetupDiCreateDeviceInfoListExW(
   ClassGuid: Deno.PointerValue | Uint8Array | null /* ptr */,
   hwndParent: Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */,
-  MachineName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  MachineName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   Reserved: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Devices.DeviceAndDriverInstallation.HDEVINFO */ {
   return util.pointerFromFfi(libSETUPAPI_dll.SetupDiCreateDeviceInfoListExW(util.toPointer(ClassGuid), util.hwndToFfi(hwndParent), util.pwstrToFfi(MachineName), util.toPointer(Reserved)));
@@ -9521,9 +9521,9 @@ export function SetupDiGetDeviceInfoListDetailW(
 
 export function SetupDiCreateDeviceInfoA(
   DeviceInfoSet: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.DeviceAndDriverInstallation.HDEVINFO */,
-  DeviceName: string | null /* Windows.Win32.Foundation.PSTR */,
+  DeviceName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   ClassGuid: Deno.PointerValue | Uint8Array | null /* ptr */,
-  DeviceDescription: string | null /* Windows.Win32.Foundation.PSTR */,
+  DeviceDescription: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   hwndParent: Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */,
   CreationFlags: number /* u32 */,
   DeviceInfoData: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -9533,9 +9533,9 @@ export function SetupDiCreateDeviceInfoA(
 
 export function SetupDiCreateDeviceInfoW(
   DeviceInfoSet: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.DeviceAndDriverInstallation.HDEVINFO */,
-  DeviceName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  DeviceName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   ClassGuid: Deno.PointerValue | Uint8Array | null /* ptr */,
-  DeviceDescription: string | null /* Windows.Win32.Foundation.PWSTR */,
+  DeviceDescription: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   hwndParent: Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */,
   CreationFlags: number /* u32 */,
   DeviceInfoData: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -9545,7 +9545,7 @@ export function SetupDiCreateDeviceInfoW(
 
 export function SetupDiOpenDeviceInfoA(
   DeviceInfoSet: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.DeviceAndDriverInstallation.HDEVINFO */,
-  DeviceInstanceId: string | null /* Windows.Win32.Foundation.PSTR */,
+  DeviceInstanceId: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   hwndParent: Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */,
   OpenFlags: number /* u32 */,
   DeviceInfoData: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -9555,7 +9555,7 @@ export function SetupDiOpenDeviceInfoA(
 
 export function SetupDiOpenDeviceInfoW(
   DeviceInfoSet: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.DeviceAndDriverInstallation.HDEVINFO */,
-  DeviceInstanceId: string | null /* Windows.Win32.Foundation.PWSTR */,
+  DeviceInstanceId: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   hwndParent: Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */,
   OpenFlags: number /* u32 */,
   DeviceInfoData: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -9566,7 +9566,7 @@ export function SetupDiOpenDeviceInfoW(
 export function SetupDiGetDeviceInstanceIdA(
   DeviceInfoSet: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.DeviceAndDriverInstallation.HDEVINFO */,
   DeviceInfoData: Deno.PointerValue | Uint8Array | null /* ptr */,
-  DeviceInstanceId: string | null /* Windows.Win32.Foundation.PSTR */,
+  DeviceInstanceId: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   DeviceInstanceIdSize: number /* u32 */,
   RequiredSize: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
@@ -9576,7 +9576,7 @@ export function SetupDiGetDeviceInstanceIdA(
 export function SetupDiGetDeviceInstanceIdW(
   DeviceInfoSet: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.DeviceAndDriverInstallation.HDEVINFO */,
   DeviceInfoData: Deno.PointerValue | Uint8Array | null /* ptr */,
-  DeviceInstanceId: string | null /* Windows.Win32.Foundation.PWSTR */,
+  DeviceInstanceId: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   DeviceInstanceIdSize: number /* u32 */,
   RequiredSize: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
@@ -9618,7 +9618,7 @@ export function SetupDiCreateDeviceInterfaceA(
   DeviceInfoSet: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.DeviceAndDriverInstallation.HDEVINFO */,
   DeviceInfoData: Deno.PointerValue | Uint8Array | null /* ptr */,
   InterfaceClassGuid: Deno.PointerValue | Uint8Array | null /* ptr */,
-  ReferenceString: string | null /* Windows.Win32.Foundation.PSTR */,
+  ReferenceString: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   CreationFlags: number /* u32 */,
   DeviceInterfaceData: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
@@ -9629,7 +9629,7 @@ export function SetupDiCreateDeviceInterfaceW(
   DeviceInfoSet: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.DeviceAndDriverInstallation.HDEVINFO */,
   DeviceInfoData: Deno.PointerValue | Uint8Array | null /* ptr */,
   InterfaceClassGuid: Deno.PointerValue | Uint8Array | null /* ptr */,
-  ReferenceString: string | null /* Windows.Win32.Foundation.PWSTR */,
+  ReferenceString: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   CreationFlags: number /* u32 */,
   DeviceInterfaceData: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
@@ -9638,7 +9638,7 @@ export function SetupDiCreateDeviceInterfaceW(
 
 export function SetupDiOpenDeviceInterfaceA(
   DeviceInfoSet: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.DeviceAndDriverInstallation.HDEVINFO */,
-  DevicePath: string | null /* Windows.Win32.Foundation.PSTR */,
+  DevicePath: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   OpenFlags: number /* u32 */,
   DeviceInterfaceData: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
@@ -9647,7 +9647,7 @@ export function SetupDiOpenDeviceInterfaceA(
 
 export function SetupDiOpenDeviceInterfaceW(
   DeviceInfoSet: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.DeviceAndDriverInstallation.HDEVINFO */,
-  DevicePath: string | null /* Windows.Win32.Foundation.PWSTR */,
+  DevicePath: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   OpenFlags: number /* u32 */,
   DeviceInterfaceData: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
@@ -9824,7 +9824,7 @@ export function SetupDiDestroyDriverInfoList(
 
 export function SetupDiGetClassDevsA(
   ClassGuid: Deno.PointerValue | Uint8Array | null /* ptr */,
-  Enumerator: string | null /* Windows.Win32.Foundation.PSTR */,
+  Enumerator: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   hwndParent: Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */,
   Flags: number /* u32 */,
 ): Deno.PointerValue | null /* Windows.Win32.Devices.DeviceAndDriverInstallation.HDEVINFO */ {
@@ -9833,7 +9833,7 @@ export function SetupDiGetClassDevsA(
 
 export function SetupDiGetClassDevsW(
   ClassGuid: Deno.PointerValue | Uint8Array | null /* ptr */,
-  Enumerator: string | null /* Windows.Win32.Foundation.PWSTR */,
+  Enumerator: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   hwndParent: Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */,
   Flags: number /* u32 */,
 ): Deno.PointerValue | null /* Windows.Win32.Devices.DeviceAndDriverInstallation.HDEVINFO */ {
@@ -9842,11 +9842,11 @@ export function SetupDiGetClassDevsW(
 
 export function SetupDiGetClassDevsExA(
   ClassGuid: Deno.PointerValue | Uint8Array | null /* ptr */,
-  Enumerator: string | null /* Windows.Win32.Foundation.PSTR */,
+  Enumerator: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   hwndParent: Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */,
   Flags: number /* u32 */,
   DeviceInfoSet: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.DeviceAndDriverInstallation.HDEVINFO */,
-  MachineName: string | null /* Windows.Win32.Foundation.PSTR */,
+  MachineName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   Reserved: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Devices.DeviceAndDriverInstallation.HDEVINFO */ {
   return util.pointerFromFfi(libSETUPAPI_dll.SetupDiGetClassDevsExA(util.toPointer(ClassGuid), util.pstrToFfi(Enumerator), util.hwndToFfi(hwndParent), Flags, util.toPointer(DeviceInfoSet), util.pstrToFfi(MachineName), util.toPointer(Reserved)));
@@ -9854,20 +9854,20 @@ export function SetupDiGetClassDevsExA(
 
 export function SetupDiGetClassDevsExW(
   ClassGuid: Deno.PointerValue | Uint8Array | null /* ptr */,
-  Enumerator: string | null /* Windows.Win32.Foundation.PWSTR */,
+  Enumerator: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   hwndParent: Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */,
   Flags: number /* u32 */,
   DeviceInfoSet: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.DeviceAndDriverInstallation.HDEVINFO */,
-  MachineName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  MachineName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   Reserved: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Devices.DeviceAndDriverInstallation.HDEVINFO */ {
   return util.pointerFromFfi(libSETUPAPI_dll.SetupDiGetClassDevsExW(util.toPointer(ClassGuid), util.pwstrToFfi(Enumerator), util.hwndToFfi(hwndParent), Flags, util.toPointer(DeviceInfoSet), util.pwstrToFfi(MachineName), util.toPointer(Reserved)));
 }
 
 export function SetupDiGetINFClassA(
-  InfName: string | null /* Windows.Win32.Foundation.PSTR */,
+  InfName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   ClassGuid: Deno.PointerValue | Uint8Array | null /* ptr */,
-  ClassName: string | null /* Windows.Win32.Foundation.PSTR */,
+  ClassName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   ClassNameSize: number /* u32 */,
   RequiredSize: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
@@ -9875,9 +9875,9 @@ export function SetupDiGetINFClassA(
 }
 
 export function SetupDiGetINFClassW(
-  InfName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  InfName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   ClassGuid: Deno.PointerValue | Uint8Array | null /* ptr */,
-  ClassName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  ClassName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   ClassNameSize: number /* u32 */,
   RequiredSize: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
@@ -9898,7 +9898,7 @@ export function SetupDiBuildClassInfoListExA(
   ClassGuidList: Deno.PointerValue | Uint8Array | null /* ptr */,
   ClassGuidListSize: number /* u32 */,
   RequiredSize: Deno.PointerValue | Uint8Array | null /* ptr */,
-  MachineName: string | null /* Windows.Win32.Foundation.PSTR */,
+  MachineName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   Reserved: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libSETUPAPI_dll.SetupDiBuildClassInfoListExA(Flags, util.toPointer(ClassGuidList), ClassGuidListSize, util.toPointer(RequiredSize), util.pstrToFfi(MachineName), util.toPointer(Reserved)));
@@ -9909,7 +9909,7 @@ export function SetupDiBuildClassInfoListExW(
   ClassGuidList: Deno.PointerValue | Uint8Array | null /* ptr */,
   ClassGuidListSize: number /* u32 */,
   RequiredSize: Deno.PointerValue | Uint8Array | null /* ptr */,
-  MachineName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  MachineName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   Reserved: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libSETUPAPI_dll.SetupDiBuildClassInfoListExW(Flags, util.toPointer(ClassGuidList), ClassGuidListSize, util.toPointer(RequiredSize), util.pwstrToFfi(MachineName), util.toPointer(Reserved)));
@@ -9917,7 +9917,7 @@ export function SetupDiBuildClassInfoListExW(
 
 export function SetupDiGetClassDescriptionA(
   ClassGuid: Deno.PointerValue | Uint8Array | null /* ptr */,
-  ClassDescription: string | null /* Windows.Win32.Foundation.PSTR */,
+  ClassDescription: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   ClassDescriptionSize: number /* u32 */,
   RequiredSize: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
@@ -9926,7 +9926,7 @@ export function SetupDiGetClassDescriptionA(
 
 export function SetupDiGetClassDescriptionW(
   ClassGuid: Deno.PointerValue | Uint8Array | null /* ptr */,
-  ClassDescription: string | null /* Windows.Win32.Foundation.PWSTR */,
+  ClassDescription: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   ClassDescriptionSize: number /* u32 */,
   RequiredSize: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
@@ -9935,10 +9935,10 @@ export function SetupDiGetClassDescriptionW(
 
 export function SetupDiGetClassDescriptionExA(
   ClassGuid: Deno.PointerValue | Uint8Array | null /* ptr */,
-  ClassDescription: string | null /* Windows.Win32.Foundation.PSTR */,
+  ClassDescription: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   ClassDescriptionSize: number /* u32 */,
   RequiredSize: Deno.PointerValue | Uint8Array | null /* ptr */,
-  MachineName: string | null /* Windows.Win32.Foundation.PSTR */,
+  MachineName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   Reserved: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libSETUPAPI_dll.SetupDiGetClassDescriptionExA(util.toPointer(ClassGuid), util.pstrToFfi(ClassDescription), ClassDescriptionSize, util.toPointer(RequiredSize), util.pstrToFfi(MachineName), util.toPointer(Reserved)));
@@ -9946,10 +9946,10 @@ export function SetupDiGetClassDescriptionExA(
 
 export function SetupDiGetClassDescriptionExW(
   ClassGuid: Deno.PointerValue | Uint8Array | null /* ptr */,
-  ClassDescription: string | null /* Windows.Win32.Foundation.PWSTR */,
+  ClassDescription: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   ClassDescriptionSize: number /* u32 */,
   RequiredSize: Deno.PointerValue | Uint8Array | null /* ptr */,
-  MachineName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  MachineName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   Reserved: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libSETUPAPI_dll.SetupDiGetClassDescriptionExW(util.toPointer(ClassGuid), util.pwstrToFfi(ClassDescription), ClassDescriptionSize, util.toPointer(RequiredSize), util.pwstrToFfi(MachineName), util.toPointer(Reserved)));
@@ -10028,7 +10028,7 @@ export function SetupDiChangeState(
 
 export function SetupDiInstallClassA(
   hwndParent: Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */,
-  InfFileName: string | null /* Windows.Win32.Foundation.PSTR */,
+  InfFileName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   Flags: number /* u32 */,
   FileQueue: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
@@ -10037,7 +10037,7 @@ export function SetupDiInstallClassA(
 
 export function SetupDiInstallClassW(
   hwndParent: Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */,
-  InfFileName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  InfFileName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   Flags: number /* u32 */,
   FileQueue: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
@@ -10046,7 +10046,7 @@ export function SetupDiInstallClassW(
 
 export function SetupDiInstallClassExA(
   hwndParent: Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */,
-  InfFileName: string | null /* Windows.Win32.Foundation.PSTR */,
+  InfFileName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   Flags: number /* u32 */,
   FileQueue: Deno.PointerValue | Uint8Array | null /* ptr */,
   InterfaceClassGuid: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -10058,7 +10058,7 @@ export function SetupDiInstallClassExA(
 
 export function SetupDiInstallClassExW(
   hwndParent: Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */,
-  InfFileName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  InfFileName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   Flags: number /* u32 */,
   FileQueue: Deno.PointerValue | Uint8Array | null /* ptr */,
   InterfaceClassGuid: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -10079,7 +10079,7 @@ export function SetupDiOpenClassRegKeyExA(
   ClassGuid: Deno.PointerValue | Uint8Array | null /* ptr */,
   samDesired: number /* u32 */,
   Flags: number /* u32 */,
-  MachineName: string | null /* Windows.Win32.Foundation.PSTR */,
+  MachineName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   Reserved: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.System.Registry.HKEY */ {
   return util.pointerFromFfi(libSETUPAPI_dll.SetupDiOpenClassRegKeyExA(util.toPointer(ClassGuid), samDesired, Flags, util.pstrToFfi(MachineName), util.toPointer(Reserved)));
@@ -10089,7 +10089,7 @@ export function SetupDiOpenClassRegKeyExW(
   ClassGuid: Deno.PointerValue | Uint8Array | null /* ptr */,
   samDesired: number /* u32 */,
   Flags: number /* u32 */,
-  MachineName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  MachineName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   Reserved: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.System.Registry.HKEY */ {
   return util.pointerFromFfi(libSETUPAPI_dll.SetupDiOpenClassRegKeyExW(util.toPointer(ClassGuid), samDesired, Flags, util.pwstrToFfi(MachineName), util.toPointer(Reserved)));
@@ -10101,7 +10101,7 @@ export function SetupDiCreateDeviceInterfaceRegKeyA(
   Reserved: number /* u32 */,
   samDesired: number /* u32 */,
   InfHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
-  InfSectionName: string | null /* Windows.Win32.Foundation.PSTR */,
+  InfSectionName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): Deno.PointerValue | null /* Windows.Win32.System.Registry.HKEY */ {
   return util.pointerFromFfi(libSETUPAPI_dll.SetupDiCreateDeviceInterfaceRegKeyA(util.toPointer(DeviceInfoSet), util.toPointer(DeviceInterfaceData), Reserved, samDesired, util.toPointer(InfHandle), util.pstrToFfi(InfSectionName)));
 }
@@ -10112,7 +10112,7 @@ export function SetupDiCreateDeviceInterfaceRegKeyW(
   Reserved: number /* u32 */,
   samDesired: number /* u32 */,
   InfHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
-  InfSectionName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  InfSectionName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): Deno.PointerValue | null /* Windows.Win32.System.Registry.HKEY */ {
   return util.pointerFromFfi(libSETUPAPI_dll.SetupDiCreateDeviceInterfaceRegKeyW(util.toPointer(DeviceInfoSet), util.toPointer(DeviceInterfaceData), Reserved, samDesired, util.toPointer(InfHandle), util.pwstrToFfi(InfSectionName)));
 }
@@ -10141,7 +10141,7 @@ export function SetupDiCreateDevRegKeyA(
   HwProfile: number /* u32 */,
   KeyType: number /* u32 */,
   InfHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
-  InfSectionName: string | null /* Windows.Win32.Foundation.PSTR */,
+  InfSectionName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): Deno.PointerValue | null /* Windows.Win32.System.Registry.HKEY */ {
   return util.pointerFromFfi(libSETUPAPI_dll.SetupDiCreateDevRegKeyA(util.toPointer(DeviceInfoSet), util.toPointer(DeviceInfoData), Scope, HwProfile, KeyType, util.toPointer(InfHandle), util.pstrToFfi(InfSectionName)));
 }
@@ -10153,7 +10153,7 @@ export function SetupDiCreateDevRegKeyW(
   HwProfile: number /* u32 */,
   KeyType: number /* u32 */,
   InfHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
-  InfSectionName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  InfSectionName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): Deno.PointerValue | null /* Windows.Win32.System.Registry.HKEY */ {
   return util.pointerFromFfi(libSETUPAPI_dll.SetupDiCreateDevRegKeyW(util.toPointer(DeviceInfoSet), util.toPointer(DeviceInfoData), Scope, HwProfile, KeyType, util.toPointer(InfHandle), util.pwstrToFfi(InfSectionName)));
 }
@@ -10193,7 +10193,7 @@ export function SetupDiGetHwProfileListExA(
   HwProfileListSize: number /* u32 */,
   RequiredSize: Deno.PointerValue | Uint8Array | null /* ptr */,
   CurrentlyActiveIndex: Deno.PointerValue | Uint8Array | null /* ptr */,
-  MachineName: string | null /* Windows.Win32.Foundation.PSTR */,
+  MachineName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   Reserved: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libSETUPAPI_dll.SetupDiGetHwProfileListExA(util.toPointer(HwProfileList), HwProfileListSize, util.toPointer(RequiredSize), util.toPointer(CurrentlyActiveIndex), util.pstrToFfi(MachineName), util.toPointer(Reserved)));
@@ -10204,7 +10204,7 @@ export function SetupDiGetHwProfileListExW(
   HwProfileListSize: number /* u32 */,
   RequiredSize: Deno.PointerValue | Uint8Array | null /* ptr */,
   CurrentlyActiveIndex: Deno.PointerValue | Uint8Array | null /* ptr */,
-  MachineName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  MachineName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   Reserved: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libSETUPAPI_dll.SetupDiGetHwProfileListExW(util.toPointer(HwProfileList), HwProfileListSize, util.toPointer(RequiredSize), util.toPointer(CurrentlyActiveIndex), util.pwstrToFfi(MachineName), util.toPointer(Reserved)));
@@ -10298,7 +10298,7 @@ export function SetupDiGetClassPropertyKeysExW(
   PropertyKeyCount: number /* u32 */,
   RequiredPropertyKeyCount: Deno.PointerValue | Uint8Array | null /* ptr */,
   Flags: number /* u32 */,
-  MachineName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  MachineName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   Reserved: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libSETUPAPI_dll.SetupDiGetClassPropertyKeysExW(util.toPointer(ClassGuid), util.toPointer(PropertyKeyArray), PropertyKeyCount, util.toPointer(RequiredPropertyKeyCount), Flags, util.pwstrToFfi(MachineName), util.toPointer(Reserved)));
@@ -10324,7 +10324,7 @@ export function SetupDiGetClassPropertyExW(
   PropertyBufferSize: number /* u32 */,
   RequiredSize: Deno.PointerValue | Uint8Array | null /* ptr */,
   Flags: number /* u32 */,
-  MachineName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  MachineName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   Reserved: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libSETUPAPI_dll.SetupDiGetClassPropertyExW(util.toPointer(ClassGuid), util.toPointer(PropertyKey), util.toPointer(PropertyType), util.toPointer(PropertyBuffer), PropertyBufferSize, util.toPointer(RequiredSize), Flags, util.pwstrToFfi(MachineName), util.toPointer(Reserved)));
@@ -10348,7 +10348,7 @@ export function SetupDiSetClassPropertyExW(
   PropertyBuffer: Deno.PointerValue | Uint8Array | null /* ptr */,
   PropertyBufferSize: number /* u32 */,
   Flags: number /* u32 */,
-  MachineName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  MachineName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   Reserved: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libSETUPAPI_dll.SetupDiSetClassPropertyExW(util.toPointer(ClassGuid), util.toPointer(PropertyKey), PropertyType, util.toPointer(PropertyBuffer), PropertyBufferSize, Flags, util.pwstrToFfi(MachineName), util.toPointer(Reserved)));
@@ -10385,7 +10385,7 @@ export function SetupDiGetClassRegistryPropertyA(
   PropertyBuffer: Deno.PointerValue | Uint8Array | null /* ptr */,
   PropertyBufferSize: number /* u32 */,
   RequiredSize: Deno.PointerValue | Uint8Array | null /* ptr */,
-  MachineName: string | null /* Windows.Win32.Foundation.PSTR */,
+  MachineName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   Reserved: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libSETUPAPI_dll.SetupDiGetClassRegistryPropertyA(util.toPointer(ClassGuid), Property, util.toPointer(PropertyRegDataType), util.toPointer(PropertyBuffer), PropertyBufferSize, util.toPointer(RequiredSize), util.pstrToFfi(MachineName), util.toPointer(Reserved)));
@@ -10398,7 +10398,7 @@ export function SetupDiGetClassRegistryPropertyW(
   PropertyBuffer: Deno.PointerValue | Uint8Array | null /* ptr */,
   PropertyBufferSize: number /* u32 */,
   RequiredSize: Deno.PointerValue | Uint8Array | null /* ptr */,
-  MachineName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  MachineName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   Reserved: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libSETUPAPI_dll.SetupDiGetClassRegistryPropertyW(util.toPointer(ClassGuid), Property, util.toPointer(PropertyRegDataType), util.toPointer(PropertyBuffer), PropertyBufferSize, util.toPointer(RequiredSize), util.pwstrToFfi(MachineName), util.toPointer(Reserved)));
@@ -10429,7 +10429,7 @@ export function SetupDiSetClassRegistryPropertyA(
   Property: number /* u32 */,
   PropertyBuffer: Deno.PointerValue | Uint8Array | null /* ptr */,
   PropertyBufferSize: number /* u32 */,
-  MachineName: string | null /* Windows.Win32.Foundation.PSTR */,
+  MachineName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   Reserved: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libSETUPAPI_dll.SetupDiSetClassRegistryPropertyA(util.toPointer(ClassGuid), Property, util.toPointer(PropertyBuffer), PropertyBufferSize, util.pstrToFfi(MachineName), util.toPointer(Reserved)));
@@ -10440,7 +10440,7 @@ export function SetupDiSetClassRegistryPropertyW(
   Property: number /* u32 */,
   PropertyBuffer: Deno.PointerValue | Uint8Array | null /* ptr */,
   PropertyBufferSize: number /* u32 */,
-  MachineName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  MachineName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   Reserved: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libSETUPAPI_dll.SetupDiSetClassRegistryPropertyW(util.toPointer(ClassGuid), Property, util.toPointer(PropertyBuffer), PropertyBufferSize, util.pwstrToFfi(MachineName), util.toPointer(Reserved)));
@@ -10595,7 +10595,7 @@ export function SetupDiGetClassImageList(
 
 export function SetupDiGetClassImageListExA(
   ClassImageListData: Deno.PointerValue | Uint8Array | null /* ptr */,
-  MachineName: string | null /* Windows.Win32.Foundation.PSTR */,
+  MachineName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   Reserved: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libSETUPAPI_dll.SetupDiGetClassImageListExA(util.toPointer(ClassImageListData), util.pstrToFfi(MachineName), util.toPointer(Reserved)));
@@ -10603,7 +10603,7 @@ export function SetupDiGetClassImageListExA(
 
 export function SetupDiGetClassImageListExW(
   ClassImageListData: Deno.PointerValue | Uint8Array | null /* ptr */,
-  MachineName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  MachineName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   Reserved: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libSETUPAPI_dll.SetupDiGetClassImageListExW(util.toPointer(ClassImageListData), util.pwstrToFfi(MachineName), util.toPointer(Reserved)));
@@ -10662,7 +10662,7 @@ export function SetupDiSelectOEMDrv(
 
 export function SetupDiClassNameFromGuidA(
   ClassGuid: Deno.PointerValue | Uint8Array | null /* ptr */,
-  ClassName: string | null /* Windows.Win32.Foundation.PSTR */,
+  ClassName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   ClassNameSize: number /* u32 */,
   RequiredSize: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
@@ -10671,7 +10671,7 @@ export function SetupDiClassNameFromGuidA(
 
 export function SetupDiClassNameFromGuidW(
   ClassGuid: Deno.PointerValue | Uint8Array | null /* ptr */,
-  ClassName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  ClassName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   ClassNameSize: number /* u32 */,
   RequiredSize: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
@@ -10680,10 +10680,10 @@ export function SetupDiClassNameFromGuidW(
 
 export function SetupDiClassNameFromGuidExA(
   ClassGuid: Deno.PointerValue | Uint8Array | null /* ptr */,
-  ClassName: string | null /* Windows.Win32.Foundation.PSTR */,
+  ClassName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   ClassNameSize: number /* u32 */,
   RequiredSize: Deno.PointerValue | Uint8Array | null /* ptr */,
-  MachineName: string | null /* Windows.Win32.Foundation.PSTR */,
+  MachineName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   Reserved: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libSETUPAPI_dll.SetupDiClassNameFromGuidExA(util.toPointer(ClassGuid), util.pstrToFfi(ClassName), ClassNameSize, util.toPointer(RequiredSize), util.pstrToFfi(MachineName), util.toPointer(Reserved)));
@@ -10691,17 +10691,17 @@ export function SetupDiClassNameFromGuidExA(
 
 export function SetupDiClassNameFromGuidExW(
   ClassGuid: Deno.PointerValue | Uint8Array | null /* ptr */,
-  ClassName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  ClassName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   ClassNameSize: number /* u32 */,
   RequiredSize: Deno.PointerValue | Uint8Array | null /* ptr */,
-  MachineName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  MachineName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   Reserved: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libSETUPAPI_dll.SetupDiClassNameFromGuidExW(util.toPointer(ClassGuid), util.pwstrToFfi(ClassName), ClassNameSize, util.toPointer(RequiredSize), util.pwstrToFfi(MachineName), util.toPointer(Reserved)));
 }
 
 export function SetupDiClassGuidsFromNameA(
-  ClassName: string | null /* Windows.Win32.Foundation.PSTR */,
+  ClassName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   ClassGuidList: Deno.PointerValue | Uint8Array | null /* ptr */,
   ClassGuidListSize: number /* u32 */,
   RequiredSize: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -10710,7 +10710,7 @@ export function SetupDiClassGuidsFromNameA(
 }
 
 export function SetupDiClassGuidsFromNameW(
-  ClassName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  ClassName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   ClassGuidList: Deno.PointerValue | Uint8Array | null /* ptr */,
   ClassGuidListSize: number /* u32 */,
   RequiredSize: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -10719,22 +10719,22 @@ export function SetupDiClassGuidsFromNameW(
 }
 
 export function SetupDiClassGuidsFromNameExA(
-  ClassName: string | null /* Windows.Win32.Foundation.PSTR */,
+  ClassName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   ClassGuidList: Deno.PointerValue | Uint8Array | null /* ptr */,
   ClassGuidListSize: number /* u32 */,
   RequiredSize: Deno.PointerValue | Uint8Array | null /* ptr */,
-  MachineName: string | null /* Windows.Win32.Foundation.PSTR */,
+  MachineName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   Reserved: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libSETUPAPI_dll.SetupDiClassGuidsFromNameExA(util.pstrToFfi(ClassName), util.toPointer(ClassGuidList), ClassGuidListSize, util.toPointer(RequiredSize), util.pstrToFfi(MachineName), util.toPointer(Reserved)));
 }
 
 export function SetupDiClassGuidsFromNameExW(
-  ClassName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  ClassName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   ClassGuidList: Deno.PointerValue | Uint8Array | null /* ptr */,
   ClassGuidListSize: number /* u32 */,
   RequiredSize: Deno.PointerValue | Uint8Array | null /* ptr */,
-  MachineName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  MachineName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   Reserved: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libSETUPAPI_dll.SetupDiClassGuidsFromNameExW(util.pwstrToFfi(ClassName), util.toPointer(ClassGuidList), ClassGuidListSize, util.toPointer(RequiredSize), util.pwstrToFfi(MachineName), util.toPointer(Reserved)));
@@ -10742,7 +10742,7 @@ export function SetupDiClassGuidsFromNameExW(
 
 export function SetupDiGetHwProfileFriendlyNameA(
   HwProfile: number /* u32 */,
-  FriendlyName: string | null /* Windows.Win32.Foundation.PSTR */,
+  FriendlyName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   FriendlyNameSize: number /* u32 */,
   RequiredSize: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
@@ -10751,7 +10751,7 @@ export function SetupDiGetHwProfileFriendlyNameA(
 
 export function SetupDiGetHwProfileFriendlyNameW(
   HwProfile: number /* u32 */,
-  FriendlyName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  FriendlyName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   FriendlyNameSize: number /* u32 */,
   RequiredSize: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
@@ -10760,10 +10760,10 @@ export function SetupDiGetHwProfileFriendlyNameW(
 
 export function SetupDiGetHwProfileFriendlyNameExA(
   HwProfile: number /* u32 */,
-  FriendlyName: string | null /* Windows.Win32.Foundation.PSTR */,
+  FriendlyName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   FriendlyNameSize: number /* u32 */,
   RequiredSize: Deno.PointerValue | Uint8Array | null /* ptr */,
-  MachineName: string | null /* Windows.Win32.Foundation.PSTR */,
+  MachineName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   Reserved: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libSETUPAPI_dll.SetupDiGetHwProfileFriendlyNameExA(HwProfile, util.pstrToFfi(FriendlyName), FriendlyNameSize, util.toPointer(RequiredSize), util.pstrToFfi(MachineName), util.toPointer(Reserved)));
@@ -10771,10 +10771,10 @@ export function SetupDiGetHwProfileFriendlyNameExA(
 
 export function SetupDiGetHwProfileFriendlyNameExW(
   HwProfile: number /* u32 */,
-  FriendlyName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  FriendlyName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   FriendlyNameSize: number /* u32 */,
   RequiredSize: Deno.PointerValue | Uint8Array | null /* ptr */,
-  MachineName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  MachineName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   Reserved: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libSETUPAPI_dll.SetupDiGetHwProfileFriendlyNameExW(HwProfile, util.pwstrToFfi(FriendlyName), FriendlyNameSize, util.toPointer(RequiredSize), util.pwstrToFfi(MachineName), util.toPointer(Reserved)));
@@ -10807,7 +10807,7 @@ export function SetupDiSetSelectedDevice(
 export function SetupDiGetActualModelsSectionA(
   Context: Deno.PointerValue | Uint8Array | null /* ptr */,
   AlternatePlatformInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
-  InfSectionWithExt: string | null /* Windows.Win32.Foundation.PSTR */,
+  InfSectionWithExt: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   InfSectionWithExtSize: number /* u32 */,
   RequiredSize: Deno.PointerValue | Uint8Array | null /* ptr */,
   Reserved: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -10818,7 +10818,7 @@ export function SetupDiGetActualModelsSectionA(
 export function SetupDiGetActualModelsSectionW(
   Context: Deno.PointerValue | Uint8Array | null /* ptr */,
   AlternatePlatformInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
-  InfSectionWithExt: string | null /* Windows.Win32.Foundation.PWSTR */,
+  InfSectionWithExt: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   InfSectionWithExtSize: number /* u32 */,
   RequiredSize: Deno.PointerValue | Uint8Array | null /* ptr */,
   Reserved: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -10828,8 +10828,8 @@ export function SetupDiGetActualModelsSectionW(
 
 export function SetupDiGetActualSectionToInstallA(
   InfHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
-  InfSectionName: string | null /* Windows.Win32.Foundation.PSTR */,
-  InfSectionWithExt: string | null /* Windows.Win32.Foundation.PSTR */,
+  InfSectionName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  InfSectionWithExt: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   InfSectionWithExtSize: number /* u32 */,
   RequiredSize: Deno.PointerValue | Uint8Array | null /* ptr */,
   Extension: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -10839,8 +10839,8 @@ export function SetupDiGetActualSectionToInstallA(
 
 export function SetupDiGetActualSectionToInstallW(
   InfHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
-  InfSectionName: string | null /* Windows.Win32.Foundation.PWSTR */,
-  InfSectionWithExt: string | null /* Windows.Win32.Foundation.PWSTR */,
+  InfSectionName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  InfSectionWithExt: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   InfSectionWithExtSize: number /* u32 */,
   RequiredSize: Deno.PointerValue | Uint8Array | null /* ptr */,
   Extension: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -10850,9 +10850,9 @@ export function SetupDiGetActualSectionToInstallW(
 
 export function SetupDiGetActualSectionToInstallExA(
   InfHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
-  InfSectionName: string | null /* Windows.Win32.Foundation.PSTR */,
+  InfSectionName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   AlternatePlatformInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
-  InfSectionWithExt: string | null /* Windows.Win32.Foundation.PSTR */,
+  InfSectionWithExt: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   InfSectionWithExtSize: number /* u32 */,
   RequiredSize: Deno.PointerValue | Uint8Array | null /* ptr */,
   Extension: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -10863,9 +10863,9 @@ export function SetupDiGetActualSectionToInstallExA(
 
 export function SetupDiGetActualSectionToInstallExW(
   InfHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
-  InfSectionName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  InfSectionName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   AlternatePlatformInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
-  InfSectionWithExt: string | null /* Windows.Win32.Foundation.PWSTR */,
+  InfSectionWithExt: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   InfSectionWithExtSize: number /* u32 */,
   RequiredSize: Deno.PointerValue | Uint8Array | null /* ptr */,
   Extension: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -10877,7 +10877,7 @@ export function SetupDiGetActualSectionToInstallExW(
 export function SetupEnumInfSectionsA(
   InfHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
   Index: number /* u32 */,
-  Buffer: string | null /* Windows.Win32.Foundation.PSTR */,
+  Buffer: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   Size: number /* u32 */,
   SizeNeeded: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
@@ -10887,7 +10887,7 @@ export function SetupEnumInfSectionsA(
 export function SetupEnumInfSectionsW(
   InfHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
   Index: number /* u32 */,
-  Buffer: string | null /* Windows.Win32.Foundation.PWSTR */,
+  Buffer: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   Size: number /* u32 */,
   SizeNeeded: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
@@ -10895,7 +10895,7 @@ export function SetupEnumInfSectionsW(
 }
 
 export function SetupVerifyInfFileA(
-  InfName: string | null /* Windows.Win32.Foundation.PSTR */,
+  InfName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   AltPlatformInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
   InfSignerInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
@@ -10903,7 +10903,7 @@ export function SetupVerifyInfFileA(
 }
 
 export function SetupVerifyInfFileW(
-  InfName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  InfName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   AltPlatformInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
   InfSignerInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
@@ -10913,7 +10913,7 @@ export function SetupVerifyInfFileW(
 export function SetupDiGetCustomDevicePropertyA(
   DeviceInfoSet: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.DeviceAndDriverInstallation.HDEVINFO */,
   DeviceInfoData: Deno.PointerValue | Uint8Array | null /* ptr */,
-  CustomPropertyName: string | null /* Windows.Win32.Foundation.PSTR */,
+  CustomPropertyName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   Flags: number /* u32 */,
   PropertyRegDataType: Deno.PointerValue | Uint8Array | null /* ptr */,
   PropertyBuffer: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -10926,7 +10926,7 @@ export function SetupDiGetCustomDevicePropertyA(
 export function SetupDiGetCustomDevicePropertyW(
   DeviceInfoSet: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.DeviceAndDriverInstallation.HDEVINFO */,
   DeviceInfoData: Deno.PointerValue | Uint8Array | null /* ptr */,
-  CustomPropertyName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  CustomPropertyName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   Flags: number /* u32 */,
   PropertyRegDataType: Deno.PointerValue | Uint8Array | null /* ptr */,
   PropertyBuffer: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -10938,7 +10938,7 @@ export function SetupDiGetCustomDevicePropertyW(
 
 export function SetupConfigureWmiFromInfSectionA(
   InfHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
-  SectionName: string | null /* Windows.Win32.Foundation.PSTR */,
+  SectionName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   Flags: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libSETUPAPI_dll.SetupConfigureWmiFromInfSectionA(util.toPointer(InfHandle), util.pstrToFfi(SectionName), Flags));
@@ -10946,7 +10946,7 @@ export function SetupConfigureWmiFromInfSectionA(
 
 export function SetupConfigureWmiFromInfSectionW(
   InfHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
-  SectionName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  SectionName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   Flags: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libSETUPAPI_dll.SetupConfigureWmiFromInfSectionW(util.toPointer(InfHandle), util.pwstrToFfi(SectionName), Flags));
@@ -10973,7 +10973,7 @@ export function CM_Add_Empty_Log_Conf_Ex(
 
 export function CM_Add_IDA(
   dnDevInst: number /* u32 */,
-  pszID: string | null /* Windows.Win32.Foundation.PSTR */,
+  pszID: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   ulFlags: number /* u32 */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
   return libCFGMGR32_dll.CM_Add_IDA(dnDevInst, util.pstrToFfi(pszID), ulFlags);
@@ -10981,7 +10981,7 @@ export function CM_Add_IDA(
 
 export function CM_Add_IDW(
   dnDevInst: number /* u32 */,
-  pszID: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pszID: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   ulFlags: number /* u32 */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
   return libCFGMGR32_dll.CM_Add_IDW(dnDevInst, util.pwstrToFfi(pszID), ulFlags);
@@ -10989,7 +10989,7 @@ export function CM_Add_IDW(
 
 export function CM_Add_ID_ExA(
   dnDevInst: number /* u32 */,
-  pszID: string | null /* Windows.Win32.Foundation.PSTR */,
+  pszID: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   ulFlags: number /* u32 */,
   hMachine: Deno.PointerValue /* isize */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
@@ -10998,7 +10998,7 @@ export function CM_Add_ID_ExA(
 
 export function CM_Add_ID_ExW(
   dnDevInst: number /* u32 */,
-  pszID: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pszID: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   ulFlags: number /* u32 */,
   hMachine: Deno.PointerValue /* isize */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
@@ -11038,14 +11038,14 @@ export function CM_Add_Res_Des_Ex(
 }
 
 export function CM_Connect_MachineA(
-  UNCServerName: string | null /* Windows.Win32.Foundation.PSTR */,
+  UNCServerName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   phMachine: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
   return libCFGMGR32_dll.CM_Connect_MachineA(util.pstrToFfi(UNCServerName), util.toPointer(phMachine));
 }
 
 export function CM_Connect_MachineW(
-  UNCServerName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  UNCServerName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   phMachine: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
   return libCFGMGR32_dll.CM_Connect_MachineW(util.pwstrToFfi(UNCServerName), util.toPointer(phMachine));
@@ -11053,7 +11053,7 @@ export function CM_Connect_MachineW(
 
 export function CM_Create_DevNodeA(
   pdnDevInst: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pDeviceID: string | null /* Windows.Win32.Foundation.PSTR */,
+  pDeviceID: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   dnParent: number /* u32 */,
   ulFlags: number /* u32 */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
@@ -11062,7 +11062,7 @@ export function CM_Create_DevNodeA(
 
 export function CM_Create_DevNodeW(
   pdnDevInst: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pDeviceID: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pDeviceID: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   dnParent: number /* u32 */,
   ulFlags: number /* u32 */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
@@ -11071,7 +11071,7 @@ export function CM_Create_DevNodeW(
 
 export function CM_Create_DevNode_ExA(
   pdnDevInst: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pDeviceID: string | null /* Windows.Win32.Foundation.PSTR */,
+  pDeviceID: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   dnParent: number /* u32 */,
   ulFlags: number /* u32 */,
   hMachine: Deno.PointerValue /* isize */,
@@ -11081,7 +11081,7 @@ export function CM_Create_DevNode_ExA(
 
 export function CM_Create_DevNode_ExW(
   pdnDevInst: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pDeviceID: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pDeviceID: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   dnParent: number /* u32 */,
   ulFlags: number /* u32 */,
   hMachine: Deno.PointerValue /* isize */,
@@ -11223,7 +11223,7 @@ export function CM_Enumerate_Classes_Ex(
 
 export function CM_Enumerate_EnumeratorsA(
   ulEnumIndex: number /* u32 */,
-  Buffer: string | null /* Windows.Win32.Foundation.PSTR */,
+  Buffer: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   pulLength: Deno.PointerValue | Uint8Array | null /* ptr */,
   ulFlags: number /* u32 */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
@@ -11232,7 +11232,7 @@ export function CM_Enumerate_EnumeratorsA(
 
 export function CM_Enumerate_EnumeratorsW(
   ulEnumIndex: number /* u32 */,
-  Buffer: string | null /* Windows.Win32.Foundation.PWSTR */,
+  Buffer: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pulLength: Deno.PointerValue | Uint8Array | null /* ptr */,
   ulFlags: number /* u32 */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
@@ -11241,7 +11241,7 @@ export function CM_Enumerate_EnumeratorsW(
 
 export function CM_Enumerate_Enumerators_ExA(
   ulEnumIndex: number /* u32 */,
-  Buffer: string | null /* Windows.Win32.Foundation.PSTR */,
+  Buffer: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   pulLength: Deno.PointerValue | Uint8Array | null /* ptr */,
   ulFlags: number /* u32 */,
   hMachine: Deno.PointerValue /* isize */,
@@ -11251,7 +11251,7 @@ export function CM_Enumerate_Enumerators_ExA(
 
 export function CM_Enumerate_Enumerators_ExW(
   ulEnumIndex: number /* u32 */,
-  Buffer: string | null /* Windows.Win32.Foundation.PWSTR */,
+  Buffer: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pulLength: Deno.PointerValue | Uint8Array | null /* ptr */,
   ulFlags: number /* u32 */,
   hMachine: Deno.PointerValue /* isize */,
@@ -11351,7 +11351,7 @@ export function CM_Get_Child_Ex(
 
 export function CM_Get_Class_NameA(
   ClassGuid: Deno.PointerValue | Uint8Array | null /* ptr */,
-  Buffer: string | null /* Windows.Win32.Foundation.PSTR */,
+  Buffer: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   pulLength: Deno.PointerValue | Uint8Array | null /* ptr */,
   ulFlags: number /* u32 */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
@@ -11360,7 +11360,7 @@ export function CM_Get_Class_NameA(
 
 export function CM_Get_Class_NameW(
   ClassGuid: Deno.PointerValue | Uint8Array | null /* ptr */,
-  Buffer: string | null /* Windows.Win32.Foundation.PWSTR */,
+  Buffer: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pulLength: Deno.PointerValue | Uint8Array | null /* ptr */,
   ulFlags: number /* u32 */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
@@ -11369,7 +11369,7 @@ export function CM_Get_Class_NameW(
 
 export function CM_Get_Class_Name_ExA(
   ClassGuid: Deno.PointerValue | Uint8Array | null /* ptr */,
-  Buffer: string | null /* Windows.Win32.Foundation.PSTR */,
+  Buffer: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   pulLength: Deno.PointerValue | Uint8Array | null /* ptr */,
   ulFlags: number /* u32 */,
   hMachine: Deno.PointerValue /* isize */,
@@ -11379,7 +11379,7 @@ export function CM_Get_Class_Name_ExA(
 
 export function CM_Get_Class_Name_ExW(
   ClassGuid: Deno.PointerValue | Uint8Array | null /* ptr */,
-  Buffer: string | null /* Windows.Win32.Foundation.PWSTR */,
+  Buffer: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pulLength: Deno.PointerValue | Uint8Array | null /* ptr */,
   ulFlags: number /* u32 */,
   hMachine: Deno.PointerValue /* isize */,
@@ -11389,7 +11389,7 @@ export function CM_Get_Class_Name_ExW(
 
 export function CM_Get_Class_Key_NameA(
   ClassGuid: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pszKeyName: string | null /* Windows.Win32.Foundation.PSTR */,
+  pszKeyName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   pulLength: Deno.PointerValue | Uint8Array | null /* ptr */,
   ulFlags: number /* u32 */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
@@ -11398,7 +11398,7 @@ export function CM_Get_Class_Key_NameA(
 
 export function CM_Get_Class_Key_NameW(
   ClassGuid: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pszKeyName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pszKeyName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pulLength: Deno.PointerValue | Uint8Array | null /* ptr */,
   ulFlags: number /* u32 */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
@@ -11407,7 +11407,7 @@ export function CM_Get_Class_Key_NameW(
 
 export function CM_Get_Class_Key_Name_ExA(
   ClassGuid: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pszKeyName: string | null /* Windows.Win32.Foundation.PSTR */,
+  pszKeyName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   pulLength: Deno.PointerValue | Uint8Array | null /* ptr */,
   ulFlags: number /* u32 */,
   hMachine: Deno.PointerValue /* isize */,
@@ -11417,7 +11417,7 @@ export function CM_Get_Class_Key_Name_ExA(
 
 export function CM_Get_Class_Key_Name_ExW(
   ClassGuid: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pszKeyName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pszKeyName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pulLength: Deno.PointerValue | Uint8Array | null /* ptr */,
   ulFlags: number /* u32 */,
   hMachine: Deno.PointerValue /* isize */,
@@ -11444,7 +11444,7 @@ export function CM_Get_Depth_Ex(
 
 export function CM_Get_Device_IDA(
   dnDevInst: number /* u32 */,
-  Buffer: string | null /* Windows.Win32.Foundation.PSTR */,
+  Buffer: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   BufferLen: number /* u32 */,
   ulFlags: number /* u32 */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
@@ -11453,7 +11453,7 @@ export function CM_Get_Device_IDA(
 
 export function CM_Get_Device_IDW(
   dnDevInst: number /* u32 */,
-  Buffer: string | null /* Windows.Win32.Foundation.PWSTR */,
+  Buffer: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   BufferLen: number /* u32 */,
   ulFlags: number /* u32 */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
@@ -11462,7 +11462,7 @@ export function CM_Get_Device_IDW(
 
 export function CM_Get_Device_ID_ExA(
   dnDevInst: number /* u32 */,
-  Buffer: string | null /* Windows.Win32.Foundation.PSTR */,
+  Buffer: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   BufferLen: number /* u32 */,
   ulFlags: number /* u32 */,
   hMachine: Deno.PointerValue /* isize */,
@@ -11472,7 +11472,7 @@ export function CM_Get_Device_ID_ExA(
 
 export function CM_Get_Device_ID_ExW(
   dnDevInst: number /* u32 */,
-  Buffer: string | null /* Windows.Win32.Foundation.PWSTR */,
+  Buffer: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   BufferLen: number /* u32 */,
   ulFlags: number /* u32 */,
   hMachine: Deno.PointerValue /* isize */,
@@ -11481,8 +11481,8 @@ export function CM_Get_Device_ID_ExW(
 }
 
 export function CM_Get_Device_ID_ListA(
-  pszFilter: string | null /* Windows.Win32.Foundation.PSTR */,
-  Buffer: string | null /* Windows.Win32.Foundation.PSTR */,
+  pszFilter: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  Buffer: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   BufferLen: number /* u32 */,
   ulFlags: number /* u32 */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
@@ -11490,8 +11490,8 @@ export function CM_Get_Device_ID_ListA(
 }
 
 export function CM_Get_Device_ID_ListW(
-  pszFilter: string | null /* Windows.Win32.Foundation.PWSTR */,
-  Buffer: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pszFilter: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  Buffer: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   BufferLen: number /* u32 */,
   ulFlags: number /* u32 */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
@@ -11499,8 +11499,8 @@ export function CM_Get_Device_ID_ListW(
 }
 
 export function CM_Get_Device_ID_List_ExA(
-  pszFilter: string | null /* Windows.Win32.Foundation.PSTR */,
-  Buffer: string | null /* Windows.Win32.Foundation.PSTR */,
+  pszFilter: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  Buffer: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   BufferLen: number /* u32 */,
   ulFlags: number /* u32 */,
   hMachine: Deno.PointerValue /* isize */,
@@ -11509,8 +11509,8 @@ export function CM_Get_Device_ID_List_ExA(
 }
 
 export function CM_Get_Device_ID_List_ExW(
-  pszFilter: string | null /* Windows.Win32.Foundation.PWSTR */,
-  Buffer: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pszFilter: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  Buffer: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   BufferLen: number /* u32 */,
   ulFlags: number /* u32 */,
   hMachine: Deno.PointerValue /* isize */,
@@ -11520,7 +11520,7 @@ export function CM_Get_Device_ID_List_ExW(
 
 export function CM_Get_Device_ID_List_SizeA(
   pulLen: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pszFilter: string | null /* Windows.Win32.Foundation.PSTR */,
+  pszFilter: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   ulFlags: number /* u32 */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
   return libCFGMGR32_dll.CM_Get_Device_ID_List_SizeA(util.toPointer(pulLen), util.pstrToFfi(pszFilter), ulFlags);
@@ -11528,7 +11528,7 @@ export function CM_Get_Device_ID_List_SizeA(
 
 export function CM_Get_Device_ID_List_SizeW(
   pulLen: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pszFilter: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pszFilter: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   ulFlags: number /* u32 */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
   return libCFGMGR32_dll.CM_Get_Device_ID_List_SizeW(util.toPointer(pulLen), util.pwstrToFfi(pszFilter), ulFlags);
@@ -11536,7 +11536,7 @@ export function CM_Get_Device_ID_List_SizeW(
 
 export function CM_Get_Device_ID_List_Size_ExA(
   pulLen: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pszFilter: string | null /* Windows.Win32.Foundation.PSTR */,
+  pszFilter: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   ulFlags: number /* u32 */,
   hMachine: Deno.PointerValue /* isize */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
@@ -11545,7 +11545,7 @@ export function CM_Get_Device_ID_List_Size_ExA(
 
 export function CM_Get_Device_ID_List_Size_ExW(
   pulLen: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pszFilter: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pszFilter: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   ulFlags: number /* u32 */,
   hMachine: Deno.PointerValue /* isize */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
@@ -11659,7 +11659,7 @@ export function CM_Get_DevNode_Registry_Property_ExW(
 
 export function CM_Get_DevNode_Custom_PropertyA(
   dnDevInst: number /* u32 */,
-  pszCustomPropertyName: string | null /* Windows.Win32.Foundation.PSTR */,
+  pszCustomPropertyName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   pulRegDataType: Deno.PointerValue | Uint8Array | null /* ptr */,
   Buffer: Deno.PointerValue | Uint8Array | null /* ptr */,
   pulLength: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -11670,7 +11670,7 @@ export function CM_Get_DevNode_Custom_PropertyA(
 
 export function CM_Get_DevNode_Custom_PropertyW(
   dnDevInst: number /* u32 */,
-  pszCustomPropertyName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pszCustomPropertyName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pulRegDataType: Deno.PointerValue | Uint8Array | null /* ptr */,
   Buffer: Deno.PointerValue | Uint8Array | null /* ptr */,
   pulLength: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -11681,7 +11681,7 @@ export function CM_Get_DevNode_Custom_PropertyW(
 
 export function CM_Get_DevNode_Custom_Property_ExA(
   dnDevInst: number /* u32 */,
-  pszCustomPropertyName: string | null /* Windows.Win32.Foundation.PSTR */,
+  pszCustomPropertyName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   pulRegDataType: Deno.PointerValue | Uint8Array | null /* ptr */,
   Buffer: Deno.PointerValue | Uint8Array | null /* ptr */,
   pulLength: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -11693,7 +11693,7 @@ export function CM_Get_DevNode_Custom_Property_ExA(
 
 export function CM_Get_DevNode_Custom_Property_ExW(
   dnDevInst: number /* u32 */,
-  pszCustomPropertyName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pszCustomPropertyName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pulRegDataType: Deno.PointerValue | Uint8Array | null /* ptr */,
   Buffer: Deno.PointerValue | Uint8Array | null /* ptr */,
   pulLength: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -11789,7 +11789,7 @@ export function CM_Get_Hardware_Profile_Info_ExW(
 }
 
 export function CM_Get_HW_Prof_FlagsA(
-  pDeviceID: string | null /* Windows.Win32.Foundation.PSTR */,
+  pDeviceID: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   ulHardwareProfile: number /* u32 */,
   pulValue: Deno.PointerValue | Uint8Array | null /* ptr */,
   ulFlags: number /* u32 */,
@@ -11798,7 +11798,7 @@ export function CM_Get_HW_Prof_FlagsA(
 }
 
 export function CM_Get_HW_Prof_FlagsW(
-  pDeviceID: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pDeviceID: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   ulHardwareProfile: number /* u32 */,
   pulValue: Deno.PointerValue | Uint8Array | null /* ptr */,
   ulFlags: number /* u32 */,
@@ -11807,7 +11807,7 @@ export function CM_Get_HW_Prof_FlagsW(
 }
 
 export function CM_Get_HW_Prof_Flags_ExA(
-  pDeviceID: string | null /* Windows.Win32.Foundation.PSTR */,
+  pDeviceID: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   ulHardwareProfile: number /* u32 */,
   pulValue: Deno.PointerValue | Uint8Array | null /* ptr */,
   ulFlags: number /* u32 */,
@@ -11817,7 +11817,7 @@ export function CM_Get_HW_Prof_Flags_ExA(
 }
 
 export function CM_Get_HW_Prof_Flags_ExW(
-  pDeviceID: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pDeviceID: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   ulHardwareProfile: number /* u32 */,
   pulValue: Deno.PointerValue | Uint8Array | null /* ptr */,
   ulFlags: number /* u32 */,
@@ -11827,9 +11827,9 @@ export function CM_Get_HW_Prof_Flags_ExW(
 }
 
 export function CM_Get_Device_Interface_AliasA(
-  pszDeviceInterface: string | null /* Windows.Win32.Foundation.PSTR */,
+  pszDeviceInterface: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   AliasInterfaceGuid: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pszAliasDeviceInterface: string | null /* Windows.Win32.Foundation.PSTR */,
+  pszAliasDeviceInterface: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   pulLength: Deno.PointerValue | Uint8Array | null /* ptr */,
   ulFlags: number /* u32 */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
@@ -11837,9 +11837,9 @@ export function CM_Get_Device_Interface_AliasA(
 }
 
 export function CM_Get_Device_Interface_AliasW(
-  pszDeviceInterface: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pszDeviceInterface: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   AliasInterfaceGuid: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pszAliasDeviceInterface: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pszAliasDeviceInterface: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pulLength: Deno.PointerValue | Uint8Array | null /* ptr */,
   ulFlags: number /* u32 */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
@@ -11847,9 +11847,9 @@ export function CM_Get_Device_Interface_AliasW(
 }
 
 export function CM_Get_Device_Interface_Alias_ExA(
-  pszDeviceInterface: string | null /* Windows.Win32.Foundation.PSTR */,
+  pszDeviceInterface: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   AliasInterfaceGuid: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pszAliasDeviceInterface: string | null /* Windows.Win32.Foundation.PSTR */,
+  pszAliasDeviceInterface: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   pulLength: Deno.PointerValue | Uint8Array | null /* ptr */,
   ulFlags: number /* u32 */,
   hMachine: Deno.PointerValue /* isize */,
@@ -11858,9 +11858,9 @@ export function CM_Get_Device_Interface_Alias_ExA(
 }
 
 export function CM_Get_Device_Interface_Alias_ExW(
-  pszDeviceInterface: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pszDeviceInterface: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   AliasInterfaceGuid: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pszAliasDeviceInterface: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pszAliasDeviceInterface: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pulLength: Deno.PointerValue | Uint8Array | null /* ptr */,
   ulFlags: number /* u32 */,
   hMachine: Deno.PointerValue /* isize */,
@@ -11870,8 +11870,8 @@ export function CM_Get_Device_Interface_Alias_ExW(
 
 export function CM_Get_Device_Interface_ListA(
   InterfaceClassGuid: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pDeviceID: string | null /* Windows.Win32.Foundation.PSTR */,
-  Buffer: string | null /* Windows.Win32.Foundation.PSTR */,
+  pDeviceID: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  Buffer: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   BufferLen: number /* u32 */,
   ulFlags: number /* u32 */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
@@ -11880,8 +11880,8 @@ export function CM_Get_Device_Interface_ListA(
 
 export function CM_Get_Device_Interface_ListW(
   InterfaceClassGuid: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pDeviceID: string | null /* Windows.Win32.Foundation.PWSTR */,
-  Buffer: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pDeviceID: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  Buffer: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   BufferLen: number /* u32 */,
   ulFlags: number /* u32 */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
@@ -11890,8 +11890,8 @@ export function CM_Get_Device_Interface_ListW(
 
 export function CM_Get_Device_Interface_List_ExA(
   InterfaceClassGuid: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pDeviceID: string | null /* Windows.Win32.Foundation.PSTR */,
-  Buffer: string | null /* Windows.Win32.Foundation.PSTR */,
+  pDeviceID: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  Buffer: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   BufferLen: number /* u32 */,
   ulFlags: number /* u32 */,
   hMachine: Deno.PointerValue /* isize */,
@@ -11901,8 +11901,8 @@ export function CM_Get_Device_Interface_List_ExA(
 
 export function CM_Get_Device_Interface_List_ExW(
   InterfaceClassGuid: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pDeviceID: string | null /* Windows.Win32.Foundation.PWSTR */,
-  Buffer: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pDeviceID: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  Buffer: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   BufferLen: number /* u32 */,
   ulFlags: number /* u32 */,
   hMachine: Deno.PointerValue /* isize */,
@@ -11913,7 +11913,7 @@ export function CM_Get_Device_Interface_List_ExW(
 export function CM_Get_Device_Interface_List_SizeA(
   pulLen: Deno.PointerValue | Uint8Array | null /* ptr */,
   InterfaceClassGuid: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pDeviceID: string | null /* Windows.Win32.Foundation.PSTR */,
+  pDeviceID: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   ulFlags: number /* u32 */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
   return libCFGMGR32_dll.CM_Get_Device_Interface_List_SizeA(util.toPointer(pulLen), util.toPointer(InterfaceClassGuid), util.pstrToFfi(pDeviceID), ulFlags);
@@ -11922,7 +11922,7 @@ export function CM_Get_Device_Interface_List_SizeA(
 export function CM_Get_Device_Interface_List_SizeW(
   pulLen: Deno.PointerValue | Uint8Array | null /* ptr */,
   InterfaceClassGuid: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pDeviceID: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pDeviceID: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   ulFlags: number /* u32 */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
   return libCFGMGR32_dll.CM_Get_Device_Interface_List_SizeW(util.toPointer(pulLen), util.toPointer(InterfaceClassGuid), util.pwstrToFfi(pDeviceID), ulFlags);
@@ -11931,7 +11931,7 @@ export function CM_Get_Device_Interface_List_SizeW(
 export function CM_Get_Device_Interface_List_Size_ExA(
   pulLen: Deno.PointerValue | Uint8Array | null /* ptr */,
   InterfaceClassGuid: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pDeviceID: string | null /* Windows.Win32.Foundation.PSTR */,
+  pDeviceID: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   ulFlags: number /* u32 */,
   hMachine: Deno.PointerValue /* isize */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
@@ -11941,7 +11941,7 @@ export function CM_Get_Device_Interface_List_Size_ExA(
 export function CM_Get_Device_Interface_List_Size_ExW(
   pulLen: Deno.PointerValue | Uint8Array | null /* ptr */,
   InterfaceClassGuid: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pDeviceID: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pDeviceID: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   ulFlags: number /* u32 */,
   hMachine: Deno.PointerValue /* isize */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
@@ -11949,7 +11949,7 @@ export function CM_Get_Device_Interface_List_Size_ExW(
 }
 
 export function CM_Get_Device_Interface_PropertyW(
-  pszDeviceInterface: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pszDeviceInterface: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   PropertyKey: Deno.PointerValue | Uint8Array | null /* ptr */,
   PropertyType: Deno.PointerValue | Uint8Array | null /* ptr */,
   PropertyBuffer: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -11960,7 +11960,7 @@ export function CM_Get_Device_Interface_PropertyW(
 }
 
 export function CM_Get_Device_Interface_Property_ExW(
-  pszDeviceInterface: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pszDeviceInterface: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   PropertyKey: Deno.PointerValue | Uint8Array | null /* ptr */,
   PropertyType: Deno.PointerValue | Uint8Array | null /* ptr */,
   PropertyBuffer: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -11972,7 +11972,7 @@ export function CM_Get_Device_Interface_Property_ExW(
 }
 
 export function CM_Get_Device_Interface_Property_KeysW(
-  pszDeviceInterface: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pszDeviceInterface: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   PropertyKeyArray: Deno.PointerValue | Uint8Array | null /* ptr */,
   PropertyKeyCount: Deno.PointerValue | Uint8Array | null /* ptr */,
   ulFlags: number /* u32 */,
@@ -11981,7 +11981,7 @@ export function CM_Get_Device_Interface_Property_KeysW(
 }
 
 export function CM_Get_Device_Interface_Property_Keys_ExW(
-  pszDeviceInterface: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pszDeviceInterface: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   PropertyKeyArray: Deno.PointerValue | Uint8Array | null /* ptr */,
   PropertyKeyCount: Deno.PointerValue | Uint8Array | null /* ptr */,
   ulFlags: number /* u32 */,
@@ -12137,7 +12137,7 @@ export function CM_Invert_Range_List(
 
 export function CM_Locate_DevNodeA(
   pdnDevInst: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pDeviceID: string | null /* Windows.Win32.Foundation.PSTR */,
+  pDeviceID: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   ulFlags: number /* u32 */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
   return libCFGMGR32_dll.CM_Locate_DevNodeA(util.toPointer(pdnDevInst), util.pstrToFfi(pDeviceID), ulFlags);
@@ -12145,7 +12145,7 @@ export function CM_Locate_DevNodeA(
 
 export function CM_Locate_DevNodeW(
   pdnDevInst: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pDeviceID: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pDeviceID: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   ulFlags: number /* u32 */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
   return libCFGMGR32_dll.CM_Locate_DevNodeW(util.toPointer(pdnDevInst), util.pwstrToFfi(pDeviceID), ulFlags);
@@ -12153,7 +12153,7 @@ export function CM_Locate_DevNodeW(
 
 export function CM_Locate_DevNode_ExA(
   pdnDevInst: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pDeviceID: string | null /* Windows.Win32.Foundation.PSTR */,
+  pDeviceID: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   ulFlags: number /* u32 */,
   hMachine: Deno.PointerValue /* isize */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
@@ -12162,7 +12162,7 @@ export function CM_Locate_DevNode_ExA(
 
 export function CM_Locate_DevNode_ExW(
   pdnDevInst: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pDeviceID: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pDeviceID: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   ulFlags: number /* u32 */,
   hMachine: Deno.PointerValue /* isize */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
@@ -12250,7 +12250,7 @@ export function CM_Get_Next_Res_Des_Ex(
 
 export function CM_Open_Class_KeyA(
   ClassGuid: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pszClassName: string | null /* Windows.Win32.Foundation.PSTR */,
+  pszClassName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   samDesired: number /* u32 */,
   Disposition: number /* u32 */,
   phkClass: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -12261,7 +12261,7 @@ export function CM_Open_Class_KeyA(
 
 export function CM_Open_Class_KeyW(
   ClassGuid: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pszClassName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pszClassName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   samDesired: number /* u32 */,
   Disposition: number /* u32 */,
   phkClass: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -12272,7 +12272,7 @@ export function CM_Open_Class_KeyW(
 
 export function CM_Open_Class_Key_ExA(
   ClassGuid: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pszClassName: string | null /* Windows.Win32.Foundation.PSTR */,
+  pszClassName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   samDesired: number /* u32 */,
   Disposition: number /* u32 */,
   phkClass: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -12284,7 +12284,7 @@ export function CM_Open_Class_Key_ExA(
 
 export function CM_Open_Class_Key_ExW(
   ClassGuid: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pszClassName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pszClassName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   samDesired: number /* u32 */,
   Disposition: number /* u32 */,
   phkClass: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -12318,7 +12318,7 @@ export function CM_Open_DevNode_Key_Ex(
 }
 
 export function CM_Open_Device_Interface_KeyA(
-  pszDeviceInterface: string | null /* Windows.Win32.Foundation.PSTR */,
+  pszDeviceInterface: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   samDesired: number /* u32 */,
   Disposition: number /* u32 */,
   phkDeviceInterface: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -12328,7 +12328,7 @@ export function CM_Open_Device_Interface_KeyA(
 }
 
 export function CM_Open_Device_Interface_KeyW(
-  pszDeviceInterface: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pszDeviceInterface: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   samDesired: number /* u32 */,
   Disposition: number /* u32 */,
   phkDeviceInterface: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -12338,7 +12338,7 @@ export function CM_Open_Device_Interface_KeyW(
 }
 
 export function CM_Open_Device_Interface_Key_ExA(
-  pszDeviceInterface: string | null /* Windows.Win32.Foundation.PSTR */,
+  pszDeviceInterface: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   samDesired: number /* u32 */,
   Disposition: number /* u32 */,
   phkDeviceInterface: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -12349,7 +12349,7 @@ export function CM_Open_Device_Interface_Key_ExA(
 }
 
 export function CM_Open_Device_Interface_Key_ExW(
-  pszDeviceInterface: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pszDeviceInterface: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   samDesired: number /* u32 */,
   Disposition: number /* u32 */,
   phkDeviceInterface: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -12360,21 +12360,21 @@ export function CM_Open_Device_Interface_Key_ExW(
 }
 
 export function CM_Delete_Device_Interface_KeyA(
-  pszDeviceInterface: string | null /* Windows.Win32.Foundation.PSTR */,
+  pszDeviceInterface: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   ulFlags: number /* u32 */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
   return libCFGMGR32_dll.CM_Delete_Device_Interface_KeyA(util.pstrToFfi(pszDeviceInterface), ulFlags);
 }
 
 export function CM_Delete_Device_Interface_KeyW(
-  pszDeviceInterface: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pszDeviceInterface: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   ulFlags: number /* u32 */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
   return libCFGMGR32_dll.CM_Delete_Device_Interface_KeyW(util.pwstrToFfi(pszDeviceInterface), ulFlags);
 }
 
 export function CM_Delete_Device_Interface_Key_ExA(
-  pszDeviceInterface: string | null /* Windows.Win32.Foundation.PSTR */,
+  pszDeviceInterface: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   ulFlags: number /* u32 */,
   hMachine: Deno.PointerValue /* isize */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
@@ -12382,7 +12382,7 @@ export function CM_Delete_Device_Interface_Key_ExA(
 }
 
 export function CM_Delete_Device_Interface_Key_ExW(
-  pszDeviceInterface: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pszDeviceInterface: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   ulFlags: number /* u32 */,
   hMachine: Deno.PointerValue /* isize */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
@@ -12447,7 +12447,7 @@ export function CM_Query_Remove_SubTree_Ex(
 export function CM_Query_And_Remove_SubTreeA(
   dnAncestor: number /* u32 */,
   pVetoType: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pszVetoName: string | null /* Windows.Win32.Foundation.PSTR */,
+  pszVetoName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   ulNameLength: number /* u32 */,
   ulFlags: number /* u32 */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
@@ -12457,7 +12457,7 @@ export function CM_Query_And_Remove_SubTreeA(
 export function CM_Query_And_Remove_SubTreeW(
   dnAncestor: number /* u32 */,
   pVetoType: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pszVetoName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pszVetoName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   ulNameLength: number /* u32 */,
   ulFlags: number /* u32 */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
@@ -12467,7 +12467,7 @@ export function CM_Query_And_Remove_SubTreeW(
 export function CM_Query_And_Remove_SubTree_ExA(
   dnAncestor: number /* u32 */,
   pVetoType: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pszVetoName: string | null /* Windows.Win32.Foundation.PSTR */,
+  pszVetoName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   ulNameLength: number /* u32 */,
   ulFlags: number /* u32 */,
   hMachine: Deno.PointerValue /* isize */,
@@ -12478,7 +12478,7 @@ export function CM_Query_And_Remove_SubTree_ExA(
 export function CM_Query_And_Remove_SubTree_ExW(
   dnAncestor: number /* u32 */,
   pVetoType: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pszVetoName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pszVetoName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   ulNameLength: number /* u32 */,
   ulFlags: number /* u32 */,
   hMachine: Deno.PointerValue /* isize */,
@@ -12489,7 +12489,7 @@ export function CM_Query_And_Remove_SubTree_ExW(
 export function CM_Request_Device_EjectA(
   dnDevInst: number /* u32 */,
   pVetoType: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pszVetoName: string | null /* Windows.Win32.Foundation.PSTR */,
+  pszVetoName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   ulNameLength: number /* u32 */,
   ulFlags: number /* u32 */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
@@ -12499,7 +12499,7 @@ export function CM_Request_Device_EjectA(
 export function CM_Request_Device_Eject_ExA(
   dnDevInst: number /* u32 */,
   pVetoType: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pszVetoName: string | null /* Windows.Win32.Foundation.PSTR */,
+  pszVetoName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   ulNameLength: number /* u32 */,
   ulFlags: number /* u32 */,
   hMachine: Deno.PointerValue /* isize */,
@@ -12510,7 +12510,7 @@ export function CM_Request_Device_Eject_ExA(
 export function CM_Request_Device_EjectW(
   dnDevInst: number /* u32 */,
   pVetoType: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pszVetoName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pszVetoName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   ulNameLength: number /* u32 */,
   ulFlags: number /* u32 */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
@@ -12520,7 +12520,7 @@ export function CM_Request_Device_EjectW(
 export function CM_Request_Device_Eject_ExW(
   dnDevInst: number /* u32 */,
   pVetoType: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pszVetoName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pszVetoName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   ulNameLength: number /* u32 */,
   ulFlags: number /* u32 */,
   hMachine: Deno.PointerValue /* isize */,
@@ -12546,8 +12546,8 @@ export function CM_Reenumerate_DevNode_Ex(
 export function CM_Register_Device_InterfaceA(
   dnDevInst: number /* u32 */,
   InterfaceClassGuid: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pszReference: string | null /* Windows.Win32.Foundation.PSTR */,
-  pszDeviceInterface: string | null /* Windows.Win32.Foundation.PSTR */,
+  pszReference: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  pszDeviceInterface: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   pulLength: Deno.PointerValue | Uint8Array | null /* ptr */,
   ulFlags: number /* u32 */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
@@ -12557,8 +12557,8 @@ export function CM_Register_Device_InterfaceA(
 export function CM_Register_Device_InterfaceW(
   dnDevInst: number /* u32 */,
   InterfaceClassGuid: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pszReference: string | null /* Windows.Win32.Foundation.PWSTR */,
-  pszDeviceInterface: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pszReference: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  pszDeviceInterface: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pulLength: Deno.PointerValue | Uint8Array | null /* ptr */,
   ulFlags: number /* u32 */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
@@ -12568,8 +12568,8 @@ export function CM_Register_Device_InterfaceW(
 export function CM_Register_Device_Interface_ExA(
   dnDevInst: number /* u32 */,
   InterfaceClassGuid: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pszReference: string | null /* Windows.Win32.Foundation.PSTR */,
-  pszDeviceInterface: string | null /* Windows.Win32.Foundation.PSTR */,
+  pszReference: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  pszDeviceInterface: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   pulLength: Deno.PointerValue | Uint8Array | null /* ptr */,
   ulFlags: number /* u32 */,
   hMachine: Deno.PointerValue /* isize */,
@@ -12580,8 +12580,8 @@ export function CM_Register_Device_Interface_ExA(
 export function CM_Register_Device_Interface_ExW(
   dnDevInst: number /* u32 */,
   InterfaceClassGuid: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pszReference: string | null /* Windows.Win32.Foundation.PWSTR */,
-  pszDeviceInterface: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pszReference: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  pszDeviceInterface: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pulLength: Deno.PointerValue | Uint8Array | null /* ptr */,
   ulFlags: number /* u32 */,
   hMachine: Deno.PointerValue /* isize */,
@@ -12607,21 +12607,21 @@ export function CM_Set_DevNode_Problem(
 }
 
 export function CM_Unregister_Device_InterfaceA(
-  pszDeviceInterface: string | null /* Windows.Win32.Foundation.PSTR */,
+  pszDeviceInterface: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   ulFlags: number /* u32 */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
   return libCFGMGR32_dll.CM_Unregister_Device_InterfaceA(util.pstrToFfi(pszDeviceInterface), ulFlags);
 }
 
 export function CM_Unregister_Device_InterfaceW(
-  pszDeviceInterface: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pszDeviceInterface: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   ulFlags: number /* u32 */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
   return libCFGMGR32_dll.CM_Unregister_Device_InterfaceW(util.pwstrToFfi(pszDeviceInterface), ulFlags);
 }
 
 export function CM_Unregister_Device_Interface_ExA(
-  pszDeviceInterface: string | null /* Windows.Win32.Foundation.PSTR */,
+  pszDeviceInterface: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   ulFlags: number /* u32 */,
   hMachine: Deno.PointerValue /* isize */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
@@ -12629,7 +12629,7 @@ export function CM_Unregister_Device_Interface_ExA(
 }
 
 export function CM_Unregister_Device_Interface_ExW(
-  pszDeviceInterface: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pszDeviceInterface: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   ulFlags: number /* u32 */,
   hMachine: Deno.PointerValue /* isize */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
@@ -12732,7 +12732,7 @@ export function CM_Set_DevNode_Registry_Property_ExW(
 }
 
 export function CM_Set_Device_Interface_PropertyW(
-  pszDeviceInterface: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pszDeviceInterface: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   PropertyKey: Deno.PointerValue | Uint8Array | null /* ptr */,
   PropertyType: number /* u32 */,
   PropertyBuffer: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -12743,7 +12743,7 @@ export function CM_Set_Device_Interface_PropertyW(
 }
 
 export function CM_Set_Device_Interface_Property_ExW(
-  pszDeviceInterface: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pszDeviceInterface: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   PropertyKey: Deno.PointerValue | Uint8Array | null /* ptr */,
   PropertyType: number /* u32 */,
   PropertyBuffer: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -12778,7 +12778,7 @@ export function CM_Request_Eject_PC_Ex(
 }
 
 export function CM_Set_HW_Prof_FlagsA(
-  pDeviceID: string | null /* Windows.Win32.Foundation.PSTR */,
+  pDeviceID: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   ulConfig: number /* u32 */,
   ulValue: number /* u32 */,
   ulFlags: number /* u32 */,
@@ -12787,7 +12787,7 @@ export function CM_Set_HW_Prof_FlagsA(
 }
 
 export function CM_Set_HW_Prof_FlagsW(
-  pDeviceID: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pDeviceID: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   ulConfig: number /* u32 */,
   ulValue: number /* u32 */,
   ulFlags: number /* u32 */,
@@ -12796,7 +12796,7 @@ export function CM_Set_HW_Prof_FlagsW(
 }
 
 export function CM_Set_HW_Prof_Flags_ExA(
-  pDeviceID: string | null /* Windows.Win32.Foundation.PSTR */,
+  pDeviceID: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   ulConfig: number /* u32 */,
   ulValue: number /* u32 */,
   ulFlags: number /* u32 */,
@@ -12806,7 +12806,7 @@ export function CM_Set_HW_Prof_Flags_ExA(
 }
 
 export function CM_Set_HW_Prof_Flags_ExW(
-  pDeviceID: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pDeviceID: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   ulConfig: number /* u32 */,
   ulValue: number /* u32 */,
   ulFlags: number /* u32 */,
@@ -13064,8 +13064,8 @@ export function CM_MapCrToWin32Err(
 
 export function UpdateDriverForPlugAndPlayDevicesA(
   hwndParent: Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */,
-  HardwareId: string | null /* Windows.Win32.Foundation.PSTR */,
-  FullInfPath: string | null /* Windows.Win32.Foundation.PSTR */,
+  HardwareId: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  FullInfPath: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   InstallFlags: number /* u32 */,
   bRebootRequired: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
@@ -13074,8 +13074,8 @@ export function UpdateDriverForPlugAndPlayDevicesA(
 
 export function UpdateDriverForPlugAndPlayDevicesW(
   hwndParent: Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */,
-  HardwareId: string | null /* Windows.Win32.Foundation.PWSTR */,
-  FullInfPath: string | null /* Windows.Win32.Foundation.PWSTR */,
+  HardwareId: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  FullInfPath: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   InstallFlags: number /* u32 */,
   bRebootRequired: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
@@ -13095,7 +13095,7 @@ export function DiInstallDevice(
 
 export function DiInstallDriverW(
   hwndParent: Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */,
-  InfPath: string | null /* Windows.Win32.Foundation.PWSTR */,
+  InfPath: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   Flags: number /* u32 */,
   NeedReboot: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
@@ -13104,7 +13104,7 @@ export function DiInstallDriverW(
 
 export function DiInstallDriverA(
   hwndParent: Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */,
-  InfPath: string | null /* Windows.Win32.Foundation.PSTR */,
+  InfPath: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   Flags: number /* u32 */,
   NeedReboot: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
@@ -13123,7 +13123,7 @@ export function DiUninstallDevice(
 
 export function DiUninstallDriverW(
   hwndParent: Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */,
-  InfPath: string | null /* Windows.Win32.Foundation.PWSTR */,
+  InfPath: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   Flags: number /* u32 */,
   NeedReboot: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
@@ -13132,7 +13132,7 @@ export function DiUninstallDriverW(
 
 export function DiUninstallDriverA(
   hwndParent: Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */,
-  InfPath: string | null /* Windows.Win32.Foundation.PSTR */,
+  InfPath: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   Flags: number /* u32 */,
   NeedReboot: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
@@ -13161,7 +13161,7 @@ export function DiRollbackDriver(
 
 export function DiShowUpdateDriver(
   hwndParent: Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */,
-  FilePath: string | null /* Windows.Win32.Foundation.PWSTR */,
+  FilePath: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   Flags: number /* u32 */,
   NeedReboot: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {

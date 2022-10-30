@@ -98,8 +98,8 @@ try {
 // Symbols
 
 export function MSChapSrvChangePassword(
-  ServerName: string | null /* Windows.Win32.Foundation.PWSTR */,
-  UserName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  ServerName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  UserName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   LmOldPresent: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.BOOLEAN */,
   LmOldOwfPassword: Deno.PointerValue | Uint8Array | null /* ptr */,
   LmNewOwfPassword: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -110,8 +110,8 @@ export function MSChapSrvChangePassword(
 }
 
 export function MSChapSrvChangePassword2(
-  ServerName: string | null /* Windows.Win32.Foundation.PWSTR */,
-  UserName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  ServerName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  UserName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   NewPasswordEncryptedWithOldNt: Deno.PointerValue | Uint8Array | null /* ptr */,
   OldNtOwfPasswordEncryptedWithNewNt: Deno.PointerValue | Uint8Array | null /* ptr */,
   LmPresent: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.BOOLEAN */,

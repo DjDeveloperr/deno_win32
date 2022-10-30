@@ -571,8 +571,8 @@ try {
 // Symbols
 
 export function DtcGetTransactionManager(
-  i_pszHost: string | null /* Windows.Win32.Foundation.PSTR */,
-  i_pszTmName: string | null /* Windows.Win32.Foundation.PSTR */,
+  i_pszHost: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  i_pszTmName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   i_riid: Deno.PointerValue | Uint8Array | null /* ptr */,
   i_dwReserved1: number /* u32 */,
   i_wcbReserved2: number /* u16 */,
@@ -583,8 +583,8 @@ export function DtcGetTransactionManager(
 }
 
 export function DtcGetTransactionManagerC(
-  i_pszHost: string | null /* Windows.Win32.Foundation.PSTR */,
-  i_pszTmName: string | null /* Windows.Win32.Foundation.PSTR */,
+  i_pszHost: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  i_pszTmName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   i_riid: Deno.PointerValue | Uint8Array | null /* ptr */,
   i_dwReserved1: number /* u32 */,
   i_wcbReserved2: number /* u16 */,
@@ -595,8 +595,8 @@ export function DtcGetTransactionManagerC(
 }
 
 export function DtcGetTransactionManagerExA(
-  i_pszHost: string | null /* Windows.Win32.Foundation.PSTR */,
-  i_pszTmName: string | null /* Windows.Win32.Foundation.PSTR */,
+  i_pszHost: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  i_pszTmName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   i_riid: Deno.PointerValue | Uint8Array | null /* ptr */,
   i_grfOptions: number /* u32 */,
   i_pvConfigParams: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -606,8 +606,8 @@ export function DtcGetTransactionManagerExA(
 }
 
 export function DtcGetTransactionManagerExW(
-  i_pwszHost: string | null /* Windows.Win32.Foundation.PWSTR */,
-  i_pwszTmName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  i_pwszHost: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  i_pwszTmName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   i_riid: Deno.PointerValue | Uint8Array | null /* ptr */,
   i_grfOptions: number /* u32 */,
   i_pvConfigParams: Deno.PointerValue | Uint8Array | null /* ptr */,

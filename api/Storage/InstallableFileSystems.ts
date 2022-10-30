@@ -695,19 +695,19 @@ try {
 // Symbols
 
 export function FilterLoad(
-  lpFilterName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpFilterName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
   return util.pointerFromFfi(libFLTLIB_dll.FilterLoad(util.pwstrToFfi(lpFilterName)));
 }
 
 export function FilterUnload(
-  lpFilterName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpFilterName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
   return util.pointerFromFfi(libFLTLIB_dll.FilterUnload(util.pwstrToFfi(lpFilterName)));
 }
 
 export function FilterCreate(
-  lpFilterName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpFilterName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   hFilter: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
   return util.pointerFromFfi(libFLTLIB_dll.FilterCreate(util.pwstrToFfi(lpFilterName), util.toPointer(hFilter)));
@@ -720,9 +720,9 @@ export function FilterClose(
 }
 
 export function FilterInstanceCreate(
-  lpFilterName: string | null /* Windows.Win32.Foundation.PWSTR */,
-  lpVolumeName: string | null /* Windows.Win32.Foundation.PWSTR */,
-  lpInstanceName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpFilterName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  lpVolumeName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  lpInstanceName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   hInstance: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
   return util.pointerFromFfi(libFLTLIB_dll.FilterInstanceCreate(util.pwstrToFfi(lpFilterName), util.pwstrToFfi(lpVolumeName), util.pwstrToFfi(lpInstanceName), util.toPointer(hInstance)));
@@ -735,30 +735,30 @@ export function FilterInstanceClose(
 }
 
 export function FilterAttach(
-  lpFilterName: string | null /* Windows.Win32.Foundation.PWSTR */,
-  lpVolumeName: string | null /* Windows.Win32.Foundation.PWSTR */,
-  lpInstanceName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpFilterName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  lpVolumeName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  lpInstanceName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   dwCreatedInstanceNameLength: number /* u32 */,
-  lpCreatedInstanceName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpCreatedInstanceName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
   return util.pointerFromFfi(libFLTLIB_dll.FilterAttach(util.pwstrToFfi(lpFilterName), util.pwstrToFfi(lpVolumeName), util.pwstrToFfi(lpInstanceName), dwCreatedInstanceNameLength, util.pwstrToFfi(lpCreatedInstanceName)));
 }
 
 export function FilterAttachAtAltitude(
-  lpFilterName: string | null /* Windows.Win32.Foundation.PWSTR */,
-  lpVolumeName: string | null /* Windows.Win32.Foundation.PWSTR */,
-  lpAltitude: string | null /* Windows.Win32.Foundation.PWSTR */,
-  lpInstanceName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpFilterName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  lpVolumeName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  lpAltitude: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  lpInstanceName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   dwCreatedInstanceNameLength: number /* u32 */,
-  lpCreatedInstanceName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpCreatedInstanceName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
   return util.pointerFromFfi(libFLTLIB_dll.FilterAttachAtAltitude(util.pwstrToFfi(lpFilterName), util.pwstrToFfi(lpVolumeName), util.pwstrToFfi(lpAltitude), util.pwstrToFfi(lpInstanceName), dwCreatedInstanceNameLength, util.pwstrToFfi(lpCreatedInstanceName)));
 }
 
 export function FilterDetach(
-  lpFilterName: string | null /* Windows.Win32.Foundation.PWSTR */,
-  lpVolumeName: string | null /* Windows.Win32.Foundation.PWSTR */,
-  lpInstanceName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpFilterName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  lpVolumeName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  lpInstanceName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
   return util.pointerFromFfi(libFLTLIB_dll.FilterDetach(util.pwstrToFfi(lpFilterName), util.pwstrToFfi(lpVolumeName), util.pwstrToFfi(lpInstanceName)));
 }
@@ -816,7 +816,7 @@ export function FilterVolumeFindClose(
 }
 
 export function FilterInstanceFindFirst(
-  lpFilterName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpFilterName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   dwInformationClass: INSTANCE_INFORMATION_CLASS /* Windows.Win32.Storage.InstallableFileSystems.INSTANCE_INFORMATION_CLASS */,
   lpBuffer: Deno.PointerValue | Uint8Array | null /* ptr */,
   dwBufferSize: number /* u32 */,
@@ -843,7 +843,7 @@ export function FilterInstanceFindClose(
 }
 
 export function FilterVolumeInstanceFindFirst(
-  lpVolumeName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpVolumeName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   dwInformationClass: INSTANCE_INFORMATION_CLASS /* Windows.Win32.Storage.InstallableFileSystems.INSTANCE_INFORMATION_CLASS */,
   lpBuffer: Deno.PointerValue | Uint8Array | null /* ptr */,
   dwBufferSize: number /* u32 */,
@@ -890,7 +890,7 @@ export function FilterInstanceGetInformation(
 }
 
 export function FilterConnectCommunicationPort(
-  lpPortName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpPortName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   dwOptions: number /* u32 */,
   lpContext: Deno.PointerValue | Uint8Array | null /* ptr */,
   wSizeOfContext: number /* u16 */,
@@ -929,8 +929,8 @@ export function FilterReplyMessage(
 }
 
 export function FilterGetDosName(
-  lpVolumeName: string | null /* Windows.Win32.Foundation.PWSTR */,
-  lpDosName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpVolumeName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  lpDosName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   dwDosNameBufferSize: number /* u32 */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
   return util.pointerFromFfi(libFLTLIB_dll.FilterGetDosName(util.pwstrToFfi(lpVolumeName), util.pwstrToFfi(lpDosName), dwDosNameBufferSize));

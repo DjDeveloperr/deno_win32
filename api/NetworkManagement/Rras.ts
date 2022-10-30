@@ -1275,7 +1275,7 @@ export interface RASDIALPARAMSW {
   /** u32 */
   dwIfIndex: number;
   /** Windows.Win32.Foundation.PWSTR */
-  szEncPassword: string | null;
+  szEncPassword: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeofRASDIALPARAMSW = 88;
@@ -1341,7 +1341,7 @@ export interface RASDIALPARAMSA {
   /** u32 */
   dwIfIndex: number;
   /** Windows.Win32.Foundation.PSTR */
-  szEncPassword: string | null;
+  szEncPassword: string | null | Uint8Array;
 }
 
 export const sizeofRASDIALPARAMSA = 88;
@@ -2487,7 +2487,7 @@ export function allocUNLOAD_DLL_DEBUG_INFO(data?: Partial<UNLOAD_DLL_DEBUG_INFO>
  */
 export interface OUTPUT_DEBUG_STRING_INFO {
   /** Windows.Win32.Foundation.PSTR */
-  lpDebugStringData: string | null;
+  lpDebugStringData: string | null | Uint8Array;
   /** u16 */
   fUnicode: number;
   /** u16 */
@@ -4222,7 +4222,7 @@ export interface MPR_INTERFACE_1 {
   /** u32 */
   dwLastError: number;
   /** Windows.Win32.Foundation.PWSTR */
-  lpwsDialoutHoursRestriction: string | null;
+  lpwsDialoutHoursRestriction: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeofMPR_INTERFACE_1 = 48;
@@ -4276,7 +4276,7 @@ export interface MPR_INTERFACE_2 {
   /** array */
   szLocalPhoneNumber: Deno.PointerValue | null;
   /** Windows.Win32.Foundation.PWSTR */
-  szAlternates: string | null;
+  szAlternates: string | null | Uint8Array | Uint16Array;
   /** u32 */
   ipaddr: number;
   /** u32 */
@@ -4442,7 +4442,7 @@ export interface MPR_INTERFACE_3 {
   /** array */
   szLocalPhoneNumber: Deno.PointerValue | null;
   /** Windows.Win32.Foundation.PWSTR */
-  szAlternates: string | null;
+  szAlternates: string | null | Uint8Array | Uint16Array;
   /** u32 */
   ipaddr: number;
   /** u32 */
@@ -4633,7 +4633,7 @@ export interface MPR_DEVICE_1 {
   /** array */
   szLocalPhoneNumber: Deno.PointerValue | null;
   /** Windows.Win32.Foundation.PWSTR */
-  szAlternates: string | null;
+  szAlternates: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeofMPR_DEVICE_1 = 32;
@@ -6681,7 +6681,7 @@ export interface MPR_CERT_EKU {
   /** Windows.Win32.Foundation.BOOL */
   IsEKUOID: boolean;
   /** Windows.Win32.Foundation.PWSTR */
-  pwszEKU: string | null;
+  pwszEKU: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeofMPR_CERT_EKU = 16;
@@ -9397,7 +9397,7 @@ try {
 
 export function RasDialA(
   param0: Deno.PointerValue | Uint8Array | null /* ptr */,
-  param1: string | null /* Windows.Win32.Foundation.PSTR */,
+  param1: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   param2: Deno.PointerValue | Uint8Array | null /* ptr */,
   param3: number /* u32 */,
   param4: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -9408,7 +9408,7 @@ export function RasDialA(
 
 export function RasDialW(
   param0: Deno.PointerValue | Uint8Array | null /* ptr */,
-  param1: string | null /* Windows.Win32.Foundation.PWSTR */,
+  param1: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   param2: Deno.PointerValue | Uint8Array | null /* ptr */,
   param3: number /* u32 */,
   param4: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -9434,8 +9434,8 @@ export function RasEnumConnectionsW(
 }
 
 export function RasEnumEntriesA(
-  param0: string | null /* Windows.Win32.Foundation.PSTR */,
-  param1: string | null /* Windows.Win32.Foundation.PSTR */,
+  param0: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  param1: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   param2: Deno.PointerValue | Uint8Array | null /* ptr */,
   param3: Deno.PointerValue | Uint8Array | null /* ptr */,
   param4: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -9444,8 +9444,8 @@ export function RasEnumEntriesA(
 }
 
 export function RasEnumEntriesW(
-  param0: string | null /* Windows.Win32.Foundation.PWSTR */,
-  param1: string | null /* Windows.Win32.Foundation.PWSTR */,
+  param0: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  param1: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   param2: Deno.PointerValue | Uint8Array | null /* ptr */,
   param3: Deno.PointerValue | Uint8Array | null /* ptr */,
   param4: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -9469,7 +9469,7 @@ export function RasGetConnectStatusW(
 
 export function RasGetErrorStringA(
   ResourceId: number /* u32 */,
-  lpszString: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpszString: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   InBufSize: number /* u32 */,
 ): number /* u32 */ {
   return libRASAPI32_dll.RasGetErrorStringA(ResourceId, util.pstrToFfi(lpszString), InBufSize);
@@ -9477,7 +9477,7 @@ export function RasGetErrorStringA(
 
 export function RasGetErrorStringW(
   ResourceId: number /* u32 */,
-  lpszString: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpszString: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   InBufSize: number /* u32 */,
 ): number /* u32 */ {
   return libRASAPI32_dll.RasGetErrorStringW(ResourceId, util.pwstrToFfi(lpszString), InBufSize);
@@ -9515,36 +9515,36 @@ export function RasGetProjectionInfoW(
 
 export function RasCreatePhonebookEntryA(
   param0: Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */,
-  param1: string | null /* Windows.Win32.Foundation.PSTR */,
+  param1: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): number /* u32 */ {
   return libRASAPI32_dll.RasCreatePhonebookEntryA(util.hwndToFfi(param0), util.pstrToFfi(param1));
 }
 
 export function RasCreatePhonebookEntryW(
   param0: Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */,
-  param1: string | null /* Windows.Win32.Foundation.PWSTR */,
+  param1: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
   return libRASAPI32_dll.RasCreatePhonebookEntryW(util.hwndToFfi(param0), util.pwstrToFfi(param1));
 }
 
 export function RasEditPhonebookEntryA(
   param0: Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */,
-  param1: string | null /* Windows.Win32.Foundation.PSTR */,
-  param2: string | null /* Windows.Win32.Foundation.PSTR */,
+  param1: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  param2: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): number /* u32 */ {
   return libRASAPI32_dll.RasEditPhonebookEntryA(util.hwndToFfi(param0), util.pstrToFfi(param1), util.pstrToFfi(param2));
 }
 
 export function RasEditPhonebookEntryW(
   param0: Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */,
-  param1: string | null /* Windows.Win32.Foundation.PWSTR */,
-  param2: string | null /* Windows.Win32.Foundation.PWSTR */,
+  param1: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  param2: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
   return libRASAPI32_dll.RasEditPhonebookEntryW(util.hwndToFfi(param0), util.pwstrToFfi(param1), util.pwstrToFfi(param2));
 }
 
 export function RasSetEntryDialParamsA(
-  param0: string | null /* Windows.Win32.Foundation.PSTR */,
+  param0: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   param1: Deno.PointerValue | Uint8Array | null /* ptr */,
   param2: boolean /* Windows.Win32.Foundation.BOOL */,
 ): number /* u32 */ {
@@ -9552,7 +9552,7 @@ export function RasSetEntryDialParamsA(
 }
 
 export function RasSetEntryDialParamsW(
-  param0: string | null /* Windows.Win32.Foundation.PWSTR */,
+  param0: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   param1: Deno.PointerValue | Uint8Array | null /* ptr */,
   param2: boolean /* Windows.Win32.Foundation.BOOL */,
 ): number /* u32 */ {
@@ -9560,7 +9560,7 @@ export function RasSetEntryDialParamsW(
 }
 
 export function RasGetEntryDialParamsA(
-  param0: string | null /* Windows.Win32.Foundation.PSTR */,
+  param0: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   param1: Deno.PointerValue | Uint8Array | null /* ptr */,
   param2: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
@@ -9568,7 +9568,7 @@ export function RasGetEntryDialParamsA(
 }
 
 export function RasGetEntryDialParamsW(
-  param0: string | null /* Windows.Win32.Foundation.PWSTR */,
+  param0: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   param1: Deno.PointerValue | Uint8Array | null /* ptr */,
   param2: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
@@ -9606,8 +9606,8 @@ export function RasGetCountryInfoW(
 }
 
 export function RasGetEntryPropertiesA(
-  param0: string | null /* Windows.Win32.Foundation.PSTR */,
-  param1: string | null /* Windows.Win32.Foundation.PSTR */,
+  param0: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  param1: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   param2: Deno.PointerValue | Uint8Array | null /* ptr */,
   param3: Deno.PointerValue | Uint8Array | null /* ptr */,
   param4: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -9617,8 +9617,8 @@ export function RasGetEntryPropertiesA(
 }
 
 export function RasGetEntryPropertiesW(
-  param0: string | null /* Windows.Win32.Foundation.PWSTR */,
-  param1: string | null /* Windows.Win32.Foundation.PWSTR */,
+  param0: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  param1: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   param2: Deno.PointerValue | Uint8Array | null /* ptr */,
   param3: Deno.PointerValue | Uint8Array | null /* ptr */,
   param4: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -9628,8 +9628,8 @@ export function RasGetEntryPropertiesW(
 }
 
 export function RasSetEntryPropertiesA(
-  param0: string | null /* Windows.Win32.Foundation.PSTR */,
-  param1: string | null /* Windows.Win32.Foundation.PSTR */,
+  param0: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  param1: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   param2: Deno.PointerValue | Uint8Array | null /* ptr */,
   param3: number /* u32 */,
   param4: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -9639,8 +9639,8 @@ export function RasSetEntryPropertiesA(
 }
 
 export function RasSetEntryPropertiesW(
-  param0: string | null /* Windows.Win32.Foundation.PWSTR */,
-  param1: string | null /* Windows.Win32.Foundation.PWSTR */,
+  param0: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  param1: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   param2: Deno.PointerValue | Uint8Array | null /* ptr */,
   param3: number /* u32 */,
   param4: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -9650,45 +9650,45 @@ export function RasSetEntryPropertiesW(
 }
 
 export function RasRenameEntryA(
-  param0: string | null /* Windows.Win32.Foundation.PSTR */,
-  param1: string | null /* Windows.Win32.Foundation.PSTR */,
-  param2: string | null /* Windows.Win32.Foundation.PSTR */,
+  param0: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  param1: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  param2: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): number /* u32 */ {
   return libRASAPI32_dll.RasRenameEntryA(util.pstrToFfi(param0), util.pstrToFfi(param1), util.pstrToFfi(param2));
 }
 
 export function RasRenameEntryW(
-  param0: string | null /* Windows.Win32.Foundation.PWSTR */,
-  param1: string | null /* Windows.Win32.Foundation.PWSTR */,
-  param2: string | null /* Windows.Win32.Foundation.PWSTR */,
+  param0: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  param1: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  param2: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
   return libRASAPI32_dll.RasRenameEntryW(util.pwstrToFfi(param0), util.pwstrToFfi(param1), util.pwstrToFfi(param2));
 }
 
 export function RasDeleteEntryA(
-  param0: string | null /* Windows.Win32.Foundation.PSTR */,
-  param1: string | null /* Windows.Win32.Foundation.PSTR */,
+  param0: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  param1: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): number /* u32 */ {
   return libRASAPI32_dll.RasDeleteEntryA(util.pstrToFfi(param0), util.pstrToFfi(param1));
 }
 
 export function RasDeleteEntryW(
-  param0: string | null /* Windows.Win32.Foundation.PWSTR */,
-  param1: string | null /* Windows.Win32.Foundation.PWSTR */,
+  param0: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  param1: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
   return libRASAPI32_dll.RasDeleteEntryW(util.pwstrToFfi(param0), util.pwstrToFfi(param1));
 }
 
 export function RasValidateEntryNameA(
-  param0: string | null /* Windows.Win32.Foundation.PSTR */,
-  param1: string | null /* Windows.Win32.Foundation.PSTR */,
+  param0: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  param1: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): number /* u32 */ {
   return libRASAPI32_dll.RasValidateEntryNameA(util.pstrToFfi(param0), util.pstrToFfi(param1));
 }
 
 export function RasValidateEntryNameW(
-  param0: string | null /* Windows.Win32.Foundation.PWSTR */,
-  param1: string | null /* Windows.Win32.Foundation.PWSTR */,
+  param0: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  param1: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
   return libRASAPI32_dll.RasValidateEntryNameW(util.pwstrToFfi(param0), util.pwstrToFfi(param1));
 }
@@ -9726,24 +9726,24 @@ export function RasGetSubEntryHandleW(
 }
 
 export function RasGetCredentialsA(
-  param0: string | null /* Windows.Win32.Foundation.PSTR */,
-  param1: string | null /* Windows.Win32.Foundation.PSTR */,
+  param0: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  param1: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   param2: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
   return libRASAPI32_dll.RasGetCredentialsA(util.pstrToFfi(param0), util.pstrToFfi(param1), util.toPointer(param2));
 }
 
 export function RasGetCredentialsW(
-  param0: string | null /* Windows.Win32.Foundation.PWSTR */,
-  param1: string | null /* Windows.Win32.Foundation.PWSTR */,
+  param0: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  param1: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   param2: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
   return libRASAPI32_dll.RasGetCredentialsW(util.pwstrToFfi(param0), util.pwstrToFfi(param1), util.toPointer(param2));
 }
 
 export function RasSetCredentialsA(
-  param0: string | null /* Windows.Win32.Foundation.PSTR */,
-  param1: string | null /* Windows.Win32.Foundation.PSTR */,
+  param0: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  param1: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   param2: Deno.PointerValue | Uint8Array | null /* ptr */,
   param3: boolean /* Windows.Win32.Foundation.BOOL */,
 ): number /* u32 */ {
@@ -9751,8 +9751,8 @@ export function RasSetCredentialsA(
 }
 
 export function RasSetCredentialsW(
-  param0: string | null /* Windows.Win32.Foundation.PWSTR */,
-  param1: string | null /* Windows.Win32.Foundation.PWSTR */,
+  param0: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  param1: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   param2: Deno.PointerValue | Uint8Array | null /* ptr */,
   param3: boolean /* Windows.Win32.Foundation.BOOL */,
 ): number /* u32 */ {
@@ -9760,8 +9760,8 @@ export function RasSetCredentialsW(
 }
 
 export function RasGetSubEntryPropertiesA(
-  param0: string | null /* Windows.Win32.Foundation.PSTR */,
-  param1: string | null /* Windows.Win32.Foundation.PSTR */,
+  param0: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  param1: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   param2: number /* u32 */,
   param3: Deno.PointerValue | Uint8Array | null /* ptr */,
   param4: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -9772,8 +9772,8 @@ export function RasGetSubEntryPropertiesA(
 }
 
 export function RasGetSubEntryPropertiesW(
-  param0: string | null /* Windows.Win32.Foundation.PWSTR */,
-  param1: string | null /* Windows.Win32.Foundation.PWSTR */,
+  param0: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  param1: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   param2: number /* u32 */,
   param3: Deno.PointerValue | Uint8Array | null /* ptr */,
   param4: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -9784,8 +9784,8 @@ export function RasGetSubEntryPropertiesW(
 }
 
 export function RasSetSubEntryPropertiesA(
-  param0: string | null /* Windows.Win32.Foundation.PSTR */,
-  param1: string | null /* Windows.Win32.Foundation.PSTR */,
+  param0: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  param1: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   param2: number /* u32 */,
   param3: Deno.PointerValue | Uint8Array | null /* ptr */,
   param4: number /* u32 */,
@@ -9796,8 +9796,8 @@ export function RasSetSubEntryPropertiesA(
 }
 
 export function RasSetSubEntryPropertiesW(
-  param0: string | null /* Windows.Win32.Foundation.PWSTR */,
-  param1: string | null /* Windows.Win32.Foundation.PWSTR */,
+  param0: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  param1: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   param2: number /* u32 */,
   param3: Deno.PointerValue | Uint8Array | null /* ptr */,
   param4: number /* u32 */,
@@ -9808,7 +9808,7 @@ export function RasSetSubEntryPropertiesW(
 }
 
 export function RasGetAutodialAddressA(
-  param0: string | null /* Windows.Win32.Foundation.PSTR */,
+  param0: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   param1: Deno.PointerValue | Uint8Array | null /* ptr */,
   param2: Deno.PointerValue | Uint8Array | null /* ptr */,
   param3: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -9818,7 +9818,7 @@ export function RasGetAutodialAddressA(
 }
 
 export function RasGetAutodialAddressW(
-  param0: string | null /* Windows.Win32.Foundation.PWSTR */,
+  param0: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   param1: Deno.PointerValue | Uint8Array | null /* ptr */,
   param2: Deno.PointerValue | Uint8Array | null /* ptr */,
   param3: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -9828,7 +9828,7 @@ export function RasGetAutodialAddressW(
 }
 
 export function RasSetAutodialAddressA(
-  param0: string | null /* Windows.Win32.Foundation.PSTR */,
+  param0: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   param1: number /* u32 */,
   param2: Deno.PointerValue | Uint8Array | null /* ptr */,
   param3: number /* u32 */,
@@ -9838,7 +9838,7 @@ export function RasSetAutodialAddressA(
 }
 
 export function RasSetAutodialAddressW(
-  param0: string | null /* Windows.Win32.Foundation.PWSTR */,
+  param0: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   param1: number /* u32 */,
   param2: Deno.PointerValue | Uint8Array | null /* ptr */,
   param3: number /* u32 */,
@@ -9924,7 +9924,7 @@ export function RasSetAutodialParamW(
 }
 
 export function RasGetPCscf(
-  lpszPCscf: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpszPCscf: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
   return libRASAPI32_dll.RasGetPCscf(util.pwstrToFfi(lpszPCscf));
 }
@@ -9968,8 +9968,8 @@ export function RasClearConnectionStatistics(
 
 export function RasGetEapUserDataA(
   hToken: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  pszPhonebook: string | null /* Windows.Win32.Foundation.PSTR */,
-  pszEntry: string | null /* Windows.Win32.Foundation.PSTR */,
+  pszPhonebook: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  pszEntry: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   pbEapData: Deno.PointerValue | Uint8Array | null /* ptr */,
   pdwSizeofEapData: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
@@ -9978,8 +9978,8 @@ export function RasGetEapUserDataA(
 
 export function RasGetEapUserDataW(
   hToken: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  pszPhonebook: string | null /* Windows.Win32.Foundation.PWSTR */,
-  pszEntry: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pszPhonebook: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  pszEntry: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pbEapData: Deno.PointerValue | Uint8Array | null /* ptr */,
   pdwSizeofEapData: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
@@ -9988,8 +9988,8 @@ export function RasGetEapUserDataW(
 
 export function RasSetEapUserDataA(
   hToken: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  pszPhonebook: string | null /* Windows.Win32.Foundation.PSTR */,
-  pszEntry: string | null /* Windows.Win32.Foundation.PSTR */,
+  pszPhonebook: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  pszEntry: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   pbEapData: Deno.PointerValue | Uint8Array | null /* ptr */,
   dwSizeofEapData: number /* u32 */,
 ): number /* u32 */ {
@@ -9998,8 +9998,8 @@ export function RasSetEapUserDataA(
 
 export function RasSetEapUserDataW(
   hToken: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  pszPhonebook: string | null /* Windows.Win32.Foundation.PWSTR */,
-  pszEntry: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pszPhonebook: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  pszEntry: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pbEapData: Deno.PointerValue | Uint8Array | null /* ptr */,
   dwSizeofEapData: number /* u32 */,
 ): number /* u32 */ {
@@ -10007,8 +10007,8 @@ export function RasSetEapUserDataW(
 }
 
 export function RasGetCustomAuthDataA(
-  pszPhonebook: string | null /* Windows.Win32.Foundation.PSTR */,
-  pszEntry: string | null /* Windows.Win32.Foundation.PSTR */,
+  pszPhonebook: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  pszEntry: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   pbCustomAuthData: Deno.PointerValue | Uint8Array | null /* ptr */,
   pdwSizeofCustomAuthData: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
@@ -10016,8 +10016,8 @@ export function RasGetCustomAuthDataA(
 }
 
 export function RasGetCustomAuthDataW(
-  pszPhonebook: string | null /* Windows.Win32.Foundation.PWSTR */,
-  pszEntry: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pszPhonebook: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  pszEntry: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pbCustomAuthData: Deno.PointerValue | Uint8Array | null /* ptr */,
   pdwSizeofCustomAuthData: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
@@ -10025,8 +10025,8 @@ export function RasGetCustomAuthDataW(
 }
 
 export function RasSetCustomAuthDataA(
-  pszPhonebook: string | null /* Windows.Win32.Foundation.PSTR */,
-  pszEntry: string | null /* Windows.Win32.Foundation.PSTR */,
+  pszPhonebook: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  pszEntry: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   pbCustomAuthData: Deno.PointerValue | Uint8Array | null /* ptr */,
   dwSizeofCustomAuthData: number /* u32 */,
 ): number /* u32 */ {
@@ -10034,8 +10034,8 @@ export function RasSetCustomAuthDataA(
 }
 
 export function RasSetCustomAuthDataW(
-  pszPhonebook: string | null /* Windows.Win32.Foundation.PWSTR */,
-  pszEntry: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pszPhonebook: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  pszEntry: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pbCustomAuthData: Deno.PointerValue | Uint8Array | null /* ptr */,
   dwSizeofCustomAuthData: number /* u32 */,
 ): number /* u32 */ {
@@ -10043,8 +10043,8 @@ export function RasSetCustomAuthDataW(
 }
 
 export function RasGetEapUserIdentityW(
-  pszPhonebook: string | null /* Windows.Win32.Foundation.PWSTR */,
-  pszEntry: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pszPhonebook: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  pszEntry: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   dwFlags: number /* u32 */,
   hwnd: Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */,
   ppRasEapUserIdentity: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -10053,8 +10053,8 @@ export function RasGetEapUserIdentityW(
 }
 
 export function RasGetEapUserIdentityA(
-  pszPhonebook: string | null /* Windows.Win32.Foundation.PSTR */,
-  pszEntry: string | null /* Windows.Win32.Foundation.PSTR */,
+  pszPhonebook: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  pszEntry: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   dwFlags: number /* u32 */,
   hwnd: Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */,
   ppRasEapUserIdentity: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -10075,16 +10075,16 @@ export function RasFreeEapUserIdentityA(
 }
 
 export function RasDeleteSubEntryA(
-  pszPhonebook: string | null /* Windows.Win32.Foundation.PSTR */,
-  pszEntry: string | null /* Windows.Win32.Foundation.PSTR */,
+  pszPhonebook: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  pszEntry: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   dwSubentryId: number /* u32 */,
 ): number /* u32 */ {
   return libRASAPI32_dll.RasDeleteSubEntryA(util.pstrToFfi(pszPhonebook), util.pstrToFfi(pszEntry), dwSubentryId);
 }
 
 export function RasDeleteSubEntryW(
-  pszPhonebook: string | null /* Windows.Win32.Foundation.PWSTR */,
-  pszEntry: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pszPhonebook: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  pszEntry: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   dwSubEntryId: number /* u32 */,
 ): number /* u32 */ {
   return libRASAPI32_dll.RasDeleteSubEntryW(util.pwstrToFfi(pszPhonebook), util.pwstrToFfi(pszEntry), dwSubEntryId);
@@ -10106,50 +10106,50 @@ export function RasGetProjectionInfoEx(
 }
 
 export function RasPhonebookDlgA(
-  lpszPhonebook: string | null /* Windows.Win32.Foundation.PSTR */,
-  lpszEntry: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpszPhonebook: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  lpszEntry: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   lpInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libRASDLG_dll.RasPhonebookDlgA(util.pstrToFfi(lpszPhonebook), util.pstrToFfi(lpszEntry), util.toPointer(lpInfo)));
 }
 
 export function RasPhonebookDlgW(
-  lpszPhonebook: string | null /* Windows.Win32.Foundation.PWSTR */,
-  lpszEntry: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpszPhonebook: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  lpszEntry: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   lpInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libRASDLG_dll.RasPhonebookDlgW(util.pwstrToFfi(lpszPhonebook), util.pwstrToFfi(lpszEntry), util.toPointer(lpInfo)));
 }
 
 export function RasEntryDlgA(
-  lpszPhonebook: string | null /* Windows.Win32.Foundation.PSTR */,
-  lpszEntry: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpszPhonebook: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  lpszEntry: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   lpInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libRASDLG_dll.RasEntryDlgA(util.pstrToFfi(lpszPhonebook), util.pstrToFfi(lpszEntry), util.toPointer(lpInfo)));
 }
 
 export function RasEntryDlgW(
-  lpszPhonebook: string | null /* Windows.Win32.Foundation.PWSTR */,
-  lpszEntry: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpszPhonebook: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  lpszEntry: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   lpInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libRASDLG_dll.RasEntryDlgW(util.pwstrToFfi(lpszPhonebook), util.pwstrToFfi(lpszEntry), util.toPointer(lpInfo)));
 }
 
 export function RasDialDlgA(
-  lpszPhonebook: string | null /* Windows.Win32.Foundation.PSTR */,
-  lpszEntry: string | null /* Windows.Win32.Foundation.PSTR */,
-  lpszPhoneNumber: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpszPhonebook: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  lpszEntry: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  lpszPhoneNumber: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   lpInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libRASDLG_dll.RasDialDlgA(util.pstrToFfi(lpszPhonebook), util.pstrToFfi(lpszEntry), util.pstrToFfi(lpszPhoneNumber), util.toPointer(lpInfo)));
 }
 
 export function RasDialDlgW(
-  lpszPhonebook: string | null /* Windows.Win32.Foundation.PWSTR */,
-  lpszEntry: string | null /* Windows.Win32.Foundation.PWSTR */,
-  lpszPhoneNumber: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpszPhonebook: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  lpszEntry: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  lpszPhoneNumber: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   lpInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libRASDLG_dll.RasDialDlgW(util.pwstrToFfi(lpszPhonebook), util.pwstrToFfi(lpszEntry), util.pwstrToFfi(lpszPhoneNumber), util.toPointer(lpInfo)));
@@ -10212,7 +10212,7 @@ export function MprAdminUpdateConnection(
 }
 
 export function MprAdminIsServiceInitialized(
-  lpwsServerName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpwsServerName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   fIsServiceInitialized: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
   return libMPRAPI_dll.MprAdminIsServiceInitialized(util.pwstrToFfi(lpwsServerName), util.toPointer(fIsServiceInitialized));
@@ -10330,8 +10330,8 @@ export function MprAdminConnectionRemoveQuarantine(
 }
 
 export function MprAdminUserGetInfo(
-  lpszServer: string | null /* Windows.Win32.Foundation.PWSTR */,
-  lpszUser: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpszServer: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  lpszUser: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   dwLevel: number /* u32 */,
   lpbBuffer: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
@@ -10339,8 +10339,8 @@ export function MprAdminUserGetInfo(
 }
 
 export function MprAdminUserSetInfo(
-  lpszServer: string | null /* Windows.Win32.Foundation.PWSTR */,
-  lpszUser: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpszServer: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  lpszUser: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   dwLevel: number /* u32 */,
   lpbBuffer: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
@@ -10350,27 +10350,27 @@ export function MprAdminUserSetInfo(
 export function MprAdminSendUserMessage(
   hMprServer: Deno.PointerValue /* isize */,
   hConnection: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  lpwszMessage: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpwszMessage: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
   return libMPRAPI_dll.MprAdminSendUserMessage(hMprServer, util.toPointer(hConnection), util.pwstrToFfi(lpwszMessage));
 }
 
 export function MprAdminGetPDCServer(
-  lpszDomain: string | null /* Windows.Win32.Foundation.PWSTR */,
-  lpszServer: string | null /* Windows.Win32.Foundation.PWSTR */,
-  lpszPDCServer: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpszDomain: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  lpszServer: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  lpszPDCServer: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
   return libMPRAPI_dll.MprAdminGetPDCServer(util.pwstrToFfi(lpszDomain), util.pwstrToFfi(lpszServer), util.pwstrToFfi(lpszPDCServer));
 }
 
 export function MprAdminIsServiceRunning(
-  lpwsServerName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpwsServerName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libMPRAPI_dll.MprAdminIsServiceRunning(util.pwstrToFfi(lpwsServerName)));
 }
 
 export function MprAdminServerConnect(
-  lpwsServerName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpwsServerName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   phMprServer: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
   return libMPRAPI_dll.MprAdminServerConnect(util.pwstrToFfi(lpwsServerName), util.toPointer(phMprServer));
@@ -10428,16 +10428,16 @@ export function MprAdminServerSetInfo(
 }
 
 export function MprAdminEstablishDomainRasServer(
-  pszDomain: string | null /* Windows.Win32.Foundation.PWSTR */,
-  pszMachine: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pszDomain: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  pszMachine: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   bEnable: boolean /* Windows.Win32.Foundation.BOOL */,
 ): number /* u32 */ {
   return libMPRAPI_dll.MprAdminEstablishDomainRasServer(util.pwstrToFfi(pszDomain), util.pwstrToFfi(pszMachine), util.boolToFfi(bEnable));
 }
 
 export function MprAdminIsDomainRasServer(
-  pszDomain: string | null /* Windows.Win32.Foundation.PWSTR */,
-  pszMachine: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pszDomain: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  pszMachine: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pbIsRasServer: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
   return libMPRAPI_dll.MprAdminIsDomainRasServer(util.pwstrToFfi(pszDomain), util.pwstrToFfi(pszMachine), util.toPointer(pbIsRasServer));
@@ -10446,12 +10446,12 @@ export function MprAdminIsDomainRasServer(
 export function MprAdminTransportCreate(
   hMprServer: Deno.PointerValue /* isize */,
   dwTransportId: number /* u32 */,
-  lpwsTransportName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpwsTransportName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pGlobalInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
   dwGlobalInfoSize: number /* u32 */,
   pClientInterfaceInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
   dwClientInterfaceInfoSize: number /* u32 */,
-  lpwsDLLPath: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpwsDLLPath: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
   return libMPRAPI_dll.MprAdminTransportCreate(hMprServer, dwTransportId, util.pwstrToFfi(lpwsTransportName), util.toPointer(pGlobalInfo), dwGlobalInfoSize, util.toPointer(pClientInterfaceInfo), dwClientInterfaceInfoSize, util.pwstrToFfi(lpwsDLLPath));
 }
@@ -10489,7 +10489,7 @@ export function MprAdminDeviceEnum(
 
 export function MprAdminInterfaceGetHandle(
   hMprServer: Deno.PointerValue /* isize */,
-  lpwsInterfaceName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpwsInterfaceName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   phInterface: Deno.PointerValue | Uint8Array | null /* ptr */,
   fIncludeClientInterfaces: boolean /* Windows.Win32.Foundation.BOOL */,
 ): number /* u32 */ {
@@ -10601,21 +10601,21 @@ export function MprAdminInterfaceEnum(
 }
 
 export function MprAdminInterfaceSetCredentials(
-  lpwsServer: string | null /* Windows.Win32.Foundation.PWSTR */,
-  lpwsInterfaceName: string | null /* Windows.Win32.Foundation.PWSTR */,
-  lpwsUserName: string | null /* Windows.Win32.Foundation.PWSTR */,
-  lpwsDomainName: string | null /* Windows.Win32.Foundation.PWSTR */,
-  lpwsPassword: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpwsServer: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  lpwsInterfaceName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  lpwsUserName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  lpwsDomainName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  lpwsPassword: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
   return libMPRAPI_dll.MprAdminInterfaceSetCredentials(util.pwstrToFfi(lpwsServer), util.pwstrToFfi(lpwsInterfaceName), util.pwstrToFfi(lpwsUserName), util.pwstrToFfi(lpwsDomainName), util.pwstrToFfi(lpwsPassword));
 }
 
 export function MprAdminInterfaceGetCredentials(
-  lpwsServer: string | null /* Windows.Win32.Foundation.PWSTR */,
-  lpwsInterfaceName: string | null /* Windows.Win32.Foundation.PWSTR */,
-  lpwsUserName: string | null /* Windows.Win32.Foundation.PWSTR */,
-  lpwsPassword: string | null /* Windows.Win32.Foundation.PWSTR */,
-  lpwsDomainName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpwsServer: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  lpwsInterfaceName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  lpwsUserName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  lpwsPassword: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  lpwsDomainName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
   return libMPRAPI_dll.MprAdminInterfaceGetCredentials(util.pwstrToFfi(lpwsServer), util.pwstrToFfi(lpwsInterfaceName), util.pwstrToFfi(lpwsUserName), util.pwstrToFfi(lpwsPassword), util.pwstrToFfi(lpwsDomainName));
 }
@@ -10694,7 +10694,7 @@ export function MprAdminDeregisterConnectionNotification(
 }
 
 export function MprAdminMIBServerConnect(
-  lpwsServerName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpwsServerName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   phMibServer: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
   return libMPRAPI_dll.MprAdminMIBServerConnect(util.pwstrToFfi(lpwsServerName), util.toPointer(phMibServer));
@@ -10786,7 +10786,7 @@ export function MprConfigServerInstall(
 }
 
 export function MprConfigServerConnect(
-  lpwsServerName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpwsServerName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   phMprConfig: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
   return libMPRAPI_dll.MprConfigServerConnect(util.pwstrToFfi(lpwsServerName), util.toPointer(phMprConfig));
@@ -10828,14 +10828,14 @@ export function MprConfigServerSetInfo(
 
 export function MprConfigServerBackup(
   hMprConfig: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  lpwsPath: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpwsPath: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
   return libMPRAPI_dll.MprConfigServerBackup(util.toPointer(hMprConfig), util.pwstrToFfi(lpwsPath));
 }
 
 export function MprConfigServerRestore(
   hMprConfig: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  lpwsPath: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpwsPath: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
   return libMPRAPI_dll.MprConfigServerRestore(util.toPointer(hMprConfig), util.pwstrToFfi(lpwsPath));
 }
@@ -10843,12 +10843,12 @@ export function MprConfigServerRestore(
 export function MprConfigTransportCreate(
   hMprConfig: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
   dwTransportId: number /* u32 */,
-  lpwsTransportName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpwsTransportName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pGlobalInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
   dwGlobalInfoSize: number /* u32 */,
   pClientInterfaceInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
   dwClientInterfaceInfoSize: number /* u32 */,
-  lpwsDLLPath: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpwsDLLPath: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   phRouterTransport: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
   return libMPRAPI_dll.MprConfigTransportCreate(util.toPointer(hMprConfig), dwTransportId, util.pwstrToFfi(lpwsTransportName), util.toPointer(pGlobalInfo), dwGlobalInfoSize, util.toPointer(pClientInterfaceInfo), dwClientInterfaceInfoSize, util.pwstrToFfi(lpwsDLLPath), util.toPointer(phRouterTransport));
@@ -10876,7 +10876,7 @@ export function MprConfigTransportSetInfo(
   dwGlobalInfoSize: number /* u32 */,
   pClientInterfaceInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
   dwClientInterfaceInfoSize: number /* u32 */,
-  lpwsDLLPath: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpwsDLLPath: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
   return libMPRAPI_dll.MprConfigTransportSetInfo(util.toPointer(hMprConfig), util.toPointer(hRouterTransport), util.toPointer(pGlobalInfo), dwGlobalInfoSize, util.toPointer(pClientInterfaceInfo), dwClientInterfaceInfoSize, util.pwstrToFfi(lpwsDLLPath));
 }
@@ -10923,7 +10923,7 @@ export function MprConfigInterfaceDelete(
 
 export function MprConfigInterfaceGetHandle(
   hMprConfig: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  lpwsInterfaceName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpwsInterfaceName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   phRouterInterface: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
   return libMPRAPI_dll.MprConfigInterfaceGetHandle(util.toPointer(hMprConfig), util.pwstrToFfi(lpwsInterfaceName), util.toPointer(phRouterInterface));
@@ -10964,7 +10964,7 @@ export function MprConfigInterfaceTransportAdd(
   hMprConfig: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
   hRouterInterface: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
   dwTransportId: number /* u32 */,
-  lpwsTransportName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpwsTransportName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pInterfaceInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
   dwInterfaceInfoSize: number /* u32 */,
   phRouterIfTransport: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -11024,8 +11024,8 @@ export function MprConfigInterfaceTransportEnum(
 
 export function MprConfigGetFriendlyName(
   hMprConfig: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  pszGuidName: string | null /* Windows.Win32.Foundation.PWSTR */,
-  pszBuffer: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pszGuidName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  pszBuffer: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   dwBufferSize: number /* u32 */,
 ): number /* u32 */ {
   return libMPRAPI_dll.MprConfigGetFriendlyName(util.toPointer(hMprConfig), util.pwstrToFfi(pszGuidName), util.pwstrToFfi(pszBuffer), dwBufferSize);
@@ -11033,8 +11033,8 @@ export function MprConfigGetFriendlyName(
 
 export function MprConfigGetGuidName(
   hMprConfig: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  pszFriendlyName: string | null /* Windows.Win32.Foundation.PWSTR */,
-  pszBuffer: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pszFriendlyName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  pszBuffer: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   dwBufferSize: number /* u32 */,
 ): number /* u32 */ {
   return libMPRAPI_dll.MprConfigGetGuidName(util.toPointer(hMprConfig), util.pwstrToFfi(pszFriendlyName), util.pwstrToFfi(pszBuffer), dwBufferSize);

@@ -188,9 +188,9 @@ export interface NETCON_PROPERTIES {
   /** System.Guid */
   guidId: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.Foundation.PWSTR */
-  pszwName: string | null;
+  pszwName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pszwDeviceName: string | null;
+  pszwDeviceName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.NetworkManagement.WindowsFirewall.NETCON_STATUS */
   Status: NETCON_STATUS;
   /** Windows.Win32.NetworkManagement.WindowsFirewall.NETCON_MEDIATYPE */
@@ -337,7 +337,7 @@ export interface INET_FIREWALL_AC_CHANGE {
   /** ptr */
   userSid: Deno.PointerValue | Uint8Array | null;
   /** Windows.Win32.Foundation.PWSTR */
-  displayName: string | null;
+  displayName: string | null | Uint8Array | Uint16Array;
   /** _Anonymous_e__Union */
   Anonymous: Uint8Array | Deno.PointerValue | null;
 }
@@ -374,19 +374,19 @@ export interface INET_FIREWALL_APP_CONTAINER {
   /** ptr */
   userSid: Deno.PointerValue | Uint8Array | null;
   /** Windows.Win32.Foundation.PWSTR */
-  appContainerName: string | null;
+  appContainerName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  displayName: string | null;
+  displayName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  description: string | null;
+  description: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.NetworkManagement.WindowsFirewall.INET_FIREWALL_AC_CAPABILITIES */
   capabilities: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.NetworkManagement.WindowsFirewall.INET_FIREWALL_AC_BINARIES */
   binaries: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.Foundation.PWSTR */
-  workingDirectory: string | null;
+  workingDirectory: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  packageFullName: string | null;
+  packageFullName: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeofINET_FIREWALL_APP_CONTAINER = 72;
@@ -437,11 +437,11 @@ export interface FW_DYNAMIC_KEYWORD_ADDRESS0 {
   /** System.Guid */
   id: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.Foundation.PWSTR */
-  keyword: string | null;
+  keyword: string | null | Uint8Array | Uint16Array;
   /** u32 */
   flags: number;
   /** Windows.Win32.Foundation.PWSTR */
-  addresses: string | null;
+  addresses: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeofFW_DYNAMIC_KEYWORD_ADDRESS0 = 32;
@@ -549,9 +549,9 @@ try {
 
 export function NetworkIsolationSetupAppContainerBinaries(
   applicationContainerSid: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.PSID */,
-  packageFullName: string | null /* Windows.Win32.Foundation.PWSTR */,
-  packageFolder: string | null /* Windows.Win32.Foundation.PWSTR */,
-  displayName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  packageFullName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  packageFolder: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  displayName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   bBinariesFullyComputed: boolean /* Windows.Win32.Foundation.BOOL */,
   binaries: Deno.PointerValue | Uint8Array | null /* ptr */,
   binariesCount: number /* u32 */,
@@ -603,7 +603,7 @@ export function NetworkIsolationSetAppContainerConfig(
 }
 
 export function NetworkIsolationDiagnoseConnectFailureAndGetInfo(
-  wszServerName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  wszServerName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   netIsoError: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
   return libapi_ms_win_net_isolation_l1_1_0_dll.NetworkIsolationDiagnoseConnectFailureAndGetInfo(util.pwstrToFfi(wszServerName), util.toPointer(netIsoError));

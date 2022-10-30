@@ -516,7 +516,7 @@ export type PSTR = Deno.PointerValue | Uint8Array | null;
  */
 export interface OUTPUT_DEBUG_STRING_INFO {
   /** Windows.Win32.Foundation.PSTR */
-  lpDebugStringData: string | null;
+  lpDebugStringData: string | null | Uint8Array;
   /** u16 */
   fUnicode: number;
   /** u16 */
@@ -636,7 +636,7 @@ export function allocSERVICE_CUSTOM_SYSTEM_STATE_CHANGE_DATA_ITEM(data?: Partial
  */
 export interface SERVICE_DESCRIPTIONA {
   /** Windows.Win32.Foundation.PSTR */
-  lpDescription: string | null;
+  lpDescription: string | null | Uint8Array;
 }
 
 export const sizeofSERVICE_DESCRIPTIONA = 8;
@@ -659,7 +659,7 @@ export type PWSTR = Deno.PointerValue | Uint8Array | null;
  */
 export interface SERVICE_DESCRIPTIONW {
   /** Windows.Win32.Foundation.PWSTR */
-  lpDescription: string | null;
+  lpDescription: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeofSERVICE_DESCRIPTIONW = 8;
@@ -704,9 +704,9 @@ export interface SERVICE_FAILURE_ACTIONSA {
   /** u32 */
   dwResetPeriod: number;
   /** Windows.Win32.Foundation.PSTR */
-  lpRebootMsg: string | null;
+  lpRebootMsg: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  lpCommand: string | null;
+  lpCommand: string | null | Uint8Array;
   /** u32 */
   cActions: number;
   /** ptr */
@@ -746,9 +746,9 @@ export interface SERVICE_FAILURE_ACTIONSW {
   /** u32 */
   dwResetPeriod: number;
   /** Windows.Win32.Foundation.PWSTR */
-  lpRebootMsg: string | null;
+  lpRebootMsg: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  lpCommand: string | null;
+  lpCommand: string | null | Uint8Array | Uint16Array;
   /** u32 */
   cActions: number;
   /** ptr */
@@ -845,7 +845,7 @@ export function allocSERVICE_SID_INFO(data?: Partial<SERVICE_SID_INFO>): Uint8Ar
  */
 export interface SERVICE_REQUIRED_PRIVILEGES_INFOA {
   /** Windows.Win32.Foundation.PSTR */
-  pmszRequiredPrivileges: string | null;
+  pmszRequiredPrivileges: string | null | Uint8Array;
 }
 
 export const sizeofSERVICE_REQUIRED_PRIVILEGES_INFOA = 8;
@@ -866,7 +866,7 @@ export function allocSERVICE_REQUIRED_PRIVILEGES_INFOA(data?: Partial<SERVICE_RE
  */
 export interface SERVICE_REQUIRED_PRIVILEGES_INFOW {
   /** Windows.Win32.Foundation.PWSTR */
-  pmszRequiredPrivileges: string | null;
+  pmszRequiredPrivileges: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeofSERVICE_REQUIRED_PRIVILEGES_INFOW = 8;
@@ -1043,7 +1043,7 @@ export interface _u_e__Struct {
   /** u32 */
   dwValue: number;
   /** Windows.Win32.Foundation.PWSTR */
-  pwszName: string | null;
+  pwszName: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeof_u_e__Struct = 16;
@@ -1228,9 +1228,9 @@ export function allocSERVICE_STATUS_PROCESS(data?: Partial<SERVICE_STATUS_PROCES
  */
 export interface ENUM_SERVICE_STATUSA {
   /** Windows.Win32.Foundation.PSTR */
-  lpServiceName: string | null;
+  lpServiceName: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  lpDisplayName: string | null;
+  lpDisplayName: string | null | Uint8Array;
   /** Windows.Win32.System.Services.SERVICE_STATUS */
   ServiceStatus: Uint8Array | Deno.PointerValue | null;
 }
@@ -1260,9 +1260,9 @@ export function allocENUM_SERVICE_STATUSA(data?: Partial<ENUM_SERVICE_STATUSA>):
  */
 export interface ENUM_SERVICE_STATUSW {
   /** Windows.Win32.Foundation.PWSTR */
-  lpServiceName: string | null;
+  lpServiceName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  lpDisplayName: string | null;
+  lpDisplayName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.System.Services.SERVICE_STATUS */
   ServiceStatus: Uint8Array | Deno.PointerValue | null;
 }
@@ -1292,9 +1292,9 @@ export function allocENUM_SERVICE_STATUSW(data?: Partial<ENUM_SERVICE_STATUSW>):
  */
 export interface ENUM_SERVICE_STATUS_PROCESSA {
   /** Windows.Win32.Foundation.PSTR */
-  lpServiceName: string | null;
+  lpServiceName: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  lpDisplayName: string | null;
+  lpDisplayName: string | null | Uint8Array;
   /** Windows.Win32.System.Services.SERVICE_STATUS_PROCESS */
   ServiceStatusProcess: Uint8Array | Deno.PointerValue | null;
 }
@@ -1324,9 +1324,9 @@ export function allocENUM_SERVICE_STATUS_PROCESSA(data?: Partial<ENUM_SERVICE_ST
  */
 export interface ENUM_SERVICE_STATUS_PROCESSW {
   /** Windows.Win32.Foundation.PWSTR */
-  lpServiceName: string | null;
+  lpServiceName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  lpDisplayName: string | null;
+  lpDisplayName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.System.Services.SERVICE_STATUS_PROCESS */
   ServiceStatusProcess: Uint8Array | Deno.PointerValue | null;
 }
@@ -1358,7 +1358,7 @@ export interface QUERY_SERVICE_LOCK_STATUSA {
   /** u32 */
   fIsLocked: number;
   /** Windows.Win32.Foundation.PSTR */
-  lpLockOwner: string | null;
+  lpLockOwner: string | null | Uint8Array;
   /** u32 */
   dwLockDuration: number;
 }
@@ -1389,7 +1389,7 @@ export interface QUERY_SERVICE_LOCK_STATUSW {
   /** u32 */
   fIsLocked: number;
   /** Windows.Win32.Foundation.PWSTR */
-  lpLockOwner: string | null;
+  lpLockOwner: string | null | Uint8Array | Uint16Array;
   /** u32 */
   dwLockDuration: number;
 }
@@ -1424,17 +1424,17 @@ export interface QUERY_SERVICE_CONFIGA {
   /** Windows.Win32.System.Services.SERVICE_ERROR */
   dwErrorControl: SERVICE_ERROR;
   /** Windows.Win32.Foundation.PSTR */
-  lpBinaryPathName: string | null;
+  lpBinaryPathName: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  lpLoadOrderGroup: string | null;
+  lpLoadOrderGroup: string | null | Uint8Array;
   /** u32 */
   dwTagId: number;
   /** Windows.Win32.Foundation.PSTR */
-  lpDependencies: string | null;
+  lpDependencies: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  lpServiceStartName: string | null;
+  lpServiceStartName: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  lpDisplayName: string | null;
+  lpDisplayName: string | null | Uint8Array;
 }
 
 export const sizeofQUERY_SERVICE_CONFIGA = 64;
@@ -1491,17 +1491,17 @@ export interface QUERY_SERVICE_CONFIGW {
   /** Windows.Win32.System.Services.SERVICE_ERROR */
   dwErrorControl: SERVICE_ERROR;
   /** Windows.Win32.Foundation.PWSTR */
-  lpBinaryPathName: string | null;
+  lpBinaryPathName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  lpLoadOrderGroup: string | null;
+  lpLoadOrderGroup: string | null | Uint8Array | Uint16Array;
   /** u32 */
   dwTagId: number;
   /** Windows.Win32.Foundation.PWSTR */
-  lpDependencies: string | null;
+  lpDependencies: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  lpServiceStartName: string | null;
+  lpServiceStartName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  lpDisplayName: string | null;
+  lpDisplayName: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeofQUERY_SERVICE_CONFIGW = 64;
@@ -1552,7 +1552,7 @@ export function allocQUERY_SERVICE_CONFIGW(data?: Partial<QUERY_SERVICE_CONFIGW>
  */
 export interface SERVICE_TABLE_ENTRYA {
   /** Windows.Win32.Foundation.PSTR */
-  lpServiceName: string | null;
+  lpServiceName: string | null | Uint8Array;
   /** Windows.Win32.System.Services.LPSERVICE_MAIN_FUNCTIONA */
   lpServiceProc: Uint8Array | Deno.PointerValue | null;
 }
@@ -1577,7 +1577,7 @@ export function allocSERVICE_TABLE_ENTRYA(data?: Partial<SERVICE_TABLE_ENTRYA>):
  */
 export interface SERVICE_TABLE_ENTRYW {
   /** Windows.Win32.Foundation.PWSTR */
-  lpServiceName: string | null;
+  lpServiceName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.System.Services.LPSERVICE_MAIN_FUNCTIONW */
   lpServiceProc: Uint8Array | Deno.PointerValue | null;
 }
@@ -1650,7 +1650,7 @@ export interface SERVICE_NOTIFY_2A {
   /** u32 */
   dwNotificationTriggered: number;
   /** Windows.Win32.Foundation.PSTR */
-  pszServiceNames: string | null;
+  pszServiceNames: string | null | Uint8Array;
 }
 
 export const sizeofSERVICE_NOTIFY_2A = 56;
@@ -1698,7 +1698,7 @@ export interface SERVICE_NOTIFY_2W {
   /** u32 */
   dwNotificationTriggered: number;
   /** Windows.Win32.Foundation.PWSTR */
-  pszServiceNames: string | null;
+  pszServiceNames: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeofSERVICE_NOTIFY_2W = 56;
@@ -1736,7 +1736,7 @@ export interface SERVICE_CONTROL_STATUS_REASON_PARAMSA {
   /** u32 */
   dwReason: number;
   /** Windows.Win32.Foundation.PSTR */
-  pszComment: string | null;
+  pszComment: string | null | Uint8Array;
   /** Windows.Win32.System.Services.SERVICE_STATUS_PROCESS */
   ServiceStatus: Uint8Array | Deno.PointerValue | null;
 }
@@ -1766,7 +1766,7 @@ export interface SERVICE_CONTROL_STATUS_REASON_PARAMSW {
   /** u32 */
   dwReason: number;
   /** Windows.Win32.Foundation.PWSTR */
-  pszComment: string | null;
+  pszComment: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.System.Services.SERVICE_STATUS_PROCESS */
   ServiceStatus: Uint8Array | Deno.PointerValue | null;
 }
@@ -2074,13 +2074,13 @@ export function ChangeServiceConfigA(
   dwServiceType: number /* u32 */,
   dwStartType: SERVICE_START_TYPE /* Windows.Win32.System.Services.SERVICE_START_TYPE */,
   dwErrorControl: SERVICE_ERROR /* Windows.Win32.System.Services.SERVICE_ERROR */,
-  lpBinaryPathName: string | null /* Windows.Win32.Foundation.PSTR */,
-  lpLoadOrderGroup: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpBinaryPathName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  lpLoadOrderGroup: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   lpdwTagId: Deno.PointerValue | Uint8Array | null /* ptr */,
-  lpDependencies: string | null /* Windows.Win32.Foundation.PSTR */,
-  lpServiceStartName: string | null /* Windows.Win32.Foundation.PSTR */,
-  lpPassword: string | null /* Windows.Win32.Foundation.PSTR */,
-  lpDisplayName: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpDependencies: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  lpServiceStartName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  lpPassword: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  lpDisplayName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libADVAPI32_dll.ChangeServiceConfigA(util.toPointer(hService), dwServiceType, dwStartType, dwErrorControl, util.pstrToFfi(lpBinaryPathName), util.pstrToFfi(lpLoadOrderGroup), util.toPointer(lpdwTagId), util.pstrToFfi(lpDependencies), util.pstrToFfi(lpServiceStartName), util.pstrToFfi(lpPassword), util.pstrToFfi(lpDisplayName)));
 }
@@ -2090,13 +2090,13 @@ export function ChangeServiceConfigW(
   dwServiceType: number /* u32 */,
   dwStartType: SERVICE_START_TYPE /* Windows.Win32.System.Services.SERVICE_START_TYPE */,
   dwErrorControl: SERVICE_ERROR /* Windows.Win32.System.Services.SERVICE_ERROR */,
-  lpBinaryPathName: string | null /* Windows.Win32.Foundation.PWSTR */,
-  lpLoadOrderGroup: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpBinaryPathName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  lpLoadOrderGroup: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   lpdwTagId: Deno.PointerValue | Uint8Array | null /* ptr */,
-  lpDependencies: string | null /* Windows.Win32.Foundation.PWSTR */,
-  lpServiceStartName: string | null /* Windows.Win32.Foundation.PWSTR */,
-  lpPassword: string | null /* Windows.Win32.Foundation.PWSTR */,
-  lpDisplayName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpDependencies: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  lpServiceStartName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  lpPassword: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  lpDisplayName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libADVAPI32_dll.ChangeServiceConfigW(util.toPointer(hService), dwServiceType, dwStartType, dwErrorControl, util.pwstrToFfi(lpBinaryPathName), util.pwstrToFfi(lpLoadOrderGroup), util.toPointer(lpdwTagId), util.pwstrToFfi(lpDependencies), util.pwstrToFfi(lpServiceStartName), util.pwstrToFfi(lpPassword), util.pwstrToFfi(lpDisplayName)));
 }
@@ -2133,36 +2133,36 @@ export function ControlService(
 
 export function CreateServiceA(
   hSCManager: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Security.SC_HANDLE */,
-  lpServiceName: string | null /* Windows.Win32.Foundation.PSTR */,
-  lpDisplayName: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpServiceName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  lpDisplayName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   dwDesiredAccess: number /* u32 */,
   dwServiceType: ENUM_SERVICE_TYPE /* Windows.Win32.System.Services.ENUM_SERVICE_TYPE */,
   dwStartType: SERVICE_START_TYPE /* Windows.Win32.System.Services.SERVICE_START_TYPE */,
   dwErrorControl: SERVICE_ERROR /* Windows.Win32.System.Services.SERVICE_ERROR */,
-  lpBinaryPathName: string | null /* Windows.Win32.Foundation.PSTR */,
-  lpLoadOrderGroup: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpBinaryPathName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  lpLoadOrderGroup: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   lpdwTagId: Deno.PointerValue | Uint8Array | null /* ptr */,
-  lpDependencies: string | null /* Windows.Win32.Foundation.PSTR */,
-  lpServiceStartName: string | null /* Windows.Win32.Foundation.PSTR */,
-  lpPassword: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpDependencies: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  lpServiceStartName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  lpPassword: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): Deno.PointerValue | null /* Windows.Win32.Security.SC_HANDLE */ {
   return util.pointerFromFfi(libADVAPI32_dll.CreateServiceA(util.toPointer(hSCManager), util.pstrToFfi(lpServiceName), util.pstrToFfi(lpDisplayName), dwDesiredAccess, dwServiceType, dwStartType, dwErrorControl, util.pstrToFfi(lpBinaryPathName), util.pstrToFfi(lpLoadOrderGroup), util.toPointer(lpdwTagId), util.pstrToFfi(lpDependencies), util.pstrToFfi(lpServiceStartName), util.pstrToFfi(lpPassword)));
 }
 
 export function CreateServiceW(
   hSCManager: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Security.SC_HANDLE */,
-  lpServiceName: string | null /* Windows.Win32.Foundation.PWSTR */,
-  lpDisplayName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpServiceName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  lpDisplayName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   dwDesiredAccess: number /* u32 */,
   dwServiceType: ENUM_SERVICE_TYPE /* Windows.Win32.System.Services.ENUM_SERVICE_TYPE */,
   dwStartType: SERVICE_START_TYPE /* Windows.Win32.System.Services.SERVICE_START_TYPE */,
   dwErrorControl: SERVICE_ERROR /* Windows.Win32.System.Services.SERVICE_ERROR */,
-  lpBinaryPathName: string | null /* Windows.Win32.Foundation.PWSTR */,
-  lpLoadOrderGroup: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpBinaryPathName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  lpLoadOrderGroup: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   lpdwTagId: Deno.PointerValue | Uint8Array | null /* ptr */,
-  lpDependencies: string | null /* Windows.Win32.Foundation.PWSTR */,
-  lpServiceStartName: string | null /* Windows.Win32.Foundation.PWSTR */,
-  lpPassword: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpDependencies: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  lpServiceStartName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  lpPassword: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): Deno.PointerValue | null /* Windows.Win32.Security.SC_HANDLE */ {
   return util.pointerFromFfi(libADVAPI32_dll.CreateServiceW(util.toPointer(hSCManager), util.pwstrToFfi(lpServiceName), util.pwstrToFfi(lpDisplayName), dwDesiredAccess, dwServiceType, dwStartType, dwErrorControl, util.pwstrToFfi(lpBinaryPathName), util.pwstrToFfi(lpLoadOrderGroup), util.toPointer(lpdwTagId), util.pwstrToFfi(lpDependencies), util.pwstrToFfi(lpServiceStartName), util.pwstrToFfi(lpPassword)));
 }
@@ -2231,7 +2231,7 @@ export function EnumServicesStatusExA(
   pcbBytesNeeded: Deno.PointerValue | Uint8Array | null /* ptr */,
   lpServicesReturned: Deno.PointerValue | Uint8Array | null /* ptr */,
   lpResumeHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pszGroupName: string | null /* Windows.Win32.Foundation.PSTR */,
+  pszGroupName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libADVAPI32_dll.EnumServicesStatusExA(util.toPointer(hSCManager), InfoLevel, dwServiceType, dwServiceState, util.toPointer(lpServices), cbBufSize, util.toPointer(pcbBytesNeeded), util.toPointer(lpServicesReturned), util.toPointer(lpResumeHandle), util.pstrToFfi(pszGroupName)));
 }
@@ -2246,15 +2246,15 @@ export function EnumServicesStatusExW(
   pcbBytesNeeded: Deno.PointerValue | Uint8Array | null /* ptr */,
   lpServicesReturned: Deno.PointerValue | Uint8Array | null /* ptr */,
   lpResumeHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pszGroupName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pszGroupName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libADVAPI32_dll.EnumServicesStatusExW(util.toPointer(hSCManager), InfoLevel, dwServiceType, dwServiceState, util.toPointer(lpServices), cbBufSize, util.toPointer(pcbBytesNeeded), util.toPointer(lpServicesReturned), util.toPointer(lpResumeHandle), util.pwstrToFfi(pszGroupName)));
 }
 
 export function GetServiceKeyNameA(
   hSCManager: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Security.SC_HANDLE */,
-  lpDisplayName: string | null /* Windows.Win32.Foundation.PSTR */,
-  lpServiceName: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpDisplayName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  lpServiceName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   lpcchBuffer: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libADVAPI32_dll.GetServiceKeyNameA(util.toPointer(hSCManager), util.pstrToFfi(lpDisplayName), util.pstrToFfi(lpServiceName), util.toPointer(lpcchBuffer)));
@@ -2262,8 +2262,8 @@ export function GetServiceKeyNameA(
 
 export function GetServiceKeyNameW(
   hSCManager: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Security.SC_HANDLE */,
-  lpDisplayName: string | null /* Windows.Win32.Foundation.PWSTR */,
-  lpServiceName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpDisplayName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  lpServiceName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   lpcchBuffer: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libADVAPI32_dll.GetServiceKeyNameW(util.toPointer(hSCManager), util.pwstrToFfi(lpDisplayName), util.pwstrToFfi(lpServiceName), util.toPointer(lpcchBuffer)));
@@ -2271,8 +2271,8 @@ export function GetServiceKeyNameW(
 
 export function GetServiceDisplayNameA(
   hSCManager: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Security.SC_HANDLE */,
-  lpServiceName: string | null /* Windows.Win32.Foundation.PSTR */,
-  lpDisplayName: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpServiceName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  lpDisplayName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   lpcchBuffer: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libADVAPI32_dll.GetServiceDisplayNameA(util.toPointer(hSCManager), util.pstrToFfi(lpServiceName), util.pstrToFfi(lpDisplayName), util.toPointer(lpcchBuffer)));
@@ -2280,8 +2280,8 @@ export function GetServiceDisplayNameA(
 
 export function GetServiceDisplayNameW(
   hSCManager: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Security.SC_HANDLE */,
-  lpServiceName: string | null /* Windows.Win32.Foundation.PWSTR */,
-  lpDisplayName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpServiceName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  lpDisplayName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   lpcchBuffer: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libADVAPI32_dll.GetServiceDisplayNameW(util.toPointer(hSCManager), util.pwstrToFfi(lpServiceName), util.pwstrToFfi(lpDisplayName), util.toPointer(lpcchBuffer)));
@@ -2300,16 +2300,16 @@ export function NotifyBootConfigStatus(
 }
 
 export function OpenSCManagerA(
-  lpMachineName: string | null /* Windows.Win32.Foundation.PSTR */,
-  lpDatabaseName: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpMachineName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  lpDatabaseName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   dwDesiredAccess: number /* u32 */,
 ): Deno.PointerValue | null /* Windows.Win32.Security.SC_HANDLE */ {
   return util.pointerFromFfi(libADVAPI32_dll.OpenSCManagerA(util.pstrToFfi(lpMachineName), util.pstrToFfi(lpDatabaseName), dwDesiredAccess));
 }
 
 export function OpenSCManagerW(
-  lpMachineName: string | null /* Windows.Win32.Foundation.PWSTR */,
-  lpDatabaseName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpMachineName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  lpDatabaseName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   dwDesiredAccess: number /* u32 */,
 ): Deno.PointerValue | null /* Windows.Win32.Security.SC_HANDLE */ {
   return util.pointerFromFfi(libADVAPI32_dll.OpenSCManagerW(util.pwstrToFfi(lpMachineName), util.pwstrToFfi(lpDatabaseName), dwDesiredAccess));
@@ -2317,7 +2317,7 @@ export function OpenSCManagerW(
 
 export function OpenServiceA(
   hSCManager: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Security.SC_HANDLE */,
-  lpServiceName: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpServiceName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   dwDesiredAccess: number /* u32 */,
 ): Deno.PointerValue | null /* Windows.Win32.Security.SC_HANDLE */ {
   return util.pointerFromFfi(libADVAPI32_dll.OpenServiceA(util.toPointer(hSCManager), util.pstrToFfi(lpServiceName), dwDesiredAccess));
@@ -2325,7 +2325,7 @@ export function OpenServiceA(
 
 export function OpenServiceW(
   hSCManager: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Security.SC_HANDLE */,
-  lpServiceName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpServiceName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   dwDesiredAccess: number /* u32 */,
 ): Deno.PointerValue | null /* Windows.Win32.Security.SC_HANDLE */ {
   return util.pointerFromFfi(libADVAPI32_dll.OpenServiceW(util.toPointer(hSCManager), util.pwstrToFfi(lpServiceName), dwDesiredAccess));
@@ -2415,21 +2415,21 @@ export function QueryServiceStatusEx(
 }
 
 export function RegisterServiceCtrlHandlerA(
-  lpServiceName: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpServiceName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   lpHandlerProc: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Services.LPHANDLER_FUNCTION */,
 ): Deno.PointerValue | null /* Windows.Win32.System.Services.SERVICE_STATUS_HANDLE */ {
   return util.pointerFromFfi(libADVAPI32_dll.RegisterServiceCtrlHandlerA(util.pstrToFfi(lpServiceName), util.toPointer(lpHandlerProc)));
 }
 
 export function RegisterServiceCtrlHandlerW(
-  lpServiceName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpServiceName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   lpHandlerProc: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Services.LPHANDLER_FUNCTION */,
 ): Deno.PointerValue | null /* Windows.Win32.System.Services.SERVICE_STATUS_HANDLE */ {
   return util.pointerFromFfi(libADVAPI32_dll.RegisterServiceCtrlHandlerW(util.pwstrToFfi(lpServiceName), util.toPointer(lpHandlerProc)));
 }
 
 export function RegisterServiceCtrlHandlerExA(
-  lpServiceName: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpServiceName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   lpHandlerProc: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Services.LPHANDLER_FUNCTION_EX */,
   lpContext: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.System.Services.SERVICE_STATUS_HANDLE */ {
@@ -2437,7 +2437,7 @@ export function RegisterServiceCtrlHandlerExA(
 }
 
 export function RegisterServiceCtrlHandlerExW(
-  lpServiceName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpServiceName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   lpHandlerProc: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Services.LPHANDLER_FUNCTION_EX */,
   lpContext: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.System.Services.SERVICE_STATUS_HANDLE */ {
@@ -2556,7 +2556,7 @@ export function GetServiceRegistryStateKey(
 export function GetServiceDirectory(
   hServiceStatus: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Services.SERVICE_STATUS_HANDLE */,
   eDirectoryType: SERVICE_DIRECTORY_TYPE /* Windows.Win32.System.Services.SERVICE_DIRECTORY_TYPE */,
-  lpPathBuffer: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpPathBuffer: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   cchPathBufferLength: number /* u32 */,
   lpcchRequiredBufferLength: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
@@ -2575,7 +2575,7 @@ export function GetSharedServiceRegistryStateKey(
 export function GetSharedServiceDirectory(
   ServiceHandle: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Security.SC_HANDLE */,
   DirectoryType: SERVICE_SHARED_DIRECTORY_TYPE /* Windows.Win32.System.Services.SERVICE_SHARED_DIRECTORY_TYPE */,
-  PathBuffer: string | null /* Windows.Win32.Foundation.PWSTR */,
+  PathBuffer: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   PathBufferLength: number /* u32 */,
   RequiredBufferLength: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {

@@ -277,14 +277,14 @@ try {
 export function RmStartSession(
   pSessionHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
   dwSessionFlags: number /* u32 */,
-  strSessionKey: string | null /* Windows.Win32.Foundation.PWSTR */,
+  strSessionKey: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
   return librstrtmgr_dll.RmStartSession(util.toPointer(pSessionHandle), dwSessionFlags, util.pwstrToFfi(strSessionKey));
 }
 
 export function RmJoinSession(
   pSessionHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
-  strSessionKey: string | null /* Windows.Win32.Foundation.PWSTR */,
+  strSessionKey: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
   return libRstrtMgr_dll.RmJoinSession(util.toPointer(pSessionHandle), util.pwstrToFfi(strSessionKey));
 }
@@ -341,9 +341,9 @@ export function RmCancelCurrentTask(
 
 export function RmAddFilter(
   dwSessionHandle: number /* u32 */,
-  strModuleName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  strModuleName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pProcess: Deno.PointerValue | Uint8Array | null /* ptr */,
-  strServiceShortName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  strServiceShortName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   FilterAction: RM_FILTER_ACTION /* Windows.Win32.System.RestartManager.RM_FILTER_ACTION */,
 ): number /* u32 */ {
   return libRstrtMgr_dll.RmAddFilter(dwSessionHandle, util.pwstrToFfi(strModuleName), util.toPointer(pProcess), util.pwstrToFfi(strServiceShortName), FilterAction);
@@ -351,9 +351,9 @@ export function RmAddFilter(
 
 export function RmRemoveFilter(
   dwSessionHandle: number /* u32 */,
-  strModuleName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  strModuleName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pProcess: Deno.PointerValue | Uint8Array | null /* ptr */,
-  strServiceShortName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  strServiceShortName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
   return libRstrtMgr_dll.RmRemoveFilter(dwSessionHandle, util.pwstrToFfi(strModuleName), util.toPointer(pProcess), util.pwstrToFfi(strServiceShortName));
 }

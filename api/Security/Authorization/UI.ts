@@ -98,11 +98,11 @@ export interface SI_OBJECT_INFO {
   /** Windows.Win32.Foundation.HINSTANCE */
   hInstance: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.Foundation.PWSTR */
-  pszServerName: string | null;
+  pszServerName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pszObjectName: string | null;
+  pszObjectName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pszPageTitle: string | null;
+  pszPageTitle: string | null | Uint8Array | Uint16Array;
   /** System.Guid */
   guidObjectType: Uint8Array | Deno.PointerValue | null;
 }
@@ -146,7 +146,7 @@ export interface SI_ACCESS {
   /** u32 */
   mask: number;
   /** Windows.Win32.Foundation.PWSTR */
-  pszName: string | null;
+  pszName: string | null | Uint8Array | Uint16Array;
   /** u32 */
   dwFlags: number;
 }
@@ -181,7 +181,7 @@ export interface SI_INHERIT_TYPE {
   /** Windows.Win32.Security.ACE_FLAGS */
   dwFlags: ACE_FLAGS;
   /** Windows.Win32.Foundation.PWSTR */
-  pszName: string | null;
+  pszName: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeofSI_INHERIT_TYPE = 24;
@@ -211,11 +211,11 @@ export interface SID_INFO {
   /** Windows.Win32.Foundation.PSID */
   pSid: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.Foundation.PWSTR */
-  pwzCommonName: string | null;
+  pwzCommonName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pwzClass: string | null;
+  pwzClass: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pwzUPN: string | null;
+  pwzUPN: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeofSID_INFO = 32;
@@ -273,7 +273,7 @@ export type BOOLEAN = number;
  */
 export interface SECURITY_OBJECT {
   /** Windows.Win32.Foundation.PWSTR */
-  pwszName: string | null;
+  pwszName: string | null | Uint8Array | Uint16Array;
   /** ptr */
   pData: Deno.PointerValue | Uint8Array | null;
   /** u32 */

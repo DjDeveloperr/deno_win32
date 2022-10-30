@@ -344,7 +344,7 @@ try {
 
 export function OpenThemeDataForDpi(
   hwnd: Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */,
-  pszClassList: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pszClassList: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   dpi: number /* u32 */,
 ): Deno.PointerValue /* isize */ {
   return libUxTheme_dll.OpenThemeDataForDpi(util.hwndToFfi(hwnd), util.pwstrToFfi(pszClassList), dpi);

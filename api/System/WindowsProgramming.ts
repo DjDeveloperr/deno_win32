@@ -3991,7 +3991,7 @@ export type PSTR = Deno.PointerValue | Uint8Array | null;
  */
 export interface _Description_e__Union {
   /** Windows.Win32.Foundation.PSTR */
-  Name: string | null;
+  Name: string | null | Uint8Array;
   /** u32 */
   Ordinal: number;
 }
@@ -4046,7 +4046,7 @@ export interface DELAYLOAD_INFO {
   /** ptr */
   ThunkAddress: Deno.PointerValue | Uint8Array | null;
   /** Windows.Win32.Foundation.PSTR */
-  TargetDllName: string | null;
+  TargetDllName: string | null | Uint8Array;
   /** Windows.Win32.System.WindowsProgramming.DELAYLOAD_PROC_DESCRIPTOR */
   TargetApiDescriptor: Uint8Array | Deno.PointerValue | null;
   /** ptr */
@@ -4245,7 +4245,7 @@ export interface CUSTOM_SYSTEM_EVENT_TRIGGER_CONFIG {
   /** u32 */
   Size: number;
   /** Windows.Win32.Foundation.PWSTR */
-  TriggerId: string | null;
+  TriggerId: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeofCUSTOM_SYSTEM_EVENT_TRIGGER_CONFIG = 16;
@@ -4570,7 +4570,7 @@ export interface UNICODE_STRING {
   /** u16 */
   MaximumLength: number;
   /** Windows.Win32.Foundation.PWSTR */
-  Buffer: string | null;
+  Buffer: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeofUNICODE_STRING = 16;
@@ -4737,7 +4737,7 @@ export interface _u_e__Struct {
   /** u32 */
   dwValue: number;
   /** Windows.Win32.Foundation.PWSTR */
-  pwszName: string | null;
+  pwszName: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeof_u_e__Struct = 16;
@@ -5307,29 +5307,29 @@ export interface FEATURE_ERROR {
   /** u16 */
   lineNumber: number;
   /** Windows.Win32.Foundation.PSTR */
-  file: string | null;
+  file: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  process: string | null;
+  process: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  module: string | null;
+  module: string | null | Uint8Array;
   /** u32 */
   callerReturnAddressOffset: number;
   /** Windows.Win32.Foundation.PSTR */
-  callerModule: string | null;
+  callerModule: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  message: string | null;
+  message: string | null | Uint8Array;
   /** u16 */
   originLineNumber: number;
   /** Windows.Win32.Foundation.PSTR */
-  originFile: string | null;
+  originFile: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  originModule: string | null;
+  originModule: string | null | Uint8Array;
   /** u32 */
   originCallerReturnAddressOffset: number;
   /** Windows.Win32.Foundation.PSTR */
-  originCallerModule: string | null;
+  originCallerModule: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  originName: string | null;
+  originName: string | null | Uint8Array;
 }
 
 export const sizeofFEATURE_ERROR = 112;
@@ -5689,9 +5689,9 @@ export function allocDCIOVERLAY(data?: Partial<DCIOVERLAY>): Uint8Array {
  */
 export interface STRENTRYA {
   /** Windows.Win32.Foundation.PSTR */
-  pszName: string | null;
+  pszName: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  pszValue: string | null;
+  pszValue: string | null | Uint8Array;
 }
 
 export const sizeofSTRENTRYA = 16;
@@ -5717,9 +5717,9 @@ export function allocSTRENTRYA(data?: Partial<STRENTRYA>): Uint8Array {
  */
 export interface STRENTRYW {
   /** Windows.Win32.Foundation.PWSTR */
-  pszName: string | null;
+  pszName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pszValue: string | null;
+  pszValue: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeofSTRENTRYW = 16;
@@ -5791,11 +5791,11 @@ export function allocSTRTABLEW(data?: Partial<STRTABLEW>): Uint8Array {
  */
 export interface CABINFOA {
   /** Windows.Win32.Foundation.PSTR */
-  pszCab: string | null;
+  pszCab: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  pszInf: string | null;
+  pszInf: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  pszSection: string | null;
+  pszSection: string | null | Uint8Array;
   /** array */
   szSrcPath: Deno.PointerValue | null;
   /** u32 */
@@ -5835,11 +5835,11 @@ export function allocCABINFOA(data?: Partial<CABINFOA>): Uint8Array {
  */
 export interface CABINFOW {
   /** Windows.Win32.Foundation.PWSTR */
-  pszCab: string | null;
+  pszCab: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pszInf: string | null;
+  pszInf: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pszSection: string | null;
+  pszSection: string | null | Uint8Array | Uint16Array;
   /** array */
   szSrcPath: Deno.PointerValue | null;
   /** u32 */
@@ -6267,7 +6267,7 @@ export interface JAVA_TRUST {
   /** u32 */
   cbSigner: number;
   /** Windows.Win32.Foundation.PWSTR */
-  pwszZone: string | null;
+  pwszZone: string | null | Uint8Array | Uint16Array;
   /** System.Guid */
   guidZone: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.Foundation.HRESULT */
@@ -6436,7 +6436,7 @@ export interface WLDP_HOST_INFORMATION {
   /** Windows.Win32.System.WindowsProgramming.WLDP_HOST_ID */
   dwHostId: WLDP_HOST_ID;
   /** Windows.Win32.Foundation.PWSTR */
-  szSource: string | null;
+  szSource: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.HANDLE */
   hSource: Uint8Array | Deno.PointerValue | null;
 }
@@ -6471,7 +6471,7 @@ export interface WLDP_DEVICE_SECURITY_INFORMATION {
   /** u32 */
   ManufacturerIDLength: number;
   /** Windows.Win32.Foundation.PWSTR */
-  ManufacturerID: string | null;
+  ManufacturerID: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeofWLDP_DEVICE_SECURITY_INFORMATION = 32;
@@ -7559,7 +7559,7 @@ export function RtlRaiseCustomSystemEventTrigger(
 }
 
 export function IsApiSetImplemented(
-  Contract: string | null /* Windows.Win32.Foundation.PSTR */,
+  Contract: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libapi_ms_win_core_apiquery_l2_1_0_dll.IsApiSetImplemented(util.pstrToFfi(Contract)));
 }
@@ -7683,7 +7683,7 @@ export function LocalCompact(
 }
 
 export function SetEnvironmentStringsA(
-  NewEnvironment: string | null /* Windows.Win32.Foundation.PSTR */,
+  NewEnvironment: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libKERNEL32_dll.SetEnvironmentStringsA(util.pstrToFfi(NewEnvironment)));
 }
@@ -7745,14 +7745,14 @@ export function DosDateTimeToFileTime(
 }
 
 export function _lopen(
-  lpPathName: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpPathName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   iReadWrite: number /* i32 */,
 ): number /* i32 */ {
   return libKERNEL32_dll._lopen(util.pstrToFfi(lpPathName), iReadWrite);
 }
 
 export function _lcreat(
-  lpPathName: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpPathName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   iAttribute: number /* i32 */,
 ): number /* i32 */ {
   return libKERNEL32_dll._lcreat(util.pstrToFfi(lpPathName), iAttribute);
@@ -7768,7 +7768,7 @@ export function _lread(
 
 export function _lwrite(
   hFile: number /* i32 */,
-  lpBuffer: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpBuffer: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   uBytes: number /* u32 */,
 ): number /* u32 */ {
   return libKERNEL32_dll._lwrite(hFile, util.pstrToFfi(lpBuffer), uBytes);
@@ -7784,7 +7784,7 @@ export function _hread(
 
 export function _hwrite(
   hFile: number /* i32 */,
-  lpBuffer: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpBuffer: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   lBytes: number /* i32 */,
 ): number /* i32 */ {
   return libKERNEL32_dll._hwrite(hFile, util.pstrToFfi(lpBuffer), lBytes);
@@ -7816,7 +7816,7 @@ export function SignalObjectAndWait(
 export function OpenMutexA(
   dwDesiredAccess: number /* u32 */,
   bInheritHandle: boolean /* Windows.Win32.Foundation.BOOL */,
-  lpName: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */ {
   return util.pointerFromFfi(libKERNEL32_dll.OpenMutexA(dwDesiredAccess, util.boolToFfi(bInheritHandle), util.pstrToFfi(lpName)));
 }
@@ -7824,7 +7824,7 @@ export function OpenMutexA(
 export function OpenSemaphoreA(
   dwDesiredAccess: number /* u32 */,
   bInheritHandle: boolean /* Windows.Win32.Foundation.BOOL */,
-  lpName: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */ {
   return util.pointerFromFfi(libKERNEL32_dll.OpenSemaphoreA(dwDesiredAccess, util.boolToFfi(bInheritHandle), util.pstrToFfi(lpName)));
 }
@@ -7832,7 +7832,7 @@ export function OpenSemaphoreA(
 export function CreateWaitableTimerA(
   lpTimerAttributes: Deno.PointerValue | Uint8Array | null /* ptr */,
   bManualReset: boolean /* Windows.Win32.Foundation.BOOL */,
-  lpTimerName: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpTimerName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */ {
   return util.pointerFromFfi(libKERNEL32_dll.CreateWaitableTimerA(util.toPointer(lpTimerAttributes), util.boolToFfi(bManualReset), util.pstrToFfi(lpTimerName)));
 }
@@ -7840,14 +7840,14 @@ export function CreateWaitableTimerA(
 export function OpenWaitableTimerA(
   dwDesiredAccess: number /* u32 */,
   bInheritHandle: boolean /* Windows.Win32.Foundation.BOOL */,
-  lpTimerName: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpTimerName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */ {
   return util.pointerFromFfi(libKERNEL32_dll.OpenWaitableTimerA(dwDesiredAccess, util.boolToFfi(bInheritHandle), util.pstrToFfi(lpTimerName)));
 }
 
 export function CreateWaitableTimerExA(
   lpTimerAttributes: Deno.PointerValue | Uint8Array | null /* ptr */,
-  lpTimerName: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpTimerName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   dwFlags: number /* u32 */,
   dwDesiredAccess: number /* u32 */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */ {
@@ -7855,8 +7855,8 @@ export function CreateWaitableTimerExA(
 }
 
 export function GetFirmwareEnvironmentVariableA(
-  lpName: string | null /* Windows.Win32.Foundation.PSTR */,
-  lpGuid: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  lpGuid: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   pBuffer: Deno.PointerValue | Uint8Array | null /* ptr */,
   nSize: number /* u32 */,
 ): number /* u32 */ {
@@ -7864,8 +7864,8 @@ export function GetFirmwareEnvironmentVariableA(
 }
 
 export function GetFirmwareEnvironmentVariableW(
-  lpName: string | null /* Windows.Win32.Foundation.PWSTR */,
-  lpGuid: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  lpGuid: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pBuffer: Deno.PointerValue | Uint8Array | null /* ptr */,
   nSize: number /* u32 */,
 ): number /* u32 */ {
@@ -7873,8 +7873,8 @@ export function GetFirmwareEnvironmentVariableW(
 }
 
 export function GetFirmwareEnvironmentVariableExA(
-  lpName: string | null /* Windows.Win32.Foundation.PSTR */,
-  lpGuid: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  lpGuid: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   pBuffer: Deno.PointerValue | Uint8Array | null /* ptr */,
   nSize: number /* u32 */,
   pdwAttribubutes: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -7883,8 +7883,8 @@ export function GetFirmwareEnvironmentVariableExA(
 }
 
 export function GetFirmwareEnvironmentVariableExW(
-  lpName: string | null /* Windows.Win32.Foundation.PWSTR */,
-  lpGuid: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  lpGuid: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pBuffer: Deno.PointerValue | Uint8Array | null /* ptr */,
   nSize: number /* u32 */,
   pdwAttribubutes: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -7893,8 +7893,8 @@ export function GetFirmwareEnvironmentVariableExW(
 }
 
 export function SetFirmwareEnvironmentVariableA(
-  lpName: string | null /* Windows.Win32.Foundation.PSTR */,
-  lpGuid: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  lpGuid: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   pValue: Deno.PointerValue | Uint8Array | null /* ptr */,
   nSize: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
@@ -7902,8 +7902,8 @@ export function SetFirmwareEnvironmentVariableA(
 }
 
 export function SetFirmwareEnvironmentVariableW(
-  lpName: string | null /* Windows.Win32.Foundation.PWSTR */,
-  lpGuid: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  lpGuid: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pValue: Deno.PointerValue | Uint8Array | null /* ptr */,
   nSize: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
@@ -7911,8 +7911,8 @@ export function SetFirmwareEnvironmentVariableW(
 }
 
 export function SetFirmwareEnvironmentVariableExA(
-  lpName: string | null /* Windows.Win32.Foundation.PSTR */,
-  lpGuid: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  lpGuid: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   pValue: Deno.PointerValue | Uint8Array | null /* ptr */,
   nSize: number /* u32 */,
   dwAttributes: number /* u32 */,
@@ -7921,8 +7921,8 @@ export function SetFirmwareEnvironmentVariableExA(
 }
 
 export function SetFirmwareEnvironmentVariableExW(
-  lpName: string | null /* Windows.Win32.Foundation.PWSTR */,
-  lpGuid: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  lpGuid: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pValue: Deno.PointerValue | Uint8Array | null /* ptr */,
   nSize: number /* u32 */,
   dwAttributes: number /* u32 */,
@@ -7937,231 +7937,231 @@ export function IsNativeVhdBoot(
 }
 
 export function GetProfileIntA(
-  lpAppName: string | null /* Windows.Win32.Foundation.PSTR */,
-  lpKeyName: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpAppName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  lpKeyName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   nDefault: number /* i32 */,
 ): number /* u32 */ {
   return libKERNEL32_dll.GetProfileIntA(util.pstrToFfi(lpAppName), util.pstrToFfi(lpKeyName), nDefault);
 }
 
 export function GetProfileIntW(
-  lpAppName: string | null /* Windows.Win32.Foundation.PWSTR */,
-  lpKeyName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpAppName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  lpKeyName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   nDefault: number /* i32 */,
 ): number /* u32 */ {
   return libKERNEL32_dll.GetProfileIntW(util.pwstrToFfi(lpAppName), util.pwstrToFfi(lpKeyName), nDefault);
 }
 
 export function GetProfileStringA(
-  lpAppName: string | null /* Windows.Win32.Foundation.PSTR */,
-  lpKeyName: string | null /* Windows.Win32.Foundation.PSTR */,
-  lpDefault: string | null /* Windows.Win32.Foundation.PSTR */,
-  lpReturnedString: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpAppName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  lpKeyName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  lpDefault: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  lpReturnedString: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   nSize: number /* u32 */,
 ): number /* u32 */ {
   return libKERNEL32_dll.GetProfileStringA(util.pstrToFfi(lpAppName), util.pstrToFfi(lpKeyName), util.pstrToFfi(lpDefault), util.pstrToFfi(lpReturnedString), nSize);
 }
 
 export function GetProfileStringW(
-  lpAppName: string | null /* Windows.Win32.Foundation.PWSTR */,
-  lpKeyName: string | null /* Windows.Win32.Foundation.PWSTR */,
-  lpDefault: string | null /* Windows.Win32.Foundation.PWSTR */,
-  lpReturnedString: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpAppName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  lpKeyName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  lpDefault: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  lpReturnedString: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   nSize: number /* u32 */,
 ): number /* u32 */ {
   return libKERNEL32_dll.GetProfileStringW(util.pwstrToFfi(lpAppName), util.pwstrToFfi(lpKeyName), util.pwstrToFfi(lpDefault), util.pwstrToFfi(lpReturnedString), nSize);
 }
 
 export function WriteProfileStringA(
-  lpAppName: string | null /* Windows.Win32.Foundation.PSTR */,
-  lpKeyName: string | null /* Windows.Win32.Foundation.PSTR */,
-  lpString: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpAppName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  lpKeyName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  lpString: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libKERNEL32_dll.WriteProfileStringA(util.pstrToFfi(lpAppName), util.pstrToFfi(lpKeyName), util.pstrToFfi(lpString)));
 }
 
 export function WriteProfileStringW(
-  lpAppName: string | null /* Windows.Win32.Foundation.PWSTR */,
-  lpKeyName: string | null /* Windows.Win32.Foundation.PWSTR */,
-  lpString: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpAppName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  lpKeyName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  lpString: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libKERNEL32_dll.WriteProfileStringW(util.pwstrToFfi(lpAppName), util.pwstrToFfi(lpKeyName), util.pwstrToFfi(lpString)));
 }
 
 export function GetProfileSectionA(
-  lpAppName: string | null /* Windows.Win32.Foundation.PSTR */,
-  lpReturnedString: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpAppName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  lpReturnedString: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   nSize: number /* u32 */,
 ): number /* u32 */ {
   return libKERNEL32_dll.GetProfileSectionA(util.pstrToFfi(lpAppName), util.pstrToFfi(lpReturnedString), nSize);
 }
 
 export function GetProfileSectionW(
-  lpAppName: string | null /* Windows.Win32.Foundation.PWSTR */,
-  lpReturnedString: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpAppName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  lpReturnedString: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   nSize: number /* u32 */,
 ): number /* u32 */ {
   return libKERNEL32_dll.GetProfileSectionW(util.pwstrToFfi(lpAppName), util.pwstrToFfi(lpReturnedString), nSize);
 }
 
 export function WriteProfileSectionA(
-  lpAppName: string | null /* Windows.Win32.Foundation.PSTR */,
-  lpString: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpAppName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  lpString: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libKERNEL32_dll.WriteProfileSectionA(util.pstrToFfi(lpAppName), util.pstrToFfi(lpString)));
 }
 
 export function WriteProfileSectionW(
-  lpAppName: string | null /* Windows.Win32.Foundation.PWSTR */,
-  lpString: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpAppName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  lpString: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libKERNEL32_dll.WriteProfileSectionW(util.pwstrToFfi(lpAppName), util.pwstrToFfi(lpString)));
 }
 
 export function GetPrivateProfileIntA(
-  lpAppName: string | null /* Windows.Win32.Foundation.PSTR */,
-  lpKeyName: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpAppName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  lpKeyName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   nDefault: number /* i32 */,
-  lpFileName: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpFileName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): number /* u32 */ {
   return libKERNEL32_dll.GetPrivateProfileIntA(util.pstrToFfi(lpAppName), util.pstrToFfi(lpKeyName), nDefault, util.pstrToFfi(lpFileName));
 }
 
 export function GetPrivateProfileIntW(
-  lpAppName: string | null /* Windows.Win32.Foundation.PWSTR */,
-  lpKeyName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpAppName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  lpKeyName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   nDefault: number /* i32 */,
-  lpFileName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpFileName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
   return libKERNEL32_dll.GetPrivateProfileIntW(util.pwstrToFfi(lpAppName), util.pwstrToFfi(lpKeyName), nDefault, util.pwstrToFfi(lpFileName));
 }
 
 export function GetPrivateProfileStringA(
-  lpAppName: string | null /* Windows.Win32.Foundation.PSTR */,
-  lpKeyName: string | null /* Windows.Win32.Foundation.PSTR */,
-  lpDefault: string | null /* Windows.Win32.Foundation.PSTR */,
-  lpReturnedString: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpAppName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  lpKeyName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  lpDefault: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  lpReturnedString: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   nSize: number /* u32 */,
-  lpFileName: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpFileName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): number /* u32 */ {
   return libKERNEL32_dll.GetPrivateProfileStringA(util.pstrToFfi(lpAppName), util.pstrToFfi(lpKeyName), util.pstrToFfi(lpDefault), util.pstrToFfi(lpReturnedString), nSize, util.pstrToFfi(lpFileName));
 }
 
 export function GetPrivateProfileStringW(
-  lpAppName: string | null /* Windows.Win32.Foundation.PWSTR */,
-  lpKeyName: string | null /* Windows.Win32.Foundation.PWSTR */,
-  lpDefault: string | null /* Windows.Win32.Foundation.PWSTR */,
-  lpReturnedString: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpAppName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  lpKeyName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  lpDefault: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  lpReturnedString: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   nSize: number /* u32 */,
-  lpFileName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpFileName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
   return libKERNEL32_dll.GetPrivateProfileStringW(util.pwstrToFfi(lpAppName), util.pwstrToFfi(lpKeyName), util.pwstrToFfi(lpDefault), util.pwstrToFfi(lpReturnedString), nSize, util.pwstrToFfi(lpFileName));
 }
 
 export function WritePrivateProfileStringA(
-  lpAppName: string | null /* Windows.Win32.Foundation.PSTR */,
-  lpKeyName: string | null /* Windows.Win32.Foundation.PSTR */,
-  lpString: string | null /* Windows.Win32.Foundation.PSTR */,
-  lpFileName: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpAppName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  lpKeyName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  lpString: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  lpFileName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libKERNEL32_dll.WritePrivateProfileStringA(util.pstrToFfi(lpAppName), util.pstrToFfi(lpKeyName), util.pstrToFfi(lpString), util.pstrToFfi(lpFileName)));
 }
 
 export function WritePrivateProfileStringW(
-  lpAppName: string | null /* Windows.Win32.Foundation.PWSTR */,
-  lpKeyName: string | null /* Windows.Win32.Foundation.PWSTR */,
-  lpString: string | null /* Windows.Win32.Foundation.PWSTR */,
-  lpFileName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpAppName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  lpKeyName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  lpString: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  lpFileName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libKERNEL32_dll.WritePrivateProfileStringW(util.pwstrToFfi(lpAppName), util.pwstrToFfi(lpKeyName), util.pwstrToFfi(lpString), util.pwstrToFfi(lpFileName)));
 }
 
 export function GetPrivateProfileSectionA(
-  lpAppName: string | null /* Windows.Win32.Foundation.PSTR */,
-  lpReturnedString: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpAppName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  lpReturnedString: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   nSize: number /* u32 */,
-  lpFileName: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpFileName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): number /* u32 */ {
   return libKERNEL32_dll.GetPrivateProfileSectionA(util.pstrToFfi(lpAppName), util.pstrToFfi(lpReturnedString), nSize, util.pstrToFfi(lpFileName));
 }
 
 export function GetPrivateProfileSectionW(
-  lpAppName: string | null /* Windows.Win32.Foundation.PWSTR */,
-  lpReturnedString: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpAppName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  lpReturnedString: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   nSize: number /* u32 */,
-  lpFileName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpFileName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
   return libKERNEL32_dll.GetPrivateProfileSectionW(util.pwstrToFfi(lpAppName), util.pwstrToFfi(lpReturnedString), nSize, util.pwstrToFfi(lpFileName));
 }
 
 export function WritePrivateProfileSectionA(
-  lpAppName: string | null /* Windows.Win32.Foundation.PSTR */,
-  lpString: string | null /* Windows.Win32.Foundation.PSTR */,
-  lpFileName: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpAppName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  lpString: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  lpFileName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libKERNEL32_dll.WritePrivateProfileSectionA(util.pstrToFfi(lpAppName), util.pstrToFfi(lpString), util.pstrToFfi(lpFileName)));
 }
 
 export function WritePrivateProfileSectionW(
-  lpAppName: string | null /* Windows.Win32.Foundation.PWSTR */,
-  lpString: string | null /* Windows.Win32.Foundation.PWSTR */,
-  lpFileName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpAppName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  lpString: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  lpFileName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libKERNEL32_dll.WritePrivateProfileSectionW(util.pwstrToFfi(lpAppName), util.pwstrToFfi(lpString), util.pwstrToFfi(lpFileName)));
 }
 
 export function GetPrivateProfileSectionNamesA(
-  lpszReturnBuffer: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpszReturnBuffer: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   nSize: number /* u32 */,
-  lpFileName: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpFileName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): number /* u32 */ {
   return libKERNEL32_dll.GetPrivateProfileSectionNamesA(util.pstrToFfi(lpszReturnBuffer), nSize, util.pstrToFfi(lpFileName));
 }
 
 export function GetPrivateProfileSectionNamesW(
-  lpszReturnBuffer: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpszReturnBuffer: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   nSize: number /* u32 */,
-  lpFileName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpFileName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
   return libKERNEL32_dll.GetPrivateProfileSectionNamesW(util.pwstrToFfi(lpszReturnBuffer), nSize, util.pwstrToFfi(lpFileName));
 }
 
 export function GetPrivateProfileStructA(
-  lpszSection: string | null /* Windows.Win32.Foundation.PSTR */,
-  lpszKey: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpszSection: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  lpszKey: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   lpStruct: Deno.PointerValue | Uint8Array | null /* ptr */,
   uSizeStruct: number /* u32 */,
-  szFile: string | null /* Windows.Win32.Foundation.PSTR */,
+  szFile: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libKERNEL32_dll.GetPrivateProfileStructA(util.pstrToFfi(lpszSection), util.pstrToFfi(lpszKey), util.toPointer(lpStruct), uSizeStruct, util.pstrToFfi(szFile)));
 }
 
 export function GetPrivateProfileStructW(
-  lpszSection: string | null /* Windows.Win32.Foundation.PWSTR */,
-  lpszKey: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpszSection: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  lpszKey: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   lpStruct: Deno.PointerValue | Uint8Array | null /* ptr */,
   uSizeStruct: number /* u32 */,
-  szFile: string | null /* Windows.Win32.Foundation.PWSTR */,
+  szFile: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libKERNEL32_dll.GetPrivateProfileStructW(util.pwstrToFfi(lpszSection), util.pwstrToFfi(lpszKey), util.toPointer(lpStruct), uSizeStruct, util.pwstrToFfi(szFile)));
 }
 
 export function WritePrivateProfileStructA(
-  lpszSection: string | null /* Windows.Win32.Foundation.PSTR */,
-  lpszKey: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpszSection: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  lpszKey: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   lpStruct: Deno.PointerValue | Uint8Array | null /* ptr */,
   uSizeStruct: number /* u32 */,
-  szFile: string | null /* Windows.Win32.Foundation.PSTR */,
+  szFile: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libKERNEL32_dll.WritePrivateProfileStructA(util.pstrToFfi(lpszSection), util.pstrToFfi(lpszKey), util.toPointer(lpStruct), uSizeStruct, util.pstrToFfi(szFile)));
 }
 
 export function WritePrivateProfileStructW(
-  lpszSection: string | null /* Windows.Win32.Foundation.PWSTR */,
-  lpszKey: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpszSection: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  lpszKey: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   lpStruct: Deno.PointerValue | Uint8Array | null /* ptr */,
   uSizeStruct: number /* u32 */,
-  szFile: string | null /* Windows.Win32.Foundation.PWSTR */,
+  szFile: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libKERNEL32_dll.WritePrivateProfileStructW(util.pwstrToFfi(lpszSection), util.pwstrToFfi(lpszKey), util.toPointer(lpStruct), uSizeStruct, util.pwstrToFfi(szFile)));
 }
@@ -8181,44 +8181,44 @@ export function IsBadHugeWritePtr(
 }
 
 export function GetComputerNameA(
-  lpBuffer: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpBuffer: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   nSize: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libKERNEL32_dll.GetComputerNameA(util.pstrToFfi(lpBuffer), util.toPointer(nSize)));
 }
 
 export function GetComputerNameW(
-  lpBuffer: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpBuffer: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   nSize: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libKERNEL32_dll.GetComputerNameW(util.pwstrToFfi(lpBuffer), util.toPointer(nSize)));
 }
 
 export function DnsHostnameToComputerNameA(
-  Hostname: string | null /* Windows.Win32.Foundation.PSTR */,
-  ComputerName: string | null /* Windows.Win32.Foundation.PSTR */,
+  Hostname: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  ComputerName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   nSize: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libKERNEL32_dll.DnsHostnameToComputerNameA(util.pstrToFfi(Hostname), util.pstrToFfi(ComputerName), util.toPointer(nSize)));
 }
 
 export function DnsHostnameToComputerNameW(
-  Hostname: string | null /* Windows.Win32.Foundation.PWSTR */,
-  ComputerName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  Hostname: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  ComputerName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   nSize: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libKERNEL32_dll.DnsHostnameToComputerNameW(util.pwstrToFfi(Hostname), util.pwstrToFfi(ComputerName), util.toPointer(nSize)));
 }
 
 export function GetUserNameA(
-  lpBuffer: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpBuffer: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   pcbBuffer: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libADVAPI32_dll.GetUserNameA(util.pstrToFfi(lpBuffer), util.toPointer(pcbBuffer)));
 }
 
 export function GetUserNameW(
-  lpBuffer: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpBuffer: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pcbBuffer: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libADVAPI32_dll.GetUserNameW(util.pwstrToFfi(lpBuffer), util.toPointer(pcbBuffer)));
@@ -8250,8 +8250,8 @@ export function GetCurrentHwProfileW(
 }
 
 export function ReplacePartitionUnit(
-  TargetPartition: string | null /* Windows.Win32.Foundation.PWSTR */,
-  SparePartition: string | null /* Windows.Win32.Foundation.PWSTR */,
+  TargetPartition: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  SparePartition: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   Flags: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libKERNEL32_dll.ReplacePartitionUnit(util.pwstrToFfi(TargetPartition), util.pwstrToFfi(SparePartition), Flags));
@@ -8460,7 +8460,7 @@ export function RtlInitAnsiStringEx(
 
 export function RtlInitUnicodeString(
   DestinationString: Deno.PointerValue | Uint8Array | null /* ptr */,
-  SourceString: string | null /* Windows.Win32.Foundation.PWSTR */,
+  SourceString: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): void /* void */ {
   return libntdll_dll.RtlInitUnicodeString(util.toPointer(DestinationString), util.pwstrToFfi(SourceString));
 }
@@ -8491,7 +8491,7 @@ export function RtlUnicodeStringToOemString(
 
 export function RtlUnicodeToMultiByteSize(
   BytesInMultiByteString: Deno.PointerValue | Uint8Array | null /* ptr */,
-  UnicodeString: string | null /* Windows.Win32.Foundation.PWSTR */,
+  UnicodeString: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   BytesInUnicodeString: number /* u32 */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.NTSTATUS */ {
   return util.pointerFromFfi(libntdll_dll.RtlUnicodeToMultiByteSize(util.toPointer(BytesInMultiByteString), util.pwstrToFfi(UnicodeString), BytesInUnicodeString));
@@ -8522,7 +8522,7 @@ export function RecordFeatureUsage(
   featureId: number /* u32 */,
   kind: number /* u32 */,
   addend: number /* u32 */,
-  originName: string | null /* Windows.Win32.Foundation.PSTR */,
+  originName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): void /* void */ {
   return libapi_ms_win_core_featurestaging_l1_1_0_dll.RecordFeatureUsage(featureId, kind, addend, util.pstrToFfi(originName));
 }
@@ -8716,10 +8716,10 @@ export function GdiEntry13(): number /* u32 */ {
 
 export function RunSetupCommandA(
   hWnd: Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */,
-  szCmdName: string | null /* Windows.Win32.Foundation.PSTR */,
-  szInfSection: string | null /* Windows.Win32.Foundation.PSTR */,
-  szDir: string | null /* Windows.Win32.Foundation.PSTR */,
-  lpszTitle: string | null /* Windows.Win32.Foundation.PSTR */,
+  szCmdName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  szInfSection: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  szDir: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  lpszTitle: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   phEXE: Deno.PointerValue | Uint8Array | null /* ptr */,
   dwFlags: number /* u32 */,
   pvReserved: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -8729,10 +8729,10 @@ export function RunSetupCommandA(
 
 export function RunSetupCommandW(
   hWnd: Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */,
-  szCmdName: string | null /* Windows.Win32.Foundation.PWSTR */,
-  szInfSection: string | null /* Windows.Win32.Foundation.PWSTR */,
-  szDir: string | null /* Windows.Win32.Foundation.PWSTR */,
-  lpszTitle: string | null /* Windows.Win32.Foundation.PWSTR */,
+  szCmdName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  szInfSection: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  szDir: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  lpszTitle: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   phEXE: Deno.PointerValue | Uint8Array | null /* ptr */,
   dwFlags: number /* u32 */,
   pvReserved: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -8752,8 +8752,8 @@ export function NeedReboot(
 
 export function RebootCheckOnInstallA(
   hwnd: Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */,
-  pszINF: string | null /* Windows.Win32.Foundation.PSTR */,
-  pszSec: string | null /* Windows.Win32.Foundation.PSTR */,
+  pszINF: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  pszSec: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   dwReserved: number /* u32 */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
   return util.pointerFromFfi(libADVPACK_dll.RebootCheckOnInstallA(util.hwndToFfi(hwnd), util.pstrToFfi(pszINF), util.pstrToFfi(pszSec), dwReserved));
@@ -8761,19 +8761,19 @@ export function RebootCheckOnInstallA(
 
 export function RebootCheckOnInstallW(
   hwnd: Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */,
-  pszINF: string | null /* Windows.Win32.Foundation.PWSTR */,
-  pszSec: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pszINF: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  pszSec: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   dwReserved: number /* u32 */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
   return util.pointerFromFfi(libADVPACK_dll.RebootCheckOnInstallW(util.hwndToFfi(hwnd), util.pwstrToFfi(pszINF), util.pwstrToFfi(pszSec), dwReserved));
 }
 
 export function TranslateInfStringA(
-  pszInfFilename: string | null /* Windows.Win32.Foundation.PSTR */,
-  pszInstallSection: string | null /* Windows.Win32.Foundation.PSTR */,
-  pszTranslateSection: string | null /* Windows.Win32.Foundation.PSTR */,
-  pszTranslateKey: string | null /* Windows.Win32.Foundation.PSTR */,
-  pszBuffer: string | null /* Windows.Win32.Foundation.PSTR */,
+  pszInfFilename: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  pszInstallSection: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  pszTranslateSection: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  pszTranslateKey: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  pszBuffer: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   cchBuffer: number /* u32 */,
   pdwRequiredSize: Deno.PointerValue | Uint8Array | null /* ptr */,
   pvReserved: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -8782,11 +8782,11 @@ export function TranslateInfStringA(
 }
 
 export function TranslateInfStringW(
-  pszInfFilename: string | null /* Windows.Win32.Foundation.PWSTR */,
-  pszInstallSection: string | null /* Windows.Win32.Foundation.PWSTR */,
-  pszTranslateSection: string | null /* Windows.Win32.Foundation.PWSTR */,
-  pszTranslateKey: string | null /* Windows.Win32.Foundation.PWSTR */,
-  pszBuffer: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pszInfFilename: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  pszInstallSection: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  pszTranslateSection: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  pszTranslateKey: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  pszBuffer: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   cchBuffer: number /* u32 */,
   pdwRequiredSize: Deno.PointerValue | Uint8Array | null /* ptr */,
   pvReserved: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -8796,7 +8796,7 @@ export function TranslateInfStringW(
 
 export function RegInstallA(
   hmod: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HINSTANCE */,
-  pszSection: string | null /* Windows.Win32.Foundation.PSTR */,
+  pszSection: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   pstTable: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
   return util.pointerFromFfi(libADVPACK_dll.RegInstallA(util.toPointer(hmod), util.pstrToFfi(pszSection), util.toPointer(pstTable)));
@@ -8804,7 +8804,7 @@ export function RegInstallA(
 
 export function RegInstallW(
   hmod: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HINSTANCE */,
-  pszSection: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pszSection: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pstTable: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
   return util.pointerFromFfi(libADVPACK_dll.RegInstallW(util.toPointer(hmod), util.pwstrToFfi(pszSection), util.toPointer(pstTable)));
@@ -8813,7 +8813,7 @@ export function RegInstallW(
 export function LaunchINFSectionExW(
   hwnd: Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */,
   hInstance: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HINSTANCE */,
-  pszParms: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pszParms: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   nShow: number /* i32 */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
   return util.pointerFromFfi(libADVPACK_dll.LaunchINFSectionExW(util.hwndToFfi(hwnd), util.toPointer(hInstance), util.pwstrToFfi(pszParms), nShow));
@@ -8837,10 +8837,10 @@ export function ExecuteCabW(
 
 export function AdvInstallFileA(
   hwnd: Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */,
-  lpszSourceDir: string | null /* Windows.Win32.Foundation.PSTR */,
-  lpszSourceFile: string | null /* Windows.Win32.Foundation.PSTR */,
-  lpszDestDir: string | null /* Windows.Win32.Foundation.PSTR */,
-  lpszDestFile: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpszSourceDir: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  lpszSourceFile: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  lpszDestDir: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  lpszDestFile: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   dwFlags: number /* u32 */,
   dwReserved: number /* u32 */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
@@ -8849,10 +8849,10 @@ export function AdvInstallFileA(
 
 export function AdvInstallFileW(
   hwnd: Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */,
-  lpszSourceDir: string | null /* Windows.Win32.Foundation.PWSTR */,
-  lpszSourceFile: string | null /* Windows.Win32.Foundation.PWSTR */,
-  lpszDestDir: string | null /* Windows.Win32.Foundation.PWSTR */,
-  lpszDestFile: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpszSourceDir: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  lpszSourceFile: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  lpszDestDir: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  lpszDestFile: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   dwFlags: number /* u32 */,
   dwReserved: number /* u32 */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
@@ -8861,11 +8861,11 @@ export function AdvInstallFileW(
 
 export function RegSaveRestoreA(
   hWnd: Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */,
-  pszTitleString: string | null /* Windows.Win32.Foundation.PSTR */,
+  pszTitleString: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   hkBckupKey: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Registry.HKEY */,
-  pcszRootKey: string | null /* Windows.Win32.Foundation.PSTR */,
-  pcszSubKey: string | null /* Windows.Win32.Foundation.PSTR */,
-  pcszValueName: string | null /* Windows.Win32.Foundation.PSTR */,
+  pcszRootKey: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  pcszSubKey: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  pcszValueName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   dwFlags: number /* u32 */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
   return util.pointerFromFfi(libADVPACK_dll.RegSaveRestoreA(util.hwndToFfi(hWnd), util.pstrToFfi(pszTitleString), util.toPointer(hkBckupKey), util.pstrToFfi(pcszRootKey), util.pstrToFfi(pcszSubKey), util.pstrToFfi(pcszValueName), dwFlags));
@@ -8873,11 +8873,11 @@ export function RegSaveRestoreA(
 
 export function RegSaveRestoreW(
   hWnd: Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */,
-  pszTitleString: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pszTitleString: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   hkBckupKey: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Registry.HKEY */,
-  pcszRootKey: string | null /* Windows.Win32.Foundation.PWSTR */,
-  pcszSubKey: string | null /* Windows.Win32.Foundation.PWSTR */,
-  pcszValueName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pcszRootKey: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  pcszSubKey: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  pcszValueName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   dwFlags: number /* u32 */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
   return util.pointerFromFfi(libADVPACK_dll.RegSaveRestoreW(util.hwndToFfi(hWnd), util.pwstrToFfi(pszTitleString), util.toPointer(hkBckupKey), util.pwstrToFfi(pcszRootKey), util.pwstrToFfi(pcszSubKey), util.pwstrToFfi(pcszValueName), dwFlags));
@@ -8885,9 +8885,9 @@ export function RegSaveRestoreW(
 
 export function RegSaveRestoreOnINFA(
   hWnd: Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */,
-  pszTitle: string | null /* Windows.Win32.Foundation.PSTR */,
-  pszINF: string | null /* Windows.Win32.Foundation.PSTR */,
-  pszSection: string | null /* Windows.Win32.Foundation.PSTR */,
+  pszTitle: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  pszINF: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  pszSection: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   hHKLMBackKey: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Registry.HKEY */,
   hHKCUBackKey: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Registry.HKEY */,
   dwFlags: number /* u32 */,
@@ -8897,9 +8897,9 @@ export function RegSaveRestoreOnINFA(
 
 export function RegSaveRestoreOnINFW(
   hWnd: Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */,
-  pszTitle: string | null /* Windows.Win32.Foundation.PWSTR */,
-  pszINF: string | null /* Windows.Win32.Foundation.PWSTR */,
-  pszSection: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pszTitle: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  pszINF: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  pszSection: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   hHKLMBackKey: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Registry.HKEY */,
   hHKCUBackKey: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Registry.HKEY */,
   dwFlags: number /* u32 */,
@@ -8909,7 +8909,7 @@ export function RegSaveRestoreOnINFW(
 
 export function RegRestoreAllA(
   hWnd: Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */,
-  pszTitleString: string | null /* Windows.Win32.Foundation.PSTR */,
+  pszTitleString: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   hkBckupKey: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Registry.HKEY */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
   return util.pointerFromFfi(libADVPACK_dll.RegRestoreAllA(util.hwndToFfi(hWnd), util.pstrToFfi(pszTitleString), util.toPointer(hkBckupKey)));
@@ -8917,7 +8917,7 @@ export function RegRestoreAllA(
 
 export function RegRestoreAllW(
   hWnd: Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */,
-  pszTitleString: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pszTitleString: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   hkBckupKey: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Registry.HKEY */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
   return util.pointerFromFfi(libADVPACK_dll.RegRestoreAllW(util.hwndToFfi(hWnd), util.pwstrToFfi(pszTitleString), util.toPointer(hkBckupKey)));
@@ -8925,9 +8925,9 @@ export function RegRestoreAllW(
 
 export function FileSaveRestoreW(
   hDlg: Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */,
-  lpFileList: string | null /* Windows.Win32.Foundation.PWSTR */,
-  lpDir: string | null /* Windows.Win32.Foundation.PWSTR */,
-  lpBaseName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpFileList: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  lpDir: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  lpBaseName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   dwFlags: number /* u32 */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
   return util.pointerFromFfi(libADVPACK_dll.FileSaveRestoreW(util.hwndToFfi(hDlg), util.pwstrToFfi(lpFileList), util.pwstrToFfi(lpDir), util.pwstrToFfi(lpBaseName), dwFlags));
@@ -8935,11 +8935,11 @@ export function FileSaveRestoreW(
 
 export function FileSaveRestoreOnINFA(
   hWnd: Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */,
-  pszTitle: string | null /* Windows.Win32.Foundation.PSTR */,
-  pszINF: string | null /* Windows.Win32.Foundation.PSTR */,
-  pszSection: string | null /* Windows.Win32.Foundation.PSTR */,
-  pszBackupDir: string | null /* Windows.Win32.Foundation.PSTR */,
-  pszBaseBackupFile: string | null /* Windows.Win32.Foundation.PSTR */,
+  pszTitle: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  pszINF: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  pszSection: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  pszBackupDir: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  pszBaseBackupFile: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   dwFlags: number /* u32 */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
   return util.pointerFromFfi(libADVPACK_dll.FileSaveRestoreOnINFA(util.hwndToFfi(hWnd), util.pstrToFfi(pszTitle), util.pstrToFfi(pszINF), util.pstrToFfi(pszSection), util.pstrToFfi(pszBackupDir), util.pstrToFfi(pszBaseBackupFile), dwFlags));
@@ -8947,52 +8947,52 @@ export function FileSaveRestoreOnINFA(
 
 export function FileSaveRestoreOnINFW(
   hWnd: Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */,
-  pszTitle: string | null /* Windows.Win32.Foundation.PWSTR */,
-  pszINF: string | null /* Windows.Win32.Foundation.PWSTR */,
-  pszSection: string | null /* Windows.Win32.Foundation.PWSTR */,
-  pszBackupDir: string | null /* Windows.Win32.Foundation.PWSTR */,
-  pszBaseBackupFile: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pszTitle: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  pszINF: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  pszSection: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  pszBackupDir: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  pszBaseBackupFile: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   dwFlags: number /* u32 */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
   return util.pointerFromFfi(libADVPACK_dll.FileSaveRestoreOnINFW(util.hwndToFfi(hWnd), util.pwstrToFfi(pszTitle), util.pwstrToFfi(pszINF), util.pwstrToFfi(pszSection), util.pwstrToFfi(pszBackupDir), util.pwstrToFfi(pszBaseBackupFile), dwFlags));
 }
 
 export function AddDelBackupEntryA(
-  lpcszFileList: string | null /* Windows.Win32.Foundation.PSTR */,
-  lpcszBackupDir: string | null /* Windows.Win32.Foundation.PSTR */,
-  lpcszBaseName: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpcszFileList: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  lpcszBackupDir: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  lpcszBaseName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   dwFlags: number /* u32 */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
   return util.pointerFromFfi(libADVPACK_dll.AddDelBackupEntryA(util.pstrToFfi(lpcszFileList), util.pstrToFfi(lpcszBackupDir), util.pstrToFfi(lpcszBaseName), dwFlags));
 }
 
 export function AddDelBackupEntryW(
-  lpcszFileList: string | null /* Windows.Win32.Foundation.PWSTR */,
-  lpcszBackupDir: string | null /* Windows.Win32.Foundation.PWSTR */,
-  lpcszBaseName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpcszFileList: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  lpcszBackupDir: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  lpcszBaseName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   dwFlags: number /* u32 */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
   return util.pointerFromFfi(libADVPACK_dll.AddDelBackupEntryW(util.pwstrToFfi(lpcszFileList), util.pwstrToFfi(lpcszBackupDir), util.pwstrToFfi(lpcszBaseName), dwFlags));
 }
 
 export function FileSaveMarkNotExistA(
-  lpFileList: string | null /* Windows.Win32.Foundation.PSTR */,
-  lpDir: string | null /* Windows.Win32.Foundation.PSTR */,
-  lpBaseName: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpFileList: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  lpDir: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  lpBaseName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
   return util.pointerFromFfi(libADVPACK_dll.FileSaveMarkNotExistA(util.pstrToFfi(lpFileList), util.pstrToFfi(lpDir), util.pstrToFfi(lpBaseName)));
 }
 
 export function FileSaveMarkNotExistW(
-  lpFileList: string | null /* Windows.Win32.Foundation.PWSTR */,
-  lpDir: string | null /* Windows.Win32.Foundation.PWSTR */,
-  lpBaseName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpFileList: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  lpDir: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  lpBaseName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
   return util.pointerFromFfi(libADVPACK_dll.FileSaveMarkNotExistW(util.pwstrToFfi(lpFileList), util.pwstrToFfi(lpDir), util.pwstrToFfi(lpBaseName)));
 }
 
 export function GetVersionFromFileA(
-  lpszFilename: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpszFilename: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   pdwMSVer: Deno.PointerValue | Uint8Array | null /* ptr */,
   pdwLSVer: Deno.PointerValue | Uint8Array | null /* ptr */,
   bVersion: boolean /* Windows.Win32.Foundation.BOOL */,
@@ -9001,7 +9001,7 @@ export function GetVersionFromFileA(
 }
 
 export function GetVersionFromFileW(
-  lpszFilename: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpszFilename: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pdwMSVer: Deno.PointerValue | Uint8Array | null /* ptr */,
   pdwLSVer: Deno.PointerValue | Uint8Array | null /* ptr */,
   bVersion: boolean /* Windows.Win32.Foundation.BOOL */,
@@ -9010,7 +9010,7 @@ export function GetVersionFromFileW(
 }
 
 export function GetVersionFromFileExA(
-  lpszFilename: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpszFilename: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   pdwMSVer: Deno.PointerValue | Uint8Array | null /* ptr */,
   pdwLSVer: Deno.PointerValue | Uint8Array | null /* ptr */,
   bVersion: boolean /* Windows.Win32.Foundation.BOOL */,
@@ -9019,7 +9019,7 @@ export function GetVersionFromFileExA(
 }
 
 export function GetVersionFromFileExW(
-  lpszFilename: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpszFilename: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pdwMSVer: Deno.PointerValue | Uint8Array | null /* ptr */,
   pdwLSVer: Deno.PointerValue | Uint8Array | null /* ptr */,
   bVersion: boolean /* Windows.Win32.Foundation.BOOL */,
@@ -9035,14 +9035,14 @@ export function IsNTAdmin(
 }
 
 export function DelNodeA(
-  pszFileOrDirName: string | null /* Windows.Win32.Foundation.PSTR */,
+  pszFileOrDirName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   dwFlags: number /* u32 */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
   return util.pointerFromFfi(libADVPACK_dll.DelNodeA(util.pstrToFfi(pszFileOrDirName), dwFlags));
 }
 
 export function DelNodeW(
-  pszFileOrDirName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pszFileOrDirName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   dwFlags: number /* u32 */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
   return util.pointerFromFfi(libADVPACK_dll.DelNodeW(util.pwstrToFfi(pszFileOrDirName), dwFlags));
@@ -9051,15 +9051,15 @@ export function DelNodeW(
 export function DelNodeRunDLL32W(
   hwnd: Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */,
   hInstance: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HINSTANCE */,
-  pszParms: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pszParms: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   nShow: number /* i32 */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
   return util.pointerFromFfi(libADVPACK_dll.DelNodeRunDLL32W(util.hwndToFfi(hwnd), util.toPointer(hInstance), util.pwstrToFfi(pszParms), nShow));
 }
 
 export function OpenINFEngineA(
-  pszInfFilename: string | null /* Windows.Win32.Foundation.PSTR */,
-  pszInstallSection: string | null /* Windows.Win32.Foundation.PSTR */,
+  pszInfFilename: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  pszInstallSection: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   dwFlags: number /* u32 */,
   phInf: Deno.PointerValue | Uint8Array | null /* ptr */,
   pvReserved: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -9068,8 +9068,8 @@ export function OpenINFEngineA(
 }
 
 export function OpenINFEngineW(
-  pszInfFilename: string | null /* Windows.Win32.Foundation.PWSTR */,
-  pszInstallSection: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pszInfFilename: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  pszInstallSection: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   dwFlags: number /* u32 */,
   phInf: Deno.PointerValue | Uint8Array | null /* ptr */,
   pvReserved: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -9079,10 +9079,10 @@ export function OpenINFEngineW(
 
 export function TranslateInfStringExA(
   hInf: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pszInfFilename: string | null /* Windows.Win32.Foundation.PSTR */,
-  pszTranslateSection: string | null /* Windows.Win32.Foundation.PSTR */,
-  pszTranslateKey: string | null /* Windows.Win32.Foundation.PSTR */,
-  pszBuffer: string | null /* Windows.Win32.Foundation.PSTR */,
+  pszInfFilename: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  pszTranslateSection: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  pszTranslateKey: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  pszBuffer: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   dwBufferSize: number /* u32 */,
   pdwRequiredSize: Deno.PointerValue | Uint8Array | null /* ptr */,
   pvReserved: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -9092,10 +9092,10 @@ export function TranslateInfStringExA(
 
 export function TranslateInfStringExW(
   hInf: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pszInfFilename: string | null /* Windows.Win32.Foundation.PWSTR */,
-  pszTranslateSection: string | null /* Windows.Win32.Foundation.PWSTR */,
-  pszTranslateKey: string | null /* Windows.Win32.Foundation.PWSTR */,
-  pszBuffer: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pszInfFilename: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  pszTranslateSection: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  pszTranslateKey: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  pszBuffer: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   dwBufferSize: number /* u32 */,
   pdwRequiredSize: Deno.PointerValue | Uint8Array | null /* ptr */,
   pvReserved: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -9110,10 +9110,10 @@ export function CloseINFEngine(
 }
 
 export function ExtractFilesA(
-  pszCabName: string | null /* Windows.Win32.Foundation.PSTR */,
-  pszExpandDir: string | null /* Windows.Win32.Foundation.PSTR */,
+  pszCabName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  pszExpandDir: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   dwFlags: number /* u32 */,
-  pszFileList: string | null /* Windows.Win32.Foundation.PSTR */,
+  pszFileList: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   lpReserved: Deno.PointerValue | Uint8Array | null /* ptr */,
   dwReserved: number /* u32 */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
@@ -9121,10 +9121,10 @@ export function ExtractFilesA(
 }
 
 export function ExtractFilesW(
-  pszCabName: string | null /* Windows.Win32.Foundation.PWSTR */,
-  pszExpandDir: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pszCabName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  pszExpandDir: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   dwFlags: number /* u32 */,
-  pszFileList: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pszFileList: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   lpReserved: Deno.PointerValue | Uint8Array | null /* ptr */,
   dwReserved: number /* u32 */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
@@ -9134,7 +9134,7 @@ export function ExtractFilesW(
 export function LaunchINFSectionW(
   hwndOwner: Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */,
   hInstance: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HINSTANCE */,
-  pszParams: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pszParams: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   nShow: number /* i32 */,
 ): number /* i32 */ {
   return libADVPACK_dll.LaunchINFSectionW(util.hwndToFfi(hwndOwner), util.toPointer(hInstance), util.pwstrToFfi(pszParams), nShow);
@@ -9143,7 +9143,7 @@ export function LaunchINFSectionW(
 export function UserInstStubWrapperA(
   hwnd: Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */,
   hInstance: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HINSTANCE */,
-  pszParms: string | null /* Windows.Win32.Foundation.PSTR */,
+  pszParms: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   nShow: number /* i32 */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
   return util.pointerFromFfi(libADVPACK_dll.UserInstStubWrapperA(util.hwndToFfi(hwnd), util.toPointer(hInstance), util.pstrToFfi(pszParms), nShow));
@@ -9152,7 +9152,7 @@ export function UserInstStubWrapperA(
 export function UserInstStubWrapperW(
   hwnd: Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */,
   hInstance: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HINSTANCE */,
-  pszParms: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pszParms: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   nShow: number /* i32 */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
   return util.pointerFromFfi(libADVPACK_dll.UserInstStubWrapperW(util.hwndToFfi(hwnd), util.toPointer(hInstance), util.pwstrToFfi(pszParms), nShow));
@@ -9161,7 +9161,7 @@ export function UserInstStubWrapperW(
 export function UserUnInstStubWrapperA(
   hwnd: Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */,
   hInstance: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HINSTANCE */,
-  pszParms: string | null /* Windows.Win32.Foundation.PSTR */,
+  pszParms: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   nShow: number /* i32 */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
   return util.pointerFromFfi(libADVPACK_dll.UserUnInstStubWrapperA(util.hwndToFfi(hwnd), util.toPointer(hInstance), util.pstrToFfi(pszParms), nShow));
@@ -9170,7 +9170,7 @@ export function UserUnInstStubWrapperA(
 export function UserUnInstStubWrapperW(
   hwnd: Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */,
   hInstance: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HINSTANCE */,
-  pszParms: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pszParms: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   nShow: number /* i32 */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
   return util.pointerFromFfi(libADVPACK_dll.UserUnInstStubWrapperW(util.hwndToFfi(hwnd), util.toPointer(hInstance), util.pwstrToFfi(pszParms), nShow));

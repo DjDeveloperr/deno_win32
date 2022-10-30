@@ -456,7 +456,7 @@ export type PWSTR = Deno.PointerValue | Uint8Array | null;
  */
 export interface _uName_e__Union {
   /** Windows.Win32.Foundation.PWSTR */
-  pwszName: string | null;
+  pwszName: string | null | Uint8Array | Uint16Array;
   /** u32 */
   ulPropid: number;
 }
@@ -532,7 +532,7 @@ try {
 // Symbols
 
 export function LoadIFilter(
-  pwcsPath: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pwcsPath: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pUnkOuter: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Com.IUnknown */,
   ppIUnk: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
@@ -540,7 +540,7 @@ export function LoadIFilter(
 }
 
 export function LoadIFilterEx(
-  pwcsPath: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pwcsPath: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   dwFlags: number /* u32 */,
   riid: Deno.PointerValue | Uint8Array | null /* ptr */,
   ppIUnk: Deno.PointerValue | Uint8Array | null /* ptr */,

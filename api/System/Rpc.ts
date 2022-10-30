@@ -1369,7 +1369,7 @@ export type PSTR = Deno.PointerValue | Uint8Array | null;
  */
 export interface OUTPUT_DEBUG_STRING_INFO {
   /** Windows.Win32.Foundation.PSTR */
-  lpDebugStringData: string | null;
+  lpDebugStringData: string | null | Uint8Array;
   /** u16 */
   fUnicode: number;
   /** u16 */
@@ -2590,7 +2590,7 @@ export interface RPC_C_OPT_COOKIE_AUTH_DESCRIPTOR {
   /** u32 */
   BufferSize: number;
   /** Windows.Win32.Foundation.PSTR */
-  Buffer: string | null;
+  Buffer: string | null | Uint8Array;
 }
 
 export const sizeofRPC_C_OPT_COOKIE_AUTH_DESCRIPTOR = 16;
@@ -2957,7 +2957,7 @@ export interface RPC_EXTENDED_ERROR_INFO {
   /** u32 */
   Version: number;
   /** Windows.Win32.Foundation.PWSTR */
-  ComputerName: string | null;
+  ComputerName: string | null | Uint8Array | Uint16Array;
   /** u32 */
   ProcessID: number;
   /** _u_e__Union */
@@ -12497,7 +12497,7 @@ export function MesIncrementalHandleReset(
 }
 
 export function MesEncodeFixedBufferHandleCreate(
-  pBuffer: string | null /* Windows.Win32.Foundation.PSTR */,
+  pBuffer: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   BufferSize: number /* u32 */,
   pEncodedSize: Deno.PointerValue | Uint8Array | null /* ptr */,
   pHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -12514,7 +12514,7 @@ export function MesEncodeDynBufferHandleCreate(
 }
 
 export function MesDecodeBufferHandleCreate(
-  Buffer: string | null /* Windows.Win32.Foundation.PSTR */,
+  Buffer: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   BufferSize: number /* u32 */,
   pHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): RPC_STATUS /* Windows.Win32.System.Rpc.RPC_STATUS */ {

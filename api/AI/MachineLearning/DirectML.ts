@@ -5683,7 +5683,7 @@ export interface DML_INPUT_GRAPH_EDGE_DESC {
   /** u32 */
   ToNodeInputIndex: number;
   /** Windows.Win32.Foundation.PSTR */
-  Name: string | null;
+  Name: string | null | Uint8Array;
 }
 
 export const sizeofDML_INPUT_GRAPH_EDGE_DESC = 24;
@@ -5717,7 +5717,7 @@ export interface DML_OUTPUT_GRAPH_EDGE_DESC {
   /** u32 */
   GraphOutputIndex: number;
   /** Windows.Win32.Foundation.PSTR */
-  Name: string | null;
+  Name: string | null | Uint8Array;
 }
 
 export const sizeofDML_OUTPUT_GRAPH_EDGE_DESC = 24;
@@ -5753,7 +5753,7 @@ export interface DML_INTERMEDIATE_GRAPH_EDGE_DESC {
   /** u32 */
   ToNodeInputIndex: number;
   /** Windows.Win32.Foundation.PSTR */
-  Name: string | null;
+  Name: string | null | Uint8Array;
 }
 
 export const sizeofDML_INTERMEDIATE_GRAPH_EDGE_DESC = 24;
@@ -5807,7 +5807,7 @@ export interface DML_OPERATOR_GRAPH_NODE_DESC {
   /** Windows.Win32.AI.MachineLearning.DirectML.IDMLOperator */
   Operator: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.Foundation.PSTR */
-  Name: string | null;
+  Name: string | null | Uint8Array;
 }
 
 export const sizeofDML_OPERATOR_GRAPH_NODE_DESC = 16;

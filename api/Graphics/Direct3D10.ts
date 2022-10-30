@@ -1663,7 +1663,7 @@ export type PSTR = Deno.PointerValue | Uint8Array | null;
  */
 export interface D3D10_INPUT_ELEMENT_DESC {
   /** Windows.Win32.Foundation.PSTR */
-  SemanticName: string | null;
+  SemanticName: string | null | Uint8Array;
   /** u32 */
   SemanticIndex: number;
   /** Windows.Win32.Graphics.Dxgi.Common.DXGI_FORMAT */
@@ -1708,7 +1708,7 @@ export function allocD3D10_INPUT_ELEMENT_DESC(data?: Partial<D3D10_INPUT_ELEMENT
  */
 export interface D3D10_SO_DECLARATION_ENTRY {
   /** Windows.Win32.Foundation.PSTR */
-  SemanticName: string | null;
+  SemanticName: string | null | Uint8Array;
   /** u32 */
   SemanticIndex: number;
   /** u8 */
@@ -2294,7 +2294,7 @@ export interface _Anonymous1_e__Union {
   /** usize */
   Data0: Deno.PointerValue;
   /** Windows.Win32.Foundation.PWSTR */
-  String: string | null;
+  String: string | null | Uint8Array | Uint16Array;
   /** usize */
   u: Deno.PointerValue;
   /** ptr */
@@ -3330,7 +3330,7 @@ export interface D3D10_SHADER_DESC {
   /** u32 */
   Version: number;
   /** Windows.Win32.Foundation.PSTR */
-  Creator: string | null;
+  Creator: string | null | Uint8Array;
   /** u32 */
   Flags: number;
   /** u32 */
@@ -3458,7 +3458,7 @@ export function allocD3D10_SHADER_DESC(data?: Partial<D3D10_SHADER_DESC>): Uint8
  */
 export interface D3D10_SHADER_BUFFER_DESC {
   /** Windows.Win32.Foundation.PSTR */
-  Name: string | null;
+  Name: string | null | Uint8Array;
   /** Windows.Win32.Graphics.Direct3D.D3D_CBUFFER_TYPE */
   Type: D3D_CBUFFER_TYPE;
   /** u32 */
@@ -3495,7 +3495,7 @@ export function allocD3D10_SHADER_BUFFER_DESC(data?: Partial<D3D10_SHADER_BUFFER
  */
 export interface D3D10_SHADER_VARIABLE_DESC {
   /** Windows.Win32.Foundation.PSTR */
-  Name: string | null;
+  Name: string | null | Uint8Array;
   /** u32 */
   StartOffset: number;
   /** u32 */
@@ -3576,7 +3576,7 @@ export function allocD3D10_SHADER_TYPE_DESC(data?: Partial<D3D10_SHADER_TYPE_DES
  */
 export interface D3D10_SHADER_INPUT_BIND_DESC {
   /** Windows.Win32.Foundation.PSTR */
-  Name: string | null;
+  Name: string | null | Uint8Array;
   /** Windows.Win32.Graphics.Direct3D.D3D_SHADER_INPUT_TYPE */
   Type: D3D_SHADER_INPUT_TYPE;
   /** u32 */
@@ -3626,7 +3626,7 @@ export function allocD3D10_SHADER_INPUT_BIND_DESC(data?: Partial<D3D10_SHADER_IN
  */
 export interface D3D10_SIGNATURE_PARAMETER_DESC {
   /** Windows.Win32.Foundation.PSTR */
-  SemanticName: string | null;
+  SemanticName: string | null | Uint8Array;
   /** u32 */
   SemanticIndex: number;
   /** u32 */
@@ -3786,7 +3786,7 @@ export function allocD3D10_STATE_BLOCK_MASK(data?: Partial<D3D10_STATE_BLOCK_MAS
  */
 export interface D3D10_EFFECT_TYPE_DESC {
   /** Windows.Win32.Foundation.PSTR */
-  TypeName: string | null;
+  TypeName: string | null | Uint8Array;
   /** Windows.Win32.Graphics.Direct3D.D3D_SHADER_VARIABLE_CLASS */
   Class: D3D_SHADER_VARIABLE_CLASS;
   /** Windows.Win32.Graphics.Direct3D.D3D_SHADER_VARIABLE_TYPE */
@@ -3844,9 +3844,9 @@ export function allocD3D10_EFFECT_TYPE_DESC(data?: Partial<D3D10_EFFECT_TYPE_DES
  */
 export interface D3D10_EFFECT_VARIABLE_DESC {
   /** Windows.Win32.Foundation.PSTR */
-  Name: string | null;
+  Name: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  Semantic: string | null;
+  Semantic: string | null | Uint8Array;
   /** u32 */
   Flags: number;
   /** u32 */
@@ -3896,7 +3896,7 @@ export interface D3D10_EFFECT_SHADER_DESC {
   /** u32 */
   BytecodeLength: number;
   /** Windows.Win32.Foundation.PSTR */
-  SODecl: string | null;
+  SODecl: string | null | Uint8Array;
   /** u32 */
   NumInputSignatureEntries: number;
   /** u32 */
@@ -3935,7 +3935,7 @@ export function allocD3D10_EFFECT_SHADER_DESC(data?: Partial<D3D10_EFFECT_SHADER
  */
 export interface D3D10_PASS_DESC {
   /** Windows.Win32.Foundation.PSTR */
-  Name: string | null;
+  Name: string | null | Uint8Array;
   /** u32 */
   Annotations: number;
   /** ptr */
@@ -4004,7 +4004,7 @@ export function allocD3D10_PASS_SHADER_DESC(data?: Partial<D3D10_PASS_SHADER_DES
  */
 export interface D3D10_TECHNIQUE_DESC {
   /** Windows.Win32.Foundation.PSTR */
-  Name: string | null;
+  Name: string | null | Uint8Array;
   /** u32 */
   Passes: number;
   /** u32 */
@@ -4844,13 +4844,13 @@ export function D3D10CreateBlob(
 }
 
 export function D3D10CompileShader(
-  pSrcData: string | null /* Windows.Win32.Foundation.PSTR */,
+  pSrcData: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   SrcDataSize: Deno.PointerValue /* usize */,
-  pFileName: string | null /* Windows.Win32.Foundation.PSTR */,
+  pFileName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   pDefines: Deno.PointerValue | Uint8Array | null /* ptr */,
   pInclude: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Graphics.Direct3D.ID3DInclude */,
-  pFunctionName: string | null /* Windows.Win32.Foundation.PSTR */,
-  pProfile: string | null /* Windows.Win32.Foundation.PSTR */,
+  pFunctionName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  pProfile: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   Flags: number /* u32 */,
   ppShader: Deno.PointerValue | Uint8Array | null /* ptr */,
   ppErrorMsgs: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -4862,7 +4862,7 @@ export function D3D10DisassembleShader(
   pShader: Deno.PointerValue | Uint8Array | null /* ptr */,
   BytecodeLength: Deno.PointerValue /* usize */,
   EnableColorCode: boolean /* Windows.Win32.Foundation.BOOL */,
-  pComments: string | null /* Windows.Win32.Foundation.PSTR */,
+  pComments: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   ppDisassembly: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
   return util.pointerFromFfi(libd3d10_dll.D3D10DisassembleShader(util.toPointer(pShader), BytecodeLength, util.boolToFfi(EnableColorCode), util.pstrToFfi(pComments), util.toPointer(ppDisassembly)));
@@ -4895,9 +4895,9 @@ export function D3D10ReflectShader(
 }
 
 export function D3D10PreprocessShader(
-  pSrcData: string | null /* Windows.Win32.Foundation.PSTR */,
+  pSrcData: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   SrcDataSize: Deno.PointerValue /* usize */,
-  pFileName: string | null /* Windows.Win32.Foundation.PSTR */,
+  pFileName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   pDefines: Deno.PointerValue | Uint8Array | null /* ptr */,
   pInclude: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Graphics.Direct3D.ID3DInclude */,
   ppShaderText: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -5011,7 +5011,7 @@ export function D3D10CreateStateBlock(
 export function D3D10CompileEffectFromMemory(
   pData: Deno.PointerValue | Uint8Array | null /* ptr */,
   DataLength: Deno.PointerValue /* usize */,
-  pSrcFileName: string | null /* Windows.Win32.Foundation.PSTR */,
+  pSrcFileName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   pDefines: Deno.PointerValue | Uint8Array | null /* ptr */,
   pInclude: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Graphics.Direct3D.ID3DInclude */,
   HLSLFlags: number /* u32 */,

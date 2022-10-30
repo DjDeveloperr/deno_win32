@@ -118,9 +118,9 @@ export function UalInstrument(
 }
 
 export function UalRegisterProduct(
-  wszProductName: string | null /* Windows.Win32.Foundation.PWSTR */,
-  wszRoleName: string | null /* Windows.Win32.Foundation.PWSTR */,
-  wszGuid: string | null /* Windows.Win32.Foundation.PWSTR */,
+  wszProductName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  wszRoleName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  wszGuid: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
   return util.pointerFromFfi(libualapi_dll.UalRegisterProduct(util.pwstrToFfi(wszProductName), util.pwstrToFfi(wszRoleName), util.pwstrToFfi(wszGuid)));
 }

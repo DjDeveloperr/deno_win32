@@ -232,17 +232,17 @@ export interface CERT_SELECT_STRUCT_A {
   /** Windows.Win32.Foundation.HINSTANCE */
   hInstance: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.Foundation.PSTR */
-  pTemplateName: string | null;
+  pTemplateName: string | null | Uint8Array;
   /** Windows.Win32.Security.Cryptography.UI.CERT_SELECT_STRUCT_FLAGS */
   dwFlags: CERT_SELECT_STRUCT_FLAGS;
   /** Windows.Win32.Foundation.PSTR */
-  szTitle: string | null;
+  szTitle: string | null | Uint8Array;
   /** u32 */
   cCertStore: number;
   /** ptr */
   arrayCertStore: Deno.PointerValue | Uint8Array | null;
   /** Windows.Win32.Foundation.PSTR */
-  szPurposeOid: string | null;
+  szPurposeOid: string | null | Uint8Array;
   /** u32 */
   cCertContext: number;
   /** ptr */
@@ -254,7 +254,7 @@ export interface CERT_SELECT_STRUCT_A {
   /** Windows.Win32.Security.Cryptography.UI.PFNCMFILTERPROC */
   pfnFilter: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.Foundation.PSTR */
-  szHelpFileName: string | null;
+  szHelpFileName: string | null | Uint8Array;
   /** u32 */
   dwHelpId: number;
   /** usize */
@@ -333,17 +333,17 @@ export interface CERT_SELECT_STRUCT_W {
   /** Windows.Win32.Foundation.HINSTANCE */
   hInstance: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.Foundation.PWSTR */
-  pTemplateName: string | null;
+  pTemplateName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Security.Cryptography.UI.CERT_SELECT_STRUCT_FLAGS */
   dwFlags: CERT_SELECT_STRUCT_FLAGS;
   /** Windows.Win32.Foundation.PWSTR */
-  szTitle: string | null;
+  szTitle: string | null | Uint8Array | Uint16Array;
   /** u32 */
   cCertStore: number;
   /** ptr */
   arrayCertStore: Deno.PointerValue | Uint8Array | null;
   /** Windows.Win32.Foundation.PSTR */
-  szPurposeOid: string | null;
+  szPurposeOid: string | null | Uint8Array;
   /** u32 */
   cCertContext: number;
   /** ptr */
@@ -355,7 +355,7 @@ export interface CERT_SELECT_STRUCT_W {
   /** Windows.Win32.Security.Cryptography.UI.PFNCMFILTERPROC */
   pfnFilter: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.Foundation.PWSTR */
-  szHelpFileName: string | null;
+  szHelpFileName: string | null | Uint8Array | Uint16Array;
   /** u32 */
   dwHelpId: number;
   /** usize */
@@ -434,7 +434,7 @@ export interface CERT_VIEWPROPERTIES_STRUCT_A {
   /** Windows.Win32.Security.Cryptography.UI.CERT_VIEWPROPERTIES_STRUCT_FLAGS */
   dwFlags: CERT_VIEWPROPERTIES_STRUCT_FLAGS;
   /** Windows.Win32.Foundation.PSTR */
-  szTitle: string | null;
+  szTitle: string | null | Uint8Array;
   /** ptr */
   pCertContext: Deno.PointerValue | Uint8Array | null;
   /** ptr */
@@ -460,7 +460,7 @@ export interface CERT_VIEWPROPERTIES_STRUCT_A {
   /** u32 */
   dwPad: number;
   /** Windows.Win32.Foundation.PSTR */
-  szHelpFileName: string | null;
+  szHelpFileName: string | null | Uint8Array;
   /** u32 */
   dwHelpId: number;
   /** u32 */
@@ -548,7 +548,7 @@ export interface CERT_VIEWPROPERTIES_STRUCT_W {
   /** Windows.Win32.Security.Cryptography.UI.CERT_VIEWPROPERTIES_STRUCT_FLAGS */
   dwFlags: CERT_VIEWPROPERTIES_STRUCT_FLAGS;
   /** Windows.Win32.Foundation.PWSTR */
-  szTitle: string | null;
+  szTitle: string | null | Uint8Array | Uint16Array;
   /** ptr */
   pCertContext: Deno.PointerValue | Uint8Array | null;
   /** ptr */
@@ -574,7 +574,7 @@ export interface CERT_VIEWPROPERTIES_STRUCT_W {
   /** u32 */
   dwPad: number;
   /** Windows.Win32.Foundation.PWSTR */
-  szHelpFileName: string | null;
+  szHelpFileName: string | null | Uint8Array | Uint16Array;
   /** u32 */
   dwHelpId: number;
   /** u32 */
@@ -654,7 +654,7 @@ export function allocCERT_VIEWPROPERTIES_STRUCT_W(data?: Partial<CERT_VIEWPROPER
  */
 export interface CERT_FILTER_EXTENSION_MATCH {
   /** Windows.Win32.Foundation.PSTR */
-  szExtensionOID: string | null;
+  szExtensionOID: string | null | Uint8Array;
   /** u32 */
   dwTestOperation: number;
   /** ptr */
@@ -730,7 +730,7 @@ export interface CERT_VERIFY_CERTIFICATE_TRUST {
   /** ptr */
   pdwErrors: Deno.PointerValue | Uint8Array | null;
   /** Windows.Win32.Foundation.PSTR */
-  pszUsageOid: string | null;
+  pszUsageOid: string | null | Uint8Array;
   /** usize */
   hprov: Deno.PointerValue;
   /** u32 */
@@ -878,9 +878,9 @@ export interface CRYPTUI_CERT_MGR_STRUCT {
   /** u32 */
   dwFlags: number;
   /** Windows.Win32.Foundation.PWSTR */
-  pwszTitle: string | null;
+  pwszTitle: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PSTR */
-  pszInitUsageOID: string | null;
+  pszInitUsageOID: string | null | Uint8Array;
 }
 
 export const sizeofCRYPTUI_CERT_MGR_STRUCT = 40;
@@ -922,7 +922,7 @@ export interface CRYPTUI_WIZ_DIGITAL_SIGN_BLOB_INFO {
   /** ptr */
   pbBlob: Deno.PointerValue | Uint8Array | null;
   /** Windows.Win32.Foundation.PWSTR */
-  pwszDisplayName: string | null;
+  pwszDisplayName: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeofCRYPTUI_WIZ_DIGITAL_SIGN_BLOB_INFO = 40;
@@ -989,9 +989,9 @@ export interface CRYPTUI_WIZ_DIGITAL_SIGN_PVK_FILE_INFO {
   /** u32 */
   dwSize: number;
   /** Windows.Win32.Foundation.PWSTR */
-  pwszPvkFileName: string | null;
+  pwszPvkFileName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pwszProvName: string | null;
+  pwszProvName: string | null | Uint8Array | Uint16Array;
   /** u32 */
   dwProvType: number;
 }
@@ -1071,7 +1071,7 @@ export interface CRYPTUI_WIZ_DIGITAL_SIGN_CERT_PVK_INFO {
   /** u32 */
   dwSize: number;
   /** Windows.Win32.Foundation.PWSTR */
-  pwszSigningCertFileName: string | null;
+  pwszSigningCertFileName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Security.Cryptography.UI.CRYPTUI_WIZ_DIGITAL_SIGN_PVK_OPTION */
   dwPvkChoice: CRYPTUI_WIZ_DIGITAL_SIGN_PVK_OPTION;
   /** _Anonymous_e__Union */
@@ -1108,13 +1108,13 @@ export interface CRYPTUI_WIZ_DIGITAL_SIGN_EXTENDED_INFO {
   /** Windows.Win32.Security.Cryptography.UI.CRYPTUI_WIZ_DIGITAL_SIGN_SIG_TYPE */
   dwAttrFlags: CRYPTUI_WIZ_DIGITAL_SIGN_SIG_TYPE;
   /** Windows.Win32.Foundation.PWSTR */
-  pwszDescription: string | null;
+  pwszDescription: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pwszMoreInfoLocation: string | null;
+  pwszMoreInfoLocation: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PSTR */
-  pszHashAlg: string | null;
+  pszHashAlg: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pwszSigningCertDisplayString: string | null;
+  pwszSigningCertDisplayString: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Security.Cryptography.HCERTSTORE */
   hAdditionalCertStore: Uint8Array | Deno.PointerValue | null;
   /** ptr */
@@ -1168,7 +1168,7 @@ export interface _Anonymous1_e__Union {
   /** usize */
   Data0: Deno.PointerValue;
   /** Windows.Win32.Foundation.PWSTR */
-  String: string | null;
+  String: string | null | Uint8Array | Uint16Array;
   /** usize */
   u: Deno.PointerValue;
   /** ptr */
@@ -1249,7 +1249,7 @@ export interface CRYPTUI_WIZ_DIGITAL_SIGN_INFO {
   /** _Anonymous2_e__Union */
   Anonymous2: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.Foundation.PWSTR */
-  pwszTimestampURL: string | null;
+  pwszTimestampURL: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Security.Cryptography.UI.CRYPTUI_WIZ_DIGITAL_ADDITIONAL_CERT_CHOICE */
   dwAdditionalCertChoice: CRYPTUI_WIZ_DIGITAL_ADDITIONAL_CERT_CHOICE;
   /** ptr */
@@ -1346,7 +1346,7 @@ export interface CRYPTUI_VIEWCERTIFICATE_STRUCTW {
   /** Windows.Win32.Security.Cryptography.UI.CRYPTUI_VIEWCERTIFICATE_FLAGS */
   dwFlags: CRYPTUI_VIEWCERTIFICATE_FLAGS;
   /** Windows.Win32.Foundation.PWSTR */
-  szTitle: string | null;
+  szTitle: string | null | Uint8Array | Uint16Array;
   /** ptr */
   pCertContext: Deno.PointerValue | Uint8Array | null;
   /** ptr */
@@ -1440,7 +1440,7 @@ export interface CRYPTUI_VIEWCERTIFICATE_STRUCTA {
   /** Windows.Win32.Security.Cryptography.UI.CRYPTUI_VIEWCERTIFICATE_FLAGS */
   dwFlags: CRYPTUI_VIEWCERTIFICATE_FLAGS;
   /** Windows.Win32.Foundation.PSTR */
-  szTitle: string | null;
+  szTitle: string | null | Uint8Array;
   /** ptr */
   pCertContext: Deno.PointerValue | Uint8Array | null;
   /** ptr */
@@ -1530,7 +1530,7 @@ export interface CRYPTUI_WIZ_EXPORT_INFO {
   /** u32 */
   dwSize: number;
   /** Windows.Win32.Foundation.PWSTR */
-  pwszExportFileName: string | null;
+  pwszExportFileName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Security.Cryptography.UI.CRYPTUI_WIZ_EXPORT_SUBJECT */
   dwSubjectChoice: CRYPTUI_WIZ_EXPORT_SUBJECT;
   /** _Anonymous_e__Union */
@@ -1580,7 +1580,7 @@ export interface CRYPTUI_WIZ_EXPORT_CERTCONTEXT_INFO {
   /** Windows.Win32.Foundation.BOOL */
   fExportPrivateKeys: boolean;
   /** Windows.Win32.Foundation.PWSTR */
-  pwszPassword: string | null;
+  pwszPassword: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.BOOL */
   fStrongEncryption: boolean;
 }
@@ -1622,7 +1622,7 @@ export interface CRYPTUI_WIZ_IMPORT_SRC_INFO {
   /** Windows.Win32.Security.Cryptography.CRYPT_KEY_FLAGS */
   dwFlags: CRYPT_KEY_FLAGS;
   /** Windows.Win32.Foundation.PWSTR */
-  pwszPassword: string | null;
+  pwszPassword: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeofCRYPTUI_WIZ_IMPORT_SRC_INFO = 32;
@@ -1702,7 +1702,7 @@ export function CryptUIDlgViewContext(
   dwContextType: number /* u32 */,
   pvContext: Deno.PointerValue | Uint8Array | null /* ptr */,
   hwnd: Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */,
-  pwszTitle: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pwszTitle: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   dwFlags: number /* u32 */,
   pvReserved: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
@@ -1712,8 +1712,8 @@ export function CryptUIDlgViewContext(
 export function CryptUIDlgSelectCertificateFromStore(
   hCertStore: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Security.Cryptography.HCERTSTORE */,
   hwnd: Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */,
-  pwszTitle: string | null /* Windows.Win32.Foundation.PWSTR */,
-  pwszDisplayString: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pwszTitle: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  pwszDisplayString: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   dwDontUseColumn: number /* u32 */,
   dwFlags: number /* u32 */,
   pvReserved: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -1738,7 +1738,7 @@ export function CryptUIDlgCertMgr(
 export function CryptUIWizDigitalSign(
   dwFlags: number /* u32 */,
   hwndParent: Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */,
-  pwszWizardTitle: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pwszWizardTitle: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pDigitalSignInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
   ppSignContext: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
@@ -1768,7 +1768,7 @@ export function CryptUIDlgViewCertificateA(
 export function CryptUIWizExport(
   dwFlags: CRYPTUI_WIZ_FLAGS /* Windows.Win32.Security.Cryptography.UI.CRYPTUI_WIZ_FLAGS */,
   hwndParent: Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */,
-  pwszWizardTitle: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pwszWizardTitle: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pExportInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
   pvoid: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
@@ -1778,7 +1778,7 @@ export function CryptUIWizExport(
 export function CryptUIWizImport(
   dwFlags: CRYPTUI_WIZ_FLAGS /* Windows.Win32.Security.Cryptography.UI.CRYPTUI_WIZ_FLAGS */,
   hwndParent: Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */,
-  pwszWizardTitle: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pwszWizardTitle: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pImportSrc: Deno.PointerValue | Uint8Array | null /* ptr */,
   hDestCertStore: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Security.Cryptography.HCERTSTORE */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {

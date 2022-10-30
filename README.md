@@ -40,8 +40,24 @@ is huge, so are the bindings.
 
 ## Documentation
 
-Check out the complete API reference
-[here](https://doc.deno.land/https://deno.land/x/win@0.1.1/mod.ts).
+It is recommened to read the official documentation of
+[Win32 API](https://learn.microsoft.com/en-us/windows/win32/api/).
+
+APIs almost map 1:1 with the official ones, just certain types have to be
+transformed to be sent into C-land like `string` is first converted into
+null-terminated string depending on the argument (PSTR or PWSTR).
+
+Constants are exported as-is. Structs are defined as interfaces with
+corresponding JS types in fields. We also export a helper function
+`alloc${STRUCT}` which accepts `Partial<${STRUCT}>` to create a new struct and
+return its buffer as `Uint8Array`. A constant called `sizeof${camelCasedStruct}`
+is exported which is the size of the struct in bytes.
+
+Some APIs have been (manually) marked as Async capable which adds a
+`${name}Async` variant of the function along with original one which runs on a
+different thread natively and returns a promise. If you want any other API to be
+Async capable, please open an issue or a PR. Note that Async calls cannot go
+through v8 fastapi path, so they have more overhead than normal ones.
 
 ## Contributing
 

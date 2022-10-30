@@ -64,7 +64,7 @@ export interface CountedString {
   /** u16 */
   length: number;
   /** Windows.Win32.Foundation.PWSTR */
-  string: string | null;
+  string: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeofCountedString = 16;

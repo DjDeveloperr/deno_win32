@@ -779,13 +779,13 @@ export interface RemBINDINFO {
   /** u32 */
   cbSize: number;
   /** Windows.Win32.Foundation.PWSTR */
-  szExtraInfo: string | null;
+  szExtraInfo: string | null | Uint8Array | Uint16Array;
   /** u32 */
   grfBindInfoF: number;
   /** u32 */
   dwBindVerb: number;
   /** Windows.Win32.Foundation.PWSTR */
-  szCustomVerb: string | null;
+  szCustomVerb: string | null | Uint8Array | Uint16Array;
   /** u32 */
   cbstgmedData: number;
   /** u32 */
@@ -992,9 +992,9 @@ export interface CODEBASEHOLD {
   /** u32 */
   cbSize: number;
   /** Windows.Win32.Foundation.PWSTR */
-  szDistUnit: string | null;
+  szDistUnit: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  szCodeBase: string | null;
+  szCodeBase: string | null | Uint8Array | Uint16Array;
   /** u32 */
   dwVersionMS: number;
   /** u32 */
@@ -1042,11 +1042,11 @@ export interface SOFTDISTINFO {
   /** u32 */
   dwAdState: number;
   /** Windows.Win32.Foundation.PWSTR */
-  szTitle: string | null;
+  szTitle: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  szAbstract: string | null;
+  szAbstract: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  szHREF: string | null;
+  szHREF: string | null | Uint8Array | Uint16Array;
   /** u32 */
   dwInstalledVersionMS: number;
   /** u32 */
@@ -1229,13 +1229,13 @@ export interface HIT_LOGGING_INFO {
   /** u32 */
   dwStructSize: number;
   /** Windows.Win32.Foundation.PSTR */
-  lpszLoggedUrlName: string | null;
+  lpszLoggedUrlName: string | null | Uint8Array;
   /** Windows.Win32.Foundation.SYSTEMTIME */
   StartTime: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.Foundation.SYSTEMTIME */
   EndTime: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.Foundation.PSTR */
-  lpszExtendedInfo: string | null;
+  lpszExtendedInfo: string | null | Uint8Array;
 }
 
 export const sizeofHIT_LOGGING_INFO = 40;
@@ -1295,9 +1295,9 @@ export function allocCONFIRMSAFETY(data?: Partial<CONFIRMSAFETY>): Uint8Array {
  */
 export interface PROTOCOL_ARGUMENT {
   /** Windows.Win32.Foundation.PWSTR */
-  szMethod: string | null;
+  szMethod: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  szTargetUrl: string | null;
+  szTargetUrl: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeofPROTOCOL_ARGUMENT = 16;
@@ -1627,7 +1627,7 @@ try {
 
 export function CreateURLMoniker(
   pMkCtx: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Com.IMoniker */,
-  szURL: string | null /* Windows.Win32.Foundation.PWSTR */,
+  szURL: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   ppmk: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
   return util.pointerFromFfi(liburlmon_dll.CreateURLMoniker(util.toPointer(pMkCtx), util.pwstrToFfi(szURL), util.toPointer(ppmk)));
@@ -1635,7 +1635,7 @@ export function CreateURLMoniker(
 
 export function CreateURLMonikerEx(
   pMkCtx: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Com.IMoniker */,
-  szURL: string | null /* Windows.Win32.Foundation.PWSTR */,
+  szURL: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   ppmk: Deno.PointerValue | Uint8Array | null /* ptr */,
   dwFlags: number /* u32 */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
@@ -1643,7 +1643,7 @@ export function CreateURLMonikerEx(
 }
 
 export function GetClassURL(
-  szURL: string | null /* Windows.Win32.Foundation.PWSTR */,
+  szURL: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pClsID: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
   return util.pointerFromFfi(liburlmon_dll.GetClassURL(util.pwstrToFfi(szURL), util.toPointer(pClsID)));
@@ -1680,7 +1680,7 @@ export function CreateAsyncBindCtxEx(
 
 export function MkParseDisplayNameEx(
   pbc: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Com.IBindCtx */,
-  szDisplayName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  szDisplayName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pchEaten: Deno.PointerValue | Uint8Array | null /* ptr */,
   ppmk: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
@@ -1705,10 +1705,10 @@ export function RevokeBindStatusCallback(
 
 export function GetClassFileOrMime(
   pBC: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Com.IBindCtx */,
-  szFilename: string | null /* Windows.Win32.Foundation.PWSTR */,
+  szFilename: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pBuffer: Deno.PointerValue | Uint8Array | null /* ptr */,
   cbSize: number /* u32 */,
-  szMime: string | null /* Windows.Win32.Foundation.PWSTR */,
+  szMime: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   dwReserved: number /* u32 */,
   pclsid: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
@@ -1717,7 +1717,7 @@ export function GetClassFileOrMime(
 
 export function IsValidURL(
   pBC: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Com.IBindCtx */,
-  szURL: string | null /* Windows.Win32.Foundation.PWSTR */,
+  szURL: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   dwReserved: number /* u32 */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
   return util.pointerFromFfi(liburlmon_dll.IsValidURL(util.toPointer(pBC), util.pwstrToFfi(szURL), dwReserved));
@@ -1725,10 +1725,10 @@ export function IsValidURL(
 
 export function CoGetClassObjectFromURL(
   rCLASSID: Deno.PointerValue | Uint8Array | null /* ptr */,
-  szCODE: string | null /* Windows.Win32.Foundation.PWSTR */,
+  szCODE: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   dwFileVersionMS: number /* u32 */,
   dwFileVersionLS: number /* u32 */,
-  szTYPE: string | null /* Windows.Win32.Foundation.PWSTR */,
+  szTYPE: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pBindCtx: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Com.IBindCtx */,
   dwClsContext: CLSCTX /* Windows.Win32.System.Com.CLSCTX */,
   pvReserved: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -1775,7 +1775,7 @@ export function RegisterMediaTypes(
 }
 
 export function FindMediaType(
-  rgszTypes: string | null /* Windows.Win32.Foundation.PSTR */,
+  rgszTypes: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   rgcfTypes: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
   return util.pointerFromFfi(liburlmon_dll.FindMediaType(util.pstrToFfi(rgszTypes), util.toPointer(rgcfTypes)));
@@ -1816,7 +1816,7 @@ export function RegisterMediaTypeClass(
 
 export function FindMediaTypeClass(
   pBC: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Com.IBindCtx */,
-  szType: string | null /* Windows.Win32.Foundation.PSTR */,
+  szType: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   pclsID: Deno.PointerValue | Uint8Array | null /* ptr */,
   reserved: number /* u32 */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
@@ -1844,10 +1844,10 @@ export function UrlMkGetSessionOption(
 
 export function FindMimeFromData(
   pBC: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Com.IBindCtx */,
-  pwzUrl: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pwzUrl: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pBuffer: Deno.PointerValue | Uint8Array | null /* ptr */,
   cbSize: number /* u32 */,
-  pwzMimeProposed: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pwzMimeProposed: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   dwMimeFlags: number /* u32 */,
   ppwzMimeOut: Deno.PointerValue | Uint8Array | null /* ptr */,
   dwReserved: number /* u32 */,
@@ -1857,7 +1857,7 @@ export function FindMimeFromData(
 
 export function ObtainUserAgentString(
   dwOption: number /* u32 */,
-  pszUAOut: string | null /* Windows.Win32.Foundation.PSTR */,
+  pszUAOut: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   cbSize: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
   return util.pointerFromFfi(liburlmon_dll.ObtainUserAgentString(dwOption, util.pstrToFfi(pszUAOut), util.toPointer(cbSize)));
@@ -1890,9 +1890,9 @@ export function SetAccessForIEAppContainer(
 }
 
 export function HlinkSimpleNavigateToString(
-  szTarget: string | null /* Windows.Win32.Foundation.PWSTR */,
-  szLocation: string | null /* Windows.Win32.Foundation.PWSTR */,
-  szTargetFrameName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  szTarget: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  szLocation: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  szTargetFrameName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pUnk: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Com.IUnknown */,
   pbc: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Com.IBindCtx */,
   param5: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Com.IBindStatusCallback */,
@@ -1904,8 +1904,8 @@ export function HlinkSimpleNavigateToString(
 
 export function HlinkSimpleNavigateToMoniker(
   pmkTarget: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Com.IMoniker */,
-  szLocation: string | null /* Windows.Win32.Foundation.PWSTR */,
-  szTargetFrameName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  szLocation: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  szTargetFrameName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pUnk: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Com.IUnknown */,
   pbc: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Com.IBindCtx */,
   param5: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Com.IBindStatusCallback */,
@@ -1917,7 +1917,7 @@ export function HlinkSimpleNavigateToMoniker(
 
 export function URLOpenStreamA(
   param0: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Com.IUnknown */,
-  param1: string | null /* Windows.Win32.Foundation.PSTR */,
+  param1: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   param2: number /* u32 */,
   param3: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Com.IBindStatusCallback */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
@@ -1926,7 +1926,7 @@ export function URLOpenStreamA(
 
 export function URLOpenStreamW(
   param0: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Com.IUnknown */,
-  param1: string | null /* Windows.Win32.Foundation.PWSTR */,
+  param1: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   param2: number /* u32 */,
   param3: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Com.IBindStatusCallback */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
@@ -1935,7 +1935,7 @@ export function URLOpenStreamW(
 
 export function URLOpenPullStreamA(
   param0: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Com.IUnknown */,
-  param1: string | null /* Windows.Win32.Foundation.PSTR */,
+  param1: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   param2: number /* u32 */,
   param3: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Com.IBindStatusCallback */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
@@ -1944,7 +1944,7 @@ export function URLOpenPullStreamA(
 
 export function URLOpenPullStreamW(
   param0: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Com.IUnknown */,
-  param1: string | null /* Windows.Win32.Foundation.PWSTR */,
+  param1: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   param2: number /* u32 */,
   param3: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Com.IBindStatusCallback */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
@@ -1953,8 +1953,8 @@ export function URLOpenPullStreamW(
 
 export function URLDownloadToFileA(
   param0: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Com.IUnknown */,
-  param1: string | null /* Windows.Win32.Foundation.PSTR */,
-  param2: string | null /* Windows.Win32.Foundation.PSTR */,
+  param1: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  param2: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   param3: number /* u32 */,
   param4: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Com.IBindStatusCallback */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
@@ -1963,8 +1963,8 @@ export function URLDownloadToFileA(
 
 export function URLDownloadToFileW(
   param0: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Com.IUnknown */,
-  param1: string | null /* Windows.Win32.Foundation.PWSTR */,
-  param2: string | null /* Windows.Win32.Foundation.PWSTR */,
+  param1: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  param2: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   param3: number /* u32 */,
   param4: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Com.IBindStatusCallback */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
@@ -1973,8 +1973,8 @@ export function URLDownloadToFileW(
 
 export function URLDownloadToCacheFileA(
   param0: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Com.IUnknown */,
-  param1: string | null /* Windows.Win32.Foundation.PSTR */,
-  param2: string | null /* Windows.Win32.Foundation.PSTR */,
+  param1: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  param2: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   cchFileName: number /* u32 */,
   param4: number /* u32 */,
   param5: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Com.IBindStatusCallback */,
@@ -1984,8 +1984,8 @@ export function URLDownloadToCacheFileA(
 
 export function URLDownloadToCacheFileW(
   param0: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Com.IUnknown */,
-  param1: string | null /* Windows.Win32.Foundation.PWSTR */,
-  param2: string | null /* Windows.Win32.Foundation.PWSTR */,
+  param1: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  param2: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   cchFileName: number /* u32 */,
   param4: number /* u32 */,
   param5: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Com.IBindStatusCallback */,
@@ -1995,7 +1995,7 @@ export function URLDownloadToCacheFileW(
 
 export function URLOpenBlockingStreamA(
   param0: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Com.IUnknown */,
-  param1: string | null /* Windows.Win32.Foundation.PSTR */,
+  param1: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   param2: Deno.PointerValue | Uint8Array | null /* ptr */,
   param3: number /* u32 */,
   param4: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Com.IBindStatusCallback */,
@@ -2005,7 +2005,7 @@ export function URLOpenBlockingStreamA(
 
 export function URLOpenBlockingStreamW(
   param0: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Com.IUnknown */,
-  param1: string | null /* Windows.Win32.Foundation.PWSTR */,
+  param1: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   param2: Deno.PointerValue | Uint8Array | null /* ptr */,
   param3: number /* u32 */,
   param4: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Com.IBindStatusCallback */,
@@ -2027,7 +2027,7 @@ export function HlinkGoForward(
 
 export function HlinkNavigateString(
   pUnk: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Com.IUnknown */,
-  szTarget: string | null /* Windows.Win32.Foundation.PWSTR */,
+  szTarget: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
   return util.pointerFromFfi(liburlmon_dll.HlinkNavigateString(util.toPointer(pUnk), util.pwstrToFfi(szTarget)));
 }
@@ -2040,10 +2040,10 @@ export function HlinkNavigateMoniker(
 }
 
 export function CoInternetParseUrl(
-  pwzUrl: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pwzUrl: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   ParseAction: PARSEACTION /* Windows.Win32.System.Com.Urlmon.PARSEACTION */,
   dwFlags: number /* u32 */,
-  pszResult: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pszResult: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   cchResult: number /* u32 */,
   pcchResult: Deno.PointerValue | Uint8Array | null /* ptr */,
   dwReserved: number /* u32 */,
@@ -2055,7 +2055,7 @@ export function CoInternetParseIUri(
   pIUri: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Com.IUri */,
   ParseAction: PARSEACTION /* Windows.Win32.System.Com.Urlmon.PARSEACTION */,
   dwFlags: number /* u32 */,
-  pwzResult: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pwzResult: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   cchResult: number /* u32 */,
   pcchResult: Deno.PointerValue | Uint8Array | null /* ptr */,
   dwReserved: Deno.PointerValue /* usize */,
@@ -2064,10 +2064,10 @@ export function CoInternetParseIUri(
 }
 
 export function CoInternetCombineUrl(
-  pwzBaseUrl: string | null /* Windows.Win32.Foundation.PWSTR */,
-  pwzRelativeUrl: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pwzBaseUrl: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  pwzRelativeUrl: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   dwCombineFlags: number /* u32 */,
-  pszResult: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pszResult: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   cchResult: number /* u32 */,
   pcchResult: Deno.PointerValue | Uint8Array | null /* ptr */,
   dwReserved: number /* u32 */,
@@ -2077,7 +2077,7 @@ export function CoInternetCombineUrl(
 
 export function CoInternetCombineUrlEx(
   pBaseUri: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Com.IUri */,
-  pwzRelativeUrl: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pwzRelativeUrl: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   dwCombineFlags: number /* u32 */,
   ppCombinedUri: Deno.PointerValue | Uint8Array | null /* ptr */,
   dwReserved: Deno.PointerValue /* usize */,
@@ -2096,15 +2096,15 @@ export function CoInternetCombineIUri(
 }
 
 export function CoInternetCompareUrl(
-  pwzUrl1: string | null /* Windows.Win32.Foundation.PWSTR */,
-  pwzUrl2: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pwzUrl1: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  pwzUrl2: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   dwFlags: number /* u32 */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
   return util.pointerFromFfi(liburlmon_dll.CoInternetCompareUrl(util.pwstrToFfi(pwzUrl1), util.pwstrToFfi(pwzUrl2), dwFlags));
 }
 
 export function CoInternetGetProtocolFlags(
-  pwzUrl: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pwzUrl: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pdwFlags: Deno.PointerValue | Uint8Array | null /* ptr */,
   dwReserved: number /* u32 */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
@@ -2112,7 +2112,7 @@ export function CoInternetGetProtocolFlags(
 }
 
 export function CoInternetQueryInfo(
-  pwzUrl: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pwzUrl: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   QueryOptions: QUERYOPTION /* Windows.Win32.System.Com.Urlmon.QUERYOPTION */,
   dwQueryFlags: number /* u32 */,
   pvBuffer: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -2132,7 +2132,7 @@ export function CoInternetGetSession(
 }
 
 export function CoInternetGetSecurityUrl(
-  pwszUrl: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pwszUrl: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   ppwszSecUrl: Deno.PointerValue | Uint8Array | null /* ptr */,
   psuAction: PSUACTION /* Windows.Win32.System.Com.Urlmon.PSUACTION */,
   dwReserved: number /* u32 */,
@@ -2167,7 +2167,7 @@ export function CoInternetIsFeatureEnabled(
 export function CoInternetIsFeatureEnabledForUrl(
   FeatureEntry: INTERNETFEATURELIST /* Windows.Win32.System.Com.Urlmon.INTERNETFEATURELIST */,
   dwFlags: number /* u32 */,
-  szURL: string | null /* Windows.Win32.Foundation.PWSTR */,
+  szURL: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pSecMgr: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Com.Urlmon.IInternetSecurityManager */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
   return util.pointerFromFfi(liburlmon_dll.CoInternetIsFeatureEnabledForUrl(FeatureEntry, dwFlags, util.pwstrToFfi(szURL), util.toPointer(pSecMgr)));
@@ -2183,8 +2183,8 @@ export function CoInternetIsFeatureEnabledForIUri(
 }
 
 export function CoInternetIsFeatureZoneElevationEnabled(
-  szFromURL: string | null /* Windows.Win32.Foundation.PWSTR */,
-  szToURL: string | null /* Windows.Win32.Foundation.PWSTR */,
+  szFromURL: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  szToURL: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pSecMgr: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Com.Urlmon.IInternetSecurityManager */,
   dwFlags: number /* u32 */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
@@ -2232,14 +2232,14 @@ export function CoInternetCreateZoneManager(
 }
 
 export function GetSoftwareUpdateInfo(
-  szDistUnit: string | null /* Windows.Win32.Foundation.PWSTR */,
+  szDistUnit: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   psdi: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
   return util.pointerFromFfi(liburlmon_dll.GetSoftwareUpdateInfo(util.pwstrToFfi(szDistUnit), util.toPointer(psdi)));
 }
 
 export function SetSoftwareUpdateAdvertisementState(
-  szDistUnit: string | null /* Windows.Win32.Foundation.PWSTR */,
+  szDistUnit: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   dwAdState: number /* u32 */,
   dwAdvertisedVersionMS: number /* u32 */,
   dwAdvertisedVersionLS: number /* u32 */,
@@ -2248,13 +2248,13 @@ export function SetSoftwareUpdateAdvertisementState(
 }
 
 export function IsLoggingEnabledA(
-  pszUrl: string | null /* Windows.Win32.Foundation.PSTR */,
+  pszUrl: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(liburlmon_dll.IsLoggingEnabledA(util.pstrToFfi(pszUrl)));
 }
 
 export function IsLoggingEnabledW(
-  pwszUrl: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pwszUrl: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(liburlmon_dll.IsLoggingEnabledW(util.pwstrToFfi(pwszUrl)));
 }

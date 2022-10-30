@@ -475,7 +475,7 @@ export type PSTR = Deno.PointerValue | Uint8Array | null;
  */
 export interface FAX_LOG_CATEGORYA {
   /** Windows.Win32.Foundation.PSTR */
-  Name: string | null;
+  Name: string | null | Uint8Array;
   /** u32 */
   Category: number;
   /** u32 */
@@ -506,7 +506,7 @@ export type PWSTR = Deno.PointerValue | Uint8Array | null;
  */
 export interface FAX_LOG_CATEGORYW {
   /** Windows.Win32.Foundation.PWSTR */
-  Name: string | null;
+  Name: string | null | Uint8Array | Uint16Array;
   /** u32 */
   Category: number;
   /** u32 */
@@ -582,9 +582,9 @@ export interface FAX_CONFIGURATIONA {
   /** Windows.Win32.Foundation.BOOL */
   ArchiveOutgoingFaxes: boolean;
   /** Windows.Win32.Foundation.PSTR */
-  ArchiveDirectory: string | null;
+  ArchiveDirectory: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  Reserved: string | null;
+  Reserved: string | null | Uint8Array;
 }
 
 export const sizeofFAX_CONFIGURATIONA = 72;
@@ -655,9 +655,9 @@ export interface FAX_CONFIGURATIONW {
   /** Windows.Win32.Foundation.BOOL */
   ArchiveOutgoingFaxes: boolean;
   /** Windows.Win32.Foundation.PWSTR */
-  ArchiveDirectory: string | null;
+  ArchiveDirectory: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  Reserved: string | null;
+  Reserved: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeofFAX_CONFIGURATIONW = 72;
@@ -730,27 +730,27 @@ export interface FAX_DEVICE_STATUSA {
   /** u32 */
   SizeOfStruct: number;
   /** Windows.Win32.Foundation.PSTR */
-  CallerId: string | null;
+  CallerId: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  Csid: string | null;
+  Csid: string | null | Uint8Array;
   /** u32 */
   CurrentPage: number;
   /** u32 */
   DeviceId: number;
   /** Windows.Win32.Foundation.PSTR */
-  DeviceName: string | null;
+  DeviceName: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  DocumentName: string | null;
+  DocumentName: string | null | Uint8Array;
   /** u32 */
   JobType: number;
   /** Windows.Win32.Foundation.PSTR */
-  PhoneNumber: string | null;
+  PhoneNumber: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  RoutingString: string | null;
+  RoutingString: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  SenderName: string | null;
+  SenderName: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  RecipientName: string | null;
+  RecipientName: string | null | Uint8Array;
   /** u32 */
   Size: number;
   /** Windows.Win32.Foundation.FILETIME */
@@ -758,15 +758,15 @@ export interface FAX_DEVICE_STATUSA {
   /** u32 */
   Status: number;
   /** Windows.Win32.Foundation.PSTR */
-  StatusString: string | null;
+  StatusString: string | null | Uint8Array;
   /** Windows.Win32.Foundation.FILETIME */
   SubmittedTime: Uint8Array | Deno.PointerValue | null;
   /** u32 */
   TotalPages: number;
   /** Windows.Win32.Foundation.PSTR */
-  Tsid: string | null;
+  Tsid: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  UserName: string | null;
+  UserName: string | null | Uint8Array;
 }
 
 export const sizeofFAX_DEVICE_STATUSA = 152;
@@ -862,27 +862,27 @@ export interface FAX_DEVICE_STATUSW {
   /** u32 */
   SizeOfStruct: number;
   /** Windows.Win32.Foundation.PWSTR */
-  CallerId: string | null;
+  CallerId: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  Csid: string | null;
+  Csid: string | null | Uint8Array | Uint16Array;
   /** u32 */
   CurrentPage: number;
   /** u32 */
   DeviceId: number;
   /** Windows.Win32.Foundation.PWSTR */
-  DeviceName: string | null;
+  DeviceName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  DocumentName: string | null;
+  DocumentName: string | null | Uint8Array | Uint16Array;
   /** u32 */
   JobType: number;
   /** Windows.Win32.Foundation.PWSTR */
-  PhoneNumber: string | null;
+  PhoneNumber: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  RoutingString: string | null;
+  RoutingString: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  SenderName: string | null;
+  SenderName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  RecipientName: string | null;
+  RecipientName: string | null | Uint8Array | Uint16Array;
   /** u32 */
   Size: number;
   /** Windows.Win32.Foundation.FILETIME */
@@ -890,15 +890,15 @@ export interface FAX_DEVICE_STATUSW {
   /** u32 */
   Status: number;
   /** Windows.Win32.Foundation.PWSTR */
-  StatusString: string | null;
+  StatusString: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.FILETIME */
   SubmittedTime: Uint8Array | Deno.PointerValue | null;
   /** u32 */
   TotalPages: number;
   /** Windows.Win32.Foundation.PWSTR */
-  Tsid: string | null;
+  Tsid: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  UserName: string | null;
+  UserName: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeofFAX_DEVICE_STATUSW = 152;
@@ -1042,7 +1042,7 @@ export interface FAX_JOB_ENTRYA {
   /** u32 */
   JobId: number;
   /** Windows.Win32.Foundation.PSTR */
-  UserName: string | null;
+  UserName: string | null | Uint8Array;
   /** u32 */
   JobType: number;
   /** u32 */
@@ -1054,19 +1054,19 @@ export interface FAX_JOB_ENTRYA {
   /** u32 */
   PageCount: number;
   /** Windows.Win32.Foundation.PSTR */
-  RecipientNumber: string | null;
+  RecipientNumber: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  RecipientName: string | null;
+  RecipientName: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  Tsid: string | null;
+  Tsid: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  SenderName: string | null;
+  SenderName: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  SenderCompany: string | null;
+  SenderCompany: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  SenderDept: string | null;
+  SenderDept: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  BillingCode: string | null;
+  BillingCode: string | null | Uint8Array;
   /** u32 */
   ScheduleAction: number;
   /** Windows.Win32.Foundation.SYSTEMTIME */
@@ -1074,9 +1074,9 @@ export interface FAX_JOB_ENTRYA {
   /** u32 */
   DeliveryReportType: number;
   /** Windows.Win32.Foundation.PSTR */
-  DeliveryReportAddress: string | null;
+  DeliveryReportAddress: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  DocumentName: string | null;
+  DocumentName: string | null | Uint8Array;
 }
 
 export const sizeofFAX_JOB_ENTRYA = 136;
@@ -1169,7 +1169,7 @@ export interface FAX_JOB_ENTRYW {
   /** u32 */
   JobId: number;
   /** Windows.Win32.Foundation.PWSTR */
-  UserName: string | null;
+  UserName: string | null | Uint8Array | Uint16Array;
   /** u32 */
   JobType: number;
   /** u32 */
@@ -1181,19 +1181,19 @@ export interface FAX_JOB_ENTRYW {
   /** u32 */
   PageCount: number;
   /** Windows.Win32.Foundation.PWSTR */
-  RecipientNumber: string | null;
+  RecipientNumber: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  RecipientName: string | null;
+  RecipientName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  Tsid: string | null;
+  Tsid: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  SenderName: string | null;
+  SenderName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  SenderCompany: string | null;
+  SenderCompany: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  SenderDept: string | null;
+  SenderDept: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  BillingCode: string | null;
+  BillingCode: string | null | Uint8Array | Uint16Array;
   /** u32 */
   ScheduleAction: number;
   /** Windows.Win32.Foundation.SYSTEMTIME */
@@ -1201,9 +1201,9 @@ export interface FAX_JOB_ENTRYW {
   /** u32 */
   DeliveryReportType: number;
   /** Windows.Win32.Foundation.PWSTR */
-  DeliveryReportAddress: string | null;
+  DeliveryReportAddress: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  DocumentName: string | null;
+  DocumentName: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeofFAX_JOB_ENTRYW = 136;
@@ -1304,11 +1304,11 @@ export interface FAX_PORT_INFOA {
   /** u32 */
   Priority: number;
   /** Windows.Win32.Foundation.PSTR */
-  DeviceName: string | null;
+  DeviceName: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  Tsid: string | null;
+  Tsid: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  Csid: string | null;
+  Csid: string | null | Uint8Array;
 }
 
 export const sizeofFAX_PORT_INFOA = 48;
@@ -1363,11 +1363,11 @@ export interface FAX_PORT_INFOW {
   /** u32 */
   Priority: number;
   /** Windows.Win32.Foundation.PWSTR */
-  DeviceName: string | null;
+  DeviceName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  Tsid: string | null;
+  Tsid: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  Csid: string | null;
+  Csid: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeofFAX_PORT_INFOW = 48;
@@ -1416,17 +1416,17 @@ export interface FAX_ROUTING_METHODA {
   /** Windows.Win32.Foundation.BOOL */
   Enabled: boolean;
   /** Windows.Win32.Foundation.PSTR */
-  DeviceName: string | null;
+  DeviceName: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  Guid: string | null;
+  Guid: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  FriendlyName: string | null;
+  FriendlyName: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  FunctionName: string | null;
+  FunctionName: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  ExtensionImageName: string | null;
+  ExtensionImageName: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  ExtensionFriendlyName: string | null;
+  ExtensionFriendlyName: string | null | Uint8Array;
 }
 
 export const sizeofFAX_ROUTING_METHODA = 64;
@@ -1485,17 +1485,17 @@ export interface FAX_ROUTING_METHODW {
   /** Windows.Win32.Foundation.BOOL */
   Enabled: boolean;
   /** Windows.Win32.Foundation.PWSTR */
-  DeviceName: string | null;
+  DeviceName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  Guid: string | null;
+  Guid: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  FriendlyName: string | null;
+  FriendlyName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  FunctionName: string | null;
+  FunctionName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  ExtensionImageName: string | null;
+  ExtensionImageName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  ExtensionFriendlyName: string | null;
+  ExtensionFriendlyName: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeofFAX_ROUTING_METHODW = 64;
@@ -1552,15 +1552,15 @@ export interface FAX_GLOBAL_ROUTING_INFOA {
   /** u32 */
   Priority: number;
   /** Windows.Win32.Foundation.PSTR */
-  Guid: string | null;
+  Guid: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  FriendlyName: string | null;
+  FriendlyName: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  FunctionName: string | null;
+  FunctionName: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  ExtensionImageName: string | null;
+  ExtensionImageName: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  ExtensionFriendlyName: string | null;
+  ExtensionFriendlyName: string | null | Uint8Array;
 }
 
 export const sizeofFAX_GLOBAL_ROUTING_INFOA = 48;
@@ -1609,15 +1609,15 @@ export interface FAX_GLOBAL_ROUTING_INFOW {
   /** u32 */
   Priority: number;
   /** Windows.Win32.Foundation.PWSTR */
-  Guid: string | null;
+  Guid: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  FriendlyName: string | null;
+  FriendlyName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  FunctionName: string | null;
+  FunctionName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  ExtensionImageName: string | null;
+  ExtensionImageName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  ExtensionFriendlyName: string | null;
+  ExtensionFriendlyName: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeofFAX_GLOBAL_ROUTING_INFOW = 48;
@@ -1664,57 +1664,57 @@ export interface FAX_COVERPAGE_INFOA {
   /** u32 */
   SizeOfStruct: number;
   /** Windows.Win32.Foundation.PSTR */
-  CoverPageName: string | null;
+  CoverPageName: string | null | Uint8Array;
   /** Windows.Win32.Foundation.BOOL */
   UseServerCoverPage: boolean;
   /** Windows.Win32.Foundation.PSTR */
-  RecName: string | null;
+  RecName: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  RecFaxNumber: string | null;
+  RecFaxNumber: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  RecCompany: string | null;
+  RecCompany: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  RecStreetAddress: string | null;
+  RecStreetAddress: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  RecCity: string | null;
+  RecCity: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  RecState: string | null;
+  RecState: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  RecZip: string | null;
+  RecZip: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  RecCountry: string | null;
+  RecCountry: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  RecTitle: string | null;
+  RecTitle: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  RecDepartment: string | null;
+  RecDepartment: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  RecOfficeLocation: string | null;
+  RecOfficeLocation: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  RecHomePhone: string | null;
+  RecHomePhone: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  RecOfficePhone: string | null;
+  RecOfficePhone: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  SdrName: string | null;
+  SdrName: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  SdrFaxNumber: string | null;
+  SdrFaxNumber: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  SdrCompany: string | null;
+  SdrCompany: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  SdrAddress: string | null;
+  SdrAddress: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  SdrTitle: string | null;
+  SdrTitle: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  SdrDepartment: string | null;
+  SdrDepartment: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  SdrOfficeLocation: string | null;
+  SdrOfficeLocation: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  SdrHomePhone: string | null;
+  SdrHomePhone: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  SdrOfficePhone: string | null;
+  SdrOfficePhone: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  Note: string | null;
+  Note: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  Subject: string | null;
+  Subject: string | null | Uint8Array;
   /** Windows.Win32.Foundation.SYSTEMTIME */
   TimeSent: Uint8Array | Deno.PointerValue | null;
   /** u32 */
@@ -1872,57 +1872,57 @@ export interface FAX_COVERPAGE_INFOW {
   /** u32 */
   SizeOfStruct: number;
   /** Windows.Win32.Foundation.PWSTR */
-  CoverPageName: string | null;
+  CoverPageName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.BOOL */
   UseServerCoverPage: boolean;
   /** Windows.Win32.Foundation.PWSTR */
-  RecName: string | null;
+  RecName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  RecFaxNumber: string | null;
+  RecFaxNumber: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  RecCompany: string | null;
+  RecCompany: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  RecStreetAddress: string | null;
+  RecStreetAddress: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  RecCity: string | null;
+  RecCity: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  RecState: string | null;
+  RecState: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  RecZip: string | null;
+  RecZip: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  RecCountry: string | null;
+  RecCountry: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  RecTitle: string | null;
+  RecTitle: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  RecDepartment: string | null;
+  RecDepartment: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  RecOfficeLocation: string | null;
+  RecOfficeLocation: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  RecHomePhone: string | null;
+  RecHomePhone: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  RecOfficePhone: string | null;
+  RecOfficePhone: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  SdrName: string | null;
+  SdrName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  SdrFaxNumber: string | null;
+  SdrFaxNumber: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  SdrCompany: string | null;
+  SdrCompany: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  SdrAddress: string | null;
+  SdrAddress: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  SdrTitle: string | null;
+  SdrTitle: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  SdrDepartment: string | null;
+  SdrDepartment: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  SdrOfficeLocation: string | null;
+  SdrOfficeLocation: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  SdrHomePhone: string | null;
+  SdrHomePhone: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  SdrOfficePhone: string | null;
+  SdrOfficePhone: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  Note: string | null;
+  Note: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  Subject: string | null;
+  Subject: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.SYSTEMTIME */
   TimeSent: Uint8Array | Deno.PointerValue | null;
   /** u32 */
@@ -2080,19 +2080,19 @@ export interface FAX_JOB_PARAMA {
   /** u32 */
   SizeOfStruct: number;
   /** Windows.Win32.Foundation.PSTR */
-  RecipientNumber: string | null;
+  RecipientNumber: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  RecipientName: string | null;
+  RecipientName: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  Tsid: string | null;
+  Tsid: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  SenderName: string | null;
+  SenderName: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  SenderCompany: string | null;
+  SenderCompany: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  SenderDept: string | null;
+  SenderDept: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  BillingCode: string | null;
+  BillingCode: string | null | Uint8Array;
   /** u32 */
   ScheduleAction: number;
   /** Windows.Win32.Foundation.SYSTEMTIME */
@@ -2100,9 +2100,9 @@ export interface FAX_JOB_PARAMA {
   /** u32 */
   DeliveryReportType: number;
   /** Windows.Win32.Foundation.PSTR */
-  DeliveryReportAddress: string | null;
+  DeliveryReportAddress: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  DocumentName: string | null;
+  DocumentName: string | null | Uint8Array;
   /** u32 */
   CallHandle: number;
   /** array */
@@ -2185,19 +2185,19 @@ export interface FAX_JOB_PARAMW {
   /** u32 */
   SizeOfStruct: number;
   /** Windows.Win32.Foundation.PWSTR */
-  RecipientNumber: string | null;
+  RecipientNumber: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  RecipientName: string | null;
+  RecipientName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  Tsid: string | null;
+  Tsid: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  SenderName: string | null;
+  SenderName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  SenderCompany: string | null;
+  SenderCompany: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  SenderDept: string | null;
+  SenderDept: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  BillingCode: string | null;
+  BillingCode: string | null | Uint8Array | Uint16Array;
   /** u32 */
   ScheduleAction: number;
   /** Windows.Win32.Foundation.SYSTEMTIME */
@@ -2205,9 +2205,9 @@ export interface FAX_JOB_PARAMW {
   /** u32 */
   DeliveryReportType: number;
   /** Windows.Win32.Foundation.PWSTR */
-  DeliveryReportAddress: string | null;
+  DeliveryReportAddress: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  DocumentName: string | null;
+  DocumentName: string | null | Uint8Array | Uint16Array;
   /** u32 */
   CallHandle: number;
   /** array */
@@ -2362,25 +2362,25 @@ export interface FAX_PRINT_INFOA {
   /** u32 */
   SizeOfStruct: number;
   /** Windows.Win32.Foundation.PSTR */
-  DocName: string | null;
+  DocName: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  RecipientName: string | null;
+  RecipientName: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  RecipientNumber: string | null;
+  RecipientNumber: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  SenderName: string | null;
+  SenderName: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  SenderCompany: string | null;
+  SenderCompany: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  SenderDept: string | null;
+  SenderDept: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  SenderBillingCode: string | null;
+  SenderBillingCode: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  Reserved: string | null;
+  Reserved: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  DrEmailAddress: string | null;
+  DrEmailAddress: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  OutputFileName: string | null;
+  OutputFileName: string | null | Uint8Array;
 }
 
 export const sizeofFAX_PRINT_INFOA = 88;
@@ -2451,25 +2451,25 @@ export interface FAX_PRINT_INFOW {
   /** u32 */
   SizeOfStruct: number;
   /** Windows.Win32.Foundation.PWSTR */
-  DocName: string | null;
+  DocName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  RecipientName: string | null;
+  RecipientName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  RecipientNumber: string | null;
+  RecipientNumber: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  SenderName: string | null;
+  SenderName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  SenderCompany: string | null;
+  SenderCompany: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  SenderDept: string | null;
+  SenderDept: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  SenderBillingCode: string | null;
+  SenderBillingCode: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  Reserved: string | null;
+  Reserved: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  DrEmailAddress: string | null;
+  DrEmailAddress: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  OutputFileName: string | null;
+  OutputFileName: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeofFAX_PRINT_INFOW = 88;
@@ -2596,15 +2596,15 @@ export interface FAX_SEND {
   /** u32 */
   SizeOfStruct: number;
   /** Windows.Win32.Foundation.PWSTR */
-  FileName: string | null;
+  FileName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  CallerName: string | null;
+  CallerName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  CallerNumber: string | null;
+  CallerNumber: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  ReceiverName: string | null;
+  ReceiverName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  ReceiverNumber: string | null;
+  ReceiverNumber: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.BOOL */
   Branding: boolean;
   /** u32 */
@@ -2662,11 +2662,11 @@ export interface FAX_RECEIVE {
   /** u32 */
   SizeOfStruct: number;
   /** Windows.Win32.Foundation.PWSTR */
-  FileName: string | null;
+  FileName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  ReceiverName: string | null;
+  ReceiverName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  ReceiverNumber: string | null;
+  ReceiverNumber: string | null | Uint8Array | Uint16Array;
   /** array */
   Reserved: Deno.PointerValue | null;
 }
@@ -2712,11 +2712,11 @@ export interface FAX_DEV_STATUS {
   /** u32 */
   PageCount: number;
   /** Windows.Win32.Foundation.PWSTR */
-  CSI: string | null;
+  CSI: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  CallerId: string | null;
+  CallerId: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  RoutingInfo: string | null;
+  RoutingInfo: string | null | Uint8Array | Uint16Array;
   /** u32 */
   ErrorCode: number;
   /** array */
@@ -2813,19 +2813,19 @@ export interface FAX_ROUTE {
   /** u32 */
   PageCount: number;
   /** Windows.Win32.Foundation.PWSTR */
-  Csid: string | null;
+  Csid: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  Tsid: string | null;
+  Tsid: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  CallerId: string | null;
+  CallerId: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  RoutingInfo: string | null;
+  RoutingInfo: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  ReceiverName: string | null;
+  ReceiverName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  ReceiverNumber: string | null;
+  ReceiverNumber: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  DeviceName: string | null;
+  DeviceName: string | null | Uint8Array | Uint16Array;
   /** u32 */
   DeviceId: number;
   /** ptr */
@@ -2930,15 +2930,15 @@ export interface STI_DEVICE_INFORMATIONW {
   /** u32 */
   dwHardwareConfiguration: number;
   /** Windows.Win32.Foundation.PWSTR */
-  pszVendorDescription: string | null;
+  pszVendorDescription: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pszDeviceDescription: string | null;
+  pszDeviceDescription: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pszPortName: string | null;
+  pszPortName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pszPropProvider: string | null;
+  pszPropProvider: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pszLocalName: string | null;
+  pszLocalName: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeofSTI_DEVICE_INFORMATIONW = 72;
@@ -3000,19 +3000,19 @@ export interface STI_WIA_DEVICE_INFORMATIONW {
   /** u32 */
   dwHardwareConfiguration: number;
   /** Windows.Win32.Foundation.PWSTR */
-  pszVendorDescription: string | null;
+  pszVendorDescription: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pszDeviceDescription: string | null;
+  pszDeviceDescription: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pszPortName: string | null;
+  pszPortName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pszPropProvider: string | null;
+  pszPropProvider: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pszLocalName: string | null;
+  pszLocalName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pszUiDll: string | null;
+  pszUiDll: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pszServer: string | null;
+  pszServer: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeofSTI_WIA_DEVICE_INFORMATIONW = 88;
@@ -3525,14 +3525,14 @@ try {
 // Symbols
 
 export function FaxConnectFaxServerA(
-  MachineName: string | null /* Windows.Win32.Foundation.PSTR */,
+  MachineName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   FaxHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libWINFAX_dll.FaxConnectFaxServerA(util.pstrToFfi(MachineName), util.toPointer(FaxHandle)));
 }
 
 export function FaxConnectFaxServerW(
-  MachineName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  MachineName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   FaxHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libWINFAX_dll.FaxConnectFaxServerW(util.pwstrToFfi(MachineName), util.toPointer(FaxHandle)));
@@ -3569,7 +3569,7 @@ export function FaxCompleteJobParamsW(
 
 export function FaxSendDocumentA(
   FaxHandle: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  FileName: string | null /* Windows.Win32.Foundation.PSTR */,
+  FileName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   JobParams: Deno.PointerValue | Uint8Array | null /* ptr */,
   CoverpageInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
   FaxJobId: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -3579,7 +3579,7 @@ export function FaxSendDocumentA(
 
 export function FaxSendDocumentW(
   FaxHandle: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  FileName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  FileName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   JobParams: Deno.PointerValue | Uint8Array | null /* ptr */,
   CoverpageInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
   FaxJobId: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -3589,7 +3589,7 @@ export function FaxSendDocumentW(
 
 export function FaxSendDocumentForBroadcastA(
   FaxHandle: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  FileName: string | null /* Windows.Win32.Foundation.PSTR */,
+  FileName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   FaxJobId: Deno.PointerValue | Uint8Array | null /* ptr */,
   FaxRecipientCallback: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.Fax.PFAX_RECIPIENT_CALLBACKA */,
   Context: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -3599,7 +3599,7 @@ export function FaxSendDocumentForBroadcastA(
 
 export function FaxSendDocumentForBroadcastW(
   FaxHandle: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  FileName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  FileName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   FaxJobId: Deno.PointerValue | Uint8Array | null /* ptr */,
   FaxRecipientCallback: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.Fax.PFAX_RECIPIENT_CALLBACKW */,
   Context: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -3811,7 +3811,7 @@ export function FaxEnumRoutingMethodsW(
 
 export function FaxEnableRoutingMethodA(
   FaxPortHandle: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  RoutingGuid: string | null /* Windows.Win32.Foundation.PSTR */,
+  RoutingGuid: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   Enabled: boolean /* Windows.Win32.Foundation.BOOL */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libWINFAX_dll.FaxEnableRoutingMethodA(util.toPointer(FaxPortHandle), util.pstrToFfi(RoutingGuid), util.boolToFfi(Enabled)));
@@ -3819,7 +3819,7 @@ export function FaxEnableRoutingMethodA(
 
 export function FaxEnableRoutingMethodW(
   FaxPortHandle: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  RoutingGuid: string | null /* Windows.Win32.Foundation.PWSTR */,
+  RoutingGuid: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   Enabled: boolean /* Windows.Win32.Foundation.BOOL */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libWINFAX_dll.FaxEnableRoutingMethodW(util.toPointer(FaxPortHandle), util.pwstrToFfi(RoutingGuid), util.boolToFfi(Enabled)));
@@ -3857,7 +3857,7 @@ export function FaxSetGlobalRoutingInfoW(
 
 export function FaxGetRoutingInfoA(
   FaxPortHandle: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  RoutingGuid: string | null /* Windows.Win32.Foundation.PSTR */,
+  RoutingGuid: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   RoutingInfoBuffer: Deno.PointerValue | Uint8Array | null /* ptr */,
   RoutingInfoBufferSize: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
@@ -3866,7 +3866,7 @@ export function FaxGetRoutingInfoA(
 
 export function FaxGetRoutingInfoW(
   FaxPortHandle: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  RoutingGuid: string | null /* Windows.Win32.Foundation.PWSTR */,
+  RoutingGuid: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   RoutingInfoBuffer: Deno.PointerValue | Uint8Array | null /* ptr */,
   RoutingInfoBufferSize: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
@@ -3875,7 +3875,7 @@ export function FaxGetRoutingInfoW(
 
 export function FaxSetRoutingInfoA(
   FaxPortHandle: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  RoutingGuid: string | null /* Windows.Win32.Foundation.PSTR */,
+  RoutingGuid: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   RoutingInfoBuffer: Deno.PointerValue | Uint8Array | null /* ptr */,
   RoutingInfoBufferSize: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
@@ -3884,7 +3884,7 @@ export function FaxSetRoutingInfoA(
 
 export function FaxSetRoutingInfoW(
   FaxPortHandle: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  RoutingGuid: string | null /* Windows.Win32.Foundation.PWSTR */,
+  RoutingGuid: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   RoutingInfoBuffer: Deno.PointerValue | Uint8Array | null /* ptr */,
   RoutingInfoBufferSize: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
@@ -3908,7 +3908,7 @@ export function FaxFreeBuffer(
 }
 
 export function FaxStartPrintJobA(
-  PrinterName: string | null /* Windows.Win32.Foundation.PSTR */,
+  PrinterName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   PrintInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
   FaxJobId: Deno.PointerValue | Uint8Array | null /* ptr */,
   FaxContextInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -3917,7 +3917,7 @@ export function FaxStartPrintJobA(
 }
 
 export function FaxStartPrintJobW(
-  PrinterName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  PrinterName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   PrintInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
   FaxJobId: Deno.PointerValue | Uint8Array | null /* ptr */,
   FaxContextInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -3940,25 +3940,25 @@ export function FaxPrintCoverPageW(
 }
 
 export function FaxRegisterServiceProviderW(
-  DeviceProvider: string | null /* Windows.Win32.Foundation.PWSTR */,
-  FriendlyName: string | null /* Windows.Win32.Foundation.PWSTR */,
-  ImageName: string | null /* Windows.Win32.Foundation.PWSTR */,
-  TspName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  DeviceProvider: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  FriendlyName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  ImageName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  TspName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libWINFAX_dll.FaxRegisterServiceProviderW(util.pwstrToFfi(DeviceProvider), util.pwstrToFfi(FriendlyName), util.pwstrToFfi(ImageName), util.pwstrToFfi(TspName)));
 }
 
 export function FaxUnregisterServiceProviderW(
-  DeviceProvider: string | null /* Windows.Win32.Foundation.PWSTR */,
+  DeviceProvider: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libWINFAX_dll.FaxUnregisterServiceProviderW(util.pwstrToFfi(DeviceProvider)));
 }
 
 export function FaxRegisterRoutingExtensionW(
   FaxHandle: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  ExtensionName: string | null /* Windows.Win32.Foundation.PWSTR */,
-  FriendlyName: string | null /* Windows.Win32.Foundation.PWSTR */,
-  ImageName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  ExtensionName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  FriendlyName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  ImageName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   CallBack: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.Fax.PFAX_ROUTING_INSTALLATION_CALLBACKW */,
   Context: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
@@ -3978,7 +3978,7 @@ export function CanSendToFaxRecipient(): boolean /* Windows.Win32.Foundation.BOO
 
 export function SendToFaxRecipient(
   sndMode: SendToMode /* Windows.Win32.Devices.Fax.SendToMode */,
-  lpFileName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpFileName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
   return libfxsutility_dll.SendToFaxRecipient(sndMode, util.pwstrToFfi(lpFileName));
 }

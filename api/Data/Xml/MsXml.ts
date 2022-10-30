@@ -939,13 +939,13 @@ export function allocFILETIME(data?: Partial<FILETIME>): Uint8Array {
  */
 export interface XHR_COOKIE {
   /** Windows.Win32.Foundation.PWSTR */
-  pwszUrl: string | null;
+  pwszUrl: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pwszName: string | null;
+  pwszName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pwszValue: string | null;
+  pwszValue: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pwszP3PPolicy: string | null;
+  pwszP3PPolicy: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.FILETIME */
   ftExpires: Uint8Array | Deno.PointerValue | null;
   /** u32 */

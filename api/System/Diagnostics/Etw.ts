@@ -3926,7 +3926,7 @@ export interface _Anonymous1_e__Union {
   /** usize */
   Data0: Deno.PointerValue;
   /** Windows.Win32.Foundation.PWSTR */
-  String: string | null;
+  String: string | null | Uint8Array | Uint16Array;
   /** usize */
   u: Deno.PointerValue;
   /** ptr */
@@ -4407,7 +4407,7 @@ export interface _u_e__Struct {
   /** u32 */
   dwValue: number;
   /** Windows.Win32.Foundation.PWSTR */
-  pwszName: string | null;
+  pwszName: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeof_u_e__Struct = 16;
@@ -4746,9 +4746,9 @@ export interface TRACE_LOGFILE_HEADER {
   /** _Anonymous2_e__Union */
   Anonymous2: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.Foundation.PWSTR */
-  LoggerName: string | null;
+  LoggerName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  LogFileName: string | null;
+  LogFileName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.System.Time.TIME_ZONE_INFORMATION */
   TimeZone: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.Foundation.LARGE_INTEGER */
@@ -5526,9 +5526,9 @@ export function allocEVENT_TRACE(data?: Partial<EVENT_TRACE>): Uint8Array {
  */
 export interface EVENT_TRACE_LOGFILEW {
   /** Windows.Win32.Foundation.PWSTR */
-  LogFileName: string | null;
+  LogFileName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  LoggerName: string | null;
+  LoggerName: string | null | Uint8Array | Uint16Array;
   /** i64 */
   CurrentTime: Deno.PointerValue;
   /** u32 */
@@ -5607,9 +5607,9 @@ export type PSTR = Deno.PointerValue | Uint8Array | null;
  */
 export interface EVENT_TRACE_LOGFILEA {
   /** Windows.Win32.Foundation.PSTR */
-  LogFileName: string | null;
+  LogFileName: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  LoggerName: string | null;
+  LoggerName: string | null | Uint8Array;
   /** i64 */
   CurrentTime: Deno.PointerValue;
   /** u32 */
@@ -5919,9 +5919,9 @@ export interface ETW_TRACE_PARTITION_INFORMATION_V2 {
   /** u32 */
   PartitionType: number;
   /** Windows.Win32.Foundation.PWSTR */
-  PartitionId: string | null;
+  PartitionId: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  ParentId: string | null;
+  ParentId: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeofETW_TRACE_PARTITION_INFORMATION_V2 = 32;
@@ -6769,11 +6769,11 @@ export function allocPROPERTY_DATA_DESCRIPTOR(data?: Partial<PROPERTY_DATA_DESCR
  */
 export interface PAYLOAD_FILTER_PREDICATE {
   /** Windows.Win32.Foundation.PWSTR */
-  FieldName: string | null;
+  FieldName: string | null | Uint8Array | Uint16Array;
   /** u16 */
   CompareOp: number;
   /** Windows.Win32.Foundation.PWSTR */
-  Value: string | null;
+  Value: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeofPAYLOAD_FILTER_PREDICATE = 24;
@@ -7337,7 +7337,7 @@ try {
 
 export function StartTraceW(
   TraceHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
-  InstanceName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  InstanceName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   Properties: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
   return libADVAPI32_dll.StartTraceW(util.toPointer(TraceHandle), util.pwstrToFfi(InstanceName), util.toPointer(Properties));
@@ -7345,7 +7345,7 @@ export function StartTraceW(
 
 export function StartTraceA(
   TraceHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
-  InstanceName: string | null /* Windows.Win32.Foundation.PSTR */,
+  InstanceName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   Properties: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
   return libADVAPI32_dll.StartTraceA(util.toPointer(TraceHandle), util.pstrToFfi(InstanceName), util.toPointer(Properties));
@@ -7353,7 +7353,7 @@ export function StartTraceA(
 
 export function StopTraceW(
   TraceHandle: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Diagnostics.Etw.CONTROLTRACE_HANDLE */,
-  InstanceName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  InstanceName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   Properties: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
   return libADVAPI32_dll.StopTraceW(util.toPointer(TraceHandle), util.pwstrToFfi(InstanceName), util.toPointer(Properties));
@@ -7361,7 +7361,7 @@ export function StopTraceW(
 
 export function StopTraceA(
   TraceHandle: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Diagnostics.Etw.CONTROLTRACE_HANDLE */,
-  InstanceName: string | null /* Windows.Win32.Foundation.PSTR */,
+  InstanceName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   Properties: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
   return libADVAPI32_dll.StopTraceA(util.toPointer(TraceHandle), util.pstrToFfi(InstanceName), util.toPointer(Properties));
@@ -7369,7 +7369,7 @@ export function StopTraceA(
 
 export function QueryTraceW(
   TraceHandle: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Diagnostics.Etw.CONTROLTRACE_HANDLE */,
-  InstanceName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  InstanceName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   Properties: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
   return libADVAPI32_dll.QueryTraceW(util.toPointer(TraceHandle), util.pwstrToFfi(InstanceName), util.toPointer(Properties));
@@ -7377,7 +7377,7 @@ export function QueryTraceW(
 
 export function QueryTraceA(
   TraceHandle: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Diagnostics.Etw.CONTROLTRACE_HANDLE */,
-  InstanceName: string | null /* Windows.Win32.Foundation.PSTR */,
+  InstanceName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   Properties: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
   return libADVAPI32_dll.QueryTraceA(util.toPointer(TraceHandle), util.pstrToFfi(InstanceName), util.toPointer(Properties));
@@ -7385,7 +7385,7 @@ export function QueryTraceA(
 
 export function UpdateTraceW(
   TraceHandle: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Diagnostics.Etw.CONTROLTRACE_HANDLE */,
-  InstanceName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  InstanceName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   Properties: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
   return libADVAPI32_dll.UpdateTraceW(util.toPointer(TraceHandle), util.pwstrToFfi(InstanceName), util.toPointer(Properties));
@@ -7393,7 +7393,7 @@ export function UpdateTraceW(
 
 export function UpdateTraceA(
   TraceHandle: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Diagnostics.Etw.CONTROLTRACE_HANDLE */,
-  InstanceName: string | null /* Windows.Win32.Foundation.PSTR */,
+  InstanceName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   Properties: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
   return libADVAPI32_dll.UpdateTraceA(util.toPointer(TraceHandle), util.pstrToFfi(InstanceName), util.toPointer(Properties));
@@ -7401,7 +7401,7 @@ export function UpdateTraceA(
 
 export function FlushTraceW(
   TraceHandle: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Diagnostics.Etw.CONTROLTRACE_HANDLE */,
-  InstanceName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  InstanceName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   Properties: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
   return libADVAPI32_dll.FlushTraceW(util.toPointer(TraceHandle), util.pwstrToFfi(InstanceName), util.toPointer(Properties));
@@ -7409,7 +7409,7 @@ export function FlushTraceW(
 
 export function FlushTraceA(
   TraceHandle: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Diagnostics.Etw.CONTROLTRACE_HANDLE */,
-  InstanceName: string | null /* Windows.Win32.Foundation.PSTR */,
+  InstanceName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   Properties: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
   return libADVAPI32_dll.FlushTraceA(util.toPointer(TraceHandle), util.pstrToFfi(InstanceName), util.toPointer(Properties));
@@ -7417,7 +7417,7 @@ export function FlushTraceA(
 
 export function ControlTraceW(
   TraceHandle: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Diagnostics.Etw.CONTROLTRACE_HANDLE */,
-  InstanceName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  InstanceName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   Properties: Deno.PointerValue | Uint8Array | null /* ptr */,
   ControlCode: EVENT_TRACE_CONTROL /* Windows.Win32.System.Diagnostics.Etw.EVENT_TRACE_CONTROL */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
@@ -7426,7 +7426,7 @@ export function ControlTraceW(
 
 export function ControlTraceA(
   TraceHandle: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Diagnostics.Etw.CONTROLTRACE_HANDLE */,
-  InstanceName: string | null /* Windows.Win32.Foundation.PSTR */,
+  InstanceName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   Properties: Deno.PointerValue | Uint8Array | null /* ptr */,
   ControlCode: EVENT_TRACE_CONTROL /* Windows.Win32.System.Diagnostics.Etw.EVENT_TRACE_CONTROL */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
@@ -7545,8 +7545,8 @@ export function RegisterTraceGuidsW(
   ControlGuid: Deno.PointerValue | Uint8Array | null /* ptr */,
   GuidCount: number /* u32 */,
   TraceGuidReg: Deno.PointerValue | Uint8Array | null /* ptr */,
-  MofImagePath: string | null /* Windows.Win32.Foundation.PWSTR */,
-  MofResourceName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  MofImagePath: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  MofResourceName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   RegistrationHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
   return libADVAPI32_dll.RegisterTraceGuidsW(util.toPointer(RequestAddress), util.toPointer(RequestContext), util.toPointer(ControlGuid), GuidCount, util.toPointer(TraceGuidReg), util.pwstrToFfi(MofImagePath), util.pwstrToFfi(MofResourceName), util.toPointer(RegistrationHandle));
@@ -7558,8 +7558,8 @@ export function RegisterTraceGuidsA(
   ControlGuid: Deno.PointerValue | Uint8Array | null /* ptr */,
   GuidCount: number /* u32 */,
   TraceGuidReg: Deno.PointerValue | Uint8Array | null /* ptr */,
-  MofImagePath: string | null /* Windows.Win32.Foundation.PSTR */,
-  MofResourceName: string | null /* Windows.Win32.Foundation.PSTR */,
+  MofImagePath: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  MofResourceName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   RegistrationHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
   return libADVAPI32_dll.RegisterTraceGuidsA(util.toPointer(RequestAddress), util.toPointer(RequestContext), util.toPointer(ControlGuid), GuidCount, util.toPointer(TraceGuidReg), util.pstrToFfi(MofImagePath), util.pstrToFfi(MofResourceName), util.toPointer(RegistrationHandle));
@@ -7744,7 +7744,7 @@ export function EventWriteString(
   RegHandle: Deno.PointerValue /* u64 */,
   Level: number /* u8 */,
   Keyword: Deno.PointerValue /* u64 */,
-  String: string | null /* Windows.Win32.Foundation.PWSTR */,
+  String: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
   return libADVAPI32_dll.EventWriteString(RegHandle, Level, Keyword, util.pwstrToFfi(String));
 }
@@ -7824,7 +7824,7 @@ export function TdhGetEventInformation(
 
 export function TdhGetEventMapInformation(
   pEvent: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pMapName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pMapName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pBuffer: Deno.PointerValue | Uint8Array | null /* ptr */,
   pBufferSize: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
@@ -7901,7 +7901,7 @@ export function TdhEnumerateProviderFilters(
 }
 
 export function TdhLoadManifest(
-  Manifest: string | null /* Windows.Win32.Foundation.PWSTR */,
+  Manifest: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
   return libTDH_dll.TdhLoadManifest(util.pwstrToFfi(Manifest));
 }
@@ -7914,7 +7914,7 @@ export function TdhLoadManifestFromMemory(
 }
 
 export function TdhUnloadManifest(
-  Manifest: string | null /* Windows.Win32.Foundation.PWSTR */,
+  Manifest: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
   return libTDH_dll.TdhUnloadManifest(util.pwstrToFfi(Manifest));
 }
@@ -7936,7 +7936,7 @@ export function TdhFormatProperty(
   UserDataLength: number /* u16 */,
   UserData: Deno.PointerValue | Uint8Array | null /* ptr */,
   BufferSize: Deno.PointerValue | Uint8Array | null /* ptr */,
-  Buffer: string | null /* Windows.Win32.Foundation.PWSTR */,
+  Buffer: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   UserDataConsumed: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
   return libTDH_dll.TdhFormatProperty(util.toPointer(EventInfo), util.toPointer(MapInfo), PointerSize, PropertyInType, PropertyOutType, PropertyLength, UserDataLength, util.toPointer(UserData), util.toPointer(BufferSize), util.pwstrToFfi(Buffer), util.toPointer(UserDataConsumed));
@@ -7965,7 +7965,7 @@ export function TdhGetDecodingParameter(
 export function TdhGetWppProperty(
   Handle: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Diagnostics.Etw.TDH_HANDLE */,
   EventRecord: Deno.PointerValue | Uint8Array | null /* ptr */,
-  PropertyName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  PropertyName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   BufferSize: Deno.PointerValue | Uint8Array | null /* ptr */,
   Buffer: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
@@ -7988,7 +7988,7 @@ export function TdhCloseDecodingHandle(
 }
 
 export function TdhLoadManifestFromBinary(
-  BinaryPath: string | null /* Windows.Win32.Foundation.PWSTR */,
+  BinaryPath: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
   return libtdh_dll.TdhLoadManifestFromBinary(util.pwstrToFfi(BinaryPath));
 }
@@ -8011,8 +8011,8 @@ export function TdhGetManifestEventInformation(
 }
 
 export function CveEventWrite(
-  CveId: string | null /* Windows.Win32.Foundation.PWSTR */,
-  AdditionalDetails: string | null /* Windows.Win32.Foundation.PWSTR */,
+  CveId: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  AdditionalDetails: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* i32 */ {
   return libADVAPI32_dll.CveEventWrite(util.pwstrToFfi(CveId), util.pwstrToFfi(AdditionalDetails));
 }

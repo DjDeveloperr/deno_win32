@@ -1426,9 +1426,9 @@ export interface SPPHRASEELEMENT {
   /** u32 */
   ulRetainedSizeBytes: number;
   /** Windows.Win32.Foundation.PWSTR */
-  pszDisplayText: string | null;
+  pszDisplayText: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pszLexicalForm: string | null;
+  pszLexicalForm: string | null | Uint8Array | Uint16Array;
   /** ptr */
   pszPronunciation: Deno.PointerValue | Uint8Array | null;
   /** u8 */
@@ -1490,7 +1490,7 @@ export function allocSPPHRASEELEMENT(data?: Partial<SPPHRASEELEMENT>): Uint8Arra
  */
 export interface SPPHRASERULE {
   /** Windows.Win32.Foundation.PWSTR */
-  pszName: string | null;
+  pszName: string | null | Uint8Array | Uint16Array;
   /** u32 */
   ulId: number;
   /** u32 */
@@ -1603,11 +1603,11 @@ export function allocVARIANT(data?: Partial<VARIANT>): Uint8Array {
  */
 export interface SPPHRASEPROPERTY {
   /** Windows.Win32.Foundation.PWSTR */
-  pszName: string | null;
+  pszName: string | null | Uint8Array | Uint16Array;
   /** _Anonymous_e__Union */
   Anonymous: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.Foundation.PWSTR */
-  pszValue: string | null;
+  pszValue: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.System.Com.VARIANT */
   vValue: Uint8Array | Deno.PointerValue | null;
   /** u32 */
@@ -1666,7 +1666,7 @@ export interface SPPHRASEREPLACEMENT {
   /** u8 */
   bDisplayAttributes: number;
   /** Windows.Win32.Foundation.PWSTR */
-  pszReplacementText: string | null;
+  pszReplacementText: string | null | Uint8Array | Uint16Array;
   /** u32 */
   ulFirstElement: number;
   /** u32 */
@@ -1702,11 +1702,11 @@ export interface SPSEMANTICERRORINFO {
   /** u32 */
   ulLineNumber: number;
   /** Windows.Win32.Foundation.PWSTR */
-  pszScriptLine: string | null;
+  pszScriptLine: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pszSource: string | null;
+  pszSource: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pszDescription: string | null;
+  pszDescription: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.HRESULT */
   hrResultCode: Uint8Array | Deno.PointerValue | null;
 }
@@ -1831,7 +1831,7 @@ export interface SPPHRASE {
   /** Windows.Win32.Media.Speech.SPPHRASE_50 */
   Base: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.Foundation.PWSTR */
-  pSML: string | null;
+  pSML: string | null | Uint8Array | Uint16Array;
   /** ptr */
   pSemanticErrorInfo: Deno.PointerValue | Uint8Array | null;
 }
@@ -1877,7 +1877,7 @@ export function allocSPSERIALIZEDPHRASE(data?: Partial<SPSERIALIZEDPHRASE>): Uin
  */
 export interface SPRULE {
   /** Windows.Win32.Foundation.PWSTR */
-  pszRuleName: string | null;
+  pszRuleName: string | null | Uint8Array | Uint16Array;
   /** u32 */
   ulRuleId: number;
   /** u32 */
@@ -2018,7 +2018,7 @@ export interface SPWORD {
   /** Windows.Win32.Media.Speech.SPWORDTYPE */
   eWordType: SPWORDTYPE;
   /** Windows.Win32.Foundation.PWSTR */
-  pszWord: string | null;
+  pszWord: string | null | Uint8Array | Uint16Array;
   /** ptr */
   pFirstWordPronunciation: Deno.PointerValue | Uint8Array | null;
 }
@@ -2084,9 +2084,9 @@ export interface SPSHORTCUTPAIR {
   /** Windows.Win32.Media.Speech.SPSHORTCUTTYPE */
   shType: SPSHORTCUTTYPE;
   /** Windows.Win32.Foundation.PWSTR */
-  pszDisplay: string | null;
+  pszDisplay: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pszSpoken: string | null;
+  pszSpoken: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeofSPSHORTCUTPAIR = 32;
@@ -2168,11 +2168,11 @@ export function allocSPVPITCH(data?: Partial<SPVPITCH>): Uint8Array {
  */
 export interface SPVCONTEXT {
   /** Windows.Win32.Foundation.PWSTR */
-  pCategory: string | null;
+  pCategory: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pBefore: string | null;
+  pBefore: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pAfter: string | null;
+  pAfter: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeofSPVCONTEXT = 24;
@@ -2433,11 +2433,11 @@ export function allocSPTEXTSELECTIONINFO(data?: Partial<SPTEXTSELECTIONINFO>): U
  */
 export interface SPPROPERTYINFO {
   /** Windows.Win32.Foundation.PWSTR */
-  pszName: string | null;
+  pszName: string | null | Uint8Array | Uint16Array;
   /** u32 */
   ulId: number;
   /** Windows.Win32.Foundation.PWSTR */
-  pszValue: string | null;
+  pszValue: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.System.Com.VARIANT */
   vValue: Uint8Array | Deno.PointerValue | null;
 }
@@ -2571,9 +2571,9 @@ export function allocSPNORMALIZATIONLIST(data?: Partial<SPNORMALIZATIONLIST>): U
  */
 export interface SPDISPLAYTOKEN {
   /** Windows.Win32.Foundation.PWSTR */
-  pszLexical: string | null;
+  pszLexical: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pszDisplay: string | null;
+  pszDisplay: string | null | Uint8Array | Uint16Array;
   /** u8 */
   bDisplayAttributes: number;
 }

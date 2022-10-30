@@ -68,7 +68,7 @@ try {
 // Symbols
 
 export function CreateDeviceAccessInstance(
-  deviceInterfacePath: string | null /* Windows.Win32.Foundation.PWSTR */,
+  deviceInterfacePath: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   desiredAccess: number /* u32 */,
   createAsync: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {

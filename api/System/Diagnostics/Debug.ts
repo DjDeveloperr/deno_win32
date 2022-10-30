@@ -3838,7 +3838,7 @@ export type PSTR = Deno.PointerValue | Uint8Array | null;
  */
 export interface OUTPUT_DEBUG_STRING_INFO {
   /** Windows.Win32.Foundation.PSTR */
-  lpDebugStringData: string | null;
+  lpDebugStringData: string | null | Uint8Array;
   /** u16 */
   fUnicode: number;
   /** u16 */
@@ -4497,11 +4497,11 @@ export type PWSTR = Deno.PointerValue | Uint8Array | null;
  */
 export interface STACK_SRC_INFO {
   /** Windows.Win32.Foundation.PWSTR */
-  ImagePath: string | null;
+  ImagePath: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  ModuleName: string | null;
+  ModuleName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  Function: string | null;
+  Function: string | null | Uint8Array | Uint16Array;
   /** u32 */
   Displacement: number;
   /** u32 */
@@ -6409,9 +6409,9 @@ export function allocREAD_WRITE_MSR(data?: Partial<READ_WRITE_MSR>): Uint8Array 
  */
 export interface GET_SET_SYMPATH {
   /** Windows.Win32.Foundation.PSTR */
-  Args: string | null;
+  Args: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  Result: string | null;
+  Result: string | null | Uint8Array;
   /** i32 */
   Length: number;
 }
@@ -6532,9 +6532,9 @@ export function allocGET_CURRENT_PROCESS_ADDRESS(data?: Partial<GET_CURRENT_PROC
  */
 export interface GET_INPUT_LINE {
   /** Windows.Win32.Foundation.PSTR */
-  Prompt: string | null;
+  Prompt: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  Buffer: string | null;
+  Buffer: string | null | Uint8Array;
   /** u32 */
   BufferSize: number;
   /** u32 */
@@ -6568,9 +6568,9 @@ export function allocGET_INPUT_LINE(data?: Partial<GET_INPUT_LINE>): Uint8Array 
  */
 export interface GET_EXPRESSION_EX {
   /** Windows.Win32.Foundation.PSTR */
-  Expression: string | null;
+  Expression: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  Remainder: string | null;
+  Remainder: string | null | Uint8Array;
   /** u64 */
   Value: Deno.PointerValue;
 }
@@ -6831,9 +6831,9 @@ export function allocWDBGEXTS_CLR_DATA_INTERFACE(data?: Partial<WDBGEXTS_CLR_DAT
  */
 export interface EXT_MATCH_PATTERN_A {
   /** Windows.Win32.Foundation.PSTR */
-  Str: string | null;
+  Str: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  Pattern: string | null;
+  Pattern: string | null | Uint8Array;
   /** u32 */
   CaseSensitive: number;
 }
@@ -6864,7 +6864,7 @@ export function allocEXT_MATCH_PATTERN_A(data?: Partial<EXT_MATCH_PATTERN_A>): U
  */
 export interface EXT_FIND_FILE {
   /** Windows.Win32.Foundation.PWSTR */
-  FileName: string | null;
+  FileName: string | null | Uint8Array | Uint16Array;
   /** u64 */
   IndexedSize: Deno.PointerValue;
   /** u32 */
@@ -6884,7 +6884,7 @@ export interface EXT_FIND_FILE {
   /** Windows.Win32.Foundation.HANDLE */
   FileHandle: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.Foundation.PWSTR */
-  FoundFileName: string | null;
+  FoundFileName: string | null | Uint8Array | Uint16Array;
   /** u32 */
   FoundFileNameChars: number;
 }
@@ -7112,7 +7112,7 @@ export interface WDBGEXTS_DISASSEMBLE_BUFFER {
   /** ptr */
   DataBuffer: Deno.PointerValue | Uint8Array | null;
   /** Windows.Win32.Foundation.PWSTR */
-  DisasmBuffer: string | null;
+  DisasmBuffer: string | null | Uint8Array | Uint16Array;
   /** array */
   Reserved0: Deno.PointerValue | null;
 }
@@ -8616,7 +8616,7 @@ export interface _Anonymous1_e__Union {
   /** usize */
   Data0: Deno.PointerValue;
   /** Windows.Win32.Foundation.PWSTR */
-  String: string | null;
+  String: string | null | Uint8Array | Uint16Array;
   /** usize */
   u: Deno.PointerValue;
   /** ptr */
@@ -8777,7 +8777,7 @@ export function allocLIST_ENTRY(data?: Partial<LIST_ENTRY>): Uint8Array {
  */
 export interface LOADED_IMAGE {
   /** Windows.Win32.Foundation.PSTR */
-  ModuleName: string | null;
+  ModuleName: string | null | Uint8Array;
   /** Windows.Win32.Foundation.HANDLE */
   hFile: Uint8Array | Deno.PointerValue | null;
   /** ptr */
@@ -13399,7 +13399,7 @@ export function allocMINIDUMP_INCLUDE_THREAD_CALLBACK(data?: Partial<MINIDUMP_IN
  */
 export interface MINIDUMP_MODULE_CALLBACK {
   /** Windows.Win32.Foundation.PWSTR */
-  FullPath: string | null;
+  FullPath: string | null | Uint8Array | Uint16Array;
   /** u64 */
   BaseOfImage: Deno.PointerValue;
   /** u32 */
@@ -13752,13 +13752,13 @@ export interface ExtendedDebugPropertyInfo {
   /** u32 */
   dwValidFields: number;
   /** Windows.Win32.Foundation.PWSTR */
-  pszName: string | null;
+  pszName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pszType: string | null;
+  pszType: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pszValue: string | null;
+  pszValue: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pszFullName: string | null;
+  pszFullName: string | null | Uint8Array | Uint16Array;
   /** u32 */
   dwAttrib: number;
   /** Windows.Win32.System.Diagnostics.Debug.IDebugProperty */
@@ -13921,7 +13921,7 @@ export interface PROFILER_PROPERTY_TYPE_SUBSTRING_INFO {
   /** u32 */
   length: number;
   /** Windows.Win32.Foundation.PWSTR */
-  value: string | null;
+  value: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeofPROFILER_PROPERTY_TYPE_SUBSTRING_INFO = 16;
@@ -14101,7 +14101,7 @@ export interface IMAGE_DEBUG_INFORMATION {
   /** u32 */
   ReservedExportedNamesSize: number;
   /** Windows.Win32.Foundation.PSTR */
-  ReservedExportedNames: string | null;
+  ReservedExportedNames: string | null | Uint8Array;
   /** u32 */
   ReservedNumberOfFunctionTableEntries: number;
   /** ptr */
@@ -14123,11 +14123,11 @@ export interface IMAGE_DEBUG_INFORMATION {
   /** ptr */
   ReservedCodeViewSymbols: Deno.PointerValue | Uint8Array | null;
   /** Windows.Win32.Foundation.PSTR */
-  ImageFilePath: string | null;
+  ImageFilePath: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  ImageFileName: string | null;
+  ImageFileName: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  ReservedDebugFilePath: string | null;
+  ReservedDebugFilePath: string | null | Uint8Array;
   /** u32 */
   ReservedTimeDateStamp: number;
   /** Windows.Win32.Foundation.BOOL */
@@ -15388,7 +15388,7 @@ export interface IMAGEHLP_LINE64 {
   /** u32 */
   LineNumber: number;
   /** Windows.Win32.Foundation.PSTR */
-  FileName: string | null;
+  FileName: string | null | Uint8Array;
   /** u64 */
   Address: Deno.PointerValue;
 }
@@ -15427,7 +15427,7 @@ export interface IMAGEHLP_LINEW64 {
   /** u32 */
   LineNumber: number;
   /** Windows.Win32.Foundation.PWSTR */
-  FileName: string | null;
+  FileName: string | null | Uint8Array | Uint16Array;
   /** u64 */
   Address: Deno.PointerValue;
 }
@@ -15466,7 +15466,7 @@ export interface IMAGEHLP_LINE {
   /** u32 */
   LineNumber: number;
   /** Windows.Win32.Foundation.PSTR */
-  FileName: string | null;
+  FileName: string | null | Uint8Array;
   /** u32 */
   Address: number;
 }
@@ -15506,7 +15506,7 @@ export interface IMAGEHLP_LINEW {
   /** u32 */
   LineNumber: number;
   /** Windows.Win32.Foundation.PSTR */
-  FileName: string | null;
+  FileName: string | null | Uint8Array;
   /** u64 */
   Address: Deno.PointerValue;
 }
@@ -15541,7 +15541,7 @@ export interface SOURCEFILE {
   /** u64 */
   ModBase: Deno.PointerValue;
   /** Windows.Win32.Foundation.PSTR */
-  FileName: string | null;
+  FileName: string | null | Uint8Array;
 }
 
 export const sizeofSOURCEFILE = 16;
@@ -15566,7 +15566,7 @@ export interface SOURCEFILEW {
   /** u64 */
   ModBase: Deno.PointerValue;
   /** Windows.Win32.Foundation.PWSTR */
-  FileName: string | null;
+  FileName: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeofSOURCEFILEW = 16;
@@ -15624,7 +15624,7 @@ export interface IMAGEHLP_CBA_EVENT {
   /** u32 */
   code: number;
   /** Windows.Win32.Foundation.PSTR */
-  desc: string | null;
+  desc: string | null | Uint8Array;
   /** ptr */
   object: Deno.PointerValue | Uint8Array | null;
 }
@@ -15657,7 +15657,7 @@ export interface IMAGEHLP_CBA_EVENTW {
   /** u32 */
   code: number;
   /** Windows.Win32.Foundation.PWSTR */
-  desc: string | null;
+  desc: string | null | Uint8Array | Uint16Array;
   /** ptr */
   object: Deno.PointerValue | Uint8Array | null;
 }
@@ -16579,9 +16579,9 @@ export function allocSYMSRV_EXTENDED_OUTPUT_DATA(data?: Partial<SYMSRV_EXTENDED_
  */
 export interface DBGHELP_DATA_REPORT_STRUCT {
   /** Windows.Win32.Foundation.PWSTR */
-  pBinPathNonExist: string | null;
+  pBinPathNonExist: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pSymbolPathNonExist: string | null;
+  pSymbolPathNonExist: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeofDBGHELP_DATA_REPORT_STRUCT = 16;
@@ -16817,7 +16817,7 @@ export interface _u_e__Struct {
   /** u32 */
   dwValue: number;
   /** Windows.Win32.Foundation.PWSTR */
-  pwszName: string | null;
+  pwszName: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeof_u_e__Struct = 16;
@@ -19246,10 +19246,6 @@ try {
       parameters: ["pointer", "pointer"],
       result: "i32",
     },
-    RtlCaptureContext2: {
-      parameters: ["pointer"],
-      result: "void",
-    },
     RtlUnwindEx: {
       parameters: ["pointer", "pointer", "pointer", "pointer", "pointer", "pointer"],
       result: "void",
@@ -20536,7 +20532,7 @@ export function RtlInstallFunctionTableCallback(
   Length: number /* u32 */,
   Callback: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Diagnostics.Debug.PGET_RUNTIME_FUNCTION_CALLBACK */,
   Context: Deno.PointerValue | Uint8Array | null /* ptr */,
-  OutOfProcessCallbackDll: string | null /* Windows.Win32.Foundation.PWSTR */,
+  OutOfProcessCallbackDll: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.BOOLEAN */ {
   return util.pointerFromFfi(libKERNEL32_dll.RtlInstallFunctionTableCallback(TableIdentifier, BaseAddress, Length, util.toPointer(Callback), util.toPointer(Context), util.pwstrToFfi(OutOfProcessCallbackDll)));
 }
@@ -20574,7 +20570,7 @@ export function RtlVirtualUnwind(
 }
 
 export function DebugConnect(
-  RemoteOptions: string | null /* Windows.Win32.Foundation.PSTR */,
+  RemoteOptions: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   InterfaceId: Deno.PointerValue | Uint8Array | null /* ptr */,
   Interface: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
@@ -20582,7 +20578,7 @@ export function DebugConnect(
 }
 
 export function DebugConnectWide(
-  RemoteOptions: string | null /* Windows.Win32.Foundation.PWSTR */,
+  RemoteOptions: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   InterfaceId: Deno.PointerValue | Uint8Array | null /* ptr */,
   Interface: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
@@ -20665,12 +20661,6 @@ export function Wow64SetThreadContext(
   lpContext: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libKERNEL32_dll.Wow64SetThreadContext(util.toPointer(hThread), util.toPointer(lpContext)));
-}
-
-export function RtlCaptureContext2(
-  ContextRecord: Deno.PointerValue | Uint8Array | null /* ptr */,
-): void /* void */ {
-  return libKERNEL32_dll.RtlCaptureContext2(util.toPointer(ContextRecord));
 }
 
 export function RtlGrowFunctionTable(
@@ -20796,13 +20786,13 @@ export function DebugBreak(): void /* void */ {
 }
 
 export function OutputDebugStringA(
-  lpOutputString: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpOutputString: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): void /* void */ {
   return libKERNEL32_dll.OutputDebugStringA(util.pstrToFfi(lpOutputString));
 }
 
 export function OutputDebugStringW(
-  lpOutputString: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpOutputString: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): void /* void */ {
   return libKERNEL32_dll.OutputDebugStringW(util.pwstrToFfi(lpOutputString));
 }
@@ -20962,14 +20952,14 @@ export function RaiseFailFastException(
 
 export function FatalAppExitA(
   uAction: number /* u32 */,
-  lpMessageText: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpMessageText: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): void /* void */ {
   return libKERNEL32_dll.FatalAppExitA(uAction, util.pstrToFfi(lpMessageText));
 }
 
 export function FatalAppExitW(
   uAction: number /* u32 */,
-  lpMessageText: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpMessageText: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): void /* void */ {
   return libKERNEL32_dll.FatalAppExitW(uAction, util.pwstrToFfi(lpMessageText));
 }
@@ -21046,26 +21036,26 @@ export function MiniDumpReadDumpStream(
 }
 
 export function BindImage(
-  ImageName: string | null /* Windows.Win32.Foundation.PSTR */,
-  DllPath: string | null /* Windows.Win32.Foundation.PSTR */,
-  SymbolPath: string | null /* Windows.Win32.Foundation.PSTR */,
+  ImageName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  DllPath: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  SymbolPath: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libimagehlp_dll.BindImage(util.pstrToFfi(ImageName), util.pstrToFfi(DllPath), util.pstrToFfi(SymbolPath)));
 }
 
 export function BindImageEx(
   Flags: number /* u32 */,
-  ImageName: string | null /* Windows.Win32.Foundation.PSTR */,
-  DllPath: string | null /* Windows.Win32.Foundation.PSTR */,
-  SymbolPath: string | null /* Windows.Win32.Foundation.PSTR */,
+  ImageName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  DllPath: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  SymbolPath: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   StatusRoutine: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Diagnostics.Debug.PIMAGEHLP_STATUS_ROUTINE */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libimagehlp_dll.BindImageEx(Flags, util.pstrToFfi(ImageName), util.pstrToFfi(DllPath), util.pstrToFfi(SymbolPath), util.toPointer(StatusRoutine)));
 }
 
 export function ReBaseImage(
-  CurrentImageName: string | null /* Windows.Win32.Foundation.PSTR */,
-  SymbolPath: string | null /* Windows.Win32.Foundation.PSTR */,
+  CurrentImageName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  SymbolPath: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   fReBase: boolean /* Windows.Win32.Foundation.BOOL */,
   fRebaseSysfileOk: boolean /* Windows.Win32.Foundation.BOOL */,
   fGoingDown: boolean /* Windows.Win32.Foundation.BOOL */,
@@ -21080,8 +21070,8 @@ export function ReBaseImage(
 }
 
 export function ReBaseImage64(
-  CurrentImageName: string | null /* Windows.Win32.Foundation.PSTR */,
-  SymbolPath: string | null /* Windows.Win32.Foundation.PSTR */,
+  CurrentImageName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  SymbolPath: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   fReBase: boolean /* Windows.Win32.Foundation.BOOL */,
   fRebaseSysfileOk: boolean /* Windows.Win32.Foundation.BOOL */,
   fGoingDown: boolean /* Windows.Win32.Foundation.BOOL */,
@@ -21096,7 +21086,7 @@ export function ReBaseImage64(
 }
 
 export function MapFileAndCheckSumA(
-  Filename: string | null /* Windows.Win32.Foundation.PSTR */,
+  Filename: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   HeaderSum: Deno.PointerValue | Uint8Array | null /* ptr */,
   CheckSum: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
@@ -21104,7 +21094,7 @@ export function MapFileAndCheckSumA(
 }
 
 export function MapFileAndCheckSumW(
-  Filename: string | null /* Windows.Win32.Foundation.PWSTR */,
+  Filename: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   HeaderSum: Deno.PointerValue | Uint8Array | null /* ptr */,
   CheckSum: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
@@ -21170,8 +21160,8 @@ export function ImageGetCertificateHeader(
 }
 
 export function ImageLoad(
-  DllName: string | null /* Windows.Win32.Foundation.PSTR */,
-  DllPath: string | null /* Windows.Win32.Foundation.PSTR */,
+  DllName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  DllPath: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): Deno.PointerValue | null /* ptr */ {
   return util.pointerFromFfi(libimagehlp_dll.ImageLoad(util.pstrToFfi(DllName), util.pstrToFfi(DllPath)));
 }
@@ -21183,8 +21173,8 @@ export function ImageUnload(
 }
 
 export function MapAndLoad(
-  ImageName: string | null /* Windows.Win32.Foundation.PSTR */,
-  DllPath: string | null /* Windows.Win32.Foundation.PSTR */,
+  ImageName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  DllPath: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   LoadedImage: Deno.PointerValue | Uint8Array | null /* ptr */,
   DotDll: boolean /* Windows.Win32.Foundation.BOOL */,
   ReadOnly: boolean /* Windows.Win32.Foundation.BOOL */,
@@ -21206,18 +21196,18 @@ export function TouchFileTimes(
 }
 
 export function UpdateDebugInfoFile(
-  ImageFileName: string | null /* Windows.Win32.Foundation.PSTR */,
-  SymbolPath: string | null /* Windows.Win32.Foundation.PSTR */,
-  DebugFilePath: string | null /* Windows.Win32.Foundation.PSTR */,
+  ImageFileName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  SymbolPath: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  DebugFilePath: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   NtHeaders: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libimagehlp_dll.UpdateDebugInfoFile(util.pstrToFfi(ImageFileName), util.pstrToFfi(SymbolPath), util.pstrToFfi(DebugFilePath), util.toPointer(NtHeaders)));
 }
 
 export function UpdateDebugInfoFileEx(
-  ImageFileName: string | null /* Windows.Win32.Foundation.PSTR */,
-  SymbolPath: string | null /* Windows.Win32.Foundation.PSTR */,
-  DebugFilePath: string | null /* Windows.Win32.Foundation.PSTR */,
+  ImageFileName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  SymbolPath: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  DebugFilePath: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   NtHeaders: Deno.PointerValue | Uint8Array | null /* ptr */,
   OldCheckSum: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
@@ -21226,8 +21216,8 @@ export function UpdateDebugInfoFileEx(
 
 export function SymFindDebugInfoFile(
   hProcess: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  FileName: string | null /* Windows.Win32.Foundation.PSTR */,
-  DebugFilePath: string | null /* Windows.Win32.Foundation.PSTR */,
+  FileName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  DebugFilePath: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   Callback: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Diagnostics.Debug.PFIND_DEBUG_FILE_CALLBACK */,
   CallerData: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */ {
@@ -21236,8 +21226,8 @@ export function SymFindDebugInfoFile(
 
 export function SymFindDebugInfoFileW(
   hProcess: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  FileName: string | null /* Windows.Win32.Foundation.PWSTR */,
-  DebugFilePath: string | null /* Windows.Win32.Foundation.PWSTR */,
+  FileName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  DebugFilePath: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   Callback: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Diagnostics.Debug.PFIND_DEBUG_FILE_CALLBACKW */,
   CallerData: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */ {
@@ -21245,17 +21235,17 @@ export function SymFindDebugInfoFileW(
 }
 
 export function FindDebugInfoFile(
-  FileName: string | null /* Windows.Win32.Foundation.PSTR */,
-  SymbolPath: string | null /* Windows.Win32.Foundation.PSTR */,
-  DebugFilePath: string | null /* Windows.Win32.Foundation.PSTR */,
+  FileName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  SymbolPath: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  DebugFilePath: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */ {
   return util.pointerFromFfi(libdbghelp_dll.FindDebugInfoFile(util.pstrToFfi(FileName), util.pstrToFfi(SymbolPath), util.pstrToFfi(DebugFilePath)));
 }
 
 export function FindDebugInfoFileEx(
-  FileName: string | null /* Windows.Win32.Foundation.PSTR */,
-  SymbolPath: string | null /* Windows.Win32.Foundation.PSTR */,
-  DebugFilePath: string | null /* Windows.Win32.Foundation.PSTR */,
+  FileName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  SymbolPath: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  DebugFilePath: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   Callback: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Diagnostics.Debug.PFIND_DEBUG_FILE_CALLBACK */,
   CallerData: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */ {
@@ -21263,9 +21253,9 @@ export function FindDebugInfoFileEx(
 }
 
 export function FindDebugInfoFileExW(
-  FileName: string | null /* Windows.Win32.Foundation.PWSTR */,
-  SymbolPath: string | null /* Windows.Win32.Foundation.PWSTR */,
-  DebugFilePath: string | null /* Windows.Win32.Foundation.PWSTR */,
+  FileName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  SymbolPath: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  DebugFilePath: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   Callback: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Diagnostics.Debug.PFIND_DEBUG_FILE_CALLBACKW */,
   CallerData: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */ {
@@ -21274,13 +21264,13 @@ export function FindDebugInfoFileExW(
 
 export function SymFindFileInPath(
   hprocess: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  SearchPathA: string | null /* Windows.Win32.Foundation.PSTR */,
-  FileName: string | null /* Windows.Win32.Foundation.PSTR */,
+  SearchPathA: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  FileName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   id: Deno.PointerValue | Uint8Array | null /* ptr */,
   two: number /* u32 */,
   three: number /* u32 */,
   flags: SYM_FIND_ID_OPTION /* Windows.Win32.System.Diagnostics.Debug.SYM_FIND_ID_OPTION */,
-  FoundFile: string | null /* Windows.Win32.Foundation.PSTR */,
+  FoundFile: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   callback: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Diagnostics.Debug.PFINDFILEINPATHCALLBACK */,
   context: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
@@ -21289,13 +21279,13 @@ export function SymFindFileInPath(
 
 export function SymFindFileInPathW(
   hprocess: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  SearchPathA: string | null /* Windows.Win32.Foundation.PWSTR */,
-  FileName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  SearchPathA: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  FileName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   id: Deno.PointerValue | Uint8Array | null /* ptr */,
   two: number /* u32 */,
   three: number /* u32 */,
   flags: SYM_FIND_ID_OPTION /* Windows.Win32.System.Diagnostics.Debug.SYM_FIND_ID_OPTION */,
-  FoundFile: string | null /* Windows.Win32.Foundation.PWSTR */,
+  FoundFile: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   callback: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Diagnostics.Debug.PFINDFILEINPATHCALLBACKW */,
   context: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
@@ -21304,8 +21294,8 @@ export function SymFindFileInPathW(
 
 export function SymFindExecutableImage(
   hProcess: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  FileName: string | null /* Windows.Win32.Foundation.PSTR */,
-  ImageFilePath: string | null /* Windows.Win32.Foundation.PSTR */,
+  FileName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  ImageFilePath: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   Callback: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Diagnostics.Debug.PFIND_EXE_FILE_CALLBACK */,
   CallerData: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */ {
@@ -21314,8 +21304,8 @@ export function SymFindExecutableImage(
 
 export function SymFindExecutableImageW(
   hProcess: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  FileName: string | null /* Windows.Win32.Foundation.PWSTR */,
-  ImageFilePath: string | null /* Windows.Win32.Foundation.PWSTR */,
+  FileName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  ImageFilePath: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   Callback: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Diagnostics.Debug.PFIND_EXE_FILE_CALLBACKW */,
   CallerData: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */ {
@@ -21323,17 +21313,17 @@ export function SymFindExecutableImageW(
 }
 
 export function FindExecutableImage(
-  FileName: string | null /* Windows.Win32.Foundation.PSTR */,
-  SymbolPath: string | null /* Windows.Win32.Foundation.PSTR */,
-  ImageFilePath: string | null /* Windows.Win32.Foundation.PSTR */,
+  FileName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  SymbolPath: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  ImageFilePath: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */ {
   return util.pointerFromFfi(libdbghelp_dll.FindExecutableImage(util.pstrToFfi(FileName), util.pstrToFfi(SymbolPath), util.pstrToFfi(ImageFilePath)));
 }
 
 export function FindExecutableImageEx(
-  FileName: string | null /* Windows.Win32.Foundation.PSTR */,
-  SymbolPath: string | null /* Windows.Win32.Foundation.PSTR */,
-  ImageFilePath: string | null /* Windows.Win32.Foundation.PSTR */,
+  FileName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  SymbolPath: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  ImageFilePath: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   Callback: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Diagnostics.Debug.PFIND_EXE_FILE_CALLBACK */,
   CallerData: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */ {
@@ -21341,9 +21331,9 @@ export function FindExecutableImageEx(
 }
 
 export function FindExecutableImageExW(
-  FileName: string | null /* Windows.Win32.Foundation.PWSTR */,
-  SymbolPath: string | null /* Windows.Win32.Foundation.PWSTR */,
-  ImageFilePath: string | null /* Windows.Win32.Foundation.PWSTR */,
+  FileName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  SymbolPath: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  ImageFilePath: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   Callback: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Diagnostics.Debug.PFIND_EXE_FILE_CALLBACKW */,
   CallerData: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */ {
@@ -21370,26 +21360,26 @@ export function ImageDirectoryEntryToData(
 }
 
 export function SearchTreeForFile(
-  RootPath: string | null /* Windows.Win32.Foundation.PSTR */,
-  InputPathName: string | null /* Windows.Win32.Foundation.PSTR */,
-  OutputPathBuffer: string | null /* Windows.Win32.Foundation.PSTR */,
+  RootPath: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  InputPathName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  OutputPathBuffer: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libdbghelp_dll.SearchTreeForFile(util.pstrToFfi(RootPath), util.pstrToFfi(InputPathName), util.pstrToFfi(OutputPathBuffer)));
 }
 
 export function SearchTreeForFileW(
-  RootPath: string | null /* Windows.Win32.Foundation.PWSTR */,
-  InputPathName: string | null /* Windows.Win32.Foundation.PWSTR */,
-  OutputPathBuffer: string | null /* Windows.Win32.Foundation.PWSTR */,
+  RootPath: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  InputPathName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  OutputPathBuffer: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libdbghelp_dll.SearchTreeForFileW(util.pwstrToFfi(RootPath), util.pwstrToFfi(InputPathName), util.pwstrToFfi(OutputPathBuffer)));
 }
 
 export function EnumDirTree(
   hProcess: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  RootPath: string | null /* Windows.Win32.Foundation.PSTR */,
-  InputPathName: string | null /* Windows.Win32.Foundation.PSTR */,
-  OutputPathBuffer: string | null /* Windows.Win32.Foundation.PSTR */,
+  RootPath: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  InputPathName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  OutputPathBuffer: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   cb: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Diagnostics.Debug.PENUMDIRTREE_CALLBACK */,
   data: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
@@ -21398,9 +21388,9 @@ export function EnumDirTree(
 
 export function EnumDirTreeW(
   hProcess: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  RootPath: string | null /* Windows.Win32.Foundation.PWSTR */,
-  InputPathName: string | null /* Windows.Win32.Foundation.PWSTR */,
-  OutputPathBuffer: string | null /* Windows.Win32.Foundation.PWSTR */,
+  RootPath: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  InputPathName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  OutputPathBuffer: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   cb: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Diagnostics.Debug.PENUMDIRTREE_CALLBACKW */,
   data: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
@@ -21408,14 +21398,14 @@ export function EnumDirTreeW(
 }
 
 export function MakeSureDirectoryPathExists(
-  DirPath: string | null /* Windows.Win32.Foundation.PSTR */,
+  DirPath: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libdbghelp_dll.MakeSureDirectoryPathExists(util.pstrToFfi(DirPath)));
 }
 
 export function UnDecorateSymbolName(
-  name: string | null /* Windows.Win32.Foundation.PSTR */,
-  outputString: string | null /* Windows.Win32.Foundation.PSTR */,
+  name: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  outputString: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   maxStringLength: number /* u32 */,
   flags: number /* u32 */,
 ): number /* u32 */ {
@@ -21423,8 +21413,8 @@ export function UnDecorateSymbolName(
 }
 
 export function UnDecorateSymbolNameW(
-  name: string | null /* Windows.Win32.Foundation.PWSTR */,
-  outputString: string | null /* Windows.Win32.Foundation.PWSTR */,
+  name: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  outputString: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   maxStringLength: number /* u32 */,
   flags: number /* u32 */,
 ): number /* u32 */ {
@@ -21498,21 +21488,21 @@ export function SymSetParentWindow(
 
 export function SymSetHomeDirectory(
   hProcess: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  dir: string | null /* Windows.Win32.Foundation.PSTR */,
+  dir: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): string | null /* Windows.Win32.Foundation.PSTR */ {
   return util.pstrFromFfi(libdbghelp_dll.SymSetHomeDirectory(util.toPointer(hProcess), util.pstrToFfi(dir)));
 }
 
 export function SymSetHomeDirectoryW(
   hProcess: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  dir: string | null /* Windows.Win32.Foundation.PWSTR */,
+  dir: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): string | null /* Windows.Win32.Foundation.PWSTR */ {
   return util.pwstrFromFfi(libdbghelp_dll.SymSetHomeDirectoryW(util.toPointer(hProcess), util.pwstrToFfi(dir)));
 }
 
 export function SymGetHomeDirectory(
   type: IMAGEHLP_HD_TYPE /* Windows.Win32.System.Diagnostics.Debug.IMAGEHLP_HD_TYPE */,
-  dir: string | null /* Windows.Win32.Foundation.PSTR */,
+  dir: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   size: Deno.PointerValue /* usize */,
 ): string | null /* Windows.Win32.Foundation.PSTR */ {
   return util.pstrFromFfi(libdbghelp_dll.SymGetHomeDirectory(type, util.pstrToFfi(dir), size));
@@ -21520,7 +21510,7 @@ export function SymGetHomeDirectory(
 
 export function SymGetHomeDirectoryW(
   type: IMAGEHLP_HD_TYPE /* Windows.Win32.System.Diagnostics.Debug.IMAGEHLP_HD_TYPE */,
-  dir: string | null /* Windows.Win32.Foundation.PWSTR */,
+  dir: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   size: Deno.PointerValue /* usize */,
 ): string | null /* Windows.Win32.Foundation.PWSTR */ {
   return util.pwstrFromFfi(libdbghelp_dll.SymGetHomeDirectoryW(type, util.pwstrToFfi(dir), size));
@@ -21567,24 +21557,24 @@ export function SymSetExtendedOption(
 }
 
 export function SymMatchString(
-  string: string | null /* Windows.Win32.Foundation.PSTR */,
-  expression: string | null /* Windows.Win32.Foundation.PSTR */,
+  string: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  expression: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   fCase: boolean /* Windows.Win32.Foundation.BOOL */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libdbghelp_dll.SymMatchString(util.pstrToFfi(string), util.pstrToFfi(expression), util.boolToFfi(fCase)));
 }
 
 export function SymMatchStringA(
-  string: string | null /* Windows.Win32.Foundation.PSTR */,
-  expression: string | null /* Windows.Win32.Foundation.PSTR */,
+  string: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  expression: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   fCase: boolean /* Windows.Win32.Foundation.BOOL */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libdbghelp_dll.SymMatchStringA(util.pstrToFfi(string), util.pstrToFfi(expression), util.boolToFfi(fCase)));
 }
 
 export function SymMatchStringW(
-  string: string | null /* Windows.Win32.Foundation.PWSTR */,
-  expression: string | null /* Windows.Win32.Foundation.PWSTR */,
+  string: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  expression: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   fCase: boolean /* Windows.Win32.Foundation.BOOL */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libdbghelp_dll.SymMatchStringW(util.pwstrToFfi(string), util.pwstrToFfi(expression), util.boolToFfi(fCase)));
@@ -21593,7 +21583,7 @@ export function SymMatchStringW(
 export function SymEnumSourceFiles(
   hProcess: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
   ModBase: Deno.PointerValue /* u64 */,
-  Mask: string | null /* Windows.Win32.Foundation.PSTR */,
+  Mask: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   cbSrcFiles: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Diagnostics.Debug.PSYM_ENUMSOURCEFILES_CALLBACK */,
   UserContext: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
@@ -21603,7 +21593,7 @@ export function SymEnumSourceFiles(
 export function SymEnumSourceFilesW(
   hProcess: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
   ModBase: Deno.PointerValue /* u64 */,
-  Mask: string | null /* Windows.Win32.Foundation.PWSTR */,
+  Mask: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   cbSrcFiles: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Diagnostics.Debug.PSYM_ENUMSOURCEFILES_CALLBACKW */,
   UserContext: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
@@ -21755,8 +21745,8 @@ export function SymGetModuleBase(
 export function SymEnumLines(
   hProcess: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
   Base: Deno.PointerValue /* u64 */,
-  Obj: string | null /* Windows.Win32.Foundation.PSTR */,
-  File: string | null /* Windows.Win32.Foundation.PSTR */,
+  Obj: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  File: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   EnumLinesCallback: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Diagnostics.Debug.PSYM_ENUMLINES_CALLBACK */,
   UserContext: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
@@ -21766,8 +21756,8 @@ export function SymEnumLines(
 export function SymEnumLinesW(
   hProcess: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
   Base: Deno.PointerValue /* u64 */,
-  Obj: string | null /* Windows.Win32.Foundation.PWSTR */,
-  File: string | null /* Windows.Win32.Foundation.PWSTR */,
+  Obj: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  File: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   EnumLinesCallback: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Diagnostics.Debug.PSYM_ENUMLINES_CALLBACKW */,
   UserContext: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
@@ -21817,8 +21807,8 @@ export function SymGetLineFromInlineContextW(
 export function SymEnumSourceLines(
   hProcess: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
   Base: Deno.PointerValue /* u64 */,
-  Obj: string | null /* Windows.Win32.Foundation.PSTR */,
-  File: string | null /* Windows.Win32.Foundation.PSTR */,
+  Obj: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  File: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   Line: number /* u32 */,
   Flags: number /* u32 */,
   EnumLinesCallback: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Diagnostics.Debug.PSYM_ENUMLINES_CALLBACK */,
@@ -21830,8 +21820,8 @@ export function SymEnumSourceLines(
 export function SymEnumSourceLinesW(
   hProcess: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
   Base: Deno.PointerValue /* u64 */,
-  Obj: string | null /* Windows.Win32.Foundation.PWSTR */,
-  File: string | null /* Windows.Win32.Foundation.PWSTR */,
+  Obj: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  File: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   Line: number /* u32 */,
   Flags: number /* u32 */,
   EnumLinesCallback: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Diagnostics.Debug.PSYM_ENUMLINES_CALLBACKW */,
@@ -21881,8 +21871,8 @@ export function SymGetLineFromAddr(
 
 export function SymGetLineFromName64(
   hProcess: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  ModuleName: string | null /* Windows.Win32.Foundation.PSTR */,
-  FileName: string | null /* Windows.Win32.Foundation.PSTR */,
+  ModuleName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  FileName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   dwLineNumber: number /* u32 */,
   plDisplacement: Deno.PointerValue | Uint8Array | null /* ptr */,
   Line: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -21892,8 +21882,8 @@ export function SymGetLineFromName64(
 
 export function SymGetLineFromNameW64(
   hProcess: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  ModuleName: string | null /* Windows.Win32.Foundation.PWSTR */,
-  FileName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  ModuleName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  FileName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   dwLineNumber: number /* u32 */,
   plDisplacement: Deno.PointerValue | Uint8Array | null /* ptr */,
   Line: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -21903,8 +21893,8 @@ export function SymGetLineFromNameW64(
 
 export function SymGetLineFromName(
   hProcess: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  ModuleName: string | null /* Windows.Win32.Foundation.PSTR */,
-  FileName: string | null /* Windows.Win32.Foundation.PSTR */,
+  ModuleName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  FileName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   dwLineNumber: number /* u32 */,
   plDisplacement: Deno.PointerValue | Uint8Array | null /* ptr */,
   Line: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -21956,8 +21946,8 @@ export function SymGetLinePrev(
 
 export function SymGetFileLineOffsets64(
   hProcess: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  ModuleName: string | null /* Windows.Win32.Foundation.PSTR */,
-  FileName: string | null /* Windows.Win32.Foundation.PSTR */,
+  ModuleName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  FileName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   Buffer: Deno.PointerValue | Uint8Array | null /* ptr */,
   BufferLines: number /* u32 */,
 ): number /* u32 */ {
@@ -21965,8 +21955,8 @@ export function SymGetFileLineOffsets64(
 }
 
 export function SymMatchFileName(
-  FileName: string | null /* Windows.Win32.Foundation.PSTR */,
-  Match: string | null /* Windows.Win32.Foundation.PSTR */,
+  FileName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  Match: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   FileNameStop: Deno.PointerValue | Uint8Array | null /* ptr */,
   MatchStop: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
@@ -21974,8 +21964,8 @@ export function SymMatchFileName(
 }
 
 export function SymMatchFileNameW(
-  FileName: string | null /* Windows.Win32.Foundation.PWSTR */,
-  Match: string | null /* Windows.Win32.Foundation.PWSTR */,
+  FileName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  Match: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   FileNameStop: Deno.PointerValue | Uint8Array | null /* ptr */,
   MatchStop: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
@@ -21985,9 +21975,9 @@ export function SymMatchFileNameW(
 export function SymGetSourceFile(
   hProcess: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
   Base: Deno.PointerValue /* u64 */,
-  Params: string | null /* Windows.Win32.Foundation.PSTR */,
-  FileSpec: string | null /* Windows.Win32.Foundation.PSTR */,
-  FilePath: string | null /* Windows.Win32.Foundation.PSTR */,
+  Params: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  FileSpec: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  FilePath: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   Size: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libdbghelp_dll.SymGetSourceFile(util.toPointer(hProcess), Base, util.pstrToFfi(Params), util.pstrToFfi(FileSpec), util.pstrToFfi(FilePath), Size));
@@ -21996,9 +21986,9 @@ export function SymGetSourceFile(
 export function SymGetSourceFileW(
   hProcess: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
   Base: Deno.PointerValue /* u64 */,
-  Params: string | null /* Windows.Win32.Foundation.PWSTR */,
-  FileSpec: string | null /* Windows.Win32.Foundation.PWSTR */,
-  FilePath: string | null /* Windows.Win32.Foundation.PWSTR */,
+  Params: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  FileSpec: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  FilePath: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   Size: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libdbghelp_dll.SymGetSourceFileW(util.toPointer(hProcess), Base, util.pwstrToFfi(Params), util.pwstrToFfi(FileSpec), util.pwstrToFfi(FilePath), Size));
@@ -22007,7 +21997,7 @@ export function SymGetSourceFileW(
 export function SymGetSourceFileToken(
   hProcess: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
   Base: Deno.PointerValue /* u64 */,
-  FileSpec: string | null /* Windows.Win32.Foundation.PSTR */,
+  FileSpec: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   Token: Deno.PointerValue | Uint8Array | null /* ptr */,
   Size: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
@@ -22017,9 +22007,9 @@ export function SymGetSourceFileToken(
 export function SymGetSourceFileTokenByTokenName(
   hProcess: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
   Base: Deno.PointerValue /* u64 */,
-  FileSpec: string | null /* Windows.Win32.Foundation.PSTR */,
-  TokenName: string | null /* Windows.Win32.Foundation.PSTR */,
-  TokenParameters: string | null /* Windows.Win32.Foundation.PSTR */,
+  FileSpec: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  TokenName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  TokenParameters: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   Token: Deno.PointerValue | Uint8Array | null /* ptr */,
   Size: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
@@ -22029,7 +22019,7 @@ export function SymGetSourceFileTokenByTokenName(
 export function SymGetSourceFileChecksumW(
   hProcess: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
   Base: Deno.PointerValue /* u64 */,
-  FileSpec: string | null /* Windows.Win32.Foundation.PWSTR */,
+  FileSpec: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pCheckSumType: Deno.PointerValue | Uint8Array | null /* ptr */,
   pChecksum: Deno.PointerValue | Uint8Array | null /* ptr */,
   checksumSize: number /* u32 */,
@@ -22041,7 +22031,7 @@ export function SymGetSourceFileChecksumW(
 export function SymGetSourceFileChecksum(
   hProcess: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
   Base: Deno.PointerValue /* u64 */,
-  FileSpec: string | null /* Windows.Win32.Foundation.PSTR */,
+  FileSpec: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   pCheckSumType: Deno.PointerValue | Uint8Array | null /* ptr */,
   pChecksum: Deno.PointerValue | Uint8Array | null /* ptr */,
   checksumSize: number /* u32 */,
@@ -22053,7 +22043,7 @@ export function SymGetSourceFileChecksum(
 export function SymGetSourceFileTokenW(
   hProcess: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
   Base: Deno.PointerValue /* u64 */,
-  FileSpec: string | null /* Windows.Win32.Foundation.PWSTR */,
+  FileSpec: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   Token: Deno.PointerValue | Uint8Array | null /* ptr */,
   Size: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
@@ -22063,9 +22053,9 @@ export function SymGetSourceFileTokenW(
 export function SymGetSourceFileTokenByTokenNameW(
   hProcess: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
   Base: Deno.PointerValue /* u64 */,
-  FileSpec: string | null /* Windows.Win32.Foundation.PWSTR */,
-  TokenName: string | null /* Windows.Win32.Foundation.PWSTR */,
-  TokenParameters: string | null /* Windows.Win32.Foundation.PWSTR */,
+  FileSpec: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  TokenName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  TokenParameters: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   Token: Deno.PointerValue | Uint8Array | null /* ptr */,
   Size: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
@@ -22075,8 +22065,8 @@ export function SymGetSourceFileTokenByTokenNameW(
 export function SymGetSourceFileFromToken(
   hProcess: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
   Token: Deno.PointerValue | Uint8Array | null /* ptr */,
-  Params: string | null /* Windows.Win32.Foundation.PSTR */,
-  FilePath: string | null /* Windows.Win32.Foundation.PSTR */,
+  Params: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  FilePath: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   Size: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libdbghelp_dll.SymGetSourceFileFromToken(util.toPointer(hProcess), util.toPointer(Token), util.pstrToFfi(Params), util.pstrToFfi(FilePath), Size));
@@ -22085,9 +22075,9 @@ export function SymGetSourceFileFromToken(
 export function SymGetSourceFileFromTokenByTokenName(
   hProcess: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
   Token: Deno.PointerValue | Uint8Array | null /* ptr */,
-  TokenName: string | null /* Windows.Win32.Foundation.PSTR */,
-  Params: string | null /* Windows.Win32.Foundation.PSTR */,
-  FilePath: string | null /* Windows.Win32.Foundation.PSTR */,
+  TokenName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  Params: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  FilePath: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   Size: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libdbghelp_dll.SymGetSourceFileFromTokenByTokenName(util.toPointer(hProcess), util.toPointer(Token), util.pstrToFfi(TokenName), util.pstrToFfi(Params), util.pstrToFfi(FilePath), Size));
@@ -22096,8 +22086,8 @@ export function SymGetSourceFileFromTokenByTokenName(
 export function SymGetSourceFileFromTokenW(
   hProcess: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
   Token: Deno.PointerValue | Uint8Array | null /* ptr */,
-  Params: string | null /* Windows.Win32.Foundation.PWSTR */,
-  FilePath: string | null /* Windows.Win32.Foundation.PWSTR */,
+  Params: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  FilePath: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   Size: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libdbghelp_dll.SymGetSourceFileFromTokenW(util.toPointer(hProcess), util.toPointer(Token), util.pwstrToFfi(Params), util.pwstrToFfi(FilePath), Size));
@@ -22106,9 +22096,9 @@ export function SymGetSourceFileFromTokenW(
 export function SymGetSourceFileFromTokenByTokenNameW(
   hProcess: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
   Token: Deno.PointerValue | Uint8Array | null /* ptr */,
-  TokenName: string | null /* Windows.Win32.Foundation.PWSTR */,
-  Params: string | null /* Windows.Win32.Foundation.PWSTR */,
-  FilePath: string | null /* Windows.Win32.Foundation.PWSTR */,
+  TokenName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  Params: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  FilePath: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   Size: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libdbghelp_dll.SymGetSourceFileFromTokenByTokenNameW(util.toPointer(hProcess), util.toPointer(Token), util.pwstrToFfi(TokenName), util.pwstrToFfi(Params), util.pwstrToFfi(FilePath), Size));
@@ -22117,9 +22107,9 @@ export function SymGetSourceFileFromTokenByTokenNameW(
 export function SymGetSourceVarFromToken(
   hProcess: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
   Token: Deno.PointerValue | Uint8Array | null /* ptr */,
-  Params: string | null /* Windows.Win32.Foundation.PSTR */,
-  VarName: string | null /* Windows.Win32.Foundation.PSTR */,
-  Value: string | null /* Windows.Win32.Foundation.PSTR */,
+  Params: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  VarName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  Value: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   Size: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libdbghelp_dll.SymGetSourceVarFromToken(util.toPointer(hProcess), util.toPointer(Token), util.pstrToFfi(Params), util.pstrToFfi(VarName), util.pstrToFfi(Value), Size));
@@ -22128,9 +22118,9 @@ export function SymGetSourceVarFromToken(
 export function SymGetSourceVarFromTokenW(
   hProcess: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
   Token: Deno.PointerValue | Uint8Array | null /* ptr */,
-  Params: string | null /* Windows.Win32.Foundation.PWSTR */,
-  VarName: string | null /* Windows.Win32.Foundation.PWSTR */,
-  Value: string | null /* Windows.Win32.Foundation.PWSTR */,
+  Params: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  VarName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  Value: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   Size: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libdbghelp_dll.SymGetSourceVarFromTokenW(util.toPointer(hProcess), util.toPointer(Token), util.pwstrToFfi(Params), util.pwstrToFfi(VarName), util.pwstrToFfi(Value), Size));
@@ -22146,7 +22136,7 @@ export function SymEnumSourceFileTokens(
 
 export function SymInitialize(
   hProcess: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  UserSearchPath: string | null /* Windows.Win32.Foundation.PSTR */,
+  UserSearchPath: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   fInvadeProcess: boolean /* Windows.Win32.Foundation.BOOL */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libdbghelp_dll.SymInitialize(util.toPointer(hProcess), util.pstrToFfi(UserSearchPath), util.boolToFfi(fInvadeProcess)));
@@ -22154,7 +22144,7 @@ export function SymInitialize(
 
 export function SymInitializeW(
   hProcess: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  UserSearchPath: string | null /* Windows.Win32.Foundation.PWSTR */,
+  UserSearchPath: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   fInvadeProcess: boolean /* Windows.Win32.Foundation.BOOL */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libdbghelp_dll.SymInitializeW(util.toPointer(hProcess), util.pwstrToFfi(UserSearchPath), util.boolToFfi(fInvadeProcess)));
@@ -22162,7 +22152,7 @@ export function SymInitializeW(
 
 export function SymGetSearchPath(
   hProcess: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  SearchPathA: string | null /* Windows.Win32.Foundation.PSTR */,
+  SearchPathA: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   SearchPathLength: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libdbghelp_dll.SymGetSearchPath(util.toPointer(hProcess), util.pstrToFfi(SearchPathA), SearchPathLength));
@@ -22170,7 +22160,7 @@ export function SymGetSearchPath(
 
 export function SymGetSearchPathW(
   hProcess: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  SearchPathA: string | null /* Windows.Win32.Foundation.PWSTR */,
+  SearchPathA: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   SearchPathLength: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libdbghelp_dll.SymGetSearchPathW(util.toPointer(hProcess), util.pwstrToFfi(SearchPathA), SearchPathLength));
@@ -22178,14 +22168,14 @@ export function SymGetSearchPathW(
 
 export function SymSetSearchPath(
   hProcess: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  SearchPathA: string | null /* Windows.Win32.Foundation.PSTR */,
+  SearchPathA: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libdbghelp_dll.SymSetSearchPath(util.toPointer(hProcess), util.pstrToFfi(SearchPathA)));
 }
 
 export function SymSetSearchPathW(
   hProcess: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  SearchPathA: string | null /* Windows.Win32.Foundation.PWSTR */,
+  SearchPathA: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libdbghelp_dll.SymSetSearchPathW(util.toPointer(hProcess), util.pwstrToFfi(SearchPathA)));
 }
@@ -22193,8 +22183,8 @@ export function SymSetSearchPathW(
 export function SymLoadModuleEx(
   hProcess: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
   hFile: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  ImageName: string | null /* Windows.Win32.Foundation.PSTR */,
-  ModuleName: string | null /* Windows.Win32.Foundation.PSTR */,
+  ImageName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  ModuleName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   BaseOfDll: Deno.PointerValue /* u64 */,
   DllSize: number /* u32 */,
   Data: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -22206,8 +22196,8 @@ export function SymLoadModuleEx(
 export function SymLoadModuleExW(
   hProcess: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
   hFile: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  ImageName: string | null /* Windows.Win32.Foundation.PWSTR */,
-  ModuleName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  ImageName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  ModuleName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   BaseOfDll: Deno.PointerValue /* u64 */,
   DllSize: number /* u32 */,
   Data: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -22232,7 +22222,7 @@ export function SymUnloadModule(
 
 export function SymUnDName64(
   sym: Deno.PointerValue | Uint8Array | null /* ptr */,
-  UnDecName: string | null /* Windows.Win32.Foundation.PSTR */,
+  UnDecName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   UnDecNameLength: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libdbghelp_dll.SymUnDName64(util.toPointer(sym), util.pstrToFfi(UnDecName), UnDecNameLength));
@@ -22240,7 +22230,7 @@ export function SymUnDName64(
 
 export function SymUnDName(
   sym: Deno.PointerValue | Uint8Array | null /* ptr */,
-  UnDecName: string | null /* Windows.Win32.Foundation.PSTR */,
+  UnDecName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   UnDecNameLength: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libdbghelp_dll.SymUnDName(util.toPointer(sym), util.pstrToFfi(UnDecName), UnDecNameLength));
@@ -22410,7 +22400,7 @@ export function SymPrevW(
 
 export function SymFromName(
   hProcess: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  Name: string | null /* Windows.Win32.Foundation.PSTR */,
+  Name: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   Symbol: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libdbghelp_dll.SymFromName(util.toPointer(hProcess), util.pstrToFfi(Name), util.toPointer(Symbol)));
@@ -22418,7 +22408,7 @@ export function SymFromName(
 
 export function SymFromNameW(
   hProcess: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  Name: string | null /* Windows.Win32.Foundation.PWSTR */,
+  Name: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   Symbol: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libdbghelp_dll.SymFromNameW(util.toPointer(hProcess), util.pwstrToFfi(Name), util.toPointer(Symbol)));
@@ -22427,7 +22417,7 @@ export function SymFromNameW(
 export function SymEnumSymbols(
   hProcess: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
   BaseOfDll: Deno.PointerValue /* u64 */,
-  Mask: string | null /* Windows.Win32.Foundation.PSTR */,
+  Mask: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   EnumSymbolsCallback: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Diagnostics.Debug.PSYM_ENUMERATESYMBOLS_CALLBACK */,
   UserContext: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
@@ -22437,7 +22427,7 @@ export function SymEnumSymbols(
 export function SymEnumSymbolsEx(
   hProcess: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
   BaseOfDll: Deno.PointerValue /* u64 */,
-  Mask: string | null /* Windows.Win32.Foundation.PSTR */,
+  Mask: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   EnumSymbolsCallback: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Diagnostics.Debug.PSYM_ENUMERATESYMBOLS_CALLBACK */,
   UserContext: Deno.PointerValue | Uint8Array | null /* ptr */,
   Options: number /* u32 */,
@@ -22448,7 +22438,7 @@ export function SymEnumSymbolsEx(
 export function SymEnumSymbolsW(
   hProcess: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
   BaseOfDll: Deno.PointerValue /* u64 */,
-  Mask: string | null /* Windows.Win32.Foundation.PWSTR */,
+  Mask: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   EnumSymbolsCallback: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Diagnostics.Debug.PSYM_ENUMERATESYMBOLS_CALLBACKW */,
   UserContext: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
@@ -22458,7 +22448,7 @@ export function SymEnumSymbolsW(
 export function SymEnumSymbolsExW(
   hProcess: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
   BaseOfDll: Deno.PointerValue /* u64 */,
-  Mask: string | null /* Windows.Win32.Foundation.PWSTR */,
+  Mask: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   EnumSymbolsCallback: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Diagnostics.Debug.PSYM_ENUMERATESYMBOLS_CALLBACKW */,
   UserContext: Deno.PointerValue | Uint8Array | null /* ptr */,
   Options: number /* u32 */,
@@ -22489,7 +22479,7 @@ export function SymSearch(
   BaseOfDll: Deno.PointerValue /* u64 */,
   Index: number /* u32 */,
   SymTag: number /* u32 */,
-  Mask: string | null /* Windows.Win32.Foundation.PSTR */,
+  Mask: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   Address: Deno.PointerValue /* u64 */,
   EnumSymbolsCallback: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Diagnostics.Debug.PSYM_ENUMERATESYMBOLS_CALLBACK */,
   UserContext: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -22503,7 +22493,7 @@ export function SymSearchW(
   BaseOfDll: Deno.PointerValue /* u64 */,
   Index: number /* u32 */,
   SymTag: number /* u32 */,
-  Mask: string | null /* Windows.Win32.Foundation.PWSTR */,
+  Mask: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   Address: Deno.PointerValue /* u64 */,
   EnumSymbolsCallback: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Diagnostics.Debug.PSYM_ENUMERATESYMBOLS_CALLBACKW */,
   UserContext: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -22587,7 +22577,7 @@ export function SymEnumTypesW(
 export function SymEnumTypesByName(
   hProcess: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
   BaseOfDll: Deno.PointerValue /* u64 */,
-  mask: string | null /* Windows.Win32.Foundation.PSTR */,
+  mask: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   EnumSymbolsCallback: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Diagnostics.Debug.PSYM_ENUMERATESYMBOLS_CALLBACK */,
   UserContext: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
@@ -22597,7 +22587,7 @@ export function SymEnumTypesByName(
 export function SymEnumTypesByNameW(
   hProcess: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
   BaseOfDll: Deno.PointerValue /* u64 */,
-  mask: string | null /* Windows.Win32.Foundation.PWSTR */,
+  mask: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   EnumSymbolsCallback: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Diagnostics.Debug.PSYM_ENUMERATESYMBOLS_CALLBACKW */,
   UserContext: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
@@ -22607,7 +22597,7 @@ export function SymEnumTypesByNameW(
 export function SymGetTypeFromName(
   hProcess: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
   BaseOfDll: Deno.PointerValue /* u64 */,
-  Name: string | null /* Windows.Win32.Foundation.PSTR */,
+  Name: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   Symbol: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libdbghelp_dll.SymGetTypeFromName(util.toPointer(hProcess), BaseOfDll, util.pstrToFfi(Name), util.toPointer(Symbol)));
@@ -22616,7 +22606,7 @@ export function SymGetTypeFromName(
 export function SymGetTypeFromNameW(
   hProcess: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
   BaseOfDll: Deno.PointerValue /* u64 */,
-  Name: string | null /* Windows.Win32.Foundation.PWSTR */,
+  Name: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   Symbol: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libdbghelp_dll.SymGetTypeFromNameW(util.toPointer(hProcess), BaseOfDll, util.pwstrToFfi(Name), util.toPointer(Symbol)));
@@ -22625,7 +22615,7 @@ export function SymGetTypeFromNameW(
 export function SymAddSymbol(
   hProcess: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
   BaseOfDll: Deno.PointerValue /* u64 */,
-  Name: string | null /* Windows.Win32.Foundation.PSTR */,
+  Name: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   Address: Deno.PointerValue /* u64 */,
   Size: number /* u32 */,
   Flags: number /* u32 */,
@@ -22636,7 +22626,7 @@ export function SymAddSymbol(
 export function SymAddSymbolW(
   hProcess: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
   BaseOfDll: Deno.PointerValue /* u64 */,
-  Name: string | null /* Windows.Win32.Foundation.PWSTR */,
+  Name: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   Address: Deno.PointerValue /* u64 */,
   Size: number /* u32 */,
   Flags: number /* u32 */,
@@ -22647,7 +22637,7 @@ export function SymAddSymbolW(
 export function SymDeleteSymbol(
   hProcess: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
   BaseOfDll: Deno.PointerValue /* u64 */,
-  Name: string | null /* Windows.Win32.Foundation.PSTR */,
+  Name: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   Address: Deno.PointerValue /* u64 */,
   Flags: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
@@ -22657,7 +22647,7 @@ export function SymDeleteSymbol(
 export function SymDeleteSymbolW(
   hProcess: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
   BaseOfDll: Deno.PointerValue /* u64 */,
-  Name: string | null /* Windows.Win32.Foundation.PWSTR */,
+  Name: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   Address: Deno.PointerValue /* u64 */,
   Flags: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
@@ -22673,7 +22663,7 @@ export function SymRefreshModuleList(
 export function SymAddSourceStream(
   hProcess: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
   Base: Deno.PointerValue /* u64 */,
-  StreamFile: string | null /* Windows.Win32.Foundation.PSTR */,
+  StreamFile: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   Buffer: Deno.PointerValue | Uint8Array | null /* ptr */,
   Size: Deno.PointerValue /* usize */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
@@ -22683,7 +22673,7 @@ export function SymAddSourceStream(
 export function SymAddSourceStreamA(
   hProcess: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
   Base: Deno.PointerValue /* u64 */,
-  StreamFile: string | null /* Windows.Win32.Foundation.PSTR */,
+  StreamFile: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   Buffer: Deno.PointerValue | Uint8Array | null /* ptr */,
   Size: Deno.PointerValue /* usize */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
@@ -22693,7 +22683,7 @@ export function SymAddSourceStreamA(
 export function SymAddSourceStreamW(
   hProcess: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
   Base: Deno.PointerValue /* u64 */,
-  FileSpec: string | null /* Windows.Win32.Foundation.PWSTR */,
+  FileSpec: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   Buffer: Deno.PointerValue | Uint8Array | null /* ptr */,
   Size: Deno.PointerValue /* usize */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
@@ -22702,58 +22692,58 @@ export function SymAddSourceStreamW(
 
 export function SymSrvIsStoreW(
   hProcess: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  path: string | null /* Windows.Win32.Foundation.PWSTR */,
+  path: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libdbghelp_dll.SymSrvIsStoreW(util.toPointer(hProcess), util.pwstrToFfi(path)));
 }
 
 export function SymSrvIsStore(
   hProcess: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  path: string | null /* Windows.Win32.Foundation.PSTR */,
+  path: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libdbghelp_dll.SymSrvIsStore(util.toPointer(hProcess), util.pstrToFfi(path)));
 }
 
 export function SymSrvDeltaName(
   hProcess: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  SymPath: string | null /* Windows.Win32.Foundation.PSTR */,
-  Type: string | null /* Windows.Win32.Foundation.PSTR */,
-  File1: string | null /* Windows.Win32.Foundation.PSTR */,
-  File2: string | null /* Windows.Win32.Foundation.PSTR */,
+  SymPath: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  Type: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  File1: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  File2: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): string | null /* Windows.Win32.Foundation.PSTR */ {
   return util.pstrFromFfi(libdbghelp_dll.SymSrvDeltaName(util.toPointer(hProcess), util.pstrToFfi(SymPath), util.pstrToFfi(Type), util.pstrToFfi(File1), util.pstrToFfi(File2)));
 }
 
 export function SymSrvDeltaNameW(
   hProcess: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  SymPath: string | null /* Windows.Win32.Foundation.PWSTR */,
-  Type: string | null /* Windows.Win32.Foundation.PWSTR */,
-  File1: string | null /* Windows.Win32.Foundation.PWSTR */,
-  File2: string | null /* Windows.Win32.Foundation.PWSTR */,
+  SymPath: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  Type: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  File1: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  File2: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): string | null /* Windows.Win32.Foundation.PWSTR */ {
   return util.pwstrFromFfi(libdbghelp_dll.SymSrvDeltaNameW(util.toPointer(hProcess), util.pwstrToFfi(SymPath), util.pwstrToFfi(Type), util.pwstrToFfi(File1), util.pwstrToFfi(File2)));
 }
 
 export function SymSrvGetSupplement(
   hProcess: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  SymPath: string | null /* Windows.Win32.Foundation.PSTR */,
-  Node: string | null /* Windows.Win32.Foundation.PSTR */,
-  File: string | null /* Windows.Win32.Foundation.PSTR */,
+  SymPath: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  Node: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  File: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): string | null /* Windows.Win32.Foundation.PSTR */ {
   return util.pstrFromFfi(libdbghelp_dll.SymSrvGetSupplement(util.toPointer(hProcess), util.pstrToFfi(SymPath), util.pstrToFfi(Node), util.pstrToFfi(File)));
 }
 
 export function SymSrvGetSupplementW(
   hProcess: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  SymPath: string | null /* Windows.Win32.Foundation.PWSTR */,
-  Node: string | null /* Windows.Win32.Foundation.PWSTR */,
-  File: string | null /* Windows.Win32.Foundation.PWSTR */,
+  SymPath: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  Node: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  File: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): string | null /* Windows.Win32.Foundation.PWSTR */ {
   return util.pwstrFromFfi(libdbghelp_dll.SymSrvGetSupplementW(util.toPointer(hProcess), util.pwstrToFfi(SymPath), util.pwstrToFfi(Node), util.pwstrToFfi(File)));
 }
 
 export function SymSrvGetFileIndexes(
-  File: string | null /* Windows.Win32.Foundation.PSTR */,
+  File: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   Id: Deno.PointerValue | Uint8Array | null /* ptr */,
   Val1: Deno.PointerValue | Uint8Array | null /* ptr */,
   Val2: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -22763,7 +22753,7 @@ export function SymSrvGetFileIndexes(
 }
 
 export function SymSrvGetFileIndexesW(
-  File: string | null /* Windows.Win32.Foundation.PWSTR */,
+  File: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   Id: Deno.PointerValue | Uint8Array | null /* ptr */,
   Val1: Deno.PointerValue | Uint8Array | null /* ptr */,
   Val2: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -22774,9 +22764,9 @@ export function SymSrvGetFileIndexesW(
 
 export function SymSrvGetFileIndexStringW(
   hProcess: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  SrvPath: string | null /* Windows.Win32.Foundation.PWSTR */,
-  File: string | null /* Windows.Win32.Foundation.PWSTR */,
-  Index: string | null /* Windows.Win32.Foundation.PWSTR */,
+  SrvPath: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  File: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  Index: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   Size: Deno.PointerValue /* usize */,
   Flags: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
@@ -22785,9 +22775,9 @@ export function SymSrvGetFileIndexStringW(
 
 export function SymSrvGetFileIndexString(
   hProcess: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  SrvPath: string | null /* Windows.Win32.Foundation.PSTR */,
-  File: string | null /* Windows.Win32.Foundation.PSTR */,
-  Index: string | null /* Windows.Win32.Foundation.PSTR */,
+  SrvPath: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  File: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  Index: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   Size: Deno.PointerValue /* usize */,
   Flags: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
@@ -22795,7 +22785,7 @@ export function SymSrvGetFileIndexString(
 }
 
 export function SymSrvGetFileIndexInfo(
-  File: string | null /* Windows.Win32.Foundation.PSTR */,
+  File: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   Info: Deno.PointerValue | Uint8Array | null /* ptr */,
   Flags: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
@@ -22803,7 +22793,7 @@ export function SymSrvGetFileIndexInfo(
 }
 
 export function SymSrvGetFileIndexInfoW(
-  File: string | null /* Windows.Win32.Foundation.PWSTR */,
+  File: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   Info: Deno.PointerValue | Uint8Array | null /* ptr */,
   Flags: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
@@ -22812,9 +22802,9 @@ export function SymSrvGetFileIndexInfoW(
 
 export function SymSrvStoreSupplement(
   hProcess: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  SrvPath: string | null /* Windows.Win32.Foundation.PSTR */,
-  Node: string | null /* Windows.Win32.Foundation.PSTR */,
-  File: string | null /* Windows.Win32.Foundation.PSTR */,
+  SrvPath: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  Node: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  File: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   Flags: number /* u32 */,
 ): string | null /* Windows.Win32.Foundation.PSTR */ {
   return util.pstrFromFfi(libdbghelp_dll.SymSrvStoreSupplement(util.toPointer(hProcess), util.pstrToFfi(SrvPath), util.pstrToFfi(Node), util.pstrToFfi(File), Flags));
@@ -22822,9 +22812,9 @@ export function SymSrvStoreSupplement(
 
 export function SymSrvStoreSupplementW(
   hProcess: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  SymPath: string | null /* Windows.Win32.Foundation.PWSTR */,
-  Node: string | null /* Windows.Win32.Foundation.PWSTR */,
-  File: string | null /* Windows.Win32.Foundation.PWSTR */,
+  SymPath: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  Node: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  File: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   Flags: number /* u32 */,
 ): string | null /* Windows.Win32.Foundation.PWSTR */ {
   return util.pwstrFromFfi(libdbghelp_dll.SymSrvStoreSupplementW(util.toPointer(hProcess), util.pwstrToFfi(SymPath), util.pwstrToFfi(Node), util.pwstrToFfi(File), Flags));
@@ -22832,8 +22822,8 @@ export function SymSrvStoreSupplementW(
 
 export function SymSrvStoreFile(
   hProcess: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  SrvPath: string | null /* Windows.Win32.Foundation.PSTR */,
-  File: string | null /* Windows.Win32.Foundation.PSTR */,
+  SrvPath: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  File: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   Flags: SYM_SRV_STORE_FILE_FLAGS /* Windows.Win32.System.Diagnostics.Debug.SYM_SRV_STORE_FILE_FLAGS */,
 ): string | null /* Windows.Win32.Foundation.PSTR */ {
   return util.pstrFromFfi(libdbghelp_dll.SymSrvStoreFile(util.toPointer(hProcess), util.pstrToFfi(SrvPath), util.pstrToFfi(File), Flags));
@@ -22841,8 +22831,8 @@ export function SymSrvStoreFile(
 
 export function SymSrvStoreFileW(
   hProcess: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  SrvPath: string | null /* Windows.Win32.Foundation.PWSTR */,
-  File: string | null /* Windows.Win32.Foundation.PWSTR */,
+  SrvPath: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  File: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   Flags: SYM_SRV_STORE_FILE_FLAGS /* Windows.Win32.System.Diagnostics.Debug.SYM_SRV_STORE_FILE_FLAGS */,
 ): string | null /* Windows.Win32.Foundation.PWSTR */ {
   return util.pwstrFromFfi(libdbghelp_dll.SymSrvStoreFileW(util.toPointer(hProcess), util.pwstrToFfi(SrvPath), util.pwstrToFfi(File), Flags));
@@ -22850,12 +22840,12 @@ export function SymSrvStoreFileW(
 
 export function SymGetSymbolFile(
   hProcess: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  SymPath: string | null /* Windows.Win32.Foundation.PSTR */,
-  ImageFile: string | null /* Windows.Win32.Foundation.PSTR */,
+  SymPath: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  ImageFile: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   Type: IMAGEHLP_SF_TYPE /* Windows.Win32.System.Diagnostics.Debug.IMAGEHLP_SF_TYPE */,
-  SymbolFile: string | null /* Windows.Win32.Foundation.PSTR */,
+  SymbolFile: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   cSymbolFile: Deno.PointerValue /* usize */,
-  DbgFile: string | null /* Windows.Win32.Foundation.PSTR */,
+  DbgFile: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   cDbgFile: Deno.PointerValue /* usize */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libdbghelp_dll.SymGetSymbolFile(util.toPointer(hProcess), util.pstrToFfi(SymPath), util.pstrToFfi(ImageFile), Type, util.pstrToFfi(SymbolFile), cSymbolFile, util.pstrToFfi(DbgFile), cDbgFile));
@@ -22863,19 +22853,19 @@ export function SymGetSymbolFile(
 
 export function SymGetSymbolFileW(
   hProcess: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  SymPath: string | null /* Windows.Win32.Foundation.PWSTR */,
-  ImageFile: string | null /* Windows.Win32.Foundation.PWSTR */,
+  SymPath: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  ImageFile: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   Type: IMAGEHLP_SF_TYPE /* Windows.Win32.System.Diagnostics.Debug.IMAGEHLP_SF_TYPE */,
-  SymbolFile: string | null /* Windows.Win32.Foundation.PWSTR */,
+  SymbolFile: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   cSymbolFile: Deno.PointerValue /* usize */,
-  DbgFile: string | null /* Windows.Win32.Foundation.PWSTR */,
+  DbgFile: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   cDbgFile: Deno.PointerValue /* usize */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libdbghelp_dll.SymGetSymbolFileW(util.toPointer(hProcess), util.pwstrToFfi(SymPath), util.pwstrToFfi(ImageFile), Type, util.pwstrToFfi(SymbolFile), cSymbolFile, util.pwstrToFfi(DbgFile), cDbgFile));
 }
 
 export function DbgHelpCreateUserDump(
-  FileName: string | null /* Windows.Win32.Foundation.PSTR */,
+  FileName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   Callback: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Diagnostics.Debug.PDBGHELP_CREATE_USER_DUMP_CALLBACK */,
   UserData: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
@@ -22883,7 +22873,7 @@ export function DbgHelpCreateUserDump(
 }
 
 export function DbgHelpCreateUserDumpW(
-  FileName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  FileName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   Callback: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Diagnostics.Debug.PDBGHELP_CREATE_USER_DUMP_CALLBACK */,
   UserData: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
@@ -22910,7 +22900,7 @@ export function SymGetSymFromAddr(
 
 export function SymGetSymFromName64(
   hProcess: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  Name: string | null /* Windows.Win32.Foundation.PSTR */,
+  Name: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   Symbol: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libdbghelp_dll.SymGetSymFromName64(util.toPointer(hProcess), util.pstrToFfi(Name), util.toPointer(Symbol)));
@@ -22918,7 +22908,7 @@ export function SymGetSymFromName64(
 
 export function SymGetSymFromName(
   hProcess: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  Name: string | null /* Windows.Win32.Foundation.PSTR */,
+  Name: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   Symbol: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libdbghelp_dll.SymGetSymFromName(util.toPointer(hProcess), util.pstrToFfi(Name), util.toPointer(Symbol)));
@@ -22926,25 +22916,25 @@ export function SymGetSymFromName(
 
 export function FindFileInPath(
   hprocess: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  SearchPathA: string | null /* Windows.Win32.Foundation.PSTR */,
-  FileName: string | null /* Windows.Win32.Foundation.PSTR */,
+  SearchPathA: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  FileName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   id: Deno.PointerValue | Uint8Array | null /* ptr */,
   two: number /* u32 */,
   three: number /* u32 */,
   flags: number /* u32 */,
-  FilePath: string | null /* Windows.Win32.Foundation.PSTR */,
+  FilePath: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libdbghelp_dll.FindFileInPath(util.toPointer(hprocess), util.pstrToFfi(SearchPathA), util.pstrToFfi(FileName), util.toPointer(id), two, three, flags, util.pstrToFfi(FilePath)));
 }
 
 export function FindFileInSearchPath(
   hprocess: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  SearchPathA: string | null /* Windows.Win32.Foundation.PSTR */,
-  FileName: string | null /* Windows.Win32.Foundation.PSTR */,
+  SearchPathA: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  FileName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   one: number /* u32 */,
   two: number /* u32 */,
   three: number /* u32 */,
-  FilePath: string | null /* Windows.Win32.Foundation.PSTR */,
+  FilePath: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libdbghelp_dll.FindFileInSearchPath(util.toPointer(hprocess), util.pstrToFfi(SearchPathA), util.pstrToFfi(FileName), one, two, three, util.pstrToFfi(FilePath)));
 }
@@ -22997,8 +22987,8 @@ export function SymEnumerateSymbolsW(
 export function SymLoadModule64(
   hProcess: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
   hFile: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  ImageName: string | null /* Windows.Win32.Foundation.PSTR */,
-  ModuleName: string | null /* Windows.Win32.Foundation.PSTR */,
+  ImageName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  ModuleName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   BaseOfDll: Deno.PointerValue /* u64 */,
   SizeOfDll: number /* u32 */,
 ): Deno.PointerValue /* u64 */ {
@@ -23008,8 +22998,8 @@ export function SymLoadModule64(
 export function SymLoadModule(
   hProcess: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
   hFile: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  ImageName: string | null /* Windows.Win32.Foundation.PSTR */,
-  ModuleName: string | null /* Windows.Win32.Foundation.PSTR */,
+  ImageName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  ModuleName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   BaseOfDll: number /* u32 */,
   SizeOfDll: number /* u32 */,
 ): number /* u32 */ {
@@ -23062,7 +23052,7 @@ export function SetSymLoadError(
 
 export function ReportSymbolLoadSummary(
   hProcess: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  pLoadModule: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pLoadModule: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pSymbolData: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libdbghelp_dll.ReportSymbolLoadSummary(util.toPointer(hProcess), util.pwstrToFfi(pLoadModule), util.toPointer(pSymbolData)));
@@ -23086,7 +23076,7 @@ export function RangeMapFree(
 
 export function RangeMapAddPeImageSections(
   RmapHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
-  ImageName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  ImageName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   MappedImage: Deno.PointerValue | Uint8Array | null /* ptr */,
   MappingBytes: number /* u32 */,
   ImageBase: Deno.PointerValue /* u64 */,
@@ -23170,7 +23160,7 @@ export function FormatMessageA(
   lpSource: Deno.PointerValue | Uint8Array | null /* ptr */,
   dwMessageId: number /* u32 */,
   dwLanguageId: number /* u32 */,
-  lpBuffer: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpBuffer: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   nSize: number /* u32 */,
   Arguments: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
@@ -23182,7 +23172,7 @@ export function FormatMessageW(
   lpSource: Deno.PointerValue | Uint8Array | null /* ptr */,
   dwMessageId: number /* u32 */,
   dwLanguageId: number /* u32 */,
-  lpBuffer: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpBuffer: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   nSize: number /* u32 */,
   Arguments: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {

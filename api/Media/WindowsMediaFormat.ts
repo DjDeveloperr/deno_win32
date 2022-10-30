@@ -676,21 +676,21 @@ export interface WM_READER_CLIENTINFO {
   /** u32 */
   cbSize: number;
   /** Windows.Win32.Foundation.PWSTR */
-  wszLang: string | null;
+  wszLang: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  wszBrowserUserAgent: string | null;
+  wszBrowserUserAgent: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  wszBrowserWebPage: string | null;
+  wszBrowserWebPage: string | null | Uint8Array | Uint16Array;
   /** u64 */
   qwReserved: Deno.PointerValue;
   /** ptr */
   pReserved: Deno.PointerValue | Uint8Array | null;
   /** Windows.Win32.Foundation.PWSTR */
-  wszHostExe: string | null;
+  wszHostExe: string | null | Uint8Array | Uint16Array;
   /** u64 */
   qwHostVersion: Deno.PointerValue;
   /** Windows.Win32.Foundation.PWSTR */
-  wszPlayerUserAgent: string | null;
+  wszPlayerUserAgent: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeofWM_READER_CLIENTINFO = 72;
@@ -764,11 +764,11 @@ export interface WM_CLIENT_PROPERTIES_EX {
   /** u32 */
   cbSize: number;
   /** Windows.Win32.Foundation.PWSTR */
-  pwszIPAddress: string | null;
+  pwszIPAddress: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pwszPort: string | null;
+  pwszPort: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pwszDNSName: string | null;
+  pwszDNSName: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeofWM_CLIENT_PROPERTIES_EX = 32;
@@ -996,11 +996,11 @@ export function allocWM_ADDRESS_ACCESSENTRY(data?: Partial<WM_ADDRESS_ACCESSENTR
  */
 export interface WM_PICTURE {
   /** Windows.Win32.Foundation.PWSTR */
-  pwszMIMEType: string | null;
+  pwszMIMEType: string | null | Uint8Array | Uint16Array;
   /** u8 */
   bPictureType: number;
   /** Windows.Win32.Foundation.PWSTR */
-  pwszDescription: string | null;
+  pwszDescription: string | null | Uint8Array | Uint16Array;
   /** u32 */
   dwDataLen: number;
   /** ptr */
@@ -1042,7 +1042,7 @@ export interface WM_SYNCHRONISED_LYRICS {
   /** u8 */
   bContentType: number;
   /** Windows.Win32.Foundation.PWSTR */
-  pwszContentDescriptor: string | null;
+  pwszContentDescriptor: string | null | Uint8Array | Uint16Array;
   /** u32 */
   dwLyricsLen: number;
   /** ptr */
@@ -1077,9 +1077,9 @@ export function allocWM_SYNCHRONISED_LYRICS(data?: Partial<WM_SYNCHRONISED_LYRIC
  */
 export interface WM_USER_WEB_URL {
   /** Windows.Win32.Foundation.PWSTR */
-  pwszDescription: string | null;
+  pwszDescription: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pwszURL: string | null;
+  pwszURL: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeofWM_USER_WEB_URL = 16;
@@ -1105,9 +1105,9 @@ export function allocWM_USER_WEB_URL(data?: Partial<WM_USER_WEB_URL>): Uint8Arra
  */
 export interface WM_USER_TEXT {
   /** Windows.Win32.Foundation.PWSTR */
-  pwszDescription: string | null;
+  pwszDescription: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pwszText: string | null;
+  pwszText: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeofWM_USER_TEXT = 16;
@@ -1184,7 +1184,7 @@ export interface WMT_WATERMARK_ENTRY {
   /** u32 */
   cbDisplayName: number;
   /** Windows.Win32.Foundation.PWSTR */
-  pwszDisplayName: string | null;
+  pwszDisplayName: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeofWMT_WATERMARK_ENTRY = 32;
@@ -2053,7 +2053,7 @@ try {
 // Symbols
 
 export function WMIsContentProtected(
-  pwszFileName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pwszFileName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pfIsProtected: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
   return util.pointerFromFfi(libWMVCore_dll.WMIsContentProtected(util.pwstrToFfi(pwszFileName), util.toPointer(pfIsProtected)));

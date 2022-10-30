@@ -1075,7 +1075,7 @@ export interface CQFORM {
   /** Windows.Win32.UI.WindowsAndMessaging.HICON */
   hIcon: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.Foundation.PWSTR */
-  pszTitle: string | null;
+  pszTitle: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeofCQFORM = 32;
@@ -1311,7 +1311,7 @@ export interface ADS_CASEIGNORE_LIST {
   /** ptr */
   Next: Deno.PointerValue | Uint8Array | null;
   /** Windows.Win32.Foundation.PWSTR */
-  String: string | null;
+  String: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeofADS_CASEIGNORE_LIST = 16;
@@ -1363,9 +1363,9 @@ export interface ADS_PATH {
   /** u32 */
   Type: number;
   /** Windows.Win32.Foundation.PWSTR */
-  VolumeName: string | null;
+  VolumeName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  Path: string | null;
+  Path: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeofADS_PATH = 24;
@@ -1436,7 +1436,7 @@ export interface ADS_BACKLINK {
   /** u32 */
   RemoteID: number;
   /** Windows.Win32.Foundation.PWSTR */
-  ObjectName: string | null;
+  ObjectName: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeofADS_BACKLINK = 16;
@@ -1460,7 +1460,7 @@ export function allocADS_BACKLINK(data?: Partial<ADS_BACKLINK>): Uint8Array {
  */
 export interface ADS_TYPEDNAME {
   /** Windows.Win32.Foundation.PWSTR */
-  ObjectName: string | null;
+  ObjectName: string | null | Uint8Array | Uint16Array;
   /** u32 */
   Level: number;
   /** u32 */
@@ -1489,7 +1489,7 @@ export function allocADS_TYPEDNAME(data?: Partial<ADS_TYPEDNAME>): Uint8Array {
  */
 export interface ADS_HOLD {
   /** Windows.Win32.Foundation.PWSTR */
-  ObjectName: string | null;
+  ObjectName: string | null | Uint8Array | Uint16Array;
   /** u32 */
   Amount: number;
 }
@@ -1541,7 +1541,7 @@ export function allocADS_NETADDRESS(data?: Partial<ADS_NETADDRESS>): Uint8Array 
  */
 export interface ADS_REPLICAPOINTER {
   /** Windows.Win32.Foundation.PWSTR */
-  ServerName: string | null;
+  ServerName: string | null | Uint8Array | Uint16Array;
   /** u32 */
   ReplicaType: number;
   /** u32 */
@@ -1579,7 +1579,7 @@ export function allocADS_REPLICAPOINTER(data?: Partial<ADS_REPLICAPOINTER>): Uin
  */
 export interface ADS_FAXNUMBER {
   /** Windows.Win32.Foundation.PWSTR */
-  TelephoneNumber: string | null;
+  TelephoneNumber: string | null | Uint8Array | Uint16Array;
   /** u32 */
   NumberOfBits: number;
   /** ptr */
@@ -1609,7 +1609,7 @@ export function allocADS_FAXNUMBER(data?: Partial<ADS_FAXNUMBER>): Uint8Array {
  */
 export interface ADS_EMAIL {
   /** Windows.Win32.Foundation.PWSTR */
-  Address: string | null;
+  Address: string | null | Uint8Array | Uint16Array;
   /** u32 */
   Type: number;
 }
@@ -1639,7 +1639,7 @@ export interface ADS_DN_WITH_BINARY {
   /** ptr */
   lpBinaryValue: Deno.PointerValue | Uint8Array | null;
   /** Windows.Win32.Foundation.PWSTR */
-  pszDNString: string | null;
+  pszDNString: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeofADS_DN_WITH_BINARY = 24;
@@ -1665,9 +1665,9 @@ export function allocADS_DN_WITH_BINARY(data?: Partial<ADS_DN_WITH_BINARY>): Uin
  */
 export interface ADS_DN_WITH_STRING {
   /** Windows.Win32.Foundation.PWSTR */
-  pszStringValue: string | null;
+  pszStringValue: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pszDNString: string | null;
+  pszDNString: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeofADS_DN_WITH_STRING = 16;
@@ -1716,7 +1716,7 @@ export function allocADSVALUE(data?: Partial<ADSVALUE>): Uint8Array {
  */
 export interface ADS_ATTR_INFO {
   /** Windows.Win32.Foundation.PWSTR */
-  pszAttrName: string | null;
+  pszAttrName: string | null | Uint8Array | Uint16Array;
   /** u32 */
   dwControlCode: number;
   /** Windows.Win32.Networking.ActiveDirectory.ADSTYPE */
@@ -1754,15 +1754,15 @@ export function allocADS_ATTR_INFO(data?: Partial<ADS_ATTR_INFO>): Uint8Array {
  */
 export interface ADS_OBJECT_INFO {
   /** Windows.Win32.Foundation.PWSTR */
-  pszRDN: string | null;
+  pszRDN: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pszObjectDN: string | null;
+  pszObjectDN: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pszParentDN: string | null;
+  pszParentDN: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pszSchemaDN: string | null;
+  pszSchemaDN: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pszClassName: string | null;
+  pszClassName: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeofADS_OBJECT_INFO = 40;
@@ -1833,7 +1833,7 @@ export type HANDLE = Deno.PointerValue;
  */
 export interface ADS_SEARCH_COLUMN {
   /** Windows.Win32.Foundation.PWSTR */
-  pszAttrName: string | null;
+  pszAttrName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Networking.ActiveDirectory.ADSTYPE */
   dwADsType: ADSTYPE;
   /** ptr */
@@ -1874,7 +1874,7 @@ export type BOOL = number;
  */
 export interface ADS_ATTR_DEF {
   /** Windows.Win32.Foundation.PWSTR */
-  pszAttrName: string | null;
+  pszAttrName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Networking.ActiveDirectory.ADSTYPE */
   dwADsType: ADSTYPE;
   /** u32 */
@@ -1911,7 +1911,7 @@ export function allocADS_ATTR_DEF(data?: Partial<ADS_ATTR_DEF>): Uint8Array {
  */
 export interface ADS_CLASS_DEF {
   /** Windows.Win32.Foundation.PWSTR */
-  pszClassName: string | null;
+  pszClassName: string | null | Uint8Array | Uint16Array;
   /** u32 */
   dwMandatoryAttrs: number;
   /** ptr */
@@ -1975,9 +1975,9 @@ export type BOOLEAN = number;
  */
 export interface ADS_SORTKEY {
   /** Windows.Win32.Foundation.PWSTR */
-  pszAttrType: string | null;
+  pszAttrType: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pszReserved: string | null;
+  pszReserved: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.BOOLEAN */
   fReverseorder: Uint8Array | Deno.PointerValue | null;
 }
@@ -2015,7 +2015,7 @@ export interface ADS_VLV {
   /** u32 */
   dwContentCount: number;
   /** Windows.Win32.Foundation.PWSTR */
-  pszTarget: string | null;
+  pszTarget: string | null | Uint8Array | Uint16Array;
   /** u32 */
   dwContextIDLength: number;
   /** ptr */
@@ -2172,15 +2172,15 @@ export function allocDSPROPERTYPAGEINFO(data?: Partial<DSPROPERTYPAGEINFO>): Uin
  */
 export interface DOMAINDESC {
   /** Windows.Win32.Foundation.PWSTR */
-  pszName: string | null;
+  pszName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pszPath: string | null;
+  pszPath: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pszNCName: string | null;
+  pszNCName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pszTrustParent: string | null;
+  pszTrustParent: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pszObjectClass: string | null;
+  pszObjectClass: string | null | Uint8Array | Uint16Array;
   /** u32 */
   ulFlags: number;
   /** Windows.Win32.Foundation.BOOL */
@@ -2305,13 +2305,13 @@ export interface DSBROWSEINFOW {
   /** Windows.Win32.Foundation.HWND */
   hwndOwner: Deno.PointerValue | null;
   /** Windows.Win32.Foundation.PWSTR */
-  pszCaption: string | null;
+  pszCaption: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pszTitle: string | null;
+  pszTitle: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pszRoot: string | null;
+  pszRoot: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pszPath: string | null;
+  pszPath: string | null | Uint8Array | Uint16Array;
   /** u32 */
   cchPath: number;
   /** u32 */
@@ -2323,11 +2323,11 @@ export interface DSBROWSEINFOW {
   /** u32 */
   dwReturnFormat: number;
   /** Windows.Win32.Foundation.PWSTR */
-  pUserName: string | null;
+  pUserName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pPassword: string | null;
+  pPassword: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pszObjectClass: string | null;
+  pszObjectClass: string | null | Uint8Array | Uint16Array;
   /** u32 */
   cchObjectClass: number;
 }
@@ -2405,13 +2405,13 @@ export interface DSBROWSEINFOA {
   /** Windows.Win32.Foundation.HWND */
   hwndOwner: Deno.PointerValue | null;
   /** Windows.Win32.Foundation.PSTR */
-  pszCaption: string | null;
+  pszCaption: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  pszTitle: string | null;
+  pszTitle: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pszRoot: string | null;
+  pszRoot: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pszPath: string | null;
+  pszPath: string | null | Uint8Array | Uint16Array;
   /** u32 */
   cchPath: number;
   /** u32 */
@@ -2423,11 +2423,11 @@ export interface DSBROWSEINFOA {
   /** u32 */
   dwReturnFormat: number;
   /** Windows.Win32.Foundation.PWSTR */
-  pUserName: string | null;
+  pUserName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pPassword: string | null;
+  pPassword: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pszObjectClass: string | null;
+  pszObjectClass: string | null | Uint8Array | Uint16Array;
   /** u32 */
   cchObjectClass: number;
 }
@@ -2501,9 +2501,9 @@ export interface DSBITEMW {
   /** u32 */
   cbStruct: number;
   /** Windows.Win32.Foundation.PWSTR */
-  pszADsPath: string | null;
+  pszADsPath: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pszClass: string | null;
+  pszClass: string | null | Uint8Array | Uint16Array;
   /** u32 */
   dwMask: number;
   /** u32 */
@@ -2560,9 +2560,9 @@ export interface DSBITEMA {
   /** u32 */
   cbStruct: number;
   /** Windows.Win32.Foundation.PWSTR */
-  pszADsPath: string | null;
+  pszADsPath: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pszClass: string | null;
+  pszClass: string | null | Uint8Array | Uint16Array;
   /** u32 */
   dwMask: number;
   /** u32 */
@@ -2677,9 +2677,9 @@ export interface DSOP_SCOPE_INIT_INFO {
   /** Windows.Win32.Networking.ActiveDirectory.DSOP_FILTER_FLAGS */
   FilterFlags: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.Foundation.PWSTR */
-  pwzDcName: string | null;
+  pwzDcName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pwzADsPath: string | null;
+  pwzADsPath: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.HRESULT */
   hr: Uint8Array | Deno.PointerValue | null;
 }
@@ -2720,7 +2720,7 @@ export interface DSOP_INIT_INFO {
   /** u32 */
   cbSize: number;
   /** Windows.Win32.Foundation.PWSTR */
-  pwzTargetComputer: string | null;
+  pwzTargetComputer: string | null | Uint8Array | Uint16Array;
   /** u32 */
   cDsScopeInfos: number;
   /** ptr */
@@ -2765,13 +2765,13 @@ export function allocDSOP_INIT_INFO(data?: Partial<DSOP_INIT_INFO>): Uint8Array 
  */
 export interface DS_SELECTION {
   /** Windows.Win32.Foundation.PWSTR */
-  pwzName: string | null;
+  pwzName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pwzADsPath: string | null;
+  pwzADsPath: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pwzClass: string | null;
+  pwzClass: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pwzUPN: string | null;
+  pwzUPN: string | null | Uint8Array | Uint16Array;
   /** ptr */
   pvarFetchedAttributes: Deno.PointerValue | Uint8Array | null;
   /** u32 */
@@ -2846,15 +2846,15 @@ export interface DSQUERYINITPARAMS {
   /** u32 */
   dwFlags: number;
   /** Windows.Win32.Foundation.PWSTR */
-  pDefaultScope: string | null;
+  pDefaultScope: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pDefaultSaveLocation: string | null;
+  pDefaultSaveLocation: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pUserName: string | null;
+  pUserName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pPassword: string | null;
+  pPassword: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pServer: string | null;
+  pServer: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeofDSQUERYINITPARAMS = 48;
@@ -3010,9 +3010,9 @@ export interface DSA_NEWOBJ_DISPINFO {
   /** Windows.Win32.UI.WindowsAndMessaging.HICON */
   hObjClassIcon: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.Foundation.PWSTR */
-  lpszWizTitle: string | null;
+  lpszWizTitle: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  lpszContDisplayName: string | null;
+  lpszContDisplayName: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeofDSA_NEWOBJ_DISPINFO = 32;
@@ -3051,7 +3051,7 @@ export interface ADSPROPINITPARAMS {
   /** Windows.Win32.Networking.ActiveDirectory.IDirectoryObject */
   pDsObj: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.Foundation.PWSTR */
-  pwzCN: string | null;
+  pwzCN: string | null | Uint8Array | Uint16Array;
   /** ptr */
   pWritableAttrs: Deno.PointerValue | Uint8Array | null;
 }
@@ -3086,15 +3086,15 @@ export interface ADSPROPERROR {
   /** Windows.Win32.Foundation.HWND */
   hwndPage: Deno.PointerValue | null;
   /** Windows.Win32.Foundation.PWSTR */
-  pszPageTitle: string | null;
+  pszPageTitle: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pszObjPath: string | null;
+  pszObjPath: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pszObjClass: string | null;
+  pszObjClass: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.HRESULT */
   hr: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.Foundation.PWSTR */
-  pszError: string | null;
+  pszError: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeofADSPROPERROR = 48;
@@ -3189,9 +3189,9 @@ export interface DS_NAME_RESULT_ITEMA {
   /** u32 */
   status: number;
   /** Windows.Win32.Foundation.PSTR */
-  pDomain: string | null;
+  pDomain: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  pName: string | null;
+  pName: string | null | Uint8Array;
 }
 
 export const sizeofDS_NAME_RESULT_ITEMA = 24;
@@ -3245,9 +3245,9 @@ export interface DS_NAME_RESULT_ITEMW {
   /** u32 */
   status: number;
   /** Windows.Win32.Foundation.PWSTR */
-  pDomain: string | null;
+  pDomain: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pName: string | null;
+  pName: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeofDS_NAME_RESULT_ITEMW = 24;
@@ -3299,11 +3299,11 @@ export function allocDS_NAME_RESULTW(data?: Partial<DS_NAME_RESULTW>): Uint8Arra
  */
 export interface DS_REPSYNCALL_SYNCA {
   /** Windows.Win32.Foundation.PSTR */
-  pszSrcId: string | null;
+  pszSrcId: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  pszDstId: string | null;
+  pszDstId: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  pszNC: string | null;
+  pszNC: string | null | Uint8Array;
   /** ptr */
   pguidSrc: Deno.PointerValue | Uint8Array | null;
   /** ptr */
@@ -3342,11 +3342,11 @@ export function allocDS_REPSYNCALL_SYNCA(data?: Partial<DS_REPSYNCALL_SYNCA>): U
  */
 export interface DS_REPSYNCALL_SYNCW {
   /** Windows.Win32.Foundation.PWSTR */
-  pszSrcId: string | null;
+  pszSrcId: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pszDstId: string | null;
+  pszDstId: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pszNC: string | null;
+  pszNC: string | null | Uint8Array | Uint16Array;
   /** ptr */
   pguidSrc: Deno.PointerValue | Uint8Array | null;
   /** ptr */
@@ -3385,13 +3385,13 @@ export function allocDS_REPSYNCALL_SYNCW(data?: Partial<DS_REPSYNCALL_SYNCW>): U
  */
 export interface DS_REPSYNCALL_ERRINFOA {
   /** Windows.Win32.Foundation.PSTR */
-  pszSvrId: string | null;
+  pszSvrId: string | null | Uint8Array;
   /** Windows.Win32.Networking.ActiveDirectory.DS_REPSYNCALL_ERROR */
   error: DS_REPSYNCALL_ERROR;
   /** u32 */
   dwWin32Err: number;
   /** Windows.Win32.Foundation.PSTR */
-  pszSrcId: string | null;
+  pszSrcId: string | null | Uint8Array;
 }
 
 export const sizeofDS_REPSYNCALL_ERRINFOA = 24;
@@ -3421,13 +3421,13 @@ export function allocDS_REPSYNCALL_ERRINFOA(data?: Partial<DS_REPSYNCALL_ERRINFO
  */
 export interface DS_REPSYNCALL_ERRINFOW {
   /** Windows.Win32.Foundation.PWSTR */
-  pszSvrId: string | null;
+  pszSvrId: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Networking.ActiveDirectory.DS_REPSYNCALL_ERROR */
   error: DS_REPSYNCALL_ERROR;
   /** u32 */
   dwWin32Err: number;
   /** Windows.Win32.Foundation.PWSTR */
-  pszSrcId: string | null;
+  pszSrcId: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeofDS_REPSYNCALL_ERRINFOW = 24;
@@ -3537,7 +3537,7 @@ export interface DS_SCHEMA_GUID_MAPA {
   /** u32 */
   guidType: number;
   /** Windows.Win32.Foundation.PSTR */
-  pName: string | null;
+  pName: string | null | Uint8Array;
 }
 
 export const sizeofDS_SCHEMA_GUID_MAPA = 24;
@@ -3567,7 +3567,7 @@ export interface DS_SCHEMA_GUID_MAPW {
   /** u32 */
   guidType: number;
   /** Windows.Win32.Foundation.PWSTR */
-  pName: string | null;
+  pName: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeofDS_SCHEMA_GUID_MAPW = 24;
@@ -3593,15 +3593,15 @@ export function allocDS_SCHEMA_GUID_MAPW(data?: Partial<DS_SCHEMA_GUID_MAPW>): U
  */
 export interface DS_DOMAIN_CONTROLLER_INFO_1A {
   /** Windows.Win32.Foundation.PSTR */
-  NetbiosName: string | null;
+  NetbiosName: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  DnsHostName: string | null;
+  DnsHostName: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  SiteName: string | null;
+  SiteName: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  ComputerObjectName: string | null;
+  ComputerObjectName: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  ServerObjectName: string | null;
+  ServerObjectName: string | null | Uint8Array;
   /** Windows.Win32.Foundation.BOOL */
   fIsPdc: boolean;
   /** Windows.Win32.Foundation.BOOL */
@@ -3650,15 +3650,15 @@ export function allocDS_DOMAIN_CONTROLLER_INFO_1A(data?: Partial<DS_DOMAIN_CONTR
  */
 export interface DS_DOMAIN_CONTROLLER_INFO_1W {
   /** Windows.Win32.Foundation.PWSTR */
-  NetbiosName: string | null;
+  NetbiosName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  DnsHostName: string | null;
+  DnsHostName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  SiteName: string | null;
+  SiteName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  ComputerObjectName: string | null;
+  ComputerObjectName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  ServerObjectName: string | null;
+  ServerObjectName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.BOOL */
   fIsPdc: boolean;
   /** Windows.Win32.Foundation.BOOL */
@@ -3707,19 +3707,19 @@ export function allocDS_DOMAIN_CONTROLLER_INFO_1W(data?: Partial<DS_DOMAIN_CONTR
  */
 export interface DS_DOMAIN_CONTROLLER_INFO_2A {
   /** Windows.Win32.Foundation.PSTR */
-  NetbiosName: string | null;
+  NetbiosName: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  DnsHostName: string | null;
+  DnsHostName: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  SiteName: string | null;
+  SiteName: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  SiteObjectName: string | null;
+  SiteObjectName: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  ComputerObjectName: string | null;
+  ComputerObjectName: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  ServerObjectName: string | null;
+  ServerObjectName: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  NtdsDsaObjectName: string | null;
+  NtdsDsaObjectName: string | null | Uint8Array;
   /** Windows.Win32.Foundation.BOOL */
   fIsPdc: boolean;
   /** Windows.Win32.Foundation.BOOL */
@@ -3799,19 +3799,19 @@ export function allocDS_DOMAIN_CONTROLLER_INFO_2A(data?: Partial<DS_DOMAIN_CONTR
  */
 export interface DS_DOMAIN_CONTROLLER_INFO_2W {
   /** Windows.Win32.Foundation.PWSTR */
-  NetbiosName: string | null;
+  NetbiosName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  DnsHostName: string | null;
+  DnsHostName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  SiteName: string | null;
+  SiteName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  SiteObjectName: string | null;
+  SiteObjectName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  ComputerObjectName: string | null;
+  ComputerObjectName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  ServerObjectName: string | null;
+  ServerObjectName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  NtdsDsaObjectName: string | null;
+  NtdsDsaObjectName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.BOOL */
   fIsPdc: boolean;
   /** Windows.Win32.Foundation.BOOL */
@@ -3891,19 +3891,19 @@ export function allocDS_DOMAIN_CONTROLLER_INFO_2W(data?: Partial<DS_DOMAIN_CONTR
  */
 export interface DS_DOMAIN_CONTROLLER_INFO_3A {
   /** Windows.Win32.Foundation.PSTR */
-  NetbiosName: string | null;
+  NetbiosName: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  DnsHostName: string | null;
+  DnsHostName: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  SiteName: string | null;
+  SiteName: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  SiteObjectName: string | null;
+  SiteObjectName: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  ComputerObjectName: string | null;
+  ComputerObjectName: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  ServerObjectName: string | null;
+  ServerObjectName: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  NtdsDsaObjectName: string | null;
+  NtdsDsaObjectName: string | null | Uint8Array;
   /** Windows.Win32.Foundation.BOOL */
   fIsPdc: boolean;
   /** Windows.Win32.Foundation.BOOL */
@@ -3986,19 +3986,19 @@ export function allocDS_DOMAIN_CONTROLLER_INFO_3A(data?: Partial<DS_DOMAIN_CONTR
  */
 export interface DS_DOMAIN_CONTROLLER_INFO_3W {
   /** Windows.Win32.Foundation.PWSTR */
-  NetbiosName: string | null;
+  NetbiosName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  DnsHostName: string | null;
+  DnsHostName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  SiteName: string | null;
+  SiteName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  SiteObjectName: string | null;
+  SiteObjectName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  ComputerObjectName: string | null;
+  ComputerObjectName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  ServerObjectName: string | null;
+  ServerObjectName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  NtdsDsaObjectName: string | null;
+  NtdsDsaObjectName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.BOOL */
   fIsPdc: boolean;
   /** Windows.Win32.Foundation.BOOL */
@@ -4103,13 +4103,13 @@ export function allocFILETIME(data?: Partial<FILETIME>): Uint8Array {
  */
 export interface DS_REPL_NEIGHBORW {
   /** Windows.Win32.Foundation.PWSTR */
-  pszNamingContext: string | null;
+  pszNamingContext: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pszSourceDsaDN: string | null;
+  pszSourceDsaDN: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pszSourceDsaAddress: string | null;
+  pszSourceDsaAddress: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pszAsyncIntersiteTransportDN: string | null;
+  pszAsyncIntersiteTransportDN: string | null | Uint8Array | Uint16Array;
   /** u32 */
   dwReplicaFlags: number;
   /** u32 */
@@ -4351,7 +4351,7 @@ export interface DS_REPL_CURSOR_3W {
   /** Windows.Win32.Foundation.FILETIME */
   ftimeLastSyncSuccess: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.Foundation.PWSTR */
-  pszSourceDsaDN: string | null;
+  pszSourceDsaDN: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeofDS_REPL_CURSOR_3W = 32;
@@ -4487,7 +4487,7 @@ export function allocDS_REPL_CURSORS_3W(data?: Partial<DS_REPL_CURSORS_3W>): Uin
  */
 export interface DS_REPL_ATTR_META_DATA {
   /** Windows.Win32.Foundation.PWSTR */
-  pszAttributeName: string | null;
+  pszAttributeName: string | null | Uint8Array | Uint16Array;
   /** u32 */
   dwVersion: number;
   /** Windows.Win32.Foundation.FILETIME */
@@ -4529,7 +4529,7 @@ export function allocDS_REPL_ATTR_META_DATA(data?: Partial<DS_REPL_ATTR_META_DAT
  */
 export interface DS_REPL_ATTR_META_DATA_2 {
   /** Windows.Win32.Foundation.PWSTR */
-  pszAttributeName: string | null;
+  pszAttributeName: string | null | Uint8Array | Uint16Array;
   /** u32 */
   dwVersion: number;
   /** Windows.Win32.Foundation.FILETIME */
@@ -4541,7 +4541,7 @@ export interface DS_REPL_ATTR_META_DATA_2 {
   /** i64 */
   usnLocalChange: Deno.PointerValue;
   /** Windows.Win32.Foundation.PWSTR */
-  pszLastOriginatingDsaDN: string | null;
+  pszLastOriginatingDsaDN: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeofDS_REPL_ATTR_META_DATA_2 = 56;
@@ -4673,7 +4673,7 @@ export function allocDS_REPL_OBJ_META_DATA_2(data?: Partial<DS_REPL_OBJ_META_DAT
  */
 export interface DS_REPL_KCC_DSA_FAILUREW {
   /** Windows.Win32.Foundation.PWSTR */
-  pszDsaDN: string | null;
+  pszDsaDN: string | null | Uint8Array | Uint16Array;
   /** System.Guid */
   uuidDsaObjGuid: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.Foundation.FILETIME */
@@ -4781,11 +4781,11 @@ export interface DS_REPL_OPW {
   /** u32 */
   ulOptions: number;
   /** Windows.Win32.Foundation.PWSTR */
-  pszNamingContext: string | null;
+  pszNamingContext: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pszDsaDN: string | null;
+  pszDsaDN: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pszDsaAddress: string | null;
+  pszDsaAddress: string | null | Uint8Array | Uint16Array;
   /** System.Guid */
   uuidNamingContextObjGuid: Uint8Array | Deno.PointerValue | null;
   /** System.Guid */
@@ -4916,9 +4916,9 @@ export function allocDS_REPL_PENDING_OPSW(data?: Partial<DS_REPL_PENDING_OPSW>):
  */
 export interface DS_REPL_VALUE_META_DATA {
   /** Windows.Win32.Foundation.PWSTR */
-  pszAttributeName: string | null;
+  pszAttributeName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pszObjectDn: string | null;
+  pszObjectDn: string | null | Uint8Array | Uint16Array;
   /** u32 */
   cbData: number;
   /** ptr */
@@ -4982,9 +4982,9 @@ export function allocDS_REPL_VALUE_META_DATA(data?: Partial<DS_REPL_VALUE_META_D
  */
 export interface DS_REPL_VALUE_META_DATA_2 {
   /** Windows.Win32.Foundation.PWSTR */
-  pszAttributeName: string | null;
+  pszAttributeName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pszObjectDn: string | null;
+  pszObjectDn: string | null | Uint8Array | Uint16Array;
   /** u32 */
   cbData: number;
   /** ptr */
@@ -5004,7 +5004,7 @@ export interface DS_REPL_VALUE_META_DATA_2 {
   /** i64 */
   usnLocalChange: Deno.PointerValue;
   /** Windows.Win32.Foundation.PWSTR */
-  pszLastOriginatingDsaDN: string | null;
+  pszLastOriginatingDsaDN: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeofDS_REPL_VALUE_META_DATA_2 = 96;
@@ -5055,9 +5055,9 @@ export function allocDS_REPL_VALUE_META_DATA_2(data?: Partial<DS_REPL_VALUE_META
  */
 export interface DS_REPL_VALUE_META_DATA_EXT {
   /** Windows.Win32.Foundation.PWSTR */
-  pszAttributeName: string | null;
+  pszAttributeName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pszObjectDn: string | null;
+  pszObjectDn: string | null | Uint8Array | Uint16Array;
   /** u32 */
   cbData: number;
   /** ptr */
@@ -5077,7 +5077,7 @@ export interface DS_REPL_VALUE_META_DATA_EXT {
   /** i64 */
   usnLocalChange: Deno.PointerValue;
   /** Windows.Win32.Foundation.PWSTR */
-  pszLastOriginatingDsaDN: string | null;
+  pszLastOriginatingDsaDN: string | null | Uint8Array | Uint16Array;
   /** u32 */
   dwUserIdentifier: number;
   /** u32 */
@@ -5405,11 +5405,11 @@ export interface DSROLE_PRIMARY_DOMAIN_INFO_BASIC {
   /** u32 */
   Flags: number;
   /** Windows.Win32.Foundation.PWSTR */
-  DomainNameFlat: string | null;
+  DomainNameFlat: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  DomainNameDns: string | null;
+  DomainNameDns: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  DomainForestName: string | null;
+  DomainForestName: string | null | Uint8Array | Uint16Array;
   /** System.Guid */
   DomainGuid: Uint8Array | Deno.PointerValue | null;
 }
@@ -5489,23 +5489,23 @@ export function allocDSROLE_OPERATION_STATE_INFO(data?: Partial<DSROLE_OPERATION
  */
 export interface DOMAIN_CONTROLLER_INFOA {
   /** Windows.Win32.Foundation.PSTR */
-  DomainControllerName: string | null;
+  DomainControllerName: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  DomainControllerAddress: string | null;
+  DomainControllerAddress: string | null | Uint8Array;
   /** u32 */
   DomainControllerAddressType: number;
   /** System.Guid */
   DomainGuid: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.Foundation.PSTR */
-  DomainName: string | null;
+  DomainName: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  DnsForestName: string | null;
+  DnsForestName: string | null | Uint8Array;
   /** u32 */
   Flags: number;
   /** Windows.Win32.Foundation.PSTR */
-  DcSiteName: string | null;
+  DcSiteName: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  ClientSiteName: string | null;
+  ClientSiteName: string | null | Uint8Array;
 }
 
 export const sizeofDOMAIN_CONTROLLER_INFOA = 72;
@@ -5559,23 +5559,23 @@ export function allocDOMAIN_CONTROLLER_INFOA(data?: Partial<DOMAIN_CONTROLLER_IN
  */
 export interface DOMAIN_CONTROLLER_INFOW {
   /** Windows.Win32.Foundation.PWSTR */
-  DomainControllerName: string | null;
+  DomainControllerName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  DomainControllerAddress: string | null;
+  DomainControllerAddress: string | null | Uint8Array | Uint16Array;
   /** u32 */
   DomainControllerAddressType: number;
   /** System.Guid */
   DomainGuid: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.Foundation.PWSTR */
-  DomainName: string | null;
+  DomainName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  DnsForestName: string | null;
+  DnsForestName: string | null | Uint8Array | Uint16Array;
   /** u32 */
   Flags: number;
   /** Windows.Win32.Foundation.PWSTR */
-  DcSiteName: string | null;
+  DcSiteName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  ClientSiteName: string | null;
+  ClientSiteName: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeofDOMAIN_CONTROLLER_INFOW = 72;
@@ -5631,9 +5631,9 @@ export type PSID = Deno.PointerValue | Uint8Array | null;
  */
 export interface DS_DOMAIN_TRUSTSW {
   /** Windows.Win32.Foundation.PWSTR */
-  NetbiosDomainName: string | null;
+  NetbiosDomainName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  DnsDomainName: string | null;
+  DnsDomainName: string | null | Uint8Array | Uint16Array;
   /** u32 */
   Flags: number;
   /** u32 */
@@ -5683,9 +5683,9 @@ export function allocDS_DOMAIN_TRUSTSW(data?: Partial<DS_DOMAIN_TRUSTSW>): Uint8
  */
 export interface DS_DOMAIN_TRUSTSA {
   /** Windows.Win32.Foundation.PSTR */
-  NetbiosDomainName: string | null;
+  NetbiosDomainName: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  DnsDomainName: string | null;
+  DnsDomainName: string | null | Uint8Array;
   /** u32 */
   Flags: number;
   /** u32 */
@@ -6421,7 +6421,7 @@ try {
 // Symbols
 
 export function ADsGetObject(
-  lpszPathName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpszPathName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   riid: Deno.PointerValue | Uint8Array | null /* ptr */,
   ppObject: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
@@ -6467,9 +6467,9 @@ export function ADsBuildVarArrayInt(
 }
 
 export function ADsOpenObject(
-  lpszPathName: string | null /* Windows.Win32.Foundation.PWSTR */,
-  lpszUserName: string | null /* Windows.Win32.Foundation.PWSTR */,
-  lpszPassword: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpszPathName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  lpszUserName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  lpszPassword: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   dwReserved: ADS_AUTHENTICATION_ENUM /* Windows.Win32.Networking.ActiveDirectory.ADS_AUTHENTICATION_ENUM */,
   riid: Deno.PointerValue | Uint8Array | null /* ptr */,
   ppObject: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -6479,9 +6479,9 @@ export function ADsOpenObject(
 
 export function ADsGetLastError(
   lpError: Deno.PointerValue | Uint8Array | null /* ptr */,
-  lpErrorBuf: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpErrorBuf: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   dwErrorBufLen: number /* u32 */,
-  lpNameBuf: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpNameBuf: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   dwNameBufLen: number /* u32 */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
   return util.pointerFromFfi(libACTIVEDS_dll.ADsGetLastError(util.toPointer(lpError), util.pwstrToFfi(lpErrorBuf), dwErrorBufLen, util.pwstrToFfi(lpNameBuf), dwNameBufLen));
@@ -6489,8 +6489,8 @@ export function ADsGetLastError(
 
 export function ADsSetLastError(
   dwErr: number /* u32 */,
-  pszError: string | null /* Windows.Win32.Foundation.PWSTR */,
-  pszProvider: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pszError: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  pszProvider: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): void /* void */ {
   return libACTIVEDS_dll.ADsSetLastError(dwErr, util.pwstrToFfi(pszError), util.pwstrToFfi(pszProvider));
 }
@@ -6516,20 +6516,20 @@ export function ReallocADsMem(
 }
 
 export function AllocADsStr(
-  pStr: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pStr: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): string | null /* Windows.Win32.Foundation.PWSTR */ {
   return util.pwstrFromFfi(libACTIVEDS_dll.AllocADsStr(util.pwstrToFfi(pStr)));
 }
 
 export function FreeADsStr(
-  pStr: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pStr: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libACTIVEDS_dll.FreeADsStr(util.pwstrToFfi(pStr)));
 }
 
 export function ReallocADsStr(
   ppStr: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pStr: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pStr: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libACTIVEDS_dll.ReallocADsStr(util.toPointer(ppStr), util.pwstrToFfi(pStr)));
 }
@@ -6543,7 +6543,7 @@ export function ADsEncodeBinaryData(
 }
 
 export function ADsDecodeBinaryData(
-  szSrcData: string | null /* Windows.Win32.Foundation.PWSTR */,
+  szSrcData: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   ppbDestData: Deno.PointerValue | Uint8Array | null /* ptr */,
   pdwDestLen: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
@@ -6577,9 +6577,9 @@ export function AdsFreeAdsValues(
 export function BinarySDToSecurityDescriptor(
   pSecurityDescriptor: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Security.PSECURITY_DESCRIPTOR */,
   pVarsec: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pszServerName: string | null /* Windows.Win32.Foundation.PWSTR */,
-  userName: string | null /* Windows.Win32.Foundation.PWSTR */,
-  passWord: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pszServerName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  userName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  passWord: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   dwFlags: number /* u32 */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
   return util.pointerFromFfi(libACTIVEDS_dll.BinarySDToSecurityDescriptor(util.toPointer(pSecurityDescriptor), util.toPointer(pVarsec), util.pwstrToFfi(pszServerName), util.pwstrToFfi(userName), util.pwstrToFfi(passWord), dwFlags));
@@ -6589,9 +6589,9 @@ export function SecurityDescriptorToBinarySD(
   vVarSecDes: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Com.VARIANT */,
   ppSecurityDescriptor: Deno.PointerValue | Uint8Array | null /* ptr */,
   pdwSDLength: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pszServerName: string | null /* Windows.Win32.Foundation.PWSTR */,
-  userName: string | null /* Windows.Win32.Foundation.PWSTR */,
-  passWord: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pszServerName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  userName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  passWord: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   dwFlags: number /* u32 */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
   return util.pointerFromFfi(libACTIVEDS_dll.SecurityDescriptorToBinarySD(util.toPointer(vVarSecDes), util.toPointer(ppSecurityDescriptor), util.toPointer(pdwSDLength), util.pwstrToFfi(pszServerName), util.pwstrToFfi(userName), util.pwstrToFfi(passWord), dwFlags));
@@ -6611,7 +6611,7 @@ export function DsBrowseForContainerA(
 
 export function DsGetIcon(
   dwFlags: number /* u32 */,
-  pszObjectClass: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pszObjectClass: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   cxImage: number /* i32 */,
   cyImage: number /* i32 */,
 ): Deno.PointerValue | null /* Windows.Win32.UI.WindowsAndMessaging.HICON */ {
@@ -6619,8 +6619,8 @@ export function DsGetIcon(
 }
 
 export function DsGetFriendlyClassName(
-  pszObjectClass: string | null /* Windows.Win32.Foundation.PWSTR */,
-  pszBuffer: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pszObjectClass: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  pszBuffer: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   cchBuffer: number /* u32 */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
   return util.pointerFromFfi(libdsuiext_dll.DsGetFriendlyClassName(util.pwstrToFfi(pszObjectClass), util.pwstrToFfi(pszBuffer), cchBuffer));
@@ -6628,7 +6628,7 @@ export function DsGetFriendlyClassName(
 
 export function ADsPropCreateNotifyObj(
   pAppThdDataObj: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Com.IDataObject */,
-  pwzADsObjName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pwzADsObjName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   phNotifyObj: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
   return util.pointerFromFfi(libdsprop_dll.ADsPropCreateNotifyObj(util.toPointer(pAppThdDataObj), util.pwstrToFfi(pwzADsObjName), util.toPointer(phNotifyObj)));
@@ -6657,7 +6657,7 @@ export function ADsPropSetHwnd(
 }
 
 export function ADsPropCheckIfWritable(
-  pwzAttr: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pwzAttr: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pWritableAttrs: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libdsprop_dll.ADsPropCheckIfWritable(util.pwstrToFfi(pwzAttr), util.toPointer(pWritableAttrs)));
@@ -6678,50 +6678,50 @@ export function ADsPropShowErrorDialog(
 }
 
 export function DsMakeSpnW(
-  ServiceClass: string | null /* Windows.Win32.Foundation.PWSTR */,
-  ServiceName: string | null /* Windows.Win32.Foundation.PWSTR */,
-  InstanceName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  ServiceClass: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  ServiceName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  InstanceName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   InstancePort: number /* u16 */,
-  Referrer: string | null /* Windows.Win32.Foundation.PWSTR */,
+  Referrer: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pcSpnLength: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pszSpn: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pszSpn: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
   return libDSPARSE_dll.DsMakeSpnW(util.pwstrToFfi(ServiceClass), util.pwstrToFfi(ServiceName), util.pwstrToFfi(InstanceName), InstancePort, util.pwstrToFfi(Referrer), util.toPointer(pcSpnLength), util.pwstrToFfi(pszSpn));
 }
 
 export function DsMakeSpnA(
-  ServiceClass: string | null /* Windows.Win32.Foundation.PSTR */,
-  ServiceName: string | null /* Windows.Win32.Foundation.PSTR */,
-  InstanceName: string | null /* Windows.Win32.Foundation.PSTR */,
+  ServiceClass: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  ServiceName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  InstanceName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   InstancePort: number /* u16 */,
-  Referrer: string | null /* Windows.Win32.Foundation.PSTR */,
+  Referrer: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   pcSpnLength: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pszSpn: string | null /* Windows.Win32.Foundation.PSTR */,
+  pszSpn: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): number /* u32 */ {
   return libDSPARSE_dll.DsMakeSpnA(util.pstrToFfi(ServiceClass), util.pstrToFfi(ServiceName), util.pstrToFfi(InstanceName), InstancePort, util.pstrToFfi(Referrer), util.toPointer(pcSpnLength), util.pstrToFfi(pszSpn));
 }
 
 export function DsCrackSpnA(
-  pszSpn: string | null /* Windows.Win32.Foundation.PSTR */,
+  pszSpn: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   pcServiceClass: Deno.PointerValue | Uint8Array | null /* ptr */,
-  ServiceClass: string | null /* Windows.Win32.Foundation.PSTR */,
+  ServiceClass: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   pcServiceName: Deno.PointerValue | Uint8Array | null /* ptr */,
-  ServiceName: string | null /* Windows.Win32.Foundation.PSTR */,
+  ServiceName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   pcInstanceName: Deno.PointerValue | Uint8Array | null /* ptr */,
-  InstanceName: string | null /* Windows.Win32.Foundation.PSTR */,
+  InstanceName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   pInstancePort: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
   return libDSPARSE_dll.DsCrackSpnA(util.pstrToFfi(pszSpn), util.toPointer(pcServiceClass), util.pstrToFfi(ServiceClass), util.toPointer(pcServiceName), util.pstrToFfi(ServiceName), util.toPointer(pcInstanceName), util.pstrToFfi(InstanceName), util.toPointer(pInstancePort));
 }
 
 export function DsCrackSpnW(
-  pszSpn: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pszSpn: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pcServiceClass: Deno.PointerValue | Uint8Array | null /* ptr */,
-  ServiceClass: string | null /* Windows.Win32.Foundation.PWSTR */,
+  ServiceClass: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pcServiceName: Deno.PointerValue | Uint8Array | null /* ptr */,
-  ServiceName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  ServiceName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pcInstanceName: Deno.PointerValue | Uint8Array | null /* ptr */,
-  InstanceName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  InstanceName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pInstancePort: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
   return libDSPARSE_dll.DsCrackSpnW(util.pwstrToFfi(pszSpn), util.toPointer(pcServiceClass), util.pwstrToFfi(ServiceClass), util.toPointer(pcServiceName), util.pwstrToFfi(ServiceName), util.toPointer(pcInstanceName), util.pwstrToFfi(InstanceName), util.toPointer(pInstancePort));
@@ -6729,36 +6729,36 @@ export function DsCrackSpnW(
 
 export function DsQuoteRdnValueW(
   cUnquotedRdnValueLength: number /* u32 */,
-  psUnquotedRdnValue: string | null /* Windows.Win32.Foundation.PWSTR */,
+  psUnquotedRdnValue: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pcQuotedRdnValueLength: Deno.PointerValue | Uint8Array | null /* ptr */,
-  psQuotedRdnValue: string | null /* Windows.Win32.Foundation.PWSTR */,
+  psQuotedRdnValue: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
   return libDSPARSE_dll.DsQuoteRdnValueW(cUnquotedRdnValueLength, util.pwstrToFfi(psUnquotedRdnValue), util.toPointer(pcQuotedRdnValueLength), util.pwstrToFfi(psQuotedRdnValue));
 }
 
 export function DsQuoteRdnValueA(
   cUnquotedRdnValueLength: number /* u32 */,
-  psUnquotedRdnValue: string | null /* Windows.Win32.Foundation.PSTR */,
+  psUnquotedRdnValue: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   pcQuotedRdnValueLength: Deno.PointerValue | Uint8Array | null /* ptr */,
-  psQuotedRdnValue: string | null /* Windows.Win32.Foundation.PSTR */,
+  psQuotedRdnValue: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): number /* u32 */ {
   return libDSPARSE_dll.DsQuoteRdnValueA(cUnquotedRdnValueLength, util.pstrToFfi(psUnquotedRdnValue), util.toPointer(pcQuotedRdnValueLength), util.pstrToFfi(psQuotedRdnValue));
 }
 
 export function DsUnquoteRdnValueW(
   cQuotedRdnValueLength: number /* u32 */,
-  psQuotedRdnValue: string | null /* Windows.Win32.Foundation.PWSTR */,
+  psQuotedRdnValue: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pcUnquotedRdnValueLength: Deno.PointerValue | Uint8Array | null /* ptr */,
-  psUnquotedRdnValue: string | null /* Windows.Win32.Foundation.PWSTR */,
+  psUnquotedRdnValue: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
   return libDSPARSE_dll.DsUnquoteRdnValueW(cQuotedRdnValueLength, util.pwstrToFfi(psQuotedRdnValue), util.toPointer(pcUnquotedRdnValueLength), util.pwstrToFfi(psUnquotedRdnValue));
 }
 
 export function DsUnquoteRdnValueA(
   cQuotedRdnValueLength: number /* u32 */,
-  psQuotedRdnValue: string | null /* Windows.Win32.Foundation.PSTR */,
+  psQuotedRdnValue: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   pcUnquotedRdnValueLength: Deno.PointerValue | Uint8Array | null /* ptr */,
-  psUnquotedRdnValue: string | null /* Windows.Win32.Foundation.PSTR */,
+  psUnquotedRdnValue: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): number /* u32 */ {
   return libDSPARSE_dll.DsUnquoteRdnValueA(cQuotedRdnValueLength, util.pstrToFfi(psQuotedRdnValue), util.toPointer(pcUnquotedRdnValueLength), util.pstrToFfi(psUnquotedRdnValue));
 }
@@ -6775,7 +6775,7 @@ export function DsGetRdnW(
 }
 
 export function DsCrackUnquotedMangledRdnW(
-  pszRDN: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pszRDN: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   cchRDN: number /* u32 */,
   pGuid: Deno.PointerValue | Uint8Array | null /* ptr */,
   peDsMangleFor: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -6784,7 +6784,7 @@ export function DsCrackUnquotedMangledRdnW(
 }
 
 export function DsCrackUnquotedMangledRdnA(
-  pszRDN: string | null /* Windows.Win32.Foundation.PSTR */,
+  pszRDN: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   cchRDN: number /* u32 */,
   pGuid: Deno.PointerValue | Uint8Array | null /* ptr */,
   peDsMangleFor: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -6793,7 +6793,7 @@ export function DsCrackUnquotedMangledRdnA(
 }
 
 export function DsIsMangledRdnValueW(
-  pszRdn: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pszRdn: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   cRdn: number /* u32 */,
   eDsMangleForDesired: DS_MANGLE_FOR /* Windows.Win32.Networking.ActiveDirectory.DS_MANGLE_FOR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
@@ -6801,7 +6801,7 @@ export function DsIsMangledRdnValueW(
 }
 
 export function DsIsMangledRdnValueA(
-  pszRdn: string | null /* Windows.Win32.Foundation.PSTR */,
+  pszRdn: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   cRdn: number /* u32 */,
   eDsMangleForDesired: DS_MANGLE_FOR /* Windows.Win32.Networking.ActiveDirectory.DS_MANGLE_FOR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
@@ -6809,99 +6809,99 @@ export function DsIsMangledRdnValueA(
 }
 
 export function DsIsMangledDnA(
-  pszDn: string | null /* Windows.Win32.Foundation.PSTR */,
+  pszDn: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   eDsMangleFor: DS_MANGLE_FOR /* Windows.Win32.Networking.ActiveDirectory.DS_MANGLE_FOR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libDSPARSE_dll.DsIsMangledDnA(util.pstrToFfi(pszDn), eDsMangleFor));
 }
 
 export function DsIsMangledDnW(
-  pszDn: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pszDn: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   eDsMangleFor: DS_MANGLE_FOR /* Windows.Win32.Networking.ActiveDirectory.DS_MANGLE_FOR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libDSPARSE_dll.DsIsMangledDnW(util.pwstrToFfi(pszDn), eDsMangleFor));
 }
 
 export function DsCrackSpn2A(
-  pszSpn: string | null /* Windows.Win32.Foundation.PSTR */,
+  pszSpn: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   cSpn: number /* u32 */,
   pcServiceClass: Deno.PointerValue | Uint8Array | null /* ptr */,
-  ServiceClass: string | null /* Windows.Win32.Foundation.PSTR */,
+  ServiceClass: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   pcServiceName: Deno.PointerValue | Uint8Array | null /* ptr */,
-  ServiceName: string | null /* Windows.Win32.Foundation.PSTR */,
+  ServiceName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   pcInstanceName: Deno.PointerValue | Uint8Array | null /* ptr */,
-  InstanceName: string | null /* Windows.Win32.Foundation.PSTR */,
+  InstanceName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   pInstancePort: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
   return libDSPARSE_dll.DsCrackSpn2A(util.pstrToFfi(pszSpn), cSpn, util.toPointer(pcServiceClass), util.pstrToFfi(ServiceClass), util.toPointer(pcServiceName), util.pstrToFfi(ServiceName), util.toPointer(pcInstanceName), util.pstrToFfi(InstanceName), util.toPointer(pInstancePort));
 }
 
 export function DsCrackSpn2W(
-  pszSpn: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pszSpn: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   cSpn: number /* u32 */,
   pcServiceClass: Deno.PointerValue | Uint8Array | null /* ptr */,
-  ServiceClass: string | null /* Windows.Win32.Foundation.PWSTR */,
+  ServiceClass: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pcServiceName: Deno.PointerValue | Uint8Array | null /* ptr */,
-  ServiceName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  ServiceName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pcInstanceName: Deno.PointerValue | Uint8Array | null /* ptr */,
-  InstanceName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  InstanceName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pInstancePort: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
   return libDSPARSE_dll.DsCrackSpn2W(util.pwstrToFfi(pszSpn), cSpn, util.toPointer(pcServiceClass), util.pwstrToFfi(ServiceClass), util.toPointer(pcServiceName), util.pwstrToFfi(ServiceName), util.toPointer(pcInstanceName), util.pwstrToFfi(InstanceName), util.toPointer(pInstancePort));
 }
 
 export function DsCrackSpn3W(
-  pszSpn: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pszSpn: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   cSpn: number /* u32 */,
   pcHostName: Deno.PointerValue | Uint8Array | null /* ptr */,
-  HostName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  HostName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pcInstanceName: Deno.PointerValue | Uint8Array | null /* ptr */,
-  InstanceName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  InstanceName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pPortNumber: Deno.PointerValue | Uint8Array | null /* ptr */,
   pcDomainName: Deno.PointerValue | Uint8Array | null /* ptr */,
-  DomainName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  DomainName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pcRealmName: Deno.PointerValue | Uint8Array | null /* ptr */,
-  RealmName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  RealmName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
   return libDSPARSE_dll.DsCrackSpn3W(util.pwstrToFfi(pszSpn), cSpn, util.toPointer(pcHostName), util.pwstrToFfi(HostName), util.toPointer(pcInstanceName), util.pwstrToFfi(InstanceName), util.toPointer(pPortNumber), util.toPointer(pcDomainName), util.pwstrToFfi(DomainName), util.toPointer(pcRealmName), util.pwstrToFfi(RealmName));
 }
 
 export function DsCrackSpn4W(
-  pszSpn: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pszSpn: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   cSpn: number /* u32 */,
   pcHostName: Deno.PointerValue | Uint8Array | null /* ptr */,
-  HostName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  HostName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pcInstanceName: Deno.PointerValue | Uint8Array | null /* ptr */,
-  InstanceName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  InstanceName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pcPortName: Deno.PointerValue | Uint8Array | null /* ptr */,
-  PortName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  PortName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pcDomainName: Deno.PointerValue | Uint8Array | null /* ptr */,
-  DomainName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  DomainName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pcRealmName: Deno.PointerValue | Uint8Array | null /* ptr */,
-  RealmName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  RealmName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
   return libDSPARSE_dll.DsCrackSpn4W(util.pwstrToFfi(pszSpn), cSpn, util.toPointer(pcHostName), util.pwstrToFfi(HostName), util.toPointer(pcInstanceName), util.pwstrToFfi(InstanceName), util.toPointer(pcPortName), util.pwstrToFfi(PortName), util.toPointer(pcDomainName), util.pwstrToFfi(DomainName), util.toPointer(pcRealmName), util.pwstrToFfi(RealmName));
 }
 
 export function DsBindW(
-  DomainControllerName: string | null /* Windows.Win32.Foundation.PWSTR */,
-  DnsDomainName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  DomainControllerName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  DnsDomainName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   phDS: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
   return libNTDSAPI_dll.DsBindW(util.pwstrToFfi(DomainControllerName), util.pwstrToFfi(DnsDomainName), util.toPointer(phDS));
 }
 
 export function DsBindA(
-  DomainControllerName: string | null /* Windows.Win32.Foundation.PSTR */,
-  DnsDomainName: string | null /* Windows.Win32.Foundation.PSTR */,
+  DomainControllerName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  DnsDomainName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   phDS: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
   return libNTDSAPI_dll.DsBindA(util.pstrToFfi(DomainControllerName), util.pstrToFfi(DnsDomainName), util.toPointer(phDS));
 }
 
 export function DsBindWithCredW(
-  DomainControllerName: string | null /* Windows.Win32.Foundation.PWSTR */,
-  DnsDomainName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  DomainControllerName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  DnsDomainName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   AuthIdentity: Deno.PointerValue | Uint8Array | null /* ptr */,
   phDS: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
@@ -6909,8 +6909,8 @@ export function DsBindWithCredW(
 }
 
 export function DsBindWithCredA(
-  DomainControllerName: string | null /* Windows.Win32.Foundation.PSTR */,
-  DnsDomainName: string | null /* Windows.Win32.Foundation.PSTR */,
+  DomainControllerName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  DnsDomainName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   AuthIdentity: Deno.PointerValue | Uint8Array | null /* ptr */,
   phDS: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
@@ -6918,30 +6918,30 @@ export function DsBindWithCredA(
 }
 
 export function DsBindWithSpnW(
-  DomainControllerName: string | null /* Windows.Win32.Foundation.PWSTR */,
-  DnsDomainName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  DomainControllerName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  DnsDomainName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   AuthIdentity: Deno.PointerValue | Uint8Array | null /* ptr */,
-  ServicePrincipalName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  ServicePrincipalName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   phDS: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
   return libNTDSAPI_dll.DsBindWithSpnW(util.pwstrToFfi(DomainControllerName), util.pwstrToFfi(DnsDomainName), util.toPointer(AuthIdentity), util.pwstrToFfi(ServicePrincipalName), util.toPointer(phDS));
 }
 
 export function DsBindWithSpnA(
-  DomainControllerName: string | null /* Windows.Win32.Foundation.PSTR */,
-  DnsDomainName: string | null /* Windows.Win32.Foundation.PSTR */,
+  DomainControllerName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  DnsDomainName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   AuthIdentity: Deno.PointerValue | Uint8Array | null /* ptr */,
-  ServicePrincipalName: string | null /* Windows.Win32.Foundation.PSTR */,
+  ServicePrincipalName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   phDS: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
   return libNTDSAPI_dll.DsBindWithSpnA(util.pstrToFfi(DomainControllerName), util.pstrToFfi(DnsDomainName), util.toPointer(AuthIdentity), util.pstrToFfi(ServicePrincipalName), util.toPointer(phDS));
 }
 
 export function DsBindWithSpnExW(
-  DomainControllerName: string | null /* Windows.Win32.Foundation.PWSTR */,
-  DnsDomainName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  DomainControllerName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  DnsDomainName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   AuthIdentity: Deno.PointerValue | Uint8Array | null /* ptr */,
-  ServicePrincipalName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  ServicePrincipalName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   BindFlags: number /* u32 */,
   phDS: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
@@ -6949,10 +6949,10 @@ export function DsBindWithSpnExW(
 }
 
 export function DsBindWithSpnExA(
-  DomainControllerName: string | null /* Windows.Win32.Foundation.PSTR */,
-  DnsDomainName: string | null /* Windows.Win32.Foundation.PSTR */,
+  DomainControllerName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  DnsDomainName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   AuthIdentity: Deno.PointerValue | Uint8Array | null /* ptr */,
-  ServicePrincipalName: string | null /* Windows.Win32.Foundation.PSTR */,
+  ServicePrincipalName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   BindFlags: number /* u32 */,
   phDS: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
@@ -6960,12 +6960,12 @@ export function DsBindWithSpnExA(
 }
 
 export function DsBindByInstanceW(
-  ServerName: string | null /* Windows.Win32.Foundation.PWSTR */,
-  Annotation: string | null /* Windows.Win32.Foundation.PWSTR */,
+  ServerName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  Annotation: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   InstanceGuid: Deno.PointerValue | Uint8Array | null /* ptr */,
-  DnsDomainName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  DnsDomainName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   AuthIdentity: Deno.PointerValue | Uint8Array | null /* ptr */,
-  ServicePrincipalName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  ServicePrincipalName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   BindFlags: number /* u32 */,
   phDS: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
@@ -6973,12 +6973,12 @@ export function DsBindByInstanceW(
 }
 
 export function DsBindByInstanceA(
-  ServerName: string | null /* Windows.Win32.Foundation.PSTR */,
-  Annotation: string | null /* Windows.Win32.Foundation.PSTR */,
+  ServerName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  Annotation: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   InstanceGuid: Deno.PointerValue | Uint8Array | null /* ptr */,
-  DnsDomainName: string | null /* Windows.Win32.Foundation.PSTR */,
+  DnsDomainName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   AuthIdentity: Deno.PointerValue | Uint8Array | null /* ptr */,
-  ServicePrincipalName: string | null /* Windows.Win32.Foundation.PSTR */,
+  ServicePrincipalName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   BindFlags: number /* u32 */,
   phDS: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
@@ -6986,14 +6986,14 @@ export function DsBindByInstanceA(
 }
 
 export function DsBindToISTGW(
-  SiteName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  SiteName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   phDS: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
   return libNTDSAPI_dll.DsBindToISTGW(util.pwstrToFfi(SiteName), util.toPointer(phDS));
 }
 
 export function DsBindToISTGA(
-  SiteName: string | null /* Windows.Win32.Foundation.PSTR */,
+  SiteName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   phDS: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
   return libNTDSAPI_dll.DsBindToISTGA(util.pstrToFfi(SiteName), util.toPointer(phDS));
@@ -7019,18 +7019,18 @@ export function DsUnBindA(
 }
 
 export function DsMakePasswordCredentialsW(
-  User: string | null /* Windows.Win32.Foundation.PWSTR */,
-  Domain: string | null /* Windows.Win32.Foundation.PWSTR */,
-  Password: string | null /* Windows.Win32.Foundation.PWSTR */,
+  User: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  Domain: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  Password: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pAuthIdentity: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
   return libNTDSAPI_dll.DsMakePasswordCredentialsW(util.pwstrToFfi(User), util.pwstrToFfi(Domain), util.pwstrToFfi(Password), util.toPointer(pAuthIdentity));
 }
 
 export function DsMakePasswordCredentialsA(
-  User: string | null /* Windows.Win32.Foundation.PSTR */,
-  Domain: string | null /* Windows.Win32.Foundation.PSTR */,
-  Password: string | null /* Windows.Win32.Foundation.PSTR */,
+  User: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  Domain: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  Password: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   pAuthIdentity: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
   return libNTDSAPI_dll.DsMakePasswordCredentialsA(util.pstrToFfi(User), util.pstrToFfi(Domain), util.pstrToFfi(Password), util.toPointer(pAuthIdentity));
@@ -7080,8 +7080,8 @@ export function DsFreeNameResultA(
 
 export function DsGetSpnA(
   ServiceType: DS_SPN_NAME_TYPE /* Windows.Win32.Networking.ActiveDirectory.DS_SPN_NAME_TYPE */,
-  ServiceClass: string | null /* Windows.Win32.Foundation.PSTR */,
-  ServiceName: string | null /* Windows.Win32.Foundation.PSTR */,
+  ServiceClass: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  ServiceName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   InstancePort: number /* u16 */,
   cInstanceNames: number /* u16 */,
   pInstanceNames: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -7094,8 +7094,8 @@ export function DsGetSpnA(
 
 export function DsGetSpnW(
   ServiceType: DS_SPN_NAME_TYPE /* Windows.Win32.Networking.ActiveDirectory.DS_SPN_NAME_TYPE */,
-  ServiceClass: string | null /* Windows.Win32.Foundation.PWSTR */,
-  ServiceName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  ServiceClass: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  ServiceName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   InstancePort: number /* u16 */,
   cInstanceNames: number /* u16 */,
   pInstanceNames: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -7123,7 +7123,7 @@ export function DsFreeSpnArrayW(
 export function DsWriteAccountSpnA(
   hDS: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
   Operation: DS_SPN_WRITE_OP /* Windows.Win32.Networking.ActiveDirectory.DS_SPN_WRITE_OP */,
-  pszAccount: string | null /* Windows.Win32.Foundation.PSTR */,
+  pszAccount: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   cSpn: number /* u32 */,
   rpszSpn: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
@@ -7133,7 +7133,7 @@ export function DsWriteAccountSpnA(
 export function DsWriteAccountSpnW(
   hDS: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
   Operation: DS_SPN_WRITE_OP /* Windows.Win32.Networking.ActiveDirectory.DS_SPN_WRITE_OP */,
-  pszAccount: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pszAccount: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   cSpn: number /* u32 */,
   rpszSpn: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
@@ -7141,42 +7141,42 @@ export function DsWriteAccountSpnW(
 }
 
 export function DsClientMakeSpnForTargetServerW(
-  ServiceClass: string | null /* Windows.Win32.Foundation.PWSTR */,
-  ServiceName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  ServiceClass: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  ServiceName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pcSpnLength: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pszSpn: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pszSpn: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
   return libNTDSAPI_dll.DsClientMakeSpnForTargetServerW(util.pwstrToFfi(ServiceClass), util.pwstrToFfi(ServiceName), util.toPointer(pcSpnLength), util.pwstrToFfi(pszSpn));
 }
 
 export function DsClientMakeSpnForTargetServerA(
-  ServiceClass: string | null /* Windows.Win32.Foundation.PSTR */,
-  ServiceName: string | null /* Windows.Win32.Foundation.PSTR */,
+  ServiceClass: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  ServiceName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   pcSpnLength: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pszSpn: string | null /* Windows.Win32.Foundation.PSTR */,
+  pszSpn: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): number /* u32 */ {
   return libNTDSAPI_dll.DsClientMakeSpnForTargetServerA(util.pstrToFfi(ServiceClass), util.pstrToFfi(ServiceName), util.toPointer(pcSpnLength), util.pstrToFfi(pszSpn));
 }
 
 export function DsServerRegisterSpnA(
   Operation: DS_SPN_WRITE_OP /* Windows.Win32.Networking.ActiveDirectory.DS_SPN_WRITE_OP */,
-  ServiceClass: string | null /* Windows.Win32.Foundation.PSTR */,
-  UserObjectDN: string | null /* Windows.Win32.Foundation.PSTR */,
+  ServiceClass: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  UserObjectDN: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): number /* u32 */ {
   return libNTDSAPI_dll.DsServerRegisterSpnA(Operation, util.pstrToFfi(ServiceClass), util.pstrToFfi(UserObjectDN));
 }
 
 export function DsServerRegisterSpnW(
   Operation: DS_SPN_WRITE_OP /* Windows.Win32.Networking.ActiveDirectory.DS_SPN_WRITE_OP */,
-  ServiceClass: string | null /* Windows.Win32.Foundation.PWSTR */,
-  UserObjectDN: string | null /* Windows.Win32.Foundation.PWSTR */,
+  ServiceClass: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  UserObjectDN: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
   return libNTDSAPI_dll.DsServerRegisterSpnW(Operation, util.pwstrToFfi(ServiceClass), util.pwstrToFfi(UserObjectDN));
 }
 
 export function DsReplicaSyncA(
   hDS: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  NameContext: string | null /* Windows.Win32.Foundation.PSTR */,
+  NameContext: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   pUuidDsaSrc: Deno.PointerValue | Uint8Array | null /* ptr */,
   Options: number /* u32 */,
 ): number /* u32 */ {
@@ -7185,7 +7185,7 @@ export function DsReplicaSyncA(
 
 export function DsReplicaSyncW(
   hDS: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  NameContext: string | null /* Windows.Win32.Foundation.PWSTR */,
+  NameContext: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pUuidDsaSrc: Deno.PointerValue | Uint8Array | null /* ptr */,
   Options: number /* u32 */,
 ): number /* u32 */ {
@@ -7194,10 +7194,10 @@ export function DsReplicaSyncW(
 
 export function DsReplicaAddA(
   hDS: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  NameContext: string | null /* Windows.Win32.Foundation.PSTR */,
-  SourceDsaDn: string | null /* Windows.Win32.Foundation.PSTR */,
-  TransportDn: string | null /* Windows.Win32.Foundation.PSTR */,
-  SourceDsaAddress: string | null /* Windows.Win32.Foundation.PSTR */,
+  NameContext: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  SourceDsaDn: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  TransportDn: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  SourceDsaAddress: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   pSchedule: Deno.PointerValue | Uint8Array | null /* ptr */,
   Options: number /* u32 */,
 ): number /* u32 */ {
@@ -7206,10 +7206,10 @@ export function DsReplicaAddA(
 
 export function DsReplicaAddW(
   hDS: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  NameContext: string | null /* Windows.Win32.Foundation.PWSTR */,
-  SourceDsaDn: string | null /* Windows.Win32.Foundation.PWSTR */,
-  TransportDn: string | null /* Windows.Win32.Foundation.PWSTR */,
-  SourceDsaAddress: string | null /* Windows.Win32.Foundation.PWSTR */,
+  NameContext: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  SourceDsaDn: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  TransportDn: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  SourceDsaAddress: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pSchedule: Deno.PointerValue | Uint8Array | null /* ptr */,
   Options: number /* u32 */,
 ): number /* u32 */ {
@@ -7218,8 +7218,8 @@ export function DsReplicaAddW(
 
 export function DsReplicaDelA(
   hDS: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  NameContext: string | null /* Windows.Win32.Foundation.PSTR */,
-  DsaSrc: string | null /* Windows.Win32.Foundation.PSTR */,
+  NameContext: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  DsaSrc: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   Options: number /* u32 */,
 ): number /* u32 */ {
   return libNTDSAPI_dll.DsReplicaDelA(util.toPointer(hDS), util.pstrToFfi(NameContext), util.pstrToFfi(DsaSrc), Options);
@@ -7227,8 +7227,8 @@ export function DsReplicaDelA(
 
 export function DsReplicaDelW(
   hDS: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  NameContext: string | null /* Windows.Win32.Foundation.PWSTR */,
-  DsaSrc: string | null /* Windows.Win32.Foundation.PWSTR */,
+  NameContext: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  DsaSrc: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   Options: number /* u32 */,
 ): number /* u32 */ {
   return libNTDSAPI_dll.DsReplicaDelW(util.toPointer(hDS), util.pwstrToFfi(NameContext), util.pwstrToFfi(DsaSrc), Options);
@@ -7236,10 +7236,10 @@ export function DsReplicaDelW(
 
 export function DsReplicaModifyA(
   hDS: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  NameContext: string | null /* Windows.Win32.Foundation.PSTR */,
+  NameContext: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   pUuidSourceDsa: Deno.PointerValue | Uint8Array | null /* ptr */,
-  TransportDn: string | null /* Windows.Win32.Foundation.PSTR */,
-  SourceDsaAddress: string | null /* Windows.Win32.Foundation.PSTR */,
+  TransportDn: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  SourceDsaAddress: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   pSchedule: Deno.PointerValue | Uint8Array | null /* ptr */,
   ReplicaFlags: number /* u32 */,
   ModifyFields: number /* u32 */,
@@ -7250,10 +7250,10 @@ export function DsReplicaModifyA(
 
 export function DsReplicaModifyW(
   hDS: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  NameContext: string | null /* Windows.Win32.Foundation.PWSTR */,
+  NameContext: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pUuidSourceDsa: Deno.PointerValue | Uint8Array | null /* ptr */,
-  TransportDn: string | null /* Windows.Win32.Foundation.PWSTR */,
-  SourceDsaAddress: string | null /* Windows.Win32.Foundation.PWSTR */,
+  TransportDn: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  SourceDsaAddress: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pSchedule: Deno.PointerValue | Uint8Array | null /* ptr */,
   ReplicaFlags: number /* u32 */,
   ModifyFields: number /* u32 */,
@@ -7264,8 +7264,8 @@ export function DsReplicaModifyW(
 
 export function DsReplicaUpdateRefsA(
   hDS: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  NameContext: string | null /* Windows.Win32.Foundation.PSTR */,
-  DsaDest: string | null /* Windows.Win32.Foundation.PSTR */,
+  NameContext: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  DsaDest: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   pUuidDsaDest: Deno.PointerValue | Uint8Array | null /* ptr */,
   Options: number /* u32 */,
 ): number /* u32 */ {
@@ -7274,8 +7274,8 @@ export function DsReplicaUpdateRefsA(
 
 export function DsReplicaUpdateRefsW(
   hDS: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  NameContext: string | null /* Windows.Win32.Foundation.PWSTR */,
-  DsaDest: string | null /* Windows.Win32.Foundation.PWSTR */,
+  NameContext: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  DsaDest: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pUuidDsaDest: Deno.PointerValue | Uint8Array | null /* ptr */,
   Options: number /* u32 */,
 ): number /* u32 */ {
@@ -7284,7 +7284,7 @@ export function DsReplicaUpdateRefsW(
 
 export function DsReplicaSyncAllA(
   hDS: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  pszNameContext: string | null /* Windows.Win32.Foundation.PSTR */,
+  pszNameContext: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   ulFlags: number /* u32 */,
   pFnCallBack: Deno.PointerValue /* isize */,
   pCallbackData: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -7295,7 +7295,7 @@ export function DsReplicaSyncAllA(
 
 export function DsReplicaSyncAllW(
   hDS: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  pszNameContext: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pszNameContext: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   ulFlags: number /* u32 */,
   pFnCallBack: Deno.PointerValue /* isize */,
   pCallbackData: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -7306,8 +7306,8 @@ export function DsReplicaSyncAllW(
 
 export function DsRemoveDsServerW(
   hDs: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  ServerDN: string | null /* Windows.Win32.Foundation.PWSTR */,
-  DomainDN: string | null /* Windows.Win32.Foundation.PWSTR */,
+  ServerDN: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  DomainDN: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   fLastDcInDomain: Deno.PointerValue | Uint8Array | null /* ptr */,
   fCommit: boolean /* Windows.Win32.Foundation.BOOL */,
 ): number /* u32 */ {
@@ -7316,8 +7316,8 @@ export function DsRemoveDsServerW(
 
 export function DsRemoveDsServerA(
   hDs: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  ServerDN: string | null /* Windows.Win32.Foundation.PSTR */,
-  DomainDN: string | null /* Windows.Win32.Foundation.PSTR */,
+  ServerDN: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  DomainDN: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   fLastDcInDomain: Deno.PointerValue | Uint8Array | null /* ptr */,
   fCommit: boolean /* Windows.Win32.Foundation.BOOL */,
 ): number /* u32 */ {
@@ -7326,14 +7326,14 @@ export function DsRemoveDsServerA(
 
 export function DsRemoveDsDomainW(
   hDs: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  DomainDN: string | null /* Windows.Win32.Foundation.PWSTR */,
+  DomainDN: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
   return libNTDSAPI_dll.DsRemoveDsDomainW(util.toPointer(hDs), util.pwstrToFfi(DomainDN));
 }
 
 export function DsRemoveDsDomainA(
   hDs: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  DomainDN: string | null /* Windows.Win32.Foundation.PSTR */,
+  DomainDN: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): number /* u32 */ {
   return libNTDSAPI_dll.DsRemoveDsDomainA(util.toPointer(hDs), util.pstrToFfi(DomainDN));
 }
@@ -7354,7 +7354,7 @@ export function DsListSitesW(
 
 export function DsListServersInSiteA(
   hDs: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  site: string | null /* Windows.Win32.Foundation.PSTR */,
+  site: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   ppServers: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
   return libNTDSAPI_dll.DsListServersInSiteA(util.toPointer(hDs), util.pstrToFfi(site), util.toPointer(ppServers));
@@ -7362,7 +7362,7 @@ export function DsListServersInSiteA(
 
 export function DsListServersInSiteW(
   hDs: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  site: string | null /* Windows.Win32.Foundation.PWSTR */,
+  site: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   ppServers: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
   return libNTDSAPI_dll.DsListServersInSiteW(util.toPointer(hDs), util.pwstrToFfi(site), util.toPointer(ppServers));
@@ -7370,7 +7370,7 @@ export function DsListServersInSiteW(
 
 export function DsListDomainsInSiteA(
   hDs: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  site: string | null /* Windows.Win32.Foundation.PSTR */,
+  site: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   ppDomains: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
   return libNTDSAPI_dll.DsListDomainsInSiteA(util.toPointer(hDs), util.pstrToFfi(site), util.toPointer(ppDomains));
@@ -7378,7 +7378,7 @@ export function DsListDomainsInSiteA(
 
 export function DsListDomainsInSiteW(
   hDs: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  site: string | null /* Windows.Win32.Foundation.PWSTR */,
+  site: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   ppDomains: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
   return libNTDSAPI_dll.DsListDomainsInSiteW(util.toPointer(hDs), util.pwstrToFfi(site), util.toPointer(ppDomains));
@@ -7386,8 +7386,8 @@ export function DsListDomainsInSiteW(
 
 export function DsListServersForDomainInSiteA(
   hDs: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  domain: string | null /* Windows.Win32.Foundation.PSTR */,
-  site: string | null /* Windows.Win32.Foundation.PSTR */,
+  domain: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  site: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   ppServers: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
   return libNTDSAPI_dll.DsListServersForDomainInSiteA(util.toPointer(hDs), util.pstrToFfi(domain), util.pstrToFfi(site), util.toPointer(ppServers));
@@ -7395,8 +7395,8 @@ export function DsListServersForDomainInSiteA(
 
 export function DsListServersForDomainInSiteW(
   hDs: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  domain: string | null /* Windows.Win32.Foundation.PWSTR */,
-  site: string | null /* Windows.Win32.Foundation.PWSTR */,
+  domain: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  site: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   ppServers: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
   return libNTDSAPI_dll.DsListServersForDomainInSiteW(util.toPointer(hDs), util.pwstrToFfi(domain), util.pwstrToFfi(site), util.toPointer(ppServers));
@@ -7404,7 +7404,7 @@ export function DsListServersForDomainInSiteW(
 
 export function DsListInfoForServerA(
   hDs: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  server: string | null /* Windows.Win32.Foundation.PSTR */,
+  server: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   ppInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
   return libNTDSAPI_dll.DsListInfoForServerA(util.toPointer(hDs), util.pstrToFfi(server), util.toPointer(ppInfo));
@@ -7412,7 +7412,7 @@ export function DsListInfoForServerA(
 
 export function DsListInfoForServerW(
   hDs: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  server: string | null /* Windows.Win32.Foundation.PWSTR */,
+  server: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   ppInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
   return libNTDSAPI_dll.DsListInfoForServerW(util.toPointer(hDs), util.pwstrToFfi(server), util.toPointer(ppInfo));
@@ -7434,7 +7434,7 @@ export function DsListRolesW(
 
 export function DsQuerySitesByCostW(
   hDS: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  pwszFromSite: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pwszFromSite: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   rgwszToSites: Deno.PointerValue | Uint8Array | null /* ptr */,
   cToSites: number /* u32 */,
   dwFlags: number /* u32 */,
@@ -7445,7 +7445,7 @@ export function DsQuerySitesByCostW(
 
 export function DsQuerySitesByCostA(
   hDS: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  pszFromSite: string | null /* Windows.Win32.Foundation.PSTR */,
+  pszFromSite: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   rgszToSites: Deno.PointerValue | Uint8Array | null /* ptr */,
   cToSites: number /* u32 */,
   dwFlags: number /* u32 */,
@@ -7492,7 +7492,7 @@ export function DsFreeSchemaGuidMapW(
 
 export function DsGetDomainControllerInfoA(
   hDs: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  DomainName: string | null /* Windows.Win32.Foundation.PSTR */,
+  DomainName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   InfoLevel: number /* u32 */,
   pcOut: Deno.PointerValue | Uint8Array | null /* ptr */,
   ppInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -7502,7 +7502,7 @@ export function DsGetDomainControllerInfoA(
 
 export function DsGetDomainControllerInfoW(
   hDs: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  DomainName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  DomainName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   InfoLevel: number /* u32 */,
   pcOut: Deno.PointerValue | Uint8Array | null /* ptr */,
   ppInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -7536,7 +7536,7 @@ export function DsReplicaConsistencyCheck(
 
 export function DsReplicaVerifyObjectsW(
   hDS: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  NameContext: string | null /* Windows.Win32.Foundation.PWSTR */,
+  NameContext: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pUuidDsaSrc: Deno.PointerValue | Uint8Array | null /* ptr */,
   ulOptions: number /* u32 */,
 ): number /* u32 */ {
@@ -7545,7 +7545,7 @@ export function DsReplicaVerifyObjectsW(
 
 export function DsReplicaVerifyObjectsA(
   hDS: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  NameContext: string | null /* Windows.Win32.Foundation.PSTR */,
+  NameContext: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   pUuidDsaSrc: Deno.PointerValue | Uint8Array | null /* ptr */,
   ulOptions: number /* u32 */,
 ): number /* u32 */ {
@@ -7555,7 +7555,7 @@ export function DsReplicaVerifyObjectsA(
 export function DsReplicaGetInfoW(
   hDS: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
   InfoType: DS_REPL_INFO_TYPE /* Windows.Win32.Networking.ActiveDirectory.DS_REPL_INFO_TYPE */,
-  pszObject: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pszObject: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   puuidForSourceDsaObjGuid: Deno.PointerValue | Uint8Array | null /* ptr */,
   ppInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
@@ -7565,10 +7565,10 @@ export function DsReplicaGetInfoW(
 export function DsReplicaGetInfo2W(
   hDS: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
   InfoType: DS_REPL_INFO_TYPE /* Windows.Win32.Networking.ActiveDirectory.DS_REPL_INFO_TYPE */,
-  pszObject: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pszObject: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   puuidForSourceDsaObjGuid: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pszAttributeName: string | null /* Windows.Win32.Foundation.PWSTR */,
-  pszValue: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pszAttributeName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  pszValue: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   dwFlags: number /* u32 */,
   dwEnumerationContext: number /* u32 */,
   ppInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -7586,12 +7586,12 @@ export function DsReplicaFreeInfo(
 export function DsAddSidHistoryW(
   hDS: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
   Flags: number /* u32 */,
-  SrcDomain: string | null /* Windows.Win32.Foundation.PWSTR */,
-  SrcPrincipal: string | null /* Windows.Win32.Foundation.PWSTR */,
-  SrcDomainController: string | null /* Windows.Win32.Foundation.PWSTR */,
+  SrcDomain: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  SrcPrincipal: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  SrcDomainController: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   SrcDomainCreds: Deno.PointerValue | Uint8Array | null /* ptr */,
-  DstDomain: string | null /* Windows.Win32.Foundation.PWSTR */,
-  DstPrincipal: string | null /* Windows.Win32.Foundation.PWSTR */,
+  DstDomain: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  DstPrincipal: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
   return libNTDSAPI_dll.DsAddSidHistoryW(util.toPointer(hDS), Flags, util.pwstrToFfi(SrcDomain), util.pwstrToFfi(SrcPrincipal), util.pwstrToFfi(SrcDomainController), util.toPointer(SrcDomainCreds), util.pwstrToFfi(DstDomain), util.pwstrToFfi(DstPrincipal));
 }
@@ -7599,12 +7599,12 @@ export function DsAddSidHistoryW(
 export function DsAddSidHistoryA(
   hDS: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
   Flags: number /* u32 */,
-  SrcDomain: string | null /* Windows.Win32.Foundation.PSTR */,
-  SrcPrincipal: string | null /* Windows.Win32.Foundation.PSTR */,
-  SrcDomainController: string | null /* Windows.Win32.Foundation.PSTR */,
+  SrcDomain: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  SrcPrincipal: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  SrcDomainController: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   SrcDomainCreds: Deno.PointerValue | Uint8Array | null /* ptr */,
-  DstDomain: string | null /* Windows.Win32.Foundation.PSTR */,
-  DstPrincipal: string | null /* Windows.Win32.Foundation.PSTR */,
+  DstDomain: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  DstPrincipal: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): number /* u32 */ {
   return libNTDSAPI_dll.DsAddSidHistoryA(util.toPointer(hDS), Flags, util.pstrToFfi(SrcDomain), util.pstrToFfi(SrcPrincipal), util.pstrToFfi(SrcDomainController), util.toPointer(SrcDomainCreds), util.pstrToFfi(DstDomain), util.pstrToFfi(DstPrincipal));
 }
@@ -7612,8 +7612,8 @@ export function DsAddSidHistoryA(
 export function DsInheritSecurityIdentityW(
   hDS: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
   Flags: number /* u32 */,
-  SrcPrincipal: string | null /* Windows.Win32.Foundation.PWSTR */,
-  DstPrincipal: string | null /* Windows.Win32.Foundation.PWSTR */,
+  SrcPrincipal: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  DstPrincipal: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
   return libNTDSAPI_dll.DsInheritSecurityIdentityW(util.toPointer(hDS), Flags, util.pwstrToFfi(SrcPrincipal), util.pwstrToFfi(DstPrincipal));
 }
@@ -7621,14 +7621,14 @@ export function DsInheritSecurityIdentityW(
 export function DsInheritSecurityIdentityA(
   hDS: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
   Flags: number /* u32 */,
-  SrcPrincipal: string | null /* Windows.Win32.Foundation.PSTR */,
-  DstPrincipal: string | null /* Windows.Win32.Foundation.PSTR */,
+  SrcPrincipal: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  DstPrincipal: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): number /* u32 */ {
   return libNTDSAPI_dll.DsInheritSecurityIdentityA(util.toPointer(hDS), Flags, util.pstrToFfi(SrcPrincipal), util.pstrToFfi(DstPrincipal));
 }
 
 export function DsRoleGetPrimaryDomainInformation(
-  lpServer: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpServer: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   InfoLevel: DSROLE_PRIMARY_DOMAIN_INFO_LEVEL /* Windows.Win32.Networking.ActiveDirectory.DSROLE_PRIMARY_DOMAIN_INFO_LEVEL */,
   Buffer: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
@@ -7642,10 +7642,10 @@ export function DsRoleFreeMemory(
 }
 
 export function DsGetDcNameA(
-  ComputerName: string | null /* Windows.Win32.Foundation.PSTR */,
-  DomainName: string | null /* Windows.Win32.Foundation.PSTR */,
+  ComputerName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  DomainName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   DomainGuid: Deno.PointerValue | Uint8Array | null /* ptr */,
-  SiteName: string | null /* Windows.Win32.Foundation.PSTR */,
+  SiteName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   Flags: number /* u32 */,
   DomainControllerInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
@@ -7653,10 +7653,10 @@ export function DsGetDcNameA(
 }
 
 export function DsGetDcNameW(
-  ComputerName: string | null /* Windows.Win32.Foundation.PWSTR */,
-  DomainName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  ComputerName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  DomainName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   DomainGuid: Deno.PointerValue | Uint8Array | null /* ptr */,
-  SiteName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  SiteName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   Flags: number /* u32 */,
   DomainControllerInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
@@ -7664,33 +7664,33 @@ export function DsGetDcNameW(
 }
 
 export function DsGetSiteNameA(
-  ComputerName: string | null /* Windows.Win32.Foundation.PSTR */,
+  ComputerName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   SiteName: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
   return libNETAPI32_dll.DsGetSiteNameA(util.pstrToFfi(ComputerName), util.toPointer(SiteName));
 }
 
 export function DsGetSiteNameW(
-  ComputerName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  ComputerName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   SiteName: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
   return libNETAPI32_dll.DsGetSiteNameW(util.pwstrToFfi(ComputerName), util.toPointer(SiteName));
 }
 
 export function DsValidateSubnetNameW(
-  SubnetName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  SubnetName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
   return libNETAPI32_dll.DsValidateSubnetNameW(util.pwstrToFfi(SubnetName));
 }
 
 export function DsValidateSubnetNameA(
-  SubnetName: string | null /* Windows.Win32.Foundation.PSTR */,
+  SubnetName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): number /* u32 */ {
   return libNETAPI32_dll.DsValidateSubnetNameA(util.pstrToFfi(SubnetName));
 }
 
 export function DsAddressToSiteNamesW(
-  ComputerName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  ComputerName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   EntryCount: number /* u32 */,
   SocketAddresses: Deno.PointerValue | Uint8Array | null /* ptr */,
   SiteNames: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -7699,7 +7699,7 @@ export function DsAddressToSiteNamesW(
 }
 
 export function DsAddressToSiteNamesA(
-  ComputerName: string | null /* Windows.Win32.Foundation.PSTR */,
+  ComputerName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   EntryCount: number /* u32 */,
   SocketAddresses: Deno.PointerValue | Uint8Array | null /* ptr */,
   SiteNames: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -7708,7 +7708,7 @@ export function DsAddressToSiteNamesA(
 }
 
 export function DsAddressToSiteNamesExW(
-  ComputerName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  ComputerName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   EntryCount: number /* u32 */,
   SocketAddresses: Deno.PointerValue | Uint8Array | null /* ptr */,
   SiteNames: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -7718,7 +7718,7 @@ export function DsAddressToSiteNamesExW(
 }
 
 export function DsAddressToSiteNamesExA(
-  ComputerName: string | null /* Windows.Win32.Foundation.PSTR */,
+  ComputerName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   EntryCount: number /* u32 */,
   SocketAddresses: Deno.PointerValue | Uint8Array | null /* ptr */,
   SiteNames: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -7728,7 +7728,7 @@ export function DsAddressToSiteNamesExA(
 }
 
 export function DsEnumerateDomainTrustsW(
-  ServerName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  ServerName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   Flags: number /* u32 */,
   Domains: Deno.PointerValue | Uint8Array | null /* ptr */,
   DomainCount: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -7737,7 +7737,7 @@ export function DsEnumerateDomainTrustsW(
 }
 
 export function DsEnumerateDomainTrustsA(
-  ServerName: string | null /* Windows.Win32.Foundation.PSTR */,
+  ServerName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   Flags: number /* u32 */,
   Domains: Deno.PointerValue | Uint8Array | null /* ptr */,
   DomainCount: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -7746,8 +7746,8 @@ export function DsEnumerateDomainTrustsA(
 }
 
 export function DsGetForestTrustInformationW(
-  ServerName: string | null /* Windows.Win32.Foundation.PWSTR */,
-  TrustedDomainName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  ServerName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  TrustedDomainName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   Flags: number /* u32 */,
   ForestTrustInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
@@ -7755,7 +7755,7 @@ export function DsGetForestTrustInformationW(
 }
 
 export function DsMergeForestTrustInformationW(
-  DomainName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  DomainName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   NewForestTrustInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
   OldForestTrustInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
   MergedForestTrustInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -7764,7 +7764,7 @@ export function DsMergeForestTrustInformationW(
 }
 
 export function DsGetDcSiteCoverageW(
-  ServerName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  ServerName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   EntryCount: Deno.PointerValue | Uint8Array | null /* ptr */,
   SiteNames: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
@@ -7772,7 +7772,7 @@ export function DsGetDcSiteCoverageW(
 }
 
 export function DsGetDcSiteCoverageA(
-  ServerName: string | null /* Windows.Win32.Foundation.PSTR */,
+  ServerName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   EntryCount: Deno.PointerValue | Uint8Array | null /* ptr */,
   SiteNames: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
@@ -7780,31 +7780,31 @@ export function DsGetDcSiteCoverageA(
 }
 
 export function DsDeregisterDnsHostRecordsW(
-  ServerName: string | null /* Windows.Win32.Foundation.PWSTR */,
-  DnsDomainName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  ServerName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  DnsDomainName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   DomainGuid: Deno.PointerValue | Uint8Array | null /* ptr */,
   DsaGuid: Deno.PointerValue | Uint8Array | null /* ptr */,
-  DnsHostName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  DnsHostName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
   return libNETAPI32_dll.DsDeregisterDnsHostRecordsW(util.pwstrToFfi(ServerName), util.pwstrToFfi(DnsDomainName), util.toPointer(DomainGuid), util.toPointer(DsaGuid), util.pwstrToFfi(DnsHostName));
 }
 
 export function DsDeregisterDnsHostRecordsA(
-  ServerName: string | null /* Windows.Win32.Foundation.PSTR */,
-  DnsDomainName: string | null /* Windows.Win32.Foundation.PSTR */,
+  ServerName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  DnsDomainName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   DomainGuid: Deno.PointerValue | Uint8Array | null /* ptr */,
   DsaGuid: Deno.PointerValue | Uint8Array | null /* ptr */,
-  DnsHostName: string | null /* Windows.Win32.Foundation.PSTR */,
+  DnsHostName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): number /* u32 */ {
   return libNETAPI32_dll.DsDeregisterDnsHostRecordsA(util.pstrToFfi(ServerName), util.pstrToFfi(DnsDomainName), util.toPointer(DomainGuid), util.toPointer(DsaGuid), util.pstrToFfi(DnsHostName));
 }
 
 export function DsGetDcOpenW(
-  DnsName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  DnsName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   OptionFlags: number /* u32 */,
-  SiteName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  SiteName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   DomainGuid: Deno.PointerValue | Uint8Array | null /* ptr */,
-  DnsForestName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  DnsForestName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   DcFlags: number /* u32 */,
   RetGetDcContext: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
@@ -7812,11 +7812,11 @@ export function DsGetDcOpenW(
 }
 
 export function DsGetDcOpenA(
-  DnsName: string | null /* Windows.Win32.Foundation.PSTR */,
+  DnsName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   OptionFlags: number /* u32 */,
-  SiteName: string | null /* Windows.Win32.Foundation.PSTR */,
+  SiteName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   DomainGuid: Deno.PointerValue | Uint8Array | null /* ptr */,
-  DnsForestName: string | null /* Windows.Win32.Foundation.PSTR */,
+  DnsForestName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   DcFlags: number /* u32 */,
   RetGetDcContext: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {

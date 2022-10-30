@@ -5406,7 +5406,7 @@ export type PSTR = Deno.PointerValue | Uint8Array | null;
  */
 export interface OUTPUT_DEBUG_STRING_INFO {
   /** Windows.Win32.Foundation.PSTR */
-  lpDebugStringData: string | null;
+  lpDebugStringData: string | null | Uint8Array;
   /** u16 */
   fUnicode: number;
   /** u16 */
@@ -5653,7 +5653,7 @@ export interface _u_e__Struct {
   /** u32 */
   dwValue: number;
   /** Windows.Win32.Foundation.PWSTR */
-  pwszName: string | null;
+  pwszName: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeof_u_e__Struct = 16;
@@ -6203,11 +6203,11 @@ export interface DNS_SETTINGS {
   /** u64 */
   Flags: Deno.PointerValue;
   /** Windows.Win32.Foundation.PWSTR */
-  Hostname: string | null;
+  Hostname: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  Domain: string | null;
+  Domain: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  SearchList: string | null;
+  SearchList: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeofDNS_SETTINGS = 40;
@@ -6247,11 +6247,11 @@ export interface DNS_SETTINGS2 {
   /** u64 */
   Flags: Deno.PointerValue;
   /** Windows.Win32.Foundation.PWSTR */
-  Hostname: string | null;
+  Hostname: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  Domain: string | null;
+  Domain: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  SearchList: string | null;
+  SearchList: string | null | Uint8Array | Uint16Array;
   /** u64 */
   SettingFlags: Deno.PointerValue;
 }
@@ -6291,7 +6291,7 @@ export function allocDNS_SETTINGS2(data?: Partial<DNS_SETTINGS2>): Uint8Array {
  */
 export interface DNS_DOH_SERVER_SETTINGS {
   /** Windows.Win32.Foundation.PWSTR */
-  Template: string | null;
+  Template: string | null | Uint8Array | Uint16Array;
   /** u64 */
   Flags: Deno.PointerValue;
 }
@@ -6369,11 +6369,11 @@ export interface DNS_INTERFACE_SETTINGS {
   /** u64 */
   Flags: Deno.PointerValue;
   /** Windows.Win32.Foundation.PWSTR */
-  Domain: string | null;
+  Domain: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  NameServer: string | null;
+  NameServer: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  SearchList: string | null;
+  SearchList: string | null | Uint8Array | Uint16Array;
   /** u32 */
   RegistrationEnabled: number;
   /** u32 */
@@ -6383,7 +6383,7 @@ export interface DNS_INTERFACE_SETTINGS {
   /** u32 */
   QueryAdapterName: number;
   /** Windows.Win32.Foundation.PWSTR */
-  ProfileNameServer: string | null;
+  ProfileNameServer: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeofDNS_INTERFACE_SETTINGS = 64;
@@ -6436,7 +6436,7 @@ export interface DNS_INTERFACE_SETTINGS_EX {
   /** u32 */
   DisableUnconstrainedQueries: number;
   /** Windows.Win32.Foundation.PWSTR */
-  SupplementalSearchList: string | null;
+  SupplementalSearchList: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeofDNS_INTERFACE_SETTINGS_EX = 24;
@@ -6466,11 +6466,11 @@ export interface DNS_INTERFACE_SETTINGS3 {
   /** u64 */
   Flags: Deno.PointerValue;
   /** Windows.Win32.Foundation.PWSTR */
-  Domain: string | null;
+  Domain: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  NameServer: string | null;
+  NameServer: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  SearchList: string | null;
+  SearchList: string | null | Uint8Array | Uint16Array;
   /** u32 */
   RegistrationEnabled: number;
   /** u32 */
@@ -6480,11 +6480,11 @@ export interface DNS_INTERFACE_SETTINGS3 {
   /** u32 */
   QueryAdapterName: number;
   /** Windows.Win32.Foundation.PWSTR */
-  ProfileNameServer: string | null;
+  ProfileNameServer: string | null | Uint8Array | Uint16Array;
   /** u32 */
   DisableUnconstrainedQueries: number;
   /** Windows.Win32.Foundation.PWSTR */
-  SupplementalSearchList: string | null;
+  SupplementalSearchList: string | null | Uint8Array | Uint16Array;
   /** u32 */
   cServerProperties: number;
   /** ptr */
@@ -6863,7 +6863,7 @@ export interface _Anonymous1_e__Union {
   /** usize */
   Data0: Deno.PointerValue;
   /** Windows.Win32.Foundation.PWSTR */
-  String: string | null;
+  String: string | null | Uint8Array | Uint16Array;
   /** usize */
   u: Deno.PointerValue;
   /** ptr */
@@ -9390,9 +9390,9 @@ export function allocMIB_UDPSTATS2(data?: Partial<MIB_UDPSTATS2>): Uint8Array {
  */
 export interface TCPIP_OWNER_MODULE_BASIC_INFO {
   /** Windows.Win32.Foundation.PWSTR */
-  pModuleName: string | null;
+  pModuleName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pModulePath: string | null;
+  pModulePath: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeofTCPIP_OWNER_MODULE_BASIC_INFO = 16;
@@ -10177,7 +10177,7 @@ export interface IP_ADAPTER_ADDRESSES_LH {
   /** ptr */
   Next: Deno.PointerValue | Uint8Array | null;
   /** Windows.Win32.Foundation.PSTR */
-  AdapterName: string | null;
+  AdapterName: string | null | Uint8Array;
   /** ptr */
   FirstUnicastAddress: Deno.PointerValue | Uint8Array | null;
   /** ptr */
@@ -10187,11 +10187,11 @@ export interface IP_ADAPTER_ADDRESSES_LH {
   /** ptr */
   FirstDnsServerAddress: Deno.PointerValue | Uint8Array | null;
   /** Windows.Win32.Foundation.PWSTR */
-  DnsSuffix: string | null;
+  DnsSuffix: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  Description: string | null;
+  Description: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  FriendlyName: string | null;
+  FriendlyName: string | null | Uint8Array | Uint16Array;
   /** array */
   PhysicalAddress: Deno.PointerValue | null;
   /** u32 */
@@ -10349,7 +10349,7 @@ export interface IP_ADAPTER_ADDRESSES_XP {
   /** ptr */
   Next: Deno.PointerValue | Uint8Array | null;
   /** Windows.Win32.Foundation.PSTR */
-  AdapterName: string | null;
+  AdapterName: string | null | Uint8Array;
   /** ptr */
   FirstUnicastAddress: Deno.PointerValue | Uint8Array | null;
   /** ptr */
@@ -10359,11 +10359,11 @@ export interface IP_ADAPTER_ADDRESSES_XP {
   /** ptr */
   FirstDnsServerAddress: Deno.PointerValue | Uint8Array | null;
   /** Windows.Win32.Foundation.PWSTR */
-  DnsSuffix: string | null;
+  DnsSuffix: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  Description: string | null;
+  Description: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  FriendlyName: string | null;
+  FriendlyName: string | null | Uint8Array | Uint16Array;
   /** array */
   PhysicalAddress: Deno.PointerValue | null;
   /** u32 */
@@ -12822,14 +12822,14 @@ export function ConvertCompartmentIdToGuid(
 }
 
 export function ConvertInterfaceNameToLuidA(
-  InterfaceName: string | null /* Windows.Win32.Foundation.PSTR */,
+  InterfaceName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   InterfaceLuid: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.NTSTATUS */ {
   return util.pointerFromFfi(libIPHLPAPI_dll.ConvertInterfaceNameToLuidA(util.pstrToFfi(InterfaceName), util.toPointer(InterfaceLuid)));
 }
 
 export function ConvertInterfaceNameToLuidW(
-  InterfaceName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  InterfaceName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   InterfaceLuid: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.NTSTATUS */ {
   return util.pointerFromFfi(libIPHLPAPI_dll.ConvertInterfaceNameToLuidW(util.pwstrToFfi(InterfaceName), util.toPointer(InterfaceLuid)));
@@ -12837,7 +12837,7 @@ export function ConvertInterfaceNameToLuidW(
 
 export function ConvertInterfaceLuidToNameA(
   InterfaceLuid: Deno.PointerValue | Uint8Array | null /* ptr */,
-  InterfaceName: string | null /* Windows.Win32.Foundation.PSTR */,
+  InterfaceName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   Length: Deno.PointerValue /* usize */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.NTSTATUS */ {
   return util.pointerFromFfi(libIPHLPAPI_dll.ConvertInterfaceLuidToNameA(util.toPointer(InterfaceLuid), util.pstrToFfi(InterfaceName), Length));
@@ -12845,7 +12845,7 @@ export function ConvertInterfaceLuidToNameA(
 
 export function ConvertInterfaceLuidToNameW(
   InterfaceLuid: Deno.PointerValue | Uint8Array | null /* ptr */,
-  InterfaceName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  InterfaceName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   Length: Deno.PointerValue /* usize */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.NTSTATUS */ {
   return util.pointerFromFfi(libIPHLPAPI_dll.ConvertInterfaceLuidToNameW(util.toPointer(InterfaceLuid), util.pwstrToFfi(InterfaceName), Length));
@@ -12867,14 +12867,14 @@ export function ConvertInterfaceIndexToLuid(
 
 export function ConvertInterfaceLuidToAlias(
   InterfaceLuid: Deno.PointerValue | Uint8Array | null /* ptr */,
-  InterfaceAlias: string | null /* Windows.Win32.Foundation.PWSTR */,
+  InterfaceAlias: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   Length: Deno.PointerValue /* usize */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.NTSTATUS */ {
   return util.pointerFromFfi(libIPHLPAPI_dll.ConvertInterfaceLuidToAlias(util.toPointer(InterfaceLuid), util.pwstrToFfi(InterfaceAlias), Length));
 }
 
 export function ConvertInterfaceAliasToLuid(
-  InterfaceAlias: string | null /* Windows.Win32.Foundation.PWSTR */,
+  InterfaceAlias: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   InterfaceLuid: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.NTSTATUS */ {
   return util.pointerFromFfi(libIPHLPAPI_dll.ConvertInterfaceAliasToLuid(util.pwstrToFfi(InterfaceAlias), util.toPointer(InterfaceLuid)));
@@ -12895,14 +12895,14 @@ export function ConvertInterfaceGuidToLuid(
 }
 
 export function if_nametoindex(
-  InterfaceName: string | null /* Windows.Win32.Foundation.PSTR */,
+  InterfaceName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): number /* u32 */ {
   return libIPHLPAPI_dll.if_nametoindex(util.pstrToFfi(InterfaceName));
 }
 
 export function if_indextoname(
   InterfaceIndex: number /* u32 */,
-  InterfaceName: string | null /* Windows.Win32.Foundation.PSTR */,
+  InterfaceName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): string | null /* Windows.Win32.Foundation.PSTR */ {
   return util.pstrFromFfi(libIPHLPAPI_dll.if_indextoname(InterfaceIndex, util.pstrToFfi(InterfaceName)));
 }
@@ -12964,7 +12964,7 @@ export function GetNetworkInformation(
   NetworkGuid: Deno.PointerValue | Uint8Array | null /* ptr */,
   CompartmentId: Deno.PointerValue | Uint8Array | null /* ptr */,
   SiteId: Deno.PointerValue | Uint8Array | null /* ptr */,
-  NetworkName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  NetworkName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   Length: number /* u32 */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.NTSTATUS */ {
   return util.pointerFromFfi(libIPHLPAPI_dll.GetNetworkInformation(util.toPointer(NetworkGuid), util.toPointer(CompartmentId), util.toPointer(SiteId), util.pwstrToFfi(NetworkName), Length));
@@ -12973,7 +12973,7 @@ export function GetNetworkInformation(
 export function SetNetworkInformation(
   NetworkGuid: Deno.PointerValue | Uint8Array | null /* ptr */,
   CompartmentId: number /* u32 */,
-  NetworkName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  NetworkName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.NTSTATUS */ {
   return util.pointerFromFfi(libIPHLPAPI_dll.SetNetworkInformation(util.toPointer(NetworkGuid), CompartmentId, util.pwstrToFfi(NetworkName)));
 }
@@ -13579,7 +13579,7 @@ export function CancelIPChangeNotify(
 }
 
 export function GetAdapterIndex(
-  AdapterName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  AdapterName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   IfIndex: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
   return libIPHLPAPI_dll.GetAdapterIndex(util.pwstrToFfi(AdapterName), util.toPointer(IfIndex));
@@ -13738,7 +13738,7 @@ export function RestoreMediaSense(
 
 export function GetIpErrorString(
   ErrorCode: number /* u32 */,
-  Buffer: string | null /* Windows.Win32.Foundation.PWSTR */,
+  Buffer: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   Size: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
   return libIPHLPAPI_dll.GetIpErrorString(ErrorCode, util.pwstrToFfi(Buffer), util.toPointer(Size));

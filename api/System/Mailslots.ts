@@ -38,7 +38,7 @@ try {
 // Symbols
 
 export function CreateMailslotA(
-  lpName: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   nMaxMessageSize: number /* u32 */,
   lReadTimeout: number /* u32 */,
   lpSecurityAttributes: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -47,7 +47,7 @@ export function CreateMailslotA(
 }
 
 export function CreateMailslotW(
-  lpName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   nMaxMessageSize: number /* u32 */,
   lReadTimeout: number /* u32 */,
   lpSecurityAttributes: Deno.PointerValue | Uint8Array | null /* ptr */,

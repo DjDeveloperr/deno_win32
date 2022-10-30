@@ -3237,7 +3237,7 @@ export type PSTR = Deno.PointerValue | Uint8Array | null;
  */
 export interface D3D11_INPUT_ELEMENT_DESC {
   /** Windows.Win32.Foundation.PSTR */
-  SemanticName: string | null;
+  SemanticName: string | null | Uint8Array;
   /** u32 */
   SemanticIndex: number;
   /** Windows.Win32.Graphics.Dxgi.Common.DXGI_FORMAT */
@@ -3284,7 +3284,7 @@ export interface D3D11_SO_DECLARATION_ENTRY {
   /** u32 */
   Stream: number;
   /** Windows.Win32.Foundation.PSTR */
-  SemanticName: string | null;
+  SemanticName: string | null | Uint8Array;
   /** u32 */
   SemanticIndex: number;
   /** u8 */
@@ -3940,7 +3940,7 @@ export interface _Anonymous1_e__Union {
   /** usize */
   Data0: Deno.PointerValue;
   /** Windows.Win32.Foundation.PWSTR */
-  String: string | null;
+  String: string | null | Uint8Array | Uint16Array;
   /** usize */
   u: Deno.PointerValue;
   /** ptr */
@@ -8505,7 +8505,7 @@ export function allocD3D11_FEATURE_DATA_D3D11_OPTIONS4(data?: Partial<D3D11_FEAT
  */
 export interface D3D11_SIGNATURE_PARAMETER_DESC {
   /** Windows.Win32.Foundation.PSTR */
-  SemanticName: string | null;
+  SemanticName: string | null | Uint8Array;
   /** u32 */
   SemanticIndex: number;
   /** u32 */
@@ -8559,7 +8559,7 @@ export function allocD3D11_SIGNATURE_PARAMETER_DESC(data?: Partial<D3D11_SIGNATU
  */
 export interface D3D11_SHADER_BUFFER_DESC {
   /** Windows.Win32.Foundation.PSTR */
-  Name: string | null;
+  Name: string | null | Uint8Array;
   /** Windows.Win32.Graphics.Direct3D.D3D_CBUFFER_TYPE */
   Type: D3D_CBUFFER_TYPE;
   /** u32 */
@@ -8596,7 +8596,7 @@ export function allocD3D11_SHADER_BUFFER_DESC(data?: Partial<D3D11_SHADER_BUFFER
  */
 export interface D3D11_SHADER_VARIABLE_DESC {
   /** Windows.Win32.Foundation.PSTR */
-  Name: string | null;
+  Name: string | null | Uint8Array;
   /** u32 */
   StartOffset: number;
   /** u32 */
@@ -8664,7 +8664,7 @@ export interface D3D11_SHADER_TYPE_DESC {
   /** u32 */
   Offset: number;
   /** Windows.Win32.Foundation.PSTR */
-  Name: string | null;
+  Name: string | null | Uint8Array;
 }
 
 export const sizeofD3D11_SHADER_TYPE_DESC = 40;
@@ -8702,7 +8702,7 @@ export interface D3D11_SHADER_DESC {
   /** u32 */
   Version: number;
   /** Windows.Win32.Foundation.PSTR */
-  Creator: string | null;
+  Creator: string | null | Uint8Array;
   /** u32 */
   Flags: number;
   /** u32 */
@@ -8870,7 +8870,7 @@ export function allocD3D11_SHADER_DESC(data?: Partial<D3D11_SHADER_DESC>): Uint8
  */
 export interface D3D11_SHADER_INPUT_BIND_DESC {
   /** Windows.Win32.Foundation.PSTR */
-  Name: string | null;
+  Name: string | null | Uint8Array;
   /** Windows.Win32.Graphics.Direct3D.D3D_SHADER_INPUT_TYPE */
   Type: D3D_SHADER_INPUT_TYPE;
   /** u32 */
@@ -8920,7 +8920,7 @@ export function allocD3D11_SHADER_INPUT_BIND_DESC(data?: Partial<D3D11_SHADER_IN
  */
 export interface D3D11_LIBRARY_DESC {
   /** Windows.Win32.Foundation.PSTR */
-  Creator: string | null;
+  Creator: string | null | Uint8Array;
   /** u32 */
   Flags: number;
   /** u32 */
@@ -8951,7 +8951,7 @@ export interface D3D11_FUNCTION_DESC {
   /** u32 */
   Version: number;
   /** Windows.Win32.Foundation.PSTR */
-  Creator: string | null;
+  Creator: string | null | Uint8Array;
   /** u32 */
   Flags: number;
   /** u32 */
@@ -9005,7 +9005,7 @@ export interface D3D11_FUNCTION_DESC {
   /** u64 */
   RequiredFeatureFlags: Deno.PointerValue;
   /** Windows.Win32.Foundation.PSTR */
-  Name: string | null;
+  Name: string | null | Uint8Array;
   /** i32 */
   FunctionParameterCount: number;
   /** Windows.Win32.Foundation.BOOL */
@@ -9103,9 +9103,9 @@ export function allocD3D11_FUNCTION_DESC(data?: Partial<D3D11_FUNCTION_DESC>): U
  */
 export interface D3D11_PARAMETER_DESC {
   /** Windows.Win32.Foundation.PSTR */
-  Name: string | null;
+  Name: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  SemanticName: string | null;
+  SemanticName: string | null | Uint8Array;
   /** Windows.Win32.Graphics.Direct3D.D3D_SHADER_VARIABLE_TYPE */
   Type: D3D_SHADER_VARIABLE_TYPE;
   /** Windows.Win32.Graphics.Direct3D.D3D_SHADER_VARIABLE_CLASS */

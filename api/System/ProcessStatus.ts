@@ -596,7 +596,7 @@ export function K32EnumProcessModulesEx(
 export function K32GetModuleBaseNameA(
   hProcess: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
   hModule: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HINSTANCE */,
-  lpBaseName: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpBaseName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   nSize: number /* u32 */,
 ): number /* u32 */ {
   return libKERNEL32_dll.K32GetModuleBaseNameA(util.toPointer(hProcess), util.toPointer(hModule), util.pstrToFfi(lpBaseName), nSize);
@@ -605,7 +605,7 @@ export function K32GetModuleBaseNameA(
 export function K32GetModuleBaseNameW(
   hProcess: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
   hModule: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HINSTANCE */,
-  lpBaseName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpBaseName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   nSize: number /* u32 */,
 ): number /* u32 */ {
   return libKERNEL32_dll.K32GetModuleBaseNameW(util.toPointer(hProcess), util.toPointer(hModule), util.pwstrToFfi(lpBaseName), nSize);
@@ -614,7 +614,7 @@ export function K32GetModuleBaseNameW(
 export function K32GetModuleFileNameExA(
   hProcess: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
   hModule: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HINSTANCE */,
-  lpFilename: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpFilename: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   nSize: number /* u32 */,
 ): number /* u32 */ {
   return libKERNEL32_dll.K32GetModuleFileNameExA(util.toPointer(hProcess), util.toPointer(hModule), util.pstrToFfi(lpFilename), nSize);
@@ -623,7 +623,7 @@ export function K32GetModuleFileNameExA(
 export function K32GetModuleFileNameExW(
   hProcess: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
   hModule: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HINSTANCE */,
-  lpFilename: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpFilename: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   nSize: number /* u32 */,
 ): number /* u32 */ {
   return libKERNEL32_dll.K32GetModuleFileNameExW(util.toPointer(hProcess), util.toPointer(hModule), util.pwstrToFfi(lpFilename), nSize);
@@ -669,7 +669,7 @@ export function K32GetWsChangesEx(
 export function K32GetMappedFileNameW(
   hProcess: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
   lpv: Deno.PointerValue | Uint8Array | null /* ptr */,
-  lpFilename: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpFilename: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   nSize: number /* u32 */,
 ): number /* u32 */ {
   return libKERNEL32_dll.K32GetMappedFileNameW(util.toPointer(hProcess), util.toPointer(lpv), util.pwstrToFfi(lpFilename), nSize);
@@ -678,7 +678,7 @@ export function K32GetMappedFileNameW(
 export function K32GetMappedFileNameA(
   hProcess: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
   lpv: Deno.PointerValue | Uint8Array | null /* ptr */,
-  lpFilename: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpFilename: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   nSize: number /* u32 */,
 ): number /* u32 */ {
   return libKERNEL32_dll.K32GetMappedFileNameA(util.toPointer(hProcess), util.toPointer(lpv), util.pstrToFfi(lpFilename), nSize);
@@ -694,7 +694,7 @@ export function K32EnumDeviceDrivers(
 
 export function K32GetDeviceDriverBaseNameA(
   ImageBase: Deno.PointerValue | Uint8Array | null /* ptr */,
-  lpFilename: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpFilename: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   nSize: number /* u32 */,
 ): number /* u32 */ {
   return libKERNEL32_dll.K32GetDeviceDriverBaseNameA(util.toPointer(ImageBase), util.pstrToFfi(lpFilename), nSize);
@@ -702,7 +702,7 @@ export function K32GetDeviceDriverBaseNameA(
 
 export function K32GetDeviceDriverBaseNameW(
   ImageBase: Deno.PointerValue | Uint8Array | null /* ptr */,
-  lpBaseName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpBaseName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   nSize: number /* u32 */,
 ): number /* u32 */ {
   return libKERNEL32_dll.K32GetDeviceDriverBaseNameW(util.toPointer(ImageBase), util.pwstrToFfi(lpBaseName), nSize);
@@ -710,7 +710,7 @@ export function K32GetDeviceDriverBaseNameW(
 
 export function K32GetDeviceDriverFileNameA(
   ImageBase: Deno.PointerValue | Uint8Array | null /* ptr */,
-  lpFilename: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpFilename: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   nSize: number /* u32 */,
 ): number /* u32 */ {
   return libKERNEL32_dll.K32GetDeviceDriverFileNameA(util.toPointer(ImageBase), util.pstrToFfi(lpFilename), nSize);
@@ -718,7 +718,7 @@ export function K32GetDeviceDriverFileNameA(
 
 export function K32GetDeviceDriverFileNameW(
   ImageBase: Deno.PointerValue | Uint8Array | null /* ptr */,
-  lpFilename: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpFilename: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   nSize: number /* u32 */,
 ): number /* u32 */ {
   return libKERNEL32_dll.K32GetDeviceDriverFileNameW(util.toPointer(ImageBase), util.pwstrToFfi(lpFilename), nSize);
@@ -771,7 +771,7 @@ export function K32EnumPageFilesA(
 
 export function K32GetProcessImageFileNameA(
   hProcess: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  lpImageFileName: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpImageFileName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   nSize: number /* u32 */,
 ): number /* u32 */ {
   return libKERNEL32_dll.K32GetProcessImageFileNameA(util.toPointer(hProcess), util.pstrToFfi(lpImageFileName), nSize);
@@ -779,7 +779,7 @@ export function K32GetProcessImageFileNameA(
 
 export function K32GetProcessImageFileNameW(
   hProcess: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  lpImageFileName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpImageFileName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   nSize: number /* u32 */,
 ): number /* u32 */ {
   return libKERNEL32_dll.K32GetProcessImageFileNameW(util.toPointer(hProcess), util.pwstrToFfi(lpImageFileName), nSize);

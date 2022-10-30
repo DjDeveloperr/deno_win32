@@ -76,7 +76,7 @@ export function UnregisterApplicationRecoveryCallback(): Deno.PointerValue | nul
 }
 
 export function RegisterApplicationRestart(
-  pwzCommandline: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pwzCommandline: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   dwFlags: REGISTER_APPLICATION_RESTART_FLAGS /* Windows.Win32.System.Recovery.REGISTER_APPLICATION_RESTART_FLAGS */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
   return util.pointerFromFfi(libKERNEL32_dll.RegisterApplicationRestart(util.pwstrToFfi(pwzCommandline), dwFlags));
@@ -98,7 +98,7 @@ export function GetApplicationRecoveryCallback(
 
 export function GetApplicationRestartSettings(
   hProcess: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  pwzCommandline: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pwzCommandline: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pcchSize: Deno.PointerValue | Uint8Array | null /* ptr */,
   pdwFlags: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {

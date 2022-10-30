@@ -27,11 +27,11 @@ export interface DIAGNOSTIC_DATA_RECORD {
   /** u64 */
   eventKeywords: Deno.PointerValue;
   /** Windows.Win32.Foundation.PWSTR */
-  fullEventName: string | null;
+  fullEventName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  providerGroupGuid: string | null;
+  providerGroupGuid: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  producerName: string | null;
+  producerName: string | null | Uint8Array | Uint16Array;
   /** ptr */
   privacyTags: Deno.PointerValue | Uint8Array | null;
   /** u32 */
@@ -43,11 +43,11 @@ export interface DIAGNOSTIC_DATA_RECORD {
   /** Windows.Win32.Foundation.BOOL */
   isCoreData: boolean;
   /** Windows.Win32.Foundation.PWSTR */
-  extra1: string | null;
+  extra1: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  extra2: string | null;
+  extra2: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  extra3: string | null;
+  extra3: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeofDIAGNOSTIC_DATA_RECORD = 104;
@@ -114,7 +114,7 @@ export interface DIAGNOSTIC_DATA_SEARCH_CRITERIA {
   /** u32 */
   producerNameCount: number;
   /** Windows.Win32.Foundation.PWSTR */
-  textToMatch: string | null;
+  textToMatch: string | null | Uint8Array | Uint16Array;
   /** ptr */
   categoryIds: Deno.PointerValue | Uint8Array | null;
   /** u32 */
@@ -163,9 +163,9 @@ export interface DIAGNOSTIC_DATA_EVENT_TAG_DESCRIPTION {
   /** i32 */
   privacyTag: number;
   /** Windows.Win32.Foundation.PWSTR */
-  name: string | null;
+  name: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  description: string | null;
+  description: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeofDIAGNOSTIC_DATA_EVENT_TAG_DESCRIPTION = 24;
@@ -194,7 +194,7 @@ export function allocDIAGNOSTIC_DATA_EVENT_TAG_DESCRIPTION(data?: Partial<DIAGNO
  */
 export interface DIAGNOSTIC_DATA_EVENT_PRODUCER_DESCRIPTION {
   /** Windows.Win32.Foundation.PWSTR */
-  name: string | null;
+  name: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeofDIAGNOSTIC_DATA_EVENT_PRODUCER_DESCRIPTION = 8;
@@ -217,7 +217,7 @@ export interface DIAGNOSTIC_DATA_EVENT_CATEGORY_DESCRIPTION {
   /** i32 */
   id: number;
   /** Windows.Win32.Foundation.PWSTR */
-  name: string | null;
+  name: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeofDIAGNOSTIC_DATA_EVENT_CATEGORY_DESCRIPTION = 16;
@@ -263,9 +263,9 @@ export function allocDIAGNOSTIC_DATA_EVENT_TAG_STATS(data?: Partial<DIAGNOSTIC_D
  */
 export interface DIAGNOSTIC_DATA_EVENT_BINARY_STATS {
   /** Windows.Win32.Foundation.PWSTR */
-  moduleName: string | null;
+  moduleName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  friendlyModuleName: string | null;
+  friendlyModuleName: string | null | Uint8Array | Uint16Array;
   /** u32 */
   eventCount: number;
   /** u64 */
@@ -438,7 +438,7 @@ export interface DIAGNOSTIC_REPORT_DATA {
   /** u64 */
   sizeInBytes: Deno.PointerValue;
   /** Windows.Win32.Foundation.PWSTR */
-  cabId: string | null;
+  cabId: string | null | Uint8Array | Uint16Array;
   /** u32 */
   reportStatus: number;
   /** System.Guid */
@@ -448,19 +448,19 @@ export interface DIAGNOSTIC_REPORT_DATA {
   /** u32 */
   fileCount: number;
   /** Windows.Win32.Foundation.PWSTR */
-  friendlyEventName: string | null;
+  friendlyEventName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  applicationName: string | null;
+  applicationName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  applicationPath: string | null;
+  applicationPath: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  description: string | null;
+  description: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  bucketIdString: string | null;
+  bucketIdString: string | null | Uint8Array | Uint16Array;
   /** u64 */
   legacyBucketId: Deno.PointerValue;
   /** Windows.Win32.Foundation.PWSTR */
-  reportKey: string | null;
+  reportKey: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeofDIAGNOSTIC_REPORT_DATA = 136;
@@ -737,7 +737,7 @@ export function DdqGetDiagnosticRecordPayload(
 
 export function DdqGetDiagnosticRecordLocaleTags(
   hSession: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Security.HDIAGNOSTIC_DATA_QUERY_SESSION */,
-  locale: string | null /* Windows.Win32.Foundation.PWSTR */,
+  locale: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   hTagDescription: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
   return util.pointerFromFfi(libDiagnosticDataQuery_dll.DdqGetDiagnosticRecordLocaleTags(util.toPointer(hSession), util.pwstrToFfi(locale), util.toPointer(hTagDescription)));
@@ -794,7 +794,7 @@ export function DdqGetDiagnosticRecordProducerCount(
 
 export function DdqGetDiagnosticRecordProducerCategories(
   hSession: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Security.HDIAGNOSTIC_DATA_QUERY_SESSION */,
-  producerName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  producerName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   hCategoryDescription: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
   return util.pointerFromFfi(libDiagnosticDataQuery_dll.DdqGetDiagnosticRecordProducerCategories(util.toPointer(hSession), util.pwstrToFfi(producerName), util.toPointer(hCategoryDescription)));
@@ -825,9 +825,9 @@ export function DdqIsDiagnosticRecordSampledIn(
   hSession: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Security.HDIAGNOSTIC_DATA_QUERY_SESSION */,
   providerGroup: Deno.PointerValue | Uint8Array | null /* ptr */,
   providerId: Deno.PointerValue | Uint8Array | null /* ptr */,
-  providerName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  providerName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   eventId: Deno.PointerValue | Uint8Array | null /* ptr */,
-  eventName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  eventName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   eventVersion: Deno.PointerValue | Uint8Array | null /* ptr */,
   eventKeywords: Deno.PointerValue | Uint8Array | null /* ptr */,
   isSampledIn: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -913,8 +913,8 @@ export function DdqGetDiagnosticReportCount(
 export function DdqExtractDiagnosticReport(
   hSession: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Security.HDIAGNOSTIC_DATA_QUERY_SESSION */,
   reportStoreType: number /* u32 */,
-  reportKey: string | null /* Windows.Win32.Foundation.PWSTR */,
-  destinationPath: string | null /* Windows.Win32.Foundation.PWSTR */,
+  reportKey: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  destinationPath: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
   return util.pointerFromFfi(libDiagnosticDataQuery_dll.DdqExtractDiagnosticReport(util.toPointer(hSession), reportStoreType, util.pwstrToFfi(reportKey), util.pwstrToFfi(destinationPath)));
 }

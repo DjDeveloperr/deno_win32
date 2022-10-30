@@ -390,7 +390,7 @@ export interface _u_e__Struct {
   /** u32 */
   dwValue: number;
   /** Windows.Win32.Foundation.PWSTR */
-  pwszName: string | null;
+  pwszName: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeof_u_e__Struct = 16;
@@ -1394,7 +1394,7 @@ export type PSTR = Deno.PointerValue | Uint8Array | null;
  */
 export interface PDH_RAW_COUNTER_ITEM_A {
   /** Windows.Win32.Foundation.PSTR */
-  szName: string | null;
+  szName: string | null | Uint8Array;
   /** Windows.Win32.System.Performance.PDH_RAW_COUNTER */
   RawValue: Uint8Array | Deno.PointerValue | null;
 }
@@ -1419,7 +1419,7 @@ export function allocPDH_RAW_COUNTER_ITEM_A(data?: Partial<PDH_RAW_COUNTER_ITEM_
  */
 export interface PDH_RAW_COUNTER_ITEM_W {
   /** Windows.Win32.Foundation.PWSTR */
-  szName: string | null;
+  szName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.System.Performance.PDH_RAW_COUNTER */
   RawValue: Uint8Array | Deno.PointerValue | null;
 }
@@ -1489,7 +1489,7 @@ export function allocPDH_FMT_COUNTERVALUE(data?: Partial<PDH_FMT_COUNTERVALUE>):
  */
 export interface PDH_FMT_COUNTERVALUE_ITEM_A {
   /** Windows.Win32.Foundation.PSTR */
-  szName: string | null;
+  szName: string | null | Uint8Array;
   /** Windows.Win32.System.Performance.PDH_FMT_COUNTERVALUE */
   FmtValue: Uint8Array | Deno.PointerValue | null;
 }
@@ -1514,7 +1514,7 @@ export function allocPDH_FMT_COUNTERVALUE_ITEM_A(data?: Partial<PDH_FMT_COUNTERV
  */
 export interface PDH_FMT_COUNTERVALUE_ITEM_W {
   /** Windows.Win32.Foundation.PWSTR */
-  szName: string | null;
+  szName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.System.Performance.PDH_FMT_COUNTERVALUE */
   FmtValue: Uint8Array | Deno.PointerValue | null;
 }
@@ -1573,17 +1573,17 @@ export function allocPDH_STATISTICS(data?: Partial<PDH_STATISTICS>): Uint8Array 
  */
 export interface PDH_COUNTER_PATH_ELEMENTS_A {
   /** Windows.Win32.Foundation.PSTR */
-  szMachineName: string | null;
+  szMachineName: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  szObjectName: string | null;
+  szObjectName: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  szInstanceName: string | null;
+  szInstanceName: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  szParentInstance: string | null;
+  szParentInstance: string | null | Uint8Array;
   /** u32 */
   dwInstanceIndex: number;
   /** Windows.Win32.Foundation.PSTR */
-  szCounterName: string | null;
+  szCounterName: string | null | Uint8Array;
 }
 
 export const sizeofPDH_COUNTER_PATH_ELEMENTS_A = 48;
@@ -1627,17 +1627,17 @@ export function allocPDH_COUNTER_PATH_ELEMENTS_A(data?: Partial<PDH_COUNTER_PATH
  */
 export interface PDH_COUNTER_PATH_ELEMENTS_W {
   /** Windows.Win32.Foundation.PWSTR */
-  szMachineName: string | null;
+  szMachineName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  szObjectName: string | null;
+  szObjectName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  szInstanceName: string | null;
+  szInstanceName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  szParentInstance: string | null;
+  szParentInstance: string | null | Uint8Array | Uint16Array;
   /** u32 */
   dwInstanceIndex: number;
   /** Windows.Win32.Foundation.PWSTR */
-  szCounterName: string | null;
+  szCounterName: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeofPDH_COUNTER_PATH_ELEMENTS_W = 48;
@@ -1681,13 +1681,13 @@ export function allocPDH_COUNTER_PATH_ELEMENTS_W(data?: Partial<PDH_COUNTER_PATH
  */
 export interface PDH_DATA_ITEM_PATH_ELEMENTS_A {
   /** Windows.Win32.Foundation.PSTR */
-  szMachineName: string | null;
+  szMachineName: string | null | Uint8Array;
   /** System.Guid */
   ObjectGUID: Uint8Array | Deno.PointerValue | null;
   /** u32 */
   dwItemId: number;
   /** Windows.Win32.Foundation.PSTR */
-  szInstanceName: string | null;
+  szInstanceName: string | null | Uint8Array;
 }
 
 export const sizeofPDH_DATA_ITEM_PATH_ELEMENTS_A = 32;
@@ -1718,13 +1718,13 @@ export function allocPDH_DATA_ITEM_PATH_ELEMENTS_A(data?: Partial<PDH_DATA_ITEM_
  */
 export interface PDH_DATA_ITEM_PATH_ELEMENTS_W {
   /** Windows.Win32.Foundation.PWSTR */
-  szMachineName: string | null;
+  szMachineName: string | null | Uint8Array | Uint16Array;
   /** System.Guid */
   ObjectGUID: Uint8Array | Deno.PointerValue | null;
   /** u32 */
   dwItemId: number;
   /** Windows.Win32.Foundation.PWSTR */
-  szInstanceName: string | null;
+  szInstanceName: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeofPDH_DATA_ITEM_PATH_ELEMENTS_W = 32;
@@ -1771,11 +1771,11 @@ export interface PDH_COUNTER_INFO_A {
   /** usize */
   dwQueryUserData: Deno.PointerValue;
   /** Windows.Win32.Foundation.PSTR */
-  szFullPath: string | null;
+  szFullPath: string | null | Uint8Array;
   /** _Anonymous_e__Union */
   Anonymous: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.Foundation.PSTR */
-  szExplainText: string | null;
+  szExplainText: string | null | Uint8Array;
   /** array */
   DataBuffer: Deno.PointerValue | null;
 }
@@ -1839,11 +1839,11 @@ export interface PDH_COUNTER_INFO_W {
   /** usize */
   dwQueryUserData: Deno.PointerValue;
   /** Windows.Win32.Foundation.PWSTR */
-  szFullPath: string | null;
+  szFullPath: string | null | Uint8Array | Uint16Array;
   /** _Anonymous_e__Union */
   Anonymous: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.Foundation.PWSTR */
-  szExplainText: string | null;
+  szExplainText: string | null | Uint8Array | Uint16Array;
   /** array */
   DataBuffer: Deno.PointerValue | null;
 }
@@ -1955,11 +1955,11 @@ export interface PDH_LOG_SERVICE_QUERY_INFO_A {
   /** u32 */
   dwLogQuota: number;
   /** Windows.Win32.Foundation.PSTR */
-  szLogFileCaption: string | null;
+  szLogFileCaption: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  szDefaultDir: string | null;
+  szDefaultDir: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  szBaseFileName: string | null;
+  szBaseFileName: string | null | Uint8Array;
   /** u32 */
   dwFileType: number;
   /** u32 */
@@ -2015,11 +2015,11 @@ export interface PDH_LOG_SERVICE_QUERY_INFO_W {
   /** u32 */
   dwLogQuota: number;
   /** Windows.Win32.Foundation.PWSTR */
-  szLogFileCaption: string | null;
+  szLogFileCaption: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  szDefaultDir: string | null;
+  szDefaultDir: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  szBaseFileName: string | null;
+  szBaseFileName: string | null | Uint8Array | Uint16Array;
   /** u32 */
   dwFileType: number;
   /** u32 */
@@ -2077,7 +2077,7 @@ export interface PDH_BROWSE_DLG_CONFIG_HW {
   /** isize */
   hDataSource: Deno.PointerValue;
   /** Windows.Win32.Foundation.PWSTR */
-  szReturnPathBuffer: string | null;
+  szReturnPathBuffer: string | null | Uint8Array | Uint16Array;
   /** u32 */
   cchReturnPathLength: number;
   /** Windows.Win32.System.Performance.CounterPathCallBack */
@@ -2089,7 +2089,7 @@ export interface PDH_BROWSE_DLG_CONFIG_HW {
   /** Windows.Win32.System.Performance.PERF_DETAIL */
   dwDefaultDetailLevel: PERF_DETAIL;
   /** Windows.Win32.Foundation.PWSTR */
-  szDialogBoxCaption: string | null;
+  szDialogBoxCaption: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeofPDH_BROWSE_DLG_CONFIG_HW = 72;
@@ -2139,7 +2139,7 @@ export interface PDH_BROWSE_DLG_CONFIG_HA {
   /** isize */
   hDataSource: Deno.PointerValue;
   /** Windows.Win32.Foundation.PSTR */
-  szReturnPathBuffer: string | null;
+  szReturnPathBuffer: string | null | Uint8Array;
   /** u32 */
   cchReturnPathLength: number;
   /** Windows.Win32.System.Performance.CounterPathCallBack */
@@ -2151,7 +2151,7 @@ export interface PDH_BROWSE_DLG_CONFIG_HA {
   /** Windows.Win32.System.Performance.PERF_DETAIL */
   dwDefaultDetailLevel: PERF_DETAIL;
   /** Windows.Win32.Foundation.PSTR */
-  szDialogBoxCaption: string | null;
+  szDialogBoxCaption: string | null | Uint8Array;
 }
 
 export const sizeofPDH_BROWSE_DLG_CONFIG_HA = 72;
@@ -2199,9 +2199,9 @@ export interface PDH_BROWSE_DLG_CONFIG_W {
   /** Windows.Win32.Foundation.HWND */
   hWndOwner: Deno.PointerValue | null;
   /** Windows.Win32.Foundation.PWSTR */
-  szDataSource: string | null;
+  szDataSource: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  szReturnPathBuffer: string | null;
+  szReturnPathBuffer: string | null | Uint8Array | Uint16Array;
   /** u32 */
   cchReturnPathLength: number;
   /** Windows.Win32.System.Performance.CounterPathCallBack */
@@ -2213,7 +2213,7 @@ export interface PDH_BROWSE_DLG_CONFIG_W {
   /** Windows.Win32.System.Performance.PERF_DETAIL */
   dwDefaultDetailLevel: PERF_DETAIL;
   /** Windows.Win32.Foundation.PWSTR */
-  szDialogBoxCaption: string | null;
+  szDialogBoxCaption: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeofPDH_BROWSE_DLG_CONFIG_W = 72;
@@ -2264,9 +2264,9 @@ export interface PDH_BROWSE_DLG_CONFIG_A {
   /** Windows.Win32.Foundation.HWND */
   hWndOwner: Deno.PointerValue | null;
   /** Windows.Win32.Foundation.PSTR */
-  szDataSource: string | null;
+  szDataSource: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  szReturnPathBuffer: string | null;
+  szReturnPathBuffer: string | null | Uint8Array;
   /** u32 */
   cchReturnPathLength: number;
   /** Windows.Win32.System.Performance.CounterPathCallBack */
@@ -2278,7 +2278,7 @@ export interface PDH_BROWSE_DLG_CONFIG_A {
   /** Windows.Win32.System.Performance.PERF_DETAIL */
   dwDefaultDetailLevel: PERF_DETAIL;
   /** Windows.Win32.Foundation.PSTR */
-  szDialogBoxCaption: string | null;
+  szDialogBoxCaption: string | null | Uint8Array;
 }
 
 export const sizeofPDH_BROWSE_DLG_CONFIG_A = 72;
@@ -2903,91 +2903,91 @@ export function QueryPerformanceFrequency(
 }
 
 export function InstallPerfDllW(
-  szComputerName: string | null /* Windows.Win32.Foundation.PWSTR */,
-  lpIniFile: string | null /* Windows.Win32.Foundation.PWSTR */,
+  szComputerName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  lpIniFile: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   dwFlags: Deno.PointerValue /* usize */,
 ): number /* u32 */ {
   return libloadperf_dll.InstallPerfDllW(util.pwstrToFfi(szComputerName), util.pwstrToFfi(lpIniFile), dwFlags);
 }
 
 export function InstallPerfDllA(
-  szComputerName: string | null /* Windows.Win32.Foundation.PSTR */,
-  lpIniFile: string | null /* Windows.Win32.Foundation.PSTR */,
+  szComputerName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  lpIniFile: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   dwFlags: Deno.PointerValue /* usize */,
 ): number /* u32 */ {
   return libloadperf_dll.InstallPerfDllA(util.pstrToFfi(szComputerName), util.pstrToFfi(lpIniFile), dwFlags);
 }
 
 export function LoadPerfCounterTextStringsA(
-  lpCommandLine: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpCommandLine: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   bQuietModeArg: boolean /* Windows.Win32.Foundation.BOOL */,
 ): number /* u32 */ {
   return libloadperf_dll.LoadPerfCounterTextStringsA(util.pstrToFfi(lpCommandLine), util.boolToFfi(bQuietModeArg));
 }
 
 export function LoadPerfCounterTextStringsW(
-  lpCommandLine: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpCommandLine: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   bQuietModeArg: boolean /* Windows.Win32.Foundation.BOOL */,
 ): number /* u32 */ {
   return libloadperf_dll.LoadPerfCounterTextStringsW(util.pwstrToFfi(lpCommandLine), util.boolToFfi(bQuietModeArg));
 }
 
 export function UnloadPerfCounterTextStringsW(
-  lpCommandLine: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpCommandLine: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   bQuietModeArg: boolean /* Windows.Win32.Foundation.BOOL */,
 ): number /* u32 */ {
   return libloadperf_dll.UnloadPerfCounterTextStringsW(util.pwstrToFfi(lpCommandLine), util.boolToFfi(bQuietModeArg));
 }
 
 export function UnloadPerfCounterTextStringsA(
-  lpCommandLine: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpCommandLine: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   bQuietModeArg: boolean /* Windows.Win32.Foundation.BOOL */,
 ): number /* u32 */ {
   return libloadperf_dll.UnloadPerfCounterTextStringsA(util.pstrToFfi(lpCommandLine), util.boolToFfi(bQuietModeArg));
 }
 
 export function UpdatePerfNameFilesA(
-  szNewCtrFilePath: string | null /* Windows.Win32.Foundation.PSTR */,
-  szNewHlpFilePath: string | null /* Windows.Win32.Foundation.PSTR */,
-  szLanguageID: string | null /* Windows.Win32.Foundation.PSTR */,
+  szNewCtrFilePath: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  szNewHlpFilePath: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  szLanguageID: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   dwFlags: Deno.PointerValue /* usize */,
 ): number /* u32 */ {
   return libloadperf_dll.UpdatePerfNameFilesA(util.pstrToFfi(szNewCtrFilePath), util.pstrToFfi(szNewHlpFilePath), util.pstrToFfi(szLanguageID), dwFlags);
 }
 
 export function UpdatePerfNameFilesW(
-  szNewCtrFilePath: string | null /* Windows.Win32.Foundation.PWSTR */,
-  szNewHlpFilePath: string | null /* Windows.Win32.Foundation.PWSTR */,
-  szLanguageID: string | null /* Windows.Win32.Foundation.PWSTR */,
+  szNewCtrFilePath: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  szNewHlpFilePath: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  szLanguageID: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   dwFlags: Deno.PointerValue /* usize */,
 ): number /* u32 */ {
   return libloadperf_dll.UpdatePerfNameFilesW(util.pwstrToFfi(szNewCtrFilePath), util.pwstrToFfi(szNewHlpFilePath), util.pwstrToFfi(szLanguageID), dwFlags);
 }
 
 export function SetServiceAsTrustedA(
-  szReserved: string | null /* Windows.Win32.Foundation.PSTR */,
-  szServiceName: string | null /* Windows.Win32.Foundation.PSTR */,
+  szReserved: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  szServiceName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): number /* u32 */ {
   return libloadperf_dll.SetServiceAsTrustedA(util.pstrToFfi(szReserved), util.pstrToFfi(szServiceName));
 }
 
 export function SetServiceAsTrustedW(
-  szReserved: string | null /* Windows.Win32.Foundation.PWSTR */,
-  szServiceName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  szReserved: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  szServiceName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
   return libloadperf_dll.SetServiceAsTrustedW(util.pwstrToFfi(szReserved), util.pwstrToFfi(szServiceName));
 }
 
 export function BackupPerfRegistryToFileW(
-  szFileName: string | null /* Windows.Win32.Foundation.PWSTR */,
-  szCommentString: string | null /* Windows.Win32.Foundation.PWSTR */,
+  szFileName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  szCommentString: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
   return libloadperf_dll.BackupPerfRegistryToFileW(util.pwstrToFfi(szFileName), util.pwstrToFfi(szCommentString));
 }
 
 export function RestorePerfRegistryFromFileW(
-  szFileName: string | null /* Windows.Win32.Foundation.PWSTR */,
-  szLangId: string | null /* Windows.Win32.Foundation.PWSTR */,
+  szFileName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  szLangId: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
   return libloadperf_dll.RestorePerfRegistryFromFileW(util.pwstrToFfi(szFileName), util.pwstrToFfi(szLangId));
 }
@@ -3025,7 +3025,7 @@ export function PerfSetCounterSetInfo(
 export function PerfCreateInstance(
   ProviderHandle: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Performance.PerfProviderHandle */,
   CounterSetGuid: Deno.PointerValue | Uint8Array | null /* ptr */,
-  Name: string | null /* Windows.Win32.Foundation.PWSTR */,
+  Name: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   Id: number /* u32 */,
 ): Deno.PointerValue | null /* ptr */ {
   return util.pointerFromFfi(libADVAPI32_dll.PerfCreateInstance(util.toPointer(ProviderHandle), util.toPointer(CounterSetGuid), util.pwstrToFfi(Name), Id));
@@ -3041,7 +3041,7 @@ export function PerfDeleteInstance(
 export function PerfQueryInstance(
   ProviderHandle: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
   CounterSetGuid: Deno.PointerValue | Uint8Array | null /* ptr */,
-  Name: string | null /* Windows.Win32.Foundation.PWSTR */,
+  Name: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   Id: number /* u32 */,
 ): Deno.PointerValue | null /* ptr */ {
   return util.pointerFromFfi(libADVAPI32_dll.PerfQueryInstance(util.toPointer(ProviderHandle), util.toPointer(CounterSetGuid), util.pwstrToFfi(Name), Id));
@@ -3111,7 +3111,7 @@ export function PerfDecrementULongLongCounterValue(
 }
 
 export function PerfEnumerateCounterSet(
-  szMachine: string | null /* Windows.Win32.Foundation.PWSTR */,
+  szMachine: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pCounterSetIds: Deno.PointerValue | Uint8Array | null /* ptr */,
   cCounterSetIds: number /* u32 */,
   pcCounterSetIdsActual: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -3120,7 +3120,7 @@ export function PerfEnumerateCounterSet(
 }
 
 export function PerfEnumerateCounterSetInstances(
-  szMachine: string | null /* Windows.Win32.Foundation.PWSTR */,
+  szMachine: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pCounterSetId: Deno.PointerValue | Uint8Array | null /* ptr */,
   pInstances: Deno.PointerValue | Uint8Array | null /* ptr */,
   cbInstances: number /* u32 */,
@@ -3130,7 +3130,7 @@ export function PerfEnumerateCounterSetInstances(
 }
 
 export function PerfQueryCounterSetRegistrationInfo(
-  szMachine: string | null /* Windows.Win32.Foundation.PWSTR */,
+  szMachine: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pCounterSetId: Deno.PointerValue | Uint8Array | null /* ptr */,
   requestCode: PerfRegInfoType /* Windows.Win32.System.Performance.PerfRegInfoType */,
   requestLangId: number /* u32 */,
@@ -3142,7 +3142,7 @@ export function PerfQueryCounterSetRegistrationInfo(
 }
 
 export function PerfOpenQueryHandle(
-  szMachine: string | null /* Windows.Win32.Foundation.PWSTR */,
+  szMachine: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   phQuery: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
   return libADVAPI32_dll.PerfOpenQueryHandle(util.pwstrToFfi(szMachine), util.toPointer(phQuery));
@@ -3195,7 +3195,7 @@ export function PdhGetDllVersion(
 }
 
 export function PdhOpenQueryW(
-  szDataSource: string | null /* Windows.Win32.Foundation.PWSTR */,
+  szDataSource: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   dwUserData: Deno.PointerValue /* usize */,
   phQuery: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
@@ -3203,7 +3203,7 @@ export function PdhOpenQueryW(
 }
 
 export function PdhOpenQueryA(
-  szDataSource: string | null /* Windows.Win32.Foundation.PSTR */,
+  szDataSource: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   dwUserData: Deno.PointerValue /* usize */,
   phQuery: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
@@ -3212,7 +3212,7 @@ export function PdhOpenQueryA(
 
 export function PdhAddCounterW(
   hQuery: Deno.PointerValue /* isize */,
-  szFullCounterPath: string | null /* Windows.Win32.Foundation.PWSTR */,
+  szFullCounterPath: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   dwUserData: Deno.PointerValue /* usize */,
   phCounter: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
@@ -3221,7 +3221,7 @@ export function PdhAddCounterW(
 
 export function PdhAddCounterA(
   hQuery: Deno.PointerValue /* isize */,
-  szFullCounterPath: string | null /* Windows.Win32.Foundation.PSTR */,
+  szFullCounterPath: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   dwUserData: Deno.PointerValue /* usize */,
   phCounter: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
@@ -3230,7 +3230,7 @@ export function PdhAddCounterA(
 
 export function PdhAddEnglishCounterW(
   hQuery: Deno.PointerValue /* isize */,
-  szFullCounterPath: string | null /* Windows.Win32.Foundation.PWSTR */,
+  szFullCounterPath: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   dwUserData: Deno.PointerValue /* usize */,
   phCounter: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
@@ -3239,7 +3239,7 @@ export function PdhAddEnglishCounterW(
 
 export function PdhAddEnglishCounterA(
   hQuery: Deno.PointerValue /* isize */,
-  szFullCounterPath: string | null /* Windows.Win32.Foundation.PSTR */,
+  szFullCounterPath: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   dwUserData: Deno.PointerValue /* usize */,
   phCounter: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
@@ -3255,14 +3255,14 @@ export function PdhCollectQueryDataWithTime(
 
 export function PdhValidatePathExW(
   hDataSource: Deno.PointerValue /* isize */,
-  szFullPathBuffer: string | null /* Windows.Win32.Foundation.PWSTR */,
+  szFullPathBuffer: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* i32 */ {
   return libpdh_dll.PdhValidatePathExW(hDataSource, util.pwstrToFfi(szFullPathBuffer));
 }
 
 export function PdhValidatePathExA(
   hDataSource: Deno.PointerValue /* isize */,
-  szFullPathBuffer: string | null /* Windows.Win32.Foundation.PSTR */,
+  szFullPathBuffer: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): number /* i32 */ {
   return libpdh_dll.PdhValidatePathExA(hDataSource, util.pstrToFfi(szFullPathBuffer));
 }
@@ -3387,37 +3387,37 @@ export function PdhSetCounterScaleFactor(
 }
 
 export function PdhConnectMachineW(
-  szMachineName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  szMachineName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* i32 */ {
   return libpdh_dll.PdhConnectMachineW(util.pwstrToFfi(szMachineName));
 }
 
 export function PdhConnectMachineA(
-  szMachineName: string | null /* Windows.Win32.Foundation.PSTR */,
+  szMachineName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): number /* i32 */ {
   return libpdh_dll.PdhConnectMachineA(util.pstrToFfi(szMachineName));
 }
 
 export function PdhEnumMachinesW(
-  szDataSource: string | null /* Windows.Win32.Foundation.PWSTR */,
-  mszMachineList: string | null /* Windows.Win32.Foundation.PWSTR */,
+  szDataSource: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  mszMachineList: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pcchBufferSize: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
   return libpdh_dll.PdhEnumMachinesW(util.pwstrToFfi(szDataSource), util.pwstrToFfi(mszMachineList), util.toPointer(pcchBufferSize));
 }
 
 export function PdhEnumMachinesA(
-  szDataSource: string | null /* Windows.Win32.Foundation.PSTR */,
-  mszMachineList: string | null /* Windows.Win32.Foundation.PSTR */,
+  szDataSource: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  mszMachineList: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   pcchBufferSize: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
   return libpdh_dll.PdhEnumMachinesA(util.pstrToFfi(szDataSource), util.pstrToFfi(mszMachineList), util.toPointer(pcchBufferSize));
 }
 
 export function PdhEnumObjectsW(
-  szDataSource: string | null /* Windows.Win32.Foundation.PWSTR */,
-  szMachineName: string | null /* Windows.Win32.Foundation.PWSTR */,
-  mszObjectList: string | null /* Windows.Win32.Foundation.PWSTR */,
+  szDataSource: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  szMachineName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  mszObjectList: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pcchBufferSize: Deno.PointerValue | Uint8Array | null /* ptr */,
   dwDetailLevel: PERF_DETAIL /* Windows.Win32.System.Performance.PERF_DETAIL */,
   bRefresh: boolean /* Windows.Win32.Foundation.BOOL */,
@@ -3426,9 +3426,9 @@ export function PdhEnumObjectsW(
 }
 
 export function PdhEnumObjectsA(
-  szDataSource: string | null /* Windows.Win32.Foundation.PSTR */,
-  szMachineName: string | null /* Windows.Win32.Foundation.PSTR */,
-  mszObjectList: string | null /* Windows.Win32.Foundation.PSTR */,
+  szDataSource: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  szMachineName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  mszObjectList: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   pcchBufferSize: Deno.PointerValue | Uint8Array | null /* ptr */,
   dwDetailLevel: PERF_DETAIL /* Windows.Win32.System.Performance.PERF_DETAIL */,
   bRefresh: boolean /* Windows.Win32.Foundation.BOOL */,
@@ -3437,12 +3437,12 @@ export function PdhEnumObjectsA(
 }
 
 export function PdhEnumObjectItemsW(
-  szDataSource: string | null /* Windows.Win32.Foundation.PWSTR */,
-  szMachineName: string | null /* Windows.Win32.Foundation.PWSTR */,
-  szObjectName: string | null /* Windows.Win32.Foundation.PWSTR */,
-  mszCounterList: string | null /* Windows.Win32.Foundation.PWSTR */,
+  szDataSource: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  szMachineName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  szObjectName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  mszCounterList: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pcchCounterListLength: Deno.PointerValue | Uint8Array | null /* ptr */,
-  mszInstanceList: string | null /* Windows.Win32.Foundation.PWSTR */,
+  mszInstanceList: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pcchInstanceListLength: Deno.PointerValue | Uint8Array | null /* ptr */,
   dwDetailLevel: PERF_DETAIL /* Windows.Win32.System.Performance.PERF_DETAIL */,
   dwFlags: number /* u32 */,
@@ -3451,12 +3451,12 @@ export function PdhEnumObjectItemsW(
 }
 
 export function PdhEnumObjectItemsA(
-  szDataSource: string | null /* Windows.Win32.Foundation.PSTR */,
-  szMachineName: string | null /* Windows.Win32.Foundation.PSTR */,
-  szObjectName: string | null /* Windows.Win32.Foundation.PSTR */,
-  mszCounterList: string | null /* Windows.Win32.Foundation.PSTR */,
+  szDataSource: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  szMachineName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  szObjectName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  mszCounterList: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   pcchCounterListLength: Deno.PointerValue | Uint8Array | null /* ptr */,
-  mszInstanceList: string | null /* Windows.Win32.Foundation.PSTR */,
+  mszInstanceList: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   pcchInstanceListLength: Deno.PointerValue | Uint8Array | null /* ptr */,
   dwDetailLevel: PERF_DETAIL /* Windows.Win32.System.Performance.PERF_DETAIL */,
   dwFlags: number /* u32 */,
@@ -3466,7 +3466,7 @@ export function PdhEnumObjectItemsA(
 
 export function PdhMakeCounterPathW(
   pCounterPathElements: Deno.PointerValue | Uint8Array | null /* ptr */,
-  szFullPathBuffer: string | null /* Windows.Win32.Foundation.PWSTR */,
+  szFullPathBuffer: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pcchBufferSize: Deno.PointerValue | Uint8Array | null /* ptr */,
   dwFlags: PDH_PATH_FLAGS /* Windows.Win32.System.Performance.PDH_PATH_FLAGS */,
 ): number /* i32 */ {
@@ -3475,7 +3475,7 @@ export function PdhMakeCounterPathW(
 
 export function PdhMakeCounterPathA(
   pCounterPathElements: Deno.PointerValue | Uint8Array | null /* ptr */,
-  szFullPathBuffer: string | null /* Windows.Win32.Foundation.PSTR */,
+  szFullPathBuffer: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   pcchBufferSize: Deno.PointerValue | Uint8Array | null /* ptr */,
   dwFlags: PDH_PATH_FLAGS /* Windows.Win32.System.Performance.PDH_PATH_FLAGS */,
 ): number /* i32 */ {
@@ -3483,7 +3483,7 @@ export function PdhMakeCounterPathA(
 }
 
 export function PdhParseCounterPathW(
-  szFullPathBuffer: string | null /* Windows.Win32.Foundation.PWSTR */,
+  szFullPathBuffer: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pCounterPathElements: Deno.PointerValue | Uint8Array | null /* ptr */,
   pdwBufferSize: Deno.PointerValue | Uint8Array | null /* ptr */,
   dwFlags: number /* u32 */,
@@ -3492,7 +3492,7 @@ export function PdhParseCounterPathW(
 }
 
 export function PdhParseCounterPathA(
-  szFullPathBuffer: string | null /* Windows.Win32.Foundation.PSTR */,
+  szFullPathBuffer: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   pCounterPathElements: Deno.PointerValue | Uint8Array | null /* ptr */,
   pdwBufferSize: Deno.PointerValue | Uint8Array | null /* ptr */,
   dwFlags: number /* u32 */,
@@ -3501,10 +3501,10 @@ export function PdhParseCounterPathA(
 }
 
 export function PdhParseInstanceNameW(
-  szInstanceString: string | null /* Windows.Win32.Foundation.PWSTR */,
-  szInstanceName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  szInstanceString: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  szInstanceName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pcchInstanceNameLength: Deno.PointerValue | Uint8Array | null /* ptr */,
-  szParentName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  szParentName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pcchParentNameLength: Deno.PointerValue | Uint8Array | null /* ptr */,
   lpIndex: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
@@ -3512,10 +3512,10 @@ export function PdhParseInstanceNameW(
 }
 
 export function PdhParseInstanceNameA(
-  szInstanceString: string | null /* Windows.Win32.Foundation.PSTR */,
-  szInstanceName: string | null /* Windows.Win32.Foundation.PSTR */,
+  szInstanceString: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  szInstanceName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   pcchInstanceNameLength: Deno.PointerValue | Uint8Array | null /* ptr */,
-  szParentName: string | null /* Windows.Win32.Foundation.PSTR */,
+  szParentName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   pcchParentNameLength: Deno.PointerValue | Uint8Array | null /* ptr */,
   lpIndex: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
@@ -3523,50 +3523,50 @@ export function PdhParseInstanceNameA(
 }
 
 export function PdhValidatePathW(
-  szFullPathBuffer: string | null /* Windows.Win32.Foundation.PWSTR */,
+  szFullPathBuffer: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* i32 */ {
   return libpdh_dll.PdhValidatePathW(util.pwstrToFfi(szFullPathBuffer));
 }
 
 export function PdhValidatePathA(
-  szFullPathBuffer: string | null /* Windows.Win32.Foundation.PSTR */,
+  szFullPathBuffer: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): number /* i32 */ {
   return libpdh_dll.PdhValidatePathA(util.pstrToFfi(szFullPathBuffer));
 }
 
 export function PdhGetDefaultPerfObjectW(
-  szDataSource: string | null /* Windows.Win32.Foundation.PWSTR */,
-  szMachineName: string | null /* Windows.Win32.Foundation.PWSTR */,
-  szDefaultObjectName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  szDataSource: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  szMachineName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  szDefaultObjectName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pcchBufferSize: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
   return libpdh_dll.PdhGetDefaultPerfObjectW(util.pwstrToFfi(szDataSource), util.pwstrToFfi(szMachineName), util.pwstrToFfi(szDefaultObjectName), util.toPointer(pcchBufferSize));
 }
 
 export function PdhGetDefaultPerfObjectA(
-  szDataSource: string | null /* Windows.Win32.Foundation.PSTR */,
-  szMachineName: string | null /* Windows.Win32.Foundation.PSTR */,
-  szDefaultObjectName: string | null /* Windows.Win32.Foundation.PSTR */,
+  szDataSource: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  szMachineName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  szDefaultObjectName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   pcchBufferSize: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
   return libpdh_dll.PdhGetDefaultPerfObjectA(util.pstrToFfi(szDataSource), util.pstrToFfi(szMachineName), util.pstrToFfi(szDefaultObjectName), util.toPointer(pcchBufferSize));
 }
 
 export function PdhGetDefaultPerfCounterW(
-  szDataSource: string | null /* Windows.Win32.Foundation.PWSTR */,
-  szMachineName: string | null /* Windows.Win32.Foundation.PWSTR */,
-  szObjectName: string | null /* Windows.Win32.Foundation.PWSTR */,
-  szDefaultCounterName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  szDataSource: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  szMachineName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  szObjectName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  szDefaultCounterName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pcchBufferSize: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
   return libpdh_dll.PdhGetDefaultPerfCounterW(util.pwstrToFfi(szDataSource), util.pwstrToFfi(szMachineName), util.pwstrToFfi(szObjectName), util.pwstrToFfi(szDefaultCounterName), util.toPointer(pcchBufferSize));
 }
 
 export function PdhGetDefaultPerfCounterA(
-  szDataSource: string | null /* Windows.Win32.Foundation.PSTR */,
-  szMachineName: string | null /* Windows.Win32.Foundation.PSTR */,
-  szObjectName: string | null /* Windows.Win32.Foundation.PSTR */,
-  szDefaultCounterName: string | null /* Windows.Win32.Foundation.PSTR */,
+  szDataSource: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  szMachineName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  szObjectName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  szDefaultCounterName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   pcchBufferSize: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
   return libpdh_dll.PdhGetDefaultPerfCounterA(util.pstrToFfi(szDataSource), util.pstrToFfi(szMachineName), util.pstrToFfi(szObjectName), util.pstrToFfi(szDefaultCounterName), util.toPointer(pcchBufferSize));
@@ -3585,59 +3585,59 @@ export function PdhBrowseCountersA(
 }
 
 export function PdhExpandCounterPathW(
-  szWildCardPath: string | null /* Windows.Win32.Foundation.PWSTR */,
-  mszExpandedPathList: string | null /* Windows.Win32.Foundation.PWSTR */,
+  szWildCardPath: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  mszExpandedPathList: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pcchPathListLength: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
   return libpdh_dll.PdhExpandCounterPathW(util.pwstrToFfi(szWildCardPath), util.pwstrToFfi(mszExpandedPathList), util.toPointer(pcchPathListLength));
 }
 
 export function PdhExpandCounterPathA(
-  szWildCardPath: string | null /* Windows.Win32.Foundation.PSTR */,
-  mszExpandedPathList: string | null /* Windows.Win32.Foundation.PSTR */,
+  szWildCardPath: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  mszExpandedPathList: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   pcchPathListLength: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
   return libpdh_dll.PdhExpandCounterPathA(util.pstrToFfi(szWildCardPath), util.pstrToFfi(mszExpandedPathList), util.toPointer(pcchPathListLength));
 }
 
 export function PdhLookupPerfNameByIndexW(
-  szMachineName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  szMachineName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   dwNameIndex: number /* u32 */,
-  szNameBuffer: string | null /* Windows.Win32.Foundation.PWSTR */,
+  szNameBuffer: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pcchNameBufferSize: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
   return libpdh_dll.PdhLookupPerfNameByIndexW(util.pwstrToFfi(szMachineName), dwNameIndex, util.pwstrToFfi(szNameBuffer), util.toPointer(pcchNameBufferSize));
 }
 
 export function PdhLookupPerfNameByIndexA(
-  szMachineName: string | null /* Windows.Win32.Foundation.PSTR */,
+  szMachineName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   dwNameIndex: number /* u32 */,
-  szNameBuffer: string | null /* Windows.Win32.Foundation.PSTR */,
+  szNameBuffer: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   pcchNameBufferSize: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
   return libpdh_dll.PdhLookupPerfNameByIndexA(util.pstrToFfi(szMachineName), dwNameIndex, util.pstrToFfi(szNameBuffer), util.toPointer(pcchNameBufferSize));
 }
 
 export function PdhLookupPerfIndexByNameW(
-  szMachineName: string | null /* Windows.Win32.Foundation.PWSTR */,
-  szNameBuffer: string | null /* Windows.Win32.Foundation.PWSTR */,
+  szMachineName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  szNameBuffer: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pdwIndex: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
   return libpdh_dll.PdhLookupPerfIndexByNameW(util.pwstrToFfi(szMachineName), util.pwstrToFfi(szNameBuffer), util.toPointer(pdwIndex));
 }
 
 export function PdhLookupPerfIndexByNameA(
-  szMachineName: string | null /* Windows.Win32.Foundation.PSTR */,
-  szNameBuffer: string | null /* Windows.Win32.Foundation.PSTR */,
+  szMachineName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  szNameBuffer: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   pdwIndex: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
   return libpdh_dll.PdhLookupPerfIndexByNameA(util.pstrToFfi(szMachineName), util.pstrToFfi(szNameBuffer), util.toPointer(pdwIndex));
 }
 
 export function PdhExpandWildCardPathA(
-  szDataSource: string | null /* Windows.Win32.Foundation.PSTR */,
-  szWildCardPath: string | null /* Windows.Win32.Foundation.PSTR */,
-  mszExpandedPathList: string | null /* Windows.Win32.Foundation.PSTR */,
+  szDataSource: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  szWildCardPath: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  mszExpandedPathList: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   pcchPathListLength: Deno.PointerValue | Uint8Array | null /* ptr */,
   dwFlags: number /* u32 */,
 ): number /* i32 */ {
@@ -3645,9 +3645,9 @@ export function PdhExpandWildCardPathA(
 }
 
 export function PdhExpandWildCardPathW(
-  szDataSource: string | null /* Windows.Win32.Foundation.PWSTR */,
-  szWildCardPath: string | null /* Windows.Win32.Foundation.PWSTR */,
-  mszExpandedPathList: string | null /* Windows.Win32.Foundation.PWSTR */,
+  szDataSource: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  szWildCardPath: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  mszExpandedPathList: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pcchPathListLength: Deno.PointerValue | Uint8Array | null /* ptr */,
   dwFlags: number /* u32 */,
 ): number /* i32 */ {
@@ -3655,24 +3655,24 @@ export function PdhExpandWildCardPathW(
 }
 
 export function PdhOpenLogW(
-  szLogFileName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  szLogFileName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   dwAccessFlags: PDH_LOG /* Windows.Win32.System.Performance.PDH_LOG */,
   lpdwLogType: Deno.PointerValue | Uint8Array | null /* ptr */,
   hQuery: Deno.PointerValue /* isize */,
   dwMaxSize: number /* u32 */,
-  szUserCaption: string | null /* Windows.Win32.Foundation.PWSTR */,
+  szUserCaption: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   phLog: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
   return libpdh_dll.PdhOpenLogW(util.pwstrToFfi(szLogFileName), dwAccessFlags, util.toPointer(lpdwLogType), hQuery, dwMaxSize, util.pwstrToFfi(szUserCaption), util.toPointer(phLog));
 }
 
 export function PdhOpenLogA(
-  szLogFileName: string | null /* Windows.Win32.Foundation.PSTR */,
+  szLogFileName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   dwAccessFlags: PDH_LOG /* Windows.Win32.System.Performance.PDH_LOG */,
   lpdwLogType: Deno.PointerValue | Uint8Array | null /* ptr */,
   hQuery: Deno.PointerValue /* isize */,
   dwMaxSize: number /* u32 */,
-  szUserCaption: string | null /* Windows.Win32.Foundation.PSTR */,
+  szUserCaption: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   phLog: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
   return libpdh_dll.PdhOpenLogA(util.pstrToFfi(szLogFileName), dwAccessFlags, util.toPointer(lpdwLogType), hQuery, dwMaxSize, util.pstrToFfi(szUserCaption), util.toPointer(phLog));
@@ -3680,14 +3680,14 @@ export function PdhOpenLogA(
 
 export function PdhUpdateLogW(
   hLog: Deno.PointerValue /* isize */,
-  szUserString: string | null /* Windows.Win32.Foundation.PWSTR */,
+  szUserString: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* i32 */ {
   return libpdh_dll.PdhUpdateLogW(hLog, util.pwstrToFfi(szUserString));
 }
 
 export function PdhUpdateLogA(
   hLog: Deno.PointerValue /* isize */,
-  szUserString: string | null /* Windows.Win32.Foundation.PSTR */,
+  szUserString: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): number /* i32 */ {
   return libpdh_dll.PdhUpdateLogA(hLog, util.pstrToFfi(szUserString));
 }
@@ -3715,7 +3715,7 @@ export function PdhCloseLog(
 export function PdhSelectDataSourceW(
   hWndOwner: Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */,
   dwFlags: PDH_SELECT_DATA_SOURCE_FLAGS /* Windows.Win32.System.Performance.PDH_SELECT_DATA_SOURCE_FLAGS */,
-  szDataSource: string | null /* Windows.Win32.Foundation.PWSTR */,
+  szDataSource: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pcchBufferLength: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
   return libpdh_dll.PdhSelectDataSourceW(util.hwndToFfi(hWndOwner), dwFlags, util.pwstrToFfi(szDataSource), util.toPointer(pcchBufferLength));
@@ -3724,7 +3724,7 @@ export function PdhSelectDataSourceW(
 export function PdhSelectDataSourceA(
   hWndOwner: Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */,
   dwFlags: PDH_SELECT_DATA_SOURCE_FLAGS /* Windows.Win32.System.Performance.PDH_SELECT_DATA_SOURCE_FLAGS */,
-  szDataSource: string | null /* Windows.Win32.Foundation.PSTR */,
+  szDataSource: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   pcchBufferLength: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
   return libpdh_dll.PdhSelectDataSourceA(util.hwndToFfi(hWndOwner), dwFlags, util.pstrToFfi(szDataSource), util.toPointer(pcchBufferLength));
@@ -3744,7 +3744,7 @@ export function PdhSetQueryTimeRange(
 }
 
 export function PdhGetDataSourceTimeRangeW(
-  szDataSource: string | null /* Windows.Win32.Foundation.PWSTR */,
+  szDataSource: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pdwNumEntries: Deno.PointerValue | Uint8Array | null /* ptr */,
   pInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
   pdwBufferSize: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -3753,7 +3753,7 @@ export function PdhGetDataSourceTimeRangeW(
 }
 
 export function PdhGetDataSourceTimeRangeA(
-  szDataSource: string | null /* Windows.Win32.Foundation.PSTR */,
+  szDataSource: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   pdwNumEntries: Deno.PointerValue | Uint8Array | null /* ptr */,
   pInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
   pdwBufferSize: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -3804,14 +3804,14 @@ export function PdhSetDefaultRealTimeDataSource(
 
 export function PdhBindInputDataSourceW(
   phDataSource: Deno.PointerValue | Uint8Array | null /* ptr */,
-  LogFileNameList: string | null /* Windows.Win32.Foundation.PWSTR */,
+  LogFileNameList: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* i32 */ {
   return libpdh_dll.PdhBindInputDataSourceW(util.toPointer(phDataSource), util.pwstrToFfi(LogFileNameList));
 }
 
 export function PdhBindInputDataSourceA(
   phDataSource: Deno.PointerValue | Uint8Array | null /* ptr */,
-  LogFileNameList: string | null /* Windows.Win32.Foundation.PSTR */,
+  LogFileNameList: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): number /* i32 */ {
   return libpdh_dll.PdhBindInputDataSourceA(util.toPointer(phDataSource), util.pstrToFfi(LogFileNameList));
 }
@@ -3826,7 +3826,7 @@ export function PdhOpenQueryH(
 
 export function PdhEnumMachinesHW(
   hDataSource: Deno.PointerValue /* isize */,
-  mszMachineList: string | null /* Windows.Win32.Foundation.PWSTR */,
+  mszMachineList: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pcchBufferSize: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
   return libpdh_dll.PdhEnumMachinesHW(hDataSource, util.pwstrToFfi(mszMachineList), util.toPointer(pcchBufferSize));
@@ -3834,7 +3834,7 @@ export function PdhEnumMachinesHW(
 
 export function PdhEnumMachinesHA(
   hDataSource: Deno.PointerValue /* isize */,
-  mszMachineList: string | null /* Windows.Win32.Foundation.PSTR */,
+  mszMachineList: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   pcchBufferSize: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
   return libpdh_dll.PdhEnumMachinesHA(hDataSource, util.pstrToFfi(mszMachineList), util.toPointer(pcchBufferSize));
@@ -3842,8 +3842,8 @@ export function PdhEnumMachinesHA(
 
 export function PdhEnumObjectsHW(
   hDataSource: Deno.PointerValue /* isize */,
-  szMachineName: string | null /* Windows.Win32.Foundation.PWSTR */,
-  mszObjectList: string | null /* Windows.Win32.Foundation.PWSTR */,
+  szMachineName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  mszObjectList: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pcchBufferSize: Deno.PointerValue | Uint8Array | null /* ptr */,
   dwDetailLevel: PERF_DETAIL /* Windows.Win32.System.Performance.PERF_DETAIL */,
   bRefresh: boolean /* Windows.Win32.Foundation.BOOL */,
@@ -3853,8 +3853,8 @@ export function PdhEnumObjectsHW(
 
 export function PdhEnumObjectsHA(
   hDataSource: Deno.PointerValue /* isize */,
-  szMachineName: string | null /* Windows.Win32.Foundation.PSTR */,
-  mszObjectList: string | null /* Windows.Win32.Foundation.PSTR */,
+  szMachineName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  mszObjectList: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   pcchBufferSize: Deno.PointerValue | Uint8Array | null /* ptr */,
   dwDetailLevel: PERF_DETAIL /* Windows.Win32.System.Performance.PERF_DETAIL */,
   bRefresh: boolean /* Windows.Win32.Foundation.BOOL */,
@@ -3864,11 +3864,11 @@ export function PdhEnumObjectsHA(
 
 export function PdhEnumObjectItemsHW(
   hDataSource: Deno.PointerValue /* isize */,
-  szMachineName: string | null /* Windows.Win32.Foundation.PWSTR */,
-  szObjectName: string | null /* Windows.Win32.Foundation.PWSTR */,
-  mszCounterList: string | null /* Windows.Win32.Foundation.PWSTR */,
+  szMachineName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  szObjectName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  mszCounterList: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pcchCounterListLength: Deno.PointerValue | Uint8Array | null /* ptr */,
-  mszInstanceList: string | null /* Windows.Win32.Foundation.PWSTR */,
+  mszInstanceList: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pcchInstanceListLength: Deno.PointerValue | Uint8Array | null /* ptr */,
   dwDetailLevel: PERF_DETAIL /* Windows.Win32.System.Performance.PERF_DETAIL */,
   dwFlags: number /* u32 */,
@@ -3878,11 +3878,11 @@ export function PdhEnumObjectItemsHW(
 
 export function PdhEnumObjectItemsHA(
   hDataSource: Deno.PointerValue /* isize */,
-  szMachineName: string | null /* Windows.Win32.Foundation.PSTR */,
-  szObjectName: string | null /* Windows.Win32.Foundation.PSTR */,
-  mszCounterList: string | null /* Windows.Win32.Foundation.PSTR */,
+  szMachineName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  szObjectName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  mszCounterList: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   pcchCounterListLength: Deno.PointerValue | Uint8Array | null /* ptr */,
-  mszInstanceList: string | null /* Windows.Win32.Foundation.PSTR */,
+  mszInstanceList: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   pcchInstanceListLength: Deno.PointerValue | Uint8Array | null /* ptr */,
   dwDetailLevel: PERF_DETAIL /* Windows.Win32.System.Performance.PERF_DETAIL */,
   dwFlags: number /* u32 */,
@@ -3892,8 +3892,8 @@ export function PdhEnumObjectItemsHA(
 
 export function PdhExpandWildCardPathHW(
   hDataSource: Deno.PointerValue /* isize */,
-  szWildCardPath: string | null /* Windows.Win32.Foundation.PWSTR */,
-  mszExpandedPathList: string | null /* Windows.Win32.Foundation.PWSTR */,
+  szWildCardPath: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  mszExpandedPathList: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pcchPathListLength: Deno.PointerValue | Uint8Array | null /* ptr */,
   dwFlags: number /* u32 */,
 ): number /* i32 */ {
@@ -3902,8 +3902,8 @@ export function PdhExpandWildCardPathHW(
 
 export function PdhExpandWildCardPathHA(
   hDataSource: Deno.PointerValue /* isize */,
-  szWildCardPath: string | null /* Windows.Win32.Foundation.PSTR */,
-  mszExpandedPathList: string | null /* Windows.Win32.Foundation.PSTR */,
+  szWildCardPath: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  mszExpandedPathList: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   pcchPathListLength: Deno.PointerValue | Uint8Array | null /* ptr */,
   dwFlags: number /* u32 */,
 ): number /* i32 */ {
@@ -3921,8 +3921,8 @@ export function PdhGetDataSourceTimeRangeH(
 
 export function PdhGetDefaultPerfObjectHW(
   hDataSource: Deno.PointerValue /* isize */,
-  szMachineName: string | null /* Windows.Win32.Foundation.PWSTR */,
-  szDefaultObjectName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  szMachineName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  szDefaultObjectName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pcchBufferSize: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
   return libpdh_dll.PdhGetDefaultPerfObjectHW(hDataSource, util.pwstrToFfi(szMachineName), util.pwstrToFfi(szDefaultObjectName), util.toPointer(pcchBufferSize));
@@ -3930,8 +3930,8 @@ export function PdhGetDefaultPerfObjectHW(
 
 export function PdhGetDefaultPerfObjectHA(
   hDataSource: Deno.PointerValue /* isize */,
-  szMachineName: string | null /* Windows.Win32.Foundation.PSTR */,
-  szDefaultObjectName: string | null /* Windows.Win32.Foundation.PSTR */,
+  szMachineName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  szDefaultObjectName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   pcchBufferSize: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
   return libpdh_dll.PdhGetDefaultPerfObjectHA(hDataSource, util.pstrToFfi(szMachineName), util.pstrToFfi(szDefaultObjectName), util.toPointer(pcchBufferSize));
@@ -3939,9 +3939,9 @@ export function PdhGetDefaultPerfObjectHA(
 
 export function PdhGetDefaultPerfCounterHW(
   hDataSource: Deno.PointerValue /* isize */,
-  szMachineName: string | null /* Windows.Win32.Foundation.PWSTR */,
-  szObjectName: string | null /* Windows.Win32.Foundation.PWSTR */,
-  szDefaultCounterName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  szMachineName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  szObjectName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  szDefaultCounterName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pcchBufferSize: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
   return libpdh_dll.PdhGetDefaultPerfCounterHW(hDataSource, util.pwstrToFfi(szMachineName), util.pwstrToFfi(szObjectName), util.pwstrToFfi(szDefaultCounterName), util.toPointer(pcchBufferSize));
@@ -3949,9 +3949,9 @@ export function PdhGetDefaultPerfCounterHW(
 
 export function PdhGetDefaultPerfCounterHA(
   hDataSource: Deno.PointerValue /* isize */,
-  szMachineName: string | null /* Windows.Win32.Foundation.PSTR */,
-  szObjectName: string | null /* Windows.Win32.Foundation.PSTR */,
-  szDefaultCounterName: string | null /* Windows.Win32.Foundation.PSTR */,
+  szMachineName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  szObjectName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  szDefaultCounterName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   pcchBufferSize: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
   return libpdh_dll.PdhGetDefaultPerfCounterHA(hDataSource, util.pstrToFfi(szMachineName), util.pstrToFfi(szObjectName), util.pstrToFfi(szDefaultCounterName), util.toPointer(pcchBufferSize));
@@ -3970,40 +3970,40 @@ export function PdhBrowseCountersHA(
 }
 
 export function PdhVerifySQLDBW(
-  szDataSource: string | null /* Windows.Win32.Foundation.PWSTR */,
+  szDataSource: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* i32 */ {
   return libpdh_dll.PdhVerifySQLDBW(util.pwstrToFfi(szDataSource));
 }
 
 export function PdhVerifySQLDBA(
-  szDataSource: string | null /* Windows.Win32.Foundation.PSTR */,
+  szDataSource: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): number /* i32 */ {
   return libpdh_dll.PdhVerifySQLDBA(util.pstrToFfi(szDataSource));
 }
 
 export function PdhCreateSQLTablesW(
-  szDataSource: string | null /* Windows.Win32.Foundation.PWSTR */,
+  szDataSource: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* i32 */ {
   return libpdh_dll.PdhCreateSQLTablesW(util.pwstrToFfi(szDataSource));
 }
 
 export function PdhCreateSQLTablesA(
-  szDataSource: string | null /* Windows.Win32.Foundation.PSTR */,
+  szDataSource: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): number /* i32 */ {
   return libpdh_dll.PdhCreateSQLTablesA(util.pstrToFfi(szDataSource));
 }
 
 export function PdhEnumLogSetNamesW(
-  szDataSource: string | null /* Windows.Win32.Foundation.PWSTR */,
-  mszDataSetNameList: string | null /* Windows.Win32.Foundation.PWSTR */,
+  szDataSource: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  mszDataSetNameList: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pcchBufferLength: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
   return libpdh_dll.PdhEnumLogSetNamesW(util.pwstrToFfi(szDataSource), util.pwstrToFfi(mszDataSetNameList), util.toPointer(pcchBufferLength));
 }
 
 export function PdhEnumLogSetNamesA(
-  szDataSource: string | null /* Windows.Win32.Foundation.PSTR */,
-  mszDataSetNameList: string | null /* Windows.Win32.Foundation.PSTR */,
+  szDataSource: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  mszDataSetNameList: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   pcchBufferLength: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
   return libpdh_dll.PdhEnumLogSetNamesA(util.pstrToFfi(szDataSource), util.pstrToFfi(mszDataSetNameList), util.toPointer(pcchBufferLength));

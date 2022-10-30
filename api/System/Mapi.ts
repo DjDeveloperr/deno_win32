@@ -74,9 +74,9 @@ export interface MapiFileDesc {
   /** u32 */
   nPosition: number;
   /** Windows.Win32.Foundation.PSTR */
-  lpszPathName: string | null;
+  lpszPathName: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  lpszFileName: string | null;
+  lpszFileName: string | null | Uint8Array;
   /** ptr */
   lpFileType: Deno.PointerValue | Uint8Array | null;
 }
@@ -121,9 +121,9 @@ export interface MapiFileDescW {
   /** u32 */
   nPosition: number;
   /** Windows.Win32.Foundation.PWSTR */
-  lpszPathName: string | null;
+  lpszPathName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  lpszFileName: string | null;
+  lpszFileName: string | null | Uint8Array | Uint16Array;
   /** ptr */
   lpFileType: Deno.PointerValue | Uint8Array | null;
 }
@@ -199,9 +199,9 @@ export interface MapiRecipDesc {
   /** u32 */
   ulRecipClass: number;
   /** Windows.Win32.Foundation.PSTR */
-  lpszName: string | null;
+  lpszName: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  lpszAddress: string | null;
+  lpszAddress: string | null | Uint8Array;
   /** u32 */
   ulEIDSize: number;
   /** ptr */
@@ -244,9 +244,9 @@ export interface MapiRecipDescW {
   /** u32 */
   ulRecipClass: number;
   /** Windows.Win32.Foundation.PWSTR */
-  lpszName: string | null;
+  lpszName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  lpszAddress: string | null;
+  lpszAddress: string | null | Uint8Array | Uint16Array;
   /** u32 */
   ulEIDSize: number;
   /** ptr */
@@ -287,15 +287,15 @@ export interface MapiMessage {
   /** u32 */
   ulReserved: number;
   /** Windows.Win32.Foundation.PSTR */
-  lpszSubject: string | null;
+  lpszSubject: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  lpszNoteText: string | null;
+  lpszNoteText: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  lpszMessageType: string | null;
+  lpszMessageType: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  lpszDateReceived: string | null;
+  lpszDateReceived: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  lpszConversationID: string | null;
+  lpszConversationID: string | null | Uint8Array;
   /** u32 */
   flFlags: number;
   /** ptr */
@@ -368,15 +368,15 @@ export interface MapiMessageW {
   /** u32 */
   ulReserved: number;
   /** Windows.Win32.Foundation.PWSTR */
-  lpszSubject: string | null;
+  lpszSubject: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  lpszNoteText: string | null;
+  lpszNoteText: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  lpszMessageType: string | null;
+  lpszMessageType: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  lpszDateReceived: string | null;
+  lpszDateReceived: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  lpszConversationID: string | null;
+  lpszConversationID: string | null | Uint8Array | Uint16Array;
   /** u32 */
   flFlags: number;
   /** ptr */

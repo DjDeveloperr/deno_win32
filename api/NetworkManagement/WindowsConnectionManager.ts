@@ -306,7 +306,7 @@ export interface NET_INTERFACE_CONTEXT {
   /** u32 */
   InterfaceIndex: number;
   /** Windows.Win32.Foundation.PWSTR */
-  ConfigurationName: string | null;
+  ConfigurationName: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeofNET_INTERFACE_CONTEXT = 16;
@@ -412,7 +412,7 @@ try {
 
 export function WcmQueryProperty(
   pInterface: Deno.PointerValue | Uint8Array | null /* ptr */,
-  strProfileName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  strProfileName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   Property: WCM_PROPERTY /* Windows.Win32.NetworkManagement.WindowsConnectionManager.WCM_PROPERTY */,
   pReserved: Deno.PointerValue | Uint8Array | null /* ptr */,
   pdwDataSize: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -423,7 +423,7 @@ export function WcmQueryProperty(
 
 export function WcmSetProperty(
   pInterface: Deno.PointerValue | Uint8Array | null /* ptr */,
-  strProfileName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  strProfileName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   Property: WCM_PROPERTY /* Windows.Win32.NetworkManagement.WindowsConnectionManager.WCM_PROPERTY */,
   pReserved: Deno.PointerValue | Uint8Array | null /* ptr */,
   dwDataSize: number /* u32 */,
@@ -455,7 +455,7 @@ export function WcmFreeMemory(
 }
 
 export function OnDemandGetRoutingHint(
-  destinationHostName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  destinationHostName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   interfaceIndex: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
   return util.pointerFromFfi(libOnDemandConnRouteHelper_dll.OnDemandGetRoutingHint(util.pwstrToFfi(destinationHostName), util.toPointer(interfaceIndex)));
@@ -476,8 +476,8 @@ export function OnDemandUnRegisterNotification(
 }
 
 export function GetInterfaceContextTableForHostName(
-  HostName: string | null /* Windows.Win32.Foundation.PWSTR */,
-  ProxyName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  HostName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  ProxyName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   Flags: number /* u32 */,
   ConnectionProfileFilterRawData: Deno.PointerValue | Uint8Array | null /* ptr */,
   ConnectionProfileFilterRawDataSize: number /* u32 */,

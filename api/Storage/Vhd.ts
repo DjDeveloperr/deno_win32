@@ -3587,13 +3587,13 @@ export interface STORAGE_DEPENDENCY_INFO_TYPE_2 {
   /** u32 */
   AncestorLevel: number;
   /** Windows.Win32.Foundation.PWSTR */
-  DependencyDeviceName: string | null;
+  DependencyDeviceName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  HostVolumeName: string | null;
+  HostVolumeName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  DependentVolumeName: string | null;
+  DependentVolumeName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  DependentVolumeRelativePath: string | null;
+  DependentVolumeRelativePath: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeofSTORAGE_DEPENDENCY_INFO_TYPE_2 = 56;
@@ -4165,7 +4165,7 @@ try {
 
 export function OpenVirtualDisk(
   VirtualStorageType: Deno.PointerValue | Uint8Array | null /* ptr */,
-  Path: string | null /* Windows.Win32.Foundation.PWSTR */,
+  Path: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   VirtualDiskAccessMask: VIRTUAL_DISK_ACCESS_MASK /* Windows.Win32.Storage.Vhd.VIRTUAL_DISK_ACCESS_MASK */,
   Flags: OPEN_VIRTUAL_DISK_FLAG /* Windows.Win32.Storage.Vhd.OPEN_VIRTUAL_DISK_FLAG */,
   Parameters: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -4176,7 +4176,7 @@ export function OpenVirtualDisk(
 
 export function CreateVirtualDisk(
   VirtualStorageType: Deno.PointerValue | Uint8Array | null /* ptr */,
-  Path: string | null /* Windows.Win32.Foundation.PWSTR */,
+  Path: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   VirtualDiskAccessMask: VIRTUAL_DISK_ACCESS_MASK /* Windows.Win32.Storage.Vhd.VIRTUAL_DISK_ACCESS_MASK */,
   SecurityDescriptor: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Security.PSECURITY_DESCRIPTOR */,
   Flags: CREATE_VIRTUAL_DISK_FLAG /* Windows.Win32.Storage.Vhd.CREATE_VIRTUAL_DISK_FLAG */,
@@ -4210,14 +4210,14 @@ export function DetachVirtualDisk(
 export function GetVirtualDiskPhysicalPath(
   VirtualDiskHandle: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
   DiskPathSizeInBytes: Deno.PointerValue | Uint8Array | null /* ptr */,
-  DiskPath: string | null /* Windows.Win32.Foundation.PWSTR */,
+  DiskPath: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
   return libVirtDisk_dll.GetVirtualDiskPhysicalPath(util.toPointer(VirtualDiskHandle), util.toPointer(DiskPathSizeInBytes), util.pwstrToFfi(DiskPath));
 }
 
 export function GetAllAttachedVirtualDiskPhysicalPaths(
   PathsBufferSizeInBytes: Deno.PointerValue | Uint8Array | null /* ptr */,
-  PathsBuffer: string | null /* Windows.Win32.Foundation.PWSTR */,
+  PathsBuffer: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
   return libVirtDisk_dll.GetAllAttachedVirtualDiskPhysicalPaths(util.toPointer(PathsBufferSizeInBytes), util.pwstrToFfi(PathsBuffer));
 }
@@ -4342,14 +4342,14 @@ export function BreakMirrorVirtualDisk(
 
 export function AddVirtualDiskParent(
   VirtualDiskHandle: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  ParentPath: string | null /* Windows.Win32.Foundation.PWSTR */,
+  ParentPath: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
   return libVirtDisk_dll.AddVirtualDiskParent(util.toPointer(VirtualDiskHandle), util.pwstrToFfi(ParentPath));
 }
 
 export function QueryChangesVirtualDisk(
   VirtualDiskHandle: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  ChangeTrackingId: string | null /* Windows.Win32.Foundation.PWSTR */,
+  ChangeTrackingId: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   ByteOffset: Deno.PointerValue /* u64 */,
   ByteLength: Deno.PointerValue /* u64 */,
   Flags: QUERY_CHANGES_VIRTUAL_DISK_FLAG /* Windows.Win32.Storage.Vhd.QUERY_CHANGES_VIRTUAL_DISK_FLAG */,

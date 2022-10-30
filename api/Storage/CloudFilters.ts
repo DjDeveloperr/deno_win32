@@ -303,7 +303,7 @@ export interface _u_e__Struct {
   /** u32 */
   dwValue: number;
   /** Windows.Win32.Foundation.PWSTR */
-  pwszName: string | null;
+  pwszName: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeof_u_e__Struct = 16;
@@ -412,7 +412,7 @@ export type HRESULT = number;
  */
 export interface CF_PLACEHOLDER_CREATE_INFO {
   /** Windows.Win32.Foundation.PWSTR */
-  RelativeFileName: string | null;
+  RelativeFileName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Storage.CloudFilters.CF_FS_METADATA */
   FsMetadata: Uint8Array | Deno.PointerValue | null;
   /** ptr */
@@ -461,13 +461,13 @@ export interface CF_PROCESS_INFO {
   /** u32 */
   ProcessId: number;
   /** Windows.Win32.Foundation.PWSTR */
-  ImagePath: string | null;
+  ImagePath: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  PackageName: string | null;
+  PackageName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  ApplicationId: string | null;
+  ApplicationId: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  CommandLine: string | null;
+  CommandLine: string | null | Uint8Array | Uint16Array;
   /** u32 */
   SessionId: number;
 }
@@ -701,9 +701,9 @@ export interface CF_SYNC_REGISTRATION {
   /** u32 */
   StructSize: number;
   /** Windows.Win32.Foundation.PWSTR */
-  ProviderName: string | null;
+  ProviderName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  ProviderVersion: string | null;
+  ProviderVersion: string | null | Uint8Array | Uint16Array;
   /** ptr */
   SyncRootIdentity: Deno.PointerValue | Uint8Array | null;
   /** u32 */
@@ -760,9 +760,9 @@ export interface CF_CALLBACK_INFO {
   /** ptr */
   CallbackContext: Deno.PointerValue | Uint8Array | null;
   /** Windows.Win32.Foundation.PWSTR */
-  VolumeGuidName: string | null;
+  VolumeGuidName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  VolumeDosName: string | null;
+  VolumeDosName: string | null | Uint8Array | Uint16Array;
   /** u32 */
   VolumeSerialNumber: number;
   /** Windows.Win32.Foundation.LARGE_INTEGER */
@@ -780,7 +780,7 @@ export interface CF_CALLBACK_INFO {
   /** u32 */
   FileIdentityLength: number;
   /** Windows.Win32.Foundation.PWSTR */
-  NormalizedPath: string | null;
+  NormalizedPath: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.LARGE_INTEGER */
   TransferKey: Uint8Array | Deno.PointerValue | null;
   /** u8 */
@@ -1401,7 +1401,7 @@ export function CfGetPlatformInfo(
 }
 
 export function CfRegisterSyncRoot(
-  SyncRootPath: string | null /* Windows.Win32.Foundation.PWSTR */,
+  SyncRootPath: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   Registration: Deno.PointerValue | Uint8Array | null /* ptr */,
   Policies: Deno.PointerValue | Uint8Array | null /* ptr */,
   RegisterFlags: CF_REGISTER_FLAGS /* Windows.Win32.Storage.CloudFilters.CF_REGISTER_FLAGS */,
@@ -1410,13 +1410,13 @@ export function CfRegisterSyncRoot(
 }
 
 export function CfUnregisterSyncRoot(
-  SyncRootPath: string | null /* Windows.Win32.Foundation.PWSTR */,
+  SyncRootPath: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
   return util.pointerFromFfi(libcldapi_dll.CfUnregisterSyncRoot(util.pwstrToFfi(SyncRootPath)));
 }
 
 export function CfConnectSyncRoot(
-  SyncRootPath: string | null /* Windows.Win32.Foundation.PWSTR */,
+  SyncRootPath: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   CallbackTable: Deno.PointerValue | Uint8Array | null /* ptr */,
   CallbackContext: Deno.PointerValue | Uint8Array | null /* ptr */,
   ConnectFlags: CF_CONNECT_FLAGS /* Windows.Win32.Storage.CloudFilters.CF_CONNECT_FLAGS */,
@@ -1467,14 +1467,14 @@ export function CfQuerySyncProviderStatus(
 }
 
 export function CfReportSyncStatus(
-  SyncRootPath: string | null /* Windows.Win32.Foundation.PWSTR */,
+  SyncRootPath: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   SyncStatus: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
   return util.pointerFromFfi(libcldapi_dll.CfReportSyncStatus(util.pwstrToFfi(SyncRootPath), util.toPointer(SyncStatus)));
 }
 
 export function CfCreatePlaceholders(
-  BaseDirectoryPath: string | null /* Windows.Win32.Foundation.PWSTR */,
+  BaseDirectoryPath: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   PlaceholderArray: Deno.PointerValue | Uint8Array | null /* ptr */,
   PlaceholderCount: number /* u32 */,
   CreateFlags: CF_CREATE_FLAGS /* Windows.Win32.Storage.CloudFilters.CF_CREATE_FLAGS */,
@@ -1484,7 +1484,7 @@ export function CfCreatePlaceholders(
 }
 
 export function CfOpenFileWithOplock(
-  FilePath: string | null /* Windows.Win32.Foundation.PWSTR */,
+  FilePath: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   Flags: CF_OPEN_FILE_FLAGS /* Windows.Win32.Storage.CloudFilters.CF_OPEN_FILE_FLAGS */,
   ProtectedHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
@@ -1631,7 +1631,7 @@ export function CfGetPlaceholderInfo(
 }
 
 export function CfGetSyncRootInfoByPath(
-  FilePath: string | null /* Windows.Win32.Foundation.PWSTR */,
+  FilePath: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   InfoClass: CF_SYNC_ROOT_INFO_CLASS /* Windows.Win32.Storage.CloudFilters.CF_SYNC_ROOT_INFO_CLASS */,
   InfoBuffer: Deno.PointerValue | Uint8Array | null /* ptr */,
   InfoBufferLength: number /* u32 */,

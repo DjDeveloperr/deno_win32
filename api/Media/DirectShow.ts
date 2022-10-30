@@ -3681,7 +3681,7 @@ export interface REGFILTER {
   /** System.Guid */
   Clsid: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.Foundation.PWSTR */
-  Name: string | null;
+  Name: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeofREGFILTER = 16;
@@ -3726,7 +3726,7 @@ export function allocREGPINTYPES(data?: Partial<REGPINTYPES>): Uint8Array {
  */
 export interface REGFILTERPINS {
   /** Windows.Win32.Foundation.PWSTR */
-  strName: string | null;
+  strName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.BOOL */
   bRendered: boolean;
   /** Windows.Win32.Foundation.BOOL */
@@ -3738,7 +3738,7 @@ export interface REGFILTERPINS {
   /** ptr */
   clsConnectsToFilter: Deno.PointerValue | Uint8Array | null;
   /** Windows.Win32.Foundation.PWSTR */
-  strConnectsToPin: string | null;
+  strConnectsToPin: string | null | Uint8Array | Uint16Array;
   /** u32 */
   nMediaTypes: number;
   /** ptr */
@@ -4536,7 +4536,7 @@ export interface _u_e__Struct {
   /** u32 */
   dwValue: number;
   /** Windows.Win32.Foundation.PWSTR */
-  pwszName: string | null;
+  pwszName: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeof_u_e__Struct = 16;
@@ -6901,7 +6901,7 @@ export interface _Anonymous1_e__Union {
   /** usize */
   Data0: Deno.PointerValue;
   /** Windows.Win32.Foundation.PWSTR */
-  String: string | null;
+  String: string | null | Uint8Array | Uint16Array;
   /** usize */
   u: Deno.PointerValue;
   /** ptr */
@@ -10376,7 +10376,7 @@ export function allocBadSampleInfo(data?: Partial<BadSampleInfo>): Uint8Array {
  */
 export interface STREAMBUFFER_ATTRIBUTE {
   /** Windows.Win32.Foundation.PWSTR */
-  pszName: string | null;
+  pszName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Media.DirectShow.STREAMBUFFER_ATTR_DATATYPE */
   StreamBufferAttributeType: STREAMBUFFER_ATTR_DATATYPE;
   /** ptr */
@@ -13987,7 +13987,7 @@ try {
 
 export function AMGetErrorTextA(
   hr: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */,
-  pbuffer: string | null /* Windows.Win32.Foundation.PSTR */,
+  pbuffer: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   MaxLen: number /* u32 */,
 ): number /* u32 */ {
   return libQUARTZ_dll.AMGetErrorTextA(util.toPointer(hr), util.pstrToFfi(pbuffer), MaxLen);
@@ -13995,7 +13995,7 @@ export function AMGetErrorTextA(
 
 export function AMGetErrorTextW(
   hr: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */,
-  pbuffer: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pbuffer: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   MaxLen: number /* u32 */,
 ): number /* u32 */ {
   return libQUARTZ_dll.AMGetErrorTextW(util.toPointer(hr), util.pwstrToFfi(pbuffer), MaxLen);

@@ -1349,7 +1349,7 @@ export function SetConsoleWindowInfo(
 
 export function WriteConsoleOutputCharacterA(
   hConsoleOutput: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  lpCharacter: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpCharacter: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   nLength: number /* u32 */,
   dwWriteCoord: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Console.COORD */,
   lpNumberOfCharsWritten: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -1359,7 +1359,7 @@ export function WriteConsoleOutputCharacterA(
 
 export function WriteConsoleOutputCharacterW(
   hConsoleOutput: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  lpCharacter: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpCharacter: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   nLength: number /* u32 */,
   dwWriteCoord: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Console.COORD */,
   lpNumberOfCharsWritten: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -1379,7 +1379,7 @@ export function WriteConsoleOutputAttribute(
 
 export function ReadConsoleOutputCharacterA(
   hConsoleOutput: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  lpCharacter: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpCharacter: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   nLength: number /* u32 */,
   dwReadCoord: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Console.COORD */,
   lpNumberOfCharsRead: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -1389,7 +1389,7 @@ export function ReadConsoleOutputCharacterA(
 
 export function ReadConsoleOutputCharacterW(
   hConsoleOutput: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  lpCharacter: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpCharacter: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   nLength: number /* u32 */,
   dwReadCoord: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Console.COORD */,
   lpNumberOfCharsRead: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -1486,41 +1486,41 @@ export function ReadConsoleOutputW(
 }
 
 export function GetConsoleTitleA(
-  lpConsoleTitle: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpConsoleTitle: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   nSize: number /* u32 */,
 ): number /* u32 */ {
   return libKERNEL32_dll.GetConsoleTitleA(util.pstrToFfi(lpConsoleTitle), nSize);
 }
 
 export function GetConsoleTitleW(
-  lpConsoleTitle: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpConsoleTitle: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   nSize: number /* u32 */,
 ): number /* u32 */ {
   return libKERNEL32_dll.GetConsoleTitleW(util.pwstrToFfi(lpConsoleTitle), nSize);
 }
 
 export function GetConsoleOriginalTitleA(
-  lpConsoleTitle: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpConsoleTitle: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   nSize: number /* u32 */,
 ): number /* u32 */ {
   return libKERNEL32_dll.GetConsoleOriginalTitleA(util.pstrToFfi(lpConsoleTitle), nSize);
 }
 
 export function GetConsoleOriginalTitleW(
-  lpConsoleTitle: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpConsoleTitle: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   nSize: number /* u32 */,
 ): number /* u32 */ {
   return libKERNEL32_dll.GetConsoleOriginalTitleW(util.pwstrToFfi(lpConsoleTitle), nSize);
 }
 
 export function SetConsoleTitleA(
-  lpConsoleTitle: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpConsoleTitle: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libKERNEL32_dll.SetConsoleTitleA(util.pstrToFfi(lpConsoleTitle)));
 }
 
 export function SetConsoleTitleW(
-  lpConsoleTitle: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpConsoleTitle: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libKERNEL32_dll.SetConsoleTitleW(util.pwstrToFfi(lpConsoleTitle)));
 }
@@ -1599,47 +1599,47 @@ export function GetConsoleWindow(): Deno.PointerValue | null /* Windows.Win32.Fo
 }
 
 export function AddConsoleAliasA(
-  Source: string | null /* Windows.Win32.Foundation.PSTR */,
-  Target: string | null /* Windows.Win32.Foundation.PSTR */,
-  ExeName: string | null /* Windows.Win32.Foundation.PSTR */,
+  Source: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  Target: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  ExeName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libKERNEL32_dll.AddConsoleAliasA(util.pstrToFfi(Source), util.pstrToFfi(Target), util.pstrToFfi(ExeName)));
 }
 
 export function AddConsoleAliasW(
-  Source: string | null /* Windows.Win32.Foundation.PWSTR */,
-  Target: string | null /* Windows.Win32.Foundation.PWSTR */,
-  ExeName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  Source: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  Target: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  ExeName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libKERNEL32_dll.AddConsoleAliasW(util.pwstrToFfi(Source), util.pwstrToFfi(Target), util.pwstrToFfi(ExeName)));
 }
 
 export function GetConsoleAliasA(
-  Source: string | null /* Windows.Win32.Foundation.PSTR */,
-  TargetBuffer: string | null /* Windows.Win32.Foundation.PSTR */,
+  Source: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  TargetBuffer: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   TargetBufferLength: number /* u32 */,
-  ExeName: string | null /* Windows.Win32.Foundation.PSTR */,
+  ExeName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): number /* u32 */ {
   return libKERNEL32_dll.GetConsoleAliasA(util.pstrToFfi(Source), util.pstrToFfi(TargetBuffer), TargetBufferLength, util.pstrToFfi(ExeName));
 }
 
 export function GetConsoleAliasW(
-  Source: string | null /* Windows.Win32.Foundation.PWSTR */,
-  TargetBuffer: string | null /* Windows.Win32.Foundation.PWSTR */,
+  Source: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  TargetBuffer: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   TargetBufferLength: number /* u32 */,
-  ExeName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  ExeName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
   return libKERNEL32_dll.GetConsoleAliasW(util.pwstrToFfi(Source), util.pwstrToFfi(TargetBuffer), TargetBufferLength, util.pwstrToFfi(ExeName));
 }
 
 export function GetConsoleAliasesLengthA(
-  ExeName: string | null /* Windows.Win32.Foundation.PSTR */,
+  ExeName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): number /* u32 */ {
   return libKERNEL32_dll.GetConsoleAliasesLengthA(util.pstrToFfi(ExeName));
 }
 
 export function GetConsoleAliasesLengthW(
-  ExeName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  ExeName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
   return libKERNEL32_dll.GetConsoleAliasesLengthW(util.pwstrToFfi(ExeName));
 }
@@ -1653,85 +1653,85 @@ export function GetConsoleAliasExesLengthW(): number /* u32 */ {
 }
 
 export function GetConsoleAliasesA(
-  AliasBuffer: string | null /* Windows.Win32.Foundation.PSTR */,
+  AliasBuffer: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   AliasBufferLength: number /* u32 */,
-  ExeName: string | null /* Windows.Win32.Foundation.PSTR */,
+  ExeName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): number /* u32 */ {
   return libKERNEL32_dll.GetConsoleAliasesA(util.pstrToFfi(AliasBuffer), AliasBufferLength, util.pstrToFfi(ExeName));
 }
 
 export function GetConsoleAliasesW(
-  AliasBuffer: string | null /* Windows.Win32.Foundation.PWSTR */,
+  AliasBuffer: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   AliasBufferLength: number /* u32 */,
-  ExeName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  ExeName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
   return libKERNEL32_dll.GetConsoleAliasesW(util.pwstrToFfi(AliasBuffer), AliasBufferLength, util.pwstrToFfi(ExeName));
 }
 
 export function GetConsoleAliasExesA(
-  ExeNameBuffer: string | null /* Windows.Win32.Foundation.PSTR */,
+  ExeNameBuffer: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   ExeNameBufferLength: number /* u32 */,
 ): number /* u32 */ {
   return libKERNEL32_dll.GetConsoleAliasExesA(util.pstrToFfi(ExeNameBuffer), ExeNameBufferLength);
 }
 
 export function GetConsoleAliasExesW(
-  ExeNameBuffer: string | null /* Windows.Win32.Foundation.PWSTR */,
+  ExeNameBuffer: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   ExeNameBufferLength: number /* u32 */,
 ): number /* u32 */ {
   return libKERNEL32_dll.GetConsoleAliasExesW(util.pwstrToFfi(ExeNameBuffer), ExeNameBufferLength);
 }
 
 export function ExpungeConsoleCommandHistoryA(
-  ExeName: string | null /* Windows.Win32.Foundation.PSTR */,
+  ExeName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): void /* void */ {
   return libKERNEL32_dll.ExpungeConsoleCommandHistoryA(util.pstrToFfi(ExeName));
 }
 
 export function ExpungeConsoleCommandHistoryW(
-  ExeName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  ExeName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): void /* void */ {
   return libKERNEL32_dll.ExpungeConsoleCommandHistoryW(util.pwstrToFfi(ExeName));
 }
 
 export function SetConsoleNumberOfCommandsA(
   Number: number /* u32 */,
-  ExeName: string | null /* Windows.Win32.Foundation.PSTR */,
+  ExeName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libKERNEL32_dll.SetConsoleNumberOfCommandsA(Number, util.pstrToFfi(ExeName)));
 }
 
 export function SetConsoleNumberOfCommandsW(
   Number: number /* u32 */,
-  ExeName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  ExeName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libKERNEL32_dll.SetConsoleNumberOfCommandsW(Number, util.pwstrToFfi(ExeName)));
 }
 
 export function GetConsoleCommandHistoryLengthA(
-  ExeName: string | null /* Windows.Win32.Foundation.PSTR */,
+  ExeName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): number /* u32 */ {
   return libKERNEL32_dll.GetConsoleCommandHistoryLengthA(util.pstrToFfi(ExeName));
 }
 
 export function GetConsoleCommandHistoryLengthW(
-  ExeName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  ExeName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
   return libKERNEL32_dll.GetConsoleCommandHistoryLengthW(util.pwstrToFfi(ExeName));
 }
 
 export function GetConsoleCommandHistoryA(
-  Commands: string | null /* Windows.Win32.Foundation.PSTR */,
+  Commands: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   CommandBufferLength: number /* u32 */,
-  ExeName: string | null /* Windows.Win32.Foundation.PSTR */,
+  ExeName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): number /* u32 */ {
   return libKERNEL32_dll.GetConsoleCommandHistoryA(util.pstrToFfi(Commands), CommandBufferLength, util.pstrToFfi(ExeName));
 }
 
 export function GetConsoleCommandHistoryW(
-  Commands: string | null /* Windows.Win32.Foundation.PWSTR */,
+  Commands: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   CommandBufferLength: number /* u32 */,
-  ExeName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  ExeName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
   return libKERNEL32_dll.GetConsoleCommandHistoryW(util.pwstrToFfi(Commands), CommandBufferLength, util.pwstrToFfi(ExeName));
 }

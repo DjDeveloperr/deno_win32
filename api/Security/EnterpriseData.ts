@@ -136,7 +136,7 @@ try {
 // Symbols
 
 export function SrpCreateThreadNetworkContext(
-  enterpriseId: string | null /* Windows.Win32.Foundation.PWSTR */,
+  enterpriseId: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   threadNetworkContext: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
   return util.pointerFromFfi(libsrpapi_dll.SrpCreateThreadNetworkContext(util.pwstrToFfi(enterpriseId), util.toPointer(threadNetworkContext)));
@@ -150,7 +150,7 @@ export function SrpCloseThreadNetworkContext(
 
 export function SrpSetTokenEnterpriseId(
   tokenHandle: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  enterpriseId: string | null /* Windows.Win32.Foundation.PWSTR */,
+  enterpriseId: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
   return util.pointerFromFfi(libsrpapi_dll.SrpSetTokenEnterpriseId(util.toPointer(tokenHandle), util.pwstrToFfi(enterpriseId)));
 }
@@ -165,7 +165,7 @@ export function SrpGetEnterpriseIds(
 }
 
 export function SrpEnablePermissiveModeFileEncryption(
-  enterpriseId: string | null /* Windows.Win32.Foundation.PWSTR */,
+  enterpriseId: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
   return util.pointerFromFfi(libsrpapi_dll.SrpEnablePermissiveModeFileEncryption(util.pwstrToFfi(enterpriseId)));
 }
@@ -211,14 +211,14 @@ export function SrpHostingTerminate(
 }
 
 export function ProtectFileToEnterpriseIdentity(
-  fileOrFolderPath: string | null /* Windows.Win32.Foundation.PWSTR */,
-  identity: string | null /* Windows.Win32.Foundation.PWSTR */,
+  fileOrFolderPath: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  identity: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
   return util.pointerFromFfi(libefswrt_dll.ProtectFileToEnterpriseIdentity(util.pwstrToFfi(fileOrFolderPath), util.pwstrToFfi(identity)));
 }
 
 export function UnprotectFile(
-  fileOrFolderPath: string | null /* Windows.Win32.Foundation.PWSTR */,
+  fileOrFolderPath: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   options: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
   return util.pointerFromFfi(libefswrt_dll.UnprotectFile(util.pwstrToFfi(fileOrFolderPath), util.toPointer(options)));

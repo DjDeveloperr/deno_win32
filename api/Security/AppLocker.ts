@@ -118,7 +118,7 @@ export interface _u_e__Struct {
   /** u32 */
   dwValue: number;
   /** Windows.Win32.Foundation.PWSTR */
-  pwszName: string | null;
+  pwszName: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeof_u_e__Struct = 16;
@@ -174,7 +174,7 @@ export interface SAFER_CODE_PROPERTIES_V1 {
   /** u32 */
   dwCheckFlags: number;
   /** Windows.Win32.Foundation.PWSTR */
-  ImagePath: string | null;
+  ImagePath: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.HANDLE */
   hImageFileHandle: Uint8Array | Deno.PointerValue | null;
   /** u32 */
@@ -245,7 +245,7 @@ export interface SAFER_CODE_PROPERTIES_V2 {
   /** u32 */
   dwCheckFlags: number;
   /** Windows.Win32.Foundation.PWSTR */
-  ImagePath: string | null;
+  ImagePath: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.HANDLE */
   hImageFileHandle: Uint8Array | Deno.PointerValue | null;
   /** u32 */
@@ -265,11 +265,11 @@ export interface SAFER_CODE_PROPERTIES_V2 {
   /** u32 */
   dwWVTUIChoice: number;
   /** Windows.Win32.Foundation.PWSTR */
-  PackageMoniker: string | null;
+  PackageMoniker: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  PackagePublisher: string | null;
+  PackagePublisher: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  PackageName: string | null;
+  PackageName: string | null | Uint8Array | Uint16Array;
   /** u64 */
   PackageVersion: Deno.PointerValue;
   /** Windows.Win32.Foundation.BOOL */
@@ -396,7 +396,7 @@ export interface SAFER_PATHNAME_IDENTIFICATION {
   /** array */
   Description: Deno.PointerValue | null;
   /** Windows.Win32.Foundation.PWSTR */
-  ImageName: string | null;
+  ImageName: string | null | Uint8Array | Uint16Array;
   /** u32 */
   dwSaferFlags: number;
 }
@@ -658,14 +658,14 @@ export function SaferSetLevelInformation(
 
 export function SaferRecordEventLogEntry(
   hLevel: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Security.SAFER_LEVEL_HANDLE */,
-  szTargetPath: string | null /* Windows.Win32.Foundation.PWSTR */,
+  szTargetPath: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   lpReserved: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libADVAPI32_dll.SaferRecordEventLogEntry(util.toPointer(hLevel), util.pwstrToFfi(szTargetPath), util.toPointer(lpReserved)));
 }
 
 export function SaferiIsExecutableFileType(
-  szFullPathname: string | null /* Windows.Win32.Foundation.PWSTR */,
+  szFullPathname: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   bFromShellExecute: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.BOOLEAN */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libADVAPI32_dll.SaferiIsExecutableFileType(util.pwstrToFfi(szFullPathname), util.toPointer(bFromShellExecute)));

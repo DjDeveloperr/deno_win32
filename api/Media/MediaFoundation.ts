@@ -5932,7 +5932,7 @@ export interface D3D12_VIDEO_EXTENSION_COMMAND_INFO {
   /** System.Guid */
   CommandId: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.Foundation.PWSTR */
-  Name: string | null;
+  Name: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Graphics.Direct3D12.D3D12_COMMAND_LIST_SUPPORT_FLAGS */
   CommandListSupportFlags: D3D12_COMMAND_LIST_SUPPORT_FLAGS;
 }
@@ -6017,7 +6017,7 @@ export function allocD3D12_FEATURE_DATA_VIDEO_EXTENSION_COMMAND_PARAMETER_COUNT(
  */
 export interface D3D12_VIDEO_EXTENSION_COMMAND_PARAMETER_INFO {
   /** Windows.Win32.Foundation.PWSTR */
-  Name: string | null;
+  Name: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Media.MediaFoundation.D3D12_VIDEO_EXTENSION_COMMAND_PARAMETER_TYPE */
   Type: D3D12_VIDEO_EXTENSION_COMMAND_PARAMETER_TYPE;
   /** Windows.Win32.Media.MediaFoundation.D3D12_VIDEO_EXTENSION_COMMAND_PARAMETER_FLAGS */
@@ -12515,13 +12515,13 @@ export interface MFNetCredentialManagerGetParam {
   /** Windows.Win32.Foundation.BOOL */
   fClearTextPackage: boolean;
   /** Windows.Win32.Foundation.PWSTR */
-  pszUrl: string | null;
+  pszUrl: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pszSite: string | null;
+  pszSite: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pszRealm: string | null;
+  pszRealm: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pszPackage: string | null;
+  pszPackage: string | null | Uint8Array | Uint16Array;
   /** i32 */
   nRetries: number;
 }
@@ -12681,7 +12681,7 @@ export interface MFT_REGISTRATION_INFO {
   /** u32 */
   uiFlags: number;
   /** Windows.Win32.Foundation.PWSTR */
-  pszName: string | null;
+  pszName: string | null | Uint8Array | Uint16Array;
   /** u32 */
   cInTypes: number;
   /** ptr */
@@ -14165,13 +14165,13 @@ export interface MFP_ACQUIRE_USER_CREDENTIAL_EVENT {
   /** Windows.Win32.Foundation.HRESULT */
   hrAuthenticationStatus: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.Foundation.PWSTR */
-  pwszURL: string | null;
+  pwszURL: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pwszSite: string | null;
+  pwszSite: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pwszRealm: string | null;
+  pwszRealm: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pwszPackage: string | null;
+  pwszPackage: string | null | Uint8Array | Uint16Array;
   /** i32 */
   nRetries: number;
   /** u32 */
@@ -15738,7 +15738,7 @@ export function MFCreateCredentialCache(
 }
 
 export function MFCreateProxyLocator(
-  pszProtocol: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pszProtocol: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pProxyConfig: Uint8Array | Deno.PointerValue | null /* Windows.Win32.UI.Shell.PropertiesSystem.IPropertyStore */,
   ppProxyLocator: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
@@ -15785,7 +15785,7 @@ export function MFCreateTranscodeProfile(
 
 export function MFCreateTranscodeTopology(
   pSrc: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Media.MediaFoundation.IMFMediaSource */,
-  pwszOutputFilePath: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pwszOutputFilePath: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pProfile: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Media.MediaFoundation.IMFTranscodeProfile */,
   ppTranscodeTopo: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
@@ -15895,7 +15895,7 @@ export function MFCreateProtectedEnvironmentAccess(
 }
 
 export function MFLoadSignedLibrary(
-  pszName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pszName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   ppLib: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
   return util.pointerFromFfi(libMF_dll.MFLoadSignedLibrary(util.pwstrToFfi(pszName), util.toPointer(ppLib)));
@@ -15939,7 +15939,7 @@ export function MFCreateContentDecryptorContext(
 }
 
 export function MFCreateSensorGroup(
-  SensorGroupSymbolicLink: string | null /* Windows.Win32.Foundation.PWSTR */,
+  SensorGroupSymbolicLink: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   ppSensorGroup: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
   return util.pointerFromFfi(libMFSENSORGROUP_dll.MFCreateSensorGroup(util.pwstrToFfi(SensorGroupSymbolicLink), util.toPointer(ppSensorGroup)));
@@ -15957,7 +15957,7 @@ export function MFCreateSensorStream(
 export function MFCreateSensorProfile(
   ProfileType: Deno.PointerValue | Uint8Array | null /* ptr */,
   ProfileIndex: number /* u32 */,
-  Constraints: string | null /* Windows.Win32.Foundation.PWSTR */,
+  Constraints: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   ppProfile: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
   return util.pointerFromFfi(libMFSENSORGROUP_dll.MFCreateSensorProfile(util.toPointer(ProfileType), ProfileIndex, util.pwstrToFfi(Constraints), util.toPointer(ppProfile)));
@@ -15990,15 +15990,15 @@ export function MFCreateExtendedCameraIntrinsicModel(
 }
 
 export function MFCreateRelativePanelWatcher(
-  videoDeviceId: string | null /* Windows.Win32.Foundation.PWSTR */,
-  displayMonitorDeviceId: string | null /* Windows.Win32.Foundation.PWSTR */,
+  videoDeviceId: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  displayMonitorDeviceId: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   ppRelativePanelWatcher: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
   return util.pointerFromFfi(libMFSENSORGROUP_dll.MFCreateRelativePanelWatcher(util.pwstrToFfi(videoDeviceId), util.pwstrToFfi(displayMonitorDeviceId), util.toPointer(ppRelativePanelWatcher)));
 }
 
 export function MFCreateCameraOcclusionStateMonitor(
-  symbolicLink: string | null /* Windows.Win32.Foundation.PWSTR */,
+  symbolicLink: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   callback: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Media.MediaFoundation.IMFCameraOcclusionStateReportCallback */,
   occlusionStateMonitor: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
@@ -16072,7 +16072,7 @@ export function MFCreateASFMediaSink(
 }
 
 export function MFCreateASFMediaSinkActivate(
-  pwszFileName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pwszFileName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pContentInfo: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Media.MediaFoundation.IMFASFContentInfo */,
   ppIActivate: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
@@ -16255,7 +16255,7 @@ export function MFUnlockWorkQueue(
 
 export function MFBeginRegisterWorkQueueWithMMCSS(
   dwWorkQueueId: number /* u32 */,
-  wszClass: string | null /* Windows.Win32.Foundation.PWSTR */,
+  wszClass: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   dwTaskId: number /* u32 */,
   pDoneCallback: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Media.MediaFoundation.IMFAsyncCallback */,
   pDoneState: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Com.IUnknown */,
@@ -16265,7 +16265,7 @@ export function MFBeginRegisterWorkQueueWithMMCSS(
 
 export function MFBeginRegisterWorkQueueWithMMCSSEx(
   dwWorkQueueId: number /* u32 */,
-  wszClass: string | null /* Windows.Win32.Foundation.PWSTR */,
+  wszClass: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   dwTaskId: number /* u32 */,
   lPriority: number /* i32 */,
   pDoneCallback: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Media.MediaFoundation.IMFAsyncCallback */,
@@ -16297,7 +16297,7 @@ export function MFEndUnregisterWorkQueueWithMMCSS(
 
 export function MFGetWorkQueueMMCSSClass(
   dwWorkQueueId: number /* u32 */,
-  pwszClass: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pwszClass: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pcchClass: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
   return util.pointerFromFfi(libMFPlat_dll.MFGetWorkQueueMMCSSClass(dwWorkQueueId, util.pwstrToFfi(pwszClass), util.toPointer(pcchClass)));
@@ -16311,7 +16311,7 @@ export function MFGetWorkQueueMMCSSTaskId(
 }
 
 export function MFRegisterPlatformWithMMCSS(
-  wszClass: string | null /* Windows.Win32.Foundation.PWSTR */,
+  wszClass: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pdwTaskId: Deno.PointerValue | Uint8Array | null /* ptr */,
   lPriority: number /* i32 */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
@@ -16323,7 +16323,7 @@ export function MFUnregisterPlatformFromMMCSS(): Deno.PointerValue | null /* Win
 }
 
 export function MFLockSharedWorkQueue(
-  wszClass: string | null /* Windows.Win32.Foundation.PWSTR */,
+  wszClass: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   BasePriority: number /* i32 */,
   pdwTaskId: Deno.PointerValue | Uint8Array | null /* ptr */,
   pID: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -16357,7 +16357,7 @@ export function MFCreateFile(
   AccessMode: MF_FILE_ACCESSMODE /* Windows.Win32.Media.MediaFoundation.MF_FILE_ACCESSMODE */,
   OpenMode: MF_FILE_OPENMODE /* Windows.Win32.Media.MediaFoundation.MF_FILE_OPENMODE */,
   fFlags: MF_FILE_FLAGS /* Windows.Win32.Media.MediaFoundation.MF_FILE_FLAGS */,
-  pwszFileURL: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pwszFileURL: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   ppIByteStream: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
   return util.pointerFromFfi(libMFPlat_dll.MFCreateFile(AccessMode, OpenMode, fFlags, util.pwstrToFfi(pwszFileURL), util.toPointer(ppIByteStream)));
@@ -16376,7 +16376,7 @@ export function MFBeginCreateFile(
   AccessMode: MF_FILE_ACCESSMODE /* Windows.Win32.Media.MediaFoundation.MF_FILE_ACCESSMODE */,
   OpenMode: MF_FILE_OPENMODE /* Windows.Win32.Media.MediaFoundation.MF_FILE_OPENMODE */,
   fFlags: MF_FILE_FLAGS /* Windows.Win32.Media.MediaFoundation.MF_FILE_FLAGS */,
-  pwszFilePath: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pwszFilePath: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pCallback: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Media.MediaFoundation.IMFAsyncCallback */,
   pState: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Com.IUnknown */,
   ppCancelCookie: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -16549,7 +16549,7 @@ export function MFGetAttributesAsBlob(
 export function MFTRegister(
   clsidMFT: Uint8Array | Deno.PointerValue | null /* System.Guid */,
   guidCategory: Uint8Array | Deno.PointerValue | null /* System.Guid */,
-  pszName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pszName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   Flags: number /* u32 */,
   cInputTypes: number /* u32 */,
   pInputTypes: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -16569,7 +16569,7 @@ export function MFTUnregister(
 export function MFTRegisterLocal(
   pClassFactory: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Com.IClassFactory */,
   guidCategory: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pszName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pszName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   Flags: number /* u32 */,
   cInputTypes: number /* u32 */,
   pInputTypes: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -16588,7 +16588,7 @@ export function MFTUnregisterLocal(
 export function MFTRegisterLocalByCLSID(
   clisdMFT: Deno.PointerValue | Uint8Array | null /* ptr */,
   guidCategory: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pszName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pszName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   Flags: number /* u32 */,
   cInputTypes: number /* u32 */,
   pInputTypes: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -16667,15 +16667,15 @@ export function MFGetMFTMerit(
 }
 
 export function MFRegisterLocalSchemeHandler(
-  szScheme: string | null /* Windows.Win32.Foundation.PWSTR */,
+  szScheme: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pActivate: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Media.MediaFoundation.IMFActivate */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
   return util.pointerFromFfi(libMFPlat_dll.MFRegisterLocalSchemeHandler(util.pwstrToFfi(szScheme), util.toPointer(pActivate)));
 }
 
 export function MFRegisterLocalByteStreamHandler(
-  szFileExtension: string | null /* Windows.Win32.Foundation.PWSTR */,
-  szMimeType: string | null /* Windows.Win32.Foundation.PWSTR */,
+  szFileExtension: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  szMimeType: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pActivate: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Media.MediaFoundation.IMFActivate */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
   return util.pointerFromFfi(libMFPlat_dll.MFRegisterLocalByteStreamHandler(util.pwstrToFfi(szFileExtension), util.pwstrToFfi(szMimeType), util.toPointer(pActivate)));
@@ -16689,7 +16689,7 @@ export function MFCreateMFByteStreamWrapper(
 }
 
 export function MFCreateMediaExtensionActivate(
-  szActivatableClassId: string | null /* Windows.Win32.Foundation.PWSTR */,
+  szActivatableClassId: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pConfiguration: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Com.IUnknown */,
   riid: Deno.PointerValue | Uint8Array | null /* ptr */,
   ppvObject: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -17054,7 +17054,7 @@ export function MFCreateCollection(
 export function MFHeapAlloc(
   nSize: Deno.PointerValue /* usize */,
   dwFlags: number /* u32 */,
-  pszFile: string | null /* Windows.Win32.Foundation.PSTR */,
+  pszFile: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   line: number /* i32 */,
   eat: EAllocationType /* Windows.Win32.Media.MediaFoundation.EAllocationType */,
 ): Deno.PointerValue | null /* ptr */ {
@@ -17102,7 +17102,7 @@ export function MFSplitSample(
 }
 
 export function MFCreateSourceReaderFromURL(
-  pwszURL: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pwszURL: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pAttributes: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Media.MediaFoundation.IMFAttributes */,
   ppSourceReader: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
@@ -17126,7 +17126,7 @@ export function MFCreateSourceReaderFromMediaSource(
 }
 
 export function MFCreateSinkWriterFromURL(
-  pwszOutputURL: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pwszOutputURL: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pByteStream: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Media.MediaFoundation.IMFByteStream */,
   pAttributes: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Media.MediaFoundation.IMFAttributes */,
   ppSinkWriter: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -17193,7 +17193,7 @@ export function MFCreateVideoSampleAllocator(
 }
 
 export function MFPCreateMediaPlayer(
-  pwszURL: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pwszURL: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   fStartPlayback: boolean /* Windows.Win32.Foundation.BOOL */,
   creationOptions: MFP_CREATION_OPTIONS /* Windows.Win32.Media.MediaFoundation.MFP_CREATION_OPTIONS */,
   pCallback: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Media.MediaFoundation.IMFPMediaPlayerCallback */,
@@ -17206,7 +17206,7 @@ export function MFPCreateMediaPlayer(
 export function MFCreateEncryptedMediaExtensionsStoreActivate(
   pmpHost: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Media.MediaFoundation.IMFPMPHostApp */,
   objectStream: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Com.IStream */,
-  classId: string | null /* Windows.Win32.Foundation.PWSTR */,
+  classId: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   activate: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
   return util.pointerFromFfi(libMF_dll.MFCreateEncryptedMediaExtensionsStoreActivate(util.toPointer(pmpHost), util.toPointer(objectStream), util.pwstrToFfi(classId), util.toPointer(activate)));
@@ -17216,8 +17216,8 @@ export function MFCreateVirtualCamera(
   type: MFVirtualCameraType /* Windows.Win32.Media.MediaFoundation.MFVirtualCameraType */,
   lifetime: MFVirtualCameraLifetime /* Windows.Win32.Media.MediaFoundation.MFVirtualCameraLifetime */,
   access: MFVirtualCameraAccess /* Windows.Win32.Media.MediaFoundation.MFVirtualCameraAccess */,
-  friendlyName: string | null /* Windows.Win32.Foundation.PWSTR */,
-  sourceId: string | null /* Windows.Win32.Foundation.PWSTR */,
+  friendlyName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  sourceId: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   categories: Deno.PointerValue | Uint8Array | null /* ptr */,
   categoryCount: number /* u32 */,
   virtualCamera: Deno.PointerValue | Uint8Array | null /* ptr */,

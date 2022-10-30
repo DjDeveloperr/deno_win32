@@ -334,7 +334,7 @@ export type PSTR = Deno.PointerValue | Uint8Array | null;
  */
 export interface CREDENTIAL_ATTRIBUTEA {
   /** Windows.Win32.Foundation.PSTR */
-  Keyword: string | null;
+  Keyword: string | null | Uint8Array;
   /** u32 */
   Flags: number;
   /** u32 */
@@ -369,7 +369,7 @@ export type PWSTR = Deno.PointerValue | Uint8Array | null;
  */
 export interface CREDENTIAL_ATTRIBUTEW {
   /** Windows.Win32.Foundation.PWSTR */
-  Keyword: string | null;
+  Keyword: string | null | Uint8Array | Uint16Array;
   /** u32 */
   Flags: number;
   /** u32 */
@@ -428,9 +428,9 @@ export interface CREDENTIALA {
   /** Windows.Win32.Security.Credentials.CRED_TYPE */
   Type: CRED_TYPE;
   /** Windows.Win32.Foundation.PSTR */
-  TargetName: string | null;
+  TargetName: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  Comment: string | null;
+  Comment: string | null | Uint8Array;
   /** Windows.Win32.Foundation.FILETIME */
   LastWritten: Uint8Array | Deno.PointerValue | null;
   /** u32 */
@@ -444,9 +444,9 @@ export interface CREDENTIALA {
   /** ptr */
   Attributes: Deno.PointerValue | Uint8Array | null;
   /** Windows.Win32.Foundation.PSTR */
-  TargetAlias: string | null;
+  TargetAlias: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  UserName: string | null;
+  UserName: string | null | Uint8Array;
 }
 
 export const sizeofCREDENTIALA = 80;
@@ -503,9 +503,9 @@ export interface CREDENTIALW {
   /** Windows.Win32.Security.Credentials.CRED_TYPE */
   Type: CRED_TYPE;
   /** Windows.Win32.Foundation.PWSTR */
-  TargetName: string | null;
+  TargetName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  Comment: string | null;
+  Comment: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.FILETIME */
   LastWritten: Uint8Array | Deno.PointerValue | null;
   /** u32 */
@@ -519,9 +519,9 @@ export interface CREDENTIALW {
   /** ptr */
   Attributes: Deno.PointerValue | Uint8Array | null;
   /** Windows.Win32.Foundation.PWSTR */
-  TargetAlias: string | null;
+  TargetAlias: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  UserName: string | null;
+  UserName: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeofCREDENTIALW = 80;
@@ -574,19 +574,19 @@ export function allocCREDENTIALW(data?: Partial<CREDENTIALW>): Uint8Array {
  */
 export interface CREDENTIAL_TARGET_INFORMATIONA {
   /** Windows.Win32.Foundation.PSTR */
-  TargetName: string | null;
+  TargetName: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  NetbiosServerName: string | null;
+  NetbiosServerName: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  DnsServerName: string | null;
+  DnsServerName: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  NetbiosDomainName: string | null;
+  NetbiosDomainName: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  DnsDomainName: string | null;
+  DnsDomainName: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  DnsTreeName: string | null;
+  DnsTreeName: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  PackageName: string | null;
+  PackageName: string | null | Uint8Array;
   /** u32 */
   Flags: number;
   /** u32 */
@@ -649,19 +649,19 @@ export function allocCREDENTIAL_TARGET_INFORMATIONA(data?: Partial<CREDENTIAL_TA
  */
 export interface CREDENTIAL_TARGET_INFORMATIONW {
   /** Windows.Win32.Foundation.PWSTR */
-  TargetName: string | null;
+  TargetName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  NetbiosServerName: string | null;
+  NetbiosServerName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  DnsServerName: string | null;
+  DnsServerName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  NetbiosDomainName: string | null;
+  NetbiosDomainName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  DnsDomainName: string | null;
+  DnsDomainName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  DnsTreeName: string | null;
+  DnsTreeName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  PackageName: string | null;
+  PackageName: string | null | Uint8Array | Uint16Array;
   /** u32 */
   Flags: number;
   /** u32 */
@@ -747,7 +747,7 @@ export function allocCERT_CREDENTIAL_INFO(data?: Partial<CERT_CREDENTIAL_INFO>):
  */
 export interface USERNAME_TARGET_CREDENTIAL_INFO {
   /** Windows.Win32.Foundation.PWSTR */
-  UserName: string | null;
+  UserName: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeofUSERNAME_TARGET_CREDENTIAL_INFO = 8;
@@ -799,9 +799,9 @@ export interface CREDUI_INFOA {
   /** Windows.Win32.Foundation.HWND */
   hwndParent: Deno.PointerValue | null;
   /** Windows.Win32.Foundation.PSTR */
-  pszMessageText: string | null;
+  pszMessageText: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  pszCaptionText: string | null;
+  pszCaptionText: string | null | Uint8Array;
   /** Windows.Win32.Graphics.Gdi.HBITMAP */
   hbmBanner: Uint8Array | Deno.PointerValue | null;
 }
@@ -840,9 +840,9 @@ export interface CREDUI_INFOW {
   /** Windows.Win32.Foundation.HWND */
   hwndParent: Deno.PointerValue | null;
   /** Windows.Win32.Foundation.PWSTR */
-  pszMessageText: string | null;
+  pszMessageText: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pszCaptionText: string | null;
+  pszCaptionText: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Graphics.Gdi.HBITMAP */
   hbmBanner: Uint8Array | Deno.PointerValue | null;
 }
@@ -1027,7 +1027,7 @@ export function allocSCARD_T1_REQUEST(data?: Partial<SCARD_T1_REQUEST>): Uint8Ar
  */
 export interface SCARD_READERSTATEA {
   /** Windows.Win32.Foundation.PSTR */
-  szReader: string | null;
+  szReader: string | null | Uint8Array;
   /** ptr */
   pvUserData: Deno.PointerValue | Uint8Array | null;
   /** Windows.Win32.Security.Credentials.SCARD_STATE */
@@ -1069,7 +1069,7 @@ export function allocSCARD_READERSTATEA(data?: Partial<SCARD_READERSTATEA>): Uin
  */
 export interface SCARD_READERSTATEW {
   /** Windows.Win32.Foundation.PWSTR */
-  szReader: string | null;
+  szReader: string | null | Uint8Array | Uint16Array;
   /** ptr */
   pvUserData: Deno.PointerValue | Uint8Array | null;
   /** Windows.Win32.Security.Credentials.SCARD_STATE */
@@ -1140,7 +1140,7 @@ export interface OPENCARD_SEARCH_CRITERIAA {
   /** u32 */
   dwStructSize: number;
   /** Windows.Win32.Foundation.PSTR */
-  lpstrGroupNames: string | null;
+  lpstrGroupNames: string | null | Uint8Array;
   /** u32 */
   nMaxGroupNames: number;
   /** ptr */
@@ -1148,7 +1148,7 @@ export interface OPENCARD_SEARCH_CRITERIAA {
   /** u32 */
   cguidInterfaces: number;
   /** Windows.Win32.Foundation.PSTR */
-  lpstrCardNames: string | null;
+  lpstrCardNames: string | null | Uint8Array;
   /** u32 */
   nMaxCardNames: number;
   /** Windows.Win32.Security.Credentials.LPOCNCHKPROC */
@@ -1216,7 +1216,7 @@ export interface OPENCARD_SEARCH_CRITERIAW {
   /** u32 */
   dwStructSize: number;
   /** Windows.Win32.Foundation.PWSTR */
-  lpstrGroupNames: string | null;
+  lpstrGroupNames: string | null | Uint8Array | Uint16Array;
   /** u32 */
   nMaxGroupNames: number;
   /** ptr */
@@ -1224,7 +1224,7 @@ export interface OPENCARD_SEARCH_CRITERIAW {
   /** u32 */
   cguidInterfaces: number;
   /** Windows.Win32.Foundation.PWSTR */
-  lpstrCardNames: string | null;
+  lpstrCardNames: string | null | Uint8Array | Uint16Array;
   /** u32 */
   nMaxCardNames: number;
   /** Windows.Win32.Security.Credentials.LPOCNCHKPROC */
@@ -1300,9 +1300,9 @@ export interface OPENCARDNAME_EXA {
   /** u32 */
   dwFlags: number;
   /** Windows.Win32.Foundation.PSTR */
-  lpstrTitle: string | null;
+  lpstrTitle: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  lpstrSearchDesc: string | null;
+  lpstrSearchDesc: string | null | Uint8Array;
   /** Windows.Win32.UI.WindowsAndMessaging.HICON */
   hIcon: Uint8Array | Deno.PointerValue | null;
   /** ptr */
@@ -1316,11 +1316,11 @@ export interface OPENCARDNAME_EXA {
   /** u32 */
   dwPreferredProtocols: number;
   /** Windows.Win32.Foundation.PSTR */
-  lpstrRdr: string | null;
+  lpstrRdr: string | null | Uint8Array;
   /** u32 */
   nMaxRdr: number;
   /** Windows.Win32.Foundation.PSTR */
-  lpstrCard: string | null;
+  lpstrCard: string | null | Uint8Array;
   /** u32 */
   nMaxCard: number;
   /** u32 */
@@ -1401,9 +1401,9 @@ export interface OPENCARDNAME_EXW {
   /** u32 */
   dwFlags: number;
   /** Windows.Win32.Foundation.PWSTR */
-  lpstrTitle: string | null;
+  lpstrTitle: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  lpstrSearchDesc: string | null;
+  lpstrSearchDesc: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.UI.WindowsAndMessaging.HICON */
   hIcon: Uint8Array | Deno.PointerValue | null;
   /** ptr */
@@ -1417,11 +1417,11 @@ export interface OPENCARDNAME_EXW {
   /** u32 */
   dwPreferredProtocols: number;
   /** Windows.Win32.Foundation.PWSTR */
-  lpstrRdr: string | null;
+  lpstrRdr: string | null | Uint8Array | Uint16Array;
   /** u32 */
   nMaxRdr: number;
   /** Windows.Win32.Foundation.PWSTR */
-  lpstrCard: string | null;
+  lpstrCard: string | null | Uint8Array | Uint16Array;
   /** u32 */
   nMaxCard: number;
   /** u32 */
@@ -1561,11 +1561,11 @@ export interface OPENCARDNAMEA {
   /** usize */
   hSCardContext: Deno.PointerValue;
   /** Windows.Win32.Foundation.PSTR */
-  lpstrGroupNames: string | null;
+  lpstrGroupNames: string | null | Uint8Array;
   /** u32 */
   nMaxGroupNames: number;
   /** Windows.Win32.Foundation.PSTR */
-  lpstrCardNames: string | null;
+  lpstrCardNames: string | null | Uint8Array;
   /** u32 */
   nMaxCardNames: number;
   /** ptr */
@@ -1573,15 +1573,15 @@ export interface OPENCARDNAMEA {
   /** u32 */
   cguidInterfaces: number;
   /** Windows.Win32.Foundation.PSTR */
-  lpstrRdr: string | null;
+  lpstrRdr: string | null | Uint8Array;
   /** u32 */
   nMaxRdr: number;
   /** Windows.Win32.Foundation.PSTR */
-  lpstrCard: string | null;
+  lpstrCard: string | null | Uint8Array;
   /** u32 */
   nMaxCard: number;
   /** Windows.Win32.Foundation.PSTR */
-  lpstrTitle: string | null;
+  lpstrTitle: string | null | Uint8Array;
   /** u32 */
   dwFlags: number;
   /** ptr */
@@ -1690,11 +1690,11 @@ export interface OPENCARDNAMEW {
   /** usize */
   hSCardContext: Deno.PointerValue;
   /** Windows.Win32.Foundation.PWSTR */
-  lpstrGroupNames: string | null;
+  lpstrGroupNames: string | null | Uint8Array | Uint16Array;
   /** u32 */
   nMaxGroupNames: number;
   /** Windows.Win32.Foundation.PWSTR */
-  lpstrCardNames: string | null;
+  lpstrCardNames: string | null | Uint8Array | Uint16Array;
   /** u32 */
   nMaxCardNames: number;
   /** ptr */
@@ -1702,15 +1702,15 @@ export interface OPENCARDNAMEW {
   /** u32 */
   cguidInterfaces: number;
   /** Windows.Win32.Foundation.PWSTR */
-  lpstrRdr: string | null;
+  lpstrRdr: string | null | Uint8Array | Uint16Array;
   /** u32 */
   nMaxRdr: number;
   /** Windows.Win32.Foundation.PWSTR */
-  lpstrCard: string | null;
+  lpstrCard: string | null | Uint8Array | Uint16Array;
   /** u32 */
   nMaxCard: number;
   /** Windows.Win32.Foundation.PWSTR */
-  lpstrTitle: string | null;
+  lpstrTitle: string | null | Uint8Array | Uint16Array;
   /** u32 */
   dwFlags: number;
   /** ptr */
@@ -2477,7 +2477,7 @@ export function CredWriteA(
 }
 
 export function CredReadW(
-  TargetName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  TargetName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   Type: number /* u32 */,
   Flags: number /* u32 */,
   Credential: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -2486,7 +2486,7 @@ export function CredReadW(
 }
 
 export function CredReadA(
-  TargetName: string | null /* Windows.Win32.Foundation.PSTR */,
+  TargetName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   Type: number /* u32 */,
   Flags: number /* u32 */,
   Credential: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -2495,7 +2495,7 @@ export function CredReadA(
 }
 
 export function CredEnumerateW(
-  Filter: string | null /* Windows.Win32.Foundation.PWSTR */,
+  Filter: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   Flags: CRED_ENUMERATE_FLAGS /* Windows.Win32.Security.Credentials.CRED_ENUMERATE_FLAGS */,
   Count: Deno.PointerValue | Uint8Array | null /* ptr */,
   Credential: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -2504,7 +2504,7 @@ export function CredEnumerateW(
 }
 
 export function CredEnumerateA(
-  Filter: string | null /* Windows.Win32.Foundation.PSTR */,
+  Filter: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   Flags: CRED_ENUMERATE_FLAGS /* Windows.Win32.Security.Credentials.CRED_ENUMERATE_FLAGS */,
   Count: Deno.PointerValue | Uint8Array | null /* ptr */,
   Credential: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -2547,7 +2547,7 @@ export function CredReadDomainCredentialsA(
 }
 
 export function CredDeleteW(
-  TargetName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  TargetName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   Type: number /* u32 */,
   Flags: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
@@ -2555,7 +2555,7 @@ export function CredDeleteW(
 }
 
 export function CredDeleteA(
-  TargetName: string | null /* Windows.Win32.Foundation.PSTR */,
+  TargetName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   Type: number /* u32 */,
   Flags: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
@@ -2563,8 +2563,8 @@ export function CredDeleteA(
 }
 
 export function CredRenameW(
-  OldTargetName: string | null /* Windows.Win32.Foundation.PWSTR */,
-  NewTargetName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  OldTargetName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  NewTargetName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   Type: number /* u32 */,
   Flags: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
@@ -2572,8 +2572,8 @@ export function CredRenameW(
 }
 
 export function CredRenameA(
-  OldTargetName: string | null /* Windows.Win32.Foundation.PSTR */,
-  NewTargetName: string | null /* Windows.Win32.Foundation.PSTR */,
+  OldTargetName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  NewTargetName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   Type: number /* u32 */,
   Flags: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
@@ -2581,7 +2581,7 @@ export function CredRenameA(
 }
 
 export function CredGetTargetInfoW(
-  TargetName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  TargetName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   Flags: number /* u32 */,
   TargetInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
@@ -2589,7 +2589,7 @@ export function CredGetTargetInfoW(
 }
 
 export function CredGetTargetInfoA(
-  TargetName: string | null /* Windows.Win32.Foundation.PSTR */,
+  TargetName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   Flags: number /* u32 */,
   TargetInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
@@ -2613,7 +2613,7 @@ export function CredMarshalCredentialA(
 }
 
 export function CredUnmarshalCredentialW(
-  MarshaledCredential: string | null /* Windows.Win32.Foundation.PWSTR */,
+  MarshaledCredential: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   CredType: Deno.PointerValue | Uint8Array | null /* ptr */,
   Credential: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
@@ -2621,7 +2621,7 @@ export function CredUnmarshalCredentialW(
 }
 
 export function CredUnmarshalCredentialA(
-  MarshaledCredential: string | null /* Windows.Win32.Foundation.PSTR */,
+  MarshaledCredential: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   CredType: Deno.PointerValue | Uint8Array | null /* ptr */,
   Credential: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
@@ -2629,13 +2629,13 @@ export function CredUnmarshalCredentialA(
 }
 
 export function CredIsMarshaledCredentialW(
-  MarshaledCredential: string | null /* Windows.Win32.Foundation.PWSTR */,
+  MarshaledCredential: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libADVAPI32_dll.CredIsMarshaledCredentialW(util.pwstrToFfi(MarshaledCredential)));
 }
 
 export function CredIsMarshaledCredentialA(
-  MarshaledCredential: string | null /* Windows.Win32.Foundation.PSTR */,
+  MarshaledCredential: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libADVAPI32_dll.CredIsMarshaledCredentialA(util.pstrToFfi(MarshaledCredential)));
 }
@@ -2644,11 +2644,11 @@ export function CredUnPackAuthenticationBufferW(
   dwFlags: CRED_PACK_FLAGS /* Windows.Win32.Security.Credentials.CRED_PACK_FLAGS */,
   pAuthBuffer: Deno.PointerValue | Uint8Array | null /* ptr */,
   cbAuthBuffer: number /* u32 */,
-  pszUserName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pszUserName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pcchMaxUserName: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pszDomainName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pszDomainName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pcchMaxDomainName: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pszPassword: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pszPassword: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pcchMaxPassword: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libcredui_dll.CredUnPackAuthenticationBufferW(dwFlags, util.toPointer(pAuthBuffer), cbAuthBuffer, util.pwstrToFfi(pszUserName), util.toPointer(pcchMaxUserName), util.pwstrToFfi(pszDomainName), util.toPointer(pcchMaxDomainName), util.pwstrToFfi(pszPassword), util.toPointer(pcchMaxPassword)));
@@ -2658,11 +2658,11 @@ export function CredUnPackAuthenticationBufferA(
   dwFlags: CRED_PACK_FLAGS /* Windows.Win32.Security.Credentials.CRED_PACK_FLAGS */,
   pAuthBuffer: Deno.PointerValue | Uint8Array | null /* ptr */,
   cbAuthBuffer: number /* u32 */,
-  pszUserName: string | null /* Windows.Win32.Foundation.PSTR */,
+  pszUserName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   pcchlMaxUserName: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pszDomainName: string | null /* Windows.Win32.Foundation.PSTR */,
+  pszDomainName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   pcchMaxDomainName: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pszPassword: string | null /* Windows.Win32.Foundation.PSTR */,
+  pszPassword: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   pcchMaxPassword: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libcredui_dll.CredUnPackAuthenticationBufferA(dwFlags, util.toPointer(pAuthBuffer), cbAuthBuffer, util.pstrToFfi(pszUserName), util.toPointer(pcchlMaxUserName), util.pstrToFfi(pszDomainName), util.toPointer(pcchMaxDomainName), util.pstrToFfi(pszPassword), util.toPointer(pcchMaxPassword)));
@@ -2670,8 +2670,8 @@ export function CredUnPackAuthenticationBufferA(
 
 export function CredPackAuthenticationBufferW(
   dwFlags: CRED_PACK_FLAGS /* Windows.Win32.Security.Credentials.CRED_PACK_FLAGS */,
-  pszUserName: string | null /* Windows.Win32.Foundation.PWSTR */,
-  pszPassword: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pszUserName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  pszPassword: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pPackedCredentials: Deno.PointerValue | Uint8Array | null /* ptr */,
   pcbPackedCredentials: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
@@ -2680,8 +2680,8 @@ export function CredPackAuthenticationBufferW(
 
 export function CredPackAuthenticationBufferA(
   dwFlags: CRED_PACK_FLAGS /* Windows.Win32.Security.Credentials.CRED_PACK_FLAGS */,
-  pszUserName: string | null /* Windows.Win32.Foundation.PSTR */,
-  pszPassword: string | null /* Windows.Win32.Foundation.PSTR */,
+  pszUserName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  pszPassword: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   pPackedCredentials: Deno.PointerValue | Uint8Array | null /* ptr */,
   pcbPackedCredentials: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
@@ -2690,9 +2690,9 @@ export function CredPackAuthenticationBufferA(
 
 export function CredProtectW(
   fAsSelf: boolean /* Windows.Win32.Foundation.BOOL */,
-  pszCredentials: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pszCredentials: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   cchCredentials: number /* u32 */,
-  pszProtectedCredentials: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pszProtectedCredentials: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pcchMaxChars: Deno.PointerValue | Uint8Array | null /* ptr */,
   ProtectionType: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
@@ -2701,9 +2701,9 @@ export function CredProtectW(
 
 export function CredProtectA(
   fAsSelf: boolean /* Windows.Win32.Foundation.BOOL */,
-  pszCredentials: string | null /* Windows.Win32.Foundation.PSTR */,
+  pszCredentials: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   cchCredentials: number /* u32 */,
-  pszProtectedCredentials: string | null /* Windows.Win32.Foundation.PSTR */,
+  pszProtectedCredentials: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   pcchMaxChars: Deno.PointerValue | Uint8Array | null /* ptr */,
   ProtectionType: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
@@ -2712,9 +2712,9 @@ export function CredProtectA(
 
 export function CredUnprotectW(
   fAsSelf: boolean /* Windows.Win32.Foundation.BOOL */,
-  pszProtectedCredentials: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pszProtectedCredentials: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   cchProtectedCredentials: number /* u32 */,
-  pszCredentials: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pszCredentials: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pcchMaxChars: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libADVAPI32_dll.CredUnprotectW(util.boolToFfi(fAsSelf), util.pwstrToFfi(pszProtectedCredentials), cchProtectedCredentials, util.pwstrToFfi(pszCredentials), util.toPointer(pcchMaxChars)));
@@ -2722,30 +2722,30 @@ export function CredUnprotectW(
 
 export function CredUnprotectA(
   fAsSelf: boolean /* Windows.Win32.Foundation.BOOL */,
-  pszProtectedCredentials: string | null /* Windows.Win32.Foundation.PSTR */,
+  pszProtectedCredentials: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   cchProtectedCredentials: number /* u32 */,
-  pszCredentials: string | null /* Windows.Win32.Foundation.PSTR */,
+  pszCredentials: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   pcchMaxChars: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libADVAPI32_dll.CredUnprotectA(util.boolToFfi(fAsSelf), util.pstrToFfi(pszProtectedCredentials), cchProtectedCredentials, util.pstrToFfi(pszCredentials), util.toPointer(pcchMaxChars)));
 }
 
 export function CredIsProtectedW(
-  pszProtectedCredentials: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pszProtectedCredentials: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pProtectionType: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libADVAPI32_dll.CredIsProtectedW(util.pwstrToFfi(pszProtectedCredentials), util.toPointer(pProtectionType)));
 }
 
 export function CredIsProtectedA(
-  pszProtectedCredentials: string | null /* Windows.Win32.Foundation.PSTR */,
+  pszProtectedCredentials: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   pProtectionType: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libADVAPI32_dll.CredIsProtectedA(util.pstrToFfi(pszProtectedCredentials), util.toPointer(pProtectionType)));
 }
 
 export function CredFindBestCredentialW(
-  TargetName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  TargetName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   Type: number /* u32 */,
   Flags: number /* u32 */,
   Credential: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -2754,7 +2754,7 @@ export function CredFindBestCredentialW(
 }
 
 export function CredFindBestCredentialA(
-  TargetName: string | null /* Windows.Win32.Foundation.PSTR */,
+  TargetName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   Type: number /* u32 */,
   Flags: number /* u32 */,
   Credential: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -2777,12 +2777,12 @@ export function CredFree(
 
 export function CredUIPromptForCredentialsW(
   pUiInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pszTargetName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pszTargetName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pContext: Deno.PointerValue | Uint8Array | null /* ptr */,
   dwAuthError: number /* u32 */,
-  pszUserName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pszUserName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   ulUserNameBufferSize: number /* u32 */,
-  pszPassword: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pszPassword: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   ulPasswordBufferSize: number /* u32 */,
   save: Deno.PointerValue | Uint8Array | null /* ptr */,
   dwFlags: CREDUI_FLAGS /* Windows.Win32.Security.Credentials.CREDUI_FLAGS */,
@@ -2792,12 +2792,12 @@ export function CredUIPromptForCredentialsW(
 
 export function CredUIPromptForCredentialsA(
   pUiInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pszTargetName: string | null /* Windows.Win32.Foundation.PSTR */,
+  pszTargetName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   pContext: Deno.PointerValue | Uint8Array | null /* ptr */,
   dwAuthError: number /* u32 */,
-  pszUserName: string | null /* Windows.Win32.Foundation.PSTR */,
+  pszUserName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   ulUserNameBufferSize: number /* u32 */,
-  pszPassword: string | null /* Windows.Win32.Foundation.PSTR */,
+  pszPassword: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   ulPasswordBufferSize: number /* u32 */,
   save: Deno.PointerValue | Uint8Array | null /* ptr */,
   dwFlags: CREDUI_FLAGS /* Windows.Win32.Security.Credentials.CREDUI_FLAGS */,
@@ -2834,32 +2834,32 @@ export function CredUIPromptForWindowsCredentialsA(
 }
 
 export function CredUIParseUserNameW(
-  UserName: string | null /* Windows.Win32.Foundation.PWSTR */,
-  user: string | null /* Windows.Win32.Foundation.PWSTR */,
+  UserName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  user: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   userBufferSize: number /* u32 */,
-  domain: string | null /* Windows.Win32.Foundation.PWSTR */,
+  domain: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   domainBufferSize: number /* u32 */,
 ): number /* u32 */ {
   return libcredui_dll.CredUIParseUserNameW(util.pwstrToFfi(UserName), util.pwstrToFfi(user), userBufferSize, util.pwstrToFfi(domain), domainBufferSize);
 }
 
 export function CredUIParseUserNameA(
-  userName: string | null /* Windows.Win32.Foundation.PSTR */,
-  user: string | null /* Windows.Win32.Foundation.PSTR */,
+  userName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  user: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   userBufferSize: number /* u32 */,
-  domain: string | null /* Windows.Win32.Foundation.PSTR */,
+  domain: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   domainBufferSize: number /* u32 */,
 ): number /* u32 */ {
   return libcredui_dll.CredUIParseUserNameA(util.pstrToFfi(userName), util.pstrToFfi(user), userBufferSize, util.pstrToFfi(domain), domainBufferSize);
 }
 
 export function CredUICmdLinePromptForCredentialsW(
-  pszTargetName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pszTargetName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pContext: Deno.PointerValue | Uint8Array | null /* ptr */,
   dwAuthError: number /* u32 */,
-  UserName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  UserName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   ulUserBufferSize: number /* u32 */,
-  pszPassword: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pszPassword: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   ulPasswordBufferSize: number /* u32 */,
   pfSave: Deno.PointerValue | Uint8Array | null /* ptr */,
   dwFlags: CREDUI_FLAGS /* Windows.Win32.Security.Credentials.CREDUI_FLAGS */,
@@ -2868,12 +2868,12 @@ export function CredUICmdLinePromptForCredentialsW(
 }
 
 export function CredUICmdLinePromptForCredentialsA(
-  pszTargetName: string | null /* Windows.Win32.Foundation.PSTR */,
+  pszTargetName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   pContext: Deno.PointerValue | Uint8Array | null /* ptr */,
   dwAuthError: number /* u32 */,
-  UserName: string | null /* Windows.Win32.Foundation.PSTR */,
+  UserName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   ulUserBufferSize: number /* u32 */,
-  pszPassword: string | null /* Windows.Win32.Foundation.PSTR */,
+  pszPassword: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   ulPasswordBufferSize: number /* u32 */,
   pfSave: Deno.PointerValue | Uint8Array | null /* ptr */,
   dwFlags: CREDUI_FLAGS /* Windows.Win32.Security.Credentials.CREDUI_FLAGS */,
@@ -2882,30 +2882,30 @@ export function CredUICmdLinePromptForCredentialsA(
 }
 
 export function CredUIConfirmCredentialsW(
-  pszTargetName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pszTargetName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   bConfirm: boolean /* Windows.Win32.Foundation.BOOL */,
 ): number /* u32 */ {
   return libcredui_dll.CredUIConfirmCredentialsW(util.pwstrToFfi(pszTargetName), util.boolToFfi(bConfirm));
 }
 
 export function CredUIConfirmCredentialsA(
-  pszTargetName: string | null /* Windows.Win32.Foundation.PSTR */,
+  pszTargetName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   bConfirm: boolean /* Windows.Win32.Foundation.BOOL */,
 ): number /* u32 */ {
   return libcredui_dll.CredUIConfirmCredentialsA(util.pstrToFfi(pszTargetName), util.boolToFfi(bConfirm));
 }
 
 export function CredUIStoreSSOCredW(
-  pszRealm: string | null /* Windows.Win32.Foundation.PWSTR */,
-  pszUsername: string | null /* Windows.Win32.Foundation.PWSTR */,
-  pszPassword: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pszRealm: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  pszUsername: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  pszPassword: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   bPersist: boolean /* Windows.Win32.Foundation.BOOL */,
 ): number /* u32 */ {
   return libcredui_dll.CredUIStoreSSOCredW(util.pwstrToFfi(pszRealm), util.pwstrToFfi(pszUsername), util.pwstrToFfi(pszPassword), util.boolToFfi(bPersist));
 }
 
 export function CredUIReadSSOCredW(
-  pszRealm: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pszRealm: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   ppszUsername: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
   return libcredui_dll.CredUIReadSSOCredW(util.pwstrToFfi(pszRealm), util.toPointer(ppszUsername));
@@ -2934,7 +2934,7 @@ export function SCardIsValidContext(
 
 export function SCardListReaderGroupsA(
   hContext: Deno.PointerValue /* usize */,
-  mszGroups: string | null /* Windows.Win32.Foundation.PSTR */,
+  mszGroups: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   pcchGroups: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
   return libWinSCard_dll.SCardListReaderGroupsA(hContext, util.pstrToFfi(mszGroups), util.toPointer(pcchGroups));
@@ -2942,7 +2942,7 @@ export function SCardListReaderGroupsA(
 
 export function SCardListReaderGroupsW(
   hContext: Deno.PointerValue /* usize */,
-  mszGroups: string | null /* Windows.Win32.Foundation.PWSTR */,
+  mszGroups: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pcchGroups: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
   return libWinSCard_dll.SCardListReaderGroupsW(hContext, util.pwstrToFfi(mszGroups), util.toPointer(pcchGroups));
@@ -2950,8 +2950,8 @@ export function SCardListReaderGroupsW(
 
 export function SCardListReadersA(
   hContext: Deno.PointerValue /* usize */,
-  mszGroups: string | null /* Windows.Win32.Foundation.PSTR */,
-  mszReaders: string | null /* Windows.Win32.Foundation.PSTR */,
+  mszGroups: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  mszReaders: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   pcchReaders: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
   return libWinSCard_dll.SCardListReadersA(hContext, util.pstrToFfi(mszGroups), util.pstrToFfi(mszReaders), util.toPointer(pcchReaders));
@@ -2959,8 +2959,8 @@ export function SCardListReadersA(
 
 export function SCardListReadersW(
   hContext: Deno.PointerValue /* usize */,
-  mszGroups: string | null /* Windows.Win32.Foundation.PWSTR */,
-  mszReaders: string | null /* Windows.Win32.Foundation.PWSTR */,
+  mszGroups: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  mszReaders: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pcchReaders: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
   return libWinSCard_dll.SCardListReadersW(hContext, util.pwstrToFfi(mszGroups), util.pwstrToFfi(mszReaders), util.toPointer(pcchReaders));
@@ -2971,7 +2971,7 @@ export function SCardListCardsA(
   pbAtr: Deno.PointerValue | Uint8Array | null /* ptr */,
   rgquidInterfaces: Deno.PointerValue | Uint8Array | null /* ptr */,
   cguidInterfaceCount: number /* u32 */,
-  mszCards: string | null /* Windows.Win32.Foundation.PSTR */,
+  mszCards: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   pcchCards: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
   return libWinSCard_dll.SCardListCardsA(hContext, util.toPointer(pbAtr), util.toPointer(rgquidInterfaces), cguidInterfaceCount, util.pstrToFfi(mszCards), util.toPointer(pcchCards));
@@ -2982,7 +2982,7 @@ export function SCardListCardsW(
   pbAtr: Deno.PointerValue | Uint8Array | null /* ptr */,
   rgquidInterfaces: Deno.PointerValue | Uint8Array | null /* ptr */,
   cguidInterfaceCount: number /* u32 */,
-  mszCards: string | null /* Windows.Win32.Foundation.PWSTR */,
+  mszCards: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pcchCards: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
   return libWinSCard_dll.SCardListCardsW(hContext, util.toPointer(pbAtr), util.toPointer(rgquidInterfaces), cguidInterfaceCount, util.pwstrToFfi(mszCards), util.toPointer(pcchCards));
@@ -2990,7 +2990,7 @@ export function SCardListCardsW(
 
 export function SCardListInterfacesA(
   hContext: Deno.PointerValue /* usize */,
-  szCard: string | null /* Windows.Win32.Foundation.PSTR */,
+  szCard: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   pguidInterfaces: Deno.PointerValue | Uint8Array | null /* ptr */,
   pcguidInterfaces: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
@@ -2999,7 +2999,7 @@ export function SCardListInterfacesA(
 
 export function SCardListInterfacesW(
   hContext: Deno.PointerValue /* usize */,
-  szCard: string | null /* Windows.Win32.Foundation.PWSTR */,
+  szCard: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pguidInterfaces: Deno.PointerValue | Uint8Array | null /* ptr */,
   pcguidInterfaces: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
@@ -3008,7 +3008,7 @@ export function SCardListInterfacesW(
 
 export function SCardGetProviderIdA(
   hContext: Deno.PointerValue /* usize */,
-  szCard: string | null /* Windows.Win32.Foundation.PSTR */,
+  szCard: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   pguidProviderId: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
   return libWinSCard_dll.SCardGetProviderIdA(hContext, util.pstrToFfi(szCard), util.toPointer(pguidProviderId));
@@ -3016,7 +3016,7 @@ export function SCardGetProviderIdA(
 
 export function SCardGetProviderIdW(
   hContext: Deno.PointerValue /* usize */,
-  szCard: string | null /* Windows.Win32.Foundation.PWSTR */,
+  szCard: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pguidProviderId: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
   return libWinSCard_dll.SCardGetProviderIdW(hContext, util.pwstrToFfi(szCard), util.toPointer(pguidProviderId));
@@ -3024,9 +3024,9 @@ export function SCardGetProviderIdW(
 
 export function SCardGetCardTypeProviderNameA(
   hContext: Deno.PointerValue /* usize */,
-  szCardName: string | null /* Windows.Win32.Foundation.PSTR */,
+  szCardName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   dwProviderId: number /* u32 */,
-  szProvider: string | null /* Windows.Win32.Foundation.PSTR */,
+  szProvider: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   pcchProvider: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
   return libWinSCard_dll.SCardGetCardTypeProviderNameA(hContext, util.pstrToFfi(szCardName), dwProviderId, util.pstrToFfi(szProvider), util.toPointer(pcchProvider));
@@ -3034,9 +3034,9 @@ export function SCardGetCardTypeProviderNameA(
 
 export function SCardGetCardTypeProviderNameW(
   hContext: Deno.PointerValue /* usize */,
-  szCardName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  szCardName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   dwProviderId: number /* u32 */,
-  szProvider: string | null /* Windows.Win32.Foundation.PWSTR */,
+  szProvider: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pcchProvider: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
   return libWinSCard_dll.SCardGetCardTypeProviderNameW(hContext, util.pwstrToFfi(szCardName), dwProviderId, util.pwstrToFfi(szProvider), util.toPointer(pcchProvider));
@@ -3044,97 +3044,97 @@ export function SCardGetCardTypeProviderNameW(
 
 export function SCardIntroduceReaderGroupA(
   hContext: Deno.PointerValue /* usize */,
-  szGroupName: string | null /* Windows.Win32.Foundation.PSTR */,
+  szGroupName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): number /* i32 */ {
   return libWinSCard_dll.SCardIntroduceReaderGroupA(hContext, util.pstrToFfi(szGroupName));
 }
 
 export function SCardIntroduceReaderGroupW(
   hContext: Deno.PointerValue /* usize */,
-  szGroupName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  szGroupName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* i32 */ {
   return libWinSCard_dll.SCardIntroduceReaderGroupW(hContext, util.pwstrToFfi(szGroupName));
 }
 
 export function SCardForgetReaderGroupA(
   hContext: Deno.PointerValue /* usize */,
-  szGroupName: string | null /* Windows.Win32.Foundation.PSTR */,
+  szGroupName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): number /* i32 */ {
   return libWinSCard_dll.SCardForgetReaderGroupA(hContext, util.pstrToFfi(szGroupName));
 }
 
 export function SCardForgetReaderGroupW(
   hContext: Deno.PointerValue /* usize */,
-  szGroupName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  szGroupName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* i32 */ {
   return libWinSCard_dll.SCardForgetReaderGroupW(hContext, util.pwstrToFfi(szGroupName));
 }
 
 export function SCardIntroduceReaderA(
   hContext: Deno.PointerValue /* usize */,
-  szReaderName: string | null /* Windows.Win32.Foundation.PSTR */,
-  szDeviceName: string | null /* Windows.Win32.Foundation.PSTR */,
+  szReaderName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  szDeviceName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): number /* i32 */ {
   return libWinSCard_dll.SCardIntroduceReaderA(hContext, util.pstrToFfi(szReaderName), util.pstrToFfi(szDeviceName));
 }
 
 export function SCardIntroduceReaderW(
   hContext: Deno.PointerValue /* usize */,
-  szReaderName: string | null /* Windows.Win32.Foundation.PWSTR */,
-  szDeviceName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  szReaderName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  szDeviceName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* i32 */ {
   return libWinSCard_dll.SCardIntroduceReaderW(hContext, util.pwstrToFfi(szReaderName), util.pwstrToFfi(szDeviceName));
 }
 
 export function SCardForgetReaderA(
   hContext: Deno.PointerValue /* usize */,
-  szReaderName: string | null /* Windows.Win32.Foundation.PSTR */,
+  szReaderName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): number /* i32 */ {
   return libWinSCard_dll.SCardForgetReaderA(hContext, util.pstrToFfi(szReaderName));
 }
 
 export function SCardForgetReaderW(
   hContext: Deno.PointerValue /* usize */,
-  szReaderName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  szReaderName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* i32 */ {
   return libWinSCard_dll.SCardForgetReaderW(hContext, util.pwstrToFfi(szReaderName));
 }
 
 export function SCardAddReaderToGroupA(
   hContext: Deno.PointerValue /* usize */,
-  szReaderName: string | null /* Windows.Win32.Foundation.PSTR */,
-  szGroupName: string | null /* Windows.Win32.Foundation.PSTR */,
+  szReaderName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  szGroupName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): number /* i32 */ {
   return libWinSCard_dll.SCardAddReaderToGroupA(hContext, util.pstrToFfi(szReaderName), util.pstrToFfi(szGroupName));
 }
 
 export function SCardAddReaderToGroupW(
   hContext: Deno.PointerValue /* usize */,
-  szReaderName: string | null /* Windows.Win32.Foundation.PWSTR */,
-  szGroupName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  szReaderName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  szGroupName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* i32 */ {
   return libWinSCard_dll.SCardAddReaderToGroupW(hContext, util.pwstrToFfi(szReaderName), util.pwstrToFfi(szGroupName));
 }
 
 export function SCardRemoveReaderFromGroupA(
   hContext: Deno.PointerValue /* usize */,
-  szReaderName: string | null /* Windows.Win32.Foundation.PSTR */,
-  szGroupName: string | null /* Windows.Win32.Foundation.PSTR */,
+  szReaderName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  szGroupName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): number /* i32 */ {
   return libWinSCard_dll.SCardRemoveReaderFromGroupA(hContext, util.pstrToFfi(szReaderName), util.pstrToFfi(szGroupName));
 }
 
 export function SCardRemoveReaderFromGroupW(
   hContext: Deno.PointerValue /* usize */,
-  szReaderName: string | null /* Windows.Win32.Foundation.PWSTR */,
-  szGroupName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  szReaderName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  szGroupName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* i32 */ {
   return libWinSCard_dll.SCardRemoveReaderFromGroupW(hContext, util.pwstrToFfi(szReaderName), util.pwstrToFfi(szGroupName));
 }
 
 export function SCardIntroduceCardTypeA(
   hContext: Deno.PointerValue /* usize */,
-  szCardName: string | null /* Windows.Win32.Foundation.PSTR */,
+  szCardName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   pguidPrimaryProvider: Deno.PointerValue | Uint8Array | null /* ptr */,
   rgguidInterfaces: Deno.PointerValue | Uint8Array | null /* ptr */,
   dwInterfaceCount: number /* u32 */,
@@ -3147,7 +3147,7 @@ export function SCardIntroduceCardTypeA(
 
 export function SCardIntroduceCardTypeW(
   hContext: Deno.PointerValue /* usize */,
-  szCardName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  szCardName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pguidPrimaryProvider: Deno.PointerValue | Uint8Array | null /* ptr */,
   rgguidInterfaces: Deno.PointerValue | Uint8Array | null /* ptr */,
   dwInterfaceCount: number /* u32 */,
@@ -3160,32 +3160,32 @@ export function SCardIntroduceCardTypeW(
 
 export function SCardSetCardTypeProviderNameA(
   hContext: Deno.PointerValue /* usize */,
-  szCardName: string | null /* Windows.Win32.Foundation.PSTR */,
+  szCardName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   dwProviderId: number /* u32 */,
-  szProvider: string | null /* Windows.Win32.Foundation.PSTR */,
+  szProvider: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): number /* i32 */ {
   return libWinSCard_dll.SCardSetCardTypeProviderNameA(hContext, util.pstrToFfi(szCardName), dwProviderId, util.pstrToFfi(szProvider));
 }
 
 export function SCardSetCardTypeProviderNameW(
   hContext: Deno.PointerValue /* usize */,
-  szCardName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  szCardName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   dwProviderId: number /* u32 */,
-  szProvider: string | null /* Windows.Win32.Foundation.PWSTR */,
+  szProvider: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* i32 */ {
   return libWinSCard_dll.SCardSetCardTypeProviderNameW(hContext, util.pwstrToFfi(szCardName), dwProviderId, util.pwstrToFfi(szProvider));
 }
 
 export function SCardForgetCardTypeA(
   hContext: Deno.PointerValue /* usize */,
-  szCardName: string | null /* Windows.Win32.Foundation.PSTR */,
+  szCardName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): number /* i32 */ {
   return libWinSCard_dll.SCardForgetCardTypeA(hContext, util.pstrToFfi(szCardName));
 }
 
 export function SCardForgetCardTypeW(
   hContext: Deno.PointerValue /* usize */,
-  szCardName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  szCardName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* i32 */ {
   return libWinSCard_dll.SCardForgetCardTypeW(hContext, util.pwstrToFfi(szCardName));
 }
@@ -3207,7 +3207,7 @@ export function SCardReleaseStartedEvent(): void /* void */ {
 
 export function SCardLocateCardsA(
   hContext: Deno.PointerValue /* usize */,
-  mszCards: string | null /* Windows.Win32.Foundation.PSTR */,
+  mszCards: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   rgReaderStates: Deno.PointerValue | Uint8Array | null /* ptr */,
   cReaders: number /* u32 */,
 ): number /* i32 */ {
@@ -3216,7 +3216,7 @@ export function SCardLocateCardsA(
 
 export function SCardLocateCardsW(
   hContext: Deno.PointerValue /* usize */,
-  mszCards: string | null /* Windows.Win32.Foundation.PWSTR */,
+  mszCards: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   rgReaderStates: Deno.PointerValue | Uint8Array | null /* ptr */,
   cReaders: number /* u32 */,
 ): number /* i32 */ {
@@ -3269,7 +3269,7 @@ export function SCardCancel(
 
 export function SCardConnectA(
   hContext: Deno.PointerValue /* usize */,
-  szReader: string | null /* Windows.Win32.Foundation.PSTR */,
+  szReader: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   dwShareMode: number /* u32 */,
   dwPreferredProtocols: number /* u32 */,
   phCard: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -3280,7 +3280,7 @@ export function SCardConnectA(
 
 export function SCardConnectW(
   hContext: Deno.PointerValue /* usize */,
-  szReader: string | null /* Windows.Win32.Foundation.PWSTR */,
+  szReader: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   dwShareMode: number /* u32 */,
   dwPreferredProtocols: number /* u32 */,
   phCard: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -3331,7 +3331,7 @@ export function SCardState(
 
 export function SCardStatusA(
   hCard: Deno.PointerValue /* usize */,
-  mszReaderNames: string | null /* Windows.Win32.Foundation.PSTR */,
+  mszReaderNames: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   pcchReaderLen: Deno.PointerValue | Uint8Array | null /* ptr */,
   pdwState: Deno.PointerValue | Uint8Array | null /* ptr */,
   pdwProtocol: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -3343,7 +3343,7 @@ export function SCardStatusA(
 
 export function SCardStatusW(
   hCard: Deno.PointerValue /* usize */,
-  mszReaderNames: string | null /* Windows.Win32.Foundation.PWSTR */,
+  mszReaderNames: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pcchReaderLen: Deno.PointerValue | Uint8Array | null /* ptr */,
   pdwState: Deno.PointerValue | Uint8Array | null /* ptr */,
   pdwProtocol: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -3434,7 +3434,7 @@ export function SCardReadCacheA(
   hContext: Deno.PointerValue /* usize */,
   CardIdentifier: Deno.PointerValue | Uint8Array | null /* ptr */,
   FreshnessCounter: number /* u32 */,
-  LookupName: string | null /* Windows.Win32.Foundation.PSTR */,
+  LookupName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   Data: Deno.PointerValue | Uint8Array | null /* ptr */,
   DataLen: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
@@ -3445,7 +3445,7 @@ export function SCardReadCacheW(
   hContext: Deno.PointerValue /* usize */,
   CardIdentifier: Deno.PointerValue | Uint8Array | null /* ptr */,
   FreshnessCounter: number /* u32 */,
-  LookupName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  LookupName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   Data: Deno.PointerValue | Uint8Array | null /* ptr */,
   DataLen: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
@@ -3456,7 +3456,7 @@ export function SCardWriteCacheA(
   hContext: Deno.PointerValue /* usize */,
   CardIdentifier: Deno.PointerValue | Uint8Array | null /* ptr */,
   FreshnessCounter: number /* u32 */,
-  LookupName: string | null /* Windows.Win32.Foundation.PSTR */,
+  LookupName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   Data: Deno.PointerValue | Uint8Array | null /* ptr */,
   DataLen: number /* u32 */,
 ): number /* i32 */ {
@@ -3467,7 +3467,7 @@ export function SCardWriteCacheW(
   hContext: Deno.PointerValue /* usize */,
   CardIdentifier: Deno.PointerValue | Uint8Array | null /* ptr */,
   FreshnessCounter: number /* u32 */,
-  LookupName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  LookupName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   Data: Deno.PointerValue | Uint8Array | null /* ptr */,
   DataLen: number /* u32 */,
 ): number /* i32 */ {
@@ -3476,7 +3476,7 @@ export function SCardWriteCacheW(
 
 export function SCardGetReaderIconA(
   hContext: Deno.PointerValue /* usize */,
-  szReaderName: string | null /* Windows.Win32.Foundation.PSTR */,
+  szReaderName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   pbIcon: Deno.PointerValue | Uint8Array | null /* ptr */,
   pcbIcon: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
@@ -3485,7 +3485,7 @@ export function SCardGetReaderIconA(
 
 export function SCardGetReaderIconW(
   hContext: Deno.PointerValue /* usize */,
-  szReaderName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  szReaderName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pbIcon: Deno.PointerValue | Uint8Array | null /* ptr */,
   pcbIcon: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
@@ -3494,7 +3494,7 @@ export function SCardGetReaderIconW(
 
 export function SCardGetDeviceTypeIdA(
   hContext: Deno.PointerValue /* usize */,
-  szReaderName: string | null /* Windows.Win32.Foundation.PSTR */,
+  szReaderName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   pdwDeviceTypeId: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
   return libWinSCard_dll.SCardGetDeviceTypeIdA(hContext, util.pstrToFfi(szReaderName), util.toPointer(pdwDeviceTypeId));
@@ -3502,7 +3502,7 @@ export function SCardGetDeviceTypeIdA(
 
 export function SCardGetDeviceTypeIdW(
   hContext: Deno.PointerValue /* usize */,
-  szReaderName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  szReaderName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pdwDeviceTypeId: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
   return libWinSCard_dll.SCardGetDeviceTypeIdW(hContext, util.pwstrToFfi(szReaderName), util.toPointer(pdwDeviceTypeId));
@@ -3510,8 +3510,8 @@ export function SCardGetDeviceTypeIdW(
 
 export function SCardGetReaderDeviceInstanceIdA(
   hContext: Deno.PointerValue /* usize */,
-  szReaderName: string | null /* Windows.Win32.Foundation.PSTR */,
-  szDeviceInstanceId: string | null /* Windows.Win32.Foundation.PSTR */,
+  szReaderName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  szDeviceInstanceId: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   pcchDeviceInstanceId: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
   return libWinSCard_dll.SCardGetReaderDeviceInstanceIdA(hContext, util.pstrToFfi(szReaderName), util.pstrToFfi(szDeviceInstanceId), util.toPointer(pcchDeviceInstanceId));
@@ -3519,8 +3519,8 @@ export function SCardGetReaderDeviceInstanceIdA(
 
 export function SCardGetReaderDeviceInstanceIdW(
   hContext: Deno.PointerValue /* usize */,
-  szReaderName: string | null /* Windows.Win32.Foundation.PWSTR */,
-  szDeviceInstanceId: string | null /* Windows.Win32.Foundation.PWSTR */,
+  szReaderName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  szDeviceInstanceId: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pcchDeviceInstanceId: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
   return libWinSCard_dll.SCardGetReaderDeviceInstanceIdW(hContext, util.pwstrToFfi(szReaderName), util.pwstrToFfi(szDeviceInstanceId), util.toPointer(pcchDeviceInstanceId));
@@ -3528,8 +3528,8 @@ export function SCardGetReaderDeviceInstanceIdW(
 
 export function SCardListReadersWithDeviceInstanceIdA(
   hContext: Deno.PointerValue /* usize */,
-  szDeviceInstanceId: string | null /* Windows.Win32.Foundation.PSTR */,
-  mszReaders: string | null /* Windows.Win32.Foundation.PSTR */,
+  szDeviceInstanceId: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  mszReaders: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   pcchReaders: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
   return libWinSCard_dll.SCardListReadersWithDeviceInstanceIdA(hContext, util.pstrToFfi(szDeviceInstanceId), util.pstrToFfi(mszReaders), util.toPointer(pcchReaders));
@@ -3537,8 +3537,8 @@ export function SCardListReadersWithDeviceInstanceIdA(
 
 export function SCardListReadersWithDeviceInstanceIdW(
   hContext: Deno.PointerValue /* usize */,
-  szDeviceInstanceId: string | null /* Windows.Win32.Foundation.PWSTR */,
-  mszReaders: string | null /* Windows.Win32.Foundation.PWSTR */,
+  szDeviceInstanceId: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  mszReaders: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pcchReaders: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
   return libWinSCard_dll.SCardListReadersWithDeviceInstanceIdW(hContext, util.pwstrToFfi(szDeviceInstanceId), util.pwstrToFfi(mszReaders), util.toPointer(pcchReaders));

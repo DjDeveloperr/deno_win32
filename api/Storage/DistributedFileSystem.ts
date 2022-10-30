@@ -238,7 +238,7 @@ export type PWSTR = Deno.PointerValue | Uint8Array | null;
  */
 export interface DFS_INFO_1 {
   /** Windows.Win32.Foundation.PWSTR */
-  EntryPath: string | null;
+  EntryPath: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeofDFS_INFO_1 = 8;
@@ -259,9 +259,9 @@ export function allocDFS_INFO_1(data?: Partial<DFS_INFO_1>): Uint8Array {
  */
 export interface DFS_INFO_2 {
   /** Windows.Win32.Foundation.PWSTR */
-  EntryPath: string | null;
+  EntryPath: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  Comment: string | null;
+  Comment: string | null | Uint8Array | Uint16Array;
   /** u32 */
   State: number;
   /** u32 */
@@ -297,9 +297,9 @@ export interface DFS_STORAGE_INFO {
   /** u32 */
   State: number;
   /** Windows.Win32.Foundation.PWSTR */
-  ServerName: string | null;
+  ServerName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  ShareName: string | null;
+  ShareName: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeofDFS_STORAGE_INFO = 24;
@@ -330,9 +330,9 @@ export interface DFS_STORAGE_INFO_1 {
   /** u32 */
   State: number;
   /** Windows.Win32.Foundation.PWSTR */
-  ServerName: string | null;
+  ServerName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  ShareName: string | null;
+  ShareName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Storage.DistributedFileSystem.DFS_TARGET_PRIORITY */
   TargetPriority: Uint8Array | Deno.PointerValue | null;
 }
@@ -365,9 +365,9 @@ export function allocDFS_STORAGE_INFO_1(data?: Partial<DFS_STORAGE_INFO_1>): Uin
  */
 export interface DFS_INFO_3 {
   /** Windows.Win32.Foundation.PWSTR */
-  EntryPath: string | null;
+  EntryPath: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  Comment: string | null;
+  Comment: string | null | Uint8Array | Uint16Array;
   /** u32 */
   State: number;
   /** u32 */
@@ -405,9 +405,9 @@ export function allocDFS_INFO_3(data?: Partial<DFS_INFO_3>): Uint8Array {
  */
 export interface DFS_INFO_4 {
   /** Windows.Win32.Foundation.PWSTR */
-  EntryPath: string | null;
+  EntryPath: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  Comment: string | null;
+  Comment: string | null | Uint8Array | Uint16Array;
   /** u32 */
   State: number;
   /** u32 */
@@ -454,9 +454,9 @@ export function allocDFS_INFO_4(data?: Partial<DFS_INFO_4>): Uint8Array {
  */
 export interface DFS_INFO_5 {
   /** Windows.Win32.Foundation.PWSTR */
-  EntryPath: string | null;
+  EntryPath: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  Comment: string | null;
+  Comment: string | null | Uint8Array | Uint16Array;
   /** u32 */
   State: number;
   /** u32 */
@@ -507,9 +507,9 @@ export function allocDFS_INFO_5(data?: Partial<DFS_INFO_5>): Uint8Array {
  */
 export interface DFS_INFO_6 {
   /** Windows.Win32.Foundation.PWSTR */
-  EntryPath: string | null;
+  EntryPath: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  Comment: string | null;
+  Comment: string | null | Uint8Array | Uint16Array;
   /** u32 */
   State: number;
   /** u32 */
@@ -584,9 +584,9 @@ export type PSECURITY_DESCRIPTOR = Deno.PointerValue | Uint8Array | null;
  */
 export interface DFS_INFO_8 {
   /** Windows.Win32.Foundation.PWSTR */
-  EntryPath: string | null;
+  EntryPath: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  Comment: string | null;
+  Comment: string | null | Uint8Array | Uint16Array;
   /** u32 */
   State: number;
   /** u32 */
@@ -646,9 +646,9 @@ export function allocDFS_INFO_8(data?: Partial<DFS_INFO_8>): Uint8Array {
  */
 export interface DFS_INFO_9 {
   /** Windows.Win32.Foundation.PWSTR */
-  EntryPath: string | null;
+  EntryPath: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  Comment: string | null;
+  Comment: string | null | Uint8Array | Uint16Array;
   /** u32 */
   State: number;
   /** u32 */
@@ -738,7 +738,7 @@ export function allocDFS_INFO_50(data?: Partial<DFS_INFO_50>): Uint8Array {
  */
 export interface DFS_INFO_100 {
   /** Windows.Win32.Foundation.PWSTR */
-  Comment: string | null;
+  Comment: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeofDFS_INFO_100 = 8;
@@ -837,7 +837,7 @@ export function allocDFS_INFO_104(data?: Partial<DFS_INFO_104>): Uint8Array {
  */
 export interface DFS_INFO_105 {
   /** Windows.Win32.Foundation.PWSTR */
-  Comment: string | null;
+  Comment: string | null | Uint8Array | Uint16Array;
   /** u32 */
   State: number;
   /** u32 */
@@ -897,7 +897,7 @@ export function allocDFS_INFO_106(data?: Partial<DFS_INFO_106>): Uint8Array {
  */
 export interface DFS_INFO_107 {
   /** Windows.Win32.Foundation.PWSTR */
-  Comment: string | null;
+  Comment: string | null | Uint8Array | Uint16Array;
   /** u32 */
   State: number;
   /** u32 */
@@ -966,7 +966,7 @@ export function allocDFS_INFO_150(data?: Partial<DFS_INFO_150>): Uint8Array {
  */
 export interface DFS_INFO_200 {
   /** Windows.Win32.Foundation.PWSTR */
-  FtDfsName: string | null;
+  FtDfsName: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeofDFS_INFO_200 = 8;
@@ -989,7 +989,7 @@ export interface DFS_INFO_300 {
   /** u32 */
   Flags: number;
   /** Windows.Win32.Foundation.PWSTR */
-  DfsName: string | null;
+  DfsName: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeofDFS_INFO_300 = 16;
@@ -1015,7 +1015,7 @@ export interface DFS_SITENAME_INFO {
   /** u32 */
   SiteFlags: number;
   /** Windows.Win32.Foundation.PWSTR */
-  SiteName: string | null;
+  SiteName: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeofDFS_SITENAME_INFO = 16;
@@ -1228,71 +1228,71 @@ try {
 // Symbols
 
 export function NetDfsAdd(
-  DfsEntryPath: string | null /* Windows.Win32.Foundation.PWSTR */,
-  ServerName: string | null /* Windows.Win32.Foundation.PWSTR */,
-  ShareName: string | null /* Windows.Win32.Foundation.PWSTR */,
-  Comment: string | null /* Windows.Win32.Foundation.PWSTR */,
+  DfsEntryPath: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  ServerName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  ShareName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  Comment: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   Flags: number /* u32 */,
 ): number /* u32 */ {
   return libNETAPI32_dll.NetDfsAdd(util.pwstrToFfi(DfsEntryPath), util.pwstrToFfi(ServerName), util.pwstrToFfi(ShareName), util.pwstrToFfi(Comment), Flags);
 }
 
 export function NetDfsAddStdRoot(
-  ServerName: string | null /* Windows.Win32.Foundation.PWSTR */,
-  RootShare: string | null /* Windows.Win32.Foundation.PWSTR */,
-  Comment: string | null /* Windows.Win32.Foundation.PWSTR */,
+  ServerName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  RootShare: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  Comment: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   Flags: number /* u32 */,
 ): number /* u32 */ {
   return libNETAPI32_dll.NetDfsAddStdRoot(util.pwstrToFfi(ServerName), util.pwstrToFfi(RootShare), util.pwstrToFfi(Comment), Flags);
 }
 
 export function NetDfsRemoveStdRoot(
-  ServerName: string | null /* Windows.Win32.Foundation.PWSTR */,
-  RootShare: string | null /* Windows.Win32.Foundation.PWSTR */,
+  ServerName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  RootShare: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   Flags: number /* u32 */,
 ): number /* u32 */ {
   return libNETAPI32_dll.NetDfsRemoveStdRoot(util.pwstrToFfi(ServerName), util.pwstrToFfi(RootShare), Flags);
 }
 
 export function NetDfsAddFtRoot(
-  ServerName: string | null /* Windows.Win32.Foundation.PWSTR */,
-  RootShare: string | null /* Windows.Win32.Foundation.PWSTR */,
-  FtDfsName: string | null /* Windows.Win32.Foundation.PWSTR */,
-  Comment: string | null /* Windows.Win32.Foundation.PWSTR */,
+  ServerName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  RootShare: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  FtDfsName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  Comment: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   Flags: number /* u32 */,
 ): number /* u32 */ {
   return libNETAPI32_dll.NetDfsAddFtRoot(util.pwstrToFfi(ServerName), util.pwstrToFfi(RootShare), util.pwstrToFfi(FtDfsName), util.pwstrToFfi(Comment), Flags);
 }
 
 export function NetDfsRemoveFtRoot(
-  ServerName: string | null /* Windows.Win32.Foundation.PWSTR */,
-  RootShare: string | null /* Windows.Win32.Foundation.PWSTR */,
-  FtDfsName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  ServerName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  RootShare: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  FtDfsName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   Flags: number /* u32 */,
 ): number /* u32 */ {
   return libNETAPI32_dll.NetDfsRemoveFtRoot(util.pwstrToFfi(ServerName), util.pwstrToFfi(RootShare), util.pwstrToFfi(FtDfsName), Flags);
 }
 
 export function NetDfsRemoveFtRootForced(
-  DomainName: string | null /* Windows.Win32.Foundation.PWSTR */,
-  ServerName: string | null /* Windows.Win32.Foundation.PWSTR */,
-  RootShare: string | null /* Windows.Win32.Foundation.PWSTR */,
-  FtDfsName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  DomainName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  ServerName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  RootShare: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  FtDfsName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   Flags: number /* u32 */,
 ): number /* u32 */ {
   return libNETAPI32_dll.NetDfsRemoveFtRootForced(util.pwstrToFfi(DomainName), util.pwstrToFfi(ServerName), util.pwstrToFfi(RootShare), util.pwstrToFfi(FtDfsName), Flags);
 }
 
 export function NetDfsRemove(
-  DfsEntryPath: string | null /* Windows.Win32.Foundation.PWSTR */,
-  ServerName: string | null /* Windows.Win32.Foundation.PWSTR */,
-  ShareName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  DfsEntryPath: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  ServerName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  ShareName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
   return libNETAPI32_dll.NetDfsRemove(util.pwstrToFfi(DfsEntryPath), util.pwstrToFfi(ServerName), util.pwstrToFfi(ShareName));
 }
 
 export function NetDfsEnum(
-  DfsName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  DfsName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   Level: number /* u32 */,
   PrefMaxLen: number /* u32 */,
   Buffer: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -1303,9 +1303,9 @@ export function NetDfsEnum(
 }
 
 export function NetDfsGetInfo(
-  DfsEntryPath: string | null /* Windows.Win32.Foundation.PWSTR */,
-  ServerName: string | null /* Windows.Win32.Foundation.PWSTR */,
-  ShareName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  DfsEntryPath: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  ServerName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  ShareName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   Level: number /* u32 */,
   Buffer: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
@@ -1313,9 +1313,9 @@ export function NetDfsGetInfo(
 }
 
 export function NetDfsSetInfo(
-  DfsEntryPath: string | null /* Windows.Win32.Foundation.PWSTR */,
-  ServerName: string | null /* Windows.Win32.Foundation.PWSTR */,
-  ShareName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  DfsEntryPath: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  ServerName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  ShareName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   Level: number /* u32 */,
   Buffer: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
@@ -1323,9 +1323,9 @@ export function NetDfsSetInfo(
 }
 
 export function NetDfsGetClientInfo(
-  DfsEntryPath: string | null /* Windows.Win32.Foundation.PWSTR */,
-  ServerName: string | null /* Windows.Win32.Foundation.PWSTR */,
-  ShareName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  DfsEntryPath: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  ServerName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  ShareName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   Level: number /* u32 */,
   Buffer: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
@@ -1333,9 +1333,9 @@ export function NetDfsGetClientInfo(
 }
 
 export function NetDfsSetClientInfo(
-  DfsEntryPath: string | null /* Windows.Win32.Foundation.PWSTR */,
-  ServerName: string | null /* Windows.Win32.Foundation.PWSTR */,
-  ShareName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  DfsEntryPath: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  ServerName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  ShareName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   Level: number /* u32 */,
   Buffer: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
@@ -1343,33 +1343,33 @@ export function NetDfsSetClientInfo(
 }
 
 export function NetDfsMove(
-  OldDfsEntryPath: string | null /* Windows.Win32.Foundation.PWSTR */,
-  NewDfsEntryPath: string | null /* Windows.Win32.Foundation.PWSTR */,
+  OldDfsEntryPath: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  NewDfsEntryPath: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   Flags: number /* u32 */,
 ): number /* u32 */ {
   return libNETAPI32_dll.NetDfsMove(util.pwstrToFfi(OldDfsEntryPath), util.pwstrToFfi(NewDfsEntryPath), Flags);
 }
 
 export function NetDfsAddRootTarget(
-  pDfsPath: string | null /* Windows.Win32.Foundation.PWSTR */,
-  pTargetPath: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pDfsPath: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  pTargetPath: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   MajorVersion: number /* u32 */,
-  pComment: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pComment: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   Flags: number /* u32 */,
 ): number /* u32 */ {
   return libNETAPI32_dll.NetDfsAddRootTarget(util.pwstrToFfi(pDfsPath), util.pwstrToFfi(pTargetPath), MajorVersion, util.pwstrToFfi(pComment), Flags);
 }
 
 export function NetDfsRemoveRootTarget(
-  pDfsPath: string | null /* Windows.Win32.Foundation.PWSTR */,
-  pTargetPath: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pDfsPath: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  pTargetPath: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   Flags: number /* u32 */,
 ): number /* u32 */ {
   return libNETAPI32_dll.NetDfsRemoveRootTarget(util.pwstrToFfi(pDfsPath), util.pwstrToFfi(pTargetPath), Flags);
 }
 
 export function NetDfsGetSecurity(
-  DfsEntryPath: string | null /* Windows.Win32.Foundation.PWSTR */,
+  DfsEntryPath: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   SecurityInformation: number /* u32 */,
   ppSecurityDescriptor: Deno.PointerValue | Uint8Array | null /* ptr */,
   lpcbSecurityDescriptor: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -1378,7 +1378,7 @@ export function NetDfsGetSecurity(
 }
 
 export function NetDfsSetSecurity(
-  DfsEntryPath: string | null /* Windows.Win32.Foundation.PWSTR */,
+  DfsEntryPath: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   SecurityInformation: number /* u32 */,
   pSecurityDescriptor: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Security.PSECURITY_DESCRIPTOR */,
 ): number /* u32 */ {
@@ -1386,7 +1386,7 @@ export function NetDfsSetSecurity(
 }
 
 export function NetDfsGetStdContainerSecurity(
-  MachineName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  MachineName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   SecurityInformation: number /* u32 */,
   ppSecurityDescriptor: Deno.PointerValue | Uint8Array | null /* ptr */,
   lpcbSecurityDescriptor: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -1395,7 +1395,7 @@ export function NetDfsGetStdContainerSecurity(
 }
 
 export function NetDfsSetStdContainerSecurity(
-  MachineName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  MachineName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   SecurityInformation: number /* u32 */,
   pSecurityDescriptor: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Security.PSECURITY_DESCRIPTOR */,
 ): number /* u32 */ {
@@ -1403,7 +1403,7 @@ export function NetDfsSetStdContainerSecurity(
 }
 
 export function NetDfsGetFtContainerSecurity(
-  DomainName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  DomainName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   SecurityInformation: number /* u32 */,
   ppSecurityDescriptor: Deno.PointerValue | Uint8Array | null /* ptr */,
   lpcbSecurityDescriptor: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -1412,7 +1412,7 @@ export function NetDfsGetFtContainerSecurity(
 }
 
 export function NetDfsSetFtContainerSecurity(
-  DomainName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  DomainName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   SecurityInformation: number /* u32 */,
   pSecurityDescriptor: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Security.PSECURITY_DESCRIPTOR */,
 ): number /* u32 */ {
@@ -1421,7 +1421,7 @@ export function NetDfsSetFtContainerSecurity(
 
 export function NetDfsGetSupportedNamespaceVersion(
   Origin: DFS_NAMESPACE_VERSION_ORIGIN /* Windows.Win32.Storage.DistributedFileSystem.DFS_NAMESPACE_VERSION_ORIGIN */,
-  pName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   ppVersionInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
   return libNETAPI32_dll.NetDfsGetSupportedNamespaceVersion(Origin, util.pwstrToFfi(pName), util.toPointer(ppVersionInfo));

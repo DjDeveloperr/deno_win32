@@ -4595,7 +4595,7 @@ export type PWSTR = Deno.PointerValue | Uint8Array | null;
  */
 export interface _uName_e__Union {
   /** Windows.Win32.Foundation.PWSTR */
-  pwszName: string | null;
+  pwszName: string | null | Uint8Array | Uint16Array;
   /** u32 */
   ulPropid: number;
 }
@@ -4867,7 +4867,7 @@ export function allocDBFAILUREINFO(data?: Partial<DBFAILUREINFO>): Uint8Array {
  */
 export interface DBCOLUMNINFO {
   /** Windows.Win32.Foundation.PWSTR */
-  pwszName: string | null;
+  pwszName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.System.Com.ITypeInfo */
   pTypeInfo: Uint8Array | Deno.PointerValue | null;
   /** usize */
@@ -4952,7 +4952,7 @@ export interface DBPARAMINFO {
   /** usize */
   iOrdinal: Deno.PointerValue;
   /** Windows.Win32.Foundation.PWSTR */
-  pwszName: string | null;
+  pwszName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.System.Com.ITypeInfo */
   pTypeInfo: Uint8Array | Deno.PointerValue | null;
   /** usize */
@@ -5088,7 +5088,7 @@ export function allocVARIANT(data?: Partial<VARIANT>): Uint8Array {
  */
 export interface DBPROPINFO {
   /** Windows.Win32.Foundation.PWSTR */
-  pwszDescription: string | null;
+  pwszDescription: string | null | Uint8Array | Uint16Array;
   /** u32 */
   dwPropertyID: number;
   /** u32 */
@@ -5238,7 +5238,7 @@ export function allocDBINDEXCOLUMNDESC(data?: Partial<DBINDEXCOLUMNDESC>): Uint8
  */
 export interface DBCOLUMNDESC {
   /** Windows.Win32.Foundation.PWSTR */
-  pwszTypeName: string | null;
+  pwszTypeName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.System.Com.ITypeInfo */
   pTypeInfo: Uint8Array | Deno.PointerValue | null;
   /** ptr */
@@ -5363,7 +5363,7 @@ export interface DBCONSTRAINTDESC {
   /** ptr */
   rgForeignKeyColumnList: Deno.PointerValue | Uint8Array | null;
   /** Windows.Win32.Foundation.PWSTR */
-  pwszConstraintText: string | null;
+  pwszConstraintText: string | null | Uint8Array | Uint16Array;
   /** u32 */
   UpdateRule: number;
   /** u32 */
@@ -5536,9 +5536,9 @@ export function allocRMTPACK(data?: Partial<RMTPACK>): Uint8Array {
  */
 export interface DBPARAMBINDINFO {
   /** Windows.Win32.Foundation.PWSTR */
-  pwszDataSourceType: string | null;
+  pwszDataSourceType: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pwszName: string | null;
+  pwszName: string | null | Uint8Array | Uint16Array;
   /** usize */
   ulParamSize: Deno.PointerValue;
   /** u32 */
@@ -5583,11 +5583,11 @@ export type BOOL = number;
  */
 export interface DBLITERALINFO {
   /** Windows.Win32.Foundation.PWSTR */
-  pwszLiteralValue: string | null;
+  pwszLiteralValue: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pwszInvalidChars: string | null;
+  pwszInvalidChars: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pwszInvalidStartingChars: string | null;
+  pwszInvalidStartingChars: string | null | Uint8Array | Uint16Array;
   /** u32 */
   lt: number;
   /** Windows.Win32.Foundation.BOOL */
@@ -5727,7 +5727,7 @@ export interface TEXT_SOURCE {
   /** Windows.Win32.System.Search.PFNFILLTEXTBUFFER */
   pfnFillTextBuffer: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.Foundation.PWSTR */
-  awcBuffer: string | null;
+  awcBuffer: string | null | Uint8Array | Uint16Array;
   /** u32 */
   iEnd: number;
   /** u32 */
@@ -5758,13 +5758,13 @@ export function allocTEXT_SOURCE(data?: Partial<TEXT_SOURCE>): Uint8Array {
  */
 export interface FILTERED_DATA_SOURCES {
   /** Windows.Win32.Foundation.PWSTR */
-  pwcsExtension: string | null;
+  pwcsExtension: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pwcsMime: string | null;
+  pwcsMime: string | null | Uint8Array | Uint16Array;
   /** ptr */
   pClsid: Deno.PointerValue | Uint8Array | null;
   /** Windows.Win32.Foundation.PWSTR */
-  pwcsOverride: string | null;
+  pwcsOverride: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeofFILTERED_DATA_SOURCES = 32;
@@ -5964,7 +5964,7 @@ export interface PROXY_INFO {
   /** u32 */
   dwSize: number;
   /** Windows.Win32.Foundation.PWSTR */
-  pcwszUserAgent: string | null;
+  pcwszUserAgent: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.System.Search.PROXY_ACCESS */
   paUseProxy: PROXY_ACCESS;
   /** Windows.Win32.Foundation.BOOL */
@@ -5972,9 +5972,9 @@ export interface PROXY_INFO {
   /** u32 */
   dwPortNumber: number;
   /** Windows.Win32.Foundation.PWSTR */
-  pcwszProxyName: string | null;
+  pcwszProxyName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pcwszBypassList: string | null;
+  pcwszBypassList: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeofPROXY_INFO = 48;
@@ -6019,9 +6019,9 @@ export interface AUTHENTICATION_INFO {
   /** Windows.Win32.System.Search.AUTH_TYPE */
   atAuthenticationType: AUTH_TYPE;
   /** Windows.Win32.Foundation.PWSTR */
-  pcwszUser: string | null;
+  pcwszUser: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pcwszPassword: string | null;
+  pcwszPassword: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeofAUTHENTICATION_INFO = 24;
@@ -6098,13 +6098,13 @@ export interface ITEM_INFO {
   /** u32 */
   dwSize: number;
   /** Windows.Win32.Foundation.PWSTR */
-  pcwszFromEMail: string | null;
+  pcwszFromEMail: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pcwszApplicationName: string | null;
+  pcwszApplicationName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pcwszCatalogName: string | null;
+  pcwszCatalogName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pcwszContentClass: string | null;
+  pcwszContentClass: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeofITEM_INFO = 40;
@@ -6149,9 +6149,9 @@ export interface SEARCH_ITEM_CHANGE {
   /** ptr */
   pUserData: Deno.PointerValue | Uint8Array | null;
   /** Windows.Win32.Foundation.PWSTR */
-  lpwszURL: string | null;
+  lpwszURL: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  lpwszOldURL: string | null;
+  lpwszOldURL: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeofSEARCH_ITEM_CHANGE = 32;
@@ -6185,9 +6185,9 @@ export interface SEARCH_ITEM_PERSISTENT_CHANGE {
   /** Windows.Win32.System.Search.SEARCH_KIND_OF_CHANGE */
   Change: SEARCH_KIND_OF_CHANGE;
   /** Windows.Win32.Foundation.PWSTR */
-  URL: string | null;
+  URL: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  OldURL: string | null;
+  OldURL: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.System.Search.SEARCH_NOTIFICATION_PRIORITY */
   Priority: SEARCH_NOTIFICATION_PRIORITY;
 }
@@ -6287,7 +6287,7 @@ export interface ITEMPROP {
   /** Windows.Win32.System.Com.VARIANT */
   variantValue: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.Foundation.PWSTR */
-  pwszName: string | null;
+  pwszName: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeofITEMPROP = 16;
@@ -7126,7 +7126,7 @@ export interface CONTENTRESTRICTION {
   /** Windows.Win32.Storage.IndexServer.FULLPROPSPEC */
   prop: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.Foundation.PWSTR */
-  pwcsPhrase: string | null;
+  pwcsPhrase: string | null | Uint8Array | Uint16Array;
   /** u32 */
   lcid: number;
   /** u32 */
@@ -7159,7 +7159,7 @@ export interface NATLANGUAGERESTRICTION {
   /** Windows.Win32.Storage.IndexServer.FULLPROPSPEC */
   prop: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.Foundation.PWSTR */
-  pwcsPhrase: string | null;
+  pwcsPhrase: string | null | Uint8Array | Uint16Array;
   /** u32 */
   lcid: number;
 }
@@ -7455,7 +7455,7 @@ export interface _Anonymous1_e__Union {
   /** usize */
   Data0: Deno.PointerValue;
   /** Windows.Win32.Foundation.PWSTR */
-  String: string | null;
+  String: string | null | Uint8Array | Uint16Array;
   /** usize */
   u: Deno.PointerValue;
   /** ptr */
@@ -7593,11 +7593,11 @@ export function allocSSVARIANT(data?: Partial<SSVARIANT>): Uint8Array {
  */
 export interface SSERRORINFO {
   /** Windows.Win32.Foundation.PWSTR */
-  pwszMessage: string | null;
+  pwszMessage: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pwszServer: string | null;
+  pwszServer: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pwszProcedure: string | null;
+  pwszProcedure: string | null | Uint8Array | Uint16Array;
   /** i32 */
   lNative: number;
   /** u8 */
@@ -9220,9 +9220,9 @@ export function bcp_getcolfmt(
 
 export function bcp_initA(
   param0: Deno.PointerValue | Uint8Array | null /* ptr */,
-  param1: string | null /* Windows.Win32.Foundation.PSTR */,
-  param2: string | null /* Windows.Win32.Foundation.PSTR */,
-  param3: string | null /* Windows.Win32.Foundation.PSTR */,
+  param1: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  param2: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  param3: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   param4: number /* i32 */,
 ): number /* i16 */ {
   return libodbcbcp_dll.bcp_initA(util.toPointer(param0), util.pstrToFfi(param1), util.pstrToFfi(param2), util.pstrToFfi(param3), param4);
@@ -9230,9 +9230,9 @@ export function bcp_initA(
 
 export function bcp_initW(
   param0: Deno.PointerValue | Uint8Array | null /* ptr */,
-  param1: string | null /* Windows.Win32.Foundation.PWSTR */,
-  param2: string | null /* Windows.Win32.Foundation.PWSTR */,
-  param3: string | null /* Windows.Win32.Foundation.PWSTR */,
+  param1: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  param2: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  param3: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   param4: number /* i32 */,
 ): number /* i16 */ {
   return libodbcbcp_dll.bcp_initW(util.toPointer(param0), util.pwstrToFfi(param1), util.pwstrToFfi(param2), util.pwstrToFfi(param3), param4);
@@ -9248,14 +9248,14 @@ export function bcp_moretext(
 
 export function bcp_readfmtA(
   param0: Deno.PointerValue | Uint8Array | null /* ptr */,
-  param1: string | null /* Windows.Win32.Foundation.PSTR */,
+  param1: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): number /* i16 */ {
   return libodbcbcp_dll.bcp_readfmtA(util.toPointer(param0), util.pstrToFfi(param1));
 }
 
 export function bcp_readfmtW(
   param0: Deno.PointerValue | Uint8Array | null /* ptr */,
-  param1: string | null /* Windows.Win32.Foundation.PWSTR */,
+  param1: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* i16 */ {
   return libodbcbcp_dll.bcp_readfmtW(util.toPointer(param0), util.pwstrToFfi(param1));
 }
@@ -9278,14 +9278,14 @@ export function bcp_setcolfmt(
 
 export function bcp_writefmtA(
   param0: Deno.PointerValue | Uint8Array | null /* ptr */,
-  param1: string | null /* Windows.Win32.Foundation.PSTR */,
+  param1: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): number /* i16 */ {
   return libodbcbcp_dll.bcp_writefmtA(util.toPointer(param0), util.pstrToFfi(param1));
 }
 
 export function bcp_writefmtW(
   param0: Deno.PointerValue | Uint8Array | null /* ptr */,
-  param1: string | null /* Windows.Win32.Foundation.PWSTR */,
+  param1: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* i16 */ {
   return libodbcbcp_dll.bcp_writefmtW(util.toPointer(param0), util.pwstrToFfi(param1));
 }
@@ -9310,7 +9310,7 @@ export function SQLLinkedServers(
 
 export function SQLLinkedCatalogsA(
   param0: Deno.PointerValue | Uint8Array | null /* ptr */,
-  param1: string | null /* Windows.Win32.Foundation.PSTR */,
+  param1: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   param2: number /* i16 */,
 ): number /* i16 */ {
   return libodbcbcp_dll.SQLLinkedCatalogsA(util.toPointer(param0), util.pstrToFfi(param1), param2);
@@ -9318,15 +9318,15 @@ export function SQLLinkedCatalogsA(
 
 export function SQLLinkedCatalogsW(
   param0: Deno.PointerValue | Uint8Array | null /* ptr */,
-  param1: string | null /* Windows.Win32.Foundation.PWSTR */,
+  param1: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   param2: number /* i16 */,
 ): number /* i16 */ {
   return libodbcbcp_dll.SQLLinkedCatalogsW(util.toPointer(param0), util.pwstrToFfi(param1), param2);
 }
 
 export function SQLInitEnumServers(
-  pwchServerName: string | null /* Windows.Win32.Foundation.PWSTR */,
-  pwchInstanceName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pwchServerName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  pwchInstanceName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */ {
   return util.pointerFromFfi(libodbcbcp_dll.SQLInitEnumServers(util.pwstrToFfi(pwchServerName), util.pwstrToFfi(pwchInstanceName)));
 }

@@ -1826,7 +1826,7 @@ export interface AudioFXExtensionParams {
   /** Windows.Win32.Foundation.LPARAM */
   AddPageParam: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.Foundation.PWSTR */
-  pwstrEndpointID: string | null;
+  pwstrEndpointID: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.UI.Shell.PropertiesSystem.IPropertyStore */
   pFxProperties: Uint8Array | Deno.PointerValue | null;
 }
@@ -3544,7 +3544,7 @@ export type PSTR = Deno.PointerValue | Uint8Array | null;
  */
 export interface DSPROPERTY_DIRECTSOUNDDEVICE_WAVEDEVICEMAPPING_A_DATA {
   /** Windows.Win32.Foundation.PSTR */
-  DeviceName: string | null;
+  DeviceName: string | null | Uint8Array;
   /** Windows.Win32.Media.Audio.DirectMusic.DIRECTSOUNDDEVICE_DATAFLOW */
   DataFlow: DIRECTSOUNDDEVICE_DATAFLOW;
   /** System.Guid */
@@ -3574,7 +3574,7 @@ export function allocDSPROPERTY_DIRECTSOUNDDEVICE_WAVEDEVICEMAPPING_A_DATA(data?
  */
 export interface DSPROPERTY_DIRECTSOUNDDEVICE_WAVEDEVICEMAPPING_W_DATA {
   /** Windows.Win32.Foundation.PWSTR */
-  DeviceName: string | null;
+  DeviceName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Media.Audio.DirectMusic.DIRECTSOUNDDEVICE_DATAFLOW */
   DataFlow: DIRECTSOUNDDEVICE_DATAFLOW;
   /** System.Guid */
@@ -3660,11 +3660,11 @@ export interface DSPROPERTY_DIRECTSOUNDDEVICE_DESCRIPTION_A_DATA {
   /** System.Guid */
   DeviceId: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.Foundation.PSTR */
-  Description: string | null;
+  Description: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  Module: string | null;
+  Module: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  Interface: string | null;
+  Interface: string | null | Uint8Array;
   /** u32 */
   WaveDeviceId: number;
 }
@@ -3712,11 +3712,11 @@ export interface DSPROPERTY_DIRECTSOUNDDEVICE_DESCRIPTION_W_DATA {
   /** System.Guid */
   DeviceId: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.Foundation.PWSTR */
-  Description: string | null;
+  Description: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  Module: string | null;
+  Module: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  Interface: string | null;
+  Interface: string | null | Uint8Array | Uint16Array;
   /** u32 */
   WaveDeviceId: number;
 }
@@ -6179,7 +6179,7 @@ export function allocACMSTREAMHEADER(data?: Partial<ACMSTREAMHEADER>): Uint8Arra
  */
 export interface WAVEHDR {
   /** Windows.Win32.Foundation.PSTR */
-  lpData: string | null;
+  lpData: string | null | Uint8Array;
   /** u32 */
   dwBufferLength: number;
   /** u32 */
@@ -7082,7 +7082,7 @@ export function allocMIDIINCAPS2W(data?: Partial<MIDIINCAPS2W>): Uint8Array {
  */
 export interface MIDIHDR {
   /** Windows.Win32.Foundation.PSTR */
-  lpData: string | null;
+  lpData: string | null | Uint8Array;
   /** u32 */
   dwBufferLength: number;
   /** u32 */
@@ -9328,13 +9328,13 @@ export interface ACMFORMATCHOOSEA {
   /** u32 */
   cbwfx: number;
   /** Windows.Win32.Foundation.PSTR */
-  pszTitle: string | null;
+  pszTitle: string | null | Uint8Array;
   /** array */
   szFormatTag: Deno.PointerValue | null;
   /** array */
   szFormat: Deno.PointerValue | null;
   /** Windows.Win32.Foundation.PSTR */
-  pszName: string | null;
+  pszName: string | null | Uint8Array;
   /** u32 */
   cchName: number;
   /** u32 */
@@ -9344,7 +9344,7 @@ export interface ACMFORMATCHOOSEA {
   /** Windows.Win32.Foundation.HINSTANCE */
   hInstance: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.Foundation.PSTR */
-  pszTemplateName: string | null;
+  pszTemplateName: string | null | Uint8Array;
   /** Windows.Win32.Foundation.LPARAM */
   lCustData: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.Media.Audio.ACMFORMATCHOOSEHOOKPROCA */
@@ -9416,13 +9416,13 @@ export interface ACMFORMATCHOOSEW {
   /** u32 */
   cbwfx: number;
   /** Windows.Win32.Foundation.PWSTR */
-  pszTitle: string | null;
+  pszTitle: string | null | Uint8Array | Uint16Array;
   /** array */
   szFormatTag: Deno.PointerValue | null;
   /** array */
   szFormat: Deno.PointerValue | null;
   /** Windows.Win32.Foundation.PWSTR */
-  pszName: string | null;
+  pszName: string | null | Uint8Array | Uint16Array;
   /** u32 */
   cchName: number;
   /** u32 */
@@ -9432,7 +9432,7 @@ export interface ACMFORMATCHOOSEW {
   /** Windows.Win32.Foundation.HINSTANCE */
   hInstance: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.Foundation.PWSTR */
-  pszTemplateName: string | null;
+  pszTemplateName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.LPARAM */
   lCustData: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.Media.Audio.ACMFORMATCHOOSEHOOKPROCW */
@@ -9674,13 +9674,13 @@ export interface ACMFILTERCHOOSEA {
   /** u32 */
   cbwfltr: number;
   /** Windows.Win32.Foundation.PSTR */
-  pszTitle: string | null;
+  pszTitle: string | null | Uint8Array;
   /** array */
   szFilterTag: Deno.PointerValue | null;
   /** array */
   szFilter: Deno.PointerValue | null;
   /** Windows.Win32.Foundation.PSTR */
-  pszName: string | null;
+  pszName: string | null | Uint8Array;
   /** u32 */
   cchName: number;
   /** u32 */
@@ -9690,7 +9690,7 @@ export interface ACMFILTERCHOOSEA {
   /** Windows.Win32.Foundation.HINSTANCE */
   hInstance: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.Foundation.PSTR */
-  pszTemplateName: string | null;
+  pszTemplateName: string | null | Uint8Array;
   /** Windows.Win32.Foundation.LPARAM */
   lCustData: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.Media.Audio.ACMFILTERCHOOSEHOOKPROCA */
@@ -9762,13 +9762,13 @@ export interface ACMFILTERCHOOSEW {
   /** u32 */
   cbwfltr: number;
   /** Windows.Win32.Foundation.PWSTR */
-  pszTitle: string | null;
+  pszTitle: string | null | Uint8Array | Uint16Array;
   /** array */
   szFilterTag: Deno.PointerValue | null;
   /** array */
   szFilter: Deno.PointerValue | null;
   /** Windows.Win32.Foundation.PWSTR */
-  pszName: string | null;
+  pszName: string | null | Uint8Array | Uint16Array;
   /** u32 */
   cchName: number;
   /** u32 */
@@ -9778,7 +9778,7 @@ export interface ACMFILTERCHOOSEW {
   /** Windows.Win32.Foundation.HINSTANCE */
   hInstance: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.Foundation.PWSTR */
-  pszTemplateName: string | null;
+  pszTemplateName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.LPARAM */
   lCustData: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.Media.Audio.ACMFILTERCHOOSEHOOKPROCW */
@@ -9852,9 +9852,9 @@ export interface ACMDRVOPENDESCA {
   /** u32 */
   dwError: number;
   /** Windows.Win32.Foundation.PSTR */
-  pszSectionName: string | null;
+  pszSectionName: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  pszAliasName: string | null;
+  pszAliasName: string | null | Uint8Array;
   /** u32 */
   dnDevNode: number;
 }
@@ -9909,9 +9909,9 @@ export interface ACMDRVOPENDESCW {
   /** u32 */
   dwError: number;
   /** Windows.Win32.Foundation.PWSTR */
-  pszSectionName: string | null;
+  pszSectionName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pszAliasName: string | null;
+  pszAliasName: string | null | Uint8Array | Uint16Array;
   /** u32 */
   dnDevNode: number;
 }
@@ -10850,21 +10850,21 @@ export function CoRegisterMessageFilter(
 }
 
 export function sndPlaySoundA(
-  pszSound: string | null /* Windows.Win32.Foundation.PSTR */,
+  pszSound: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   fuSound: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libWINMM_dll.sndPlaySoundA(util.pstrToFfi(pszSound), fuSound));
 }
 
 export function sndPlaySoundW(
-  pszSound: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pszSound: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   fuSound: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libWINMM_dll.sndPlaySoundW(util.pwstrToFfi(pszSound), fuSound));
 }
 
 export function PlaySoundA(
-  pszSound: string | null /* Windows.Win32.Foundation.PSTR */,
+  pszSound: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   hmod: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HINSTANCE */,
   fdwSound: SND_FLAGS /* Windows.Win32.Media.Audio.SND_FLAGS */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
@@ -10872,7 +10872,7 @@ export function PlaySoundA(
 }
 
 export function PlaySoundW(
-  pszSound: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pszSound: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   hmod: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HINSTANCE */,
   fdwSound: SND_FLAGS /* Windows.Win32.Media.Audio.SND_FLAGS */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
@@ -10915,7 +10915,7 @@ export function waveOutSetVolume(
 
 export function waveOutGetErrorTextA(
   mmrError: number /* u32 */,
-  pszText: string | null /* Windows.Win32.Foundation.PSTR */,
+  pszText: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   cchText: number /* u32 */,
 ): number /* u32 */ {
   return libWINMM_dll.waveOutGetErrorTextA(mmrError, util.pstrToFfi(pszText), cchText);
@@ -10923,7 +10923,7 @@ export function waveOutGetErrorTextA(
 
 export function waveOutGetErrorTextW(
   mmrError: number /* u32 */,
-  pszText: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pszText: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   cchText: number /* u32 */,
 ): number /* u32 */ {
   return libWINMM_dll.waveOutGetErrorTextW(mmrError, util.pwstrToFfi(pszText), cchText);
@@ -11068,7 +11068,7 @@ export function waveInGetDevCapsW(
 
 export function waveInGetErrorTextA(
   mmrError: number /* u32 */,
-  pszText: string | null /* Windows.Win32.Foundation.PSTR */,
+  pszText: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   cchText: number /* u32 */,
 ): number /* u32 */ {
   return libWINMM_dll.waveInGetErrorTextA(mmrError, util.pstrToFfi(pszText), cchText);
@@ -11076,7 +11076,7 @@ export function waveInGetErrorTextA(
 
 export function waveInGetErrorTextW(
   mmrError: number /* u32 */,
-  pszText: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pszText: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   cchText: number /* u32 */,
 ): number /* u32 */ {
   return libWINMM_dll.waveInGetErrorTextW(mmrError, util.pwstrToFfi(pszText), cchText);
@@ -11276,7 +11276,7 @@ export function midiOutSetVolume(
 
 export function midiOutGetErrorTextA(
   mmrError: number /* u32 */,
-  pszText: string | null /* Windows.Win32.Foundation.PSTR */,
+  pszText: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   cchText: number /* u32 */,
 ): number /* u32 */ {
   return libWINMM_dll.midiOutGetErrorTextA(mmrError, util.pstrToFfi(pszText), cchText);
@@ -11284,7 +11284,7 @@ export function midiOutGetErrorTextA(
 
 export function midiOutGetErrorTextW(
   mmrError: number /* u32 */,
-  pszText: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pszText: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   cchText: number /* u32 */,
 ): number /* u32 */ {
   return libWINMM_dll.midiOutGetErrorTextW(mmrError, util.pwstrToFfi(pszText), cchText);
@@ -11399,7 +11399,7 @@ export function midiInGetDevCapsW(
 
 export function midiInGetErrorTextA(
   mmrError: number /* u32 */,
-  pszText: string | null /* Windows.Win32.Foundation.PSTR */,
+  pszText: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   cchText: number /* u32 */,
 ): number /* u32 */ {
   return libWINMM_dll.midiInGetErrorTextA(mmrError, util.pstrToFfi(pszText), cchText);
@@ -11407,7 +11407,7 @@ export function midiInGetErrorTextA(
 
 export function midiInGetErrorTextW(
   mmrError: number /* u32 */,
-  pszText: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pszText: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   cchText: number /* u32 */,
 ): number /* u32 */ {
   return libWINMM_dll.midiInGetErrorTextW(mmrError, util.pwstrToFfi(pszText), cchText);
@@ -11640,7 +11640,7 @@ export function mixerSetControlDetails(
 }
 
 export function ActivateAudioInterfaceAsync(
-  deviceInterfacePath: string | null /* Windows.Win32.Foundation.PWSTR */,
+  deviceInterfacePath: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   riid: Deno.PointerValue | Uint8Array | null /* ptr */,
   activationParams: Deno.PointerValue | Uint8Array | null /* ptr */,
   completionHandler: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Media.Audio.IActivateAudioInterfaceCompletionHandler */,
@@ -11672,7 +11672,7 @@ export function CreateRenderAudioStateMonitorForCategoryAndDeviceRole(
 
 export function CreateRenderAudioStateMonitorForCategoryAndDeviceId(
   category: AUDIO_STREAM_CATEGORY /* Windows.Win32.Media.Audio.AUDIO_STREAM_CATEGORY */,
-  deviceId: string | null /* Windows.Win32.Foundation.PWSTR */,
+  deviceId: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   audioStateMonitor: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
   return util.pointerFromFfi(libWindows_Media_MediaControl_dll.CreateRenderAudioStateMonitorForCategoryAndDeviceId(category, util.pwstrToFfi(deviceId), util.toPointer(audioStateMonitor)));
@@ -11701,7 +11701,7 @@ export function CreateCaptureAudioStateMonitorForCategoryAndDeviceRole(
 
 export function CreateCaptureAudioStateMonitorForCategoryAndDeviceId(
   category: AUDIO_STREAM_CATEGORY /* Windows.Win32.Media.Audio.AUDIO_STREAM_CATEGORY */,
-  deviceId: string | null /* Windows.Win32.Foundation.PWSTR */,
+  deviceId: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   audioStateMonitor: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
   return util.pointerFromFfi(libWindows_Media_MediaControl_dll.CreateCaptureAudioStateMonitorForCategoryAndDeviceId(category, util.pwstrToFfi(deviceId), util.toPointer(audioStateMonitor)));

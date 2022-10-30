@@ -2322,7 +2322,7 @@ export type PWSTR = Deno.PointerValue | Uint8Array | null;
  */
 export interface USER_INFO_0 {
   /** Windows.Win32.Foundation.PWSTR */
-  usri0_name: string | null;
+  usri0_name: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeofUSER_INFO_0 = 8;
@@ -2343,21 +2343,21 @@ export function allocUSER_INFO_0(data?: Partial<USER_INFO_0>): Uint8Array {
  */
 export interface USER_INFO_1 {
   /** Windows.Win32.Foundation.PWSTR */
-  usri1_name: string | null;
+  usri1_name: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  usri1_password: string | null;
+  usri1_password: string | null | Uint8Array | Uint16Array;
   /** u32 */
   usri1_password_age: number;
   /** Windows.Win32.NetworkManagement.NetManagement.USER_PRIV */
   usri1_priv: USER_PRIV;
   /** Windows.Win32.Foundation.PWSTR */
-  usri1_home_dir: string | null;
+  usri1_home_dir: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  usri1_comment: string | null;
+  usri1_comment: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.NetworkManagement.NetManagement.USER_ACCOUNT_FLAGS */
   usri1_flags: USER_ACCOUNT_FLAGS;
   /** Windows.Win32.Foundation.PWSTR */
-  usri1_script_path: string | null;
+  usri1_script_path: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeofUSER_INFO_1 = 56;
@@ -2405,31 +2405,31 @@ export function allocUSER_INFO_1(data?: Partial<USER_INFO_1>): Uint8Array {
  */
 export interface USER_INFO_2 {
   /** Windows.Win32.Foundation.PWSTR */
-  usri2_name: string | null;
+  usri2_name: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  usri2_password: string | null;
+  usri2_password: string | null | Uint8Array | Uint16Array;
   /** u32 */
   usri2_password_age: number;
   /** Windows.Win32.NetworkManagement.NetManagement.USER_PRIV */
   usri2_priv: USER_PRIV;
   /** Windows.Win32.Foundation.PWSTR */
-  usri2_home_dir: string | null;
+  usri2_home_dir: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  usri2_comment: string | null;
+  usri2_comment: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.NetworkManagement.NetManagement.USER_ACCOUNT_FLAGS */
   usri2_flags: USER_ACCOUNT_FLAGS;
   /** Windows.Win32.Foundation.PWSTR */
-  usri2_script_path: string | null;
+  usri2_script_path: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.NetworkManagement.NetManagement.AF_OP */
   usri2_auth_flags: AF_OP;
   /** Windows.Win32.Foundation.PWSTR */
-  usri2_full_name: string | null;
+  usri2_full_name: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  usri2_usr_comment: string | null;
+  usri2_usr_comment: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  usri2_parms: string | null;
+  usri2_parms: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  usri2_workstations: string | null;
+  usri2_workstations: string | null | Uint8Array | Uint16Array;
   /** u32 */
   usri2_last_logon: number;
   /** u32 */
@@ -2447,7 +2447,7 @@ export interface USER_INFO_2 {
   /** u32 */
   usri2_num_logons: number;
   /** Windows.Win32.Foundation.PWSTR */
-  usri2_logon_server: string | null;
+  usri2_logon_server: string | null | Uint8Array | Uint16Array;
   /** u32 */
   usri2_country_code: number;
   /** u32 */
@@ -2548,31 +2548,31 @@ export function allocUSER_INFO_2(data?: Partial<USER_INFO_2>): Uint8Array {
  */
 export interface USER_INFO_3 {
   /** Windows.Win32.Foundation.PWSTR */
-  usri3_name: string | null;
+  usri3_name: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  usri3_password: string | null;
+  usri3_password: string | null | Uint8Array | Uint16Array;
   /** u32 */
   usri3_password_age: number;
   /** Windows.Win32.NetworkManagement.NetManagement.USER_PRIV */
   usri3_priv: USER_PRIV;
   /** Windows.Win32.Foundation.PWSTR */
-  usri3_home_dir: string | null;
+  usri3_home_dir: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  usri3_comment: string | null;
+  usri3_comment: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.NetworkManagement.NetManagement.USER_ACCOUNT_FLAGS */
   usri3_flags: USER_ACCOUNT_FLAGS;
   /** Windows.Win32.Foundation.PWSTR */
-  usri3_script_path: string | null;
+  usri3_script_path: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.NetworkManagement.NetManagement.AF_OP */
   usri3_auth_flags: AF_OP;
   /** Windows.Win32.Foundation.PWSTR */
-  usri3_full_name: string | null;
+  usri3_full_name: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  usri3_usr_comment: string | null;
+  usri3_usr_comment: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  usri3_parms: string | null;
+  usri3_parms: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  usri3_workstations: string | null;
+  usri3_workstations: string | null | Uint8Array | Uint16Array;
   /** u32 */
   usri3_last_logon: number;
   /** u32 */
@@ -2590,7 +2590,7 @@ export interface USER_INFO_3 {
   /** u32 */
   usri3_num_logons: number;
   /** Windows.Win32.Foundation.PWSTR */
-  usri3_logon_server: string | null;
+  usri3_logon_server: string | null | Uint8Array | Uint16Array;
   /** u32 */
   usri3_country_code: number;
   /** u32 */
@@ -2600,9 +2600,9 @@ export interface USER_INFO_3 {
   /** u32 */
   usri3_primary_group_id: number;
   /** Windows.Win32.Foundation.PWSTR */
-  usri3_profile: string | null;
+  usri3_profile: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  usri3_home_dir_drive: string | null;
+  usri3_home_dir_drive: string | null | Uint8Array | Uint16Array;
   /** u32 */
   usri3_password_expired: number;
 }
@@ -2720,31 +2720,31 @@ export type PSID = Deno.PointerValue | Uint8Array | null;
  */
 export interface USER_INFO_4 {
   /** Windows.Win32.Foundation.PWSTR */
-  usri4_name: string | null;
+  usri4_name: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  usri4_password: string | null;
+  usri4_password: string | null | Uint8Array | Uint16Array;
   /** u32 */
   usri4_password_age: number;
   /** Windows.Win32.NetworkManagement.NetManagement.USER_PRIV */
   usri4_priv: USER_PRIV;
   /** Windows.Win32.Foundation.PWSTR */
-  usri4_home_dir: string | null;
+  usri4_home_dir: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  usri4_comment: string | null;
+  usri4_comment: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.NetworkManagement.NetManagement.USER_ACCOUNT_FLAGS */
   usri4_flags: USER_ACCOUNT_FLAGS;
   /** Windows.Win32.Foundation.PWSTR */
-  usri4_script_path: string | null;
+  usri4_script_path: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.NetworkManagement.NetManagement.AF_OP */
   usri4_auth_flags: AF_OP;
   /** Windows.Win32.Foundation.PWSTR */
-  usri4_full_name: string | null;
+  usri4_full_name: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  usri4_usr_comment: string | null;
+  usri4_usr_comment: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  usri4_parms: string | null;
+  usri4_parms: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  usri4_workstations: string | null;
+  usri4_workstations: string | null | Uint8Array | Uint16Array;
   /** u32 */
   usri4_last_logon: number;
   /** u32 */
@@ -2762,7 +2762,7 @@ export interface USER_INFO_4 {
   /** u32 */
   usri4_num_logons: number;
   /** Windows.Win32.Foundation.PWSTR */
-  usri4_logon_server: string | null;
+  usri4_logon_server: string | null | Uint8Array | Uint16Array;
   /** u32 */
   usri4_country_code: number;
   /** u32 */
@@ -2772,9 +2772,9 @@ export interface USER_INFO_4 {
   /** u32 */
   usri4_primary_group_id: number;
   /** Windows.Win32.Foundation.PWSTR */
-  usri4_profile: string | null;
+  usri4_profile: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  usri4_home_dir_drive: string | null;
+  usri4_home_dir_drive: string | null | Uint8Array | Uint16Array;
   /** u32 */
   usri4_password_expired: number;
 }
@@ -2891,13 +2891,13 @@ export function allocUSER_INFO_4(data?: Partial<USER_INFO_4>): Uint8Array {
  */
 export interface USER_INFO_10 {
   /** Windows.Win32.Foundation.PWSTR */
-  usri10_name: string | null;
+  usri10_name: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  usri10_comment: string | null;
+  usri10_comment: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  usri10_usr_comment: string | null;
+  usri10_usr_comment: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  usri10_full_name: string | null;
+  usri10_full_name: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeofUSER_INFO_10 = 32;
@@ -2933,13 +2933,13 @@ export function allocUSER_INFO_10(data?: Partial<USER_INFO_10>): Uint8Array {
  */
 export interface USER_INFO_11 {
   /** Windows.Win32.Foundation.PWSTR */
-  usri11_name: string | null;
+  usri11_name: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  usri11_comment: string | null;
+  usri11_comment: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  usri11_usr_comment: string | null;
+  usri11_usr_comment: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  usri11_full_name: string | null;
+  usri11_full_name: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.NetworkManagement.NetManagement.USER_PRIV */
   usri11_priv: USER_PRIV;
   /** Windows.Win32.NetworkManagement.NetManagement.AF_OP */
@@ -2947,9 +2947,9 @@ export interface USER_INFO_11 {
   /** u32 */
   usri11_password_age: number;
   /** Windows.Win32.Foundation.PWSTR */
-  usri11_home_dir: string | null;
+  usri11_home_dir: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  usri11_parms: string | null;
+  usri11_parms: string | null | Uint8Array | Uint16Array;
   /** u32 */
   usri11_last_logon: number;
   /** u32 */
@@ -2959,11 +2959,11 @@ export interface USER_INFO_11 {
   /** u32 */
   usri11_num_logons: number;
   /** Windows.Win32.Foundation.PWSTR */
-  usri11_logon_server: string | null;
+  usri11_logon_server: string | null | Uint8Array | Uint16Array;
   /** u32 */
   usri11_country_code: number;
   /** Windows.Win32.Foundation.PWSTR */
-  usri11_workstations: string | null;
+  usri11_workstations: string | null | Uint8Array | Uint16Array;
   /** u32 */
   usri11_max_storage: number;
   /** u32 */
@@ -3054,11 +3054,11 @@ export function allocUSER_INFO_11(data?: Partial<USER_INFO_11>): Uint8Array {
  */
 export interface USER_INFO_20 {
   /** Windows.Win32.Foundation.PWSTR */
-  usri20_name: string | null;
+  usri20_name: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  usri20_full_name: string | null;
+  usri20_full_name: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  usri20_comment: string | null;
+  usri20_comment: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.NetworkManagement.NetManagement.USER_ACCOUNT_FLAGS */
   usri20_flags: USER_ACCOUNT_FLAGS;
   /** u32 */
@@ -3115,7 +3115,7 @@ export function allocUSER_INFO_21(data?: Partial<USER_INFO_21>): Uint8Array {
  */
 export interface USER_INFO_22 {
   /** Windows.Win32.Foundation.PWSTR */
-  usri22_name: string | null;
+  usri22_name: string | null | Uint8Array | Uint16Array;
   /** array */
   usri22_password: Deno.PointerValue | null;
   /** u32 */
@@ -3123,23 +3123,23 @@ export interface USER_INFO_22 {
   /** Windows.Win32.NetworkManagement.NetManagement.USER_PRIV */
   usri22_priv: USER_PRIV;
   /** Windows.Win32.Foundation.PWSTR */
-  usri22_home_dir: string | null;
+  usri22_home_dir: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  usri22_comment: string | null;
+  usri22_comment: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.NetworkManagement.NetManagement.USER_ACCOUNT_FLAGS */
   usri22_flags: USER_ACCOUNT_FLAGS;
   /** Windows.Win32.Foundation.PWSTR */
-  usri22_script_path: string | null;
+  usri22_script_path: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.NetworkManagement.NetManagement.AF_OP */
   usri22_auth_flags: AF_OP;
   /** Windows.Win32.Foundation.PWSTR */
-  usri22_full_name: string | null;
+  usri22_full_name: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  usri22_usr_comment: string | null;
+  usri22_usr_comment: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  usri22_parms: string | null;
+  usri22_parms: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  usri22_workstations: string | null;
+  usri22_workstations: string | null | Uint8Array | Uint16Array;
   /** u32 */
   usri22_last_logon: number;
   /** u32 */
@@ -3157,7 +3157,7 @@ export interface USER_INFO_22 {
   /** u32 */
   usri22_num_logons: number;
   /** Windows.Win32.Foundation.PWSTR */
-  usri22_logon_server: string | null;
+  usri22_logon_server: string | null | Uint8Array | Uint16Array;
   /** u32 */
   usri22_country_code: number;
   /** u32 */
@@ -3255,11 +3255,11 @@ export function allocUSER_INFO_22(data?: Partial<USER_INFO_22>): Uint8Array {
  */
 export interface USER_INFO_23 {
   /** Windows.Win32.Foundation.PWSTR */
-  usri23_name: string | null;
+  usri23_name: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  usri23_full_name: string | null;
+  usri23_full_name: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  usri23_comment: string | null;
+  usri23_comment: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.NetworkManagement.NetManagement.USER_ACCOUNT_FLAGS */
   usri23_flags: USER_ACCOUNT_FLAGS;
   /** Windows.Win32.Foundation.PSID */
@@ -3305,9 +3305,9 @@ export interface USER_INFO_24 {
   /** u32 */
   usri24_flags: number;
   /** Windows.Win32.Foundation.PWSTR */
-  usri24_internet_provider_name: string | null;
+  usri24_internet_provider_name: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  usri24_internet_principal_name: string | null;
+  usri24_internet_principal_name: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PSID */
   usri24_user_sid: Uint8Array | Deno.PointerValue | null;
 }
@@ -3341,7 +3341,7 @@ export function allocUSER_INFO_24(data?: Partial<USER_INFO_24>): Uint8Array {
  */
 export interface USER_INFO_1003 {
   /** Windows.Win32.Foundation.PWSTR */
-  usri1003_password: string | null;
+  usri1003_password: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeofUSER_INFO_1003 = 8;
@@ -3381,7 +3381,7 @@ export function allocUSER_INFO_1005(data?: Partial<USER_INFO_1005>): Uint8Array 
  */
 export interface USER_INFO_1006 {
   /** Windows.Win32.Foundation.PWSTR */
-  usri1006_home_dir: string | null;
+  usri1006_home_dir: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeofUSER_INFO_1006 = 8;
@@ -3402,7 +3402,7 @@ export function allocUSER_INFO_1006(data?: Partial<USER_INFO_1006>): Uint8Array 
  */
 export interface USER_INFO_1007 {
   /** Windows.Win32.Foundation.PWSTR */
-  usri1007_comment: string | null;
+  usri1007_comment: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeofUSER_INFO_1007 = 8;
@@ -3442,7 +3442,7 @@ export function allocUSER_INFO_1008(data?: Partial<USER_INFO_1008>): Uint8Array 
  */
 export interface USER_INFO_1009 {
   /** Windows.Win32.Foundation.PWSTR */
-  usri1009_script_path: string | null;
+  usri1009_script_path: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeofUSER_INFO_1009 = 8;
@@ -3482,7 +3482,7 @@ export function allocUSER_INFO_1010(data?: Partial<USER_INFO_1010>): Uint8Array 
  */
 export interface USER_INFO_1011 {
   /** Windows.Win32.Foundation.PWSTR */
-  usri1011_full_name: string | null;
+  usri1011_full_name: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeofUSER_INFO_1011 = 8;
@@ -3503,7 +3503,7 @@ export function allocUSER_INFO_1011(data?: Partial<USER_INFO_1011>): Uint8Array 
  */
 export interface USER_INFO_1012 {
   /** Windows.Win32.Foundation.PWSTR */
-  usri1012_usr_comment: string | null;
+  usri1012_usr_comment: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeofUSER_INFO_1012 = 8;
@@ -3524,7 +3524,7 @@ export function allocUSER_INFO_1012(data?: Partial<USER_INFO_1012>): Uint8Array 
  */
 export interface USER_INFO_1013 {
   /** Windows.Win32.Foundation.PWSTR */
-  usri1013_parms: string | null;
+  usri1013_parms: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeofUSER_INFO_1013 = 8;
@@ -3545,7 +3545,7 @@ export function allocUSER_INFO_1013(data?: Partial<USER_INFO_1013>): Uint8Array 
  */
 export interface USER_INFO_1014 {
   /** Windows.Win32.Foundation.PWSTR */
-  usri1014_workstations: string | null;
+  usri1014_workstations: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeofUSER_INFO_1014 = 8;
@@ -3627,7 +3627,7 @@ export function allocUSER_INFO_1020(data?: Partial<USER_INFO_1020>): Uint8Array 
  */
 export interface USER_INFO_1023 {
   /** Windows.Win32.Foundation.PWSTR */
-  usri1023_logon_server: string | null;
+  usri1023_logon_server: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeofUSER_INFO_1023 = 8;
@@ -3705,7 +3705,7 @@ export function allocUSER_INFO_1051(data?: Partial<USER_INFO_1051>): Uint8Array 
  */
 export interface USER_INFO_1052 {
   /** Windows.Win32.Foundation.PWSTR */
-  usri1052_profile: string | null;
+  usri1052_profile: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeofUSER_INFO_1052 = 8;
@@ -3726,7 +3726,7 @@ export function allocUSER_INFO_1052(data?: Partial<USER_INFO_1052>): Uint8Array 
  */
 export interface USER_INFO_1053 {
   /** Windows.Win32.Foundation.PWSTR */
-  usri1053_home_dir_drive: string | null;
+  usri1053_home_dir_drive: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeofUSER_INFO_1053 = 8;
@@ -3784,7 +3784,7 @@ export interface USER_MODALS_INFO_1 {
   /** u32 */
   usrmod1_role: number;
   /** Windows.Win32.Foundation.PWSTR */
-  usrmod1_primary: string | null;
+  usrmod1_primary: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeofUSER_MODALS_INFO_1 = 16;
@@ -3808,7 +3808,7 @@ export function allocUSER_MODALS_INFO_1(data?: Partial<USER_MODALS_INFO_1>): Uin
  */
 export interface USER_MODALS_INFO_2 {
   /** Windows.Win32.Foundation.PWSTR */
-  usrmod2_domain_name: string | null;
+  usrmod2_domain_name: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PSID */
   usrmod2_domain_id: Uint8Array | Deno.PointerValue | null;
 }
@@ -3974,7 +3974,7 @@ export function allocUSER_MODALS_INFO_1006(data?: Partial<USER_MODALS_INFO_1006>
  */
 export interface USER_MODALS_INFO_1007 {
   /** Windows.Win32.Foundation.PWSTR */
-  usrmod1007_primary: string | null;
+  usrmod1007_primary: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeofUSER_MODALS_INFO_1007 = 8;
@@ -3995,7 +3995,7 @@ export function allocUSER_MODALS_INFO_1007(data?: Partial<USER_MODALS_INFO_1007>
  */
 export interface GROUP_INFO_0 {
   /** Windows.Win32.Foundation.PWSTR */
-  grpi0_name: string | null;
+  grpi0_name: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeofGROUP_INFO_0 = 8;
@@ -4016,9 +4016,9 @@ export function allocGROUP_INFO_0(data?: Partial<GROUP_INFO_0>): Uint8Array {
  */
 export interface GROUP_INFO_1 {
   /** Windows.Win32.Foundation.PWSTR */
-  grpi1_name: string | null;
+  grpi1_name: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  grpi1_comment: string | null;
+  grpi1_comment: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeofGROUP_INFO_1 = 16;
@@ -4044,9 +4044,9 @@ export function allocGROUP_INFO_1(data?: Partial<GROUP_INFO_1>): Uint8Array {
  */
 export interface GROUP_INFO_2 {
   /** Windows.Win32.Foundation.PWSTR */
-  grpi2_name: string | null;
+  grpi2_name: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  grpi2_comment: string | null;
+  grpi2_comment: string | null | Uint8Array | Uint16Array;
   /** u32 */
   grpi2_group_id: number;
   /** u32 */
@@ -4080,9 +4080,9 @@ export function allocGROUP_INFO_2(data?: Partial<GROUP_INFO_2>): Uint8Array {
  */
 export interface GROUP_INFO_3 {
   /** Windows.Win32.Foundation.PWSTR */
-  grpi3_name: string | null;
+  grpi3_name: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  grpi3_comment: string | null;
+  grpi3_comment: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PSID */
   grpi3_group_sid: Uint8Array | Deno.PointerValue | null;
   /** u32 */
@@ -4117,7 +4117,7 @@ export function allocGROUP_INFO_3(data?: Partial<GROUP_INFO_3>): Uint8Array {
  */
 export interface GROUP_INFO_1002 {
   /** Windows.Win32.Foundation.PWSTR */
-  grpi1002_comment: string | null;
+  grpi1002_comment: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeofGROUP_INFO_1002 = 8;
@@ -4157,7 +4157,7 @@ export function allocGROUP_INFO_1005(data?: Partial<GROUP_INFO_1005>): Uint8Arra
  */
 export interface GROUP_USERS_INFO_0 {
   /** Windows.Win32.Foundation.PWSTR */
-  grui0_name: string | null;
+  grui0_name: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeofGROUP_USERS_INFO_0 = 8;
@@ -4178,7 +4178,7 @@ export function allocGROUP_USERS_INFO_0(data?: Partial<GROUP_USERS_INFO_0>): Uin
  */
 export interface GROUP_USERS_INFO_1 {
   /** Windows.Win32.Foundation.PWSTR */
-  grui1_name: string | null;
+  grui1_name: string | null | Uint8Array | Uint16Array;
   /** u32 */
   grui1_attributes: number;
 }
@@ -4204,7 +4204,7 @@ export function allocGROUP_USERS_INFO_1(data?: Partial<GROUP_USERS_INFO_1>): Uin
  */
 export interface LOCALGROUP_INFO_0 {
   /** Windows.Win32.Foundation.PWSTR */
-  lgrpi0_name: string | null;
+  lgrpi0_name: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeofLOCALGROUP_INFO_0 = 8;
@@ -4225,9 +4225,9 @@ export function allocLOCALGROUP_INFO_0(data?: Partial<LOCALGROUP_INFO_0>): Uint8
  */
 export interface LOCALGROUP_INFO_1 {
   /** Windows.Win32.Foundation.PWSTR */
-  lgrpi1_name: string | null;
+  lgrpi1_name: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  lgrpi1_comment: string | null;
+  lgrpi1_comment: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeofLOCALGROUP_INFO_1 = 16;
@@ -4253,7 +4253,7 @@ export function allocLOCALGROUP_INFO_1(data?: Partial<LOCALGROUP_INFO_1>): Uint8
  */
 export interface LOCALGROUP_INFO_1002 {
   /** Windows.Win32.Foundation.PWSTR */
-  lgrpi1002_comment: string | null;
+  lgrpi1002_comment: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeofLOCALGROUP_INFO_1002 = 8;
@@ -4296,7 +4296,7 @@ export interface LOCALGROUP_MEMBERS_INFO_1 {
   /** Windows.Win32.Security.SID_NAME_USE */
   lgrmi1_sidusage: SID_NAME_USE;
   /** Windows.Win32.Foundation.PWSTR */
-  lgrmi1_name: string | null;
+  lgrmi1_name: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeofLOCALGROUP_MEMBERS_INFO_1 = 24;
@@ -4326,7 +4326,7 @@ export interface LOCALGROUP_MEMBERS_INFO_2 {
   /** Windows.Win32.Security.SID_NAME_USE */
   lgrmi2_sidusage: SID_NAME_USE;
   /** Windows.Win32.Foundation.PWSTR */
-  lgrmi2_domainandname: string | null;
+  lgrmi2_domainandname: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeofLOCALGROUP_MEMBERS_INFO_2 = 24;
@@ -4352,7 +4352,7 @@ export function allocLOCALGROUP_MEMBERS_INFO_2(data?: Partial<LOCALGROUP_MEMBERS
  */
 export interface LOCALGROUP_MEMBERS_INFO_3 {
   /** Windows.Win32.Foundation.PWSTR */
-  lgrmi3_domainandname: string | null;
+  lgrmi3_domainandname: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeofLOCALGROUP_MEMBERS_INFO_3 = 8;
@@ -4373,7 +4373,7 @@ export function allocLOCALGROUP_MEMBERS_INFO_3(data?: Partial<LOCALGROUP_MEMBERS
  */
 export interface LOCALGROUP_USERS_INFO_0 {
   /** Windows.Win32.Foundation.PWSTR */
-  lgrui0_name: string | null;
+  lgrui0_name: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeofLOCALGROUP_USERS_INFO_0 = 8;
@@ -4394,13 +4394,13 @@ export function allocLOCALGROUP_USERS_INFO_0(data?: Partial<LOCALGROUP_USERS_INF
  */
 export interface NET_DISPLAY_USER {
   /** Windows.Win32.Foundation.PWSTR */
-  usri1_name: string | null;
+  usri1_name: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  usri1_comment: string | null;
+  usri1_comment: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.NetworkManagement.NetManagement.USER_ACCOUNT_FLAGS */
   usri1_flags: USER_ACCOUNT_FLAGS;
   /** Windows.Win32.Foundation.PWSTR */
-  usri1_full_name: string | null;
+  usri1_full_name: string | null | Uint8Array | Uint16Array;
   /** u32 */
   usri1_user_id: number;
   /** u32 */
@@ -4442,9 +4442,9 @@ export function allocNET_DISPLAY_USER(data?: Partial<NET_DISPLAY_USER>): Uint8Ar
  */
 export interface NET_DISPLAY_MACHINE {
   /** Windows.Win32.Foundation.PWSTR */
-  usri2_name: string | null;
+  usri2_name: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  usri2_comment: string | null;
+  usri2_comment: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.NetworkManagement.NetManagement.USER_ACCOUNT_FLAGS */
   usri2_flags: USER_ACCOUNT_FLAGS;
   /** u32 */
@@ -4483,9 +4483,9 @@ export function allocNET_DISPLAY_MACHINE(data?: Partial<NET_DISPLAY_MACHINE>): U
  */
 export interface NET_DISPLAY_GROUP {
   /** Windows.Win32.Foundation.PWSTR */
-  grpi3_name: string | null;
+  grpi3_name: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  grpi3_comment: string | null;
+  grpi3_comment: string | null | Uint8Array | Uint16Array;
   /** u32 */
   grpi3_group_id: number;
   /** u32 */
@@ -4524,7 +4524,7 @@ export function allocNET_DISPLAY_GROUP(data?: Partial<NET_DISPLAY_GROUP>): Uint8
  */
 export interface ACCESS_INFO_0 {
   /** Windows.Win32.Foundation.PWSTR */
-  acc0_resource_name: string | null;
+  acc0_resource_name: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeofACCESS_INFO_0 = 8;
@@ -4545,7 +4545,7 @@ export function allocACCESS_INFO_0(data?: Partial<ACCESS_INFO_0>): Uint8Array {
  */
 export interface ACCESS_INFO_1 {
   /** Windows.Win32.Foundation.PWSTR */
-  acc1_resource_name: string | null;
+  acc1_resource_name: string | null | Uint8Array | Uint16Array;
   /** u32 */
   acc1_attr: number;
   /** u32 */
@@ -4593,7 +4593,7 @@ export function allocACCESS_INFO_1002(data?: Partial<ACCESS_INFO_1002>): Uint8Ar
  */
 export interface ACCESS_LIST {
   /** Windows.Win32.Foundation.PWSTR */
-  acl_ugname: string | null;
+  acl_ugname: string | null | Uint8Array | Uint16Array;
   /** u32 */
   acl_access: number;
 }
@@ -4756,9 +4756,9 @@ export interface NET_VALIDATE_PASSWORD_CHANGE_INPUT_ARG {
   /** Windows.Win32.NetworkManagement.NetManagement.NET_VALIDATE_PERSISTED_FIELDS */
   InputPersistedFields: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.Foundation.PWSTR */
-  ClearPassword: string | null;
+  ClearPassword: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  UserAccountName: string | null;
+  UserAccountName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.NetworkManagement.NetManagement.NET_VALIDATE_PASSWORD_HASH */
   HashedPassword: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.Foundation.BOOLEAN */
@@ -4796,9 +4796,9 @@ export interface NET_VALIDATE_PASSWORD_RESET_INPUT_ARG {
   /** Windows.Win32.NetworkManagement.NetManagement.NET_VALIDATE_PERSISTED_FIELDS */
   InputPersistedFields: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.Foundation.PWSTR */
-  ClearPassword: string | null;
+  ClearPassword: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  UserAccountName: string | null;
+  UserAccountName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.NetworkManagement.NetManagement.NET_VALIDATE_PASSWORD_HASH */
   HashedPassword: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.Foundation.BOOLEAN */
@@ -4864,7 +4864,7 @@ export interface NETLOGON_INFO_2 {
   /** u32 */
   netlog2_pdc_connection_status: number;
   /** Windows.Win32.Foundation.PWSTR */
-  netlog2_trusted_dc_name: string | null;
+  netlog2_trusted_dc_name: string | null | Uint8Array | Uint16Array;
   /** u32 */
   netlog2_tc_connection_status: number;
 }
@@ -4937,9 +4937,9 @@ export function allocNETLOGON_INFO_3(data?: Partial<NETLOGON_INFO_3>): Uint8Arra
  */
 export interface NETLOGON_INFO_4 {
   /** Windows.Win32.Foundation.PWSTR */
-  netlog4_trusted_dc_name: string | null;
+  netlog4_trusted_dc_name: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  netlog4_trusted_domain_name: string | null;
+  netlog4_trusted_domain_name: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeofNETLOGON_INFO_4 = 16;
@@ -5107,7 +5107,7 @@ export function allocUSER_OTHER_INFO(data?: Partial<USER_OTHER_INFO>): Uint8Arra
  */
 export interface MSG_INFO_0 {
   /** Windows.Win32.Foundation.PWSTR */
-  msgi0_name: string | null;
+  msgi0_name: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeofMSG_INFO_0 = 8;
@@ -5128,11 +5128,11 @@ export function allocMSG_INFO_0(data?: Partial<MSG_INFO_0>): Uint8Array {
  */
 export interface MSG_INFO_1 {
   /** Windows.Win32.Foundation.PWSTR */
-  msgi1_name: string | null;
+  msgi1_name: string | null | Uint8Array | Uint16Array;
   /** u32 */
   msgi1_forward_flag: number;
   /** Windows.Win32.Foundation.PWSTR */
-  msgi1_forward: string | null;
+  msgi1_forward: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeofMSG_INFO_1 = 24;
@@ -5225,15 +5225,15 @@ export interface REPL_INFO_0 {
   /** u32 */
   rp0_role: number;
   /** Windows.Win32.Foundation.PWSTR */
-  rp0_exportpath: string | null;
+  rp0_exportpath: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  rp0_exportlist: string | null;
+  rp0_exportlist: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  rp0_importpath: string | null;
+  rp0_importpath: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  rp0_importlist: string | null;
+  rp0_importlist: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  rp0_logonusername: string | null;
+  rp0_logonusername: string | null | Uint8Array | Uint16Array;
   /** u32 */
   rp0_interval: number;
   /** u32 */
@@ -5369,7 +5369,7 @@ export function allocREPL_INFO_1003(data?: Partial<REPL_INFO_1003>): Uint8Array 
  */
 export interface REPL_EDIR_INFO_0 {
   /** Windows.Win32.Foundation.PWSTR */
-  rped0_dirname: string | null;
+  rped0_dirname: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeofREPL_EDIR_INFO_0 = 8;
@@ -5390,7 +5390,7 @@ export function allocREPL_EDIR_INFO_0(data?: Partial<REPL_EDIR_INFO_0>): Uint8Ar
  */
 export interface REPL_EDIR_INFO_1 {
   /** Windows.Win32.Foundation.PWSTR */
-  rped1_dirname: string | null;
+  rped1_dirname: string | null | Uint8Array | Uint16Array;
   /** u32 */
   rped1_integrity: number;
   /** u32 */
@@ -5419,7 +5419,7 @@ export function allocREPL_EDIR_INFO_1(data?: Partial<REPL_EDIR_INFO_1>): Uint8Ar
  */
 export interface REPL_EDIR_INFO_2 {
   /** Windows.Win32.Foundation.PWSTR */
-  rped2_dirname: string | null;
+  rped2_dirname: string | null | Uint8Array | Uint16Array;
   /** u32 */
   rped2_integrity: number;
   /** u32 */
@@ -5494,7 +5494,7 @@ export function allocREPL_EDIR_INFO_1001(data?: Partial<REPL_EDIR_INFO_1001>): U
  */
 export interface REPL_IDIR_INFO_0 {
   /** Windows.Win32.Foundation.PWSTR */
-  rpid0_dirname: string | null;
+  rpid0_dirname: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeofREPL_IDIR_INFO_0 = 8;
@@ -5515,11 +5515,11 @@ export function allocREPL_IDIR_INFO_0(data?: Partial<REPL_IDIR_INFO_0>): Uint8Ar
  */
 export interface REPL_IDIR_INFO_1 {
   /** Windows.Win32.Foundation.PWSTR */
-  rpid1_dirname: string | null;
+  rpid1_dirname: string | null | Uint8Array | Uint16Array;
   /** u32 */
   rpid1_state: number;
   /** Windows.Win32.Foundation.PWSTR */
-  rpid1_mastername: string | null;
+  rpid1_mastername: string | null | Uint8Array | Uint16Array;
   /** u32 */
   rpid1_last_update_time: number;
   /** u32 */
@@ -5563,7 +5563,7 @@ export interface SERVER_INFO_100 {
   /** u32 */
   sv100_platform_id: number;
   /** Windows.Win32.Foundation.PWSTR */
-  sv100_name: string | null;
+  sv100_name: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeofSERVER_INFO_100 = 16;
@@ -5589,7 +5589,7 @@ export interface SERVER_INFO_101 {
   /** u32 */
   sv101_platform_id: number;
   /** Windows.Win32.Foundation.PWSTR */
-  sv101_name: string | null;
+  sv101_name: string | null | Uint8Array | Uint16Array;
   /** u32 */
   sv101_version_major: number;
   /** u32 */
@@ -5597,7 +5597,7 @@ export interface SERVER_INFO_101 {
   /** Windows.Win32.NetworkManagement.NetManagement.NET_SERVER_TYPE */
   sv101_type: NET_SERVER_TYPE;
   /** Windows.Win32.Foundation.PWSTR */
-  sv101_comment: string | null;
+  sv101_comment: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeofSERVER_INFO_101 = 40;
@@ -5635,7 +5635,7 @@ export interface SERVER_INFO_102 {
   /** u32 */
   sv102_platform_id: number;
   /** Windows.Win32.Foundation.PWSTR */
-  sv102_name: string | null;
+  sv102_name: string | null | Uint8Array | Uint16Array;
   /** u32 */
   sv102_version_major: number;
   /** u32 */
@@ -5643,7 +5643,7 @@ export interface SERVER_INFO_102 {
   /** Windows.Win32.NetworkManagement.NetManagement.NET_SERVER_TYPE */
   sv102_type: NET_SERVER_TYPE;
   /** Windows.Win32.Foundation.PWSTR */
-  sv102_comment: string | null;
+  sv102_comment: string | null | Uint8Array | Uint16Array;
   /** u32 */
   sv102_users: number;
   /** i32 */
@@ -5657,7 +5657,7 @@ export interface SERVER_INFO_102 {
   /** u32 */
   sv102_licenses: number;
   /** Windows.Win32.Foundation.PWSTR */
-  sv102_userpath: string | null;
+  sv102_userpath: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeofSERVER_INFO_102 = 72;
@@ -5712,7 +5712,7 @@ export interface SERVER_INFO_103 {
   /** u32 */
   sv103_platform_id: number;
   /** Windows.Win32.Foundation.PWSTR */
-  sv103_name: string | null;
+  sv103_name: string | null | Uint8Array | Uint16Array;
   /** u32 */
   sv103_version_major: number;
   /** u32 */
@@ -5720,7 +5720,7 @@ export interface SERVER_INFO_103 {
   /** u32 */
   sv103_type: number;
   /** Windows.Win32.Foundation.PWSTR */
-  sv103_comment: string | null;
+  sv103_comment: string | null | Uint8Array | Uint16Array;
   /** u32 */
   sv103_users: number;
   /** i32 */
@@ -5734,7 +5734,7 @@ export interface SERVER_INFO_103 {
   /** u32 */
   sv103_licenses: number;
   /** Windows.Win32.Foundation.PWSTR */
-  sv103_userpath: string | null;
+  sv103_userpath: string | null | Uint8Array | Uint16Array;
   /** u32 */
   sv103_capabilities: number;
 }
@@ -5798,7 +5798,7 @@ export interface SERVER_INFO_402 {
   /** u32 */
   sv402_alist_mtime: number;
   /** Windows.Win32.Foundation.PWSTR */
-  sv402_alerts: string | null;
+  sv402_alerts: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.NetworkManagement.NetManagement.SERVER_INFO_SECURITY */
   sv402_security: SERVER_INFO_SECURITY;
   /** u32 */
@@ -5806,7 +5806,7 @@ export interface SERVER_INFO_402 {
   /** u32 */
   sv402_lanmask: number;
   /** Windows.Win32.Foundation.PWSTR */
-  sv402_guestacct: string | null;
+  sv402_guestacct: string | null | Uint8Array | Uint16Array;
   /** u32 */
   sv402_chdevs: number;
   /** u32 */
@@ -5852,7 +5852,7 @@ export interface SERVER_INFO_402 {
   /** u32 */
   sv402_maxauditsz: number;
   /** Windows.Win32.Foundation.PWSTR */
-  sv402_srvheuristics: string | null;
+  sv402_srvheuristics: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeofSERVER_INFO_402 = 144;
@@ -5947,7 +5947,7 @@ export interface SERVER_INFO_403 {
   /** u32 */
   sv403_alist_mtime: number;
   /** Windows.Win32.Foundation.PWSTR */
-  sv403_alerts: string | null;
+  sv403_alerts: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.NetworkManagement.NetManagement.SERVER_INFO_SECURITY */
   sv403_security: SERVER_INFO_SECURITY;
   /** u32 */
@@ -5955,7 +5955,7 @@ export interface SERVER_INFO_403 {
   /** u32 */
   sv403_lanmask: number;
   /** Windows.Win32.Foundation.PWSTR */
-  sv403_guestacct: string | null;
+  sv403_guestacct: string | null | Uint8Array | Uint16Array;
   /** u32 */
   sv403_chdevs: number;
   /** u32 */
@@ -6001,13 +6001,13 @@ export interface SERVER_INFO_403 {
   /** u32 */
   sv403_maxauditsz: number;
   /** Windows.Win32.Foundation.PWSTR */
-  sv403_srvheuristics: string | null;
+  sv403_srvheuristics: string | null | Uint8Array | Uint16Array;
   /** u32 */
   sv403_auditedevents: number;
   /** u32 */
   sv403_autoprofile: number;
   /** Windows.Win32.Foundation.PWSTR */
-  sv403_autopath: string | null;
+  sv403_autopath: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeofSERVER_INFO_403 = 160;
@@ -6227,7 +6227,7 @@ export interface SERVER_INFO_503 {
   /** Windows.Win32.Foundation.BOOL */
   sv503_lmannounce: boolean;
   /** Windows.Win32.Foundation.PWSTR */
-  sv503_domain: string | null;
+  sv503_domain: string | null | Uint8Array | Uint16Array;
   /** u32 */
   sv503_maxcopyreadlen: number;
   /** u32 */
@@ -6413,7 +6413,7 @@ export interface SERVER_INFO_599 {
   /** Windows.Win32.Foundation.BOOL */
   sv599_lmannounce: boolean;
   /** Windows.Win32.Foundation.PWSTR */
-  sv599_domain: string | null;
+  sv599_domain: string | null | Uint8Array | Uint16Array;
   /** u32 */
   sv599_maxcopyreadlen: number;
   /** u32 */
@@ -6805,7 +6805,7 @@ export function allocSERVER_INFO_598(data?: Partial<SERVER_INFO_598>): Uint8Arra
  */
 export interface SERVER_INFO_1005 {
   /** Windows.Win32.Foundation.PWSTR */
-  sv1005_comment: string | null;
+  sv1005_comment: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeofSERVER_INFO_1005 = 8;
@@ -8593,13 +8593,13 @@ export interface SERVER_TRANSPORT_INFO_0 {
   /** u32 */
   svti0_numberofvcs: number;
   /** Windows.Win32.Foundation.PWSTR */
-  svti0_transportname: string | null;
+  svti0_transportname: string | null | Uint8Array | Uint16Array;
   /** ptr */
   svti0_transportaddress: Deno.PointerValue | Uint8Array | null;
   /** u32 */
   svti0_transportaddresslength: number;
   /** Windows.Win32.Foundation.PWSTR */
-  svti0_networkaddress: string | null;
+  svti0_networkaddress: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeofSERVER_TRANSPORT_INFO_0 = 40;
@@ -8635,15 +8635,15 @@ export interface SERVER_TRANSPORT_INFO_1 {
   /** u32 */
   svti1_numberofvcs: number;
   /** Windows.Win32.Foundation.PWSTR */
-  svti1_transportname: string | null;
+  svti1_transportname: string | null | Uint8Array | Uint16Array;
   /** ptr */
   svti1_transportaddress: Deno.PointerValue | Uint8Array | null;
   /** u32 */
   svti1_transportaddresslength: number;
   /** Windows.Win32.Foundation.PWSTR */
-  svti1_networkaddress: string | null;
+  svti1_networkaddress: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  svti1_domain: string | null;
+  svti1_domain: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeofSERVER_TRANSPORT_INFO_1 = 48;
@@ -8684,15 +8684,15 @@ export interface SERVER_TRANSPORT_INFO_2 {
   /** u32 */
   svti2_numberofvcs: number;
   /** Windows.Win32.Foundation.PWSTR */
-  svti2_transportname: string | null;
+  svti2_transportname: string | null | Uint8Array | Uint16Array;
   /** ptr */
   svti2_transportaddress: Deno.PointerValue | Uint8Array | null;
   /** u32 */
   svti2_transportaddresslength: number;
   /** Windows.Win32.Foundation.PWSTR */
-  svti2_networkaddress: string | null;
+  svti2_networkaddress: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  svti2_domain: string | null;
+  svti2_domain: string | null | Uint8Array | Uint16Array;
   /** u32 */
   svti2_flags: number;
 }
@@ -8738,15 +8738,15 @@ export interface SERVER_TRANSPORT_INFO_3 {
   /** u32 */
   svti3_numberofvcs: number;
   /** Windows.Win32.Foundation.PWSTR */
-  svti3_transportname: string | null;
+  svti3_transportname: string | null | Uint8Array | Uint16Array;
   /** ptr */
   svti3_transportaddress: Deno.PointerValue | Uint8Array | null;
   /** u32 */
   svti3_transportaddresslength: number;
   /** Windows.Win32.Foundation.PWSTR */
-  svti3_networkaddress: string | null;
+  svti3_networkaddress: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  svti3_domain: string | null;
+  svti3_domain: string | null | Uint8Array | Uint16Array;
   /** u32 */
   svti3_flags: number;
   /** u32 */
@@ -8797,7 +8797,7 @@ export function allocSERVER_TRANSPORT_INFO_3(data?: Partial<SERVER_TRANSPORT_INF
  */
 export interface SERVICE_INFO_0 {
   /** Windows.Win32.Foundation.PWSTR */
-  svci0_name: string | null;
+  svci0_name: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeofSERVICE_INFO_0 = 8;
@@ -8818,7 +8818,7 @@ export function allocSERVICE_INFO_0(data?: Partial<SERVICE_INFO_0>): Uint8Array 
  */
 export interface SERVICE_INFO_1 {
   /** Windows.Win32.Foundation.PWSTR */
-  svci1_name: string | null;
+  svci1_name: string | null | Uint8Array | Uint16Array;
   /** u32 */
   svci1_status: number;
   /** u32 */
@@ -8852,7 +8852,7 @@ export function allocSERVICE_INFO_1(data?: Partial<SERVICE_INFO_1>): Uint8Array 
  */
 export interface SERVICE_INFO_2 {
   /** Windows.Win32.Foundation.PWSTR */
-  svci2_name: string | null;
+  svci2_name: string | null | Uint8Array | Uint16Array;
   /** u32 */
   svci2_status: number;
   /** u32 */
@@ -8860,11 +8860,11 @@ export interface SERVICE_INFO_2 {
   /** u32 */
   svci2_pid: number;
   /** Windows.Win32.Foundation.PWSTR */
-  svci2_text: string | null;
+  svci2_text: string | null | Uint8Array | Uint16Array;
   /** u32 */
   svci2_specific_error: number;
   /** Windows.Win32.Foundation.PWSTR */
-  svci2_display_name: string | null;
+  svci2_display_name: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeofSERVICE_INFO_2 = 48;
@@ -8905,9 +8905,9 @@ export function allocSERVICE_INFO_2(data?: Partial<SERVICE_INFO_2>): Uint8Array 
  */
 export interface USE_INFO_0 {
   /** Windows.Win32.Foundation.PWSTR */
-  ui0_local: string | null;
+  ui0_local: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  ui0_remote: string | null;
+  ui0_remote: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeofUSE_INFO_0 = 16;
@@ -8933,11 +8933,11 @@ export function allocUSE_INFO_0(data?: Partial<USE_INFO_0>): Uint8Array {
  */
 export interface USE_INFO_1 {
   /** Windows.Win32.Foundation.PWSTR */
-  ui1_local: string | null;
+  ui1_local: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  ui1_remote: string | null;
+  ui1_remote: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  ui1_password: string | null;
+  ui1_password: string | null | Uint8Array | Uint16Array;
   /** u32 */
   ui1_status: number;
   /** Windows.Win32.NetworkManagement.NetManagement.USE_INFO_ASG_TYPE */
@@ -8984,11 +8984,11 @@ export function allocUSE_INFO_1(data?: Partial<USE_INFO_1>): Uint8Array {
  */
 export interface USE_INFO_2 {
   /** Windows.Win32.Foundation.PWSTR */
-  ui2_local: string | null;
+  ui2_local: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  ui2_remote: string | null;
+  ui2_remote: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  ui2_password: string | null;
+  ui2_password: string | null | Uint8Array | Uint16Array;
   /** u32 */
   ui2_status: number;
   /** Windows.Win32.NetworkManagement.NetManagement.USE_INFO_ASG_TYPE */
@@ -8998,9 +8998,9 @@ export interface USE_INFO_2 {
   /** u32 */
   ui2_usecount: number;
   /** Windows.Win32.Foundation.PWSTR */
-  ui2_username: string | null;
+  ui2_username: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  ui2_domainname: string | null;
+  ui2_domainname: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeofUSE_INFO_2 = 56;
@@ -9361,9 +9361,9 @@ export interface WKSTA_INFO_100 {
   /** u32 */
   wki100_platform_id: number;
   /** Windows.Win32.Foundation.PWSTR */
-  wki100_computername: string | null;
+  wki100_computername: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  wki100_langroup: string | null;
+  wki100_langroup: string | null | Uint8Array | Uint16Array;
   /** u32 */
   wki100_ver_major: number;
   /** u32 */
@@ -9402,15 +9402,15 @@ export interface WKSTA_INFO_101 {
   /** u32 */
   wki101_platform_id: number;
   /** Windows.Win32.Foundation.PWSTR */
-  wki101_computername: string | null;
+  wki101_computername: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  wki101_langroup: string | null;
+  wki101_langroup: string | null | Uint8Array | Uint16Array;
   /** u32 */
   wki101_ver_major: number;
   /** u32 */
   wki101_ver_minor: number;
   /** Windows.Win32.Foundation.PWSTR */
-  wki101_lanroot: string | null;
+  wki101_lanroot: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeofWKSTA_INFO_101 = 40;
@@ -9450,15 +9450,15 @@ export interface WKSTA_INFO_102 {
   /** u32 */
   wki102_platform_id: number;
   /** Windows.Win32.Foundation.PWSTR */
-  wki102_computername: string | null;
+  wki102_computername: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  wki102_langroup: string | null;
+  wki102_langroup: string | null | Uint8Array | Uint16Array;
   /** u32 */
   wki102_ver_major: number;
   /** u32 */
   wki102_ver_minor: number;
   /** Windows.Win32.Foundation.PWSTR */
-  wki102_lanroot: string | null;
+  wki102_lanroot: string | null | Uint8Array | Uint16Array;
   /** u32 */
   wki102_logged_on_users: number;
 }
@@ -9535,7 +9535,7 @@ export interface WKSTA_INFO_302 {
   /** u32 */
   wki302_siz_char_buf: number;
   /** Windows.Win32.Foundation.PWSTR */
-  wki302_wrk_heuristics: string | null;
+  wki302_wrk_heuristics: string | null | Uint8Array | Uint16Array;
   /** u32 */
   wki302_mailslots: number;
   /** u32 */
@@ -9633,7 +9633,7 @@ export interface WKSTA_INFO_402 {
   /** u32 */
   wki402_siz_char_buf: number;
   /** Windows.Win32.Foundation.PWSTR */
-  wki402_wrk_heuristics: string | null;
+  wki402_wrk_heuristics: string | null | Uint8Array | Uint16Array;
   /** u32 */
   wki402_mailslots: number;
   /** u32 */
@@ -10465,7 +10465,7 @@ export function allocWKSTA_INFO_1062(data?: Partial<WKSTA_INFO_1062>): Uint8Arra
  */
 export interface WKSTA_USER_INFO_0 {
   /** Windows.Win32.Foundation.PWSTR */
-  wkui0_username: string | null;
+  wkui0_username: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeofWKSTA_USER_INFO_0 = 8;
@@ -10486,13 +10486,13 @@ export function allocWKSTA_USER_INFO_0(data?: Partial<WKSTA_USER_INFO_0>): Uint8
  */
 export interface WKSTA_USER_INFO_1 {
   /** Windows.Win32.Foundation.PWSTR */
-  wkui1_username: string | null;
+  wkui1_username: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  wkui1_logon_domain: string | null;
+  wkui1_logon_domain: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  wkui1_oth_domains: string | null;
+  wkui1_oth_domains: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  wkui1_logon_server: string | null;
+  wkui1_logon_server: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeofWKSTA_USER_INFO_1 = 32;
@@ -10528,7 +10528,7 @@ export function allocWKSTA_USER_INFO_1(data?: Partial<WKSTA_USER_INFO_1>): Uint8
  */
 export interface WKSTA_USER_INFO_1101 {
   /** Windows.Win32.Foundation.PWSTR */
-  wkui1101_oth_domains: string | null;
+  wkui1101_oth_domains: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeofWKSTA_USER_INFO_1101 = 8;
@@ -10553,9 +10553,9 @@ export interface WKSTA_TRANSPORT_INFO_0 {
   /** u32 */
   wkti0_number_of_vcs: number;
   /** Windows.Win32.Foundation.PWSTR */
-  wkti0_transport_name: string | null;
+  wkti0_transport_name: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  wkti0_transport_address: string | null;
+  wkti0_transport_address: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.BOOL */
   wkti0_wan_ish: boolean;
 }
@@ -10598,9 +10598,9 @@ export interface ERROR_LOG {
   /** u32 */
   el_error: number;
   /** Windows.Win32.Foundation.PWSTR */
-  el_name: string | null;
+  el_name: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  el_text: string | null;
+  el_text: string | null | Uint8Array | Uint16Array;
   /** ptr */
   el_data: Deno.PointerValue | Uint8Array | null;
   /** u32 */
@@ -10676,9 +10676,9 @@ export function allocHLOG(data?: Partial<HLOG>): Uint8Array {
  */
 export interface CONFIG_INFO_0 {
   /** Windows.Win32.Foundation.PWSTR */
-  cfgi0_key: string | null;
+  cfgi0_key: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  cfgi0_data: string | null;
+  cfgi0_data: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeofCONFIG_INFO_0 = 16;
@@ -11341,11 +11341,11 @@ export function allocAE_GENERIC(data?: Partial<AE_GENERIC>): Uint8Array {
  */
 export interface DSREG_USER_INFO {
   /** Windows.Win32.Foundation.PWSTR */
-  pszUserEmail: string | null;
+  pszUserEmail: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pszUserKeyId: string | null;
+  pszUserKeyId: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pszUserKeyName: string | null;
+  pszUserKeyName: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeofDSREG_USER_INFO = 24;
@@ -11380,23 +11380,23 @@ export interface DSREG_JOIN_INFO {
   /** ptr */
   pJoinCertificate: Deno.PointerValue | Uint8Array | null;
   /** Windows.Win32.Foundation.PWSTR */
-  pszDeviceId: string | null;
+  pszDeviceId: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pszIdpDomain: string | null;
+  pszIdpDomain: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pszTenantId: string | null;
+  pszTenantId: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pszJoinUserEmail: string | null;
+  pszJoinUserEmail: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pszTenantDisplayName: string | null;
+  pszTenantDisplayName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pszMdmEnrollmentUrl: string | null;
+  pszMdmEnrollmentUrl: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pszMdmTermsOfUseUrl: string | null;
+  pszMdmTermsOfUseUrl: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pszMdmComplianceUrl: string | null;
+  pszMdmComplianceUrl: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pszUserSettingSyncUrl: string | null;
+  pszUserSettingSyncUrl: string | null | Uint8Array | Uint16Array;
   /** ptr */
   pUserInfo: Deno.PointerValue | Uint8Array | null;
 }
@@ -11468,13 +11468,13 @@ export interface NETSETUP_PROVISIONING_PARAMS {
   /** u32 */
   dwVersion: number;
   /** Windows.Win32.Foundation.PWSTR */
-  lpDomain: string | null;
+  lpDomain: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  lpHostName: string | null;
+  lpHostName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  lpMachineAccountOU: string | null;
+  lpMachineAccountOU: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  lpDcName: string | null;
+  lpDcName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.NetworkManagement.NetManagement.NETSETUP_PROVISION */
   dwProvisionOptions: NETSETUP_PROVISION;
   /** ptr */
@@ -11490,11 +11490,11 @@ export interface NETSETUP_PROVISIONING_PARAMS {
   /** u32 */
   cMachinePolicyPaths: number;
   /** Windows.Win32.Foundation.PWSTR */
-  lpNetbiosName: string | null;
+  lpNetbiosName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  lpSiteName: string | null;
+  lpSiteName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  lpPrimaryDNSDomain: string | null;
+  lpPrimaryDNSDomain: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeofNETSETUP_PROVISIONING_PARAMS = 120;
@@ -11574,7 +11574,7 @@ export interface AT_INFO {
   /** u8 */
   Flags: number;
   /** Windows.Win32.Foundation.PWSTR */
-  Command: string | null;
+  Command: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeofAT_INFO = 24;
@@ -11614,7 +11614,7 @@ export interface AT_ENUM {
   /** u8 */
   Flags: number;
   /** Windows.Win32.Foundation.PWSTR */
-  Command: string | null;
+  Command: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeofAT_ENUM = 32;
@@ -11714,11 +11714,11 @@ export interface OBO_TOKEN {
   /** Windows.Win32.NetworkManagement.NetManagement.INetCfgComponent */
   pncc: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.Foundation.PWSTR */
-  pszwManufacturer: string | null;
+  pszwManufacturer: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pszwProduct: string | null;
+  pszwProduct: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pszwDisplayName: string | null;
+  pszwDisplayName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.BOOL */
   fRegistered: boolean;
 }
@@ -12645,7 +12645,7 @@ try {
 // Symbols
 
 export function NetUserAdd(
-  servername: string | null /* Windows.Win32.Foundation.PWSTR */,
+  servername: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   level: number /* u32 */,
   buf: Deno.PointerValue | Uint8Array | null /* ptr */,
   parm_err: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -12654,7 +12654,7 @@ export function NetUserAdd(
 }
 
 export function NetUserEnum(
-  servername: string | null /* Windows.Win32.Foundation.PWSTR */,
+  servername: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   level: number /* u32 */,
   filter: NET_USER_ENUM_FILTER_FLAGS /* Windows.Win32.NetworkManagement.NetManagement.NET_USER_ENUM_FILTER_FLAGS */,
   bufptr: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -12667,8 +12667,8 @@ export function NetUserEnum(
 }
 
 export function NetUserGetInfo(
-  servername: string | null /* Windows.Win32.Foundation.PWSTR */,
-  username: string | null /* Windows.Win32.Foundation.PWSTR */,
+  servername: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  username: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   level: number /* u32 */,
   bufptr: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
@@ -12676,8 +12676,8 @@ export function NetUserGetInfo(
 }
 
 export function NetUserSetInfo(
-  servername: string | null /* Windows.Win32.Foundation.PWSTR */,
-  username: string | null /* Windows.Win32.Foundation.PWSTR */,
+  servername: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  username: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   level: number /* u32 */,
   buf: Deno.PointerValue | Uint8Array | null /* ptr */,
   parm_err: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -12686,15 +12686,15 @@ export function NetUserSetInfo(
 }
 
 export function NetUserDel(
-  servername: string | null /* Windows.Win32.Foundation.PWSTR */,
-  username: string | null /* Windows.Win32.Foundation.PWSTR */,
+  servername: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  username: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
   return libNETAPI32_dll.NetUserDel(util.pwstrToFfi(servername), util.pwstrToFfi(username));
 }
 
 export function NetUserGetGroups(
-  servername: string | null /* Windows.Win32.Foundation.PWSTR */,
-  username: string | null /* Windows.Win32.Foundation.PWSTR */,
+  servername: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  username: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   level: number /* u32 */,
   bufptr: Deno.PointerValue | Uint8Array | null /* ptr */,
   prefmaxlen: number /* u32 */,
@@ -12705,8 +12705,8 @@ export function NetUserGetGroups(
 }
 
 export function NetUserSetGroups(
-  servername: string | null /* Windows.Win32.Foundation.PWSTR */,
-  username: string | null /* Windows.Win32.Foundation.PWSTR */,
+  servername: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  username: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   level: number /* u32 */,
   buf: Deno.PointerValue | Uint8Array | null /* ptr */,
   num_entries: number /* u32 */,
@@ -12715,8 +12715,8 @@ export function NetUserSetGroups(
 }
 
 export function NetUserGetLocalGroups(
-  servername: string | null /* Windows.Win32.Foundation.PWSTR */,
-  username: string | null /* Windows.Win32.Foundation.PWSTR */,
+  servername: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  username: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   level: number /* u32 */,
   flags: number /* u32 */,
   bufptr: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -12728,7 +12728,7 @@ export function NetUserGetLocalGroups(
 }
 
 export function NetUserModalsGet(
-  servername: string | null /* Windows.Win32.Foundation.PWSTR */,
+  servername: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   level: number /* u32 */,
   bufptr: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
@@ -12736,7 +12736,7 @@ export function NetUserModalsGet(
 }
 
 export function NetUserModalsSet(
-  servername: string | null /* Windows.Win32.Foundation.PWSTR */,
+  servername: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   level: number /* u32 */,
   buf: Deno.PointerValue | Uint8Array | null /* ptr */,
   parm_err: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -12745,16 +12745,16 @@ export function NetUserModalsSet(
 }
 
 export function NetUserChangePassword(
-  domainname: string | null /* Windows.Win32.Foundation.PWSTR */,
-  username: string | null /* Windows.Win32.Foundation.PWSTR */,
-  oldpassword: string | null /* Windows.Win32.Foundation.PWSTR */,
-  newpassword: string | null /* Windows.Win32.Foundation.PWSTR */,
+  domainname: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  username: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  oldpassword: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  newpassword: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
   return libNETAPI32_dll.NetUserChangePassword(util.pwstrToFfi(domainname), util.pwstrToFfi(username), util.pwstrToFfi(oldpassword), util.pwstrToFfi(newpassword));
 }
 
 export function NetGroupAdd(
-  servername: string | null /* Windows.Win32.Foundation.PWSTR */,
+  servername: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   level: number /* u32 */,
   buf: Deno.PointerValue | Uint8Array | null /* ptr */,
   parm_err: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -12763,15 +12763,15 @@ export function NetGroupAdd(
 }
 
 export function NetGroupAddUser(
-  servername: string | null /* Windows.Win32.Foundation.PWSTR */,
-  GroupName: string | null /* Windows.Win32.Foundation.PWSTR */,
-  username: string | null /* Windows.Win32.Foundation.PWSTR */,
+  servername: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  GroupName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  username: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
   return libNETAPI32_dll.NetGroupAddUser(util.pwstrToFfi(servername), util.pwstrToFfi(GroupName), util.pwstrToFfi(username));
 }
 
 export function NetGroupEnum(
-  servername: string | null /* Windows.Win32.Foundation.PWSTR */,
+  servername: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   level: number /* u32 */,
   bufptr: Deno.PointerValue | Uint8Array | null /* ptr */,
   prefmaxlen: number /* u32 */,
@@ -12783,8 +12783,8 @@ export function NetGroupEnum(
 }
 
 export function NetGroupGetInfo(
-  servername: string | null /* Windows.Win32.Foundation.PWSTR */,
-  groupname: string | null /* Windows.Win32.Foundation.PWSTR */,
+  servername: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  groupname: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   level: number /* u32 */,
   bufptr: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
@@ -12792,8 +12792,8 @@ export function NetGroupGetInfo(
 }
 
 export function NetGroupSetInfo(
-  servername: string | null /* Windows.Win32.Foundation.PWSTR */,
-  groupname: string | null /* Windows.Win32.Foundation.PWSTR */,
+  servername: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  groupname: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   level: number /* u32 */,
   buf: Deno.PointerValue | Uint8Array | null /* ptr */,
   parm_err: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -12802,23 +12802,23 @@ export function NetGroupSetInfo(
 }
 
 export function NetGroupDel(
-  servername: string | null /* Windows.Win32.Foundation.PWSTR */,
-  groupname: string | null /* Windows.Win32.Foundation.PWSTR */,
+  servername: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  groupname: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
   return libNETAPI32_dll.NetGroupDel(util.pwstrToFfi(servername), util.pwstrToFfi(groupname));
 }
 
 export function NetGroupDelUser(
-  servername: string | null /* Windows.Win32.Foundation.PWSTR */,
-  GroupName: string | null /* Windows.Win32.Foundation.PWSTR */,
-  Username: string | null /* Windows.Win32.Foundation.PWSTR */,
+  servername: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  GroupName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  Username: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
   return libNETAPI32_dll.NetGroupDelUser(util.pwstrToFfi(servername), util.pwstrToFfi(GroupName), util.pwstrToFfi(Username));
 }
 
 export function NetGroupGetUsers(
-  servername: string | null /* Windows.Win32.Foundation.PWSTR */,
-  groupname: string | null /* Windows.Win32.Foundation.PWSTR */,
+  servername: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  groupname: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   level: number /* u32 */,
   bufptr: Deno.PointerValue | Uint8Array | null /* ptr */,
   prefmaxlen: number /* u32 */,
@@ -12830,8 +12830,8 @@ export function NetGroupGetUsers(
 }
 
 export function NetGroupSetUsers(
-  servername: string | null /* Windows.Win32.Foundation.PWSTR */,
-  groupname: string | null /* Windows.Win32.Foundation.PWSTR */,
+  servername: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  groupname: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   level: number /* u32 */,
   buf: Deno.PointerValue | Uint8Array | null /* ptr */,
   totalentries: number /* u32 */,
@@ -12840,7 +12840,7 @@ export function NetGroupSetUsers(
 }
 
 export function NetLocalGroupAdd(
-  servername: string | null /* Windows.Win32.Foundation.PWSTR */,
+  servername: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   level: number /* u32 */,
   buf: Deno.PointerValue | Uint8Array | null /* ptr */,
   parm_err: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -12849,15 +12849,15 @@ export function NetLocalGroupAdd(
 }
 
 export function NetLocalGroupAddMember(
-  servername: string | null /* Windows.Win32.Foundation.PWSTR */,
-  groupname: string | null /* Windows.Win32.Foundation.PWSTR */,
+  servername: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  groupname: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   membersid: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.PSID */,
 ): number /* u32 */ {
   return libNETAPI32_dll.NetLocalGroupAddMember(util.pwstrToFfi(servername), util.pwstrToFfi(groupname), util.toPointer(membersid));
 }
 
 export function NetLocalGroupEnum(
-  servername: string | null /* Windows.Win32.Foundation.PWSTR */,
+  servername: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   level: number /* u32 */,
   bufptr: Deno.PointerValue | Uint8Array | null /* ptr */,
   prefmaxlen: number /* u32 */,
@@ -12869,8 +12869,8 @@ export function NetLocalGroupEnum(
 }
 
 export function NetLocalGroupGetInfo(
-  servername: string | null /* Windows.Win32.Foundation.PWSTR */,
-  groupname: string | null /* Windows.Win32.Foundation.PWSTR */,
+  servername: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  groupname: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   level: number /* u32 */,
   bufptr: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
@@ -12878,8 +12878,8 @@ export function NetLocalGroupGetInfo(
 }
 
 export function NetLocalGroupSetInfo(
-  servername: string | null /* Windows.Win32.Foundation.PWSTR */,
-  groupname: string | null /* Windows.Win32.Foundation.PWSTR */,
+  servername: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  groupname: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   level: number /* u32 */,
   buf: Deno.PointerValue | Uint8Array | null /* ptr */,
   parm_err: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -12888,23 +12888,23 @@ export function NetLocalGroupSetInfo(
 }
 
 export function NetLocalGroupDel(
-  servername: string | null /* Windows.Win32.Foundation.PWSTR */,
-  groupname: string | null /* Windows.Win32.Foundation.PWSTR */,
+  servername: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  groupname: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
   return libNETAPI32_dll.NetLocalGroupDel(util.pwstrToFfi(servername), util.pwstrToFfi(groupname));
 }
 
 export function NetLocalGroupDelMember(
-  servername: string | null /* Windows.Win32.Foundation.PWSTR */,
-  groupname: string | null /* Windows.Win32.Foundation.PWSTR */,
+  servername: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  groupname: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   membersid: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.PSID */,
 ): number /* u32 */ {
   return libNETAPI32_dll.NetLocalGroupDelMember(util.pwstrToFfi(servername), util.pwstrToFfi(groupname), util.toPointer(membersid));
 }
 
 export function NetLocalGroupGetMembers(
-  servername: string | null /* Windows.Win32.Foundation.PWSTR */,
-  localgroupname: string | null /* Windows.Win32.Foundation.PWSTR */,
+  servername: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  localgroupname: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   level: number /* u32 */,
   bufptr: Deno.PointerValue | Uint8Array | null /* ptr */,
   prefmaxlen: number /* u32 */,
@@ -12916,8 +12916,8 @@ export function NetLocalGroupGetMembers(
 }
 
 export function NetLocalGroupSetMembers(
-  servername: string | null /* Windows.Win32.Foundation.PWSTR */,
-  groupname: string | null /* Windows.Win32.Foundation.PWSTR */,
+  servername: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  groupname: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   level: number /* u32 */,
   buf: Deno.PointerValue | Uint8Array | null /* ptr */,
   totalentries: number /* u32 */,
@@ -12926,8 +12926,8 @@ export function NetLocalGroupSetMembers(
 }
 
 export function NetLocalGroupAddMembers(
-  servername: string | null /* Windows.Win32.Foundation.PWSTR */,
-  groupname: string | null /* Windows.Win32.Foundation.PWSTR */,
+  servername: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  groupname: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   level: number /* u32 */,
   buf: Deno.PointerValue | Uint8Array | null /* ptr */,
   totalentries: number /* u32 */,
@@ -12936,8 +12936,8 @@ export function NetLocalGroupAddMembers(
 }
 
 export function NetLocalGroupDelMembers(
-  servername: string | null /* Windows.Win32.Foundation.PWSTR */,
-  groupname: string | null /* Windows.Win32.Foundation.PWSTR */,
+  servername: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  groupname: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   level: number /* u32 */,
   buf: Deno.PointerValue | Uint8Array | null /* ptr */,
   totalentries: number /* u32 */,
@@ -12946,7 +12946,7 @@ export function NetLocalGroupDelMembers(
 }
 
 export function NetQueryDisplayInformation(
-  ServerName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  ServerName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   Level: number /* u32 */,
   Index: number /* u32 */,
   EntriesRequested: number /* u32 */,
@@ -12958,16 +12958,16 @@ export function NetQueryDisplayInformation(
 }
 
 export function NetGetDisplayInformationIndex(
-  ServerName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  ServerName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   Level: number /* u32 */,
-  Prefix: string | null /* Windows.Win32.Foundation.PWSTR */,
+  Prefix: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   Index: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
   return libNETAPI32_dll.NetGetDisplayInformationIndex(util.pwstrToFfi(ServerName), Level, util.pwstrToFfi(Prefix), util.toPointer(Index));
 }
 
 export function NetAccessAdd(
-  servername: string | null /* Windows.Win32.Foundation.PWSTR */,
+  servername: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   level: number /* u32 */,
   buf: Deno.PointerValue | Uint8Array | null /* ptr */,
   parm_err: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -12976,8 +12976,8 @@ export function NetAccessAdd(
 }
 
 export function NetAccessEnum(
-  servername: string | null /* Windows.Win32.Foundation.PWSTR */,
-  BasePath: string | null /* Windows.Win32.Foundation.PWSTR */,
+  servername: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  BasePath: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   Recursive: number /* u32 */,
   level: number /* u32 */,
   bufptr: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -12990,8 +12990,8 @@ export function NetAccessEnum(
 }
 
 export function NetAccessGetInfo(
-  servername: string | null /* Windows.Win32.Foundation.PWSTR */,
-  resource: string | null /* Windows.Win32.Foundation.PWSTR */,
+  servername: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  resource: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   level: number /* u32 */,
   bufptr: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
@@ -12999,8 +12999,8 @@ export function NetAccessGetInfo(
 }
 
 export function NetAccessSetInfo(
-  servername: string | null /* Windows.Win32.Foundation.PWSTR */,
-  resource: string | null /* Windows.Win32.Foundation.PWSTR */,
+  servername: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  resource: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   level: number /* u32 */,
   buf: Deno.PointerValue | Uint8Array | null /* ptr */,
   parm_err: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -13009,23 +13009,23 @@ export function NetAccessSetInfo(
 }
 
 export function NetAccessDel(
-  servername: string | null /* Windows.Win32.Foundation.PWSTR */,
-  resource: string | null /* Windows.Win32.Foundation.PWSTR */,
+  servername: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  resource: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
   return libNETAPI32_dll.NetAccessDel(util.pwstrToFfi(servername), util.pwstrToFfi(resource));
 }
 
 export function NetAccessGetUserPerms(
-  servername: string | null /* Windows.Win32.Foundation.PWSTR */,
-  UGname: string | null /* Windows.Win32.Foundation.PWSTR */,
-  resource: string | null /* Windows.Win32.Foundation.PWSTR */,
+  servername: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  UGname: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  resource: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   Perms: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
   return libNETAPI32_dll.NetAccessGetUserPerms(util.pwstrToFfi(servername), util.pwstrToFfi(UGname), util.pwstrToFfi(resource), util.toPointer(Perms));
 }
 
 export function NetValidatePasswordPolicy(
-  ServerName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  ServerName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   Qualifier: Deno.PointerValue | Uint8Array | null /* ptr */,
   ValidationType: NET_VALIDATE_PASSWORD_TYPE /* Windows.Win32.NetworkManagement.NetManagement.NET_VALIDATE_PASSWORD_TYPE */,
   InputArg: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -13041,23 +13041,23 @@ export function NetValidatePasswordPolicyFree(
 }
 
 export function NetGetDCName(
-  ServerName: string | null /* Windows.Win32.Foundation.PWSTR */,
-  DomainName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  ServerName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  DomainName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   Buffer: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
   return libNETAPI32_dll.NetGetDCName(util.pwstrToFfi(ServerName), util.pwstrToFfi(DomainName), util.toPointer(Buffer));
 }
 
 export function NetGetAnyDCName(
-  ServerName: string | null /* Windows.Win32.Foundation.PWSTR */,
-  DomainName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  ServerName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  DomainName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   Buffer: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
   return libNETAPI32_dll.NetGetAnyDCName(util.pwstrToFfi(ServerName), util.pwstrToFfi(DomainName), util.toPointer(Buffer));
 }
 
 export function I_NetLogonControl2(
-  ServerName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  ServerName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   FunctionCode: number /* u32 */,
   QueryLevel: number /* u32 */,
   Data: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -13067,24 +13067,24 @@ export function I_NetLogonControl2(
 }
 
 export function NetAddServiceAccount(
-  ServerName: string | null /* Windows.Win32.Foundation.PWSTR */,
-  AccountName: string | null /* Windows.Win32.Foundation.PWSTR */,
-  Password: string | null /* Windows.Win32.Foundation.PWSTR */,
+  ServerName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  AccountName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  Password: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   Flags: number /* u32 */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.NTSTATUS */ {
   return util.pointerFromFfi(libNETAPI32_dll.NetAddServiceAccount(util.pwstrToFfi(ServerName), util.pwstrToFfi(AccountName), util.pwstrToFfi(Password), Flags));
 }
 
 export function NetRemoveServiceAccount(
-  ServerName: string | null /* Windows.Win32.Foundation.PWSTR */,
-  AccountName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  ServerName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  AccountName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   Flags: number /* u32 */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.NTSTATUS */ {
   return util.pointerFromFfi(libNETAPI32_dll.NetRemoveServiceAccount(util.pwstrToFfi(ServerName), util.pwstrToFfi(AccountName), Flags));
 }
 
 export function NetEnumerateServiceAccounts(
-  ServerName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  ServerName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   Flags: number /* u32 */,
   AccountsCount: Deno.PointerValue | Uint8Array | null /* ptr */,
   Accounts: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -13093,16 +13093,16 @@ export function NetEnumerateServiceAccounts(
 }
 
 export function NetIsServiceAccount(
-  ServerName: string | null /* Windows.Win32.Foundation.PWSTR */,
-  AccountName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  ServerName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  AccountName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   IsService: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.NTSTATUS */ {
   return util.pointerFromFfi(libNETAPI32_dll.NetIsServiceAccount(util.pwstrToFfi(ServerName), util.pwstrToFfi(AccountName), util.toPointer(IsService)));
 }
 
 export function NetQueryServiceAccount(
-  ServerName: string | null /* Windows.Win32.Foundation.PWSTR */,
-  AccountName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  ServerName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  AccountName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   InfoLevel: number /* u32 */,
   Buffer: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.NTSTATUS */ {
@@ -13110,7 +13110,7 @@ export function NetQueryServiceAccount(
 }
 
 export function NetAlertRaise(
-  AlertType: string | null /* Windows.Win32.Foundation.PWSTR */,
+  AlertType: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   Buffer: Deno.PointerValue | Uint8Array | null /* ptr */,
   BufferSize: number /* u32 */,
 ): number /* u32 */ {
@@ -13118,23 +13118,23 @@ export function NetAlertRaise(
 }
 
 export function NetAlertRaiseEx(
-  AlertType: string | null /* Windows.Win32.Foundation.PWSTR */,
+  AlertType: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   VariableInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
   VariableInfoSize: number /* u32 */,
-  ServiceName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  ServiceName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
   return libNETAPI32_dll.NetAlertRaiseEx(util.pwstrToFfi(AlertType), util.toPointer(VariableInfo), VariableInfoSize, util.pwstrToFfi(ServiceName));
 }
 
 export function NetMessageNameAdd(
-  servername: string | null /* Windows.Win32.Foundation.PWSTR */,
-  msgname: string | null /* Windows.Win32.Foundation.PWSTR */,
+  servername: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  msgname: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
   return libNETAPI32_dll.NetMessageNameAdd(util.pwstrToFfi(servername), util.pwstrToFfi(msgname));
 }
 
 export function NetMessageNameEnum(
-  servername: string | null /* Windows.Win32.Foundation.PWSTR */,
+  servername: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   level: number /* u32 */,
   bufptr: Deno.PointerValue | Uint8Array | null /* ptr */,
   prefmaxlen: number /* u32 */,
@@ -13146,8 +13146,8 @@ export function NetMessageNameEnum(
 }
 
 export function NetMessageNameGetInfo(
-  servername: string | null /* Windows.Win32.Foundation.PWSTR */,
-  msgname: string | null /* Windows.Win32.Foundation.PWSTR */,
+  servername: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  msgname: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   level: number /* u32 */,
   bufptr: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
@@ -13155,16 +13155,16 @@ export function NetMessageNameGetInfo(
 }
 
 export function NetMessageNameDel(
-  servername: string | null /* Windows.Win32.Foundation.PWSTR */,
-  msgname: string | null /* Windows.Win32.Foundation.PWSTR */,
+  servername: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  msgname: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
   return libNETAPI32_dll.NetMessageNameDel(util.pwstrToFfi(servername), util.pwstrToFfi(msgname));
 }
 
 export function NetMessageBufferSend(
-  servername: string | null /* Windows.Win32.Foundation.PWSTR */,
-  msgname: string | null /* Windows.Win32.Foundation.PWSTR */,
-  fromname: string | null /* Windows.Win32.Foundation.PWSTR */,
+  servername: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  msgname: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  fromname: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   buf: Deno.PointerValue | Uint8Array | null /* ptr */,
   buflen: number /* u32 */,
 ): number /* u32 */ {
@@ -13172,14 +13172,14 @@ export function NetMessageBufferSend(
 }
 
 export function NetRemoteTOD(
-  UncServerName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  UncServerName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   BufferPtr: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
   return libNETAPI32_dll.NetRemoteTOD(util.pwstrToFfi(UncServerName), util.toPointer(BufferPtr));
 }
 
 export function NetRemoteComputerSupports(
-  UncServerName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  UncServerName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   OptionsWanted: NET_REMOTE_COMPUTER_SUPPORTS_OPTIONS /* Windows.Win32.NetworkManagement.NetManagement.NET_REMOTE_COMPUTER_SUPPORTS_OPTIONS */,
   OptionsSupported: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
@@ -13187,7 +13187,7 @@ export function NetRemoteComputerSupports(
 }
 
 export function NetReplGetInfo(
-  servername: string | null /* Windows.Win32.Foundation.PWSTR */,
+  servername: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   level: number /* u32 */,
   bufptr: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
@@ -13195,7 +13195,7 @@ export function NetReplGetInfo(
 }
 
 export function NetReplSetInfo(
-  servername: string | null /* Windows.Win32.Foundation.PWSTR */,
+  servername: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   level: number /* u32 */,
   buf: Deno.PointerValue | Uint8Array | null /* ptr */,
   parm_err: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -13204,7 +13204,7 @@ export function NetReplSetInfo(
 }
 
 export function NetReplExportDirAdd(
-  servername: string | null /* Windows.Win32.Foundation.PWSTR */,
+  servername: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   level: number /* u32 */,
   buf: Deno.PointerValue | Uint8Array | null /* ptr */,
   parm_err: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -13213,14 +13213,14 @@ export function NetReplExportDirAdd(
 }
 
 export function NetReplExportDirDel(
-  servername: string | null /* Windows.Win32.Foundation.PWSTR */,
-  dirname: string | null /* Windows.Win32.Foundation.PWSTR */,
+  servername: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  dirname: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
   return libNETAPI32_dll.NetReplExportDirDel(util.pwstrToFfi(servername), util.pwstrToFfi(dirname));
 }
 
 export function NetReplExportDirEnum(
-  servername: string | null /* Windows.Win32.Foundation.PWSTR */,
+  servername: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   level: number /* u32 */,
   bufptr: Deno.PointerValue | Uint8Array | null /* ptr */,
   prefmaxlen: number /* u32 */,
@@ -13232,8 +13232,8 @@ export function NetReplExportDirEnum(
 }
 
 export function NetReplExportDirGetInfo(
-  servername: string | null /* Windows.Win32.Foundation.PWSTR */,
-  dirname: string | null /* Windows.Win32.Foundation.PWSTR */,
+  servername: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  dirname: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   level: number /* u32 */,
   bufptr: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
@@ -13241,8 +13241,8 @@ export function NetReplExportDirGetInfo(
 }
 
 export function NetReplExportDirSetInfo(
-  servername: string | null /* Windows.Win32.Foundation.PWSTR */,
-  dirname: string | null /* Windows.Win32.Foundation.PWSTR */,
+  servername: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  dirname: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   level: number /* u32 */,
   buf: Deno.PointerValue | Uint8Array | null /* ptr */,
   parm_err: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -13251,22 +13251,22 @@ export function NetReplExportDirSetInfo(
 }
 
 export function NetReplExportDirLock(
-  servername: string | null /* Windows.Win32.Foundation.PWSTR */,
-  dirname: string | null /* Windows.Win32.Foundation.PWSTR */,
+  servername: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  dirname: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
   return libNETAPI32_dll.NetReplExportDirLock(util.pwstrToFfi(servername), util.pwstrToFfi(dirname));
 }
 
 export function NetReplExportDirUnlock(
-  servername: string | null /* Windows.Win32.Foundation.PWSTR */,
-  dirname: string | null /* Windows.Win32.Foundation.PWSTR */,
+  servername: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  dirname: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   unlockforce: number /* u32 */,
 ): number /* u32 */ {
   return libNETAPI32_dll.NetReplExportDirUnlock(util.pwstrToFfi(servername), util.pwstrToFfi(dirname), unlockforce);
 }
 
 export function NetReplImportDirAdd(
-  servername: string | null /* Windows.Win32.Foundation.PWSTR */,
+  servername: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   level: number /* u32 */,
   buf: Deno.PointerValue | Uint8Array | null /* ptr */,
   parm_err: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -13275,14 +13275,14 @@ export function NetReplImportDirAdd(
 }
 
 export function NetReplImportDirDel(
-  servername: string | null /* Windows.Win32.Foundation.PWSTR */,
-  dirname: string | null /* Windows.Win32.Foundation.PWSTR */,
+  servername: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  dirname: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
   return libNETAPI32_dll.NetReplImportDirDel(util.pwstrToFfi(servername), util.pwstrToFfi(dirname));
 }
 
 export function NetReplImportDirEnum(
-  servername: string | null /* Windows.Win32.Foundation.PWSTR */,
+  servername: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   level: number /* u32 */,
   bufptr: Deno.PointerValue | Uint8Array | null /* ptr */,
   prefmaxlen: number /* u32 */,
@@ -13294,8 +13294,8 @@ export function NetReplImportDirEnum(
 }
 
 export function NetReplImportDirGetInfo(
-  servername: string | null /* Windows.Win32.Foundation.PWSTR */,
-  dirname: string | null /* Windows.Win32.Foundation.PWSTR */,
+  servername: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  dirname: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   level: number /* u32 */,
   bufptr: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
@@ -13303,36 +13303,36 @@ export function NetReplImportDirGetInfo(
 }
 
 export function NetReplImportDirLock(
-  servername: string | null /* Windows.Win32.Foundation.PWSTR */,
-  dirname: string | null /* Windows.Win32.Foundation.PWSTR */,
+  servername: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  dirname: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
   return libNETAPI32_dll.NetReplImportDirLock(util.pwstrToFfi(servername), util.pwstrToFfi(dirname));
 }
 
 export function NetReplImportDirUnlock(
-  servername: string | null /* Windows.Win32.Foundation.PWSTR */,
-  dirname: string | null /* Windows.Win32.Foundation.PWSTR */,
+  servername: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  dirname: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   unlockforce: number /* u32 */,
 ): number /* u32 */ {
   return libNETAPI32_dll.NetReplImportDirUnlock(util.pwstrToFfi(servername), util.pwstrToFfi(dirname), unlockforce);
 }
 
 export function NetServerEnum(
-  servername: string | null /* Windows.Win32.Foundation.PWSTR */,
+  servername: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   level: number /* u32 */,
   bufptr: Deno.PointerValue | Uint8Array | null /* ptr */,
   prefmaxlen: number /* u32 */,
   entriesread: Deno.PointerValue | Uint8Array | null /* ptr */,
   totalentries: Deno.PointerValue | Uint8Array | null /* ptr */,
   servertype: NET_SERVER_TYPE /* Windows.Win32.NetworkManagement.NetManagement.NET_SERVER_TYPE */,
-  domain: string | null /* Windows.Win32.Foundation.PWSTR */,
+  domain: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   resume_handle: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
   return libNETAPI32_dll.NetServerEnum(util.pwstrToFfi(servername), level, util.toPointer(bufptr), prefmaxlen, util.toPointer(entriesread), util.toPointer(totalentries), servertype, util.pwstrToFfi(domain), util.toPointer(resume_handle));
 }
 
 export function NetServerGetInfo(
-  servername: string | null /* Windows.Win32.Foundation.PWSTR */,
+  servername: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   level: number /* u32 */,
   bufptr: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
@@ -13340,7 +13340,7 @@ export function NetServerGetInfo(
 }
 
 export function NetServerSetInfo(
-  servername: string | null /* Windows.Win32.Foundation.PWSTR */,
+  servername: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   level: number /* u32 */,
   buf: Deno.PointerValue | Uint8Array | null /* ptr */,
   ParmError: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -13349,7 +13349,7 @@ export function NetServerSetInfo(
 }
 
 export function NetServerDiskEnum(
-  servername: string | null /* Windows.Win32.Foundation.PWSTR */,
+  servername: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   level: number /* u32 */,
   bufptr: Deno.PointerValue | Uint8Array | null /* ptr */,
   prefmaxlen: number /* u32 */,
@@ -13361,22 +13361,22 @@ export function NetServerDiskEnum(
 }
 
 export function NetServerComputerNameAdd(
-  ServerName: string | null /* Windows.Win32.Foundation.PWSTR */,
-  EmulatedDomainName: string | null /* Windows.Win32.Foundation.PWSTR */,
-  EmulatedServerName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  ServerName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  EmulatedDomainName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  EmulatedServerName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
   return libNETAPI32_dll.NetServerComputerNameAdd(util.pwstrToFfi(ServerName), util.pwstrToFfi(EmulatedDomainName), util.pwstrToFfi(EmulatedServerName));
 }
 
 export function NetServerComputerNameDel(
-  ServerName: string | null /* Windows.Win32.Foundation.PWSTR */,
-  EmulatedServerName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  ServerName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  EmulatedServerName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
   return libNETAPI32_dll.NetServerComputerNameDel(util.pwstrToFfi(ServerName), util.pwstrToFfi(EmulatedServerName));
 }
 
 export function NetServerTransportAdd(
-  servername: string | null /* Windows.Win32.Foundation.PWSTR */,
+  servername: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   level: number /* u32 */,
   bufptr: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
@@ -13384,7 +13384,7 @@ export function NetServerTransportAdd(
 }
 
 export function NetServerTransportAddEx(
-  servername: string | null /* Windows.Win32.Foundation.PWSTR */,
+  servername: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   level: number /* u32 */,
   bufptr: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
@@ -13392,7 +13392,7 @@ export function NetServerTransportAddEx(
 }
 
 export function NetServerTransportDel(
-  servername: string | null /* Windows.Win32.Foundation.PWSTR */,
+  servername: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   level: number /* u32 */,
   bufptr: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
@@ -13400,7 +13400,7 @@ export function NetServerTransportDel(
 }
 
 export function NetServerTransportEnum(
-  servername: string | null /* Windows.Win32.Foundation.PWSTR */,
+  servername: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   level: number /* u32 */,
   bufptr: Deno.PointerValue | Uint8Array | null /* ptr */,
   prefmaxlen: number /* u32 */,
@@ -13412,8 +13412,8 @@ export function NetServerTransportEnum(
 }
 
 export function NetServiceControl(
-  servername: string | null /* Windows.Win32.Foundation.PWSTR */,
-  service: string | null /* Windows.Win32.Foundation.PWSTR */,
+  servername: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  service: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   opcode: number /* u32 */,
   arg: number /* u32 */,
   bufptr: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -13422,7 +13422,7 @@ export function NetServiceControl(
 }
 
 export function NetServiceEnum(
-  servername: string | null /* Windows.Win32.Foundation.PWSTR */,
+  servername: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   level: number /* u32 */,
   bufptr: Deno.PointerValue | Uint8Array | null /* ptr */,
   prefmaxlen: number /* u32 */,
@@ -13434,8 +13434,8 @@ export function NetServiceEnum(
 }
 
 export function NetServiceGetInfo(
-  servername: string | null /* Windows.Win32.Foundation.PWSTR */,
-  service: string | null /* Windows.Win32.Foundation.PWSTR */,
+  servername: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  service: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   level: number /* u32 */,
   bufptr: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
@@ -13443,8 +13443,8 @@ export function NetServiceGetInfo(
 }
 
 export function NetServiceInstall(
-  servername: string | null /* Windows.Win32.Foundation.PWSTR */,
-  service: string | null /* Windows.Win32.Foundation.PWSTR */,
+  servername: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  service: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   argc: number /* u32 */,
   argv: Deno.PointerValue | Uint8Array | null /* ptr */,
   bufptr: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -13462,15 +13462,15 @@ export function NetUseAdd(
 }
 
 export function NetUseDel(
-  UncServerName: string | null /* Windows.Win32.Foundation.PWSTR */,
-  UseName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  UncServerName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  UseName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   ForceLevelFlags: FORCE_LEVEL_FLAGS /* Windows.Win32.NetworkManagement.NetManagement.FORCE_LEVEL_FLAGS */,
 ): number /* u32 */ {
   return libNETAPI32_dll.NetUseDel(util.pwstrToFfi(UncServerName), util.pwstrToFfi(UseName), ForceLevelFlags);
 }
 
 export function NetUseEnum(
-  UncServerName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  UncServerName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   LevelFlags: number /* u32 */,
   BufPtr: Deno.PointerValue | Uint8Array | null /* ptr */,
   PreferedMaximumSize: number /* u32 */,
@@ -13482,8 +13482,8 @@ export function NetUseEnum(
 }
 
 export function NetUseGetInfo(
-  UncServerName: string | null /* Windows.Win32.Foundation.PWSTR */,
-  UseName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  UncServerName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  UseName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   LevelFlags: number /* u32 */,
   bufptr: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
@@ -13491,7 +13491,7 @@ export function NetUseGetInfo(
 }
 
 export function NetWkstaGetInfo(
-  servername: string | null /* Windows.Win32.Foundation.PWSTR */,
+  servername: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   level: number /* u32 */,
   bufptr: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
@@ -13499,7 +13499,7 @@ export function NetWkstaGetInfo(
 }
 
 export function NetWkstaSetInfo(
-  servername: string | null /* Windows.Win32.Foundation.PWSTR */,
+  servername: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   level: number /* u32 */,
   buffer: Deno.PointerValue | Uint8Array | null /* ptr */,
   parm_err: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -13508,7 +13508,7 @@ export function NetWkstaSetInfo(
 }
 
 export function NetWkstaUserGetInfo(
-  reserved: string | null /* Windows.Win32.Foundation.PWSTR */,
+  reserved: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   level: number /* u32 */,
   bufptr: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
@@ -13516,7 +13516,7 @@ export function NetWkstaUserGetInfo(
 }
 
 export function NetWkstaUserSetInfo(
-  reserved: string | null /* Windows.Win32.Foundation.PWSTR */,
+  reserved: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   level: number /* u32 */,
   buf: Deno.PointerValue | Uint8Array | null /* ptr */,
   parm_err: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -13525,7 +13525,7 @@ export function NetWkstaUserSetInfo(
 }
 
 export function NetWkstaUserEnum(
-  servername: string | null /* Windows.Win32.Foundation.PWSTR */,
+  servername: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   level: number /* u32 */,
   bufptr: Deno.PointerValue | Uint8Array | null /* ptr */,
   prefmaxlen: number /* u32 */,
@@ -13546,8 +13546,8 @@ export function NetWkstaTransportAdd(
 }
 
 export function NetWkstaTransportDel(
-  servername: string | null /* Windows.Win32.Foundation.PWSTR */,
-  transportname: string | null /* Windows.Win32.Foundation.PWSTR */,
+  servername: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  transportname: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   ucond: FORCE_LEVEL_FLAGS /* Windows.Win32.NetworkManagement.NetManagement.FORCE_LEVEL_FLAGS */,
 ): number /* u32 */ {
   return libNETAPI32_dll.NetWkstaTransportDel(util.pwstrToFfi(servername), util.pwstrToFfi(transportname), ucond);
@@ -13594,16 +13594,16 @@ export function NetApiBufferSize(
 }
 
 export function NetErrorLogClear(
-  UncServerName: string | null /* Windows.Win32.Foundation.PWSTR */,
-  BackupFile: string | null /* Windows.Win32.Foundation.PWSTR */,
+  UncServerName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  BackupFile: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   Reserved: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
   return libNETAPI32_dll.NetErrorLogClear(util.pwstrToFfi(UncServerName), util.pwstrToFfi(BackupFile), util.toPointer(Reserved));
 }
 
 export function NetErrorLogRead(
-  UncServerName: string | null /* Windows.Win32.Foundation.PWSTR */,
-  Reserved1: string | null /* Windows.Win32.Foundation.PWSTR */,
+  UncServerName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  Reserved1: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   ErrorLogHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
   Offset: number /* u32 */,
   Reserved2: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -13620,7 +13620,7 @@ export function NetErrorLogRead(
 export function NetErrorLogWrite(
   Reserved1: Deno.PointerValue | Uint8Array | null /* ptr */,
   Code: number /* u32 */,
-  Component: string | null /* Windows.Win32.Foundation.PWSTR */,
+  Component: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   Buffer: Deno.PointerValue | Uint8Array | null /* ptr */,
   NumBytes: number /* u32 */,
   MsgBuf: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -13631,26 +13631,26 @@ export function NetErrorLogWrite(
 }
 
 export function NetConfigGet(
-  server: string | null /* Windows.Win32.Foundation.PWSTR */,
-  component: string | null /* Windows.Win32.Foundation.PWSTR */,
-  parameter: string | null /* Windows.Win32.Foundation.PWSTR */,
+  server: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  component: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  parameter: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   bufptr: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
   return libNETAPI32_dll.NetConfigGet(util.pwstrToFfi(server), util.pwstrToFfi(component), util.pwstrToFfi(parameter), util.toPointer(bufptr));
 }
 
 export function NetConfigGetAll(
-  server: string | null /* Windows.Win32.Foundation.PWSTR */,
-  component: string | null /* Windows.Win32.Foundation.PWSTR */,
+  server: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  component: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   bufptr: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
   return libNETAPI32_dll.NetConfigGetAll(util.pwstrToFfi(server), util.pwstrToFfi(component), util.toPointer(bufptr));
 }
 
 export function NetConfigSet(
-  server: string | null /* Windows.Win32.Foundation.PWSTR */,
-  reserved1: string | null /* Windows.Win32.Foundation.PWSTR */,
-  component: string | null /* Windows.Win32.Foundation.PWSTR */,
+  server: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  reserved1: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  component: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   level: number /* u32 */,
   reserved2: number /* u32 */,
   buf: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -13660,16 +13660,16 @@ export function NetConfigSet(
 }
 
 export function NetAuditClear(
-  server: string | null /* Windows.Win32.Foundation.PWSTR */,
-  backupfile: string | null /* Windows.Win32.Foundation.PWSTR */,
-  service: string | null /* Windows.Win32.Foundation.PWSTR */,
+  server: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  backupfile: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  service: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
   return libNETAPI32_dll.NetAuditClear(util.pwstrToFfi(server), util.pwstrToFfi(backupfile), util.pwstrToFfi(service));
 }
 
 export function NetAuditRead(
-  server: string | null /* Windows.Win32.Foundation.PWSTR */,
-  service: string | null /* Windows.Win32.Foundation.PWSTR */,
+  server: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  service: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   auditloghandle: Deno.PointerValue | Uint8Array | null /* ptr */,
   offset: number /* u32 */,
   reserved1: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -13687,57 +13687,57 @@ export function NetAuditWrite(
   type: number /* u32 */,
   buf: Deno.PointerValue | Uint8Array | null /* ptr */,
   numbytes: number /* u32 */,
-  service: string | null /* Windows.Win32.Foundation.PWSTR */,
+  service: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   reserved: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
   return libNETAPI32_dll.NetAuditWrite(type, util.toPointer(buf), numbytes, util.pwstrToFfi(service), util.toPointer(reserved));
 }
 
 export function NetJoinDomain(
-  lpServer: string | null /* Windows.Win32.Foundation.PWSTR */,
-  lpDomain: string | null /* Windows.Win32.Foundation.PWSTR */,
-  lpMachineAccountOU: string | null /* Windows.Win32.Foundation.PWSTR */,
-  lpAccount: string | null /* Windows.Win32.Foundation.PWSTR */,
-  lpPassword: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpServer: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  lpDomain: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  lpMachineAccountOU: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  lpAccount: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  lpPassword: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   fJoinOptions: NET_JOIN_DOMAIN_JOIN_OPTIONS /* Windows.Win32.NetworkManagement.NetManagement.NET_JOIN_DOMAIN_JOIN_OPTIONS */,
 ): number /* u32 */ {
   return libNETAPI32_dll.NetJoinDomain(util.pwstrToFfi(lpServer), util.pwstrToFfi(lpDomain), util.pwstrToFfi(lpMachineAccountOU), util.pwstrToFfi(lpAccount), util.pwstrToFfi(lpPassword), fJoinOptions);
 }
 
 export function NetUnjoinDomain(
-  lpServer: string | null /* Windows.Win32.Foundation.PWSTR */,
-  lpAccount: string | null /* Windows.Win32.Foundation.PWSTR */,
-  lpPassword: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpServer: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  lpAccount: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  lpPassword: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   fUnjoinOptions: number /* u32 */,
 ): number /* u32 */ {
   return libNETAPI32_dll.NetUnjoinDomain(util.pwstrToFfi(lpServer), util.pwstrToFfi(lpAccount), util.pwstrToFfi(lpPassword), fUnjoinOptions);
 }
 
 export function NetRenameMachineInDomain(
-  lpServer: string | null /* Windows.Win32.Foundation.PWSTR */,
-  lpNewMachineName: string | null /* Windows.Win32.Foundation.PWSTR */,
-  lpAccount: string | null /* Windows.Win32.Foundation.PWSTR */,
-  lpPassword: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpServer: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  lpNewMachineName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  lpAccount: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  lpPassword: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   fRenameOptions: number /* u32 */,
 ): number /* u32 */ {
   return libNETAPI32_dll.NetRenameMachineInDomain(util.pwstrToFfi(lpServer), util.pwstrToFfi(lpNewMachineName), util.pwstrToFfi(lpAccount), util.pwstrToFfi(lpPassword), fRenameOptions);
 }
 
 export function NetValidateName(
-  lpServer: string | null /* Windows.Win32.Foundation.PWSTR */,
-  lpName: string | null /* Windows.Win32.Foundation.PWSTR */,
-  lpAccount: string | null /* Windows.Win32.Foundation.PWSTR */,
-  lpPassword: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpServer: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  lpName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  lpAccount: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  lpPassword: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   NameType: NETSETUP_NAME_TYPE /* Windows.Win32.NetworkManagement.NetManagement.NETSETUP_NAME_TYPE */,
 ): number /* u32 */ {
   return libNETAPI32_dll.NetValidateName(util.pwstrToFfi(lpServer), util.pwstrToFfi(lpName), util.pwstrToFfi(lpAccount), util.pwstrToFfi(lpPassword), NameType);
 }
 
 export function NetGetJoinableOUs(
-  lpServer: string | null /* Windows.Win32.Foundation.PWSTR */,
-  lpDomain: string | null /* Windows.Win32.Foundation.PWSTR */,
-  lpAccount: string | null /* Windows.Win32.Foundation.PWSTR */,
-  lpPassword: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpServer: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  lpDomain: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  lpAccount: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  lpPassword: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   OUCount: Deno.PointerValue | Uint8Array | null /* ptr */,
   OUs: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
@@ -13745,37 +13745,37 @@ export function NetGetJoinableOUs(
 }
 
 export function NetAddAlternateComputerName(
-  Server: string | null /* Windows.Win32.Foundation.PWSTR */,
-  AlternateName: string | null /* Windows.Win32.Foundation.PWSTR */,
-  DomainAccount: string | null /* Windows.Win32.Foundation.PWSTR */,
-  DomainAccountPassword: string | null /* Windows.Win32.Foundation.PWSTR */,
+  Server: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  AlternateName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  DomainAccount: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  DomainAccountPassword: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   Reserved: number /* u32 */,
 ): number /* u32 */ {
   return libNETAPI32_dll.NetAddAlternateComputerName(util.pwstrToFfi(Server), util.pwstrToFfi(AlternateName), util.pwstrToFfi(DomainAccount), util.pwstrToFfi(DomainAccountPassword), Reserved);
 }
 
 export function NetRemoveAlternateComputerName(
-  Server: string | null /* Windows.Win32.Foundation.PWSTR */,
-  AlternateName: string | null /* Windows.Win32.Foundation.PWSTR */,
-  DomainAccount: string | null /* Windows.Win32.Foundation.PWSTR */,
-  DomainAccountPassword: string | null /* Windows.Win32.Foundation.PWSTR */,
+  Server: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  AlternateName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  DomainAccount: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  DomainAccountPassword: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   Reserved: number /* u32 */,
 ): number /* u32 */ {
   return libNETAPI32_dll.NetRemoveAlternateComputerName(util.pwstrToFfi(Server), util.pwstrToFfi(AlternateName), util.pwstrToFfi(DomainAccount), util.pwstrToFfi(DomainAccountPassword), Reserved);
 }
 
 export function NetSetPrimaryComputerName(
-  Server: string | null /* Windows.Win32.Foundation.PWSTR */,
-  PrimaryName: string | null /* Windows.Win32.Foundation.PWSTR */,
-  DomainAccount: string | null /* Windows.Win32.Foundation.PWSTR */,
-  DomainAccountPassword: string | null /* Windows.Win32.Foundation.PWSTR */,
+  Server: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  PrimaryName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  DomainAccount: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  DomainAccountPassword: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   Reserved: number /* u32 */,
 ): number /* u32 */ {
   return libNETAPI32_dll.NetSetPrimaryComputerName(util.pwstrToFfi(Server), util.pwstrToFfi(PrimaryName), util.pwstrToFfi(DomainAccount), util.pwstrToFfi(DomainAccountPassword), Reserved);
 }
 
 export function NetEnumerateComputerNames(
-  Server: string | null /* Windows.Win32.Foundation.PWSTR */,
+  Server: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   NameType: NET_COMPUTER_NAME_TYPE /* Windows.Win32.NetworkManagement.NetManagement.NET_COMPUTER_NAME_TYPE */,
   Reserved: number /* u32 */,
   EntryCount: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -13785,10 +13785,10 @@ export function NetEnumerateComputerNames(
 }
 
 export function NetProvisionComputerAccount(
-  lpDomain: string | null /* Windows.Win32.Foundation.PWSTR */,
-  lpMachineName: string | null /* Windows.Win32.Foundation.PWSTR */,
-  lpMachineAccountOU: string | null /* Windows.Win32.Foundation.PWSTR */,
-  lpDcName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpDomain: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  lpMachineName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  lpMachineAccountOU: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  lpDcName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   dwOptions: NETSETUP_PROVISION /* Windows.Win32.NetworkManagement.NetManagement.NETSETUP_PROVISION */,
   pProvisionBinData: Deno.PointerValue | Uint8Array | null /* ptr */,
   pdwProvisionBinDataSize: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -13801,7 +13801,7 @@ export function NetRequestOfflineDomainJoin(
   pProvisionBinData: Deno.PointerValue | Uint8Array | null /* ptr */,
   cbProvisionBinDataSize: number /* u32 */,
   dwOptions: NET_REQUEST_PROVISION_OPTIONS /* Windows.Win32.NetworkManagement.NetManagement.NET_REQUEST_PROVISION_OPTIONS */,
-  lpWindowsPath: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpWindowsPath: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
   return libNETAPI32_dll.NetRequestOfflineDomainJoin(util.toPointer(pProvisionBinData), cbProvisionBinDataSize, dwOptions, util.pwstrToFfi(lpWindowsPath));
 }
@@ -13819,14 +13819,14 @@ export function NetRequestProvisioningPackageInstall(
   pPackageBinData: Deno.PointerValue | Uint8Array | null /* ptr */,
   dwPackageBinDataSize: number /* u32 */,
   dwProvisionOptions: NET_REQUEST_PROVISION_OPTIONS /* Windows.Win32.NetworkManagement.NetManagement.NET_REQUEST_PROVISION_OPTIONS */,
-  lpWindowsPath: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpWindowsPath: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pvReserved: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
   return libNETAPI32_dll.NetRequestProvisioningPackageInstall(util.toPointer(pPackageBinData), dwPackageBinDataSize, dwProvisionOptions, util.pwstrToFfi(lpWindowsPath), util.toPointer(pvReserved));
 }
 
 export function NetGetAadJoinInformation(
-  pcszTenantId: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pcszTenantId: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   ppJoinInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
   return util.pointerFromFfi(libNETAPI32_dll.NetGetAadJoinInformation(util.pwstrToFfi(pcszTenantId), util.toPointer(ppJoinInfo)));
@@ -13839,7 +13839,7 @@ export function NetFreeAadJoinInformation(
 }
 
 export function NetGetJoinInformation(
-  lpServer: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpServer: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   lpNameBuffer: Deno.PointerValue | Uint8Array | null /* ptr */,
   BufferType: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
@@ -13847,23 +13847,23 @@ export function NetGetJoinInformation(
 }
 
 export function GetNetScheduleAccountInformation(
-  pwszServerName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pwszServerName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   ccAccount: number /* u32 */,
-  wszAccount: string | null /* Windows.Win32.Foundation.PWSTR */,
+  wszAccount: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
   return util.pointerFromFfi(libmstask_dll.GetNetScheduleAccountInformation(util.pwstrToFfi(pwszServerName), ccAccount, util.pwstrToFfi(wszAccount)));
 }
 
 export function SetNetScheduleAccountInformation(
-  pwszServerName: string | null /* Windows.Win32.Foundation.PWSTR */,
-  pwszAccount: string | null /* Windows.Win32.Foundation.PWSTR */,
-  pwszPassword: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pwszServerName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  pwszAccount: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  pwszPassword: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
   return util.pointerFromFfi(libmstask_dll.SetNetScheduleAccountInformation(util.pwstrToFfi(pwszServerName), util.pwstrToFfi(pwszAccount), util.pwstrToFfi(pwszPassword)));
 }
 
 export function NetScheduleJobAdd(
-  Servername: string | null /* Windows.Win32.Foundation.PWSTR */,
+  Servername: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   Buffer: Deno.PointerValue | Uint8Array | null /* ptr */,
   JobId: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
@@ -13871,7 +13871,7 @@ export function NetScheduleJobAdd(
 }
 
 export function NetScheduleJobDel(
-  Servername: string | null /* Windows.Win32.Foundation.PWSTR */,
+  Servername: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   MinJobId: number /* u32 */,
   MaxJobId: number /* u32 */,
 ): number /* u32 */ {
@@ -13879,7 +13879,7 @@ export function NetScheduleJobDel(
 }
 
 export function NetScheduleJobEnum(
-  Servername: string | null /* Windows.Win32.Foundation.PWSTR */,
+  Servername: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   PointerToBuffer: Deno.PointerValue | Uint8Array | null /* ptr */,
   PrefferedMaximumLength: number /* u32 */,
   EntriesRead: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -13890,7 +13890,7 @@ export function NetScheduleJobEnum(
 }
 
 export function NetScheduleJobGetInfo(
-  Servername: string | null /* Windows.Win32.Foundation.PWSTR */,
+  Servername: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   JobId: number /* u32 */,
   PointerToBuffer: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
@@ -13898,7 +13898,7 @@ export function NetScheduleJobGetInfo(
 }
 
 export function TraceRegisterExA(
-  lpszCallerName: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpszCallerName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   dwFlags: number /* u32 */,
 ): number /* u32 */ {
   return librtutils_dll.TraceRegisterExA(util.pstrToFfi(lpszCallerName), dwFlags);
@@ -13926,7 +13926,7 @@ export function TraceGetConsoleA(
 
 export function TracePrintfA(
   dwTraceID: number /* u32 */,
-  lpszFormat: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpszFormat: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): number /* u32 */ {
   return librtutils_dll.TracePrintfA(dwTraceID, util.pstrToFfi(lpszFormat));
 }
@@ -13934,7 +13934,7 @@ export function TracePrintfA(
 export function TracePrintfExA(
   dwTraceID: number /* u32 */,
   dwFlags: number /* u32 */,
-  lpszFormat: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpszFormat: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): number /* u32 */ {
   return librtutils_dll.TracePrintfExA(dwTraceID, dwFlags, util.pstrToFfi(lpszFormat));
 }
@@ -13942,7 +13942,7 @@ export function TracePrintfExA(
 export function TraceVprintfExA(
   dwTraceID: number /* u32 */,
   dwFlags: number /* u32 */,
-  lpszFormat: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpszFormat: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   arglist: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
   return librtutils_dll.TraceVprintfExA(dwTraceID, dwFlags, util.pstrToFfi(lpszFormat), util.toPointer(arglist));
@@ -13951,7 +13951,7 @@ export function TraceVprintfExA(
 export function TracePutsExA(
   dwTraceID: number /* u32 */,
   dwFlags: number /* u32 */,
-  lpszString: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpszString: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): number /* u32 */ {
   return librtutils_dll.TracePutsExA(dwTraceID, dwFlags, util.pstrToFfi(lpszString));
 }
@@ -13963,13 +13963,13 @@ export function TraceDumpExA(
   dwByteCount: number /* u32 */,
   dwGroupSize: number /* u32 */,
   bAddressPrefix: boolean /* Windows.Win32.Foundation.BOOL */,
-  lpszPrefix: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpszPrefix: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): number /* u32 */ {
   return librtutils_dll.TraceDumpExA(dwTraceID, dwFlags, util.toPointer(lpbBytes), dwByteCount, dwGroupSize, util.boolToFfi(bAddressPrefix), util.pstrToFfi(lpszPrefix));
 }
 
 export function TraceRegisterExW(
-  lpszCallerName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpszCallerName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   dwFlags: number /* u32 */,
 ): number /* u32 */ {
   return librtutils_dll.TraceRegisterExW(util.pwstrToFfi(lpszCallerName), dwFlags);
@@ -13997,7 +13997,7 @@ export function TraceGetConsoleW(
 
 export function TracePrintfW(
   dwTraceID: number /* u32 */,
-  lpszFormat: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpszFormat: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
   return librtutils_dll.TracePrintfW(dwTraceID, util.pwstrToFfi(lpszFormat));
 }
@@ -14005,7 +14005,7 @@ export function TracePrintfW(
 export function TracePrintfExW(
   dwTraceID: number /* u32 */,
   dwFlags: number /* u32 */,
-  lpszFormat: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpszFormat: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
   return librtutils_dll.TracePrintfExW(dwTraceID, dwFlags, util.pwstrToFfi(lpszFormat));
 }
@@ -14013,7 +14013,7 @@ export function TracePrintfExW(
 export function TraceVprintfExW(
   dwTraceID: number /* u32 */,
   dwFlags: number /* u32 */,
-  lpszFormat: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpszFormat: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   arglist: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
   return librtutils_dll.TraceVprintfExW(dwTraceID, dwFlags, util.pwstrToFfi(lpszFormat), util.toPointer(arglist));
@@ -14022,7 +14022,7 @@ export function TraceVprintfExW(
 export function TracePutsExW(
   dwTraceID: number /* u32 */,
   dwFlags: number /* u32 */,
-  lpszString: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpszString: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
   return librtutils_dll.TracePutsExW(dwTraceID, dwFlags, util.pwstrToFfi(lpszString));
 }
@@ -14034,7 +14034,7 @@ export function TraceDumpExW(
   dwByteCount: number /* u32 */,
   dwGroupSize: number /* u32 */,
   bAddressPrefix: boolean /* Windows.Win32.Foundation.BOOL */,
-  lpszPrefix: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpszPrefix: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
   return librtutils_dll.TraceDumpExW(dwTraceID, dwFlags, util.toPointer(lpbBytes), dwByteCount, dwGroupSize, util.boolToFfi(bAddressPrefix), util.pwstrToFfi(lpszPrefix));
 }
@@ -14076,7 +14076,7 @@ export function LogEventW(
 }
 
 export function RouterLogRegisterA(
-  lpszSource: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpszSource: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */ {
   return util.pointerFromFfi(librtutils_dll.RouterLogRegisterA(util.pstrToFfi(lpszSource)));
 }
@@ -14127,7 +14127,7 @@ export function RouterLogEventExA(
   dwEventType: number /* u32 */,
   dwErrorCode: number /* u32 */,
   dwMessageId: number /* u32 */,
-  ptszFormat: string | null /* Windows.Win32.Foundation.PSTR */,
+  ptszFormat: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): void /* void */ {
   return librtutils_dll.RouterLogEventExA(util.toPointer(hLogHandle), dwEventType, dwErrorCode, dwMessageId, util.pstrToFfi(ptszFormat));
 }
@@ -14137,7 +14137,7 @@ export function RouterLogEventValistExA(
   dwEventType: number /* u32 */,
   dwErrorCode: number /* u32 */,
   dwMessageId: number /* u32 */,
-  ptszFormat: string | null /* Windows.Win32.Foundation.PSTR */,
+  ptszFormat: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   arglist: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): void /* void */ {
   return librtutils_dll.RouterLogEventValistExA(util.toPointer(hLogHandle), dwEventType, dwErrorCode, dwMessageId, util.pstrToFfi(ptszFormat), util.toPointer(arglist));
@@ -14151,7 +14151,7 @@ export function RouterGetErrorStringA(
 }
 
 export function RouterLogRegisterW(
-  lpszSource: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpszSource: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */ {
   return util.pointerFromFfi(librtutils_dll.RouterLogRegisterW(util.pwstrToFfi(lpszSource)));
 }
@@ -14202,7 +14202,7 @@ export function RouterLogEventExW(
   dwEventType: number /* u32 */,
   dwErrorCode: number /* u32 */,
   dwMessageId: number /* u32 */,
-  ptszFormat: string | null /* Windows.Win32.Foundation.PWSTR */,
+  ptszFormat: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): void /* void */ {
   return librtutils_dll.RouterLogEventExW(util.toPointer(hLogHandle), dwEventType, dwErrorCode, dwMessageId, util.pwstrToFfi(ptszFormat));
 }
@@ -14212,7 +14212,7 @@ export function RouterLogEventValistExW(
   dwEventType: number /* u32 */,
   dwErrorCode: number /* u32 */,
   dwMessageId: number /* u32 */,
-  ptszFormat: string | null /* Windows.Win32.Foundation.PWSTR */,
+  ptszFormat: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   arglist: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): void /* void */ {
   return librtutils_dll.RouterLogEventValistExW(util.toPointer(hLogHandle), dwEventType, dwErrorCode, dwMessageId, util.pwstrToFfi(ptszFormat), util.toPointer(arglist));
@@ -14226,10 +14226,10 @@ export function RouterGetErrorStringW(
 }
 
 export function RouterAssert(
-  pszFailedAssertion: string | null /* Windows.Win32.Foundation.PSTR */,
-  pszFileName: string | null /* Windows.Win32.Foundation.PSTR */,
+  pszFailedAssertion: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  pszFileName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   dwLineNumber: number /* u32 */,
-  pszMessage: string | null /* Windows.Win32.Foundation.PSTR */,
+  pszMessage: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): void /* void */ {
   return librtutils_dll.RouterAssert(util.pstrToFfi(pszFailedAssertion), util.pstrToFfi(pszFileName), dwLineNumber, util.pstrToFfi(pszMessage));
 }

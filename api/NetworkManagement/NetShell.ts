@@ -72,7 +72,7 @@ export type PWSTR = Deno.PointerValue | Uint8Array | null;
  */
 export interface TOKEN_VALUE {
   /** Windows.Win32.Foundation.PWSTR */
-  pwszToken: string | null;
+  pwszToken: string | null | Uint8Array | Uint16Array;
   /** u32 */
   dwValue: number;
 }
@@ -172,7 +172,7 @@ export function allocNS_HELPER_ATTRIBUTES(data?: Partial<NS_HELPER_ATTRIBUTES>):
  */
 export interface CMD_ENTRY {
   /** Windows.Win32.Foundation.PWSTR */
-  pwszCmdToken: string | null;
+  pwszCmdToken: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.NetworkManagement.NetShell.PFN_HANDLE_CMD */
   pfnCmdHandler: Uint8Array | Deno.PointerValue | null;
   /** u32 */
@@ -214,7 +214,7 @@ export function allocCMD_ENTRY(data?: Partial<CMD_ENTRY>): Uint8Array {
  */
 export interface CMD_GROUP_ENTRY {
   /** Windows.Win32.Foundation.PWSTR */
-  pwszCmdGroupToken: string | null;
+  pwszCmdGroupToken: string | null | Uint8Array | Uint16Array;
   /** u32 */
   dwShortCmdHelpToken: number;
   /** u32 */
@@ -258,7 +258,7 @@ export interface NS_CONTEXT_ATTRIBUTES {
   /** _Anonymous_e__Union */
   Anonymous: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.Foundation.PWSTR */
-  pwszContext: string | null;
+  pwszContext: string | null | Uint8Array | Uint16Array;
   /** System.Guid */
   guidHelper: Uint8Array | Deno.PointerValue | null;
   /** u32 */
@@ -333,7 +333,7 @@ export type BOOL = number;
  */
 export interface TAG_TYPE {
   /** Windows.Win32.Foundation.PWSTR */
-  pwszTag: string | null;
+  pwszTag: string | null | Uint8Array | Uint16Array;
   /** u32 */
   dwRequired: number;
   /** Windows.Win32.Foundation.BOOL */
@@ -402,7 +402,7 @@ try {
 
 export function MatchEnumTag(
   hModule: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  pwcArg: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pwcArg: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   dwNumArg: number /* u32 */,
   pEnumTable: Deno.PointerValue | Uint8Array | null /* ptr */,
   pdwValue: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -411,8 +411,8 @@ export function MatchEnumTag(
 }
 
 export function MatchToken(
-  pwszUserToken: string | null /* Windows.Win32.Foundation.PWSTR */,
-  pwszCmdToken: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pwszUserToken: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  pwszCmdToken: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libNETSH_dll.MatchToken(util.pwstrToFfi(pwszUserToken), util.pwstrToFfi(pwszCmdToken)));
 }
@@ -446,7 +446,7 @@ export function PrintMessageFromModule(
 }
 
 export function PrintMessage(
-  pwszFormat: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pwszFormat: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
   return libNETSH_dll.PrintMessage(util.pwstrToFfi(pwszFormat));
 }

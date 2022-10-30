@@ -1967,7 +1967,7 @@ export interface _Anonymous1_e__Union {
   /** usize */
   Data0: Deno.PointerValue;
   /** Windows.Win32.Foundation.PWSTR */
-  String: string | null;
+  String: string | null | Uint8Array | Uint16Array;
   /** usize */
   u: Deno.PointerValue;
   /** ptr */
@@ -2722,11 +2722,11 @@ export interface PRINTER_INFO_1A {
   /** u32 */
   Flags: number;
   /** Windows.Win32.Foundation.PSTR */
-  pDescription: string | null;
+  pDescription: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  pName: string | null;
+  pName: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  pComment: string | null;
+  pComment: string | null | Uint8Array;
 }
 
 export const sizeofPRINTER_INFO_1A = 32;
@@ -2762,11 +2762,11 @@ export interface PRINTER_INFO_1W {
   /** u32 */
   Flags: number;
   /** Windows.Win32.Foundation.PWSTR */
-  pDescription: string | null;
+  pDescription: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pName: string | null;
+  pName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pComment: string | null;
+  pComment: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeofPRINTER_INFO_1W = 32;
@@ -2802,29 +2802,29 @@ export type PSECURITY_DESCRIPTOR = Deno.PointerValue | Uint8Array | null;
  */
 export interface PRINTER_INFO_2A {
   /** Windows.Win32.Foundation.PSTR */
-  pServerName: string | null;
+  pServerName: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  pPrinterName: string | null;
+  pPrinterName: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  pShareName: string | null;
+  pShareName: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  pPortName: string | null;
+  pPortName: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  pDriverName: string | null;
+  pDriverName: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  pComment: string | null;
+  pComment: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  pLocation: string | null;
+  pLocation: string | null | Uint8Array;
   /** ptr */
   pDevMode: Deno.PointerValue | Uint8Array | null;
   /** Windows.Win32.Foundation.PSTR */
-  pSepFile: string | null;
+  pSepFile: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  pPrintProcessor: string | null;
+  pPrintProcessor: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  pDatatype: string | null;
+  pDatatype: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  pParameters: string | null;
+  pParameters: string | null | Uint8Array;
   /** Windows.Win32.Security.PSECURITY_DESCRIPTOR */
   pSecurityDescriptor: Uint8Array | Deno.PointerValue | null;
   /** u32 */
@@ -2933,29 +2933,29 @@ export function allocPRINTER_INFO_2A(data?: Partial<PRINTER_INFO_2A>): Uint8Arra
  */
 export interface PRINTER_INFO_2W {
   /** Windows.Win32.Foundation.PWSTR */
-  pServerName: string | null;
+  pServerName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pPrinterName: string | null;
+  pPrinterName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pShareName: string | null;
+  pShareName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pPortName: string | null;
+  pPortName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pDriverName: string | null;
+  pDriverName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pComment: string | null;
+  pComment: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pLocation: string | null;
+  pLocation: string | null | Uint8Array | Uint16Array;
   /** ptr */
   pDevMode: Deno.PointerValue | Uint8Array | null;
   /** Windows.Win32.Foundation.PWSTR */
-  pSepFile: string | null;
+  pSepFile: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pPrintProcessor: string | null;
+  pPrintProcessor: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pDatatype: string | null;
+  pDatatype: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pParameters: string | null;
+  pParameters: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Security.PSECURITY_DESCRIPTOR */
   pSecurityDescriptor: Uint8Array | Deno.PointerValue | null;
   /** u32 */
@@ -3082,9 +3082,9 @@ export function allocPRINTER_INFO_3(data?: Partial<PRINTER_INFO_3>): Uint8Array 
  */
 export interface PRINTER_INFO_4A {
   /** Windows.Win32.Foundation.PSTR */
-  pPrinterName: string | null;
+  pPrinterName: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  pServerName: string | null;
+  pServerName: string | null | Uint8Array;
   /** u32 */
   Attributes: number;
 }
@@ -3115,9 +3115,9 @@ export function allocPRINTER_INFO_4A(data?: Partial<PRINTER_INFO_4A>): Uint8Arra
  */
 export interface PRINTER_INFO_4W {
   /** Windows.Win32.Foundation.PWSTR */
-  pPrinterName: string | null;
+  pPrinterName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pServerName: string | null;
+  pServerName: string | null | Uint8Array | Uint16Array;
   /** u32 */
   Attributes: number;
 }
@@ -3148,9 +3148,9 @@ export function allocPRINTER_INFO_4W(data?: Partial<PRINTER_INFO_4W>): Uint8Arra
  */
 export interface PRINTER_INFO_5A {
   /** Windows.Win32.Foundation.PSTR */
-  pPrinterName: string | null;
+  pPrinterName: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  pPortName: string | null;
+  pPortName: string | null | Uint8Array;
   /** u32 */
   Attributes: number;
   /** u32 */
@@ -3189,9 +3189,9 @@ export function allocPRINTER_INFO_5A(data?: Partial<PRINTER_INFO_5A>): Uint8Arra
  */
 export interface PRINTER_INFO_5W {
   /** Windows.Win32.Foundation.PWSTR */
-  pPrinterName: string | null;
+  pPrinterName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pPortName: string | null;
+  pPortName: string | null | Uint8Array | Uint16Array;
   /** u32 */
   Attributes: number;
   /** u32 */
@@ -3249,7 +3249,7 @@ export function allocPRINTER_INFO_6(data?: Partial<PRINTER_INFO_6>): Uint8Array 
  */
 export interface PRINTER_INFO_7A {
   /** Windows.Win32.Foundation.PSTR */
-  pszObjectGUID: string | null;
+  pszObjectGUID: string | null | Uint8Array;
   /** u32 */
   dwAction: number;
 }
@@ -3275,7 +3275,7 @@ export function allocPRINTER_INFO_7A(data?: Partial<PRINTER_INFO_7A>): Uint8Arra
  */
 export interface PRINTER_INFO_7W {
   /** Windows.Win32.Foundation.PWSTR */
-  pszObjectGUID: string | null;
+  pszObjectGUID: string | null | Uint8Array | Uint16Array;
   /** u32 */
   dwAction: number;
 }
@@ -3421,17 +3421,17 @@ export interface JOB_INFO_1A {
   /** u32 */
   JobId: number;
   /** Windows.Win32.Foundation.PSTR */
-  pPrinterName: string | null;
+  pPrinterName: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  pMachineName: string | null;
+  pMachineName: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  pUserName: string | null;
+  pUserName: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  pDocument: string | null;
+  pDocument: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  pDatatype: string | null;
+  pDatatype: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  pStatus: string | null;
+  pStatus: string | null | Uint8Array;
   /** u32 */
   Status: number;
   /** u32 */
@@ -3507,17 +3507,17 @@ export interface JOB_INFO_1W {
   /** u32 */
   JobId: number;
   /** Windows.Win32.Foundation.PWSTR */
-  pPrinterName: string | null;
+  pPrinterName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pMachineName: string | null;
+  pMachineName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pUserName: string | null;
+  pUserName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pDocument: string | null;
+  pDocument: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pDatatype: string | null;
+  pDatatype: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pStatus: string | null;
+  pStatus: string | null | Uint8Array | Uint16Array;
   /** u32 */
   Status: number;
   /** u32 */
@@ -3593,27 +3593,27 @@ export interface JOB_INFO_2A {
   /** u32 */
   JobId: number;
   /** Windows.Win32.Foundation.PSTR */
-  pPrinterName: string | null;
+  pPrinterName: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  pMachineName: string | null;
+  pMachineName: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  pUserName: string | null;
+  pUserName: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  pDocument: string | null;
+  pDocument: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  pNotifyName: string | null;
+  pNotifyName: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  pDatatype: string | null;
+  pDatatype: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  pPrintProcessor: string | null;
+  pPrintProcessor: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  pParameters: string | null;
+  pParameters: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  pDriverName: string | null;
+  pDriverName: string | null | Uint8Array;
   /** ptr */
   pDevMode: Deno.PointerValue | Uint8Array | null;
   /** Windows.Win32.Foundation.PSTR */
-  pStatus: string | null;
+  pStatus: string | null | Uint8Array;
   /** Windows.Win32.Security.PSECURITY_DESCRIPTOR */
   pSecurityDescriptor: Uint8Array | Deno.PointerValue | null;
   /** u32 */
@@ -3731,27 +3731,27 @@ export interface JOB_INFO_2W {
   /** u32 */
   JobId: number;
   /** Windows.Win32.Foundation.PWSTR */
-  pPrinterName: string | null;
+  pPrinterName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pMachineName: string | null;
+  pMachineName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pUserName: string | null;
+  pUserName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pDocument: string | null;
+  pDocument: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pNotifyName: string | null;
+  pNotifyName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pDatatype: string | null;
+  pDatatype: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pPrintProcessor: string | null;
+  pPrintProcessor: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pParameters: string | null;
+  pParameters: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pDriverName: string | null;
+  pDriverName: string | null | Uint8Array | Uint16Array;
   /** ptr */
   pDevMode: Deno.PointerValue | Uint8Array | null;
   /** Windows.Win32.Foundation.PWSTR */
-  pStatus: string | null;
+  pStatus: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Security.PSECURITY_DESCRIPTOR */
   pSecurityDescriptor: Uint8Array | Deno.PointerValue | null;
   /** u32 */
@@ -3896,27 +3896,27 @@ export interface JOB_INFO_4A {
   /** u32 */
   JobId: number;
   /** Windows.Win32.Foundation.PSTR */
-  pPrinterName: string | null;
+  pPrinterName: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  pMachineName: string | null;
+  pMachineName: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  pUserName: string | null;
+  pUserName: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  pDocument: string | null;
+  pDocument: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  pNotifyName: string | null;
+  pNotifyName: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  pDatatype: string | null;
+  pDatatype: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  pPrintProcessor: string | null;
+  pPrintProcessor: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  pParameters: string | null;
+  pParameters: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  pDriverName: string | null;
+  pDriverName: string | null | Uint8Array;
   /** ptr */
   pDevMode: Deno.PointerValue | Uint8Array | null;
   /** Windows.Win32.Foundation.PSTR */
-  pStatus: string | null;
+  pStatus: string | null | Uint8Array;
   /** Windows.Win32.Security.PSECURITY_DESCRIPTOR */
   pSecurityDescriptor: Uint8Array | Deno.PointerValue | null;
   /** u32 */
@@ -4039,27 +4039,27 @@ export interface JOB_INFO_4W {
   /** u32 */
   JobId: number;
   /** Windows.Win32.Foundation.PWSTR */
-  pPrinterName: string | null;
+  pPrinterName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pMachineName: string | null;
+  pMachineName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pUserName: string | null;
+  pUserName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pDocument: string | null;
+  pDocument: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pNotifyName: string | null;
+  pNotifyName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pDatatype: string | null;
+  pDatatype: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pPrintProcessor: string | null;
+  pPrintProcessor: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pParameters: string | null;
+  pParameters: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pDriverName: string | null;
+  pDriverName: string | null | Uint8Array | Uint16Array;
   /** ptr */
   pDevMode: Deno.PointerValue | Uint8Array | null;
   /** Windows.Win32.Foundation.PWSTR */
-  pStatus: string | null;
+  pStatus: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Security.PSECURITY_DESCRIPTOR */
   pSecurityDescriptor: Uint8Array | Deno.PointerValue | null;
   /** u32 */
@@ -4180,7 +4180,7 @@ export function allocJOB_INFO_4W(data?: Partial<JOB_INFO_4W>): Uint8Array {
  */
 export interface ADDJOB_INFO_1A {
   /** Windows.Win32.Foundation.PSTR */
-  Path: string | null;
+  Path: string | null | Uint8Array;
   /** u32 */
   JobId: number;
 }
@@ -4206,7 +4206,7 @@ export function allocADDJOB_INFO_1A(data?: Partial<ADDJOB_INFO_1A>): Uint8Array 
  */
 export interface ADDJOB_INFO_1W {
   /** Windows.Win32.Foundation.PWSTR */
-  Path: string | null;
+  Path: string | null | Uint8Array | Uint16Array;
   /** u32 */
   JobId: number;
 }
@@ -4232,7 +4232,7 @@ export function allocADDJOB_INFO_1W(data?: Partial<ADDJOB_INFO_1W>): Uint8Array 
  */
 export interface DRIVER_INFO_1A {
   /** Windows.Win32.Foundation.PSTR */
-  pName: string | null;
+  pName: string | null | Uint8Array;
 }
 
 export const sizeofDRIVER_INFO_1A = 8;
@@ -4253,7 +4253,7 @@ export function allocDRIVER_INFO_1A(data?: Partial<DRIVER_INFO_1A>): Uint8Array 
  */
 export interface DRIVER_INFO_1W {
   /** Windows.Win32.Foundation.PWSTR */
-  pName: string | null;
+  pName: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeofDRIVER_INFO_1W = 8;
@@ -4276,15 +4276,15 @@ export interface DRIVER_INFO_2A {
   /** u32 */
   cVersion: number;
   /** Windows.Win32.Foundation.PSTR */
-  pName: string | null;
+  pName: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  pEnvironment: string | null;
+  pEnvironment: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  pDriverPath: string | null;
+  pDriverPath: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  pDataFile: string | null;
+  pDataFile: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  pConfigFile: string | null;
+  pConfigFile: string | null | Uint8Array;
 }
 
 export const sizeofDRIVER_INFO_2A = 48;
@@ -4330,15 +4330,15 @@ export interface DRIVER_INFO_2W {
   /** u32 */
   cVersion: number;
   /** Windows.Win32.Foundation.PWSTR */
-  pName: string | null;
+  pName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pEnvironment: string | null;
+  pEnvironment: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pDriverPath: string | null;
+  pDriverPath: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pDataFile: string | null;
+  pDataFile: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pConfigFile: string | null;
+  pConfigFile: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeofDRIVER_INFO_2W = 48;
@@ -4384,23 +4384,23 @@ export interface DRIVER_INFO_3A {
   /** u32 */
   cVersion: number;
   /** Windows.Win32.Foundation.PSTR */
-  pName: string | null;
+  pName: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  pEnvironment: string | null;
+  pEnvironment: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  pDriverPath: string | null;
+  pDriverPath: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  pDataFile: string | null;
+  pDataFile: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  pConfigFile: string | null;
+  pConfigFile: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  pHelpFile: string | null;
+  pHelpFile: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  pDependentFiles: string | null;
+  pDependentFiles: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  pMonitorName: string | null;
+  pMonitorName: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  pDefaultDataType: string | null;
+  pDefaultDataType: string | null | Uint8Array;
 }
 
 export const sizeofDRIVER_INFO_3A = 80;
@@ -4466,23 +4466,23 @@ export interface DRIVER_INFO_3W {
   /** u32 */
   cVersion: number;
   /** Windows.Win32.Foundation.PWSTR */
-  pName: string | null;
+  pName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pEnvironment: string | null;
+  pEnvironment: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pDriverPath: string | null;
+  pDriverPath: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pDataFile: string | null;
+  pDataFile: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pConfigFile: string | null;
+  pConfigFile: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pHelpFile: string | null;
+  pHelpFile: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pDependentFiles: string | null;
+  pDependentFiles: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pMonitorName: string | null;
+  pMonitorName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pDefaultDataType: string | null;
+  pDefaultDataType: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeofDRIVER_INFO_3W = 80;
@@ -4548,25 +4548,25 @@ export interface DRIVER_INFO_4A {
   /** u32 */
   cVersion: number;
   /** Windows.Win32.Foundation.PSTR */
-  pName: string | null;
+  pName: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  pEnvironment: string | null;
+  pEnvironment: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  pDriverPath: string | null;
+  pDriverPath: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  pDataFile: string | null;
+  pDataFile: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  pConfigFile: string | null;
+  pConfigFile: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  pHelpFile: string | null;
+  pHelpFile: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  pDependentFiles: string | null;
+  pDependentFiles: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  pMonitorName: string | null;
+  pMonitorName: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  pDefaultDataType: string | null;
+  pDefaultDataType: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  pszzPreviousNames: string | null;
+  pszzPreviousNames: string | null | Uint8Array;
 }
 
 export const sizeofDRIVER_INFO_4A = 88;
@@ -4637,25 +4637,25 @@ export interface DRIVER_INFO_4W {
   /** u32 */
   cVersion: number;
   /** Windows.Win32.Foundation.PWSTR */
-  pName: string | null;
+  pName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pEnvironment: string | null;
+  pEnvironment: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pDriverPath: string | null;
+  pDriverPath: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pDataFile: string | null;
+  pDataFile: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pConfigFile: string | null;
+  pConfigFile: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pHelpFile: string | null;
+  pHelpFile: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pDependentFiles: string | null;
+  pDependentFiles: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pMonitorName: string | null;
+  pMonitorName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pDefaultDataType: string | null;
+  pDefaultDataType: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pszzPreviousNames: string | null;
+  pszzPreviousNames: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeofDRIVER_INFO_4W = 88;
@@ -4726,15 +4726,15 @@ export interface DRIVER_INFO_5A {
   /** u32 */
   cVersion: number;
   /** Windows.Win32.Foundation.PSTR */
-  pName: string | null;
+  pName: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  pEnvironment: string | null;
+  pEnvironment: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  pDriverPath: string | null;
+  pDriverPath: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  pDataFile: string | null;
+  pDataFile: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  pConfigFile: string | null;
+  pConfigFile: string | null | Uint8Array;
   /** u32 */
   dwDriverAttributes: number;
   /** u32 */
@@ -4793,15 +4793,15 @@ export interface DRIVER_INFO_5W {
   /** u32 */
   cVersion: number;
   /** Windows.Win32.Foundation.PWSTR */
-  pName: string | null;
+  pName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pEnvironment: string | null;
+  pEnvironment: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pDriverPath: string | null;
+  pDriverPath: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pDataFile: string | null;
+  pDataFile: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pConfigFile: string | null;
+  pConfigFile: string | null | Uint8Array | Uint16Array;
   /** u32 */
   dwDriverAttributes: number;
   /** u32 */
@@ -4882,37 +4882,37 @@ export interface DRIVER_INFO_6A {
   /** u32 */
   cVersion: number;
   /** Windows.Win32.Foundation.PSTR */
-  pName: string | null;
+  pName: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  pEnvironment: string | null;
+  pEnvironment: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  pDriverPath: string | null;
+  pDriverPath: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  pDataFile: string | null;
+  pDataFile: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  pConfigFile: string | null;
+  pConfigFile: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  pHelpFile: string | null;
+  pHelpFile: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  pDependentFiles: string | null;
+  pDependentFiles: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  pMonitorName: string | null;
+  pMonitorName: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  pDefaultDataType: string | null;
+  pDefaultDataType: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  pszzPreviousNames: string | null;
+  pszzPreviousNames: string | null | Uint8Array;
   /** Windows.Win32.Foundation.FILETIME */
   ftDriverDate: Uint8Array | Deno.PointerValue | null;
   /** u64 */
   dwlDriverVersion: Deno.PointerValue;
   /** Windows.Win32.Foundation.PSTR */
-  pszMfgName: string | null;
+  pszMfgName: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  pszOEMUrl: string | null;
+  pszOEMUrl: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  pszHardwareID: string | null;
+  pszHardwareID: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  pszProvider: string | null;
+  pszProvider: string | null | Uint8Array;
 }
 
 export const sizeofDRIVER_INFO_6A = 136;
@@ -5007,37 +5007,37 @@ export interface DRIVER_INFO_6W {
   /** u32 */
   cVersion: number;
   /** Windows.Win32.Foundation.PWSTR */
-  pName: string | null;
+  pName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pEnvironment: string | null;
+  pEnvironment: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pDriverPath: string | null;
+  pDriverPath: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pDataFile: string | null;
+  pDataFile: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pConfigFile: string | null;
+  pConfigFile: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pHelpFile: string | null;
+  pHelpFile: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pDependentFiles: string | null;
+  pDependentFiles: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pMonitorName: string | null;
+  pMonitorName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pDefaultDataType: string | null;
+  pDefaultDataType: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pszzPreviousNames: string | null;
+  pszzPreviousNames: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.FILETIME */
   ftDriverDate: Uint8Array | Deno.PointerValue | null;
   /** u64 */
   dwlDriverVersion: Deno.PointerValue;
   /** Windows.Win32.Foundation.PWSTR */
-  pszMfgName: string | null;
+  pszMfgName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pszOEMUrl: string | null;
+  pszOEMUrl: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pszHardwareID: string | null;
+  pszHardwareID: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pszProvider: string | null;
+  pszProvider: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeofDRIVER_INFO_6W = 136;
@@ -5132,49 +5132,49 @@ export interface DRIVER_INFO_8A {
   /** u32 */
   cVersion: number;
   /** Windows.Win32.Foundation.PSTR */
-  pName: string | null;
+  pName: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  pEnvironment: string | null;
+  pEnvironment: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  pDriverPath: string | null;
+  pDriverPath: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  pDataFile: string | null;
+  pDataFile: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  pConfigFile: string | null;
+  pConfigFile: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  pHelpFile: string | null;
+  pHelpFile: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  pDependentFiles: string | null;
+  pDependentFiles: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  pMonitorName: string | null;
+  pMonitorName: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  pDefaultDataType: string | null;
+  pDefaultDataType: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  pszzPreviousNames: string | null;
+  pszzPreviousNames: string | null | Uint8Array;
   /** Windows.Win32.Foundation.FILETIME */
   ftDriverDate: Uint8Array | Deno.PointerValue | null;
   /** u64 */
   dwlDriverVersion: Deno.PointerValue;
   /** Windows.Win32.Foundation.PSTR */
-  pszMfgName: string | null;
+  pszMfgName: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  pszOEMUrl: string | null;
+  pszOEMUrl: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  pszHardwareID: string | null;
+  pszHardwareID: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  pszProvider: string | null;
+  pszProvider: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  pszPrintProcessor: string | null;
+  pszPrintProcessor: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  pszVendorSetup: string | null;
+  pszVendorSetup: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  pszzColorProfiles: string | null;
+  pszzColorProfiles: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  pszInfPath: string | null;
+  pszInfPath: string | null | Uint8Array;
   /** u32 */
   dwPrinterDriverAttributes: number;
   /** Windows.Win32.Foundation.PSTR */
-  pszzCoreDriverDependencies: string | null;
+  pszzCoreDriverDependencies: string | null | Uint8Array;
   /** Windows.Win32.Foundation.FILETIME */
   ftMinInboxDriverVerDate: Uint8Array | Deno.PointerValue | null;
   /** u64 */
@@ -5305,49 +5305,49 @@ export interface DRIVER_INFO_8W {
   /** u32 */
   cVersion: number;
   /** Windows.Win32.Foundation.PWSTR */
-  pName: string | null;
+  pName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pEnvironment: string | null;
+  pEnvironment: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pDriverPath: string | null;
+  pDriverPath: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pDataFile: string | null;
+  pDataFile: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pConfigFile: string | null;
+  pConfigFile: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pHelpFile: string | null;
+  pHelpFile: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pDependentFiles: string | null;
+  pDependentFiles: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pMonitorName: string | null;
+  pMonitorName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pDefaultDataType: string | null;
+  pDefaultDataType: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pszzPreviousNames: string | null;
+  pszzPreviousNames: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.FILETIME */
   ftDriverDate: Uint8Array | Deno.PointerValue | null;
   /** u64 */
   dwlDriverVersion: Deno.PointerValue;
   /** Windows.Win32.Foundation.PWSTR */
-  pszMfgName: string | null;
+  pszMfgName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pszOEMUrl: string | null;
+  pszOEMUrl: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pszHardwareID: string | null;
+  pszHardwareID: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pszProvider: string | null;
+  pszProvider: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pszPrintProcessor: string | null;
+  pszPrintProcessor: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pszVendorSetup: string | null;
+  pszVendorSetup: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pszzColorProfiles: string | null;
+  pszzColorProfiles: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pszInfPath: string | null;
+  pszInfPath: string | null | Uint8Array | Uint16Array;
   /** u32 */
   dwPrinterDriverAttributes: number;
   /** Windows.Win32.Foundation.PWSTR */
-  pszzCoreDriverDependencies: string | null;
+  pszzCoreDriverDependencies: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.FILETIME */
   ftMinInboxDriverVerDate: Uint8Array | Deno.PointerValue | null;
   /** u64 */
@@ -5476,11 +5476,11 @@ export function allocDRIVER_INFO_8W(data?: Partial<DRIVER_INFO_8W>): Uint8Array 
  */
 export interface DOC_INFO_1A {
   /** Windows.Win32.Foundation.PSTR */
-  pDocName: string | null;
+  pDocName: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  pOutputFile: string | null;
+  pOutputFile: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  pDatatype: string | null;
+  pDatatype: string | null | Uint8Array;
 }
 
 export const sizeofDOC_INFO_1A = 24;
@@ -5511,11 +5511,11 @@ export function allocDOC_INFO_1A(data?: Partial<DOC_INFO_1A>): Uint8Array {
  */
 export interface DOC_INFO_1W {
   /** Windows.Win32.Foundation.PWSTR */
-  pDocName: string | null;
+  pDocName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pOutputFile: string | null;
+  pOutputFile: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pDatatype: string | null;
+  pDatatype: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeofDOC_INFO_1W = 24;
@@ -5600,7 +5600,7 @@ export interface FORM_INFO_1A {
   /** u32 */
   Flags: number;
   /** Windows.Win32.Foundation.PSTR */
-  pName: string | null;
+  pName: string | null | Uint8Array;
   /** Windows.Win32.Foundation.SIZE */
   Size: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.Foundation.RECTL */
@@ -5634,7 +5634,7 @@ export interface FORM_INFO_1W {
   /** u32 */
   Flags: number;
   /** Windows.Win32.Foundation.PWSTR */
-  pName: string | null;
+  pName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.SIZE */
   Size: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.Foundation.RECTL */
@@ -5668,21 +5668,21 @@ export interface FORM_INFO_2A {
   /** u32 */
   Flags: number;
   /** Windows.Win32.Foundation.PSTR */
-  pName: string | null;
+  pName: string | null | Uint8Array;
   /** Windows.Win32.Foundation.SIZE */
   Size: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.Foundation.RECTL */
   ImageableArea: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.Foundation.PSTR */
-  pKeyword: string | null;
+  pKeyword: string | null | Uint8Array;
   /** u32 */
   StringType: number;
   /** Windows.Win32.Foundation.PSTR */
-  pMuiDll: string | null;
+  pMuiDll: string | null | Uint8Array;
   /** u32 */
   dwResourceId: number;
   /** Windows.Win32.Foundation.PSTR */
-  pDisplayName: string | null;
+  pDisplayName: string | null | Uint8Array;
   /** u16 */
   wLangId: number;
 }
@@ -5738,21 +5738,21 @@ export interface FORM_INFO_2W {
   /** u32 */
   Flags: number;
   /** Windows.Win32.Foundation.PWSTR */
-  pName: string | null;
+  pName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.SIZE */
   Size: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.Foundation.RECTL */
   ImageableArea: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.Foundation.PSTR */
-  pKeyword: string | null;
+  pKeyword: string | null | Uint8Array;
   /** u32 */
   StringType: number;
   /** Windows.Win32.Foundation.PWSTR */
-  pMuiDll: string | null;
+  pMuiDll: string | null | Uint8Array | Uint16Array;
   /** u32 */
   dwResourceId: number;
   /** Windows.Win32.Foundation.PWSTR */
-  pDisplayName: string | null;
+  pDisplayName: string | null | Uint8Array | Uint16Array;
   /** u16 */
   wLangId: number;
 }
@@ -5806,11 +5806,11 @@ export function allocFORM_INFO_2W(data?: Partial<FORM_INFO_2W>): Uint8Array {
  */
 export interface DOC_INFO_2A {
   /** Windows.Win32.Foundation.PSTR */
-  pDocName: string | null;
+  pDocName: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  pOutputFile: string | null;
+  pOutputFile: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  pDatatype: string | null;
+  pDatatype: string | null | Uint8Array;
   /** u32 */
   dwMode: number;
   /** u32 */
@@ -5849,11 +5849,11 @@ export function allocDOC_INFO_2A(data?: Partial<DOC_INFO_2A>): Uint8Array {
  */
 export interface DOC_INFO_2W {
   /** Windows.Win32.Foundation.PWSTR */
-  pDocName: string | null;
+  pDocName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pOutputFile: string | null;
+  pOutputFile: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pDatatype: string | null;
+  pDatatype: string | null | Uint8Array | Uint16Array;
   /** u32 */
   dwMode: number;
   /** u32 */
@@ -5892,11 +5892,11 @@ export function allocDOC_INFO_2W(data?: Partial<DOC_INFO_2W>): Uint8Array {
  */
 export interface DOC_INFO_3A {
   /** Windows.Win32.Foundation.PSTR */
-  pDocName: string | null;
+  pDocName: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  pOutputFile: string | null;
+  pOutputFile: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  pDatatype: string | null;
+  pDatatype: string | null | Uint8Array;
   /** u32 */
   dwFlags: number;
 }
@@ -5932,11 +5932,11 @@ export function allocDOC_INFO_3A(data?: Partial<DOC_INFO_3A>): Uint8Array {
  */
 export interface DOC_INFO_3W {
   /** Windows.Win32.Foundation.PWSTR */
-  pDocName: string | null;
+  pDocName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pOutputFile: string | null;
+  pOutputFile: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pDatatype: string | null;
+  pDatatype: string | null | Uint8Array | Uint16Array;
   /** u32 */
   dwFlags: number;
 }
@@ -5972,7 +5972,7 @@ export function allocDOC_INFO_3W(data?: Partial<DOC_INFO_3W>): Uint8Array {
  */
 export interface PRINTPROCESSOR_INFO_1A {
   /** Windows.Win32.Foundation.PSTR */
-  pName: string | null;
+  pName: string | null | Uint8Array;
 }
 
 export const sizeofPRINTPROCESSOR_INFO_1A = 8;
@@ -5993,7 +5993,7 @@ export function allocPRINTPROCESSOR_INFO_1A(data?: Partial<PRINTPROCESSOR_INFO_1
  */
 export interface PRINTPROCESSOR_INFO_1W {
   /** Windows.Win32.Foundation.PWSTR */
-  pName: string | null;
+  pName: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeofPRINTPROCESSOR_INFO_1W = 8;
@@ -6095,7 +6095,7 @@ export function allocPRINTPROCESSOR_CAPS_2(data?: Partial<PRINTPROCESSOR_CAPS_2>
  */
 export interface PORT_INFO_1A {
   /** Windows.Win32.Foundation.PSTR */
-  pName: string | null;
+  pName: string | null | Uint8Array;
 }
 
 export const sizeofPORT_INFO_1A = 8;
@@ -6116,7 +6116,7 @@ export function allocPORT_INFO_1A(data?: Partial<PORT_INFO_1A>): Uint8Array {
  */
 export interface PORT_INFO_1W {
   /** Windows.Win32.Foundation.PWSTR */
-  pName: string | null;
+  pName: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeofPORT_INFO_1W = 8;
@@ -6137,11 +6137,11 @@ export function allocPORT_INFO_1W(data?: Partial<PORT_INFO_1W>): Uint8Array {
  */
 export interface PORT_INFO_2A {
   /** Windows.Win32.Foundation.PSTR */
-  pPortName: string | null;
+  pPortName: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  pMonitorName: string | null;
+  pMonitorName: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  pDescription: string | null;
+  pDescription: string | null | Uint8Array;
   /** u32 */
   fPortType: number;
   /** u32 */
@@ -6180,11 +6180,11 @@ export function allocPORT_INFO_2A(data?: Partial<PORT_INFO_2A>): Uint8Array {
  */
 export interface PORT_INFO_2W {
   /** Windows.Win32.Foundation.PWSTR */
-  pPortName: string | null;
+  pPortName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pMonitorName: string | null;
+  pMonitorName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pDescription: string | null;
+  pDescription: string | null | Uint8Array | Uint16Array;
   /** u32 */
   fPortType: number;
   /** u32 */
@@ -6225,7 +6225,7 @@ export interface PORT_INFO_3A {
   /** u32 */
   dwStatus: number;
   /** Windows.Win32.Foundation.PSTR */
-  pszStatus: string | null;
+  pszStatus: string | null | Uint8Array;
   /** u32 */
   dwSeverity: number;
 }
@@ -6256,7 +6256,7 @@ export interface PORT_INFO_3W {
   /** u32 */
   dwStatus: number;
   /** Windows.Win32.Foundation.PWSTR */
-  pszStatus: string | null;
+  pszStatus: string | null | Uint8Array | Uint16Array;
   /** u32 */
   dwSeverity: number;
 }
@@ -6285,7 +6285,7 @@ export function allocPORT_INFO_3W(data?: Partial<PORT_INFO_3W>): Uint8Array {
  */
 export interface MONITOR_INFO_1A {
   /** Windows.Win32.Foundation.PSTR */
-  pName: string | null;
+  pName: string | null | Uint8Array;
 }
 
 export const sizeofMONITOR_INFO_1A = 8;
@@ -6306,7 +6306,7 @@ export function allocMONITOR_INFO_1A(data?: Partial<MONITOR_INFO_1A>): Uint8Arra
  */
 export interface MONITOR_INFO_1W {
   /** Windows.Win32.Foundation.PWSTR */
-  pName: string | null;
+  pName: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeofMONITOR_INFO_1W = 8;
@@ -6327,11 +6327,11 @@ export function allocMONITOR_INFO_1W(data?: Partial<MONITOR_INFO_1W>): Uint8Arra
  */
 export interface MONITOR_INFO_2A {
   /** Windows.Win32.Foundation.PSTR */
-  pName: string | null;
+  pName: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  pEnvironment: string | null;
+  pEnvironment: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  pDLLName: string | null;
+  pDLLName: string | null | Uint8Array;
 }
 
 export const sizeofMONITOR_INFO_2A = 24;
@@ -6362,11 +6362,11 @@ export function allocMONITOR_INFO_2A(data?: Partial<MONITOR_INFO_2A>): Uint8Arra
  */
 export interface MONITOR_INFO_2W {
   /** Windows.Win32.Foundation.PWSTR */
-  pName: string | null;
+  pName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pEnvironment: string | null;
+  pEnvironment: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pDLLName: string | null;
+  pDLLName: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeofMONITOR_INFO_2W = 24;
@@ -6397,7 +6397,7 @@ export function allocMONITOR_INFO_2W(data?: Partial<MONITOR_INFO_2W>): Uint8Arra
  */
 export interface DATATYPES_INFO_1A {
   /** Windows.Win32.Foundation.PSTR */
-  pName: string | null;
+  pName: string | null | Uint8Array;
 }
 
 export const sizeofDATATYPES_INFO_1A = 8;
@@ -6418,7 +6418,7 @@ export function allocDATATYPES_INFO_1A(data?: Partial<DATATYPES_INFO_1A>): Uint8
  */
 export interface DATATYPES_INFO_1W {
   /** Windows.Win32.Foundation.PWSTR */
-  pName: string | null;
+  pName: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeofDATATYPES_INFO_1W = 8;
@@ -6439,7 +6439,7 @@ export function allocDATATYPES_INFO_1W(data?: Partial<DATATYPES_INFO_1W>): Uint8
  */
 export interface PRINTER_DEFAULTSA {
   /** Windows.Win32.Foundation.PSTR */
-  pDatatype: string | null;
+  pDatatype: string | null | Uint8Array;
   /** ptr */
   pDevMode: Deno.PointerValue | Uint8Array | null;
   /** Windows.Win32.Graphics.Printing.PRINTER_ACCESS_RIGHTS */
@@ -6469,7 +6469,7 @@ export function allocPRINTER_DEFAULTSA(data?: Partial<PRINTER_DEFAULTSA>): Uint8
  */
 export interface PRINTER_DEFAULTSW {
   /** Windows.Win32.Foundation.PWSTR */
-  pDatatype: string | null;
+  pDatatype: string | null | Uint8Array | Uint16Array;
   /** ptr */
   pDevMode: Deno.PointerValue | Uint8Array | null;
   /** Windows.Win32.Graphics.Printing.PRINTER_ACCESS_RIGHTS */
@@ -6499,7 +6499,7 @@ export function allocPRINTER_DEFAULTSW(data?: Partial<PRINTER_DEFAULTSW>): Uint8
  */
 export interface PRINTER_ENUM_VALUESA {
   /** Windows.Win32.Foundation.PSTR */
-  pValueName: string | null;
+  pValueName: string | null | Uint8Array;
   /** u32 */
   cbValueName: number;
   /** u32 */
@@ -6537,7 +6537,7 @@ export function allocPRINTER_ENUM_VALUESA(data?: Partial<PRINTER_ENUM_VALUESA>):
  */
 export interface PRINTER_ENUM_VALUESW {
   /** Windows.Win32.Foundation.PWSTR */
-  pValueName: string | null;
+  pValueName: string | null | Uint8Array | Uint16Array;
   /** u32 */
   cbValueName: number;
   /** u32 */
@@ -7019,7 +7019,7 @@ export function allocUNLOAD_DLL_DEBUG_INFO(data?: Partial<UNLOAD_DLL_DEBUG_INFO>
  */
 export interface OUTPUT_DEBUG_STRING_INFO {
   /** Windows.Win32.Foundation.PSTR */
-  lpDebugStringData: string | null;
+  lpDebugStringData: string | null | Uint8Array;
   /** u16 */
   fUnicode: number;
   /** u16 */
@@ -7146,7 +7146,7 @@ export interface BIDI_REQUEST_DATA {
   /** u32 */
   dwReqNumber: number;
   /** Windows.Win32.Foundation.PWSTR */
-  pSchema: string | null;
+  pSchema: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Graphics.Printing.BIDI_DATA */
   data: Uint8Array | Deno.PointerValue | null;
 }
@@ -7209,7 +7209,7 @@ export interface BIDI_RESPONSE_DATA {
   /** u32 */
   dwReqNumber: number;
   /** Windows.Win32.Foundation.PWSTR */
-  pSchema: string | null;
+  pSchema: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Graphics.Printing.BIDI_DATA */
   data: Uint8Array | Deno.PointerValue | null;
 }
@@ -7269,11 +7269,11 @@ export function allocBIDI_RESPONSE_CONTAINER(data?: Partial<BIDI_RESPONSE_CONTAI
  */
 export interface PROVIDOR_INFO_1A {
   /** Windows.Win32.Foundation.PSTR */
-  pName: string | null;
+  pName: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  pEnvironment: string | null;
+  pEnvironment: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  pDLLName: string | null;
+  pDLLName: string | null | Uint8Array;
 }
 
 export const sizeofPROVIDOR_INFO_1A = 24;
@@ -7304,11 +7304,11 @@ export function allocPROVIDOR_INFO_1A(data?: Partial<PROVIDOR_INFO_1A>): Uint8Ar
  */
 export interface PROVIDOR_INFO_1W {
   /** Windows.Win32.Foundation.PWSTR */
-  pName: string | null;
+  pName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pEnvironment: string | null;
+  pEnvironment: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pDLLName: string | null;
+  pDLLName: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeofPROVIDOR_INFO_1W = 24;
@@ -7339,7 +7339,7 @@ export function allocPROVIDOR_INFO_1W(data?: Partial<PROVIDOR_INFO_1W>): Uint8Ar
  */
 export interface PROVIDOR_INFO_2A {
   /** Windows.Win32.Foundation.PSTR */
-  pOrder: string | null;
+  pOrder: string | null | Uint8Array;
 }
 
 export const sizeofPROVIDOR_INFO_2A = 8;
@@ -7360,7 +7360,7 @@ export function allocPROVIDOR_INFO_2A(data?: Partial<PROVIDOR_INFO_2A>): Uint8Ar
  */
 export interface PROVIDOR_INFO_2W {
   /** Windows.Win32.Foundation.PWSTR */
-  pOrder: string | null;
+  pOrder: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeofPROVIDOR_INFO_2W = 8;
@@ -7427,7 +7427,7 @@ export interface PRINTER_CONNECTION_INFO_1A {
   /** u32 */
   dwFlags: number;
   /** Windows.Win32.Foundation.PSTR */
-  pszDriverName: string | null;
+  pszDriverName: string | null | Uint8Array;
 }
 
 export const sizeofPRINTER_CONNECTION_INFO_1A = 16;
@@ -7453,7 +7453,7 @@ export interface PRINTER_CONNECTION_INFO_1W {
   /** u32 */
   dwFlags: number;
   /** Windows.Win32.Foundation.PWSTR */
-  pszDriverName: string | null;
+  pszDriverName: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeofPRINTER_CONNECTION_INFO_1W = 16;
@@ -7562,7 +7562,7 @@ export interface _value_e__Union {
   /** u8 */
   propertyByte: number;
   /** Windows.Win32.Foundation.PWSTR */
-  propertyString: string | null;
+  propertyString: string | null | Uint8Array | Uint16Array;
   /** i32 */
   propertyInt32: number;
   /** i64 */
@@ -7622,7 +7622,7 @@ export function allocPrintPropertyValue(data?: Partial<PrintPropertyValue>): Uin
  */
 export interface PrintNamedProperty {
   /** Windows.Win32.Foundation.PWSTR */
-  propertyName: string | null;
+  propertyName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Graphics.Printing.PrintPropertyValue */
   propertyValue: Uint8Array | Deno.PointerValue | null;
 }
@@ -7975,7 +7975,7 @@ export interface DEVQUERYPRINT_INFO {
   /** ptr */
   pDevMode: Deno.PointerValue | Uint8Array | null;
   /** Windows.Win32.Foundation.PWSTR */
-  pszErrorStr: string | null;
+  pszErrorStr: string | null | Uint8Array | Uint16Array;
   /** u32 */
   cchErrorStr: number;
   /** u32 */
@@ -8138,9 +8138,9 @@ export type BOOL = number;
  */
 export interface DOCEVENT_CREATEDCPRE {
   /** Windows.Win32.Foundation.PWSTR */
-  pszDriver: string | null;
+  pszDriver: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pszDevice: string | null;
+  pszDevice: string | null | Uint8Array | Uint16Array;
   /** ptr */
   pdm: Deno.PointerValue | Uint8Array | null;
   /** Windows.Win32.Foundation.BOOL */
@@ -8601,7 +8601,7 @@ export interface USERDATA {
   /** usize */
   dwItemID: Deno.PointerValue;
   /** Windows.Win32.Foundation.PSTR */
-  pKeyWordName: string | null;
+  pKeyWordName: string | null | Uint8Array;
   /** array */
   dwReserved: Deno.PointerValue | null;
 }
@@ -8717,7 +8717,7 @@ export interface OEMCUIPPARAM {
   /** Windows.Win32.Foundation.HANDLE */
   hPrinter: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.Foundation.PWSTR */
-  pPrinterName: string | null;
+  pPrinterName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.HANDLE */
   hModule: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.Foundation.HANDLE */
@@ -8798,7 +8798,7 @@ export interface OEMUIPSPARAM {
   /** Windows.Win32.Foundation.HANDLE */
   hPrinter: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.Foundation.PWSTR */
-  pPrinterName: string | null;
+  pPrinterName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.HANDLE */
   hModule: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.Foundation.HANDLE */
@@ -8882,9 +8882,9 @@ export function allocCUSTOMSIZEPARAM(data?: Partial<CUSTOMSIZEPARAM>): Uint8Arra
  */
 export interface PRINT_FEATURE_OPTION {
   /** Windows.Win32.Foundation.PSTR */
-  pszFeature: string | null;
+  pszFeature: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  pszOption: string | null;
+  pszOption: string | null | Uint8Array;
 }
 
 export const sizeofPRINT_FEATURE_OPTION = 16;
@@ -9917,7 +9917,7 @@ export interface OEMFONTINSTPARAM {
   /** u32 */
   dwFlags: number;
   /** Windows.Win32.Foundation.PWSTR */
-  pFontInstallerName: string | null;
+  pFontInstallerName: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeofOEMFONTINSTPARAM = 48;
@@ -10174,15 +10174,15 @@ export interface BranchOfficeJobDataPrinted {
   /** u32 */
   Status: number;
   /** Windows.Win32.Foundation.PWSTR */
-  pDocumentName: string | null;
+  pDocumentName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pUserName: string | null;
+  pUserName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pMachineName: string | null;
+  pMachineName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pPrinterName: string | null;
+  pPrinterName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pPortName: string | null;
+  pPortName: string | null | Uint8Array | Uint16Array;
   /** i64 */
   Size: Deno.PointerValue;
   /** u32 */
@@ -10237,13 +10237,13 @@ export interface BranchOfficeJobDataError {
   /** u32 */
   LastError: number;
   /** Windows.Win32.Foundation.PWSTR */
-  pDocumentName: string | null;
+  pDocumentName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pUserName: string | null;
+  pUserName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pPrinterName: string | null;
+  pPrinterName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pDataType: string | null;
+  pDataType: string | null | Uint8Array | Uint16Array;
   /** i64 */
   TotalSize: Deno.PointerValue;
   /** i64 */
@@ -10253,11 +10253,11 @@ export interface BranchOfficeJobDataError {
   /** u32 */
   PrintedPages: number;
   /** Windows.Win32.Foundation.PWSTR */
-  pMachineName: string | null;
+  pMachineName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pJobError: string | null;
+  pJobError: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pErrorDescription: string | null;
+  pErrorDescription: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeofBranchOfficeJobDataError = 88;
@@ -10362,11 +10362,11 @@ export function allocBranchOfficeJobDataRendered(data?: Partial<BranchOfficeJobD
  */
 export interface BranchOfficeJobDataPipelineFailed {
   /** Windows.Win32.Foundation.PWSTR */
-  pDocumentName: string | null;
+  pDocumentName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pPrinterName: string | null;
+  pPrinterName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pExtraErrorInfo: string | null;
+  pExtraErrorInfo: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeofBranchOfficeJobDataPipelineFailed = 24;
@@ -10397,7 +10397,7 @@ export function allocBranchOfficeJobDataPipelineFailed(data?: Partial<BranchOffi
  */
 export interface BranchOfficeLogOfflineFileFull {
   /** Windows.Win32.Foundation.PWSTR */
-  pMachineName: string | null;
+  pMachineName: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeofBranchOfficeLogOfflineFileFull = 8;
@@ -10530,9 +10530,9 @@ export interface SPLCLIENT_INFO_1 {
   /** u32 */
   dwSize: number;
   /** Windows.Win32.Foundation.PWSTR */
-  pMachineName: string | null;
+  pMachineName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pUserName: string | null;
+  pUserName: string | null | Uint8Array | Uint16Array;
   /** u32 */
   dwBuildNum: number;
   /** u32 */
@@ -10620,9 +10620,9 @@ export interface SPLCLIENT_INFO_3_VISTA {
   /** u32 */
   dwSize: number;
   /** Windows.Win32.Foundation.PWSTR */
-  pMachineName: string | null;
+  pMachineName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pUserName: string | null;
+  pUserName: string | null | Uint8Array | Uint16Array;
   /** u32 */
   dwBuildNum: number;
   /** u32 */
@@ -11116,17 +11116,17 @@ export interface PRINTPROCESSOROPENDATA {
   /** ptr */
   pDevMode: Deno.PointerValue | Uint8Array | null;
   /** Windows.Win32.Foundation.PWSTR */
-  pDatatype: string | null;
+  pDatatype: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pParameters: string | null;
+  pParameters: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pDocumentName: string | null;
+  pDocumentName: string | null | Uint8Array | Uint16Array;
   /** u32 */
   JobId: number;
   /** Windows.Win32.Foundation.PWSTR */
-  pOutputFile: string | null;
+  pOutputFile: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pPrinterName: string | null;
+  pPrinterName: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeofPRINTPROCESSOROPENDATA = 56;
@@ -11243,7 +11243,7 @@ export interface MONITORINIT {
   /** Windows.Win32.Foundation.BOOL */
   bLocal: boolean;
   /** Windows.Win32.Foundation.PWSTR */
-  pszServerName: string | null;
+  pszServerName: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeofMONITORINIT = 48;
@@ -11551,9 +11551,9 @@ export interface MESSAGEBOX_PARAMS {
   /** u32 */
   cbSize: number;
   /** Windows.Win32.Foundation.PWSTR */
-  pTitle: string | null;
+  pTitle: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pMessage: string | null;
+  pMessage: string | null | Uint8Array | Uint16Array;
   /** u32 */
   Style: number;
   /** u32 */
@@ -12535,7 +12535,7 @@ export function SetCPSUIUserData(
 
 export function EnumPrintersA(
   Flags: number /* u32 */,
-  Name: string | null /* Windows.Win32.Foundation.PSTR */,
+  Name: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   Level: number /* u32 */,
   pPrinterEnum: Deno.PointerValue | Uint8Array | null /* ptr */,
   cbBuf: number /* u32 */,
@@ -12547,7 +12547,7 @@ export function EnumPrintersA(
 
 export function EnumPrintersW(
   Flags: number /* u32 */,
-  Name: string | null /* Windows.Win32.Foundation.PWSTR */,
+  Name: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   Level: number /* u32 */,
   pPrinterEnum: Deno.PointerValue | Uint8Array | null /* ptr */,
   cbBuf: number /* u32 */,
@@ -12579,7 +12579,7 @@ export function CloseSpoolFileHandle(
 }
 
 export function OpenPrinterA(
-  pPrinterName: string | null /* Windows.Win32.Foundation.PSTR */,
+  pPrinterName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   phPrinter: Deno.PointerValue | Uint8Array | null /* ptr */,
   pDefault: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
@@ -12587,7 +12587,7 @@ export function OpenPrinterA(
 }
 
 export function OpenPrinterW(
-  pPrinterName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pPrinterName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   phPrinter: Deno.PointerValue | Uint8Array | null /* ptr */,
   pDefault: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
@@ -12677,7 +12677,7 @@ export function EnumJobsW(
 }
 
 export function AddPrinterA(
-  pName: string | null /* Windows.Win32.Foundation.PSTR */,
+  pName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   Level: number /* u32 */,
   pPrinter: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */ {
@@ -12685,7 +12685,7 @@ export function AddPrinterA(
 }
 
 export function AddPrinterW(
-  pName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   Level: number /* u32 */,
   pPrinter: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */ {
@@ -12737,7 +12737,7 @@ export function GetPrinterW(
 }
 
 export function AddPrinterDriverA(
-  pName: string | null /* Windows.Win32.Foundation.PSTR */,
+  pName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   Level: number /* u32 */,
   pDriverInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
@@ -12745,7 +12745,7 @@ export function AddPrinterDriverA(
 }
 
 export function AddPrinterDriverW(
-  pName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   Level: number /* u32 */,
   pDriverInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
@@ -12753,7 +12753,7 @@ export function AddPrinterDriverW(
 }
 
 export function AddPrinterDriverExA(
-  pName: string | null /* Windows.Win32.Foundation.PSTR */,
+  pName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   Level: number /* u32 */,
   lpbDriverInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
   dwFileCopyFlags: number /* u32 */,
@@ -12762,7 +12762,7 @@ export function AddPrinterDriverExA(
 }
 
 export function AddPrinterDriverExW(
-  pName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   Level: number /* u32 */,
   lpbDriverInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
   dwFileCopyFlags: number /* u32 */,
@@ -12771,8 +12771,8 @@ export function AddPrinterDriverExW(
 }
 
 export function EnumPrinterDriversA(
-  pName: string | null /* Windows.Win32.Foundation.PSTR */,
-  pEnvironment: string | null /* Windows.Win32.Foundation.PSTR */,
+  pName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  pEnvironment: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   Level: number /* u32 */,
   pDriverInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
   cbBuf: number /* u32 */,
@@ -12783,8 +12783,8 @@ export function EnumPrinterDriversA(
 }
 
 export function EnumPrinterDriversW(
-  pName: string | null /* Windows.Win32.Foundation.PWSTR */,
-  pEnvironment: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  pEnvironment: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   Level: number /* u32 */,
   pDriverInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
   cbBuf: number /* u32 */,
@@ -12796,7 +12796,7 @@ export function EnumPrinterDriversW(
 
 export function GetPrinterDriverA(
   hPrinter: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  pEnvironment: string | null /* Windows.Win32.Foundation.PSTR */,
+  pEnvironment: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   Level: number /* u32 */,
   pDriverInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
   cbBuf: number /* u32 */,
@@ -12807,7 +12807,7 @@ export function GetPrinterDriverA(
 
 export function GetPrinterDriverW(
   hPrinter: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  pEnvironment: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pEnvironment: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   Level: number /* u32 */,
   pDriverInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
   cbBuf: number /* u32 */,
@@ -12817,8 +12817,8 @@ export function GetPrinterDriverW(
 }
 
 export function GetPrinterDriverDirectoryA(
-  pName: string | null /* Windows.Win32.Foundation.PSTR */,
-  pEnvironment: string | null /* Windows.Win32.Foundation.PSTR */,
+  pName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  pEnvironment: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   Level: number /* u32 */,
   pDriverDirectory: Deno.PointerValue | Uint8Array | null /* ptr */,
   cbBuf: number /* u32 */,
@@ -12828,8 +12828,8 @@ export function GetPrinterDriverDirectoryA(
 }
 
 export function GetPrinterDriverDirectoryW(
-  pName: string | null /* Windows.Win32.Foundation.PWSTR */,
-  pEnvironment: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  pEnvironment: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   Level: number /* u32 */,
   pDriverDirectory: Deno.PointerValue | Uint8Array | null /* ptr */,
   cbBuf: number /* u32 */,
@@ -12839,25 +12839,25 @@ export function GetPrinterDriverDirectoryW(
 }
 
 export function DeletePrinterDriverA(
-  pName: string | null /* Windows.Win32.Foundation.PSTR */,
-  pEnvironment: string | null /* Windows.Win32.Foundation.PSTR */,
-  pDriverName: string | null /* Windows.Win32.Foundation.PSTR */,
+  pName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  pEnvironment: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  pDriverName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libwinspool_drv.DeletePrinterDriverA(util.pstrToFfi(pName), util.pstrToFfi(pEnvironment), util.pstrToFfi(pDriverName)));
 }
 
 export function DeletePrinterDriverW(
-  pName: string | null /* Windows.Win32.Foundation.PWSTR */,
-  pEnvironment: string | null /* Windows.Win32.Foundation.PWSTR */,
-  pDriverName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  pEnvironment: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  pDriverName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libwinspool_drv.DeletePrinterDriverW(util.pwstrToFfi(pName), util.pwstrToFfi(pEnvironment), util.pwstrToFfi(pDriverName)));
 }
 
 export function DeletePrinterDriverExA(
-  pName: string | null /* Windows.Win32.Foundation.PSTR */,
-  pEnvironment: string | null /* Windows.Win32.Foundation.PSTR */,
-  pDriverName: string | null /* Windows.Win32.Foundation.PSTR */,
+  pName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  pEnvironment: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  pDriverName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   dwDeleteFlag: number /* u32 */,
   dwVersionFlag: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
@@ -12865,9 +12865,9 @@ export function DeletePrinterDriverExA(
 }
 
 export function DeletePrinterDriverExW(
-  pName: string | null /* Windows.Win32.Foundation.PWSTR */,
-  pEnvironment: string | null /* Windows.Win32.Foundation.PWSTR */,
-  pDriverName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  pEnvironment: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  pDriverName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   dwDeleteFlag: number /* u32 */,
   dwVersionFlag: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
@@ -12875,26 +12875,26 @@ export function DeletePrinterDriverExW(
 }
 
 export function AddPrintProcessorA(
-  pName: string | null /* Windows.Win32.Foundation.PSTR */,
-  pEnvironment: string | null /* Windows.Win32.Foundation.PSTR */,
-  pPathName: string | null /* Windows.Win32.Foundation.PSTR */,
-  pPrintProcessorName: string | null /* Windows.Win32.Foundation.PSTR */,
+  pName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  pEnvironment: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  pPathName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  pPrintProcessorName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libwinspool_drv.AddPrintProcessorA(util.pstrToFfi(pName), util.pstrToFfi(pEnvironment), util.pstrToFfi(pPathName), util.pstrToFfi(pPrintProcessorName)));
 }
 
 export function AddPrintProcessorW(
-  pName: string | null /* Windows.Win32.Foundation.PWSTR */,
-  pEnvironment: string | null /* Windows.Win32.Foundation.PWSTR */,
-  pPathName: string | null /* Windows.Win32.Foundation.PWSTR */,
-  pPrintProcessorName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  pEnvironment: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  pPathName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  pPrintProcessorName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libwinspool_drv.AddPrintProcessorW(util.pwstrToFfi(pName), util.pwstrToFfi(pEnvironment), util.pwstrToFfi(pPathName), util.pwstrToFfi(pPrintProcessorName)));
 }
 
 export function EnumPrintProcessorsA(
-  pName: string | null /* Windows.Win32.Foundation.PSTR */,
-  pEnvironment: string | null /* Windows.Win32.Foundation.PSTR */,
+  pName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  pEnvironment: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   Level: number /* u32 */,
   pPrintProcessorInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
   cbBuf: number /* u32 */,
@@ -12905,8 +12905,8 @@ export function EnumPrintProcessorsA(
 }
 
 export function EnumPrintProcessorsW(
-  pName: string | null /* Windows.Win32.Foundation.PWSTR */,
-  pEnvironment: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  pEnvironment: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   Level: number /* u32 */,
   pPrintProcessorInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
   cbBuf: number /* u32 */,
@@ -12917,8 +12917,8 @@ export function EnumPrintProcessorsW(
 }
 
 export function GetPrintProcessorDirectoryA(
-  pName: string | null /* Windows.Win32.Foundation.PSTR */,
-  pEnvironment: string | null /* Windows.Win32.Foundation.PSTR */,
+  pName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  pEnvironment: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   Level: number /* u32 */,
   pPrintProcessorInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
   cbBuf: number /* u32 */,
@@ -12928,8 +12928,8 @@ export function GetPrintProcessorDirectoryA(
 }
 
 export function GetPrintProcessorDirectoryW(
-  pName: string | null /* Windows.Win32.Foundation.PWSTR */,
-  pEnvironment: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  pEnvironment: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   Level: number /* u32 */,
   pPrintProcessorInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
   cbBuf: number /* u32 */,
@@ -12939,8 +12939,8 @@ export function GetPrintProcessorDirectoryW(
 }
 
 export function EnumPrintProcessorDatatypesA(
-  pName: string | null /* Windows.Win32.Foundation.PSTR */,
-  pPrintProcessorName: string | null /* Windows.Win32.Foundation.PSTR */,
+  pName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  pPrintProcessorName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   Level: number /* u32 */,
   pDatatypes: Deno.PointerValue | Uint8Array | null /* ptr */,
   cbBuf: number /* u32 */,
@@ -12951,8 +12951,8 @@ export function EnumPrintProcessorDatatypesA(
 }
 
 export function EnumPrintProcessorDatatypesW(
-  pName: string | null /* Windows.Win32.Foundation.PWSTR */,
-  pPrintProcessorName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  pPrintProcessorName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   Level: number /* u32 */,
   pDatatypes: Deno.PointerValue | Uint8Array | null /* ptr */,
   cbBuf: number /* u32 */,
@@ -12963,17 +12963,17 @@ export function EnumPrintProcessorDatatypesW(
 }
 
 export function DeletePrintProcessorA(
-  pName: string | null /* Windows.Win32.Foundation.PSTR */,
-  pEnvironment: string | null /* Windows.Win32.Foundation.PSTR */,
-  pPrintProcessorName: string | null /* Windows.Win32.Foundation.PSTR */,
+  pName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  pEnvironment: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  pPrintProcessorName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libwinspool_drv.DeletePrintProcessorA(util.pstrToFfi(pName), util.pstrToFfi(pEnvironment), util.pstrToFfi(pPrintProcessorName)));
 }
 
 export function DeletePrintProcessorW(
-  pName: string | null /* Windows.Win32.Foundation.PWSTR */,
-  pEnvironment: string | null /* Windows.Win32.Foundation.PWSTR */,
-  pPrintProcessorName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  pEnvironment: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  pPrintProcessorName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libwinspool_drv.DeletePrintProcessorW(util.pwstrToFfi(pName), util.pwstrToFfi(pEnvironment), util.pwstrToFfi(pPrintProcessorName)));
 }
@@ -13083,7 +13083,7 @@ export function PrinterProperties(
 export function DocumentPropertiesA(
   hWnd: Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */,
   hPrinter: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  pDeviceName: string | null /* Windows.Win32.Foundation.PSTR */,
+  pDeviceName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   pDevModeOutput: Deno.PointerValue | Uint8Array | null /* ptr */,
   pDevModeInput: Deno.PointerValue | Uint8Array | null /* ptr */,
   fMode: number /* u32 */,
@@ -13094,7 +13094,7 @@ export function DocumentPropertiesA(
 export function DocumentPropertiesW(
   hWnd: Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */,
   hPrinter: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  pDeviceName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pDeviceName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pDevModeOutput: Deno.PointerValue | Uint8Array | null /* ptr */,
   pDevModeInput: Deno.PointerValue | Uint8Array | null /* ptr */,
   fMode: number /* u32 */,
@@ -13105,7 +13105,7 @@ export function DocumentPropertiesW(
 export function AdvancedDocumentPropertiesA(
   hWnd: Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */,
   hPrinter: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  pDeviceName: string | null /* Windows.Win32.Foundation.PSTR */,
+  pDeviceName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   pDevModeOutput: Deno.PointerValue | Uint8Array | null /* ptr */,
   pDevModeInput: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
@@ -13115,7 +13115,7 @@ export function AdvancedDocumentPropertiesA(
 export function AdvancedDocumentPropertiesW(
   hWnd: Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */,
   hPrinter: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  pDeviceName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pDeviceName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pDevModeOutput: Deno.PointerValue | Uint8Array | null /* ptr */,
   pDevModeInput: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
@@ -13126,10 +13126,10 @@ export function ExtDeviceMode(
   hWnd: Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */,
   hInst: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
   pDevModeOutput: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pDeviceName: string | null /* Windows.Win32.Foundation.PSTR */,
-  pPort: string | null /* Windows.Win32.Foundation.PSTR */,
+  pDeviceName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  pPort: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   pDevModeInput: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pProfile: string | null /* Windows.Win32.Foundation.PSTR */,
+  pProfile: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   fMode: number /* u32 */,
 ): number /* i32 */ {
   return libwinspool_drv.ExtDeviceMode(util.hwndToFfi(hWnd), util.toPointer(hInst), util.toPointer(pDevModeOutput), util.pstrToFfi(pDeviceName), util.pstrToFfi(pPort), util.toPointer(pDevModeInput), util.pstrToFfi(pProfile), fMode);
@@ -13137,7 +13137,7 @@ export function ExtDeviceMode(
 
 export function GetPrinterDataA(
   hPrinter: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  pValueName: string | null /* Windows.Win32.Foundation.PSTR */,
+  pValueName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   pType: Deno.PointerValue | Uint8Array | null /* ptr */,
   pData: Deno.PointerValue | Uint8Array | null /* ptr */,
   nSize: number /* u32 */,
@@ -13148,7 +13148,7 @@ export function GetPrinterDataA(
 
 export function GetPrinterDataW(
   hPrinter: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  pValueName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pValueName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pType: Deno.PointerValue | Uint8Array | null /* ptr */,
   pData: Deno.PointerValue | Uint8Array | null /* ptr */,
   nSize: number /* u32 */,
@@ -13159,8 +13159,8 @@ export function GetPrinterDataW(
 
 export function GetPrinterDataExA(
   hPrinter: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  pKeyName: string | null /* Windows.Win32.Foundation.PSTR */,
-  pValueName: string | null /* Windows.Win32.Foundation.PSTR */,
+  pKeyName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  pValueName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   pType: Deno.PointerValue | Uint8Array | null /* ptr */,
   pData: Deno.PointerValue | Uint8Array | null /* ptr */,
   nSize: number /* u32 */,
@@ -13171,8 +13171,8 @@ export function GetPrinterDataExA(
 
 export function GetPrinterDataExW(
   hPrinter: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  pKeyName: string | null /* Windows.Win32.Foundation.PWSTR */,
-  pValueName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pKeyName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  pValueName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pType: Deno.PointerValue | Uint8Array | null /* ptr */,
   pData: Deno.PointerValue | Uint8Array | null /* ptr */,
   nSize: number /* u32 */,
@@ -13184,7 +13184,7 @@ export function GetPrinterDataExW(
 export function EnumPrinterDataA(
   hPrinter: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
   dwIndex: number /* u32 */,
-  pValueName: string | null /* Windows.Win32.Foundation.PSTR */,
+  pValueName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   cbValueName: number /* u32 */,
   pcbValueName: Deno.PointerValue | Uint8Array | null /* ptr */,
   pType: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -13198,7 +13198,7 @@ export function EnumPrinterDataA(
 export function EnumPrinterDataW(
   hPrinter: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
   dwIndex: number /* u32 */,
-  pValueName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pValueName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   cbValueName: number /* u32 */,
   pcbValueName: Deno.PointerValue | Uint8Array | null /* ptr */,
   pType: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -13211,7 +13211,7 @@ export function EnumPrinterDataW(
 
 export function EnumPrinterDataExA(
   hPrinter: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  pKeyName: string | null /* Windows.Win32.Foundation.PSTR */,
+  pKeyName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   pEnumValues: Deno.PointerValue | Uint8Array | null /* ptr */,
   cbEnumValues: number /* u32 */,
   pcbEnumValues: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -13222,7 +13222,7 @@ export function EnumPrinterDataExA(
 
 export function EnumPrinterDataExW(
   hPrinter: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  pKeyName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pKeyName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pEnumValues: Deno.PointerValue | Uint8Array | null /* ptr */,
   cbEnumValues: number /* u32 */,
   pcbEnumValues: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -13233,8 +13233,8 @@ export function EnumPrinterDataExW(
 
 export function EnumPrinterKeyA(
   hPrinter: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  pKeyName: string | null /* Windows.Win32.Foundation.PSTR */,
-  pSubkey: string | null /* Windows.Win32.Foundation.PSTR */,
+  pKeyName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  pSubkey: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   cbSubkey: number /* u32 */,
   pcbSubkey: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
@@ -13243,8 +13243,8 @@ export function EnumPrinterKeyA(
 
 export function EnumPrinterKeyW(
   hPrinter: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  pKeyName: string | null /* Windows.Win32.Foundation.PWSTR */,
-  pSubkey: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pKeyName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  pSubkey: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   cbSubkey: number /* u32 */,
   pcbSubkey: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
@@ -13253,7 +13253,7 @@ export function EnumPrinterKeyW(
 
 export function SetPrinterDataA(
   hPrinter: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  pValueName: string | null /* Windows.Win32.Foundation.PSTR */,
+  pValueName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   Type: number /* u32 */,
   pData: Deno.PointerValue | Uint8Array | null /* ptr */,
   cbData: number /* u32 */,
@@ -13263,7 +13263,7 @@ export function SetPrinterDataA(
 
 export function SetPrinterDataW(
   hPrinter: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  pValueName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pValueName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   Type: number /* u32 */,
   pData: Deno.PointerValue | Uint8Array | null /* ptr */,
   cbData: number /* u32 */,
@@ -13273,8 +13273,8 @@ export function SetPrinterDataW(
 
 export function SetPrinterDataExA(
   hPrinter: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  pKeyName: string | null /* Windows.Win32.Foundation.PSTR */,
-  pValueName: string | null /* Windows.Win32.Foundation.PSTR */,
+  pKeyName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  pValueName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   Type: number /* u32 */,
   pData: Deno.PointerValue | Uint8Array | null /* ptr */,
   cbData: number /* u32 */,
@@ -13284,8 +13284,8 @@ export function SetPrinterDataExA(
 
 export function SetPrinterDataExW(
   hPrinter: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  pKeyName: string | null /* Windows.Win32.Foundation.PWSTR */,
-  pValueName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pKeyName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  pValueName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   Type: number /* u32 */,
   pData: Deno.PointerValue | Uint8Array | null /* ptr */,
   cbData: number /* u32 */,
@@ -13295,44 +13295,44 @@ export function SetPrinterDataExW(
 
 export function DeletePrinterDataA(
   hPrinter: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  pValueName: string | null /* Windows.Win32.Foundation.PSTR */,
+  pValueName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): number /* u32 */ {
   return libwinspool_drv.DeletePrinterDataA(util.toPointer(hPrinter), util.pstrToFfi(pValueName));
 }
 
 export function DeletePrinterDataW(
   hPrinter: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  pValueName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pValueName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
   return libwinspool_drv.DeletePrinterDataW(util.toPointer(hPrinter), util.pwstrToFfi(pValueName));
 }
 
 export function DeletePrinterDataExA(
   hPrinter: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  pKeyName: string | null /* Windows.Win32.Foundation.PSTR */,
-  pValueName: string | null /* Windows.Win32.Foundation.PSTR */,
+  pKeyName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  pValueName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): number /* u32 */ {
   return libwinspool_drv.DeletePrinterDataExA(util.toPointer(hPrinter), util.pstrToFfi(pKeyName), util.pstrToFfi(pValueName));
 }
 
 export function DeletePrinterDataExW(
   hPrinter: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  pKeyName: string | null /* Windows.Win32.Foundation.PWSTR */,
-  pValueName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pKeyName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  pValueName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
   return libwinspool_drv.DeletePrinterDataExW(util.toPointer(hPrinter), util.pwstrToFfi(pKeyName), util.pwstrToFfi(pValueName));
 }
 
 export function DeletePrinterKeyA(
   hPrinter: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  pKeyName: string | null /* Windows.Win32.Foundation.PSTR */,
+  pKeyName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): number /* u32 */ {
   return libwinspool_drv.DeletePrinterKeyA(util.toPointer(hPrinter), util.pstrToFfi(pKeyName));
 }
 
 export function DeletePrinterKeyW(
   hPrinter: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  pKeyName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pKeyName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
   return libwinspool_drv.DeletePrinterKeyW(util.toPointer(hPrinter), util.pwstrToFfi(pKeyName));
 }
@@ -13378,8 +13378,8 @@ export function PrinterMessageBoxA(
   hPrinter: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
   Error: number /* u32 */,
   hWnd: Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */,
-  pText: string | null /* Windows.Win32.Foundation.PSTR */,
-  pCaption: string | null /* Windows.Win32.Foundation.PSTR */,
+  pText: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  pCaption: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   dwType: number /* u32 */,
 ): number /* u32 */ {
   return libwinspool_drv.PrinterMessageBoxA(util.toPointer(hPrinter), Error, util.hwndToFfi(hWnd), util.pstrToFfi(pText), util.pstrToFfi(pCaption), dwType);
@@ -13389,8 +13389,8 @@ export function PrinterMessageBoxW(
   hPrinter: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
   Error: number /* u32 */,
   hWnd: Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */,
-  pText: string | null /* Windows.Win32.Foundation.PWSTR */,
-  pCaption: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pText: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  pCaption: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   dwType: number /* u32 */,
 ): number /* u32 */ {
   return libwinspool_drv.PrinterMessageBoxW(util.toPointer(hPrinter), Error, util.hwndToFfi(hWnd), util.pwstrToFfi(pText), util.pwstrToFfi(pCaption), dwType);
@@ -13420,21 +13420,21 @@ export function AddFormW(
 
 export function DeleteFormA(
   hPrinter: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  pFormName: string | null /* Windows.Win32.Foundation.PSTR */,
+  pFormName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libwinspool_drv.DeleteFormA(util.toPointer(hPrinter), util.pstrToFfi(pFormName)));
 }
 
 export function DeleteFormW(
   hPrinter: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  pFormName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pFormName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libwinspool_drv.DeleteFormW(util.toPointer(hPrinter), util.pwstrToFfi(pFormName)));
 }
 
 export function GetFormA(
   hPrinter: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  pFormName: string | null /* Windows.Win32.Foundation.PSTR */,
+  pFormName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   Level: number /* u32 */,
   pForm: Deno.PointerValue | Uint8Array | null /* ptr */,
   cbBuf: number /* u32 */,
@@ -13445,7 +13445,7 @@ export function GetFormA(
 
 export function GetFormW(
   hPrinter: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  pFormName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pFormName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   Level: number /* u32 */,
   pForm: Deno.PointerValue | Uint8Array | null /* ptr */,
   cbBuf: number /* u32 */,
@@ -13456,7 +13456,7 @@ export function GetFormW(
 
 export function SetFormA(
   hPrinter: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  pFormName: string | null /* Windows.Win32.Foundation.PSTR */,
+  pFormName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   Level: number /* u32 */,
   pForm: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
@@ -13465,7 +13465,7 @@ export function SetFormA(
 
 export function SetFormW(
   hPrinter: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  pFormName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pFormName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   Level: number /* u32 */,
   pForm: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
@@ -13495,7 +13495,7 @@ export function EnumFormsW(
 }
 
 export function EnumMonitorsA(
-  pName: string | null /* Windows.Win32.Foundation.PSTR */,
+  pName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   Level: number /* u32 */,
   pMonitor: Deno.PointerValue | Uint8Array | null /* ptr */,
   cbBuf: number /* u32 */,
@@ -13506,7 +13506,7 @@ export function EnumMonitorsA(
 }
 
 export function EnumMonitorsW(
-  pName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   Level: number /* u32 */,
   pMonitor: Deno.PointerValue | Uint8Array | null /* ptr */,
   cbBuf: number /* u32 */,
@@ -13517,7 +13517,7 @@ export function EnumMonitorsW(
 }
 
 export function AddMonitorA(
-  pName: string | null /* Windows.Win32.Foundation.PSTR */,
+  pName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   Level: number /* u32 */,
   pMonitors: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
@@ -13525,7 +13525,7 @@ export function AddMonitorA(
 }
 
 export function AddMonitorW(
-  pName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   Level: number /* u32 */,
   pMonitors: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
@@ -13533,23 +13533,23 @@ export function AddMonitorW(
 }
 
 export function DeleteMonitorA(
-  pName: string | null /* Windows.Win32.Foundation.PSTR */,
-  pEnvironment: string | null /* Windows.Win32.Foundation.PSTR */,
-  pMonitorName: string | null /* Windows.Win32.Foundation.PSTR */,
+  pName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  pEnvironment: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  pMonitorName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libwinspool_drv.DeleteMonitorA(util.pstrToFfi(pName), util.pstrToFfi(pEnvironment), util.pstrToFfi(pMonitorName)));
 }
 
 export function DeleteMonitorW(
-  pName: string | null /* Windows.Win32.Foundation.PWSTR */,
-  pEnvironment: string | null /* Windows.Win32.Foundation.PWSTR */,
-  pMonitorName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  pEnvironment: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  pMonitorName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libwinspool_drv.DeleteMonitorW(util.pwstrToFfi(pName), util.pwstrToFfi(pEnvironment), util.pwstrToFfi(pMonitorName)));
 }
 
 export function EnumPortsA(
-  pName: string | null /* Windows.Win32.Foundation.PSTR */,
+  pName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   Level: number /* u32 */,
   pPort: Deno.PointerValue | Uint8Array | null /* ptr */,
   cbBuf: number /* u32 */,
@@ -13560,7 +13560,7 @@ export function EnumPortsA(
 }
 
 export function EnumPortsW(
-  pName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   Level: number /* u32 */,
   pPort: Deno.PointerValue | Uint8Array | null /* ptr */,
   cbBuf: number /* u32 */,
@@ -13571,56 +13571,56 @@ export function EnumPortsW(
 }
 
 export function AddPortA(
-  pName: string | null /* Windows.Win32.Foundation.PSTR */,
+  pName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   hWnd: Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */,
-  pMonitorName: string | null /* Windows.Win32.Foundation.PSTR */,
+  pMonitorName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libwinspool_drv.AddPortA(util.pstrToFfi(pName), util.hwndToFfi(hWnd), util.pstrToFfi(pMonitorName)));
 }
 
 export function AddPortW(
-  pName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   hWnd: Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */,
-  pMonitorName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pMonitorName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libwinspool_drv.AddPortW(util.pwstrToFfi(pName), util.hwndToFfi(hWnd), util.pwstrToFfi(pMonitorName)));
 }
 
 export function ConfigurePortA(
-  pName: string | null /* Windows.Win32.Foundation.PSTR */,
+  pName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   hWnd: Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */,
-  pPortName: string | null /* Windows.Win32.Foundation.PSTR */,
+  pPortName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libwinspool_drv.ConfigurePortA(util.pstrToFfi(pName), util.hwndToFfi(hWnd), util.pstrToFfi(pPortName)));
 }
 
 export function ConfigurePortW(
-  pName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   hWnd: Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */,
-  pPortName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pPortName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libwinspool_drv.ConfigurePortW(util.pwstrToFfi(pName), util.hwndToFfi(hWnd), util.pwstrToFfi(pPortName)));
 }
 
 export function DeletePortA(
-  pName: string | null /* Windows.Win32.Foundation.PSTR */,
+  pName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   hWnd: Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */,
-  pPortName: string | null /* Windows.Win32.Foundation.PSTR */,
+  pPortName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libwinspool_drv.DeletePortA(util.pstrToFfi(pName), util.hwndToFfi(hWnd), util.pstrToFfi(pPortName)));
 }
 
 export function DeletePortW(
-  pName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   hWnd: Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */,
-  pPortName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pPortName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libwinspool_drv.DeletePortW(util.pwstrToFfi(pName), util.hwndToFfi(hWnd), util.pwstrToFfi(pPortName)));
 }
 
 export function XcvDataW(
   hXcv: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  pszDataName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pszDataName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pInputData: Deno.PointerValue | Uint8Array | null /* ptr */,
   cbInputData: number /* u32 */,
   pOutputData: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -13632,34 +13632,34 @@ export function XcvDataW(
 }
 
 export function GetDefaultPrinterA(
-  pszBuffer: string | null /* Windows.Win32.Foundation.PSTR */,
+  pszBuffer: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   pcchBuffer: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libwinspool_drv.GetDefaultPrinterA(util.pstrToFfi(pszBuffer), util.toPointer(pcchBuffer)));
 }
 
 export function GetDefaultPrinterW(
-  pszBuffer: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pszBuffer: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pcchBuffer: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libwinspool_drv.GetDefaultPrinterW(util.pwstrToFfi(pszBuffer), util.toPointer(pcchBuffer)));
 }
 
 export function SetDefaultPrinterA(
-  pszPrinter: string | null /* Windows.Win32.Foundation.PSTR */,
+  pszPrinter: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libwinspool_drv.SetDefaultPrinterA(util.pstrToFfi(pszPrinter)));
 }
 
 export function SetDefaultPrinterW(
-  pszPrinter: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pszPrinter: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libwinspool_drv.SetDefaultPrinterW(util.pwstrToFfi(pszPrinter)));
 }
 
 export function SetPortA(
-  pName: string | null /* Windows.Win32.Foundation.PSTR */,
-  pPortName: string | null /* Windows.Win32.Foundation.PSTR */,
+  pName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  pPortName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   dwLevel: number /* u32 */,
   pPortInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
@@ -13667,8 +13667,8 @@ export function SetPortA(
 }
 
 export function SetPortW(
-  pName: string | null /* Windows.Win32.Foundation.PWSTR */,
-  pPortName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  pPortName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   dwLevel: number /* u32 */,
   pPortInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
@@ -13676,25 +13676,25 @@ export function SetPortW(
 }
 
 export function AddPrinterConnectionA(
-  pName: string | null /* Windows.Win32.Foundation.PSTR */,
+  pName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libwinspool_drv.AddPrinterConnectionA(util.pstrToFfi(pName)));
 }
 
 export function AddPrinterConnectionW(
-  pName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libwinspool_drv.AddPrinterConnectionW(util.pwstrToFfi(pName)));
 }
 
 export function DeletePrinterConnectionA(
-  pName: string | null /* Windows.Win32.Foundation.PSTR */,
+  pName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libwinspool_drv.DeletePrinterConnectionA(util.pstrToFfi(pName)));
 }
 
 export function DeletePrinterConnectionW(
-  pName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libwinspool_drv.DeletePrinterConnectionW(util.pwstrToFfi(pName)));
 }
@@ -13707,7 +13707,7 @@ export function ConnectToPrinterDlg(
 }
 
 export function AddPrintProvidorA(
-  pName: string | null /* Windows.Win32.Foundation.PSTR */,
+  pName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   Level: number /* u32 */,
   pProvidorInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
@@ -13715,7 +13715,7 @@ export function AddPrintProvidorA(
 }
 
 export function AddPrintProvidorW(
-  pName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   Level: number /* u32 */,
   pProvidorInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
@@ -13723,17 +13723,17 @@ export function AddPrintProvidorW(
 }
 
 export function DeletePrintProvidorA(
-  pName: string | null /* Windows.Win32.Foundation.PSTR */,
-  pEnvironment: string | null /* Windows.Win32.Foundation.PSTR */,
-  pPrintProvidorName: string | null /* Windows.Win32.Foundation.PSTR */,
+  pName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  pEnvironment: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  pPrintProvidorName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libwinspool_drv.DeletePrintProvidorA(util.pstrToFfi(pName), util.pstrToFfi(pEnvironment), util.pstrToFfi(pPrintProvidorName)));
 }
 
 export function DeletePrintProvidorW(
-  pName: string | null /* Windows.Win32.Foundation.PWSTR */,
-  pEnvironment: string | null /* Windows.Win32.Foundation.PWSTR */,
-  pPrintProvidorName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  pEnvironment: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  pPrintProvidorName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libwinspool_drv.DeletePrintProvidorW(util.pwstrToFfi(pName), util.pwstrToFfi(pEnvironment), util.pwstrToFfi(pPrintProvidorName)));
 }
@@ -13753,7 +13753,7 @@ export function IsValidDevmodeW(
 }
 
 export function OpenPrinter2A(
-  pPrinterName: string | null /* Windows.Win32.Foundation.PSTR */,
+  pPrinterName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   phPrinter: Deno.PointerValue | Uint8Array | null /* ptr */,
   pDefault: Deno.PointerValue | Uint8Array | null /* ptr */,
   pOptions: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -13762,7 +13762,7 @@ export function OpenPrinter2A(
 }
 
 export function OpenPrinter2W(
-  pPrinterName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pPrinterName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   phPrinter: Deno.PointerValue | Uint8Array | null /* ptr */,
   pDefault: Deno.PointerValue | Uint8Array | null /* ptr */,
   pOptions: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -13772,7 +13772,7 @@ export function OpenPrinter2W(
 
 export function AddPrinterConnection2A(
   hWnd: Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */,
-  pszName: string | null /* Windows.Win32.Foundation.PSTR */,
+  pszName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   dwLevel: number /* u32 */,
   pConnectionInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
@@ -13781,7 +13781,7 @@ export function AddPrinterConnection2A(
 
 export function AddPrinterConnection2W(
   hWnd: Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */,
-  pszName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pszName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   dwLevel: number /* u32 */,
   pConnectionInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
@@ -13789,53 +13789,53 @@ export function AddPrinterConnection2W(
 }
 
 export function InstallPrinterDriverFromPackageA(
-  pszServer: string | null /* Windows.Win32.Foundation.PSTR */,
-  pszInfPath: string | null /* Windows.Win32.Foundation.PSTR */,
-  pszDriverName: string | null /* Windows.Win32.Foundation.PSTR */,
-  pszEnvironment: string | null /* Windows.Win32.Foundation.PSTR */,
+  pszServer: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  pszInfPath: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  pszDriverName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  pszEnvironment: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   dwFlags: number /* u32 */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
   return util.pointerFromFfi(libwinspool_drv.InstallPrinterDriverFromPackageA(util.pstrToFfi(pszServer), util.pstrToFfi(pszInfPath), util.pstrToFfi(pszDriverName), util.pstrToFfi(pszEnvironment), dwFlags));
 }
 
 export function InstallPrinterDriverFromPackageW(
-  pszServer: string | null /* Windows.Win32.Foundation.PWSTR */,
-  pszInfPath: string | null /* Windows.Win32.Foundation.PWSTR */,
-  pszDriverName: string | null /* Windows.Win32.Foundation.PWSTR */,
-  pszEnvironment: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pszServer: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  pszInfPath: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  pszDriverName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  pszEnvironment: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   dwFlags: number /* u32 */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
   return util.pointerFromFfi(libwinspool_drv.InstallPrinterDriverFromPackageW(util.pwstrToFfi(pszServer), util.pwstrToFfi(pszInfPath), util.pwstrToFfi(pszDriverName), util.pwstrToFfi(pszEnvironment), dwFlags));
 }
 
 export function UploadPrinterDriverPackageA(
-  pszServer: string | null /* Windows.Win32.Foundation.PSTR */,
-  pszInfPath: string | null /* Windows.Win32.Foundation.PSTR */,
-  pszEnvironment: string | null /* Windows.Win32.Foundation.PSTR */,
+  pszServer: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  pszInfPath: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  pszEnvironment: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   dwFlags: number /* u32 */,
   hwnd: Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */,
-  pszDestInfPath: string | null /* Windows.Win32.Foundation.PSTR */,
+  pszDestInfPath: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   pcchDestInfPath: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
   return util.pointerFromFfi(libwinspool_drv.UploadPrinterDriverPackageA(util.pstrToFfi(pszServer), util.pstrToFfi(pszInfPath), util.pstrToFfi(pszEnvironment), dwFlags, util.hwndToFfi(hwnd), util.pstrToFfi(pszDestInfPath), util.toPointer(pcchDestInfPath)));
 }
 
 export function UploadPrinterDriverPackageW(
-  pszServer: string | null /* Windows.Win32.Foundation.PWSTR */,
-  pszInfPath: string | null /* Windows.Win32.Foundation.PWSTR */,
-  pszEnvironment: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pszServer: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  pszInfPath: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  pszEnvironment: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   dwFlags: number /* u32 */,
   hwnd: Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */,
-  pszDestInfPath: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pszDestInfPath: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pcchDestInfPath: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
   return util.pointerFromFfi(libwinspool_drv.UploadPrinterDriverPackageW(util.pwstrToFfi(pszServer), util.pwstrToFfi(pszInfPath), util.pwstrToFfi(pszEnvironment), dwFlags, util.hwndToFfi(hwnd), util.pwstrToFfi(pszDestInfPath), util.toPointer(pcchDestInfPath)));
 }
 
 export function GetCorePrinterDriversA(
-  pszServer: string | null /* Windows.Win32.Foundation.PSTR */,
-  pszEnvironment: string | null /* Windows.Win32.Foundation.PSTR */,
-  pszzCoreDriverDependencies: string | null /* Windows.Win32.Foundation.PSTR */,
+  pszServer: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  pszEnvironment: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  pszzCoreDriverDependencies: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   cCorePrinterDrivers: number /* u32 */,
   pCorePrinterDrivers: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
@@ -13843,9 +13843,9 @@ export function GetCorePrinterDriversA(
 }
 
 export function GetCorePrinterDriversW(
-  pszServer: string | null /* Windows.Win32.Foundation.PWSTR */,
-  pszEnvironment: string | null /* Windows.Win32.Foundation.PWSTR */,
-  pszzCoreDriverDependencies: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pszServer: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  pszEnvironment: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  pszzCoreDriverDependencies: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   cCorePrinterDrivers: number /* u32 */,
   pCorePrinterDrivers: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
@@ -13853,8 +13853,8 @@ export function GetCorePrinterDriversW(
 }
 
 export function CorePrinterDriverInstalledA(
-  pszServer: string | null /* Windows.Win32.Foundation.PSTR */,
-  pszEnvironment: string | null /* Windows.Win32.Foundation.PSTR */,
+  pszServer: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  pszEnvironment: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   CoreDriverGUID: Uint8Array | Deno.PointerValue | null /* System.Guid */,
   ftDriverDate: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.FILETIME */,
   dwlDriverVersion: Deno.PointerValue /* u64 */,
@@ -13864,8 +13864,8 @@ export function CorePrinterDriverInstalledA(
 }
 
 export function CorePrinterDriverInstalledW(
-  pszServer: string | null /* Windows.Win32.Foundation.PWSTR */,
-  pszEnvironment: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pszServer: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  pszEnvironment: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   CoreDriverGUID: Uint8Array | Deno.PointerValue | null /* System.Guid */,
   ftDriverDate: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.FILETIME */,
   dwlDriverVersion: Deno.PointerValue /* u64 */,
@@ -13875,11 +13875,11 @@ export function CorePrinterDriverInstalledW(
 }
 
 export function GetPrinterDriverPackagePathA(
-  pszServer: string | null /* Windows.Win32.Foundation.PSTR */,
-  pszEnvironment: string | null /* Windows.Win32.Foundation.PSTR */,
-  pszLanguage: string | null /* Windows.Win32.Foundation.PSTR */,
-  pszPackageID: string | null /* Windows.Win32.Foundation.PSTR */,
-  pszDriverPackageCab: string | null /* Windows.Win32.Foundation.PSTR */,
+  pszServer: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  pszEnvironment: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  pszLanguage: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  pszPackageID: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  pszDriverPackageCab: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   cchDriverPackageCab: number /* u32 */,
   pcchRequiredSize: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
@@ -13887,11 +13887,11 @@ export function GetPrinterDriverPackagePathA(
 }
 
 export function GetPrinterDriverPackagePathW(
-  pszServer: string | null /* Windows.Win32.Foundation.PWSTR */,
-  pszEnvironment: string | null /* Windows.Win32.Foundation.PWSTR */,
-  pszLanguage: string | null /* Windows.Win32.Foundation.PWSTR */,
-  pszPackageID: string | null /* Windows.Win32.Foundation.PWSTR */,
-  pszDriverPackageCab: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pszServer: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  pszEnvironment: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  pszLanguage: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  pszPackageID: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  pszDriverPackageCab: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   cchDriverPackageCab: number /* u32 */,
   pcchRequiredSize: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
@@ -13899,17 +13899,17 @@ export function GetPrinterDriverPackagePathW(
 }
 
 export function DeletePrinterDriverPackageA(
-  pszServer: string | null /* Windows.Win32.Foundation.PSTR */,
-  pszInfPath: string | null /* Windows.Win32.Foundation.PSTR */,
-  pszEnvironment: string | null /* Windows.Win32.Foundation.PSTR */,
+  pszServer: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  pszInfPath: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  pszEnvironment: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
   return util.pointerFromFfi(libwinspool_drv.DeletePrinterDriverPackageA(util.pstrToFfi(pszServer), util.pstrToFfi(pszInfPath), util.pstrToFfi(pszEnvironment)));
 }
 
 export function DeletePrinterDriverPackageW(
-  pszServer: string | null /* Windows.Win32.Foundation.PWSTR */,
-  pszInfPath: string | null /* Windows.Win32.Foundation.PWSTR */,
-  pszEnvironment: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pszServer: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  pszInfPath: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  pszEnvironment: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
   return util.pointerFromFfi(libwinspool_drv.DeletePrinterDriverPackageW(util.pwstrToFfi(pszServer), util.pwstrToFfi(pszInfPath), util.pwstrToFfi(pszEnvironment)));
 }
@@ -13926,7 +13926,7 @@ export function ReportJobProcessingProgress(
 export function GetPrinterDriver2A(
   hWnd: Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */,
   hPrinter: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  pEnvironment: string | null /* Windows.Win32.Foundation.PSTR */,
+  pEnvironment: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   Level: number /* u32 */,
   pDriverInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
   cbBuf: number /* u32 */,
@@ -13938,7 +13938,7 @@ export function GetPrinterDriver2A(
 export function GetPrinterDriver2W(
   hWnd: Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */,
   hPrinter: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  pEnvironment: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pEnvironment: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   Level: number /* u32 */,
   pDriverInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
   cbBuf: number /* u32 */,
@@ -13956,7 +13956,7 @@ export function GetPrintExecutionData(
 export function GetJobNamedPropertyValue(
   hPrinter: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
   JobId: number /* u32 */,
-  pszName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pszName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pValue: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
   return libwinspool_drv.GetJobNamedPropertyValue(util.toPointer(hPrinter), JobId, util.pwstrToFfi(pszName), util.toPointer(pValue));
@@ -13986,7 +13986,7 @@ export function SetJobNamedProperty(
 export function DeleteJobNamedProperty(
   hPrinter: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
   JobId: number /* u32 */,
-  pszName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pszName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
   return libwinspool_drv.DeleteJobNamedProperty(util.toPointer(hPrinter), JobId, util.pwstrToFfi(pszName));
 }
@@ -14002,7 +14002,7 @@ export function EnumJobNamedProperties(
 
 export function GetPrintOutputInfo(
   hWnd: Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */,
-  pszPrinter: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pszPrinter: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   phFile: Deno.PointerValue | Uint8Array | null /* ptr */,
   ppszOutputFile: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
@@ -14016,7 +14016,7 @@ export function DevQueryPrintEx(
 }
 
 export function RegisterForPrintAsyncNotifications(
-  pszName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pszName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pNotificationType: Deno.PointerValue | Uint8Array | null /* ptr */,
   eUserFilter: PrintAsyncNotifyUserFilter /* Windows.Win32.Graphics.Printing.PrintAsyncNotifyUserFilter */,
   eConversationStyle: PrintAsyncNotifyConversationStyle /* Windows.Win32.Graphics.Printing.PrintAsyncNotifyConversationStyle */,
@@ -14033,7 +14033,7 @@ export function UnRegisterForPrintAsyncNotifications(
 }
 
 export function CreatePrintAsyncNotifyChannel(
-  pszName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pszName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pNotificationType: Deno.PointerValue | Uint8Array | null /* ptr */,
   eUserFilter: PrintAsyncNotifyUserFilter /* Windows.Win32.Graphics.Printing.PrintAsyncNotifyUserFilter */,
   eConversationStyle: PrintAsyncNotifyConversationStyle /* Windows.Win32.Graphics.Printing.PrintAsyncNotifyConversationStyle */,
@@ -14044,9 +14044,9 @@ export function CreatePrintAsyncNotifyChannel(
 }
 
 export function GdiGetSpoolFileHandle(
-  pwszPrinterName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pwszPrinterName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pDevmode: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pwszDocName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pwszDocName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */ {
   return util.pointerFromFfi(libGDI32_dll.GdiGetSpoolFileHandle(util.pwstrToFfi(pwszPrinterName), util.toPointer(pDevmode), util.pwstrToFfi(pwszDocName)));
 }
@@ -14130,7 +14130,7 @@ export function GdiResetDCEMF(
 }
 
 export function GetJobAttributes(
-  pPrinterName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pPrinterName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pDevmode: Deno.PointerValue | Uint8Array | null /* ptr */,
   pAttributeInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
@@ -14138,7 +14138,7 @@ export function GetJobAttributes(
 }
 
 export function GetJobAttributesEx(
-  pPrinterName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pPrinterName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pDevmode: Deno.PointerValue | Uint8Array | null /* ptr */,
   dwLevel: number /* u32 */,
   pAttributeInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -14331,21 +14331,21 @@ export function SpoolerFindClosePrinterChangeNotification(
 }
 
 export function SpoolerCopyFileEvent(
-  pszPrinterName: string | null /* Windows.Win32.Foundation.PWSTR */,
-  pszKey: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pszPrinterName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  pszKey: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   dwCopyFileEvent: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libmscms_dll.SpoolerCopyFileEvent(util.pwstrToFfi(pszPrinterName), util.pwstrToFfi(pszKey), dwCopyFileEvent));
 }
 
 export function GenerateCopyFilePaths(
-  pszPrinterName: string | null /* Windows.Win32.Foundation.PWSTR */,
-  pszDirectory: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pszPrinterName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  pszDirectory: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pSplClientInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
   dwLevel: number /* u32 */,
-  pszSourceDir: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pszSourceDir: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pcchSourceDirSize: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pszTargetDir: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pszTargetDir: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pcchTargetDirSize: Deno.PointerValue | Uint8Array | null /* ptr */,
   dwFlags: number /* u32 */,
 ): number /* u32 */ {

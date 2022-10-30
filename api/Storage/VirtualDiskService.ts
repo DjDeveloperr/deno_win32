@@ -1768,7 +1768,7 @@ export interface VDS_ISCSI_INITIATOR_ADAPTER_PROP {
   /** System.Guid */
   id: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.Foundation.PWSTR */
-  pwszName: string | null;
+  pwszName: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeofVDS_ISCSI_INITIATOR_ADAPTER_PROP = 16;
@@ -1820,11 +1820,11 @@ export interface VDS_PROVIDER_PROP {
   /** System.Guid */
   id: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.Foundation.PWSTR */
-  pwszName: string | null;
+  pwszName: string | null | Uint8Array | Uint16Array;
   /** System.Guid */
   guidVersionId: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.Foundation.PWSTR */
-  pwszVersion: string | null;
+  pwszVersion: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Storage.VirtualDiskService.VDS_PROVIDER_TYPE */
   type: VDS_PROVIDER_TYPE;
   /** u32 */
@@ -1873,7 +1873,7 @@ export interface _Anonymous1_e__Union {
   /** usize */
   Data0: Deno.PointerValue;
   /** Windows.Win32.Foundation.PWSTR */
-  String: string | null;
+  String: string | null | Uint8Array | Uint16Array;
   /** usize */
   u: Deno.PointerValue;
   /** ptr */
@@ -2259,9 +2259,9 @@ export interface VDS_SUB_SYSTEM_PROP {
   /** System.Guid */
   id: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.Foundation.PWSTR */
-  pwszFriendlyName: string | null;
+  pwszFriendlyName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pwszIdentification: string | null;
+  pwszIdentification: string | null | Uint8Array | Uint16Array;
   /** u32 */
   ulFlags: number;
   /** u32 */
@@ -2323,9 +2323,9 @@ export interface VDS_SUB_SYSTEM_PROP2 {
   /** System.Guid */
   id: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.Foundation.PWSTR */
-  pwszFriendlyName: string | null;
+  pwszFriendlyName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pwszIdentification: string | null;
+  pwszIdentification: string | null | Uint8Array | Uint16Array;
   /** u32 */
   ulFlags: number;
   /** u32 */
@@ -2395,9 +2395,9 @@ export interface VDS_CONTROLLER_PROP {
   /** System.Guid */
   id: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.Foundation.PWSTR */
-  pwszFriendlyName: string | null;
+  pwszFriendlyName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pwszIdentification: string | null;
+  pwszIdentification: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Storage.VirtualDiskService.VDS_CONTROLLER_STATUS */
   status: VDS_CONTROLLER_STATUS;
   /** Windows.Win32.Storage.VirtualDiskService.VDS_HEALTH */
@@ -2442,9 +2442,9 @@ export interface VDS_DRIVE_PROP {
   /** u64 */
   ullSize: Deno.PointerValue;
   /** Windows.Win32.Foundation.PWSTR */
-  pwszFriendlyName: string | null;
+  pwszFriendlyName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pwszIdentification: string | null;
+  pwszIdentification: string | null | Uint8Array | Uint16Array;
   /** u32 */
   ulFlags: number;
   /** Windows.Win32.Storage.VirtualDiskService.VDS_DRIVE_STATUS */
@@ -2498,9 +2498,9 @@ export interface VDS_DRIVE_PROP2 {
   /** u64 */
   ullSize: Deno.PointerValue;
   /** Windows.Win32.Foundation.PWSTR */
-  pwszFriendlyName: string | null;
+  pwszFriendlyName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pwszIdentification: string | null;
+  pwszIdentification: string | null | Uint8Array | Uint16Array;
   /** u32 */
   ulFlags: number;
   /** Windows.Win32.Storage.VirtualDiskService.VDS_DRIVE_STATUS */
@@ -2598,11 +2598,11 @@ export interface VDS_LUN_PROP {
   /** u64 */
   ullSize: Deno.PointerValue;
   /** Windows.Win32.Foundation.PWSTR */
-  pwszFriendlyName: string | null;
+  pwszFriendlyName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pwszIdentification: string | null;
+  pwszIdentification: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pwszUnmaskingList: string | null;
+  pwszUnmaskingList: string | null | Uint8Array | Uint16Array;
   /** u32 */
   ulFlags: number;
   /** Windows.Win32.Storage.VirtualDiskService.VDS_LUN_TYPE */
@@ -2715,9 +2715,9 @@ export interface VDS_PORT_PROP {
   /** System.Guid */
   id: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.Foundation.PWSTR */
-  pwszFriendlyName: string | null;
+  pwszFriendlyName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pwszIdentification: string | null;
+  pwszIdentification: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Storage.VirtualDiskService.VDS_PORT_STATUS */
   status: VDS_PORT_STATUS;
 }
@@ -2779,9 +2779,9 @@ export interface VDS_ISCSI_TARGET_PROP {
   /** System.Guid */
   id: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.Foundation.PWSTR */
-  pwszIscsiName: string | null;
+  pwszIscsiName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pwszFriendlyName: string | null;
+  pwszFriendlyName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.BOOL */
   bChapEnabled: boolean;
 }
@@ -2837,9 +2837,9 @@ export function allocVDS_ISCSI_PORTALGROUP_PROP(data?: Partial<VDS_ISCSI_PORTALG
  */
 export interface VDS_POOL_CUSTOM_ATTRIBUTES {
   /** Windows.Win32.Foundation.PWSTR */
-  pwszName: string | null;
+  pwszName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pwszValue: string | null;
+  pwszValue: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeofVDS_POOL_CUSTOM_ATTRIBUTES = 16;
@@ -2871,7 +2871,7 @@ export interface VDS_POOL_ATTRIBUTES {
   /** Windows.Win32.Storage.VirtualDiskService.VDS_STORAGE_BUS_TYPE */
   busType: VDS_STORAGE_BUS_TYPE;
   /** Windows.Win32.Foundation.PWSTR */
-  pwszIntendedUsage: string | null;
+  pwszIntendedUsage: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.BOOL */
   bSpinDown: boolean;
   /** Windows.Win32.Foundation.BOOL */
@@ -3042,9 +3042,9 @@ export interface VDS_STORAGE_POOL_PROP {
   /** Windows.Win32.Storage.VirtualDiskService.VDS_STORAGE_POOL_TYPE */
   type: VDS_STORAGE_POOL_TYPE;
   /** Windows.Win32.Foundation.PWSTR */
-  pwszName: string | null;
+  pwszName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pwszDescription: string | null;
+  pwszDescription: string | null | Uint8Array | Uint16Array;
   /** u64 */
   ullTotalConsumedSpace: Deno.PointerValue;
   /** u64 */

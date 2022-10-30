@@ -770,7 +770,7 @@ export function HSTRING_UserFree64(
 }
 
 export function WindowsCreateString(
-  sourceString: string | null /* Windows.Win32.Foundation.PWSTR */,
+  sourceString: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   length: number /* u32 */,
   string: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
@@ -778,7 +778,7 @@ export function WindowsCreateString(
 }
 
 export function WindowsCreateStringReference(
-  sourceString: string | null /* Windows.Win32.Foundation.PWSTR */,
+  sourceString: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   length: number /* u32 */,
   hstringHeader: Deno.PointerValue | Uint8Array | null /* ptr */,
   string: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -1012,7 +1012,7 @@ export function RoSetErrorReportingFlags(
 }
 
 export function RoResolveRestrictedErrorInfoReference(
-  reference: string | null /* Windows.Win32.Foundation.PWSTR */,
+  reference: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   ppRestrictedErrorInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
   return util.pointerFromFfi(libapi_ms_win_core_winrt_error_l1_1_0_dll.RoResolveRestrictedErrorInfoReference(util.pwstrToFfi(reference), util.toPointer(ppRestrictedErrorInfo)));
@@ -1033,7 +1033,7 @@ export function GetRestrictedErrorInfo(
 export function RoOriginateErrorW(
   error: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */,
   cchMax: number /* u32 */,
-  message: string | null /* Windows.Win32.Foundation.PWSTR */,
+  message: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libapi_ms_win_core_winrt_error_l1_1_0_dll.RoOriginateErrorW(util.toPointer(error), cchMax, util.pwstrToFfi(message)));
 }
@@ -1049,7 +1049,7 @@ export function RoTransformErrorW(
   oldError: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */,
   newError: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */,
   cchMax: number /* u32 */,
-  message: string | null /* Windows.Win32.Foundation.PWSTR */,
+  message: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libapi_ms_win_core_winrt_error_l1_1_0_dll.RoTransformErrorW(util.toPointer(oldError), util.toPointer(newError), cchMax, util.pwstrToFfi(message)));
 }
@@ -1170,7 +1170,7 @@ export function RoGetServerActivatableClasses(
 }
 
 export function CreateRandomAccessStreamOnFile(
-  filePath: string | null /* Windows.Win32.Foundation.PWSTR */,
+  filePath: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   accessMode: number /* u32 */,
   riid: Deno.PointerValue | Uint8Array | null /* ptr */,
   ppv: Deno.PointerValue | Uint8Array | null /* ptr */,

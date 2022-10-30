@@ -36,7 +36,7 @@ try {
 // Symbols
 
 export function RegisterLicenseKeyWithExpiration(
-  licenseKey: string | null /* Windows.Win32.Foundation.PWSTR */,
+  licenseKey: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   validityInDays: number /* u32 */,
   status: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
@@ -44,7 +44,7 @@ export function RegisterLicenseKeyWithExpiration(
 }
 
 export function ValidateLicenseKeyProtection(
-  licenseKey: string | null /* Windows.Win32.Foundation.PWSTR */,
+  licenseKey: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   notValidBefore: Deno.PointerValue | Uint8Array | null /* ptr */,
   notValidAfter: Deno.PointerValue | Uint8Array | null /* ptr */,
   status: Deno.PointerValue | Uint8Array | null /* ptr */,

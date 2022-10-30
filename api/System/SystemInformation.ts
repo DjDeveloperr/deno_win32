@@ -1537,42 +1537,42 @@ export function GetSystemTimeAdjustmentPrecise(
 }
 
 export function GetSystemDirectoryA(
-  lpBuffer: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpBuffer: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   uSize: number /* u32 */,
 ): number /* u32 */ {
   return libKERNEL32_dll.GetSystemDirectoryA(util.pstrToFfi(lpBuffer), uSize);
 }
 
 export function GetSystemDirectoryW(
-  lpBuffer: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpBuffer: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   uSize: number /* u32 */,
 ): number /* u32 */ {
   return libKERNEL32_dll.GetSystemDirectoryW(util.pwstrToFfi(lpBuffer), uSize);
 }
 
 export function GetWindowsDirectoryA(
-  lpBuffer: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpBuffer: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   uSize: number /* u32 */,
 ): number /* u32 */ {
   return libKERNEL32_dll.GetWindowsDirectoryA(util.pstrToFfi(lpBuffer), uSize);
 }
 
 export function GetWindowsDirectoryW(
-  lpBuffer: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpBuffer: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   uSize: number /* u32 */,
 ): number /* u32 */ {
   return libKERNEL32_dll.GetWindowsDirectoryW(util.pwstrToFfi(lpBuffer), uSize);
 }
 
 export function GetSystemWindowsDirectoryA(
-  lpBuffer: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpBuffer: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   uSize: number /* u32 */,
 ): number /* u32 */ {
   return libKERNEL32_dll.GetSystemWindowsDirectoryA(util.pstrToFfi(lpBuffer), uSize);
 }
 
 export function GetSystemWindowsDirectoryW(
-  lpBuffer: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpBuffer: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   uSize: number /* u32 */,
 ): number /* u32 */ {
   return libKERNEL32_dll.GetSystemWindowsDirectoryW(util.pwstrToFfi(lpBuffer), uSize);
@@ -1580,7 +1580,7 @@ export function GetSystemWindowsDirectoryW(
 
 export function GetComputerNameExA(
   NameType: COMPUTER_NAME_FORMAT /* Windows.Win32.System.SystemInformation.COMPUTER_NAME_FORMAT */,
-  lpBuffer: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpBuffer: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   nSize: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libKERNEL32_dll.GetComputerNameExA(NameType, util.pstrToFfi(lpBuffer), util.toPointer(nSize)));
@@ -1588,7 +1588,7 @@ export function GetComputerNameExA(
 
 export function GetComputerNameExW(
   NameType: COMPUTER_NAME_FORMAT /* Windows.Win32.System.SystemInformation.COMPUTER_NAME_FORMAT */,
-  lpBuffer: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpBuffer: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   nSize: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libKERNEL32_dll.GetComputerNameExW(NameType, util.pwstrToFfi(lpBuffer), util.toPointer(nSize)));
@@ -1596,7 +1596,7 @@ export function GetComputerNameExW(
 
 export function SetComputerNameExW(
   NameType: COMPUTER_NAME_FORMAT /* Windows.Win32.System.SystemInformation.COMPUTER_NAME_FORMAT */,
-  lpBuffer: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpBuffer: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libKERNEL32_dll.SetComputerNameExW(NameType, util.pwstrToFfi(lpBuffer)));
 }
@@ -1688,8 +1688,8 @@ export function GetSystemFirmwareTable(
 }
 
 export function DnsHostnameToComputerNameExW(
-  Hostname: string | null /* Windows.Win32.Foundation.PWSTR */,
-  ComputerName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  Hostname: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  ComputerName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   nSize: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libKERNEL32_dll.DnsHostnameToComputerNameExW(util.pwstrToFfi(Hostname), util.pwstrToFfi(ComputerName), util.toPointer(nSize)));
@@ -1704,7 +1704,7 @@ export function GetPhysicallyInstalledSystemMemory(
 export function SetComputerNameEx2W(
   NameType: COMPUTER_NAME_FORMAT /* Windows.Win32.System.SystemInformation.COMPUTER_NAME_FORMAT */,
   Flags: number /* u32 */,
-  lpBuffer: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpBuffer: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libKERNEL32_dll.SetComputerNameEx2W(NameType, Flags, util.pwstrToFfi(lpBuffer)));
 }
@@ -1744,20 +1744,20 @@ export function GetIntegratedDisplaySize(
 }
 
 export function SetComputerNameA(
-  lpComputerName: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpComputerName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libKERNEL32_dll.SetComputerNameA(util.pstrToFfi(lpComputerName)));
 }
 
 export function SetComputerNameW(
-  lpComputerName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpComputerName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libKERNEL32_dll.SetComputerNameW(util.pwstrToFfi(lpComputerName)));
 }
 
 export function SetComputerNameExA(
   NameType: COMPUTER_NAME_FORMAT /* Windows.Win32.System.SystemInformation.COMPUTER_NAME_FORMAT */,
-  lpBuffer: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpBuffer: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libKERNEL32_dll.SetComputerNameExA(NameType, util.pstrToFfi(lpBuffer)));
 }
@@ -1773,21 +1773,21 @@ export function GetSystemCpuSetInformation(
 }
 
 export function GetSystemWow64DirectoryA(
-  lpBuffer: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpBuffer: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   uSize: number /* u32 */,
 ): number /* u32 */ {
   return libKERNEL32_dll.GetSystemWow64DirectoryA(util.pstrToFfi(lpBuffer), uSize);
 }
 
 export function GetSystemWow64DirectoryW(
-  lpBuffer: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpBuffer: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   uSize: number /* u32 */,
 ): number /* u32 */ {
   return libKERNEL32_dll.GetSystemWow64DirectoryW(util.pwstrToFfi(lpBuffer), uSize);
 }
 
 export function GetSystemWow64Directory2A(
-  lpBuffer: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpBuffer: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   uSize: number /* u32 */,
   ImageFileMachineType: IMAGE_FILE_MACHINE /* Windows.Win32.System.SystemInformation.IMAGE_FILE_MACHINE */,
 ): number /* u32 */ {
@@ -1795,7 +1795,7 @@ export function GetSystemWow64Directory2A(
 }
 
 export function GetSystemWow64Directory2W(
-  lpBuffer: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpBuffer: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   uSize: number /* u32 */,
   ImageFileMachineType: IMAGE_FILE_MACHINE /* Windows.Win32.System.SystemInformation.IMAGE_FILE_MACHINE */,
 ): number /* u32 */ {
@@ -1844,8 +1844,8 @@ export function RtlGetDeviceFamilyInfoEnum(
 export function RtlConvertDeviceFamilyInfoToString(
   pulDeviceFamilyBufferSize: Deno.PointerValue | Uint8Array | null /* ptr */,
   pulDeviceFormBufferSize: Deno.PointerValue | Uint8Array | null /* ptr */,
-  DeviceFamily: string | null /* Windows.Win32.Foundation.PWSTR */,
-  DeviceForm: string | null /* Windows.Win32.Foundation.PWSTR */,
+  DeviceFamily: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  DeviceForm: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
   return libntdll_dll.RtlConvertDeviceFamilyInfoToString(util.toPointer(pulDeviceFamilyBufferSize), util.toPointer(pulDeviceFormBufferSize), util.pwstrToFfi(DeviceFamily), util.pwstrToFfi(DeviceForm));
 }

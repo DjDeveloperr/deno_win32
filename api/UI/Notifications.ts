@@ -11,9 +11,9 @@ export type PWSTR = Deno.PointerValue | Uint8Array | null;
  */
 export interface NOTIFICATION_USER_INPUT_DATA {
   /** Windows.Win32.Foundation.PWSTR */
-  Key: string | null;
+  Key: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  Value: string | null;
+  Value: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeofNOTIFICATION_USER_INPUT_DATA = 16;

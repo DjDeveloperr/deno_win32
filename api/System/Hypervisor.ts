@@ -3849,7 +3849,7 @@ export type PSTR = Deno.PointerValue | Uint8Array | null;
  */
 export interface DOS_IMAGE_INFO {
   /** Windows.Win32.Foundation.PSTR */
-  PdbName: string | null;
+  PdbName: string | null | Uint8Array;
   /** u64 */
   ImageBaseAddress: Deno.PointerValue;
   /** u32 */
@@ -3882,7 +3882,7 @@ export function allocDOS_IMAGE_INFO(data?: Partial<DOS_IMAGE_INFO>): Uint8Array 
  */
 export interface MODULE_INFO {
   /** Windows.Win32.Foundation.PSTR */
-  ProcessImageName: string | null;
+  ProcessImageName: string | null | Uint8Array;
   /** Windows.Win32.System.Hypervisor.DOS_IMAGE_INFO */
   Image: Uint8Array | Deno.PointerValue | null;
 }
@@ -5161,8 +5161,8 @@ export function HdvDestroySectionBackedMmioRange(
 }
 
 export function LocateSavedStateFiles(
-  vmName: string | null /* Windows.Win32.Foundation.PWSTR */,
-  snapshotName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  vmName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  snapshotName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   binPath: Deno.PointerValue | Uint8Array | null /* ptr */,
   vsvPath: Deno.PointerValue | Uint8Array | null /* ptr */,
   vmrsPath: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -5171,21 +5171,21 @@ export function LocateSavedStateFiles(
 }
 
 export function LoadSavedStateFile(
-  vmrsFile: string | null /* Windows.Win32.Foundation.PWSTR */,
+  vmrsFile: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   vmSavedStateDumpHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
   return util.pointerFromFfi(libVmSavedStateDumpProvider_dll.LoadSavedStateFile(util.pwstrToFfi(vmrsFile), util.toPointer(vmSavedStateDumpHandle)));
 }
 
 export function ApplyPendingSavedStateFileReplayLog(
-  vmrsFile: string | null /* Windows.Win32.Foundation.PWSTR */,
+  vmrsFile: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
   return util.pointerFromFfi(libVmSavedStateDumpProvider_dll.ApplyPendingSavedStateFileReplayLog(util.pwstrToFfi(vmrsFile)));
 }
 
 export function LoadSavedStateFiles(
-  binFile: string | null /* Windows.Win32.Foundation.PWSTR */,
-  vsvFile: string | null /* Windows.Win32.Foundation.PWSTR */,
+  binFile: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  vsvFile: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   vmSavedStateDumpHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
   return util.pointerFromFfi(libVmSavedStateDumpProvider_dll.LoadSavedStateFiles(util.pwstrToFfi(binFile), util.pwstrToFfi(vsvFile), util.toPointer(vmSavedStateDumpHandle)));
@@ -5404,7 +5404,7 @@ export function ApplyGuestMemoryFix(
 
 export function LoadSavedStateSymbolProvider(
   vmSavedStateDumpHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
-  userSymbols: string | null /* Windows.Win32.Foundation.PWSTR */,
+  userSymbols: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   force: boolean /* Windows.Win32.Foundation.BOOL */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
   return util.pointerFromFfi(libVmSavedStateDumpProvider_dll.LoadSavedStateSymbolProvider(util.toPointer(vmSavedStateDumpHandle), util.pwstrToFfi(userSymbols), util.boolToFfi(force)));
@@ -5431,8 +5431,8 @@ export function SetSavedStateSymbolProviderDebugInfoCallback(
 
 export function LoadSavedStateModuleSymbols(
   vmSavedStateDumpHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
-  imageName: string | null /* Windows.Win32.Foundation.PSTR */,
-  moduleName: string | null /* Windows.Win32.Foundation.PSTR */,
+  imageName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  moduleName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   baseAddress: Deno.PointerValue /* u64 */,
   sizeOfBase: number /* u32 */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
@@ -5441,9 +5441,9 @@ export function LoadSavedStateModuleSymbols(
 
 export function LoadSavedStateModuleSymbolsEx(
   vmSavedStateDumpHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
-  imageName: string | null /* Windows.Win32.Foundation.PSTR */,
+  imageName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   imageTimestamp: number /* u32 */,
-  moduleName: string | null /* Windows.Win32.Foundation.PSTR */,
+  moduleName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   baseAddress: Deno.PointerValue /* u64 */,
   sizeOfBase: number /* u32 */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
@@ -5453,7 +5453,7 @@ export function LoadSavedStateModuleSymbolsEx(
 export function ResolveSavedStateGlobalVariableAddress(
   vmSavedStateDumpHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
   vpId: number /* u32 */,
-  globalName: string | null /* Windows.Win32.Foundation.PSTR */,
+  globalName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   virtualAddress: Deno.PointerValue | Uint8Array | null /* ptr */,
   size: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
@@ -5463,7 +5463,7 @@ export function ResolveSavedStateGlobalVariableAddress(
 export function ReadSavedStateGlobalVariable(
   vmSavedStateDumpHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
   vpId: number /* u32 */,
-  globalName: string | null /* Windows.Win32.Foundation.PSTR */,
+  globalName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   buffer: Deno.PointerValue | Uint8Array | null /* ptr */,
   bufferSize: number /* u32 */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
@@ -5473,7 +5473,7 @@ export function ReadSavedStateGlobalVariable(
 export function GetSavedStateSymbolTypeSize(
   vmSavedStateDumpHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
   vpId: number /* u32 */,
-  typeName: string | null /* Windows.Win32.Foundation.PSTR */,
+  typeName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   size: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
   return util.pointerFromFfi(libVmSavedStateDumpProvider_dll.GetSavedStateSymbolTypeSize(util.toPointer(vmSavedStateDumpHandle), vpId, util.pstrToFfi(typeName), util.toPointer(size)));
@@ -5482,8 +5482,8 @@ export function GetSavedStateSymbolTypeSize(
 export function FindSavedStateSymbolFieldInType(
   vmSavedStateDumpHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
   vpId: number /* u32 */,
-  typeName: string | null /* Windows.Win32.Foundation.PSTR */,
-  fieldName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  typeName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  fieldName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   offset: Deno.PointerValue | Uint8Array | null /* ptr */,
   found: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
@@ -5493,7 +5493,7 @@ export function FindSavedStateSymbolFieldInType(
 export function GetSavedStateSymbolFieldInfo(
   vmSavedStateDumpHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
   vpId: number /* u32 */,
-  typeName: string | null /* Windows.Win32.Foundation.PSTR */,
+  typeName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   typeFieldInfoMap: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
   return util.pointerFromFfi(libVmSavedStateDumpProvider_dll.GetSavedStateSymbolFieldInfo(util.toPointer(vmSavedStateDumpHandle), vpId, util.pstrToFfi(typeName), util.toPointer(typeFieldInfoMap)));

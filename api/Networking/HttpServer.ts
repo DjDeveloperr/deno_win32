@@ -648,11 +648,11 @@ export interface HTTP_SERVER_AUTHENTICATION_DIGEST_PARAMS {
   /** u16 */
   DomainNameLength: number;
   /** Windows.Win32.Foundation.PWSTR */
-  DomainName: string | null;
+  DomainName: string | null | Uint8Array | Uint16Array;
   /** u16 */
   RealmLength: number;
   /** Windows.Win32.Foundation.PWSTR */
-  Realm: string | null;
+  Realm: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeofHTTP_SERVER_AUTHENTICATION_DIGEST_PARAMS = 32;
@@ -686,7 +686,7 @@ export interface HTTP_SERVER_AUTHENTICATION_BASIC_PARAMS {
   /** u16 */
   RealmLength: number;
   /** Windows.Win32.Foundation.PWSTR */
-  Realm: string | null;
+  Realm: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeofHTTP_SERVER_AUTHENTICATION_BASIC_PARAMS = 16;
@@ -781,7 +781,7 @@ export interface HTTP_SERVICE_BINDING_A {
   /** Windows.Win32.Networking.HttpServer.HTTP_SERVICE_BINDING_BASE */
   Base: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.Foundation.PSTR */
-  Buffer: string | null;
+  Buffer: string | null | Uint8Array;
   /** u32 */
   BufferSize: number;
 }
@@ -811,7 +811,7 @@ export interface HTTP_SERVICE_BINDING_W {
   /** Windows.Win32.Networking.HttpServer.HTTP_SERVICE_BINDING_BASE */
   Base: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.Foundation.PWSTR */
-  Buffer: string | null;
+  Buffer: string | null | Uint8Array | Uint16Array;
   /** u32 */
   BufferSize: number;
 }
@@ -942,13 +942,13 @@ export interface HTTP_LOGGING_INFO {
   /** u32 */
   LoggingFlags: number;
   /** Windows.Win32.Foundation.PWSTR */
-  SoftwareName: string | null;
+  SoftwareName: string | null | Uint8Array | Uint16Array;
   /** u16 */
   SoftwareNameLength: number;
   /** u16 */
   DirectoryNameLength: number;
   /** Windows.Win32.Foundation.PWSTR */
-  DirectoryName: string | null;
+  DirectoryName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Networking.HttpServer.HTTP_LOGGING_TYPE */
   Format: HTTP_LOGGING_TYPE;
   /** u32 */
@@ -1088,7 +1088,7 @@ export interface _u_e__Struct {
   /** u32 */
   dwValue: number;
   /** Windows.Win32.Foundation.PWSTR */
-  pwszName: string | null;
+  pwszName: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeof_u_e__Struct = 16;
@@ -1185,7 +1185,7 @@ export interface HTTP_KNOWN_HEADER {
   /** u16 */
   RawValueLength: number;
   /** Windows.Win32.Foundation.PSTR */
-  pRawValue: string | null;
+  pRawValue: string | null | Uint8Array;
 }
 
 export const sizeofHTTP_KNOWN_HEADER = 16;
@@ -1213,9 +1213,9 @@ export interface HTTP_UNKNOWN_HEADER {
   /** u16 */
   RawValueLength: number;
   /** Windows.Win32.Foundation.PSTR */
-  pName: string | null;
+  pName: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  pRawValue: string | null;
+  pRawValue: string | null | Uint8Array;
 }
 
 export const sizeofHTTP_UNKNOWN_HEADER = 24;
@@ -1291,29 +1291,29 @@ export interface HTTP_LOG_FIELDS_DATA {
   /** u16 */
   ReferrerLength: number;
   /** Windows.Win32.Foundation.PWSTR */
-  UserName: string | null;
+  UserName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  UriStem: string | null;
+  UriStem: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PSTR */
-  ClientIp: string | null;
+  ClientIp: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  ServerName: string | null;
+  ServerName: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  ServiceName: string | null;
+  ServiceName: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  ServerIp: string | null;
+  ServerIp: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  Method: string | null;
+  Method: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  UriQuery: string | null;
+  UriQuery: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  Host: string | null;
+  Host: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  UserAgent: string | null;
+  UserAgent: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  Cookie: string | null;
+  Cookie: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  Referrer: string | null;
+  Referrer: string | null | Uint8Array;
   /** u16 */
   ServerPort: number;
   /** u16 */
@@ -1635,13 +1635,13 @@ export interface HTTP_COOKED_URL {
   /** u16 */
   QueryStringLength: number;
   /** Windows.Win32.Foundation.PWSTR */
-  pFullUrl: string | null;
+  pFullUrl: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pHost: string | null;
+  pHost: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pAbsPath: string | null;
+  pAbsPath: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pQueryString: string | null;
+  pQueryString: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeofHTTP_COOKED_URL = 40;
@@ -1727,9 +1727,9 @@ export interface HTTP_SSL_INFO {
   /** u32 */
   ServerCertSubjectSize: number;
   /** Windows.Win32.Foundation.PSTR */
-  pServerCertIssuer: string | null;
+  pServerCertIssuer: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  pServerCertSubject: string | null;
+  pServerCertSubject: string | null | Uint8Array;
   /** ptr */
   pClientCertInfo: Deno.PointerValue | Uint8Array | null;
   /** u32 */
@@ -1917,11 +1917,11 @@ export interface HTTP_REQUEST_AUTH_INFO {
   /** u32 */
   MutualAuthDataLength: number;
   /** Windows.Win32.Foundation.PSTR */
-  pMutualAuthData: string | null;
+  pMutualAuthData: string | null | Uint8Array;
   /** u16 */
   PackageNameLength: number;
   /** Windows.Win32.Foundation.PWSTR */
-  pPackageName: string | null;
+  pPackageName: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeofHTTP_REQUEST_AUTH_INFO = 88;
@@ -1989,9 +1989,9 @@ export interface HTTP_REQUEST_V1 {
   /** u16 */
   RawUrlLength: number;
   /** Windows.Win32.Foundation.PSTR */
-  pUnknownVerb: string | null;
+  pUnknownVerb: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  pRawUrl: string | null;
+  pRawUrl: string | null | Uint8Array;
   /** Windows.Win32.Networking.HttpServer.HTTP_COOKED_URL */
   CookedUrl: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.Networking.HttpServer.HTTP_TRANSPORT_ADDRESS */
@@ -2102,7 +2102,7 @@ export interface HTTP_RESPONSE_V1 {
   /** u16 */
   ReasonLength: number;
   /** Windows.Win32.Foundation.PSTR */
-  pReason: string | null;
+  pReason: string | null | Uint8Array;
   /** Windows.Win32.Networking.HttpServer.HTTP_RESPONSE_HEADERS */
   Headers: Uint8Array | Deno.PointerValue | null;
   /** u16 */
@@ -2344,7 +2344,7 @@ export interface HTTP_SERVICE_CONFIG_SSL_SNI_KEY {
   /** Windows.Win32.Networking.WinSock.SOCKADDR_STORAGE */
   IpPort: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.Foundation.PWSTR */
-  Host: string | null;
+  Host: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeofHTTP_SERVICE_CONFIG_SSL_SNI_KEY = 16;
@@ -2391,7 +2391,7 @@ export interface HTTP_SERVICE_CONFIG_SSL_PARAM {
   /** System.Guid */
   AppId: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.Foundation.PWSTR */
-  pSslCertStoreName: string | null;
+  pSslCertStoreName: string | null | Uint8Array | Uint16Array;
   /** u32 */
   DefaultCertCheckMode: number;
   /** u32 */
@@ -2399,9 +2399,9 @@ export interface HTTP_SERVICE_CONFIG_SSL_PARAM {
   /** u32 */
   DefaultRevocationUrlRetrievalTimeout: number;
   /** Windows.Win32.Foundation.PWSTR */
-  pDefaultSslCtlIdentifier: string | null;
+  pDefaultSslCtlIdentifier: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pDefaultSslCtlStoreName: string | null;
+  pDefaultSslCtlStoreName: string | null | Uint8Array | Uint16Array;
   /** u32 */
   DefaultFlags: number;
 }
@@ -2973,7 +2973,7 @@ export function allocHTTP_SERVICE_CONFIG_IP_LISTEN_QUERY(data?: Partial<HTTP_SER
  */
 export interface HTTP_SERVICE_CONFIG_URLACL_KEY {
   /** Windows.Win32.Foundation.PWSTR */
-  pUrlPrefix: string | null;
+  pUrlPrefix: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeofHTTP_SERVICE_CONFIG_URLACL_KEY = 8;
@@ -2994,7 +2994,7 @@ export function allocHTTP_SERVICE_CONFIG_URLACL_KEY(data?: Partial<HTTP_SERVICE_
  */
 export interface HTTP_SERVICE_CONFIG_URLACL_PARAM {
   /** Windows.Win32.Foundation.PWSTR */
-  pStringSecurityDescriptor: string | null;
+  pStringSecurityDescriptor: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeofHTTP_SERVICE_CONFIG_URLACL_PARAM = 8;
@@ -3603,7 +3603,7 @@ export function HttpCreateHttpHandle(
 
 export function HttpCreateRequestQueue(
   Version: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Networking.HttpServer.HTTPAPI_VERSION */,
-  Name: string | null /* Windows.Win32.Foundation.PWSTR */,
+  Name: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   SecurityAttributes: Deno.PointerValue | Uint8Array | null /* ptr */,
   Flags: number /* u32 */,
   RequestQueueHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -3704,7 +3704,7 @@ export function HttpSetServerSessionProperty(
 
 export function HttpAddUrl(
   RequestQueueHandle: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  FullyQualifiedUrl: string | null /* Windows.Win32.Foundation.PWSTR */,
+  FullyQualifiedUrl: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   Reserved: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
   return libHTTPAPI_dll.HttpAddUrl(util.toPointer(RequestQueueHandle), util.pwstrToFfi(FullyQualifiedUrl), util.toPointer(Reserved));
@@ -3712,7 +3712,7 @@ export function HttpAddUrl(
 
 export function HttpRemoveUrl(
   RequestQueueHandle: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  FullyQualifiedUrl: string | null /* Windows.Win32.Foundation.PWSTR */,
+  FullyQualifiedUrl: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
   return libHTTPAPI_dll.HttpRemoveUrl(util.toPointer(RequestQueueHandle), util.pwstrToFfi(FullyQualifiedUrl));
 }
@@ -3733,7 +3733,7 @@ export function HttpCloseUrlGroup(
 
 export function HttpAddUrlToUrlGroup(
   UrlGroupId: Deno.PointerValue /* u64 */,
-  pFullyQualifiedUrl: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pFullyQualifiedUrl: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   UrlContext: Deno.PointerValue /* u64 */,
   Reserved: number /* u32 */,
 ): number /* u32 */ {
@@ -3742,7 +3742,7 @@ export function HttpAddUrlToUrlGroup(
 
 export function HttpRemoveUrlFromUrlGroup(
   UrlGroupId: Deno.PointerValue /* u64 */,
-  pFullyQualifiedUrl: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pFullyQualifiedUrl: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   Flags: number /* u32 */,
 ): number /* u32 */ {
   return libHTTPAPI_dll.HttpRemoveUrlFromUrlGroup(UrlGroupId, util.pwstrToFfi(pFullyQualifiedUrl), Flags);
@@ -3770,7 +3770,7 @@ export function HttpQueryUrlGroupProperty(
 export function HttpPrepareUrl(
   Reserved: Deno.PointerValue | Uint8Array | null /* ptr */,
   Flags: number /* u32 */,
-  Url: string | null /* Windows.Win32.Foundation.PWSTR */,
+  Url: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   PreparedUrl: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
   return libHTTPAPI_dll.HttpPrepareUrl(util.toPointer(Reserved), Flags, util.pwstrToFfi(Url), util.toPointer(PreparedUrl));
@@ -3834,8 +3834,8 @@ export function HttpDeclarePush(
   RequestQueueHandle: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
   RequestId: Deno.PointerValue /* u64 */,
   Verb: HTTP_VERB /* Windows.Win32.Networking.HttpServer.HTTP_VERB */,
-  Path: string | null /* Windows.Win32.Foundation.PWSTR */,
-  Query: string | null /* Windows.Win32.Foundation.PSTR */,
+  Path: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  Query: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   Headers: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
   return libHTTPAPI_dll.HttpDeclarePush(util.toPointer(RequestQueueHandle), RequestId, Verb, util.pwstrToFfi(Path), util.pstrToFfi(Query), util.toPointer(Headers));
@@ -3891,7 +3891,7 @@ export function HttpDelegateRequestEx(
 }
 
 export function HttpFindUrlGroupId(
-  FullyQualifiedUrl: string | null /* Windows.Win32.Foundation.PWSTR */,
+  FullyQualifiedUrl: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   RequestQueueHandle: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
   UrlGroupId: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
@@ -3900,7 +3900,7 @@ export function HttpFindUrlGroupId(
 
 export function HttpFlushResponseCache(
   RequestQueueHandle: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  UrlPrefix: string | null /* Windows.Win32.Foundation.PWSTR */,
+  UrlPrefix: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   Flags: number /* u32 */,
   Overlapped: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
@@ -3909,7 +3909,7 @@ export function HttpFlushResponseCache(
 
 export function HttpAddFragmentToCache(
   RequestQueueHandle: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  UrlPrefix: string | null /* Windows.Win32.Foundation.PWSTR */,
+  UrlPrefix: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   DataChunk: Deno.PointerValue | Uint8Array | null /* ptr */,
   CachePolicy: Deno.PointerValue | Uint8Array | null /* ptr */,
   Overlapped: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -3919,7 +3919,7 @@ export function HttpAddFragmentToCache(
 
 export function HttpReadFragmentFromCache(
   RequestQueueHandle: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  UrlPrefix: string | null /* Windows.Win32.Foundation.PWSTR */,
+  UrlPrefix: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   ByteRange: Deno.PointerValue | Uint8Array | null /* ptr */,
   Buffer: Deno.PointerValue | Uint8Array | null /* ptr */,
   BufferLength: number /* u32 */,

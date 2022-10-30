@@ -2841,9 +2841,9 @@ export interface WNDCLASSEXA {
   /** Windows.Win32.Graphics.Gdi.HBRUSH */
   hbrBackground: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.Foundation.PSTR */
-  lpszMenuName: string | null;
+  lpszMenuName: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  lpszClassName: string | null;
+  lpszClassName: string | null | Uint8Array;
   /** Windows.Win32.UI.WindowsAndMessaging.HICON */
   hIconSm: Uint8Array | Deno.PointerValue | null;
 }
@@ -2911,9 +2911,9 @@ export interface WNDCLASSEXW {
   /** Windows.Win32.Graphics.Gdi.HBRUSH */
   hbrBackground: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.Foundation.PWSTR */
-  lpszMenuName: string | null;
+  lpszMenuName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  lpszClassName: string | null;
+  lpszClassName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.UI.WindowsAndMessaging.HICON */
   hIconSm: Uint8Array | Deno.PointerValue | null;
 }
@@ -2977,9 +2977,9 @@ export interface WNDCLASSA {
   /** Windows.Win32.Graphics.Gdi.HBRUSH */
   hbrBackground: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.Foundation.PSTR */
-  lpszMenuName: string | null;
+  lpszMenuName: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  lpszClassName: string | null;
+  lpszClassName: string | null | Uint8Array;
 }
 
 export const sizeofWNDCLASSA = 72;
@@ -3038,9 +3038,9 @@ export interface WNDCLASSW {
   /** Windows.Win32.Graphics.Gdi.HBRUSH */
   hbrBackground: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.Foundation.PWSTR */
-  lpszMenuName: string | null;
+  lpszMenuName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  lpszClassName: string | null;
+  lpszClassName: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeofWNDCLASSW = 72;
@@ -3293,9 +3293,9 @@ export interface CREATESTRUCTA {
   /** i32 */
   style: number;
   /** Windows.Win32.Foundation.PSTR */
-  lpszName: string | null;
+  lpszName: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  lpszClass: string | null;
+  lpszClass: string | null | Uint8Array;
   /** u32 */
   dwExStyle: number;
 }
@@ -3363,9 +3363,9 @@ export interface CREATESTRUCTW {
   /** i32 */
   style: number;
   /** Windows.Win32.Foundation.PWSTR */
-  lpszName: string | null;
+  lpszName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  lpszClass: string | null;
+  lpszClass: string | null | Uint8Array | Uint16Array;
   /** u32 */
   dwExStyle: number;
 }
@@ -3778,7 +3778,7 @@ export interface MENUITEMINFOA {
   /** usize */
   dwItemData: Deno.PointerValue;
   /** Windows.Win32.Foundation.PSTR */
-  dwTypeData: string | null;
+  dwTypeData: string | null | Uint8Array;
   /** u32 */
   cch: number;
   /** Windows.Win32.Graphics.Gdi.HBITMAP */
@@ -3845,7 +3845,7 @@ export interface MENUITEMINFOW {
   /** usize */
   dwItemData: Deno.PointerValue;
   /** Windows.Win32.Foundation.PWSTR */
-  dwTypeData: string | null;
+  dwTypeData: string | null | Uint8Array | Uint16Array;
   /** u32 */
   cch: number;
   /** Windows.Win32.Graphics.Gdi.HBITMAP */
@@ -3940,13 +3940,13 @@ export interface MSGBOXPARAMSA {
   /** Windows.Win32.Foundation.HINSTANCE */
   hInstance: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.Foundation.PSTR */
-  lpszText: string | null;
+  lpszText: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  lpszCaption: string | null;
+  lpszCaption: string | null | Uint8Array;
   /** Windows.Win32.UI.WindowsAndMessaging.MESSAGEBOX_STYLE */
   dwStyle: MESSAGEBOX_STYLE;
   /** Windows.Win32.Foundation.PSTR */
-  lpszIcon: string | null;
+  lpszIcon: string | null | Uint8Array;
   /** usize */
   dwContextHelpId: Deno.PointerValue;
   /** Windows.Win32.UI.WindowsAndMessaging.MSGBOXCALLBACK */
@@ -4006,13 +4006,13 @@ export interface MSGBOXPARAMSW {
   /** Windows.Win32.Foundation.HINSTANCE */
   hInstance: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.Foundation.PWSTR */
-  lpszText: string | null;
+  lpszText: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  lpszCaption: string | null;
+  lpszCaption: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.UI.WindowsAndMessaging.MESSAGEBOX_STYLE */
   dwStyle: MESSAGEBOX_STYLE;
   /** Windows.Win32.Foundation.PWSTR */
-  lpszIcon: string | null;
+  lpszIcon: string | null | Uint8Array | Uint16Array;
   /** usize */
   dwContextHelpId: Deno.PointerValue;
   /** Windows.Win32.UI.WindowsAndMessaging.MSGBOXCALLBACK */
@@ -4341,9 +4341,9 @@ export type HANDLE = Deno.PointerValue;
  */
 export interface MDICREATESTRUCTA {
   /** Windows.Win32.Foundation.PSTR */
-  szClass: string | null;
+  szClass: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  szTitle: string | null;
+  szTitle: string | null | Uint8Array;
   /** Windows.Win32.Foundation.HANDLE */
   hOwner: Uint8Array | Deno.PointerValue | null;
   /** i32 */
@@ -4398,9 +4398,9 @@ export function allocMDICREATESTRUCTA(data?: Partial<MDICREATESTRUCTA>): Uint8Ar
  */
 export interface MDICREATESTRUCTW {
   /** Windows.Win32.Foundation.PWSTR */
-  szClass: string | null;
+  szClass: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  szTitle: string | null;
+  szTitle: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.HANDLE */
   hOwner: Uint8Array | Deno.PointerValue | null;
   /** i32 */
@@ -5304,9 +5304,9 @@ export function allocCHANGEFILTERSTRUCT(data?: Partial<CHANGEFILTERSTRUCT>): Uin
  */
 export interface IndexedResourceQualifier {
   /** Windows.Win32.Foundation.PWSTR */
-  name: string | null;
+  name: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  value: string | null;
+  value: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeofIndexedResourceQualifier = 16;
@@ -5354,7 +5354,7 @@ export interface MrmResourceIndexerMessage {
   /** u32 */
   id: number;
   /** Windows.Win32.Foundation.PWSTR */
-  text: string | null;
+  text: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeofMrmResourceIndexerMessage = 16;
@@ -7061,7 +7061,7 @@ try {
 export function LoadStringA(
   hInstance: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HINSTANCE */,
   uID: number /* u32 */,
-  lpBuffer: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpBuffer: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   cchBufferMax: number /* i32 */,
 ): number /* i32 */ {
   return libUSER32_dll.LoadStringA(util.toPointer(hInstance), uID, util.pstrToFfi(lpBuffer), cchBufferMax);
@@ -7070,7 +7070,7 @@ export function LoadStringA(
 export function LoadStringW(
   hInstance: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HINSTANCE */,
   uID: number /* u32 */,
-  lpBuffer: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpBuffer: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   cchBufferMax: number /* i32 */,
 ): number /* i32 */ {
   return libUSER32_dll.LoadStringW(util.toPointer(hInstance), uID, util.pwstrToFfi(lpBuffer), cchBufferMax);
@@ -7137,31 +7137,31 @@ export function SetClassLongPtrW(
 }
 
 export function wvsprintfA(
-  param0: string | null /* Windows.Win32.Foundation.PSTR */,
-  param1: string | null /* Windows.Win32.Foundation.PSTR */,
+  param0: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  param1: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   arglist: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
   return libUSER32_dll.wvsprintfA(util.pstrToFfi(param0), util.pstrToFfi(param1), util.toPointer(arglist));
 }
 
 export function wvsprintfW(
-  param0: string | null /* Windows.Win32.Foundation.PWSTR */,
-  param1: string | null /* Windows.Win32.Foundation.PWSTR */,
+  param0: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  param1: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   arglist: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
   return libUSER32_dll.wvsprintfW(util.pwstrToFfi(param0), util.pwstrToFfi(param1), util.toPointer(arglist));
 }
 
 export function wsprintfA(
-  param0: string | null /* Windows.Win32.Foundation.PSTR */,
-  param1: string | null /* Windows.Win32.Foundation.PSTR */,
+  param0: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  param1: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): number /* i32 */ {
   return libUSER32_dll.wsprintfA(util.pstrToFfi(param0), util.pstrToFfi(param1));
 }
 
 export function wsprintfW(
-  param0: string | null /* Windows.Win32.Foundation.PWSTR */,
-  param1: string | null /* Windows.Win32.Foundation.PWSTR */,
+  param0: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  param1: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* i32 */ {
   return libUSER32_dll.wsprintfW(util.pwstrToFfi(param0), util.pwstrToFfi(param1));
 }
@@ -7177,13 +7177,13 @@ export function DisableProcessWindowsGhosting(): void /* void */ {
 }
 
 export function RegisterWindowMessageA(
-  lpString: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpString: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): number /* u32 */ {
   return libUSER32_dll.RegisterWindowMessageA(util.pstrToFfi(lpString));
 }
 
 export function RegisterWindowMessageW(
-  lpString: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpString: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
   return libUSER32_dll.RegisterWindowMessageW(util.pwstrToFfi(lpString));
 }
@@ -7483,14 +7483,14 @@ export function RegisterClassW(
 }
 
 export function UnregisterClassA(
-  lpClassName: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpClassName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   hInstance: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HINSTANCE */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libUSER32_dll.UnregisterClassA(util.pstrToFfi(lpClassName), util.toPointer(hInstance)));
 }
 
 export function UnregisterClassW(
-  lpClassName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpClassName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   hInstance: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HINSTANCE */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libUSER32_dll.UnregisterClassW(util.pwstrToFfi(lpClassName), util.toPointer(hInstance)));
@@ -7498,7 +7498,7 @@ export function UnregisterClassW(
 
 export function GetClassInfoA(
   hInstance: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HINSTANCE */,
-  lpClassName: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpClassName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   lpWndClass: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libUSER32_dll.GetClassInfoA(util.toPointer(hInstance), util.pstrToFfi(lpClassName), util.toPointer(lpWndClass)));
@@ -7506,7 +7506,7 @@ export function GetClassInfoA(
 
 export function GetClassInfoW(
   hInstance: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HINSTANCE */,
-  lpClassName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpClassName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   lpWndClass: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libUSER32_dll.GetClassInfoW(util.toPointer(hInstance), util.pwstrToFfi(lpClassName), util.toPointer(lpWndClass)));
@@ -7526,7 +7526,7 @@ export function RegisterClassExW(
 
 export function GetClassInfoExA(
   hInstance: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HINSTANCE */,
-  lpszClass: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpszClass: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   lpwcx: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libUSER32_dll.GetClassInfoExA(util.toPointer(hInstance), util.pstrToFfi(lpszClass), util.toPointer(lpwcx)));
@@ -7534,7 +7534,7 @@ export function GetClassInfoExA(
 
 export function GetClassInfoExW(
   hInstance: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HINSTANCE */,
-  lpszClass: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpszClass: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   lpwcx: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libUSER32_dll.GetClassInfoExW(util.toPointer(hInstance), util.pwstrToFfi(lpszClass), util.toPointer(lpwcx)));
@@ -7542,8 +7542,8 @@ export function GetClassInfoExW(
 
 export function CreateWindowExA(
   dwExStyle: WINDOW_EX_STYLE /* Windows.Win32.UI.WindowsAndMessaging.WINDOW_EX_STYLE */,
-  lpClassName: string | null /* Windows.Win32.Foundation.PSTR */,
-  lpWindowName: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpClassName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  lpWindowName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   dwStyle: WINDOW_STYLE /* Windows.Win32.UI.WindowsAndMessaging.WINDOW_STYLE */,
   X: number /* i32 */,
   Y: number /* i32 */,
@@ -7559,8 +7559,8 @@ export function CreateWindowExA(
 
 export function CreateWindowExW(
   dwExStyle: WINDOW_EX_STYLE /* Windows.Win32.UI.WindowsAndMessaging.WINDOW_EX_STYLE */,
-  lpClassName: string | null /* Windows.Win32.Foundation.PWSTR */,
-  lpWindowName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpClassName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  lpWindowName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   dwStyle: WINDOW_STYLE /* Windows.Win32.UI.WindowsAndMessaging.WINDOW_STYLE */,
   X: number /* i32 */,
   Y: number /* i32 */,
@@ -7798,7 +7798,7 @@ export function IsZoomed(
 
 export function CreateDialogParamA(
   hInstance: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HINSTANCE */,
-  lpTemplateName: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpTemplateName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   hWndParent: Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */,
   lpDialogFunc: Uint8Array | Deno.PointerValue | null /* Windows.Win32.UI.WindowsAndMessaging.DLGPROC */,
   dwInitParam: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.LPARAM */,
@@ -7808,7 +7808,7 @@ export function CreateDialogParamA(
 
 export function CreateDialogParamW(
   hInstance: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HINSTANCE */,
-  lpTemplateName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpTemplateName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   hWndParent: Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */,
   lpDialogFunc: Uint8Array | Deno.PointerValue | null /* Windows.Win32.UI.WindowsAndMessaging.DLGPROC */,
   dwInitParam: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.LPARAM */,
@@ -7838,7 +7838,7 @@ export function CreateDialogIndirectParamW(
 
 export function DialogBoxParamA(
   hInstance: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HINSTANCE */,
-  lpTemplateName: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpTemplateName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   hWndParent: Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */,
   lpDialogFunc: Uint8Array | Deno.PointerValue | null /* Windows.Win32.UI.WindowsAndMessaging.DLGPROC */,
   dwInitParam: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.LPARAM */,
@@ -7848,7 +7848,7 @@ export function DialogBoxParamA(
 
 export function DialogBoxParamW(
   hInstance: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HINSTANCE */,
-  lpTemplateName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpTemplateName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   hWndParent: Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */,
   lpDialogFunc: Uint8Array | Deno.PointerValue | null /* Windows.Win32.UI.WindowsAndMessaging.DLGPROC */,
   dwInitParam: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.LPARAM */,
@@ -7911,7 +7911,7 @@ export function GetDlgItemInt(
 export function SetDlgItemTextA(
   hDlg: Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */,
   nIDDlgItem: number /* i32 */,
-  lpString: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpString: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libUSER32_dll.SetDlgItemTextA(util.hwndToFfi(hDlg), nIDDlgItem, util.pstrToFfi(lpString)));
 }
@@ -7919,7 +7919,7 @@ export function SetDlgItemTextA(
 export function SetDlgItemTextW(
   hDlg: Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */,
   nIDDlgItem: number /* i32 */,
-  lpString: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpString: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libUSER32_dll.SetDlgItemTextW(util.hwndToFfi(hDlg), nIDDlgItem, util.pwstrToFfi(lpString)));
 }
@@ -7927,7 +7927,7 @@ export function SetDlgItemTextW(
 export function GetDlgItemTextA(
   hDlg: Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */,
   nIDDlgItem: number /* i32 */,
-  lpString: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpString: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   cchMax: number /* i32 */,
 ): number /* u32 */ {
   return libUSER32_dll.GetDlgItemTextA(util.hwndToFfi(hDlg), nIDDlgItem, util.pstrToFfi(lpString), cchMax);
@@ -7936,7 +7936,7 @@ export function GetDlgItemTextA(
 export function GetDlgItemTextW(
   hDlg: Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */,
   nIDDlgItem: number /* i32 */,
-  lpString: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpString: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   cchMax: number /* i32 */,
 ): number /* u32 */ {
   return libUSER32_dll.GetDlgItemTextW(util.hwndToFfi(hDlg), nIDDlgItem, util.pwstrToFfi(lpString), cchMax);
@@ -8021,146 +8021,146 @@ export function CallMsgFilterW(
 }
 
 export function CharToOemA(
-  pSrc: string | null /* Windows.Win32.Foundation.PSTR */,
-  pDst: string | null /* Windows.Win32.Foundation.PSTR */,
+  pSrc: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  pDst: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libUSER32_dll.CharToOemA(util.pstrToFfi(pSrc), util.pstrToFfi(pDst)));
 }
 
 export function CharToOemW(
-  pSrc: string | null /* Windows.Win32.Foundation.PWSTR */,
-  pDst: string | null /* Windows.Win32.Foundation.PSTR */,
+  pSrc: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  pDst: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libUSER32_dll.CharToOemW(util.pwstrToFfi(pSrc), util.pstrToFfi(pDst)));
 }
 
 export function OemToCharA(
-  pSrc: string | null /* Windows.Win32.Foundation.PSTR */,
-  pDst: string | null /* Windows.Win32.Foundation.PSTR */,
+  pSrc: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  pDst: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libUSER32_dll.OemToCharA(util.pstrToFfi(pSrc), util.pstrToFfi(pDst)));
 }
 
 export function OemToCharW(
-  pSrc: string | null /* Windows.Win32.Foundation.PSTR */,
-  pDst: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pSrc: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  pDst: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libUSER32_dll.OemToCharW(util.pstrToFfi(pSrc), util.pwstrToFfi(pDst)));
 }
 
 export function CharToOemBuffA(
-  lpszSrc: string | null /* Windows.Win32.Foundation.PSTR */,
-  lpszDst: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpszSrc: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  lpszDst: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   cchDstLength: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libUSER32_dll.CharToOemBuffA(util.pstrToFfi(lpszSrc), util.pstrToFfi(lpszDst), cchDstLength));
 }
 
 export function CharToOemBuffW(
-  lpszSrc: string | null /* Windows.Win32.Foundation.PWSTR */,
-  lpszDst: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpszSrc: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  lpszDst: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   cchDstLength: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libUSER32_dll.CharToOemBuffW(util.pwstrToFfi(lpszSrc), util.pstrToFfi(lpszDst), cchDstLength));
 }
 
 export function OemToCharBuffA(
-  lpszSrc: string | null /* Windows.Win32.Foundation.PSTR */,
-  lpszDst: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpszSrc: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  lpszDst: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   cchDstLength: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libUSER32_dll.OemToCharBuffA(util.pstrToFfi(lpszSrc), util.pstrToFfi(lpszDst), cchDstLength));
 }
 
 export function OemToCharBuffW(
-  lpszSrc: string | null /* Windows.Win32.Foundation.PSTR */,
-  lpszDst: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpszSrc: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  lpszDst: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   cchDstLength: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libUSER32_dll.OemToCharBuffW(util.pstrToFfi(lpszSrc), util.pwstrToFfi(lpszDst), cchDstLength));
 }
 
 export function CharUpperA(
-  lpsz: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpsz: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): string | null /* Windows.Win32.Foundation.PSTR */ {
   return util.pstrFromFfi(libUSER32_dll.CharUpperA(util.pstrToFfi(lpsz)));
 }
 
 export function CharUpperW(
-  lpsz: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpsz: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): string | null /* Windows.Win32.Foundation.PWSTR */ {
   return util.pwstrFromFfi(libUSER32_dll.CharUpperW(util.pwstrToFfi(lpsz)));
 }
 
 export function CharUpperBuffA(
-  lpsz: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpsz: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   cchLength: number /* u32 */,
 ): number /* u32 */ {
   return libUSER32_dll.CharUpperBuffA(util.pstrToFfi(lpsz), cchLength);
 }
 
 export function CharUpperBuffW(
-  lpsz: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpsz: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   cchLength: number /* u32 */,
 ): number /* u32 */ {
   return libUSER32_dll.CharUpperBuffW(util.pwstrToFfi(lpsz), cchLength);
 }
 
 export function CharLowerA(
-  lpsz: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpsz: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): string | null /* Windows.Win32.Foundation.PSTR */ {
   return util.pstrFromFfi(libUSER32_dll.CharLowerA(util.pstrToFfi(lpsz)));
 }
 
 export function CharLowerW(
-  lpsz: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpsz: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): string | null /* Windows.Win32.Foundation.PWSTR */ {
   return util.pwstrFromFfi(libUSER32_dll.CharLowerW(util.pwstrToFfi(lpsz)));
 }
 
 export function CharLowerBuffA(
-  lpsz: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpsz: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   cchLength: number /* u32 */,
 ): number /* u32 */ {
   return libUSER32_dll.CharLowerBuffA(util.pstrToFfi(lpsz), cchLength);
 }
 
 export function CharLowerBuffW(
-  lpsz: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpsz: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   cchLength: number /* u32 */,
 ): number /* u32 */ {
   return libUSER32_dll.CharLowerBuffW(util.pwstrToFfi(lpsz), cchLength);
 }
 
 export function CharNextA(
-  lpsz: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpsz: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): string | null /* Windows.Win32.Foundation.PSTR */ {
   return util.pstrFromFfi(libUSER32_dll.CharNextA(util.pstrToFfi(lpsz)));
 }
 
 export function CharNextW(
-  lpsz: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpsz: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): string | null /* Windows.Win32.Foundation.PWSTR */ {
   return util.pwstrFromFfi(libUSER32_dll.CharNextW(util.pwstrToFfi(lpsz)));
 }
 
 export function CharPrevA(
-  lpszStart: string | null /* Windows.Win32.Foundation.PSTR */,
-  lpszCurrent: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpszStart: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  lpszCurrent: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): string | null /* Windows.Win32.Foundation.PSTR */ {
   return util.pstrFromFfi(libUSER32_dll.CharPrevA(util.pstrToFfi(lpszStart), util.pstrToFfi(lpszCurrent)));
 }
 
 export function CharPrevW(
-  lpszStart: string | null /* Windows.Win32.Foundation.PWSTR */,
-  lpszCurrent: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpszStart: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  lpszCurrent: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): string | null /* Windows.Win32.Foundation.PWSTR */ {
   return util.pwstrFromFfi(libUSER32_dll.CharPrevW(util.pwstrToFfi(lpszStart), util.pwstrToFfi(lpszCurrent)));
 }
 
 export function CharNextExA(
   CodePage: number /* u16 */,
-  lpCurrentChar: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpCurrentChar: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   dwFlags: number /* u32 */,
 ): string | null /* Windows.Win32.Foundation.PSTR */ {
   return util.pstrFromFfi(libUSER32_dll.CharNextExA(CodePage, util.pstrToFfi(lpCurrentChar), dwFlags));
@@ -8168,8 +8168,8 @@ export function CharNextExA(
 
 export function CharPrevExA(
   CodePage: number /* u16 */,
-  lpStart: string | null /* Windows.Win32.Foundation.PSTR */,
-  lpCurrentChar: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpStart: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  lpCurrentChar: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   dwFlags: number /* u32 */,
 ): string | null /* Windows.Win32.Foundation.PSTR */ {
   return util.pstrFromFfi(libUSER32_dll.CharPrevExA(CodePage, util.pstrToFfi(lpStart), util.pstrToFfi(lpCurrentChar), dwFlags));
@@ -8281,14 +8281,14 @@ export function IsWindowUnicode(
 
 export function LoadAcceleratorsA(
   hInstance: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HINSTANCE */,
-  lpTableName: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpTableName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): Deno.PointerValue | null /* Windows.Win32.UI.WindowsAndMessaging.HACCEL */ {
   return util.pointerFromFfi(libUSER32_dll.LoadAcceleratorsA(util.toPointer(hInstance), util.pstrToFfi(lpTableName)));
 }
 
 export function LoadAcceleratorsW(
   hInstance: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HINSTANCE */,
-  lpTableName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpTableName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): Deno.PointerValue | null /* Windows.Win32.UI.WindowsAndMessaging.HACCEL */ {
   return util.pointerFromFfi(libUSER32_dll.LoadAcceleratorsW(util.toPointer(hInstance), util.pwstrToFfi(lpTableName)));
 }
@@ -8353,14 +8353,14 @@ export function GetSystemMetrics(
 
 export function LoadMenuA(
   hInstance: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HINSTANCE */,
-  lpMenuName: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpMenuName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): Deno.PointerValue | null /* Windows.Win32.UI.WindowsAndMessaging.HMENU */ {
   return util.pointerFromFfi(libUSER32_dll.LoadMenuA(util.toPointer(hInstance), util.pstrToFfi(lpMenuName)));
 }
 
 export function LoadMenuW(
   hInstance: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HINSTANCE */,
-  lpMenuName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpMenuName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): Deno.PointerValue | null /* Windows.Win32.UI.WindowsAndMessaging.HMENU */ {
   return util.pointerFromFfi(libUSER32_dll.LoadMenuW(util.toPointer(hInstance), util.pwstrToFfi(lpMenuName)));
 }
@@ -8393,7 +8393,7 @@ export function SetMenu(
 export function ChangeMenuA(
   hMenu: Uint8Array | Deno.PointerValue | null /* Windows.Win32.UI.WindowsAndMessaging.HMENU */,
   cmd: number /* u32 */,
-  lpszNewItem: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpszNewItem: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   cmdInsert: number /* u32 */,
   flags: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
@@ -8403,7 +8403,7 @@ export function ChangeMenuA(
 export function ChangeMenuW(
   hMenu: Uint8Array | Deno.PointerValue | null /* Windows.Win32.UI.WindowsAndMessaging.HMENU */,
   cmd: number /* u32 */,
-  lpszNewItem: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpszNewItem: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   cmdInsert: number /* u32 */,
   flags: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
@@ -8422,7 +8422,7 @@ export function HiliteMenuItem(
 export function GetMenuStringA(
   hMenu: Uint8Array | Deno.PointerValue | null /* Windows.Win32.UI.WindowsAndMessaging.HMENU */,
   uIDItem: number /* u32 */,
-  lpString: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpString: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   cchMax: number /* i32 */,
   flags: MENU_ITEM_FLAGS /* Windows.Win32.UI.WindowsAndMessaging.MENU_ITEM_FLAGS */,
 ): number /* i32 */ {
@@ -8432,7 +8432,7 @@ export function GetMenuStringA(
 export function GetMenuStringW(
   hMenu: Uint8Array | Deno.PointerValue | null /* Windows.Win32.UI.WindowsAndMessaging.HMENU */,
   uIDItem: number /* u32 */,
-  lpString: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpString: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   cchMax: number /* i32 */,
   flags: MENU_ITEM_FLAGS /* Windows.Win32.UI.WindowsAndMessaging.MENU_ITEM_FLAGS */,
 ): number /* i32 */ {
@@ -8515,7 +8515,7 @@ export function InsertMenuA(
   uPosition: number /* u32 */,
   uFlags: MENU_ITEM_FLAGS /* Windows.Win32.UI.WindowsAndMessaging.MENU_ITEM_FLAGS */,
   uIDNewItem: Deno.PointerValue /* usize */,
-  lpNewItem: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpNewItem: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libUSER32_dll.InsertMenuA(util.toPointer(hMenu), uPosition, uFlags, uIDNewItem, util.pstrToFfi(lpNewItem)));
 }
@@ -8525,7 +8525,7 @@ export function InsertMenuW(
   uPosition: number /* u32 */,
   uFlags: MENU_ITEM_FLAGS /* Windows.Win32.UI.WindowsAndMessaging.MENU_ITEM_FLAGS */,
   uIDNewItem: Deno.PointerValue /* usize */,
-  lpNewItem: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpNewItem: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libUSER32_dll.InsertMenuW(util.toPointer(hMenu), uPosition, uFlags, uIDNewItem, util.pwstrToFfi(lpNewItem)));
 }
@@ -8534,7 +8534,7 @@ export function AppendMenuA(
   hMenu: Uint8Array | Deno.PointerValue | null /* Windows.Win32.UI.WindowsAndMessaging.HMENU */,
   uFlags: MENU_ITEM_FLAGS /* Windows.Win32.UI.WindowsAndMessaging.MENU_ITEM_FLAGS */,
   uIDNewItem: Deno.PointerValue /* usize */,
-  lpNewItem: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpNewItem: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libUSER32_dll.AppendMenuA(util.toPointer(hMenu), uFlags, uIDNewItem, util.pstrToFfi(lpNewItem)));
 }
@@ -8543,7 +8543,7 @@ export function AppendMenuW(
   hMenu: Uint8Array | Deno.PointerValue | null /* Windows.Win32.UI.WindowsAndMessaging.HMENU */,
   uFlags: MENU_ITEM_FLAGS /* Windows.Win32.UI.WindowsAndMessaging.MENU_ITEM_FLAGS */,
   uIDNewItem: Deno.PointerValue /* usize */,
-  lpNewItem: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpNewItem: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libUSER32_dll.AppendMenuW(util.toPointer(hMenu), uFlags, uIDNewItem, util.pwstrToFfi(lpNewItem)));
 }
@@ -8553,7 +8553,7 @@ export function ModifyMenuA(
   uPosition: number /* u32 */,
   uFlags: MENU_ITEM_FLAGS /* Windows.Win32.UI.WindowsAndMessaging.MENU_ITEM_FLAGS */,
   uIDNewItem: Deno.PointerValue /* usize */,
-  lpNewItem: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpNewItem: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libUSER32_dll.ModifyMenuA(util.toPointer(hMnu), uPosition, uFlags, uIDNewItem, util.pstrToFfi(lpNewItem)));
 }
@@ -8563,7 +8563,7 @@ export function ModifyMenuW(
   uPosition: number /* u32 */,
   uFlags: MENU_ITEM_FLAGS /* Windows.Win32.UI.WindowsAndMessaging.MENU_ITEM_FLAGS */,
   uIDNewItem: Deno.PointerValue /* usize */,
-  lpNewItem: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpNewItem: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libUSER32_dll.ModifyMenuW(util.toPointer(hMnu), uPosition, uFlags, uIDNewItem, util.pwstrToFfi(lpNewItem)));
 }
@@ -8837,7 +8837,7 @@ export function GetScrollRange(
 
 export function SetPropA(
   hWnd: Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */,
-  lpString: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpString: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   hData: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libUSER32_dll.SetPropA(util.hwndToFfi(hWnd), util.pstrToFfi(lpString), util.toPointer(hData)));
@@ -8845,7 +8845,7 @@ export function SetPropA(
 
 export function SetPropW(
   hWnd: Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */,
-  lpString: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpString: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   hData: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libUSER32_dll.SetPropW(util.hwndToFfi(hWnd), util.pwstrToFfi(lpString), util.toPointer(hData)));
@@ -8853,28 +8853,28 @@ export function SetPropW(
 
 export function GetPropA(
   hWnd: Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */,
-  lpString: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpString: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */ {
   return util.pointerFromFfi(libUSER32_dll.GetPropA(util.hwndToFfi(hWnd), util.pstrToFfi(lpString)));
 }
 
 export function GetPropW(
   hWnd: Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */,
-  lpString: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpString: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */ {
   return util.pointerFromFfi(libUSER32_dll.GetPropW(util.hwndToFfi(hWnd), util.pwstrToFfi(lpString)));
 }
 
 export function RemovePropA(
   hWnd: Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */,
-  lpString: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpString: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */ {
   return util.pointerFromFfi(libUSER32_dll.RemovePropA(util.hwndToFfi(hWnd), util.pstrToFfi(lpString)));
 }
 
 export function RemovePropW(
   hWnd: Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */,
-  lpString: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpString: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */ {
   return util.pointerFromFfi(libUSER32_dll.RemovePropW(util.hwndToFfi(hWnd), util.pwstrToFfi(lpString)));
 }
@@ -8911,21 +8911,21 @@ export function EnumPropsW(
 
 export function SetWindowTextA(
   hWnd: Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */,
-  lpString: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpString: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libUSER32_dll.SetWindowTextA(util.hwndToFfi(hWnd), util.pstrToFfi(lpString)));
 }
 
 export function SetWindowTextW(
   hWnd: Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */,
-  lpString: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpString: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libUSER32_dll.SetWindowTextW(util.hwndToFfi(hWnd), util.pwstrToFfi(lpString)));
 }
 
 export function GetWindowTextA(
   hWnd: Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */,
-  lpString: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpString: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   nMaxCount: number /* i32 */,
 ): number /* i32 */ {
   return libUSER32_dll.GetWindowTextA(util.hwndToFfi(hWnd), util.pstrToFfi(lpString), nMaxCount);
@@ -8933,7 +8933,7 @@ export function GetWindowTextA(
 
 export function GetWindowTextW(
   hWnd: Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */,
-  lpString: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpString: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   nMaxCount: number /* i32 */,
 ): number /* i32 */ {
   return libUSER32_dll.GetWindowTextW(util.hwndToFfi(hWnd), util.pwstrToFfi(lpString), nMaxCount);
@@ -8984,8 +8984,8 @@ export function AdjustWindowRectEx(
 
 export function MessageBoxA(
   hWnd: Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */,
-  lpText: string | null /* Windows.Win32.Foundation.PSTR */,
-  lpCaption: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpText: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  lpCaption: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   uType: MESSAGEBOX_STYLE /* Windows.Win32.UI.WindowsAndMessaging.MESSAGEBOX_STYLE */,
 ): MESSAGEBOX_RESULT /* Windows.Win32.UI.WindowsAndMessaging.MESSAGEBOX_RESULT */ {
   return libUSER32_dll.MessageBoxA(util.hwndToFfi(hWnd), util.pstrToFfi(lpText), util.pstrToFfi(lpCaption), uType);
@@ -8993,8 +8993,8 @@ export function MessageBoxA(
 
 export function MessageBoxW(
   hWnd: Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */,
-  lpText: string | null /* Windows.Win32.Foundation.PWSTR */,
-  lpCaption: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpText: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  lpCaption: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   uType: MESSAGEBOX_STYLE /* Windows.Win32.UI.WindowsAndMessaging.MESSAGEBOX_STYLE */,
 ): MESSAGEBOX_RESULT /* Windows.Win32.UI.WindowsAndMessaging.MESSAGEBOX_RESULT */ {
   return libUSER32_dll.MessageBoxW(util.hwndToFfi(hWnd), util.pwstrToFfi(lpText), util.pwstrToFfi(lpCaption), uType);
@@ -9002,8 +9002,8 @@ export function MessageBoxW(
 
 export function MessageBoxExA(
   hWnd: Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */,
-  lpText: string | null /* Windows.Win32.Foundation.PSTR */,
-  lpCaption: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpText: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  lpCaption: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   uType: MESSAGEBOX_STYLE /* Windows.Win32.UI.WindowsAndMessaging.MESSAGEBOX_STYLE */,
   wLanguageId: number /* u16 */,
 ): MESSAGEBOX_RESULT /* Windows.Win32.UI.WindowsAndMessaging.MESSAGEBOX_RESULT */ {
@@ -9012,8 +9012,8 @@ export function MessageBoxExA(
 
 export function MessageBoxExW(
   hWnd: Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */,
-  lpText: string | null /* Windows.Win32.Foundation.PWSTR */,
-  lpCaption: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpText: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  lpCaption: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   uType: MESSAGEBOX_STYLE /* Windows.Win32.UI.WindowsAndMessaging.MESSAGEBOX_STYLE */,
   wLanguageId: number /* u16 */,
 ): MESSAGEBOX_RESULT /* Windows.Win32.UI.WindowsAndMessaging.MESSAGEBOX_RESULT */ {
@@ -9303,15 +9303,15 @@ export function EnumChildWindows(
 }
 
 export function FindWindowA(
-  lpClassName: string | null /* Windows.Win32.Foundation.PSTR */,
-  lpWindowName: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpClassName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  lpWindowName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */ {
   return util.hwndFromFfi(libUSER32_dll.FindWindowA(util.pstrToFfi(lpClassName), util.pstrToFfi(lpWindowName)));
 }
 
 export function FindWindowW(
-  lpClassName: string | null /* Windows.Win32.Foundation.PWSTR */,
-  lpWindowName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpClassName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  lpWindowName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */ {
   return util.hwndFromFfi(libUSER32_dll.FindWindowW(util.pwstrToFfi(lpClassName), util.pwstrToFfi(lpWindowName)));
 }
@@ -9319,8 +9319,8 @@ export function FindWindowW(
 export function FindWindowExA(
   hWndParent: Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */,
   hWndChildAfter: Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */,
-  lpszClass: string | null /* Windows.Win32.Foundation.PSTR */,
-  lpszWindow: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpszClass: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  lpszWindow: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */ {
   return util.hwndFromFfi(libUSER32_dll.FindWindowExA(util.hwndToFfi(hWndParent), util.hwndToFfi(hWndChildAfter), util.pstrToFfi(lpszClass), util.pstrToFfi(lpszWindow)));
 }
@@ -9328,8 +9328,8 @@ export function FindWindowExA(
 export function FindWindowExW(
   hWndParent: Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */,
   hWndChildAfter: Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */,
-  lpszClass: string | null /* Windows.Win32.Foundation.PWSTR */,
-  lpszWindow: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpszClass: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  lpszWindow: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */ {
   return util.hwndFromFfi(libUSER32_dll.FindWindowExW(util.hwndToFfi(hWndParent), util.hwndToFfi(hWndChildAfter), util.pwstrToFfi(lpszClass), util.pwstrToFfi(lpszWindow)));
 }
@@ -9367,7 +9367,7 @@ export function EnumThreadWindows(
 
 export function GetClassNameA(
   hWnd: Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */,
-  lpClassName: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpClassName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   nMaxCount: number /* i32 */,
 ): number /* i32 */ {
   return libUSER32_dll.GetClassNameA(util.hwndToFfi(hWnd), util.pstrToFfi(lpClassName), nMaxCount);
@@ -9375,7 +9375,7 @@ export function GetClassNameA(
 
 export function GetClassNameW(
   hWnd: Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */,
-  lpClassName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpClassName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   nMaxCount: number /* i32 */,
 ): number /* i32 */ {
   return libUSER32_dll.GetClassNameW(util.hwndToFfi(hWnd), util.pwstrToFfi(lpClassName), nMaxCount);
@@ -9479,26 +9479,26 @@ export function CheckMenuRadioItem(
 
 export function LoadCursorA(
   hInstance: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HINSTANCE */,
-  lpCursorName: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpCursorName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): Deno.PointerValue | null /* Windows.Win32.UI.WindowsAndMessaging.HCURSOR */ {
   return util.pointerFromFfi(libUSER32_dll.LoadCursorA(util.toPointer(hInstance), util.pstrToFfi(lpCursorName)));
 }
 
 export function LoadCursorW(
   hInstance: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HINSTANCE */,
-  lpCursorName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpCursorName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): Deno.PointerValue | null /* Windows.Win32.UI.WindowsAndMessaging.HCURSOR */ {
   return util.pointerFromFfi(libUSER32_dll.LoadCursorW(util.toPointer(hInstance), util.pwstrToFfi(lpCursorName)));
 }
 
 export function LoadCursorFromFileA(
-  lpFileName: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpFileName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): Deno.PointerValue | null /* Windows.Win32.UI.WindowsAndMessaging.HCURSOR */ {
   return util.pointerFromFfi(libUSER32_dll.LoadCursorFromFileA(util.pstrToFfi(lpFileName)));
 }
 
 export function LoadCursorFromFileW(
-  lpFileName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpFileName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): Deno.PointerValue | null /* Windows.Win32.UI.WindowsAndMessaging.HCURSOR */ {
   return util.pointerFromFfi(libUSER32_dll.LoadCursorFromFileW(util.pwstrToFfi(lpFileName)));
 }
@@ -9530,20 +9530,20 @@ export function SetSystemCursor(
 
 export function LoadIconA(
   hInstance: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HINSTANCE */,
-  lpIconName: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpIconName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): Deno.PointerValue | null /* Windows.Win32.UI.WindowsAndMessaging.HICON */ {
   return util.pointerFromFfi(libUSER32_dll.LoadIconA(util.toPointer(hInstance), util.pstrToFfi(lpIconName)));
 }
 
 export function LoadIconW(
   hInstance: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HINSTANCE */,
-  lpIconName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpIconName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): Deno.PointerValue | null /* Windows.Win32.UI.WindowsAndMessaging.HICON */ {
   return util.pointerFromFfi(libUSER32_dll.LoadIconW(util.toPointer(hInstance), util.pwstrToFfi(lpIconName)));
 }
 
 export function PrivateExtractIconsA(
-  szFileName: string | null /* Windows.Win32.Foundation.PSTR */,
+  szFileName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   nIconIndex: number /* i32 */,
   cxIcon: number /* i32 */,
   cyIcon: number /* i32 */,
@@ -9556,7 +9556,7 @@ export function PrivateExtractIconsA(
 }
 
 export function PrivateExtractIconsW(
-  szFileName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  szFileName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   nIconIndex: number /* i32 */,
   cxIcon: number /* i32 */,
   cyIcon: number /* i32 */,
@@ -9626,7 +9626,7 @@ export function CreateIconFromResourceEx(
 
 export function LoadImageA(
   hInst: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HINSTANCE */,
-  name: string | null /* Windows.Win32.Foundation.PSTR */,
+  name: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   type: GDI_IMAGE_TYPE /* Windows.Win32.UI.WindowsAndMessaging.GDI_IMAGE_TYPE */,
   cx: number /* i32 */,
   cy: number /* i32 */,
@@ -9637,7 +9637,7 @@ export function LoadImageA(
 
 export function LoadImageW(
   hInst: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HINSTANCE */,
-  name: string | null /* Windows.Win32.Foundation.PWSTR */,
+  name: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   type: GDI_IMAGE_TYPE /* Windows.Win32.UI.WindowsAndMessaging.GDI_IMAGE_TYPE */,
   cx: number /* i32 */,
   cy: number /* i32 */,
@@ -9784,8 +9784,8 @@ export function ArrangeIconicWindows(
 }
 
 export function CreateMDIWindowA(
-  lpClassName: string | null /* Windows.Win32.Foundation.PSTR */,
-  lpWindowName: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpClassName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  lpWindowName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   dwStyle: WINDOW_STYLE /* Windows.Win32.UI.WindowsAndMessaging.WINDOW_STYLE */,
   X: number /* i32 */,
   Y: number /* i32 */,
@@ -9799,8 +9799,8 @@ export function CreateMDIWindowA(
 }
 
 export function CreateMDIWindowW(
-  lpClassName: string | null /* Windows.Win32.Foundation.PWSTR */,
-  lpWindowName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpClassName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  lpWindowName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   dwStyle: WINDOW_STYLE /* Windows.Win32.UI.WindowsAndMessaging.WINDOW_STYLE */,
   X: number /* i32 */,
   Y: number /* i32 */,
@@ -9863,7 +9863,7 @@ export function SetDebugErrorLevel(
 
 export function InternalGetWindowText(
   hWnd: Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */,
-  pString: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pString: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   cchMaxCount: number /* i32 */,
 ): number /* i32 */ {
   return libUSER32_dll.InternalGetWindowText(util.hwndToFfi(hWnd), util.pwstrToFfi(pString), cchMaxCount);
@@ -9897,7 +9897,7 @@ export function InheritWindowMonitor(
 
 export function GetWindowModuleFileNameA(
   hwnd: Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */,
-  pszFileName: string | null /* Windows.Win32.Foundation.PSTR */,
+  pszFileName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   cchFileNameMax: number /* u32 */,
 ): number /* u32 */ {
   return libUSER32_dll.GetWindowModuleFileNameA(util.hwndToFfi(hwnd), util.pstrToFfi(pszFileName), cchFileNameMax);
@@ -9905,7 +9905,7 @@ export function GetWindowModuleFileNameA(
 
 export function GetWindowModuleFileNameW(
   hwnd: Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */,
-  pszFileName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pszFileName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   cchFileNameMax: number /* u32 */,
 ): number /* u32 */ {
   return libUSER32_dll.GetWindowModuleFileNameW(util.hwndToFfi(hwnd), util.pwstrToFfi(pszFileName), cchFileNameMax);
@@ -9964,7 +9964,7 @@ export function RealChildWindowFromPoint(
 
 export function RealGetWindowClassA(
   hwnd: Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */,
-  ptszClassName: string | null /* Windows.Win32.Foundation.PSTR */,
+  ptszClassName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   cchClassNameMax: number /* u32 */,
 ): number /* u32 */ {
   return libUSER32_dll.RealGetWindowClassA(util.hwndToFfi(hwnd), util.pstrToFfi(ptszClassName), cchClassNameMax);
@@ -9972,7 +9972,7 @@ export function RealGetWindowClassA(
 
 export function RealGetWindowClassW(
   hwnd: Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */,
-  ptszClassName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  ptszClassName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   cchClassNameMax: number /* u32 */,
 ): number /* u32 */ {
   return libUSER32_dll.RealGetWindowClassW(util.hwndToFfi(hwnd), util.pwstrToFfi(ptszClassName), cchClassNameMax);
@@ -9982,7 +9982,7 @@ export function GetAltTabInfoA(
   hwnd: Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */,
   iItem: number /* i32 */,
   pati: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pszItemText: string | null /* Windows.Win32.Foundation.PSTR */,
+  pszItemText: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   cchItemText: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libUSER32_dll.GetAltTabInfoA(util.hwndToFfi(hwnd), iItem, util.toPointer(pati), util.pstrToFfi(pszItemText), cchItemText));
@@ -9992,7 +9992,7 @@ export function GetAltTabInfoW(
   hwnd: Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */,
   iItem: number /* i32 */,
   pati: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pszItemText: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pszItemText: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   cchItemText: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libUSER32_dll.GetAltTabInfoW(util.hwndToFfi(hwnd), iItem, util.toPointer(pati), util.pwstrToFfi(pszItemText), cchItemText));
@@ -10015,8 +10015,8 @@ export function ChangeWindowMessageFilterEx(
 }
 
 export function CreateResourceIndexer(
-  projectRoot: string | null /* Windows.Win32.Foundation.PWSTR */,
-  extensionDllPath: string | null /* Windows.Win32.Foundation.PWSTR */,
+  projectRoot: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  extensionDllPath: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   ppResourceIndexer: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
   return util.pointerFromFfi(libMrmSupport_dll.CreateResourceIndexer(util.pwstrToFfi(projectRoot), util.pwstrToFfi(extensionDllPath), util.toPointer(ppResourceIndexer)));
@@ -10030,7 +10030,7 @@ export function DestroyResourceIndexer(
 
 export function IndexFilePath(
   resourceIndexer: Deno.PointerValue | Uint8Array | null /* ptr */,
-  filePath: string | null /* Windows.Win32.Foundation.PWSTR */,
+  filePath: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   ppResourceUri: Deno.PointerValue | Uint8Array | null /* ptr */,
   pQualifierCount: Deno.PointerValue | Uint8Array | null /* ptr */,
   ppQualifiers: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -10039,7 +10039,7 @@ export function IndexFilePath(
 }
 
 export function DestroyIndexedResults(
-  resourceUri: string | null /* Windows.Win32.Foundation.PWSTR */,
+  resourceUri: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   qualifierCount: number /* u32 */,
   qualifiers: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): void /* void */ {
@@ -10047,39 +10047,39 @@ export function DestroyIndexedResults(
 }
 
 export function MrmCreateResourceIndexer(
-  packageFamilyName: string | null /* Windows.Win32.Foundation.PWSTR */,
-  projectRoot: string | null /* Windows.Win32.Foundation.PWSTR */,
+  packageFamilyName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  projectRoot: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   platformVersion: MrmPlatformVersion /* Windows.Win32.UI.WindowsAndMessaging.MrmPlatformVersion */,
-  defaultQualifiers: string | null /* Windows.Win32.Foundation.PWSTR */,
+  defaultQualifiers: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   indexer: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
   return util.pointerFromFfi(libMrmSupport_dll.MrmCreateResourceIndexer(util.pwstrToFfi(packageFamilyName), util.pwstrToFfi(projectRoot), platformVersion, util.pwstrToFfi(defaultQualifiers), util.toPointer(indexer)));
 }
 
 export function MrmCreateResourceIndexerFromPreviousSchemaFile(
-  projectRoot: string | null /* Windows.Win32.Foundation.PWSTR */,
+  projectRoot: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   platformVersion: MrmPlatformVersion /* Windows.Win32.UI.WindowsAndMessaging.MrmPlatformVersion */,
-  defaultQualifiers: string | null /* Windows.Win32.Foundation.PWSTR */,
-  schemaFile: string | null /* Windows.Win32.Foundation.PWSTR */,
+  defaultQualifiers: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  schemaFile: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   indexer: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
   return util.pointerFromFfi(libMrmSupport_dll.MrmCreateResourceIndexerFromPreviousSchemaFile(util.pwstrToFfi(projectRoot), platformVersion, util.pwstrToFfi(defaultQualifiers), util.pwstrToFfi(schemaFile), util.toPointer(indexer)));
 }
 
 export function MrmCreateResourceIndexerFromPreviousPriFile(
-  projectRoot: string | null /* Windows.Win32.Foundation.PWSTR */,
+  projectRoot: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   platformVersion: MrmPlatformVersion /* Windows.Win32.UI.WindowsAndMessaging.MrmPlatformVersion */,
-  defaultQualifiers: string | null /* Windows.Win32.Foundation.PWSTR */,
-  priFile: string | null /* Windows.Win32.Foundation.PWSTR */,
+  defaultQualifiers: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  priFile: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   indexer: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
   return util.pointerFromFfi(libMrmSupport_dll.MrmCreateResourceIndexerFromPreviousPriFile(util.pwstrToFfi(projectRoot), platformVersion, util.pwstrToFfi(defaultQualifiers), util.pwstrToFfi(priFile), util.toPointer(indexer)));
 }
 
 export function MrmCreateResourceIndexerFromPreviousSchemaData(
-  projectRoot: string | null /* Windows.Win32.Foundation.PWSTR */,
+  projectRoot: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   platformVersion: MrmPlatformVersion /* Windows.Win32.UI.WindowsAndMessaging.MrmPlatformVersion */,
-  defaultQualifiers: string | null /* Windows.Win32.Foundation.PWSTR */,
+  defaultQualifiers: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   schemaXmlData: Deno.PointerValue | Uint8Array | null /* ptr */,
   schemaXmlSize: number /* u32 */,
   indexer: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -10088,9 +10088,9 @@ export function MrmCreateResourceIndexerFromPreviousSchemaData(
 }
 
 export function MrmCreateResourceIndexerFromPreviousPriData(
-  projectRoot: string | null /* Windows.Win32.Foundation.PWSTR */,
+  projectRoot: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   platformVersion: MrmPlatformVersion /* Windows.Win32.UI.WindowsAndMessaging.MrmPlatformVersion */,
-  defaultQualifiers: string | null /* Windows.Win32.Foundation.PWSTR */,
+  defaultQualifiers: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   priData: Deno.PointerValue | Uint8Array | null /* ptr */,
   priSize: number /* u32 */,
   indexer: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -10099,10 +10099,10 @@ export function MrmCreateResourceIndexerFromPreviousPriData(
 }
 
 export function MrmCreateResourceIndexerWithFlags(
-  packageFamilyName: string | null /* Windows.Win32.Foundation.PWSTR */,
-  projectRoot: string | null /* Windows.Win32.Foundation.PWSTR */,
+  packageFamilyName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  projectRoot: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   platformVersion: MrmPlatformVersion /* Windows.Win32.UI.WindowsAndMessaging.MrmPlatformVersion */,
-  defaultQualifiers: string | null /* Windows.Win32.Foundation.PWSTR */,
+  defaultQualifiers: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   flags: MrmIndexerFlags /* Windows.Win32.UI.WindowsAndMessaging.MrmIndexerFlags */,
   indexer: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
@@ -10111,42 +10111,42 @@ export function MrmCreateResourceIndexerWithFlags(
 
 export function MrmIndexString(
   indexer: Uint8Array | Deno.PointerValue | null /* Windows.Win32.UI.WindowsAndMessaging.MrmResourceIndexerHandle */,
-  resourceUri: string | null /* Windows.Win32.Foundation.PWSTR */,
-  resourceString: string | null /* Windows.Win32.Foundation.PWSTR */,
-  qualifiers: string | null /* Windows.Win32.Foundation.PWSTR */,
+  resourceUri: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  resourceString: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  qualifiers: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
   return util.pointerFromFfi(libMrmSupport_dll.MrmIndexString(util.toPointer(indexer), util.pwstrToFfi(resourceUri), util.pwstrToFfi(resourceString), util.pwstrToFfi(qualifiers)));
 }
 
 export function MrmIndexEmbeddedData(
   indexer: Uint8Array | Deno.PointerValue | null /* Windows.Win32.UI.WindowsAndMessaging.MrmResourceIndexerHandle */,
-  resourceUri: string | null /* Windows.Win32.Foundation.PWSTR */,
+  resourceUri: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   embeddedData: Deno.PointerValue | Uint8Array | null /* ptr */,
   embeddedDataSize: number /* u32 */,
-  qualifiers: string | null /* Windows.Win32.Foundation.PWSTR */,
+  qualifiers: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
   return util.pointerFromFfi(libMrmSupport_dll.MrmIndexEmbeddedData(util.toPointer(indexer), util.pwstrToFfi(resourceUri), util.toPointer(embeddedData), embeddedDataSize, util.pwstrToFfi(qualifiers)));
 }
 
 export function MrmIndexFile(
   indexer: Uint8Array | Deno.PointerValue | null /* Windows.Win32.UI.WindowsAndMessaging.MrmResourceIndexerHandle */,
-  resourceUri: string | null /* Windows.Win32.Foundation.PWSTR */,
-  filePath: string | null /* Windows.Win32.Foundation.PWSTR */,
-  qualifiers: string | null /* Windows.Win32.Foundation.PWSTR */,
+  resourceUri: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  filePath: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  qualifiers: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
   return util.pointerFromFfi(libMrmSupport_dll.MrmIndexFile(util.toPointer(indexer), util.pwstrToFfi(resourceUri), util.pwstrToFfi(filePath), util.pwstrToFfi(qualifiers)));
 }
 
 export function MrmIndexFileAutoQualifiers(
   indexer: Uint8Array | Deno.PointerValue | null /* Windows.Win32.UI.WindowsAndMessaging.MrmResourceIndexerHandle */,
-  filePath: string | null /* Windows.Win32.Foundation.PWSTR */,
+  filePath: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
   return util.pointerFromFfi(libMrmSupport_dll.MrmIndexFileAutoQualifiers(util.toPointer(indexer), util.pwstrToFfi(filePath)));
 }
 
 export function MrmIndexResourceContainerAutoQualifiers(
   indexer: Uint8Array | Deno.PointerValue | null /* Windows.Win32.UI.WindowsAndMessaging.MrmResourceIndexerHandle */,
-  containerPath: string | null /* Windows.Win32.Foundation.PWSTR */,
+  containerPath: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
   return util.pointerFromFfi(libMrmSupport_dll.MrmIndexResourceContainerAutoQualifiers(util.toPointer(indexer), util.pwstrToFfi(containerPath)));
 }
@@ -10155,7 +10155,7 @@ export function MrmCreateResourceFile(
   indexer: Uint8Array | Deno.PointerValue | null /* Windows.Win32.UI.WindowsAndMessaging.MrmResourceIndexerHandle */,
   packagingMode: MrmPackagingMode /* Windows.Win32.UI.WindowsAndMessaging.MrmPackagingMode */,
   packagingOptions: MrmPackagingOptions /* Windows.Win32.UI.WindowsAndMessaging.MrmPackagingOptions */,
-  outputDirectory: string | null /* Windows.Win32.Foundation.PWSTR */,
+  outputDirectory: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
   return util.pointerFromFfi(libMrmSupport_dll.MrmCreateResourceFile(util.toPointer(indexer), packagingMode, packagingOptions, util.pwstrToFfi(outputDirectory)));
 }
@@ -10165,7 +10165,7 @@ export function MrmCreateResourceFileWithChecksum(
   packagingMode: MrmPackagingMode /* Windows.Win32.UI.WindowsAndMessaging.MrmPackagingMode */,
   packagingOptions: MrmPackagingOptions /* Windows.Win32.UI.WindowsAndMessaging.MrmPackagingOptions */,
   checksum: number /* u32 */,
-  outputDirectory: string | null /* Windows.Win32.Foundation.PWSTR */,
+  outputDirectory: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
   return util.pointerFromFfi(libMrmSupport_dll.MrmCreateResourceFileWithChecksum(util.toPointer(indexer), packagingMode, packagingOptions, checksum, util.pwstrToFfi(outputDirectory)));
 }
@@ -10201,17 +10201,17 @@ export function MrmFreeMemory(
 }
 
 export function MrmDumpPriFile(
-  indexFileName: string | null /* Windows.Win32.Foundation.PWSTR */,
-  schemaPriFile: string | null /* Windows.Win32.Foundation.PWSTR */,
+  indexFileName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  schemaPriFile: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   dumpType: MrmDumpType /* Windows.Win32.UI.WindowsAndMessaging.MrmDumpType */,
-  outputXmlFile: string | null /* Windows.Win32.Foundation.PWSTR */,
+  outputXmlFile: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
   return util.pointerFromFfi(libMrmSupport_dll.MrmDumpPriFile(util.pwstrToFfi(indexFileName), util.pwstrToFfi(schemaPriFile), dumpType, util.pwstrToFfi(outputXmlFile)));
 }
 
 export function MrmDumpPriFileInMemory(
-  indexFileName: string | null /* Windows.Win32.Foundation.PWSTR */,
-  schemaPriFile: string | null /* Windows.Win32.Foundation.PWSTR */,
+  indexFileName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  schemaPriFile: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   dumpType: MrmDumpType /* Windows.Win32.UI.WindowsAndMessaging.MrmDumpType */,
   outputXmlData: Deno.PointerValue | Uint8Array | null /* ptr */,
   outputXmlSize: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -10233,15 +10233,15 @@ export function MrmDumpPriDataInMemory(
 
 export function MrmCreateConfig(
   platformVersion: MrmPlatformVersion /* Windows.Win32.UI.WindowsAndMessaging.MrmPlatformVersion */,
-  defaultQualifiers: string | null /* Windows.Win32.Foundation.PWSTR */,
-  outputXmlFile: string | null /* Windows.Win32.Foundation.PWSTR */,
+  defaultQualifiers: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  outputXmlFile: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
   return util.pointerFromFfi(libMrmSupport_dll.MrmCreateConfig(platformVersion, util.pwstrToFfi(defaultQualifiers), util.pwstrToFfi(outputXmlFile)));
 }
 
 export function MrmCreateConfigInMemory(
   platformVersion: MrmPlatformVersion /* Windows.Win32.UI.WindowsAndMessaging.MrmPlatformVersion */,
-  defaultQualifiers: string | null /* Windows.Win32.Foundation.PWSTR */,
+  defaultQualifiers: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   outputXmlData: Deno.PointerValue | Uint8Array | null /* ptr */,
   outputXmlSize: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
@@ -10249,7 +10249,7 @@ export function MrmCreateConfigInMemory(
 }
 
 export function MrmGetPriFileContentChecksum(
-  priFile: string | null /* Windows.Win32.Foundation.PWSTR */,
+  priFile: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   checksum: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
   return util.pointerFromFfi(libMrmSupport_dll.MrmGetPriFileContentChecksum(util.pwstrToFfi(priFile), util.toPointer(checksum)));

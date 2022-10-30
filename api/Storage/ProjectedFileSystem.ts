@@ -154,7 +154,7 @@ export interface PRJ_NOTIFICATION_MAPPING {
   /** Windows.Win32.Storage.ProjectedFileSystem.PRJ_NOTIFY_TYPES */
   NotificationBitMask: PRJ_NOTIFY_TYPES;
   /** Windows.Win32.Foundation.PWSTR */
-  NotificationRoot: string | null;
+  NotificationRoot: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeofPRJ_NOTIFICATION_MAPPING = 16;
@@ -263,7 +263,7 @@ export interface _u_e__Struct {
   /** u32 */
   dwValue: number;
   /** Windows.Win32.Foundation.PWSTR */
-  pwszName: string | null;
+  pwszName: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeof_u_e__Struct = 16;
@@ -472,13 +472,13 @@ export interface PRJ_CALLBACK_DATA {
   /** System.Guid */
   DataStreamId: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.Foundation.PWSTR */
-  FilePathName: string | null;
+  FilePathName: string | null | Uint8Array | Uint16Array;
   /** ptr */
   VersionInfo: Deno.PointerValue | Uint8Array | null;
   /** u32 */
   TriggeringProcessId: number;
   /** Windows.Win32.Foundation.PWSTR */
-  TriggeringProcessImageFileName: string | null;
+  TriggeringProcessImageFileName: string | null | Uint8Array | Uint16Array;
   /** ptr */
   InstanceContext: Deno.PointerValue | Uint8Array | null;
 }
@@ -760,7 +760,7 @@ try {
 // Symbols
 
 export function PrjStartVirtualizing(
-  virtualizationRootPath: string | null /* Windows.Win32.Foundation.PWSTR */,
+  virtualizationRootPath: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   callbacks: Deno.PointerValue | Uint8Array | null /* ptr */,
   instanceContext: Deno.PointerValue | Uint8Array | null /* ptr */,
   options: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -790,8 +790,8 @@ export function PrjGetVirtualizationInstanceInfo(
 }
 
 export function PrjMarkDirectoryAsPlaceholder(
-  rootPathName: string | null /* Windows.Win32.Foundation.PWSTR */,
-  targetPathName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  rootPathName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  targetPathName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   versionInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
   virtualizationInstanceID: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
@@ -800,7 +800,7 @@ export function PrjMarkDirectoryAsPlaceholder(
 
 export function PrjWritePlaceholderInfo(
   namespaceVirtualizationContext: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Storage.ProjectedFileSystem.PRJ_NAMESPACE_VIRTUALIZATION_CONTEXT */,
-  destinationFileName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  destinationFileName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   placeholderInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
   placeholderInfoSize: number /* u32 */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
@@ -809,7 +809,7 @@ export function PrjWritePlaceholderInfo(
 
 export function PrjWritePlaceholderInfo2(
   namespaceVirtualizationContext: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Storage.ProjectedFileSystem.PRJ_NAMESPACE_VIRTUALIZATION_CONTEXT */,
-  destinationFileName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  destinationFileName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   placeholderInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
   placeholderInfoSize: number /* u32 */,
   ExtendedInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -819,7 +819,7 @@ export function PrjWritePlaceholderInfo2(
 
 export function PrjUpdateFileIfNeeded(
   namespaceVirtualizationContext: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Storage.ProjectedFileSystem.PRJ_NAMESPACE_VIRTUALIZATION_CONTEXT */,
-  destinationFileName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  destinationFileName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   placeholderInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
   placeholderInfoSize: number /* u32 */,
   updateFlags: PRJ_UPDATE_TYPES /* Windows.Win32.Storage.ProjectedFileSystem.PRJ_UPDATE_TYPES */,
@@ -830,7 +830,7 @@ export function PrjUpdateFileIfNeeded(
 
 export function PrjDeleteFile(
   namespaceVirtualizationContext: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Storage.ProjectedFileSystem.PRJ_NAMESPACE_VIRTUALIZATION_CONTEXT */,
-  destinationFileName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  destinationFileName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   updateFlags: PRJ_UPDATE_TYPES /* Windows.Win32.Storage.ProjectedFileSystem.PRJ_UPDATE_TYPES */,
   failureReason: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
@@ -848,7 +848,7 @@ export function PrjWriteFileData(
 }
 
 export function PrjGetOnDiskFileState(
-  destinationFileName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  destinationFileName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   fileState: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
   return util.pointerFromFfi(libPROJECTEDFSLIB_dll.PrjGetOnDiskFileState(util.pwstrToFfi(destinationFileName), util.toPointer(fileState)));
@@ -877,7 +877,7 @@ export function PrjCompleteCommand(
 }
 
 export function PrjFillDirEntryBuffer(
-  fileName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  fileName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   fileBasicInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
   dirEntryBufferHandle: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Storage.ProjectedFileSystem.PRJ_DIR_ENTRY_BUFFER_HANDLE */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
@@ -886,7 +886,7 @@ export function PrjFillDirEntryBuffer(
 
 export function PrjFillDirEntryBuffer2(
   dirEntryBufferHandle: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Storage.ProjectedFileSystem.PRJ_DIR_ENTRY_BUFFER_HANDLE */,
-  fileName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  fileName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   fileBasicInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
   extendedInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
@@ -894,21 +894,21 @@ export function PrjFillDirEntryBuffer2(
 }
 
 export function PrjFileNameMatch(
-  fileNameToCheck: string | null /* Windows.Win32.Foundation.PWSTR */,
-  pattern: string | null /* Windows.Win32.Foundation.PWSTR */,
+  fileNameToCheck: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  pattern: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.BOOLEAN */ {
   return util.pointerFromFfi(libPROJECTEDFSLIB_dll.PrjFileNameMatch(util.pwstrToFfi(fileNameToCheck), util.pwstrToFfi(pattern)));
 }
 
 export function PrjFileNameCompare(
-  fileName1: string | null /* Windows.Win32.Foundation.PWSTR */,
-  fileName2: string | null /* Windows.Win32.Foundation.PWSTR */,
+  fileName1: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  fileName2: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* i32 */ {
   return libPROJECTEDFSLIB_dll.PrjFileNameCompare(util.pwstrToFfi(fileName1), util.pwstrToFfi(fileName2));
 }
 
 export function PrjDoesNameContainWildCards(
-  fileName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  fileName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.BOOLEAN */ {
   return util.pointerFromFfi(libPROJECTEDFSLIB_dll.PrjDoesNameContainWildCards(util.pwstrToFfi(fileName)));
 }

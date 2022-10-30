@@ -84,9 +84,9 @@ export type PWSTR = Deno.PointerValue | Uint8Array | null;
  */
 export interface MANAGEMENT_SERVICE_INFO {
   /** Windows.Win32.Foundation.PWSTR */
-  pszMDMServiceUri: string | null;
+  pszMDMServiceUri: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pszAuthenticationUri: string | null;
+  pszAuthenticationUri: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeofMANAGEMENT_SERVICE_INFO = 16;
@@ -118,9 +118,9 @@ export interface MANAGEMENT_REGISTRATION_INFO {
   /** u32 */
   dwDeviceRegistionKind: number;
   /** Windows.Win32.Foundation.PWSTR */
-  pszUPN: string | null;
+  pszUPN: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pszMDMServiceUri: string | null;
+  pszMDMServiceUri: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeofMANAGEMENT_REGISTRATION_INFO = 24;
@@ -245,7 +245,7 @@ export function GetDeviceRegistrationInfo(
 export function IsDeviceRegisteredWithManagement(
   pfIsDeviceRegisteredWithManagement: Deno.PointerValue | Uint8Array | null /* ptr */,
   cchUPN: number /* u32 */,
-  pszUPN: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pszUPN: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
   return util.pointerFromFfi(libMDMRegistration_dll.IsDeviceRegisteredWithManagement(util.toPointer(pfIsDeviceRegisteredWithManagement), cchUPN, util.pwstrToFfi(pszUPN)));
 }
@@ -269,7 +269,7 @@ export function SetManagedExternally(
 }
 
 export function DiscoverManagementService(
-  pszUPN: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pszUPN: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   ppMgmtInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
   return util.pointerFromFfi(libMDMRegistration_dll.DiscoverManagementService(util.pwstrToFfi(pszUPN), util.toPointer(ppMgmtInfo)));
@@ -286,50 +286,50 @@ export function RegisterDeviceWithManagementUsingAADDeviceCredentials(): Deno.Po
 }
 
 export function RegisterDeviceWithManagementUsingAADDeviceCredentials2(
-  MDMApplicationID: string | null /* Windows.Win32.Foundation.PWSTR */,
+  MDMApplicationID: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
   return util.pointerFromFfi(libMDMRegistration_dll.RegisterDeviceWithManagementUsingAADDeviceCredentials2(util.pwstrToFfi(MDMApplicationID)));
 }
 
 export function RegisterDeviceWithManagement(
-  pszUPN: string | null /* Windows.Win32.Foundation.PWSTR */,
-  ppszMDMServiceUri: string | null /* Windows.Win32.Foundation.PWSTR */,
-  ppzsAccessToken: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pszUPN: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  ppszMDMServiceUri: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  ppzsAccessToken: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
   return util.pointerFromFfi(libMDMRegistration_dll.RegisterDeviceWithManagement(util.pwstrToFfi(pszUPN), util.pwstrToFfi(ppszMDMServiceUri), util.pwstrToFfi(ppzsAccessToken)));
 }
 
 export function UnregisterDeviceWithManagement(
-  enrollmentID: string | null /* Windows.Win32.Foundation.PWSTR */,
+  enrollmentID: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
   return util.pointerFromFfi(libMDMRegistration_dll.UnregisterDeviceWithManagement(util.pwstrToFfi(enrollmentID)));
 }
 
 export function GetDeviceManagementConfigInfo(
-  providerID: string | null /* Windows.Win32.Foundation.PWSTR */,
+  providerID: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   configStringBufferLength: Deno.PointerValue | Uint8Array | null /* ptr */,
-  configString: string | null /* Windows.Win32.Foundation.PWSTR */,
+  configString: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
   return util.pointerFromFfi(libMDMRegistration_dll.GetDeviceManagementConfigInfo(util.pwstrToFfi(providerID), util.toPointer(configStringBufferLength), util.pwstrToFfi(configString)));
 }
 
 export function SetDeviceManagementConfigInfo(
-  providerID: string | null /* Windows.Win32.Foundation.PWSTR */,
-  configString: string | null /* Windows.Win32.Foundation.PWSTR */,
+  providerID: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  configString: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
   return util.pointerFromFfi(libMDMRegistration_dll.SetDeviceManagementConfigInfo(util.pwstrToFfi(providerID), util.pwstrToFfi(configString)));
 }
 
 export function GetManagementAppHyperlink(
   cchHyperlink: number /* u32 */,
-  pszHyperlink: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pszHyperlink: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
   return util.pointerFromFfi(libMDMRegistration_dll.GetManagementAppHyperlink(cchHyperlink, util.pwstrToFfi(pszHyperlink)));
 }
 
 export function DiscoverManagementServiceEx(
-  pszUPN: string | null /* Windows.Win32.Foundation.PWSTR */,
-  pszDiscoveryServiceCandidate: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pszUPN: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  pszDiscoveryServiceCandidate: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   ppMgmtInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
   return util.pointerFromFfi(libMDMRegistration_dll.DiscoverManagementServiceEx(util.pwstrToFfi(pszUPN), util.pwstrToFfi(pszDiscoveryServiceCandidate), util.toPointer(ppMgmtInfo)));
@@ -342,7 +342,7 @@ export function RegisterDeviceWithLocalManagement(
 }
 
 export function ApplyLocalManagementSyncML(
-  syncMLRequest: string | null /* Windows.Win32.Foundation.PWSTR */,
+  syncMLRequest: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   syncMLResult: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
   return util.pointerFromFfi(libMDMLocalManagement_dll.ApplyLocalManagementSyncML(util.pwstrToFfi(syncMLRequest), util.toPointer(syncMLResult)));

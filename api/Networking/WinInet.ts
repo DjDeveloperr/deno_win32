@@ -1281,7 +1281,7 @@ export interface INTERNET_PER_CONN_OPTION_LISTA {
   /** u32 */
   dwSize: number;
   /** Windows.Win32.Foundation.PSTR */
-  pszConnection: string | null;
+  pszConnection: string | null | Uint8Array;
   /** u32 */
   dwOptionCount: number;
   /** u32 */
@@ -1321,7 +1321,7 @@ export interface INTERNET_PER_CONN_OPTION_LISTW {
   /** u32 */
   dwSize: number;
   /** Windows.Win32.Foundation.PWSTR */
-  pszConnection: string | null;
+  pszConnection: string | null | Uint8Array | Uint16Array;
   /** u32 */
   dwOptionCount: number;
   /** u32 */
@@ -1403,31 +1403,31 @@ export interface URL_COMPONENTSA {
   /** u32 */
   dwStructSize: number;
   /** Windows.Win32.Foundation.PSTR */
-  lpszScheme: string | null;
+  lpszScheme: string | null | Uint8Array;
   /** u32 */
   dwSchemeLength: number;
   /** Windows.Win32.Networking.WinInet.INTERNET_SCHEME */
   nScheme: INTERNET_SCHEME;
   /** Windows.Win32.Foundation.PSTR */
-  lpszHostName: string | null;
+  lpszHostName: string | null | Uint8Array;
   /** u32 */
   dwHostNameLength: number;
   /** u16 */
   nPort: number;
   /** Windows.Win32.Foundation.PSTR */
-  lpszUserName: string | null;
+  lpszUserName: string | null | Uint8Array;
   /** u32 */
   dwUserNameLength: number;
   /** Windows.Win32.Foundation.PSTR */
-  lpszPassword: string | null;
+  lpszPassword: string | null | Uint8Array;
   /** u32 */
   dwPasswordLength: number;
   /** Windows.Win32.Foundation.PSTR */
-  lpszUrlPath: string | null;
+  lpszUrlPath: string | null | Uint8Array;
   /** u32 */
   dwUrlPathLength: number;
   /** Windows.Win32.Foundation.PSTR */
-  lpszExtraInfo: string | null;
+  lpszExtraInfo: string | null | Uint8Array;
   /** u32 */
   dwExtraInfoLength: number;
 }
@@ -1501,31 +1501,31 @@ export interface URL_COMPONENTSW {
   /** u32 */
   dwStructSize: number;
   /** Windows.Win32.Foundation.PWSTR */
-  lpszScheme: string | null;
+  lpszScheme: string | null | Uint8Array | Uint16Array;
   /** u32 */
   dwSchemeLength: number;
   /** Windows.Win32.Networking.WinInet.INTERNET_SCHEME */
   nScheme: INTERNET_SCHEME;
   /** Windows.Win32.Foundation.PWSTR */
-  lpszHostName: string | null;
+  lpszHostName: string | null | Uint8Array | Uint16Array;
   /** u32 */
   dwHostNameLength: number;
   /** u16 */
   nPort: number;
   /** Windows.Win32.Foundation.PWSTR */
-  lpszUserName: string | null;
+  lpszUserName: string | null | Uint8Array | Uint16Array;
   /** u32 */
   dwUserNameLength: number;
   /** Windows.Win32.Foundation.PWSTR */
-  lpszPassword: string | null;
+  lpszPassword: string | null | Uint8Array | Uint16Array;
   /** u32 */
   dwPasswordLength: number;
   /** Windows.Win32.Foundation.PWSTR */
-  lpszUrlPath: string | null;
+  lpszUrlPath: string | null | Uint8Array | Uint16Array;
   /** u32 */
   dwUrlPathLength: number;
   /** Windows.Win32.Foundation.PWSTR */
-  lpszExtraInfo: string | null;
+  lpszExtraInfo: string | null | Uint8Array | Uint16Array;
   /** u32 */
   dwExtraInfoLength: number;
 }
@@ -1670,7 +1670,7 @@ export interface INTERNET_BUFFERSA {
   /** ptr */
   Next: Deno.PointerValue | Uint8Array | null;
   /** Windows.Win32.Foundation.PSTR */
-  lpcszHeader: string | null;
+  lpcszHeader: string | null | Uint8Array;
   /** u32 */
   dwHeadersLength: number;
   /** u32 */
@@ -1728,7 +1728,7 @@ export interface INTERNET_BUFFERSW {
   /** ptr */
   Next: Deno.PointerValue | Uint8Array | null;
   /** Windows.Win32.Foundation.PWSTR */
-  lpcszHeader: string | null;
+  lpcszHeader: string | null | Uint8Array | Uint16Array;
   /** u32 */
   dwHeadersLength: number;
   /** u32 */
@@ -1794,7 +1794,7 @@ export interface IncomingCookieState {
   /** i32 */
   cBlocked: number;
   /** Windows.Win32.Foundation.PSTR */
-  pszLocation: string | null;
+  pszLocation: string | null | Uint8Array;
 }
 
 export const sizeofIncomingCookieState = 32;
@@ -1831,7 +1831,7 @@ export interface OutgoingCookieState {
   /** i32 */
   cSuppressed: number;
   /** Windows.Win32.Foundation.PSTR */
-  pszLocation: string | null;
+  pszLocation: string | null | Uint8Array;
 }
 
 export const sizeofOutgoingCookieState = 16;
@@ -2451,13 +2451,13 @@ export function allocGOPHER_ATTRIBUTE_TYPE(data?: Partial<GOPHER_ATTRIBUTE_TYPE>
  */
 export interface INTERNET_COOKIE2 {
   /** Windows.Win32.Foundation.PWSTR */
-  pwszName: string | null;
+  pwszName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pwszValue: string | null;
+  pwszValue: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pwszDomain: string | null;
+  pwszDomain: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pwszPath: string | null;
+  pwszPath: string | null | Uint8Array | Uint16Array;
   /** u32 */
   dwFlags: number;
   /** Windows.Win32.Foundation.FILETIME */
@@ -2583,9 +2583,9 @@ export interface INTERNET_CACHE_ENTRY_INFOA {
   /** u32 */
   dwStructSize: number;
   /** Windows.Win32.Foundation.PSTR */
-  lpszSourceUrlName: string | null;
+  lpszSourceUrlName: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  lpszLocalFileName: string | null;
+  lpszLocalFileName: string | null | Uint8Array;
   /** u32 */
   CacheEntryType: number;
   /** u32 */
@@ -2605,11 +2605,11 @@ export interface INTERNET_CACHE_ENTRY_INFOA {
   /** Windows.Win32.Foundation.FILETIME */
   LastSyncTime: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.Foundation.PSTR */
-  lpHeaderInfo: string | null;
+  lpHeaderInfo: string | null | Uint8Array;
   /** u32 */
   dwHeaderInfoSize: number;
   /** Windows.Win32.Foundation.PSTR */
-  lpszFileExtension: string | null;
+  lpszFileExtension: string | null | Uint8Array;
   /** _Anonymous_e__Union */
   Anonymous: Uint8Array | Deno.PointerValue | null;
 }
@@ -2676,9 +2676,9 @@ export interface INTERNET_CACHE_ENTRY_INFOW {
   /** u32 */
   dwStructSize: number;
   /** Windows.Win32.Foundation.PWSTR */
-  lpszSourceUrlName: string | null;
+  lpszSourceUrlName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  lpszLocalFileName: string | null;
+  lpszLocalFileName: string | null | Uint8Array | Uint16Array;
   /** u32 */
   CacheEntryType: number;
   /** u32 */
@@ -2698,11 +2698,11 @@ export interface INTERNET_CACHE_ENTRY_INFOW {
   /** Windows.Win32.Foundation.FILETIME */
   LastSyncTime: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.Foundation.PWSTR */
-  lpHeaderInfo: string | null;
+  lpHeaderInfo: string | null | Uint8Array | Uint16Array;
   /** u32 */
   dwHeaderInfoSize: number;
   /** Windows.Win32.Foundation.PWSTR */
-  lpszFileExtension: string | null;
+  lpszFileExtension: string | null | Uint8Array | Uint16Array;
   /** _Anonymous_e__Union */
   Anonymous: Uint8Array | Deno.PointerValue | null;
 }
@@ -2927,7 +2927,7 @@ export interface AUTO_PROXY_SCRIPT_BUFFER {
   /** u32 */
   dwStructSize: number;
   /** Windows.Win32.Foundation.PSTR */
-  lpszScriptBuffer: string | null;
+  lpszScriptBuffer: string | null | Uint8Array;
   /** u32 */
   dwScriptBufferSize: number;
 }
@@ -3211,7 +3211,7 @@ export function allocINTERNET_SECURITY_CONNECTION_INFO(data?: Partial<INTERNET_S
  */
 export interface INTERNET_DOWNLOAD_MODE_HANDLE {
   /** Windows.Win32.Foundation.PWSTR */
-  pcwszFileName: string | null;
+  pcwszFileName: string | null | Uint8Array | Uint16Array;
   /** ptr */
   phFile: Deno.PointerValue | Uint8Array | null;
 }
@@ -3259,7 +3259,7 @@ export function allocHTTP_REQUEST_TIMES(data?: Partial<HTTP_REQUEST_TIMES>): Uin
  */
 export interface INTERNET_SERVER_CONNECTION_STATE {
   /** Windows.Win32.Foundation.PWSTR */
-  lpcwszHostName: string | null;
+  lpcwszHostName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.BOOL */
   fProxy: boolean;
   /** u32 */
@@ -3332,13 +3332,13 @@ export function allocINTERNET_END_BROWSER_SESSION_DATA(data?: Partial<INTERNET_E
  */
 export interface INTERNET_CALLBACK_COOKIE {
   /** Windows.Win32.Foundation.PWSTR */
-  pcwszName: string | null;
+  pcwszName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pcwszValue: string | null;
+  pcwszValue: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pcwszDomain: string | null;
+  pcwszDomain: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pcwszPath: string | null;
+  pcwszPath: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.FILETIME */
   ftExpires: Uint8Array | Deno.PointerValue | null;
   /** u32 */
@@ -3383,15 +3383,15 @@ export function allocINTERNET_CALLBACK_COOKIE(data?: Partial<INTERNET_CALLBACK_C
  */
 export interface INTERNET_CREDENTIALS {
   /** Windows.Win32.Foundation.PWSTR */
-  lpcwszHostName: string | null;
+  lpcwszHostName: string | null | Uint8Array | Uint16Array;
   /** u32 */
   dwPort: number;
   /** u32 */
   dwScheme: number;
   /** Windows.Win32.Foundation.PWSTR */
-  lpcwszUrl: string | null;
+  lpcwszUrl: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  lpcwszRealm: string | null;
+  lpcwszRealm: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.BOOL */
   fAuthIdentity: boolean;
   /** _Anonymous_e__Union */
@@ -3481,21 +3481,21 @@ export interface INTERNET_COOKIE {
   /** u32 */
   cbSize: number;
   /** Windows.Win32.Foundation.PSTR */
-  pszName: string | null;
+  pszName: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  pszData: string | null;
+  pszData: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  pszDomain: string | null;
+  pszDomain: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  pszPath: string | null;
+  pszPath: string | null | Uint8Array;
   /** ptr */
   pftExpires: Deno.PointerValue | Uint8Array | null;
   /** u32 */
   dwFlags: number;
   /** Windows.Win32.Foundation.PSTR */
-  pszUrl: string | null;
+  pszUrl: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  pszP3PPolicy: string | null;
+  pszP3PPolicy: string | null | Uint8Array;
 }
 
 export const sizeofINTERNET_COOKIE = 72;
@@ -3549,7 +3549,7 @@ export function allocINTERNET_COOKIE(data?: Partial<INTERNET_COOKIE>): Uint8Arra
  */
 export interface COOKIE_DLG_INFO {
   /** Windows.Win32.Foundation.PWSTR */
-  pszServer: string | null;
+  pszServer: string | null | Uint8Array | Uint16Array;
   /** ptr */
   pic: Deno.PointerValue | Uint8Array | null;
   /** u32 */
@@ -3559,7 +3559,7 @@ export interface COOKIE_DLG_INFO {
   /** i32 */
   cy: number;
   /** Windows.Win32.Foundation.PWSTR */
-  pszHeader: string | null;
+  pszHeader: string | null | Uint8Array | Uint16Array;
   /** u32 */
   dwOperation: number;
 }
@@ -3757,13 +3757,13 @@ export interface INTERNET_CACHE_CONTAINER_INFOA {
   /** u32 */
   dwCacheVersion: number;
   /** Windows.Win32.Foundation.PSTR */
-  lpszName: string | null;
+  lpszName: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  lpszCachePrefix: string | null;
+  lpszCachePrefix: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  lpszVolumeLabel: string | null;
+  lpszVolumeLabel: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  lpszVolumeTitle: string | null;
+  lpszVolumeTitle: string | null | Uint8Array;
 }
 
 export const sizeofINTERNET_CACHE_CONTAINER_INFOA = 40;
@@ -3804,13 +3804,13 @@ export interface INTERNET_CACHE_CONTAINER_INFOW {
   /** u32 */
   dwCacheVersion: number;
   /** Windows.Win32.Foundation.PWSTR */
-  lpszName: string | null;
+  lpszName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  lpszCachePrefix: string | null;
+  lpszCachePrefix: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  lpszVolumeLabel: string | null;
+  lpszVolumeLabel: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  lpszVolumeTitle: string | null;
+  lpszVolumeTitle: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeofINTERNET_CACHE_CONTAINER_INFOW = 40;
@@ -3849,7 +3849,7 @@ export function allocINTERNET_CACHE_CONTAINER_INFOW(data?: Partial<INTERNET_CACH
  */
 export interface APP_CACHE_DOWNLOAD_ENTRY {
   /** Windows.Win32.Foundation.PWSTR */
-  pwszUrl: string | null;
+  pwszUrl: string | null | Uint8Array | Uint16Array;
   /** u32 */
   dwEntryType: number;
 }
@@ -3898,7 +3898,7 @@ export function allocAPP_CACHE_DOWNLOAD_LIST(data?: Partial<APP_CACHE_DOWNLOAD_L
  */
 export interface APP_CACHE_GROUP_INFO {
   /** Windows.Win32.Foundation.PWSTR */
-  pwszManifestUrl: string | null;
+  pwszManifestUrl: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.FILETIME */
   ftLastAccessTime: Uint8Array | Deno.PointerValue | null;
   /** u64 */
@@ -3950,9 +3950,9 @@ export function allocAPP_CACHE_GROUP_LIST(data?: Partial<APP_CACHE_GROUP_LIST>):
  */
 export interface URLCACHE_ENTRY_INFO {
   /** Windows.Win32.Foundation.PWSTR */
-  pwszSourceUrlName: string | null;
+  pwszSourceUrlName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pwszLocalFileName: string | null;
+  pwszLocalFileName: string | null | Uint8Array | Uint16Array;
   /** u32 */
   dwCacheEntryType: number;
   /** u32 */
@@ -4039,7 +4039,7 @@ export interface WININET_PROXY_INFO {
   /** Windows.Win32.Networking.WinInet.INTERNET_SCHEME */
   ProxyScheme: INTERNET_SCHEME;
   /** Windows.Win32.Foundation.PWSTR */
-  pwszProxy: string | null;
+  pwszProxy: string | null | Uint8Array | Uint16Array;
   /** u16 */
   ProxyPort: number;
 }
@@ -4126,13 +4126,13 @@ export function allocHTTP_WEB_SOCKET_ASYNC_RESULT(data?: Partial<HTTP_WEB_SOCKET
  */
 export interface ProofOfPossessionCookieInfo {
   /** Windows.Win32.Foundation.PWSTR */
-  name: string | null;
+  name: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  data: string | null;
+  data: string | null | Uint8Array | Uint16Array;
   /** u32 */
   flags: number;
   /** Windows.Win32.Foundation.PWSTR */
-  p3pHeader: string | null;
+  p3pHeader: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeofProofOfPossessionCookieInfo = 32;
@@ -5363,7 +5363,7 @@ try {
 export function InternetTimeFromSystemTimeA(
   pst: Deno.PointerValue | Uint8Array | null /* ptr */,
   dwRFC: number /* u32 */,
-  lpszTime: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpszTime: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   cbTime: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libWININET_dll.InternetTimeFromSystemTimeA(util.toPointer(pst), dwRFC, util.pstrToFfi(lpszTime), cbTime));
@@ -5372,7 +5372,7 @@ export function InternetTimeFromSystemTimeA(
 export function InternetTimeFromSystemTimeW(
   pst: Deno.PointerValue | Uint8Array | null /* ptr */,
   dwRFC: number /* u32 */,
-  lpszTime: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpszTime: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   cbTime: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libWININET_dll.InternetTimeFromSystemTimeW(util.toPointer(pst), dwRFC, util.pwstrToFfi(lpszTime), cbTime));
@@ -5381,14 +5381,14 @@ export function InternetTimeFromSystemTimeW(
 export function InternetTimeFromSystemTime(
   pst: Deno.PointerValue | Uint8Array | null /* ptr */,
   dwRFC: number /* u32 */,
-  lpszTime: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpszTime: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   cbTime: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libWININET_dll.InternetTimeFromSystemTime(util.toPointer(pst), dwRFC, util.pstrToFfi(lpszTime), cbTime));
 }
 
 export function InternetTimeToSystemTimeA(
-  lpszTime: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpszTime: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   pst: Deno.PointerValue | Uint8Array | null /* ptr */,
   dwReserved: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
@@ -5396,7 +5396,7 @@ export function InternetTimeToSystemTimeA(
 }
 
 export function InternetTimeToSystemTimeW(
-  lpszTime: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpszTime: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pst: Deno.PointerValue | Uint8Array | null /* ptr */,
   dwReserved: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
@@ -5404,7 +5404,7 @@ export function InternetTimeToSystemTimeW(
 }
 
 export function InternetTimeToSystemTime(
-  lpszTime: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpszTime: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   pst: Deno.PointerValue | Uint8Array | null /* ptr */,
   dwReserved: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
@@ -5412,7 +5412,7 @@ export function InternetTimeToSystemTime(
 }
 
 export function InternetCrackUrlA(
-  lpszUrl: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpszUrl: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   dwUrlLength: number /* u32 */,
   dwFlags: WIN_HTTP_CREATE_URL_FLAGS /* Windows.Win32.Networking.WinHttp.WIN_HTTP_CREATE_URL_FLAGS */,
   lpUrlComponents: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -5421,7 +5421,7 @@ export function InternetCrackUrlA(
 }
 
 export function InternetCrackUrlW(
-  lpszUrl: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpszUrl: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   dwUrlLength: number /* u32 */,
   dwFlags: WIN_HTTP_CREATE_URL_FLAGS /* Windows.Win32.Networking.WinHttp.WIN_HTTP_CREATE_URL_FLAGS */,
   lpUrlComponents: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -5432,7 +5432,7 @@ export function InternetCrackUrlW(
 export function InternetCreateUrlA(
   lpUrlComponents: Deno.PointerValue | Uint8Array | null /* ptr */,
   dwFlags: number /* u32 */,
-  lpszUrl: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpszUrl: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   lpdwUrlLength: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libWININET_dll.InternetCreateUrlA(util.toPointer(lpUrlComponents), dwFlags, util.pstrToFfi(lpszUrl), util.toPointer(lpdwUrlLength)));
@@ -5441,15 +5441,15 @@ export function InternetCreateUrlA(
 export function InternetCreateUrlW(
   lpUrlComponents: Deno.PointerValue | Uint8Array | null /* ptr */,
   dwFlags: number /* u32 */,
-  lpszUrl: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpszUrl: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   lpdwUrlLength: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libWININET_dll.InternetCreateUrlW(util.toPointer(lpUrlComponents), dwFlags, util.pwstrToFfi(lpszUrl), util.toPointer(lpdwUrlLength)));
 }
 
 export function InternetCanonicalizeUrlA(
-  lpszUrl: string | null /* Windows.Win32.Foundation.PSTR */,
-  lpszBuffer: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpszUrl: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  lpszBuffer: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   lpdwBufferLength: Deno.PointerValue | Uint8Array | null /* ptr */,
   dwFlags: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
@@ -5457,8 +5457,8 @@ export function InternetCanonicalizeUrlA(
 }
 
 export function InternetCanonicalizeUrlW(
-  lpszUrl: string | null /* Windows.Win32.Foundation.PWSTR */,
-  lpszBuffer: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpszUrl: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  lpszBuffer: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   lpdwBufferLength: Deno.PointerValue | Uint8Array | null /* ptr */,
   dwFlags: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
@@ -5466,9 +5466,9 @@ export function InternetCanonicalizeUrlW(
 }
 
 export function InternetCombineUrlA(
-  lpszBaseUrl: string | null /* Windows.Win32.Foundation.PSTR */,
-  lpszRelativeUrl: string | null /* Windows.Win32.Foundation.PSTR */,
-  lpszBuffer: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpszBaseUrl: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  lpszRelativeUrl: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  lpszBuffer: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   lpdwBufferLength: Deno.PointerValue | Uint8Array | null /* ptr */,
   dwFlags: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
@@ -5476,9 +5476,9 @@ export function InternetCombineUrlA(
 }
 
 export function InternetCombineUrlW(
-  lpszBaseUrl: string | null /* Windows.Win32.Foundation.PWSTR */,
-  lpszRelativeUrl: string | null /* Windows.Win32.Foundation.PWSTR */,
-  lpszBuffer: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpszBaseUrl: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  lpszRelativeUrl: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  lpszBuffer: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   lpdwBufferLength: Deno.PointerValue | Uint8Array | null /* ptr */,
   dwFlags: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
@@ -5486,20 +5486,20 @@ export function InternetCombineUrlW(
 }
 
 export function InternetOpenA(
-  lpszAgent: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpszAgent: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   dwAccessType: number /* u32 */,
-  lpszProxy: string | null /* Windows.Win32.Foundation.PSTR */,
-  lpszProxyBypass: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpszProxy: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  lpszProxyBypass: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   dwFlags: number /* u32 */,
 ): Deno.PointerValue | null /* ptr */ {
   return util.pointerFromFfi(libWININET_dll.InternetOpenA(util.pstrToFfi(lpszAgent), dwAccessType, util.pstrToFfi(lpszProxy), util.pstrToFfi(lpszProxyBypass), dwFlags));
 }
 
 export function InternetOpenW(
-  lpszAgent: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpszAgent: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   dwAccessType: number /* u32 */,
-  lpszProxy: string | null /* Windows.Win32.Foundation.PWSTR */,
-  lpszProxyBypass: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpszProxy: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  lpszProxyBypass: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   dwFlags: number /* u32 */,
 ): Deno.PointerValue | null /* ptr */ {
   return util.pointerFromFfi(libWININET_dll.InternetOpenW(util.pwstrToFfi(lpszAgent), dwAccessType, util.pwstrToFfi(lpszProxy), util.pwstrToFfi(lpszProxyBypass), dwFlags));
@@ -5513,10 +5513,10 @@ export function InternetCloseHandle(
 
 export function InternetConnectA(
   hInternet: Deno.PointerValue | Uint8Array | null /* ptr */,
-  lpszServerName: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpszServerName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   nServerPort: number /* u16 */,
-  lpszUserName: string | null /* Windows.Win32.Foundation.PSTR */,
-  lpszPassword: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpszUserName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  lpszPassword: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   dwService: number /* u32 */,
   dwFlags: number /* u32 */,
   dwContext: Deno.PointerValue /* usize */,
@@ -5526,10 +5526,10 @@ export function InternetConnectA(
 
 export function InternetConnectW(
   hInternet: Deno.PointerValue | Uint8Array | null /* ptr */,
-  lpszServerName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpszServerName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   nServerPort: number /* u16 */,
-  lpszUserName: string | null /* Windows.Win32.Foundation.PWSTR */,
-  lpszPassword: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpszUserName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  lpszPassword: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   dwService: number /* u32 */,
   dwFlags: number /* u32 */,
   dwContext: Deno.PointerValue /* usize */,
@@ -5539,8 +5539,8 @@ export function InternetConnectW(
 
 export function InternetOpenUrlA(
   hInternet: Deno.PointerValue | Uint8Array | null /* ptr */,
-  lpszUrl: string | null /* Windows.Win32.Foundation.PSTR */,
-  lpszHeaders: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpszUrl: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  lpszHeaders: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   dwHeadersLength: number /* u32 */,
   dwFlags: number /* u32 */,
   dwContext: Deno.PointerValue /* usize */,
@@ -5550,8 +5550,8 @@ export function InternetOpenUrlA(
 
 export function InternetOpenUrlW(
   hInternet: Deno.PointerValue | Uint8Array | null /* ptr */,
-  lpszUrl: string | null /* Windows.Win32.Foundation.PWSTR */,
-  lpszHeaders: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpszUrl: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  lpszHeaders: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   dwHeadersLength: number /* u32 */,
   dwFlags: number /* u32 */,
   dwContext: Deno.PointerValue /* usize */,
@@ -5699,7 +5699,7 @@ export function InternetUnlockRequestFile(
 
 export function InternetGetLastResponseInfoA(
   lpdwError: Deno.PointerValue | Uint8Array | null /* ptr */,
-  lpszBuffer: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpszBuffer: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   lpdwBufferLength: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libWININET_dll.InternetGetLastResponseInfoA(util.toPointer(lpdwError), util.pstrToFfi(lpszBuffer), util.toPointer(lpdwBufferLength)));
@@ -5707,7 +5707,7 @@ export function InternetGetLastResponseInfoA(
 
 export function InternetGetLastResponseInfoW(
   lpdwError: Deno.PointerValue | Uint8Array | null /* ptr */,
-  lpszBuffer: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpszBuffer: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   lpdwBufferLength: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libWININET_dll.InternetGetLastResponseInfoW(util.toPointer(lpdwError), util.pwstrToFfi(lpszBuffer), util.toPointer(lpdwBufferLength)));
@@ -5736,7 +5736,7 @@ export function InternetSetStatusCallback(
 
 export function FtpFindFirstFileA(
   hConnect: Deno.PointerValue | Uint8Array | null /* ptr */,
-  lpszSearchFile: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpszSearchFile: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   lpFindFileData: Deno.PointerValue | Uint8Array | null /* ptr */,
   dwFlags: number /* u32 */,
   dwContext: Deno.PointerValue /* usize */,
@@ -5746,7 +5746,7 @@ export function FtpFindFirstFileA(
 
 export function FtpFindFirstFileW(
   hConnect: Deno.PointerValue | Uint8Array | null /* ptr */,
-  lpszSearchFile: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpszSearchFile: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   lpFindFileData: Deno.PointerValue | Uint8Array | null /* ptr */,
   dwFlags: number /* u32 */,
   dwContext: Deno.PointerValue /* usize */,
@@ -5756,8 +5756,8 @@ export function FtpFindFirstFileW(
 
 export function FtpGetFileA(
   hConnect: Deno.PointerValue | Uint8Array | null /* ptr */,
-  lpszRemoteFile: string | null /* Windows.Win32.Foundation.PSTR */,
-  lpszNewFile: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpszRemoteFile: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  lpszNewFile: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   fFailIfExists: boolean /* Windows.Win32.Foundation.BOOL */,
   dwFlagsAndAttributes: number /* u32 */,
   dwFlags: number /* u32 */,
@@ -5768,8 +5768,8 @@ export function FtpGetFileA(
 
 export function FtpGetFileW(
   hConnect: Deno.PointerValue | Uint8Array | null /* ptr */,
-  lpszRemoteFile: string | null /* Windows.Win32.Foundation.PWSTR */,
-  lpszNewFile: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpszRemoteFile: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  lpszNewFile: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   fFailIfExists: boolean /* Windows.Win32.Foundation.BOOL */,
   dwFlagsAndAttributes: number /* u32 */,
   dwFlags: number /* u32 */,
@@ -5780,8 +5780,8 @@ export function FtpGetFileW(
 
 export function FtpPutFileA(
   hConnect: Deno.PointerValue | Uint8Array | null /* ptr */,
-  lpszLocalFile: string | null /* Windows.Win32.Foundation.PSTR */,
-  lpszNewRemoteFile: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpszLocalFile: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  lpszNewRemoteFile: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   dwFlags: FTP_FLAGS /* Windows.Win32.Networking.WinInet.FTP_FLAGS */,
   dwContext: Deno.PointerValue /* usize */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
@@ -5790,8 +5790,8 @@ export function FtpPutFileA(
 
 export function FtpPutFileW(
   hConnect: Deno.PointerValue | Uint8Array | null /* ptr */,
-  lpszLocalFile: string | null /* Windows.Win32.Foundation.PWSTR */,
-  lpszNewRemoteFile: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpszLocalFile: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  lpszNewRemoteFile: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   dwFlags: FTP_FLAGS /* Windows.Win32.Networking.WinInet.FTP_FLAGS */,
   dwContext: Deno.PointerValue /* usize */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
@@ -5800,8 +5800,8 @@ export function FtpPutFileW(
 
 export function FtpGetFileEx(
   hFtpSession: Deno.PointerValue | Uint8Array | null /* ptr */,
-  lpszRemoteFile: string | null /* Windows.Win32.Foundation.PSTR */,
-  lpszNewFile: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpszRemoteFile: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  lpszNewFile: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   fFailIfExists: boolean /* Windows.Win32.Foundation.BOOL */,
   dwFlagsAndAttributes: number /* u32 */,
   dwFlags: number /* u32 */,
@@ -5812,8 +5812,8 @@ export function FtpGetFileEx(
 
 export function FtpPutFileEx(
   hFtpSession: Deno.PointerValue | Uint8Array | null /* ptr */,
-  lpszLocalFile: string | null /* Windows.Win32.Foundation.PWSTR */,
-  lpszNewRemoteFile: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpszLocalFile: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  lpszNewRemoteFile: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   dwFlags: number /* u32 */,
   dwContext: Deno.PointerValue /* usize */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
@@ -5822,37 +5822,37 @@ export function FtpPutFileEx(
 
 export function FtpDeleteFileA(
   hConnect: Deno.PointerValue | Uint8Array | null /* ptr */,
-  lpszFileName: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpszFileName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libWININET_dll.FtpDeleteFileA(util.toPointer(hConnect), util.pstrToFfi(lpszFileName)));
 }
 
 export function FtpDeleteFileW(
   hConnect: Deno.PointerValue | Uint8Array | null /* ptr */,
-  lpszFileName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpszFileName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libWININET_dll.FtpDeleteFileW(util.toPointer(hConnect), util.pwstrToFfi(lpszFileName)));
 }
 
 export function FtpRenameFileA(
   hConnect: Deno.PointerValue | Uint8Array | null /* ptr */,
-  lpszExisting: string | null /* Windows.Win32.Foundation.PSTR */,
-  lpszNew: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpszExisting: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  lpszNew: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libWININET_dll.FtpRenameFileA(util.toPointer(hConnect), util.pstrToFfi(lpszExisting), util.pstrToFfi(lpszNew)));
 }
 
 export function FtpRenameFileW(
   hConnect: Deno.PointerValue | Uint8Array | null /* ptr */,
-  lpszExisting: string | null /* Windows.Win32.Foundation.PWSTR */,
-  lpszNew: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpszExisting: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  lpszNew: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libWININET_dll.FtpRenameFileW(util.toPointer(hConnect), util.pwstrToFfi(lpszExisting), util.pwstrToFfi(lpszNew)));
 }
 
 export function FtpOpenFileA(
   hConnect: Deno.PointerValue | Uint8Array | null /* ptr */,
-  lpszFileName: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpszFileName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   dwAccess: number /* u32 */,
   dwFlags: FTP_FLAGS /* Windows.Win32.Networking.WinInet.FTP_FLAGS */,
   dwContext: Deno.PointerValue /* usize */,
@@ -5862,7 +5862,7 @@ export function FtpOpenFileA(
 
 export function FtpOpenFileW(
   hConnect: Deno.PointerValue | Uint8Array | null /* ptr */,
-  lpszFileName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpszFileName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   dwAccess: number /* u32 */,
   dwFlags: FTP_FLAGS /* Windows.Win32.Networking.WinInet.FTP_FLAGS */,
   dwContext: Deno.PointerValue /* usize */,
@@ -5872,49 +5872,49 @@ export function FtpOpenFileW(
 
 export function FtpCreateDirectoryA(
   hConnect: Deno.PointerValue | Uint8Array | null /* ptr */,
-  lpszDirectory: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpszDirectory: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libWININET_dll.FtpCreateDirectoryA(util.toPointer(hConnect), util.pstrToFfi(lpszDirectory)));
 }
 
 export function FtpCreateDirectoryW(
   hConnect: Deno.PointerValue | Uint8Array | null /* ptr */,
-  lpszDirectory: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpszDirectory: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libWININET_dll.FtpCreateDirectoryW(util.toPointer(hConnect), util.pwstrToFfi(lpszDirectory)));
 }
 
 export function FtpRemoveDirectoryA(
   hConnect: Deno.PointerValue | Uint8Array | null /* ptr */,
-  lpszDirectory: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpszDirectory: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libWININET_dll.FtpRemoveDirectoryA(util.toPointer(hConnect), util.pstrToFfi(lpszDirectory)));
 }
 
 export function FtpRemoveDirectoryW(
   hConnect: Deno.PointerValue | Uint8Array | null /* ptr */,
-  lpszDirectory: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpszDirectory: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libWININET_dll.FtpRemoveDirectoryW(util.toPointer(hConnect), util.pwstrToFfi(lpszDirectory)));
 }
 
 export function FtpSetCurrentDirectoryA(
   hConnect: Deno.PointerValue | Uint8Array | null /* ptr */,
-  lpszDirectory: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpszDirectory: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libWININET_dll.FtpSetCurrentDirectoryA(util.toPointer(hConnect), util.pstrToFfi(lpszDirectory)));
 }
 
 export function FtpSetCurrentDirectoryW(
   hConnect: Deno.PointerValue | Uint8Array | null /* ptr */,
-  lpszDirectory: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpszDirectory: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libWININET_dll.FtpSetCurrentDirectoryW(util.toPointer(hConnect), util.pwstrToFfi(lpszDirectory)));
 }
 
 export function FtpGetCurrentDirectoryA(
   hConnect: Deno.PointerValue | Uint8Array | null /* ptr */,
-  lpszCurrentDirectory: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpszCurrentDirectory: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   lpdwCurrentDirectory: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libWININET_dll.FtpGetCurrentDirectoryA(util.toPointer(hConnect), util.pstrToFfi(lpszCurrentDirectory), util.toPointer(lpdwCurrentDirectory)));
@@ -5922,7 +5922,7 @@ export function FtpGetCurrentDirectoryA(
 
 export function FtpGetCurrentDirectoryW(
   hConnect: Deno.PointerValue | Uint8Array | null /* ptr */,
-  lpszCurrentDirectory: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpszCurrentDirectory: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   lpdwCurrentDirectory: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libWININET_dll.FtpGetCurrentDirectoryW(util.toPointer(hConnect), util.pwstrToFfi(lpszCurrentDirectory), util.toPointer(lpdwCurrentDirectory)));
@@ -5932,7 +5932,7 @@ export function FtpCommandA(
   hConnect: Deno.PointerValue | Uint8Array | null /* ptr */,
   fExpectResponse: boolean /* Windows.Win32.Foundation.BOOL */,
   dwFlags: FTP_FLAGS /* Windows.Win32.Networking.WinInet.FTP_FLAGS */,
-  lpszCommand: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpszCommand: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   dwContext: Deno.PointerValue /* usize */,
   phFtpCommand: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
@@ -5943,7 +5943,7 @@ export function FtpCommandW(
   hConnect: Deno.PointerValue | Uint8Array | null /* ptr */,
   fExpectResponse: boolean /* Windows.Win32.Foundation.BOOL */,
   dwFlags: FTP_FLAGS /* Windows.Win32.Networking.WinInet.FTP_FLAGS */,
-  lpszCommand: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpszCommand: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   dwContext: Deno.PointerValue /* usize */,
   phFtpCommand: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
@@ -5958,38 +5958,38 @@ export function FtpGetFileSize(
 }
 
 export function GopherCreateLocatorA(
-  lpszHost: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpszHost: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   nServerPort: number /* u16 */,
-  lpszDisplayString: string | null /* Windows.Win32.Foundation.PSTR */,
-  lpszSelectorString: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpszDisplayString: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  lpszSelectorString: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   dwGopherType: number /* u32 */,
-  lpszLocator: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpszLocator: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   lpdwBufferLength: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libWININET_dll.GopherCreateLocatorA(util.pstrToFfi(lpszHost), nServerPort, util.pstrToFfi(lpszDisplayString), util.pstrToFfi(lpszSelectorString), dwGopherType, util.pstrToFfi(lpszLocator), util.toPointer(lpdwBufferLength)));
 }
 
 export function GopherCreateLocatorW(
-  lpszHost: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpszHost: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   nServerPort: number /* u16 */,
-  lpszDisplayString: string | null /* Windows.Win32.Foundation.PWSTR */,
-  lpszSelectorString: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpszDisplayString: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  lpszSelectorString: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   dwGopherType: number /* u32 */,
-  lpszLocator: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpszLocator: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   lpdwBufferLength: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libWININET_dll.GopherCreateLocatorW(util.pwstrToFfi(lpszHost), nServerPort, util.pwstrToFfi(lpszDisplayString), util.pwstrToFfi(lpszSelectorString), dwGopherType, util.pwstrToFfi(lpszLocator), util.toPointer(lpdwBufferLength)));
 }
 
 export function GopherGetLocatorTypeA(
-  lpszLocator: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpszLocator: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   lpdwGopherType: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libWININET_dll.GopherGetLocatorTypeA(util.pstrToFfi(lpszLocator), util.toPointer(lpdwGopherType)));
 }
 
 export function GopherGetLocatorTypeW(
-  lpszLocator: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpszLocator: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   lpdwGopherType: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libWININET_dll.GopherGetLocatorTypeW(util.pwstrToFfi(lpszLocator), util.toPointer(lpdwGopherType)));
@@ -5997,8 +5997,8 @@ export function GopherGetLocatorTypeW(
 
 export function GopherFindFirstFileA(
   hConnect: Deno.PointerValue | Uint8Array | null /* ptr */,
-  lpszLocator: string | null /* Windows.Win32.Foundation.PSTR */,
-  lpszSearchString: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpszLocator: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  lpszSearchString: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   lpFindData: Deno.PointerValue | Uint8Array | null /* ptr */,
   dwFlags: number /* u32 */,
   dwContext: Deno.PointerValue /* usize */,
@@ -6008,8 +6008,8 @@ export function GopherFindFirstFileA(
 
 export function GopherFindFirstFileW(
   hConnect: Deno.PointerValue | Uint8Array | null /* ptr */,
-  lpszLocator: string | null /* Windows.Win32.Foundation.PWSTR */,
-  lpszSearchString: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpszLocator: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  lpszSearchString: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   lpFindData: Deno.PointerValue | Uint8Array | null /* ptr */,
   dwFlags: number /* u32 */,
   dwContext: Deno.PointerValue /* usize */,
@@ -6019,8 +6019,8 @@ export function GopherFindFirstFileW(
 
 export function GopherOpenFileA(
   hConnect: Deno.PointerValue | Uint8Array | null /* ptr */,
-  lpszLocator: string | null /* Windows.Win32.Foundation.PSTR */,
-  lpszView: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpszLocator: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  lpszView: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   dwFlags: number /* u32 */,
   dwContext: Deno.PointerValue /* usize */,
 ): Deno.PointerValue | null /* ptr */ {
@@ -6029,8 +6029,8 @@ export function GopherOpenFileA(
 
 export function GopherOpenFileW(
   hConnect: Deno.PointerValue | Uint8Array | null /* ptr */,
-  lpszLocator: string | null /* Windows.Win32.Foundation.PWSTR */,
-  lpszView: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpszLocator: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  lpszView: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   dwFlags: number /* u32 */,
   dwContext: Deno.PointerValue /* usize */,
 ): Deno.PointerValue | null /* ptr */ {
@@ -6039,8 +6039,8 @@ export function GopherOpenFileW(
 
 export function GopherGetAttributeA(
   hConnect: Deno.PointerValue | Uint8Array | null /* ptr */,
-  lpszLocator: string | null /* Windows.Win32.Foundation.PSTR */,
-  lpszAttributeName: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpszLocator: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  lpszAttributeName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   lpBuffer: Deno.PointerValue | Uint8Array | null /* ptr */,
   dwBufferLength: number /* u32 */,
   lpdwCharactersReturned: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -6052,8 +6052,8 @@ export function GopherGetAttributeA(
 
 export function GopherGetAttributeW(
   hConnect: Deno.PointerValue | Uint8Array | null /* ptr */,
-  lpszLocator: string | null /* Windows.Win32.Foundation.PWSTR */,
-  lpszAttributeName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpszLocator: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  lpszAttributeName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   lpBuffer: Deno.PointerValue | Uint8Array | null /* ptr */,
   dwBufferLength: number /* u32 */,
   lpdwCharactersReturned: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -6065,10 +6065,10 @@ export function GopherGetAttributeW(
 
 export function HttpOpenRequestA(
   hConnect: Deno.PointerValue | Uint8Array | null /* ptr */,
-  lpszVerb: string | null /* Windows.Win32.Foundation.PSTR */,
-  lpszObjectName: string | null /* Windows.Win32.Foundation.PSTR */,
-  lpszVersion: string | null /* Windows.Win32.Foundation.PSTR */,
-  lpszReferrer: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpszVerb: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  lpszObjectName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  lpszVersion: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  lpszReferrer: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   lplpszAcceptTypes: Deno.PointerValue | Uint8Array | null /* ptr */,
   dwFlags: number /* u32 */,
   dwContext: Deno.PointerValue /* usize */,
@@ -6078,10 +6078,10 @@ export function HttpOpenRequestA(
 
 export function HttpOpenRequestW(
   hConnect: Deno.PointerValue | Uint8Array | null /* ptr */,
-  lpszVerb: string | null /* Windows.Win32.Foundation.PWSTR */,
-  lpszObjectName: string | null /* Windows.Win32.Foundation.PWSTR */,
-  lpszVersion: string | null /* Windows.Win32.Foundation.PWSTR */,
-  lpszReferrer: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpszVerb: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  lpszObjectName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  lpszVersion: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  lpszReferrer: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   lplpszAcceptTypes: Deno.PointerValue | Uint8Array | null /* ptr */,
   dwFlags: number /* u32 */,
   dwContext: Deno.PointerValue /* usize */,
@@ -6091,7 +6091,7 @@ export function HttpOpenRequestW(
 
 export function HttpAddRequestHeadersA(
   hRequest: Deno.PointerValue | Uint8Array | null /* ptr */,
-  lpszHeaders: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpszHeaders: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   dwHeadersLength: number /* u32 */,
   dwModifiers: HTTP_ADDREQ_FLAG /* Windows.Win32.Networking.WinInet.HTTP_ADDREQ_FLAG */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
@@ -6100,7 +6100,7 @@ export function HttpAddRequestHeadersA(
 
 export function HttpAddRequestHeadersW(
   hRequest: Deno.PointerValue | Uint8Array | null /* ptr */,
-  lpszHeaders: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpszHeaders: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   dwHeadersLength: number /* u32 */,
   dwModifiers: HTTP_ADDREQ_FLAG /* Windows.Win32.Networking.WinInet.HTTP_ADDREQ_FLAG */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
@@ -6109,7 +6109,7 @@ export function HttpAddRequestHeadersW(
 
 export function HttpSendRequestA(
   hRequest: Deno.PointerValue | Uint8Array | null /* ptr */,
-  lpszHeaders: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpszHeaders: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   dwHeadersLength: number /* u32 */,
   lpOptional: Deno.PointerValue | Uint8Array | null /* ptr */,
   dwOptionalLength: number /* u32 */,
@@ -6119,7 +6119,7 @@ export function HttpSendRequestA(
 
 export function HttpSendRequestW(
   hRequest: Deno.PointerValue | Uint8Array | null /* ptr */,
-  lpszHeaders: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpszHeaders: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   dwHeadersLength: number /* u32 */,
   lpOptional: Deno.PointerValue | Uint8Array | null /* ptr */,
   dwOptionalLength: number /* u32 */,
@@ -6186,43 +6186,43 @@ export function HttpQueryInfoW(
 }
 
 export function InternetSetCookieA(
-  lpszUrl: string | null /* Windows.Win32.Foundation.PSTR */,
-  lpszCookieName: string | null /* Windows.Win32.Foundation.PSTR */,
-  lpszCookieData: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpszUrl: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  lpszCookieName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  lpszCookieData: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libWININET_dll.InternetSetCookieA(util.pstrToFfi(lpszUrl), util.pstrToFfi(lpszCookieName), util.pstrToFfi(lpszCookieData)));
 }
 
 export function InternetSetCookieW(
-  lpszUrl: string | null /* Windows.Win32.Foundation.PWSTR */,
-  lpszCookieName: string | null /* Windows.Win32.Foundation.PWSTR */,
-  lpszCookieData: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpszUrl: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  lpszCookieName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  lpszCookieData: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libWININET_dll.InternetSetCookieW(util.pwstrToFfi(lpszUrl), util.pwstrToFfi(lpszCookieName), util.pwstrToFfi(lpszCookieData)));
 }
 
 export function InternetGetCookieA(
-  lpszUrl: string | null /* Windows.Win32.Foundation.PSTR */,
-  lpszCookieName: string | null /* Windows.Win32.Foundation.PSTR */,
-  lpszCookieData: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpszUrl: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  lpszCookieName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  lpszCookieData: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   lpdwSize: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libWININET_dll.InternetGetCookieA(util.pstrToFfi(lpszUrl), util.pstrToFfi(lpszCookieName), util.pstrToFfi(lpszCookieData), util.toPointer(lpdwSize)));
 }
 
 export function InternetGetCookieW(
-  lpszUrl: string | null /* Windows.Win32.Foundation.PWSTR */,
-  lpszCookieName: string | null /* Windows.Win32.Foundation.PWSTR */,
-  lpszCookieData: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpszUrl: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  lpszCookieName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  lpszCookieData: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   lpdwSize: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libWININET_dll.InternetGetCookieW(util.pwstrToFfi(lpszUrl), util.pwstrToFfi(lpszCookieName), util.pwstrToFfi(lpszCookieData), util.toPointer(lpdwSize)));
 }
 
 export function InternetSetCookieExA(
-  lpszUrl: string | null /* Windows.Win32.Foundation.PSTR */,
-  lpszCookieName: string | null /* Windows.Win32.Foundation.PSTR */,
-  lpszCookieData: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpszUrl: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  lpszCookieName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  lpszCookieData: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   dwFlags: number /* u32 */,
   dwReserved: Deno.PointerValue /* usize */,
 ): number /* u32 */ {
@@ -6230,9 +6230,9 @@ export function InternetSetCookieExA(
 }
 
 export function InternetSetCookieExW(
-  lpszUrl: string | null /* Windows.Win32.Foundation.PWSTR */,
-  lpszCookieName: string | null /* Windows.Win32.Foundation.PWSTR */,
-  lpszCookieData: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpszUrl: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  lpszCookieName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  lpszCookieData: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   dwFlags: number /* u32 */,
   dwReserved: Deno.PointerValue /* usize */,
 ): number /* u32 */ {
@@ -6240,9 +6240,9 @@ export function InternetSetCookieExW(
 }
 
 export function InternetGetCookieExA(
-  lpszUrl: string | null /* Windows.Win32.Foundation.PSTR */,
-  lpszCookieName: string | null /* Windows.Win32.Foundation.PSTR */,
-  lpszCookieData: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpszUrl: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  lpszCookieName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  lpszCookieData: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   lpdwSize: Deno.PointerValue | Uint8Array | null /* ptr */,
   dwFlags: INTERNET_COOKIE_FLAGS /* Windows.Win32.Networking.WinInet.INTERNET_COOKIE_FLAGS */,
   lpReserved: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -6251,9 +6251,9 @@ export function InternetGetCookieExA(
 }
 
 export function InternetGetCookieExW(
-  lpszUrl: string | null /* Windows.Win32.Foundation.PWSTR */,
-  lpszCookieName: string | null /* Windows.Win32.Foundation.PWSTR */,
-  lpszCookieData: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpszUrl: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  lpszCookieName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  lpszCookieData: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   lpdwSize: Deno.PointerValue | Uint8Array | null /* ptr */,
   dwFlags: INTERNET_COOKIE_FLAGS /* Windows.Win32.Networking.WinInet.INTERNET_COOKIE_FLAGS */,
   lpReserved: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -6269,8 +6269,8 @@ export function InternetFreeCookies(
 }
 
 export function InternetGetCookieEx2(
-  pcwszUrl: string | null /* Windows.Win32.Foundation.PWSTR */,
-  pcwszCookieName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pcwszUrl: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  pcwszCookieName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   dwFlags: number /* u32 */,
   ppCookies: Deno.PointerValue | Uint8Array | null /* ptr */,
   pdwCookieCount: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -6279,9 +6279,9 @@ export function InternetGetCookieEx2(
 }
 
 export function InternetSetCookieEx2(
-  pcwszUrl: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pcwszUrl: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pCookie: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pcwszP3PPolicy: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pcwszP3PPolicy: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   dwFlags: number /* u32 */,
   pdwCookieState: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
@@ -6295,7 +6295,7 @@ export function InternetAttemptConnect(
 }
 
 export function InternetCheckConnectionA(
-  lpszUrl: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpszUrl: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   dwFlags: number /* u32 */,
   dwReserved: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
@@ -6303,7 +6303,7 @@ export function InternetCheckConnectionA(
 }
 
 export function InternetCheckConnectionW(
-  lpszUrl: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpszUrl: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   dwFlags: number /* u32 */,
   dwReserved: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
@@ -6329,8 +6329,8 @@ export function InternetErrorDlg(
 
 export function InternetConfirmZoneCrossingA(
   hWnd: Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */,
-  szUrlPrev: string | null /* Windows.Win32.Foundation.PSTR */,
-  szUrlNew: string | null /* Windows.Win32.Foundation.PSTR */,
+  szUrlPrev: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  szUrlNew: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   bPost: boolean /* Windows.Win32.Foundation.BOOL */,
 ): number /* u32 */ {
   return libWININET_dll.InternetConfirmZoneCrossingA(util.hwndToFfi(hWnd), util.pstrToFfi(szUrlPrev), util.pstrToFfi(szUrlNew), util.boolToFfi(bPost));
@@ -6338,8 +6338,8 @@ export function InternetConfirmZoneCrossingA(
 
 export function InternetConfirmZoneCrossingW(
   hWnd: Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */,
-  szUrlPrev: string | null /* Windows.Win32.Foundation.PWSTR */,
-  szUrlNew: string | null /* Windows.Win32.Foundation.PWSTR */,
+  szUrlPrev: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  szUrlNew: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   bPost: boolean /* Windows.Win32.Foundation.BOOL */,
 ): number /* u32 */ {
   return libWININET_dll.InternetConfirmZoneCrossingW(util.hwndToFfi(hWnd), util.pwstrToFfi(szUrlPrev), util.pwstrToFfi(szUrlNew), util.boolToFfi(bPost));
@@ -6347,63 +6347,63 @@ export function InternetConfirmZoneCrossingW(
 
 export function InternetConfirmZoneCrossing(
   hWnd: Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */,
-  szUrlPrev: string | null /* Windows.Win32.Foundation.PSTR */,
-  szUrlNew: string | null /* Windows.Win32.Foundation.PSTR */,
+  szUrlPrev: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  szUrlNew: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   bPost: boolean /* Windows.Win32.Foundation.BOOL */,
 ): number /* u32 */ {
   return libWININET_dll.InternetConfirmZoneCrossing(util.hwndToFfi(hWnd), util.pstrToFfi(szUrlPrev), util.pstrToFfi(szUrlNew), util.boolToFfi(bPost));
 }
 
 export function CreateUrlCacheEntryA(
-  lpszUrlName: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpszUrlName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   dwExpectedFileSize: number /* u32 */,
-  lpszFileExtension: string | null /* Windows.Win32.Foundation.PSTR */,
-  lpszFileName: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpszFileExtension: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  lpszFileName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   dwReserved: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libWININET_dll.CreateUrlCacheEntryA(util.pstrToFfi(lpszUrlName), dwExpectedFileSize, util.pstrToFfi(lpszFileExtension), util.pstrToFfi(lpszFileName), dwReserved));
 }
 
 export function CreateUrlCacheEntryW(
-  lpszUrlName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpszUrlName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   dwExpectedFileSize: number /* u32 */,
-  lpszFileExtension: string | null /* Windows.Win32.Foundation.PWSTR */,
-  lpszFileName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpszFileExtension: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  lpszFileName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   dwReserved: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libWININET_dll.CreateUrlCacheEntryW(util.pwstrToFfi(lpszUrlName), dwExpectedFileSize, util.pwstrToFfi(lpszFileExtension), util.pwstrToFfi(lpszFileName), dwReserved));
 }
 
 export function CommitUrlCacheEntryA(
-  lpszUrlName: string | null /* Windows.Win32.Foundation.PSTR */,
-  lpszLocalFileName: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpszUrlName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  lpszLocalFileName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   ExpireTime: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.FILETIME */,
   LastModifiedTime: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.FILETIME */,
   CacheEntryType: number /* u32 */,
   lpHeaderInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
   cchHeaderInfo: number /* u32 */,
-  lpszFileExtension: string | null /* Windows.Win32.Foundation.PSTR */,
-  lpszOriginalUrl: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpszFileExtension: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  lpszOriginalUrl: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libWININET_dll.CommitUrlCacheEntryA(util.pstrToFfi(lpszUrlName), util.pstrToFfi(lpszLocalFileName), util.toPointer(ExpireTime), util.toPointer(LastModifiedTime), CacheEntryType, util.toPointer(lpHeaderInfo), cchHeaderInfo, util.pstrToFfi(lpszFileExtension), util.pstrToFfi(lpszOriginalUrl)));
 }
 
 export function CommitUrlCacheEntryW(
-  lpszUrlName: string | null /* Windows.Win32.Foundation.PWSTR */,
-  lpszLocalFileName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpszUrlName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  lpszLocalFileName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   ExpireTime: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.FILETIME */,
   LastModifiedTime: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.FILETIME */,
   CacheEntryType: number /* u32 */,
-  lpszHeaderInfo: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpszHeaderInfo: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   cchHeaderInfo: number /* u32 */,
-  lpszFileExtension: string | null /* Windows.Win32.Foundation.PWSTR */,
-  lpszOriginalUrl: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpszFileExtension: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  lpszOriginalUrl: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libWININET_dll.CommitUrlCacheEntryW(util.pwstrToFfi(lpszUrlName), util.pwstrToFfi(lpszLocalFileName), util.toPointer(ExpireTime), util.toPointer(LastModifiedTime), CacheEntryType, util.pwstrToFfi(lpszHeaderInfo), cchHeaderInfo, util.pwstrToFfi(lpszFileExtension), util.pwstrToFfi(lpszOriginalUrl)));
 }
 
 export function RetrieveUrlCacheEntryFileA(
-  lpszUrlName: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpszUrlName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   lpCacheEntryInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
   lpcbCacheEntryInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
   dwReserved: number /* u32 */,
@@ -6412,7 +6412,7 @@ export function RetrieveUrlCacheEntryFileA(
 }
 
 export function RetrieveUrlCacheEntryFileW(
-  lpszUrlName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpszUrlName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   lpCacheEntryInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
   lpcbCacheEntryInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
   dwReserved: number /* u32 */,
@@ -6421,28 +6421,28 @@ export function RetrieveUrlCacheEntryFileW(
 }
 
 export function UnlockUrlCacheEntryFileA(
-  lpszUrlName: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpszUrlName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   dwReserved: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libWININET_dll.UnlockUrlCacheEntryFileA(util.pstrToFfi(lpszUrlName), dwReserved));
 }
 
 export function UnlockUrlCacheEntryFileW(
-  lpszUrlName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpszUrlName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   dwReserved: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libWININET_dll.UnlockUrlCacheEntryFileW(util.pwstrToFfi(lpszUrlName), dwReserved));
 }
 
 export function UnlockUrlCacheEntryFile(
-  lpszUrlName: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpszUrlName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   dwReserved: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libWININET_dll.UnlockUrlCacheEntryFile(util.pstrToFfi(lpszUrlName), dwReserved));
 }
 
 export function RetrieveUrlCacheEntryStreamA(
-  lpszUrlName: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpszUrlName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   lpCacheEntryInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
   lpcbCacheEntryInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
   fRandomRead: boolean /* Windows.Win32.Foundation.BOOL */,
@@ -6452,7 +6452,7 @@ export function RetrieveUrlCacheEntryStreamA(
 }
 
 export function RetrieveUrlCacheEntryStreamW(
-  lpszUrlName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpszUrlName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   lpCacheEntryInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
   lpcbCacheEntryInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
   fRandomRead: boolean /* Windows.Win32.Foundation.BOOL */,
@@ -6488,7 +6488,7 @@ export function UnlockUrlCacheEntryStream(
 }
 
 export function GetUrlCacheEntryInfoA(
-  lpszUrlName: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpszUrlName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   lpCacheEntryInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
   lpcbCacheEntryInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
@@ -6496,7 +6496,7 @@ export function GetUrlCacheEntryInfoA(
 }
 
 export function GetUrlCacheEntryInfoW(
-  lpszUrlName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpszUrlName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   lpCacheEntryInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
   lpcbCacheEntryInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
@@ -6565,10 +6565,10 @@ export function SetUrlCacheGroupAttributeW(
 }
 
 export function GetUrlCacheEntryInfoExA(
-  lpszUrl: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpszUrl: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   lpCacheEntryInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
   lpcbCacheEntryInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
-  lpszRedirectUrl: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpszRedirectUrl: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   lpcbRedirectUrl: Deno.PointerValue | Uint8Array | null /* ptr */,
   lpReserved: Deno.PointerValue | Uint8Array | null /* ptr */,
   dwFlags: number /* u32 */,
@@ -6577,10 +6577,10 @@ export function GetUrlCacheEntryInfoExA(
 }
 
 export function GetUrlCacheEntryInfoExW(
-  lpszUrl: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpszUrl: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   lpCacheEntryInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
   lpcbCacheEntryInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
-  lpszRedirectUrl: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpszRedirectUrl: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   lpcbRedirectUrl: Deno.PointerValue | Uint8Array | null /* ptr */,
   lpReserved: Deno.PointerValue | Uint8Array | null /* ptr */,
   dwFlags: number /* u32 */,
@@ -6589,7 +6589,7 @@ export function GetUrlCacheEntryInfoExW(
 }
 
 export function SetUrlCacheEntryInfoA(
-  lpszUrlName: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpszUrlName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   lpCacheEntryInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
   dwFieldControl: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
@@ -6597,7 +6597,7 @@ export function SetUrlCacheEntryInfoA(
 }
 
 export function SetUrlCacheEntryInfoW(
-  lpszUrlName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpszUrlName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   lpCacheEntryInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
   dwFieldControl: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
@@ -6620,7 +6620,7 @@ export function DeleteUrlCacheGroup(
 }
 
 export function SetUrlCacheEntryGroupA(
-  lpszUrlName: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpszUrlName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   dwFlags: number /* u32 */,
   GroupId: Deno.PointerValue /* i64 */,
   pbGroupAttributes: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -6631,7 +6631,7 @@ export function SetUrlCacheEntryGroupA(
 }
 
 export function SetUrlCacheEntryGroupW(
-  lpszUrlName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpszUrlName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   dwFlags: number /* u32 */,
   GroupId: Deno.PointerValue /* i64 */,
   pbGroupAttributes: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -6642,7 +6642,7 @@ export function SetUrlCacheEntryGroupW(
 }
 
 export function SetUrlCacheEntryGroup(
-  lpszUrlName: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpszUrlName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   dwFlags: number /* u32 */,
   GroupId: Deno.PointerValue /* i64 */,
   pbGroupAttributes: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -6653,7 +6653,7 @@ export function SetUrlCacheEntryGroup(
 }
 
 export function FindFirstUrlCacheEntryExA(
-  lpszUrlSearchPattern: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpszUrlSearchPattern: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   dwFlags: number /* u32 */,
   dwFilter: number /* u32 */,
   GroupId: Deno.PointerValue /* i64 */,
@@ -6667,7 +6667,7 @@ export function FindFirstUrlCacheEntryExA(
 }
 
 export function FindFirstUrlCacheEntryExW(
-  lpszUrlSearchPattern: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpszUrlSearchPattern: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   dwFlags: number /* u32 */,
   dwFilter: number /* u32 */,
   GroupId: Deno.PointerValue /* i64 */,
@@ -6703,7 +6703,7 @@ export function FindNextUrlCacheEntryExW(
 }
 
 export function FindFirstUrlCacheEntryA(
-  lpszUrlSearchPattern: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpszUrlSearchPattern: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   lpFirstCacheEntryInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
   lpcbCacheEntryInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */ {
@@ -6711,7 +6711,7 @@ export function FindFirstUrlCacheEntryA(
 }
 
 export function FindFirstUrlCacheEntryW(
-  lpszUrlSearchPattern: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpszUrlSearchPattern: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   lpFirstCacheEntryInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
   lpcbCacheEntryInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */ {
@@ -6741,26 +6741,26 @@ export function FindCloseUrlCache(
 }
 
 export function DeleteUrlCacheEntryA(
-  lpszUrlName: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpszUrlName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libWININET_dll.DeleteUrlCacheEntryA(util.pstrToFfi(lpszUrlName)));
 }
 
 export function DeleteUrlCacheEntryW(
-  lpszUrlName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpszUrlName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libWININET_dll.DeleteUrlCacheEntryW(util.pwstrToFfi(lpszUrlName)));
 }
 
 export function DeleteUrlCacheEntry(
-  lpszUrlName: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpszUrlName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libWININET_dll.DeleteUrlCacheEntry(util.pstrToFfi(lpszUrlName)));
 }
 
 export function InternetDialA(
   hwndParent: Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */,
-  lpszConnectoid: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpszConnectoid: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   dwFlags: number /* u32 */,
   lpdwConnection: Deno.PointerValue | Uint8Array | null /* ptr */,
   dwReserved: number /* u32 */,
@@ -6770,7 +6770,7 @@ export function InternetDialA(
 
 export function InternetDialW(
   hwndParent: Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */,
-  lpszConnectoid: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpszConnectoid: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   dwFlags: number /* u32 */,
   lpdwConnection: Deno.PointerValue | Uint8Array | null /* ptr */,
   dwReserved: number /* u32 */,
@@ -6780,7 +6780,7 @@ export function InternetDialW(
 
 export function InternetDial(
   hwndParent: Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */,
-  lpszConnectoid: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpszConnectoid: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   dwFlags: number /* u32 */,
   lpdwConnection: Deno.PointerValue | Uint8Array | null /* ptr */,
   dwReserved: number /* u32 */,
@@ -6796,7 +6796,7 @@ export function InternetHangUp(
 }
 
 export function InternetGoOnlineA(
-  lpszURL: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpszURL: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   hwndParent: Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */,
   dwFlags: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
@@ -6804,7 +6804,7 @@ export function InternetGoOnlineA(
 }
 
 export function InternetGoOnlineW(
-  lpszURL: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpszURL: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   hwndParent: Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */,
   dwFlags: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
@@ -6812,7 +6812,7 @@ export function InternetGoOnlineW(
 }
 
 export function InternetGoOnline(
-  lpszURL: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpszURL: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   hwndParent: Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */,
   dwFlags: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
@@ -6841,7 +6841,7 @@ export function InternetGetConnectedState(
 
 export function InternetGetConnectedStateExA(
   lpdwFlags: Deno.PointerValue | Uint8Array | null /* ptr */,
-  lpszConnectionName: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpszConnectionName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   cchNameLen: number /* u32 */,
   dwReserved: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
@@ -6850,7 +6850,7 @@ export function InternetGetConnectedStateExA(
 
 export function InternetGetConnectedStateExW(
   lpdwFlags: Deno.PointerValue | Uint8Array | null /* ptr */,
-  lpszConnectionName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpszConnectionName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   cchNameLen: number /* u32 */,
   dwReserved: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
@@ -6870,7 +6870,7 @@ export function InternetInitializeAutoProxyDll(
 }
 
 export function DetectAutoProxyUrl(
-  pszAutoProxyUrl: string | null /* Windows.Win32.Foundation.PSTR */,
+  pszAutoProxyUrl: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   cchAutoProxyUrl: number /* u32 */,
   dwDetectFlags: PROXY_AUTO_DETECT_TYPE /* Windows.Win32.Networking.WinInet.PROXY_AUTO_DETECT_TYPE */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
@@ -6878,9 +6878,9 @@ export function DetectAutoProxyUrl(
 }
 
 export function CreateMD5SSOHash(
-  pszChallengeInfo: string | null /* Windows.Win32.Foundation.PWSTR */,
-  pwszRealm: string | null /* Windows.Win32.Foundation.PWSTR */,
-  pwszTarget: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pszChallengeInfo: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  pwszRealm: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  pwszTarget: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pbHexHash: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libWININET_dll.CreateMD5SSOHash(util.pwstrToFfi(pszChallengeInfo), util.pwstrToFfi(pwszRealm), util.pwstrToFfi(pwszTarget), util.toPointer(pbHexHash)));
@@ -6888,7 +6888,7 @@ export function CreateMD5SSOHash(
 
 export function InternetGetConnectedStateEx(
   lpdwFlags: Deno.PointerValue | Uint8Array | null /* ptr */,
-  lpszConnectionName: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpszConnectionName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   dwNameLen: number /* u32 */,
   dwReserved: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
@@ -6896,7 +6896,7 @@ export function InternetGetConnectedStateEx(
 }
 
 export function InternetSetDialStateA(
-  lpszConnectoid: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpszConnectoid: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   dwState: number /* u32 */,
   dwReserved: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
@@ -6904,7 +6904,7 @@ export function InternetSetDialStateA(
 }
 
 export function InternetSetDialStateW(
-  lpszConnectoid: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpszConnectoid: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   dwState: number /* u32 */,
   dwReserved: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
@@ -6912,7 +6912,7 @@ export function InternetSetDialStateW(
 }
 
 export function InternetSetDialState(
-  lpszConnectoid: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpszConnectoid: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   dwState: number /* u32 */,
   dwReserved: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
@@ -6920,28 +6920,28 @@ export function InternetSetDialState(
 }
 
 export function InternetSetPerSiteCookieDecisionA(
-  pchHostName: string | null /* Windows.Win32.Foundation.PSTR */,
+  pchHostName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   dwDecision: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libWININET_dll.InternetSetPerSiteCookieDecisionA(util.pstrToFfi(pchHostName), dwDecision));
 }
 
 export function InternetSetPerSiteCookieDecisionW(
-  pchHostName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pchHostName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   dwDecision: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libWININET_dll.InternetSetPerSiteCookieDecisionW(util.pwstrToFfi(pchHostName), dwDecision));
 }
 
 export function InternetGetPerSiteCookieDecisionA(
-  pchHostName: string | null /* Windows.Win32.Foundation.PSTR */,
+  pchHostName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   pResult: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libWININET_dll.InternetGetPerSiteCookieDecisionA(util.pstrToFfi(pchHostName), util.toPointer(pResult)));
 }
 
 export function InternetGetPerSiteCookieDecisionW(
-  pchHostName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pchHostName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pResult: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libWININET_dll.InternetGetPerSiteCookieDecisionW(util.pwstrToFfi(pchHostName), util.toPointer(pResult)));
@@ -6952,7 +6952,7 @@ export function InternetClearAllPerSiteCookieDecisions(): boolean /* Windows.Win
 }
 
 export function InternetEnumPerSiteCookieDecisionA(
-  pszSiteName: string | null /* Windows.Win32.Foundation.PSTR */,
+  pszSiteName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   pcSiteNameSize: Deno.PointerValue | Uint8Array | null /* ptr */,
   pdwDecision: Deno.PointerValue | Uint8Array | null /* ptr */,
   dwIndex: number /* u32 */,
@@ -6961,7 +6961,7 @@ export function InternetEnumPerSiteCookieDecisionA(
 }
 
 export function InternetEnumPerSiteCookieDecisionW(
-  pszSiteName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pszSiteName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pcSiteNameSize: Deno.PointerValue | Uint8Array | null /* ptr */,
   pdwDecision: Deno.PointerValue | Uint8Array | null /* ptr */,
   dwIndex: number /* u32 */,
@@ -6973,7 +6973,7 @@ export function PrivacySetZonePreferenceW(
   dwZone: number /* u32 */,
   dwType: number /* u32 */,
   dwTemplate: number /* u32 */,
-  pszPreference: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pszPreference: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
   return libWININET_dll.PrivacySetZonePreferenceW(dwZone, dwType, dwTemplate, util.pwstrToFfi(pszPreference));
 }
@@ -6982,14 +6982,14 @@ export function PrivacyGetZonePreferenceW(
   dwZone: number /* u32 */,
   dwType: number /* u32 */,
   pdwTemplate: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pszBuffer: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pszBuffer: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pdwBufferLength: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
   return libWININET_dll.PrivacyGetZonePreferenceW(dwZone, dwType, util.toPointer(pdwTemplate), util.pwstrToFfi(pszBuffer), util.toPointer(pdwBufferLength));
 }
 
 export function HttpIsHostHstsEnabled(
-  pcwszUrl: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pcwszUrl: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pfIsHsts: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
   return libWININET_dll.HttpIsHostHstsEnabled(util.pwstrToFfi(pcwszUrl), util.toPointer(pfIsHsts));
@@ -6997,7 +6997,7 @@ export function HttpIsHostHstsEnabled(
 
 export function InternetAlgIdToStringA(
   ai: number /* u32 */,
-  lpstr: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpstr: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   lpdwstrLength: Deno.PointerValue | Uint8Array | null /* ptr */,
   dwReserved: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
@@ -7006,7 +7006,7 @@ export function InternetAlgIdToStringA(
 
 export function InternetAlgIdToStringW(
   ai: number /* u32 */,
-  lpstr: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpstr: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   lpdwstrLength: Deno.PointerValue | Uint8Array | null /* ptr */,
   dwReserved: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
@@ -7015,7 +7015,7 @@ export function InternetAlgIdToStringW(
 
 export function InternetSecurityProtocolToStringA(
   dwProtocol: number /* u32 */,
-  lpstr: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpstr: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   lpdwstrLength: Deno.PointerValue | Uint8Array | null /* ptr */,
   dwReserved: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
@@ -7024,7 +7024,7 @@ export function InternetSecurityProtocolToStringA(
 
 export function InternetSecurityProtocolToStringW(
   dwProtocol: number /* u32 */,
-  lpstr: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpstr: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   lpdwstrLength: Deno.PointerValue | Uint8Array | null /* ptr */,
   dwReserved: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
@@ -7032,7 +7032,7 @@ export function InternetSecurityProtocolToStringW(
 }
 
 export function InternetGetSecurityInfoByURLA(
-  lpszURL: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpszURL: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   ppCertChain: Deno.PointerValue | Uint8Array | null /* ptr */,
   pdwSecureFlags: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
@@ -7040,7 +7040,7 @@ export function InternetGetSecurityInfoByURLA(
 }
 
 export function InternetGetSecurityInfoByURLW(
-  lpszURL: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpszURL: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   ppCertChain: Deno.PointerValue | Uint8Array | null /* ptr */,
   pdwSecureFlags: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
@@ -7048,7 +7048,7 @@ export function InternetGetSecurityInfoByURLW(
 }
 
 export function InternetGetSecurityInfoByURL(
-  lpszURL: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpszURL: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   ppCertChain: Deno.PointerValue | Uint8Array | null /* ptr */,
   pdwSecureFlags: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
@@ -7079,28 +7079,28 @@ export function ShowClientAuthCerts(
 export function ParseX509EncodedCertificateForListBoxEntry(
   lpCert: Deno.PointerValue | Uint8Array | null /* ptr */,
   cbCert: number /* u32 */,
-  lpszListBoxEntry: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpszListBoxEntry: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   lpdwListBoxEntry: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
   return libWININET_dll.ParseX509EncodedCertificateForListBoxEntry(util.toPointer(lpCert), cbCert, util.pstrToFfi(lpszListBoxEntry), util.toPointer(lpdwListBoxEntry));
 }
 
 export function InternetShowSecurityInfoByURLA(
-  lpszURL: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpszURL: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   hwndParent: Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libWININET_dll.InternetShowSecurityInfoByURLA(util.pstrToFfi(lpszURL), util.hwndToFfi(hwndParent)));
 }
 
 export function InternetShowSecurityInfoByURLW(
-  lpszURL: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpszURL: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   hwndParent: Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libWININET_dll.InternetShowSecurityInfoByURLW(util.pwstrToFfi(lpszURL), util.hwndToFfi(hwndParent)));
 }
 
 export function InternetShowSecurityInfoByURL(
-  lpszURL: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpszURL: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   hwndParent: Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libWININET_dll.InternetShowSecurityInfoByURL(util.pstrToFfi(lpszURL), util.hwndToFfi(hwndParent)));
@@ -7140,13 +7140,13 @@ export function InternetWriteFileExW(
 }
 
 export function FindP3PPolicySymbol(
-  pszSymbol: string | null /* Windows.Win32.Foundation.PSTR */,
+  pszSymbol: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): number /* i32 */ {
   return libWININET_dll.FindP3PPolicySymbol(util.pstrToFfi(pszSymbol));
 }
 
 export function HttpGetServerCredentials(
-  pwszUrl: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pwszUrl: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   ppwszUserName: Deno.PointerValue | Uint8Array | null /* ptr */,
   ppwszPassword: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
@@ -7176,8 +7176,8 @@ export function HttpPushClose(
 }
 
 export function HttpCheckDavComplianceA(
-  lpszUrl: string | null /* Windows.Win32.Foundation.PSTR */,
-  lpszComplianceToken: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpszUrl: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  lpszComplianceToken: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   lpfFound: Deno.PointerValue | Uint8Array | null /* ptr */,
   hWnd: Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */,
   lpvReserved: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -7186,8 +7186,8 @@ export function HttpCheckDavComplianceA(
 }
 
 export function HttpCheckDavComplianceW(
-  lpszUrl: string | null /* Windows.Win32.Foundation.PWSTR */,
-  lpszComplianceToken: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpszUrl: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  lpszComplianceToken: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   lpfFound: Deno.PointerValue | Uint8Array | null /* ptr */,
   hWnd: Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */,
   lpvReserved: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -7196,7 +7196,7 @@ export function HttpCheckDavComplianceW(
 }
 
 export function IsUrlCacheEntryExpiredA(
-  lpszUrlName: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpszUrlName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   dwFlags: number /* u32 */,
   pftLastModified: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
@@ -7204,7 +7204,7 @@ export function IsUrlCacheEntryExpiredA(
 }
 
 export function IsUrlCacheEntryExpiredW(
-  lpszUrlName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpszUrlName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   dwFlags: number /* u32 */,
   pftLastModified: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
@@ -7212,10 +7212,10 @@ export function IsUrlCacheEntryExpiredW(
 }
 
 export function CreateUrlCacheEntryExW(
-  lpszUrlName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpszUrlName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   dwExpectedFileSize: number /* u32 */,
-  lpszFileExtension: string | null /* Windows.Win32.Foundation.PWSTR */,
-  lpszFileName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpszFileExtension: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  lpszFileName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   dwReserved: number /* u32 */,
   fPreserveIncomingFileName: boolean /* Windows.Win32.Foundation.BOOL */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
@@ -7223,7 +7223,7 @@ export function CreateUrlCacheEntryExW(
 }
 
 export function GetUrlCacheEntryBinaryBlob(
-  pwszUrlName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pwszUrlName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   dwType: Deno.PointerValue | Uint8Array | null /* ptr */,
   pftExpireTime: Deno.PointerValue | Uint8Array | null /* ptr */,
   pftAccessTime: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -7235,7 +7235,7 @@ export function GetUrlCacheEntryBinaryBlob(
 }
 
 export function CommitUrlCacheEntryBinaryBlob(
-  pwszUrlName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pwszUrlName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   dwType: number /* u32 */,
   ftExpireTime: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.FILETIME */,
   ftModifiedTime: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.FILETIME */,
@@ -7246,9 +7246,9 @@ export function CommitUrlCacheEntryBinaryBlob(
 }
 
 export function CreateUrlCacheContainerA(
-  Name: string | null /* Windows.Win32.Foundation.PSTR */,
-  lpCachePrefix: string | null /* Windows.Win32.Foundation.PSTR */,
-  lpszCachePath: string | null /* Windows.Win32.Foundation.PSTR */,
+  Name: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  lpCachePrefix: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  lpszCachePath: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   KBCacheLimit: number /* u32 */,
   dwContainerType: number /* u32 */,
   dwOptions: number /* u32 */,
@@ -7259,9 +7259,9 @@ export function CreateUrlCacheContainerA(
 }
 
 export function CreateUrlCacheContainerW(
-  Name: string | null /* Windows.Win32.Foundation.PWSTR */,
-  lpCachePrefix: string | null /* Windows.Win32.Foundation.PWSTR */,
-  lpszCachePath: string | null /* Windows.Win32.Foundation.PWSTR */,
+  Name: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  lpCachePrefix: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  lpszCachePath: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   KBCacheLimit: number /* u32 */,
   dwContainerType: number /* u32 */,
   dwOptions: number /* u32 */,
@@ -7272,14 +7272,14 @@ export function CreateUrlCacheContainerW(
 }
 
 export function DeleteUrlCacheContainerA(
-  Name: string | null /* Windows.Win32.Foundation.PSTR */,
+  Name: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   dwOptions: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libWININET_dll.DeleteUrlCacheContainerA(util.pstrToFfi(Name), dwOptions));
 }
 
 export function DeleteUrlCacheContainerW(
-  Name: string | null /* Windows.Win32.Foundation.PWSTR */,
+  Name: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   dwOptions: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libWININET_dll.DeleteUrlCacheContainerW(util.pwstrToFfi(Name), dwOptions));
@@ -7320,7 +7320,7 @@ export function FindNextUrlCacheContainerW(
 }
 
 export function FreeUrlCacheSpaceA(
-  lpszCachePath: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpszCachePath: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   dwSize: number /* u32 */,
   dwFilter: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
@@ -7328,7 +7328,7 @@ export function FreeUrlCacheSpaceA(
 }
 
 export function FreeUrlCacheSpaceW(
-  lpszCachePath: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpszCachePath: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   dwSize: number /* u32 */,
   dwFilter: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
@@ -7383,7 +7383,7 @@ export function SetUrlCacheConfigInfoW(
 export function RunOnceUrlCache(
   hwnd: Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */,
   hinst: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HINSTANCE */,
-  lpszCmd: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpszCmd: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   nCmdShow: number /* i32 */,
 ): number /* u32 */ {
   return libWININET_dll.RunOnceUrlCache(util.hwndToFfi(hwnd), util.toPointer(hinst), util.pstrToFfi(lpszCmd), nCmdShow);
@@ -7392,14 +7392,14 @@ export function RunOnceUrlCache(
 export function DeleteIE3Cache(
   hwnd: Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */,
   hinst: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HINSTANCE */,
-  lpszCmd: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpszCmd: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   nCmdShow: number /* i32 */,
 ): number /* u32 */ {
   return libWININET_dll.DeleteIE3Cache(util.hwndToFfi(hwnd), util.toPointer(hinst), util.pstrToFfi(lpszCmd), nCmdShow);
 }
 
 export function UpdateUrlCacheContentPath(
-  szNewPath: string | null /* Windows.Win32.Foundation.PSTR */,
+  szNewPath: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libWININET_dll.UpdateUrlCacheContentPath(util.pstrToFfi(szNewPath)));
 }
@@ -7440,7 +7440,7 @@ export function LoadUrlCacheContent(): boolean /* Windows.Win32.Foundation.BOOL 
 }
 
 export function AppCacheLookup(
-  pwszUrl: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pwszUrl: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   dwFlags: number /* u32 */,
   phAppCache: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
@@ -7448,8 +7448,8 @@ export function AppCacheLookup(
 }
 
 export function AppCacheCheckManifest(
-  pwszMasterUrl: string | null /* Windows.Win32.Foundation.PWSTR */,
-  pwszManifestUrl: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pwszMasterUrl: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  pwszManifestUrl: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pbManifestData: Deno.PointerValue | Uint8Array | null /* ptr */,
   dwManifestDataSize: number /* u32 */,
   pbManifestResponseHeaders: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -7484,7 +7484,7 @@ export function AppCacheFinalize(
 
 export function AppCacheGetFallbackUrl(
   hAppCache: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pwszUrl: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pwszUrl: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   ppwszFallbackUrl: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
   return libWININET_dll.AppCacheGetFallbackUrl(util.toPointer(hAppCache), util.pwstrToFfi(pwszUrl), util.toPointer(ppwszFallbackUrl));
@@ -7530,7 +7530,7 @@ export function AppCacheGetInfo(
 }
 
 export function AppCacheDeleteGroup(
-  pwszManifestUrl: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pwszManifestUrl: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
   return libWININET_dll.AppCacheDeleteGroup(util.pwstrToFfi(pwszManifestUrl));
 }
@@ -7548,7 +7548,7 @@ export function AppCacheGetIEGroupList(
 }
 
 export function AppCacheDeleteIEGroup(
-  pwszManifestUrl: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pwszManifestUrl: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
   return libWININET_dll.AppCacheDeleteIEGroup(util.pwstrToFfi(pwszManifestUrl));
 }
@@ -7561,8 +7561,8 @@ export function AppCacheFreeIESpace(
 
 export function AppCacheCreateAndCommitFile(
   hAppCache: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pwszSourceFilePath: string | null /* Windows.Win32.Foundation.PWSTR */,
-  pwszUrl: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pwszSourceFilePath: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  pwszUrl: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pbResponseHeaders: Deno.PointerValue | Uint8Array | null /* ptr */,
   dwResponseHeadersSize: number /* u32 */,
 ): number /* u32 */ {
@@ -7604,7 +7604,7 @@ export function UrlCacheFreeEntryInfo(
 
 export function UrlCacheGetEntryInfo(
   hAppCache: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pcwszUrl: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pcwszUrl: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pCacheEntryInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
   return libWININET_dll.UrlCacheGetEntryInfo(util.toPointer(hAppCache), util.pwstrToFfi(pcwszUrl), util.toPointer(pCacheEntryInfo));
@@ -7618,7 +7618,7 @@ export function UrlCacheCloseEntryHandle(
 
 export function UrlCacheRetrieveEntryFile(
   hAppCache: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pcwszUrl: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pcwszUrl: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pCacheEntryInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
   phEntryFile: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
@@ -7637,7 +7637,7 @@ export function UrlCacheReadEntryStream(
 
 export function UrlCacheRetrieveEntryStream(
   hAppCache: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pcwszUrl: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pcwszUrl: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   fRandomRead: boolean /* Windows.Win32.Foundation.BOOL */,
   pCacheEntryInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
   phEntryStream: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -7647,7 +7647,7 @@ export function UrlCacheRetrieveEntryStream(
 
 export function UrlCacheUpdateEntryExtraData(
   hAppCache: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pcwszUrl: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pcwszUrl: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pbExtraData: Deno.PointerValue | Uint8Array | null /* ptr */,
   cbExtraData: number /* u32 */,
 ): number /* u32 */ {
@@ -7655,9 +7655,9 @@ export function UrlCacheUpdateEntryExtraData(
 }
 
 export function UrlCacheCreateContainer(
-  pwszName: string | null /* Windows.Win32.Foundation.PWSTR */,
-  pwszPrefix: string | null /* Windows.Win32.Foundation.PWSTR */,
-  pwszDirectory: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pwszName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  pwszPrefix: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  pwszDirectory: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   ullLimit: Deno.PointerValue /* u64 */,
   dwOptions: number /* u32 */,
 ): number /* u32 */ {
@@ -7698,14 +7698,14 @@ export function UrlCacheReloadSettings(): number /* u32 */ {
 }
 
 export function UrlCacheContainerSetEntryMaximumAge(
-  pwszPrefix: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pwszPrefix: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   dwEntryMaxAge: number /* u32 */,
 ): number /* u32 */ {
   return libWININET_dll.UrlCacheContainerSetEntryMaximumAge(util.pwstrToFfi(pwszPrefix), dwEntryMaxAge);
 }
 
 export function UrlCacheFindFirstEntry(
-  pwszPrefix: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pwszPrefix: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   dwFlags: number /* u32 */,
   dwFilter: number /* u32 */,
   GroupId: Deno.PointerValue /* i64 */,
@@ -7739,7 +7739,7 @@ export function ReadGuidsForConnectedNetworks(
 
 export function IsHostInProxyBypassList(
   tScheme: INTERNET_SCHEME /* Windows.Win32.Networking.WinInet.INTERNET_SCHEME */,
-  lpszHost: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpszHost: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   cchHost: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libWININET_dll.IsHostInProxyBypassList(tScheme, util.pstrToFfi(lpszHost), cchHost));
@@ -7753,7 +7753,7 @@ export function InternetFreeProxyInfoList(
 
 export function InternetGetProxyForUrl(
   hInternet: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pcwszUrl: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pcwszUrl: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pProxyInfoList: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
   return libWININET_dll.InternetGetProxyForUrl(util.toPointer(hInternet), util.pwstrToFfi(pcwszUrl), util.toPointer(pProxyInfoList));
@@ -7764,7 +7764,7 @@ export function DoConnectoidsExist(): boolean /* Windows.Win32.Foundation.BOOL *
 }
 
 export function GetDiskInfoA(
-  pszPath: string | null /* Windows.Win32.Foundation.PSTR */,
+  pszPath: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   pdwClusterSize: Deno.PointerValue | Uint8Array | null /* ptr */,
   pdlAvail: Deno.PointerValue | Uint8Array | null /* ptr */,
   pdlTotal: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -7773,7 +7773,7 @@ export function GetDiskInfoA(
 }
 
 export function PerformOperationOverUrlCacheA(
-  pszUrlSearchPattern: string | null /* Windows.Win32.Foundation.PSTR */,
+  pszUrlSearchPattern: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   dwFlags: number /* u32 */,
   dwFilter: number /* u32 */,
   GroupId: Deno.PointerValue /* i64 */,
@@ -7791,49 +7791,49 @@ export function IsProfilesEnabled(): boolean /* Windows.Win32.Foundation.BOOL */
 }
 
 export function InternalInternetGetCookie(
-  lpszUrl: string | null /* Windows.Win32.Foundation.PSTR */,
-  lpszCookieData: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpszUrl: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  lpszCookieData: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   lpdwDataSize: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
   return libWININET_dll.InternalInternetGetCookie(util.pstrToFfi(lpszUrl), util.pstrToFfi(lpszCookieData), util.toPointer(lpdwDataSize));
 }
 
 export function ImportCookieFileA(
-  szFilename: string | null /* Windows.Win32.Foundation.PSTR */,
+  szFilename: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libWININET_dll.ImportCookieFileA(util.pstrToFfi(szFilename)));
 }
 
 export function ImportCookieFileW(
-  szFilename: string | null /* Windows.Win32.Foundation.PWSTR */,
+  szFilename: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libWININET_dll.ImportCookieFileW(util.pwstrToFfi(szFilename)));
 }
 
 export function ExportCookieFileA(
-  szFilename: string | null /* Windows.Win32.Foundation.PSTR */,
+  szFilename: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   fAppend: boolean /* Windows.Win32.Foundation.BOOL */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libWININET_dll.ExportCookieFileA(util.pstrToFfi(szFilename), util.boolToFfi(fAppend)));
 }
 
 export function ExportCookieFileW(
-  szFilename: string | null /* Windows.Win32.Foundation.PWSTR */,
+  szFilename: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   fAppend: boolean /* Windows.Win32.Foundation.BOOL */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libWININET_dll.ExportCookieFileW(util.pwstrToFfi(szFilename), util.boolToFfi(fAppend)));
 }
 
 export function IsDomainLegalCookieDomainA(
-  pchDomain: string | null /* Windows.Win32.Foundation.PSTR */,
-  pchFullDomain: string | null /* Windows.Win32.Foundation.PSTR */,
+  pchDomain: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  pchFullDomain: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libWININET_dll.IsDomainLegalCookieDomainA(util.pstrToFfi(pchDomain), util.pstrToFfi(pchFullDomain)));
 }
 
 export function IsDomainLegalCookieDomainW(
-  pchDomain: string | null /* Windows.Win32.Foundation.PWSTR */,
-  pchFullDomain: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pchDomain: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  pchFullDomain: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libWININET_dll.IsDomainLegalCookieDomainW(util.pwstrToFfi(pchDomain), util.pwstrToFfi(pchFullDomain)));
 }
@@ -7893,9 +7893,9 @@ export function HttpWebSocketQueryCloseStatus(
 }
 
 export function InternetConvertUrlFromWireToWideChar(
-  pcszUrl: string | null /* Windows.Win32.Foundation.PSTR */,
+  pcszUrl: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   cchUrl: number /* u32 */,
-  pcwszBaseUrl: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pcwszBaseUrl: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   dwCodePageHost: number /* u32 */,
   dwCodePagePath: number /* u32 */,
   fEncodePathExtra: boolean /* Windows.Win32.Foundation.BOOL */,

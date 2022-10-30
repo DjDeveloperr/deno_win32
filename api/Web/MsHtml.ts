@@ -9273,9 +9273,9 @@ export interface DOCHOSTUIINFO {
   /** Windows.Win32.Web.MsHtml.DOCHOSTUIDBLCLK */
   dwDoubleClick: DOCHOSTUIDBLCLK;
   /** Windows.Win32.Foundation.PWSTR */
-  pchHostCss: string | null;
+  pchHostCss: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pchHostNS: string | null;
+  pchHostNS: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeofDOCHOSTUIINFO = 32;
@@ -9332,9 +9332,9 @@ export interface STATURL {
   /** u32 */
   cbSize: number;
   /** Windows.Win32.Foundation.PWSTR */
-  pwcsUrl: string | null;
+  pwcsUrl: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pwcsTitle: string | null;
+  pwcsTitle: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.FILETIME */
   ftLastVisited: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.Foundation.FILETIME */
@@ -9526,7 +9526,7 @@ try {
 
 export function RatingEnable(
   hwndParent: Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */,
-  pszUsername: string | null /* Windows.Win32.Foundation.PSTR */,
+  pszUsername: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   fEnable: boolean /* Windows.Win32.Foundation.BOOL */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
   return util.pointerFromFfi(libMSRATING_dll.RatingEnable(util.hwndToFfi(hwndParent), util.pstrToFfi(pszUsername), util.boolToFfi(fEnable)));
@@ -9534,16 +9534,16 @@ export function RatingEnable(
 
 export function RatingEnableW(
   hwndParent: Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */,
-  pszUsername: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pszUsername: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   fEnable: boolean /* Windows.Win32.Foundation.BOOL */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
   return util.pointerFromFfi(libMSRATING_dll.RatingEnableW(util.hwndToFfi(hwndParent), util.pwstrToFfi(pszUsername), util.boolToFfi(fEnable)));
 }
 
 export function RatingCheckUserAccess(
-  pszUsername: string | null /* Windows.Win32.Foundation.PSTR */,
-  pszURL: string | null /* Windows.Win32.Foundation.PSTR */,
-  pszRatingInfo: string | null /* Windows.Win32.Foundation.PSTR */,
+  pszUsername: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  pszURL: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  pszRatingInfo: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   pData: Deno.PointerValue | Uint8Array | null /* ptr */,
   cbData: number /* u32 */,
   ppRatingDetails: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -9552,9 +9552,9 @@ export function RatingCheckUserAccess(
 }
 
 export function RatingCheckUserAccessW(
-  pszUsername: string | null /* Windows.Win32.Foundation.PWSTR */,
-  pszURL: string | null /* Windows.Win32.Foundation.PWSTR */,
-  pszRatingInfo: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pszUsername: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  pszURL: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  pszRatingInfo: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pData: Deno.PointerValue | Uint8Array | null /* ptr */,
   cbData: number /* u32 */,
   ppRatingDetails: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -9564,8 +9564,8 @@ export function RatingCheckUserAccessW(
 
 export function RatingAccessDeniedDialog(
   hDlg: Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */,
-  pszUsername: string | null /* Windows.Win32.Foundation.PSTR */,
-  pszContentDescription: string | null /* Windows.Win32.Foundation.PSTR */,
+  pszUsername: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  pszContentDescription: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   pRatingDetails: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
   return util.pointerFromFfi(libMSRATING_dll.RatingAccessDeniedDialog(util.hwndToFfi(hDlg), util.pstrToFfi(pszUsername), util.pstrToFfi(pszContentDescription), util.toPointer(pRatingDetails)));
@@ -9573,8 +9573,8 @@ export function RatingAccessDeniedDialog(
 
 export function RatingAccessDeniedDialogW(
   hDlg: Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */,
-  pszUsername: string | null /* Windows.Win32.Foundation.PWSTR */,
-  pszContentDescription: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pszUsername: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  pszContentDescription: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pRatingDetails: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
   return util.pointerFromFfi(libMSRATING_dll.RatingAccessDeniedDialogW(util.hwndToFfi(hDlg), util.pwstrToFfi(pszUsername), util.pwstrToFfi(pszContentDescription), util.toPointer(pRatingDetails)));
@@ -9582,7 +9582,7 @@ export function RatingAccessDeniedDialogW(
 
 export function RatingAccessDeniedDialog2(
   hDlg: Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */,
-  pszUsername: string | null /* Windows.Win32.Foundation.PSTR */,
+  pszUsername: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   pRatingDetails: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
   return util.pointerFromFfi(libMSRATING_dll.RatingAccessDeniedDialog2(util.hwndToFfi(hDlg), util.pstrToFfi(pszUsername), util.toPointer(pRatingDetails)));
@@ -9590,7 +9590,7 @@ export function RatingAccessDeniedDialog2(
 
 export function RatingAccessDeniedDialog2W(
   hDlg: Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */,
-  pszUsername: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pszUsername: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pRatingDetails: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
   return util.pointerFromFfi(libMSRATING_dll.RatingAccessDeniedDialog2W(util.hwndToFfi(hDlg), util.pwstrToFfi(pszUsername), util.toPointer(pRatingDetails)));
@@ -9609,7 +9609,7 @@ export function RatingObtainCancel(
 }
 
 export function RatingObtainQuery(
-  pszTargetUrl: string | null /* Windows.Win32.Foundation.PSTR */,
+  pszTargetUrl: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   dwUserData: number /* u32 */,
   fCallback: Deno.PointerValue /* isize */,
   phRatingObtainQuery: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -9618,7 +9618,7 @@ export function RatingObtainQuery(
 }
 
 export function RatingObtainQueryW(
-  pszTargetUrl: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pszTargetUrl: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   dwUserData: number /* u32 */,
   fCallback: Deno.PointerValue /* isize */,
   phRatingObtainQuery: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -9628,14 +9628,14 @@ export function RatingObtainQueryW(
 
 export function RatingSetupUI(
   hDlg: Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */,
-  pszUsername: string | null /* Windows.Win32.Foundation.PSTR */,
+  pszUsername: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
   return util.pointerFromFfi(libMSRATING_dll.RatingSetupUI(util.hwndToFfi(hDlg), util.pstrToFfi(pszUsername)));
 }
 
 export function RatingSetupUIW(
   hDlg: Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */,
-  pszUsername: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pszUsername: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
   return util.pointerFromFfi(libMSRATING_dll.RatingSetupUIW(util.hwndToFfi(hDlg), util.pwstrToFfi(pszUsername)));
 }
@@ -9644,7 +9644,7 @@ export function RatingAddToApprovedSites(
   hDlg: Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */,
   cbPasswordBlob: number /* u32 */,
   pbPasswordBlob: Deno.PointerValue | Uint8Array | null /* ptr */,
-  lpszUrl: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpszUrl: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   fAlwaysNever: boolean /* Windows.Win32.Foundation.BOOL */,
   fSitePage: boolean /* Windows.Win32.Foundation.BOOL */,
   fApprovedSitesEnforced: boolean /* Windows.Win32.Foundation.BOOL */,
@@ -9655,7 +9655,7 @@ export function RatingAddToApprovedSites(
 export function RatingClickedOnPRFInternal(
   hWndOwner: Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */,
   param1: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HINSTANCE */,
-  lpszFileName: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpszFileName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   nShow: number /* i32 */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
   return util.pointerFromFfi(libMSRATING_dll.RatingClickedOnPRFInternal(util.hwndToFfi(hWndOwner), util.toPointer(param1), util.pstrToFfi(lpszFileName), nShow));
@@ -9664,7 +9664,7 @@ export function RatingClickedOnPRFInternal(
 export function RatingClickedOnRATInternal(
   hWndOwner: Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */,
   param1: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HINSTANCE */,
-  lpszFileName: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpszFileName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   nShow: number /* i32 */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
   return util.pointerFromFfi(libMSRATING_dll.RatingClickedOnRATInternal(util.hwndToFfi(hWndOwner), util.toPointer(param1), util.pstrToFfi(lpszFileName), nShow));
@@ -9753,14 +9753,14 @@ export function DecodeImageEx(
   pStream: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Com.IStream */,
   pMap: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Web.MsHtml.IMapMIMEToCLSID */,
   pEventSink: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Com.IUnknown */,
-  pszMIMETypeParam: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pszMIMETypeParam: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
   return util.pointerFromFfi(libImgUtil_dll.DecodeImageEx(util.toPointer(pStream), util.toPointer(pMap), util.toPointer(pEventSink), util.pwstrToFfi(pszMIMETypeParam)));
 }
 
 export function DoPrivacyDlg(
   hwndOwner: Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */,
-  pszUrl: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pszUrl: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pPrivacyEnum: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Web.MsHtml.IEnumPrivacyRecords */,
   fReportAllSites: boolean /* Windows.Win32.Foundation.BOOL */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {

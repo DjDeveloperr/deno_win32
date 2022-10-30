@@ -26,7 +26,7 @@ export type PWSTR = Deno.PointerValue | Uint8Array | null;
  */
 export interface WSB_OB_STATUS_ENTRY_VALUE_TYPE_PAIR {
   /** Windows.Win32.Foundation.PWSTR */
-  m_wszObStatusEntryPairValue: string | null;
+  m_wszObStatusEntryPairValue: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.System.ServerBackup.WSB_OB_STATUS_ENTRY_PAIR_TYPE */
   m_ObStatusEntryPairType: WSB_OB_STATUS_ENTRY_PAIR_TYPE;
 }
@@ -115,7 +115,7 @@ export type BOOLEAN = number;
  */
 export interface WSB_OB_REGISTRATION_INFO {
   /** Windows.Win32.Foundation.PWSTR */
-  m_wszResourceDLL: string | null;
+  m_wszResourceDLL: string | null | Uint8Array | Uint16Array;
   /** System.Guid */
   m_guidSnapinId: Uint8Array | Deno.PointerValue | null;
   /** u32 */

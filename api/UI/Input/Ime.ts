@@ -991,9 +991,9 @@ export type PSTR = Deno.PointerValue | Uint8Array | null;
  */
 export interface REGISTERWORDA {
   /** Windows.Win32.Foundation.PSTR */
-  lpReading: string | null;
+  lpReading: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  lpWord: string | null;
+  lpWord: string | null | Uint8Array;
 }
 
 export const sizeofREGISTERWORDA = 16;
@@ -1021,9 +1021,9 @@ export type PWSTR = Deno.PointerValue | Uint8Array | null;
  */
 export interface REGISTERWORDW {
   /** Windows.Win32.Foundation.PWSTR */
-  lpReading: string | null;
+  lpReading: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  lpWord: string | null;
+  lpWord: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeofREGISTERWORDW = 16;
@@ -1286,7 +1286,7 @@ export interface IMEDLG {
   /** Windows.Win32.Foundation.HWND */
   hwnd: Deno.PointerValue | null;
   /** Windows.Win32.Foundation.PWSTR */
-  lpwstrWord: string | null;
+  lpwstrWord: string | null | Uint8Array | Uint16Array;
   /** i32 */
   nTabId: number;
 }
@@ -1319,7 +1319,7 @@ export interface _Anonymous1_e__Union {
   /** usize */
   Data0: Deno.PointerValue;
   /** Windows.Win32.Foundation.PWSTR */
-  String: string | null;
+  String: string | null | Uint8Array | Uint16Array;
   /** usize */
   u: Deno.PointerValue;
   /** ptr */
@@ -1463,7 +1463,7 @@ export interface MORRSLT {
   /** u32 */
   dwSize: number;
   /** Windows.Win32.Foundation.PWSTR */
-  pwchOutput: string | null;
+  pwchOutput: string | null | Uint8Array | Uint16Array;
   /** u16 */
   cchOutput: number;
   /** _Anonymous1_e__Union */
@@ -1577,9 +1577,9 @@ export function alloc_Anonymous_e__Union(data?: Partial<_Anonymous_e__Union>): U
  */
 export interface IMEWRD {
   /** Windows.Win32.Foundation.PWSTR */
-  pwchReading: string | null;
+  pwchReading: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pwchDisplay: string | null;
+  pwchDisplay: string | null | Uint8Array | Uint16Array;
   /** _Anonymous_e__Union */
   Anonymous: Uint8Array | Deno.PointerValue | null;
   /** array */
@@ -2595,7 +2595,7 @@ export interface IMESTRINGINFO {
   /** u32 */
   dwFarEastId: number;
   /** Windows.Win32.Foundation.PWSTR */
-  lpwstr: string | null;
+  lpwstr: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeofIMESTRINGINFO = 16;
@@ -2857,9 +2857,9 @@ export interface APPLYCANDEXPARAM {
   /** u32 */
   dwSize: number;
   /** Windows.Win32.Foundation.PWSTR */
-  lpwstrDisplay: string | null;
+  lpwstrDisplay: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  lpwstrReading: string | null;
+  lpwstrReading: string | null | Uint8Array | Uint16Array;
   /** u32 */
   dwReserved: number;
 }
@@ -3230,15 +3230,15 @@ try {
 // Symbols
 
 export function ImmInstallIMEA(
-  lpszIMEFileName: string | null /* Windows.Win32.Foundation.PSTR */,
-  lpszLayoutText: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpszIMEFileName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  lpszLayoutText: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): Deno.PointerValue | null /* Windows.Win32.UI.TextServices.HKL */ {
   return util.pointerFromFfi(libIMM32_dll.ImmInstallIMEA(util.pstrToFfi(lpszIMEFileName), util.pstrToFfi(lpszLayoutText)));
 }
 
 export function ImmInstallIMEW(
-  lpszIMEFileName: string | null /* Windows.Win32.Foundation.PWSTR */,
-  lpszLayoutText: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpszIMEFileName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  lpszLayoutText: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): Deno.PointerValue | null /* Windows.Win32.UI.TextServices.HKL */ {
   return util.pointerFromFfi(libIMM32_dll.ImmInstallIMEW(util.pwstrToFfi(lpszIMEFileName), util.pwstrToFfi(lpszLayoutText)));
 }
@@ -3251,7 +3251,7 @@ export function ImmGetDefaultIMEWnd(
 
 export function ImmGetDescriptionA(
   param0: Uint8Array | Deno.PointerValue | null /* Windows.Win32.UI.TextServices.HKL */,
-  lpszDescription: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpszDescription: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   uBufLen: number /* u32 */,
 ): number /* u32 */ {
   return libIMM32_dll.ImmGetDescriptionA(util.toPointer(param0), util.pstrToFfi(lpszDescription), uBufLen);
@@ -3259,7 +3259,7 @@ export function ImmGetDescriptionA(
 
 export function ImmGetDescriptionW(
   param0: Uint8Array | Deno.PointerValue | null /* Windows.Win32.UI.TextServices.HKL */,
-  lpszDescription: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpszDescription: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   uBufLen: number /* u32 */,
 ): number /* u32 */ {
   return libIMM32_dll.ImmGetDescriptionW(util.toPointer(param0), util.pwstrToFfi(lpszDescription), uBufLen);
@@ -3267,7 +3267,7 @@ export function ImmGetDescriptionW(
 
 export function ImmGetIMEFileNameA(
   param0: Uint8Array | Deno.PointerValue | null /* Windows.Win32.UI.TextServices.HKL */,
-  lpszFileName: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpszFileName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   uBufLen: number /* u32 */,
 ): number /* u32 */ {
   return libIMM32_dll.ImmGetIMEFileNameA(util.toPointer(param0), util.pstrToFfi(lpszFileName), uBufLen);
@@ -3275,7 +3275,7 @@ export function ImmGetIMEFileNameA(
 
 export function ImmGetIMEFileNameW(
   param0: Uint8Array | Deno.PointerValue | null /* Windows.Win32.UI.TextServices.HKL */,
-  lpszFileName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpszFileName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   uBufLen: number /* u32 */,
 ): number /* u32 */ {
   return libIMM32_dll.ImmGetIMEFileNameW(util.toPointer(param0), util.pwstrToFfi(lpszFileName), uBufLen);
@@ -3414,7 +3414,7 @@ export function ImmGetCandidateListW(
 export function ImmGetGuideLineA(
   param0: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Globalization.HIMC */,
   dwIndex: GET_GUIDE_LINE_TYPE /* Windows.Win32.UI.Input.Ime.GET_GUIDE_LINE_TYPE */,
-  lpBuf: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpBuf: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   dwBufLen: number /* u32 */,
 ): number /* u32 */ {
   return libIMM32_dll.ImmGetGuideLineA(util.toPointer(param0), dwIndex, util.pstrToFfi(lpBuf), dwBufLen);
@@ -3423,7 +3423,7 @@ export function ImmGetGuideLineA(
 export function ImmGetGuideLineW(
   param0: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Globalization.HIMC */,
   dwIndex: GET_GUIDE_LINE_TYPE /* Windows.Win32.UI.Input.Ime.GET_GUIDE_LINE_TYPE */,
-  lpBuf: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpBuf: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   dwBufLen: number /* u32 */,
 ): number /* u32 */ {
   return libIMM32_dll.ImmGetGuideLineW(util.toPointer(param0), dwIndex, util.pwstrToFfi(lpBuf), dwBufLen);
@@ -3525,7 +3525,7 @@ export function ImmEscapeW(
 export function ImmGetConversionListA(
   param0: Uint8Array | Deno.PointerValue | null /* Windows.Win32.UI.TextServices.HKL */,
   param1: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Globalization.HIMC */,
-  lpSrc: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpSrc: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   lpDst: Deno.PointerValue | Uint8Array | null /* ptr */,
   dwBufLen: number /* u32 */,
   uFlag: GET_CONVERSION_LIST_FLAG /* Windows.Win32.UI.Input.Ime.GET_CONVERSION_LIST_FLAG */,
@@ -3536,7 +3536,7 @@ export function ImmGetConversionListA(
 export function ImmGetConversionListW(
   param0: Uint8Array | Deno.PointerValue | null /* Windows.Win32.UI.TextServices.HKL */,
   param1: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Globalization.HIMC */,
-  lpSrc: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpSrc: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   lpDst: Deno.PointerValue | Uint8Array | null /* ptr */,
   dwBufLen: number /* u32 */,
   uFlag: GET_CONVERSION_LIST_FLAG /* Windows.Win32.UI.Input.Ime.GET_CONVERSION_LIST_FLAG */,
@@ -3622,36 +3622,36 @@ export function ImmGetVirtualKey(
 
 export function ImmRegisterWordA(
   param0: Uint8Array | Deno.PointerValue | null /* Windows.Win32.UI.TextServices.HKL */,
-  lpszReading: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpszReading: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   param2: number /* u32 */,
-  lpszRegister: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpszRegister: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libIMM32_dll.ImmRegisterWordA(util.toPointer(param0), util.pstrToFfi(lpszReading), param2, util.pstrToFfi(lpszRegister)));
 }
 
 export function ImmRegisterWordW(
   param0: Uint8Array | Deno.PointerValue | null /* Windows.Win32.UI.TextServices.HKL */,
-  lpszReading: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpszReading: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   param2: number /* u32 */,
-  lpszRegister: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpszRegister: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libIMM32_dll.ImmRegisterWordW(util.toPointer(param0), util.pwstrToFfi(lpszReading), param2, util.pwstrToFfi(lpszRegister)));
 }
 
 export function ImmUnregisterWordA(
   param0: Uint8Array | Deno.PointerValue | null /* Windows.Win32.UI.TextServices.HKL */,
-  lpszReading: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpszReading: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   param2: number /* u32 */,
-  lpszUnregister: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpszUnregister: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libIMM32_dll.ImmUnregisterWordA(util.toPointer(param0), util.pstrToFfi(lpszReading), param2, util.pstrToFfi(lpszUnregister)));
 }
 
 export function ImmUnregisterWordW(
   param0: Uint8Array | Deno.PointerValue | null /* Windows.Win32.UI.TextServices.HKL */,
-  lpszReading: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpszReading: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   param2: number /* u32 */,
-  lpszUnregister: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpszUnregister: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libIMM32_dll.ImmUnregisterWordW(util.toPointer(param0), util.pwstrToFfi(lpszReading), param2, util.pwstrToFfi(lpszUnregister)));
 }
@@ -3675,9 +3675,9 @@ export function ImmGetRegisterWordStyleW(
 export function ImmEnumRegisterWordA(
   param0: Uint8Array | Deno.PointerValue | null /* Windows.Win32.UI.TextServices.HKL */,
   param1: Uint8Array | Deno.PointerValue | null /* Windows.Win32.UI.Input.Ime.REGISTERWORDENUMPROCA */,
-  lpszReading: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpszReading: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   param3: number /* u32 */,
-  lpszRegister: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpszRegister: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   param5: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
   return libIMM32_dll.ImmEnumRegisterWordA(util.toPointer(param0), util.toPointer(param1), util.pstrToFfi(lpszReading), param3, util.pstrToFfi(lpszRegister), util.toPointer(param5));
@@ -3686,9 +3686,9 @@ export function ImmEnumRegisterWordA(
 export function ImmEnumRegisterWordW(
   param0: Uint8Array | Deno.PointerValue | null /* Windows.Win32.UI.TextServices.HKL */,
   param1: Uint8Array | Deno.PointerValue | null /* Windows.Win32.UI.Input.Ime.REGISTERWORDENUMPROCW */,
-  lpszReading: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpszReading: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   param3: number /* u32 */,
-  lpszRegister: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpszRegister: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   param5: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
   return libIMM32_dll.ImmEnumRegisterWordW(util.toPointer(param0), util.toPointer(param1), util.pwstrToFfi(lpszReading), param3, util.pwstrToFfi(lpszRegister), util.toPointer(param5));

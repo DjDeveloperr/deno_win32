@@ -147,7 +147,7 @@ export interface JOBOBJECT_IO_RATE_CONTROL_INFORMATION {
   /** i64 */
   ReservationIops: Deno.PointerValue;
   /** Windows.Win32.Foundation.PWSTR */
-  VolumeName: string | null;
+  VolumeName: string | null | Uint8Array | Uint16Array;
   /** u32 */
   BaseIoSize: number;
   /** Windows.Win32.System.JobObjects.JOB_OBJECT_IO_RATE_CONTROL_FLAGS */
@@ -234,7 +234,7 @@ export interface _u_e__Struct {
   /** u32 */
   dwValue: number;
   /** Windows.Win32.Foundation.PWSTR */
-  pwszName: string | null;
+  pwszName: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeof_u_e__Struct = 16;
@@ -665,7 +665,7 @@ export interface _Anonymous1_e__Union {
   /** usize */
   Data0: Deno.PointerValue;
   /** Windows.Win32.Foundation.PWSTR */
-  String: string | null;
+  String: string | null | Uint8Array | Uint16Array;
   /** usize */
   u: Deno.PointerValue;
   /** ptr */
@@ -1044,7 +1044,7 @@ export interface JOBOBJECT_IO_RATE_CONTROL_INFORMATION_NATIVE_V2 {
   /** i64 */
   ReservationIops: Deno.PointerValue;
   /** Windows.Win32.Foundation.PWSTR */
-  VolumeName: string | null;
+  VolumeName: string | null | Uint8Array | Uint16Array;
   /** u32 */
   BaseIoSize: number;
   /** Windows.Win32.System.JobObjects.JOB_OBJECT_IO_RATE_CONTROL_FLAGS */
@@ -1114,7 +1114,7 @@ export interface JOBOBJECT_IO_RATE_CONTROL_INFORMATION_NATIVE_V3 {
   /** i64 */
   ReservationIops: Deno.PointerValue;
   /** Windows.Win32.Foundation.PWSTR */
-  VolumeName: string | null;
+  VolumeName: string | null | Uint8Array | Uint16Array;
   /** u32 */
   BaseIoSize: number;
   /** Windows.Win32.System.JobObjects.JOB_OBJECT_IO_RATE_CONTROL_FLAGS */
@@ -1338,7 +1338,7 @@ export function IsProcessInJob(
 
 export function CreateJobObjectW(
   lpJobAttributes: Deno.PointerValue | Uint8Array | null /* ptr */,
-  lpName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */ {
   return util.pointerFromFfi(libKERNEL32_dll.CreateJobObjectW(util.toPointer(lpJobAttributes), util.pwstrToFfi(lpName)));
 }
@@ -1352,7 +1352,7 @@ export function FreeMemoryJobObject(
 export function OpenJobObjectW(
   dwDesiredAccess: number /* u32 */,
   bInheritHandle: boolean /* Windows.Win32.Foundation.BOOL */,
-  lpName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */ {
   return util.pointerFromFfi(libKERNEL32_dll.OpenJobObjectW(dwDesiredAccess, util.boolToFfi(bInheritHandle), util.pwstrToFfi(lpName)));
 }
@@ -1399,7 +1399,7 @@ export function QueryInformationJobObject(
 
 export function QueryIoRateControlInformationJobObject(
   hJob: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  VolumeName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  VolumeName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   InfoBlocks: Deno.PointerValue | Uint8Array | null /* ptr */,
   InfoBlockCount: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
@@ -1416,7 +1416,7 @@ export function UserHandleGrantAccess(
 
 export function CreateJobObjectA(
   lpJobAttributes: Deno.PointerValue | Uint8Array | null /* ptr */,
-  lpName: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */ {
   return util.pointerFromFfi(libKERNEL32_dll.CreateJobObjectA(util.toPointer(lpJobAttributes), util.pstrToFfi(lpName)));
 }
@@ -1424,7 +1424,7 @@ export function CreateJobObjectA(
 export function OpenJobObjectA(
   dwDesiredAccess: number /* u32 */,
   bInheritHandle: boolean /* Windows.Win32.Foundation.BOOL */,
-  lpName: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */ {
   return util.pointerFromFfi(libKERNEL32_dll.OpenJobObjectA(dwDesiredAccess, util.boolToFfi(bInheritHandle), util.pstrToFfi(lpName)));
 }

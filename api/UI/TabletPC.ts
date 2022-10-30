@@ -2358,7 +2358,7 @@ export function AddStroke(
 export function GetBestResultString(
   hrc: Uint8Array | Deno.PointerValue | null /* Windows.Win32.UI.TabletPC.HRECOCONTEXT */,
   pcSize: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pwcBestResult: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pwcBestResult: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
   return util.pointerFromFfi(libinkobjcore_dll.GetBestResultString(util.toPointer(hrc), util.toPointer(pcSize), util.pwstrToFfi(pwcBestResult)));
 }
@@ -2394,7 +2394,7 @@ export function Process(
 export function SetFactoid(
   hrc: Uint8Array | Deno.PointerValue | null /* Windows.Win32.UI.TabletPC.HRECOCONTEXT */,
   cwcFactoid: number /* u32 */,
-  pwcFactoid: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pwcFactoid: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
   return util.pointerFromFfi(libinkobjcore_dll.SetFactoid(util.toPointer(hrc), cwcFactoid, util.pwstrToFfi(pwcFactoid)));
 }
@@ -2416,9 +2416,9 @@ export function GetLatticePtr(
 export function SetTextContext(
   hrc: Uint8Array | Deno.PointerValue | null /* Windows.Win32.UI.TabletPC.HRECOCONTEXT */,
   cwcBefore: number /* u32 */,
-  pwcBefore: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pwcBefore: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   cwcAfter: number /* u32 */,
-  pwcAfter: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pwcAfter: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
   return util.pointerFromFfi(libinkobjcore_dll.SetTextContext(util.toPointer(hrc), cwcBefore, util.pwstrToFfi(pwcBefore), cwcAfter, util.pwstrToFfi(pwcAfter)));
 }
@@ -2434,7 +2434,7 @@ export function SetEnabledUnicodeRanges(
 export function IsStringSupported(
   hrc: Uint8Array | Deno.PointerValue | null /* Windows.Win32.UI.TabletPC.HRECOCONTEXT */,
   wcString: number /* u32 */,
-  pwcString: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pwcString: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
   return util.pointerFromFfi(libinkobjcore_dll.IsStringSupported(util.toPointer(hrc), wcString, util.pwstrToFfi(pwcString)));
 }
@@ -2449,7 +2449,7 @@ export function SetWordList(
 export function GetRightSeparator(
   hrc: Uint8Array | Deno.PointerValue | null /* Windows.Win32.UI.TabletPC.HRECOCONTEXT */,
   pcSize: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pwcRightSeparator: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pwcRightSeparator: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
   return util.pointerFromFfi(libinkobjcore_dll.GetRightSeparator(util.toPointer(hrc), util.toPointer(pcSize), util.pwstrToFfi(pwcRightSeparator)));
 }
@@ -2457,7 +2457,7 @@ export function GetRightSeparator(
 export function GetLeftSeparator(
   hrc: Uint8Array | Deno.PointerValue | null /* Windows.Win32.UI.TabletPC.HRECOCONTEXT */,
   pcSize: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pwcLeftSeparator: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pwcLeftSeparator: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
   return util.pointerFromFfi(libinkobjcore_dll.GetLeftSeparator(util.toPointer(hrc), util.toPointer(pcSize), util.pwstrToFfi(pwcLeftSeparator)));
 }
@@ -2470,14 +2470,14 @@ export function DestroyWordList(
 
 export function AddWordsToWordList(
   hwl: Uint8Array | Deno.PointerValue | null /* Windows.Win32.UI.TabletPC.HRECOWORDLIST */,
-  pwcWords: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pwcWords: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
   return util.pointerFromFfi(libinkobjcore_dll.AddWordsToWordList(util.toPointer(hwl), util.pwstrToFfi(pwcWords)));
 }
 
 export function MakeWordList(
   hrec: Uint8Array | Deno.PointerValue | null /* Windows.Win32.UI.TabletPC.HRECOGNIZER */,
-  pBuffer: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pBuffer: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   phwl: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
   return util.pointerFromFfi(libinkobjcore_dll.MakeWordList(util.toPointer(hrec), util.pwstrToFfi(pBuffer), util.toPointer(phwl)));

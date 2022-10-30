@@ -3366,13 +3366,13 @@ export interface NETRESOURCEA {
   /** u32 */
   dwUsage: number;
   /** Windows.Win32.Foundation.PSTR */
-  lpLocalName: string | null;
+  lpLocalName: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  lpRemoteName: string | null;
+  lpRemoteName: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  lpComment: string | null;
+  lpComment: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  lpProvider: string | null;
+  lpProvider: string | null | Uint8Array;
 }
 
 export const sizeofNETRESOURCEA = 48;
@@ -3426,13 +3426,13 @@ export interface NETRESOURCEW {
   /** u32 */
   dwUsage: number;
   /** Windows.Win32.Foundation.PWSTR */
-  lpLocalName: string | null;
+  lpLocalName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  lpRemoteName: string | null;
+  lpRemoteName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  lpComment: string | null;
+  lpComment: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  lpProvider: string | null;
+  lpProvider: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeofNETRESOURCEW = 48;
@@ -3552,9 +3552,9 @@ export interface DISCDLGSTRUCTA {
   /** Windows.Win32.Foundation.HWND */
   hwndOwner: Deno.PointerValue | null;
   /** Windows.Win32.Foundation.PSTR */
-  lpLocalName: string | null;
+  lpLocalName: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  lpRemoteName: string | null;
+  lpRemoteName: string | null | Uint8Array;
   /** Windows.Win32.NetworkManagement.WNet.DISCDLGSTRUCT_FLAGS */
   dwFlags: DISCDLGSTRUCT_FLAGS;
 }
@@ -3594,9 +3594,9 @@ export interface DISCDLGSTRUCTW {
   /** Windows.Win32.Foundation.HWND */
   hwndOwner: Deno.PointerValue | null;
   /** Windows.Win32.Foundation.PWSTR */
-  lpLocalName: string | null;
+  lpLocalName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  lpRemoteName: string | null;
+  lpRemoteName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.NetworkManagement.WNet.DISCDLGSTRUCT_FLAGS */
   dwFlags: DISCDLGSTRUCT_FLAGS;
 }
@@ -3632,7 +3632,7 @@ export function allocDISCDLGSTRUCTW(data?: Partial<DISCDLGSTRUCTW>): Uint8Array 
  */
 export interface UNIVERSAL_NAME_INFOA {
   /** Windows.Win32.Foundation.PSTR */
-  lpUniversalName: string | null;
+  lpUniversalName: string | null | Uint8Array;
 }
 
 export const sizeofUNIVERSAL_NAME_INFOA = 8;
@@ -3653,7 +3653,7 @@ export function allocUNIVERSAL_NAME_INFOA(data?: Partial<UNIVERSAL_NAME_INFOA>):
  */
 export interface UNIVERSAL_NAME_INFOW {
   /** Windows.Win32.Foundation.PWSTR */
-  lpUniversalName: string | null;
+  lpUniversalName: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeofUNIVERSAL_NAME_INFOW = 8;
@@ -3674,11 +3674,11 @@ export function allocUNIVERSAL_NAME_INFOW(data?: Partial<UNIVERSAL_NAME_INFOW>):
  */
 export interface REMOTE_NAME_INFOA {
   /** Windows.Win32.Foundation.PSTR */
-  lpUniversalName: string | null;
+  lpUniversalName: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  lpConnectionName: string | null;
+  lpConnectionName: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  lpRemainingPath: string | null;
+  lpRemainingPath: string | null | Uint8Array;
 }
 
 export const sizeofREMOTE_NAME_INFOA = 24;
@@ -3709,11 +3709,11 @@ export function allocREMOTE_NAME_INFOA(data?: Partial<REMOTE_NAME_INFOA>): Uint8
  */
 export interface REMOTE_NAME_INFOW {
   /** Windows.Win32.Foundation.PWSTR */
-  lpUniversalName: string | null;
+  lpUniversalName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  lpConnectionName: string | null;
+  lpConnectionName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  lpRemainingPath: string | null;
+  lpRemainingPath: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeofREMOTE_NAME_INFOW = 24;
@@ -3881,9 +3881,9 @@ export type BOOL = number;
  */
 export interface NOTIFYCANCEL {
   /** Windows.Win32.Foundation.PWSTR */
-  lpName: string | null;
+  lpName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  lpProvider: string | null;
+  lpProvider: string | null | Uint8Array | Uint16Array;
   /** u32 */
   dwFlags: number;
   /** Windows.Win32.Foundation.BOOL */
@@ -4194,25 +4194,25 @@ try {
 // Symbols
 
 export function WNetAddConnectionA(
-  lpRemoteName: string | null /* Windows.Win32.Foundation.PSTR */,
-  lpPassword: string | null /* Windows.Win32.Foundation.PSTR */,
-  lpLocalName: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpRemoteName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  lpPassword: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  lpLocalName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): number /* u32 */ {
   return libMPR_dll.WNetAddConnectionA(util.pstrToFfi(lpRemoteName), util.pstrToFfi(lpPassword), util.pstrToFfi(lpLocalName));
 }
 
 export function WNetAddConnectionW(
-  lpRemoteName: string | null /* Windows.Win32.Foundation.PWSTR */,
-  lpPassword: string | null /* Windows.Win32.Foundation.PWSTR */,
-  lpLocalName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpRemoteName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  lpPassword: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  lpLocalName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
   return libMPR_dll.WNetAddConnectionW(util.pwstrToFfi(lpRemoteName), util.pwstrToFfi(lpPassword), util.pwstrToFfi(lpLocalName));
 }
 
 export function WNetAddConnection2A(
   lpNetResource: Deno.PointerValue | Uint8Array | null /* ptr */,
-  lpPassword: string | null /* Windows.Win32.Foundation.PSTR */,
-  lpUserName: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpPassword: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  lpUserName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   dwFlags: number /* u32 */,
 ): number /* u32 */ {
   return libMPR_dll.WNetAddConnection2A(util.toPointer(lpNetResource), util.pstrToFfi(lpPassword), util.pstrToFfi(lpUserName), dwFlags);
@@ -4220,8 +4220,8 @@ export function WNetAddConnection2A(
 
 export function WNetAddConnection2W(
   lpNetResource: Deno.PointerValue | Uint8Array | null /* ptr */,
-  lpPassword: string | null /* Windows.Win32.Foundation.PWSTR */,
-  lpUserName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpPassword: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  lpUserName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   dwFlags: number /* u32 */,
 ): number /* u32 */ {
   return libMPR_dll.WNetAddConnection2W(util.toPointer(lpNetResource), util.pwstrToFfi(lpPassword), util.pwstrToFfi(lpUserName), dwFlags);
@@ -4230,8 +4230,8 @@ export function WNetAddConnection2W(
 export function WNetAddConnection3A(
   hwndOwner: Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */,
   lpNetResource: Deno.PointerValue | Uint8Array | null /* ptr */,
-  lpPassword: string | null /* Windows.Win32.Foundation.PSTR */,
-  lpUserName: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpPassword: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  lpUserName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   dwFlags: number /* u32 */,
 ): number /* u32 */ {
   return libMPR_dll.WNetAddConnection3A(util.hwndToFfi(hwndOwner), util.toPointer(lpNetResource), util.pstrToFfi(lpPassword), util.pstrToFfi(lpUserName), dwFlags);
@@ -4240,8 +4240,8 @@ export function WNetAddConnection3A(
 export function WNetAddConnection3W(
   hwndOwner: Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */,
   lpNetResource: Deno.PointerValue | Uint8Array | null /* ptr */,
-  lpPassword: string | null /* Windows.Win32.Foundation.PWSTR */,
-  lpUserName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpPassword: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  lpUserName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   dwFlags: number /* u32 */,
 ): number /* u32 */ {
   return libMPR_dll.WNetAddConnection3W(util.hwndToFfi(hwndOwner), util.toPointer(lpNetResource), util.pwstrToFfi(lpPassword), util.pwstrToFfi(lpUserName), dwFlags);
@@ -4272,21 +4272,21 @@ export function WNetAddConnection4W(
 }
 
 export function WNetCancelConnectionA(
-  lpName: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   fForce: boolean /* Windows.Win32.Foundation.BOOL */,
 ): number /* u32 */ {
   return libMPR_dll.WNetCancelConnectionA(util.pstrToFfi(lpName), util.boolToFfi(fForce));
 }
 
 export function WNetCancelConnectionW(
-  lpName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   fForce: boolean /* Windows.Win32.Foundation.BOOL */,
 ): number /* u32 */ {
   return libMPR_dll.WNetCancelConnectionW(util.pwstrToFfi(lpName), util.boolToFfi(fForce));
 }
 
 export function WNetCancelConnection2A(
-  lpName: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   dwFlags: number /* u32 */,
   fForce: boolean /* Windows.Win32.Foundation.BOOL */,
 ): number /* u32 */ {
@@ -4294,7 +4294,7 @@ export function WNetCancelConnection2A(
 }
 
 export function WNetCancelConnection2W(
-  lpName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   dwFlags: number /* u32 */,
   fForce: boolean /* Windows.Win32.Foundation.BOOL */,
 ): number /* u32 */ {
@@ -4302,16 +4302,16 @@ export function WNetCancelConnection2W(
 }
 
 export function WNetGetConnectionA(
-  lpLocalName: string | null /* Windows.Win32.Foundation.PSTR */,
-  lpRemoteName: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpLocalName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  lpRemoteName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   lpnLength: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
   return libMPR_dll.WNetGetConnectionA(util.pstrToFfi(lpLocalName), util.pstrToFfi(lpRemoteName), util.toPointer(lpnLength));
 }
 
 export function WNetGetConnectionW(
-  lpLocalName: string | null /* Windows.Win32.Foundation.PWSTR */,
-  lpRemoteName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpLocalName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  lpRemoteName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   lpnLength: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
   return libMPR_dll.WNetGetConnectionW(util.pwstrToFfi(lpLocalName), util.pwstrToFfi(lpRemoteName), util.toPointer(lpnLength));
@@ -4320,10 +4320,10 @@ export function WNetGetConnectionW(
 export function WNetUseConnectionA(
   hwndOwner: Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */,
   lpNetResource: Deno.PointerValue | Uint8Array | null /* ptr */,
-  lpPassword: string | null /* Windows.Win32.Foundation.PSTR */,
-  lpUserId: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpPassword: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  lpUserId: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   dwFlags: NET_USE_CONNECT_FLAGS /* Windows.Win32.NetworkManagement.WNet.NET_USE_CONNECT_FLAGS */,
-  lpAccessName: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpAccessName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   lpBufferSize: Deno.PointerValue | Uint8Array | null /* ptr */,
   lpResult: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
@@ -4333,10 +4333,10 @@ export function WNetUseConnectionA(
 export function WNetUseConnectionW(
   hwndOwner: Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */,
   lpNetResource: Deno.PointerValue | Uint8Array | null /* ptr */,
-  lpPassword: string | null /* Windows.Win32.Foundation.PWSTR */,
-  lpUserId: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpPassword: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  lpUserId: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   dwFlags: NET_USE_CONNECT_FLAGS /* Windows.Win32.NetworkManagement.WNet.NET_USE_CONNECT_FLAGS */,
-  lpAccessName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpAccessName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   lpBufferSize: Deno.PointerValue | Uint8Array | null /* ptr */,
   lpResult: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
@@ -4351,7 +4351,7 @@ export function WNetUseConnection4A(
   dwFlags: number /* u32 */,
   lpUseOptions: Deno.PointerValue | Uint8Array | null /* ptr */,
   cbUseOptions: number /* u32 */,
-  lpAccessName: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpAccessName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   lpBufferSize: Deno.PointerValue | Uint8Array | null /* ptr */,
   lpResult: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
@@ -4366,7 +4366,7 @@ export function WNetUseConnection4W(
   dwFlags: number /* u32 */,
   lpUseOptions: Deno.PointerValue | Uint8Array | null /* ptr */,
   cbUseOptions: number /* u32 */,
-  lpAccessName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpAccessName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   lpBufferSize: Deno.PointerValue | Uint8Array | null /* ptr */,
   lpResult: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
@@ -4490,7 +4490,7 @@ export function WNetGetResourceInformationW(
 }
 
 export function WNetGetUniversalNameA(
-  lpLocalPath: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpLocalPath: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   dwInfoLevel: UNC_INFO_LEVEL /* Windows.Win32.NetworkManagement.WNet.UNC_INFO_LEVEL */,
   lpBuffer: Deno.PointerValue | Uint8Array | null /* ptr */,
   lpBufferSize: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -4499,7 +4499,7 @@ export function WNetGetUniversalNameA(
 }
 
 export function WNetGetUniversalNameW(
-  lpLocalPath: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpLocalPath: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   dwInfoLevel: UNC_INFO_LEVEL /* Windows.Win32.NetworkManagement.WNet.UNC_INFO_LEVEL */,
   lpBuffer: Deno.PointerValue | Uint8Array | null /* ptr */,
   lpBufferSize: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -4508,16 +4508,16 @@ export function WNetGetUniversalNameW(
 }
 
 export function WNetGetUserA(
-  lpName: string | null /* Windows.Win32.Foundation.PSTR */,
-  lpUserName: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  lpUserName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   lpnLength: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
   return libMPR_dll.WNetGetUserA(util.pstrToFfi(lpName), util.pstrToFfi(lpUserName), util.toPointer(lpnLength));
 }
 
 export function WNetGetUserW(
-  lpName: string | null /* Windows.Win32.Foundation.PWSTR */,
-  lpUserName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  lpUserName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   lpnLength: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
   return libMPR_dll.WNetGetUserW(util.pwstrToFfi(lpName), util.pwstrToFfi(lpUserName), util.toPointer(lpnLength));
@@ -4525,7 +4525,7 @@ export function WNetGetUserW(
 
 export function WNetGetProviderNameA(
   dwNetType: number /* u32 */,
-  lpProviderName: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpProviderName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   lpBufferSize: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
   return libMPR_dll.WNetGetProviderNameA(dwNetType, util.pstrToFfi(lpProviderName), util.toPointer(lpBufferSize));
@@ -4533,21 +4533,21 @@ export function WNetGetProviderNameA(
 
 export function WNetGetProviderNameW(
   dwNetType: number /* u32 */,
-  lpProviderName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpProviderName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   lpBufferSize: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
   return libMPR_dll.WNetGetProviderNameW(dwNetType, util.pwstrToFfi(lpProviderName), util.toPointer(lpBufferSize));
 }
 
 export function WNetGetNetworkInformationA(
-  lpProvider: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpProvider: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   lpNetInfoStruct: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
   return libMPR_dll.WNetGetNetworkInformationA(util.pstrToFfi(lpProvider), util.toPointer(lpNetInfoStruct));
 }
 
 export function WNetGetNetworkInformationW(
-  lpProvider: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpProvider: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   lpNetInfoStruct: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
   return libMPR_dll.WNetGetNetworkInformationW(util.pwstrToFfi(lpProvider), util.toPointer(lpNetInfoStruct));
@@ -4555,9 +4555,9 @@ export function WNetGetNetworkInformationW(
 
 export function WNetGetLastErrorA(
   lpError: Deno.PointerValue | Uint8Array | null /* ptr */,
-  lpErrorBuf: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpErrorBuf: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   nErrorBufSize: number /* u32 */,
-  lpNameBuf: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpNameBuf: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   nNameBufSize: number /* u32 */,
 ): number /* u32 */ {
   return libMPR_dll.WNetGetLastErrorA(util.toPointer(lpError), util.pstrToFfi(lpErrorBuf), nErrorBufSize, util.pstrToFfi(lpNameBuf), nNameBufSize);
@@ -4565,9 +4565,9 @@ export function WNetGetLastErrorA(
 
 export function WNetGetLastErrorW(
   lpError: Deno.PointerValue | Uint8Array | null /* ptr */,
-  lpErrorBuf: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpErrorBuf: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   nErrorBufSize: number /* u32 */,
-  lpNameBuf: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpNameBuf: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   nNameBufSize: number /* u32 */,
 ): number /* u32 */ {
   return libMPR_dll.WNetGetLastErrorW(util.toPointer(lpError), util.pwstrToFfi(lpErrorBuf), nErrorBufSize, util.pwstrToFfi(lpNameBuf), nNameBufSize);
@@ -4589,8 +4589,8 @@ export function MultinetGetConnectionPerformanceW(
 
 export function NPAddConnection(
   lpNetResource: Deno.PointerValue | Uint8Array | null /* ptr */,
-  lpPassword: string | null /* Windows.Win32.Foundation.PWSTR */,
-  lpUserName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpPassword: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  lpUserName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
   return libdavclnt_dll.NPAddConnection(util.toPointer(lpNetResource), util.pwstrToFfi(lpPassword), util.pwstrToFfi(lpUserName));
 }
@@ -4598,8 +4598,8 @@ export function NPAddConnection(
 export function NPAddConnection3(
   hwndOwner: Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */,
   lpNetResource: Deno.PointerValue | Uint8Array | null /* ptr */,
-  lpPassword: string | null /* Windows.Win32.Foundation.PWSTR */,
-  lpUserName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpPassword: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  lpUserName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   dwFlags: NET_USE_CONNECT_FLAGS /* Windows.Win32.NetworkManagement.WNet.NET_USE_CONNECT_FLAGS */,
 ): number /* u32 */ {
   return libdavclnt_dll.NPAddConnection3(util.hwndToFfi(hwndOwner), util.toPointer(lpNetResource), util.pwstrToFfi(lpPassword), util.pwstrToFfi(lpUserName), dwFlags);
@@ -4618,14 +4618,14 @@ export function NPAddConnection4(
 }
 
 export function NPCancelConnection(
-  lpName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   fForce: boolean /* Windows.Win32.Foundation.BOOL */,
 ): number /* u32 */ {
   return libdavclnt_dll.NPCancelConnection(util.pwstrToFfi(lpName), util.boolToFfi(fForce));
 }
 
 export function NPCancelConnection2(
-  lpName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   fForce: boolean /* Windows.Win32.Foundation.BOOL */,
   dwFlags: number /* u32 */,
 ): number /* u32 */ {
@@ -4633,15 +4633,15 @@ export function NPCancelConnection2(
 }
 
 export function NPGetConnection(
-  lpLocalName: string | null /* Windows.Win32.Foundation.PWSTR */,
-  lpRemoteName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpLocalName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  lpRemoteName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   lpnBufferLen: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
   return libdavclnt_dll.NPGetConnection(util.pwstrToFfi(lpLocalName), util.pwstrToFfi(lpRemoteName), util.toPointer(lpnBufferLen));
 }
 
 export function NPGetConnection3(
-  lpLocalName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpLocalName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   dwLevel: number /* u32 */,
   lpBuffer: Deno.PointerValue | Uint8Array | null /* ptr */,
   lpBufferSize: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -4650,7 +4650,7 @@ export function NPGetConnection3(
 }
 
 export function NPGetUniversalName(
-  lpLocalPath: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpLocalPath: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   dwInfoLevel: UNC_INFO_LEVEL /* Windows.Win32.NetworkManagement.WNet.UNC_INFO_LEVEL */,
   lpBuffer: Deno.PointerValue | Uint8Array | null /* ptr */,
   lpBufferSize: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -4659,7 +4659,7 @@ export function NPGetUniversalName(
 }
 
 export function NPGetConnectionPerformance(
-  lpRemoteName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpRemoteName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   lpNetConnectInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
   return libNTLANMAN_dll.NPGetConnectionPerformance(util.pwstrToFfi(lpRemoteName), util.toPointer(lpNetConnectInfo));
@@ -4697,15 +4697,15 @@ export function NPGetCaps(
 }
 
 export function NPGetUser(
-  lpName: string | null /* Windows.Win32.Foundation.PWSTR */,
-  lpUserName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  lpUserName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   lpnBufferLen: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
   return libdavclnt_dll.NPGetUser(util.pwstrToFfi(lpName), util.pwstrToFfi(lpUserName), util.toPointer(lpnBufferLen));
 }
 
 export function NPGetPersistentUseOptionsForConnection(
-  lpRemotePath: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpRemotePath: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   lpReadUseOptions: Deno.PointerValue | Uint8Array | null /* ptr */,
   cbReadUseOptions: number /* u32 */,
   lpWriteUseOptions: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -4732,8 +4732,8 @@ export function NPGetResourceInformation(
 }
 
 export function NPFormatNetworkName(
-  lpRemoteName: string | null /* Windows.Win32.Foundation.PWSTR */,
-  lpFormattedName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpRemoteName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  lpFormattedName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   lpnLength: Deno.PointerValue | Uint8Array | null /* ptr */,
   dwFlags: NETWORK_NAME_FORMAT_FLAGS /* Windows.Win32.NetworkManagement.WNet.NETWORK_NAME_FORMAT_FLAGS */,
   dwAveCharPerLine: number /* u32 */,
@@ -4743,16 +4743,16 @@ export function NPFormatNetworkName(
 
 export function WNetSetLastErrorA(
   err: number /* u32 */,
-  lpError: string | null /* Windows.Win32.Foundation.PSTR */,
-  lpProviders: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpError: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  lpProviders: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): void /* void */ {
   return libMPR_dll.WNetSetLastErrorA(err, util.pstrToFfi(lpError), util.pstrToFfi(lpProviders));
 }
 
 export function WNetSetLastErrorW(
   err: number /* u32 */,
-  lpError: string | null /* Windows.Win32.Foundation.PWSTR */,
-  lpProviders: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpError: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  lpProviders: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): void /* void */ {
   return libMPR_dll.WNetSetLastErrorW(err, util.pwstrToFfi(lpError), util.pwstrToFfi(lpProviders));
 }

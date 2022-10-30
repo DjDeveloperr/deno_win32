@@ -117,7 +117,7 @@ export interface DEVPROPCOMPKEY {
   /** Windows.Win32.Devices.Properties.DEVPROPSTORE */
   Store: DEVPROPSTORE;
   /** Windows.Win32.Foundation.PWSTR */
-  LocaleName: string | null;
+  LocaleName: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeofDEVPROPCOMPKEY = 24;
@@ -198,7 +198,7 @@ export interface DEV_OBJECT {
   /** Windows.Win32.Devices.DeviceQuery.DEV_OBJECT_TYPE */
   ObjectType: DEV_OBJECT_TYPE;
   /** Windows.Win32.Foundation.PWSTR */
-  pszObjectId: string | null;
+  pszObjectId: string | null | Uint8Array | Uint16Array;
   /** u32 */
   cPropertyCount: number;
   /** ptr */
@@ -425,7 +425,7 @@ export function DevCreateObjectQueryEx(
 
 export function DevCreateObjectQueryFromId(
   ObjectType: DEV_OBJECT_TYPE /* Windows.Win32.Devices.DeviceQuery.DEV_OBJECT_TYPE */,
-  pszObjectId: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pszObjectId: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   QueryFlags: number /* u32 */,
   cRequestedProperties: number /* u32 */,
   pRequestedProperties: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -440,7 +440,7 @@ export function DevCreateObjectQueryFromId(
 
 export function DevCreateObjectQueryFromIdEx(
   ObjectType: DEV_OBJECT_TYPE /* Windows.Win32.Devices.DeviceQuery.DEV_OBJECT_TYPE */,
-  pszObjectId: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pszObjectId: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   QueryFlags: number /* u32 */,
   cRequestedProperties: number /* u32 */,
   pRequestedProperties: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -457,7 +457,7 @@ export function DevCreateObjectQueryFromIdEx(
 
 export function DevCreateObjectQueryFromIds(
   ObjectType: DEV_OBJECT_TYPE /* Windows.Win32.Devices.DeviceQuery.DEV_OBJECT_TYPE */,
-  pszzObjectIds: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pszzObjectIds: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   QueryFlags: number /* u32 */,
   cRequestedProperties: number /* u32 */,
   pRequestedProperties: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -472,7 +472,7 @@ export function DevCreateObjectQueryFromIds(
 
 export function DevCreateObjectQueryFromIdsEx(
   ObjectType: DEV_OBJECT_TYPE /* Windows.Win32.Devices.DeviceQuery.DEV_OBJECT_TYPE */,
-  pszzObjectIds: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pszzObjectIds: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   QueryFlags: number /* u32 */,
   cRequestedProperties: number /* u32 */,
   pRequestedProperties: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -530,7 +530,7 @@ export function DevFreeObjects(
 
 export function DevGetObjectProperties(
   ObjectType: DEV_OBJECT_TYPE /* Windows.Win32.Devices.DeviceQuery.DEV_OBJECT_TYPE */,
-  pszObjectId: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pszObjectId: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   QueryFlags: number /* u32 */,
   cRequestedProperties: number /* u32 */,
   pRequestedProperties: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -542,7 +542,7 @@ export function DevGetObjectProperties(
 
 export function DevGetObjectPropertiesEx(
   ObjectType: DEV_OBJECT_TYPE /* Windows.Win32.Devices.DeviceQuery.DEV_OBJECT_TYPE */,
-  pszObjectId: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pszObjectId: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   QueryFlags: number /* u32 */,
   cRequestedProperties: number /* u32 */,
   pRequestedProperties: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -564,7 +564,7 @@ export function DevFreeObjectProperties(
 export function DevFindProperty(
   pKey: Deno.PointerValue | Uint8Array | null /* ptr */,
   Store: DEVPROPSTORE /* Windows.Win32.Devices.Properties.DEVPROPSTORE */,
-  pszLocaleName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pszLocaleName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   cProperties: number /* u32 */,
   pProperties: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* ptr */ {

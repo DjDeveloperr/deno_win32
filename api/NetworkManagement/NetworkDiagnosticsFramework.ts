@@ -231,7 +231,7 @@ export function alloc_Anonymous_e__Union(data?: Partial<_Anonymous_e__Union>): U
  */
 export interface HELPER_ATTRIBUTE {
   /** Windows.Win32.Foundation.PWSTR */
-  pwszName: string | null;
+  pwszName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.NetworkManagement.NetworkDiagnosticsFramework.ATTRIBUTE_TYPE */
   type: ATTRIBUTE_TYPE;
   /** _Anonymous_e__Union */
@@ -261,13 +261,13 @@ export function allocHELPER_ATTRIBUTE(data?: Partial<HELPER_ATTRIBUTE>): Uint8Ar
  */
 export interface ShellCommandInfo {
   /** Windows.Win32.Foundation.PWSTR */
-  pwszOperation: string | null;
+  pwszOperation: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pwszFile: string | null;
+  pwszFile: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pwszParameters: string | null;
+  pwszParameters: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pwszDirectory: string | null;
+  pwszDirectory: string | null | Uint8Array | Uint16Array;
   /** u32 */
   nShowCmd: number;
 }
@@ -333,9 +333,9 @@ export interface RepairInfo {
   /** System.Guid */
   guid: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.Foundation.PWSTR */
-  pwszClassName: string | null;
+  pwszClassName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pwszDescription: string | null;
+  pwszDescription: string | null | Uint8Array | Uint16Array;
   /** u32 */
   sidType: number;
   /** i32 */
@@ -416,7 +416,7 @@ export function allocRepairInfoEx(data?: Partial<RepairInfoEx>): Uint8Array {
  */
 export interface RootCauseInfo {
   /** Windows.Win32.Foundation.PWSTR */
-  pwszDescription: string | null;
+  pwszDescription: string | null | Uint8Array | Uint16Array;
   /** System.Guid */
   rootCauseID: Uint8Array | Deno.PointerValue | null;
   /** u32 */
@@ -459,9 +459,9 @@ export function allocRootCauseInfo(data?: Partial<RootCauseInfo>): Uint8Array {
  */
 export interface HYPOTHESIS {
   /** Windows.Win32.Foundation.PWSTR */
-  pwszClassName: string | null;
+  pwszClassName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pwszDescription: string | null;
+  pwszDescription: string | null | Uint8Array | Uint16Array;
   /** u32 */
   celt: number;
   /** ptr */
@@ -496,7 +496,7 @@ export function allocHYPOTHESIS(data?: Partial<HYPOTHESIS>): Uint8Array {
  */
 export interface HelperAttributeInfo {
   /** Windows.Win32.Foundation.PWSTR */
-  pwszName: string | null;
+  pwszName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.NetworkManagement.NetworkDiagnosticsFramework.ATTRIBUTE_TYPE */
   type: ATTRIBUTE_TYPE;
 }
@@ -644,7 +644,7 @@ try {
 // Symbols
 
 export function NdfCreateIncident(
-  helperClassName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  helperClassName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   celt: number /* u32 */,
   attributes: Deno.PointerValue | Uint8Array | null /* ptr */,
   handle: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -654,9 +654,9 @@ export function NdfCreateIncident(
 
 export function NdfCreateWinSockIncident(
   sock: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Networking.WinSock.SOCKET */,
-  host: string | null /* Windows.Win32.Foundation.PWSTR */,
+  host: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   port: number /* u16 */,
-  appId: string | null /* Windows.Win32.Foundation.PWSTR */,
+  appId: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   userId: Deno.PointerValue | Uint8Array | null /* ptr */,
   handle: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
@@ -664,30 +664,30 @@ export function NdfCreateWinSockIncident(
 }
 
 export function NdfCreateWebIncident(
-  url: string | null /* Windows.Win32.Foundation.PWSTR */,
+  url: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   handle: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
   return util.pointerFromFfi(libNDFAPI_dll.NdfCreateWebIncident(util.pwstrToFfi(url), util.toPointer(handle)));
 }
 
 export function NdfCreateWebIncidentEx(
-  url: string | null /* Windows.Win32.Foundation.PWSTR */,
+  url: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   useWinHTTP: boolean /* Windows.Win32.Foundation.BOOL */,
-  moduleName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  moduleName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   handle: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
   return util.pointerFromFfi(libNDFAPI_dll.NdfCreateWebIncidentEx(util.pwstrToFfi(url), util.boolToFfi(useWinHTTP), util.pwstrToFfi(moduleName), util.toPointer(handle)));
 }
 
 export function NdfCreateSharingIncident(
-  UNCPath: string | null /* Windows.Win32.Foundation.PWSTR */,
+  UNCPath: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   handle: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
   return util.pointerFromFfi(libNDFAPI_dll.NdfCreateSharingIncident(util.pwstrToFfi(UNCPath), util.toPointer(handle)));
 }
 
 export function NdfCreateDNSIncident(
-  hostname: string | null /* Windows.Win32.Foundation.PWSTR */,
+  hostname: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   queryType: number /* u16 */,
   handle: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
@@ -708,22 +708,22 @@ export function NdfCreateNetConnectionIncident(
 }
 
 export function NdfCreatePnrpIncident(
-  cloudname: string | null /* Windows.Win32.Foundation.PWSTR */,
-  peername: string | null /* Windows.Win32.Foundation.PWSTR */,
+  cloudname: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  peername: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   diagnosePublish: boolean /* Windows.Win32.Foundation.BOOL */,
-  appId: string | null /* Windows.Win32.Foundation.PWSTR */,
+  appId: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   handle: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
   return util.pointerFromFfi(libNDFAPI_dll.NdfCreatePnrpIncident(util.pwstrToFfi(cloudname), util.pwstrToFfi(peername), util.boolToFfi(diagnosePublish), util.pwstrToFfi(appId), util.toPointer(handle)));
 }
 
 export function NdfCreateGroupingIncident(
-  CloudName: string | null /* Windows.Win32.Foundation.PWSTR */,
-  GroupName: string | null /* Windows.Win32.Foundation.PWSTR */,
-  Identity: string | null /* Windows.Win32.Foundation.PWSTR */,
-  Invitation: string | null /* Windows.Win32.Foundation.PWSTR */,
+  CloudName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  GroupName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  Identity: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  Invitation: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   Addresses: Deno.PointerValue | Uint8Array | null /* ptr */,
-  appId: string | null /* Windows.Win32.Foundation.PWSTR */,
+  appId: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   handle: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
   return util.pointerFromFfi(libNDFAPI_dll.NdfCreateGroupingIncident(util.pwstrToFfi(CloudName), util.pwstrToFfi(GroupName), util.pwstrToFfi(Identity), util.pwstrToFfi(Invitation), util.toPointer(Addresses), util.pwstrToFfi(appId), util.toPointer(handle)));

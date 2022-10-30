@@ -2600,7 +2600,7 @@ export type PWSTR = Deno.PointerValue | Uint8Array | null;
  */
 export interface D2D1_PROPERTY_BINDING {
   /** Windows.Win32.Foundation.PWSTR */
-  propertyName: string | null;
+  propertyName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Graphics.Direct2D.PD2D1_PROPERTY_SET_FUNCTION */
   setFunction: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.Graphics.Direct2D.PD2D1_PROPERTY_GET_FUNCTION */
@@ -2669,7 +2669,7 @@ export type PSTR = Deno.PointerValue | Uint8Array | null;
  */
 export interface D2D1_INPUT_ELEMENT_DESC {
   /** Windows.Win32.Foundation.PSTR */
-  semanticName: string | null;
+  semanticName: string | null | Uint8Array;
   /** u32 */
   semanticIndex: number;
   /** Windows.Win32.Graphics.Dxgi.Common.DXGI_FORMAT */

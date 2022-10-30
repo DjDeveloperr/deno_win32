@@ -47,8 +47,8 @@ try {
 // Symbols
 
 export function DSCreateISecurityInfoObject(
-  pwszObjectPath: string | null /* Windows.Win32.Foundation.PWSTR */,
-  pwszObjectClass: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pwszObjectPath: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  pwszObjectClass: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   dwFlags: number /* u32 */,
   ppSI: Deno.PointerValue | Uint8Array | null /* ptr */,
   pfnReadSD: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Security.DirectoryServices.PFNREADOBJECTSECURITY */,
@@ -59,11 +59,11 @@ export function DSCreateISecurityInfoObject(
 }
 
 export function DSCreateISecurityInfoObjectEx(
-  pwszObjectPath: string | null /* Windows.Win32.Foundation.PWSTR */,
-  pwszObjectClass: string | null /* Windows.Win32.Foundation.PWSTR */,
-  pwszServer: string | null /* Windows.Win32.Foundation.PWSTR */,
-  pwszUserName: string | null /* Windows.Win32.Foundation.PWSTR */,
-  pwszPassword: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pwszObjectPath: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  pwszObjectClass: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  pwszServer: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  pwszUserName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  pwszPassword: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   dwFlags: number /* u32 */,
   ppSI: Deno.PointerValue | Uint8Array | null /* ptr */,
   pfnReadSD: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Security.DirectoryServices.PFNREADOBJECTSECURITY */,
@@ -74,8 +74,8 @@ export function DSCreateISecurityInfoObjectEx(
 }
 
 export function DSCreateSecurityPage(
-  pwszObjectPath: string | null /* Windows.Win32.Foundation.PWSTR */,
-  pwszObjectClass: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pwszObjectPath: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  pwszObjectClass: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   dwFlags: number /* u32 */,
   phPage: Deno.PointerValue | Uint8Array | null /* ptr */,
   pfnReadSD: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Security.DirectoryServices.PFNREADOBJECTSECURITY */,
@@ -87,10 +87,10 @@ export function DSCreateSecurityPage(
 
 export function DSEditSecurity(
   hwndOwner: Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */,
-  pwszObjectPath: string | null /* Windows.Win32.Foundation.PWSTR */,
-  pwszObjectClass: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pwszObjectPath: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  pwszObjectClass: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   dwFlags: number /* u32 */,
-  pwszCaption: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pwszCaption: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pfnReadSD: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Security.DirectoryServices.PFNREADOBJECTSECURITY */,
   pfnWriteSD: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Security.DirectoryServices.PFNWRITEOBJECTSECURITY */,
   lpContext: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.LPARAM */,

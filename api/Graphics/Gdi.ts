@@ -3882,7 +3882,7 @@ export interface _Anonymous1_e__Union {
   /** usize */
   Data0: Deno.PointerValue;
   /** Windows.Win32.Foundation.PWSTR */
-  String: string | null;
+  String: string | null | Uint8Array | Uint16Array;
   /** usize */
   u: Deno.PointerValue;
   /** ptr */
@@ -4451,13 +4451,13 @@ export interface OUTLINETEXTMETRICA {
   /** i32 */
   otmsUnderscorePosition: number;
   /** Windows.Win32.Foundation.PSTR */
-  otmpFamilyName: string | null;
+  otmpFamilyName: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  otmpFaceName: string | null;
+  otmpFaceName: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  otmpStyleName: string | null;
+  otmpStyleName: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  otmpFullName: string | null;
+  otmpFullName: string | null | Uint8Array;
 }
 
 export const sizeofOUTLINETEXTMETRICA = 184;
@@ -4608,13 +4608,13 @@ export interface OUTLINETEXTMETRICW {
   /** i32 */
   otmsUnderscorePosition: number;
   /** Windows.Win32.Foundation.PSTR */
-  otmpFamilyName: string | null;
+  otmpFamilyName: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  otmpFaceName: string | null;
+  otmpFaceName: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  otmpStyleName: string | null;
+  otmpStyleName: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  otmpFullName: string | null;
+  otmpFullName: string | null | Uint8Array;
 }
 
 export const sizeofOUTLINETEXTMETRICW = 184;
@@ -4715,7 +4715,7 @@ export interface POLYTEXTA {
   /** u32 */
   n: number;
   /** Windows.Win32.Foundation.PSTR */
-  lpstr: string | null;
+  lpstr: string | null | Uint8Array;
   /** u32 */
   uiFlags: number;
   /** Windows.Win32.Foundation.RECT */
@@ -4762,7 +4762,7 @@ export interface POLYTEXTW {
   /** u32 */
   n: number;
   /** Windows.Win32.Foundation.PWSTR */
-  lpstr: string | null;
+  lpstr: string | null | Uint8Array | Uint16Array;
   /** u32 */
   uiFlags: number;
   /** Windows.Win32.Foundation.RECT */
@@ -4968,7 +4968,7 @@ export interface GCP_RESULTSA {
   /** u32 */
   lStructSize: number;
   /** Windows.Win32.Foundation.PSTR */
-  lpOutString: string | null;
+  lpOutString: string | null | Uint8Array;
   /** ptr */
   lpOrder: Deno.PointerValue | Uint8Array | null;
   /** ptr */
@@ -4976,9 +4976,9 @@ export interface GCP_RESULTSA {
   /** ptr */
   lpCaretPos: Deno.PointerValue | Uint8Array | null;
   /** Windows.Win32.Foundation.PSTR */
-  lpClass: string | null;
+  lpClass: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PWSTR */
-  lpGlyphs: string | null;
+  lpGlyphs: string | null | Uint8Array | Uint16Array;
   /** u32 */
   nGlyphs: number;
   /** i32 */
@@ -5028,7 +5028,7 @@ export interface GCP_RESULTSW {
   /** u32 */
   lStructSize: number;
   /** Windows.Win32.Foundation.PWSTR */
-  lpOutString: string | null;
+  lpOutString: string | null | Uint8Array | Uint16Array;
   /** ptr */
   lpOrder: Deno.PointerValue | Uint8Array | null;
   /** ptr */
@@ -5036,9 +5036,9 @@ export interface GCP_RESULTSW {
   /** ptr */
   lpCaretPos: Deno.PointerValue | Uint8Array | null;
   /** Windows.Win32.Foundation.PSTR */
-  lpClass: string | null;
+  lpClass: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PWSTR */
-  lpGlyphs: string | null;
+  lpGlyphs: string | null | Uint8Array | Uint16Array;
   /** u32 */
   nGlyphs: number;
   /** i32 */
@@ -9948,13 +9948,13 @@ export function GetObjectA(
 }
 
 export function AddFontResourceA(
-  param0: string | null /* Windows.Win32.Foundation.PSTR */,
+  param0: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): number /* i32 */ {
   return libGDI32_dll.AddFontResourceA(util.pstrToFfi(param0));
 }
 
 export function AddFontResourceW(
-  param0: string | null /* Windows.Win32.Foundation.PWSTR */,
+  param0: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* i32 */ {
   return libGDI32_dll.AddFontResourceW(util.pwstrToFfi(param0));
 }
@@ -10033,14 +10033,14 @@ export function CombineRgn(
 
 export function CopyMetaFileA(
   param0: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Graphics.Gdi.HMETAFILE */,
-  param1: string | null /* Windows.Win32.Foundation.PSTR */,
+  param1: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): Deno.PointerValue | null /* Windows.Win32.Graphics.Gdi.HMETAFILE */ {
   return util.pointerFromFfi(libGDI32_dll.CopyMetaFileA(util.toPointer(param0), util.pstrToFfi(param1)));
 }
 
 export function CopyMetaFileW(
   param0: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Graphics.Gdi.HMETAFILE */,
-  param1: string | null /* Windows.Win32.Foundation.PWSTR */,
+  param1: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): Deno.PointerValue | null /* Windows.Win32.Graphics.Gdi.HMETAFILE */ {
   return util.pointerFromFfi(libGDI32_dll.CopyMetaFileW(util.toPointer(param0), util.pwstrToFfi(param1)));
 }
@@ -10090,18 +10090,18 @@ export function CreateCompatibleDC(
 }
 
 export function CreateDCA(
-  pwszDriver: string | null /* Windows.Win32.Foundation.PSTR */,
-  pwszDevice: string | null /* Windows.Win32.Foundation.PSTR */,
-  pszPort: string | null /* Windows.Win32.Foundation.PSTR */,
+  pwszDriver: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  pwszDevice: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  pszPort: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   pdm: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Graphics.Gdi.CreatedHDC */ {
   return util.pointerFromFfi(libGDI32_dll.CreateDCA(util.pstrToFfi(pwszDriver), util.pstrToFfi(pwszDevice), util.pstrToFfi(pszPort), util.toPointer(pdm)));
 }
 
 export function CreateDCW(
-  pwszDriver: string | null /* Windows.Win32.Foundation.PWSTR */,
-  pwszDevice: string | null /* Windows.Win32.Foundation.PWSTR */,
-  pszPort: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pwszDriver: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  pwszDevice: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  pszPort: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pdm: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Graphics.Gdi.CreatedHDC */ {
   return util.pointerFromFfi(libGDI32_dll.CreateDCW(util.pwstrToFfi(pwszDriver), util.pwstrToFfi(pwszDevice), util.pwstrToFfi(pszPort), util.toPointer(pdm)));
@@ -10173,7 +10173,7 @@ export function CreateFontA(
   iClipPrecision: number /* u32 */,
   iQuality: number /* u32 */,
   iPitchAndFamily: number /* u32 */,
-  pszFaceName: string | null /* Windows.Win32.Foundation.PSTR */,
+  pszFaceName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): Deno.PointerValue | null /* Windows.Win32.Graphics.Gdi.HFONT */ {
   return util.pointerFromFfi(libGDI32_dll.CreateFontA(cHeight, cWidth, cEscapement, cOrientation, cWeight, bItalic, bUnderline, bStrikeOut, iCharSet, iOutPrecision, iClipPrecision, iQuality, iPitchAndFamily, util.pstrToFfi(pszFaceName)));
 }
@@ -10192,7 +10192,7 @@ export function CreateFontW(
   iClipPrecision: number /* u32 */,
   iQuality: number /* u32 */,
   iPitchAndFamily: number /* u32 */,
-  pszFaceName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pszFaceName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): Deno.PointerValue | null /* Windows.Win32.Graphics.Gdi.HFONT */ {
   return util.pointerFromFfi(libGDI32_dll.CreateFontW(cHeight, cWidth, cEscapement, cOrientation, cWeight, bItalic, bUnderline, bStrikeOut, iCharSet, iOutPrecision, iClipPrecision, iQuality, iPitchAndFamily, util.pwstrToFfi(pszFaceName)));
 }
@@ -10205,31 +10205,31 @@ export function CreateHatchBrush(
 }
 
 export function CreateICA(
-  pszDriver: string | null /* Windows.Win32.Foundation.PSTR */,
-  pszDevice: string | null /* Windows.Win32.Foundation.PSTR */,
-  pszPort: string | null /* Windows.Win32.Foundation.PSTR */,
+  pszDriver: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  pszDevice: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  pszPort: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   pdm: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Graphics.Gdi.CreatedHDC */ {
   return util.pointerFromFfi(libGDI32_dll.CreateICA(util.pstrToFfi(pszDriver), util.pstrToFfi(pszDevice), util.pstrToFfi(pszPort), util.toPointer(pdm)));
 }
 
 export function CreateICW(
-  pszDriver: string | null /* Windows.Win32.Foundation.PWSTR */,
-  pszDevice: string | null /* Windows.Win32.Foundation.PWSTR */,
-  pszPort: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pszDriver: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  pszDevice: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  pszPort: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pdm: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Graphics.Gdi.CreatedHDC */ {
   return util.pointerFromFfi(libGDI32_dll.CreateICW(util.pwstrToFfi(pszDriver), util.pwstrToFfi(pszDevice), util.pwstrToFfi(pszPort), util.toPointer(pdm)));
 }
 
 export function CreateMetaFileA(
-  pszFile: string | null /* Windows.Win32.Foundation.PSTR */,
+  pszFile: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): Deno.PointerValue | null /* Windows.Win32.Graphics.Gdi.HdcMetdataFileHandle */ {
   return util.pointerFromFfi(libGDI32_dll.CreateMetaFileA(util.pstrToFfi(pszFile)));
 }
 
 export function CreateMetaFileW(
-  pszFile: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pszFile: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): Deno.PointerValue | null /* Windows.Win32.Graphics.Gdi.HdcMetdataFileHandle */ {
   return util.pointerFromFfi(libGDI32_dll.CreateMetaFileW(util.pwstrToFfi(pszFile)));
 }
@@ -10297,18 +10297,18 @@ export function CreateRoundRectRgn(
 
 export function CreateScalableFontResourceA(
   fdwHidden: number /* u32 */,
-  lpszFont: string | null /* Windows.Win32.Foundation.PSTR */,
-  lpszFile: string | null /* Windows.Win32.Foundation.PSTR */,
-  lpszPath: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpszFont: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  lpszFile: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  lpszPath: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libGDI32_dll.CreateScalableFontResourceA(fdwHidden, util.pstrToFfi(lpszFont), util.pstrToFfi(lpszFile), util.pstrToFfi(lpszPath)));
 }
 
 export function CreateScalableFontResourceW(
   fdwHidden: number /* u32 */,
-  lpszFont: string | null /* Windows.Win32.Foundation.PWSTR */,
-  lpszFile: string | null /* Windows.Win32.Foundation.PWSTR */,
-  lpszPath: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpszFont: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  lpszFile: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  lpszPath: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libGDI32_dll.CreateScalableFontResourceW(fdwHidden, util.pwstrToFfi(lpszFont), util.pwstrToFfi(lpszFile), util.pwstrToFfi(lpszPath)));
 }
@@ -10341,7 +10341,7 @@ export function DrawEscape(
   hdc: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Graphics.Gdi.HDC */,
   iEscape: number /* i32 */,
   cjIn: number /* i32 */,
-  lpIn: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpIn: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): number /* i32 */ {
   return libGDI32_dll.DrawEscape(util.toPointer(hdc), iEscape, cjIn, util.pstrToFfi(lpIn));
 }
@@ -10378,7 +10378,7 @@ export function EnumFontFamiliesExW(
 
 export function EnumFontFamiliesA(
   hdc: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Graphics.Gdi.HDC */,
-  lpLogfont: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpLogfont: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   lpProc: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Graphics.Gdi.FONTENUMPROCA */,
   lParam: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.LPARAM */,
 ): number /* i32 */ {
@@ -10387,7 +10387,7 @@ export function EnumFontFamiliesA(
 
 export function EnumFontFamiliesW(
   hdc: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Graphics.Gdi.HDC */,
-  lpLogfont: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpLogfont: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   lpProc: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Graphics.Gdi.FONTENUMPROCW */,
   lParam: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.LPARAM */,
 ): number /* i32 */ {
@@ -10396,7 +10396,7 @@ export function EnumFontFamiliesW(
 
 export function EnumFontsA(
   hdc: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Graphics.Gdi.HDC */,
-  lpLogfont: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpLogfont: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   lpProc: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Graphics.Gdi.FONTENUMPROCA */,
   lParam: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.LPARAM */,
 ): number /* i32 */ {
@@ -10405,7 +10405,7 @@ export function EnumFontsA(
 
 export function EnumFontsW(
   hdc: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Graphics.Gdi.HDC */,
-  lpLogfont: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpLogfont: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   lpProc: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Graphics.Gdi.FONTENUMPROCW */,
   lParam: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.LPARAM */,
 ): number /* i32 */ {
@@ -10749,13 +10749,13 @@ export function GetMetaFileBitsEx(
 }
 
 export function GetMetaFileA(
-  lpName: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): Deno.PointerValue | null /* Windows.Win32.Graphics.Gdi.HMETAFILE */ {
   return util.pointerFromFfi(libGDI32_dll.GetMetaFileA(util.pstrToFfi(lpName)));
 }
 
 export function GetMetaFileW(
-  lpName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): Deno.PointerValue | null /* Windows.Win32.Graphics.Gdi.HMETAFILE */ {
   return util.pointerFromFfi(libGDI32_dll.GetMetaFileW(util.pwstrToFfi(lpName)));
 }
@@ -10896,7 +10896,7 @@ export function GetTextColor(
 
 export function GetTextExtentPointA(
   hdc: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Graphics.Gdi.HDC */,
-  lpString: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpString: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   c: number /* i32 */,
   lpsz: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
@@ -10905,7 +10905,7 @@ export function GetTextExtentPointA(
 
 export function GetTextExtentPointW(
   hdc: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Graphics.Gdi.HDC */,
-  lpString: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpString: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   c: number /* i32 */,
   lpsz: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
@@ -10914,7 +10914,7 @@ export function GetTextExtentPointW(
 
 export function GetTextExtentPoint32A(
   hdc: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Graphics.Gdi.HDC */,
-  lpString: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpString: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   c: number /* i32 */,
   psizl: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
@@ -10923,7 +10923,7 @@ export function GetTextExtentPoint32A(
 
 export function GetTextExtentPoint32W(
   hdc: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Graphics.Gdi.HDC */,
-  lpString: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpString: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   c: number /* i32 */,
   psizl: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
@@ -10932,7 +10932,7 @@ export function GetTextExtentPoint32W(
 
 export function GetTextExtentExPointA(
   hdc: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Graphics.Gdi.HDC */,
-  lpszString: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpszString: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   cchString: number /* i32 */,
   nMaxExtent: number /* i32 */,
   lpnFit: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -10944,7 +10944,7 @@ export function GetTextExtentExPointA(
 
 export function GetTextExtentExPointW(
   hdc: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Graphics.Gdi.HDC */,
-  lpszString: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpszString: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   cchString: number /* i32 */,
   nMaxExtent: number /* i32 */,
   lpnFit: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -10962,7 +10962,7 @@ export function GetFontLanguageInfo(
 
 export function GetCharacterPlacementA(
   hdc: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Graphics.Gdi.HDC */,
-  lpString: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpString: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   nCount: number /* i32 */,
   nMexExtent: number /* i32 */,
   lpResults: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -10973,7 +10973,7 @@ export function GetCharacterPlacementA(
 
 export function GetCharacterPlacementW(
   hdc: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Graphics.Gdi.HDC */,
-  lpString: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpString: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   nCount: number /* i32 */,
   nMexExtent: number /* i32 */,
   lpResults: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -10991,7 +10991,7 @@ export function GetFontUnicodeRanges(
 
 export function GetGlyphIndicesA(
   hdc: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Graphics.Gdi.HDC */,
-  lpstr: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpstr: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   c: number /* i32 */,
   pgi: Deno.PointerValue | Uint8Array | null /* ptr */,
   fl: number /* u32 */,
@@ -11001,7 +11001,7 @@ export function GetGlyphIndicesA(
 
 export function GetGlyphIndicesW(
   hdc: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Graphics.Gdi.HDC */,
-  lpstr: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpstr: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   c: number /* i32 */,
   pgi: Deno.PointerValue | Uint8Array | null /* ptr */,
   fl: number /* u32 */,
@@ -11051,7 +11051,7 @@ export function GetCharABCWidthsI(
 }
 
 export function AddFontResourceExA(
-  name: string | null /* Windows.Win32.Foundation.PSTR */,
+  name: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   fl: FONT_RESOURCE_CHARACTERISTICS /* Windows.Win32.Graphics.Gdi.FONT_RESOURCE_CHARACTERISTICS */,
   res: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
@@ -11059,7 +11059,7 @@ export function AddFontResourceExA(
 }
 
 export function AddFontResourceExW(
-  name: string | null /* Windows.Win32.Foundation.PWSTR */,
+  name: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   fl: FONT_RESOURCE_CHARACTERISTICS /* Windows.Win32.Graphics.Gdi.FONT_RESOURCE_CHARACTERISTICS */,
   res: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
@@ -11067,7 +11067,7 @@ export function AddFontResourceExW(
 }
 
 export function RemoveFontResourceExA(
-  name: string | null /* Windows.Win32.Foundation.PSTR */,
+  name: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   fl: number /* u32 */,
   pdv: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
@@ -11075,7 +11075,7 @@ export function RemoveFontResourceExA(
 }
 
 export function RemoveFontResourceExW(
-  name: string | null /* Windows.Win32.Foundation.PWSTR */,
+  name: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   fl: number /* u32 */,
   pdv: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
@@ -11337,13 +11337,13 @@ export function RealizePalette(
 }
 
 export function RemoveFontResourceA(
-  lpFileName: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpFileName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libGDI32_dll.RemoveFontResourceA(util.pstrToFfi(lpFileName)));
 }
 
 export function RemoveFontResourceW(
-  lpFileName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpFileName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libGDI32_dll.RemoveFontResourceW(util.pwstrToFfi(lpFileName)));
 }
@@ -11769,32 +11769,32 @@ export function CloseEnhMetaFile(
 
 export function CopyEnhMetaFileA(
   hEnh: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Graphics.Gdi.HENHMETAFILE */,
-  lpFileName: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpFileName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): Deno.PointerValue | null /* Windows.Win32.Graphics.Gdi.HENHMETAFILE */ {
   return util.pointerFromFfi(libGDI32_dll.CopyEnhMetaFileA(util.toPointer(hEnh), util.pstrToFfi(lpFileName)));
 }
 
 export function CopyEnhMetaFileW(
   hEnh: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Graphics.Gdi.HENHMETAFILE */,
-  lpFileName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpFileName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): Deno.PointerValue | null /* Windows.Win32.Graphics.Gdi.HENHMETAFILE */ {
   return util.pointerFromFfi(libGDI32_dll.CopyEnhMetaFileW(util.toPointer(hEnh), util.pwstrToFfi(lpFileName)));
 }
 
 export function CreateEnhMetaFileA(
   hdc: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Graphics.Gdi.HDC */,
-  lpFilename: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpFilename: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   lprc: Deno.PointerValue | Uint8Array | null /* ptr */,
-  lpDesc: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpDesc: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): Deno.PointerValue | null /* Windows.Win32.Graphics.Gdi.HdcMetdataEnhFileHandle */ {
   return util.pointerFromFfi(libGDI32_dll.CreateEnhMetaFileA(util.toPointer(hdc), util.pstrToFfi(lpFilename), util.toPointer(lprc), util.pstrToFfi(lpDesc)));
 }
 
 export function CreateEnhMetaFileW(
   hdc: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Graphics.Gdi.HDC */,
-  lpFilename: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpFilename: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   lprc: Deno.PointerValue | Uint8Array | null /* ptr */,
-  lpDesc: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpDesc: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): Deno.PointerValue | null /* Windows.Win32.Graphics.Gdi.HdcMetdataEnhFileHandle */ {
   return util.pointerFromFfi(libGDI32_dll.CreateEnhMetaFileW(util.toPointer(hdc), util.pwstrToFfi(lpFilename), util.toPointer(lprc), util.pwstrToFfi(lpDesc)));
 }
@@ -11816,13 +11816,13 @@ export function EnumEnhMetaFile(
 }
 
 export function GetEnhMetaFileA(
-  lpName: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): Deno.PointerValue | null /* Windows.Win32.Graphics.Gdi.HENHMETAFILE */ {
   return util.pointerFromFfi(libGDI32_dll.GetEnhMetaFileA(util.pstrToFfi(lpName)));
 }
 
 export function GetEnhMetaFileW(
-  lpName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): Deno.PointerValue | null /* Windows.Win32.Graphics.Gdi.HENHMETAFILE */ {
   return util.pointerFromFfi(libGDI32_dll.GetEnhMetaFileW(util.pwstrToFfi(lpName)));
 }
@@ -11838,7 +11838,7 @@ export function GetEnhMetaFileBits(
 export function GetEnhMetaFileDescriptionA(
   hemf: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Graphics.Gdi.HENHMETAFILE */,
   cchBuffer: number /* u32 */,
-  lpDescription: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpDescription: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): number /* u32 */ {
   return libGDI32_dll.GetEnhMetaFileDescriptionA(util.toPointer(hemf), cchBuffer, util.pstrToFfi(lpDescription));
 }
@@ -11846,7 +11846,7 @@ export function GetEnhMetaFileDescriptionA(
 export function GetEnhMetaFileDescriptionW(
   hemf: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Graphics.Gdi.HENHMETAFILE */,
   cchBuffer: number /* u32 */,
-  lpDescription: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpDescription: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
   return libGDI32_dll.GetEnhMetaFileDescriptionW(util.toPointer(hemf), cchBuffer, util.pwstrToFfi(lpDescription));
 }
@@ -12180,7 +12180,7 @@ export function TextOutA(
   hdc: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Graphics.Gdi.HDC */,
   x: number /* i32 */,
   y: number /* i32 */,
-  lpString: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpString: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   c: number /* i32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libGDI32_dll.TextOutA(util.toPointer(hdc), x, y, util.pstrToFfi(lpString), c));
@@ -12190,7 +12190,7 @@ export function TextOutW(
   hdc: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Graphics.Gdi.HDC */,
   x: number /* i32 */,
   y: number /* i32 */,
-  lpString: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpString: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   c: number /* i32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libGDI32_dll.TextOutW(util.toPointer(hdc), x, y, util.pwstrToFfi(lpString), c));
@@ -12202,7 +12202,7 @@ export function ExtTextOutA(
   y: number /* i32 */,
   options: ETO_OPTIONS /* Windows.Win32.Graphics.Gdi.ETO_OPTIONS */,
   lprect: Deno.PointerValue | Uint8Array | null /* ptr */,
-  lpString: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpString: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   c: number /* u32 */,
   lpDx: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
@@ -12215,7 +12215,7 @@ export function ExtTextOutW(
   y: number /* i32 */,
   options: ETO_OPTIONS /* Windows.Win32.Graphics.Gdi.ETO_OPTIONS */,
   lprect: Deno.PointerValue | Uint8Array | null /* ptr */,
-  lpString: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpString: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   c: number /* u32 */,
   lpDx: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
@@ -12399,7 +12399,7 @@ export function SetBrushOrgEx(
 export function GetTextFaceA(
   hdc: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Graphics.Gdi.HDC */,
   c: number /* i32 */,
-  lpName: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): number /* i32 */ {
   return libGDI32_dll.GetTextFaceA(util.toPointer(hdc), c, util.pstrToFfi(lpName));
 }
@@ -12407,7 +12407,7 @@ export function GetTextFaceA(
 export function GetTextFaceW(
   hdc: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Graphics.Gdi.HDC */,
   c: number /* i32 */,
-  lpName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* i32 */ {
   return libGDI32_dll.GetTextFaceW(util.toPointer(hdc), c, util.pwstrToFfi(lpName));
 }
@@ -12528,7 +12528,7 @@ export function TTEmbedFont(
 
 export function TTEmbedFontFromFileA(
   hDC: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Graphics.Gdi.HDC */,
-  szFontFileName: string | null /* Windows.Win32.Foundation.PSTR */,
+  szFontFileName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   usTTCIndex: number /* u16 */,
   ulFlags: TTEMBED_FLAGS /* Windows.Win32.Graphics.Gdi.TTEMBED_FLAGS */,
   ulCharSet: EMBED_FONT_CHARSET /* Windows.Win32.Graphics.Gdi.EMBED_FONT_CHARSET */,
@@ -12552,8 +12552,8 @@ export function TTLoadEmbeddedFont(
   pulStatus: Deno.PointerValue | Uint8Array | null /* ptr */,
   lpfnReadFromStream: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Graphics.Gdi.READEMBEDPROC */,
   lpvReadStream: Deno.PointerValue | Uint8Array | null /* ptr */,
-  szWinFamilyName: string | null /* Windows.Win32.Foundation.PWSTR */,
-  szMacFamilyName: string | null /* Windows.Win32.Foundation.PSTR */,
+  szWinFamilyName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  szMacFamilyName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   pTTLoadInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
   return libt2embed_dll.TTLoadEmbeddedFont(util.toPointer(phFontReference), ulFlags, util.toPointer(pulPrivStatus), ulPrivs, util.toPointer(pulStatus), util.toPointer(lpfnReadFromStream), util.toPointer(lpvReadStream), util.pwstrToFfi(szWinFamilyName), util.pstrToFfi(szMacFamilyName), util.toPointer(pTTLoadInfo));
@@ -12612,14 +12612,14 @@ export function TTIsEmbeddingEnabled(
 }
 
 export function TTIsEmbeddingEnabledForFacename(
-  lpszFacename: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpszFacename: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   pbEnabled: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
   return libt2embed_dll.TTIsEmbeddingEnabledForFacename(util.pstrToFfi(lpszFacename), util.toPointer(pbEnabled));
 }
 
 export function TTEnableEmbeddingForFacename(
-  lpszFacename: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpszFacename: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   bEnable: boolean /* Windows.Win32.Foundation.BOOL */,
 ): number /* i32 */ {
   return libt2embed_dll.TTEnableEmbeddingForFacename(util.pstrToFfi(lpszFacename), util.boolToFfi(bEnable));
@@ -12650,9 +12650,9 @@ export function TTRunValidationTestsEx(
 
 export function TTGetNewFontName(
   phFontReference: Deno.PointerValue | Uint8Array | null /* ptr */,
-  wzWinFamilyName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  wzWinFamilyName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   cchMaxWinName: number /* i32 */,
-  szMacFamilyName: string | null /* Windows.Win32.Foundation.PSTR */,
+  szMacFamilyName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   cchMaxMacName: number /* i32 */,
 ): number /* i32 */ {
   return libt2embed_dll.TTGetNewFontName(util.toPointer(phFontReference), util.pwstrToFfi(wzWinFamilyName), cchMaxWinName, util.pstrToFfi(szMacFamilyName), cchMaxMacName);
@@ -12696,7 +12696,7 @@ export function DrawAnimatedRects(
 
 export function DrawTextA(
   hdc: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Graphics.Gdi.HDC */,
-  lpchText: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpchText: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   cchText: number /* i32 */,
   lprc: Deno.PointerValue | Uint8Array | null /* ptr */,
   format: DRAW_TEXT_FORMAT /* Windows.Win32.Graphics.Gdi.DRAW_TEXT_FORMAT */,
@@ -12706,7 +12706,7 @@ export function DrawTextA(
 
 export function DrawTextW(
   hdc: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Graphics.Gdi.HDC */,
-  lpchText: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpchText: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   cchText: number /* i32 */,
   lprc: Deno.PointerValue | Uint8Array | null /* ptr */,
   format: DRAW_TEXT_FORMAT /* Windows.Win32.Graphics.Gdi.DRAW_TEXT_FORMAT */,
@@ -12716,7 +12716,7 @@ export function DrawTextW(
 
 export function DrawTextExA(
   hdc: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Graphics.Gdi.HDC */,
-  lpchText: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpchText: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   cchText: number /* i32 */,
   lprc: Deno.PointerValue | Uint8Array | null /* ptr */,
   format: DRAW_TEXT_FORMAT /* Windows.Win32.Graphics.Gdi.DRAW_TEXT_FORMAT */,
@@ -12727,7 +12727,7 @@ export function DrawTextExA(
 
 export function DrawTextExW(
   hdc: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Graphics.Gdi.HDC */,
-  lpchText: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpchText: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   cchText: number /* i32 */,
   lprc: Deno.PointerValue | Uint8Array | null /* ptr */,
   format: DRAW_TEXT_FORMAT /* Windows.Win32.Graphics.Gdi.DRAW_TEXT_FORMAT */,
@@ -12798,7 +12798,7 @@ export function TabbedTextOutA(
   hdc: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Graphics.Gdi.HDC */,
   x: number /* i32 */,
   y: number /* i32 */,
-  lpString: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpString: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   chCount: number /* i32 */,
   nTabPositions: number /* i32 */,
   lpnTabStopPositions: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -12811,7 +12811,7 @@ export function TabbedTextOutW(
   hdc: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Graphics.Gdi.HDC */,
   x: number /* i32 */,
   y: number /* i32 */,
-  lpString: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpString: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   chCount: number /* i32 */,
   nTabPositions: number /* i32 */,
   lpnTabStopPositions: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -12822,7 +12822,7 @@ export function TabbedTextOutW(
 
 export function GetTabbedTextExtentA(
   hdc: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Graphics.Gdi.HDC */,
-  lpString: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpString: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   chCount: number /* i32 */,
   nTabPositions: number /* i32 */,
   lpnTabStopPositions: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -12832,7 +12832,7 @@ export function GetTabbedTextExtentA(
 
 export function GetTabbedTextExtentW(
   hdc: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Graphics.Gdi.HDC */,
-  lpString: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpString: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   chCount: number /* i32 */,
   nTabPositions: number /* i32 */,
   lpnTabStopPositions: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -13147,14 +13147,14 @@ export function PtInRect(
 
 export function LoadBitmapA(
   hInstance: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HINSTANCE */,
-  lpBitmapName: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpBitmapName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): Deno.PointerValue | null /* Windows.Win32.Graphics.Gdi.HBITMAP */ {
   return util.pointerFromFfi(libUSER32_dll.LoadBitmapA(util.toPointer(hInstance), util.pstrToFfi(lpBitmapName)));
 }
 
 export function LoadBitmapW(
   hInstance: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HINSTANCE */,
-  lpBitmapName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpBitmapName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): Deno.PointerValue | null /* Windows.Win32.Graphics.Gdi.HBITMAP */ {
   return util.pointerFromFfi(libUSER32_dll.LoadBitmapW(util.toPointer(hInstance), util.pwstrToFfi(lpBitmapName)));
 }
@@ -13174,7 +13174,7 @@ export function ChangeDisplaySettingsW(
 }
 
 export function ChangeDisplaySettingsExA(
-  lpszDeviceName: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpszDeviceName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   lpDevMode: Deno.PointerValue | Uint8Array | null /* ptr */,
   hwnd: Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */,
   dwflags: CDS_TYPE /* Windows.Win32.Graphics.Gdi.CDS_TYPE */,
@@ -13184,7 +13184,7 @@ export function ChangeDisplaySettingsExA(
 }
 
 export function ChangeDisplaySettingsExW(
-  lpszDeviceName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpszDeviceName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   lpDevMode: Deno.PointerValue | Uint8Array | null /* ptr */,
   hwnd: Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */,
   dwflags: CDS_TYPE /* Windows.Win32.Graphics.Gdi.CDS_TYPE */,
@@ -13194,7 +13194,7 @@ export function ChangeDisplaySettingsExW(
 }
 
 export function EnumDisplaySettingsA(
-  lpszDeviceName: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpszDeviceName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   iModeNum: ENUM_DISPLAY_SETTINGS_MODE /* Windows.Win32.Graphics.Gdi.ENUM_DISPLAY_SETTINGS_MODE */,
   lpDevMode: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
@@ -13202,7 +13202,7 @@ export function EnumDisplaySettingsA(
 }
 
 export function EnumDisplaySettingsW(
-  lpszDeviceName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpszDeviceName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   iModeNum: ENUM_DISPLAY_SETTINGS_MODE /* Windows.Win32.Graphics.Gdi.ENUM_DISPLAY_SETTINGS_MODE */,
   lpDevMode: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
@@ -13210,7 +13210,7 @@ export function EnumDisplaySettingsW(
 }
 
 export function EnumDisplaySettingsExA(
-  lpszDeviceName: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpszDeviceName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   iModeNum: ENUM_DISPLAY_SETTINGS_MODE /* Windows.Win32.Graphics.Gdi.ENUM_DISPLAY_SETTINGS_MODE */,
   lpDevMode: Deno.PointerValue | Uint8Array | null /* ptr */,
   dwFlags: number /* u32 */,
@@ -13219,7 +13219,7 @@ export function EnumDisplaySettingsExA(
 }
 
 export function EnumDisplaySettingsExW(
-  lpszDeviceName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpszDeviceName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   iModeNum: ENUM_DISPLAY_SETTINGS_MODE /* Windows.Win32.Graphics.Gdi.ENUM_DISPLAY_SETTINGS_MODE */,
   lpDevMode: Deno.PointerValue | Uint8Array | null /* ptr */,
   dwFlags: number /* u32 */,
@@ -13228,7 +13228,7 @@ export function EnumDisplaySettingsExW(
 }
 
 export function EnumDisplayDevicesA(
-  lpDevice: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpDevice: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   iDevNum: number /* u32 */,
   lpDisplayDevice: Deno.PointerValue | Uint8Array | null /* ptr */,
   dwFlags: number /* u32 */,
@@ -13237,7 +13237,7 @@ export function EnumDisplayDevicesA(
 }
 
 export function EnumDisplayDevicesW(
-  lpDevice: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpDevice: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   iDevNum: number /* u32 */,
   lpDisplayDevice: Deno.PointerValue | Uint8Array | null /* ptr */,
   dwFlags: number /* u32 */,

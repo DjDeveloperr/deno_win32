@@ -414,7 +414,7 @@ export interface AudioFXExtensionParams {
   /** Windows.Win32.Foundation.LPARAM */
   AddPageParam: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.Foundation.PWSTR */
-  pwstrEndpointID: string | null;
+  pwstrEndpointID: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.UI.Shell.PropertiesSystem.IPropertyStore */
   pFxProperties: Uint8Array | Deno.PointerValue | null;
 }

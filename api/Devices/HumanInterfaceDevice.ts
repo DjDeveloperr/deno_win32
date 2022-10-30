@@ -3355,7 +3355,7 @@ export interface DICONFIGUREDEVICESPARAMSA {
   /** u32 */
   dwcUsers: number;
   /** Windows.Win32.Foundation.PSTR */
-  lptszUserNames: string | null;
+  lptszUserNames: string | null | Uint8Array;
   /** u32 */
   dwcFormats: number;
   /** ptr */
@@ -3407,7 +3407,7 @@ export interface DICONFIGUREDEVICESPARAMSW {
   /** u32 */
   dwcUsers: number;
   /** Windows.Win32.Foundation.PWSTR */
-  lptszUserNames: string | null;
+  lptszUserNames: string | null | Uint8Array | Uint16Array;
   /** u32 */
   dwcFormats: number;
   /** ptr */
@@ -4966,7 +4966,7 @@ export interface DIHIDFFINITINFO {
   /** u32 */
   dwSize: number;
   /** Windows.Win32.Foundation.PWSTR */
-  pwszDeviceInterface: string | null;
+  pwszDeviceInterface: string | null | Uint8Array | Uint16Array;
   /** System.Guid */
   GuidInstance: Uint8Array | Deno.PointerValue | null;
 }
@@ -6761,7 +6761,7 @@ export function HidP_InitializeReportForID(
   ReportType: HIDP_REPORT_TYPE /* Windows.Win32.Devices.HumanInterfaceDevice.HIDP_REPORT_TYPE */,
   ReportID: number /* u8 */,
   PreparsedData: Deno.PointerValue /* isize */,
-  Report: string | null /* Windows.Win32.Foundation.PSTR */,
+  Report: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   ReportLength: number /* u32 */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.NTSTATUS */ {
   return util.pointerFromFfi(libHID_dll.HidP_InitializeReportForID(ReportType, ReportID, PreparsedData, util.pstrToFfi(Report), ReportLength));
@@ -6772,7 +6772,7 @@ export function HidP_SetData(
   DataList: Deno.PointerValue | Uint8Array | null /* ptr */,
   DataLength: Deno.PointerValue | Uint8Array | null /* ptr */,
   PreparsedData: Deno.PointerValue /* isize */,
-  Report: string | null /* Windows.Win32.Foundation.PSTR */,
+  Report: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   ReportLength: number /* u32 */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.NTSTATUS */ {
   return util.pointerFromFfi(libHID_dll.HidP_SetData(ReportType, util.toPointer(DataList), util.toPointer(DataLength), PreparsedData, util.pstrToFfi(Report), ReportLength));
@@ -6783,7 +6783,7 @@ export function HidP_GetData(
   DataList: Deno.PointerValue | Uint8Array | null /* ptr */,
   DataLength: Deno.PointerValue | Uint8Array | null /* ptr */,
   PreparsedData: Deno.PointerValue /* isize */,
-  Report: string | null /* Windows.Win32.Foundation.PSTR */,
+  Report: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   ReportLength: number /* u32 */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.NTSTATUS */ {
   return util.pointerFromFfi(libHID_dll.HidP_GetData(ReportType, util.toPointer(DataList), util.toPointer(DataLength), PreparsedData, util.pstrToFfi(Report), ReportLength));
@@ -6803,7 +6803,7 @@ export function HidP_SetUsages(
   UsageList: Deno.PointerValue | Uint8Array | null /* ptr */,
   UsageLength: Deno.PointerValue | Uint8Array | null /* ptr */,
   PreparsedData: Deno.PointerValue /* isize */,
-  Report: string | null /* Windows.Win32.Foundation.PSTR */,
+  Report: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   ReportLength: number /* u32 */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.NTSTATUS */ {
   return util.pointerFromFfi(libHID_dll.HidP_SetUsages(ReportType, UsagePage, LinkCollection, util.toPointer(UsageList), util.toPointer(UsageLength), PreparsedData, util.pstrToFfi(Report), ReportLength));
@@ -6816,7 +6816,7 @@ export function HidP_UnsetUsages(
   UsageList: Deno.PointerValue | Uint8Array | null /* ptr */,
   UsageLength: Deno.PointerValue | Uint8Array | null /* ptr */,
   PreparsedData: Deno.PointerValue /* isize */,
-  Report: string | null /* Windows.Win32.Foundation.PSTR */,
+  Report: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   ReportLength: number /* u32 */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.NTSTATUS */ {
   return util.pointerFromFfi(libHID_dll.HidP_UnsetUsages(ReportType, UsagePage, LinkCollection, util.toPointer(UsageList), util.toPointer(UsageLength), PreparsedData, util.pstrToFfi(Report), ReportLength));
@@ -6829,7 +6829,7 @@ export function HidP_GetUsages(
   UsageList: Deno.PointerValue | Uint8Array | null /* ptr */,
   UsageLength: Deno.PointerValue | Uint8Array | null /* ptr */,
   PreparsedData: Deno.PointerValue /* isize */,
-  Report: string | null /* Windows.Win32.Foundation.PSTR */,
+  Report: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   ReportLength: number /* u32 */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.NTSTATUS */ {
   return util.pointerFromFfi(libHID_dll.HidP_GetUsages(ReportType, UsagePage, LinkCollection, util.toPointer(UsageList), util.toPointer(UsageLength), PreparsedData, util.pstrToFfi(Report), ReportLength));
@@ -6841,7 +6841,7 @@ export function HidP_GetUsagesEx(
   ButtonList: Deno.PointerValue | Uint8Array | null /* ptr */,
   UsageLength: Deno.PointerValue | Uint8Array | null /* ptr */,
   PreparsedData: Deno.PointerValue /* isize */,
-  Report: string | null /* Windows.Win32.Foundation.PSTR */,
+  Report: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   ReportLength: number /* u32 */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.NTSTATUS */ {
   return util.pointerFromFfi(libHID_dll.HidP_GetUsagesEx(ReportType, LinkCollection, util.toPointer(ButtonList), util.toPointer(UsageLength), PreparsedData, util.pstrToFfi(Report), ReportLength));
@@ -6862,7 +6862,7 @@ export function HidP_SetUsageValue(
   Usage: number /* u16 */,
   UsageValue: number /* u32 */,
   PreparsedData: Deno.PointerValue /* isize */,
-  Report: string | null /* Windows.Win32.Foundation.PSTR */,
+  Report: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   ReportLength: number /* u32 */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.NTSTATUS */ {
   return util.pointerFromFfi(libHID_dll.HidP_SetUsageValue(ReportType, UsagePage, LinkCollection, Usage, UsageValue, PreparsedData, util.pstrToFfi(Report), ReportLength));
@@ -6875,7 +6875,7 @@ export function HidP_SetScaledUsageValue(
   Usage: number /* u16 */,
   UsageValue: number /* i32 */,
   PreparsedData: Deno.PointerValue /* isize */,
-  Report: string | null /* Windows.Win32.Foundation.PSTR */,
+  Report: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   ReportLength: number /* u32 */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.NTSTATUS */ {
   return util.pointerFromFfi(libHID_dll.HidP_SetScaledUsageValue(ReportType, UsagePage, LinkCollection, Usage, UsageValue, PreparsedData, util.pstrToFfi(Report), ReportLength));
@@ -6886,10 +6886,10 @@ export function HidP_SetUsageValueArray(
   UsagePage: number /* u16 */,
   LinkCollection: number /* u16 */,
   Usage: number /* u16 */,
-  UsageValue: string | null /* Windows.Win32.Foundation.PSTR */,
+  UsageValue: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   UsageValueByteLength: number /* u16 */,
   PreparsedData: Deno.PointerValue /* isize */,
-  Report: string | null /* Windows.Win32.Foundation.PSTR */,
+  Report: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   ReportLength: number /* u32 */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.NTSTATUS */ {
   return util.pointerFromFfi(libHID_dll.HidP_SetUsageValueArray(ReportType, UsagePage, LinkCollection, Usage, util.pstrToFfi(UsageValue), UsageValueByteLength, PreparsedData, util.pstrToFfi(Report), ReportLength));
@@ -6902,7 +6902,7 @@ export function HidP_GetUsageValue(
   Usage: number /* u16 */,
   UsageValue: Deno.PointerValue | Uint8Array | null /* ptr */,
   PreparsedData: Deno.PointerValue /* isize */,
-  Report: string | null /* Windows.Win32.Foundation.PSTR */,
+  Report: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   ReportLength: number /* u32 */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.NTSTATUS */ {
   return util.pointerFromFfi(libHID_dll.HidP_GetUsageValue(ReportType, UsagePage, LinkCollection, Usage, util.toPointer(UsageValue), PreparsedData, util.pstrToFfi(Report), ReportLength));
@@ -6915,7 +6915,7 @@ export function HidP_GetScaledUsageValue(
   Usage: number /* u16 */,
   UsageValue: Deno.PointerValue | Uint8Array | null /* ptr */,
   PreparsedData: Deno.PointerValue /* isize */,
-  Report: string | null /* Windows.Win32.Foundation.PSTR */,
+  Report: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   ReportLength: number /* u32 */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.NTSTATUS */ {
   return util.pointerFromFfi(libHID_dll.HidP_GetScaledUsageValue(ReportType, UsagePage, LinkCollection, Usage, util.toPointer(UsageValue), PreparsedData, util.pstrToFfi(Report), ReportLength));
@@ -6926,10 +6926,10 @@ export function HidP_GetUsageValueArray(
   UsagePage: number /* u16 */,
   LinkCollection: number /* u16 */,
   Usage: number /* u16 */,
-  UsageValue: string | null /* Windows.Win32.Foundation.PSTR */,
+  UsageValue: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   UsageValueByteLength: number /* u16 */,
   PreparsedData: Deno.PointerValue /* isize */,
-  Report: string | null /* Windows.Win32.Foundation.PSTR */,
+  Report: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   ReportLength: number /* u32 */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.NTSTATUS */ {
   return util.pointerFromFfi(libHID_dll.HidP_GetUsageValueArray(ReportType, UsagePage, LinkCollection, Usage, util.pstrToFfi(UsageValue), UsageValueByteLength, PreparsedData, util.pstrToFfi(Report), ReportLength));
@@ -6953,7 +6953,7 @@ export function HidP_GetButtonArray(
   ButtonData: Deno.PointerValue | Uint8Array | null /* ptr */,
   ButtonDataLength: Deno.PointerValue | Uint8Array | null /* ptr */,
   PreparsedData: Deno.PointerValue /* isize */,
-  Report: string | null /* Windows.Win32.Foundation.PSTR */,
+  Report: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   ReportLength: number /* u32 */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.NTSTATUS */ {
   return util.pointerFromFfi(libHID_dll.HidP_GetButtonArray(ReportType, UsagePage, LinkCollection, Usage, util.toPointer(ButtonData), util.toPointer(ButtonDataLength), PreparsedData, util.pstrToFfi(Report), ReportLength));
@@ -6967,7 +6967,7 @@ export function HidP_SetButtonArray(
   ButtonData: Deno.PointerValue | Uint8Array | null /* ptr */,
   ButtonDataLength: number /* u16 */,
   PreparsedData: Deno.PointerValue /* isize */,
-  Report: string | null /* Windows.Win32.Foundation.PSTR */,
+  Report: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   ReportLength: number /* u32 */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.NTSTATUS */ {
   return util.pointerFromFfi(libHID_dll.HidP_SetButtonArray(ReportType, UsagePage, LinkCollection, Usage, util.toPointer(ButtonData), ButtonDataLength, PreparsedData, util.pstrToFfi(Report), ReportLength));

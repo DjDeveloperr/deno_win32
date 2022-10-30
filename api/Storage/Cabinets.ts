@@ -321,11 +321,11 @@ export interface FDINOTIFICATION {
   /** i32 */
   cb: number;
   /** Windows.Win32.Foundation.PSTR */
-  psz1: string | null;
+  psz1: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  psz2: string | null;
+  psz2: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  psz3: string | null;
+  psz3: string | null | Uint8Array;
   /** ptr */
   pv: Deno.PointerValue | Uint8Array | null;
   /** isize */
@@ -459,8 +459,8 @@ export function FCICreate(
 
 export function FCIAddFile(
   hfci: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pszSourceFile: string | null /* Windows.Win32.Foundation.PSTR */,
-  pszFileName: string | null /* Windows.Win32.Foundation.PSTR */,
+  pszSourceFile: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  pszFileName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   fExecute: boolean /* Windows.Win32.Foundation.BOOL */,
   pfnfcignc: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Storage.Cabinets.PFNFCIGETNEXTCABINET */,
   pfnfcis: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Storage.Cabinets.PFNFCISTATUS */,
@@ -517,8 +517,8 @@ export function FDIIsCabinet(
 
 export function FDICopy(
   hfdi: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pszCabinet: string | null /* Windows.Win32.Foundation.PSTR */,
-  pszCabPath: string | null /* Windows.Win32.Foundation.PSTR */,
+  pszCabinet: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  pszCabPath: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   flags: number /* i32 */,
   pfnfdin: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Storage.Cabinets.PFNFDINOTIFY */,
   pfnfdid: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Storage.Cabinets.PFNFDIDECRYPT */,
@@ -535,7 +535,7 @@ export function FDIDestroy(
 
 export function FDITruncateCabinet(
   hfdi: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pszCabinetName: string | null /* Windows.Win32.Foundation.PSTR */,
+  pszCabinetName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   iFolderToDelete: number /* u16 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libCabinet_dll.FDITruncateCabinet(util.toPointer(hfdi), util.pstrToFfi(pszCabinetName), iFolderToDelete));

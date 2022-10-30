@@ -2152,9 +2152,9 @@ export type PWSTR = Deno.PointerValue | Uint8Array | null;
  */
 export interface CSEDB_RSTMAPW {
   /** Windows.Win32.Foundation.PWSTR */
-  pwszDatabaseName: string | null;
+  pwszDatabaseName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pwszNewDatabaseName: string | null;
+  pwszNewDatabaseName: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeofCSEDB_RSTMAPW = 16;
@@ -2413,7 +2413,7 @@ try {
 // Symbols
 
 export function CertSrvIsServerOnlineW(
-  pwszServerName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pwszServerName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pfServerOnline: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
   return util.pointerFromFfi(libcertadm_dll.CertSrvIsServerOnlineW(util.pwstrToFfi(pwszServerName), util.toPointer(pfServerOnline)));
@@ -2428,7 +2428,7 @@ export function CertSrvBackupGetDynamicFileListW(
 }
 
 export function CertSrvBackupPrepareW(
-  pwszServerName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pwszServerName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   grbitJet: number /* u32 */,
   dwBackupFlags: CSBACKUP_TYPE /* Windows.Win32.Security.Cryptography.Certificates.CSBACKUP_TYPE */,
   phbc: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -2446,7 +2446,7 @@ export function CertSrvBackupGetDatabaseNamesW(
 
 export function CertSrvBackupOpenFileW(
   hbc: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pwszAttachmentName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pwszAttachmentName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   cbReadHintSize: number /* u32 */,
   pliFileSize: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
@@ -2503,7 +2503,7 @@ export function CertSrvRestoreGetDatabaseLocationsW(
 }
 
 export function CertSrvRestorePrepareW(
-  pwszServerName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pwszServerName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   dwRestoreFlags: number /* u32 */,
   phbc: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
@@ -2512,11 +2512,11 @@ export function CertSrvRestorePrepareW(
 
 export function CertSrvRestoreRegisterW(
   hbc: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pwszCheckPointFilePath: string | null /* Windows.Win32.Foundation.PWSTR */,
-  pwszLogPath: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pwszCheckPointFilePath: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  pwszLogPath: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   rgrstmap: Deno.PointerValue | Uint8Array | null /* ptr */,
   crstmap: number /* i32 */,
-  pwszBackupLogPath: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pwszBackupLogPath: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   genLow: number /* u32 */,
   genHigh: number /* u32 */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
@@ -2525,11 +2525,11 @@ export function CertSrvRestoreRegisterW(
 
 export function CertSrvRestoreRegisterThroughFile(
   hbc: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pwszCheckPointFilePath: string | null /* Windows.Win32.Foundation.PWSTR */,
-  pwszLogPath: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pwszCheckPointFilePath: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  pwszLogPath: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   rgrstmap: Deno.PointerValue | Uint8Array | null /* ptr */,
   crstmap: number /* i32 */,
-  pwszBackupLogPath: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pwszBackupLogPath: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   genLow: number /* u32 */,
   genHigh: number /* u32 */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
@@ -2550,7 +2550,7 @@ export function CertSrvRestoreEnd(
 }
 
 export function CertSrvServerControlW(
-  pwszServerName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pwszServerName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   dwControlFlags: number /* u32 */,
   pcbOut: Deno.PointerValue | Uint8Array | null /* ptr */,
   ppbOut: Deno.PointerValue | Uint8Array | null /* ptr */,

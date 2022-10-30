@@ -850,8 +850,8 @@ export const U_DEFINE_FALSE_AND_TRUE = 1;
 export const U_SIZEOF_UCHAR = 2;
 export const U_CHAR16_IS_TYPEDEF = 1;
 export const U_SENTINEL = `-1`;
-export const U8_LEAD3_T1_BITS = ` 00000000000000`;
-export const U8_LEAD4_T1_BITS = `\0\0\0\0\0\0\0\0\0\0\0\0`;
+export const U8_LEAD3_T1_BITS = ` 000000000000\x1000`;
+export const U8_LEAD4_T1_BITS = `\0\0\0\0\0\0\0\0\x1e\x0f\x0f\x0f\0\0\0\0`;
 export const U8_MAX_LENGTH = 4;
 export const U16_MAX_LENGTH = 2;
 export const U_HIDE_OBSOLETE_UTF_OLD_H = 0;
@@ -3773,9 +3773,9 @@ export interface NUMBERFMTA {
   /** u32 */
   Grouping: number;
   /** Windows.Win32.Foundation.PSTR */
-  lpDecimalSep: string | null;
+  lpDecimalSep: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  lpThousandSep: string | null;
+  lpThousandSep: string | null | Uint8Array;
   /** u32 */
   NegativeOrder: number;
 }
@@ -3821,9 +3821,9 @@ export interface NUMBERFMTW {
   /** u32 */
   Grouping: number;
   /** Windows.Win32.Foundation.PWSTR */
-  lpDecimalSep: string | null;
+  lpDecimalSep: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  lpThousandSep: string | null;
+  lpThousandSep: string | null | Uint8Array | Uint16Array;
   /** u32 */
   NegativeOrder: number;
 }
@@ -3867,15 +3867,15 @@ export interface CURRENCYFMTA {
   /** u32 */
   Grouping: number;
   /** Windows.Win32.Foundation.PSTR */
-  lpDecimalSep: string | null;
+  lpDecimalSep: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  lpThousandSep: string | null;
+  lpThousandSep: string | null | Uint8Array;
   /** u32 */
   NegativeOrder: number;
   /** u32 */
   PositiveOrder: number;
   /** Windows.Win32.Foundation.PSTR */
-  lpCurrencySymbol: string | null;
+  lpCurrencySymbol: string | null | Uint8Array;
 }
 
 export const sizeofCURRENCYFMTA = 48;
@@ -3923,15 +3923,15 @@ export interface CURRENCYFMTW {
   /** u32 */
   Grouping: number;
   /** Windows.Win32.Foundation.PWSTR */
-  lpDecimalSep: string | null;
+  lpDecimalSep: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  lpThousandSep: string | null;
+  lpThousandSep: string | null | Uint8Array | Uint16Array;
   /** u32 */
   NegativeOrder: number;
   /** u32 */
   PositiveOrder: number;
   /** Windows.Win32.Foundation.PWSTR */
-  lpCurrencySymbol: string | null;
+  lpCurrencySymbol: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeofCURRENCYFMTW = 48;
@@ -4111,7 +4111,7 @@ export interface MAPPING_SERVICE_INFO {
   /** usize */
   Size: Deno.PointerValue;
   /** Windows.Win32.Foundation.PWSTR */
-  pszCopyright: string | null;
+  pszCopyright: string | null | Uint8Array | Uint16Array;
   /** u16 */
   wMajorVersion: number;
   /** u16 */
@@ -4147,9 +4147,9 @@ export interface MAPPING_SERVICE_INFO {
   /** System.Guid */
   guid: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.Foundation.PWSTR */
-  pszCategory: string | null;
+  pszCategory: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pszDescription: string | null;
+  pszDescription: string | null | Uint8Array | Uint16Array;
   /** u32 */
   dwPrivateDataSize: number;
   /** ptr */
@@ -4242,19 +4242,19 @@ export interface MAPPING_ENUM_OPTIONS {
   /** usize */
   Size: Deno.PointerValue;
   /** Windows.Win32.Foundation.PWSTR */
-  pszCategory: string | null;
+  pszCategory: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pszInputLanguage: string | null;
+  pszInputLanguage: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pszOutputLanguage: string | null;
+  pszOutputLanguage: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pszInputScript: string | null;
+  pszInputScript: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pszOutputScript: string | null;
+  pszOutputScript: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pszInputContentType: string | null;
+  pszInputContentType: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pszOutputContentType: string | null;
+  pszOutputContentType: string | null | Uint8Array | Uint16Array;
   /** ptr */
   pGuid: Deno.PointerValue | Uint8Array | null;
   /** u32 */
@@ -4318,19 +4318,19 @@ export interface MAPPING_OPTIONS {
   /** usize */
   Size: Deno.PointerValue;
   /** Windows.Win32.Foundation.PWSTR */
-  pszInputLanguage: string | null;
+  pszInputLanguage: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pszOutputLanguage: string | null;
+  pszOutputLanguage: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pszInputScript: string | null;
+  pszInputScript: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pszOutputScript: string | null;
+  pszOutputScript: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pszInputContentType: string | null;
+  pszInputContentType: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pszOutputContentType: string | null;
+  pszOutputContentType: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pszUILanguage: string | null;
+  pszUILanguage: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Globalization.PFN_MAPPINGCALLBACKPROC */
   pfnRecognizeCallback: Uint8Array | Deno.PointerValue | null;
   /** ptr */
@@ -4421,7 +4421,7 @@ export interface MAPPING_DATA_RANGE {
   /** u32 */
   dwEndIndex: number;
   /** Windows.Win32.Foundation.PWSTR */
-  pszDescription: string | null;
+  pszDescription: string | null | Uint8Array | Uint16Array;
   /** u32 */
   dwDescriptionLength: number;
   /** ptr */
@@ -4429,7 +4429,7 @@ export interface MAPPING_DATA_RANGE {
   /** u32 */
   dwDataSize: number;
   /** Windows.Win32.Foundation.PWSTR */
-  pszContentType: string | null;
+  pszContentType: string | null | Uint8Array | Uint16Array;
   /** ptr */
   prgActionIds: Deno.PointerValue | Uint8Array | null;
   /** u32 */
@@ -5128,9 +5128,9 @@ export interface UConverterFromUnicodeArgs {
   /** ptr */
   sourceLimit: Deno.PointerValue | Uint8Array | null;
   /** Windows.Win32.Foundation.PSTR */
-  target: string | null;
+  target: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  targetLimit: string | null;
+  targetLimit: string | null | Uint8Array;
   /** ptr */
   offsets: Deno.PointerValue | Uint8Array | null;
 }
@@ -5177,9 +5177,9 @@ export interface UConverterToUnicodeArgs {
   /** ptr */
   converter: Deno.PointerValue | Uint8Array | null;
   /** Windows.Win32.Foundation.PSTR */
-  source: string | null;
+  source: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  sourceLimit: string | null;
+  sourceLimit: string | null | Uint8Array;
   /** ptr */
   target: Deno.PointerValue | Uint8Array | null;
   /** ptr */
@@ -10683,8 +10683,8 @@ export function GetDateFormatA(
   Locale: number /* u32 */,
   dwFlags: number /* u32 */,
   lpDate: Deno.PointerValue | Uint8Array | null /* ptr */,
-  lpFormat: string | null /* Windows.Win32.Foundation.PSTR */,
-  lpDateStr: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpFormat: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  lpDateStr: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   cchDate: number /* i32 */,
 ): number /* i32 */ {
   return libKERNEL32_dll.GetDateFormatA(Locale, dwFlags, util.toPointer(lpDate), util.pstrToFfi(lpFormat), util.pstrToFfi(lpDateStr), cchDate);
@@ -10694,8 +10694,8 @@ export function GetDateFormatW(
   Locale: number /* u32 */,
   dwFlags: number /* u32 */,
   lpDate: Deno.PointerValue | Uint8Array | null /* ptr */,
-  lpFormat: string | null /* Windows.Win32.Foundation.PWSTR */,
-  lpDateStr: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpFormat: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  lpDateStr: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   cchDate: number /* i32 */,
 ): number /* i32 */ {
   return libKERNEL32_dll.GetDateFormatW(Locale, dwFlags, util.toPointer(lpDate), util.pwstrToFfi(lpFormat), util.pwstrToFfi(lpDateStr), cchDate);
@@ -10705,8 +10705,8 @@ export function GetTimeFormatA(
   Locale: number /* u32 */,
   dwFlags: number /* u32 */,
   lpTime: Deno.PointerValue | Uint8Array | null /* ptr */,
-  lpFormat: string | null /* Windows.Win32.Foundation.PSTR */,
-  lpTimeStr: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpFormat: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  lpTimeStr: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   cchTime: number /* i32 */,
 ): number /* i32 */ {
   return libKERNEL32_dll.GetTimeFormatA(Locale, dwFlags, util.toPointer(lpTime), util.pstrToFfi(lpFormat), util.pstrToFfi(lpTimeStr), cchTime);
@@ -10716,54 +10716,54 @@ export function GetTimeFormatW(
   Locale: number /* u32 */,
   dwFlags: number /* u32 */,
   lpTime: Deno.PointerValue | Uint8Array | null /* ptr */,
-  lpFormat: string | null /* Windows.Win32.Foundation.PWSTR */,
-  lpTimeStr: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpFormat: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  lpTimeStr: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   cchTime: number /* i32 */,
 ): number /* i32 */ {
   return libKERNEL32_dll.GetTimeFormatW(Locale, dwFlags, util.toPointer(lpTime), util.pwstrToFfi(lpFormat), util.pwstrToFfi(lpTimeStr), cchTime);
 }
 
 export function GetTimeFormatEx(
-  lpLocaleName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpLocaleName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   dwFlags: TIME_FORMAT_FLAGS /* Windows.Win32.Globalization.TIME_FORMAT_FLAGS */,
   lpTime: Deno.PointerValue | Uint8Array | null /* ptr */,
-  lpFormat: string | null /* Windows.Win32.Foundation.PWSTR */,
-  lpTimeStr: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpFormat: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  lpTimeStr: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   cchTime: number /* i32 */,
 ): number /* i32 */ {
   return libKERNEL32_dll.GetTimeFormatEx(util.pwstrToFfi(lpLocaleName), dwFlags, util.toPointer(lpTime), util.pwstrToFfi(lpFormat), util.pwstrToFfi(lpTimeStr), cchTime);
 }
 
 export function GetDateFormatEx(
-  lpLocaleName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpLocaleName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   dwFlags: ENUM_DATE_FORMATS_FLAGS /* Windows.Win32.Globalization.ENUM_DATE_FORMATS_FLAGS */,
   lpDate: Deno.PointerValue | Uint8Array | null /* ptr */,
-  lpFormat: string | null /* Windows.Win32.Foundation.PWSTR */,
-  lpDateStr: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpFormat: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  lpDateStr: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   cchDate: number /* i32 */,
-  lpCalendar: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpCalendar: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* i32 */ {
   return libKERNEL32_dll.GetDateFormatEx(util.pwstrToFfi(lpLocaleName), dwFlags, util.toPointer(lpDate), util.pwstrToFfi(lpFormat), util.pwstrToFfi(lpDateStr), cchDate, util.pwstrToFfi(lpCalendar));
 }
 
 export function GetDurationFormatEx(
-  lpLocaleName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpLocaleName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   dwFlags: number /* u32 */,
   lpDuration: Deno.PointerValue | Uint8Array | null /* ptr */,
   ullDuration: Deno.PointerValue /* u64 */,
-  lpFormat: string | null /* Windows.Win32.Foundation.PWSTR */,
-  lpDurationStr: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpFormat: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  lpDurationStr: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   cchDuration: number /* i32 */,
 ): number /* i32 */ {
   return libKERNEL32_dll.GetDurationFormatEx(util.pwstrToFfi(lpLocaleName), dwFlags, util.toPointer(lpDuration), ullDuration, util.pwstrToFfi(lpFormat), util.pwstrToFfi(lpDurationStr), cchDuration);
 }
 
 export function CompareStringEx(
-  lpLocaleName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpLocaleName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   dwCmpFlags: COMPARE_STRING_FLAGS /* Windows.Win32.Globalization.COMPARE_STRING_FLAGS */,
-  lpString1: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpString1: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   cchCount1: number /* i32 */,
-  lpString2: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpString2: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   cchCount2: number /* i32 */,
   lpVersionInformation: Deno.PointerValue | Uint8Array | null /* ptr */,
   lpReserved: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -10773,9 +10773,9 @@ export function CompareStringEx(
 }
 
 export function CompareStringOrdinal(
-  lpString1: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpString1: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   cchCount1: number /* i32 */,
-  lpString2: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpString2: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   cchCount2: number /* i32 */,
   bIgnoreCase: boolean /* Windows.Win32.Foundation.BOOL */,
 ): number /* i32 */ {
@@ -10785,9 +10785,9 @@ export function CompareStringOrdinal(
 export function CompareStringW(
   Locale: number /* u32 */,
   dwCmpFlags: number /* u32 */,
-  lpString1: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpString1: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   cchCount1: number /* i32 */,
-  lpString2: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpString2: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   cchCount2: number /* i32 */,
 ): number /* i32 */ {
   return libKERNEL32_dll.CompareStringW(Locale, dwCmpFlags, util.pwstrToFfi(lpString1), cchCount1, util.pwstrToFfi(lpString2), cchCount2);
@@ -10795,9 +10795,9 @@ export function CompareStringW(
 
 export function FoldStringW(
   dwMapFlags: FOLD_STRING_MAP_FLAGS /* Windows.Win32.Globalization.FOLD_STRING_MAP_FLAGS */,
-  lpSrcStr: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpSrcStr: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   cchSrc: number /* i32 */,
-  lpDestStr: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpDestStr: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   cchDest: number /* i32 */,
 ): number /* i32 */ {
   return libKERNEL32_dll.FoldStringW(dwMapFlags, util.pwstrToFfi(lpSrcStr), cchSrc, util.pwstrToFfi(lpDestStr), cchDest);
@@ -10806,7 +10806,7 @@ export function FoldStringW(
 export function GetStringTypeExW(
   Locale: number /* u32 */,
   dwInfoType: number /* u32 */,
-  lpSrcStr: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpSrcStr: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   cchSrc: number /* i32 */,
   lpCharType: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
@@ -10815,7 +10815,7 @@ export function GetStringTypeExW(
 
 export function GetStringTypeW(
   dwInfoType: number /* u32 */,
-  lpSrcStr: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpSrcStr: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   cchSrc: number /* i32 */,
   lpCharType: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
@@ -10825,9 +10825,9 @@ export function GetStringTypeW(
 export function MultiByteToWideChar(
   CodePage: number /* u32 */,
   dwFlags: MULTI_BYTE_TO_WIDE_CHAR_FLAGS /* Windows.Win32.Globalization.MULTI_BYTE_TO_WIDE_CHAR_FLAGS */,
-  lpMultiByteStr: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpMultiByteStr: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   cbMultiByte: number /* i32 */,
-  lpWideCharStr: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpWideCharStr: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   cchWideChar: number /* i32 */,
 ): number /* i32 */ {
   return libKERNEL32_dll.MultiByteToWideChar(CodePage, dwFlags, util.pstrToFfi(lpMultiByteStr), cbMultiByte, util.pwstrToFfi(lpWideCharStr), cchWideChar);
@@ -10836,11 +10836,11 @@ export function MultiByteToWideChar(
 export function WideCharToMultiByte(
   CodePage: number /* u32 */,
   dwFlags: number /* u32 */,
-  lpWideCharStr: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpWideCharStr: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   cchWideChar: number /* i32 */,
-  lpMultiByteStr: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpMultiByteStr: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   cbMultiByte: number /* i32 */,
-  lpDefaultChar: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpDefaultChar: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   lpUsedDefaultChar: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
   return libKERNEL32_dll.WideCharToMultiByte(CodePage, dwFlags, util.pwstrToFfi(lpWideCharStr), cchWideChar, util.pstrToFfi(lpMultiByteStr), cbMultiByte, util.pstrToFfi(lpDefaultChar), util.toPointer(lpUsedDefaultChar));
@@ -10897,9 +10897,9 @@ export function CompareStringA(
 export function FindNLSString(
   Locale: number /* u32 */,
   dwFindNLSStringFlags: number /* u32 */,
-  lpStringSource: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpStringSource: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   cchSource: number /* i32 */,
-  lpStringValue: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpStringValue: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   cchValue: number /* i32 */,
   pcchFound: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
@@ -10909,9 +10909,9 @@ export function FindNLSString(
 export function LCMapStringW(
   Locale: number /* u32 */,
   dwMapFlags: number /* u32 */,
-  lpSrcStr: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpSrcStr: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   cchSrc: number /* i32 */,
-  lpDestStr: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpDestStr: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   cchDest: number /* i32 */,
 ): number /* i32 */ {
   return libKERNEL32_dll.LCMapStringW(Locale, dwMapFlags, util.pwstrToFfi(lpSrcStr), cchSrc, util.pwstrToFfi(lpDestStr), cchDest);
@@ -10920,9 +10920,9 @@ export function LCMapStringW(
 export function LCMapStringA(
   Locale: number /* u32 */,
   dwMapFlags: number /* u32 */,
-  lpSrcStr: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpSrcStr: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   cchSrc: number /* i32 */,
-  lpDestStr: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpDestStr: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   cchDest: number /* i32 */,
 ): number /* i32 */ {
   return libKERNEL32_dll.LCMapStringA(Locale, dwMapFlags, util.pstrToFfi(lpSrcStr), cchSrc, util.pstrToFfi(lpDestStr), cchDest);
@@ -10931,7 +10931,7 @@ export function LCMapStringA(
 export function GetLocaleInfoW(
   Locale: number /* u32 */,
   LCType: number /* u32 */,
-  lpLCData: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpLCData: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   cchData: number /* i32 */,
 ): number /* i32 */ {
   return libKERNEL32_dll.GetLocaleInfoW(Locale, LCType, util.pwstrToFfi(lpLCData), cchData);
@@ -10940,7 +10940,7 @@ export function GetLocaleInfoW(
 export function GetLocaleInfoA(
   Locale: number /* u32 */,
   LCType: number /* u32 */,
-  lpLCData: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpLCData: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   cchData: number /* i32 */,
 ): number /* i32 */ {
   return libKERNEL32_dll.GetLocaleInfoA(Locale, LCType, util.pstrToFfi(lpLCData), cchData);
@@ -10949,7 +10949,7 @@ export function GetLocaleInfoA(
 export function SetLocaleInfoA(
   Locale: number /* u32 */,
   LCType: number /* u32 */,
-  lpLCData: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpLCData: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libKERNEL32_dll.SetLocaleInfoA(Locale, LCType, util.pstrToFfi(lpLCData)));
 }
@@ -10957,7 +10957,7 @@ export function SetLocaleInfoA(
 export function SetLocaleInfoW(
   Locale: number /* u32 */,
   LCType: number /* u32 */,
-  lpLCData: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpLCData: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libKERNEL32_dll.SetLocaleInfoW(Locale, LCType, util.pwstrToFfi(lpLCData)));
 }
@@ -10966,7 +10966,7 @@ export function GetCalendarInfoA(
   Locale: number /* u32 */,
   Calendar: number /* u32 */,
   CalType: number /* u32 */,
-  lpCalData: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpCalData: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   cchData: number /* i32 */,
   lpValue: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
@@ -10977,7 +10977,7 @@ export function GetCalendarInfoW(
   Locale: number /* u32 */,
   Calendar: number /* u32 */,
   CalType: number /* u32 */,
-  lpCalData: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpCalData: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   cchData: number /* i32 */,
   lpValue: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
@@ -10988,7 +10988,7 @@ export function SetCalendarInfoA(
   Locale: number /* u32 */,
   Calendar: number /* u32 */,
   CalType: number /* u32 */,
-  lpCalData: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpCalData: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libKERNEL32_dll.SetCalendarInfoA(Locale, Calendar, CalType, util.pstrToFfi(lpCalData)));
 }
@@ -10997,7 +10997,7 @@ export function SetCalendarInfoW(
   Locale: number /* u32 */,
   Calendar: number /* u32 */,
   CalType: number /* u32 */,
-  lpCalData: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpCalData: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libKERNEL32_dll.SetCalendarInfoW(Locale, Calendar, CalType, util.pwstrToFfi(lpCalData)));
 }
@@ -11016,7 +11016,7 @@ export function IsDBCSLeadByteEx(
 }
 
 export function LocaleNameToLCID(
-  lpName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   dwFlags: number /* u32 */,
 ): number /* u32 */ {
   return libKERNEL32_dll.LocaleNameToLCID(util.pwstrToFfi(lpName), dwFlags);
@@ -11024,7 +11024,7 @@ export function LocaleNameToLCID(
 
 export function LCIDToLocaleName(
   Locale: number /* u32 */,
-  lpName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   cchName: number /* i32 */,
   dwFlags: number /* u32 */,
 ): number /* i32 */ {
@@ -11036,8 +11036,8 @@ export function GetDurationFormat(
   dwFlags: number /* u32 */,
   lpDuration: Deno.PointerValue | Uint8Array | null /* ptr */,
   ullDuration: Deno.PointerValue /* u64 */,
-  lpFormat: string | null /* Windows.Win32.Foundation.PWSTR */,
-  lpDurationStr: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpFormat: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  lpDurationStr: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   cchDuration: number /* i32 */,
 ): number /* i32 */ {
   return libKERNEL32_dll.GetDurationFormat(Locale, dwFlags, util.toPointer(lpDuration), ullDuration, util.pwstrToFfi(lpFormat), util.pwstrToFfi(lpDurationStr), cchDuration);
@@ -11046,9 +11046,9 @@ export function GetDurationFormat(
 export function GetNumberFormatA(
   Locale: number /* u32 */,
   dwFlags: number /* u32 */,
-  lpValue: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpValue: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   lpFormat: Deno.PointerValue | Uint8Array | null /* ptr */,
-  lpNumberStr: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpNumberStr: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   cchNumber: number /* i32 */,
 ): number /* i32 */ {
   return libKERNEL32_dll.GetNumberFormatA(Locale, dwFlags, util.pstrToFfi(lpValue), util.toPointer(lpFormat), util.pstrToFfi(lpNumberStr), cchNumber);
@@ -11057,9 +11057,9 @@ export function GetNumberFormatA(
 export function GetNumberFormatW(
   Locale: number /* u32 */,
   dwFlags: number /* u32 */,
-  lpValue: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpValue: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   lpFormat: Deno.PointerValue | Uint8Array | null /* ptr */,
-  lpNumberStr: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpNumberStr: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   cchNumber: number /* i32 */,
 ): number /* i32 */ {
   return libKERNEL32_dll.GetNumberFormatW(Locale, dwFlags, util.pwstrToFfi(lpValue), util.toPointer(lpFormat), util.pwstrToFfi(lpNumberStr), cchNumber);
@@ -11068,9 +11068,9 @@ export function GetNumberFormatW(
 export function GetCurrencyFormatA(
   Locale: number /* u32 */,
   dwFlags: number /* u32 */,
-  lpValue: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpValue: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   lpFormat: Deno.PointerValue | Uint8Array | null /* ptr */,
-  lpCurrencyStr: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpCurrencyStr: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   cchCurrency: number /* i32 */,
 ): number /* i32 */ {
   return libKERNEL32_dll.GetCurrencyFormatA(Locale, dwFlags, util.pstrToFfi(lpValue), util.toPointer(lpFormat), util.pstrToFfi(lpCurrencyStr), cchCurrency);
@@ -11079,9 +11079,9 @@ export function GetCurrencyFormatA(
 export function GetCurrencyFormatW(
   Locale: number /* u32 */,
   dwFlags: number /* u32 */,
-  lpValue: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpValue: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   lpFormat: Deno.PointerValue | Uint8Array | null /* ptr */,
-  lpCurrencyStr: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpCurrencyStr: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   cchCurrency: number /* i32 */,
 ): number /* i32 */ {
   return libKERNEL32_dll.GetCurrencyFormatW(Locale, dwFlags, util.pwstrToFfi(lpValue), util.toPointer(lpFormat), util.pwstrToFfi(lpCurrencyStr), cchCurrency);
@@ -11196,7 +11196,7 @@ export function IsValidLocale(
 export function GetGeoInfoA(
   Location: number /* i32 */,
   GeoType: number /* u32 */,
-  lpGeoData: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpGeoData: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   cchData: number /* i32 */,
   LangId: number /* u16 */,
 ): number /* i32 */ {
@@ -11206,7 +11206,7 @@ export function GetGeoInfoA(
 export function GetGeoInfoW(
   Location: number /* i32 */,
   GeoType: number /* u32 */,
-  lpGeoData: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpGeoData: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   cchData: number /* i32 */,
   LangId: number /* u16 */,
 ): number /* i32 */ {
@@ -11214,9 +11214,9 @@ export function GetGeoInfoW(
 }
 
 export function GetGeoInfoEx(
-  location: string | null /* Windows.Win32.Foundation.PWSTR */,
+  location: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   geoType: number /* u32 */,
-  geoData: string | null /* Windows.Win32.Foundation.PWSTR */,
+  geoData: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   geoDataCount: number /* i32 */,
 ): number /* i32 */ {
   return libKERNEL32_dll.GetGeoInfoEx(util.pwstrToFfi(location), geoType, util.pwstrToFfi(geoData), geoDataCount);
@@ -11245,7 +11245,7 @@ export function GetUserGeoID(
 }
 
 export function GetUserDefaultGeoName(
-  geoName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  geoName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   geoNameCount: number /* i32 */,
 ): number /* i32 */ {
   return libKERNEL32_dll.GetUserDefaultGeoName(util.pwstrToFfi(geoName), geoNameCount);
@@ -11258,7 +11258,7 @@ export function SetUserGeoID(
 }
 
 export function SetUserGeoName(
-  geoName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  geoName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libKERNEL32_dll.SetUserGeoName(util.pwstrToFfi(geoName)));
 }
@@ -11316,7 +11316,7 @@ export function GetThreadUILanguage(): number /* u16 */ {
 export function GetProcessPreferredUILanguages(
   dwFlags: number /* u32 */,
   pulNumLanguages: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pwszLanguagesBuffer: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pwszLanguagesBuffer: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pcchLanguagesBuffer: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libKERNEL32_dll.GetProcessPreferredUILanguages(dwFlags, util.toPointer(pulNumLanguages), util.pwstrToFfi(pwszLanguagesBuffer), util.toPointer(pcchLanguagesBuffer)));
@@ -11324,7 +11324,7 @@ export function GetProcessPreferredUILanguages(
 
 export function SetProcessPreferredUILanguages(
   dwFlags: number /* u32 */,
-  pwszLanguagesBuffer: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pwszLanguagesBuffer: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pulNumLanguages: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libKERNEL32_dll.SetProcessPreferredUILanguages(dwFlags, util.pwstrToFfi(pwszLanguagesBuffer), util.toPointer(pulNumLanguages)));
@@ -11333,7 +11333,7 @@ export function SetProcessPreferredUILanguages(
 export function GetUserPreferredUILanguages(
   dwFlags: number /* u32 */,
   pulNumLanguages: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pwszLanguagesBuffer: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pwszLanguagesBuffer: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pcchLanguagesBuffer: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libKERNEL32_dll.GetUserPreferredUILanguages(dwFlags, util.toPointer(pulNumLanguages), util.pwstrToFfi(pwszLanguagesBuffer), util.toPointer(pcchLanguagesBuffer)));
@@ -11342,7 +11342,7 @@ export function GetUserPreferredUILanguages(
 export function GetSystemPreferredUILanguages(
   dwFlags: number /* u32 */,
   pulNumLanguages: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pwszLanguagesBuffer: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pwszLanguagesBuffer: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pcchLanguagesBuffer: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libKERNEL32_dll.GetSystemPreferredUILanguages(dwFlags, util.toPointer(pulNumLanguages), util.pwstrToFfi(pwszLanguagesBuffer), util.toPointer(pcchLanguagesBuffer)));
@@ -11351,7 +11351,7 @@ export function GetSystemPreferredUILanguages(
 export function GetThreadPreferredUILanguages(
   dwFlags: number /* u32 */,
   pulNumLanguages: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pwszLanguagesBuffer: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pwszLanguagesBuffer: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pcchLanguagesBuffer: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libKERNEL32_dll.GetThreadPreferredUILanguages(dwFlags, util.toPointer(pulNumLanguages), util.pwstrToFfi(pwszLanguagesBuffer), util.toPointer(pcchLanguagesBuffer)));
@@ -11359,7 +11359,7 @@ export function GetThreadPreferredUILanguages(
 
 export function SetThreadPreferredUILanguages(
   dwFlags: number /* u32 */,
-  pwszLanguagesBuffer: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pwszLanguagesBuffer: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pulNumLanguages: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libKERNEL32_dll.SetThreadPreferredUILanguages(dwFlags, util.pwstrToFfi(pwszLanguagesBuffer), util.toPointer(pulNumLanguages)));
@@ -11367,7 +11367,7 @@ export function SetThreadPreferredUILanguages(
 
 export function GetFileMUIInfo(
   dwFlags: number /* u32 */,
-  pcwszFilePath: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pcwszFilePath: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pFileMUIInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
   pcbFileMUIInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
@@ -11376,10 +11376,10 @@ export function GetFileMUIInfo(
 
 export function GetFileMUIPath(
   dwFlags: number /* u32 */,
-  pcwszFilePath: string | null /* Windows.Win32.Foundation.PWSTR */,
-  pwszLanguage: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pcwszFilePath: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  pwszLanguage: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pcchLanguage: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pwszFileMUIPath: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pwszFileMUIPath: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pcchFileMUIPath: Deno.PointerValue | Uint8Array | null /* ptr */,
   pululEnumerator: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
@@ -11388,8 +11388,8 @@ export function GetFileMUIPath(
 
 export function GetUILanguageInfo(
   dwFlags: number /* u32 */,
-  pwmszLanguage: string | null /* Windows.Win32.Foundation.PWSTR */,
-  pwszFallbackLanguages: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pwmszLanguage: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  pwszFallbackLanguages: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pcchFallbackLanguages: Deno.PointerValue | Uint8Array | null /* ptr */,
   pAttributes: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
@@ -11398,7 +11398,7 @@ export function GetUILanguageInfo(
 
 export function SetThreadPreferredUILanguages2(
   flags: number /* u32 */,
-  languages: string | null /* Windows.Win32.Foundation.PWSTR */,
+  languages: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   numLanguagesSet: Deno.PointerValue | Uint8Array | null /* ptr */,
   snapshot: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
@@ -11413,8 +11413,8 @@ export function RestoreThreadPreferredUILanguages(
 
 export function NotifyUILanguageChange(
   dwFlags: number /* u32 */,
-  pcwstrNewLanguage: string | null /* Windows.Win32.Foundation.PWSTR */,
-  pcwstrPreviousLanguage: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pcwstrNewLanguage: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  pcwstrPreviousLanguage: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   dwReserved: number /* u32 */,
   pdwStatusRtrn: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
@@ -11424,7 +11424,7 @@ export function NotifyUILanguageChange(
 export function GetStringTypeExA(
   Locale: number /* u32 */,
   dwInfoType: number /* u32 */,
-  lpSrcStr: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpSrcStr: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   cchSrc: number /* i32 */,
   lpCharType: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
@@ -11434,7 +11434,7 @@ export function GetStringTypeExA(
 export function GetStringTypeA(
   Locale: number /* u32 */,
   dwInfoType: number /* u32 */,
-  lpSrcStr: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpSrcStr: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   cchSrc: number /* i32 */,
   lpCharType: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
@@ -11443,9 +11443,9 @@ export function GetStringTypeA(
 
 export function FoldStringA(
   dwMapFlags: FOLD_STRING_MAP_FLAGS /* Windows.Win32.Globalization.FOLD_STRING_MAP_FLAGS */,
-  lpSrcStr: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpSrcStr: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   cchSrc: number /* i32 */,
-  lpDestStr: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpDestStr: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   cchDest: number /* i32 */,
 ): number /* i32 */ {
   return libKERNEL32_dll.FoldStringA(dwMapFlags, util.pstrToFfi(lpSrcStr), cchSrc, util.pstrToFfi(lpDestStr), cchDest);
@@ -11531,9 +11531,9 @@ export function EnumSystemCodePagesW(
 
 export function IdnToAscii(
   dwFlags: number /* u32 */,
-  lpUnicodeCharStr: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpUnicodeCharStr: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   cchUnicodeChar: number /* i32 */,
-  lpASCIICharStr: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpASCIICharStr: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   cchASCIIChar: number /* i32 */,
 ): number /* i32 */ {
   return libNORMALIZ_dll.IdnToAscii(dwFlags, util.pwstrToFfi(lpUnicodeCharStr), cchUnicodeChar, util.pwstrToFfi(lpASCIICharStr), cchASCIIChar);
@@ -11541,9 +11541,9 @@ export function IdnToAscii(
 
 export function IdnToUnicode(
   dwFlags: number /* u32 */,
-  lpASCIICharStr: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpASCIICharStr: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   cchASCIIChar: number /* i32 */,
-  lpUnicodeCharStr: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpUnicodeCharStr: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   cchUnicodeChar: number /* i32 */,
 ): number /* i32 */ {
   return libNORMALIZ_dll.IdnToUnicode(dwFlags, util.pwstrToFfi(lpASCIICharStr), cchASCIIChar, util.pwstrToFfi(lpUnicodeCharStr), cchUnicodeChar);
@@ -11551,9 +11551,9 @@ export function IdnToUnicode(
 
 export function IdnToNameprepUnicode(
   dwFlags: number /* u32 */,
-  lpUnicodeCharStr: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpUnicodeCharStr: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   cchUnicodeChar: number /* i32 */,
-  lpNameprepCharStr: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpNameprepCharStr: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   cchNameprepChar: number /* i32 */,
 ): number /* i32 */ {
   return libKERNEL32_dll.IdnToNameprepUnicode(dwFlags, util.pwstrToFfi(lpUnicodeCharStr), cchUnicodeChar, util.pwstrToFfi(lpNameprepCharStr), cchNameprepChar);
@@ -11561,9 +11561,9 @@ export function IdnToNameprepUnicode(
 
 export function NormalizeString(
   NormForm: NORM_FORM /* Windows.Win32.Globalization.NORM_FORM */,
-  lpSrcString: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpSrcString: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   cwSrcLength: number /* i32 */,
-  lpDstString: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpDstString: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   cwDstLength: number /* i32 */,
 ): number /* i32 */ {
   return libKERNEL32_dll.NormalizeString(NormForm, util.pwstrToFfi(lpSrcString), cwSrcLength, util.pwstrToFfi(lpDstString), cwDstLength);
@@ -11571,7 +11571,7 @@ export function NormalizeString(
 
 export function IsNormalizedString(
   NormForm: NORM_FORM /* Windows.Win32.Globalization.NORM_FORM */,
-  lpString: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpString: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   cwLength: number /* i32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libKERNEL32_dll.IsNormalizedString(NormForm, util.pwstrToFfi(lpString), cwLength));
@@ -11579,9 +11579,9 @@ export function IsNormalizedString(
 
 export function VerifyScripts(
   dwFlags: number /* u32 */,
-  lpLocaleScripts: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpLocaleScripts: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   cchLocaleScripts: number /* i32 */,
-  lpTestScripts: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpTestScripts: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   cchTestScripts: number /* i32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libKERNEL32_dll.VerifyScripts(dwFlags, util.pwstrToFfi(lpLocaleScripts), cchLocaleScripts, util.pwstrToFfi(lpTestScripts), cchTestScripts));
@@ -11589,29 +11589,29 @@ export function VerifyScripts(
 
 export function GetStringScripts(
   dwFlags: number /* u32 */,
-  lpString: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpString: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   cchString: number /* i32 */,
-  lpScripts: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpScripts: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   cchScripts: number /* i32 */,
 ): number /* i32 */ {
   return libKERNEL32_dll.GetStringScripts(dwFlags, util.pwstrToFfi(lpString), cchString, util.pwstrToFfi(lpScripts), cchScripts);
 }
 
 export function GetLocaleInfoEx(
-  lpLocaleName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpLocaleName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   LCType: number /* u32 */,
-  lpLCData: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpLCData: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   cchData: number /* i32 */,
 ): number /* i32 */ {
   return libKERNEL32_dll.GetLocaleInfoEx(util.pwstrToFfi(lpLocaleName), LCType, util.pwstrToFfi(lpLCData), cchData);
 }
 
 export function GetCalendarInfoEx(
-  lpLocaleName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpLocaleName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   Calendar: number /* u32 */,
-  lpReserved: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpReserved: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   CalType: number /* u32 */,
-  lpCalData: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpCalData: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   cchData: number /* i32 */,
   lpValue: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
@@ -11619,36 +11619,36 @@ export function GetCalendarInfoEx(
 }
 
 export function GetNumberFormatEx(
-  lpLocaleName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpLocaleName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   dwFlags: number /* u32 */,
-  lpValue: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpValue: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   lpFormat: Deno.PointerValue | Uint8Array | null /* ptr */,
-  lpNumberStr: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpNumberStr: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   cchNumber: number /* i32 */,
 ): number /* i32 */ {
   return libKERNEL32_dll.GetNumberFormatEx(util.pwstrToFfi(lpLocaleName), dwFlags, util.pwstrToFfi(lpValue), util.toPointer(lpFormat), util.pwstrToFfi(lpNumberStr), cchNumber);
 }
 
 export function GetCurrencyFormatEx(
-  lpLocaleName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpLocaleName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   dwFlags: number /* u32 */,
-  lpValue: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpValue: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   lpFormat: Deno.PointerValue | Uint8Array | null /* ptr */,
-  lpCurrencyStr: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpCurrencyStr: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   cchCurrency: number /* i32 */,
 ): number /* i32 */ {
   return libKERNEL32_dll.GetCurrencyFormatEx(util.pwstrToFfi(lpLocaleName), dwFlags, util.pwstrToFfi(lpValue), util.toPointer(lpFormat), util.pwstrToFfi(lpCurrencyStr), cchCurrency);
 }
 
 export function GetUserDefaultLocaleName(
-  lpLocaleName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpLocaleName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   cchLocaleName: number /* i32 */,
 ): number /* i32 */ {
   return libKERNEL32_dll.GetUserDefaultLocaleName(util.pwstrToFfi(lpLocaleName), cchLocaleName);
 }
 
 export function GetSystemDefaultLocaleName(
-  lpLocaleName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpLocaleName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   cchLocaleName: number /* i32 */,
 ): number /* i32 */ {
   return libKERNEL32_dll.GetSystemDefaultLocaleName(util.pwstrToFfi(lpLocaleName), cchLocaleName);
@@ -11658,7 +11658,7 @@ export function IsNLSDefinedString(
   Function: number /* u32 */,
   dwFlags: number /* u32 */,
   lpVersionInformation: Deno.PointerValue | Uint8Array | null /* ptr */,
-  lpString: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpString: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   cchStr: number /* i32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libKERNEL32_dll.IsNLSDefinedString(Function, dwFlags, util.toPointer(lpVersionInformation), util.pwstrToFfi(lpString), cchStr));
@@ -11666,7 +11666,7 @@ export function IsNLSDefinedString(
 
 export function GetNLSVersionEx(
   function__: number /* u32 */,
-  lpLocaleName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpLocaleName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   lpVersionInformation: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libKERNEL32_dll.GetNLSVersionEx(function__, util.pwstrToFfi(lpLocaleName), util.toPointer(lpVersionInformation)));
@@ -11674,18 +11674,18 @@ export function GetNLSVersionEx(
 
 export function IsValidNLSVersion(
   function__: number /* u32 */,
-  lpLocaleName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpLocaleName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   lpVersionInformation: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
   return libKERNEL32_dll.IsValidNLSVersion(function__, util.pwstrToFfi(lpLocaleName), util.toPointer(lpVersionInformation));
 }
 
 export function FindNLSStringEx(
-  lpLocaleName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpLocaleName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   dwFindNLSStringFlags: number /* u32 */,
-  lpStringSource: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpStringSource: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   cchSource: number /* i32 */,
-  lpStringValue: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpStringValue: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   cchValue: number /* i32 */,
   pcchFound: Deno.PointerValue | Uint8Array | null /* ptr */,
   lpVersionInformation: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -11696,11 +11696,11 @@ export function FindNLSStringEx(
 }
 
 export function LCMapStringEx(
-  lpLocaleName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpLocaleName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   dwMapFlags: number /* u32 */,
-  lpSrcStr: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpSrcStr: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   cchSrc: number /* i32 */,
-  lpDestStr: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpDestStr: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   cchDest: number /* i32 */,
   lpVersionInformation: Deno.PointerValue | Uint8Array | null /* ptr */,
   lpReserved: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -11710,16 +11710,16 @@ export function LCMapStringEx(
 }
 
 export function IsValidLocaleName(
-  lpLocaleName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpLocaleName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libKERNEL32_dll.IsValidLocaleName(util.pwstrToFfi(lpLocaleName)));
 }
 
 export function EnumCalendarInfoExEx(
   pCalInfoEnumProcExEx: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Globalization.CALINFO_ENUMPROCEXEX */,
-  lpLocaleName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpLocaleName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   Calendar: number /* u32 */,
-  lpReserved: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpReserved: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   CalType: number /* u32 */,
   lParam: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.LPARAM */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
@@ -11728,7 +11728,7 @@ export function EnumCalendarInfoExEx(
 
 export function EnumDateFormatsExEx(
   lpDateFmtEnumProcExEx: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Globalization.DATEFMT_ENUMPROCEXEX */,
-  lpLocaleName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpLocaleName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   dwFlags: ENUM_DATE_FORMATS_FLAGS /* Windows.Win32.Globalization.ENUM_DATE_FORMATS_FLAGS */,
   lParam: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.LPARAM */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
@@ -11737,7 +11737,7 @@ export function EnumDateFormatsExEx(
 
 export function EnumTimeFormatsEx(
   lpTimeFmtEnumProcEx: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Globalization.TIMEFMT_ENUMPROCEX */,
-  lpLocaleName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpLocaleName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   dwFlags: number /* u32 */,
   lParam: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.LPARAM */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
@@ -11754,8 +11754,8 @@ export function EnumSystemLocalesEx(
 }
 
 export function ResolveLocaleName(
-  lpNameToResolve: string | null /* Windows.Win32.Foundation.PWSTR */,
-  lpLocaleName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpNameToResolve: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  lpLocaleName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   cchLocaleName: number /* i32 */,
 ): number /* i32 */ {
   return libKERNEL32_dll.ResolveLocaleName(util.pwstrToFfi(lpNameToResolve), util.pwstrToFfi(lpLocaleName), cchLocaleName);
@@ -11777,7 +11777,7 @@ export function MappingFreeServices(
 
 export function MappingRecognizeText(
   pServiceInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pszText: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pszText: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   dwLength: number /* u32 */,
   dwIndex: number /* u32 */,
   pOptions: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -11789,7 +11789,7 @@ export function MappingRecognizeText(
 export function MappingDoAction(
   pBag: Deno.PointerValue | Uint8Array | null /* ptr */,
   dwRangeIndex: number /* u32 */,
-  pszActionId: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pszActionId: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
   return util.pointerFromFfi(libelscore_dll.MappingDoAction(util.toPointer(pBag), dwRangeIndex, util.pwstrToFfi(pszActionId)));
 }
@@ -11807,7 +11807,7 @@ export function ScriptFreeCache(
 }
 
 export function ScriptItemize(
-  pwcInChars: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pwcInChars: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   cInChars: number /* i32 */,
   cMaxItems: number /* i32 */,
   psControl: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -11830,7 +11830,7 @@ export function ScriptLayout(
 export function ScriptShape(
   hdc: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Graphics.Gdi.HDC */,
   psc: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pwcChars: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pwcChars: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   cChars: number /* i32 */,
   cMaxGlyphs: number /* i32 */,
   psa: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -11864,7 +11864,7 @@ export function ScriptTextOut(
   fuOptions: number /* u32 */,
   lprc: Deno.PointerValue | Uint8Array | null /* ptr */,
   psa: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pwcReserved: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pwcReserved: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   iReserved: number /* i32 */,
   pwGlyphs: Deno.PointerValue | Uint8Array | null /* ptr */,
   cGlyphs: number /* i32 */,
@@ -11887,7 +11887,7 @@ export function ScriptJustify(
 }
 
 export function ScriptBreak(
-  pwcChars: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pwcChars: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   cChars: number /* i32 */,
   psa: Deno.PointerValue | Uint8Array | null /* ptr */,
   psla: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -11952,7 +11952,7 @@ export function ScriptApplyLogicalWidth(
 export function ScriptGetCMap(
   hdc: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Graphics.Gdi.HDC */,
   psc: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pwcInChars: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pwcInChars: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   cChars: number /* i32 */,
   dwFlags: number /* u32 */,
   pwOutGlyphs: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -12086,7 +12086,7 @@ export function ScriptStringOut(
 }
 
 export function ScriptIsComplex(
-  pwcInChars: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pwcInChars: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   cInChars: number /* i32 */,
   dwFlags: SCRIPT_IS_COMPLEX_FLAGS /* Windows.Win32.Globalization.SCRIPT_IS_COMPLEX_FLAGS */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
@@ -12117,7 +12117,7 @@ export function ScriptShapeOpenType(
   rcRangeChars: Deno.PointerValue | Uint8Array | null /* ptr */,
   rpRangeProperties: Deno.PointerValue | Uint8Array | null /* ptr */,
   cRanges: number /* i32 */,
-  pwcChars: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pwcChars: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   cChars: number /* i32 */,
   cMaxGlyphs: number /* i32 */,
   pwLogClust: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -12138,7 +12138,7 @@ export function ScriptPlaceOpenType(
   rcRangeChars: Deno.PointerValue | Uint8Array | null /* ptr */,
   rpRangeProperties: Deno.PointerValue | Uint8Array | null /* ptr */,
   cRanges: number /* i32 */,
-  pwcChars: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pwcChars: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pwLogClust: Deno.PointerValue | Uint8Array | null /* ptr */,
   pCharProps: Deno.PointerValue | Uint8Array | null /* ptr */,
   cChars: number /* i32 */,
@@ -12153,7 +12153,7 @@ export function ScriptPlaceOpenType(
 }
 
 export function ScriptItemizeOpenType(
-  pwcInChars: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pwcInChars: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   cInChars: number /* i32 */,
   cMaxItems: number /* i32 */,
   psControl: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -12287,7 +12287,7 @@ export function utf8_back1SafeBody(
 
 export function u_versionFromString(
   versionArray: Deno.PointerValue | Uint8Array | null /* ptr */,
-  versionString: string | null /* Windows.Win32.Foundation.PSTR */,
+  versionString: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): void /* void */ {
   return libicu_dll.u_versionFromString(util.toPointer(versionArray), util.pstrToFfi(versionString));
 }
@@ -12301,7 +12301,7 @@ export function u_versionFromUString(
 
 export function u_versionToString(
   versionArray: Deno.PointerValue | Uint8Array | null /* ptr */,
-  versionString: string | null /* Windows.Win32.Foundation.PSTR */,
+  versionString: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): void /* void */ {
   return libicu_dll.u_versionToString(util.toPointer(versionArray), util.pstrToFfi(versionString));
 }
@@ -12347,20 +12347,20 @@ export function utrace_getFunctions(
 }
 
 export function utrace_vformat(
-  outBuf: string | null /* Windows.Win32.Foundation.PSTR */,
+  outBuf: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   capacity: number /* i32 */,
   indent: number /* i32 */,
-  fmt: string | null /* Windows.Win32.Foundation.PSTR */,
+  fmt: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   args: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
   return libicu_dll.utrace_vformat(util.pstrToFfi(outBuf), capacity, indent, util.pstrToFfi(fmt), util.toPointer(args));
 }
 
 export function utrace_format(
-  outBuf: string | null /* Windows.Win32.Foundation.PSTR */,
+  outBuf: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   capacity: number /* i32 */,
   indent: number /* i32 */,
-  fmt: string | null /* Windows.Win32.Foundation.PSTR */,
+  fmt: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): number /* i32 */ {
   return libicu_dll.utrace_format(util.pstrToFfi(outBuf), capacity, indent, util.pstrToFfi(fmt));
 }
@@ -12383,7 +12383,7 @@ export function u_shapeArabic(
 }
 
 export function uscript_getCode(
-  nameOrAbbrOrLocale: string | null /* Windows.Win32.Foundation.PSTR */,
+  nameOrAbbrOrLocale: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   fillIn: Deno.PointerValue | Uint8Array | null /* ptr */,
   capacity: number /* i32 */,
   err: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -12501,7 +12501,7 @@ export function uiter_setString(
 
 export function uiter_setUTF16BE(
   iter: Deno.PointerValue | Uint8Array | null /* ptr */,
-  s: string | null /* Windows.Win32.Foundation.PSTR */,
+  s: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   length: number /* i32 */,
 ): void /* void */ {
   return libicu_dll.uiter_setUTF16BE(util.toPointer(iter), util.pstrToFfi(s), length);
@@ -12509,7 +12509,7 @@ export function uiter_setUTF16BE(
 
 export function uiter_setUTF8(
   iter: Deno.PointerValue | Uint8Array | null /* ptr */,
-  s: string | null /* Windows.Win32.Foundation.PSTR */,
+  s: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   length: number /* i32 */,
 ): void /* void */ {
   return libicu_dll.uiter_setUTF8(util.toPointer(iter), util.pstrToFfi(s), length);
@@ -12572,15 +12572,15 @@ export function uloc_getDefault(): string | null /* Windows.Win32.Foundation.PST
 }
 
 export function uloc_setDefault(
-  localeID: string | null /* Windows.Win32.Foundation.PSTR */,
+  localeID: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   status: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): void /* void */ {
   return libicu_dll.uloc_setDefault(util.pstrToFfi(localeID), util.toPointer(status));
 }
 
 export function uloc_getLanguage(
-  localeID: string | null /* Windows.Win32.Foundation.PSTR */,
-  language: string | null /* Windows.Win32.Foundation.PSTR */,
+  localeID: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  language: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   languageCapacity: number /* i32 */,
   err: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
@@ -12588,8 +12588,8 @@ export function uloc_getLanguage(
 }
 
 export function uloc_getScript(
-  localeID: string | null /* Windows.Win32.Foundation.PSTR */,
-  script: string | null /* Windows.Win32.Foundation.PSTR */,
+  localeID: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  script: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   scriptCapacity: number /* i32 */,
   err: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
@@ -12597,8 +12597,8 @@ export function uloc_getScript(
 }
 
 export function uloc_getCountry(
-  localeID: string | null /* Windows.Win32.Foundation.PSTR */,
-  country: string | null /* Windows.Win32.Foundation.PSTR */,
+  localeID: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  country: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   countryCapacity: number /* i32 */,
   err: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
@@ -12606,8 +12606,8 @@ export function uloc_getCountry(
 }
 
 export function uloc_getVariant(
-  localeID: string | null /* Windows.Win32.Foundation.PSTR */,
-  variant: string | null /* Windows.Win32.Foundation.PSTR */,
+  localeID: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  variant: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   variantCapacity: number /* i32 */,
   err: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
@@ -12615,8 +12615,8 @@ export function uloc_getVariant(
 }
 
 export function uloc_getName(
-  localeID: string | null /* Windows.Win32.Foundation.PSTR */,
-  name: string | null /* Windows.Win32.Foundation.PSTR */,
+  localeID: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  name: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   nameCapacity: number /* i32 */,
   err: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
@@ -12624,8 +12624,8 @@ export function uloc_getName(
 }
 
 export function uloc_canonicalize(
-  localeID: string | null /* Windows.Win32.Foundation.PSTR */,
-  name: string | null /* Windows.Win32.Foundation.PSTR */,
+  localeID: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  name: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   nameCapacity: number /* i32 */,
   err: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
@@ -12633,26 +12633,26 @@ export function uloc_canonicalize(
 }
 
 export function uloc_getISO3Language(
-  localeID: string | null /* Windows.Win32.Foundation.PSTR */,
+  localeID: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): string | null /* Windows.Win32.Foundation.PSTR */ {
   return util.pstrFromFfi(libicu_dll.uloc_getISO3Language(util.pstrToFfi(localeID)));
 }
 
 export function uloc_getISO3Country(
-  localeID: string | null /* Windows.Win32.Foundation.PSTR */,
+  localeID: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): string | null /* Windows.Win32.Foundation.PSTR */ {
   return util.pstrFromFfi(libicu_dll.uloc_getISO3Country(util.pstrToFfi(localeID)));
 }
 
 export function uloc_getLCID(
-  localeID: string | null /* Windows.Win32.Foundation.PSTR */,
+  localeID: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): number /* u32 */ {
   return libicu_dll.uloc_getLCID(util.pstrToFfi(localeID));
 }
 
 export function uloc_getDisplayLanguage(
-  locale: string | null /* Windows.Win32.Foundation.PSTR */,
-  displayLocale: string | null /* Windows.Win32.Foundation.PSTR */,
+  locale: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  displayLocale: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   language: Deno.PointerValue | Uint8Array | null /* ptr */,
   languageCapacity: number /* i32 */,
   status: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -12661,8 +12661,8 @@ export function uloc_getDisplayLanguage(
 }
 
 export function uloc_getDisplayScript(
-  locale: string | null /* Windows.Win32.Foundation.PSTR */,
-  displayLocale: string | null /* Windows.Win32.Foundation.PSTR */,
+  locale: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  displayLocale: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   script: Deno.PointerValue | Uint8Array | null /* ptr */,
   scriptCapacity: number /* i32 */,
   status: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -12671,8 +12671,8 @@ export function uloc_getDisplayScript(
 }
 
 export function uloc_getDisplayCountry(
-  locale: string | null /* Windows.Win32.Foundation.PSTR */,
-  displayLocale: string | null /* Windows.Win32.Foundation.PSTR */,
+  locale: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  displayLocale: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   country: Deno.PointerValue | Uint8Array | null /* ptr */,
   countryCapacity: number /* i32 */,
   status: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -12681,8 +12681,8 @@ export function uloc_getDisplayCountry(
 }
 
 export function uloc_getDisplayVariant(
-  locale: string | null /* Windows.Win32.Foundation.PSTR */,
-  displayLocale: string | null /* Windows.Win32.Foundation.PSTR */,
+  locale: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  displayLocale: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   variant: Deno.PointerValue | Uint8Array | null /* ptr */,
   variantCapacity: number /* i32 */,
   status: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -12691,8 +12691,8 @@ export function uloc_getDisplayVariant(
 }
 
 export function uloc_getDisplayKeyword(
-  keyword: string | null /* Windows.Win32.Foundation.PSTR */,
-  displayLocale: string | null /* Windows.Win32.Foundation.PSTR */,
+  keyword: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  displayLocale: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   dest: Deno.PointerValue | Uint8Array | null /* ptr */,
   destCapacity: number /* i32 */,
   status: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -12701,9 +12701,9 @@ export function uloc_getDisplayKeyword(
 }
 
 export function uloc_getDisplayKeywordValue(
-  locale: string | null /* Windows.Win32.Foundation.PSTR */,
-  keyword: string | null /* Windows.Win32.Foundation.PSTR */,
-  displayLocale: string | null /* Windows.Win32.Foundation.PSTR */,
+  locale: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  keyword: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  displayLocale: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   dest: Deno.PointerValue | Uint8Array | null /* ptr */,
   destCapacity: number /* i32 */,
   status: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -12712,8 +12712,8 @@ export function uloc_getDisplayKeywordValue(
 }
 
 export function uloc_getDisplayName(
-  localeID: string | null /* Windows.Win32.Foundation.PSTR */,
-  inLocaleID: string | null /* Windows.Win32.Foundation.PSTR */,
+  localeID: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  inLocaleID: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   result: Deno.PointerValue | Uint8Array | null /* ptr */,
   maxResultSize: number /* i32 */,
   err: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -12747,8 +12747,8 @@ export function uloc_getISOCountries(): Deno.PointerValue | null /* ptr */ {
 }
 
 export function uloc_getParent(
-  localeID: string | null /* Windows.Win32.Foundation.PSTR */,
-  parent: string | null /* Windows.Win32.Foundation.PSTR */,
+  localeID: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  parent: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   parentCapacity: number /* i32 */,
   err: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
@@ -12756,8 +12756,8 @@ export function uloc_getParent(
 }
 
 export function uloc_getBaseName(
-  localeID: string | null /* Windows.Win32.Foundation.PSTR */,
-  name: string | null /* Windows.Win32.Foundation.PSTR */,
+  localeID: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  name: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   nameCapacity: number /* i32 */,
   err: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
@@ -12765,16 +12765,16 @@ export function uloc_getBaseName(
 }
 
 export function uloc_openKeywords(
-  localeID: string | null /* Windows.Win32.Foundation.PSTR */,
+  localeID: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   status: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* ptr */ {
   return util.pointerFromFfi(libicu_dll.uloc_openKeywords(util.pstrToFfi(localeID), util.toPointer(status)));
 }
 
 export function uloc_getKeywordValue(
-  localeID: string | null /* Windows.Win32.Foundation.PSTR */,
-  keywordName: string | null /* Windows.Win32.Foundation.PSTR */,
-  buffer: string | null /* Windows.Win32.Foundation.PSTR */,
+  localeID: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  keywordName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  buffer: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   bufferCapacity: number /* i32 */,
   status: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
@@ -12782,9 +12782,9 @@ export function uloc_getKeywordValue(
 }
 
 export function uloc_setKeywordValue(
-  keywordName: string | null /* Windows.Win32.Foundation.PSTR */,
-  keywordValue: string | null /* Windows.Win32.Foundation.PSTR */,
-  buffer: string | null /* Windows.Win32.Foundation.PSTR */,
+  keywordName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  keywordValue: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  buffer: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   bufferCapacity: number /* i32 */,
   status: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
@@ -12792,30 +12792,30 @@ export function uloc_setKeywordValue(
 }
 
 export function uloc_isRightToLeft(
-  locale: string | null /* Windows.Win32.Foundation.PSTR */,
+  locale: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): number /* i8 */ {
   return libicu_dll.uloc_isRightToLeft(util.pstrToFfi(locale));
 }
 
 export function uloc_getCharacterOrientation(
-  localeId: string | null /* Windows.Win32.Foundation.PSTR */,
+  localeId: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   status: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): ULayoutType /* Windows.Win32.Globalization.ULayoutType */ {
   return libicu_dll.uloc_getCharacterOrientation(util.pstrToFfi(localeId), util.toPointer(status));
 }
 
 export function uloc_getLineOrientation(
-  localeId: string | null /* Windows.Win32.Foundation.PSTR */,
+  localeId: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   status: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): ULayoutType /* Windows.Win32.Globalization.ULayoutType */ {
   return libicu_dll.uloc_getLineOrientation(util.pstrToFfi(localeId), util.toPointer(status));
 }
 
 export function uloc_acceptLanguageFromHTTP(
-  result: string | null /* Windows.Win32.Foundation.PSTR */,
+  result: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   resultAvailable: number /* i32 */,
   outResult: Deno.PointerValue | Uint8Array | null /* ptr */,
-  httpAcceptLanguage: string | null /* Windows.Win32.Foundation.PSTR */,
+  httpAcceptLanguage: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   availableLocales: Deno.PointerValue | Uint8Array | null /* ptr */,
   status: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
@@ -12823,7 +12823,7 @@ export function uloc_acceptLanguageFromHTTP(
 }
 
 export function uloc_acceptLanguage(
-  result: string | null /* Windows.Win32.Foundation.PSTR */,
+  result: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   resultAvailable: number /* i32 */,
   outResult: Deno.PointerValue | Uint8Array | null /* ptr */,
   acceptList: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -12836,7 +12836,7 @@ export function uloc_acceptLanguage(
 
 export function uloc_getLocaleForLCID(
   hostID: number /* u32 */,
-  locale: string | null /* Windows.Win32.Foundation.PSTR */,
+  locale: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   localeCapacity: number /* i32 */,
   status: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
@@ -12844,8 +12844,8 @@ export function uloc_getLocaleForLCID(
 }
 
 export function uloc_addLikelySubtags(
-  localeID: string | null /* Windows.Win32.Foundation.PSTR */,
-  maximizedLocaleID: string | null /* Windows.Win32.Foundation.PSTR */,
+  localeID: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  maximizedLocaleID: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   maximizedLocaleIDCapacity: number /* i32 */,
   err: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
@@ -12853,8 +12853,8 @@ export function uloc_addLikelySubtags(
 }
 
 export function uloc_minimizeSubtags(
-  localeID: string | null /* Windows.Win32.Foundation.PSTR */,
-  minimizedLocaleID: string | null /* Windows.Win32.Foundation.PSTR */,
+  localeID: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  minimizedLocaleID: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   minimizedLocaleIDCapacity: number /* i32 */,
   err: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
@@ -12862,8 +12862,8 @@ export function uloc_minimizeSubtags(
 }
 
 export function uloc_forLanguageTag(
-  langtag: string | null /* Windows.Win32.Foundation.PSTR */,
-  localeID: string | null /* Windows.Win32.Foundation.PSTR */,
+  langtag: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  localeID: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   localeIDCapacity: number /* i32 */,
   parsedLength: Deno.PointerValue | Uint8Array | null /* ptr */,
   err: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -12872,8 +12872,8 @@ export function uloc_forLanguageTag(
 }
 
 export function uloc_toLanguageTag(
-  localeID: string | null /* Windows.Win32.Foundation.PSTR */,
-  langtag: string | null /* Windows.Win32.Foundation.PSTR */,
+  localeID: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  langtag: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   langtagCapacity: number /* i32 */,
   strict: number /* i8 */,
   err: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -12882,42 +12882,42 @@ export function uloc_toLanguageTag(
 }
 
 export function uloc_toUnicodeLocaleKey(
-  keyword: string | null /* Windows.Win32.Foundation.PSTR */,
+  keyword: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): string | null /* Windows.Win32.Foundation.PSTR */ {
   return util.pstrFromFfi(libicu_dll.uloc_toUnicodeLocaleKey(util.pstrToFfi(keyword)));
 }
 
 export function uloc_toUnicodeLocaleType(
-  keyword: string | null /* Windows.Win32.Foundation.PSTR */,
-  value: string | null /* Windows.Win32.Foundation.PSTR */,
+  keyword: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  value: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): string | null /* Windows.Win32.Foundation.PSTR */ {
   return util.pstrFromFfi(libicu_dll.uloc_toUnicodeLocaleType(util.pstrToFfi(keyword), util.pstrToFfi(value)));
 }
 
 export function uloc_toLegacyKey(
-  keyword: string | null /* Windows.Win32.Foundation.PSTR */,
+  keyword: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): string | null /* Windows.Win32.Foundation.PSTR */ {
   return util.pstrFromFfi(libicu_dll.uloc_toLegacyKey(util.pstrToFfi(keyword)));
 }
 
 export function uloc_toLegacyType(
-  keyword: string | null /* Windows.Win32.Foundation.PSTR */,
-  value: string | null /* Windows.Win32.Foundation.PSTR */,
+  keyword: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  value: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): string | null /* Windows.Win32.Foundation.PSTR */ {
   return util.pstrFromFfi(libicu_dll.uloc_toLegacyType(util.pstrToFfi(keyword), util.pstrToFfi(value)));
 }
 
 export function ures_open(
-  packageName: string | null /* Windows.Win32.Foundation.PSTR */,
-  locale: string | null /* Windows.Win32.Foundation.PSTR */,
+  packageName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  locale: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   status: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* ptr */ {
   return util.pointerFromFfi(libicu_dll.ures_open(util.pstrToFfi(packageName), util.pstrToFfi(locale), util.toPointer(status)));
 }
 
 export function ures_openDirect(
-  packageName: string | null /* Windows.Win32.Foundation.PSTR */,
-  locale: string | null /* Windows.Win32.Foundation.PSTR */,
+  packageName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  locale: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   status: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* ptr */ {
   return util.pointerFromFfi(libicu_dll.ures_openDirect(util.pstrToFfi(packageName), util.pstrToFfi(locale), util.toPointer(status)));
@@ -12925,7 +12925,7 @@ export function ures_openDirect(
 
 export function ures_openU(
   packageName: Deno.PointerValue | Uint8Array | null /* ptr */,
-  locale: string | null /* Windows.Win32.Foundation.PSTR */,
+  locale: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   status: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* ptr */ {
   return util.pointerFromFfi(libicu_dll.ures_openU(util.toPointer(packageName), util.pstrToFfi(locale), util.toPointer(status)));
@@ -12962,7 +12962,7 @@ export function ures_getString(
 
 export function ures_getUTF8String(
   resB: Deno.PointerValue | Uint8Array | null /* ptr */,
-  dest: string | null /* Windows.Win32.Foundation.PSTR */,
+  dest: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   length: Deno.PointerValue | Uint8Array | null /* ptr */,
   forceCopy: number /* i8 */,
   status: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -13068,7 +13068,7 @@ export function ures_getStringByIndex(
 export function ures_getUTF8StringByIndex(
   resB: Deno.PointerValue | Uint8Array | null /* ptr */,
   stringIndex: number /* i32 */,
-  dest: string | null /* Windows.Win32.Foundation.PSTR */,
+  dest: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   pLength: Deno.PointerValue | Uint8Array | null /* ptr */,
   forceCopy: number /* i8 */,
   status: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -13078,7 +13078,7 @@ export function ures_getUTF8StringByIndex(
 
 export function ures_getByKey(
   resourceBundle: Deno.PointerValue | Uint8Array | null /* ptr */,
-  key: string | null /* Windows.Win32.Foundation.PSTR */,
+  key: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   fillIn: Deno.PointerValue | Uint8Array | null /* ptr */,
   status: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* ptr */ {
@@ -13087,7 +13087,7 @@ export function ures_getByKey(
 
 export function ures_getStringByKey(
   resB: Deno.PointerValue | Uint8Array | null /* ptr */,
-  key: string | null /* Windows.Win32.Foundation.PSTR */,
+  key: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   len: Deno.PointerValue | Uint8Array | null /* ptr */,
   status: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* ptr */ {
@@ -13096,8 +13096,8 @@ export function ures_getStringByKey(
 
 export function ures_getUTF8StringByKey(
   resB: Deno.PointerValue | Uint8Array | null /* ptr */,
-  key: string | null /* Windows.Win32.Foundation.PSTR */,
-  dest: string | null /* Windows.Win32.Foundation.PSTR */,
+  key: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  dest: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   pLength: Deno.PointerValue | Uint8Array | null /* ptr */,
   forceCopy: number /* i8 */,
   status: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -13106,14 +13106,14 @@ export function ures_getUTF8StringByKey(
 }
 
 export function ures_openAvailableLocales(
-  packageName: string | null /* Windows.Win32.Foundation.PSTR */,
+  packageName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   status: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* ptr */ {
   return util.pointerFromFfi(libicu_dll.ures_openAvailableLocales(util.pstrToFfi(packageName), util.toPointer(status)));
 }
 
 export function uldn_open(
-  locale: string | null /* Windows.Win32.Foundation.PSTR */,
+  locale: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   dialectHandling: UDialectHandling /* Windows.Win32.Globalization.UDialectHandling */,
   pErrorCode: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* ptr */ {
@@ -13140,7 +13140,7 @@ export function uldn_getDialectHandling(
 
 export function uldn_localeDisplayName(
   ldn: Deno.PointerValue | Uint8Array | null /* ptr */,
-  locale: string | null /* Windows.Win32.Foundation.PSTR */,
+  locale: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   result: Deno.PointerValue | Uint8Array | null /* ptr */,
   maxResultSize: number /* i32 */,
   pErrorCode: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -13150,7 +13150,7 @@ export function uldn_localeDisplayName(
 
 export function uldn_languageDisplayName(
   ldn: Deno.PointerValue | Uint8Array | null /* ptr */,
-  lang: string | null /* Windows.Win32.Foundation.PSTR */,
+  lang: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   result: Deno.PointerValue | Uint8Array | null /* ptr */,
   maxResultSize: number /* i32 */,
   pErrorCode: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -13160,7 +13160,7 @@ export function uldn_languageDisplayName(
 
 export function uldn_scriptDisplayName(
   ldn: Deno.PointerValue | Uint8Array | null /* ptr */,
-  script: string | null /* Windows.Win32.Foundation.PSTR */,
+  script: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   result: Deno.PointerValue | Uint8Array | null /* ptr */,
   maxResultSize: number /* i32 */,
   pErrorCode: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -13180,7 +13180,7 @@ export function uldn_scriptCodeDisplayName(
 
 export function uldn_regionDisplayName(
   ldn: Deno.PointerValue | Uint8Array | null /* ptr */,
-  region: string | null /* Windows.Win32.Foundation.PSTR */,
+  region: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   result: Deno.PointerValue | Uint8Array | null /* ptr */,
   maxResultSize: number /* i32 */,
   pErrorCode: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -13190,7 +13190,7 @@ export function uldn_regionDisplayName(
 
 export function uldn_variantDisplayName(
   ldn: Deno.PointerValue | Uint8Array | null /* ptr */,
-  variant: string | null /* Windows.Win32.Foundation.PSTR */,
+  variant: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   result: Deno.PointerValue | Uint8Array | null /* ptr */,
   maxResultSize: number /* i32 */,
   pErrorCode: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -13200,7 +13200,7 @@ export function uldn_variantDisplayName(
 
 export function uldn_keyDisplayName(
   ldn: Deno.PointerValue | Uint8Array | null /* ptr */,
-  key: string | null /* Windows.Win32.Foundation.PSTR */,
+  key: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   result: Deno.PointerValue | Uint8Array | null /* ptr */,
   maxResultSize: number /* i32 */,
   pErrorCode: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -13210,8 +13210,8 @@ export function uldn_keyDisplayName(
 
 export function uldn_keyValueDisplayName(
   ldn: Deno.PointerValue | Uint8Array | null /* ptr */,
-  key: string | null /* Windows.Win32.Foundation.PSTR */,
-  value: string | null /* Windows.Win32.Foundation.PSTR */,
+  key: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  value: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   result: Deno.PointerValue | Uint8Array | null /* ptr */,
   maxResultSize: number /* i32 */,
   pErrorCode: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -13220,7 +13220,7 @@ export function uldn_keyValueDisplayName(
 }
 
 export function uldn_openForContext(
-  locale: string | null /* Windows.Win32.Foundation.PSTR */,
+  locale: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   contexts: Deno.PointerValue | Uint8Array | null /* ptr */,
   length: number /* i32 */,
   pErrorCode: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -13237,7 +13237,7 @@ export function uldn_getContext(
 }
 
 export function ucurr_forLocale(
-  locale: string | null /* Windows.Win32.Foundation.PSTR */,
+  locale: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   buff: Deno.PointerValue | Uint8Array | null /* ptr */,
   buffCapacity: number /* i32 */,
   ec: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -13247,7 +13247,7 @@ export function ucurr_forLocale(
 
 export function ucurr_register(
   isoCode: Deno.PointerValue | Uint8Array | null /* ptr */,
-  locale: string | null /* Windows.Win32.Foundation.PSTR */,
+  locale: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   status: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* ptr */ {
   return util.pointerFromFfi(libicu_dll.ucurr_register(util.toPointer(isoCode), util.pstrToFfi(locale), util.toPointer(status)));
@@ -13262,7 +13262,7 @@ export function ucurr_unregister(
 
 export function ucurr_getName(
   currency: Deno.PointerValue | Uint8Array | null /* ptr */,
-  locale: string | null /* Windows.Win32.Foundation.PSTR */,
+  locale: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   nameStyle: UCurrNameStyle /* Windows.Win32.Globalization.UCurrNameStyle */,
   isChoiceFormat: Deno.PointerValue | Uint8Array | null /* ptr */,
   len: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -13273,9 +13273,9 @@ export function ucurr_getName(
 
 export function ucurr_getPluralName(
   currency: Deno.PointerValue | Uint8Array | null /* ptr */,
-  locale: string | null /* Windows.Win32.Foundation.PSTR */,
+  locale: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   isChoiceFormat: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pluralCount: string | null /* Windows.Win32.Foundation.PSTR */,
+  pluralCount: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   len: Deno.PointerValue | Uint8Array | null /* ptr */,
   ec: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* ptr */ {
@@ -13329,7 +13329,7 @@ export function ucurr_isAvailable(
 }
 
 export function ucurr_countCurrencies(
-  locale: string | null /* Windows.Win32.Foundation.PSTR */,
+  locale: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   date: number /* f64 */,
   ec: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
@@ -13337,7 +13337,7 @@ export function ucurr_countCurrencies(
 }
 
 export function ucurr_forLocaleAndDate(
-  locale: string | null /* Windows.Win32.Foundation.PSTR */,
+  locale: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   date: number /* f64 */,
   index: number /* i32 */,
   buff: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -13348,8 +13348,8 @@ export function ucurr_forLocaleAndDate(
 }
 
 export function ucurr_getKeywordValuesForLocale(
-  key: string | null /* Windows.Win32.Foundation.PSTR */,
-  locale: string | null /* Windows.Win32.Foundation.PSTR */,
+  key: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  locale: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   commonlyUsed: number /* i8 */,
   status: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* ptr */ {
@@ -13560,7 +13560,7 @@ export function UCNV_FROM_U_CALLBACK_STOP(
 export function UCNV_TO_U_CALLBACK_STOP(
   context: Deno.PointerValue | Uint8Array | null /* ptr */,
   toUArgs: Deno.PointerValue | Uint8Array | null /* ptr */,
-  codeUnits: string | null /* Windows.Win32.Foundation.PSTR */,
+  codeUnits: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   length: number /* i32 */,
   reason: UConverterCallbackReason /* Windows.Win32.Globalization.UConverterCallbackReason */,
   err: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -13607,7 +13607,7 @@ export function UCNV_FROM_U_CALLBACK_ESCAPE(
 export function UCNV_TO_U_CALLBACK_SKIP(
   context: Deno.PointerValue | Uint8Array | null /* ptr */,
   toUArgs: Deno.PointerValue | Uint8Array | null /* ptr */,
-  codeUnits: string | null /* Windows.Win32.Foundation.PSTR */,
+  codeUnits: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   length: number /* i32 */,
   reason: UConverterCallbackReason /* Windows.Win32.Globalization.UConverterCallbackReason */,
   err: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -13618,7 +13618,7 @@ export function UCNV_TO_U_CALLBACK_SKIP(
 export function UCNV_TO_U_CALLBACK_SUBSTITUTE(
   context: Deno.PointerValue | Uint8Array | null /* ptr */,
   toUArgs: Deno.PointerValue | Uint8Array | null /* ptr */,
-  codeUnits: string | null /* Windows.Win32.Foundation.PSTR */,
+  codeUnits: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   length: number /* i32 */,
   reason: UConverterCallbackReason /* Windows.Win32.Globalization.UConverterCallbackReason */,
   err: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -13629,7 +13629,7 @@ export function UCNV_TO_U_CALLBACK_SUBSTITUTE(
 export function UCNV_TO_U_CALLBACK_ESCAPE(
   context: Deno.PointerValue | Uint8Array | null /* ptr */,
   toUArgs: Deno.PointerValue | Uint8Array | null /* ptr */,
-  codeUnits: string | null /* Windows.Win32.Foundation.PSTR */,
+  codeUnits: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   length: number /* i32 */,
   reason: UConverterCallbackReason /* Windows.Win32.Globalization.UConverterCallbackReason */,
   err: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -13638,14 +13638,14 @@ export function UCNV_TO_U_CALLBACK_ESCAPE(
 }
 
 export function ucnv_compareNames(
-  name1: string | null /* Windows.Win32.Foundation.PSTR */,
-  name2: string | null /* Windows.Win32.Foundation.PSTR */,
+  name1: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  name2: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): number /* i32 */ {
   return libicu_dll.ucnv_compareNames(util.pstrToFfi(name1), util.pstrToFfi(name2));
 }
 
 export function ucnv_open(
-  converterName: string | null /* Windows.Win32.Foundation.PSTR */,
+  converterName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   err: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* ptr */ {
   return util.pointerFromFfi(libicu_dll.ucnv_open(util.pstrToFfi(converterName), util.toPointer(err)));
@@ -13667,8 +13667,8 @@ export function ucnv_openCCSID(
 }
 
 export function ucnv_openPackage(
-  packageName: string | null /* Windows.Win32.Foundation.PSTR */,
-  converterName: string | null /* Windows.Win32.Foundation.PSTR */,
+  packageName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  converterName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   err: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* ptr */ {
   return util.pointerFromFfi(libicu_dll.ucnv_openPackage(util.pstrToFfi(packageName), util.pstrToFfi(converterName), util.toPointer(err)));
@@ -13691,7 +13691,7 @@ export function ucnv_close(
 
 export function ucnv_getSubstChars(
   converter: Deno.PointerValue | Uint8Array | null /* ptr */,
-  subChars: string | null /* Windows.Win32.Foundation.PSTR */,
+  subChars: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   len: Deno.PointerValue | Uint8Array | null /* ptr */,
   err: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): void /* void */ {
@@ -13700,7 +13700,7 @@ export function ucnv_getSubstChars(
 
 export function ucnv_setSubstChars(
   converter: Deno.PointerValue | Uint8Array | null /* ptr */,
-  subChars: string | null /* Windows.Win32.Foundation.PSTR */,
+  subChars: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   len: number /* i8 */,
   err: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): void /* void */ {
@@ -13718,7 +13718,7 @@ export function ucnv_setSubstString(
 
 export function ucnv_getInvalidChars(
   converter: Deno.PointerValue | Uint8Array | null /* ptr */,
-  errBytes: string | null /* Windows.Win32.Foundation.PSTR */,
+  errBytes: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   len: Deno.PointerValue | Uint8Array | null /* ptr */,
   err: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): void /* void */ {
@@ -13766,7 +13766,7 @@ export function ucnv_getMinCharSize(
 
 export function ucnv_getDisplayName(
   converter: Deno.PointerValue | Uint8Array | null /* ptr */,
-  displayLocale: string | null /* Windows.Win32.Foundation.PSTR */,
+  displayLocale: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   displayName: Deno.PointerValue | Uint8Array | null /* ptr */,
   displayNameCapacity: number /* i32 */,
   err: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -13859,7 +13859,7 @@ export function ucnv_setFromUCallBack(
 export function ucnv_fromUnicode(
   converter: Deno.PointerValue | Uint8Array | null /* ptr */,
   target: Deno.PointerValue | Uint8Array | null /* ptr */,
-  targetLimit: string | null /* Windows.Win32.Foundation.PSTR */,
+  targetLimit: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   source: Deno.PointerValue | Uint8Array | null /* ptr */,
   sourceLimit: Deno.PointerValue | Uint8Array | null /* ptr */,
   offsets: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -13874,7 +13874,7 @@ export function ucnv_toUnicode(
   target: Deno.PointerValue | Uint8Array | null /* ptr */,
   targetLimit: Deno.PointerValue | Uint8Array | null /* ptr */,
   source: Deno.PointerValue | Uint8Array | null /* ptr */,
-  sourceLimit: string | null /* Windows.Win32.Foundation.PSTR */,
+  sourceLimit: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   offsets: Deno.PointerValue | Uint8Array | null /* ptr */,
   flush: number /* i8 */,
   err: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -13884,7 +13884,7 @@ export function ucnv_toUnicode(
 
 export function ucnv_fromUChars(
   cnv: Deno.PointerValue | Uint8Array | null /* ptr */,
-  dest: string | null /* Windows.Win32.Foundation.PSTR */,
+  dest: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   destCapacity: number /* i32 */,
   src: Deno.PointerValue | Uint8Array | null /* ptr */,
   srcLength: number /* i32 */,
@@ -13897,7 +13897,7 @@ export function ucnv_toUChars(
   cnv: Deno.PointerValue | Uint8Array | null /* ptr */,
   dest: Deno.PointerValue | Uint8Array | null /* ptr */,
   destCapacity: number /* i32 */,
-  src: string | null /* Windows.Win32.Foundation.PSTR */,
+  src: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   srcLength: number /* i32 */,
   pErrorCode: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
@@ -13907,7 +13907,7 @@ export function ucnv_toUChars(
 export function ucnv_getNextUChar(
   converter: Deno.PointerValue | Uint8Array | null /* ptr */,
   source: Deno.PointerValue | Uint8Array | null /* ptr */,
-  sourceLimit: string | null /* Windows.Win32.Foundation.PSTR */,
+  sourceLimit: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   err: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
   return libicu_dll.ucnv_getNextUChar(util.toPointer(converter), util.toPointer(source), util.pstrToFfi(sourceLimit), util.toPointer(err));
@@ -13917,9 +13917,9 @@ export function ucnv_convertEx(
   targetCnv: Deno.PointerValue | Uint8Array | null /* ptr */,
   sourceCnv: Deno.PointerValue | Uint8Array | null /* ptr */,
   target: Deno.PointerValue | Uint8Array | null /* ptr */,
-  targetLimit: string | null /* Windows.Win32.Foundation.PSTR */,
+  targetLimit: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   source: Deno.PointerValue | Uint8Array | null /* ptr */,
-  sourceLimit: string | null /* Windows.Win32.Foundation.PSTR */,
+  sourceLimit: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   pivotStart: Deno.PointerValue | Uint8Array | null /* ptr */,
   pivotSource: Deno.PointerValue | Uint8Array | null /* ptr */,
   pivotTarget: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -13932,11 +13932,11 @@ export function ucnv_convertEx(
 }
 
 export function ucnv_convert(
-  toConverterName: string | null /* Windows.Win32.Foundation.PSTR */,
-  fromConverterName: string | null /* Windows.Win32.Foundation.PSTR */,
-  target: string | null /* Windows.Win32.Foundation.PSTR */,
+  toConverterName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  fromConverterName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  target: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   targetCapacity: number /* i32 */,
-  source: string | null /* Windows.Win32.Foundation.PSTR */,
+  source: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   sourceLength: number /* i32 */,
   pErrorCode: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
@@ -13946,9 +13946,9 @@ export function ucnv_convert(
 export function ucnv_toAlgorithmic(
   algorithmicType: UConverterType /* Windows.Win32.Globalization.UConverterType */,
   cnv: Deno.PointerValue | Uint8Array | null /* ptr */,
-  target: string | null /* Windows.Win32.Foundation.PSTR */,
+  target: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   targetCapacity: number /* i32 */,
-  source: string | null /* Windows.Win32.Foundation.PSTR */,
+  source: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   sourceLength: number /* i32 */,
   pErrorCode: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
@@ -13958,9 +13958,9 @@ export function ucnv_toAlgorithmic(
 export function ucnv_fromAlgorithmic(
   cnv: Deno.PointerValue | Uint8Array | null /* ptr */,
   algorithmicType: UConverterType /* Windows.Win32.Globalization.UConverterType */,
-  target: string | null /* Windows.Win32.Foundation.PSTR */,
+  target: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   targetCapacity: number /* i32 */,
-  source: string | null /* Windows.Win32.Foundation.PSTR */,
+  source: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   sourceLength: number /* i32 */,
   pErrorCode: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
@@ -13988,14 +13988,14 @@ export function ucnv_openAllNames(
 }
 
 export function ucnv_countAliases(
-  alias: string | null /* Windows.Win32.Foundation.PSTR */,
+  alias: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   pErrorCode: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u16 */ {
   return libicu_dll.ucnv_countAliases(util.pstrToFfi(alias), util.toPointer(pErrorCode));
 }
 
 export function ucnv_getAlias(
-  alias: string | null /* Windows.Win32.Foundation.PSTR */,
+  alias: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   n: number /* u16 */,
   pErrorCode: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): string | null /* Windows.Win32.Foundation.PSTR */ {
@@ -14003,7 +14003,7 @@ export function ucnv_getAlias(
 }
 
 export function ucnv_getAliases(
-  alias: string | null /* Windows.Win32.Foundation.PSTR */,
+  alias: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   aliases: Deno.PointerValue | Uint8Array | null /* ptr */,
   pErrorCode: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): void /* void */ {
@@ -14011,8 +14011,8 @@ export function ucnv_getAliases(
 }
 
 export function ucnv_openStandardNames(
-  convName: string | null /* Windows.Win32.Foundation.PSTR */,
-  standard: string | null /* Windows.Win32.Foundation.PSTR */,
+  convName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  standard: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   pErrorCode: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* ptr */ {
   return util.pointerFromFfi(libicu_dll.ucnv_openStandardNames(util.pstrToFfi(convName), util.pstrToFfi(standard), util.toPointer(pErrorCode)));
@@ -14030,16 +14030,16 @@ export function ucnv_getStandard(
 }
 
 export function ucnv_getStandardName(
-  name: string | null /* Windows.Win32.Foundation.PSTR */,
-  standard: string | null /* Windows.Win32.Foundation.PSTR */,
+  name: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  standard: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   pErrorCode: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): string | null /* Windows.Win32.Foundation.PSTR */ {
   return util.pstrFromFfi(libicu_dll.ucnv_getStandardName(util.pstrToFfi(name), util.pstrToFfi(standard), util.toPointer(pErrorCode)));
 }
 
 export function ucnv_getCanonicalName(
-  alias: string | null /* Windows.Win32.Foundation.PSTR */,
-  standard: string | null /* Windows.Win32.Foundation.PSTR */,
+  alias: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  standard: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   pErrorCode: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): string | null /* Windows.Win32.Foundation.PSTR */ {
   return util.pstrFromFfi(libicu_dll.ucnv_getCanonicalName(util.pstrToFfi(alias), util.pstrToFfi(standard), util.toPointer(pErrorCode)));
@@ -14050,7 +14050,7 @@ export function ucnv_getDefaultName(): string | null /* Windows.Win32.Foundation
 }
 
 export function ucnv_setDefaultName(
-  name: string | null /* Windows.Win32.Foundation.PSTR */,
+  name: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): void /* void */ {
   return libicu_dll.ucnv_setDefaultName(util.pstrToFfi(name));
 }
@@ -14083,7 +14083,7 @@ export function ucnv_usesFallback(
 }
 
 export function ucnv_detectUnicodeSignature(
-  source: string | null /* Windows.Win32.Foundation.PSTR */,
+  source: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   sourceLength: number /* i32 */,
   signatureLength: Deno.PointerValue | Uint8Array | null /* ptr */,
   pErrorCode: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -14114,7 +14114,7 @@ export function ucnv_isFixedWidth(
 
 export function ucnv_cbFromUWriteBytes(
   args: Deno.PointerValue | Uint8Array | null /* ptr */,
-  source: string | null /* Windows.Win32.Foundation.PSTR */,
+  source: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   length: number /* i32 */,
   offsetIndex: number /* i32 */,
   err: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -14179,8 +14179,8 @@ export function u_setMemoryFunctions(
 }
 
 export function u_catopen(
-  name: string | null /* Windows.Win32.Foundation.PSTR */,
-  locale: string | null /* Windows.Win32.Foundation.PSTR */,
+  name: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  locale: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   ec: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* ptr */ {
   return util.pointerFromFfi(libicu_dll.u_catopen(util.pstrToFfi(name), util.pstrToFfi(locale), util.toPointer(ec)));
@@ -14439,7 +14439,7 @@ export function ublock_getCode(
 export function u_charName(
   code: number /* i32 */,
   nameChoice: UCharNameChoice /* Windows.Win32.Globalization.UCharNameChoice */,
-  buffer: string | null /* Windows.Win32.Foundation.PSTR */,
+  buffer: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   bufferLength: number /* i32 */,
   pErrorCode: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
@@ -14448,7 +14448,7 @@ export function u_charName(
 
 export function u_charFromName(
   nameChoice: UCharNameChoice /* Windows.Win32.Globalization.UCharNameChoice */,
-  name: string | null /* Windows.Win32.Foundation.PSTR */,
+  name: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   pErrorCode: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
   return libicu_dll.u_charFromName(nameChoice, util.pstrToFfi(name), util.toPointer(pErrorCode));
@@ -14473,7 +14473,7 @@ export function u_getPropertyName(
 }
 
 export function u_getPropertyEnum(
-  alias: string | null /* Windows.Win32.Foundation.PSTR */,
+  alias: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): UProperty /* Windows.Win32.Globalization.UProperty */ {
   return libicu_dll.u_getPropertyEnum(util.pstrToFfi(alias));
 }
@@ -14488,7 +14488,7 @@ export function u_getPropertyValueName(
 
 export function u_getPropertyValueEnum(
   property: UProperty /* Windows.Win32.Globalization.UProperty */,
-  alias: string | null /* Windows.Win32.Foundation.PSTR */,
+  alias: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): number /* i32 */ {
   return libicu_dll.u_getPropertyValueEnum(property, util.pstrToFfi(alias));
 }
@@ -14936,7 +14936,7 @@ export function utext_close(
 
 export function utext_openUTF8(
   ut: Deno.PointerValue | Uint8Array | null /* ptr */,
-  s: string | null /* Windows.Win32.Foundation.PSTR */,
+  s: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   length: Deno.PointerValue /* i64 */,
   status: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* ptr */ {
@@ -15456,7 +15456,7 @@ export function uset_spanBack(
 
 export function uset_spanUTF8(
   set: Deno.PointerValue | Uint8Array | null /* ptr */,
-  s: string | null /* Windows.Win32.Foundation.PSTR */,
+  s: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   length: number /* i32 */,
   spanCondition: USetSpanCondition /* Windows.Win32.Globalization.USetSpanCondition */,
 ): number /* i32 */ {
@@ -15465,7 +15465,7 @@ export function uset_spanUTF8(
 
 export function uset_spanBackUTF8(
   set: Deno.PointerValue | Uint8Array | null /* ptr */,
-  s: string | null /* Windows.Win32.Foundation.PSTR */,
+  s: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   length: number /* i32 */,
   spanCondition: USetSpanCondition /* Windows.Win32.Globalization.USetSpanCondition */,
 ): number /* i32 */ {
@@ -15556,8 +15556,8 @@ export function unorm2_getNFKCCasefoldInstance(
 }
 
 export function unorm2_getInstance(
-  packageName: string | null /* Windows.Win32.Foundation.PSTR */,
-  name: string | null /* Windows.Win32.Foundation.PSTR */,
+  packageName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  name: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   mode: UNormalization2Mode /* Windows.Win32.Globalization.UNormalization2Mode */,
   pErrorCode: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* ptr */ {
@@ -15751,7 +15751,7 @@ export function ucnvsel_selectForString(
 
 export function ucnvsel_selectForUTF8(
   sel: Deno.PointerValue | Uint8Array | null /* ptr */,
-  s: string | null /* Windows.Win32.Foundation.PSTR */,
+  s: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   length: number /* i32 */,
   status: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* ptr */ {
@@ -15759,7 +15759,7 @@ export function ucnvsel_selectForUTF8(
 }
 
 export function u_charsToUChars(
-  cs: string | null /* Windows.Win32.Foundation.PSTR */,
+  cs: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   us: Deno.PointerValue | Uint8Array | null /* ptr */,
   length: number /* i32 */,
 ): void /* void */ {
@@ -15768,7 +15768,7 @@ export function u_charsToUChars(
 
 export function u_UCharsToChars(
   us: Deno.PointerValue | Uint8Array | null /* ptr */,
-  cs: string | null /* Windows.Win32.Foundation.PSTR */,
+  cs: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   length: number /* i32 */,
 ): void /* void */ {
   return libicu_dll.u_UCharsToChars(util.toPointer(us), util.pstrToFfi(cs), length);
@@ -16001,28 +16001,28 @@ export function u_strncpy(
 
 export function u_uastrcpy(
   dst: Deno.PointerValue | Uint8Array | null /* ptr */,
-  src: string | null /* Windows.Win32.Foundation.PSTR */,
+  src: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): Deno.PointerValue | null /* ptr */ {
   return util.pointerFromFfi(libicu_dll.u_uastrcpy(util.toPointer(dst), util.pstrToFfi(src)));
 }
 
 export function u_uastrncpy(
   dst: Deno.PointerValue | Uint8Array | null /* ptr */,
-  src: string | null /* Windows.Win32.Foundation.PSTR */,
+  src: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   n: number /* i32 */,
 ): Deno.PointerValue | null /* ptr */ {
   return util.pointerFromFfi(libicu_dll.u_uastrncpy(util.toPointer(dst), util.pstrToFfi(src), n));
 }
 
 export function u_austrcpy(
-  dst: string | null /* Windows.Win32.Foundation.PSTR */,
+  dst: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   src: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): string | null /* Windows.Win32.Foundation.PSTR */ {
   return util.pstrFromFfi(libicu_dll.u_austrcpy(util.pstrToFfi(dst), util.toPointer(src)));
 }
 
 export function u_austrncpy(
-  dst: string | null /* Windows.Win32.Foundation.PSTR */,
+  dst: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   src: Deno.PointerValue | Uint8Array | null /* ptr */,
   n: number /* i32 */,
 ): string | null /* Windows.Win32.Foundation.PSTR */ {
@@ -16102,7 +16102,7 @@ export function u_memrchr32(
 }
 
 export function u_unescape(
-  src: string | null /* Windows.Win32.Foundation.PSTR */,
+  src: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   dest: Deno.PointerValue | Uint8Array | null /* ptr */,
   destCapacity: number /* i32 */,
 ): number /* i32 */ {
@@ -16123,7 +16123,7 @@ export function u_strToUpper(
   destCapacity: number /* i32 */,
   src: Deno.PointerValue | Uint8Array | null /* ptr */,
   srcLength: number /* i32 */,
-  locale: string | null /* Windows.Win32.Foundation.PSTR */,
+  locale: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   pErrorCode: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
   return libicu_dll.u_strToUpper(util.toPointer(dest), destCapacity, util.toPointer(src), srcLength, util.pstrToFfi(locale), util.toPointer(pErrorCode));
@@ -16134,7 +16134,7 @@ export function u_strToLower(
   destCapacity: number /* i32 */,
   src: Deno.PointerValue | Uint8Array | null /* ptr */,
   srcLength: number /* i32 */,
-  locale: string | null /* Windows.Win32.Foundation.PSTR */,
+  locale: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   pErrorCode: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
   return libicu_dll.u_strToLower(util.toPointer(dest), destCapacity, util.toPointer(src), srcLength, util.pstrToFfi(locale), util.toPointer(pErrorCode));
@@ -16146,7 +16146,7 @@ export function u_strToTitle(
   src: Deno.PointerValue | Uint8Array | null /* ptr */,
   srcLength: number /* i32 */,
   titleIter: Deno.PointerValue | Uint8Array | null /* ptr */,
-  locale: string | null /* Windows.Win32.Foundation.PSTR */,
+  locale: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   pErrorCode: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
   return libicu_dll.u_strToTitle(util.toPointer(dest), destCapacity, util.toPointer(src), srcLength, util.toPointer(titleIter), util.pstrToFfi(locale), util.toPointer(pErrorCode));
@@ -16164,7 +16164,7 @@ export function u_strFoldCase(
 }
 
 export function u_strToWCS(
-  dest: string | null /* Windows.Win32.Foundation.PWSTR */,
+  dest: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   destCapacity: number /* i32 */,
   pDestLength: Deno.PointerValue | Uint8Array | null /* ptr */,
   src: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -16178,7 +16178,7 @@ export function u_strFromWCS(
   dest: Deno.PointerValue | Uint8Array | null /* ptr */,
   destCapacity: number /* i32 */,
   pDestLength: Deno.PointerValue | Uint8Array | null /* ptr */,
-  src: string | null /* Windows.Win32.Foundation.PWSTR */,
+  src: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   srcLength: number /* i32 */,
   pErrorCode: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* ptr */ {
@@ -16186,7 +16186,7 @@ export function u_strFromWCS(
 }
 
 export function u_strToUTF8(
-  dest: string | null /* Windows.Win32.Foundation.PSTR */,
+  dest: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   destCapacity: number /* i32 */,
   pDestLength: Deno.PointerValue | Uint8Array | null /* ptr */,
   src: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -16200,7 +16200,7 @@ export function u_strFromUTF8(
   dest: Deno.PointerValue | Uint8Array | null /* ptr */,
   destCapacity: number /* i32 */,
   pDestLength: Deno.PointerValue | Uint8Array | null /* ptr */,
-  src: string | null /* Windows.Win32.Foundation.PSTR */,
+  src: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   srcLength: number /* i32 */,
   pErrorCode: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* ptr */ {
@@ -16208,7 +16208,7 @@ export function u_strFromUTF8(
 }
 
 export function u_strToUTF8WithSub(
-  dest: string | null /* Windows.Win32.Foundation.PSTR */,
+  dest: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   destCapacity: number /* i32 */,
   pDestLength: Deno.PointerValue | Uint8Array | null /* ptr */,
   src: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -16224,7 +16224,7 @@ export function u_strFromUTF8WithSub(
   dest: Deno.PointerValue | Uint8Array | null /* ptr */,
   destCapacity: number /* i32 */,
   pDestLength: Deno.PointerValue | Uint8Array | null /* ptr */,
-  src: string | null /* Windows.Win32.Foundation.PSTR */,
+  src: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   srcLength: number /* i32 */,
   subchar: number /* i32 */,
   pNumSubstitutions: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -16237,7 +16237,7 @@ export function u_strFromUTF8Lenient(
   dest: Deno.PointerValue | Uint8Array | null /* ptr */,
   destCapacity: number /* i32 */,
   pDestLength: Deno.PointerValue | Uint8Array | null /* ptr */,
-  src: string | null /* Windows.Win32.Foundation.PSTR */,
+  src: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   srcLength: number /* i32 */,
   pErrorCode: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* ptr */ {
@@ -16293,7 +16293,7 @@ export function u_strFromUTF32WithSub(
 }
 
 export function u_strToJavaModifiedUTF8(
-  dest: string | null /* Windows.Win32.Foundation.PSTR */,
+  dest: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   destCapacity: number /* i32 */,
   pDestLength: Deno.PointerValue | Uint8Array | null /* ptr */,
   src: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -16307,7 +16307,7 @@ export function u_strFromJavaModifiedUTF8WithSub(
   dest: Deno.PointerValue | Uint8Array | null /* ptr */,
   destCapacity: number /* i32 */,
   pDestLength: Deno.PointerValue | Uint8Array | null /* ptr */,
-  src: string | null /* Windows.Win32.Foundation.PSTR */,
+  src: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   srcLength: number /* i32 */,
   subchar: number /* i32 */,
   pNumSubstitutions: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -16317,7 +16317,7 @@ export function u_strFromJavaModifiedUTF8WithSub(
 }
 
 export function ucasemap_open(
-  locale: string | null /* Windows.Win32.Foundation.PSTR */,
+  locale: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   options: number /* u32 */,
   pErrorCode: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* ptr */ {
@@ -16344,7 +16344,7 @@ export function ucasemap_getOptions(
 
 export function ucasemap_setLocale(
   csm: Deno.PointerValue | Uint8Array | null /* ptr */,
-  locale: string | null /* Windows.Win32.Foundation.PSTR */,
+  locale: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   pErrorCode: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): void /* void */ {
   return libicu_dll.ucasemap_setLocale(util.toPointer(csm), util.pstrToFfi(locale), util.toPointer(pErrorCode));
@@ -16385,9 +16385,9 @@ export function ucasemap_toTitle(
 
 export function ucasemap_utf8ToLower(
   csm: Deno.PointerValue | Uint8Array | null /* ptr */,
-  dest: string | null /* Windows.Win32.Foundation.PSTR */,
+  dest: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   destCapacity: number /* i32 */,
-  src: string | null /* Windows.Win32.Foundation.PSTR */,
+  src: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   srcLength: number /* i32 */,
   pErrorCode: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
@@ -16396,9 +16396,9 @@ export function ucasemap_utf8ToLower(
 
 export function ucasemap_utf8ToUpper(
   csm: Deno.PointerValue | Uint8Array | null /* ptr */,
-  dest: string | null /* Windows.Win32.Foundation.PSTR */,
+  dest: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   destCapacity: number /* i32 */,
-  src: string | null /* Windows.Win32.Foundation.PSTR */,
+  src: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   srcLength: number /* i32 */,
   pErrorCode: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
@@ -16407,9 +16407,9 @@ export function ucasemap_utf8ToUpper(
 
 export function ucasemap_utf8ToTitle(
   csm: Deno.PointerValue | Uint8Array | null /* ptr */,
-  dest: string | null /* Windows.Win32.Foundation.PSTR */,
+  dest: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   destCapacity: number /* i32 */,
-  src: string | null /* Windows.Win32.Foundation.PSTR */,
+  src: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   srcLength: number /* i32 */,
   pErrorCode: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
@@ -16418,9 +16418,9 @@ export function ucasemap_utf8ToTitle(
 
 export function ucasemap_utf8FoldCase(
   csm: Deno.PointerValue | Uint8Array | null /* ptr */,
-  dest: string | null /* Windows.Win32.Foundation.PSTR */,
+  dest: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   destCapacity: number /* i32 */,
-  src: string | null /* Windows.Win32.Foundation.PSTR */,
+  src: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   srcLength: number /* i32 */,
   pErrorCode: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
@@ -16428,8 +16428,8 @@ export function ucasemap_utf8FoldCase(
 }
 
 export function usprep_open(
-  path: string | null /* Windows.Win32.Foundation.PSTR */,
-  fileName: string | null /* Windows.Win32.Foundation.PSTR */,
+  path: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  fileName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   status: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* ptr */ {
   return util.pointerFromFfi(libicu_dll.usprep_open(util.pstrToFfi(path), util.pstrToFfi(fileName), util.toPointer(status)));
@@ -16524,9 +16524,9 @@ export function uidna_nameToUnicode(
 
 export function uidna_labelToASCII_UTF8(
   idna: Deno.PointerValue | Uint8Array | null /* ptr */,
-  label: string | null /* Windows.Win32.Foundation.PSTR */,
+  label: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   length: number /* i32 */,
-  dest: string | null /* Windows.Win32.Foundation.PSTR */,
+  dest: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   capacity: number /* i32 */,
   pInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
   pErrorCode: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -16536,9 +16536,9 @@ export function uidna_labelToASCII_UTF8(
 
 export function uidna_labelToUnicodeUTF8(
   idna: Deno.PointerValue | Uint8Array | null /* ptr */,
-  label: string | null /* Windows.Win32.Foundation.PSTR */,
+  label: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   length: number /* i32 */,
-  dest: string | null /* Windows.Win32.Foundation.PSTR */,
+  dest: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   capacity: number /* i32 */,
   pInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
   pErrorCode: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -16548,9 +16548,9 @@ export function uidna_labelToUnicodeUTF8(
 
 export function uidna_nameToASCII_UTF8(
   idna: Deno.PointerValue | Uint8Array | null /* ptr */,
-  name: string | null /* Windows.Win32.Foundation.PSTR */,
+  name: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   length: number /* i32 */,
-  dest: string | null /* Windows.Win32.Foundation.PSTR */,
+  dest: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   capacity: number /* i32 */,
   pInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
   pErrorCode: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -16560,9 +16560,9 @@ export function uidna_nameToASCII_UTF8(
 
 export function uidna_nameToUnicodeUTF8(
   idna: Deno.PointerValue | Uint8Array | null /* ptr */,
-  name: string | null /* Windows.Win32.Foundation.PSTR */,
+  name: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   length: number /* i32 */,
-  dest: string | null /* Windows.Win32.Foundation.PSTR */,
+  dest: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   capacity: number /* i32 */,
   pInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
   pErrorCode: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -16572,7 +16572,7 @@ export function uidna_nameToUnicodeUTF8(
 
 export function ubrk_open(
   type: UBreakIteratorType /* Windows.Win32.Globalization.UBreakIteratorType */,
-  locale: string | null /* Windows.Win32.Foundation.PSTR */,
+  locale: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   text: Deno.PointerValue | Uint8Array | null /* ptr */,
   textLength: number /* i32 */,
   status: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -16743,7 +16743,7 @@ export function u_getDataVersion(
 
 export function ucal_openTimeZoneIDEnumeration(
   zoneType: USystemTimeZoneType /* Windows.Win32.Globalization.USystemTimeZoneType */,
-  region: string | null /* Windows.Win32.Foundation.PSTR */,
+  region: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   rawOffset: Deno.PointerValue | Uint8Array | null /* ptr */,
   ec: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* ptr */ {
@@ -16757,7 +16757,7 @@ export function ucal_openTimeZones(
 }
 
 export function ucal_openCountryTimeZones(
-  country: string | null /* Windows.Win32.Foundation.PSTR */,
+  country: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   ec: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* ptr */ {
   return util.pointerFromFfi(libicu_dll.ucal_openCountryTimeZones(util.pstrToFfi(country), util.toPointer(ec)));
@@ -16800,7 +16800,7 @@ export function ucal_getNow(): number /* f64 */ {
 export function ucal_open(
   zoneID: Deno.PointerValue | Uint8Array | null /* ptr */,
   len: number /* i32 */,
-  locale: string | null /* Windows.Win32.Foundation.PSTR */,
+  locale: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   type: UCalendarType /* Windows.Win32.Globalization.UCalendarType */,
   status: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* ptr */ {
@@ -16841,7 +16841,7 @@ export function ucal_getTimeZoneID(
 export function ucal_getTimeZoneDisplayName(
   cal: Deno.PointerValue | Uint8Array | null /* ptr */,
   type: UCalendarDisplayNameType /* Windows.Win32.Globalization.UCalendarDisplayNameType */,
-  locale: string | null /* Windows.Win32.Foundation.PSTR */,
+  locale: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   result: Deno.PointerValue | Uint8Array | null /* ptr */,
   resultLength: number /* i32 */,
   status: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -17037,8 +17037,8 @@ export function ucal_getType(
 }
 
 export function ucal_getKeywordValuesForLocale(
-  key: string | null /* Windows.Win32.Foundation.PSTR */,
-  locale: string | null /* Windows.Win32.Foundation.PSTR */,
+  key: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  locale: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   commonlyUsed: number /* i8 */,
   status: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* ptr */ {
@@ -17100,7 +17100,7 @@ export function ucal_getWindowsTimeZoneID(
 export function ucal_getTimeZoneIDForWindowsID(
   winid: Deno.PointerValue | Uint8Array | null /* ptr */,
   len: number /* i32 */,
-  region: string | null /* Windows.Win32.Foundation.PSTR */,
+  region: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   id: Deno.PointerValue | Uint8Array | null /* ptr */,
   idCapacity: number /* i32 */,
   status: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -17109,7 +17109,7 @@ export function ucal_getTimeZoneIDForWindowsID(
 }
 
 export function ucol_open(
-  loc: string | null /* Windows.Win32.Foundation.PSTR */,
+  loc: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   status: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* ptr */ {
   return util.pointerFromFfi(libicu_dll.ucol_open(util.pstrToFfi(loc), util.toPointer(status)));
@@ -17154,9 +17154,9 @@ export function ucol_strcoll(
 
 export function ucol_strcollUTF8(
   coll: Deno.PointerValue | Uint8Array | null /* ptr */,
-  source: string | null /* Windows.Win32.Foundation.PSTR */,
+  source: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   sourceLength: number /* i32 */,
-  target: string | null /* Windows.Win32.Foundation.PSTR */,
+  target: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   targetLength: number /* i32 */,
   status: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): UCollationResult /* Windows.Win32.Globalization.UCollationResult */ {
@@ -17243,8 +17243,8 @@ export function ucol_getEquivalentReorderCodes(
 }
 
 export function ucol_getDisplayName(
-  objLoc: string | null /* Windows.Win32.Foundation.PSTR */,
-  dispLoc: string | null /* Windows.Win32.Foundation.PSTR */,
+  objLoc: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  dispLoc: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   result: Deno.PointerValue | Uint8Array | null /* ptr */,
   resultLength: number /* i32 */,
   status: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -17275,15 +17275,15 @@ export function ucol_getKeywords(
 }
 
 export function ucol_getKeywordValues(
-  keyword: string | null /* Windows.Win32.Foundation.PSTR */,
+  keyword: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   status: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* ptr */ {
   return util.pointerFromFfi(libicu_dll.ucol_getKeywordValues(util.pstrToFfi(keyword), util.toPointer(status)));
 }
 
 export function ucol_getKeywordValuesForLocale(
-  key: string | null /* Windows.Win32.Foundation.PSTR */,
-  locale: string | null /* Windows.Win32.Foundation.PSTR */,
+  key: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  locale: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   commonlyUsed: number /* i8 */,
   status: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* ptr */ {
@@ -17291,10 +17291,10 @@ export function ucol_getKeywordValuesForLocale(
 }
 
 export function ucol_getFunctionalEquivalent(
-  result: string | null /* Windows.Win32.Foundation.PSTR */,
+  result: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   resultCapacity: number /* i32 */,
-  keyword: string | null /* Windows.Win32.Foundation.PSTR */,
-  locale: string | null /* Windows.Win32.Foundation.PSTR */,
+  keyword: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  locale: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   isAvailable: Deno.PointerValue | Uint8Array | null /* ptr */,
   status: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
@@ -17559,7 +17559,7 @@ export function ucsdet_close(
 
 export function ucsdet_setText(
   ucsd: Deno.PointerValue | Uint8Array | null /* ptr */,
-  textIn: string | null /* Windows.Win32.Foundation.PSTR */,
+  textIn: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   len: number /* i32 */,
   status: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): void /* void */ {
@@ -17568,7 +17568,7 @@ export function ucsdet_setText(
 
 export function ucsdet_setDeclaredEncoding(
   ucsd: Deno.PointerValue | Uint8Array | null /* ptr */,
-  encoding: string | null /* Windows.Win32.Foundation.PSTR */,
+  encoding: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   length: number /* i32 */,
   status: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): void /* void */ {
@@ -17862,7 +17862,7 @@ export function ufmtval_nextPosition(
 }
 
 export function udtitvfmt_open(
-  locale: string | null /* Windows.Win32.Foundation.PSTR */,
+  locale: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   skeleton: Deno.PointerValue | Uint8Array | null /* ptr */,
   skeletonLength: number /* i32 */,
   tzID: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -17910,7 +17910,7 @@ export function udtitvfmt_format(
 }
 
 export function ugender_getInstance(
-  locale: string | null /* Windows.Win32.Foundation.PSTR */,
+  locale: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   status: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* ptr */ {
   return util.pointerFromFfi(libicu_dll.ugender_getInstance(util.pstrToFfi(locale), util.toPointer(status)));
@@ -17926,14 +17926,14 @@ export function ugender_getListGender(
 }
 
 export function ulistfmt_open(
-  locale: string | null /* Windows.Win32.Foundation.PSTR */,
+  locale: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   status: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* ptr */ {
   return util.pointerFromFfi(libicu_dll.ulistfmt_open(util.pstrToFfi(locale), util.toPointer(status)));
 }
 
 export function ulistfmt_openForType(
-  locale: string | null /* Windows.Win32.Foundation.PSTR */,
+  locale: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   type: UListFormatterType /* Windows.Win32.Globalization.UListFormatterType */,
   width: UListFormatterWidth /* Windows.Win32.Globalization.UListFormatterWidth */,
   status: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -17990,7 +17990,7 @@ export function ulistfmt_formatStringsToResult(
 }
 
 export function ulocdata_open(
-  localeID: string | null /* Windows.Win32.Foundation.PSTR */,
+  localeID: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   status: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* ptr */ {
   return util.pointerFromFfi(libicu_dll.ulocdata_open(util.pstrToFfi(localeID), util.toPointer(status)));
@@ -18036,14 +18036,14 @@ export function ulocdata_getDelimiter(
 }
 
 export function ulocdata_getMeasurementSystem(
-  localeID: string | null /* Windows.Win32.Foundation.PSTR */,
+  localeID: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   status: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): UMeasurementSystem /* Windows.Win32.Globalization.UMeasurementSystem */ {
   return libicu_dll.ulocdata_getMeasurementSystem(util.pstrToFfi(localeID), util.toPointer(status));
 }
 
 export function ulocdata_getPaperSize(
-  localeID: string | null /* Windows.Win32.Foundation.PSTR */,
+  localeID: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   height: Deno.PointerValue | Uint8Array | null /* ptr */,
   width: Deno.PointerValue | Uint8Array | null /* ptr */,
   status: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -18077,7 +18077,7 @@ export function ulocdata_getLocaleSeparator(
 }
 
 export function u_formatMessage(
-  locale: string | null /* Windows.Win32.Foundation.PSTR */,
+  locale: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   pattern: Deno.PointerValue | Uint8Array | null /* ptr */,
   patternLength: number /* i32 */,
   result: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -18088,7 +18088,7 @@ export function u_formatMessage(
 }
 
 export function u_vformatMessage(
-  locale: string | null /* Windows.Win32.Foundation.PSTR */,
+  locale: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   pattern: Deno.PointerValue | Uint8Array | null /* ptr */,
   patternLength: number /* i32 */,
   result: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -18100,7 +18100,7 @@ export function u_vformatMessage(
 }
 
 export function u_parseMessage(
-  locale: string | null /* Windows.Win32.Foundation.PSTR */,
+  locale: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   pattern: Deno.PointerValue | Uint8Array | null /* ptr */,
   patternLength: number /* i32 */,
   source: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -18111,7 +18111,7 @@ export function u_parseMessage(
 }
 
 export function u_vparseMessage(
-  locale: string | null /* Windows.Win32.Foundation.PSTR */,
+  locale: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   pattern: Deno.PointerValue | Uint8Array | null /* ptr */,
   patternLength: number /* i32 */,
   source: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -18123,7 +18123,7 @@ export function u_vparseMessage(
 }
 
 export function u_formatMessageWithError(
-  locale: string | null /* Windows.Win32.Foundation.PSTR */,
+  locale: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   pattern: Deno.PointerValue | Uint8Array | null /* ptr */,
   patternLength: number /* i32 */,
   result: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -18135,7 +18135,7 @@ export function u_formatMessageWithError(
 }
 
 export function u_vformatMessageWithError(
-  locale: string | null /* Windows.Win32.Foundation.PSTR */,
+  locale: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   pattern: Deno.PointerValue | Uint8Array | null /* ptr */,
   patternLength: number /* i32 */,
   result: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -18148,7 +18148,7 @@ export function u_vformatMessageWithError(
 }
 
 export function u_parseMessageWithError(
-  locale: string | null /* Windows.Win32.Foundation.PSTR */,
+  locale: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   pattern: Deno.PointerValue | Uint8Array | null /* ptr */,
   patternLength: number /* i32 */,
   source: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -18160,7 +18160,7 @@ export function u_parseMessageWithError(
 }
 
 export function u_vparseMessageWithError(
-  locale: string | null /* Windows.Win32.Foundation.PSTR */,
+  locale: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   pattern: Deno.PointerValue | Uint8Array | null /* ptr */,
   patternLength: number /* i32 */,
   source: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -18175,7 +18175,7 @@ export function u_vparseMessageWithError(
 export function umsg_open(
   pattern: Deno.PointerValue | Uint8Array | null /* ptr */,
   patternLength: number /* i32 */,
-  locale: string | null /* Windows.Win32.Foundation.PSTR */,
+  locale: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   parseError: Deno.PointerValue | Uint8Array | null /* ptr */,
   status: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* ptr */ {
@@ -18197,7 +18197,7 @@ export function umsg_clone(
 
 export function umsg_setLocale(
   fmt: Deno.PointerValue | Uint8Array | null /* ptr */,
-  locale: string | null /* Windows.Win32.Foundation.PSTR */,
+  locale: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): void /* void */ {
   return libicu_dll.umsg_setLocale(util.toPointer(fmt), util.pstrToFfi(locale));
 }
@@ -18281,7 +18281,7 @@ export function unum_open(
   style: UNumberFormatStyle /* Windows.Win32.Globalization.UNumberFormatStyle */,
   pattern: Deno.PointerValue | Uint8Array | null /* ptr */,
   patternLength: number /* i32 */,
-  locale: string | null /* Windows.Win32.Foundation.PSTR */,
+  locale: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   parseErr: Deno.PointerValue | Uint8Array | null /* ptr */,
   status: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* ptr */ {
@@ -18347,7 +18347,7 @@ export function unum_formatDoubleForFields(
 
 export function unum_formatDecimal(
   fmt: Deno.PointerValue | Uint8Array | null /* ptr */,
-  number: string | null /* Windows.Win32.Foundation.PSTR */,
+  number: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   length: number /* i32 */,
   result: Deno.PointerValue | Uint8Array | null /* ptr */,
   resultLength: number /* i32 */,
@@ -18415,7 +18415,7 @@ export function unum_parseDecimal(
   text: Deno.PointerValue | Uint8Array | null /* ptr */,
   textLength: number /* i32 */,
   parsePos: Deno.PointerValue | Uint8Array | null /* ptr */,
-  outBuf: string | null /* Windows.Win32.Foundation.PSTR */,
+  outBuf: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   outBufLength: number /* i32 */,
   status: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
@@ -18578,7 +18578,7 @@ export function udat_toCalendarDateField(
 export function udat_open(
   timeStyle: UDateFormatStyle /* Windows.Win32.Globalization.UDateFormatStyle */,
   dateStyle: UDateFormatStyle /* Windows.Win32.Globalization.UDateFormatStyle */,
-  locale: string | null /* Windows.Win32.Foundation.PSTR */,
+  locale: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   tzID: Deno.PointerValue | Uint8Array | null /* ptr */,
   tzIDLength: number /* i32 */,
   pattern: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -18843,7 +18843,7 @@ export function udat_getContext(
 }
 
 export function udatpg_open(
-  locale: string | null /* Windows.Win32.Foundation.PSTR */,
+  locale: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   pErrorCode: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* ptr */ {
   return util.pointerFromFfi(libicu_dll.udatpg_open(util.pstrToFfi(locale), util.toPointer(pErrorCode)));
@@ -19054,7 +19054,7 @@ export function udatpg_getPatternForSkeleton(
 export function unumf_openForSkeletonAndLocale(
   skeleton: Deno.PointerValue | Uint8Array | null /* ptr */,
   skeletonLen: number /* i32 */,
-  locale: string | null /* Windows.Win32.Foundation.PSTR */,
+  locale: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   ec: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* ptr */ {
   return util.pointerFromFfi(libicu_dll.unumf_openForSkeletonAndLocale(util.toPointer(skeleton), skeletonLen, util.pstrToFfi(locale), util.toPointer(ec)));
@@ -19063,7 +19063,7 @@ export function unumf_openForSkeletonAndLocale(
 export function unumf_openForSkeletonAndLocaleWithError(
   skeleton: Deno.PointerValue | Uint8Array | null /* ptr */,
   skeletonLen: number /* i32 */,
-  locale: string | null /* Windows.Win32.Foundation.PSTR */,
+  locale: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   perror: Deno.PointerValue | Uint8Array | null /* ptr */,
   ec: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* ptr */ {
@@ -19096,7 +19096,7 @@ export function unumf_formatDouble(
 
 export function unumf_formatDecimal(
   uformatter: Deno.PointerValue | Uint8Array | null /* ptr */,
-  value: string | null /* Windows.Win32.Foundation.PSTR */,
+  value: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   valueLen: number /* i32 */,
   uresult: Deno.PointerValue | Uint8Array | null /* ptr */,
   ec: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -19149,14 +19149,14 @@ export function unumf_closeResult(
 }
 
 export function unumsys_open(
-  locale: string | null /* Windows.Win32.Foundation.PSTR */,
+  locale: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   status: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* ptr */ {
   return util.pointerFromFfi(libicu_dll.unumsys_open(util.pstrToFfi(locale), util.toPointer(status)));
 }
 
 export function unumsys_openByName(
-  name: string | null /* Windows.Win32.Foundation.PSTR */,
+  name: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   status: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* ptr */ {
   return util.pointerFromFfi(libicu_dll.unumsys_openByName(util.pstrToFfi(name), util.toPointer(status)));
@@ -19202,14 +19202,14 @@ export function unumsys_getDescription(
 }
 
 export function uplrules_open(
-  locale: string | null /* Windows.Win32.Foundation.PSTR */,
+  locale: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   status: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* ptr */ {
   return util.pointerFromFfi(libicu_dll.uplrules_open(util.pstrToFfi(locale), util.toPointer(status)));
 }
 
 export function uplrules_openForType(
-  locale: string | null /* Windows.Win32.Foundation.PSTR */,
+  locale: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   type: UPluralType /* Windows.Win32.Globalization.UPluralType */,
   status: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* ptr */ {
@@ -19269,7 +19269,7 @@ export function uregex_openUText(
 }
 
 export function uregex_openC(
-  pattern: string | null /* Windows.Win32.Foundation.PSTR */,
+  pattern: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   flags: number /* u32 */,
   pe: Deno.PointerValue | Uint8Array | null /* ptr */,
   status: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -19426,7 +19426,7 @@ export function uregex_groupNumberFromName(
 
 export function uregex_groupNumberFromCName(
   regexp: Deno.PointerValue | Uint8Array | null /* ptr */,
-  groupName: string | null /* Windows.Win32.Foundation.PSTR */,
+  groupName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   nameLength: number /* i32 */,
   status: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
@@ -19766,7 +19766,7 @@ export function uregex_getFindProgressCallback(
 }
 
 export function uregion_getRegionFromCode(
-  regionCode: string | null /* Windows.Win32.Foundation.PSTR */,
+  regionCode: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   status: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* ptr */ {
   return util.pointerFromFfi(libicu_dll.uregion_getRegionFromCode(util.pstrToFfi(regionCode), util.toPointer(status)));
@@ -19854,7 +19854,7 @@ export function uregion_getType(
 }
 
 export function ureldatefmt_open(
-  locale: string | null /* Windows.Win32.Foundation.PSTR */,
+  locale: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   nfToAdopt: Deno.PointerValue | Uint8Array | null /* ptr */,
   width: UDateRelativeDateTimeFormatterStyle /* Windows.Win32.Globalization.UDateRelativeDateTimeFormatterStyle */,
   capitalizationContext: UDisplayContext /* Windows.Win32.Globalization.UDisplayContext */,
@@ -19948,7 +19948,7 @@ export function usearch_open(
   patternlength: number /* i32 */,
   text: Deno.PointerValue | Uint8Array | null /* ptr */,
   textlength: number /* i32 */,
-  locale: string | null /* Windows.Win32.Foundation.PSTR */,
+  locale: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   breakiter: Deno.PointerValue | Uint8Array | null /* ptr */,
   status: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* ptr */ {
@@ -20150,9 +20150,9 @@ export function uspoof_openFromSerialized(
 }
 
 export function uspoof_openFromSource(
-  confusables: string | null /* Windows.Win32.Foundation.PSTR */,
+  confusables: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   confusablesLen: number /* i32 */,
-  confusablesWholeScript: string | null /* Windows.Win32.Foundation.PSTR */,
+  confusablesWholeScript: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   confusablesWholeScriptLen: number /* i32 */,
   errType: Deno.PointerValue | Uint8Array | null /* ptr */,
   pe: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -20204,7 +20204,7 @@ export function uspoof_getRestrictionLevel(
 
 export function uspoof_setAllowedLocales(
   sc: Deno.PointerValue | Uint8Array | null /* ptr */,
-  localesList: string | null /* Windows.Win32.Foundation.PSTR */,
+  localesList: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   status: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): void /* void */ {
   return libicu_dll.uspoof_setAllowedLocales(util.toPointer(sc), util.pstrToFfi(localesList), util.toPointer(status));
@@ -20244,7 +20244,7 @@ export function uspoof_check(
 
 export function uspoof_checkUTF8(
   sc: Deno.PointerValue | Uint8Array | null /* ptr */,
-  id: string | null /* Windows.Win32.Foundation.PSTR */,
+  id: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   length: number /* i32 */,
   position: Deno.PointerValue | Uint8Array | null /* ptr */,
   status: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -20264,7 +20264,7 @@ export function uspoof_check2(
 
 export function uspoof_check2UTF8(
   sc: Deno.PointerValue | Uint8Array | null /* ptr */,
-  id: string | null /* Windows.Win32.Foundation.PSTR */,
+  id: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   length: number /* i32 */,
   checkResult: Deno.PointerValue | Uint8Array | null /* ptr */,
   status: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -20318,9 +20318,9 @@ export function uspoof_areConfusable(
 
 export function uspoof_areConfusableUTF8(
   sc: Deno.PointerValue | Uint8Array | null /* ptr */,
-  id1: string | null /* Windows.Win32.Foundation.PSTR */,
+  id1: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   length1: number /* i32 */,
-  id2: string | null /* Windows.Win32.Foundation.PSTR */,
+  id2: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   length2: number /* i32 */,
   status: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
@@ -20342,9 +20342,9 @@ export function uspoof_getSkeleton(
 export function uspoof_getSkeletonUTF8(
   sc: Deno.PointerValue | Uint8Array | null /* ptr */,
   type: number /* u32 */,
-  id: string | null /* Windows.Win32.Foundation.PSTR */,
+  id: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   length: number /* i32 */,
-  dest: string | null /* Windows.Win32.Foundation.PSTR */,
+  dest: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   destCapacity: number /* i32 */,
   status: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
@@ -20532,8 +20532,8 @@ export function utrans_getSourceSet(
 }
 
 export function GetDistanceOfClosestLanguageInList(
-  pszLanguage: string | null /* Windows.Win32.Foundation.PWSTR */,
-  pszLanguagesList: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pszLanguage: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  pszLanguagesList: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   wchListDelimiter: Uint8Array | Deno.PointerValue | null /* char */,
   pClosestDistance: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
@@ -20541,16 +20541,16 @@ export function GetDistanceOfClosestLanguageInList(
 }
 
 export function IsWellFormedTag(
-  pszTag: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pszTag: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u8 */ {
   return libbcp47mrm_dll.IsWellFormedTag(util.pwstrToFfi(pszTag));
 }
 
 export function FindStringOrdinal(
   dwFindStringOrdinalFlags: number /* u32 */,
-  lpStringSource: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpStringSource: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   cchSource: number /* i32 */,
-  lpStringValue: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpStringValue: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   cchValue: number /* i32 */,
   bIgnoreCase: boolean /* Windows.Win32.Foundation.BOOL */,
 ): number /* i32 */ {
@@ -20558,85 +20558,85 @@ export function FindStringOrdinal(
 }
 
 export function lstrcmpA(
-  lpString1: string | null /* Windows.Win32.Foundation.PSTR */,
-  lpString2: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpString1: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  lpString2: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): number /* i32 */ {
   return libKERNEL32_dll.lstrcmpA(util.pstrToFfi(lpString1), util.pstrToFfi(lpString2));
 }
 
 export function lstrcmpW(
-  lpString1: string | null /* Windows.Win32.Foundation.PWSTR */,
-  lpString2: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpString1: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  lpString2: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* i32 */ {
   return libKERNEL32_dll.lstrcmpW(util.pwstrToFfi(lpString1), util.pwstrToFfi(lpString2));
 }
 
 export function lstrcmpiA(
-  lpString1: string | null /* Windows.Win32.Foundation.PSTR */,
-  lpString2: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpString1: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  lpString2: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): number /* i32 */ {
   return libKERNEL32_dll.lstrcmpiA(util.pstrToFfi(lpString1), util.pstrToFfi(lpString2));
 }
 
 export function lstrcmpiW(
-  lpString1: string | null /* Windows.Win32.Foundation.PWSTR */,
-  lpString2: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpString1: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  lpString2: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* i32 */ {
   return libKERNEL32_dll.lstrcmpiW(util.pwstrToFfi(lpString1), util.pwstrToFfi(lpString2));
 }
 
 export function lstrcpynA(
-  lpString1: string | null /* Windows.Win32.Foundation.PSTR */,
-  lpString2: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpString1: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  lpString2: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   iMaxLength: number /* i32 */,
 ): string | null /* Windows.Win32.Foundation.PSTR */ {
   return util.pstrFromFfi(libKERNEL32_dll.lstrcpynA(util.pstrToFfi(lpString1), util.pstrToFfi(lpString2), iMaxLength));
 }
 
 export function lstrcpynW(
-  lpString1: string | null /* Windows.Win32.Foundation.PWSTR */,
-  lpString2: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpString1: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  lpString2: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   iMaxLength: number /* i32 */,
 ): string | null /* Windows.Win32.Foundation.PWSTR */ {
   return util.pwstrFromFfi(libKERNEL32_dll.lstrcpynW(util.pwstrToFfi(lpString1), util.pwstrToFfi(lpString2), iMaxLength));
 }
 
 export function lstrcpyA(
-  lpString1: string | null /* Windows.Win32.Foundation.PSTR */,
-  lpString2: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpString1: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  lpString2: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): string | null /* Windows.Win32.Foundation.PSTR */ {
   return util.pstrFromFfi(libKERNEL32_dll.lstrcpyA(util.pstrToFfi(lpString1), util.pstrToFfi(lpString2)));
 }
 
 export function lstrcpyW(
-  lpString1: string | null /* Windows.Win32.Foundation.PWSTR */,
-  lpString2: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpString1: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  lpString2: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): string | null /* Windows.Win32.Foundation.PWSTR */ {
   return util.pwstrFromFfi(libKERNEL32_dll.lstrcpyW(util.pwstrToFfi(lpString1), util.pwstrToFfi(lpString2)));
 }
 
 export function lstrcatA(
-  lpString1: string | null /* Windows.Win32.Foundation.PSTR */,
-  lpString2: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpString1: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  lpString2: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): string | null /* Windows.Win32.Foundation.PSTR */ {
   return util.pstrFromFfi(libKERNEL32_dll.lstrcatA(util.pstrToFfi(lpString1), util.pstrToFfi(lpString2)));
 }
 
 export function lstrcatW(
-  lpString1: string | null /* Windows.Win32.Foundation.PWSTR */,
-  lpString2: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpString1: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  lpString2: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): string | null /* Windows.Win32.Foundation.PWSTR */ {
   return util.pwstrFromFfi(libKERNEL32_dll.lstrcatW(util.pwstrToFfi(lpString1), util.pwstrToFfi(lpString2)));
 }
 
 export function lstrlenA(
-  lpString: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpString: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): number /* i32 */ {
   return libKERNEL32_dll.lstrlenA(util.pstrToFfi(lpString));
 }
 
 export function lstrlenW(
-  lpString: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpString: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* i32 */ {
   return libKERNEL32_dll.lstrlenW(util.pwstrToFfi(lpString));
 }

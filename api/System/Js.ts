@@ -535,25 +535,25 @@ export function JsIdle(
 }
 
 export function JsParseScript(
-  script: string | null /* Windows.Win32.Foundation.PWSTR */,
+  script: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   sourceContext: Deno.PointerValue /* usize */,
-  sourceUrl: string | null /* Windows.Win32.Foundation.PWSTR */,
+  sourceUrl: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   result: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): JsErrorCode /* Windows.Win32.System.Js.JsErrorCode */ {
   return libchakra_dll.JsParseScript(util.pwstrToFfi(script), sourceContext, util.pwstrToFfi(sourceUrl), util.toPointer(result));
 }
 
 export function JsRunScript(
-  script: string | null /* Windows.Win32.Foundation.PWSTR */,
+  script: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   sourceContext: Deno.PointerValue /* usize */,
-  sourceUrl: string | null /* Windows.Win32.Foundation.PWSTR */,
+  sourceUrl: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   result: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): JsErrorCode /* Windows.Win32.System.Js.JsErrorCode */ {
   return libchakra_dll.JsRunScript(util.pwstrToFfi(script), sourceContext, util.pwstrToFfi(sourceUrl), util.toPointer(result));
 }
 
 export function JsSerializeScript(
-  script: string | null /* Windows.Win32.Foundation.PWSTR */,
+  script: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   buffer: Deno.PointerValue | Uint8Array | null /* ptr */,
   bufferSize: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): JsErrorCode /* Windows.Win32.System.Js.JsErrorCode */ {
@@ -561,27 +561,27 @@ export function JsSerializeScript(
 }
 
 export function JsParseSerializedScript(
-  script: string | null /* Windows.Win32.Foundation.PWSTR */,
+  script: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   buffer: Deno.PointerValue | Uint8Array | null /* ptr */,
   sourceContext: Deno.PointerValue /* usize */,
-  sourceUrl: string | null /* Windows.Win32.Foundation.PWSTR */,
+  sourceUrl: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   result: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): JsErrorCode /* Windows.Win32.System.Js.JsErrorCode */ {
   return libchakra_dll.JsParseSerializedScript(util.pwstrToFfi(script), util.toPointer(buffer), sourceContext, util.pwstrToFfi(sourceUrl), util.toPointer(result));
 }
 
 export function JsRunSerializedScript(
-  script: string | null /* Windows.Win32.Foundation.PWSTR */,
+  script: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   buffer: Deno.PointerValue | Uint8Array | null /* ptr */,
   sourceContext: Deno.PointerValue /* usize */,
-  sourceUrl: string | null /* Windows.Win32.Foundation.PWSTR */,
+  sourceUrl: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   result: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): JsErrorCode /* Windows.Win32.System.Js.JsErrorCode */ {
   return libchakra_dll.JsRunSerializedScript(util.pwstrToFfi(script), util.toPointer(buffer), sourceContext, util.pwstrToFfi(sourceUrl), util.toPointer(result));
 }
 
 export function JsGetPropertyIdFromName(
-  name: string | null /* Windows.Win32.Foundation.PWSTR */,
+  name: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   propertyId: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): JsErrorCode /* Windows.Win32.System.Js.JsErrorCode */ {
   return libchakra_dll.JsGetPropertyIdFromName(util.pwstrToFfi(name), util.toPointer(propertyId));
@@ -682,7 +682,7 @@ export function JsGetStringLength(
 }
 
 export function JsPointerToString(
-  stringValue: string | null /* Windows.Win32.Foundation.PWSTR */,
+  stringValue: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   stringLength: Deno.PointerValue /* usize */,
   value: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): JsErrorCode /* Windows.Win32.System.Js.JsErrorCode */ {

@@ -660,7 +660,7 @@ export interface WSMAN_DATA_TEXT {
   /** u32 */
   bufferLength: number;
   /** Windows.Win32.Foundation.PWSTR */
-  buffer: string | null;
+  buffer: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeofWSMAN_DATA_TEXT = 16;
@@ -776,13 +776,13 @@ export interface WSMAN_ERROR {
   /** u32 */
   code: number;
   /** Windows.Win32.Foundation.PWSTR */
-  errorDetail: string | null;
+  errorDetail: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  language: string | null;
+  language: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  machineName: string | null;
+  machineName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pluginName: string | null;
+  pluginName: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeofWSMAN_ERROR = 40;
@@ -821,9 +821,9 @@ export function allocWSMAN_ERROR(data?: Partial<WSMAN_ERROR>): Uint8Array {
  */
 export interface WSMAN_USERNAME_PASSWORD_CREDS {
   /** Windows.Win32.Foundation.PWSTR */
-  username: string | null;
+  username: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  password: string | null;
+  password: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeofWSMAN_USERNAME_PASSWORD_CREDS = 16;
@@ -874,9 +874,9 @@ export type BOOL = number;
  */
 export interface WSMAN_OPTION {
   /** Windows.Win32.Foundation.PWSTR */
-  name: string | null;
+  name: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  value: string | null;
+  value: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.BOOL */
   mustComply: boolean;
 }
@@ -967,9 +967,9 @@ export function allocWSMAN_OPTION_SETEX(data?: Partial<WSMAN_OPTION_SETEX>): Uin
  */
 export interface WSMAN_KEY {
   /** Windows.Win32.Foundation.PWSTR */
-  key: string | null;
+  key: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  value: string | null;
+  value: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeofWSMAN_KEY = 16;
@@ -1018,9 +1018,9 @@ export function allocWSMAN_SELECTOR_SET(data?: Partial<WSMAN_SELECTOR_SET>): Uin
  */
 export interface WSMAN_FRAGMENT {
   /** Windows.Win32.Foundation.PWSTR */
-  path: string | null;
+  path: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  dialect: string | null;
+  dialect: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeofWSMAN_FRAGMENT = 16;
@@ -1046,9 +1046,9 @@ export function allocWSMAN_FRAGMENT(data?: Partial<WSMAN_FRAGMENT>): Uint8Array 
  */
 export interface WSMAN_FILTER {
   /** Windows.Win32.Foundation.PWSTR */
-  filter: string | null;
+  filter: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  dialect: string | null;
+  dialect: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeofWSMAN_FILTER = 16;
@@ -1123,9 +1123,9 @@ export interface WSMAN_OPERATION_INFOEX {
   /** u32 */
   version: number;
   /** Windows.Win32.Foundation.PWSTR */
-  uiLocale: string | null;
+  uiLocale: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  dataLocale: string | null;
+  dataLocale: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeofWSMAN_OPERATION_INFOEX = 56;
@@ -1208,9 +1208,9 @@ export function allocWSMAN_STREAM_ID_SET(data?: Partial<WSMAN_STREAM_ID_SET>): U
  */
 export interface WSMAN_ENVIRONMENT_VARIABLE {
   /** Windows.Win32.Foundation.PWSTR */
-  name: string | null;
+  name: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  value: string | null;
+  value: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeofWSMAN_ENVIRONMENT_VARIABLE = 16;
@@ -1265,7 +1265,7 @@ export interface WSMAN_SHELL_STARTUP_INFO_V10 {
   /** u32 */
   idleTimeoutMs: number;
   /** Windows.Win32.Foundation.PWSTR */
-  workingDirectory: string | null;
+  workingDirectory: string | null | Uint8Array | Uint16Array;
   /** ptr */
   variableSet: Deno.PointerValue | Uint8Array | null;
 }
@@ -1299,7 +1299,7 @@ export interface WSMAN_SHELL_STARTUP_INFO_V11 {
   /** Windows.Win32.System.RemoteManagement.WSMAN_SHELL_STARTUP_INFO_V10 */
   Base: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.Foundation.PWSTR */
-  name: string | null;
+  name: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeofWSMAN_SHELL_STARTUP_INFO_V11 = 16;
@@ -1341,11 +1341,11 @@ export function allocWSMAN_SHELL_DISCONNECT_INFO(data?: Partial<WSMAN_SHELL_DISC
  */
 export interface WSMAN_RECEIVE_DATA_RESULT {
   /** Windows.Win32.Foundation.PWSTR */
-  streamId: string | null;
+  streamId: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.System.RemoteManagement.WSMAN_DATA */
   streamData: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.Foundation.PWSTR */
-  commandState: string | null;
+  commandState: string | null | Uint8Array | Uint16Array;
   /** u32 */
   exitCode: number;
 }
@@ -1485,13 +1485,13 @@ export function allocWSMAN_COMMAND_ARG_SET(data?: Partial<WSMAN_COMMAND_ARG_SET>
  */
 export interface WSMAN_CERTIFICATE_DETAILS {
   /** Windows.Win32.Foundation.PWSTR */
-  subject: string | null;
+  subject: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  issuerName: string | null;
+  issuerName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  issuerThumbprint: string | null;
+  issuerThumbprint: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  subjectName: string | null;
+  subjectName: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeofWSMAN_CERTIFICATE_DETAILS = 32;
@@ -1529,15 +1529,15 @@ export type HANDLE = Deno.PointerValue;
  */
 export interface WSMAN_SENDER_DETAILS {
   /** Windows.Win32.Foundation.PWSTR */
-  senderName: string | null;
+  senderName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  authenticationMechanism: string | null;
+  authenticationMechanism: string | null | Uint8Array | Uint16Array;
   /** ptr */
   certificateDetails: Deno.PointerValue | Uint8Array | null;
   /** Windows.Win32.Foundation.HANDLE */
   clientToken: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.Foundation.PWSTR */
-  httpURL: string | null;
+  httpURL: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeofWSMAN_SENDER_DETAILS = 40;
@@ -1574,9 +1574,9 @@ export interface WSMAN_PLUGIN_REQUEST {
   /** ptr */
   senderDetails: Deno.PointerValue | Uint8Array | null;
   /** Windows.Win32.Foundation.PWSTR */
-  locale: string | null;
+  locale: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  resourceUri: string | null;
+  resourceUri: string | null | Uint8Array | Uint16Array;
   /** ptr */
   operationInfo: Deno.PointerValue | Uint8Array | null;
   /** i32 */
@@ -1584,7 +1584,7 @@ export interface WSMAN_PLUGIN_REQUEST {
   /** Windows.Win32.Foundation.HANDLE */
   shutdownNotificationHandle: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.Foundation.PWSTR */
-  dataLocale: string | null;
+  dataLocale: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeofWSMAN_PLUGIN_REQUEST = 56;
@@ -1807,10 +1807,10 @@ export function WSManDeinitialize(
 export function WSManGetErrorMessage(
   apiHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
   flags: number /* u32 */,
-  languageCode: string | null /* Windows.Win32.Foundation.PWSTR */,
+  languageCode: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   errorCode: number /* u32 */,
   messageLength: number /* u32 */,
-  message: string | null /* Windows.Win32.Foundation.PWSTR */,
+  message: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   messageLengthUsed: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
   return libWsmSvc_dll.WSManGetErrorMessage(util.toPointer(apiHandle), flags, util.pwstrToFfi(languageCode), errorCode, messageLength, util.pwstrToFfi(message), util.toPointer(messageLengthUsed));
@@ -1818,7 +1818,7 @@ export function WSManGetErrorMessage(
 
 export function WSManCreateSession(
   apiHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
-  connection: string | null /* Windows.Win32.Foundation.PWSTR */,
+  connection: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   flags: number /* u32 */,
   serverAuthenticationCredentials: Deno.PointerValue | Uint8Array | null /* ptr */,
   proxyInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -1854,7 +1854,7 @@ export function WSManGetSessionOptionAsString(
   session: Deno.PointerValue | Uint8Array | null /* ptr */,
   option: WSManSessionOption /* Windows.Win32.System.RemoteManagement.WSManSessionOption */,
   stringLength: number /* u32 */,
-  string: string | null /* Windows.Win32.Foundation.PWSTR */,
+  string: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   stringLengthUsed: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
   return libWsmSvc_dll.WSManGetSessionOptionAsString(util.toPointer(session), option, stringLength, util.pwstrToFfi(string), util.toPointer(stringLengthUsed));
@@ -1870,7 +1870,7 @@ export function WSManCloseOperation(
 export function WSManCreateShell(
   session: Deno.PointerValue | Uint8Array | null /* ptr */,
   flags: number /* u32 */,
-  resourceUri: string | null /* Windows.Win32.Foundation.PWSTR */,
+  resourceUri: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   startupInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
   options: Deno.PointerValue | Uint8Array | null /* ptr */,
   createXml: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -1883,7 +1883,7 @@ export function WSManCreateShell(
 export function WSManRunShellCommand(
   shell: Deno.PointerValue | Uint8Array | null /* ptr */,
   flags: number /* u32 */,
-  commandLine: string | null /* Windows.Win32.Foundation.PWSTR */,
+  commandLine: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   args: Deno.PointerValue | Uint8Array | null /* ptr */,
   options: Deno.PointerValue | Uint8Array | null /* ptr */,
   async__: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -1896,7 +1896,7 @@ export function WSManSignalShell(
   shell: Deno.PointerValue | Uint8Array | null /* ptr */,
   command: Deno.PointerValue | Uint8Array | null /* ptr */,
   flags: number /* u32 */,
-  code: string | null /* Windows.Win32.Foundation.PWSTR */,
+  code: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   async__: Deno.PointerValue | Uint8Array | null /* ptr */,
   signalOperation: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): void /* void */ {
@@ -1918,7 +1918,7 @@ export function WSManSendShellInput(
   shell: Deno.PointerValue | Uint8Array | null /* ptr */,
   command: Deno.PointerValue | Uint8Array | null /* ptr */,
   flags: number /* u32 */,
-  streamId: string | null /* Windows.Win32.Foundation.PWSTR */,
+  streamId: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   streamData: Deno.PointerValue | Uint8Array | null /* ptr */,
   endOfStream: boolean /* Windows.Win32.Foundation.BOOL */,
   async__: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -1946,8 +1946,8 @@ export function WSManCloseShell(
 export function WSManCreateShellEx(
   session: Deno.PointerValue | Uint8Array | null /* ptr */,
   flags: number /* u32 */,
-  resourceUri: string | null /* Windows.Win32.Foundation.PWSTR */,
-  shellId: string | null /* Windows.Win32.Foundation.PWSTR */,
+  resourceUri: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  shellId: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   startupInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
   options: Deno.PointerValue | Uint8Array | null /* ptr */,
   createXml: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -1960,8 +1960,8 @@ export function WSManCreateShellEx(
 export function WSManRunShellCommandEx(
   shell: Deno.PointerValue | Uint8Array | null /* ptr */,
   flags: number /* u32 */,
-  commandId: string | null /* Windows.Win32.Foundation.PWSTR */,
-  commandLine: string | null /* Windows.Win32.Foundation.PWSTR */,
+  commandId: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  commandLine: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   args: Deno.PointerValue | Uint8Array | null /* ptr */,
   options: Deno.PointerValue | Uint8Array | null /* ptr */,
   async__: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -1998,8 +1998,8 @@ export function WSManReconnectShellCommand(
 export function WSManConnectShell(
   session: Deno.PointerValue | Uint8Array | null /* ptr */,
   flags: number /* u32 */,
-  resourceUri: string | null /* Windows.Win32.Foundation.PWSTR */,
-  shellID: string | null /* Windows.Win32.Foundation.PWSTR */,
+  resourceUri: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  shellID: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   options: Deno.PointerValue | Uint8Array | null /* ptr */,
   connectXml: Deno.PointerValue | Uint8Array | null /* ptr */,
   async__: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -2011,7 +2011,7 @@ export function WSManConnectShell(
 export function WSManConnectShellCommand(
   shell: Deno.PointerValue | Uint8Array | null /* ptr */,
   flags: number /* u32 */,
-  commandID: string | null /* Windows.Win32.Foundation.PWSTR */,
+  commandID: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   options: Deno.PointerValue | Uint8Array | null /* ptr */,
   connectXml: Deno.PointerValue | Uint8Array | null /* ptr */,
   async__: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -2031,9 +2031,9 @@ export function WSManPluginReportContext(
 export function WSManPluginReceiveResult(
   requestDetails: Deno.PointerValue | Uint8Array | null /* ptr */,
   flags: number /* u32 */,
-  stream: string | null /* Windows.Win32.Foundation.PWSTR */,
+  stream: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   streamResult: Deno.PointerValue | Uint8Array | null /* ptr */,
-  commandState: string | null /* Windows.Win32.Foundation.PWSTR */,
+  commandState: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   exitCode: number /* u32 */,
 ): number /* u32 */ {
   return libWsmSvc_dll.WSManPluginReceiveResult(util.toPointer(requestDetails), flags, util.pwstrToFfi(stream), util.toPointer(streamResult), util.pwstrToFfi(commandState), exitCode);
@@ -2043,7 +2043,7 @@ export function WSManPluginOperationComplete(
   requestDetails: Deno.PointerValue | Uint8Array | null /* ptr */,
   flags: number /* u32 */,
   errorCode: number /* u32 */,
-  extendedInformation: string | null /* Windows.Win32.Foundation.PWSTR */,
+  extendedInformation: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
   return libWsmSvc_dll.WSManPluginOperationComplete(util.toPointer(requestDetails), flags, errorCode, util.pwstrToFfi(extendedInformation));
 }
@@ -2084,7 +2084,7 @@ export function WSManPluginAuthzUserComplete(
   impersonationToken: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
   userIsAdministrator: boolean /* Windows.Win32.Foundation.BOOL */,
   errorCode: number /* u32 */,
-  extendedErrorInformation: string | null /* Windows.Win32.Foundation.PWSTR */,
+  extendedErrorInformation: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
   return libWsmSvc_dll.WSManPluginAuthzUserComplete(util.toPointer(senderDetails), flags, util.toPointer(userAuthorizationContext), util.toPointer(impersonationToken), util.boolToFfi(userIsAdministrator), errorCode, util.pwstrToFfi(extendedErrorInformation));
 }
@@ -2094,7 +2094,7 @@ export function WSManPluginAuthzOperationComplete(
   flags: number /* u32 */,
   userAuthorizationContext: Deno.PointerValue | Uint8Array | null /* ptr */,
   errorCode: number /* u32 */,
-  extendedErrorInformation: string | null /* Windows.Win32.Foundation.PWSTR */,
+  extendedErrorInformation: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
   return libWsmSvc_dll.WSManPluginAuthzOperationComplete(util.toPointer(senderDetails), flags, util.toPointer(userAuthorizationContext), errorCode, util.pwstrToFfi(extendedErrorInformation));
 }
@@ -2104,7 +2104,7 @@ export function WSManPluginAuthzQueryQuotaComplete(
   flags: number /* u32 */,
   quota: Deno.PointerValue | Uint8Array | null /* ptr */,
   errorCode: number /* u32 */,
-  extendedErrorInformation: string | null /* Windows.Win32.Foundation.PWSTR */,
+  extendedErrorInformation: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
   return libWsmSvc_dll.WSManPluginAuthzQueryQuotaComplete(util.toPointer(senderDetails), flags, util.toPointer(quota), errorCode, util.pwstrToFfi(extendedErrorInformation));
 }

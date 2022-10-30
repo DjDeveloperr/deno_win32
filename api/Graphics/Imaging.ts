@@ -577,7 +577,7 @@ export interface _u_e__Struct {
   /** u32 */
   dwValue: number;
   /** Windows.Win32.Foundation.PWSTR */
-  pwszName: string | null;
+  pwszName: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeof_u_e__Struct = 16;
@@ -1231,14 +1231,14 @@ export function WICCreateBitmapFromSectionEx(
 export function WICMapGuidToShortName(
   guid: Deno.PointerValue | Uint8Array | null /* ptr */,
   cchName: number /* u32 */,
-  wzName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  wzName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pcchActual: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
   return util.pointerFromFfi(libWindowsCodecs_dll.WICMapGuidToShortName(util.toPointer(guid), cchName, util.pwstrToFfi(wzName), util.toPointer(pcchActual)));
 }
 
 export function WICMapShortNameToGuid(
-  wzName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  wzName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pguid: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
   return util.pointerFromFfi(libWindowsCodecs_dll.WICMapShortNameToGuid(util.pwstrToFfi(wzName), util.toPointer(pguid)));
@@ -1246,9 +1246,9 @@ export function WICMapShortNameToGuid(
 
 export function WICMapSchemaToName(
   guidMetadataFormat: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pwzSchema: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pwzSchema: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   cchName: number /* u32 */,
-  wzName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  wzName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pcchActual: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
   return util.pointerFromFfi(libWindowsCodecs_dll.WICMapSchemaToName(util.toPointer(guidMetadataFormat), util.pwstrToFfi(pwzSchema), cchName, util.pwstrToFfi(wzName), util.toPointer(pcchActual)));

@@ -3664,7 +3664,7 @@ export interface _u_e__Struct {
   /** u32 */
   dwValue: number;
   /** Windows.Win32.Foundation.PWSTR */
-  pwszName: string | null;
+  pwszName: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeof_u_e__Struct = 16;
@@ -5036,7 +5036,7 @@ export interface _Anonymous1_e__Union {
   /** usize */
   Data0: Deno.PointerValue;
   /** Windows.Win32.Foundation.PWSTR */
-  String: string | null;
+  String: string | null | Uint8Array | Uint16Array;
   /** usize */
   u: Deno.PointerValue;
   /** ptr */
@@ -5151,7 +5151,7 @@ export type BOOLEAN = number;
  */
 export interface TOKEN_BNO_ISOLATION_INFORMATION {
   /** Windows.Win32.Foundation.PWSTR */
-  IsolationPrefix: string | null;
+  IsolationPrefix: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.BOOLEAN */
   IsolationEnabled: Uint8Array | Deno.PointerValue | null;
 }
@@ -5690,7 +5690,7 @@ export interface JOBOBJECT_IO_RATE_CONTROL_INFORMATION_NATIVE_V1 {
   /** i64 */
   ReservationIops: Deno.PointerValue;
   /** Windows.Win32.Foundation.PWSTR */
-  VolumeName: string | null;
+  VolumeName: string | null | Uint8Array | Uint16Array;
   /** u32 */
   BaseIoSize: number;
   /** Windows.Win32.System.JobObjects.JOB_OBJECT_IO_RATE_CONTROL_FLAGS */
@@ -9969,7 +9969,7 @@ export type PSTR = Deno.PointerValue | Uint8Array | null;
  */
 export interface OUTPUT_DEBUG_STRING_INFO {
   /** Windows.Win32.Foundation.PSTR */
-  lpDebugStringData: string | null;
+  lpDebugStringData: string | null | Uint8Array;
   /** u16 */
   fUnicode: number;
   /** u16 */

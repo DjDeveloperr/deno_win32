@@ -17,6 +17,10 @@ let completed = 0;
 const enumCache: Record<string, [string, string]> = {};
 const structCache: Set<string> = new Set();
 
+const exclude = [
+  "RtlCaptureContext2",
+];
+
 const callbackSymbols = [
   "GetMessageA",
   "GetMessageW",
@@ -36,6 +40,12 @@ const callbackSymbols = [
   "SendMessageW",
 ];
 
+const asyncSymbols = [
+  "GetOverlappedResult",
+  "CreateFileA",
+  "CreateFileW",
+];
+
 const specialTypes: Record<string, {
   jsType: string;
   jsRtype: string;
@@ -44,7 +54,7 @@ const specialTypes: Record<string, {
   fromFfi: string;
 }> = {
   "Windows.Win32.Foundation.PWSTR": {
-    jsType: "string | null",
+    jsType: "string | null | Uint8Array | Uint16Array",
     jsRtype: "string | null",
     ffiType: "buffer",
     toFfi: "util.pwstrToFfi",
@@ -52,7 +62,7 @@ const specialTypes: Record<string, {
   },
 
   "Windows.Win32.Foundation.PSTR": {
-    jsType: "string | null",
+    jsType: "string | null | Uint8Array",
     jsRtype: "string | null",
     ffiType: "buffer",
     toFfi: "util.pstrToFfi",
@@ -94,9 +104,9 @@ function typeToJS(ty: string, result = false) {
     case "f64":
       return "number";
     case "bool":
-      return "boolean";
+      return "boolean | number";
     case "string":
-      return "string | null";
+      return "string | Uint8Array | null";
     case "void":
       return "void";
     case "ptr":
@@ -268,7 +278,13 @@ for (const api in win32) {
           ).replaceAll("\b", "\\b").replaceAll("\f", "\\f").replaceAll(
             "\n",
             "\\n",
-          )
+          ).split("").map((c: string) => {
+            if (c.match(/^[ -~]$/)) {
+              return c;
+            } else {
+              return `\\x${c.charCodeAt(0).toString(16).padStart(2, "0")}`;
+            }
+          }).join("")
       }\`;\n`;
     }
   }
@@ -488,6 +504,9 @@ for (const api in win32) {
       JSON.stringify(lib)
     }, {\n`;
     for (const name in libs[lib]) {
+      if (exclude.includes(name)) {
+        continue;
+      }
       const { parameters, result } = libs[lib][name] as Deno.ForeignFunction;
       content += `    ${name}: {\n`;
       if (callbackSymbols.includes(name)) {
@@ -498,6 +517,16 @@ for (const api in win32) {
       }],\n`;
       content += `      result: ${JSON.stringify(result)},\n`;
       content += `    },\n`;
+      if (asyncSymbols.includes(name)) {
+        content += `    ${name}Async: {\n`;
+        content += `      name: ${JSON.stringify(name)},\n`;
+        content += `      nonblocking: true,\n`;
+        content += `      parameters: [${
+          parameters.map((e) => JSON.stringify(e)).join(", ")
+        }],\n`;
+        content += `      result: ${JSON.stringify(result)},\n`;
+        content += `    },\n`;
+      }
     }
     content += `  }).symbols;\n`;
     content += `} catch(e) { /* ignore */ }\n\n`;
@@ -505,6 +534,9 @@ for (const api in win32) {
 
   content += "// Symbols\n\n";
   for (const name in symbols) {
+    if (exclude.includes(name)) {
+      continue;
+    }
     const { dll, parameters, result } = symbols[name];
     const args = parameters.map((e: [string, string]) =>
       (jsify(e[0]) + ": " + typeToJS(e[1])) + " /* " + e[1] + " */,"
@@ -533,6 +565,29 @@ for (const api in win32) {
       }).join(", ")
     })${retSpecial || retFfi === "pointer" ? ")" : ""};\n`;
     content += `}\n\n`;
+    if (asyncSymbols.includes(name)) {
+      content += `export async function ${name}Async${
+        parameters.length ? `(\n  ${args}\n)` : "()"
+      }: Promise<${ret}> /* ${result} */ {\n`;
+      content += `  return ${
+        retSpecial
+          ? `${retSpecial.fromFfi}(`
+          : (retFfi === "pointer" ? "util.pointerFromFfi(" : "")
+      }await lib${jsify(dll)}.${name}Async(${
+        parameters.map((e: [string, string]) => {
+          const special = specialTypes[e[1]];
+          if (special) {
+            return `${special.toFfi}(${jsify(e[0])})`;
+          }
+          const ffi = typeToFFI(e[1]);
+          if (ffi === "pointer") {
+            return `util.toPointer(${jsify(e[0])})`;
+          }
+          return jsify(e[0]);
+        }).join(", ")
+      })${retSpecial || retFfi === "pointer" ? ")" : ""};\n`;
+      content += `}\n\n`;
+    }
   }
 
   files.push(path.replaceAll("/", ".").replace(".ts", "").trim());

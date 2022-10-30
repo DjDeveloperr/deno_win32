@@ -1421,7 +1421,7 @@ export interface BLUETOOTH_COD_PAIRS {
   /** u32 */
   ulCODMask: number;
   /** Windows.Win32.Foundation.PWSTR */
-  pcszDescription: string | null;
+  pcszDescription: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeofBLUETOOTH_COD_PAIRS = 16;
@@ -1453,7 +1453,7 @@ export interface BLUETOOTH_SELECT_DEVICE_PARAMS {
   /** ptr */
   prgClassOfDevices: Deno.PointerValue | Uint8Array | null;
   /** Windows.Win32.Foundation.PWSTR */
-  pszInfo: string | null;
+  pszInfo: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.HWND */
   hwndParent: Deno.PointerValue | null;
   /** Windows.Win32.Foundation.BOOL */
@@ -2805,7 +2805,7 @@ export function BluetoothAuthenticateDevice(
   hwndParent: Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */,
   hRadio: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
   pbtbi: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pszPasskey: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pszPasskey: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   ulPasskeyLength: number /* u32 */,
 ): number /* u32 */ {
   return libbthprops_cpl.BluetoothAuthenticateDevice(util.hwndToFfi(hwndParent), util.toPointer(hRadio), util.toPointer(pbtbi), util.pwstrToFfi(pszPasskey), ulPasskeyLength);
@@ -2901,7 +2901,7 @@ export function BluetoothUnregisterAuthentication(
 export function BluetoothSendAuthenticationResponse(
   hRadio: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
   pbtdi: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pszPasskey: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pszPasskey: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
   return libBluetoothApis_dll.BluetoothSendAuthenticationResponse(util.toPointer(hRadio), util.toPointer(pbtdi), util.pwstrToFfi(pszPasskey));
 }
@@ -2944,7 +2944,7 @@ export function BluetoothSdpGetString(
   cbRecordLength: number /* u32 */,
   pStringData: Deno.PointerValue | Uint8Array | null /* ptr */,
   usStringOffset: number /* u16 */,
-  pszString: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pszString: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pcchStringLength: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
   return libBluetoothApis_dll.BluetoothSdpGetString(util.toPointer(pRecordStream), cbRecordLength, util.toPointer(pStringData), usStringOffset, util.pwstrToFfi(pszString), util.toPointer(pcchStringLength));

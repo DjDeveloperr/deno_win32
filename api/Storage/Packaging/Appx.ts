@@ -3402,9 +3402,9 @@ export interface APPX_PACKAGE_WRITER_PAYLOAD_STREAM {
   /** Windows.Win32.System.Com.IStream */
   inputStream: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.Foundation.PWSTR */
-  fileName: string | null;
+  fileName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  contentType: string | null;
+  contentType: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Storage.Packaging.Appx.APPX_COMPRESSION_OPTION */
   compressionOption: APPX_COMPRESSION_OPTION;
 }
@@ -3439,7 +3439,7 @@ export interface APPX_ENCRYPTED_PACKAGE_SETTINGS {
   /** u32 */
   keyLength: number;
   /** Windows.Win32.Foundation.PWSTR */
-  encryptionAlgorithm: string | null;
+  encryptionAlgorithm: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.BOOL */
   useDiffusion: boolean;
   /** Windows.Win32.System.Com.IUri */
@@ -3474,7 +3474,7 @@ export interface APPX_ENCRYPTED_PACKAGE_SETTINGS2 {
   /** u32 */
   keyLength: number;
   /** Windows.Win32.Foundation.PWSTR */
-  encryptionAlgorithm: string | null;
+  encryptionAlgorithm: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.System.Com.IUri */
   blockMapHashAlgorithm: Uint8Array | Deno.PointerValue | null;
   /** u32 */
@@ -3628,13 +3628,13 @@ export interface PACKAGE_ID {
   /** Windows.Win32.Storage.Packaging.Appx.PACKAGE_VERSION */
   version: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.Foundation.PWSTR */
-  name: string | null;
+  name: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  publisher: string | null;
+  publisher: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  resourceId: string | null;
+  resourceId: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  publisherId: string | null;
+  publisherId: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeofPACKAGE_ID = 48;
@@ -3698,11 +3698,11 @@ export interface PACKAGE_INFO {
   /** u32 */
   flags: number;
   /** Windows.Win32.Foundation.PWSTR */
-  path: string | null;
+  path: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  packageFullName: string | null;
+  packageFullName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  packageFamilyName: string | null;
+  packageFamilyName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Storage.Packaging.Appx.PACKAGE_ID */
   packageId: Uint8Array | Deno.PointerValue | null;
 }
@@ -4065,21 +4065,21 @@ export function GetCurrentPackageId(
 
 export function GetCurrentPackageFullName(
   packageFullNameLength: Deno.PointerValue | Uint8Array | null /* ptr */,
-  packageFullName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  packageFullName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
   return libKERNEL32_dll.GetCurrentPackageFullName(util.toPointer(packageFullNameLength), util.pwstrToFfi(packageFullName));
 }
 
 export function GetCurrentPackageFamilyName(
   packageFamilyNameLength: Deno.PointerValue | Uint8Array | null /* ptr */,
-  packageFamilyName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  packageFamilyName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
   return libKERNEL32_dll.GetCurrentPackageFamilyName(util.toPointer(packageFamilyNameLength), util.pwstrToFfi(packageFamilyName));
 }
 
 export function GetCurrentPackagePath(
   pathLength: Deno.PointerValue | Uint8Array | null /* ptr */,
-  path: string | null /* Windows.Win32.Foundation.PWSTR */,
+  path: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
   return libKERNEL32_dll.GetCurrentPackagePath(util.toPointer(pathLength), util.pwstrToFfi(path));
 }
@@ -4095,7 +4095,7 @@ export function GetPackageId(
 export function GetPackageFullName(
   hProcess: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
   packageFullNameLength: Deno.PointerValue | Uint8Array | null /* ptr */,
-  packageFullName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  packageFullName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
   return libKERNEL32_dll.GetPackageFullName(util.toPointer(hProcess), util.toPointer(packageFullNameLength), util.pwstrToFfi(packageFullName));
 }
@@ -4103,7 +4103,7 @@ export function GetPackageFullName(
 export function GetPackageFullNameFromToken(
   token: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
   packageFullNameLength: Deno.PointerValue | Uint8Array | null /* ptr */,
-  packageFullName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  packageFullName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
   return libapi_ms_win_appmodel_runtime_l1_1_1_dll.GetPackageFullNameFromToken(util.toPointer(token), util.toPointer(packageFullNameLength), util.pwstrToFfi(packageFullName));
 }
@@ -4111,7 +4111,7 @@ export function GetPackageFullNameFromToken(
 export function GetPackageFamilyName(
   hProcess: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
   packageFamilyNameLength: Deno.PointerValue | Uint8Array | null /* ptr */,
-  packageFamilyName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  packageFamilyName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
   return libKERNEL32_dll.GetPackageFamilyName(util.toPointer(hProcess), util.toPointer(packageFamilyNameLength), util.pwstrToFfi(packageFamilyName));
 }
@@ -4119,7 +4119,7 @@ export function GetPackageFamilyName(
 export function GetPackageFamilyNameFromToken(
   token: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
   packageFamilyNameLength: Deno.PointerValue | Uint8Array | null /* ptr */,
-  packageFamilyName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  packageFamilyName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
   return libapi_ms_win_appmodel_runtime_l1_1_1_dll.GetPackageFamilyNameFromToken(util.toPointer(token), util.toPointer(packageFamilyNameLength), util.pwstrToFfi(packageFamilyName));
 }
@@ -4128,41 +4128,41 @@ export function GetPackagePath(
   packageId: Deno.PointerValue | Uint8Array | null /* ptr */,
   reserved: number /* u32 */,
   pathLength: Deno.PointerValue | Uint8Array | null /* ptr */,
-  path: string | null /* Windows.Win32.Foundation.PWSTR */,
+  path: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
   return libKERNEL32_dll.GetPackagePath(util.toPointer(packageId), reserved, util.toPointer(pathLength), util.pwstrToFfi(path));
 }
 
 export function GetPackagePathByFullName(
-  packageFullName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  packageFullName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pathLength: Deno.PointerValue | Uint8Array | null /* ptr */,
-  path: string | null /* Windows.Win32.Foundation.PWSTR */,
+  path: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
   return libKERNEL32_dll.GetPackagePathByFullName(util.pwstrToFfi(packageFullName), util.toPointer(pathLength), util.pwstrToFfi(path));
 }
 
 export function GetStagedPackagePathByFullName(
-  packageFullName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  packageFullName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pathLength: Deno.PointerValue | Uint8Array | null /* ptr */,
-  path: string | null /* Windows.Win32.Foundation.PWSTR */,
+  path: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
   return libKERNEL32_dll.GetStagedPackagePathByFullName(util.pwstrToFfi(packageFullName), util.toPointer(pathLength), util.pwstrToFfi(path));
 }
 
 export function GetPackagePathByFullName2(
-  packageFullName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  packageFullName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   packagePathType: PackagePathType /* Windows.Win32.Storage.Packaging.Appx.PackagePathType */,
   pathLength: Deno.PointerValue | Uint8Array | null /* ptr */,
-  path: string | null /* Windows.Win32.Foundation.PWSTR */,
+  path: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
   return libapi_ms_win_appmodel_runtime_l1_1_3_dll.GetPackagePathByFullName2(util.pwstrToFfi(packageFullName), packagePathType, util.toPointer(pathLength), util.pwstrToFfi(path));
 }
 
 export function GetStagedPackagePathByFullName2(
-  packageFullName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  packageFullName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   packagePathType: PackagePathType /* Windows.Win32.Storage.Packaging.Appx.PackagePathType */,
   pathLength: Deno.PointerValue | Uint8Array | null /* ptr */,
-  path: string | null /* Windows.Win32.Foundation.PWSTR */,
+  path: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
   return libapi_ms_win_appmodel_runtime_l1_1_3_dll.GetStagedPackagePathByFullName2(util.pwstrToFfi(packageFullName), packagePathType, util.toPointer(pathLength), util.pwstrToFfi(path));
 }
@@ -4180,14 +4180,14 @@ export function GetCurrentPackageInfo2(
 export function GetCurrentPackagePath2(
   packagePathType: PackagePathType /* Windows.Win32.Storage.Packaging.Appx.PackagePathType */,
   pathLength: Deno.PointerValue | Uint8Array | null /* ptr */,
-  path: string | null /* Windows.Win32.Foundation.PWSTR */,
+  path: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
   return libapi_ms_win_appmodel_runtime_l1_1_3_dll.GetCurrentPackagePath2(packagePathType, util.toPointer(pathLength), util.pwstrToFfi(path));
 }
 
 export function GetCurrentApplicationUserModelId(
   applicationUserModelIdLength: Deno.PointerValue | Uint8Array | null /* ptr */,
-  applicationUserModelId: string | null /* Windows.Win32.Foundation.PWSTR */,
+  applicationUserModelId: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
   return libKERNEL32_dll.GetCurrentApplicationUserModelId(util.toPointer(applicationUserModelIdLength), util.pwstrToFfi(applicationUserModelId));
 }
@@ -4195,7 +4195,7 @@ export function GetCurrentApplicationUserModelId(
 export function GetApplicationUserModelId(
   hProcess: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
   applicationUserModelIdLength: Deno.PointerValue | Uint8Array | null /* ptr */,
-  applicationUserModelId: string | null /* Windows.Win32.Foundation.PWSTR */,
+  applicationUserModelId: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
   return libKERNEL32_dll.GetApplicationUserModelId(util.toPointer(hProcess), util.toPointer(applicationUserModelIdLength), util.pwstrToFfi(applicationUserModelId));
 }
@@ -4203,19 +4203,19 @@ export function GetApplicationUserModelId(
 export function GetApplicationUserModelIdFromToken(
   token: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
   applicationUserModelIdLength: Deno.PointerValue | Uint8Array | null /* ptr */,
-  applicationUserModelId: string | null /* Windows.Win32.Foundation.PWSTR */,
+  applicationUserModelId: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
   return libapi_ms_win_appmodel_runtime_l1_1_1_dll.GetApplicationUserModelIdFromToken(util.toPointer(token), util.toPointer(applicationUserModelIdLength), util.pwstrToFfi(applicationUserModelId));
 }
 
 export function VerifyPackageFullName(
-  packageFullName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  packageFullName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
   return libapi_ms_win_appmodel_runtime_l1_1_1_dll.VerifyPackageFullName(util.pwstrToFfi(packageFullName));
 }
 
 export function VerifyPackageFamilyName(
-  packageFamilyName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  packageFamilyName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
   return libapi_ms_win_appmodel_runtime_l1_1_1_dll.VerifyPackageFamilyName(util.pwstrToFfi(packageFamilyName));
 }
@@ -4227,19 +4227,19 @@ export function VerifyPackageId(
 }
 
 export function VerifyApplicationUserModelId(
-  applicationUserModelId: string | null /* Windows.Win32.Foundation.PWSTR */,
+  applicationUserModelId: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
   return libapi_ms_win_appmodel_runtime_l1_1_1_dll.VerifyApplicationUserModelId(util.pwstrToFfi(applicationUserModelId));
 }
 
 export function VerifyPackageRelativeApplicationId(
-  packageRelativeApplicationId: string | null /* Windows.Win32.Foundation.PWSTR */,
+  packageRelativeApplicationId: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
   return libapi_ms_win_appmodel_runtime_l1_1_1_dll.VerifyPackageRelativeApplicationId(util.pwstrToFfi(packageRelativeApplicationId));
 }
 
 export function PackageIdFromFullName(
-  packageFullName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  packageFullName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   flags: number /* u32 */,
   bufferLength: Deno.PointerValue | Uint8Array | null /* ptr */,
   buffer: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -4250,7 +4250,7 @@ export function PackageIdFromFullName(
 export function PackageFullNameFromId(
   packageId: Deno.PointerValue | Uint8Array | null /* ptr */,
   packageFullNameLength: Deno.PointerValue | Uint8Array | null /* ptr */,
-  packageFullName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  packageFullName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
   return libKERNEL32_dll.PackageFullNameFromId(util.toPointer(packageId), util.toPointer(packageFullNameLength), util.pwstrToFfi(packageFullName));
 }
@@ -4258,72 +4258,72 @@ export function PackageFullNameFromId(
 export function PackageFamilyNameFromId(
   packageId: Deno.PointerValue | Uint8Array | null /* ptr */,
   packageFamilyNameLength: Deno.PointerValue | Uint8Array | null /* ptr */,
-  packageFamilyName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  packageFamilyName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
   return libKERNEL32_dll.PackageFamilyNameFromId(util.toPointer(packageId), util.toPointer(packageFamilyNameLength), util.pwstrToFfi(packageFamilyName));
 }
 
 export function PackageFamilyNameFromFullName(
-  packageFullName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  packageFullName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   packageFamilyNameLength: Deno.PointerValue | Uint8Array | null /* ptr */,
-  packageFamilyName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  packageFamilyName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
   return libKERNEL32_dll.PackageFamilyNameFromFullName(util.pwstrToFfi(packageFullName), util.toPointer(packageFamilyNameLength), util.pwstrToFfi(packageFamilyName));
 }
 
 export function PackageNameAndPublisherIdFromFamilyName(
-  packageFamilyName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  packageFamilyName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   packageNameLength: Deno.PointerValue | Uint8Array | null /* ptr */,
-  packageName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  packageName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   packagePublisherIdLength: Deno.PointerValue | Uint8Array | null /* ptr */,
-  packagePublisherId: string | null /* Windows.Win32.Foundation.PWSTR */,
+  packagePublisherId: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
   return libKERNEL32_dll.PackageNameAndPublisherIdFromFamilyName(util.pwstrToFfi(packageFamilyName), util.toPointer(packageNameLength), util.pwstrToFfi(packageName), util.toPointer(packagePublisherIdLength), util.pwstrToFfi(packagePublisherId));
 }
 
 export function FormatApplicationUserModelId(
-  packageFamilyName: string | null /* Windows.Win32.Foundation.PWSTR */,
-  packageRelativeApplicationId: string | null /* Windows.Win32.Foundation.PWSTR */,
+  packageFamilyName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  packageRelativeApplicationId: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   applicationUserModelIdLength: Deno.PointerValue | Uint8Array | null /* ptr */,
-  applicationUserModelId: string | null /* Windows.Win32.Foundation.PWSTR */,
+  applicationUserModelId: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
   return libKERNEL32_dll.FormatApplicationUserModelId(util.pwstrToFfi(packageFamilyName), util.pwstrToFfi(packageRelativeApplicationId), util.toPointer(applicationUserModelIdLength), util.pwstrToFfi(applicationUserModelId));
 }
 
 export function ParseApplicationUserModelId(
-  applicationUserModelId: string | null /* Windows.Win32.Foundation.PWSTR */,
+  applicationUserModelId: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   packageFamilyNameLength: Deno.PointerValue | Uint8Array | null /* ptr */,
-  packageFamilyName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  packageFamilyName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   packageRelativeApplicationIdLength: Deno.PointerValue | Uint8Array | null /* ptr */,
-  packageRelativeApplicationId: string | null /* Windows.Win32.Foundation.PWSTR */,
+  packageRelativeApplicationId: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
   return libKERNEL32_dll.ParseApplicationUserModelId(util.pwstrToFfi(applicationUserModelId), util.toPointer(packageFamilyNameLength), util.pwstrToFfi(packageFamilyName), util.toPointer(packageRelativeApplicationIdLength), util.pwstrToFfi(packageRelativeApplicationId));
 }
 
 export function GetPackagesByPackageFamily(
-  packageFamilyName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  packageFamilyName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   count: Deno.PointerValue | Uint8Array | null /* ptr */,
   packageFullNames: Deno.PointerValue | Uint8Array | null /* ptr */,
   bufferLength: Deno.PointerValue | Uint8Array | null /* ptr */,
-  buffer: string | null /* Windows.Win32.Foundation.PWSTR */,
+  buffer: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
   return libKERNEL32_dll.GetPackagesByPackageFamily(util.pwstrToFfi(packageFamilyName), util.toPointer(count), util.toPointer(packageFullNames), util.toPointer(bufferLength), util.pwstrToFfi(buffer));
 }
 
 export function FindPackagesByPackageFamily(
-  packageFamilyName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  packageFamilyName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   packageFilters: number /* u32 */,
   count: Deno.PointerValue | Uint8Array | null /* ptr */,
   packageFullNames: Deno.PointerValue | Uint8Array | null /* ptr */,
   bufferLength: Deno.PointerValue | Uint8Array | null /* ptr */,
-  buffer: string | null /* Windows.Win32.Foundation.PWSTR */,
+  buffer: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   packageProperties: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
   return libKERNEL32_dll.FindPackagesByPackageFamily(util.pwstrToFfi(packageFamilyName), packageFilters, util.toPointer(count), util.toPointer(packageFullNames), util.toPointer(bufferLength), util.pwstrToFfi(buffer), util.toPointer(packageProperties));
 }
 
 export function GetStagedPackageOrigin(
-  packageFullName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  packageFullName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   origin: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
   return libapi_ms_win_appmodel_runtime_l1_1_1_dll.GetStagedPackageOrigin(util.pwstrToFfi(packageFullName), util.toPointer(origin));
@@ -4339,7 +4339,7 @@ export function GetCurrentPackageInfo(
 }
 
 export function OpenPackageInfoByFullName(
-  packageFullName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  packageFullName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   reserved: number /* u32 */,
   packageInfoReference: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
@@ -4348,7 +4348,7 @@ export function OpenPackageInfoByFullName(
 
 export function OpenPackageInfoByFullNameForUser(
   userSid: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.PSID */,
-  packageFullName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  packageFullName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   reserved: number /* u32 */,
   packageInfoReference: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
@@ -4392,7 +4392,7 @@ export function GetPackageInfo2(
 }
 
 export function CheckIsMSIXPackage(
-  packageFullName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  packageFullName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   isMSIXPackage: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
   return util.pointerFromFfi(libKERNEL32_dll.CheckIsMSIXPackage(util.pwstrToFfi(packageFullName), util.toPointer(isMSIXPackage)));
@@ -4400,11 +4400,11 @@ export function CheckIsMSIXPackage(
 
 export function TryCreatePackageDependency(
   user: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.PSID */,
-  packageFamilyName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  packageFamilyName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   minVersion: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Storage.Packaging.Appx.PACKAGE_VERSION */,
   packageDependencyProcessorArchitectures: PackageDependencyProcessorArchitectures /* Windows.Win32.Storage.Packaging.Appx.PackageDependencyProcessorArchitectures */,
   lifetimeKind: PackageDependencyLifetimeKind /* Windows.Win32.Storage.Packaging.Appx.PackageDependencyLifetimeKind */,
-  lifetimeArtifact: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lifetimeArtifact: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   options: CreatePackageDependencyOptions /* Windows.Win32.Storage.Packaging.Appx.CreatePackageDependencyOptions */,
   packageDependencyId: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
@@ -4412,13 +4412,13 @@ export function TryCreatePackageDependency(
 }
 
 export function DeletePackageDependency(
-  packageDependencyId: string | null /* Windows.Win32.Foundation.PWSTR */,
+  packageDependencyId: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
   return util.pointerFromFfi(libKERNELBASE_dll.DeletePackageDependency(util.pwstrToFfi(packageDependencyId)));
 }
 
 export function AddPackageDependency(
-  packageDependencyId: string | null /* Windows.Win32.Foundation.PWSTR */,
+  packageDependencyId: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   rank: number /* i32 */,
   options: AddPackageDependencyOptions /* Windows.Win32.Storage.Packaging.Appx.AddPackageDependencyOptions */,
   packageDependencyContext: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -4434,7 +4434,7 @@ export function RemovePackageDependency(
 }
 
 export function GetResolvedPackageFullNameForPackageDependency(
-  packageDependencyId: string | null /* Windows.Win32.Foundation.PWSTR */,
+  packageDependencyId: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   packageFullName: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
   return util.pointerFromFfi(libKERNELBASE_dll.GetResolvedPackageFullNameForPackageDependency(util.pwstrToFfi(packageDependencyId), util.toPointer(packageFullName)));
@@ -4504,7 +4504,7 @@ export function AppPolicyGetCreateFileAccess(
 }
 
 export function CreatePackageVirtualizationContext(
-  packageFamilyName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  packageFamilyName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   context: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
   return util.pointerFromFfi(libKERNEL32_dll.CreatePackageVirtualizationContext(util.pwstrToFfi(packageFamilyName), util.toPointer(context)));
@@ -4541,7 +4541,7 @@ export function GetCurrentPackageVirtualizationContext(): Deno.PointerValue | nu
 }
 
 export function GetProcessesInVirtualizationContext(
-  packageFamilyName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  packageFamilyName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   count: Deno.PointerValue | Uint8Array | null /* ptr */,
   processes: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {

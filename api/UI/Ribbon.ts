@@ -101,11 +101,11 @@ export interface UI_EVENTPARAMS_COMMAND {
   /** u32 */
   CommandID: number;
   /** Windows.Win32.Foundation.PWSTR */
-  CommandName: string | null;
+  CommandName: string | null | Uint8Array | Uint16Array;
   /** u32 */
   ParentCommandID: number;
   /** Windows.Win32.Foundation.PWSTR */
-  ParentCommandName: string | null;
+  ParentCommandName: string | null | Uint8Array | Uint16Array;
   /** u32 */
   SelectionIndex: number;
   /** Windows.Win32.UI.Ribbon.UI_EVENTLOCATION */

@@ -192,7 +192,7 @@ export interface _Anonymous1_e__Union {
   /** usize */
   Data0: Deno.PointerValue;
   /** Windows.Win32.Foundation.PWSTR */
-  String: string | null;
+  String: string | null | Uint8Array | Uint16Array;
   /** usize */
   u: Deno.PointerValue;
   /** ptr */
@@ -363,7 +363,7 @@ export function allocWINML_RESOURCE_BINDING_DESC(data?: Partial<WINML_RESOURCE_B
  */
 export interface WINML_BINDING_DESC {
   /** Windows.Win32.Foundation.PWSTR */
-  Name: string | null;
+  Name: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.AI.MachineLearning.WinML.WINML_BINDING_TYPE */
   BindType: WINML_BINDING_TYPE;
   /** _Anonymous_e__Union */
@@ -488,9 +488,9 @@ export type BOOL = number;
  */
 export interface WINML_VARIABLE_DESC {
   /** Windows.Win32.Foundation.PWSTR */
-  Name: string | null;
+  Name: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  Description: string | null;
+  Description: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.AI.MachineLearning.WinML.WINML_FEATURE_TYPE */
   FeatureType: WINML_FEATURE_TYPE;
   /** Windows.Win32.Foundation.BOOL */
@@ -528,13 +528,13 @@ export function allocWINML_VARIABLE_DESC(data?: Partial<WINML_VARIABLE_DESC>): U
  */
 export interface WINML_MODEL_DESC {
   /** Windows.Win32.Foundation.PWSTR */
-  Author: string | null;
+  Author: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  Name: string | null;
+  Name: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  Domain: string | null;
+  Domain: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  Description: string | null;
+  Description: string | null | Uint8Array | Uint16Array;
   /** usize */
   Version: Deno.PointerValue;
 }
@@ -625,7 +625,7 @@ export type PSTR = Deno.PointerValue | Uint8Array | null;
  */
 export interface MLOperatorEdgeTypeConstraint {
   /** Windows.Win32.Foundation.PSTR */
-  typeLabel: string | null;
+  typeLabel: string | null | Uint8Array;
   /** ptr */
   allowedTypes: Deno.PointerValue | Uint8Array | null;
   /** u32 */
@@ -655,7 +655,7 @@ export function allocMLOperatorEdgeTypeConstraint(data?: Partial<MLOperatorEdgeT
  */
 export interface MLOperatorAttribute {
   /** Windows.Win32.Foundation.PSTR */
-  name: string | null;
+  name: string | null | Uint8Array;
   /** Windows.Win32.AI.MachineLearning.WinML.MLOperatorAttributeType */
   type: MLOperatorAttributeType;
   /** u8 */
@@ -685,7 +685,7 @@ export function allocMLOperatorAttribute(data?: Partial<MLOperatorAttribute>): U
  */
 export interface MLOperatorAttributeNameValue {
   /** Windows.Win32.Foundation.PSTR */
-  name: string | null;
+  name: string | null | Uint8Array;
   /** Windows.Win32.AI.MachineLearning.WinML.MLOperatorAttributeType */
   type: MLOperatorAttributeType;
   /** u32 */
@@ -718,7 +718,7 @@ export function allocMLOperatorAttributeNameValue(data?: Partial<MLOperatorAttri
  */
 export interface MLOperatorSchemaDescription {
   /** Windows.Win32.Foundation.PSTR */
-  name: string | null;
+  name: string | null | Uint8Array;
   /** i32 */
   operatorSetVersionAtLastChange: number;
   /** ptr */
@@ -789,7 +789,7 @@ export function allocMLOperatorSchemaDescription(data?: Partial<MLOperatorSchema
  */
 export interface MLOperatorSetId {
   /** Windows.Win32.Foundation.PSTR */
-  domain: string | null;
+  domain: string | null | Uint8Array;
   /** i32 */
   version: number;
 }
@@ -815,9 +815,9 @@ export function allocMLOperatorSetId(data?: Partial<MLOperatorSetId>): Uint8Arra
  */
 export interface MLOperatorKernelDescription {
   /** Windows.Win32.Foundation.PSTR */
-  domain: string | null;
+  domain: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  name: string | null;
+  name: string | null | Uint8Array;
   /** i32 */
   minimumOperatorSetVersion: number;
   /** Windows.Win32.AI.MachineLearning.WinML.MLOperatorExecutionType */

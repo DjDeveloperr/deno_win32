@@ -82,14 +82,14 @@ try {
 // Symbols
 
 export function PTQuerySchemaVersionSupport(
-  pszPrinterName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pszPrinterName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pMaxVersion: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
   return util.pointerFromFfi(libprntvpt_dll.PTQuerySchemaVersionSupport(util.pwstrToFfi(pszPrinterName), util.toPointer(pMaxVersion)));
 }
 
 export function PTOpenProvider(
-  pszPrinterName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pszPrinterName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   dwVersion: number /* u32 */,
   phProvider: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
@@ -97,7 +97,7 @@ export function PTOpenProvider(
 }
 
 export function PTOpenProviderEx(
-  pszPrinterName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pszPrinterName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   dwMaxVersion: number /* u32 */,
   dwPrefVersion: number /* u32 */,
   phProvider: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -138,7 +138,7 @@ export function PTGetPrintDeviceCapabilities(
 
 export function PTGetPrintDeviceResources(
   hProvider: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Storage.Xps.HPTPROVIDER */,
-  pszLocaleName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pszLocaleName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pPrintTicket: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Com.IStream */,
   pDeviceResources: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Com.IStream */,
   pbstrErrorMessage: Deno.PointerValue | Uint8Array | null /* ptr */,

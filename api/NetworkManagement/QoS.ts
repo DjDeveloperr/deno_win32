@@ -2395,9 +2395,9 @@ export interface TC_IFC_DESCRIPTOR {
   /** u32 */
   Length: number;
   /** Windows.Win32.Foundation.PWSTR */
-  pInterfaceName: string | null;
+  pInterfaceName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pInterfaceID: string | null;
+  pInterfaceID: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.NetworkManagement.QoS.ADDRESS_LIST_DESCRIPTOR */
   AddressListDesc: Uint8Array | Deno.PointerValue | null;
 }
@@ -3897,7 +3897,7 @@ export function TcEnumerateInterfaces(
 }
 
 export function TcOpenInterfaceA(
-  pInterfaceName: string | null /* Windows.Win32.Foundation.PSTR */,
+  pInterfaceName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   ClientHandle: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
   ClIfcCtx: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
   pIfcHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -3906,7 +3906,7 @@ export function TcOpenInterfaceA(
 }
 
 export function TcOpenInterfaceW(
-  pInterfaceName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pInterfaceName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   ClientHandle: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
   ClIfcCtx: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
   pIfcHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -3940,7 +3940,7 @@ export function TcSetInterface(
 }
 
 export function TcQueryFlowA(
-  pFlowName: string | null /* Windows.Win32.Foundation.PSTR */,
+  pFlowName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   pGuidParam: Deno.PointerValue | Uint8Array | null /* ptr */,
   pBufferSize: Deno.PointerValue | Uint8Array | null /* ptr */,
   Buffer: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -3949,7 +3949,7 @@ export function TcQueryFlowA(
 }
 
 export function TcQueryFlowW(
-  pFlowName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pFlowName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pGuidParam: Deno.PointerValue | Uint8Array | null /* ptr */,
   pBufferSize: Deno.PointerValue | Uint8Array | null /* ptr */,
   Buffer: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -3958,7 +3958,7 @@ export function TcQueryFlowW(
 }
 
 export function TcSetFlowA(
-  pFlowName: string | null /* Windows.Win32.Foundation.PSTR */,
+  pFlowName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   pGuidParam: Deno.PointerValue | Uint8Array | null /* ptr */,
   BufferSize: number /* u32 */,
   Buffer: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -3967,7 +3967,7 @@ export function TcSetFlowA(
 }
 
 export function TcSetFlowW(
-  pFlowName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pFlowName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pGuidParam: Deno.PointerValue | Uint8Array | null /* ptr */,
   BufferSize: number /* u32 */,
   Buffer: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -3988,7 +3988,7 @@ export function TcAddFlow(
 export function TcGetFlowNameA(
   FlowHandle: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
   StrSize: number /* u32 */,
-  pFlowName: string | null /* Windows.Win32.Foundation.PSTR */,
+  pFlowName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): number /* u32 */ {
   return libTRAFFIC_dll.TcGetFlowNameA(util.toPointer(FlowHandle), StrSize, util.pstrToFfi(pFlowName));
 }
@@ -3996,7 +3996,7 @@ export function TcGetFlowNameA(
 export function TcGetFlowNameW(
   FlowHandle: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
   StrSize: number /* u32 */,
-  pFlowName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pFlowName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
   return libTRAFFIC_dll.TcGetFlowNameW(util.toPointer(FlowHandle), StrSize, util.pwstrToFfi(pFlowName));
 }

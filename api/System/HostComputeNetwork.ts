@@ -285,7 +285,7 @@ try {
 // Symbols
 
 export function HcnEnumerateNetworks(
-  Query: string | null /* Windows.Win32.Foundation.PWSTR */,
+  Query: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   Networks: Deno.PointerValue | Uint8Array | null /* ptr */,
   ErrorRecord: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
@@ -294,7 +294,7 @@ export function HcnEnumerateNetworks(
 
 export function HcnCreateNetwork(
   Id: Deno.PointerValue | Uint8Array | null /* ptr */,
-  Settings: string | null /* Windows.Win32.Foundation.PWSTR */,
+  Settings: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   Network: Deno.PointerValue | Uint8Array | null /* ptr */,
   ErrorRecord: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
@@ -311,7 +311,7 @@ export function HcnOpenNetwork(
 
 export function HcnModifyNetwork(
   Network: Deno.PointerValue | Uint8Array | null /* ptr */,
-  Settings: string | null /* Windows.Win32.Foundation.PWSTR */,
+  Settings: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   ErrorRecord: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
   return util.pointerFromFfi(libcomputenetwork_dll.HcnModifyNetwork(util.toPointer(Network), util.pwstrToFfi(Settings), util.toPointer(ErrorRecord)));
@@ -319,7 +319,7 @@ export function HcnModifyNetwork(
 
 export function HcnQueryNetworkProperties(
   Network: Deno.PointerValue | Uint8Array | null /* ptr */,
-  Query: string | null /* Windows.Win32.Foundation.PWSTR */,
+  Query: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   Properties: Deno.PointerValue | Uint8Array | null /* ptr */,
   ErrorRecord: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
@@ -340,7 +340,7 @@ export function HcnCloseNetwork(
 }
 
 export function HcnEnumerateNamespaces(
-  Query: string | null /* Windows.Win32.Foundation.PWSTR */,
+  Query: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   Namespaces: Deno.PointerValue | Uint8Array | null /* ptr */,
   ErrorRecord: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
@@ -349,7 +349,7 @@ export function HcnEnumerateNamespaces(
 
 export function HcnCreateNamespace(
   Id: Deno.PointerValue | Uint8Array | null /* ptr */,
-  Settings: string | null /* Windows.Win32.Foundation.PWSTR */,
+  Settings: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   Namespace: Deno.PointerValue | Uint8Array | null /* ptr */,
   ErrorRecord: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
@@ -366,7 +366,7 @@ export function HcnOpenNamespace(
 
 export function HcnModifyNamespace(
   Namespace: Deno.PointerValue | Uint8Array | null /* ptr */,
-  Settings: string | null /* Windows.Win32.Foundation.PWSTR */,
+  Settings: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   ErrorRecord: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
   return util.pointerFromFfi(libcomputenetwork_dll.HcnModifyNamespace(util.toPointer(Namespace), util.pwstrToFfi(Settings), util.toPointer(ErrorRecord)));
@@ -374,7 +374,7 @@ export function HcnModifyNamespace(
 
 export function HcnQueryNamespaceProperties(
   Namespace: Deno.PointerValue | Uint8Array | null /* ptr */,
-  Query: string | null /* Windows.Win32.Foundation.PWSTR */,
+  Query: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   Properties: Deno.PointerValue | Uint8Array | null /* ptr */,
   ErrorRecord: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
@@ -395,7 +395,7 @@ export function HcnCloseNamespace(
 }
 
 export function HcnEnumerateEndpoints(
-  Query: string | null /* Windows.Win32.Foundation.PWSTR */,
+  Query: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   Endpoints: Deno.PointerValue | Uint8Array | null /* ptr */,
   ErrorRecord: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
@@ -405,7 +405,7 @@ export function HcnEnumerateEndpoints(
 export function HcnCreateEndpoint(
   Network: Deno.PointerValue | Uint8Array | null /* ptr */,
   Id: Deno.PointerValue | Uint8Array | null /* ptr */,
-  Settings: string | null /* Windows.Win32.Foundation.PWSTR */,
+  Settings: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   Endpoint: Deno.PointerValue | Uint8Array | null /* ptr */,
   ErrorRecord: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
@@ -422,7 +422,7 @@ export function HcnOpenEndpoint(
 
 export function HcnModifyEndpoint(
   Endpoint: Deno.PointerValue | Uint8Array | null /* ptr */,
-  Settings: string | null /* Windows.Win32.Foundation.PWSTR */,
+  Settings: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   ErrorRecord: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
   return util.pointerFromFfi(libcomputenetwork_dll.HcnModifyEndpoint(util.toPointer(Endpoint), util.pwstrToFfi(Settings), util.toPointer(ErrorRecord)));
@@ -430,7 +430,7 @@ export function HcnModifyEndpoint(
 
 export function HcnQueryEndpointProperties(
   Endpoint: Deno.PointerValue | Uint8Array | null /* ptr */,
-  Query: string | null /* Windows.Win32.Foundation.PWSTR */,
+  Query: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   Properties: Deno.PointerValue | Uint8Array | null /* ptr */,
   ErrorRecord: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
@@ -451,7 +451,7 @@ export function HcnCloseEndpoint(
 }
 
 export function HcnEnumerateLoadBalancers(
-  Query: string | null /* Windows.Win32.Foundation.PWSTR */,
+  Query: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   LoadBalancer: Deno.PointerValue | Uint8Array | null /* ptr */,
   ErrorRecord: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
@@ -460,7 +460,7 @@ export function HcnEnumerateLoadBalancers(
 
 export function HcnCreateLoadBalancer(
   Id: Deno.PointerValue | Uint8Array | null /* ptr */,
-  Settings: string | null /* Windows.Win32.Foundation.PWSTR */,
+  Settings: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   LoadBalancer: Deno.PointerValue | Uint8Array | null /* ptr */,
   ErrorRecord: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
@@ -477,7 +477,7 @@ export function HcnOpenLoadBalancer(
 
 export function HcnModifyLoadBalancer(
   LoadBalancer: Deno.PointerValue | Uint8Array | null /* ptr */,
-  Settings: string | null /* Windows.Win32.Foundation.PWSTR */,
+  Settings: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   ErrorRecord: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
   return util.pointerFromFfi(libcomputenetwork_dll.HcnModifyLoadBalancer(util.toPointer(LoadBalancer), util.pwstrToFfi(Settings), util.toPointer(ErrorRecord)));
@@ -485,7 +485,7 @@ export function HcnModifyLoadBalancer(
 
 export function HcnQueryLoadBalancerProperties(
   LoadBalancer: Deno.PointerValue | Uint8Array | null /* ptr */,
-  Query: string | null /* Windows.Win32.Foundation.PWSTR */,
+  Query: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   Properties: Deno.PointerValue | Uint8Array | null /* ptr */,
   ErrorRecord: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
@@ -536,7 +536,7 @@ export function HcnUnregisterGuestNetworkServiceCallback(
 
 export function HcnCreateGuestNetworkService(
   Id: Deno.PointerValue | Uint8Array | null /* ptr */,
-  Settings: string | null /* Windows.Win32.Foundation.PWSTR */,
+  Settings: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   GuestNetworkService: Deno.PointerValue | Uint8Array | null /* ptr */,
   ErrorRecord: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
@@ -551,7 +551,7 @@ export function HcnCloseGuestNetworkService(
 
 export function HcnModifyGuestNetworkService(
   GuestNetworkService: Deno.PointerValue | Uint8Array | null /* ptr */,
-  Settings: string | null /* Windows.Win32.Foundation.PWSTR */,
+  Settings: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   ErrorRecord: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
   return util.pointerFromFfi(libcomputenetwork_dll.HcnModifyGuestNetworkService(util.toPointer(GuestNetworkService), util.pwstrToFfi(Settings), util.toPointer(ErrorRecord)));

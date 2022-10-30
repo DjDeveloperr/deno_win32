@@ -110,7 +110,7 @@ export function GetAppContainerNamedObjectPath(
   Token: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
   AppContainerSid: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.PSID */,
   ObjectPathLength: number /* u32 */,
-  ObjectPath: string | null /* Windows.Win32.Foundation.PWSTR */,
+  ObjectPath: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   ReturnLength: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libKERNEL32_dll.GetAppContainerNamedObjectPath(util.toPointer(Token), util.toPointer(AppContainerSid), ObjectPathLength, util.pwstrToFfi(ObjectPath), util.toPointer(ReturnLength)));
@@ -136,9 +136,9 @@ export function IsProcessInIsolatedWindowsEnvironment(
 }
 
 export function CreateAppContainerProfile(
-  pszAppContainerName: string | null /* Windows.Win32.Foundation.PWSTR */,
-  pszDisplayName: string | null /* Windows.Win32.Foundation.PWSTR */,
-  pszDescription: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pszAppContainerName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  pszDisplayName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  pszDescription: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pCapabilities: Deno.PointerValue | Uint8Array | null /* ptr */,
   dwCapabilityCount: number /* u32 */,
   ppSidAppContainerSid: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -147,7 +147,7 @@ export function CreateAppContainerProfile(
 }
 
 export function DeleteAppContainerProfile(
-  pszAppContainerName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pszAppContainerName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
   return util.pointerFromFfi(libUSERENV_dll.DeleteAppContainerProfile(util.pwstrToFfi(pszAppContainerName)));
 }
@@ -160,7 +160,7 @@ export function GetAppContainerRegistryLocation(
 }
 
 export function GetAppContainerFolderPath(
-  pszAppContainerSid: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pszAppContainerSid: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   ppszPath: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
   return util.pointerFromFfi(libUSERENV_dll.GetAppContainerFolderPath(util.pwstrToFfi(pszAppContainerSid), util.toPointer(ppszPath)));
@@ -168,14 +168,14 @@ export function GetAppContainerFolderPath(
 
 export function DeriveRestrictedAppContainerSidFromAppContainerSidAndRestrictedName(
   psidAppContainerSid: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.PSID */,
-  pszRestrictedAppContainerName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pszRestrictedAppContainerName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   ppsidRestrictedAppContainerSid: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
   return util.pointerFromFfi(libUSERENV_dll.DeriveRestrictedAppContainerSidFromAppContainerSidAndRestrictedName(util.toPointer(psidAppContainerSid), util.pwstrToFfi(pszRestrictedAppContainerName), util.toPointer(ppsidRestrictedAppContainerSid)));
 }
 
 export function DeriveAppContainerSidFromAppContainerName(
-  pszAppContainerName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pszAppContainerName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   ppsidAppContainerSid: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
   return util.pointerFromFfi(libUSERENV_dll.DeriveAppContainerSidFromAppContainerName(util.pwstrToFfi(pszAppContainerName), util.toPointer(ppsidAppContainerSid)));

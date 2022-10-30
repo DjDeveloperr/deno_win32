@@ -9880,7 +9880,7 @@ export interface _Anonymous1_e__Union {
   /** usize */
   Data0: Deno.PointerValue;
   /** Windows.Win32.Foundation.PWSTR */
-  String: string | null;
+  String: string | null | Uint8Array | Uint16Array;
   /** usize */
   u: Deno.PointerValue;
   /** ptr */
@@ -10252,7 +10252,7 @@ export interface UNICODE_STRING {
   /** u16 */
   MaximumLength: number;
   /** Windows.Win32.Foundation.PWSTR */
-  Buffer: string | null;
+  Buffer: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeofUNICODE_STRING = 16;
@@ -10324,7 +10324,7 @@ export interface _u_e__Struct {
   /** u32 */
   dwValue: number;
   /** Windows.Win32.Foundation.PWSTR */
-  pwszName: string | null;
+  pwszName: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeof_u_e__Struct = 16;
@@ -10523,20 +10523,20 @@ try {
 // Symbols
 
 export function SysAllocString(
-  psz: string | null /* Windows.Win32.Foundation.PWSTR */,
+  psz: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.BSTR */ {
   return util.pointerFromFfi(libOLEAUT32_dll.SysAllocString(util.pwstrToFfi(psz)));
 }
 
 export function SysReAllocString(
   pbstr: Deno.PointerValue | Uint8Array | null /* ptr */,
-  psz: string | null /* Windows.Win32.Foundation.PWSTR */,
+  psz: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* i32 */ {
   return libOLEAUT32_dll.SysReAllocString(util.toPointer(pbstr), util.pwstrToFfi(psz));
 }
 
 export function SysAllocStringLen(
-  strIn: string | null /* Windows.Win32.Foundation.PWSTR */,
+  strIn: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   ui: number /* u32 */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.BSTR */ {
   return util.pointerFromFfi(libOLEAUT32_dll.SysAllocStringLen(util.pwstrToFfi(strIn), ui));
@@ -10544,7 +10544,7 @@ export function SysAllocStringLen(
 
 export function SysReAllocStringLen(
   pbstr: Deno.PointerValue | Uint8Array | null /* ptr */,
-  psz: string | null /* Windows.Win32.Foundation.PWSTR */,
+  psz: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   len: number /* u32 */,
 ): number /* i32 */ {
   return libOLEAUT32_dll.SysReAllocStringLen(util.toPointer(pbstr), util.pwstrToFfi(psz), len);
@@ -10581,7 +10581,7 @@ export function SysStringByteLen(
 }
 
 export function SysAllocStringByteLen(
-  psz: string | null /* Windows.Win32.Foundation.PSTR */,
+  psz: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   len: number /* u32 */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.BSTR */ {
   return util.pointerFromFfi(libOLEAUT32_dll.SysAllocStringByteLen(util.pstrToFfi(psz), len));

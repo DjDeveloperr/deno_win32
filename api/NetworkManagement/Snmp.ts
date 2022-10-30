@@ -262,7 +262,7 @@ export interface _u_e__Struct {
   /** u32 */
   dwValue: number;
   /** Windows.Win32.Foundation.PWSTR */
-  pwszName: string | null;
+  pwszName: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeof_u_e__Struct = 16;
@@ -536,7 +536,7 @@ export interface _value_e__Union {
   /** u8 */
   propertyByte: number;
   /** Windows.Win32.Foundation.PWSTR */
-  propertyString: string | null;
+  propertyString: string | null | Uint8Array | Uint16Array;
   /** i32 */
   propertyInt32: number;
   /** i64 */
@@ -1149,14 +1149,14 @@ export function SnmpSvcSetLogType(
 
 export function SnmpUtilDbgPrint(
   nLogLevel: SNMP_LOG /* Windows.Win32.NetworkManagement.Snmp.SNMP_LOG */,
-  szFormat: string | null /* Windows.Win32.Foundation.PSTR */,
+  szFormat: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): void /* void */ {
   return libsnmpapi_dll.SnmpUtilDbgPrint(nLogLevel, util.pstrToFfi(szFormat));
 }
 
 export function SnmpMgrOpen(
-  lpAgentAddress: string | null /* Windows.Win32.Foundation.PSTR */,
-  lpAgentCommunity: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpAgentAddress: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  lpAgentCommunity: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   nTimeOut: number /* i32 */,
   nRetries: number /* i32 */,
 ): Deno.PointerValue | null /* ptr */ {
@@ -1192,7 +1192,7 @@ export function SnmpMgrRequest(
 }
 
 export function SnmpMgrStrToOid(
-  string: string | null /* Windows.Win32.Foundation.PSTR */,
+  string: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   oid: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libmgmtapi_dll.SnmpMgrStrToOid(util.pstrToFfi(string), util.toPointer(oid)));
@@ -1400,7 +1400,7 @@ export function SnmpCleanupEx(): number /* u32 */ {
 
 export function SnmpStrToEntity(
   session: Deno.PointerValue /* isize */,
-  string: string | null /* Windows.Win32.Foundation.PSTR */,
+  string: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): Deno.PointerValue /* isize */ {
   return libwsnmp32_dll.SnmpStrToEntity(session, util.pstrToFfi(string));
 }
@@ -1408,7 +1408,7 @@ export function SnmpStrToEntity(
 export function SnmpEntityToStr(
   entity: Deno.PointerValue /* isize */,
   size: number /* u32 */,
-  string: string | null /* Windows.Win32.Foundation.PSTR */,
+  string: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): number /* u32 */ {
   return libwsnmp32_dll.SnmpEntityToStr(entity, size, util.pstrToFfi(string));
 }
@@ -1551,7 +1551,7 @@ export function SnmpGetLastError(
 }
 
 export function SnmpStrToOid(
-  string: string | null /* Windows.Win32.Foundation.PSTR */,
+  string: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   dstOID: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
   return libwsnmp32_dll.SnmpStrToOid(util.pstrToFfi(string), util.toPointer(dstOID));
@@ -1560,7 +1560,7 @@ export function SnmpStrToOid(
 export function SnmpOidToStr(
   srcOID: Deno.PointerValue | Uint8Array | null /* ptr */,
   size: number /* u32 */,
-  string: string | null /* Windows.Win32.Foundation.PSTR */,
+  string: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): number /* u32 */ {
   return libwsnmp32_dll.SnmpOidToStr(util.toPointer(srcOID), size, util.pstrToFfi(string));
 }

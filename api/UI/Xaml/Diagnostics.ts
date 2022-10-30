@@ -478,22 +478,22 @@ try {
 // Symbols
 
 export function InitializeXamlDiagnostic(
-  endPointName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  endPointName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pid: number /* u32 */,
-  wszDllXamlDiagnostics: string | null /* Windows.Win32.Foundation.PWSTR */,
-  wszTAPDllName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  wszDllXamlDiagnostics: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  wszTAPDllName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   tapClsid: Uint8Array | Deno.PointerValue | null /* System.Guid */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
   return util.pointerFromFfi(libWindows_UI_Xaml_dll.InitializeXamlDiagnostic(util.pwstrToFfi(endPointName), pid, util.pwstrToFfi(wszDllXamlDiagnostics), util.pwstrToFfi(wszTAPDllName), util.toPointer(tapClsid)));
 }
 
 export function InitializeXamlDiagnosticsEx(
-  endPointName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  endPointName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pid: number /* u32 */,
-  wszDllXamlDiagnostics: string | null /* Windows.Win32.Foundation.PWSTR */,
-  wszTAPDllName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  wszDllXamlDiagnostics: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  wszTAPDllName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   tapClsid: Uint8Array | Deno.PointerValue | null /* System.Guid */,
-  wszInitializationData: string | null /* Windows.Win32.Foundation.PWSTR */,
+  wszInitializationData: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
   return util.pointerFromFfi(libWindows_UI_Xaml_dll.InitializeXamlDiagnosticsEx(util.pwstrToFfi(endPointName), pid, util.pwstrToFfi(wszDllXamlDiagnostics), util.pwstrToFfi(wszTAPDllName), util.toPointer(tapClsid), util.pwstrToFfi(wszInitializationData)));
 }

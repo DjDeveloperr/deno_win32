@@ -943,7 +943,7 @@ export interface MSAAMENUINFO {
   /** u32 */
   cchWText: number;
   /** Windows.Win32.Foundation.PWSTR */
-  pszWText: string | null;
+  pszWText: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeofMSAAMENUINFO = 16;
@@ -1134,7 +1134,7 @@ export interface UIAutomationPropertyInfo {
   /** System.Guid */
   guid: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.Foundation.PWSTR */
-  pProgrammaticName: string | null;
+  pProgrammaticName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.UI.Accessibility.UIAutomationType */
   type: UIAutomationType;
 }
@@ -1164,7 +1164,7 @@ export interface UIAutomationEventInfo {
   /** System.Guid */
   guid: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.Foundation.PWSTR */
-  pProgrammaticName: string | null;
+  pProgrammaticName: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeofUIAutomationEventInfo = 16;
@@ -1189,7 +1189,7 @@ export type BOOL = number;
  */
 export interface UIAutomationMethodInfo {
   /** Windows.Win32.Foundation.PWSTR */
-  pProgrammaticName: string | null;
+  pProgrammaticName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.BOOL */
   doSetFocus: boolean;
   /** u32 */
@@ -1233,7 +1233,7 @@ export interface UIAutomationPatternInfo {
   /** System.Guid */
   guid: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.Foundation.PWSTR */
-  pProgrammaticName: string | null;
+  pProgrammaticName: string | null | Uint8Array | Uint16Array;
   /** System.Guid */
   providerInterfaceId: Uint8Array | Deno.PointerValue | null;
   /** System.Guid */
@@ -1718,9 +1718,9 @@ export interface SERIALKEYSA {
   /** Windows.Win32.UI.Accessibility.SERIALKEYS_FLAGS */
   dwFlags: SERIALKEYS_FLAGS;
   /** Windows.Win32.Foundation.PSTR */
-  lpszActivePort: string | null;
+  lpszActivePort: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  lpszPort: string | null;
+  lpszPort: string | null | Uint8Array;
   /** u32 */
   iBaudRate: number;
   /** u32 */
@@ -1767,9 +1767,9 @@ export interface SERIALKEYSW {
   /** Windows.Win32.UI.Accessibility.SERIALKEYS_FLAGS */
   dwFlags: SERIALKEYS_FLAGS;
   /** Windows.Win32.Foundation.PWSTR */
-  lpszActivePort: string | null;
+  lpszActivePort: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  lpszPort: string | null;
+  lpszPort: string | null | Uint8Array | Uint16Array;
   /** u32 */
   iBaudRate: number;
   /** u32 */
@@ -1816,7 +1816,7 @@ export interface HIGHCONTRASTA {
   /** Windows.Win32.UI.Accessibility.HIGHCONTRASTW_FLAGS */
   dwFlags: HIGHCONTRASTW_FLAGS;
   /** Windows.Win32.Foundation.PSTR */
-  lpszDefaultScheme: string | null;
+  lpszDefaultScheme: string | null | Uint8Array;
 }
 
 export const sizeofHIGHCONTRASTA = 16;
@@ -1845,7 +1845,7 @@ export interface HIGHCONTRASTW {
   /** Windows.Win32.UI.Accessibility.HIGHCONTRASTW_FLAGS */
   dwFlags: HIGHCONTRASTW_FLAGS;
   /** Windows.Win32.Foundation.PWSTR */
-  lpszDefaultScheme: string | null;
+  lpszDefaultScheme: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeofHIGHCONTRASTW = 16;
@@ -2020,7 +2020,7 @@ export interface SOUNDSENTRYA {
   /** u32 */
   iWindowsEffectMSec: number;
   /** Windows.Win32.Foundation.PSTR */
-  lpszWindowsEffectDLL: string | null;
+  lpszWindowsEffectDLL: string | null | Uint8Array;
   /** u32 */
   iWindowsEffectOrdinal: number;
 }
@@ -2086,7 +2086,7 @@ export interface SOUNDSENTRYW {
   /** u32 */
   iWindowsEffectMSec: number;
   /** Windows.Win32.Foundation.PWSTR */
-  lpszWindowsEffectDLL: string | null;
+  lpszWindowsEffectDLL: string | null | Uint8Array | Uint16Array;
   /** u32 */
   iWindowsEffectOrdinal: number;
 }
@@ -2757,7 +2757,7 @@ export function AccessibleChildren(
 
 export function GetRoleTextA(
   lRole: number /* u32 */,
-  lpszRole: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpszRole: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   cchRoleMax: number /* u32 */,
 ): number /* u32 */ {
   return libOLEACC_dll.GetRoleTextA(lRole, util.pstrToFfi(lpszRole), cchRoleMax);
@@ -2765,7 +2765,7 @@ export function GetRoleTextA(
 
 export function GetRoleTextW(
   lRole: number /* u32 */,
-  lpszRole: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpszRole: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   cchRoleMax: number /* u32 */,
 ): number /* u32 */ {
   return libOLEACC_dll.GetRoleTextW(lRole, util.pwstrToFfi(lpszRole), cchRoleMax);
@@ -2773,7 +2773,7 @@ export function GetRoleTextW(
 
 export function GetStateTextA(
   lStateBit: number /* u32 */,
-  lpszState: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpszState: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   cchState: number /* u32 */,
 ): number /* u32 */ {
   return libOLEACC_dll.GetStateTextA(lStateBit, util.pstrToFfi(lpszState), cchState);
@@ -2781,7 +2781,7 @@ export function GetStateTextA(
 
 export function GetStateTextW(
   lStateBit: number /* u32 */,
-  lpszState: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpszState: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   cchState: number /* u32 */,
 ): number /* u32 */ {
   return libOLEACC_dll.GetStateTextW(lStateBit, util.pwstrToFfi(lpszState), cchState);
@@ -2805,7 +2805,7 @@ export function CreateStdAccessibleObject(
 
 export function CreateStdAccessibleProxyA(
   hwnd: Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */,
-  pClassName: string | null /* Windows.Win32.Foundation.PSTR */,
+  pClassName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   idObject: number /* i32 */,
   riid: Deno.PointerValue | Uint8Array | null /* ptr */,
   ppvObject: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -2815,7 +2815,7 @@ export function CreateStdAccessibleProxyA(
 
 export function CreateStdAccessibleProxyW(
   hwnd: Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */,
-  pClassName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pClassName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   idObject: number /* i32 */,
   riid: Deno.PointerValue | Uint8Array | null /* ptr */,
   ppvObject: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -3227,7 +3227,7 @@ export function TransformPattern_Rotate(
 
 export function ValuePattern_SetValue(
   hobj: Uint8Array | Deno.PointerValue | null /* Windows.Win32.UI.Accessibility.HUIAPATTERNOBJECT */,
-  pVal: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pVal: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
   return util.pointerFromFfi(libUIAutomationCore_dll.ValuePattern_SetValue(util.toPointer(hobj), util.pwstrToFfi(pVal)));
 }
@@ -3464,7 +3464,7 @@ export function LegacyIAccessiblePattern_DoDefaultAction(
 
 export function LegacyIAccessiblePattern_SetValue(
   hobj: Uint8Array | Deno.PointerValue | null /* Windows.Win32.UI.Accessibility.HUIAPATTERNOBJECT */,
-  szValue: string | null /* Windows.Win32.Foundation.PWSTR */,
+  szValue: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
   return util.pointerFromFfi(libUIAutomationCore_dll.LegacyIAccessiblePattern_SetValue(util.toPointer(hobj), util.pwstrToFfi(szValue)));
 }

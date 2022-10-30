@@ -900,9 +900,9 @@ export type PWSTR = Deno.PointerValue | Uint8Array | null;
  */
 export interface FWPM_DISPLAY_DATA0 {
   /** Windows.Win32.Foundation.PWSTR */
-  name: string | null;
+  name: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  description: string | null;
+  description: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeofFWPM_DISPLAY_DATA0 = 16;
@@ -1016,7 +1016,7 @@ export interface _Anonymous1_e__Union {
   /** usize */
   Data0: Deno.PointerValue;
   /** Windows.Win32.Foundation.PWSTR */
-  String: string | null;
+  String: string | null | Uint8Array | Uint16Array;
   /** usize */
   u: Deno.PointerValue;
   /** ptr */
@@ -1190,7 +1190,7 @@ export interface IKEEXT_CERT_NAME0 {
   /** Windows.Win32.NetworkManagement.WindowsFilteringPlatform.IKEEXT_CERT_CRITERIA_NAME_TYPE */
   nameType: IKEEXT_CERT_CRITERIA_NAME_TYPE;
   /** Windows.Win32.Foundation.PWSTR */
-  certName: string | null;
+  certName: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeofIKEEXT_CERT_NAME0 = 16;
@@ -1290,9 +1290,9 @@ export function allocIKEEXT_CERTIFICATE_AUTHENTICATION2(data?: Partial<IKEEXT_CE
  */
 export interface IKEEXT_IPV6_CGA_AUTHENTICATION0 {
   /** Windows.Win32.Foundation.PWSTR */
-  keyContainerName: string | null;
+  keyContainerName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  cspName: string | null;
+  cspName: string | null | Uint8Array | Uint16Array;
   /** u32 */
   cspType: number;
   /** Windows.Win32.NetworkManagement.WindowsFilteringPlatform.FWP_BYTE_ARRAY16 */
@@ -1353,7 +1353,7 @@ export interface IKEEXT_KERBEROS_AUTHENTICATION1 {
   /** Windows.Win32.NetworkManagement.WindowsFilteringPlatform.IKEEXT_KERBEROS_AUTHENTICATION_FLAGS */
   flags: IKEEXT_KERBEROS_AUTHENTICATION_FLAGS;
   /** Windows.Win32.Foundation.PWSTR */
-  proxyServer: string | null;
+  proxyServer: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeofIKEEXT_KERBEROS_AUTHENTICATION1 = 16;
@@ -2316,7 +2316,7 @@ export function allocIKEEXT_CERTIFICATE_CREDENTIAL0(data?: Partial<IKEEXT_CERTIF
  */
 export interface IKEEXT_NAME_CREDENTIAL0 {
   /** Windows.Win32.Foundation.PWSTR */
-  principalName: string | null;
+  principalName: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeofIKEEXT_NAME_CREDENTIAL0 = 8;
@@ -3242,7 +3242,7 @@ export interface IPSEC_TUNNEL_ENDPOINTS2 {
   /** u64 */
   localIfLuid: Deno.PointerValue;
   /** Windows.Win32.Foundation.PWSTR */
-  remoteFqdn: string | null;
+  remoteFqdn: string | null | Uint8Array | Uint16Array;
   /** u32 */
   numAddresses: number;
   /** ptr */
@@ -4051,9 +4051,9 @@ export function allocIPSEC_TOKEN0(data?: Partial<IPSEC_TOKEN0>): Uint8Array {
  */
 export interface IPSEC_ID0 {
   /** Windows.Win32.Foundation.PWSTR */
-  mmTargetName: string | null;
+  mmTargetName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  emTargetName: string | null;
+  emTargetName: string | null | Uint8Array | Uint16Array;
   /** u32 */
   numTokens: number;
   /** ptr */
@@ -5006,7 +5006,7 @@ export interface FWPM_SESSION0 {
   /** ptr */
   sid: Deno.PointerValue | Uint8Array | null;
   /** Windows.Win32.Foundation.PWSTR */
-  username: string | null;
+  username: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.BOOL */
   kernelMode: boolean;
 }
@@ -5071,7 +5071,7 @@ export interface FWPM_PROVIDER0 {
   /** Windows.Win32.NetworkManagement.WindowsFilteringPlatform.FWP_BYTE_BLOB */
   providerData: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.Foundation.PWSTR */
-  serviceName: string | null;
+  serviceName: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeofFWPM_PROVIDER0 = 40;
@@ -6463,7 +6463,7 @@ export interface FWPM_NET_EVENT_HEADER3 {
   /** ptr */
   packageSid: Deno.PointerValue | Uint8Array | null;
   /** Windows.Win32.Foundation.PWSTR */
-  enterpriseId: string | null;
+  enterpriseId: string | null | Uint8Array | Uint16Array;
   /** u64 */
   policyFlags: Deno.PointerValue;
   /** Windows.Win32.NetworkManagement.WindowsFilteringPlatform.FWP_BYTE_BLOB */
@@ -6595,9 +6595,9 @@ export interface FWPM_NET_EVENT_IKEEXT_MM_FAILURE1 {
   /** u64 */
   mmFilterId: Deno.PointerValue;
   /** Windows.Win32.Foundation.PWSTR */
-  localPrincipalNameForAuth: string | null;
+  localPrincipalNameForAuth: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  remotePrincipalNameForAuth: string | null;
+  remotePrincipalNameForAuth: string | null | Uint8Array | Uint16Array;
   /** u32 */
   numLocalPrincipalGroupSids: number;
   /** ptr */
@@ -6682,9 +6682,9 @@ export interface FWPM_NET_EVENT_IKEEXT_MM_FAILURE2 {
   /** u64 */
   mmFilterId: Deno.PointerValue;
   /** Windows.Win32.Foundation.PWSTR */
-  localPrincipalNameForAuth: string | null;
+  localPrincipalNameForAuth: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  remotePrincipalNameForAuth: string | null;
+  remotePrincipalNameForAuth: string | null | Uint8Array | Uint16Array;
   /** u32 */
   numLocalPrincipalGroupSids: number;
   /** ptr */
@@ -6929,9 +6929,9 @@ export interface FWPM_NET_EVENT_IKEEXT_EM_FAILURE1 {
   /** u64 */
   qmFilterId: Deno.PointerValue;
   /** Windows.Win32.Foundation.PWSTR */
-  localPrincipalNameForAuth: string | null;
+  localPrincipalNameForAuth: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  remotePrincipalNameForAuth: string | null;
+  remotePrincipalNameForAuth: string | null | Uint8Array | Uint16Array;
   /** u32 */
   numLocalPrincipalGroupSids: number;
   /** ptr */
@@ -7792,7 +7792,7 @@ export interface FWPM_VSWITCH_EVENT0 {
   /** Windows.Win32.NetworkManagement.WindowsFilteringPlatform.FWPM_VSWITCH_EVENT_TYPE */
   eventType: FWPM_VSWITCH_EVENT_TYPE;
   /** Windows.Win32.Foundation.PWSTR */
-  vSwitchId: string | null;
+  vSwitchId: string | null | Uint8Array | Uint16Array;
   /** _Anonymous_e__Union */
   Anonymous: Uint8Array | Deno.PointerValue | null;
 }
@@ -8637,7 +8637,7 @@ export function FwpmFreeMemory0(
 }
 
 export function FwpmEngineOpen0(
-  serverName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  serverName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   authnService: number /* u32 */,
   authIdentity: Deno.PointerValue | Uint8Array | null /* ptr */,
   session: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -9445,7 +9445,7 @@ export function FwpmFilterSubscriptionsGet0(
 }
 
 export function FwpmGetAppIdFromFileName0(
-  fileName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  fileName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   appId: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
   return libfwpuclnt_dll.FwpmGetAppIdFromFileName0(util.pwstrToFfi(fileName), util.toPointer(appId));

@@ -330,7 +330,7 @@ export function GetDeviceID(
 }
 
 export function GetDeviceIDString(
-  pszWindowsAIK: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pszWindowsAIK: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   cchWindowsAIK: number /* u32 */,
   pcchResult: Deno.PointerValue | Uint8Array | null /* ptr */,
   pfProtectedByTPM: Deno.PointerValue | Uint8Array | null /* ptr */,

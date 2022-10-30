@@ -1202,13 +1202,13 @@ export const OGONEK = 808;
 export const TONOS = 900;
 export const DIARESIS_TONOS = 901;
 export const wszGRAVE = `\0`;
-export const wszACUTE = ``;
-export const wszCIRCUMFLEX = ``;
-export const wszTILDE = ``;
-export const wszMACRON = ``;
-export const wszOVERSCORE = ``;
-export const wszBREVE = ``;
-export const wszDOT_ABOVE = ``;
+export const wszACUTE = `\x01`;
+export const wszCIRCUMFLEX = `\x02`;
+export const wszTILDE = `\x03`;
+export const wszMACRON = `\x04`;
+export const wszOVERSCORE = `\x05`;
+export const wszBREVE = `\x06`;
+export const wszDOT_ABOVE = `\x07`;
 export const wszUMLAUT = `\b`;
 export const wszHOOK_ABOVE = `\t`;
 export const wszRING = `\n`;
@@ -1216,8 +1216,8 @@ export const wszDOUBLE_ACUTE = `\v`;
 export const wszHACEK = `\f`;
 export const wszCEDILLA = `'`;
 export const wszOGONEK = `(`;
-export const wszTONOS = `�`;
-export const wszDIARESIS_TONOS = `�`;
+export const wszTONOS = `\xfffd`;
+export const wszDIARESIS_TONOS = `\xfffd`;
 export const SHFT_INVALID = 15;
 export const WCH_NONE = 61440;
 export const WCH_DEAD = 61441;
@@ -1635,9 +1635,9 @@ export type PSTR = Deno.PointerValue | Uint8Array | null;
  */
 export interface REGISTERWORDA {
   /** Windows.Win32.Foundation.PSTR */
-  lpReading: string | null;
+  lpReading: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  lpWord: string | null;
+  lpWord: string | null | Uint8Array;
 }
 
 export const sizeofREGISTERWORDA = 16;
@@ -1665,9 +1665,9 @@ export type PWSTR = Deno.PointerValue | Uint8Array | null;
  */
 export interface REGISTERWORDW {
   /** Windows.Win32.Foundation.PWSTR */
-  lpReading: string | null;
+  lpReading: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  lpWord: string | null;
+  lpWord: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeofREGISTERWORDW = 16;
@@ -1930,7 +1930,7 @@ export interface IMEDLG {
   /** Windows.Win32.Foundation.HWND */
   hwnd: Deno.PointerValue | null;
   /** Windows.Win32.Foundation.PWSTR */
-  lpwstrWord: string | null;
+  lpwstrWord: string | null | Uint8Array | Uint16Array;
   /** i32 */
   nTabId: number;
 }
@@ -1963,7 +1963,7 @@ export interface _Anonymous1_e__Union {
   /** usize */
   Data0: Deno.PointerValue;
   /** Windows.Win32.Foundation.PWSTR */
-  String: string | null;
+  String: string | null | Uint8Array | Uint16Array;
   /** usize */
   u: Deno.PointerValue;
   /** ptr */
@@ -2107,7 +2107,7 @@ export interface MORRSLT {
   /** u32 */
   dwSize: number;
   /** Windows.Win32.Foundation.PWSTR */
-  pwchOutput: string | null;
+  pwchOutput: string | null | Uint8Array | Uint16Array;
   /** u16 */
   cchOutput: number;
   /** _Anonymous1_e__Union */
@@ -2221,9 +2221,9 @@ export function alloc_Anonymous_e__Union(data?: Partial<_Anonymous_e__Union>): U
  */
 export interface IMEWRD {
   /** Windows.Win32.Foundation.PWSTR */
-  pwchReading: string | null;
+  pwchReading: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pwchDisplay: string | null;
+  pwchDisplay: string | null | Uint8Array | Uint16Array;
   /** _Anonymous_e__Union */
   Anonymous: Uint8Array | Deno.PointerValue | null;
   /** array */
@@ -3239,7 +3239,7 @@ export interface IMESTRINGINFO {
   /** u32 */
   dwFarEastId: number;
   /** Windows.Win32.Foundation.PWSTR */
-  lpwstr: string | null;
+  lpwstr: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeofIMESTRINGINFO = 16;
@@ -3501,9 +3501,9 @@ export interface APPLYCANDEXPARAM {
   /** u32 */
   dwSize: number;
   /** Windows.Win32.Foundation.PWSTR */
-  lpwstrDisplay: string | null;
+  lpwstrDisplay: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  lpwstrReading: string | null;
+  lpwstrReading: string | null | Uint8Array | Uint16Array;
   /** u32 */
   dwReserved: number;
 }
@@ -4095,7 +4095,7 @@ export interface VSC_LPWSTR {
   /** u8 */
   vsc: number;
   /** Windows.Win32.Foundation.PWSTR */
-  pwsz: string | null;
+  pwsz: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeofVSC_LPWSTR = 16;

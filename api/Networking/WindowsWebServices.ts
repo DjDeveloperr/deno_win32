@@ -1555,7 +1555,7 @@ export interface _Anonymous1_e__Union {
   /** usize */
   Data0: Deno.PointerValue;
   /** Windows.Win32.Foundation.PWSTR */
-  String: string | null;
+  String: string | null | Uint8Array | Uint16Array;
   /** usize */
   u: Deno.PointerValue;
   /** ptr */
@@ -2154,7 +2154,7 @@ export interface WS_STRING {
   /** u32 */
   length: number;
   /** Windows.Win32.Foundation.PWSTR */
-  chars: string | null;
+  chars: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeofWS_STRING = 16;
@@ -8060,11 +8060,11 @@ export interface WEBAUTHN_RP_ENTITY_INFORMATION {
   /** u32 */
   dwVersion: number;
   /** Windows.Win32.Foundation.PWSTR */
-  pwszId: string | null;
+  pwszId: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pwszName: string | null;
+  pwszName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pwszIcon: string | null;
+  pwszIcon: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeofWEBAUTHN_RP_ENTITY_INFORMATION = 32;
@@ -8104,11 +8104,11 @@ export interface WEBAUTHN_USER_ENTITY_INFORMATION {
   /** ptr */
   pbId: Deno.PointerValue | Uint8Array | null;
   /** Windows.Win32.Foundation.PWSTR */
-  pwszName: string | null;
+  pwszName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pwszIcon: string | null;
+  pwszIcon: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pwszDisplayName: string | null;
+  pwszDisplayName: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeofWEBAUTHN_USER_ENTITY_INFORMATION = 40;
@@ -8151,7 +8151,7 @@ export interface WEBAUTHN_CLIENT_DATA {
   /** ptr */
   pbClientDataJSON: Deno.PointerValue | Uint8Array | null;
   /** Windows.Win32.Foundation.PWSTR */
-  pwszHashAlgId: string | null;
+  pwszHashAlgId: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeofWEBAUTHN_CLIENT_DATA = 24;
@@ -8180,7 +8180,7 @@ export interface WEBAUTHN_COSE_CREDENTIAL_PARAMETER {
   /** u32 */
   dwVersion: number;
   /** Windows.Win32.Foundation.PWSTR */
-  pwszCredentialType: string | null;
+  pwszCredentialType: string | null | Uint8Array | Uint16Array;
   /** i32 */
   lAlg: number;
 }
@@ -8238,7 +8238,7 @@ export interface WEBAUTHN_CREDENTIAL {
   /** ptr */
   pbId: Deno.PointerValue | Uint8Array | null;
   /** Windows.Win32.Foundation.PWSTR */
-  pwszCredentialType: string | null;
+  pwszCredentialType: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeofWEBAUTHN_CREDENTIAL = 24;
@@ -8294,7 +8294,7 @@ export interface WEBAUTHN_CREDENTIAL_EX {
   /** ptr */
   pbId: Deno.PointerValue | Uint8Array | null;
   /** Windows.Win32.Foundation.PWSTR */
-  pwszCredentialType: string | null;
+  pwszCredentialType: string | null | Uint8Array | Uint16Array;
   /** u32 */
   dwTransports: number;
 }
@@ -8394,7 +8394,7 @@ export function allocWEBAUTHN_CRED_BLOB_EXTENSION(data?: Partial<WEBAUTHN_CRED_B
  */
 export interface WEBAUTHN_EXTENSION {
   /** Windows.Win32.Foundation.PWSTR */
-  pwszExtensionIdentifier: string | null;
+  pwszExtensionIdentifier: string | null | Uint8Array | Uint16Array;
   /** u32 */
   cbExtension: number;
   /** ptr */
@@ -8533,7 +8533,7 @@ export interface WEBAUTHN_AUTHENTICATOR_GET_ASSERTION_OPTIONS {
   /** u32 */
   dwFlags: number;
   /** Windows.Win32.Foundation.PWSTR */
-  pwszU2fAppId: string | null;
+  pwszU2fAppId: string | null | Uint8Array | Uint16Array;
   /** ptr */
   pbU2fAppId: Deno.PointerValue | Uint8Array | null;
   /** ptr */
@@ -8618,7 +8618,7 @@ export interface WEBAUTHN_COMMON_ATTESTATION {
   /** u32 */
   dwVersion: number;
   /** Windows.Win32.Foundation.PWSTR */
-  pwszAlg: string | null;
+  pwszAlg: string | null | Uint8Array | Uint16Array;
   /** i32 */
   lAlg: number;
   /** u32 */
@@ -8630,7 +8630,7 @@ export interface WEBAUTHN_COMMON_ATTESTATION {
   /** ptr */
   pX5c: Deno.PointerValue | Uint8Array | null;
   /** Windows.Win32.Foundation.PWSTR */
-  pwszVer: string | null;
+  pwszVer: string | null | Uint8Array | Uint16Array;
   /** u32 */
   cbCertInfo: number;
   /** ptr */
@@ -8690,7 +8690,7 @@ export interface WEBAUTHN_CREDENTIAL_ATTESTATION {
   /** u32 */
   dwVersion: number;
   /** Windows.Win32.Foundation.PWSTR */
-  pwszFormatType: string | null;
+  pwszFormatType: string | null | Uint8Array | Uint16Array;
   /** u32 */
   cbAuthenticatorData: number;
   /** ptr */
@@ -9862,7 +9862,7 @@ export function WsReadValue(
 
 export function WsReadChars(
   reader: Deno.PointerValue | Uint8Array | null /* ptr */,
-  chars: string | null /* Windows.Win32.Foundation.PWSTR */,
+  chars: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   maxCharCount: number /* u32 */,
   actualCharCount: Deno.PointerValue | Uint8Array | null /* ptr */,
   error: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -10111,7 +10111,7 @@ export function WsWriteQualifiedName(
 
 export function WsWriteChars(
   writer: Deno.PointerValue | Uint8Array | null /* ptr */,
-  chars: string | null /* Windows.Win32.Foundation.PWSTR */,
+  chars: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   charCount: number /* u32 */,
   error: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
@@ -10227,7 +10227,7 @@ export function WsMoveWriter(
 }
 
 export function WsTrimXmlWhitespace(
-  chars: string | null /* Windows.Win32.Foundation.PWSTR */,
+  chars: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   charCount: number /* u32 */,
   trimmedChars: Deno.PointerValue | Uint8Array | null /* ptr */,
   trimmedCount: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -10237,7 +10237,7 @@ export function WsTrimXmlWhitespace(
 }
 
 export function WsVerifyXmlNCName(
-  ncNameChars: string | null /* Windows.Win32.Foundation.PWSTR */,
+  ncNameChars: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   ncNameCharCount: number /* u32 */,
   error: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
@@ -11514,7 +11514,7 @@ export function WebAuthNAuthenticatorMakeCredential(
 
 export function WebAuthNAuthenticatorGetAssertion(
   hWnd: Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */,
-  pwszRpId: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pwszRpId: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pWebAuthNClientData: Deno.PointerValue | Uint8Array | null /* ptr */,
   pWebAuthNGetAssertionOptions: Deno.PointerValue | Uint8Array | null /* ptr */,
   ppWebAuthNAssertion: Deno.PointerValue | Uint8Array | null /* ptr */,

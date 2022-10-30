@@ -318,7 +318,7 @@ export interface HHN_NOTIFY {
   /** Windows.Win32.UI.Controls.NMHDR */
   hdr: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.Foundation.PSTR */
-  pszUrl: string | null;
+  pszUrl: string | null | Uint8Array;
 }
 
 export const sizeofHHN_NOTIFY = 16;
@@ -502,11 +502,11 @@ export interface HH_ENUM_IT {
   /** i32 */
   iType: number;
   /** Windows.Win32.Foundation.PSTR */
-  pszCatName: string | null;
+  pszCatName: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  pszITName: string | null;
+  pszITName: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  pszITDescription: string | null;
+  pszITDescription: string | null | Uint8Array;
 }
 
 export const sizeofHH_ENUM_IT = 32;
@@ -543,9 +543,9 @@ export interface HH_ENUM_CAT {
   /** i32 */
   cbStruct: number;
   /** Windows.Win32.Foundation.PSTR */
-  pszCatName: string | null;
+  pszCatName: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  pszCatDescription: string | null;
+  pszCatDescription: string | null | Uint8Array;
 }
 
 export const sizeofHH_ENUM_CAT = 24;
@@ -576,9 +576,9 @@ export interface HH_SET_INFOTYPE {
   /** i32 */
   cbStruct: number;
   /** Windows.Win32.Foundation.PSTR */
-  pszCatName: string | null;
+  pszCatName: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  pszInfoTypeName: string | null;
+  pszInfoTypeName: string | null | Uint8Array;
 }
 
 export const sizeofHH_SET_INFOTYPE = 24;
@@ -818,7 +818,7 @@ export interface HHNTRACK {
   /** Windows.Win32.UI.Controls.NMHDR */
   hdr: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.Foundation.PSTR */
-  pszCurUrl: string | null;
+  pszCurUrl: string | null | Uint8Array;
   /** i32 */
   idAction: number;
   /** ptr */

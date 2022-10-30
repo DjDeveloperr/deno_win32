@@ -69,7 +69,7 @@ export function allocCRYPTOAPI_BLOB(data?: Partial<CRYPTOAPI_BLOB>): Uint8Array 
  */
 export interface CRYPT_ALGORITHM_IDENTIFIER {
   /** Windows.Win32.Foundation.PSTR */
-  pszObjId: string | null;
+  pszObjId: string | null | Uint8Array;
   /** Windows.Win32.Security.Cryptography.CRYPTOAPI_BLOB */
   Parameters: Uint8Array | Deno.PointerValue | null;
 }
@@ -144,9 +144,9 @@ export interface SIP_SUBJECTINFO {
   /** Windows.Win32.Foundation.HANDLE */
   hFile: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.Foundation.PWSTR */
-  pwsFileName: string | null;
+  pwsFileName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pwsDisplayName: string | null;
+  pwsDisplayName: string | null | Uint8Array | Uint16Array;
   /** u32 */
   dwReserved1: number;
   /** u32 */
@@ -353,7 +353,7 @@ export function allocSIP_CAP_SET_V3(data?: Partial<SIP_CAP_SET_V3>): Uint8Array 
  */
 export interface CRYPT_ATTRIBUTE_TYPE_VALUE {
   /** Windows.Win32.Foundation.PSTR */
-  pszObjId: string | null;
+  pszObjId: string | null | Uint8Array;
   /** Windows.Win32.Security.Cryptography.CRYPTOAPI_BLOB */
   Value: Uint8Array | Deno.PointerValue | null;
 }
@@ -451,25 +451,25 @@ export interface SIP_ADD_NEWPROVIDER {
   /** ptr */
   pgSubject: Deno.PointerValue | Uint8Array | null;
   /** Windows.Win32.Foundation.PWSTR */
-  pwszDLLFileName: string | null;
+  pwszDLLFileName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pwszMagicNumber: string | null;
+  pwszMagicNumber: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pwszIsFunctionName: string | null;
+  pwszIsFunctionName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pwszGetFuncName: string | null;
+  pwszGetFuncName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pwszPutFuncName: string | null;
+  pwszPutFuncName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pwszCreateFuncName: string | null;
+  pwszCreateFuncName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pwszVerifyFuncName: string | null;
+  pwszVerifyFuncName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pwszRemoveFuncName: string | null;
+  pwszRemoveFuncName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pwszIsFunctionNameFmt2: string | null;
+  pwszIsFunctionNameFmt2: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pwszGetCapFuncName: string | null;
+  pwszGetCapFuncName: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeofSIP_ADD_NEWPROVIDER = 96;
@@ -648,7 +648,7 @@ export function CryptSIPLoad(
 }
 
 export function CryptSIPRetrieveSubjectGuid(
-  FileName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  FileName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   hFileIn: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
   pgSubject: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
@@ -656,7 +656,7 @@ export function CryptSIPRetrieveSubjectGuid(
 }
 
 export function CryptSIPRetrieveSubjectGuidForCatalogFile(
-  FileName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  FileName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   hFileIn: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
   pgSubject: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {

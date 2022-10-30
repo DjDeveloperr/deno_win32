@@ -78,13 +78,13 @@ export type PWSTR = Deno.PointerValue | Uint8Array | null;
  */
 export interface WLX_SC_NOTIFICATION_INFO {
   /** Windows.Win32.Foundation.PWSTR */
-  pszCard: string | null;
+  pszCard: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pszReader: string | null;
+  pszReader: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pszContainer: string | null;
+  pszContainer: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pszCryptoProvider: string | null;
+  pszCryptoProvider: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeofWLX_SC_NOTIFICATION_INFO = 32;
@@ -122,7 +122,7 @@ export interface WLX_PROFILE_V1_0 {
   /** u32 */
   dwType: number;
   /** Windows.Win32.Foundation.PWSTR */
-  pszProfile: string | null;
+  pszProfile: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeofWLX_PROFILE_V1_0 = 16;
@@ -148,15 +148,15 @@ export interface WLX_PROFILE_V2_0 {
   /** u32 */
   dwType: number;
   /** Windows.Win32.Foundation.PWSTR */
-  pszProfile: string | null;
+  pszProfile: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pszPolicy: string | null;
+  pszPolicy: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pszNetworkDefaultUserProfile: string | null;
+  pszNetworkDefaultUserProfile: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pszServerName: string | null;
+  pszServerName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pszEnvironment: string | null;
+  pszEnvironment: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeofWLX_PROFILE_V2_0 = 48;
@@ -200,13 +200,13 @@ export function allocWLX_PROFILE_V2_0(data?: Partial<WLX_PROFILE_V2_0>): Uint8Ar
  */
 export interface WLX_MPR_NOTIFY_INFO {
   /** Windows.Win32.Foundation.PWSTR */
-  pszUserName: string | null;
+  pszUserName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pszDomain: string | null;
+  pszDomain: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pszPassword: string | null;
+  pszPassword: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pszOldPassword: string | null;
+  pszOldPassword: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeofWLX_MPR_NOTIFY_INFO = 32;
@@ -272,11 +272,11 @@ export interface WLX_CLIENT_CREDENTIALS_INFO_V1_0 {
   /** u32 */
   dwType: number;
   /** Windows.Win32.Foundation.PWSTR */
-  pszUserName: string | null;
+  pszUserName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pszDomain: string | null;
+  pszDomain: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pszPassword: string | null;
+  pszPassword: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.BOOL */
   fPromptForPassword: boolean;
 }
@@ -317,11 +317,11 @@ export interface WLX_CLIENT_CREDENTIALS_INFO_V2_0 {
   /** u32 */
   dwType: number;
   /** Windows.Win32.Foundation.PWSTR */
-  pszUserName: string | null;
+  pszUserName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pszDomain: string | null;
+  pszDomain: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pszPassword: string | null;
+  pszPassword: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.BOOL */
   fPromptForPassword: boolean;
   /** Windows.Win32.Foundation.BOOL */
@@ -411,7 +411,7 @@ export interface _u_e__Struct {
   /** u32 */
   dwValue: number;
   /** Windows.Win32.Foundation.PWSTR */
-  pwszName: string | null;
+  pwszName: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeof_u_e__Struct = 16;
@@ -507,9 +507,9 @@ export interface WLX_CONSOLESWITCH_CREDENTIALS_INFO_V1_0 {
   /** Windows.Win32.Security.QUOTA_LIMITS */
   Quotas: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.Foundation.PWSTR */
-  UserName: string | null;
+  UserName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  Domain: string | null;
+  Domain: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.LARGE_INTEGER */
   LogonTime: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.Foundation.BOOL */
@@ -535,17 +535,17 @@ export interface WLX_CONSOLESWITCH_CREDENTIALS_INFO_V1_0 {
   /** Windows.Win32.Foundation.LARGE_INTEGER */
   PasswordMustChange: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.Foundation.PWSTR */
-  LogonScript: string | null;
+  LogonScript: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  HomeDirectory: string | null;
+  HomeDirectory: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  FullName: string | null;
+  FullName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  ProfilePath: string | null;
+  ProfilePath: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  HomeDirectoryDrive: string | null;
+  HomeDirectoryDrive: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  LogonServer: string | null;
+  LogonServer: string | null | Uint8Array | Uint16Array;
   /** u32 */
   UserFlags: number;
   /** u32 */
@@ -654,7 +654,7 @@ export interface WLX_DESKTOP {
   /** Windows.Win32.System.StationsAndDesktops.HDESK */
   hDesktop: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.Foundation.PWSTR */
-  pszDesktopName: string | null;
+  pszDesktopName: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeofWLX_DESKTOP = 24;
@@ -1155,11 +1155,11 @@ export interface WLX_NOTIFICATION_INFO {
   /** u32 */
   Flags: number;
   /** Windows.Win32.Foundation.PWSTR */
-  UserName: string | null;
+  UserName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  Domain: string | null;
+  Domain: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  WindowStation: string | null;
+  WindowStation: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.HANDLE */
   hToken: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.System.StationsAndDesktops.HDESK */

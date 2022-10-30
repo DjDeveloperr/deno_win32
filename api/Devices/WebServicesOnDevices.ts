@@ -191,7 +191,7 @@ export interface WSD_SECURITY_CERT_VALIDATION {
   /** u32 */
   dwCertCheckOptions: number;
   /** Windows.Win32.Foundation.PWSTR */
-  pszCNGHashAlgId: string | null;
+  pszCNGHashAlgId: string | null | Uint8Array | Uint16Array;
   /** ptr */
   pbCertHash: Deno.PointerValue | Uint8Array | null;
   /** u32 */
@@ -434,9 +434,9 @@ export function allocWSD_DURATION(data?: Partial<WSD_DURATION>): Uint8Array {
  */
 export interface WSDXML_NAMESPACE {
   /** Windows.Win32.Foundation.PWSTR */
-  Uri: string | null;
+  Uri: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  PreferredPrefix: string | null;
+  PreferredPrefix: string | null | Uint8Array | Uint16Array;
   /** ptr */
   Names: Deno.PointerValue | Uint8Array | null;
   /** u16 */
@@ -477,7 +477,7 @@ export interface WSDXML_NAME {
   /** ptr */
   Space: Deno.PointerValue | Uint8Array | null;
   /** Windows.Win32.Foundation.PWSTR */
-  LocalName: string | null;
+  LocalName: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeofWSDXML_NAME = 16;
@@ -500,7 +500,7 @@ export function allocWSDXML_NAME(data?: Partial<WSDXML_NAME>): Uint8Array {
  */
 export interface WSDXML_TYPE {
   /** Windows.Win32.Foundation.PWSTR */
-  Uri: string | null;
+  Uri: string | null | Uint8Array | Uint16Array;
   /** ptr */
   Table: Deno.PointerValue | Uint8Array | null;
 }
@@ -531,7 +531,7 @@ export interface WSDXML_PREFIX_MAPPING {
   /** ptr */
   Space: Deno.PointerValue | Uint8Array | null;
   /** Windows.Win32.Foundation.PWSTR */
-  Prefix: string | null;
+  Prefix: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeofWSDXML_PREFIX_MAPPING = 32;
@@ -565,7 +565,7 @@ export interface WSDXML_ATTRIBUTE {
   /** ptr */
   Name: Deno.PointerValue | Uint8Array | null;
   /** Windows.Win32.Foundation.PWSTR */
-  Value: string | null;
+  Value: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeofWSDXML_ATTRIBUTE = 32;
@@ -655,7 +655,7 @@ export interface WSDXML_TEXT {
   /** Windows.Win32.Devices.WebServicesOnDevices.WSDXML_NODE */
   Node: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.Foundation.PWSTR */
-  Text: string | null;
+  Text: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeofWSDXML_TEXT = 16;
@@ -817,7 +817,7 @@ export function allocWSD_PORT_TYPE(data?: Partial<WSD_PORT_TYPE>): Uint8Array {
  */
 export interface WSD_RELATIONSHIP_METADATA {
   /** Windows.Win32.Foundation.PWSTR */
-  Type: string | null;
+  Type: string | null | Uint8Array | Uint16Array;
   /** ptr */
   Data: Deno.PointerValue | Uint8Array | null;
   /** ptr */
@@ -916,7 +916,7 @@ export interface WSD_SERVICE_METADATA {
   /** ptr */
   Types: Deno.PointerValue | Uint8Array | null;
   /** Windows.Win32.Foundation.PWSTR */
-  ServiceId: string | null;
+  ServiceId: string | null | Uint8Array | Uint16Array;
   /** ptr */
   Any: Deno.PointerValue | Uint8Array | null;
 }
@@ -947,9 +947,9 @@ export interface WSD_THIS_DEVICE_METADATA {
   /** ptr */
   FriendlyName: Deno.PointerValue | Uint8Array | null;
   /** Windows.Win32.Foundation.PWSTR */
-  FirmwareVersion: string | null;
+  FirmwareVersion: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  SerialNumber: string | null;
+  SerialNumber: string | null | Uint8Array | Uint16Array;
   /** ptr */
   Any: Deno.PointerValue | Uint8Array | null;
 }
@@ -983,15 +983,15 @@ export interface WSD_THIS_MODEL_METADATA {
   /** ptr */
   Manufacturer: Deno.PointerValue | Uint8Array | null;
   /** Windows.Win32.Foundation.PWSTR */
-  ManufacturerUrl: string | null;
+  ManufacturerUrl: string | null | Uint8Array | Uint16Array;
   /** ptr */
   ModelName: Deno.PointerValue | Uint8Array | null;
   /** Windows.Win32.Foundation.PWSTR */
-  ModelNumber: string | null;
+  ModelNumber: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  ModelUrl: string | null;
+  ModelUrl: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  PresentationUrl: string | null;
+  PresentationUrl: string | null | Uint8Array | Uint16Array;
   /** ptr */
   Any: Deno.PointerValue | Uint8Array | null;
 }
@@ -1123,9 +1123,9 @@ export interface WSD_SOAP_FAULT {
   /** ptr */
   Reason: Deno.PointerValue | Uint8Array | null;
   /** Windows.Win32.Foundation.PWSTR */
-  Node: string | null;
+  Node: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  Role: string | null;
+  Role: string | null | Uint8Array | Uint16Array;
   /** ptr */
   Detail: Deno.PointerValue | Uint8Array | null;
 }
@@ -1161,7 +1161,7 @@ export interface WSD_APP_SEQUENCE {
   /** u64 */
   InstanceId: Deno.PointerValue;
   /** Windows.Win32.Foundation.PWSTR */
-  SequenceId: string | null;
+  SequenceId: string | null | Uint8Array | Uint16Array;
   /** u64 */
   MessageNumber: Deno.PointerValue;
 }
@@ -1190,7 +1190,7 @@ export interface WSD_HEADER_RELATESTO {
   /** ptr */
   RelationshipType: Deno.PointerValue | Uint8Array | null;
   /** Windows.Win32.Foundation.PWSTR */
-  MessageID: string | null;
+  MessageID: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeofWSD_HEADER_RELATESTO = 16;
@@ -1213,11 +1213,11 @@ export function allocWSD_HEADER_RELATESTO(data?: Partial<WSD_HEADER_RELATESTO>):
  */
 export interface WSD_SOAP_HEADER {
   /** Windows.Win32.Foundation.PWSTR */
-  To: string | null;
+  To: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  Action: string | null;
+  Action: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  MessageID: string | null;
+  MessageID: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Devices.WebServicesOnDevices.WSD_HEADER_RELATESTO */
   RelatesTo: Uint8Array | Deno.PointerValue | null;
   /** ptr */
@@ -1510,7 +1510,7 @@ export function allocWSD_BYE(data?: Partial<WSD_BYE>): Uint8Array {
  */
 export interface WSD_SCOPES {
   /** Windows.Win32.Foundation.PWSTR */
-  MatchBy: string | null;
+  MatchBy: string | null | Uint8Array | Uint16Array;
   /** ptr */
   Scopes: Deno.PointerValue | Uint8Array | null;
 }
@@ -1631,7 +1631,7 @@ export function allocWSD_REFERENCE_PROPERTIES(data?: Partial<WSD_REFERENCE_PROPE
  */
 export interface WSD_ENDPOINT_REFERENCE {
   /** Windows.Win32.Foundation.PWSTR */
-  Address: string | null;
+  Address: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Devices.WebServicesOnDevices.WSD_REFERENCE_PROPERTIES */
   ReferenceProperties: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.Devices.WebServicesOnDevices.WSD_REFERENCE_PARAMETERS */
@@ -1672,15 +1672,15 @@ export function allocWSD_ENDPOINT_REFERENCE(data?: Partial<WSD_ENDPOINT_REFERENC
  */
 export interface WSD_METADATA_SECTION {
   /** Windows.Win32.Foundation.PWSTR */
-  Dialect: string | null;
+  Dialect: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  Identifier: string | null;
+  Identifier: string | null | Uint8Array | Uint16Array;
   /** ptr */
   Data: Deno.PointerValue | Uint8Array | null;
   /** ptr */
   MetadataReference: Deno.PointerValue | Uint8Array | null;
   /** Windows.Win32.Foundation.PWSTR */
-  Location: string | null;
+  Location: string | null | Uint8Array | Uint16Array;
   /** ptr */
   Any: Deno.PointerValue | Uint8Array | null;
 }
@@ -1743,7 +1743,7 @@ export interface WSD_URI_LIST {
   /** ptr */
   Next: Deno.PointerValue | Uint8Array | null;
   /** Windows.Win32.Foundation.PWSTR */
-  Element: string | null;
+  Element: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeofWSD_URI_LIST = 16;
@@ -1784,7 +1784,7 @@ export function allocWSD_EVENTING_FILTER_ACTION(data?: Partial<WSD_EVENTING_FILT
  */
 export interface WSD_EVENTING_FILTER {
   /** Windows.Win32.Foundation.PWSTR */
-  Dialect: string | null;
+  Dialect: string | null | Uint8Array | Uint16Array;
   /** ptr */
   FilterAction: Deno.PointerValue | Uint8Array | null;
   /** ptr */
@@ -1853,7 +1853,7 @@ export function allocWSD_EVENTING_DELIVERY_MODE_PUSH(data?: Partial<WSD_EVENTING
  */
 export interface WSD_EVENTING_DELIVERY_MODE {
   /** Windows.Win32.Foundation.PWSTR */
-  Mode: string | null;
+  Mode: string | null | Uint8Array | Uint16Array;
   /** ptr */
   Push: Deno.PointerValue | Uint8Array | null;
   /** ptr */
@@ -1882,9 +1882,9 @@ export function allocWSD_EVENTING_DELIVERY_MODE(data?: Partial<WSD_EVENTING_DELI
  */
 export interface WSD_LOCALIZED_STRING {
   /** Windows.Win32.Foundation.PWSTR */
-  lang: string | null;
+  lang: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  String: string | null;
+  String: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeofWSD_LOCALIZED_STRING = 16;
@@ -2092,7 +2092,7 @@ export interface RESPONSEBODY_SubscriptionEnd {
   /** ptr */
   SubscriptionManager: Deno.PointerValue | Uint8Array | null;
   /** Windows.Win32.Foundation.PWSTR */
-  Status: string | null;
+  Status: string | null | Uint8Array | Uint16Array;
   /** ptr */
   Reason: Deno.PointerValue | Uint8Array | null;
   /** ptr */
@@ -2145,7 +2145,7 @@ export interface WSD_EVENT {
   /** u32 */
   EventType: number;
   /** Windows.Win32.Foundation.PWSTR */
-  DispatchTag: string | null;
+  DispatchTag: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Devices.WebServicesOnDevices.WSD_HANDLER_CONTEXT */
   HandlerContext: Uint8Array | Deno.PointerValue | null;
   /** ptr */
@@ -2350,8 +2350,8 @@ export function WSDCreateOutboundAttachment(
 }
 
 export function WSDXMLGetNameFromBuiltinNamespace(
-  pszNamespace: string | null /* Windows.Win32.Foundation.PWSTR */,
-  pszName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pszNamespace: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  pszName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   ppName: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
   return util.pointerFromFfi(libwsdapi_dll.WSDXMLGetNameFromBuiltinNamespace(util.pwstrToFfi(pszNamespace), util.pwstrToFfi(pszName), util.toPointer(ppName)));
@@ -2396,8 +2396,8 @@ export function WSDCreateDiscoveryPublisher2(
 }
 
 export function WSDCreateDeviceProxy(
-  pszDeviceId: string | null /* Windows.Win32.Foundation.PWSTR */,
-  pszLocalId: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pszDeviceId: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  pszLocalId: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pContext: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.WebServicesOnDevices.IWSDXMLContext */,
   ppDeviceProxy: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
@@ -2405,9 +2405,9 @@ export function WSDCreateDeviceProxy(
 }
 
 export function WSDCreateDeviceProxyAdvanced(
-  pszDeviceId: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pszDeviceId: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pDeviceAddress: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.WebServicesOnDevices.IWSDAddress */,
-  pszLocalId: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pszLocalId: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pContext: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.WebServicesOnDevices.IWSDXMLContext */,
   ppDeviceProxy: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
@@ -2415,8 +2415,8 @@ export function WSDCreateDeviceProxyAdvanced(
 }
 
 export function WSDCreateDeviceProxy2(
-  pszDeviceId: string | null /* Windows.Win32.Foundation.PWSTR */,
-  pszLocalId: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pszDeviceId: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  pszLocalId: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pContext: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.WebServicesOnDevices.IWSDXMLContext */,
   pConfigParams: Deno.PointerValue | Uint8Array | null /* ptr */,
   dwConfigParamCount: number /* u32 */,
@@ -2426,7 +2426,7 @@ export function WSDCreateDeviceProxy2(
 }
 
 export function WSDCreateDeviceHost(
-  pszLocalId: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pszLocalId: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pContext: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.WebServicesOnDevices.IWSDXMLContext */,
   ppDeviceHost: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
@@ -2434,7 +2434,7 @@ export function WSDCreateDeviceHost(
 }
 
 export function WSDCreateDeviceHostAdvanced(
-  pszLocalId: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pszLocalId: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pContext: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.WebServicesOnDevices.IWSDXMLContext */,
   ppHostAddresses: Deno.PointerValue | Uint8Array | null /* ptr */,
   dwHostAddressCount: number /* u32 */,
@@ -2444,7 +2444,7 @@ export function WSDCreateDeviceHostAdvanced(
 }
 
 export function WSDCreateDeviceHost2(
-  pszLocalId: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pszLocalId: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pContext: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.WebServicesOnDevices.IWSDXMLContext */,
   pConfigParams: Deno.PointerValue | Uint8Array | null /* ptr */,
   dwConfigParamCount: number /* u32 */,
@@ -2497,15 +2497,15 @@ export function WSDDetachLinkedMemory(
 
 export function WSDXMLBuildAnyForSingleElement(
   pElementName: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pszText: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pszText: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   ppAny: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
   return util.pointerFromFfi(libwsdapi_dll.WSDXMLBuildAnyForSingleElement(util.toPointer(pElementName), util.pwstrToFfi(pszText), util.toPointer(ppAny)));
 }
 
 export function WSDXMLGetValueFromAny(
-  pszNamespace: string | null /* Windows.Win32.Foundation.PWSTR */,
-  pszName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pszNamespace: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  pszName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pAny: Deno.PointerValue | Uint8Array | null /* ptr */,
   ppszValue: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
@@ -2533,10 +2533,10 @@ export function WSDXMLCleanupElement(
 }
 
 export function WSDGenerateFault(
-  pszCode: string | null /* Windows.Win32.Foundation.PWSTR */,
-  pszSubCode: string | null /* Windows.Win32.Foundation.PWSTR */,
-  pszReason: string | null /* Windows.Win32.Foundation.PWSTR */,
-  pszDetail: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pszCode: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  pszSubCode: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  pszReason: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  pszDetail: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pContext: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.WebServicesOnDevices.IWSDXMLContext */,
   ppFault: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
@@ -2547,14 +2547,14 @@ export function WSDGenerateFaultEx(
   pCode: Deno.PointerValue | Uint8Array | null /* ptr */,
   pSubCode: Deno.PointerValue | Uint8Array | null /* ptr */,
   pReasons: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pszDetail: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pszDetail: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   ppFault: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
   return util.pointerFromFfi(libwsdapi_dll.WSDGenerateFaultEx(util.toPointer(pCode), util.toPointer(pSubCode), util.toPointer(pReasons), util.pwstrToFfi(pszDetail), util.toPointer(ppFault)));
 }
 
 export function WSDUriEncode(
-  source: string | null /* Windows.Win32.Foundation.PWSTR */,
+  source: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   cchSource: number /* u32 */,
   destOut: Deno.PointerValue | Uint8Array | null /* ptr */,
   cchDestOut: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -2563,7 +2563,7 @@ export function WSDUriEncode(
 }
 
 export function WSDUriDecode(
-  source: string | null /* Windows.Win32.Foundation.PWSTR */,
+  source: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   cchSource: number /* u32 */,
   destOut: Deno.PointerValue | Uint8Array | null /* ptr */,
   cchDestOut: Deno.PointerValue | Uint8Array | null /* ptr */,

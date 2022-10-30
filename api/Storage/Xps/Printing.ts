@@ -120,9 +120,9 @@ try {
 // Symbols
 
 export function StartXpsPrintJob(
-  printerName: string | null /* Windows.Win32.Foundation.PWSTR */,
-  jobName: string | null /* Windows.Win32.Foundation.PWSTR */,
-  outputFileName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  printerName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  jobName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  outputFileName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   progressEvent: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
   completionEvent: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
   printablePagesOn: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -135,9 +135,9 @@ export function StartXpsPrintJob(
 }
 
 export function StartXpsPrintJob1(
-  printerName: string | null /* Windows.Win32.Foundation.PWSTR */,
-  jobName: string | null /* Windows.Win32.Foundation.PWSTR */,
-  outputFileName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  printerName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  jobName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  outputFileName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   progressEvent: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
   completionEvent: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
   xpsPrintJob: Deno.PointerValue | Uint8Array | null /* ptr */,

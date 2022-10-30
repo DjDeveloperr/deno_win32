@@ -1312,7 +1312,7 @@ export type PSTR = Deno.PointerValue | Uint8Array | null;
  */
 export interface OUTPUT_DEBUG_STRING_INFO {
   /** Windows.Win32.Foundation.PSTR */
-  lpDebugStringData: string | null;
+  lpDebugStringData: string | null | Uint8Array;
   /** u16 */
   fUnicode: number;
   /** u16 */
@@ -6306,7 +6306,7 @@ export type PWSTR = Deno.PointerValue | Uint8Array | null;
  */
 export interface SWbemRpnConst {
   /** Windows.Win32.Foundation.PWSTR */
-  m_pszStrVal: string | null;
+  m_pszStrVal: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.BOOL */
   m_bBoolVal: boolean;
   /** i32 */
@@ -6372,9 +6372,9 @@ export interface SWbemRpnQueryToken {
   /** Windows.Win32.System.Wmi.SWbemRpnConst */
   m_Const2: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.Foundation.PWSTR */
-  m_pszRightFunc: string | null;
+  m_pszRightFunc: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  m_pszLeftFunc: string | null;
+  m_pszLeftFunc: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeofSWbemRpnQueryToken = 80;
@@ -6465,7 +6465,7 @@ export interface SWbemRpnEncodedQuery {
   /** u32 */
   m_uFromTargetType: number;
   /** Windows.Win32.Foundation.PWSTR */
-  m_pszOptionalFromPath: string | null;
+  m_pszOptionalFromPath: string | null | Uint8Array | Uint16Array;
   /** u32 */
   m_uFromListSize: number;
   /** ptr */
@@ -6548,7 +6548,7 @@ export interface SWbemAnalysisMatrix {
   /** u32 */
   m_uMatrixType: number;
   /** Windows.Win32.Foundation.PWSTR */
-  m_pszProperty: string | null;
+  m_pszProperty: string | null | Uint8Array | Uint16Array;
   /** u32 */
   m_uPropertyType: number;
   /** u32 */
@@ -6628,21 +6628,21 @@ export interface SWbemAssocQueryInf {
   /** Windows.Win32.System.Wmi.IWbemPath */
   m_pPath: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.Foundation.PWSTR */
-  m_pszPath: string | null;
+  m_pszPath: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  m_pszQueryText: string | null;
+  m_pszQueryText: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  m_pszResultClass: string | null;
+  m_pszResultClass: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  m_pszAssocClass: string | null;
+  m_pszAssocClass: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  m_pszRole: string | null;
+  m_pszRole: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  m_pszResultRole: string | null;
+  m_pszResultRole: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  m_pszRequiredQualifier: string | null;
+  m_pszRequiredQualifier: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  m_pszRequiredAssocQualifier: string | null;
+  m_pszRequiredAssocQualifier: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeofSWbemAssocQueryInf = 88;

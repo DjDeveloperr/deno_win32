@@ -216,9 +216,9 @@ export type PWSTR = Deno.PointerValue | Uint8Array | null;
  */
 export interface COMDLG_FILTERSPEC {
   /** Windows.Win32.Foundation.PWSTR */
-  pszName: string | null;
+  pszName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pszSpec: string | null;
+  pszSpec: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeofCOMDLG_FILTERSPEC = 16;

@@ -96,11 +96,11 @@ export interface OSUpdateAssessment {
   /** Windows.Win32.Foundation.FILETIME */
   releaseInfoTime: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.Foundation.PWSTR */
-  currentOSBuild: string | null;
+  currentOSBuild: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.FILETIME */
   currentOSReleaseTime: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.Foundation.PWSTR */
-  upToDateOSBuild: string | null;
+  upToDateOSBuild: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.FILETIME */
   upToDateOSReleaseTime: Uint8Array | Deno.PointerValue | null;
 }

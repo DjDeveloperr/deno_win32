@@ -572,7 +572,7 @@ export interface PSS_VA_SPACE_ENTRY {
   /** u16 */
   MappedFileNameLength: number;
   /** Windows.Win32.Foundation.PWSTR */
-  MappedFileName: string | null;
+  MappedFileName: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeofPSS_VA_SPACE_ENTRY = 80;
@@ -785,7 +785,7 @@ export interface _u_e__Struct {
   /** u32 */
   dwValue: number;
   /** Windows.Win32.Foundation.PWSTR */
-  pwszName: string | null;
+  pwszName: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeof_u_e__Struct = 16;
@@ -946,11 +946,11 @@ export interface PSS_HANDLE_ENTRY {
   /** u16 */
   TypeNameLength: number;
   /** Windows.Win32.Foundation.PWSTR */
-  TypeName: string | null;
+  TypeName: string | null | Uint8Array | Uint16Array;
   /** u16 */
   ObjectNameLength: number;
   /** Windows.Win32.Foundation.PWSTR */
-  ObjectName: string | null;
+  ObjectName: string | null | Uint8Array | Uint16Array;
   /** _TypeSpecificInformation_e__Union */
   TypeSpecificInformation: Uint8Array | Deno.PointerValue | null;
 }

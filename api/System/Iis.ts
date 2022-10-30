@@ -1002,19 +1002,19 @@ export type HRESULT = number;
  */
 export interface LOGGING_PARAMETERS {
   /** Windows.Win32.Foundation.PWSTR */
-  pszSessionId: string | null;
+  pszSessionId: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pszSiteName: string | null;
+  pszSiteName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pszUserName: string | null;
+  pszUserName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pszHostName: string | null;
+  pszHostName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pszRemoteIpAddress: string | null;
+  pszRemoteIpAddress: string | null | Uint8Array | Uint16Array;
   /** u32 */
   dwRemoteIpPort: number;
   /** Windows.Win32.Foundation.PWSTR */
-  pszLocalIpAddress: string | null;
+  pszLocalIpAddress: string | null | Uint8Array | Uint16Array;
   /** u32 */
   dwLocalIpPort: number;
   /** u64 */
@@ -1022,11 +1022,11 @@ export interface LOGGING_PARAMETERS {
   /** u64 */
   BytesReceived: Deno.PointerValue;
   /** Windows.Win32.Foundation.PWSTR */
-  pszCommand: string | null;
+  pszCommand: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pszCommandParameters: string | null;
+  pszCommandParameters: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pszFullPath: string | null;
+  pszFullPath: string | null | Uint8Array | Uint16Array;
   /** u32 */
   dwElapsedMilliseconds: number;
   /** u32 */
@@ -1036,7 +1036,7 @@ export interface LOGGING_PARAMETERS {
   /** Windows.Win32.Foundation.HRESULT */
   hrStatus: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.Foundation.PWSTR */
-  pszInformation: string | null;
+  pszInformation: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeofLOGGING_PARAMETERS = 136;
@@ -1143,25 +1143,25 @@ export function allocFILETIME(data?: Partial<FILETIME>): Uint8Array {
  */
 export interface PRE_PROCESS_PARAMETERS {
   /** Windows.Win32.Foundation.PWSTR */
-  pszSessionId: string | null;
+  pszSessionId: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pszSiteName: string | null;
+  pszSiteName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pszUserName: string | null;
+  pszUserName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pszHostName: string | null;
+  pszHostName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pszRemoteIpAddress: string | null;
+  pszRemoteIpAddress: string | null | Uint8Array | Uint16Array;
   /** u32 */
   dwRemoteIpPort: number;
   /** Windows.Win32.Foundation.PWSTR */
-  pszLocalIpAddress: string | null;
+  pszLocalIpAddress: string | null | Uint8Array | Uint16Array;
   /** u32 */
   dwLocalIpPort: number;
   /** Windows.Win32.Foundation.PWSTR */
-  pszCommand: string | null;
+  pszCommand: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pszCommandParameters: string | null;
+  pszCommandParameters: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.FILETIME */
   SessionStartTime: Uint8Array | Deno.PointerValue | null;
   /** u64 */
@@ -1235,19 +1235,19 @@ export function allocPRE_PROCESS_PARAMETERS(data?: Partial<PRE_PROCESS_PARAMETER
  */
 export interface POST_PROCESS_PARAMETERS {
   /** Windows.Win32.Foundation.PWSTR */
-  pszSessionId: string | null;
+  pszSessionId: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pszSiteName: string | null;
+  pszSiteName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pszUserName: string | null;
+  pszUserName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pszHostName: string | null;
+  pszHostName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pszRemoteIpAddress: string | null;
+  pszRemoteIpAddress: string | null | Uint8Array | Uint16Array;
   /** u32 */
   dwRemoteIpPort: number;
   /** Windows.Win32.Foundation.PWSTR */
-  pszLocalIpAddress: string | null;
+  pszLocalIpAddress: string | null | Uint8Array | Uint16Array;
   /** u32 */
   dwLocalIpPort: number;
   /** u64 */
@@ -1255,13 +1255,13 @@ export interface POST_PROCESS_PARAMETERS {
   /** u64 */
   BytesReceived: Deno.PointerValue;
   /** Windows.Win32.Foundation.PWSTR */
-  pszCommand: string | null;
+  pszCommand: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pszCommandParameters: string | null;
+  pszCommandParameters: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pszFullPath: string | null;
+  pszFullPath: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pszPhysicalPath: string | null;
+  pszPhysicalPath: string | null | Uint8Array | Uint16Array;
   /** u32 */
   FtpStatus: number;
   /** u32 */
@@ -1558,7 +1558,7 @@ export function allocMETADATA_HANDLE_INFO(data?: Partial<METADATA_HANDLE_INFO>):
  */
 export interface MD_CHANGE_OBJECT_W {
   /** Windows.Win32.Foundation.PWSTR */
-  pszMDPath: string | null;
+  pszMDPath: string | null | Uint8Array | Uint16Array;
   /** u32 */
   dwMDChangeType: number;
   /** u32 */
@@ -1626,13 +1626,13 @@ export interface EXTENSION_CONTROL_BLOCK {
   /** array */
   lpszLogData: Deno.PointerValue | null;
   /** Windows.Win32.Foundation.PSTR */
-  lpszMethod: string | null;
+  lpszMethod: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  lpszQueryString: string | null;
+  lpszQueryString: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  lpszPathInfo: string | null;
+  lpszPathInfo: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  lpszPathTranslated: string | null;
+  lpszPathTranslated: string | null | Uint8Array;
   /** u32 */
   cbTotalBytes: number;
   /** u32 */
@@ -1640,7 +1640,7 @@ export interface EXTENSION_CONTROL_BLOCK {
   /** ptr */
   lpbData: Deno.PointerValue | Uint8Array | null;
   /** Windows.Win32.Foundation.PSTR */
-  lpszContentType: string | null;
+  lpszContentType: string | null | Uint8Array;
   /** isize */
   GetServerVariable: Deno.PointerValue;
   /** isize */
@@ -1792,7 +1792,7 @@ export interface HSE_TF_INFO {
   /** Windows.Win32.Foundation.HANDLE */
   hFile: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.Foundation.PSTR */
-  pszStatusCode: string | null;
+  pszStatusCode: string | null | Uint8Array;
   /** u32 */
   BytesToWrite: number;
   /** u32 */
@@ -1850,9 +1850,9 @@ export type BOOL = number;
  */
 export interface HSE_SEND_HEADER_EX_INFO {
   /** Windows.Win32.Foundation.PSTR */
-  pszStatus: string | null;
+  pszStatus: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  pszHeader: string | null;
+  pszHeader: string | null | Uint8Array;
   /** u32 */
   cchStatus: number;
   /** u32 */
@@ -1893,9 +1893,9 @@ export interface HSE_EXEC_URL_USER_INFO {
   /** Windows.Win32.Foundation.HANDLE */
   hImpersonationToken: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.Foundation.PSTR */
-  pszCustomUserName: string | null;
+  pszCustomUserName: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  pszCustomAuthType: string | null;
+  pszCustomAuthType: string | null | Uint8Array;
 }
 
 export const sizeofHSE_EXEC_URL_USER_INFO = 24;
@@ -1972,11 +1972,11 @@ export function allocHSE_EXEC_URL_STATUS(data?: Partial<HSE_EXEC_URL_STATUS>): U
  */
 export interface HSE_EXEC_URL_INFO {
   /** Windows.Win32.Foundation.PSTR */
-  pszUrl: string | null;
+  pszUrl: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  pszMethod: string | null;
+  pszMethod: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  pszChildHeaders: string | null;
+  pszChildHeaders: string | null | Uint8Array;
   /** ptr */
   pUserInfo: Deno.PointerValue | Uint8Array | null;
   /** ptr */
@@ -2022,9 +2022,9 @@ export interface HSE_EXEC_UNICODE_URL_USER_INFO {
   /** Windows.Win32.Foundation.HANDLE */
   hImpersonationToken: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.Foundation.PWSTR */
-  pszCustomUserName: string | null;
+  pszCustomUserName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PSTR */
-  pszCustomAuthType: string | null;
+  pszCustomAuthType: string | null | Uint8Array;
 }
 
 export const sizeofHSE_EXEC_UNICODE_URL_USER_INFO = 24;
@@ -2052,11 +2052,11 @@ export function allocHSE_EXEC_UNICODE_URL_USER_INFO(data?: Partial<HSE_EXEC_UNIC
  */
 export interface HSE_EXEC_UNICODE_URL_INFO {
   /** Windows.Win32.Foundation.PWSTR */
-  pszUrl: string | null;
+  pszUrl: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PSTR */
-  pszMethod: string | null;
+  pszMethod: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  pszChildHeaders: string | null;
+  pszChildHeaders: string | null | Uint8Array;
   /** ptr */
   pUserInfo: Deno.PointerValue | Uint8Array | null;
   /** ptr */
@@ -2100,7 +2100,7 @@ export function allocHSE_EXEC_UNICODE_URL_INFO(data?: Partial<HSE_EXEC_UNICODE_U
  */
 export interface HSE_CUSTOM_ERROR_INFO {
   /** Windows.Win32.Foundation.PSTR */
-  pszStatus: string | null;
+  pszStatus: string | null | Uint8Array;
   /** u16 */
   uHttpSubError: number;
   /** Windows.Win32.Foundation.BOOL */
@@ -2163,9 +2163,9 @@ export interface HSE_RESPONSE_VECTOR {
   /** u32 */
   dwFlags: number;
   /** Windows.Win32.Foundation.PSTR */
-  pszStatus: string | null;
+  pszStatus: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  pszHeaders: string | null;
+  pszHeaders: string | null | Uint8Array;
   /** u32 */
   nElementCount: number;
   /** ptr */
@@ -2421,11 +2421,11 @@ export function allocHTTP_FILTER_PREPROC_HEADERS(data?: Partial<HTTP_FILTER_PREP
  */
 export interface HTTP_FILTER_AUTHENT {
   /** Windows.Win32.Foundation.PSTR */
-  pszUser: string | null;
+  pszUser: string | null | Uint8Array;
   /** u32 */
   cbUserBuff: number;
   /** Windows.Win32.Foundation.PSTR */
-  pszPassword: string | null;
+  pszPassword: string | null | Uint8Array;
   /** u32 */
   cbPasswordBuff: number;
 }
@@ -2459,9 +2459,9 @@ export function allocHTTP_FILTER_AUTHENT(data?: Partial<HTTP_FILTER_AUTHENT>): U
  */
 export interface HTTP_FILTER_URL_MAP {
   /** Windows.Win32.Foundation.PSTR */
-  pszURL: string | null;
+  pszURL: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  pszPhysicalPath: string | null;
+  pszPhysicalPath: string | null | Uint8Array;
   /** u32 */
   cbPathBuff: number;
 }
@@ -2492,9 +2492,9 @@ export function allocHTTP_FILTER_URL_MAP(data?: Partial<HTTP_FILTER_URL_MAP>): U
  */
 export interface HTTP_FILTER_URL_MAP_EX {
   /** Windows.Win32.Foundation.PSTR */
-  pszURL: string | null;
+  pszURL: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  pszPhysicalPath: string | null;
+  pszPhysicalPath: string | null | Uint8Array;
   /** u32 */
   cbPathBuff: number;
   /** u32 */
@@ -2504,7 +2504,7 @@ export interface HTTP_FILTER_URL_MAP_EX {
   /** u32 */
   cchMatchingURL: number;
   /** Windows.Win32.Foundation.PSTR */
-  pszScriptMapEntry: string | null;
+  pszScriptMapEntry: string | null | Uint8Array;
 }
 
 export const sizeofHTTP_FILTER_URL_MAP_EX = 40;
@@ -2543,9 +2543,9 @@ export function allocHTTP_FILTER_URL_MAP_EX(data?: Partial<HTTP_FILTER_URL_MAP_E
  */
 export interface HTTP_FILTER_ACCESS_DENIED {
   /** Windows.Win32.Foundation.PSTR */
-  pszURL: string | null;
+  pszURL: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  pszPhysicalPath: string | null;
+  pszPhysicalPath: string | null | Uint8Array;
   /** u32 */
   dwReason: number;
 }
@@ -2576,17 +2576,17 @@ export function allocHTTP_FILTER_ACCESS_DENIED(data?: Partial<HTTP_FILTER_ACCESS
  */
 export interface HTTP_FILTER_LOG {
   /** Windows.Win32.Foundation.PSTR */
-  pszClientHostName: string | null;
+  pszClientHostName: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  pszClientUserName: string | null;
+  pszClientUserName: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  pszServerName: string | null;
+  pszServerName: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  pszOperation: string | null;
+  pszOperation: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  pszTarget: string | null;
+  pszTarget: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  pszParameters: string | null;
+  pszParameters: string | null | Uint8Array;
   /** u32 */
   dwHttpStatus: number;
   /** u32 */
@@ -2735,7 +2735,7 @@ export interface HTTP_TRACE_EVENT {
   /** u32 */
   dwEvent: number;
   /** Windows.Win32.Foundation.PWSTR */
-  pszEventName: string | null;
+  pszEventName: string | null | Uint8Array | Uint16Array;
   /** u32 */
   dwEventVersion: number;
   /** u32 */
@@ -2799,7 +2799,7 @@ export function allocHTTP_TRACE_EVENT(data?: Partial<HTTP_TRACE_EVENT>): Uint8Ar
  */
 export interface HTTP_TRACE_EVENT_ITEM {
   /** Windows.Win32.Foundation.PWSTR */
-  pszName: string | null;
+  pszName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.System.Iis.HTTP_TRACE_TYPE */
   dwDataType: HTTP_TRACE_TYPE;
   /** ptr */
@@ -2807,7 +2807,7 @@ export interface HTTP_TRACE_EVENT_ITEM {
   /** u32 */
   cbData: number;
   /** Windows.Win32.Foundation.PWSTR */
-  pszDataDescription: string | null;
+  pszDataDescription: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeofHTTP_TRACE_EVENT_ITEM = 40;

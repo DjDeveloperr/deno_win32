@@ -1320,7 +1320,7 @@ export interface _u_e__Struct {
   /** u32 */
   dwValue: number;
   /** Windows.Win32.Foundation.PWSTR */
-  pwszName: string | null;
+  pwszName: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeof_u_e__Struct = 16;
@@ -1817,7 +1817,7 @@ export interface OLEVERB {
   /** i32 */
   lVerb: number;
   /** Windows.Win32.Foundation.PWSTR */
-  lpszVerbName: string | null;
+  lpszVerbName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.UI.WindowsAndMessaging.MENU_ITEM_FLAGS */
   fuFlags: MENU_ITEM_FLAGS;
   /** Windows.Win32.System.Ole.OLEVERBATTRIB */
@@ -1956,7 +1956,7 @@ export function allocUDATE(data?: Partial<UDATE>): Uint8Array {
  */
 export interface PARAMDATA {
   /** Windows.Win32.Foundation.PWSTR */
-  szName: string | null;
+  szName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.System.Com.VARENUM */
   vt: VARENUM;
 }
@@ -1982,7 +1982,7 @@ export function allocPARAMDATA(data?: Partial<PARAMDATA>): Uint8Array {
  */
 export interface METHODDATA {
   /** Windows.Win32.Foundation.PWSTR */
-  szName: string | null;
+  szName: string | null | Uint8Array | Uint16Array;
   /** ptr */
   ppdata: Deno.PointerValue | Uint8Array | null;
   /** i32 */
@@ -2138,13 +2138,13 @@ export interface PROPPAGEINFO {
   /** u32 */
   cb: number;
   /** Windows.Win32.Foundation.PWSTR */
-  pszTitle: string | null;
+  pszTitle: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.SIZE */
   size: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.Foundation.PWSTR */
-  pszDocString: string | null;
+  pszDocString: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pszHelpFile: string | null;
+  pszHelpFile: string | null | Uint8Array | Uint16Array;
   /** u32 */
   dwHelpContext: number;
 }
@@ -2430,7 +2430,7 @@ export interface OCPFIPARAMS {
   /** i32 */
   y: number;
   /** Windows.Win32.Foundation.PWSTR */
-  lpszCaption: string | null;
+  lpszCaption: string | null | Uint8Array | Uint16Array;
   /** u32 */
   cObjects: number;
   /** ptr */
@@ -2510,7 +2510,7 @@ export interface FONTDESC {
   /** u32 */
   cbSizeofstruct: number;
   /** Windows.Win32.Foundation.PWSTR */
-  lpstrName: string | null;
+  lpstrName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.System.Com.CY */
   cySize: Uint8Array | Deno.PointerValue | null;
   /** i16 */
@@ -2705,7 +2705,7 @@ export interface OLEUIINSERTOBJECTW {
   /** Windows.Win32.Foundation.HWND */
   hWndOwner: Deno.PointerValue | null;
   /** Windows.Win32.Foundation.PWSTR */
-  lpszCaption: string | null;
+  lpszCaption: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.System.Ole.LPFNOLEUIHOOK */
   lpfnHook: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.Foundation.LPARAM */
@@ -2713,13 +2713,13 @@ export interface OLEUIINSERTOBJECTW {
   /** Windows.Win32.Foundation.HINSTANCE */
   hInstance: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.Foundation.PWSTR */
-  lpszTemplate: string | null;
+  lpszTemplate: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.HRSRC */
   hResource: Uint8Array | Deno.PointerValue | null;
   /** System.Guid */
   clsid: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.Foundation.PWSTR */
-  lpszFile: string | null;
+  lpszFile: string | null | Uint8Array | Uint16Array;
   /** u32 */
   cchFile: number;
   /** u32 */
@@ -2820,7 +2820,7 @@ export interface OLEUIINSERTOBJECTA {
   /** Windows.Win32.Foundation.HWND */
   hWndOwner: Deno.PointerValue | null;
   /** Windows.Win32.Foundation.PSTR */
-  lpszCaption: string | null;
+  lpszCaption: string | null | Uint8Array;
   /** Windows.Win32.System.Ole.LPFNOLEUIHOOK */
   lpfnHook: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.Foundation.LPARAM */
@@ -2828,13 +2828,13 @@ export interface OLEUIINSERTOBJECTA {
   /** Windows.Win32.Foundation.HINSTANCE */
   hInstance: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.Foundation.PSTR */
-  lpszTemplate: string | null;
+  lpszTemplate: string | null | Uint8Array;
   /** Windows.Win32.Foundation.HRSRC */
   hResource: Uint8Array | Deno.PointerValue | null;
   /** System.Guid */
   clsid: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.Foundation.PSTR */
-  lpszFile: string | null;
+  lpszFile: string | null | Uint8Array;
   /** u32 */
   cchFile: number;
   /** u32 */
@@ -2965,9 +2965,9 @@ export interface OLEUIPASTEENTRYW {
   /** Windows.Win32.System.Com.FORMATETC */
   fmtetc: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.Foundation.PWSTR */
-  lpstrFormatName: string | null;
+  lpstrFormatName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  lpstrResultText: string | null;
+  lpstrResultText: string | null | Uint8Array | Uint16Array;
   /** u32 */
   dwFlags: number;
   /** u32 */
@@ -3005,9 +3005,9 @@ export interface OLEUIPASTEENTRYA {
   /** Windows.Win32.System.Com.FORMATETC */
   fmtetc: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.Foundation.PSTR */
-  lpstrFormatName: string | null;
+  lpstrFormatName: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  lpstrResultText: string | null;
+  lpstrResultText: string | null | Uint8Array;
   /** u32 */
   dwFlags: number;
   /** u32 */
@@ -3049,7 +3049,7 @@ export interface OLEUIPASTESPECIALW {
   /** Windows.Win32.Foundation.HWND */
   hWndOwner: Deno.PointerValue | null;
   /** Windows.Win32.Foundation.PWSTR */
-  lpszCaption: string | null;
+  lpszCaption: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.System.Ole.LPFNOLEUIHOOK */
   lpfnHook: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.Foundation.LPARAM */
@@ -3057,7 +3057,7 @@ export interface OLEUIPASTESPECIALW {
   /** Windows.Win32.Foundation.HINSTANCE */
   hInstance: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.Foundation.PWSTR */
-  lpszTemplate: string | null;
+  lpszTemplate: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.HRSRC */
   hResource: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.System.Com.IDataObject */
@@ -3150,7 +3150,7 @@ export interface OLEUIPASTESPECIALA {
   /** Windows.Win32.Foundation.HWND */
   hWndOwner: Deno.PointerValue | null;
   /** Windows.Win32.Foundation.PSTR */
-  lpszCaption: string | null;
+  lpszCaption: string | null | Uint8Array;
   /** Windows.Win32.System.Ole.LPFNOLEUIHOOK */
   lpfnHook: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.Foundation.LPARAM */
@@ -3158,7 +3158,7 @@ export interface OLEUIPASTESPECIALA {
   /** Windows.Win32.Foundation.HINSTANCE */
   hInstance: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.Foundation.PSTR */
-  lpszTemplate: string | null;
+  lpszTemplate: string | null | Uint8Array;
   /** Windows.Win32.Foundation.HRSRC */
   hResource: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.System.Com.IDataObject */
@@ -3251,7 +3251,7 @@ export interface OLEUIEDITLINKSW {
   /** Windows.Win32.Foundation.HWND */
   hWndOwner: Deno.PointerValue | null;
   /** Windows.Win32.Foundation.PWSTR */
-  lpszCaption: string | null;
+  lpszCaption: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.System.Ole.LPFNOLEUIHOOK */
   lpfnHook: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.Foundation.LPARAM */
@@ -3259,7 +3259,7 @@ export interface OLEUIEDITLINKSW {
   /** Windows.Win32.Foundation.HINSTANCE */
   hInstance: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.Foundation.PWSTR */
-  lpszTemplate: string | null;
+  lpszTemplate: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.HRSRC */
   hResource: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.System.Ole.IOleUILinkContainerW */
@@ -3311,7 +3311,7 @@ export interface OLEUIEDITLINKSA {
   /** Windows.Win32.Foundation.HWND */
   hWndOwner: Deno.PointerValue | null;
   /** Windows.Win32.Foundation.PSTR */
-  lpszCaption: string | null;
+  lpszCaption: string | null | Uint8Array;
   /** Windows.Win32.System.Ole.LPFNOLEUIHOOK */
   lpfnHook: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.Foundation.LPARAM */
@@ -3319,7 +3319,7 @@ export interface OLEUIEDITLINKSA {
   /** Windows.Win32.Foundation.HINSTANCE */
   hInstance: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.Foundation.PSTR */
-  lpszTemplate: string | null;
+  lpszTemplate: string | null | Uint8Array;
   /** Windows.Win32.Foundation.HRSRC */
   hResource: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.System.Ole.IOleUILinkContainerA */
@@ -3371,7 +3371,7 @@ export interface OLEUICHANGEICONW {
   /** Windows.Win32.Foundation.HWND */
   hWndOwner: Deno.PointerValue | null;
   /** Windows.Win32.Foundation.PWSTR */
-  lpszCaption: string | null;
+  lpszCaption: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.System.Ole.LPFNOLEUIHOOK */
   lpfnHook: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.Foundation.LPARAM */
@@ -3379,7 +3379,7 @@ export interface OLEUICHANGEICONW {
   /** Windows.Win32.Foundation.HINSTANCE */
   hInstance: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.Foundation.PWSTR */
-  lpszTemplate: string | null;
+  lpszTemplate: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.HRSRC */
   hResource: Uint8Array | Deno.PointerValue | null;
   /** isize */
@@ -3444,7 +3444,7 @@ export interface OLEUICHANGEICONA {
   /** Windows.Win32.Foundation.HWND */
   hWndOwner: Deno.PointerValue | null;
   /** Windows.Win32.Foundation.PSTR */
-  lpszCaption: string | null;
+  lpszCaption: string | null | Uint8Array;
   /** Windows.Win32.System.Ole.LPFNOLEUIHOOK */
   lpfnHook: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.Foundation.LPARAM */
@@ -3452,7 +3452,7 @@ export interface OLEUICHANGEICONA {
   /** Windows.Win32.Foundation.HINSTANCE */
   hInstance: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.Foundation.PSTR */
-  lpszTemplate: string | null;
+  lpszTemplate: string | null | Uint8Array;
   /** Windows.Win32.Foundation.HRSRC */
   hResource: Uint8Array | Deno.PointerValue | null;
   /** isize */
@@ -3517,7 +3517,7 @@ export interface OLEUICONVERTW {
   /** Windows.Win32.Foundation.HWND */
   hWndOwner: Deno.PointerValue | null;
   /** Windows.Win32.Foundation.PWSTR */
-  lpszCaption: string | null;
+  lpszCaption: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.System.Ole.LPFNOLEUIHOOK */
   lpfnHook: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.Foundation.LPARAM */
@@ -3525,7 +3525,7 @@ export interface OLEUICONVERTW {
   /** Windows.Win32.Foundation.HINSTANCE */
   hInstance: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.Foundation.PWSTR */
-  lpszTemplate: string | null;
+  lpszTemplate: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.HRSRC */
   hResource: Uint8Array | Deno.PointerValue | null;
   /** System.Guid */
@@ -3545,11 +3545,11 @@ export interface OLEUICONVERTW {
   /** isize */
   hMetaPict: Deno.PointerValue;
   /** Windows.Win32.Foundation.PWSTR */
-  lpszUserType: string | null;
+  lpszUserType: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.BOOL */
   fObjectsIconChanged: boolean;
   /** Windows.Win32.Foundation.PWSTR */
-  lpszDefLabel: string | null;
+  lpszDefLabel: string | null | Uint8Array | Uint16Array;
   /** u32 */
   cClsidExclude: number;
   /** ptr */
@@ -3634,7 +3634,7 @@ export interface OLEUICONVERTA {
   /** Windows.Win32.Foundation.HWND */
   hWndOwner: Deno.PointerValue | null;
   /** Windows.Win32.Foundation.PSTR */
-  lpszCaption: string | null;
+  lpszCaption: string | null | Uint8Array;
   /** Windows.Win32.System.Ole.LPFNOLEUIHOOK */
   lpfnHook: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.Foundation.LPARAM */
@@ -3642,7 +3642,7 @@ export interface OLEUICONVERTA {
   /** Windows.Win32.Foundation.HINSTANCE */
   hInstance: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.Foundation.PSTR */
-  lpszTemplate: string | null;
+  lpszTemplate: string | null | Uint8Array;
   /** Windows.Win32.Foundation.HRSRC */
   hResource: Uint8Array | Deno.PointerValue | null;
   /** System.Guid */
@@ -3662,11 +3662,11 @@ export interface OLEUICONVERTA {
   /** isize */
   hMetaPict: Deno.PointerValue;
   /** Windows.Win32.Foundation.PSTR */
-  lpszUserType: string | null;
+  lpszUserType: string | null | Uint8Array;
   /** Windows.Win32.Foundation.BOOL */
   fObjectsIconChanged: boolean;
   /** Windows.Win32.Foundation.PSTR */
-  lpszDefLabel: string | null;
+  lpszDefLabel: string | null | Uint8Array;
   /** u32 */
   cClsidExclude: number;
   /** ptr */
@@ -3753,7 +3753,7 @@ export interface OLEUIBUSYW {
   /** Windows.Win32.Foundation.HWND */
   hWndOwner: Deno.PointerValue | null;
   /** Windows.Win32.Foundation.PWSTR */
-  lpszCaption: string | null;
+  lpszCaption: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.System.Ole.LPFNOLEUIHOOK */
   lpfnHook: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.Foundation.LPARAM */
@@ -3761,7 +3761,7 @@ export interface OLEUIBUSYW {
   /** Windows.Win32.Foundation.HINSTANCE */
   hInstance: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.Foundation.PWSTR */
-  lpszTemplate: string | null;
+  lpszTemplate: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.HRSRC */
   hResource: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.Media.HTASK */
@@ -3817,7 +3817,7 @@ export interface OLEUIBUSYA {
   /** Windows.Win32.Foundation.HWND */
   hWndOwner: Deno.PointerValue | null;
   /** Windows.Win32.Foundation.PSTR */
-  lpszCaption: string | null;
+  lpszCaption: string | null | Uint8Array;
   /** Windows.Win32.System.Ole.LPFNOLEUIHOOK */
   lpfnHook: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.Foundation.LPARAM */
@@ -3825,7 +3825,7 @@ export interface OLEUIBUSYA {
   /** Windows.Win32.Foundation.HINSTANCE */
   hInstance: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.Foundation.PSTR */
-  lpszTemplate: string | null;
+  lpszTemplate: string | null | Uint8Array;
   /** Windows.Win32.Foundation.HRSRC */
   hResource: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.Media.HTASK */
@@ -3881,7 +3881,7 @@ export interface OLEUICHANGESOURCEW {
   /** Windows.Win32.Foundation.HWND */
   hWndOwner: Deno.PointerValue | null;
   /** Windows.Win32.Foundation.PWSTR */
-  lpszCaption: string | null;
+  lpszCaption: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.System.Ole.LPFNOLEUIHOOK */
   lpfnHook: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.Foundation.LPARAM */
@@ -3889,7 +3889,7 @@ export interface OLEUICHANGESOURCEW {
   /** Windows.Win32.Foundation.HINSTANCE */
   hInstance: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.Foundation.PWSTR */
-  lpszTemplate: string | null;
+  lpszTemplate: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.HRSRC */
   hResource: Uint8Array | Deno.PointerValue | null;
   /** ptr */
@@ -3901,13 +3901,13 @@ export interface OLEUICHANGESOURCEW {
   /** u32 */
   dwLink: number;
   /** Windows.Win32.Foundation.PWSTR */
-  lpszDisplayName: string | null;
+  lpszDisplayName: string | null | Uint8Array | Uint16Array;
   /** u32 */
   nFileLength: number;
   /** Windows.Win32.Foundation.PWSTR */
-  lpszFrom: string | null;
+  lpszFrom: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  lpszTo: string | null;
+  lpszTo: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeofOLEUICHANGESOURCEW = 128;
@@ -3980,7 +3980,7 @@ export interface OLEUICHANGESOURCEA {
   /** Windows.Win32.Foundation.HWND */
   hWndOwner: Deno.PointerValue | null;
   /** Windows.Win32.Foundation.PSTR */
-  lpszCaption: string | null;
+  lpszCaption: string | null | Uint8Array;
   /** Windows.Win32.System.Ole.LPFNOLEUIHOOK */
   lpfnHook: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.Foundation.LPARAM */
@@ -3988,7 +3988,7 @@ export interface OLEUICHANGESOURCEA {
   /** Windows.Win32.Foundation.HINSTANCE */
   hInstance: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.Foundation.PSTR */
-  lpszTemplate: string | null;
+  lpszTemplate: string | null | Uint8Array;
   /** Windows.Win32.Foundation.HRSRC */
   hResource: Uint8Array | Deno.PointerValue | null;
   /** ptr */
@@ -4000,13 +4000,13 @@ export interface OLEUICHANGESOURCEA {
   /** u32 */
   dwLink: number;
   /** Windows.Win32.Foundation.PSTR */
-  lpszDisplayName: string | null;
+  lpszDisplayName: string | null | Uint8Array;
   /** u32 */
   nFileLength: number;
   /** Windows.Win32.Foundation.PSTR */
-  lpszFrom: string | null;
+  lpszFrom: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  lpszTo: string | null;
+  lpszTo: string | null | Uint8Array;
 }
 
 export const sizeofOLEUICHANGESOURCEA = 128;
@@ -6681,7 +6681,7 @@ export function VarUI1FromDate(
 }
 
 export function VarUI1FromStr(
-  strIn: string | null /* Windows.Win32.Foundation.PWSTR */,
+  strIn: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   lcid: number /* u32 */,
   dwFlags: number /* u32 */,
   pbOut: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -6789,7 +6789,7 @@ export function VarI2FromDate(
 }
 
 export function VarI2FromStr(
-  strIn: string | null /* Windows.Win32.Foundation.PWSTR */,
+  strIn: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   lcid: number /* u32 */,
   dwFlags: number /* u32 */,
   psOut: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -6897,7 +6897,7 @@ export function VarI4FromDate(
 }
 
 export function VarI4FromStr(
-  strIn: string | null /* Windows.Win32.Foundation.PWSTR */,
+  strIn: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   lcid: number /* u32 */,
   dwFlags: number /* u32 */,
   plOut: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -6998,7 +6998,7 @@ export function VarI8FromDate(
 }
 
 export function VarI8FromStr(
-  strIn: string | null /* Windows.Win32.Foundation.PWSTR */,
+  strIn: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   lcid: number /* u32 */,
   dwFlags: number /* u32 */,
   pi64Out: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -7106,7 +7106,7 @@ export function VarR4FromDate(
 }
 
 export function VarR4FromStr(
-  strIn: string | null /* Windows.Win32.Foundation.PWSTR */,
+  strIn: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   lcid: number /* u32 */,
   dwFlags: number /* u32 */,
   pfltOut: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -7214,7 +7214,7 @@ export function VarR8FromDate(
 }
 
 export function VarR8FromStr(
-  strIn: string | null /* Windows.Win32.Foundation.PWSTR */,
+  strIn: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   lcid: number /* u32 */,
   dwFlags: number /* u32 */,
   pdblOut: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -7322,7 +7322,7 @@ export function VarDateFromCy(
 }
 
 export function VarDateFromStr(
-  strIn: string | null /* Windows.Win32.Foundation.PWSTR */,
+  strIn: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   lcid: number /* u32 */,
   dwFlags: number /* u32 */,
   pdateOut: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -7430,7 +7430,7 @@ export function VarCyFromDate(
 }
 
 export function VarCyFromStr(
-  strIn: string | null /* Windows.Win32.Foundation.PWSTR */,
+  strIn: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   lcid: number /* u32 */,
   dwFlags: number /* u32 */,
   pcyOut: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -7680,7 +7680,7 @@ export function VarBoolFromCy(
 }
 
 export function VarBoolFromStr(
-  strIn: string | null /* Windows.Win32.Foundation.PWSTR */,
+  strIn: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   lcid: number /* u32 */,
   dwFlags: number /* u32 */,
   pboolOut: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -7733,65 +7733,65 @@ export function VarBoolFromDec(
 
 export function VarI1FromUI1(
   bIn: number /* u8 */,
-  pcOut: string | null /* Windows.Win32.Foundation.PSTR */,
+  pcOut: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
   return util.pointerFromFfi(libOLEAUT32_dll.VarI1FromUI1(bIn, util.pstrToFfi(pcOut)));
 }
 
 export function VarI1FromI2(
   uiIn: number /* i16 */,
-  pcOut: string | null /* Windows.Win32.Foundation.PSTR */,
+  pcOut: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
   return util.pointerFromFfi(libOLEAUT32_dll.VarI1FromI2(uiIn, util.pstrToFfi(pcOut)));
 }
 
 export function VarI1FromI4(
   lIn: number /* i32 */,
-  pcOut: string | null /* Windows.Win32.Foundation.PSTR */,
+  pcOut: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
   return util.pointerFromFfi(libOLEAUT32_dll.VarI1FromI4(lIn, util.pstrToFfi(pcOut)));
 }
 
 export function VarI1FromI8(
   i64In: Deno.PointerValue /* i64 */,
-  pcOut: string | null /* Windows.Win32.Foundation.PSTR */,
+  pcOut: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
   return util.pointerFromFfi(libOLEAUT32_dll.VarI1FromI8(i64In, util.pstrToFfi(pcOut)));
 }
 
 export function VarI1FromR4(
   fltIn: number /* f32 */,
-  pcOut: string | null /* Windows.Win32.Foundation.PSTR */,
+  pcOut: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
   return util.pointerFromFfi(libOLEAUT32_dll.VarI1FromR4(fltIn, util.pstrToFfi(pcOut)));
 }
 
 export function VarI1FromR8(
   dblIn: number /* f64 */,
-  pcOut: string | null /* Windows.Win32.Foundation.PSTR */,
+  pcOut: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
   return util.pointerFromFfi(libOLEAUT32_dll.VarI1FromR8(dblIn, util.pstrToFfi(pcOut)));
 }
 
 export function VarI1FromDate(
   dateIn: number /* f64 */,
-  pcOut: string | null /* Windows.Win32.Foundation.PSTR */,
+  pcOut: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
   return util.pointerFromFfi(libOLEAUT32_dll.VarI1FromDate(dateIn, util.pstrToFfi(pcOut)));
 }
 
 export function VarI1FromCy(
   cyIn: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Com.CY */,
-  pcOut: string | null /* Windows.Win32.Foundation.PSTR */,
+  pcOut: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
   return util.pointerFromFfi(libOLEAUT32_dll.VarI1FromCy(util.toPointer(cyIn), util.pstrToFfi(pcOut)));
 }
 
 export function VarI1FromStr(
-  strIn: string | null /* Windows.Win32.Foundation.PWSTR */,
+  strIn: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   lcid: number /* u32 */,
   dwFlags: number /* u32 */,
-  pcOut: string | null /* Windows.Win32.Foundation.PSTR */,
+  pcOut: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
   return util.pointerFromFfi(libOLEAUT32_dll.VarI1FromStr(util.pwstrToFfi(strIn), lcid, dwFlags, util.pstrToFfi(pcOut)));
 }
@@ -7799,42 +7799,42 @@ export function VarI1FromStr(
 export function VarI1FromDisp(
   pdispIn: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Com.IDispatch */,
   lcid: number /* u32 */,
-  pcOut: string | null /* Windows.Win32.Foundation.PSTR */,
+  pcOut: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
   return util.pointerFromFfi(libOLEAUT32_dll.VarI1FromDisp(util.toPointer(pdispIn), lcid, util.pstrToFfi(pcOut)));
 }
 
 export function VarI1FromBool(
   boolIn: number /* i16 */,
-  pcOut: string | null /* Windows.Win32.Foundation.PSTR */,
+  pcOut: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
   return util.pointerFromFfi(libOLEAUT32_dll.VarI1FromBool(boolIn, util.pstrToFfi(pcOut)));
 }
 
 export function VarI1FromUI2(
   uiIn: number /* u16 */,
-  pcOut: string | null /* Windows.Win32.Foundation.PSTR */,
+  pcOut: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
   return util.pointerFromFfi(libOLEAUT32_dll.VarI1FromUI2(uiIn, util.pstrToFfi(pcOut)));
 }
 
 export function VarI1FromUI4(
   ulIn: number /* u32 */,
-  pcOut: string | null /* Windows.Win32.Foundation.PSTR */,
+  pcOut: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
   return util.pointerFromFfi(libOLEAUT32_dll.VarI1FromUI4(ulIn, util.pstrToFfi(pcOut)));
 }
 
 export function VarI1FromUI8(
   i64In: Deno.PointerValue /* u64 */,
-  pcOut: string | null /* Windows.Win32.Foundation.PSTR */,
+  pcOut: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
   return util.pointerFromFfi(libOLEAUT32_dll.VarI1FromUI8(i64In, util.pstrToFfi(pcOut)));
 }
 
 export function VarI1FromDec(
   pdecIn: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pcOut: string | null /* Windows.Win32.Foundation.PSTR */,
+  pcOut: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
   return util.pointerFromFfi(libOLEAUT32_dll.VarI1FromDec(util.toPointer(pdecIn), util.pstrToFfi(pcOut)));
 }
@@ -7896,7 +7896,7 @@ export function VarUI2FromCy(
 }
 
 export function VarUI2FromStr(
-  strIn: string | null /* Windows.Win32.Foundation.PWSTR */,
+  strIn: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   lcid: number /* u32 */,
   dwFlags: number /* u32 */,
   puiOut: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -8004,7 +8004,7 @@ export function VarUI4FromCy(
 }
 
 export function VarUI4FromStr(
-  strIn: string | null /* Windows.Win32.Foundation.PWSTR */,
+  strIn: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   lcid: number /* u32 */,
   dwFlags: number /* u32 */,
   pulOut: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -8105,7 +8105,7 @@ export function VarUI8FromDate(
 }
 
 export function VarUI8FromStr(
-  strIn: string | null /* Windows.Win32.Foundation.PWSTR */,
+  strIn: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   lcid: number /* u32 */,
   dwFlags: number /* u32 */,
   pi64Out: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -8213,7 +8213,7 @@ export function VarDecFromCy(
 }
 
 export function VarDecFromStr(
-  strIn: string | null /* Windows.Win32.Foundation.PWSTR */,
+  strIn: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   lcid: number /* u32 */,
   dwFlags: number /* u32 */,
   pdecOut: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -8265,7 +8265,7 @@ export function VarDecFromUI8(
 }
 
 export function VarParseNumFromStr(
-  strIn: string | null /* Windows.Win32.Foundation.PWSTR */,
+  strIn: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   lcid: number /* u32 */,
   dwFlags: number /* u32 */,
   pnumprs: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -8685,7 +8685,7 @@ export function GetAltMonthNames(
 
 export function VarFormat(
   pvarIn: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pstrFormat: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pstrFormat: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   iFirstDay: VARFORMAT_FIRST_DAY /* Windows.Win32.System.Ole.VARFORMAT_FIRST_DAY */,
   iFirstWeek: VARFORMAT_FIRST_WEEK /* Windows.Win32.System.Ole.VARFORMAT_FIRST_WEEK */,
   dwFlags: number /* u32 */,
@@ -8760,7 +8760,7 @@ export function VarMonthName(
 
 export function VarFormatFromTokens(
   pvarIn: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pstrFormat: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pstrFormat: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pbTokCur: Deno.PointerValue | Uint8Array | null /* ptr */,
   dwFlags: number /* u32 */,
   pbstrOut: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -8770,7 +8770,7 @@ export function VarFormatFromTokens(
 }
 
 export function VarTokenizeFormatString(
-  pstrFormat: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pstrFormat: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   rgbTok: Deno.PointerValue | Uint8Array | null /* ptr */,
   cbTok: number /* i32 */,
   iFirstDay: VARFORMAT_FIRST_DAY /* Windows.Win32.System.Ole.VARFORMAT_FIRST_DAY */,
@@ -8784,7 +8784,7 @@ export function VarTokenizeFormatString(
 export function LHashValOfNameSysA(
   syskind: SYSKIND /* Windows.Win32.System.Com.SYSKIND */,
   lcid: number /* u32 */,
-  szName: string | null /* Windows.Win32.Foundation.PSTR */,
+  szName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): number /* u32 */ {
   return libOLEAUT32_dll.LHashValOfNameSysA(syskind, lcid, util.pstrToFfi(szName));
 }
@@ -8792,20 +8792,20 @@ export function LHashValOfNameSysA(
 export function LHashValOfNameSys(
   syskind: SYSKIND /* Windows.Win32.System.Com.SYSKIND */,
   lcid: number /* u32 */,
-  szName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  szName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
   return libOLEAUT32_dll.LHashValOfNameSys(syskind, lcid, util.pwstrToFfi(szName));
 }
 
 export function LoadTypeLib(
-  szFile: string | null /* Windows.Win32.Foundation.PWSTR */,
+  szFile: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pptlib: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
   return util.pointerFromFfi(libOLEAUT32_dll.LoadTypeLib(util.pwstrToFfi(szFile), util.toPointer(pptlib)));
 }
 
 export function LoadTypeLibEx(
-  szFile: string | null /* Windows.Win32.Foundation.PWSTR */,
+  szFile: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   regkind: REGKIND /* Windows.Win32.System.Ole.REGKIND */,
   pptlib: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
@@ -8834,8 +8834,8 @@ export function QueryPathOfRegTypeLib(
 
 export function RegisterTypeLib(
   ptlib: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Com.ITypeLib */,
-  szFullPath: string | null /* Windows.Win32.Foundation.PWSTR */,
-  szHelpDir: string | null /* Windows.Win32.Foundation.PWSTR */,
+  szFullPath: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  szHelpDir: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
   return util.pointerFromFfi(libOLEAUT32_dll.RegisterTypeLib(util.toPointer(ptlib), util.pwstrToFfi(szFullPath), util.pwstrToFfi(szHelpDir)));
 }
@@ -8852,8 +8852,8 @@ export function UnRegisterTypeLib(
 
 export function RegisterTypeLibForUser(
   ptlib: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Com.ITypeLib */,
-  szFullPath: string | null /* Windows.Win32.Foundation.PWSTR */,
-  szHelpDir: string | null /* Windows.Win32.Foundation.PWSTR */,
+  szFullPath: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  szHelpDir: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
   return util.pointerFromFfi(libOLEAUT32_dll.RegisterTypeLibForUser(util.toPointer(ptlib), util.pwstrToFfi(szFullPath), util.pwstrToFfi(szHelpDir)));
 }
@@ -8870,7 +8870,7 @@ export function UnRegisterTypeLibForUser(
 
 export function CreateTypeLib(
   syskind: SYSKIND /* Windows.Win32.System.Com.SYSKIND */,
-  szFile: string | null /* Windows.Win32.Foundation.PWSTR */,
+  szFile: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   ppctlib: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
   return util.pointerFromFfi(libOLEAUT32_dll.CreateTypeLib(syskind, util.pwstrToFfi(szFile), util.toPointer(ppctlib)));
@@ -8878,7 +8878,7 @@ export function CreateTypeLib(
 
 export function CreateTypeLib2(
   syskind: SYSKIND /* Windows.Win32.System.Com.SYSKIND */,
-  szFile: string | null /* Windows.Win32.Foundation.PWSTR */,
+  szFile: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   ppctlib: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
   return util.pointerFromFfi(libOLEAUT32_dll.CreateTypeLib2(syskind, util.pwstrToFfi(szFile), util.toPointer(ppctlib)));
@@ -9163,7 +9163,7 @@ export function OleCreateLinkEx(
 }
 
 export function OleCreateLinkToFile(
-  lpszFileName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpszFileName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   riid: Deno.PointerValue | Uint8Array | null /* ptr */,
   renderopt: OLERENDER /* Windows.Win32.System.Ole.OLERENDER */,
   lpFormatEtc: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -9175,7 +9175,7 @@ export function OleCreateLinkToFile(
 }
 
 export function OleCreateLinkToFileEx(
-  lpszFileName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpszFileName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   riid: Deno.PointerValue | Uint8Array | null /* ptr */,
   dwFlags: OLECREATE /* Windows.Win32.System.Ole.OLECREATE */,
   renderopt: OLERENDER /* Windows.Win32.System.Ole.OLERENDER */,
@@ -9193,7 +9193,7 @@ export function OleCreateLinkToFileEx(
 
 export function OleCreateFromFile(
   rclsid: Deno.PointerValue | Uint8Array | null /* ptr */,
-  lpszFileName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpszFileName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   riid: Deno.PointerValue | Uint8Array | null /* ptr */,
   renderopt: OLERENDER /* Windows.Win32.System.Ole.OLERENDER */,
   lpFormatEtc: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -9206,7 +9206,7 @@ export function OleCreateFromFile(
 
 export function OleCreateFromFileEx(
   rclsid: Deno.PointerValue | Uint8Array | null /* ptr */,
-  lpszFileName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpszFileName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   riid: Deno.PointerValue | Uint8Array | null /* ptr */,
   dwFlags: OLECREATE /* Windows.Win32.System.Ole.OLECREATE */,
   renderopt: OLERENDER /* Windows.Win32.System.Ole.OLERENDER */,
@@ -9432,7 +9432,7 @@ export function IsAccelerator(
 }
 
 export function OleGetIconOfFile(
-  lpszPath: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpszPath: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   fUseFileAsLabel: boolean /* Windows.Win32.Foundation.BOOL */,
 ): Deno.PointerValue /* isize */ {
   return libole32_dll.OleGetIconOfFile(util.pwstrToFfi(lpszPath), util.boolToFfi(fUseFileAsLabel));
@@ -9440,7 +9440,7 @@ export function OleGetIconOfFile(
 
 export function OleGetIconOfClass(
   rclsid: Deno.PointerValue | Uint8Array | null /* ptr */,
-  lpszLabel: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpszLabel: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   fUseTypeAsLabel: boolean /* Windows.Win32.Foundation.BOOL */,
 ): Deno.PointerValue /* isize */ {
   return libOLE32_dll.OleGetIconOfClass(util.toPointer(rclsid), util.pwstrToFfi(lpszLabel), util.boolToFfi(fUseTypeAsLabel));
@@ -9448,8 +9448,8 @@ export function OleGetIconOfClass(
 
 export function OleMetafilePictFromIconAndLabel(
   hIcon: Uint8Array | Deno.PointerValue | null /* Windows.Win32.UI.WindowsAndMessaging.HICON */,
-  lpszLabel: string | null /* Windows.Win32.Foundation.PWSTR */,
-  lpszSourceFile: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpszLabel: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  lpszSourceFile: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   iIconIndex: number /* u32 */,
 ): Deno.PointerValue /* isize */ {
   return libole32_dll.OleMetafilePictFromIconAndLabel(util.toPointer(hIcon), util.pwstrToFfi(lpszLabel), util.pwstrToFfi(lpszSourceFile), iIconIndex);
@@ -9573,7 +9573,7 @@ export function OleCreatePropertyFrame(
   hwndOwner: Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */,
   x: number /* u32 */,
   y: number /* u32 */,
-  lpszCaption: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpszCaption: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   cObjects: number /* u32 */,
   ppUnk: Deno.PointerValue | Uint8Array | null /* ptr */,
   cPages: number /* u32 */,
@@ -9640,7 +9640,7 @@ export function OleLoadPictureEx(
 }
 
 export function OleLoadPicturePath(
-  szURLorPath: string | null /* Windows.Win32.Foundation.PWSTR */,
+  szURLorPath: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   punkCaller: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Com.IUnknown */,
   dwReserved: number /* u32 */,
   clrReserved: number /* u32 */,
@@ -9683,7 +9683,7 @@ export function OleIconToCursor(
 
 export function OleUIAddVerbMenuW(
   lpOleObj: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Ole.IOleObject */,
-  lpszShortType: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpszShortType: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   hMenu: Uint8Array | Deno.PointerValue | null /* Windows.Win32.UI.WindowsAndMessaging.HMENU */,
   uPos: number /* u32 */,
   uIDVerbMin: number /* u32 */,
@@ -9697,7 +9697,7 @@ export function OleUIAddVerbMenuW(
 
 export function OleUIAddVerbMenuA(
   lpOleObj: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Ole.IOleObject */,
-  lpszShortType: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpszShortType: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   hMenu: Uint8Array | Deno.PointerValue | null /* Windows.Win32.UI.WindowsAndMessaging.HMENU */,
   uPos: number /* u32 */,
   uIDVerbMin: number /* u32 */,
@@ -9830,7 +9830,7 @@ export function OleUIPromptUserA(
 export function OleUIUpdateLinksW(
   lpOleUILinkCntr: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Ole.IOleUILinkContainerW */,
   hwndParent: Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */,
-  lpszTitle: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpszTitle: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   cLinks: number /* i32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(liboledlg_dll.OleUIUpdateLinksW(util.toPointer(lpOleUILinkCntr), util.hwndToFfi(hwndParent), util.pwstrToFfi(lpszTitle), cLinks));
@@ -9839,7 +9839,7 @@ export function OleUIUpdateLinksW(
 export function OleUIUpdateLinksA(
   lpOleUILinkCntr: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Ole.IOleUILinkContainerA */,
   hwndParent: Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */,
-  lpszTitle: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpszTitle: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   cLinks: number /* i32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(liboledlg_dll.OleUIUpdateLinksA(util.toPointer(lpOleUILinkCntr), util.hwndToFfi(hwndParent), util.pstrToFfi(lpszTitle), cLinks));

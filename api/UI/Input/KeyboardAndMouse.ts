@@ -314,13 +314,13 @@ export const OGONEK = 808;
 export const TONOS = 900;
 export const DIARESIS_TONOS = 901;
 export const wszGRAVE = `\0`;
-export const wszACUTE = ``;
-export const wszCIRCUMFLEX = ``;
-export const wszTILDE = ``;
-export const wszMACRON = ``;
-export const wszOVERSCORE = ``;
-export const wszBREVE = ``;
-export const wszDOT_ABOVE = ``;
+export const wszACUTE = `\x01`;
+export const wszCIRCUMFLEX = `\x02`;
+export const wszTILDE = `\x03`;
+export const wszMACRON = `\x04`;
+export const wszOVERSCORE = `\x05`;
+export const wszBREVE = `\x06`;
+export const wszDOT_ABOVE = `\x07`;
 export const wszUMLAUT = `\b`;
 export const wszHOOK_ABOVE = `\t`;
 export const wszRING = `\n`;
@@ -328,8 +328,8 @@ export const wszDOUBLE_ACUTE = `\v`;
 export const wszHACEK = `\f`;
 export const wszCEDILLA = `'`;
 export const wszOGONEK = `(`;
-export const wszTONOS = `�`;
-export const wszDIARESIS_TONOS = `�`;
+export const wszTONOS = `\xfffd`;
+export const wszDIARESIS_TONOS = `\xfffd`;
 export const SHFT_INVALID = 15;
 export const WCH_NONE = 61440;
 export const WCH_DEAD = 61441;
@@ -1002,7 +1002,7 @@ export interface VSC_LPWSTR {
   /** u8 */
   vsc: number;
   /** Windows.Win32.Foundation.PWSTR */
-  pwsz: string | null;
+  pwsz: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeofVSC_LPWSTR = 16;
@@ -1790,14 +1790,14 @@ export function _TrackMouseEvent(
 }
 
 export function LoadKeyboardLayoutA(
-  pwszKLID: string | null /* Windows.Win32.Foundation.PSTR */,
+  pwszKLID: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   Flags: ACTIVATE_KEYBOARD_LAYOUT_FLAGS /* Windows.Win32.UI.Input.KeyboardAndMouse.ACTIVATE_KEYBOARD_LAYOUT_FLAGS */,
 ): Deno.PointerValue | null /* Windows.Win32.UI.TextServices.HKL */ {
   return util.pointerFromFfi(libUSER32_dll.LoadKeyboardLayoutA(util.pstrToFfi(pwszKLID), Flags));
 }
 
 export function LoadKeyboardLayoutW(
-  pwszKLID: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pwszKLID: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   Flags: ACTIVATE_KEYBOARD_LAYOUT_FLAGS /* Windows.Win32.UI.Input.KeyboardAndMouse.ACTIVATE_KEYBOARD_LAYOUT_FLAGS */,
 ): Deno.PointerValue | null /* Windows.Win32.UI.TextServices.HKL */ {
   return util.pointerFromFfi(libUSER32_dll.LoadKeyboardLayoutW(util.pwstrToFfi(pwszKLID), Flags));
@@ -1814,7 +1814,7 @@ export function ToUnicodeEx(
   wVirtKey: number /* u32 */,
   wScanCode: number /* u32 */,
   lpKeyState: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pwszBuff: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pwszBuff: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   cchBuff: number /* i32 */,
   wFlags: number /* u32 */,
   dwhkl: Uint8Array | Deno.PointerValue | null /* Windows.Win32.UI.TextServices.HKL */,
@@ -1829,13 +1829,13 @@ export function UnloadKeyboardLayout(
 }
 
 export function GetKeyboardLayoutNameA(
-  pwszKLID: string | null /* Windows.Win32.Foundation.PSTR */,
+  pwszKLID: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libUSER32_dll.GetKeyboardLayoutNameA(util.pstrToFfi(pwszKLID)));
 }
 
 export function GetKeyboardLayoutNameW(
-  pwszKLID: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pwszKLID: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libUSER32_dll.GetKeyboardLayoutNameW(util.pwstrToFfi(pwszKLID)));
 }
@@ -1945,7 +1945,7 @@ export function SetKeyboardState(
 
 export function GetKeyNameTextA(
   lParam: number /* i32 */,
-  lpString: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpString: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   cchSize: number /* i32 */,
 ): number /* i32 */ {
   return libUSER32_dll.GetKeyNameTextA(lParam, util.pstrToFfi(lpString), cchSize);
@@ -1953,7 +1953,7 @@ export function GetKeyNameTextA(
 
 export function GetKeyNameTextW(
   lParam: number /* i32 */,
-  lpString: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpString: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   cchSize: number /* i32 */,
 ): number /* i32 */ {
   return libUSER32_dll.GetKeyNameTextW(lParam, util.pwstrToFfi(lpString), cchSize);
@@ -1990,7 +1990,7 @@ export function ToUnicode(
   wVirtKey: number /* u32 */,
   wScanCode: number /* u32 */,
   lpKeyState: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pwszBuff: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pwszBuff: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   cchBuff: number /* i32 */,
   wFlags: number /* u32 */,
 ): number /* i32 */ {

@@ -5816,11 +5816,11 @@ export interface MCI_OPEN_PARMSA {
   /** u32 */
   wDeviceID: number;
   /** Windows.Win32.Foundation.PSTR */
-  lpstrDeviceType: string | null;
+  lpstrDeviceType: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  lpstrElementName: string | null;
+  lpstrElementName: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  lpstrAlias: string | null;
+  lpstrAlias: string | null | Uint8Array;
 }
 
 export const sizeofMCI_OPEN_PARMSA = 40;
@@ -5862,11 +5862,11 @@ export interface MCI_OPEN_PARMSW {
   /** u32 */
   wDeviceID: number;
   /** Windows.Win32.Foundation.PWSTR */
-  lpstrDeviceType: string | null;
+  lpstrDeviceType: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  lpstrElementName: string | null;
+  lpstrElementName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  lpstrAlias: string | null;
+  lpstrAlias: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeofMCI_OPEN_PARMSW = 40;
@@ -5983,7 +5983,7 @@ export interface MCI_INFO_PARMSA {
   /** usize */
   dwCallback: Deno.PointerValue;
   /** Windows.Win32.Foundation.PSTR */
-  lpstrReturn: string | null;
+  lpstrReturn: string | null | Uint8Array;
   /** u32 */
   dwRetSize: number;
 }
@@ -6013,7 +6013,7 @@ export interface MCI_INFO_PARMSW {
   /** usize */
   dwCallback: Deno.PointerValue;
   /** Windows.Win32.Foundation.PWSTR */
-  lpstrReturn: string | null;
+  lpstrReturn: string | null | Uint8Array | Uint16Array;
   /** u32 */
   dwRetSize: number;
 }
@@ -6069,7 +6069,7 @@ export interface MCI_SYSINFO_PARMSA {
   /** usize */
   dwCallback: Deno.PointerValue;
   /** Windows.Win32.Foundation.PSTR */
-  lpstrReturn: string | null;
+  lpstrReturn: string | null | Uint8Array;
   /** u32 */
   dwRetSize: number;
   /** u32 */
@@ -6107,7 +6107,7 @@ export interface MCI_SYSINFO_PARMSW {
   /** usize */
   dwCallback: Deno.PointerValue;
   /** Windows.Win32.Foundation.PWSTR */
-  lpstrReturn: string | null;
+  lpstrReturn: string | null | Uint8Array | Uint16Array;
   /** u32 */
   dwRetSize: number;
   /** u32 */
@@ -6200,7 +6200,7 @@ export interface MCI_SAVE_PARMSA {
   /** usize */
   dwCallback: Deno.PointerValue;
   /** Windows.Win32.Foundation.PSTR */
-  lpfilename: string | null;
+  lpfilename: string | null | Uint8Array;
 }
 
 export const sizeofMCI_SAVE_PARMSA = 16;
@@ -6225,7 +6225,7 @@ export interface MCI_SAVE_PARMSW {
   /** usize */
   dwCallback: Deno.PointerValue;
   /** Windows.Win32.Foundation.PWSTR */
-  lpfilename: string | null;
+  lpfilename: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeofMCI_SAVE_PARMSW = 16;
@@ -6250,7 +6250,7 @@ export interface MCI_LOAD_PARMSA {
   /** usize */
   dwCallback: Deno.PointerValue;
   /** Windows.Win32.Foundation.PSTR */
-  lpfilename: string | null;
+  lpfilename: string | null | Uint8Array;
 }
 
 export const sizeofMCI_LOAD_PARMSA = 16;
@@ -6275,7 +6275,7 @@ export interface MCI_LOAD_PARMSW {
   /** usize */
   dwCallback: Deno.PointerValue;
   /** Windows.Win32.Foundation.PWSTR */
-  lpfilename: string | null;
+  lpfilename: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeofMCI_LOAD_PARMSW = 16;
@@ -6380,7 +6380,7 @@ export interface MCI_VD_ESCAPE_PARMSA {
   /** usize */
   dwCallback: Deno.PointerValue;
   /** Windows.Win32.Foundation.PSTR */
-  lpstrCommand: string | null;
+  lpstrCommand: string | null | Uint8Array;
 }
 
 export const sizeofMCI_VD_ESCAPE_PARMSA = 16;
@@ -6405,7 +6405,7 @@ export interface MCI_VD_ESCAPE_PARMSW {
   /** usize */
   dwCallback: Deno.PointerValue;
   /** Windows.Win32.Foundation.PWSTR */
-  lpstrCommand: string | null;
+  lpstrCommand: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeofMCI_VD_ESCAPE_PARMSW = 16;
@@ -6432,11 +6432,11 @@ export interface MCI_WAVE_OPEN_PARMSA {
   /** u32 */
   wDeviceID: number;
   /** Windows.Win32.Foundation.PSTR */
-  lpstrDeviceType: string | null;
+  lpstrDeviceType: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  lpstrElementName: string | null;
+  lpstrElementName: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  lpstrAlias: string | null;
+  lpstrAlias: string | null | Uint8Array;
   /** u32 */
   dwBufferSeconds: number;
 }
@@ -6481,11 +6481,11 @@ export interface MCI_WAVE_OPEN_PARMSW {
   /** u32 */
   wDeviceID: number;
   /** Windows.Win32.Foundation.PWSTR */
-  lpstrDeviceType: string | null;
+  lpstrDeviceType: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  lpstrElementName: string | null;
+  lpstrElementName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  lpstrAlias: string | null;
+  lpstrAlias: string | null | Uint8Array | Uint16Array;
   /** u32 */
   dwBufferSeconds: number;
 }
@@ -6677,11 +6677,11 @@ export interface MCI_ANIM_OPEN_PARMSA {
   /** u32 */
   wDeviceID: number;
   /** Windows.Win32.Foundation.PSTR */
-  lpstrDeviceType: string | null;
+  lpstrDeviceType: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  lpstrElementName: string | null;
+  lpstrElementName: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  lpstrAlias: string | null;
+  lpstrAlias: string | null | Uint8Array;
   /** u32 */
   dwStyle: number;
   /** Windows.Win32.Foundation.HWND */
@@ -6730,11 +6730,11 @@ export interface MCI_ANIM_OPEN_PARMSW {
   /** u32 */
   wDeviceID: number;
   /** Windows.Win32.Foundation.PWSTR */
-  lpstrDeviceType: string | null;
+  lpstrDeviceType: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  lpstrElementName: string | null;
+  lpstrElementName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  lpstrAlias: string | null;
+  lpstrAlias: string | null | Uint8Array | Uint16Array;
   /** u32 */
   dwStyle: number;
   /** Windows.Win32.Foundation.HWND */
@@ -6839,7 +6839,7 @@ export interface MCI_ANIM_WINDOW_PARMSA {
   /** u32 */
   nCmdShow: number;
   /** Windows.Win32.Foundation.PSTR */
-  lpstrText: string | null;
+  lpstrText: string | null | Uint8Array;
 }
 
 export const sizeofMCI_ANIM_WINDOW_PARMSA = 32;
@@ -6873,7 +6873,7 @@ export interface MCI_ANIM_WINDOW_PARMSW {
   /** u32 */
   nCmdShow: number;
   /** Windows.Win32.Foundation.PWSTR */
-  lpstrText: string | null;
+  lpstrText: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeofMCI_ANIM_WINDOW_PARMSW = 32;
@@ -6985,11 +6985,11 @@ export interface MCI_OVLY_OPEN_PARMSA {
   /** u32 */
   wDeviceID: number;
   /** Windows.Win32.Foundation.PSTR */
-  lpstrDeviceType: string | null;
+  lpstrDeviceType: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  lpstrElementName: string | null;
+  lpstrElementName: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  lpstrAlias: string | null;
+  lpstrAlias: string | null | Uint8Array;
   /** u32 */
   dwStyle: number;
   /** Windows.Win32.Foundation.HWND */
@@ -7038,11 +7038,11 @@ export interface MCI_OVLY_OPEN_PARMSW {
   /** u32 */
   wDeviceID: number;
   /** Windows.Win32.Foundation.PWSTR */
-  lpstrDeviceType: string | null;
+  lpstrDeviceType: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  lpstrElementName: string | null;
+  lpstrElementName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  lpstrAlias: string | null;
+  lpstrAlias: string | null | Uint8Array | Uint16Array;
   /** u32 */
   dwStyle: number;
   /** Windows.Win32.Foundation.HWND */
@@ -7093,7 +7093,7 @@ export interface MCI_OVLY_WINDOW_PARMSA {
   /** u32 */
   nCmdShow: number;
   /** Windows.Win32.Foundation.PSTR */
-  lpstrText: string | null;
+  lpstrText: string | null | Uint8Array;
 }
 
 export const sizeofMCI_OVLY_WINDOW_PARMSA = 32;
@@ -7127,7 +7127,7 @@ export interface MCI_OVLY_WINDOW_PARMSW {
   /** u32 */
   nCmdShow: number;
   /** Windows.Win32.Foundation.PWSTR */
-  lpstrText: string | null;
+  lpstrText: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeofMCI_OVLY_WINDOW_PARMSW = 32;
@@ -7179,7 +7179,7 @@ export interface MCI_OVLY_SAVE_PARMSA {
   /** usize */
   dwCallback: Deno.PointerValue;
   /** Windows.Win32.Foundation.PSTR */
-  lpfilename: string | null;
+  lpfilename: string | null | Uint8Array;
   /** Windows.Win32.Foundation.RECT */
   rc: Uint8Array | Deno.PointerValue | null;
 }
@@ -7208,7 +7208,7 @@ export interface MCI_OVLY_SAVE_PARMSW {
   /** usize */
   dwCallback: Deno.PointerValue;
   /** Windows.Win32.Foundation.PWSTR */
-  lpfilename: string | null;
+  lpfilename: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.RECT */
   rc: Uint8Array | Deno.PointerValue | null;
 }
@@ -7237,7 +7237,7 @@ export interface MCI_OVLY_LOAD_PARMSA {
   /** usize */
   dwCallback: Deno.PointerValue;
   /** Windows.Win32.Foundation.PSTR */
-  lpfilename: string | null;
+  lpfilename: string | null | Uint8Array;
   /** Windows.Win32.Foundation.RECT */
   rc: Uint8Array | Deno.PointerValue | null;
 }
@@ -7266,7 +7266,7 @@ export interface MCI_OVLY_LOAD_PARMSW {
   /** usize */
   dwCallback: Deno.PointerValue;
   /** Windows.Win32.Foundation.PWSTR */
-  lpfilename: string | null;
+  lpfilename: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.RECT */
   rc: Uint8Array | Deno.PointerValue | null;
 }
@@ -7295,9 +7295,9 @@ export interface DRVCONFIGINFOEX {
   /** u32 */
   dwDCISize: number;
   /** Windows.Win32.Foundation.PWSTR */
-  lpszDCISectionName: string | null;
+  lpszDCISectionName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  lpszDCIAliasName: string | null;
+  lpszDCIAliasName: string | null | Uint8Array | Uint16Array;
   /** u32 */
   dnDevNode: number;
 }
@@ -7333,9 +7333,9 @@ export interface DRVCONFIGINFO {
   /** u32 */
   dwDCISize: number;
   /** Windows.Win32.Foundation.PWSTR */
-  lpszDCISectionName: string | null;
+  lpszDCISectionName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  lpszDCIAliasName: string | null;
+  lpszDCIAliasName: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeofDRVCONFIGINFO = 24;
@@ -8074,7 +8074,7 @@ export interface MCI_DGV_CAPTURE_PARMSA {
   /** usize */
   dwCallback: Deno.PointerValue;
   /** Windows.Win32.Foundation.PSTR */
-  lpstrFileName: string | null;
+  lpstrFileName: string | null | Uint8Array;
   /** Windows.Win32.Foundation.RECT */
   rc: Uint8Array | Deno.PointerValue | null;
 }
@@ -8103,7 +8103,7 @@ export interface MCI_DGV_CAPTURE_PARMSW {
   /** usize */
   dwCallback: Deno.PointerValue;
   /** Windows.Win32.Foundation.PWSTR */
-  lpstrFileName: string | null;
+  lpstrFileName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.RECT */
   rc: Uint8Array | Deno.PointerValue | null;
 }
@@ -8269,7 +8269,7 @@ export interface MCI_DGV_INFO_PARMSA {
   /** usize */
   dwCallback: Deno.PointerValue;
   /** Windows.Win32.Foundation.PSTR */
-  lpstrReturn: string | null;
+  lpstrReturn: string | null | Uint8Array;
   /** u32 */
   dwRetSize: number;
   /** u32 */
@@ -8302,7 +8302,7 @@ export interface MCI_DGV_INFO_PARMSW {
   /** usize */
   dwCallback: Deno.PointerValue;
   /** Windows.Win32.Foundation.PWSTR */
-  lpstrReturn: string | null;
+  lpstrReturn: string | null | Uint8Array | Uint16Array;
   /** u32 */
   dwRetSize: number;
   /** u32 */
@@ -8335,7 +8335,7 @@ export interface MCI_DGV_LIST_PARMSA {
   /** usize */
   dwCallback: Deno.PointerValue;
   /** Windows.Win32.Foundation.PSTR */
-  lpstrReturn: string | null;
+  lpstrReturn: string | null | Uint8Array;
   /** u32 */
   dwLength: number;
   /** u32 */
@@ -8343,7 +8343,7 @@ export interface MCI_DGV_LIST_PARMSA {
   /** u32 */
   dwItem: number;
   /** Windows.Win32.Foundation.PSTR */
-  lpstrAlgorithm: string | null;
+  lpstrAlgorithm: string | null | Uint8Array;
 }
 
 export const sizeofMCI_DGV_LIST_PARMSA = 40;
@@ -8380,7 +8380,7 @@ export interface MCI_DGV_LIST_PARMSW {
   /** usize */
   dwCallback: Deno.PointerValue;
   /** Windows.Win32.Foundation.PWSTR */
-  lpstrReturn: string | null;
+  lpstrReturn: string | null | Uint8Array | Uint16Array;
   /** u32 */
   dwLength: number;
   /** u32 */
@@ -8388,7 +8388,7 @@ export interface MCI_DGV_LIST_PARMSW {
   /** u32 */
   dwItem: number;
   /** Windows.Win32.Foundation.PWSTR */
-  lpstrAlgorithm: string | null;
+  lpstrAlgorithm: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeofMCI_DGV_LIST_PARMSW = 40;
@@ -8453,11 +8453,11 @@ export interface MCI_DGV_OPEN_PARMSA {
   /** u32 */
   wDeviceID: number;
   /** Windows.Win32.Foundation.PSTR */
-  lpstrDeviceType: string | null;
+  lpstrDeviceType: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  lpstrElementName: string | null;
+  lpstrElementName: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  lpstrAlias: string | null;
+  lpstrAlias: string | null | Uint8Array;
   /** u32 */
   dwStyle: number;
   /** Windows.Win32.Foundation.HWND */
@@ -8506,11 +8506,11 @@ export interface MCI_DGV_OPEN_PARMSW {
   /** u32 */
   wDeviceID: number;
   /** Windows.Win32.Foundation.PWSTR */
-  lpstrDeviceType: string | null;
+  lpstrDeviceType: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  lpstrElementName: string | null;
+  lpstrElementName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  lpstrAlias: string | null;
+  lpstrAlias: string | null | Uint8Array | Uint16Array;
   /** u32 */
   dwStyle: number;
   /** Windows.Win32.Foundation.HWND */
@@ -8594,7 +8594,7 @@ export interface MCI_DGV_QUALITY_PARMSA {
   /** u32 */
   dwItem: number;
   /** Windows.Win32.Foundation.PSTR */
-  lpstrName: string | null;
+  lpstrName: string | null | Uint8Array;
   /** u32 */
   lpstrAlgorithm: number;
   /** u32 */
@@ -8632,7 +8632,7 @@ export interface MCI_DGV_QUALITY_PARMSW {
   /** u32 */
   dwItem: number;
   /** Windows.Win32.Foundation.PWSTR */
-  lpstrName: string | null;
+  lpstrName: string | null | Uint8Array | Uint16Array;
   /** u32 */
   lpstrAlgorithm: number;
   /** u32 */
@@ -8706,7 +8706,7 @@ export interface MCI_DGV_RESERVE_PARMSA {
   /** usize */
   dwCallback: Deno.PointerValue;
   /** Windows.Win32.Foundation.PSTR */
-  lpstrPath: string | null;
+  lpstrPath: string | null | Uint8Array;
   /** u32 */
   dwSize: number;
 }
@@ -8736,7 +8736,7 @@ export interface MCI_DGV_RESERVE_PARMSW {
   /** usize */
   dwCallback: Deno.PointerValue;
   /** Windows.Win32.Foundation.PWSTR */
-  lpstrPath: string | null;
+  lpstrPath: string | null | Uint8Array | Uint16Array;
   /** u32 */
   dwSize: number;
 }
@@ -8766,7 +8766,7 @@ export interface MCI_DGV_RESTORE_PARMSA {
   /** usize */
   dwCallback: Deno.PointerValue;
   /** Windows.Win32.Foundation.PSTR */
-  lpstrFileName: string | null;
+  lpstrFileName: string | null | Uint8Array;
   /** Windows.Win32.Foundation.RECT */
   rc: Uint8Array | Deno.PointerValue | null;
 }
@@ -8795,7 +8795,7 @@ export interface MCI_DGV_RESTORE_PARMSW {
   /** usize */
   dwCallback: Deno.PointerValue;
   /** Windows.Win32.Foundation.PWSTR */
-  lpstrFileName: string | null;
+  lpstrFileName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.RECT */
   rc: Uint8Array | Deno.PointerValue | null;
 }
@@ -8824,7 +8824,7 @@ export interface MCI_DGV_SAVE_PARMSA {
   /** usize */
   dwCallback: Deno.PointerValue;
   /** Windows.Win32.Foundation.PSTR */
-  lpstrFileName: string | null;
+  lpstrFileName: string | null | Uint8Array;
   /** Windows.Win32.Foundation.RECT */
   rc: Uint8Array | Deno.PointerValue | null;
 }
@@ -8853,7 +8853,7 @@ export interface MCI_DGV_SAVE_PARMSW {
   /** usize */
   dwCallback: Deno.PointerValue;
   /** Windows.Win32.Foundation.PWSTR */
-  lpstrFileName: string | null;
+  lpstrFileName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.RECT */
   rc: Uint8Array | Deno.PointerValue | null;
 }
@@ -8922,9 +8922,9 @@ export interface MCI_DGV_SETAUDIO_PARMSA {
   /** u32 */
   dwOver: number;
   /** Windows.Win32.Foundation.PSTR */
-  lpstrAlgorithm: string | null;
+  lpstrAlgorithm: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  lpstrQuality: string | null;
+  lpstrQuality: string | null | Uint8Array;
 }
 
 export const sizeofMCI_DGV_SETAUDIO_PARMSA = 40;
@@ -8967,9 +8967,9 @@ export interface MCI_DGV_SETAUDIO_PARMSW {
   /** u32 */
   dwOver: number;
   /** Windows.Win32.Foundation.PWSTR */
-  lpstrAlgorithm: string | null;
+  lpstrAlgorithm: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  lpstrQuality: string | null;
+  lpstrQuality: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeofMCI_DGV_SETAUDIO_PARMSW = 40;
@@ -9043,9 +9043,9 @@ export interface MCI_DGV_SETVIDEO_PARMSA {
   /** u32 */
   dwOver: number;
   /** Windows.Win32.Foundation.PSTR */
-  lpstrAlgorithm: string | null;
+  lpstrAlgorithm: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  lpstrQuality: string | null;
+  lpstrQuality: string | null | Uint8Array;
   /** u32 */
   dwSourceNumber: number;
 }
@@ -9093,9 +9093,9 @@ export interface MCI_DGV_SETVIDEO_PARMSW {
   /** u32 */
   dwOver: number;
   /** Windows.Win32.Foundation.PWSTR */
-  lpstrAlgorithm: string | null;
+  lpstrAlgorithm: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  lpstrQuality: string | null;
+  lpstrQuality: string | null | Uint8Array | Uint16Array;
   /** u32 */
   dwSourceNumber: number;
 }
@@ -9143,7 +9143,7 @@ export interface MCI_DGV_STATUS_PARMSA {
   /** u32 */
   dwTrack: number;
   /** Windows.Win32.Foundation.PSTR */
-  lpstrDrive: string | null;
+  lpstrDrive: string | null | Uint8Array;
   /** u32 */
   dwReference: number;
 }
@@ -9185,7 +9185,7 @@ export interface MCI_DGV_STATUS_PARMSW {
   /** u32 */
   dwTrack: number;
   /** Windows.Win32.Foundation.PWSTR */
-  lpstrDrive: string | null;
+  lpstrDrive: string | null | Uint8Array | Uint16Array;
   /** u32 */
   dwReference: number;
 }
@@ -9274,7 +9274,7 @@ export interface MCI_DGV_WINDOW_PARMSA {
   /** u32 */
   nCmdShow: number;
   /** Windows.Win32.Foundation.PSTR */
-  lpstrText: string | null;
+  lpstrText: string | null | Uint8Array;
 }
 
 export const sizeofMCI_DGV_WINDOW_PARMSA = 32;
@@ -9308,7 +9308,7 @@ export interface MCI_DGV_WINDOW_PARMSW {
   /** u32 */
   nCmdShow: number;
   /** Windows.Win32.Foundation.PWSTR */
-  lpstrText: string | null;
+  lpstrText: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeofMCI_DGV_WINDOW_PARMSW = 32;
@@ -10955,7 +10955,7 @@ export interface MCI_OPEN_DRIVER_PARMS {
   /** u32 */
   wDeviceID: number;
   /** Windows.Win32.Foundation.PWSTR */
-  lpstrParams: string | null;
+  lpstrParams: string | null | Uint8Array | Uint16Array;
   /** u32 */
   wCustomCommandTable: number;
   /** u32 */
@@ -11714,8 +11714,8 @@ export function mciSendCommandW(
 }
 
 export function mciSendStringA(
-  lpstrCommand: string | null /* Windows.Win32.Foundation.PSTR */,
-  lpstrReturnString: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpstrCommand: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  lpstrReturnString: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   uReturnLength: number /* u32 */,
   hwndCallback: Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */,
 ): number /* u32 */ {
@@ -11723,8 +11723,8 @@ export function mciSendStringA(
 }
 
 export function mciSendStringW(
-  lpstrCommand: string | null /* Windows.Win32.Foundation.PWSTR */,
-  lpstrReturnString: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpstrCommand: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  lpstrReturnString: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   uReturnLength: number /* u32 */,
   hwndCallback: Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */,
 ): number /* u32 */ {
@@ -11732,34 +11732,34 @@ export function mciSendStringW(
 }
 
 export function mciGetDeviceIDA(
-  pszDevice: string | null /* Windows.Win32.Foundation.PSTR */,
+  pszDevice: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): number /* u32 */ {
   return libWINMM_dll.mciGetDeviceIDA(util.pstrToFfi(pszDevice));
 }
 
 export function mciGetDeviceIDW(
-  pszDevice: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pszDevice: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
   return libWINMM_dll.mciGetDeviceIDW(util.pwstrToFfi(pszDevice));
 }
 
 export function mciGetDeviceIDFromElementIDA(
   dwElementID: number /* u32 */,
-  lpstrType: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpstrType: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): number /* u32 */ {
   return libWINMM_dll.mciGetDeviceIDFromElementIDA(dwElementID, util.pstrToFfi(lpstrType));
 }
 
 export function mciGetDeviceIDFromElementIDW(
   dwElementID: number /* u32 */,
-  lpstrType: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpstrType: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
   return libWINMM_dll.mciGetDeviceIDFromElementIDW(dwElementID, util.pwstrToFfi(lpstrType));
 }
 
 export function mciGetErrorStringA(
   mcierr: number /* u32 */,
-  pszText: string | null /* Windows.Win32.Foundation.PSTR */,
+  pszText: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   cchText: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libWINMM_dll.mciGetErrorStringA(mcierr, util.pstrToFfi(pszText), cchText));
@@ -11767,7 +11767,7 @@ export function mciGetErrorStringA(
 
 export function mciGetErrorStringW(
   mcierr: number /* u32 */,
-  pszText: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pszText: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   cchText: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libWINMM_dll.mciGetErrorStringW(mcierr, util.pwstrToFfi(pszText), cchText));
@@ -11802,7 +11802,7 @@ export function mciGetDriverData(
 
 export function mciLoadCommandResource(
   hInstance: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  lpResName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpResName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   wType: number /* u32 */,
 ): number /* u32 */ {
   return libWINMM_dll.mciLoadCommandResource(util.toPointer(hInstance), util.pwstrToFfi(lpResName), wType);
@@ -11844,8 +11844,8 @@ export function CloseDriver(
 }
 
 export function OpenDriver(
-  szDriverName: string | null /* Windows.Win32.Foundation.PWSTR */,
-  szSectionName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  szDriverName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  szSectionName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   lParam2: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.LPARAM */,
 ): Deno.PointerValue | null /* Windows.Win32.Media.Multimedia.HDRVR */ {
   return util.pointerFromFfi(libWINMM_dll.OpenDriver(util.pwstrToFfi(szDriverName), util.pwstrToFfi(szSectionName), util.toPointer(lParam2)));
@@ -11895,8 +11895,8 @@ export function DriverCallback(
 }
 
 export function sndOpenSound(
-  EventName: string | null /* Windows.Win32.Foundation.PWSTR */,
-  AppName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  EventName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  AppName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   Flags: number /* i32 */,
   FileHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
@@ -11905,7 +11905,7 @@ export function sndOpenSound(
 
 export function mmDrvInstall(
   hDriver: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Media.Multimedia.HDRVR */,
-  wszDrvEntry: string | null /* Windows.Win32.Foundation.PWSTR */,
+  wszDrvEntry: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   drvMessage: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Media.Multimedia.DRIVERMSGPROC */,
   wFlags: number /* u32 */,
 ): number /* u32 */ {
@@ -11913,14 +11913,14 @@ export function mmDrvInstall(
 }
 
 export function mmioStringToFOURCCA(
-  sz: string | null /* Windows.Win32.Foundation.PSTR */,
+  sz: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   uFlags: number /* u32 */,
 ): number /* u32 */ {
   return libWINMM_dll.mmioStringToFOURCCA(util.pstrToFfi(sz), uFlags);
 }
 
 export function mmioStringToFOURCCW(
-  sz: string | null /* Windows.Win32.Foundation.PWSTR */,
+  sz: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   uFlags: number /* u32 */,
 ): number /* u32 */ {
   return libWINMM_dll.mmioStringToFOURCCW(util.pwstrToFfi(sz), uFlags);
@@ -11943,7 +11943,7 @@ export function mmioInstallIOProcW(
 }
 
 export function mmioOpenA(
-  pszFileName: string | null /* Windows.Win32.Foundation.PSTR */,
+  pszFileName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   pmmioinfo: Deno.PointerValue | Uint8Array | null /* ptr */,
   fdwOpen: number /* u32 */,
 ): Deno.PointerValue | null /* Windows.Win32.Media.Multimedia.HMMIO */ {
@@ -11951,7 +11951,7 @@ export function mmioOpenA(
 }
 
 export function mmioOpenW(
-  pszFileName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pszFileName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pmmioinfo: Deno.PointerValue | Uint8Array | null /* ptr */,
   fdwOpen: number /* u32 */,
 ): Deno.PointerValue | null /* Windows.Win32.Media.Multimedia.HMMIO */ {
@@ -11959,8 +11959,8 @@ export function mmioOpenW(
 }
 
 export function mmioRenameA(
-  pszFileName: string | null /* Windows.Win32.Foundation.PSTR */,
-  pszNewFileName: string | null /* Windows.Win32.Foundation.PSTR */,
+  pszFileName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  pszNewFileName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   pmmioinfo: Deno.PointerValue | Uint8Array | null /* ptr */,
   fdwRename: number /* u32 */,
 ): number /* u32 */ {
@@ -11968,8 +11968,8 @@ export function mmioRenameA(
 }
 
 export function mmioRenameW(
-  pszFileName: string | null /* Windows.Win32.Foundation.PWSTR */,
-  pszNewFileName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pszFileName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  pszNewFileName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pmmioinfo: Deno.PointerValue | Uint8Array | null /* ptr */,
   fdwRename: number /* u32 */,
 ): number /* u32 */ {
@@ -11993,7 +11993,7 @@ export function mmioRead(
 
 export function mmioWrite(
   hmmio: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Media.Multimedia.HMMIO */,
-  pch: string | null /* Windows.Win32.Foundation.PSTR */,
+  pch: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   cch: number /* i32 */,
 ): number /* i32 */ {
   return libWINMM_dll.mmioWrite(util.toPointer(hmmio), util.pstrToFfi(pch), cch);
@@ -12025,7 +12025,7 @@ export function mmioSetInfo(
 
 export function mmioSetBuffer(
   hmmio: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Media.Multimedia.HMMIO */,
-  pchBuffer: string | null /* Windows.Win32.Foundation.PSTR */,
+  pchBuffer: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   cchBuffer: number /* i32 */,
   fuBuffer: number /* u32 */,
 ): number /* u32 */ {
@@ -12160,7 +12160,7 @@ export function ICInstall(
   fccType: number /* u32 */,
   fccHandler: number /* u32 */,
   lParam: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.LPARAM */,
-  szDesc: string | null /* Windows.Win32.Foundation.PSTR */,
+  szDesc: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   wFlags: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libMSVFW32_dll.ICInstall(fccType, fccHandler, util.toPointer(lParam), util.pstrToFfi(szDesc), wFlags));
@@ -12324,7 +12324,7 @@ export function ICCompressorChoose(
   pvIn: Deno.PointerValue | Uint8Array | null /* ptr */,
   lpData: Deno.PointerValue | Uint8Array | null /* ptr */,
   pc: Deno.PointerValue | Uint8Array | null /* ptr */,
-  lpszTitle: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpszTitle: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libMSVFW32_dll.ICCompressorChoose(util.hwndToFfi(hwnd), uiFlags, util.toPointer(pvIn), util.toPointer(lpData), util.toPointer(pc), util.pstrToFfi(lpszTitle)));
 }
@@ -12492,7 +12492,7 @@ export function AVIFileRelease(
 
 export function AVIFileOpenA(
   ppfile: Deno.PointerValue | Uint8Array | null /* ptr */,
-  szFile: string | null /* Windows.Win32.Foundation.PSTR */,
+  szFile: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   uMode: number /* u32 */,
   lpHandler: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
@@ -12501,7 +12501,7 @@ export function AVIFileOpenA(
 
 export function AVIFileOpenW(
   ppfile: Deno.PointerValue | Uint8Array | null /* ptr */,
-  szFile: string | null /* Windows.Win32.Foundation.PWSTR */,
+  szFile: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   uMode: number /* u32 */,
   lpHandler: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
@@ -12733,7 +12733,7 @@ export function AVIStreamGetFrameClose(
 
 export function AVIStreamOpenFromFileA(
   ppavi: Deno.PointerValue | Uint8Array | null /* ptr */,
-  szFile: string | null /* Windows.Win32.Foundation.PSTR */,
+  szFile: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   fccType: number /* u32 */,
   lParam: number /* i32 */,
   mode: number /* u32 */,
@@ -12744,7 +12744,7 @@ export function AVIStreamOpenFromFileA(
 
 export function AVIStreamOpenFromFileW(
   ppavi: Deno.PointerValue | Uint8Array | null /* ptr */,
-  szFile: string | null /* Windows.Win32.Foundation.PWSTR */,
+  szFile: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   fccType: number /* u32 */,
   lParam: number /* i32 */,
   mode: number /* u32 */,
@@ -12772,7 +12772,7 @@ export function AVIMakeCompressedStream(
 }
 
 export function AVISaveA(
-  szFile: string | null /* Windows.Win32.Foundation.PSTR */,
+  szFile: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   pclsidHandler: Deno.PointerValue | Uint8Array | null /* ptr */,
   lpfnCallback: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Media.Multimedia.AVISAVECALLBACK */,
   nStreams: number /* i32 */,
@@ -12783,7 +12783,7 @@ export function AVISaveA(
 }
 
 export function AVISaveVA(
-  szFile: string | null /* Windows.Win32.Foundation.PSTR */,
+  szFile: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   pclsidHandler: Deno.PointerValue | Uint8Array | null /* ptr */,
   lpfnCallback: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Media.Multimedia.AVISAVECALLBACK */,
   nStreams: number /* i32 */,
@@ -12794,7 +12794,7 @@ export function AVISaveVA(
 }
 
 export function AVISaveW(
-  szFile: string | null /* Windows.Win32.Foundation.PWSTR */,
+  szFile: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pclsidHandler: Deno.PointerValue | Uint8Array | null /* ptr */,
   lpfnCallback: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Media.Multimedia.AVISAVECALLBACK */,
   nStreams: number /* i32 */,
@@ -12805,7 +12805,7 @@ export function AVISaveW(
 }
 
 export function AVISaveVW(
-  szFile: string | null /* Windows.Win32.Foundation.PWSTR */,
+  szFile: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pclsidHandler: Deno.PointerValue | Uint8Array | null /* ptr */,
   lpfnCallback: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Media.Multimedia.AVISAVECALLBACK */,
   nStreams: number /* i32 */,
@@ -12833,7 +12833,7 @@ export function AVISaveOptionsFree(
 }
 
 export function AVIBuildFilterW(
-  lpszFilter: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpszFilter: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   cbFilter: number /* i32 */,
   fSaving: boolean /* Windows.Win32.Foundation.BOOL */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
@@ -12841,7 +12841,7 @@ export function AVIBuildFilterW(
 }
 
 export function AVIBuildFilterA(
-  lpszFilter: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpszFilter: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   cbFilter: number /* i32 */,
   fSaving: boolean /* Windows.Win32.Foundation.BOOL */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
@@ -12925,14 +12925,14 @@ export function EditStreamClone(
 
 export function EditStreamSetNameA(
   pavi: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Media.Multimedia.IAVIStream */,
-  lpszName: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpszName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
   return util.pointerFromFfi(libAVIFIL32_dll.EditStreamSetNameA(util.toPointer(pavi), util.pstrToFfi(lpszName)));
 }
 
 export function EditStreamSetNameW(
   pavi: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Media.Multimedia.IAVIStream */,
-  lpszName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpszName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
   return util.pointerFromFfi(libAVIFIL32_dll.EditStreamSetNameW(util.toPointer(pavi), util.pwstrToFfi(lpszName)));
 }
@@ -12957,7 +12957,7 @@ export function MCIWndCreateA(
   hwndParent: Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */,
   hInstance: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HINSTANCE */,
   dwStyle: number /* u32 */,
-  szFile: string | null /* Windows.Win32.Foundation.PSTR */,
+  szFile: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */ {
   return util.hwndFromFfi(libMSVFW32_dll.MCIWndCreateA(util.hwndToFfi(hwndParent), util.toPointer(hInstance), dwStyle, util.pstrToFfi(szFile)));
 }
@@ -12966,7 +12966,7 @@ export function MCIWndCreateW(
   hwndParent: Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */,
   hInstance: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HINSTANCE */,
   dwStyle: number /* u32 */,
-  szFile: string | null /* Windows.Win32.Foundation.PWSTR */,
+  szFile: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */ {
   return util.hwndFromFfi(libMSVFW32_dll.MCIWndCreateW(util.hwndToFfi(hwndParent), util.toPointer(hInstance), dwStyle, util.pwstrToFfi(szFile)));
 }
@@ -12976,7 +12976,7 @@ export function MCIWndRegisterClass(): boolean /* Windows.Win32.Foundation.BOOL 
 }
 
 export function capCreateCaptureWindowA(
-  lpszWindowName: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpszWindowName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   dwStyle: number /* u32 */,
   x: number /* i32 */,
   y: number /* i32 */,
@@ -12990,16 +12990,16 @@ export function capCreateCaptureWindowA(
 
 export function capGetDriverDescriptionA(
   wDriverIndex: number /* u32 */,
-  lpszName: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpszName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   cbName: number /* i32 */,
-  lpszVer: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpszVer: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   cbVer: number /* i32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libAVICAP32_dll.capGetDriverDescriptionA(wDriverIndex, util.pstrToFfi(lpszName), cbName, util.pstrToFfi(lpszVer), cbVer));
 }
 
 export function capCreateCaptureWindowW(
-  lpszWindowName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpszWindowName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   dwStyle: number /* u32 */,
   x: number /* i32 */,
   y: number /* i32 */,
@@ -13013,9 +13013,9 @@ export function capCreateCaptureWindowW(
 
 export function capGetDriverDescriptionW(
   wDriverIndex: number /* u32 */,
-  lpszName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpszName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   cbName: number /* i32 */,
-  lpszVer: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpszVer: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   cbVer: number /* i32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libAVICAP32_dll.capGetDriverDescriptionW(wDriverIndex, util.pwstrToFfi(lpszName), cbName, util.pwstrToFfi(lpszVer), cbVer));

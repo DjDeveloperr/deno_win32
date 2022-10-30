@@ -3658,7 +3658,7 @@ export interface _Reason_e__Union {
   /** _Detailed_e__Struct */
   Detailed: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.Foundation.PWSTR */
-  SimpleReasonString: string | null;
+  SimpleReasonString: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeof_Reason_e__Union = 16;
@@ -3743,11 +3743,11 @@ export interface STARTUPINFOA {
   /** u32 */
   cb: number;
   /** Windows.Win32.Foundation.PSTR */
-  lpReserved: string | null;
+  lpReserved: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  lpDesktop: string | null;
+  lpDesktop: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  lpTitle: string | null;
+  lpTitle: string | null | Uint8Array;
   /** u32 */
   dwX: number;
   /** u32 */
@@ -3840,11 +3840,11 @@ export interface STARTUPINFOW {
   /** u32 */
   cb: number;
   /** Windows.Win32.Foundation.PWSTR */
-  lpReserved: string | null;
+  lpReserved: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  lpDesktop: string | null;
+  lpDesktop: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  lpTitle: string | null;
+  lpTitle: string | null | Uint8Array | Uint16Array;
   /** u32 */
   dwX: number;
   /** u32 */
@@ -4744,7 +4744,7 @@ export function allocUNLOAD_DLL_DEBUG_INFO(data?: Partial<UNLOAD_DLL_DEBUG_INFO>
  */
 export interface OUTPUT_DEBUG_STRING_INFO {
   /** Windows.Win32.Foundation.PSTR */
-  lpDebugStringData: string | null;
+  lpDebugStringData: string | null | Uint8Array;
   /** u16 */
   fUnicode: number;
   /** u16 */
@@ -5073,7 +5073,7 @@ export interface UNICODE_STRING {
   /** u16 */
   MaximumLength: number;
   /** Windows.Win32.Foundation.PWSTR */
-  Buffer: string | null;
+  Buffer: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeofUNICODE_STRING = 16;
@@ -6757,7 +6757,7 @@ export function WaitForMultipleObjectsEx(
 export function CreateMutexA(
   lpMutexAttributes: Deno.PointerValue | Uint8Array | null /* ptr */,
   bInitialOwner: boolean /* Windows.Win32.Foundation.BOOL */,
-  lpName: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */ {
   return util.pointerFromFfi(libKERNEL32_dll.CreateMutexA(util.toPointer(lpMutexAttributes), util.boolToFfi(bInitialOwner), util.pstrToFfi(lpName)));
 }
@@ -6765,7 +6765,7 @@ export function CreateMutexA(
 export function CreateMutexW(
   lpMutexAttributes: Deno.PointerValue | Uint8Array | null /* ptr */,
   bInitialOwner: boolean /* Windows.Win32.Foundation.BOOL */,
-  lpName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */ {
   return util.pointerFromFfi(libKERNEL32_dll.CreateMutexW(util.toPointer(lpMutexAttributes), util.boolToFfi(bInitialOwner), util.pwstrToFfi(lpName)));
 }
@@ -6773,7 +6773,7 @@ export function CreateMutexW(
 export function OpenMutexW(
   dwDesiredAccess: SYNCHRONIZATION_ACCESS_RIGHTS /* Windows.Win32.System.Threading.SYNCHRONIZATION_ACCESS_RIGHTS */,
   bInheritHandle: boolean /* Windows.Win32.Foundation.BOOL */,
-  lpName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */ {
   return util.pointerFromFfi(libKERNEL32_dll.OpenMutexW(dwDesiredAccess, util.boolToFfi(bInheritHandle), util.pwstrToFfi(lpName)));
 }
@@ -6782,7 +6782,7 @@ export function CreateEventA(
   lpEventAttributes: Deno.PointerValue | Uint8Array | null /* ptr */,
   bManualReset: boolean /* Windows.Win32.Foundation.BOOL */,
   bInitialState: boolean /* Windows.Win32.Foundation.BOOL */,
-  lpName: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */ {
   return util.pointerFromFfi(libKERNEL32_dll.CreateEventA(util.toPointer(lpEventAttributes), util.boolToFfi(bManualReset), util.boolToFfi(bInitialState), util.pstrToFfi(lpName)));
 }
@@ -6791,7 +6791,7 @@ export function CreateEventW(
   lpEventAttributes: Deno.PointerValue | Uint8Array | null /* ptr */,
   bManualReset: boolean /* Windows.Win32.Foundation.BOOL */,
   bInitialState: boolean /* Windows.Win32.Foundation.BOOL */,
-  lpName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */ {
   return util.pointerFromFfi(libKERNEL32_dll.CreateEventW(util.toPointer(lpEventAttributes), util.boolToFfi(bManualReset), util.boolToFfi(bInitialState), util.pwstrToFfi(lpName)));
 }
@@ -6799,7 +6799,7 @@ export function CreateEventW(
 export function OpenEventA(
   dwDesiredAccess: SYNCHRONIZATION_ACCESS_RIGHTS /* Windows.Win32.System.Threading.SYNCHRONIZATION_ACCESS_RIGHTS */,
   bInheritHandle: boolean /* Windows.Win32.Foundation.BOOL */,
-  lpName: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */ {
   return util.pointerFromFfi(libKERNEL32_dll.OpenEventA(dwDesiredAccess, util.boolToFfi(bInheritHandle), util.pstrToFfi(lpName)));
 }
@@ -6807,7 +6807,7 @@ export function OpenEventA(
 export function OpenEventW(
   dwDesiredAccess: SYNCHRONIZATION_ACCESS_RIGHTS /* Windows.Win32.System.Threading.SYNCHRONIZATION_ACCESS_RIGHTS */,
   bInheritHandle: boolean /* Windows.Win32.Foundation.BOOL */,
-  lpName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */ {
   return util.pointerFromFfi(libKERNEL32_dll.OpenEventW(dwDesiredAccess, util.boolToFfi(bInheritHandle), util.pwstrToFfi(lpName)));
 }
@@ -6815,7 +6815,7 @@ export function OpenEventW(
 export function OpenSemaphoreW(
   dwDesiredAccess: SYNCHRONIZATION_ACCESS_RIGHTS /* Windows.Win32.System.Threading.SYNCHRONIZATION_ACCESS_RIGHTS */,
   bInheritHandle: boolean /* Windows.Win32.Foundation.BOOL */,
-  lpName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */ {
   return util.pointerFromFfi(libKERNEL32_dll.OpenSemaphoreW(dwDesiredAccess, util.boolToFfi(bInheritHandle), util.pwstrToFfi(lpName)));
 }
@@ -6823,7 +6823,7 @@ export function OpenSemaphoreW(
 export function OpenWaitableTimerW(
   dwDesiredAccess: SYNCHRONIZATION_ACCESS_RIGHTS /* Windows.Win32.System.Threading.SYNCHRONIZATION_ACCESS_RIGHTS */,
   bInheritHandle: boolean /* Windows.Win32.Foundation.BOOL */,
-  lpTimerName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpTimerName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */ {
   return util.pointerFromFfi(libKERNEL32_dll.OpenWaitableTimerW(dwDesiredAccess, util.boolToFfi(bInheritHandle), util.pwstrToFfi(lpTimerName)));
 }
@@ -6859,7 +6859,7 @@ export function CancelWaitableTimer(
 
 export function CreateMutexExA(
   lpMutexAttributes: Deno.PointerValue | Uint8Array | null /* ptr */,
-  lpName: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   dwFlags: number /* u32 */,
   dwDesiredAccess: number /* u32 */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */ {
@@ -6868,7 +6868,7 @@ export function CreateMutexExA(
 
 export function CreateMutexExW(
   lpMutexAttributes: Deno.PointerValue | Uint8Array | null /* ptr */,
-  lpName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   dwFlags: number /* u32 */,
   dwDesiredAccess: number /* u32 */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */ {
@@ -6877,7 +6877,7 @@ export function CreateMutexExW(
 
 export function CreateEventExA(
   lpEventAttributes: Deno.PointerValue | Uint8Array | null /* ptr */,
-  lpName: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   dwFlags: CREATE_EVENT /* Windows.Win32.System.Threading.CREATE_EVENT */,
   dwDesiredAccess: number /* u32 */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */ {
@@ -6886,7 +6886,7 @@ export function CreateEventExA(
 
 export function CreateEventExW(
   lpEventAttributes: Deno.PointerValue | Uint8Array | null /* ptr */,
-  lpName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   dwFlags: CREATE_EVENT /* Windows.Win32.System.Threading.CREATE_EVENT */,
   dwDesiredAccess: number /* u32 */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */ {
@@ -6897,7 +6897,7 @@ export function CreateSemaphoreExW(
   lpSemaphoreAttributes: Deno.PointerValue | Uint8Array | null /* ptr */,
   lInitialCount: number /* i32 */,
   lMaximumCount: number /* i32 */,
-  lpName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   dwFlags: number /* u32 */,
   dwDesiredAccess: number /* u32 */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */ {
@@ -6906,7 +6906,7 @@ export function CreateSemaphoreExW(
 
 export function CreateWaitableTimerExW(
   lpTimerAttributes: Deno.PointerValue | Uint8Array | null /* ptr */,
-  lpTimerName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpTimerName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   dwFlags: number /* u32 */,
   dwDesiredAccess: number /* u32 */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */ {
@@ -6974,7 +6974,7 @@ export function CreateSemaphoreW(
   lpSemaphoreAttributes: Deno.PointerValue | Uint8Array | null /* ptr */,
   lInitialCount: number /* i32 */,
   lMaximumCount: number /* i32 */,
-  lpName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */ {
   return util.pointerFromFfi(libKERNEL32_dll.CreateSemaphoreW(util.toPointer(lpSemaphoreAttributes), lInitialCount, lMaximumCount, util.pwstrToFfi(lpName)));
 }
@@ -6982,7 +6982,7 @@ export function CreateSemaphoreW(
 export function CreateWaitableTimerW(
   lpTimerAttributes: Deno.PointerValue | Uint8Array | null /* ptr */,
   bManualReset: boolean /* Windows.Win32.Foundation.BOOL */,
-  lpTimerName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpTimerName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */ {
   return util.pointerFromFfi(libKERNEL32_dll.CreateWaitableTimerW(util.toPointer(lpTimerAttributes), util.boolToFfi(bManualReset), util.pwstrToFfi(lpTimerName)));
 }
@@ -7208,14 +7208,14 @@ export function TlsFree(
 }
 
 export function CreateProcessA(
-  lpApplicationName: string | null /* Windows.Win32.Foundation.PSTR */,
-  lpCommandLine: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpApplicationName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  lpCommandLine: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   lpProcessAttributes: Deno.PointerValue | Uint8Array | null /* ptr */,
   lpThreadAttributes: Deno.PointerValue | Uint8Array | null /* ptr */,
   bInheritHandles: boolean /* Windows.Win32.Foundation.BOOL */,
   dwCreationFlags: PROCESS_CREATION_FLAGS /* Windows.Win32.System.Threading.PROCESS_CREATION_FLAGS */,
   lpEnvironment: Deno.PointerValue | Uint8Array | null /* ptr */,
-  lpCurrentDirectory: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpCurrentDirectory: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   lpStartupInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
   lpProcessInformation: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
@@ -7223,14 +7223,14 @@ export function CreateProcessA(
 }
 
 export function CreateProcessW(
-  lpApplicationName: string | null /* Windows.Win32.Foundation.PWSTR */,
-  lpCommandLine: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpApplicationName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  lpCommandLine: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   lpProcessAttributes: Deno.PointerValue | Uint8Array | null /* ptr */,
   lpThreadAttributes: Deno.PointerValue | Uint8Array | null /* ptr */,
   bInheritHandles: boolean /* Windows.Win32.Foundation.BOOL */,
   dwCreationFlags: PROCESS_CREATION_FLAGS /* Windows.Win32.System.Threading.PROCESS_CREATION_FLAGS */,
   lpEnvironment: Deno.PointerValue | Uint8Array | null /* ptr */,
-  lpCurrentDirectory: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpCurrentDirectory: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   lpStartupInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
   lpProcessInformation: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
@@ -7258,14 +7258,14 @@ export function GetStartupInfoW(
 
 export function CreateProcessAsUserW(
   hToken: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  lpApplicationName: string | null /* Windows.Win32.Foundation.PWSTR */,
-  lpCommandLine: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpApplicationName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  lpCommandLine: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   lpProcessAttributes: Deno.PointerValue | Uint8Array | null /* ptr */,
   lpThreadAttributes: Deno.PointerValue | Uint8Array | null /* ptr */,
   bInheritHandles: boolean /* Windows.Win32.Foundation.BOOL */,
   dwCreationFlags: number /* u32 */,
   lpEnvironment: Deno.PointerValue | Uint8Array | null /* ptr */,
-  lpCurrentDirectory: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpCurrentDirectory: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   lpStartupInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
   lpProcessInformation: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
@@ -7617,14 +7617,14 @@ export function SetThreadSelectedCpuSets(
 
 export function CreateProcessAsUserA(
   hToken: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  lpApplicationName: string | null /* Windows.Win32.Foundation.PSTR */,
-  lpCommandLine: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpApplicationName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  lpCommandLine: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   lpProcessAttributes: Deno.PointerValue | Uint8Array | null /* ptr */,
   lpThreadAttributes: Deno.PointerValue | Uint8Array | null /* ptr */,
   bInheritHandles: boolean /* Windows.Win32.Foundation.BOOL */,
   dwCreationFlags: number /* u32 */,
   lpEnvironment: Deno.PointerValue | Uint8Array | null /* ptr */,
-  lpCurrentDirectory: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpCurrentDirectory: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   lpStartupInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
   lpProcessInformation: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
@@ -7681,7 +7681,7 @@ export function GetMachineTypeAttributes(
 
 export function SetThreadDescription(
   hThread: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  lpThreadDescription: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpThreadDescription: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
   return util.pointerFromFfi(libKERNEL32_dll.SetThreadDescription(util.toPointer(hThread), util.pwstrToFfi(lpThreadDescription)));
 }
@@ -8042,14 +8042,14 @@ export function Wow64SuspendThread(
 export function CreatePrivateNamespaceW(
   lpPrivateNamespaceAttributes: Deno.PointerValue | Uint8Array | null /* ptr */,
   lpBoundaryDescriptor: Deno.PointerValue | Uint8Array | null /* ptr */,
-  lpAliasPrefix: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpAliasPrefix: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): Deno.PointerValue | null /* Windows.Win32.System.Threading.NamespaceHandle */ {
   return util.pointerFromFfi(libKERNEL32_dll.CreatePrivateNamespaceW(util.toPointer(lpPrivateNamespaceAttributes), util.toPointer(lpBoundaryDescriptor), util.pwstrToFfi(lpAliasPrefix)));
 }
 
 export function OpenPrivateNamespaceW(
   lpBoundaryDescriptor: Deno.PointerValue | Uint8Array | null /* ptr */,
-  lpAliasPrefix: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpAliasPrefix: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): Deno.PointerValue | null /* Windows.Win32.System.Threading.NamespaceHandle */ {
   return util.pointerFromFfi(libKERNEL32_dll.OpenPrivateNamespaceW(util.toPointer(lpBoundaryDescriptor), util.pwstrToFfi(lpAliasPrefix)));
 }
@@ -8062,7 +8062,7 @@ export function ClosePrivateNamespace(
 }
 
 export function CreateBoundaryDescriptorW(
-  Name: string | null /* Windows.Win32.Foundation.PWSTR */,
+  Name: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   Flags: number /* u32 */,
 ): Deno.PointerValue | null /* Windows.Win32.System.Threading.BoundaryDescriptorHandle */ {
   return util.pointerFromFfi(libKERNEL32_dll.CreateBoundaryDescriptorW(util.pwstrToFfi(Name), Flags));
@@ -8134,30 +8134,30 @@ export function SetThreadGroupAffinity(
 }
 
 export function AvSetMmThreadCharacteristicsA(
-  TaskName: string | null /* Windows.Win32.Foundation.PSTR */,
+  TaskName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   TaskIndex: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */ {
   return util.pointerFromFfi(libAVRT_dll.AvSetMmThreadCharacteristicsA(util.pstrToFfi(TaskName), util.toPointer(TaskIndex)));
 }
 
 export function AvSetMmThreadCharacteristicsW(
-  TaskName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  TaskName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   TaskIndex: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */ {
   return util.pointerFromFfi(libAVRT_dll.AvSetMmThreadCharacteristicsW(util.pwstrToFfi(TaskName), util.toPointer(TaskIndex)));
 }
 
 export function AvSetMmMaxThreadCharacteristicsA(
-  FirstTask: string | null /* Windows.Win32.Foundation.PSTR */,
-  SecondTask: string | null /* Windows.Win32.Foundation.PSTR */,
+  FirstTask: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  SecondTask: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   TaskIndex: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */ {
   return util.pointerFromFfi(libAVRT_dll.AvSetMmMaxThreadCharacteristicsA(util.pstrToFfi(FirstTask), util.pstrToFfi(SecondTask), util.toPointer(TaskIndex)));
 }
 
 export function AvSetMmMaxThreadCharacteristicsW(
-  FirstTask: string | null /* Windows.Win32.Foundation.PWSTR */,
-  SecondTask: string | null /* Windows.Win32.Foundation.PWSTR */,
+  FirstTask: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  SecondTask: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   TaskIndex: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */ {
   return util.pointerFromFfi(libAVRT_dll.AvSetMmMaxThreadCharacteristicsW(util.pwstrToFfi(FirstTask), util.pwstrToFfi(SecondTask), util.toPointer(TaskIndex)));
@@ -8190,7 +8190,7 @@ export function AvRtCreateThreadOrderingGroupExA(
   Period: Deno.PointerValue | Uint8Array | null /* ptr */,
   ThreadOrderingGuid: Deno.PointerValue | Uint8Array | null /* ptr */,
   Timeout: Deno.PointerValue | Uint8Array | null /* ptr */,
-  TaskName: string | null /* Windows.Win32.Foundation.PSTR */,
+  TaskName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libAVRT_dll.AvRtCreateThreadOrderingGroupExA(util.toPointer(Context), util.toPointer(Period), util.toPointer(ThreadOrderingGuid), util.toPointer(Timeout), util.pstrToFfi(TaskName)));
 }
@@ -8200,7 +8200,7 @@ export function AvRtCreateThreadOrderingGroupExW(
   Period: Deno.PointerValue | Uint8Array | null /* ptr */,
   ThreadOrderingGuid: Deno.PointerValue | Uint8Array | null /* ptr */,
   Timeout: Deno.PointerValue | Uint8Array | null /* ptr */,
-  TaskName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  TaskName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libAVRT_dll.AvRtCreateThreadOrderingGroupExW(util.toPointer(Context), util.toPointer(Period), util.toPointer(ThreadOrderingGuid), util.toPointer(Timeout), util.pwstrToFfi(TaskName)));
 }
@@ -8462,7 +8462,7 @@ export function PulseEvent(
 }
 
 export function WinExec(
-  lpCmdLine: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpCmdLine: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   uCmdShow: number /* u32 */,
 ): number /* u32 */ {
   return libKERNEL32_dll.WinExec(util.pstrToFfi(lpCmdLine), uCmdShow);
@@ -8472,7 +8472,7 @@ export function CreateSemaphoreA(
   lpSemaphoreAttributes: Deno.PointerValue | Uint8Array | null /* ptr */,
   lInitialCount: number /* i32 */,
   lMaximumCount: number /* i32 */,
-  lpName: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */ {
   return util.pointerFromFfi(libKERNEL32_dll.CreateSemaphoreA(util.toPointer(lpSemaphoreAttributes), lInitialCount, lMaximumCount, util.pstrToFfi(lpName)));
 }
@@ -8481,7 +8481,7 @@ export function CreateSemaphoreExA(
   lpSemaphoreAttributes: Deno.PointerValue | Uint8Array | null /* ptr */,
   lInitialCount: number /* i32 */,
   lMaximumCount: number /* i32 */,
-  lpName: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   dwFlags: number /* u32 */,
   dwDesiredAccess: number /* u32 */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */ {
@@ -8491,7 +8491,7 @@ export function CreateSemaphoreExA(
 export function QueryFullProcessImageNameA(
   hProcess: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
   dwFlags: PROCESS_NAME_FORMAT /* Windows.Win32.System.Threading.PROCESS_NAME_FORMAT */,
-  lpExeName: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpExeName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   lpdwSize: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libKERNEL32_dll.QueryFullProcessImageNameA(util.toPointer(hProcess), dwFlags, util.pstrToFfi(lpExeName), util.toPointer(lpdwSize)));
@@ -8500,7 +8500,7 @@ export function QueryFullProcessImageNameA(
 export function QueryFullProcessImageNameW(
   hProcess: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
   dwFlags: PROCESS_NAME_FORMAT /* Windows.Win32.System.Threading.PROCESS_NAME_FORMAT */,
-  lpExeName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpExeName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   lpdwSize: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libKERNEL32_dll.QueryFullProcessImageNameW(util.toPointer(hProcess), dwFlags, util.pwstrToFfi(lpExeName), util.toPointer(lpdwSize)));
@@ -8513,15 +8513,15 @@ export function GetStartupInfoA(
 }
 
 export function CreateProcessWithLogonW(
-  lpUsername: string | null /* Windows.Win32.Foundation.PWSTR */,
-  lpDomain: string | null /* Windows.Win32.Foundation.PWSTR */,
-  lpPassword: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpUsername: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  lpDomain: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  lpPassword: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   dwLogonFlags: CREATE_PROCESS_LOGON_FLAGS /* Windows.Win32.System.Threading.CREATE_PROCESS_LOGON_FLAGS */,
-  lpApplicationName: string | null /* Windows.Win32.Foundation.PWSTR */,
-  lpCommandLine: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpApplicationName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  lpCommandLine: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   dwCreationFlags: number /* u32 */,
   lpEnvironment: Deno.PointerValue | Uint8Array | null /* ptr */,
-  lpCurrentDirectory: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpCurrentDirectory: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   lpStartupInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
   lpProcessInformation: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
@@ -8531,11 +8531,11 @@ export function CreateProcessWithLogonW(
 export function CreateProcessWithTokenW(
   hToken: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
   dwLogonFlags: CREATE_PROCESS_LOGON_FLAGS /* Windows.Win32.System.Threading.CREATE_PROCESS_LOGON_FLAGS */,
-  lpApplicationName: string | null /* Windows.Win32.Foundation.PWSTR */,
-  lpCommandLine: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpApplicationName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  lpCommandLine: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   dwCreationFlags: number /* u32 */,
   lpEnvironment: Deno.PointerValue | Uint8Array | null /* ptr */,
-  lpCurrentDirectory: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpCurrentDirectory: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   lpStartupInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
   lpProcessInformation: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
@@ -8573,20 +8573,20 @@ export function SetTimerQueueTimer(
 export function CreatePrivateNamespaceA(
   lpPrivateNamespaceAttributes: Deno.PointerValue | Uint8Array | null /* ptr */,
   lpBoundaryDescriptor: Deno.PointerValue | Uint8Array | null /* ptr */,
-  lpAliasPrefix: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpAliasPrefix: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): Deno.PointerValue | null /* Windows.Win32.System.Threading.NamespaceHandle */ {
   return util.pointerFromFfi(libKERNEL32_dll.CreatePrivateNamespaceA(util.toPointer(lpPrivateNamespaceAttributes), util.toPointer(lpBoundaryDescriptor), util.pstrToFfi(lpAliasPrefix)));
 }
 
 export function OpenPrivateNamespaceA(
   lpBoundaryDescriptor: Deno.PointerValue | Uint8Array | null /* ptr */,
-  lpAliasPrefix: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpAliasPrefix: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): Deno.PointerValue | null /* Windows.Win32.System.Threading.NamespaceHandle */ {
   return util.pointerFromFfi(libKERNEL32_dll.OpenPrivateNamespaceA(util.toPointer(lpBoundaryDescriptor), util.pstrToFfi(lpAliasPrefix)));
 }
 
 export function CreateBoundaryDescriptorA(
-  Name: string | null /* Windows.Win32.Foundation.PSTR */,
+  Name: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   Flags: number /* u32 */,
 ): Deno.PointerValue | null /* Windows.Win32.System.Threading.BoundaryDescriptorHandle */ {
   return util.pointerFromFfi(libKERNEL32_dll.CreateBoundaryDescriptorA(util.pstrToFfi(Name), Flags));

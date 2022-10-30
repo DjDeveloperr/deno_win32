@@ -1881,7 +1881,7 @@ export type PWSTR = Deno.PointerValue | Uint8Array | null;
  */
 export interface _ByName_e__Struct {
   /** Windows.Win32.Foundation.PWSTR */
-  pPackageName: string | null;
+  pPackageName: string | null | Uint8Array | Uint16Array;
   /** System.Guid */
   PolicyId: Uint8Array | Deno.PointerValue | null;
 }
@@ -1930,13 +1930,13 @@ export interface _tagged_union_e__Struct {
   /** System.Guid */
   clsid: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.Foundation.PWSTR */
-  pFileExt: string | null;
+  pFileExt: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pMimeType: string | null;
+  pMimeType: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pProgId: string | null;
+  pProgId: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pFileName: string | null;
+  pFileName: string | null | Uint8Array | Uint16Array;
   /** _ByName_e__Struct */
   ByName: Uint8Array | Deno.PointerValue | null;
   /** _ByObjectId_e__Struct */
@@ -2234,7 +2234,7 @@ export interface COAUTHINFO {
   /** u32 */
   dwAuthzSvc: number;
   /** Windows.Win32.Foundation.PWSTR */
-  pwszServerPrincName: string | null;
+  pwszServerPrincName: string | null | Uint8Array | Uint16Array;
   /** u32 */
   dwAuthnLevel: number;
   /** u32 */
@@ -2514,7 +2514,7 @@ export interface COSERVERINFO {
   /** u32 */
   dwReserved1: number;
   /** Windows.Win32.Foundation.PWSTR */
-  pwszName: string | null;
+  pwszName: string | null | Uint8Array | Uint16Array;
   /** ptr */
   pAuthInfo: Deno.PointerValue | Uint8Array | null;
   /** u32 */
@@ -2577,7 +2577,7 @@ export interface _u_e__Struct {
   /** u32 */
   dwValue: number;
   /** Windows.Win32.Foundation.PWSTR */
-  pwszName: string | null;
+  pwszName: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeof_u_e__Struct = 16;
@@ -2649,7 +2649,7 @@ export function allocFILETIME(data?: Partial<FILETIME>): Uint8Array {
  */
 export interface STATSTG {
   /** Windows.Win32.Foundation.PWSTR */
-  pwcsName: string | null;
+  pwcsName: string | null | Uint8Array | Uint16Array;
   /** u32 */
   type: number;
   /** Windows.Win32.Foundation.ULARGE_INTEGER */
@@ -2798,7 +2798,7 @@ export interface SOLE_AUTHENTICATION_SERVICE {
   /** u32 */
   dwAuthzSvc: number;
   /** Windows.Win32.Foundation.PWSTR */
-  pPrincipalName: string | null;
+  pPrincipalName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.HRESULT */
   hr: Uint8Array | Deno.PointerValue | null;
 }
@@ -3327,7 +3327,7 @@ export interface StorageLayout {
   /** u32 */
   LayoutType: number;
   /** Windows.Win32.Foundation.PWSTR */
-  pwcsElementName: string | null;
+  pwcsElementName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.LARGE_INTEGER */
   cOffset: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.Foundation.LARGE_INTEGER */
@@ -3504,7 +3504,7 @@ export interface CAC {
   /** u32 */
   cElems: number;
   /** Windows.Win32.Foundation.PSTR */
-  pElems: string | null;
+  pElems: string | null | Uint8Array;
 }
 
 export const sizeofCAC = 16;
@@ -4052,7 +4052,7 @@ export function allocPROPSPEC(data?: Partial<PROPSPEC>): Uint8Array {
  */
 export interface STATPROPSTG {
   /** Windows.Win32.Foundation.PWSTR */
-  lpwstrName: string | null;
+  lpwstrName: string | null | Uint8Array | Uint16Array;
   /** u32 */
   propid: number;
   /** Windows.Win32.System.Com.VARENUM */
@@ -4132,7 +4132,7 @@ export interface STGOPTIONS {
   /** u32 */
   ulSectorSize: number;
   /** Windows.Win32.Foundation.PWSTR */
-  pwcsTemplateFile: string | null;
+  pwcsTemplateFile: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeofSTGOPTIONS = 16;
@@ -4211,13 +4211,13 @@ export interface RemBINDINFO {
   /** u32 */
   cbSize: number;
   /** Windows.Win32.Foundation.PWSTR */
-  szExtraInfo: string | null;
+  szExtraInfo: string | null | Uint8Array | Uint16Array;
   /** u32 */
   grfBindInfoF: number;
   /** u32 */
   dwBindVerb: number;
   /** Windows.Win32.Foundation.PWSTR */
-  szCustomVerb: string | null;
+  szCustomVerb: string | null | Uint8Array | Uint16Array;
   /** u32 */
   cbstgmedData: number;
   /** u32 */
@@ -4424,9 +4424,9 @@ export interface CODEBASEHOLD {
   /** u32 */
   cbSize: number;
   /** Windows.Win32.Foundation.PWSTR */
-  szDistUnit: string | null;
+  szDistUnit: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  szCodeBase: string | null;
+  szCodeBase: string | null | Uint8Array | Uint16Array;
   /** u32 */
   dwVersionMS: number;
   /** u32 */
@@ -4474,11 +4474,11 @@ export interface SOFTDISTINFO {
   /** u32 */
   dwAdState: number;
   /** Windows.Win32.Foundation.PWSTR */
-  szTitle: string | null;
+  szTitle: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  szAbstract: string | null;
+  szAbstract: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  szHREF: string | null;
+  szHREF: string | null | Uint8Array | Uint16Array;
   /** u32 */
   dwInstalledVersionMS: number;
   /** u32 */
@@ -4659,13 +4659,13 @@ export interface HIT_LOGGING_INFO {
   /** u32 */
   dwStructSize: number;
   /** Windows.Win32.Foundation.PSTR */
-  lpszLoggedUrlName: string | null;
+  lpszLoggedUrlName: string | null | Uint8Array;
   /** Windows.Win32.Foundation.SYSTEMTIME */
   StartTime: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.Foundation.SYSTEMTIME */
   EndTime: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.Foundation.PSTR */
-  lpszExtendedInfo: string | null;
+  lpszExtendedInfo: string | null | Uint8Array;
 }
 
 export const sizeofHIT_LOGGING_INFO = 40;
@@ -4725,9 +4725,9 @@ export function allocCONFIRMSAFETY(data?: Partial<CONFIRMSAFETY>): Uint8Array {
  */
 export interface PROTOCOL_ARGUMENT {
   /** Windows.Win32.Foundation.PWSTR */
-  szMethod: string | null;
+  szMethod: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  szTargetUrl: string | null;
+  szTargetUrl: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeofPROTOCOL_ARGUMENT = 16;
@@ -4783,7 +4783,7 @@ export interface BINDINFO {
   /** u32 */
   cbSize: number;
   /** Windows.Win32.Foundation.PWSTR */
-  szExtraInfo: string | null;
+  szExtraInfo: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.System.Com.STGMEDIUM */
   stgmedData: Uint8Array | Deno.PointerValue | null;
   /** u32 */
@@ -4791,7 +4791,7 @@ export interface BINDINFO {
   /** u32 */
   dwBindVerb: number;
   /** Windows.Win32.Foundation.PWSTR */
-  szCustomVerb: string | null;
+  szCustomVerb: string | null | Uint8Array | Uint16Array;
   /** u32 */
   cbstgmedData: number;
   /** u32 */
@@ -5038,7 +5038,7 @@ export interface TYPEATTR {
   /** i32 */
   memidDestructor: number;
   /** Windows.Win32.Foundation.PWSTR */
-  lpstrSchema: string | null;
+  lpstrSchema: string | null | Uint8Array | Uint16Array;
   /** u32 */
   cbSizeInstance: number;
   /** Windows.Win32.System.Com.TYPEKIND */
@@ -5267,7 +5267,7 @@ export interface VARDESC {
   /** i32 */
   memid: number;
   /** Windows.Win32.Foundation.PWSTR */
-  lpstrSchema: string | null;
+  lpstrSchema: string | null | Uint8Array | Uint16Array;
   /** _Anonymous_e__Union */
   Anonymous: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.System.Com.ELEMDESC */
@@ -5489,7 +5489,7 @@ export interface PROPBAG2 {
   /** u32 */
   dwHint: number;
   /** Windows.Win32.Foundation.PWSTR */
-  pstrName: string | null;
+  pstrName: string | null | Uint8Array | Uint16Array;
   /** System.Guid */
   clsid: Uint8Array | Deno.PointerValue | null;
 }
@@ -5535,7 +5535,7 @@ export interface COMSVCSEVENTINFO {
   /** System.Guid */
   guidApp: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.Foundation.PWSTR */
-  sMachineName: string | null;
+  sMachineName: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeofCOMSVCSEVENTINFO = 48;
@@ -5757,9 +5757,9 @@ export interface CLSIDDATA2 {
   /** System.Guid */
   m_partid: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.Foundation.PWSTR */
-  m_pwszAppName: string | null;
+  m_pwszAppName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  m_pwszCtxName: string | null;
+  m_pwszCtxName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.System.ComponentServices.COMPLUS_APPTYPE */
   m_eAppType: COMPLUS_APPTYPE;
   /** u32 */
@@ -5833,7 +5833,7 @@ export interface ApplicationProcessSummary {
   /** Windows.Win32.System.ComponentServices.COMPLUS_APPTYPE */
   Type: COMPLUS_APPTYPE;
   /** Windows.Win32.Foundation.PWSTR */
-  ProcessExeName: string | null;
+  ProcessExeName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.BOOL */
   IsService: boolean;
   /** Windows.Win32.Foundation.BOOL */
@@ -6002,7 +6002,7 @@ export interface ApplicationSummary {
   /** Windows.Win32.System.ComponentServices.COMPLUS_APPTYPE */
   Type: COMPLUS_APPTYPE;
   /** Windows.Win32.Foundation.PWSTR */
-  ApplicationName: string | null;
+  ApplicationName: string | null | Uint8Array | Uint16Array;
   /** u32 */
   NumTrackedComponents: number;
   /** u32 */
@@ -6048,9 +6048,9 @@ export interface ComponentSummary {
   /** System.Guid */
   Clsid: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.Foundation.PWSTR */
-  ClassName: string | null;
+  ClassName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  ApplicationName: string | null;
+  ApplicationName: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeofComponentSummary = 48;
@@ -6713,7 +6713,7 @@ export function CoGetSystemSecurityPermissions(
 }
 
 export function CoLoadLibrary(
-  lpszLibName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpszLibName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   bAutoFree: boolean /* Windows.Win32.Foundation.BOOL */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HINSTANCE */ {
   return util.pointerFromFfi(libOLE32_dll.CoLoadLibrary(util.pwstrToFfi(lpszLibName), util.boolToFfi(bAutoFree)));
@@ -6751,7 +6751,7 @@ export function CoIsOle1Class(
 }
 
 export function CLSIDFromProgIDEx(
-  lpszProgID: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpszProgID: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   lpclsid: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
   return util.pointerFromFfi(libOLE32_dll.CLSIDFromProgIDEx(util.pwstrToFfi(lpszProgID), util.toPointer(lpclsid)));
@@ -6813,7 +6813,7 @@ export function CoInstall(
   dwFlags: number /* u32 */,
   pClassSpec: Deno.PointerValue | Uint8Array | null /* ptr */,
   pQuery: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pszCodeBase: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pszCodeBase: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
   return util.pointerFromFfi(libole32_dll.CoInstall(util.toPointer(pbc), dwFlags, util.toPointer(pClassSpec), util.toPointer(pQuery), util.pwstrToFfi(pszCodeBase)));
 }
@@ -6828,7 +6828,7 @@ export function BindMoniker(
 }
 
 export function CoGetObject(
-  pszName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pszName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pBindOptions: Deno.PointerValue | Uint8Array | null /* ptr */,
   riid: Deno.PointerValue | Uint8Array | null /* ptr */,
   ppv: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -6838,7 +6838,7 @@ export function CoGetObject(
 
 export function MkParseDisplayName(
   pbc: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Com.IBindCtx */,
-  szUserName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  szUserName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pchEaten: Deno.PointerValue | Uint8Array | null /* ptr */,
   ppmk: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
@@ -6878,7 +6878,7 @@ export function CreateGenericComposite(
 }
 
 export function GetClassFile(
-  szFilename: string | null /* Windows.Win32.Foundation.PWSTR */,
+  szFilename: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pclsid: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
   return util.pointerFromFfi(libOLE32_dll.GetClassFile(util.pwstrToFfi(szFilename), util.toPointer(pclsid)));
@@ -6892,15 +6892,15 @@ export function CreateClassMoniker(
 }
 
 export function CreateFileMoniker(
-  lpszPathName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpszPathName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   ppmk: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
   return util.pointerFromFfi(libOLE32_dll.CreateFileMoniker(util.pwstrToFfi(lpszPathName), util.toPointer(ppmk)));
 }
 
 export function CreateItemMoniker(
-  lpszDelim: string | null /* Windows.Win32.Foundation.PWSTR */,
-  lpszItem: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpszDelim: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  lpszItem: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   ppmk: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
   return util.pointerFromFfi(libOLE32_dll.CreateItemMoniker(util.pwstrToFfi(lpszDelim), util.pwstrToFfi(lpszItem), util.toPointer(ppmk)));
@@ -6935,7 +6935,7 @@ export function GetRunningObjectTable(
 
 export function CreateStdProgressIndicator(
   hwndParent: Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */,
-  pszTitle: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pszTitle: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pIbscCaller: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Com.IBindStatusCallback */,
   ppIbsc: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
@@ -7159,7 +7159,7 @@ export function CoSetProxyBlanket(
   pProxy: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Com.IUnknown */,
   dwAuthnSvc: number /* u32 */,
   dwAuthzSvc: number /* u32 */,
-  pServerPrincName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pServerPrincName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   dwAuthnLevel: RPC_C_AUTHN_LEVEL /* Windows.Win32.System.Com.RPC_C_AUTHN_LEVEL */,
   dwImpLevel: RPC_C_IMP_LEVEL /* Windows.Win32.System.Com.RPC_C_IMP_LEVEL */,
   pAuthInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -7292,7 +7292,7 @@ export function StringFromCLSID(
 }
 
 export function CLSIDFromString(
-  lpsz: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpsz: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pclsid: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
   return util.pointerFromFfi(libOLE32_dll.CLSIDFromString(util.pwstrToFfi(lpsz), util.toPointer(pclsid)));
@@ -7306,7 +7306,7 @@ export function StringFromIID(
 }
 
 export function IIDFromString(
-  lpsz: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpsz: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   lpiid: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
   return util.pointerFromFfi(libOLE32_dll.IIDFromString(util.pwstrToFfi(lpsz), util.toPointer(lpiid)));
@@ -7320,7 +7320,7 @@ export function ProgIDFromCLSID(
 }
 
 export function CLSIDFromProgID(
-  lpszProgID: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpszProgID: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   lpclsid: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
   return util.pointerFromFfi(libOLE32_dll.CLSIDFromProgID(util.pwstrToFfi(lpszProgID), util.toPointer(lpclsid)));
@@ -7328,7 +7328,7 @@ export function CLSIDFromProgID(
 
 export function StringFromGUID2(
   rguid: Deno.PointerValue | Uint8Array | null /* ptr */,
-  lpsz: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpsz: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   cchMax: number /* i32 */,
 ): number /* i32 */ {
   return libOLE32_dll.StringFromGUID2(util.toPointer(rguid), util.pwstrToFfi(lpsz), cchMax);
@@ -7368,7 +7368,7 @@ export function CoGetTreatAsClass(
 }
 
 export function CoInvalidateRemoteMachineBindings(
-  pszMachineName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pszMachineName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
   return util.pointerFromFfi(libOLE32_dll.CoInvalidateRemoteMachineBindings(util.pwstrToFfi(pszMachineName)));
 }
@@ -7393,7 +7393,7 @@ export function CoTaskMemFree(
 }
 
 export function CoRegisterDeviceCatalog(
-  deviceInstanceId: string | null /* Windows.Win32.Foundation.PWSTR */,
+  deviceInstanceId: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   cookie: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
   return util.pointerFromFfi(libOLE32_dll.CoRegisterDeviceCatalog(util.pwstrToFfi(deviceInstanceId), util.toPointer(cookie)));
@@ -7406,7 +7406,7 @@ export function CoRevokeDeviceCatalog(
 }
 
 export function CreateUri(
-  pwzURI: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pwzURI: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   dwFlags: URI_CREATE_FLAGS /* Windows.Win32.System.Com.URI_CREATE_FLAGS */,
   dwReserved: Deno.PointerValue /* usize */,
   ppURI: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -7415,8 +7415,8 @@ export function CreateUri(
 }
 
 export function CreateUriWithFragment(
-  pwzURI: string | null /* Windows.Win32.Foundation.PWSTR */,
-  pwzFragment: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pwzURI: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  pwzFragment: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   dwFlags: number /* u32 */,
   dwReserved: Deno.PointerValue /* usize */,
   ppURI: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -7425,7 +7425,7 @@ export function CreateUriWithFragment(
 }
 
 export function CreateUriFromMultiByteString(
-  pszANSIInputUri: string | null /* Windows.Win32.Foundation.PSTR */,
+  pszANSIInputUri: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   dwEncodingFlags: number /* u32 */,
   dwCodePage: number /* u32 */,
   dwCreateFlags: number /* u32 */,

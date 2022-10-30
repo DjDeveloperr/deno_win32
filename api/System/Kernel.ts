@@ -231,7 +231,7 @@ export interface STRING {
   /** u16 */
   MaximumLength: number;
   /** Windows.Win32.Foundation.PSTR */
-  Buffer: string | null;
+  Buffer: string | null | Uint8Array;
 }
 
 export const sizeofSTRING = 16;
@@ -261,7 +261,7 @@ export interface CSTRING {
   /** u16 */
   MaximumLength: number;
   /** Windows.Win32.Foundation.PSTR */
-  Buffer: string | null;
+  Buffer: string | null | Uint8Array;
 }
 
 export const sizeofCSTRING = 16;
@@ -331,7 +331,7 @@ export interface _Anonymous1_e__Union {
   /** usize */
   Data0: Deno.PointerValue;
   /** Windows.Win32.Foundation.PWSTR */
-  String: string | null;
+  String: string | null | Uint8Array | Uint16Array;
   /** usize */
   u: Deno.PointerValue;
   /** ptr */

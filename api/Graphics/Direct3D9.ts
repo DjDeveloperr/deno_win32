@@ -1084,7 +1084,7 @@ export interface _u_e__Struct {
   /** u32 */
   dwValue: number;
   /** Windows.Win32.Foundation.PWSTR */
-  pwszName: string | null;
+  pwszName: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeof_u_e__Struct = 16;
@@ -3705,7 +3705,7 @@ export function Direct3DCreate9(
 
 export function D3DPERF_BeginEvent(
   col: number /* u32 */,
-  wszName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  wszName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* i32 */ {
   return libd3d9_dll.D3DPERF_BeginEvent(col, util.pwstrToFfi(wszName));
 }
@@ -3716,14 +3716,14 @@ export function D3DPERF_EndEvent(): number /* i32 */ {
 
 export function D3DPERF_SetMarker(
   col: number /* u32 */,
-  wszName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  wszName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): void /* void */ {
   return libd3d9_dll.D3DPERF_SetMarker(col, util.pwstrToFfi(wszName));
 }
 
 export function D3DPERF_SetRegion(
   col: number /* u32 */,
-  wszName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  wszName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): void /* void */ {
   return libd3d9_dll.D3DPERF_SetRegion(col, util.pwstrToFfi(wszName));
 }

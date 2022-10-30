@@ -141,6 +141,12 @@ try {
       parameters: ["pointer", "pointer", "pointer", "i32"],
       result: "i32",
     },
+    GetOverlappedResultAsync: {
+      name: "GetOverlappedResult",
+      nonblocking: true,
+      parameters: ["pointer", "pointer", "pointer", "i32"],
+      result: "i32",
+    },
     CancelIoEx: {
       parameters: ["pointer", "pointer"],
       result: "i32",
@@ -225,6 +231,15 @@ export function GetOverlappedResult(
   bWait: boolean /* Windows.Win32.Foundation.BOOL */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libKERNEL32_dll.GetOverlappedResult(util.toPointer(hFile), util.toPointer(lpOverlapped), util.toPointer(lpNumberOfBytesTransferred), util.boolToFfi(bWait)));
+}
+
+export async function GetOverlappedResultAsync(
+  hFile: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
+  lpOverlapped: Deno.PointerValue | Uint8Array | null /* ptr */,
+  lpNumberOfBytesTransferred: Deno.PointerValue | Uint8Array | null /* ptr */,
+  bWait: boolean /* Windows.Win32.Foundation.BOOL */,
+): Promise<boolean> /* Windows.Win32.Foundation.BOOL */ {
+  return util.boolFromFfi(await libKERNEL32_dll.GetOverlappedResultAsync(util.toPointer(hFile), util.toPointer(lpOverlapped), util.toPointer(lpNumberOfBytesTransferred), util.boolToFfi(bWait)));
 }
 
 export function CancelIoEx(

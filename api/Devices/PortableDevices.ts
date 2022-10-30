@@ -737,7 +737,7 @@ try {
 // Symbols
 
 export function DMProcessConfigXMLFiltered(
-  pszXmlIn: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pszXmlIn: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   rgszAllowedCspNodes: Deno.PointerValue | Uint8Array | null /* ptr */,
   dwNumAllowedCspNodes: number /* u32 */,
   pbstrXmlOut: Deno.PointerValue | Uint8Array | null /* ptr */,

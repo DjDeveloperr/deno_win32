@@ -85,11 +85,11 @@ export type PSTR = Deno.PointerValue | Uint8Array | null;
  */
 export interface WEB_SOCKET_HTTP_HEADER {
   /** Windows.Win32.Foundation.PSTR */
-  pcName: string | null;
+  pcName: string | null | Uint8Array;
   /** u32 */
   ulNameLength: number;
   /** Windows.Win32.Foundation.PSTR */
-  pcValue: string | null;
+  pcValue: string | null | Uint8Array;
   /** u32 */
   ulValueLength: number;
 }
@@ -296,7 +296,7 @@ export function WebSocketCreateServerHandle(
 
 export function WebSocketBeginServerHandshake(
   hWebSocket: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Networking.WebSocket.WEB_SOCKET_HANDLE */,
-  pszSubprotocolSelected: string | null /* Windows.Win32.Foundation.PSTR */,
+  pszSubprotocolSelected: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   pszExtensionSelected: Deno.PointerValue | Uint8Array | null /* ptr */,
   ulExtensionSelectedCount: number /* u32 */,
   pRequestHeaders: Deno.PointerValue | Uint8Array | null /* ptr */,

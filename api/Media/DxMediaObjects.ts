@@ -219,7 +219,7 @@ try {
 // Symbols
 
 export function DMORegister(
-  szName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  szName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   clsidDMO: Deno.PointerValue | Uint8Array | null /* ptr */,
   guidCategory: Deno.PointerValue | Uint8Array | null /* ptr */,
   dwFlags: number /* u32 */,
@@ -264,7 +264,7 @@ export function DMOGetTypes(
 
 export function DMOGetName(
   clsidDMO: Deno.PointerValue | Uint8Array | null /* ptr */,
-  szName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  szName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
   return util.pointerFromFfi(libmsdmo_dll.DMOGetName(util.toPointer(clsidDMO), util.pwstrToFfi(szName)));
 }

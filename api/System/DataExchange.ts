@@ -1517,7 +1517,7 @@ export function DdeGetLastError(
 
 export function DdeCreateStringHandleA(
   idInst: number /* u32 */,
-  psz: string | null /* Windows.Win32.Foundation.PSTR */,
+  psz: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   iCodePage: number /* i32 */,
 ): Deno.PointerValue | null /* Windows.Win32.System.DataExchange.HSZ */ {
   return util.pointerFromFfi(libUSER32_dll.DdeCreateStringHandleA(idInst, util.pstrToFfi(psz), iCodePage));
@@ -1525,7 +1525,7 @@ export function DdeCreateStringHandleA(
 
 export function DdeCreateStringHandleW(
   idInst: number /* u32 */,
-  psz: string | null /* Windows.Win32.Foundation.PWSTR */,
+  psz: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   iCodePage: number /* i32 */,
 ): Deno.PointerValue | null /* Windows.Win32.System.DataExchange.HSZ */ {
   return util.pointerFromFfi(libUSER32_dll.DdeCreateStringHandleW(idInst, util.pwstrToFfi(psz), iCodePage));
@@ -1534,7 +1534,7 @@ export function DdeCreateStringHandleW(
 export function DdeQueryStringA(
   idInst: number /* u32 */,
   hsz: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.DataExchange.HSZ */,
-  psz: string | null /* Windows.Win32.Foundation.PSTR */,
+  psz: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   cchMax: number /* u32 */,
   iCodePage: number /* i32 */,
 ): number /* u32 */ {
@@ -1544,7 +1544,7 @@ export function DdeQueryStringA(
 export function DdeQueryStringW(
   idInst: number /* u32 */,
   hsz: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.DataExchange.HSZ */,
-  psz: string | null /* Windows.Win32.Foundation.PWSTR */,
+  psz: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   cchMax: number /* u32 */,
   iCodePage: number /* i32 */,
 ): number /* u32 */ {
@@ -1630,13 +1630,13 @@ export function GetClipboardData(
 }
 
 export function RegisterClipboardFormatA(
-  lpszFormat: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpszFormat: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): number /* u32 */ {
   return libUSER32_dll.RegisterClipboardFormatA(util.pstrToFfi(lpszFormat));
 }
 
 export function RegisterClipboardFormatW(
-  lpszFormat: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpszFormat: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
   return libUSER32_dll.RegisterClipboardFormatW(util.pwstrToFfi(lpszFormat));
 }
@@ -1653,7 +1653,7 @@ export function EnumClipboardFormats(
 
 export function GetClipboardFormatNameA(
   format: number /* u32 */,
-  lpszFormatName: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpszFormatName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   cchMaxCount: number /* i32 */,
 ): number /* i32 */ {
   return libUSER32_dll.GetClipboardFormatNameA(format, util.pstrToFfi(lpszFormatName), cchMaxCount);
@@ -1661,7 +1661,7 @@ export function GetClipboardFormatNameA(
 
 export function GetClipboardFormatNameW(
   format: number /* u32 */,
-  lpszFormatName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpszFormatName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   cchMaxCount: number /* i32 */,
 ): number /* i32 */ {
   return libUSER32_dll.GetClipboardFormatNameW(format, util.pwstrToFfi(lpszFormatName), cchMaxCount);
@@ -1727,46 +1727,46 @@ export function DeleteAtom(
 }
 
 export function GlobalAddAtomA(
-  lpString: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpString: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): number /* u16 */ {
   return libKERNEL32_dll.GlobalAddAtomA(util.pstrToFfi(lpString));
 }
 
 export function GlobalAddAtomW(
-  lpString: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpString: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u16 */ {
   return libKERNEL32_dll.GlobalAddAtomW(util.pwstrToFfi(lpString));
 }
 
 export function GlobalAddAtomExA(
-  lpString: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpString: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   Flags: number /* u32 */,
 ): number /* u16 */ {
   return libKERNEL32_dll.GlobalAddAtomExA(util.pstrToFfi(lpString), Flags);
 }
 
 export function GlobalAddAtomExW(
-  lpString: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpString: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   Flags: number /* u32 */,
 ): number /* u16 */ {
   return libKERNEL32_dll.GlobalAddAtomExW(util.pwstrToFfi(lpString), Flags);
 }
 
 export function GlobalFindAtomA(
-  lpString: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpString: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): number /* u16 */ {
   return libKERNEL32_dll.GlobalFindAtomA(util.pstrToFfi(lpString));
 }
 
 export function GlobalFindAtomW(
-  lpString: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpString: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u16 */ {
   return libKERNEL32_dll.GlobalFindAtomW(util.pwstrToFfi(lpString));
 }
 
 export function GlobalGetAtomNameA(
   nAtom: number /* u16 */,
-  lpBuffer: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpBuffer: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   nSize: number /* i32 */,
 ): number /* u32 */ {
   return libKERNEL32_dll.GlobalGetAtomNameA(nAtom, util.pstrToFfi(lpBuffer), nSize);
@@ -1774,39 +1774,39 @@ export function GlobalGetAtomNameA(
 
 export function GlobalGetAtomNameW(
   nAtom: number /* u16 */,
-  lpBuffer: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpBuffer: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   nSize: number /* i32 */,
 ): number /* u32 */ {
   return libKERNEL32_dll.GlobalGetAtomNameW(nAtom, util.pwstrToFfi(lpBuffer), nSize);
 }
 
 export function AddAtomA(
-  lpString: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpString: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): number /* u16 */ {
   return libKERNEL32_dll.AddAtomA(util.pstrToFfi(lpString));
 }
 
 export function AddAtomW(
-  lpString: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpString: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u16 */ {
   return libKERNEL32_dll.AddAtomW(util.pwstrToFfi(lpString));
 }
 
 export function FindAtomA(
-  lpString: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpString: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): number /* u16 */ {
   return libKERNEL32_dll.FindAtomA(util.pstrToFfi(lpString));
 }
 
 export function FindAtomW(
-  lpString: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpString: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u16 */ {
   return libKERNEL32_dll.FindAtomW(util.pwstrToFfi(lpString));
 }
 
 export function GetAtomNameA(
   nAtom: number /* u16 */,
-  lpBuffer: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpBuffer: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   nSize: number /* i32 */,
 ): number /* u32 */ {
   return libKERNEL32_dll.GetAtomNameA(nAtom, util.pstrToFfi(lpBuffer), nSize);
@@ -1814,7 +1814,7 @@ export function GetAtomNameA(
 
 export function GetAtomNameW(
   nAtom: number /* u16 */,
-  lpBuffer: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpBuffer: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   nSize: number /* i32 */,
 ): number /* u32 */ {
   return libKERNEL32_dll.GetAtomNameW(nAtom, util.pwstrToFfi(lpBuffer), nSize);

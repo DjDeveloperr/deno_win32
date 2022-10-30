@@ -1256,7 +1256,7 @@ export interface WIA_PROPID_TO_NAME {
   /** u32 */
   propid: number;
   /** Windows.Win32.Foundation.PWSTR */
-  pszName: string | null;
+  pszName: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeofWIA_PROPID_TO_NAME = 16;
@@ -1918,11 +1918,11 @@ export interface WIA_DEV_CAP_DRV {
   /** u32 */
   ulFlags: number;
   /** Windows.Win32.Foundation.PWSTR */
-  wszName: string | null;
+  wszName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  wszDescription: string | null;
+  wszDescription: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  wszIcon: string | null;
+  wszIcon: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeofWIA_DEV_CAP_DRV = 40;
@@ -2418,9 +2418,9 @@ export function allocWIAS_DOWN_SAMPLE_INFO(data?: Partial<WIAS_DOWN_SAMPLE_INFO>
  */
 export interface WIAS_ENDORSER_VALUE {
   /** Windows.Win32.Foundation.PWSTR */
-  wszTokenName: string | null;
+  wszTokenName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  wszValue: string | null;
+  wszValue: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeofWIAS_ENDORSER_VALUE = 16;

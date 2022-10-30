@@ -17806,7 +17806,7 @@ export interface AudioFXExtensionParams {
   /** Windows.Win32.Foundation.LPARAM */
   AddPageParam: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.Foundation.PWSTR */
-  pwstrEndpointID: string | null;
+  pwstrEndpointID: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.UI.Shell.PropertiesSystem.IPropertyStore */
   pFxProperties: Uint8Array | Deno.PointerValue | null;
 }
@@ -19524,7 +19524,7 @@ export type PSTR = Deno.PointerValue | Uint8Array | null;
  */
 export interface DSPROPERTY_DIRECTSOUNDDEVICE_WAVEDEVICEMAPPING_A_DATA {
   /** Windows.Win32.Foundation.PSTR */
-  DeviceName: string | null;
+  DeviceName: string | null | Uint8Array;
   /** Windows.Win32.Media.Audio.DirectMusic.DIRECTSOUNDDEVICE_DATAFLOW */
   DataFlow: DIRECTSOUNDDEVICE_DATAFLOW;
   /** System.Guid */
@@ -19554,7 +19554,7 @@ export function allocDSPROPERTY_DIRECTSOUNDDEVICE_WAVEDEVICEMAPPING_A_DATA(data?
  */
 export interface DSPROPERTY_DIRECTSOUNDDEVICE_WAVEDEVICEMAPPING_W_DATA {
   /** Windows.Win32.Foundation.PWSTR */
-  DeviceName: string | null;
+  DeviceName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Media.Audio.DirectMusic.DIRECTSOUNDDEVICE_DATAFLOW */
   DataFlow: DIRECTSOUNDDEVICE_DATAFLOW;
   /** System.Guid */
@@ -19640,11 +19640,11 @@ export interface DSPROPERTY_DIRECTSOUNDDEVICE_DESCRIPTION_A_DATA {
   /** System.Guid */
   DeviceId: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.Foundation.PSTR */
-  Description: string | null;
+  Description: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  Module: string | null;
+  Module: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  Interface: string | null;
+  Interface: string | null | Uint8Array;
   /** u32 */
   WaveDeviceId: number;
 }
@@ -19692,11 +19692,11 @@ export interface DSPROPERTY_DIRECTSOUNDDEVICE_DESCRIPTION_W_DATA {
   /** System.Guid */
   DeviceId: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.Foundation.PWSTR */
-  Description: string | null;
+  Description: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  Module: string | null;
+  Module: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  Interface: string | null;
+  Interface: string | null | Uint8Array | Uint16Array;
   /** u32 */
   WaveDeviceId: number;
 }
@@ -21153,7 +21153,7 @@ export function allocUNLOAD_DLL_DEBUG_INFO(data?: Partial<UNLOAD_DLL_DEBUG_INFO>
  */
 export interface OUTPUT_DEBUG_STRING_INFO {
   /** Windows.Win32.Foundation.PSTR */
-  lpDebugStringData: string | null;
+  lpDebugStringData: string | null | Uint8Array;
   /** u16 */
   fUnicode: number;
   /** u16 */
@@ -21589,7 +21589,7 @@ export interface REGFILTER {
   /** System.Guid */
   Clsid: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.Foundation.PWSTR */
-  Name: string | null;
+  Name: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeofREGFILTER = 16;
@@ -21634,7 +21634,7 @@ export function allocREGPINTYPES(data?: Partial<REGPINTYPES>): Uint8Array {
  */
 export interface REGFILTERPINS {
   /** Windows.Win32.Foundation.PWSTR */
-  strName: string | null;
+  strName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.BOOL */
   bRendered: boolean;
   /** Windows.Win32.Foundation.BOOL */
@@ -21646,7 +21646,7 @@ export interface REGFILTERPINS {
   /** ptr */
   clsConnectsToFilter: Deno.PointerValue | Uint8Array | null;
   /** Windows.Win32.Foundation.PWSTR */
-  strConnectsToPin: string | null;
+  strConnectsToPin: string | null | Uint8Array | Uint16Array;
   /** u32 */
   nMediaTypes: number;
   /** ptr */
@@ -22400,7 +22400,7 @@ export interface _u_e__Struct {
   /** u32 */
   dwValue: number;
   /** Windows.Win32.Foundation.PWSTR */
-  pwszName: string | null;
+  pwszName: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeof_u_e__Struct = 16;
@@ -24765,7 +24765,7 @@ export interface _Anonymous1_e__Union {
   /** usize */
   Data0: Deno.PointerValue;
   /** Windows.Win32.Foundation.PWSTR */
-  String: string | null;
+  String: string | null | Uint8Array | Uint16Array;
   /** usize */
   u: Deno.PointerValue;
   /** ptr */
@@ -28568,7 +28568,7 @@ export function allocBadSampleInfo(data?: Partial<BadSampleInfo>): Uint8Array {
  */
 export interface STREAMBUFFER_ATTRIBUTE {
   /** Windows.Win32.Foundation.PWSTR */
-  pszName: string | null;
+  pszName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Media.DirectShow.STREAMBUFFER_ATTR_DATATYPE */
   StreamBufferAttributeType: STREAMBUFFER_ATTR_DATATYPE;
   /** ptr */
@@ -32737,11 +32737,11 @@ export interface MCI_OPEN_PARMSA {
   /** u32 */
   wDeviceID: number;
   /** Windows.Win32.Foundation.PSTR */
-  lpstrDeviceType: string | null;
+  lpstrDeviceType: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  lpstrElementName: string | null;
+  lpstrElementName: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  lpstrAlias: string | null;
+  lpstrAlias: string | null | Uint8Array;
 }
 
 export const sizeofMCI_OPEN_PARMSA = 40;
@@ -32781,11 +32781,11 @@ export interface MCI_OPEN_PARMSW {
   /** u32 */
   wDeviceID: number;
   /** Windows.Win32.Foundation.PWSTR */
-  lpstrDeviceType: string | null;
+  lpstrDeviceType: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  lpstrElementName: string | null;
+  lpstrElementName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  lpstrAlias: string | null;
+  lpstrAlias: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeofMCI_OPEN_PARMSW = 40;
@@ -32902,7 +32902,7 @@ export interface MCI_INFO_PARMSA {
   /** usize */
   dwCallback: Deno.PointerValue;
   /** Windows.Win32.Foundation.PSTR */
-  lpstrReturn: string | null;
+  lpstrReturn: string | null | Uint8Array;
   /** u32 */
   dwRetSize: number;
 }
@@ -32932,7 +32932,7 @@ export interface MCI_INFO_PARMSW {
   /** usize */
   dwCallback: Deno.PointerValue;
   /** Windows.Win32.Foundation.PWSTR */
-  lpstrReturn: string | null;
+  lpstrReturn: string | null | Uint8Array | Uint16Array;
   /** u32 */
   dwRetSize: number;
 }
@@ -32988,7 +32988,7 @@ export interface MCI_SYSINFO_PARMSA {
   /** usize */
   dwCallback: Deno.PointerValue;
   /** Windows.Win32.Foundation.PSTR */
-  lpstrReturn: string | null;
+  lpstrReturn: string | null | Uint8Array;
   /** u32 */
   dwRetSize: number;
   /** u32 */
@@ -33026,7 +33026,7 @@ export interface MCI_SYSINFO_PARMSW {
   /** usize */
   dwCallback: Deno.PointerValue;
   /** Windows.Win32.Foundation.PWSTR */
-  lpstrReturn: string | null;
+  lpstrReturn: string | null | Uint8Array | Uint16Array;
   /** u32 */
   dwRetSize: number;
   /** u32 */
@@ -33119,7 +33119,7 @@ export interface MCI_SAVE_PARMSA {
   /** usize */
   dwCallback: Deno.PointerValue;
   /** Windows.Win32.Foundation.PSTR */
-  lpfilename: string | null;
+  lpfilename: string | null | Uint8Array;
 }
 
 export const sizeofMCI_SAVE_PARMSA = 16;
@@ -33144,7 +33144,7 @@ export interface MCI_SAVE_PARMSW {
   /** usize */
   dwCallback: Deno.PointerValue;
   /** Windows.Win32.Foundation.PWSTR */
-  lpfilename: string | null;
+  lpfilename: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeofMCI_SAVE_PARMSW = 16;
@@ -33169,7 +33169,7 @@ export interface MCI_LOAD_PARMSA {
   /** usize */
   dwCallback: Deno.PointerValue;
   /** Windows.Win32.Foundation.PSTR */
-  lpfilename: string | null;
+  lpfilename: string | null | Uint8Array;
 }
 
 export const sizeofMCI_LOAD_PARMSA = 16;
@@ -33194,7 +33194,7 @@ export interface MCI_LOAD_PARMSW {
   /** usize */
   dwCallback: Deno.PointerValue;
   /** Windows.Win32.Foundation.PWSTR */
-  lpfilename: string | null;
+  lpfilename: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeofMCI_LOAD_PARMSW = 16;
@@ -33299,7 +33299,7 @@ export interface MCI_VD_ESCAPE_PARMSA {
   /** usize */
   dwCallback: Deno.PointerValue;
   /** Windows.Win32.Foundation.PSTR */
-  lpstrCommand: string | null;
+  lpstrCommand: string | null | Uint8Array;
 }
 
 export const sizeofMCI_VD_ESCAPE_PARMSA = 16;
@@ -33324,7 +33324,7 @@ export interface MCI_VD_ESCAPE_PARMSW {
   /** usize */
   dwCallback: Deno.PointerValue;
   /** Windows.Win32.Foundation.PWSTR */
-  lpstrCommand: string | null;
+  lpstrCommand: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeofMCI_VD_ESCAPE_PARMSW = 16;
@@ -33351,11 +33351,11 @@ export interface MCI_WAVE_OPEN_PARMSA {
   /** u32 */
   wDeviceID: number;
   /** Windows.Win32.Foundation.PSTR */
-  lpstrDeviceType: string | null;
+  lpstrDeviceType: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  lpstrElementName: string | null;
+  lpstrElementName: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  lpstrAlias: string | null;
+  lpstrAlias: string | null | Uint8Array;
   /** u32 */
   dwBufferSeconds: number;
 }
@@ -33400,11 +33400,11 @@ export interface MCI_WAVE_OPEN_PARMSW {
   /** u32 */
   wDeviceID: number;
   /** Windows.Win32.Foundation.PWSTR */
-  lpstrDeviceType: string | null;
+  lpstrDeviceType: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  lpstrElementName: string | null;
+  lpstrElementName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  lpstrAlias: string | null;
+  lpstrAlias: string | null | Uint8Array | Uint16Array;
   /** u32 */
   dwBufferSeconds: number;
 }
@@ -33596,11 +33596,11 @@ export interface MCI_ANIM_OPEN_PARMSA {
   /** u32 */
   wDeviceID: number;
   /** Windows.Win32.Foundation.PSTR */
-  lpstrDeviceType: string | null;
+  lpstrDeviceType: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  lpstrElementName: string | null;
+  lpstrElementName: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  lpstrAlias: string | null;
+  lpstrAlias: string | null | Uint8Array;
   /** u32 */
   dwStyle: number;
   /** Windows.Win32.Foundation.HWND */
@@ -33649,11 +33649,11 @@ export interface MCI_ANIM_OPEN_PARMSW {
   /** u32 */
   wDeviceID: number;
   /** Windows.Win32.Foundation.PWSTR */
-  lpstrDeviceType: string | null;
+  lpstrDeviceType: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  lpstrElementName: string | null;
+  lpstrElementName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  lpstrAlias: string | null;
+  lpstrAlias: string | null | Uint8Array | Uint16Array;
   /** u32 */
   dwStyle: number;
   /** Windows.Win32.Foundation.HWND */
@@ -33758,7 +33758,7 @@ export interface MCI_ANIM_WINDOW_PARMSA {
   /** u32 */
   nCmdShow: number;
   /** Windows.Win32.Foundation.PSTR */
-  lpstrText: string | null;
+  lpstrText: string | null | Uint8Array;
 }
 
 export const sizeofMCI_ANIM_WINDOW_PARMSA = 32;
@@ -33792,7 +33792,7 @@ export interface MCI_ANIM_WINDOW_PARMSW {
   /** u32 */
   nCmdShow: number;
   /** Windows.Win32.Foundation.PWSTR */
-  lpstrText: string | null;
+  lpstrText: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeofMCI_ANIM_WINDOW_PARMSW = 32;
@@ -33872,11 +33872,11 @@ export interface MCI_OVLY_OPEN_PARMSA {
   /** u32 */
   wDeviceID: number;
   /** Windows.Win32.Foundation.PSTR */
-  lpstrDeviceType: string | null;
+  lpstrDeviceType: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  lpstrElementName: string | null;
+  lpstrElementName: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  lpstrAlias: string | null;
+  lpstrAlias: string | null | Uint8Array;
   /** u32 */
   dwStyle: number;
   /** Windows.Win32.Foundation.HWND */
@@ -33925,11 +33925,11 @@ export interface MCI_OVLY_OPEN_PARMSW {
   /** u32 */
   wDeviceID: number;
   /** Windows.Win32.Foundation.PWSTR */
-  lpstrDeviceType: string | null;
+  lpstrDeviceType: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  lpstrElementName: string | null;
+  lpstrElementName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  lpstrAlias: string | null;
+  lpstrAlias: string | null | Uint8Array | Uint16Array;
   /** u32 */
   dwStyle: number;
   /** Windows.Win32.Foundation.HWND */
@@ -33980,7 +33980,7 @@ export interface MCI_OVLY_WINDOW_PARMSA {
   /** u32 */
   nCmdShow: number;
   /** Windows.Win32.Foundation.PSTR */
-  lpstrText: string | null;
+  lpstrText: string | null | Uint8Array;
 }
 
 export const sizeofMCI_OVLY_WINDOW_PARMSA = 32;
@@ -34014,7 +34014,7 @@ export interface MCI_OVLY_WINDOW_PARMSW {
   /** u32 */
   nCmdShow: number;
   /** Windows.Win32.Foundation.PWSTR */
-  lpstrText: string | null;
+  lpstrText: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeofMCI_OVLY_WINDOW_PARMSW = 32;
@@ -34066,7 +34066,7 @@ export interface MCI_OVLY_SAVE_PARMSA {
   /** usize */
   dwCallback: Deno.PointerValue;
   /** Windows.Win32.Foundation.PSTR */
-  lpfilename: string | null;
+  lpfilename: string | null | Uint8Array;
   /** Windows.Win32.Foundation.RECT */
   rc: Uint8Array | Deno.PointerValue | null;
 }
@@ -34095,7 +34095,7 @@ export interface MCI_OVLY_SAVE_PARMSW {
   /** usize */
   dwCallback: Deno.PointerValue;
   /** Windows.Win32.Foundation.PWSTR */
-  lpfilename: string | null;
+  lpfilename: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.RECT */
   rc: Uint8Array | Deno.PointerValue | null;
 }
@@ -34124,7 +34124,7 @@ export interface MCI_OVLY_LOAD_PARMSA {
   /** usize */
   dwCallback: Deno.PointerValue;
   /** Windows.Win32.Foundation.PSTR */
-  lpfilename: string | null;
+  lpfilename: string | null | Uint8Array;
   /** Windows.Win32.Foundation.RECT */
   rc: Uint8Array | Deno.PointerValue | null;
 }
@@ -34153,7 +34153,7 @@ export interface MCI_OVLY_LOAD_PARMSW {
   /** usize */
   dwCallback: Deno.PointerValue;
   /** Windows.Win32.Foundation.PWSTR */
-  lpfilename: string | null;
+  lpfilename: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.RECT */
   rc: Uint8Array | Deno.PointerValue | null;
 }
@@ -34182,9 +34182,9 @@ export interface DRVCONFIGINFOEX {
   /** u32 */
   dwDCISize: number;
   /** Windows.Win32.Foundation.PWSTR */
-  lpszDCISectionName: string | null;
+  lpszDCISectionName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  lpszDCIAliasName: string | null;
+  lpszDCIAliasName: string | null | Uint8Array | Uint16Array;
   /** u32 */
   dnDevNode: number;
 }
@@ -34220,9 +34220,9 @@ export interface DRVCONFIGINFO {
   /** u32 */
   dwDCISize: number;
   /** Windows.Win32.Foundation.PWSTR */
-  lpszDCISectionName: string | null;
+  lpszDCISectionName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  lpszDCIAliasName: string | null;
+  lpszDCIAliasName: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeofDRVCONFIGINFO = 24;
@@ -34959,7 +34959,7 @@ export interface MCI_DGV_CAPTURE_PARMSA {
   /** usize */
   dwCallback: Deno.PointerValue;
   /** Windows.Win32.Foundation.PSTR */
-  lpstrFileName: string | null;
+  lpstrFileName: string | null | Uint8Array;
   /** Windows.Win32.Foundation.RECT */
   rc: Uint8Array | Deno.PointerValue | null;
 }
@@ -34988,7 +34988,7 @@ export interface MCI_DGV_CAPTURE_PARMSW {
   /** usize */
   dwCallback: Deno.PointerValue;
   /** Windows.Win32.Foundation.PWSTR */
-  lpstrFileName: string | null;
+  lpstrFileName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.RECT */
   rc: Uint8Array | Deno.PointerValue | null;
 }
@@ -35154,7 +35154,7 @@ export interface MCI_DGV_INFO_PARMSA {
   /** usize */
   dwCallback: Deno.PointerValue;
   /** Windows.Win32.Foundation.PSTR */
-  lpstrReturn: string | null;
+  lpstrReturn: string | null | Uint8Array;
   /** u32 */
   dwRetSize: number;
   /** u32 */
@@ -35187,7 +35187,7 @@ export interface MCI_DGV_INFO_PARMSW {
   /** usize */
   dwCallback: Deno.PointerValue;
   /** Windows.Win32.Foundation.PWSTR */
-  lpstrReturn: string | null;
+  lpstrReturn: string | null | Uint8Array | Uint16Array;
   /** u32 */
   dwRetSize: number;
   /** u32 */
@@ -35220,7 +35220,7 @@ export interface MCI_DGV_LIST_PARMSA {
   /** usize */
   dwCallback: Deno.PointerValue;
   /** Windows.Win32.Foundation.PSTR */
-  lpstrReturn: string | null;
+  lpstrReturn: string | null | Uint8Array;
   /** u32 */
   dwLength: number;
   /** u32 */
@@ -35228,7 +35228,7 @@ export interface MCI_DGV_LIST_PARMSA {
   /** u32 */
   dwItem: number;
   /** Windows.Win32.Foundation.PSTR */
-  lpstrAlgorithm: string | null;
+  lpstrAlgorithm: string | null | Uint8Array;
 }
 
 export const sizeofMCI_DGV_LIST_PARMSA = 40;
@@ -35265,7 +35265,7 @@ export interface MCI_DGV_LIST_PARMSW {
   /** usize */
   dwCallback: Deno.PointerValue;
   /** Windows.Win32.Foundation.PWSTR */
-  lpstrReturn: string | null;
+  lpstrReturn: string | null | Uint8Array | Uint16Array;
   /** u32 */
   dwLength: number;
   /** u32 */
@@ -35273,7 +35273,7 @@ export interface MCI_DGV_LIST_PARMSW {
   /** u32 */
   dwItem: number;
   /** Windows.Win32.Foundation.PWSTR */
-  lpstrAlgorithm: string | null;
+  lpstrAlgorithm: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeofMCI_DGV_LIST_PARMSW = 40;
@@ -35338,11 +35338,11 @@ export interface MCI_DGV_OPEN_PARMSA {
   /** u32 */
   wDeviceID: number;
   /** Windows.Win32.Foundation.PSTR */
-  lpstrDeviceType: string | null;
+  lpstrDeviceType: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  lpstrElementName: string | null;
+  lpstrElementName: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  lpstrAlias: string | null;
+  lpstrAlias: string | null | Uint8Array;
   /** u32 */
   dwStyle: number;
   /** Windows.Win32.Foundation.HWND */
@@ -35391,11 +35391,11 @@ export interface MCI_DGV_OPEN_PARMSW {
   /** u32 */
   wDeviceID: number;
   /** Windows.Win32.Foundation.PWSTR */
-  lpstrDeviceType: string | null;
+  lpstrDeviceType: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  lpstrElementName: string | null;
+  lpstrElementName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  lpstrAlias: string | null;
+  lpstrAlias: string | null | Uint8Array | Uint16Array;
   /** u32 */
   dwStyle: number;
   /** Windows.Win32.Foundation.HWND */
@@ -35479,7 +35479,7 @@ export interface MCI_DGV_QUALITY_PARMSA {
   /** u32 */
   dwItem: number;
   /** Windows.Win32.Foundation.PSTR */
-  lpstrName: string | null;
+  lpstrName: string | null | Uint8Array;
   /** u32 */
   lpstrAlgorithm: number;
   /** u32 */
@@ -35517,7 +35517,7 @@ export interface MCI_DGV_QUALITY_PARMSW {
   /** u32 */
   dwItem: number;
   /** Windows.Win32.Foundation.PWSTR */
-  lpstrName: string | null;
+  lpstrName: string | null | Uint8Array | Uint16Array;
   /** u32 */
   lpstrAlgorithm: number;
   /** u32 */
@@ -35591,7 +35591,7 @@ export interface MCI_DGV_RESERVE_PARMSA {
   /** usize */
   dwCallback: Deno.PointerValue;
   /** Windows.Win32.Foundation.PSTR */
-  lpstrPath: string | null;
+  lpstrPath: string | null | Uint8Array;
   /** u32 */
   dwSize: number;
 }
@@ -35621,7 +35621,7 @@ export interface MCI_DGV_RESERVE_PARMSW {
   /** usize */
   dwCallback: Deno.PointerValue;
   /** Windows.Win32.Foundation.PWSTR */
-  lpstrPath: string | null;
+  lpstrPath: string | null | Uint8Array | Uint16Array;
   /** u32 */
   dwSize: number;
 }
@@ -35651,7 +35651,7 @@ export interface MCI_DGV_RESTORE_PARMSA {
   /** usize */
   dwCallback: Deno.PointerValue;
   /** Windows.Win32.Foundation.PSTR */
-  lpstrFileName: string | null;
+  lpstrFileName: string | null | Uint8Array;
   /** Windows.Win32.Foundation.RECT */
   rc: Uint8Array | Deno.PointerValue | null;
 }
@@ -35680,7 +35680,7 @@ export interface MCI_DGV_RESTORE_PARMSW {
   /** usize */
   dwCallback: Deno.PointerValue;
   /** Windows.Win32.Foundation.PWSTR */
-  lpstrFileName: string | null;
+  lpstrFileName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.RECT */
   rc: Uint8Array | Deno.PointerValue | null;
 }
@@ -35709,7 +35709,7 @@ export interface MCI_DGV_SAVE_PARMSA {
   /** usize */
   dwCallback: Deno.PointerValue;
   /** Windows.Win32.Foundation.PSTR */
-  lpstrFileName: string | null;
+  lpstrFileName: string | null | Uint8Array;
   /** Windows.Win32.Foundation.RECT */
   rc: Uint8Array | Deno.PointerValue | null;
 }
@@ -35738,7 +35738,7 @@ export interface MCI_DGV_SAVE_PARMSW {
   /** usize */
   dwCallback: Deno.PointerValue;
   /** Windows.Win32.Foundation.PWSTR */
-  lpstrFileName: string | null;
+  lpstrFileName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.RECT */
   rc: Uint8Array | Deno.PointerValue | null;
 }
@@ -35807,9 +35807,9 @@ export interface MCI_DGV_SETAUDIO_PARMSA {
   /** u32 */
   dwOver: number;
   /** Windows.Win32.Foundation.PSTR */
-  lpstrAlgorithm: string | null;
+  lpstrAlgorithm: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  lpstrQuality: string | null;
+  lpstrQuality: string | null | Uint8Array;
 }
 
 export const sizeofMCI_DGV_SETAUDIO_PARMSA = 40;
@@ -35852,9 +35852,9 @@ export interface MCI_DGV_SETAUDIO_PARMSW {
   /** u32 */
   dwOver: number;
   /** Windows.Win32.Foundation.PWSTR */
-  lpstrAlgorithm: string | null;
+  lpstrAlgorithm: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  lpstrQuality: string | null;
+  lpstrQuality: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeofMCI_DGV_SETAUDIO_PARMSW = 40;
@@ -35928,9 +35928,9 @@ export interface MCI_DGV_SETVIDEO_PARMSA {
   /** u32 */
   dwOver: number;
   /** Windows.Win32.Foundation.PSTR */
-  lpstrAlgorithm: string | null;
+  lpstrAlgorithm: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  lpstrQuality: string | null;
+  lpstrQuality: string | null | Uint8Array;
   /** u32 */
   dwSourceNumber: number;
 }
@@ -35978,9 +35978,9 @@ export interface MCI_DGV_SETVIDEO_PARMSW {
   /** u32 */
   dwOver: number;
   /** Windows.Win32.Foundation.PWSTR */
-  lpstrAlgorithm: string | null;
+  lpstrAlgorithm: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  lpstrQuality: string | null;
+  lpstrQuality: string | null | Uint8Array | Uint16Array;
   /** u32 */
   dwSourceNumber: number;
 }
@@ -36028,7 +36028,7 @@ export interface MCI_DGV_STATUS_PARMSA {
   /** u32 */
   dwTrack: number;
   /** Windows.Win32.Foundation.PSTR */
-  lpstrDrive: string | null;
+  lpstrDrive: string | null | Uint8Array;
   /** u32 */
   dwReference: number;
 }
@@ -36070,7 +36070,7 @@ export interface MCI_DGV_STATUS_PARMSW {
   /** u32 */
   dwTrack: number;
   /** Windows.Win32.Foundation.PWSTR */
-  lpstrDrive: string | null;
+  lpstrDrive: string | null | Uint8Array | Uint16Array;
   /** u32 */
   dwReference: number;
 }
@@ -36159,7 +36159,7 @@ export interface MCI_DGV_WINDOW_PARMSA {
   /** u32 */
   nCmdShow: number;
   /** Windows.Win32.Foundation.PSTR */
-  lpstrText: string | null;
+  lpstrText: string | null | Uint8Array;
 }
 
 export const sizeofMCI_DGV_WINDOW_PARMSA = 32;
@@ -36193,7 +36193,7 @@ export interface MCI_DGV_WINDOW_PARMSW {
   /** u32 */
   nCmdShow: number;
   /** Windows.Win32.Foundation.PWSTR */
-  lpstrText: string | null;
+  lpstrText: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeofMCI_DGV_WINDOW_PARMSW = 32;
@@ -37830,7 +37830,7 @@ export interface MCI_OPEN_DRIVER_PARMS {
   /** u32 */
   wDeviceID: number;
   /** Windows.Win32.Foundation.PWSTR */
-  lpstrParams: string | null;
+  lpstrParams: string | null | Uint8Array | Uint16Array;
   /** u32 */
   wCustomCommandTable: number;
   /** u32 */
@@ -38464,9 +38464,9 @@ export interface SPPHRASEELEMENT {
   /** u32 */
   ulRetainedSizeBytes: number;
   /** Windows.Win32.Foundation.PWSTR */
-  pszDisplayText: string | null;
+  pszDisplayText: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pszLexicalForm: string | null;
+  pszLexicalForm: string | null | Uint8Array | Uint16Array;
   /** ptr */
   pszPronunciation: Deno.PointerValue | Uint8Array | null;
   /** u8 */
@@ -38528,7 +38528,7 @@ export function allocSPPHRASEELEMENT(data?: Partial<SPPHRASEELEMENT>): Uint8Arra
  */
 export interface SPPHRASERULE {
   /** Windows.Win32.Foundation.PWSTR */
-  pszName: string | null;
+  pszName: string | null | Uint8Array | Uint16Array;
   /** u32 */
   ulId: number;
   /** u32 */
@@ -38597,11 +38597,11 @@ export function allocVARIANT(data?: Partial<VARIANT>): Uint8Array {
  */
 export interface SPPHRASEPROPERTY {
   /** Windows.Win32.Foundation.PWSTR */
-  pszName: string | null;
+  pszName: string | null | Uint8Array | Uint16Array;
   /** _Anonymous_e__Union */
   Anonymous: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.Foundation.PWSTR */
-  pszValue: string | null;
+  pszValue: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.System.Com.VARIANT */
   vValue: Uint8Array | Deno.PointerValue | null;
   /** u32 */
@@ -38660,7 +38660,7 @@ export interface SPPHRASEREPLACEMENT {
   /** u8 */
   bDisplayAttributes: number;
   /** Windows.Win32.Foundation.PWSTR */
-  pszReplacementText: string | null;
+  pszReplacementText: string | null | Uint8Array | Uint16Array;
   /** u32 */
   ulFirstElement: number;
   /** u32 */
@@ -38694,11 +38694,11 @@ export interface SPSEMANTICERRORINFO {
   /** u32 */
   ulLineNumber: number;
   /** Windows.Win32.Foundation.PWSTR */
-  pszScriptLine: string | null;
+  pszScriptLine: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pszSource: string | null;
+  pszSource: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pszDescription: string | null;
+  pszDescription: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.HRESULT */
   hrResultCode: Uint8Array | Deno.PointerValue | null;
 }
@@ -38823,7 +38823,7 @@ export interface SPPHRASE {
   /** Windows.Win32.Media.Speech.SPPHRASE_50 */
   Base: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.Foundation.PWSTR */
-  pSML: string | null;
+  pSML: string | null | Uint8Array | Uint16Array;
   /** ptr */
   pSemanticErrorInfo: Deno.PointerValue | Uint8Array | null;
 }
@@ -38869,7 +38869,7 @@ export function allocSPSERIALIZEDPHRASE(data?: Partial<SPSERIALIZEDPHRASE>): Uin
  */
 export interface SPRULE {
   /** Windows.Win32.Foundation.PWSTR */
-  pszRuleName: string | null;
+  pszRuleName: string | null | Uint8Array | Uint16Array;
   /** u32 */
   ulRuleId: number;
   /** u32 */
@@ -39010,7 +39010,7 @@ export interface SPWORD {
   /** Windows.Win32.Media.Speech.SPWORDTYPE */
   eWordType: SPWORDTYPE;
   /** Windows.Win32.Foundation.PWSTR */
-  pszWord: string | null;
+  pszWord: string | null | Uint8Array | Uint16Array;
   /** ptr */
   pFirstWordPronunciation: Deno.PointerValue | Uint8Array | null;
 }
@@ -39076,9 +39076,9 @@ export interface SPSHORTCUTPAIR {
   /** Windows.Win32.Media.Speech.SPSHORTCUTTYPE */
   shType: SPSHORTCUTTYPE;
   /** Windows.Win32.Foundation.PWSTR */
-  pszDisplay: string | null;
+  pszDisplay: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pszSpoken: string | null;
+  pszSpoken: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeofSPSHORTCUTPAIR = 32;
@@ -39160,11 +39160,11 @@ export function allocSPVPITCH(data?: Partial<SPVPITCH>): Uint8Array {
  */
 export interface SPVCONTEXT {
   /** Windows.Win32.Foundation.PWSTR */
-  pCategory: string | null;
+  pCategory: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pBefore: string | null;
+  pBefore: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pAfter: string | null;
+  pAfter: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeofSPVCONTEXT = 24;
@@ -39425,11 +39425,11 @@ export function allocSPTEXTSELECTIONINFO(data?: Partial<SPTEXTSELECTIONINFO>): U
  */
 export interface SPPROPERTYINFO {
   /** Windows.Win32.Foundation.PWSTR */
-  pszName: string | null;
+  pszName: string | null | Uint8Array | Uint16Array;
   /** u32 */
   ulId: number;
   /** Windows.Win32.Foundation.PWSTR */
-  pszValue: string | null;
+  pszValue: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.System.Com.VARIANT */
   vValue: Uint8Array | Deno.PointerValue | null;
 }
@@ -39563,9 +39563,9 @@ export function allocSPNORMALIZATIONLIST(data?: Partial<SPNORMALIZATIONLIST>): U
  */
 export interface SPDISPLAYTOKEN {
   /** Windows.Win32.Foundation.PWSTR */
-  pszLexical: string | null;
+  pszLexical: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pszDisplay: string | null;
+  pszDisplay: string | null | Uint8Array | Uint16Array;
   /** u8 */
   bDisplayAttributes: number;
 }
@@ -39642,7 +39642,7 @@ export function allocMACINFO(data?: Partial<MACINFO>): Uint8Array {
  */
 export interface WMFILECAPABILITIES {
   /** Windows.Win32.Foundation.PWSTR */
-  pwszMimeType: string | null;
+  pwszMimeType: string | null | Uint8Array | Uint16Array;
   /** u32 */
   dwReserved: number;
 }
@@ -39811,7 +39811,7 @@ export function allocWMDMRIGHTS(data?: Partial<WMDMRIGHTS>): Uint8Array {
  */
 export interface WMDMMetadataView {
   /** Windows.Win32.Foundation.PWSTR */
-  pwszViewName: string | null;
+  pwszViewName: string | null | Uint8Array | Uint16Array;
   /** u32 */
   nDepth: number;
   /** ptr */
@@ -39930,7 +39930,7 @@ export function alloc_ValidValues_e__Union(data?: Partial<_ValidValues_e__Union>
  */
 export interface WMDM_PROP_DESC {
   /** Windows.Win32.Foundation.PWSTR */
-  pwszPropName: string | null;
+  pwszPropName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Media.DeviceManager.WMDM_ENUM_PROP_VALID_VALUES_FORM */
   ValidValuesForm: WMDM_ENUM_PROP_VALID_VALUES_FORM;
   /** _ValidValues_e__Union */
@@ -40587,21 +40587,21 @@ export interface WM_READER_CLIENTINFO {
   /** u32 */
   cbSize: number;
   /** Windows.Win32.Foundation.PWSTR */
-  wszLang: string | null;
+  wszLang: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  wszBrowserUserAgent: string | null;
+  wszBrowserUserAgent: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  wszBrowserWebPage: string | null;
+  wszBrowserWebPage: string | null | Uint8Array | Uint16Array;
   /** u64 */
   qwReserved: Deno.PointerValue;
   /** ptr */
   pReserved: Deno.PointerValue | Uint8Array | null;
   /** Windows.Win32.Foundation.PWSTR */
-  wszHostExe: string | null;
+  wszHostExe: string | null | Uint8Array | Uint16Array;
   /** u64 */
   qwHostVersion: Deno.PointerValue;
   /** Windows.Win32.Foundation.PWSTR */
-  wszPlayerUserAgent: string | null;
+  wszPlayerUserAgent: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeofWM_READER_CLIENTINFO = 72;
@@ -40675,11 +40675,11 @@ export interface WM_CLIENT_PROPERTIES_EX {
   /** u32 */
   cbSize: number;
   /** Windows.Win32.Foundation.PWSTR */
-  pwszIPAddress: string | null;
+  pwszIPAddress: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pwszPort: string | null;
+  pwszPort: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pwszDNSName: string | null;
+  pwszDNSName: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeofWM_CLIENT_PROPERTIES_EX = 32;
@@ -40907,11 +40907,11 @@ export function allocWM_ADDRESS_ACCESSENTRY(data?: Partial<WM_ADDRESS_ACCESSENTR
  */
 export interface WM_PICTURE {
   /** Windows.Win32.Foundation.PWSTR */
-  pwszMIMEType: string | null;
+  pwszMIMEType: string | null | Uint8Array | Uint16Array;
   /** u8 */
   bPictureType: number;
   /** Windows.Win32.Foundation.PWSTR */
-  pwszDescription: string | null;
+  pwszDescription: string | null | Uint8Array | Uint16Array;
   /** u32 */
   dwDataLen: number;
   /** ptr */
@@ -40953,7 +40953,7 @@ export interface WM_SYNCHRONISED_LYRICS {
   /** u8 */
   bContentType: number;
   /** Windows.Win32.Foundation.PWSTR */
-  pwszContentDescriptor: string | null;
+  pwszContentDescriptor: string | null | Uint8Array | Uint16Array;
   /** u32 */
   dwLyricsLen: number;
   /** ptr */
@@ -40988,9 +40988,9 @@ export function allocWM_SYNCHRONISED_LYRICS(data?: Partial<WM_SYNCHRONISED_LYRIC
  */
 export interface WM_USER_WEB_URL {
   /** Windows.Win32.Foundation.PWSTR */
-  pwszDescription: string | null;
+  pwszDescription: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pwszURL: string | null;
+  pwszURL: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeofWM_USER_WEB_URL = 16;
@@ -41016,9 +41016,9 @@ export function allocWM_USER_WEB_URL(data?: Partial<WM_USER_WEB_URL>): Uint8Arra
  */
 export interface WM_USER_TEXT {
   /** Windows.Win32.Foundation.PWSTR */
-  pwszDescription: string | null;
+  pwszDescription: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pwszText: string | null;
+  pwszText: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeofWM_USER_TEXT = 16;
@@ -41095,7 +41095,7 @@ export interface WMT_WATERMARK_ENTRY {
   /** u32 */
   cbDisplayName: number;
   /** Windows.Win32.Foundation.PWSTR */
-  pwszDisplayName: string | null;
+  pwszDisplayName: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeofWMT_WATERMARK_ENTRY = 32;
@@ -43372,7 +43372,7 @@ export function allocDXVA_DeinterlaceBltEx32(data?: Partial<DXVA_DeinterlaceBltE
  */
 export interface WAVEHDR {
   /** Windows.Win32.Foundation.PSTR */
-  lpData: string | null;
+  lpData: string | null | Uint8Array;
   /** u32 */
   dwBufferLength: number;
   /** u32 */
@@ -44275,7 +44275,7 @@ export function allocMIDIINCAPS2W(data?: Partial<MIDIINCAPS2W>): Uint8Array {
  */
 export interface MIDIHDR {
   /** Windows.Win32.Foundation.PSTR */
-  lpData: string | null;
+  lpData: string | null | Uint8Array;
   /** u32 */
   dwBufferLength: number;
   /** u32 */
@@ -46519,13 +46519,13 @@ export interface ACMFORMATCHOOSEA {
   /** u32 */
   cbwfx: number;
   /** Windows.Win32.Foundation.PSTR */
-  pszTitle: string | null;
+  pszTitle: string | null | Uint8Array;
   /** array */
   szFormatTag: Deno.PointerValue | null;
   /** array */
   szFormat: Deno.PointerValue | null;
   /** Windows.Win32.Foundation.PSTR */
-  pszName: string | null;
+  pszName: string | null | Uint8Array;
   /** u32 */
   cchName: number;
   /** u32 */
@@ -46535,7 +46535,7 @@ export interface ACMFORMATCHOOSEA {
   /** Windows.Win32.Foundation.HINSTANCE */
   hInstance: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.Foundation.PSTR */
-  pszTemplateName: string | null;
+  pszTemplateName: string | null | Uint8Array;
   /** Windows.Win32.Foundation.LPARAM */
   lCustData: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.Media.Audio.ACMFORMATCHOOSEHOOKPROCA */
@@ -46607,13 +46607,13 @@ export interface ACMFORMATCHOOSEW {
   /** u32 */
   cbwfx: number;
   /** Windows.Win32.Foundation.PWSTR */
-  pszTitle: string | null;
+  pszTitle: string | null | Uint8Array | Uint16Array;
   /** array */
   szFormatTag: Deno.PointerValue | null;
   /** array */
   szFormat: Deno.PointerValue | null;
   /** Windows.Win32.Foundation.PWSTR */
-  pszName: string | null;
+  pszName: string | null | Uint8Array | Uint16Array;
   /** u32 */
   cchName: number;
   /** u32 */
@@ -46623,7 +46623,7 @@ export interface ACMFORMATCHOOSEW {
   /** Windows.Win32.Foundation.HINSTANCE */
   hInstance: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.Foundation.PWSTR */
-  pszTemplateName: string | null;
+  pszTemplateName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.LPARAM */
   lCustData: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.Media.Audio.ACMFORMATCHOOSEHOOKPROCW */
@@ -46865,13 +46865,13 @@ export interface ACMFILTERCHOOSEA {
   /** u32 */
   cbwfltr: number;
   /** Windows.Win32.Foundation.PSTR */
-  pszTitle: string | null;
+  pszTitle: string | null | Uint8Array;
   /** array */
   szFilterTag: Deno.PointerValue | null;
   /** array */
   szFilter: Deno.PointerValue | null;
   /** Windows.Win32.Foundation.PSTR */
-  pszName: string | null;
+  pszName: string | null | Uint8Array;
   /** u32 */
   cchName: number;
   /** u32 */
@@ -46881,7 +46881,7 @@ export interface ACMFILTERCHOOSEA {
   /** Windows.Win32.Foundation.HINSTANCE */
   hInstance: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.Foundation.PSTR */
-  pszTemplateName: string | null;
+  pszTemplateName: string | null | Uint8Array;
   /** Windows.Win32.Foundation.LPARAM */
   lCustData: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.Media.Audio.ACMFILTERCHOOSEHOOKPROCA */
@@ -46953,13 +46953,13 @@ export interface ACMFILTERCHOOSEW {
   /** u32 */
   cbwfltr: number;
   /** Windows.Win32.Foundation.PWSTR */
-  pszTitle: string | null;
+  pszTitle: string | null | Uint8Array | Uint16Array;
   /** array */
   szFilterTag: Deno.PointerValue | null;
   /** array */
   szFilter: Deno.PointerValue | null;
   /** Windows.Win32.Foundation.PWSTR */
-  pszName: string | null;
+  pszName: string | null | Uint8Array | Uint16Array;
   /** u32 */
   cchName: number;
   /** u32 */
@@ -46969,7 +46969,7 @@ export interface ACMFILTERCHOOSEW {
   /** Windows.Win32.Foundation.HINSTANCE */
   hInstance: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.Foundation.PWSTR */
-  pszTemplateName: string | null;
+  pszTemplateName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.LPARAM */
   lCustData: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.Media.Audio.ACMFILTERCHOOSEHOOKPROCW */
@@ -47043,9 +47043,9 @@ export interface ACMDRVOPENDESCA {
   /** u32 */
   dwError: number;
   /** Windows.Win32.Foundation.PSTR */
-  pszSectionName: string | null;
+  pszSectionName: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  pszAliasName: string | null;
+  pszAliasName: string | null | Uint8Array;
   /** u32 */
   dnDevNode: number;
 }
@@ -47100,9 +47100,9 @@ export interface ACMDRVOPENDESCW {
   /** u32 */
   dwError: number;
   /** Windows.Win32.Foundation.PWSTR */
-  pszSectionName: string | null;
+  pszSectionName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pszAliasName: string | null;
+  pszAliasName: string | null | Uint8Array | Uint16Array;
   /** u32 */
   dnDevNode: number;
 }
@@ -59622,7 +59622,7 @@ export interface D3D12_VIDEO_EXTENSION_COMMAND_INFO {
   /** System.Guid */
   CommandId: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.Foundation.PWSTR */
-  Name: string | null;
+  Name: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Graphics.Direct3D12.D3D12_COMMAND_LIST_SUPPORT_FLAGS */
   CommandListSupportFlags: D3D12_COMMAND_LIST_SUPPORT_FLAGS;
 }
@@ -59707,7 +59707,7 @@ export function allocD3D12_FEATURE_DATA_VIDEO_EXTENSION_COMMAND_PARAMETER_COUNT(
  */
 export interface D3D12_VIDEO_EXTENSION_COMMAND_PARAMETER_INFO {
   /** Windows.Win32.Foundation.PWSTR */
-  Name: string | null;
+  Name: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Media.MediaFoundation.D3D12_VIDEO_EXTENSION_COMMAND_PARAMETER_TYPE */
   Type: D3D12_VIDEO_EXTENSION_COMMAND_PARAMETER_TYPE;
   /** Windows.Win32.Media.MediaFoundation.D3D12_VIDEO_EXTENSION_COMMAND_PARAMETER_FLAGS */
@@ -66059,13 +66059,13 @@ export interface MFNetCredentialManagerGetParam {
   /** Windows.Win32.Foundation.BOOL */
   fClearTextPackage: boolean;
   /** Windows.Win32.Foundation.PWSTR */
-  pszUrl: string | null;
+  pszUrl: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pszSite: string | null;
+  pszSite: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pszRealm: string | null;
+  pszRealm: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pszPackage: string | null;
+  pszPackage: string | null | Uint8Array | Uint16Array;
   /** i32 */
   nRetries: number;
 }
@@ -66225,7 +66225,7 @@ export interface MFT_REGISTRATION_INFO {
   /** u32 */
   uiFlags: number;
   /** Windows.Win32.Foundation.PWSTR */
-  pszName: string | null;
+  pszName: string | null | Uint8Array | Uint16Array;
   /** u32 */
   cInTypes: number;
   /** ptr */
@@ -67687,13 +67687,13 @@ export interface MFP_ACQUIRE_USER_CREDENTIAL_EVENT {
   /** Windows.Win32.Foundation.HRESULT */
   hrAuthenticationStatus: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.Foundation.PWSTR */
-  pwszURL: string | null;
+  pwszURL: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pwszSite: string | null;
+  pwszSite: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pwszRealm: string | null;
+  pwszRealm: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pwszPackage: string | null;
+  pwszPackage: string | null | Uint8Array | Uint16Array;
   /** i32 */
   nRetries: number;
   /** u32 */

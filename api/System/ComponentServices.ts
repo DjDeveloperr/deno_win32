@@ -394,7 +394,7 @@ export interface COMSVCSEVENTINFO {
   /** System.Guid */
   guidApp: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.Foundation.PWSTR */
-  sMachineName: string | null;
+  sMachineName: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeofCOMSVCSEVENTINFO = 48;
@@ -618,9 +618,9 @@ export interface CLSIDDATA2 {
   /** System.Guid */
   m_partid: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.Foundation.PWSTR */
-  m_pwszAppName: string | null;
+  m_pwszAppName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  m_pwszCtxName: string | null;
+  m_pwszCtxName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.System.ComponentServices.COMPLUS_APPTYPE */
   m_eAppType: COMPLUS_APPTYPE;
   /** u32 */
@@ -694,7 +694,7 @@ export interface ApplicationProcessSummary {
   /** Windows.Win32.System.ComponentServices.COMPLUS_APPTYPE */
   Type: COMPLUS_APPTYPE;
   /** Windows.Win32.Foundation.PWSTR */
-  ProcessExeName: string | null;
+  ProcessExeName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.BOOL */
   IsService: boolean;
   /** Windows.Win32.Foundation.BOOL */
@@ -885,7 +885,7 @@ export interface ApplicationSummary {
   /** Windows.Win32.System.ComponentServices.COMPLUS_APPTYPE */
   Type: COMPLUS_APPTYPE;
   /** Windows.Win32.Foundation.PWSTR */
-  ApplicationName: string | null;
+  ApplicationName: string | null | Uint8Array | Uint16Array;
   /** u32 */
   NumTrackedComponents: number;
   /** u32 */
@@ -931,9 +931,9 @@ export interface ComponentSummary {
   /** System.Guid */
   Clsid: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.Foundation.PWSTR */
-  ClassName: string | null;
+  ClassName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  ApplicationName: string | null;
+  ApplicationName: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeofComponentSummary = 48;

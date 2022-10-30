@@ -1085,9 +1085,9 @@ export type PWSTR = Deno.PointerValue | Uint8Array | null;
  */
 export interface DWRITE_GLYPH_RUN_DESCRIPTION {
   /** Windows.Win32.Foundation.PWSTR */
-  localeName: string | null;
+  localeName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  string: string | null;
+  string: string | null | Uint8Array | Uint16Array;
   /** u32 */
   stringLength: number;
   /** ptr */
@@ -1139,7 +1139,7 @@ export interface DWRITE_UNDERLINE {
   /** Windows.Win32.Graphics.DirectWrite.DWRITE_FLOW_DIRECTION */
   flowDirection: DWRITE_FLOW_DIRECTION;
   /** Windows.Win32.Foundation.PWSTR */
-  localeName: string | null;
+  localeName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Graphics.DirectWrite.DWRITE_MEASURING_MODE */
   measuringMode: DWRITE_MEASURING_MODE;
 }
@@ -1187,7 +1187,7 @@ export interface DWRITE_STRIKETHROUGH {
   /** Windows.Win32.Graphics.DirectWrite.DWRITE_FLOW_DIRECTION */
   flowDirection: DWRITE_FLOW_DIRECTION;
   /** Windows.Win32.Foundation.PWSTR */
-  localeName: string | null;
+  localeName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Graphics.DirectWrite.DWRITE_MEASURING_MODE */
   measuringMode: DWRITE_MEASURING_MODE;
 }
@@ -1958,9 +1958,9 @@ export interface DWRITE_FONT_PROPERTY {
   /** Windows.Win32.Graphics.DirectWrite.DWRITE_FONT_PROPERTY_ID */
   propertyId: DWRITE_FONT_PROPERTY_ID;
   /** Windows.Win32.Foundation.PWSTR */
-  propertyValue: string | null;
+  propertyValue: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  localeName: string | null;
+  localeName: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeofDWRITE_FONT_PROPERTY = 24;

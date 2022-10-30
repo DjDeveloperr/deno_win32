@@ -76,19 +76,19 @@ export interface SW_DEVICE_CREATE_INFO {
   /** u32 */
   cbSize: number;
   /** Windows.Win32.Foundation.PWSTR */
-  pszInstanceId: string | null;
+  pszInstanceId: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pszzHardwareIds: string | null;
+  pszzHardwareIds: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pszzCompatibleIds: string | null;
+  pszzCompatibleIds: string | null | Uint8Array | Uint16Array;
   /** ptr */
   pContainerId: Deno.PointerValue | Uint8Array | null;
   /** u32 */
   CapabilityFlags: number;
   /** Windows.Win32.Foundation.PWSTR */
-  pszDeviceDescription: string | null;
+  pszDeviceDescription: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pszDeviceLocation: string | null;
+  pszDeviceLocation: string | null | Uint8Array | Uint16Array;
   /** ptr */
   pSecurityDescriptor: Deno.PointerValue | Uint8Array | null;
 }
@@ -186,8 +186,8 @@ try {
 // Symbols
 
 export function SwDeviceCreate(
-  pszEnumeratorName: string | null /* Windows.Win32.Foundation.PWSTR */,
-  pszParentDeviceInstance: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pszEnumeratorName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  pszParentDeviceInstance: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pCreateInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
   cPropertyCount: number /* u32 */,
   pProperties: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -229,7 +229,7 @@ export function SwDevicePropertySet(
 export function SwDeviceInterfaceRegister(
   hSwDevice: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.Enumeration.Pnp.HSWDEVICE */,
   pInterfaceClassGuid: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pszReferenceString: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pszReferenceString: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   cPropertyCount: number /* u32 */,
   pProperties: Deno.PointerValue | Uint8Array | null /* ptr */,
   fEnabled: boolean /* Windows.Win32.Foundation.BOOL */,
@@ -246,7 +246,7 @@ export function SwMemFree(
 
 export function SwDeviceInterfaceSetState(
   hSwDevice: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.Enumeration.Pnp.HSWDEVICE */,
-  pszDeviceInterfaceId: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pszDeviceInterfaceId: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   fEnabled: boolean /* Windows.Win32.Foundation.BOOL */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
   return util.pointerFromFfi(libCFGMGR32_dll.SwDeviceInterfaceSetState(util.toPointer(hSwDevice), util.pwstrToFfi(pszDeviceInterfaceId), util.boolToFfi(fEnabled)));
@@ -254,7 +254,7 @@ export function SwDeviceInterfaceSetState(
 
 export function SwDeviceInterfacePropertySet(
   hSwDevice: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.Enumeration.Pnp.HSWDEVICE */,
-  pszDeviceInterfaceId: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pszDeviceInterfaceId: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   cPropertyCount: number /* u32 */,
   pProperties: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {

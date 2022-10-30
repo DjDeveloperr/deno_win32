@@ -1344,7 +1344,7 @@ export function PSFormatForDisplay(
   propkey: Deno.PointerValue | Uint8Array | null /* ptr */,
   propvar: Deno.PointerValue | Uint8Array | null /* ptr */,
   pdfFlags: PROPDESC_FORMAT_FLAGS /* Windows.Win32.UI.Shell.PropertiesSystem.PROPDESC_FORMAT_FLAGS */,
-  pwszText: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pwszText: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   cchText: number /* u32 */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
   return util.pointerFromFfi(libPROPSYS_dll.PSFormatForDisplay(util.toPointer(propkey), util.toPointer(propvar), pdfFlags, util.pwstrToFfi(pwszText), cchText));
@@ -1378,14 +1378,14 @@ export function PSGetImageReferenceForValue(
 
 export function PSStringFromPropertyKey(
   pkey: Deno.PointerValue | Uint8Array | null /* ptr */,
-  psz: string | null /* Windows.Win32.Foundation.PWSTR */,
+  psz: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   cch: number /* u32 */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
   return util.pointerFromFfi(libPROPSYS_dll.PSStringFromPropertyKey(util.toPointer(pkey), util.pwstrToFfi(psz), cch));
 }
 
 export function PSPropertyKeyFromString(
-  pszString: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pszString: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pkey: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
   return util.pointerFromFfi(libPROPSYS_dll.PSPropertyKeyFromString(util.pwstrToFfi(pszString), util.toPointer(pkey)));
@@ -1448,7 +1448,7 @@ export function PSGetPropertyDescription(
 }
 
 export function PSGetPropertyDescriptionByName(
-  pszCanonicalName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pszCanonicalName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   riid: Deno.PointerValue | Uint8Array | null /* ptr */,
   ppv: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
@@ -1456,7 +1456,7 @@ export function PSGetPropertyDescriptionByName(
 }
 
 export function PSLookupPropertyHandlerCLSID(
-  pszFilePath: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pszFilePath: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pclsid: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
   return util.pointerFromFfi(libPROPSYS_dll.PSLookupPropertyHandlerCLSID(util.pwstrToFfi(pszFilePath), util.toPointer(pclsid)));
@@ -1498,13 +1498,13 @@ export function PSSetPropertyValue(
 }
 
 export function PSRegisterPropertySchema(
-  pszPath: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pszPath: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
   return util.pointerFromFfi(libPROPSYS_dll.PSRegisterPropertySchema(util.pwstrToFfi(pszPath)));
 }
 
 export function PSUnregisterPropertySchema(
-  pszPath: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pszPath: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
   return util.pointerFromFfi(libPROPSYS_dll.PSUnregisterPropertySchema(util.pwstrToFfi(pszPath)));
 }
@@ -1522,7 +1522,7 @@ export function PSEnumeratePropertyDescriptions(
 }
 
 export function PSGetPropertyKeyFromName(
-  pszName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pszName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   ppropkey: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
   return util.pointerFromFfi(libPROPSYS_dll.PSGetPropertyKeyFromName(util.pwstrToFfi(pszName), util.toPointer(ppropkey)));
@@ -1543,7 +1543,7 @@ export function PSCoerceToCanonicalValue(
 }
 
 export function PSGetPropertyDescriptionListFromString(
-  pszPropList: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pszPropList: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   riid: Deno.PointerValue | Uint8Array | null /* ptr */,
   ppv: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
@@ -1595,7 +1595,7 @@ export function PSGetPropertyFromPropertyStorage(
 export function PSGetNamedPropertyFromPropertyStorage(
   psps: Deno.PointerValue | Uint8Array | null /* ptr */,
   cb: number /* u32 */,
-  pszName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pszName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   ppropvar: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
   return util.pointerFromFfi(libPROPSYS_dll.PSGetNamedPropertyFromPropertyStorage(util.toPointer(psps), cb, util.pwstrToFfi(pszName), util.toPointer(ppropvar)));
@@ -1603,7 +1603,7 @@ export function PSGetNamedPropertyFromPropertyStorage(
 
 export function PSPropertyBag_ReadType(
   propBag: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Com.StructuredStorage.IPropertyBag */,
-  propName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  propName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   var__: Deno.PointerValue | Uint8Array | null /* ptr */,
   type: VARENUM /* Windows.Win32.System.Com.VARENUM */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
@@ -1612,8 +1612,8 @@ export function PSPropertyBag_ReadType(
 
 export function PSPropertyBag_ReadStr(
   propBag: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Com.StructuredStorage.IPropertyBag */,
-  propName: string | null /* Windows.Win32.Foundation.PWSTR */,
-  value: string | null /* Windows.Win32.Foundation.PWSTR */,
+  propName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  value: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   characterCount: number /* i32 */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
   return util.pointerFromFfi(libPROPSYS_dll.PSPropertyBag_ReadStr(util.toPointer(propBag), util.pwstrToFfi(propName), util.pwstrToFfi(value), characterCount));
@@ -1621,7 +1621,7 @@ export function PSPropertyBag_ReadStr(
 
 export function PSPropertyBag_ReadStrAlloc(
   propBag: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Com.StructuredStorage.IPropertyBag */,
-  propName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  propName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   value: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
   return util.pointerFromFfi(libPROPSYS_dll.PSPropertyBag_ReadStrAlloc(util.toPointer(propBag), util.pwstrToFfi(propName), util.toPointer(value)));
@@ -1629,7 +1629,7 @@ export function PSPropertyBag_ReadStrAlloc(
 
 export function PSPropertyBag_ReadBSTR(
   propBag: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Com.StructuredStorage.IPropertyBag */,
-  propName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  propName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   value: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
   return util.pointerFromFfi(libPROPSYS_dll.PSPropertyBag_ReadBSTR(util.toPointer(propBag), util.pwstrToFfi(propName), util.toPointer(value)));
@@ -1637,15 +1637,15 @@ export function PSPropertyBag_ReadBSTR(
 
 export function PSPropertyBag_WriteStr(
   propBag: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Com.StructuredStorage.IPropertyBag */,
-  propName: string | null /* Windows.Win32.Foundation.PWSTR */,
-  value: string | null /* Windows.Win32.Foundation.PWSTR */,
+  propName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  value: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
   return util.pointerFromFfi(libPROPSYS_dll.PSPropertyBag_WriteStr(util.toPointer(propBag), util.pwstrToFfi(propName), util.pwstrToFfi(value)));
 }
 
 export function PSPropertyBag_WriteBSTR(
   propBag: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Com.StructuredStorage.IPropertyBag */,
-  propName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  propName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   value: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.BSTR */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
   return util.pointerFromFfi(libPROPSYS_dll.PSPropertyBag_WriteBSTR(util.toPointer(propBag), util.pwstrToFfi(propName), util.toPointer(value)));
@@ -1653,7 +1653,7 @@ export function PSPropertyBag_WriteBSTR(
 
 export function PSPropertyBag_ReadInt(
   propBag: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Com.StructuredStorage.IPropertyBag */,
-  propName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  propName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   value: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
   return util.pointerFromFfi(libPROPSYS_dll.PSPropertyBag_ReadInt(util.toPointer(propBag), util.pwstrToFfi(propName), util.toPointer(value)));
@@ -1661,7 +1661,7 @@ export function PSPropertyBag_ReadInt(
 
 export function PSPropertyBag_WriteInt(
   propBag: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Com.StructuredStorage.IPropertyBag */,
-  propName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  propName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   value: number /* i32 */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
   return util.pointerFromFfi(libPROPSYS_dll.PSPropertyBag_WriteInt(util.toPointer(propBag), util.pwstrToFfi(propName), value));
@@ -1669,7 +1669,7 @@ export function PSPropertyBag_WriteInt(
 
 export function PSPropertyBag_ReadSHORT(
   propBag: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Com.StructuredStorage.IPropertyBag */,
-  propName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  propName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   value: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
   return util.pointerFromFfi(libPROPSYS_dll.PSPropertyBag_ReadSHORT(util.toPointer(propBag), util.pwstrToFfi(propName), util.toPointer(value)));
@@ -1677,7 +1677,7 @@ export function PSPropertyBag_ReadSHORT(
 
 export function PSPropertyBag_WriteSHORT(
   propBag: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Com.StructuredStorage.IPropertyBag */,
-  propName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  propName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   value: number /* i16 */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
   return util.pointerFromFfi(libPROPSYS_dll.PSPropertyBag_WriteSHORT(util.toPointer(propBag), util.pwstrToFfi(propName), value));
@@ -1685,7 +1685,7 @@ export function PSPropertyBag_WriteSHORT(
 
 export function PSPropertyBag_ReadLONG(
   propBag: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Com.StructuredStorage.IPropertyBag */,
-  propName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  propName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   value: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
   return util.pointerFromFfi(libPROPSYS_dll.PSPropertyBag_ReadLONG(util.toPointer(propBag), util.pwstrToFfi(propName), util.toPointer(value)));
@@ -1693,7 +1693,7 @@ export function PSPropertyBag_ReadLONG(
 
 export function PSPropertyBag_WriteLONG(
   propBag: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Com.StructuredStorage.IPropertyBag */,
-  propName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  propName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   value: number /* i32 */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
   return util.pointerFromFfi(libPROPSYS_dll.PSPropertyBag_WriteLONG(util.toPointer(propBag), util.pwstrToFfi(propName), value));
@@ -1701,7 +1701,7 @@ export function PSPropertyBag_WriteLONG(
 
 export function PSPropertyBag_ReadDWORD(
   propBag: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Com.StructuredStorage.IPropertyBag */,
-  propName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  propName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   value: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
   return util.pointerFromFfi(libPROPSYS_dll.PSPropertyBag_ReadDWORD(util.toPointer(propBag), util.pwstrToFfi(propName), util.toPointer(value)));
@@ -1709,7 +1709,7 @@ export function PSPropertyBag_ReadDWORD(
 
 export function PSPropertyBag_WriteDWORD(
   propBag: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Com.StructuredStorage.IPropertyBag */,
-  propName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  propName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   value: number /* u32 */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
   return util.pointerFromFfi(libPROPSYS_dll.PSPropertyBag_WriteDWORD(util.toPointer(propBag), util.pwstrToFfi(propName), value));
@@ -1717,7 +1717,7 @@ export function PSPropertyBag_WriteDWORD(
 
 export function PSPropertyBag_ReadBOOL(
   propBag: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Com.StructuredStorage.IPropertyBag */,
-  propName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  propName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   value: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
   return util.pointerFromFfi(libPROPSYS_dll.PSPropertyBag_ReadBOOL(util.toPointer(propBag), util.pwstrToFfi(propName), util.toPointer(value)));
@@ -1725,7 +1725,7 @@ export function PSPropertyBag_ReadBOOL(
 
 export function PSPropertyBag_WriteBOOL(
   propBag: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Com.StructuredStorage.IPropertyBag */,
-  propName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  propName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   value: boolean /* Windows.Win32.Foundation.BOOL */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
   return util.pointerFromFfi(libPROPSYS_dll.PSPropertyBag_WriteBOOL(util.toPointer(propBag), util.pwstrToFfi(propName), util.boolToFfi(value)));
@@ -1733,7 +1733,7 @@ export function PSPropertyBag_WriteBOOL(
 
 export function PSPropertyBag_ReadPOINTL(
   propBag: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Com.StructuredStorage.IPropertyBag */,
-  propName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  propName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   value: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
   return util.pointerFromFfi(libPROPSYS_dll.PSPropertyBag_ReadPOINTL(util.toPointer(propBag), util.pwstrToFfi(propName), util.toPointer(value)));
@@ -1741,7 +1741,7 @@ export function PSPropertyBag_ReadPOINTL(
 
 export function PSPropertyBag_WritePOINTL(
   propBag: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Com.StructuredStorage.IPropertyBag */,
-  propName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  propName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   value: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
   return util.pointerFromFfi(libPROPSYS_dll.PSPropertyBag_WritePOINTL(util.toPointer(propBag), util.pwstrToFfi(propName), util.toPointer(value)));
@@ -1749,7 +1749,7 @@ export function PSPropertyBag_WritePOINTL(
 
 export function PSPropertyBag_ReadPOINTS(
   propBag: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Com.StructuredStorage.IPropertyBag */,
-  propName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  propName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   value: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
   return util.pointerFromFfi(libPROPSYS_dll.PSPropertyBag_ReadPOINTS(util.toPointer(propBag), util.pwstrToFfi(propName), util.toPointer(value)));
@@ -1757,7 +1757,7 @@ export function PSPropertyBag_ReadPOINTS(
 
 export function PSPropertyBag_WritePOINTS(
   propBag: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Com.StructuredStorage.IPropertyBag */,
-  propName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  propName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   value: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
   return util.pointerFromFfi(libPROPSYS_dll.PSPropertyBag_WritePOINTS(util.toPointer(propBag), util.pwstrToFfi(propName), util.toPointer(value)));
@@ -1765,7 +1765,7 @@ export function PSPropertyBag_WritePOINTS(
 
 export function PSPropertyBag_ReadRECTL(
   propBag: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Com.StructuredStorage.IPropertyBag */,
-  propName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  propName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   value: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
   return util.pointerFromFfi(libPROPSYS_dll.PSPropertyBag_ReadRECTL(util.toPointer(propBag), util.pwstrToFfi(propName), util.toPointer(value)));
@@ -1773,7 +1773,7 @@ export function PSPropertyBag_ReadRECTL(
 
 export function PSPropertyBag_WriteRECTL(
   propBag: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Com.StructuredStorage.IPropertyBag */,
-  propName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  propName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   value: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
   return util.pointerFromFfi(libPROPSYS_dll.PSPropertyBag_WriteRECTL(util.toPointer(propBag), util.pwstrToFfi(propName), util.toPointer(value)));
@@ -1781,7 +1781,7 @@ export function PSPropertyBag_WriteRECTL(
 
 export function PSPropertyBag_ReadStream(
   propBag: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Com.StructuredStorage.IPropertyBag */,
-  propName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  propName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   value: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
   return util.pointerFromFfi(libPROPSYS_dll.PSPropertyBag_ReadStream(util.toPointer(propBag), util.pwstrToFfi(propName), util.toPointer(value)));
@@ -1789,7 +1789,7 @@ export function PSPropertyBag_ReadStream(
 
 export function PSPropertyBag_WriteStream(
   propBag: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Com.StructuredStorage.IPropertyBag */,
-  propName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  propName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   value: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Com.IStream */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
   return util.pointerFromFfi(libPROPSYS_dll.PSPropertyBag_WriteStream(util.toPointer(propBag), util.pwstrToFfi(propName), util.toPointer(value)));
@@ -1797,14 +1797,14 @@ export function PSPropertyBag_WriteStream(
 
 export function PSPropertyBag_Delete(
   propBag: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Com.StructuredStorage.IPropertyBag */,
-  propName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  propName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
   return util.pointerFromFfi(libPROPSYS_dll.PSPropertyBag_Delete(util.toPointer(propBag), util.pwstrToFfi(propName)));
 }
 
 export function PSPropertyBag_ReadULONGLONG(
   propBag: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Com.StructuredStorage.IPropertyBag */,
-  propName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  propName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   value: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
   return util.pointerFromFfi(libPROPSYS_dll.PSPropertyBag_ReadULONGLONG(util.toPointer(propBag), util.pwstrToFfi(propName), util.toPointer(value)));
@@ -1812,7 +1812,7 @@ export function PSPropertyBag_ReadULONGLONG(
 
 export function PSPropertyBag_WriteULONGLONG(
   propBag: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Com.StructuredStorage.IPropertyBag */,
-  propName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  propName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   value: Deno.PointerValue /* u64 */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
   return util.pointerFromFfi(libPROPSYS_dll.PSPropertyBag_WriteULONGLONG(util.toPointer(propBag), util.pwstrToFfi(propName), value));
@@ -1820,7 +1820,7 @@ export function PSPropertyBag_WriteULONGLONG(
 
 export function PSPropertyBag_ReadUnknown(
   propBag: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Com.StructuredStorage.IPropertyBag */,
-  propName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  propName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   riid: Deno.PointerValue | Uint8Array | null /* ptr */,
   ppv: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
@@ -1829,7 +1829,7 @@ export function PSPropertyBag_ReadUnknown(
 
 export function PSPropertyBag_WriteUnknown(
   propBag: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Com.StructuredStorage.IPropertyBag */,
-  propName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  propName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   punk: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Com.IUnknown */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
   return util.pointerFromFfi(libPROPSYS_dll.PSPropertyBag_WriteUnknown(util.toPointer(propBag), util.pwstrToFfi(propName), util.toPointer(punk)));
@@ -1837,7 +1837,7 @@ export function PSPropertyBag_WriteUnknown(
 
 export function PSPropertyBag_ReadGUID(
   propBag: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Com.StructuredStorage.IPropertyBag */,
-  propName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  propName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   value: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
   return util.pointerFromFfi(libPROPSYS_dll.PSPropertyBag_ReadGUID(util.toPointer(propBag), util.pwstrToFfi(propName), util.toPointer(value)));
@@ -1845,7 +1845,7 @@ export function PSPropertyBag_ReadGUID(
 
 export function PSPropertyBag_WriteGUID(
   propBag: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Com.StructuredStorage.IPropertyBag */,
-  propName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  propName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   value: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
   return util.pointerFromFfi(libPROPSYS_dll.PSPropertyBag_WriteGUID(util.toPointer(propBag), util.pwstrToFfi(propName), util.toPointer(value)));
@@ -1853,7 +1853,7 @@ export function PSPropertyBag_WriteGUID(
 
 export function PSPropertyBag_ReadPropertyKey(
   propBag: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Com.StructuredStorage.IPropertyBag */,
-  propName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  propName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   value: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
   return util.pointerFromFfi(libPROPSYS_dll.PSPropertyBag_ReadPropertyKey(util.toPointer(propBag), util.pwstrToFfi(propName), util.toPointer(value)));
@@ -1861,7 +1861,7 @@ export function PSPropertyBag_ReadPropertyKey(
 
 export function PSPropertyBag_WritePropertyKey(
   propBag: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Com.StructuredStorage.IPropertyBag */,
-  propName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  propName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   value: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
   return util.pointerFromFfi(libPROPSYS_dll.PSPropertyBag_WritePropertyKey(util.toPointer(propBag), util.pwstrToFfi(propName), util.toPointer(value)));
@@ -2008,7 +2008,7 @@ export function InitPropVariantFromStringVector(
 }
 
 export function InitPropVariantFromStringAsVector(
-  psz: string | null /* Windows.Win32.Foundation.PWSTR */,
+  psz: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   ppropvar: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
   return util.pointerFromFfi(libPROPSYS_dll.InitPropVariantFromStringAsVector(util.pwstrToFfi(psz), util.toPointer(ppropvar)));
@@ -2072,7 +2072,7 @@ export function PropVariantToDoubleWithDefault(
 
 export function PropVariantToStringWithDefault(
   propvarIn: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pszDefault: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pszDefault: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): string | null /* Windows.Win32.Foundation.PWSTR */ {
   return util.pwstrFromFfi(libPROPSYS_dll.PropVariantToStringWithDefault(util.toPointer(propvarIn), util.pwstrToFfi(pszDefault)));
 }
@@ -2143,7 +2143,7 @@ export function PropVariantToBuffer(
 
 export function PropVariantToString(
   propvar: Deno.PointerValue | Uint8Array | null /* ptr */,
-  psz: string | null /* Windows.Win32.Foundation.PWSTR */,
+  psz: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   cch: number /* u32 */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
   return util.pointerFromFfi(libPROPSYS_dll.PropVariantToString(util.toPointer(propvar), util.pwstrToFfi(psz), cch));
@@ -2664,7 +2664,7 @@ export function VariantToDoubleWithDefault(
 
 export function VariantToStringWithDefault(
   varIn: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pszDefault: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pszDefault: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): string | null /* Windows.Win32.Foundation.PWSTR */ {
   return util.pwstrFromFfi(libPROPSYS_dll.VariantToStringWithDefault(util.toPointer(varIn), util.pwstrToFfi(pszDefault)));
 }
@@ -2742,7 +2742,7 @@ export function VariantToGUID(
 
 export function VariantToString(
   varIn: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pszBuf: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pszBuf: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   cchBuf: number /* u32 */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
   return util.pointerFromFfi(libPROPSYS_dll.VariantToString(util.toPointer(varIn), util.pwstrToFfi(pszBuf), cchBuf));
@@ -3033,7 +3033,7 @@ export function SHGetPropertyStoreFromIDList(
 }
 
 export function SHGetPropertyStoreFromParsingName(
-  pszPath: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pszPath: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pbc: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Com.IBindCtx */,
   flags: GETPROPERTYSTOREFLAGS /* Windows.Win32.UI.Shell.PropertiesSystem.GETPROPERTYSTOREFLAGS */,
   riid: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -3043,15 +3043,15 @@ export function SHGetPropertyStoreFromParsingName(
 }
 
 export function SHAddDefaultPropertiesByExt(
-  pszExt: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pszExt: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pPropStore: Uint8Array | Deno.PointerValue | null /* Windows.Win32.UI.Shell.PropertiesSystem.IPropertyStore */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
   return util.pointerFromFfi(libSHELL32_dll.SHAddDefaultPropertiesByExt(util.pwstrToFfi(pszExt), util.toPointer(pPropStore)));
 }
 
 export function PifMgr_OpenProperties(
-  pszApp: string | null /* Windows.Win32.Foundation.PWSTR */,
-  pszPIF: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pszApp: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  pszPIF: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   hInf: number /* u32 */,
   flOpt: number /* u32 */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */ {
@@ -3060,7 +3060,7 @@ export function PifMgr_OpenProperties(
 
 export function PifMgr_GetProperties(
   hProps: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  pszGroup: string | null /* Windows.Win32.Foundation.PSTR */,
+  pszGroup: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   lpProps: Deno.PointerValue | Uint8Array | null /* ptr */,
   cbProps: number /* i32 */,
   flOpt: number /* u32 */,
@@ -3070,7 +3070,7 @@ export function PifMgr_GetProperties(
 
 export function PifMgr_SetProperties(
   hProps: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  pszGroup: string | null /* Windows.Win32.Foundation.PSTR */,
+  pszGroup: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   lpProps: Deno.PointerValue | Uint8Array | null /* ptr */,
   cbProps: number /* i32 */,
   flOpt: number /* u32 */,

@@ -358,9 +358,9 @@ export function XInputEnable(
 
 export function XInputGetAudioDeviceIds(
   dwUserIndex: number /* u32 */,
-  pRenderDeviceId: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pRenderDeviceId: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pRenderCount: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pCaptureDeviceId: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pCaptureDeviceId: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pCaptureCount: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
   return libxinput1_4_dll.XInputGetAudioDeviceIds(dwUserIndex, util.pwstrToFfi(pRenderDeviceId), util.toPointer(pRenderCount), util.pwstrToFfi(pCaptureDeviceId), util.toPointer(pCaptureCount));

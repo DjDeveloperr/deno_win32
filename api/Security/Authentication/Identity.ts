@@ -2183,7 +2183,7 @@ export interface UNICODE_STRING {
   /** u16 */
   MaximumLength: number;
   /** Windows.Win32.Foundation.PWSTR */
-  Buffer: string | null;
+  Buffer: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeofUNICODE_STRING = 16;
@@ -2639,7 +2639,7 @@ export interface _u_e__Struct {
   /** u32 */
   dwValue: number;
   /** Windows.Win32.Foundation.PWSTR */
-  pwszName: string | null;
+  pwszName: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeof_u_e__Struct = 16;
@@ -3941,7 +3941,7 @@ export interface NEGOTIATE_CALLER_NAME_RESPONSE {
   /** u32 */
   MessageType: number;
   /** Windows.Win32.Foundation.PWSTR */
-  CallerName: string | null;
+  CallerName: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeofNEGOTIATE_CALLER_NAME_RESPONSE = 16;
@@ -4115,7 +4115,7 @@ export interface STRING {
   /** u16 */
   MaximumLength: number;
   /** Windows.Win32.Foundation.PSTR */
-  Buffer: string | null;
+  Buffer: string | null | Uint8Array;
 }
 
 export const sizeofSTRING = 16;
@@ -5628,7 +5628,7 @@ export interface KERB_NET_ADDRESS {
   /** u32 */
   Length: number;
   /** Windows.Win32.Foundation.PSTR */
-  Address: string | null;
+  Address: string | null | Uint8Array;
 }
 
 export const sizeofKERB_NET_ADDRESS = 16;
@@ -7738,7 +7738,7 @@ export interface SecPkgCredentials_SSIProviderW {
   /** u32 */
   ProviderInfoLength: number;
   /** Windows.Win32.Foundation.PSTR */
-  ProviderInfo: string | null;
+  ProviderInfo: string | null | Uint8Array;
 }
 
 export const sizeofSecPkgCredentials_SSIProviderW = 24;
@@ -7768,7 +7768,7 @@ export interface SecPkgCredentials_SSIProviderA {
   /** u32 */
   ProviderInfoLength: number;
   /** Windows.Win32.Foundation.PSTR */
-  ProviderInfo: string | null;
+  ProviderInfo: string | null | Uint8Array;
 }
 
 export const sizeofSecPkgCredentials_SSIProviderA = 24;
@@ -8608,7 +8608,7 @@ export interface SecPkgContext_AuthzID {
   /** u32 */
   AuthzIDLength: number;
   /** Windows.Win32.Foundation.PSTR */
-  AuthzID: string | null;
+  AuthzID: string | null | Uint8Array;
 }
 
 export const sizeofSecPkgContext_AuthzID = 16;
@@ -8634,7 +8634,7 @@ export interface SecPkgContext_Target {
   /** u32 */
   TargetLength: number;
   /** Windows.Win32.Foundation.PSTR */
-  Target: string | null;
+  Target: string | null | Uint8Array;
 }
 
 export const sizeofSecPkgContext_Target = 16;
@@ -9722,9 +9722,9 @@ export function allocLSA_DISPATCH_TABLE(data?: Partial<LSA_DISPATCH_TABLE>): Uin
  */
 export interface SAM_REGISTER_MAPPING_ELEMENT {
   /** Windows.Win32.Foundation.PSTR */
-  Original: string | null;
+  Original: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  Mapped: string | null;
+  Mapped: string | null | Uint8Array;
   /** Windows.Win32.Foundation.BOOLEAN */
   Continuable: Uint8Array | Deno.PointerValue | null;
 }
@@ -11458,7 +11458,7 @@ export interface SECPKG_TARGETINFO {
   /** Windows.Win32.Foundation.PSID */
   DomainSid: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.Foundation.PWSTR */
-  ComputerName: string | null;
+  ComputerName: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeofSECPKG_TARGETINFO = 16;
@@ -11797,9 +11797,9 @@ export interface CREDENTIALW {
   /** Windows.Win32.Security.Credentials.CRED_TYPE */
   Type: CRED_TYPE;
   /** Windows.Win32.Foundation.PWSTR */
-  TargetName: string | null;
+  TargetName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  Comment: string | null;
+  Comment: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.FILETIME */
   LastWritten: Uint8Array | Deno.PointerValue | null;
   /** u32 */
@@ -11813,9 +11813,9 @@ export interface CREDENTIALW {
   /** ptr */
   Attributes: Deno.PointerValue | Uint8Array | null;
   /** Windows.Win32.Foundation.PWSTR */
-  TargetAlias: string | null;
+  TargetAlias: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  UserName: string | null;
+  UserName: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeofCREDENTIALW = 80;
@@ -12803,9 +12803,9 @@ export interface SecPkgCred_ClientCertPolicy {
   /** Windows.Win32.Foundation.BOOL */
   fOmitUsageCheck: boolean;
   /** Windows.Win32.Foundation.PWSTR */
-  pwszSslCtlStoreName: string | null;
+  pwszSslCtlStoreName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pwszSslCtlIdentifier: string | null;
+  pwszSslCtlIdentifier: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeofSecPkgCred_ClientCertPolicy = 56;
@@ -13365,11 +13365,11 @@ export interface SecPkgContext_CertInfo {
   /** u32 */
   cbSubjectName: number;
   /** Windows.Win32.Foundation.PWSTR */
-  pwszSubjectName: string | null;
+  pwszSubjectName: string | null | Uint8Array | Uint16Array;
   /** u32 */
   cbIssuerName: number;
   /** Windows.Win32.Foundation.PWSTR */
-  pwszIssuerName: string | null;
+  pwszIssuerName: string | null | Uint8Array | Uint16Array;
   /** u32 */
   dwKeySize: number;
 }
@@ -13448,7 +13448,7 @@ export interface SecPkgContext_KeyingMaterialInfo {
   /** u16 */
   cbLabel: number;
   /** Windows.Win32.Foundation.PSTR */
-  pszLabel: string | null;
+  pszLabel: string | null | Uint8Array;
   /** u16 */
   cbContextValue: number;
   /** ptr */
@@ -13511,7 +13511,7 @@ export interface SecPkgContext_KeyingMaterial_Inproc {
   /** u16 */
   cbLabel: number;
   /** Windows.Win32.Foundation.PSTR */
-  pszLabel: string | null;
+  pszLabel: string | null | Uint8Array;
   /** u16 */
   cbContextValue: number;
   /** ptr */
@@ -13948,7 +13948,7 @@ export interface SSL_CREDENTIAL_CERTIFICATE {
   /** ptr */
   pCertificate: Deno.PointerValue | Uint8Array | null;
   /** Windows.Win32.Foundation.PSTR */
-  pszPassword: string | null;
+  pszPassword: string | null | Uint8Array;
 }
 
 export const sizeofSSL_CREDENTIAL_CERTIFICATE = 40;
@@ -14047,7 +14047,7 @@ export interface SCH_CRED_SECRET_PRIVKEY {
   /** u32 */
   cbPrivateKey: number;
   /** Windows.Win32.Foundation.PSTR */
-  pszPassword: string | null;
+  pszPassword: string | null | Uint8Array;
 }
 
 export const sizeofSCH_CRED_SECRET_PRIVKEY = 32;
@@ -14138,9 +14138,9 @@ export interface X509Certificate {
   /** Windows.Win32.Foundation.FILETIME */
   ValidUntil: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.Foundation.PSTR */
-  pszIssuer: string | null;
+  pszIssuer: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  pszSubject: string | null;
+  pszSubject: string | null | Uint8Array;
   /** ptr */
   pPublicKey: Deno.PointerValue | Uint8Array | null;
 }
@@ -14821,9 +14821,9 @@ export interface SL_AD_ACTIVATION_INFO {
   /** Windows.Win32.Security.Authentication.Identity.SL_ACTIVATION_INFO_HEADER */
   header: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.Foundation.PWSTR */
-  pwszProductKey: string | null;
+  pwszProductKey: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pwszActivationObjectName: string | null;
+  pwszActivationObjectName: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeofSL_AD_ACTIVATION_INFO = 24;
@@ -16317,28 +16317,28 @@ export function AuditQuerySecurity(
 }
 
 export function AuditSetGlobalSaclW(
-  ObjectTypeName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  ObjectTypeName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   Acl: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.BOOLEAN */ {
   return util.pointerFromFfi(libADVAPI32_dll.AuditSetGlobalSaclW(util.pwstrToFfi(ObjectTypeName), util.toPointer(Acl)));
 }
 
 export function AuditSetGlobalSaclA(
-  ObjectTypeName: string | null /* Windows.Win32.Foundation.PSTR */,
+  ObjectTypeName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   Acl: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.BOOLEAN */ {
   return util.pointerFromFfi(libADVAPI32_dll.AuditSetGlobalSaclA(util.pstrToFfi(ObjectTypeName), util.toPointer(Acl)));
 }
 
 export function AuditQueryGlobalSaclW(
-  ObjectTypeName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  ObjectTypeName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   Acl: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.BOOLEAN */ {
   return util.pointerFromFfi(libADVAPI32_dll.AuditQueryGlobalSaclW(util.pwstrToFfi(ObjectTypeName), util.toPointer(Acl)));
 }
 
 export function AuditQueryGlobalSaclA(
-  ObjectTypeName: string | null /* Windows.Win32.Foundation.PSTR */,
+  ObjectTypeName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   Acl: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.BOOLEAN */ {
   return util.pointerFromFfi(libADVAPI32_dll.AuditQueryGlobalSaclA(util.pstrToFfi(ObjectTypeName), util.toPointer(Acl)));
@@ -16351,8 +16351,8 @@ export function AuditFree(
 }
 
 export function AcquireCredentialsHandleW(
-  pszPrincipal: string | null /* Windows.Win32.Foundation.PWSTR */,
-  pszPackage: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pszPrincipal: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  pszPackage: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   fCredentialUse: SECPKG_CRED /* Windows.Win32.Security.Authentication.Identity.SECPKG_CRED */,
   pvLogonId: Deno.PointerValue | Uint8Array | null /* ptr */,
   pAuthData: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -16365,8 +16365,8 @@ export function AcquireCredentialsHandleW(
 }
 
 export function AcquireCredentialsHandleA(
-  pszPrincipal: string | null /* Windows.Win32.Foundation.PSTR */,
-  pszPackage: string | null /* Windows.Win32.Foundation.PSTR */,
+  pszPrincipal: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  pszPackage: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   fCredentialUse: SECPKG_CRED /* Windows.Win32.Security.Authentication.Identity.SECPKG_CRED */,
   pvLogonId: Deno.PointerValue | Uint8Array | null /* ptr */,
   pAuthData: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -16386,8 +16386,8 @@ export function FreeCredentialsHandle(
 
 export function AddCredentialsW(
   hCredentials: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pszPrincipal: string | null /* Windows.Win32.Foundation.PWSTR */,
-  pszPackage: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pszPrincipal: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  pszPackage: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   fCredentialUse: number /* u32 */,
   pAuthData: Deno.PointerValue | Uint8Array | null /* ptr */,
   pGetKeyFn: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Security.Authentication.Identity.SEC_GET_KEY_FN */,
@@ -16399,8 +16399,8 @@ export function AddCredentialsW(
 
 export function AddCredentialsA(
   hCredentials: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pszPrincipal: string | null /* Windows.Win32.Foundation.PSTR */,
-  pszPackage: string | null /* Windows.Win32.Foundation.PSTR */,
+  pszPrincipal: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  pszPackage: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   fCredentialUse: number /* u32 */,
   pAuthData: Deno.PointerValue | Uint8Array | null /* ptr */,
   pGetKeyFn: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Security.Authentication.Identity.SEC_GET_KEY_FN */,
@@ -16684,14 +16684,14 @@ export function EnumerateSecurityPackagesA(
 }
 
 export function QuerySecurityPackageInfoW(
-  pszPackageName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pszPackageName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   ppPackageInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
   return util.pointerFromFfi(libSECUR32_dll.QuerySecurityPackageInfoW(util.pwstrToFfi(pszPackageName), util.toPointer(ppPackageInfo)));
 }
 
 export function QuerySecurityPackageInfoA(
-  pszPackageName: string | null /* Windows.Win32.Foundation.PSTR */,
+  pszPackageName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   ppPackageInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
   return util.pointerFromFfi(libSECUR32_dll.QuerySecurityPackageInfoA(util.pstrToFfi(pszPackageName), util.toPointer(ppPackageInfo)));
@@ -16707,7 +16707,7 @@ export function ExportSecurityContext(
 }
 
 export function ImportSecurityContextW(
-  pszPackage: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pszPackage: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pPackedContext: Deno.PointerValue | Uint8Array | null /* ptr */,
   Token: Deno.PointerValue | Uint8Array | null /* ptr */,
   phContext: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -16716,7 +16716,7 @@ export function ImportSecurityContextW(
 }
 
 export function ImportSecurityContextA(
-  pszPackage: string | null /* Windows.Win32.Foundation.PSTR */,
+  pszPackage: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   pPackedContext: Deno.PointerValue | Uint8Array | null /* ptr */,
   Token: Deno.PointerValue | Uint8Array | null /* ptr */,
   phContext: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -16747,14 +16747,14 @@ export function SaslEnumerateProfilesW(
 }
 
 export function SaslGetProfilePackageA(
-  ProfileName: string | null /* Windows.Win32.Foundation.PSTR */,
+  ProfileName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   PackageInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
   return util.pointerFromFfi(libSECUR32_dll.SaslGetProfilePackageA(util.pstrToFfi(ProfileName), util.toPointer(PackageInfo)));
 }
 
 export function SaslGetProfilePackageW(
-  ProfileName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  ProfileName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   PackageInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
   return util.pointerFromFfi(libSECUR32_dll.SaslGetProfilePackageW(util.pwstrToFfi(ProfileName), util.toPointer(PackageInfo)));
@@ -16777,7 +16777,7 @@ export function SaslIdentifyPackageW(
 export function SaslInitializeSecurityContextW(
   phCredential: Deno.PointerValue | Uint8Array | null /* ptr */,
   phContext: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pszTargetName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pszTargetName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   fContextReq: ISC_REQ_FLAGS /* Windows.Win32.Security.Authentication.Identity.ISC_REQ_FLAGS */,
   Reserved1: number /* u32 */,
   TargetDataRep: number /* u32 */,
@@ -16794,7 +16794,7 @@ export function SaslInitializeSecurityContextW(
 export function SaslInitializeSecurityContextA(
   phCredential: Deno.PointerValue | Uint8Array | null /* ptr */,
   phContext: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pszTargetName: string | null /* Windows.Win32.Foundation.PSTR */,
+  pszTargetName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   fContextReq: ISC_REQ_FLAGS /* Windows.Win32.Security.Authentication.Identity.ISC_REQ_FLAGS */,
   Reserved1: number /* u32 */,
   TargetDataRep: number /* u32 */,
@@ -16842,10 +16842,10 @@ export function SaslGetContextOption(
 }
 
 export function SspiPromptForCredentialsW(
-  pszTargetName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pszTargetName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pUiInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
   dwAuthError: number /* u32 */,
-  pszPackage: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pszPackage: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pInputAuthIdentity: Deno.PointerValue | Uint8Array | null /* ptr */,
   ppAuthIdentity: Deno.PointerValue | Uint8Array | null /* ptr */,
   pfSave: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -16855,10 +16855,10 @@ export function SspiPromptForCredentialsW(
 }
 
 export function SspiPromptForCredentialsA(
-  pszTargetName: string | null /* Windows.Win32.Foundation.PSTR */,
+  pszTargetName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   pUiInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
   dwAuthError: number /* u32 */,
-  pszPackage: string | null /* Windows.Win32.Foundation.PSTR */,
+  pszPackage: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   pInputAuthIdentity: Deno.PointerValue | Uint8Array | null /* ptr */,
   ppAuthIdentity: Deno.PointerValue | Uint8Array | null /* ptr */,
   pfSave: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -16869,7 +16869,7 @@ export function SspiPromptForCredentialsA(
 
 export function SspiPrepareForCredRead(
   AuthIdentity: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pszTargetName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pszTargetName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pCredmanCredentialType: Deno.PointerValue | Uint8Array | null /* ptr */,
   ppszCredmanTargetName: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
@@ -16878,7 +16878,7 @@ export function SspiPrepareForCredRead(
 
 export function SspiPrepareForCredWrite(
   AuthIdentity: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pszTargetName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pszTargetName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pCredmanCredentialType: Deno.PointerValue | Uint8Array | null /* ptr */,
   ppszCredmanTargetName: Deno.PointerValue | Uint8Array | null /* ptr */,
   ppszCredmanUserName: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -16961,9 +16961,9 @@ export function SspiLocalFree(
 }
 
 export function SspiEncodeStringsAsAuthIdentity(
-  pszUserName: string | null /* Windows.Win32.Foundation.PWSTR */,
-  pszDomainName: string | null /* Windows.Win32.Foundation.PWSTR */,
-  pszPackedCredentialsString: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pszUserName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  pszDomainName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  pszPackedCredentialsString: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   ppAuthIdentity: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
   return util.pointerFromFfi(libSECUR32_dll.SspiEncodeStringsAsAuthIdentity(util.pwstrToFfi(pszUserName), util.pwstrToFfi(pszDomainName), util.pwstrToFfi(pszPackedCredentialsString), util.toPointer(ppAuthIdentity)));
@@ -16988,7 +16988,7 @@ export function SspiMarshalAuthIdentity(
 
 export function SspiUnmarshalAuthIdentity(
   AuthIdentityLength: number /* u32 */,
-  AuthIdentityByteArray: string | null /* Windows.Win32.Foundation.PSTR */,
+  AuthIdentityByteArray: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   ppAuthIdentity: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
   return util.pointerFromFfi(libSECUR32_dll.SspiUnmarshalAuthIdentity(AuthIdentityLength, util.pstrToFfi(AuthIdentityByteArray), util.toPointer(ppAuthIdentity)));
@@ -17001,7 +17001,7 @@ export function SspiIsPromptingNeeded(
 }
 
 export function SspiGetTargetHostName(
-  pszTargetName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pszTargetName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pszHostName: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
   return util.pointerFromFfi(libSECUR32_dll.SspiGetTargetHostName(util.pwstrToFfi(pszTargetName), util.toPointer(pszHostName)));
@@ -17009,34 +17009,34 @@ export function SspiGetTargetHostName(
 
 export function SspiExcludePackage(
   AuthIdentity: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pszPackageName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pszPackageName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   ppNewAuthIdentity: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
   return util.pointerFromFfi(libSECUR32_dll.SspiExcludePackage(util.toPointer(AuthIdentity), util.pwstrToFfi(pszPackageName), util.toPointer(ppNewAuthIdentity)));
 }
 
 export function AddSecurityPackageA(
-  pszPackageName: string | null /* Windows.Win32.Foundation.PSTR */,
+  pszPackageName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   pOptions: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
   return util.pointerFromFfi(libSECUR32_dll.AddSecurityPackageA(util.pstrToFfi(pszPackageName), util.toPointer(pOptions)));
 }
 
 export function AddSecurityPackageW(
-  pszPackageName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pszPackageName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pOptions: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
   return util.pointerFromFfi(libSECUR32_dll.AddSecurityPackageW(util.pwstrToFfi(pszPackageName), util.toPointer(pOptions)));
 }
 
 export function DeleteSecurityPackageA(
-  pszPackageName: string | null /* Windows.Win32.Foundation.PSTR */,
+  pszPackageName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
   return util.pointerFromFfi(libSECUR32_dll.DeleteSecurityPackageA(util.pstrToFfi(pszPackageName)));
 }
 
 export function DeleteSecurityPackageW(
-  pszPackageName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pszPackageName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
   return util.pointerFromFfi(libSECUR32_dll.DeleteSecurityPackageW(util.pwstrToFfi(pszPackageName)));
 }
@@ -17059,14 +17059,14 @@ export function CredUnmarshalTargetInfo(
 }
 
 export function SslEmptyCacheA(
-  pszTargetName: string | null /* Windows.Win32.Foundation.PSTR */,
+  pszTargetName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   dwFlags: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libSCHANNEL_dll.SslEmptyCacheA(util.pstrToFfi(pszTargetName), dwFlags));
 }
 
 export function SslEmptyCacheW(
-  pszTargetName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pszTargetName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   dwFlags: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libSCHANNEL_dll.SslEmptyCacheW(util.pwstrToFfi(pszTargetName), dwFlags));
@@ -17123,7 +17123,7 @@ export function SslGetExtensions(
 
 export function TokenBindingGenerateBinding(
   keyType: TOKENBINDING_KEY_PARAMETERS_TYPE /* Windows.Win32.Security.Authentication.Identity.TOKENBINDING_KEY_PARAMETERS_TYPE */,
-  targetURL: string | null /* Windows.Win32.Foundation.PWSTR */,
+  targetURL: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   bindingType: TOKENBINDING_TYPE /* Windows.Win32.Security.Authentication.Identity.TOKENBINDING_TYPE */,
   tlsEKM: Deno.PointerValue | Uint8Array | null /* ptr */,
   tlsEKMSize: number /* u32 */,
@@ -17170,7 +17170,7 @@ export function TokenBindingGetKeyTypesServer(
 }
 
 export function TokenBindingDeleteBinding(
-  targetURL: string | null /* Windows.Win32.Foundation.PWSTR */,
+  targetURL: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
   return util.pointerFromFfi(libTOKENBINDING_dll.TokenBindingDeleteBinding(util.pwstrToFfi(targetURL)));
 }
@@ -17190,7 +17190,7 @@ export function TokenBindingGenerateID(
 
 export function TokenBindingGenerateIDForUri(
   keyType: TOKENBINDING_KEY_PARAMETERS_TYPE /* Windows.Win32.Security.Authentication.Identity.TOKENBINDING_KEY_PARAMETERS_TYPE */,
-  targetUri: string | null /* Windows.Win32.Foundation.PWSTR */,
+  targetUri: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   resultData: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
   return util.pointerFromFfi(libTOKENBINDING_dll.TokenBindingGenerateIDForUri(keyType, util.pwstrToFfi(targetUri), util.toPointer(resultData)));
@@ -17205,7 +17205,7 @@ export function TokenBindingGetHighestSupportedVersion(
 
 export function GetUserNameExA(
   NameFormat: EXTENDED_NAME_FORMAT /* Windows.Win32.Security.Authentication.Identity.EXTENDED_NAME_FORMAT */,
-  lpNameBuffer: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpNameBuffer: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   nSize: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.BOOLEAN */ {
   return util.pointerFromFfi(libSECUR32_dll.GetUserNameExA(NameFormat, util.pstrToFfi(lpNameBuffer), util.toPointer(nSize)));
@@ -17213,7 +17213,7 @@ export function GetUserNameExA(
 
 export function GetUserNameExW(
   NameFormat: EXTENDED_NAME_FORMAT /* Windows.Win32.Security.Authentication.Identity.EXTENDED_NAME_FORMAT */,
-  lpNameBuffer: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpNameBuffer: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   nSize: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.BOOLEAN */ {
   return util.pointerFromFfi(libSECUR32_dll.GetUserNameExW(NameFormat, util.pwstrToFfi(lpNameBuffer), util.toPointer(nSize)));
@@ -17221,7 +17221,7 @@ export function GetUserNameExW(
 
 export function GetComputerObjectNameA(
   NameFormat: EXTENDED_NAME_FORMAT /* Windows.Win32.Security.Authentication.Identity.EXTENDED_NAME_FORMAT */,
-  lpNameBuffer: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpNameBuffer: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   nSize: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.BOOLEAN */ {
   return util.pointerFromFfi(libSECUR32_dll.GetComputerObjectNameA(NameFormat, util.pstrToFfi(lpNameBuffer), util.toPointer(nSize)));
@@ -17229,27 +17229,27 @@ export function GetComputerObjectNameA(
 
 export function GetComputerObjectNameW(
   NameFormat: EXTENDED_NAME_FORMAT /* Windows.Win32.Security.Authentication.Identity.EXTENDED_NAME_FORMAT */,
-  lpNameBuffer: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpNameBuffer: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   nSize: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.BOOLEAN */ {
   return util.pointerFromFfi(libSECUR32_dll.GetComputerObjectNameW(NameFormat, util.pwstrToFfi(lpNameBuffer), util.toPointer(nSize)));
 }
 
 export function TranslateNameA(
-  lpAccountName: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpAccountName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   AccountNameFormat: EXTENDED_NAME_FORMAT /* Windows.Win32.Security.Authentication.Identity.EXTENDED_NAME_FORMAT */,
   DesiredNameFormat: EXTENDED_NAME_FORMAT /* Windows.Win32.Security.Authentication.Identity.EXTENDED_NAME_FORMAT */,
-  lpTranslatedName: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpTranslatedName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   nSize: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.BOOLEAN */ {
   return util.pointerFromFfi(libSECUR32_dll.TranslateNameA(util.pstrToFfi(lpAccountName), AccountNameFormat, DesiredNameFormat, util.pstrToFfi(lpTranslatedName), util.toPointer(nSize)));
 }
 
 export function TranslateNameW(
-  lpAccountName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpAccountName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   AccountNameFormat: EXTENDED_NAME_FORMAT /* Windows.Win32.Security.Authentication.Identity.EXTENDED_NAME_FORMAT */,
   DesiredNameFormat: EXTENDED_NAME_FORMAT /* Windows.Win32.Security.Authentication.Identity.EXTENDED_NAME_FORMAT */,
-  lpTranslatedName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpTranslatedName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   nSize: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.BOOLEAN */ {
   return util.pointerFromFfi(libSECUR32_dll.TranslateNameW(util.pwstrToFfi(lpAccountName), AccountNameFormat, DesiredNameFormat, util.pwstrToFfi(lpTranslatedName), util.toPointer(nSize)));
@@ -17269,8 +17269,8 @@ export function SLClose(
 
 export function SLInstallProofOfPurchase(
   hSLC: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pwszPKeyAlgorithm: string | null /* Windows.Win32.Foundation.PWSTR */,
-  pwszPKeyString: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pwszPKeyAlgorithm: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  pwszPKeyString: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   cbPKeySpecificData: number /* u32 */,
   pbPKeySpecificData: Deno.PointerValue | Uint8Array | null /* ptr */,
   pPkeyId: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -17305,7 +17305,7 @@ export function SLConsumeRight(
   hSLC: Deno.PointerValue | Uint8Array | null /* ptr */,
   pAppId: Deno.PointerValue | Uint8Array | null /* ptr */,
   pProductSkuId: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pwszRightName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pwszRightName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pvReserved: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
   return util.pointerFromFfi(libSLC_dll.SLConsumeRight(util.toPointer(hSLC), util.toPointer(pAppId), util.toPointer(pProductSkuId), util.pwstrToFfi(pwszRightName), util.toPointer(pvReserved)));
@@ -17314,7 +17314,7 @@ export function SLConsumeRight(
 export function SLGetProductSkuInformation(
   hSLC: Deno.PointerValue | Uint8Array | null /* ptr */,
   pProductSkuId: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pwszValueName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pwszValueName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   peDataType: Deno.PointerValue | Uint8Array | null /* ptr */,
   pcbValue: Deno.PointerValue | Uint8Array | null /* ptr */,
   ppbValue: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -17325,7 +17325,7 @@ export function SLGetProductSkuInformation(
 export function SLGetPKeyInformation(
   hSLC: Deno.PointerValue | Uint8Array | null /* ptr */,
   pPKeyId: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pwszValueName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pwszValueName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   peDataType: Deno.PointerValue | Uint8Array | null /* ptr */,
   pcbValue: Deno.PointerValue | Uint8Array | null /* ptr */,
   ppbValue: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -17336,7 +17336,7 @@ export function SLGetPKeyInformation(
 export function SLGetLicenseInformation(
   hSLC: Deno.PointerValue | Uint8Array | null /* ptr */,
   pSLLicenseId: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pwszValueName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pwszValueName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   peDataType: Deno.PointerValue | Uint8Array | null /* ptr */,
   pcbValue: Deno.PointerValue | Uint8Array | null /* ptr */,
   ppbValue: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -17348,7 +17348,7 @@ export function SLGetLicensingStatusInformation(
   hSLC: Deno.PointerValue | Uint8Array | null /* ptr */,
   pAppID: Deno.PointerValue | Uint8Array | null /* ptr */,
   pProductSkuId: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pwszRightName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pwszRightName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pnStatusCount: Deno.PointerValue | Uint8Array | null /* ptr */,
   ppLicensingStatus: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
@@ -17357,7 +17357,7 @@ export function SLGetLicensingStatusInformation(
 
 export function SLGetPolicyInformation(
   hSLC: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pwszValueName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pwszValueName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   peDataType: Deno.PointerValue | Uint8Array | null /* ptr */,
   pcbValue: Deno.PointerValue | Uint8Array | null /* ptr */,
   ppbValue: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -17367,7 +17367,7 @@ export function SLGetPolicyInformation(
 
 export function SLGetPolicyInformationDWORD(
   hSLC: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pwszValueName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pwszValueName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pdwValue: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
   return util.pointerFromFfi(libSLC_dll.SLGetPolicyInformationDWORD(util.toPointer(hSLC), util.pwstrToFfi(pwszValueName), util.toPointer(pdwValue)));
@@ -17375,7 +17375,7 @@ export function SLGetPolicyInformationDWORD(
 
 export function SLGetServiceInformation(
   hSLC: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pwszValueName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pwszValueName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   peDataType: Deno.PointerValue | Uint8Array | null /* ptr */,
   pcbValue: Deno.PointerValue | Uint8Array | null /* ptr */,
   ppbValue: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -17386,7 +17386,7 @@ export function SLGetServiceInformation(
 export function SLGetApplicationInformation(
   hSLC: Deno.PointerValue | Uint8Array | null /* ptr */,
   pApplicationId: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pwszValueName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pwszValueName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   peDataType: Deno.PointerValue | Uint8Array | null /* ptr */,
   pcbValue: Deno.PointerValue | Uint8Array | null /* ptr */,
   ppbValue: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -17400,16 +17400,16 @@ export function SLActivateProduct(
   cbAppSpecificData: number /* u32 */,
   pvAppSpecificData: Deno.PointerValue | Uint8Array | null /* ptr */,
   pActivationInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pwszProxyServer: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pwszProxyServer: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   wProxyPort: number /* u16 */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
   return util.pointerFromFfi(libslcext_dll.SLActivateProduct(util.toPointer(hSLC), util.toPointer(pProductSkuId), cbAppSpecificData, util.toPointer(pvAppSpecificData), util.toPointer(pActivationInfo), util.pwstrToFfi(pwszProxyServer), wProxyPort));
 }
 
 export function SLGetServerStatus(
-  pwszServerURL: string | null /* Windows.Win32.Foundation.PWSTR */,
-  pwszAcquisitionType: string | null /* Windows.Win32.Foundation.PWSTR */,
-  pwszProxyServer: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pwszServerURL: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  pwszAcquisitionType: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  pwszProxyServer: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   wProxyPort: number /* u16 */,
   phrStatus: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
@@ -17436,8 +17436,8 @@ export function SLGenerateOfflineInstallationIdEx(
 export function SLDepositOfflineConfirmationId(
   hSLC: Deno.PointerValue | Uint8Array | null /* ptr */,
   pProductSkuId: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pwszInstallationId: string | null /* Windows.Win32.Foundation.PWSTR */,
-  pwszConfirmationId: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pwszInstallationId: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  pwszConfirmationId: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
   return util.pointerFromFfi(libSLC_dll.SLDepositOfflineConfirmationId(util.toPointer(hSLC), util.toPointer(pProductSkuId), util.pwstrToFfi(pwszInstallationId), util.pwstrToFfi(pwszConfirmationId)));
 }
@@ -17446,16 +17446,16 @@ export function SLDepositOfflineConfirmationIdEx(
   hSLC: Deno.PointerValue | Uint8Array | null /* ptr */,
   pProductSkuId: Deno.PointerValue | Uint8Array | null /* ptr */,
   pActivationInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pwszInstallationId: string | null /* Windows.Win32.Foundation.PWSTR */,
-  pwszConfirmationId: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pwszInstallationId: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  pwszConfirmationId: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
   return util.pointerFromFfi(libSLC_dll.SLDepositOfflineConfirmationIdEx(util.toPointer(hSLC), util.toPointer(pProductSkuId), util.toPointer(pActivationInfo), util.pwstrToFfi(pwszInstallationId), util.pwstrToFfi(pwszConfirmationId)));
 }
 
 export function SLGetPKeyId(
   hSLC: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pwszPKeyAlgorithm: string | null /* Windows.Win32.Foundation.PWSTR */,
-  pwszPKeyString: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pwszPKeyAlgorithm: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  pwszPKeyString: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   cbPKeySpecificData: number /* u32 */,
   pbPKeySpecificData: Deno.PointerValue | Uint8Array | null /* ptr */,
   pPKeyId: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -17511,7 +17511,7 @@ export function SLGetLicense(
 
 export function SLFireEvent(
   hSLC: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pwszEventId: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pwszEventId: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pApplicationId: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
   return util.pointerFromFfi(libSLC_dll.SLFireEvent(util.toPointer(hSLC), util.pwstrToFfi(pwszEventId), util.toPointer(pApplicationId)));
@@ -17519,7 +17519,7 @@ export function SLFireEvent(
 
 export function SLRegisterEvent(
   hSLC: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pwszEventId: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pwszEventId: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pApplicationId: Deno.PointerValue | Uint8Array | null /* ptr */,
   hEvent: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
@@ -17528,7 +17528,7 @@ export function SLRegisterEvent(
 
 export function SLUnregisterEvent(
   hSLC: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pwszEventId: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pwszEventId: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pApplicationId: Deno.PointerValue | Uint8Array | null /* ptr */,
   hEvent: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
@@ -17536,7 +17536,7 @@ export function SLUnregisterEvent(
 }
 
 export function SLGetWindowsInformation(
-  pwszValueName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pwszValueName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   peDataType: Deno.PointerValue | Uint8Array | null /* ptr */,
   pcbValue: Deno.PointerValue | Uint8Array | null /* ptr */,
   ppbValue: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -17545,7 +17545,7 @@ export function SLGetWindowsInformation(
 }
 
 export function SLGetWindowsInformationDWORD(
-  pwszValueName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pwszValueName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pdwValue: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
   return util.pointerFromFfi(libSLC_dll.SLGetWindowsInformationDWORD(util.pwstrToFfi(pwszValueName), util.toPointer(pdwValue)));
@@ -17562,16 +17562,16 @@ export function SLIsGenuineLocal(
 export function SLAcquireGenuineTicket(
   ppTicketBlob: Deno.PointerValue | Uint8Array | null /* ptr */,
   pcbTicketBlob: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pwszTemplateId: string | null /* Windows.Win32.Foundation.PWSTR */,
-  pwszServerUrl: string | null /* Windows.Win32.Foundation.PWSTR */,
-  pwszClientToken: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pwszTemplateId: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  pwszServerUrl: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  pwszClientToken: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
   return util.pointerFromFfi(libslcext_dll.SLAcquireGenuineTicket(util.toPointer(ppTicketBlob), util.toPointer(pcbTicketBlob), util.pwstrToFfi(pwszTemplateId), util.pwstrToFfi(pwszServerUrl), util.pwstrToFfi(pwszClientToken)));
 }
 
 export function SLSetGenuineInformation(
   pQueryId: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pwszValueName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pwszValueName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   eDataType: SLDATATYPE /* Windows.Win32.Security.Authentication.Identity.SLDATATYPE */,
   cbValue: number /* u32 */,
   pbValue: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -17583,7 +17583,7 @@ export function SLGetReferralInformation(
   hSLC: Deno.PointerValue | Uint8Array | null /* ptr */,
   eReferralType: SLREFERRALTYPE /* Windows.Win32.Security.Authentication.Identity.SLREFERRALTYPE */,
   pSkuOrAppId: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pwszValueName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pwszValueName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   ppwszValue: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
   return util.pointerFromFfi(libslcext_dll.SLGetReferralInformation(util.toPointer(hSLC), eReferralType, util.toPointer(pSkuOrAppId), util.pwstrToFfi(pwszValueName), util.toPointer(ppwszValue)));
@@ -17591,7 +17591,7 @@ export function SLGetReferralInformation(
 
 export function SLGetGenuineInformation(
   pQueryId: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pwszValueName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pwszValueName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   peDataType: Deno.PointerValue | Uint8Array | null /* ptr */,
   pcbValue: Deno.PointerValue | Uint8Array | null /* ptr */,
   ppbValue: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -17600,7 +17600,7 @@ export function SLGetGenuineInformation(
 }
 
 export function SLQueryLicenseValueFromApp(
-  valueName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  valueName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   valueType: Deno.PointerValue | Uint8Array | null /* ptr */,
   dataBuffer: Deno.PointerValue | Uint8Array | null /* ptr */,
   dataSize: number /* u32 */,

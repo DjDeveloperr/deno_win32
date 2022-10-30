@@ -2161,7 +2161,7 @@ export interface _Anonymous1_e__Union {
   /** usize */
   Data0: Deno.PointerValue;
   /** Windows.Win32.Foundation.PWSTR */
-  String: string | null;
+  String: string | null | Uint8Array | Uint16Array;
   /** usize */
   u: Deno.PointerValue;
   /** ptr */
@@ -3174,7 +3174,7 @@ export interface LIGATURE {
   /** u32 */
   culSize: number;
   /** Windows.Win32.Foundation.PWSTR */
-  pwsz: string | null;
+  pwsz: string | null | Uint8Array | Uint16Array;
   /** u32 */
   chglyph: number;
   /** array */
@@ -3240,7 +3240,7 @@ export interface _u_e__Struct {
   /** u32 */
   dwValue: number;
   /** Windows.Win32.Foundation.PWSTR */
-  pwszName: string | null;
+  pwszName: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeof_u_e__Struct = 16;
@@ -4645,7 +4645,7 @@ export interface STROBJ {
   /** ptr */
   pgp: Deno.PointerValue | Uint8Array | null;
   /** Windows.Win32.Foundation.PWSTR */
-  pwszOrg: string | null;
+  pwszOrg: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeofSTROBJ = 40;
@@ -8325,7 +8325,7 @@ export function GetCapabilitiesStringLength(
 
 export function CapabilitiesRequestAndCapabilitiesReply(
   hMonitor: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  pszASCIICapabilitiesString: string | null /* Windows.Win32.Foundation.PSTR */,
+  pszASCIICapabilitiesString: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   dwCapabilitiesStringLengthInCharacters: number /* u32 */,
 ): number /* i32 */ {
   return libdxva2_dll.CapabilitiesRequestAndCapabilitiesReply(util.toPointer(hMonitor), util.pstrToFfi(pszASCIICapabilitiesString), dwCapabilitiesStringLengthInCharacters);
@@ -9054,7 +9054,7 @@ export function EngGetDriverName(
 }
 
 export function EngLoadModule(
-  pwsz: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pwsz: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */ {
   return util.pointerFromFfi(libGDI32_dll.EngLoadModule(util.pwstrToFfi(pwsz)));
 }
@@ -9097,20 +9097,20 @@ export function EngDeleteSemaphore(
 }
 
 export function EngMultiByteToUnicodeN(
-  UnicodeString: string | null /* Windows.Win32.Foundation.PWSTR */,
+  UnicodeString: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   MaxBytesInUnicodeString: number /* u32 */,
   BytesInUnicodeString: Deno.PointerValue | Uint8Array | null /* ptr */,
-  MultiByteString: string | null /* Windows.Win32.Foundation.PSTR */,
+  MultiByteString: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   BytesInMultiByteString: number /* u32 */,
 ): void /* void */ {
   return libGDI32_dll.EngMultiByteToUnicodeN(util.pwstrToFfi(UnicodeString), MaxBytesInUnicodeString, util.toPointer(BytesInUnicodeString), util.pstrToFfi(MultiByteString), BytesInMultiByteString);
 }
 
 export function EngUnicodeToMultiByteN(
-  MultiByteString: string | null /* Windows.Win32.Foundation.PSTR */,
+  MultiByteString: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   MaxBytesInMultiByteString: number /* u32 */,
   BytesInMultiByteString: Deno.PointerValue | Uint8Array | null /* ptr */,
-  UnicodeString: string | null /* Windows.Win32.Foundation.PWSTR */,
+  UnicodeString: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   BytesInUnicodeString: number /* u32 */,
 ): void /* void */ {
   return libGDI32_dll.EngUnicodeToMultiByteN(util.pstrToFfi(MultiByteString), MaxBytesInMultiByteString, util.toPointer(BytesInMultiByteString), util.pwstrToFfi(UnicodeString), BytesInUnicodeString);
@@ -9132,9 +9132,9 @@ export function EngComputeGlyphSet(
 
 export function EngMultiByteToWideChar(
   CodePage: number /* u32 */,
-  WideCharString: string | null /* Windows.Win32.Foundation.PWSTR */,
+  WideCharString: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   BytesInWideCharString: number /* i32 */,
-  MultiByteString: string | null /* Windows.Win32.Foundation.PSTR */,
+  MultiByteString: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   BytesInMultiByteString: number /* i32 */,
 ): number /* i32 */ {
   return libGDI32_dll.EngMultiByteToWideChar(CodePage, util.pwstrToFfi(WideCharString), BytesInWideCharString, util.pstrToFfi(MultiByteString), BytesInMultiByteString);
@@ -9142,9 +9142,9 @@ export function EngMultiByteToWideChar(
 
 export function EngWideCharToMultiByte(
   CodePage: number /* u32 */,
-  WideCharString: string | null /* Windows.Win32.Foundation.PWSTR */,
+  WideCharString: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   BytesInWideCharString: number /* i32 */,
-  MultiByteString: string | null /* Windows.Win32.Foundation.PSTR */,
+  MultiByteString: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   BytesInMultiByteString: number /* i32 */,
 ): number /* i32 */ {
   return libGDI32_dll.EngWideCharToMultiByte(CodePage, util.pwstrToFfi(WideCharString), BytesInWideCharString, util.pstrToFfi(MultiByteString), BytesInMultiByteString);

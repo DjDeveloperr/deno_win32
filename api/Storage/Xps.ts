@@ -418,11 +418,11 @@ export interface DOCINFOA {
   /** i32 */
   cbSize: number;
   /** Windows.Win32.Foundation.PSTR */
-  lpszDocName: string | null;
+  lpszDocName: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  lpszOutput: string | null;
+  lpszOutput: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  lpszDatatype: string | null;
+  lpszDatatype: string | null | Uint8Array;
   /** u32 */
   fwType: number;
 }
@@ -465,11 +465,11 @@ export interface DOCINFOW {
   /** i32 */
   cbSize: number;
   /** Windows.Win32.Foundation.PWSTR */
-  lpszDocName: string | null;
+  lpszDocName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  lpszOutput: string | null;
+  lpszOutput: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  lpszDatatype: string | null;
+  lpszDatatype: string | null | Uint8Array | Uint16Array;
   /** u32 */
   fwType: number;
 }
@@ -983,20 +983,20 @@ try {
 // Symbols
 
 export function DeviceCapabilitiesA(
-  pDevice: string | null /* Windows.Win32.Foundation.PSTR */,
-  pPort: string | null /* Windows.Win32.Foundation.PSTR */,
+  pDevice: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  pPort: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   fwCapability: DEVICE_CAPABILITIES /* Windows.Win32.Storage.Xps.DEVICE_CAPABILITIES */,
-  pOutput: string | null /* Windows.Win32.Foundation.PSTR */,
+  pOutput: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   pDevMode: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
   return libwinspool_drv.DeviceCapabilitiesA(util.pstrToFfi(pDevice), util.pstrToFfi(pPort), fwCapability, util.pstrToFfi(pOutput), util.toPointer(pDevMode));
 }
 
 export function DeviceCapabilitiesW(
-  pDevice: string | null /* Windows.Win32.Foundation.PWSTR */,
-  pPort: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pDevice: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  pPort: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   fwCapability: DEVICE_CAPABILITIES /* Windows.Win32.Storage.Xps.DEVICE_CAPABILITIES */,
-  pOutput: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pOutput: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pDevMode: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
   return libwinspool_drv.DeviceCapabilitiesW(util.pwstrToFfi(pDevice), util.pwstrToFfi(pPort), fwCapability, util.pwstrToFfi(pOutput), util.toPointer(pDevMode));
@@ -1006,7 +1006,7 @@ export function Escape(
   hdc: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Graphics.Gdi.HDC */,
   iEscape: number /* i32 */,
   cjIn: number /* i32 */,
-  pvIn: string | null /* Windows.Win32.Foundation.PSTR */,
+  pvIn: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   pvOut: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
   return libGDI32_dll.Escape(util.toPointer(hdc), iEscape, cjIn, util.pstrToFfi(pvIn), util.toPointer(pvOut));
@@ -1016,9 +1016,9 @@ export function ExtEscape(
   hdc: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Graphics.Gdi.HDC */,
   iEscape: number /* i32 */,
   cjInput: number /* i32 */,
-  lpInData: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpInData: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   cjOutput: number /* i32 */,
-  lpOutData: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpOutData: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): number /* i32 */ {
   return libGDI32_dll.ExtEscape(util.toPointer(hdc), iEscape, cjInput, util.pstrToFfi(lpInData), cjOutput, util.pstrToFfi(lpOutData));
 }

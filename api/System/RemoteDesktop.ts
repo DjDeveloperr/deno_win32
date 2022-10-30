@@ -732,7 +732,7 @@ export type PWSTR = Deno.PointerValue | Uint8Array | null;
  */
 export interface WTS_SERVER_INFOW {
   /** Windows.Win32.Foundation.PWSTR */
-  pServerName: string | null;
+  pServerName: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeofWTS_SERVER_INFOW = 8;
@@ -755,7 +755,7 @@ export type PSTR = Deno.PointerValue | Uint8Array | null;
  */
 export interface WTS_SERVER_INFOA {
   /** Windows.Win32.Foundation.PSTR */
-  pServerName: string | null;
+  pServerName: string | null | Uint8Array;
 }
 
 export const sizeofWTS_SERVER_INFOA = 8;
@@ -778,7 +778,7 @@ export interface WTS_SESSION_INFOW {
   /** u32 */
   SessionId: number;
   /** Windows.Win32.Foundation.PWSTR */
-  pWinStationName: string | null;
+  pWinStationName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.System.RemoteDesktop.WTS_CONNECTSTATE_CLASS */
   State: WTS_CONNECTSTATE_CLASS;
 }
@@ -809,7 +809,7 @@ export interface WTS_SESSION_INFOA {
   /** u32 */
   SessionId: number;
   /** Windows.Win32.Foundation.PSTR */
-  pWinStationName: string | null;
+  pWinStationName: string | null | Uint8Array;
   /** Windows.Win32.System.RemoteDesktop.WTS_CONNECTSTATE_CLASS */
   State: WTS_CONNECTSTATE_CLASS;
 }
@@ -844,15 +844,15 @@ export interface WTS_SESSION_INFO_1W {
   /** u32 */
   SessionId: number;
   /** Windows.Win32.Foundation.PWSTR */
-  pSessionName: string | null;
+  pSessionName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pHostName: string | null;
+  pHostName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pUserName: string | null;
+  pUserName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pDomainName: string | null;
+  pDomainName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pFarmName: string | null;
+  pFarmName: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeofWTS_SESSION_INFO_1W = 56;
@@ -906,15 +906,15 @@ export interface WTS_SESSION_INFO_1A {
   /** u32 */
   SessionId: number;
   /** Windows.Win32.Foundation.PSTR */
-  pSessionName: string | null;
+  pSessionName: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  pHostName: string | null;
+  pHostName: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  pUserName: string | null;
+  pUserName: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  pDomainName: string | null;
+  pDomainName: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  pFarmName: string | null;
+  pFarmName: string | null | Uint8Array;
 }
 
 export const sizeofWTS_SESSION_INFO_1A = 56;
@@ -968,7 +968,7 @@ export interface WTS_PROCESS_INFOW {
   /** u32 */
   ProcessId: number;
   /** Windows.Win32.Foundation.PWSTR */
-  pProcessName: string | null;
+  pProcessName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PSID */
   pUserSid: Uint8Array | Deno.PointerValue | null;
 }
@@ -1001,7 +1001,7 @@ export interface WTS_PROCESS_INFOA {
   /** u32 */
   ProcessId: number;
   /** Windows.Win32.Foundation.PSTR */
-  pProcessName: string | null;
+  pProcessName: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSID */
   pUserSid: Uint8Array | Deno.PointerValue | null;
 }
@@ -1170,7 +1170,7 @@ export interface _u_e__Struct {
   /** u32 */
   dwValue: number;
   /** Windows.Win32.Foundation.PWSTR */
-  pwszName: string | null;
+  pwszName: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeof_u_e__Struct = 16;
@@ -2175,7 +2175,7 @@ export interface WTS_PROCESS_INFO_EXW {
   /** u32 */
   ProcessId: number;
   /** Windows.Win32.Foundation.PWSTR */
-  pProcessName: string | null;
+  pProcessName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PSID */
   pUserSid: Uint8Array | Deno.PointerValue | null;
   /** u32 */
@@ -2240,7 +2240,7 @@ export interface WTS_PROCESS_INFO_EXA {
   /** u32 */
   ProcessId: number;
   /** Windows.Win32.Foundation.PSTR */
-  pProcessName: string | null;
+  pProcessName: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSID */
   pUserSid: Uint8Array | Deno.PointerValue | null;
   /** u32 */
@@ -2966,7 +2966,7 @@ export interface pluginResource {
   /** array */
   name: Deno.PointerValue | null;
   /** Windows.Win32.Foundation.PWSTR */
-  resourceFileContents: string | null;
+  resourceFileContents: string | null | Uint8Array | Uint16Array;
   /** array */
   fileExtension: Deno.PointerValue | null;
   /** array */
@@ -3062,7 +3062,7 @@ export interface pluginResource2 {
   /** ptr */
   fileAssocList: Deno.PointerValue | Uint8Array | null;
   /** Windows.Win32.Foundation.PWSTR */
-  securityDescriptor: string | null;
+  securityDescriptor: string | null | Uint8Array | Uint16Array;
   /** u32 */
   pceFolderListSize: number;
   /** ptr */
@@ -3662,7 +3662,7 @@ export function allocUNLOAD_DLL_DEBUG_INFO(data?: Partial<UNLOAD_DLL_DEBUG_INFO>
  */
 export interface OUTPUT_DEBUG_STRING_INFO {
   /** Windows.Win32.Foundation.PSTR */
-  lpDebugStringData: string | null;
+  lpDebugStringData: string | null | Uint8Array;
   /** u16 */
   fUnicode: number;
   /** u16 */
@@ -5518,7 +5518,7 @@ export function WTSStopRemoteControlSession(
 }
 
 export function WTSStartRemoteControlSessionW(
-  pTargetServerName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pTargetServerName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   TargetLogonId: number /* u32 */,
   HotkeyVk: number /* u8 */,
   HotkeyModifiers: number /* u16 */,
@@ -5527,7 +5527,7 @@ export function WTSStartRemoteControlSessionW(
 }
 
 export function WTSStartRemoteControlSessionA(
-  pTargetServerName: string | null /* Windows.Win32.Foundation.PSTR */,
+  pTargetServerName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   TargetLogonId: number /* u32 */,
   HotkeyVk: number /* u8 */,
   HotkeyModifiers: number /* u16 */,
@@ -5538,7 +5538,7 @@ export function WTSStartRemoteControlSessionA(
 export function WTSConnectSessionA(
   LogonId: number /* u32 */,
   TargetLogonId: number /* u32 */,
-  pPassword: string | null /* Windows.Win32.Foundation.PSTR */,
+  pPassword: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   bWait: boolean /* Windows.Win32.Foundation.BOOL */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libWTSAPI32_dll.WTSConnectSessionA(LogonId, TargetLogonId, util.pstrToFfi(pPassword), util.boolToFfi(bWait)));
@@ -5547,14 +5547,14 @@ export function WTSConnectSessionA(
 export function WTSConnectSessionW(
   LogonId: number /* u32 */,
   TargetLogonId: number /* u32 */,
-  pPassword: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pPassword: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   bWait: boolean /* Windows.Win32.Foundation.BOOL */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libWTSAPI32_dll.WTSConnectSessionW(LogonId, TargetLogonId, util.pwstrToFfi(pPassword), util.boolToFfi(bWait)));
 }
 
 export function WTSEnumerateServersW(
-  pDomainName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pDomainName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   Reserved: number /* u32 */,
   Version: number /* u32 */,
   ppServerInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -5564,7 +5564,7 @@ export function WTSEnumerateServersW(
 }
 
 export function WTSEnumerateServersA(
-  pDomainName: string | null /* Windows.Win32.Foundation.PSTR */,
+  pDomainName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   Reserved: number /* u32 */,
   Version: number /* u32 */,
   ppServerInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -5574,25 +5574,25 @@ export function WTSEnumerateServersA(
 }
 
 export function WTSOpenServerW(
-  pServerName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pServerName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */ {
   return util.pointerFromFfi(libWTSAPI32_dll.WTSOpenServerW(util.pwstrToFfi(pServerName)));
 }
 
 export function WTSOpenServerA(
-  pServerName: string | null /* Windows.Win32.Foundation.PSTR */,
+  pServerName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */ {
   return util.pointerFromFfi(libWTSAPI32_dll.WTSOpenServerA(util.pstrToFfi(pServerName)));
 }
 
 export function WTSOpenServerExW(
-  pServerName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pServerName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */ {
   return util.pointerFromFfi(libWTSAPI32_dll.WTSOpenServerExW(util.pwstrToFfi(pServerName)));
 }
 
 export function WTSOpenServerExA(
-  pServerName: string | null /* Windows.Win32.Foundation.PSTR */,
+  pServerName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */ {
   return util.pointerFromFfi(libWTSAPI32_dll.WTSOpenServerExA(util.pstrToFfi(pServerName)));
 }
@@ -5692,8 +5692,8 @@ export function WTSQuerySessionInformationA(
 }
 
 export function WTSQueryUserConfigW(
-  pServerName: string | null /* Windows.Win32.Foundation.PWSTR */,
-  pUserName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pServerName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  pUserName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   WTSConfigClass: WTS_CONFIG_CLASS /* Windows.Win32.System.RemoteDesktop.WTS_CONFIG_CLASS */,
   ppBuffer: Deno.PointerValue | Uint8Array | null /* ptr */,
   pBytesReturned: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -5702,8 +5702,8 @@ export function WTSQueryUserConfigW(
 }
 
 export function WTSQueryUserConfigA(
-  pServerName: string | null /* Windows.Win32.Foundation.PSTR */,
-  pUserName: string | null /* Windows.Win32.Foundation.PSTR */,
+  pServerName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  pUserName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   WTSConfigClass: WTS_CONFIG_CLASS /* Windows.Win32.System.RemoteDesktop.WTS_CONFIG_CLASS */,
   ppBuffer: Deno.PointerValue | Uint8Array | null /* ptr */,
   pBytesReturned: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -5712,20 +5712,20 @@ export function WTSQueryUserConfigA(
 }
 
 export function WTSSetUserConfigW(
-  pServerName: string | null /* Windows.Win32.Foundation.PWSTR */,
-  pUserName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pServerName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  pUserName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   WTSConfigClass: WTS_CONFIG_CLASS /* Windows.Win32.System.RemoteDesktop.WTS_CONFIG_CLASS */,
-  pBuffer: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pBuffer: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   DataLength: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libWTSAPI32_dll.WTSSetUserConfigW(util.pwstrToFfi(pServerName), util.pwstrToFfi(pUserName), WTSConfigClass, util.pwstrToFfi(pBuffer), DataLength));
 }
 
 export function WTSSetUserConfigA(
-  pServerName: string | null /* Windows.Win32.Foundation.PSTR */,
-  pUserName: string | null /* Windows.Win32.Foundation.PSTR */,
+  pServerName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  pUserName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   WTSConfigClass: WTS_CONFIG_CLASS /* Windows.Win32.System.RemoteDesktop.WTS_CONFIG_CLASS */,
-  pBuffer: string | null /* Windows.Win32.Foundation.PSTR */,
+  pBuffer: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   DataLength: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libWTSAPI32_dll.WTSSetUserConfigA(util.pstrToFfi(pServerName), util.pstrToFfi(pUserName), WTSConfigClass, util.pstrToFfi(pBuffer), DataLength));
@@ -5734,9 +5734,9 @@ export function WTSSetUserConfigA(
 export function WTSSendMessageW(
   hServer: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
   SessionId: number /* u32 */,
-  pTitle: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pTitle: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   TitleLength: number /* u32 */,
-  pMessage: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pMessage: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   MessageLength: number /* u32 */,
   Style: MESSAGEBOX_STYLE /* Windows.Win32.UI.WindowsAndMessaging.MESSAGEBOX_STYLE */,
   Timeout: number /* u32 */,
@@ -5749,9 +5749,9 @@ export function WTSSendMessageW(
 export function WTSSendMessageA(
   hServer: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
   SessionId: number /* u32 */,
-  pTitle: string | null /* Windows.Win32.Foundation.PSTR */,
+  pTitle: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   TitleLength: number /* u32 */,
-  pMessage: string | null /* Windows.Win32.Foundation.PSTR */,
+  pMessage: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   MessageLength: number /* u32 */,
   Style: MESSAGEBOX_STYLE /* Windows.Win32.UI.WindowsAndMessaging.MESSAGEBOX_STYLE */,
   Timeout: number /* u32 */,
@@ -5795,14 +5795,14 @@ export function WTSWaitSystemEvent(
 export function WTSVirtualChannelOpen(
   hServer: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
   SessionId: number /* u32 */,
-  pVirtualName: string | null /* Windows.Win32.Foundation.PSTR */,
+  pVirtualName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): Deno.PointerValue | null /* Windows.Win32.System.RemoteDesktop.HwtsVirtualChannelHandle */ {
   return util.pointerFromFfi(libWTSAPI32_dll.WTSVirtualChannelOpen(util.toPointer(hServer), SessionId, util.pstrToFfi(pVirtualName)));
 }
 
 export function WTSVirtualChannelOpenEx(
   SessionId: number /* u32 */,
-  pVirtualName: string | null /* Windows.Win32.Foundation.PSTR */,
+  pVirtualName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   flags: number /* u32 */,
 ): Deno.PointerValue | null /* Windows.Win32.System.RemoteDesktop.HwtsVirtualChannelHandle */ {
   return util.pointerFromFfi(libWTSAPI32_dll.WTSVirtualChannelOpenEx(SessionId, util.pstrToFfi(pVirtualName), flags));
@@ -5817,7 +5817,7 @@ export function WTSVirtualChannelClose(
 export function WTSVirtualChannelRead(
   hChannelHandle: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
   TimeOut: number /* u32 */,
-  Buffer: string | null /* Windows.Win32.Foundation.PSTR */,
+  Buffer: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   BufferSize: number /* u32 */,
   pBytesRead: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
@@ -5826,7 +5826,7 @@ export function WTSVirtualChannelRead(
 
 export function WTSVirtualChannelWrite(
   hChannelHandle: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  Buffer: string | null /* Windows.Win32.Foundation.PSTR */,
+  Buffer: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   Length: number /* u32 */,
   pBytesWritten: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
@@ -5955,7 +5955,7 @@ export function WTSQueryListenerConfigW(
   hServer: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
   pReserved: Deno.PointerValue | Uint8Array | null /* ptr */,
   Reserved: number /* u32 */,
-  pListenerName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pListenerName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pBuffer: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libWTSAPI32_dll.WTSQueryListenerConfigW(util.toPointer(hServer), util.toPointer(pReserved), Reserved, util.pwstrToFfi(pListenerName), util.toPointer(pBuffer)));
@@ -5965,7 +5965,7 @@ export function WTSQueryListenerConfigA(
   hServer: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
   pReserved: Deno.PointerValue | Uint8Array | null /* ptr */,
   Reserved: number /* u32 */,
-  pListenerName: string | null /* Windows.Win32.Foundation.PSTR */,
+  pListenerName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   pBuffer: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libWTSAPI32_dll.WTSQueryListenerConfigA(util.toPointer(hServer), util.toPointer(pReserved), Reserved, util.pstrToFfi(pListenerName), util.toPointer(pBuffer)));
@@ -5975,7 +5975,7 @@ export function WTSCreateListenerW(
   hServer: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
   pReserved: Deno.PointerValue | Uint8Array | null /* ptr */,
   Reserved: number /* u32 */,
-  pListenerName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pListenerName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pBuffer: Deno.PointerValue | Uint8Array | null /* ptr */,
   flag: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
@@ -5986,7 +5986,7 @@ export function WTSCreateListenerA(
   hServer: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
   pReserved: Deno.PointerValue | Uint8Array | null /* ptr */,
   Reserved: number /* u32 */,
-  pListenerName: string | null /* Windows.Win32.Foundation.PSTR */,
+  pListenerName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   pBuffer: Deno.PointerValue | Uint8Array | null /* ptr */,
   flag: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
@@ -5997,7 +5997,7 @@ export function WTSSetListenerSecurityW(
   hServer: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
   pReserved: Deno.PointerValue | Uint8Array | null /* ptr */,
   Reserved: number /* u32 */,
-  pListenerName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pListenerName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   SecurityInformation: number /* u32 */,
   pSecurityDescriptor: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Security.PSECURITY_DESCRIPTOR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
@@ -6008,7 +6008,7 @@ export function WTSSetListenerSecurityA(
   hServer: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
   pReserved: Deno.PointerValue | Uint8Array | null /* ptr */,
   Reserved: number /* u32 */,
-  pListenerName: string | null /* Windows.Win32.Foundation.PSTR */,
+  pListenerName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   SecurityInformation: number /* u32 */,
   pSecurityDescriptor: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Security.PSECURITY_DESCRIPTOR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
@@ -6019,7 +6019,7 @@ export function WTSGetListenerSecurityW(
   hServer: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
   pReserved: Deno.PointerValue | Uint8Array | null /* ptr */,
   Reserved: number /* u32 */,
-  pListenerName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pListenerName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   SecurityInformation: number /* u32 */,
   pSecurityDescriptor: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Security.PSECURITY_DESCRIPTOR */,
   nLength: number /* u32 */,
@@ -6032,7 +6032,7 @@ export function WTSGetListenerSecurityA(
   hServer: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
   pReserved: Deno.PointerValue | Uint8Array | null /* ptr */,
   Reserved: number /* u32 */,
-  pListenerName: string | null /* Windows.Win32.Foundation.PSTR */,
+  pListenerName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   SecurityInformation: number /* u32 */,
   pSecurityDescriptor: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Security.PSECURITY_DESCRIPTOR */,
   nLength: number /* u32 */,

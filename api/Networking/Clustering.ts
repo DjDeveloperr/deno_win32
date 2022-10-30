@@ -2167,7 +2167,7 @@ export interface _u_e__Struct {
   /** u32 */
   dwValue: number;
   /** Windows.Win32.Foundation.PWSTR */
-  pwszName: string | null;
+  pwszName: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeof_u_e__Struct = 16;
@@ -2590,7 +2590,7 @@ export interface CLUSTER_BATCH_COMMAND {
   /** u32 */
   dwOptions: number;
   /** Windows.Win32.Foundation.PWSTR */
-  wzName: string | null;
+  wzName: string | null | Uint8Array | Uint16Array;
   /** ptr */
   lpData: Deno.PointerValue | Uint8Array | null;
   /** u32 */
@@ -2628,9 +2628,9 @@ export interface CLUSTER_READ_BATCH_COMMAND {
   /** u32 */
   dwOptions: number;
   /** Windows.Win32.Foundation.PWSTR */
-  wzSubkeyName: string | null;
+  wzSubkeyName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  wzValueName: string | null;
+  wzValueName: string | null | Uint8Array | Uint16Array;
   /** ptr */
   lpData: Deno.PointerValue | Uint8Array | null;
   /** u32 */
@@ -2675,11 +2675,11 @@ export interface CLUSTER_ENUM_ITEM {
   /** u32 */
   cbId: number;
   /** Windows.Win32.Foundation.PWSTR */
-  lpszId: string | null;
+  lpszId: string | null | Uint8Array | Uint16Array;
   /** u32 */
   cbName: number;
   /** Windows.Win32.Foundation.PWSTR */
-  lpszName: string | null;
+  lpszName: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeofCLUSTER_ENUM_ITEM = 40;
@@ -2839,7 +2839,7 @@ export function allocCLUSTER_SET_PASSWORD_STATUS(data?: Partial<CLUSTER_SET_PASS
  */
 export interface CLUSTER_IP_ENTRY {
   /** Windows.Win32.Foundation.PWSTR */
-  lpszIpAddress: string | null;
+  lpszIpAddress: string | null | Uint8Array | Uint16Array;
   /** u32 */
   dwPrefixLength: number;
 }
@@ -2867,7 +2867,7 @@ export interface CREATE_CLUSTER_CONFIG {
   /** u32 */
   dwVersion: number;
   /** Windows.Win32.Foundation.PWSTR */
-  lpszClusterName: string | null;
+  lpszClusterName: string | null | Uint8Array | Uint16Array;
   /** u32 */
   cNodes: number;
   /** ptr */
@@ -2923,15 +2923,15 @@ export interface CREATE_CLUSTER_NAME_ACCOUNT {
   /** u32 */
   dwVersion: number;
   /** Windows.Win32.Foundation.PWSTR */
-  lpszClusterName: string | null;
+  lpszClusterName: string | null | Uint8Array | Uint16Array;
   /** u32 */
   dwFlags: number;
   /** Windows.Win32.Foundation.PWSTR */
-  pszUserName: string | null;
+  pszUserName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pszPassword: string | null;
+  pszPassword: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pszDomain: string | null;
+  pszDomain: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Networking.Clustering.CLUSTER_MGMT_POINT_TYPE */
   managementPointType: CLUSTER_MGMT_POINT_TYPE;
   /** Windows.Win32.Networking.Clustering.CLUSTER_MGMT_POINT_RESTYPE */
@@ -3068,17 +3068,17 @@ export interface CLUSTER_GROUP_ENUM_ITEM {
   /** u32 */
   cbId: number;
   /** Windows.Win32.Foundation.PWSTR */
-  lpszId: string | null;
+  lpszId: string | null | Uint8Array | Uint16Array;
   /** u32 */
   cbName: number;
   /** Windows.Win32.Foundation.PWSTR */
-  lpszName: string | null;
+  lpszName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Networking.Clustering.CLUSTER_GROUP_STATE */
   state: CLUSTER_GROUP_STATE;
   /** u32 */
   cbOwnerNode: number;
   /** Windows.Win32.Foundation.PWSTR */
-  lpszOwnerNode: string | null;
+  lpszOwnerNode: string | null | Uint8Array | Uint16Array;
   /** u32 */
   dwFlags: number;
   /** u32 */
@@ -3145,19 +3145,19 @@ export interface CLUSTER_RESOURCE_ENUM_ITEM {
   /** u32 */
   cbId: number;
   /** Windows.Win32.Foundation.PWSTR */
-  lpszId: string | null;
+  lpszId: string | null | Uint8Array | Uint16Array;
   /** u32 */
   cbName: number;
   /** Windows.Win32.Foundation.PWSTR */
-  lpszName: string | null;
+  lpszName: string | null | Uint8Array | Uint16Array;
   /** u32 */
   cbOwnerGroupName: number;
   /** Windows.Win32.Foundation.PWSTR */
-  lpszOwnerGroupName: string | null;
+  lpszOwnerGroupName: string | null | Uint8Array | Uint16Array;
   /** u32 */
   cbOwnerGroupId: number;
   /** Windows.Win32.Foundation.PWSTR */
-  lpszOwnerGroupId: string | null;
+  lpszOwnerGroupId: string | null | Uint8Array | Uint16Array;
   /** u32 */
   cbProperties: number;
   /** ptr */
@@ -4434,7 +4434,7 @@ export interface CLUSPROP_BUFFER_HELPER {
   /** ptr */
   pl: Deno.PointerValue | Uint8Array | null;
   /** Windows.Win32.Foundation.PWSTR */
-  psz: string | null;
+  psz: string | null | Uint8Array | Uint16Array;
   /** ptr */
   pList: Deno.PointerValue | Uint8Array | null;
   /** ptr */
@@ -5391,9 +5391,9 @@ export function allocRESUTIL_FILETIME_DATA(data?: Partial<RESUTIL_FILETIME_DATA>
  */
 export interface RESUTIL_PROPERTY_ITEM {
   /** Windows.Win32.Foundation.PWSTR */
-  Name: string | null;
+  Name: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  KeyName: string | null;
+  KeyName: string | null | Uint8Array | Uint16Array;
   /** u32 */
   Format: number;
   /** _Anonymous_e__Union */
@@ -5585,15 +5585,15 @@ export function allocPOST_UPGRADE_VERSION_INFO(data?: Partial<POST_UPGRADE_VERSI
  */
 export interface CLUSTER_HEALTH_FAULT {
   /** Windows.Win32.Foundation.PWSTR */
-  Id: string | null;
+  Id: string | null | Uint8Array | Uint16Array;
   /** u32 */
   ErrorType: number;
   /** u32 */
   ErrorCode: number;
   /** Windows.Win32.Foundation.PWSTR */
-  Description: string | null;
+  Description: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  Provider: string | null;
+  Provider: string | null | Uint8Array | Uint16Array;
   /** u32 */
   Flags: number;
   /** u32 */
@@ -7223,20 +7223,20 @@ try {
 // Symbols
 
 export function GetNodeClusterState(
-  lpszNodeName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpszNodeName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pdwClusterState: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
   return libCLUSAPI_dll.GetNodeClusterState(util.pwstrToFfi(lpszNodeName), util.toPointer(pdwClusterState));
 }
 
 export function OpenCluster(
-  lpszClusterName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpszClusterName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): Deno.PointerValue | null /* ptr */ {
   return util.pointerFromFfi(libCLUSAPI_dll.OpenCluster(util.pwstrToFfi(lpszClusterName)));
 }
 
 export function OpenClusterEx(
-  lpszClusterName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpszClusterName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   DesiredAccess: number /* u32 */,
   GrantedAccess: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* ptr */ {
@@ -7251,14 +7251,14 @@ export function CloseCluster(
 
 export function SetClusterName(
   hCluster: Deno.PointerValue | Uint8Array | null /* ptr */,
-  lpszNewClusterName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpszNewClusterName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
   return libCLUSAPI_dll.SetClusterName(util.toPointer(hCluster), util.pwstrToFfi(lpszNewClusterName));
 }
 
 export function GetClusterInformation(
   hCluster: Deno.PointerValue | Uint8Array | null /* ptr */,
-  lpszClusterName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpszClusterName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   lpcchClusterName: Deno.PointerValue | Uint8Array | null /* ptr */,
   lpClusterInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
@@ -7267,9 +7267,9 @@ export function GetClusterInformation(
 
 export function GetClusterQuorumResource(
   hCluster: Deno.PointerValue | Uint8Array | null /* ptr */,
-  lpszResourceName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpszResourceName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   lpcchResourceName: Deno.PointerValue | Uint8Array | null /* ptr */,
-  lpszDeviceName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpszDeviceName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   lpcchDeviceName: Deno.PointerValue | Uint8Array | null /* ptr */,
   lpdwMaxQuorumLogSize: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
@@ -7278,7 +7278,7 @@ export function GetClusterQuorumResource(
 
 export function SetClusterQuorumResource(
   hResource: Deno.PointerValue | Uint8Array | null /* ptr */,
-  lpszDeviceName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpszDeviceName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   dwMaxQuoLogSize: number /* u32 */,
 ): number /* u32 */ {
   return libCLUSAPI_dll.SetClusterQuorumResource(util.toPointer(hResource), util.pwstrToFfi(lpszDeviceName), dwMaxQuoLogSize);
@@ -7286,15 +7286,15 @@ export function SetClusterQuorumResource(
 
 export function BackupClusterDatabase(
   hCluster: Deno.PointerValue | Uint8Array | null /* ptr */,
-  lpszPathName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpszPathName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
   return libCLUSAPI_dll.BackupClusterDatabase(util.toPointer(hCluster), util.pwstrToFfi(lpszPathName));
 }
 
 export function RestoreClusterDatabase(
-  lpszPathName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpszPathName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   bForce: boolean /* Windows.Win32.Foundation.BOOL */,
-  lpszQuorumDriveLetter: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpszQuorumDriveLetter: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
   return libCLUSAPI_dll.RestoreClusterDatabase(util.pwstrToFfi(lpszPathName), util.boolToFfi(bForce), util.pwstrToFfi(lpszQuorumDriveLetter));
 }
@@ -7308,8 +7308,8 @@ export function SetClusterNetworkPriorityOrder(
 }
 
 export function SetClusterServiceAccountPassword(
-  lpszClusterName: string | null /* Windows.Win32.Foundation.PWSTR */,
-  lpszNewPassword: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpszClusterName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  lpszNewPassword: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   dwFlags: number /* u32 */,
   lpReturnStatusBuffer: Deno.PointerValue | Uint8Array | null /* ptr */,
   lpcbReturnStatusBufferSize: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -7371,13 +7371,13 @@ export function GetClusterNotifyV2(
   pFilterAndType: Deno.PointerValue | Uint8Array | null /* ptr */,
   buffer: Deno.PointerValue | Uint8Array | null /* ptr */,
   lpbBufferSize: Deno.PointerValue | Uint8Array | null /* ptr */,
-  lpszObjectId: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpszObjectId: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   lpcchObjectId: Deno.PointerValue | Uint8Array | null /* ptr */,
-  lpszParentId: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpszParentId: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   lpcchParentId: Deno.PointerValue | Uint8Array | null /* ptr */,
-  lpszName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpszName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   lpcchName: Deno.PointerValue | Uint8Array | null /* ptr */,
-  lpszType: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpszType: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   lpcchType: Deno.PointerValue | Uint8Array | null /* ptr */,
   dwMilliseconds: number /* u32 */,
 ): number /* u32 */ {
@@ -7406,7 +7406,7 @@ export function GetClusterNotify(
   hChange: Deno.PointerValue | Uint8Array | null /* ptr */,
   lpdwNotifyKey: Deno.PointerValue | Uint8Array | null /* ptr */,
   lpdwFilterType: Deno.PointerValue | Uint8Array | null /* ptr */,
-  lpszName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpszName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   lpcchName: Deno.PointerValue | Uint8Array | null /* ptr */,
   dwMilliseconds: number /* u32 */,
 ): number /* u32 */ {
@@ -7436,7 +7436,7 @@ export function ClusterEnum(
   hEnum: Deno.PointerValue | Uint8Array | null /* ptr */,
   dwIndex: number /* u32 */,
   lpdwType: Deno.PointerValue | Uint8Array | null /* ptr */,
-  lpszName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpszName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   lpcchName: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
   return libCLUSAPI_dll.ClusterEnum(util.toPointer(hEnum), dwIndex, util.toPointer(lpdwType), util.pwstrToFfi(lpszName), util.toPointer(lpcchName));
@@ -7479,14 +7479,14 @@ export function ClusterCloseEnumEx(
 
 export function CreateClusterGroupSet(
   hCluster: Deno.PointerValue | Uint8Array | null /* ptr */,
-  groupSetName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  groupSetName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): Deno.PointerValue | null /* ptr */ {
   return util.pointerFromFfi(libCLUSAPI_dll.CreateClusterGroupSet(util.toPointer(hCluster), util.pwstrToFfi(groupSetName)));
 }
 
 export function OpenClusterGroupSet(
   hCluster: Deno.PointerValue | Uint8Array | null /* ptr */,
-  lpszGroupSetName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpszGroupSetName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): Deno.PointerValue | null /* ptr */ {
   return util.pointerFromFfi(libCLUSAPI_dll.OpenClusterGroupSet(util.toPointer(hCluster), util.pwstrToFfi(lpszGroupSetName)));
 }
@@ -7547,7 +7547,7 @@ export function AddClusterGroupDependency(
 
 export function SetGroupDependencyExpression(
   hGroup: Deno.PointerValue | Uint8Array | null /* ptr */,
-  lpszDependencyExpression: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpszDependencyExpression: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
   return libCLUSAPI_dll.SetGroupDependencyExpression(util.toPointer(hGroup), util.pwstrToFfi(lpszDependencyExpression));
 }
@@ -7568,7 +7568,7 @@ export function AddClusterGroupSetDependency(
 
 export function SetClusterGroupSetDependencyExpression(
   hGroupSet: Deno.PointerValue | Uint8Array | null /* ptr */,
-  lpszDependencyExprssion: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpszDependencyExprssion: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
   return libCLUSAPI_dll.SetClusterGroupSetDependencyExpression(util.toPointer(hGroupSet), util.pwstrToFfi(lpszDependencyExprssion));
 }
@@ -7609,7 +7609,7 @@ export function ClusterGroupSetGetEnumCount(
 export function ClusterGroupSetEnum(
   hGroupSetEnum: Deno.PointerValue | Uint8Array | null /* ptr */,
   dwIndex: number /* u32 */,
-  lpszName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpszName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   lpcchName: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
   return libCLUSAPI_dll.ClusterGroupSetEnum(util.toPointer(hGroupSetEnum), dwIndex, util.pwstrToFfi(lpszName), util.toPointer(lpcchName));
@@ -7623,23 +7623,23 @@ export function ClusterGroupSetCloseEnum(
 
 export function AddCrossClusterGroupSetDependency(
   hDependentGroupSet: Deno.PointerValue | Uint8Array | null /* ptr */,
-  lpRemoteClusterName: string | null /* Windows.Win32.Foundation.PWSTR */,
-  lpRemoteGroupSetName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpRemoteClusterName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  lpRemoteGroupSetName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
   return libCLUSAPI_dll.AddCrossClusterGroupSetDependency(util.toPointer(hDependentGroupSet), util.pwstrToFfi(lpRemoteClusterName), util.pwstrToFfi(lpRemoteGroupSetName));
 }
 
 export function RemoveCrossClusterGroupSetDependency(
   hDependentGroupSet: Deno.PointerValue | Uint8Array | null /* ptr */,
-  lpRemoteClusterName: string | null /* Windows.Win32.Foundation.PWSTR */,
-  lpRemoteGroupSetName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpRemoteClusterName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  lpRemoteGroupSetName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
   return libCLUSAPI_dll.RemoveCrossClusterGroupSetDependency(util.toPointer(hDependentGroupSet), util.pwstrToFfi(lpRemoteClusterName), util.pwstrToFfi(lpRemoteGroupSetName));
 }
 
 export function CreateClusterAvailabilitySet(
   hCluster: Deno.PointerValue | Uint8Array | null /* ptr */,
-  lpAvailabilitySetName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpAvailabilitySetName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pAvailabilitySetConfig: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* ptr */ {
   return util.pointerFromFfi(libCLUSAPI_dll.CreateClusterAvailabilitySet(util.toPointer(hCluster), util.pwstrToFfi(lpAvailabilitySetName), util.toPointer(pAvailabilitySetConfig)));
@@ -7647,15 +7647,15 @@ export function CreateClusterAvailabilitySet(
 
 export function ClusterNodeReplacement(
   hCluster: Deno.PointerValue | Uint8Array | null /* ptr */,
-  lpszNodeNameCurrent: string | null /* Windows.Win32.Foundation.PWSTR */,
-  lpszNodeNameNew: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpszNodeNameCurrent: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  lpszNodeNameNew: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
   return libCLUSAPI_dll.ClusterNodeReplacement(util.toPointer(hCluster), util.pwstrToFfi(lpszNodeNameCurrent), util.pwstrToFfi(lpszNodeNameNew));
 }
 
 export function ClusterCreateAffinityRule(
   hCluster: Deno.PointerValue | Uint8Array | null /* ptr */,
-  ruleName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  ruleName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   ruleType: CLUS_AFFINITY_RULE_TYPE /* Windows.Win32.Networking.Clustering.CLUS_AFFINITY_RULE_TYPE */,
 ): number /* u32 */ {
   return libCLUSAPI_dll.ClusterCreateAffinityRule(util.toPointer(hCluster), util.pwstrToFfi(ruleName), ruleType);
@@ -7663,14 +7663,14 @@ export function ClusterCreateAffinityRule(
 
 export function ClusterRemoveAffinityRule(
   hCluster: Deno.PointerValue | Uint8Array | null /* ptr */,
-  ruleName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  ruleName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
   return libCLUSAPI_dll.ClusterRemoveAffinityRule(util.toPointer(hCluster), util.pwstrToFfi(ruleName));
 }
 
 export function ClusterAddGroupToAffinityRule(
   hCluster: Deno.PointerValue | Uint8Array | null /* ptr */,
-  ruleName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  ruleName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   hGroup: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
   return libCLUSAPI_dll.ClusterAddGroupToAffinityRule(util.toPointer(hCluster), util.pwstrToFfi(ruleName), util.toPointer(hGroup));
@@ -7678,7 +7678,7 @@ export function ClusterAddGroupToAffinityRule(
 
 export function ClusterRemoveGroupFromAffinityRule(
   hCluster: Deno.PointerValue | Uint8Array | null /* ptr */,
-  ruleName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  ruleName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   hGroup: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
   return libCLUSAPI_dll.ClusterRemoveGroupFromAffinityRule(util.toPointer(hCluster), util.pwstrToFfi(ruleName), util.toPointer(hGroup));
@@ -7686,7 +7686,7 @@ export function ClusterRemoveGroupFromAffinityRule(
 
 export function ClusterAffinityRuleControl(
   hCluster: Deno.PointerValue | Uint8Array | null /* ptr */,
-  affinityRuleName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  affinityRuleName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   hHostNode: Deno.PointerValue | Uint8Array | null /* ptr */,
   dwControlCode: number /* u32 */,
   lpInBuffer: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -7700,14 +7700,14 @@ export function ClusterAffinityRuleControl(
 
 export function OpenClusterNode(
   hCluster: Deno.PointerValue | Uint8Array | null /* ptr */,
-  lpszNodeName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpszNodeName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): Deno.PointerValue | null /* ptr */ {
   return util.pointerFromFfi(libCLUSAPI_dll.OpenClusterNode(util.toPointer(hCluster), util.pwstrToFfi(lpszNodeName)));
 }
 
 export function OpenClusterNodeEx(
   hCluster: Deno.PointerValue | Uint8Array | null /* ptr */,
-  lpszNodeName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpszNodeName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   dwDesiredAccess: number /* u32 */,
   lpdwGrantedAccess: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* ptr */ {
@@ -7735,7 +7735,7 @@ export function GetClusterNodeState(
 
 export function GetClusterNodeId(
   hNode: Deno.PointerValue | Uint8Array | null /* ptr */,
-  lpszNodeId: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpszNodeId: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   lpcchName: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
   return libCLUSAPI_dll.GetClusterNodeId(util.toPointer(hNode), util.pwstrToFfi(lpszNodeId), util.toPointer(lpcchName));
@@ -7767,8 +7767,8 @@ export function EvictClusterNode(
 
 export function ClusterNetInterfaceOpenEnum(
   hCluster: Deno.PointerValue | Uint8Array | null /* ptr */,
-  lpszNodeName: string | null /* Windows.Win32.Foundation.PWSTR */,
-  lpszNetworkName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpszNodeName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  lpszNetworkName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): Deno.PointerValue | null /* ptr */ {
   return util.pointerFromFfi(libCLUSAPI_dll.ClusterNetInterfaceOpenEnum(util.toPointer(hCluster), util.pwstrToFfi(lpszNodeName), util.pwstrToFfi(lpszNetworkName)));
 }
@@ -7776,7 +7776,7 @@ export function ClusterNetInterfaceOpenEnum(
 export function ClusterNetInterfaceEnum(
   hNetInterfaceEnum: Deno.PointerValue | Uint8Array | null /* ptr */,
   dwIndex: number /* u32 */,
-  lpszName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpszName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   lpcchName: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
   return libCLUSAPI_dll.ClusterNetInterfaceEnum(util.toPointer(hNetInterfaceEnum), dwIndex, util.pwstrToFfi(lpszName), util.toPointer(lpcchName));
@@ -7840,7 +7840,7 @@ export function ClusterNodeEnum(
   hNodeEnum: Deno.PointerValue | Uint8Array | null /* ptr */,
   dwIndex: number /* u32 */,
   lpdwType: Deno.PointerValue | Uint8Array | null /* ptr */,
-  lpszName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpszName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   lpcchName: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
   return libCLUSAPI_dll.ClusterNodeEnum(util.toPointer(hNodeEnum), dwIndex, util.toPointer(lpdwType), util.pwstrToFfi(lpszName), util.toPointer(lpcchName));
@@ -7856,7 +7856,7 @@ export function EvictClusterNodeEx(
 
 export function GetClusterResourceTypeKey(
   hCluster: Deno.PointerValue | Uint8Array | null /* ptr */,
-  lpszTypeName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpszTypeName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   samDesired: number /* u32 */,
 ): Deno.PointerValue | null /* Windows.Win32.System.Registry.HKEY */ {
   return util.pointerFromFfi(libCLUSAPI_dll.GetClusterResourceTypeKey(util.toPointer(hCluster), util.pwstrToFfi(lpszTypeName), samDesired));
@@ -7864,21 +7864,21 @@ export function GetClusterResourceTypeKey(
 
 export function CreateClusterGroup(
   hCluster: Deno.PointerValue | Uint8Array | null /* ptr */,
-  lpszGroupName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpszGroupName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): Deno.PointerValue | null /* ptr */ {
   return util.pointerFromFfi(libCLUSAPI_dll.CreateClusterGroup(util.toPointer(hCluster), util.pwstrToFfi(lpszGroupName)));
 }
 
 export function OpenClusterGroup(
   hCluster: Deno.PointerValue | Uint8Array | null /* ptr */,
-  lpszGroupName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpszGroupName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): Deno.PointerValue | null /* ptr */ {
   return util.pointerFromFfi(libCLUSAPI_dll.OpenClusterGroup(util.toPointer(hCluster), util.pwstrToFfi(lpszGroupName)));
 }
 
 export function OpenClusterGroupEx(
   hCluster: Deno.PointerValue | Uint8Array | null /* ptr */,
-  lpszGroupName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpszGroupName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   dwDesiredAccess: number /* u32 */,
   lpdwGrantedAccess: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* ptr */ {
@@ -7904,7 +7904,7 @@ export function ResumeClusterNodeEx(
 
 export function CreateClusterGroupEx(
   hCluster: Deno.PointerValue | Uint8Array | null /* ptr */,
-  lpszGroupName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpszGroupName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pGroupInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* ptr */ {
   return util.pointerFromFfi(libCLUSAPI_dll.CreateClusterGroupEx(util.toPointer(hCluster), util.pwstrToFfi(lpszGroupName), util.toPointer(pGroupInfo)));
@@ -7912,9 +7912,9 @@ export function CreateClusterGroupEx(
 
 export function ClusterGroupOpenEnumEx(
   hCluster: Deno.PointerValue | Uint8Array | null /* ptr */,
-  lpszProperties: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpszProperties: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   cbProperties: number /* u32 */,
-  lpszRoProperties: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpszRoProperties: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   cbRoProperties: number /* u32 */,
   dwFlags: number /* u32 */,
 ): Deno.PointerValue | null /* ptr */ {
@@ -7944,9 +7944,9 @@ export function ClusterGroupCloseEnumEx(
 
 export function ClusterResourceOpenEnumEx(
   hCluster: Deno.PointerValue | Uint8Array | null /* ptr */,
-  lpszProperties: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpszProperties: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   cbProperties: number /* u32 */,
-  lpszRoProperties: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpszRoProperties: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   cbRoProperties: number /* u32 */,
   dwFlags: number /* u32 */,
 ): Deno.PointerValue | null /* ptr */ {
@@ -8049,7 +8049,7 @@ export function GetClusterFromGroup(
 
 export function GetClusterGroupState(
   hGroup: Deno.PointerValue | Uint8Array | null /* ptr */,
-  lpszNodeName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpszNodeName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   lpcchNodeName: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): CLUSTER_GROUP_STATE /* Windows.Win32.Networking.Clustering.CLUSTER_GROUP_STATE */ {
   return libCLUSAPI_dll.GetClusterGroupState(util.toPointer(hGroup), util.pwstrToFfi(lpszNodeName), util.toPointer(lpcchNodeName));
@@ -8057,7 +8057,7 @@ export function GetClusterGroupState(
 
 export function SetClusterGroupName(
   hGroup: Deno.PointerValue | Uint8Array | null /* ptr */,
-  lpszGroupName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpszGroupName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
   return libCLUSAPI_dll.SetClusterGroupName(util.toPointer(hGroup), util.pwstrToFfi(lpszGroupName));
 }
@@ -8119,7 +8119,7 @@ export function ClusterGroupEnum(
   hGroupEnum: Deno.PointerValue | Uint8Array | null /* ptr */,
   dwIndex: number /* u32 */,
   lpdwType: Deno.PointerValue | Uint8Array | null /* ptr */,
-  lpszResourceName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpszResourceName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   lpcchName: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
   return libCLUSAPI_dll.ClusterGroupEnum(util.toPointer(hGroupEnum), dwIndex, util.toPointer(lpdwType), util.pwstrToFfi(lpszResourceName), util.toPointer(lpcchName));
@@ -8133,8 +8133,8 @@ export function ClusterGroupCloseEnum(
 
 export function CreateClusterResource(
   hGroup: Deno.PointerValue | Uint8Array | null /* ptr */,
-  lpszResourceName: string | null /* Windows.Win32.Foundation.PWSTR */,
-  lpszResourceType: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpszResourceName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  lpszResourceType: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   dwFlags: number /* u32 */,
 ): Deno.PointerValue | null /* ptr */ {
   return util.pointerFromFfi(libCLUSAPI_dll.CreateClusterResource(util.toPointer(hGroup), util.pwstrToFfi(lpszResourceName), util.pwstrToFfi(lpszResourceType), dwFlags));
@@ -8142,14 +8142,14 @@ export function CreateClusterResource(
 
 export function OpenClusterResource(
   hCluster: Deno.PointerValue | Uint8Array | null /* ptr */,
-  lpszResourceName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpszResourceName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): Deno.PointerValue | null /* ptr */ {
   return util.pointerFromFfi(libCLUSAPI_dll.OpenClusterResource(util.toPointer(hCluster), util.pwstrToFfi(lpszResourceName)));
 }
 
 export function OpenClusterResourceEx(
   hCluster: Deno.PointerValue | Uint8Array | null /* ptr */,
-  lpszResourceName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpszResourceName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   dwDesiredAccess: number /* u32 */,
   lpdwGrantedAccess: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* ptr */ {
@@ -8176,9 +8176,9 @@ export function DeleteClusterResource(
 
 export function GetClusterResourceState(
   hResource: Deno.PointerValue | Uint8Array | null /* ptr */,
-  lpszNodeName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpszNodeName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   lpcchNodeName: Deno.PointerValue | Uint8Array | null /* ptr */,
-  lpszGroupName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpszGroupName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   lpcchGroupName: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): CLUSTER_RESOURCE_STATE /* Windows.Win32.Networking.Clustering.CLUSTER_RESOURCE_STATE */ {
   return libCLUSAPI_dll.GetClusterResourceState(util.toPointer(hResource), util.pwstrToFfi(lpszNodeName), util.toPointer(lpcchNodeName), util.pwstrToFfi(lpszGroupName), util.toPointer(lpcchGroupName));
@@ -8186,7 +8186,7 @@ export function GetClusterResourceState(
 
 export function SetClusterResourceName(
   hResource: Deno.PointerValue | Uint8Array | null /* ptr */,
-  lpszResourceName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpszResourceName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
   return libCLUSAPI_dll.SetClusterResourceName(util.toPointer(hResource), util.pwstrToFfi(lpszResourceName));
 }
@@ -8254,14 +8254,14 @@ export function RemoveClusterResourceDependency(
 
 export function SetClusterResourceDependencyExpression(
   hResource: Deno.PointerValue | Uint8Array | null /* ptr */,
-  lpszDependencyExpression: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpszDependencyExpression: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
   return libCLUSAPI_dll.SetClusterResourceDependencyExpression(util.toPointer(hResource), util.pwstrToFfi(lpszDependencyExpression));
 }
 
 export function GetClusterResourceDependencyExpression(
   hResource: Deno.PointerValue | Uint8Array | null /* ptr */,
-  lpszDependencyExpression: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpszDependencyExpression: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   lpcchDependencyExpression: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
   return libCLUSAPI_dll.GetClusterResourceDependencyExpression(util.toPointer(hResource), util.pwstrToFfi(lpszDependencyExpression), util.toPointer(lpcchDependencyExpression));
@@ -8280,7 +8280,7 @@ export function RemoveResourceFromClusterSharedVolumes(
 }
 
 export function IsFileOnClusterSharedVolume(
-  lpszPathName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpszPathName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pbFileIsOnSharedVolume: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
   return libCLUSAPI_dll.IsFileOnClusterSharedVolume(util.pwstrToFfi(lpszPathName), util.toPointer(pbFileIsOnSharedVolume));
@@ -8288,7 +8288,7 @@ export function IsFileOnClusterSharedVolume(
 
 export function ClusterSharedVolumeSetSnapshotState(
   guidSnapshotSet: Uint8Array | Deno.PointerValue | null /* System.Guid */,
-  lpszVolumeName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpszVolumeName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   state: CLUSTER_SHARED_VOLUME_SNAPSHOT_STATE /* Windows.Win32.Networking.Clustering.CLUSTER_SHARED_VOLUME_SNAPSHOT_STATE */,
 ): number /* u32 */ {
   return libCLUSAPI_dll.ClusterSharedVolumeSetSnapshotState(util.toPointer(guidSnapshotSet), util.pwstrToFfi(lpszVolumeName), state);
@@ -8329,7 +8329,7 @@ export function ClusterResourceControlAsUser(
 
 export function ClusterResourceTypeControl(
   hCluster: Deno.PointerValue | Uint8Array | null /* ptr */,
-  lpszResourceTypeName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpszResourceTypeName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   hHostNode: Deno.PointerValue | Uint8Array | null /* ptr */,
   dwControlCode: number /* u32 */,
   lpInBuffer: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -8343,7 +8343,7 @@ export function ClusterResourceTypeControl(
 
 export function ClusterResourceTypeControlAsUser(
   hCluster: Deno.PointerValue | Uint8Array | null /* ptr */,
-  lpszResourceTypeName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpszResourceTypeName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   hHostNode: Deno.PointerValue | Uint8Array | null /* ptr */,
   dwControlCode: number /* u32 */,
   lpInBuffer: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -8383,7 +8383,7 @@ export function ClusterNodeControl(
 
 export function GetClusterResourceNetworkName(
   hResource: Deno.PointerValue | Uint8Array | null /* ptr */,
-  lpBuffer: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpBuffer: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   nSize: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libCLUSAPI_dll.GetClusterResourceNetworkName(util.toPointer(hResource), util.pwstrToFfi(lpBuffer), util.toPointer(nSize)));
@@ -8406,7 +8406,7 @@ export function ClusterResourceEnum(
   hResEnum: Deno.PointerValue | Uint8Array | null /* ptr */,
   dwIndex: number /* u32 */,
   lpdwType: Deno.PointerValue | Uint8Array | null /* ptr */,
-  lpszName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpszName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   lpcchName: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
   return libCLUSAPI_dll.ClusterResourceEnum(util.toPointer(hResEnum), dwIndex, util.toPointer(lpdwType), util.pwstrToFfi(lpszName), util.toPointer(lpcchName));
@@ -8420,9 +8420,9 @@ export function ClusterResourceCloseEnum(
 
 export function CreateClusterResourceType(
   hCluster: Deno.PointerValue | Uint8Array | null /* ptr */,
-  lpszResourceTypeName: string | null /* Windows.Win32.Foundation.PWSTR */,
-  lpszDisplayName: string | null /* Windows.Win32.Foundation.PWSTR */,
-  lpszResourceTypeDll: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpszResourceTypeName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  lpszDisplayName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  lpszResourceTypeDll: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   dwLooksAlivePollInterval: number /* u32 */,
   dwIsAlivePollInterval: number /* u32 */,
 ): number /* u32 */ {
@@ -8431,14 +8431,14 @@ export function CreateClusterResourceType(
 
 export function DeleteClusterResourceType(
   hCluster: Deno.PointerValue | Uint8Array | null /* ptr */,
-  lpszResourceTypeName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpszResourceTypeName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
   return libCLUSAPI_dll.DeleteClusterResourceType(util.toPointer(hCluster), util.pwstrToFfi(lpszResourceTypeName));
 }
 
 export function ClusterResourceTypeOpenEnum(
   hCluster: Deno.PointerValue | Uint8Array | null /* ptr */,
-  lpszResourceTypeName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpszResourceTypeName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   dwType: number /* u32 */,
 ): Deno.PointerValue | null /* ptr */ {
   return util.pointerFromFfi(libCLUSAPI_dll.ClusterResourceTypeOpenEnum(util.toPointer(hCluster), util.pwstrToFfi(lpszResourceTypeName), dwType));
@@ -8454,7 +8454,7 @@ export function ClusterResourceTypeEnum(
   hResTypeEnum: Deno.PointerValue | Uint8Array | null /* ptr */,
   dwIndex: number /* u32 */,
   lpdwType: Deno.PointerValue | Uint8Array | null /* ptr */,
-  lpszName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpszName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   lpcchName: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
   return libCLUSAPI_dll.ClusterResourceTypeEnum(util.toPointer(hResTypeEnum), dwIndex, util.toPointer(lpdwType), util.pwstrToFfi(lpszName), util.toPointer(lpcchName));
@@ -8468,14 +8468,14 @@ export function ClusterResourceTypeCloseEnum(
 
 export function OpenClusterNetwork(
   hCluster: Deno.PointerValue | Uint8Array | null /* ptr */,
-  lpszNetworkName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpszNetworkName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): Deno.PointerValue | null /* ptr */ {
   return util.pointerFromFfi(libCLUSAPI_dll.OpenClusterNetwork(util.toPointer(hCluster), util.pwstrToFfi(lpszNetworkName)));
 }
 
 export function OpenClusterNetworkEx(
   hCluster: Deno.PointerValue | Uint8Array | null /* ptr */,
-  lpszNetworkName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpszNetworkName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   dwDesiredAccess: number /* u32 */,
   lpdwGrantedAccess: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* ptr */ {
@@ -8511,7 +8511,7 @@ export function ClusterNetworkEnum(
   hNetworkEnum: Deno.PointerValue | Uint8Array | null /* ptr */,
   dwIndex: number /* u32 */,
   lpdwType: Deno.PointerValue | Uint8Array | null /* ptr */,
-  lpszName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpszName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   lpcchName: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
   return libCLUSAPI_dll.ClusterNetworkEnum(util.toPointer(hNetworkEnum), dwIndex, util.toPointer(lpdwType), util.pwstrToFfi(lpszName), util.toPointer(lpcchName));
@@ -8531,14 +8531,14 @@ export function GetClusterNetworkState(
 
 export function SetClusterNetworkName(
   hNetwork: Deno.PointerValue | Uint8Array | null /* ptr */,
-  lpszName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpszName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
   return libCLUSAPI_dll.SetClusterNetworkName(util.toPointer(hNetwork), util.pwstrToFfi(lpszName));
 }
 
 export function GetClusterNetworkId(
   hNetwork: Deno.PointerValue | Uint8Array | null /* ptr */,
-  lpszNetworkId: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpszNetworkId: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   lpcchName: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
   return libCLUSAPI_dll.GetClusterNetworkId(util.toPointer(hNetwork), util.pwstrToFfi(lpszNetworkId), util.toPointer(lpcchName));
@@ -8559,14 +8559,14 @@ export function ClusterNetworkControl(
 
 export function OpenClusterNetInterface(
   hCluster: Deno.PointerValue | Uint8Array | null /* ptr */,
-  lpszInterfaceName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpszInterfaceName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): Deno.PointerValue | null /* ptr */ {
   return util.pointerFromFfi(libCLUSAPI_dll.OpenClusterNetInterface(util.toPointer(hCluster), util.pwstrToFfi(lpszInterfaceName)));
 }
 
 export function OpenClusterNetInterfaceEx(
   hCluster: Deno.PointerValue | Uint8Array | null /* ptr */,
-  lpszInterfaceName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpszInterfaceName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   dwDesiredAccess: number /* u32 */,
   lpdwGrantedAccess: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* ptr */ {
@@ -8575,9 +8575,9 @@ export function OpenClusterNetInterfaceEx(
 
 export function GetClusterNetInterface(
   hCluster: Deno.PointerValue | Uint8Array | null /* ptr */,
-  lpszNodeName: string | null /* Windows.Win32.Foundation.PWSTR */,
-  lpszNetworkName: string | null /* Windows.Win32.Foundation.PWSTR */,
-  lpszInterfaceName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpszNodeName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  lpszNetworkName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  lpszInterfaceName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   lpcchInterfaceName: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
   return libCLUSAPI_dll.GetClusterNetInterface(util.toPointer(hCluster), util.pwstrToFfi(lpszNodeName), util.pwstrToFfi(lpszNetworkName), util.pwstrToFfi(lpszInterfaceName), util.toPointer(lpcchInterfaceName));
@@ -8658,7 +8658,7 @@ export function GetClusterNetInterfaceKey(
 
 export function ClusterRegCreateKey(
   hKey: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Registry.HKEY */,
-  lpszSubKey: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpszSubKey: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   dwOptions: number /* u32 */,
   samDesired: number /* u32 */,
   lpSecurityAttributes: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -8670,7 +8670,7 @@ export function ClusterRegCreateKey(
 
 export function ClusterRegOpenKey(
   hKey: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Registry.HKEY */,
-  lpszSubKey: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpszSubKey: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   samDesired: number /* u32 */,
   phkResult: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
@@ -8679,7 +8679,7 @@ export function ClusterRegOpenKey(
 
 export function ClusterRegDeleteKey(
   hKey: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Registry.HKEY */,
-  lpszSubKey: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpszSubKey: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* i32 */ {
   return libCLUSAPI_dll.ClusterRegDeleteKey(util.toPointer(hKey), util.pwstrToFfi(lpszSubKey));
 }
@@ -8693,7 +8693,7 @@ export function ClusterRegCloseKey(
 export function ClusterRegEnumKey(
   hKey: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Registry.HKEY */,
   dwIndex: number /* u32 */,
-  lpszName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpszName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   lpcchName: Deno.PointerValue | Uint8Array | null /* ptr */,
   lpftLastWriteTime: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
@@ -8702,7 +8702,7 @@ export function ClusterRegEnumKey(
 
 export function ClusterRegSetValue(
   hKey: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Registry.HKEY */,
-  lpszValueName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpszValueName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   dwType: number /* u32 */,
   lpData: Deno.PointerValue | Uint8Array | null /* ptr */,
   cbData: number /* u32 */,
@@ -8712,14 +8712,14 @@ export function ClusterRegSetValue(
 
 export function ClusterRegDeleteValue(
   hKey: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Registry.HKEY */,
-  lpszValueName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpszValueName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
   return libCLUSAPI_dll.ClusterRegDeleteValue(util.toPointer(hKey), util.pwstrToFfi(lpszValueName));
 }
 
 export function ClusterRegQueryValue(
   hKey: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Registry.HKEY */,
-  lpszValueName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpszValueName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   lpdwValueType: Deno.PointerValue | Uint8Array | null /* ptr */,
   lpData: Deno.PointerValue | Uint8Array | null /* ptr */,
   lpcbData: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -8730,7 +8730,7 @@ export function ClusterRegQueryValue(
 export function ClusterRegEnumValue(
   hKey: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Registry.HKEY */,
   dwIndex: number /* u32 */,
-  lpszValueName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpszValueName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   lpcchValueName: Deno.PointerValue | Uint8Array | null /* ptr */,
   lpdwType: Deno.PointerValue | Uint8Array | null /* ptr */,
   lpData: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -8786,7 +8786,7 @@ export function ClusterRegCreateBatch(
 export function ClusterRegBatchAddCommand(
   hRegBatch: Deno.PointerValue | Uint8Array | null /* ptr */,
   dwCommand: CLUSTER_REG_COMMAND /* Windows.Win32.Networking.Clustering.CLUSTER_REG_COMMAND */,
-  wzName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  wzName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   dwOptions: number /* u32 */,
   lpData: Deno.PointerValue | Uint8Array | null /* ptr */,
   cbData: number /* u32 */,
@@ -8852,8 +8852,8 @@ export function ClusterRegCreateReadBatch(
 
 export function ClusterRegReadBatchAddCommand(
   hRegReadBatch: Deno.PointerValue | Uint8Array | null /* ptr */,
-  wzSubkeyName: string | null /* Windows.Win32.Foundation.PWSTR */,
-  wzValueName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  wzSubkeyName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  wzValueName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* i32 */ {
   return libCLUSAPI_dll.ClusterRegReadBatchAddCommand(util.toPointer(hRegReadBatch), util.pwstrToFfi(wzSubkeyName), util.pwstrToFfi(wzValueName));
 }
@@ -8888,7 +8888,7 @@ export function ClusterRegCloseReadBatchReply(
 
 export function ClusterSetAccountAccess(
   hCluster: Deno.PointerValue | Uint8Array | null /* ptr */,
-  szAccountSID: string | null /* Windows.Win32.Foundation.PWSTR */,
+  szAccountSID: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   dwAccess: number /* u32 */,
   dwControlType: number /* u32 */,
 ): number /* u32 */ {
@@ -8950,7 +8950,7 @@ export function DetermineClusterCloudTypeFromCluster(
 }
 
 export function GetNodeCloudTypeDW(
-  ppszNodeName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  ppszNodeName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   NodeCloudType: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
   return libCLUSAPI_dll.GetNodeCloudTypeDW(util.pwstrToFfi(ppszNodeName), util.toPointer(NodeCloudType));
@@ -8960,7 +8960,7 @@ export function RegisterClusterResourceTypeNotifyV2(
   hChange: Deno.PointerValue | Uint8Array | null /* ptr */,
   hCluster: Deno.PointerValue | Uint8Array | null /* ptr */,
   Flags: Deno.PointerValue /* i64 */,
-  resTypeName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  resTypeName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   dwNotifyKey: Deno.PointerValue /* usize */,
 ): number /* u32 */ {
   return libCLUSAPI_dll.RegisterClusterResourceTypeNotifyV2(util.toPointer(hChange), util.toPointer(hCluster), Flags, util.pwstrToFfi(resTypeName), dwNotifyKey);
@@ -8968,7 +8968,7 @@ export function RegisterClusterResourceTypeNotifyV2(
 
 export function AddClusterNode(
   hCluster: Deno.PointerValue | Uint8Array | null /* ptr */,
-  lpszNodeName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpszNodeName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pfnProgressCallback: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Networking.Clustering.PCLUSTER_SETUP_PROGRESS_CALLBACK */,
   pvCallbackArg: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* ptr */ {
@@ -8977,18 +8977,18 @@ export function AddClusterNode(
 
 export function AddClusterStorageNode(
   hCluster: Deno.PointerValue | Uint8Array | null /* ptr */,
-  lpszNodeName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpszNodeName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pfnProgressCallback: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Networking.Clustering.PCLUSTER_SETUP_PROGRESS_CALLBACK */,
   pvCallbackArg: Deno.PointerValue | Uint8Array | null /* ptr */,
-  lpszClusterStorageNodeDescription: string | null /* Windows.Win32.Foundation.PWSTR */,
-  lpszClusterStorageNodeLocation: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpszClusterStorageNodeDescription: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  lpszClusterStorageNodeLocation: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
   return libCLUSAPI_dll.AddClusterStorageNode(util.toPointer(hCluster), util.pwstrToFfi(lpszNodeName), util.toPointer(pfnProgressCallback), util.toPointer(pvCallbackArg), util.pwstrToFfi(lpszClusterStorageNodeDescription), util.pwstrToFfi(lpszClusterStorageNodeLocation));
 }
 
 export function AddClusterNodeEx(
   hCluster: Deno.PointerValue | Uint8Array | null /* ptr */,
-  lpszNodeName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpszNodeName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   dwFlags: number /* u32 */,
   pfnProgressCallback: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Networking.Clustering.PCLUSTER_SETUP_PROGRESS_CALLBACK */,
   pvCallbackArg: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -8998,7 +8998,7 @@ export function AddClusterNodeEx(
 
 export function RemoveClusterStorageNode(
   hCluster: Deno.PointerValue | Uint8Array | null /* ptr */,
-  lpszClusterStorageEnclosureName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpszClusterStorageEnclosureName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   dwTimeout: number /* u32 */,
   dwFlags: number /* u32 */,
 ): number /* u32 */ {
@@ -9048,7 +9048,7 @@ export function ClusGetClusterHealthFaults(
 
 export function ClusRemoveClusterHealthFault(
   hCluster: Deno.PointerValue | Uint8Array | null /* ptr */,
-  id: string | null /* Windows.Win32.Foundation.PWSTR */,
+  id: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   flags: number /* u32 */,
 ): number /* u32 */ {
   return libRESUTILS_dll.ClusRemoveClusterHealthFault(util.toPointer(hCluster), util.pwstrToFfi(id), flags);
@@ -9063,20 +9063,20 @@ export function ClusAddClusterHealthFault(
 }
 
 export function ResUtilStartResourceService(
-  pszServiceName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pszServiceName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   phServiceHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
   return libRESUTILS_dll.ResUtilStartResourceService(util.pwstrToFfi(pszServiceName), util.toPointer(phServiceHandle));
 }
 
 export function ResUtilVerifyResourceService(
-  pszServiceName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pszServiceName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
   return libRESUTILS_dll.ResUtilVerifyResourceService(util.pwstrToFfi(pszServiceName));
 }
 
 export function ResUtilStopResourceService(
-  pszServiceName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pszServiceName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
   return libRESUTILS_dll.ResUtilStopResourceService(util.pwstrToFfi(pszServiceName));
 }
@@ -9094,20 +9094,20 @@ export function ResUtilStopService(
 }
 
 export function ResUtilCreateDirectoryTree(
-  pszPath: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pszPath: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
   return libRESUTILS_dll.ResUtilCreateDirectoryTree(util.pwstrToFfi(pszPath));
 }
 
 export function ResUtilIsPathValid(
-  pszPath: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pszPath: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libRESUTILS_dll.ResUtilIsPathValid(util.pwstrToFfi(pszPath)));
 }
 
 export function ResUtilEnumProperties(
   pPropertyTable: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pszOutProperties: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pszOutProperties: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   cbOutPropertiesSize: number /* u32 */,
   pcbBytesReturned: Deno.PointerValue | Uint8Array | null /* ptr */,
   pcbRequired: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -9117,7 +9117,7 @@ export function ResUtilEnumProperties(
 
 export function ResUtilEnumPrivateProperties(
   hkeyClusterKey: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Registry.HKEY */,
-  pszOutProperties: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pszOutProperties: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   cbOutPropertiesSize: number /* u32 */,
   pcbBytesReturned: Deno.PointerValue | Uint8Array | null /* ptr */,
   pcbRequired: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -9309,14 +9309,14 @@ export function ResUtilVerifyPrivatePropertyList(
 }
 
 export function ResUtilDupString(
-  pszInString: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pszInString: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): string | null /* Windows.Win32.Foundation.PWSTR */ {
   return util.pwstrFromFfi(libRESUTILS_dll.ResUtilDupString(util.pwstrToFfi(pszInString)));
 }
 
 export function ResUtilGetBinaryValue(
   hkeyClusterKey: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Registry.HKEY */,
-  pszValueName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pszValueName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   ppbOutValue: Deno.PointerValue | Uint8Array | null /* ptr */,
   pcbOutValueSize: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
@@ -9325,14 +9325,14 @@ export function ResUtilGetBinaryValue(
 
 export function ResUtilGetSzValue(
   hkeyClusterKey: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Registry.HKEY */,
-  pszValueName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pszValueName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): string | null /* Windows.Win32.Foundation.PWSTR */ {
   return util.pwstrFromFfi(libRESUTILS_dll.ResUtilGetSzValue(util.toPointer(hkeyClusterKey), util.pwstrToFfi(pszValueName)));
 }
 
 export function ResUtilGetDwordValue(
   hkeyClusterKey: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Registry.HKEY */,
-  pszValueName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pszValueName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pdwOutValue: Deno.PointerValue | Uint8Array | null /* ptr */,
   dwDefaultValue: number /* u32 */,
 ): number /* u32 */ {
@@ -9341,7 +9341,7 @@ export function ResUtilGetDwordValue(
 
 export function ResUtilGetQwordValue(
   hkeyClusterKey: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Registry.HKEY */,
-  pszValueName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pszValueName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pqwOutValue: Deno.PointerValue | Uint8Array | null /* ptr */,
   qwDefaultValue: Deno.PointerValue /* u64 */,
 ): number /* u32 */ {
@@ -9350,7 +9350,7 @@ export function ResUtilGetQwordValue(
 
 export function ResUtilSetBinaryValue(
   hkeyClusterKey: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Registry.HKEY */,
-  pszValueName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pszValueName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pbNewValue: Deno.PointerValue | Uint8Array | null /* ptr */,
   cbNewValueSize: number /* u32 */,
   ppbOutValue: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -9361,8 +9361,8 @@ export function ResUtilSetBinaryValue(
 
 export function ResUtilSetSzValue(
   hkeyClusterKey: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Registry.HKEY */,
-  pszValueName: string | null /* Windows.Win32.Foundation.PWSTR */,
-  pszNewValue: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pszValueName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  pszNewValue: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   ppszOutString: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
   return libRESUTILS_dll.ResUtilSetSzValue(util.toPointer(hkeyClusterKey), util.pwstrToFfi(pszValueName), util.pwstrToFfi(pszNewValue), util.toPointer(ppszOutString));
@@ -9370,8 +9370,8 @@ export function ResUtilSetSzValue(
 
 export function ResUtilSetExpandSzValue(
   hkeyClusterKey: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Registry.HKEY */,
-  pszValueName: string | null /* Windows.Win32.Foundation.PWSTR */,
-  pszNewValue: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pszValueName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  pszNewValue: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   ppszOutString: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
   return libRESUTILS_dll.ResUtilSetExpandSzValue(util.toPointer(hkeyClusterKey), util.pwstrToFfi(pszValueName), util.pwstrToFfi(pszNewValue), util.toPointer(ppszOutString));
@@ -9379,8 +9379,8 @@ export function ResUtilSetExpandSzValue(
 
 export function ResUtilSetMultiSzValue(
   hkeyClusterKey: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Registry.HKEY */,
-  pszValueName: string | null /* Windows.Win32.Foundation.PWSTR */,
-  pszNewValue: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pszValueName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  pszNewValue: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   cbNewValueSize: number /* u32 */,
   ppszOutValue: Deno.PointerValue | Uint8Array | null /* ptr */,
   pcbOutValueSize: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -9390,7 +9390,7 @@ export function ResUtilSetMultiSzValue(
 
 export function ResUtilSetDwordValue(
   hkeyClusterKey: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Registry.HKEY */,
-  pszValueName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pszValueName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   dwNewValue: number /* u32 */,
   pdwOutValue: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
@@ -9399,7 +9399,7 @@ export function ResUtilSetDwordValue(
 
 export function ResUtilSetQwordValue(
   hkeyClusterKey: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Registry.HKEY */,
-  pszValueName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pszValueName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   qwNewValue: Deno.PointerValue /* u64 */,
   pqwOutValue: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
@@ -9408,7 +9408,7 @@ export function ResUtilSetQwordValue(
 
 export function ResUtilSetValueEx(
   hkeyClusterKey: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Registry.HKEY */,
-  valueName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  valueName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   valueType: number /* u32 */,
   valueData: Deno.PointerValue | Uint8Array | null /* ptr */,
   valueSize: number /* u32 */,
@@ -9432,7 +9432,7 @@ export function ResUtilGetBinaryProperty(
 export function ResUtilGetSzProperty(
   ppszOutValue: Deno.PointerValue | Uint8Array | null /* ptr */,
   pValueStruct: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pszOldValue: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pszOldValue: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   ppPropertyList: Deno.PointerValue | Uint8Array | null /* ptr */,
   pcbPropertyListSize: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
@@ -9443,7 +9443,7 @@ export function ResUtilGetMultiSzProperty(
   ppszOutValue: Deno.PointerValue | Uint8Array | null /* ptr */,
   pcbOutValueSize: Deno.PointerValue | Uint8Array | null /* ptr */,
   pValueStruct: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pszOldValue: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pszOldValue: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   cbOldValueSize: number /* u32 */,
   ppPropertyList: Deno.PointerValue | Uint8Array | null /* ptr */,
   pcbPropertyListSize: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -9500,13 +9500,13 @@ export function ResUtilFreeEnvironment(
 }
 
 export function ResUtilExpandEnvironmentStrings(
-  pszSrc: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pszSrc: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): string | null /* Windows.Win32.Foundation.PWSTR */ {
   return util.pwstrFromFfi(libRESUTILS_dll.ResUtilExpandEnvironmentStrings(util.pwstrToFfi(pszSrc)));
 }
 
 export function ResUtilSetResourceServiceEnvironment(
-  pszServiceName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pszServiceName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   hResource: Deno.PointerValue | Uint8Array | null /* ptr */,
   pfnLogEvent: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Networking.Clustering.PLOG_EVENT_ROUTINE */,
   hResourceHandle: Deno.PointerValue /* isize */,
@@ -9515,7 +9515,7 @@ export function ResUtilSetResourceServiceEnvironment(
 }
 
 export function ResUtilRemoveResourceServiceEnvironment(
-  pszServiceName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pszServiceName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pfnLogEvent: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Networking.Clustering.PLOG_EVENT_ROUTINE */,
   hResourceHandle: Deno.PointerValue /* isize */,
 ): number /* u32 */ {
@@ -9523,7 +9523,7 @@ export function ResUtilRemoveResourceServiceEnvironment(
 }
 
 export function ResUtilSetResourceServiceStartParameters(
-  pszServiceName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pszServiceName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   schSCMHandle: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Security.SC_HANDLE */,
   phService: Deno.PointerValue | Uint8Array | null /* ptr */,
   pfnLogEvent: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Networking.Clustering.PLOG_EVENT_ROUTINE */,
@@ -9535,7 +9535,7 @@ export function ResUtilSetResourceServiceStartParameters(
 export function ResUtilFindSzProperty(
   pPropertyList: Deno.PointerValue | Uint8Array | null /* ptr */,
   cbPropertyListSize: number /* u32 */,
-  pszPropertyName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pszPropertyName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pszPropertyValue: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
   return libRESUTILS_dll.ResUtilFindSzProperty(util.toPointer(pPropertyList), cbPropertyListSize, util.pwstrToFfi(pszPropertyName), util.toPointer(pszPropertyValue));
@@ -9544,7 +9544,7 @@ export function ResUtilFindSzProperty(
 export function ResUtilFindExpandSzProperty(
   pPropertyList: Deno.PointerValue | Uint8Array | null /* ptr */,
   cbPropertyListSize: number /* u32 */,
-  pszPropertyName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pszPropertyName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pszPropertyValue: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
   return libRESUTILS_dll.ResUtilFindExpandSzProperty(util.toPointer(pPropertyList), cbPropertyListSize, util.pwstrToFfi(pszPropertyName), util.toPointer(pszPropertyValue));
@@ -9553,7 +9553,7 @@ export function ResUtilFindExpandSzProperty(
 export function ResUtilFindExpandedSzProperty(
   pPropertyList: Deno.PointerValue | Uint8Array | null /* ptr */,
   cbPropertyListSize: number /* u32 */,
-  pszPropertyName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pszPropertyName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pszPropertyValue: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
   return libRESUTILS_dll.ResUtilFindExpandedSzProperty(util.toPointer(pPropertyList), cbPropertyListSize, util.pwstrToFfi(pszPropertyName), util.toPointer(pszPropertyValue));
@@ -9562,7 +9562,7 @@ export function ResUtilFindExpandedSzProperty(
 export function ResUtilFindDwordProperty(
   pPropertyList: Deno.PointerValue | Uint8Array | null /* ptr */,
   cbPropertyListSize: number /* u32 */,
-  pszPropertyName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pszPropertyName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pdwPropertyValue: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
   return libRESUTILS_dll.ResUtilFindDwordProperty(util.toPointer(pPropertyList), cbPropertyListSize, util.pwstrToFfi(pszPropertyName), util.toPointer(pdwPropertyValue));
@@ -9571,7 +9571,7 @@ export function ResUtilFindDwordProperty(
 export function ResUtilFindBinaryProperty(
   pPropertyList: Deno.PointerValue | Uint8Array | null /* ptr */,
   cbPropertyListSize: number /* u32 */,
-  pszPropertyName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pszPropertyName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pbPropertyValue: Deno.PointerValue | Uint8Array | null /* ptr */,
   pcbPropertyValueSize: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
@@ -9581,7 +9581,7 @@ export function ResUtilFindBinaryProperty(
 export function ResUtilFindMultiSzProperty(
   pPropertyList: Deno.PointerValue | Uint8Array | null /* ptr */,
   cbPropertyListSize: number /* u32 */,
-  pszPropertyName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pszPropertyName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pszPropertyValue: Deno.PointerValue | Uint8Array | null /* ptr */,
   pcbPropertyValueSize: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
@@ -9591,7 +9591,7 @@ export function ResUtilFindMultiSzProperty(
 export function ResUtilFindLongProperty(
   pPropertyList: Deno.PointerValue | Uint8Array | null /* ptr */,
   cbPropertyListSize: number /* u32 */,
-  pszPropertyName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pszPropertyName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   plPropertyValue: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
   return libRESUTILS_dll.ResUtilFindLongProperty(util.toPointer(pPropertyList), cbPropertyListSize, util.pwstrToFfi(pszPropertyName), util.toPointer(plPropertyValue));
@@ -9600,7 +9600,7 @@ export function ResUtilFindLongProperty(
 export function ResUtilFindULargeIntegerProperty(
   pPropertyList: Deno.PointerValue | Uint8Array | null /* ptr */,
   cbPropertyListSize: number /* u32 */,
-  pszPropertyName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pszPropertyName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   plPropertyValue: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
   return libRESUTILS_dll.ResUtilFindULargeIntegerProperty(util.toPointer(pPropertyList), cbPropertyListSize, util.pwstrToFfi(pszPropertyName), util.toPointer(plPropertyValue));
@@ -9609,7 +9609,7 @@ export function ResUtilFindULargeIntegerProperty(
 export function ResUtilFindFileTimeProperty(
   pPropertyList: Deno.PointerValue | Uint8Array | null /* ptr */,
   cbPropertyListSize: number /* u32 */,
-  pszPropertyName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pszPropertyName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pftPropertyValue: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
   return libRESUTILS_dll.ResUtilFindFileTimeProperty(util.toPointer(pPropertyList), cbPropertyListSize, util.pwstrToFfi(pszPropertyName), util.toPointer(pftPropertyValue));
@@ -9660,7 +9660,7 @@ export function ResUtilResourcesEqual(
 }
 
 export function ResUtilResourceTypesEqual(
-  lpszResourceTypeName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpszResourceTypeName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   hResource: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libRESUTILS_dll.ResUtilResourceTypesEqual(util.pwstrToFfi(lpszResourceTypeName), util.toPointer(hResource)));
@@ -9675,7 +9675,7 @@ export function ResUtilIsResourceClassEqual(
 
 export function ResUtilEnumResources(
   hSelf: Deno.PointerValue | Uint8Array | null /* ptr */,
-  lpszResTypeName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpszResTypeName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pResCallBack: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Networking.Clustering.LPRESOURCE_CALLBACK */,
   pParameter: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
@@ -9685,7 +9685,7 @@ export function ResUtilEnumResources(
 export function ResUtilEnumResourcesEx(
   hCluster: Deno.PointerValue | Uint8Array | null /* ptr */,
   hSelf: Deno.PointerValue | Uint8Array | null /* ptr */,
-  lpszResTypeName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpszResTypeName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pResCallBack: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Networking.Clustering.LPRESOURCE_CALLBACK_EX */,
   pParameter: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
@@ -9694,7 +9694,7 @@ export function ResUtilEnumResourcesEx(
 
 export function ResUtilGetResourceDependency(
   hSelf: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  lpszResourceType: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpszResourceType: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): Deno.PointerValue | null /* ptr */ {
   return util.pointerFromFfi(libRESUTILS_dll.ResUtilGetResourceDependency(util.toPointer(hSelf), util.pwstrToFfi(lpszResourceType)));
 }
@@ -9702,7 +9702,7 @@ export function ResUtilGetResourceDependency(
 export function ResUtilGetResourceDependencyByName(
   hCluster: Deno.PointerValue | Uint8Array | null /* ptr */,
   hSelf: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  lpszResourceType: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpszResourceType: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   bRecurse: boolean /* Windows.Win32.Foundation.BOOL */,
 ): Deno.PointerValue | null /* ptr */ {
   return util.pointerFromFfi(libRESUTILS_dll.ResUtilGetResourceDependencyByName(util.toPointer(hCluster), util.toPointer(hSelf), util.pwstrToFfi(lpszResourceType), util.boolToFfi(bRecurse)));
@@ -9718,19 +9718,19 @@ export function ResUtilGetResourceDependencyByClass(
 }
 
 export function ResUtilGetResourceNameDependency(
-  lpszResourceName: string | null /* Windows.Win32.Foundation.PWSTR */,
-  lpszResourceType: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpszResourceName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  lpszResourceType: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): Deno.PointerValue | null /* ptr */ {
   return util.pointerFromFfi(libRESUTILS_dll.ResUtilGetResourceNameDependency(util.pwstrToFfi(lpszResourceName), util.pwstrToFfi(lpszResourceType)));
 }
 
 export function ResUtilGetResourceDependentIPAddressProps(
   hResource: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pszAddress: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pszAddress: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pcchAddress: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pszSubnetMask: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pszSubnetMask: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pcchSubnetMask: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pszNetwork: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pszNetwork: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pcchNetwork: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
   return libRESUTILS_dll.ResUtilGetResourceDependentIPAddressProps(util.toPointer(hResource), util.pwstrToFfi(pszAddress), util.toPointer(pcchAddress), util.pwstrToFfi(pszSubnetMask), util.toPointer(pcchSubnetMask), util.pwstrToFfi(pszNetwork), util.toPointer(pcchNetwork));
@@ -9739,7 +9739,7 @@ export function ResUtilGetResourceDependentIPAddressProps(
 export function ResUtilFindDependentDiskResourceDriveLetter(
   hCluster: Deno.PointerValue | Uint8Array | null /* ptr */,
   hResource: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pszDriveLetter: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pszDriveLetter: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pcchDriveLetter: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
   return libRESUTILS_dll.ResUtilFindDependentDiskResourceDriveLetter(util.toPointer(hCluster), util.toPointer(hResource), util.pwstrToFfi(pszDriveLetter), util.toPointer(pcchDriveLetter));
@@ -9776,7 +9776,7 @@ export function ResUtilGetCoreClusterResources(
 
 export function ResUtilGetResourceName(
   hResource: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pszResourceName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pszResourceName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pcchResourceNameInOut: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
   return libRESUTILS_dll.ResUtilGetResourceName(util.toPointer(hResource), util.pwstrToFfi(pszResourceName), util.toPointer(pcchResourceNameInOut));
@@ -9790,45 +9790,45 @@ export function ResUtilGetClusterRoleState(
 }
 
 export function ClusterIsPathOnSharedVolume(
-  lpszPathName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpszPathName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libRESUTILS_dll.ClusterIsPathOnSharedVolume(util.pwstrToFfi(lpszPathName)));
 }
 
 export function ClusterGetVolumePathName(
-  lpszFileName: string | null /* Windows.Win32.Foundation.PWSTR */,
-  lpszVolumePathName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpszFileName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  lpszVolumePathName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   cchBufferLength: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libRESUTILS_dll.ClusterGetVolumePathName(util.pwstrToFfi(lpszFileName), util.pwstrToFfi(lpszVolumePathName), cchBufferLength));
 }
 
 export function ClusterGetVolumeNameForVolumeMountPoint(
-  lpszVolumeMountPoint: string | null /* Windows.Win32.Foundation.PWSTR */,
-  lpszVolumeName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpszVolumeMountPoint: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  lpszVolumeName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   cchBufferLength: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libRESUTILS_dll.ClusterGetVolumeNameForVolumeMountPoint(util.pwstrToFfi(lpszVolumeMountPoint), util.pwstrToFfi(lpszVolumeName), cchBufferLength));
 }
 
 export function ClusterPrepareSharedVolumeForBackup(
-  lpszFileName: string | null /* Windows.Win32.Foundation.PWSTR */,
-  lpszVolumePathName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpszFileName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  lpszVolumePathName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   lpcchVolumePathName: Deno.PointerValue | Uint8Array | null /* ptr */,
-  lpszVolumeName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpszVolumeName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   lpcchVolumeName: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
   return libRESUTILS_dll.ClusterPrepareSharedVolumeForBackup(util.pwstrToFfi(lpszFileName), util.pwstrToFfi(lpszVolumePathName), util.toPointer(lpcchVolumePathName), util.pwstrToFfi(lpszVolumeName), util.toPointer(lpcchVolumeName));
 }
 
 export function ClusterClearBackupStateForSharedVolume(
-  lpszVolumePathName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpszVolumePathName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
   return libRESUTILS_dll.ClusterClearBackupStateForSharedVolume(util.pwstrToFfi(lpszVolumePathName));
 }
 
 export function ResUtilSetResourceServiceStartParametersEx(
-  pszServiceName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pszServiceName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   schSCMHandle: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Security.SC_HANDLE */,
   phService: Deno.PointerValue | Uint8Array | null /* ptr */,
   dwDesiredAccess: number /* u32 */,
@@ -9841,7 +9841,7 @@ export function ResUtilSetResourceServiceStartParametersEx(
 export function ResUtilEnumResourcesEx2(
   hCluster: Deno.PointerValue | Uint8Array | null /* ptr */,
   hSelf: Deno.PointerValue | Uint8Array | null /* ptr */,
-  lpszResTypeName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpszResTypeName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pResCallBack: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Networking.Clustering.LPRESOURCE_CALLBACK_EX */,
   pParameter: Deno.PointerValue | Uint8Array | null /* ptr */,
   dwDesiredAccess: number /* u32 */,
@@ -9851,7 +9851,7 @@ export function ResUtilEnumResourcesEx2(
 
 export function ResUtilGetResourceDependencyEx(
   hSelf: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  lpszResourceType: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpszResourceType: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   dwDesiredAccess: number /* u32 */,
 ): Deno.PointerValue | null /* ptr */ {
   return util.pointerFromFfi(libRESUTILS_dll.ResUtilGetResourceDependencyEx(util.toPointer(hSelf), util.pwstrToFfi(lpszResourceType), dwDesiredAccess));
@@ -9860,7 +9860,7 @@ export function ResUtilGetResourceDependencyEx(
 export function ResUtilGetResourceDependencyByNameEx(
   hCluster: Deno.PointerValue | Uint8Array | null /* ptr */,
   hSelf: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  lpszResourceType: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpszResourceType: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   bRecurse: boolean /* Windows.Win32.Foundation.BOOL */,
   dwDesiredAccess: number /* u32 */,
 ): Deno.PointerValue | null /* ptr */ {
@@ -9878,8 +9878,8 @@ export function ResUtilGetResourceDependencyByClassEx(
 }
 
 export function ResUtilGetResourceNameDependencyEx(
-  lpszResourceName: string | null /* Windows.Win32.Foundation.PWSTR */,
-  lpszResourceType: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpszResourceName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  lpszResourceType: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   dwDesiredAccess: number /* u32 */,
 ): Deno.PointerValue | null /* ptr */ {
   return util.pointerFromFfi(libRESUTILS_dll.ResUtilGetResourceNameDependencyEx(util.pwstrToFfi(lpszResourceName), util.pwstrToFfi(lpszResourceType), dwDesiredAccess));
@@ -9895,7 +9895,7 @@ export function ResUtilGetCoreClusterResourcesEx(
 }
 
 export function OpenClusterCryptProvider(
-  lpszResource: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpszResource: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   lpszProvider: Deno.PointerValue | Uint8Array | null /* ptr */,
   dwType: number /* u32 */,
   dwFlags: number /* u32 */,
@@ -9904,8 +9904,8 @@ export function OpenClusterCryptProvider(
 }
 
 export function OpenClusterCryptProviderEx(
-  lpszResource: string | null /* Windows.Win32.Foundation.PWSTR */,
-  lpszKeyname: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpszResource: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  lpszKeyname: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   lpszProvider: Deno.PointerValue | Uint8Array | null /* ptr */,
   dwType: number /* u32 */,
   dwFlags: number /* u32 */,
@@ -9969,7 +9969,7 @@ export function ResUtilLeftPaxosIsLessThanRight(
 
 export function ResUtilsDeleteKeyTree(
   key: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Registry.HKEY */,
-  keyName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  keyName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   treatNoKeyAsError: boolean /* Windows.Win32.Foundation.BOOL */,
 ): number /* u32 */ {
   return libRESUTILS_dll.ResUtilsDeleteKeyTree(util.toPointer(key), util.pwstrToFfi(keyName), util.boolToFfi(treatNoKeyAsError));

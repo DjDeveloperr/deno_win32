@@ -1622,7 +1622,7 @@ export type PSTR = Deno.PointerValue | Uint8Array | null;
  */
 export interface DSPROPERTY_DIRECTSOUNDDEVICE_WAVEDEVICEMAPPING_A_DATA {
   /** Windows.Win32.Foundation.PSTR */
-  DeviceName: string | null;
+  DeviceName: string | null | Uint8Array;
   /** Windows.Win32.Media.Audio.DirectMusic.DIRECTSOUNDDEVICE_DATAFLOW */
   DataFlow: DIRECTSOUNDDEVICE_DATAFLOW;
   /** System.Guid */
@@ -1654,7 +1654,7 @@ export type PWSTR = Deno.PointerValue | Uint8Array | null;
  */
 export interface DSPROPERTY_DIRECTSOUNDDEVICE_WAVEDEVICEMAPPING_W_DATA {
   /** Windows.Win32.Foundation.PWSTR */
-  DeviceName: string | null;
+  DeviceName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Media.Audio.DirectMusic.DIRECTSOUNDDEVICE_DATAFLOW */
   DataFlow: DIRECTSOUNDDEVICE_DATAFLOW;
   /** System.Guid */
@@ -1740,11 +1740,11 @@ export interface DSPROPERTY_DIRECTSOUNDDEVICE_DESCRIPTION_A_DATA {
   /** System.Guid */
   DeviceId: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.Foundation.PSTR */
-  Description: string | null;
+  Description: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  Module: string | null;
+  Module: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  Interface: string | null;
+  Interface: string | null | Uint8Array;
   /** u32 */
   WaveDeviceId: number;
 }
@@ -1792,11 +1792,11 @@ export interface DSPROPERTY_DIRECTSOUNDDEVICE_DESCRIPTION_W_DATA {
   /** System.Guid */
   DeviceId: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.Foundation.PWSTR */
-  Description: string | null;
+  Description: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  Module: string | null;
+  Module: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  Interface: string | null;
+  Interface: string | null | Uint8Array | Uint16Array;
   /** u32 */
   WaveDeviceId: number;
 }

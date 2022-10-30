@@ -669,7 +669,7 @@ export interface _u_e__Struct {
   /** u32 */
   dwValue: number;
   /** Windows.Win32.Foundation.PWSTR */
-  pwszName: string | null;
+  pwszName: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeof_u_e__Struct = 16;
@@ -737,11 +737,11 @@ export interface __UPV {
   /** Windows.Win32.Foundation.FILETIME */
   ft: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.Foundation.PSTR */
-  lpszA: string | null;
+  lpszA: string | null | Uint8Array;
   /** Windows.Win32.System.AddressBook.SBinary */
   bin: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.Foundation.PWSTR */
-  lpszW: string | null;
+  lpszW: string | null | Uint8Array | Uint16Array;
   /** ptr */
   lpguid: Deno.PointerValue | Uint8Array | null;
   /** Windows.Win32.Foundation.LARGE_INTEGER */
@@ -1464,7 +1464,7 @@ export interface _Kind_e__Union {
   /** i32 */
   lID: number;
   /** Windows.Win32.Foundation.PWSTR */
-  lpwstrName: string | null;
+  lpwstrName: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeof_Kind_e__Union = 16;
@@ -2538,7 +2538,7 @@ export interface WAB_PARAM {
   /** Windows.Win32.Foundation.HWND */
   hwnd: Deno.PointerValue | null;
   /** Windows.Win32.Foundation.PSTR */
-  szFileName: string | null;
+  szFileName: string | null | Uint8Array;
   /** u32 */
   ulFlags: number;
   /** System.Guid */
@@ -2581,7 +2581,7 @@ export interface WABIMPORTPARAM {
   /** u32 */
   ulFlags: number;
   /** Windows.Win32.Foundation.PSTR */
-  lpszFileName: string | null;
+  lpszFileName: string | null | Uint8Array;
 }
 
 export const sizeofWABIMPORTPARAM = 40;
@@ -3277,16 +3277,16 @@ export function UFromSz(
 }
 
 export function ScUNCFromLocalPath(
-  lpszLocal: string | null /* Windows.Win32.Foundation.PSTR */,
-  lpszUNC: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpszLocal: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  lpszUNC: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   cchUNC: number /* u32 */,
 ): number /* i32 */ {
   return libMAPI32_dll.ScUNCFromLocalPath(util.pstrToFfi(lpszLocal), util.pstrToFfi(lpszUNC), cchUNC);
 }
 
 export function ScLocalPathFromUNC(
-  lpszUNC: string | null /* Windows.Win32.Foundation.PSTR */,
-  lpszLocal: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpszUNC: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  lpszLocal: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   cchLocal: number /* u32 */,
 ): number /* i32 */ {
   return libMAPI32_dll.ScLocalPathFromUNC(util.pstrToFfi(lpszUNC), util.pstrToFfi(lpszLocal), cchLocal);

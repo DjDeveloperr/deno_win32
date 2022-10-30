@@ -330,7 +330,7 @@ export function allocVARIANT(data?: Partial<VARIANT>): Uint8Array {
  */
 export interface MMC_SNAPIN_PROPERTY {
   /** Windows.Win32.Foundation.PWSTR */
-  pszPropName: string | null;
+  pszPropName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.System.Com.VARIANT */
   varValue: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.System.Mmc.MMC_PROPERTY_ACTION */
@@ -368,9 +368,9 @@ export interface MMCBUTTON {
   /** u8 */
   fsType: number;
   /** Windows.Win32.Foundation.PWSTR */
-  lpButtonText: string | null;
+  lpButtonText: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  lpTooltipText: string | null;
+  lpTooltipText: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeofMMCBUTTON = 32;
@@ -419,7 +419,7 @@ export interface RESULTDATAITEM {
   /** i32 */
   nCol: number;
   /** Windows.Win32.Foundation.PWSTR */
-  str: string | null;
+  str: string | null | Uint8Array | Uint16Array;
   /** i32 */
   nImage: number;
   /** u32 */
@@ -467,7 +467,7 @@ export function allocRESULTDATAITEM(data?: Partial<RESULTDATAITEM>): Uint8Array 
  */
 export interface RESULTFINDINFO {
   /** Windows.Win32.Foundation.PWSTR */
-  psz: string | null;
+  psz: string | null | Uint8Array | Uint16Array;
   /** i32 */
   nStart: number;
   /** u32 */
@@ -498,7 +498,7 @@ export interface SCOPEDATAITEM {
   /** u32 */
   mask: number;
   /** Windows.Win32.Foundation.PWSTR */
-  displayname: string | null;
+  displayname: string | null | Uint8Array | Uint16Array;
   /** i32 */
   nImage: number;
   /** i32 */
@@ -550,9 +550,9 @@ export function allocSCOPEDATAITEM(data?: Partial<SCOPEDATAITEM>): Uint8Array {
  */
 export interface CONTEXTMENUITEM {
   /** Windows.Win32.Foundation.PWSTR */
-  strName: string | null;
+  strName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  strStatusBarText: string | null;
+  strStatusBarText: string | null | Uint8Array | Uint16Array;
   /** i32 */
   lCommandID: number;
   /** i32 */
@@ -621,7 +621,7 @@ export function allocMENUBUTTONDATA(data?: Partial<MENUBUTTONDATA>): Uint8Array 
  */
 export interface MMC_FILTERDATA {
   /** Windows.Win32.Foundation.PWSTR */
-  pszText: string | null;
+  pszText: string | null | Uint8Array | Uint16Array;
   /** i32 */
   cchTextMax: number;
   /** i32 */
@@ -654,7 +654,7 @@ export interface MMC_RESTORE_VIEW {
   /** isize */
   cookie: Deno.PointerValue;
   /** Windows.Win32.Foundation.PWSTR */
-  pViewType: string | null;
+  pViewType: string | null | Uint8Array | Uint16Array;
   /** i32 */
   lViewOptions: number;
 }
@@ -855,11 +855,11 @@ export function allocSColumnSetID(data?: Partial<SColumnSetID>): Uint8Array {
  */
 export interface MMC_TASK_DISPLAY_SYMBOL {
   /** Windows.Win32.Foundation.PWSTR */
-  szFontFamilyName: string | null;
+  szFontFamilyName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  szURLtoEOT: string | null;
+  szURLtoEOT: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  szSymbolString: string | null;
+  szSymbolString: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeofMMC_TASK_DISPLAY_SYMBOL = 24;
@@ -890,9 +890,9 @@ export function allocMMC_TASK_DISPLAY_SYMBOL(data?: Partial<MMC_TASK_DISPLAY_SYM
  */
 export interface MMC_TASK_DISPLAY_BITMAP {
   /** Windows.Win32.Foundation.PWSTR */
-  szMouseOverBitmap: string | null;
+  szMouseOverBitmap: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  szMouseOffBitmap: string | null;
+  szMouseOffBitmap: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeofMMC_TASK_DISPLAY_BITMAP = 16;
@@ -943,9 +943,9 @@ export interface MMC_TASK {
   /** Windows.Win32.System.Mmc.MMC_TASK_DISPLAY_OBJECT */
   sDisplayObject: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.Foundation.PWSTR */
-  szText: string | null;
+  szText: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  szHelpString: string | null;
+  szHelpString: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.System.Mmc.MMC_ACTION_TYPE */
   eActionType: MMC_ACTION_TYPE;
   /** _Anonymous_e__Union */
@@ -982,9 +982,9 @@ export function allocMMC_TASK(data?: Partial<MMC_TASK>): Uint8Array {
  */
 export interface MMC_LISTPAD_INFO {
   /** Windows.Win32.Foundation.PWSTR */
-  szTitle: string | null;
+  szTitle: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  szButtonText: string | null;
+  szButtonText: string | null | Uint8Array | Uint16Array;
   /** isize */
   nCommandID: Deno.PointerValue;
 }
@@ -1189,7 +1189,7 @@ export function allocRDCOMPARE(data?: Partial<RDCOMPARE>): Uint8Array {
  */
 export interface RESULT_VIEW_TYPE_INFO {
   /** Windows.Win32.Foundation.PWSTR */
-  pstrPersistableViewDescription: string | null;
+  pstrPersistableViewDescription: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.System.Mmc.MMC_VIEW_TYPE */
   eViewType: MMC_VIEW_TYPE;
   /** u32 */
@@ -1222,9 +1222,9 @@ export function allocRESULT_VIEW_TYPE_INFO(data?: Partial<RESULT_VIEW_TYPE_INFO>
  */
 export interface CONTEXTMENUITEM2 {
   /** Windows.Win32.Foundation.PWSTR */
-  strName: string | null;
+  strName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  strStatusBarText: string | null;
+  strStatusBarText: string | null | Uint8Array | Uint16Array;
   /** i32 */
   lCommandID: number;
   /** i32 */
@@ -1234,7 +1234,7 @@ export interface CONTEXTMENUITEM2 {
   /** i32 */
   fSpecialFlags: number;
   /** Windows.Win32.Foundation.PWSTR */
-  strLanguageIndependentName: string | null;
+  strLanguageIndependentName: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeofCONTEXTMENUITEM2 = 40;
@@ -1275,11 +1275,11 @@ export interface MMC_EXT_VIEW_DATA {
   /** System.Guid */
   viewID: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.Foundation.PWSTR */
-  pszURL: string | null;
+  pszURL: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pszViewTitle: string | null;
+  pszViewTitle: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pszTooltipText: string | null;
+  pszTooltipText: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.BOOL */
   bReplacesDefaultView: boolean;
 }

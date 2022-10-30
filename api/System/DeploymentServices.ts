@@ -308,11 +308,11 @@ export type PWSTR = Deno.PointerValue | Uint8Array | null;
  */
 export interface WDS_CLI_CRED {
   /** Windows.Win32.Foundation.PWSTR */
-  pwszUserName: string | null;
+  pwszUserName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pwszDomain: string | null;
+  pwszDomain: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pwszPassword: string | null;
+  pwszPassword: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeofWDS_CLI_CRED = 24;
@@ -617,9 +617,9 @@ export interface PXE_PROVIDER {
   /** u32 */
   uSizeOfStruct: number;
   /** Windows.Win32.Foundation.PWSTR */
-  pwszName: string | null;
+  pwszName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pwszFilePath: string | null;
+  pwszFilePath: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.BOOL */
   bIsCritical: boolean;
   /** u32 */
@@ -778,7 +778,7 @@ export interface _u_e__Struct {
   /** u32 */
   dwValue: number;
   /** Windows.Win32.Foundation.PWSTR */
-  pwszName: string | null;
+  pwszName: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeof_u_e__Struct = 16;
@@ -862,11 +862,11 @@ export interface WDS_TRANSPORTCLIENT_REQUEST {
   /** Windows.Win32.System.DeploymentServices.WDS_TRANSPORTCLIENT_REQUEST_AUTH_LEVEL */
   ulAuthLevel: WDS_TRANSPORTCLIENT_REQUEST_AUTH_LEVEL;
   /** Windows.Win32.Foundation.PWSTR */
-  pwszServer: string | null;
+  pwszServer: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pwszNamespace: string | null;
+  pwszNamespace: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pwszObjectName: string | null;
+  pwszObjectName: string | null | Uint8Array | Uint16Array;
   /** u32 */
   ulCacheSize: number;
   /** u32 */
@@ -1415,7 +1415,7 @@ export function WdsCliGetImageHandleFromTransferHandle(
 }
 
 export function WdsCliCreateSession(
-  pwszServer: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pwszServer: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pCred: Deno.PointerValue | Uint8Array | null /* ptr */,
   phSession: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
@@ -1432,8 +1432,8 @@ export function WdsCliAuthorizeSession(
 export function WdsCliInitializeLog(
   hSession: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
   ulClientArchitecture: CPU_ARCHITECTURE /* Windows.Win32.System.DeploymentServices.CPU_ARCHITECTURE */,
-  pwszClientId: string | null /* Windows.Win32.Foundation.PWSTR */,
-  pwszClientAddress: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pwszClientId: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  pwszClientAddress: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
   return util.pointerFromFfi(libWDSCLIENTAPI_dll.WdsCliInitializeLog(util.toPointer(hSession), ulClientArchitecture, util.pwstrToFfi(pwszClientId), util.pwstrToFfi(pwszClientAddress)));
 }
@@ -1577,7 +1577,7 @@ export function WdsCliSetTransferBufferSize(
 
 export function WdsCliTransferImage(
   hImage: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  pwszLocalPath: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pwszLocalPath: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   dwFlags: number /* u32 */,
   dwReserved: number /* u32 */,
   pfnWdsCliCallback: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.DeploymentServices.PFN_WdsCliCallback */,
@@ -1588,10 +1588,10 @@ export function WdsCliTransferImage(
 }
 
 export function WdsCliTransferFile(
-  pwszServer: string | null /* Windows.Win32.Foundation.PWSTR */,
-  pwszNamespace: string | null /* Windows.Win32.Foundation.PWSTR */,
-  pwszRemoteFilePath: string | null /* Windows.Win32.Foundation.PWSTR */,
-  pwszLocalFilePath: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pwszServer: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  pwszNamespace: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  pwszRemoteFilePath: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  pwszLocalFilePath: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   dwFlags: number /* u32 */,
   dwReserved: number /* u32 */,
   pfnWdsCliCallback: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.DeploymentServices.PFN_WdsCliCallback */,
@@ -1624,7 +1624,7 @@ export function WdsCliObtainDriverPackages(
 
 export function WdsCliObtainDriverPackagesEx(
   hSession: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  pwszMachineInfo: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pwszMachineInfo: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   ppwszServerName: Deno.PointerValue | Uint8Array | null /* ptr */,
   pppwszDriverPackages: Deno.PointerValue | Uint8Array | null /* ptr */,
   pulCount: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -1633,15 +1633,15 @@ export function WdsCliObtainDriverPackagesEx(
 }
 
 export function WdsCliGetDriverQueryXml(
-  pwszWinDirPath: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pwszWinDirPath: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   ppwszDriverQuery: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
   return util.pointerFromFfi(libWDSCLIENTAPI_dll.WdsCliGetDriverQueryXml(util.pwstrToFfi(pwszWinDirPath), util.toPointer(ppwszDriverQuery)));
 }
 
 export function PxeProviderRegister(
-  pszProviderName: string | null /* Windows.Win32.Foundation.PWSTR */,
-  pszModulePath: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pszProviderName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  pszModulePath: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   Index: number /* u32 */,
   bIsCritical: boolean /* Windows.Win32.Foundation.BOOL */,
   phProviderKey: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -1650,13 +1650,13 @@ export function PxeProviderRegister(
 }
 
 export function PxeProviderUnRegister(
-  pszProviderName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pszProviderName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
   return libWDSPXE_dll.PxeProviderUnRegister(util.pwstrToFfi(pszProviderName));
 }
 
 export function PxeProviderQueryIndex(
-  pszProviderName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pszProviderName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   puIndex: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
   return libWDSPXE_dll.PxeProviderQueryIndex(util.pwstrToFfi(pszProviderName), util.toPointer(puIndex));
@@ -1715,7 +1715,7 @@ export function PxeAsyncRecvDone(
 export function PxeTrace(
   hProvider: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
   Severity: number /* u32 */,
-  pszFormat: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pszFormat: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
   return libWDSPXE_dll.PxeTrace(util.toPointer(hProvider), Severity, util.pwstrToFfi(pszFormat));
 }
@@ -1723,7 +1723,7 @@ export function PxeTrace(
 export function PxeTraceV(
   hProvider: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
   Severity: number /* u32 */,
-  pszFormat: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pszFormat: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   Params: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
   return libWDSPXE_dll.PxeTraceV(util.toPointer(hProvider), Severity, util.pwstrToFfi(pszFormat), util.toPointer(Params));
@@ -1940,7 +1940,7 @@ export function WdsTransportServerCompleteRead(
 export function WdsTransportServerTrace(
   hProvider: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
   Severity: number /* u32 */,
-  pwszFormat: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pwszFormat: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
   return util.pointerFromFfi(libWDSMC_dll.WdsTransportServerTrace(util.toPointer(hProvider), Severity, util.pwstrToFfi(pwszFormat)));
 }
@@ -1948,7 +1948,7 @@ export function WdsTransportServerTrace(
 export function WdsTransportServerTraceV(
   hProvider: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
   Severity: number /* u32 */,
-  pwszFormat: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pwszFormat: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   Params: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
   return util.pointerFromFfi(libWDSMC_dll.WdsTransportServerTraceV(util.toPointer(hProvider), Severity, util.pwstrToFfi(pwszFormat), util.toPointer(Params)));

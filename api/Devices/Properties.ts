@@ -78,7 +78,7 @@ export interface DEVPROPCOMPKEY {
   /** Windows.Win32.Devices.Properties.DEVPROPSTORE */
   Store: DEVPROPSTORE;
   /** Windows.Win32.Foundation.PWSTR */
-  LocaleName: string | null;
+  LocaleName: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeofDEVPROPCOMPKEY = 24;

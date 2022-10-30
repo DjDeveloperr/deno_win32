@@ -435,7 +435,7 @@ export type PWSTR = Deno.PointerValue | Uint8Array | null;
  */
 export interface WMFILECAPABILITIES {
   /** Windows.Win32.Foundation.PWSTR */
-  pwszMimeType: string | null;
+  pwszMimeType: string | null | Uint8Array | Uint16Array;
   /** u32 */
   dwReserved: number;
 }
@@ -604,7 +604,7 @@ export function allocWMDMRIGHTS(data?: Partial<WMDMRIGHTS>): Uint8Array {
  */
 export interface WMDMMetadataView {
   /** Windows.Win32.Foundation.PWSTR */
-  pwszViewName: string | null;
+  pwszViewName: string | null | Uint8Array | Uint16Array;
   /** u32 */
   nDepth: number;
   /** ptr */
@@ -767,7 +767,7 @@ export function alloc_ValidValues_e__Union(data?: Partial<_ValidValues_e__Union>
  */
 export interface WMDM_PROP_DESC {
   /** Windows.Win32.Foundation.PWSTR */
-  pwszPropName: string | null;
+  pwszPropName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Media.DeviceManager.WMDM_ENUM_PROP_VALID_VALUES_FORM */
   ValidValuesForm: WMDM_ENUM_PROP_VALID_VALUES_FORM;
   /** _ValidValues_e__Union */

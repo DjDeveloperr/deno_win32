@@ -1508,7 +1508,7 @@ export interface RICHEDIT_IMAGE_PARAMETERS {
   /** Windows.Win32.Graphics.Gdi.TEXT_ALIGN_OPTIONS */
   Type: TEXT_ALIGN_OPTIONS;
   /** Windows.Win32.Foundation.PWSTR */
-  pwszAlternateText: string | null;
+  pwszAlternateText: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.System.Com.IStream */
   pIStream: Uint8Array | Deno.PointerValue | null;
 }
@@ -1895,7 +1895,7 @@ export interface TEXTRANGEA {
   /** Windows.Win32.UI.Controls.RichEdit.CHARRANGE */
   chrg: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.Foundation.PSTR */
-  lpstrText: string | null;
+  lpstrText: string | null | Uint8Array;
 }
 
 export const sizeofTEXTRANGEA = 16;
@@ -1920,7 +1920,7 @@ export interface TEXTRANGEW {
   /** Windows.Win32.UI.Controls.RichEdit.CHARRANGE */
   chrg: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.Foundation.PWSTR */
-  lpstrText: string | null;
+  lpstrText: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeofTEXTRANGEW = 16;
@@ -1972,7 +1972,7 @@ export interface FINDTEXTA {
   /** Windows.Win32.UI.Controls.RichEdit.CHARRANGE */
   chrg: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.Foundation.PSTR */
-  lpstrText: string | null;
+  lpstrText: string | null | Uint8Array;
 }
 
 export const sizeofFINDTEXTA = 16;
@@ -1997,7 +1997,7 @@ export interface FINDTEXTW {
   /** Windows.Win32.UI.Controls.RichEdit.CHARRANGE */
   chrg: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.Foundation.PWSTR */
-  lpstrText: string | null;
+  lpstrText: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeofFINDTEXTW = 16;
@@ -2022,7 +2022,7 @@ export interface FINDTEXTEXA {
   /** Windows.Win32.UI.Controls.RichEdit.CHARRANGE */
   chrg: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.Foundation.PSTR */
-  lpstrText: string | null;
+  lpstrText: string | null | Uint8Array;
   /** Windows.Win32.UI.Controls.RichEdit.CHARRANGE */
   chrgText: Uint8Array | Deno.PointerValue | null;
 }
@@ -2051,7 +2051,7 @@ export interface FINDTEXTEXW {
   /** Windows.Win32.UI.Controls.RichEdit.CHARRANGE */
   chrg: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.Foundation.PWSTR */
-  lpstrText: string | null;
+  lpstrText: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.UI.Controls.RichEdit.CHARRANGE */
   chrgText: Uint8Array | Deno.PointerValue | null;
 }
@@ -2647,7 +2647,7 @@ export interface ENLOWFIRTF {
   /** Windows.Win32.UI.Controls.NMHDR */
   nmhdr: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.Foundation.PSTR */
-  szControl: string | null;
+  szControl: string | null | Uint8Array;
 }
 
 export const sizeofENLOWFIRTF = 16;
@@ -2699,7 +2699,7 @@ export interface PUNCTUATION {
   /** u32 */
   iSize: number;
   /** Windows.Win32.Foundation.PSTR */
-  szPunctuation: string | null;
+  szPunctuation: string | null | Uint8Array;
 }
 
 export const sizeofPUNCTUATION = 16;
@@ -2801,7 +2801,7 @@ export interface GETTEXTEX {
   /** u32 */
   codepage: number;
   /** Windows.Win32.Foundation.PSTR */
-  lpDefaultChar: string | null;
+  lpDefaultChar: string | null | Uint8Array;
   /** ptr */
   lpUsedDefChar: Deno.PointerValue | Uint8Array | null;
 }

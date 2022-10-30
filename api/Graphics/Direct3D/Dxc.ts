@@ -112,9 +112,9 @@ export type PWSTR = Deno.PointerValue | Uint8Array | null;
  */
 export interface DxcDefine {
   /** Windows.Win32.Foundation.PWSTR */
-  Name: string | null;
+  Name: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  Value: string | null;
+  Value: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeofDxcDefine = 16;
@@ -140,9 +140,9 @@ export function allocDxcDefine(data?: Partial<DxcDefine>): Uint8Array {
  */
 export interface DxcArgPair {
   /** Windows.Win32.Foundation.PWSTR */
-  pName: string | null;
+  pName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pValue: string | null;
+  pValue: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeofDxcArgPair = 16;

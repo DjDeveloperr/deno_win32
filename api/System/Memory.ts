@@ -1360,7 +1360,7 @@ export function CreateFileMappingW(
   flProtect: PAGE_PROTECTION_FLAGS /* Windows.Win32.System.Memory.PAGE_PROTECTION_FLAGS */,
   dwMaximumSizeHigh: number /* u32 */,
   dwMaximumSizeLow: number /* u32 */,
-  lpName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */ {
   return util.pointerFromFfi(libKERNEL32_dll.CreateFileMappingW(util.toPointer(hFile), util.toPointer(lpFileMappingAttributes), flProtect, dwMaximumSizeHigh, dwMaximumSizeLow, util.pwstrToFfi(lpName)));
 }
@@ -1368,7 +1368,7 @@ export function CreateFileMappingW(
 export function OpenFileMappingW(
   dwDesiredAccess: number /* u32 */,
   bInheritHandle: boolean /* Windows.Win32.Foundation.BOOL */,
-  lpName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */ {
   return util.pointerFromFfi(libKERNEL32_dll.OpenFileMappingW(dwDesiredAccess, util.boolToFfi(bInheritHandle), util.pwstrToFfi(lpName)));
 }
@@ -1505,7 +1505,7 @@ export function CreateFileMappingNumaW(
   flProtect: PAGE_PROTECTION_FLAGS /* Windows.Win32.System.Memory.PAGE_PROTECTION_FLAGS */,
   dwMaximumSizeHigh: number /* u32 */,
   dwMaximumSizeLow: number /* u32 */,
-  lpName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   nndPreferred: number /* u32 */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */ {
   return util.pointerFromFfi(libKERNEL32_dll.CreateFileMappingNumaW(util.toPointer(hFile), util.toPointer(lpFileMappingAttributes), flProtect, dwMaximumSizeHigh, dwMaximumSizeLow, util.pwstrToFfi(lpName), nndPreferred));
@@ -1525,7 +1525,7 @@ export function CreateFileMappingFromApp(
   SecurityAttributes: Deno.PointerValue | Uint8Array | null /* ptr */,
   PageProtection: PAGE_PROTECTION_FLAGS /* Windows.Win32.System.Memory.PAGE_PROTECTION_FLAGS */,
   MaximumSize: Deno.PointerValue /* u64 */,
-  Name: string | null /* Windows.Win32.Foundation.PWSTR */,
+  Name: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */ {
   return util.pointerFromFfi(libKERNEL32_dll.CreateFileMappingFromApp(util.toPointer(hFile), util.toPointer(SecurityAttributes), PageProtection, MaximumSize, util.pwstrToFfi(Name)));
 }
@@ -1673,7 +1673,7 @@ export function VirtualProtectFromApp(
 export function OpenFileMappingFromApp(
   DesiredAccess: number /* u32 */,
   InheritHandle: boolean /* Windows.Win32.Foundation.BOOL */,
-  Name: string | null /* Windows.Win32.Foundation.PWSTR */,
+  Name: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */ {
   return util.pointerFromFfi(libapi_ms_win_core_memory_l1_1_3_dll.OpenFileMappingFromApp(DesiredAccess, util.boolToFfi(InheritHandle), util.pwstrToFfi(Name)));
 }
@@ -1777,7 +1777,7 @@ export function CreateFileMapping2(
   PageProtection: PAGE_PROTECTION_FLAGS /* Windows.Win32.System.Memory.PAGE_PROTECTION_FLAGS */,
   AllocationAttributes: number /* u32 */,
   MaximumSize: Deno.PointerValue /* u64 */,
-  Name: string | null /* Windows.Win32.Foundation.PWSTR */,
+  Name: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   ExtendedParameters: Deno.PointerValue | Uint8Array | null /* ptr */,
   ParameterCount: number /* u32 */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */ {
@@ -1951,7 +1951,7 @@ export function CreateFileMappingA(
   flProtect: PAGE_PROTECTION_FLAGS /* Windows.Win32.System.Memory.PAGE_PROTECTION_FLAGS */,
   dwMaximumSizeHigh: number /* u32 */,
   dwMaximumSizeLow: number /* u32 */,
-  lpName: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */ {
   return util.pointerFromFfi(libKERNEL32_dll.CreateFileMappingA(util.toPointer(hFile), util.toPointer(lpFileMappingAttributes), flProtect, dwMaximumSizeHigh, dwMaximumSizeLow, util.pstrToFfi(lpName)));
 }
@@ -1962,7 +1962,7 @@ export function CreateFileMappingNumaA(
   flProtect: PAGE_PROTECTION_FLAGS /* Windows.Win32.System.Memory.PAGE_PROTECTION_FLAGS */,
   dwMaximumSizeHigh: number /* u32 */,
   dwMaximumSizeLow: number /* u32 */,
-  lpName: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   nndPreferred: number /* u32 */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */ {
   return util.pointerFromFfi(libKERNEL32_dll.CreateFileMappingNumaA(util.toPointer(hFile), util.toPointer(lpFileMappingAttributes), flProtect, dwMaximumSizeHigh, dwMaximumSizeLow, util.pstrToFfi(lpName), nndPreferred));
@@ -1971,7 +1971,7 @@ export function CreateFileMappingNumaA(
 export function OpenFileMappingA(
   dwDesiredAccess: number /* u32 */,
   bInheritHandle: boolean /* Windows.Win32.Foundation.BOOL */,
-  lpName: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */ {
   return util.pointerFromFfi(libKERNEL32_dll.OpenFileMappingA(dwDesiredAccess, util.boolToFfi(bInheritHandle), util.pstrToFfi(lpName)));
 }
@@ -2009,14 +2009,14 @@ export function IsBadCodePtr(
 }
 
 export function IsBadStringPtrA(
-  lpsz: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpsz: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   ucchMax: Deno.PointerValue /* usize */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libKERNEL32_dll.IsBadStringPtrA(util.pstrToFfi(lpsz), ucchMax));
 }
 
 export function IsBadStringPtrW(
-  lpsz: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpsz: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   ucchMax: Deno.PointerValue /* usize */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libKERNEL32_dll.IsBadStringPtrW(util.pwstrToFfi(lpsz), ucchMax));

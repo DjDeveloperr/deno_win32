@@ -2946,7 +2946,7 @@ export function wglGetCurrentDC(): Deno.PointerValue | null /* Windows.Win32.Gra
 }
 
 export function wglGetProcAddress(
-  param0: string | null /* Windows.Win32.Foundation.PSTR */,
+  param0: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.PROC */ {
   return util.pointerFromFfi(libOPENGL32_dll.wglGetProcAddress(util.pstrToFfi(param0)));
 }

@@ -786,7 +786,7 @@ export type PWSTR = Deno.PointerValue | Uint8Array | null;
  */
 export interface DNS_PTR_DATAW {
   /** Windows.Win32.Foundation.PWSTR */
-  pNameHost: string | null;
+  pNameHost: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeofDNS_PTR_DATAW = 8;
@@ -809,7 +809,7 @@ export type PSTR = Deno.PointerValue | Uint8Array | null;
  */
 export interface DNS_PTR_DATAA {
   /** Windows.Win32.Foundation.PSTR */
-  pNameHost: string | null;
+  pNameHost: string | null | Uint8Array;
 }
 
 export const sizeofDNS_PTR_DATAA = 8;
@@ -830,9 +830,9 @@ export function allocDNS_PTR_DATAA(data?: Partial<DNS_PTR_DATAA>): Uint8Array {
  */
 export interface DNS_SOA_DATAW {
   /** Windows.Win32.Foundation.PWSTR */
-  pNamePrimaryServer: string | null;
+  pNamePrimaryServer: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pNameAdministrator: string | null;
+  pNameAdministrator: string | null | Uint8Array | Uint16Array;
   /** u32 */
   dwSerialNo: number;
   /** u32 */
@@ -879,9 +879,9 @@ export function allocDNS_SOA_DATAW(data?: Partial<DNS_SOA_DATAW>): Uint8Array {
  */
 export interface DNS_SOA_DATAA {
   /** Windows.Win32.Foundation.PSTR */
-  pNamePrimaryServer: string | null;
+  pNamePrimaryServer: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  pNameAdministrator: string | null;
+  pNameAdministrator: string | null | Uint8Array;
   /** u32 */
   dwSerialNo: number;
   /** u32 */
@@ -928,9 +928,9 @@ export function allocDNS_SOA_DATAA(data?: Partial<DNS_SOA_DATAA>): Uint8Array {
  */
 export interface DNS_MINFO_DATAW {
   /** Windows.Win32.Foundation.PWSTR */
-  pNameMailbox: string | null;
+  pNameMailbox: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pNameErrorsMailbox: string | null;
+  pNameErrorsMailbox: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeofDNS_MINFO_DATAW = 16;
@@ -956,9 +956,9 @@ export function allocDNS_MINFO_DATAW(data?: Partial<DNS_MINFO_DATAW>): Uint8Arra
  */
 export interface DNS_MINFO_DATAA {
   /** Windows.Win32.Foundation.PSTR */
-  pNameMailbox: string | null;
+  pNameMailbox: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  pNameErrorsMailbox: string | null;
+  pNameErrorsMailbox: string | null | Uint8Array;
 }
 
 export const sizeofDNS_MINFO_DATAA = 16;
@@ -984,7 +984,7 @@ export function allocDNS_MINFO_DATAA(data?: Partial<DNS_MINFO_DATAA>): Uint8Arra
  */
 export interface DNS_MX_DATAW {
   /** Windows.Win32.Foundation.PWSTR */
-  pNameExchange: string | null;
+  pNameExchange: string | null | Uint8Array | Uint16Array;
   /** u16 */
   wPreference: number;
   /** u16 */
@@ -1014,7 +1014,7 @@ export function allocDNS_MX_DATAW(data?: Partial<DNS_MX_DATAW>): Uint8Array {
  */
 export interface DNS_MX_DATAA {
   /** Windows.Win32.Foundation.PSTR */
-  pNameExchange: string | null;
+  pNameExchange: string | null | Uint8Array;
   /** u16 */
   wPreference: number;
   /** u16 */
@@ -1174,7 +1174,7 @@ export interface DNS_SIG_DATAW {
   /** u16 */
   wSignatureLength: number;
   /** Windows.Win32.Foundation.PWSTR */
-  pNameSigner: string | null;
+  pNameSigner: string | null | Uint8Array | Uint16Array;
   /** array */
   Signature: Deno.PointerValue | null;
 }
@@ -1232,7 +1232,7 @@ export interface DNS_SIG_DATAA {
   /** u16 */
   wSignatureLength: number;
   /** Windows.Win32.Foundation.PSTR */
-  pNameSigner: string | null;
+  pNameSigner: string | null | Uint8Array;
   /** array */
   Signature: Deno.PointerValue | null;
 }
@@ -1335,7 +1335,7 @@ export function allocDNS_DHCID_DATA(data?: Partial<DNS_DHCID_DATA>): Uint8Array 
  */
 export interface DNS_NSEC_DATAW {
   /** Windows.Win32.Foundation.PWSTR */
-  pNextDomainName: string | null;
+  pNextDomainName: string | null | Uint8Array | Uint16Array;
   /** u16 */
   wTypeBitMapsLength: number;
   /** u16 */
@@ -1369,7 +1369,7 @@ export function allocDNS_NSEC_DATAW(data?: Partial<DNS_NSEC_DATAW>): Uint8Array 
  */
 export interface DNS_NSEC_DATAA {
   /** Windows.Win32.Foundation.PSTR */
-  pNextDomainName: string | null;
+  pNextDomainName: string | null | Uint8Array;
   /** u16 */
   wTypeBitMapsLength: number;
   /** u16 */
@@ -1631,7 +1631,7 @@ export function allocDNS_LOC_DATA(data?: Partial<DNS_LOC_DATA>): Uint8Array {
  */
 export interface DNS_NXT_DATAW {
   /** Windows.Win32.Foundation.PWSTR */
-  pNameNext: string | null;
+  pNameNext: string | null | Uint8Array | Uint16Array;
   /** u16 */
   wNumTypes: number;
   /** array */
@@ -1661,7 +1661,7 @@ export function allocDNS_NXT_DATAW(data?: Partial<DNS_NXT_DATAW>): Uint8Array {
  */
 export interface DNS_NXT_DATAA {
   /** Windows.Win32.Foundation.PSTR */
-  pNameNext: string | null;
+  pNameNext: string | null | Uint8Array;
   /** u16 */
   wNumTypes: number;
   /** array */
@@ -1691,7 +1691,7 @@ export function allocDNS_NXT_DATAA(data?: Partial<DNS_NXT_DATAA>): Uint8Array {
  */
 export interface DNS_SRV_DATAW {
   /** Windows.Win32.Foundation.PWSTR */
-  pNameTarget: string | null;
+  pNameTarget: string | null | Uint8Array | Uint16Array;
   /** u16 */
   wPriority: number;
   /** u16 */
@@ -1728,7 +1728,7 @@ export function allocDNS_SRV_DATAW(data?: Partial<DNS_SRV_DATAW>): Uint8Array {
  */
 export interface DNS_SRV_DATAA {
   /** Windows.Win32.Foundation.PSTR */
-  pNameTarget: string | null;
+  pNameTarget: string | null | Uint8Array;
   /** u16 */
   wPriority: number;
   /** u16 */
@@ -1769,13 +1769,13 @@ export interface DNS_NAPTR_DATAW {
   /** u16 */
   wPreference: number;
   /** Windows.Win32.Foundation.PWSTR */
-  pFlags: string | null;
+  pFlags: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pService: string | null;
+  pService: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pRegularExpression: string | null;
+  pRegularExpression: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pReplacement: string | null;
+  pReplacement: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeofDNS_NAPTR_DATAW = 40;
@@ -1820,13 +1820,13 @@ export interface DNS_NAPTR_DATAA {
   /** u16 */
   wPreference: number;
   /** Windows.Win32.Foundation.PSTR */
-  pFlags: string | null;
+  pFlags: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  pService: string | null;
+  pService: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  pRegularExpression: string | null;
+  pRegularExpression: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  pReplacement: string | null;
+  pReplacement: string | null | Uint8Array;
 }
 
 export const sizeofDNS_NAPTR_DATAA = 40;
@@ -1892,7 +1892,7 @@ export type BOOL = number;
  */
 export interface DNS_TKEY_DATAW {
   /** Windows.Win32.Foundation.PWSTR */
-  pNameAlgorithm: string | null;
+  pNameAlgorithm: string | null | Uint8Array | Uint16Array;
   /** ptr */
   pAlgorithmPacket: Deno.PointerValue | Uint8Array | null;
   /** ptr */
@@ -1958,7 +1958,7 @@ export function allocDNS_TKEY_DATAW(data?: Partial<DNS_TKEY_DATAW>): Uint8Array 
  */
 export interface DNS_TKEY_DATAA {
   /** Windows.Win32.Foundation.PSTR */
-  pNameAlgorithm: string | null;
+  pNameAlgorithm: string | null | Uint8Array;
   /** ptr */
   pAlgorithmPacket: Deno.PointerValue | Uint8Array | null;
   /** ptr */
@@ -2024,7 +2024,7 @@ export function allocDNS_TKEY_DATAA(data?: Partial<DNS_TKEY_DATAA>): Uint8Array 
  */
 export interface DNS_TSIG_DATAW {
   /** Windows.Win32.Foundation.PWSTR */
-  pNameAlgorithm: string | null;
+  pNameAlgorithm: string | null | Uint8Array | Uint16Array;
   /** ptr */
   pAlgorithmPacket: Deno.PointerValue | Uint8Array | null;
   /** ptr */
@@ -2090,7 +2090,7 @@ export function allocDNS_TSIG_DATAW(data?: Partial<DNS_TSIG_DATAW>): Uint8Array 
  */
 export interface DNS_TSIG_DATAA {
   /** Windows.Win32.Foundation.PSTR */
-  pNameAlgorithm: string | null;
+  pNameAlgorithm: string | null | Uint8Array;
   /** ptr */
   pAlgorithmPacket: Deno.PointerValue | Uint8Array | null;
   /** ptr */
@@ -2219,7 +2219,7 @@ export interface DNS_WINSR_DATAW {
   /** u32 */
   dwCacheTimeout: number;
   /** Windows.Win32.Foundation.PWSTR */
-  pNameResultDomain: string | null;
+  pNameResultDomain: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeofDNS_WINSR_DATAW = 24;
@@ -2253,7 +2253,7 @@ export interface DNS_WINSR_DATAA {
   /** u32 */
   dwCacheTimeout: number;
   /** Windows.Win32.Foundation.PSTR */
-  pNameResultDomain: string | null;
+  pNameResultDomain: string | null | Uint8Array;
 }
 
 export const sizeofDNS_WINSR_DATAA = 24;
@@ -2347,7 +2347,7 @@ export interface DNS_RECORDW {
   /** ptr */
   pNext: Deno.PointerValue | Uint8Array | null;
   /** Windows.Win32.Foundation.PWSTR */
-  pName: string | null;
+  pName: string | null | Uint8Array | Uint16Array;
   /** u16 */
   wType: number;
   /** u16 */
@@ -2397,7 +2397,7 @@ export interface DNS_RECORD_OPTW {
   /** ptr */
   pNext: Deno.PointerValue | Uint8Array | null;
   /** Windows.Win32.Foundation.PWSTR */
-  pName: string | null;
+  pName: string | null | Uint8Array | Uint16Array;
   /** u16 */
   wType: number;
   /** u16 */
@@ -2452,7 +2452,7 @@ export interface DNS_RECORDA {
   /** ptr */
   pNext: Deno.PointerValue | Uint8Array | null;
   /** Windows.Win32.Foundation.PSTR */
-  pName: string | null;
+  pName: string | null | Uint8Array;
   /** u16 */
   wType: number;
   /** u16 */
@@ -2502,7 +2502,7 @@ export interface _DnsRecordOptA {
   /** ptr */
   pNext: Deno.PointerValue | Uint8Array | null;
   /** Windows.Win32.Foundation.PSTR */
-  pName: string | null;
+  pName: string | null | Uint8Array;
   /** u16 */
   wType: number;
   /** u16 */
@@ -2581,7 +2581,7 @@ export interface DNS_PROXY_INFORMATION {
   /** Windows.Win32.NetworkManagement.Dns.DNS_PROXY_INFORMATION_TYPE */
   proxyInformationType: DNS_PROXY_INFORMATION_TYPE;
   /** Windows.Win32.Foundation.PWSTR */
-  proxyName: string | null;
+  proxyName: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeofDNS_PROXY_INFORMATION = 16;
@@ -2642,7 +2642,7 @@ export interface DNS_QUERY_REQUEST {
   /** u32 */
   Version: number;
   /** Windows.Win32.Foundation.PWSTR */
-  QueryName: string | null;
+  QueryName: string | null | Uint8Array | Uint16Array;
   /** u16 */
   QueryType: number;
   /** u64 */
@@ -2712,7 +2712,7 @@ export interface _Anonymous1_e__Union {
   /** usize */
   Data0: Deno.PointerValue;
   /** Windows.Win32.Foundation.PWSTR */
-  String: string | null;
+  String: string | null | Uint8Array | Uint16Array;
   /** usize */
   u: Deno.PointerValue;
   /** ptr */
@@ -2816,7 +2816,7 @@ export interface DNS_QUERY_REQUEST3 {
   /** u32 */
   Version: number;
   /** Windows.Win32.Foundation.PWSTR */
-  QueryName: string | null;
+  QueryName: string | null | Uint8Array | Uint16Array;
   /** u16 */
   QueryType: number;
   /** u64 */
@@ -2952,7 +2952,7 @@ export interface DNS_CONNECTION_PROXY_INFO {
   /** u32 */
   Version: number;
   /** Windows.Win32.Foundation.PWSTR */
-  pwszFriendlyName: string | null;
+  pwszFriendlyName: string | null | Uint8Array | Uint16Array;
   /** u32 */
   Flags: number;
   /** Windows.Win32.NetworkManagement.Dns.DNS_CONNECTION_PROXY_INFO_SWITCH */
@@ -2994,7 +2994,7 @@ export interface DNS_CONNECTION_PROXY_INFO_EX {
   /** u32 */
   dwInterfaceIndex: number;
   /** Windows.Win32.Foundation.PWSTR */
-  pwszConnectionName: string | null;
+  pwszConnectionName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.BOOL */
   fDirectConfiguration: boolean;
   /** Windows.Win32.Foundation.HANDLE */
@@ -3116,7 +3116,7 @@ export function allocDNS_CONNECTION_NAME_LIST(data?: Partial<DNS_CONNECTION_NAME
  */
 export interface DNS_CONNECTION_IFINDEX_ENTRY {
   /** Windows.Win32.Foundation.PWSTR */
-  pwszConnectionName: string | null;
+  pwszConnectionName: string | null | Uint8Array | Uint16Array;
   /** u32 */
   dwIfIndex: number;
 }
@@ -3165,9 +3165,9 @@ export function allocDNS_CONNECTION_IFINDEX_LIST(data?: Partial<DNS_CONNECTION_I
  */
 export interface DNS_CONNECTION_POLICY_ENTRY {
   /** Windows.Win32.Foundation.PWSTR */
-  pwszHost: string | null;
+  pwszHost: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pwszAppId: string | null;
+  pwszAppId: string | null | Uint8Array | Uint16Array;
   /** u32 */
   cbAppSid: number;
   /** ptr */
@@ -3239,9 +3239,9 @@ export function allocDNS_CONNECTION_POLICY_ENTRY_LIST(data?: Partial<DNS_CONNECT
  */
 export interface DNS_SERVICE_INSTANCE {
   /** Windows.Win32.Foundation.PWSTR */
-  pszInstanceName: string | null;
+  pszInstanceName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pszHostName: string | null;
+  pszHostName: string | null | Uint8Array | Uint16Array;
   /** ptr */
   ip4Address: Deno.PointerValue | Uint8Array | null;
   /** ptr */
@@ -3327,7 +3327,7 @@ export interface DNS_SERVICE_BROWSE_REQUEST {
   /** u32 */
   InterfaceIndex: number;
   /** Windows.Win32.Foundation.PWSTR */
-  QueryName: string | null;
+  QueryName: string | null | Uint8Array | Uint16Array;
   /** _Anonymous_e__Union */
   Anonymous: Uint8Array | Deno.PointerValue | null;
   /** ptr */
@@ -3364,7 +3364,7 @@ export interface DNS_SERVICE_RESOLVE_REQUEST {
   /** u32 */
   InterfaceIndex: number;
   /** Windows.Win32.Foundation.PWSTR */
-  QueryName: string | null;
+  QueryName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.NetworkManagement.Dns.PDNS_SERVICE_RESOLVE_COMPLETE */
   pResolveCompletionCallback: Uint8Array | Deno.PointerValue | null;
   /** ptr */
@@ -3479,7 +3479,7 @@ export interface MDNS_QUERY_REQUEST {
   /** u32 */
   ulRefCount: number;
   /** Windows.Win32.Foundation.PWSTR */
-  Query: string | null;
+  Query: string | null | Uint8Array | Uint16Array;
   /** u16 */
   QueryType: number;
   /** u64 */
@@ -3781,7 +3781,7 @@ try {
 export function DnsQueryConfig(
   Config: DNS_CONFIG_TYPE /* Windows.Win32.NetworkManagement.Dns.DNS_CONFIG_TYPE */,
   Flag: number /* u32 */,
-  pwsAdapterName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pwsAdapterName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pReserved: Deno.PointerValue | Uint8Array | null /* ptr */,
   pBuffer: Deno.PointerValue | Uint8Array | null /* ptr */,
   pBufLen: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -3835,7 +3835,7 @@ export function DnsFree(
 }
 
 export function DnsQuery_A(
-  pszName: string | null /* Windows.Win32.Foundation.PSTR */,
+  pszName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   wType: number /* u16 */,
   Options: number /* u32 */,
   pExtra: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -3846,7 +3846,7 @@ export function DnsQuery_A(
 }
 
 export function DnsQuery_UTF8(
-  pszName: string | null /* Windows.Win32.Foundation.PSTR */,
+  pszName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   wType: number /* u16 */,
   Options: number /* u32 */,
   pExtra: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -3857,7 +3857,7 @@ export function DnsQuery_UTF8(
 }
 
 export function DnsQuery_W(
-  pszName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pszName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   wType: number /* u16 */,
   Options: number /* u32 */,
   pExtra: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -3990,36 +3990,36 @@ export function DnsReplaceRecordSetUTF8(
 }
 
 export function DnsValidateName_W(
-  pszName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pszName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   Format: DNS_NAME_FORMAT /* Windows.Win32.NetworkManagement.Dns.DNS_NAME_FORMAT */,
 ): number /* i32 */ {
   return libDNSAPI_dll.DnsValidateName_W(util.pwstrToFfi(pszName), Format);
 }
 
 export function DnsValidateName_A(
-  pszName: string | null /* Windows.Win32.Foundation.PSTR */,
+  pszName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   Format: DNS_NAME_FORMAT /* Windows.Win32.NetworkManagement.Dns.DNS_NAME_FORMAT */,
 ): number /* i32 */ {
   return libDNSAPI_dll.DnsValidateName_A(util.pstrToFfi(pszName), Format);
 }
 
 export function DnsValidateName_UTF8(
-  pszName: string | null /* Windows.Win32.Foundation.PSTR */,
+  pszName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   Format: DNS_NAME_FORMAT /* Windows.Win32.NetworkManagement.Dns.DNS_NAME_FORMAT */,
 ): number /* i32 */ {
   return libDNSAPI_dll.DnsValidateName_UTF8(util.pstrToFfi(pszName), Format);
 }
 
 export function DnsNameCompare_A(
-  pName1: string | null /* Windows.Win32.Foundation.PSTR */,
-  pName2: string | null /* Windows.Win32.Foundation.PSTR */,
+  pName1: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  pName2: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libDNSAPI_dll.DnsNameCompare_A(util.pstrToFfi(pName1), util.pstrToFfi(pName2)));
 }
 
 export function DnsNameCompare_W(
-  pName1: string | null /* Windows.Win32.Foundation.PWSTR */,
-  pName2: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pName1: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  pName2: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libDNSAPI_dll.DnsNameCompare_W(util.pwstrToFfi(pName1), util.pwstrToFfi(pName2)));
 }
@@ -4027,7 +4027,7 @@ export function DnsNameCompare_W(
 export function DnsWriteQuestionToBuffer_W(
   pDnsBuffer: Deno.PointerValue | Uint8Array | null /* ptr */,
   pdwBufferSize: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pszName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pszName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   wType: number /* u16 */,
   Xid: number /* u16 */,
   fRecursionDesired: boolean /* Windows.Win32.Foundation.BOOL */,
@@ -4038,7 +4038,7 @@ export function DnsWriteQuestionToBuffer_W(
 export function DnsWriteQuestionToBuffer_UTF8(
   pDnsBuffer: Deno.PointerValue | Uint8Array | null /* ptr */,
   pdwBufferSize: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pszName: string | null /* Windows.Win32.Foundation.PSTR */,
+  pszName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   wType: number /* u16 */,
   Xid: number /* u16 */,
   fRecursionDesired: boolean /* Windows.Win32.Foundation.BOOL */,
@@ -4063,7 +4063,7 @@ export function DnsExtractRecordsFromMessage_UTF8(
 }
 
 export function DnsGetProxyInformation(
-  hostName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  hostName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   proxyInformation: Deno.PointerValue | Uint8Array | null /* ptr */,
   defaultProxyInformation: Deno.PointerValue | Uint8Array | null /* ptr */,
   completionRoutine: Uint8Array | Deno.PointerValue | null /* Windows.Win32.NetworkManagement.Dns.DNS_PROXY_COMPLETION_ROUTINE */,
@@ -4073,13 +4073,13 @@ export function DnsGetProxyInformation(
 }
 
 export function DnsFreeProxyName(
-  proxyName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  proxyName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): void /* void */ {
   return libDNSAPI_dll.DnsFreeProxyName(util.pwstrToFfi(proxyName));
 }
 
 export function DnsConnectionGetProxyInfoForHostUrl(
-  pwszHostUrl: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pwszHostUrl: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pSelectionContext: Deno.PointerValue | Uint8Array | null /* ptr */,
   dwSelectionContextLength: number /* u32 */,
   dwExplicitInterfaceIndex: number /* u32 */,
@@ -4095,7 +4095,7 @@ export function DnsConnectionFreeProxyInfoEx(
 }
 
 export function DnsConnectionGetProxyInfo(
-  pwszConnectionName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pwszConnectionName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   Type: DNS_CONNECTION_PROXY_TYPE /* Windows.Win32.NetworkManagement.Dns.DNS_CONNECTION_PROXY_TYPE */,
   pProxyInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
@@ -4109,7 +4109,7 @@ export function DnsConnectionFreeProxyInfo(
 }
 
 export function DnsConnectionSetProxyInfo(
-  pwszConnectionName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pwszConnectionName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   Type: DNS_CONNECTION_PROXY_TYPE /* Windows.Win32.NetworkManagement.Dns.DNS_CONNECTION_PROXY_TYPE */,
   pProxyInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
@@ -4117,14 +4117,14 @@ export function DnsConnectionSetProxyInfo(
 }
 
 export function DnsConnectionDeleteProxyInfo(
-  pwszConnectionName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pwszConnectionName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   Type: DNS_CONNECTION_PROXY_TYPE /* Windows.Win32.NetworkManagement.Dns.DNS_CONNECTION_PROXY_TYPE */,
 ): number /* u32 */ {
   return libDNSAPI_dll.DnsConnectionDeleteProxyInfo(util.pwstrToFfi(pwszConnectionName), Type);
 }
 
 export function DnsConnectionGetProxyList(
-  pwszConnectionName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pwszConnectionName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pProxyList: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
   return libDNSAPI_dll.DnsConnectionGetProxyList(util.pwstrToFfi(pwszConnectionName), util.toPointer(pProxyList));
@@ -4168,8 +4168,8 @@ export function DnsConnectionDeletePolicyEntries(
 }
 
 export function DnsServiceConstructInstance(
-  pServiceName: string | null /* Windows.Win32.Foundation.PWSTR */,
-  pHostName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pServiceName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  pHostName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pIp4: Deno.PointerValue | Uint8Array | null /* ptr */,
   pIp6: Deno.PointerValue | Uint8Array | null /* ptr */,
   wPort: number /* u16 */,

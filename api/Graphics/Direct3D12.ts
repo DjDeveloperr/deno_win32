@@ -3076,7 +3076,7 @@ export type PSTR = Deno.PointerValue | Uint8Array | null;
  */
 export interface D3D12_INPUT_ELEMENT_DESC {
   /** Windows.Win32.Foundation.PSTR */
-  SemanticName: string | null;
+  SemanticName: string | null | Uint8Array;
   /** u32 */
   SemanticIndex: number;
   /** Windows.Win32.Graphics.Dxgi.Common.DXGI_FORMAT */
@@ -3123,7 +3123,7 @@ export interface D3D12_SO_DECLARATION_ENTRY {
   /** u32 */
   Stream: number;
   /** Windows.Win32.Foundation.PSTR */
-  SemanticName: string | null;
+  SemanticName: string | null | Uint8Array;
   /** u32 */
   SemanticIndex: number;
   /** u8 */
@@ -7413,7 +7413,7 @@ export type PWSTR = Deno.PointerValue | Uint8Array | null;
  */
 export interface D3D12_META_COMMAND_PARAMETER_DESC {
   /** Windows.Win32.Foundation.PWSTR */
-  Name: string | null;
+  Name: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Graphics.Direct3D12.D3D12_META_COMMAND_PARAMETER_TYPE */
   Type: D3D12_META_COMMAND_PARAMETER_TYPE;
   /** Windows.Win32.Graphics.Direct3D12.D3D12_META_COMMAND_PARAMETER_FLAGS */
@@ -7452,7 +7452,7 @@ export interface D3D12_META_COMMAND_DESC {
   /** System.Guid */
   Id: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.Foundation.PWSTR */
-  Name: string | null;
+  Name: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Graphics.Direct3D12.D3D12_GRAPHICS_STATES */
   InitializationDirtyState: D3D12_GRAPHICS_STATES;
   /** Windows.Win32.Graphics.Direct3D12.D3D12_GRAPHICS_STATES */
@@ -7580,9 +7580,9 @@ export function allocD3D12_NODE_MASK(data?: Partial<D3D12_NODE_MASK>): Uint8Arra
  */
 export interface D3D12_EXPORT_DESC {
   /** Windows.Win32.Foundation.PWSTR */
-  Name: string | null;
+  Name: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  ExportToRename: string | null;
+  ExportToRename: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Graphics.Direct3D12.D3D12_EXPORT_FLAGS */
   Flags: D3D12_EXPORT_FLAGS;
 }
@@ -7694,7 +7694,7 @@ export function allocD3D12_SUBOBJECT_TO_EXPORTS_ASSOCIATION(data?: Partial<D3D12
  */
 export interface D3D12_DXIL_SUBOBJECT_TO_EXPORTS_ASSOCIATION {
   /** Windows.Win32.Foundation.PWSTR */
-  SubobjectToAssociate: string | null;
+  SubobjectToAssociate: string | null | Uint8Array | Uint16Array;
   /** u32 */
   NumExports: number;
   /** ptr */
@@ -7724,15 +7724,15 @@ export function allocD3D12_DXIL_SUBOBJECT_TO_EXPORTS_ASSOCIATION(data?: Partial<
  */
 export interface D3D12_HIT_GROUP_DESC {
   /** Windows.Win32.Foundation.PWSTR */
-  HitGroupExport: string | null;
+  HitGroupExport: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Graphics.Direct3D12.D3D12_HIT_GROUP_TYPE */
   Type: D3D12_HIT_GROUP_TYPE;
   /** Windows.Win32.Foundation.PWSTR */
-  AnyHitShaderImport: string | null;
+  AnyHitShaderImport: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  ClosestHitShaderImport: string | null;
+  ClosestHitShaderImport: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  IntersectionShaderImport: string | null;
+  IntersectionShaderImport: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeofD3D12_HIT_GROUP_DESC = 40;
@@ -8353,11 +8353,11 @@ export interface D3D12_AUTO_BREADCRUMB_NODE {
   /** ptr */
   pCommandListDebugNameA: Deno.PointerValue | Uint8Array | null;
   /** Windows.Win32.Foundation.PWSTR */
-  pCommandListDebugNameW: string | null;
+  pCommandListDebugNameW: string | null | Uint8Array | Uint16Array;
   /** ptr */
   pCommandQueueDebugNameA: Deno.PointerValue | Uint8Array | null;
   /** Windows.Win32.Foundation.PWSTR */
-  pCommandQueueDebugNameW: string | null;
+  pCommandQueueDebugNameW: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Graphics.Direct3D12.ID3D12GraphicsCommandList */
   pCommandList: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.Graphics.Direct3D12.ID3D12CommandQueue */
@@ -8414,7 +8414,7 @@ export interface D3D12_DRED_BREADCRUMB_CONTEXT {
   /** u32 */
   BreadcrumbIndex: number;
   /** Windows.Win32.Foundation.PWSTR */
-  pContextString: string | null;
+  pContextString: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeofD3D12_DRED_BREADCRUMB_CONTEXT = 16;
@@ -8440,11 +8440,11 @@ export interface D3D12_AUTO_BREADCRUMB_NODE1 {
   /** ptr */
   pCommandListDebugNameA: Deno.PointerValue | Uint8Array | null;
   /** Windows.Win32.Foundation.PWSTR */
-  pCommandListDebugNameW: string | null;
+  pCommandListDebugNameW: string | null | Uint8Array | Uint16Array;
   /** ptr */
   pCommandQueueDebugNameA: Deno.PointerValue | Uint8Array | null;
   /** Windows.Win32.Foundation.PWSTR */
-  pCommandQueueDebugNameW: string | null;
+  pCommandQueueDebugNameW: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Graphics.Direct3D12.ID3D12GraphicsCommandList */
   pCommandList: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.Graphics.Direct3D12.ID3D12CommandQueue */
@@ -8533,7 +8533,7 @@ export interface D3D12_DRED_ALLOCATION_NODE {
   /** ptr */
   ObjectNameA: Deno.PointerValue | Uint8Array | null;
   /** Windows.Win32.Foundation.PWSTR */
-  ObjectNameW: string | null;
+  ObjectNameW: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Graphics.Direct3D12.D3D12_DRED_ALLOCATION_TYPE */
   AllocationType: D3D12_DRED_ALLOCATION_TYPE;
   /** ptr */
@@ -8567,7 +8567,7 @@ export interface D3D12_DRED_ALLOCATION_NODE1 {
   /** ptr */
   ObjectNameA: Deno.PointerValue | Uint8Array | null;
   /** Windows.Win32.Foundation.PWSTR */
-  ObjectNameW: string | null;
+  ObjectNameW: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Graphics.Direct3D12.D3D12_DRED_ALLOCATION_TYPE */
   AllocationType: D3D12_DRED_ALLOCATION_TYPE;
   /** ptr */
@@ -9464,7 +9464,7 @@ export function allocD3D12_DISPATCH_MESH_ARGUMENTS(data?: Partial<D3D12_DISPATCH
  */
 export interface D3D12_SIGNATURE_PARAMETER_DESC {
   /** Windows.Win32.Foundation.PSTR */
-  SemanticName: string | null;
+  SemanticName: string | null | Uint8Array;
   /** u32 */
   SemanticIndex: number;
   /** u32 */
@@ -9518,7 +9518,7 @@ export function allocD3D12_SIGNATURE_PARAMETER_DESC(data?: Partial<D3D12_SIGNATU
  */
 export interface D3D12_SHADER_BUFFER_DESC {
   /** Windows.Win32.Foundation.PSTR */
-  Name: string | null;
+  Name: string | null | Uint8Array;
   /** Windows.Win32.Graphics.Direct3D.D3D_CBUFFER_TYPE */
   Type: D3D_CBUFFER_TYPE;
   /** u32 */
@@ -9555,7 +9555,7 @@ export function allocD3D12_SHADER_BUFFER_DESC(data?: Partial<D3D12_SHADER_BUFFER
  */
 export interface D3D12_SHADER_VARIABLE_DESC {
   /** Windows.Win32.Foundation.PSTR */
-  Name: string | null;
+  Name: string | null | Uint8Array;
   /** u32 */
   StartOffset: number;
   /** u32 */
@@ -9623,7 +9623,7 @@ export interface D3D12_SHADER_TYPE_DESC {
   /** u32 */
   Offset: number;
   /** Windows.Win32.Foundation.PSTR */
-  Name: string | null;
+  Name: string | null | Uint8Array;
 }
 
 export const sizeofD3D12_SHADER_TYPE_DESC = 40;
@@ -9661,7 +9661,7 @@ export interface D3D12_SHADER_DESC {
   /** u32 */
   Version: number;
   /** Windows.Win32.Foundation.PSTR */
-  Creator: string | null;
+  Creator: string | null | Uint8Array;
   /** u32 */
   Flags: number;
   /** u32 */
@@ -9829,7 +9829,7 @@ export function allocD3D12_SHADER_DESC(data?: Partial<D3D12_SHADER_DESC>): Uint8
  */
 export interface D3D12_SHADER_INPUT_BIND_DESC {
   /** Windows.Win32.Foundation.PSTR */
-  Name: string | null;
+  Name: string | null | Uint8Array;
   /** Windows.Win32.Graphics.Direct3D.D3D_SHADER_INPUT_TYPE */
   Type: D3D_SHADER_INPUT_TYPE;
   /** u32 */
@@ -9887,7 +9887,7 @@ export function allocD3D12_SHADER_INPUT_BIND_DESC(data?: Partial<D3D12_SHADER_IN
  */
 export interface D3D12_LIBRARY_DESC {
   /** Windows.Win32.Foundation.PSTR */
-  Creator: string | null;
+  Creator: string | null | Uint8Array;
   /** u32 */
   Flags: number;
   /** u32 */
@@ -9918,7 +9918,7 @@ export interface D3D12_FUNCTION_DESC {
   /** u32 */
   Version: number;
   /** Windows.Win32.Foundation.PSTR */
-  Creator: string | null;
+  Creator: string | null | Uint8Array;
   /** u32 */
   Flags: number;
   /** u32 */
@@ -9972,7 +9972,7 @@ export interface D3D12_FUNCTION_DESC {
   /** u64 */
   RequiredFeatureFlags: Deno.PointerValue;
   /** Windows.Win32.Foundation.PSTR */
-  Name: string | null;
+  Name: string | null | Uint8Array;
   /** i32 */
   FunctionParameterCount: number;
   /** Windows.Win32.Foundation.BOOL */
@@ -10070,9 +10070,9 @@ export function allocD3D12_FUNCTION_DESC(data?: Partial<D3D12_FUNCTION_DESC>): U
  */
 export interface D3D12_PARAMETER_DESC {
   /** Windows.Win32.Foundation.PSTR */
-  Name: string | null;
+  Name: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  SemanticName: string | null;
+  SemanticName: string | null | Uint8Array;
   /** Windows.Win32.Graphics.Direct3D.D3D_SHADER_VARIABLE_TYPE */
   Type: D3D_SHADER_VARIABLE_TYPE;
   /** Windows.Win32.Graphics.Direct3D.D3D_SHADER_VARIABLE_CLASS */

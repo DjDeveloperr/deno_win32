@@ -219,7 +219,7 @@ try {
 // Symbols
 
 export function D3DReadFileToBlob(
-  pFileName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pFileName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   ppContents: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
   return util.pointerFromFfi(libD3DCOMPILER_47_dll.D3DReadFileToBlob(util.pwstrToFfi(pFileName), util.toPointer(ppContents)));
@@ -227,7 +227,7 @@ export function D3DReadFileToBlob(
 
 export function D3DWriteBlobToFile(
   pBlob: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Graphics.Direct3D.ID3DBlob */,
-  pFileName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pFileName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   bOverwrite: boolean /* Windows.Win32.Foundation.BOOL */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
   return util.pointerFromFfi(libD3DCOMPILER_47_dll.D3DWriteBlobToFile(util.toPointer(pBlob), util.pwstrToFfi(pFileName), util.boolToFfi(bOverwrite)));
@@ -236,11 +236,11 @@ export function D3DWriteBlobToFile(
 export function D3DCompile(
   pSrcData: Deno.PointerValue | Uint8Array | null /* ptr */,
   SrcDataSize: Deno.PointerValue /* usize */,
-  pSourceName: string | null /* Windows.Win32.Foundation.PSTR */,
+  pSourceName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   pDefines: Deno.PointerValue | Uint8Array | null /* ptr */,
   pInclude: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Graphics.Direct3D.ID3DInclude */,
-  pEntrypoint: string | null /* Windows.Win32.Foundation.PSTR */,
-  pTarget: string | null /* Windows.Win32.Foundation.PSTR */,
+  pEntrypoint: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  pTarget: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   Flags1: number /* u32 */,
   Flags2: number /* u32 */,
   ppCode: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -252,11 +252,11 @@ export function D3DCompile(
 export function D3DCompile2(
   pSrcData: Deno.PointerValue | Uint8Array | null /* ptr */,
   SrcDataSize: Deno.PointerValue /* usize */,
-  pSourceName: string | null /* Windows.Win32.Foundation.PSTR */,
+  pSourceName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   pDefines: Deno.PointerValue | Uint8Array | null /* ptr */,
   pInclude: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Graphics.Direct3D.ID3DInclude */,
-  pEntrypoint: string | null /* Windows.Win32.Foundation.PSTR */,
-  pTarget: string | null /* Windows.Win32.Foundation.PSTR */,
+  pEntrypoint: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  pTarget: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   Flags1: number /* u32 */,
   Flags2: number /* u32 */,
   SecondaryDataFlags: number /* u32 */,
@@ -269,11 +269,11 @@ export function D3DCompile2(
 }
 
 export function D3DCompileFromFile(
-  pFileName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pFileName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pDefines: Deno.PointerValue | Uint8Array | null /* ptr */,
   pInclude: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Graphics.Direct3D.ID3DInclude */,
-  pEntrypoint: string | null /* Windows.Win32.Foundation.PSTR */,
-  pTarget: string | null /* Windows.Win32.Foundation.PSTR */,
+  pEntrypoint: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  pTarget: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   Flags1: number /* u32 */,
   Flags2: number /* u32 */,
   ppCode: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -285,7 +285,7 @@ export function D3DCompileFromFile(
 export function D3DPreprocess(
   pSrcData: Deno.PointerValue | Uint8Array | null /* ptr */,
   SrcDataSize: Deno.PointerValue /* usize */,
-  pSourceName: string | null /* Windows.Win32.Foundation.PSTR */,
+  pSourceName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   pDefines: Deno.PointerValue | Uint8Array | null /* ptr */,
   pInclude: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Graphics.Direct3D.ID3DInclude */,
   ppCodeText: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -324,7 +324,7 @@ export function D3DDisassemble(
   pSrcData: Deno.PointerValue | Uint8Array | null /* ptr */,
   SrcDataSize: Deno.PointerValue /* usize */,
   Flags: number /* u32 */,
-  szComments: string | null /* Windows.Win32.Foundation.PSTR */,
+  szComments: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   ppDisassembly: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
   return util.pointerFromFfi(libD3DCOMPILER_47_dll.D3DDisassemble(util.toPointer(pSrcData), SrcDataSize, Flags, util.pstrToFfi(szComments), util.toPointer(ppDisassembly)));
@@ -334,7 +334,7 @@ export function D3DDisassembleRegion(
   pSrcData: Deno.PointerValue | Uint8Array | null /* ptr */,
   SrcDataSize: Deno.PointerValue /* usize */,
   Flags: number /* u32 */,
-  szComments: string | null /* Windows.Win32.Foundation.PSTR */,
+  szComments: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   StartByteOffset: Deno.PointerValue /* usize */,
   NumInsts: Deno.PointerValue /* usize */,
   pFinishByteOffset: Deno.PointerValue | Uint8Array | null /* ptr */,

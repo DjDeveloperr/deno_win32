@@ -1717,11 +1717,11 @@ export type PSTR = Deno.PointerValue | Uint8Array | null;
  */
 export interface SERVENT {
   /** Windows.Win32.Foundation.PSTR */
-  s_name: string | null;
+  s_name: string | null | Uint8Array;
   /** ptr */
   s_aliases: Deno.PointerValue | Uint8Array | null;
   /** Windows.Win32.Foundation.PSTR */
-  s_proto: string | null;
+  s_proto: string | null | Uint8Array;
   /** i16 */
   s_port: number;
 }
@@ -1762,7 +1762,7 @@ export interface WSADATA {
   /** u16 */
   iMaxUdpDg: number;
   /** Windows.Win32.Foundation.PSTR */
-  lpVendorInfo: string | null;
+  lpVendorInfo: string | null | Uint8Array;
   /** array */
   szDescription: Deno.PointerValue | null;
   /** array */
@@ -2231,7 +2231,7 @@ export interface WSABUF {
   /** u32 */
   len: number;
   /** Windows.Win32.Foundation.PSTR */
-  buf: string | null;
+  buf: string | null | Uint8Array;
 }
 
 export const sizeofWSABUF = 16;
@@ -2332,7 +2332,7 @@ export interface ADDRINFOA {
   /** usize */
   ai_addrlen: Deno.PointerValue;
   /** Windows.Win32.Foundation.PSTR */
-  ai_canonname: string | null;
+  ai_canonname: string | null | Uint8Array;
   /** ptr */
   ai_addr: Deno.PointerValue | Uint8Array | null;
   /** ptr */
@@ -2383,7 +2383,7 @@ export interface ADDRINFOW {
   /** usize */
   ai_addrlen: Deno.PointerValue;
   /** Windows.Win32.Foundation.PWSTR */
-  ai_canonname: string | null;
+  ai_canonname: string | null | Uint8Array | Uint16Array;
   /** ptr */
   ai_addr: Deno.PointerValue | Uint8Array | null;
   /** ptr */
@@ -2432,7 +2432,7 @@ export interface ADDRINFOEXA {
   /** usize */
   ai_addrlen: Deno.PointerValue;
   /** Windows.Win32.Foundation.PSTR */
-  ai_canonname: string | null;
+  ai_canonname: string | null | Uint8Array;
   /** ptr */
   ai_addr: Deno.PointerValue | Uint8Array | null;
   /** ptr */
@@ -2493,7 +2493,7 @@ export interface ADDRINFOEXW {
   /** usize */
   ai_addrlen: Deno.PointerValue;
   /** Windows.Win32.Foundation.PWSTR */
-  ai_canonname: string | null;
+  ai_canonname: string | null | Uint8Array | Uint16Array;
   /** ptr */
   ai_addr: Deno.PointerValue | Uint8Array | null;
   /** ptr */
@@ -2554,7 +2554,7 @@ export interface ADDRINFOEX2A {
   /** usize */
   ai_addrlen: Deno.PointerValue;
   /** Windows.Win32.Foundation.PSTR */
-  ai_canonname: string | null;
+  ai_canonname: string | null | Uint8Array;
   /** ptr */
   ai_addr: Deno.PointerValue | Uint8Array | null;
   /** ptr */
@@ -2568,7 +2568,7 @@ export interface ADDRINFOEX2A {
   /** i32 */
   ai_version: number;
   /** Windows.Win32.Foundation.PSTR */
-  ai_fqdn: string | null;
+  ai_fqdn: string | null | Uint8Array;
 }
 
 export const sizeofADDRINFOEX2A = 88;
@@ -2627,7 +2627,7 @@ export interface ADDRINFOEX2W {
   /** usize */
   ai_addrlen: Deno.PointerValue;
   /** Windows.Win32.Foundation.PWSTR */
-  ai_canonname: string | null;
+  ai_canonname: string | null | Uint8Array | Uint16Array;
   /** ptr */
   ai_addr: Deno.PointerValue | Uint8Array | null;
   /** ptr */
@@ -2641,7 +2641,7 @@ export interface ADDRINFOEX2W {
   /** i32 */
   ai_version: number;
   /** Windows.Win32.Foundation.PWSTR */
-  ai_fqdn: string | null;
+  ai_fqdn: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeofADDRINFOEX2W = 88;
@@ -2700,7 +2700,7 @@ export interface ADDRINFOEX3 {
   /** usize */
   ai_addrlen: Deno.PointerValue;
   /** Windows.Win32.Foundation.PWSTR */
-  ai_canonname: string | null;
+  ai_canonname: string | null | Uint8Array | Uint16Array;
   /** ptr */
   ai_addr: Deno.PointerValue | Uint8Array | null;
   /** ptr */
@@ -2714,7 +2714,7 @@ export interface ADDRINFOEX3 {
   /** i32 */
   ai_version: number;
   /** Windows.Win32.Foundation.PWSTR */
-  ai_fqdn: string | null;
+  ai_fqdn: string | null | Uint8Array | Uint16Array;
   /** i32 */
   ai_interfaceindex: number;
 }
@@ -2780,7 +2780,7 @@ export interface ADDRINFOEX4 {
   /** usize */
   ai_addrlen: Deno.PointerValue;
   /** Windows.Win32.Foundation.PWSTR */
-  ai_canonname: string | null;
+  ai_canonname: string | null | Uint8Array | Uint16Array;
   /** ptr */
   ai_addr: Deno.PointerValue | Uint8Array | null;
   /** ptr */
@@ -2794,7 +2794,7 @@ export interface ADDRINFOEX4 {
   /** i32 */
   ai_version: number;
   /** Windows.Win32.Foundation.PWSTR */
-  ai_fqdn: string | null;
+  ai_fqdn: string | null | Uint8Array | Uint16Array;
   /** i32 */
   ai_interfaceindex: number;
   /** Windows.Win32.Foundation.HANDLE */
@@ -2862,7 +2862,7 @@ export interface ADDRINFOEX5 {
   /** usize */
   ai_addrlen: Deno.PointerValue;
   /** Windows.Win32.Foundation.PWSTR */
-  ai_canonname: string | null;
+  ai_canonname: string | null | Uint8Array | Uint16Array;
   /** ptr */
   ai_addr: Deno.PointerValue | Uint8Array | null;
   /** ptr */
@@ -2876,7 +2876,7 @@ export interface ADDRINFOEX5 {
   /** i32 */
   ai_version: number;
   /** Windows.Win32.Foundation.PWSTR */
-  ai_fqdn: string | null;
+  ai_fqdn: string | null | Uint8Array | Uint16Array;
   /** i32 */
   ai_interfaceindex: number;
   /** Windows.Win32.Foundation.HANDLE */
@@ -2985,7 +2985,7 @@ export interface ADDRINFOEX6 {
   /** usize */
   ai_addrlen: Deno.PointerValue;
   /** Windows.Win32.Foundation.PWSTR */
-  ai_canonname: string | null;
+  ai_canonname: string | null | Uint8Array | Uint16Array;
   /** ptr */
   ai_addr: Deno.PointerValue | Uint8Array | null;
   /** ptr */
@@ -2999,7 +2999,7 @@ export interface ADDRINFOEX6 {
   /** i32 */
   ai_version: number;
   /** Windows.Win32.Foundation.PWSTR */
-  ai_fqdn: string | null;
+  ai_fqdn: string | null | Uint8Array | Uint16Array;
   /** i32 */
   ai_interfaceindex: number;
   /** Windows.Win32.Foundation.HANDLE */
@@ -3118,7 +3118,7 @@ export function allocTIMEVAL(data?: Partial<TIMEVAL>): Uint8Array {
  */
 export interface HOSTENT {
   /** Windows.Win32.Foundation.PSTR */
-  h_name: string | null;
+  h_name: string | null | Uint8Array;
   /** ptr */
   h_aliases: Deno.PointerValue | Uint8Array | null;
   /** i16 */
@@ -3156,7 +3156,7 @@ export function allocHOSTENT(data?: Partial<HOSTENT>): Uint8Array {
  */
 export interface netent {
   /** Windows.Win32.Foundation.PSTR */
-  n_name: string | null;
+  n_name: string | null | Uint8Array;
   /** ptr */
   n_aliases: Deno.PointerValue | Uint8Array | null;
   /** i16 */
@@ -3190,7 +3190,7 @@ export function allocNetent(data?: Partial<netent>): Uint8Array {
  */
 export interface PROTOENT {
   /** Windows.Win32.Foundation.PSTR */
-  p_name: string | null;
+  p_name: string | null | Uint8Array;
   /** ptr */
   p_aliases: Deno.PointerValue | Uint8Array | null;
   /** i16 */
@@ -3747,25 +3747,25 @@ export interface WSAQUERYSETA {
   /** u32 */
   dwSize: number;
   /** Windows.Win32.Foundation.PSTR */
-  lpszServiceInstanceName: string | null;
+  lpszServiceInstanceName: string | null | Uint8Array;
   /** ptr */
   lpServiceClassId: Deno.PointerValue | Uint8Array | null;
   /** ptr */
   lpVersion: Deno.PointerValue | Uint8Array | null;
   /** Windows.Win32.Foundation.PSTR */
-  lpszComment: string | null;
+  lpszComment: string | null | Uint8Array;
   /** u32 */
   dwNameSpace: number;
   /** ptr */
   lpNSProviderId: Deno.PointerValue | Uint8Array | null;
   /** Windows.Win32.Foundation.PSTR */
-  lpszContext: string | null;
+  lpszContext: string | null | Uint8Array;
   /** u32 */
   dwNumberOfProtocols: number;
   /** ptr */
   lpafpProtocols: Deno.PointerValue | Uint8Array | null;
   /** Windows.Win32.Foundation.PSTR */
-  lpszQueryString: string | null;
+  lpszQueryString: string | null | Uint8Array;
   /** u32 */
   dwNumberOfCsAddrs: number;
   /** ptr */
@@ -3838,25 +3838,25 @@ export interface WSAQUERYSETW {
   /** u32 */
   dwSize: number;
   /** Windows.Win32.Foundation.PWSTR */
-  lpszServiceInstanceName: string | null;
+  lpszServiceInstanceName: string | null | Uint8Array | Uint16Array;
   /** ptr */
   lpServiceClassId: Deno.PointerValue | Uint8Array | null;
   /** ptr */
   lpVersion: Deno.PointerValue | Uint8Array | null;
   /** Windows.Win32.Foundation.PWSTR */
-  lpszComment: string | null;
+  lpszComment: string | null | Uint8Array | Uint16Array;
   /** u32 */
   dwNameSpace: number;
   /** ptr */
   lpNSProviderId: Deno.PointerValue | Uint8Array | null;
   /** Windows.Win32.Foundation.PWSTR */
-  lpszContext: string | null;
+  lpszContext: string | null | Uint8Array | Uint16Array;
   /** u32 */
   dwNumberOfProtocols: number;
   /** ptr */
   lpafpProtocols: Deno.PointerValue | Uint8Array | null;
   /** Windows.Win32.Foundation.PWSTR */
-  lpszQueryString: string | null;
+  lpszQueryString: string | null | Uint8Array | Uint16Array;
   /** u32 */
   dwNumberOfCsAddrs: number;
   /** ptr */
@@ -3929,23 +3929,23 @@ export interface WSAQUERYSET2A {
   /** u32 */
   dwSize: number;
   /** Windows.Win32.Foundation.PSTR */
-  lpszServiceInstanceName: string | null;
+  lpszServiceInstanceName: string | null | Uint8Array;
   /** ptr */
   lpVersion: Deno.PointerValue | Uint8Array | null;
   /** Windows.Win32.Foundation.PSTR */
-  lpszComment: string | null;
+  lpszComment: string | null | Uint8Array;
   /** u32 */
   dwNameSpace: number;
   /** ptr */
   lpNSProviderId: Deno.PointerValue | Uint8Array | null;
   /** Windows.Win32.Foundation.PSTR */
-  lpszContext: string | null;
+  lpszContext: string | null | Uint8Array;
   /** u32 */
   dwNumberOfProtocols: number;
   /** ptr */
   lpafpProtocols: Deno.PointerValue | Uint8Array | null;
   /** Windows.Win32.Foundation.PSTR */
-  lpszQueryString: string | null;
+  lpszQueryString: string | null | Uint8Array;
   /** u32 */
   dwNumberOfCsAddrs: number;
   /** ptr */
@@ -4016,23 +4016,23 @@ export interface WSAQUERYSET2W {
   /** u32 */
   dwSize: number;
   /** Windows.Win32.Foundation.PWSTR */
-  lpszServiceInstanceName: string | null;
+  lpszServiceInstanceName: string | null | Uint8Array | Uint16Array;
   /** ptr */
   lpVersion: Deno.PointerValue | Uint8Array | null;
   /** Windows.Win32.Foundation.PWSTR */
-  lpszComment: string | null;
+  lpszComment: string | null | Uint8Array | Uint16Array;
   /** u32 */
   dwNameSpace: number;
   /** ptr */
   lpNSProviderId: Deno.PointerValue | Uint8Array | null;
   /** Windows.Win32.Foundation.PWSTR */
-  lpszContext: string | null;
+  lpszContext: string | null | Uint8Array | Uint16Array;
   /** u32 */
   dwNumberOfProtocols: number;
   /** ptr */
   lpafpProtocols: Deno.PointerValue | Uint8Array | null;
   /** Windows.Win32.Foundation.PWSTR */
-  lpszQueryString: string | null;
+  lpszQueryString: string | null | Uint8Array | Uint16Array;
   /** u32 */
   dwNumberOfCsAddrs: number;
   /** ptr */
@@ -4101,7 +4101,7 @@ export function allocWSAQUERYSET2W(data?: Partial<WSAQUERYSET2W>): Uint8Array {
  */
 export interface WSANSCLASSINFOA {
   /** Windows.Win32.Foundation.PSTR */
-  lpszName: string | null;
+  lpszName: string | null | Uint8Array;
   /** u32 */
   dwNameSpace: number;
   /** u32 */
@@ -4139,7 +4139,7 @@ export function allocWSANSCLASSINFOA(data?: Partial<WSANSCLASSINFOA>): Uint8Arra
  */
 export interface WSANSCLASSINFOW {
   /** Windows.Win32.Foundation.PWSTR */
-  lpszName: string | null;
+  lpszName: string | null | Uint8Array | Uint16Array;
   /** u32 */
   dwNameSpace: number;
   /** u32 */
@@ -4179,7 +4179,7 @@ export interface WSASERVICECLASSINFOA {
   /** ptr */
   lpServiceClassId: Deno.PointerValue | Uint8Array | null;
   /** Windows.Win32.Foundation.PSTR */
-  lpszServiceClassName: string | null;
+  lpszServiceClassName: string | null | Uint8Array;
   /** u32 */
   dwCount: number;
   /** ptr */
@@ -4213,7 +4213,7 @@ export interface WSASERVICECLASSINFOW {
   /** ptr */
   lpServiceClassId: Deno.PointerValue | Uint8Array | null;
   /** Windows.Win32.Foundation.PWSTR */
-  lpszServiceClassName: string | null;
+  lpszServiceClassName: string | null | Uint8Array | Uint16Array;
   /** u32 */
   dwCount: number;
   /** ptr */
@@ -4255,7 +4255,7 @@ export interface WSANAMESPACE_INFOA {
   /** u32 */
   dwVersion: number;
   /** Windows.Win32.Foundation.PSTR */
-  lpszIdentifier: string | null;
+  lpszIdentifier: string | null | Uint8Array;
 }
 
 export const sizeofWSANAMESPACE_INFOA = 32;
@@ -4293,7 +4293,7 @@ export interface WSANAMESPACE_INFOW {
   /** u32 */
   dwVersion: number;
   /** Windows.Win32.Foundation.PWSTR */
-  lpszIdentifier: string | null;
+  lpszIdentifier: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeofWSANAMESPACE_INFOW = 32;
@@ -4354,7 +4354,7 @@ export interface WSANAMESPACE_INFOEXA {
   /** u32 */
   dwVersion: number;
   /** Windows.Win32.Foundation.PSTR */
-  lpszIdentifier: string | null;
+  lpszIdentifier: string | null | Uint8Array;
   /** Windows.Win32.System.Com.BLOB */
   ProviderSpecific: Uint8Array | Deno.PointerValue | null;
 }
@@ -4396,7 +4396,7 @@ export interface WSANAMESPACE_INFOEXW {
   /** u32 */
   dwVersion: number;
   /** Windows.Win32.Foundation.PWSTR */
-  lpszIdentifier: string | null;
+  lpszIdentifier: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.System.Com.BLOB */
   ProviderSpecific: Uint8Array | Deno.PointerValue | null;
 }
@@ -4736,7 +4736,7 @@ export function allocUNLOAD_DLL_DEBUG_INFO(data?: Partial<UNLOAD_DLL_DEBUG_INFO>
  */
 export interface OUTPUT_DEBUG_STRING_INFO {
   /** Windows.Win32.Foundation.PSTR */
-  lpDebugStringData: string | null;
+  lpDebugStringData: string | null | Uint8Array;
   /** u16 */
   fUnicode: number;
   /** u16 */
@@ -8701,7 +8701,7 @@ export interface NS_INFOA {
   /** u32 */
   dwNameSpaceFlags: number;
   /** Windows.Win32.Foundation.PSTR */
-  lpNameSpace: string | null;
+  lpNameSpace: string | null | Uint8Array;
 }
 
 export const sizeofNS_INFOA = 16;
@@ -8730,7 +8730,7 @@ export interface NS_INFOW {
   /** u32 */
   dwNameSpaceFlags: number;
   /** Windows.Win32.Foundation.PWSTR */
-  lpNameSpace: string | null;
+  lpNameSpace: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeofNS_INFOW = 16;
@@ -8796,7 +8796,7 @@ export interface SERVICE_TYPE_VALUE_ABSA {
   /** u32 */
   dwValueSize: number;
   /** Windows.Win32.Foundation.PSTR */
-  lpValueName: string | null;
+  lpValueName: string | null | Uint8Array;
   /** ptr */
   lpValue: Deno.PointerValue | Uint8Array | null;
 }
@@ -8834,7 +8834,7 @@ export interface SERVICE_TYPE_VALUE_ABSW {
   /** u32 */
   dwValueSize: number;
   /** Windows.Win32.Foundation.PWSTR */
-  lpValueName: string | null;
+  lpValueName: string | null | Uint8Array | Uint16Array;
   /** ptr */
   lpValue: Deno.PointerValue | Uint8Array | null;
 }
@@ -8892,7 +8892,7 @@ export function allocSERVICE_TYPE_INFO(data?: Partial<SERVICE_TYPE_INFO>): Uint8
  */
 export interface SERVICE_TYPE_INFO_ABSA {
   /** Windows.Win32.Foundation.PSTR */
-  lpTypeName: string | null;
+  lpTypeName: string | null | Uint8Array;
   /** u32 */
   dwValueCount: number;
   /** array */
@@ -8922,7 +8922,7 @@ export function allocSERVICE_TYPE_INFO_ABSA(data?: Partial<SERVICE_TYPE_INFO_ABS
  */
 export interface SERVICE_TYPE_INFO_ABSW {
   /** Windows.Win32.Foundation.PWSTR */
-  lpTypeName: string | null;
+  lpTypeName: string | null | Uint8Array | Uint16Array;
   /** u32 */
   dwValueCount: number;
   /** array */
@@ -9015,11 +9015,11 @@ export interface SERVICE_INFOA {
   /** ptr */
   lpServiceType: Deno.PointerValue | Uint8Array | null;
   /** Windows.Win32.Foundation.PSTR */
-  lpServiceName: string | null;
+  lpServiceName: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  lpComment: string | null;
+  lpComment: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  lpLocale: string | null;
+  lpLocale: string | null | Uint8Array;
   /** Windows.Win32.Networking.WinSock.RESOURCE_DISPLAY_TYPE */
   dwDisplayHint: RESOURCE_DISPLAY_TYPE;
   /** u32 */
@@ -9027,7 +9027,7 @@ export interface SERVICE_INFOA {
   /** u32 */
   dwTime: number;
   /** Windows.Win32.Foundation.PSTR */
-  lpMachineName: string | null;
+  lpMachineName: string | null | Uint8Array;
   /** ptr */
   lpServiceAddress: Deno.PointerValue | Uint8Array | null;
   /** Windows.Win32.System.Com.BLOB */
@@ -9082,11 +9082,11 @@ export interface SERVICE_INFOW {
   /** ptr */
   lpServiceType: Deno.PointerValue | Uint8Array | null;
   /** Windows.Win32.Foundation.PWSTR */
-  lpServiceName: string | null;
+  lpServiceName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  lpComment: string | null;
+  lpComment: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  lpLocale: string | null;
+  lpLocale: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Networking.WinSock.RESOURCE_DISPLAY_TYPE */
   dwDisplayHint: RESOURCE_DISPLAY_TYPE;
   /** u32 */
@@ -9094,7 +9094,7 @@ export interface SERVICE_INFOW {
   /** u32 */
   dwTime: number;
   /** Windows.Win32.Foundation.PWSTR */
-  lpMachineName: string | null;
+  lpMachineName: string | null | Uint8Array | Uint16Array;
   /** ptr */
   lpServiceAddress: Deno.PointerValue | Uint8Array | null;
   /** Windows.Win32.System.Com.BLOB */
@@ -9207,7 +9207,7 @@ export interface PROTOCOL_INFOA {
   /** u32 */
   dwMessageSize: number;
   /** Windows.Win32.Foundation.PSTR */
-  lpProtocol: string | null;
+  lpProtocol: string | null | Uint8Array;
 }
 
 export const sizeofPROTOCOL_INFOA = 40;
@@ -9257,7 +9257,7 @@ export interface PROTOCOL_INFOW {
   /** u32 */
   dwMessageSize: number;
   /** Windows.Win32.Foundation.PWSTR */
-  lpProtocol: string | null;
+  lpProtocol: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeofPROTOCOL_INFOW = 40;
@@ -9301,11 +9301,11 @@ export interface NETRESOURCE2A {
   /** u32 */
   dwDisplayType: number;
   /** Windows.Win32.Foundation.PSTR */
-  lpLocalName: string | null;
+  lpLocalName: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  lpRemoteName: string | null;
+  lpRemoteName: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  lpComment: string | null;
+  lpComment: string | null | Uint8Array;
   /** Windows.Win32.Networking.WinSock.NS_INFOA */
   ns_info: Uint8Array | Deno.PointerValue | null;
   /** System.Guid */
@@ -9369,11 +9369,11 @@ export interface NETRESOURCE2W {
   /** u32 */
   dwDisplayType: number;
   /** Windows.Win32.Foundation.PWSTR */
-  lpLocalName: string | null;
+  lpLocalName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  lpRemoteName: string | null;
+  lpRemoteName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  lpComment: string | null;
+  lpComment: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Networking.WinSock.NS_INFOA */
   ns_info: Uint8Array | Deno.PointerValue | null;
   /** System.Guid */
@@ -9966,7 +9966,7 @@ export interface _Anonymous1_e__Union {
   /** usize */
   Data0: Deno.PointerValue;
   /** Windows.Win32.Foundation.PWSTR */
-  String: string | null;
+  String: string | null | Uint8Array | Uint16Array;
   /** usize */
   u: Deno.PointerValue;
   /** ptr */
@@ -12410,7 +12410,7 @@ export function WSCDeinstallProvider32(
 
 export function WSCInstallProvider64_32(
   lpProviderId: Deno.PointerValue | Uint8Array | null /* ptr */,
-  lpszProviderDllPath: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpszProviderDllPath: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   lpProtocolInfoList: Deno.PointerValue | Uint8Array | null /* ptr */,
   dwNumberOfEntries: number /* u32 */,
   lpErrno: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -12420,7 +12420,7 @@ export function WSCInstallProvider64_32(
 
 export function WSCGetProviderPath32(
   lpProviderId: Deno.PointerValue | Uint8Array | null /* ptr */,
-  lpszProviderDllPath: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpszProviderDllPath: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   lpProviderDllPathLen: Deno.PointerValue | Uint8Array | null /* ptr */,
   lpErrno: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
@@ -12429,7 +12429,7 @@ export function WSCGetProviderPath32(
 
 export function WSCUpdateProvider32(
   lpProviderId: Deno.PointerValue | Uint8Array | null /* ptr */,
-  lpszProviderDllPath: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpszProviderDllPath: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   lpProtocolInfoList: Deno.PointerValue | Uint8Array | null /* ptr */,
   dwNumberOfEntries: number /* u32 */,
   lpErrno: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -12474,8 +12474,8 @@ export function WSCEnumNameSpaceProvidersEx32(
 }
 
 export function WSCInstallNameSpace32(
-  lpszIdentifier: string | null /* Windows.Win32.Foundation.PWSTR */,
-  lpszPathName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpszIdentifier: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  lpszPathName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   dwNameSpace: number /* u32 */,
   dwVersion: number /* u32 */,
   lpProviderId: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -12484,8 +12484,8 @@ export function WSCInstallNameSpace32(
 }
 
 export function WSCInstallNameSpaceEx32(
-  lpszIdentifier: string | null /* Windows.Win32.Foundation.PWSTR */,
-  lpszPathName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpszIdentifier: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  lpszPathName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   dwNameSpace: number /* u32 */,
   dwVersion: number /* u32 */,
   lpProviderId: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -12509,9 +12509,9 @@ export function WSCEnableNSProvider32(
 
 export function WSCInstallProviderAndChains64_32(
   lpProviderId: Deno.PointerValue | Uint8Array | null /* ptr */,
-  lpszProviderDllPath: string | null /* Windows.Win32.Foundation.PWSTR */,
-  lpszProviderDllPath32: string | null /* Windows.Win32.Foundation.PWSTR */,
-  lpszLspName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpszProviderDllPath: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  lpszProviderDllPath32: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  lpszLspName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   dwServiceFlags: number /* u32 */,
   lpProtocolInfoList: Deno.PointerValue | Uint8Array | null /* ptr */,
   dwNumberOfEntries: number /* u32 */,
@@ -12600,7 +12600,7 @@ export function getsockopt(
   s: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Networking.WinSock.SOCKET */,
   level: number /* i32 */,
   optname: number /* i32 */,
-  optval: string | null /* Windows.Win32.Foundation.PSTR */,
+  optval: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   optlen: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
   return libWS2_32_dll.getsockopt(util.toPointer(s), level, optname, util.pstrToFfi(optval), util.toPointer(optlen));
@@ -12619,7 +12619,7 @@ export function htons(
 }
 
 export function inet_addr(
-  cp: string | null /* Windows.Win32.Foundation.PSTR */,
+  cp: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): number /* u32 */ {
   return libWS2_32_dll.inet_addr(util.pstrToFfi(cp));
 }
@@ -12651,7 +12651,7 @@ export function ntohs(
 
 export function recv(
   s: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Networking.WinSock.SOCKET */,
-  buf: string | null /* Windows.Win32.Foundation.PSTR */,
+  buf: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   len: number /* i32 */,
   flags: SEND_RECV_FLAGS /* Windows.Win32.Networking.WinSock.SEND_RECV_FLAGS */,
 ): number /* i32 */ {
@@ -12660,7 +12660,7 @@ export function recv(
 
 export function recvfrom(
   s: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Networking.WinSock.SOCKET */,
-  buf: string | null /* Windows.Win32.Foundation.PSTR */,
+  buf: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   len: number /* i32 */,
   flags: number /* i32 */,
   from: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -12681,7 +12681,7 @@ export function select(
 
 export function send(
   s: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Networking.WinSock.SOCKET */,
-  buf: string | null /* Windows.Win32.Foundation.PSTR */,
+  buf: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   len: number /* i32 */,
   flags: SEND_RECV_FLAGS /* Windows.Win32.Networking.WinSock.SEND_RECV_FLAGS */,
 ): number /* i32 */ {
@@ -12690,7 +12690,7 @@ export function send(
 
 export function sendto(
   s: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Networking.WinSock.SOCKET */,
-  buf: string | null /* Windows.Win32.Foundation.PSTR */,
+  buf: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   len: number /* i32 */,
   flags: number /* i32 */,
   to: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -12703,7 +12703,7 @@ export function setsockopt(
   s: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Networking.WinSock.SOCKET */,
   level: number /* i32 */,
   optname: number /* i32 */,
-  optval: string | null /* Windows.Win32.Foundation.PSTR */,
+  optval: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   optlen: number /* i32 */,
 ): number /* i32 */ {
   return libWS2_32_dll.setsockopt(util.toPointer(s), level, optname, util.pstrToFfi(optval), optlen);
@@ -12725,7 +12725,7 @@ export function socket(
 }
 
 export function gethostbyaddr(
-  addr: string | null /* Windows.Win32.Foundation.PSTR */,
+  addr: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   len: number /* i32 */,
   type: number /* i32 */,
 ): Deno.PointerValue | null /* ptr */ {
@@ -12733,20 +12733,20 @@ export function gethostbyaddr(
 }
 
 export function gethostbyname(
-  name: string | null /* Windows.Win32.Foundation.PSTR */,
+  name: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): Deno.PointerValue | null /* ptr */ {
   return util.pointerFromFfi(libWS2_32_dll.gethostbyname(util.pstrToFfi(name)));
 }
 
 export function gethostname(
-  name: string | null /* Windows.Win32.Foundation.PSTR */,
+  name: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   namelen: number /* i32 */,
 ): number /* i32 */ {
   return libWS2_32_dll.gethostname(util.pstrToFfi(name), namelen);
 }
 
 export function GetHostNameW(
-  name: string | null /* Windows.Win32.Foundation.PWSTR */,
+  name: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   namelen: number /* i32 */,
 ): number /* i32 */ {
   return libWS2_32_dll.GetHostNameW(util.pwstrToFfi(name), namelen);
@@ -12754,14 +12754,14 @@ export function GetHostNameW(
 
 export function getservbyport(
   port: number /* i32 */,
-  proto: string | null /* Windows.Win32.Foundation.PSTR */,
+  proto: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): Deno.PointerValue | null /* ptr */ {
   return util.pointerFromFfi(libWS2_32_dll.getservbyport(port, util.pstrToFfi(proto)));
 }
 
 export function getservbyname(
-  name: string | null /* Windows.Win32.Foundation.PSTR */,
-  proto: string | null /* Windows.Win32.Foundation.PSTR */,
+  name: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  proto: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): Deno.PointerValue | null /* ptr */ {
   return util.pointerFromFfi(libWS2_32_dll.getservbyname(util.pstrToFfi(name), util.pstrToFfi(proto)));
 }
@@ -12773,7 +12773,7 @@ export function getprotobynumber(
 }
 
 export function getprotobyname(
-  name: string | null /* Windows.Win32.Foundation.PSTR */,
+  name: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): Deno.PointerValue | null /* ptr */ {
   return util.pointerFromFfi(libWS2_32_dll.getprotobyname(util.pstrToFfi(name)));
 }
@@ -12820,9 +12820,9 @@ export function WSACancelBlockingCall(): number /* i32 */ {
 export function WSAAsyncGetServByName(
   hWnd: Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */,
   wMsg: number /* u32 */,
-  name: string | null /* Windows.Win32.Foundation.PSTR */,
-  proto: string | null /* Windows.Win32.Foundation.PSTR */,
-  buf: string | null /* Windows.Win32.Foundation.PSTR */,
+  name: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  proto: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  buf: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   buflen: number /* i32 */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */ {
   return util.pointerFromFfi(libWS2_32_dll.WSAAsyncGetServByName(util.hwndToFfi(hWnd), wMsg, util.pstrToFfi(name), util.pstrToFfi(proto), util.pstrToFfi(buf), buflen));
@@ -12832,8 +12832,8 @@ export function WSAAsyncGetServByPort(
   hWnd: Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */,
   wMsg: number /* u32 */,
   port: number /* i32 */,
-  proto: string | null /* Windows.Win32.Foundation.PSTR */,
-  buf: string | null /* Windows.Win32.Foundation.PSTR */,
+  proto: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  buf: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   buflen: number /* i32 */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */ {
   return util.pointerFromFfi(libWS2_32_dll.WSAAsyncGetServByPort(util.hwndToFfi(hWnd), wMsg, port, util.pstrToFfi(proto), util.pstrToFfi(buf), buflen));
@@ -12842,8 +12842,8 @@ export function WSAAsyncGetServByPort(
 export function WSAAsyncGetProtoByName(
   hWnd: Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */,
   wMsg: number /* u32 */,
-  name: string | null /* Windows.Win32.Foundation.PSTR */,
-  buf: string | null /* Windows.Win32.Foundation.PSTR */,
+  name: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  buf: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   buflen: number /* i32 */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */ {
   return util.pointerFromFfi(libWS2_32_dll.WSAAsyncGetProtoByName(util.hwndToFfi(hWnd), wMsg, util.pstrToFfi(name), util.pstrToFfi(buf), buflen));
@@ -12853,7 +12853,7 @@ export function WSAAsyncGetProtoByNumber(
   hWnd: Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */,
   wMsg: number /* u32 */,
   number: number /* i32 */,
-  buf: string | null /* Windows.Win32.Foundation.PSTR */,
+  buf: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   buflen: number /* i32 */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */ {
   return util.pointerFromFfi(libWS2_32_dll.WSAAsyncGetProtoByNumber(util.hwndToFfi(hWnd), wMsg, number, util.pstrToFfi(buf), buflen));
@@ -12862,8 +12862,8 @@ export function WSAAsyncGetProtoByNumber(
 export function WSAAsyncGetHostByName(
   hWnd: Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */,
   wMsg: number /* u32 */,
-  name: string | null /* Windows.Win32.Foundation.PSTR */,
-  buf: string | null /* Windows.Win32.Foundation.PSTR */,
+  name: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  buf: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   buflen: number /* i32 */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */ {
   return util.pointerFromFfi(libWS2_32_dll.WSAAsyncGetHostByName(util.hwndToFfi(hWnd), wMsg, util.pstrToFfi(name), util.pstrToFfi(buf), buflen));
@@ -12872,10 +12872,10 @@ export function WSAAsyncGetHostByName(
 export function WSAAsyncGetHostByAddr(
   hWnd: Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */,
   wMsg: number /* u32 */,
-  addr: string | null /* Windows.Win32.Foundation.PSTR */,
+  addr: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   len: number /* i32 */,
   type: number /* i32 */,
-  buf: string | null /* Windows.Win32.Foundation.PSTR */,
+  buf: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   buflen: number /* i32 */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */ {
   return util.pointerFromFfi(libWS2_32_dll.WSAAsyncGetHostByAddr(util.hwndToFfi(hWnd), wMsg, util.pstrToFfi(addr), len, type, util.pstrToFfi(buf), buflen));
@@ -12926,8 +12926,8 @@ export function WSAConnect(
 
 export function WSAConnectByNameW(
   s: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Networking.WinSock.SOCKET */,
-  nodename: string | null /* Windows.Win32.Foundation.PWSTR */,
-  servicename: string | null /* Windows.Win32.Foundation.PWSTR */,
+  nodename: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  servicename: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   LocalAddressLength: Deno.PointerValue | Uint8Array | null /* ptr */,
   LocalAddress: Deno.PointerValue | Uint8Array | null /* ptr */,
   RemoteAddressLength: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -12940,8 +12940,8 @@ export function WSAConnectByNameW(
 
 export function WSAConnectByNameA(
   s: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Networking.WinSock.SOCKET */,
-  nodename: string | null /* Windows.Win32.Foundation.PSTR */,
-  servicename: string | null /* Windows.Win32.Foundation.PSTR */,
+  nodename: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  servicename: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   LocalAddressLength: Deno.PointerValue | Uint8Array | null /* ptr */,
   LocalAddress: Deno.PointerValue | Uint8Array | null /* ptr */,
   RemoteAddressLength: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -13219,7 +13219,7 @@ export function WSAAddressToStringA(
   lpsaAddress: Deno.PointerValue | Uint8Array | null /* ptr */,
   dwAddressLength: number /* u32 */,
   lpProtocolInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
-  lpszAddressString: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpszAddressString: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   lpdwAddressStringLength: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
   return libWS2_32_dll.WSAAddressToStringA(util.toPointer(lpsaAddress), dwAddressLength, util.toPointer(lpProtocolInfo), util.pstrToFfi(lpszAddressString), util.toPointer(lpdwAddressStringLength));
@@ -13229,14 +13229,14 @@ export function WSAAddressToStringW(
   lpsaAddress: Deno.PointerValue | Uint8Array | null /* ptr */,
   dwAddressLength: number /* u32 */,
   lpProtocolInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
-  lpszAddressString: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpszAddressString: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   lpdwAddressStringLength: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
   return libWS2_32_dll.WSAAddressToStringW(util.toPointer(lpsaAddress), dwAddressLength, util.toPointer(lpProtocolInfo), util.pwstrToFfi(lpszAddressString), util.toPointer(lpdwAddressStringLength));
 }
 
 export function WSAStringToAddressA(
-  AddressString: string | null /* Windows.Win32.Foundation.PSTR */,
+  AddressString: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   AddressFamily: number /* i32 */,
   lpProtocolInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
   lpAddress: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -13246,7 +13246,7 @@ export function WSAStringToAddressA(
 }
 
 export function WSAStringToAddressW(
-  AddressString: string | null /* Windows.Win32.Foundation.PWSTR */,
+  AddressString: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   AddressFamily: number /* i32 */,
   lpProtocolInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
   lpAddress: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -13374,7 +13374,7 @@ export function WSAEnumNameSpaceProvidersExW(
 
 export function WSAGetServiceClassNameByClassIdA(
   lpServiceClassId: Deno.PointerValue | Uint8Array | null /* ptr */,
-  lpszServiceClassName: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpszServiceClassName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   lpdwBufferLength: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
   return libWS2_32_dll.WSAGetServiceClassNameByClassIdA(util.toPointer(lpServiceClassId), util.pstrToFfi(lpszServiceClassName), util.toPointer(lpdwBufferLength));
@@ -13382,7 +13382,7 @@ export function WSAGetServiceClassNameByClassIdA(
 
 export function WSAGetServiceClassNameByClassIdW(
   lpServiceClassId: Deno.PointerValue | Uint8Array | null /* ptr */,
-  lpszServiceClassName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpszServiceClassName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   lpdwBufferLength: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
   return libWS2_32_dll.WSAGetServiceClassNameByClassIdW(util.toPointer(lpServiceClassId), util.pwstrToFfi(lpszServiceClassName), util.toPointer(lpdwBufferLength));
@@ -13434,7 +13434,7 @@ export function ProcessSocketNotifications(
 
 export function RtlIpv4AddressToStringA(
   Addr: Deno.PointerValue | Uint8Array | null /* ptr */,
-  S: string | null /* Windows.Win32.Foundation.PSTR */,
+  S: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): string | null /* Windows.Win32.Foundation.PSTR */ {
   return util.pstrFromFfi(libntdll_dll.RtlIpv4AddressToStringA(util.toPointer(Addr), util.pstrToFfi(S)));
 }
@@ -13442,7 +13442,7 @@ export function RtlIpv4AddressToStringA(
 export function RtlIpv4AddressToStringExA(
   Address: Deno.PointerValue | Uint8Array | null /* ptr */,
   Port: number /* u16 */,
-  AddressString: string | null /* Windows.Win32.Foundation.PSTR */,
+  AddressString: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   AddressStringLength: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
   return libntdll_dll.RtlIpv4AddressToStringExA(util.toPointer(Address), Port, util.pstrToFfi(AddressString), util.toPointer(AddressStringLength));
@@ -13450,7 +13450,7 @@ export function RtlIpv4AddressToStringExA(
 
 export function RtlIpv4AddressToStringW(
   Addr: Deno.PointerValue | Uint8Array | null /* ptr */,
-  S: string | null /* Windows.Win32.Foundation.PWSTR */,
+  S: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): string | null /* Windows.Win32.Foundation.PWSTR */ {
   return util.pwstrFromFfi(libntdll_dll.RtlIpv4AddressToStringW(util.toPointer(Addr), util.pwstrToFfi(S)));
 }
@@ -13458,14 +13458,14 @@ export function RtlIpv4AddressToStringW(
 export function RtlIpv4AddressToStringExW(
   Address: Deno.PointerValue | Uint8Array | null /* ptr */,
   Port: number /* u16 */,
-  AddressString: string | null /* Windows.Win32.Foundation.PWSTR */,
+  AddressString: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   AddressStringLength: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
   return libntdll_dll.RtlIpv4AddressToStringExW(util.toPointer(Address), Port, util.pwstrToFfi(AddressString), util.toPointer(AddressStringLength));
 }
 
 export function RtlIpv4StringToAddressA(
-  S: string | null /* Windows.Win32.Foundation.PSTR */,
+  S: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   Strict: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.BOOLEAN */,
   Terminator: Deno.PointerValue | Uint8Array | null /* ptr */,
   Addr: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -13474,7 +13474,7 @@ export function RtlIpv4StringToAddressA(
 }
 
 export function RtlIpv4StringToAddressExA(
-  AddressString: string | null /* Windows.Win32.Foundation.PSTR */,
+  AddressString: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   Strict: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.BOOLEAN */,
   Address: Deno.PointerValue | Uint8Array | null /* ptr */,
   Port: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -13483,7 +13483,7 @@ export function RtlIpv4StringToAddressExA(
 }
 
 export function RtlIpv4StringToAddressW(
-  S: string | null /* Windows.Win32.Foundation.PWSTR */,
+  S: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   Strict: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.BOOLEAN */,
   Terminator: Deno.PointerValue | Uint8Array | null /* ptr */,
   Addr: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -13492,7 +13492,7 @@ export function RtlIpv4StringToAddressW(
 }
 
 export function RtlIpv4StringToAddressExW(
-  AddressString: string | null /* Windows.Win32.Foundation.PWSTR */,
+  AddressString: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   Strict: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.BOOLEAN */,
   Address: Deno.PointerValue | Uint8Array | null /* ptr */,
   Port: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -13502,7 +13502,7 @@ export function RtlIpv4StringToAddressExW(
 
 export function RtlIpv6AddressToStringA(
   Addr: Deno.PointerValue | Uint8Array | null /* ptr */,
-  S: string | null /* Windows.Win32.Foundation.PSTR */,
+  S: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): string | null /* Windows.Win32.Foundation.PSTR */ {
   return util.pstrFromFfi(libntdll_dll.RtlIpv6AddressToStringA(util.toPointer(Addr), util.pstrToFfi(S)));
 }
@@ -13511,7 +13511,7 @@ export function RtlIpv6AddressToStringExA(
   Address: Deno.PointerValue | Uint8Array | null /* ptr */,
   ScopeId: number /* u32 */,
   Port: number /* u16 */,
-  AddressString: string | null /* Windows.Win32.Foundation.PSTR */,
+  AddressString: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   AddressStringLength: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
   return libntdll_dll.RtlIpv6AddressToStringExA(util.toPointer(Address), ScopeId, Port, util.pstrToFfi(AddressString), util.toPointer(AddressStringLength));
@@ -13519,7 +13519,7 @@ export function RtlIpv6AddressToStringExA(
 
 export function RtlIpv6AddressToStringW(
   Addr: Deno.PointerValue | Uint8Array | null /* ptr */,
-  S: string | null /* Windows.Win32.Foundation.PWSTR */,
+  S: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): string | null /* Windows.Win32.Foundation.PWSTR */ {
   return util.pwstrFromFfi(libntdll_dll.RtlIpv6AddressToStringW(util.toPointer(Addr), util.pwstrToFfi(S)));
 }
@@ -13528,14 +13528,14 @@ export function RtlIpv6AddressToStringExW(
   Address: Deno.PointerValue | Uint8Array | null /* ptr */,
   ScopeId: number /* u32 */,
   Port: number /* u16 */,
-  AddressString: string | null /* Windows.Win32.Foundation.PWSTR */,
+  AddressString: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   AddressStringLength: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
   return libntdll_dll.RtlIpv6AddressToStringExW(util.toPointer(Address), ScopeId, Port, util.pwstrToFfi(AddressString), util.toPointer(AddressStringLength));
 }
 
 export function RtlIpv6StringToAddressA(
-  S: string | null /* Windows.Win32.Foundation.PSTR */,
+  S: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   Terminator: Deno.PointerValue | Uint8Array | null /* ptr */,
   Addr: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
@@ -13543,7 +13543,7 @@ export function RtlIpv6StringToAddressA(
 }
 
 export function RtlIpv6StringToAddressExA(
-  AddressString: string | null /* Windows.Win32.Foundation.PSTR */,
+  AddressString: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   Address: Deno.PointerValue | Uint8Array | null /* ptr */,
   ScopeId: Deno.PointerValue | Uint8Array | null /* ptr */,
   Port: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -13552,7 +13552,7 @@ export function RtlIpv6StringToAddressExA(
 }
 
 export function RtlIpv6StringToAddressW(
-  S: string | null /* Windows.Win32.Foundation.PWSTR */,
+  S: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   Terminator: Deno.PointerValue | Uint8Array | null /* ptr */,
   Addr: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
@@ -13560,7 +13560,7 @@ export function RtlIpv6StringToAddressW(
 }
 
 export function RtlIpv6StringToAddressExW(
-  AddressString: string | null /* Windows.Win32.Foundation.PWSTR */,
+  AddressString: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   Address: Deno.PointerValue | Uint8Array | null /* ptr */,
   ScopeId: Deno.PointerValue | Uint8Array | null /* ptr */,
   Port: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -13570,20 +13570,20 @@ export function RtlIpv6StringToAddressExW(
 
 export function RtlEthernetAddressToStringA(
   Addr: Deno.PointerValue | Uint8Array | null /* ptr */,
-  S: string | null /* Windows.Win32.Foundation.PSTR */,
+  S: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): string | null /* Windows.Win32.Foundation.PSTR */ {
   return util.pstrFromFfi(libntdll_dll.RtlEthernetAddressToStringA(util.toPointer(Addr), util.pstrToFfi(S)));
 }
 
 export function RtlEthernetAddressToStringW(
   Addr: Deno.PointerValue | Uint8Array | null /* ptr */,
-  S: string | null /* Windows.Win32.Foundation.PWSTR */,
+  S: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): string | null /* Windows.Win32.Foundation.PWSTR */ {
   return util.pwstrFromFfi(libntdll_dll.RtlEthernetAddressToStringW(util.toPointer(Addr), util.pwstrToFfi(S)));
 }
 
 export function RtlEthernetStringToAddressA(
-  S: string | null /* Windows.Win32.Foundation.PSTR */,
+  S: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   Terminator: Deno.PointerValue | Uint8Array | null /* ptr */,
   Addr: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
@@ -13591,7 +13591,7 @@ export function RtlEthernetStringToAddressA(
 }
 
 export function RtlEthernetStringToAddressW(
-  S: string | null /* Windows.Win32.Foundation.PWSTR */,
+  S: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   Terminator: Deno.PointerValue | Uint8Array | null /* ptr */,
   Addr: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
@@ -13600,7 +13600,7 @@ export function RtlEthernetStringToAddressW(
 
 export function WSARecvEx(
   s: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Networking.WinSock.SOCKET */,
-  buf: string | null /* Windows.Win32.Foundation.PSTR */,
+  buf: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   len: number /* i32 */,
   flags: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
@@ -13663,7 +13663,7 @@ export function WSCDeinstallProvider(
 
 export function WSCInstallProvider(
   lpProviderId: Deno.PointerValue | Uint8Array | null /* ptr */,
-  lpszProviderDllPath: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpszProviderDllPath: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   lpProtocolInfoList: Deno.PointerValue | Uint8Array | null /* ptr */,
   dwNumberOfEntries: number /* u32 */,
   lpErrno: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -13673,7 +13673,7 @@ export function WSCInstallProvider(
 
 export function WSCGetProviderPath(
   lpProviderId: Deno.PointerValue | Uint8Array | null /* ptr */,
-  lpszProviderDllPath: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpszProviderDllPath: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   lpProviderDllPathLen: Deno.PointerValue | Uint8Array | null /* ptr */,
   lpErrno: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
@@ -13682,7 +13682,7 @@ export function WSCGetProviderPath(
 
 export function WSCUpdateProvider(
   lpProviderId: Deno.PointerValue | Uint8Array | null /* ptr */,
-  lpszProviderDllPath: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpszProviderDllPath: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   lpProtocolInfoList: Deno.PointerValue | Uint8Array | null /* ptr */,
   dwNumberOfEntries: number /* u32 */,
   lpErrno: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -13713,9 +13713,9 @@ export function WSCGetProviderInfo(
 }
 
 export function WSCSetApplicationCategory(
-  Path: string | null /* Windows.Win32.Foundation.PWSTR */,
+  Path: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   PathLength: number /* u32 */,
-  Extra: string | null /* Windows.Win32.Foundation.PWSTR */,
+  Extra: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   ExtraLength: number /* u32 */,
   PermittedLspCategories: number /* u32 */,
   pPrevPermLspCat: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -13725,9 +13725,9 @@ export function WSCSetApplicationCategory(
 }
 
 export function WSCGetApplicationCategory(
-  Path: string | null /* Windows.Win32.Foundation.PWSTR */,
+  Path: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   PathLength: number /* u32 */,
-  Extra: string | null /* Windows.Win32.Foundation.PWSTR */,
+  Extra: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   ExtraLength: number /* u32 */,
   pPermittedLspCategories: Deno.PointerValue | Uint8Array | null /* ptr */,
   lpErrno: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -13746,8 +13746,8 @@ export function WPUCompleteOverlappedRequest(
 }
 
 export function WSCInstallNameSpace(
-  lpszIdentifier: string | null /* Windows.Win32.Foundation.PWSTR */,
-  lpszPathName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpszIdentifier: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  lpszPathName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   dwNameSpace: number /* u32 */,
   dwVersion: number /* u32 */,
   lpProviderId: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -13762,8 +13762,8 @@ export function WSCUnInstallNameSpace(
 }
 
 export function WSCInstallNameSpaceEx(
-  lpszIdentifier: string | null /* Windows.Win32.Foundation.PWSTR */,
-  lpszPathName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpszIdentifier: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  lpszPathName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   dwNameSpace: number /* u32 */,
   dwVersion: number /* u32 */,
   lpProviderId: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -13818,13 +13818,13 @@ export function EnumProtocolsW(
 export function GetAddressByNameA(
   dwNameSpace: number /* u32 */,
   lpServiceType: Deno.PointerValue | Uint8Array | null /* ptr */,
-  lpServiceName: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpServiceName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   lpiProtocols: Deno.PointerValue | Uint8Array | null /* ptr */,
   dwResolution: number /* u32 */,
   lpServiceAsyncInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
   lpCsaddrBuffer: Deno.PointerValue | Uint8Array | null /* ptr */,
   lpdwBufferLength: Deno.PointerValue | Uint8Array | null /* ptr */,
-  lpAliasBuffer: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpAliasBuffer: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   lpdwAliasBufferLength: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
   return libMSWSOCK_dll.GetAddressByNameA(dwNameSpace, util.toPointer(lpServiceType), util.pstrToFfi(lpServiceName), util.toPointer(lpiProtocols), dwResolution, util.toPointer(lpServiceAsyncInfo), util.toPointer(lpCsaddrBuffer), util.toPointer(lpdwBufferLength), util.pstrToFfi(lpAliasBuffer), util.toPointer(lpdwAliasBufferLength));
@@ -13833,27 +13833,27 @@ export function GetAddressByNameA(
 export function GetAddressByNameW(
   dwNameSpace: number /* u32 */,
   lpServiceType: Deno.PointerValue | Uint8Array | null /* ptr */,
-  lpServiceName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpServiceName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   lpiProtocols: Deno.PointerValue | Uint8Array | null /* ptr */,
   dwResolution: number /* u32 */,
   lpServiceAsyncInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
   lpCsaddrBuffer: Deno.PointerValue | Uint8Array | null /* ptr */,
   lpdwBufferLength: Deno.PointerValue | Uint8Array | null /* ptr */,
-  lpAliasBuffer: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpAliasBuffer: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   lpdwAliasBufferLength: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
   return libMSWSOCK_dll.GetAddressByNameW(dwNameSpace, util.toPointer(lpServiceType), util.pwstrToFfi(lpServiceName), util.toPointer(lpiProtocols), dwResolution, util.toPointer(lpServiceAsyncInfo), util.toPointer(lpCsaddrBuffer), util.toPointer(lpdwBufferLength), util.pwstrToFfi(lpAliasBuffer), util.toPointer(lpdwAliasBufferLength));
 }
 
 export function GetTypeByNameA(
-  lpServiceName: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpServiceName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   lpServiceType: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
   return libMSWSOCK_dll.GetTypeByNameA(util.pstrToFfi(lpServiceName), util.toPointer(lpServiceType));
 }
 
 export function GetTypeByNameW(
-  lpServiceName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpServiceName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   lpServiceType: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
   return libMSWSOCK_dll.GetTypeByNameW(util.pwstrToFfi(lpServiceName), util.toPointer(lpServiceType));
@@ -13861,7 +13861,7 @@ export function GetTypeByNameW(
 
 export function GetNameByTypeA(
   lpServiceType: Deno.PointerValue | Uint8Array | null /* ptr */,
-  lpServiceName: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpServiceName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   dwNameLength: number /* u32 */,
 ): number /* i32 */ {
   return libMSWSOCK_dll.GetNameByTypeA(util.toPointer(lpServiceType), util.pstrToFfi(lpServiceName), dwNameLength);
@@ -13869,7 +13869,7 @@ export function GetNameByTypeA(
 
 export function GetNameByTypeW(
   lpServiceType: Deno.PointerValue | Uint8Array | null /* ptr */,
-  lpServiceName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpServiceName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   dwNameLength: number /* u32 */,
 ): number /* i32 */ {
   return libMSWSOCK_dll.GetNameByTypeW(util.toPointer(lpServiceType), util.pwstrToFfi(lpServiceName), dwNameLength);
@@ -13900,7 +13900,7 @@ export function SetServiceW(
 export function GetServiceA(
   dwNameSpace: number /* u32 */,
   lpGuid: Deno.PointerValue | Uint8Array | null /* ptr */,
-  lpServiceName: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpServiceName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   dwProperties: number /* u32 */,
   lpBuffer: Deno.PointerValue | Uint8Array | null /* ptr */,
   lpdwBufferSize: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -13912,7 +13912,7 @@ export function GetServiceA(
 export function GetServiceW(
   dwNameSpace: number /* u32 */,
   lpGuid: Deno.PointerValue | Uint8Array | null /* ptr */,
-  lpServiceName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpServiceName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   dwProperties: number /* u32 */,
   lpBuffer: Deno.PointerValue | Uint8Array | null /* ptr */,
   lpdwBufferSize: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -13922,8 +13922,8 @@ export function GetServiceW(
 }
 
 export function getaddrinfo(
-  pNodeName: string | null /* Windows.Win32.Foundation.PSTR */,
-  pServiceName: string | null /* Windows.Win32.Foundation.PSTR */,
+  pNodeName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  pServiceName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   pHints: Deno.PointerValue | Uint8Array | null /* ptr */,
   ppResult: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
@@ -13931,8 +13931,8 @@ export function getaddrinfo(
 }
 
 export function GetAddrInfoW(
-  pNodeName: string | null /* Windows.Win32.Foundation.PWSTR */,
-  pServiceName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pNodeName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  pServiceName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pHints: Deno.PointerValue | Uint8Array | null /* ptr */,
   ppResult: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
@@ -13940,8 +13940,8 @@ export function GetAddrInfoW(
 }
 
 export function GetAddrInfoExA(
-  pName: string | null /* Windows.Win32.Foundation.PSTR */,
-  pServiceName: string | null /* Windows.Win32.Foundation.PSTR */,
+  pName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  pServiceName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   dwNameSpace: number /* u32 */,
   lpNspId: Deno.PointerValue | Uint8Array | null /* ptr */,
   hints: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -13955,8 +13955,8 @@ export function GetAddrInfoExA(
 }
 
 export function GetAddrInfoExW(
-  pName: string | null /* Windows.Win32.Foundation.PWSTR */,
-  pServiceName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  pServiceName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   dwNameSpace: number /* u32 */,
   lpNspId: Deno.PointerValue | Uint8Array | null /* ptr */,
   hints: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -13982,8 +13982,8 @@ export function GetAddrInfoExOverlappedResult(
 }
 
 export function SetAddrInfoExA(
-  pName: string | null /* Windows.Win32.Foundation.PSTR */,
-  pServiceName: string | null /* Windows.Win32.Foundation.PSTR */,
+  pName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  pServiceName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   pAddresses: Deno.PointerValue | Uint8Array | null /* ptr */,
   dwAddressCount: number /* u32 */,
   lpBlob: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -13999,8 +13999,8 @@ export function SetAddrInfoExA(
 }
 
 export function SetAddrInfoExW(
-  pName: string | null /* Windows.Win32.Foundation.PWSTR */,
-  pServiceName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  pServiceName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pAddresses: Deno.PointerValue | Uint8Array | null /* ptr */,
   dwAddressCount: number /* u32 */,
   lpBlob: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -14042,9 +14042,9 @@ export function FreeAddrInfoExW(
 export function getnameinfo(
   pSockaddr: Deno.PointerValue | Uint8Array | null /* ptr */,
   SockaddrLength: number /* i32 */,
-  pNodeBuffer: string | null /* Windows.Win32.Foundation.PSTR */,
+  pNodeBuffer: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   NodeBufferSize: number /* u32 */,
-  pServiceBuffer: string | null /* Windows.Win32.Foundation.PSTR */,
+  pServiceBuffer: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   ServiceBufferSize: number /* u32 */,
   Flags: number /* i32 */,
 ): number /* i32 */ {
@@ -14054,9 +14054,9 @@ export function getnameinfo(
 export function GetNameInfoW(
   pSockaddr: Deno.PointerValue | Uint8Array | null /* ptr */,
   SockaddrLength: number /* i32 */,
-  pNodeBuffer: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pNodeBuffer: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   NodeBufferSize: number /* u32 */,
-  pServiceBuffer: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pServiceBuffer: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   ServiceBufferSize: number /* u32 */,
   Flags: number /* i32 */,
 ): number /* i32 */ {
@@ -14065,7 +14065,7 @@ export function GetNameInfoW(
 
 export function inet_pton(
   Family: number /* i32 */,
-  pszAddrString: string | null /* Windows.Win32.Foundation.PSTR */,
+  pszAddrString: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   pAddrBuf: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
   return libWS2_32_dll.inet_pton(Family, util.pstrToFfi(pszAddrString), util.toPointer(pAddrBuf));
@@ -14073,7 +14073,7 @@ export function inet_pton(
 
 export function InetPtonW(
   Family: number /* i32 */,
-  pszAddrString: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pszAddrString: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pAddrBuf: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
   return libWS2_32_dll.InetPtonW(Family, util.pwstrToFfi(pszAddrString), util.toPointer(pAddrBuf));
@@ -14082,7 +14082,7 @@ export function InetPtonW(
 export function inet_ntop(
   Family: number /* i32 */,
   pAddr: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pStringBuf: string | null /* Windows.Win32.Foundation.PSTR */,
+  pStringBuf: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   StringBufSize: Deno.PointerValue /* usize */,
 ): string | null /* Windows.Win32.Foundation.PSTR */ {
   return util.pstrFromFfi(libWS2_32_dll.inet_ntop(Family, util.toPointer(pAddr), util.pstrToFfi(pStringBuf), StringBufSize));
@@ -14091,7 +14091,7 @@ export function inet_ntop(
 export function InetNtopW(
   Family: number /* i32 */,
   pAddr: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pStringBuf: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pStringBuf: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   StringBufSize: Deno.PointerValue /* usize */,
 ): string | null /* Windows.Win32.Foundation.PWSTR */ {
   return util.pwstrFromFfi(libWS2_32_dll.InetNtopW(Family, util.toPointer(pAddr), util.pwstrToFfi(pStringBuf), StringBufSize));

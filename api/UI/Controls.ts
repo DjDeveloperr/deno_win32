@@ -5965,25 +5965,25 @@ export interface OPENFILENAME_NT4A {
   /** Windows.Win32.Foundation.HINSTANCE */
   hInstance: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.Foundation.PSTR */
-  lpstrFilter: string | null;
+  lpstrFilter: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  lpstrCustomFilter: string | null;
+  lpstrCustomFilter: string | null | Uint8Array;
   /** u32 */
   nMaxCustFilter: number;
   /** u32 */
   nFilterIndex: number;
   /** Windows.Win32.Foundation.PSTR */
-  lpstrFile: string | null;
+  lpstrFile: string | null | Uint8Array;
   /** u32 */
   nMaxFile: number;
   /** Windows.Win32.Foundation.PSTR */
-  lpstrFileTitle: string | null;
+  lpstrFileTitle: string | null | Uint8Array;
   /** u32 */
   nMaxFileTitle: number;
   /** Windows.Win32.Foundation.PSTR */
-  lpstrInitialDir: string | null;
+  lpstrInitialDir: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  lpstrTitle: string | null;
+  lpstrTitle: string | null | Uint8Array;
   /** u32 */
   Flags: number;
   /** u16 */
@@ -5991,13 +5991,13 @@ export interface OPENFILENAME_NT4A {
   /** u16 */
   nFileExtension: number;
   /** Windows.Win32.Foundation.PSTR */
-  lpstrDefExt: string | null;
+  lpstrDefExt: string | null | Uint8Array;
   /** Windows.Win32.Foundation.LPARAM */
   lCustData: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.UI.Controls.Dialogs.LPOFNHOOKPROC */
   lpfnHook: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.Foundation.PSTR */
-  lpTemplateName: string | null;
+  lpTemplateName: string | null | Uint8Array;
 }
 
 export const sizeofOPENFILENAME_NT4A = 136;
@@ -6088,25 +6088,25 @@ export interface OPENFILENAME_NT4W {
   /** Windows.Win32.Foundation.HINSTANCE */
   hInstance: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.Foundation.PWSTR */
-  lpstrFilter: string | null;
+  lpstrFilter: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  lpstrCustomFilter: string | null;
+  lpstrCustomFilter: string | null | Uint8Array | Uint16Array;
   /** u32 */
   nMaxCustFilter: number;
   /** u32 */
   nFilterIndex: number;
   /** Windows.Win32.Foundation.PWSTR */
-  lpstrFile: string | null;
+  lpstrFile: string | null | Uint8Array | Uint16Array;
   /** u32 */
   nMaxFile: number;
   /** Windows.Win32.Foundation.PWSTR */
-  lpstrFileTitle: string | null;
+  lpstrFileTitle: string | null | Uint8Array | Uint16Array;
   /** u32 */
   nMaxFileTitle: number;
   /** Windows.Win32.Foundation.PWSTR */
-  lpstrInitialDir: string | null;
+  lpstrInitialDir: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  lpstrTitle: string | null;
+  lpstrTitle: string | null | Uint8Array | Uint16Array;
   /** u32 */
   Flags: number;
   /** u16 */
@@ -6114,13 +6114,13 @@ export interface OPENFILENAME_NT4W {
   /** u16 */
   nFileExtension: number;
   /** Windows.Win32.Foundation.PWSTR */
-  lpstrDefExt: string | null;
+  lpstrDefExt: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.LPARAM */
   lCustData: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.UI.Controls.Dialogs.LPOFNHOOKPROC */
   lpfnHook: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.Foundation.PWSTR */
-  lpTemplateName: string | null;
+  lpTemplateName: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeofOPENFILENAME_NT4W = 136;
@@ -6209,25 +6209,25 @@ export interface OPENFILENAMEA {
   /** Windows.Win32.Foundation.HINSTANCE */
   hInstance: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.Foundation.PSTR */
-  lpstrFilter: string | null;
+  lpstrFilter: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  lpstrCustomFilter: string | null;
+  lpstrCustomFilter: string | null | Uint8Array;
   /** u32 */
   nMaxCustFilter: number;
   /** u32 */
   nFilterIndex: number;
   /** Windows.Win32.Foundation.PSTR */
-  lpstrFile: string | null;
+  lpstrFile: string | null | Uint8Array;
   /** u32 */
   nMaxFile: number;
   /** Windows.Win32.Foundation.PSTR */
-  lpstrFileTitle: string | null;
+  lpstrFileTitle: string | null | Uint8Array;
   /** u32 */
   nMaxFileTitle: number;
   /** Windows.Win32.Foundation.PSTR */
-  lpstrInitialDir: string | null;
+  lpstrInitialDir: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  lpstrTitle: string | null;
+  lpstrTitle: string | null | Uint8Array;
   /** Windows.Win32.UI.Controls.Dialogs.OPEN_FILENAME_FLAGS */
   Flags: OPEN_FILENAME_FLAGS;
   /** u16 */
@@ -6235,13 +6235,13 @@ export interface OPENFILENAMEA {
   /** u16 */
   nFileExtension: number;
   /** Windows.Win32.Foundation.PSTR */
-  lpstrDefExt: string | null;
+  lpstrDefExt: string | null | Uint8Array;
   /** Windows.Win32.Foundation.LPARAM */
   lCustData: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.UI.Controls.Dialogs.LPOFNHOOKPROC */
   lpfnHook: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.Foundation.PSTR */
-  lpTemplateName: string | null;
+  lpTemplateName: string | null | Uint8Array;
   /** ptr */
   pvReserved: Deno.PointerValue | Uint8Array | null;
   /** u32 */
@@ -6342,25 +6342,25 @@ export interface OPENFILENAMEW {
   /** Windows.Win32.Foundation.HINSTANCE */
   hInstance: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.Foundation.PWSTR */
-  lpstrFilter: string | null;
+  lpstrFilter: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  lpstrCustomFilter: string | null;
+  lpstrCustomFilter: string | null | Uint8Array | Uint16Array;
   /** u32 */
   nMaxCustFilter: number;
   /** u32 */
   nFilterIndex: number;
   /** Windows.Win32.Foundation.PWSTR */
-  lpstrFile: string | null;
+  lpstrFile: string | null | Uint8Array | Uint16Array;
   /** u32 */
   nMaxFile: number;
   /** Windows.Win32.Foundation.PWSTR */
-  lpstrFileTitle: string | null;
+  lpstrFileTitle: string | null | Uint8Array | Uint16Array;
   /** u32 */
   nMaxFileTitle: number;
   /** Windows.Win32.Foundation.PWSTR */
-  lpstrInitialDir: string | null;
+  lpstrInitialDir: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  lpstrTitle: string | null;
+  lpstrTitle: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.UI.Controls.Dialogs.OPEN_FILENAME_FLAGS */
   Flags: OPEN_FILENAME_FLAGS;
   /** u16 */
@@ -6368,13 +6368,13 @@ export interface OPENFILENAMEW {
   /** u16 */
   nFileExtension: number;
   /** Windows.Win32.Foundation.PWSTR */
-  lpstrDefExt: string | null;
+  lpstrDefExt: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.LPARAM */
   lCustData: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.UI.Controls.Dialogs.LPOFNHOOKPROC */
   lpfnHook: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.Foundation.PWSTR */
-  lpTemplateName: string | null;
+  lpTemplateName: string | null | Uint8Array | Uint16Array;
   /** ptr */
   pvReserved: Deno.PointerValue | Uint8Array | null;
   /** u32 */
@@ -6500,7 +6500,7 @@ export interface OFNOTIFYA {
   /** ptr */
   lpOFN: Deno.PointerValue | Uint8Array | null;
   /** Windows.Win32.Foundation.PSTR */
-  pszFile: string | null;
+  pszFile: string | null | Uint8Array;
 }
 
 export const sizeofOFNOTIFYA = 24;
@@ -6529,7 +6529,7 @@ export interface OFNOTIFYW {
   /** ptr */
   lpOFN: Deno.PointerValue | Uint8Array | null;
   /** Windows.Win32.Foundation.PWSTR */
-  pszFile: string | null;
+  pszFile: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeofOFNOTIFYW = 24;
@@ -6632,7 +6632,7 @@ export interface CHOOSECOLORA {
   /** Windows.Win32.UI.Controls.Dialogs.LPCCHOOKPROC */
   lpfnHook: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.Foundation.PSTR */
-  lpTemplateName: string | null;
+  lpTemplateName: string | null | Uint8Array;
 }
 
 export const sizeofCHOOSECOLORA = 72;
@@ -6687,7 +6687,7 @@ export interface CHOOSECOLORW {
   /** Windows.Win32.UI.Controls.Dialogs.LPCCHOOKPROC */
   lpfnHook: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.Foundation.PWSTR */
-  lpTemplateName: string | null;
+  lpTemplateName: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeofCHOOSECOLORW = 72;
@@ -6734,9 +6734,9 @@ export interface FINDREPLACEA {
   /** Windows.Win32.UI.Controls.Dialogs.FINDREPLACE_FLAGS */
   Flags: FINDREPLACE_FLAGS;
   /** Windows.Win32.Foundation.PSTR */
-  lpstrFindWhat: string | null;
+  lpstrFindWhat: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  lpstrReplaceWith: string | null;
+  lpstrReplaceWith: string | null | Uint8Array;
   /** u16 */
   wFindWhatLen: number;
   /** u16 */
@@ -6746,7 +6746,7 @@ export interface FINDREPLACEA {
   /** Windows.Win32.UI.Controls.Dialogs.LPFRHOOKPROC */
   lpfnHook: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.Foundation.PSTR */
-  lpTemplateName: string | null;
+  lpTemplateName: string | null | Uint8Array;
 }
 
 export const sizeofFINDREPLACEA = 80;
@@ -6804,9 +6804,9 @@ export interface FINDREPLACEW {
   /** Windows.Win32.UI.Controls.Dialogs.FINDREPLACE_FLAGS */
   Flags: FINDREPLACE_FLAGS;
   /** Windows.Win32.Foundation.PWSTR */
-  lpstrFindWhat: string | null;
+  lpstrFindWhat: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  lpstrReplaceWith: string | null;
+  lpstrReplaceWith: string | null | Uint8Array | Uint16Array;
   /** u16 */
   wFindWhatLen: number;
   /** u16 */
@@ -6816,7 +6816,7 @@ export interface FINDREPLACEW {
   /** Windows.Win32.UI.Controls.Dialogs.LPFRHOOKPROC */
   lpfnHook: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.Foundation.PWSTR */
-  lpTemplateName: string | null;
+  lpTemplateName: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeofFINDREPLACEW = 80;
@@ -6886,11 +6886,11 @@ export interface CHOOSEFONTA {
   /** Windows.Win32.UI.Controls.Dialogs.LPCFHOOKPROC */
   lpfnHook: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.Foundation.PSTR */
-  lpTemplateName: string | null;
+  lpTemplateName: string | null | Uint8Array;
   /** Windows.Win32.Foundation.HINSTANCE */
   hInstance: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.Foundation.PSTR */
-  lpszStyle: string | null;
+  lpszStyle: string | null | Uint8Array;
   /** Windows.Win32.UI.Controls.Dialogs.CHOOSEFONT_FONT_TYPE */
   nFontType: CHOOSEFONT_FONT_TYPE;
   /** u16 */
@@ -6972,11 +6972,11 @@ export interface CHOOSEFONTW {
   /** Windows.Win32.UI.Controls.Dialogs.LPCFHOOKPROC */
   lpfnHook: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.Foundation.PWSTR */
-  lpTemplateName: string | null;
+  lpTemplateName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.HINSTANCE */
   hInstance: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.Foundation.PWSTR */
-  lpszStyle: string | null;
+  lpszStyle: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.UI.Controls.Dialogs.CHOOSEFONT_FONT_TYPE */
   nFontType: CHOOSEFONT_FONT_TYPE;
   /** u16 */
@@ -7070,9 +7070,9 @@ export interface PRINTDLGA {
   /** Windows.Win32.UI.Controls.Dialogs.LPSETUPHOOKPROC */
   lpfnSetupHook: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.Foundation.PSTR */
-  lpPrintTemplateName: string | null;
+  lpPrintTemplateName: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  lpSetupTemplateName: string | null;
+  lpSetupTemplateName: string | null | Uint8Array;
   /** isize */
   hPrintTemplate: Deno.PointerValue;
   /** isize */
@@ -7168,9 +7168,9 @@ export interface PRINTDLGW {
   /** Windows.Win32.UI.Controls.Dialogs.LPSETUPHOOKPROC */
   lpfnSetupHook: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.Foundation.PWSTR */
-  lpPrintTemplateName: string | null;
+  lpPrintTemplateName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  lpSetupTemplateName: string | null;
+  lpSetupTemplateName: string | null | Uint8Array | Uint16Array;
   /** isize */
   hPrintTemplate: Deno.PointerValue;
   /** isize */
@@ -7288,7 +7288,7 @@ export interface PRINTDLGEXA {
   /** Windows.Win32.Foundation.HINSTANCE */
   hInstance: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.Foundation.PSTR */
-  lpPrintTemplateName: string | null;
+  lpPrintTemplateName: string | null | Uint8Array;
   /** Windows.Win32.System.Com.IUnknown */
   lpCallback: Uint8Array | Deno.PointerValue | null;
   /** u32 */
@@ -7393,7 +7393,7 @@ export interface PRINTDLGEXW {
   /** Windows.Win32.Foundation.HINSTANCE */
   hInstance: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.Foundation.PWSTR */
-  lpPrintTemplateName: string | null;
+  lpPrintTemplateName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.System.Com.IUnknown */
   lpCallback: Uint8Array | Deno.PointerValue | null;
   /** u32 */
@@ -7574,7 +7574,7 @@ export interface PAGESETUPDLGA {
   /** Windows.Win32.UI.Controls.Dialogs.LPPAGEPAINTHOOK */
   lpfnPagePaintHook: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.Foundation.PSTR */
-  lpPageSetupTemplateName: string | null;
+  lpPageSetupTemplateName: string | null | Uint8Array;
   /** isize */
   hPageSetupTemplate: Deno.PointerValue;
 }
@@ -7649,7 +7649,7 @@ export interface PAGESETUPDLGW {
   /** Windows.Win32.UI.Controls.Dialogs.LPPAGEPAINTHOOK */
   lpfnPagePaintHook: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.Foundation.PWSTR */
-  lpPageSetupTemplateName: string | null;
+  lpPageSetupTemplateName: string | null | Uint8Array | Uint16Array;
   /** isize */
   hPageSetupTemplate: Deno.PointerValue;
 }
@@ -7702,7 +7702,7 @@ export interface _Anonymous1_e__Union {
   /** usize */
   Data0: Deno.PointerValue;
   /** Windows.Win32.Foundation.PWSTR */
-  String: string | null;
+  String: string | null | Uint8Array | Uint16Array;
   /** usize */
   u: Deno.PointerValue;
   /** ptr */
@@ -7783,7 +7783,7 @@ export interface PROPSHEETPAGEA_V1 {
   /** _Anonymous2_e__Union */
   Anonymous2: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.Foundation.PSTR */
-  pszTitle: string | null;
+  pszTitle: string | null | Uint8Array;
   /** Windows.Win32.UI.WindowsAndMessaging.DLGPROC */
   pfnDlgProc: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.Foundation.LPARAM */
@@ -7840,7 +7840,7 @@ export interface PROPSHEETPAGEA_V2 {
   /** _Anonymous2_e__Union */
   Anonymous2: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.Foundation.PSTR */
-  pszTitle: string | null;
+  pszTitle: string | null | Uint8Array;
   /** Windows.Win32.UI.WindowsAndMessaging.DLGPROC */
   pfnDlgProc: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.Foundation.LPARAM */
@@ -7850,9 +7850,9 @@ export interface PROPSHEETPAGEA_V2 {
   /** ptr */
   pcRefParent: Deno.PointerValue | Uint8Array | null;
   /** Windows.Win32.Foundation.PSTR */
-  pszHeaderTitle: string | null;
+  pszHeaderTitle: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  pszHeaderSubTitle: string | null;
+  pszHeaderSubTitle: string | null | Uint8Array;
 }
 
 export const sizeofPROPSHEETPAGEA_V2 = 88;
@@ -7913,7 +7913,7 @@ export interface PROPSHEETPAGEA_V3 {
   /** _Anonymous2_e__Union */
   Anonymous2: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.Foundation.PSTR */
-  pszTitle: string | null;
+  pszTitle: string | null | Uint8Array;
   /** Windows.Win32.UI.WindowsAndMessaging.DLGPROC */
   pfnDlgProc: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.Foundation.LPARAM */
@@ -7923,9 +7923,9 @@ export interface PROPSHEETPAGEA_V3 {
   /** ptr */
   pcRefParent: Deno.PointerValue | Uint8Array | null;
   /** Windows.Win32.Foundation.PSTR */
-  pszHeaderTitle: string | null;
+  pszHeaderTitle: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  pszHeaderSubTitle: string | null;
+  pszHeaderSubTitle: string | null | Uint8Array;
   /** Windows.Win32.Foundation.HANDLE */
   hActCtx: Uint8Array | Deno.PointerValue | null;
 }
@@ -8011,7 +8011,7 @@ export interface PROPSHEETPAGEA {
   /** _Anonymous2_e__Union */
   Anonymous2: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.Foundation.PSTR */
-  pszTitle: string | null;
+  pszTitle: string | null | Uint8Array;
   /** Windows.Win32.UI.WindowsAndMessaging.DLGPROC */
   pfnDlgProc: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.Foundation.LPARAM */
@@ -8021,9 +8021,9 @@ export interface PROPSHEETPAGEA {
   /** ptr */
   pcRefParent: Deno.PointerValue | Uint8Array | null;
   /** Windows.Win32.Foundation.PSTR */
-  pszHeaderTitle: string | null;
+  pszHeaderTitle: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  pszHeaderSubTitle: string | null;
+  pszHeaderSubTitle: string | null | Uint8Array;
   /** Windows.Win32.Foundation.HANDLE */
   hActCtx: Uint8Array | Deno.PointerValue | null;
   /** _Anonymous3_e__Union */
@@ -8090,7 +8090,7 @@ export interface PROPSHEETPAGEW_V1 {
   /** _Anonymous2_e__Union */
   Anonymous2: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.Foundation.PWSTR */
-  pszTitle: string | null;
+  pszTitle: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.UI.WindowsAndMessaging.DLGPROC */
   pfnDlgProc: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.Foundation.LPARAM */
@@ -8147,7 +8147,7 @@ export interface PROPSHEETPAGEW_V2 {
   /** _Anonymous2_e__Union */
   Anonymous2: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.Foundation.PWSTR */
-  pszTitle: string | null;
+  pszTitle: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.UI.WindowsAndMessaging.DLGPROC */
   pfnDlgProc: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.Foundation.LPARAM */
@@ -8157,9 +8157,9 @@ export interface PROPSHEETPAGEW_V2 {
   /** ptr */
   pcRefParent: Deno.PointerValue | Uint8Array | null;
   /** Windows.Win32.Foundation.PWSTR */
-  pszHeaderTitle: string | null;
+  pszHeaderTitle: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pszHeaderSubTitle: string | null;
+  pszHeaderSubTitle: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeofPROPSHEETPAGEW_V2 = 88;
@@ -8218,7 +8218,7 @@ export interface PROPSHEETPAGEW_V3 {
   /** _Anonymous2_e__Union */
   Anonymous2: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.Foundation.PWSTR */
-  pszTitle: string | null;
+  pszTitle: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.UI.WindowsAndMessaging.DLGPROC */
   pfnDlgProc: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.Foundation.LPARAM */
@@ -8228,9 +8228,9 @@ export interface PROPSHEETPAGEW_V3 {
   /** ptr */
   pcRefParent: Deno.PointerValue | Uint8Array | null;
   /** Windows.Win32.Foundation.PWSTR */
-  pszHeaderTitle: string | null;
+  pszHeaderTitle: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pszHeaderSubTitle: string | null;
+  pszHeaderSubTitle: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.HANDLE */
   hActCtx: Uint8Array | Deno.PointerValue | null;
 }
@@ -8293,7 +8293,7 @@ export interface PROPSHEETPAGEW {
   /** _Anonymous2_e__Union */
   Anonymous2: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.Foundation.PWSTR */
-  pszTitle: string | null;
+  pszTitle: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.UI.WindowsAndMessaging.DLGPROC */
   pfnDlgProc: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.Foundation.LPARAM */
@@ -8303,9 +8303,9 @@ export interface PROPSHEETPAGEW {
   /** ptr */
   pcRefParent: Deno.PointerValue | Uint8Array | null;
   /** Windows.Win32.Foundation.PWSTR */
-  pszHeaderTitle: string | null;
+  pszHeaderTitle: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pszHeaderSubTitle: string | null;
+  pszHeaderSubTitle: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.HANDLE */
   hActCtx: Uint8Array | Deno.PointerValue | null;
   /** _Anonymous3_e__Union */
@@ -8372,7 +8372,7 @@ export interface PROPSHEETHEADERA_V1 {
   /** _Anonymous1_e__Union */
   Anonymous1: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.Foundation.PSTR */
-  pszCaption: string | null;
+  pszCaption: string | null | Uint8Array;
   /** u32 */
   nPages: number;
   /** _Anonymous2_e__Union */
@@ -8486,7 +8486,7 @@ export interface PROPSHEETHEADERA_V2 {
   /** _Anonymous1_e__Union */
   Anonymous1: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.Foundation.PSTR */
-  pszCaption: string | null;
+  pszCaption: string | null | Uint8Array;
   /** u32 */
   nPages: number;
   /** _Anonymous2_e__Union */
@@ -8556,7 +8556,7 @@ export interface PROPSHEETHEADERW_V1 {
   /** _Anonymous1_e__Union */
   Anonymous1: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.Foundation.PWSTR */
-  pszCaption: string | null;
+  pszCaption: string | null | Uint8Array | Uint16Array;
   /** u32 */
   nPages: number;
   /** _Anonymous2_e__Union */
@@ -8614,7 +8614,7 @@ export interface PROPSHEETHEADERW_V2 {
   /** _Anonymous1_e__Union */
   Anonymous1: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.Foundation.PWSTR */
-  pszCaption: string | null;
+  pszCaption: string | null | Uint8Array | Uint16Array;
   /** u32 */
   nPages: number;
   /** _Anonymous2_e__Union */
@@ -8906,7 +8906,7 @@ export interface NMCUSTOMTEXT {
   /** Windows.Win32.Graphics.Gdi.HDC */
   hDC: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.Foundation.PWSTR */
-  lpString: string | null;
+  lpString: string | null | Uint8Array | Uint16Array;
   /** i32 */
   nCount: number;
   /** ptr */
@@ -9165,7 +9165,7 @@ export function allocIMAGEINFO(data?: Partial<IMAGEINFO>): Uint8Array {
  */
 export interface HD_TEXTFILTERA {
   /** Windows.Win32.Foundation.PSTR */
-  pszText: string | null;
+  pszText: string | null | Uint8Array;
   /** i32 */
   cchTextMax: number;
 }
@@ -9191,7 +9191,7 @@ export function allocHD_TEXTFILTERA(data?: Partial<HD_TEXTFILTERA>): Uint8Array 
  */
 export interface HD_TEXTFILTERW {
   /** Windows.Win32.Foundation.PWSTR */
-  pszText: string | null;
+  pszText: string | null | Uint8Array | Uint16Array;
   /** i32 */
   cchTextMax: number;
 }
@@ -9221,7 +9221,7 @@ export interface HDITEMA {
   /** i32 */
   cxy: number;
   /** Windows.Win32.Foundation.PSTR */
-  pszText: string | null;
+  pszText: string | null | Uint8Array;
   /** Windows.Win32.Graphics.Gdi.HBITMAP */
   hbm: Uint8Array | Deno.PointerValue | null;
   /** i32 */
@@ -9288,7 +9288,7 @@ export interface HDITEMW {
   /** i32 */
   cxy: number;
   /** Windows.Win32.Foundation.PWSTR */
-  pszText: string | null;
+  pszText: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Graphics.Gdi.HBITMAP */
   hbm: Uint8Array | Deno.PointerValue | null;
   /** i32 */
@@ -9465,7 +9465,7 @@ export interface NMHDDISPINFOW {
   /** Windows.Win32.UI.Controls.HDI_MASK */
   mask: HDI_MASK;
   /** Windows.Win32.Foundation.PWSTR */
-  pszText: string | null;
+  pszText: string | null | Uint8Array | Uint16Array;
   /** i32 */
   cchTextMax: number;
   /** i32 */
@@ -9510,7 +9510,7 @@ export interface NMHDDISPINFOA {
   /** Windows.Win32.UI.Controls.HDI_MASK */
   mask: HDI_MASK;
   /** Windows.Win32.Foundation.PSTR */
-  pszText: string | null;
+  pszText: string | null | Uint8Array;
   /** i32 */
   cchTextMax: number;
   /** i32 */
@@ -9699,9 +9699,9 @@ export interface TBSAVEPARAMSA {
   /** Windows.Win32.System.Registry.HKEY */
   hkr: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.Foundation.PSTR */
-  pszSubKey: string | null;
+  pszSubKey: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  pszValueName: string | null;
+  pszValueName: string | null | Uint8Array;
 }
 
 export const sizeofTBSAVEPARAMSA = 24;
@@ -9731,9 +9731,9 @@ export interface TBSAVEPARAMSW {
   /** Windows.Win32.System.Registry.HKEY */
   hkr: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.Foundation.PWSTR */
-  pszSubKey: string | null;
+  pszSubKey: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pszValueName: string | null;
+  pszValueName: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeofTBSAVEPARAMSW = 24;
@@ -9834,7 +9834,7 @@ export interface TBBUTTONINFOA {
   /** usize */
   lParam: Deno.PointerValue;
   /** Windows.Win32.Foundation.PSTR */
-  pszText: string | null;
+  pszText: string | null | Uint8Array;
   /** i32 */
   cchText: number;
 }
@@ -9893,7 +9893,7 @@ export interface TBBUTTONINFOW {
   /** usize */
   lParam: Deno.PointerValue;
   /** Windows.Win32.Foundation.PWSTR */
-  pszText: string | null;
+  pszText: string | null | Uint8Array | Uint16Array;
   /** i32 */
   cchText: number;
 }
@@ -10104,7 +10104,7 @@ export interface NMTBGETINFOTIPA {
   /** Windows.Win32.UI.Controls.NMHDR */
   hdr: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.Foundation.PSTR */
-  pszText: string | null;
+  pszText: string | null | Uint8Array;
   /** i32 */
   cchTextMax: number;
   /** i32 */
@@ -10141,7 +10141,7 @@ export interface NMTBGETINFOTIPW {
   /** Windows.Win32.UI.Controls.NMHDR */
   hdr: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.Foundation.PWSTR */
-  pszText: string | null;
+  pszText: string | null | Uint8Array | Uint16Array;
   /** i32 */
   cchTextMax: number;
   /** i32 */
@@ -10186,7 +10186,7 @@ export interface NMTBDISPINFOA {
   /** i32 */
   iImage: number;
   /** Windows.Win32.Foundation.PSTR */
-  pszText: string | null;
+  pszText: string | null | Uint8Array;
   /** i32 */
   cchText: number;
 }
@@ -10233,7 +10233,7 @@ export interface NMTBDISPINFOW {
   /** i32 */
   iImage: number;
   /** Windows.Win32.Foundation.PWSTR */
-  pszText: string | null;
+  pszText: string | null | Uint8Array | Uint16Array;
   /** i32 */
   cchText: number;
 }
@@ -10278,7 +10278,7 @@ export interface NMTOOLBARA {
   /** i32 */
   cchText: number;
   /** Windows.Win32.Foundation.PSTR */
-  pszText: string | null;
+  pszText: string | null | Uint8Array;
   /** Windows.Win32.Foundation.RECT */
   rcButton: Uint8Array | Deno.PointerValue | null;
 }
@@ -10321,7 +10321,7 @@ export interface NMTOOLBARW {
   /** i32 */
   cchText: number;
   /** Windows.Win32.Foundation.PWSTR */
-  pszText: string | null;
+  pszText: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.RECT */
   rcButton: Uint8Array | Deno.PointerValue | null;
 }
@@ -10392,7 +10392,7 @@ export interface REBARBANDINFOA {
   /** Windows.Win32.Foundation.COLORREF */
   clrBack: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.Foundation.PSTR */
-  lpText: string | null;
+  lpText: string | null | Uint8Array;
   /** u32 */
   cch: number;
   /** i32 */
@@ -10502,7 +10502,7 @@ export interface REBARBANDINFOW {
   /** Windows.Win32.Foundation.COLORREF */
   clrBack: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.Foundation.PWSTR */
-  lpText: string | null;
+  lpText: string | null | Uint8Array | Uint16Array;
   /** u32 */
   cch: number;
   /** i32 */
@@ -10846,7 +10846,7 @@ export interface TTTOOLINFOA {
   /** Windows.Win32.Foundation.HINSTANCE */
   hinst: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.Foundation.PSTR */
-  lpszText: string | null;
+  lpszText: string | null | Uint8Array;
   /** Windows.Win32.Foundation.LPARAM */
   lParam: Uint8Array | Deno.PointerValue | null;
   /** ptr */
@@ -10899,7 +10899,7 @@ export interface TTTOOLINFOW {
   /** Windows.Win32.Foundation.HINSTANCE */
   hinst: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.Foundation.PWSTR */
-  lpszText: string | null;
+  lpszText: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.LPARAM */
   lParam: Uint8Array | Deno.PointerValue | null;
   /** ptr */
@@ -10946,7 +10946,7 @@ export interface TTGETTITLE {
   /** u32 */
   cch: number;
   /** Windows.Win32.Foundation.PWSTR */
-  pszTitle: string | null;
+  pszTitle: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeofTTGETTITLE = 24;
@@ -11028,7 +11028,7 @@ export interface NMTTDISPINFOA {
   /** Windows.Win32.UI.Controls.NMHDR */
   hdr: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.Foundation.PSTR */
-  lpszText: string | null;
+  lpszText: string | null | Uint8Array;
   /** array */
   szText: Deno.PointerValue | null;
   /** Windows.Win32.Foundation.HINSTANCE */
@@ -11070,7 +11070,7 @@ export interface NMTTDISPINFOW {
   /** Windows.Win32.UI.Controls.NMHDR */
   hdr: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.Foundation.PWSTR */
-  lpszText: string | null;
+  lpszText: string | null | Uint8Array | Uint16Array;
   /** array */
   szText: Deno.PointerValue | null;
   /** Windows.Win32.Foundation.HINSTANCE */
@@ -11325,7 +11325,7 @@ export interface LVITEMA {
   /** Windows.Win32.UI.Controls.LIST_VIEW_ITEM_STATE_FLAGS */
   stateMask: LIST_VIEW_ITEM_STATE_FLAGS;
   /** Windows.Win32.Foundation.PSTR */
-  pszText: string | null;
+  pszText: string | null | Uint8Array;
   /** i32 */
   cchTextMax: number;
   /** i32 */
@@ -11405,7 +11405,7 @@ export interface LVITEMW {
   /** Windows.Win32.UI.Controls.LIST_VIEW_ITEM_STATE_FLAGS */
   stateMask: LIST_VIEW_ITEM_STATE_FLAGS;
   /** Windows.Win32.Foundation.PWSTR */
-  pszText: string | null;
+  pszText: string | null | Uint8Array | Uint16Array;
   /** i32 */
   cchTextMax: number;
   /** i32 */
@@ -11477,7 +11477,7 @@ export interface LVFINDINFOA {
   /** Windows.Win32.UI.Controls.LVFINDINFOW_FLAGS */
   flags: LVFINDINFOW_FLAGS;
   /** Windows.Win32.Foundation.PSTR */
-  psz: string | null;
+  psz: string | null | Uint8Array;
   /** Windows.Win32.Foundation.LPARAM */
   lParam: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.Foundation.POINT */
@@ -11516,7 +11516,7 @@ export interface LVFINDINFOW {
   /** Windows.Win32.UI.Controls.LVFINDINFOW_FLAGS */
   flags: LVFINDINFOW_FLAGS;
   /** Windows.Win32.Foundation.PWSTR */
-  psz: string | null;
+  psz: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.LPARAM */
   lParam: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.Foundation.POINT */
@@ -11593,7 +11593,7 @@ export interface LVCOLUMNA {
   /** i32 */
   cx: number;
   /** Windows.Win32.Foundation.PSTR */
-  pszText: string | null;
+  pszText: string | null | Uint8Array;
   /** i32 */
   cchTextMax: number;
   /** i32 */
@@ -11656,7 +11656,7 @@ export interface LVCOLUMNW {
   /** i32 */
   cx: number;
   /** Windows.Win32.Foundation.PWSTR */
-  pszText: string | null;
+  pszText: string | null | Uint8Array | Uint16Array;
   /** i32 */
   cchTextMax: number;
   /** i32 */
@@ -11717,7 +11717,7 @@ export interface LVBKIMAGEA {
   /** Windows.Win32.Graphics.Gdi.HBITMAP */
   hbm: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.Foundation.PSTR */
-  pszImage: string | null;
+  pszImage: string | null | Uint8Array;
   /** u32 */
   cchImageMax: number;
   /** i32 */
@@ -11760,7 +11760,7 @@ export interface LVBKIMAGEW {
   /** Windows.Win32.Graphics.Gdi.HBITMAP */
   hbm: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.Foundation.PWSTR */
-  pszImage: string | null;
+  pszImage: string | null | Uint8Array | Uint16Array;
   /** u32 */
   cchImageMax: number;
   /** i32 */
@@ -11803,11 +11803,11 @@ export interface LVGROUP {
   /** Windows.Win32.UI.Controls.LVGROUP_MASK */
   mask: LVGROUP_MASK;
   /** Windows.Win32.Foundation.PWSTR */
-  pszHeader: string | null;
+  pszHeader: string | null | Uint8Array | Uint16Array;
   /** i32 */
   cchHeader: number;
   /** Windows.Win32.Foundation.PWSTR */
-  pszFooter: string | null;
+  pszFooter: string | null | Uint8Array | Uint16Array;
   /** i32 */
   cchFooter: number;
   /** i32 */
@@ -11819,19 +11819,19 @@ export interface LVGROUP {
   /** Windows.Win32.UI.Controls.LIST_VIEW_GROUP_ALIGN_FLAGS */
   uAlign: LIST_VIEW_GROUP_ALIGN_FLAGS;
   /** Windows.Win32.Foundation.PWSTR */
-  pszSubtitle: string | null;
+  pszSubtitle: string | null | Uint8Array | Uint16Array;
   /** u32 */
   cchSubtitle: number;
   /** Windows.Win32.Foundation.PWSTR */
-  pszTask: string | null;
+  pszTask: string | null | Uint8Array | Uint16Array;
   /** u32 */
   cchTask: number;
   /** Windows.Win32.Foundation.PWSTR */
-  pszDescriptionTop: string | null;
+  pszDescriptionTop: string | null | Uint8Array | Uint16Array;
   /** u32 */
   cchDescriptionTop: number;
   /** Windows.Win32.Foundation.PWSTR */
-  pszDescriptionBottom: string | null;
+  pszDescriptionBottom: string | null | Uint8Array | Uint16Array;
   /** u32 */
   cchDescriptionBottom: number;
   /** i32 */
@@ -11843,7 +11843,7 @@ export interface LVGROUP {
   /** u32 */
   cItems: number;
   /** Windows.Win32.Foundation.PWSTR */
-  pszSubsetTitle: string | null;
+  pszSubsetTitle: string | null | Uint8Array | Uint16Array;
   /** u32 */
   cchSubsetTitle: number;
 }
@@ -12156,7 +12156,7 @@ export interface LVSETINFOTIP {
   /** u32 */
   dwFlags: number;
   /** Windows.Win32.Foundation.PWSTR */
-  pszText: string | null;
+  pszText: string | null | Uint8Array | Uint16Array;
   /** i32 */
   iItem: number;
   /** i32 */
@@ -12191,7 +12191,7 @@ export interface LVFOOTERINFO {
   /** u32 */
   mask: number;
   /** Windows.Win32.Foundation.PWSTR */
-  pszText: string | null;
+  pszText: string | null | Uint8Array | Uint16Array;
   /** i32 */
   cchTextMax: number;
   /** u32 */
@@ -12227,7 +12227,7 @@ export interface LVFOOTERITEM {
   /** i32 */
   iItem: number;
   /** Windows.Win32.Foundation.PWSTR */
-  pszText: string | null;
+  pszText: string | null | Uint8Array | Uint16Array;
   /** i32 */
   cchTextMax: number;
   /** u32 */
@@ -12668,7 +12668,7 @@ export interface NMLVGETINFOTIPA {
   /** Windows.Win32.UI.Controls.NMLVGETINFOTIP_FLAGS */
   dwFlags: NMLVGETINFOTIP_FLAGS;
   /** Windows.Win32.Foundation.PSTR */
-  pszText: string | null;
+  pszText: string | null | Uint8Array;
   /** i32 */
   cchTextMax: number;
   /** i32 */
@@ -12715,7 +12715,7 @@ export interface NMLVGETINFOTIPW {
   /** Windows.Win32.UI.Controls.NMLVGETINFOTIP_FLAGS */
   dwFlags: NMLVGETINFOTIP_FLAGS;
   /** Windows.Win32.Foundation.PWSTR */
-  pszText: string | null;
+  pszText: string | null | Uint8Array | Uint16Array;
   /** i32 */
   cchTextMax: number;
   /** i32 */
@@ -12849,7 +12849,7 @@ export interface TVITEMA {
   /** Windows.Win32.UI.Controls.TREE_VIEW_ITEM_STATE_FLAGS */
   stateMask: TREE_VIEW_ITEM_STATE_FLAGS;
   /** Windows.Win32.Foundation.PSTR */
-  pszText: string | null;
+  pszText: string | null | Uint8Array;
   /** i32 */
   cchTextMax: number;
   /** i32 */
@@ -12907,7 +12907,7 @@ export interface TVITEMW {
   /** Windows.Win32.UI.Controls.TREE_VIEW_ITEM_STATE_FLAGS */
   stateMask: TREE_VIEW_ITEM_STATE_FLAGS;
   /** Windows.Win32.Foundation.PWSTR */
-  pszText: string | null;
+  pszText: string | null | Uint8Array | Uint16Array;
   /** i32 */
   cchTextMax: number;
   /** i32 */
@@ -12965,7 +12965,7 @@ export interface TVITEMEXA {
   /** u32 */
   stateMask: number;
   /** Windows.Win32.Foundation.PSTR */
-  pszText: string | null;
+  pszText: string | null | Uint8Array;
   /** i32 */
   cchTextMax: number;
   /** i32 */
@@ -13043,7 +13043,7 @@ export interface TVITEMEXW {
   /** u32 */
   stateMask: number;
   /** Windows.Win32.Foundation.PWSTR */
-  pszText: string | null;
+  pszText: string | null | Uint8Array | Uint16Array;
   /** i32 */
   cchTextMax: number;
   /** i32 */
@@ -13507,7 +13507,7 @@ export interface NMTVGETINFOTIPA {
   /** Windows.Win32.UI.Controls.NMHDR */
   hdr: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.Foundation.PSTR */
-  pszText: string | null;
+  pszText: string | null | Uint8Array;
   /** i32 */
   cchTextMax: number;
   /** Windows.Win32.UI.Controls.HTREEITEM */
@@ -13545,7 +13545,7 @@ export interface NMTVGETINFOTIPW {
   /** Windows.Win32.UI.Controls.NMHDR */
   hdr: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.Foundation.PWSTR */
-  pszText: string | null;
+  pszText: string | null | Uint8Array | Uint16Array;
   /** i32 */
   cchTextMax: number;
   /** Windows.Win32.UI.Controls.HTREEITEM */
@@ -13666,7 +13666,7 @@ export interface COMBOBOXEXITEMA {
   /** isize */
   iItem: Deno.PointerValue;
   /** Windows.Win32.Foundation.PSTR */
-  pszText: string | null;
+  pszText: string | null | Uint8Array;
   /** i32 */
   cchTextMax: number;
   /** i32 */
@@ -13721,7 +13721,7 @@ export interface COMBOBOXEXITEMW {
   /** isize */
   iItem: Deno.PointerValue;
   /** Windows.Win32.Foundation.PWSTR */
-  pszText: string | null;
+  pszText: string | null | Uint8Array | Uint16Array;
   /** i32 */
   cchTextMax: number;
   /** i32 */
@@ -13946,7 +13946,7 @@ export interface TCITEMHEADERA {
   /** u32 */
   lpReserved2: number;
   /** Windows.Win32.Foundation.PSTR */
-  pszText: string | null;
+  pszText: string | null | Uint8Array;
   /** i32 */
   cchTextMax: number;
   /** i32 */
@@ -13988,7 +13988,7 @@ export interface TCITEMHEADERW {
   /** u32 */
   lpReserved2: number;
   /** Windows.Win32.Foundation.PWSTR */
-  pszText: string | null;
+  pszText: string | null | Uint8Array | Uint16Array;
   /** i32 */
   cchTextMax: number;
   /** i32 */
@@ -14030,7 +14030,7 @@ export interface TCITEMA {
   /** Windows.Win32.UI.Controls.TAB_CONTROL_ITEM_STATE */
   dwStateMask: TAB_CONTROL_ITEM_STATE;
   /** Windows.Win32.Foundation.PSTR */
-  pszText: string | null;
+  pszText: string | null | Uint8Array;
   /** i32 */
   cchTextMax: number;
   /** i32 */
@@ -14076,7 +14076,7 @@ export interface TCITEMW {
   /** Windows.Win32.UI.Controls.TAB_CONTROL_ITEM_STATE */
   dwStateMask: TAB_CONTROL_ITEM_STATE;
   /** Windows.Win32.Foundation.PWSTR */
-  pszText: string | null;
+  pszText: string | null | Uint8Array | Uint16Array;
   /** i32 */
   cchTextMax: number;
   /** i32 */
@@ -14281,7 +14281,7 @@ export interface MCGRIDINFO {
   /** Windows.Win32.Foundation.RECT */
   rc: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.Foundation.PWSTR */
-  pszName: string | null;
+  pszName: string | null | Uint8Array | Uint16Array;
   /** usize */
   cchName: Deno.PointerValue;
 }
@@ -14488,7 +14488,7 @@ export interface NMDATETIMESTRINGA {
   /** Windows.Win32.UI.Controls.NMHDR */
   nmhdr: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.Foundation.PSTR */
-  pszUserString: string | null;
+  pszUserString: string | null | Uint8Array;
   /** Windows.Win32.Foundation.SYSTEMTIME */
   st: Uint8Array | Deno.PointerValue | null;
   /** u32 */
@@ -14522,7 +14522,7 @@ export interface NMDATETIMESTRINGW {
   /** Windows.Win32.UI.Controls.NMHDR */
   nmhdr: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.Foundation.PWSTR */
-  pszUserString: string | null;
+  pszUserString: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.SYSTEMTIME */
   st: Uint8Array | Deno.PointerValue | null;
   /** u32 */
@@ -14558,7 +14558,7 @@ export interface NMDATETIMEWMKEYDOWNA {
   /** i32 */
   nVirtKey: number;
   /** Windows.Win32.Foundation.PSTR */
-  pszFormat: string | null;
+  pszFormat: string | null | Uint8Array;
   /** Windows.Win32.Foundation.SYSTEMTIME */
   st: Uint8Array | Deno.PointerValue | null;
 }
@@ -14592,7 +14592,7 @@ export interface NMDATETIMEWMKEYDOWNW {
   /** i32 */
   nVirtKey: number;
   /** Windows.Win32.Foundation.PWSTR */
-  pszFormat: string | null;
+  pszFormat: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.SYSTEMTIME */
   st: Uint8Array | Deno.PointerValue | null;
 }
@@ -14624,11 +14624,11 @@ export interface NMDATETIMEFORMATA {
   /** Windows.Win32.UI.Controls.NMHDR */
   nmhdr: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.Foundation.PSTR */
-  pszFormat: string | null;
+  pszFormat: string | null | Uint8Array;
   /** Windows.Win32.Foundation.SYSTEMTIME */
   st: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.Foundation.PSTR */
-  pszDisplay: string | null;
+  pszDisplay: string | null | Uint8Array;
   /** array */
   szDisplay: Deno.PointerValue | null;
 }
@@ -14664,11 +14664,11 @@ export interface NMDATETIMEFORMATW {
   /** Windows.Win32.UI.Controls.NMHDR */
   nmhdr: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.Foundation.PWSTR */
-  pszFormat: string | null;
+  pszFormat: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.SYSTEMTIME */
   st: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.Foundation.PWSTR */
-  pszDisplay: string | null;
+  pszDisplay: string | null | Uint8Array | Uint16Array;
   /** array */
   szDisplay: Deno.PointerValue | null;
 }
@@ -14704,7 +14704,7 @@ export interface NMDATETIMEFORMATQUERYA {
   /** Windows.Win32.UI.Controls.NMHDR */
   nmhdr: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.Foundation.PSTR */
-  pszFormat: string | null;
+  pszFormat: string | null | Uint8Array;
   /** Windows.Win32.Foundation.SIZE */
   szMax: Uint8Array | Deno.PointerValue | null;
 }
@@ -14733,7 +14733,7 @@ export interface NMDATETIMEFORMATQUERYW {
   /** Windows.Win32.UI.Controls.NMHDR */
   nmhdr: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.Foundation.PWSTR */
-  pszFormat: string | null;
+  pszFormat: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.SIZE */
   szMax: Uint8Array | Deno.PointerValue | null;
 }
@@ -14997,9 +14997,9 @@ export interface EDITBALLOONTIP {
   /** u32 */
   cbStruct: number;
   /** Windows.Win32.Foundation.PWSTR */
-  pszTitle: string | null;
+  pszTitle: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pszText: string | null;
+  pszText: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.UI.Controls.EDITBALLOONTIP_ICON */
   ttiIcon: EDITBALLOONTIP_ICON;
 }
@@ -15066,7 +15066,7 @@ export interface TASKDIALOG_BUTTON {
   /** i32 */
   nButtonID: number;
   /** Windows.Win32.Foundation.PWSTR */
-  pszButtonText: string | null;
+  pszButtonText: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeofTASKDIALOG_BUTTON = 16;
@@ -15100,13 +15100,13 @@ export interface TASKDIALOGCONFIG {
   /** Windows.Win32.UI.Controls.TASKDIALOG_COMMON_BUTTON_FLAGS */
   dwCommonButtons: TASKDIALOG_COMMON_BUTTON_FLAGS;
   /** Windows.Win32.Foundation.PWSTR */
-  pszWindowTitle: string | null;
+  pszWindowTitle: string | null | Uint8Array | Uint16Array;
   /** _Anonymous1_e__Union */
   Anonymous1: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.Foundation.PWSTR */
-  pszMainInstruction: string | null;
+  pszMainInstruction: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pszContent: string | null;
+  pszContent: string | null | Uint8Array | Uint16Array;
   /** u32 */
   cButtons: number;
   /** ptr */
@@ -15120,17 +15120,17 @@ export interface TASKDIALOGCONFIG {
   /** i32 */
   nDefaultRadioButton: number;
   /** Windows.Win32.Foundation.PWSTR */
-  pszVerificationText: string | null;
+  pszVerificationText: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pszExpandedInformation: string | null;
+  pszExpandedInformation: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pszExpandedControlText: string | null;
+  pszExpandedControlText: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pszCollapsedControlText: string | null;
+  pszCollapsedControlText: string | null | Uint8Array | Uint16Array;
   /** _Anonymous2_e__Union */
   Anonymous2: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.Foundation.PWSTR */
-  pszFooter: string | null;
+  pszFooter: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.UI.Controls.PFTASKDIALOGCALLBACK */
   pfCallback: Uint8Array | Deno.PointerValue | null;
   /** isize */
@@ -15797,7 +15797,7 @@ export interface CCSTYLEFLAGA {
   /** u32 */
   flStyleMask: number;
   /** Windows.Win32.Foundation.PSTR */
-  pszStyle: string | null;
+  pszStyle: string | null | Uint8Array;
 }
 
 export const sizeofCCSTYLEFLAGA = 16;
@@ -15826,7 +15826,7 @@ export interface CCSTYLEFLAGW {
   /** u32 */
   flStyleMask: number;
   /** Windows.Win32.Foundation.PWSTR */
-  pszStyle: string | null;
+  pszStyle: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeofCCSTYLEFLAGW = 16;
@@ -16158,7 +16158,7 @@ export interface RICHEDIT_IMAGE_PARAMETERS {
   /** Windows.Win32.Graphics.Gdi.TEXT_ALIGN_OPTIONS */
   Type: TEXT_ALIGN_OPTIONS;
   /** Windows.Win32.Foundation.PWSTR */
-  pwszAlternateText: string | null;
+  pwszAlternateText: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.System.Com.IStream */
   pIStream: Uint8Array | Deno.PointerValue | null;
 }
@@ -16470,7 +16470,7 @@ export interface TEXTRANGEA {
   /** Windows.Win32.UI.Controls.RichEdit.CHARRANGE */
   chrg: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.Foundation.PSTR */
-  lpstrText: string | null;
+  lpstrText: string | null | Uint8Array;
 }
 
 export const sizeofTEXTRANGEA = 16;
@@ -16495,7 +16495,7 @@ export interface TEXTRANGEW {
   /** Windows.Win32.UI.Controls.RichEdit.CHARRANGE */
   chrg: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.Foundation.PWSTR */
-  lpstrText: string | null;
+  lpstrText: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeofTEXTRANGEW = 16;
@@ -16547,7 +16547,7 @@ export interface FINDTEXTA {
   /** Windows.Win32.UI.Controls.RichEdit.CHARRANGE */
   chrg: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.Foundation.PSTR */
-  lpstrText: string | null;
+  lpstrText: string | null | Uint8Array;
 }
 
 export const sizeofFINDTEXTA = 16;
@@ -16572,7 +16572,7 @@ export interface FINDTEXTW {
   /** Windows.Win32.UI.Controls.RichEdit.CHARRANGE */
   chrg: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.Foundation.PWSTR */
-  lpstrText: string | null;
+  lpstrText: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeofFINDTEXTW = 16;
@@ -16597,7 +16597,7 @@ export interface FINDTEXTEXA {
   /** Windows.Win32.UI.Controls.RichEdit.CHARRANGE */
   chrg: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.Foundation.PSTR */
-  lpstrText: string | null;
+  lpstrText: string | null | Uint8Array;
   /** Windows.Win32.UI.Controls.RichEdit.CHARRANGE */
   chrgText: Uint8Array | Deno.PointerValue | null;
 }
@@ -16626,7 +16626,7 @@ export interface FINDTEXTEXW {
   /** Windows.Win32.UI.Controls.RichEdit.CHARRANGE */
   chrg: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.Foundation.PWSTR */
-  lpstrText: string | null;
+  lpstrText: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.UI.Controls.RichEdit.CHARRANGE */
   chrgText: Uint8Array | Deno.PointerValue | null;
 }
@@ -17160,7 +17160,7 @@ export interface ENLOWFIRTF {
   /** Windows.Win32.UI.Controls.NMHDR */
   nmhdr: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.Foundation.PSTR */
-  szControl: string | null;
+  szControl: string | null | Uint8Array;
 }
 
 export const sizeofENLOWFIRTF = 16;
@@ -17212,7 +17212,7 @@ export interface PUNCTUATION {
   /** u32 */
   iSize: number;
   /** Windows.Win32.Foundation.PSTR */
-  szPunctuation: string | null;
+  szPunctuation: string | null | Uint8Array;
 }
 
 export const sizeofPUNCTUATION = 16;
@@ -17314,7 +17314,7 @@ export interface GETTEXTEX {
   /** u32 */
   codepage: number;
   /** Windows.Win32.Foundation.PSTR */
-  lpDefaultChar: string | null;
+  lpDefaultChar: string | null | Uint8Array;
   /** ptr */
   lpUsedDefChar: Deno.PointerValue | Uint8Array | null;
 }
@@ -19074,7 +19074,7 @@ export function ImageList_GetIcon(
 
 export function ImageList_LoadImageA(
   hi: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HINSTANCE */,
-  lpbmp: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpbmp: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   cx: number /* i32 */,
   cGrow: number /* i32 */,
   crMask: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.COLORREF */,
@@ -19086,7 +19086,7 @@ export function ImageList_LoadImageA(
 
 export function ImageList_LoadImageW(
   hi: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HINSTANCE */,
-  lpbmp: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpbmp: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   cx: number /* i32 */,
   cGrow: number /* i32 */,
   crMask: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.COLORREF */,
@@ -19272,7 +19272,7 @@ export function CreateMappedBitmap(
 export function DrawStatusTextA(
   hDC: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Graphics.Gdi.HDC */,
   lprc: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pszText: string | null /* Windows.Win32.Foundation.PSTR */,
+  pszText: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   uFlags: number /* u32 */,
 ): void /* void */ {
   return libCOMCTL32_dll.DrawStatusTextA(util.toPointer(hDC), util.toPointer(lprc), util.pstrToFfi(pszText), uFlags);
@@ -19281,7 +19281,7 @@ export function DrawStatusTextA(
 export function DrawStatusTextW(
   hDC: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Graphics.Gdi.HDC */,
   lprc: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pszText: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pszText: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   uFlags: number /* u32 */,
 ): void /* void */ {
   return libCOMCTL32_dll.DrawStatusTextW(util.toPointer(hDC), util.toPointer(lprc), util.pwstrToFfi(pszText), uFlags);
@@ -19289,7 +19289,7 @@ export function DrawStatusTextW(
 
 export function CreateStatusWindowA(
   style: number /* i32 */,
-  lpszText: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpszText: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   hwndParent: Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */,
   wID: number /* u32 */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */ {
@@ -19298,7 +19298,7 @@ export function CreateStatusWindowA(
 
 export function CreateStatusWindowW(
   style: number /* i32 */,
-  lpszText: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpszText: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   hwndParent: Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */,
   wID: number /* u32 */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */ {
@@ -19384,11 +19384,11 @@ export function TaskDialogIndirect(
 export function TaskDialog(
   hwndOwner: Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */,
   hInstance: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HINSTANCE */,
-  pszWindowTitle: string | null /* Windows.Win32.Foundation.PWSTR */,
-  pszMainInstruction: string | null /* Windows.Win32.Foundation.PWSTR */,
-  pszContent: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pszWindowTitle: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  pszMainInstruction: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  pszContent: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   dwCommonButtons: TASKDIALOG_COMMON_BUTTON_FLAGS /* Windows.Win32.UI.Controls.TASKDIALOG_COMMON_BUTTON_FLAGS */,
-  pszIcon: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pszIcon: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pnButton: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
   return util.pointerFromFfi(libCOMCTL32_dll.TaskDialog(util.hwndToFfi(hwndOwner), util.toPointer(hInstance), util.pwstrToFfi(pszWindowTitle), util.pwstrToFfi(pszMainInstruction), util.pwstrToFfi(pszContent), dwCommonButtons, util.pwstrToFfi(pszIcon), util.toPointer(pnButton)));
@@ -19645,7 +19645,7 @@ export function DPA_Search(
 
 export function Str_SetPtrW(
   ppsz: Deno.PointerValue | Uint8Array | null /* ptr */,
-  psz: string | null /* Windows.Win32.Foundation.PWSTR */,
+  psz: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libCOMCTL32_dll.Str_SetPtrW(util.toPointer(ppsz), util.pwstrToFfi(psz)));
 }
@@ -19749,7 +19749,7 @@ export function UninitializeFlatSB(
 
 export function LoadIconMetric(
   hinst: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HINSTANCE */,
-  pszName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pszName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   lims: _LI_METRIC /* Windows.Win32.UI.Controls._LI_METRIC */,
   phico: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
@@ -19758,7 +19758,7 @@ export function LoadIconMetric(
 
 export function LoadIconWithScaleDown(
   hinst: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HINSTANCE */,
-  pszName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pszName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   cx: number /* i32 */,
   cy: number /* i32 */,
   phico: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -19768,7 +19768,7 @@ export function LoadIconWithScaleDown(
 
 export function DrawShadowText(
   hdc: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Graphics.Gdi.HDC */,
-  pszText: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pszText: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   cch: number /* u32 */,
   prc: Deno.PointerValue | Uint8Array | null /* ptr */,
   dwFlags: number /* u32 */,
@@ -19847,14 +19847,14 @@ export function GetThemeTimingFunction(
 
 export function OpenThemeData(
   hwnd: Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */,
-  pszClassList: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pszClassList: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): Deno.PointerValue /* isize */ {
   return libUXTHEME_dll.OpenThemeData(util.hwndToFfi(hwnd), util.pwstrToFfi(pszClassList));
 }
 
 export function OpenThemeDataEx(
   hwnd: Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */,
-  pszClassList: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pszClassList: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   dwFlags: OPEN_THEME_DATA_FLAGS /* Windows.Win32.UI.Controls.OPEN_THEME_DATA_FLAGS */,
 ): Deno.PointerValue /* isize */ {
   return libUXTHEME_dll.OpenThemeDataEx(util.hwndToFfi(hwnd), util.pwstrToFfi(pszClassList), dwFlags);
@@ -19893,7 +19893,7 @@ export function DrawThemeText(
   hdc: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Graphics.Gdi.HDC */,
   iPartId: number /* i32 */,
   iStateId: number /* i32 */,
-  pszText: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pszText: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   cchText: number /* i32 */,
   dwTextFlags: DRAW_TEXT_FORMAT /* Windows.Win32.Graphics.Gdi.DRAW_TEXT_FORMAT */,
   dwTextFlags2: number /* u32 */,
@@ -19952,7 +19952,7 @@ export function GetThemeTextExtent(
   hdc: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Graphics.Gdi.HDC */,
   iPartId: number /* i32 */,
   iStateId: number /* i32 */,
-  pszText: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pszText: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   cchCharCount: number /* i32 */,
   dwTextFlags: DRAW_TEXT_FORMAT /* Windows.Win32.Graphics.Gdi.DRAW_TEXT_FORMAT */,
   pBoundingRect: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -20052,7 +20052,7 @@ export function GetThemeString(
   iPartId: number /* i32 */,
   iStateId: number /* i32 */,
   iPropId: number /* i32 */,
-  pszBuff: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pszBuff: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   cchMaxBuffChars: number /* i32 */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
   return util.pointerFromFfi(libUxTheme_dll.GetThemeString(hTheme, iPartId, iStateId, iPropId, util.pwstrToFfi(pszBuff), cchMaxBuffChars));
@@ -20153,8 +20153,8 @@ export function GetThemePropertyOrigin(
 
 export function SetWindowTheme(
   hwnd: Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */,
-  pszSubAppName: string | null /* Windows.Win32.Foundation.PWSTR */,
-  pszSubIdList: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pszSubAppName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  pszSubIdList: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
   return util.pointerFromFfi(libUXTHEME_dll.SetWindowTheme(util.hwndToFfi(hwnd), util.pwstrToFfi(pszSubAppName), util.pwstrToFfi(pszSubIdList)));
 }
@@ -20164,7 +20164,7 @@ export function GetThemeFilename(
   iPartId: number /* i32 */,
   iStateId: number /* i32 */,
   iPropId: THEME_PROPERTY_SYMBOL_ID /* Windows.Win32.UI.Controls.THEME_PROPERTY_SYMBOL_ID */,
-  pszThemeFileName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pszThemeFileName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   cchMaxBuffChars: number /* i32 */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
   return util.pointerFromFfi(libUxTheme_dll.GetThemeFilename(hTheme, iPartId, iStateId, iPropId, util.pwstrToFfi(pszThemeFileName), cchMaxBuffChars));
@@ -20209,7 +20209,7 @@ export function GetThemeSysFont(
 export function GetThemeSysString(
   hTheme: Deno.PointerValue /* isize */,
   iStringId: THEME_PROPERTY_SYMBOL_ID /* Windows.Win32.UI.Controls.THEME_PROPERTY_SYMBOL_ID */,
-  pszStringBuff: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pszStringBuff: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   cchMaxStringChars: number /* i32 */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
   return util.pointerFromFfi(libUxTheme_dll.GetThemeSysString(hTheme, iStringId, util.pwstrToFfi(pszStringBuff), cchMaxStringChars));
@@ -20261,20 +20261,20 @@ export function SetThemeAppProperties(
 }
 
 export function GetCurrentThemeName(
-  pszThemeFileName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pszThemeFileName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   cchMaxNameChars: number /* i32 */,
-  pszColorBuff: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pszColorBuff: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   cchMaxColorChars: number /* i32 */,
-  pszSizeBuff: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pszSizeBuff: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   cchMaxSizeChars: number /* i32 */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
   return util.pointerFromFfi(libUXTHEME_dll.GetCurrentThemeName(util.pwstrToFfi(pszThemeFileName), cchMaxNameChars, util.pwstrToFfi(pszColorBuff), cchMaxColorChars, util.pwstrToFfi(pszSizeBuff), cchMaxSizeChars));
 }
 
 export function GetThemeDocumentationProperty(
-  pszThemeName: string | null /* Windows.Win32.Foundation.PWSTR */,
-  pszPropertyName: string | null /* Windows.Win32.Foundation.PWSTR */,
-  pszValueBuff: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pszThemeName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  pszPropertyName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  pszValueBuff: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   cchMaxValChars: number /* i32 */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
   return util.pointerFromFfi(libUxTheme_dll.GetThemeDocumentationProperty(util.pwstrToFfi(pszThemeName), util.pwstrToFfi(pszPropertyName), util.pwstrToFfi(pszValueBuff), cchMaxValChars));
@@ -20317,7 +20317,7 @@ export function DrawThemeTextEx(
   hdc: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Graphics.Gdi.HDC */,
   iPartId: number /* i32 */,
   iStateId: number /* i32 */,
-  pszText: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pszText: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   cchText: number /* i32 */,
   dwTextFlags: DRAW_TEXT_FORMAT /* Windows.Win32.Graphics.Gdi.DRAW_TEXT_FORMAT */,
   pRect: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -20596,7 +20596,7 @@ export function EnableScrollBar(
 
 export function DlgDirListA(
   hDlg: Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */,
-  lpPathSpec: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpPathSpec: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   nIDListBox: number /* i32 */,
   nIDStaticPath: number /* i32 */,
   uFileType: DLG_DIR_LIST_FILE_TYPE /* Windows.Win32.UI.Controls.DLG_DIR_LIST_FILE_TYPE */,
@@ -20606,7 +20606,7 @@ export function DlgDirListA(
 
 export function DlgDirListW(
   hDlg: Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */,
-  lpPathSpec: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpPathSpec: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   nIDListBox: number /* i32 */,
   nIDStaticPath: number /* i32 */,
   uFileType: DLG_DIR_LIST_FILE_TYPE /* Windows.Win32.UI.Controls.DLG_DIR_LIST_FILE_TYPE */,
@@ -20616,7 +20616,7 @@ export function DlgDirListW(
 
 export function DlgDirSelectExA(
   hwndDlg: Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */,
-  lpString: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpString: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   chCount: number /* i32 */,
   idListBox: number /* i32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
@@ -20625,7 +20625,7 @@ export function DlgDirSelectExA(
 
 export function DlgDirSelectExW(
   hwndDlg: Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */,
-  lpString: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpString: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   chCount: number /* i32 */,
   idListBox: number /* i32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
@@ -20634,7 +20634,7 @@ export function DlgDirSelectExW(
 
 export function DlgDirListComboBoxA(
   hDlg: Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */,
-  lpPathSpec: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpPathSpec: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   nIDComboBox: number /* i32 */,
   nIDStaticPath: number /* i32 */,
   uFiletype: DLG_DIR_LIST_FILE_TYPE /* Windows.Win32.UI.Controls.DLG_DIR_LIST_FILE_TYPE */,
@@ -20644,7 +20644,7 @@ export function DlgDirListComboBoxA(
 
 export function DlgDirListComboBoxW(
   hDlg: Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */,
-  lpPathSpec: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpPathSpec: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   nIDComboBox: number /* i32 */,
   nIDStaticPath: number /* i32 */,
   uFiletype: DLG_DIR_LIST_FILE_TYPE /* Windows.Win32.UI.Controls.DLG_DIR_LIST_FILE_TYPE */,
@@ -20654,7 +20654,7 @@ export function DlgDirListComboBoxW(
 
 export function DlgDirSelectComboBoxExA(
   hwndDlg: Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */,
-  lpString: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpString: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   cchOut: number /* i32 */,
   idComboBox: number /* i32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
@@ -20663,7 +20663,7 @@ export function DlgDirSelectComboBoxExA(
 
 export function DlgDirSelectComboBoxExW(
   hwndDlg: Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */,
-  lpString: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpString: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   cchOut: number /* i32 */,
   idComboBox: number /* i32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {

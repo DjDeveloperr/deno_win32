@@ -4129,7 +4129,7 @@ export interface _u_e__Struct {
   /** u32 */
   dwValue: number;
   /** Windows.Win32.Foundation.PWSTR */
-  pwszName: string | null;
+  pwszName: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeof_u_e__Struct = 16;
@@ -9851,7 +9851,7 @@ export interface WLAN_CONNECTION_PARAMETERS {
   /** Windows.Win32.NetworkManagement.WiFi.WLAN_CONNECTION_MODE */
   wlanConnectionMode: WLAN_CONNECTION_MODE;
   /** Windows.Win32.Foundation.PWSTR */
-  strProfile: string | null;
+  strProfile: string | null | Uint8Array | Uint16Array;
   /** ptr */
   pDot11Ssid: Deno.PointerValue | Uint8Array | null;
   /** ptr */
@@ -9893,7 +9893,7 @@ export interface WLAN_CONNECTION_PARAMETERS_V2 {
   /** Windows.Win32.NetworkManagement.WiFi.WLAN_CONNECTION_MODE */
   wlanConnectionMode: WLAN_CONNECTION_MODE;
   /** Windows.Win32.Foundation.PWSTR */
-  strProfile: string | null;
+  strProfile: string | null | Uint8Array | Uint16Array;
   /** ptr */
   pDot11Ssid: Deno.PointerValue | Uint8Array | null;
   /** ptr */
@@ -10779,7 +10779,7 @@ export interface DOT11_ADAPTER {
   /** System.Guid */
   gAdapterId: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.Foundation.PWSTR */
-  pszDescription: string | null;
+  pszDescription: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.NetworkManagement.WiFi.DOT11_CURRENT_OPERATION_MODE */
   Dot11CurrentOpMode: Uint8Array | Deno.PointerValue | null;
 }
@@ -11133,7 +11133,7 @@ export function allocDOT11_MSONEX_RESULT_PARAMS(data?: Partial<DOT11_MSONEX_RESU
  */
 export interface DOT11EXT_IHV_CONNECTIVITY_PROFILE {
   /** Windows.Win32.Foundation.PWSTR */
-  pszXmlFragmentIhvConnectivity: string | null;
+  pszXmlFragmentIhvConnectivity: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeofDOT11EXT_IHV_CONNECTIVITY_PROFILE = 8;
@@ -11154,7 +11154,7 @@ export function allocDOT11EXT_IHV_CONNECTIVITY_PROFILE(data?: Partial<DOT11EXT_I
  */
 export interface DOT11EXT_IHV_SECURITY_PROFILE {
   /** Windows.Win32.Foundation.PWSTR */
-  pszXmlFragmentIhvSecurity: string | null;
+  pszXmlFragmentIhvSecurity: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.BOOL */
   bUseMSOnex: boolean;
 }
@@ -11948,7 +11948,7 @@ export function WlanRegisterNotification(
 export function WlanGetProfile(
   hClientHandle: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
   pInterfaceGuid: Deno.PointerValue | Uint8Array | null /* ptr */,
-  strProfileName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  strProfileName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pReserved: Deno.PointerValue | Uint8Array | null /* ptr */,
   pstrProfileXml: Deno.PointerValue | Uint8Array | null /* ptr */,
   pdwFlags: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -11960,7 +11960,7 @@ export function WlanGetProfile(
 export function WlanSetProfileEapUserData(
   hClientHandle: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
   pInterfaceGuid: Deno.PointerValue | Uint8Array | null /* ptr */,
-  strProfileName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  strProfileName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   eapType: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Security.ExtensibleAuthenticationProtocol.EAP_METHOD_TYPE */,
   dwFlags: WLAN_SET_EAPHOST_FLAGS /* Windows.Win32.NetworkManagement.WiFi.WLAN_SET_EAPHOST_FLAGS */,
   dwEapUserDataSize: number /* u32 */,
@@ -11973,9 +11973,9 @@ export function WlanSetProfileEapUserData(
 export function WlanSetProfileEapXmlUserData(
   hClientHandle: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
   pInterfaceGuid: Deno.PointerValue | Uint8Array | null /* ptr */,
-  strProfileName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  strProfileName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   dwFlags: WLAN_SET_EAPHOST_FLAGS /* Windows.Win32.NetworkManagement.WiFi.WLAN_SET_EAPHOST_FLAGS */,
-  strEapXmlUserData: string | null /* Windows.Win32.Foundation.PWSTR */,
+  strEapXmlUserData: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pReserved: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
   return libwlanapi_dll.WlanSetProfileEapXmlUserData(util.toPointer(hClientHandle), util.toPointer(pInterfaceGuid), util.pwstrToFfi(strProfileName), dwFlags, util.pwstrToFfi(strEapXmlUserData), util.toPointer(pReserved));
@@ -11985,8 +11985,8 @@ export function WlanSetProfile(
   hClientHandle: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
   pInterfaceGuid: Deno.PointerValue | Uint8Array | null /* ptr */,
   dwFlags: number /* u32 */,
-  strProfileXml: string | null /* Windows.Win32.Foundation.PWSTR */,
-  strAllUserProfileSecurity: string | null /* Windows.Win32.Foundation.PWSTR */,
+  strProfileXml: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  strAllUserProfileSecurity: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   bOverwrite: boolean /* Windows.Win32.Foundation.BOOL */,
   pReserved: Deno.PointerValue | Uint8Array | null /* ptr */,
   pdwReasonCode: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -11997,7 +11997,7 @@ export function WlanSetProfile(
 export function WlanDeleteProfile(
   hClientHandle: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
   pInterfaceGuid: Deno.PointerValue | Uint8Array | null /* ptr */,
-  strProfileName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  strProfileName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pReserved: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
   return libwlanapi_dll.WlanDeleteProfile(util.toPointer(hClientHandle), util.toPointer(pInterfaceGuid), util.pwstrToFfi(strProfileName), util.toPointer(pReserved));
@@ -12006,8 +12006,8 @@ export function WlanDeleteProfile(
 export function WlanRenameProfile(
   hClientHandle: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
   pInterfaceGuid: Deno.PointerValue | Uint8Array | null /* ptr */,
-  strOldProfileName: string | null /* Windows.Win32.Foundation.PWSTR */,
-  strNewProfileName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  strOldProfileName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  strNewProfileName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pReserved: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
   return libwlanapi_dll.WlanRenameProfile(util.toPointer(hClientHandle), util.toPointer(pInterfaceGuid), util.pwstrToFfi(strOldProfileName), util.pwstrToFfi(strNewProfileName), util.toPointer(pReserved));
@@ -12035,7 +12035,7 @@ export function WlanSetProfileList(
 export function WlanSetProfilePosition(
   hClientHandle: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
   pInterfaceGuid: Deno.PointerValue | Uint8Array | null /* ptr */,
-  strProfileName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  strProfileName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   dwPosition: number /* u32 */,
   pReserved: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
@@ -12045,7 +12045,7 @@ export function WlanSetProfilePosition(
 export function WlanSetProfileCustomUserData(
   hClientHandle: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
   pInterfaceGuid: Deno.PointerValue | Uint8Array | null /* ptr */,
-  strProfileName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  strProfileName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   dwDataSize: number /* u32 */,
   pData: Deno.PointerValue | Uint8Array | null /* ptr */,
   pReserved: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -12056,7 +12056,7 @@ export function WlanSetProfileCustomUserData(
 export function WlanGetProfileCustomUserData(
   hClientHandle: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
   pInterfaceGuid: Deno.PointerValue | Uint8Array | null /* ptr */,
-  strProfileName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  strProfileName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pReserved: Deno.PointerValue | Uint8Array | null /* ptr */,
   pdwDataSize: Deno.PointerValue | Uint8Array | null /* ptr */,
   ppData: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -12084,7 +12084,7 @@ export function WlanGetFilterList(
 
 export function WlanSetPsdIEDataList(
   hClientHandle: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  strFormat: string | null /* Windows.Win32.Foundation.PWSTR */,
+  strFormat: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pPsdIEDataList: Deno.PointerValue | Uint8Array | null /* ptr */,
   pReserved: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
@@ -12094,8 +12094,8 @@ export function WlanSetPsdIEDataList(
 export function WlanSaveTemporaryProfile(
   hClientHandle: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
   pInterfaceGuid: Deno.PointerValue | Uint8Array | null /* ptr */,
-  strProfileName: string | null /* Windows.Win32.Foundation.PWSTR */,
-  strAllUserProfileSecurity: string | null /* Windows.Win32.Foundation.PWSTR */,
+  strProfileName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  strAllUserProfileSecurity: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   dwFlags: number /* u32 */,
   bOverWrite: boolean /* Windows.Win32.Foundation.BOOL */,
   pReserved: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -12136,7 +12136,7 @@ export function WlanExtractPsdIEDataList(
   hClientHandle: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
   dwIeDataSize: number /* u32 */,
   pRawIeData: Deno.PointerValue | Uint8Array | null /* ptr */,
-  strFormat: string | null /* Windows.Win32.Foundation.PWSTR */,
+  strFormat: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pReserved: Deno.PointerValue | Uint8Array | null /* ptr */,
   ppPsdIEDataList: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
@@ -12146,7 +12146,7 @@ export function WlanExtractPsdIEDataList(
 export function WlanReasonCodeToString(
   dwReasonCode: number /* u32 */,
   dwBufferSize: number /* u32 */,
-  pStringBuffer: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pStringBuffer: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pReserved: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
   return libwlanapi_dll.WlanReasonCodeToString(dwReasonCode, dwBufferSize, util.pwstrToFfi(pStringBuffer), util.toPointer(pReserved));
@@ -12167,7 +12167,7 @@ export function WlanFreeMemory(
 export function WlanSetSecuritySettings(
   hClientHandle: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
   SecurableObject: WLAN_SECURABLE_OBJECT /* Windows.Win32.NetworkManagement.WiFi.WLAN_SECURABLE_OBJECT */,
-  strModifiedSDDL: string | null /* Windows.Win32.Foundation.PWSTR */,
+  strModifiedSDDL: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
   return libwlanapi_dll.WlanSetSecuritySettings(util.toPointer(hClientHandle), SecurableObject, util.pwstrToFfi(strModifiedSDDL));
 }
@@ -12184,7 +12184,7 @@ export function WlanGetSecuritySettings(
 
 export function WlanUIEditProfile(
   dwClientVersion: number /* u32 */,
-  wstrProfileName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  wstrProfileName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pInterfaceGuid: Deno.PointerValue | Uint8Array | null /* ptr */,
   hWnd: Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */,
   wlStartPage: WL_DISPLAY_PAGES /* Windows.Win32.NetworkManagement.WiFi.WL_DISPLAY_PAGES */,

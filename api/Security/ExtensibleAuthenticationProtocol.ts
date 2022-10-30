@@ -622,9 +622,9 @@ export interface PPP_EAP_INPUT {
   /** Windows.Win32.Foundation.BOOL */
   fAuthenticator: boolean;
   /** Windows.Win32.Foundation.PWSTR */
-  pwszIdentity: string | null;
+  pwszIdentity: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pwszPassword: string | null;
+  pwszPassword: string | null | Uint8Array | Uint16Array;
   /** u8 */
   bInitialId: number;
   /** ptr */
@@ -858,7 +858,7 @@ export interface LEGACY_IDENTITY_UI_PARAMS {
   /** ptr */
   pUserDataOut: Deno.PointerValue | Uint8Array | null;
   /** Windows.Win32.Foundation.PWSTR */
-  pwszIdentity: string | null;
+  pwszIdentity: string | null | Uint8Array | Uint16Array;
   /** u32 */
   dwError: number;
 }
@@ -995,9 +995,9 @@ export interface EAP_METHOD_INFO {
   /** Windows.Win32.Security.ExtensibleAuthenticationProtocol.EAP_METHOD_TYPE */
   eaptype: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.Foundation.PWSTR */
-  pwszAuthorName: string | null;
+  pwszAuthorName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pwszFriendlyName: string | null;
+  pwszFriendlyName: string | null | Uint8Array | Uint16Array;
   /** u32 */
   eapProperties: number;
   /** ptr */
@@ -1036,9 +1036,9 @@ export interface EAP_METHOD_INFO_EX {
   /** Windows.Win32.Security.ExtensibleAuthenticationProtocol.EAP_METHOD_TYPE */
   eaptype: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.Foundation.PWSTR */
-  pwszAuthorName: string | null;
+  pwszAuthorName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pwszFriendlyName: string | null;
+  pwszFriendlyName: string | null | Uint8Array | Uint16Array;
   /** u32 */
   eapProperties: number;
   /** ptr */
@@ -1133,9 +1133,9 @@ export interface EAP_ERROR {
   /** System.Guid */
   helpLinkGuid: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.Foundation.PWSTR */
-  pRootCauseString: string | null;
+  pRootCauseString: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pRepairString: string | null;
+  pRepairString: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeofEAP_ERROR = 64;
@@ -1230,9 +1230,9 @@ export interface EAP_CONFIG_INPUT_FIELD_DATA {
   /** u32 */
   dwFlagProps: number;
   /** Windows.Win32.Foundation.PWSTR */
-  pwszLabel: string | null;
+  pwszLabel: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pwszData: string | null;
+  pwszData: string | null | Uint8Array | Uint16Array;
   /** u32 */
   dwMinDataLength: number;
   /** u32 */
@@ -1539,7 +1539,7 @@ export interface EAPHOST_IDENTITY_UI_PARAMS {
   /** ptr */
   pUserDataOut: Deno.PointerValue | Uint8Array | null;
   /** Windows.Win32.Foundation.PWSTR */
-  pwszIdentity: string | null;
+  pwszIdentity: string | null | Uint8Array | Uint16Array;
   /** u32 */
   dwError: number;
   /** ptr */
@@ -1628,9 +1628,9 @@ export function allocEAPHOST_INTERACTIVE_UI_PARAMS(data?: Partial<EAPHOST_INTERA
  */
 export interface EapUsernamePasswordCredential {
   /** Windows.Win32.Foundation.PWSTR */
-  username: string | null;
+  username: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  password: string | null;
+  password: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeofEapUsernamePasswordCredential = 16;
@@ -1658,7 +1658,7 @@ export interface EapCertificateCredential {
   /** array */
   certHash: Deno.PointerValue | null;
   /** Windows.Win32.Foundation.PWSTR */
-  password: string | null;
+  password: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeofEapCertificateCredential = 16;
@@ -1681,7 +1681,7 @@ export function allocEapCertificateCredential(data?: Partial<EapCertificateCrede
  */
 export interface EapSimCredential {
   /** Windows.Win32.Foundation.PWSTR */
-  iccID: string | null;
+  iccID: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeofEapSimCredential = 8;
@@ -2575,7 +2575,7 @@ export function EapHostPeerGetIdentity(
 
 export function EapHostPeerGetEncryptedPassword(
   dwSizeofPassword: number /* u32 */,
-  szPassword: string | null /* Windows.Win32.Foundation.PWSTR */,
+  szPassword: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   ppszEncPassword: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
   return libeappprxy_dll.EapHostPeerGetEncryptedPassword(dwSizeofPassword, util.pwstrToFfi(szPassword), util.toPointer(ppszEncPassword));

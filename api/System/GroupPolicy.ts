@@ -226,11 +226,11 @@ export interface GROUP_POLICY_OBJECTA {
   /** u32 */
   dwVersion: number;
   /** Windows.Win32.Foundation.PSTR */
-  lpDSPath: string | null;
+  lpDSPath: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  lpFileSysPath: string | null;
+  lpFileSysPath: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  lpDisplayName: string | null;
+  lpDisplayName: string | null | Uint8Array;
   /** array */
   szGPOName: Deno.PointerValue | null;
   /** Windows.Win32.System.GroupPolicy.GPO_LINK */
@@ -242,11 +242,11 @@ export interface GROUP_POLICY_OBJECTA {
   /** ptr */
   pPrev: Deno.PointerValue | Uint8Array | null;
   /** Windows.Win32.Foundation.PSTR */
-  lpExtensions: string | null;
+  lpExtensions: string | null | Uint8Array;
   /** Windows.Win32.Foundation.LPARAM */
   lParam2: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.Foundation.PSTR */
-  lpLink: string | null;
+  lpLink: string | null | Uint8Array;
 }
 
 export const sizeofGROUP_POLICY_OBJECTA = 96;
@@ -310,11 +310,11 @@ export interface GROUP_POLICY_OBJECTW {
   /** u32 */
   dwVersion: number;
   /** Windows.Win32.Foundation.PWSTR */
-  lpDSPath: string | null;
+  lpDSPath: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  lpFileSysPath: string | null;
+  lpFileSysPath: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  lpDisplayName: string | null;
+  lpDisplayName: string | null | Uint8Array | Uint16Array;
   /** array */
   szGPOName: Deno.PointerValue | null;
   /** Windows.Win32.System.GroupPolicy.GPO_LINK */
@@ -326,11 +326,11 @@ export interface GROUP_POLICY_OBJECTW {
   /** ptr */
   pPrev: Deno.PointerValue | Uint8Array | null;
   /** Windows.Win32.Foundation.PWSTR */
-  lpExtensions: string | null;
+  lpExtensions: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.LPARAM */
   lParam2: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.Foundation.PWSTR */
-  lpLink: string | null;
+  lpLink: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeofGROUP_POLICY_OBJECTW = 96;
@@ -388,9 +388,9 @@ export function allocGROUP_POLICY_OBJECTW(data?: Partial<GROUP_POLICY_OBJECTW>):
  */
 export interface RSOP_TARGET {
   /** Windows.Win32.Foundation.PWSTR */
-  pwszAccountName: string | null;
+  pwszAccountName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pwszNewSOM: string | null;
+  pwszNewSOM: string | null | Uint8Array | Uint16Array;
   /** ptr */
   psaSecurityGroups: Deno.PointerValue | Uint8Array | null;
   /** ptr */
@@ -478,11 +478,11 @@ export function allocSYSTEMTIME(data?: Partial<SYSTEMTIME>): Uint8Array {
  */
 export interface POLICYSETTINGSTATUSINFO {
   /** Windows.Win32.Foundation.PWSTR */
-  szKey: string | null;
+  szKey: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  szEventSource: string | null;
+  szEventSource: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  szEventLogName: string | null;
+  szEventLogName: string | null | Uint8Array | Uint16Array;
   /** u32 */
   dwEventID: number;
   /** u32 */
@@ -530,7 +530,7 @@ export function allocPOLICYSETTINGSTATUSINFO(data?: Partial<POLICYSETTINGSTATUSI
  */
 export interface _AppName_e__Struct {
   /** Windows.Win32.Foundation.PWSTR */
-  Name: string | null;
+  Name: string | null | Uint8Array | Uint16Array;
   /** System.Guid */
   GPOId: Uint8Array | Deno.PointerValue | null;
 }
@@ -580,9 +580,9 @@ export interface INSTALLSPEC {
   /** _AppName_e__Struct */
   AppName: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.Foundation.PWSTR */
-  FileExt: string | null;
+  FileExt: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  ProgId: string | null;
+  ProgId: string | null | Uint8Array | Uint16Array;
   /** _COMClass_e__Struct */
   COMClass: Uint8Array | Deno.PointerValue | null;
 }
@@ -637,11 +637,11 @@ export function allocINSTALLDATA(data?: Partial<INSTALLDATA>): Uint8Array {
  */
 export interface LOCALMANAGEDAPPLICATION {
   /** Windows.Win32.Foundation.PWSTR */
-  pszDeploymentName: string | null;
+  pszDeploymentName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pszPolicyName: string | null;
+  pszPolicyName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pszProductId: string | null;
+  pszProductId: string | null | Uint8Array | Uint16Array;
   /** u32 */
   dwState: number;
 }
@@ -679,9 +679,9 @@ export type BOOL = number;
  */
 export interface MANAGEDAPPLICATION {
   /** Windows.Win32.Foundation.PWSTR */
-  pszPackageName: string | null;
+  pszPackageName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pszPublisher: string | null;
+  pszPublisher: string | null | Uint8Array | Uint16Array;
   /** u32 */
   dwVersionHi: number;
   /** u32 */
@@ -691,21 +691,21 @@ export interface MANAGEDAPPLICATION {
   /** System.Guid */
   GpoId: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.Foundation.PWSTR */
-  pszPolicyName: string | null;
+  pszPolicyName: string | null | Uint8Array | Uint16Array;
   /** System.Guid */
   ProductId: Uint8Array | Deno.PointerValue | null;
   /** u16 */
   Language: number;
   /** Windows.Win32.Foundation.PWSTR */
-  pszOwner: string | null;
+  pszOwner: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pszCompany: string | null;
+  pszCompany: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pszComments: string | null;
+  pszComments: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pszContact: string | null;
+  pszContact: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pszSupportUrl: string | null;
+  pszSupportUrl: string | null | Uint8Array | Uint16Array;
   /** u32 */
   dwPathType: number;
   /** Windows.Win32.Foundation.BOOL */
@@ -791,15 +791,15 @@ export interface GPOBROWSEINFO {
   /** Windows.Win32.Foundation.HWND */
   hwndOwner: Deno.PointerValue | null;
   /** Windows.Win32.Foundation.PWSTR */
-  lpTitle: string | null;
+  lpTitle: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  lpInitialOU: string | null;
+  lpInitialOU: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  lpDSPath: string | null;
+  lpDSPath: string | null | Uint8Array | Uint16Array;
   /** u32 */
   dwDSPathSize: number;
   /** Windows.Win32.Foundation.PWSTR */
-  lpName: string | null;
+  lpName: string | null | Uint8Array | Uint16Array;
   /** u32 */
   dwNameSize: number;
   /** Windows.Win32.System.GroupPolicy.GROUP_POLICY_OBJECT_TYPE */
@@ -1047,9 +1047,9 @@ export function UnregisterGPNotification(
 
 export function GetGPOListA(
   hToken: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  lpName: string | null /* Windows.Win32.Foundation.PSTR */,
-  lpHostName: string | null /* Windows.Win32.Foundation.PSTR */,
-  lpComputerName: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  lpHostName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  lpComputerName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   dwFlags: number /* u32 */,
   pGPOList: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
@@ -1058,9 +1058,9 @@ export function GetGPOListA(
 
 export function GetGPOListW(
   hToken: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  lpName: string | null /* Windows.Win32.Foundation.PWSTR */,
-  lpHostName: string | null /* Windows.Win32.Foundation.PWSTR */,
-  lpComputerName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  lpHostName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  lpComputerName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   dwFlags: number /* u32 */,
   pGPOList: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
@@ -1081,7 +1081,7 @@ export function FreeGPOListW(
 
 export function GetAppliedGPOListA(
   dwFlags: number /* u32 */,
-  pMachineName: string | null /* Windows.Win32.Foundation.PSTR */,
+  pMachineName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   pSidUser: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.PSID */,
   pGuidExtension: Deno.PointerValue | Uint8Array | null /* ptr */,
   ppGPOList: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -1091,7 +1091,7 @@ export function GetAppliedGPOListA(
 
 export function GetAppliedGPOListW(
   dwFlags: number /* u32 */,
-  pMachineName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pMachineName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pSidUser: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.PSID */,
   pGuidExtension: Deno.PointerValue | Uint8Array | null /* ptr */,
   ppGPOList: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -1133,7 +1133,7 @@ export function RsopAccessCheckByType(
 }
 
 export function RsopFileAccessCheck(
-  pszFileName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  pszFileName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pRsopToken: Deno.PointerValue | Uint8Array | null /* ptr */,
   dwDesiredAccessMask: number /* u32 */,
   pdwGrantedAccessMask: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -1162,7 +1162,7 @@ export function RsopResetPolicySettingStatus(
 
 export function GenerateGPNotification(
   bMachine: boolean /* Windows.Win32.Foundation.BOOL */,
-  lpwszMgmtProduct: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpwszMgmtProduct: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   dwMgmtProductOptions: number /* u32 */,
 ): number /* u32 */ {
   return libUSERENV_dll.GenerateGPNotification(util.boolToFfi(bMachine), util.pwstrToFfi(lpwszMgmtProduct), dwMgmtProductOptions);
@@ -1175,15 +1175,15 @@ export function InstallApplication(
 }
 
 export function UninstallApplication(
-  ProductCode: string | null /* Windows.Win32.Foundation.PWSTR */,
+  ProductCode: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   dwStatus: number /* u32 */,
 ): number /* u32 */ {
   return libADVAPI32_dll.UninstallApplication(util.pwstrToFfi(ProductCode), dwStatus);
 }
 
 export function CommandLineFromMsiDescriptor(
-  Descriptor: string | null /* Windows.Win32.Foundation.PWSTR */,
-  CommandLine: string | null /* Windows.Win32.Foundation.PWSTR */,
+  Descriptor: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  CommandLine: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   CommandLineLength: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
   return libADVAPI32_dll.CommandLineFromMsiDescriptor(util.pwstrToFfi(Descriptor), util.pwstrToFfi(CommandLine), util.toPointer(CommandLineLength));
@@ -1208,7 +1208,7 @@ export function GetLocalManagedApplications(
 }
 
 export function GetLocalManagedApplicationData(
-  ProductCode: string | null /* Windows.Win32.Foundation.PWSTR */,
+  ProductCode: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   DisplayName: Deno.PointerValue | Uint8Array | null /* ptr */,
   SupportUrl: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): void /* void */ {
@@ -1223,22 +1223,22 @@ export function GetManagedApplicationCategories(
 }
 
 export function CreateGPOLink(
-  lpGPO: string | null /* Windows.Win32.Foundation.PWSTR */,
-  lpContainer: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpGPO: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  lpContainer: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   fHighPriority: boolean /* Windows.Win32.Foundation.BOOL */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
   return util.pointerFromFfi(libGPEDIT_dll.CreateGPOLink(util.pwstrToFfi(lpGPO), util.pwstrToFfi(lpContainer), util.boolToFfi(fHighPriority)));
 }
 
 export function DeleteGPOLink(
-  lpGPO: string | null /* Windows.Win32.Foundation.PWSTR */,
-  lpContainer: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpGPO: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  lpContainer: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
   return util.pointerFromFfi(libGPEDIT_dll.DeleteGPOLink(util.pwstrToFfi(lpGPO), util.pwstrToFfi(lpContainer)));
 }
 
 export function DeleteAllGPOLinks(
-  lpContainer: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpContainer: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
   return util.pointerFromFfi(libGPEDIT_dll.DeleteAllGPOLinks(util.pwstrToFfi(lpContainer)));
 }
@@ -1250,15 +1250,15 @@ export function BrowseForGPO(
 }
 
 export function ImportRSoPData(
-  lpNameSpace: string | null /* Windows.Win32.Foundation.PWSTR */,
-  lpFileName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpNameSpace: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  lpFileName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
   return util.pointerFromFfi(libGPEDIT_dll.ImportRSoPData(util.pwstrToFfi(lpNameSpace), util.pwstrToFfi(lpFileName)));
 }
 
 export function ExportRSoPData(
-  lpNameSpace: string | null /* Windows.Win32.Foundation.PWSTR */,
-  lpFileName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpNameSpace: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  lpFileName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
   return util.pointerFromFfi(libGPEDIT_dll.ExportRSoPData(util.pwstrToFfi(lpNameSpace), util.pwstrToFfi(lpFileName)));
 }

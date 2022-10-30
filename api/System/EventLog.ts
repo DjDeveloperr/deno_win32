@@ -305,13 +305,13 @@ export type PWSTR = Deno.PointerValue | Uint8Array | null;
  */
 export interface EVT_RPC_LOGIN {
   /** Windows.Win32.Foundation.PWSTR */
-  Server: string | null;
+  Server: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  User: string | null;
+  User: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  Domain: string | null;
+  Domain: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  Password: string | null;
+  Password: string | null | Uint8Array | Uint16Array;
   /** u32 */
   Flags: number;
 }
@@ -741,7 +741,7 @@ export function EvtCancel(
 
 export function EvtGetExtendedStatus(
   BufferSize: number /* u32 */,
-  Buffer: string | null /* Windows.Win32.Foundation.PWSTR */,
+  Buffer: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   BufferUsed: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
   return libwevtapi_dll.EvtGetExtendedStatus(BufferSize, util.pwstrToFfi(Buffer), util.toPointer(BufferUsed));
@@ -749,8 +749,8 @@ export function EvtGetExtendedStatus(
 
 export function EvtQuery(
   Session: Deno.PointerValue /* isize */,
-  Path: string | null /* Windows.Win32.Foundation.PWSTR */,
-  Query: string | null /* Windows.Win32.Foundation.PWSTR */,
+  Path: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  Query: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   Flags: number /* u32 */,
 ): Deno.PointerValue /* isize */ {
   return libwevtapi_dll.EvtQuery(Session, util.pwstrToFfi(Path), util.pwstrToFfi(Query), Flags);
@@ -780,8 +780,8 @@ export function EvtSeek(
 export function EvtSubscribe(
   Session: Deno.PointerValue /* isize */,
   SignalEvent: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  ChannelPath: string | null /* Windows.Win32.Foundation.PWSTR */,
-  Query: string | null /* Windows.Win32.Foundation.PWSTR */,
+  ChannelPath: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  Query: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   Bookmark: Deno.PointerValue /* isize */,
   Context: Deno.PointerValue | Uint8Array | null /* ptr */,
   Callback: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.EventLog.EVT_SUBSCRIBE_CALLBACK */,
@@ -818,7 +818,7 @@ export function EvtFormatMessage(
   Values: Deno.PointerValue | Uint8Array | null /* ptr */,
   Flags: number /* u32 */,
   BufferSize: number /* u32 */,
-  Buffer: string | null /* Windows.Win32.Foundation.PWSTR */,
+  Buffer: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   BufferUsed: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libwevtapi_dll.EvtFormatMessage(PublisherMetadata, Event, MessageId, ValueCount, util.toPointer(Values), Flags, BufferSize, util.pwstrToFfi(Buffer), util.toPointer(BufferUsed)));
@@ -826,7 +826,7 @@ export function EvtFormatMessage(
 
 export function EvtOpenLog(
   Session: Deno.PointerValue /* isize */,
-  Path: string | null /* Windows.Win32.Foundation.PWSTR */,
+  Path: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   Flags: number /* u32 */,
 ): Deno.PointerValue /* isize */ {
   return libwevtapi_dll.EvtOpenLog(Session, util.pwstrToFfi(Path), Flags);
@@ -844,8 +844,8 @@ export function EvtGetLogInfo(
 
 export function EvtClearLog(
   Session: Deno.PointerValue /* isize */,
-  ChannelPath: string | null /* Windows.Win32.Foundation.PWSTR */,
-  TargetFilePath: string | null /* Windows.Win32.Foundation.PWSTR */,
+  ChannelPath: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  TargetFilePath: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   Flags: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libwevtapi_dll.EvtClearLog(Session, util.pwstrToFfi(ChannelPath), util.pwstrToFfi(TargetFilePath), Flags));
@@ -853,9 +853,9 @@ export function EvtClearLog(
 
 export function EvtExportLog(
   Session: Deno.PointerValue /* isize */,
-  Path: string | null /* Windows.Win32.Foundation.PWSTR */,
-  Query: string | null /* Windows.Win32.Foundation.PWSTR */,
-  TargetFilePath: string | null /* Windows.Win32.Foundation.PWSTR */,
+  Path: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  Query: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  TargetFilePath: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   Flags: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libwevtapi_dll.EvtExportLog(Session, util.pwstrToFfi(Path), util.pwstrToFfi(Query), util.pwstrToFfi(TargetFilePath), Flags));
@@ -863,7 +863,7 @@ export function EvtExportLog(
 
 export function EvtArchiveExportedLog(
   Session: Deno.PointerValue /* isize */,
-  LogFilePath: string | null /* Windows.Win32.Foundation.PWSTR */,
+  LogFilePath: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   Locale: number /* u32 */,
   Flags: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
@@ -880,7 +880,7 @@ export function EvtOpenChannelEnum(
 export function EvtNextChannelPath(
   ChannelEnum: Deno.PointerValue /* isize */,
   ChannelPathBufferSize: number /* u32 */,
-  ChannelPathBuffer: string | null /* Windows.Win32.Foundation.PWSTR */,
+  ChannelPathBuffer: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   ChannelPathBufferUsed: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libwevtapi_dll.EvtNextChannelPath(ChannelEnum, ChannelPathBufferSize, util.pwstrToFfi(ChannelPathBuffer), util.toPointer(ChannelPathBufferUsed)));
@@ -888,7 +888,7 @@ export function EvtNextChannelPath(
 
 export function EvtOpenChannelConfig(
   Session: Deno.PointerValue /* isize */,
-  ChannelPath: string | null /* Windows.Win32.Foundation.PWSTR */,
+  ChannelPath: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   Flags: number /* u32 */,
 ): Deno.PointerValue /* isize */ {
   return libwevtapi_dll.EvtOpenChannelConfig(Session, util.pwstrToFfi(ChannelPath), Flags);
@@ -931,7 +931,7 @@ export function EvtOpenPublisherEnum(
 export function EvtNextPublisherId(
   PublisherEnum: Deno.PointerValue /* isize */,
   PublisherIdBufferSize: number /* u32 */,
-  PublisherIdBuffer: string | null /* Windows.Win32.Foundation.PWSTR */,
+  PublisherIdBuffer: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   PublisherIdBufferUsed: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libwevtapi_dll.EvtNextPublisherId(PublisherEnum, PublisherIdBufferSize, util.pwstrToFfi(PublisherIdBuffer), util.toPointer(PublisherIdBufferUsed)));
@@ -939,8 +939,8 @@ export function EvtNextPublisherId(
 
 export function EvtOpenPublisherMetadata(
   Session: Deno.PointerValue /* isize */,
-  PublisherId: string | null /* Windows.Win32.Foundation.PWSTR */,
-  LogFilePath: string | null /* Windows.Win32.Foundation.PWSTR */,
+  PublisherId: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  LogFilePath: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   Locale: number /* u32 */,
   Flags: number /* u32 */,
 ): Deno.PointerValue /* isize */ {
@@ -1013,7 +1013,7 @@ export function EvtGetQueryInfo(
 }
 
 export function EvtCreateBookmark(
-  BookmarkXml: string | null /* Windows.Win32.Foundation.PWSTR */,
+  BookmarkXml: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): Deno.PointerValue /* isize */ {
   return libwevtapi_dll.EvtCreateBookmark(util.pwstrToFfi(BookmarkXml));
 }
@@ -1037,28 +1037,28 @@ export function EvtGetEventInfo(
 
 export function ClearEventLogA(
   hEventLog: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.EventLog.EventLogHandle */,
-  lpBackupFileName: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpBackupFileName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libADVAPI32_dll.ClearEventLogA(util.toPointer(hEventLog), util.pstrToFfi(lpBackupFileName)));
 }
 
 export function ClearEventLogW(
   hEventLog: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.EventLog.EventLogHandle */,
-  lpBackupFileName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpBackupFileName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libADVAPI32_dll.ClearEventLogW(util.toPointer(hEventLog), util.pwstrToFfi(lpBackupFileName)));
 }
 
 export function BackupEventLogA(
   hEventLog: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.EventLog.EventLogHandle */,
-  lpBackupFileName: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpBackupFileName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libADVAPI32_dll.BackupEventLogA(util.toPointer(hEventLog), util.pstrToFfi(lpBackupFileName)));
 }
 
 export function BackupEventLogW(
   hEventLog: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.EventLog.EventLogHandle */,
-  lpBackupFileName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpBackupFileName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libADVAPI32_dll.BackupEventLogW(util.toPointer(hEventLog), util.pwstrToFfi(lpBackupFileName)));
 }
@@ -1097,43 +1097,43 @@ export function GetOldestEventLogRecord(
 }
 
 export function OpenEventLogA(
-  lpUNCServerName: string | null /* Windows.Win32.Foundation.PSTR */,
-  lpSourceName: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpUNCServerName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  lpSourceName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): Deno.PointerValue | null /* Windows.Win32.System.EventLog.EventLogHandle */ {
   return util.pointerFromFfi(libADVAPI32_dll.OpenEventLogA(util.pstrToFfi(lpUNCServerName), util.pstrToFfi(lpSourceName)));
 }
 
 export function OpenEventLogW(
-  lpUNCServerName: string | null /* Windows.Win32.Foundation.PWSTR */,
-  lpSourceName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpUNCServerName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  lpSourceName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): Deno.PointerValue | null /* Windows.Win32.System.EventLog.EventLogHandle */ {
   return util.pointerFromFfi(libADVAPI32_dll.OpenEventLogW(util.pwstrToFfi(lpUNCServerName), util.pwstrToFfi(lpSourceName)));
 }
 
 export function RegisterEventSourceA(
-  lpUNCServerName: string | null /* Windows.Win32.Foundation.PSTR */,
-  lpSourceName: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpUNCServerName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  lpSourceName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): Deno.PointerValue | null /* Windows.Win32.System.EventLog.EventSourceHandle */ {
   return util.pointerFromFfi(libADVAPI32_dll.RegisterEventSourceA(util.pstrToFfi(lpUNCServerName), util.pstrToFfi(lpSourceName)));
 }
 
 export function RegisterEventSourceW(
-  lpUNCServerName: string | null /* Windows.Win32.Foundation.PWSTR */,
-  lpSourceName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpUNCServerName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  lpSourceName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): Deno.PointerValue | null /* Windows.Win32.System.EventLog.EventSourceHandle */ {
   return util.pointerFromFfi(libADVAPI32_dll.RegisterEventSourceW(util.pwstrToFfi(lpUNCServerName), util.pwstrToFfi(lpSourceName)));
 }
 
 export function OpenBackupEventLogA(
-  lpUNCServerName: string | null /* Windows.Win32.Foundation.PSTR */,
-  lpFileName: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpUNCServerName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  lpFileName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): Deno.PointerValue | null /* Windows.Win32.System.EventLog.EventLogHandle */ {
   return util.pointerFromFfi(libADVAPI32_dll.OpenBackupEventLogA(util.pstrToFfi(lpUNCServerName), util.pstrToFfi(lpFileName)));
 }
 
 export function OpenBackupEventLogW(
-  lpUNCServerName: string | null /* Windows.Win32.Foundation.PWSTR */,
-  lpFileName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpUNCServerName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  lpFileName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): Deno.PointerValue | null /* Windows.Win32.System.EventLog.EventLogHandle */ {
   return util.pointerFromFfi(libADVAPI32_dll.OpenBackupEventLogW(util.pwstrToFfi(lpUNCServerName), util.pwstrToFfi(lpFileName)));
 }

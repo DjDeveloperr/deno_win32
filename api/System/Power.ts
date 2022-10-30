@@ -901,7 +901,7 @@ export interface THERMAL_EVENT {
   /** u32 */
   TripPointTemperature: number;
   /** Windows.Win32.Foundation.PWSTR */
-  Initiator: string | null;
+  Initiator: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeofTHERMAL_EVENT = 32;
@@ -2904,8 +2904,8 @@ export function ReadPwrScheme(
 
 export function WritePwrScheme(
   puiID: Deno.PointerValue | Uint8Array | null /* ptr */,
-  lpszSchemeName: string | null /* Windows.Win32.Foundation.PWSTR */,
-  lpszDescription: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpszSchemeName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  lpszDescription: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   lpScheme: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.BOOLEAN */ {
   return util.pointerFromFfi(libPOWRPROF_dll.WritePwrScheme(util.toPointer(puiID), util.pwstrToFfi(lpszSchemeName), util.pwstrToFfi(lpszDescription), util.toPointer(lpScheme)));
@@ -3310,7 +3310,7 @@ export function PowerDuplicateScheme(
 
 export function PowerImportPowerScheme(
   RootPowerKey: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Registry.HKEY */,
-  ImportFileNamePath: string | null /* Windows.Win32.Foundation.PWSTR */,
+  ImportFileNamePath: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   DestinationSchemeGuid: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
   return libPOWRPROF_dll.PowerImportPowerScheme(util.toPointer(RootPowerKey), util.pwstrToFfi(ImportFileNamePath), util.toPointer(DestinationSchemeGuid));
@@ -3410,7 +3410,7 @@ export function DevicePowerEnumDevices(
 }
 
 export function DevicePowerSetDeviceState(
-  DeviceDescription: string | null /* Windows.Win32.Foundation.PWSTR */,
+  DeviceDescription: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   SetFlags: number /* u32 */,
   SetData: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {

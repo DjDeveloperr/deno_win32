@@ -339,9 +339,9 @@ export type PWSTR = Deno.PointerValue | Uint8Array | null;
  */
 export interface BG_FILE_INFO {
   /** Windows.Win32.Foundation.PWSTR */
-  RemoteName: string | null;
+  RemoteName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  LocalName: string | null;
+  LocalName: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeofBG_FILE_INFO = 16;
@@ -467,9 +467,9 @@ export function allocBG_JOB_REPLY_PROGRESS(data?: Partial<BG_JOB_REPLY_PROGRESS>
  */
 export interface BG_BASIC_CREDENTIALS {
   /** Windows.Win32.Foundation.PWSTR */
-  UserName: string | null;
+  UserName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  Password: string | null;
+  Password: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeofBG_BASIC_CREDENTIALS = 16;
@@ -598,7 +598,7 @@ export function allocBITS_JOB_PROPERTY_VALUE(data?: Partial<BITS_JOB_PROPERTY_VA
  */
 export interface BITS_FILE_PROPERTY_VALUE {
   /** Windows.Win32.Foundation.PWSTR */
-  String: string | null;
+  String: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeofBITS_FILE_PROPERTY_VALUE = 8;

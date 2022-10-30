@@ -294,7 +294,7 @@ export interface WINTRUST_DATA {
   /** Windows.Win32.Foundation.HANDLE */
   hWVTStateData: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.Foundation.PWSTR */
-  pwszURLReference: string | null;
+  pwszURLReference: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Security.WinTrust.WINTRUST_DATA_PROVIDER_FLAGS */
   dwProvFlags: WINTRUST_DATA_PROVIDER_FLAGS;
   /** Windows.Win32.Security.WinTrust.WINTRUST_DATA_UICONTEXT */
@@ -389,7 +389,7 @@ export interface WINTRUST_FILE_INFO {
   /** u32 */
   cbStruct: number;
   /** Windows.Win32.Foundation.PWSTR */
-  pcwszFilePath: string | null;
+  pcwszFilePath: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.HANDLE */
   hFile: Uint8Array | Deno.PointerValue | null;
   /** ptr */
@@ -425,11 +425,11 @@ export interface WINTRUST_CATALOG_INFO {
   /** u32 */
   dwCatalogVersion: number;
   /** Windows.Win32.Foundation.PWSTR */
-  pcwszCatalogFilePath: string | null;
+  pcwszCatalogFilePath: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pcwszMemberTag: string | null;
+  pcwszMemberTag: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pcwszMemberFilePath: string | null;
+  pcwszMemberFilePath: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.HANDLE */
   hMemberFile: Uint8Array | Deno.PointerValue | null;
   /** ptr */
@@ -489,7 +489,7 @@ export interface WINTRUST_BLOB_INFO {
   /** System.Guid */
   gSubject: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.Foundation.PWSTR */
-  pcwszDisplayName: string | null;
+  pcwszDisplayName: string | null | Uint8Array | Uint16Array;
   /** u32 */
   cbMemObject: number;
   /** ptr */
@@ -535,7 +535,7 @@ export interface WINTRUST_SGNR_INFO {
   /** u32 */
   cbStruct: number;
   /** Windows.Win32.Foundation.PWSTR */
-  pcwszDisplayName: string | null;
+  pcwszDisplayName: string | null | Uint8Array | Uint16Array;
   /** ptr */
   psSignerInfo: Deno.PointerValue | Uint8Array | null;
   /** u32 */
@@ -574,7 +574,7 @@ export interface WINTRUST_CERT_INFO {
   /** u32 */
   cbStruct: number;
   /** Windows.Win32.Foundation.PWSTR */
-  pcwszDisplayName: string | null;
+  pcwszDisplayName: string | null | Uint8Array | Uint16Array;
   /** ptr */
   psCertContext: Deno.PointerValue | Uint8Array | null;
   /** u32 */
@@ -692,13 +692,13 @@ export interface CRYPT_PROVIDER_DATA {
   /** _Anonymous_e__Union */
   Anonymous: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.Foundation.PSTR */
-  pszUsageOID: string | null;
+  pszUsageOID: string | null | Uint8Array;
   /** Windows.Win32.Foundation.BOOL */
   fRecallWithState: boolean;
   /** Windows.Win32.Foundation.FILETIME */
   sftSystemTime: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.Foundation.PSTR */
-  pszCTLSignerUsageOID: string | null;
+  pszCTLSignerUsageOID: string | null | Uint8Array;
   /** u32 */
   dwProvFlags: number;
   /** u32 */
@@ -995,19 +995,19 @@ export interface CRYPT_PROVUI_DATA {
   /** u32 */
   dwFinalError: number;
   /** Windows.Win32.Foundation.PWSTR */
-  pYesButtonText: string | null;
+  pYesButtonText: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pNoButtonText: string | null;
+  pNoButtonText: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pMoreInfoButtonText: string | null;
+  pMoreInfoButtonText: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pAdvancedLinkText: string | null;
+  pAdvancedLinkText: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pCopyActionText: string | null;
+  pCopyActionText: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pCopyActionTextNoTS: string | null;
+  pCopyActionTextNoTS: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pCopyActionTextNotSigned: string | null;
+  pCopyActionTextNotSigned: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeofCRYPT_PROVUI_DATA = 64;
@@ -1273,9 +1273,9 @@ export interface CRYPT_TRUST_REG_ENTRY {
   /** u32 */
   cbStruct: number;
   /** Windows.Win32.Foundation.PWSTR */
-  pwszDLLName: string | null;
+  pwszDLLName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  pwszFunctionName: string | null;
+  pwszFunctionName: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeofCRYPT_TRUST_REG_ENTRY = 24;
@@ -1359,11 +1359,11 @@ export interface CRYPT_PROVIDER_REGDEFUSAGE {
   /** ptr */
   pgActionID: Deno.PointerValue | Uint8Array | null;
   /** Windows.Win32.Foundation.PWSTR */
-  pwszDllName: string | null;
+  pwszDllName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PSTR */
-  pwszLoadCallbackDataFunctionName: string | null;
+  pwszLoadCallbackDataFunctionName: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
-  pwszFreeCallbackDataFunctionName: string | null;
+  pwszFreeCallbackDataFunctionName: string | null | Uint8Array;
 }
 
 export const sizeofCRYPT_PROVIDER_REGDEFUSAGE = 40;
@@ -1592,7 +1592,7 @@ export function allocSPC_PE_IMAGE_DATA(data?: Partial<SPC_PE_IMAGE_DATA>): Uint8
  */
 export interface CRYPT_ATTRIBUTE_TYPE_VALUE {
   /** Windows.Win32.Foundation.PSTR */
-  pszObjId: string | null;
+  pszObjId: string | null | Uint8Array;
   /** Windows.Win32.Security.Cryptography.CRYPTOAPI_BLOB */
   Value: Uint8Array | Deno.PointerValue | null;
 }
@@ -1617,7 +1617,7 @@ export function allocCRYPT_ATTRIBUTE_TYPE_VALUE(data?: Partial<CRYPT_ATTRIBUTE_T
  */
 export interface CRYPT_ALGORITHM_IDENTIFIER {
   /** Windows.Win32.Foundation.PSTR */
-  pszObjId: string | null;
+  pszObjId: string | null | Uint8Array;
   /** Windows.Win32.Security.Cryptography.CRYPTOAPI_BLOB */
   Parameters: Uint8Array | Deno.PointerValue | null;
 }
@@ -1726,7 +1726,7 @@ export interface SPC_SP_AGENCY_INFO {
   /** ptr */
   pPolicyInformation: Deno.PointerValue | Uint8Array | null;
   /** Windows.Win32.Foundation.PWSTR */
-  pwszPolicyDisplayText: string | null;
+  pwszPolicyDisplayText: string | null | Uint8Array | Uint16Array;
   /** ptr */
   pLogoImage: Deno.PointerValue | Uint8Array | null;
   /** ptr */
@@ -1780,7 +1780,7 @@ export function allocSPC_STATEMENT_TYPE(data?: Partial<SPC_STATEMENT_TYPE>): Uin
  */
 export interface SPC_SP_OPUS_INFO {
   /** Windows.Win32.Foundation.PWSTR */
-  pwszProgramName: string | null;
+  pwszProgramName: string | null | Uint8Array | Uint16Array;
   /** ptr */
   pMoreInfo: Deno.PointerValue | Uint8Array | null;
   /** ptr */
@@ -1809,7 +1809,7 @@ export function allocSPC_SP_OPUS_INFO(data?: Partial<SPC_SP_OPUS_INFO>): Uint8Ar
  */
 export interface CAT_NAMEVALUE {
   /** Windows.Win32.Foundation.PWSTR */
-  pwszTag: string | null;
+  pwszTag: string | null | Uint8Array | Uint16Array;
   /** u32 */
   fdwFlags: number;
   /** Windows.Win32.Security.Cryptography.CRYPTOAPI_BLOB */
@@ -1839,7 +1839,7 @@ export function allocCAT_NAMEVALUE(data?: Partial<CAT_NAMEVALUE>): Uint8Array {
  */
 export interface CAT_MEMBERINFO {
   /** Windows.Win32.Foundation.PWSTR */
-  pwszSubjGuid: string | null;
+  pwszSubjGuid: string | null | Uint8Array | Uint16Array;
   /** u32 */
   dwCertVersion: number;
 }
@@ -2049,7 +2049,7 @@ export interface WIN_TRUST_SUBJECT_FILE {
   /** Windows.Win32.Foundation.HANDLE */
   hFile: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.Foundation.PWSTR */
-  lpPath: string | null;
+  lpPath: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeofWIN_TRUST_SUBJECT_FILE = 16;
@@ -2074,9 +2074,9 @@ export interface WIN_TRUST_SUBJECT_FILE_AND_DISPLAY {
   /** Windows.Win32.Foundation.HANDLE */
   hFile: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.Foundation.PWSTR */
-  lpPath: string | null;
+  lpPath: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
-  lpDisplayName: string | null;
+  lpDisplayName: string | null | Uint8Array | Uint16Array;
 }
 
 export const sizeofWIN_TRUST_SUBJECT_FILE_AND_DISPLAY = 24;
@@ -2518,7 +2518,7 @@ export function WintrustLoadFunctionPointers(
 }
 
 export function WintrustAddDefaultForUsage(
-  pszUsageOID: string | null /* Windows.Win32.Foundation.PSTR */,
+  pszUsageOID: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   psDefUsage: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libWINTRUST_dll.WintrustAddDefaultForUsage(util.pstrToFfi(pszUsageOID), util.toPointer(psDefUsage)));
@@ -2526,7 +2526,7 @@ export function WintrustAddDefaultForUsage(
 
 export function WintrustGetDefaultForUsage(
   dwAction: WINTRUST_GET_DEFAULT_FOR_USAGE_ACTION /* Windows.Win32.Security.WinTrust.WINTRUST_GET_DEFAULT_FOR_USAGE_ACTION */,
-  pszUsageOID: string | null /* Windows.Win32.Foundation.PSTR */,
+  pszUsageOID: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   psUsage: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libWINTRUST_dll.WintrustGetDefaultForUsage(dwAction, util.pstrToFfi(pszUsageOID), util.toPointer(psUsage)));

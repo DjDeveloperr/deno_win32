@@ -906,21 +906,21 @@ export function GetCommPorts(
 }
 
 export function BuildCommDCBA(
-  lpDef: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpDef: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   lpDCB: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libKERNEL32_dll.BuildCommDCBA(util.pstrToFfi(lpDef), util.toPointer(lpDCB)));
 }
 
 export function BuildCommDCBW(
-  lpDef: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpDef: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   lpDCB: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libKERNEL32_dll.BuildCommDCBW(util.pwstrToFfi(lpDef), util.toPointer(lpDCB)));
 }
 
 export function BuildCommDCBAndTimeoutsA(
-  lpDef: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpDef: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   lpDCB: Deno.PointerValue | Uint8Array | null /* ptr */,
   lpCommTimeouts: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
@@ -928,7 +928,7 @@ export function BuildCommDCBAndTimeoutsA(
 }
 
 export function BuildCommDCBAndTimeoutsW(
-  lpDef: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpDef: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   lpDCB: Deno.PointerValue | Uint8Array | null /* ptr */,
   lpCommTimeouts: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
@@ -936,7 +936,7 @@ export function BuildCommDCBAndTimeoutsW(
 }
 
 export function CommConfigDialogA(
-  lpszName: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpszName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   hWnd: Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */,
   lpCC: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
@@ -944,7 +944,7 @@ export function CommConfigDialogA(
 }
 
 export function CommConfigDialogW(
-  lpszName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpszName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   hWnd: Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */,
   lpCC: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
@@ -952,7 +952,7 @@ export function CommConfigDialogW(
 }
 
 export function GetDefaultCommConfigA(
-  lpszName: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpszName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   lpCC: Deno.PointerValue | Uint8Array | null /* ptr */,
   lpdwSize: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
@@ -960,7 +960,7 @@ export function GetDefaultCommConfigA(
 }
 
 export function GetDefaultCommConfigW(
-  lpszName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpszName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   lpCC: Deno.PointerValue | Uint8Array | null /* ptr */,
   lpdwSize: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
@@ -968,7 +968,7 @@ export function GetDefaultCommConfigW(
 }
 
 export function SetDefaultCommConfigA(
-  lpszName: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpszName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   lpCC: Deno.PointerValue | Uint8Array | null /* ptr */,
   dwSize: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
@@ -976,7 +976,7 @@ export function SetDefaultCommConfigA(
 }
 
 export function SetDefaultCommConfigW(
-  lpszName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpszName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   lpCC: Deno.PointerValue | Uint8Array | null /* ptr */,
   dwSize: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {

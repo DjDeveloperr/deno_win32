@@ -664,7 +664,7 @@ try {
 // Symbols
 
 export function SetEnvironmentStringsW(
-  NewEnvironment: string | null /* Windows.Win32.Foundation.PWSTR */,
+  NewEnvironment: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libKERNEL32_dll.SetEnvironmentStringsW(util.pwstrToFfi(NewEnvironment)));
 }
@@ -686,97 +686,97 @@ export function GetEnvironmentStringsW(): string | null /* Windows.Win32.Foundat
 }
 
 export function FreeEnvironmentStringsA(
-  penv: string | null /* Windows.Win32.Foundation.PSTR */,
+  penv: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libKERNEL32_dll.FreeEnvironmentStringsA(util.pstrToFfi(penv)));
 }
 
 export function FreeEnvironmentStringsW(
-  penv: string | null /* Windows.Win32.Foundation.PWSTR */,
+  penv: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libKERNEL32_dll.FreeEnvironmentStringsW(util.pwstrToFfi(penv)));
 }
 
 export function GetEnvironmentVariableA(
-  lpName: string | null /* Windows.Win32.Foundation.PSTR */,
-  lpBuffer: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  lpBuffer: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   nSize: number /* u32 */,
 ): number /* u32 */ {
   return libKERNEL32_dll.GetEnvironmentVariableA(util.pstrToFfi(lpName), util.pstrToFfi(lpBuffer), nSize);
 }
 
 export function GetEnvironmentVariableW(
-  lpName: string | null /* Windows.Win32.Foundation.PWSTR */,
-  lpBuffer: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  lpBuffer: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   nSize: number /* u32 */,
 ): number /* u32 */ {
   return libKERNEL32_dll.GetEnvironmentVariableW(util.pwstrToFfi(lpName), util.pwstrToFfi(lpBuffer), nSize);
 }
 
 export function SetEnvironmentVariableA(
-  lpName: string | null /* Windows.Win32.Foundation.PSTR */,
-  lpValue: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  lpValue: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libKERNEL32_dll.SetEnvironmentVariableA(util.pstrToFfi(lpName), util.pstrToFfi(lpValue)));
 }
 
 export function SetEnvironmentVariableW(
-  lpName: string | null /* Windows.Win32.Foundation.PWSTR */,
-  lpValue: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  lpValue: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libKERNEL32_dll.SetEnvironmentVariableW(util.pwstrToFfi(lpName), util.pwstrToFfi(lpValue)));
 }
 
 export function ExpandEnvironmentStringsA(
-  lpSrc: string | null /* Windows.Win32.Foundation.PSTR */,
-  lpDst: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpSrc: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  lpDst: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   nSize: number /* u32 */,
 ): number /* u32 */ {
   return libKERNEL32_dll.ExpandEnvironmentStringsA(util.pstrToFfi(lpSrc), util.pstrToFfi(lpDst), nSize);
 }
 
 export function ExpandEnvironmentStringsW(
-  lpSrc: string | null /* Windows.Win32.Foundation.PWSTR */,
-  lpDst: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpSrc: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  lpDst: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   nSize: number /* u32 */,
 ): number /* u32 */ {
   return libKERNEL32_dll.ExpandEnvironmentStringsW(util.pwstrToFfi(lpSrc), util.pwstrToFfi(lpDst), nSize);
 }
 
 export function SetCurrentDirectoryA(
-  lpPathName: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpPathName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libKERNEL32_dll.SetCurrentDirectoryA(util.pstrToFfi(lpPathName)));
 }
 
 export function SetCurrentDirectoryW(
-  lpPathName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpPathName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libKERNEL32_dll.SetCurrentDirectoryW(util.pwstrToFfi(lpPathName)));
 }
 
 export function GetCurrentDirectoryA(
   nBufferLength: number /* u32 */,
-  lpBuffer: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpBuffer: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): number /* u32 */ {
   return libKERNEL32_dll.GetCurrentDirectoryA(nBufferLength, util.pstrToFfi(lpBuffer));
 }
 
 export function GetCurrentDirectoryW(
   nBufferLength: number /* u32 */,
-  lpBuffer: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpBuffer: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
   return libKERNEL32_dll.GetCurrentDirectoryW(nBufferLength, util.pwstrToFfi(lpBuffer));
 }
 
 export function NeedCurrentDirectoryForExePathA(
-  ExeName: string | null /* Windows.Win32.Foundation.PSTR */,
+  ExeName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libKERNEL32_dll.NeedCurrentDirectoryForExePathA(util.pstrToFfi(ExeName)));
 }
 
 export function NeedCurrentDirectoryForExePathW(
-  ExeName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  ExeName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libKERNEL32_dll.NeedCurrentDirectoryForExePathW(util.pwstrToFfi(ExeName)));
 }
@@ -797,8 +797,8 @@ export function DestroyEnvironmentBlock(
 
 export function ExpandEnvironmentStringsForUserA(
   hToken: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  lpSrc: string | null /* Windows.Win32.Foundation.PSTR */,
-  lpDest: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpSrc: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  lpDest: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   dwSize: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libUSERENV_dll.ExpandEnvironmentStringsForUserA(util.toPointer(hToken), util.pstrToFfi(lpSrc), util.pstrToFfi(lpDest), dwSize));
@@ -806,8 +806,8 @@ export function ExpandEnvironmentStringsForUserA(
 
 export function ExpandEnvironmentStringsForUserW(
   hToken: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  lpSrc: string | null /* Windows.Win32.Foundation.PWSTR */,
-  lpDest: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpSrc: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  lpDest: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   dwSize: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libUSERENV_dll.ExpandEnvironmentStringsForUserW(util.toPointer(hToken), util.pwstrToFfi(lpSrc), util.pwstrToFfi(lpDest), dwSize));
@@ -858,14 +858,14 @@ export function InitializeEnclave(
 
 export function LoadEnclaveImageA(
   lpEnclaveAddress: Deno.PointerValue | Uint8Array | null /* ptr */,
-  lpImageName: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpImageName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libapi_ms_win_core_enclave_l1_1_1_dll.LoadEnclaveImageA(util.toPointer(lpEnclaveAddress), util.pstrToFfi(lpImageName)));
 }
 
 export function LoadEnclaveImageW(
   lpEnclaveAddress: Deno.PointerValue | Uint8Array | null /* ptr */,
-  lpImageName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpImageName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libapi_ms_win_core_enclave_l1_1_1_dll.LoadEnclaveImageW(util.toPointer(lpEnclaveAddress), util.pwstrToFfi(lpImageName)));
 }

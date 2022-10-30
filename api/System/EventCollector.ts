@@ -242,14 +242,14 @@ export function EcOpenSubscriptionEnum(
 export function EcEnumNextSubscription(
   SubscriptionEnum: Deno.PointerValue /* isize */,
   SubscriptionNameBufferSize: number /* u32 */,
-  SubscriptionNameBuffer: string | null /* Windows.Win32.Foundation.PWSTR */,
+  SubscriptionNameBuffer: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   SubscriptionNameBufferUsed: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libWecApi_dll.EcEnumNextSubscription(SubscriptionEnum, SubscriptionNameBufferSize, util.pwstrToFfi(SubscriptionNameBuffer), util.toPointer(SubscriptionNameBufferUsed)));
 }
 
 export function EcOpenSubscription(
-  SubscriptionName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  SubscriptionName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   AccessMask: number /* u32 */,
   Flags: number /* u32 */,
 ): Deno.PointerValue /* isize */ {
@@ -284,7 +284,7 @@ export function EcSaveSubscription(
 }
 
 export function EcDeleteSubscription(
-  SubscriptionName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  SubscriptionName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   Flags: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libWecApi_dll.EcDeleteSubscription(util.pwstrToFfi(SubscriptionName), Flags));
@@ -334,9 +334,9 @@ export function EcRemoveObjectArrayElement(
 }
 
 export function EcGetSubscriptionRunTimeStatus(
-  SubscriptionName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  SubscriptionName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   StatusInfoId: EC_SUBSCRIPTION_RUNTIME_STATUS_INFO_ID /* Windows.Win32.System.EventCollector.EC_SUBSCRIPTION_RUNTIME_STATUS_INFO_ID */,
-  EventSourceName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  EventSourceName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   Flags: number /* u32 */,
   StatusValueBufferSize: number /* u32 */,
   StatusValueBuffer: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -346,8 +346,8 @@ export function EcGetSubscriptionRunTimeStatus(
 }
 
 export function EcRetrySubscription(
-  SubscriptionName: string | null /* Windows.Win32.Foundation.PWSTR */,
-  EventSourceName: string | null /* Windows.Win32.Foundation.PWSTR */,
+  SubscriptionName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  EventSourceName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   Flags: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libWecApi_dll.EcRetrySubscription(util.pwstrToFfi(SubscriptionName), util.pwstrToFfi(EventSourceName), Flags));

@@ -265,8 +265,8 @@ try {
 // Symbols
 
 export function CreateDesktopA(
-  lpszDesktop: string | null /* Windows.Win32.Foundation.PSTR */,
-  lpszDevice: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpszDesktop: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  lpszDevice: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   pDevmode: Deno.PointerValue | Uint8Array | null /* ptr */,
   dwFlags: DESKTOP_CONTROL_FLAGS /* Windows.Win32.System.StationsAndDesktops.DESKTOP_CONTROL_FLAGS */,
   dwDesiredAccess: number /* u32 */,
@@ -276,8 +276,8 @@ export function CreateDesktopA(
 }
 
 export function CreateDesktopW(
-  lpszDesktop: string | null /* Windows.Win32.Foundation.PWSTR */,
-  lpszDevice: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpszDesktop: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  lpszDevice: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pDevmode: Deno.PointerValue | Uint8Array | null /* ptr */,
   dwFlags: DESKTOP_CONTROL_FLAGS /* Windows.Win32.System.StationsAndDesktops.DESKTOP_CONTROL_FLAGS */,
   dwDesiredAccess: number /* u32 */,
@@ -287,8 +287,8 @@ export function CreateDesktopW(
 }
 
 export function CreateDesktopExA(
-  lpszDesktop: string | null /* Windows.Win32.Foundation.PSTR */,
-  lpszDevice: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpszDesktop: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
+  lpszDevice: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   pDevmode: Deno.PointerValue | Uint8Array | null /* ptr */,
   dwFlags: DESKTOP_CONTROL_FLAGS /* Windows.Win32.System.StationsAndDesktops.DESKTOP_CONTROL_FLAGS */,
   dwDesiredAccess: number /* u32 */,
@@ -300,8 +300,8 @@ export function CreateDesktopExA(
 }
 
 export function CreateDesktopExW(
-  lpszDesktop: string | null /* Windows.Win32.Foundation.PWSTR */,
-  lpszDevice: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpszDesktop: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
+  lpszDevice: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pDevmode: Deno.PointerValue | Uint8Array | null /* ptr */,
   dwFlags: DESKTOP_CONTROL_FLAGS /* Windows.Win32.System.StationsAndDesktops.DESKTOP_CONTROL_FLAGS */,
   dwDesiredAccess: number /* u32 */,
@@ -313,7 +313,7 @@ export function CreateDesktopExW(
 }
 
 export function OpenDesktopA(
-  lpszDesktop: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpszDesktop: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   dwFlags: DESKTOP_CONTROL_FLAGS /* Windows.Win32.System.StationsAndDesktops.DESKTOP_CONTROL_FLAGS */,
   fInherit: boolean /* Windows.Win32.Foundation.BOOL */,
   dwDesiredAccess: number /* u32 */,
@@ -322,7 +322,7 @@ export function OpenDesktopA(
 }
 
 export function OpenDesktopW(
-  lpszDesktop: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpszDesktop: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   dwFlags: DESKTOP_CONTROL_FLAGS /* Windows.Win32.System.StationsAndDesktops.DESKTOP_CONTROL_FLAGS */,
   fInherit: boolean /* Windows.Win32.Foundation.BOOL */,
   dwDesiredAccess: number /* u32 */,
@@ -387,7 +387,7 @@ export function GetThreadDesktop(
 }
 
 export function CreateWindowStationA(
-  lpwinsta: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpwinsta: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   dwFlags: number /* u32 */,
   dwDesiredAccess: number /* u32 */,
   lpsa: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -396,7 +396,7 @@ export function CreateWindowStationA(
 }
 
 export function CreateWindowStationW(
-  lpwinsta: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpwinsta: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   dwFlags: number /* u32 */,
   dwDesiredAccess: number /* u32 */,
   lpsa: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -405,7 +405,7 @@ export function CreateWindowStationW(
 }
 
 export function OpenWindowStationA(
-  lpszWinSta: string | null /* Windows.Win32.Foundation.PSTR */,
+  lpszWinSta: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   fInherit: boolean /* Windows.Win32.Foundation.BOOL */,
   dwDesiredAccess: number /* u32 */,
 ): Deno.PointerValue | null /* Windows.Win32.System.StationsAndDesktops.HWINSTA */ {
@@ -413,7 +413,7 @@ export function OpenWindowStationA(
 }
 
 export function OpenWindowStationW(
-  lpszWinSta: string | null /* Windows.Win32.Foundation.PWSTR */,
+  lpszWinSta: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   fInherit: boolean /* Windows.Win32.Foundation.BOOL */,
   dwDesiredAccess: number /* u32 */,
 ): Deno.PointerValue | null /* Windows.Win32.System.StationsAndDesktops.HWINSTA */ {
